@@ -25,8 +25,8 @@ pkgbase = duckstation
 	depends = glslang
 	depends = spirv-tools
 	source = duckstation::git+https://github.com/stenzek/duckstation.git#commit=38774867121728f19cc6dd48104e394bed911a30
-	source = ianlancetaylor.libbacktrace::git+https://github.com/ianlancetaylor/libbacktrace.git
 	source = google.shaderc::git+https://github.com/google/shaderc.git
+	source = ianlancetaylor.libbacktrace::git+https://github.com/ianlancetaylor/libbacktrace.git
 	source = khronosgroup.spirv-cross::git+https://github.com/KhronosGroup/SPIRV-Cross.git
 	sha256sums = SKIP
 	sha256sums = SKIP

@@ -21,47 +21,33 @@ url="https://github.com/stenzek/duckstation"
 arch=('x86_64')
 license=('GPL-3.0-only')
 
-_main_package() {
-  depends=(
-    ## duckstation
-    'libwebp'
-    'libxrandr'
-    'qt6-base'
-    'sdl2'
-  )
-  makedepends=(
-    ## compiler
-    'clang'
-    'lld'
-    'llvm'
+depends=(
+  ## duckstation
+  'libwebp'
+  'libxrandr'
+  'qt6-base'
+  'sdl2'
+)
+makedepends=(
+  ## compiler
+  'clang'
+  'lld'
+  'llvm'
 
-    ## build
-    'cmake'
-    'extra-cmake-modules'
-    'git'
-    'ninja'
+  ## build
+  'cmake'
+  'extra-cmake-modules'
+  'git'
+  'ninja'
 
-    ## duckstation
-    'qt6-tools'
-    'qt6-wayland'
+  ## duckstation
+  'qt6-tools'
+  'qt6-wayland'
 
-    ## fixups
-    'patchelf'
-    'patchutils'
-  )
-
-  if [ "${_build_git::1}" != "t" ]; then
-    _source_duckstation
-  else
-    _source_duckstation_git
-    _source_cpuinfo
-    _source_discord_rpc
-  fi
-
-  _source_backtrace
-  _source_shaderc
-  _source_spirv_cross
-}
+  ## fixups
+  'patchelf'
+  'patchutils'
+)
 
 _source_duckstation() {
   _pkgsrc="$_pkgname"
@@ -103,8 +89,19 @@ _source_backtrace() {
 }
 
 _source_cpuinfo() {
+  _pkgsrc_cpuinfo="pytorch.cpuinfo"
   source+=(
-    "pytorch.cpuinfo"::"git+https://github.com/pytorch/cpuinfo.git"
+    "$_pkgsrc_cpuinfo"::"git+https://github.com/pytorch/cpuinfo.git"
+  )
+  sha256sums+=(
+    'SKIP'
+  )
+}
+
+_source_cpuinfo_git() {
+  _pkgsrc_cpuinfo="stenzek.cpuinfo"
+  source+=(
+    "$_pkgsrc_cpuinfo"::"git+https://github.com/stenzek/cpuinfo.git"
   )
   sha256sums+=(
     'SKIP'
@@ -112,8 +109,9 @@ _source_cpuinfo() {
 }
 
 _source_discord_rpc() {
+  _pkgsrc_discord_rpc="stenzek.discord-rpc"
   source+=(
-    "stenzek.discord-rpc"::"git+https://github.com/stenzek/discord-rpc.git"
+    "$_pkgsrc_discord_rpc"::"git+https://github.com/stenzek/discord-rpc.git"
   )
   sha256sums+=(
     'SKIP'
@@ -130,11 +128,28 @@ _source_shaderc() {
     'spirv-headers'
   )
 
+  _pkgsrc_shaderc="google.shaderc"
   source+=(
-    "google.shaderc"::"git+https://github.com/google/shaderc.git"
-    #"khronosgroup.glslang"::"git+https://github.com/KhronosGroup/glslang.git"
-    #"khronosgroup.spirv-headers"::"git+https://github.com/KhronosGroup/SPIRV-Headers.git"
-    #"khronosgroup.spirv-tools"::"git+https://github.com/KhronosGroup/SPIRV-Tools.git"
+    "$_pkgsrc_shaderc"::"git+https://github.com/google/shaderc.git"
+  )
+  sha256sums+=(
+    'SKIP'
+  )
+}
+
+_source_shaderc_git() {
+  depends+=(
+    'glslang'
+    'spirv-tools'
+  )
+  makedepends+=(
+    'patchutils'
+    'spirv-headers'
+  )
+
+  _pkgsrc_shaderc="stenzek.shaderc"
+  source+=(
+    "$_pkgsrc_shaderc"::"git+https://github.com/stenzek/shaderc.git"
   )
   sha256sums+=(
     'SKIP'
@@ -159,28 +174,39 @@ _prepare_backtrace() (
 _prepare_cpuinfo() (
   local _version_cpuinfo=$(grep -E -m1 'CPUINFO=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*CPUINFO=(\S+)$&\1&')
   echo "cpuinfo = $_version_cpuinfo"
-  git -C "$srcdir/pytorch.cpuinfo" checkout -f "$_version_cpuinfo"
+  git -C "$srcdir/$_pkgsrc_cpuinfo" checkout -f "$_version_cpuinfo"
 )
 
 _prepare_discord_rpc() (
   local _version_discord_rpc=$(grep -E -m1 'DISCORD_RPC=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*DISCORD_RPC=(\S+)$&\1&')
   echo "discord-rpc = $_version_discord_rpc"
-  git -C "$srcdir/stenzek.discord-rpc" checkout -f "$_version_discord_rpc"
+  git -C "$srcdir/$_pkgsrc_discord_rpc" checkout -f "$_version_discord_rpc"
 )
 
 _prepare_shaderc() (
   local _version_shaderc=$(grep -E -m1 'SHADERC=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*SHADERC=(\S+)$&\1&')
   echo "shaderc = $_version_shaderc"
 
-  git -C "$srcdir/google.shaderc" checkout -f "v$_version_shaderc"
+  git -C "$srcdir/$_pkgsrc_shaderc" checkout -f "v$_version_shaderc"
 
   filterdiff "$srcdir/$_pkgsrc/$_scripts/shaderc-changes.patch" \
     | sed -E 's&non_sematic_debug_info&non_semantic_debug_info&' \
       > shaderc-changes.patch
 
-  cd "$srcdir/google.shaderc"
+  cd "$srcdir/$_pkgsrc_shaderc"
   git apply "$srcdir/shaderc-changes.patch"
 
+  sed -E -e '/\(glslc\)/d;/examples/d;/third_party/d' \
+    -i CMakeLists.txt
+)
+
+_prepare_shaderc_git() (
+  local _version_shaderc=$(grep -E -m1 'SHADERC=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*SHADERC=(\S+)$&\1&')
+  echo "shaderc = $_version_shaderc"
+
+  git -C "$srcdir/$_pkgsrc_shaderc" checkout -f "$_version_shaderc"
+
+  cd "$srcdir/$_pkgsrc_shaderc"
   sed -E -e '/\(glslc\)/d;/examples/d;/third_party/d' \
     -i CMakeLists.txt
 )
@@ -191,11 +217,13 @@ _prepare_spirv_cross() (
 
   git -C "$srcdir/khronosgroup.spirv-cross" checkout -f "$_version_spirv_cross"
 
-  filterdiff "$srcdir/$_pkgsrc/$_scripts/spirv-cross-changes.patch" \
-    > spirv-cross-changes.patch
+  if [ -e "$srcdir/$_pkgsrc/$_scripts/spirv-cross-changes.patch" ]; then
+    filterdiff "$srcdir/$_pkgsrc/$_scripts/spirv-cross-changes.patch" \
+      > spirv-cross-changes.patch
 
-  cd "khronosgroup.spirv-cross"
-  git apply "$srcdir/spirv-cross-changes.patch"
+    cd "khronosgroup.spirv-cross"
+    git apply "$srcdir/spirv-cross-changes.patch"
+  fi
 )
 
 _prepare_duckstation() {
@@ -206,12 +234,14 @@ _prepare_duckstation() {
 
 prepare() {
   _prepare_backtrace
-  _prepare_shaderc
   _prepare_spirv_cross
 
   if [ "${_build_git::1}" = "t" ]; then
     _prepare_cpuinfo
     _prepare_discord_rpc
+    _prepare_shaderc_git
+  else
+    _prepare_shaderc
   fi
 
   _prepare_duckstation
@@ -233,7 +263,7 @@ _build_cpuinfo() {
   echo "Building cpuinfo..."
   local _cmake_cpuinfo=(
     -B build_cpuinfo
-    -S pytorch.cpuinfo
+    -S "$_pkgsrc_cpuinfo"
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX=/usr
@@ -258,7 +288,7 @@ _build_discord_rpc() {
   echo "Building discord-rpc..."
   local _cmake_discord_rpc=(
     -B build_discord_rpc
-    -S stenzek.discord-rpc
+    -S "$_pkgsrc_discord_rpc"
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX=/usr
@@ -275,7 +305,7 @@ _build_shaderc() {
   echo "Building shaderc..."
   local _cmake_shaderc=(
     -B build_shaderc
-    -S google.shaderc
+    -S "$_pkgsrc_shaderc"
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX=/usr
@@ -431,5 +461,15 @@ END
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
 
-# execute
-_main_package
+if [ "${_build_git::1}" != "t" ]; then
+  _source_duckstation
+  _source_shaderc
+else
+  _source_duckstation_git
+  _source_cpuinfo_git
+  _source_shaderc_git
+  _source_discord_rpc
+fi
+
+_source_backtrace
+_source_spirv_cross
