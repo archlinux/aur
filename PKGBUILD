@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: kyngs <aurmail at kyngs dot xyz>
 pkgname=miru-git
-pkgver=5.2.1.r2.gccb0512
+pkgver=5.2.6.r0.g22878b4
 _electronversion=29
 _nodeversion=18
 pkgrel=1
@@ -27,7 +27,8 @@ makedepends=(
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
-    "${pkgname%-git}.sh")
+    "${pkgname%-git}.sh"
+)
 sha256sums=('SKIP'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
