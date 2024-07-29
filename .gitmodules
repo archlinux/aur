@@ -1,4 +1,0 @@
-[submodule "imsprog"]
-	path = imsprog
-	url = https://github.com/bigbigmdm/imsprog.git
-	branch = main
