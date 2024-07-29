@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=miru
 pkgname="${_pkgname}-viewer-git"
-pkgver=1.1.0.r6.gf4955c4
-_electronversion=30
+pkgver=1.1.1.r1.g8307407
+_electronversion=31
 _nodeversion=18
 pkgrel=1
 pkgdesc="GitHub Issue/Pull Request/Release viewer"
@@ -26,7 +26,8 @@ makedepends=(
 )
 source=(
     "${pkgname%-git}.git::git+${url}.git"
-    "${pkgname%-git}.sh")
+    "${pkgname%-git}.sh"
+)
 sha256sums=('SKIP'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
@@ -67,7 +68,7 @@ build() {
     fi
     yarn run rm-dist
     sed 's|electron-builder.js",|electron-builder.js -l --dir",|g' -i package.json
-    sed "s|\/\${version}||g;s|mac|linux|g;s|icon.icns|icon.png|g" -i electron-builder.js
+    sed "s|\/\${version}||g;s|mac|linux|g;s|icon.icns|icon.png|g" -i electron-builder.json
     NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
     NODE_ENV=production yarn run electron:build
 }
