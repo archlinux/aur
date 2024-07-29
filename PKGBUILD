@@ -5,12 +5,13 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-openpmix
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 arch=('any')
 pkgdesc="Extended version of the PMI standard (Android ${_android_arch})"
 url="https://github.com/openpmix/openpmix"
 license=('BSD-3-Clause')
+groups=('android-openpmix')
 depends=("android-${_android_arch}-hwloc"
          "android-${_android_arch}-libevent"
          "android-${_android_arch}-zlib")
@@ -20,11 +21,11 @@ makedepends=("android-${_android_arch}-hwloc"
              'perl'
              'python')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("$url/releases/download/v$pkgver/pmix-$pkgver.tar.gz"
+source=("${url}/releases/download/v${pkgver}/pmix-${pkgver}.tar.gz"
         '0001-Force-32-bits-compile.patch'
         '0002-Unversioned-libs.patch'
         '0003-Add-missing-headers.patch')
-md5sums=('40293e5adbaac80b62528ba8a7044659'
+md5sums=('456517e3129250a6ec9f9715959087df'
          'd0032b4f6868acb7b3a593f1a76f0eed'
          '47db6b8ab5894753aa4c508f64c75389'
          'a5c7336af3f4abce17ff7ecc1d08573a')
@@ -84,7 +85,7 @@ package() {
     cd "${srcdir}/pmix-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/usr"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
