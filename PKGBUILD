@@ -5,7 +5,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-nss
-pkgver=3.102
+pkgver=3.102.1
 pkgrel=1
 arch=('any')
 pkgdesc="Network Security Services (Android ${_android_arch})"
@@ -27,10 +27,10 @@ source=("https://ftp.mozilla.org/pub/security/nss/releases/NSS_${pkgver//./_}_RT
         'Linux.mk.patch'
         'FreeblMakefile.patch'
         'mpcpucache.c.patch')
-sha256sums=('c29b03f24856db18a34fbcde737fcca6407c27b5f3f60baba5111460e6cb307b'
-            '79d959a1af5f00e4515e930121eb12cc8927d3ee8730b0cbfb3fd005c1075f7f'
-            '957675d7a34c56c388057348941d2ab814ba9e94648c79c4285bc19de8ddd6fc'
-            '7e0eaf3111942f46e503464957f25b2d36a1b24b91adc6a6a858e209e0c0e27f')
+md5sums=('56bc8d284e3eb2fc49c65022d8a1d71e'
+         'd70d79aa9d8914a9e9d3df1739b63c00'
+         'abd61b14e76846b4eb67556211ab8d9d'
+         '2cc719ad09173f4eb818ce2badcab283')
 
 prepare() {
     cd "${srcdir}/nss-${pkgver}"
