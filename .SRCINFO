@@ -1,0 +1,12 @@
+pkgbase = sztk
+	pkgdesc = Szczota Toolkit
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/szczotapl/sztk
+	arch = x86_64
+	license = GPL-3.0
+	depends = python-colorama
+	source = sztk-1.0.0.tar.gz::https://github.com/szczotapl/sztk/archive/1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = sztk
