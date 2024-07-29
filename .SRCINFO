@@ -8,7 +8,6 @@ pkgbase = yaabe-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = git
-	depends = glibc
 	depends = zlib
 	depends = glib2
 	depends = gtk4
