@@ -1,7 +1,7 @@
 pkgbase = respawnirc
 	pkgdesc = Logiciel offrant une interface de client IRC pour les forums de jeuxvideo.com
 	pkgver = 3.1.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pijon.fr/RespawnIRC/
 	arch = x86_64
 	license = Zlib

@@ -1,7 +1,7 @@
 # Maintainer: Ash <xash at riseup d0t net>
 pkgname=respawnirc
 pkgver=3.1.16
-pkgrel=2
+pkgrel=3
 pkgdesc="Logiciel offrant une interface de client IRC pour les forums de jeuxvideo.com"
 arch=('x86_64')
 url="https://pijon.fr/RespawnIRC/"
@@ -47,5 +47,3 @@ package() {
     # Install the icon
     install -Dm644 "$srcdir/RespawnIRC-${pkgver}/respawnIrc/rirc.ico" "$pkgdir/usr/share/icons/hicolor/48x48/apps/respawnirc.ico"
 }
-
-# vim:set ts=2 sw=2 et:
