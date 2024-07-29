@@ -1,5 +1,5 @@
 pkgbase = power-profiles-daemon-patched-amd-git
-	pkgdesc = [redundant] Makes power profiles handling available over D-Bus (with AMD patches by Mario Limonciello)
+	pkgdesc = [new!] Makes power profiles handling available over D-Bus (with AMD patches by Mario Limonciello)
 	pkgver = 0.21
 	pkgrel = 2
 	url = https://gitlab.freedesktop.org/upower/power-profiles-daemon
