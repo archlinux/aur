@@ -1,0 +1,15 @@
+pkgbase = qmc-decoder
+	pkgdesc = Fastest & best convert qmc 2 mp3 | flac tools
+	pkgver = 2.5
+	pkgrel = 1
+	url = https://github.com/Presburger/qmc-decoder
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	source = qmc-decoder-2.5.tar.gz::https://github.com/Presburger/qmc-decoder/archive/2.5.tar.gz
+	source = filesystem-3605e869150032ffdd9eae3db93e12f8711a0c82.tar.gz::https://github.com/gulrak/filesystem/archive/3605e869150032ffdd9eae3db93e12f8711a0c82.zip
+	sha256sums = ae71b9192649f1fe5416a9c57cfd091daa03740079e94af71f3d2f5549b657ab
+	sha256sums = 99d81718857a495996577039d985df78ea97e4f0835650d6bcc59dfd5222e266
+
+pkgname = qmc-decoder
