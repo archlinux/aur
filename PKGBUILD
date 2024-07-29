@@ -2,8 +2,6 @@
 # Contributor: Manuel <mdomlop@gmail.com>
 
 # options
-: ${_autoupdate:=false}
-
 : ${_build_clang:=true}
 
 : ${_build_avx:=false}
@@ -16,92 +14,53 @@ unset _pkgtype
 # basic info
 _pkgname=flycast
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.3.2.r99.ge85fa82
+pkgver=2.3.2.r167.g6b3e866
 pkgrel=1
 pkgdesc='Sega Dreamcast, Naomi, and Atomiswave emulator'
 url="https://github.com/flyinghead/flycast"
 license=('GPL-2.0-only')
 arch=('x86_64' 'i686')
 
-# main package
-_main_package() {
-  depends=(
-    'alsa-lib'
-    'libgl'
-    'libzip'
+depends=(
+  'alsa-lib'
+  'libgl'
+  'libzip'
+)
+makedepends=(
+  'cmake'
+  'git'
+  'python'
+)
+
+if [[ "${_build_clang::1}" == "t" ]]; then
+  makedepends+=(
+    'clang'
+    'lld'
+    'llvm'
   )
-  makedepends=(
-    'cmake'
-    'git'
-    'python'
-  )
+fi
 
-  if [[ "${_build_clang::1}" == "t" ]]; then
-    makedepends+=(
-      'clang'
-      'lld'
-      'llvm'
-    )
-  fi
-
-  if [ "${_build_git::1}" != "t" ]; then
-    _main_stable
-  else
-    _main_git
-  fi
-
-  source+=("breakpad-disable.patch")
-  sha256sums+=('SKIP')
-
-  _source_flycast
-  #_source_vinniefalco_luabridge
-}
-
-# stable package
-_main_stable() {
-  _update_version
-
-  _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git#tag=v$_pkgver")
-  sha256sums+=('SKIP')
-
-  _prepare() {
-    :
-  }
-
-  pkgver() {
-    echo "${_pkgver:?}"
-  }
-}
-
-# git package
-_main_git() {
+_source_flycast() {
   provides+=("$_pkgname=${pkgver%%.r*}")
   conflicts+=("$_pkgname")
 
   _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git")
-  sha256sums+=('SKIP')
+  source=(
+    "$_pkgsrc"::"git+$url.git"
+    'breakpad-disable.patch'
+  )
+  sha256sums=(
+    'SKIP'
+    '0a6a9c7bc3ba1fc3ca9bdd3134e722f6db73f2a222990e49cabae8fb687c0beb'
+  )
 
-  _prepare() {
-    :
-  }
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-      | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
-  }
-}
-
-# submodules
-_source_flycast() {
   source+=(
     'bylaws.libadrenotools'::'git+https://github.com/bylaws/libadrenotools.git'
-    'flyinghead.discord-rpc'::'git+https://github.com/flyinghead/discord-rpc.git'
     'flyinghead.mingw-breakpad'::'git+https://github.com/flyinghead/mingw-breakpad.git'
+    'google.googletest'::'git+https://github.com/google/googletest.git'
     'google.oboe'::'git+https://github.com/google/oboe.git'
     'gpuopen-librariesandsdks.vulkanmemoryallocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
+    'harmonytf.discord-rpc'::'git+https://github.com/harmonytf/discord-rpc.git'
     'khronosgroup.glslang'::'git+https://github.com/KhronosGroup/glslang.git'
     'khronosgroup.vulkan-headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
     'libsdl-org.sdl'::'git+https://github.com/libsdl-org/SDL.git'
@@ -125,48 +84,31 @@ _source_flycast() {
     'SKIP'
     'SKIP'
     'SKIP'
-  )
-
-  _prepare_flycast() (
-    cd "$srcdir/$_pkgsrc"
-    local _submodules=(
-      'bylaws.libadrenotools'::'core/deps/libadrenotools'
-      'flyinghead.discord-rpc'::'core/deps/discord-rpc'
-      'flyinghead.mingw-breakpad'::'core/deps/breakpad'
-      'google.oboe'::'core/deps/oboe'
-      'gpuopen-librariesandsdks.vulkanmemoryallocator'::'core/deps/VulkanMemoryAllocator'
-      'khronosgroup.glslang'::'core/deps/glslang'
-      'khronosgroup.vulkan-headers'::'core/deps/Vulkan-Headers'
-      'libsdl-org.sdl'::'core/deps/SDL'
-      'retroachievements.rcheevos'::'core/deps/rcheevos'
-      'rtissera.libchdr'::'core/deps/libchdr'
-      'vinniefalco.luabridge'::'core/deps/luabridge'
-      'vkedwardli.spout2'::'core/deps/Spout'
-      'vkedwardli.syphon-framework'::'core/deps/Syphon'
-    )
-    _submodule_update
-  )
-}
-
-_source_vinniefalco_luabridge() {
-  source+=(
-    'google.googletest'::'git+https://github.com/google/googletest.git'
-  )
-  sha256sums+=(
     'SKIP'
   )
-
-  _prepare_vinniefalco_luabridge() (
-    cd "$srcdir/$_pkgsrc"
-    cd 'core/deps/luabridge'
-    local _submodules=(
-      'google.googletest'::'third_party/gtest'
-    )
-    _submodule_update
-  )
 }
 
-# common functions
+_prepare_flycast() (
+  cd "$srcdir/$_pkgsrc"
+  local _submodules=(
+    'bylaws.libadrenotools'::'core/deps/libadrenotools'
+    'flyinghead.mingw-breakpad'::'core/deps/breakpad'
+    'google.googletest'::'core/deps/googletest'
+    'google.oboe'::'core/deps/oboe'
+    'gpuopen-librariesandsdks.vulkanmemoryallocator'::'core/deps/VulkanMemoryAllocator'
+    'harmonytf.discord-rpc'::'core/deps/discord-rpc'
+    'khronosgroup.glslang'::'core/deps/glslang'
+    'khronosgroup.vulkan-headers'::'core/deps/Vulkan-Headers'
+    'libsdl-org.sdl'::'core/deps/SDL'
+    'retroachievements.rcheevos'::'core/deps/rcheevos'
+    'rtissera.libchdr'::'core/deps/libchdr'
+    'vinniefalco.luabridge'::'core/deps/luabridge'
+    'vkedwardli.spout2'::'core/deps/Spout'
+    'vkedwardli.syphon-framework'::'core/deps/Syphon'
+  )
+  _submodule_update
+)
+
 prepare() {
   _submodule_update() {
     local _module
@@ -187,12 +129,15 @@ prepare() {
   }
 
   _prepare_flycast
-  #_prepare_vinniefalco_luabridge
-
-  _prepare
 
   cd "$_pkgsrc"
   apply-patch "$srcdir/breakpad-disable.patch"
+}
+
+pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
@@ -227,28 +172,4 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 }
 
-# update version
-_update_version() {
-  : ${_pkgver:=${pkgver%%.r*}}
-
-  if [[ "${_autoupdate::1}" != "t" ]]; then
-    return
-  fi
-
-  local _response=$(curl -Ssf "$url/releases.atom")
-  local _tag=$(
-    printf '%s' "$_response" \
-      | grep '/releases/tag/' \
-      | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
-      | grep -Ev '[a-z]{2}' | sort -V | tail -1
-  )
-  local _pkgver_new="${_tag#v}"
-
-  # update _pkgver
-  if [ "$_pkgver" != "${_pkgver_new:?}" ]; then
-    _pkgver="$_pkgver_new"
-  fi
-}
-
-# execute
-_main_package
+_source_flycast
