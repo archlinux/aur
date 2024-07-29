@@ -1,6 +1,6 @@
 pkgbase = ayn-platform-dkms-git
 	pkgdesc = Linux Driver for Ayn x86 handhelds
-	pkgver = v0.5.1.r0.g62032ca
+	pkgver = v0.5.2.r0.g7ec810e
 	pkgrel = 1
 	url = https://github.com/ShadowBlip/ayn-platform
 	arch = x86_64
