@@ -1,4 +1,5 @@
 # Maintainer: devome <evinedeng@hotmail.com>
+# Contributer: maz-1 <ohmygod19993@gmail.com>
 # Contributer: plokid <910576949@qq.com>
 
 _dotnet_ver=8.0
@@ -6,7 +7,7 @@ pkgname=imewlconverter
 pkgver=3.1.0
 pkgrel=1
 pkgdesc="一款开源免费的输入法词库转换程序"
-arch=('i686' 'x86_64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/studyzy/${pkgname}"
 license=('GPL-3.0-or-later')
 provides=("${pkgname}")
