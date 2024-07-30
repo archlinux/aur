@@ -1,10 +1,10 @@
 pkgbase = compiano-git
 	pkgdesc = a midi controllable software musical instrument
-	pkgver = r219.2097154
-	pkgrel = 1
+	pkgver = r223.ebdde61
+	pkgrel = 2
 	url = https://gitlab.gnome.org/hub/compiano.git
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = ninja
 	makedepends = meson

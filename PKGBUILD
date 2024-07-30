@@ -1,11 +1,11 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=compiano-git
-pkgver=r219.2097154
-pkgrel=1
+pkgver=r223.ebdde61
+pkgrel=2
 pkgdesc="a midi controllable software musical instrument"
 arch=('x86_64')
 url="https://gitlab.gnome.org/hub/compiano.git"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gtk4' 'libadwaita' 'alsa-lib' 'libgit2' 'libpanel')
 makedepends=('git' 'ninja' 'meson' 'cargo')
 provides=("${pkgname%-git}")
