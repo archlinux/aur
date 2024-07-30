@@ -1,10 +1,10 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=6.10
+_kernver=6.10.2
 _archver=arch1
-_pkgrel=2
+_pkgrel=1
 _pkgver="${_kernver}.${_archver}"
-_KERNNAME=6.10.0-arch1-2
+_KERNNAME=6.10.2-arch1-1
 pkgbase="${_pkgname}-versioned-bin"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('0fca2b46d5dfb1fdaf9c49f35536969336bd13982e3c5dcd9d7da30824d65846'
-            '34d3acfe31d4db2db55f102f40ca90c698907b39b2a031b45c094a00e9069e8d'
-            'd734fd380cea87fd420e4caec64e65e8900bbb35d79522709cd19a69910a2dc0')
+sha256sums=('ab87b590b406f225d9afe3c21336c45fdaeb19ff310313f028673e458ad1807d'
+            '20eb6ce602fe71e7dc635fc29e60efad600ae5c9908be4801852074b294282b2'
+            '7253ddf092fd27eee787986d8aaac6cad5260d7d2481e561b23a9346af49288f')
 
 package_linux-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.10.arch1-2-bin() {
+package_linux6.10.2.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -82,7 +82,7 @@ package_linux6.10.arch1-2-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux6.10.arch1-2-headers-bin() {
+package_linux6.10.2.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -91,7 +91,7 @@ package_linux6.10.arch1-2-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.10.arch1-2-docs-bin() {
+package_linux6.10.2.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
