@@ -5,7 +5,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-p11-kit
-pkgver=0.25.3
+pkgver=0.25.5
 pkgrel=1
 arch=('any')
 pkgdesc="Loads and enumerates PKCS#11 modules (Android ${_android_arch})"
@@ -17,7 +17,7 @@ depends=("android-${_android_arch}-libffi"
 makedepends=('android-meson')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/p11-glue/p11-kit/releases/download/${pkgver}/p11-kit-${pkgver}.tar.xz"{,.sig})
-md5sums=('2610cef2951d83d7037577eaae1acb54'
+md5sums=('e9c5675508fcd8be54aa4c8cb8e794fc'
          'SKIP')
 validpgpkeys=(
     'C0F67099B808FB063E2C81117BFB1108D92765AF'  # Stef Walter <stef@thewalter.net>
