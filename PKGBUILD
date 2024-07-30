@@ -3,7 +3,7 @@
 # Contributor: Isaac Freund <ifreund@ifreund.xyz>
 
 pkgname=zsh-abbr
-pkgver=5.8.0
+pkgver=5.8.2
 pkgrel=1
 pkgdesc=' The zsh manager for auto-expanding abbreviations, inspired by fish shell. '
 arch=('any')
@@ -13,7 +13,7 @@ depends=('zsh')
 makedepends=('git')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::https://github.com/olets/zsh-abbr/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('0b19125dcb17b7eede41847c58440f25671eadf15f3c222d4c2f135aa30a13f5cfaa5ca7c391f663f27db88aba1cede82efc9013a6f94aa1ceef57758c2603e4')
+b2sums=('fd112c2db373adcb00f3b18d4409cb3800fc17ce82bdc32a8cce8e62be3ca6c1852a24eab10cf56f838274120a49c904e1fe3e52e69580b450e633754b0ade43')
 
 package() {
 	cd "$pkgname-$pkgver"
