@@ -2,7 +2,7 @@
 # Contributor: Aliaksandr Mianzhynski <amenzhinsky@gmail.com>
 
 pkgname="protoc-gen-go-grpc"
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="gRPC bindings generator for Go language"
 arch=('any')
@@ -12,12 +12,11 @@ depends=('glibc' 'protoc-gen-go')
 makedepends=('go')
 _pkgsrc="grpc-go-cmd-${pkgname}-v${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/cmd/${pkgname}/v${pkgver}.tar.gz")
-sha256sums=('04c464ca834f411273468a51ebfd7f4b9fc22eebc6b24aa8080006ea4f1c5f00')
+sha256sums=('54cb438abe590c9366e08251f811810fa004b1193154fe6e6a7d7c782a37332e')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   mkdir -p "build"
-  go mod tidy
   go mod download
 }
 
