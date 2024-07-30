@@ -35,7 +35,6 @@ package() {
     cp -r "deps"/* "$pkgdir/usr/lib/$pkgname"
 
     # Install launch script to /usr/bin
-    # install -Dm755 "$startdir/launch.sh" "$pkgdir/usr/bin/${pkgname}"
     mkdir -p "$pkgdir/usr/bin"
     echo "#!/bin/bash" > "$pkgdir/usr/bin/$pkgname"
     echo "cd /usr/lib/$pkgname" >> "$pkgdir/usr/bin/$pkgname"
