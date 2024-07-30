@@ -1,6 +1,6 @@
 pkgbase = fritzbox-push-firmware-git
 	pkgdesc = Pushes firmware files to AVM Fritz!Box routers via their bootloader FTP interface. Tool taken from the "Freetz-NG" project.
-	pkgver = ng24040+728.r23700.20240725.a5472b75b
+	pkgver = ng24040+779.r23751.20240730.f752278b3
 	pkgrel = 1
 	url = https://github.com/Freetz-NG/freetz-ng/tools
 	arch = i486
@@ -29,11 +29,11 @@ pkgbase = fritzbox-push-firmware-git
 	depends = util-linux
 	optdepends = ncftp: For alternative (more elaborate??) FTP client over inetutils' 'ftp'.
 	optdepends = net-tools: To use 'ifconfig' instead of 'ip'.
-	provides = fritzbox-push-firmware=ng24040+728.r23700.20240725.a5472b75b
-	provides = tichksum-git=ng24040+728.r23700.20240725.a5472b75b
-	provides = tichksum=ng24040+728.r23700.20240725.a5472b75b
-	provides = uimg-git=ng24040+728.r23700.20240725.a5472b75b
-	provides = uimg=ng24040+728.r23700.20240725.a5472b75b
+	provides = fritzbox-push-firmware=ng24040+779.r23751.20240730.f752278b3
+	provides = tichksum-git=ng24040+779.r23751.20240730.f752278b3
+	provides = tichksum=ng24040+779.r23751.20240730.f752278b3
+	provides = uimg-git=ng24040+779.r23751.20240730.f752278b3
+	provides = uimg=ng24040+779.r23751.20240730.f752278b3
 	conflicts = fritzbox-push-firmware
 	conflicts = tichksum
 	conflicts = uimg
