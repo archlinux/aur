@@ -1,7 +1,7 @@
 pkgbase = virtme-ng
 	pkgdesc = A tool that allows to easily and quickly recompile and test a Linux kernel, starting from the source code.
 	pkgver = 1.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arighi/virtme-ng
 	arch = x86_64
 	license = GPL-2.0-only
