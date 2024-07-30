@@ -1,7 +1,7 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 
 pkgname=yaak-app
-pkgver=2024.6.6
+pkgver=2024.7.0
 pkgrel=1
 pkgdesc="Yaak is a cross-platform desktop app for interacting with REST, GraphQL, gRPC and OpenAPI."
 arch=('x86_64')
@@ -13,15 +13,13 @@ conflicts=(${pkgname})
 options=(!strip)
 
 source=("${pkgname}-${pkgver}.deb::https://releases.yaak.app/releases/${pkgver}/yaak_${pkgver}_amd64.deb")
-sha256sums=('e779497e68861aacffc05600fe5ebabf75c82dd4bd5c2953ba0238667cbd083f')
+sha256sums=('233888128fc2bfe1db638e371f812a9fccd273151b7fc2bd8bc97f5d1bc54059')
+
+prepare() {
+    bsdtar -xf data.tar.gz
+}
 
 package() {
-    bsdtar -O -xf ${pkgname}-${pkgver}.deb data.tar.gz | bsdtar -C "${pkgdir}" -xJf -
-    tar xf "${srcdir}"/data.tar.gz
-
-    rm -rf ${pkgdir}/usr/bin
-
-#    install -Dm755 "${srcdir}/usr/bin/node" "${pkgdir}/usr/local/bin/node"
-    install -Dm755 "${srcdir}/usr/bin/protoc" "${pkgdir}/usr/local/bin/protoc"
-    install -Dm755 "${srcdir}/usr/bin/${pkgname}" "${pkgdir}/usr/local/bin/${pkgname}"
+    install -d "$pkgdir/usr/"
+    cp -ar usr/{bin,lib,share} "${pkgdir}/usr"
 }
