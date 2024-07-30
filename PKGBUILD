@@ -1,14 +1,14 @@
 # Maintainer: Lev Levitsky <levlev@mail.ru>
 pkgbase="percolator-git"
 pkgname=('percolator-git' 'percolator-converters-git')
-pkgver=3.06.01
+pkgver=3.07
 pkgrel=1
 pkgdesc="Software for postprocessing of shotgun proteomics data + format converters"
 url="http://percolator.ms/"
 license=('Apache')
 depends=('xerces-c' 'sqlite' 'libtirpc-compat' 'boost')
 arch=('x86_64')
-makedepends=('git' 'xsd' 'cmake' 'zlib')
+makedepends=('git' 'xsd' 'libxsd' 'cmake' 'zlib')
 source=('source::git+https://github.com/percolator/percolator')
 md5sums=('SKIP')
 
