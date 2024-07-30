@@ -413,7 +413,7 @@ package_lib32-amdonly-gaming-mesa-git() {
   rm -v fakeinstall/usr/share/glvnd/egl_vendor.d/50_mesa.json
 
   # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast, swr
-  _install fakeinstall/$_libdir/dri/*.so
+  _install fakeinstall/$_libdir/dri/*_dri.so
 
   _install fakeinstall/$_libdir/d3d
   _install fakeinstall/$_libdir/lib{gbm,glapi}.so*
