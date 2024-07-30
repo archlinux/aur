@@ -1,0 +1,15 @@
+pkgbase = rtl8761b-firmware
+	pkgdesc = These are old firmware for rtl8761b, these are the only version that does not break the connection with xbox controller
+	pkgver = 162105963
+	pkgrel = 1
+	url = https://github.com/andrew-ld/rtl8761b-firmware
+	arch = any
+	license = custom
+	makedepends = git
+	depends = linux-firmware
+	source = git+https://github.com/andrew-ld/rtl8761b-firmware.git
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 673efaa2188a637ba065de22c9fd4c0b
+
+pkgname = rtl8761b-firmware
