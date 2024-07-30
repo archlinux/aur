@@ -2,7 +2,7 @@
 # Maintainer: Marco Steiger <marco (at) steiger (dot) online>
 
 pkgname='routeros-upgrader-bin'
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Mass-Upgrade Mikrotik RouterOS devices synchronized'
 url='https://github.com/Marco98/routeros-upgrader'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('routeros-upgrader')
 conflicts=('routeros-upgrader')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Marco98/routeros-upgrader/releases/download/v0.4.0/routeros-upgrader_Linux_arm64.tar.gz")
-sha256sums_aarch64=('4d7ff1f83d5955c93a197a0f6796ead156b61f5fa11c5a46d262b2179378d12e')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Marco98/routeros-upgrader/releases/download/v0.5.0/routeros-upgrader_Linux_arm64.tar.gz")
+sha256sums_aarch64=('fd14afb9a0e4399c9de8b39aef0c3aa3e60c3f72404d5666161da54fad2997c6')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Marco98/routeros-upgrader/releases/download/v0.4.0/routeros-upgrader_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('12112d305e9d9ea7b63bfbe1d30ede5d1cd196497b12104a46e44939243fddfa')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Marco98/routeros-upgrader/releases/download/v0.5.0/routeros-upgrader_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('44a12212fcb27b6594a2e497cee25bbcc5689e3fadcfd245b1ff0c0254e411a5')
 
 package() {
   install -Dm755 "./routeros-upgrader" "${pkgdir}/usr/bin/routeros-upgrader"
