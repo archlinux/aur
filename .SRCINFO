@@ -1,6 +1,6 @@
 pkgbase = python-pyreadr
 	pkgdesc = Reads/writes R RData and Rds files into/from pandas data frames
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/ofajardo/pyreadr
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python-pyreadr
 	depends = xz
 	depends = zlib
 	optdepends = python-xarray: for 3D array support
-	source = pyreadr-0.5.1.tar.gz::https://github.com/ofajardo/pyreadr/archive/refs/tags/v0.5.1.tar.gz
-	sha256sums = 1840f42613a788c41a59c9f6922e7bffd5be093c9f8d6dfc460ed9c55f2c0120
+	source = pyreadr-0.5.2.tar.gz::https://github.com/ofajardo/pyreadr/archive/refs/tags/v5.0.2.tar.gz
+	sha256sums = 5a2cde69ca03b61d1cfc41c3d2f13aa73e090fc17c35d190dd5bfa948fd1680e
 
 pkgname = python-pyreadr
