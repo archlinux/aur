@@ -1,0 +1,21 @@
+makepkg (pacman) 6.1.0
+Copyright (c) 2006-2024 Pacman Development Team <pacman-dev@lists.archlinux.org>.
+Copyright (C) 2002-2006 Judd Vinet <jvinet@zeroflux.org>.
+
+This is free software; see the source for copying conditions.
+There is NO WARRANTY, to the extent permitted by law.
+pkgbase = display-functions-claudemods
+	pkgdesc = function for displays on plasma 6
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/claudemods/Display-Functions/releases/download/new/display-functions.tar.gz
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-pyqt6
+	depends = qt6-base
+	depends = qt6-declarative
+	source = display-functions-claudemods-1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = display-functions-claudemods
