@@ -1,8 +1,10 @@
 # Maintainer: Kookies <kookies@tutamail.com>
+# Maintainer: Essem <smswessem@gmail.com>
+
 _pkgbase="openrevolution"
 pkgname="$_pkgbase-git"
-pkgver=v2.8.1.cca0f4f
-pkgrel=2
+pkgver=v2.8.1.r1.gd9293d8
+pkgrel=0
 pkgdesc="C/C++ BRSTM and other format tools - git version"
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/ic-scm/$_pkgbase"
@@ -22,7 +24,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$_pkgbase/"
-  echo $(git describe --tags).$(git rev-parse --short HEAD)
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
