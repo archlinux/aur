@@ -1,7 +1,7 @@
 # Maintainer: Asger Hautop Drewsen <asger@tyilo.com>
 
 pkgname=cosmocc-bin
-pkgver=3.5.4
+pkgver=3.6.2
 pkgrel=1
 pkgdesc="cosmopolitan toolchain: build-once run-anywhere c library"
 arch=('x86_64' 'aarch64')
