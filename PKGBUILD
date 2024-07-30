@@ -2,7 +2,7 @@
 pkgname=telly
 pkgver=1.1.0.9
 _real_pkgver=v1.1.0-Beta9
-pkgrel=1
+pkgrel=2
 pkgdesc="Telly TV - m3u proxy"
 arch=("x86_64")
 url="https://github.com/tellytv/telly"
