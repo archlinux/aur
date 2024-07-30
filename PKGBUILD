@@ -2,7 +2,7 @@
 
 pkgname=python-inotifyrecursive
 pkgver=0.3.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple recursive inotify watches for Python"
 arch=('any')
 url="https://github.com/letorbi/inotifyrecursive"
@@ -15,6 +15,7 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
+  'python-setuptools'
   'python-wheel'
 )
 source=("${pkgname}::git+${url}#tag=${pkgver}")
