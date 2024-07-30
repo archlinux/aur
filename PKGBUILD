@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lokern
-_pkgver=1.1-11
+_pkgver=1.1-12
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('eea43f3bfc0418d1d8112a7f81d78b81')
-b2sums=('bd8fc9055348cc6ae76e4fc550a88cac1d4d42104ac14717fbc45a8b8281f6a7b9afa30bb7eab8b5837bfbbcf336403b0e3ba73e8db9735a1eee3f94c444f179')
+md5sums=('1350231edf221865ba4be08a0c47d944')
+b2sums=('52d24cece1e787cca728f5ae8e8316313830a22625a2ddc4c8d284cdcafeabed21ef8fa814fa45d2fc752bd40c106671415f2a943db8fa48159cbe58dd22cf7b')
 
 build() {
   mkdir build
