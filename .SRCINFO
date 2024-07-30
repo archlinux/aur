@@ -1,5 +1,5 @@
 pkgbase = rtl8761b-firmware
-	pkgdesc = These are old firmware for rtl8761b, these are the only version that does not break the connection with xbox controller
+	pkgdesc = old firmware for rtl8761b, new firmware have stability problems when used with xbox controller
 	pkgver = 162105963
 	pkgrel = 1
 	url = https://github.com/andrew-ld/rtl8761b-firmware
