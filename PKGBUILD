@@ -21,7 +21,7 @@ prepare() {
     cd "${srcdir}"
 
     # When rebuilding this dir is not empty, so rmdir(1) fails
-    rm -rf "virtme-ng-${pkgver}/virtme_ng_init"
+    rm -rf "${pkgname}-${pkgver}/virtme_ng_init"
 
     cp -r "virtme-ng-init-${_virtme_ng_init_commit}" "${pkgname}-${pkgver}/virtme_ng_init"
 }
