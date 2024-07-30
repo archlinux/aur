@@ -1,25 +1,38 @@
-# Maintainer: Guillaume Hayot <ghayot@postblue.info>
-pkgname=parlatype
+# Maintainer:
+# Contributor: Guillaume Hayot <ghayot@postblue.info>
+
+_pkgname="parlatype"
+pkgname="$_pkgname"
 pkgver=4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME audio player for transcription"
-arch=('any')
 url="https://github.com/gkarsay/parlatype"
-license=('GPL3')
-depends=('gtk4' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'iso-codes' 'libadwaita')
-makedepends=('appstream' 'appstream-glib' 'meson' 'gettext' 'gobject-introspection' 'yelp-tools' 'desktop-file-utils' 'gtk-doc' 'cmake') # add pocketsphinx and/or deepspeech if needed
-optdepends=('parlatype-libreoffice-extension: LibreOffice macros')
+license=('GPL-3.0-or-later')
+arch=('x86_64')
+
+depends=(
+  'gtk4'
+  'libadwaita'
+)
+makedepends=(
+  'cmake'
+  'glib2-devel'
+  'itstool'
+  'meson'
+)
+optdepends=(
+  'parlatype-libreoffice-extension: LibreOffice macros'
+)
+
+_pkgsrc="$pkgname-$pkgver"
 source=("https://github.com/gkarsay/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('04489f132b1e87d066b585fff2e22bd0234be45a39020b659a4be1c2f026c0931fdcccb15e3d0383a53c56be5414f3102b7da878c8c7583e2cb2726f3b75c100')
+sha256sums=('1d1e0aaac795249ab95ca393a17a99d9f721d7a99905acadc794eb16f8f5b538')
 
 build() {
-	cd "$pkgname-$pkgver"
-	arch-meson build -Dgir=true -Dgtk-doc=true # add -Dpocketsphinx=true and/or -Ddeepspeech=true if needed
-	cd build
-	ninja
+  arch-meson "$_pkgsrc" build
+  meson compile -C build
 }
 
 package() {
-	cd "$pkgname-$pkgver"/build
-	DESTDIR="$pkgdir/" ninja install
+  meson install -C build --destdir "$pkgdir"
 }
