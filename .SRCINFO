@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-libva
 	pkgdesc = Video Acceleration (VA) API for Linux (Android aarch64)
-	pkgver = 2.21.0
-	pkgrel = 2
+	pkgver = 2.22.0
+	pkgrel = 1
 	url = https://01.org/linuxmedia/vaapi
 	arch = any
 	groups = android-libva
@@ -16,9 +16,7 @@ pkgbase = android-aarch64-libva
 	options = staticlibs
 	options = !emptydirs
 	backup = opt/android-libs/aarch64/etc/libva.conf
-	source = https://github.com/intel/libva/archive/refs/tags/2.21.0.tar.gz
-	source = 0001-Disable-versioned-API.patch
-	md5sums = 2038f5b79612c1767ecd9bc281cd4189
-	md5sums = 0efc367f03606ce6867354efbfcdfdaa
+	source = https://github.com/intel/libva/archive/refs/tags/2.22.0.tar.gz
+	md5sums = 8dba13313d724b5e930f06e65b7437e2
 
 pkgname = android-aarch64-libva
