@@ -38,11 +38,13 @@ build() {
 # }
 
 package() {
-  cd "${srcdir}/${_pkgsrc}/core"
+  cd "${srcdir}/${_pkgsrc}"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+
+  cd "core"
   make DESTDIR="${pkgdir}" install
   libtool --finish "${pkgdir}/usr/lib"
 
-  install -Dm644 "README"  "${pkgdir}/usr/share/doc/${_pkgname}/README"
   # install -Dm644 "NEWS"    "${pkgdir}/usr/share/doc/${_pkgname}/NEWS"
   install -Dm644 "AUTHORS" "${pkgdir}/usr/share/licenses/${_pkgname}/AUTHORS"
 
