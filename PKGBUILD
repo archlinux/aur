@@ -2,7 +2,7 @@
 pkgname=projectorrays
 _pkgnamePascal=ProjectorRays
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A decompiler for Adobe (formerly Macromedia) Shockwave and Director."
 arch=('x86_64')
 url="https://github.com/ProjectorRays/ProjectorRays"
@@ -27,5 +27,4 @@ build() {
 package() {
 	cd "$_pkgnamePascal-$pkgver"
     install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
