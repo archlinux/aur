@@ -4,7 +4,7 @@
 _srcname=virtme-ng
 pkgname=$_srcname-git
 pkgver=1.26.r1.g865b634
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool that allows to easily and quickly recompile and test a Linux kernel, starting from the source code."
 arch=('x86_64')
 url="https://github.com/arighi/virtme-ng"
@@ -29,6 +29,7 @@ prepare() {
 
 build() {
     cd "$srcdir/${_srcname}"
+    export RUSTUP_TOOLCHAIN=stable
     BUILD_VIRTME_NG_INIT=1 python setup.py build
 }
 
