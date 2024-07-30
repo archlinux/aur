@@ -1,0 +1,24 @@
+pkgbase = telly
+	pkgdesc = Telly TV - m3u proxy
+	pkgver = 1.1.0.9
+	pkgrel = 1
+	url = https://github.com/tellytv/telly
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	optdepends = ffmpeg
+	provides = telly
+	conflicts = telly
+	backup = etc/telly/telly.config.toml
+	source = telly::git+https://github.com/tellytv/telly#tag=v1.1.0-Beta9
+	source = telly.service
+	source = telly.sysusers
+	source = telly.tmpfiles
+	source = telly.config.toml
+	sha256sums = 20dc434988c98d7c1fb6c3fa8b3fb0d189c32111181e92daa2909678480a017c
+	sha256sums = 166c3f84df21c52b3e703e9ff61df43a85020bf37743332f288d7ac113ea94a4
+	sha256sums = 6f5a344ed8a2e83913c3070621c57de261f4e68b95f80c7734ff953403b4fd19
+	sha256sums = 6db030762aee37d0fdaef4cee1c67217fb36f1a3b8da6255c5a5d7338590758e
+	sha256sums = aafe8a87e8605f58ad9fc9570d3d47e6465a9a12459f1b2bef1bf0f3caeb3562
+
+pkgname = telly
