@@ -1,17 +1,17 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=fan-control
 _app_id="io.github.wiiznokes.$pkgname"
-pkgver=2024.7
+pkgver=2024.7.30
 pkgrel=1
 pkgdesc="Control your fans with different behaviors"
 arch=('x86_64')
 url="https://github.com/wiiznokes/fan-control"
 license=('MIT')
-depends=('gcc-libs' 'libxkbcommon' 'lm_sensors')
+depends=('gcc-libs' 'hicolor-icon-theme' 'libxkbcommon' 'lm_sensors')
 makedepends=('cargo' 'clang' 'git' 'just')
 source=("git+https://github.com/wiiznokes/fan-control.git#tag=v$pkgver"
         'git+https://github.com/wiiznokes/libsensors.git')
-sha256sums=('82174da0add72d5e514d3691eced5722000d2a7652c40fb6c06744087d04df93'
+sha256sums=('26ebbf7938b5b60ddf9e4064b0c170a2ac6e626d0fa2b26362b7a09a97921bd5'
             'SKIP')
 
 prepare() {
