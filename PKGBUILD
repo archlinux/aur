@@ -8,11 +8,11 @@
 
 ## Mozc compile option
 _bldtype='Release'
-_mozc_commit=8acc79f
+_mozc_commit=a9e4bea
 _zipcode_rel=202110
 
 # Ut Dictionary
-_utdicdate=20240612
+_utdicdate=20240730
 _dict=(alt-cannadic
        edict2
        jawiki
@@ -24,18 +24,18 @@ _dict=(alt-cannadic
 
 pkgbase=mozc-ut-full
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.30.5490.102.20240612
+pkgver=2.30.5520.102.20240730
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
-makedepends=('bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'mesa' 'subversion' 'qt6-base' 'clang' 'fcitx5' 'emacs' 'ibus' 'ruby')
+makedepends=('bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'mesa' 'subversion' 'qt6-base' 'clang' 'fcitx5' 'emacs' 'ibus')
 source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
 #         2023-07-13: osdn.net is unstable due to Amazon
 #         "https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-${_zipcode_rel}.zip"
 #         "https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_zipcode_rel}.zip"
-        "https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut/x-ken-all-${_zipcode_rel}.zip"
-        "https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut/jigyosyo-${_zipcode_rel}.zip"
+        "https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut-full/x-ken-all-${_zipcode_rel}.zip"
+        "https://gitlab.com/BrLi/brli-aur/-/raw/fcitx5-mozc-ut-full/jigyosyo-${_zipcode_rel}.zip"
         git+https://github.com/abseil/abseil-cpp.git
         git+https://chromium.googlesource.com/breakpad/breakpad
         git+https://github.com/google/googletest.git
@@ -50,7 +50,7 @@ noextract=(jawiki-latest-all-titles-in-ns0-${_utdicdate}.gz)
 for dict in "${_dict[@]}"; do
   source+=("mozcdic-ut-${dict}-${_utdicdate}.txt.tar.bz2"::"https://github.com/utuhiro78/mozcdic-ut-${dict}/raw/main/mozcdic-ut-${dict}.txt.tar.bz2")
 done
-sha512sums=('1df9e7fa5802f2cda2c085ba95fa30b5a63599aeb7702d1c035e1974237a5570be28360fabc1ae8773dfdccdde47bd4b71a6232cd8d7d5f7876a641899f44974'
+sha512sums=('1f80fa232553ce2cbe3368eb473926084408d0f6b799158c7a2545afe82c3e937b582e01574ee32c769ba9620d6a119aba892fcd75376a92a5ca3d2e875398f3'
             'dec6479b42ddc1355cd882d17824cd874d8f103ad7767bac3f490f04551059d65b2806fa9e3f39a50ced2ecfdd37b75c9ed4536d9ad3bcef9e8c5ae1ec10e302'
             '606f45d48a9dad0e80a566cab0001910de3c6b2f634ec52c6ef6f44745b55ae8e181b3e3cdf90525a08be1f180eb35900672c90c6ab4f43679a178e863378bbc'
             'SKIP'
@@ -61,15 +61,15 @@ sha512sums=('1df9e7fa5802f2cda2c085ba95fa30b5a63599aeb7702d1c035e1974237a5570be2
             'SKIP'
             'SKIP'
             'SKIP'
-            '59fee8d8aae504ea1a93e843f494649b606191d87f1e0a361c3dbb722af4de021aff53ddde037b6ab441d19fdcaaf56d5b59e9d35ffdcec44c8da3148a77cfa9'
-            '30019a9ce73456046f67edd6fe8f4661bd9a8e9ca201f3bdf22d2fa70dad9544bd595a8820fbed402a0709809d02cabbdea9dc79ee1f5bf30f8ef722ba4a2c17'
-            'baffc571568dca8d808cd84d0672bf918cefd958837236729fc955a80c47feb59fa1801e7f0e65aa2c058edb42a4e96bf2f291d18b0b9d0b36094d1ac09629b1'
-            '7600c47f1c6a1434a994ddeda435f0b48c0aae3dd752a717ecb0a1f04743750520a388c89164bbcdce11900f67c59684cccf34ed6cdb93fc3163b0c428e875d2'
-            '3d11bc71a870181e9554525ca81fe72bc6018ad5599938b1b3f8ffe59eb2833be72031cdd5d3d2652e43294950ed0b5ba4cd60eefe2a98c03d089593d772fef3'
-            '5f5f692be10aa9841316fb61aa57453a3e36141c3f71238cca8bda69196ddad9b0acad61912300e0a799c555145a7fadea164ff7c391476d3eb606e62e0f4951'
-            '0eda41936ed894070a5bc0662183b436ed164c6e5f225e3d86e564188bdd843c563d5b7470bb8667f128ed3bca20db0825e1f65751bd20d397c0a7f34c780adc'
-            '6b373b27f37d222788093ad2502893a9b88ad801b8ba191ff7ae761884dc3f6a214ca2af991d5f8aa29793ca37b29ecb9036ede0d4fb034fdd2d035eb5b2c806'
-            '29f788210f86a565df906a08f0a231c3acd625f32b8f004543d3e9470e8e014e81d0fd552044944506f68fc16f8868df6f96dfca49dd5eb0e6d734c1b2927787')
+            '1f4f08db7c42d7d91907e69a0d62c69872dfbc7daadbddc9fb8348b5c56fa3071c4ea63e9d51bfe29117d118e6d3eaeee19f3af1ef19044c0e691f82a7f4ba8c'
+            'd69c479c34f70839eb9a78f920b6a6aee1d39aff6ab181bfaa2fd47554697d6e4d92abb9d5bfc45247f0749a128557d1b8a12fa764865a5845d2c59e0f74660e'
+            'd4fb61a5ff34164c3a0d75aef37b7e422388795a017677585c1a1e7df0924345be87caf4e6f58ee2085159122a5524275fb915b875932d2ed53a016bc6137274'
+            'a1f6ced69d02610b47b74e519f3611c2393416616d24d96a022935abf671def11a1f647acccea17f011c557ec49e28df4c50e11018c6d24d7028930b60c01c82'
+            'c661b168a89fa9f726f62076ed1a51c72ebf8303688f3cff77247bfd34a0fee53a1b5bc35ee2ba05994b53e1f0397cb4a816e5a57eccbd210b0c1f8cc4fa50ab'
+            '6c6c0e7ba5c9c892020af6cd4324cb64d8c7124306e96b6392d8f1bae5ba63f1cfdd147ce6b6918af8bd722effdd37859814e0fad128381cb4046fb1e7628fb2'
+            '315adae72e83d69e4f18d9577a687be68e07a5580221edd6fe487d0623c6be4340d8ba5679501fdf60c87d0d38afcc7ae33a2a43cecf200a60b3910f52c6317c'
+            '0a238ee7f64af1ef1428aa1c1164aa13663e0e5d657478326606ec203c99932a8548e1fc4468a40124bc46ad2fdb4bd6aaedde6a7cf108a4c549503476a930d4'
+            'f8ccc231e0f247d14c5e523db4b90ca2c5fc216a96a767c1ad0c99b66636cbd020884ff1884af59f19665021f95df9da44ced2a9ea3de9865f1fad79c7194c12')
 
 pkgver() {
   cd "${srcdir}/mozc" || exit
@@ -116,14 +116,14 @@ prepare() {
     cat "$srcdir/mozcdic-ut-${dict}.txt" >> mozcdic-ut.txt
   done
 
-  msg '2. Patch ruby scripts to avoid downloading'
-  sed '/^`wget*/d' -i count_word_hits.rb
-  sed "s,https://raw.githubusercontent.com/google/mozc/master,$srcdir/mozc," -i remove_duplicate_ut_entries.rb
+  msg '2. Patch python scripts to avoid downloading'
+  sed '/^subprocess*/d' -i count_word_hits.py
+  sed "s,https://raw.githubusercontent.com/google/mozc/master,file://$srcdir/mozc," -i remove_duplicate_ut_entries.py
   mv -v "$srcdir/jawiki-latest-all-titles-in-ns0-${_utdicdate}.gz" ./jawiki-latest-all-titles-in-ns0.gz
-  msg '3. Run the ruby scripts as in original make.sh, it may take some time...'
-  ruby remove_duplicate_ut_entries.rb mozcdic-ut.txt
-  ruby count_word_hits.rb
-  ruby apply_word_hits.rb mozcdic-ut.txt
+  msg '3. Run the python scripts as in original make.sh, it may take some time...'
+  python remove_duplicate_ut_entries.py mozcdic-ut.txt
+  python count_word_hits.py
+  python apply_word_hits.py mozcdic-ut.txt
   msg '4. Finally add UT dictionary to mozc source'
   cat mozcdic-ut.txt >> "$srcdir/mozc/src/data/dictionary_oss/dictionary00.txt"
 }
