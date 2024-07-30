@@ -1,6 +1,6 @@
 pkgbase = obs-studio-liberty
 	pkgdesc = Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc.
-	pkgver = 30.2.1
+	pkgver = 30.2.2
 	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
@@ -83,7 +83,7 @@ pkgbase = obs-studio-liberty
 	optdepends = v4l2loopback-dkms: V4L2 virtual camera output
 	optdepends = libdatachannel>=0.21: WHIP Support
 	optdepends = libajantv2>=17.0.1: AJA support
-	provides = obs-studio=30.2.1
+	provides = obs-studio=30.2.2
 	provides = obs-vst
 	provides = obs-websocket
 	provides = obs-browser
@@ -95,7 +95,7 @@ pkgbase = obs-studio-liberty
 	conflicts = obs-studio-git
 	conflicts = obs-studio-amf
 	conflicts = obs-studio-browser
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=30.2.1
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=30.2.2
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
 	source = ftl-sdk::git+https://github.com/microsoft/ftl-sdk.git
