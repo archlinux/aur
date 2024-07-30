@@ -1,5 +1,5 @@
-/proto
 /comet-gog
-/pkg
-/src
+/proto
+pkg/
+src/
 *.zst

@@ -4,16 +4,17 @@ _pkgbase='comet-gog'
 _depname='proto'
 pkgname="${_pkgbase}-git"
 pkgdesc='Open Source implementation of GOG Galaxy Communication Service for SDK bundled with GOG games'
-pkgver=r76.e313c8a
+pkgver=r128.8793ec4
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/imLinguin/comet'
-license=('GPL-3.0')
+license=('GPL-3.0-only')
 makedepends=('git' 'cargo')
+depends=('gcc-libs' 'glibc')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source=("${_pkgbase}::git+${url}.git" "${_depname}::git+https://github.com/Yepoleb/gog_protocols.git")
-sha256sums=('SKIP' 'SKIP')
+sha512sums=('SKIP' 'SKIP')
 
 OPTIONS+=(!lto)
 
