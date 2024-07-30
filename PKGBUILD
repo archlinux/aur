@@ -1,5 +1,5 @@
 # Maintainer: drpebcak <tayworm@gmail.com>
-pkgname='clio'
+pkgname='clio-bin'
 pkgver="0.1.3"
 pkgrel=1
 pkgdesc="Your friendly and safe CLI Copilot"
