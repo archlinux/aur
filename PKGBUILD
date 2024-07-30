@@ -8,7 +8,7 @@
 # Note: source array can be synced with an Electron release after updating $pkgver with:
 # bash -c 'source PKGBUILD; _update_sources'
 
-pkgver=31.3.0
+pkgver=31.3.1
 _gcc_patches=126
 pkgrel=1
 _major_ver=${pkgver%%.*}
@@ -76,7 +76,7 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         use-system-libraries-in-node.patch
         makepkg-source-roller.py
         # BEGIN managed sources
-        chromium-mirror::git+https://github.com/chromium/chromium.git#tag=126.0.6478.183
+        chromium-mirror::git+https://github.com/chromium/chromium.git#tag=126.0.6478.185
         chromium-mirror_third_party_nan::git+https://github.com/nodejs/nan.git#commit=e14bdcd1f72d62bca1d541b66da43130384ec213
         chromium-mirror_third_party_electron_node::git+https://github.com/nodejs/node.git#tag=v20.15.1
         chromium-mirror_third_party_engflow-reclient-configs::git+https://github.com/EngFlow/reclient-configs.git#commit=955335c30a752e9ef7bff375baab5e0819b6c00d
@@ -238,7 +238,7 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         chromium-mirror_third_party_vulkan-deps_vulkan-validation-layers_src::git+https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-ValidationLayers.git#commit=944660e342cfafb6c318d11731751d9a291434d4
         # END managed sources
         )
-sha256sums=('93c45e9baa36c91a8241bdd28774aa92898daa8f5c47395af556c0e00811539d'
+sha256sums=('58c1a2a7b4048eab62ae103616e8f3295765114396dc094934d15341f0383eb6'
             'daf0df74d2601c35fd66a746942d9ca3fc521ede92312f85af51d94c399fd6e0'
             '8f81059d79040ec598b5fb077808ec69d26d6c9cbebf9c4f4ea48b388a2596c5'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
@@ -250,7 +250,7 @@ sha256sums=('93c45e9baa36c91a8241bdd28774aa92898daa8f5c47395af556c0e00811539d'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
             'ff588a8a4fd2f79eb8a4f11cf1aa151298ffb895be566c57cc355d47f161f53f'
             '2c8cd28cee0e1df1862e801794f210d2b7cac652f943cf94f43c2abe26f2a2f4'
-            '721b15dd6165e83cf7b480f103d7409da3a37686839441ea9030caed4cfa6862'
+            '3ec61a22ba89f10f3dddc4b72a108c68a2ea184e92c62ad62e00266861a073ff'
             '0b7a546ee6913c49519c10c293ac530ff381641a8a465fa2e184d6dbe0fb784d'
             'f2ab97969837ccec24dda35ade541dd22714707bf7832bbc2c766a511bda6ec3'
             '3522166c3ca75316a172b7cc4fe12bba9367e30fed16df8193ede2e236dca8c5'
