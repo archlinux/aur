@@ -7,9 +7,9 @@ _pkgname=collabora-online-server-nodocker
 
 # taking version of coolwsd:
 pkgver=24.04.5.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
-url="https://www.collaboraoffice.com/code/"
+url="https://www.collaboraonline.com/code/"
 license=('MPL-2.0')
 makedepends=(curl fontconfig libcap)
 # ↑ excluding base (bzip2 coreutils gawk grep gzip sed systemd tar util-linux xz)
@@ -22,7 +22,7 @@ optdepends=(
 depends=()
 
 source=(
-  'https://www.collaboraoffice.com/repos/CollaboraOnline/CODE/Packages'
+  'https://www.collaboraonline.com/repos/CollaboraOnline/CODE/Packages'
   install
   mkcert_example.sh
   sysusers
