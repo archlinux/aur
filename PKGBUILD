@@ -1,7 +1,7 @@
 # Maintainer: cyber-luna <cyber-luna@tuta.io>
 
 pkgname='lunas'
-pkgver=1.6.5
+pkgver=1.6.6
 pkgrel=1
 pkgdesc="A syncing cli tool that can handle more than two directories locally and remotely"
 arch=('any')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 build(){
 	cd "$srcdir/$pkgname"
-	make 
+	make
 }
 
 package(){
