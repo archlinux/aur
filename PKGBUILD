@@ -45,6 +45,7 @@ build() {
         -Dbash-completions=true      \
         -Dbranding='"Arch Linux"'    \
         -Dos=Linux                   \
+	-Drootprefix=/usr            \
         -Dpam=true                   \
         -Dpkg_prefix=''              \
         -Dpkgconfig=true             \
