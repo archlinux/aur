@@ -2,7 +2,7 @@
 _pkgname=nufetch
 pkgname=${_pkgname}-git
 pkgver=r9.df14258
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple nu+figlet based fetch'
 url='https://codeberg.org/KSPAtlas/nufetch'
 source=("git+https://codeberg.org/KSPAtlas/nufetch")
