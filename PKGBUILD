@@ -2,7 +2,7 @@
 pkgname=alterware-launcher-git
 _pkgname=alterware-launcher
 pkgver=0.7.0.r12.g2a7ceee
-pkgrel=3
+pkgrel=1
 provides=('alterware-launcher')
 pkgdesc='AlterWare.dev updater & launcher, written in Rust.'
 url='https://github.com/mxve/alterware-launcher'
