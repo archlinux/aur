@@ -1,0 +1,21 @@
+pkgbase = cmake-sylixos-plugins
+	pkgdesc = 翼辉信息sylixos系统的cmake编译链配置.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = custom
+	depends = cmake
+	options = !strip
+	options = !debug
+	source = SylixOS.cmake
+	source = SylixOS-GNU.cmake
+	source = SylixOS-GNU-C.cmake
+	source = SylixOS-GNU-CXX.cmake
+	source = SylixOS-GNU-Fortran.cmake
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cmake-sylixos-plugins
