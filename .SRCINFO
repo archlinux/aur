@@ -1,0 +1,18 @@
+pkgbase = wofi-kaomoji
+	pkgdesc = Kaomoji picker for Wayland that uses wofi
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/yorunoken/wofi-kaomoji
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = jq
+	makedepends = curl
+	depends = wofi
+	depends = wtype
+	depends = wl-clipboard
+	provides = wofi-kaomoji
+	source = git+https://github.com/yorunoken/wofi-kaomoji#commit=d8633fc40bc2668a29d129873b68f8dcf26461f9
+	sha256sums = SKIP
+
+pkgname = wofi-kaomoji
