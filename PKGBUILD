@@ -2,16 +2,16 @@
 # Contributor: Elijah Gregg <lovetocode999@ctrl-c.club>
 # Contributor: Alexandros Theodotou <alex@zrythm.org>
 pkgname=zrythm-git
-pkgver=4.13.31.r9.g472e168fc
+pkgver=v1.0.0.rc.1.r59.g1792598e0
 pkgrel=1
 epoch=2
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
 url="https://www.zrythm.org"
-license=('AGPL3')
+license=('custom:Zrythm License')
 depends=('lilv' 'libx11' 'libsndfile' 'libsamplerate' 'alsa-lib' 'fftw'
          'suil' 'breeze-icons' 'lv2' 'rubberband' 'python-sphinx-furo' 'python-sphinx-copybutton' 'python-sphinxcontrib-svg2pdfconverter'
-         'xxhash' 'vamp-plugin-sdk' 'carla-git' 'gtk4' 'guile' 'libadwaita' 'gtksourceview5' 'pcre' 'libpulse' 'curl' 'libaudec' 'json-glib' 'libcyaml' 'reproc' 'libpanel' 'boost' 'lsp-dsp-lib' 'zstd' 'zix-git')
+         'xxhash' 'vamp-plugin-sdk' 'carla-git' 'gtk4' 'guile' 'libadwaita' 'gtksourceview5' 'pcre' 'libpulse' 'curl' 'libaudec' 'json-glib' 'libcyaml' 'reproc' 'libpanel' 'boost' 'lsp-dsp-lib' 'zstd' 'zix' 'yyjson' 'magic_enum')
 makedepends=('python' 'gettext' 'sed' 'python-sphinx-intl'
              'meson' 'ninja' 'help2man' 'python-sphinx'
              'ladspa' 'lv2' 'cmake' 'sassc')
