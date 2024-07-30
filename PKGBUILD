@@ -2,26 +2,27 @@
 
 pkgbase=ufprog-git
 pkgname=ufprog-git
-pkgver=r154.12a5948
-pkgrel=1
+pkgver=1.0.2023.09.18.r77.gb3f0d64
+pkgrel=2
 groups=()
 pkgdesc="Universal Flash Programmer - SPI-NOR/NAND ECC/SPI-NAND/WCH CH341 CH347/FTDI MPSSE FT232H FT2232H FT4232H FT4222H/SPI (Single/Dual/Quad/QPI using SPI-MEM)"
-arch=($CARCH)
+arch=(x86_64
+  aarch64
+  riscv64)
 url="https://github.com/hackpascal/ufprog"
 license=('GPL-2.0-only AND LGPL-2.0-only')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=(glibc
-    hidapi
     libusb
+    hidapi
     json-c)
 makedepends=(git
     cmake
     ninja)
 optdepends=()
 source=(
-#     "${pkgname}::git+${url}.git"
-    "${pkgname}::git+https://github.com/taotieren/ufprog.git"
+    "${pkgname}::git+${url}.git"
 )
 sha256sums=('SKIP')
 
@@ -36,8 +37,6 @@ pkgver() {
 prepare()
 {
     git -C "${srcdir}/${pkgname}" clean -dfx
-    cd "${srcdir}/${pkgname}"
-    git switch fix-build
 }
 
 build() {
