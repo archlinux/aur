@@ -4,7 +4,8 @@ if [[ -o xtrace ]]; then
 fi
 
 # this flag doesn't work with the dry-run switch
-if [[ "$*" == *"--allow-unreleased"* ]]; then
+if [[ "$*" == *"--allow-unreleased"* || "$*" == *"--install"* ]]; then
   HELM_DIFF_USE_UPGRADE_DRY_RUN=false
+  HELM_DIFF_USE_INSECURE_SERVER_SIDE_DRY_RUN=false
 fi
-HELM_DIFF_USE_UPGRADE_DRY_RUN="${HELM_DIFF_USE_UPGRADE_DRY_RUN:-true}" exec helmrelease "diff" "$@"
+HELM_DIFF_USE_UPGRADE_DRY_RUN="${HELM_DIFF_USE_UPGRADE_DRY_RUN:-true}" HELM_DIFF_USE_INSECURE_SERVER_SIDE_DRY_RUN="${HELM_DIFF_USE_INSECURE_SERVER_SIDE_DRY_RUN:-true}" exec helmrelease "diff" "$@"
