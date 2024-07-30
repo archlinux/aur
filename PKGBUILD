@@ -1,17 +1,16 @@
 # Maintainer: gonsolo <gonsolo@gmail.com>
 pkgname=opensbi
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="RISC-V Open Source Supervisor Binary Interface"
 arch=(any)
 url="https://github.com/riscv-software-src/opensbi"
 license=('BSD')
 depends=('filesystem')
-makedepends=('filesystem')
 provides=('opensbi')
 options=('!strip')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver-rv-bin.tar.xz")
-md5sums=('109274c69f8c50df91efddd9a27372e0')
+md5sums=('ebd2b0e889921861021da5d2bf3c9bf5')
 
 package() {
     cd "$pkgname-$pkgver-rv-bin"

@@ -1,0 +1,4 @@
+[opensbi]
+source = "git"
+git = "https://github.com/riscv-software-src/opensbi.git"
+prefix = "v"
