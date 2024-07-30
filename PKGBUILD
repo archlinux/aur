@@ -1,10 +1,10 @@
-# Maintainer: Nicolás Celedón-Hernández <coriollis.nch@gmail.com>
+# Maintainer: Nicolás Celedón-Hernández <coriollis.nch at gmail dot com>
 
 pkgname=python-markdown-include
 _name=${pkgname#python-}
 pkgver=0.8.1
 pkgrel=1
-pkgdesc="Provides syntax for Python-Markdown which allows for the inclusion of the contents of other Markdown documents"
+pkgdesc="Provides syntax for Python-Markdown for the inclusion of other Markdown documents"
 arch=(any)
 url="https://github.com/cmacmackin/markdown-include"
 license=('GPL-3.0-only')
