@@ -1,10 +1,10 @@
 pkgbase = mystiq
 	pkgdesc = FFmpeg GUI front-end based on Qt5.
-	pkgver = 23.05.15
-	pkgrel = 3
+	pkgver = 24.06.15
+	pkgrel = 1
 	url = https://github.com/biglinux/MystiQ
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = qt5-tools
 	depends = qt5-declarative
 	depends = qt5-multimedia
@@ -15,9 +15,9 @@ pkgbase = mystiq
 	depends = gcc-libs
 	depends = glibc
 	depends = hicolor-icon-theme
-	source = https://github.com/biglinux/MystiQ/archive/refs/tags/mystiq-23.05.15-2109.tar.gz
+	source = https://github.com/biglinux/MystiQ/archive/refs/tags/mystiq-24.06.15-0203-x86_64.tar.gz
 	source = mystiq-kservice.desktop
-	sha256sums = 3cdae6e93b35b7e8ee79dbb803aaba7c2b985395cd86548068cbfe57493fd8f6
+	sha256sums = 8d0429bd91cead3bf6c45692739a78c2397dc8bac53236f796604877b39a94fa
 	sha256sums = d6b87c7420f4d6f9ddf6fd1caff66b9d178983f5578078550c0fda2a24f1dd6d
 
 pkgname = mystiq
