@@ -1,13 +1,20 @@
 pkgbase = easyeda2kicad
-	pkgdesc = Convert EasyEDA designs to KiCad EDA
-	pkgver = 1.9.2
-	pkgrel = 2
-	url = https://github.com/wokwi/easyeda2kicad
+	pkgdesc = Convert any LCSC components (including EasyEDA) to KiCad library
+	pkgver = 0.8.0
+	pkgrel = 0
+	url = https://pypi.org/project/easyeda2kicad
 	arch = any
-	license = MIT
-	makedepends = npm
-	source = easyeda2kicad-1.9.2.tar.gz::https://github.com/wokwi/easyeda2kicad/archive/refs/tags/v1.9.2.tar.gz
-	sha256sums = 378fff1370e85b4cbd5956fc53907b7de90ae8f910d53ba13c98fecac416fb23
+	license = AGPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	depends = python-pydantic
+	provides = easyeda2kicad
+	conflicts = easyeda2kicad
+	source = easyeda2kicad-0.8.0.tar.gz::https://files.pythonhosted.org/packages/source/e/easyeda2kicad/easyeda2kicad-0.8.0.tar.gz
+	sha256sums = a781be6d1076f6e06886a4292373eb930c9921de4c709d6dd91bb6ea104f4a4b
 
 pkgname = easyeda2kicad
-

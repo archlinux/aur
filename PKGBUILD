@@ -1,21 +1,35 @@
 # Maintainer: Rafael Silva <perigoso@riseup.net>
+# Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=easyeda2kicad
-pkgver=1.9.2
-pkgrel=2
-pkgdesc="Convert EasyEDA designs to KiCad EDA"
+_name=${pkgname}
+pkgver=0.8.0
+pkgrel=0
+pkgdesc="Convert any LCSC components (including EasyEDA) to KiCad library"
+provides=(${pkgname})
+conflicts=(${pkgname})
 arch=('any')
-url="https://github.com/wokwi/easyeda2kicad"
-makedepends=('npm')
-license=('MIT')
-#noextract=("${pkgname}-${pkgver}.tar.gz")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wokwi/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('378fff1370e85b4cbd5956fc53907b7de90ae8f910d53ba13c98fecac416fb23')
+url="https://pypi.org/project/easyeda2kicad"
+_pydeps=(
+    requests
+    pydantic)
+depends=('python'
+    "${_pydeps[@]/#/python-}")
+makedepends=(
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel')
+license=('AGPL-3.0-or-later')
+source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('a781be6d1076f6e06886a4292373eb930c9921de4c709d6dd91bb6ea104f4a4b')
+
+build() {
+    cd "${srcdir}/${_name}-${pkgver}"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-	cd ${pkgname}-${pkgver}
-    npm install -g --prefix "${pkgdir}/usr" ${pkgname}
-	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	find "${pkgdir}/usr" -type d -exec chmod 755 {} +
-    chown -R root:root "${pkgdir}"
+    cd "${srcdir}/${_name}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
