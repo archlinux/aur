@@ -2,7 +2,7 @@
 
 pkgname=hexcurse-git
 pkgver=v1.60.0.r92.gefabe05
-pkgrel=1
+pkgrel=2
 pkgdesc="Versatile ncurses-based hex editor."
 arch=('x86_64')
 url="https://github.com/prso/hexcurse"
