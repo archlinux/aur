@@ -1,0 +1,13 @@
+pkgbase = python-youtube-transcript-api
+	pkgdesc = A Python API which allows you to get the transcripts/subtitles for a given YouTube video.
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/jdepoix/youtube-transcript-api
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-requests
+	source = youtube-transcript-api-0.6.2.tar.gz::https://github.com/jdepoix/youtube-transcript-api/archive/refs/tags/v0.6.2.tar.gz
+	sha256sums = f261ebab5cd8e859ab584508464eb384b27b7898bee8af76c9c64a489be99bcc
+
+pkgname = python-youtube-transcript-api
