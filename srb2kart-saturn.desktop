@@ -1,0 +1,19 @@
+[Desktop Entry]
+Categories=Game;ArcadeGame;
+Encoding=UTF-8
+Name=Sonic Robo Blast 2 Kart - Saturn
+Comment=A kart racing mod based on the 3D Sonic the Hedgehog fangame Sonic Robo Blast 2
+Keywords=kart;sonic;racer;multiplayer;doom;
+GenericName=srb2kart-saturn
+Type=Application
+Icon=srb2kart-saturn
+Exec=srb2kart-saturn
+Actions=OpenGL;Software;
+
+[Desktop Action OpenGL]
+Name=OpenGL renderer
+Exec=srb2kart-saturn -opengl
+
+[Desktop Action Software]
+Name=Software renderer
+Exec=srb2kart-saturn -software
