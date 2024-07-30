@@ -1,6 +1,6 @@
 # Maintainer: Adiee5 <adiee5@adiee5.ct8.pl>
 pkgname=progress-tracker
-pkgver=1.5.2
+pkgver=1.6
 pkgrel=1
 pkgdesc="Simple kanban-style task organiser made in Adwaita style"
 arch=("x86_64")
