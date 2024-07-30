@@ -1,6 +1,6 @@
 pkgbase = katago-opencl
 	pkgdesc = Baduk engine with no human-provided knowledge.
-	pkgver = 1.14.1
+	pkgver = 1.15.1
 	pkgrel = 1
 	url = https://github.com/lightvector/KataGo
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = katago-opencl
 	depends = ocl-icd
 	depends = boost-libs
 	provides = katago
-	source = katago-opencl::git+https://github.com/lightvector/KataGo#tag=v1.14.1
+	source = katago-opencl::git+https://github.com/lightvector/KataGo#tag=v1.15.1
 	source = kata1-b18c384nbt-s9644029184-d4221915864.bin.gz::https://media.katagotraining.org/uploaded/networks/models/kata1/kata1-b18c384nbt-s9644029184-d4221915864.bin.gz
 	source = kata1-b18c384nbt-s9613886976-d4214024973.bin.gz::https://media.katagotraining.org/uploaded/networks/models/kata1/kata1-b18c384nbt-s9613886976-d4214024973.bin.gz
 	sha512sums = SKIP
