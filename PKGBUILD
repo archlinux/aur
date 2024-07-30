@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=iron
 pkgname="srware-${_pkgname}-bin"
-pkgver=122.0.6200.0
+pkgver=126.6400.0
 pkgrel=1
 pkgdesc="SRWare Iron Browser is a light-weight browser,based on Chromium"
 arch=(
@@ -25,8 +25,8 @@ source=(
     "LICENSE-${pkgver}.txt::${url}/license.txt"
 )
 sha256sums=('a29953afc386e2a9a95906cfa0de4bf58a332260d7199a5f99d3e15db9381022')
-sha256sums_aarch64=('af9b22623684d35665327a3a8f3123f91cf1a80bb91a7c9edeb370a63b0b6b00')
-sha256sums_x86_64=('5f1e22cad0bcf89cd394ee83b27a6581c2ce4c6a29f8cb5c8f3ffcf98908e03f')
+sha256sums_aarch64=('11bae849374f97e7617f0cc97ad6ba77fb2b17a8428b6c24f0f089555a8a7f08')
+sha256sums_x86_64=('5038b6ee5121a18e7e835421b233e92e6e1f493bd1917a8f5d0f2a35922ba838')
 build() {
     bsdtar -xf "${srcdir}/data."*
     sed "s|/usr/share/${_pkgname}/chrome-wrapper|${pkgname%-bin}|g;s|${_pkgname}_product_logo|${pkgname%-bin}|g" \
