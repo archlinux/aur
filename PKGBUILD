@@ -3,14 +3,14 @@
 # Contributor: Patrick Griffis <tingping@tingping.se>
 
 pkgname=celluloid-git
-pkgver=0.26.r2.g00c8032
+pkgver=0.27.r26.gb027fa8
 pkgrel=1
 pkgdesc="Simple GTK+ frontend for mpv"
 arch=('i686' 'x86_64')
 url="https://celluloid-player.github.io/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gtk4' 'libadwaita' 'mpv')
-makedepends=('git' 'meson')
+makedepends=('appstream-glib' 'git' 'glib2-devel' 'meson')
 optdepends=('youtube-dl: for video-sharing websites playback')
 conflicts=('celluloid')
 provides=('celluloid')
@@ -23,13 +23,14 @@ pkgver() {
 }
 
 build() {
-    cd "$pkgname"
-    rm -rf _build
-    /usr/bin/meson _build --buildtype=release --prefix=/usr
-    ninja -C _build
+  arch-meson "$pkgname" build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-    cd "$pkgname"
-    env DESTDIR="$pkgdir" ninja -C _build install
+    meson install -C build --destdir "$pkgdir"
 }
