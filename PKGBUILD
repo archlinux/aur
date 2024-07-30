@@ -2,15 +2,18 @@
 
 # Maintainer: William Horvath <william at horvath dot blog>
 
+# Credit to Torge Matthies (openglfreak@googlemail.com) for the original single-make implementation in wine-tkg-git 
+# https://github.com/Frogging-Family/wine-tkg-git/commit/ee366e08bf2a6608813ab77b88f8c8ec742f1ca7
+
 #### Setup, don't touch :^)
 _where="${startdir:-$(pwd)}"
 
 _generic_release=false
 
 # hack taken from wine-tkg PKGBUILD, real pkgrel is the eval one
-pkgver=9.13
+pkgver=9.14
 pkgrel=1
-eval pkgrel=3
+eval pkgrel=1
 
 ################################################################################################################################
 ################################################################################################################################
@@ -21,7 +24,7 @@ eval pkgrel=3
 _disabled_staging="" ## e.g. "-W Compiler_Warnings -W user32-. . ."
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="07-19-2024-6d6451fd-2c482721"
+_patchbase_tag="07-30-2024-5c395ff1-a59a9867"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the custompatches folder
@@ -31,8 +34,8 @@ _custompatches=false
 
 ## uses wine/staging master if empty, uses given commit or tag if set
 ## only applies if _custompatches is true, otherwise overwritten by upstream commits from patchbase repo
-_desired_wine_commit=6d6451fd6ce25ccce35cfcfc5b829940144a3f1a
-_desired_staging_commit=2c482721e3af9178693445186ead017fd194b744
+_desired_wine_commit=5c395ff13850fbf2724ff1d0ebd3d53f192680bb
+_desired_staging_commit=a59a98678f9c5aa7491d20494394591ec480f217
 
 _strip_package=true
 _install_static=true ## .a libs which may be required for external programs such as winestreamproxy
@@ -78,6 +81,7 @@ source=(
   "winestart"
   "30-win32-aliases.conf"
   "wine-binfmt.conf"
+  "Makefile.single"
   "buildiswow64"
   "git+https://gitlab.winehq.org/wine/wine.git#commit=${_desired_wine_commit:-master}"
   "git+https://github.com/wine-staging/wine-staging.git#commit=${_desired_staging_commit:-master}"
@@ -87,6 +91,7 @@ sha512sums=(
   'dc115ccc8d64afc213d2860a2f3516c31aa2891cd1005498123d86e7e44e0fcf876fbc68c89b201ce5291a12127cb7ff478e9374dbd2512b5d094802780be160'
   '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
   'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
+  '59920a54e9bd8d1f73c15675f7df29829680b59f4d1c4fc74fe710e4b596fd6a96f3b43994eb5da0fd1e50299b0ada933c6f3796e1d0698febb7870995f7f266'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -200,24 +205,24 @@ _set_vars() {
 
   export PATH="/opt/llvm-mingw/bin":"${PATH}"
 
-  _GCC_LTO_FLAGS="-fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto -Wl,-flto" #requires lto-fixup.patch
-  # _CLANG_LTO_FLAGS="-flto=full -Wl,--flto=full"
-  # _GRAPHITE_FLAGS="-floop-nest-optimize -fgraphite-identity -floop-strip-mine"
-  # _OPTIMIZE_HARDER_FLAGS="-fipa-pta -fgcse-sm -fgcse-las -fira-loop-pressure" # -fsched-pressure -fsched-spec-load
+  #_GCC_LTO_FLAGS="-fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto -Wl,-flto" #requires lto-fixup.patch
+  _CLANG_LTO_FLAGS="-flto=full -Wl,--flto=full"
+  #_GRAPHITE_FLAGS="-floop-nest-optimize -fgraphite-identity -floop-strip-mine"
+  #_OPTIMIZE_HARDER_FLAGS="-fipa-pta -fgcse-sm -fgcse-las -fira-loop-pressure" # -fsched-pressure -fsched-spec-load
 
-  _common_cflags="${_CPU_TARGET} -O3 -pipe -fno-strict-aliasing -fomit-frame-pointer -fwrapv -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=return-mismatch -Wno-error=int-conversion -w"
-  _native_common_cflags="${_GCC_LTO_FLAGS}" # only for the non-mingw side
+  _common_cflags="${_CPU_TARGET} -O3 -pipe -fomit-frame-pointer -fno-semantic-interposition -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=return-mismatch -Wno-error=int-conversion -w"
+  #_native_common_cflags="${_GCC_LTO_FLAGS} ${_GRAPHITE_FLAGS} ${_OPTIMIZE_HARDER_FLAGS}" # only for the non-mingw side
+  _native_common_cflags="${_CLANG_LTO_FLAGS}" # only for the non-mingw side
 
   export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
-
   _GCC_FLAGS="${_common_cflags} ${_native_common_cflags} ${CPPFLAGS}"
   _LD_FLAGS="${_GCC_FLAGS} -Wl,-O2,--sort-common,--as-needed"
 
   _CROSS_FLAGS="${_common_cflags} ${CPPFLAGS} -L/opt/llvm-mingw/lib -I/opt/llvm-mingw/include -I/opt/llvm-mingw/lib/clang/${__llvm_ver}/include -I/opt/llvm-mingw/generic-w64-mingw32/include -L/opt/llvm-mingw/x86_64-w64-mingw32/lib -L/opt/llvm-mingw/i686-w64-mingw32/lib -L/opt/llvm-mingw/lib/clang/${__llvm_ver}/lib/windows"
   _CROSS_LD_FLAGS="${_CROSS_FLAGS} -Wl,-O2,--sort-common,--as-needed,--file-alignment=4096"
 
-  export CC="ccache gcc"
-  export CXX="ccache g++"
+  export CC="ccache /usr/bin/clang"
+  export CXX="ccache /usr/bin/clang++"
 
   export x86_64_CC="ccache x86_64-w64-mingw32-clang"
   export x86_64_CXX="ccache x86_64-w64-mingw32-clang++"
@@ -232,6 +237,25 @@ _set_vars() {
 
   export LDFLAGS="${_LD_FLAGS}"
   export CROSSLDFLAGS="${_CROSS_LD_FLAGS}"
+}
+
+_set_vars64() {
+  export PKG_CONFIG_LIBDIR=/opt/llvm-mingw/x86_64-w64-mingw32/lib/pkgconfig:/usr/lib/pkgconfig
+  export PKG_CONFIG_PATH=$PKG_CONFIG_LIBDIR:$PKG_CONFIG_PATH_CUSTOM
+
+  export CROSSCC="ccache x86_64-w64-mingw32-clang"
+}
+
+_set_vars32() {
+  export PKG_CONFIG_LIBDIR=/opt/llvm-mingw/i686-w64-mingw32/lib/pkgconfig:/usr/lib32/pkgconfig
+  export PKG_CONFIG_PATH=$PKG_CONFIG_LIBDIR:$PKG_CONFIG_PATH_CUSTOM
+
+  export CROSSCC="ccache i686-w64-mingw32-clang"
+
+  # lib32 fsync doesn't compile with clang due to undefined atomic ops otherwise (ntdll.so)
+  if [[ "${CC}" =~ "clang" ]]; then
+    export I386_LIBS="-latomic"
+  fi
 }
 
 prepare() { _set_vars;
@@ -342,46 +366,51 @@ prepare() { _set_vars;
   autoreconf -fiv
 }
 
-_build() { _set_vars;
-  cd "${srcdir}" || _failure
-
-  rm -rf "${build64dir}" || true
-  mkdir "${build64dir}"
-
-  export PKG_CONFIG_LIBDIR=/opt/llvm-mingw/x86_64-w64-mingw32/lib/pkgconfig:/usr/lib/pkgconfig
-  export PKG_CONFIG_PATH=$PKG_CONFIG_LIBDIR:$PKG_CONFIG_PATH_CUSTOM
-
-  export CROSSCC="ccache x86_64-w64-mingw32-clang"
-
-  msg2 "Building Wine-64"
+_configure64() { _set_vars; _set_vars64;
   cd "${build64dir}" || _failure
+
+  msg2 "Configuring Wine-64"
   ../"${pkgname}"/configure \
     "${_sharedopts[@]}" \
     "${_wine64opts[@]}" || _failure "Wine-64 configure failed; check ${build64dir}/config.log for more information"
+}
 
-  make -j$(($(nproc) + 1)) || _failure "Compilation failed"
-
-  ## don't build lib32 for wow64 builds
-  if [ "${wow64build}" = "true" ]; then return 0; fi
-
-  rm -rf "${build32dir}" || true
-  mkdir "${build32dir}"
-
-  export PKG_CONFIG_LIBDIR=/opt/llvm-mingw/i686-w64-mingw32/lib/pkgconfig:/usr/lib32/pkgconfig
-  export PKG_CONFIG_PATH=$PKG_CONFIG_LIBDIR:$PKG_CONFIG_PATH_CUSTOM
-
-  export CROSSCC="ccache i686-w64-mingw32-clang"
-
-  # lib32 fsync doesn't compile with clang due to undefined atomic ops otherwise (ntdll.so)
-  if [[ "${CC}" =~ "clang" ]]; then
-    export I386_LIBS="-latomic"
-  fi
-
-  msg2 "Building Wine-32"
+_configure32() { _set_vars; _set_vars32;
   cd "${build32dir}" || _failure
+
+  msg2 "Configuring Wine-32"
   ../"${pkgname}"/configure \
     "${_sharedopts[@]}" \
     "${_wine32opts[@]}" || _failure "Wine-32 configure failed; check ${build32dir}/config.log for more information"
+}
+
+# Needed for _SINGLE_MAKE build
+_tools64() { _set_vars; _set_vars64;
+  cd "${build64dir}" || _failure
+
+  msg2 "Building Wine-64 tools"
+
+  shopt -s globstar
+  # don't use lto to speed up tools compilation
+  export _TOOLS_FLAGS="${CPPFLAGS} ${_CPU_TARGET} -O1 -pipe -fno-lto -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=return-mismatch -Wno-error=int-conversion -w"
+  for mkfile in tools/Makefile tools/**/Makefile; do
+    "$@" -C "${mkfile%/Makefile}" -j$(($(nproc) + 1)) CFLAGS="${_TOOLS_FLAGS}" LDFLAGS="${_TOOLS_FLAGS}"
+  done
+  chmod -R +x "${build64dir}"/tools
+}
+
+_build64() { _set_vars; _set_vars64;
+  cd "${build64dir}" || _failure
+
+  msg2 "Building Wine-64"
+
+  make -j$(($(nproc) + 1)) || _failure "Compilation failed"
+}
+
+_build32() { _set_vars; _set_vars32;
+  cd "${build32dir}" || _failure
+
+  msg2 "Building Wine-32"
 
   make -j$(($(nproc) + 1)) || _failure "Compilation failed"
 }
@@ -421,7 +450,22 @@ build() { _set_vars;
   local _old_SOURCE_DATE_EPOCH="$SOURCE_DATE_EPOCH"
   export SOURCE_DATE_EPOCH=0
 
-  _build
+  export _TMP_VARFILE="$(mktemp)"
+  trap 'rm -f -- "$_TMP_VARFILE"' EXIT
+  { ( unset MAKEFLAGS; unset MFLAGS; set ); echo; set +o; } >"$_TMP_VARFILE"
+
+  rm -rf "${build64dir}" || true
+  mkdir "${build64dir}"
+
+  ## don't build lib32 for wow64 builds
+  if [ "${wow64build}" = "true" ]; then
+    _configure64
+    _build64
+  else
+    rm -rf "${build32dir}" || true
+    mkdir "${build32dir}"
+    make -f "$_where"/Makefile.single -j$(($(nproc) + 1))
+  fi
 
   export SOURCE_DATE_EPOCH="$_old_SOURCE_DATE_EPOCH"
 }
