@@ -3,7 +3,7 @@
 pkgname=python-django-rest-framework-guardian
 _pkgname=django-rest-framework-guardian
 pkgver=0.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="django-guardian support for Django REST Framework"
 arch=('any')
 url="https://github.com/johnthagen/django-rest-framework-guardian2"
@@ -17,6 +17,7 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
+  'python-setuptools'
   'python-wheel'
 )
 
