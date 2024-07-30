@@ -1,10 +1,10 @@
 pkgbase = inform7-ide-git
 	pkgdesc = a ide for the inform language/compiler
-	pkgver = 2.0.0.r89.g94b9c510
+	pkgver = 2.0.0.r151.g958ee984
 	pkgrel = 1
 	url = https://github.com/ptomato/inform7-ide
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = meson
 	makedepends = ninja
 	depends = libcanberra

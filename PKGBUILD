@@ -1,11 +1,11 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=inform7-ide-git
-pkgver=2.0.0.r89.g94b9c510
+pkgver=2.0.0.r151.g958ee984
 pkgrel=1
 pkgdesc="a ide for the inform language/compiler"
 arch=(x86_64)
 url="https://github.com/ptomato/inform7-ide"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('libcanberra' 'python-virtualenv' 'libxml2' 'libgl' 'glibc' 'goocanvas2' 'webkit2gtk' 'gtksourceview4' 'gspell' 'libplist' 'desktop-file-utils' 'gstreamer' 'gst-plugins-bad' 'gst-plugins-good' 'gtk3' 'libratify-git' 'libchimara-git' 'rsync' 'vala' 'clang')
 makedepends=('meson' 'ninja')
 provides=('inform7-ide')
@@ -48,20 +48,21 @@ make "forcetransferpreform"
 make "forcetransferindext"
 make "forcetransferkits"
 make "forcetransferextensions"
-make "forcetransferlanguages"
+make "forcetransferplanguages"
 make "forcetransferimages"
 make "forcetransferotherinternals"
 make "forcetransferdocumentation"
 make "forcetransferoutcomepages"
 make "forcetransfertemplates"
+make "forcetransferdelia"
 
 make "retrospective"
 cp -r "retrospective" -t "${srcdir}/inform7-ide"
 
 #building inform7-ide
 cd "${srcdir}/inform7-ide/"
-arch-meson build
-meson compile -C build
+CC=clang arch-meson build
+ meson compile -C build
 }
 
 check() {
