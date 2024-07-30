@@ -1,11 +1,11 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=kosuzu-git
-pkgver=r3.r0.8253ee6
-pkgrel=2
+pkgver=r5.r0.62f6a73
+pkgrel=1
 pkgdesc="a danbooru downloader and viewer that support translation notes"
 arch=(x86_64)
 url="https://github.com/nostrenz/kosuzu"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('qt5-base')
 makedepends=('git')
 provides=("${pkgname%-git}")

@@ -1,10 +1,10 @@
 pkgbase = kosuzu-git
 	pkgdesc = a danbooru downloader and viewer that support translation notes
-	pkgver = r3.r0.8253ee6
-	pkgrel = 2
+	pkgver = r5.r0.62f6a73
+	pkgrel = 1
 	url = https://github.com/nostrenz/kosuzu
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = qt5-base
 	provides = kosuzu
