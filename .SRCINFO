@@ -1,7 +1,7 @@
 pkgbase = python-kicad-package-manager
 	pkgdesc = This is a package manager for KiCad symbols, footprints, 3d models, simulation files, and hierarchical sheets.
 	pkgver = 0.0.23
-	pkgrel = 0
+	pkgrel = 2
 	url = https://pypi.org/project/kicad-package-manager
 	arch = any
 	license = MIT
@@ -10,6 +10,8 @@ pkgbase = python-kicad-package-manager
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
+	depends = python-requests
+	depends = python-sexpdata
 	provides = kicad-package-manager
 	conflicts = kicad-package-manager
 	options = !strip

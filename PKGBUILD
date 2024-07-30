@@ -3,7 +3,7 @@
 pkgname=python-kicad-package-manager
 _name=${pkgname#python-}
 pkgver=0.0.23
-pkgrel=0
+pkgrel=2
 epoch=
 pkgdesc="This is a package manager for KiCad symbols, footprints, 3d models, simulation files, and hierarchical sheets."
 arch=('any')
@@ -12,8 +12,11 @@ license=(MIT)
 groups=()
 provides=(${_name})
 conflicts=(${_name})
-depends=(python
-)
+_pydeps=(
+    requests
+    sexpdata)
+depends=('python'
+    "${_pydeps[@]/#/python-}")
 makedepends=(python-build
             python-installer
             python-wheel
