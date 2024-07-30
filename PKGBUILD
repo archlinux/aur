@@ -18,8 +18,8 @@ b2sums=('SKIP'
         'SKIP')
 
 pkgver() {
-  cd "$srcdir/${_srcname}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$srcdir/${_srcname}"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
