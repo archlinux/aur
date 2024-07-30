@@ -1,4 +1,4 @@
-# Maintainer: libjared <4498312-libjared@users.noreply.gitlab.com>
+# Maintainer: hype-vhs <4498312-hypevhs@users.noreply.gitlab.com>
 # Maintainer: YTJVDCM <50657624+YTJVDCM@users.noreply.github.com>
 pkgname=vrc-get
 pkgver=1.8.1
