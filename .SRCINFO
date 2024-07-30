@@ -8,6 +8,7 @@ pkgbase = xdg-desktop-portal-gtk-git
 	makedepends = git
 	makedepends = meson
 	makedepends = cmake
+	makedepends = glib2-devel
 	depends = gtk3
 	depends = xdg-desktop-portal
 	depends = gsettings-desktop-schemas

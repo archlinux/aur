@@ -3,14 +3,14 @@
 
 pkgname=xdg-desktop-portal-gtk-git
 _pkgname=xdg-desktop-portal-gtk
-pkgver=1.15.1+3+g25e828d
+pkgver=1.15.1+14+g5caa26d
 pkgrel=1
 pkgdesc="A GTK backend for xdg-desktop-portal"
 url="https://github.com/flatpak/xdg-desktop-portal-gtk"
 arch=(x86_64)
 license=(LGPL)
 depends=('gtk3' 'xdg-desktop-portal' 'gsettings-desktop-schemas' 'fontconfig')
-makedepends=('git' 'meson' 'cmake')
+makedepends=('git' 'meson' 'cmake' 'glib2-devel')
 optdepends=("evince: Print preview")
 provides=($_pkgname 'xdg-desktop-portal-impl')
 conflicts=($_pkgname)
