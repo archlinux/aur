@@ -1,10 +1,12 @@
 pkgbase = itchcraft
 	pkgdesc = Tech demo for interfacing with heat-based USB insect bite healers
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/claui/itchcraft
 	arch = any
 	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-myst-parser
@@ -18,7 +20,7 @@ pkgbase = itchcraft
 	depends = python-tenacity
 	options = !strip
 	options = !debug
-	source = itchcraft-0.2.0.tar.gz::https://github.com/claui/itchcraft/archive/v0.2.0.tar.gz
-	sha512sums = 05ab1b535c3be0b58fac1b1a75dcb2fe8d4b737f4552cf2c5d501dc9568445301f5a77564154a163ff58f4c8431ecadcfc69070f04a1eb7aae409db792a9943e
+	source = itchcraft-0.3.0.tar.gz::https://github.com/claui/itchcraft/archive/v0.3.0.tar.gz
+	sha512sums = 0c0afe495faf0df6acd33395e7e07995ea7f1b368d177e3f2a6236a933ed65d3f1a2b823890c9a82e33b164d9684ca45c68efad07a92b538db7581ddb9d5e152
 
 pkgname = itchcraft

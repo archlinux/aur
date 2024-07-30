@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=itchcraft
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Tech demo for interfacing with heat-based USB insect bite healers'
 arch=('any')
@@ -22,9 +22,10 @@ makedepends=(
   'python-sphinx'
   'python-wheel'
 )
+checkdepends=('python-pytest' 'python-pytest-mock')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/claui/itchcraft/archive/v${pkgver}.tar.gz")
-sha512sums=('05ab1b535c3be0b58fac1b1a75dcb2fe8d4b737f4552cf2c5d501dc9568445301f5a77564154a163ff58f4c8431ecadcfc69070f04a1eb7aae409db792a9943e')
+sha512sums=('0c0afe495faf0df6acd33395e7e07995ea7f1b368d177e3f2a6236a933ed65d3f1a2b823890c9a82e33b164d9684ca45c68efad07a92b538db7581ddb9d5e152')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -33,6 +34,11 @@ build() {
 
   echo >&2 'Generating man page'
   sphinx-build -aqEW -b man doc/sphinx build/man
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python -m pytest
 }
 
 package() {
