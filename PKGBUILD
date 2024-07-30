@@ -50,7 +50,8 @@ build() {
   autoreconf -vfi
   autoupdate
   ./configure \
-    --prefix=/usr \
+    --prefix="/usr" \
+    --includedir="/usr/include/${_pkgname}" \
     CPPFLAGS="-I/usr/include/bertini" \
     LDFLAGS="-L/usr/lib/bertini"
   make 
