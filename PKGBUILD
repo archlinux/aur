@@ -1,18 +1,28 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=synapse-admin
-pkgver=0.10.1
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="A Matrix administration panel using react-admin"
 arch=('any')
 license=('Apache License 2.0')
+makedepends=('nodejs' 'yarn')
 optdepends=('nginx: reverse-proxy')
 url="https://github.com/Awesome-Technologies/synapse-admin"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Awesome-Technologies/synapse-admin/releases/download/${pkgver}/synapse-admin-${pkgver}.tar.gz")
-sha512sums=('a38c462727eb8e91e39570d6af4ad1cd94ab6e10942107736a3ce6b0bd48d9640acdf95f47e5677385cbdba4b371c0c3d7377c841998ddfb214d1a70e99c0e19')
+#source=("$pkgname-$pkgver.tar.gz::https://github.com/Awesome-Technologies/synapse-admin/archive/refs/tags/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}::git+https://github.com/Awesome-Technologies/synapse-admin.git#tag=$pkgver")
+sha512sums=('SKIP')
+
+build() {
+  cd "$srcdir/${pkgname}-${pkgver}"
+  yarn install
+  #  if you need to change homepage location: yarn build --base=/your-location
+  yarn build --base=./
+}
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   mkdir -p "${pkgdir}/usr/share/webapps/${pkgname}"
-  cp -r $srcdir/${pkgname}-${pkgver}/* "${pkgdir}/usr/share/webapps/${pkgname}/"
+  cp -r dist/* "${pkgdir}/usr/share/webapps/${pkgname}/"
 }
