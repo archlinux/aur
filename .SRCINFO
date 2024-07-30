@@ -1,7 +1,7 @@
 pkgbase = godot-manager-bin
 	pkgdesc = A Project, Version and Addons/Plugins manager for Godot Game Engine.
 	pkgver = 0.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eumario/godot-manager
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = godot-manager-bin
 	makedepends = git
 	makedepends = jq
 	makedepends = sed
+	makedepends = unzip
 	provides = godot-manager
 	conflicts = godot-manager
 	noextract = godot-manager.zip
