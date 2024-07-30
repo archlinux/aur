@@ -4,7 +4,7 @@
 # Contributor: sukanka <su975853527 at gmail dot com>
 _pkgname=siyuan
 pkgname="${_pkgname}-note-bin"
-pkgver=3.1.1
+pkgver=3.1.2
 _electronversion=31
 pkgrel=1
 pkgdesc="A local-first personal knowledge management system.Use system-wide electron."
@@ -29,11 +29,11 @@ makedepends=(
 source=(
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.AppImage")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.AppImage")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.deb")
 sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('1fd4096060fcf826fb0cc5bdf013033eacd6d84796520ac6826df5e326c71e51')
-sha256sums_x86_64=('204b1cbfd0679df0294bc8bb6dc6fe639134c3c18ae59f2be4c08dabeeeb32dd')
+sha256sums_aarch64=('ecfc30e34888efbd958db192b079dcf6fa062f306c0da6d81ae6f957b56aae04')
+sha256sums_x86_64=('c04ba34cf2b76cb536ff30b03e1efe9a59c8ce3b2d1538da9b960813b80285d8')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -41,8 +41,7 @@ build() {
         -e "s|@cfgdirname@|SiYuan-Electron|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
-    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    bsdtar -xf "${srcdir}/data."*
     sed "s|AppRun --no-sandbox|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Utility|Office;Utility|g" \
         -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
     sed "3i\Name[zh_CN]=思源笔记" -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
