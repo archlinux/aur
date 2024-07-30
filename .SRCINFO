@@ -1,6 +1,6 @@
 pkgbase = clk-sdl
 	pkgdesc = a latency hating emulator for 8 and 16 bit platforms(sdl version)
-	pkgver = 2024_05_05
+	pkgver = 2024_06_03
 	pkgrel = 1
 	url = https://github.com/TomHarte/CLK
 	install = clk.install
@@ -14,7 +14,7 @@ pkgbase = clk-sdl
 	conflicts = clk-qt
 	conflicts = clk-qt-git
 	conflicts = clk-sdl-git
-	source = https://github.com/TomHarte/CLK/archive/refs/tags/2024-05-05.tar.gz
-	sha256sums = 4dfa5d7d67083e0de596c0cc98b5d2cee05255adde674cac7eeacc6a728d5814
+	source = https://github.com/TomHarte/CLK/archive/refs/tags/2024-06-03.tar.gz
+	sha256sums = 7cc680177d971166d29a206c4731818ded2fc092b24fde09db338719d6a616d7
 
 pkgname = clk-sdl
