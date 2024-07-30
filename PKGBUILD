@@ -2,21 +2,24 @@
 
 pkgname="olagem"
 epoch=1
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="A terminal based typing speed test"
 url="https://github.com/benjamin-voisin/$pkgname"
 arch=(x86_64)
 license=("CC0-1.0")
 
 makedepends=(
-  git
   cargo
 )
 
-_tag=1e7d47bd389a6d1871cf0d0e0c3db2fe43cea7ea #git rev-parse $pkgver
-source=( "$pkgname-$pkgver::git+$url#tag=$_tag")
-sha256sums=('SKIP')
+source=(
+	"$pkgname-$pkgver.tar.gz::https://github.com/benjamin-voisin/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
+	"$pkgname-$pkgver.tar.gz.asc::https://github.com/benjamin-voisin/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc"
+)
+
+sha256sums=('6d3069f47a45f2ec7f429bf0256c29f4146dfe6fdfc21cc9a52a3156d1f62029'
+            'SKIP')
 
 validpgpkeys=('F6BB766662E7D433F7EE159EC5C8EDD125FBFD78') # Benjamin Voisin <benjamin.voisin@ens-rennes.fr>
 
