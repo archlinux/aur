@@ -7,8 +7,7 @@ pkgrel=1
 pkgdesc="Homotopy continuation solver for systems of polynomial equations"
 arch=('x86_64')
 url="https://${_pkgname}.nd.edu/"
-license=('custom:Bertini license')
-depends=('boost' 'mpfr')
+license=('custom:Bertini')
 optdepends=('openmpi: multithreading support')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -23,6 +22,6 @@ package() {
   find "examples" -type f -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${_pkgname}/{}" \;
 
   cd "LICENSES"
-  install -Dm644 "Bertini_License" "${pkgdir}/usr/share/licenses/${_pkgname}/Bertini_License"
+  install -Dm644 "Bertini_License"  "${pkgdir}/usr/share/licenses/${_pkgname}/Bertini_License"
   install -Dm644 "GMP_MPFR_License" "${pkgdir}/usr/share/licenses/${_pkgname}/GMP_MPFR_License"
 }
