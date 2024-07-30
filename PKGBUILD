@@ -21,11 +21,15 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
-build() {
-  cd "${srcdir}/${_pkgsrc}/core"
+prepare() {
+  cd "${srcdir}/${_pkgsrc}/python"
   libtoolize
   autoreconf -vfi
   autoupdate
+}
+
+build() {
+  cd "${srcdir}/${_pkgsrc}/core"
   ./configure \
     --prefix="/usr" \
     --includedir="/usr/include"
