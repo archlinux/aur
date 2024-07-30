@@ -1,7 +1,7 @@
 pkgbase = openrevolution-git
 	pkgdesc = C/C++ BRSTM and other format tools - git version
-	pkgver = v2.8.1.cca0f4f
-	pkgrel = 2
+	pkgver = v2.8.1.r1.gd9293d8
+	pkgrel = 0
 	url = https://github.com/ic-scm/openrevolution
 	arch = x86_64
 	arch = i686
