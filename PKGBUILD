@@ -3,18 +3,19 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libvpx
-pkgver=1.14.0
-pkgrel=2
+pkgver=1.14.1
+pkgrel=1
 arch=('any')
 pkgdesc="VP8 and VP9 codec (Android ${_android_arch})"
 url="http://www.webmproject.org/"
 license=('BSD')
+groups=('android-libvpx')
 depends=('android-ndk')
 makedepends=('android-configure'
              'yasm')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/webmproject/libvpx/archive/v${pkgver}.tar.gz")
-md5sums=('026bc289d916624dabdfd713c1c5b69a')
+md5sums=('1d2a1c594587ee1f26a4f017becddcd5')
 
 prepare() {
     source android-env ${_android_arch}
@@ -70,13 +71,13 @@ build() {
         --enable-vp9-highbitdepth \
         --enable-vp9-temporal-denoising \
         ${extra_opts}
-    make $MAKEFLAGS
+    make DESTDIR="${PWD}/data" $MAKEFLAGS
 }
 
 package() {
     cd "${srcdir}/libvpx-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    make DESTDIR="${pkgdir}" install
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
