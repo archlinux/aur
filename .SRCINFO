@@ -1,11 +1,11 @@
 pkgbase = csound-blue
 	pkgdesc = A music composition environment for Csound
 	pkgver = 2.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://blue.kunstmusik.com/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = pd
 	makedepends = scons
 	makedepends = swig

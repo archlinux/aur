@@ -6,11 +6,11 @@
 
 pkgname=csound-blue
 pkgver=2.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A music composition environment for Csound"
 arch=('i686' 'x86_64')
 url="http://blue.kunstmusik.com/"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('csound' 'java-environment>=7' 'java-openjfx')
 makedepends=('pd' 'scons' 'swig' 'dssi' 'boost')
 provides=('csound-blue')
