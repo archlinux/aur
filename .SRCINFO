@@ -1,0 +1,13 @@
+pkgbase = ohsnapmod-otb
+	pkgdesc = patched version of the ohsnap font (OTB version)
+	pkgver = 1.0.0.r17.425ba65
+	pkgrel = 1
+	url = https://codeberg.org/h3xx/ohsnapmod
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = fonttosfnt-git
+	source = ohsnapmod-otb-1.0.0::git+https://codeberg.org/h3xx/ohsnapmod#commit=425ba6590d
+	sha256sums = b2b9b55fce23bf0cb2f14d5dbcf997bd3c2ef0ac2ddc947759a0087357a40e4d
+
+pkgname = ohsnapmod-otb
