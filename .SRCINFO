@@ -1,13 +1,13 @@
 pkgbase = git-town
 	pkgdesc = Generic, high-level Git workflow support
-	pkgver = 14.4.0
+	pkgver = 14.4.1
 	pkgrel = 1
 	url = https://github.com/git-town/git-town
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = git
-	source = https://github.com/git-town/git-town/archive/v14.4.0/git-town-14.4.0.tar.gz
-	sha256sums = 5ebdf7ba5c1e0289439442a95cbf2c728f980d0fb7d2d32112b93a4b783ff3e1
+	source = https://github.com/git-town/git-town/archive/v14.4.1/git-town-14.4.1.tar.gz
+	sha256sums = 8614df3c9906bfdf68ac0ce24a369e94b7bf65f134146eddff4c5d052e283a49
 
 pkgname = git-town
