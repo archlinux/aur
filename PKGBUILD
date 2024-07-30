@@ -1,6 +1,6 @@
 # Maintainer: drpebcak <tayworm@gmail.com>
 pkgname='gptscript'
-pkgver="v0.9.2"
+pkgver="v0.9.3"
 pkgrel=1
 pkgdesc="Natural Language Programming"
 arch=('x86_64')
@@ -8,6 +8,6 @@ url="https://gptscript.ai/"
 license=('Apache')
 source=("gptscript-$pkgver-linux-amd64.tar.gz::https://github.com/gptscript-ai/gptscript/releases/download/$pkgver/gptscript-$pkgver-linux-amd64.tar.gz")
 
-md5sums=('b665721213095905074a5971de1ce929')
+md5sums=('42fd8d948454a0d87315bcd288f65690')
 conflicts=('gptscript-git')
 
