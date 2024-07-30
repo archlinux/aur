@@ -3,8 +3,8 @@
 _pkgname='hacki'
 pkgname=${_pkgname}
 _pkgreponame='Hacki'
-pkgver=2.8.1
-pkgrel=4
+pkgver=2.8.2
+pkgrel=1
 pkgdesc='A Hacker News reader.'
 url='https://github.com/Livinglist/Hacki'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
 	'flutter::git+https://github.com/flutter/flutter.git'
 	'flutter-engine::git+https://github.com/flutter/engine.git'
 	'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git')
-sha256sums=('13580e9eb89ae1339fab73256e35ec36e29e6e2fdeb1914e92eff99ca5eabe89'
+sha256sums=('36202443a56295db5e5c4e4406ab4ec91a4a31e85d5a8bfb67367dbda2a34592'
             'SKIP'
             'SKIP'
             'SKIP')
