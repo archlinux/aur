@@ -1,0 +1,12 @@
+pkgbase = ttf-chillroundf
+	pkgdesc = 寒蝉全圆体
+	pkgver = v3.200
+	pkgrel = 1
+	url = https://github.com/Warren2060/ChillRound
+	arch = any
+	license = SIL-1.1
+	depends = git
+	source = https://github.com/Warren2060/ChillRound/releases/download/v3.200/ChillRoundF_v3.200.zip
+	sha256sums = 7a061e39cc8f377ce122f0ae68d1fe3ef43d78431388362c61ea8d695722d267
+
+pkgname = ttf-chillroundf
