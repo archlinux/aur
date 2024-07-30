@@ -13,6 +13,7 @@ pkgbase = python-django-compression-middleware
 	depends = python-brotli
 	depends = python-django
 	depends = python-pytest
+	depends = python-setuptools
 	depends = python-zstandard
 	source = python-django-compression-middleware::git+https://github.com/friedelwolff/django-compression-middleware#tag=v0.5.0
 	sha256sums = SKIP

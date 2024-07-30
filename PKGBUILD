@@ -12,6 +12,7 @@ depends=(
   'python-brotli'
   'python-django'
   'python-pytest'
+  'python-setuptools'
   'python-zstandard'
 )
 makedepends=(
