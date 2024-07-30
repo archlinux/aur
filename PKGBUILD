@@ -1,12 +1,12 @@
 # Maintainer: Philip Abernethy<chais.z3r0@gmail.com>
 pkgname=sdl-jstest-git
-pkgver=0.2.2.r18.g5bc418e
+pkgver=0.2.2.r24.g60f6e62
 epoch=1
 pkgrel=1
 pkgdesc="Simple SDL joystick test application for the command line."
 url="https://github.com/Grumbel/sdl-jstest"
 arch=('x86_64' 'i686')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('sdl' 'sdl2' 'ncurses' 'hicolor-icon-theme')
 makedepends=('git' 'cmake')
 provides=('sdl-jstest')
