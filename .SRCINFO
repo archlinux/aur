@@ -1,0 +1,17 @@
+pkgbase = python-markdown-include
+	pkgdesc = Provides syntax for Python-Markdown which allows for the inclusion of the contents of other Markdown documents
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/cmacmackin/markdown-include
+	arch = any
+	license = GPL-3.0-only
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = python-markdown
+	source = https://files.pythonhosted.org/packages/source/m/markdown-include/markdown-include-0.8.1.tar.gz
+	sha256sums = 1d0623e0fc2757c38d35df53752768356162284259d259c486b4ab6285cdbbe3
+
+pkgname = python-markdown-include
