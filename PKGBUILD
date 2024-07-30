@@ -1,4 +1,5 @@
-# Maintainer: second2050 <aur at second2050 dot me>
+# Maintainer: Maddie Mewmews <maddie at mewmews dot gay>
+# Contributor: second2050 <aur at second2050 dot me>
 # Contributor: steeltitanium <steeltitanium1 at gmail dot com>
 
 # Variables which can be customized at build time. Use env or export to set
