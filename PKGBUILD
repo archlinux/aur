@@ -1,4 +1,4 @@
-# Maintainer: libjared <4498312-libjared@users.noreply.gitlab.com>
+# Maintainer: hype-vhs <4498312-hypevhs@users.noreply.gitlab.com>
 # Contributor: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=nugget-doom
 _pkgname=nugget-doom
