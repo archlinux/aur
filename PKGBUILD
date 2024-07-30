@@ -8,8 +8,10 @@ url='https://codeberg.org/KSPAtlas/nufetch'
 source=("git+https://codeberg.org/KSPAtlas/nufetch")
 arch=('any')
 license=('0BSD')
-depends=('git' 'pacman' 'nushell>=0.94.0' 'figlet')
+depends=('git' 'nushell>=0.94.0' 'figlet')
 sha256sums=('SKIP')
+conflict=('nufetch')
+provides=('nufetch')
 
 pkgver() {
   cd "$_pkgname"

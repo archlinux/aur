@@ -6,9 +6,9 @@ pkgbase = nufetch-git
 	arch = any
 	license = 0BSD
 	depends = git
-	depends = pacman
 	depends = nushell>=0.94.0
 	depends = figlet
+	provides = nufetch
 	source = git+https://codeberg.org/KSPAtlas/nufetch
 	sha256sums = SKIP
 
