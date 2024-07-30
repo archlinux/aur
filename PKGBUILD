@@ -20,6 +20,7 @@ options=()
 install=
 changelog=
 source=("${pkgname}::git+${url}#tag=${_real_pkgver}"
+	"0001-Revert-Change-ffmpeg-command.patch"
 	"${pkgname}.service"
 	"${pkgname}.sysusers"
 	"${pkgname}.tmpfiles"
@@ -27,6 +28,7 @@ source=("${pkgname}::git+${url}#tag=${_real_pkgver}"
 )
 noextract=()
 sha256sums=('20dc434988c98d7c1fb6c3fa8b3fb0d189c32111181e92daa2909678480a017c'
+            '843b19dfd62d29c6f1deddd6215179970522ef5a1911a08a3c2ada1eb2b63de1'
             '166c3f84df21c52b3e703e9ff61df43a85020bf37743332f288d7ac113ea94a4'
             '6f5a344ed8a2e83913c3070621c57de261f4e68b95f80c7734ff953403b4fd19'
             '6db030762aee37d0fdaef4cee1c67217fb36f1a3b8da6255c5a5d7338590758e'
@@ -35,6 +37,8 @@ validpgpkeys=()
 
 prepare() {
 	cd "${pkgname}"
+
+	patch -Np1 -i ../0001-Revert-Change-ffmpeg-command.patch
 
 	go mod edit -require github.com/ugorji/go@v1.2.12
 	go mod edit -require github.com/ugorji/go/codec@v1.2.12

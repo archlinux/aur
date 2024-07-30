@@ -1,0 +1,27 @@
+From ca6a0ccc1ef4e76a12a256cabde020314b64d316 Mon Sep 17 00:00:00 2001
+From: Harry Youd <harry@harryyoud.co.uk>
+Date: Tue, 30 Jul 2024 22:52:57 +0100
+Subject: [PATCH] Revert "Change ffmpeg command"
+
+This reverts commit 4eb58f85dfda6ddce12bb811c5dd1b12f73664b5.
+---
+ routes.go | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/routes.go b/routes.go
+index 225d87a..581868a 100644
+--- a/routes.go
++++ b/routes.go
+@@ -192,7 +192,8 @@ func stream(lineup *lineup) gin.HandlerFunc {
+ 			}
+ 
+ 			log.Infoln("Remuxing stream with ffmpeg")
+-			run := exec.Command("ffmpeg", "-i", "pipe:0", "-c:v", "copy", "-f", "mpegts", "pipe:1")
++
++			run := exec.Command("ffmpeg", "-i", channelURI.String(), "-codec", "copy", "-f", "mpegts", "pipe:1")
+ 			log.Debugf("Executing ffmpeg as \"%s\"", strings.Join(run.Args, " "))
+ 			ffmpegout, err := run.StdoutPipe()
+ 			if err != nil {
+-- 
+2.45.2
+
