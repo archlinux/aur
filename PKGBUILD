@@ -9,8 +9,8 @@ arch=('any')
 url="https://${_pkgname}.com"
 _url="https://github.com/ofloveandhate/${_pkgname}"
 license=('custom:Paramotopy')
-depends=('glibc' 'gcc-libs' 'boost-libs' 'bertini' 'mpfr' 'gmp' 'openmpi')
 makedepends=('git' 'boost' 'bertini' 'mpfr' 'gmp' 'openmpi')
+depends=('glibc' 'gcc-libs' 'boost-libs' 'bertini' 'mpfr' 'gmp' 'openmpi')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
@@ -49,11 +49,11 @@ build() {
   libtoolize
   autoreconf -vfi
   autoupdate
+  CPPFLAGS+="-I/usr/include/bertini"
+  LDFLAGS+="-L/usr/lib/bertini"
   ./configure \
     --prefix="/usr" \
-    --includedir="/usr/include/${_pkgname}" \
-    CPPFLAGS="-I/usr/include/bertini" \
-    LDFLAGS="-L/usr/lib/bertini"
+    --includedir="/usr/include/${_pkgname}"
   make 
 }
 
