@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hathor-wallet-bin
 _pkgname="Hathor Wallet"
-pkgver=0.27.1
+pkgver=0.29.0
 _electronversion=27
-pkgrel=4
+pkgrel=1
 pkgdesc="Hathor Official Wallet for Desktop"
 arch=('x86_64')
 url="https://hathor.network/"
@@ -19,7 +19,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/HathorNetwork/hathor-wallet/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e632985f74322612ca0cddf8b6f58324577e6e2bef7cb2763928410986901013'
+sha256sums=('b35cd23ed1e80d265999e81157676528091a95518e3127fdc75c0e37b66b0226'
             '8fc34ede2d7615b4ef2eee1acfa4a457ab3e7c317e4ba6a1354b3b57ad11cbd0'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
