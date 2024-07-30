@@ -3,10 +3,10 @@
 # Maintainer: Lawrence Stalder <lawrence.stalder@pm.me>
 
 pkgname=nymvpn-x
-pkgver=0.1.7
+pkgver=0.1.8
 # upstream version
-_pkgver=0.1.7
-_release_tag=nym-vpn-x-v0.1.7
+_pkgver=0.1.8
+_release_tag=nym-vpn-x-v0.1.8
 pkgrel=1
 pkgdesc='NymVPN next desktop client'
 arch=('x86_64')
@@ -23,8 +23,8 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_release_tag.tar.gz"
     'nymvpn-x.desktop'
     'nymvpn-x.svg')
 sha256sums=(
-    '9ca2815ddfac9b83aa5598e4ccb55f573cbcc6e84fa1f5c56560ea2da138c7c0' 
-    '4a68bccaa807684d2fd45832cd6df24f977e8d4e1c7a37de583c54423c21d259' 
+    'ce498c332c85cb8ceaa491de3f72c85055a1c7c88a1129f60a53de2dd0206410' 
+    '71adbcd7b933b1e68ef6be7f43fda4e291b99a710ac36616238a8ce6ce8dc8df' 
     '8bf0dbd2a6c312630e1c2e866431d0361b24975ba17b4ab14c891efea326251c' 
     'c15b6028f25ea931c9bedf2b5600f91d6f94f15066afdbd7f789c770ea250e06')
 _srcdir="nym-vpn-client-$_release_tag"
@@ -35,7 +35,6 @@ prepare() {
   # rip off all useless sources
   rm -rf nym-vpn-android
   rm -rf nym-vpn-apple
-  rm -rf nym-vpn-desktop
   popd
 }
 
