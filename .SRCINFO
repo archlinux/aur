@@ -5,7 +5,6 @@ pkgbase = liteloader-qqnt-git
 	url = https://github.com/LiteLoaderQQNT/LiteLoaderQQNT
 	arch = any
 	license = MIT
-	makedepends = npm
 	makedepends = git
 	depends = linuxqq
 	provides = liteloader-qqnt
@@ -15,7 +14,7 @@ pkgbase = liteloader-qqnt-git
 	source = liteloader-qqnt-depatch.hook
 	source = liteloader-qqnt-patch.hook
 	md5sums = SKIP
-	md5sums = 903c2cb02d8d08e34fbc776e4982133b
+	md5sums = 95b35f4b4f6c9f0890db8b96579a875b
 	md5sums = 80b6a71e2e34337022bf947324cdcd19
 
 pkgname = liteloader-qqnt-git
