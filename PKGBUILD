@@ -1,7 +1,7 @@
 # Maintainer: Marco Julian Solanki <aur@solanki.mozmail.com>
 
 pkgname='adaptivecpp'
-pkgver=24.02.0
+pkgver=24.06.0
 pkgrel=1
 pkgdesc='A modern, community-driven platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors.'
 arch=('x86_64')

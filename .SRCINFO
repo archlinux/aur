@@ -1,6 +1,6 @@
 pkgbase = adaptivecpp
 	pkgdesc = A modern, community-driven platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors.
-	pkgver = 24.02.0
+	pkgver = 24.06.0
 	pkgrel = 1
 	url = https://github.com/AdaptiveCpp/AdaptiveCpp
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = adaptivecpp
 	depends = python
 	depends = spirv-tools
 	conflicts = adaptivecpp-git
-	source = adaptivecpp::git+https://github.com/AdaptiveCpp/AdaptiveCpp.git#tag=v24.02.0
+	source = adaptivecpp::git+https://github.com/AdaptiveCpp/AdaptiveCpp.git#tag=v24.06.0
 	sha512sums = SKIP
 
 pkgname = adaptivecpp
