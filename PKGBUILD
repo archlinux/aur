@@ -12,20 +12,20 @@ conflicts=("noto-fonts-cjk")
 provides=("noto-fonts-cjk")
 #makedepends=(git)
 #source=(git+https://github.com/tjw123hh/noto-cjk-chws.git#commit=$_commit)
-source=("https://github.com/tjw123hh/noto-cjk-chws/raw/main/Sans/OTC/NotoSansCJK-Black.ttc"
-        "https://github.com/tjw123hh/noto-cjk-chws/raw/main/Sans/OTC/NotoSansCJK-Bold.ttc"
-        "https://github.com/tjw123hh/noto-cjk-chws/raw/main/Sans/OTC/NotoSansCJK-DemiLight.ttc"
-        "https://github.com/tjw123hh/noto-cjk-chws/raw/main/Sans/OTC/NotoSansCJK-Light.ttc"
-        "https://github.com/tjw123hh/noto-cjk-chws/raw/main/Sans/OTC/NotoSansCJK-Medium.ttc"
-        "https://github.com/tjw123hh/noto-cjk-chws/raw/main/Sans/OTC/NotoSansCJK-Regular.ttc"
-        "https://github.com/tjw123hh/noto-cjk-chws/raw/main/Sans/OTC/NotoSansCJK-Thin.ttc"
-        "https://github.com/tjw123hh/noto-cjk-chws/raw/main/Serif/OTC/NotoSerifCJK-Black.ttc"
-        "https://github.com/tjw123hh/noto-cjk-chws/raw/main/Serif/OTC/NotoSerifCJK-Bold.ttc"
-        "https://github.com/tjw123hh/noto-cjk-chws/raw/main/Serif/OTC/NotoSerifCJK-ExtraLight.ttc"
-        "https://github.com/tjw123hh/noto-cjk-chws/raw/main/Serif/OTC/NotoSerifCJK-Light.ttc"
-        "https://github.com/tjw123hh/noto-cjk-chws/raw/main/Serif/OTC/NotoSerifCJK-Medium.ttc"
-        "https://github.com/tjw123hh/noto-cjk-chws/raw/main/Serif/OTC/NotoSerifCJK-Regular.ttc"
-        "https://github.com/tjw123hh/noto-cjk-chws/raw/main/Serif/OTC/NotoSerifCJK-SemiBold.ttc"
+source=("${pkgname}-${pkgver}-NotoSansCJK-Black.ttc::https://github.com/tjw123hh/noto-cjk-chws/raw/main/Sans/OTC/NotoSansCJK-Black.ttc"
+        "${pkgname}-${pkgver}-NotoSansCJK-Bold.ttc::https://github.com/tjw123hh/noto-cjk-chws/raw/main/Sans/OTC/NotoSansCJK-Bold.ttc"
+        "${pkgname}-${pkgver}-NotoSansCJK-DemiLight.ttc::https://github.com/tjw123hh/noto-cjk-chws/raw/main/Sans/OTC/NotoSansCJK-DemiLight.ttc"
+        "${pkgname}-${pkgver}-NotoSansCJK-Light.ttc::https://github.com/tjw123hh/noto-cjk-chws/raw/main/Sans/OTC/NotoSansCJK-Light.ttc"
+        "${pkgname}-${pkgver}-NotoSansCJK-Medium.ttc::https://github.com/tjw123hh/noto-cjk-chws/raw/main/Sans/OTC/NotoSansCJK-Medium.ttc"
+        "${pkgname}-${pkgver}-NotoSansCJK-Regular.ttc::https://github.com/tjw123hh/noto-cjk-chws/raw/main/Sans/OTC/NotoSansCJK-Regular.ttc"
+        "${pkgname}-${pkgver}-NotoSansCJK-Thin.ttc::https://github.com/tjw123hh/noto-cjk-chws/raw/main/Sans/OTC/NotoSansCJK-Thin.ttc"
+        "${pkgname}-${pkgver}-NotoSerifCJK-Black.ttc::https://github.com/tjw123hh/noto-cjk-chws/raw/main/Serif/OTC/NotoSerifCJK-Black.ttc"
+        "${pkgname}-${pkgver}-NotoSerifCJK-Bold.ttc::https://github.com/tjw123hh/noto-cjk-chws/raw/main/Serif/OTC/NotoSerifCJK-Bold.ttc"
+        "${pkgname}-${pkgver}-NotoSerifCJK-ExtraLight.ttc::https://github.com/tjw123hh/noto-cjk-chws/raw/main/Serif/OTC/NotoSerifCJK-ExtraLight.ttc"
+        "${pkgname}-${pkgver}-NotoSerifCJK-Light.ttc::https://github.com/tjw123hh/noto-cjk-chws/raw/main/Serif/OTC/NotoSerifCJK-Light.ttc"
+        "${pkgname}-${pkgver}-NotoSerifCJK-Medium.ttc::https://github.com/tjw123hh/noto-cjk-chws/raw/main/Serif/OTC/NotoSerifCJK-Medium.ttc"
+        "${pkgname}-${pkgver}-NotoSerifCJK-Regular.ttc::https://github.com/tjw123hh/noto-cjk-chws/raw/main/Serif/OTC/NotoSerifCJK-Regular.ttc"
+        "${pkgname}-${pkgver}-NotoSerifCJK-SemiBold.ttc::https://github.com/tjw123hh/noto-cjk-chws/raw/main/Serif/OTC/NotoSerifCJK-SemiBold.ttc"
         LICENSE)
 sha256sums=('699a6a7099409d5d274d2544fce0e9c5ccc348145da36f8d0b6fc29113b7e843'
             '139cd24d8f45e5e507e5fd1aa7070c330cfe4d5dc7647b9e3272c83819dd2e3c'
@@ -43,6 +43,9 @@ sha256sums=('699a6a7099409d5d274d2544fce0e9c5ccc348145da36f8d0b6fc29113b7e843'
             '85e6b492eae3033d2b4de826a9b9e9ae403c1fabccc71f07836d7357adf13a60'
             '6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2')
 package() {
-  install -Dm644 *.ttc -t "$pkgdir"/usr/share/fonts/noto-cjk
+  for file in ${pkgname}-${pkgver}-*.ttc; do
+      new_filename=$(basename "$file" | sed "s/^${pkgname}-${pkgver}-//")
+      install -Dm644 "$file" "$pkgdir"/usr/share/fonts/noto-cjk/$new_filename
+  done
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
