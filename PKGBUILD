@@ -5,7 +5,7 @@
 
 _pkgname='sherlock'
 pkgname="${_pkgname}-git"
-pkgver=35773d43daf80198101cdb55b83cc7e63407ad9d
+pkgver=r2442.7e87a88
 pkgrel=1
 pkgdesc='Hunt down social media accounts by username across social networks'
 arch=('any')
@@ -28,7 +28,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {

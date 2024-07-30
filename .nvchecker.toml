@@ -1,4 +1,3 @@
 [sherlock-git]
-source = "git"
-git = "https://github.com/sherlock-project/sherlock.git"
-use_commit = "true"
+source = "cmd"
+cmd = 'git clone https://github.com/sherlock-project/sherlock.git; cd sherlock && printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"'
