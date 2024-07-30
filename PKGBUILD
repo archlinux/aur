@@ -1,8 +1,8 @@
 # Maintainer: Ash <xash at riseup d0t net>
 pkgname=alterware-launcher-git
 _pkgname=alterware-launcher
-pkgver=r383.812d880
-pkgrel=2
+pkgver=0.7.0.r12.g2a7ceee
+pkgrel=3
 provides=('alterware-launcher')
 pkgdesc='AlterWare.dev updater & launcher, written in Rust.'
 url='https://github.com/mxve/alterware-launcher'
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
