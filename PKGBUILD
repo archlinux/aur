@@ -1,8 +1,8 @@
 # Maintainer: Anti Räis <antirais at gmail dot com>
 
 pkgname=cdoc4j-util
-pkgver=1.4
-pkgrel=3
+pkgver=1.5
+pkgrel=1
 pkgdesc='Command line utility for working with CDOC documents.'
 arch=('any')
 url='https://github.com/open-eid/cdoc4j/blob/master/util/README.md'
@@ -14,7 +14,7 @@ source=(
     'cdoc4j-util.sh'
 )
 sha256sums=(
-    '717eef2c6d4369e73746f2e0c7c6b68a78b36fe1bf05068581853bc52c203c02'
+    '74af0de339650dc95fe91694d2f6a348f4163af5f9800df541087c11f8285004'
     'e9ccd058c87b331b08a1ce30e73f03ea5d65657123d57d4524905a3c14bca08c'
 )
 
