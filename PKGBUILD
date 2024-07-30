@@ -2,7 +2,7 @@
 pkgname="liteloader-qqnt-git"
 _pkgname="LiteLoaderQQNT"
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="轻量, 简洁, 开源的 QQNT 插件加载器"
 arch=('any')
 url="https://github.com/LiteLoaderQQNT/LiteLoaderQQNT"
@@ -16,9 +16,9 @@ source=(
 	"liteloader-qqnt-depatch.hook"
 	"liteloader-qqnt-patch.hook")
 
-md5sums=("SKIP"
-	 "95b35f4b4f6c9f0890db8b96579a875b"
-	 "80b6a71e2e34337022bf947324cdcd19")
+sha256sums=("SKIP"
+	 "a7182c1697285c46fca19b02f5e34051562a51a4dc529a1cd5d171177c584710"
+	 "4b0272c318e7ecc3ca941a9ecae9ae4085b78dace8e7d962d4b7d8c10b4aa1d5")
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
