@@ -12,6 +12,7 @@ pkgbase = wubi-dict-editor
 	makedepends = libicns
 	makedepends = curl
 	makedepends = git
+	depends = ibus-rime
 	depends = electron24
 	depends = nodejs
 	conflicts = wubi-dict-editor

@@ -11,7 +11,7 @@ url="https://github.com/KyleBing/wubi-dict-editor"
 license=('GPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
-    #'ibus-rime'
+    'ibus-rime'
     "electron${_electronversion}"
     'nodejs'
 )
