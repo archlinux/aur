@@ -1,9 +1,9 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=oblivion-desktop-git
-pkgver=0.41.4.beta.r2.g3cf3d43
+pkgver=0.51.0.beta.r2.ge4ecb33
 pkgrel=1
 pkgdesc="Unofficial Warp Client for Windows/Mac/Linux (GitHub Version)"
-arch=('x86_64')
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/bepass-org/oblivion-desktop"
 license=("custom:${pkgname%-git}")
 _electron=electron27
