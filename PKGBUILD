@@ -1,8 +1,8 @@
 # Maintainer: atomicfs <https://aur.archlinux.org/account/atomicfs>
 
 pkgname=python-tika-client
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="A modern Python REST client for Apache Tika server"
 arch=('any')
 url="https://github.com/stumpylog/tika-client"
@@ -22,7 +22,7 @@ checkdepends=(
   'python-pytest'
 )
 source=("${pkgname}::git+${url}#tag=${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('aac1f999bc89a0b06acd3ba816fb0626e542af432926ad7c1f6ea80f27def1dd')
 
 #check() {}
 # Woudl require complex setup
