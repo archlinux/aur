@@ -5,7 +5,7 @@ license=("Apache-2.0")
 arch=("any")
 pkgver=0.5.17
 pkgrel=1
-makedepends=("yarn" "liburing")
+makedepends=("yarn" "liburing" "git")
 depends=()
 source=("git+${url}#tag=v${pkgver}")
 md5sums=("SKIP")
