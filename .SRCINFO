@@ -1,5 +1,5 @@
 pkgbase = python-markdown-include
-	pkgdesc = Provides syntax for Python-Markdown which allows for the inclusion of the contents of other Markdown documents
+	pkgdesc = Provides syntax for Python-Markdown for the inclusion of other Markdown documents
 	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/cmacmackin/markdown-include
