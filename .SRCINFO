@@ -1,0 +1,43 @@
+pkgbase = linux-clear-ltsprev
+	pkgdesc = Clear Linux ltsprev
+	pkgver = 6.1.102
+	pkgrel = 1
+	url = https://github.com/clearlinux-pkgs/linux-ltsprev
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = cpio
+	makedepends = git
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = xmlto
+	options = !strip
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.tar.sign
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.1.102.xz
+	source = linux-clear-ltsprev::git+https://github.com/clearlinux-pkgs/linux-ltsprev.git#tag=6.1.102-1347
+	source = more-uarches-20240221.2.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20240221.2.tar.gz
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = 2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb
+	sha256sums = SKIP
+	sha256sums = 2761965eeeb54dce4ac118d74cee239ef5141efe369094d6e8e51891472f827d
+	sha256sums = f87de97655d05928e2350851f9d49e7fe85e7009e041455afe0b34f54d0ef3a7
+	sha256sums = 1d3ac3e581cbc5108f882fcdc75d74f7f069654c71bad65febe5ba15a7a3a14f
+
+pkgname = linux-clear-ltsprev
+	pkgdesc = The Clear Linux ltsprev kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	provides = KSMBD-MODULE
+
+pkgname = linux-clear-ltsprev-headers
+	pkgdesc = Headers and scripts for building modules for the Clear Linux ltsprev kernel
+	depends = pahole
