@@ -2,7 +2,7 @@
 
 pkgname=cdoc4j-util
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Command line utility for working with CDOC documents.'
 arch=('any')
 url='https://github.com/open-eid/cdoc4j/blob/master/util/README.md'
@@ -24,5 +24,5 @@ package() {
     install -d "$pkgdir/usr/bin"
     install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
     install -Dm755 "$pkgname-$pkgver.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
-    install -Dm755 "bcprov-jdk15on.jar" "$pkgdir/usr/share/java/$pkgname/"
+    install -Dm755 "bcprov-jdk18on.jar" "$pkgdir/usr/share/java/$pkgname/"
 }
