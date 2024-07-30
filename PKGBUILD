@@ -16,7 +16,7 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=mesa-amdonly-gaming-git
-pkgver=24.3.0_devel.192624.1242f3ed3a4.d41d8cd
+pkgver=24.3.0_devel.192705.aa9745427b9.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 pkgname=(
   'amdonly-gaming-vulkan-mesa-layers-git'
