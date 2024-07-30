@@ -1,22 +1,22 @@
 pkgbase = planify
 	pkgdesc = Task manager with Todoist and Nextcloud support
-	pkgver = 4.10.0
+	pkgver = 4.10.2
 	pkgrel = 1
 	url = https://github.com/alainm23/planify
 	arch = x86_64
 	license = GPL-3.0-or-later
+	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = vala
 	depends = evolution-data-server
 	depends = granite7
 	depends = gtksourceview5
-	depends = gxml
 	depends = libadwaita
 	depends = libportal-gtk4
 	depends = webkitgtk-6.0
 	conflicts = elementary-planner
-	source = planify-4.10.0.tar.gz::https://github.com/alainm23/planify/archive/refs/tags/4.10.0.tar.gz
-	sha256sums = 88664272e6d16614587e0c3468618e1b2101b4be5a4c12a52cf615f56dd0f9f6
+	source = git+https://github.com/alainm23/planify.git#tag=4.10.2
+	sha256sums = 611dbf8a36108d0669f3178cd68843c37c5f0c6e4247679de99ea9ce292c9a51
 
 pkgname = planify
