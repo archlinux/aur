@@ -3,7 +3,7 @@
 _pkgbase=XRLinuxDriver
 pkgname="xr-driver-breezy-gnome-git"
 pkgver=0.10.5
-pkgrel=2
+pkgrel=3
 pkgdesc="XR Linux Driver for Breezy GNOME"
 arch=('x86_64' 'aarch64')
 url="https://github.com/wheaney/XRLinuxDriver"
