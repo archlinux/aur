@@ -6,7 +6,6 @@ pkgbase = miru-git
 	arch = any
 	license = GPL-3.0-only
 	makedepends = npm
-	makedepends = pnpm
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
@@ -14,6 +13,7 @@ pkgbase = miru-git
 	makedepends = cmake
 	makedepends = curl
 	makedepends = python-setuptools
+	makedepends = yarn
 	depends = electron29
 	provides = miru=5.2.7
 	conflicts = miru

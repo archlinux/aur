@@ -17,7 +17,6 @@ depends=(
 )
 makedepends=(
     'npm'
-    'pnpm'
     'git'
     'nvm'
     'gendesk'
@@ -25,6 +24,7 @@ makedepends=(
     'cmake'
     'curl'
     'python-setuptools'
+    'yarn'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
