@@ -1,0 +1,19 @@
+post_install() {
+  setcap cap_net_admin+eip /opt/microsoft/microsoft-azurevpnclient/microsoft-azurevpnclient
+
+  cat << EOF
+The original Azure VPN Debian/Ubuntu package assumes users that want to access the VPN
+are part of the "sudo" group.
+
+Default Arch installs lack the "sudo" group, so we've changed the package to allow
+VPN access to users that are in the "network" group.
+
+Run the following command to add users to that group:
+
+sudo usermod -aG network \$USERNAME
+EOF
+}
+
+post_upgrade() {
+  setcap cap_net_admin+eip /opt/microsoft/microsoft-azurevpnclient/microsoft-azurevpnclient
+}
