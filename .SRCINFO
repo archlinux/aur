@@ -1,7 +1,7 @@
 pkgbase = annextimelog
 	pkgdesc = CLI to track time spent on projects, backed by Git Annex
-	pkgver = 0.13.1
-	pkgrel = 2
+	pkgver = 0.14.0
+	pkgrel = 1
 	url = https://gitlab.com/nobodyinperson/annextimelog
 	arch = any
 	license = GPL-3.0-or-later
@@ -12,7 +12,7 @@ pkgbase = annextimelog
 	depends = python
 	depends = python-rich
 	depends = git-annex
-	source = https://files.pythonhosted.org/packages/source/a/annextimelog/annextimelog-0.13.1.tar.gz
-	sha256sums = de7c917335caf2486f5be79383fe40779e2f1ada7e826a2fd6171fbec1793ef0
+	source = https://files.pythonhosted.org/packages/source/a/annextimelog/annextimelog-0.14.0.tar.gz
+	sha256sums = 7fc390f20c5ad30a2225cb90d159b038b7fa1010e75137dff6a41d2fd7053854
 
 pkgname = annextimelog
