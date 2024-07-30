@@ -2,9 +2,9 @@
 # Contributor: Elijah Gregg <lovetocode999@ctrl-c.club>
 # Contributor: Alexandros Theodotou <alex@zrythm.org>
 pkgname=zrythm-git
-pkgver=v1.0.0.rc.1.r59.g1792598e0
+pkgver=1.0.0.rc.1.r59.g1792598e0
 pkgrel=1
-epoch=2
+epoch=3
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
 url="https://www.zrythm.org"
@@ -23,12 +23,12 @@ optdepends=('portaudio: portaudio backend'
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 options=('!strip')
-source=("zrythm::git+https://gitlab.zrythm.org/zrythm/zrythm")
+source=("git+https://gitlab.zrythm.org/zrythm/zrythm/")
 md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    git describe --long --tags | sed 's/^v1.0.0.beta.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -46,5 +46,6 @@ package() {
     cd "$srcdir/${pkgname%-git}"
     install -vDm 644 AUTHORS CONTRIBUTING.md CHANGELOG.md README.md THANKS TRANSLATORS \
         -t "${pkgdir}/usr/share/doc/${pkgname}/"
+    install -Dm644 "LICENSES/LicenseRef-ZrythmLicense.txt" "${pkgdir}/usr/share/licenses/ZrythmLicense.txt"
     DESTDIR="${pkgdir}/" ninja -C build install
 }
