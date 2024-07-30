@@ -1,15 +1,14 @@
 pkgbase = opensbi
 	pkgdesc = RISC-V Open Source Supervisor Binary Interface
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/riscv-software-src/opensbi
 	arch = any
 	license = BSD
-	makedepends = filesystem
 	depends = filesystem
 	provides = opensbi
 	options = !strip
-	source = https://github.com/riscv-software-src/opensbi/releases/download/v1.4/opensbi-1.4-rv-bin.tar.xz
-	md5sums = 109274c69f8c50df91efddd9a27372e0
+	source = https://github.com/riscv-software-src/opensbi/releases/download/v1.5/opensbi-1.5-rv-bin.tar.xz
+	md5sums = ebd2b0e889921861021da5d2bf3c9bf5
 
 pkgname = opensbi
