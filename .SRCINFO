@@ -1,7 +1,7 @@
 pkgbase = wubi-dict-editor
 	pkgdesc = 五笔码表助手 for Rime ( Windows、macOS、Ubuntu ) 基于 electron 开发.
-	pkgver = 1.26
-	pkgrel = 2
+	pkgver = 1.28
+	pkgrel = 1
 	url = https://github.com/KyleBing/wubi-dict-editor
 	arch = x86_64
 	license = GPL-3.0-only
@@ -10,14 +10,15 @@ pkgbase = wubi-dict-editor
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = libicns
-	depends = ibus-rime
+	makedepends = curl
+	makedepends = git
 	depends = electron24
 	depends = nodejs
 	conflicts = wubi-dict-editor
 	options = !emptydirs
-	source = wubi-dict-editor-1.26.tar.gz::https://github.com/KyleBing/wubi-dict-editor/archive/refs/tags/v1.26.tar.gz
+	source = wubi-dict-editor.git::git+https://github.com/KyleBing/wubi-dict-editor.git#tag=v1.28
 	source = wubi-dict-editor.sh
-	sha256sums = e0b77c03e1166ce5b026a63eb232f0e0edb033eb6e146fdd8f6ca49b1e08f6dc
+	sha256sums = 7fbb03c1fbd51e270b5a7fd47d49e4ee0855b783fe32e2f5414f4091a165fa5e
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = wubi-dict-editor
