@@ -1,21 +1,25 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname='warp-plus-bin'
 pkgver=1.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source implementation of Cloudflare's Warp, enhanced with Psiphon integration."
-arch=('x86_64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/bepass-org/warp-plus"
 license=('MIT')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-backup=(etc/warp-plus/config.json)
+backup=('etc/warp-plus/config.json')
 install="${pkgname%-bin}.install"
-source=("${pkgname%-bin}-${pkgver//_/-}.zip::${url}/releases/download/v${pkgver//_/-}/warp-plus_linux-amd64.zip"
-		"${pkgname%-bin}-config.json"
+source_x86_64=("${pkgname%-bin}-${pkgver//_/-}-amd64.zip::${url}/releases/download/v${pkgver//_/-}/warp-plus_linux-amd64.zip")
+source_aarch64=("${pkgname%-bin}-${pkgver//_/-}-arm64.zip::${url}/releases/download/v${pkgver//_/-}/warp-plus_linux-arm64.zip")
+source_armv7h=("${pkgname%-bin}-${pkgver//_/-}-arm7.zip::${url}/releases/download/v${pkgver//_/-}/warp-plus_linux-arm7.zip")
+source=("${pkgname%-bin}-config.json"
 		"${pkgname%-bin}.service")
-sha256sums=('9fe49b2485fbdc044fc96b0b871b9f03ef6c43dc37499f73e4f7ad32944d293a'
-            '305777eabf28c1456baf5bdf74ba6f941ce99bc1069388b3806ac4272cf3f875'
+sha256sums=('305777eabf28c1456baf5bdf74ba6f941ce99bc1069388b3806ac4272cf3f875'
             '5ada20e3b2871c0921dfe36d721914fa02fe2f4892919160daa71992e91be49b')
+sha256sums_x86_64=('9fe49b2485fbdc044fc96b0b871b9f03ef6c43dc37499f73e4f7ad32944d293a')
+sha256sums_armv7h=('16001942cfca9a206ecdee73a2087c8a81720669cf682f8a6d1d09bfe174d356')
+sha256sums_aarch64=('686f88548d2e06e0d2588c0ba8be4473291f573371f42719800c26335f112db5')
 
 package() {
 	install -D -t "${pkgdir}/usr/bin/" -m 755 "${pkgname%-bin}"
