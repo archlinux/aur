@@ -1,6 +1,6 @@
-# Maintainer: Juri Vitali <juri@dividebyzero.it>
+# Maintainer: Juma7C9 « me · dbzero · it »
 pkgname=vlc-bittorrent
-pkgver=2.14
+pkgver=2.15
 pkgrel=1
 pkgdesc="A bittorrent plugin for VLC."
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('GPL')
 depends=(vlc libtorrent-rasterbar)
 makedepends=(boost autoconf-archive)
 source=("https://github.com/johang/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('bbee28e1864aabac0b8b6c2dc195708446daf74f4fc35bdcf653b3322bfdd6f8')
+sha256sums=('9958fa65f1ea12b11a2990fd25a0d6546e3bc5f6d9bf221774aa9178b00edaa5')
 
 build() {
 	cd "$pkgname-$pkgver"
