@@ -126,7 +126,7 @@ build() {
     -D b_lto=false
     -D dri3=enabled
     -D egl=enabled
-    -D gallium-drivers=radeonsi,swrast,zink
+    -D gallium-drivers=radeonsi,llvmpipe,softpipe,zink
     -D gallium-extra-hud=true
     -D gallium-nine=true
     -D gallium-omx=disabled
