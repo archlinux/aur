@@ -1,3 +1,25 @@
+4.7.3
+-----
+
+ - Add compatibility with NumPy 2.0.
+ - Fix `#153 <https://github.com/levitsky/pyteomics/issues/153>`_. MGF parser now recognizes precursor charge specified
+   on the PEPMASS line. If CHARGE is also specified, it is ignored.
+
+4.7.2
+-----
+
+- Fix pickling of resolved ProForma modifications (`#144 <https://github.com/levitsky/pyteomics/pull/144>`_
+  by Joshua Klein).
+- Fix a deprecation warning in :py:mod:`pyteomics.mass.unimod` (`#126 <https://github.com/levitsky/pyteomics/pull/126>`_
+  by Ralf Gabriels).
+- Add caching for modifications resolvers in :py:mod:`pyteomics.proforma`
+  (`#148 <https://github.com/levitsky/pyteomics/pull/148>`_ by Joshua Klein).
+- Add support for constant terminal modifications in :py:mod:`pyteomics.proforma`
+  (`148 <https://github.com/levitsky/pyteomics/pull/148>`_ by Joshua Klein).
+- Fix an exception in :py:mod:`pyteomics.ms1` when an information string has only one token
+  (`#149 <https://github.com/levitsky/pyteomics/issues/149>`_).
+
+
 4.7.1
 -----
 
