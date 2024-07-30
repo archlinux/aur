@@ -1,12 +1,12 @@
 pkgbase = dlangide
 	pkgdesc = D language IDE based on DlangUI
 	pkgver = 0.8.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/buggins/dlangide
 	arch = i686
 	arch = x86_64
 	groups = dlang
-	license = BSL
+	license = BSL-1.0
 	makedepends = d-compiler
 	makedepends = dub
 	depends = dtools

@@ -2,11 +2,11 @@
 
 pkgname=('dlangide')
 pkgver=0.8.19
-pkgrel=1
+pkgrel=2
 pkgdesc="D language IDE based on DlangUI "
 arch=('i686' 'x86_64')
 url="https://github.com/buggins/dlangide"
-license=("BSL")
+license=("BSL-1.0")
 groups=('dlang')
 depends=('dtools' 'sdl2' 'glibc' 'gcc-libs' 'zlib' 'd-runtime' 'd-stdlib')
 makedepends=('d-compiler' 'dub')
