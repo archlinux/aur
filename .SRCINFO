@@ -1,7 +1,7 @@
 pkgbase = python-django-compression-middleware
 	pkgdesc = Django middleware to compress responses using several algorithms
 	pkgver = 0.5.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/friedelwolff/django-compression-middleware
 	arch = any
 	license = MPL-2.0
@@ -12,6 +12,7 @@ pkgbase = python-django-compression-middleware
 	depends = python
 	depends = python-brotli
 	depends = python-django
+	depends = python-pytest
 	depends = python-zstandard
 	source = python-django-compression-middleware::git+https://github.com/friedelwolff/django-compression-middleware#tag=v0.5.0
 	sha256sums = SKIP

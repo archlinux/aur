@@ -2,7 +2,7 @@
 
 pkgname=python-django-compression-middleware
 pkgver=0.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Django middleware to compress responses using several algorithms"
 arch=('any')
 url="https://github.com/friedelwolff/django-compression-middleware"
@@ -11,6 +11,7 @@ depends=(
   'python'
   'python-brotli'
   'python-django'
+  'python-pytest'
   'python-zstandard'
 )
 makedepends=(
