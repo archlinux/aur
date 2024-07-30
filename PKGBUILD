@@ -1,7 +1,7 @@
 # Maintainer: Hilton Medeiros <medeiros.hilton@gmail.com>
 _pkgname=Pixelorama
 pkgname=pixelorama-bin
-pkgver=0.11.4
+pkgver=1.0
 pkgrel=1
 pkgdesc="A free & open-source 2D sprite editor, made with the Godot Engine"
 arch=('i686' 'x86_64')
@@ -11,14 +11,14 @@ depends=('libxi' 'libxrandr' 'libglvnd' 'libxcursor' 'libxinerama' 'hicolor-icon
 provides=('pixelorama')
 conflicts=('pixelorama')
 source=("pixelorama.png" "com.orama_interactive.Pixelorama.appdata.xml" "com.orama_interactive.Pixelorama.desktop" "LICENSE")
-source_i686=("$_pkgname-$pkgver-32bit.tar.gz::https://github.com/Orama-Interactive/$_pkgname/releases/download/v$pkgver/$_pkgname.Linux-32bit.tar.gz")
-source_x86_64=("$_pkgname-$pkgver-64bit.tar.gz::https://github.com/Orama-Interactive/$_pkgname/releases/download/v$pkgver/$_pkgname.Linux-64bit.tar.gz")
+source_i686=("$_pkgname-$pkgver-32bit.tar.gz::https://github.com/Orama-Interactive/$_pkgname/releases/download/v$pkgver/$_pkgname-Linux-32bit.tar.gz")
+source_x86_64=("$_pkgname-$pkgver-64bit.tar.gz::https://github.com/Orama-Interactive/$_pkgname/releases/download/v$pkgver/$_pkgname-Linux-64bit.tar.gz")
 sha256sums=('dd7cba7e5f41ca001aaa297a27c816308f430cbbacaf717da94ebab2b9803b54'
-            'ef2dc0f9cf3bdeb277e04b98cb2c0ae4d8cc41b8e04e83c405067a073ee8ad89'
+            '1a9672ca684d39c08467d32edc9f862d963bc46c308be297fd4757d5fdaff713'
             'f55e641204bd30f9343bb3e42ab180522ae2ffdcd60b1b65f84e18dacc6a99f1'
             '07ddf85025568856f9b92fb7193589dd055c749c563aa9b2d4e943eb53ef61f9')
-sha256sums_i686=('3dc807440a1ab72e409bc4de73cb841ac01702ce5deb541904d10dfce98538f9')
-sha256sums_x86_64=('b8dab5554db74cb00acb0aacc496f1987af03addfab1e6a3a3ebddcea113dbcc')
+sha256sums_i686=('bd000df52ead261dd06d04a0ca1f4e6654ecb1303703b145cd5d5e59b00edc74')
+sha256sums_x86_64=('c13c6b1d4c94900a76dbd06a016cc72c9a33c504d98d52ac7b308c6a2f697eee')
 
 package() {
   install -d "$pkgdir/opt/$pkgname"
@@ -28,7 +28,7 @@ package() {
   install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
 
   test "${CARCH}" == 'x86_64' && _pkgarch='64' || _pkgarch='32'
-  cp -Trf "$srcdir/linux-${_pkgarch}bit" "$pkgdir/opt/$pkgname"
+  cp -Trf "$srcdir/${_pkgname}-Linux-${_pkgarch}bit" "$pkgdir/opt/$pkgname"
   install -Dm644 "$srcdir/com.orama_interactive.Pixelorama.desktop" "$pkgdir/usr/share/applications"
   install -Dm644 "$srcdir/com.orama_interactive.Pixelorama.appdata.xml" "$pkgdir/usr/share/metainfo"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
