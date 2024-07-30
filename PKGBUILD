@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: kyngs <aurmail at kyngs dot xyz>
 pkgname=miru-git
-pkgver=5.2.6.r0.g22878b4
+pkgver=5.2.7.r0.g575aedf
 _electronversion=29
 _nodeversion=18
 pkgrel=1
@@ -24,6 +24,7 @@ makedepends=(
     'gcc'
     'cmake'
     'curl'
+    'python-setuptools'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -57,9 +58,8 @@ build() {
     #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     #export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
-    pnpm config set store-dir "${srcdir}/.pnpm_store"
-    pnpm config set cache-dir "${srcdir}/.pnpm_cache"
-    pnpm config set link-workspace-packages true
+    mkdir -p "${srcdir}/.electron-gyp"
+    touch "${srcdir}/.electron-gyp/.yarnrc"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
         export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
@@ -68,11 +68,12 @@ build() {
     else
         echo "Your network is OK."
     fi
+    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
     cd "${srcdir}/${pkgname//-/.}/electron"
     rm -rf dist node_modules
     sed 's|electron-builder",|electron-builder -l --dir",|g;/aa910d571134/d;/2ffc48f0b43f/d;s|"version": "29.1.4",|"version": "29.1.4"|g' -i package.json
-    NODE_ENV=development pnpm install --frozen-lockfile
-    NODE_ENV=production pnpm run build
+    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production yarn run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
