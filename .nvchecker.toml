@@ -1,0 +1,3 @@
+[python-ghtopdep]
+source = "pypi"
+pypi = "ghtopdep"
