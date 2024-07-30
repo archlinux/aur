@@ -1,0 +1,43 @@
+.POSIX:
+
+SHELL = bash
+
+all: build64 build32
+
+configure64: 
+	set +e; \
+	. "$$_TMP_VARFILE" 2>/dev/null ||:; \
+	unset _TMP_VARFILE; \
+	. "$$_where"/PKGBUILD; \
+	_configure64 $(MAKE)
+
+tools64: configure64
+	set +e; \
+	. "$$_TMP_VARFILE" 2>/dev/null ||:; \
+	unset _TMP_VARFILE; \
+	. "$$_where"/PKGBUILD; \
+	_tools64 $(MAKE)
+
+configure32: tools64
+	set +e; \
+	. "$$_TMP_VARFILE" 2>/dev/null ||:; \
+	unset _TMP_VARFILE; \
+	. "$$_where"/PKGBUILD; \
+	_configure32 $(MAKE)
+
+build64: configure32
+	set +e; \
+	. "$$_TMP_VARFILE" 2>/dev/null ||:; \
+	unset _TMP_VARFILE; \
+	. "$$_where"/PKGBUILD; \
+	_build64 $(MAKE)
+
+build32: configure32
+	set +e; \
+	. "$$_TMP_VARFILE" 2>/dev/null ||:; \
+	unset _TMP_VARFILE; \
+	. "$$_where"/PKGBUILD; \
+	_build32 $(MAKE)
+
+.PHONY: all configure64 tools64 configure32 build64 build32
+.ONESHELL:
