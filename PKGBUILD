@@ -1,0 +1,23 @@
+# Maintainer: KSPAtlas <kspatlas ? disroot _ org>
+_pkgname=nufetch
+pkgname=${_pkgname}-git
+pkgver=r9.df14258
+pkgrel=1
+pkgdesc='Simple nu+figlet based fetch'
+url='https://codeberg.org/KSPAtlas/nufetch'
+source=("git+https://codeberg.org/KSPAtlas/nufetch")
+arch=('any')
+license=('0BSD')
+depends=('git' 'pacman' 'nushell>=0.94.0' 'figlet')
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+package() {
+  cd "$srcdir/$_pkgname"
+
+  install -Dm755 nufetch.nu "${pkgdir}/usr/bin/nufetch"
+}
