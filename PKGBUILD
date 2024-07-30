@@ -4,6 +4,7 @@
 # Contributor: sukanka <su975853527 at gmail dot com>
 _pkgname=siyuan
 pkgname="${_pkgname}-note-bin"
+_appname=SiYuan
 pkgver=3.1.2
 _electronversion=31
 pkgrel=1
@@ -42,18 +43,18 @@ build() {
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Utility|Office;Utility|g" \
-        -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
-    sed "3i\Name[zh_CN]=思源笔记" -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
-    find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
+    sed "s|\/opt\/${_appname}\/${_pkgname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|Utility|Office;Utility|g" \
+        -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    sed "3i\Name[zh_CN]=思源笔记" -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    find "${srcdir}/opt/${_appname}/resources" -type d -exec chmod 755 {} \;
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
-    cp -r "${srcdir}/squashfs-root/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/${_appname}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
-        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
