@@ -3,18 +3,17 @@
 
 _srcname=virtme-ng
 pkgname=$_srcname-git
-pkgver=1.25.r53.g6758f55
+pkgver=1.26.r1.g865b634
 pkgrel=1
 pkgdesc="A tool that allows to easily and quickly recompile and test a Linux kernel, starting from the source code."
 arch=('x86_64')
 url="https://github.com/arighi/virtme-ng"
 license=('GPL-2.0-only')
-depends=('gcc-libs' 'glibc' 'python' 'qemu' 'busybox' 'coreutils' 'python-requests' 'virtiofsd')
-optdepends=('busybox: BusyBox support')
-makedepends=('python-setuptools' 'python-argcomplete' 'python-argparse-manpage' 'cargo' 'git')
+depends=('busybox' 'coreutils' 'gcc-libs' 'glibc' 'python' 'python-requests' 'qemu' 'virtiofsd')
+makedepends=('cargo' 'git' 'python-argcomplete' 'python-argparse-manpage' 'python-setuptools')
 conflicts=('virtme-git' 'virtme-ng')
 source=("git+${url}.git"
-	    "git+https://github.com/arighi/virtme-ng-init.git")
+	"git+https://github.com/arighi/virtme-ng-init.git")
 b2sums=('SKIP'
         'SKIP')
 
