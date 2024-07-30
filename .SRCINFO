@@ -1,0 +1,13 @@
+pkgbase = clio-git
+	pkgdesc = Your friendly and safe CLI Copilot (git build from latest commit to main)
+	pkgver = git
+	pkgrel = 2
+	url = https://github.com/gptscript-ai/clio
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	source = clio::git+https://github.com/gptscript-ai/clio.git#branch=main
+	md5sums = SKIP
+
+pkgname = clio-git
