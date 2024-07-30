@@ -1,6 +1,6 @@
 pkgbase = mpich
 	pkgdesc = An improved implementation of the Message Passing Interface.
-	pkgver = 4.2.1
+	pkgver = 4.2.2
 	pkgrel = 1
 	url = https://mpich.org
 	install = mpich.install
@@ -21,9 +21,9 @@ pkgbase = mpich
 	optdepends = python
 	replaces = mpich2
 	options = !libtool
-	source = https://www.mpich.org/static/downloads/4.2.1/mpich-4.2.1.tar.gz
+	source = https://www.mpich.org/static/downloads/4.2.2/mpich-4.2.2.tar.gz
 	source = mpich.profile
-	sha256sums = 23331b2299f287c3419727edc2df8922d7e7abbb9fd0ac74e03b9966f9ad42d7
+	sha256sums = 883f5bb3aeabf627cb8492ca02a03b191d09836bbe0f599d8508351179781d41
 	sha256sums = b9716439a544511bf88618edeb40c3eb80f1b5d0d9369c30d750251feed02284
 
 pkgname = mpich
