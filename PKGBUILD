@@ -2,8 +2,8 @@
 
 pkgname=semgrep-bin
 _name=semgrep
-pkgver=1.81.0
-pkgrel=2
+pkgver=1.82.0
+pkgrel=1
 pkgdesc="Fast and syntax-aware semantic code pattern search for many languages: like grep but for code"
 arch=(x86_64)
 url=https://github.com/returntocorp/semgrep
@@ -18,11 +18,11 @@ depends=(
 optdepends=('jsonnet: experimental jsonnet support')
 provides=('semgrep')
 options=('!strip')
-source=("https://files.pythonhosted.org/packages/16/b0/d0b15e7a8e61b7fe6b33ba2014bdc9a179bf744df872ae137466a40c3be0/semgrep-1.81.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-any.whl")
-sha256sums=('32d711a5806843c036ca45095110b323622b16eee8d2d7cd02588f40030f85ea')
+source=("https://files.pythonhosted.org/packages/63/76/1fc8cf7b17b381ad0e3855d78fc6c1c47ff7c864b228c6dedc77bbf2ba31/semgrep-1.82.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-any.whl")
+sha256sums=('231a94c5dc3762fb2379d570f0599923f9d9674af639783fe7fa54c109a9b376')
 
 package() {
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps semgrep-1.81.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-any.whl
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps semgrep-1.82.0-cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-any.whl
   python -O -m compileall "${pkgdir}"
 }
 
