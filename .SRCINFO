@@ -1,7 +1,7 @@
 pkgbase = comet-gog
 	pkgdesc = Open Source implementation of GOG Galaxy Communication Service for SDK bundled with GOG games
-	pkgver = v0.1.2
-	pkgrel = 1
+	pkgver = 0.1.2
+	pkgrel = 2
 	url = https://github.com/imLinguin/comet
 	arch = x86_64
 	license = GPL-3.0-only
@@ -9,8 +9,8 @@ pkgbase = comet-gog
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = https://github.com/imLinguin/comet/archive/refs/tags/v0.1.2.tar.gz
-	source = https://github.com/Yepoleb/gog_protocols/archive/5b78acfdc781f230e802476c1134f010463d7a91.tar.gz
+	source = comet-0.1.2.tar.gz::https://github.com/imLinguin/comet/archive/refs/tags/v0.1.2.tar.gz
+	source = gog_protocols-5b78acfdc781f230e802476c1134f010463d7a91.tar.gz::https://github.com/Yepoleb/gog_protocols/archive/5b78acfdc781f230e802476c1134f010463d7a91.tar.gz
 	sha512sums = c782b4b8a8c0cb067c48e16bdc8077c73be481a2148abbd3ffa0ad4470cf65c175e4b3ea5b4469648d51133c545d2e1d2d2b4feb75fa682f703361d1322a5bf0
 	sha512sums = 434f1ecebb4073dd42b6300e487a6eb8c3f9f9acd9ae89782b353cdcf955e698a22d075d33cddcc51d88e9d3e72d72e82dd2ea38594e7c1542129f655c0228bb
 
