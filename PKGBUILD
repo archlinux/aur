@@ -5,12 +5,12 @@
 # Contributor: BenObiWan <benobiwan @t gmail dot com>
 
 pkgname=solarus-git
-pkgver=1.5.3.r1446.g2593c31de
-pkgrel=2
+pkgver=1.5.3.r2217.gcbb29669e
+pkgrel=1
 pkgdesc="An open-source adventure 2D game engine (git version)"
 arch=('i686' 'x86_64')
 url="http://www.solarus-games.org/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('glm'
          'hicolor-icon-theme'
          'libmodplug'
