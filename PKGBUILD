@@ -1,4 +1,5 @@
-# Maintainer: Marco Rubin <marco.rubin@protonmail.com>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: Marco Rubin <marco.rubin@protonmail.com>
 # Contributor: EatMyVenom <eat.my.venomm@gmail.com>
 # Contributor: Andrew Gregory <andrew.gregory.8@gmail.com>
 # Contributor: Lone_Wolf <lonewolf at xs4all dot nl>
