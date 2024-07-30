@@ -3,7 +3,7 @@
 _pkgbase=loop-aes
 pkgname=loop-aes-dkms
 _pkgname=loop-AES
-pkgver=3.8c
+pkgver=3.8d
 pkgrel=1
 pkgdesc="loop Linux kernel module that has AES,Twofish,Blowfish,Serpent cipher built-in (DKMS version)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=("${_pkgbase}")
 install=${pkgname}.install
 source=(https://downloads.sourceforge.net/project/${_pkgbase}/${_pkgbase}/v${pkgver}/${_pkgname}-v${pkgver}.tar.bz2{,.sign}
         'dkms.patch')
-sha256sums=('8bf82950e07e51f6228b083f2dd2906956c2f0e375d79ded593d7b9f56ebf6c4'
+sha256sums=('7dbcdd8616d4570f99e7d60b8e2aa48a27d82597ffb7bf547a4085959ef82c44'
             'SKIP'
             '6dbf652fb60735460e7128b47b4f856d1de780f68be74ed4a7ce524548ac1ff6')
 validpgpkeys=('12D64C3ADCDA0AA427BDACDFF0733C808132F189') # Jari Ruusu (2013) <jariruusu@users.sourceforge.net>
