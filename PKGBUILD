@@ -3,11 +3,11 @@
 pkgname=tokentool-bin
 _pkgname=TokenTool
  pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Token creation tool to create png images suitable for Virtual Table Tops."
 arch=('x86_64')
 url="http://rptools.net"
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
 provides=('tokentool')
 conflicts=('tokentool')
 install=tokentool-bin.install

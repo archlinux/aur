@@ -1,11 +1,11 @@
 pkgbase = tokentool-bin
 	pkgdesc = A Token creation tool to create png images suitable for Virtual Table Tops.
 	pkgver = 2.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rptools.net
 	install = tokentool-bin.install
 	arch = x86_64
-	license = AGPL3
+	license = AGPL-3.0-or-later
 	provides = tokentool
 	conflicts = tokentool
 	source = https://github.com/RPTools/TokenTool/releases/download/2.2.2/tokentool_2.2.2_amd64.deb
