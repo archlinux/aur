@@ -7,6 +7,7 @@ pkgdesc="Versatile ncurses-based hex editor."
 arch=('x86_64')
 url="https://github.com/prso/hexcurse"
 license=('GPL')
+makedepends=('git')
 depends=('ncurses')
 provides=('hexcurse')
 conflicts=('hexcurse')
