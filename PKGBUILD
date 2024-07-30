@@ -1,8 +1,8 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=byedpi-bin
-pkgver=0.11.2
-pkgrel=3
+pkgver=0.12
+pkgrel=1
 pkgdesc="Bypass DPI"
 arch=(aarch64 armv6h armv7h x86_64)
 url="https://github.com/hufrea/${pkgname%-bin}"
@@ -18,10 +18,10 @@ source_armv6h=( $url/releases/download/v$pkgver/${pkgname%-bin}-${pkgver:2}-armv
 source_armv7h=( $url/releases/download/v$pkgver/${pkgname%-bin}-${pkgver:2}-armv7l.tar.gz)
 source_x86_64=( $url/releases/download/v$pkgver/${pkgname%-bin}-${pkgver:2}-x86_64.tar.gz)
 b2sums=('676ed14a41fc3eca946aa731e75604c50e5459351d864da9192b332e3e34d3a4d9bb54d789a749b64de1fbd7532198ec9ffbdd627e092a68f4997d0006dbebce')
-b2sums_aarch64=('e7d8f76386799bdcbac9d39ee5cc14269da90191c4888e4a90c681d5b9308303f539697ad59349f293226f0a5aee71e23519a1ce3cf984ab62c80eff2bb43468')
-b2sums_armv6h=('2aaccf3b4f3ce4795a9af17c1506b248cf46963ab7321d9a32013e6ddef95d654706c985534ee76683642753c902f411c0af933763a6342324745840843a54b2')
-b2sums_armv7h=('6d04e255a802525bd822540566141ef83d347f8b8c89d509ee21430409ecbee65b8fff54082be11c13da721f7bda76d08644c494267e46081d1676cd4c51f8b6')
-b2sums_x86_64=('57e190c8dbc4c97f9c322100771b19946693758a8f9649ee25da3fa30787bd25e13acef8b8c8dd0f915c465b572049f44b7f6d65d1cd08889d5884a49e6c1031')
+b2sums_aarch64=('907fb75f971cb43e6d10144c573fff3ac986f0a01c517f13b9ebc93177ee11a6cd97d570dccb7941f32e56ab3f6c970da9d1a29da9d19dc8cdefd341e0ab8a5e')
+b2sums_armv6h=('d02f27a50e068c8fa2f1fe6153814c3767714bf7ff9e002390e6f601f60e9987335e71ef554709bbb5949fab7885d0dd81342eee28d09e1d8b1020bdfc38e0f5')
+b2sums_armv7h=('703bdb6c3cfee65ba78ed1e2c453c8d85b1bd80ff187bc5f585c049e2aa30a280c02639a95654430422308d0972f67719a275ceb14fb7b6f47b1d08b01e3cdb1')
+b2sums_x86_64=('68a1386fad473b10e253f3b3b774201feaf2b124c1571b0a0102df2a3d1194a353ac02a1e0dbb2cbd4e312899b0ae08c07176b269f068eb2800bc53994396b3c')
 
 package() {
   install -vDm755 ciadpi-*                   "$pkgdir"/usr/bin/ciadpi
