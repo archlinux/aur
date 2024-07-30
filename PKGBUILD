@@ -40,6 +40,7 @@ build() {
 package() {
   cd "${srcdir}/${_pkgsrc}/core"
   make DESTDIR="${pkgdir}" install
+  libtool --finish "${pkgdir}/usr/lib"
 
   install -Dm644 "README"  "${pkgdir}/usr/share/doc/${_pkgname}/README"
   # install -Dm644 "NEWS"    "${pkgdir}/usr/share/doc/${_pkgname}/NEWS"
