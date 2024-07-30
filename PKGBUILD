@@ -53,7 +53,7 @@ build() {
   LDFLAGS+="-L/usr/lib/bertini"
   ./configure \
     --prefix="/usr" \
-    --includedir="/usr/include/${_pkgname}"
+    --includedir="/usr/include"
   make 
 }
 
