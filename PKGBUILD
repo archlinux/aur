@@ -2,7 +2,7 @@
 _pkgname=nufetch
 pkgname=${_pkgname}-git
 pkgver=r9.df14258
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple nu+figlet based fetch'
 url='https://codeberg.org/KSPAtlas/nufetch'
 source=("git+https://codeberg.org/KSPAtlas/nufetch")
@@ -10,7 +10,7 @@ arch=('any')
 license=('0BSD')
 depends=('git' 'nushell>=0.94.0' 'figlet')
 sha256sums=('SKIP')
-conflict=('nufetch')
+conflicts=('nufetch')
 provides=('nufetch')
 
 pkgver() {
@@ -22,4 +22,5 @@ package() {
   cd "$srcdir/$_pkgname"
 
   install -Dm755 nufetch.nu "${pkgdir}/usr/bin/nufetch"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/0BSD.txt"
 }
