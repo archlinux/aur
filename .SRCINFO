@@ -1,6 +1,6 @@
 pkgbase = clai
 	pkgdesc = Command line artificial intelligence - Multi-vendor generation in your terminal
-	pkgver = 1.4.6
+	pkgver = 1.4.7
 	pkgrel = 1
 	url = https://github.com/baalimago/clai
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = clai
 	makedepends = go
 	depends = glibc
 	optdepends = glow: for formatted markdown output when querying text responses
-	source = clai-1.4.6.tar.gz::https://github.com/baalimago/clai/archive/refs/tags/v1.4.6.tar.gz
-	sha256sums = e6ad1d2212a41297ad0cce31361ef4606b3888dcf36bbfbe9472e47c4cd59aa9
+	source = clai-1.4.7.tar.gz::https://github.com/baalimago/clai/archive/refs/tags/v1.4.7.tar.gz
+	sha256sums = 883d248c5d615d4a8dfb399712a4674aa18612396ef481bcc3cf5cd4b64cdc75
 
 pkgname = clai
