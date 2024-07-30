@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zyplayer-git
 _pkgname=ZyPlayer
-pkgver=3.3.5.r0
-_electronversion=19
-_nodeversion=20
+pkgver=3.3.7.r1
+_electronversion=22
+_nodeversion=22
 pkgrel=1
 pkgdesc="跨平台桌面端视频资源播放器,免费高颜值"
 arch=('any')
@@ -16,12 +16,14 @@ conflicts=(
 )
 depends=(
     "electron${_electronversion}"
+    'ffmpeg'
 )
 makedepends=(
     'git'
     'npm'
     'yarn'
-    'nodejs'
+    'nvm'
+    'curl'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
@@ -47,7 +49,7 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -66,8 +68,8 @@ build() {
         echo "Your network is OK."
     fi
     export PUPPETEER_SKIP_DOWNLOAD='true'
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn run build:unpack
+    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production yarn run build:unpack
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
