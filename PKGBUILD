@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.1.0.r211.g680192a0
+pkgver=0.1.0.r226.ga7c9bfa5
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('x86_64')
@@ -31,8 +31,9 @@ makedepends=(
 	'vulkan-memory-allocator>=3.1'
 	'xbyak>=7.07'
 	'xxhash>=0.8.2'
-	# 'zydis>=4.1'
+	'zycore-c' # 'zydis>=4.1'
 )
+optdepends=('renderdoc')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=(
