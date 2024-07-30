@@ -42,15 +42,13 @@ prepare() {
   patch -p1 -i "${srcdir}/${_pkgname}_fix_boost_timer_step2.patch"
   patch -p1 -i "${srcdir}/${_pkgname}_fix_boost_timer_timing.patch"
   patch -p1 -i "${srcdir}/${_pkgname}_fix_boost_timer_xml_preferences.patch"
-
-  cd "${srcdir}/${_pkgsrc}"
-  libtoolize
-  autoreconf -vfi
-  autoupdate
 }
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
+  libtoolize
+  autoreconf -vfi
+  autoupdate
   CPPFLAGS+="-I/usr/include/bertini"
   LDFLAGS+="-L/usr/lib/bertini"
   ./configure \
