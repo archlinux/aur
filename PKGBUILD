@@ -1,12 +1,12 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=gingerblue
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="for musicians who compose, record, and share original music"
 arch=("x86_64")
 url="https://www.gingerblue.org/"
-license=("GPL")
+license=("GPL-3.0-or-later")
 depends=("intltool" "gst-plugins-bad" "libshout" "gtk3" "libchamplain" "geocode-glib-2" "geoclue" "glib2" "gstreamer" "libxml2" "libvorbis" "hicolor-icon-theme")
 provides=("gingerblue")
 source=("https://www.gingerblue.org/src/${pkgname}-${pkgver}.tar.xz")
