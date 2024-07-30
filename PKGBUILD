@@ -3,10 +3,10 @@
 # Maintainer: Lawrence Stalder <lawrence.stalder@pm.me>
 
 pkgname=nymvpn-x-bin
-pkgver=0.1.7
+pkgver=0.1.8
 # upstream version
-_pkgver=0.1.7
-_release_tag=nym-vpn-x-v0.1.7
+_pkgver=0.1.8
+_release_tag=nym-vpn-x-v0.1.8
 pkgrel=1
 pkgdesc='NymVPN next desktop client'
 arch=('x86_64')
@@ -23,8 +23,8 @@ source=("$url/releases/download/$_release_tag/nymvpn-x_${_pkgver}_linux_x64"
     'nymvpn-x.desktop'
     'nymvpn-x.svg')
 sha256sums=(
-    'd8ffdfcf6fc2e952775c1944be28c4ce4021436f0748bea7fc2ceb4f8803f63e' 
-    '4a68bccaa807684d2fd45832cd6df24f977e8d4e1c7a37de583c54423c21d259' 
+    'b4469e793590849214a414216b4da5f3d3a3538ff97f4ae673b8398e703687a4' 
+    '71adbcd7b933b1e68ef6be7f43fda4e291b99a710ac36616238a8ce6ce8dc8df' 
     '8bf0dbd2a6c312630e1c2e866431d0361b24975ba17b4ab14c891efea326251c' 
     'c15b6028f25ea931c9bedf2b5600f91d6f94f15066afdbd7f789c770ea250e06')
 
