@@ -1,7 +1,7 @@
 # Maintainer: Luke Taylor <luket1@proton.me>
 
 pkgname=fooyin-git
-pkgver=r2663.d9a96573
+pkgver=r2730.c8a7c66a
 pkgrel=1
 pkgdesc="A customisable music player"
 url="https://github.com/fooyin/fooyin"
@@ -26,10 +26,12 @@ makedepends=(
     'ninja'
     'pkgconf'
     'qt6-tools'
+    'libopenmpt'
 )
 optdepends=(
     'sdl2: For the SDL2 audio output plugin'
     'libpipewire: For the PipeWire audio output plugin'
+    'libopenmpt: For the OpenMPT audio input plugin'
 )
 provides=('fooyin')
 source=("$pkgname"::"git+https://github.com/fooyin/fooyin.git"
