@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/LiteLoaderQQNT/LiteLoaderQQNT"
 license=('MIT')
 depends=("linuxqq")
-makedepends=("npm" "git")
+makedepends=("git")
 conflicts=("linuxqq-appimage" "liteloader-qqnt")
 provides=("liteloader-qqnt")
 source=(
@@ -17,7 +17,7 @@ source=(
 	"liteloader-qqnt-patch.hook")
 
 md5sums=("SKIP"
-	 "903c2cb02d8d08e34fbc776e4982133b"
+	 "95b35f4b4f6c9f0890db8b96579a875b"
 	 "80b6a71e2e34337022bf947324cdcd19")
 
 pkgver() {
@@ -36,19 +36,19 @@ build() {
 
 package() {
 	# prepare to copy files
-	mkdir -p "${pkgdir}/opt/LiteLoader"
-	mkdir -p "${pkgdir}/opt/QQ/resources/app/application"
+	mkdir -p "${pkgdir}/opt/LiteLoaderQQNT"
+	#mkdir -p "${pkgdir}/opt/QQ/resources/app/application"
 
 	# copy files
-	cp -rf "${_pkgname}"/* "${pkgdir}/opt/LiteLoader"
-	cp -f "${_pkgname}/src/preload.js" "${pkgdir}/opt/QQ/resources/app/application/preload.js"
+	cp -rf "${_pkgname}"/* "${pkgdir}/opt/LiteLoaderQQNT"
+	# cp -f "${_pkgname}/src/preload.js" "${pkgdir}/opt/QQ/resources/app/application/preload.js"
 
 	# modify premissions
-	chmod -R 0777 "${pkgdir}/opt/LiteLoader"
+	# chmod -R 0777 "${pkgdir}/opt/LiteLoaderQQNT"
 
 	# clean up
 	# - remove .git/
-	rm -rf "${pkgdir}/opt/QQ/resources/app/LiteLoader/.git"
+	# - rm -rf "${pkgdir}/opt/QQ/resources/app/LiteLoader/.git"
 
 	# install hooks
 	install -Dm644 "${srcdir}/liteloader-qqnt-patch.hook" "${pkgdir}/etc/pacman.d/hooks/liteloader-qqnt-patch.hook"

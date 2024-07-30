@@ -1,4 +1,5 @@
 LiteLoaderQQNT/
+*.tar
 *.tar.xz
 *.tar.gz
 *.tar.zst
