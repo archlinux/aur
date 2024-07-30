@@ -1,5 +1,3 @@
 [python-trame-jupyter-extension]
-source = "github"
-github = "Kitware/trame-jupyter-extension"
-use_latest_release = "true"
-prefix = "v"
+source = "pypi"
+pypi = "trame-jupyter-extension"
