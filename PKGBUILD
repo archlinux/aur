@@ -28,7 +28,7 @@ build() {
   autoupdate
   ./configure \
     --prefix="/usr" \
-    --includedir="/usr/include/${_pkgname}"
+    --includedir="/usr/include"
   make
 }
 
