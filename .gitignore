@@ -1,5 +1,5 @@
 pkg/
 src/
-comet-aarch64-unknown-linux-gnu
-comet-x86_64-unknown-linux-gnu
+comet-*-x86_64-unknown-linux-gnu
+comet-*-aarch64-unknown-linux-gnu
 *.zst
