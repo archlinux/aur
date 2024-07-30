@@ -1,9 +1,10 @@
 pkgbase = oblivion-desktop-bin
 	pkgdesc = Unofficial Warp Client for Windows/Mac/Linux
-	pkgver = 0.35.1_beta
-	pkgrel = 2
+	pkgver = 0.51.0_beta
+	pkgrel = 1
 	url = https://github.com/bepass-org/oblivion-desktop
 	arch = x86_64
+	arch = aarch64
 	license = custom:oblivion-desktop
 	depends = at-spi2-core
 	depends = gtk3
@@ -17,9 +18,11 @@ pkgbase = oblivion-desktop-bin
 	optdepends = libappindicator-gtk3: systray and indicator support
 	provides = oblivion-desktop
 	conflicts = oblivion-desktop
-	source = oblivion-desktop-0.35.1-beta.deb::https://github.com/bepass-org/oblivion-desktop/releases/download/v0.35.1-beta/oblivion-desktop-linux-amd64.deb
 	source = oblivion-desktop-LICENSE::https://github.com/bepass-org/oblivion-desktop/blob/main/LICENSE.md
-	sha256sums = 85c6b4030b692ff778d60eee03a02a92ce10aeba6bb64c8c3c4ace7df326ad10
 	sha256sums = SKIP
+	source_x86_64 = oblivion-desktop-0.51.0-beta-amd64.deb::https://github.com/bepass-org/oblivion-desktop/releases/download/v0.51.0-beta/oblivion-desktop-linux-amd64.deb
+	sha256sums_x86_64 = 218661993882107a248daac593c52ff83f651c34e61e4143db6b5d98774375e0
+	source_aarch64 = oblivion-desktop-0.51.0-beta-arm64.deb::https://github.com/bepass-org/oblivion-desktop/releases/download/v0.51.0-beta/oblivion-desktop-linux-arm64.deb
+	sha256sums_aarch64 = 8a15b47b712334820b168f21576d51570a6ce95cbc7a8297341a7c7de473d997
 
 pkgname = oblivion-desktop-bin
