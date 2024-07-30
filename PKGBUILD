@@ -2,7 +2,7 @@
 
 pkgname=python-ipware
 pkgver=3.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Returns the best matched IP address from a given HTTP(s) header in Python"
 arch=('any')
 url="https://github.com/un33k/python-ipware"
@@ -12,6 +12,7 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-setuptools'
+  'python-wheel'
 )
 conflicts=(
   'python-django-ipware'
