@@ -1,21 +1,23 @@
 # Maintainer: Thulinma <jaron@vietors.com>
 pkgname=mistserver
 pkgdesc="The MistServer media server toolkit"
-pkgver=3.2.2
-pkgrel=2
+pkgver=3.4
+pkgrel=1
 license=('Unlicense')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://mistserver.org"
-depends=('srt' 'libsrtp')
-makedepends=('meson' 'srt' 'libsrtp')
+# Note: mbedtls is not a dep since it must be build as a subproject.
+# The reason for this is that the mbedtls package in Arch is not compiled with dTLS enabled.
+depends=('srt' 'libsrtp' 'librist')
+makedepends=('meson' 'srt' 'libsrtp' 'librist')
 source=("https://github.com/DDVTECH/mistserver/archive/${pkgver}.tar.gz")
-md5sums=('d09f18591a0d2d4c374a9a1ac4213674')
+md5sums=('11122dcd9ae208616f0a9daa5074fbfe')
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   echo ${pkgver} > VERSION
-  meson setup build --buildtype release --prefix "${pkgdir}/usr" --force-fallback-for librist,mbedtls -DRELEASE="Generic_${CARCH}"
+  meson setup build --buildtype release --prefix "${pkgdir}/usr" --force-fallback-for mbedtls -DRELEASE="Generic_${CARCH}"
   cd build
-  meson configure -Dlibrist:default_library=static -Dmbedtls:default_library=static
+  meson configure -Dmbedtls:default_library=static
   ninja
 }
 

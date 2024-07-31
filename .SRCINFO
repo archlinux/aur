@@ -1,7 +1,7 @@
 pkgbase = mistserver
 	pkgdesc = The MistServer media server toolkit
-	pkgver = 3.2.2
-	pkgrel = 2
+	pkgver = 3.4
+	pkgrel = 1
 	url = https://mistserver.org
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,11 @@ pkgbase = mistserver
 	makedepends = meson
 	makedepends = srt
 	makedepends = libsrtp
+	makedepends = librist
 	depends = srt
 	depends = libsrtp
-	source = https://github.com/DDVTECH/mistserver/archive/3.2.2.tar.gz
-	md5sums = d09f18591a0d2d4c374a9a1ac4213674
+	depends = librist
+	source = https://github.com/DDVTECH/mistserver/archive/3.4.tar.gz
+	md5sums = 11122dcd9ae208616f0a9daa5074fbfe
 
 pkgname = mistserver
