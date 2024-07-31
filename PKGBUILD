@@ -32,7 +32,7 @@ optdepends=(
 install=petsc.install
 source=(http://web.cels.anl.gov/projects/petsc/download/release-snapshots/${pkgname}-${pkgver}.tar.gz
         test_optdepends.sh)
-sha512sums=('699bbf3ddfc8fe8ebd4a1cb51a04108c10cafb65d30e7a74a9bf1b1ddd0f4350f0b893b256ea8a835e076e0a2f982189902bff30a9e301b3e04b539d2d2b6f99'
+sha512sums=('1a741bf48328f4853ff822de3feb1b7539358171dbf80d46128563e38d6f2fe6f16547094e05b57c0377988bcb43cf98cd2ccbfbe2eefdd7502356d1a09b8444'
             'aef377e84e6bf5aea114f97b1bac8301203e3a6e736cacb49f01a2e95a29022062fc0d9e85fe8ba1ae9bdc1ffa6c007a031327c185e4966d3393adf038fc0993')
 
 PETSC_ARCH=linux-c-opt
