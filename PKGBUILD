@@ -1,7 +1,7 @@
 # Maintainer: username227 <gfrank227 at gmail dot com> 
 
 pkgname=deemix-fix-gui-appimage
-pkgver=r255.9de95fa42e
+pkgver=r261.b01bda5
 pkgrel=1
 pkgdesc='A GUI electron app for the deemix library'
 url=https://gitlab.com/deeplydrumming/DeemixFix

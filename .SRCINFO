@@ -1,6 +1,6 @@
 pkgbase = deemix-fix-gui-appimage
 	pkgdesc = A GUI electron app for the deemix library
-	pkgver = r255.9de95fa42e
+	pkgver = r261.b01bda5
 	pkgrel = 1
 	url = https://gitlab.com/deeplydrumming/DeemixFix
 	arch = x86_64
