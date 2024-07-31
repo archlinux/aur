@@ -8,7 +8,7 @@ arch=("any")
 url="https://github.com/ProtonVPN/python-proton-vpn-killswitch-network-manager"
 license=("GPL3")
 groups=("ProtonVPN")
-depends=("python-proton-vpn-network-manager" "python-proton-vpn-killswitch")
+depends=("python-proton-vpn-network-manager" "python-proton-vpn-api-core")
 makedepends=("git" "python-setuptools")
 source=("git+https://github.com/ProtonVPN/${pkgname}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
