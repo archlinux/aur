@@ -2,7 +2,7 @@
 pkgname=sonyheadphonesclient-bin
 pkgver=1.3.2
 pkgrel=1
-epoch=3
+epoch=4
 pkgdesc="A {Windows, macOS, Linux} client recreating the functionality of the Sony Headphones app"
 arch=("x86_64")
 url="https://github.com/Plutoberth/SonyHeadphonesClient"
@@ -51,10 +51,10 @@ package() {
 	echo "[Desktop Entry]
 	Name=Sony Headphones Client
 	Exec=SonyHeadphonesClient
-	Terminal=falsey
+	Terminal=false
 	Type=Application
 	Icon=application-executable
-	Categories=Accessoires;" >>"$pkgdir/usr/share/applications/SonyHeadphonesClient.desktop"
+	Categories=Accessories;" >>"$pkgdir/usr/share/applications/SonyHeadphonesClient.desktop"
 
 	# License
 	mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
