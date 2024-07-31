@@ -1,5 +1,5 @@
 pkgbase = flowfox-bin
-	pkgdesc = Fork of Firefox with minimal changes, including rebinding of default keyboard shortcuts to better match Chromium. Not affiliated with Mozilla.
+	pkgdesc = Fork of Firefox with minimal changes, including rebinding of default keyboard shortcuts to better match Chromium. Not affiliated with Mozilla. (Binary version)
 	pkgver = 128.0.4
 	pkgrel = 1
 	url = https://github.com/Troplo/ffox
@@ -42,6 +42,7 @@ pkgbase = flowfox-bin
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
+	conflicts = flowfox
 	options = !strip
 	source = flowfox.sh
 	source = flowfox.desktop
