@@ -1,5 +1,5 @@
 pkgname=matrix-media-repo
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="Highly configurable multi-domain media repository for Matrix."
 arch=("any")
