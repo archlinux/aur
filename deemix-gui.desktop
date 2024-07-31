@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Deemix
+Exec=deemix-gui %U
+Terminal=false
+Type=Application
+Icon=deemix-fix
+StartupWMClass=deemix-gui
+X-AppImage-Version=2022.12.14-r222.5d447b6035
+Categories=AudioVideo,Audio;
