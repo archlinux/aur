@@ -1,13 +1,13 @@
 # Maintainer: Matthias Gerstner <matthias.gerstner@nefkom.net>
 
 pkgname='libxpp'
-pkgver=v0.2.2
+pkgver=v0.3.0
 pkgrel=1
 pkgdesc='A library providing an object orientented C++ API wrapper for parts of the X11 API'
 arch=('i686' 'x86_64')
 url='https://github.com/gerstner-hub/libxpp'
 license=('MIT')
-_tag='e55326adbffabf187d3c2568e83790c5a09a2086' # v0.2.2
+_tag='9c11c2b7e20e46d181dfa7c582c3bdfc72eb1dc6' # v0.3.0
 source=("git+${url}.git?signed#tag=$_tag")
 sha256sums=('SKIP')
 # note: this also depends on libcosmos, to be installed manually from AUR as well
