@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=lilypond-docs
-pkgver=2.24.3
+pkgver=2.24.4
 pkgrel=1
 pkgdesc="Offline documentation for lilypond"
 arch=(any)
@@ -17,4 +17,4 @@ package(){
   cp -R "${srcdir}/share/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('58e41af8f4691cf518d4204ad2b278abde9ff2139a54453d17bcb90a15d7e5b7')
+sha256sums=('b387da765df1e5907800ce99af66418f50c2100ddcfb6e50911b84b65d722b3b')
