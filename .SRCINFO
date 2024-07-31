@@ -1,14 +1,14 @@
 pkgbase = gitfetch
-	pkgdesc = Gitfetch performs git featch on multiple repositories, can be used as a daemon
-	pkgver = 0.3
+	pkgdesc = A command-line tool to fetch and display Git contribution information
+	pkgver = 0.1.1
 	pkgrel = 1
-	url = https://github.com/mikolajb/gitfetch
+	url = https://github.com/FabricSoul/gitfetch
 	arch = x86_64
-	arch = i686
-	license = MIT
-	makedepends = go
-	makedepends = glide
-	source = gitfetch-0.3.tar.gz::https://github.com/mikolajb/gitfetch/archive/0.3.tar.gz
-	sha256sums = 1e1aa639c092ba0670f7037fbcf2835ee598e973a3f7f86fdf3679589bfda13f
+	arch = aarch64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	source = gitfetch-0.1.1.tar.gz::https://github.com/FabricSoul/gitfetch/archive/0.1.1.tar.gz
+	sha256sums = ca30f159d6b2eb8829b06ad1a72f053dbbe456acf62d8407f7e8a038191547b5
 
 pkgname = gitfetch

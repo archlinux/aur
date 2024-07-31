@@ -1,41 +1,24 @@
-# Maintainer: Mikołaj Baranowski <mikolajb@gmail.com>
-
+# Maintainer: FabricSoul <your-email@example.com>
 pkgname=gitfetch
-pkgver=0.3
+pkgver=0.1.1
 pkgrel=1
-pkgdesc='Gitfetch performs git featch on multiple repositories, can be used as a daemon'
-license=('MIT')
-arch=('x86_64' 'i686')
-url='https://github.com/mikolajb/gitfetch'
+pkgdesc="A command-line tool to fetch and display Git contribution information"
+arch=('x86_64' 'aarch64')
+url="https://github.com/FabricSoul/gitfetch"
+license=('GPL3')
 depends=()
-makedepends=('go' 'glide')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mikolajb/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('1e1aa639c092ba0670f7037fbcf2835ee598e973a3f7f86fdf3679589bfda13f')
+makedepends=('rust' 'cargo')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=("ca30f159d6b2eb8829b06ad1a72f053dbbe456acf62d8407f7e8a038191547b5")
 
 build() {
-  msg2 'Settgin GOPATH'
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  mkdir -p "${srcdir}/gopath"
-  export GOPATH="${srcdir}/gopath"
-
-  msg2 'Getting go dep tool'
-  go get github.com/golang/dep/cmd/dep
-
-  mkdir -p "${GOPATH}/src/github.com/mikolajb"
-  ln -sf "$(pwd)" "${GOPATH}/src/github.com/mikolajb/${pkgname}"
-  cd "${GOPATH}/src/github.com/mikolajb/${pkgname}"
-
-  msg2 'Fetching dependencies...'
-  "$GOPATH/bin/dep" ensure
-
-  msg2 'Compiling...'
-  go build -o gitfetch
+  cd "$pkgname-$pkgver"
+  cargo build --release --locked
 }
 
 package() {
-  msg2 'Installing...'
-
-  install -Dm755 ${srcdir}/${pkgname}-${pkgver}/gitfetch ${pkgdir}/usr/bin/gitfetch
-  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/gitfetch.service ${pkgdir}/usr/lib/systemd/user/gitfetch.service
-  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/gitfetch.timer ${pkgdir}/usr/lib/systemd/user/gitfetch.timer
+  cd "$pkgname-$pkgver"
+  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
