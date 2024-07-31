@@ -1,0 +1,16 @@
+pkgbase = xwinwrap-mmhobi7-git
+	pkgdesc = X11 Window in desktop enviroment background (mmhobi7 fork)
+	pkgver = r30.391519d
+	pkgrel = 1
+	url = https://github.com/mmhobi7/xwinwrap
+	arch = x86_64
+	makedepends = git
+	depends = libx11
+	depends = libxrender
+	depends = libxext
+	provides = xwinwrap
+	conflicts = xwinwrap
+	source = https://github.com/mmhobi7/xwinwrap.git
+	sha256sums = SKIP
+
+pkgname = xwinwrap-mmhobi7-git
