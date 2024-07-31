@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=planify
 _app_id=io.github.alainm23.planify
-pkgver=4.10.2
+pkgver=4.10.3
 pkgrel=1
 pkgdesc="Task manager with Todoist and Nextcloud support"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=(
   'evolution-data-server'
   'granite7'
   'gtksourceview5'
-#  'gxml'  # only compatible with >=0.20.0 / <0.20.3, use subproject for now
+  'gxml'  # only compatible with >=0.20.0 / <=0.20.3
   'libadwaita'
   'libportal-gtk4'
   'webkitgtk-6.0'
@@ -24,10 +24,10 @@ makedepends=(
 )
 conflicts=('elementary-planner')
 source=("git+https://github.com/alainm23/planify.git#tag=$pkgver")
-sha256sums=('611dbf8a36108d0669f3178cd68843c37c5f0c6e4247679de99ea9ce292c9a51')
+sha256sums=('9f243ea6d9f39e499caa292aca85f0709d5e72bc1e98f90d75bf8431225cbd3d')
 
 build() {
-  arch-meson "$pkgname" build --wrap-mode=forcefallback
+  arch-meson "$pkgname" build -Dprofile=default
   meson compile -C build
 }
 
