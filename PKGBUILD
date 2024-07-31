@@ -1,17 +1,14 @@
 # Maintainer: Tjw123hh <tjw123hh@outlook.com>
 
 pkgname=noto-fonts-cjk-chws
-pkgver=20230817
-#_commit=3f28728a4c42a1a102cbd818b48daec485ac5c5e
-pkgrel=2
+pkgver=20240731
+pkgrel=1
 pkgdesc="Google Noto CJK fonts, with OpenType chws/vchw features added using [chws_tool](https://github.com/googlefonts/chws_tool)."
 arch=("any")
 url="https://github.com/tjw123hh/noto-cjk-chws"
 license=("OFL-1.1")
 conflicts=("noto-fonts-cjk")
 provides=("noto-fonts-cjk")
-#makedepends=(git)
-#source=(git+https://github.com/tjw123hh/noto-cjk-chws.git#commit=$_commit)
 source=("${pkgname}-${pkgver}-NotoSansCJK-Black.ttc::https://github.com/tjw123hh/noto-cjk-chws/raw/main/Sans/OTC/NotoSansCJK-Black.ttc"
         "${pkgname}-${pkgver}-NotoSansCJK-Bold.ttc::https://github.com/tjw123hh/noto-cjk-chws/raw/main/Sans/OTC/NotoSansCJK-Bold.ttc"
         "${pkgname}-${pkgver}-NotoSansCJK-DemiLight.ttc::https://github.com/tjw123hh/noto-cjk-chws/raw/main/Sans/OTC/NotoSansCJK-DemiLight.ttc"
@@ -34,13 +31,13 @@ sha256sums=('699a6a7099409d5d274d2544fce0e9c5ccc348145da36f8d0b6fc29113b7e843'
             '161129bb85f76584623aabac3f67cb675b8af09fc725bd336ae2eabc39fe9853'
             '0f44e63bf23ae5345ef375e1ec50a3668bce6c1095f795399c0bc2f3f0c5551b'
             '5cad385ce9ae71b1b349394ada7cf899062662feb0e595773f7aee14afee69f3'
-            'd2ba1c79a4e30dc7067caf0bc8bd02669ddc45d44a943cace19c717ca0683f0b'
-            'dc3f58516f68ebdce65161ed9d67d1121ff42662a898e4aab207f0b5fb4dfd00'
-            '4a8439fddf68314af78d12f2e9d1d6be1f0a3d078d67e6caf8d2f96e190a8dd1'
-            'f2d1e1cd8f5d6edb130ff3d0a5dd4fba169aa00c8be0758829ad6c416e3141f5'
-            '98e20ba551b137de3a157d33f32f48f90cd60a65237ae5f19d1f70eec7d517ce'
-            '695fc2cd994b9cf160b68d303c5c119c7cd8b35b11a6bf2cfab84c9f5c4fa91e'
-            '85e6b492eae3033d2b4de826a9b9e9ae403c1fabccc71f07836d7357adf13a60'
+            '55580bbe49336e0630d9b7685b0b76ff80b4e62d64a2b2dbcfa33460a45bfbb5'
+            '696f038cf8158d47f686e3c25f1b1acd38c44d893113a7be0982a3e993250731'
+            '14a6066e68c64b38388a5a93f869c457d88ac37d4088a4633568bef74d4b775f'
+            'b35b1d882f5288b6ba48fb72c559c62186aca6e559324617b4f7056807478b18'
+            'baabd72578a54764bc1012cf35b1d70a68be4190c2ed043f40d9d35a72eaac5a'
+            '9a87cc34a61cc6074c6200c53ad530a24bd096cae361eb7a654f8af8358e753d'
+            'e803ee054cd586a01a58dc83fe24b0cb63ef4bcb5ce51f242719ec0207badf58'
             '6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2')
 package() {
   for file in ${pkgname}-${pkgver}-*.ttc; do
