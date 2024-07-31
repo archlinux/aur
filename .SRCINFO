@@ -1,0 +1,18 @@
+pkgbase = 2048-rs-git
+	pkgdesc = CLI implementation of the popular 2048 game written in Rust
+	pkgver = 0.5.2.r75.77fa495
+	pkgrel = 1
+	url = https://github.com/pierrechevalier83/2048-rs
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	provides = 2048-rs=0.5.2.r75.77fa495
+	conflicts = 2048-rs
+	source = git+https://github.com/pierrechevalier83/2048-rs.git
+	sha256sums = SKIP
+
+pkgname = 2048-rs-git
