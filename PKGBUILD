@@ -4,7 +4,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=rio
-_pkgver=1.2.0
+_pkgver=1.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,7 +17,6 @@ depends=(
   r-data.table
   r-haven
   r-lifecycle
-  r-nanoparquet
   r-r.utils
   r-readr
   r-readxl
@@ -28,6 +27,7 @@ checkdepends=(
   r-arrow
   r-fst
   r-hexview
+  r-nanoparquet
   r-pzfx
   r-qs
   r-readods
@@ -44,6 +44,7 @@ optdepends=(
   r-jsonlite
   r-knitr
   r-magrittr
+  r-nanoparquet
   r-pzfx
   r-qs
   r-readods
@@ -56,8 +57,8 @@ optdepends=(
   r-yaml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ffe623ea813964f3666f805fbf45b7ca')
-b2sums=('56344c465b0b5476607495e8ad38e3c2beeec65df1afdeba363066d4839a2575811a8c9d0781cc665f21801a81eefbd3e15120287af9dbc1f8142df98074f829')
+md5sums=('5b0d23deb7da2a35c064e43143e8208d')
+b2sums=('b29dad25752f6106132ae359e2b54ecbd2699d7bdf26851cf40fa825c65e28cd95fadf1bf6c7ed58c3ab4dff0227e4e6debb33abaf1db43b6b6d0ca357edc2a9')
 
 build() {
   mkdir build
