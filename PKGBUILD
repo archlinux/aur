@@ -8,7 +8,7 @@
 _pkgname=elan
 pkgname=${_pkgname}-lean
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Lean version manager"
 arch=('x86_64')
 url="https://github.com/leanprover/elan"
@@ -25,6 +25,7 @@ options=(!lto)
 
 build() {
     cd "$srcdir/$_pkgname-${pkgver}"
+    cargo update -p time
     cargo build --release --features no-self-update --bin elan-init
 }
 
