@@ -4,19 +4,20 @@
 # then please put 'unknown'.
 
 # Maintainer: Your Name <youremail@domain.com>
-pkgname="tpfanctl"
+_pkgname="tpfanctl"
+pkgname="${pkgname}"
 pkgver=0.1.1
 pkgrel=1
 pkgdesc="A simple ThinkPad fan control CLI for Linux, written in Rust."
 arch=("x86_64")
-url="https://github.com/ezntek/tpfanspeed/archive/refs/tags/v${pkgver}.tar.gz"
+url="https://github.com/ezntek/tpfanspeed"
 license=('MPL-2.0')
 groups=()
 provides=("tpfanctl" "setfan")
 conflicts=("tpfanctl" "setfan")
 depends=("lm_sensors")
 makedepends=("cargo")
-source=("${url}")
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=("312cd45f0a7b8a062bfaf1a00cebb7feccf1fffe13b43630c91d28ddad2787c4")
 
 build() {
