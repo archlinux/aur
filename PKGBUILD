@@ -1,4 +1,5 @@
-# Maintainer: Robert Rakhmatulin <drakonu@otso.city>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: Robert Rakhmatulin <drakonu@otso.city>
 pkgver=r17196.3c9936cb6
 pkgname=embree-git
 pkgrel=1
