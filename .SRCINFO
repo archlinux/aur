@@ -1,0 +1,9 @@
+pkgbase = phonon-empty
+	pkgdesc = Phonon empty backend
+	pkgver = 0.0.0
+	pkgrel = 1
+	arch = any
+	provides = phonon-qt5-backend
+	provides = phonon-qt6-backend
+
+pkgname = phonon-empty
