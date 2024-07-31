@@ -3,17 +3,17 @@
 # Contributor: Jesse Jaara <jesse.jaara@gmail.com>
 
 pkgname=ldraw-parts-library
-pkgver=20240501
+pkgver=20240601
 pkgrel=1
 pkgdesc="A collection of LDraw-format CAD files representing many of LEGO bricks produced"
 arch=(any)
 url="https://library.ldraw.org/updates"
 license=('CCPL: cc-by-2.0')
 options=(!strip)
-source=("ldraw-parts.zip::https://library.ldraw.org/library/updates/complete.zip"
-        "ldraw-parts-library.sh"
+source=("$pkgname-$pkgver.zip::https://library.ldraw.org/library/updates/complete.zip"
+        "$pkgname.sh"
         "license")
-sha256sums=('d851c974c75b45110118f53b03d5db21c3610be7f3046d8e00c3f299f77f6ffc'
+sha256sums=('03a5de6e6eee1121bb2fcb55d7a5fb7ff3359af0e70582dfe92d31d5ad740efc'
             '7cbd598861cc678e86ce07da220e97d0f9d27f2b8d0d03b794400b999fd6fc42'
             '783990d0de8daf6b0e18b1c06578438f7d70e106a1a351686872d8d6eeeba7ac')
 
