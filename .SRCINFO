@@ -1,0 +1,16 @@
+pkgbase = katana-mk1-fxfloorboard-bin
+	pkgdesc = Editing software for the Boss Katana MK1 guitar modelling and effects amplifier.
+	pkgver = 20240118
+	pkgrel = 1
+	url = https://sourceforge.net/projects/fxfloorboard/files/KatanaFxFloorBoard/Katana%20FxFloorBoard%20for%20MK1%20Desktop/
+	arch = x86_64
+	license = GPL3
+	provides = katana-mk1-fxfloorboard-bin
+	source = https://sourceforge.net/projects/fxfloorboard/files/KatanaFxFloorBoard/Katana%20FxFloorBoard%20for%20MK1%20Desktop/Katana_Mk1_FxFloorBoard_FW4_linux.tar.xz/download
+	source = Katana-Mk1-FxFloorBoard
+	source = Katana-Mk1-FxFloorBoard.desktop
+	md5sums = acfbc23704d7fa706c851eb891a2ae83
+	md5sums = d9b142c34850c74843ed08e1de89e700
+	md5sums = 9e6b3ada8f0b23f0649817c4a86de219
+
+pkgname = katana-mk1-fxfloorboard-bin
