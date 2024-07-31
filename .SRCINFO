@@ -1,0 +1,13 @@
+pkgbase = stardict-bobotig-da
+	pkgdesc = Danish monolingual dictionary, based on Wiktionary, StarDict file format, BoboTiG's daily dumps
+	pkgver = 2024_07_20
+	pkgrel = 1
+	url = https://github.com/BoboTiG/ebook-reader-dict
+	arch = any
+	license = cc-by-sa-3.0
+	source = https://github.com/BoboTiG/ebook-reader-dict/releases/download/da/dict-da-da.zip
+	source = https://github.com/BoboTiG/ebook-reader-dict/releases/download/da/dict-da-da.zip.sha256
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = stardict-bobotig-da
