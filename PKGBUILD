@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=blender-bin
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)"
 arch=('x86_64')
 url="https://blender.org"
@@ -51,7 +51,7 @@ validpgpkeys=()
 package() {
 	cd "$srcdir/blender-$pkgver-linux-x64"
 	mkdir -p "${pkgdir}/usr/lib/${pkgname}/"
-	install -Dm755 {blender,blender-softwaregl,blender-thumbnailer} "${pkgdir}/usr/lib/blender-bin/"
+	install -Dm755 {blender,blender-thumbnailer} "${pkgdir}/usr/lib/blender-bin/"
 	install -Dm644 blender-symbolic.svg "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/blender-symbolic.svg"
 	install -Dm644 blender.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/blender.svg"
 	install -Dm644 copyright.txt "${pkgdir}/usr/share/licenses/$pkgname/copyright.txt"
@@ -70,5 +70,5 @@ package() {
 	install -Dm755 blender-softwaregl "$pkgdir/usr/bin/blender-softwaregl"
 	ln -s "/usr/lib/$pkgname/blender-thumbnailer" "$pkgdir/usr/bin/blender-thumbnailer"
 	sed -i 's/\$(dirname \$(readlink -f "\$0"))/\/usr\/lib\/blender-bin/g' "$pkgdir/usr/bin/blender"
-	sed -i 's/\$(dirname \$(readlink -f "\$0"))/\/usr\/lib\/blender-bin/g' "$pkgdir/usr/bin/blender-softwaregl"
+	sed -i 's/BF_DIST_BIN=\$(dirname "\$0")/BF_DIST_BIN=\/usr\/lib\/blender-bin/g' "$pkgdir/usr/bin/blender-softwaregl"
 }
