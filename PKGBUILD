@@ -2,7 +2,7 @@
 # Contributor: Renaud Littolff <rlittolff@gmail.com>
 
 pkgname=proton-pass
-pkgver=1.20.2
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="Open-source password manager for effortless protection. Securely store, share and auto-login your accounts with Proton Pass, using end-to-end encryption trusted by millions."
 arch=("x86_64")
@@ -11,7 +11,7 @@ groups=("ProtonPass")
 
 makedepends=("git" "python-setuptools")
 source=("https://proton.me/download/PassDesktop/linux/x64/ProtonPass_${pkgver}.deb")
-sha256sums=('e104812959c41fbc835f0a98fb6f7f6bec96bfcf62fd354260edba57de4a038b')
+sha256sums=('28dcf757cda5888dead7cc418c3ca98169728beefc106438c2593872e12e03b4')
 
 conflicts=('protonpass' 'protonpass-bin' 'proton-pass-bin')
 replaces=('protonpass-bin' 'proton-pass-bin')
