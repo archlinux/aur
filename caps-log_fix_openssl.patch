@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -55,7 +55,7 @@
+ 
+ # ------------------------------- OpenSSL -------------------------------- #
+ 
+-set(OPENSSL_USE_STATIC_LIBS TRUE)
++set(OPENSSL_USE_STATIC_LIBS OFF CACHE BOOL “” FORCE)
+ find_package(OpenSSL REQUIRED COMPONENTS Crypto)
+ 
+ # ------------------------------- LibGit2 -------------------------------- #
