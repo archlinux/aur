@@ -2,13 +2,13 @@
 
 pkgname=python-proton-vpn-killswitch-network-manager-wireguard
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The proton-vpn-killswitch-networ-managerwireguard component is the implementation of the proton-vpn-killswitch interface adapted for Wireguard."
 arch=("any")
 url="https://github.com/ProtonVPN/python-proton-vpn-killswitch-network-manager-wireguard"
 license=("GPL3")
 groups=("ProtonVPN")
-depends=("python-proton-vpn-network-manager" "python-proton-vpn-killswitch")
+depends=("python-proton-vpn-network-manager" "python-proton-vpn-api-core")
 makedepends=("git" "python-setuptools")
 source=("git+https://github.com/ProtonVPN/${pkgname}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
