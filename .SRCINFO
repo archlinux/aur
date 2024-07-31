@@ -1,0 +1,20 @@
+pkgbase = python-kicadmodtree
+	pkgdesc = This repository contains scripts to generate custom KiCAD footprints using python, and a framework which allows us to create custom KiCAD footprint. A big bunch of footprints of the KiCad library was developed using this framework.
+	pkgver = 1.1.2
+	pkgrel = 0
+	url = https://pypi.org/project/KicadModTree
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-yaml
+	provides = python-kicadmodtree
+	conflicts = python-kicadmodtree
+	options = !strip
+	source = KicadModTree-1.1.2.tar.gz::https://files.pythonhosted.org/packages/source/K/KicadModTree/KicadModTree-1.1.2.tar.gz
+	sha256sums = 5dd9d8f45b5e2646b0d5412111b5ed12308fb9b8ad4b32640a3ab6545fb0eca2
+
+pkgname = python-kicadmodtree
