@@ -23,6 +23,7 @@ pkgbase = flow
 	makedepends = ocaml-visitors
 	makedepends = ocaml-wtf8
 	depends = libev
+	optdepends = bash-completion: Tab completion support for bash
 	source = flow-0.242.1.tar.gz::https://github.com/facebook/flow/archive/v0.242.1.tar.gz
 	b2sums = b990fc725db3931d7c6b85730dc9db35a6884d36cb96880119872d8b5db1692a3c22cc5940185e925e0db610174231dbc62e264be4a557f616ea6dae30f5b083
 
