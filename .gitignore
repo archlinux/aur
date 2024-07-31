@@ -1,0 +1,4 @@
+aura-git/*
+pkg/*
+src/*
+*.zst

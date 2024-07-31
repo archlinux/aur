@@ -4,19 +4,21 @@
 
 pkgname="aura-git"
 pkgver=4.0.0.r0.geaac6297
-pkgrel=1
+pkgrel=2
 pkgdesc="A package manager for Arch Linux and its AUR"
-arch=("any")
+arch=("x86_64")
 url="https://github.com/fosskers/aura"
-license=("GPL3")
+license=("GPL-3.0-or-later")
 depends=("git" "curl" "openssl" "gcc-libs" "glibc")
 makedepends=("cargo")
 optdepends=(
+  "bash-completion: for bash completions"
   "ripgrep: faster log searches"
   "fd: faster filesystem traversal"
-  "bat: more featureful file viewing")
+  "bat: more featureful file viewing"
+)
 provides=("aura")
-conflicts=("aura" "aura-bin")
+conflicts=("aura" "aura-bin" "aura3-bin")
 replaces=()
 options=("strip")
 source=("${pkgname}"::"git+https://github.com/fosskers/aura.git")
