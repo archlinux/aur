@@ -337,7 +337,7 @@ function warnMulRunning() {
 	if [[ "${LANG}" =~ 'zh_CN' ]]; then
 		zenity --title "唤醒微信失败" --icon=utilities-system-monitor-symbolic --default-cancel --question --text="是否结束正在运行的进程?"
 	else
-		zenity --title "WeChat is nt responding" --icon=utilities-system-monitor-symbolic --default-cancel --question --text="Do you wish to terminate the running session?"
+		zenity --title "WeChat is not responding" --icon=utilities-system-monitor-symbolic --default-cancel --question --text="Do you wish to terminate the running session?"
 	fi
 	if [ $? = 0 ]; then
 		systemctl --user stop $@
