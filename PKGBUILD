@@ -2,7 +2,7 @@
 
 pkgname=python-proton-vpn-killswitch-network-manager
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The proton-vpn-killswitch-network-manager component is the implementation of the proton-vpn-killswitch interface using Network Manager."
 arch=("any")
 url="https://github.com/ProtonVPN/python-proton-vpn-killswitch-network-manager"
