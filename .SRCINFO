@@ -10,7 +10,7 @@ pkgbase = tpfanctl
 	provides = tpfanctl
 	provides = setfan
 	conflicts = tpfanctl
-	conflicts = setfan
+	conflicts = tpfanctl-bin
 	source = https://github.com/ezntek/tpfanspeed/archive/refs/tags/v0.1.1.tar.gz
 	sha256sums = 312cd45f0a7b8a062bfaf1a00cebb7feccf1fffe13b43630c91d28ddad2787c4
 
