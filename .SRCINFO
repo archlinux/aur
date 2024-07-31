@@ -1,0 +1,17 @@
+pkgbase = numrng
+	pkgdesc = Terminal Command to generate list of numbers from human readable representation
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Atreyagaurav/numrng
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	options = strip
+	options = !debug
+	source = numrng-0.1.tar.gz::https://github.com/Atreyagaurav/numrng/archive/refs/tags/0.1.tar.gz
+	sha256sums = 87d3f4cfd3818896582b66a00ab927c69821420c6dfbc5ee30a6d9a0d508cd1e
+
+pkgname = numrng
