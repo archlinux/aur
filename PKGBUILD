@@ -1,8 +1,8 @@
 # Maintainer: oscarcl <oscar.cowderylack@gmail.com>
 # Contributor: sixpindin <sixpindin@gmail.com>
 pkgname=omnisharp-roslyn
-pkgver=1.39.11
-pkgrel=2
+pkgver=1.39.12
+pkgrel=1
 pkgdesc="OmniSharp server (STDIO) based on Roslyn workspaces"
 arch=('x86_64')
 url="https://github.com/OmniSharp/omnisharp-roslyn"
@@ -10,10 +10,15 @@ license=('MIT')
 depends=('dotnet-sdk')
 makedepends=('git')
 source=("git+$url#tag=v$pkgver")
-sha256sums=('868f12bea3d929ce79453cf2bf5430f0d0b5e2bd46d4328ac02c10f1dd357787')
+sha256sums=('aa68a8d7fa21f3fb2b50f249ec9ebe5ba2cf79b585a3ab7cb65bd977adbd0083')
 
 prepare() {
     cd "$srcdir/$pkgname"
+
+    # normally the build sets the version from git, we don't have a git repo so
+    # just override it manually
+    sed -i "s/0.0.1-local/$pkgver/" scripts/common.cake
+    sed -i "s/0.0.1.0/${pkgver%.*}.0.0/" scripts/common.cake
 
     # only built STDIO
     sed -i 's/"OmniSharp.Stdio.Driver",/"OmniSharp.Stdio.Driver"/;/OmniSharp.Http.Driver/d' build.json
@@ -32,9 +37,6 @@ prepare() {
 
     # use absolute path to global dotnet exe
     sed -i "s|? \"dotnet\"|? \"$(command -v dotnet)\"|" scripts/common.cake
-
-    # https://github.com/advisories/GHSA-hh2w-p6rv-4g7w
-    sed -i "/System.Text.Json/s/8.0.0/8.0.4/" Directory.Packages.props
 
     export DOTNET_NOLOGO=1
 
