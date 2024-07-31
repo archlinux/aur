@@ -35,6 +35,8 @@ package() {
   cp -r "kotlin-native-linux-x86_64-${pkgver}" "${pkgdir}/usr/lib/kotlin-native"
   # Fix permissions for some files, e.g. /usr/lib/kotlin-native/klib/common/stdlib/ir/ir_tables/*.knt
   chmod -R +r "${pkgdir}/usr/lib/kotlin-native"
+  # Fix per user cache not working
+  mkdir -p "${pkgdir}/usr/lib/kotlin-native/klib/cache/linux_x64STATIC-pl"
 
   ln -s /usr/lib/kotlin-native/bin/kotlinc-native "${pkgdir}/usr/bin/kotlinc-native"
   ln -s /usr/lib/kotlin-native/bin/konanc "${pkgdir}/usr/bin/konanc"
