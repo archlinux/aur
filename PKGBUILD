@@ -1,6 +1,6 @@
 # Maintainer: silverhikari
 pkgname=openhsp-git
-pkgver=v3.6.r3.0e0c213
+pkgver=v3.6.r30.5613e28
 pkgrel=1
 pkgdesc="Hot Soup Processor version 3 Compiler"
 arch=(x86_64)
@@ -10,13 +10,18 @@ depends=('glew' 'sdl2' 'mesa' 'sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'gtk2')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('openhsp::git+https://github.com/onitama/OpenHSP.git' 'hsed.desktop' 'application-hot-soup-processor.xml')
-md5sums=('SKIP' 'SKIP' 'SKIP')
+source=('openhsp::git+https://github.com/onitama/OpenHSP.git' 'hsed.desktop' 'application-hot-soup-processor.xml' 'gzguts.patch')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
 	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+prepare() {
+    cd "$srcdir/${pkgname%-git}/src/hsp3dish/extlib/src/zlib/"
+    patch -p0 -i "${srcdir}/gzguts.patch"
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = openhsp-git
 	pkgdesc = Hot Soup Processor version 3 Compiler
-	pkgver = v3.6.r3.0e0c213
+	pkgver = v3.6.r30.5613e28
 	pkgrel = 1
 	url = https://github.com/onitama/OpenHSP
 	arch = x86_64
@@ -18,6 +18,8 @@ pkgbase = openhsp-git
 	source = openhsp::git+https://github.com/onitama/OpenHSP.git
 	source = hsed.desktop
 	source = application-hot-soup-processor.xml
+	source = gzguts.patch
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
