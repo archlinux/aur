@@ -1,14 +1,14 @@
 pkgbase = leavesmc-git
 	pkgdesc = Fork of Paper aimed at repairing broken vanilla properties.
-	pkgver = 1.21+12
+	pkgver = 1.21+37.ec274f5
 	pkgrel = 1
 	url = https://leavesmc.org/
 	install = leavesmc.install
 	arch = any
 	license = custom
-	makedepends = zulu-21-bin
+	makedepends = java-environment-openjdk=21
 	makedepends = awk
-	depends = zulu-21-bin
+	depends = java-runtime>=21
 	optdepends = screen: Used to continue running the server after closing the terminal.
 	provides = leavesmc
 	conflicts = leavesmc

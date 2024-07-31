@@ -3,16 +3,16 @@
 pkgname=leavesmc-git
 _pkgname=leavesmc
 _pkgver=1.21
-_build=ab8b5f9
-_buildid=12
-pkgver="${_pkgver}+${_buildid}"
+_build=ec274f5
+_buildid=37
+pkgver="${_pkgver}+${_buildid}.${_build}"
 pkgrel=1
 pkgdesc="Fork of Paper aimed at repairing broken vanilla properties."
 arch=('any')
 url="https://leavesmc.org/"
 license=('custom')
-depends=('zulu-21-bin')
-makedepends=('zulu-21-bin' 'awk')
+depends=('java-runtime>=21')
+makedepends=('java-environment-openjdk=21' 'awk')
 optdepends=('screen: Used to continue running the server after closing the terminal.')
 provides=('leavesmc')
 conflicts=('leavesmc')
@@ -31,7 +31,6 @@ sha256sums=("720ee68108bbe12c362cf5ed05b3ad5b28bbaf53f3d7952d389bfc404a5baaac"
 build() {
     cd "${srcdir}/${pkgname}"
     git checkout ${_build}
-    export JAVA_HOME=/usr/lib/jvm/zulu-21
     ./gradlew applyPatches
     ./gradlew createMojmapLeavesclipJar
 }
