@@ -1,6 +1,6 @@
 pkgbase = gpustat-git
 	pkgdesc = GPU monitoring tool
-	pkgver = r20.5ce4c87
+	pkgver = r24.4658406
 	pkgrel = 1
 	url = https://github.com/arduano/gpustat
 	arch = i686
