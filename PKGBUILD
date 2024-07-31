@@ -4,15 +4,15 @@
 
 pkgname=picom-git
 _gitname=picom
-pkgver=2189_11.172.gcc8e0a98_2024.02.29
+pkgver=2530_11.513.g7094d7a9_2024.07.31
 pkgrel=1
 pkgdesc="X compositor (fork of compton) (git-version)"
 arch=(i686 x86_64)
 url="https://github.com/yshui/${_gitname}"
 license=('MIT' 'MPL-2.0')
-depends=('hicolor-icon-theme' 'libconfig' 'libdbus' 'libepoxy' 'libev' 'libgl' 'libx11'
-         'libxcb' 'libxext' 'pcre2' 'pixman' 'xcb-util' 'xcb-util-image' 'xcb-util-renderutil')
-makedepends=('asciidoc' 'cmake' 'git' 'libglvnd' 'mesa' 'meson' 'uthash' 'xorgproto')
+depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libconfig' 'libdbus' 'libepoxy' 'libev' 'libx11'
+         'libxcb' 'pcre2' 'pixman' 'xcb-util' 'xcb-util-image' 'xcb-util-renderutil')
+makedepends=('asciidoctor' 'cmake' 'git' 'libglvnd' 'mesa' 'meson' 'uthash' 'xorgproto')
 optdepends=('dbus:          To control picom via D-Bus'
             'python:        For picom-convgen.py'
             'xorg-xwininfo: For picom-trans'
@@ -33,7 +33,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitname}"
-  meson --buildtype=release . build --prefix=/usr -Dwith_docs=true
+  meson setup --buildtype=release . build --prefix=/usr -Dwith_docs=true
   ninja -C build
 }
 
