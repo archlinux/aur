@@ -1,7 +1,7 @@
 pkgbase = pycharm-eap
 	pkgdesc = Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition.
 	pkgver = 2024.2.242.20224.170
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/pycharm/nextversion/
 	arch = any
 	license = custom

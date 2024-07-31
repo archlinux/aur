@@ -8,7 +8,7 @@ _buildver=242.20224.170
 _pkgver=2024.2
 _eap=true
 pkgver="${_pkgver}.${_buildver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition."
 arch=("any")
 options=("!strip")
@@ -46,12 +46,12 @@ prepare() {
 
 build() {
     # compile PyDev debugger used by PyCharm to speedup debugging
-    find $srcdir/pycharm-${_buildver}/plugins/python/helpers/pydev/_pydevd_bundle/ \( -name *.c -o -name *.so -o -name *.pyd \) -delete
-    sed -i '1s/^/# cython: language_level=3\n/' $srcdir/pycharm-${_buildver}/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_cython.pxd
-    sed -i '/compatible_c/d' $srcdir/pycharm-${_buildver}/plugins/python/helpers/pydev/setup_cython.py
-    python $srcdir/pycharm-${_buildver}/plugins/python/helpers/pydev/setup_cython.py build_ext --inplace --force-cython
-    rm -rf $srcdir/pycharm-${_buildver}/plugins/python/helpers/pydev/build/
-    find $srcdir/pycharm-${_buildver}/plugins/python/helpers/pydev/ -name __pycache__ -exec rm -rf {} \;
+    find $srcdir/pycharm-${_buildver}/plugins/python-ce/helpers/pydev/_pydevd_bundle/ \( -name *.c -o -name *.so -o -name *.pyd \) -delete
+    sed -i '1s/^/# cython: language_level=3\n/' $srcdir/pycharm-${_buildver}/plugins/python-ce/helpers/pydev/_pydevd_bundle/pydevd_cython.pxd
+    sed -i '/compatible_c/d' $srcdir/pycharm-${_buildver}/plugins/python-ce/helpers/pydev/setup_cython.py
+    python $srcdir/pycharm-${_buildver}/plugins/python-ce/helpers/pydev/setup_cython.py build_ext --inplace --force-cython
+    rm -rf $srcdir/pycharm-${_buildver}/plugins/python-ce/helpers/pydev/build/
+    find $srcdir/pycharm-${_buildver}/plugins/python-ce/helpers/pydev/ -name __pycache__ -exec rm -rf {} \;
 }
 
 package() {
