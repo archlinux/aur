@@ -15,7 +15,7 @@ pkgbase = nst
 	depends = libxft
 	depends = libx11
 	depends = fontconfig
-	source = git+https://github.com/gerstner-hub/nst.git?signed#tag=303d9260735da6ca9ffeb344adb9d405a28c22f6
+	source = git+https://github.com/gerstner-hub/nst.git?signed#tag=a75fefd65a61c437b6ced9d5753d0524f8e8fb2d
 	validpgpkeys = 40C89F006FB8A328B83A37CC14AD6F6579097284
 	sha256sums = SKIP
 

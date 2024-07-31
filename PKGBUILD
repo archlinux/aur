@@ -7,7 +7,7 @@ pkgdesc='An X11 terminal emulator with focus on security, simplicity, productivi
 arch=('i686' 'x86_64')
 url='https://github.com/gerstner-hub/nst'
 license=('MIT')
-_tag='303d9260735da6ca9ffeb344adb9d405a28c22f6' # v1.0.2
+_tag='a75fefd65a61c437b6ced9d5753d0524f8e8fb2d' # v1.0.2
 source=("git+${url}.git?signed#tag=$_tag")
 sha256sums=('SKIP')
 # note: this also depends on libcosmos, to be installed manually from AUR as well
@@ -26,6 +26,9 @@ prepare() {
 	# we need the libcosmos submodule, which contains SCons build support scripts for nst
 	git submodule init libcosmos
 	git submodule update libcosmos
+	# we need a newer TCLAP from the submodule
+	git submodule init tclap
+	git submodule update tclap
 }
 
 build() {
