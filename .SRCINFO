@@ -1,0 +1,19 @@
+pkgbase = r-sfd
+	pkgdesc = Space-Filling Design Library
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=sfd
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	depends = r-cli
+	depends = r-rlang
+	depends = r-tibble
+	optdepends = r-ggplot2
+	optdepends = r-spelling
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/sfd_0.1.0.tar.gz
+	md5sums = d78672808db82a9013f40bc11237cc3e
+	b2sums = 1529f497b400267ea73a9f49c0ac3cee45eab46c5fb5505f5ab10e81944774ae8dacccad44beebeec26328c86e9a4db90cc852284bf22d4fc8fd9c2f66fdca6a
+
+pkgname = r-sfd
