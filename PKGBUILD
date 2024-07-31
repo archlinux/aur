@@ -2,8 +2,8 @@
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname=python-bumps
 _name=${pkgname#python-}
-pkgver=0.9.2
-pkgrel=5
+pkgver=0.9.3
+pkgrel=1
 pkgdesc="Data fitting with uncertainty analysis"
 arch=(any)
 url="https://github.com/bumps/bumps"
@@ -19,14 +19,14 @@ makedepends=(python-setuptools
 checkdepends=(python-nose)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_name}/${_name}/archive/v${pkgver}.tar.gz"
 	"bumps.patch")
-sha256sums=('d4fa7c4c9bd07e3ef24a60ace3d4b17b3666258d51819b101a571ec07cd217c3'
+sha256sums=('e012cb56f21c7467d462c5f5c8262677b4cb98570d262deb6693c7735367d814'
             '398828e729a72bcfe0bdc7f6e8bbe6ca8e89700cd5f9da023e843c3551eddeea')
 
 prepare() {
 	cd ${_name}-${pkgver}
 	# https://github.com/bumps/bumps/issues/139
 	# https://github.com/bumps/bumps/pull/140
-	patch -p1 <../bumps.patch
+	#patch -p1 <../bumps.patch
 }
 
 build() {
