@@ -5,18 +5,16 @@
 _pkgname='spacedrive'
 pkgname="${_pkgname}-bin"
 pkgver='0.4.1'
-pkgrel='3'
+pkgrel='4'
 epoch='1'
 pkgdesc="A file manager from the future."
 arch=('x86_64')
 url="https://spacedrive.com"
 _url_source='https://github.com/spacedriveapp/spacedrive'
 license=('AGPL3')
-source=("Spacedrive-linux-x86_64-$pkgver::${_url_source}/releases/download/${pkgver}/Spacedrive-linux-x86_64.deb"
-	"desktop_patch.patch")
-sha256sums=('63a1953bc377473fafa0a616601f3ba616e63724c0733aa373e22644cfb9bf6d'
-            'd24fff5cc9e249dcc6fc6a4380bab6582de69fe5a9a1bd68e6f53d4fc27d161c')
-depends=(gtk3 ffmpeg openssl-1.1 glibc gcc-libs glib2 pango libsoup cairo gdk-pixbuf2 libheif onnxruntime webkit2gtk-4.1 xdotool)
+source=("Spacedrive-linux-$pkgver-x86_64.deb::${_url_source}/releases/download/${pkgver}/Spacedrive-linux-x86_64.deb")
+sha256sums=('63a1953bc377473fafa0a616601f3ba616e63724c0733aa373e22644cfb9bf6d')
+depends=(gtk3 ffmpeg glibc gcc-libs glib2 pango libsoup cairo gdk-pixbuf2 libheif onnxruntime webkit2gtk-4.1 xdotool)
 provides=(spacedrive)
 conflicts=(spacedrive)
 
