@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-session-git
-pkgver=r150.577a181
-pkgrel=3
+pkgver=r151.c3de3d2
+pkgrel=1
 pkgdesc="Session manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-session"
@@ -25,6 +25,7 @@ depends=(
   'cosmic-workspaces-git'
   'otf-fira-mono'
   'otf-fira-sans'
+  'switcheroo-control'
   'xdg-desktop-portal-cosmic-git'
   'xorg-xwayland'
 )
