@@ -11,7 +11,7 @@ url="https://$_pkgname.org"
 license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-depends=('bash-completion')
+optdepends=('bash-completion: Tab completion support for bash')
 source_x86_64=(
 	"$pkgname-$pkgver-x86_64.zip::https://github.com/facebook/$_pkgname/releases/download/v$pkgver/$_pkgname-linux64-v$pkgver.zip"
 	"$pkgname-$pkgver-parser-x86_64.zip::https://github.com/facebook/$_pkgname/releases/download/v$pkgver/lib${_pkgname}parser-linux64-v$pkgver.zip"
