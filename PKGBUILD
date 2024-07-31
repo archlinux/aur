@@ -1,9 +1,10 @@
 # Maintainer: Troplo <troplo@troplo.com>
 
-pkgname=flowfox
+pkgname=flowfox-bin
 _pkgname=flowfox
 pkgver=128.0.4
 pkgrel=1
+url=https://github.com/Troplo/ffox
 _github_rel=firefox-128.0.4.en-US.linux-x86_64-1
 pkgdesc="Fork of Firefox with minimal changes, including rebinding of default keyboard shortcuts to better match Chromium. Not affiliated with Mozilla."
 arch=('x86_64' 'i686')
