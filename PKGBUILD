@@ -2,7 +2,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=xword-dl
-pkgver=2023.12.2
+pkgver=2024.7.20
 pkgrel=1
 pkgdesc='Command-line tool to download .puz files for online crossword puzzles'
 arch=(any)
@@ -11,6 +11,7 @@ license=(MIT)
 depends=(
 	python-beautifulsoup4
 	python-dateparser
+	python-emoji
 	python-html2text
 	python-importlib-metadata
 	python-lxml
@@ -22,7 +23,7 @@ depends=(
 )
 makedepends=(python-setuptools)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('cad17f79bca307b469fd89fd9d21f062dbd1e7e9f176afedaa0563fc70936fd65b4c59d9425953937e4ca08d12a7f480b0b3eb3e580f804b2980692369b2135f')
+b2sums=('40a0cdafb499705e69d0e8ee85b3ab5ef8f2541e58434c8223844647e85c62be46a64690f0236e65bef2fa45c2364bc6fc1a0f31445de9e509a41234ac890d01')
 
 build() {
 	cd "${pkgname}-${pkgver}"
