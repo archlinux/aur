@@ -2,11 +2,11 @@
 
 pkgname=flowfox-bin
 _pkgname=flowfox
-pkgver=128.0.4
+pkgver=129.0
 pkgrel=1
 url=https://github.com/Troplo/ffox
 conflicts=("flowfox")
-_github_rel=firefox-128.0.4.en-US.linux-x86_64-1
+_github_rel=firefox-129.0.en-US.linux-x86_64-1
 pkgdesc="Fork of Firefox with minimal changes, including rebinding of default keyboard shortcuts to better match Chromium. Not affiliated with Mozilla. (Binary version)"
 arch=('x86_64' 'i686')
 license=(MPL GPL LGPL)
@@ -50,7 +50,7 @@ optdepends=(
 )
 options=(!strip)
 # https://github.com/Troplo/foxrel/releases/download/firefox-128.0.4.en-US.linux-x86_64-1/firefox-128.0.4.en-US.linux-x86_64.tar.bz2
-_archive="https://github.com/Troplo/foxrel/releases/download/"
+_archive="https://github.com/Troplo/foxrel/releases/download"
 source_x86_64=("firefox-$pkgver-x86_64.tar.bz2::$_archive/$_github_rel/firefox-$pkgver.en-US.linux-x86_64.tar.bz2")
 source=($_pkgname.sh
         $_pkgname.desktop
@@ -67,7 +67,7 @@ package() {
   mkdir -p "$pkgdir"/opt
 
   # Install
-  cp -r firefox/ "$pkgdir"/opt/$pkgname
+  cp -r firefox/ "$pkgdir"/opt/$_pkgname
 
   # Launchers
   install -m755 $_pkgname.sh "$pkgdir"/usr/bin/$_pkgname
@@ -78,19 +78,19 @@ package() {
   # Icons
   for i in 16x16 32x32 48x48 64x64 128x128; do
     install -d "$pkgdir"/usr/share/icons/hicolor/$i/apps/
-    ln -s /opt/$pkgname/browser/chrome/icons/default/default${i/x*}.png \
+    ln -s /opt/$_pkgname/browser/chrome/icons/default/default${i/x*}.png \
           "$pkgdir"/usr/share/icons/hicolor/$i/apps/$_pkgname.png
   done
 
   # Use system-provided dictionaries
   #rm -r "$pkgdir"/opt/$_pkgname/dictionaries
-  ln -Ts /usr/share/hunspell "$pkgdir"/opt/$pkgname/dictionaries
-  ln -Ts /usr/share/hyphen "$pkgdir"/opt/$pkgname/hyphenation
+  ln -Ts /usr/share/hunspell "$pkgdir"/opt/$_pkgname/dictionaries
+  ln -Ts /usr/share/hyphen "$pkgdir"/opt/$_pkgname/hyphenation
 
   # Use system certificates
-  ln -sf /usr/lib/libnssckbi.so "$pkgdir"/opt/$pkgname/libnssckbi.so
+  ln -sf /usr/lib/libnssckbi.so "$pkgdir"/opt/$_pkgname/libnssckbi.so
 
   # Disable update checks (managed by pacman)
-  mkdir "$pkgdir"/opt/$pkgname/distribution
-  install -m644 "$srcdir"/policies.json "$pkgdir"/opt/$pkgname/distribution/
+  mkdir "$pkgdir"/opt/$_pkgname/distribution
+  install -m644 "$srcdir"/policies.json "$pkgdir"/opt/$_pkgname/distribution/
 }
