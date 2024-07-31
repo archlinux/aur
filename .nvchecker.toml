@@ -1,6 +1,5 @@
 [hiddify-next]
 source = "github"
 github = "hiddify/hiddify-next"
-use_max_tag = true
+use_latest_release = true
 prefix = "v"
-exclude_regex = ".*(dev).*"

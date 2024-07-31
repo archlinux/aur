@@ -2,7 +2,7 @@
 # Contributor: Aloxaf <aloxafx at gamil>
 
 pkgname=hiddify-next
-pkgver=1.5.2
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH, etc."
 arch=('x86_64')
@@ -20,13 +20,13 @@ depends=('at-spi2-core'
 makedepends=('clang' 'cmake' 'fvm' 'ninja')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('0c90f57c3c1e1d1253f477a3fe32c2bd954aa81f9a1d456f5e92165efa0b8fda'
+sha256sums=('b50a33e00fa456b4c5b6f4a5247eeebeb832f992d0419963a6276f2676649545'
             'fcbf5df6388ebe23f3adb2abe55a61f7eecb7ff5f1731892d3791b7d41142b32')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  fvm install 3.19.6
-  export PATH="${PATH}:$(fvm global 3.19.6 --verbose | awk '/cacheVersion.binPath/ {print $2}')"
+  fvm install 3.22.3
+  export PATH="${PATH}:$(fvm global 3.22.3 --verbose | awk '/cacheVersion.binPath/ {print $2}')"
 
   fvm flutter --disable-analytics
   make linux-prepare
