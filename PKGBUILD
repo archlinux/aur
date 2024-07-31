@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=shinycssloaders
-_pkgver=1.0.0
+_pkgver=1.1.0
 pkgname=r-${_pkgname,,}
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Add Loading Animations to a 'shiny' Output While It's Recalculating"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,7 @@ optdepends=(
   r-shinyjs
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('744641836a4cede2bb47caff1b600bff2c3e450dfccd2af4fab0413a8ea87d64')
+sha256sums=('038ad76024e6b38dcc9bbe22aa07a58034bc8410ad25329bdc4db42203e2ef70')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

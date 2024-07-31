@@ -1,7 +1,7 @@
 pkgbase = r-shinycssloaders
 	pkgdesc = Add Loading Animations to a 'shiny' Output While It's Recalculating
-	pkgver = 1.0.0
-	pkgrel = 4
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=shinycssloaders
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = r-shinycssloaders
 	depends = r-shiny
 	optdepends = r-shinydisconnect
 	optdepends = r-shinyjs
-	source = https://cran.r-project.org/src/contrib/shinycssloaders_1.0.0.tar.gz
-	sha256sums = 744641836a4cede2bb47caff1b600bff2c3e450dfccd2af4fab0413a8ea87d64
+	source = https://cran.r-project.org/src/contrib/shinycssloaders_1.1.0.tar.gz
+	sha256sums = 038ad76024e6b38dcc9bbe22aa07a58034bc8410ad25329bdc4db42203e2ef70
 
 pkgname = r-shinycssloaders
