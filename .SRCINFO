@@ -12,4 +12,3 @@ pkgbase = gitfetch
 	sha256sums = 1e1aa639c092ba0670f7037fbcf2835ee598e973a3f7f86fdf3679589bfda13f
 
 pkgname = gitfetch
-
