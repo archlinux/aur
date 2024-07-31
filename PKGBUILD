@@ -1,33 +1,75 @@
 # Maintainer: Alex Tharp <alex at toastercup dot io>
 pkgname=coolvlviewer
-pkgver=1.32.2.1
+pkgver=1.32.2.7
 pkgrel=1
-pkgdesc="A third-party viewer for Second Life (TM) and OpenSim grids. (built from source)"
+pkgdesc="A third-party viewer for Second Life and OpenSim grids. (built from source)"
 url="http://sldev.free.fr"
-license=('custom')
-depends=('apr-util' 'glib2>=2.32' 'libgl' 'libidn' 'mesa' 'sdl' 'glu' 'pangox-compat' 'gconf' 'libxss' 'libxrandr' 'libxcomposite' 'libgl' 'lib32-zlib' 'libcups' 'atk' 'lib32-util-linux' 'lib32-libsndfile' 'lib32-libidn' 'libxcursor' 'libxtst')
+license=('GPL-2.0-only')
+depends=(
+  'apr-util'
+  'atk'
+  'gconf'
+  'glib2>=2.32'
+  'glu'
+  'lib32-libidn'
+  'lib32-libsndfile'
+  'lib32-util-linux'
+  'lib32-zlib'
+  'libcups'
+  'libgl'
+  'libgl'
+  'libidn'
+  'libxcomposite'
+  'libxcursor'
+  'libxrandr'
+  'libxss'
+  'libxtst'
+  'mesa'
+  'pangox-compat'
+  'sdl'
+)
 optdepends=(
-  'libpulse: for PulseAudio support'
   'alsa-lib: for ALSA support'
-  'lib32-alsa-lib: for ALSA support'
-  'nvidia-utils: for NVIDIA support'
-  'pepper-flash: for inworld Flash support'
-  'gst-plugins-good: for video support'
   'gst-plugins-bad: for video support'
+  'gst-plugins-good: for video support'
   'gst-plugins-ugly: for video support'
+  'lib32-alsa-lib: for ALSA support'
   'lib32-freealut: for OpenAL support'
   'lib32-libidn11: for voice support'
-  'wine: for SLVoice support')
-makedepends=("cmake" "bison" "flex" "python" "make" "bzip2" "glibc" "libx11" "libgl" "libxrender" "libidn" "libxinerama" "lib32-libxinerama")
+  'libpulse: for PulseAudio support'
+  'nvidia-utils: for NVIDIA support'
+  'pepper-flash: for inworld Flash support'
+  'wine: for SLVoice support'
+)
+makedepends=(
+  'cmake'
+  'bison'
+  'flex'
+  'python'
+  'make'
+  'bzip2'
+  'glibc'
+  'libx11'
+  'libgl'
+  'libxrender'
+  'libidn'
+  'libxinerama'
+  'lib32-libxinerama'
+)
 arch=('x86_64')
-conflicts=('coolvlviewer-bin' 'coolvlviewer-experimental' 'coolvlviewer-experimental-bin')
+conflicts=('coolvlviewer-bin')
+provides=('coolvlviewer')
 install=coolvlviewer.install
-source=("http://sldev.free.fr/sources/CoolVLViewer-src-${pkgver//./}.tar.bz2"
-        "coolvlviewer.desktop"
-        "coolvlviewer.launcher")
-sha1sums=('7dc8af1a717b2b02d6e7a3292196a5e30a69f4ef'
-          'd5defd3d847fcfb7cdf41150ab55684dedc79275'
-          '3ef1284a00a4437e4c34f809311ee0672604ef04')
+source=(
+  "http://sldev.free.fr/sources/CoolVLViewer-src-${pkgver//./}.tar.bz2"
+  "coolvlviewer.desktop"
+  "coolvlviewer.launcher"
+)
+sha1sums=(
+  '7dbbd422b44999ea265fd9e6d2ed730fdb42a2f7'
+  '6336a03697c321495c3c9aacc57274b4a054f08a'
+  '3ef1284a00a4437e4c34f809311ee0672604ef04'
+)
 
 build() {
   cd $srcdir/linden
