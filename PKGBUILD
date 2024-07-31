@@ -1,6 +1,6 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-libvpx
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc="VP8 and VP9 codec (mingw-w64)"
 arch=('any')
@@ -9,10 +9,10 @@ license=('custom:BSD')
 depends=('mingw-w64-crt')
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-gcc' 'yasm' 'git')
-_tag=602e2e8979d111b02c959470da5322797dd96a19
+_tag=12f3a2ac603e8f10742105519e0cd03c3b8f71dd
 source=(git+https://chromium.googlesource.com/webm/libvpx#tag=${_tag}
         'configure.patch')
-b2sums=('SKIP'
+b2sums=('2ee22fba5822c0f3667c0c74de799536724ce88694b31e0493ce10c6f9a11c6ac563e39f5dcaf9fb4378346276610008dcbfc47f9407411b7c35ba4c71fb5f66'
         'fe5d0f5035cc872936010e6a3c24212da4ed5b0ba841e3271f8b419502bc251bae28b821fc4543021bf4d4594400b800796ddb993c443c881b98f59c0ae8a19e')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -77,6 +77,10 @@ package() {
     ${_arch}-strip -g --strip-unneeded ${pkgdir}/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g ${pkgdir}/usr/${_arch}/lib/*.a
   done
+
+  cd ${srcdir}/libvpx
+
+  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
 
 # vim: ts=2 sw=2 et:
