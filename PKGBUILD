@@ -4,8 +4,8 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='mozc'
-pkgver=2.30.5520.102
-pkgrel=2
+pkgver=2.30.5544.102
+pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input'
 arch=('x86_64')
 url='https://github.com/google/mozc'
@@ -17,7 +17,7 @@ optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
             'emacs-mozc: Emacs integration')
 conflicts=('mozc-ut')
 options=(!distcc !ccache)
-source=('git+https://github.com/google/mozc.git#commit=d2fc9c7d9269cc84b9a4a680cafc382a55e90f42'
+source=('git+https://github.com/google/mozc.git#commit=5e6abfe1853b080766def432b746a9bed79e54b0'
         'git+https://github.com/abseil/abseil-cpp.git#commit=2f9e432cce407ce0ae50676696666f33a77d42ac'
         'git+https://github.com/google/breakpad.git#commit=216cea7bca53fa441a3ee0d0f5fd339a3a894224'
         'git+https://github.com/google/googletest.git#commit=58d77fa8070e8cec2dc1ed015d66b454c8d78850'
@@ -25,7 +25,7 @@ source=('git+https://github.com/google/mozc.git#commit=d2fc9c7d9269cc84b9a4a680c
         'git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=e5b3425575734c323e1d947009dd74709437b684'
         'git+https://github.com/protocolbuffers/protobuf.git#commit=a978b75794a6ce4547c9db08a115c458d9190934'
         'git+https://github.com/microsoft/wil.git#commit=fc5dbf55989fe20351c71d038a8d12de4b397a6d')
-sha256sums=('195f1218deae0daa22a6ae0e2b2f42eb900e314e3442ef549b6f9d666aa68644'
+sha256sums=('7af613c21dae383a410b270a21d970ecdc63100fd343932e44884fda4fe24f3c'
             '8380cac08316c35118999b95845b8c28d9c9c4688402960fb1558d5eeda90f73'
             '5168bb8ea19e2f696eeecbdee991f28e496aea206a473fd7cb49b547f5d0c5af'
             '2acda2cf88e375a7638f521f25c61b308d0eae8a7e188a54fafa2f2c8c2a063f'
