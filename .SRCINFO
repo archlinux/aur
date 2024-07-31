@@ -1,6 +1,6 @@
 pkgbase = qq-git
 	pkgdesc = jq inspired interoperable config format transcoder with interactive querying; JSON/YAML/TOML/XML/... support; MIT license - git development version
-	pkgver = v0.2.0
+	pkgver = v0.2.1.re.1.ga871a13
 	pkgrel = 2
 	url = https://github.com/JFryy/qq/
 	arch = i686
