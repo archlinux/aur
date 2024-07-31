@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 _pkgname="tpfanctl"
-pkgname="${pkgname}"
+pkgname="${_pkgname}"
 pkgver=0.1.1
 pkgrel=1
 pkgdesc="A simple ThinkPad fan control CLI for Linux, written in Rust."
