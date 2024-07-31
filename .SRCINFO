@@ -1,0 +1,18 @@
+pkgbase = o-vault-bin
+	pkgdesc = A secure Password Manager.O-Vault is fully offline, your passwords are saved locally on your device in an encrypted file called the vault.
+	pkgver = 1.0.0_beta5
+	pkgrel = 1
+	url = https://www.o-vault.org/
+	arch = x86_64
+	license = MIT
+	depends = electron30
+	provides = o-vault=1.0.0_beta5
+	conflicts = o-vault
+	source = o-vault-1.0.0_beta5.deb::https://github.com/O-Vault/O-Vault/releases/download/v1.0.0-beta5/O-Vault-1.0.0-beta5.amd64.linux.deb
+	source = LICENSE-1.0.0_beta5::https://raw.githubusercontent.com/O-Vault/O-Vault/v1.0.0-beta5/LICENSE
+	source = o-vault.sh
+	sha256sums = 586a3690f85dd9fb426cdb448c84d92ff4fa9d8eeeb2eca25d95f9b0a2263997
+	sha256sums = 2886a4d441478a70dd9b54131026729bba024e28cc82e1c19a0860a57cc89794
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+
+pkgname = o-vault-bin
