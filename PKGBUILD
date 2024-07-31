@@ -4,7 +4,7 @@
 
 pkgname="aura-git"
 pkgver=4.0.0.r0.geaac6297
-pkgrel=2
+pkgrel=3
 pkgdesc="A package manager for Arch Linux and its AUR"
 arch=("x86_64")
 url="https://github.com/fosskers/aura"
