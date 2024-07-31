@@ -6,7 +6,7 @@ pkgdesc="A simple script to display system information"
 arch=('any')
 url="https://github.com/stuffbymax/sysi"
 license=('MIT')
-depends=('lm_sensors' 'procps' 'pacman' 'glib2' 'bash' 'filesystem' 'ttf-iosevka-nerd')
+depends=('lm_sensors' 'procps-ng' 'pacman' 'glib2' 'bash' 'filesystem' 'gawk' 'coreutils' 'ncurses' 'upower' 'sysstat' 'xorg-xrandr' 'pciutils' 'ttf-iosevka-nerd')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/stuffbymax/sysi/archive/refs/tags/1.0.2.tar.gz")
 sha256sums=('70e5b07564986a221d054088ff00209b0ff9c25b00ea78d6289dcad288cfdbdd')
 
