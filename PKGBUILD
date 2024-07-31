@@ -1,19 +1,19 @@
-# Maintainer: Yamashiro <dev@cosmicheron.com>
+# Maintainer: Yamashiro <dev cosmicheron com>
 
 _pkgbase='yamagi-quake2-ref_gl4'
 pkgname="${_pkgbase}-git"
 pkgdesc='OpenGL 4.6 renderer for yamagi-quake2'
-pkgver=r1.a10924a
+pkgver=r5.29595b0
 pkgrel=1
 url='https://github.com/yquake2/ref_gl4'
 arch=('x86_64')
-license=('GPL2' 'custom')
-depends=('yamagi-quake2')
-makedepends=('git' 'sdl2' 'mesa')
+license=('GPL-2.0-only' 'LicenseRef-custom')
+depends=('glibc' 'sdl2' 'yamagi-quake2')
+makedepends=('git')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source=("${_pkgbase}::git+${url}.git")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "$_pkgbase"
@@ -21,18 +21,16 @@ pkgver() {
 }
 
 build() {
-	make -C "$_pkgbase"
+	make -C "${srcdir}/${_pkgbase}"
 }
 
 package() {
-	cd "$_pkgbase"
-
 	# library
-	install -Dm644 -t "${pkgdir}/usr/lib/yamagi-quake2" 'release/ref_gl4.so'
+	install -Dm644 -t "${pkgdir}/usr/lib/yamagi-quake2" "${srcdir}/${_pkgbase}/release/ref_gl4.so"
 
 	# doc
-	install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgbase}" 'README.md'
+	install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgbase}" "${srcdir}/${_pkgbase}/README.md"
 
 	# license
-	install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgbase}" 'LICENSE'
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgbase}" "${srcdir}/${_pkgbase}/LICENSE"
 }
