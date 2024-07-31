@@ -1,0 +1,14 @@
+pkgbase = python-bacpypes3
+	pkgdesc = BACnet communications library
+	pkgver = 0.0.97
+	pkgrel = 1
+	url = https://github.com/JoelBender/bacpypes3
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	source = https://github.com/JoelBender/bacpypes3/archive/refs/tags/v0.0.97.tar.gz
+	sha256sums = 9500621249f8c7129dd7477a4b1f5036dc10fe8cd30bed1013f0bdef3aa92ca5
+
+pkgname = python-bacpypes3
