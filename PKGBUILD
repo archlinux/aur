@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='salvador'
-pkgver='3.1.2'
+pkgver='3.1.3'
 pkgrel='1'
 pkgdesc='A bash script that will help you maintain your AUR packages'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
 	'nvchecker: nvchecker functionality'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('2226b5917d25f882d89080aa1a21ace103ed01114ccda8dd74ab4b2e5ef129fdc36ba2d91649b41d24163cd3be2345bcce8a210f7fb9b35bc77c2dd72741580d')
+b2sums=('6ced3c22bf6a37624135cc904c7e6e26c8b9cb4cee2e72548b338bf3590686868a9c3cb41711aaa6785a2d03ec24d11c33aca8c5940f3400160745ab78955374')
 
 _sourcedirectory="$pkgname-$pkgver"
 
