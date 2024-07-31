@@ -1,9 +1,5 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# Maintainer: Eason Qin <eason@ezntek.com>
 
-# Maintainer: Your Name <youremail@domain.com>
 _pkgname="tpfanctl"
 pkgname="${_pkgname}"
 pkgver=0.1.1
