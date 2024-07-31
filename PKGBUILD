@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TreeDist
-_pkgver=2.7.0
+_pkgver=2.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Calculate and Map Distances Between Phylogenetic Trees"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -14,7 +14,6 @@ depends=(
   r-cli
   r-colorspace
   r-memoise
-  r-phangorn
   r-rdpack
   r-shiny
   r-shinyjs
@@ -29,6 +28,7 @@ optdepends=(
   r-hypervolume
   r-kdensity
   r-knitr
+  r-phangorn
   r-plotly
   r-plottools
   r-protoclust
@@ -48,8 +48,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d98cc1d310c4824feebbc61fc1691208')
-b2sums=('dbd38d9feabb3da584fc83bf6457b40f2a2300a8460e0c2ca6879c9bb2d90ece06e0077131cbb9dabb0ef5aa216343884cef30d24e8d55f28683013b44e02759')
+md5sums=('b89200bb9162762d9019a24d2c731d4e')
+b2sums=('dbd0a6c94e71f49d74f4c3583dc30cc7af14941b9f6488a78ad65e4fe390557659cc397db4863b2bc64ea5c7c34976aab75f0afb3e74d7d7adef89673791e4c3')
 
 build() {
   mkdir build
