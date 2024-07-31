@@ -1,11 +1,11 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=libratify-git
-pkgver=v2.0.0.r0.debe81d
+pkgver=v2.0.0.r7.b9b9e25
 pkgrel=1
 pkgdesc="RTF serialization and deserialization for GtkTextBuffer"
 arch=(x86_64)
 url="https://github.com/ptomato/ratify.git"
-license=('LGPL3')
+license=('LGPL-3.0+')
 depends=('gtk3')
 makedepends=('git' 'ninja' 'meson')
 provides=("${pkgname%-git}")
