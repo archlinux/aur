@@ -18,6 +18,7 @@ pkgbase = gamescope-sk
 	depends = gcc-libs
 	depends = glibc
 	depends = glm
+	depends = lcms2
 	depends = libavif
 	depends = libcap.so
 	depends = libdecor

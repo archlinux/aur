@@ -10,6 +10,7 @@ depends=(
     gcc-libs
     glibc
     glm
+    lcms2
     libavif
     libcap.so
     libdecor
