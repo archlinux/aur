@@ -2,13 +2,12 @@
 # Contributor: Douglas Iuri Medeiros Cabral <douglasimcabral at zohomail dot com>
 pkgname=forticlient-vpn
 pkgver=7.4.0.1636
-pkgrel=1
+pkgrel=2
 pkgdesc="Build through the official package of FortiClient VPN only"
 arch=("x86_64")
 url="https://www.fortinet.com/support/product-downloads"
 license=('custom:fortinet')
-#depends=('systemd' 'nss' 'gtk3' 'libxss' 'polkit' 'openssl' 'libnotify' 'org.freedesktop.secrets' 'libappindicator-gtk2' 'gzip' 'iptables')
-depends=('alsa-lib' 'gtk2' 'libsecret' 'nss' 'gtk3' 'libnotify')
+depends=('alsa-lib' 'gnome-keyring' 'gtk2' 'gtk3' 'gzip' 'iptables' 'libappindicator-gtk2' 'libnotify' 'libsecret' 'libxss' 'nss' 'openssl' 'org.freedesktop.secrets' 'polkit' 'systemd')
 optdepends=(
 	'mate-polkit: for polkit authentication for the MATE'
 	'polkit-gnome: for polkit authentication for the GNOME'
