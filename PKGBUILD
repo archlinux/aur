@@ -5,10 +5,10 @@ pkgdesc='Installs different versions of Nim compiler and tools and switches betw
 url='https://github.com/dom96/choosenim'
 license=(BSD-3-Clause)
 pkgver=0.8.4
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 depends=(glibc curl)
-makedepends=(nim nimble)
+makedepends=(git nim nimble)
 provides=(nim nimble nimgrep nimpretty nimsuggest)
 optdepends=(
   'clang: C/C++ backend'
