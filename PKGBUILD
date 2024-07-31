@@ -4,7 +4,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=sshguard-git
-pkgver=2.4.3.r6.g9a48b50
+pkgver=2.4.3.r7.gf1d431a
 pkgrel=1
 pkgdesc="Brute force detector for SSH, Exim, VSFTPD and more. Blocks by ip with iptables"
 arch=('i686' 'x86_64')
@@ -53,7 +53,7 @@ package() {
     cp -a examples "$pkgdir/usr/share/doc/sshguard"
 
     cat > "$pkgdir"/etc/sshguard.conf << EOF
-LOGREADER="LANG=C /usr/bin/journalctl -afb -p info -n1 -t sshd -o cat"
+LOGREADER="LANG=C /usr/bin/journalctl -afb -p info -n1 -t sshd -t sshd-session -o cat"
 BLACKLIST_FILE=120:/var/db/sshguard/blacklist.db
 BACKEND="/usr/lib/sshguard/sshg-fw-iptables"
 EOF
