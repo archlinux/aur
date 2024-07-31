@@ -1,7 +1,7 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=proton-vpn-gtk-app
-pkgver=4.3.3
+pkgver=4.4.2
 pkgrel=1
 pkgdesc="ProtonVPN GTK app, Maintained by Community"
 arch=("any")
@@ -55,6 +55,6 @@ package() {
 	python setup.py install --root="$pkgdir" --optimize=1
 	
 	echo "Cleaning version.py and versions.yml copied by mistake by setup.py"
-	rm "${pkgdir}/usr/version.py"
-	rm "${pkgdir}/usr/versions.yml"
+#	rm "${pkgdir}/usr/version.py"
+#	rm "${pkgdir}/usr/versions.yml"
 }
