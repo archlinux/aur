@@ -1,6 +1,6 @@
 pkgbase = cosmic-applets-git
 	pkgdesc = WIP applets for COSMIC Panel
-	pkgver = r1036.478bb3e
+	pkgver = r1047.d10bc47
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-applets
 	arch = x86_64

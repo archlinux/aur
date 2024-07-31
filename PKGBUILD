@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-applets-git
-pkgver=r1036.478bb3e
+pkgver=r1047.d10bc47
 pkgrel=1
 pkgdesc="WIP applets for COSMIC Panel"
 arch=('x86_64' 'aarch64')
@@ -36,7 +36,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  just vendor
+#  just vendor
 }
 
 build() {
@@ -47,7 +47,8 @@ build() {
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  nice just build-vendored
+#  nice just build-vendored
+  nice just build-release
 }
 
 package() {
