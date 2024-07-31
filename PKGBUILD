@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mlr3
-_pkgver=0.20.1
+_pkgver=0.20.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,7 +24,6 @@ depends=(
   r-paradox
   r-parallelly
   r-r6
-  r-rhpcblasctl
   r-uuid
 )
 optdepends=(
@@ -33,11 +32,12 @@ optdepends=(
   r-mlr3data
   r-progressr
   r-remotes
+  r-rhpcblasctl
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f2e4c21bc66a314d6ae1d3af5e82c5e5')
-b2sums=('0bbb6f5b71266222273b9f7ebbe480ddcb2ef1d126d19da0473c1e7f4b447d7701de2016abe9c3f0c8410fdb419852406722ee6e781a1cea58dffd11c8a80378')
+md5sums=('6c1db49a490ac6d7b372cea45b3cf0f5')
+b2sums=('9e059bd40befa5652aebaae36a25839665671f0430606264dd0227739722fc8ed68f793ed809a3531d5880959e7750a502ea00664f22b2cb7cbb2f0e565fbb3a')
 
 build() {
   mkdir build
