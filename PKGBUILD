@@ -11,7 +11,7 @@ _music='sc55' # (sc55/opl3)
 
 pkgbase=dxx-rebirth-git
 pkgname=('d1x-rebirth-git' 'd2x-rebirth-git')
-pkgver=0.60.0.beta2.r2890.g67c506e39
+pkgver=0.60.0.beta2.r3132.g5b8dc756f
 pkgrel=1
 pkgdesc='A source port of the Descent and Descent 2 engines (git version)'
 arch=('x86_64')
@@ -44,6 +44,7 @@ build() {
         'use_tracker=yes'
         'screenshot=png')
     
+    export CXXFLAGS="${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS/}"
     scons "${_common_opts[@]}" 'd1x=1' 'd2x=0' 'sharepath=/usr/share/d1x-rebirth'
     scons "${_common_opts[@]}" 'd1x=0' 'd2x=1' 'sharepath=/usr/share/d2x-rebirth'
 }
