@@ -3,8 +3,8 @@
 pkgname=morewaita-git
 _reponame=MoreWaita
 pkgver=45.r68.g0f4ed19
-pkgrel=1
-pkgdesc='An Adwaita style extra icons theme for Gnome Shell.'
+pkgrel=2
+pkgdesc='A companion icon theme for Adwaita'
 arch=(any)
 url="https://github.com/somepaulo/$_reponame"
 license=(GPL3)
