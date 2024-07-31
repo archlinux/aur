@@ -27,6 +27,9 @@ prepare() {
 }
 
 build() {
+  # Include /usr/bin/vendor_perl to use po4a
+  PATH=$PATH:/usr/bin/vendor_perl/
+
   cd $_pkgname-$pkgver
 
   ./bootstrap
