@@ -8,6 +8,8 @@ pkgbase = gitfetch
 	license = GPL3
 	makedepends = rust
 	makedepends = cargo
+	makedepends = gcc
+	makedepends = base-devel
 	source = gitfetch-0.1.1.tar.gz::https://github.com/FabricSoul/gitfetch/archive/0.1.1.tar.gz
 	sha256sums = 7931778c658de43fa4d85864f4fb7ee22a32000cbbf95fc2a73d6f60721622d5
 

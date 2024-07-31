@@ -7,7 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/FabricSoul/gitfetch"
 license=('GPL3')
 depends=()
-makedepends=('rust' 'cargo')
+makedepends=('rust' 'cargo' 'gcc' ''base-devel)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=("7931778c658de43fa4d85864f4fb7ee22a32000cbbf95fc2a73d6f60721622d5")
 
