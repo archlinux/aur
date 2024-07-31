@@ -1,11 +1,11 @@
 pkgbase = waffle-git
 	pkgdesc = a library for choosing window system and OpenGL API at runtime (git version)
-	pkgver = v1.8.0.r37.ge006a34
+	pkgver = v1.8.0.r71.g84e7012
 	pkgrel = 1
 	url = https://waffle.freedesktop.org
 	arch = x86_64
 	arch = aarch64
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = git
 	makedepends = meson
 	makedepends = xcb-proto

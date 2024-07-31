@@ -3,14 +3,14 @@
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 
 pkgname=waffle-git
-pkgver=v1.8.0.r37.ge006a34
+pkgver=v1.8.0.r71.g84e7012
 pkgrel=1
 pkgdesc='a library for choosing window system and OpenGL API at runtime (git version)'
 arch=('x86_64' 'aarch64')
 url='https://waffle.freedesktop.org'
 provides=('waffle')
 conflicts=('waffle')
-license=('BSD')
+license=('BSD-2-Clause')
 
 depends=('libx11' 'libxcb')
 optdepends=('libgl: for OpenGL or GLX support'
