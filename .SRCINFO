@@ -17,6 +17,7 @@ pkgbase = gamescope-sk-git
 	depends = glibc
 	depends = glm
 	depends = hwdata
+	depends = lcms2
 	depends = libavif
 	depends = libcap.so
 	depends = libdrm

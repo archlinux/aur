@@ -11,6 +11,7 @@ depends=(
     glibc
     glm
     hwdata
+    lcms2
     libavif
     libcap.so
     libdrm
