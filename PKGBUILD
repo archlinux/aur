@@ -1,11 +1,11 @@
 # Maintainer: Tai Lam <taivlam-aur-mpr [dot] tinsmith796 [at] silomails [dot] com>
 # Contributor: Kyle Phillips <kyle@pkyle.me>
-# Based  on the template from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
+# Based on the template from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
 
 _pkgname=mudita-center
 
 pkgname="${_pkgname}"-appimage
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Mudita Center Electron App. Expand and update the features of Mudita Pure, while using your computer."
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/mudita/mudita-center/releases/download/${pkgver}/Mudita-Center.AppImage")
 noextract=("${_appimage}")
-b2sums_x86_64=('dcf25dbf3b2ae7916354dba9586b8f3314c8a29b13092f392409be419c7af96d169f5d23f4dc965f961bbc161e47b48a5686848dac898a8622586d5f44d9e295')
+b2sums_x86_64=('01d56da23345a0c4d3afb80ad31d1796ad0deedd08a51661dea07c66efb98a808a6ca11d4342ccb5cd4d5fc645c184c57edca197b52c7c68111bab510391e5ce')
 prepare() {
     chmod +x "${_appimage}"
     ./"${_appimage}" --appimage-extract
