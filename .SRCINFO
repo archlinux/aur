@@ -1,14 +1,14 @@
 pkgbase = r-slam
 	pkgdesc = Sparse Lightweight Arrays and Matrices
-	pkgver = 0.1.51
+	pkgver = 0.1.52
 	pkgrel = 1
 	url = https://cran.r-project.org/package=slam
 	arch = x86_64
 	license = GPL-2.0-only
 	depends = blas
 	depends = r
-	source = https://cran.r-project.org/src/contrib/slam_0.1-51.tar.gz
-	md5sums = f30df510503cf2dd7d5af7c10b1a6608
-	b2sums = 6988a341f40d03d953f30b4e7fd4973bcadc930580b079cc862e94334e36c08164d63bc22c071721fc848a416cb087ff2ef3559a618756be147e244312e5db5b
+	source = https://cran.r-project.org/src/contrib/slam_0.1-52.tar.gz
+	md5sums = d8fd98c8181af28f72d39e46f369960d
+	b2sums = fca615351721295cee940cca07445ed5d6e585c280da7a5af26f4ba17f87751a66c496b43c76a4f21dcec3f9a4883ca8c8cbbe86d213ca5dfe54a18bca74d821
 
 pkgname = r-slam
