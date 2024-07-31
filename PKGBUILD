@@ -1,14 +1,14 @@
 pkgname=unpackerr
-pkgver=0.14.2
-pkgrel=785
+pkgver=0.14.3
+pkgrel=790
 pkgdesc='Extracts downloads so Radarr, Sonarr, Lidarr or Readarr may import them.'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'pentium4')
 url='https://golift.io/unpackerr'
 license=('MIT')
 makedepends=('go' 'gzip')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Unpackerr/unpackerr/archive/v0.14.2.tar.gz")
-sha512sums=('54b521ca6bd7eced986f95d0151268c3fb8c4e798679b4ecdbcbe24eb78b57165c0f3f257bdfc91018a3f001afe4b8b350106afaa86e55bee1f22532b3a92823')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Unpackerr/unpackerr/archive/v0.14.3.tar.gz")
+sha512sums=('5482f65e20c360d41974e6c14e6866ec47734b46a9c3109573dd50b7f0448851c5a9fa8cc6750a667b9077f93e0087fb05ff1dbfc2af1377dc4808b8aa853f23')
 
 backup=("etc/${pkgname}/${pkgname}.conf")
 
@@ -33,8 +33,8 @@ build() {
 
   go build -o unpackerr -ldflags "$VLDFLAGS" .
   go run github.com/davidnewhall/md2roff@v0.0.1 --manual unpackerr --version ${pkgver} --date "${DATE}" README.md
-	go run github.com/davidnewhall/md2roff@v0.0.1 --manual unpackerr --version ${pkgver} --date "${DATE}" examples/MANUAL.md
-	gzip -9 examples/MANUAL
+  go run github.com/davidnewhall/md2roff@v0.0.1 --manual unpackerr --version ${pkgver} --date "${DATE}" examples/MANUAL.md
+  gzip -9 examples/MANUAL
   mv examples/MANUAL.gz ${pkgname}.1.gz
 }
 
