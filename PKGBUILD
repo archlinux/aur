@@ -1,36 +1,62 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-kicadmodtree
-_name=KicadModTree
-pkgver=1.1.2
-pkgrel=0
+pkgver=1.1.2.r534.gb39308e
+pkgrel=1
 epoch=
 pkgdesc="This repository contains scripts to generate custom KiCAD footprints using python, and a framework which allows us to create custom KiCAD footprint. A big bunch of footprints of the KiCad library was developed using this framework."
 arch=('any')
-url="https://pypi.org/project/${_name}"
+url="https://gitlab.com/kicad/libraries/kicad-footprint-generator"
 license=(GPL-3.0-or-later)
 groups=()
 provides=(${pkgname})
 conflicts=(${pkgname})
 _pydeps=(
+    typing_extensions
     yaml)
-depends=('python'
+depends=(
+    python
     "${_pydeps[@]/#/python-}")
-makedepends=(python-build
-            python-installer
-            python-wheel
-            python-setuptools)
+_pymakedeps=(
+    asteval
+    future
+    pycodestyle
+    build
+    installer
+    wheel
+    setuptools)
+makedepends=(git
+    "${_pymakedeps[@]/#/python-}")
+checkdepends=(python-pytest)
 options=('!strip')
-source=("${_name//-/_}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
+source=("$pkgname::git+$url.git")
 noextract=()
-sha256sums=('5dd9d8f45b5e2646b0d5412111b5ed12308fb9b8ad4b32640a3ab6545fb0eca2')
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    ( set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
+}
+
+prepare()
+{
+    git -C "${srcdir}/${pkgname}" clean -dfx
+}
 
 build() {
-    cd "${srcdir}/${_name//-/_}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
     python -m build --wheel --no-isolation
 }
 
+check() {
+    cd "${srcdir}/${pkgname}"
+    ./manage.sh tests
+}
+
 package() {
-    cd "${srcdir}/${_name//-/_}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
