@@ -4,7 +4,7 @@
 
 _pkgname=armory
 pkgname="${_pkgname}"-cli
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="ARMORY 是翼辉信息自主研发的软件包管理工具."
 arch=('x86_64' 'aarch64')
@@ -20,11 +20,12 @@ sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 
 package() {
-    # AppImage
-    install -Dm755 ${srcdir}/${_pkgname}-v${pkgver}-linux* "${pkgdir}/opt/${pkgname}/${_pkgname}-v${pkgver}-linux-${CARCH}"
+
+    tar zxvf ${srcdir}/${_pkgname}-v${pkgver}-linux*
+    install -Dm755 ${srcdir}/${_pkgname} "${pkgdir}/opt/${pkgname}/${_pkgname}"
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${_pkgname}-v${pkgver}-linux-${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
+    ln -s "/opt/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
 
