@@ -4,21 +4,21 @@
 
 _pkgname=lens
 pkgname=lens-bin
-pkgver=2024.5.271333
+pkgver=2024.7.161041
 pkgrel=1
 pkgdesc='The Kubernetes IDE'
 arch=('x86_64')
-license=('MIT')
+license=('LicenseRef-Custom')
 url='https://k8slens.dev'
 depends=('gtk3' 'libxss' 'nss')
 provides=('lens')
 conflicts=('lens')
-options=('!strip' '!emptydirs')
+options=('!debug' '!strip' '!emptydirs')
 install="${_pkgname}.install"
 source=(${_pkgname}-${pkgver}.${arch}.AppImage::"https://api.k8slens.dev/binaries/Lens-${pkgver}-latest.${arch}.AppImage"
         "${_pkgname}.install"
         "${_pkgname}.desktop")
-b2sums=('2eef0b024f376cdb8abd95408023f9a2b7eb142a14b4b2572a56da86042e8852964528b69937d5db510257471fe2a0afa118801772a644393f74e3d02d4861a0'
+b2sums=('b128bf825bfc99a07894732eb91f1b3f8ecf53b4ae0c40b99c21a44a5ac6b68ca111ee475f39659f4e690fa029b857bf51101194f55dd16411b98957abba0b8f'
         'ee08f5ca738acd64bbd3076bdad73c2d1ef58d7bb89993e31c5aaa5d6b0308410b816b80be4860c8353be51f54dafbc1e39a7a03ef82881c5a10ad643b0fd596'
         '7c5afc77c4e921f198139efeb168a16c6208fe0df1267a224ce62bde160d22ec68467f57a560742307ff2bf4e6b5d0bcbf07062b82f1fabcd95e7368d9d02477')
 
@@ -45,6 +45,11 @@ package() {
   mkdir -p "${pkgdir}"/usr/bin
   ln -sf /usr/share/${_pkgname}/lens-desktop \
     "${pkgdir}"/usr/bin/lens-desktop
+
+  # symlink license
+  mkdir -p "${pkgdir}"/usr/share/licenses/${_pkgname}
+  ln -sf /usr/share/${_pkgname}/resources/static/license.md \
+    "${pkgdir}"/usr/share/licenses/${_pkgname}/LICENSE
 
   # clean and fix permissions
   find "${pkgdir}" -type d -exec chmod 755 {} \;
