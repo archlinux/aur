@@ -1,7 +1,7 @@
 # Maintainer: Dmytro Meleshko <dmytro dot meleshko at gmail dot com>
 _pkgname=cc-map-editor
 pkgname="${_pkgname}-bin"
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Map Editor for the game CrossCode"
 arch=('any')
@@ -17,7 +17,7 @@ source=("https://github.com/CCDirectLink/crosscode-map-editor/releases/download/
         "${pkgname}-LICENSE::https://github.com/CCDirectLink/crosscode-map-editor/raw/v${pkgver}/LICENSE"
         "${pkgname}.patch")
 noextract=("${_appimage_file}")
-sha256sums=('9d50f21be23f3757a0ddd98239d12a1abdaa52c70461ab52fbf4cc358a5144eb'
+sha256sums=('d013257863d368365935d861358ee21221d4ad703a63c0999ac1f8b440b7ef6a'
             'a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde'
             '11fde0a67b346874dabb8241393ead51723f3b4e9b75174c52a4b32e79ea9ccd')
 
@@ -65,7 +65,7 @@ EOF
 
   msg2 "Converting icons..."
   mkdir -p "icons"
-  magick convert "app/distAngular/favicon.ico" -set filename:size "%wx%h" "icons/%[filename:size].png"
+  magick "app/distAngular/favicon.ico" -set filename:size "%wx%h" "icons/%[filename:size].png"
 
   msg2 "Packing app.asar..."
   asar pack "app" "app.asar"
