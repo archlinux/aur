@@ -1,6 +1,6 @@
 pkgbase = r-dials
 	pkgdesc = Tools for Creating Tuning Parameter Values
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=dials
 	arch = any
@@ -18,17 +18,19 @@ pkgbase = r-dials
 	depends = r-purrr
 	depends = r-rlang
 	depends = r-scales
+	depends = r-sfd
 	depends = r-tibble
 	depends = r-vctrs
 	depends = r-withr
 	optdepends = r-covr
+	optdepends = r-ggplot2
 	optdepends = r-kernlab
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/dials_1.2.1.tar.gz
-	md5sums = 71af0aae8351ff80de1e3d8c55f5c135
-	b2sums = 2763d0e81b810fc632f7396fd6b41324553e11180cf8293743201652f8915b0fdedca3c657bde6bff7cbeb0b93f5299990de431b32eeddecbc66b92491bc9d41
+	source = https://cran.r-project.org/src/contrib/dials_1.3.0.tar.gz
+	md5sums = 585072b9d580ddd916386a7ba5a62afe
+	b2sums = ef7fd6b12573ea7818949c3536e37caec1a53565912632d110047a0717a5ccc02ef25edaed3418a59260eeff7cf2c6c3a19cfa27849a499193473c656394b670
 
 pkgname = r-dials
