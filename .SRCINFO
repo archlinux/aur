@@ -1,13 +1,15 @@
 pkgbase = phonon-qt5-git
 	pkgdesc = The multimedia framework by KDE
-	pkgver = 4.11.1_r3911.g0f0ae8d0
+	pkgver = 4.12.0_r3982.g0bb5869c
 	pkgrel = 1
 	url = https://community.kde.org/Phonon
 	arch = x86_64
 	license = LGPL
 	makedepends = git
-	makedepends = extra-cmake-modules-git
+	makedepends = extra-cmake-modules
 	makedepends = qt5-tools
+	depends = gcc-libs
+	depends = glibc
 	depends = libpulse
 	depends = qt5-base
 	depends = phonon-qt5-backend

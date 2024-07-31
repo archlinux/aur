@@ -3,14 +3,14 @@
 
 pkgname=phonon-qt5-git
 pkgdesc="The multimedia framework by KDE"
-pkgver=4.11.1_r3911.g0f0ae8d0
+pkgver=4.12.0_r3982.g0bb5869c
 pkgrel=1
 arch=($CARCH)
 url='https://community.kde.org/Phonon'
 license=(LGPL)
-depends=(libpulse qt5-base phonon-qt5-backend)
+depends=(gcc-libs glibc libpulse qt5-base phonon-qt5-backend)
 optdepends=('pulseaudio: PulseAudio support' 'qt5-tools: Designer plugin')
-makedepends=(git extra-cmake-modules-git qt5-tools)
+makedepends=(git extra-cmake-modules qt5-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%%-*}.git")
@@ -18,12 +18,13 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%%-*}
-  _ver="$(grep -m1 'project(Phonon VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver="$(grep -im1 "project(${pkgname%%-*} VERSION" CMakeLists.txt | sed 's/.* //; s/-/./g; s/)//; s/\"//g')"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
   cmake -B build -S ${pkgname%%-*} \
+    -DQT_MAJOR_VERSION=5 \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
