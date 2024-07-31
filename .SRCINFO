@@ -1,0 +1,16 @@
+pkgbase = python-vedo
+	pkgdesc = Python module for scientific analysis and visualization of 3d objects
+	pkgver = 2024.5.2
+	pkgrel = 1
+	url = https://github.com/marcomusy/vedo
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-numpy
+	depends = vtk
+	source = vedo-2024.5.2.tar.gz::https://github.com/marcomusy/vedo/archive/refs/tags/v2024.5.2.tar.gz
+	sha512sums = cc8f14c9a67d72c23e63c3432ff7edfd45e7da7ef65b01c73c26159ceb8be9488e06e90f5facdeb0514492ff2e0f7b566ee06dc4e2286569b62962312751c42c
+
+pkgname = python-vedo
