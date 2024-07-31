@@ -1,14 +1,14 @@
 pkgname=unpackerr
-pkgver=0.14.4
-pkgrel=793
+pkgver=0.14.5
+pkgrel=797
 pkgdesc='Extracts downloads so Radarr, Sonarr, Lidarr or Readarr may import them.'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'pentium4')
 url='https://golift.io/unpackerr'
 license=('MIT')
 makedepends=('go' 'gzip')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Unpackerr/unpackerr/archive/v0.14.4.tar.gz")
-sha512sums=('abcd863e70d60c2db7372a1626c4aea74860c19133f45e43fbccc095d0503c03fcd39b939aac7c8cebf28c8aba25c9365aa8c3b8063c96b98e058f4a4a9bfa5e')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Unpackerr/unpackerr/archive/v0.14.5.tar.gz")
+sha512sums=('f932541524f27718daf6759d22f710b043d7130dae84d7cebddb432cf4439b411830865c2b1ca35522d83ed431e25fb0d3c1385a4318d41275212851c3f87fa0')
 
 backup=("etc/${pkgname}/${pkgname}.conf")
 
@@ -42,7 +42,7 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   # Directories.
-  install -d -m 755 "${pkgdir}/usr/share/"{licenses,doc}"/${pkgname}" "${pkgdir}/etc/${pkgname}"
+  install -d -m 775 "${pkgdir}/usr/share/"{licenses,doc}"/${pkgname}" "${pkgdir}/etc/${pkgname}"
 
   # Install the binary
   install -D -m 755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
