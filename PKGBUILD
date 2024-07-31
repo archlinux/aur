@@ -3,7 +3,7 @@
 # Contributor: Peyman Mortazavi <pey.mortazavi@gmail.com>
 
 pkgname='protoc-gen-grpc-api-gateway-bin'
-pkgver=0.0.8
+pkgver=0.0.11
 pkgrel=1
 pkgdesc='Protoc plug-ings for generating reverse proxy code translating HTTP to gRPC.'
 url='https://meshapi.github.com/grpc-api-gateway'
@@ -12,14 +12,14 @@ license=('GPL-3.0')
 provides=('protoc-gen-openapiv3' 'protoc-gen-grpc-api-gateway')
 conflicts=('grpc-api-gateway')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/meshapi/grpc-api-gateway/releases/download/v0.0.8-alpha1/grpc-api-gateway_Linux_arm64.tar.gz")
-sha256sums_aarch64=('51e04d2accd3f5e74141aa8ac497d70f8c084b560a8cf34f8359baa24ef07352')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/meshapi/grpc-api-gateway/releases/download/v0.0.11/grpc-api-gateway_Linux_arm64.tar.gz")
+sha256sums_aarch64=('30527c5b4005130f1240a4561137b4c32ae2f4aff5f6d935405eea7318d676f9')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/meshapi/grpc-api-gateway/releases/download/v0.0.8-alpha1/grpc-api-gateway_Linux_i386.tar.gz")
-sha256sums_i686=('a0e5baf7f2be087d5f37e1878632610d5a5ff74a882de1d148cb3f4c61f369db')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/meshapi/grpc-api-gateway/releases/download/v0.0.11/grpc-api-gateway_Linux_i386.tar.gz")
+sha256sums_i686=('171c0267cb7c12205f9c0070c6b6d85e9db260c30694a0f6c0ea71b9aa5d6e46')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/meshapi/grpc-api-gateway/releases/download/v0.0.8-alpha1/grpc-api-gateway_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('d6b13799daed9d0ae5ad678122968491022c5c2893e2a4a2724df2a6e249b8ba')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/meshapi/grpc-api-gateway/releases/download/v0.0.11/grpc-api-gateway_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('c94039cd61df307e8f69d4ad23dc1e03bb88f79b5a36a3c104b29c86455e09a7')
 
 package() {
   install -Dm755 "./protoc-gen-grpc-api-gateway" "${pkgdir}/usr/bin/protoc-gen-grpc-api-gateway"
