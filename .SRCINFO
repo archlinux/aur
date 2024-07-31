@@ -1,0 +1,16 @@
+pkgbase = python-pyxdf
+	pkgdesc = Python importer for XDF files
+	pkgver = 1.16.8
+	pkgrel = 1
+	url = https://github.com/xdf-modules/pyxdf
+	arch = any
+	license = BSD
+	makedepends = python-pip
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-numpy
+	source = https://files.pythonhosted.org/packages/source/p/pyxdf/pyxdf-1.16.8.tar.gz
+	sha1sums = bfde1e4614e87a48ecd45b87ed69779fbde9e2e3
+
+pkgname = python-pyxdf
