@@ -1,13 +1,13 @@
 # Maintainer: Matthias Gerstner <matthias.gerstner@nefkom.net>
 
 pkgname='libcosmos'
-pkgver=v0.2.2
+pkgver=v0.3.0
 pkgrel=1
 pkgdesc='A library providing a modern C++ API for the Linux operating system'
 arch=('i686' 'x86_64')
 url='https://github.com/gerstner-hub/libcosmos'
 license=('MIT')
-_tag='52f2ea56d261441b0914d0be4f86232ec1ad20a5' # v0.2.2
+_tag='8b2e84906d57039fde217d872e49fd2640ea18db' # v0.3.0
 source=("git+${url}.git?signed#tag=$_tag")
 sha256sums=('SKIP')
 depends=('glibc' 'gcc-libs')
