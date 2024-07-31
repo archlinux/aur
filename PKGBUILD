@@ -1,33 +1,16 @@
-
-# Maintainer: Donald Webster <fryfrog@gmail.com>
-
-pkgname="unpackerr"
-pkgver=0.14.0
-pkgrel=1
-pkgdesc="A daemon that checks for completed downloads and extracts them so Radarr, Sonarr and/or Lidarr may import them."
-arch=('x86_64' 'aarch64' 'armv7h')
-url="https://github.com/davidnewhall/unpackerr"
+pkgname=unpackerr
+pkgver=0.14.2
+pkgrel=785
+pkgdesc='Extracts downloads so Radarr, Sonarr, Lidarr or Readarr may import them.'
+arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'pentium4')
+url='https://golift.io/unpackerr'
 license=('MIT')
-makedepends=('go')
-optdepends=(
-  'transmission-cli: torrent downloader (CLI and daemon)'
-  'transmission-gtk: torrent downloader (GTK+)'
-  'transmission-qt: torrent downloader (Qt)'
-  'deluge: torrent downloader'
-  'rtorrent: torrent downloader'
-)
+makedepends=('go' 'gzip')
 
-backup=('etc/unpackerr/unpackerr.conf')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Unpackerr/unpackerr/archive/v0.14.2.tar.gz")
+sha512sums=('54b521ca6bd7eced986f95d0151268c3fb8c4e798679b4ecdbcbe24eb78b57165c0f3f257bdfc91018a3f001afe4b8b350106afaa86e55bee1f22532b3a92823')
 
-source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/davidnewhall/unpackerr/archive/v${pkgver}.tar.gz"
-  'unpackerr.service'
-  'unpackerr.sysusers'
-)
-
-sha512sums=('34b7b7778b4c6b0262888b6f1e81a51e19c9018ba8d6cadd0b887e3a80b631e3859deec651b0d57170bc427ba5b4f70fb857d389d56e9a9bbef49ba9260a4d46'
-            '303dad17d17ff073fa0e4517c09b437f6269646c062507552d5de0067a36a0685b2b10c9333c4b4d719d1e76807b26546f66aba8171dc1d0dc69e3685be23967'
-            '1607677947bb788eb9a7bdc37e85c10632888d476d393493013dbdb3924f805adae9b6c6f31e60800ed95a9bed7c1e8ee8a48ebdaacd60c52e355054f62e0237')
+backup=("etc/${pkgname}/${pkgname}.conf")
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -36,24 +19,46 @@ prepare(){
 
 build() {
   cd "$pkgname-$pkgver"
+
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
-  go build -o unpackerr
+  export VLDFLAGS="-w -s -X 'golift.io/version.Branch=main (${sha512sums[0]:0:11})' \
+    -X golift.io/version.BuildDate=$(date -u +%Y-%m-%dT%H:%M:00Z) \
+    -X golift.io/version.BuildUser=$(whoami) \
+    -X golift.io/version.Revision=${pkgrel} \
+    -X golift.io/version.Version=${pkgver}"
+
+  go build -o unpackerr -ldflags "$VLDFLAGS" .
+  go run github.com/davidnewhall/md2roff@v0.0.1 --manual unpackerr --version ${pkgver} --date "${DATE}" README.md
+	go run github.com/davidnewhall/md2roff@v0.0.1 --manual unpackerr --version ${pkgver} --date "${DATE}" examples/MANUAL.md
+	gzip -9 examples/MANUAL
+  mv examples/MANUAL.gz ${pkgname}.1.gz
 }
 
 package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # Directories.
+  install -d -m 755 "${pkgdir}/usr/share/"{licenses,doc}"/${pkgname}" "${pkgdir}/etc/${pkgname}"
+
   # Install the binary
-  install -D -m 755 "${srcdir}/${pkgname}-${pkgver}/unpackerr" "${pkgdir}/usr/bin/unpackerr"
+  install -D -m 755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-  # Create the configuration folder and install configuration file(s).
-  mkdir -p "${pkgdir}/etc/unpackerr"
-  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/examples/unpackerr.conf.example" "${pkgdir}/etc/unpackerr/unpackerr.conf"
-  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/examples/unpackerr.conf.example" "${pkgdir}/etc/unpackerr/unpackerr.conf.example"
+  # Install configuration file(s).
+  install -D -m 644 "examples/${pkgname}.conf.example" "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
+  install -D -m 644 "examples/${pkgname}.conf.example" "${pkgdir}/etc/${pkgname}/${pkgname}.conf.example"
 
-  # Install the various systemd files.
-  install -D -m 644 "${srcdir}/unpackerr.service" "${pkgdir}/usr/lib/systemd/system/unpackerr.service"
-  install -D -m 644 "${srcdir}/unpackerr.sysusers" "${pkgdir}/usr/lib/sysusers.d/unpackerr.conf"
+  # License, documentation, manual.
+  install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m 644 *.html examples/* "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -D -m 644 "${pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
+
+  # Install the systemd service unit and system user account.
+  install -D -m 644 "init/systemd/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  echo "u ${pkgname} - \"${pkgname} daemon\"" > "${pkgname}.sysusers"
+  install -D -m 644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  rm "${pkgname}.sysusers"
 }
