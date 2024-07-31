@@ -1,13 +1,10 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
-# For Issues, Pull Requests
-# https://github.com/phnx47/pkgbuilds
-
 _appname=chain-desktop-wallet
 _pkgname=cro-chain-desktop
 pkgname="${_pkgname}-bin"
 pkgdesc='Crypto.com DeFi Desktop Wallet'
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/crypto-com/chain-desktop-wallet'
@@ -18,20 +15,17 @@ options=('!strip')
 depends=('gtk3' 'nss' 'alsa-lib')
 _appimg="Crypto.com-DeFi-Desktop-Wallet-${pkgver}.AppImage"
 source=("${_appimg}::${url}/releases/download/v${pkgver}/${_appimg}")
-sha512sums=('750232d8a33b66b4e26dae43a2b0232299601f8ef9db005a0e46b6b3d4c834c1c08c397e3ec274ae4864923c52aad6e9f875836a25d404588ecedcaf276ae3ca')
+sha512sums=('d103d882e2799046ed8a2cd68cff92a584910e04a28b0f662301c5adbff4be56662dac357c114b7be6a04f0148edbdaeb40c20cbc54472a86256637efbdf5757')
 
 prepare() {
-  # Extract files
   chmod +x "${_appimg}"
   "./${_appimg}" --appimage-extract
 
   cd squashfs-root
-  # Correct .desktop
   sed -e "s/AppRun --no-sandbox/${_appname}/g" -i "${_appname}.desktop"
   sed -e "/X-AppImage-Version/d" -i "${_appname}.desktop"
 
-  # Remove unnecessary files
-  rm "AppRun" "resources/app-update.yml"
+  rm AppRun resources/app-update.yml
 }
 
 package() {
