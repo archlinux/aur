@@ -1,0 +1,23 @@
+From 9fac0bb00a6c1113015f96036eee812dd0969689 Mon Sep 17 00:00:00 2001
+From: "T. Finch" <175355007+Taylor-Finch@users.noreply.github.com>
+Date: Wed, 24 Jul 2024 19:10:56 +0000
+Subject: [PATCH] Fix 'discid' memset array bounds error
+
+Fixes compilation error by adjusting bounds of memset on 'discid'.
+---
+ pkg2zip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pkg2zip.c b/pkg2zip.c
+index fe852ae..7cf1976 100644
+--- a/pkg2zip.c
++++ b/pkg2zip.c
+@@ -256,7 +256,7 @@ static void find_psp_sfo(const aes128_key* key, const aes128_key* ps3_key, const
+ 
+ static void find_pbp_sfo(const aes128_key* key, const aes128_key* ps3_key, const uint8_t* iv, sys_file pkg, uint64_t pkg_size, uint64_t enc_offset, uint64_t items_offset, uint32_t item_count, char* discid)
+ {
+-    memset(discid, 0x00, 0x10);
++    memset(discid, 0x00, 0x0A);
+     for (uint32_t item_index = 0; item_index < item_count; item_index++)
+     {
+         uint8_t item[32];

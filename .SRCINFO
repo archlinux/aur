@@ -1,12 +1,14 @@
 pkgbase = pkg2zip-fork
 	pkgdesc = This is for lusid1's fork, recomended by NoPayStation. Decrypts PlayStation Vita pkg file and packages to zip archive
-	pkgver = 2.3
-	pkgrel = 2
+	pkgver = 2.6
+	pkgrel = 1
 	url = https://github.com/lusid1/pkg2zip
 	arch = i686
 	arch = x86_64
-	license = custom:unlicense
-	source = https://github.com/lusid1/pkg2zip/archive/2.3.tar.gz
+	license = Unlicense
+	source = https://github.com/lusid1/pkg2zip/archive/2.6.tar.gz
+	source = memset.patch
 	sha256sums = SKIP
+	sha256sums = 02f389f04c7971f9c8130fe9a28d23aa1a052607411ceb361e02d83da57bb2bf
 
 pkgname = pkg2zip-fork
