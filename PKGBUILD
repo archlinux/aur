@@ -8,6 +8,7 @@ url="https://gitlab.com/dpeukert/$pkgname"
 license=('GPL-3.0-or-later')
 depends=('python>=3.8.0' 'python-argcomplete' 'yt-dlp')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+optdepends=('bash-completion: Tab completion support for bash')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha512sums=('1bb29ae35e76e26758263009e3fe171f24c3f287bf50c8b23222864f2e57df6551c1dcabc38852f259842b0d7804caca1e5a242cf4c5d135722e823e3bf90199')
 
