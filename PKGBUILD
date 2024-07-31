@@ -2,7 +2,7 @@
 
 pkgname='python-ompython'
 _name=OMPython
-pkgver='3.5.2'
+pkgver='3.6.0'
 pkgrel=1
 pkgdesc="OpenModelica-Python API Interface"
 url="https://openmodelica.org/"
@@ -13,7 +13,7 @@ license=('LicenseRef-OSMC-PL')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
         'https://openmodelica.org/osmc-pl/osmc-pl-1.2.txt')
-sha512sums=('d3764ddfd89718dd56b24dbe3f4be1004509aab930ad1ba64180df1401c555cee3cdd48ad31491456c5d4620700ad19f41764421e5324f483305d5d814319a64'
+sha512sums=('f8f6911389caec4bcc273ca3eb6bb1a9ca4e99a105f5f8a28f96d4b54a65c633b989def9af60714f8b34df797d839489f83139ec92ba453397324c370fd98b54'
             '519d380f9bba2165c3c09169d3b6737e8c63341face98ab66e476f7b54d3695195b498098144a63e3fcf35727199738c83a1a273702bd48e3c126199292c4085')
 
 build() {
