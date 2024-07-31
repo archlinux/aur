@@ -1,7 +1,7 @@
 pkgbase = python-bacpypes3
 	pkgdesc = BACnet communications library
 	pkgver = 0.0.97
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JoelBender/bacpypes3
 	arch = any
 	license = MIT
