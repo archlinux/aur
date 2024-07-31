@@ -1,45 +1,52 @@
 # Maintainer: Colin Woodbury <colin@fosskers.ca>
+
 pkgname=aura
-pkgver=3.2.9
+pkgver=4.0.0
 pkgrel=1
-pkgdesc="A secure package manager for Arch Linux and the AUR"
+pkgdesc="A package manager for Arch Linux and its AUR"
 url="https://github.com/fosskers/aura"
-license=('GPL3')
-arch=('x86_64')
-depends=('gmp' 'pacman' 'git')
-makedepends=('stack')
-optdepends=('bash-completion: for bash completions')
-conflicts=('aura-bin' 'aura-git')
-options=('strip')
-backup=("etc/$pkgname.conf")
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8ee1b1daa40c811707532974aab35d300d7eede843db9298ae45994c1f4e107f')
+license=('GPL-3.0-or-later')
+arch=("x86_64")
+depends=("git" "curl" "openssl" "gcc-libs" "glibc")
+makedepends=("cargo")
+optdepends=(
+  "bash-completion: for bash completions"
+  "bat: more featureful file viewing"
+  "fd: faster filesystem traversal"
+  "ripgrep: faster log searches"
+  "shellcheck: PKGBUILD scanning"
+)
+conflicts=("aura-bin" "aura-git" "aura3-bin")
+options=("strip")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('37a5cbd08faed3b58982ccdac15416abdd0cf467c8155d3394320e8613f83e93')
+
+prepare() {
+  cd "${pkgname}-${pkgver}/rust"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
-  cd "$pkgname-$pkgver"
-  stack clean "$pkgname"
-  stack build --pedantic "$pkgname"
+  cd "${pkgname}-${pkgver}/rust"
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release
+
+  # Build the `info` page.
+  cd "../misc"
+  makeinfo aura.texi
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  stack install --local-bin-path="$pkgdir/usr/bin" "$pkgname"
+  cd "${pkgname}-${pkgver}"
 
-  # Install conf file
-  install -Dm644 "$pkgname/doc/$pkgname.conf" -t "$pkgdir/etc"
+  # Install binary
+  install -Dm0755 -t "$pkgdir/usr/bin/" "rust/target/release/aura"
 
-  # Install man pages
-  install -Dm644 "$pkgname/doc/$pkgname.8" -t "$pkgdir/usr/share/man/man8"
-  install -Dm644 "$pkgname/doc/$pkgname.conf.5" -t "$pkgdir/usr/share/man/man5"
+  # Install man and info pages
+  install -Dm644 "misc/aura.8" "${pkgdir}/usr/share/man/man8/aura.8"
+  install -Dm644 "misc/aura.info" "${pkgdir}/usr/share/info/aura.info"
 
-  # Install bash completions
-  install -Dm644 "$pkgname/doc/completions/bashcompletion.sh" \
-    "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-
-  # Install zsh completions
-  install -Dm644 "$pkgname/doc/completions/_$pkgname" -t \
-    "$pkgdir/usr/share/zsh/site-functions"
-
-  # Directories for storing PKGBUILDs, source packages & installed package states
-  install -d "$pkgdir/var/cache/$pkgname/"{pkgbuilds,src,states}
+  # Install bash and zsh completions
+  install -Dm644 "misc/completions/bashcompletion.sh" "${pkgdir}/usr/share/bash-completion/completions/aura"
+  install -Dm644 "misc/completions/_aura" "${pkgdir}/usr/share/zsh/site-functions/_aura"
 }
