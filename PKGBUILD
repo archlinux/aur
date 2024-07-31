@@ -5,7 +5,7 @@
 
 pkgname=anytype-alpha-bin
 _truetag="beta" # Usually alpha, but sometimes they do the next version as beta which is weird
-pkgver=0.41.44
+pkgver=0.41.46
 pkgrel=1
 pkgdesc="Local/offline first, decentralized, P2P & E2EE notes/mindmapping/'everything app' platform (alternative to Notion)."
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
 	"https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}-${_truetag}/anytype_${pkgver}-${_truetag}_amd64.deb"
 	"https://raw.githubusercontent.com/anyproto/anytype-ts/main/LICENSE.md"
 )
-sha256sums=('9674c956dd5abf47072cd13d9cbe3e5bfea9a224bad4b5e3b9ec257a5b6e6e21'
+sha256sums=('6839b81c81b2f927b1c45ed4f6a165a7548559c97c5d5d006f35f0ec3a39f48a'
             'daad9eb95adc6262b07115ba2cf87cd4c64acaca4b45d48e0fd3b15a72a31dc1')
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = anytype-alpha-bin
 	pkgdesc = Local/offline first, decentralized, P2P & E2EE notes/mindmapping/'everything app' platform (alternative to Notion).
-	pkgver = 0.41.44
+	pkgver = 0.41.46
 	pkgrel = 1
 	url = https://anytype.io/
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = anytype-alpha-bin
 	conflicts = anytype-legacy
 	conflicts = anytype-electron-bin
 	conflicts = anytype-bin
-	source = https://github.com/anyproto/anytype-ts/releases/download/v0.41.44-beta/anytype_0.41.44-beta_amd64.deb
+	source = https://github.com/anyproto/anytype-ts/releases/download/v0.41.46-beta/anytype_0.41.46-beta_amd64.deb
 	source = https://raw.githubusercontent.com/anyproto/anytype-ts/main/LICENSE.md
-	sha256sums = 9674c956dd5abf47072cd13d9cbe3e5bfea9a224bad4b5e3b9ec257a5b6e6e21
+	sha256sums = 6839b81c81b2f927b1c45ed4f6a165a7548559c97c5d5d006f35f0ec3a39f48a
 	sha256sums = daad9eb95adc6262b07115ba2cf87cd4c64acaca4b45d48e0fd3b15a72a31dc1
 
 pkgname = anytype-alpha-bin
