@@ -2,7 +2,7 @@
 _target='compass-readonly-beta'
 _edition=' Readonly Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.43.5-beta.1'
+_pkgver='1.43.5-beta.6'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - beta version'
@@ -12,8 +12,8 @@ arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('SSPL-1.0')
 _electronpkg='electron29'
-depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release' 'nodejs>=16.15.1')
-makedepends=('git' 'npm>=8.19.4' 'python' 'unzip')
+depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release' 'nodejs>=18.19.1')
+makedepends=('git' 'npm>=10.2.4' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 backup=('etc/mongodb-compass.conf')
 source=(
@@ -22,8 +22,8 @@ source=(
 	'fix-argv.diff'
 	'mongodb-compass.conf'
 )
-b2sums=('452643892e063a3bc632aa6535cd0edc3b5d4feabfd0a2e9b08200be50a1c7fd2e1cad7a6eefe056ea9ef3a0b8a88aaa2ff8d1f27cc0dafb190762c235b45d11'
-        '58f8f765318090e2a4b0de8ab77a3c4034cd652ab1a84fdf72d7582b6e9bdd5b1c2f209ea1c27720c2d67ff471d56756ab91e4b62efb7975b7197c4bdb04d34b'
+b2sums=('a47705e8d22eacae1361ed8139827a1a65a69d74d36f834a716045daa460a5645370005f2883fea03d0b7a5919b3163f31c0005e4f06f330d91c69d0d0976d7b'
+        '2a115fb3dc5376e1f48edf57b31902feda3d7042da5601b1ee8de51e75b251373ff14bcf348274fea4fcf1f2615407850a7c4c12705fdc411179dc66370be4fa'
         'dfb2723ebea5a6f12d8a5dade5a98abb3645ad62f74c43dc05c7178b5257526a69c4a0353782c399a790d6d9c4d8438b0041863e8dbdf638f25bdf3fffbbb42f'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
 
