@@ -1,0 +1,13 @@
+pkgbase = ngtop
+	pkgdesc = Request analytics from the nginx access logs
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/facundoolano/ngtop
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = go
+	source = https://github.com/facundoolano/ngtop/archive/refs/tags/0.4.0.tar.gz
+	sha256sums = ed0ff5c58b7fe2e9d5189f6343fb1188dce283b25942bcedc9c419345d211493
+	b2sums = 3ba001361e22a2054c58720b935864824cb9dfb524bc3fcb65dba9af6972e6239da827ad85194104dd5d0f59b8d9328779d6ed701706c9b82adaefffd5c41204
+
+pkgname = ngtop
