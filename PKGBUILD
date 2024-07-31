@@ -1,21 +1,23 @@
-# $Id$
 # Maintainer: Robert Rakhmatulin <drakonu@otso.city>
-
-_pkgname=embree-git
-pkgver=4.3.2
-pkgname=${_pkgname}
-pkgrel=400300200
+pkgver=r17196.3c9936cb6
+pkgname=embree-git
+pkgrel=1
 pkgdesc="A collection of high-performance ray tracing kernels."
 arch=('x86_64')
 url="https://embree.github.io/"
 license=('Apache')
+provides=(embree)
+conflicts=(embree)
 depends=('intel-tbb')
 makedepends=('cmake' 'ispc' 'freeglut' 'libxmu' 'openexr')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/RenderKit/embree/archive/v${pkgver}.tar.gz")
-sha256sums=('dc7bb6bac095b2e7bc64321435acd07c6137d6d60e4b79ec07bb0b215ddf81cb')
-
+source=("embree::git+https://github.com/RenderKit/embree.git")
+sha256sums=('SKIP')
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 build() {
-    cd ${_pkgname}-${pkgver}
+    cd ${pkgname}
     cmake . \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_INSTALL_LIBDIR=lib \
@@ -27,9 +29,7 @@ build() {
 }
 
 package() {
-    cd ${_pkgname}-${pkgver}
+    cd ${pkgname}
     make DESTDIR="${pkgdir}" install
-    #prevent collision with official embree package
-    rm ${pkgdir}/usr/lib/libembree.so
 }
 
