@@ -1,15 +1,15 @@
 # Maintainer: Emil Velikov <emil.l.velikov@gmail.com>
 # Contributor: Eric Engestrom <aur@engestrom.ch>
 # Contributor: Ben Widawsky <ben@bwidawsk.net>
-# Contributor: Chad Versace <chad.versace@linux.intel.com>
+# Contributor: Lina Versace <lina@kiwitree.net>
 
 pkgname=waffle
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='a library for choosing window system and OpenGL API at runtime'
 arch=('x86_64')
 url='https://waffle.freedesktop.org'
-license=('BSD')
+license=('BSD-2-Clause')
 
 depends=('libx11' 'libxcb')
 optdepends=('libgl: for OpenGL or GLX support'
@@ -22,7 +22,7 @@ optdepends=('libgl: for OpenGL or GLX support'
 makedepends=('meson' 'xcb-proto' 'mesa' 'libxslt' 'docbook-xsl' 'wayland-protocols')
 
 source=(https://waffle.freedesktop.org/files/release/waffle-${pkgver}/waffle-${pkgver}.tar.xz{,.asc})
-sha256sums=('29f462b5ea93510f585ae59b09f1aef6f9bad7287c7b82a7e8bd88f766e3afc7'
+sha256sums=('f616c0ca6072d36bf81fb79a3695799973a978775e0213744bf0a39be6367425'
             'SKIP')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D')
 
