@@ -1,6 +1,6 @@
 pkgbase = python-jsonargparse
 	pkgdesc = Parsing library for CLI options, configs, and environment variables
-	pkgver = 4.29.0
+	pkgver = 4.32.0
 	pkgrel = 1
 	url = https://github.com/omni-us/jsonargparse
 	arch = any
@@ -21,9 +21,10 @@ pkgbase = python-jsonargparse
 	depends = python-requests
 	depends = python-responses
 	depends = python-ruyaml
+	depends = python-shtab
 	optdepends = python-omegaconf
 	optdepends = python-jsonnet
-	source = https://files.pythonhosted.org/packages/source/j/jsonargparse/jsonargparse-4.29.0.tar.gz
-	sha256sums = 03d407122c856095c48b07c58107002c9d3eaeb2795d8040efad831db5817494
+	source = https://files.pythonhosted.org/packages/source/j/jsonargparse/jsonargparse-4.32.0.tar.gz
+	sha256sums = a93f29506e9780b28fc6854c3b3718f4a74d92bf7f0c1f4c34e3047cd5d8be42
 
 pkgname = python-jsonargparse
