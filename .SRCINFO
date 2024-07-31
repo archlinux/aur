@@ -1,10 +1,10 @@
 pkgbase = lib32-waffle
 	pkgdesc = a library for choosing window system and OpenGL API at runtime (32 bits)
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://waffle.freedesktop.org
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = meson
 	makedepends = xcb-proto
 	makedepends = lib32-mesa
@@ -12,17 +12,17 @@ pkgbase = lib32-waffle
 	makedepends = wayland-protocols
 	depends = lib32-libx11
 	depends = lib32-libxcb
-	depends = waffle=1.8.0
+	depends = waffle=1.8.1
 	optdepends = lib32-libgl: for OpenGL or GLX support
 	optdepends = lib32-libgles: for GLES support
 	optdepends = lib32-libegl: for gbm, surfaceless, x11_egl or wayland support
 	optdepends = lib32-mesa: for gbm support
 	optdepends = lib32-libdrm: for gbm support
 	optdepends = lib32-wayland: for wayland support
-	source = https://waffle.freedesktop.org/files/release/waffle-1.8.0/waffle-1.8.0.tar.xz
-	source = https://waffle.freedesktop.org/files/release/waffle-1.8.0/waffle-1.8.0.tar.xz.asc
+	source = https://waffle.freedesktop.org/files/release/waffle-1.8.1/waffle-1.8.1.tar.xz
+	source = https://waffle.freedesktop.org/files/release/waffle-1.8.1/waffle-1.8.1.tar.xz.asc
 	validpgpkeys = 8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D
-	sha256sums = 29f462b5ea93510f585ae59b09f1aef6f9bad7287c7b82a7e8bd88f766e3afc7
+	sha256sums = f616c0ca6072d36bf81fb79a3695799973a978775e0213744bf0a39be6367425
 	sha256sums = SKIP
 
 pkgname = lib32-waffle
