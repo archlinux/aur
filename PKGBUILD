@@ -4,17 +4,17 @@
 
 pkgname=mingw-w64-libarchive
 _pkgname=libarchive
-pkgver=3.7.2
+pkgver=3.7.4
 pkgrel=1
 pkgdesc="library that can create and read several streaming archive formats (mingw-w64)"
 arch=(any)
 url="http://www.libarchive.org/"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=(mingw-w64-crt mingw-w64-bzip2 mingw-w64-expat mingw-w64-lz4 mingw-w64-lzo mingw-w64-regex mingw-w64-nettle mingw-w64-openssl mingw-w64-xz mingw-w64-zlib mingw-w64-zstd)
 makedepends=('mingw-w64-configure')
-options=('!buildflags' 'staticlibs' '!strip')
+options=('!buildflags' '!debug' 'staticlibs' '!strip')
 source=("https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('04357661e6717b6941682cde02ad741ae4819c67a260593dfb2431861b251acb')
+sha256sums=('f887755c434a736a609cbd28d87ddbfbe9d6a3bb5b703c22c02f6af80a802735')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -38,4 +38,7 @@ package() {
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
   done
+
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  install -Dm0644 COPYING "${pkgdir}/usr/share/licenses/$pkgname/COPYING"
 }
