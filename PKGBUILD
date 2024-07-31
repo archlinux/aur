@@ -4,7 +4,7 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r1709.9ea4e320
+pkgver=r1732.42b9a09e
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64' 'i686' 'pentium4' 'powerpc64le' 'powerpc64' 'powerpc' 'riscv64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -42,9 +42,9 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	test -n "${CFLAGS}" || CFLAGS=-O2  # This generic fallback is only used when necessary.
-	rm -rf ./arch  # Get rid of any leftover build files, in case the flags in makepkg.conf changed.
-	./bin/package make CCFLAGS="${CFLAGS}"
+	rm -rf ./arch               # Get rid of any leftover build files (in case makepkg.conf changed)
+	export CCFLAGS="${CFLAGS}"  # bin/package uses CCFLAGS rather than CFLAGS
+	./bin/package make          # Build ksh
 }
 
 package() {
@@ -55,7 +55,7 @@ package() {
 	install -dm0755 "${pkgdir}/usr/share/doc/ksh"
 	install -dm0755 "${pkgdir}/usr/share/licenses/ksh"
 
-	# Install the example kshrc provided with the PKGBUILD.
+	# Install the example kshrc provided with the PKGBUILD
 	install -Dm0644 sample.kshrc "${pkgdir}/etc/skel/.kshrc"
 
 	# Use the bin/package script to install the core components of ksh + man pages
