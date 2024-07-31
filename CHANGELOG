@@ -1,5 +1,11 @@
 Release history
 
+  Version 3.12 (2024-07-26)
+
+     * Added support for 64-bit data types for FC3, FC4 and FC16
+     * Fixed issue of Read Device Identification (-t id) being limited to
+       slaved address 1
+
   Version 3.11 (2024-01-22)
 
      * Added Read Device Identification for FC 43 subfunction 14 (-t id)
