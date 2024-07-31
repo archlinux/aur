@@ -1,7 +1,7 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=phan
-pkgver=5.4.3
+pkgver=5.4.4
 pkgrel=1
 pkgdesc="Static analyzer for PHP that prefers to minimize false-positives."
 url="https://github.com/phan/phan/wiki"
@@ -10,17 +10,12 @@ license=("MIT")
 depends=("php>=7.2.0" "php-ast>=1.0.16")
 source=(
 	"${pkgname}-${pkgver}.phar::https://github.com/phan/phan/releases/download/${pkgver}/phan.phar"
-	"${pkgname}-${pkgver}.phar.asc::https://github.com/phan/phan/releases/download/${pkgver}/phan.phar.asc"
 	"https://raw.githubusercontent.com/phan/phan/${pkgver}/LICENSE"
-)
-validpgpkeys=(
-	"A618F385C2FC002969A89FBE8101FB57DD8130F0"
 )
 # Upstream prefers to verify by gpg signature,
 # leave dummy hash verification to let makepkg happy.
 sha256sums=(
-	SKIP
-	SKIP
+	'e9939dc05ba3753b0460cb7de522104def88e692a58c05334da8982fd28f21aa'
 	SKIP
 )
 
