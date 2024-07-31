@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/marcomusy/vedo"
 license=(MIT)
 depends=(python-numpy vtk)
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-wheel python-setuptools)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
 sha512sums=('cc8f14c9a67d72c23e63c3432ff7edfd45e7da7ef65b01c73c26159ceb8be9488e06e90f5facdeb0514492ff2e0f7b566ee06dc4e2286569b62962312751c42c')
 

@@ -8,6 +8,7 @@ pkgbase = python-vedo
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python-numpy
 	depends = vtk
 	source = vedo-2024.5.2.tar.gz::https://github.com/marcomusy/vedo/archive/refs/tags/v2024.5.2.tar.gz
