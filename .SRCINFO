@@ -1,0 +1,17 @@
+pkgbase = tpfanctl-bin
+	pkgdesc = A simple ThinkPad fan control CLI for Linux, written in Rust (binary version).
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ezntek/tpfanspeed
+	arch = x86_64
+	license = MPL-2.0
+	depends = lm_sensors
+	provides = tpfanctl
+	provides = setfan
+	conflicts = tpfanctl
+	conflicts = tpfanctl-bin
+	conflicts = tpfanctl-git
+	source = https://github.com/ezntek/tpfanspeed/releases/download/v0.1.1/tpfanctl-linux-x86_64-v0.1.1.tar.gz
+	sha256sums = c448049c1d61cbd07cbb6da177649d48eddac5e1474fb3e427a2dd4852828771
+
+pkgname = tpfanctl-bin
