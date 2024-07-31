@@ -1,13 +1,13 @@
 pkgbase = websum-bin
 	pkgdesc = Next-gen integrity checker written in Rust
-	pkgver = v0.3.1
+	pkgver = v0.4.0
 	pkgrel = 1
 	url = https://github.com/yilmaz08/websum
 	arch = x86_64
 	license = MIT
 	provides = websum
 	conflicts = websum-git
-	source = websum-v0.3.1::https://github.com/yilmaz08/websum/releases/download/v0.3.1/websum-v0.3.1
-	sha256sums = 2400394c5a54e8c6ded0a3c2b3fdac517959d51391a55760bad41e91cade36f0
+	source = websum-v0.4.0::https://github.com/yilmaz08/websum/releases/download/v0.4.0/websum-v0.4.0
+	sha256sums = 4d1ea4b69dc1f947f8301353994601bf12d7e1a05fb7d8e881a90790e7d78a53
 
 pkgname = websum-bin
