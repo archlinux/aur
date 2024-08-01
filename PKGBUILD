@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=distances
-_pkgver=0.1.10
+_pkgver=0.1.11
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Tools for Distance Metrics"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -16,8 +16,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('35c8224f7b10bc3bc4516294c4ebc440')
-b2sums=('19bd38e2ef62930353bb1efd8de093b31257a247a5a1ed46a9427d1f090cc8d077ec266f2c86aeafee1b55c72208cfe24cd2c6c1fad948add03e712bb938305e')
+md5sums=('d7f3213d5df859261144573aeef65bf7')
+b2sums=('d855b4682c5c0a8384017632912c762740090ff9f5ac96a6f76bb9505bb4dc5e3a080ff938e95374c276d48f899263c56dcdcddcd92ea966cf307467d29e4b5d')
 
 build() {
   mkdir build
