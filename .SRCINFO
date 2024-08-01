@@ -1,6 +1,6 @@
 pkgbase = gst-plugin-gtk4
 	pkgdesc = Multimedia graph framework - GTK4 plugin
-	pkgver = 0.12.7
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://crates.io/crates/gst-plugin-gtk4
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = gst-plugin-gtk4
 	depends = gtk4
 	provides = libgstgtk4.so
 	conflicts = gst-plugins-rs
-	source = gst-plugin-gtk4-0.12.7.tar.gz::https://static.crates.io/crates/gst-plugin-gtk4/gst-plugin-gtk4-0.12.7.crate
-	sha256sums = c95543801d561c9fef65704421a7208d06d90dad30f4a5e5e64db741219f6958
+	source = gst-plugin-gtk4-0.13.0.tar.gz::https://static.crates.io/crates/gst-plugin-gtk4/gst-plugin-gtk4-0.13.0.crate
+	sha256sums = 69b98aeb531b6cf9c3a6eb36742cedc0168054e2f040b76ddc61260c10dec589
 
 pkgname = gst-plugin-gtk4
