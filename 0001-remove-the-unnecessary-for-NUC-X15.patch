@@ -1,0 +1,94 @@
+From e458a927bc5c87efdcc1b621ec5997773a85922a Mon Sep 17 00:00:00 2001
+From: nuvole <mitltlatltl@gmail.com>
+Date: Thu, 1 Aug 2024 14:53:16 +0800
+Subject: [PATCH] remove the unnecessary for NUC X15
+
+---
+ src/Kbuild                | 18 +++++++++---------
+ src/tuxedo_io/tuxedo_io.c |  3 ++-
+ src/tuxedo_keyboard.c     |  7 ++++---
+ src/uniwill_keyboard.h    |  1 +
+ 4 files changed, 16 insertions(+), 13 deletions(-)
+
+diff --git a/src/Kbuild b/src/Kbuild
+index 1d9854f..8b20cd2 100644
+--- a/src/Kbuild
++++ b/src/Kbuild
+@@ -1,14 +1,14 @@
+-obj-m += clevo_acpi.o
+-obj-m += clevo_wmi.o
++#obj-m += clevo_acpi.o
++#obj-m += clevo_wmi.o
+ obj-m += tuxedo_keyboard.o
+ obj-m += uniwill_wmi.o
+ 
+-obj-y += ite_8291/
+-obj-y += ite_8291_lb/
+-obj-y += ite_8297/
+-obj-y += ite_829x/
+-obj-y += tuxedo_compatibility_check/
++#obj-y += ite_8291/
++#obj-y += ite_8291_lb/
++#obj-y += ite_8297/
++#obj-y += ite_829x/
++#obj-y += tuxedo_compatibility_check/
+ obj-y += tuxedo_io/
+ obj-y += tuxedo_nb02_nvidia_power_ctrl/
+-obj-y += tuxedo_nb05/
+-obj-y += tuxedo_nb04/
++#obj-y += tuxedo_nb05/
++#obj-y += tuxedo_nb04/
+diff --git a/src/tuxedo_io/tuxedo_io.c b/src/tuxedo_io/tuxedo_io.c
+index 264a954..8009127 100644
+--- a/src/tuxedo_io/tuxedo_io.c
++++ b/src/tuxedo_io/tuxedo_io.c
+@@ -166,7 +166,8 @@ void uw_id_tdp(void)
+ 		tdp_min_defs = tdp_min_gmxmgxx;
+ 		tdp_max_defs = tdp_max_gmxmgxx;
+ 	} else if (dmi_match(DMI_PRODUCT_SKU, "POLARIS1XI03")
+-		|| dmi_match(DMI_PRODUCT_SKU, "STELLARIS1XI03")) {
++		|| dmi_match(DMI_PRODUCT_SKU, "STELLARIS1XI03")
++		|| dmi_match(DMI_PRODUCT_SKU, "BKC71FBFU6000")) {
+ 		tdp_min_defs = tdp_min_gmxtgxx;
+ 		tdp_max_defs = tdp_max_gmxtgxx;
+ 	} else if (dmi_match(DMI_PRODUCT_SKU, "POLARIS1XA03")
+diff --git a/src/tuxedo_keyboard.c b/src/tuxedo_keyboard.c
+index 21b4087..063290b 100644
+--- a/src/tuxedo_keyboard.c
++++ b/src/tuxedo_keyboard.c
+@@ -21,7 +21,7 @@
+ #include "tuxedo_keyboard_common.h"
+ #include "clevo_keyboard.h"
+ #include "uniwill_keyboard.h"
+-#include "tuxedo_compatibility_check/tuxedo_compatibility_check.h"
++// #include "tuxedo_compatibility_check/tuxedo_compatibility_check.h"
+ #include <linux/mutex.h>
+ #include <asm/cpu_device_id.h>
+ #include <asm/intel-family.h>
+@@ -197,8 +197,9 @@ static int __init tuxedo_keyboard_init(void)
+ {
+ 	TUXEDO_INFO("module init\n");
+ 
+-	if (!tuxedo_is_compatible())
+-		return -ENODEV;
++	// have already skipped for >= gen12
++	// if (!tuxedo_is_compatible())
++	// 	return -ENODEV;
+ 
+ 	return 0;
+ }
+diff --git a/src/uniwill_keyboard.h b/src/uniwill_keyboard.h
+index 79293b5..bf89a7c 100644
+--- a/src/uniwill_keyboard.h
++++ b/src/uniwill_keyboard.h
+@@ -1041,6 +1041,7 @@ struct uniwill_device_features_t *uniwill_get_device_features(void)
+ 		|| dmi_match(DMI_PRODUCT_SKU, "POLARIS1XA03")
+ 		|| dmi_match(DMI_PRODUCT_SKU, "POLARIS1XI03")
+ 		|| dmi_match(DMI_PRODUCT_SKU, "STELLARIS1XI03")
++		|| dmi_match(DMI_PRODUCT_SKU, "BKC71FBFU6000")
+ 		|| dmi_match(DMI_PRODUCT_SKU, "STELLARIS1XA03")
+ 		|| dmi_match(DMI_PRODUCT_SKU, "STELLARIS1XI04")
+ 		|| dmi_match(DMI_PRODUCT_SKU, "STEPOL1XA04")
+-- 
+2.46.0
+
