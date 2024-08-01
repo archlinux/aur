@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=swarm-desktop
 _pkgname="Swarm Desktop"
-pkgver=0.42.0
+pkgver=0.43.0
 _electronversion=18
 _nodeversion=18
 pkgrel=1
@@ -23,12 +23,13 @@ makedepends=(
     'npm'
     'nvm'
     'curl'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('324f6f9c843a0e6880333bdd4ccc4a97ea5b2a46e2cc29041b956aedc7b1dcc0'
+sha256sums=('6278e11eac3fe36aad61f1cfa90b0dd967174fc92bccf98ed3bdc984f54bd108'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -60,16 +61,16 @@ build() {
     else
         echo "Your network is OK."
     fi
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    sed 's|cd ui \&\& npm run build|cd ui \&\& npm ci \&\& npm run build|g' -i package.json
-    npm ci
-    npm run build
-    npm run package
+    cd "${srcdir}/${pkgname}.git"
+    sed 's|cd ui \&\& npm run build|cd ui \&\& NODE_ENV=development npm ci \&\& NODE_ENV=production npm run build|g' -i package.json
+    NODE_ENV=development npm ci
+    NODE_ENV=production npm run build
+    NODE_ENV=production npm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/out/${_pkgname}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}.git/out/${_pkgname}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
