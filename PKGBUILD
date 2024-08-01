@@ -2,8 +2,8 @@
 # Contributor: Morteza NourelahiAlamdari <m@0t1.me>
 
 pkgname=google-cloud-cpp
-pkgver=2.26.0
-pkgrel=2
+pkgver=2.27.0
+pkgrel=1
 pkgdesc="C++ Client Libraries for Google Cloud Services"
 arch=('i686' 'x86_64')
 url="https://github.com/googleapis/google-cloud-cpp/"
@@ -13,12 +13,12 @@ depends=('protobuf' 'grpc' 'nlohmann-json' 'c-ares' 'zlib' 'openssl' 'curl' 'abs
 
 # Update this one every release to avoid cmake FetchContent
 # _GOOGLE_CLOUD_CPP_GOOGLEAPIS_COMMIT_SHA can be found in $srcdir/cmake/GoogleapisConfig.cmake
-_googleapis_commit_sha="622e10a1e8b2b6908e0ac7448d347a0c1b4130de"
+_googleapis_commit_sha="e3838fbf057c3b69efc1e0b8e1a5a288ee91a00d"
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/googleapis/google-cloud-cpp/archive/v${pkgver}.tar.gz"
         "googleapis-${_googleapis_commit_sha}.tar.gz::https://github.com/googleapis/googleapis/archive/${_googleapis_commit_sha}.tar.gz")
-sha256sums=('91cd0552c68d85c0c07f9500771367034ea78f6814603275dcf8664472f8f37f'
-            '33c62c03f9479728bdaa1a6553d8b35fa273d010706c75ea85cd8dfe1687586c')
+sha256sums=('333fe00210ce1a6f0c1b51c232438a316eaf2c7a1724f75d0b2c64f8fc456aa7'
+            '2966f46125ef3665329340288771e85fb8f6e289b2f4f9adb972fdb42d49e180')
 
 prepare() {
   # Symlink from googleapis to exernalproject folder
