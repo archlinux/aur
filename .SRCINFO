@@ -1,17 +1,16 @@
 pkgbase = ensenso-sdk
 	pkgdesc = Ensenso SDK and tools
-	pkgver = 3.5.1394
+	pkgver = 4.0.1486
 	pkgrel = 1
 	url = http://ensenso.com
 	arch = x86_64
 	license = custom
-	options = !strip
-	source = ensenso-sdk-3.5.1394.tar.bz2::https://download.optonic.com/s/ensensosdk/download?files=ensenso-sdk-3.5.1394-x64.tar.bz2
+	source = ensenso-sdk-4.0.1486.tar.bz2::https://download.optonic.com/s/ensensosdk/download?files=ensenso-sdk-4.0.1486-x64.tar.bz2
 	source = nxCalTab
 	source = nxProfiler
 	source = nxTreeEdit
 	source = nxView
-	sha512sums = 59b3aa66ed76140b0fa52976fcfd8ce50b0d87997d368729a76cf81d93c5ee136de7d8045ba0ec558dac1f2dd535ea83f18b85c597e777818adf080e3370d40b
+	sha512sums = 10a067efb2bb532d7f9ea6ea6611aa03ea201f95f613a2c4daf9a57a8154a028c05a945762c081c4fb7d208487461c7096ceca88b4fa475189f701ba40c4c10f
 	sha512sums = 811e6727de246ddf791e5f67136d81a28b667285574612d37df09f228441c3b59829f2376abe3d5fb17bfc20dee03a65acaf3bbb7be22493fddef08d12a811c6
 	sha512sums = 646f56e962e0150cc40a54c6cee546992af79e4e1fff290fadb97d12453bf8778706d690e3650418636d73215d4dce825b6d7ae84ecff3840d53764ec5427d19
 	sha512sums = 4c3e8a8f3a2953cfed52c355d6847dc075aad52f80bb04fd898008c57e629e8a25c497396beef120f948faa7ea0a92125b3dde5c7390db7ad3137deeffeb3c79
@@ -31,7 +30,7 @@ pkgname = ensenso-sdk-runtime
 
 pkgname = ensenso-sdk-gui
 	depends = ensenso-sdk-runtime
-	depends = qt4
+	depends = qt5-base
 
 pkgname = ensenso-sdk-doc
 	arch = any

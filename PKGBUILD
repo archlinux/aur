@@ -2,7 +2,7 @@
 pkgbase=ensenso-sdk
 pkgname=(ensenso-sdk ensenso-sdk-runtime ensenso-sdk-gui ensenso-sdk-doc ensenso-sdk-examples)
 pkgdesc="Ensenso SDK and tools"
-pkgver=3.5.1394
+pkgver=4.0.1486
 pkgrel=1
 arch=(x86_64)
 license=(custom)
@@ -17,18 +17,14 @@ source=(
 )
 
 sha512sums=(
-	'59b3aa66ed76140b0fa52976fcfd8ce50b0d87997d368729a76cf81d93c5ee136de7d8045ba0ec558dac1f2dd535ea83f18b85c597e777818adf080e3370d40b'
+	'10a067efb2bb532d7f9ea6ea6611aa03ea201f95f613a2c4daf9a57a8154a028c05a945762c081c4fb7d208487461c7096ceca88b4fa475189f701ba40c4c10f'
 	'811e6727de246ddf791e5f67136d81a28b667285574612d37df09f228441c3b59829f2376abe3d5fb17bfc20dee03a65acaf3bbb7be22493fddef08d12a811c6'
 	'646f56e962e0150cc40a54c6cee546992af79e4e1fff290fadb97d12453bf8778706d690e3650418636d73215d4dce825b6d7ae84ecff3840d53764ec5427d19'
 	'4c3e8a8f3a2953cfed52c355d6847dc075aad52f80bb04fd898008c57e629e8a25c497396beef120f948faa7ea0a92125b3dde5c7390db7ad3137deeffeb3c79'
 	'421a4e0c742bf60ddee785021e9e81bab14f36e5fde22a6db5dee8fdf8d0b7e303394cfbef855d775cdf8e701ed3fa416d50ec1145a8cb2c875cc2553b5e2c06'
 )
 
-# Stripping results in a segfaulting NxView somehow.
-options=(!strip)
-
-_hash="c7fdd89"
-_dir="ensenso-sdk-$pkgver-x64-$_hash"
+_dir="ensenso-sdk-$pkgver-x64"
 
 package_ensenso-sdk() {
 	depends=('ensenso-sdk' 'ensenso-sdk-gui')
@@ -67,7 +63,7 @@ package_ensenso-sdk-runtime() {
 }
 
 package_ensenso-sdk-gui() {
-	depends=('ensenso-sdk-runtime' 'qt4')
+	depends=('ensenso-sdk-runtime' 'qt5-base')
 
 	local dir="$srcdir/$_dir/"
 
