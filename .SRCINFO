@@ -1,0 +1,24 @@
+pkgbase = frzr-sk-git
+	pkgdesc = A deployment and update system for read-only btrfs subvolume based operating systems
+	pkgver = 0.15.2.sk7.r0.g42fc42e
+	pkgrel = 1
+	url = https://github.com/honjow/frzr
+	arch = any
+	license = MIT
+	depends = btrfs-progs
+	depends = parted
+	depends = libnewt
+	depends = dosfstools
+	depends = jq
+	depends = util-linux
+	depends = dmidecode
+	depends = zstd
+	depends = xz
+	depends = aria2
+	provides = frzr
+	conflicts = frzr
+	backup = etc/frzr-sk.conf
+	source = git+https://github.com/honjow/frzr#branch=dev
+	md5sums = SKIP
+
+pkgname = frzr-sk-git
