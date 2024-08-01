@@ -3,18 +3,17 @@
 # Contributor: Campbell Barton <ideasman42@gmail.com>
 
 export GIT_LFS_SKIP_SMUDGE=1
+export GIT_CLONE_PROTECTION_ACTIVE=false
 
 pkgname=tahoma2d
-pkgver=1.3
-pkgrel=2
+pkgver=1.4.4
+pkgrel=1
 pkgdesc="Software for producing a 2D animation"
 arch=(x86_64)
 url="https://tahoma2d.org/"
 license=(BSD)
-depends=(cblas ffmpeg freeglut glew hicolor-icon-theme libmypaint qt5-multimedia qt5-script qt5-svg qt5-serialport superlu opencv)
-makedepends=(git boost cmake qt5-tools)
-provides=(tahoma2d)
-conflicts=(tahoma2d)
+depends=(cblas cblas ffmpeg freeglut glew hicolor-icon-theme libmypaint qt5-multimedia qt5-script qt5-svg qt5-serialport superlu opencv)
+makedepends=(git git-lfs boost cmake qt5-tools)
 source=("git+https://github.com/tahoma2d/tahoma2d.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
@@ -27,8 +26,8 @@ prepare() {
 }
 
 build() {
-  pushd  "tahoma2d/thirdparty/tiff-4.0.3"
-  ./configure --with-pic --disable-jbig
+  pushd  "tahoma2d/thirdparty/tiff-4.2.0"
+  ./configure --with-pic --disable-jbig --disable-webp
   make
   popd
 
@@ -39,16 +38,18 @@ build() {
   sed -i 's/(tconverter/(tdconverter/g'             tahoma2d/toonz/sources/tconverter/CMakeLists.txt
   sed -i 's/(tfarmcontroller/(tdfarmcontroller/g'   tahoma2d/toonz/sources/toonzfarm/tfarmcontroller/CMakeLists.txt
   sed -i 's/(tfarmserver/(tdfarmserver/g'           tahoma2d/toonz/sources/toonzfarm/tfarmserver/CMakeLists.txt
-   
+
   sed -i 's/(lzocompress/(tdlzocompress/g'      tahoma2d/thirdparty/lzo/driver/CMakeLists.txt
   sed -i 's/(lzodecompress/(tdlzodecompress/g'  tahoma2d/thirdparty/lzo/driver/CMakeLists.txt
-     
+
   sed -i 's/TARGET_FILE:tcleanup/TARGET_FILE:tdcleanup/g; s/TARGET_FILE:tcomposer/TARGET_FILE:tdcomposer/g; s/TARGET_FILE:tconverter/TARGET_FILE:tdconverter/g; s/TARGET_FILE:tfarmcontroller/TARGET_FILE:tdfarmcontroller/g; s/TARGET_FILE:tfarmserver/TARGET_FILE:tdfarmserver/g; s/TARGET_FILE:lzocompress/TARGET_FILE:tdlzocompress/g; s/TARGET_FILE:lzodecompress/TARGET_FILE:tdlzodecompress/g' tahoma2d/toonz/sources/toonz/CMakeLists.txt
 
   cd build
-  cmake -G "Unix Makefiles" ../tahoma2d/toonz/sources \
+  cmake -G "Unix Makefiles" ../tahoma2d/toonz/sources -Wno-dev \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_SKIP_RPATH=YES
+    -DCMAKE_SKIP_RPATH=YES \
+    -DWITH_TRANSLATION=OFF
+
   make
 }
 
