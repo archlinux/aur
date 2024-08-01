@@ -4,7 +4,7 @@
 
 pkgname=libosmo-abis
 pkgver=1.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Osmocom library for A-bis interface"
 arch=('any')
 url="https://osmocom.org/projects/libosmo-abis"
@@ -22,6 +22,11 @@ build() {
     --prefix=/usr \
     --disable-dahdi
   make
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make check
 }
 
 package() {
