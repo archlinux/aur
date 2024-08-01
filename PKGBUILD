@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
 pkgver='4.6.2'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/$pkgname/$pkgname"
 license=('GPL-3.0-only')
 _electronpkg='electron18'
 depends=("$_electronpkg")
-makedepends=('git' 'libxcrypt-compat' 'nodejs-lts-iron' 'npm' 'python' 'yarn')
+makedepends=('git' 'libxcrypt-compat' 'nodejs' 'npm' 'python' 'yarn')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	'electron-launcher.sh'
@@ -26,28 +26,30 @@ _sourcedirectory="$pkgname-$pkgver"
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
+	# Apply patches
 	patch --forward -p1 < "$srcdir/electron-builder-config.diff"
 	patch --forward -p1 < "$srcdir/fix-argv.diff"
 
+	# Replace Electron location and version in build config
 	sed -i "s|%%ELECTRON_DIST%%|/usr/lib/$_electronpkg|g" 'apps/studio/vue.config.js'
 	sed -i "s|%%ELECTRON_VERSION%%|$(cat "/usr/lib/$_electronpkg/version")|g" 'apps/studio/vue.config.js'
 
-	# Replace package name, flag file name and electron version in launcher script
+	# Replace package name, flag file name and Electron version in launcher script
 	sed -i -e "s/%%PKGNAME%%/$pkgname/g" -e "s/%%ELECTRON%%/$_electronpkg/g" -e "s/%%FLAGFILENAME%%/bks/g" "$srcdir/electron-launcher.sh"
 
-	# Update sass-loader to be compatible with current node and Linux version
-	cd "$srcdir/$_sourcedirectory/apps/studio/"
-	yarn add 'sass-loader@10.5.2' --ignore-engines
+	# Update dependencies to be compatible with current node and Linux version
+	sed -E -i 's|("resolutions": \{)|\1\n"sass-loader": "10.5.2",|' 'package.json'
+	sed -E -i 's|("resolutions": \{)|\1\n"better-sqlite3": "11.1.2",|' 'package.json'
+	sed -E -i 's|("resolutions": \{)|\1\n"sqlite3": "5.1.6",|' 'package.json'
+	sed -E -i 's|("resolutions": \{)|\1\n"node-gyp": "10.2.0",|' 'package.json'
 
 	# Install dependencies
-	cd "$srcdir/$_sourcedirectory/"
-	yarn install --ignore-engines
+	NODE_OPTIONS='--openssl-legacy-provider' yarn install --ignore-engines
 }
 
 build() {
 	cd "$srcdir/$_sourcedirectory/apps/studio/"
-	# The build gets stuck in an infinite loop if debug output is not enabled
-	DEBUG='*' NODE_OPTIONS='--openssl-legacy-provider' yarn run vue-cli-service electron:build
+	NODE_OPTIONS='--openssl-legacy-provider' yarn run vue-cli-service electron:build
 }
 
 check() {
