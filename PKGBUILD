@@ -3,7 +3,7 @@
 
 pkgname=yass-proxy-qt5
 pkgver=1.12.1
-pkgrel=1
+pkgrel=2
 _pkgver=1.12.1
 _pkgrel=1
 pkgdesc="lightweight http/socks proxy"
