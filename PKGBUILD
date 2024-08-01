@@ -3,13 +3,13 @@
 
 pkgname=gnome-keyring-sharp
 pkgver=1.0.2
-pkgrel=6
+pkgrel=7
 pkgdesc="A fully managed implementation of libgnome-keyring"
 arch=('x86_64')
 url="https://github.com/mono/gnome-keyring-sharp"
 license=('MIT')
 depends=('libgnome-keyring' 'gtk-sharp-2')
-source=(http://www.go-mono.com/archive/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(https://ftp.iij.ad.jp/pub/linux/momonga/development/source/SOURCES/$pkgname-$pkgver.tar.gz)
 sha256sums=('043e3e22132bdfe34e8ca314b6fd34bb0bc55a23eeb102778c64c243bb595315')
 
 prepare() {
