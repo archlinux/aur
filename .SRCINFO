@@ -10,6 +10,7 @@ pkgbase = xdg-desktop-portal-cosmic-git
 	makedepends = cargo
 	makedepends = clang
 	makedepends = git
+	makedepends = mold
 	depends = hicolor-icon-theme
 	depends = libpipewire
 	depends = libxkbcommon
