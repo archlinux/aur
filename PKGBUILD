@@ -5,7 +5,7 @@
 
 pkgname=libosmocore
 pkgver=1.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Osmocom core libraries"
 arch=('armv7h' 'i686' 'x86_64')
 url="https://osmocom.org/projects/libosmocore/"
@@ -40,6 +40,11 @@ build() {
               --libdir=/usr/lib/ \
               --enable-systemd-logging
   make
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make check
 }
 
 package() {

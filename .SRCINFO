@@ -1,7 +1,7 @@
 pkgbase = libosmocore
 	pkgdesc = Osmocom core libraries
 	pkgver = 1.9.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://osmocom.org/projects/libosmocore/
 	arch = armv7h
 	arch = i686
