@@ -9,14 +9,25 @@ arch=('any')
 url="https://pypi.org/project/bflb-iot-tool"
 license=('MIT')
 groups=()
-depends=(python
-        python-pyserial
-        python-ecdsa
-        python-pycryptodome
-        python-pylink-square)
-makedepends=(python-build
-            python-installer
-            python-wheel)
+_pydeps=(
+    ecdsa
+    six
+    pycryptodome
+    pylink-square
+    pyserial)
+depends=(
+    gcc-libs
+    glibc
+    libusb
+    python
+    "${_pydeps[@]/#/python-}")
+_pymakedeps=(
+    build
+    installer
+    wheel
+    setuptools)
+makedepends=(
+    "${_pymakedeps[@]/#/python-}")
 options=('!strip')
 optdepends=("jlink-software-and-documentation: Segger JLink software & documentation pack for Linux")
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
