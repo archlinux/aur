@@ -79,7 +79,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
   # libexec > lib
   sed -i 's|libexec|lib|g' Justfile src/main.rs
@@ -93,7 +93,7 @@ build() {
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  nice just all
+  nice cargo build --release --frozen --offline
 }
 
 package() {
