@@ -1,8 +1,8 @@
 # Maintainer: Maxim De Clercq <maximdeclercq00@gmail.com>
 
 pkgname=cmsis-toolbox
-pkgver=2.4.0
-pkgrel=4
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="CMSIS Toolbox for ARM Cortex-M software development"
 arch=('x86_64')
 url="https://github.com/Open-CMSIS-Pack/cmsis-toolbox"
@@ -18,20 +18,21 @@ source=(
   "cmsis-toolbox.sh"
 )
 sha256sums=(
-  '5d3ee2037c0b729e4834c5bc368dac11d14fd9fc530055dd6335da345be5633e'
-  '37f754791182725054051d6f05499663befa273261490336d691153de2c38077'
+  'f8f47068d24f0dd8ff1de4e38c374abd55a2cc44ea59f3d0b7e5e76d634ac9bd'
+  'ec235e9755441204824c02334a1851bcbde687e660beb9ccf9e1edbff7541422'
 )
 
 package() {
     cd "$srcdir/cmsis-toolbox-linux-amd64"
+    install -d "$pkgdir/opt/$pkgname"
 
     # Install binaries
-    install -d "$pkgdir/usr/bin"
-    install -Dm755 bin/* "$pkgdir/usr/bin/"
+    install -d "$pkgdir/opt/$pkgname/bin"
+    install -Dm755 bin/* "$pkgdir/opt/$pkgname/bin"
 
     # Install configuration files
-    install -d "$pkgdir/etc/$pkgname"
-    cp -dr --no-preserve=ownership etc/* "$pkgdir/etc/$pkgname"
+    install -d "$pkgdir/opt/$pkgname/etc"
+    cp -dr --no-preserve=ownership etc/* "$pkgdir/opt/$pkgname/etc"
 
     # Install license
     install -d "$pkgdir/usr/share/licenses/$pkgname"

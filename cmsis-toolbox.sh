@@ -1,2 +1,4 @@
-export CMSIS_COMPILER_ROOT=/etc/cmsis-toolbox
-export CMSIS_PACK_ROOT=$HOME/.cmsis-toolbox/packs
+append_path '/opt/cmsis-toolbox/bin'
+export PATH
+
+export GCC_TOOLCHAIN_10_3_1='/usr/bin/'
