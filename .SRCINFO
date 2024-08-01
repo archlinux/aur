@@ -20,6 +20,7 @@ pkgbase = bertini2-git
 	depends = gmp
 	depends = libmpc
 	optdepends = pybertini: Python interface support
+	optdepends = bertini2-docs: HTML documentation
 	provides = bertini2
 	provides = libbertini2.so
 	conflicts = bertini2
