@@ -1,0 +1,23 @@
+pkgbase = local-llama-git
+	pkgdesc = Local Llama also known as L³ is designed to be easy to use, with a user-friendly interface and advanced settings.
+	pkgver = 0.0.7.r9.g07db14c
+	pkgrel = 1
+	url = https://folio.tib0.com/
+	arch = any
+	license = CC-BY-NC-ND
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = curl
+	makedepends = git
+	depends = electron31
+	depends = vulkan-icd-loader
+	depends = nodejs
+	provides = local-llama=0.0.7
+	conflicts = local-llama
+	source = local-llama.git::git+https://github.com/tib0/local-llama.git
+	source = local-llama.sh
+	sha256sums = SKIP
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+
+pkgname = local-llama-git
