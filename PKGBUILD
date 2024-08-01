@@ -8,7 +8,7 @@ _ver=1.0.2u
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 pkgrel=1
-pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
+pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (mingw-w64)'
 arch=('any')
 depends=('mingw-w64-zlib')
 makedepends=('mingw-w64-gcc' 'mingw-w64-environment' 'perl')
@@ -50,6 +50,11 @@ build() {
   cd "${srcdir}/openssl-$_ver"
   for _arch in ${_architectures}; do
     source mingw-env ${_arch}
+    # conflict with --cross-compile-prefix
+    unset CC
+    unset CXX
+    CFLAGS=${CFLAGS/-fcf-protection/}
+    export CFLAGS
     mkdir -p "${srcdir}/build-${_arch}" && cp -a "${srcdir}/openssl-$_ver/"* "${srcdir}/build-${_arch}" && cd "${srcdir}/build-${_arch}"
     _mingw=mingw
     [ "${_arch}" = 'x86_64-w64-mingw32' ] && _mingw=mingw64
@@ -63,8 +68,7 @@ build() {
       shared \
       no-ssl3-method \
       zlib-dynamic \
-      "$LDFLAGS" \
-      "$CFLAGS"
+      "${CFLAGS}"
     make
   done
 }
