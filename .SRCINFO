@@ -1,11 +1,12 @@
 pkgbase = tahoma2d-git
 	pkgdesc = Software for producing a 2D animation
-	pkgver = r3782.58aa2069
-	pkgrel = 2
+	pkgver = 1.4.4.r0.ge3d0640e9
+	pkgrel = 1
 	url = https://tahoma2d.org/
 	arch = x86_64
 	license = BSD
 	makedepends = git
+	makedepends = git-lfs
 	makedepends = boost
 	makedepends = cmake
 	makedepends = qt5-tools
@@ -23,7 +24,8 @@ pkgbase = tahoma2d-git
 	depends = opencv
 	provides = tahoma2d
 	conflicts = tahoma2d
-	source = git+https://github.com/tahoma2d/tahoma2d.git
+	options = !lto
+	source = git+https://github.com/tahoma2d/tahoma2d.git#branch=v1.4.4
 	sha256sums = SKIP
 
 pkgname = tahoma2d-git
