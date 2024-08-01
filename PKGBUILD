@@ -1,7 +1,7 @@
 # Maintainer: Ryan Farley <ryan.farley@gmx.com>
 # Contributor: Andreas Bosch (progandy) <linux+aur@progandy.de>
-pkgname=fonttosfnt-git
-pkgver=r87.d06059e
+pkgname=xorg-fonttosfnt-git
+pkgver=r133.e3971be
 pkgrel=1
 pkgdesc="Convert a set of bdf or pcf fonts into a bitmap only sfnt (otb)"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(libfontenc freetype2)
 makedepends=(git make autoconf automake xorgproto xorg-util-macros)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://gitlab.freedesktop.org/xorg/app/fonttosfnt.git')
+source=('xorg-fonttosfnt::git+https://gitlab.freedesktop.org/xorg/app/fonttosfnt.git')
 md5sums=('SKIP')
 
 pkgver() {
