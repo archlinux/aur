@@ -1,0 +1,11 @@
+pkgbase = collect-wallpapers
+	pkgdesc = 收集好看的壁纸
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitee.com/mao-yaotang/collect-wallpapers/
+	arch = any
+	license = MIT
+	source = git+https://gitee.com/mao-yaotang/collect-wallpapers.git
+	md5sums = SKIP
+
+pkgname = collect-wallpapers
