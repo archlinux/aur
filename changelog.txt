@@ -1,5 +1,4 @@
-v0.924.1:
-修复「嗝」字的轮廓。
+本版本为 Release-Candidate 候选版本。
 
-v0.924:
-调整以下汉字：㗴粢。新增 GBK 所收录的非汉字符号：℅∕∣⋯▓◢◣◤◥☉㏎㏑㏒㏕﹉﹊﹋﹌﹍﹎﹐﹑﹒﹔﹕﹖﹗﹘﹙﹚﹛﹜﹝﹞﹟﹠﹡﹢﹣﹤﹥﹦﹨﹩﹪﹫
+补全 GBK 汉字，新增更多符号，[详情点此查看](https://github.com/lxgw/LxgwNeoZhiSong/blob/main/documentation/changelog/20240801.md)。
+调整以下字形：畱澑璢桺羋⺌⺩⺷⺻
