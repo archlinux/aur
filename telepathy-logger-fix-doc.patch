@@ -1,0 +1,36 @@
+From 0add845ed7ff81dd1d3117214d638e1129a067d2 Mon Sep 17 00:00:00 2001
+From: Ting-Wei Lan <lantw@src.gnome.org>
+Date: Sun, 25 Jun 2017 23:51:56 +0800
+Subject: [PATCH] doc: Use CDATA section to avoid XML error caused by example
+ code
+
+https://bugs.freedesktop.org/show_bug.cgi?id=101585
+---
+ telepathy-logger/log-walker.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/telepathy-logger/log-walker.c b/telepathy-logger/log-walker.c
+index 4655f33..8534ee4 100644
+--- a/telepathy-logger/log-walker.c
++++ b/telepathy-logger/log-walker.c
+@@ -36,7 +36,7 @@
+  *
+  * <example>
+  *   <title>Using a TplLogWalker to fetch text events from the logs.</title>
+- *   <programlisting>
++ *   <programlisting><![CDATA[
+  *   #include <telepathy-glib/telepathy-glib.h>
+  *   #include <telepathy-logger/telepathy-logger.h>
+  *
+@@ -166,7 +166,7 @@
+  *     g_main_loop_unref (loop);
+  *     return 0;
+  *   }
+- *   </programlisting>
++ *   ]]></programlisting>
+  * </example>
+  *
+  * Since: 0.8.0
+-- 
+2.13.1
+

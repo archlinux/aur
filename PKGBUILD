@@ -3,39 +3,74 @@
 
 pkgname=telepathy-logger
 pkgver=0.8.2
-pkgrel=6
+pkgrel=7
 pkgdesc='Telepathy framework logging daemon'
-arch=('x86_64')
+arch=(x86_64)
 url='https://telepathy.freedesktop.org/'
-license=('LGPL-2.1-or-later')
-depends=('dconf' 'dbus-glib' 'glib2' 'glibc' 'libxml2' 'sqlite' 'telepathy-glib')
-makedepends=('gobject-introspection' 'intltool' 'libxslt' 'python')
-source=("https://telepathy.freedesktop.org/releases/$pkgname/$pkgname-$pkgver.tar.bz2"{,.asc}
-        '0001-tools-Fix-the-build-with-Python-3.patch')
-sha256sums=('8fcad534d653b1b365132c5b158adae947810ffbae9843f72dd1797966415dae'
-            'SKIP'
-            'd94899bed85a4ac90158838524d16c761956eec2cd0d223b6a18bffa09ec008b')
-validpgpkeys=('5113B855236702158C41C366432705FACDD40325') # Debarshi Ray
+license=(LGPL-2.1-or-later)
+depends=(
+  dbus-glib
+  dconf
+  glib2
+  glibc
+  libxml2
+  sqlite
+  telepathy-glib
+)
+makedepends=(
+  git
+  glib2-devel
+  gobject-introspection
+  gtk-doc
+  intltool
+  libxslt
+  python
+)
+source=(
+  "git+https://gitlab.freedesktop.org/telepathy/$pkgname.git?signed#tag=$pkgname-$pkgver"
+  telepathy-logger-fix-doc.patch
+  telepathy-logger-incompatible-pointer.patch
+)
+b2sums=(
+  b0091a7bf1c209dee206226e4954edff62fce33e69fae4077f1ea582a27d067c0bf3c0c20b33165e0327a89c101371b7649761417e09694c35129d5c095abda3
+  dc53714d93c492643d31e0cd22c37936ad0af7fdcafc47bcd24e22d7ec9fdbe9e89207fdb8c4d548d802456a710e9385c4bb41e8da4482dd9cff26bc07959cfb
+  642c974dd27bcde7c3b47378db70d17ea041cc3e863bdc7656875b02878368d2689a5255e22f637df4ef8bdefa5593b1ceb6de690d6daf3025d51a863199b6df
+)
+validpgpkeys=(5113B855236702158C41C366432705FACDD40325) # Debarshi Ray
 
 prepare() {
-  cd $pkgname-$pkgver
-  # Fix build with python3
-  patch -Np1 -i ../0001-tools-Fix-the-build-with-Python-3.patch
+  cd $pkgname
+
+  # https://gitlab.freedesktop.org/telepathy/telepathy-logger/-/merge_requests/1
+  git cherry-pick -n ffc23c3b3d49d265997b6bb5d55d9463080c1cc8
+
+  # https://gitlab.freedesktop.org/telepathy/telepathy-logger/-/issues/46
+  git apply -3 ../telepathy-logger-fix-doc.patch
+
+  # https://gitlab.freedesktop.org/telepathy/telepathy-logger/-/merge_requests/2
+  git apply -3 ../telepathy-logger-incompatible-pointer.patch
+
+  autoreconf -fi
 }
 
 build() {
-  cd $pkgname-$pkgver
-  ./configure --prefix=/usr --libexecdir=/usr/lib/telepathy
+  cd $pkgname
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --libexecdir=/usr/lib/telepathy \
+    --enable-gtk-doc
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   make -j1 check
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   make DESTDIR="$pkgdir" install
 }

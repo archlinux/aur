@@ -1,0 +1,5 @@
+[telepathy-logger]
+source = "git"
+git = "https://gitlab.freedesktop.org/telepathy/telepathy-logger.git"
+include_regex = 'telepathy-logger-\d+\.\d*[02468]\.\d*'
+prefix = "telepathy-logger-"
