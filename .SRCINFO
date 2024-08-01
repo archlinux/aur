@@ -1,0 +1,17 @@
+pkgbase = livekit-git
+	pkgdesc = End-to-end stack for WebRTC. SFU media server and SDKs.
+	pkgver = 1.7.0.r63.g18fd6228
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/livekit/livekit
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = go
+	makedepends = git
+	makedepends = mage
+	makedepends = bubblewrap
+	provides = livekit
+	source = git+https://github.com/livekit/livekit.git
+	sha256sums = SKIP
+
+pkgname = livekit-git
