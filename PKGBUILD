@@ -4,8 +4,8 @@ _pkgname=dlib
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-dlib
-pkgver=19.24.4
-pkgrel=2
+pkgver=19.24.5
+pkgrel=1
 pkgdesc="A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques (mingw-w64)"
 arch=('any')
 url="http://dlib.net"
@@ -22,7 +22,7 @@ optdepends=('mingw-w64-ffmpeg: for FFmpeg support'
 makedepends=('mingw-w64-cmake')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://codeload.github.com/davisking/dlib/tar.gz/refs/tags/v${pkgver}")
-sha256sums=('d881911d68972d11563bb9db692b8fcea0ac1b3fd2e3f03fa0b94fde6c739e43')
+sha256sums=('01cab8fb880cf4d1cb9c84cb74c6ce291a78c69f443dced5aa2a88fb20bdc3bd')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
