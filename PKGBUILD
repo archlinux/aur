@@ -18,22 +18,20 @@
 ###############################################################################
 _phpbase="83"
 _suffix=""
-pkgver="8.3.9"
+pkgver="8.3.10"
 pkgbase_rc=""
-pkgrel="3"
+pkgrel="1"
 pkgbase="php83"
-pkgdesc="PHP 8.3.9 compiled as to not conflict with mainline php"
+pkgdesc="PHP 8.3.10 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
 _build_conf_d="etc/php83/conf.d"
-_build_forced_openssl_11="0"
 _build_fpm_name="php-fpm83"
 _build_fpm_service_name="php83-fpm"
 _build_icu_src_dir="icu/source"
 _build_ini_per_sapi="0"
 _build_mysql_socket="/run/mysqld/mysqld.sock"
-_build_openssl_v11_patch="0"
 _build_phpdbg="1"
 _build_sapi_ini_apache="etc/php83"
 _build_sapi_ini_cgi="etc/php83"
@@ -209,20 +207,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php83=8.3.9"
+    "php83=8.3.10"
     "net-snmp"
     "openssl"
 )
 _ext_depends_ftp=(
-    "php83=8.3.9"
+    "php83=8.3.10"
     "openssl"
 )
 _ext_depends_intl=(
-    "php83=8.3.9"
+    "php83=8.3.10"
     "icu"
 )
 _ext_depends_imap=(
-    "php83=8.3.9"
+    "php83=8.3.10"
     "pam"
     "krb5"
     "c-client"
@@ -230,45 +228,45 @@ _ext_depends_imap=(
     "openssl"
 )
 _ext_depends_gd=(
-    "php83=8.3.9"
+    "php83=8.3.10"
     "gd"
 )
 _ext_depends_mysql=(
-    "php83=8.3.9"
-    "php83-pdo=8.3.9"
-    "php83-openssl=8.3.9"
+    "php83=8.3.10"
+    "php83-pdo=8.3.10"
+    "php83-openssl=8.3.10"
 )
 _ext_depends_dba=(
-    "php83=8.3.9"
+    "php83=8.3.10"
     "db5.3"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php83=8.3.9"
+    "php83=8.3.10"
     "unixodbc"
-    "php83-pdo=8.3.9"
+    "php83-pdo=8.3.10"
 )
 _ext_depends_pgsql=(
-    "php83=8.3.9"
+    "php83=8.3.10"
     "postgresql-libs"
-    "php83-pdo=8.3.9"
+    "php83-pdo=8.3.10"
 )
 _ext_depends_firebird=(
-    "php83=8.3.9"
+    "php83=8.3.10"
     "libfbclient"
-    "php83-pdo=8.3.9"
+    "php83-pdo=8.3.10"
 )
 _ext_depends_sqlite=(
-    "php83=8.3.9"
+    "php83=8.3.10"
     "sqlite"
-    "php83-pdo=8.3.9"
+    "php83-pdo=8.3.10"
 )
 _ext_depends_mbstring=(
-    "php83=8.3.9"
+    "php83=8.3.10"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php83=8.3.9"
+    "php83=8.3.10"
     "krb5"
     "e2fsprogs"
     "openssl"
@@ -451,12 +449,7 @@ prepare() {
         echo "[PATCH] Applying source patch ${patch_name}";
         patch -p1 -i "../${patch_name}"
     done
-
-    if ((_phpbase <= 53)); then
-        PHP_AUTOCONF="/usr/bin/autoconf-2.13" ./buildconf --force
-    else
-        ./buildconf --force
-    fi
+    ./buildconf --force
     rm -f tests/output/stream_isatty_*.phpt
     rm -f Zend/tests/arginfo_zpp_mismatch*.phpt
     rm -f Zend/tests/bug79919.phpt
@@ -499,13 +492,14 @@ _build_sapi() {
 # BUILD them all
 ################################################################################
 build() {
-    export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types"
-    export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17"
-    export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
-    if ((_build_forced_openssl_11)); then
-        export PHP_OPENSSL_DIR="/usr/lib/openssl-1.1"
-        export PKG_CONFIG_PATH="/usr/lib/openssl-1.1/pkgconfig"
+    if ((_phpbase <= 80)); then
+        export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types -Wno-implicit-function-declaration -fpermissive"
+        export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17 -Wno-implicit-function-declaration -fpermissive"
+    else
+        export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types"
+        export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17"
     fi
+    export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
     if [[ ! -z "${_cppflags}" ]]; then
         CPPFLAGS+=" $_cppflags "
     fi
@@ -1478,7 +1472,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
-            'bf4d7b8ea60a356064f88485278bd6f941a230ec16f0fc401574ce1445ad6c77'
+            'a0f2179d00931fe7631a12cbc3428f898ca3d99fe564260c115af381d2a1978d'
             'b5a6b99214dce395a058f40bffee50511adaf58ee84ee6fbb7ca7bdc3c07cb3c'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
