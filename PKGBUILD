@@ -45,8 +45,7 @@ build() {
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  GEOCLUE_AGENT=/usr/lib/geoclue-2.0/demos/agent \
-    nice cargo build --release --frozen --bin Cargo.toml Cargo.lock src/main.rs vendor-check
+  ARGS+=" --frozen" nice make
 }
 
 package() {
