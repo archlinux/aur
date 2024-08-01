@@ -1,16 +1,16 @@
 pkgbase = trep-tracker-bin
 	pkgdesc = Minimal, fast and powerful task tracker/todo list app with task tagging and quick views.
-	pkgver = 1.1.1_alpha
+	pkgver = 1.1.3_alpha
 	pkgrel = 1
 	url = https://ltres.github.io/trep-tracker/browser/
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = electron31
-	provides = trep-tracker=1.1.1_alpha
+	provides = trep-tracker=1.1.3_alpha
 	conflicts = trep-tracker
-	source = trep-tracker-1.1.1_alpha.deb::https://github.com/ltres/trep-tracker/releases/download/v1.1.1-alpha/trep-tracker_1.1.1.alpha_amd64.deb
+	source = trep-tracker-1.1.3_alpha.deb::https://github.com/ltres/trep-tracker/releases/download/v1.1.3-alpha/trep-tracker_1.1.3.alpha_amd64.deb
 	source = trep-tracker.sh
-	sha256sums = 11eb222d678df1b4f1a4bc32af146b4a35824734bb43ca1d11f5594ed2d16d00
+	sha256sums = 59660cb3bf64d19944eb6607895c4703d6a4bad2677d9f426d4209b15001b3f2
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = trep-tracker-bin
