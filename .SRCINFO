@@ -1,0 +1,21 @@
+pkgbase = phpwebstudy-bin
+	pkgdesc = Powerful Web Server and PHP Environment.
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://www.macphpstudy.com/
+	arch = aarch64
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = electron30
+	provides = phpwebstudy=4.0.0
+	conflicts = phpwebstudy
+	source = LICENSE-4.0.0::https://raw.githubusercontent.com/xpf0000/PhpWebStudy/v4.0.0/LICENSE
+	source = phpwebstudy.sh
+	sha256sums = c4205bc7a7ad3855f781d48a5303c4e424d7fc26207953d0ffdcae5e4c27f80a
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	source_aarch64 = phpwebstudy-4.0.0-aarch64.deb::https://github.com/xpf0000/PhpWebStudy/releases/download/v4.0.0/PhpWebStudy_4.0.0_arm64.deb
+	sha256sums_aarch64 = 6356bf8ded09b0240786745c67a1936271eea53982bd090c64ec819a2a3f48d3
+	source_x86_64 = phpwebstudy-4.0.0-x86_64.deb::https://github.com/xpf0000/PhpWebStudy/releases/download/v4.0.0/PhpWebStudy_4.0.0_amd64.deb
+	sha256sums_x86_64 = a2fdd0082aeae7281d38c0cfb21afd0579a6c64c8f66de835557a9217ecb7d54
+
+pkgname = phpwebstudy-bin
