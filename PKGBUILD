@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=akuse
 _pkgname=Akuse
-pkgver=1.3.0
+pkgver=1.4.0
 _electronversion=26
 _nodeversion=20
 pkgrel=1
@@ -26,7 +26,7 @@ source=(
     "clientData.js"
     "${pkgname}.sh"
 )
-sha256sums=('c5aa890490fc4cc38576ad56e033d11923f977ecc61a3660eff2b2ee0152b440'
+sha256sums=('9858513be08c3ca75ebb13f8c961a888c5e76e51282620e64aca0ba4d58f1f52'
             '091d0d9b3a06579647ed4c1989d7edff13754cec34fcdbb7fbc24529bd01ed48'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
