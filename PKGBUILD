@@ -1,18 +1,20 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=mongodb-compass
-pkgver=1.43.4
+pkgver=1.43.5
 pkgrel=1
 pkgdesc="The MongoDB GUI"
 arch=('x86_64')
 url="https://www.mongodb.com/products/compass"
-license=('custom')
+license=('SSPL-1.0')
 depends=('alsa-lib' 'gtk3' 'libsecret' 'libxss' 'libxtst' 'nss')
 optdepends=('org.freedesktop.secrets')
 options=('!debug')
-source=("https://downloads.mongodb.com/compass/${pkgname}_${pkgver}_amd64.deb")
+source=("https://downloads.mongodb.com/compass/${pkgname}_${pkgver}_amd64.deb"
+        "https://github.com/mongodb-js/compass/raw/main/LICENSE")
 noextract=("${pkgname}_${pkgver}_amd64.deb")
-b2sums=('57f5e287f2cb3b7b4934811df80af0a9f296aa00f6ebf29867a4a3f6442858baff3a45620b5bad72e2a0b32ac243abe98e1a47fcb529b11a4805497316492fbf')
+b2sums=('e18dcc1e74ab775efdbd929e438277be65cdc6818dc22e082162544153f9c3d554bf9a6789ac1da73ceded3672a5771d97cd2a4844e8a035aafaadc8b42de9de'
+        '3db19ea220a8fec79eb55aa2657a3d9c920cf9eaa4ed6737e4a4688e1ba573c36d7de1b52a165340f61c740dfda98f656596b0d8b9f3492cffa0f4e418bf7ef3')
 
 package() {
     bsdtar -O -xf "${pkgname}_${pkgver}"*.deb data.tar.xz | bsdtar -C "$pkgdir" -xJf -
@@ -33,6 +35,5 @@ package() {
       "${pkgdir}"/usr/share/applications/mongodb-compass.desktop
 
     # Install license
-    install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
-    ln -s /usr/share/${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
+    install -Dm 644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
