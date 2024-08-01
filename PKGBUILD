@@ -2,7 +2,7 @@
 # Contributor: ant32 <antreimer@gmail.com>
 
 pkgname=mingw-w64-postgresql
-pkgver=16.2
+pkgver=16.3
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS (mingw-w64)'
 arch=('any')
@@ -17,7 +17,7 @@ replaces=('mingw-w64-postgresql-libs')
 source=("http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2"
         '0001-Use-.dll.a-as-extension-for-import-libraries.patch'
         '0002-Use-pthread-library-from-MinGW.patch')
-sha256sums=('446e88294dbc2c9085ab4b7061a646fa604b4bec03521d5ea671c2e5ad9b2952'
+sha256sums=('331963d5d3dc4caf4216a049fa40b66d6bcb8c730615859411b9518764e60585'
             '44b1cceb0f5ef792acc00e9415dc2f7f777747199078ce4c8704d3420de52cf5'
             '72e627524dd4994d85db43ea02d71b2c9983037306a85822f744e76b40f40f2f')
 
