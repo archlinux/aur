@@ -10,8 +10,18 @@ arch=('any')
 url="https://pypi.org/project/pycklink"
 license=('MIT')
 groups=()
-depends=(python)
-makedepends=(python-build python-installer python-wheel)
+depends=(
+    gcc-libs
+    glibc
+    libusb
+    python)
+_pymakedeps=(
+    build
+    installer
+    wheel
+    setuptools)
+makedepends=(
+    "${_pymakedeps[@]/#/python-}")
 checkdepends=()
 optdepends=()
 provides=(cklink pycklink)
