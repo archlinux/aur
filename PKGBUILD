@@ -1,15 +1,15 @@
 # Maintainer: Yingchang Liu <yingchangliu at outlook dot com>
 pkgname=intel-oneapi-hpckit
 _major_ver=2024
-_minor_ver=1
+_minor_ver=2
 _patch_ver=0
 pkgver=$_major_ver.$_minor_ver.$_patch_ver
-# https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html?operatingsystem=linux&distributions=offline&version=2024.1.0
-# https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html?operatingsystem=linux&distributions=offline&version=2024.1.0
-pkgver_base=$pkgver.596
-pkgver_hpc=$pkgver.560
-_urlver_base=fdc7a2bc-b7a8-47eb-8876-de6201297144
-_urlver_hpc=7f096850-dc7b-4c35-90b5-36c12abd9eaa
+# https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html?operatingsystem=linux&distributions=offline&version=2024.2.0
+# https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html?operatingsystem=linux&distributions=offline&version=2024.2.0
+pkgver_base=$pkgver.634
+pkgver_hpc=$pkgver.635
+_urlver_base=9a98af19-1c68-46ce-9fdd-e249240c7c42
+_urlver_hpc=d4e49548-1492-45c9-b678-8268cb0f1b05
 pkgrel=1
 pkgdesc="Intel oneAPI Base and HPC Toolkit for Linux"
 arch=('x86_64')
@@ -17,8 +17,8 @@ url='https://software.intel.com/content/www/us/en/develop/tools/oneapi.html'
 license=('custom:EULA')
 source=("https://registrationcenter-download.intel.com/akdlm/IRC_NAS/${_urlver_base}/l_BaseKit_p_${pkgver_base}_offline.sh"
         "https://registrationcenter-download.intel.com/akdlm/IRC_NAS/${_urlver_hpc}/l_HPCKit_p_${pkgver_hpc}_offline.sh")
-sha384sums=('a10da9bc38c5fbab801c5097d267c5368d06494bbab075f48ceb64154079643568f2f5fe700e7d7250828328fd217980'
-            'b7d751889d46d8d1b38d9ec60dfa314f6f10bdd9c2a82456bc2d8388f9e4ceb6a00d51828bd5892609cc4b49cc19b73e')
+sha384sums=('1206a2773e03295241eca39a114a30202e355f5d0d655aad7db13bd64998badc05b22b3fb3ec7843c9923c80f05929d7'
+            '1970937b0ae5005ac3db652659dc093e8f76fc449c3630ce0c761216e88b2f55975777232d84acd06847d52b5605c12b')
 depends=(level-zero-loader)
 options=(!strip staticlibs)
 install="$pkgname.install"
