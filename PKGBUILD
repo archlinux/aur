@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-launcher-git
-pkgver=r224.cad0e58
+pkgver=r228.d84fda0
 pkgrel=1
 pkgdesc="WIP Layer Shell frontend for Pop Launcher."
 arch=('x86_64' 'aarch64')
@@ -34,7 +34,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  just vendor
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -42,7 +42,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
 
   # use nice to build with lower priority
-  nice just build-vendored
+  nice just build-release --frozen
 }
 
 package() {
