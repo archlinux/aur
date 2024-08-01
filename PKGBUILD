@@ -3,8 +3,8 @@
 pkgname=kconnect-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.5.16
-pkgrel=1
-pkgdesc='CLI tool which enables you to login and retrieve AWS temporary credentials using a SAML IDP'
+pkgrel=2
+pkgdesc='CLI utility that can be used to discover and securely access Kubernetes clusters across multiple operating environments.'
 arch=('x86_64' 'aarch64')
 url="https://github.com/fidelity/kconnect"
 depends=('kubectl')

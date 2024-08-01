@@ -1,7 +1,7 @@
 pkgbase = kconnect-bin
-	pkgdesc = CLI tool which enables you to login and retrieve AWS temporary credentials using a SAML IDP
+	pkgdesc = CLI utility that can be used to discover and securely access Kubernetes clusters across multiple operating environments.
 	pkgver = 0.5.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fidelity/kconnect
 	arch = x86_64
 	arch = aarch64
