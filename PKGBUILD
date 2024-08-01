@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-workspaces-git
-pkgver=r226.ef0d7bb
+pkgver=r227.c1acf0c
 pkgrel=1
 pkgdesc="Cosmic workspaces"
 arch=('x86_64' 'aarch64')
@@ -42,7 +42,7 @@ build() {
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  nice cargo build --release --frozen --bin Cargo.toml Cargo.lock src/main.rs vendor-check
+  ARGS+=" --frozen" nice make
 }
 
 package() {
