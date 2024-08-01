@@ -2,13 +2,13 @@
 
 pkgname=ttf-honorsans
 _pkgname=honorsans
-pkgver=2024.7.28
+pkgver=1.2
 pkgrel=1
 pkgdesc='华为HONORSans字体'
 arch=('any')
-url='https://www.huawei.com/cn/'
+url='https://developer.honor.com/cn/'
 license=('custom')
-depends=('git')
+provides=('HONORSans')
 source=("git+https://gitee.com/mao-yaotang/honorsans.git")
 sha256sums=('SKIP')
 
