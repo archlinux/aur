@@ -4,9 +4,9 @@
 
 pkgver=22.0.2
 java_=${pkgver%%.*}
-graal_=${java_}+13.1
+graal_=${java_}+9.1
 pkgname="jdk${java_}-graalvm-bin"
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${java_} version"
 arch=('x86_64'
       'aarch64')
