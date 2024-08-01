@@ -8,8 +8,8 @@ pkgdesc="The redevelopment of Bertini in C++"
 arch=('any')
 url="https://github.com/bertiniteam/b2"
 license=('custom:GPL-3.0-or-later WITH Bertini2-Additional-GPL-Terms')
-makedepends=('git' 'boost' 'boost-libs>=1.83' 'boost-libs' 'mpfr' 'gmp' 'libmpc' 'eigen')
-depends=('glibc' 'gcc-libs' 'boost-libs' 'mpfr' 'gmp' 'libmpc')
+makedepends=('git' 'boost>=1.82' 'boost-libs>=1.83' 'gmp' 'mpfr' 'libmpc' 'eigen>=3.3')
+depends=('glibc' 'gcc-libs' 'boost-libs>=1.83' 'gmp' 'mpfr' 'libmpc')
 optdepends=('pybertini: Python interface support'
             'bertini2-docs: HTML documentation')
 provides=("${_pkgname}" 'libbertini2.so')
@@ -29,8 +29,8 @@ build() {
   autoreconf -vfi
   autoupdate
   ./configure \
-    --prefix="/usr" \
-    --includedir="/usr/include"
+    --prefix='/usr' \
+    --includedir='/usr/include'
   make
 }
 

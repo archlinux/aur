@@ -6,18 +6,17 @@ pkgbase = bertini2-git
 	arch = any
 	license = custom:GPL-3.0-or-later WITH Bertini2-Additional-GPL-Terms
 	makedepends = git
-	makedepends = boost
+	makedepends = boost>=1.82
 	makedepends = boost-libs>=1.83
-	makedepends = boost-libs
-	makedepends = mpfr
 	makedepends = gmp
+	makedepends = mpfr
 	makedepends = libmpc
-	makedepends = eigen
+	makedepends = eigen>=3.3
 	depends = glibc
 	depends = gcc-libs
-	depends = boost-libs
-	depends = mpfr
+	depends = boost-libs>=1.83
 	depends = gmp
+	depends = mpfr
 	depends = libmpc
 	optdepends = pybertini: Python interface support
 	optdepends = bertini2-docs: HTML documentation
