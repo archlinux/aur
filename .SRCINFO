@@ -1,7 +1,7 @@
 pkgbase = ytfe
 	pkgdesc = Lightweight YouTube client using the LCL toolkit
 	pkgver = 1.20.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://oscomp.hu
 	install = ytfe.install
 	arch = x86_64
