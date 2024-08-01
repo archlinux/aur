@@ -1,14 +1,24 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-files-git
-pkgver=r443.82580d5
+pkgver=r455.ccb89e7
 pkgrel=1
 pkgdesc="File manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-files"
 license=('GPL-3.0-or-later')
 groups=('cosmic')
-depends=('glib2' 'hicolor-icon-theme' 'libxkbcommon' 'xdg-utils')
-makedepends=('cargo' 'git' 'just' 'mold')
+depends=(
+  'glib2'
+  'hicolor-icon-theme'
+  'libxkbcommon'
+  'xdg-utils'
+)
+makedepends=(
+  'cargo'
+  'git'
+  'just'
+  'mold'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/cosmic-files.git')
@@ -22,7 +32,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  just vendor
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -33,7 +43,7 @@ build() {
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  nice just build-vendored
+  nice just build-release --frozen
 }
 
 package() {
