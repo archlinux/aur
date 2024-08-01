@@ -1,6 +1,6 @@
 pkgname=mingw-w64-coin-or-cbc
 pkgver=2.10.11
-pkgrel=1
+pkgrel=2
 pkgdesc="COIN-OR branch-and-cut mixed integer programming solver (mingw-w64)"
 arch=('any')
 url="https://projects.coin-or.org/Cbc"
@@ -35,6 +35,7 @@ build() {
       --with-coinutils-lib="$(${_arch}-pkg-config --libs coinutils)" \
       --with-coinutils-incdir="/usr/${_arch}/include/coin/" \
       --with-nauty-lib=/usr/${_arch}/lib/nauty.a --with-nauty-incdir=/usr/${_arch}/include/nauty \
+      --disable-nauty-libcheck \
       lt_cv_deplibs_check_method=pass_all ..
     make
     popd
