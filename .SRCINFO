@@ -1,11 +1,12 @@
 pkgbase = resin-pro
 	pkgdesc = Resin, a web server and Java EE application server from Caucho Technology
 	pkgver = 4.0.66
-	pkgrel = 1
+	pkgrel = 2
 	url = https://caucho.com/products/resin
 	arch = x86_64
 	license = custom:Caucho Developer Source License
 	makedepends = java-environment
+	makedepends = gcc13
 	depends = java-runtime-headless
 	source = http://caucho.com/download/resin-pro-4.0.66.tar.gz
 	sha256sums = 854cd44b3bbd813aae2fe7a1981ea41c86b92b2d6f595689921b692de482582d
