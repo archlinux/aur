@@ -1,21 +1,25 @@
 pkgbase = python-ncclient
-	pkgdesc = Python library for NETCONF clients.
-	pkgver = 0.6.9
+	pkgdesc = Python library for NETCONF clients
+	pkgver = 0.6.15
 	pkgrel = 1
-	url = http://ncclient.org/
+	url = https://github.com/ncclient/ncclient
+	changelog = Changelog
 	arch = any
 	license = Apache-2.0
-	makedepends = python-paramiko
-	makedepends = python-lxml
-	makedepends = python-selectors2
+	checkdepends = python-pytest-runner
+	checkdepends = python-pytest-cov
+	checkdepends = python-sphinx
+	checkdepends = flake8
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = tar
+	depends = python
 	depends = python-paramiko
 	depends = python-lxml
-	depends = python-selectors2
 	depends = python-six
-	options = !emptydirs
-	source = https://github.com/ncclient/ncclient/archive/v0.6.9.tar.gz
-	sha256sums = 6fab4c61aea628c9dca96030571ff05e0aa936d04d5e12df9d4a4b582a2d5e3b
+	source = python-ncclient-0.6.15.tar.gz::https://api.github.com/repos/ncclient/ncclient/tarball/refs/tags/v0.6.15
+	b2sums = 1c8a0428eceb5896aaf1304c92b67c5f2849dfc28ede232ea3496f2c8942102a4a907f23797c538e2ee1195baa2d21586d8b21688241ece60409a08e137f48d4
 
 pkgname = python-ncclient
-

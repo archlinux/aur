@@ -1,0 +1,210 @@
+version 0.6.11
+-------------
+
+* Support for custom client capabilities
+* Restructuring/refactoring of example scripts
+* Minor bugfixes
+* Minor unit test refactoring
+
+version 0.6.10
+-------------
+
+* NETCONF call-home (RFC8071) support
+* YANG 1.1 `action` support
+* Nokia SR OS device handler support
+* Removal of old ALU base-r13 API documentation
+* Increased test coverage
+* Variety of bugfixes and minor enhancements from a variety of contributors since 0.6.9 (see commit history)
+* Thanks to all contributors!
+
+version 0.6.9
+-------------
+
+* Resiolved breaking API change
+
+version 0.6.8
+-------------
+
+* Variety of small updates and bugfixes, but of note:
+  - Support for namespace prefixes for XPath queries
+  - `edit-config` parameter validation
+  - Support for multiple RPC errors
+  - API to get supported device types
+  - Support for subtree filters with multiple top-level tags
+* Thanks to all contributors!
+* Pulled due to avccidental breaking API change
+
+version 0.6.7
+-------------
+
+* Variety of bugfixes from a variety of contributors since 0.6.6 (see commit history)
+
+
+version 0.6.6
+-------------
+
+* Read ssh timeout from config file if not specified in method call
+* Tox support
+* Huge XML tree parser support
+* Adding optional bind address to connect
+
+
+version 0.6.5
+-------------
+
+* Updated README for 0.6.5 release
+
+
+version 0.6.4
+-------------
+
+* Pin selectors2 to Python versions <= 3.4
+* Fix config examples to actually use the nc namespace
+* Fix: correctly set port for paramiko when using ssh_config file
+* Test: add test to check ProxyCommand uses correct port
+* Update commits for py3
+* Enhance Alcatel-Lucent-support
+* Juniper RPC: allow specifying format in CompareConfiguration
+* Parsing of NETCONF 1.1 frames no longer decodes each chunk of bytes
+* Fix filter in create_subscription
+* Validate 'with-defaults' mode based on supported modes advertised in capability URI
+
+
+version 0.6.3
+-------------
+
+* Fix homepage link registered with PyPi
+* SSH Host Key checking
+* Updated junos.py to resolve RestrictedUser error
+* Close the channel when closing SSH session
+* Invoke self.parse() to ensure errors, if any, have been detected before check in ok()
+
+
+version 0.6.2
+-------------
+
+* Migration to user selectors instead of select, allowing higher scale operations
+* Improved netconf:base:1.1 parsing
+* Graceful exit on session close
+
+
+version 0.6.0
+-------------
+
+* Re-enabled Python 3.7 by changing "async" to "async_mode" in several locations
+
+
+version 0.5.4
+-------------
+
+* No major functionality, accumulation of small fixes since 0.5.3 (see commit history)
+* Disable Python 3.7 due to use of "async" (a new Python keyword) in some functions
+
+
+version 0.5.3
+-------------
+
+Fixes/Enhancements
+==================
+
+* Add notifications support
+* Add support for ecdsa keys
+* Various bug fixes
+
+
+version 0.5.2
+-------------
+
+Fixes/Enhancements
+==================
+
+* Add support for Python 3
+* Improve Junos ioproc performance
+* Performance improvements
+* Updated test cases
+* Many bug and performance fixes
+
+version 0.4.7
+-------------
+
+Fixes/Enhancements
+==================
+
+* Add support for netconf 1.1
+
+
+version 0.4.6
+-------------
+
+Fixes/Enhancements
+==================
+
+* Fix multiple RPC error handling
+* Add support for cancel-commit and persist param
+* Add more examples
+
+version 0.4.5
+-------------
+
+Device Support
+==============
+* Add Huawei device support
+* Add cli command support for hpcomware v7 devices
+* Add H3C support, Support H3C CLI,Action,Get_bulk,Save,Rollback,etc.
+* Add alcatel lucent support
+
+Fixes
+=====
+* Rewrite multiple error handling
+* Add coveralls support, with shield in README.md
+* Set severity level to higher when multiple
+* Simplify logging and multi-error reporting
+* Keep stacktrace of errors
+* Check for known hosts on hostkey_verify only
+* Add check for device sending back null error_text
+* Fix RPC.raise_mode
+* Specifying hostkey_verify=False should not load_known_hosts
+* Check the correct field on rpc-error element
+
+version 0.4.3
+-------------
+
+Features
+========
+ * Nexus exec_command operation
+ * Allow specifying multiple cmd elements in Cisco Nexus
+ * Update rpc for nested rpc-errors
+
+Fixes
+=====
+ * Prevent race condition in threading
+ * Prevent hanging in session close
+
+version 0.4.2
+-------------
+
+Features
+========
+ * Support for paramiko ProxyCommand via ~/.ssh/config parsing
+ * Add Juniper-specific commit operations
+ * Add Huawei devices support
+ * Tests/Travis support
+ * ioproc transport support for Juniper devices
+ * Update Cisco CSR device handler
+
+Fixes
+=====
+ * Fix issue with locked method missing device handler
+ * Fix for namespace definition with lxml
+ * Add missing SessionError exception
+ * Update docs for Nexus device handler
+ * Docstring fixes
+ * Typos
+ * Minor bugfixes
+ 
+
+Other
+=====
+ * Add an example for Cisco CSR1000v
+ 
+
