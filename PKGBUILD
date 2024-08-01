@@ -2,23 +2,24 @@
 
 _binname="gsa"
 pkgname="go-size-analyzer"
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A tool for analyzing the size of compiled Go binaries"
 arch=('any')
 url="https://${_binname}.zxilly.dev"
 _url="https://github.com/Zxilly/${pkgname}"
 license=('AGPL-3.0-or-later')
+makedepends=('go')
 provides=("${pkgname}" "${_binname}")
 conflicts=("${pkgname}" "${_binname}")
-makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f583490683bf33ca66806922aaec7ca9f08dcfa871becd36b866ad7834ca143a')
+sha256sums=('da050e7cae3b6e9dd2cf2239d902048d74a47fe1e299b7201aa0025ce2984050')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   mkdir -p "build"
+  go mod download
 }
 
 build() {
@@ -28,7 +29,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o "build/${pkgname}" .
+  go build -v -o "build/${pkgname}" .
 }
 
 # check() {
