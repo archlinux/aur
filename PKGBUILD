@@ -1,44 +1,55 @@
-# Maintainer: Max Jöhnk <maxjoehnk@gmail.com>
+# Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
+# Constributor: Caleb Maclennan <caleb@alerque.com>
+# contributor: Daniele Basso <d dot bass05 at proton dot me>
+
 pkgname=rustic-git
-pkgver=r406.d7ce0b5
+pkgver=0.7.0.r48.g402aa7c
+_pkgname=rustic
 pkgrel=1
-pkgdesc='A self hosted music server with support for many streaming services'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="https://github.com/rustic-music-player/rustic"
-license=('GPL3')
-groups=()
-depends=()
-makedepends=('git' 'cargo')
-provides=('rustic')
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-source=("${pkgname}::git+${url}")
-noextract=()
-md5sums=('SKIP')
+pkgdesc='Fast, encrypted, deduplicated backups powered by Rust (reads and writes restic repos)'
+arch=(x86_64)
+url="https://github.com/rustic-rs/$_pkgname"
+license=(Apache-2.0 MIT)
+depends=(gcc-libs # libgcc_s.so
+         glibc) # libc.so libm.so
+makedepends=(cargo)
+replaces=(rustic-rs
+          rustic-bin)
+options=(!lto)
+
+source=("git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-VCS}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgname"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-	cd "$srcdir/${pkgname%-VCS}"
 
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+prepare() {
+	cd "$_pkgname"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$_pkgname"
+	env \
+		CARGO_PROFILE_RELEASE_DEBUG=2 \
+		CARGO_PROFILE_RELEASE_STRIP=false \
+	cargo build --frozen --release --no-default-features --features webdav
+}
 
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release
+check() {
+	cd "$_pkgname"
+	cargo test --frozen --no-default-features --features webdav
 }
 
 package() {
-	cd "$srcdir/${pkgname%-VCS}"
-
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/rustic"
+	cd "$_pkgname"
+	local _bin="target/release/$_pkgname"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "$_bin"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-MIT
+	"$_bin" completions bash | install -Dm0644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+	"$_bin" completions fish | install -Dm0644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+	"$_bin" completions zsh  | install -Dm0644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
