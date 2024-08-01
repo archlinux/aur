@@ -14,6 +14,11 @@ sha256sums=('159d2156810a6bb240410cd61eb641add85088d9f15c888cdaa37b8681f929ce')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
+  cd nauty${pkgver//./_}
+  # drop popcnt check
+  sed -i "5128,5154d" configure
+
+  cd "$srcdir"
   for _arch in ${_architectures}; do
     rm -rf build-${_arch}
     cp -r nauty${pkgver//./_} build-${_arch}
