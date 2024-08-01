@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-workspaces-git
-pkgver=r225.2de3669
+pkgver=r226.ef0d7bb
 pkgrel=1
 pkgdesc="Cosmic workspaces"
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}-epoch"
   export RUSTUP_TOOLCHAIN=stable
-  make vendor
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -42,7 +42,7 @@ build() {
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  nice make prefix='/usr' VENDOR='1' all
+  nice cargo build --release --frozen --bin Cargo.toml Cargo.lock src/main.rs vendor-check
 }
 
 package() {
