@@ -2,7 +2,7 @@
 
 pkgname=vbox-api-git
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings to the VirtualBox SOAP API."
 arch=("any")
 url="https://github.com/Zedeldi/vbox-api"
@@ -10,6 +10,7 @@ license=("MIT")
 depends=("python" "python-zeep" "python-pillow" "python-psutil" "python-flask" "gunicorn")
 optdepends=(
     "novnc: remote control support"
+    "python-flaskwebgui: GUI application"
     "virtualbox: local VirtualBox instance"
 )
 makedepends=("git" "python-build" "python-installer" "python-setuptools" "python-wheel")
@@ -32,5 +33,7 @@ package() {
     cd "${pkgname}"
     install -Dm644 "deployment/systemd/vbox-api-http.service" "${pkgdir}/usr/lib/systemd/system/vbox-api-http.service"
     install -Dm644 "deployment/config/vbox-api-http.conf" "${pkgdir}/etc/vbox-api-http.conf"
+    install -Dm644 "deployment/desktop/vbox-api-gui.desktop" "${pkgdir}/usr/share/applications/vbox-api-gui.desktop"
+    install -Dm644 "deployment/desktop/vbox-api-gui.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/vbox-api-gui.png"
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
