@@ -1,0 +1,15 @@
+pkgbase = element-lk-jwt-service-git
+	pkgdesc = LiveKit Management Service for Element Call
+	pkgver = 0.0.1
+	pkgrel = 3
+	url = https://github.com/vector-im/lk-jwt-service/
+	arch = x86_64
+	license = AGPL-3
+	makedepends = go
+	makedepends = git
+	source = git+https://github.com/vector-im/lk-jwt-service.git
+	source = lk-jwt-service.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = element-lk-jwt-service-git
