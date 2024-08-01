@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-randr-git
-pkgver=r24.e214fe9
+pkgver=r26.71fabbb
 pkgrel=1
 pkgdesc="Library and utility for displaying and configuring Wayland outputs"
 arch=('x86_64' 'aarch64')
@@ -28,13 +28,15 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  just vendor
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  nice just build-vendored
+
+  # use nice to build with lower priority
+  nice just build-release --frozen
 }
 
 package() {
