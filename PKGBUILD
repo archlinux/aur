@@ -1,7 +1,7 @@
 # Maintainer: Martchus <martchus@gmx.net>
 
 pkgname=mingw-w64-gnutls
-pkgver=3.8.3
+pkgver=3.8.6
 pkgrel=1
 pkgdesc='A library which provides a secure layer over a reliable transport layer (mingw-w64)'
 arch=('any')
@@ -14,11 +14,11 @@ options=(staticlibs !strip !buildflags)
 optdepends=("mingw-w64-openssl: libgnutls-openssl")
 source=(https://www.gnupg.org/ftp/gcrypt/gnutls/v${pkgver%.*}/${pkgname#mingw-w64-}-${pkgver}.tar.xz{,.sig}
         gnutls-fix-external-libtasn1-detection.patch)
-sha256sums=('f74fc5954b27d4ec6dfbb11dea987888b5b124289a3703afcada0ee520f4173e'
+sha256sums=('2e1588aae53cb32d43937f1f4eca28febd9c0c7aa1734fc5dd61a7e81e0ebcdd'
             'SKIP'
             '8525da75852a516be0cb05df0a770daf19ce0583033260d6cac03a1e40fd2072')
-validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871') # "Daiki Ueno <ueno@unixuser.org>"
-#validpgpkeys=('5D46CB0F763405A7053556F47A75A648B3F9220C') # "Zoltan Fridrich <zfridric@redhat.com>"
+#validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871') # "Daiki Ueno <ueno@unixuser.org>"
+validpgpkeys=('5D46CB0F763405A7053556F47A75A648B3F9220C') # "Zoltan Fridrich <zfridric@redhat.com>"
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -35,16 +35,17 @@ build() {
   cd "${srcdir}/gnutls-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    #export WINEPATH=/usr/${_arch}/bin
+    export CFLAGS=-fpermissive CXXFLAGS=-fpermissive
     ${_arch}-configure \
       --disable-doc \
-      --disable-openssl-compatibility \
+      --disable-gtk-doc \
       --disable-srp-authentication \
       --disable-rpath \
       --disable-non-suiteb-curves \
       --disable-gtk-doc \
       --disable-full-test-suite \
       --with-libiconv-prefix=/usr/$_arch \
+      --enable-openssl-compatibility \
       --enable-nls \
       --enable-cxx \
       --without-tpm
