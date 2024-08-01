@@ -2,7 +2,7 @@
 
 pkgname=aio-creator-neo
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Design a custom app to control your smart home. Supports many vendors.'
 arch=('x86_64')
 url='https://www.mediola.com/en/products#aio-creator-neo'
@@ -30,9 +30,9 @@ source=(
   'eula.md'
 )
 
-sha512sums=('414b1de99fe65eb16d7dfde5b89f106c3aac3c36c58ff2e158baeb4eb4f18787c3729d68bb20cd1743d73499053930f156566293f4811df0f5fc89f7630ae1f0'
+sha512sums=('550bc90f7d0f2de3f3101feac861ad4b5c43c5d88945eb53dd578b29fb47d5c7ec7d85d19efeb4fcc1f7278d20addb5a4eaeb095543536126fb440cd44c1f695'
             '308b84b654e63fe14cd68f6bb8fdeb1f0e7afe1b15127fa5779cbe40227c9a6616060b27e28e98505f72d26873379b6a3672fc98060f6e47e64667f81a91d500'
-            '70910fb6b981c832416396474b8e0a551457cf64a433626eb80785e862aa999719151d022d538c66b9a5fa2c5ec7bd3506289a614c1c1f10cfabba022993ab77')
+            'c9110733aa9269fba458cb06b676f425455d4d1f0181b69e1a26345216802ae1ca2010915f75d3692dbb1ef5df9ac92986c3ee34322d9b9c96acf6e618c6ba5f')
 
 prepare() {
   innoextract -d "${srcdir}" "${pkgname}-${pkgver}-installer.exe"
