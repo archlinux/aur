@@ -45,8 +45,7 @@ build() {
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  POLKIT_AGENT_HELPER_1=/usr/lib/polkit-1/polkit-agent-helper-1 \
-    nice cargo build --release --frozen --bin "${pkgname%-git}"
+  ARGS+=" --frozen" nice make
 }
 
 package() {
