@@ -8,10 +8,21 @@ epoch=
 pkgdesc="PyCryptoPlus is an extension to the Python Crypto module (www.pycrypto.org)."
 arch=('any')
 url="https://pypi.org/project/bflb-crypto-plus"
-license=('LGPL3.0')
+license=('LGPL-3.0-or-later')
 groups=()
-depends=('python' )
-makedepends=('python-build' 'python-installer' 'python-wheel')
+_pydeps=(
+    )
+depends=(
+    python
+    "${_pydeps[@]/#/python-}")
+_pymakedeps=(
+    build
+    installer
+    wheel
+    setuptools
+    pycryptodome)
+makedepends=(
+    "${_pymakedeps[@]/#/python-}")
 checkdepends=()
 optdepends=()
 provides=()
