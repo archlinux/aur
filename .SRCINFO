@@ -1,0 +1,42 @@
+pkgbase = chiaki-ng
+	pkgdesc = Unofficial PlayStation 4 remote play client
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://streetpea.github.io/chiaki-ng/
+	arch = i686
+	arch = x86_64
+	license = LicenseRef-AGPL-3.0-only-OpenSSL
+	makedepends = git
+	makedepends = cmake
+	makedepends = python-protobuf
+	makedepends = python-setuptools
+	depends = ffmpeg
+	depends = fftw
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = hidapi
+	depends = json-c
+	depends = libidn2
+	depends = libplacebo
+	depends = libpsl
+	depends = libssh2
+	depends = miniupnpc
+	depends = openssl
+	depends = opus
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = sdl2
+	depends = speexdsp
+	depends = zlib
+	optdepends = intel-media-driver: vaapi backend for Intel GPUs [>= Broadwell]
+	optdepends = libva-intel-driver: vaapi backend for Intel GPUs [<= Haswell]
+	optdepends = libva-vdpau-driver: vaapi backend for Nvidia and AMD GPUs
+	optdepends = libva-mesa-driver: alternative vaapi backend for AMD GPUs
+	provides = chiaki
+	conflicts = chiaki
+	source = git+https://github.com/streetpea/chiaki-ng.git?commit=cb979c551f8240094fd45ba7fd680e3b7ce38e37
+	sha256sums = SKIP
+
+pkgname = chiaki-ng
