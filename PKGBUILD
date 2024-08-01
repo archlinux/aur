@@ -1,10 +1,9 @@
 # Maintainer: Georg Nagel <g.schlmm at gmail dot com>
 
-
 _gitname=lk-jwt-service
 pkgname="element-${_gitname}-git"
-pkgver=0.0.1
-pkgrel=3
+pkgver=r30.4a29504
+pkgrel=1
 pkgdesc='LiveKit Management Service for Element Call'
 arch=(x86_64)
 url='https://github.com/vector-im/lk-jwt-service/'
@@ -18,6 +17,11 @@ sha256sums=(
   'SKIP'
   'SKIP'
 )
+
+pkgver() {
+  cd $_gitname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 prepare() {
   cd $_gitname
