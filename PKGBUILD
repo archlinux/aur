@@ -4,7 +4,7 @@
 _name="multi-account-containers"
 _l10n_version=417e6294ed767914b617a5e56ccbe67482df181c
 pkgname=firefox-extension-multi-account-containers
-pkgver=8.1.2
+pkgver=8.1.3
 pkgrel=1
 pkgdesc="Keep parts of your online life separated into color-coded tabs"
 arch=("any")
@@ -17,7 +17,7 @@ source=(
 	"https://github.com/mozilla-l10n/${_name}-l10n/archive/${_l10n_version}.tar.gz"
 )
 sha512sums=(
-	'6df6ab64140d317ee7f4cb2158f60a3ae27523d624e9aa413ebf81e372d1c9b8b60c6a6491388bd1bf3b7502118175d39cd154e397d4e9ac691b3e2dbef38cfa'
+	'e8649d3e7e3d6e4d2b94aaa45a212d579ec532779f4d2cfcf4db758740bbe99596dd4d876557070aeaca9092fcdb984582b6798bde72c21ffc6d3d484873091e'
 	'a41d5e8cf691271587dbe224d78b4b97db2f86c76094c6449eb36a72f7b42e9703a990a9ea2429f37d271f03146106270b67b0f5dfa1d1315a414bcb89ae0872'
 )
 
