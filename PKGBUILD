@@ -1,6 +1,6 @@
 pkgname=mingw-w64-gklib
 pkgver=5.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A library of various helper routines and frameworks used by many of the labs software (mingw-w64)'
 url="https://github.com/KarypisLab/GKlib"
 license=('Apache')
