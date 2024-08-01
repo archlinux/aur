@@ -1,6 +1,6 @@
 # Maintainer: Craig Barnes <craigbarnes@protonmail.com>
 pkgname=dte-git
-pkgver=1.10+874+gc5a2161b
+pkgver=1.11.1+714+g5a7945a8
 pkgrel=1
 pkgdesc='A small, configurable console text editor'
 url='https://craigbarnes.gitlab.io/dte/'
@@ -20,7 +20,7 @@ sha256sums=(SKIP)
 
 pkgver() {
     cd "$srcdir/dte"
-    git describe --match='v[1-9]*' | tr - + | sed 's/^v//'
+    git describe --match='v[1-9]*' | sed 's/^v//; s/-/+/g'
 }
 
 build() {
