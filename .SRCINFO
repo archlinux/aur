@@ -1,0 +1,17 @@
+pkgbase = bertini2-docs-git
+	pkgdesc = HTML documentation for Betini2
+	pkgver = r1680.78f9986
+	pkgrel = 1
+	url = https://github.com/bertiniteam/b2
+	arch = any
+	license = custom:GPL-3.0-or-later WITH Bertini2-Additional-GPL-Terms
+	makedepends = git
+	makedepends = doxygen
+	makedepends = plantuml
+	makedepends = graphviz
+	provides = bertini2-docs
+	conflicts = bertini2-docs
+	source = b2::git+https://github.com/bertiniteam/b2.git
+	sha256sums = SKIP
+
+pkgname = bertini2-docs-git
