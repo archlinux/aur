@@ -1,7 +1,7 @@
 # Maintainer: Deniz Demir <darkenedMellow@protonmail.com>
 
 pkgname=hardcpy-git
-pkgver=r7.3596426
+pkgver=r10.f90471a
 pkgrel=1
 pkgdesc="Simple backup tool written in Rust"
 url="https://github.com/obvMellow/hardcpy"
