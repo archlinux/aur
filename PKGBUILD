@@ -2,7 +2,7 @@
 _pkgname=torzu
 _branch=main
 pkgname=torzu-git
-pkgver=r27157.c8997e4ab
+pkgver=r27158.1b51d49e1
 pkgrel=1
 pkgdesc="Torzu is a fork of yuzu, the world's most popular, open-source, Nintendo Switch emulator. It is written in C++ with portability in mind."
 arch=(x86_64)
@@ -34,6 +34,7 @@ source=(
   git+https://github.com/KhronosGroup/Vulkan-Utility-Libraries.git
   git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
   git+https://github.com/KhronosGroup/Vulkan-Headers.git
+  git+https://github.com/arun11299/cpp-jwt.git
   # Submodule Submodules
   git+https://github.com/eggert/tz.git #submodule_of_tzdb_to_nx
   git+https://github.com/bylaws/liblinkernsbypass.git #submodule_of_libadrenogtools
@@ -41,6 +42,7 @@ source=(
   git+https://github.com/arsenm/sanitizers-cmake.git #submodule_of_cubeb
   )
 b2sums=('SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -72,7 +74,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  for submodule in {enet,cubeb,libusb,xbyak,opus,SDL,cpp-httplib,ffmpeg,vcpkg,libadrenotools,tzdb_to_nx,simpleini,oaknut,SPIRV-Headers,fmt,Vulkan-Utility-Libraries,VulkanMemoryAllocator,Vulkan-Headers};
+  for submodule in {enet,cubeb,libusb,xbyak,opus,SDL,cpp-httplib,ffmpeg,vcpkg,libadrenotools,tzdb_to_nx,simpleini,cpp-jwt,oaknut,SPIRV-Headers,fmt,Vulkan-Utility-Libraries,VulkanMemoryAllocator,Vulkan-Headers};
   do
     git config --file=.gitmodules submodule.$submodule.url "${srcdir}"/$submodule
   done
