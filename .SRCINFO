@@ -1,6 +1,6 @@
 pkgbase = caja-rename
 	pkgdesc = Batch renaming extension for Caja
-	pkgver = 24.7.1
+	pkgver = 24.8.1
 	pkgrel = 1
 	url = https://tari.in/www/software/caja-rename
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = caja-rename
 	depends = hicolor-icon-theme
 	depends = glib2
 	depends = glibc
-	source = caja-rename-24.7.1.tar.gz::https://github.com/tari01/caja-rename/archive/24.7.1.tar.gz
-	md5sums = 1c4d11026c7bb0b016e1a7d3819c1cb5
+	source = caja-rename-24.8.1.tar.gz::https://github.com/tari01/caja-rename/archive/24.8.1.tar.gz
+	md5sums = 789d66631e8798d27dca76e573d6ed10
 
 pkgname = caja-rename
