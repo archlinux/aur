@@ -5,7 +5,7 @@
 
 _pkgname=open-stage-control
 pkgname=$_pkgname-bin
-pkgver=1.26.2
+pkgver=1.27.0
 pkgrel=1
 _dist=${_pkgname}_${pkgver}_linux-x64
 pkgdesc='A libre desktop OSC bi-directional control surface application'
@@ -26,4 +26,4 @@ package() {
   install -vdm 755 "$pkgdir"/usr/bin
   ln -s /opt/$_pkgname/$_pkgname "$pkgdir"/usr/bin
 }
-sha256sums=('426bdb1e8117d11aab8bc8e48665636c739a4bf7f66407ba0edb6f6542d23113')
+sha256sums=('6ea35b0cd81c8f58024f3713e6920bcdff1f122b95012cf99bfb1ccfb2d860a6')
