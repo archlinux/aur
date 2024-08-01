@@ -1,0 +1,20 @@
+pkgbase = kconnect-bin
+	pkgdesc = CLI tool which enables you to login and retrieve AWS temporary credentials using a SAML IDP
+	pkgver = 0.5.16
+	pkgrel = 1
+	url = https://github.com/fidelity/kconnect
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = kubectl
+	optdepends = aws-iam-authenticator: authentication to AWS EKS clusters
+	optdepends = azure-kubelogin: non-interactive authentication to Azure AKS clusters
+	optdepends = azure-cli: interactive authentication to Azure AKS clusters
+	provides = kconnect
+	conflicts = kconnect
+	source_x86_64 = https://github.com/fidelity/kconnect/releases/download/0.5.16/kconnect_linux_amd64.tar.gz
+	sha256sums_x86_64 = dd59c19c0f25c889bdf900018fc747aa1c9ca32dafef9c2fc19048f5c688a50b
+	source_aarch64 = https://github.com/fidelity/kconnect/releases/download/0.5.16/kconnect_linux_arm64.tar.gz
+	sha256sums_aarch64 = cc8c1a825a30894d62ae6a3d70f0290eab1bdd34bfc47ed113404c824e211535
+
+pkgname = kconnect-bin
