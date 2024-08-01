@@ -1,0 +1,31 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -110,9 +110,27 @@
+ add_library(_pybertini SHARED ${PYBERTINI_SOURCES} ${PYBERTINI_HEADERS})
+ set_property(TARGET _pybertini PROPERTY INTERFACE_POSITION_INDEPENDENT_CODE ON)
+ 
++# Install the library to site-packages directory
++execute_process(
++    COMMAND python -c "import site; print(site.getsitepackages()[0])"
++    OUTPUT_VARIABLE SITE_PACKAGES_PATH
++    OUTPUT_STRIP_TRAILING_WHITESPACE
++)
++
++# Set installation directories
++set(INSTALL_LIB_DIR ${SITE_PACKAGES_PATH})
++set(INSTALL_INCLUDE_DIR "include")
++
++# Install shared library
+ set_target_properties(_pybertini PROPERTIES PREFIX "")
+ install(TARGETS _pybertini
+-            DESTINATION "${CMAKE_CURRENT_SOURCE_DIR}/pybertini/")
++        LIBRARY DESTINATION "${INSTALL_LIB_DIR}")
++#         DESTINATION "${INSTALL_LIB_DIR}/pybertini")
++
++# Install headers
++install(FILES
++    ${PYBERTINI_HEADERS}
++    DESTINATION "${CMAKE_INSTALL_PREFIX}/${INSTALL_INCLUDE_DIR}/pybertini")
+ 
+ target_link_libraries(_pybertini ${GMP_LIBRARIES})
+ target_link_libraries(_pybertini ${MPFR_LIBRARIES})
