@@ -6,8 +6,8 @@ After=network.target
 DynamicUser=yes
 
 Environment=LIVEKIT_URL="ws://localhost:7880"
-Environment=LIVEKIT_KEY=<your livekit key>
-Environment=LIVEKIT_SECRET=<your livekit secret>
+Environment=LIVEKIT_KEY="<your livekit key>"
+Environment=LIVEKIT_SECRET="<your livekit secret>"
 ExecStart=lk-jwt-service
 
 Restart=on-failure
