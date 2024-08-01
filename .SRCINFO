@@ -1,0 +1,23 @@
+pkgbase = rrandr-git
+	pkgdesc = A graphical interface to the RandR X Window System extension.
+	pkgver = r218.05c6467
+	pkgrel = 1
+	url = https://github.com/brofi/rrandr
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = gettext
+	depends = gtk4
+	depends = pango
+	depends = cairo
+	depends = libxcb
+	depends = glib2
+	depends = glibc
+	depends = gcc-libs
+	optdepends = xorg-server: Xorg support
+	source = git+https://github.com/brofi/rrandr
+	sha256sums = SKIP
+
+pkgname = rrandr-git
