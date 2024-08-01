@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-jaraco.vcs
 _name=${pkgname#python-}
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Facilities for working with VCS repositories"
 arch=('any')
@@ -27,12 +27,13 @@ checkdepends=(
   'python-pytest'
   'python-pytest-cov'
   'python-pytest-enabler'
+  'python-pytest-home'
   'python-pytest-mypy'
   'python-pytest-ruff'
   'python-types-python-dateutil'
 )
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('63d31b70b860cbc46bc0691d15185e065e913171152074b6a661f6002369febd')
+sha256sums=('4f174630e6a91a04b3fe08025bf9b7d4a23fb9b05da4e856d3c721539e27ed74')
 
 build() {
   cd "$_name-$pkgver"
