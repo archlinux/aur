@@ -3,10 +3,10 @@
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 pkgname=tree-sitter-git
-pkgver=0.22.6.r29.g604d38e6
+pkgver=0.22.6.r58.g779566f5
 pkgrel=1
 pkgdesc="An incremental parsing system for programming tools"
-arch=('i686' 'x86_64')
+arch=('aarch64' 'i686' 'x86_64')
 url="https://tree-sitter.github.io/tree-sitter/"
 license=('MIT')
 depends=('glibc')
