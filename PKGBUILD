@@ -1,7 +1,7 @@
 pkgname=mingw-w64-cgns
 _PKGNAME=CGNS
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Standard for recording and recovering computer data associated with the numerical solution of fluid dynamics equations (mingw-w64)'
 arch=('any')
 url='http://www.cgns.org'
