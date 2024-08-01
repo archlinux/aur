@@ -31,7 +31,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  make vendor
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
   # libexec > lib
   sed -i 's|libexec|lib/polkit-1|g' Makefile src/subscriptions/polkit_agent_helper.rs
@@ -45,7 +45,8 @@ build() {
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  nice make prefix='/usr' VENDOR='1' all
+  POLKIT_AGENT_HELPER_1=/usr/lib/polkit-1/polkit-agent-helper-1 \
+    nice cargo build --release --frozen --bin "${pkgname%-git}"
 }
 
 package() {
