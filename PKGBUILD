@@ -2,8 +2,8 @@
 # The pkgbuild is based on the original pkgbuild for citra.
 
 pkgname=lime3ds-git
-pkgver=r10381.461c8c9
-pkgrel=2
+pkgver=r10426.5fc08dd
+pkgrel=1
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 url='https://github.com/Lime3DS/Lime3DS'
@@ -17,7 +17,7 @@ source=("Lime3DS::git+https://github.com/Lime3DS/Lime3DS"
         "nihstro::git+https://github.com/neobrain/nihstro.git"
         "catch2::git+https://github.com/catchorg/Catch2.git"
         "soundtouch::git+https://codeberg.org/soundtouch/soundtouch.git"
-        "dynarmic::git+https://github.com/blitzingeagle/dynarmic.git"
+        "dynarmic::git+https://github.com/rtiangha/dynarmic.git"
         "git+https://github.com/herumi/xbyak.git"
         "git+https://github.com/lsalzman/enet.git"
         "git+https://github.com/benhoyt/inih.git"
@@ -52,8 +52,23 @@ source=("Lime3DS::git+https://github.com/Lime3DS/Lime3DS"
         #libadrenotools' submodule
         "git+https://github.com/bylaws/liblinkernsbypass.git"
         "git+https://github.com/Lime3DS/compatibility-list"
+        #dynarmic submodules
+        "git+https://github.com/lioncash/biscuit"
+        "catch::git+https://github.com/catchorg/Catch2"
+        "git+https://github.com/rtiangha/mcl"
+        "git+https://github.com/Tessil/robin-map"
+        "git+https://github.com/herumi/xbyak"
+        "git+https://github.com/zyantific/zycore-c"
+        "git+https://github.com/zyantific/zydis"
         )
 md5sums=('SKIP'
+	 'SKIP'
+	 'SKIP'
+	 'SKIP'
+	 'SKIP'
+	 'SKIP'
+	 'SKIP'
+	 'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -122,6 +137,14 @@ prepare() {
     git submodule init
     git config submodule.lib/linkernsbypass.url "$srcdir/liblinkernsbypass"
     git -c protocol.file.allow=always submodule update 
+    
+    cd "$srcdir/Lime3DS/externals/dynarmic/"
+    git submodule init
+    for submodule in {biscuit,catch,fmt,mcl,oaknut,robin-map,xbayk,zycore,zydis}
+    do
+    git config submodule.${submodule}.url "$srcdir/${submodule}"
+    done
+    git -c protocol.file.allow=always submodule update
     
     cd "$srcdir/Lime3DS"
     # mkdir build
