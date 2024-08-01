@@ -27,6 +27,7 @@ build() {
   cd gettext-${pkgver}
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
+    export CFLAGS=-fpermissive CXXFLAGS=-fpermissive
     export MINGW_LDFLAGS="-Wl,--enable-auto-import"
     LIBS="-lssp" ${_arch}-configure \
       --disable-java \
