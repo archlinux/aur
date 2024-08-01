@@ -27,12 +27,12 @@ diff -Naur a/src/vs/editor/browser/widget/diffEditor/style.css b/src/vs/editor/b
  .monaco-scrollable-element.modified-in-monaco-diff-editor.vs		.scrollbar { background: rgba(0,0,0,0); }
  .monaco-scrollable-element.modified-in-monaco-diff-editor.vs-dark	.scrollbar { background: rgba(0,0,0,0); }
 diff -Naur a/src/vs/platform/windows/electron-main/windows.ts b/src/vs/platform/windows/electron-main/windows.ts
---- a/src/vs/platform/windows/electron-main/windows.ts	2023-11-01 02:39:20.000000000 +0100
-+++ b/src/vs/platform/windows/electron-main/windows.ts	2023-11-01 22:22:42.749482542 +0100
-@@ -120,6 +120,7 @@
+--- a/src/vs/platform/windows/electron-main/windows.ts	2024-07-31 13:26:36.000000000 +0200
++++ b/src/vs/platform/windows/electron-main/windows.ts	2024-08-01 20:09:18.467692458 +0200
+@@ -124,6 +124,7 @@
  	const windowSettings = configurationService.getValue<IWindowSettings | undefined>('window');
  
- 	const options: BrowserWindowConstructorOptions & { experimentalDarkMode: boolean } = {
+ 	const options: electron.BrowserWindowConstructorOptions & { experimentalDarkMode: boolean } = {
 +		transparent: true,
  		backgroundColor: themeMainService.getBackgroundColor(),
  		minWidth: WindowMinimumSize.WIDTH,

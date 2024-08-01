@@ -34,8 +34,8 @@
 	"builtInExtensions": [
 		{
 			"name": "ms-vscode.js-debug-companion",
-			"version": "1.1.2",
-			"sha256": "e034b8b41beb4e97e02c70f7175bd88abe66048374c2bd629f54bb33354bc2aa",
+			"version": "1.1.3",
+			"sha256": "7380a890787452f14b2db7835dfa94de538caf358ebc263f9d46dd68ac52de93",
 			"repo": "https://github.com/microsoft/vscode-js-debug-companion",
 			"metadata": {
 				"id": "99cb0b7f-7354-4278-b8da-6cc79972169d",
@@ -50,8 +50,8 @@
 		},
 		{
 			"name": "ms-vscode.js-debug",
-			"version": "1.91.0",
-			"sha256": "53b99146c7fa280f00c74414e09721530c622bf3e5eac2c967ddfb9906b51c80",
+			"version": "1.92.0",
+			"sha256": "e5d0a74728292423631f79d076ecb2bc129f9637bcbc2529e48a0fd53baa69cc",
 			"repo": "https://github.com/microsoft/vscode-js-debug",
 			"metadata": {
 				"id": "25629058-ddac-4e17-abba-74678e126c5d",
@@ -85,6 +85,7 @@
 	"webUrl": "https://vscode.dev",
 	"webEndpointUrl": "https://main.vscode-cdn.net",
 	"webEndpointUrlTemplate": "https://{{uuid}}.vscode-cdn.net/{{quality}}/{{commit}}",
+	"nlsCoreBaseUrl": "https://www.vscode-unpkg.net/nls/",
 	"quality": "stable",
 	"extensionsGallery": {
 		"nlsBaseUrl": "https://www.vscode-unpkg.net/_lp/",
@@ -595,7 +596,9 @@
 					"pathGlob": "{**/*.ts,**/*.tsx,**/*.js,**/*.py,**/*.go,**/*.rb}"
 				}
 			],
-			"onSettingsEditorOpen": {}
+			"onSettingsEditorOpen": {
+				"descriptionOverride": "GitHub Copilot is an AI pair programmer tool that helps you write code faster and smarter."
+			}
 		},
 		"GitHub.vscode-github-actions": {
 			"onFileOpen": [
@@ -1764,6 +1767,7 @@
 	"extensionEnabledApiProposals": {
 		"ms-vscode.vscode-selfhost-test-provider": [
 			"testObserver",
+			"testRelatedCode",
 			"attributableCoverage"
 		],
 		"VisualStudioExptTeam.vscodeintellicode-completions": [
@@ -1914,6 +1918,7 @@
 			"treeViewMarkdownMessage"
 		],
 		"GitHub.copilot": [
+			"authGetSessions",
 			"inlineCompletionsAdditions"
 		],
 		"GitHub.copilot-nightly": [
@@ -1935,6 +1940,7 @@
 			"codeActionAI",
 			"findTextInFiles",
 			"textSearchProvider",
+			"activeComment",
 			"commentReveal",
 			"contribSourceControlInputBoxMenu",
 			"contribCommentEditorActionsMenu",
@@ -1943,6 +1949,7 @@
 			"newSymbolNamesProvider",
 			"findFiles2",
 			"extensionsAny",
+			"authGetSessions",
 			"authLearnMore",
 			"testObserver",
 			"aiTextSearchProvider",
@@ -1972,9 +1979,10 @@
 			"notebookCellExecutionState"
 		],
 		"ms-python.debugpy": [
-			"portsAttributes",
 			"contribIssueReporter",
-			"debugVisualization"
+			"contribViewsWelcome",
+			"debugVisualization",
+			"portsAttributes"
 		],
 		"ms-toolsai.jupyter-renderers": [
 			"contribNotebookStaticPreloads"
@@ -2010,7 +2018,8 @@
 		"ms-azuretools.vscode-azure-github-copilot": [
 			"chatParticipantAdditions",
 			"embeddings",
-			"languageModelSystem"
+			"languageModelSystem",
+			"lmTools"
 		],
 		"ms-vscode.anycode": [
 			"extensionsAny"
@@ -2392,11 +2401,6 @@
 		"enablementKey": "chat_enabled",
 		"confirmationAction": "Install",
 		"confirmationMessage": "Are you sure you want to install GitHub Copilot?"
-	},
-	"chatWelcomeView": {
-		"welcomeViewId": "copilot.welcome",
-		"welcomeViewTitle": "GitHub Copilot",
-		"welcomeViewContent": "You have access to [GitHub Copilot](command:extension.open?%5B%22github.copilot%22%5D), an AI-powered coding assistant, as a part of the Microsoft organization.\n Getting started with Copilot is easy - simply install the Copilot extension. [Learn more](https://aka.ms/copilot-overview)\n[Install GitHub Copilot](command:workbench.extensions.installExtension?%5B%22github.copilot%22%5D)"
 	},
 	"chatParticipantRegistry": "https://az764295.vo.msecnd.net/extensions/chat.json",
 	"commit": "@COMMIT@",
