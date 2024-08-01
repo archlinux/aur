@@ -10,10 +10,18 @@ arch=('any')
 url="https://pypi.org/project/bflb-mcu-tool"
 license=(MIT)
 groups=()
-depends=(python)
-makedepends=(python-build
-            python-installer
-            python-wheel)
+depends=(
+    gcc-libs
+    glibc
+    libusb
+    python)
+_pymakedeps=(
+    build
+    installer
+    wheel
+    setuptools)
+makedepends=(
+    "${_pymakedeps[@]/#/python-}")
 options=('!strip')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
