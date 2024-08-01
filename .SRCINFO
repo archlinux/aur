@@ -1,6 +1,6 @@
 pkgbase = photoqt
 	pkgdesc = Fast and highly configurable image viewer with a simple and nice interface.
-	pkgver = 4.5
+	pkgver = 4.6
 	pkgrel = 1
 	url = http://photoqt.org/
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = photoqt
 	optdepends = libqpsd-git: PSB/PSD support
 	optdepends = xcftools: XCF support
 	conflicts = photoqt-bin
-	source = https://photoqt.org/downloads/source/photoqt-4.5.tar.gz
-	sha256sums = 405ce230d46188ce0b68d27c464274882abff09f36c27d05e7de2a25e48ddcbc
+	source = https://photoqt.org/downloads/source/photoqt-4.6.tar.gz
+	sha256sums = e556c6309d41f720db4e2ae2ed267eafe73d2dd7c6fc2d5cd3fd3540152f6c26
 
 pkgname = photoqt
