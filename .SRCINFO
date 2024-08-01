@@ -1,0 +1,24 @@
+pkgbase = aquaquill-git
+	pkgdesc = 🌊 Dive into creativity with AquaQuill, a user-friendly Markdown editor that transforms your text in real-time like waves shaping the shore!
+	pkgver = r13.6d93ec8
+	pkgrel = 1
+	url = https://github.com/Rujuu-prog/AquaQuill
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = curl
+	makedepends = yarn
+	depends = electron31
+	provides = aquaquill=r13.6d93ec8
+	conflicts = aquaquill
+	source = aquaquill.git::git+https://github.com/Rujuu-prog/AquaQuill.git
+	source = aquaquill.sh
+	sha256sums = SKIP
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+
+pkgname = aquaquill-git
