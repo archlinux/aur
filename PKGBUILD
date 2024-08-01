@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chain-desktop-wallet-bin
 _appname="Crypto.com-DeFi-Desktop-Wallet"
-pkgver=1.5.0
+pkgver=1.5.1
 _electronversion=19
-pkgrel=3
+pkgrel=1
 pkgdesc="Crypto.com DeFi Desktop Wallet"
 arch=('x86_64')
 url="https://crypto.com/defi-wallet"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4769a940ff0c46852a2cf0ca2f1c87f8234d8ecb40a1f35e8a5896bda35ad818'
+sha256sums=('75724c53a69b837d59c844ca9791e1e9fc67d4677515b487189875cf447b5cf3'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
@@ -42,8 +42,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/scripts/preload.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}/scripts"
-    cp -r "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/squashfs-root/resources/scripts/preload.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}/scripts"
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
