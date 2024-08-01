@@ -22,17 +22,30 @@ pkgver() {
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/etc/systemd/system"
-  install -m 755 "$srcdir/$_pkgname/frzr-bootstrap" "$pkgdir/usr/bin"
-  install -m 755 "$srcdir/$_pkgname/frzr-deploy" "$pkgdir/usr/bin"
-  install -m 755 "$srcdir/$_pkgname/__frzr-deploy" "$pkgdir/usr/bin"
-  install -m 755 "$srcdir/$_pkgname/frzr-release" "$pkgdir/usr/bin"
-  install -m 755 "$srcdir/$_pkgname/frzr-unlock" "$pkgdir/usr/bin"
-  install -m 755 "$srcdir/$_pkgname/frzr-initramfs" "$pkgdir/usr/bin"
-  install -m 755 "$srcdir/$_pkgname/frzr-tweaks" "$pkgdir/usr/bin"
+  # mkdir -p "$pkgdir/usr/bin"
+  # mkdir -p "$pkgdir/etc/systemd/system"
+
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/lib/frzr"
+  install -dm755 "$pkgdir/etc/systemd/system"
+  install -dm755 "$pkgdir/usr/share/libalpm/hooks"
+
+
+  # install -m 755 "$srcdir/$_pkgname/frzr-bootstrap" "$pkgdir/usr/bin"
+  # install -m 755 "$srcdir/$_pkgname/frzr-deploy" "$pkgdir/usr/bin"
+  # install -m 755 "$srcdir/$_pkgname/__frzr-deploy" "$pkgdir/usr/bin"
+  # install -m 755 "$srcdir/$_pkgname/frzr-release" "$pkgdir/usr/bin"
+  # install -m 755 "$srcdir/$_pkgname/frzr-unlock" "$pkgdir/usr/bin"
+  # install -m 755 "$srcdir/$_pkgname/frzr-initramfs" "$pkgdir/usr/bin"
+  # install -m 755 "$srcdir/$_pkgname/frzr-tweaks" "$pkgdir/usr/bin"
+
+  install -m644 -t "$pkgdir/usr/bin" "$srcdir/$_pkgname/bin"/frzr*
+  install -m644 -t "$pkgdir/usr/bin" "$srcdir/$_pkgname/bin"/__frzr-*
+
+
   install -m 644 "$srcdir/$_pkgname/frzr-autoupdate.service" "$pkgdir/etc/systemd/system"
   install -m 644 "$srcdir/$_pkgname/frzr-autoupdate.timer" "$pkgdir/etc/systemd/system"
+  install -m 644 "$srcdir/$_pkgname/99-frzr-kernel-install.hook" "$pkgdir/usr/share/libalpm/hooks"
 
   install -dm755 "$pkgdir/etc"
   install -m644 -t "$pkgdir/etc" "$srcdir/$_pkgname/etc"/*.conf
