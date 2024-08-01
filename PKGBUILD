@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=xdg-desktop-portal-cosmic-git
-pkgver=r146.813352e
+pkgver=r163.ca5f5df
 pkgrel=1
 pkgdesc="A backend implementation for xdg-desktop-portal for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -33,13 +33,18 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  make vendor
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  make prefix='/usr' libexecdir='/usr/lib' VENDOR='1' all
+
+  # use mold instead of lld to speed up build
+  RUSTFLAGS="-C link-arg=-fuse-ld=mold"
+
+  # use nice to build with lower priority
+  nice cargo build --release --frozen --bin Cargo.toml Cargo.lock src/main.rs vendor-check
 }
 
 package() {
