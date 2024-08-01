@@ -3,7 +3,7 @@
 # Contributor: Maxim Baz <$pkgname at maximbaz dot com>
 pkgname=wire-desktop-git
 _pkgname=WireInternal
-pkgver=3.35.3348.r250.g1d4c5f7
+pkgver=3.35.3348.r297.g006047e
 _electronversion=29
 _nodeversion=18
 pkgrel=1
@@ -23,6 +23,7 @@ makedepends=(
     'nvm'
     'yarn'
     'gendesk'
+    'curl'
 )
 optdepends=(
     'emoji-font: colorful emoji'
