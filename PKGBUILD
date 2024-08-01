@@ -1,6 +1,6 @@
 pkgname=mingw-w64-hdf5
 pkgver=1.14.4.3
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="General purpose library and file format for storing scientific data (mingw-w64)"
 url="http://www.hdfgroup.org/HDF5/"
@@ -16,6 +16,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare() {
   cd "$srcdir/hdf5-hdf5_${pkgver}"
   curl -L https://github.com/HDFGroup/hdf5/pull/4466.patch | patch -p1
+  curl -L https://github.com/HDFGroup/hdf5/pull/4467.patch | patch -p1
   curl -L https://github.com/HDFGroup/hdf5/pull/4473.patch | patch -p1
 }
 
@@ -35,6 +36,7 @@ build() {
       -DHDF5_BUILD_EXAMPLES=OFF \
       -DHDF5_BUILD_UTILS=OFF \
       -D_PAC_C_MAX_REAL_PRECISION=33 \
+      -DH5_HAVE_VASPRINTF=0 \
       .
     make -C build-${_arch}
   done
