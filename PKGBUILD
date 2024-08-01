@@ -4,7 +4,7 @@
 
 _prjname=wxFormBuilder
 pkgname=wxformbuilder
-pkgver=4.1.0
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="RAD tool for wxWidgets GUI design"
 arch=('i686' 'x86_64' 'aarch64')
@@ -18,7 +18,7 @@ source=(
   "https://github.com/wxFormBuilder/wxFormBuilder/releases/download/v${pkgver}/wxFormBuilder-${pkgver}-source-full.tar.gz"
 )
 sha512sums=(
-  "d3b8fd8fe5cfafc2a3f49255d87aa78399be0804d6176d506ecfa77d141b86f1fda7150637c80a740637516807be3ae6f1d698825de8f247c7878b313d259d5f"
+  "d055f7cb2a90c8cb91370ffc38275b452de2975b0d834a040a6b0f2b733af8d9a7160a3c115d8c90ee7958be642345436e4546307970f22219bce5ca1b007a09"
 )
 
 build() {
