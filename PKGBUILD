@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-greeter-git
-pkgver=r124.acc30ac
+pkgver=r128.2294d10
 pkgrel=1
 pkgdesc="libcosmic greeter for greetd, which can be run inside cosmic-comp"
 arch=('x86_64' 'aarch64')
@@ -35,7 +35,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  just vendor
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
   git lfs install --local
   git remote add network-origin https://github.com/pop-os/cosmic-greeter
@@ -51,7 +51,7 @@ build() {
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  nice just build-vendored
+  nice just build-release --frozen
 }
 
 package() {
