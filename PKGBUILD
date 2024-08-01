@@ -10,9 +10,10 @@ arch=('any')
 # url="https://github.com/bertiniteam/b2"
 url="https://github.com/ThisIsNotANamepng/b2"
 license=('custom:GPL-3.0-or-later WITH Bertini2-Additional-GPL-Terms')
-makedepends=('git' 'cmake' 'bertini2' 'boost>=1.82' 'boost-libs>=1.65' 'mpfr' 'gmp' 'eigen'
-             'python' 'python-numpy' 'eigenpy' 'python-setuptools')
-depends=('glibc' 'gcc-libs' 'bertini2' 'boost-libs>=1.65' 'mpfr' 'gmp'
+makedepends=('git' 'cmake>=3.22' 'bertini2' 'boost>=1.82' 'boost-libs>=1.65'
+             'gmp' 'mpfr' 'mpc' 'eigen>=3.3' 'python' 'python-numpy'
+             'eigenpy>=3.3' 'python-setuptools')
+depends=('glibc' 'gcc-libs' 'bertini2' 'boost-libs>=1.65' 'gmp' 'mpfr' 'libmpc'
          'python' 'python-numpy' 'eigenpy' )
 provides=("${_pkgname}" "_pybertini.so")
 conflicts=("${_pkgname}")
@@ -43,9 +44,9 @@ build() {
     -S "python" \
     -DCMAKE_BUILD_TYPE:STRING='None' \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-    -DCMAKE_CXX_FLAGS="${CPPFLAGS} -I/usr/include/bertini2" \
-    -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS} -L/usr/lib/bertini2" \
-    -DBertini2_INCLUDE_DIR="/usr/include/bertini2" \
+    -DCMAKE_CXX_FLAGS:STRING="${CPPFLAGS} -I/usr/include/bertini2" \
+    -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS} -L/usr/lib/bertini2" \
+    -DBertini2_INCLUDE_DIR:PATH='/usr/include/bertini2' \
     -Wno-dev
   cmake --build "python/build"
 
@@ -60,7 +61,7 @@ package() {
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 
   DESTDIR="${pkgdir}" cmake --install "python/build"
-  libtool --finish "${pkgbuild}/${site_packages}"
+  libtool --finish "${pkgbuild}${site_packages}"
 
   cd "python"
   # install -Dm644 "NEWS"    "${pkgdir}/usr/share/doc/${_pkgname}/NEWS"
