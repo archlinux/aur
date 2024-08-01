@@ -15,7 +15,7 @@ sha256sums=('19ce60f91de407acbb14511436c43e261ef58e1fbb38e0f02b46855e5392fe42')
 prepare() {
   cd WebApps
   export RUSTUP_TOOLCHAIN=stable
-  just vendor
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -25,7 +25,7 @@ build() {
   # Package contains reference to $srcdir
   RUSTFLAGS="$RUSTFLAGS --remap-path-prefix $PWD=/"
 
-  just build-vendored
+  just build-release --frozen
 }
 
 package() {
