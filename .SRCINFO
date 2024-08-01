@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-spirv-tools
 	pkgdesc = API and commands for processing SPIR-V modules (mingw-w64)
-	pkgver = 2023.6
+	pkgver = 2024.2
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/SPIRV-Tools
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = mingw-w64-spirv-tools
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v2023.6.rc1.tar.gz
-	sha256sums = 750e4bfcaccd636fb04dd912b668a8a6d29940f8f83b7d9a266170b1023a1a89
+	source = https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v2024.2.rc1.tar.gz
+	sha256sums = e433d40b5b4bf2bc3c819e34d7bf6194937df4d74e2f8dee8012bd8fd69e7f8a
 
 pkgname = mingw-w64-spirv-tools
