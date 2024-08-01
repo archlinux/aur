@@ -3,7 +3,7 @@
 _reponame="PT-Plugin-Plus"
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-bin"
-pkgver=1.6.1.2710
+pkgver=1.6.1.2717
 pkgrel=1
 pkgdesc="Microsoft Edge, Google Chrome, Firefox browser plugin (Web Extensions), which is mainly used to assist the seeds of downloading PT station."
 arch=("any")
@@ -13,7 +13,7 @@ license=("MIT")
 optdepends=('google-chrome' 'microsoft-edge-stable-bin')
 source=("${_pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_reponame}-${pkgver}.zip"
         "https://raw.githubusercontent.com/pt-plugins/PT-Plugin-Plus/master/LICENSE")
-sha256sums=('c3b510e1329d79c0d9601a5a4eccb8dde53a9c95968ef387095c84c551129ab7'
+sha256sums=('de2b7ca1d7d0ac6b8223c0c567dcbb40586705b2988d250e3222e6ac074b85ec'
             'b4b8cd767ca469a9e62345c044a03a86a569cce9feee86181621bb3b23339604')
 options=(!strip)
 
