@@ -1,6 +1,6 @@
 pkgname=mingw-w64-coin-or-coinmumps
 pkgver=3.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="COIN-OR autotools harness to build MUMPS (mingw-w64)"
 arch=('any')
 url="https://github.com/coin-or-tools/ThirdParty-MUMPS/"
