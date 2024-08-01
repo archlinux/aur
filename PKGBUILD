@@ -2,7 +2,7 @@
 
 _pkgname=notmuch-mailmover
 pkgname=${_pkgname}-git
-pkgver=v0.2.0.r47.ga3ed4fc
+pkgver=v0.2.0.r52.g460cf44
 pkgrel=1
 pkgdesc='notmuch-mailmover is a tool to move notmuch tagged mails into Maildir folders'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
