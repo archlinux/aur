@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libtheora
 pkgver=1.1.1
-pkgrel=8
+pkgrel=9
 pkgdesc="An open video codec developed by the Xiph.org (mingw-w64)"
 arch=('any')
 url="https://xiph.org"
@@ -46,7 +46,7 @@ build() {
   cd "${srcdir}/libtheora-$pkgver"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure
+    CFLAGS="-fpermissive" ${_arch}-configure
     make
     popd
   done

@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-libtheora
 	pkgdesc = An open video codec developed by the Xiph.org (mingw-w64)
 	pkgver = 1.1.1
-	pkgrel = 8
+	pkgrel = 9
 	url = https://xiph.org
 	arch = any
 	license = BSD
