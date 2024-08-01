@@ -18,22 +18,20 @@
 ###############################################################################
 _phpbase="82"
 _suffix=""
-pkgver="8.2.21"
+pkgver="8.2.22"
 pkgbase_rc=""
-pkgrel="3"
+pkgrel="1"
 pkgbase="php82"
-pkgdesc="PHP 8.2.21 compiled as to not conflict with mainline php"
+pkgdesc="PHP 8.2.22 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
 _build_conf_d="etc/php82/conf.d"
-_build_forced_openssl_11="0"
 _build_fpm_name="php-fpm82"
 _build_fpm_service_name="php82-fpm"
 _build_icu_src_dir="icu/source"
 _build_ini_per_sapi="0"
 _build_mysql_socket="/run/mysqld/mysqld.sock"
-_build_openssl_v11_patch="0"
 _build_phpdbg="1"
 _build_sapi_ini_apache="etc/php82"
 _build_sapi_ini_cgi="etc/php82"
@@ -211,20 +209,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php82=8.2.21"
+    "php82=8.2.22"
     "net-snmp"
     "openssl"
 )
 _ext_depends_ftp=(
-    "php82=8.2.21"
+    "php82=8.2.22"
     "openssl"
 )
 _ext_depends_intl=(
-    "php82=8.2.21"
+    "php82=8.2.22"
     "icu"
 )
 _ext_depends_imap=(
-    "php82=8.2.21"
+    "php82=8.2.22"
     "pam"
     "krb5"
     "c-client"
@@ -232,45 +230,45 @@ _ext_depends_imap=(
     "openssl"
 )
 _ext_depends_gd=(
-    "php82=8.2.21"
+    "php82=8.2.22"
     "gd"
 )
 _ext_depends_mysql=(
-    "php82=8.2.21"
-    "php82-pdo=8.2.21"
-    "php82-openssl=8.2.21"
+    "php82=8.2.22"
+    "php82-pdo=8.2.22"
+    "php82-openssl=8.2.22"
 )
 _ext_depends_dba=(
-    "php82=8.2.21"
+    "php82=8.2.22"
     "db5.3"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php82=8.2.21"
+    "php82=8.2.22"
     "unixodbc"
-    "php82-pdo=8.2.21"
+    "php82-pdo=8.2.22"
 )
 _ext_depends_pgsql=(
-    "php82=8.2.21"
+    "php82=8.2.22"
     "postgresql-libs"
-    "php82-pdo=8.2.21"
+    "php82-pdo=8.2.22"
 )
 _ext_depends_firebird=(
-    "php82=8.2.21"
+    "php82=8.2.22"
     "libfbclient"
-    "php82-pdo=8.2.21"
+    "php82-pdo=8.2.22"
 )
 _ext_depends_sqlite=(
-    "php82=8.2.21"
+    "php82=8.2.22"
     "sqlite"
-    "php82-pdo=8.2.21"
+    "php82-pdo=8.2.22"
 )
 _ext_depends_mbstring=(
-    "php82=8.2.21"
+    "php82=8.2.22"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php82=8.2.21"
+    "php82=8.2.22"
     "krb5"
     "e2fsprogs"
     "openssl"
@@ -453,12 +451,7 @@ prepare() {
         echo "[PATCH] Applying source patch ${patch_name}";
         patch -p1 -i "../${patch_name}"
     done
-
-    if ((_phpbase <= 53)); then
-        PHP_AUTOCONF="/usr/bin/autoconf-2.13" ./buildconf --force
-    else
-        ./buildconf --force
-    fi
+    ./buildconf --force
     rm -f tests/output/stream_isatty_*.phpt
     rm -f Zend/tests/arginfo_zpp_mismatch*.phpt
     rm -f Zend/tests/bug79919.phpt
@@ -501,13 +494,14 @@ _build_sapi() {
 # BUILD them all
 ################################################################################
 build() {
-    export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types"
-    export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17"
-    export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
-    if ((_build_forced_openssl_11)); then
-        export PHP_OPENSSL_DIR="/usr/lib/openssl-1.1"
-        export PKG_CONFIG_PATH="/usr/lib/openssl-1.1/pkgconfig"
+    if ((_phpbase <= 80)); then
+        export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types -Wno-implicit-function-declaration -fpermissive"
+        export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17 -Wno-implicit-function-declaration -fpermissive"
+    else
+        export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types"
+        export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17"
     fi
+    export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
     if [[ ! -z "${_cppflags}" ]]; then
         CPPFLAGS+=" $_cppflags "
     fi
@@ -1480,7 +1474,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
-            '8cc44d51bb2506399ec176f70fe110f0c9e1f7d852a5303a2cd1403402199707'
+            '8566229bc88ad1f4aadc10700ab5fbcec81587c748999d985f11cf3b745462df'
             'b5a6b99214dce395a058f40bffee50511adaf58ee84ee6fbb7ca7bdc3c07cb3c'
             '169d52d6fc78e24e88a5923715d965bc247a62697c59d06d468c1908eba1c189'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
