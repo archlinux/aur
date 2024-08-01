@@ -2,7 +2,7 @@
 
 pkgname=frzr-sk-git
 _pkgname=frzr
-pkgver=0.15.2.sk7.r0.g42fc42e
+pkgver=0.14.3.r57.gfc2c18a
 pkgrel=1
 pkgdesc="A deployment and update system for read-only btrfs subvolume based operating systems"
 arch=('any')
@@ -39,8 +39,8 @@ package() {
   # install -m 755 "$srcdir/$_pkgname/frzr-initramfs" "$pkgdir/usr/bin"
   # install -m 755 "$srcdir/$_pkgname/frzr-tweaks" "$pkgdir/usr/bin"
 
-  install -m644 -t "$pkgdir/usr/bin" "$srcdir/$_pkgname/bin"/frzr*
-  install -m644 -t "$pkgdir/usr/bin" "$srcdir/$_pkgname/bin"/__frzr-*
+  install -m644 -t "$pkgdir/usr/bin" "$srcdir/$_pkgname"/frzr*
+  install -m644 -t "$pkgdir/usr/bin" "$srcdir/$_pkgname"/__frzr-*
 
 
   install -m 644 "$srcdir/$_pkgname/frzr-autoupdate.service" "$pkgdir/etc/systemd/system"
