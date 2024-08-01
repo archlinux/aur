@@ -33,7 +33,7 @@ pkgver() {
 prepare() {
   cd launcher
   export RUSTUP_TOOLCHAIN=stable
-  just vendor
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
   sed -i 's|{{bin-path}}|/usr/bin/pop-launcher|g' justfile
 }
@@ -41,7 +41,7 @@ prepare() {
 build() {
   cd launcher
   export RUSTUP_TOOLCHAIN=stable
-  just build-vendored
+  just build-release --frozen
 }
 
 check() {
