@@ -128,7 +128,6 @@ source=(
     "php-apache.conf"
     "pear-config-patcher.php"
     "https://php.net/distributions/php-${pkgver}.tar.xz"
-    "libxml-pear.patch"
     "debian-php-8.2.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
@@ -196,7 +195,6 @@ makedepends=(
 arch=(
 )
 _patches=(
-    "libxml-pear.patch"
     "debian-php-8.2.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
@@ -1475,7 +1473,6 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
             '8566229bc88ad1f4aadc10700ab5fbcec81587c748999d985f11cf3b745462df'
-            'b5a6b99214dce395a058f40bffee50511adaf58ee84ee6fbb7ca7bdc3c07cb3c'
             '169d52d6fc78e24e88a5923715d965bc247a62697c59d06d468c1908eba1c189'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
