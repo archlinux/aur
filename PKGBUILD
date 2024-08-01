@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/ThisIsNotANamepng/b2"
 license=('custom:GPL-3.0-or-later WITH Bertini2-Additional-GPL-Terms')
 makedepends=('git' 'cmake>=3.22' 'bertini2' 'boost>=1.82' 'boost-libs>=1.65'
-             'gmp' 'mpfr' 'mpc' 'eigen>=3.3' 'python' 'python-numpy'
+             'gmp' 'mpfr' 'libmpc' 'eigen>=3.3' 'python' 'python-numpy'
              'eigenpy>=3.3' 'python-setuptools')
 depends=('glibc' 'gcc-libs' 'bertini2' 'boost-libs>=1.65' 'gmp' 'mpfr' 'libmpc'
          'python' 'python-numpy' 'eigenpy' )

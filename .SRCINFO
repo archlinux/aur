@@ -12,7 +12,7 @@ pkgbase = pybertini-git
 	makedepends = boost-libs>=1.65
 	makedepends = gmp
 	makedepends = mpfr
-	makedepends = mpc
+	makedepends = libmpc
 	makedepends = eigen>=3.3
 	makedepends = python
 	makedepends = python-numpy
