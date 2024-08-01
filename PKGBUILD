@@ -1,7 +1,7 @@
 # Maintainer: Zhijun Zhang <zhangzhijun23@mails.ucas.ac.cn>
 
 pkgname=ds9-git
-pkgver=v8.6b2
+pkgver=v8.6
 pkgrel=1
 pkgdesc="SAOImage DS9: Astronomical Data Visualization Application"
 url="https://github.com/SAOImageDS9/SAOImageDS9.git"

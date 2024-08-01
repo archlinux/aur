@@ -1,6 +1,6 @@
 pkgbase = ds9-git
 	pkgdesc = SAOImage DS9: Astronomical Data Visualization Application
-	pkgver = v8.6b1
+	pkgver = v8.6
 	pkgrel = 1
 	url = https://github.com/SAOImageDS9/SAOImageDS9.git
 	arch = x86_64
@@ -23,10 +23,10 @@ pkgbase = ds9-git
 	options = !strip
 	options = !lto
 	source = ds9-git::git+https://github.com/SAOImageDS9/SAOImageDS9.git
-	source = ds9.desktop
-	source = ds9.png
+	source = SAOImageDS9.desktop
+	source = SAOImageDS9.svg
 	sha256sums = SKIP
-	sha256sums = cf41109f31b9be057ab04a96613a59a87fb6cb3ed405fa93545f6bfd8fd98975
-	sha256sums = ff5f38cfdfd59aee262ae3443fddf35d644b8604c9d6ab07eb96a137ee0a0d28
+	sha256sums = 568a1c327560a1fd0a4e1f0b631582f7ed421332ab6aa3336f2832347541f693
+	sha256sums = a9940c6d6d1ffd59a019518b803a2ac574e4aff0bf7503e4f4d61648c46b3c69
 
 pkgname = ds9-git
