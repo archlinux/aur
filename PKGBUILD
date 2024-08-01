@@ -32,7 +32,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  make vendor
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
   sed -i 's|libexec|lib|g' Makefile src/main.rs
 }
@@ -45,10 +45,11 @@ build() {
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  nice make prefix='/usr' VENDOR='1' all
+  GEOCLUE_AGENT=/usr/lib/geoclue-2.0/demos/agent \
+    nice cargo build --release --frozen --bin Cargo.toml Cargo.lock src/main.rs vendor-check
 }
 
 package() {
   cd "${pkgname%-git}"
-  make prefix='/usr' DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install
 }
