@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/ravachol/kew"
 license=('GPL2')
 conflicts=('kew')
-depends=('ffmpeg' 'fftw' 'git' 'chafa' 'freeimage' 'gcc' 'make' 'glib2' 'opus' 'opusfile' 'libvorbis')
+depends=('ffmpeg' 'fftw' 'git' 'chafa' 'freeimage' 'gcc' 'make' 'glib2' 'opus' 'opusfile' 'libvorbis' 'libnotify')
 replaces=('cue-git')
 sha256sums=('SKIP')
 

@@ -16,6 +16,7 @@ pkgbase = kew-git
 	depends = opus
 	depends = opusfile
 	depends = libvorbis
+	depends = libnotify
 	conflicts = kew
 	replaces = cue-git
 	source = git+https://github.com/ravachol/kew
