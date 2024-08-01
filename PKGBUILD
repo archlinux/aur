@@ -33,7 +33,7 @@ package() {
   rm -f "$srcdir/$_pkgname"/frzr*.service
 
   install -m755 -t "$pkgdir/usr/bin" "$srcdir/$_pkgname"/frzr*
-  install -m755 -t "$pkgdir/usr/bin" "$srcdir/$_pkgname"/__frzr-*
+  install -m755 -t "$pkgdir/usr/bin" "$srcdir/$_pkgname"/__frzr*
 
   install -m 644 "$srcdir/$_pkgname/99-frzr-kernel-install.hook" "$pkgdir/usr/share/libalpm/hooks"
 
