@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: soloturn <soloturn@gmail.com>
 pkgname=cosmic-notifications-git
-pkgver=r77.2caf2fb
+pkgver=r78.e9abef5
 pkgrel=1
 pkgdesc="Layer Shell notifications daemon which integrates with COSMIC."
 arch=('x86_64' 'aarch64')
@@ -32,12 +32,11 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
   # Use mold linker instead of lld
   sed -i 's/lld/mold/g' justfile
-
-  export RUSTUP_TOOLCHAIN=stable
-  just vendor
 }
 
 build() {
@@ -45,7 +44,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
 
   # use nice to build with lower priority
-  nice just build-vendored
+  nice just build-release --frozen
 }
 
 package() {
