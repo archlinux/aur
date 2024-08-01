@@ -45,7 +45,7 @@ build() {
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  nice cargo build --release --frozen --bin Cargo.toml Cargo.lock src/main.rs vendor-check
+  ARGS+=" --frozen" nice make
 }
 
 package() {
