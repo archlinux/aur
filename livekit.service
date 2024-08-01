@@ -1,0 +1,51 @@
+[Unit]
+Description="LiveKit: Real-time video, audio and data for developers"
+After=network.target
+Documentation=https://docs.livekit.io/home/
+
+[Service]
+DynamicUser=yes
+# Type=notify
+ExecStart=livekit-server --config /etc/livekit/config.yaml
+
+Restart=on-failure
+RestartSec=5
+
+TimeoutStopSec=4m
+TimeoutStartSec=4m
+StartLimitInterval=1m
+StartLimitBurst=5
+
+AmbientCapabilities=
+CapabilityBoundingSet=
+
+DevicePolicy=closed
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+ProcSubset=pid
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectProc=invisible
+ProtectSystem=strict
+PrivateDevices=yes
+PrivateMounts=yes
+PrivateTmp=yes
+PrivateUsers=yes
+PrivateIPC=yes
+RemoveIPC=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX AF_NETLINK
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+
+SystemCallFilter=~@clock @debug @module @mount @reboot @swap @cpu-emulation @obsolete @timer @chown @setuid @privileged @keyring
+SystemCallErrorNumber=EPERM
+
+[Install]
+WantedBy=multi-user.target
