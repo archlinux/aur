@@ -1,6 +1,6 @@
 pkgbase = r-clusterprofiler
 	pkgdesc = A universal enrichment tool for interpreting omics data
-	pkgver = 4.12.1
+	pkgver = 4.12.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/clusterProfiler
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = r-clusterprofiler
 	optdepends = r-readr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/clusterProfiler_4.12.1.tar.gz
-	sha256sums = 59ffddf1ac510d8c4bd962b1ebe331c23815115c4d5f887f00875816b3d32bdd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/clusterProfiler_4.12.2.tar.gz
+	sha256sums = bb77630a0488b64f1985cb3ce307eb925da5f3f2121142f6f962fe1fa3646c1f
 
 pkgname = r-clusterprofiler
