@@ -1,32 +1,33 @@
 # Maintainer: Salif Mehmed <mail@salif.eu>
 pkgname=nemo_gleam
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
-pkgdesc="Nemo extension for Gleam development"
+pkgdesc="GUI extension for Gleam development"
 arch=('x86_64')
-url="https://github.com/salif/nemo_gleam"
+url="https://codeberg.org/salif/nemo_gleam"
 license=('Apache-2.0')
 #groups=()
 depends=('gleam' 'zenity' 'erlang-nox')
-#makedepends=()
-optdepends=('nemo')
+makedepends=('just')
+optdepends=('nemo' 'dolphin' 'nodejs')
 #provides=()
 #conflicts=()
 #replaces=()
 #backup=()
-#options=()
+options=()
 #install=
 #changelog=CHANGELOG
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/salif/nemo_gleam/archive/refs/tags/v${pkgver}.tar.gz")
+source=("https://codeberg.org/salif/nemo_gleam/archive/v${pkgver}.tar.gz")
 #noextract=()
-sha256sums=('fa404eb5bec9c9dc69f3c5438615798fa113c1fd7f000f03672d6969f303744d')
+sha256sums=('d7351b1f3733beb3623e6d2a341f80a332dc5f4ffc9f31d6f5d575c874ec1691')
 
 build() {
-	cd "${pkgname}-${pkgver}"
-	gleam export erlang-shipment
+	cd "${pkgname}"
+	just make
+	just make-js
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
-	./build/erlang-shipment/entrypoint.sh run self-install system destdir "${pkgdir}"
+	cd "${pkgname}"
+	just DESTDIR="$pkgdir" install
 }
