@@ -2,12 +2,12 @@
 
 pkgname=catapult-bin
 pkgver=24.07a
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform launcher for Cataclysm: DDA and BN"
 arch=("x86_64")
 url="https://github.com/qrrk/Catapult"
 license=("MIT")
-depends=(freetype2 sdl2_image sdl2_mixer sdl2_ttf)
+depends=(freetype2 sdl2_image sdl2_mixer sdl2_ttf zip)
 provides=("catapult")
 source=("$pkgname-$pkgver::$url/releases/download/$pkgver/catapult-linux-x64-$pkgver"
         "catapult.sh"
