@@ -76,4 +76,5 @@ function package(){
 	install -Dm644 "${srcdir}/Qcm/app/assets/Qcm.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${appID}.svg"
 	install -Dm644 "${srcdir}/Qcm/app/assets/Qcm.desktop" "${pkgdir}/usr/share/applications/${appID}.desktop"
 	install -Dm755 "${srcdir}/Qcm/build/app/Qcm" "${pkgdir}/usr/bin/Qcm"
+	install -Dm755 "${srcdir}/Qcm/build/qcm_interface/libqcm_interface.so" "${pkgdir}/usr/lib/libqcm_interface.so"
 }
