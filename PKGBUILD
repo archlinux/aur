@@ -9,7 +9,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-readline
 pkgver=${_basever}.${_patchlevel}
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU readline library (mingw-w64)"
 arch=('any')
 url="https://tiswww.case.edu/php/chet/readline/rltop.html"
@@ -71,6 +71,7 @@ build() {
 
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
+    export CFLAGS=-fpermissive CXXFLAGS=-fpermissive
     bash_cv_wcwidth_broken=no ${_arch}-configure \
       --target=${_arch} \
       --enable-multibyte \
