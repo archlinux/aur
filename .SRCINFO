@@ -1,7 +1,7 @@
 pkgbase = equibop
 	pkgdesc = Equibop is a Vesktop fork that gives you the performance of web Discord and the comfort of Discord Desktop, with additional plugins
 	pkgver = 2.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Equicord/Equibop
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = equibop
 	source = https://github.com/Equicord/Equibop/archive/refs/tags/v2.0.7.tar.gz
 	source = com.thororen.equibop.desktop
 	source = equibop.sh
-	sha256sums = e09d5d11a3a62c25eccac1ca5a129fa5f9aee320b94759346e6b3b8b72e8f1d2
+	sha256sums = fde891e211eb4f45761690dc1a4242576192b92d3c1aa3ab86ed4b8919a4711b
 	sha256sums = d84e7ae91a126374948ccaa86bf2d0e64bb198f748596f8c086e19a1bf3827ad
 	sha256sums = ae9f22bb24ffe42a14ac59b20e7d48c807aa96272eb2c2c36b93b4aee161d02c
 
