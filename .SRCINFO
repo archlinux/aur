@@ -1,0 +1,17 @@
+pkgbase = clangd-aosopt
+	pkgdesc = Standalone clangd binary, with a rough patch that fixes performance issue with large array of structure
+	pkgver = 18.1.8
+	pkgrel = 1
+	url = https://clangd.llvm.org/
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	makedepends = cmake
+	makedepends = ninja
+	depends = ncurses
+	depends = zstd
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/llvm-project-18.1.8.src.tar.xz
+	source = array-of-structure-optimization.patch
+	sha256sums = 0b58557a6d32ceee97c8d533a59b9212d87e0fc4d2833924eb6c611247db2f2a
+	sha256sums = 3f4391fb438be96d255d91e36b1f771ab663055fd36b26450d3b52b1dbfea404
+
+pkgname = clangd-aosopt

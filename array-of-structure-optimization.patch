@@ -1,0 +1,11 @@
+--- a/clang/lib/AST/ExprConstant.cpp
++++ b/clang/lib/AST/ExprConstant.cpp
+@@ -11166,6 +11166,8 @@ bool ArrayExprEvaluator::VisitCXXConstructExpr(const CXXConstructExpr *E,
+   if (const ConstantArrayType *CAT = Info.Ctx.getAsConstantArrayType(Type)) {
+     unsigned FinalSize = CAT->getSize().getZExtValue();
+ 
++    if (FinalSize > 64) return false;
++
+     // Preserve the array filler if we had prior zero-initialization.
+     APValue Filler =
+       HadZeroInit && Value->hasArrayFiller() ? Value->getArrayFiller()
