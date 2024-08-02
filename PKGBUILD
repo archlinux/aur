@@ -1,7 +1,7 @@
 # Maintainer: Javier Tia <javier dot tia at gmail dot com>
 
 pkgname='oelint-adv'
-pkgver=5.7.0
+pkgver=5.7.1
 pkgrel=1
 pkgdesc='Linter for bitbake recipes based in OE Styleguide'
 url='https://github.com/priv-kweihmann/oelint-adv'
@@ -11,7 +11,7 @@ depends=('python-urllib3' 'python-anytree' 'python-colorama' 'python-oelint-pars
 makedepends=('python-setuptools')
 provides=("${pkgname}=${pkgver}")
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('94e65b0d592e547e6b99e2947298ba55aab437081393691cb0cc83270a637570')
+sha256sums=('ea723ec6dd522728a7e5e321b3c04130be20fddfbf060bb1a3902530576e5a4a')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -19,4 +19,4 @@ package() {
   install -Dm 0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-# vim:set ft=PKGBUILD ts=2 sw=2 et:
+# vim:set ft=sh ts=2 sw=2 et:
