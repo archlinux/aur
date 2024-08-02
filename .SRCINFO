@@ -1,7 +1,7 @@
 pkgbase = lofio-git
 	pkgdesc = Lofi hip-hop radio player
 	pkgver = 0.3.0.ad619fca10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/dikey0ficial/lofio
 	arch = x86_64
 	license = custom

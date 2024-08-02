@@ -2,7 +2,7 @@
 pkgname=lofio-git
 _pkgname=lofio
 pkgver=0.3.0.ad619fca10
-pkgrel=1
+pkgrel=2
 pkgdesc="Lofi hip-hop radio player"
 url="https://codeberg.org/dikey0ficial/lofio"
 arch=('x86_64')
@@ -11,6 +11,11 @@ makedepends=('git' 'go')
 conflicts=('lofio' 'lofio-bin')
 source=("git+$url")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/-/.r/;s/-/./'
+}
 
 build() {
   cd "$srcdir"/$_pkgname/gui/$_pkgname
