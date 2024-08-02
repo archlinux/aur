@@ -9,8 +9,8 @@
 _pkgname="equibop"
 pkgname="$_pkgname-git"
 pkgdesc="Forked Custom Discord desktop app with Equicord preinstalled"
-pkgver=2.0.7.r0.g0664ee4
-pkgrel=1
+pkgver=2.0.7.r2.g5ef8743
+pkgrel=2
 url="https://github.com/Equicord/Equibop"
 license=('GPL-3.0-only')
 arch=("any")
