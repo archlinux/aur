@@ -2,15 +2,16 @@
 
 pkgname=libastal-apps-git
 _pkgname=apps
-pkgver=r8.6550543
+pkgver=r9.f0d902d
 pkgrel=1
 provides=(astal-apps libastal-apps libastal-apps.so=0-64)
 pkgdesc="Library and cli tool for querying applications."
 arch=(x86_64)
-license=(GPL-3)
+license=(LGPL-2.1-only)
 url="https://github.com/astal-sh/apps"
 depends=(
   glib2
+  glibc
   json-glib
 )
 makedepends=(
@@ -20,7 +21,7 @@ makedepends=(
   vala
 )
 groups=("libastal")
-source=("git+${url}")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
