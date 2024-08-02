@@ -8,9 +8,9 @@ pkgdesc="Parallel parameter homotopy through Bertini"
 arch=('any')
 url="https://${_pkgname}.com"
 _url="https://github.com/ofloveandhate/${_pkgname}"
-license=('custom:Paramotopy')
-makedepends=('git' 'boost' 'bertini' 'mpfr' 'gmp' 'openmpi')
-depends=('glibc' 'gcc-libs' 'boost-libs' 'bertini' 'mpfr' 'gmp' 'openmpi')
+license=('custom:Paramotopy license')
+makedepends=('git' 'boost>=1.53' 'bertini' 'gmp' 'mpfr' 'openmpi')
+depends=('glibc' 'gcc-libs' 'boost-libs' 'bertini' 'mpfr' 'openmpi')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
@@ -36,12 +36,9 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}/include"
-  patch -p1 -i "${srcdir}/${_pkgname}_fix_boost_timer_para_aux_funcs.patch"
-  patch -p1 -i "${srcdir}/${_pkgname}_fix_boost_timer_point.patch"
-  patch -p1 -i "${srcdir}/${_pkgname}_fix_boost_timer_runinfo.patch"
-  patch -p1 -i "${srcdir}/${_pkgname}_fix_boost_timer_step2.patch"
-  patch -p1 -i "${srcdir}/${_pkgname}_fix_boost_timer_timing.patch"
-  patch -p1 -i "${srcdir}/${_pkgname}_fix_boost_timer_xml_preferences.patch"
+  for _patch in "${srcdir}/${_pkgname}_fix_boost_timer_"*".patch"; do
+    patch -p1 -i "${_patch}"
+  done
 }
 
 build() {
@@ -52,8 +49,8 @@ build() {
   CPPFLAGS+="-I/usr/include/bertini"
   LDFLAGS+="-L/usr/lib/bertini"
   ./configure \
-    --prefix="/usr" \
-    --includedir="/usr/include"
+    --prefix='/usr' \
+    --includedir='/usr/include'
   make
 }
 
