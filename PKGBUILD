@@ -2,7 +2,7 @@
 # Contributer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo)
 pkgname=koboldcpp
-pkgver=1.71.1
+pkgver=1.72
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
   'koboldcpp.png'
 )
 sha256sums=(
-  '94f103e5f36147755f8ca9bfd0aba614db1b595bfa3e188221678405d89cea6c'
+  '1159980d2cda0a9dfde9024454034b7b163e483395b78f6a8d41b58883476bd5'
   'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
   'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
