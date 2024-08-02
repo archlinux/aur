@@ -9,14 +9,6 @@ cat <<'EOF'
       patch:
         schema_list:
           - schema: flypy
-
-[+] If you want to use "flypy_full" which equivalent to `oqm` on windows,
-    please symlink `flypy_full.txt` to your user configuration directory.
-
-    For example (fcitx5-rime):
-
-      ln -s /usr/share/rime-data/flypy_full/flypy_full.txt ~/.local/share/fcitx5/rime/
-
 EOF
 }
 

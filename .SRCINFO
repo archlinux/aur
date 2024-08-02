@@ -1,6 +1,6 @@
 pkgbase = rime-flypy
 	pkgver = 20240724
-	pkgrel = 2
+	pkgrel = 3
 	url = http://flypy.com/
 	arch = x86_64
 	license = unknown
