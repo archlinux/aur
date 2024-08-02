@@ -2,7 +2,7 @@
 
 pkgname=tb.go
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Tasks, boards & notes for the terminal"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
 url="https://github.com/araaha/tb.go"
