@@ -1,3 +1,11 @@
+2024-07-30 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.0.5.2-1:
+    Fixed ASF always trying to create www folder if it doesn't exist (@JustArchi).
+    Misc improvement for 2fafinalized to accept token in case-insensitive manner (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
+    [Monitoring] Updates to our monitoring plugin - new metrics, grafana dashboard improvements (@Abrynos #3251).
 2024-06-26 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.0.4.4-1:
     Added support for bot groups in commands, such as @online, check wiki for more info (@JustArchi #3225).
