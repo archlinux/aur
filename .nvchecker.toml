@@ -1,0 +1,4 @@
+[tilt-bin]
+source = "git"
+git = "https://github.com/tilt-dev/tilt.git"
+prefix = "v"
