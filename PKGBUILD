@@ -1,9 +1,10 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Changqing <wang.ch[at]wehi[dot]edu[dot]au>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: Sauliusl <luksaulius[at]gmail[dotcom]>
 
 pkgname=sra-tools-bin
 _pkgname=sra-tools
-pkgver=3.1.0
+pkgver=3.1.1
 _pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc="The SRA Toolkit and SDK from NCBI is a collection of tools and libraries for using data in the INSDC Sequence Read Archives"
@@ -13,9 +14,9 @@ url="http://www.ncbi.nlm.nih.gov/books/NBK158900/"
 license=('custom')
 groups=('sequence_analysis')
 depends=('zlib' 'gcc-libs-multilib' 'fuse' 'perl')
-source=("${pkgname}-${pkgver}.tar.gz::http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/${pkgver//_/-}/sratoolkit.${pkgver//_/-}-ubuntu64.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/${pkgver//_/-}/sratoolkit.${pkgver//_/-}-ubuntu64.tar.gz"
         "LICENSE::https://raw.githubusercontent.com/ncbi/sra-tools/master/LICENSE")
-sha256sums=('385250858b0b049cfd06017b7cd7161a1d422d4e63d02a7015a483af7e850364'
+sha256sums=('b668dbfa2e93041746d1c313691272aea4b9ea52b291d7afb79d46dc05367688'
             '122edf134e4230505179e9a1891ac3fea334f1b67d767933e9e86dc5b49adfdb')
 
 package() {
