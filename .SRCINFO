@@ -1,0 +1,24 @@
+pkgbase = kwin6-bismuth-decoration-git
+	pkgdesc = Tiling-WM-like window decorations for KWin
+	pkgver = r4.603f3cc
+	pkgrel = 1
+	url = https://github.com/ivan-cukic/kwin6-bismuth-decoration
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kcmutils
+	makedepends = kconfig
+	makedepends = kcoreaddons
+	makedepends = kdeclarative
+	makedepends = kdecoration
+	makedepends = ki18n
+	depends = systemsettings
+	source = git+https://github.com/ivan-cukic/kwin6-bismuth-decoration
+	sha256sums = SKIP
+
+pkgname = kwin6-bismuth-decoration-git
