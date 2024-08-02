@@ -1,0 +1,25 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 06cc620..65faabf 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -67,17 +67,9 @@ if(ENABLE_APK_LOADING)
+     add_definitions(
+         -DENABLE_APK_LOADING=1
+     )
+-    add_library(minizip STATIC
+-        ${CMAKE_CURRENT_SOURCE_DIR}/external/minizip/unzip.c
+-        ${CMAKE_CURRENT_SOURCE_DIR}/external/minizip/ioapi.c
+-    )
+-    set_target_properties(minizip PROPERTIES
+-        COMPILE_DEFINITIONS "NOUNCRYPT;NOCRYPT")
+-    target_link_libraries(minizip ${ZLIB_LIBRARIES})
+-    set(MINIZIP_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/external/minizip)
+-    set(MINIZIP_LIBRARIES minizip)
+-    include_directories(SYSTEM ${MINIZIP_INCLUDE_DIR})
+-    target_link_libraries(axmldec ${MINIZIP_LIBRARIES})
++	find_package(minizip-ng REQUIRED)
++	include_directories("/usr/include/minizip-ng")
++	target_link_libraries(axmldec "/usr/lib/libminizip-ng.so")
+ endif()
+ 
+ #-------------------------------------------------------------------------------
