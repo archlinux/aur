@@ -1,8 +1,8 @@
 # Maintainer: lilikoi <jamilbio20@gmail.com>
 pkgname='chatgpt.sh'
-pkgver=0.69.12
+pkgver=0.69.13
 pkgrel=1
-_commit=30f7b4911c0616a40876477b7127bf8a1235f10d
+_commit=f64998685b07a120a9516425ecad2c38b310f403
 pkgdesc="Wrapper for ChatGPT, DALL-E, Whisper, and TTS. Features LocalAI, Ollama, and more."
 url='https://gitlab.com/fenixdragao/shellchatgpt'
 arch=('any')
