@@ -1,4 +1,4 @@
-From 998dfd95562c097e89583581c881aca7d010e44b Mon Sep 17 00:00:00 2001
+From 824ba21fae8e8575ca378e3a9fc05556a3de38c5 Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Sun, 6 Nov 2022 13:28:59 +0800
 Subject: [PATCH 1/2] Target Java 17
@@ -24,5 +24,5 @@ index deccd9e5c..7c421c91a 100644
          options.encoding = "UTF-8"
      }
 -- 
-2.45.1
+2.45.2
 

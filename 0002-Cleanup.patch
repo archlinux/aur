@@ -1,4 +1,4 @@
-From d6a106a2336775c36651deadafe6cb8b48e87339 Mon Sep 17 00:00:00 2001
+From 3839c72b2e3fcd028b3df70ea22b3cb57c81f471 Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Sun, 6 Nov 2022 13:33:14 +0800
 Subject: [PATCH 2/2] Cleanup
@@ -13,7 +13,7 @@ Signed-off-by: Aviana Cruz <gwencroft@proton.me>
  .../org/jackhuang/hmcl/ui/CrashWindow.java    |   3 -
  .../org/jackhuang/hmcl/ui/UpgradeDialog.java  |  76 -----
  .../hmcl/ui/account/CreateAccountPane.java    |  16 -
- .../jackhuang/hmcl/ui/main/FeedbackPage.java  |  79 -----
+ .../jackhuang/hmcl/ui/main/FeedbackPage.java  |  73 -----
  .../hmcl/ui/main/LauncherSettingsPage.java    |  14 +-
  .../org/jackhuang/hmcl/ui/main/MainPage.java  | 135 +--------
  .../org/jackhuang/hmcl/ui/main/RootPage.java  |  11 -
@@ -28,7 +28,7 @@ Signed-off-by: Aviana Cruz <gwencroft@proton.me>
  .../jackhuang/hmcl/upgrade/UpdateHandler.java | 281 ------------------
  .../jackhuang/hmcl/util/CrashReporter.java    |   5 -
  .../hmcl/game/GameDumpGenerator.java          |   6 +-
- 22 files changed, 3 insertions(+), 1456 deletions(-)
+ 22 files changed, 3 insertions(+), 1450 deletions(-)
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/countly/Countly.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
@@ -352,10 +352,10 @@ index 9a17ba55c..606bf4465 100644
  
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
 deleted file mode 100644
-index ec9932bcd..000000000
+index 23c954eff..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
 +++ /dev/null
-@@ -1,79 +0,0 @@
+@@ -1,73 +0,0 @@
 -/*
 - * Hello Minecraft! Launcher
 - * Copyright (C) 2021  huangyuhui <huanghongxun2008@126.com> and contributors
@@ -417,13 +417,7 @@ index ec9932bcd..000000000
 -            discord.setSubtitle(i18n("feedback.discord.statement"));
 -            discord.setExternalLink("https://discord.gg/jVvC7HfM6U");
 -
--            IconedTwoLineListItem kookapp = new IconedTwoLineListItem();
--            kookapp.setImage(FXUtils.newBuiltinImage("/assets/img/kookapp.png"));
--            kookapp.setTitle(i18n("feedback.kookapp"));
--            kookapp.setSubtitle(i18n("feedback.kookapp.statement"));
--            kookapp.setExternalLink("https://kook.top/Kx7n3t");
--
--            community.getContent().setAll(users, github, discord, kookapp);
+-            community.getContent().setAll(users, github, discord);
 -        }
 -
 -        content.getChildren().addAll(
@@ -1866,5 +1860,5 @@ index 36ab72ee2..eae748add 100644
      }
  }
 -- 
-2.45.1
+2.45.2
 
