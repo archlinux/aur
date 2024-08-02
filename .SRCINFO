@@ -1,0 +1,13 @@
+pkgbase = gnome-shell-extension-unsafe-mode-menu
+	pkgdesc = GNOME Shell extension for Unsafe Mode Menu
+	pkgver = 9.0
+	pkgrel = 9
+	url = https://github.com/linushdot/unsafe-mode-menu
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = gnome-shell
+	source = git+https://github.com/linushdot/unsafe-mode-menu.git
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-unsafe-mode-menu
