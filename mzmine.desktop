@@ -5,6 +5,6 @@ Name=MZmine
 Icon=mzmine
 Exec=mzmine %f
 Comment=mass spectrometry data processing and visualization
-Categories=Education;Chemistry;
+Categories=Science;Chemistry;
 Terminal=false
 StartupWMClass=mzmine

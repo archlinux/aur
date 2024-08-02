@@ -2,7 +2,7 @@
 pkgname=mzmine3
 pkgdesc='mass-spectrometry data processing'
 pkgver=4.0.3
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://www.mzmine.org"
 license=('GPL3')
