@@ -1,5 +1,5 @@
 pkgbase = gitfetch
-	pkgdesc = A command-line tool to fetch and display Git contribution information
+	pkgdesc = A command-line GitHub contribution visualization tool written in Rust inspired by Neofetch
 	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/FabricSoul/gitfetch
