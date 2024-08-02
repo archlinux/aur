@@ -8,18 +8,22 @@ url="https://github.com/ivan-cukic/${_pkgname}"
 license=('MIT')
 
 depends=(
-    'systemsettings'
+    'gcc-libs'
+    'glibc'
+    'kconfig'
+    'kcoreaddons'
+    'kdecoration'
+    'qt6-base'
 )
 makedepends=(
     'cmake'
     'extra-cmake-modules'
     'git'
     'kcmutils'
-    'kconfig'
-    'kcoreaddons'
+    'kconfigwidgets'
     'kdeclarative'
-    'kdecoration'
-    'ki18n'
+    'kglobalaccel'
+    'qt6-svg'
 )
 
 source=("git+${url}")
