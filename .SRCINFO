@@ -1,0 +1,16 @@
+pkgbase = tb.go
+	pkgdesc = Tasks, boards & notes for the terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/araaha/tb.go
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	arch = armv7h
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	source = tb.go::git+https://github.com/araaha/tb.go.git#tag=v1.0.0-1
+	b2sums = cf02fd5580e51c60a008ede34dd25f1f61a834087ffa255df9801837ecb857b7b24e97003b41df36f944f8f4b8d122c051e29f4066758319b6aea63e634513ee
+
+pkgname = tb.go
