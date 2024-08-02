@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=World of Goo 2
+Comment=Physics-based puzzle game
+Exec=/usr/bin/world-of-goo-2 %U
+Icon=world-of-goo-2
+Terminal=false
+Type=Application
+Categories=Game;
+
