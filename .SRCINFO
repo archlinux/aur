@@ -1,7 +1,7 @@
 pkgbase = iamb-git
 	pkgdesc = A Matrix client for Vim addicts
 	pkgver = 0.1.e98d58a
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ulyssa/iamb
 	arch = x86_64
 	license = Apache
@@ -10,6 +10,7 @@ pkgbase = iamb-git
 	makedepends = cargo
 	provides = iamb
 	conflicts = iamb
+	conflicts = iamb-bin
 	options = !lto
 	source = git+https://github.com/ulyssa/iamb.git
 	sha512sums = SKIP
