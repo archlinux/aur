@@ -1,0 +1,5 @@
+[treefrog-framework]
+source = "github"
+github = "treefrogframework/treefrog-framework"
+use_latest_release = "true"
+prefix = "v"
