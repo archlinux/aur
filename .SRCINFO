@@ -1,0 +1,15 @@
+pkgbase = compiledb-go-git
+	pkgdesc = A Go tool to generate compile_commands.json from Go build commands
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/fcying/compiledb-go
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = go
+	provides = compiledb-go
+	conflicts = compiledb
+	source = compiledb-go-git::git+https://github.com/fcying/compiledb-go.git
+	sha256sums = SKIP
+
+pkgname = compiledb-go-git
