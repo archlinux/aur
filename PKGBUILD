@@ -1,7 +1,8 @@
 # Maintainer: Guoyi Zhang <myname at malacology dot net>
 
 pkgname=tn93
-pkgver=.1.0.13.actual
+epoch=1
+pkgver=1.0.14
 pkgrel=1
 pkgdesc="TN93 fast distance calculator"
 arch=(x86_64)
@@ -10,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cmake' 'make' 'gcc' 'git')
 source=("git+$url.git#tag=v${pkgver}")
-md5sums=('SKIP')
+md5sums=('651f294471dec32e90b559a3001bc4fe')
 
 build() {
   cd $pkgname
