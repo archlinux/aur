@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rav1e-git
-pkgver=0.6.6.r211.gba7ed562
+pkgver=0.7.1.r43.ge34e772e
 pkgrel=1
 pkgdesc="The fastest and safest AV1 encoder"
 arch=('i686' 'x86_64')
 url="https://github.com/xiph/rav1e"
-license=('BSD' 'custom')
+license=('BSD-2-Clause' 'LicenseRef-custom')
 depends=('gcc-libs')
-makedepends=('git' 'rust' 'nasm' 'cargo-c')
+makedepends=('git' 'cargo' 'cargo-c' 'nasm')
 provides=("rav1e=$pkgver" 'librav1e.so')
 conflicts=('rav1e')
 options=('staticlibs')
