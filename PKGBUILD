@@ -1,7 +1,7 @@
 # Maintainer: Christopher Kaster <me@atomicptr.de>
 # Contributor: Hanna Rose <imhxnna@gmail.com>
 
-pkgver=2024_07
+pkgver=2024_08
 
 _srcname=odin
 pkgname=odin-bin
@@ -11,7 +11,7 @@ pkgdesc="A fast, concise, readable, pragmatic and open sourced programming langu
 arch=("x86_64")
 url="https://odin-lang.org/"
 license=("BSD-2-Clause")
-depends=("clang" "llvm-libs" "libedit")
+depends=("clang" "libedit")
 makedepends=("unzip" "patchelf" "make")
 provides=("odin")
 conflicts=("odin" "odin-git")
@@ -21,14 +21,16 @@ source=(
   "https://github.com/odin-lang/Odin/releases/download/dev-$pkgver_fixed/odin-ubuntu-amd64-dev-$pkgver_fixed.zip"
 )
 sha256sums=(
-  "b34633fed0cca48eececbaf74d22b9e741316c037de4b42295747250f4256eee"
+  "542af04240c5702a1b42e0c43fda1ca44c2d73e93b599f9d924b1d28d44eb81a"
 )
 
 build() {
-  unzip "${srcdir}/dist.zip"
   cd "${srcdir}/dist"
-  patchelf --replace-needed libedit.so.2 libedit.so.0 libLLVM-17.so.1
+  patchelf --replace-needed libedit.so.2 libedit.so.0 libLLVM-18.so.1
   chmod +x odin
+
+  # Eventually they will publish a version without a minor mistake
+  mv libLLVM-18.so.1 libLLVM-18.so.18.1
 
   # build libs
   cd "${srcdir}/dist/vendor/cgltf/src" && make
@@ -43,7 +45,7 @@ package() {
   cd "${srcdir}/dist/"
 
   cp odin "${pkgdir}/usr/lib/${_srcname}/odin"
-  cp libLLVM-17.so.1 "${pkgdir}/usr/lib/${_srcname}/libLLVM-17.so.1"
+  cp libLLVM-18.so.18.1 "${pkgdir}/usr/lib/${_srcname}/libLLVM-18.so.18.1"
   cp -r -a base "${pkgdir}/usr/lib/${_srcname}/base"
   cp -r -a core "${pkgdir}/usr/lib/${_srcname}/core"
   cp -r -a shared "${pkgdir}/usr/lib/${_srcname}/shared"
@@ -61,3 +63,9 @@ check() {
   cd "${srcdir}/dist"
   ODIN_ROOT="${srcdir}/dist" ./odin check examples/all -strict-style
 }
+
+# Building this package in a clean docker env:
+#    docker run --rm -it -v "$(pwd):/pkg" zaggash/arch-makepkg
+
+# Update .SRCINFO
+#    docker run --rm -it --entrypoint="" -v "$(pwd):/pkg" zaggash/arch-makepkg makepkg --printsrcinfo > .SRCINFO
