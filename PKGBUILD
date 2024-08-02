@@ -2,12 +2,12 @@
 
 pkgname=libastal-auth-git
 _pkgname=auth
-pkgver=r12.b35a38a
+pkgver=r15.573f5b1
 pkgrel=1
 provides=(astal-auth libastal-auth libastal-auth.so=0-64)
 pkgdesc="Authentication library intended for use with the libastal suite."
 arch=(x86_64)
-license=(GPL-3)
+license=(LGPL-2.1-only)
 url="https://github.com/astal-sh/auth"
 depends=(
   glib2
@@ -21,7 +21,7 @@ makedepends=(
   vala
 )
 groups=("libastal")
-source=("git+${url}")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
