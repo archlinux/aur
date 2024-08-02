@@ -2,11 +2,11 @@
 
 pkgname=rpmdevtools
 pkgver=9.6
-pkgrel=1
+pkgrel=2
 pkgdesc="RPM Development Tools"
 arch=('any')
 url="https://pagure.io/$pkgname"
-license=('GPL2')
+license=('GPL-2.0-or-later AND GPL-2.0-only')
 depends=('python' 'python-progressbar' 'python-requests' 'rpm-tools')
 makedepends=('bash-completion' 'help2man')
 optdepends=('unzip: for zip support in rpmdev-extract command')
@@ -23,7 +23,6 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
