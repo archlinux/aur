@@ -3,21 +3,12 @@
 pkgbase=angie
 pkgname=(angie angie-src)
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/webserver-llc/angie"
 license=('BSD')
 makedepends=(pcre2 zlib openssl geoip mailcap libxcrypt)
 #checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi perl-cache-memcached memcached ffmpeg)
-backup=('etc/nginx/fastcgi.conf'
-        'etc/nginx/fastcgi_params'
-        'etc/nginx/koi-win'
-        'etc/nginx/koi-utf'
-        'etc/nginx/nginx.conf'
-        'etc/nginx/scgi_params'
-        'etc/nginx/uwsgi_params'
-        'etc/nginx/win-utf'
-        'etc/logrotate.d/nginx')
 source=(https://download.angie.software/files/$pkgbase-$pkgver.tar.gz{,.asc}
         angie.service
         logrotate
@@ -106,6 +97,15 @@ package_angie() {
   depends=('pcre2' 'zlib' 'openssl' 'geoip' 'mailcap' 'libxcrypt')
   provides=(nginx)
   conflicts=(nginx)
+  backup=('etc/nginx/fastcgi.conf'
+          'etc/nginx/fastcgi_params'
+          'etc/nginx/koi-win'
+          'etc/nginx/koi-utf'
+          'etc/nginx/nginx.conf'
+          'etc/nginx/scgi_params'
+          'etc/nginx/uwsgi_params'
+          'etc/nginx/win-utf'
+          'etc/logrotate.d/nginx')
 
   cd $pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
@@ -136,7 +136,7 @@ package_angie() {
 
   install -Dm0644 objs/angie.8 "$pkgdir"/usr/share/man/man8/angie.8
 
-  ln -s "$pkgdir"/usr/bin/nginx "$pkgdir"/usr/bin/angie
+  ln -sf /usr/bin/nginx "$pkgdir"/usr/bin/angie
 
   for i in ftdetect ftplugin indent syntax; do
     install -Dm644 contrib/vim/$i/angie.vim \
