@@ -5,7 +5,7 @@
 pkgname=rustic-git
 pkgver=0.7.0.r48.g402aa7c
 _pkgname=rustic
-pkgrel=2
+pkgrel=3
 pkgdesc='Fast, encrypted, deduplicated backups powered by Rust (reads and writes restic repos)'
 arch=(x86_64)
 url="https://github.com/rustic-rs/$_pkgname"
@@ -15,6 +15,7 @@ depends=(gcc-libs # libgcc_s.so
 makedepends=(cargo)
 replaces=(rustic-rs
           rustic-bin)
+conflicts=(rustic)
 options=(!lto)
 
 source=("git+$url")

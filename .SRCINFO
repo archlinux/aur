@@ -1,7 +1,7 @@
 pkgbase = rustic-git
 	pkgdesc = Fast, encrypted, deduplicated backups powered by Rust (reads and writes restic repos)
 	pkgver = 0.7.0.r48.g402aa7c
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/rustic-rs/rustic
 	arch = x86_64
 	license = Apache-2.0
@@ -9,6 +9,7 @@ pkgbase = rustic-git
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
+	conflicts = rustic
 	replaces = rustic-rs
 	replaces = rustic-bin
 	options = !lto
