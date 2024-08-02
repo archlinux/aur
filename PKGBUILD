@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-mocket
-pkgver=3.12.5
+pkgver=3.12.8
 pkgrel=1
 pkgdesc="Socket Mock Framework - for all kinds of socket animals, web-clients included - with gevent/asyncio/SSL support"
 url="https://github.com/mindflayer/python-mocket"
@@ -13,7 +13,7 @@ checkdepends=('pifpaf' 'python-pytest' 'python-pytest-asyncio' 'python-aiohttp' 
               'python-gevent' 'python-httpx' 'python-pook' 'python-redis' 'python-asgiref'
               'python-requests' 'python-sure' 'python-xxhash' 'redis')
 source=("https://github.com/mindflayer/python-mocket/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('c482bd266ffb5ef37c400f238de03ede46c6095a61623b29f569bf1982f42999838d8a367489e3da5197b8b0693b22a35b15cf9c9b4cf3e0e8ad8bfb79c90e9c')
+sha512sums=('1188423ee110967b2bd64cd5760ceda68ec852df4a0b1e2e169bc59714f28fecc777b7e676fcb8be104e1f6cd86bd34bd8507e1ea2dd65b4f6650c1231ce9c0e')
 
 prepare() {
   cd python-mocket-$pkgver
@@ -36,5 +36,9 @@ package() {
   cd python-mocket-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
+  # Symlink license file
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d "$pkgdir"/usr/share/licenses/$pkgname
+  ln -s "$site_packages"/mocket-$pkgver.dist-info/LICENSE \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

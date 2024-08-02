@@ -1,6 +1,6 @@
 pkgbase = python-mocket
 	pkgdesc = Socket Mock Framework - for all kinds of socket animals, web-clients included - with gevent/asyncio/SSL support
-	pkgver = 3.12.5
+	pkgver = 3.12.8
 	pkgrel = 1
 	url = https://github.com/mindflayer/python-mocket
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = python-mocket
 	depends = python-httptools
 	depends = python-magic
 	depends = python-urllib3
-	source = https://github.com/mindflayer/python-mocket/archive/3.12.5/python-mocket-3.12.5.tar.gz
-	sha512sums = c482bd266ffb5ef37c400f238de03ede46c6095a61623b29f569bf1982f42999838d8a367489e3da5197b8b0693b22a35b15cf9c9b4cf3e0e8ad8bfb79c90e9c
+	source = https://github.com/mindflayer/python-mocket/archive/3.12.8/python-mocket-3.12.8.tar.gz
+	sha512sums = 1188423ee110967b2bd64cd5760ceda68ec852df4a0b1e2e169bc59714f28fecc777b7e676fcb8be104e1f6cd86bd34bd8507e1ea2dd65b4f6650c1231ce9c0e
 
 pkgname = python-mocket
