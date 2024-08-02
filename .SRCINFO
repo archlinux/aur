@@ -1,6 +1,6 @@
 pkgbase = alpine-client
 	pkgdesc = A lightweight multi-version Minecraft modpack
-	pkgver = 1.7.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://alpineclient.com
 	arch = x86_64
@@ -9,9 +9,10 @@ pkgbase = alpine-client
 	makedepends = git
 	depends = glibc
 	depends = xorg-xrandr
+	depends = xdg-desktop-portal
 	options = !strip
 	options = !debug
-	source = pinnacle-1.7.1.tar.gz::https://github.com/alpine-client/pinnacle/archive/1.7.1.tar.gz
-	sha256sums = 52384da0d249c949ed6db1ca6e72fb905324e311dbae161e600e798b79978237
+	source = pinnacle-1.8.0.tar.gz::https://github.com/alpine-client/pinnacle/archive/1.8.0.tar.gz
+	sha256sums = fef04e672d7035fdc8cfca5b6d7daffe7e2fcb7e658e70f476a194da50a5d824
 
 pkgname = alpine-client
