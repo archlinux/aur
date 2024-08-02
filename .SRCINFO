@@ -1,0 +1,17 @@
+pkgbase = humidify-git
+	pkgdesc = Rain in your terminal
+	pkgver = 2024.08.01
+	pkgrel = 1
+	url = https://github.com/mazylol/humidify
+	arch = x86_64
+	arch = i686
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = go
+	provides = humidify
+	conflicts = humidify
+	options = !strip
+	source = git+https://github.com/mazylol/humidify.git
+	sha256sums = SKIP
+
+pkgname = humidify-git
