@@ -1,14 +1,14 @@
 # Maintainer: kotontrion <kotontrion@tutanota.de>
 pkgname=aylurs-gtk-shell-git
 _pkgname=ags
-pkgver=1.8.2.r2.g1115022
+pkgver=1.8.2.r10.g344ea72
 pkgrel=1
 pkgdesc="Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system."
 arch=('x86_64')
 url="https://github.com/Aylur/ags"
-license=('GPL3')
-makedepends=('git' 'gobject-introspection' 'meson' 'npm' 'typescript')
-depends=('gjs' 'glib2' 'glib2-devel' 'glibc' 'gtk3' 'gtk-layer-shell' 'libpulse' 'pam')
+license=('GPL-3.0-only')
+makedepends=('git' 'gobject-introspection' 'glib2-devel' 'meson' 'npm' 'typescript')
+depends=('gjs' 'glib2' 'glibc' 'gtk3' 'gtk-layer-shell' 'libpulse' 'pam')
 optdepends=('gnome-bluetooth-3.0: required for bluetooth service'
             'greetd: required for greetd service'
             'libdbusmenu-gtk3: required for systemtray service'
@@ -19,8 +19,8 @@ optdepends=('gnome-bluetooth-3.0: required for bluetooth service'
             'upower: required for battery service')
 conflicts=('aylurs-gtk-shell')
 backup=('etc/pam.d/ags')
-source=("git+${url}"
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control")
+source=("git+${url}.git"
+        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
             'SKIP')
 
