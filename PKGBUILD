@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=poedit-git
-pkgver=3.4.1.r9.g1c1f3361d
+pkgver=3.4.4.r131.g16fbf3a56
 pkgrel=1
 epoch=
 pkgdesc="Translations editor for Mac, Windows and Unix"
@@ -9,26 +9,42 @@ arch=('x86_64')
 url="https://github.com/vslavik/poedit"
 license=('MIT')
 groups=()
-depends=(aspell
+depends=(
     cld2
     cpprestsdk
-    expat
-    gettext
+    boost-libs
+    gcc-libs
+    glib2
+    glibc
+    gtk3
     gtkspell3
-    hunspell
-    nlohmann-json
+    hicolor-icon-theme
+    icu
+    libsecret
     lucene++
+    openssl
     pugixml
-    wxwidgets-gtk3
-    webkit2gtk)
-makedepends=(automake
+    wxwidgets-common
+    wxwidgets-gtk3)
+makedepends=(
+    asciidoc
+    automake
     ccache
     boost
+    expat
+    gettext
     git
-    icu
     libjpeg-turbo
     libnotify
-    libsecret
+    libice
+    libsm
+    libtiff
+    libxtst
+    libxslt
+    nlohmann-json
+    pkgconf
+    webkit2gtk-4.1
+    xmlto
     zlib)
 checkdepends=()
 optdepends=()
@@ -53,13 +69,14 @@ build() {
     cd "${srcdir}/${pkgname}"
 
     ./bootstrap
-    ./configure --prefix=/usr \
+    ./configure \
+        --disable-sound \
+        --prefix=/usr \
         --libexecdir=/usr/lib/poedit \
         --with-gtk=3 \
         --without-opengl \
         --with-sdl \
         --enable-webview \
-        --with-cxx=14 \
         --enable-stl
 
     make CPPFLAGS+=' -DUCHAR_TYPE=uint16_t'
