@@ -2,15 +2,16 @@
 
 pkgname=libastal-powerprofiles-git
 _pkgname=powerprofiles
-pkgver=r3.2944f84
+pkgver=r4.2773e83
 pkgrel=1
-provides=(astal-powerprofiles libastal-powerprofiles libastal-powerprofiles.so=0-64)
+provides=(astal-power-profiles libastal-power-profiles libastal-power-profiles.so=0-64)
 pkgdesc="Library and cli to control upowerd powerprofiles"
 arch=(x86_64)
-license=(GPL-3)
+license=(LGPL-2.1-only)
 url="https://github.com/astal-sh/powerprofiles"
 depends=(
   glib2
+  glibc
   json-glib
 )
 makedepends=(
@@ -20,7 +21,7 @@ makedepends=(
   vala
 )
 groups=("libastal")
-source=("git+${url}")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
