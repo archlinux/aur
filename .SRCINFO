@@ -1,0 +1,22 @@
+pkgbase = libastal-meta
+	pkgdesc = libastal meta package, including all libastal services
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/astal-sh/libastal
+	arch = any
+	license = LicenseRef-None
+	depends = libastal
+	depends = libastal-apps
+	depends = libastal-auth
+	depends = libastal-battery
+	depends = libastal-bluetooth
+	depends = libastal-hyprland
+	depends = libastal-mpris
+	depends = libastal-network
+	depends = libastal-notifd
+	depends = libastal-powerprofiles
+	depends = libastal-river
+	depends = libastal-tray
+	depends = libastal-wireplumber
+
+pkgname = libastal-meta
