@@ -5,7 +5,7 @@
 pkgname=rustic-git
 pkgver=0.7.0.r48.g402aa7c
 _pkgname=rustic
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, encrypted, deduplicated backups powered by Rust (reads and writes restic repos)'
 arch=(x86_64)
 url="https://github.com/rustic-rs/$_pkgname"
@@ -36,12 +36,12 @@ build() {
 	env \
 		CARGO_PROFILE_RELEASE_DEBUG=2 \
 		CARGO_PROFILE_RELEASE_STRIP=false \
-	cargo build --frozen --release --no-default-features --features webdav
+	cargo build --frozen --release 
 }
 
 check() {
 	cd "$_pkgname"
-	cargo test --frozen --no-default-features --features webdav
+	cargo test --frozen
 }
 
 package() {
