@@ -1,2 +1,9 @@
 Run "make" without arguments to display a list of available targets.
 For the impatient: "make install" is probably what you want.
+
+Important: As of 2024-08-02, the required version 2.0.31 of package
+python-sqlalchemy[*] is only available in the "extras-staging"
+repository. You may need to manually enable it in /etc/pacman.conf
+or wait until python-sqlalchemy 2.0.31 becomes available in "extras".
+
+[*] https://archlinux.org/packages/extra-staging/x86_64/python-sqlalchemy/

@@ -9,6 +9,7 @@ Available make targets:
 
   build     Build $(NAME), but do not install.
   clean     Cleanup build artifacts and logs.
+  geninteg  Generate integrity checksums.
   help      Display this text.
   install   Build and install $(NAME).
   janitor   Housekeeping jobs.
@@ -30,6 +31,9 @@ clean:
 
 mrproper:	clean
 	rm -f pkg src $(NAME)-*.gz
+
+geninteg:
+	makepkg --geninteg >>PKGBUILD
 
 .SRCINFO:	PKGBUILD
 	makepkg --printsrcinfo >$@
