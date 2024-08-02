@@ -1,3 +1,6 @@
+# Maintainer: Wafi Wadud <wafinashwan@gmail.com>
+# Maintainer: linushdot <linushdot@github.com>
+
 pkgname=gnome-shell-extension-unsafe-mode-menu
 pkgver=9.0
 pkgrel=9
