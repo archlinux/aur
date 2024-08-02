@@ -11,6 +11,6 @@ pkgbase = tb.go
 	makedepends = go
 	makedepends = git
 	source = tb.go::git+https://github.com/araaha/tb.go.git#tag=v1.0.0-2
-	b2sums = cf02fd5580e51c60a008ede34dd25f1f61a834087ffa255df9801837ecb857b7b24e97003b41df36f944f8f4b8d122c051e29f4066758319b6aea63e634513ee
+	b2sums = SKIP
 
 pkgname = tb.go
