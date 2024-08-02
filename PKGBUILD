@@ -9,10 +9,10 @@
 _pkgname=tuxedo-drivers
 pkgname=kc57-drivers-dkms
 pkgver=4.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Intel NUC X15(LAPKC51E, LAPKC71E, LAPKC71F) kernel module drivers for general hardware I/O using the SysFS interface"
 url="https://github.com/tuxedocomputers/tuxedo-drivers"
-license=("GPL3")
+license=('GPL2' 'GPL3')
 arch=('x86_64')
 depends=('dkms')
 options=(!debug)
@@ -48,6 +48,7 @@ prepare() {
   echo '' >> "${srcdir}/dkms.conf"
   echo 'DEST_MODULE_LOCATION[4]="/kernel/lib/"' >> "${srcdir}/dkms.conf"
   echo 'BUILT_MODULE_NAME[4]="kc57_battery"' >> "${srcdir}/dkms.conf"
+  echo 'kc57_battery' >> "${srcdir}/tuxedo_io.conf"
 }
 
 package() {
