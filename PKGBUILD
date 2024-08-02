@@ -3,11 +3,11 @@ pkgbase=libastal-git
 pkgname=("libastal-git"
          "lua-libastal-git" "lua51-${pkgbase}" "lua53-${pkgbase}")
 _pkgname=libastal
-pkgver=r67.e5251d2
+pkgver=r81.a0680e3
 pkgrel=1
 pkgdesc="Building blocks for building desktop shells."
 arch=("x86_64")
-license=("GPL-3")
+license=(LGPL-2.1-only)
 url="https://github.com/astal-sh/libastal"
 makedepends=(
   "git"
@@ -15,7 +15,7 @@ makedepends=(
   "lua" "lua51" "lua53" "luarocks")
 depends=("glib2" "glibc" "gtk3" "gtk-layer-shell")
 groups=("libastal")
-source=("git+${url}")
+source=("git+${url}.git")
 sha256sums=("SKIP")
 _rockname=astal-dev-1.rockspec
 
