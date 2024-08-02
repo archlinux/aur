@@ -1,19 +1,18 @@
 pkgbase = r-withr
 	pkgdesc = Lightweight Well-Known Geometry Parsing
-	pkgver = 3.0.0
-	pkgrel = 2
+	pkgver = 3.0.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=withr
 	arch = any
 	license = MIT
 	depends = r>=3.2.0
 	optdepends = r-callr
-	optdepends = r-covr
 	optdepends = r-dbi
 	optdepends = r-knitr
 	optdepends = r-rlang
 	optdepends = r-rmarkdown>=2.12
 	optdepends = r-rsqlite
-	source = https://cran.r-project.org/src/contrib/withr_3.0.0.tar.gz
-	b2sums = 12ee381cbd50dfc7f2e1395d061bac5879e40c12f87a5952706987634ba097d7dd93854ed2997e81d5f18fa5b63508d550379652df4326914b42cd0aebb94968
+	source = https://cran.r-project.org/src/contrib/withr_3.0.1.tar.gz
+	b2sums = bcbe48b02a4adac1904747ad959c39f91926207ad9f79d68d4a8a05d115ee9abf2cf8ce1d49004af3b70d877e8eb503b3dd22382f143930bb7570dc91a6ff291
 
 pkgname = r-withr
