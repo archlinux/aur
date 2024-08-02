@@ -1,7 +1,7 @@
 # Maintainer: Inche Hwang <me [at] coldified [dot] dev>
 # Contributor: Alif Zakiansyah As Syauqi <alifzakiansyah10@gmail.com>
 pkgname="spoof-dpi-bin"
-pkgver=0.9
+pkgver=0.10.2
 pkgrel=1
 # epoch=
 pkgdesc="A simple and fast software designed to bypass Deep Packet Inspection"
@@ -23,12 +23,12 @@ changelog=
 source=("spoof-dpi-conf.d"
         "spoof-dpi.service"
         "${url}/raw/main/LICENSE"
-        "${pkgname/-bin/}-${pkgver}-${pkgrel}.tar.gz::${url}/releases/download/${pkgver}/${pkgname/-bin/}-linux.tar.gz")
+        "${pkgname/-bin/}-${pkgver}-${pkgrel}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname/-bin/}-linux-amd64.tar.gz")
 noextract=()
-md5sums=("f932f96c946c400e35d7424cd5b5f584"
-  "a7bec6aaea3f609d874c12cc3f7a7644"
-  "e1f6858d174b262382b078db452046fa"
-  "6cbee7085987192e76fe9b0b39463d72")
+md5sums=('43ce6be44d1fed1af534eadebac05810'
+         'd27368397b77fd642b8ad4ce07c1c043'
+         'e1f6858d174b262382b078db452046fa'
+         'bab883aa1d8ea0416af774d226e40a30')
 # validpgpkeys=()
 
 package() {
