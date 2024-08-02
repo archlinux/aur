@@ -49,9 +49,9 @@ conflicts=("qcm")
 function prepare() {
 	cd Qcm
 	git submodule update --init
-	if [ -d "${srcdir}"/Qcm/build ]; then
-		rm -r "${srcdir}"/Qcm/build
-	fi
+	#if [ -d "${srcdir}"/Qcm/build ]; then
+	#	rm -r "${srcdir}"/Qcm/build
+	#fi
 	if [ -d qml_material ]; then
 		rm -rf qml_material
 	fi
@@ -65,7 +65,7 @@ function pkgver(){
 
 function build(){
 	cd Qcm
-	mkdir build
+	mkdir build -p
 	cd build
 	cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release
 	ninja
@@ -73,8 +73,11 @@ function build(){
 
 function package(){
 	local appID=io.github.hypengw.Qcm
+	cd Qcm
 	install -Dm644 "${srcdir}/Qcm/app/assets/Qcm.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${appID}.svg"
 	install -Dm644 "${srcdir}/Qcm/app/assets/Qcm.desktop" "${pkgdir}/usr/share/applications/${appID}.desktop"
 	install -Dm755 "${srcdir}/Qcm/build/app/Qcm" "${pkgdir}/usr/bin/Qcm"
 	install -Dm755 "${srcdir}/Qcm/build/qcm_interface/libqcm_interface.so" "${pkgdir}/usr/lib/libqcm_interface.so"
+	install -Dm755 "${srcdir}/Qcm/build/asio_helper/libqcm_asio.so" "${pkgdir}/usr/lib/libqcm_asio.so"
+	#DESTDIR="$pkgdir" cmake --install build
 }
