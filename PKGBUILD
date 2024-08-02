@@ -1,9 +1,9 @@
 # Maintainer: getzze <getzze at gmail dot com>
 
 pkgname=gnome-shell-extension-logo-menu
-pkgver=21.8
+pkgver=22.6
 _pkgname=Logomenu
-_tag="211123"
+_tag="260424"
 pkgrel=1
 pkgdesc='Quick access menu for the GNOME panel that help ease the workflow for newcomers and power users alike.'
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('gnome-shell')
 makedepends=('unzip')
 source=("${url}/archive/refs/tags/v${pkgver}_${_tag}.tar.gz")
-sha256sums=('410b92e40f6537958b9de87df19f0e5e6c4da951ef7cf285b9b6411b15895f81')
+sha256sums=('1d859f87cf5ffb34bcd941d1177f9a497cf58bab512207284961df7140521201')
 
 build() {
     cd "${_pkgname}-${pkgver}_${_tag}"
@@ -38,7 +38,11 @@ package() {
     install -d "${pkgdir}/usr/share/glib-2.0/"
     mv "${_destdir}/schemas" \
         "${pkgdir}/usr/share/glib-2.0/"
-    rm "${pkgdir}/usr/share/glib-2.0/schemas/gschemas.compiled"
+
+    schemas="${pkgdir}/usr/share/glib-2.0/schemas/gschemas.compiled"
+    if [ -f "${schemas}" ]; then
+        rm -rf "${schemas}"
+    fi
 
     # Move local to system locale directory
     mv "${_destdir}/locale" \
