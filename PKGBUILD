@@ -8,7 +8,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-cairo
 pkgver=1.18.0
-pkgrel=2
+pkgrel=3
 pkgdesc="2D graphics library with support for multiple output devices (mingw-w64)"
 arch=('any')
 url="https://cairographics.org"
