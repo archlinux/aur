@@ -7,110 +7,96 @@
 
 # options
 : ${_build_tg_owt:=true}
+: ${_branch=dev}
 
 # basic info
 _pkgname="kotatogram-desktop"
 pkgname="$_pkgname-git"
-pkgver=1.4.14.r4897.g0c4ceba
-pkgrel=4
+pkgver=1.4.15.2.r1022.gbc58b5f
+pkgrel=1
 pkgdesc='Experimental fork of Telegram Desktop'
 url="https://github.com/kotatogram/kotatogram-desktop"
 license=('GPL-3.0-only')
 arch=('x86_64')
 
-# main package
-_main_package() {
-  depends=(
-    'abseil-cpp'
-    'ffmpeg'
-    'glib2'
-    'glibmm-2.68'
-    'gobject-introspection'
-    'hicolor-icon-theme'
-    'hunspell'
-    'jemalloc'
-    'kcoreaddons'
-    'kimageformats'
-    'libdispatch'
-    'libjpeg.so' # 'libjpeg-turbo' ????
-    'libpipewire'
-    'libsigc++'
-    'libvpx'
-    'libx11'
-    'libxcb'
-    'libxcomposite'
-    'libxdamage'
-    'libxext'
-    'libxfixes'
-    'libxrandr'
-    'libxtst'
-    'lz4'
-    'minizip'
-    'openal'
-    'openh264'
-    'opus'
-    'protobuf'
-    'qt6-imageformats'
-    'qt6-svg'
-    'qt6-wayland'
-    'rnnoise'
-    'ttf-opensans'
-    'wayland'
-    'xcb-util-keysyms'
-    'xxhash'
-    'zlib'
-  )
-  makedepends=(
-    'boost'
-    'cmake'
-    'extra-cmake-modules'
-    'git'
-    'glib2-devel'
-    'meson'
-    'microsoft-gsl'
-    'ninja'
-    'pipewire'
-    'plasma-wayland-protocols'
-    'python'
-    'python-packaging'
-    'range-v3'
-    'tl-expected'
-    'unzip'
-    'wayland-protocols'
-    'webkit2gtk'
-    'yasm'
-  )
-  optdepends=(
-    'webkit2gtk: embedded browser features'
-    'xdg-desktop-portal: desktop integration'
-  )
+depends=(
+  'abseil-cpp'
+  'ffmpeg'
+  'glib2'
+  'glibmm-2.68'
+  'gobject-introspection'
+  'hicolor-icon-theme'
+  'hunspell'
+  'jemalloc'
+  'kcoreaddons'
+  'kimageformats'
+  'libdispatch'
+  'libjpeg.so' # 'libjpeg-turbo'
+  'libpipewire'
+  'libsigc++'
+  'libvpx'
+  'libx11'
+  'libxcb'
+  'libxcomposite'
+  'libxdamage'
+  'libxext'
+  'libxfixes'
+  'libxrandr'
+  'libxtst'
+  'lz4'
+  'minizip'
+  'openal'
+  'openh264'
+  'opus'
+  'protobuf'
+  'qt6-imageformats'
+  'qt6-svg'
+  'qt6-wayland'
+  'rnnoise'
+  'ttf-opensans'
+  'wayland'
+  'xcb-util-keysyms'
+  'xxhash'
+  'zlib'
+)
+makedepends=(
+  'boost'
+  'cmake'
+  'extra-cmake-modules'
+  'git'
+  'glib2-devel'
+  'meson'
+  'microsoft-gsl'
+  'ninja'
+  'pipewire'
+  'plasma-wayland-protocols'
+  'python'
+  'python-packaging'
+  'range-v3'
+  'tl-expected'
+  'unzip'
+  'wayland-protocols'
+  'webkit2gtk'
+  'yasm'
+)
+optdepends=(
+  'webkit2gtk: embedded browser features'
+  'xdg-desktop-portal: desktop integration'
+)
 
-  provides=('kotatogram-desktop')
-  conflicts=('kotatogram-desktop')
+provides=('kotatogram-desktop')
+conflicts=('kotatogram-desktop')
 
-  # kotatogram
+_source_main() {
   _pkgsrc="$_pkgname"
-  _branch="patches-track-4.14"
-  source+=("$_pkgsrc"::"git+$url.git#branch=$_branch")
-  sha256sums+=('SKIP')
-
-  _source_kotatogram_desktop
-  _source_telegramdesktop_libtgvoip
-
-  _source_desktop_app_cmake_helpers
-  _source_mnauw_cppgir
-
-  if [[ "${_build_tg_owt::1}" == "t" ]]; then
-    _source_kotatogram_tg_owt
-  else
-    makedepends+=('libtg_owt-git')
-  fi
+  source=("$_pkgsrc"::"git+$url.git#branch=$_branch")
+  sha256sums=('SKIP')
 }
 
 _source_kotatogram_tg_owt() {
-  _tg_owt_commit=afd9d5d31798d3eacf9ed6c30601e91d0f1e4d60
   source+=(
-    "kotatogram-tg_owt"::"git+https://github.com/desktop-app/tg_owt.git#commit=${_tg_owt_commit}"
+    "kotatogram-tg_owt"::"git+https://github.com/desktop-app/tg_owt.git"
+    "libtg_owt_ffmpeg7.patch"::"https://patch-diff.githubusercontent.com/raw/desktop-app/tg_owt/pull/128.patch"
 
     # submodules
     'abseil.abseil-cpp'::'git+https://github.com/abseil/abseil-cpp.git'
@@ -120,6 +106,7 @@ _source_kotatogram_tg_owt() {
   )
   sha256sums+=(
     'SKIP'
+    'b059d0a257b8aadeb8116f8b207820dafbb25139c8767e4ff1689ef2ebf40865'
 
     'SKIP'
     'SKIP'
@@ -129,6 +116,10 @@ _source_kotatogram_tg_owt() {
 
   _prepare_kotatogram_tg_owt() (
     cd "$srcdir/kotatogram-tg_owt"
+
+    local _tg_owt_commit=$(grep -A1 'cd tg_owt' "$srcdir/$_pkgsrc/Telegram/build/prepare/prepare.py" | grep -Pom1 '(?<=git checkout )[a-f0-9]+')
+    git -c advice.detachedHead=false checkout -f "$_tg_owt_commit"
+
     local _submodules=(
       'abseil.abseil-cpp'::'src/third_party/abseil-cpp'
       'chromiumsrc.libyuv'::'src/third_party/libyuv'
@@ -136,6 +127,8 @@ _source_kotatogram_tg_owt() {
       'google.crc32c'::'src/third_party/crc32c/src'
     )
     _submodule_update
+
+    apply-patch ../libtg_owt_ffmpeg7.patch
   )
 }
 
@@ -157,7 +150,9 @@ _source_kotatogram_desktop() {
     'desktop-app.lib_webview'::'git+https://github.com/desktop-app/lib_webview.git'
     'desktop-app.libprisma'::'git+https://github.com/desktop-app/libprisma.git'
     'desktop-app.rlottie'::'git+https://github.com/desktop-app/rlottie.git'
+    #'ericniebler.range-v3'::'git+https://github.com/ericniebler/range-v3.git'
     'fcitx.fcitx5-qt'::'git+https://github.com/fcitx/fcitx5-qt.git'
+    'flatpak.xdg-desktop-portal'::'git+https://github.com/flatpak/xdg-desktop-portal.git'
     'gitlab-freedesktop-mirrors.wayland'::'git+https://github.com/gitlab-freedesktop-mirrors/wayland.git'
     'gitlab-freedesktop-mirrors.wayland-protocols'::'git+https://github.com/gitlab-freedesktop-mirrors/wayland-protocols.git'
     'google.cld3'::'git+https://github.com/google/cld3.git'
@@ -176,6 +171,7 @@ _source_kotatogram_desktop() {
     'telegrammessenger.tgcalls'::'git+https://github.com/TelegramMessenger/tgcalls.git'
   )
   sha256sums+=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -230,7 +226,9 @@ _source_kotatogram_desktop() {
       'desktop-app.lib_webview'::'Telegram/lib_webview'
       'desktop-app.libprisma'::'Telegram/ThirdParty/libprisma'
       'desktop-app.rlottie'::'Telegram/ThirdParty/rlottie'
+      #'ericniebler.range-v3'::'Telegram/ThirdParty/range-v3'
       'fcitx.fcitx5-qt'::'Telegram/ThirdParty/fcitx5-qt'
+      'flatpak.xdg-desktop-portal'::'Telegram/ThirdParty/xdg-desktop-portal'
       'gitlab-freedesktop-mirrors.wayland'::'Telegram/ThirdParty/wayland'
       'gitlab-freedesktop-mirrors.wayland-protocols'::'Telegram/ThirdParty/wayland-protocols'
       'google.cld3'::'Telegram/ThirdParty/cld3'
@@ -249,6 +247,10 @@ _source_kotatogram_desktop() {
       'telegrammessenger.tgcalls'::'Telegram/ThirdParty/tgcalls'
     )
     _submodule_update
+
+    sed -E -e 's&pkt_duration&duration&' \
+      -i Telegram/SourceFiles/ffmpeg/ffmpeg_frame_generator.cpp \
+      Telegram/SourceFiles/media/clip/media_clip_ffmpeg.cpp
   )
 }
 
@@ -310,7 +312,6 @@ _source_mnauw_cppgir() {
   )
 }
 
-# build functions
 _build_tg_owt() (
   local _cmake_options=(
     -B "build-tg_owt"
@@ -318,6 +319,7 @@ _build_tg_owt() (
     -G Ninja
     -DCMAKE_BUILD_TYPE=Release
     -DBUILD_SHARED_LIBS=OFF
+    -Wno-dev
   )
 
   cmake "${_cmake_options[@]}"
@@ -332,6 +334,7 @@ _build_kotatogram() (
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX="/usr"
     -DTDESKTOP_API_TEST=ON
+    -Wno-dev
   )
 
   if [[ "${_build_tg_owt::1}" == "t" ]]; then
@@ -342,16 +345,18 @@ _build_kotatogram() (
   cmake --build build
 )
 
-# common functions
-pkgver() {
-  cd "$_pkgsrc"
-  local _version="1.$(sed -E 's@^[^0-9]+@@' <<< "$_branch")"
-  local _commit=$(git cherry origin/dev -v | head -n 1 | cut -d' ' -f2)
-  local _revision=$(git rev-list --count --cherry-pick $_commit...HEAD)
-  local _hash=$(git rev-parse --short=7 HEAD)
+_source_main
+_source_kotatogram_desktop
+_source_telegramdesktop_libtgvoip
 
-  printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
-}
+_source_desktop_app_cmake_helpers
+_source_mnauw_cppgir
+
+if [[ "${_build_tg_owt::1}" == "t" ]]; then
+  _source_kotatogram_tg_owt
+else
+  makedepends+=('libtg_owt-git')
+fi
 
 prepare() {
   _submodule_update() {
@@ -379,8 +384,26 @@ prepare() {
   _prepare_mnauw_cppgir
 }
 
+pkgver() {
+  cd "$_pkgsrc"
+  local _regex _file _line _line_num _version _commit _revision _hash
+
+  _regex='^([0-9]+\.[0-9]+\.[0-9]+).*$'
+  _file='changelog.txt'
+
+  _line=$(grep -Ev '[A-Za-z]{2}' "$_file" | grep -Esm1 "$_regex")
+  _line_num=$(grep -nsm1 "$_line" "$_file" | cut -d':' -f1)
+
+  _version="1.$(sed -E "s@$_regex@\1@" <<< "$_line")"
+  _commit=$(git blame -L $_line_num,+1 -- "$_file" | awk '{print $1;}')
+  _revision=$(git rev-list --count --cherry-pick "$_commit"...HEAD)
+  _hash=$(git rev-parse --short=7 HEAD)
+
+  printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
+}
+
 build() {
-  export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
+  export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS -fpermissive"
 
   if [[ "${_build_tg_owt::1}" == "t" ]]; then
     _build_tg_owt
@@ -392,6 +415,3 @@ build() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 }
-
-# execute
-_main_package
