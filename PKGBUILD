@@ -2,10 +2,10 @@
 # Contributor: Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
-_rtver=36
-_rtbase=6.1.99
+_rtver=37
+_rtbase=6.1.102
 pkgbase=linux-rt-lts61
-pkgver=6.1.100
+pkgver=6.1.102
 pkgrel=1
 pkgdesc='LTS Linux with realtime patches'
 url='https://www.kernel.org'
@@ -44,23 +44,23 @@ validpgpkeys=(
   D5653EA39C8675DA4BD5971C13B55DD07C53B851  # Clark Williams
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-md5sums=('4d5f24481210a8857ffd528703304e6d'
+md5sums=('b2ec323f5098156b911e7ec99393cb4d'
          'SKIP'
-         '8866f07fafbc3399592b6a4b511a0448'
+         'd3fd9a42d8abf27f79c5df8f42687177'
          'SKIP'
          'cb32cb125ea45ac05782630dfc9fc951'
          '806e76e95002ecbf49b03d6e655dc567'
          'ba035ba9a8d8cd396d3e368de8c4c7fb')
-sha256sums=('b9aa6ec1a00f234d6c6f2d428fbb0a6bf459606c259263df978f86685b65a8b9'
+sha256sums=('1ba5f93b411ead7587fe48b2eec6c656f6796d31f5e406d236913c77512497ec'
             'SKIP'
-            '2101f03a86d9ee6a95b6d7383290f157fcc7587d8509efe5d67ed5b2992a5c54'
+            'e5c747bf48fb5c83b8f4aacddf0e785ca9c255584cc308deb07128c78b5b3b92'
             'SKIP'
             '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
             '08ef05d8a4fc8117d131f219d753caa138a0fb7c8f00690ff6dc35ac6aacdb83'
             'f02a74973a4e3a2165a82e62cb682e0eed8bb5ade6f951564c45d24e2b5f07ff')
-b2sums=('c7201bd15c48d611c0eea2cb3bab528bd0fdd3e725ce1ccbcf0ecc9525f28b1a587ca9c083d6ea7e13b6df6894883764eeec5324dfd62f60bab9d7891e17e177'
+b2sums=('aa33c053b3d868a626ec472d4e8062b49490f13e5c57996153641308e8a4a672e2c3fc42e187ffe89436cd2af6fcda9bfe1b513e2484a2a33319f8ee38d19452'
         'SKIP'
-        '7d85c80494ffa7555b8b31b3ab3f262c89f91023266b9c16be7ba3f26b1d33937f7ea9f1587790a60200d1d188c10f18e3781153921710f2da6b15438daf9547'
+        '3c7f8e750cc2b3000597eb42111ef92491a5932fedfca39caac292762e075a67419f45fe80efd273ceb6118df5db0b8e7c0cb1c65cb6cb2b8907251292d973f3'
         'SKIP'
         '02a10396c92ab93124139fc3e37b1d4d8654227556d0d11486390da35dfc401ff5784ad86d0d2aa7eacac12bc451aa2ff138749748c7e24deadd040d5404734c'
         'a208eece0028ca98e64637b58d0d4c2e641a111d2f8f9f4a9c71531bb12f75edae14c9e7dbeb840d88be9fdc0b0022cf0a30e3f6a9c34d58e068e02a79940ea8'

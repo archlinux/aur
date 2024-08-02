@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 pkgbase = linux-rt-lts61
 	pkgdesc = LTS Linux with realtime patches
-	pkgver = 6.1.99
-=======
-pkgbase = linux-lts61
-	pkgdesc = LTS Linux
-	pkgver = 6.1.100
->>>>>>> 5425ffc9e4916db098cfc9c0f13c
+	pkgver = 6.1.102
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = x86_64
@@ -25,52 +19,33 @@ pkgbase = linux-lts61
 	makedepends = python-sphinx
 	makedepends = texlive-latexextra
 	options = !strip
-<<<<<<< HEAD
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.99.tar.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.99.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/projects/rt/6.1/patches-6.1.99-rt36.tar.gz
-	source = https://cdn.kernel.org/pub/linux/kernel/projects/rt/6.1/patches-6.1.99-rt36.tar.sign
-=======
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.100.tar.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.100.tar.sign
->>>>>>> 5425ffc9e4916db098cfc9c0f13c
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.102.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.102.tar.sign
+	source = https://cdn.kernel.org/pub/linux/kernel/projects/rt/6.1/patches-6.1.102-rt37.tar.gz
+	source = https://cdn.kernel.org/pub/linux/kernel/projects/rt/6.1/patches-6.1.102-rt37.tar.sign
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	source = 0004-Sphinx-7.2.2-8.0-PosixPath.patch
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-<<<<<<< HEAD
 	validpgpkeys = D5653EA39C8675DA4BD5971C13B55DD07C53B851
-	md5sums = e48a0d7094617221e5873950ad3b1100
+	md5sums = b2ec323f5098156b911e7ec99393cb4d
 	md5sums = SKIP
-	md5sums = 8866f07fafbc3399592b6a4b511a0448
+	md5sums = d3fd9a42d8abf27f79c5df8f42687177
 	md5sums = SKIP
 	md5sums = cb32cb125ea45ac05782630dfc9fc951
 	md5sums = 806e76e95002ecbf49b03d6e655dc567
 	md5sums = ba035ba9a8d8cd396d3e368de8c4c7fb
-	sha256sums = c086ee9ce2b1eeba6e085d569bc97ae764a5d15f6322847f0ebc9f787ae34dd3
+	sha256sums = 1ba5f93b411ead7587fe48b2eec6c656f6796d31f5e406d236913c77512497ec
 	sha256sums = SKIP
-	sha256sums = 2101f03a86d9ee6a95b6d7383290f157fcc7587d8509efe5d67ed5b2992a5c54
+	sha256sums = e5c747bf48fb5c83b8f4aacddf0e785ca9c255584cc308deb07128c78b5b3b92
 	sha256sums = SKIP
 	sha256sums = 21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889
 	sha256sums = 08ef05d8a4fc8117d131f219d753caa138a0fb7c8f00690ff6dc35ac6aacdb83
 	sha256sums = f02a74973a4e3a2165a82e62cb682e0eed8bb5ade6f951564c45d24e2b5f07ff
-	b2sums = 155544c5956c3fe8850b0ef1cc044341e1567636fd66e8041a97565ef215dad10a96726387bc492fb7ebe6dd896afa63a40402c872c623e2135730746db9350e
+	b2sums = aa33c053b3d868a626ec472d4e8062b49490f13e5c57996153641308e8a4a672e2c3fc42e187ffe89436cd2af6fcda9bfe1b513e2484a2a33319f8ee38d19452
 	b2sums = SKIP
-	b2sums = 7d85c80494ffa7555b8b31b3ab3f262c89f91023266b9c16be7ba3f26b1d33937f7ea9f1587790a60200d1d188c10f18e3781153921710f2da6b15438daf9547
-=======
-	md5sums = 4d5f24481210a8857ffd528703304e6d
-	md5sums = SKIP
-	md5sums = cb32cb125ea45ac05782630dfc9fc951
-	md5sums = 806e76e95002ecbf49b03d6e655dc567
-	md5sums = c7f23b1bcb226f29451d47bb7ae8604b
-	sha256sums = b9aa6ec1a00f234d6c6f2d428fbb0a6bf459606c259263df978f86685b65a8b9
-	sha256sums = SKIP
-	sha256sums = 21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889
-	sha256sums = 08ef05d8a4fc8117d131f219d753caa138a0fb7c8f00690ff6dc35ac6aacdb83
-	sha256sums = ea7a177caf7170b9f3746732e3d32703357d19cbafd463069aa34a8d8386c1e9
-	b2sums = c7201bd15c48d611c0eea2cb3bab528bd0fdd3e725ce1ccbcf0ecc9525f28b1a587ca9c083d6ea7e13b6df6894883764eeec5324dfd62f60bab9d7891e17e177
->>>>>>> 5425ffc9e4916db098cfc9c0f13c
+	b2sums = 3c7f8e750cc2b3000597eb42111ef92491a5932fedfca39caac292762e075a67419f45fe80efd273ceb6118df5db0b8e7c0cb1c65cb6cb2b8907251292d973f3
 	b2sums = SKIP
 	b2sums = 02a10396c92ab93124139fc3e37b1d4d8654227556d0d11486390da35dfc401ff5784ad86d0d2aa7eacac12bc451aa2ff138749748c7e24deadd040d5404734c
 	b2sums = a208eece0028ca98e64637b58d0d4c2e641a111d2f8f9f4a9c71531bb12f75edae14c9e7dbeb840d88be9fdc0b0022cf0a30e3f6a9c34d58e068e02a79940ea8
