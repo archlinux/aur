@@ -3,7 +3,7 @@
 
 pkgname=open-delta
 pkgver=1.03_java8
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="DEscription Language of TAxonomy"
 arch=('x86_64')
@@ -17,7 +17,7 @@ build(){
   cd $srcdir/$pkgname-${pkgver//_/-}
   mvn package -Dmaven.test.skip=true
   gendesk --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec="$pkgname" --icon="/usr/share/$pkgname/icons/Delta_blue.png"
-  echo "java -jar /usr/share/$pkgname/delta-editor-${pkgver: 0: 5}-SNAPSHOT.jar" > $pkgname
+  echo "java -jar /usr/share/$pkgname/delta-editor-${pkgver: 0: 4}-SNAPSHOT.jar" > $pkgname
   chmod +x $pkgname 
 }
 #installer/resources/Delta_*.png {blue,green,multi,outline,red,installer.ico}
