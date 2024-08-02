@@ -1,16 +1,17 @@
 pkgbase = libastal-tray-git
 	pkgdesc = Library and cli tool for managing the systemtray.
-	pkgver = r12.9a484bd
+	pkgver = r14.5db80aa
 	pkgrel = 1
 	url = https://github.com/astal-sh/tray
 	arch = x86_64
 	groups = libastal
-	license = GPL-3
+	license = LGPL-2.1-only
 	makedepends = meson
 	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = vala
 	depends = glib2
+	depends = glibc
 	depends = json-glib
 	depends = gtk3
 	depends = gdk-pixbuf2
@@ -18,7 +19,7 @@ pkgbase = libastal-tray-git
 	provides = astal-tray
 	provides = libastal-tray
 	provides = libastal-tray.so=0-64
-	source = git+https://github.com/astal-sh/tray
+	source = git+https://github.com/astal-sh/tray.git
 	sha256sums = SKIP
 
 pkgname = libastal-tray-git
