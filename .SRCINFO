@@ -7,7 +7,6 @@ pkgbase = tparted-bin
 	license = GPL-3.0
 	depends = parted
 	depends = util-linux
-	optdepends = sfdisk: for moving partitions
 	optdepends = dosfstools: for fat operations
 	optdepends = exfatprogs: for exfat operations
 	optdepends = e2fsprogs: for ext2/3/4 operations

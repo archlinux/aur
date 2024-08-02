@@ -8,8 +8,7 @@ arch=(x86_64)
 url="https://github.com/Kagamma/tparted"
 license=('GPL-3.0')
 depends=(parted util-linux)
-optdepends=('sfdisk: for moving partitions'
-            'dosfstools: for fat operations'
+optdepends=('dosfstools: for fat operations'
             'exfatprogs: for exfat operations'
             'e2fsprogs: for ext2/3/4 operations'
             'ntfs-3g: for ntfs operations'
