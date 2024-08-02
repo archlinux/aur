@@ -2,13 +2,13 @@
 pkgname=astal-git
 _pkgname=astal
 _reponame=Astal
-pkgver=r488.4e4b4eb
+pkgver=r489.0e2a33b
 pkgrel=1
 pkgdesc="JavaScript/TypeScript framework for creating Linux Desktops ontop of Wayland compositors "
 arch=('x86_64')
 url="https://github.com/Aylur/Astal"
-license=('GPL3')
-makedepends=('git' 'gobject-introspection' 'meson' 'npm' 'typescript')
+license=('GPL-3.0-only')
+makedepends=('git' 'gobject-introspection' 'glib2-devel' 'meson' 'npm' 'typescript')
 depends=('gjs' 'glib2' 'glibc' 'gtk4' 'gtk4-layer-shell' 'libpulse' 'pam')
 optdepends=('gnome-bluetooth-3.0: required for bluetooth service'
             'greetd: required for greetd service'
@@ -20,7 +20,7 @@ optdepends=('gnome-bluetooth-3.0: required for bluetooth service'
 provides=("astal")
 backup=('etc/pam.d/astal')
 source=("git+${url}"
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control"
+        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
         "astal.sh")
 sha256sums=('SKIP'
             'SKIP'
