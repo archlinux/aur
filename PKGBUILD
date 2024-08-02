@@ -2,20 +2,21 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=lifecycler
-pkgver=0.2.3
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Terminal aquarium"
 arch=('x86_64')
 url="https://github.com/cxreiff/lifecycler"
 license=('MIT' 'Apache-2.0' 'CC0-1.0')
 depends=('gcc-libs' 'alsa-lib' 'systemd-libs')
-makedepends=('cargo')
+optdepends=('wayland: Wayland support')
+makedepends=('cargo' 'wayland')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('04ad147f8456537f6938cd12a15e239546a7837868cff8125d2db8af435b7ec823646075a33f60218feff3747fb9aa9f4e391fcdae302c122c0563b4c77dc85d')
+sha512sums=('4653d1908b55872154ab2d5571f468ac74fa68d6725c3e9265e839882a9c550a4dda0505c80786443643246ef4e8b64dbf01fc8463f6961fb12000fe6d381333')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')" --locked
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')" # --locked
 }
 
 build() {
