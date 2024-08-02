@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=plasma6-applets-resources-monitor-git
 _gitpkgname=plasma-applet-resources-monitor
-pkgver=3.0.0.rc.1.r0.ga5cf7ce
+pkgver=3.0.0.r0.g76b3adf
 pkgrel=1
 pkgdesc='Plasmoid for monitoring CPU, memory, network traffic, GPUs and disks IO'
 arch=(any)
