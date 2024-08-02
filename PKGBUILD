@@ -1,6 +1,6 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
 pkgname=mpvc
-pkgver=1.4.6
+pkgver=1.4.7
 pkgrel=1
 pkgdesc="An mpc-like CLI tool for mpv"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('mpv')
 makedepends=('cargo')
 source=("https://github.com/neeshy/mpvc/archive/v$pkgver.tar.gz")
-sha256sums=('e0c7e45e1c77a09d21ba12addfee95595d50b4e85d1863cd8241c16160a65ba0')
+sha256sums=('7e7ac9b0fd4bac2bb43bcf4155150116c3a361ad58cc4f85f9bebc0815cbcd8e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
