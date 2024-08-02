@@ -1,21 +1,22 @@
 pkgbase = libastal-mpris-git
 	pkgdesc = Library and cli tool for controlling media players
-	pkgver = r7.ce7152d
+	pkgver = r9.4853378
 	pkgrel = 1
 	url = https://github.com/astal-sh/mpris
 	arch = x86_64
 	groups = libastal
-	license = GPL-3
+	license = LGPL-2.1-only
 	makedepends = meson
 	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = vala
 	depends = glib2
+	depends = glibc
 	depends = json-glib
 	provides = astal-mpris
 	provides = libastal-mpris
 	provides = libastal-mpris.so=0-64
-	source = git+https://github.com/astal-sh/mpris
+	source = git+https://github.com/astal-sh/mpris.git
 	sha256sums = SKIP
 
 pkgname = libastal-mpris-git
