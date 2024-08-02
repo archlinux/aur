@@ -1,6 +1,6 @@
 pkgbase = siril-git
 	pkgdesc = Astronomical image processing software for Linux (IRIS clone)
-	pkgver = 1.2.1.r708.gc6150305
+	pkgver = 1.2.3.r1131.g49a0646
 	pkgrel = 1
 	url = https://gitlab.com/free-astro/siril
 	arch = i686
@@ -23,7 +23,8 @@ pkgbase = siril-git
 	depends = libraw
 	depends = libxisf
 	depends = opencv
-	provides = siril=1.2.1
+	depends = wcslib
+	provides = siril=1.2.3
 	conflicts = siril
 	source = siril::git+https://gitlab.com/free-astro/siril.git
 	source = flathub.shared-modules::git+https://github.com/flathub/shared-modules.git
