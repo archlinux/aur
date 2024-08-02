@@ -1,10 +1,10 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
-pkgname=python-onion-location
+pkgname=python-onion-location-git
 pkgver=0.1.0
 pkgrel=1
 pkgdesc='Python library for discovering Onion-Location HTTP headers'
 arch=(any)
-url="https://codeberg.org/Freso/${pkgname}"
+url="https://codeberg.org/Freso/${pkgname%-git}"
 license=('AGPL-3.0-or-later')
 depends=(
   'python'
@@ -15,21 +15,32 @@ makedepends=(
   'python-hatchling'
   'python-hatch-vcs'
   # Generic/Arch Linux
+  'git'
   'python-build'
   'python-installer'
   'python-wheel'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('5f87a045b57a2b4b75f9328f1bb0ee48d16de6092b57405afc8e6ec34810c8e5111d7137a9b9d36d39b994693b2c2785dd2225638f8ccbcca90a4a212b60f1bb')
+source=("git+${url}.git")
+b2sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname%-git}"
+  hatch version
+}
+
+prepare () {
+  cd "${pkgname%-git}"
+  # Remove potential artifacts from earlier builds
+  git clean -dfx
+}
 
 build() {
-  cd "${pkgname}"
-  export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
+  cd "${pkgname%-git}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${pkgname%-git}"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
+  install -Dm644 README.rst "${pkgdir}/usr/share/doc/${pkgname%-git}/README.rst"
 }

@@ -1,5 +1,0 @@
-[python-onion-location]
-source = "git"
-git = "https://codeberg.org/Freso/python-onion-location.git"
-include_regex = 'v(\d(?:\d|\.)+)'
-prefix = 'v'
