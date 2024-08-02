@@ -3,14 +3,14 @@
 pkgname=python-luna-usb
 _gitpkgname=luna
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Amaranth HDL framework for monitoring, hacking, and developing USB devices'
 arch=('any')
 url='https://github.com/greatscottgadgets/luna'
 license=('BSD-3-Clause')
 depends=(
   'python'
-  'python-amaranth'
+  'python-amaranth<0.5'
   'python-apollo'
   'python-pyserial'
   'python-pyusb'
@@ -20,6 +20,7 @@ depends=(
 makedepends=(
   'python-build'
   'python-installer'
+  'python-jschon'
   'python-pyproject-patcher'
   'python-setuptools'
   'python-sphinx'
