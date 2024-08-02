@@ -14,7 +14,8 @@ makedepends=('git' 'cmake>=3.22' 'bertini2' 'boost>=1.82' 'boost-libs>=1.65'
              'gmp' 'mpfr' 'libmpc' 'eigen>=3.3' 'python' 'python-numpy'
              'eigenpy>=3.3' 'python-setuptools')
 depends=('glibc' 'gcc-libs' 'bertini2' 'boost-libs>=1.65' 'gmp' 'mpfr' 'libmpc'
-         'python' 'python-numpy' 'eigenpy' )
+         'python' 'python-numpy' 'eigenpy')
+optdepends=('pybertini-docs: HTML documentation')
 provides=("${_pkgname}" "_pybertini.so")
 conflicts=("${_pkgname}")
 _pkgsrc="b2"

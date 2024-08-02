@@ -28,6 +28,7 @@ pkgbase = pybertini-git
 	depends = python
 	depends = python-numpy
 	depends = eigenpy
+	optdepends = pybertini-docs: HTML documentation
 	provides = pybertini
 	provides = _pybertini.so
 	conflicts = pybertini
