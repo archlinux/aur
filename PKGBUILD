@@ -17,7 +17,7 @@ depends=(
   libastal-mpris
   libastal-network
   libastal-notifd
-  libastal-powerprofiles
+  libastal-power-profiles
   libastal-river
   libastal-tray
   libastal-wireplumber
