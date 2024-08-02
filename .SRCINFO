@@ -1,10 +1,10 @@
 pkgbase = rpmdevtools
 	pkgdesc = RPM Development Tools
 	pkgver = 9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pagure.io/rpmdevtools
 	arch = any
-	license = GPL2
+	license = GPL-2.0-or-later AND GPL-2.0-only
 	makedepends = bash-completion
 	makedepends = help2man
 	depends = python
