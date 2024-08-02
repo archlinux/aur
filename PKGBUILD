@@ -1,26 +1,23 @@
 # Maintainer: Dino Duratović <dinomol  mail  com>
 pkgname=obquit-git
-pkgver=r51.e819f9a
+pkgver=r59.f84aa4e
 pkgrel=1
-pkgdesc="Simple logout script for Openbox"
+pkgdesc="Shutdown/reboot/logout utility script"
 arch=('any')
 url="https://github.com/dglava/obquit"
 license=('GPL3')
 depends=('python' 'python-gobject' 'python-cairo' 'gtk3')
-makedepends=('git')
+makedepends=('git' 'python-setuptools' 'python-installer' 'python-build')
 source=('git+https://github.com/dglava/obquit.git')
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+build() {
+  cd "$srcdir/"
+  python -m build
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
-  python setup.py install --root="$pkgdir"
-
-  # install license
-  install -D -m644 "$srcdir/${pkgname%-git}/LICENSE" \
-    "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
+  cd "$srcdir/dist"
+  python -m installer -d $pkgdir *.whl
+  install -Dm 644 "${srcdir}/data/obquit.conf" "${pkgdir}/etc/obquit.conf"
 }
