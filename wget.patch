@@ -1,0 +1,13 @@
+diff -Naur gwget-1.0.4.orig/src/wget-log.c gwget-1.0.4/src/wget-log.c
+--- gwget-1.0.4.orig/src/wget-log.c	2014-12-19 00:00:13.499719000 +0100
++++ gwget-1.0.4/src/wget-log.c	2014-12-19 01:30:44.848448393 +0100
+@@ -152,6 +152,9 @@
+             (strstr (gwgetdata->line, "Host not found.") == NULL) &&
+ 			(strstr (gwgetdata->line, "Name or service not known") == NULL))
+                 break;
++
++		if (strncmp (gwgetdata->line, "Loaded CA certificate", 21) == 0)
++                	break;
+ 			
+ 		/* Wget, under certain circumstances, returns a list of resolved IP addresses
+ 		 *	before attempting to connect, which can be ignored.

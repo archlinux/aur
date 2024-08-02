@@ -1,0 +1,1358 @@
+diff -Naur gwget-1.0.4.orig/configure.ac gwget-1.0.4/configure.ac
+--- gwget-1.0.4.orig/configure.ac	2018-09-02 09:37:59.856756000 +0200
++++ gwget-1.0.4/configure.ac	2018-09-02 09:43:52.956200139 +0200
+@@ -4,7 +4,7 @@
+ AM_INIT_AUTOMAKE(gwget, 1.0.4)
+ AM_CONFIG_HEADER(config.h)
+ 
+-AC_PATH_PROG(GCONFTOOL, gconftool-2)
++GLIB_GSETTINGS
+ IT_PROG_INTLTOOL([0.35.0])
+ 
+ AC_ISC_POSIX
+@@ -12,8 +12,6 @@
+ AC_STDC_HEADERS
+ AM_PROG_LIBTOOL
+ 
+-AM_GCONF_SOURCE_2
+-
+ AC_ARG_ENABLE([gtk3],
+     [AC_HELP_STRING([--enable-gtk3],
+         [compile gwget against gtk+ 3.0 (default: yes)])],
+@@ -28,12 +26,10 @@
+ fi
+ 
+ GTK_REQUIRED=2.6.0
+-GCONF_REQUIRED=1.1.11
+ DBUS_GLIB_REQUIRED=0.33
+ GIO_REQUIRED=2.16.0
+ 
+ PKG_CHECK_MODULES(GNOME, gtk+-$GTK_API_VERSION 	>= $GTK_REQUIRED 
+- 			  gconf-2.0
+ 			  gmodule-2.0
+ 			  gio-unix-2.0 >= $GIO_REQUIRED)
+ 			
+diff -Naur gwget-1.0.4.orig/data/gwget.schemas.in gwget-1.0.4/data/gwget.schemas.in
+--- gwget-1.0.4.orig/data/gwget.schemas.in	2009-06-16 19:58:06.000000000 +0200
++++ gwget-1.0.4/data/gwget.schemas.in	1970-01-01 01:00:00.000000000 +0100
+@@ -1,402 +0,0 @@
+-<gconfschemafile>
+- <schemalist>
+-
+-	<schema>
+-	 <key>/schemas/apps/gwget2/convert_links</key>
+-	 <applyto>/apps/gwget2/convert_links</applyto>
+-	 <owner>gwget</owner>
+-	 <type>bool</type>
+-	 <default>false</default>
+-	 <locale name="C">
+-	   <short>Convert Links</short>
+-	   <long>Convert to relative links in recursive mode.</long>
+-	 </locale>
+-	</schema>
+-
+-	<schema>
+-	 <key>/schemas/apps/gwget2/default_height</key>
+-	 <applyto>/apps/gwget2/default_height</applyto>
+-	 <owner>gwget</owner>
+-	 <type>int</type>
+-	 <default>200</default>
+-	 <locale name="C">
+-	   <short></short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-
+-	<schema>
+-	 <key>/schemas/apps/gwget2/default_width</key>
+-	 <applyto>/apps/gwget2/default_width</applyto>
+-	 <owner>gwget</owner>
+-	 <type>int</type>
+-	 <default>250</default>
+-	 <locale name="C">
+-	   <short></short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-	
+-	<schema>
+-	 <key>/schemas/apps/gwget2/dl_page_requisites</key>
+-	 <applyto>/apps/gwget2/dl_page_requisites</applyto>
+-	 <owner>gwget</owner>
+-	 <type>bool</type>
+-	 <default>false</default>
+-	 <locale name="C">
+-	   <short>Download Page Requisites</short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-	 
+- 	<schema>
+-	 <key>/schemas/apps/gwget2/download_dir</key>
+-	 <applyto>/apps/gwget2/download_dir</applyto>
+-	 <owner>gwget</owner>
+-	 <type>string</type>
+-	 <default></default>
+-	 <locale name="C">
+-	   <short>Default Download Directory</short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-
+-	<schema>
+-	 <key>/schemas/apps/gwget2/ask_save_each_dl</key>
+-	 <applyto>/apps/gwget2/ask_save_each_dl</applyto>
+-	 <owner>gwget</owner>
+-	 <type>bool</type>
+-	 <default>true</default>
+-	 <locale name="C">
+-	   <short>Ask where to save each new download</short>
+-	   <long>If true, always ask for a destination folder when starting a new download. If false, always save in the default directory without asking the user.</long>
+-	 </locale>
+-	</schema>
+-	 
+-
+- 	<schema>
+-	 <key>/schemas/apps/gwget2/follow_relative</key>
+-	 <applyto>/apps/gwget2/follow_relative</applyto>
+-	 <owner>gwget</owner>
+-	 <type>bool</type>
+-	 <default>false</default>
+-	 <locale name="C">
+-	   <short>Follow relative links</short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-	  
+- 	<schema>
+-	 <key>/schemas/apps/gwget2/limit_speed</key>
+-	 <applyto>/apps/gwget2/limit_speed</applyto>
+-	 <owner>gwget</owner>
+-	 <type>bool</type>
+-	 <default>false</default>
+-	 <locale name="C">
+-	   <short>Limit maximum speed</short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-
+- 	<schema>
+-	 <key>/schemas/apps/gwget2/limit_simultaneousdownloads</key>
+-	 <applyto>/apps/gwget2/limit_simultaneousdownloads</applyto>
+-	 <owner>gwget</owner>
+-	 <type>bool</type>
+-	 <default>false</default>
+-	 <locale name="C">
+-	   <short>Limit number of simultaneous downloads</short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-	  
+- 	<schema>
+-	 <key>/schemas/apps/gwget2/max_depth</key>
+-	 <applyto>/apps/gwget2/max_depth</applyto>
+-	 <owner>gwget</owner>
+-	 <type>int</type>
+-	 <default>0</default>
+-	 <locale name="C">
+-	   <short>Maximum depth in recursive mode</short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-	 
+- 	<schema>
+-	 <key>/schemas/apps/gwget2/max_speed</key>
+-	 <applyto>/apps/gwget2/max_speed</applyto>
+-	 <owner>gwget</owner>
+-	 <type>int</type>
+-	 <default>0</default>
+-	 <locale name="C">
+-	   <short>Maximum speed limit</short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-
+- 	<schema>
+-	 <key>/schemas/apps/gwget2/max_simultaneousdownloads</key>
+-	 <applyto>/apps/gwget2/max_simultaneousdownloads</applyto>
+-	 <owner>gwget</owner>
+-	 <type>int</type>
+-	 <default>0</default>
+-	 <locale name="C">
+-	   <short>Maximum number of simultaneous downloads</short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-
+-	<schema>
+-	 <key>/schemas/apps/gwget2/n_downloads</key>
+-	 <applyto>/apps/gwget2/n_downloads</applyto>
+-	 <owner>gwget</owner>
+-	 <type>int</type>
+-	 <default>0</default>
+-	 <locale name="C">
+-	   <short>Number of downloads</short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-	 
+-	<schema>
+-	 <key>/schemas/apps/gwget2/no_create_directories</key>
+-	 <applyto>/apps/gwget2/no_create_directories</applyto>
+-	 <owner>gwget</owner>
+-	 <type>bool</type>
+-	 <default>false</default>
+-	 <locale name="C">
+-	   <short></short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-		 
+-	<schema>
+-	 <key>/schemas/apps/gwget2/num_retrys</key>
+-	 <applyto>/apps/gwget2/num_retrys</applyto>
+-	 <owner>gwget</owner>
+-	 <type>int</type>
+-	 <default>3</default>
+-	 <locale name="C">
+-	   <short>Number of retries</short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-	 
+-	<schema>
+-	 <key>/schemas/apps/gwget2/position_x</key>
+-	 <applyto>/apps/gwget2/position_x</applyto>
+-	 <owner>gwget</owner>
+-	 <type>int</type>
+-	 <default>0</default>
+-	 <locale name="C">
+-	   <short></short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-
+-	<schema>
+-	 <key>/schemas/apps/gwget2/position_y</key>
+-	 <applyto>/apps/gwget2/position_y</applyto>
+-	 <owner>gwget</owner>
+-	 <type>int</type>
+-	 <default>0</default>
+-	 <locale name="C">
+-	   <short></short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-	
+-	<schema>
+-	 <key>/schemas/apps/gwget2/resume_at_start</key>
+-	 <applyto>/apps/gwget2/resume_at_start</applyto>
+-	 <owner>gwget</owner>
+-	 <type>bool</type>
+-	 <default>false</default>
+-	 <locale name="C">
+-	   <short>Resume downloads at startup</short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-
+-	<schema>
+-	 <key>/schemas/apps/gwget2/open_after_dl</key>
+-	 <applyto>/apps/gwget2/open_after_dl</applyto>
+-	 <owner>gwget</owner>
+-	 <type>bool</type>
+-	 <default>false</default>
+-	 <locale name="C">
+-	   <short>Open the file after download</short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-
+-	<schema>
+-	 <key>/schemas/apps/gwget2/view_actual_size</key>
+-	 <applyto>/apps/gwget2/view_actual_size</applyto>
+-	 <owner>gwget</owner>
+-	 <type>bool</type>
+-	 <default>true</default>
+-	 <locale name="C">
+-	   <short></short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-	 
+- 	<schema>
+-	 <key>/schemas/apps/gwget2/view_down_speed</key>
+-	 <applyto>/apps/gwget2/view_down_speed</applyto>
+-	 <owner>gwget</owner>
+-	 <type>bool</type>
+-	 <default>true</default>
+-	 <locale name="C">
+-	   <short>View download speed column</short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-	
+-	<schema>
+-	 <key>/schemas/apps/gwget2/view_elapse_time</key>
+-	 <applyto>/apps/gwget2/view_elapse_time</applyto>
+-	 <owner>gwget</owner>
+-	 <type>bool</type>
+-	 <default>false</default>
+-	 <locale name="C">
+-	   <short>View elapsed time column</short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-	
+- 	<schema>
+-	 <key>/schemas/apps/gwget2/view_percentage</key>
+-	 <applyto>/apps/gwget2/view_percentage</applyto>
+-	 <owner>gwget</owner>
+-	 <type>bool</type>
+-	 <default>true</default>
+-	 <locale name="C">
+-	   <short>View percentage column</short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-	
+- 	<schema>
+-	 <key>/schemas/apps/gwget2/view_rem_time</key>
+-	 <applyto>/apps/gwget2/view_rem_time</applyto>
+-	 <owner>gwget</owner>
+-	 <type>bool</type>
+-	 <default>true</default>
+-	 <locale name="C">
+-	   <short>View remaining time column</short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-	
+- 	<schema>
+-	 <key>/schemas/apps/gwget2/view_toolbar</key>
+-	 <applyto>/apps/gwget2/view_toolbar</applyto>
+-	 <owner>gwget</owner>
+-	 <type>bool</type>
+-	 <default>true</default>
+-	 <locale name="C">
+-	   <short>View toolbar</short>
+-	   <long>Whether to display the toolbar.</long>
+-	 </locale>
+-	</schema>
+-
+-	<schema>
+-	 <key>/schemas/apps/gwget2/view_statusbar</key>
+-	 <applyto>/apps/gwget2/view_statusbar</applyto>
+-	 <owner>gwget</owner>
+-	 <type>bool</type>
+-	 <default>true</default>
+-	 <locale name="C">
+-	   <short>View statusbar</short>
+-	   <long>Whether to display the statusbar.</long>
+-	 </locale>
+-	</schema>
+-	
+- 	<schema>
+-	 <key>/schemas/apps/gwget2/view_total_size</key>
+-	 <applyto>/apps/gwget2/view_total_size</applyto>
+-	 <owner>gwget</owner>
+-	 <type>bool</type>
+-	 <default>true</default>
+-	 <locale name="C">
+-	   <short>View total size column</short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-
+- 	<schema>
+-	 <key>/schemas/apps/gwget2/network_mode</key>
+-	 <applyto>/apps/gwget2/network_mode</applyto>
+-	 <owner>gwget</owner>
+-	 <type>string</type>
+-	 <default>direct</default>
+-	 <locale name="C">
+-	   <short></short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-	
+-	<schema>
+-	 <key>/schemas/apps/gwget2/http_proxy</key>
+-	 <applyto>/apps/gwget2/http_proxy</applyto>
+-	 <owner>gwget</owner>
+-	 <type>string</type>
+-	 <default></default>
+-	 <locale name="c">
+-	   <short></short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-	
+-	<schema>
+-	 <key>/schemas/apps/gwget2/http_proxy_port</key>
+-	 <applyto>/apps/gwget2/http_proxy_port</applyto>
+-	 <owner>gwget</owner>
+-	 <type>int</type>
+-	 <default>8080</default>
+-	 <locale name="c">
+-	   <short></short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-	
+-	<schema>
+-	 <key>/schemas/apps/gwget2/proxy_uses_auth</key>
+-	 <applyto>/apps/gwget2/proxy_uses_auth</applyto>
+-	 <owner>gwget</owner>
+-	 <type>bool</type>
+-	 <default>false</default>
+-	 <locale name="c">
+-	   <short></short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-	
+-	<schema>
+-	 <key>/schemas/apps/gwget2/proxy_user</key>
+-	 <applyto>/apps/gwget2/proxy_user</applyto>
+-	 <owner>gwget</owner>
+-	 <type>string</type>
+-	 <default></default>
+-	 <locale name="c">
+-	   <short></short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-	
+-	<schema>
+-	 <key>/schemas/apps/gwget2/proxy_password</key>
+-	 <applyto>/apps/gwget2/proxy_password</applyto>
+-	 <owner>gwget</owner>
+-	 <type>string</type>
+-	 <default></default>
+-	 <locale name="c">
+-	   <short></short>
+-	   <long></long>
+-	 </locale>
+-	</schema>
+-	
+- </schemalist>
+-</gconfschemafile>
+diff -Naur gwget-1.0.4.orig/data/Makefile.am gwget-1.0.4/data/Makefile.am
+--- gwget-1.0.4.orig/data/Makefile.am	2009-08-14 19:55:48.000000000 +0200
++++ gwget-1.0.4/data/Makefile.am	2018-09-02 09:46:22.127182302 +0200
+@@ -16,10 +16,8 @@
+ $(service_DATA): $(service_in_files) Makefile
+ 	@sed -e "s|\@bindir\@|$(bindir)|" $< > $@
+ 
+-schemasdir = $(GCONF_SCHEMA_FILE_DIR)
+-schemas_in_files = gwget.schemas.in
+-schemas_DATA =  $(schemas_in_files:.schemas.in=.schemas)
+-@INTLTOOL_SCHEMAS_RULE@
++gsettings_SCHEMAS = org.gwget.gschema.xml
++@GSETTINGS_RULES@
+ 
+ desktopdir       = $(datadir)/applications
+ desktop_in_files = gwget.desktop.in.in
+@@ -30,17 +28,10 @@
+ 
+ @INTLTOOL_DESKTOP_RULE@
+ 
+-if GCONF_SCHEMAS_INSTALL
+-install-data-local:
+-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule gwget.schemas
+-else
+-install-data-local:
+-endif
+-
+ EXTRA_DIST = $(gwget_data_DATA) \
+ 	     $(service_in_files) \
+ 	     $(desktop_in_files) \
+-	     $(schemas_in_files) 
++	     $(gsettings_SCHEMAS) 
+ 
+ DISTCLEANFILES = 				\
+ 	$(desktop_DATA)       			
+diff -Naur gwget-1.0.4.orig/data/org.gwget.gschema.xml gwget-1.0.4/data/org.gwget.gschema.xml
+--- gwget-1.0.4.orig/data/org.gwget.gschema.xml	1970-01-01 01:00:00.000000000 +0100
++++ gwget-1.0.4/data/org.gwget.gschema.xml	2018-09-02 11:44:17.589889148 +0200
+@@ -0,0 +1,145 @@
++<schemalist>
++  <schema id="org.gwget" path="/org/gwget2/">
++    <key name="convert-links" type="b">
++      <default>false</default>
++      <summary>Convert Links</summary>
++      <description>Convert to relative links in recursive mode.</description>
++    </key>
++    <key name="default-height" type="i">
++      <default>200</default>
++    </key>
++    <key name="default-width" type="i">
++      <default>250</default>
++    </key>
++    <key name="dl-page-requisites" type="b">
++      <default>false</default>
++      <summary>Download Page Requisites</summary>
++    </key>
++    <key name="download-dir" type="s">
++      <default>''</default>
++      <summary>Default Download Directory</summary>
++    </key>
++    <key name="ask-save-each-dl" type="b">
++      <default>true</default>
++      <summary>Ask where to save each new download</summary>
++      <description>If true, always ask for a destination folder when starting a new download. If false, always save in the default directory without asking the user.</description>
++    </key>
++    <key name="follow-relative" type="b">
++      <default>false</default>
++      <summary>Follow relative links</summary>
++    </key>
++    <key name="limit-speed" type="b">
++      <default>false</default>
++      <summary>Limit maximum speed</summary>
++    </key>
++    <key name="limit-simultaneousdownloads" type="b">
++      <default>false</default>
++      <summary>Limit number of simultaneous downloads</summary>
++    </key>
++    <key name="max-depth" type="i">
++      <default>0</default>
++      <summary>Maximum depth in recursive mode</summary>
++    </key>
++    <key name="max-speed" type="i">
++      <default>0</default>
++      <summary>Maximum speed limit</summary>
++    </key>
++    <key name="max-simultaneousdownloads" type="i">
++      <default>0</default>
++      <summary>Maximum number of simultaneous downloads</summary>
++    </key>
++    <key name="n-downloads" type="i">
++      <default>0</default>
++      <summary>Number of downloads</summary>
++    </key>
++    <key name="no-create-directories" type="b">
++      <default>false</default>
++    </key>
++    <key name="num-retries" type="i">
++      <default>3</default>
++      <summary>Number of retries</summary>
++    </key>
++    <key name="position-x" type="i">
++      <default>0</default>
++    </key>
++    <key name="position-y" type="i">
++      <default>0</default>
++    </key>
++    <key name="resume-at-start" type="b">
++      <default>false</default>
++      <summary>Resume downloads at startup</summary>
++    </key>
++    <key name="open-after-dl" type="b">
++      <default>false</default>
++      <summary>Open the file after download</summary>
++    </key>
++    <key name="view-actual-size" type="b">
++      <default>true</default>
++    </key>
++    <key name="view-down-speed" type="b">
++      <default>true</default>
++      <summary>View download speed column</summary>
++    </key>
++    <key name="view-elapse-time" type="b">
++      <default>false</default>
++      <summary>View elapsed time column</summary>
++    </key>
++    <key name="view-percentage" type="b">
++      <default>true</default>
++      <summary>View percentage column</summary>
++    </key>
++    <key name="view-rem-time" type="b">
++      <default>true</default>
++      <summary>View remaining time column</summary>
++    </key>
++    <key name="view-toolbar" type="b">
++      <default>true</default>
++      <summary>View toolbar</summary>
++      <description>Whether to display the toolbar.</description>
++    </key>
++    <key name="view-statusbar" type="b">
++      <default>true</default>
++      <summary>View statusbar</summary>
++      <description>Whether to display the statusbar.</description>
++    </key>
++    <key name="view-total-size" type="b">
++      <default>true</default>
++      <summary>View total size column</summary>
++    </key>
++    <key name="network-mode" type="s">
++      <default>'direct'</default>
++    </key>
++    <key name="http-proxy" type="s">
++      <default>''</default>
++    </key>
++    <key name="http-proxy-port" type="i">
++      <default>8080</default>
++    </key>
++    <key name="proxy-uses-auth" type="b">
++      <default>false</default>
++    </key>
++    <key name="proxy-user" type="s">
++      <default>''</default>
++    </key>
++    <key name="proxy-password" type="s">
++      <default>''</default>
++    </key>
++  </schema>
++  <schema id="org.gwget.download">
++    <key name="url" type="s">
++      <default>''</default>
++    </key>
++    <key name="dir" type="s">
++      <default>''</default>
++    </key>
++    <key name="filename" type="s">
++      <default>''</default>
++    </key>
++    <key name="state" type="i">
++      <default>0</default>
++    </key>
++    <key name="file-size" type="s">
++      <default>''</default>
++    </key>
++  </schema>
++</schemalist>
+diff -Naur gwget-1.0.4.orig/src/gwget_data.c gwget-1.0.4/src/gwget_data.c
+--- gwget-1.0.4.orig/src/gwget_data.c	2018-09-02 09:37:59.863423000 +0200
++++ gwget-1.0.4/src/gwget_data.c	2018-09-02 09:47:56.523025131 +0200
+@@ -497,7 +497,7 @@
+ 	}
+ 	
+ 	/*
+-	 * Update download list in gconf
++	 * Update download list in gsettings
+ 	 */
+ 	gwget_remember_downloads();
+ }
+diff -Naur gwget-1.0.4.orig/src/gwget_data.h gwget-1.0.4/src/gwget_data.h
+--- gwget-1.0.4.orig/src/gwget_data.h	2018-09-02 09:37:59.863423000 +0200
++++ gwget-1.0.4/src/gwget_data.h	2018-09-02 11:51:39.469071743 +0200
+@@ -51,7 +51,6 @@
+ 	gboolean view_down_speed;
+ 	gboolean view_toolbar;
+ 	gboolean view_statusbar;
+-	gboolean view_file_type;
+ 	gboolean docked;
+ 	gboolean limit_speed;
+ 	gboolean limit_simultaneousdownloads;
+diff -Naur gwget-1.0.4.orig/src/main.c gwget-1.0.4/src/main.c
+--- gwget-1.0.4.orig/src/main.c	2018-09-02 09:37:59.863423000 +0200
++++ gwget-1.0.4/src/main.c	2018-09-02 09:47:22.658808668 +0200
+@@ -22,7 +22,6 @@
+ #include <glib/gi18n.h>
+ #include <gtk/gtk.h>
+ #include <string.h>
+-#include <gconf/gconf-client.h>
+ #include <locale.h>
+ #include <gio/gio.h>
+ 
+diff -Naur gwget-1.0.4.orig/src/main_window.c gwget-1.0.4/src/main_window.c
+--- gwget-1.0.4.orig/src/main_window.c	2018-09-02 09:37:59.856756000 +0200
++++ gwget-1.0.4/src/main_window.c	2018-09-02 17:08:45.436630472 +0200
+@@ -18,7 +18,6 @@
+ #include <stdlib.h>
+ #include <glib/gi18n.h>
+ #include <gtk/gtk.h>
+-#include <gconf/gconf-client.h>
+ #include <glib/gstdio.h>
+ #include <string.h>
+ #include <sys/types.h>
+@@ -42,12 +41,6 @@
+ static gboolean
+ gwget_destination_file_exists(GwgetData *data);
+ 
+-static void 
+-gwget_gconf_notify_toolbar(GConfClient *client,
+-			   guint        cnxn_id,
+-		   	   GConfEntry  *entry,
+-		   	   gpointer     user_data);
+-
+ static gboolean
+ view_selection_func (GtkTreeSelection *selection,
+                         GtkTreeModel     *model,
+@@ -59,7 +52,7 @@
+ main_window(void) 
+ {
+ 	GtkWidget * window = NULL;
+-	gchar *builder_file = NULL,*toolbar_setting;
++	gchar *builder_file = NULL;
+ 	GtkWidget *treev,*toolbar,*menu_item, *combo;
+ 	GtkTreeSelection *select;
+ 	GError* error = NULL;
+@@ -84,7 +77,7 @@
+ 	gtk_tree_selection_set_select_function(select, view_selection_func, NULL, NULL);
+ 
+ 	/*
+-	 * Update window size in gconf on resize 
++	 * Update window size in gsettings on resize 
+ 	 */
+ 	g_signal_connect(GTK_WIDGET(window),
+ 			 "configure-event",
+@@ -94,14 +87,10 @@
+ 	/* add the columns titles to the tree view */
+ 	add_columns (GTK_TREE_VIEW (treev));
+ 
+-	gconf_client = gconf_client_get_default();
+-	gconf_client_add_dir (gconf_client, 
+-			      "/apps/gwget2", 
+-			      GCONF_CLIENT_PRELOAD_NONE,
+-                              NULL);
++	settings = g_settings_new("org.gwget");
+ 	
+ 	/* gwget_pref.download_dir=NULL; */
+-	gwget_get_defaults_from_gconf();
++	gwget_get_defaults_from_gsettings();
+ 	
+ 	/* Drag and drop set up */
+ 	gtk_drag_dest_set(GTK_WIDGET(window), 
+@@ -115,36 +104,6 @@
+ 			 G_CALLBACK(on_gwget_drag_received),
+ 			 GUINT_TO_POINTER(dnd_type));	
+ 					 
+-	/* Set the toolbar like gnome preferences */
+-	toolbar = GTK_WIDGET (gtk_builder_get_object(builder,"toolbar1"));
+-	toolbar_setting = gconf_client_get_string(gconf_client,"/desktop/gnome/interface/toolbar_style",NULL);
+-	
+-	if (toolbar_setting!=NULL) {
+-		if (!strcmp(toolbar_setting,"icons")) {
+-			gtk_toolbar_set_style(GTK_TOOLBAR(toolbar),GTK_TOOLBAR_ICONS);
+-		}
+-		
+-		if (!strcmp(toolbar_setting,"both")) {
+-			gtk_toolbar_set_style(GTK_TOOLBAR(toolbar),GTK_TOOLBAR_BOTH);
+-		}
+-		
+-		if (!strcmp(toolbar_setting,"both-horiz")) {
+-			gtk_toolbar_set_style(GTK_TOOLBAR(toolbar),GTK_TOOLBAR_BOTH_HORIZ);
+-		}
+-		
+-		if (!strcmp(toolbar_setting,"text")) {
+-			gtk_toolbar_set_style(GTK_TOOLBAR(toolbar),GTK_TOOLBAR_TEXT);
+-		}
+-	}
+-	
+-	/* Listen to changes to the key. */
+-	gconf_client_notify_add (gconf_client,
+-				"/desktop/gnome/interface/toolbar_style",
+-				gwget_gconf_notify_toolbar,
+-				NULL,
+-				NULL,
+-				NULL);
+-	
+ 	/* Show the toolbar ? */
+ 	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM (gtk_builder_get_object(builder,"view_toolbar")),gwget_pref.view_toolbar);
+ 	toolbar = GTK_WIDGET (gtk_builder_get_object(builder,"toolbar1"));
+@@ -228,90 +187,91 @@
+ 
+ 
+ void 
+-gwget_get_defaults_from_gconf(void)
++gwget_get_defaults_from_gsettings(void)
+ {
+ 	gint num_dl, i;
+ 	gint64 total_size;
+ 	GwgetData *data;
+-	gchar *key,*url,*dir,*name;
++	gchar *path,*url,*dir,*name;
+ 	DlState state;
+ 	gint default_width, default_height;
+-	GError *error = NULL;
+-	
+-	gwget_pref.http_proxy=gconf_client_get_string(gconf_client,"/apps/gwget2/http_proxy",NULL);
+-	gwget_pref.http_proxy_port=gconf_client_get_int(gconf_client,"/apps/gwget2/http_proxy_port",NULL);
+-	gwget_pref.proxy_uses_auth=gconf_client_get_bool(gconf_client,"/apps/gwget2/proxy_uses_auth",NULL);
+-	gwget_pref.proxy_user=gconf_client_get_string(gconf_client,"/apps/gwget2/proxy_user",NULL);
+-	gwget_pref.proxy_password=gconf_client_get_string(gconf_client,"/apps/gwget2/proxy_password",NULL);
+-	
+-	gwget_pref.gnome_http_proxy=gconf_client_get_string(gconf_client,"/system/http_proxy/host",NULL);
+-	gwget_pref.gnome_http_proxy_port=gconf_client_get_int(gconf_client,"/system/http_proxy/port",NULL);
+-	gwget_pref.gnome_proxy_uses_auth=gconf_client_get_bool(gconf_client,"/system/http_proxy/use_authentication",NULL);
+-	gwget_pref.gnome_proxy_user=gconf_client_get_string(gconf_client,"/system/http_proxy/authentication_user",NULL);
+-	gwget_pref.gnome_proxy_password=gconf_client_get_string(gconf_client,"/system/http_proxy/authentication_password",NULL);
+-	gwget_pref.gnome_use_proxy=gconf_client_get_bool(gconf_client,"/system/http_proxy/use_http_proxy",NULL);
+-	
+-	gwget_pref.network_mode=gconf_client_get_string(gconf_client,"/apps/gwget2/network_mode",NULL);
+-	gwget_pref.download_dir=gconf_client_get_string(gconf_client,"/apps/gwget2/download_dir",NULL);
+-	gwget_pref.num_retries=gconf_client_get_int(gconf_client,"/apps/gwget2/num_retries",NULL);
+-	gwget_pref.resume_at_start=gconf_client_get_bool(gconf_client,"/apps/gwget2/resume_at_start",NULL);
+-	gwget_pref.open_after_dl=gconf_client_get_bool(gconf_client,"/apps/gwget2/open_after_dl",NULL);
+-	gwget_pref.no_create_directories=gconf_client_get_bool(gconf_client,"/apps/gwget2/no_create_directories",NULL);
+-	gwget_pref.follow_relative=gconf_client_get_bool(gconf_client,"/apps/gwget2/follow_relative",NULL);
+-	gwget_pref.convert_links = gconf_client_get_bool(gconf_client,"/apps/gwget2/convert_links",NULL);	
+-	gwget_pref.dl_page_requisites = gconf_client_get_bool(gconf_client,"/apps/gwget2/dl_page_requisites",NULL);
+-	gwget_pref.max_depth=gconf_client_get_int(gconf_client,"/apps/gwget2/max_depth",NULL);
+-	gwget_pref.view_actual_size=gconf_client_get_bool(gconf_client,"/apps/gwget2/view_actual_size",NULL);
+-	gwget_pref.view_total_size=gconf_client_get_bool(gconf_client,"/apps/gwget2/view_total_size",NULL);
+-	gwget_pref.view_percentage=gconf_client_get_bool(gconf_client,"/apps/gwget2/view_percentage",NULL);
+-	gwget_pref.view_elapse_time=gconf_client_get_bool(gconf_client,"/apps/gwget2/view_elapse_time",NULL);
+-	gwget_pref.view_down_speed=gconf_client_get_bool(gconf_client,"/apps/gwget2/view_down_speed",NULL);
+-	gwget_pref.view_toolbar=gconf_client_get_bool(gconf_client,"/apps/gwget2/view_toolbar",NULL);
+-	gwget_pref.view_statusbar=gconf_client_get_bool(gconf_client,"/apps/gwget2/view_statusbar",NULL);
+-	gwget_pref.view_file_type=gconf_client_get_bool(gconf_client,"/apps/gwget2/view_file_type",NULL);
+-	gwget_pref.limit_speed = gconf_client_get_bool (gconf_client,"/apps/gwget2/limit_speed", NULL);
+-	gwget_pref.max_speed=gconf_client_get_int(gconf_client,"/apps/gwget2/max_speed",NULL);
+-	gwget_pref.limit_simultaneousdownloads = gconf_client_get_bool (gconf_client,"/apps/gwget2/limit_simultaneousdownloads", NULL);
+-	gwget_pref.max_simultaneousdownloads=gconf_client_get_int(gconf_client,"/apps/gwget2/max_simultaneousdownloads",NULL);
+-	gwget_pref.ask_save_each_dl = gconf_client_get_bool (gconf_client,"/apps/gwget2/ask_save_each_dl", NULL);
++	GSettingsSchemaSource *schema_source;
++	GSettingsSchema *http_proxy_schema;
++	GSettings *http_proxy_settings,*download_settings;
++	
++	gwget_pref.http_proxy=g_settings_get_string(settings,"http-proxy");
++	gwget_pref.http_proxy_port=g_settings_get_int(settings,"http-proxy-port");
++	gwget_pref.proxy_uses_auth=g_settings_get_boolean(settings,"proxy-uses-auth");
++	gwget_pref.proxy_user=g_settings_get_string(settings,"proxy-user");
++	gwget_pref.proxy_password=g_settings_get_string(settings,"proxy-password");
++	
++	schema_source=g_settings_schema_source_get_default();
++	http_proxy_schema=g_settings_schema_source_lookup(schema_source,"org.gnome.system.proxy.http",FALSE);
++	
++	if (http_proxy_schema != NULL) {
++		http_proxy_settings=g_settings_new("org.gnome.system.proxy.http");
++		gwget_pref.gnome_http_proxy=g_settings_get_string(http_proxy_settings,"host");
++		gwget_pref.gnome_http_proxy_port=g_settings_get_int(http_proxy_settings,"port");
++		gwget_pref.gnome_proxy_uses_auth=g_settings_get_boolean(http_proxy_settings,"use-authentication");
++		gwget_pref.gnome_proxy_user=g_settings_get_string(http_proxy_settings,"authentication-user");
++		gwget_pref.gnome_proxy_password=g_settings_get_string(http_proxy_settings,"authentication-password");
++		gwget_pref.gnome_use_proxy=g_settings_get_boolean(http_proxy_settings,"enabled");
++		g_settings_schema_unref(http_proxy_schema);
++	}
++	
++	gwget_pref.network_mode=g_settings_get_string(settings,"network-mode");
++	gwget_pref.download_dir=g_settings_get_string(settings,"download-dir");
++	gwget_pref.num_retries=g_settings_get_int(settings,"num-retries");
++	gwget_pref.resume_at_start=g_settings_get_boolean(settings,"resume-at-start");
++	gwget_pref.open_after_dl=g_settings_get_boolean(settings,"open-after-dl");
++	gwget_pref.no_create_directories=g_settings_get_boolean(settings,"no-create-directories");
++	gwget_pref.follow_relative=g_settings_get_boolean(settings,"follow-relative");
++	gwget_pref.convert_links = g_settings_get_boolean(settings,"convert-links");	
++	gwget_pref.dl_page_requisites = g_settings_get_boolean(settings,"dl-page-requisites");
++	gwget_pref.max_depth=g_settings_get_int(settings,"max-depth");
++	gwget_pref.view_actual_size=g_settings_get_boolean(settings,"view-actual-size");
++	gwget_pref.view_total_size=g_settings_get_boolean(settings,"view-total-size");
++	gwget_pref.view_percentage=g_settings_get_boolean(settings,"view-percentage");
++	gwget_pref.view_elapse_time=g_settings_get_boolean(settings,"view-elapse-time");
++	gwget_pref.view_down_speed=g_settings_get_boolean(settings,"view-down-speed");
++	gwget_pref.view_toolbar=g_settings_get_boolean(settings,"view-toolbar");
++	gwget_pref.view_statusbar=g_settings_get_boolean(settings,"view-statusbar");
++	gwget_pref.limit_speed = g_settings_get_boolean(settings,"limit-speed");
++	gwget_pref.max_speed=g_settings_get_int(settings,"max-speed");
++	gwget_pref.limit_simultaneousdownloads = g_settings_get_boolean(settings,"limit-simultaneousdownloads");
++	gwget_pref.max_simultaneousdownloads=g_settings_get_int(settings,"max-simultaneousdownloads");
++	gwget_pref.ask_save_each_dl = g_settings_get_boolean(settings,"ask-save-each-dl");
+ 	
+ 	if (!gwget_pref.download_dir) {
+ 		gwget_pref.download_dir = g_strdup(g_get_home_dir());
+-		gconf_client_set_string (gconf_client, "/apps/gwget2/download_dir", g_strdup(g_get_home_dir()), NULL);
++		g_settings_set_string (settings, "download-dir", g_strdup(g_get_home_dir()));
+ 	}
+ 
+ 	if (!gwget_pref.network_mode) {
+ 		gwget_pref.network_mode = g_strdup("direct");
+-		gconf_client_set_string (gconf_client, "/apps/gwget2/network_mode", "direct", NULL);
++		g_settings_set_string (settings, "network-mode", "direct");
+ 	}
+ 
+ 	/* Put in the list of save_in_paths (used by new dialog window) the initial download directory */
+ 	save_in_paths = g_list_append (save_in_paths, gwget_pref.download_dir);
+ 		
+-	num_dl=gconf_client_get_int(gconf_client,"/apps/gwget2/n_downloads",NULL);
++	num_dl=g_settings_get_int(settings,"n-downloads");
+ 	for (i=0;i<num_dl;i++) {
+-		key=g_strdup_printf("/apps/gwget2/downloads_data/%d/url",i);
+-		url=gconf_client_get_string(gconf_client,key,NULL);
+-		key=g_strdup_printf("/apps/gwget2/downloads_data/%d/dir",i);
+-		dir=gconf_client_get_string(gconf_client,key,NULL);
++		path=g_strdup_printf("/org/gwget2/downloads-data/%d/",i);
++		download_settings = g_settings_new_with_path("org.gwget.download", path);
++		url=g_settings_get_string(download_settings,"url");
++		dir=g_settings_get_string(download_settings,"dir");
+ 
+ 		if (url!=NULL) {
+ 			data=gwget_data_create(url,dir);
+ 		
+-			key=g_strdup_printf("/apps/gwget2/downloads_data/%d/filename",i);
+-			name=gconf_client_get_string(gconf_client,key,NULL);
++			name=g_settings_get_string(download_settings,"filename");
+ 			gwget_data_set_filename(data,name);
+ 		
+-			key=g_strdup_printf("/apps/gwget2/downloads_data/%d/state",i);
+-			state=gconf_client_get_int(gconf_client,key,NULL); 
++			state=g_settings_get_int(download_settings,"state"); 
+ 		
+-			key=g_strdup_printf("/apps/gwget2/downloads_data/%d/file_size",i);
+-			total_size = atoll(gconf_client_get_string (gconf_client, key, &error));
+-			if (!error) {		
+-				gwget_data_set_total_size (data, total_size);
+-			} else { 
+-				gwget_data_set_total_size (data, 0);
+-			}
++			total_size = atoll(g_settings_get_string (download_settings, "file-size"));
++			gwget_data_set_total_size (data, total_size);
+ 
+ 			if ( state != DL_COMPLETED ) {
+ 			/*
+@@ -328,7 +288,7 @@
+ 				if ( !gwget_destination_file_exists(data) ) {
+ 					/*
+ 					 * We do not add download, the gwget_remember_downloads
+-					 * call after the cycle will flush gconf
++					 * call after the cycle will flush gsettings
+ 					 */
+ 					continue;
+ 				} else {
+@@ -340,6 +300,8 @@
+ 			}
+ 		}
+ 		    		
++		g_object_unref (download_settings);
++
+ 		gwget_data_set_state_no_sync(data,DL_NOT_RUNNING); 
+ 		if (gwget_pref.resume_at_start && data->state!=DL_COMPLETED) {
+ 			gwget_data_start_download(data);
+@@ -351,21 +313,21 @@
+ 		}
+ 	}
+ 	/*
+-	 * We may have altered the download list so we sync gconf
++	 * We may have altered the download list so we sync gsettings
+ 	 */
+ 	gwget_remember_downloads();
+ 	
+ 	show_prefered_columns();
+ 
+ 	/* Default width and height */
+-	default_width=gconf_client_get_int (gconf_client,"/apps/gwget2/default_width",NULL);
+-	default_height=gconf_client_get_int (gconf_client,"/apps/gwget2/default_height",NULL);
++	default_width=g_settings_get_int (settings,"default-width");
++	default_height=g_settings_get_int (settings,"default-height");
+ 	gtk_window_resize (GTK_WINDOW (gtk_builder_get_object(builder,"main_window")),default_width,default_height);
+ 	
+ 	/* Default position */
+ 	gtk_window_move(GTK_WINDOW(GTK_WIDGET (gtk_builder_get_object(builder,"main_window"))),
+-					gconf_client_get_int (gconf_client,"/apps/gwget2/position_x",NULL),
+-					gconf_client_get_int (gconf_client,"/apps/gwget2/position_y",NULL)
++					g_settings_get_int (settings,"position-x"),
++					g_settings_get_int (settings,"position-y")
+ 					);
+ }			
+ 
+@@ -585,40 +547,6 @@
+ 	}
+ }
+ 
+-static void
+-gwget_gconf_notify_toolbar(GConfClient *client,
+-				   			guint        cnxn_id,
+-		   					GConfEntry  *entry,
+-		   					gpointer     user_data)
+-{
+-	GConfValue  *value;
+-	GtkWidget *toolbar;
+-	gchar *toolbar_setting;
+-	
+-	value = gconf_entry_get_value (entry);
+-	
+-	toolbar = GTK_WIDGET (gtk_builder_get_object(builder,"toolbar1"));
+-	toolbar_setting = (gchar *)gconf_value_get_string(value);
+-	
+-	if (!strcmp(toolbar_setting,"icons")) {
+-		gtk_toolbar_set_style(GTK_TOOLBAR(toolbar),GTK_TOOLBAR_ICONS);
+-	}
+-	
+-	if (!strcmp(toolbar_setting,"both")) {
+-		gtk_toolbar_set_style(GTK_TOOLBAR(toolbar),GTK_TOOLBAR_BOTH);
+-	}
+-	
+-	if (!strcmp(toolbar_setting,"both-horiz")) {
+-		gtk_toolbar_set_style(GTK_TOOLBAR(toolbar),GTK_TOOLBAR_BOTH_HORIZ);
+-	}
+-	
+-	if (!strcmp(toolbar_setting,"text")) {
+-		gtk_toolbar_set_style(GTK_TOOLBAR(toolbar),GTK_TOOLBAR_TEXT);
+-	}
+-
+-	g_free(toolbar_setting);
+-}
+-
+ static void 
+ show_prefered_columns(void)
+ {	
+@@ -729,7 +657,6 @@
+ 	GtkWidget *main_window;
+ 	GtkAllocation allocation;
+ 	gint position_x,position_y;
+-	GConfChangeSet *cs;
+ 
+ 	main_window=GTK_WIDGET (gtk_builder_get_object(builder,"main_window"));
+ 
+@@ -738,18 +665,13 @@
+ 
+ 	/* Remember the size of the window */
+ 	gtk_widget_get_allocation (main_window, &allocation);
+-	cs = gconf_change_set_new ();
+-	gconf_change_set_set_int (cs, "/apps/gwget2/default_height", allocation.height);
+-	gconf_change_set_set_int (cs, "/apps/gwget2/default_width", allocation.width);
++	g_settings_set_int (settings, "default-height", allocation.height);
++	g_settings_set_int (settings, "default-width", allocation.width);
+ 	
+ 	/* Remember the position */
+ 	gtk_window_get_position(GTK_WINDOW(main_window), &position_x, &position_y);
+-	gconf_change_set_set_int (cs, "/apps/gwget2/position_x", position_x);
+-	gconf_change_set_set_int (cs, "/apps/gwget2/position_y", position_y);
+-	
+-	gconf_client_commit_change_set (gconf_client, cs, TRUE, NULL);
+-
+-	gconf_change_set_unref (cs);
++	g_settings_set_int (settings, "position-x", position_x);
++	g_settings_set_int (settings, "position-y", position_y);
+ 
+ 	return FALSE;
+ }
+@@ -760,48 +682,40 @@
+ gboolean 
+ gwget_remember_downloads(void)
+ {
+-	gchar *url,*key;
++	gchar *url,*path;
+ 	GwgetData *gwgetdata;
+ 	GtkTreeIter iter;
+ 	gint i,length;
+ 	gboolean running = FALSE;
+ 	gchar down_size[2048];
++	GSettings *download_settings;
+ 	
+ 	/* calculate the number of items in the treeview */
+ 	length=gtk_tree_model_iter_n_children(GTK_TREE_MODEL(model),NULL);
+ 	
+ 	/* Save the number of current downloads in the treev */
+ 	/* When load again we can known the number of directories to load */
+-	gconf_client_set_int(gconf_client,"/apps/gwget2/n_downloads",length,NULL);
++	g_settings_set_int(settings,"n-downloads",length);
+ 		
+ 	gtk_tree_model_get_iter_first(model,&iter);
+-	/* Save current downloads in GConf */
++	/* Save current downloads in GSettings */
+ 	/* Calculate if there are any dl in retriving state */
+ 	for (i=0;i<length;i++) {
+ 		gtk_tree_model_get (model, &iter, URL_COLUMN, &url, -1);
+ 		gwgetdata=g_object_get_data(G_OBJECT(model),url);
+ 	
+-		key=g_strdup_printf("/apps/gwget2/downloads_data/%d",i);
+-		gconf_client_add_dir(gconf_client,
+-				     key,
+-				     GCONF_CLIENT_PRELOAD_NONE,
+-				     NULL);
+-		key=g_strdup_printf("/apps/gwget2/downloads_data/%d/url",i);
+-		gconf_client_set_string(gconf_client,key,gwgetdata->url,NULL);
+-		
+-		key=g_strdup_printf("/apps/gwget2/downloads_data/%d/filename",i);
+-		gconf_client_set_string(gconf_client,key,gwgetdata->filename,NULL);	
+-	
+-		key=g_strdup_printf("/apps/gwget2/downloads_data/%d/dir",i);
+-		gconf_client_set_string(gconf_client,key,gwgetdata->dir,NULL);	
+-		
+-		key=g_strdup_printf("/apps/gwget2/downloads_data/%d/state",i);
+-		gconf_client_set_int(gconf_client,key,gwgetdata->state,NULL);
++		path=g_strdup_printf("/org/gwget2/downloads-data/%d/",i);
++		download_settings = g_settings_new_with_path("org.gwget.download", path);
++
++		g_settings_set_string(download_settings,"url",gwgetdata->url);
++		g_settings_set_string(download_settings,"filename",gwgetdata->filename);
++		g_settings_set_string(download_settings,"dir",gwgetdata->dir);
++		g_settings_set_int(download_settings,"state",gwgetdata->state);
+ 
+-		key=g_strdup_printf ("/apps/gwget2/downloads_data/%d/file_size",i);
+-		
+ 		g_snprintf(down_size,2047, "%" G_GINT64_FORMAT,gwgetdata->total_size);
+-		gconf_client_set_string (gconf_client,key,down_size,NULL);		
++		g_settings_set_string(download_settings,"file-size",down_size);
++		    		
++		g_object_unref (download_settings);
+ 		
+ 		if (gwgetdata->log_tag != -1) 
+ 		{
+@@ -827,9 +741,11 @@
+ 				      _("There is at least one active download left. Really cancel all running transfers?"), _("No"), _("Yes"));
+ 		if (response == GTK_RESPONSE_OK) {
+ 			stop_all_downloads();
++			g_settings_sync();
+ 			gtk_main_quit();
+ 		}
+ 	} else {
++		g_settings_sync();
+ 		gtk_main_quit();
+ 	}
+ }
+diff -Naur gwget-1.0.4.orig/src/main_window_cb.c gwget-1.0.4/src/main_window_cb.c
+--- gwget-1.0.4.orig/src/main_window_cb.c	2018-09-02 09:37:59.856756000 +0200
++++ gwget-1.0.4/src/main_window_cb.c	2018-09-02 14:01:49.066804085 +0200
+@@ -18,7 +18,6 @@
+ #include <stdlib.h>
+ #include <glib/gi18n.h>
+ #include <gtk/gtk.h>
+-#include <gconf/gconf-client.h>
+ #include <signal.h>
+ 
+ #include "main_window.h"
+@@ -422,53 +421,53 @@
+ 	
+ 	http_proxy=GTK_WIDGET (gtk_builder_get_object(builder_pref,"http_proxy_entry"));
+ 	gwget_pref.http_proxy=g_strdup(gtk_entry_get_text(GTK_ENTRY(http_proxy)));
+-	gconf_client_set_string(gconf_client,"/apps/gwget2/http_proxy",
+-							g_strdup(gtk_entry_get_text(GTK_ENTRY(http_proxy))),NULL);
++	g_settings_set_string(settings,"http-proxy",
++							g_strdup(gtk_entry_get_text(GTK_ENTRY(http_proxy))));
+ 	
+ 	proxy_user=GTK_WIDGET (gtk_builder_get_object(builder_pref,"proxy_user"));
+ 	gwget_pref.proxy_user=g_strdup(gtk_entry_get_text(GTK_ENTRY(proxy_user)));
+-	gconf_client_set_string(gconf_client,"/apps/gwget2/proxy_user",
+-							g_strdup(gtk_entry_get_text(GTK_ENTRY(proxy_user))),NULL);
++	g_settings_set_string(settings,"proxy-user",
++							g_strdup(gtk_entry_get_text(GTK_ENTRY(proxy_user))));
+ 							
+ 	proxy_password=GTK_WIDGET (gtk_builder_get_object(builder_pref,"proxy_password"));
+ 	gwget_pref.proxy_password=g_strdup(gtk_entry_get_text(GTK_ENTRY(proxy_password)));
+-	gconf_client_set_string(gconf_client,"/apps/gwget2/proxy_password",
+-							g_strdup(gtk_entry_get_text(GTK_ENTRY(proxy_password))),NULL);
++	g_settings_set_string(settings,"proxy-password",
++							g_strdup(gtk_entry_get_text(GTK_ENTRY(proxy_password))));
+ 	
+ 	http_proxy_port_spin = GTK_WIDGET (gtk_builder_get_object (builder_pref, "http_proxy_port_spin"));
+ 	gwget_pref.http_proxy_port = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(http_proxy_port_spin));
+-	gconf_client_set_int(gconf_client,"/apps/gwget2/http_proxy_port",
+-						  gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(http_proxy_port_spin)),NULL);
++	g_settings_set_int(settings,"http-proxy-port",
++						  gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(http_proxy_port_spin)));
+ 						  
+ 	proxy_uses_auth_radio=GTK_WIDGET (gtk_builder_get_object(builder_pref,"proxy_uses_auth_radio"));
+ 
+ 	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON (proxy_uses_auth_radio))) {
+-		gconf_client_set_bool(gconf_client,"/apps/gwget2/network_mode",TRUE,NULL);
++		g_settings_set_boolean(settings,"network-mode",TRUE);
+ 		gwget_pref.proxy_uses_auth=TRUE;
+ 	}
+ 	
+ 	manual_radio=GTK_WIDGET (gtk_builder_get_object(builder_pref,"manual_radio"));
+ 	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(manual_radio))) {
+-		gconf_client_set_string(gconf_client,"/apps/gwget2/network_mode","manual",NULL);
++		g_settings_set_string(settings,"network-mode","manual");
+ 		gwget_pref.network_mode="manual";
+ 	}
+ 			
+ 	direct_radio=GTK_WIDGET (gtk_builder_get_object(builder_pref,"direct_radio"));
+ 	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(direct_radio))) {
+-		gconf_client_set_string(gconf_client,"/apps/gwget2/network_mode","direct",NULL);
++		g_settings_set_string(settings,"network-mode","direct");
+ 		gwget_pref.network_mode="direct";
+ 	}	
+ 	
+ 	default_radio=GTK_WIDGET (gtk_builder_get_object(builder_pref,"default_radio"));
+ 	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(default_radio))) {
+-		gconf_client_set_string(gconf_client,"/apps/gwget2/network_mode","default",NULL);
++		g_settings_set_string(settings,"network-mode","default");
+ 		gwget_pref.network_mode="default";
+ 	}	
+ 		
+ 	ask_each_dl = GTK_WIDGET (gtk_builder_get_object(builder_pref, "ask_save_each_dl_check"));
+ 	gwget_pref.ask_save_each_dl = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(ask_each_dl));
+-	gconf_client_set_bool(gconf_client, "/apps/gwget2/ask_save_each_dl",
+-				gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(ask_each_dl)), NULL);
++	g_settings_set_boolean(settings,"ask-save-each-dl",
++				gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(ask_each_dl)));
+ 	
+ 	
+ 	num_retries = GTK_WIDGET (gtk_builder_get_object(builder_pref,"num_retries_spin"));
+@@ -479,18 +478,18 @@
+ 
+ 	open_after_dl = GTK_WIDGET (gtk_builder_get_object(builder_pref, "open_after_dl"));
+ 	gwget_pref.open_after_dl = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(open_after_dl));
+-	gconf_client_set_bool(gconf_client, "/apps/gwget2/open_after_dl",
+-					gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(open_after_dl)), NULL);
++	g_settings_set_boolean(settings,"open-after-dl",
++					gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(open_after_dl)));
+ 	
+ 	pref_window = GTK_WIDGET (gtk_builder_get_object(builder_pref,"pref_window"));
+ 	gtk_widget_hide(pref_window);
+ 	
+-	gconf_client_set_string(gconf_client,"/apps/gwget2/download_dir",
+-							g_strdup(gtk_entry_get_text(GTK_ENTRY(save_in))),NULL);
+-	gconf_client_set_int(gconf_client,"/apps/gwget2/num_retries",
+-						atoi(gtk_entry_get_text(GTK_ENTRY(num_retries))),NULL);
+-	gconf_client_set_bool(gconf_client,"/apps/gwget2/resume_at_start",
+-						  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(resume)),NULL);
++	g_settings_set_string(settings,"download-dir",
++							g_strdup(gtk_entry_get_text(GTK_ENTRY(save_in))));
++	g_settings_set_int(settings,"num-retries",
++						atoi(gtk_entry_get_text(GTK_ENTRY(num_retries))));
++	g_settings_set_boolean(settings,"resume-at-start",
++						  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(resume)));
+ 	
+ 	/* Limit Speed */
+ 	limit_speed_check = GTK_WIDGET (gtk_builder_get_object (builder_pref, "limit_speed_check"));
+@@ -505,71 +504,71 @@
+ 		inform_limit_speed_change();
+ 	}	
+ 	gwget_pref.limit_speed = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(limit_speed_check));
+-	gconf_client_set_bool(gconf_client,"/apps/gwget2/limit_speed",
+-						  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(limit_speed_check)),NULL);
++	g_settings_set_boolean(settings,"limit-speed",
++						  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(limit_speed_check)));
+ 	gwget_pref.max_speed = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(limit_speed_spin));
+-	gconf_client_set_int(gconf_client,"/apps/gwget2/max_speed",
+-						  gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(limit_speed_spin)),NULL);
++	g_settings_set_int(settings,"max-speed",
++						  gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(limit_speed_spin)));
+ 	
+ 	/* Limit Simultaneous downloads */
+ 	limit_simultaneousdownloads_check = GTK_WIDGET (gtk_builder_get_object (builder_pref, "limit_simultaneousdownloads_check"));
+ 	gwget_pref.limit_simultaneousdownloads = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(limit_simultaneousdownloads_check));
+-	gconf_client_set_bool(gconf_client,"/apps/gwget2/limit_simultaneousdownloads",
+-						  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(limit_simultaneousdownloads_check)),NULL);
++	g_settings_set_boolean(settings,"limit-simultaneousdownloads",
++						  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(limit_simultaneousdownloads_check)));
+ 	limit_simultaneousdownloads_spin = GTK_WIDGET (gtk_builder_get_object (builder_pref, "limit_simultaneousdownloads_spin"));
+ 	gwget_pref.max_simultaneousdownloads = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(limit_simultaneousdownloads_spin));
+-	gconf_client_set_int(gconf_client,"/apps/gwget2/max_simultaneousdownloads",
+-						  gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(limit_simultaneousdownloads_spin)),NULL);
++	g_settings_set_int(settings,"max-simultaneousdownloads",
++						  gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(limit_simultaneousdownloads_spin)));
+ 	
+ 	/* Recursivity */
+ 	no_create_directories  = GTK_WIDGET (gtk_builder_get_object(builder_pref,"no_create_directories"));
+ 	gwget_pref.no_create_directories = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(no_create_directories));
+-	gconf_client_set_bool(gconf_client,"/apps/gwget2/no_create_directories",
+-						  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(no_create_directories)),NULL);
++	g_settings_set_boolean(settings,"no-create-directories",
++						  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(no_create_directories)));
+ 	
+ 	/* Follow relative links only */
+ 	follow_relative = GTK_WIDGET (gtk_builder_get_object(builder_pref,"follow_relative"));
+ 	gwget_pref.follow_relative = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(follow_relative));
+-	gconf_client_set_bool(gconf_client,"/apps/gwget2/follow_relative",gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(follow_relative)), NULL);
++	g_settings_set_boolean(settings,"follow-relative",gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(follow_relative)));
+ 	
+ 	/* Convert links */
+ 	convert_links = GTK_WIDGET (gtk_builder_get_object(builder_pref,"convert_links"));
+ 	gwget_pref.follow_relative = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(convert_links));
+-	gconf_client_set_bool(gconf_client,"/apps/gwget2/convert_links",gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(convert_links)), NULL);
++	g_settings_set_boolean(settings,"convert-links",gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(convert_links)));
+ 	/* Download page requisites */
+ 	dl_page_requisites= GTK_WIDGET (gtk_builder_get_object(builder_pref,"dl_page_requisites"));
+ 	gwget_pref.follow_relative = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(dl_page_requisites));
+-	gconf_client_set_bool(gconf_client,"/apps/gwget2/dl_page_requisites",	gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(dl_page_requisites)), NULL);
++	g_settings_set_boolean(settings,"dl-page-requisites",	gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(dl_page_requisites)));
+ 	/* Max Depth */
+ 	max_depth=GTK_WIDGET (gtk_builder_get_object(builder_pref,"max_depth"));
+ 	gwget_pref.max_depth=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(max_depth));
+-	gconf_client_set_int(gconf_client,"/apps/gwget2/max_depth",gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(max_depth)), NULL);
++	g_settings_set_int(settings,"max-depth",gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(max_depth)));
+ 	
+ 	/* Column listing */
+ 	gwget_pref.view_actual_size=gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(GTK_WIDGET (gtk_builder_get_object(builder_pref,"check_actual_size"))));
+-	gconf_client_set_bool(gconf_client,"/apps/gwget2/view_actual_size",
+-	 					  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(GTK_WIDGET (gtk_builder_get_object(builder_pref,"check_actual_size")))),NULL);
++	g_settings_set_boolean(settings,"view-actual-size",
++	 					  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(GTK_WIDGET (gtk_builder_get_object(builder_pref,"check_actual_size")))));
+ 
+ 	gwget_pref.view_total_size=gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(GTK_WIDGET (gtk_builder_get_object(builder_pref,"check_total_size"))));
+-	gconf_client_set_bool(gconf_client,"/apps/gwget2/view_total_size",
+-						  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(GTK_WIDGET (gtk_builder_get_object(builder_pref,"check_total_size")))),NULL);
++	g_settings_set_boolean(settings,"view-total-size",
++						  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(GTK_WIDGET (gtk_builder_get_object(builder_pref,"check_total_size")))));
+ 	
+ 	gwget_pref.view_percentage=gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(GTK_WIDGET (gtk_builder_get_object(builder_pref,"check_percentage"))));
+-	gconf_client_set_bool(gconf_client,"/apps/gwget2/view_percentage",
+-						  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(GTK_WIDGET (gtk_builder_get_object(builder_pref,"check_percentage")))),NULL);
++	g_settings_set_boolean(settings,"view-percentage",
++						  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(GTK_WIDGET (gtk_builder_get_object(builder_pref,"check_percentage")))));
+ 
+ 
+ 	gwget_pref.view_elapse_time=gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(GTK_WIDGET (gtk_builder_get_object(builder_pref,"check_elapse_time"))));
+-	gconf_client_set_bool(gconf_client,"/apps/gwget2/view_elapse_time",
+-						  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(GTK_WIDGET (gtk_builder_get_object(builder_pref,"check_elapse_time")))),NULL);
++	g_settings_set_boolean(settings,"view-elapse-time",
++						  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(GTK_WIDGET (gtk_builder_get_object(builder_pref,"check_elapse_time")))));
+ 
+ 	gwget_pref.view_rem_time=gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(GTK_WIDGET (gtk_builder_get_object(builder_pref,"check_rem_time"))));
+-	gconf_client_set_bool(gconf_client,"/apps/gwget2/view_rem_time",
+-						  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(GTK_WIDGET (gtk_builder_get_object(builder_pref,"check_rem_time")))),NULL);
++	g_settings_set_boolean(settings,"view-rem-time",
++						  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(GTK_WIDGET (gtk_builder_get_object(builder_pref,"check_rem_time")))));
+ 
+ 	gwget_pref.view_down_speed=gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(GTK_WIDGET (gtk_builder_get_object(builder_pref,"check_down_speed"))));
+-	gconf_client_set_bool(gconf_client,"/apps/gwget2/view_down_speed",
+-						  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(GTK_WIDGET (gtk_builder_get_object(builder_pref,"check_down_speed")))),NULL);
++	g_settings_set_boolean(settings,"view-down-speed",
++						  gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(GTK_WIDGET (gtk_builder_get_object(builder_pref,"check_down_speed")))));
+ 
+ }
+ 
+@@ -773,7 +772,7 @@
+ 	} else {
+ 		gtk_widget_show(GTK_WIDGET(toolbar));
+ 	}		
+-	gconf_client_set_bool(gconf_client,"/apps/gwget2/view_toolbar",state,NULL);
++	g_settings_set_boolean(settings,"view-toolbar",state);
+ }
+ 
+ void
+@@ -792,7 +791,7 @@
+ 	} else {
+ 		gtk_widget_show(GTK_WIDGET(statusbar));
+ 	}
+-	gconf_client_set_bool(gconf_client,"/apps/gwget2/view_statusbar",state,NULL);
++	g_settings_set_boolean(settings,"view-statusbar",state);
+ }
+ 
+ void 
+diff -Naur gwget-1.0.4.orig/src/main_window.h gwget-1.0.4/src/main_window.h
+--- gwget-1.0.4.orig/src/main_window.h	2009-08-14 19:19:51.000000000 +0200
++++ gwget-1.0.4/src/main_window.h	2018-09-02 10:05:16.705190543 +0200
+@@ -17,7 +17,6 @@
+ #ifndef _MAIN_WINDOW_H
+ #define _MAIN_WINDOW_H
+ 
+-#include <gconf/gconf-client.h>
+ #include <gtk/gtk.h>
+ 
+ enum {
+@@ -70,8 +69,8 @@
+ /* declared here for be used to add by main_window_cb */
+ GtkTreeModel *model;
+ 
+-/* GConf Client */
+-GConfClient *gconf_client;
++/* GSettings */
++GSettings *settings;
+ 
+ /* List of all current downloads */
+ GList *downloads;
+@@ -81,7 +80,7 @@
+ 
+ /* XML for the preferences gui */
+ /* It's here because we must load it from main_window.c to put */
+-/* the options of the column list from Gconf on load */
++/* the options of the column list from GSettings on load */
+ GtkBuilder *builder_pref;
+ 
+ /* List of introduced path in save in dialogs */
+@@ -94,7 +93,7 @@
+ void on_main_window_delete_event(GtkWidget *widget, gpointer data);
+ GtkTreeModel* create_model(void);
+ void add_columns (GtkTreeView *treeview);
+-void gwget_get_defaults_from_gconf(void);
++void gwget_get_defaults_from_gsettings(void);
+ /* Drag received callback */
+ void on_gwget_drag_received(GtkWidget * widget, GdkDragContext * context, int x,
+                      int y, GtkSelectionData * seldata, guint info,

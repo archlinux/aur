@@ -1,0 +1,385 @@
+diff -Naur gwget-1.0.4.orig/configure.ac gwget-1.0.4/configure.ac
+--- gwget-1.0.4.orig/configure.ac	2014-12-19 00:00:13.449718000 +0100
++++ gwget-1.0.4/configure.ac	2014-12-19 01:45:42.784569280 +0100
+@@ -14,12 +14,25 @@
+ 
+ AM_GCONF_SOURCE_2
+ 
++AC_ARG_ENABLE([gtk3],
++    [AC_HELP_STRING([--enable-gtk3],
++        [compile gwget against gtk+ 3.0 (default: yes)])],
++    [enable_gtk3="${enableval}"],
++    [enable_gtk3="yes"]
++)
++
++if test x"$enable_gtk3" = x"yes"; then
++    GTK_API_VERSION="3.0"
++else
++    GTK_API_VERSION="2.0"
++fi
++
+ GTK_REQUIRED=2.6.0
+ GCONF_REQUIRED=1.1.11
+ DBUS_GLIB_REQUIRED=0.33
+ GIO_REQUIRED=2.16.0
+ 
+-PKG_CHECK_MODULES(GNOME, gtk+-2.0 	>= $GTK_REQUIRED 
++PKG_CHECK_MODULES(GNOME, gtk+-$GTK_API_VERSION 	>= $GTK_REQUIRED 
+  			  gconf-2.0
+ 			  gmodule-2.0
+ 			  gio-unix-2.0 >= $GIO_REQUIRED)
+diff -Naur gwget-1.0.4.orig/data/gwget.ui gwget-1.0.4/data/gwget.ui
+--- gwget-1.0.4.orig/data/gwget.ui	2009-10-17 22:18:33.000000000 +0200
++++ gwget-1.0.4/data/gwget.ui	2014-12-19 00:15:18.775347588 +0100
+@@ -424,7 +424,6 @@
+     <property name="resizable">False</property>
+     <property name="window_position">center-on-parent</property>
+     <property name="type_hint">normal</property>
+-    <property name="has_separator">False</property>
+     <child internal-child="vbox">
+       <object class="GtkVBox" id="dialog-vbox1">
+         <property name="visible">True</property>
+@@ -908,8 +907,9 @@
+                         <property name="visible">True</property>
+                         <property name="spacing">6</property>
+                         <child>
+-                          <object class="GtkComboBoxEntry" id="save_in_comboboxentry">
++                          <object class="GtkComboBox" id="save_in_comboboxentry">
+                             <property name="visible">True</property>
++                            <property name="has-entry">True</property>
+                           </object>
+                           <packing>
+                             <property name="position">0</property>
+diff -Naur gwget-1.0.4.orig/po/POTFILES.in gwget-1.0.4/po/POTFILES.in
+--- gwget-1.0.4.orig/po/POTFILES.in	2009-08-14 19:19:51.000000000 +0200
++++ gwget-1.0.4/po/POTFILES.in	2014-12-19 03:38:43.516402402 +0100
+@@ -6,7 +6,6 @@
+ data/gwget.ui
+ data/preferences.ui
+ epiphany-extension/gwget.xml.in.in
+-src/custom-cell-renderer-progressbar.c
+ src/gwget_data.c
+ src/main.c
+ src/main_window.c
+diff -Naur gwget-1.0.4.orig/src/gwget_data.c gwget-1.0.4/src/gwget_data.c
+--- gwget-1.0.4.orig/src/gwget_data.c	2009-08-14 19:19:51.000000000 +0200
++++ gwget-1.0.4/src/gwget_data.c	2014-12-19 01:12:21.445521846 +0100
+@@ -491,8 +491,8 @@
+ 		
+ 		gwgetdata->log_fd = pipe_fd[0];
+ 		fcntl (gwgetdata->log_fd, F_SETFL, O_NONBLOCK);
+-		gwgetdata->log_tag = gtk_timeout_add (1000, 
+-                	             (GtkFunction) gwget_data_process_information,
++		gwgetdata->log_tag = g_timeout_add (1000, 
++                	             (GSourceFunc)gwget_data_process_information,
+                         	     gwgetdata);
+ 	}
+ 	
+@@ -621,7 +621,7 @@
+ 		kill (data->wget_pid, SIGKILL);
+ 		
+ 		/* Remove callback that communicates with wget */
+-		gtk_timeout_remove (data->log_tag);
++		g_source_remove (data->log_tag);
+ 		
+ 		/* Wait the finish of wget */
+ 		child_pid = waitpid (data->wget_pid, &status, WUNTRACED);
+diff -Naur gwget-1.0.4.orig/src/main_window.c gwget-1.0.4/src/main_window.c
+--- gwget-1.0.4.orig/src/main_window.c	2014-12-19 00:00:13.449718000 +0100
++++ gwget-1.0.4/src/main_window.c	2014-12-19 03:36:32.706530494 +0100
+@@ -27,7 +27,6 @@
+ #include "main_window.h"
+ #include "main_window_cb.h"
+ #include "gwget_data.h"
+-#include "custom-cell-renderer-progressbar.h"
+ #include "utils.h"
+ #include "systray.h"
+ #include "new_window.h"
+@@ -186,8 +185,8 @@
+ 	save_in_model = (GtkTreeModel*)gtk_list_store_new (1, G_TYPE_STRING);
+ 	combo = GTK_WIDGET (gtk_builder_get_object (builder, "save_in_comboboxentry"));
+ 	gtk_combo_box_set_model(GTK_COMBO_BOX(combo), save_in_model);
+-	gtk_combo_box_entry_set_text_column (GTK_COMBO_BOX_ENTRY(combo), 0);
+-	gtk_entry_set_text(GTK_ENTRY(GTK_BIN(combo)->child), gwget_pref.download_dir);
++	gtk_combo_box_set_entry_text_column (GTK_COMBO_BOX(combo), 0);
++	gtk_entry_set_text(GTK_ENTRY(gtk_bin_get_child(GTK_BIN(combo))), gwget_pref.download_dir);
+ 		
+ }
+ 
+@@ -489,7 +488,7 @@
+  	gtk_tree_view_append_column (treeview, column);
+ 	
+ 	/* Percentage */
+-	renderer = ephy_cell_renderer_progress_new();
++	renderer = gtk_cell_renderer_progress_new();
+ 	column = gtk_tree_view_column_new_with_attributes (_("Percentage"),
+ 							renderer,
+ 							"value", 
+@@ -558,7 +557,7 @@
+ 	
+ 	drop_ok = FALSE;
+ 	if (dnd_type==TARGET_URI_LIST) {
+-		uris = g_uri_list_extract_uris ((gchar *)seldata->data);
++		uris = g_uri_list_extract_uris ((gchar *)gtk_selection_data_get_data(seldata));
+ 		for (i=0; uris[i] != NULL; i++) {
+ 		  files = g_list_prepend (files, uris[i]);
+ 		}
+@@ -566,7 +565,7 @@
+ 		file = g_list_first(files)->data;
+ 		drop_ok = TRUE;
+ 	} else if (dnd_type==TARGET_NETSCAPE_URL) {
+-		file=((gchar *) (seldata->data));
++		file=((gchar *) (gtk_selection_data_get_data(seldata)));
+ 		drop_ok = TRUE;
+ 	} else 	{
+ 		gtk_drag_finish(context, FALSE, TRUE, time);
+@@ -728,16 +727,20 @@
+ gwget_remember_window_size_and_position(void)
+ {
+ 	GtkWidget *main_window;
+-	GtkAllocation *allocation;
++	GtkAllocation allocation;
+ 	gint position_x,position_y;
+ 	GConfChangeSet *cs;
+ 
+-	/* Remember the size of the window */
+ 	main_window=GTK_WIDGET (gtk_builder_get_object(builder,"main_window"));
+-	allocation= &(GTK_WIDGET (main_window)->allocation);
++
++	if (!gtk_widget_get_visible(main_window))
++		return FALSE;
++
++	/* Remember the size of the window */
++	gtk_widget_get_allocation (main_window, &allocation);
+ 	cs = gconf_change_set_new ();
+-	gconf_change_set_set_int (cs, "/apps/gwget2/default_height", allocation->height);
+-	gconf_change_set_set_int (cs, "/apps/gwget2/default_width", allocation->width);
++	gconf_change_set_set_int (cs, "/apps/gwget2/default_height", allocation.height);
++	gconf_change_set_set_int (cs, "/apps/gwget2/default_width", allocation.width);
+ 	
+ 	/* Remember the position */
+ 	gtk_window_get_position(GTK_WINDOW(main_window), &position_x, &position_y);
+@@ -771,7 +774,7 @@
+ 	/* When load again we can known the number of directories to load */
+ 	gconf_client_set_int(gconf_client,"/apps/gwget2/n_downloads",length,NULL);
+ 		
+-	gtk_tree_model_get_iter_root(model,&iter);
++	gtk_tree_model_get_iter_first(model,&iter);
+ 	/* Save current downloads in GConf */
+ 	/* Calculate if there are any dl in retriving state */
+ 	for (i=0;i<length;i++) {
+diff -Naur gwget-1.0.4.orig/src/main_window_cb.c gwget-1.0.4/src/main_window_cb.c
+--- gwget-1.0.4.orig/src/main_window_cb.c	2014-12-19 00:00:13.449718000 +0100
++++ gwget-1.0.4/src/main_window_cb.c	2014-12-19 00:00:46.080477412 +0100
+@@ -128,7 +128,7 @@
+ 	gchar *url;
+ 	
+ 	length=gtk_tree_model_iter_n_children(GTK_TREE_MODEL(model),NULL);
+-	gtk_tree_model_get_iter_root(model,&iter);
++	gtk_tree_model_get_iter_first(model,&iter);
+ 	for (i=0;i<length;i++) {
+ 		gtk_tree_model_get (model, &iter, URL_COLUMN, &url, -1);
+ 		gwgetdata=g_object_get_data(G_OBJECT(model),url);
+@@ -151,7 +151,7 @@
+ 	gchar *url;
+ 	
+ 	length=gtk_tree_model_iter_n_children(GTK_TREE_MODEL(model),NULL);
+-	gtk_tree_model_get_iter_root(model,&iter);
++	gtk_tree_model_get_iter_first(model,&iter);
+ 	for (i=0;i<length;i++) {
+ 		gtk_tree_model_get (model, &iter, URL_COLUMN, &url, -1);
+ 		gwgetdata=g_object_get_data(G_OBJECT(model),url);
+@@ -670,7 +670,7 @@
+ 		response = run_dialog(_("Remove completed"),_("Really remove completed downloads from the list?"), GTK_STOCK_CANCEL, _("Remove"));
+ 		if (response == GTK_RESPONSE_OK) {
+ 			length=gtk_tree_model_iter_n_children(GTK_TREE_MODEL(model),NULL);
+-			gtk_tree_model_get_iter_root(model,&iter);
++			gtk_tree_model_get_iter_first(model,&iter);
+ 			for (i=0;i<length;i++) {
+ 				gtk_tree_model_get (model, &iter, URL_COLUMN, &url, -1);
+ 				gwgetdata=g_object_get_data(G_OBJECT(model),url);
+@@ -704,7 +704,7 @@
+ 		response = run_dialog(_("Remove inactive"),_("Really remove inactive downloads from the list?"), GTK_STOCK_CANCEL, _("Remove inactive"));
+ 		if (response == GTK_RESPONSE_OK) {
+ 			length=gtk_tree_model_iter_n_children(GTK_TREE_MODEL(model),NULL);
+-			gtk_tree_model_get_iter_root(model,&iter);
++			gtk_tree_model_get_iter_first(model,&iter);
+ 			for (i=0;i<length;i++) {
+ 				gtk_tree_model_get (model, &iter, URL_COLUMN, &url, -1);
+ 				gwgetdata=g_object_get_data(G_OBJECT(model),url);
+@@ -736,7 +736,7 @@
+ 		response = run_dialog(_("Remove all"),_("Really remove all downloads from the list?"), GTK_STOCK_CANCEL, _("Remove all"));
+ 		if (response == GTK_RESPONSE_OK) {
+ 			length=gtk_tree_model_iter_n_children(GTK_TREE_MODEL(model),NULL);
+-			gtk_tree_model_get_iter_root(model,&iter);
++			gtk_tree_model_get_iter_first(model,&iter);
+ 			for (i=0;i<length;i++) {
+ 				gtk_tree_model_get (model, &iter, URL_COLUMN, &url, -1);
+ 				gwgetdata=g_object_get_data(G_OBJECT(model),url);
+@@ -1106,7 +1106,7 @@
+ 	gboolean inprogress;
+ 
+ 	length = gtk_tree_model_iter_n_children(GTK_TREE_MODEL(model), NULL);
+-	gtk_tree_model_get_iter_root(model, &iter);
++	gtk_tree_model_get_iter_first(model, &iter);
+ 
+ 	inprogress = FALSE;
+ 	for (i=0;i<length;i++) {
+@@ -1136,7 +1136,7 @@
+ 	gchar *url;
+ 
+ 	length=gtk_tree_model_iter_n_children(GTK_TREE_MODEL(model),NULL);
+-	gtk_tree_model_get_iter_root(model,&iter);
++	gtk_tree_model_get_iter_first(model,&iter);
+ 	for (i=0;i<length;i++) {
+ 		gtk_tree_model_get (model, &iter, URL_COLUMN, &url, -1);
+ 		gwgetdata=g_object_get_data(G_OBJECT(model),url);
+@@ -1233,7 +1233,7 @@
+ 		response = run_dialog (message, _("Really remove this download from the list?"), GTK_STOCK_CANCEL, _("Remove download"));
+ 		if (response == GTK_RESPONSE_OK) {
+ 			length=gtk_tree_model_iter_n_children(GTK_TREE_MODEL(model),NULL);
+-			gtk_tree_model_get_iter_root(model,&iter);
++			gtk_tree_model_get_iter_first(model,&iter);
+ 			for (i=0;i<length;i++) {
+ 				gtk_tree_model_get (model, &iter, URL_COLUMN, &url, -1);
+ 				if (gwgetdata==g_object_get_data(G_OBJECT(model),url)) {
+diff -Naur gwget-1.0.4.orig/src/Makefile.am gwget-1.0.4/src/Makefile.am
+--- gwget-1.0.4.orig/src/Makefile.am	2009-06-16 19:58:06.000000000 +0200
++++ gwget-1.0.4/src/Makefile.am	2014-12-19 03:38:28.989379757 +0100
+@@ -35,8 +35,6 @@
+ 	wget-log.h\
+ 	utils.c\
+ 	utils.h\
+-	custom-cell-renderer-progressbar.c\
+-	custom-cell-renderer-progressbar.h\
+ 	new_window.c\
+ 	new_window.h\
+ 	systray.c \
+diff -Naur gwget-1.0.4.orig/src/new_window.c gwget-1.0.4/src/new_window.c
+--- gwget-1.0.4.orig/src/new_window.c	2014-12-19 00:00:13.449718000 +0100
++++ gwget-1.0.4/src/new_window.c	2014-12-19 03:03:59.146165898 +0100
+@@ -47,13 +47,17 @@
+ 		
+ 	window = GTK_WIDGET (gtk_builder_get_object(builder, "new_window"));
+ 	combo = GTK_WIDGET (gtk_builder_get_object (builder, "save_in_comboboxentry"));
+-	save_in_entry=GTK_ENTRY(GTK_BIN(combo)->child);
++	save_in_entry=GTK_ENTRY(gtk_bin_get_child(GTK_BIN(combo)));
+ 	
+-	url=g_strstrip((gchar *)(gtk_entry_get_text (GTK_ENTRY(GTK_WIDGET (gtk_builder_get_object(builder, "url_entry"))))));
++	url=gtk_entry_get_text (GTK_ENTRY(GTK_WIDGET (gtk_builder_get_object(builder, "url_entry"))));
+ 	
+ 	if (strcmp(url,"")) {
+ 		url = g_strdup(url);
+-		save_in=g_strdup(gtk_combo_box_get_active_text (GTK_COMBO_BOX( GTK_WIDGET (gtk_builder_get_object(builder, "save_in_comboboxentry")))));
++		url = g_strstrip(url);
++	}
++
++	if (strcmp(url,"")) {
++		save_in=g_strdup(gtk_entry_get_text (GTK_ENTRY(save_in_entry)));
+ 		
+ 		if (!strcmp(save_in,"") && gwget_pref.download_dir) {
+ 			save_in=g_strdup(gwget_pref.download_dir);
+@@ -133,7 +137,7 @@
+ 						NULL);
+ 	
+ 	combo = GTK_WIDGET (gtk_builder_get_object (builder, "save_in_comboboxentry"));
+-	save_in_entry=GTK_ENTRY(GTK_BIN(combo)->child);
++	save_in_entry=GTK_ENTRY(gtk_bin_get_child(GTK_BIN(combo)));
+ 	
+ 	if (gtk_dialog_run (GTK_DIALOG (filesel)) == GTK_RESPONSE_ACCEPT) {
+ 		char *directory;
+diff -Naur gwget-1.0.4.orig/src/systray.c gwget-1.0.4/src/systray.c
+--- gwget-1.0.4.orig/src/systray.c	2014-12-19 00:00:13.453051000 +0100
++++ gwget-1.0.4/src/systray.c	2014-12-19 00:00:42.077050940 +0100
+@@ -110,9 +110,9 @@
+ 
+ 	item = gtk_image_menu_item_new_from_stock(GTK_STOCK_NEW, NULL);
+ 	gtk_menu_shell_append(GTK_MENU_SHELL(systray_menu), item);
+-	gtk_signal_connect (GTK_OBJECT (item), "activate",
+-			    GTK_SIGNAL_FUNC(on_button_new_clicked),
+-			    NULL);
++	g_signal_connect (G_OBJECT (item), "activate",
++			  G_CALLBACK(on_button_new_clicked),
++			  NULL);
+ 		
+ 	gtk_widget_show(item);
+ 	downloads_menu = GTK_MENU(gtk_menu_new());
+@@ -131,23 +131,23 @@
+ 	
+ 	item = gtk_image_menu_item_new_from_stock(GTK_STOCK_PREFERENCES, NULL);
+ 	gtk_menu_shell_append(GTK_MENU_SHELL(systray_menu), item);
+-	gtk_signal_connect (GTK_OBJECT (item), "activate", 
+-			    GTK_SIGNAL_FUNC(on_boton_pref_clicked), 
+-			    NULL);
++	g_signal_connect (G_OBJECT (item), "activate", 
++			  G_CALLBACK(on_boton_pref_clicked), 
++			  NULL);
+ 	
+ 	item = gtk_separator_menu_item_new();
+ 	gtk_menu_shell_append(GTK_MENU_SHELL(systray_menu), item);
+ 	item = gtk_image_menu_item_new_from_stock(GTK_STOCK_QUIT, NULL);
+ 	gtk_menu_shell_append(GTK_MENU_SHELL(systray_menu), item);
+-	gtk_signal_connect (GTK_OBJECT (item), "activate", 
+-			    GTK_SIGNAL_FUNC(gwget_quit), 
+-			    NULL);
++	g_signal_connect (G_OBJECT (item), "activate", 
++			  G_CALLBACK(gwget_quit), 
++			  NULL);
+ 	/* show */
+ 	gtk_widget_show_all(GTK_WIDGET(systray_menu));
+ 	gtk_menu_popup(GTK_MENU(systray_menu), NULL, NULL, NULL, NULL, button, time);
+ 
+ 	/* clean up */
+-	/* gtk_object_sink(GTK_OBJECT(menu)); */
++	/* gtk_object_sink(G_OBJECT(menu)); */
+ 
+ 	return TRUE;
+ 
+@@ -159,9 +159,9 @@
+ 	GtkWidget *window;
+ 	
+ 	window = GTK_WIDGET (gtk_builder_get_object(builder,"main_window"));
+-	if((gdk_window_get_state(GTK_WIDGET(window)->window) & 
++	if((gdk_window_get_state(gtk_widget_get_window(window)) & 
+ 				 GDK_WINDOW_STATE_ICONIFIED) || 
+-			         !GTK_WIDGET_VISIBLE(window)) 
++			         !gtk_widget_get_visible(window)) 
+ 		gtk_window_present (GTK_WINDOW(window));
+ 	else 
+ 		gtk_widget_hide (GTK_WIDGET(window));
+diff -Naur gwget-1.0.4.orig/src/systray.h gwget-1.0.4/src/systray.h
+--- gwget-1.0.4.orig/src/systray.h	2009-06-16 19:58:06.000000000 +0200
++++ gwget-1.0.4/src/systray.h	2014-12-19 03:27:45.803915153 +0100
+@@ -6,7 +6,11 @@
+ {
+ #endif
+ 
++#if GTK_CHECK_VERSION(3, 0, 0)
++#include <gtk/gtkx.h>
++#else
+ #include <gtk/gtkplug.h>
++#endif
+ #ifdef GDK_WINDOWING_X11
+ #include <gdk/gdkx.h>
+ #endif
+diff -Naur gwget-1.0.4.orig/src/utils.c gwget-1.0.4/src/utils.c
+--- gwget-1.0.4.orig/src/utils.c	2014-12-19 00:00:13.499719000 +0100
++++ gwget-1.0.4/src/utils.c	2014-12-19 00:00:48.227194020 +0100
+@@ -102,7 +102,7 @@
+ 	gchar *url;
+ 
+ 	length=gtk_tree_model_iter_n_children(GTK_TREE_MODEL(model),NULL);
+-	gtk_tree_model_get_iter_root(model,&iter);
++	gtk_tree_model_get_iter_first(model,&iter);
+ 	for (i=0;i<length;i++) {
+ 		gtk_tree_model_get (model, &iter, URL_COLUMN, &url, -1);
+ 		gwgetdata=g_object_get_data(G_OBJECT(model),url);
+@@ -134,7 +134,7 @@
+ 	}
+ 
+ 	length=gtk_tree_model_iter_n_children(GTK_TREE_MODEL(model),NULL);
+-	gtk_tree_model_get_iter_root(model,&iter);
++	gtk_tree_model_get_iter_first(model,&iter);
+ 	for (i=0;i<length;i++) {
+ 		gtk_tree_model_get (model, &iter, URL_COLUMN, &url, -1);
+ 		gwgetdata=g_object_get_data(G_OBJECT(model),url);

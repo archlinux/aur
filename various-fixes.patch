@@ -1,0 +1,126 @@
+diff -Naur gwget-1.0.4.orig/src/gwget-application.c gwget-1.0.4/src/gwget-application.c
+--- gwget-1.0.4.orig/src/gwget-application.c	2018-01-19 11:03:01.897778000 +0100
++++ gwget-1.0.4/src/gwget-application.c	2018-01-19 11:14:58.065852512 +0100
+@@ -103,8 +103,9 @@
+ 
+ 	gwgetdata = gwget_data_new ((gchar *)url);
+ 
+-	gwget_data_add_download(gwgetdata);
+-	gwget_data_start_download(gwgetdata);
++	if (gwget_data_add_download(gwgetdata)) {
++		gwget_data_start_download(gwgetdata);
++	}
+ 
+ 	return TRUE;
+ }
+@@ -126,8 +127,9 @@
+         	gwgetdata->dir = gwget_pref.download_dir;
+         }
+ 	
+-	gwget_data_add_download(gwgetdata);
+-	gwget_data_start_download(gwgetdata);
++	if (gwget_data_add_download(gwgetdata)) {
++		gwget_data_start_download(gwgetdata);
++	}
+ 
+ 	return TRUE;
+ }
+diff -Naur gwget-1.0.4.orig/src/gwget_data.c gwget-1.0.4/src/gwget_data.c
+--- gwget-1.0.4.orig/src/gwget_data.c	2018-01-19 11:03:01.907778000 +0100
++++ gwget-1.0.4/src/gwget_data.c	2018-01-19 11:41:09.319442608 +0100
+@@ -540,7 +540,12 @@
+ 	if (length == 0) {
+ 		dir = gwget_pref.download_dir;
+ 	}
+-	
++
++	length = strlen (dir);
++	if (length == 0) {
++		dir = g_get_home_dir();
++	}
++
+ 	/* Add a trailing '/' unless already present */
+ 	length = strlen (dir);
+ 	if (dir[length - 1] == '/')
+@@ -682,7 +687,7 @@
+ }
+ 
+ /* Add a gwgetdata to the main window */
+-void 
++gboolean 
+ gwget_data_add_download(GwgetData *gwgetdata)
+ {
+ 	gint response;
+@@ -692,7 +697,7 @@
+ 	if (check_url_already_exists(gwgetdata->url)) {
+ 		run_dialog_information(_("Unable to add this download"),
+ 				       _("This download is already added"));
+-		return;
++		return FALSE;
+ 	}
+ 
+ 	/* if the url it's not a file drop a dialog to recurse into the url */
+@@ -728,6 +733,7 @@
+ 	downloads = g_list_append(downloads,gwgetdata);
+ 	new_download(gwgetdata);
+ 	gwget_data_set_state(gwgetdata,DL_NOT_CONNECTED);
++	return TRUE;
+ }
+ 
+ void
+diff -Naur gwget-1.0.4.orig/src/gwget_data.h gwget-1.0.4/src/gwget_data.h
+--- gwget-1.0.4.orig/src/gwget_data.h	2009-06-16 19:58:06.000000000 +0200
++++ gwget-1.0.4/src/gwget_data.h	2018-01-19 11:10:17.784148648 +0100
+@@ -126,7 +126,7 @@
+ void gwget_data_free(gpointer data);
+ void gwget_data_stop_download(GwgetData *data);
+ void gwget_data_set_filename_from_url(GwgetData *gwgetdata, gchar *url);
+-void gwget_data_add_download(GwgetData *gwgetdata);
++gboolean gwget_data_add_download(GwgetData *gwgetdata);
+ void gwget_data_exec(GwgetData *gwgetdata);
+ void gwget_data_set_menus (GwgetData *gwgetdata);
+ void gwget_data_set_popupmenu (GwgetData *gwgetdata);
+diff -Naur gwget-1.0.4.orig/src/main.c gwget-1.0.4/src/main.c
+--- gwget-1.0.4.orig/src/main.c	2018-01-19 11:03:01.897778000 +0100
++++ gwget-1.0.4/src/main.c	2018-01-19 11:11:27.529567168 +0100
+@@ -194,8 +194,9 @@
+                 if (destination_dir) {
+                         gwgetdata->dir = destination_dir;
+                 }
+-                gwget_data_add_download(gwgetdata);
+-                gwget_data_start_download(gwgetdata);
++                if (gwget_data_add_download(gwgetdata)) {
++                        gwget_data_start_download(gwgetdata);
++                }
+                 g_object_unref (file);
+         }
+ }                
+diff -Naur gwget-1.0.4.orig/src/new_window.c gwget-1.0.4/src/new_window.c
+--- gwget-1.0.4.orig/src/new_window.c	2018-01-19 11:03:01.911112000 +0100
++++ gwget-1.0.4/src/new_window.c	2018-01-19 11:30:04.102904944 +0100
+@@ -58,22 +58,14 @@
+ 
+ 	if (strcmp(url,"")) {
+ 		save_in=g_strdup(gtk_entry_get_text (GTK_ENTRY(save_in_entry)));
+-		
+-		if (!strcmp(save_in,"") && gwget_pref.download_dir) {
+-			save_in=g_strdup(gwget_pref.download_dir);
+-		}
+-	
+-		if (!strcmp(save_in,"") && !gwget_pref.download_dir) {
+-			save_in=g_strdup(g_get_home_dir());
+-		}
+-		
+ 		save_in_list = g_strdup(save_in);
+ 		if (g_list_find_custom(save_in_paths, save_in, (GCompareFunc) strcmp)==NULL) {
+ 			save_in_paths = g_list_prepend (save_in_paths, save_in_list);
+ 		}
+ 		gwgetdata = gwget_data_create (url, save_in);
+-		gwget_data_add_download(gwgetdata);
+-		gwget_data_start_download(gwgetdata);
++		if (gwget_data_add_download(gwgetdata)) {
++			gwget_data_start_download(gwgetdata);
++		}
+ 		gtk_widget_hide(window);
+ 		g_free(save_in);
+ 	}

@@ -1,0 +1,115 @@
+diff -Naur gwget-1.0.4.orig/data/gwget.ui gwget-1.0.4/data/gwget.ui
+--- gwget-1.0.4.orig/data/gwget.ui	2024-08-01 23:56:04.682613064 +0200
++++ gwget-1.0.4/data/gwget.ui	2024-08-01 23:56:29.302367235 +0200
+@@ -564,12 +564,13 @@
+       </object>
+     </child>
+     <action-widgets>
+-      <action-widget response="0">okbutton2</action-widget>
++      <action-widget response="ok">okbutton2</action-widget>
+     </action-widgets>
+   </object>
+   <object class="GtkWindow" id="properties_window">
+     <property name="title" translatable="yes">Properties</property>
+     <property name="window_position">center-on-parent</property>
++    <signal name="delete_event" handler="on_window_delete_event"/>
+     <child>
+       <object class="GtkVBox" id="vbox4">
+         <property name="visible">True</property>
+@@ -780,6 +781,7 @@
+     <property name="window_position">center-on-parent</property>
+     <property name="icon">gwget.png</property>
+     <property name="transient_for">properties_window</property>
++    <signal name="delete_event" handler="on_window_delete_event"/>
+     <child>
+       <object class="GtkVBox" id="vbox8">
+         <property name="visible">True</property>
+@@ -877,6 +879,7 @@
+     <property name="skip_taskbar_hint">True</property>
+     <property name="skip_pager_hint">True</property>
+     <property name="transient_for">main_window</property>
++    <signal name="delete_event" handler="on_window_delete_event"/>
+     <child>
+       <object class="GtkVBox" id="vbox9">
+         <property name="visible">True</property>
+diff '--color=auto' -Naur gwget-1.0.4.orig/data/preferences.ui gwget-1.0.4/data/preferences.ui
+--- gwget-1.0.4.orig/data/preferences.ui	2009-08-14 19:19:51.000000000 +0200
++++ gwget-1.0.4/data/preferences.ui	2024-08-02 00:17:24.474568074 +0200
+@@ -37,7 +37,7 @@
+     <property name="window_position">center</property>
+     <property name="skip_taskbar_hint">True</property>
+     <property name="skip_pager_hint">True</property>
+-    <signal name="delete_event" handler="on_pref_cancel_button_clicked"/>
++    <signal name="delete_event" handler="on_window_delete_event"/>
+     <child>
+       <object class="GtkVBox" id="vbox1">
+         <property name="visible">True</property>
+diff -Naur gwget-1.0.4.orig/src/main_window.c gwget-1.0.4/src/main_window.c
+--- gwget-1.0.4.orig/src/main_window.c	2024-08-01 23:56:04.692612964 +0200
++++ gwget-1.0.4/src/main_window.c	2024-08-01 23:56:34.932311026 +0200
+@@ -332,14 +332,22 @@
+ }			
+ 
+ 
+-void 
++gboolean 
+ on_main_window_delete_event(GtkWidget *widget, gpointer data)
+ {
+-	if (gwget_pref.docked) {
+-		gtk_widget_hide(widget);
++	if (gwget_pref.docked && systray_is_embedded()) {
++		gtk_widget_hide_on_delete(widget);
+ 	} else {
+ 		gwget_quit();
+ 	}
++	return TRUE;
++}
++
++gboolean 
++on_window_delete_event(GtkWidget *widget, gpointer data)
++{
++	gtk_widget_hide_on_delete(widget);
++	return TRUE;
+ }
+ 
+ GtkTreeModel *
+diff -Naur gwget-1.0.4.orig/src/main_window.h gwget-1.0.4/src/main_window.h
+--- gwget-1.0.4.orig/src/main_window.h	2024-08-01 23:56:04.692612964 +0200
++++ gwget-1.0.4/src/main_window.h	2024-08-01 23:56:33.238994598 +0200
+@@ -90,7 +90,8 @@
+ GtkTreeModel *save_in_model;
+ 
+ void main_window(void);
+-void on_main_window_delete_event(GtkWidget *widget, gpointer data);
++gboolean on_main_window_delete_event(GtkWidget *widget, gpointer data);
++gboolean on_window_delete_event(GtkWidget *widget, gpointer data);
+ GtkTreeModel* create_model(void);
+ void add_columns (GtkTreeView *treeview);
+ void gwget_get_defaults_from_gsettings(void);
+diff -Naur gwget-1.0.4.orig/src/systray.c gwget-1.0.4/src/systray.c
+--- gwget-1.0.4.orig/src/systray.c	2024-08-01 23:56:04.685946364 +0200
++++ gwget-1.0.4/src/systray.c	2024-08-01 23:56:36.415629550 +0200
+@@ -217,6 +217,12 @@
+ 	gtk_status_icon_set_from_pixbuf(tray_icon, icon_idle);
+ }
+ 
++gboolean
++systray_is_embedded()
++{
++	return gtk_status_icon_is_embedded(tray_icon);
++}
++
+ void
+ gwget_tray_notify (gchar *primary, gchar *secondary, gchar *icon_name)
+ {
+diff -Naur gwget-1.0.4.orig/src/systray.h gwget-1.0.4/src/systray.h
+--- gwget-1.0.4.orig/src/systray.h	2024-08-01 23:56:04.685946364 +0200
++++ gwget-1.0.4/src/systray.h	2024-08-01 23:56:38.432276083 +0200
+@@ -22,6 +22,7 @@
+ void set_icon_newdownload(void);
+ void set_icon_downloading(void);
+ void set_icon_idle(void);
++gboolean systray_is_embedded(void);
+ void gwget_tray_notify(gchar *primary, gchar *secondary, gchar *icon_nam);
+ 
+ 

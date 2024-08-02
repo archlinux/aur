@@ -1,0 +1,12 @@
+diff -Naur gwget-1.0.4.orig/src/gwget-application.h gwget-1.0.4/src/gwget-application.h
+--- gwget-1.0.4.orig/src/gwget-application.h	2012-05-05 12:53:49.679322992 +0000
++++ gwget-1.0.4/src/gwget-application.h	2012-05-05 12:56:21.481488856 +0000
+@@ -18,7 +18,7 @@
+ #ifndef GWGET_APPLICATION_H
+ #define GWGET_APPLICATION_H
+ 
+-#include <glib/gerror.h>
++#include <glib.h>
+ #include <glib-object.h>
+ 
+ G_BEGIN_DECLS

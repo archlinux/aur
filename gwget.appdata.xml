@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.gnome.gwget</id>
+  <launchable type="desktop-id">gwget.desktop</launchable>
+  <name>Gwget</name>
+  <summary>Download files from the Internet</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0-or-later</project_license>
+  <developer_name>David Sedeño</developer_name>
+  <description>
+    <p>Gwget is an application that allows you to manage the downloading of files from the internet. It supports the pausing and resuming of downloads, can download all the accompanying files of a HTML page, and supports drag and drop.</p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://screenshots.debian.net/shrine/screenshot/583/simage/large-a9e8c27c83b6b226e837c399b8d5329c.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">https://gitlab.gnome.org/Archive/gwget</url>
+  <url type="bugtracker">https://gitlab.gnome.org/Archive/gwget/issues</url>
+  <url type="vcs-browser">https://gitlab.gnome.org/Archive/gwget</url>
+  <update_contact>david@alderia.com</update_contact>
+  <translation type="gettext">gwget</translation>
+</component>

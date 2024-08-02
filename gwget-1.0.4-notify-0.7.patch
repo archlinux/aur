@@ -1,0 +1,24 @@
+diff -Naur gwget-1.0.4.orig/configure.ac gwget-1.0.4/configure.ac
+--- gwget-1.0.4.orig/configure.ac	2009-10-17 22:26:09.000000000 +0200
++++ gwget-1.0.4/configure.ac	2011-03-18 00:24:51.993660191 +0100
+@@ -270,7 +270,7 @@
+ #
+ # Check for libnotify
+ #
+-LIBNOTIFY_REQUIRED=0.2.2
++LIBNOTIFY_REQUIRED=0.7.0
+ AC_ARG_ENABLE(libnotify,
+             AC_HELP_STRING([--disable-libnotify],
+                            [Disable libnotify support]),,
+diff -Naur gwget-1.0.4.orig/src/systray.c gwget-1.0.4/src/systray.c
+--- gwget-1.0.4.orig/src/systray.c	2009-08-14 19:19:51.000000000 +0200
++++ gwget-1.0.4/src/systray.c	2011-03-18 00:24:27.612098913 +0100
+@@ -224,7 +224,7 @@
+        		if (!notify_is_initted ())
+ 			if (!notify_init ("gwget"))
+ 		               return;
+-       NotifyNotification *notification = notify_notification_new(primary,secondary,icon_name,NULL);
++       NotifyNotification *notification = notify_notification_new(primary,secondary,icon_name);
+        notify_notification_show(notification,NULL);
+ #endif
+ 

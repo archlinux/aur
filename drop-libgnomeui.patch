@@ -1,0 +1,293 @@
+diff -Naur gwget-1.0.4.orig/configure.ac gwget-1.0.4/configure.ac
+--- gwget-1.0.4.orig/configure.ac	2013-07-04 02:34:53.853338000 +0200
++++ gwget-1.0.4/configure.ac	2013-07-04 02:35:57.021516447 +0200
+@@ -14,15 +14,13 @@
+ 
+ AM_GCONF_SOURCE_2
+ 
+-LIBGNOMEUI_REQUIRED=2.0.0
+-LIBGNOME_REQUIRED=2.0.0
+ GTK_REQUIRED=2.6.0
+ GCONF_REQUIRED=1.1.11
+ DBUS_GLIB_REQUIRED=0.33
+ GIO_REQUIRED=2.16.0
+ 
+-PKG_CHECK_MODULES(GNOME, libgnomeui-2.0 >= $LIBGNOMEUI_REQUIRED
+-		 	  gtk+-2.0 	>= $GTK_REQUIRED 
++PKG_CHECK_MODULES(GNOME, gtk+-2.0 	>= $GTK_REQUIRED 
++ 			  gconf-2.0
+ 			  gmodule-2.0
+ 			  gio-unix-2.0 >= $GIO_REQUIRED)
+ 			
+diff -Naur gwget-1.0.4.orig/src/custom-cell-renderer-progressbar.c gwget-1.0.4/src/custom-cell-renderer-progressbar.c
+--- gwget-1.0.4.orig/src/custom-cell-renderer-progressbar.c	2009-06-16 19:58:06.000000000 +0200
++++ gwget-1.0.4/src/custom-cell-renderer-progressbar.c	2013-07-04 02:35:57.024849860 +0200
+@@ -21,8 +21,8 @@
+ 
+ #include <config.h>
+ #include <stdlib.h>
+-#include <gnome.h>
+-/* #include <glib/gi18n.h> */
++#include <glib/gi18n.h>
++#include <gtk/gtk.h>
+ 
+ #include "custom-cell-renderer-progressbar.h"
+ 
+diff -Naur gwget-1.0.4.orig/src/gwget-application.c gwget-1.0.4/src/gwget-application.c
+--- gwget-1.0.4.orig/src/gwget-application.c	2009-06-20 10:12:37.000000000 +0200
++++ gwget-1.0.4/src/gwget-application.c	2013-07-04 02:35:57.024849860 +0200
+@@ -21,8 +21,6 @@
+ #include "gwget-application.h"
+ 
+ 
+-#include <libgnomeui/gnome-client.h>
+-
+ #ifdef ENABLE_DBUS
+ #include "gwget-application-service.h"
+ #include <dbus/dbus-glib-bindings.h>
+@@ -86,39 +84,6 @@
+ #endif /* ENABLE_DBUS */
+ 
+ 
+-static gint
+-save_session (GnomeClient *client, gint phase, GnomeSaveStyle save_style, gint shutdown,
+-	      GnomeInteractStyle interact_style, gint fast, GwgetApplication *application)
+-{
+-	char **restart_argv;
+-	int argc = 0;
+-
+-	restart_argv = g_new (char *, 1);
+-	restart_argv[0] = g_strdup ("gwget");
+-	gnome_client_set_restart_command (client, argc, restart_argv);
+-
+-	return TRUE;
+-}
+-
+-static void
+-removed_from_session (GnomeClient *client, GwgetApplication *application)
+-{
+-	gwget_application_shutdown (application);
+-}
+-
+-static void
+-init_session (GwgetApplication *application)
+-{
+-	GnomeClient *client;
+-
+-	client = gnome_master_client ();
+-
+-	g_signal_connect (client, "save_yourself",
+-			  G_CALLBACK (save_session), application);	
+-	g_signal_connect (client, "die",
+-			  G_CALLBACK (removed_from_session), application);
+-}
+-
+ gboolean
+ gwget_application_open_window (GwgetApplication  *application,
+                            guint32         timestamp,
+@@ -199,7 +164,6 @@
+ static void
+ gwget_application_init (GwgetApplication *gwget_application)
+ {
+-	init_session (gwget_application);
+ 
+ }
+ 
+diff -Naur gwget-1.0.4.orig/src/main.c gwget-1.0.4/src/main.c
+--- gwget-1.0.4.orig/src/main.c	2009-06-20 10:12:37.000000000 +0200
++++ gwget-1.0.4/src/main.c	2013-07-04 02:35:57.024849860 +0200
+@@ -17,11 +17,13 @@
+ 
+ #include <config.h>
+ 
+-#include <gnome.h>
++#include <stdlib.h>
++#include <errno.h>
++#include <glib/gi18n.h>
++#include <gtk/gtk.h>
+ #include <string.h>
+ #include <gconf/gconf-client.h>
+ #include <locale.h>
+-#include <libgnomeui/libgnomeui.h>
+ #include <gio/gio.h>
+ 
+ #include "main_window_cb.h"
+@@ -201,7 +203,6 @@
+ 
+ int main(int argc,char *argv[])
+ {
+-	GnomeProgram *program;
+ 	GOptionContext *context;
+ 	
+ 	context = g_option_context_new (_("Gwget Download Manager"));
+@@ -220,12 +221,7 @@
+ 	
+ 
+ 	gwget_init_pref(&gwget_pref);
+-	program = gnome_program_init(PACKAGE, VERSION, 
+-				LIBGNOMEUI_MODULE, argc, argv,
+-			        GNOME_PARAM_GOPTION_CONTEXT, context, 
+-				GNOME_PARAM_HUMAN_READABLE_NAME, _("Gwget"),
+-				GNOME_PARAM_APP_DATADIR, GNOME_GWGET_LOCALEDIR,
+-                              	NULL);
++	gtk_init (&argc, &argv);
+ 	
+ #ifdef ENABLE_DBUS
+ 	if (!gwget_application_register_service (GWGET_APP)) {
+@@ -243,9 +239,5 @@
+ 	
+ 	gtk_main();
+ 	
+-	gnome_accelerators_sync ();
+-	
+-	g_object_unref (program);
+-	
+ 	return (0);
+ }
+diff -Naur gwget-1.0.4.orig/src/main_window.c gwget-1.0.4/src/main_window.c
+--- gwget-1.0.4.orig/src/main_window.c	2009-08-14 19:19:51.000000000 +0200
++++ gwget-1.0.4/src/main_window.c	2013-07-04 02:35:57.024849860 +0200
+@@ -15,7 +15,9 @@
+  */
+  
+ #include <config.h>
+-#include <gnome.h>
++#include <stdlib.h>
++#include <glib/gi18n.h>
++#include <gtk/gtk.h>
+ #include <gconf/gconf-client.h>
+ #include <glib/gstdio.h>
+ #include <string.h>
+@@ -118,20 +120,22 @@
+ 	toolbar = GTK_WIDGET (gtk_builder_get_object(builder,"toolbar1"));
+ 	toolbar_setting = gconf_client_get_string(gconf_client,"/desktop/gnome/interface/toolbar_style",NULL);
+ 	
+-	if (!strcmp(toolbar_setting,"icons")) {
+-		gtk_toolbar_set_style(GTK_TOOLBAR(toolbar),GTK_TOOLBAR_ICONS);
+-	}
+-	
+-	if (!strcmp(toolbar_setting,"both")) {
+-		gtk_toolbar_set_style(GTK_TOOLBAR(toolbar),GTK_TOOLBAR_BOTH);
+-	}
+-	
+-	if (!strcmp(toolbar_setting,"both-horiz")) {
+-		gtk_toolbar_set_style(GTK_TOOLBAR(toolbar),GTK_TOOLBAR_BOTH_HORIZ);
+-	}
+-	
+-	if (!strcmp(toolbar_setting,"text")) {
+-		gtk_toolbar_set_style(GTK_TOOLBAR(toolbar),GTK_TOOLBAR_TEXT);
++	if (toolbar_setting!=NULL) {
++		if (!strcmp(toolbar_setting,"icons")) {
++			gtk_toolbar_set_style(GTK_TOOLBAR(toolbar),GTK_TOOLBAR_ICONS);
++		}
++		
++		if (!strcmp(toolbar_setting,"both")) {
++			gtk_toolbar_set_style(GTK_TOOLBAR(toolbar),GTK_TOOLBAR_BOTH);
++		}
++		
++		if (!strcmp(toolbar_setting,"both-horiz")) {
++			gtk_toolbar_set_style(GTK_TOOLBAR(toolbar),GTK_TOOLBAR_BOTH_HORIZ);
++		}
++		
++		if (!strcmp(toolbar_setting,"text")) {
++			gtk_toolbar_set_style(GTK_TOOLBAR(toolbar),GTK_TOOLBAR_TEXT);
++		}
+ 	}
+ 	
+ 	/* Listen to changes to the key. */
+diff -Naur gwget-1.0.4.orig/src/main_window_cb.c gwget-1.0.4/src/main_window_cb.c
+--- gwget-1.0.4.orig/src/main_window_cb.c	2009-08-14 19:19:51.000000000 +0200
++++ gwget-1.0.4/src/main_window_cb.c	2013-07-04 02:45:43.468873631 +0200
+@@ -15,7 +15,9 @@
+  */
+  
+ #include <config.h>
+-#include <gnome.h>
++#include <stdlib.h>
++#include <glib/gi18n.h>
++#include <gtk/gtk.h>
+ #include <gconf/gconf-client.h>
+ #include <signal.h>
+ 
+@@ -217,6 +219,9 @@
+ 	gchar *size;
+ 	int width = 16, height = 16;
+ 	gdouble perc;
++	GIcon *icon;
++	const gchar *const *icon_names;
++	gint i;
+ 	
+ 	gtk_list_store_append (GTK_LIST_STORE(model), &iter); 
+ 	size = g_strdup_printf ("%d kB", (guint32)(gwgetdata->cur_size + 512) / 1024);
+@@ -243,8 +248,17 @@
+ 	theme = gtk_icon_theme_get_default ();
+ 	if (!gwgetdata->recursive) {
+ 		content_type = g_content_type_guess (gwgetdata->local_filename, NULL, 0, NULL);
+-		gwgetdata->icon_name = gnome_icon_lookup (theme, NULL, NULL, NULL, NULL,
+-	 							content_type, GNOME_ICON_LOOKUP_FLAGS_NONE, NULL);
++		icon = g_content_type_get_icon (content_type);
++		icon_names = g_themed_icon_get_names (G_THEMED_ICON (icon));
++		for (i=0; i < g_strv_length ((gchar **)icon_names); i++) {
++			if (gtk_icon_theme_has_icon (theme, icon_names[i])) {
++	 			gwgetdata->icon_name = g_strdup (icon_names[i]);
++				break;
++			}
++		}
++		if (gwgetdata->icon_name == NULL) {
++			gwgetdata->icon_name = g_strdup("text-x-generic");
++		}
+ 	} else {
+ 		gwgetdata->icon_name = g_strdup("gtk-refresh");
+ 	}
+diff -Naur gwget-1.0.4.orig/src/new_window.c gwget-1.0.4/src/new_window.c
+--- gwget-1.0.4.orig/src/new_window.c	2009-08-14 19:19:51.000000000 +0200
++++ gwget-1.0.4/src/new_window.c	2013-07-04 02:35:57.028183273 +0200
+@@ -24,7 +24,8 @@
+ */
+ 
+ 
+-#include <gnome.h>
++#include <glib/gi18n.h>
++#include <gtk/gtk.h>
+ #include <config.h>
+ #include "new_window.h"
+ #include "main_window.h"
+diff -Naur gwget-1.0.4.orig/src/systray.c gwget-1.0.4/src/systray.c
+--- gwget-1.0.4.orig/src/systray.c	2013-07-04 02:34:53.920006000 +0200
++++ gwget-1.0.4/src/systray.c	2013-07-04 02:35:57.028183273 +0200
+@@ -1,6 +1,7 @@
+ 
+ #include <config.h>
+-#include <gnome.h>
++#include <glib/gi18n.h>
++#include <gtk/gtk.h>
+ #include "main_window.h"
+ #include "gwget_data.h"
+ #include "systray.h"
+diff -Naur gwget-1.0.4.orig/src/utils.c gwget-1.0.4/src/utils.c
+--- gwget-1.0.4.orig/src/utils.c	2009-08-14 19:19:51.000000000 +0200
++++ gwget-1.0.4/src/utils.c	2013-07-04 02:35:57.028183273 +0200
+@@ -14,7 +14,8 @@
+  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  */
+ 
+-#include <gnome.h>
++#include <string.h>
++#include <gtk/gtk.h>
+ #include "main_window.h"
+ #include "utils.h"
+ #include "gwget_data.h"
+diff -Naur gwget-1.0.4.orig/src/wget-log.c gwget-1.0.4/src/wget-log.c
+--- gwget-1.0.4.orig/src/wget-log.c	2009-10-04 20:29:35.000000000 +0200
++++ gwget-1.0.4/src/wget-log.c	2013-07-04 02:35:57.028183273 +0200
+@@ -25,7 +25,9 @@
+ #define _FILE_OFFSET_BITS 64
+ 
+ #include <config.h>
+-#include <gnome.h>
++#include <stdlib.h>
++#include <glib/gi18n.h>
++#include <gtk/gtk.h>
+ #include <string.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
