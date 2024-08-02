@@ -2,7 +2,7 @@
 pkgname=netscout-git
 _pkgname=netscout
 pkgver=0.1.1.2f409df703
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool designed to bypass HTTP 403 (Forbidden) pages using various techniques."
 arch=('any')
 url="https://github.com/caio-ishikawa/netscout"
@@ -12,6 +12,11 @@ provides=('netscout')
 conflicts=('netscout' 'netscout-bin')
 source=("git+$url")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 build() {
   cd $_pkgname
