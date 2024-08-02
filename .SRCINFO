@@ -1,6 +1,6 @@
 pkgbase = swayosd-percentage-display-git
 	pkgdesc = A GTK based on screen display for keyboard shortcuts that shows percentages
-	pkgver = r61.2463549
+	pkgver = r62.c6c9604
 	pkgrel = 1
 	url = https://github.com/Ferdi265/SwayOSD
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = swayosd-percentage-display-git
 	makedepends = sassc
 	depends = gtk3
 	depends = gtk-layer-shell
-	depends = pulseaudio
+	depends = pulse-native-provider
 	depends = libinput
 	provides = swayosd
 	provides = swayosd-git
