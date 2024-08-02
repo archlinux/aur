@@ -2,15 +2,16 @@
 
 pkgname=libastal-hyprland-git
 _pkgname=hyprland
-pkgver=r7.ba2ee78
+pkgver=r8.1487240
 pkgrel=1
 provides=(astal-hyprland libastal-hyprland libastal-hyprland.so=0-64)
 pkgdesc="Library and cli tool for Hyprland IPC sockets"
 arch=(x86_64)
-license=(GPL-3)
+license=(LGPL-2.1-only)
 url="https://github.com/astal-sh/hyprland"
 depends=(
   glib2
+  glibc
   json-glib
 )
 makedepends=(
@@ -20,7 +21,7 @@ makedepends=(
   vala
 )
 groups=("libastal")
-source=("git+${url}")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
