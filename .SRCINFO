@@ -1,6 +1,6 @@
 pkgbase = dingtalk-bin
 	pkgdesc = 钉钉
-	pkgver = 7.5.20.40705
+	pkgver = 7.6.0.40718
 	pkgrel = 1
 	url = https://www.dingtalk.com/
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = dingtalk-bin
 	sha512sums = c8570ec4cd978e26ac622a83db053a0555324752f5000dc5b3cd680d782138e8ef856f09ec9b7850e04e1faa1e39de94dabeb16fbfbe0fd44af43247b30e8b2f
 	sha512sums = 963f23a36b9a25bb7e89a59b9f108886c08e9cdfc42e065a45040a96b848fc2b778a9e31d8c0013d2cb4b167e83eb9362accd5428f1b7ccd1062c2aea2ee22a9
 	sha512sums = 5f05f90704526fbd16371f6f9deaa171a3cac25a103b21daba72a3028ab7cdf9b566a3ac7842c6ce88d30cc29fe0c8b989c77aa36daab73793a827a1a0d6c775
-	source_x86_64 = dingtalk_7.5.20.40705-x86_64.deb::https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Release/com.alibabainc.dingtalk_7.5.20.40705_amd64.deb
-	sha512sums_x86_64 = 887127ea6203102225d488db726536d059626145916faf0b0ade60ade95881a14c25b26d74eeafb48aa572da3ac6024c533136d6d3dedd3b1fc4883dc4568a80
+	source_x86_64 = dingtalk_7.6.0.40718-x86_64.deb::https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Release/com.alibabainc.dingtalk_7.6.0.40718_amd64.deb
+	sha512sums_x86_64 = ca496489c9376bbe27338c638e6a27d2bf7f3760d1e5cf0bcfe2d57f942a601fda97311e021e8aee169b74fec9b02b0360aaab17ea6a19574ce234c5ec04d816
 
 pkgname = dingtalk-bin
