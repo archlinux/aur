@@ -1,7 +1,7 @@
 pkgbase = open-delta
 	pkgdesc = DEscription Language of TAxonomy
 	pkgver = 1.03_java8
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/AtlasOfLivingAustralia/open-delta
 	arch = x86_64
