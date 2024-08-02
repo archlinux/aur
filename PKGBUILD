@@ -2,23 +2,17 @@
 # Contributor: Malacology <guoyizhang at malacology dot net>
 
 pkgname=open-delta
-pkgver=1.0.3_beta
+pkgver=1.03_java8
 pkgrel=1
 epoch=1
 pkgdesc="DEscription Language of TAxonomy"
 arch=('x86_64')
 url="https://github.com/AtlasOfLivingAustralia/open-delta"
-license=('unknown')
-source=("$pkgname-$pkgver::${url}/archive/refs/tags/${pkgver//_/-}.tar.gz"
-	"$pkgname.patch::https://patch-diff.githubusercontent.com/raw/AtlasOfLivingAustralia/open-delta/pull/270.patch")
-sha256sums=('794915ca4beb42298ff5d42031b015a6ee2cdb8746a697a24a552abbe5103e0c'
-            'c5b3974cb7fe1abd54457ff95558d072aa5e6d646c22c7b73843bdf113149e41')
+license=('MPL-1.1')
+source=("$pkgname-$pkgver::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
+sha256sums=('9bb7a966dca4bb63cecc6fb867bcd02ea40100d3bba5da1ffe74aab7bc77202a')
 depends=( 'java-runtime=8')
 makedepends=('java-environment=8' 'maven' 'gendesk' 'icedtea-web')
-prepare(){
-  cd $srcdir/$pkgname-${pkgver//_/-}
-  patch -p1 < $srcdir/$pkgname.patch
-}
 build(){
   cd $srcdir/$pkgname-${pkgver//_/-}
   mvn package -Dmaven.test.skip=true
