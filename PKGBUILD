@@ -1,8 +1,8 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=python-luna-usb-git
-_gitpkgname=luna-usb
-pkgver=0.1.0.post0+git.d933d428
+_gitpkgname=luna
+pkgver=0.1.1.post4+git.d24193e1
 pkgrel=1
 pkgdesc='Amaranth HDL framework for monitoring, hacking, and developing USB devices'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/greatscottgadgets/luna'
 license=('BSD-3-Clause')
 depends=(
   'python'
-  'python-amaranth'
+  'python-amaranth<0.5'
   'python-apollo'
   'python-pyserial'
   'python-pyusb'
@@ -21,6 +21,7 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
+  'python-jschon'
   'python-pyproject-patcher'
   'python-setuptools'
   'python-setuptools-git-versioning'
