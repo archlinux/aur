@@ -6,10 +6,10 @@
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
 pkgver=0.3.17.1.r7.gad9af79
-_pandoc_type=stock
-_pandoc_ver=3.2.1
-_pandoc_commit=501d7cc02d8ed694e32f26756bc433250d34b193
-pkgrel=1
+_pandoc_type=version
+_pandoc_ver=3.3
+_pandoc_commit=9a778e01ccfeaa1ff4defe88032ad4f701657fb8
+pkgrel=2
 pkgdesc="Pandoc filter for cross-references (static build)"
 url="https://github.com/lierdakil/pandoc-crossref"
 license=("GPL-2.0-or-later")
@@ -20,9 +20,7 @@ replaces=('pandoc-crossref-bin' 'pandoc-crossref-static' 'pandoc-crossref-lite')
 depends=("pandoc=$_pandoc_ver")
 makedepends=('git' 'stack' 'pandoc' 'yq')
 source=("$pkgname::git+$url.git")
-source+=(fix-tests.patch)
-sha256sums=('SKIP'
-            'cf79ae03433da133706e011b21869fdc5c44786cb848837c024905953fe5b7b8')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
@@ -77,6 +75,9 @@ prepare() {
     _pandoc_bound=$(awk -F. '/[0-9]+\./{$NF++;print}' OFS=. <<<"${_pandoc_ver}")
     sed -i "/pandoc.*< \?$_pandoc_ver/s#< \?[0-9.]*#<$_pandoc_bound#" \
         pandoc-crossref.cabal package.yaml
+
+    _bumpVer typst 0.5.0.5
+    _bumpVer pandoc-lua-engine 0.3.1
 }
 
 check() {
