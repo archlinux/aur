@@ -6,13 +6,13 @@
 
 pkgname=mingw-w64-schroedinger
 pkgver=1.0.11
-pkgrel=5
+pkgrel=6
 pkgdesc='An implemenation of the Dirac video codec in ANSI C code (mingw-w64)'
 arch=('any')
 url='https://launchpad.net/schroedinger'
 license=('GPL2' 'LGPL2.1' 'MPL' 'MIT')
 depends=('mingw-w64-crt' 'mingw-w64-orc')
-options=(!strip !buildflags !libtool staticlibs)
+options=(!strip !buildflags !libtool staticlibs !debug)
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 source=("https://launchpad.net/schroedinger/trunk/${pkgver}/+download/schroedinger-${pkgver}.tar.gz"{,.asc}
         'testsuite.patch')
@@ -32,6 +32,7 @@ build() {
     mkdir -p ${srcdir}/build-${_arch} && cd ${srcdir}/build-${_arch}
 
     unset LDFLAGS CPPFLAGS
+    export CFLAGS="-fpermissive" CXXFLAGS="-fpermissive"
     $srcdir/schroedinger-$pkgver/configure --prefix=/usr/${_arch} --host=${_arch}
 
     make
@@ -43,11 +44,12 @@ package() {
     cd ${srcdir}/build-${_arch}
 
     make DESTDIR="$pkgdir" install
-    install -m644 -D ${srcdir}/schroedinger-$pkgver/COPYING.MIT "$pkgdir/usr/${_arch}/share/licenses/schroedinger/COPYING.MIT"
     ${_arch}-strip -x -g ${pkgdir}/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g ${pkgdir}/usr/${_arch}/lib/*.a
     rm -r ${pkgdir}/usr/${_arch}/share/gtk-doc
   done
+
+  install -m644 -D ${srcdir}/schroedinger-$pkgver/COPYING.MIT "$pkgdir/usr/share/licenses/${pkgname}/schroedinger/COPYING.MIT"
 }
 
 # vim: ts=2 sw=2 et:
