@@ -2,7 +2,7 @@
 
 _name=guidata
 pkgname="python-${_name}"
-pkgver=3.5.3
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Python library generating graphical user interfaces for easy dataset editing and display"
 arch=("any")
@@ -12,7 +12,7 @@ depends=(python-qtpy python-pyqt5-datavisualization python-pyqt5-webengine pytho
 makedepends=(python-build python-installer python-wheel python-pydantic)
 optdepends=('spyder: GUI-based test launcher, dict/array editor')
 source=("$_name-$pkgver.tar.gz::https://github.com/PlotPyStack/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a70804ec8e2c56b7bfdb44c89060a268dca1ac0264803d528a45eef9422081e0')
+sha256sums=('67ea4c6016971b1263af74b6c4d5082e18529ce5a9772c2298324dfcf5bead8e')
 
 build() {
   cd "${_name}-${pkgver}"
