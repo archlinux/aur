@@ -1,0 +1,4 @@
+[python-wheezy-captcha]
+source = "github"
+github = "akornatskyy/wheezy.captcha"
+use_latest_release = "true"
