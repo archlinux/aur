@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-ggsn-git
-pkgver=1.11.0.r31.g7ae1177
+pkgver=1.12.0.r5.g5f8960b
 pkgrel=1
 pkgdesc="Open Source implementation of a GGSN (Gateway GPRS Support Node)"
 url="https://osmocom.org/projects/openggsn"
@@ -11,7 +11,7 @@ license=('GPL-2.0-only AND LGPL-2.1-or-later AND MIT')
 depends=('libosmocore-git' 'talloc')
 makedepends=('git')
 provides=("${pkgname%-git}=${pkgver}"
-          'libgtp.so=6-64')
+          'libgtp.so=10-64')
 conflicts=("${pkgname%-git}")
 backup=('etc/osmocom/osmo-ggsn.cfg')
 source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git"
@@ -35,6 +35,11 @@ build() {
               --sysconfdir=/etc \
               --localstatedir=/var
   make
+}
+
+check() {
+  cd "${pkgname%-git}"
+  make check
 }
 
 package() {
