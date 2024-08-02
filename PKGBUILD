@@ -2,18 +2,18 @@
 ## Based on rtorrent [community]
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=rtorrent-git
-pkgver=0.9.7.r102.gd067bd8
+pkgver=0.9.7.r109.g1da0e34
 pkgrel=1
 pkgdesc='A ncurses BitTorrent client written in C++, based on the libTorrent libraries for Unix.'
 url='https://github.com/rakshasa/rtorrent/'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('curl' 'libtorrent-git' 'xmlrpc-c')
-makedepends=('git')
+makedepends=('git' 'autoconf-archive')
 conflicts=("${pkgname%-*}")
 provides=("${pkgname%-*}")
 install="${pkgname}".install
-source=("$pkgname::git+https://github.com/rakshasa/rtorrent.git")
+source=("$pkgname::git+$url")
 md5sums=("SKIP")
 
 pkgver() {
@@ -23,8 +23,8 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$pkgname"
-	autoreconf -i
-	export CXXFLAGS="${CXXFLAGS} -std=c++14 -fno-strict-aliasing"
+	autoreconf -iv
+	export CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing"
 	./configure --prefix=/usr --enable-debug --with-xmlrpc-c
 	make
 }
@@ -32,7 +32,7 @@ build() {
 package() {
 	cd "$srcdir/$pkgname"
 	make DESTDIR="$pkgdir" install
-	install -Dm644 doc/faq.xml "$pkgdir/usr/share/doc/rtorrent/faq.xml"
-	install -Dm644 doc/old/rtorrent.1 "$pkgdir/usr/share/man/man1/rtorrent.1"
-	install -Dm644 doc/rtorrent.rc "$pkgdir/usr/share/doc/rtorrent/rtorrent.rc"
+	install -D -m644 doc/faq.xml "$pkgdir/usr/share/doc/rtorrent/faq.xml"
+	install -D -m644 doc/old/rtorrent.1 "$pkgdir/usr/share/man/man1/rtorrent.1"
+	install -D -m644 doc/rtorrent.rc "$pkgdir/usr/share/doc/rtorrent/rtorrent.rc"
 }
