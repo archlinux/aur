@@ -2,8 +2,8 @@
 # Contributor: Integral
 
 pkgname=qcm-git
-pkgver=1.0.2.r5.gab29b2cd
-pkgrel=3
+pkgver=1.0.3.r24.g588f96e3
+pkgrel=1
 pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
 url="https://github.com/hypengw/Qcm"
@@ -48,11 +48,14 @@ conflicts=("qcm")
 
 function prepare() {
 	cd Qcm
-	#git submodule update --init --depth 1 --remote
 	git submodule update --init
 	if [ -d "${srcdir}"/Qcm/build ]; then
 		rm -r "${srcdir}"/Qcm/build
 	fi
+	if [ -d qml_material ]; then
+		rm -rf qml_material
+	fi
+	git clone https://github.com/hypengw/QmlMaterial.git qml_material
 }
 
 function pkgver(){
