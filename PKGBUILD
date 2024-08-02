@@ -7,7 +7,9 @@ arch=("x86_64")
 url="https://worldofgoo2.com"
 license=('custom')
 depends=()
-source=("world-of-goo-2.desktop" "world-of-goo-2.png" "World_of_Goo_2-x86_64.12329.171.AppImage")
+source=("world-of-goo-2.desktop" 
+        "world-of-goo-2.png" 
+        "local://World_of_Goo_2-x86_64.12329.171.AppImage")
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
@@ -21,6 +23,6 @@ package() {
   cp "$srcdir/world-of-goo-2.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/world-of-goo-2.png"
 }
 
-sha256sums=('bdbccb2818a242beb073d2d47e62b7852a5655ab83fb347f8b23b51bfff9d282'
+sha256sums=('5c6e07178180326f29ea53166f777f7cf52ba77353490990fc6ecb0becf31b00'
             '54ef5f65d8ad932bbe1e3d8431002ba7e9cc16d366bbfc33ef67b6eaee1e0614'
             'fdd39d7abdf7de5aa02a2f9d402233795b4f39b458b27e4b49895d5c55da2bca')
