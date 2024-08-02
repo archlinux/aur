@@ -1,15 +1,15 @@
-# Maintainer: PkmX <pkmx.tw@gmail.com>
+# Contributor: PkmX <pkmx.tw@gmail.com>
 
 pkgname=spidermonkey-git
 _gitname=gecko-dev
-pkgver=51.0a1.r45e888f
+pkgver=130.0a1+20240803.1+gd92a07556499
 pkgrel=1
 pkgdesc="Mozilla's JavaScript engine used in Firefox"
 arch=('i686' 'x86_64')
 url='https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey'
-license=('MPL')
-depends=('zlib')
-makedepends=('git' 'clang' 'autoconf2.13' 'python2')
+license=('MPL-2.0')
+depends=('gcc-libs' 'sh' 'zlib')
+makedepends=('cargo' 'git' 'python3')
 provides=('spidermonkey')
 conflicts=('spidermonkey')
 source=("$_gitname::git+https://github.com/mozilla/gecko-dev.git")
@@ -17,12 +17,28 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
-  printf '%s.r%s' $(python2 python/mozbuild/mozbuild/milestone.py --topsrcdir .) $(git rev-parse --short HEAD)
+  #stolen from firefox-hg
+  local version=$(< browser/config/version_display.txt)
+  local date=$(date +%Y%m%d) # Without TZ=UTC, to match systemd timer
+  local counter=1
+  local rev=$(git rev-parse --short HEAD)
+
+  local last_rev=${pkgver##*+g} tmp=${pkgver#*+}
+  tmp=${tmp%+*}
+  local last_date=${tmp%.*} last_counter=${tmp#*.}
+  if [[ $date == $last_date ]]; then
+    if [[ $rev == $last_rev ]]; then
+      counter=$last_counter
+    else
+      counter=$((last_counter + 1))
+    fi
+  fi
+
+  echo $version+$date.$counter+g$rev
 }
 
 build() {
   cd "$_gitname/js/src"
-  autoconf-2.13
   mkdir -p build_OPT.OBJ
   cd build_OPT.OBJ
   # configure fails with hardened clang, reset CPPFLAGS

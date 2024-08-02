@@ -1,15 +1,16 @@
 pkgbase = spidermonkey-git
 	pkgdesc = Mozilla's JavaScript engine used in Firefox
-	pkgver = 51.0a1.r45e888f
+	pkgver = 130.0a1+20240803.1+gd92a07556499
 	pkgrel = 1
 	url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey
 	arch = i686
 	arch = x86_64
-	license = MPL
+	license = MPL-2.0
+	makedepends = cargo
 	makedepends = git
-	makedepends = clang
-	makedepends = autoconf2.13
-	makedepends = python2
+	makedepends = python3
+	depends = gcc-libs
+	depends = sh
 	depends = zlib
 	provides = spidermonkey
 	conflicts = spidermonkey
@@ -17,4 +18,3 @@ pkgbase = spidermonkey-git
 	md5sums = SKIP
 
 pkgname = spidermonkey-git
-
