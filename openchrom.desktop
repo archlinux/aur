@@ -6,6 +6,6 @@ GenericName=Chromatography Data System
 Icon=openchrom
 Exec=openchrom %f
 Comment=Visualization and Analysis of Chromatography, Spectrometry and Spectroscopy Data
-Categories=Education;Chemistry;
+Categories=Science;Chemistry;
 Terminal=false
 StartupWMClass=openchrom

@@ -3,12 +3,12 @@
 
 pkgname=openchrom
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Visualization and analysis of mass spectrometric and chromatographic data"
 arch=("x86_64")
 url="https://openchrom.net/"
 license=('EPL')
-# Don't build from source as there are no tagged releases.
+# Don't build from source as there are no tagged releases and the marketplace is missing.
 source=("https://products.lablicate.com/openchrom/${pkgver}/openchrom-lablicate_linux.x86_64_${pkgver}.tar.gz"
         "openchrom.desktop")
 # Avoid checksums, because minor release overwrite without change in versioning.
