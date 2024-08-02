@@ -2,7 +2,7 @@
 
 _pkgname="mozillavpn"
 pkgname="$_pkgname-git"
-pkgver=2.23.1.r75.gd9b70a5
+pkgver=2.23.1.r96.g066ac95
 pkgrel=1
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 url="https://github.com/mozilla-mobile/mozilla-vpn-client"
@@ -131,6 +131,12 @@ _prepare_getsentry_sentry_native() (
   _submodule_update
 )
 
+_cargo_env() {
+  : ${CARGO_HOME:=$SRCDEST/cargo-home}
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+}
+
 _source_mozillavpn
 _source_getsentry_sentry_native
 
@@ -147,10 +153,16 @@ prepare() {
 
   _prepare_mozillavpn
   _prepare_getsentry_sentry_native
+
+  _cargo_env
+
+  cd "$_pkgsrc"
+  cargo update
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  : ${CARGO_HOME:=$SRCDEST/cargo-home}
+  _cargo_env
 
   CFLAGS+=" -ffat-lto-objects"
 
