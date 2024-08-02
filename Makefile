@@ -33,7 +33,9 @@ mrproper:	clean
 	rm -f pkg src $(NAME)-*.gz
 
 geninteg:
-	makepkg --geninteg >>PKGBUILD
+	sed -e '/^b2sums=/,/)$$/d' PKGBUILD >.tmp
+	makepkg --geninteg | sed -e 's/^\s\+/\t/' >>.tmp
+	mv .tmp PKGBUILD
 
 .SRCINFO:	PKGBUILD
 	makepkg --printsrcinfo >$@
