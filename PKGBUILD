@@ -1,7 +1,7 @@
 # Maintainer: Samsagax <samsagax at gmail dot com>
 _pkgbase=chimeraos-device-quirks
 pkgname=${_pkgbase}-git
-pkgver=r247.696f348
+pkgver=r248.d7fbdc9
 pkgrel=1
 pkgdesc="A collection of device specific configuration files"
 arch=('any')
