@@ -1,6 +1,6 @@
 # Maintainer: Parmjot Singh <parmjotsinghrobot at gmail dot com>
 pkgname=way-shell
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="A Gnome inspired desktop shell for Wayland compositors/window managers written in C and Gtk4."
 arch=(x86_64)
