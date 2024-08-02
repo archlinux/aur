@@ -43,6 +43,8 @@ prepare() {
 build() {
   cd "${srcdir}"
   for _arch in ${_architectures}; do
+    export CFLAGS=-fpermissive
+    source mingw-env ${_arch}
     ${_arch}-meson cairo build-${_arch} \
       --buildtype=release \
       --default-library=both \
