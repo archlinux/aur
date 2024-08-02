@@ -1,0 +1,14 @@
+pkgbase = firefox-webserial
+	pkgdesc = Native connector for WebSerial API in Firefox
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/kuba2k2/firefox-webserial
+	arch = x86_64
+	license = MIT
+	depends = firefox
+	source = firefox-webserial-0.3.2::https://github.com/kuba2k2/firefox-webserial/releases/download/v0.3.2/firefox-webserial-linux-x86-64
+	source = io.github.kuba2k2.webserial.json
+	sha256sums = d710b19b1ad1997bba4c15997ce72d0658658244e3f90bac93dd4cb5b6a393c6
+	sha256sums = e92b1d6a2f617446cb85aeabdff9058b06c5beea1311a753444374aadf5e10f5
+
+pkgname = firefox-webserial
