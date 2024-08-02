@@ -2,7 +2,7 @@
 pkgname=pyclean-git
 _pkgname=pyclean
 pkgver=2023.09.16.25ccced
-pkgrel=1
+pkgrel=2
 pkgdesc="A Usenet spamfilter written in Python"
 url="https://github.com/crooks/pyclean"
 arch=('x86_64')
@@ -15,6 +15,11 @@ backup=(usr/local/news/pyclean/etc/ih_substrings
         usr/local/news/pyclean/etc/pyclean.cfg)
 source=("git+$url")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
   cd "$srcdir"/$_pkgname
