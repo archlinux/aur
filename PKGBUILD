@@ -2,13 +2,18 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-iuh-git
-pkgver=1.5.1.r9.g342f4b6a
+pkgver=1.6.0.r0.gbb71c57a
 pkgrel=1
 pkgdesc="Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)"
 url="http://osmocom.org/projects/osmohnbgw"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('AGPL-3.0-or-later')
-depends=('libosmocore-git' 'libosmo-netif-git' 'libosmo-sccp-git' 'talloc' 'libasn1c' 'lksctp-tools')
+depends=('libosmocore-git'
+         'libosmo-netif-git'
+         'libosmo-sccp-git'
+         'libasn1c-git'
+         'lksctp-tools'
+         'talloc')
 makedepends=('git' 'python')
 provides=("${pkgname%-git}=${pkgver}"
           'libosmo-hnbap.so=0-64'
