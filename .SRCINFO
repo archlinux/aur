@@ -1,0 +1,19 @@
+pkgbase = python-onion-location
+	pkgdesc = Python library for discovering Onion-Location HTTP headers
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/Freso/python-onion-location
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-lxml
+	source = python-onion-location-0.1.0.tar.gz::https://codeberg.org/Freso/python-onion-location/archive/v0.1.0.tar.gz
+	b2sums = 5f87a045b57a2b4b75f9328f1bb0ee48d16de6092b57405afc8e6ec34810c8e5111d7137a9b9d36d39b994693b2c2785dd2225638f8ccbcca90a4a212b60f1bb
+
+pkgname = python-onion-location
