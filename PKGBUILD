@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('go' 'git')
 _tag="v$pkgver-$pkgrel"
 source=("$pkgname::git+https://github.com/araaha/tb.go.git#tag=$_tag")
-b2sums=('58abee7e850c1dc24e1f47c9202e384d6f39f644b7f8cfe5d0e2b884e43a7d9da195dc1118dbb2659f544163c0c672c9c1e91915b7977bb40017a14b3f197784')
+b2sums=('SKIP')
 
 prepare() {
     cd "$pkgname"
