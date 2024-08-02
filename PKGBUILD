@@ -2,7 +2,7 @@
 pkgname=gitfetch
 pkgver=0.1.1
 pkgrel=1
-pkgdesc="A command-line tool to fetch and display Git contribution information"
+pkgdesc="A command-line GitHub contribution visualization tool written in Rust inspired by Neofetch"
 arch=('x86_64' 'aarch64')
 url="https://github.com/FabricSoul/gitfetch"
 license=('GPL3')
