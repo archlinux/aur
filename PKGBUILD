@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=IsoBayes
-_pkgver=1.2.2
+_pkgver=1.2.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,8 +35,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('617ee58baf9831691e6295e1aeb33b7c')
-b2sums=('ea3cbf72fca9b2d151fac575d228d89b6e64350f76459f43cc9e0d098507c3c5b93eb3862fddc14543dcc88bfcc17c287ba74b8a8baf95b7287ea1ab79f92bf6')
+md5sums=('03ec20adfb1df43f7b938ad412bb9ef9')
+b2sums=('56c3477c9f3698e534ee1050e578e4e391cf0d673f086bed509d29fa83339a74570ba62e04a4d246c10013f3a625b9683f4de255aeb478284a2cccf15b8ae17d')
 
 build() {
   mkdir build
