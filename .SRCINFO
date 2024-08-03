@@ -1,6 +1,6 @@
 pkgbase = napcat-bin
 	pkgdesc = 基于NTQQ的无头Bot框架.
-	pkgver = 1.7.5
+	pkgver = 1.7.6
 	pkgrel = 1
 	url = https://napneko.github.io/
 	arch = aarch64
@@ -9,15 +9,15 @@ pkgbase = napcat-bin
 	makedepends = gendesk
 	depends = linuxqq
 	depends = nodejs
-	provides = napcat=1.7.5
+	provides = napcat=1.7.6
 	conflicts = napcat
 	options = !strip
 	options = !emptydirs
-	source = LICENSE-1.7.5::https://raw.githubusercontent.com/NapNeko/NapCatQQ/v1.7.5/LICENSE
+	source = LICENSE-1.7.6::https://raw.githubusercontent.com/NapNeko/NapCatQQ/v1.7.6/LICENSE
 	sha256sums = f9dd38354229f567957ca10faeba7c2ee381db370507ca1db46d1ab7224ea5fc
-	source_aarch64 = napcat-1.7.5-aarch64.zip::https://github.com/NapNeko/NapCatQQ/releases/download/v1.7.5/NapCat.linux.arm64.zip
-	sha256sums_aarch64 = 07dc38edd28a1a0b6784c987815dc248f2fea2a4125ab4cec50d3f64454cb74c
-	source_x86_64 = napcat-1.7.5-x86_64.zip::https://github.com/NapNeko/NapCatQQ/releases/download/v1.7.5/NapCat.linux.x64.zip
-	sha256sums_x86_64 = 8831a053d4ab603b2e5c5d6779db4980ab9b15dab4811af2465aa452c04feb49
+	source_aarch64 = napcat-1.7.6-aarch64.zip::https://github.com/NapNeko/NapCatQQ/releases/download/v1.7.6/NapCat.linux.arm64.zip
+	sha256sums_aarch64 = ee81dd7ae3caaafb19641467a52897f45330fa3fce92aed77683146eb7771fff
+	source_x86_64 = napcat-1.7.6-x86_64.zip::https://github.com/NapNeko/NapCatQQ/releases/download/v1.7.6/NapCat.linux.x64.zip
+	sha256sums_x86_64 = 24321e8c14b526cc6c71f2e4a10c2b6231de91590375760580cec7be6e8ab3ba
 
 pkgname = napcat-bin
