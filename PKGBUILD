@@ -3,13 +3,13 @@
 
 pkgname=ponymix-git
 _pkgname=ponymix
-pkgver=5.r4.g83c6557
+pkgver=5.r6.g242e97f
 pkgrel=1
 pkgdesc="CLI PulseAudio Volume Control"
 arch=('i686' 'x86_64')
 url="http://github.com/falconindy/ponymix"
 license=('MIT')
-depends=('pulseaudio' 'libnotify')
+depends=('pulse-native-provider' 'libnotify')
 makedepends=('git')
 conflicts=('ponymix')
 provides=('ponymix')
