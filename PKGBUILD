@@ -1,7 +1,7 @@
 # Maintainer: Gary Wang <wzc782970009@gmail.com>
 
 pkgname=qmidiplayer
-pkgver=0.8.8.0
+pkgver=0.8.8.1
 pkgrel=1
 pkgdesc='A cross-platform midi file player based on libfluidsynth and Qt.'
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
 	"smelt-gd572329.zip::https://github.com/BearKidsTeam/SMELT/archive/d57232938d0c538922154e9223bf994e78c6b069.zip"
 )
 sha256sums=(
-    'eb9055b7d5e386734e5896407d94483aa430059eea0938f407f23351e4f2091e'
+    'fbe40a40814cd8414c9fe131bc350e5a3ce4e3b178aa3b80ec7e2cafcfb00750'
     'd7d9e97cc7688a7e228963f4bdb30aeb6d35100c0fc41313f0e4490c24b40f87'
 )
 
