@@ -1,6 +1,6 @@
-pkg/
-src/
 *.tar.*
 *.zip
-pytype
-github.com-python-typeshed
+pkg/
+pytype/
+src/
+typeshed/
