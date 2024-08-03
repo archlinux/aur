@@ -5,13 +5,13 @@
 pkgname=forkgram
 _pkgname=frk
 pkgver=5.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of Telegram Desktop messaging app.'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/Forkgram/tdesktop"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
-         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
+         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash' 'ada'
          'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'abseil-cpp' 'libdispatch'
          'openssl' 'protobuf' 'glib2' 'libsigc++-3.0'
          'libxcomposite' 'libvpx' 'libxdamage' 'kcoreaddons')
@@ -23,14 +23,13 @@ optdepends=('webkit2gtk: embedded browser features'
 provides=(forkgram-bin)
 conflicts=(forkgram-bin telegram-desktop)
 options=(!debug)
-source=(${_pkgname}-v${pkgver}::git+https://github.com/forkgram/tdesktop.git#tag=v${pkgver}
-#"https://github.com/Forkgram/tdesktop/releases/download/v${pkgver}/v${pkgver}.tar.gz"
+source=(${_pkgname}::git+https://github.com/forkgram/tdesktop.git#tag=v${pkgver}
         "${pkgname}.desktop")
 sha512sums=('52315fe130f920ec3cdf632347630087ad8e46048f77cf1c99c518e071dd9a14b850ed95e4d48635d9ea8efe968c0738958c254baa1a1f03ff234e62fc26831e'
             'd6d54a5a396c0a84645ca5f38cd2d0c774d1a00f081cdf6151228b581ff1c05234550d4829aab4fe2221dec8e0477199da5a0cb1bc3a60fa1fbfe0336db365dd')
 
 prepare() {
-    cd ${_pkgname}-v${pkgver}
+    cd ${_pkgname}
     git submodule update --init --filter=tree:0 --recursive
     find "${srcdir}"/ -type f -exec dos2unix {} \;
 }
@@ -40,7 +39,7 @@ build() {
 
     cmake \
         -B build \
-        -S $_pkgname-v${pkgver} \
+        -S $_pkgname \
         -G Ninja \
         -DCMAKE_VERBOSE_MAKEFILE=ON \
         -DCMAKE_INSTALL_PREFIX="/usr" \
@@ -63,7 +62,7 @@ package() {
 
   # Main icons
   install -dm755 "${pkgdir}/usr/share/pixmaps/"
-  install -Dm644 "${srcdir}/${_pkgname}-v${pkgver}/Telegram/Resources/art/forkgram/logo_256.png" "${pkgdir}/usr/share/pixmaps/"
+  install -Dm644 "${srcdir}/${_pkgname}/Telegram/Resources/art/forkgram/logo_256.png" "${pkgdir}/usr/share/pixmaps/"
 
   # Desktop launcher
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
@@ -73,6 +72,6 @@ package() {
   for icon_size in 16 32 48 64 128 256 512; do
     icon_dir="${pkgdir}/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
     install -d "${icon_dir}"
-    install -m644 "${srcdir}/${_pkgname}-v${pkgver}/Telegram/Resources/art/icon${icon_size}.png" "${icon_dir}/${pkgname}.png"
+    install -m644 "${srcdir}/${_pkgname}/Telegram/Resources/art/icon${icon_size}.png" "${icon_dir}/${pkgname}.png"
   done
 }
