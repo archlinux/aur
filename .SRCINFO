@@ -1,18 +1,19 @@
 pkgbase = epson-inkjet-printer-201207w
 	pkgdesc = Epson printer driver (L110, L210, L300, L350, L355, L550, L555)
-	pkgver = 1.0.0
-	pkgrel = 10
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
-	arch = i686
 	arch = x86_64
-	license = LGPL
+	arch = i686
+	license = LGPL-2.1-or-later
 	license = custom:Epson Licence Agreement
+	depends = glibc
+	depends = gcc-libs
 	depends = cups
+	depends = libcups
 	depends = ghostscript
-	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201207w-1.0.0-1lsb3.2.src.rpm
-	source = fixbuild.patch
-	sha256sums = dad263b7c172d9a80c5ba82fbde1153fd525d8fb3b368d768276a0d98485b6c7
-	sha256sums = 85b0493972dcb92befd2bbf8d0ce705fc6280d54d83e985e9f7d0301bb01af50
+	depends = libjpeg-turbo
+	source = epson-inkjet-printer-201207w-1.0.1.src.rpm::https://download3.ebz.epson.net/dsc/f/03/00/15/64/87/25d34a13841e5e95d80266e6fd8dfcdf67c95634/epson-inkjet-printer-201207w-1.0.1-1.src.rpm
+	sha256sums = ac757bb6d392b6662779228e518bb3e9b4de02d275235c4afd41465447d38b45
 
 pkgname = epson-inkjet-printer-201207w
-
