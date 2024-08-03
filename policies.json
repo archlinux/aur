@@ -1,0 +1,18 @@
+{
+    "policies": {
+      "DisableAppUpdate": true,
+      "Homepage": {
+        "URL": "https://get-zen.vercel.app/",
+        "Locked": false
+      },
+      "SearchEngines": {
+        "Default": "DuckDuckGo",
+        "PreventInstalls": true
+      },
+      "DNSOverHTTPS": {
+        "Enabled": true,
+        "Locked": false
+      }
+    }
+  }
+  

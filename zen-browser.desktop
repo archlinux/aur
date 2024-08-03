@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=Zen Browser
+GenericName=Web Browser
+Comment=Browse the Web
+Exec=/opt/zen-browser-bin/zen-bin
+Icon=zen-browser
+Terminal=false
+Type=Application
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;
+StartupWMClass=Zen Browser
