@@ -2,7 +2,7 @@
 # Maintainer: Andrea Feletto <andrea@andreafeletto.com>
 
 pkgname=gmid
-pkgver=2.0.5
+pkgver=2.1
 pkgrel=2
 pkgdesc='Fast Gemini server written with security in mind.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('ISC')
 makedepends=('signify')
 depends=('libretls' 'libbsd')
 conflicts=('gmid-git' 'gmid-bin')
-_signkey=gmid-2.0.pub
+_signkey=gmid-2.1.pub
 source=(
 	"https://ftp.omarpolo.com/$pkgname-$pkgver.tar.gz"
 	"$pkgname-$pkgver.sha256.signature::https://ftp.omarpolo.com/$pkgname-$pkgver.sha256.sig"
@@ -19,13 +19,11 @@ source=(
 	"gmid.service"
 	"gmid.conf"
 )
-sha256sums=(
-	'3328ebf277c597e175762089d38767adae13d70b7c2624ede738ec7108272539'
-	'SKIP'
-	'SKIP'
-	'61450ba6fb7283b03f099e5172cf4e64bf40093ad2bd126b7915940d40922c9a'
-	'4d943727a57dbf5f246963c0f90ccc54919cc2296538457e6b16f29f7580d9d6'
-)
+sha256sums=('d1f7e23bbbc708cb94ad62cecf6fad47433bbb78f9a86930f7d3eb377b1b344b'
+            'SKIP'
+            'SKIP'
+            '61450ba6fb7283b03f099e5172cf4e64bf40093ad2bd126b7915940d40922c9a'
+            '4d943727a57dbf5f246963c0f90ccc54919cc2296538457e6b16f29f7580d9d6')
 
 prepare() {
 	signify -C -p $_signkey -x "$pkgname-$pkgver.sha256.signature"
@@ -46,4 +44,5 @@ package() {
 	make DESTDIR="$pkgdir/" install
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+	install -Dm644 "$srcdir/$_signkey" "$pkgdir/usr/share/doc/$pkgname/gmid.pub"
 }
