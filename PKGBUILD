@@ -26,8 +26,8 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgsrc}/core/doc/generated_documentation"
+  cd "${srcdir}/${_pkgsrc}/core/doc/generated_documentation/doc.bertini"
   install -d "${pkgdir}/usr/share/doc/bertini2/html"
-  find "doc.bertini" -mindepth 1 -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/bertini2/html/" \;
+  find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/bertini2/html/{}" \;
   rm -f "${pkgdir}/usr/share/doc/bertini2/html/.gitignore"
 }
