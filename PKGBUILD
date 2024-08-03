@@ -2,7 +2,7 @@
 
 _pkgname="omm"
 pkgname="${_pkgname}-bin"
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A keyboard-driven task manager for the command line"
 arch=('x86_64' 'i686' 'aarch64')
@@ -15,9 +15,9 @@ _pkgsrc="${_pkgname}-${pkgver}"
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
 source_i686=("${_pkgsrc}-i686.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_386.tar.gz")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('a168e2852b8b5c5fa7c118731cd2b8074ac23f99c399f865cc56f896a2798a04')
-sha256sums_i686=('506f2187f7162b09d927f8b92047d9523b702eea7199e01ea34830524de4db1e')
-sha256sums_aarch64=('73e07978ab9142c5c49d41a7bec280690880291d28164009b71b874d5ff94d37')
+sha256sums_x86_64=('c2d3fac9c9bd6814ad9ac936b953a700a19383b9c38bcd8e5974324933763665')
+sha256sums_i686=('4e09df2f910a4e7c5e824b6525c6414cf06de1e849212c1a91ad7fc0f0901df8')
+sha256sums_aarch64=('12a6ed46d146846a510aeb94cee566c340feeaeefbfa949f0d154abc7c476ac8')
 
 package() {
   cd "${srcdir}"
