@@ -1,0 +1,17 @@
+--- a/setup.py
++++ b/setup.py
+@@ -1,4 +1,4 @@
+-from setuptools import find_packages, setup
++from setuptools import find_packages, find_namespace_packages, setup
+ 
+ EXCLUDE_FROM_PACKAGES = []
+ 
+@@ -17,7 +17,7 @@
+       url=about['__uri__'],
+       author=about['__author__'],
+       author_email=about['__email__'],
+-      packages=find_packages(exclude=EXCLUDE_FROM_PACKAGES),
++      packages=find_namespace_packages(),
+       install_requires=['matplotlib',
+                         'trimesh',
+                         #'pyopengl',
