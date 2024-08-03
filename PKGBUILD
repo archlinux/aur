@@ -3,7 +3,7 @@
 
 pkgname=pcc-libs-cvs
 pkgver=20230806
-pkgrel=1
+pkgrel=2
 pkgdesc="Libraries for the Portable C Compiler."
 arch=('i686' 'x86_64')
 url="http://pcc.ludd.ltu.se/"
@@ -12,6 +12,7 @@ provides=(pcc-libs)
 conflicts=(pcc-libs)
 #makedepends=('cvs')
 makedepends=('git')
+options=('!lto')
 source=($pkgname::git+https://repo.or.cz/pcc-libs.git license)
 md5sums=('SKIP' '51f6cc02b26af53f26cfe87494ca5c87')
 
