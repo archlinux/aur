@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=compasscad-bin
 _pkgname=CompassCAD
-pkgver=1.1.0
+pkgver=1.2.0
 _electronversion=31
 pkgrel=1
 pkgdesc="Very good CAD software. plan out buildings, and show it off to your boss."
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/zeankundev/CompassCAD/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ab03bde2b9359448d1767ed71903418717608702135098e4159f9c58f3ad1d07'
+sha256sums=('1f58fc611ef27598a5fc97057dc8380bf4883bd90016ec7548eeb29571c03160'
             '2d59799d08c811b91b35bc6d0615c7b8b3e27f3e2dc676daa9abc1de4bc97c40'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
@@ -35,7 +35,7 @@ build() {
     bsdtar -xf "${srcdir}/data."*
     sed "s|\/opt\/${_pkgname}\/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed "s|\/build|.\/assets|g;/electron-reloader/d" -i "${srcdir}/app.asar.unpacked/entry.js"
+    sed "s|\/build\/icons|.\/assets/logos|g;/electron-reloader/d" -i "${srcdir}/app.asar.unpacked/entry.js"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
