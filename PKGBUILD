@@ -3,18 +3,18 @@
 # Contributor: apaugh
 # Contributor: speps <speps at aur dot archlinux dot org>
 # shellcheck shell=bash
-# shellcheck disable=2034,2154
+# shellcheck disable=SC2034,SC2154
 
 pkgname=fife
 pkgver=0.4.2
-pkgrel=5
+pkgrel=6
 _githubname=fifengine
 pkgdesc="Flexible Isometric Free Engine is a cross platform game creation framework"
 arch=('i686' 'x86_64')
 url="http://fifengine.net/"
 license=('LGPL')
 depends=('boost-libs' 'fifechan' 'glew' 'libgl' 'libpng' 'libstdc++5' 'libvorbis' 'openal' 'python' 'sdl2' 'sdl2_image' 'sdl2_ttf' 'tinyxml' 'zlib')
-makedepends=('boost' 'cmake' 'samurai' 'swig')
+makedepends=('boost' 'cmake' 'samurai' 'swig' 'python-setuptools')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/$_githubname/$_githubname/archive/$pkgver.tar.gz"
         "$pkgname-[PATCH]-removed-flags-that-are-not-supported-with-swig-4.0.patch::https://github.com/$_githubname/$_githubname/commit/d14f232f4cd9a00b05d6872957070e8c020f515d.patch"
         "$pkgname-[PATCH]-SyntaxWarning:-\"is\"-with-a-literal.patch::https://github.com/$_githubname/$_githubname/commit/454a981a777f141db999809944abbc64ed15c41f.patch"
