@@ -1,13 +1,13 @@
 # Maintainer: Yorick Peterse <aur AT yorickpeterse DOT com>
 
 pkgname=inko-git
-pkgver=0.14.0.r89.g2488f33a
+pkgver=0.15.0.r59.geaf9ec95
 pkgrel=1
 pkgdesc="A language for building concurrent software with confidence"
 url="https://inko-lang.org"
 license=(MPL2)
 arch=(x86_64 aarch64)
-depends=(llvm16 git base-devel)
+depends=(llvm git base-devel)
 makedepends=(cargo make)
 provides=(inko)
 conflicts=(inko)
