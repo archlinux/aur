@@ -1,7 +1,7 @@
 # Maintainer: Accessory
 _exe_name=minus_games_server
 pkgname=$_exe_name-git
-pkgver=0.1.0
+pkgver=0.2.0
 _source_folder=$pkgname-$pkgver
 pkgrel=1
 epoch=
@@ -27,13 +27,13 @@ sha256sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
-    export RUSTUP_TOOLCHAIN=nightly
+    export RUSTUP_TOOLCHAIN=stable
 	cd  $_source_folder
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    export RUSTUP_TOOLCHAIN=nightly
+    export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cd  $_source_folder
 	cargo build --release --bin $_exe_name
