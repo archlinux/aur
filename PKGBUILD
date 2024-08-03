@@ -2,6 +2,7 @@
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Michael Hansen <zrax0111 gmail com>
+# Contributor: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgbase=keybase
 pkgname=(keybase kbfs keybase-gui)
@@ -11,7 +12,7 @@ pkgrel=1
 arch=(x86_64)
 url=https://keybase.io
 _url=https://github.com/keybase/client
-license=(BSD)
+license=(BSD-3-Clause)
 # git is needed for yarn...
 makedepends=(git
              go
