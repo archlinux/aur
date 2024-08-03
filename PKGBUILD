@@ -98,7 +98,7 @@ source_loong64=(
 	wechat-loong64-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_arm64.deb"
 )
 
-md5sums=('659b41c8e188191ac7d927e43e9b660f'
+md5sums=('6996cf8e4375b24da3a3c545228e386c'
          '5a4978456f4fab947c0d197412af0fd1'
          '600e74549ce2258c045d5c2f7689ea63'
          'bab8288bb500c9d4d48a88af27acd16f'
