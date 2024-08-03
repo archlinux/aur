@@ -26,7 +26,7 @@ sha256sums=('b50a33e00fa456b4c5b6f4a5247eeebeb832f992d0419963a6276f2676649545'
 prepare() {
   cd "${pkgname}-${pkgver}"
   fvm install 3.22.3
-  export PATH="${PATH}:$(fvm global 3.22.3 --verbose | awk '/cacheVersion.binPath/ {print $2}')"
+  export PATH="$(fvm global 3.22.3 --verbose | awk '/cacheVersion.binPath/ {print $2}'):${PATH}"
 
   fvm flutter --disable-analytics
   make linux-prepare
