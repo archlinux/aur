@@ -1,0 +1,19 @@
+pkgbase = python-google-ai-generativelanguage
+	pkgdesc = Google Ai Generativelanguage API client library
+	pkgver = 0.6.8
+	pkgrel = 1
+	url = Google Ai Generativelanguage API client library
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-google-api-core
+	depends = python-google-auth
+	depends = python-proto-plus
+	depends = python-protobuf
+	provides = lsbi
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/g/google_ai_generativelanguage/google_ai_generativelanguage-0.6.8.tar.gz
+	sha256sums = bd009e62c67e853892ad2029debbee2a67a5bfd2601f3a1cd6aa33ea91c8619b
+
+pkgname = python-google-ai-generativelanguage
