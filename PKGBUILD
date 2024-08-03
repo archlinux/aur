@@ -2,7 +2,7 @@
 
 pkgname=xorgxrdp
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Xorg drivers for xrdp"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/neutrinolabs/xorgxrdp"
@@ -19,9 +19,10 @@ validpgpkeys=('61ECEABBF2BB40E3A35DF30A9F72CDBC01BF10EB')  # Koichiro IWAO <meta
 build() {
   cd "$pkgname-$pkgver"
 
-  CFLAGS="$CFLAGS -ffat-lto-objects" \
+  CFLAGS="$CFLAGS -ffat-lto-objects $(pkgconf --cflags-only-I libdrm)" \
   ./configure \
-    --prefix="/usr"
+    --prefix="/usr" \
+    --enable-glamor
   make
 }
 
