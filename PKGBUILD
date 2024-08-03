@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="ipsw"
-pkgver=3.1.531
+pkgver=3.1.532
 pkgrel=1
 pkgdesc="iOS/macOS Research Swiss Army Knife"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('bash-completion: for shell auto-completion'
 backup=("etc/${pkgname}.conf")
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}::git+${url}#tag=v${pkgver}")
-sha256sums=('48cca57b17168eea31916bd8775dbfd5e5671fa922cf2ec0588ff29fe585b585')
+sha256sums=('4da20b43b58972e1ac34132f610c97ae2f2035fe8078ca5afb0835d0f38422a5')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -53,15 +53,12 @@ package() {
   install -Dm644 "LICENSE"            "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "config.example.yml" "${pkgdir}/etc/${pkgname}.conf"
 
+  install -d "${pkgdir}/usr/share/man/man1"
+  find "manpages" -mindepth 1 -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/man/man1/" \;
+
   cd "${srcdir}/${_pkgsrc}/completions"
   install -Dm644 "${pkgname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
   install -Dm644 "${pkgname}.fish"       "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
   install -Dm644 "${pkgname}.zsh"        "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
   install -Dm644 "${pkgname}.powershell" "${pkgdir}/usr/share/powershell/Completions/${pkgname}.ps1"
-
-  cd "${srcdir}/${_pkgsrc}/manpages"
-  install -d "${pkgdir}/usr/share/man/man1"
-  for _manpage in *.1; do
-    install -Dm644 "${_manpage}" "${pkgdir}/usr/share/man/man1/"
-  done
 }
