@@ -1,6 +1,6 @@
 pkgbase = python-imread
 	pkgdesc = Read images to numpy arrays
-	pkgver = 0.7.5
+	pkgver = 0.7.6
 	pkgrel = 1
 	url = https://github.com/luispedro/imread
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = python-imread
 	makedepends = libwebp
 	makedepends = xcftools
 	depends = python-numpy
-	source = imread-0.7.5.tar.gz::https://github.com/luispedro/imread/archive/v0.7.5.tar.gz
-	sha512sums = c03fb3b26ebb29c7a72592896dd6c85d75d658db3c2b29e253bf0612128cbf768d6d0e92397b0174c3f49f75354c99bbb0629bdd7d3b7053d8192f1c9579d691
+	source = imread-0.7.6.tar.gz::https://github.com/luispedro/imread/archive/v0.7.6.tar.gz
+	sha512sums = 7c51d891b28bf907c81c6ce0d69930fa4c090f0472f5ed001497e68c5ff3227d21e2e9b4f88f429082e64b7cf14600c14c4e20370ce39c0e855b2f8c50c2ef2b
 
 pkgname = python-imread
