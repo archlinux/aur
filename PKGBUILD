@@ -2,11 +2,11 @@
 
 pkgname=pulseaudio-ctl
 pkgver=1.70
-pkgrel=1
+pkgrel=2
 pkgdesc='Control pulseaudio volume from the shell or mapped to keyboard shortcuts.'
 arch=('any')
 license=('MIT')
-depends=('bc' 'libpulse' 'pulseaudio')
+depends=('bc' 'libpulse' 'pulse-native-provider')
 optdepends=('libnotify: to display volume and mute status')
 conflicts=('pulseaudio_ctl')
 replaces=('pulseaudio_ctl')
