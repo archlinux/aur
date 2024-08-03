@@ -4,11 +4,14 @@ pkgbase = ianny-git
 	pkgrel = 1
 	url = https://github.com/zefr0x/ianny
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = cargo
 	makedepends = meson
 	depends = libdbus-1.so
+	depends = glibc
+	depends = gcc-libs
 	provides = ianny
 	conflicts = ianny
 	source = ianny-git::git+https://github.com/zefr0x/ianny#branch=main

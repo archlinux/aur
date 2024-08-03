@@ -2,13 +2,13 @@
 
 pkgname="ianny-git"
 _pkgname=${pkgname%-git}
-pkgver=v1.0.0beta.1.r2.g9dd95c3
+pkgver=v1.0.0.r6.g9a08d80
 pkgrel=1
 pkgdesc="Desktop utility periodically informing the user to take breaks"
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 url="https://github.com/zefr0x/ianny"
 license=("GPL3")
-depends=("libdbus-1.so")
+depends=("libdbus-1.so" "glibc" "gcc-libs")
 makedepends=("git" "cargo" "meson")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
