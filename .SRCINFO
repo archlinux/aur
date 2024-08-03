@@ -1,7 +1,7 @@
 pkgbase = python-gpt-command-line
 	pkgdesc = Command-line interface for ChatGPT, Claude and Bard
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kharvd/gpt-cli
 	arch = any
 	license = MIT
