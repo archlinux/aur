@@ -1,5 +1,5 @@
 _pkgname=openhv
-_pkgver=20230416
+_pkgver=20230917
 _appimage="OpenHV-${_pkgver}-x86_64.AppImage"
 _desktopfile="openhv"
 
@@ -14,7 +14,7 @@ depends=('fuse2')
 conflicts=('openhv')
 options=(!strip)
 source=("https://github.com/OpenHV/OpenHV/releases/download/${_pkgver}/${_appimage}")
-sha256sums=('473935f8d2a85e23b0692d81586da498bc407ae85eef19979b1876e1e4c86c1a')
+sha256sums=('604c677aef5f932a7de0cae19e2366fdc891a1300e9d9023e2b728811b8aeb07')
 
 
 prepare() {
