@@ -7,14 +7,11 @@ pkgbase = ivm
 	license = MPL2
 	makedepends = cargo
 	makedepends = make
-	depends = llvm15
+	depends = llvm
 	depends = git
 	depends = base-devel
 	provides = ivm
-	options = strip
-	options = !docs
-	options = !libtool
-	options = !staticlibs
+	options = !lto
 	source = https://github.com/inko-lang/ivm/archive/refs/tags/v0.5.0.tar.gz
 	sha256sums = befa62c13316dc5c14144c10f642ef6c21c86226f9ffd8b66a36b27cc54b64d9
 
