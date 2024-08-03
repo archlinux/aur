@@ -2,7 +2,7 @@
 
 pkgname=duckstation-git
 _pkgname=duckstation
-pkgver=0.1.r7257.gf1f57d8
+pkgver=0.1.r7271.g5b590d4
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -64,6 +64,7 @@ source=(
     git+https://github.com/ianlancetaylor/libbacktrace.git#commit=ad106d5fdd5d960bd33fae1c48a351af567fd075
     git+https://github.com/stenzek/cpuinfo.git#commit=7524ad504fdcfcf75a18a133da6abd75c5d48053
     git+https://github.com/stenzek/discord-rpc#commit=842c15192041f8e71c512851834f4dadb1a554fb
+    git+https://github.com/stenzek/soundtouch.git#commit=463ade388f3a51da078dc9ed062bf28e4ba29da7
     duckstation-qt.desktop
     duckstation-qt.sh)
 sha256sums=('SKIP'
@@ -72,12 +73,12 @@ sha256sums=('SKIP'
             '6463c6d54b99dddaa0f3da7a84926eb543672a4414dc2835bf35bb9eada9339f'
             '5c8135dbf5357bbc884151b168ffe288689b0f2ebed3aaf0bd4d66eb3ff2f69c'
             'f3851102c4986695acd2049b6111c52998e736abe075a680fb1bdc6f84c31cf4'
+            'c9a6cd2f10b880933937fe5d79b573db62a1567bb646b1a506b399fc91cd7eeb'
             'ec2d7358f81598390a8ceca2d1974be3e5f7c45602b550c89a1e9323ab45474b'
             '221a8fc0d1f0cebdf281acc26484e98ebbb59f876e12fdef3f03cf91380e31f5')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git checkout aa400f12ae01c9925b1d91cd5cb0ffc8915dadaf
     git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -94,6 +95,22 @@ EOF
 }
 
 build() {
+    echo "Building soundtouch..."
+
+    cmake -B build-soundtouch -S soundtouch \
+        -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_C_COMPILER=clang \
+        -DCMAKE_CXX_COMPILER=clang++ \
+        -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+        -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+        -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
+        -DBUILD_SHARED_LIBS=ON
+    ninja -C build-soundtouch
+    DESTDIR="$srcdir/deps" ninja -C build-soundtouch install
+
     echo "Building discord-rpc..."
 
     cmake -B build-discord-rpc -S discord-rpc \
@@ -210,6 +227,8 @@ package() {
     # Initially install everything into /usr/lib/duckstation
     install -m 755 -d "${pkgdir}/usr/lib"
     cp -drv --no-preserve='ownership' build/bin "${pkgdir}/usr/lib/${_pkgname}"
+    # Install bundled libraries
+    find "${srcdir}/deps/usr/lib" -name '*.so*' -exec cp -dv --no-preserve='ownership' '{}' "${pkgdir}/usr/lib/${_pkgname}/" \;
 
     # rpath
     patchelf --force-rpath --set-rpath "/usr/lib/${_pkgname}" "${pkgdir}/usr/lib/${_pkgname}/$_pkgname-qt"
@@ -222,14 +241,6 @@ package() {
         mv "${_dir}" "${pkgdir}/usr/share/${_pkgname}"
         ln -s "/usr/share/${_pkgname}/${_dir}" .
     done
-
-    # Install bundled libraries
-    install -vm755 \
-        "${srcdir}/deps/usr/lib/libshaderc_shared.so" \
-        "${srcdir}/deps/usr/lib/libspirv-cross-c-shared.so.0.61.0" \
-        "${srcdir}/deps/usr/lib/libcpuinfo.so" \
-        "${srcdir}/deps/usr/lib/libdiscord-rpc.so" \
-        "${pkgdir}/usr/lib/${_pkgname}"
 
     # Install additional license
     install -m 755 -d "${pkgdir}/usr/share/licenses/${pkgname}/"
