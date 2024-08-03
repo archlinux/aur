@@ -1,6 +1,6 @@
 # Maintainer: Lucki <https://aur.archlinux.org/account/Lucki>
 # shellcheck shell=bash
-# shellcheck disable=2034,2154
+# shellcheck disable=SC2034,SC2154
 
 pkgbase=docspell
 pkgname=(
@@ -27,7 +27,7 @@ sha512sums=('dab7184ee75ea68fddc447b9acfc1c09f9258c330c115aa7e0b0fd8d4fc01b6dbd4
             'f187278b336db17d8e4841adf5e3af5b1bff73689d4eada50889a1882c5d2855b7410a432c779b68b5ed2ff3c53639d1875e06728dabec1353035328258fb3ab'
             '6ab8b24eb76f02b68e4fa4194b8771ef4f57c8375b34bf7bf914563528e347ea127beb5547e432910911d4fd15982cccdd1df50aeb76058129b909824ce49093'
             '0b8b08f47f1cb46a3bfc16df4b0574cebfb4a851562d134fcba3c4bf80fb011443499a549c3a04480456c048346d09f36fbcbc9d792810001c9c8b370d3926a8'
-            'c1a7a9cb942413d0febb083554a15ded0ead5c7124624f0ec5fe43d3bc73a1637f89bc27f7b6e0bbdbd0d886799e5331beb5f45f476db70b69ae17c0d803f004'
+            '385543e0d584d52d310c8551b1d32c437d2c38f82a3cc7705a1963d93a07eeca57f3504ea66cc1956c655f7119ccf44b118cb91126aff0296f0d1fce2e1cdd43'
             '391311d8d9859e579c158ea0d37c17f3f80f286743f68f09f09b6cf6ab4398b2dd1e878498867a8e4631ae38c11a4821ed2b47fa7fb254b6955cf91c3588e9ce'
             'afe9a62801e962aac2996d1bfdd02bcf027f5135e40130bff2078a0fe2072d1d135ceb0dfce5d2174686f1f60a6d93f460c83fbb62884ef2e51c23232f521597'
             '0fc1d59cd6b57186c3a17d03779f428552f50f161f9a13de3ce727ac47ae8e3aac3c719bae08dfda258de02cd140c0ab7ba9cc6728d0ae6f5a4b0cbbaf72fa9c')
@@ -63,7 +63,7 @@ package_docspell-joex() {
 
     cd "${pkgname[0]}-$pkgver" || return
 
-    # shellcheck disable=2174
+    # shellcheck disable=SC2174
     mkdir -p -m 750 "$pkgdir/etc/docspell"
     install -Dm 640 "conf/${pkgname[0]}.conf" "$pkgdir/etc/docspell/joex.conf"
 
@@ -92,7 +92,7 @@ package_docspell-restserver() {
 
     cd "${pkgname[1]}-$pkgver" || return
 
-    # shellcheck disable=2174
+    # shellcheck disable=SC2174
     mkdir -p -m 750 "$pkgdir/etc/docspell"
     install -Dm 640 "conf/$pkgbase-server.conf" "$pkgdir/etc/docspell/restserver.conf"
 

@@ -6,6 +6,7 @@ After=network-online.target
 [Service]
 Type=simple
 WorkingDirectory=/var/lib/docspell
+Environment="HOME=/var/lib/docspell"
 ExecStart=/usr/bin/docspell-joex
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-abnormal
