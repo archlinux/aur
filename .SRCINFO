@@ -5,8 +5,8 @@ pkgbase = python-pretty-errors
 	url = https://github.com/onelivesleft/PrettyErrors/
 	arch = any
 	license = MIT
-	makedepends = python
 	makedepends = python-pip
-	makedepends = python-colorama
+	depends = python
+	depends = python-colorama
 
 pkgname = python-pretty-errors
