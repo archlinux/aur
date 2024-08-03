@@ -1,12 +1,15 @@
 pkgbase = python-rethinkdb
 	pkgdesc = Python driver for rethinkdb
-	pkgver = 2.4.7
+	pkgver = 2.4.10.post1
 	pkgrel = 1
 	url = https://github.com/rethinkdb/rethinkdb-python
 	arch = any
 	license = LGPL
-	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
+	source = https://files.pythonhosted.org/packages/source/r/rethinkdb/rethinkdb-2.4.10.post1.tar.gz
+	sha256sums = 3634e03ee13dd637fd7196b80474bf44c64d3eba1dd069ea92b94926702a60bd
 
 pkgname = python-rethinkdb
-
