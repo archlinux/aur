@@ -4,105 +4,103 @@
 # http://floorp.app/
 # https://github.com/Floorp-Projects/Floorp
 # https://github.com/Floorp-Projects/Floorp-core
-# https://github.com/Floorp-Projects/Floorp-private-components
 
 ## options
 : ${_build_pgo:=true}
 : ${_build_pgo_reuse:=try}
 : ${_build_pgo_xvfb:=false}
 
-: ${_build_private:=true}
+: ${_ver_clang=17}
+: ${RUSTUP_TOOLCHAIN:=1.77}
 
 ## basic info
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=11.14.1
+pkgver=11.15.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
 arch=('x86_64')
 license=('MPL-2.0')
 
-# main package
-_main_package() {
-  depends=(
-    dbus-glib
-    ffmpeg
-    gtk3
-    libevent
-    libjpeg
-    libpulse
-    libvpx.so
-    libwebp.so
-    libxss
-    libxt
-    mime-types
-    nspr
-    nss
-    pipewire
-    ttf-font
-    zlib
-  )
-  makedepends=(
-    cbindgen
-    clang
-    diffutils
-    dump_syms
-    git
-    imake
-    inetutils
-    jack
-    lld
-    llvm
-    mercurial
-    mesa
-    mold
-    nasm
-    nodejs
-    python
-    python-setuptools
-    rustup
-    unzip
-    wasi-compiler-rt
-    wasi-libc
-    wasi-libc++
-    wasi-libc++abi
-    yasm
-    zip
-  )
-  optdepends=(
-    'hunspell-dictionary: Spell checking'
-    'libnotify: Notification integration'
-    'networkmanager: Location detection via available WiFi networks'
-    'speech-dispatcher: Text-to-Speech'
-    'xdg-desktop-portal: Screensharing with Wayland'
-  )
+depends=(
+  dbus-glib
+  ffmpeg
+  gtk3
+  libevent
+  libjpeg
+  libpulse
+  libvpx.so
+  libwebp.so
+  libxss
+  libxt
+  mime-types
+  nspr
+  nss
+  pipewire
+  ttf-font
+  zlib
+)
+makedepends=(
+  "clang${_ver_clang:-}"
+  "lld${_ver_clang:-}"
+  "llvm${_ver_clang:-}"
+  "wasi-compiler-rt${_ver_clang:-}"
+  cbindgen
+  diffutils
+  dump_syms
+  git
+  imake
+  inetutils
+  jack
+  mercurial
+  mesa
+  nasm
+  nodejs
+  python
+  python-setuptools
+  rustup
+  unzip
+  wasi-libc
+  wasi-libc++
+  wasi-libc++abi
+  yasm
+  zip
+)
+optdepends=(
+  'hunspell-dictionary: Spell checking'
+  'libnotify: Notification integration'
+  'networkmanager: Location detection via available WiFi networks'
+  'speech-dispatcher: Text-to-Speech'
+  'xdg-desktop-portal: Screensharing with Wayland'
+)
 
-  if [[ "${_build_pgo::1}" == "t" ]]; then
-    if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
-      makedepends+=(
-        xorg-server-xvfb
-      )
-    else
-      makedepends+=(
-        weston
-        xorg-xwayland
-        xwayland-run # AUR
-      )
-    fi
+if [[ "${_build_pgo::1}" == "t" ]]; then
+  if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
+    makedepends+=(
+      xorg-server-xvfb
+    )
+  else
+    makedepends+=(
+      weston
+      xorg-xwayland
+      xwayland-run # AUR
+    )
   fi
+fi
 
-  provides=("$_pkgname=${pkgver%%.r*}")
-  conflicts=("$_pkgname")
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
 
-  options=(
-    !debug
-    !emptydirs
-    !lto
-    !makeflags
-    !strip
-  )
+options=(
+  !debug
+  !emptydirs
+  !lto
+  !makeflags
+  !strip
+)
 
+_source_floorp() {
   _pkgsrc="Floorp"
   source=(
     "$_pkgsrc"::"git+https://github.com/Floorp-Projects/Floorp.git#tag=v$pkgver"
@@ -117,26 +115,30 @@ _main_package() {
     '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
   )
 
-  _patch_commit="24a6ea8"
+  _patch_commit_1="24a6ea8"
+  _patch_commit_2="3d03cbfb37298c494be59bb34e3da365f10c00a3"
   source+=(
-    "18d19413472f-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/18d19413472f.patch?h=firefox-esr&id=$_patch_commit"
-    "6af7194e2778-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/6af7194e2778.patch?h=firefox-esr&id=$_patch_commit"
-    "b1cc62489fae-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/b1cc62489fae.patch?h=firefox-esr&id=$_patch_commit"
+    "patch-python3.12-bug1831512-${_patch_commit_2::7}.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1831512.patch?h=firedragon&id=$_patch_commit_2"
+    "patch-python3.12-bug1860051-${_patch_commit_2::7}.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1860051.patch?h=firedragon&id=$_patch_commit_2"
+    "patch-python3.12-bug1866829-${_patch_commit_2::7}.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1866829.patch?h=firedragon&id=$_patch_commit_2"
+    "patch-python3.12-bug1874280-${_patch_commit_2::7}.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1874280.patch?h=firedragon&id=$_patch_commit_2"
+    "18d19413472f-$_patch_commit_1.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/18d19413472f.patch?h=firefox-esr&id=$_patch_commit_1"
+    #"6af7194e2778-$_patch_commit_1.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/6af7194e2778.patch?h=firefox-esr&id=$_patch_commit_1"
+    "b1cc62489fae-$_patch_commit_1.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/b1cc62489fae.patch?h=firefox-esr&id=$_patch_commit_1"
   )
   sha256sums+=(
+    '9516c36c145d365c3b65153d83a5b3b0dd8a319b5c30d47a390070892bd431b3'
+    '168d16a027a81c311c58f9302858244dfa5517f0a95a8d3df1abbf9b93b9d455'
+    'df27ed1e0da5b192224978dc2a593a97e18e6e22062c611fc32b277500324e62'
+    'cf1c69fd3338fd8f5e482f55b669160b08dfb021f2348b620f0a85dd9dee8150'
     '3cc55401ed5e027f1b9e667b0b52296af11f3c5c62b4a80b7e55cda0e117ed18'
-    '6952f93889acb514e3b06e251ea901df88c39b429da9677cd5547d90a8b6c73e'
+    #'6952f93889acb514e3b06e251ea901df88c39b429da9677cd5547d90a8b6c73e'
     'f66a944fa8804c16b1f7bd9b42b18bfc2552a891adc148085f4b91685e8db117'
   )
-
-  if [[ "${_build_private::1}" == "t" ]]; then
-    license+=('LicenseRef-Floorp')
-    source+=("floorp-projects.private-components"::"git+https://github.com/Floorp-Projects/Floorp-private-components.git")
-    sha256sums+=('SKIP')
-  fi
 }
 
-# common functions
+_source_floorp
+
 prepare() {
   _submodule_update() {
     local _module
@@ -161,9 +163,6 @@ prepare() {
     local _submodules=(
       'floorp-projects.unified-l10n-central'::'browser/locales/l10n-central'
     )
-    if [[ "${_build_private::1}" == "t" ]]; then
-      _submodules+=('floorp-projects.private-components'::'Floorp-private-components')
-    fi
     _submodule_update
   )
 
@@ -185,7 +184,7 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-rust-simd
 ac_add_options --enable-wasm-simd
-ac_add_options --enable-linker=mold
+ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
@@ -202,6 +201,7 @@ export MOZILLA_OFFICIAL=1
 export MOZ_APP_REMOTINGNAME=$_pkgname
 
 # Floorp Upstream
+ac_add_options --enable-private-components
 ac_add_options --enable-proxy-bypass-protection
 ac_add_options --enable-unverified-updates
 ac_add_options --with-l10n-base=${PWD@Q}/floorp/browser/locales/l10n-central
@@ -257,19 +257,12 @@ ac_add_options OPT_LEVEL="3"
 ac_add_options RUSTC_OPT_LEVEL="3"
 
 # Other
-export AR=llvm-ar
-export CC='clang'
-export CXX='clang++'
-export NM=llvm-nm
-export RANLIB=llvm-ranlib
+export AR=llvm-ar${_ver_clang:+-$_ver_clang}
+export CC=clang${_ver_clang:+-$_ver_clang}
+export CXX=clang++${_ver_clang:+-$_ver_clang}
+export NM=llvm-nm${_ver_clang:+-$_ver_clang}
+export RANLIB=llvm-ranlib${_ver_clang:+-$_ver_clang}
 END
-
-  if [[ "${_build_private::1}" == "t" ]]; then
-    echo "Enabling private components..."
-    cat >> ../mozconfig << END
-ac_add_options --enable-private-components
-END
-  fi
 
   local src
   for src in "${source[@]}"; do
@@ -283,10 +276,13 @@ END
   done
 }
 
-build() {
+build() (
   cd "$_pkgsrc"
 
-  export RUSTUP_TOOLCHAIN=1.77
+  export PATH="/usr/lib/llvm${_ver_clang:-}/bin:$PATH"
+  export LD_LIBRARY_PATH=/usr/lib/llvm${_ver_clang:-}/lib
+
+  export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:?}
 
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
   [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
@@ -416,7 +412,7 @@ END
 
     ./mach build
   fi
-}
+)
 
 package() {
   cd "$_pkgsrc"
@@ -491,12 +487,4 @@ END
     install -Dvm644 browser/branding/$theme/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
-
-  # license
-  if [[ "${_build_private::1}" == "t" ]]; then
-    install -Dm644 "$srcdir/floorp-projects.private-components/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.components"
-  fi
 }
-
-# execute
-_main_package

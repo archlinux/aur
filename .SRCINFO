@@ -1,31 +1,29 @@
 pkgbase = floorp
 	pkgdesc = Firefox-based web browser focused on performance and customizability
-	pkgver = 11.14.1
+	pkgver = 11.15.0
 	pkgrel = 1
 	url = https://github.com/Floorp-Projects/Floorp
 	arch = x86_64
 	license = MPL-2.0
-	license = LicenseRef-Floorp
+	makedepends = clang17
+	makedepends = lld17
+	makedepends = llvm17
+	makedepends = wasi-compiler-rt17
 	makedepends = cbindgen
-	makedepends = clang
 	makedepends = diffutils
 	makedepends = dump_syms
 	makedepends = git
 	makedepends = imake
 	makedepends = inetutils
 	makedepends = jack
-	makedepends = lld
-	makedepends = llvm
 	makedepends = mercurial
 	makedepends = mesa
-	makedepends = mold
 	makedepends = nasm
 	makedepends = nodejs
 	makedepends = python
 	makedepends = python-setuptools
 	makedepends = rustup
 	makedepends = unzip
-	makedepends = wasi-compiler-rt
 	makedepends = wasi-libc
 	makedepends = wasi-libc++
 	makedepends = wasi-libc++abi
@@ -55,28 +53,32 @@ pkgbase = floorp
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = floorp=11.14.1
+	provides = floorp=11.15.0
 	conflicts = floorp
 	options = !debug
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
 	options = !strip
-	source = Floorp::git+https://github.com/Floorp-Projects/Floorp.git#tag=v11.14.1
+	source = Floorp::git+https://github.com/Floorp-Projects/Floorp.git#tag=v11.15.0
 	source = floorp-projects.floorp-core::git+https://github.com/Floorp-Projects/Floorp-core.git
 	source = floorp-projects.unified-l10n-central::git+https://github.com/Floorp-Projects/Unified-l10n-central.git
 	source = floorp.desktop
+	source = patch-python3.12-bug1831512-3d03cbf.patch::https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1831512.patch?h=firedragon&id=3d03cbfb37298c494be59bb34e3da365f10c00a3
+	source = patch-python3.12-bug1860051-3d03cbf.patch::https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1860051.patch?h=firedragon&id=3d03cbfb37298c494be59bb34e3da365f10c00a3
+	source = patch-python3.12-bug1866829-3d03cbf.patch::https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1866829.patch?h=firedragon&id=3d03cbfb37298c494be59bb34e3da365f10c00a3
+	source = patch-python3.12-bug1874280-3d03cbf.patch::https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1874280.patch?h=firedragon&id=3d03cbfb37298c494be59bb34e3da365f10c00a3
 	source = 18d19413472f-24a6ea8.patch::https://aur.archlinux.org/cgit/aur.git/plain/18d19413472f.patch?h=firefox-esr&id=24a6ea8
-	source = 6af7194e2778-24a6ea8.patch::https://aur.archlinux.org/cgit/aur.git/plain/6af7194e2778.patch?h=firefox-esr&id=24a6ea8
 	source = b1cc62489fae-24a6ea8.patch::https://aur.archlinux.org/cgit/aur.git/plain/b1cc62489fae.patch?h=firefox-esr&id=24a6ea8
-	source = floorp-projects.private-components::git+https://github.com/Floorp-Projects/Floorp-private-components.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273
+	sha256sums = 9516c36c145d365c3b65153d83a5b3b0dd8a319b5c30d47a390070892bd431b3
+	sha256sums = 168d16a027a81c311c58f9302858244dfa5517f0a95a8d3df1abbf9b93b9d455
+	sha256sums = df27ed1e0da5b192224978dc2a593a97e18e6e22062c611fc32b277500324e62
+	sha256sums = cf1c69fd3338fd8f5e482f55b669160b08dfb021f2348b620f0a85dd9dee8150
 	sha256sums = 3cc55401ed5e027f1b9e667b0b52296af11f3c5c62b4a80b7e55cda0e117ed18
-	sha256sums = 6952f93889acb514e3b06e251ea901df88c39b429da9677cd5547d90a8b6c73e
 	sha256sums = f66a944fa8804c16b1f7bd9b42b18bfc2552a891adc148085f4b91685e8db117
-	sha256sums = SKIP
 
 pkgname = floorp
