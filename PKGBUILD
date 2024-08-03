@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lunarwolf-git
 _pkgname=LunarWolf
-pkgver=1.0.1.beta.2.r0.g5089605
+pkgver=1.0.1.beta.3.r0.g28712be
 _electronversion=31
-_nodeversion=20
+_nodeversion=22
 pkgrel=1
 pkgdesc="Extensible, fast and innovative web browser with material UI."
 arch=('any')
@@ -69,7 +69,7 @@ build() {
     fi
     sed "s|electron-builder -l|electron-builder -l --dir|g" -i package.json
     npx corepack enable
-    npx yarn set version 4.2.2
+    npx yarn set version 4.3.1
     # .yarnrc.yml existed
     NODE_ENV=development yarn install #--cache-folder "${srcdir}/.yarn_cache"
     NODE_ENV=production yarn run compile-linux

@@ -1,6 +1,6 @@
 pkgbase = lunarwolf-git
 	pkgdesc = Extensible, fast and innovative web browser with material UI.
-	pkgver = 1.0.1.beta.2.r0.g5089605
+	pkgver = 1.0.1.beta.3.r0.g28712be
 	pkgrel = 1
 	url = https://github.com/IroniumStudios/LunarWolf-Browser
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = lunarwolf-git
 	makedepends = curl
 	makedepends = yarn
 	depends = electron31
-	provides = lunarwolf=1.0.1.beta.2
+	provides = lunarwolf=1.0.1.beta.3
 	conflicts = lunarwolf
 	source = lunarwolf.git::git+https://github.com/IroniumStudios/LunarWolf-Browser.git
 	source = lunarwolf.sh
