@@ -10,6 +10,7 @@ arch=('x86_64' 'i686')
 url="https://bertini.nd.edu/${_pkgName}/index.html"
 license=('custom:Bertini license')
 depends=('bertini')
+optdepends=('localdimfinder-docs: documentation')
 provides=("${_pkgname}" "${_pkgName}")
 conflicts=("${_pkgname}" "${_pkgName}")
 _pkgsrc="${_pkgname}-${pkgver}"
