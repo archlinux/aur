@@ -1,10 +1,9 @@
 pkgbase = chocolate-doom
 	pkgdesc = Historically-accurate Doom, Heretic, Hexen, and Strife ports.
-	pkgver = 3.0.1
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = http://www.chocolate-doom.org/
 	install = chocolate-doom.install
-	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
@@ -24,15 +23,9 @@ pkgbase = chocolate-doom
 	replaces = chocolate-heretic
 	replaces = chocolate-hexen
 	replaces = chocolate-strife
-	source = https://www.chocolate-doom.org/downloads/3.0.1/chocolate-doom-3.0.1.tar.gz
-	source = https://www.chocolate-doom.org/downloads/3.0.1/chocolate-doom-3.0.1.tar.gz.asc
-	source = 0001_fix-bash-completion.patch
-	source = 0002-Remove-redundant-demoextend-definition.patch
-	validpgpkeys = 6D2C117E0310664497AA9546F6C2EE9C23354344
-	b2sums = 51a9f4cc56671227c1d25765daa31ef2d727819e51390efa32973c6ea09b8214d85c611fb652bb73b354ac7eec5417804601c3e367224ee0ea211379e33abdbb
-	b2sums = SKIP
-	b2sums = 15115b4450f978b6ce2c593ec3d7d54d6acc1082b64b1fb0db155187366595563291991d19840534a43d966bf4722954e652b3cb3e9961d5ad6827c3651c0908
-	b2sums = eefc539dd87472323be368073ac2893f41a0ce478d12a288bb1b85513f1491b013fcdfcac94db92e444fe89798ffb06a0441e016f78cf533221fffc9e1f69507
+	source = https://github.com/chocolate-doom/chocolate-doom/archive/refs/tags/chocolate-doom-3.1.0.tar.gz
+	source = 0001-man-docgen-Use-raw-string-literals-for-regular-expre.patch
+	b2sums = 4e311985e1c20d2d5bf0cc6ef3e860c78a0d1e413ca398800bcdcf86f43727e48f1306e7e9c8878e3313e9ca2e7ba3d48eddd220ef5def06230caf32fe0890fb
+	b2sums = 32382739724d1fead2c25af21821193326f2f85af8138005a3dccfd9fc65057430ce26063526472ff3d72aa2cd7cac044544859c5aff3fae66a4d76dc96f1c08
 
 pkgname = chocolate-doom
-

@@ -2,9 +2,9 @@
 
 pkgname=chocolate-doom
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
-arch=('i686' 'x86_64' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="http://www.chocolate-doom.org/"
 license=('GPL2')
 install=chocolate-doom.install
@@ -18,17 +18,13 @@ conflicts=(chocolate-common
            chocolate-hexen
            chocolate-strife)
 replaces=(${conflicts[@]})
-source=(https://www.chocolate-doom.org/downloads/${pkgver}/${pkgname}-${pkgver}.tar.gz{,.asc}
-        0001_fix-bash-completion.patch
-        0002-Remove-redundant-demoextend-definition.patch)
-b2sums=('51a9f4cc56671227c1d25765daa31ef2d727819e51390efa32973c6ea09b8214d85c611fb652bb73b354ac7eec5417804601c3e367224ee0ea211379e33abdbb'
-        'SKIP'
-        '15115b4450f978b6ce2c593ec3d7d54d6acc1082b64b1fb0db155187366595563291991d19840534a43d966bf4722954e652b3cb3e9961d5ad6827c3651c0908'
-        'eefc539dd87472323be368073ac2893f41a0ce478d12a288bb1b85513f1491b013fcdfcac94db92e444fe89798ffb06a0441e016f78cf533221fffc9e1f69507')
-validpgpkeys=('6D2C117E0310664497AA9546F6C2EE9C23354344')
+source=(https://github.com/${pkgname}/${pkgname}/archive/refs/tags/${pkgname}-${pkgver}.tar.gz
+        0001-man-docgen-Use-raw-string-literals-for-regular-expre.patch)
+b2sums=('4e311985e1c20d2d5bf0cc6ef3e860c78a0d1e413ca398800bcdcf86f43727e48f1306e7e9c8878e3313e9ca2e7ba3d48eddd220ef5def06230caf32fe0890fb'
+        '32382739724d1fead2c25af21821193326f2f85af8138005a3dccfd9fc65057430ce26063526472ff3d72aa2cd7cac044544859c5aff3fae66a4d76dc96f1c08')
 
 prepare() {
-  cd "${pkgbase}-${pkgver}"
+  cd "${pkgname}-${pkgname}-${pkgver}"
 
   for patch in ../*.patch; do
     if [ ! -f "$patch" ]; then
@@ -37,17 +33,19 @@ prepare() {
       patch -p1 -i "$patch"
     fi
   done
+
+  autoreconf -fi
 }
 
 build() {
-  cd "${pkgbase}-${pkgver}"
+  cd "${pkgname}-${pkgname}-${pkgver}"
 
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${pkgbase}-${pkgver}"
+  cd "${pkgname}-${pkgname}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
   install -dm 755 "${pkgdir}"/usr/share/games/doom
