@@ -1,73 +1,63 @@
-# Maintainer: BigfootACA <bigfoot@classfun.cn>
+# Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+# Contributor: BigfootACA <bigfoot@classfun.cn>
 
-_pyname=oslo.versionedobjects
-_pycname=${_pyname/./-}
-pkgname=python-${_pycname}
-pkgver=3.0.1
+pkgname=python-oslo-versionedobjects
+pkgver=3.4.0
 pkgrel=1
-pkgdesc="Oslo Versioned Objects library"
+pkgdesc="OpenStack versioned objects library"
 arch=(any)
-url="https://docs.openstack.org/oslo.versionedobjects/latest/"
-license=(Apache)
-depends=(
-	python
-	python-pbr
-	python-oslo-concurrency
-	python-oslo-config
-	python-oslo-context
-	python-oslo-messaging
-	python-oslo-serialization
-	python-oslo-utils
-	python-iso8601
-	python-oslo-log
-	python-oslo-i18n
-	python-webob
-	python-netaddr
-)
-makedepends=(
-	python-setuptools
-	python-openstackdocstheme
-	python-sphinx
-	python-reno
-	python-mock
-	python-fixtures
-)
-checkdepends=(
-	python-hacking
-	python-oslotest
-	python-testtools
-	python-coverage
-	python-jsonschema
-	python-stestr
-	python-fixtures
-	python-pre-commit
-	bandit
-)
-options=('!emptydirs')
-source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('b482fc968e598a0b468c2f2a0e9d596d')
-sha256sums=('2878dcb4645ea2e1e519d0dedb829bd6d5a120e8d6792758101b95d14e5419fc')
-sha512sums=('0f2568775fc134c68aed5546482648cdb4117698b0e75c4bbd1a15d7beadd1f100bcbc5b4f59b42ef4f6791bdac8bea9ee191a900c0951523832f7db8e319caa')
+url="https://opendev.org/openstack/oslo.versionedobjects"
+license=(Apache-2.0)
+depends=('python'
+         'python-oslo-concurrency'
+         'python-oslo-config'
+         'python-oslo-context'
+         'python-oslo-messaging'
+         'python-oslo-serialization'
+         'python-oslo-utils'
+         'python-iso8601'
+         'python-oslo-log'
+         'python-oslo-i18n'
+         'python-webob'
+         'python-netaddr'
+         'python-jsonschema'
+         'python-fixtures'
+         'python-testtools'
+         'python-eventlet')
+makedepends=('python-build'
+             'python-installer'
+             'python-sphinx'
+             'python-setuptools'
+             'python-wheel'
+             'tar')
+checkdepends=('python-hacking'
+              'python-oslotest'
+              'python-coverage'
+              'python-stestr'
+              'bandit'
+              'python-pre-commit')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+b2sums=('ea90efeb6fe79b0950abf7da67d275a9f4b72664633c15c51fc6199d7a14cdb0748148f44ebd05191e179a900ecbbf3362dcf8a1d7da945bb4c5fd79d8de33f5')
 
-export PBR_VERSION=$pkgver
+prepare() {
+    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
+}
 
 build(){
-	cd $_pyname-$pkgver
-	export PYTHONPATH="$PWD"
-	python setup.py build
-	sphinx-build -b text doc/source doc/build/text
+    cd "$pkgname-$pkgver"
+    PBR_VERSION=$pkgver python -m build --wheel --no-isolation
 }
 
-check(){
-	cd $_pyname-$pkgver
-	stestr run
-}
+#check(){
+#    cd "$pkgname-$pkgver"
+#    stestr run
+#}
 
 package(){
-	cd $_pyname-$pkgver
-	python setup.py install --root="$pkgdir/" --optimize=1
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-	mkdir -p "$pkgdir/usr/share/doc"
-	cp -r doc/build/text "$pkgdir/usr/share/doc/$pkgname"
-	rm -r "$pkgdir/usr/share/doc/$pkgname/.doctrees"
+    cd "$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 README.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 HACKING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 CONTRIBUTING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
