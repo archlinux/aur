@@ -5,7 +5,7 @@ pkgver=r398.35b0ab9
 pkgrel=4
 pkgdesc='GUI for Monado'
 arch=(x86_64 aarch64)
-url='https://gitlab.com/gabmus/envision'
+url='https://codeberg.org/gabmus/envision'
 license=(GPL)
 depends=(
     gtk4
