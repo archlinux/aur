@@ -1,6 +1,6 @@
 # Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
 pkgname=libmirisdr4-git
-pkgver=r21.30a4f96
+pkgver=r33.fd0452e
 pkgrel=1
 pkgdesc="Support of Mirics MSi001 + MSi2500 SDR devices (yet another flavour of libmirisdr)"
 arch=('i686' 'x86_64')
