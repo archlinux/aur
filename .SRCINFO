@@ -1,7 +1,7 @@
 pkgbase = flashpoint-launcher-bin
 	pkgdesc = Launcher for Flashpoint
 	pkgver = 13_20240425m
-	pkgrel = 2
+	pkgrel = 3
 	url = https://flashpointarchive.org/
 	arch = x86_64
 	license = MIT
