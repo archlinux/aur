@@ -1,18 +1,31 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=grub-reboot-picker
 _app_id=com.mendhak.grubrebootpicker
-pkgver=0.0.8
-pkgrel=2
+pkgver=0.0.9
+pkgrel=1
 pkgdesc="Tray application to reboot into different OSes or UEFI/BIOS"
 arch=('any')
 url="https://github.com/mendhak/grub-reboot-picker"
 license=('MIT')
-depends=('grub' 'libappindicator-gtk3' 'polkit' 'python-cairo' 'python-gobject')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+depends=(
+  'grub'
+  'gtk3'
+  'libappindicator-gtk3'
+  'polkit'
+  'python-cairo'
+  'python-gobject'
+  'systemd-sysvcompat'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'setup.patch'
         'un-reboot.png')  # from Ubuntu update-notifier package
-sha256sums=('9a18eb1696f98f36d3e1887dc08f19634afc1409844edaaba6b0a80f86d8a2e9'
+sha256sums=('601e3e9914a3680f603b6693232a9e18b842d255f421387540ce9b9111824407'
             '53697a6925981cf83c3c67fed1646fff9a3800ce43994f7da94526151b285bb2'
             'd764a1b0722752b5166529838f29cfa5b708554d209fc4206e8f7f846e8a51cf')
 
