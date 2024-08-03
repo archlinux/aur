@@ -27,7 +27,7 @@ pkgbase = duckstation-git
 	depends = sh
 	depends = glibc
 	depends = gcc-libs
-	depends = sdl2
+	depends = sdl2>=2.30.6
 	depends = qt6-base
 	depends = libwebp.so
 	depends = libjpeg.so
