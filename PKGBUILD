@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=snoop
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Snoop through your files"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtksourceview5' 'libadwaita')
 makedepends=('meson' 'vala')
 checkdepends=('appstream-glib')
 source=("https://gitlab.gnome.org/philippun1/snoop/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('68d0cc78b2255777fb75829cde312d79252b7ce4abc12a59e1fabf4656373179')
+sha256sums=('5911ceb1a7c49b4ede433ec1beaab7b77c8d7e94907fdd855d7946a8c29f67a3')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
@@ -25,5 +25,5 @@ package() {
   meson install -C build --destdir "$pkgdir"
 
   # Nautilus plugin only supported with Flatpak
-  rm -r "$pkgdir/usr/share/nautilus-python"
+  rm -rv "$pkgdir/usr/share/nautilus-python"
 }

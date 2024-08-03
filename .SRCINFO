@@ -1,6 +1,6 @@
 pkgbase = snoop
 	pkgdesc = Snoop through your files
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/philippun1/snoop
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = snoop
 	makedepends = vala
 	depends = gtksourceview5
 	depends = libadwaita
-	source = https://gitlab.gnome.org/philippun1/snoop/-/archive/0.3.1/snoop-0.3.1.tar.gz
-	sha256sums = 68d0cc78b2255777fb75829cde312d79252b7ce4abc12a59e1fabf4656373179
+	source = https://gitlab.gnome.org/philippun1/snoop/-/archive/0.3.2/snoop-0.3.2.tar.gz
+	sha256sums = 5911ceb1a7c49b4ede433ec1beaab7b77c8d7e94907fdd855d7946a8c29f67a3
 
 pkgname = snoop
