@@ -1,0 +1,10 @@
+[Unit]
+Description=Webtorrent Bittorrent Tracker.
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/webtorrent-bittorrent-tracker.conf
+ExecStart=/bin/bash -c "/bin/bittorrent-tracker $OPT"
+
+[Install]
+WantedBy=multi-user.target

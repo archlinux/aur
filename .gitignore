@@ -4,3 +4,5 @@
 !PKGBUILD
 !.SRCINFO
 !changelog.md
+!webtorrent-bittorrent-tracker.conf
+!webtorrent-bittorrent-tracker.service
