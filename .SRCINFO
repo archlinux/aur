@@ -1,0 +1,21 @@
+pkgbase = nano-vanity-git
+	pkgdesc = Vanity address generator for nano cryptocurrency.
+	pkgver = r88.caa7274
+	pkgrel = 1
+	url = https://github.com/PlasmaPower/nano-vanity
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = cargo
+	makedepends = rustup
+	depends = glibc
+	depends = gcc-libs
+	depends = ocl-icd
+	provides = nano-vanity=r88.caa7274
+	conflicts = nano-vanity
+	source = nano-vanity-r88.caa7274::git+https://github.com/PlasmaPower/nano-vanity.git
+	source = LICENSE::https://raw.githubusercontent.com/PlasmaPower/nano-vanity/master/LICENSE
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = nano-vanity-git
