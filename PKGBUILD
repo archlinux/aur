@@ -1,17 +1,17 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=vanilla-backgrounds
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Collection of light and dark backgrounds for Vanilla OS'
 arch=(any)
 url='https://github.com/Vanilla-OS/vanilla-backgrounds'
-license=('CCPL:by-sa-4.0' 'CCPL:by-4.0')
+license=(CC-BY-4.0 CC-BY-SA-4.0)
 depends=(webp-pixbuf-loader)
 makedepends=(glib2 meson)
-_commit='3f63407a5714ad4452db228a79d4974658c86724'
+_commit=289090efa3ce972d1e87e896bca072424cdd9fa4
 source=("https://github.com/Vanilla-OS/vanilla-backgrounds/archive/${_commit}.tar.gz")
-b2sums=('b40a3509e6ed887a071b71cc6b1f07e84f6007de6510e13a7ee4b425546b11bd9021d1c93bc51a2ef4b2b669e115d777c73904411853d03f76ab5fe4a9249dd8')
+b2sums=('d49422b76090db5b72d55fea2fb0861fa2e5ac26bfec1991a630088081da4442e95144618a19b99d8383299030153c78b352920c1564f5e26c476303c3f8393d')
 
 build() {
 	arch-meson ${pkgname}-${_commit} build
