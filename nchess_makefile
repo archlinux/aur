@@ -1,0 +1,25 @@
+EXE := nchess
+
+# Use ?= to allow overriding from the command line or environment
+CC ?= gcc
+CFLAGS ?= -std=c99
+CPPFLAGS ?= -I src/engine -I src/tui
+LDFLAGS ?=
+LDLIBS ?= -lncurses -lm
+
+prefix ?= /usr/local
+exec_prefix ?= $(prefix)
+bindir ?= $(exec_prefix)/bin
+
+all: ${EXE}
+
+${EXE}: src/main.c
+	${CC} ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} $< -o $@ ${LDLIBS}
+
+install: all
+	install -Dm755 ${EXE} $(DESTDIR)$(bindir)/${EXE}
+
+clean:
+	rm -f ${EXE}
+
+.PHONY: all install clean
