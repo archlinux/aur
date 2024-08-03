@@ -3,16 +3,16 @@
 pkgname=blue-recorder-git
 _app_id=sa.sy.bluerecorder
 pkgver=r196.9d61234
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Screen Recorder written in Rust based on Green Recorder"
 arch=('x86_64')
 url="https://github.com/xlmnxp/blue-recorder"
 license=('GPL-3.0-or-later')
 depends=(
   'ffmpeg'
+  'gstreamer'
   'gtk4'
   'libappindicator-gtk3'
-  'pulseaudio'
   'xorg-xwininfo'
 )
 makedepends=(
@@ -38,7 +38,7 @@ prepare() {
   git revert --no-commit ee02a8f0ba930e6e0f9a96636ea95b80fb4695c1
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
