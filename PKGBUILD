@@ -24,10 +24,8 @@ pkgver() {
 
 build() {
         cd "$pkgname"
-        # By default, it uses the c99 compiler instead of cc?????
-        export CC=cc
-        ./configure --prefix=$pkgdir/usr --no-static
-        make
+        ./configure --prefix=$pkgdir/usr
+        make -j$(nproc)
 }
 
 package() {
