@@ -1,0 +1,20 @@
+pkgbase = godoos-bin
+	pkgdesc = An efficient intranet office platform that includes various tools such as Word, Excel, PPT, PDF, intranet chat, whiteboard, and mind mapping, and supports native file storage.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://gdoa.top/
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	depends = gtk3
+	depends = webkit2gtk
+	provides = godoos=1.0.0
+	conflicts = godoos
+	source = godoos-1.0.0.zip::https://github.com/phpk/godoos/releases/download/v1.0.0/godoos-linux-amd64.zip
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/phpk/godoos/v1.0.0/LICENSE
+	source = godoos-1.0.0.png::https://raw.githubusercontent.com/phpk/godoos/v1.0.0/build/appicon.png
+	sha256sums = 07a677f050aa58c508dad4f4c1e93a7de5363b33d9cc257246a175927ad44a5d
+	sha256sums = 4c670b4fb2803c2779132e9e5b9f16d9cd2117b56c1dc5351b894c542b494260
+	sha256sums = d912088bdd9962fbb250af6c8f2aa08f9bf5a8cb8fbde34c4fb1e0505d3fb634
+
+pkgname = godoos-bin
