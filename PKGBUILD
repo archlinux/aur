@@ -2,14 +2,14 @@
 
 _pkgname="gomphotherium"
 pkgname="${_pkgname}-git"
-pkgver=0.4.0.r22.g6fe7127
+pkgver=0.4.0.r24.gac97823
 pkgrel=1
 pkgdesc="A command line Mastodon client"
 arch=('any')
 url="https://github.com/mrusme/${_pkgname}"
 license=('GPL-3.0-or-later')
+makedepends=('git' 'go>=1.19')
 depends=('glibc')
-makedepends=('git' 'make' 'go>=1.19')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
@@ -21,6 +21,12 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  mkdir -p "build"
+  go mod download
+}
+
 build() {
   cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -28,17 +34,14 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  make
-}
-
-check() {
-  cd "${srcdir}/${_pkgsrc}"
-  go test ./...
+  go build -v -o "build/${_pkgname}" -ldflags "\
+    -X ${url#https://}/cli.VERSION=${pkgver%%.r*}" \
+    .
 }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
