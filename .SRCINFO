@@ -1,7 +1,7 @@
 pkgbase = python-os-ken
 	pkgdesc = A component-based software defined networking framework for OpenStack
 	pkgver = 2.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opendev.org/openstack/os-ken
 	arch = any
 	license = Apache-2.0
@@ -32,7 +32,6 @@ pkgbase = python-os-ken
 	depends = python-testscenarios
 	depends = python-setuptools
 	depends = python-testtools
-	depends = python-sqlalchemy
 	depends = mininet
 	source = python-os-ken-2.9.0.tar.gz::https://opendev.org/openstack/os-ken/archive/2.9.0.tar.gz
 	b2sums = d452cf3277873c8a318e5d5ff81fd87be863f784773206f5dca8ffe4eb2d1cd724a723c264bcc79d209b061d7b9708d77a0dab450cd75aedd9f461dde9aad7b3
