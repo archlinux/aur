@@ -1,0 +1,6 @@
+[nest]
+source = "github"
+github = "nest/nest-simulator"
+use_max_tag = true
+prefix = "v"
+exclude_regex = ".*(rc).*"
