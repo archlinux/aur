@@ -4,7 +4,7 @@
 # Contributer: Arnaud
 
 pkgname=edgetx-companion
-pkgver=2.10.2
+pkgver=2.10.3
 pkgrel=1
 pkgdesc="EEPROM Editor and Simulator for EdgeTX RC radio transmitter firmwares"
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=("git+https://github.com/EdgeTX/edgetx.git#tag=v$pkgver"
         "git+https://github.com/EdgeTX/lvgl.git"
         "git+https://github.com/nothings/stb.git"
         install.patch)
-b2sums=('12b701fec3f8b61df8d75e7928b8f36930b09e0eb8221eab78d9f9424c9b6ff99c237ac45063fbd4a57328c2b83be74b0008ec980d1c8b31701654f179db8b6c'
+b2sums=('7d534ebdeea1c64e5e2dc02f7f854c2784e3d3e397963be501e41708401f1fb7070227aec84e77ef027e04d076108add3fb1d7f9bc103f5e14534b9e24569af3'
         'SKIP'
         'SKIP'
         'SKIP'
