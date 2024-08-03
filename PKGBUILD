@@ -2,7 +2,8 @@
 # Contributor: Chris Oelmueller <chris.oelmueller@gmail.com>
 # Contributor: Thomas Kinnen <thomas.kinnen@gmail.com>
 # Contributor: Thomas Kowaliczek-Schmer <thomas.kowaliczek@posteo.de>
-# shellcheck disable=SC2034,2154
+# shellcheck shell=bash
+# shellcheck disable=SC2034,SC2154
 
 pkgname=unknown-horizons-git
 _pkgname=${pkgname%-git}
@@ -10,7 +11,7 @@ pkgver=2019.1.r109.gac387940c
 pkgrel=1
 pkgdesc="Open source real-time strategy game with the comfy Anno1602 feeling."
 arch=('any')
-url="http://www.unknown-horizons.org"
+url="https://unknown-horizons.org/"
 license=('GPL' 'CCPL')
 depends=('fife' 'python-distro' 'python-future' 'python-pillow' 'python-yaml')
 makedepends=('git' 'intltool' 'python-setuptools')
@@ -26,10 +27,10 @@ pkgver() {
         "$(git describe --long --tags | awk -F '-' '{print "r" $(NF-1) "." $(NF)}')"
 }
 
-# unknown-horizons build system misses a few files if the build step is seperated from the install
-# step
 build() {
     cd "$pkgname" || exit
+    # unknown-horizons build system misses a few files if the build step is seperated from the install step
+    # -> Do not build here for now
     # UH_USER_DIR="UH_USER_DIR" python setup.py build
     UH_USER_DIR="UH_USER_DIR" python horizons/engine/generate_atlases.py 2048
 }
