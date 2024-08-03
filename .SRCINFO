@@ -1,7 +1,7 @@
 pkgbase = obexftp
 	pkgdesc = A tool for transfer files to/from any OBEX enabled device
 	pkgver = 0.24.2
-	pkgrel = 5
+	pkgrel = 6
 	url = http://dev.zuckschwerdt.org/openobex/wiki/ObexFtp
 	arch = x86_64
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = obexftp
 	makedepends = asciidoc
 	makedepends = xmlto
 	makedepends = swig
+	makedepends = python2
 	makedepends = ruby
 	makedepends = tk
 	depends = openobex
@@ -27,4 +28,3 @@ pkgbase = obexftp
 	sha256sums = b2bdc9c9ad1894864d77531549be6f921f8d04344c64185ca053cc677c609a50
 
 pkgname = obexftp
-

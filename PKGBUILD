@@ -4,7 +4,7 @@
 
 pkgname=obexftp
 pkgver=0.24.2
-pkgrel=5
+pkgrel=6
 pkgdesc="A tool for transfer files to/from any OBEX enabled device"
 arch=('x86_64')
 url="http://dev.zuckschwerdt.org/openobex/wiki/ObexFtp"
@@ -13,7 +13,7 @@ provides=("obexfs=${pkgver}")
 replaces=('obexfs')
 conflicts=('obexfs')
 depends=('openobex' 'expat' 'fuse2')
-makedepends=('cmake' 'asciidoc' 'xmlto' 'swig' 'ruby' 'tk')
+makedepends=('cmake' 'asciidoc' 'xmlto' 'swig' 'python2' 'ruby' 'tk')
 optdepends=('ruby: ruby bindings'
             'tk: TCL/Tk bindings')
 options=('!makeflags' '!docs')
@@ -40,6 +40,9 @@ build() {
     -DCMAKE_INSTALL_SBINDIR=bin \
     -DENABLE_PERL=YES \
     -DENABLE_PYTHON=YES \
+    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+    -DPYTHON_INCLUDE_DIR:PATH=/usr/include/python2.7 \
+    -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
     -DENABLE_RUBY=YES \
     -DENABLE_TCL=YES
   make doc
