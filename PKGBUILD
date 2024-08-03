@@ -8,11 +8,17 @@ provides=(falco)
 conflicts=(falco-bin)
 backup=('etc/falco/falco_rules.yaml'  'etc/falco/falco.yaml')
 pkgver=0.37.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cloud native runtime security. Modern ebpf and config files"
 arch=(x86_64)
 license=(Apache)
 makedepends=(cmake git c-ares jq grpc yaml-cpp clang linux-headers llvm bpf automake gcc)
+optdepends=(
+    "falco-probe-ebpf: ebpf probe"
+    "falco-module-dkms: dkms module"
+    "falcoctl: administrative tooling for Falco"
+    "falcosidekick: connect Falco to your ecosystem"
+)
 url="https://github.com/falcosecurity/falco"
 _rules_tag="falco-rules-3.0.1"
 source_x86_64=(
