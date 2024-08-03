@@ -1,4 +1,5 @@
-# Maintainer:  edward-p <edward AT edward-p DOT xyz>
+# Maintainer: Hanatomizu <chart11from21 at outlook dot com>
+# Contributor:  edward-p <edward AT edward-p DOT xyz>
 
 pkgname=lunarvim-git
 pkgver=1.4.0.r3.g85ccca97
@@ -14,37 +15,19 @@ depends=(
   'fzf'
   'neovim-remote'
   'tree-sitter'
-  'tree-sitter-cli'
   'python-pynvim'
   'nodejs'
   'yarn'
 )
-makedepends=('git')
+makedepends=(
+    'git'
+    'tree-sitter-cli'
+)
 optdepends=(
     'ripgrep: optional dependencies for telescope.nvim'
     'lazygit: enables <leader>gg to launch lazygit for intergrated and enhanced Git experience while in lvim'
     )
 install=${pkgname}.install
-langs=(bash beancount bibtex
-  c c_sharp clojure cmake comment commonlisp cpp css cuda
-  dart devicetree dockerfile dot
-  elixir erlang
-  fennel fish
-  go gomod graphql
-  hcl heex html
-  java javascript jsdoc json json5 julia
-  kotlin
-  latex ledger lua
-  nix
-  ocaml ocaml_interface ocamllex
-  perl php pioasm python
-  ql
-  r regex rst ruby rust
-  scala scss sparql supercollider surface svelte
-  teal tlaplus toml tsx turtle typescript
-  verilog vim vue
-  yaml yang
-  zig)
 source=("${pkgname}::git+https://github.com/LunarVim/LunarVim.git#branch=master"
   "git+https://github.com/nvim-treesitter/nvim-treesitter.git#branch=master"
   "init-lvim.sh"
@@ -63,12 +46,8 @@ build() {
   cd "${srcdir}/nvim-treesitter"
   runtime="${srcdir}/nvim-treesitter"
 
-  for lang in ${langs[@]}; do
-    if [[ ! -e ${runtime}/parser/${lang}.so ]]; then
-      nvim --clean --cmd "set runtimepath+=${runtime}" --headless \
-        +"TSUpdateSync ${lang}" +qall
-    fi
-  done
+  nvim --clean --cmd "set runtimepath+=${runtime}" --headless \
+    +"TSUpdateSync all" +qall
 }
 
 package() {
