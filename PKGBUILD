@@ -3,7 +3,7 @@
 # Maintainer: baguette <baguettesabot at gmail dot com>
 pkgname='photonvision-bin'
 pkgver="v2024.3.0"
-pkgrel=2
+pkgrel=1
 pkgdesc="free, fast, and easy-to-use computer vision solution for the FIRST Robotics Competition"
 arch=("x86_64")
 url="https://photonvision.org/"
