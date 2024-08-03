@@ -1,17 +1,17 @@
-# Maintainer: xiretza <xiretza+aur@gmail.com>
+# Maintainer: nemanjan00 <nemanjan00+aur@gmail.com>
 # Contributor: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
 # Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
 
 _pkgname=sdrangel
 pkgname=$_pkgname-git
-pkgver=7.18.1.r28.29a8d21ba
+pkgver=7.21.4.r92.fcd43df71
 pkgrel=1
 pkgdesc='Qt5/OpenGL SDR and signal analyzer frontend.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/f4exb/sdrangel'
 license=('GPL3')
 depends=('pkg-config' 'log4cpp' 'opencv' 'fftw'
-         'cm256cc' 'dsdcc' 'pulseaudio' 'lz4' 'nanomsg'
+         'cm256cc' 'dsdcc' 'pulse-native-provider' 'lz4' 'nanomsg'
          'qt5-base' 'qt5-multimedia' 'qt5-websockets' 'qt5-tools' 'qt5-charts' 'qt5-quickcontrols' 'qt5-quickcontrols2'
          'qt5-serialport' 'qt5-declarative' 'qt5-location' 'qt5-speech' 'qt5-webengine' 'qt5-gamepad' 'qt5-svg')
 
@@ -63,7 +63,9 @@ build() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DLIBDSDCC_INCLUDE_DIR=/usr/include/dsdcc \
-		-DCM256CC_INCLUDE_DIR=/usr/include/cm256cc
+		-DCM256CC_INCLUDE_DIR=/usr/include/cm256cc \
+		-DENABLE_CHANNELRX_DEMODDATV=OFF \
+		-DENABLE_CHANNELTX_MODDATV=OFF
 
 	make -C build
 }

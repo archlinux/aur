@@ -1,6 +1,6 @@
 pkgbase = sdrangel-git
 	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend.
-	pkgver = 7.18.1.r28.29a8d21ba
+	pkgver = 7.21.4.r92.fcd43df71
 	pkgrel = 1
 	url = https://github.com/f4exb/sdrangel
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = sdrangel-git
 	depends = fftw
 	depends = cm256cc
 	depends = dsdcc
-	depends = pulseaudio
+	depends = pulse-native-provider
 	depends = lz4
 	depends = nanomsg
 	depends = qt5-base
@@ -74,7 +74,7 @@ pkgbase = sdrangel-git
 	optdepends = airspyhf: Airspy HF+ support
 	optdepends = libxtrx: XTRX SDR support
 	optdepends = libuhd: USRP support
-	provides = sdrangel=7.18.1.r28.29a8d21ba
+	provides = sdrangel=7.21.4.r92.fcd43df71
 	conflicts = sdrangel
 	source = git+https://github.com/f4exb/sdrangel
 	sha512sums = SKIP
