@@ -10,7 +10,7 @@ pkgdesc="Desktop client for the Matrix protocol"
 arch=('x86_64')
 url="https://nheko.im/nheko-reborn/nheko"
 license=(GPL-3.0-or-later)
-depends=(qt6-base qt6-svg qt6-quickcontrols2 qt6-multimedia qtkeychain-qt6 \
+depends=(qt6-base qt6-svg qt6-multimedia qtkeychain-qt6 \
          qt6-declarative qt6-imageformats coeurl mtxclient lmdb cmark libolm hicolor-icon-theme \
          kdsingleapplication gst-plugins-bad-libs 'org.freedesktop.secrets')
 makedepends=("git" "cmake" "gcc" "fontconfig" "qt6-tools" "nlohmann-json" "asciidoc")
