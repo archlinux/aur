@@ -1,0 +1,5 @@
+[ttf-sudo]
+source = "github"
+github = "jenskutilek/sudo-font"
+use_max_tag = true
+prefix = "v"
