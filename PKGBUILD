@@ -2,7 +2,7 @@
 
 pkgname=ctune-git
 pkgver=v1.2.0
-pkgrel=0
+pkgrel=1
 pkgdesc="NCurses internet radio player for Linux."
 arch=('x86_64' 'aarch64')
 url="https://github.com/An7ar35/ctune"
@@ -12,7 +12,7 @@ depends=('ncurses'
          'curl'
          'ffmpeg'
          'alsa-lib'
-         'pulseaudio'
+         'pipewire-pulse'
          'libbsd')
 
 makedepends=('make'
@@ -27,12 +27,12 @@ optdepends=('sdl2: for SDL2 output plugin support'
 conflicts=('ctune')
 provides=('ctune')
 license=('AGPL3')
-source=(git+https://github.com/An7ar35/ctune.git)
+source=(git+https://github.com/An7ar35/ctune.git#branch=origin/dev)
 sha512sums=('SKIP')
 
 build() {
     cmake -B ctune_build -S "ctune" \
-          -DCMAKE_BUILD_TYPE='Release' \
+          -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
           -DCMAKE_INSTALL_PREFIX='/usr' \
           -Wno-dev
     cmake --build ctune_build
