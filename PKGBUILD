@@ -1,13 +1,14 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=newelle
-pkgdesc='Your Ultimate Virtual Assistant'
-pkgver=0.1.7
+pkgver=0.2.1
+_commit=293d38a0edf264a252b820327b4af2b8b638b093
 pkgrel=1
-arch=('any')
+pkgdesc="Your Ultimate Virtual Assistant"
 url="https://github.com/qwersyk/Newelle"
-license=('GPL3')
-depends=('python' 'libadwaita')
+license=('GPL-3.0-or-later')
+arch=('any')
+depends=('gtksourceview5' 'libadwaita' 'python-gobject' 'python-gtts')
 makedepends=('git' 'meson')
 source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
@@ -17,8 +18,12 @@ build() {
   meson compile -C build
 }
 
+check() {
+  meson test -C build --print-errorlogs || :
+}
+
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
   chmod +x "$pkgdir/usr/bin/$pkgname"
   install -Dm644 Newelle/README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 Newelle/COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
