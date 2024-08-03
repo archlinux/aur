@@ -17,14 +17,17 @@
 : ${_build_pgo_reuse:=try}
 : ${_build_pgo_xvfb:=true}
 
+: ${_ver_clang=17}
+: ${RUSTUP_TOOLCHAIN:=1.77}
+
 # set to download only one language; en-US does not work
 : ${_lang:=}
 
 ## update
-_icver="115.12.0"
-_commit="f200ffe88821f66234591096bcbe87b0c11f8da0"
-_icsum="42ac5b9349933b1e916594f80e4121274f53eaab0c8dbe9a18bdd7de58190f8b"
-_ffsum="b59e1625a0bb2f0565a737394f2bf8a7ce3171314b0d871bde533a101847a8ef"
+_icver="115.13.0"
+_commit="b2539265bcecd13abf59318c8a844b9c645e5948"
+_icsum="6c6fc30042973aab9ed0579d20b2e84f0f3a0c0978570cce3e04cd73c6e0ad6a"
+_ffsum="3fa20d1897100684d2560a193a48d4a413f31e61f2ed134713d607c5f30d5d5c"
 
 if [ -n "$_srcinfo" ]; then
   : ${_lang:=en-US}
@@ -36,116 +39,115 @@ pkgname="$_pkgname"
 pkgver="$_icver"
 pkgrel=1
 pkgdesc="GNU version of the Firefox ESR browser"
+url="https://git.savannah.gnu.org/cgit/gnuzilla.git"
 license=('MPL-2.0')
 arch=('x86_64')
 
-# main package
-_main_package() {
-  depends=(
-    dbus-glib
-    ffmpeg
-    gtk3
-    libevent
-    libjpeg
-    libpulse
-    libvpx.so
-    libwebp.so
-    libxss
-    libxt
-    mime-types
-    nspr
-    nss
-    pipewire
-    ttf-font
-    zlib
-  )
-  makedepends=(
-    cbindgen
-    clang
-    diffutils
-    dump_syms
-    imake
-    inetutils
-    jack
-    lld
-    llvm
-    mercurial
-    mesa
-    mold
-    nasm
-    nodejs
-    python
-    python-setuptools
-    rustup
-    unzip
-    wasi-compiler-rt
-    wasi-libc
-    wasi-libc++
-    wasi-libc++abi
-    yasm
-    zip
+depends=(
+  dbus-glib
+  ffmpeg
+  gtk3
+  libevent
+  libjpeg
+  libpulse
+  libvpx.so
+  libwebp.so
+  libxss
+  libxt
+  mime-types
+  nspr
+  nss
+  pipewire
+  ttf-font
+  zlib
+)
+makedepends=(
+  "clang${_ver_clang:-}"
+  "lld${_ver_clang:-}"
+  "llvm${_ver_clang:-}"
+  "wasi-compiler-rt${_ver_clang:-}"
+  cbindgen
+  diffutils
+  dump_syms
+  imake
+  inetutils
+  jack
+  mercurial
+  mesa
+  nasm
+  nodejs
+  python
+  python-setuptools
+  rustup
+  unzip
+  wasi-libc
+  wasi-libc++
+  wasi-libc++abi
+  yasm
+  zip
 
-    ## _makeicecat
-    git
-    m4
-    python-jsonschema
-    python-psutil
-    python-setuptools
-    wget
-  )
-  optdepends=(
-    'hunspell-dictionary: Spell checking'
-    'libnotify: Notification integration'
-    'networkmanager: Location detection via available WiFi networks'
-    'speech-dispatcher: Text-to-Speech'
-    'xdg-desktop-portal: Screensharing with Wayland'
-  )
+  ## _makeicecat
+  git
+  m4
+  python-jsonschema
+  python-psutil
+  python-setuptools
+  wget
+)
+optdepends=(
+  'hunspell-dictionary: Spell checking'
+  'libnotify: Notification integration'
+  'networkmanager: Location detection via available WiFi networks'
+  'speech-dispatcher: Text-to-Speech'
+  'xdg-desktop-portal: Screensharing with Wayland'
+)
 
-  if [[ "${_build_pgo::1}" == "t" ]]; then
-    if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
-      makedepends+=(
-        xorg-server-xvfb
-      )
-    else
-      makedepends+=(
-        weston
-        xorg-xwayland
-        xwayland-run # AUR
-      )
-    fi
+if [[ "${_build_pgo::1}" == "t" ]]; then
+  if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
+    makedepends+=(
+      xorg-server-xvfb
+    )
+  else
+    makedepends+=(
+      weston
+      xorg-xwayland
+      xwayland-run # AUR
+    )
   fi
+fi
 
-  options=(
-    !debug
-    !emptydirs
-    !lto
-    !makeflags
-    !strip
-  )
+options=(
+  !debug
+  !emptydirs
+  !lto
+  !makeflags
+  !strip
+)
 
-  url="https://git.savannah.gnu.org/cgit/gnuzilla.git"
+noextract=("firefox-${pkgver}esr.source.tar.xz")
 
-  noextract=("firefox-${pkgver}esr.source.tar.xz")
-
-  _patch_commit="24a6ea8"
-
+_source_icecat() {
   _pkgsrc="$_pkgname-$pkgver"
   _pkgsrc_gnuzilla="gnuzilla-$_commit"
   _pkgsrc_firefox="firefox-${pkgver}"
   _pkgext="tar.gz"
-  source+=(
+  source=(
     "https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/$_pkgsrc_gnuzilla.$_pkgext"
     "https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz"{,.asc}
+  )
+  sha256sums=(
+    "$_icsum"
+    "$_ffsum"
+    'SKIP'
+  )
 
+  _patch_commit="24a6ea8"
+  source+=(
     "18d19413472f-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/18d19413472f.patch?h=firefox-esr&id=$_patch_commit"
     "6af7194e2778-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/6af7194e2778.patch?h=firefox-esr&id=$_patch_commit"
     "b1cc62489fae-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/b1cc62489fae.patch?h=firefox-esr&id=$_patch_commit"
   )
   sha256sums+=(
-    "$_icsum"
-    "$_ffsum"
-    'SKIP'
-
     '3cc55401ed5e027f1b9e667b0b52296af11f3c5c62b4a80b7e55cda0e117ed18'
     '6952f93889acb514e3b06e251ea901df88c39b429da9677cd5547d90a8b6c73e'
     'f66a944fa8804c16b1f7bd9b42b18bfc2552a891adc148085f4b91685e8db117'
@@ -241,7 +243,8 @@ _make_icecat() {
   fi
 }
 
-# common functions
+_source_icecat
+
 prepare() {
   cat > icecat.desktop << END
 [Desktop Entry]
@@ -304,7 +307,7 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-rust-simd
 ac_add_options --enable-wasm-simd
-ac_add_options --enable-linker=mold
+ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
@@ -368,22 +371,32 @@ ac_add_options OPT_LEVEL="3"
 ac_add_options RUSTC_OPT_LEVEL="3"
 
 # Other
-export AR=llvm-ar
-export CC='clang'
-export CXX='clang++'
-export NM=llvm-nm
-export RANLIB=llvm-ranlib
+export AR=llvm-ar${_ver_clang:+-$_ver_clang}
+export CC=clang${_ver_clang:+-$_ver_clang}
+export CXX=clang++${_ver_clang:+-$_ver_clang}
+export NM=llvm-nm${_ver_clang:+-$_ver_clang}
+export RANLIB=llvm-ranlib${_ver_clang:+-$_ver_clang}
 END
 
-  patch -Np1 -F100 -i "$srcdir/18d19413472f-$_patch_commit.patch"
-  patch -Np1 -F100 -i "$srcdir/6af7194e2778-$_patch_commit.patch"
-  patch -Np1 -F100 -i "$srcdir/b1cc62489fae-$_patch_commit.patch"
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.zst}"
+    if [[ $src == *.patch ]]; then
+      printf '\nApplying patch: %s\n' "$src"
+      patch -Np1 -F100 -i "${srcdir:?}/$src"
+    fi
+  done
 }
 
-build() {
+build() (
   cd "$_pkgsrc"
 
-  export RUSTUP_TOOLCHAIN=1.77
+  export PATH="/usr/lib/llvm${_ver_clang:-}/bin:$PATH"
+  export LD_LIBRARY_PATH=/usr/lib/llvm${_ver_clang:-}/lib
+
+  export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:?}
 
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
   [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
@@ -514,7 +527,7 @@ END
 
     ./mach build
   fi
-}
+)
 
 package() {
   cd "$_pkgsrc"
@@ -590,6 +603,3 @@ END
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
 }
-
-# execute
-_main_package
