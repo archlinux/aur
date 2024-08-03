@@ -1,7 +1,7 @@
 pkgbase = grub-reboot-picker
 	pkgdesc = Tray application to reboot into different OSes or UEFI/BIOS
 	pkgver = 0.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mendhak/grub-reboot-picker
 	arch = any
 	license = MIT
@@ -19,7 +19,7 @@ pkgbase = grub-reboot-picker
 	source = grub-reboot-picker-0.0.9.tar.gz::https://github.com/mendhak/grub-reboot-picker/archive/v0.0.9.tar.gz
 	source = setup.patch
 	source = un-reboot.png
-	sha256sums = 601e3e9914a3680f603b6693232a9e18b842d255f421387540ce9b9111824407
+	sha256sums = bb2fa24350fc72960dc8955ce7604d42110440eab89216948fee5a2677f86897
 	sha256sums = 53697a6925981cf83c3c67fed1646fff9a3800ce43994f7da94526151b285bb2
 	sha256sums = d764a1b0722752b5166529838f29cfa5b708554d209fc4206e8f7f846e8a51cf
 
