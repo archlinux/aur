@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=modv-bin
 _pkgname=modV
-pkgver=3.29.1
+pkgver=3.30.0
 _electronversion=25
-pkgrel=8
+pkgrel=1
 pkgdesc="modular audio visualisation powered by JavaScript"
 arch=("x86_64")
 url="https://modv.vcync.gl/"
@@ -26,7 +26,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/vcync/modv/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('987b13cbd076f0113a4a11df8cd132e1580dec7abe5ea69fa12a6e5e5a5f7992'
+sha256sums=('31686add5ef267610cc3e4a8dc25332864726adcc41046ffee1ab73bac123f52'
             '4ff9462e56a52889b0005f007e0a66930c6b19687751f551bf7316b6ee35119e'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
