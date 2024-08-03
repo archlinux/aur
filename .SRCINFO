@@ -1,0 +1,21 @@
+pkgbase = way-edges-git
+	pkgdesc = Hidden widget on screen edges
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/ogios/way-edges
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = cairo
+	depends = pango
+	depends = wayland
+	depends = glib2
+	depends = pipewire-pulse
+	provides = way-edges
+	options = !debug
+
+pkgname = way-edges-git
