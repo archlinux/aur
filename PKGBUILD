@@ -2,8 +2,7 @@
 
 _target="msp430-elf"
 pkgname=${_target}-gcc
-pkgver=13.1.0
-_islver=0.26
+pkgver=14.1.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection for the ${_target} target."
 arch=(i686 x86_64)
@@ -15,16 +14,13 @@ conflicts=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
 provides=("${_target}-gcc-stage1")
 optdepends=("${_target}-libstdc++: C++ standard library support")
-source=(https://libisl.sourceforge.io/isl-${_islver}.tar.xz
+source=(
         ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz)
-sha256sums=('a0b5cb06d24f9fa9e77b55fabbe9a3c94a336190345c2555f9915bb38e976504'
-            '61d684f0aa5e76ac6585ad8898a2427aade8979ed5e7f85492286c4dfc13ee86')
+sha256sums=('e283c654987afe3de9d8080bc0bd79534b5ca0d681a73a11ff2b5d3767426840')
 
 
 prepare() {
   cd "${srcdir}/gcc-${pkgver}"
-  [[ -L isl ]] && rm -f isl
-  ln -s ../isl-${_islver} isl
 
   [[ -d gcc-build ]] && rm -rf gcc-build
   mkdir gcc-build
