@@ -2,7 +2,7 @@
 # Co-Maintainer: Mikata Riko <sanbikappa@qq.com>
 
 pkgname='kikoplay-bin'
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="linux danmaku player"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     "git+https://github.com/KikoPlayProject/KikoPlayScript"
 )
 sha256sums=(
-    "da2056aff9e88645609d083c65fe09b422a56866e3ea026b60e09acaf56fb39b"
+    "80afe1b035588bf03b674b21a9bdac4daa65596caea4a82d8159ff9971b44e8e"
     SKIP
 )
 
