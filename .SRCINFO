@@ -1,0 +1,17 @@
+pkgbase = paramotopy-docs-git
+	pkgdesc = HTML documentation for Paramotopy
+	pkgver = r444.48174f3
+	pkgrel = 1
+	url = https://paramotopy.com
+	arch = any
+	license = custom:Paramotopy license
+	makedepends = git
+	makedepends = doxygen
+	makedepends = plantuml
+	makedepends = graphviz
+	provides = paramotopy-docs
+	conflicts = paramotopy-docs
+	source = paramotopy::git+https://github.com/ofloveandhate/paramotopy.git
+	sha256sums = SKIP
+
+pkgname = paramotopy-docs-git
