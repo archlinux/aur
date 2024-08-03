@@ -1,7 +1,7 @@
 pkgbase = liteloader-qqnt-chii-devtools-bin
 	pkgdesc = LiteLoaderQQNT插件，使用Chii进行远程调试
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mo-jinran/chii-devtools
 	arch = any
 	license = GPL
