@@ -1,8 +1,8 @@
 pkgbase = python-google-ai-generativelanguage
 	pkgdesc = Google Ai Generativelanguage API client library
 	pkgver = 0.6.8
-	pkgrel = 1
-	url = Google Ai Generativelanguage API client library
+	pkgrel = 2
+	url = https://github.com/googleapis/google-cloud-python/tree/main/packages/google-ai-generativelanguage
 	arch = any
 	license = MIT
 	makedepends = python-build
