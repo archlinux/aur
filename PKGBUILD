@@ -3,7 +3,7 @@
 
 pkgname=python-os-ken
 pkgver=2.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A component-based software defined networking framework for OpenStack"
 arch=(any)
 url="https://opendev.org/openstack/os-ken"
@@ -23,6 +23,7 @@ depends=('python'
          'python-testscenarios'
          'python-setuptools'
          'python-testtools'
+         'python-sqlalchemy1.4'
          'mininet')
 makedepends=('python-build'
              'python-installer'
