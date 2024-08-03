@@ -26,8 +26,6 @@ depends=(
     libcurl.so
     systemd-libs libudev.so
     hicolor-icon-theme
-    glslang
-    spirv-tools
 )
 makedepends=(
     git
@@ -60,12 +58,12 @@ provides=(duckstation)
 conflicts=(duckstation)
 source=(
     git+"$url".git
-    shaderc::git+https://github.com/stenzek/shaderc.git
+    stenzek.shaderc::git+https://github.com/stenzek/shaderc.git
     spirv-cross::git+https://github.com/KhronosGroup/SPIRV-Cross.git
     libbacktrace::git+https://github.com/ianlancetaylor/libbacktrace.git
-    cpuinfo::git+https://github.com/stenzek/cpuinfo.git
-    discord-rpc::git+https://github.com/stenzek/discord-rpc.git
-    soundtouch::git+https://github.com/stenzek/soundtouch.git
+    stenzek.cpuinfo::git+https://github.com/stenzek/cpuinfo.git
+    stenzek.discord-rpc::git+https://github.com/stenzek/discord-rpc.git
+    stenzek.soundtouch::git+https://github.com/stenzek/soundtouch.git
     duckstation-qt.desktop
     duckstation-qt.sh)
 sha256sums=('SKIP'
@@ -88,12 +86,14 @@ prepare() {
     jq -cr '.modules[] | select(type == "string")' "$srcdir/duckstation/scripts/flatpak/org.duckstation.DuckStation.json" \
       | while read -r dep ; do
             local dep_name=$(jq -cr ".name" "$srcdir/duckstation/scripts/flatpak/$dep")
+            local dep_url=$(jq -cr '.sources[0].type + "+" + .sources[0].url' "$srcdir/duckstation/scripts/flatpak/$dep")
             for src in "${source[@]}"; do
                 local src_name=${src%%::*}
-                if [ "$src_name" = "$dep_name" ]; then
+                local src_url=${src##*::}
+                if [ "$src_name" = "$dep_name" ] || [ "$src_url" = "$dep_url" ]; then
                     local dep_ver=$(jq -cr ".sources[0].tag // .sources[0].commit" "$srcdir/duckstation/scripts/flatpak/$dep")
-                    echo "Checking out $dep_ver for $dep_name..."
-                    git -C "$srcdir/$dep_name" checkout -q "$dep_ver"
+                    echo "Checking out $dep_ver for $src_name..."
+                    git -C "$srcdir/$src_name" checkout -q "$dep_ver"
                 fi
             done
         done
@@ -105,11 +105,13 @@ build() {
       | while read -r dep ; do
             local dep_name=$(jq -cr 'select(.buildsystem == "cmake-ninja").name' "$srcdir/duckstation/scripts/flatpak/$dep")
             if [ -n "$dep_name" ]; then
+                local dep_url=$(jq -cr '.sources[0].type + "+" + .sources[0].url' "$srcdir/duckstation/scripts/flatpak/$dep")
                 for src in "${source[@]}"; do
                     local src_name=${src%%::*}
-                    if [ "$src_name" = "$dep_name" ]; then
+                    local src_url=${src##*::}
+                    if [ "$src_name" = "$dep_name" ] || [ "$src_url" = "$dep_url" ]; then
                         echo "Building $dep_name..."
-                        cmake -B "build-$dep_name" -S "$dep_name" \
+                        cmake -B "build-$dep_name" -S "$src_name" \
                             -G Ninja \
                             -DCMAKE_C_COMPILER=clang \
                             -DCMAKE_CXX_COMPILER=clang++ \
