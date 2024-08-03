@@ -1,7 +1,7 @@
 pkgbase = envision-xr-git
 	pkgdesc = GUI for Monado
-	pkgver = r398.35b0ab9
-	pkgrel = 4
+	pkgver = r550.2a55ce6
+	pkgrel = 1
 	url = https://codeberg.org/gabmus/envision
 	arch = x86_64
 	arch = aarch64
