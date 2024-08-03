@@ -1,82 +1,79 @@
-# Maintainer: BigfootACA <bigfoot@classfun.cn>
+# Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+# Contributor: BigfootACA <bigfoot@classfun.cn>
 
-_pyname=neutron-lib
-pkgname=python-$_pyname
-pkgver=2.15.0
+pkgname=python-neutron-lib
+pkgver=3.14.0
 pkgrel=1
 pkgdesc="Neutron shared routines and utilities"
 arch=(any)
-url="https://docs.openstack.org/neutron-lib/latest/"
-license=(Apache)
-depends=(
-	python
-	python-pbr
-	python-sqlalchemy
-	python-pecan
-	python-keystoneauth1
-	python-netaddr
-	python-stevedore
-	python-os-ken
-	python-oslo-concurrency
-	python-oslo-config
-	python-oslo-context
-	python-oslo-db
-	python-oslo-i18n
-	python-oslo-log
-	python-oslo-messaging
-	python-oslo-policy
-	python-oslo-serialization
-	python-oslo-service
-	python-oslo-utils
-	python-oslo-versionedobjects
-	python-osprofiler
-	python-setproctitle
-	python-webob
-	python-os-traits
-)
-makedepends=(
-	python-setuptools
-	python-sphinx
-	python-openstackdocstheme
-	python-os-api-ref
-	python-reno
-)
-checkdepends=(
-	python-hacking
-	bandit
-	python-coverage
-	python-fixtures
-	python-flake8-import-order
-	python-pylint
-	python-isort
-	python-subunit
-	python-oslotest
-	python-reno
-	python-stestr
-	python-testresources
-	python-testscenarios
-	python-testtools
-)
-options=('!emptydirs')
-source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('b15f9a00836bf4f403468aaf9c58c371')
-sha256sums=('88a25675fedc6760443fbc4180357e6437160bf5237eae132f05f7114eba0508')
-sha512sums=('8d8ddf708f43c183f6a3a91c296ee6eaf9c70e562da4e16522b85a6484ffc44183d07ab82de389b0a4e7e5305386fdd9e707e853815ef79951028b6ae7c1930e')
+url="https://opendev.org/openstack/neutron-lib"
+license=(Apache-2.0)
+depends=('python'
+         'python-pbr'
+         'python-sqlalchemy'
+         'python-pecan'
+         'python-keystoneauth1'
+         'python-netaddr'
+         'python-stevedore'
+         'python-os-ken'
+         'python-oslo-concurrency'
+         'python-oslo-config'
+         'python-oslo-context'
+         'python-oslo-db'
+         'python-oslo-i18n'
+         'python-oslo-log'
+         'python-oslo-messaging'
+         'python-oslo-policy'
+         'python-oslo-serialization'
+         'python-oslo-service'
+         'python-oslo-utils'
+         'python-oslo-versionedobjects'
+         'python-osprofiler'
+         'python-setproctitle'
+         'python-webob'
+         'python-os-traits'
+         'python-ddt'
+         'python-fixtures'
+         'python-oslotest'
+         'python-requests'
+         'python-hacking'
+         'python-testtools')
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel'
+             'tar')
+checkdepends=('bandit'
+              'python-coverage'
+              'python-flake8-import-order'
+              'python-pylint'
+              'python-isort'
+              'python-subunit'
+              'python-stestr'
+              'python-testresources'
+              'python-testscenarios')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+b2sums=('fe0caf7685d0a7bb48c2ad3b66494a2cd5c73719ce4caeac5fea0ba81629d90685a7ebed68cfdd13f188e97890b74aeded06df2e048f6177a54a7a3a7b62ce57')
 
-export PBR_VERSION=$pkgver
+prepare() {
+    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
+}
 
 build(){
-	cd $_pyname-$pkgver
-	python setup.py build
+    cd "$pkgname-$pkgver"
+    PBR_VERSION=$pkgver python -m build --wheel --no-isolation
 }
 
 check(){
-	cd $_pyname-$pkgver
-	stestr run
+    cd "$pkgname-$pkgver"
+    stestr run
 }
 
 package(){
-	cd $_pyname-$pkgver
-	python setup.py install --root="$pkgdir/" --optimize=1
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    cd "$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 README.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 HACKING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 CONTRIBUTING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
