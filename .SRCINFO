@@ -5,8 +5,10 @@ pkgbase = redisearch
 	url = https://github.com/RediSearch/RediSearch
 	arch = any
 	license = custom:RSALv2
+	makedepends = boost
 	makedepends = conan
 	makedepends = git
+	depends = boost-libs
 	depends = redis
 	source = redisearch::git+https://github.com/RediSearch/RediSearch.git#tag=e2f28a9d454845915bc57c41982c7daa2ee022d9
 	source = git+https://github.com/google/googletest.git

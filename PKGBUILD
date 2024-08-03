@@ -15,8 +15,8 @@ pkgdesc="A query and indexing engine for Redis, providing secondary indexing, fu
 arch=("any")
 url="https://github.com/RediSearch/${_pkgname}"
 license=("custom:RSALv2")
-depends=("redis")
-makedepends=("conan" "git")
+depends=("boost-libs" "redis")
+makedepends=("boost" "conan" "git")
 source=("${pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/google/googletest.git"
     "git+https://github.com/redis/hiredis.git"
