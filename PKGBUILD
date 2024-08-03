@@ -23,7 +23,7 @@ source=("$pkgname-$pkgver.src.tar.gz::https://github.com/$pkgname/$pkgname/archi
         "$pkgname-[PATCH]-replace-deprecated-to-distro-package-(#2910).patch::https://github.com/$pkgname/$pkgname/commit/2fdb225f62f66bf474e19d9b1bcfbaf691672c43.patch"
         "$pkgname-[PATCH]-SyntaxWarning:-\"is\"-with-a-literal.-(#2924).patch::https://github.com/$pkgname/$pkgname/commit/05267e0d7f1223ddd0517f4f02c4d8444668f559.patch"
         "$pkgname-[PATCH]-fixs-for-Phyton-3.9-(#2955).patch::https://github.com/$pkgname/$pkgname/commit/7f6f613826aef9810999c1599c8354e8a78fbdb4.patch"
-        "$pkgname-[PATCH]-Python-Pillow-10-compatibility-(#2962)::https://github.com/$pkgname/$pkgname/commit/d543cd4d57afcf8dc24b2bac4b124b4a2a8cc658.patch")
+        "$pkgname-[PATCH]-Python-Pillow-10-compatibility-(#2962).patch::https://github.com/$pkgname/$pkgname/commit/d543cd4d57afcf8dc24b2bac4b124b4a2a8cc658.patch")
 sha512sums=('87ae37442ee0b80130c7a75c7eeb7c0ef6c50f3e6b2616db32e6381ace5068729ab7086edefc00eefd3b89e85f9a05fb6c4d05f2a2adc46fa928e5c2a29b72db'
             'd9d9fece7f7f18590027d1094ab7b86241ea17870414f5e56205e269d2084f0ee7a31f050412135a678cbc15e57e5ec618afb1b89c13b7a3fe4f858b69e01dde'
             '0c131311eab19d4f5a45726187f4e87dd1a1af25e75559078df1836f2c13d013bfdfd32a8c57cfe1e571a4a2109730865dcd32f19ed618892e44a3377c6ade1b'
@@ -39,12 +39,13 @@ prepare() {
     patch --forward --strip=1 \
         --input="$srcdir/$pkgname-[PATCH]-fixs-for-Phyton-3.9-(#2955).patch"
     patch --forward --strip=1 \
-        --input="$srcdir/$pkgname-[PATCH]-Python-Pillow-10-compatibility-(#2962)"
+        --input="$srcdir/$pkgname-[PATCH]-Python-Pillow-10-compatibility-(#2962).patch"
 }
 
-# unknown-horizons build system misses a few files if the build step is seperated from the install step
 build() {
     cd "$pkgname-$pkgver" || exit
+    # unknown-horizons build system misses a few files if the build step is seperated from the install step
+    # -> Do not build here for now
     # UH_USER_DIR="UH_USER_DIR" python setup.py build
     UH_USER_DIR="UH_USER_DIR" python horizons/engine/generate_atlases.py 2048
 }
