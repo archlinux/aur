@@ -4,7 +4,7 @@
 # Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 
 pkgname=transcribe
-pkgver=9.40.0
+pkgver=9.41.2
 pkgrel=1
 pkgdesc="music transcription aid"
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="https://www.seventhstring.com/xscribe/overview.html"
 license=('unknown')
 depends=('libsm' 'gtk3' 'gst-plugins-base-libs')
 source=("https://www.seventhstring.com/xscribe/downlo/xscsetup-${pkgver}.tar.gz")
-sha256sums=('83bdee09376f0e3f47fbc06a4bbb29fdcbdedce0a832f91b18d6aa4aed9db47d')
+sha256sums=('ce62d19a5b1e5126af81baf326d8fade6bc664e20f74731b4882388eacbc0c41')
 
 
 package() {
