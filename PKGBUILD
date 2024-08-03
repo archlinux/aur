@@ -1,50 +1,49 @@
-# Maintainer: BigfootACA <bigfoot@classfun.cn>
+# Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+# Contributor: BigfootACA <bigfoot@classfun.cn>
 
-_pyname=os-traits
-pkgname=python-$_pyname
-pkgver=2.9.0
+pkgname=python-os-traits
+pkgver=3.1.0
 pkgrel=1
-pkgdesc="A library containing standardized trait strings"
+pkgdesc="A library containing standardized trait strings. Used by placement service and clients to ensure consistency"
 arch=(any)
-url="https://docs.openstack.org/os-traits/latest/"
-license=(Apache)
-depends=(
-	python
-	python-pbr
-)
-makedepends=(
-	python-setuptools
-	python-sphinx
-	python-openstackdocstheme
-	python-reno
-)
-checkdepends=(
-	python-hacking
-	python-coverage
-	python-oslotest
-	python-stestr
-	python-testscenarios
-	python-testtools
-)
-source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('bc16e2b53abfb4337293fb42d482d7d4')
-sha256sums=('1ccc8be569157d4a6a72c03f842fb64f7571bf4c85798837af29fc11a11ea100')
-sha512sums=('7e93101f1c1fd89506491e91c717e498dae093fbb57fc45e89d740211fd963d70a7ce549f4c9fefd824249e488cfb01d9af1ec5b7aa319f72ebb3a68f0fa21a2')
+url="https://opendev.org/openstack/os-traits"
+license=(Apache-2.0)
+depends=('python'
+         'python-pbr'
+         'python-oslotest')
+makedepends=('python-build'
+             'python-installer'
+             'python-sphinx'
+             'python-setuptools'
+             'python-wheel'
+             'tar')
+checkdepends=('python-hacking'
+              'python-coverage'
+              'python-stestr'
+              'python-testscenarios'
+              'python-testtools')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+b2sums=('cdedbf78cf81a75333c2182cb8463f82adb05a075732bf33b449daf811359a7ced0419668a4f5b4df52f92f6cf86600935cd93077dff5466fcc7005326855bd2')
 
-export PBR_VERSION=$pkgver
+prepare() {
+    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
+}
 
 build(){
-	cd $_pyname-$pkgver
-	python setup.py build
+    cd "$pkgname-$pkgver"
+    PBR_VERSION=$pkgver python -m build --wheel --no-isolation
 }
 
 check(){
-	cd $_pyname-$pkgver
-	stestr run
+    cd "$pkgname-$pkgver"
+    stestr run
 }
 
 package(){
-	cd $_pyname-$pkgver
-	python setup.py install --root "$pkgdir" --optimize=1
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    cd "$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 README.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 HACKING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 CONTRIBUTING.rst -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
