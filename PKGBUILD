@@ -6,7 +6,8 @@ pkgdesc="Prettifies Python exception output to make it legible."
 arch=(any)
 url="https://github.com/onelivesleft/PrettyErrors/"
 license=(MIT)
-makedepends=("python" "python-pip" "python-colorama")
+depends=('python' 'python-colorama')
+makedepends=("python-pip")
 build() {
   pip install --no-deps --target="pretty-errors" pretty-errors==1.2.25
 }
