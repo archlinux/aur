@@ -3,14 +3,14 @@
 
 pkgbase=intel-one-mono-fonts
 pkgname=({otf,ttf,woff,woff2}-intel-one-mono)
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Expressive monospaced font family that’s built with clarity, legibility, and the needs of developers in mind"
 url="https://github.com/intel/intel-one-mono"
 arch=(any)
 license=(custom:OFL)
 makedepends=(git)
-_commit=08d42d257a3211cf2427b35bc2eeab4622d042c8  # tags/V1.3.0
+_commit=99e2d6ca170744c62bfb5f52547435f23720abe1  # tags/V1.4.0
 source=("git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
