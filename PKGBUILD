@@ -2,7 +2,7 @@
 _appname=anythingllm
 pkgname="${_appname}-desktop-bin"
 _pkgname=Anything-LLM-Desktop
-pkgver=1.1.0
+pkgver=1.1.1
 _electronversion=26
 pkgrel=1
 pkgdesc="The all-in-one AI application, tool suite, and API for RAG & Agents for Docker & Desktop."
