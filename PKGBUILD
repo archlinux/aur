@@ -1,4 +1,5 @@
 # Maintainer: Plague-doctor <plague at privacyrequired dot com >
+# Co-maintainer: bacteriostat <dev dot bacteriostat at aleeas dot com>
 # Credit for simplifying build goes to Martin Cihlář.
 
 _pkgname=freetube
