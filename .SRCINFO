@@ -1,7 +1,7 @@
 pkgbase = python-neutron-lib
 	pkgdesc = Neutron shared routines and utilities
 	pkgver = 3.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opendev.org/openstack/neutron-lib
 	arch = any
 	license = Apache-2.0
@@ -21,7 +21,7 @@ pkgbase = python-neutron-lib
 	makedepends = tar
 	depends = python
 	depends = python-pbr
-	depends = python-sqlalchemy
+	depends = python-sqlalchemy1.4
 	depends = python-pecan
 	depends = python-keystoneauth1
 	depends = python-netaddr

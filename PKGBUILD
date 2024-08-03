@@ -3,14 +3,14 @@
 
 pkgname=python-neutron-lib
 pkgver=3.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Neutron shared routines and utilities"
 arch=(any)
 url="https://opendev.org/openstack/neutron-lib"
 license=(Apache-2.0)
 depends=('python'
          'python-pbr'
-         'python-sqlalchemy'
+         'python-sqlalchemy1.4'
          'python-pecan'
          'python-keystoneauth1'
          'python-netaddr'
