@@ -236,10 +236,9 @@ function execApp() {
 	-p RestrictAddressFamilies=~AF_PACKET \
 	-p PrivateTmp=yes \
 	-p BindReadOnlyPaths=/usr/bin/true:/usr/bin/lsblk \
-	-p BindReadOnlyPaths=/usr/bin/true:/opt/wechat-uos-qt/files/crashpad_handler \
 	-p BindReadOnlyPaths=/opt/wechat-uos-qt/files:/usr/lib/license \
 	-p BindReadOnlyPaths=-/run/systemd/resolve/stub-resolv.conf \
-	-p Environment=PATH=/usr/bin \
+	-p Environment=PATH=/sandbox:"${PATH}" \
 	-- \
 	bwrap \
 		--dev /dev \
