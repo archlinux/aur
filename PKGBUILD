@@ -1,6 +1,6 @@
 # Maintainer: Kirill Zhumarin <kirill.zhumarin@gmail.com>
 pkgname=ra-pixelart-scale-git
-pkgver=v0.1.0.r6.g1dc20f8
+pkgver=v0.1.0.r7.gff322b1
 pkgrel=1
 pkgdesc='Scale PixelArt images using RetroArch shaders.'
 arch=(any)
@@ -30,8 +30,8 @@ build() {
 package() {
 	cd "ra-pixelart-scale"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/ra-pixelart-scale"
-	mkdir -p "$pkgdir/usr/share/ra-pixelart-scal/"
-	cp -r shaders/ "$pkgdir/usr/share/ra-pixelart-scal/shaders/"
+	mkdir -p "$pkgdir/usr/share/ra-pixelart-scale/"
+	cp -r shaders/ "$pkgdir/usr/share/ra-pixelart-scale/shaders/"
 }
 
 pkgver() {

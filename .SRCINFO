@@ -1,6 +1,6 @@
 pkgbase = ra-pixelart-scale-git
 	pkgdesc = Scale PixelArt images using RetroArch shaders.
-	pkgver = v0.1.0.r6.g1dc20f8
+	pkgver = v0.1.0.r7.gff322b1
 	pkgrel = 1
 	url = https://github.com/Azq2/ra-pixelart-scale
 	arch = any
