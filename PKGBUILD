@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=bookmark
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Save URLs from the terminal and open them quickly in the browser"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/Szymongib/bookmark"
 license=('MIT')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('d71eeacf104c4182450878cecaab926e290f60965001d32bc6dcf8e9382de58d0b4f07aff3656ceb3e409c122e64efa7586c0474a266fd1e1fe1af4724c75c00')
+sha512sums=('8b66a2e85f3b4cbcf8511847a092dd066aa919cdc73e36a6f28e028a8b0da76f6c3589deecdd0bda932f6f260613bd90b628897ec2d7b672ef61d31096ee1f87')
 
 prepare() {
   cd "$pkgname-$pkgver"
