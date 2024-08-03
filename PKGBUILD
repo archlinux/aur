@@ -4,7 +4,7 @@
 pkgname=zed-preview
 _pkgname=${pkgname%-preview}
 pkgver=0.147.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
 url=https://zed.dev
@@ -54,6 +54,7 @@ prepare() {
 	export APP_CLI="$_binname"
 	export APP_ID="$_appid"
 	envsubst < "crates/zed/resources/zed.desktop.in" > $_appid.desktop
+	./script/generate-licenses
 }
 
 _srcenv() {
@@ -68,11 +69,12 @@ _srcenv() {
 build() {
 	_srcenv
 	export ZED_UPDATE_EXPLANATION='Updates are handled by pacman'
+	export RELEASE_VERSION="$pkgver"
 	cargo build --release --frozen --package zed --package cli
 }
 
 # Tests assume access to vulkan video drivers, Wayland window creation,
-# detecting system keymaps, etc. Until their is something sensical for
+# detecting system keymaps, etc. Until there is something sensical for
 # a package to test in the suite, just skip it by default.
 check() {
 	_srcenv
