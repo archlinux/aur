@@ -1,0 +1,23 @@
+pkgbase = discord-netflix-git
+	pkgdesc = An updated and improved version from the original Discord-Netflix from Nirewen.
+	pkgver = v1.1.16.r0.g530c545
+	pkgrel = 1
+	url = https://discord.gg/kbf8EjpxbU
+	arch = any
+	license = GPL-3.0-only
+	makedepends = gendesk
+	makedepends = nvm
+	makedepends = npm
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	depends = nodejs
+	depends = gtk3
+	depends = nspr
+	depends = nss
+	depends = alsa-lib
+	conflicts = Discord-Netflix
+	source = git+https://github.com/V0l-D/Discord-Netflix.git
+	sha256sums = SKIP
+
+pkgname = discord-netflix-git
