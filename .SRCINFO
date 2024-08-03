@@ -1,0 +1,15 @@
+pkgbase = localdimfinder-docs
+	pkgdesc = Documentation for localDimFinder
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://bertini.nd.edu/localDimFinder/index.html
+	arch = any
+	license = custom:Bertini license
+	source = MANUAL-1.0.pdf::https://bertini.nd.edu/localDimFinder/LocalDimFinder.pdf
+	source = ARTICLE-1.0.pdf::https://bertini.nd.edu/localDimFinder/Mechanism_Mobility.pdf
+	source = EXAMPLES-1.0.zip::https://bertini.nd.edu/localDimFinder/MechanismMobilityExamples.zip
+	sha256sums = 5efd5033e3f9eb3eb1523f09cf3ca72385e8fc0f1e1db921be2ee410a82cb81e
+	sha256sums = 77fa806e1ef6c39c724bcf3746110a28cbc390c1c8014767885f634cbc2f518b
+	sha256sums = d82865bf2f9eff6186862aed21e88dfa1b343e8529715c1e9da3609f45c1fb0c
+
+pkgname = localdimfinder-docs
