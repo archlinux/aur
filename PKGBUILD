@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=miru
 pkgname="${_pkgname}-viewer-git"
-pkgver=1.1.1.r1.g8307407
+pkgver=1.2.0.r0.gd1e46aa
 _electronversion=31
 _nodeversion=18
 pkgrel=1
