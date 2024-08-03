@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-ea-bin
 	pkgdesc = Java OpenJDK 23 Early-Access Build
-	pkgver = 23b34
+	pkgver = 23b35
 	pkgrel = 1
 	url = https://jdk.java.net/23
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = java-openjdk-ea-bin
 	provides = java-runtime-openjdk=23
 	provides = java-runtime-headless=23
 	provides = java-runtime-headless-openjdk=23
-	source = https://download.java.net/java/early_access/jdk23/34/GPL/openjdk-23-ea+34_linux-x64_bin.tar.gz
-	sha256sums = 9d3fa4fbb8247f3a47788c52c09ac5c265e023cfda821610ade2a43104bdaace
+	source = https://download.java.net/java/early_access/jdk23/35/GPL/openjdk-23-ea+35_linux-x64_bin.tar.gz
+	sha256sums = 5387c8da8acb4261265c12bb46cea856c248d70bf9d64164019b74ed96545655
 
 pkgname = java-openjdk-ea-bin
