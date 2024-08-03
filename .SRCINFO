@@ -1,6 +1,6 @@
 pkgbase = r-spatialheatmap
 	pkgdesc = Creating spatial heatmaps from R and Shiny
-	pkgver = 2.10.1
+	pkgver = 2.10.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/spatialHeatmap
 	arch = any
@@ -86,8 +86,8 @@ pkgbase = r-spatialheatmap
 	optdepends = r-wgcna
 	optdepends = r-xlsx
 	optdepends = r-yaml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/spatialHeatmap_2.10.1.tar.gz
-	md5sums = 0b73b9d456ef4df4af8caa465f9aa744
-	b2sums = d105540b948bbfb40add8df77025cb68b3692aeb4b16440a8bb1329e5bdf15c7a3614e2eec9b59275235aec8db9d4f3c56cf18944bc6d4c7b64808603d0d61a7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/spatialHeatmap_2.10.2.tar.gz
+	md5sums = 4b23dab35de4ffbebd99e27b327de846
+	b2sums = 5e32432ed03b0b92de0ef6ef5d215696c99503c85a46917d34f89ef19d53269768ebdadc7be00e6e931ad5c6df2f1f8dda1bd12f76ece4231e2c98b621b47ac2
 
 pkgname = r-spatialheatmap
