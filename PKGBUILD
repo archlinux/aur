@@ -6,21 +6,27 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=amarok
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="The powerful music player for KDE"
 arch=(x86_64)
 url="https://apps.kde.org/de/amarok/"
 license=(FDL GPL2 LGPL2.1)
-depends=(kcmutils5 kdoctools5 kdnssd5 kirigami2 kirigami-addons5 knewstuff5 ktexteditor5 liblastfm-qt5 libofa
-         mariadb phonon-qt5 qt5-webengine threadweaver5 taglib)
-makedepends=(extra-cmake-modules gdk-pixbuf2 git knotifyconfig5 qt5-tools loudmouth)
+depends=(kcmutils5 kdnssd5 kirigami2 kirigami-addons5 ktexteditor5 liblastfm-qt5 libofa
+         phonon-qt5 threadweaver5 taglib libmygpo-qt5 libmtp mariadb mariadb-libs gdk-pixbuf2 knotifyconfig5
+
+         # namcap implicit depends
+         glibc gcc-libs ffmpeg qt5-base qt5-svg qt5-declarative
+         kwallet5 karchive5 kio5 kguiaddons5 kitemviews5 kpackage5 kglobalaccel5 kdbusaddons5 kcompletion5
+         knotifications5 fftw kcodecs5  kxmlgui5 kcoreaddons5 ki18n5 ktextwidgets5 hicolor-icon-theme
+         kwindowsystem5 kconfigwidgets5 kwidgetsaddons5  kconfig5 kiconthemes5 kcrash5 solid5)
+makedepends=(extra-cmake-modules git qt5-tools loudmouth qt5-webengine kdoctools5)
 optdepends=(
-  "ifuse: support for Apple iPod Touch and iPhone"
-  "loudmouth: backend needed by mp3tunes for syncing"
+    "qt5-webengine: wikipedia"
+    "loudmouth: backend needed by mp3tunes for syncing"
 )
 source=("https://invent.kde.org/multimedia/amarok/-/archive/v${pkgver}/amarok-v${pkgver}.tar.gz")
-sha256sums=('b376b761e4ad7980eb740fa3a62e6a1a6793f41e309a14fe468ddb75972a85b8')
+sha256sums=('68738e2b34aef89f6a1620d8bed502596c81522428e4b0a58c37e19218084978')
 
 build() {
   cmake -B build -S "amarok-v${pkgver}" -Wno-dev \
