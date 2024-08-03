@@ -30,6 +30,7 @@ pkgbase = cosmic-session
 	depends = switcheroo-control
 	depends = xdg-desktop-portal-cosmic-git
 	depends = xorg-xwayland
+	optdepends = cosmic-applets-git
 	optdepends = cosmic-edit-git: COSMIC text editor
 	optdepends = cosmic-files-git: COSMIC file manager
 	optdepends = cosmic-store-git: COSMIC store

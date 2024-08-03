@@ -10,8 +10,6 @@ license=('GPL-3.0-or-later')
 groups=('cosmic')
 depends=(
   'cosmic-applibrary-git'
-# cosmic-applets does not build on 8gb, exclude at the moment
-#  'cosmic-applets-git'
   'cosmic-bg-git'
   'cosmic-comp-git'
   'cosmic-greeter-git'
@@ -38,6 +36,8 @@ makedepends=(
   'mold'
 )
 optdepends=(
+# cosmic-applets does not build on 8gb, at the moment optional
+  'cosmic-applets-git'
   'cosmic-edit-git: COSMIC text editor'
   'cosmic-files-git: COSMIC file manager'
   'cosmic-store-git: COSMIC store'
