@@ -9,7 +9,8 @@ arch=('any')
 url="https://github.com/bertiniteam/b2"
 license=('custom:GPL-3.0-or-later WITH Bertini2-Additional-GPL-Terms')
 makedepends=('git' 'python' 'python-sphinx' 'python-sphinxcontrib-bibtex'
-             'python-requests>=2.30.1' 'python-pygments' 'python-pillow')
+             'python-requests>=2.30.1' 'python-pygments' 'python-pillow'
+             'pybertini')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="b2"
@@ -33,7 +34,9 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgsrc}/python/docs/build"
-  install -d "${pkgdir}/usr/share/doc/pybertini/html"
-  find "html" -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/pybertini/html" \;
+  cd "${srcdir}/${_pkgsrc}/python"
+  find "examples" -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/pybertini/{}" \;
+  
+  cd "docs/build"
+  find "html" -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/pybertini/{}" \;
 }

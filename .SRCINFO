@@ -12,6 +12,7 @@ pkgbase = pybertini-docs-git
 	makedepends = python-requests>=2.30.1
 	makedepends = python-pygments
 	makedepends = python-pillow
+	makedepends = pybertini
 	provides = pybertini-docs
 	conflicts = pybertini-docs
 	source = b2::git+https://github.com/bertiniteam/b2.git
