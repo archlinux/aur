@@ -6,12 +6,13 @@ pkgver=r1517.58a8faa
 pkgrel=1
 pkgdesc="Python interface for Bertini_real"
 arch=('any')
-url="http://www.bertinireal.com/"
+url="https://www.bertinireal.com"
 _url="https://github.com/ofloveandhate/bertini_real"
 license=('custom:Bertini license')
 makedepends=('git' 'python' 'python-setuptools')
 depends=('bertini_real' 'python' 'python-numpy' 'python-scipy' 'python-sympy'
-         'python-matplotlib' 'python-algopy' 'python-trimesh' 'python-dill')
+         'python-matplotlib' 'python-algopy' 'python-trimesh' 'python-dill'
+         'python-setuptools')
 optdepends=('python-glumpy: for OpenGL-accelerated rendering of surfaces')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -19,7 +20,7 @@ _pkgsrc="bertini_real"
 source=("${_pkgsrc}::git+${_url}.git"
         "${_pkgname}_fix_package_data.patch")
 sha256sums=('SKIP'
-            '0c1eb85a33d8bd36d71f7b1455da0e643dd4ebd7022dee1d49d4e5d34cf72dc4')
+            '430df15631ef29160638976cbd9339a16321875eeee3c5bd7ba790575d41f4f4')
 
 pkgver() {
   cd "${_pkgsrc}"
@@ -37,6 +38,8 @@ build() {
 }
 
 package() {
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
   cd "${srcdir}/${_pkgsrc}"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   # install -Dm644 "NEWS"      "${pkgdir}/usr/share/doc/${_pkgname}/NEWS"
@@ -45,4 +48,7 @@ package() {
 
   cd "python"
   python setup.py install --root="${pkgdir}" --optimize=1
+  rm -rf "${pkgdir}${site_packages}/build"
+  rm -rf "${pkgdir}${site_packages}/docs"
+  rm -rf "${pkgdir}${site_packages}/example"
 }
