@@ -1,7 +1,7 @@
 pkgbase = libosmocore-git
 	pkgdesc = Osmocom core library
-	pkgver = 1.9.0.r208.10d4d119e
-	pkgrel = 2
+	pkgver = 1.10.0.r0.11af846dc
+	pkgrel = 1
 	url = https://osmocom.org/projects/libosmocore/wiki/Libosmocore
 	arch = x86_64
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = libosmocore-git
 	provides = libosmocore
 	provides = libosmocodec.so=4-64
 	provides = libosmocoding.so=0-64
-	provides = libosmocore.so=21-64
+	provides = libosmocore.so=22-64
 	provides = libosmoctrl.so=0-64
 	provides = libosmogb.so=14-64
 	provides = libosmogsm.so=20-64

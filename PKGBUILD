@@ -2,8 +2,8 @@
 # Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
 
 pkgname=libosmocore-git
-pkgver=1.9.0.r208.10d4d119e
-pkgrel=2
+pkgver=1.10.0.r0.11af846dc
+pkgrel=1
 pkgdesc="Osmocom core library"
 arch=('x86_64' 'i686')
 url="https://osmocom.org/projects/libosmocore/wiki/Libosmocore"
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}"
           'libosmocodec.so=4-64'
           'libosmocoding.so=0-64'
-          'libosmocore.so=21-64'
+          'libosmocore.so=22-64'
           'libosmoctrl.so=0-64'
           'libosmogb.so=14-64'
           'libosmogsm.so=20-64'
@@ -44,6 +44,11 @@ build() {
               --libdir=/usr/lib/ \
               --enable-systemd-logging
   make
+}
+
+check() {
+  cd "$srcdir/${pkgname%-git}"
+  make check
 }
 
 package() {
