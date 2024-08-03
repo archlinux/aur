@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/volumectl-*.tar.gz
+/volumectl-*.pkg.tar.zst
