@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ytdesk-git
 _pkgname="YT Desk"
-pkgver=0.2.1.r2.g3652b34
+pkgver=0.2.3.r0.gd995ba6
 _electronversion=31
 _nodeversion=20
 pkgrel=1
@@ -69,8 +69,6 @@ build() {
     fi
     sed "/only-allow/d" -i package.json
     NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
-    #NODE_ENV=development pnpm add -D "@sveltejs/adapter-auto" "axios@1.7.2" "form-data@4.0.0" "combined-stream@1.0.8" \
-    #    "delayed-stream@1.0.0"
     NODE_ENV=production yarn run build:unpack
 }
 package() {
