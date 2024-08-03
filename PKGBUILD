@@ -2,7 +2,7 @@
 pkgname="plann-git"
 _pkgname="plann"
 pkgver=r356.b04fd62
-pkgrel=1
+pkgrel=2
 pkgdesc="plann is a caldav client for calendar and task management"
 url="https://github.com/tobixen/plann"
 arch=('any')
@@ -23,6 +23,7 @@ makedepends=('python-build'
 	     'python-setuptools'
 	     'python-wheel'
 	     'xandikos')
+conflicts=('plann')
 source=("${pkgname}::git+https://github.com/tobixen/${_pkgname}/")
 sha256sums=('SKIP')
 
