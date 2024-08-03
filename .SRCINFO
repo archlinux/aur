@@ -1,16 +1,17 @@
 pkgbase = pcc-libs-cvs
 	pkgdesc = Libraries for the Portable C Compiler.
-	pkgver = 20170701
+	pkgver = 20230806
 	pkgrel = 1
 	url = http://pcc.ludd.ltu.se/
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = cvs
+	makedepends = git
 	provides = pcc-libs
 	conflicts = pcc-libs
+	source = pcc-libs-cvs::git+https://repo.or.cz/pcc-libs.git
 	source = license
+	md5sums = SKIP
 	md5sums = 51f6cc02b26af53f26cfe87494ca5c87
 
 pkgname = pcc-libs-cvs
-
