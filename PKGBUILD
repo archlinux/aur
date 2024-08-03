@@ -1,7 +1,7 @@
 # Maintainer: Moritz Biering <moritzbiering.mb@gmail.com>
 
 pkgname=nachrichten-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Stay informed without leaving your command line"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -22,7 +22,7 @@ package() {
 	install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname%-bin}/README.md"
 }
 
-sha256sums_x86_64=('78629dda1a4904c6966d18f5f57463eab6c080e7b6133cea5bf1c83a2ace442a')
-sha256sums_i686=('a1cce65e2ace3d03390e46818abc55c970f269dc016b07cea11e9e320f246e7a')
-sha256sums_armv7h=('af42b8e64cdf06310d7a1510cc1cc85c2543319cbd4e8f8128d9e5229520f653')
-sha256sums_aarch64=('cae8143e065c5b05e75c282b9b36dc4241b7e34b9cbe05de85a93dc776424836')
+sha256sums_x86_64=('62f7a210ba9be7aa55a10ca6160ecef423778189e090df8554d62fddf232d2fc')
+sha256sums_i686=('e7875bb0744adeb3de05db21b317f694925727228cb3822927cf46c9096bebc7')
+sha256sums_armv7h=('d2362fb2b2e6d93d8998e82157e571ae2157a7a7206976a941983377e802250d')
+sha256sums_aarch64=('cc29c6f8c64ba6a0ad0f45fe66808e92ddfb13cf63a348d897151643ca2e2f2e')
