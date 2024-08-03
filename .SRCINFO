@@ -1,11 +1,10 @@
 pkgbase = gomphotherium
 	pkgdesc = A command line Mastodon client
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mrusme/gomphotherium
 	arch = any
 	license = GPL-3.0-or-later
-	makedepends = make
 	makedepends = go>=1.19
 	depends = glibc
 	source = gomphotherium-0.4.0.tar.gz::https://github.com/mrusme/gomphotherium/archive/refs/tags/v0.4.0.tar.gz
