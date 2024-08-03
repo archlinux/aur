@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Dušan Simić <dusan.simic1810@gmail.com>
 pkgname=adw-gtk3-git
-pkgver=5.3.r2.gd8cb661
+pkgver=5.3.r8.gd88deed
 pkgrel=2
 pkgdesc="The theme from libadwaita ported to GTK-3"
 arch=('any')
@@ -10,11 +10,11 @@ license=('LGPL-2.1-or-later')
 makedepends=('git' 'meson' 'sassc')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-_adw_tag=1.5.2
+_adw_tag=1.5.3
 source=("git+https://github.com/lassekongo83/adw-gtk3.git"
         "git+https://gitlab.gnome.org/GNOME/libadwaita.git#tag=${_adw_tag}")
 sha256sums=('SKIP'
-            'a93c85cd1aa42928c58f2ca6a52c396772195f492f49468bda3c566247336061')
+            '569662f8b36afe62d1bfc53b3abf908bede1d33c6f0586a1973b6eb46604261a')
 
 pkgver() {
   cd "${pkgname%-git}"
