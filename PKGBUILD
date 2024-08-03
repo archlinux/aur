@@ -2,7 +2,7 @@
 
 pkgname=stremio
 pkgver=4.4.168
-pkgrel=1
+pkgrel=2
 pkgdesc='A one-stop hub for video content aggregation (Movies, TV shows, series, live television or web channels)'
 arch=('x86_64')
 url='https://www.stremio.com/'
@@ -52,7 +52,7 @@ package() {
     # binary and desktop file
     mkdir -p "${pkgdir}/usr/"{bin,share/applications}
     ln -s ../../opt/stremio/stremio "${pkgdir}/usr/bin/stremio"
-    ln -s ../../../opt/stremio/smartcode-stremio.desktop "${pkgdir}/usr/share/applications/smartcode-stremio.desktop"
+    ln -s ../../../opt/stremio/smartcode-stremio.desktop "${pkgdir}/usr/share/applications/com.stremio.stremio.desktop"
     
     # icons
     local _file

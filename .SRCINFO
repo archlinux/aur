@@ -1,7 +1,7 @@
 pkgbase = stremio
 	pkgdesc = A one-stop hub for video content aggregation (Movies, TV shows, series, live television or web channels)
 	pkgver = 4.4.168
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.stremio.com/
 	arch = x86_64
 	license = GPL-3.0-only
