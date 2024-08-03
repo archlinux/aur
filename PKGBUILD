@@ -3,7 +3,7 @@
 
 pkgname=lunarvim-git
 pkgver=1.4.0.r3.g85ccca97
-pkgrel=1
+pkgrel=2
 pkgdesc="An IDE layer for Neovim with sane defaults. Completely free and community driven."
 arch=('any')
 url='https://github.com/LunarVim/LunarVim'
