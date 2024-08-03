@@ -1,0 +1,5 @@
+[python-imread]
+source = "github"
+github = "luispedro/imread"
+use_max_tag = "true"
+prefix = "v"
