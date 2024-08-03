@@ -11,7 +11,8 @@ _url="https://github.com/ofloveandhate/${_pkgname}"
 license=('custom:Paramotopy license')
 makedepends=('git' 'boost>=1.53' 'bertini' 'gmp' 'mpfr' 'openmpi')
 depends=('glibc' 'gcc-libs' 'boost-libs' 'bertini' 'mpfr' 'openmpi')
-provides=("${_pkgname}=${pkgver%%.r*}")
+optdepends=('paramotopy-docs: HTML documentation')
+provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
 source=("${_pkgsrc}::git+${_url}.git"
@@ -62,8 +63,4 @@ package() {
   # install -Dm644 "NEWS"      "${pkgdir}/usr/share/doc/${_pkgname}/NEWS"
   install -Dm644 "COPYING"   "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
   # install -Dm644 "AUTHORS"   "${pkgdir}/usr/share/licenses/${_pkgname}/AUTHORS"
-  find "examples" -type f -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${_pkgname}/{}" \;
-
-  cd "documentation/source"
-  install -Dm644 "${_pkgname}_manual.pdf" "${pkgdir}/usr/share/doc/${_pkgname}/${_pkgname}_manual.pdf"
 }

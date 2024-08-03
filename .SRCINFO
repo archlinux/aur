@@ -17,7 +17,8 @@ pkgbase = paramotopy-git
 	depends = bertini
 	depends = mpfr
 	depends = openmpi
-	provides = paramotopy=r444.48174f3
+	optdepends = paramotopy-docs: HTML documentation
+	provides = paramotopy
 	conflicts = paramotopy
 	source = paramotopy::git+https://github.com/ofloveandhate/paramotopy.git
 	source = paramotopy_fix_boost_timer_para_aux_funcs.patch
