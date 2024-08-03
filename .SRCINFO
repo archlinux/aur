@@ -1,16 +1,19 @@
 pkgbase = terminalimageviewer-git
 	pkgdesc = Small C++ program to display images in a (modern) terminal using RGB ANSI codes and unicode block graphics characters
-	pkgver = 1.2.1.r49.4d21a05
+	pkgver = 1.2.1.r50.g3770786
 	pkgrel = 1
 	url = https://github.com/stefanhaustein/TerminalImageViewer
 	arch = any
-	license = Apache
+	license = Apache-2.0
+	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = make
-	makedepends = gcc
 	makedepends = imagemagick
+	depends = glibc
+	depends = gcc-libs
 	depends = imagemagick
+	provides = terminalimageviewer=1.2.1
 	provides = tiv=1.2.1
+	conflicts = terminalimageviewer
 	conflicts = tiv
 	source = TerminalImageViewer::git+https://github.com/stefanhaustein/TerminalImageViewer.git
 	sha256sums = SKIP
