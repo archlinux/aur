@@ -1,14 +1,13 @@
 diff --git a/src/sage/features/latte.py b/src/sage/features/latte.py
-index 63d227fd35..040a5cf1f9 100644
+index 9370d5e1ecc..6fb8273a509 100644
 --- a/src/sage/features/latte.py
 +++ b/src/sage/features/latte.py
-@@ -34,7 +34,7 @@ from . import Executable, Feature, FeatureTestResult
+@@ -35,7 +35,7 @@ class Latte_count(Executable):
              sage: isinstance(Latte_count(), Latte_count)
              True
          """
--        Executable.__init__(self, "count", executable="count",
-+        Executable.__init__(self, "latte-count", executable="latte-count",
-                             spkg="latte_int",
+-        Executable.__init__(self, 'count', executable='count',
++        Executable.__init__(self, 'latte-count', executable="latte-count",
+                             spkg='latte_int',
                              url=LATTE_URL)
  
-

@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.4.rc1.r0.gb7dd28d2456
+pkgver=10.5.beta1.r0.g0f3477394fb
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -135,11 +135,9 @@ makedepends=(bliss
 conflicts=(sagemath)
 provides=(sagemath)
 source=(git+https://github.com/sagemath/sage#branch=develop
-        latte-count.patch
-        sagemath-numpy-2.0.patch)
+        latte-count.patch)
 sha256sums=('SKIP'
-            '5cd2f88965d7ebab9dfab6f5c2040d363a4a5ae41230219cc7070b907381da5a'
-            'bed395c2150fa7d812b565021b0b10ce0f8b2b027a594d8f19bb3639bccf9018')
+            'f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09')
 _pkgs=(standard
        bliss
        coxeter3
@@ -158,8 +156,6 @@ prepare(){
 
 # use correct latte-count binary name
   patch -p1 -i ../latte-count.patch
-# fix tests with numpy 2.0
-  patch -p1 -i ../sagemath-numpy-2.0.patch
 
   ./bootstrap
 }
