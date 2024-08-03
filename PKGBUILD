@@ -5,15 +5,14 @@
 
 _quake=vkQuake
 pkgname=vkquake
-pkgver=1.31.0
+pkgver=1.31.1
 pkgrel=1
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support."
 arch=('x86_64')
 provides=('vkquake')
 url="https://github.com/Novum/vkquake"
 license=('GPL-2.0-or-later')
-depends=('flac' 'libmad'
-	 'libvorbis' 'opusfile' 'sdl2')
+depends=('flac' 'libmad' 'libvorbis' 'opusfile' 'sdl2' 'vulkan-icd-loader' 'hicolor-icon-theme' 'vulkan-driver')
 makedepends=('vulkan-validation-layers' 'meson' 'vulkan-headers' 'glslang' 'spirv-tools')
 install=$pkgname.install
 source=("https://github.com/Novum/vkQuake/archive/${pkgver}.tar.gz"
@@ -21,7 +20,7 @@ source=("https://github.com/Novum/vkQuake/archive/${pkgver}.tar.gz"
 	'vkquake.png'
 	'vkquake.svg'
 	'ctype.patch')
-sha512sums=('60c76c9f207d65707aec02b888d5df7783bff506008480e1ec94da46d5614af5f4ec183d80bd1e991d851c1e4d3a43a30128fc56b0d76db4fa7b2f05da656db9'
+sha512sums=('4490e64fde438c22c3ad1f06cd7996bfc018ef4111ff181c96d72c6976790bf76bcf30d42f0c62abf93ca4ffb661f62782c8aa55ab57f1ece6843509c530a6bb'
             '75881c2fea0628dcecff496a5e3035bbb4e408b81527737339ebfd66ad04ca04621d4e13e3e0537f091f8b1127dc231583f746d11cc6c11658cdb976db77e145'
             '9ac17fb2f549656869a02a9a1896786aa4a4f753c6b1174d14b999c94693164ec71a73f9ab6f4a96591ef3af407ffce4f29b0ed87e878f14bb177e396898f29f'
             '5a712a6c0447acea7a6c690cb7e63a2111e28646ef0935dfbd40cc4164c9ed5fc6fdba6eeafe44b618b17e856b3b0f60cc3ddbdedd8e536feef97de969d407b0'
@@ -62,7 +61,6 @@ package() {
 
   # Make doc dir
   mkdir -p $pkgdir/usr/share/doc/vkquake/
-  mkdir -p $pkgdir/usr/share/games/vkquake/
 
   # supplemental files
   install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/vkquake.desktop"
