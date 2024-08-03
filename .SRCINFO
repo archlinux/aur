@@ -1,0 +1,43 @@
+pkgbase = fcitx5-pinyin-mihoyo
+	pkgdesc = Fcitx 5 Pinyin Dictionary for miHoYo Games from wiki.biligame.com
+	pkgver = 20240803
+	pkgrel = 1
+	url = https://github.com/sihuan/mw2fcitx
+	arch = any
+	license = CC-BY-SA-4.0
+	source = https://github.com/sihuan/mw2fcitx/releases/download/20240803/genshin.dict
+	source = https://github.com/sihuan/mw2fcitx/releases/download/20240803/genshin.dict.yaml
+	source = https://github.com/sihuan/mw2fcitx/releases/download/20240803/starrail.dict
+	source = https://github.com/sihuan/mw2fcitx/releases/download/20240803/starrail.dict.yaml
+	source = https://github.com/sihuan/mw2fcitx/releases/download/20240803/honkai3rd.dict
+	source = https://github.com/sihuan/mw2fcitx/releases/download/20240803/honkai3rd.dict.yaml
+	sha256sums = 16811c8a10613c6ea2399a3ea89ab81085eaa2a8031b00e817f676ba8be672bd
+	sha256sums = 7a76173335fbb7d18885491a1340686fc59884a09b74b8f20eda65f0d9b824b9
+	sha256sums = 102bd183da6b0fdce6746bce096ce031f3c36692a36ebd6cc26185f2d811c652
+	sha256sums = d77aa943b92ebd968d8d1b68ca48cd868092a2b73e6febf5ad160797ea693ee7
+	sha256sums = 9915eec217025a27eeb9013289ef25d5ce72f2f8615e7652ecf11502a229090e
+	sha256sums = dccdd9ec66ecbaf63c69d6a2a2ca6c36ace70875be60438b34adade00ac76cc6
+
+pkgname = fcitx5-pinyin-genshin
+	pkgdesc = Genshin Fcitx 5 Pinyin Dictionary from wiki.biligame.com
+	groups = fcitx5-pinyin-mihoyo
+
+pkgname = fcitx5-pinyin-genshin-rime
+	pkgdesc = Genshin Fcitx 5 Pinyin Dictionary from wiki.biligame.com
+	groups = fcitx5-pinyin-mihoyo-rime
+
+pkgname = fcitx5-pinyin-starrail
+	pkgdesc = Starrail Fcitx 5 Pinyin Dictionary from wiki.biligame.com
+	groups = fcitx5-pinyin-mihoyo
+
+pkgname = fcitx5-pinyin-starrail-rime
+	pkgdesc = Starrail Fcitx 5 Pinyin Dictionary from wiki.biligame.com
+	groups = fcitx5-pinyin-mihoyo-rime
+
+pkgname = fcitx5-pinyin-honkai3rd
+	pkgdesc = Honkai3rd Fcitx 5 Pinyin Dictionary from wiki.biligame.com
+	groups = fcitx5-pinyin-mihoyo
+
+pkgname = fcitx5-pinyin-honkai3rd-rime
+	pkgdesc = Honkai3rd Fcitx 5 Pinyin Dictionary from wiki.biligame.com
+	groups = fcitx5-pinyin-mihoyo-rime
