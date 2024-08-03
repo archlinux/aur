@@ -2,7 +2,7 @@
 
 pkgname=bpf-linker
 pkgver=0.9.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple BPF static linker"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/aya-rs/$pkgname"
@@ -14,12 +14,8 @@ sha256sums=('560c83026f630455217ec84f98bf65bc758169efb5816279f7cddfe81552c8db')
 
 prepare() {
   cd "$pkgname-$pkgver"
-
-  sed -i Cargo.toml \
-    -e 's|version = "180.0.0-rc2"|version = "170.0.1"|' \
-    -e 's|aya-rustc-llvm-proxy = { version = "0.9.2", optional = true }|aya-rustc-llvm-proxy = { version = "0.9.0", optional = true }|'
-  cargo update -p llvm-sys --precise 170.0.1
-
+  # https://github.com/time-rs/time/issues/681
+  cargo update -p time --precise 0.3.36
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 

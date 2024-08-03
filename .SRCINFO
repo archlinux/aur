@@ -1,7 +1,7 @@
 pkgbase = bpf-linker
 	pkgdesc = Simple BPF static linker
 	pkgver = 0.9.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aya-rs/bpf-linker
 	arch = x86_64
 	arch = aarch64
