@@ -1,9 +1,10 @@
 
-# Maintainer: Andrea Feletto <andrea@andreafeletto.com>
+# Maintainer: Douglas Creager <dcreager at dcreager dot net>
+# Co-Maintainer: Sir-Photch <sir-photch at posteo dot me>
 
 pkgname=gmid
 pkgver=2.1
-pkgrel=2
+pkgrel=1
 pkgdesc='Fast Gemini server written with security in mind.'
 arch=('x86_64')
 url='https://gmid.omarpolo.com'
