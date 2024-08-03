@@ -1,0 +1,8 @@
+*.tar.*
+*.zip
+googletest/
+pkg/
+pybind11/
+pytype/
+src/
+typeshed/
