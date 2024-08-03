@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://flashpointarchive.org/"
 license=('MIT')
 depends=(
-	'pulseaudio'
+	'pulse-native-provider'
 	'lib32-libxcomposite'
 	'gtk3'
 	'nss'
