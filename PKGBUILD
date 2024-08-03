@@ -2,11 +2,12 @@
 _pkgname=aya-tool
 pkgname=$_pkgname-git
 pkgver=0.1.0+aya.0.12.0.r135.g3d57d35
-pkgrel=1
+pkgrel=2
 pkgdesc="tool for inspection and simple manipulation of eBPF programs and maps"
 arch=(x86_64 aarch64 riscv64)
 url="https://aya-rs.dev/book/aya/aya-tool/"
 conflicts=('aya-tool-bin' 'aya-tool')
+provides=('aya-tool')
 license=('MIT OR Apache-2.0')
 depends=('rust-bindgen' 'bpftool')
 makedepends=('cargo' 'git' 'jq')
