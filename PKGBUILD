@@ -62,7 +62,7 @@ package() {
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 
   DESTDIR="${pkgdir}" cmake --install "python/build"
-  libtool --finish "${pkgbuild}${site_packages}"
+  libtool --finish "${pkgdir}${site_packages}"
 
   cd "python"
   # install -Dm644 "NEWS"    "${pkgdir}/usr/share/doc/${_pkgname}/NEWS"
