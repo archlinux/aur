@@ -46,6 +46,7 @@ pkgbase = forkgram
 	depends = protobuf
 	depends = glib2
 	depends = libsigc++-3.0
+	depends = openh264
 	depends = libxcomposite
 	depends = libvpx
 	depends = libxdamage
