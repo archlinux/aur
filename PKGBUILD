@@ -62,8 +62,8 @@ package() {
     install -Dm 755 "${parser}" "${pkgdir}/usr/share/lunarvim/prebuild/nvim-treesitter/parser/${parser##/*/}"
   done
 
-  for info in "${srcdir}/nvim-treesitter/parser/"*; do
-    install -Dm 755 "${info}" "${pkgdir}/usr/share/lunarvim/prebuild/nvim-treesitter/parser/${info##/*/}"
+  for info in "${srcdir}/nvim-treesitter/parser-info/"*; do
+    install -Dm 755 "${info}" "${pkgdir}/usr/share/lunarvim/prebuild/nvim-treesitter/parser-info/${info##/*/}"
   done
 
   install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/lunarvim/README.md"
