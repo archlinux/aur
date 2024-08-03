@@ -2,14 +2,14 @@
 # Maintainer: Angelo Theodorou <encelo at gmail dot com>
 
 pkgname=tracy-x11
-pkgver=0.10
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Real-time, nanosecond resolution frame profiler"
 arch=('i686' 'x86_64')
 url="https://github.com/wolfpld/tracy"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('glfw-x11' 'freetype2' 'dbus' 'hicolor-icon-theme' 'intel-tbb' 'capstone')
-makedepends=('pkgconf' 'git')
+makedepends=('pkgconf' 'git' 'cmake')
 optdepends=('xdg-desktop-portal: file dialogs')
 provides=('tracy')
 conflicts=('tracy')
@@ -18,22 +18,32 @@ sha256sums=('SKIP')
 
 build() {
   cd tracy
-  make -C capture/build/unix release
-  make -C csvexport/build/unix release
-  make -C import-chrome/build/unix release
-  make -C library/unix release
-  make -C profiler/build/unix release LEGACY=1
-  make -C update/build/unix release
+
+  cmake -S . -B build -D CMAKE_BUILD_TYPE=Release
+  make -C build
+  cmake -S capture -B capture/build -D CMAKE_BUILD_TYPE=Release -D DOWNLOAD_CAPSTONE=OFF
+  make -C capture/build
+  cmake -S csvexport -B csvexport/build -D CMAKE_BUILD_TYPE=Release -D DOWNLOAD_CAPSTONE=OFF
+  make -C csvexport/build
+  cmake -S import-chrome -B import-chrome/build -D CMAKE_BUILD_TYPE=Release -D DOWNLOAD_CAPSTONE=OFF
+  make -C import-chrome/build
+  cmake -S import-fuchsia -B import-fuchsia/build -D CMAKE_BUILD_TYPE=Release -D DOWNLOAD_CAPSTONE=OFF
+  make -C import-fuchsia/build
+  cmake -S profiler -B profiler/build -D CMAKE_BUILD_TYPE=Release -D DOWNLOAD_CAPSTONE=OFF
+  make -C profiler/build
+  cmake -S update -B update/build -D CMAKE_BUILD_TYPE=Release -D DOWNLOAD_CAPSTONE=OFF
+  make -C update/build
 }
 
 package() {
   cd tracy
-  install -Dm755 capture/build/unix/capture-release $pkgdir/usr/bin/tracy-capture
-  install -Dm755 csvexport/build/unix/csvexport-release $pkgdir/usr/bin/tracy-csvexport
-  install -Dm755 import-chrome/build/unix/import-chrome-release $pkgdir/usr/bin/tracy-import-chrome
-  install -Dm755 library/unix/libtracy-release.so $pkgdir/usr/lib/libtracy.so
-  install -Dm755 profiler/build/unix/Tracy-release $pkgdir/usr/bin/tracy
-  install -Dm755 update/build/unix/update-release $pkgdir/usr/bin/tracy-update
+  install -Dm644 build/libTracyClient.a $pkgdir/usr/lib/libTracyClient.a
+  install -Dm755 capture/build/tracy-capture $pkgdir/usr/bin/tracy-capture
+  install -Dm755 csvexport/build/tracy-csvexport $pkgdir/usr/bin/tracy-csvexport
+  install -Dm755 import-chrome/build/tracy-import-chrome $pkgdir/usr/bin/tracy-import-chrome
+  install -Dm755 import-fuchsia/build/tracy-import-fuchsia $pkgdir/usr/bin/tracy-import-fuchsia
+  install -Dm755 profiler/build/tracy-profiler $pkgdir/usr/bin/tracy-profiler
+  install -Dm755 update/build/tracy-update $pkgdir/usr/bin/tracy-update
 
   mkdir -p $pkgdir/usr/include/Tracy/client
   mkdir -p $pkgdir/usr/include/Tracy/common
