@@ -1,39 +1,34 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Anže Pintar <anze@anzepintar.com>
 
-_pkgname='anymeal'
-pkgname="${_pkgname}-git"
-pkgver=1.8.r1.g1535c12
+pkgname=anymeal
+pkgver=r$(git ls-remote --short https://github.com/wedesoft/anymeal.git HEAD)
 pkgrel=1
-pkgdesc='Recipe Management Software'
+pkgdesc="Recipe management software. Supports MealMaster recipes, import, export, search, display, edit, and print them."
 arch=('x86_64')
-url='https://wedesoft.github.io/anymeal/'
-_url_source='https://github.com/wedesoft/anymeal'
+url="https://github.com/wedesoft/anymeal"
 license=('GPL3')
-depends=('hicolor-icon-theme' 'qt5-base' 'recode')
-makedepends=('git' 'gtest' 'qt5-tools')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("git+${_url_source}.git")
+depends=('sqlite' 'qt5-base')
+makedepends=('autoconf' 'automake' 'libtool' 'flex' 'gtest' 'qt5-tools' 'git')
+source=("git+https://github.com/wedesoft/anymeal.git")
 sha256sums=('SKIP')
 
-prepare() {
-  # Fix Googletest file path
-  sed -i.bak "24s|googletest/googletest|googletest|" "${_pkgname}/configure.ac"
+pkgver() {
+  cd "$srcdir/$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-pkgver() {
-  git -C "${_pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+prepare() {
+  cd "$srcdir/$pkgname"
+  autoreconf -fi
 }
 
 build() {
-  cd "${_pkgname}"
-  autoreconf --install
+  cd "$srcdir/$pkgname"
   ./configure --prefix=/usr
+  make
 }
 
 package() {
-  make DESTDIR="${pkgdir}" -C "${_pkgname}" install
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" "${_pkgname}/README.md"
+  cd "$srcdir/$pkgname"
+  make DESTDIR="$pkgdir/" install
 }
-
-# vim: ts=2 sw=2 et:
