@@ -12,17 +12,20 @@ source=(git+https://github.com/Azq2/ra-pixelart-scale)
 sha256sums=('SKIP')
 
 prepare() {
+	cd "ra-pixelart-scale"
 	export RUSTUP_TOOLCHAIN=nightly
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
+	cd "ra-pixelart-scale"
 	export RUSTUP_TOOLCHAIN=nightly
 	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release --all-features
 }
 
 package() {
+	cd "ra-pixelart-scale"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 	install -Dm0755 -d -t "$pkgdir/usr/share/ra-pixelart-scal/shaders" "shaders"
 }
