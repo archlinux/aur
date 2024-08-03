@@ -1,3 +1,4 @@
+# Merged with official ABS qt6-base PKGBUILD by João, 2024/07/31 (all respective contributors apply herein)
 # Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
@@ -6,7 +7,7 @@
 pkgbase=qt6-base-git
 pkgname=(qt6-base-git
          qt6-xcb-private-headers-git)
-pkgver=6.8.0_r68400.g63295f43e7
+pkgver=6.8.0_r68447.gfdfb360f4f
 pkgrel=1
 arch=($CARCH)
 url='https://www.qt.io'
@@ -35,7 +36,7 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S $_pkgfn -G Ninja \
+  cmake -B build -S qtbase -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DINSTALL_BINDIR=lib/qt6/bin \
@@ -61,8 +62,8 @@ build() {
 package_qt6-base-git() {
   conflicts=(${pkgname[0]%-git})
   provides=(${pkgname[0]%-git})
-  
-  
+
+
   DESTDIR="$pkgdir" cmake --install build
 
   install -Dm644 qtbase/LICENSE* -t "$pkgdir"/usr/share/licenses/$pkgbase

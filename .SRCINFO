@@ -1,6 +1,6 @@
 pkgbase = qt6-base-git
 	pkgdesc = A cross-platform application and UI framework
-	pkgver = 6.8.0_r68400.g63295f43e7
+	pkgver = 6.8.0_r68447.gfdfb360f4f
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -87,7 +87,7 @@ pkgname = qt6-base-git
 
 pkgname = qt6-xcb-private-headers-git
 	pkgdesc = Private headers for Qt6 Xcb
-	depends = qt6-base-git=6.8.0_r68400.g63295f43e7
+	depends = qt6-base-git=6.8.0_r68447.gfdfb360f4f
 	optdepends = 
 	provides = 
 	conflicts = 
