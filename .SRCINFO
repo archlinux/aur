@@ -1,5 +1,5 @@
 pkgbase = transmission-noxunlei
-	pkgver = 4.0.5
+	pkgver = 4.0.6
 	pkgrel = 1
 	url = http://www.transmissionbt.com/
 	arch = x86_64
@@ -23,12 +23,14 @@ pkgbase = transmission-noxunlei
 	makedepends = qt6-svg
 	makedepends = qt6-tools
 	makedepends = systemd
-	source = https://github.com/transmission/transmission/releases/download/4.0.5/transmission-4.0.5.tar.xz
+	source = https://github.com/transmission/transmission/releases/download/4.0.6/transmission-4.0.6.tar.xz
 	source = ban-xunlei.patch
+	source = febfe49c.patch
 	source = transmission-noxunlei-cli.sysusers
 	source = transmission-noxunlei-cli.tmpfiles
-	sha256sums = fd68ff114a479200043c30c7e69dba4c1932f7af36ca4c5b5d2edcb5866e6357
-	sha256sums = 6dbddb912b7203050ded71282d29298629c08189d0ddc7048968606eb7f23ad4
+	sha256sums = 2a38fe6d8a23991680b691c277a335f8875bdeca2b97c6b26b598bc9c7b0c45f
+	sha256sums = f895bafecf6d0f19420a01cb0077a2466af08527670df95f4d70d7430e79d71e
+	sha256sums = 1e5917c79a0c17595f18b544c5c1ab101ecbef5b2ffb0ca42a0a3b221a85e044
 	sha256sums = 641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2
 	sha256sums = 1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451
 

@@ -6,7 +6,7 @@
 
 pkgbase=transmission-noxunlei
 pkgname=(transmission-noxunlei-cli transmission-noxunlei-gtk transmission-noxunlei-qt libtransmission-noxunlei)
-pkgver=4.0.5
+pkgver=4.0.6
 pkgrel=1
 arch=(x86_64)
 url="http://www.transmissionbt.com/"
@@ -34,16 +34,21 @@ makedepends=(
 )
 source=(https://github.com/transmission/transmission/releases/download/$pkgver/transmission-$pkgver.tar.xz
         ban-xunlei.patch
+        febfe49c.patch
         transmission-noxunlei-cli.sysusers
         transmission-noxunlei-cli.tmpfiles)
-sha256sums=('fd68ff114a479200043c30c7e69dba4c1932f7af36ca4c5b5d2edcb5866e6357'
-            '6dbddb912b7203050ded71282d29298629c08189d0ddc7048968606eb7f23ad4'
+sha256sums=('2a38fe6d8a23991680b691c277a335f8875bdeca2b97c6b26b598bc9c7b0c45f'
+            'f895bafecf6d0f19420a01cb0077a2466af08527670df95f4d70d7430e79d71e'
+            '1e5917c79a0c17595f18b544c5c1ab101ecbef5b2ffb0ca42a0a3b221a85e044'
             '641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2'
             '1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451')
 
 prepare() {
   ln -sf transmission-$pkgver $pkgbase-$pkgver
   cd $pkgbase-$pkgver
+
+  # Picked from https://gitlab.archlinux.org/archlinux/packaging/packages/transmission/-/commit/d0e0fb1a8c5aa90307f25691980fce9f833ed9f3
+  patch -p1 -i ../febfe49c.patch # Fix build with miniupnpc 2.2.8
 
   # Ban Xunlei (Thunder) downloader as described in blog.zscself.com/posts/66b00f02/ and 3 more leech-only clients
   # https://github.com/firedent/transmission-Block-Thunder/commit/f6b87adbd852911f72d977e967e7fee9f5944379
