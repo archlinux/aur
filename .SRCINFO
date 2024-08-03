@@ -1,7 +1,7 @@
 pkgbase = jdk22-graalvm-bin
 	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 22 version
 	pkgver = 22.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.graalvm.org/
 	install = jdk22-graalvm-bin.install
 	arch = x86_64
