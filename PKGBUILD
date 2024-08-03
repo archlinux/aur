@@ -1,7 +1,7 @@
 # Maintainer: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=ncline-git
-pkgver=r10.9693301
+pkgver=r30.3ddf743
 pkgrel=1
 pkgdesc="The nCine command line tool"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('git' 'cmake')
 conflicts=('ncline')
 provides=('ncline')
-source=('git://github.com/nCine/ncline')
+source=('git+https://github.com/nCine/ncline')
 md5sums=('SKIP')
 
 pkgver() {

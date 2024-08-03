@@ -1,6 +1,6 @@
 pkgbase = ncline-git
 	pkgdesc = The nCine command line tool
-	pkgver = r10.9693301
+	pkgver = r22.e3fbb8f
 	pkgrel = 1
 	url = http://ncine.github.io
 	arch = i686
@@ -11,8 +11,7 @@ pkgbase = ncline-git
 	depends = gcc-libs
 	provides = ncline
 	conflicts = ncline
-	source = git://github.com/nCine/ncline
+	source = git+https://github.com/nCine/ncline
 	md5sums = SKIP
 
 pkgname = ncline-git
-
