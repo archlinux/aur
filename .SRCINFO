@@ -1,0 +1,17 @@
+pkgbase = brother-mfc-l3735cdn
+	pkgdesc = LPR and CUPS drivers for the Brother MFC-L3735CDN
+	pkgver = 1.0.2
+	pkgrel = 0
+	url = http://support.brother.com/g/s/id/linux/en/index.html
+	install = brother-mfc-l3735cdn.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother
+	license = GPL
+	makedepends = perl
+	makedepends = tar
+	depends = cups
+	source = https://download.brother.com/welcome/dlf103932/mfcl3735cdnpdrv-1.0.2-0.i386.deb
+	md5sums = 04ecc9ca4baf9ae9b306a459dc8fe019
+
+pkgname = brother-mfc-l3735cdn
