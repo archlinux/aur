@@ -1,7 +1,7 @@
 pkgbase = osmo-hlr
 	pkgdesc = Osmocom HLR for GSUP protocol towards OsmoSGSN and OsmoCSCN
-	pkgver = 1.7.0
-	pkgrel = 2
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://osmocom.org/projects/osmo-hlr
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = osmo-hlr
 	provides = libosmo-mslookup.so=1-64
 	conflicts = osmo-hlr-git
 	backup = etc/osmocom/osmo-hlr.cfg
-	source = https://downloads.osmocom.org/releases/osmo-hlr/osmo-hlr-1.7.0.tar.bz2
-	sha256sums = 635577e76f1c8ee13aaa8317f14d76a7c6d3fa8d19d7493b8674d7fd7564f27b
+	source = https://downloads.osmocom.org/releases/osmo-hlr/osmo-hlr-1.8.0.tar.bz2
+	sha256sums = f3d9ac312ac06e5a3d6ff8f119b06ff0855900233909f352ccdf52ca059d7481
 
 pkgname = osmo-hlr

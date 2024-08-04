@@ -2,8 +2,8 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-hlr
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="Osmocom HLR for GSUP protocol towards OsmoSGSN and OsmoCSCN"
 url="https://osmocom.org/projects/osmo-hlr"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -14,7 +14,7 @@ provides=('libosmo-gsup-client.so=0-64'
 conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-hlr.cfg')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('635577e76f1c8ee13aaa8317f14d76a7c6d3fa8d19d7493b8674d7fd7564f27b')
+sha256sums=('f3d9ac312ac06e5a3d6ff8f119b06ff0855900233909f352ccdf52ca059d7481')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -22,6 +22,11 @@ build() {
               --sysconfdir=/etc \
               --localstatedir=/var
   make
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make check
 }
 
 package() {
