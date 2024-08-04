@@ -1,38 +1,64 @@
-# Maintainer: Timothy Gu <timothygu99@gmail.com>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Tom Gundersen <teg@jklm.no>
-# Contributor: Thomas Baechler <thomas@archlinux.org>
+# Maintainer:
+# Contributor: Timothy Gu <timothygu99@gmail.com>
 # Contributor: Ivan Shapovalov <intelfx@intelfx.name>
 
-pkgname=libfprint-git
-_pkgname=libfprint
-epoch=1
-pkgver=1.90.6.r3.g3560a0f
+## links
+# https://fprint.freedesktop.org
+# https://gitlab.freedesktop.org/libfprint/libfprint
+
+## basic info
+_pkgname="libfprint"
+pkgname="$_pkgname-git"
+pkgver=1.94.7.r29.g3f70bde
 pkgrel=1
 pkgdesc="Library for fingerprint readers"
-url="https://fprint.freedesktop.org/"
-arch=(x86_64)
-license=(LGPL)
-depends=(libgusb pixman nss systemd-libs)
-makedepends=(git meson gtk-doc gobject-introspection systemd)
-checkdepends=(python python-cairo python-gobject 'umockdev>=0.13.2')
-provides=("libfprint=$pkgver" libfprint-2.so)
-conflicts=(libfprint)
-groups=(fprint)
-source=("git+https://gitlab.freedesktop.org/libfprint/libfprint.git")
+url="https://gitlab.freedesktop.org/libfprint/libfprint"
+license=('LGPL-2.1-or-later')
+arch=('x86_64')
+
+depends=(
+  libgudev
+  libgusb
+  nss
+  pixman
+)
+makedepends=(
+  git
+  glib2-devel
+  gobject-introspection
+  gtk-doc
+  meson
+)
+checkdepends=(
+  python
+  python-cairo
+  python-gobject
+  umockdev
+)
+
+provides=(
+  "$_pkgname=$pkgver"
+  'libfprint-2.so'
+)
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  git describe --tags | sed 's/^V_\|^v//;s/_/./g;s/-/.r/;s/-/./'
-}
-
-prepare() {
-  cd $_pkgname
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' --exclude='*_*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson $_pkgname build
+  local _meson_opts=(
+    -Ddrivers=all
+    -Dinstalled-tests=false
+  )
+
+  arch-meson "$_pkgsrc" build "${_meson_opts[@]}"
   meson compile -C build
 }
 

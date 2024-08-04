@@ -1,30 +1,27 @@
 pkgbase = libfprint-git
 	pkgdesc = Library for fingerprint readers
-	pkgver = 1.90.6.r3.g3560a0f
+	pkgver = 1.94.7.r29.g3f70bde
 	pkgrel = 1
-	epoch = 1
-	url = https://fprint.freedesktop.org/
+	url = https://gitlab.freedesktop.org/libfprint/libfprint
 	arch = x86_64
-	groups = fprint
-	license = LGPL
+	license = LGPL-2.1-or-later
 	checkdepends = python
 	checkdepends = python-cairo
 	checkdepends = python-gobject
-	checkdepends = umockdev>=0.13.2
+	checkdepends = umockdev
 	makedepends = git
-	makedepends = meson
-	makedepends = gtk-doc
+	makedepends = glib2-devel
 	makedepends = gobject-introspection
-	makedepends = systemd
+	makedepends = gtk-doc
+	makedepends = meson
+	depends = libgudev
 	depends = libgusb
-	depends = pixman
 	depends = nss
-	depends = systemd-libs
-	provides = libfprint=1.90.6.r3.g3560a0f
+	depends = pixman
+	provides = libfprint=1.94.7.r29.g3f70bde
 	provides = libfprint-2.so
 	conflicts = libfprint
-	source = git+https://gitlab.freedesktop.org/libfprint/libfprint.git
+	source = libfprint::git+https://gitlab.freedesktop.org/libfprint/libfprint.git
 	sha256sums = SKIP
 
 pkgname = libfprint-git
-
