@@ -1,4 +1,4 @@
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: David Markey <david@dmarkey.com>
 
 pkgbase=linux-amdvcnfix
 pkgver=6.10.3.arch1
@@ -17,13 +17,6 @@ makedepends=(
   python
   tar
   xz
-
-  # htmldocs
-  graphviz
-  imagemagick
-  python-sphinx
-  python-yaml
-  texlive-latexextra
 )
 options=(
   !debug
