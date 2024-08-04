@@ -2,13 +2,13 @@
 
 pkgname=nano-vanity-git
 _pkgname=${pkgname%-git}
+_author=PlasmaPower
 pkgver=r88.caa7274
-pkgrel=1
+pkgrel=2
 pkgdesc="Vanity address generator for nano cryptocurrency."
 
 arch=(x86_64)
-_repo=PlasmaPower/${_pkgname}
-url=https://github.com/${_repo}
+url=https://github.com/${_author}/${_pkgname}
 license=(BSD-2-Clause)
 depends=(glibc gcc-libs ocl-icd)
 makedepends=(git cargo rustup)
@@ -17,12 +17,12 @@ conflicts=(${_pkgname})
 
 source=(
 	${_pkgname}-${pkgver}::git+${url}.git
-	LICENSE::https://raw.githubusercontent.com/${_repo}/master/LICENSE
+	LICENSE::https://raw.githubusercontent.com/${_author}/${_pkgname}/master/LICENSE
 )
 
 sha512sums=(
 	"SKIP"
-	"SKIP"
+	"d4e9f56bec22cc7a82f107378defbe500a2adc49489842182e7ab2344953c14da77de5003e275e9978f99af44938bb8524d4a514ed91cf04f1b1dc88086f2b05"
 )
 
 pkgver() {
@@ -52,12 +52,5 @@ check() {
 package() {
 	cd "${srcdir}"/${_pkgname}-${pkgver}
 	install -Dm0755 -t "${pkgdir}"/usr/bin target/release/${_pkgname}
-
-	# install -dm755 ${pkgdir}/usr/lib/${pkgname%-git}
-	# cp -r ${srcdir}/${pkgname%-git}/dist/linux-unpacked/* ${pkgdir}/usr/lib/${pkgname%-git}
-
-	# install -dm755 ${pkgdir}/usr/bin
-	# ln -s /usr/lib/${pkgname%-git}/${pkgname%-git} ${pkgdir}/usr/bin/${pkgname%-git}
-
-	install -Dm644 -t ${pkgdir}/usr/share/licenses/${pkgname} LICENSE
+	install -Dm0644 -t "${pkgdir}"/usr/share/licenses/${_pkgname} LICENSE
 }
