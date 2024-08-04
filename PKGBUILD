@@ -1,5 +1,5 @@
 pkgname='slskd-bin'
-pkgver=0.21.2
+pkgver=0.21.3
 pkgrel=1
 pkgdesc='A modern client-server application for the Soulseek file-sharing network.'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -32,11 +32,10 @@ sha256sums_x86_64=('6facd0037c9fca44d5034084559286a8acf5cd6f25fd1ae52072197f827f
 sha256sums_aarch64=('df304fdbb7c5393a82c1b0fe64d38e39c0690eb44d154fa9d0b9b52021f78d59')
 sha256sums_armv7h=('604c03a82b1ce77e326da943c79d02a9801389867bda7e22a9630d955f3434b6')
 
-pkgver() {
-#	cd ${pkgname}
-	curl -s https://api.github.com/repos/slskd/slskd/releases/latest | grep tag_name | sed 's/.*: "\([^"]\+\)".*/\1/'
-	# Not updating pkgver for some reason
-}
+#pkgver() {
+	#curl -s https://api.github.com/repos/slskd/slskd/releases/latest | grep tag_name | sed 's/.*: "\([^"]\+\)".*/\1/'
+	# Pkgver() incompatible with checksums
+#}
 
 package() {
   install -d -m 755 "${pkgdir}/usr/lib/slskd"
