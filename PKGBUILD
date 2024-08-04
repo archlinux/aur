@@ -4,17 +4,17 @@
 
 pkgbase=lief
 pkgname=(lief python-lief)
-pkgver=0.14.1
+pkgver=0.15.1
 pkgrel=1
 pkgdesc='Library to instrument executable formats'
 arch=('x86_64')
 url='https://github.com/lief-project/lief'
 license=(Apache-2.0)
 depends=(tl-expected)
-makedepends=(cmake python nlohmann-json mbedtls python-build python-installer python-wheel python-tomli python-scikit-build-core ninja python-cattrs python-packaging python-rich python-setuptools python-pydantic python-pydantic-core python-pyproject-metadata python-pathspec)
+makedepends=(cmake python nlohmann-json python-build python-installer python-wheel python-tomli python-scikit-build-core ninja python-cattrs python-packaging python-rich python-setuptools python-pydantic python-pydantic-core python-pyproject-metadata python-pathspec)
 provides=(libLIEF.so)
 source=($url/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('92916dcb3178353d863aef4f409186889983c56e025b774741d5316a72ec3a7d')
+sha256sums=('28653b59afc8b8b255251f21a0f3cbfbdec05dd988fb3f473e22dde28f427ad8')
 
 prepare() {
   cd "LIEF-$pkgver/api/python"
@@ -30,7 +30,6 @@ build() {
     -DLIEF_EXAMPLES=OFF \
     -DLIEF_PYTHON_API=ON \
     -DLIEF_OPT_NLOHMANN_JSON_EXTERNAL=ON \
-    -DLIEF_OPT_MBEDTLS_EXTERNAL=ON \
     -DLIEF_OPT_EXTERNAL_EXPECTED=ON
   cmake --build build
 
