@@ -1,14 +1,13 @@
 pkgbase = foonathan_memory
 	pkgdesc = STL compatible C++ memory allocator library using a new RawAllocator concept that is similar to an Allocator but easier to use and write.
-	pkgver = 0.7.0
+	pkgver = 0.7.3
 	pkgrel = 1
-	url = http://foonathan.net/memory
+	url = https://memory.foonathan.net/
 	arch = x86_64
 	license = ZLIB
 	makedepends = cmake
 	makedepends = git
-	source = foonathan_memory-0.7.0.tar.gz::https://github.com/foonathan/memory/archive/v0.7.tar.gz
-	sha256sums = 01a7cc5a5ebddbd71bec69c89562a4a2ecd7c29334c0a29d38d83e7f7f66eb53
+	source = foonathan_memory-0.7.3.tar.gz::https://github.com/foonathan/memory/archive/v0.7-3.tar.gz
+	sha256sums = 4203d15db22a94a3978eeb1afb59a37d35c57c0f148733f0f1a53a6281cb74dd
 
 pkgname = foonathan_memory
-
