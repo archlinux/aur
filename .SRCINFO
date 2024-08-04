@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-bin
-	pkgdesc = Java OpenJDK 22.0.1 Oracle Build.
-	pkgver = 22.0.1.u8
+	pkgdesc = Java OpenJDK 22.0.2 Oracle Build.
+	pkgver = 22.0.2.u9
 	pkgrel = 1
 	url = https://jdk.java.net/22
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = java-openjdk-bin
 	provides = java-runtime-openjdk=22
 	provides = java-runtime-headless=22
 	provides = java-runtime-headless-openjdk=22
-	source = https://download.java.net/java/GA/jdk22.0.1/c7ec1332f7bb44aeba2eb341ae18aca4/8/GPL/openjdk-22.0.1_linux-x64_bin.tar.gz
-	sha256sums = 133c8b65113304904cdef7c9103274d141cfb64b191ff48ceb6528aca25c67b1
+	source = https://download.java.net/java/GA/jdk22.0.2/c9ecb94cd31b495da20a27d4581645e8/9/GPL/openjdk-22.0.2_linux-x64_bin.tar.gz
+	sha256sums = 41536f115668308ecf4eba92aaf6acaeb0936225828b741efd83b6173ba82963
 
 pkgname = java-openjdk-bin
