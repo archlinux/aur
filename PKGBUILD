@@ -3,7 +3,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=crosswords
-pkgver=0.3.12
+pkgver=0.3.13.3
 pkgrel=1
 pkgdesc='Crossword player and editor for GNOME'
 arch=(x86_64 aarch64)
@@ -11,22 +11,25 @@ url='https://gitlab.gnome.org/jrb/crosswords'
 license=(GPL3)
 depends=(
 	libadwaita
-	libipuz
+	'libipuz>=0.4.6.2'
 	python-beautifulsoup4
 	python-lxml
 	python-puzpy
 	python-regex
 )
 makedepends=(meson)
-source=("${url}/-/archive/${pkgver}/crosswords-${pkgver}.tar.gz"
-        "${url}/-/commit/aec030cb9b0d98476e338c25b60662db008c038f.diff")
-b2sums=('cce2909650497b56aacd14a62f20e48ba25f5d04316c5626e8cd0edf9f9fbddd4af87114fe58abc2185c41b33127fa4b70f55771bcd34db4e6f1a30bf8015c1a'
-        '4fe595905dc326d7cc6d52b4e1ced5f987c27259ffb5fd32fc6ffe6847a935f9190b5ed410307ccb6d6cd1a96595c46e654122846b11215a51b7c84c131f15b2')
+source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        "${url}/-/commit/b4689c2426cf24e944f8ae419ed23f1969745995.patch"
+        "${url}/-/commit/3891aecfe538864cfc31561d21ccbcd007a94d2d.patch")
+sha256sums=('7ca253695842c32e3355ebac3392b3070a747d8bb6eaf53e20c4096fa6c98a65'
+            'c9b5ae319784b1c217b87775eab8d064d7ce4e7dcb37bbfa3a2081e76b2d231a'
+            '98d13c615b0a2a953357c621163cea4602ce97a29f307cd6ea99334e4929a4f4')
 
 prepare() {
-        cd "$pkgname-$pkgver"
-        # patch to fix crash - https://gitlab.gnome.org/jrb/crosswords/-/issues/193
-        patch -p1 < ../aec030cb9b0d98476e338c25b60662db008c038f.diff
+    # Fix race condition in build with upstream patch
+    cd "${pkgname}-${pkgver}"
+    patch -p1 < "${srcdir}/3891aecfe538864cfc31561d21ccbcd007a94d2d.patch"
+    patch -p1 < "${srcdir}/b4689c2426cf24e944f8ae419ed23f1969745995.patch"
 }
 
 build() {
