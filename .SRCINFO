@@ -1,0 +1,21 @@
+pkgbase = tencent-docs-electron-bin
+	pkgdesc = 腾讯文档 Tencent Docs - 让协作更高效，创作更轻松.使用系统Electron.
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://docs.qq.com/home/
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-custom
+	makedepends = asar
+	depends = electron25
+	provides = tencent-docs=3.5.0
+	conflicts = tencent-docs
+	conflicts = tencent-docs-electron
+	source = tencent-docs-electron.sh
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	source_aarch64 = tencent-docs-electron-bin-3.5.0-aarch64.deb::https://github.com/V0IDPlusPlus/Tencent-Docs-Debian-Package-Archive/releases/download/v3.5.0-1/LinuxTencentDocsArm64.deb
+	sha256sums_aarch64 = a74edc6d3d653ce8ed4357615af480cef94cb0fc17237e6efb9b7adcc7d2012b
+	source_x86_64 = tencent-docs-electron-bin-3.5.0-x86_64.deb::https://github.com/V0IDPlusPlus/Tencent-Docs-Debian-Package-Archive/releases/download/v3.5.0-1/LinuxTencentDocsAmd64.deb
+	sha256sums_x86_64 = e7a287fd03f8487420e3d60964bfeac318f44755ef5c8a9a5a51980fed8c1d4b
+
+pkgname = tencent-docs-electron-bin
