@@ -7,7 +7,7 @@ _microarchitecture=0
 ## Major kernel version
 _major=6.10
 ## Minor kernel version
-_minor=2
+_minor=3
 
 ## PKGBUILD ##
 
@@ -34,7 +34,7 @@ validpgpkeys=(
   '83BC8889351B5DEBBB68416EB8AC08600F108CDF'  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('73d8520dd9cba5acfc5e7208e76b35d9740b8aae38210a9224e32ec4c0d29b70'
+sha256sums=('fa5f22fd67dd05812d39dca579320c493048e26c4a556048a12385e7ae6fc698'
             'SKIP'
             'SKIP'
             'SKIP'
