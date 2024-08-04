@@ -1,11 +1,11 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname=firefox-librejs
 pkgver=7.21.1
-pkgrel=1
+pkgrel=2
 pkgdesc="detects and blocks nonfree nontrivial JavaScript"
 arch=('any')
 url="https://www.gnu.org/software/librejs/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 checkdepends=('jq')
 groups=('firefox-addons')
 source=("https://ftp.gnu.org/gnu/librejs/librejs-$pkgver.xpi")
