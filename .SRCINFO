@@ -1,0 +1,13 @@
+pkgbase = fastdds
+	pkgdesc = A C++ implementation of the DDS (Data Distribution Service) standard.
+	pkgver = 2.14.3
+	pkgrel = 1
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	depends = fastcdr
+	depends = foonathan_memory
+	source = fastdds-2.14.3.tar.gz::https://github.com/eProsima/Fast-DDS/archive/refs/tags/v2.14.3.tar.gz
+	md5sums = 002eb4d5e85341f08092bdcd9930db1a
+
+pkgname = fastdds
