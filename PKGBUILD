@@ -1,20 +1,23 @@
-# Contributor: .NET Core Community <https://www.dotnetcore.xyz/>
-# Maintainer: Pika Kolendo <pikakolendo02[a]gmail.c0m>
+# Contributor: WangGithubUser
+# Maintainer: FTS427 <FTS427@outlook.com>
+# Maintainer: Pika Kolendo <pikakolendo02[a]gmail.c0m> 
 pkgname='fastgithub-bin'
 _pkgName='fastgithub'
-pkgver=2.1.4
-pkgrel=4
+pkgver=2.1.5
+pkgrel=1
 pkgdesc="Speedup github access in China"
-arch=('x86_64')
-url="https://github.com/dotnetcore/FastGithub"
-_url="https://ghproxy.com/${url}"
+arch=('x86_64' 'aarch64')
+url="https://github.com/WangGithubUser/FastGitHub"
+_url="https://slink.ltd/${url}"
 license=('MIT')
 depends=('zlib' 'glibc' 'gcc-libs')
 options=('!strip')
 provides=('fastgithub')
 install="${pkgname}.install"
-source=("${_url}/releases/download/${pkgver}/${_pkgName}_linux-x64.zip")
-sha256sums=('01106995885a907c5832c594880f79763e6074877e20d61c391b3e9912a3b038')
+source_x86_64=("${_url}/releases/download/v${pkgver}/${_pkgName}_linux-x64.zip")
+source_aarch64=("${_url}/releases/download/v${pkgver}/${_pkgName}_linux-arm64.zip")
+sha256sums_x86_64=('f4e9caa10bf31f9245610bf5770b26ec8c13eb11337d11bc66bbabc5ddefabf2')
+sha256sums_aarch64=('f17ffdb8ac34c64cc31a82b5a93ee904c49ba8629e9e968022b5ea4a019754db')
 
 package() {
     mkdir -p "${pkgdir}/opt/${pkgname}"
