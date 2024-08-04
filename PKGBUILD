@@ -39,6 +39,14 @@ build() {
   make
 }
 
+check() {
+  cd "$srcdir/${pkgname%-git}"
+  # FIXME: LTO breaks unit tests (-Wl,-wrap)
+  # https://osmocom.org/issues/4123
+  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=88643
+  #make check
+}
+
 package() {
   cd "$srcdir/${pkgname%-git}"
   make DESTDIR=$pkgdir install
