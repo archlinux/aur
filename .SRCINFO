@@ -1,0 +1,17 @@
+pkgbase = ptext-git
+	pkgdesc = A nano like text editor built with pure C
+	pkgver = r166.3d7c1db
+	pkgrel = 1
+	url = https://github.com/proh14/ptext
+	arch = any
+	license = BSD-2-Clause
+	makedepends = git
+	depends = glibc
+	provides = ptext
+	conflicts = ptext
+	source = ptext::git+https://github.com/proh14/ptext.git
+	source = ptext_fix_makefile_flags.patch
+	sha256sums = SKIP
+	sha256sums = c021a13741f497940464671fea15e879c153900a354e5f853e34557301ab2c92
+
+pkgname = ptext-git

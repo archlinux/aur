@@ -1,0 +1,12 @@
+--- a/Makefile
++++ b/Makefile
+@@ -11,8 +11,7 @@
+ DEPS := $(OBJS:.o=.d)
+ INC_DIRS := $(shell find $(SRC_DIRS) -type d)
+ INC_FLAGS := $(addprefix -I,$(INC_DIRS))
+-CFLAGS := $(INC_FLAGS) -MMD -MP -Wall -g -Wextra -pedantic -std=c99
+-LDFLAGS := 
++CFLAGS := $(CFLAGS) $(INC_FLAGS) -MMD -MP -Wall -g -Wextra -pedantic -std=c99
+ 
+ $(BUILD_DIR)/$(TARGET_EXEC): $(OBJS)
+ 	$(CC) $(OBJS) -o $@ $(LDFLAGS)
