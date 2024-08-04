@@ -1,12 +1,15 @@
 pkgbase = archlinux-studio-utils
-	pkgver = r4.bb6a39f
-	pkgrel = 3
+	pkgver = r5.d2ca3ba
+	pkgrel = 1
 	url = https://github.com/usrmusicman/ArchLinuxStudioUtils
 	arch = x86_64
 	license = EULA
 	makedepends = git
 	source = archlinux-studio-utils::git+https://github.com/usrmusicman/ArchLinuxStudioUtils
 	sha256sums = SKIP
+
+pkgname = archlinux-studio-utils-cpufreq-scaling
+	pkgdesc = CPU frequency scaling selection script
 
 pkgname = archlinux-studio-utils-efistub
 	pkgdesc = EFI boot entry creation and removal tool

@@ -1,7 +1,7 @@
 pkgbase=archlinux-studio-utils
-pkgname=('archlinux-studio-utils-efistub' 'archlinux-studio-utils-efistub-intel-toggle' 'archlinux-studio-utils-pipewire')
-pkgver=r4.bb6a39f
-pkgrel=3
+pkgname=('archlinux-studio-utils-cpufreq-scaling' 'archlinux-studio-utils-efistub' 'archlinux-studio-utils-efistub-intel-toggle' 'archlinux-studio-utils-pipewire')
+pkgver=r5.d2ca3ba
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/usrmusicman/ArchLinuxStudioUtils"
 license=('EULA')
@@ -12,6 +12,16 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$pkgbase"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+package_archlinux-studio-utils-cpufreq-scaling() {
+    pkgdesc="CPU frequency scaling selection script"
+
+    ## Install Script
+    install -Dm755 "$pkgbase/cpufreq/script/cpufreq_governor_selector" "$pkgdir/usr/bin/cpufreq_governor_selector"
+
+    ## Install Menu Entries
+    install -Dm644 "$pkgbase/cpufreq/menu_entry/CPUFreq Selector.desktop" "$pkgdir/usr/share/applications/CPUFreq Selector.desktop"
 }
 
 package_archlinux-studio-utils-efistub() {
