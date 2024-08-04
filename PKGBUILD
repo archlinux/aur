@@ -2,7 +2,7 @@
 
 _pkgname=dectalk
 pkgname=${_pkgname}-git
-pkgver=2023.10.30.r5.g2de226f1
+pkgver=2023.10.30.r29.gb44e3af4
 pkgrel=1
 pkgdesc="Modern builds for the 90s/00s DECtalk text-to-speech application."
 arch=('i686' 'x86_64')
