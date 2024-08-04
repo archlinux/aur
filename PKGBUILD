@@ -3,7 +3,7 @@
 pkgname=lunar-client
 _pkgname=lunarclient
 pkgver=3.2.12
-pkgrel=1
+pkgrel=2
 pkgdesc='PvP modpack for all modern versions of Minecraft'
 url=https://lunarclient.com
 arch=(x86_64)
@@ -23,7 +23,7 @@ build() {
 	# Adjust .desktop so it will work outside of AppImage container
 	sed -i -E \
 		"s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|" \
-		"squashfs-root/launcher.desktop"
+		"squashfs-root/lunarclient.desktop"
 	# Fix permissions; .AppImage permissions are 700 for all directories
 	chmod -R a-x+rX squashfs-root/usr
 }
@@ -36,7 +36,7 @@ package() {
 
 	# Desktop file
 	install -Dm644 \
-		"${srcdir}/squashfs-root/launcher.desktop" \
+		"${srcdir}/squashfs-root/lunarclient.desktop" \
 		"${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
 	# Icon images
