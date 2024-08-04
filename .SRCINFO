@@ -1,0 +1,18 @@
+pkgbase = follow-appimage
+	pkgdesc = 🧡 Next generation information browser
+	pkgver = 0.0.1alpha.3
+	pkgrel = 1
+	url = https://github.com/RSSNext/follow
+	arch = x86_64
+	license = GPL-3
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = fuse2
+	provides = follow
+	noextract = Follow-0.0.1alpha.3-linux-amd64.AppImage
+	options = !strip
+	options = !debug
+	source_x86_64 = Follow-0.0.1alpha.3-linux-amd64.AppImage::https://github.com/RSSNext/follow/releases/download/v0.0.1-alpha.3/Follow-0.0.1-alpha.3-linux-x64.AppImage
+	sha256sums_x86_64 = 62ee3740b09be44d2fb919bdfe8309ebd221c545da7206a76763322f7cdd216f
+
+pkgname = follow-appimage
