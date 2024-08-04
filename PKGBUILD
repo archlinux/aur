@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=libosmo-pfcp-git
-pkgver=0.3.0.r5.g1ffb0b7
+pkgver=0.4.0.r0.gc7ff5ab
 pkgrel=1
 pkgdesc="PFCP protocol encoding and decoding, and generic PFCP endpoint implementation"
 arch=('any')
@@ -30,6 +30,11 @@ build() {
   cd "${pkgname%-git}"
   ./configure --prefix=/usr
   make
+}
+
+check() {
+  cd "${pkgname%-git}"
+  make check
 }
 
 package() {
