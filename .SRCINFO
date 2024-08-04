@@ -1,0 +1,18 @@
+pkgbase = cups-local-git
+	pkgdesc = CUPS Local Services
+	pkgver = r51.90c8047
+	pkgrel = 1
+	url = https://github.com/OpenPrinting/cups-local
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	makedepends = git
+	depends = libcups-git
+	depends = pappl-git
+	provides = cups-local
+	conflicts = cups-local
+	conflicts = cups
+	conflicts = cups-git
+	source = git+https://github.com/OpenPrinting/cups-local.git
+	sha256sums = SKIP
+
+pkgname = cups-local-git
