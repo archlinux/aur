@@ -2,8 +2,8 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=libasn1c
-pkgver=0.9.36
-pkgrel=3
+pkgver=0.9.37
+pkgrel=1
 pkgdesc="runtime library of Lev Walkin's asn1c split out as separate library"
 url="https://cgit.osmocom.org/libasn1c"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -12,7 +12,7 @@ depends=('talloc')
 provides=('libasn1c.so=1-64')
 conflicts=("${pkgname}-git")
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('ec3979be22d184f806e2997e7c5f02bad56ce759841c66c25b844f440a2538d4')
+sha256sums=('1be05dc2afcc539ec5b7d1828058ff05ab58841bfab6f97682deedcf5b29bf5e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
