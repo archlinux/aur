@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=libosmo-abis-git
-pkgver=1.5.1.r22.g945b12a
+pkgver=1.6.0.r0.g4bd83df
 pkgrel=1
 pkgdesc="Osmocom library for A-bis interface"
 url="https://osmocom.org/projects/libosmo-abis"
@@ -12,7 +12,7 @@ depends=('libosmocore-git' 'ortp' 'talloc')
 makedepends=('git')
 provides=("${pkgname%-git}=${pkgver}"
           "libosmoabis.so=13-64"
-          "libosmotrau.so=2-64")
+          "libosmotrau.so=10-64")
 conflicts=("${pkgname%-git}")
 source=("git+https://gitea.osmocom.org/osmocom/${pkgname%-git}.git")
 sha256sums=('SKIP')
