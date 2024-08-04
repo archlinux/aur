@@ -1,0 +1,17 @@
+pkgbase = python-pymatting
+	pkgdesc = A Python library for alpha matting
+	pkgver = 1.1.10
+	pkgrel = 1
+	url = https://github.com/pymatting/pymatting
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-numba
+	depends = python-scipy
+	source = pymatting-1.1.10.tar.gz::https://github.com/pymatting/pymatting/archive/refs/tags/v1.1.10.tar.gz
+	sha256sums = 68b5f4a39f1b055d4f8c67ae4e57e06b45c6300237b04d7058aaf5bcf09b3348
+
+pkgname = python-pymatting
