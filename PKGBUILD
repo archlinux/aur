@@ -1,7 +1,7 @@
 # Maintainer: Victor Lavaud <victor.lavaud@pm.me>
 pkgname=python-google-generativeai
 pkgver=0.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Google AI Python SDK for the Gemini API"
 arch=('any')
 url="https://github.com/google-gemini/generative-ai-python"
