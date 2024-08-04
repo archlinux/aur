@@ -1,0 +1,14 @@
+pkgbase = python-nord_pygments
+	pkgdesc = Nord highlighting style for Pygments
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/sbrisard/nord_pygments
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	options = !emptydirs
+	source = nord_pygments.tar.gz::https://github.com/sbrisard/nord_pygments/archive/refs/tags/v0.1.tar.gz
+	sha256sums = 02632c9c0159e01a7f0ed268325814769a7b2d34cf4deceb8a129bc81fd1eaaa
+
+pkgname = python-nord_pygments
