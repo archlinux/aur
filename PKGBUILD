@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=mesonlsp
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 pkgdesc='Meson language server'
 arch=(x86_64)
@@ -35,7 +35,7 @@ source=(
   git+https://github.com/JCWasmx86/tree-sitter-ini
   git+https://github.com/JCWasmx86/tree-sitter-meson
 )
-b2sums=('6663ebe3a77538fa44f5d6b413bf77e1376bfb6da43c610cbd19372d2d77f4b4c353ce3a5a24e98dbb24de05c65f2f3ef6d827cede5ee99be4dd139afe9cdf2f'
+b2sums=('7249261f99b7e705b7383c9372605b39b06aa96aeadc6e16c4acb4ef43100d6d5bb61fc54dddbe4db706444c39dcdc83648c4cd54689da40f34fd05326a13e64'
         'a1bb73cac9898267aec9b019857581f2895351f3014727a297654a3c55a32d69e480e93c53a0089f342268049e0f23e9ba6c0ae1cefa703795e2655eacc74f8a'
         'e4e59dcd348ea3ec9fc6ce7f62f944b8f5b40370c5738e6453e45aa201eadb9eb0b58d9d08e7068b8b1a4a6c90e94d58fb7df81337124c8e96e6e418fce488ae'
         'SKIP'
