@@ -3,7 +3,7 @@
 
 pkgname=coppeliasim-bin
 _name=coppeliasim
-pkgver=4.7.0.rev2
+pkgver=4.7.0.rev4
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Robotic Simulation software from Coppelia Robotics. Formally known as VReP."
@@ -15,9 +15,9 @@ depends=('ffmpeg')
 conflicts=('coppeliasim')
 options=(!strip)
 provides=('vrep' 'coppeliasim')
-source=("${_name}-${pkgver}.tar.xz::https://www.coppeliarobotics.com/files/V4_7_0_rev2/CoppeliaSim_Edu_V${_pkgver}_Ubuntu22_04.tar.xz")
+source=("${_name}-${pkgver}.tar.xz::https://www.coppeliarobotics.com/files/V4_7_0_rev4/CoppeliaSim_Edu_V${_pkgver}_Ubuntu22_04.tar.xz")
 noextract=("${source[0]%%::*}")
-sha256sums=('095c3060c8b0104f1d6d0064e24e09df8dec24128ee8e6ee38eaf016a7cf8608')
+sha256sums=('6665135f41c79e5a2b038c26f033341eabf90d022affb9ffbf0de3fa2f35ae36')
 
 package() {
     install -d "${pkgdir}/usr/"{bin,share/doc}
