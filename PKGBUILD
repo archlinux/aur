@@ -4,9 +4,9 @@
 
 pkgname=gmid
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast Gemini server written with security in mind.'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://gmid.omarpolo.com'
 license=('ISC')
 makedepends=('signify')
@@ -44,6 +44,10 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+	install -Dm644 README.md ChangeLog contrib/{Dockerfile,gencert,mime.types,renew-certs} -t "$pkgdir/usr/share/doc/$pkgname"
+	install -d "$pkgdir/usr/share/vim/vimfiles"
+	cp -r contrib/vim/* "$pkgdir/usr/share/vim/vimfiles"
+	install -Dm644 contrib/README "$pkgdir/usr/share/doc/$pkgname/CONTRIB.md"
+
 	install -Dm644 "$srcdir/$_signkey" "$pkgdir/usr/share/doc/$pkgname/gmid.pub"
 }
