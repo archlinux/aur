@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-msc-git
-pkgver=1.11.1.r60.gd625db19c
+pkgver=1.12.0.r0.g240442218
 pkgrel=1
 pkgdesc="Osmocom's Mobile Switching Center for 2G and 3G circuit-switched mobile networks"
 url="https://osmocom.org/projects/osmomsc"
