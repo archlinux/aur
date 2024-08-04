@@ -25,9 +25,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver/src"
-  CFLAGS+=' -fcommon '
-  CFLAGS+=' -Wp,-D_FORTIFY_SOURCE=2 '
-  make
+  CFLAGS="-fcommon -Wp,-D_FORTIFY_SOURCE=2" make
 }
 
 package() {
