@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark at proton dot me>
 # Co-Maintainer: soloturn <soloturn@gmail.com>
 pkgname=cosmic-edit-git
-pkgver=r459.bf2050a
+pkgver=r462.df5d109
 pkgrel=1
 pkgdesc="Text editor for the COSMIC desktop"
 arch=('x86_64')
@@ -15,6 +15,7 @@ depends=(
 makedepends=(
   'cargo'
   'git'
+  'git-lfs'
   'just'
   'mold'
 )
@@ -33,6 +34,11 @@ prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+
+  git lfs install --local
+  git remote add network-origin https://github.com/pop-os/cosmic-edit
+  git lfs fetch network-origin
+  git lfs checkout
 }
 
 build() {
