@@ -14,6 +14,7 @@ pkgbase = gcc11
 	makedepends = doxygen
 	makedepends = libmpc
 	makedepends = python
+	makedepends = gcc13
 	options = !emptydirs
 	options = !lto
 	source = https://ftp.gnu.org/gnu/gcc/gcc-11.4.0/gcc-11.4.0.tar.xz

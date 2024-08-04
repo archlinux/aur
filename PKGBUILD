@@ -1,9 +1,10 @@
-# Maintainer: Pellegrino Prevete <pellegrinoprevete at gmail dot com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Pellegrino Prevete <pellegrinoprevete at gmail dot com>
 # Contributor: elliotwutingfeng
 # Contributor: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Jonathon Fernyhough <jonathon+m2x+dev>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
-# Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Daniel Kozak <kozzi11@gmail.com>
 
@@ -23,10 +24,10 @@ url='https://gcc.gnu.org'
 makedepends=(
   binutils
   doxygen
-  # git
   libmpc
   python
   # libisl.so
+  gcc13
 )
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs !lto)
@@ -53,6 +54,8 @@ b2sums=('6e3b095a5837d4b5512719f848f4b9c4b4a6d7dc40ba96b269023ea5ea84f632c42a138
         '88a178dad5fe9c33be5ec5fe4ac9abc0e075a86cff9184f75cedb7c47de67ce3be273bd0db72286ba0382f4016e9d74855ead798ad7bccb015b853931731828e'
         '2c64090b879d6faea7f20095eff1b9bd6a09fe3b15b3890783d3715171678ab62d32c91af683b878746fb14441dbe09768474417840f96a561443415f76afb63'
         '3cf318835b9833ac7c5d3a6026fff8b4f18b098e18c9649d00e32273688ff06ec3af41f0d0aee9d2261725e0ff08f47a224ccfe5ebb06646aaf318ff8ac9a0d1')
+
+export CC=/usr/bin/gcc-13 CXX=/usr/bin/g++-13
 
 prepare() {
   echo "${_libdir}"
