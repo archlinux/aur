@@ -1,0 +1,13 @@
+pkgbase = baka-backup
+	pkgdesc = Backup files or directories (with confirmation if larger than 1GiB)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Traube1000101/baka
+	arch = any
+	license = MIT
+	depends = bash
+	depends = dialog
+	source = https://github.com/Traube1000101/baka/archive/v1.0.0.tar.gz
+	sha256sums = ce7f3089c64f6522d8ae82245ed6da996f9a3f07407ef9e5c6f66aea3239dda2
+
+pkgname = baka
