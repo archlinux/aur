@@ -1,5 +1,5 @@
 pkgname=lala-musicbar
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1.0
 pkgdesc='A music bar with layershell'
 arch=('x86_64' 'aarch64')
@@ -7,7 +7,7 @@ url='https://github.com/Decodetalkers/lala-musicbar'
 license=('MIT')
 makedepends=('git' 'ninja' 'meson' 'rust')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/Decodetalkers/lala-musicbar/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0e1d11db8be9bfbb4c202eb555208e1e6a7908bb524cebc98ec889cefff5de59')
+sha256sums=('edec2a97bb28755e8cb1809743579d558892690e1b9bcfc8d6de9a804622866b')
 options+=(!lto)
 
 build() {
