@@ -1,7 +1,7 @@
 pkgbase = dectalk-git
 	pkgdesc = Modern builds for the 90s/00s DECtalk text-to-speech application.
 	pkgver = 2023.10.30.r29.gb44e3af4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dectalk/dectalk
 	arch = i686
 	arch = x86_64
