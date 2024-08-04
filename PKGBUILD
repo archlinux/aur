@@ -1,5 +1,5 @@
 pkgname=sui
-pkgver=1.22.0
+pkgver=1.29.2
 pkgrel=1
 pkgdesc='Sui, a next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model powered by the Move programming language.'
 url='https://sui.io'
@@ -8,7 +8,7 @@ license=(Apache-2.0)
 depends=(rust openssl libldap krb5 e2fsprogs keyutils libsasl postgresql-libs)
 makedepends=(git curl cargo cmake clang)
 source=(git+https://github.com/MystenLabs/$pkgname#tag=mainnet-v$pkgver)
-sha512sums=('SKIP')
+sha512sums=('b36021fc8decfb583722cab9ed87bf5e233da6e055f809d3d6d1d09a7d8939c29f91c6bdffe8fb22dfb4089b56c28251c1c402967701fffe0a12cc3971233570')
 # https://github.com/briansmith/ring/issues/1444
 options=(!lto)
 
