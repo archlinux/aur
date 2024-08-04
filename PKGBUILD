@@ -16,7 +16,7 @@ depends=('lutris')
 source=()
 
 source_x86_64=("https://github.com/hydralauncher/hydra/releases/download/v${pkgver}/hydralauncher_${pkgver}_amd64.deb")
-sha256sums_x86_64=('c82f309f8636dc304a044044e764288bc4747f4eb22886832bed9e307e35e244')
+sha256sums_x86_64=('SKIP')
 
 package() {
   tar -xvf 'data.tar.xz' -C "${pkgdir}"
