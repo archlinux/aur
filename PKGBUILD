@@ -83,8 +83,6 @@ _change_desktop_entry_name() {
   find . -type f -name "*$_flatpak_pkgname*" -exec bash -c 'mv "$0" "${0//'$_flatpak_pkgname'/muzika}"' {} \;
   find . -type f -exec sed -i "s/"$_flatpak_pkgname".Devel/muzika/g" {} +
   find . -type f -exec sed -i "s/"$_flatpak_pkgname"/muzika/g" {} +
-
-
 }
 
 prepare() {
