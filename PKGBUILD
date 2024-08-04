@@ -1,18 +1,33 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Jason Stryker <public at jasonstryker dot com>
 pkgname=protontricks-git
-pkgver=1.11.1.r2.g1dabf82
-pkgrel=1
+pkgver=1.11.1.r8.g3d019ca
+pkgrel=2
 pkgdesc="A simple wrapper that does winetricks things for Proton enabled games."
 arch=('any')
 url="https://github.com/Matoking/protontricks"
 license=('GPL-3.0-or-later')
-depends=('python-pillow' 'python-setuptools' 'python-vdf' 'winetricks')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools-scm'
-             'python-wheel')
-checkdepends=('appstream' 'desktop-file-utils')
-optdepends=('yad: for GUI'
-            'zenity: fallback for GUI')
+depends=(
+  'python-pillow'
+  'python-setuptools'
+  'python-vdf-solstice'
+  'winetricks'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools-scm'
+  'python-wheel'
+)
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
+optdepends=(
+  'yad: for GUI'
+  'zenity: fallback for GUI'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/Matoking/protontricks.git')
