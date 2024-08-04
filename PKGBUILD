@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-trx
-pkgver=1.6.2
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="GSM Radio Modem based on a fork of the OpenBTS Transceiver program"
 url="https://osmocom.org/projects/osmotrx"
@@ -20,7 +20,7 @@ backup=('etc/osmocom/osmo-trx-uhd.cfg'
         'etc/osmocom/osmo-trx-lms.cfg'
         'etc/osmocom/osmo-trx-ipc.cfg')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('2103d68d98c18899adc54df12b442fb85ffb1d7f628bff2f46114eb9b44cb417')
+sha256sums=('9ee2e84543182a7aae03fbca000b1344ba718aaa65bb55441d42df6e426a505b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -33,6 +33,11 @@ build() {
               # --enable-mstrx
               # --with-bladerf
   make
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make check
 }
 
 package() {
