@@ -2,8 +2,8 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-iuh
-pkgver=1.5.1
-pkgrel=3
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)"
 url="http://osmocom.org/projects/osmohnbgw"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -16,7 +16,7 @@ provides=('libosmo-hnbap.so=0-64'
           'libosmo-sabp.so=1-64')
 conflicts=("${pkgname}-git")
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('b142cec184d92410fa0e79631923a5349f68453315c7f799e3b486bb8228dd1a')
+sha256sums=('800a8583e4ff869d6d82a48448031c57576a0f29c667d513fe2ed769710f2f8e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -24,6 +24,11 @@ build() {
               --sysconfdir=/etc \
               --localstatedir=/var
   make
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make check
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = osmo-iuh
 	pkgdesc = Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
-	pkgver = 1.5.1
-	pkgrel = 3
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = http://osmocom.org/projects/osmohnbgw
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = osmo-iuh
 	provides = libosmo-rua.so=0-64
 	provides = libosmo-sabp.so=1-64
 	conflicts = osmo-iuh-git
-	source = https://downloads.osmocom.org/releases/osmo-iuh/osmo-iuh-1.5.1.tar.bz2
+	source = https://downloads.osmocom.org/releases/osmo-iuh/osmo-iuh-1.6.0.tar.bz2
 	sha256sums = b142cec184d92410fa0e79631923a5349f68453315c7f799e3b486bb8228dd1a
 
 pkgname = osmo-iuh
