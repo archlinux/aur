@@ -1,6 +1,6 @@
 pkgbase = minecraft-world-downloader-bin
 	pkgdesc = Download Minecraft worlds, extend servers render distance. 1.12.2 - 1.20.1
-	pkgver = 1.17.5
+	pkgver = 1.18.1
 	pkgrel = 1
 	url = https://github.com/mircokroon/minecraft-world-downloader
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = minecraft-world-downloader-bin
 	provides = minecraft-world-downloader
 	conflicts = minecraft-world-downloader
 	options = !strip
-	source = https://github.com/mircokroon/minecraft-world-downloader/releases/download/v1.17.5/world-downloader.jar
+	source = https://github.com/mircokroon/minecraft-world-downloader/releases/download/v1.18.1/world-downloader.jar
 	source = https://raw.githubusercontent.com/mircokroon/minecraft-world-downloader/master/src/main/resources/ui/icon/icon.png
 	source = minecraft-world-downloader.desktop
 	source = minecraft-world-downloader
