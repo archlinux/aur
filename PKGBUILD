@@ -1,7 +1,7 @@
 pkgbase=vital-synth-bin
 pkgname=("${pkgbase/-bin/}-standalone-bin" "${pkgbase/-bin/}-clap-bin" "${pkgbase/-bin/}-vst-bin" "${pkgbase/-bin/}-vst3-bin")
 pkgver=1.5.5
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://vital.audio"
 license=('custom')
@@ -23,7 +23,7 @@ package_vital-synth-standalone-bin() {
     groups=('pro-audio')
     install -Dm755 "$srcdir/VitalInstaller/bin/Vital" "$pkgdir/usr/bin/Vital"
     install -Dm644 "$srcdir/vital-synth.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/vital-synth.png"
-    install -Dm644 "$srcdir/Vital Synth.desktop" "$pkgdir/usr/share/applications/VitalInstaller/bin/Vital Synth.desktop"
+    install -Dm644 "$srcdir/Vital Synth.desktop" "$pkgdir/usr/share/applications/Vital Synth.desktop"
 }
 
 package_vital-synth-clap-bin() {
