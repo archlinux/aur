@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=libasn1c-git
-pkgver=0.9.36.r2.g5324a22
+pkgver=0.9.37.r0.gde520a4
 pkgrel=1
 pkgdesc="runtime library of Lev Walkin's asn1c split out as separate library"
 url="https://cgit.osmocom.org/libasn1c"
