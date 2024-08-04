@@ -2,7 +2,7 @@
 
 pkgname=lunar-client
 _pkgname=lunarclient
-pkgver=3.2.11
+pkgver=3.2.12
 pkgrel=1
 pkgdesc='PvP modpack for all modern versions of Minecraft'
 url=https://lunarclient.com
@@ -12,7 +12,7 @@ depends=(fuse xorg-xrandr)
 options=(!strip !debug)
 _appimage="Lunar%20Client-${pkgver}.AppImage"
 source=("https://launcherupdates.lunarclientcdn.com/${_appimage}")
-sha256sums=('b18f96da2f3c8e8f6de84094945cdbfee10ec681d91909df3cd0a2a1a8c2cd27')
+sha256sums=('d162593faa85519704eb9601d3175f6c9c0edc40562a6fd30f2d336381a3c18d')
 
 prepare() {
 	chmod +x "${_appimage}"
