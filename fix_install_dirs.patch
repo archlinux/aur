@@ -1,0 +1,24 @@
+diff --color -ura dethrace-0.7.1/CMakeLists.txt dethrace-0.7.1.new/CMakeLists.txt
+--- dethrace-0.7.1/CMakeLists.txt	2024-06-14 00:31:54.000000000 +0200
++++ dethrace-0.7.1.new/CMakeLists.txt	2024-08-04 13:51:10.043596815 +0200
+@@ -89,7 +89,7 @@
+ 
+ if(DETHRACE_INSTALL)
+     install(FILES LICENSE
+-        DESTINATION "."
++        DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}"
+     )
+ 
+     set(DETHRACE_PACKAGE_PLATFORM "" CACHE STRING "Dethrace binary package platform")
+diff --color -ura dethrace-0.7.1/src/DETHRACE/CMakeLists.txt dethrace-0.7.1.new/src/DETHRACE/CMakeLists.txt
+--- dethrace-0.7.1/src/DETHRACE/CMakeLists.txt	2024-06-14 00:31:54.000000000 +0200
++++ dethrace-0.7.1.new/src/DETHRACE/CMakeLists.txt	2024-08-04 13:49:37.719888706 +0200
+@@ -205,7 +205,7 @@
+ 
+ if (DETHRACE_INSTALL)
+     install(TARGETS dethrace
+-        RUNTIME DESTINATION "."
++        RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
+     )
+     if(MSVC)
+         INSTALL(FILES $<TARGET_PDB_FILE:dethrace>
