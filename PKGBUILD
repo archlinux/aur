@@ -12,7 +12,7 @@ makedepends=(python-installer)
 license=(GPL3)
 _py="cp$(python -c'import sys; print(f"{sys.version_info.major}{sys.version_info.minor}")' || echo 312)"
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/${_pkgname//-/_}/${_pkgname//-/_}-$pkgver-$_py-$_py-manylinux_2_17_x86_64.whl")
-sha256sums=(SKIP)
+sha256sums=('c6e828acfe410200a75705e423a08c9b46b585e444519d0ce1ec69caeee8f0dd')
 
 package() {
 	python -minstaller -d"$pkgdir" ./*.whl
