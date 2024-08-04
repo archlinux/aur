@@ -3,16 +3,16 @@
 # Contributor: Jorge Cervantes <jorge.cervantes.e@gmail.com>
 
 pkgname=msodbcsql
-pkgver=18.3.2.1
-pkgrel=2
+pkgver=18.4.1.1
+pkgrel=1
 pkgdesc="Microsoft® ODBC Driver 18 for SQL Server®"
 arch=('x86_64')
 url="https://techcommunity.microsoft.com/t5/sql-server-blog/bg-p/SQLServer/label-name/SQLServerDrivers"
 license=('custom')
 depends=('unixodbc' 'krb5' 'curl')
 options=('!strip')
-source=(https://packages.microsoft.com/rhel/8/prod/msodbcsql18-$pkgver-1.x86_64.rpm)
-sha256sums=('ecd8e148138ee72a452a5357e380580e2c19219c5424f4ac9350cbdf3217fad1')
+source=(https://packages.microsoft.com/rhel/9/prod/Packages/m/msodbcsql18-$pkgver-1.x86_64.rpm)
+sha256sums=('572265bfb20e8c5a5c6d727d62fe55035ced35ceecbcdc3b5a84c52b78267bb1')
 install=msodbcsql.install
 
 package() {
