@@ -4,7 +4,7 @@
 
 pkgname=crosswords
 pkgver=0.3.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Crossword player and editor for GNOME'
 arch=(x86_64 aarch64)
 url='https://gitlab.gnome.org/jrb/crosswords'
@@ -20,16 +20,22 @@ depends=(
 makedepends=(meson)
 source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${url}/-/commit/b4689c2426cf24e944f8ae419ed23f1969745995.patch"
-        "${url}/-/commit/3891aecfe538864cfc31561d21ccbcd007a94d2d.patch")
+        "${url}/-/commit/3891aecfe538864cfc31561d21ccbcd007a94d2d.patch"
+        "${url}/-/commit/8d4f346a2d0c0013aa35948990ac885c6aea753c.patch")
 sha256sums=('7ca253695842c32e3355ebac3392b3070a747d8bb6eaf53e20c4096fa6c98a65'
             'c9b5ae319784b1c217b87775eab8d064d7ce4e7dcb37bbfa3a2081e76b2d231a'
-            '98d13c615b0a2a953357c621163cea4602ce97a29f307cd6ea99334e4929a4f4')
+            '98d13c615b0a2a953357c621163cea4602ce97a29f307cd6ea99334e4929a4f4'
+            'b30d201bd479f1215d37e4e029dd8ff4292d3facfeb9eb6d2cdf2f2e54669c15')
 
 prepare() {
     # Fix race condition in build with upstream patch
     cd "${pkgname}-${pkgver}"
     patch -p1 < "${srcdir}/3891aecfe538864cfc31561d21ccbcd007a94d2d.patch"
     patch -p1 < "${srcdir}/b4689c2426cf24e944f8ae419ed23f1969745995.patch"
+
+    # Don't fail in convertor when dependencies we don't need are missing
+    # Patch is PR submitted by me
+    patch -p1 < "${srcdir}/8d4f346a2d0c0013aa35948990ac885c6aea753c.patch"
 }
 
 build() {
