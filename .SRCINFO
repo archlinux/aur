@@ -1,6 +1,6 @@
 pkgbase = littlenavmap-bin
 	pkgdesc = A Free Open Source Flight Planner, Navigation Tool, Moving Map, Airport Search, and Airport Information System for Flight Simulator X, Prepar3D, Microsoft Flight Simulator 2020, and X-Plane
-	pkgver = 3.0.8
+	pkgver = 3.0.9
 	pkgrel = 1
 	url = https://albar965.github.io/littlenavmap.html
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = littlenavmap-bin
 	provides = littlenavmap-bin
 	conflicts = littlenavmap-bin
 	options = !strip
-	source = https://github.com/albar965/littlenavmap/releases/download/v3.0.8/LittleNavmap-linux-ubuntu-22.04-3.0.8.tar.xz
+	source = https://github.com/albar965/littlenavmap/releases/download/v3.0.9/LittleNavmap-linux-ubuntu-22.04-3.0.9.tar.xz
 	source = LittleNavmap.desktop
-	sha256sums = b10ebb56046fe238e0cb9085ccb65a62a4138e7864d92660a3bfbea565f18d7a
+	sha256sums = adeb5d5dd045585d8c717bbe50750fd6d03ac69efb782e1769c62602758af00a
 	sha256sums = 819d910da45eaba4531c66f28e42ee68d67592f3870e1a925140e151c8891272
 
 pkgname = littlenavmap-bin
