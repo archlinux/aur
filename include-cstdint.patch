@@ -1,0 +1,11 @@
+diff -ura Fast-DDS-2.12.1.orig/src/cpp/statistics/types/typesv1.cxx Fast-DDS-2.12.1.new/src/cpp/statistics/types/typesv1.cxx
+--- Fast-DDS-2.12.1.orig/src/cpp/statistics/types/typesv1.cxx	2023-11-17 11:07:47.000000000 +0100
++++ Fast-DDS-2.12.1.new/src/cpp/statistics/types/typesv1.cxx	2024-08-04 23:20:15.233541732 +0200
+@@ -36,6 +36,7 @@
+ #include <fastcdr/exceptions/BadParamException.h>
+ using namespace eprosima::fastcdr::exception;
+ 
++#include <cstdint>
+ #include <utility>
+ 
+ namespace helper { namespace internal {

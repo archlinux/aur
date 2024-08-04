@@ -6,11 +6,13 @@ pkgbase = eprosima-fast-dds
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
-	depends = foonathan_memory-shared
+	depends = foonathan_memory
 	depends = asio
 	depends = tinyxml2
 	depends = eprosima-fast-cdr
 	source = https://github.com/eProsima/Fast-DDS/archive/v2.14.0.tar.gz
+	source = include-cstdint.patch
 	sha256sums = a6f12bce6b77f265cab81abde5dc2e08133be9a55bc29e573c84571d44eddbc2
+	sha256sums = 4c9723b3e7cf83bb58b8fa36cce7ebc2f7ec194cabe515d962a5273d08b49112
 
 pkgname = eprosima-fast-dds
