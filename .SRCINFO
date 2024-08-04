@@ -1,0 +1,18 @@
+pkgbase = libcups-git
+	pkgdesc = The CUPS library
+	pkgver = 3.0b2.r146.ga3eedb6ac
+	pkgrel = 1
+	url = https://github.com/OpenPrinting/libcups
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	makedepends = git
+	depends = avahi
+	depends = pdfio-git
+	provides = libcups
+	conflicts = libcups
+	conflicts = cups
+	conflicts = cups-git
+	source = git+https://github.com/OpenPrinting/libcups.git
+	sha256sums = SKIP
+
+pkgname = libcups-git
