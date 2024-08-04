@@ -11,6 +11,8 @@ pkgbase = dethrace
 	depends = libgl
 	depends = sdl2
 	source = dethrace-0.7.1.tar.gz::https://github.com/dethrace-labs/dethrace/archive/refs/tags/v0.7.1.tar.gz
+	source = fix_install_dirs.patch
 	sha256sums = 3bf5fba5e8847ae041e71a2c16364e71b5619e36e94a0873d707733dff694647
+	sha256sums = ad1d8a4178fdc529c7b8f675ceb99d9245de674c80f20c1ff8378493b8ae258b
 
 pkgname = dethrace
