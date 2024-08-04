@@ -1,17 +1,18 @@
 From: Ole Streicher <olebole@debian.org>
 Date: Tue, 27 Jun 2017 22:03:46 +0200
-Subject: Use system provided libwcstools instead of local copy Also,
- build the swig wrapper from its source file.
+Subject: Use system provided libwcstools instead of local copy
 
+Also, build the swig wrapper from its source file.
 ---
- PyWCSTools/wcssubs-3.9.5/wcs.i | 2 +-
- setup.py                       | 9 ++++-----
- 2 files changed, 5 insertions(+), 6 deletions(-)
+ PyWCSTools/wcssubs-3.9.7/wcs.i    | 2 +-
+ PyWCSTools/wcssubs-3.9.7/wcscon.i | 4 ++++
+ setup.py                          | 9 ++++-----
+ 3 files changed, 9 insertions(+), 6 deletions(-)
 
-diff --git a/PyWCSTools/wcssubs-3.9.5/wcs.i b/PyWCSTools/wcssubs-3.9.5/wcs.i
+diff --git a/PyWCSTools/wcssubs-3.9.7/wcs.i b/PyWCSTools/wcssubs-3.9.7/wcs.i
 index e63c5ba..2860834 100644
---- a/PyWCSTools/wcssubs-3.9.5/wcs.i
-+++ b/PyWCSTools/wcssubs-3.9.5/wcs.i
+--- a/PyWCSTools/wcssubs-3.9.7/wcs.i
++++ b/PyWCSTools/wcssubs-3.9.7/wcs.i
 @@ -14,7 +14,7 @@
  /* %feature("autodoc", "1") */
  
@@ -21,23 +22,38 @@ index e63c5ba..2860834 100644
  %}
  
  /* WORKING */
+diff --git a/PyWCSTools/wcssubs-3.9.7/wcscon.i b/PyWCSTools/wcssubs-3.9.7/wcscon.i
+index 3bbee55..e9f30ab 100644
+--- a/PyWCSTools/wcssubs-3.9.7/wcscon.i
++++ b/PyWCSTools/wcssubs-3.9.7/wcscon.i
+@@ -7,6 +7,10 @@
+ 
+ %include "typemaps.i"
+ 
++%{
++#include <wcs/wcs.h>
++%}
++
+ // %apply double *OUTPUT {double *dtheta, double *dphi, double *ptheta, double *pphi};
+ // void wcsconp (int sys1, int sys2, double eq1, double eq2, double ep1, double ep2, double *dtheta, double *dphi, double *ptheta, double *pphi);
+ // void wcsconp (int sys1, int sys2, double eq1, double eq2, double ep1, double ep2, double *dtheta, double *dphi, double *ptheta, double *pphi);
 diff --git a/setup.py b/setup.py
-index 7898a20..8e2fd6d 100644
+index 279f7a4..b6135a0 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -83,12 +83,11 @@ with World Coordinate System (WCS) information through PyWCSTools - a simple wra
- PyWCSTools is distributed (and developed) as part of astLib.""",
+@@ -59,12 +59,11 @@ setup(name='astLib',
+     version='0.12.0',
      packages=['astLib', 'PyWCSTools'],
      package_data={'astLib': ['data/*']},
 -    cmdclass={"build_ext": build_PyWCSTools_ext},
      scripts=exampleScripts,
      ext_modules=[
--        Extension('PyWCSTools._wcscon', [sourceDir+"wcscon_wrap.c"],
--        extra_objects=oFiles),
+-        # Extension('PyWCSTools._wcscon', [sourceDir+"wcscon_wrap.c"],
+-        # extra_objects=oFiles),
 -        Extension('PyWCSTools._wcs', [sourceDir+"wcs_wrap.c"],
 -        extra_objects=oFiles)
-+        Extension('PyWCSTools._wcscon', [sourceDir+"wcscon.i"],
-+        swig_opts=['-outdir', 'PyWCSTools/'], libraries=['wcstools']),
++        # Extension('PyWCSTools._wcscon', [sourceDir+"wcscon.i"],
++        # swig_opts=['-outdir', 'PyWCSTools/'], libraries=['wcstools']),
 +        Extension('PyWCSTools._wcs', [sourceDir+"wcs.i"],
 +        swig_opts=['-outdir', 'PyWCSTools/'], libraries=['wcstools'])
      ]
