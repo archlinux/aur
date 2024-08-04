@@ -1,9 +1,10 @@
-# Maintainer: Fhilipe Coelho <fhilipecoelho.dev@gmail.com>
+# Maintainer: vinfehring <vinfehring at gmail dot com>
+# Contributor: Fhilipe Coelho <fhilipecoelho.dev@gmail.com>
 
 pkgname=hydra-launcher-bin
 _pkgname=hydra-launcher
-pkgver=1.2.4
-pkgrel=2
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="A game launcher with its own embedded bittorrent client and a self-managed repack scraper."
 arch=('x86_64')
 url="https://github.com/hydralauncher/hydra"
