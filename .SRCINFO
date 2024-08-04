@@ -1,0 +1,15 @@
+pkgbase = cups-commands-git
+	pkgdesc = CUPS Commands
+	pkgver = r9.5ce715e
+	pkgrel = 1
+	url = https://github.com/OpenPrinting/cups-commands
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	makedepends = git
+	depends = libcups-git
+	provides = cups-commands
+	conflicts = cups-commands
+	source = git+https://github.com/OpenPrinting/cups-commands.git
+	sha256sums = SKIP
+
+pkgname = cups-commands-git
