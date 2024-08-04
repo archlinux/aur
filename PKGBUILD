@@ -10,7 +10,7 @@ pkgver=5.4.0
 pkgrel=1
 pkgdesc="Yet another high resolution game with blocks like Minecraft!"
 arch=('x86_64')
-license=('Apache')
+license=('Apache-2.0')
 url="https://terasology.org"
 options=('!strip')
 depends=(zlib java-runtime-openjdk)
@@ -27,7 +27,6 @@ sha512sums=(
   )
 
 package() {
-    cd "$srcdir"
     install -Dm 755 "${srcdir}/${_pkgbase}" "$pkgdir/usr/bin/${_pkgbase}"
     install -Dm 644 "${srcdir}/${_pkgbase}.desktop" "${pkgdir}/usr/share/applications/${_pkgbase}.desktop"
 
