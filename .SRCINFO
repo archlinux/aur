@@ -1,6 +1,6 @@
 pkgbase = gotify-cli
 	pkgdesc = A command line interface for pushing messages to gotify/server
-	pkgver = 2.2.4
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/gotify/cli
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = gotify-cli
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = gotify-cli-2.2.4.tar.gz::https://github.com/gotify/cli/archive/v2.2.4.tar.gz
-	sha256sums = 6a7adfb7910a29342b106f5e79d7bbbe955b268bb34c994ed3d31350ee62caa3
+	source = gotify-cli-2.3.2.tar.gz::https://github.com/gotify/cli/archive/v2.3.2.tar.gz
+	sha256sums = e3b798d89138fdbc355a66d0fc2ca96676591366460f72c8f38b81365bebe5ba
 
 pkgname = gotify-cli
