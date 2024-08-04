@@ -1,6 +1,6 @@
 pkgbase = start-stop-daemon
 	pkgdesc = Start and stop system daemon programs
-	pkgver = 1.22.10
+	pkgver = 1.22.11
 	pkgrel = 1
 	url = https://packages.debian.org/source/sid/dpkg
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = start-stop-daemon
 	makedepends = libmd
 	makedepends = perl
 	depends = glibc
-	source = http://deb.debian.org/debian/pool/main/d/dpkg/dpkg_1.22.10.tar.xz
-	md5sums = 219a78e999db68ae4b8385d72ef0bd2c
+	source = http://deb.debian.org/debian/pool/main/d/dpkg/dpkg_1.22.11.tar.xz
+	md5sums = 20fd4de234d9192a941ae58b616677ec
 
 pkgname = start-stop-daemon
