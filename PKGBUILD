@@ -10,13 +10,11 @@ arch=('any')
 # url="https://github.com/bertiniteam/b2"
 url="https://github.com/ThisIsNotANamepng/b2"
 license=('custom:GPL-3.0-or-later WITH Bertini2-Additional-GPL-Terms')
-makedepends=('git' 'cmake>=3.22' 'bertini2' 'boost>=1.82' 'boost-libs>=1.65'
-             'gmp' 'mpfr' 'libmpc' 'eigen>=3.3' 'python' 'python-numpy'
-             'eigenpy>=3.3' 'python-setuptools')
+makedepends=('git' 'cmake>=3.22' 'boost>=1.82' 'eigen>=3.3' 'python-setuptools')
 depends=('glibc' 'gcc-libs' 'bertini2' 'boost-libs>=1.65' 'gmp' 'mpfr' 'libmpc'
-         'python' 'python-numpy' 'eigenpy')
+         'python' 'python-numpy' 'eigenpy>=3.3')
 optdepends=('pybertini-docs: HTML documentation')
-provides=("${_pkgname}" "_pybertini.so")
+provides=("${_pkgname}" '_pybertini.so')
 conflicts=("${_pkgname}")
 _pkgsrc="b2"
 source=("${_pkgsrc}::git+${url}.git"
