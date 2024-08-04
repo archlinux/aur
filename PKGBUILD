@@ -36,6 +36,11 @@ build() {
   make
 }
 
+check() {
+  cd "${pkgname%-git}"
+  make check
+}
+
 package() {
   cd "${pkgname%-git}"
   make DESTDIR=${pkgdir} install
