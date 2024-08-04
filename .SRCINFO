@@ -1,0 +1,21 @@
+pkgbase = python-op-aws-vault
+	pkgdesc = aws-vault like utility for 1Password
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/dmarkey/op-aws-vault
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-setuptools
+	depends = python
+	depends = python-boto3
+	depends = python-pytimeparse2
+	depends = python-requests
+	depends = python-typer
+	source = https://pypi.python.org/packages/source/o/op-aws-vault/op_aws_vault-0.0.5.tar.gz
+	sha256sums = 7a359da4830a0505503284400dc4f8f8cd0ae893163f17271dd708d2fc82fb30
+
+pkgname = python-op-aws-vault
