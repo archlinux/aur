@@ -3,20 +3,19 @@
 
 pkgname=nuclear-player-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.6.32
+pkgver=0.6.33
 pkgrel=3
 pkgdesc='A free, multiplatform music player app that streams from multiple sources.'
 arch=(x86_64)
 url='http://nuclear.js.org'
 provides=($_pkgname)
-license=(GPL3)
-depends=(libnotify libappindicator-gtk3 libxtst nss )
-install=$pkgname.install
+license=('AGPL-3.0-only')
+depends=(libnotify libappindicator-gtk3 libxtst nss)
 source=(
     https://github.com/nukeop/nuclear/releases/download/v$pkgver/nuclear-v$pkgver-amd64.deb
     https://raw.githubusercontent.com/nukeop/nuclear/v$pkgver/LICENSE
 )
-sha256sums=(b281f279c5e79c47c5ba59e7c158166510194ba1e5d387af901806c1b869e03d
+sha256sums=(9ec3098c629caca902dae1a77480e01d0b5d53b62159c023bfb7810b89e36b52
             SKIP)
 
 prepare() {
@@ -28,4 +27,6 @@ package()   {
     cp -art "$pkgdir" opt
     cp -art "$pkgdir" usr
     install -Dm0644 -t "$pkgdir/usr/share/licenses/$_pkgname" LICENSE
+    mkdir -p "$pkgdir/usr/bin/"
+    ln -sf "/opt/nuclear/nuclear" "$pkgdir/usr/bin/nuclear"
 }
