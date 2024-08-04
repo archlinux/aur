@@ -2,8 +2,8 @@
 
 _pkgname=mwptools
 pkgname=mwptools-git
-pkgver=7.028.536.r5.45eb100f
-pkgrel=2
+pkgver=7.217.337.r0.7fb3fcca
+pkgrel=1
 pkgdesc='mission planner for INAV and MultiWii'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'pentium4' 'aarch64' 'riscv64')
 url='https://github.com/stronnag/mwptools'
@@ -18,11 +18,13 @@ optdepends=('blackbox-tools-git: Replay Blackbox files (AUR)'
  'espeak-ng-espeak: espeak alternative'
  'speech-dispatcher: espeak alternative'
  'flite: espeak alternative'
-)
+ 'protobuf-c: enable protobuf-c for readsb/ADSB'
+  )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url")
 sha512sums=('SKIP')
+install=mwp.install
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"

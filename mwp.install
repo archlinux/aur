@@ -1,0 +1,4 @@
+pre_install() {
+  [ -f /usr/lib/libmwpclib.so ] && rm -f /usr/lib/libmwpclib.so
+  [ -f /usr/lib/libmwpvlib.so ] && rm -f /usr/lib/libmwpvlib.so
+}
