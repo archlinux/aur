@@ -1,5 +1,5 @@
 pkgbase = php83-apcu
-	pkgdesc = A userland caching module for PHP 8.2
+	pkgdesc = A userland caching module for PHP 8.3
 	pkgver = 5.1.23
 	pkgrel = 1
 	url = https://pecl.php.net/package/APCu
