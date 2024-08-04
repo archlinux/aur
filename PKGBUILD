@@ -3,13 +3,13 @@
 
 pkgname=valentina-studio
 pkgver=14.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Create, administer, query and explore Valentina DB, MySQL, MariaDB, PostgreSQL and SQLite databases for FREE."
 arch=('x86_64')
 url="http://www.valentina-db.com"
 license=('custom')
 #makedepends=('')
-source_x86_64=("${pkgname}-${pkgver}-${CARCH}.rpm::http://valentina-db.com/download/prev_releases/${pkgver}/lin_64/vstudio_x64_13_lin.rpm")
+source_x86_64=("${pkgname}-${pkgver}-${CARCH}.rpm::http://valentina-db.com/download/prev_releases/${pkgver}/lin_64/vstudio_x64_14_lin.rpm")
 sha256sums_x86_64=('87779091ba86d4fff55ce6fb85b0cfe9134ae86d0329f61c3ff552cf13de4b94')
 
 package() {
