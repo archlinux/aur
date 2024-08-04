@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=osmo-cbc-git
-pkgver=0.4.2.r9.gf6a2a6b
+pkgver=0.5.0.r0.g637874e
 pkgrel=1
 pkgdesc="Osmocom Cell Broadcast Centre"
 arch=('x86_64' 'i686')
@@ -19,7 +19,7 @@ optdepends=('python: for osmo-cbc-apitool.py'
 makedepends=('git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}"
-          'libosmo-sbcap.so=0-64')
+          'libosmo-sbcap.so=2-64')
 backup=("etc/osmocom/osmo-cbc.cfg")
 source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git"
         'LICENSE-MIT')
@@ -48,6 +48,11 @@ build() {
               --localstatedir=/var \
               --libdir=/usr/lib
   make
+}
+
+check() {
+  cd "$srcdir/${pkgname%-git}"
+  make check
 }
 
 package() {
