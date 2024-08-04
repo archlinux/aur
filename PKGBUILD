@@ -14,22 +14,22 @@ conflicts=("anymeal")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
-  autoreconf -fi
+    cd "$srcdir/$pkgname"
+    autoreconf -fi
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  ./configure --prefix=/usr
-  make
+    cd "$srcdir/$pkgname"
+    ./configure --prefix=/usr
+    make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir/" install
+    cd "$srcdir/$pkgname"
+    make DESTDIR="$pkgdir/" install
 }
