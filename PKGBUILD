@@ -2,7 +2,7 @@
 
 pkgname=minecraft-world-downloader-bin
 pkgver=1.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Download Minecraft worlds, extend servers render distance. 1.12.2 - 1.20.1'
 url=https://github.com/mircokroon/minecraft-world-downloader
 arch=(any)
