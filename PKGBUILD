@@ -23,5 +23,6 @@ package() {
     mkdir -p "${pkgdir}/opt/${pkgname}"
     mkdir -p "${pkgdir}/usr/bin"
     cp -a "${srcdir}/${_pkgName}_linux-x64/"* "${pkgdir}/opt/${pkgname}"
+    chmod +x ${pkgdir}/opt/${pkgname}/${_pkgname}
     ln -s "/opt/${pkgname}/${_pkgName}" "${pkgdir}/usr/bin/${_pkgName}"
 }
