@@ -5,7 +5,7 @@
 
 # Maintainer: Buck Yeh <buck.yeh at gmail dot com>
 pkgname=bux
-pkgver=1.6.8
+pkgver=1.7.0
 pkgrel=1
 epoch=
 pkgdesc='A supplemental C++ library with functionalities not directly supported from Modern C++ standard.'
@@ -13,8 +13,8 @@ arch=('x86_64')
 url='https://github.com/buck-yeh/bux.git'
 license=('MIT')
 groups=()
-depends=('fmt')
-makedepends=('cmake' 'make' 'gcc' 'git' 'binutils' 'fakeroot' 'gawk')
+depends=()
+makedepends=('cmake' 'make' 'gcc' 'git' 'binutils' 'fakeroot' 'debugedit' 'gawk')
 checkdepends=()
 optdepends=()
 provides=()
