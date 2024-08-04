@@ -1,34 +1,30 @@
-# Maintainer: Jens Carl <jc [dot] archlinux [at] jens-carl [dot] de>
+# Maintainer: Windel Bouwman <windel@windel.nl>
+# Contributor: Jens Carl <jc [dot] archlinux [at] jens-carl [dot] de>
 
 pkgname=foonathan_memory
-pkgver=0.7.0
-_pkgver=0.7
+pkgver=0.7.3
+_pkgver=0.7-3
 pkgrel=1
 pkgdesc="STL compatible C++ memory allocator library using a new RawAllocator concept that is similar to an Allocator but easier to use and write."
-url="http://foonathan.net/memory"
+url="https://memory.foonathan.net/"
 arch=('x86_64')
 license=('ZLIB')
 makedepends=('cmake' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/foonathan/memory/archive/v${_pkgver}.tar.gz")
-sha256sums=('01a7cc5a5ebddbd71bec69c89562a4a2ecd7c29334c0a29d38d83e7f7f66eb53')
+sha256sums=('4203d15db22a94a3978eeb1afb59a37d35c57c0f148733f0f1a53a6281cb74dd')
 
 build() {
-    cd "${srcdir}/memory-${_pkgver}"
-    if [ -d build ]; then
-        rm -rf build
-    fi
-    mkdir build
-
-    cd build
-    cmake .. \
-        -DCMAKE_INSTALL_PREFIX=/usr
-    make
+    cmake -B build -S "${srcdir}/memory-${_pkgver}" \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DBUILD_SHARED_LIBS=ON \
+        -DFOONATHAN_MEMORY_BUILD_EXAMPLES=OFF \
+        -DFOONATHAN_MEMORY_BUILD_TESTS=OFF
+    cmake --build build
 }
 
 package() {
-    cd "${srcdir}/memory-${_pkgver}"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/memory-${_pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    cd build
-    make DESTDIR="${pkgdir}/" install
+    DESTDIR="${pkgdir}" cmake --install build
 }
