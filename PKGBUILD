@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-mgw-git
-pkgver=1.12.1.r50.gfa393fa1e
+pkgver=1.13.0.r0.gf1b557988
 pkgrel=1
 pkgdesc="Osmocom's Media Gateway for 2G and 3G circuit-switched mobile networks"
 url="https://osmocom.org/projects/osmo-mgw/"
@@ -11,7 +11,7 @@ license=('GPL-2.0-or-later AND AGPL-3.0-or-later')
 depends=('libosmocore-git' 'libosmo-abis-git' 'libosmo-netif-git' 'talloc')
 makedepends=('git')
 provides=("${pkgname%-git}=${pkgver}"
-          'libosmo-mgcp-client.so=12-64')
+          'libosmo-mgcp-client.so=14-64')
 conflicts=("${pkgname%-git}")
 backup=('etc/osmocom/osmo-mgw.cfg')
 source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")
@@ -33,6 +33,11 @@ build() {
               --sysconfdir=/etc \
               --localstatedir=/var
   make
+}
+
+check() {
+  cd "${pkgname%-git}"
+  make check
 }
 
 package() {
