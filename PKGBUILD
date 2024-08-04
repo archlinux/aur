@@ -3,7 +3,7 @@
 # Contributor: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=libosmo-sccp
-pkgver=1.8.2
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Osmocom library for SCCP"
 arch=('any')
@@ -11,11 +11,11 @@ url="https://osmocom.org/projects/libosmo-sccp"
 license=('GPL-2.0-or-later')
 # TODO: libosmocore>=1.9.0 libosmo-netif>=1.4.0
 depends=('libosmocore' 'libosmo-netif')
-provides=("libosmo-sigtran.so=9-64")
+provides=("libosmo-sigtran.so=10-64")
 conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-stp.cfg')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('3f54f7a465dd16974b283a59f631d039410792cff14bcd181998ff6fd42048f1')
+sha256sums=('b6c219e57c79bda9eb0edb7eae64ba01b952126ecb48b6a6667e4fce21f977a9')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -23,6 +23,11 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc
   make
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make check
 }
 
 package() {
