@@ -6,7 +6,7 @@
 
 pkgname=azcopy
 _pkgname=azure-storage-azcopy
-pkgver=10.25.1
+pkgver=10.26.0
 pkgrel=1
 pkgdesc="A command-line utility designed for copying data to/from Microsoft Azure"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -15,35 +15,30 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d62f0a88e8899a611d9ef627252e4379bee8530177caca081f155e28917e70d3')
-
-_archive="$_pkgname-$pkgver"
+sha256sums=('71684c5c1a2c192fb1168ec57a11cd76a3691bb6e1631cab3c1fe61a4dad1bc7')
 
 prepare() {
-  cd "$_archive"
+  cd $_pkgname-$pkgver
 
-  go mod download -x
+  GOFLAGS="-mod=readonly" go mod vendor -v
 }
 
 build() {
-  cd "$_archive"
+  cd $_pkgname-$pkgver
 
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -mod=vendor -modcacherw -buildvcs=false"
+  export GOPATH="$srcdir"
 
-  go build -v -buildvcs=false -o azcopy
-
-  # Completions
-  ./azcopy completion bash > azcopy.bash
-  ./azcopy completion fish > azcopy.fish
-  ./azcopy completion zsh > azcopy.zsh
+  local ld_flags="-compressdwarf=false -linkmode=external"
+  go build -v -ldflags="$ld_flags" -o azcopy
 }
 
 check() {
-  cd "$_archive"
+  cd $_pkgname-$pkgver
 
   # Skip failing tests - not sure why they fail.
   local unit_tests=$(
@@ -58,13 +53,16 @@ check() {
 }
 
 package() {
-  cd "$_archive"
+  cd $_pkgname-$pkgver
 
-  install -Dm755 azcopy "$pkgdir/usr/bin/azcopy"
+  # Completions
+  ./azcopy completion bash \
+    | install -vDm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/azcopy"
+  ./azcopy completion fish \
+    | install -vDm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/azcopy.fish"
+  ./azcopy completion zsh \
+    | install -vDm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_azcopy"
 
-  install -Dm644 azcopy.bash "$pkgdir/usr/share/bash-completion/completions/azcopy"
-  install -Dm644 azcopy.fish "$pkgdir/usr/share/fish/vendor_completions.d/azcopy.fish"
-  install -Dm644 azcopy.zsh "$pkgdir/usr/share/zsh/site-functions/_azcopy"
-
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -vDm755 -t "$pkgdir/usr/bin" azcopy
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
