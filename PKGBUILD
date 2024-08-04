@@ -1,6 +1,6 @@
 pkgname=hdrmerge
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc='HDRMerge fuses two or more raw images into a single raw with an
 extended dynamic range.'
 arch=('i686' 'x86_64')
@@ -10,13 +10,11 @@ makedepends=('git' 'cmake')
 depends=('libraw' 'libkexiv2' 'exiv2' 'zlib' 'alglib' 'boost-libs' 'qt5-tools')
 provides=('hdrmerge')
 
-source=("$pkgname"::"git+https://github.com/jcelaya/hdrmerge.git#commit=ca38b54f980564942a7f2b014a5f57a64c1d9019" "pr221.patch" "pr222.patch")
-md5sums=('SKIP' '60485b0840da444d8aa30c7fe7972aed' 'f577bf85fa9e6fdc5acdcd14df086989')
+source=("$pkgname"::"git+https://github.com/jcelaya/hdrmerge.git#commit=e2a46f97498b321b232cc7f145461212677200f1")
+md5sums=('SKIP')
 
 prepare() {
 	cd ${srcdir}/${pkgname}
-	patch --forward --strip=1 --input "${srcdir}/pr221.patch"
-	patch --forward --strip=1 --input "${srcdir}/pr222.patch"
 }
 
 build() {
