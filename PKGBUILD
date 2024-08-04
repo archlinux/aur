@@ -6,7 +6,7 @@
 
 _pkgname=thunderbird
 pkgname=thunderbird-globalmenu
-pkgver=115.12.2
+pkgver=115.13.0
 pkgrel=1
 pkgdesc="Standalone mail and news reader from mozilla.org (With appmenu patch from Ubuntu)"
 install="$_pkgname.install"
@@ -65,17 +65,27 @@ source=(
 	"D187749.patch::https://phabricator.services.mozilla.com/D187749?download=true"
 	"feature-unity-menubar-m-c.patch::https://github.com/Betterbird/thunderbird-patches/raw/83819e9a1df8e8e4221c3e5bce5d35492611d5ca/115/features/feature-unity-menubar-m-c.patch"
 	"feature-unity-menubar-comm.patch::https://github.com/Betterbird/thunderbird-patches/raw/83819e9a1df8e8e4221c3e5bce5d35492611d5ca/115/features/feature-unity-menubar.patch"
+	"9e96d1447f6c.patch::https://hg.mozilla.org/mozilla-central/raw-rev/9e96d1447f6c" #MOZ Bug 1873379
+	"c4d6ad7c5e44.patch::https://hg.mozilla.org/mozilla-central/raw-rev/c4d6ad7c5e44" #MOZ Bug 1841919
+	"ea780120e917.patch::https://hg.mozilla.org/mozilla-central/raw-rev/ea780120e917" #MOZ Bug 1841919
+	"rust-1.78.0.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/1eb123764e21a3c3788240be5ca63e13d36e2b6b/0033-bmo-1882209-update-crates-for-rust-1.78-stripped-patch-from-bugs.freebsd.org-bug278834.patch" # BSD Bug 278834
+	"llvm18.patch::https://github.com/pld-linux/thunderbird/raw/1b415245f46e2d8667ee0448bfeb1ff3a0ad67ee/llvm18.patch" # BSD Bug 278989
 	org.mozilla.thunderbird.desktop)
 validpgpkeys=(
 	# Mozilla Software Releases <release@mozilla.com>
 	# https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
 	'14F26682D0916CDD81E37B6D61B7B526D98F0353')
-sha1sums=('e810e53d1c53ee2ec6fec9f543715febc752f571'
+sha1sums=('5ff7f9ec33202c34577e1f9b28c9aa71925caf47'
           'SKIP'
           'b3ccca02959d94ef2a5db8f140ff96a2cd9724ef'
           '559ce09fee54c849ea4da2bf881da37f5fc0cac9'
           '0b5cb49417c6666fe9c1ff8ea6b5f0bfacac24d0'
           '84a41fe516ce8c79e6f026029b7bda67ad4d9bf8'
+          'eb757775d705b86a55b1da16f8fb3263d76eccfc'
+          '1029fe0d467adb991f2cc155f290fdd04844bba2'
+          'aedcae99a93ab718463cf5cc529331e9d0d4ff35'
+          '659db072059db04bfc27ac4659912f6fb5e842aa'
+          '55a2d38af72d013c4ace8b633fd9a96b48d9fcfb'
           '59206e9c42055ebcd15fb5fc27ff8f12d64b1f38')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -160,6 +170,7 @@ build() {
 	cd $_pkgname-$pkgver
 
 	# The correct Rust version for thunderbird 115 is 1.70.0
+	# packed_simd no longer builds with 1.78.0, but patched
 	export RUSTUP_TOOLCHAIN=1.77
 
 	export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=none
