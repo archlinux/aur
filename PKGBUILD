@@ -11,8 +11,7 @@ source=("generative-ai-${pkgver}.tar.gz::https://github.com/google-gemini/genera
 sha256sums=('5349509077b1442318587e4fe0c21763050bb44c3aa680c765dbc2754bc73d63')
 
 # Dependencies listed in https://github.com/google-gemini/generative-ai-python/blob/42d952a2429fa72c0f2617d71eb9aa3f708b6867/setup.py#L45C1-L53C1
-# TODO: add python-google-ai-generativelanguage once this package exists in AUR
-depends=('python-google-api-core' 'python-google-api-python-client' 'python-google-auth>=2.15.0' 'python-protobuf' 'python-pydantic' 'python-tqdm' 'python-typing_extensions')
+depends=('python-google-ai-generativelanguage=0.6.6' 'python-google-api-core' 'python-google-api-python-client' 'python-google-auth>=2.15.0' 'python-protobuf' 'python-pydantic' 'python-tqdm' 'python-typing_extensions')
 
 build() {
   cd "generative-ai-python-${pkgver}"

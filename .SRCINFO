@@ -6,6 +6,7 @@ pkgbase = python-google-generativeai
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
+	depends = python-google-ai-generativelanguage=0.6.6
 	depends = python-google-api-core
 	depends = python-google-api-python-client
 	depends = python-google-auth>=2.15.0
