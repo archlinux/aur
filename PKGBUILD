@@ -1,7 +1,7 @@
 # Maintainer: Breno Cunha Queiroz <breno1423@gmail.com>
 
 pkgname=git-kudos-git
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Print repo contributions and give authors their well-deserved kudos!"
 arch=(x86_64)
