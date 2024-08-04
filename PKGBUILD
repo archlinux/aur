@@ -79,9 +79,12 @@ _change_yarn_home() {
 
 _change_desktop_entry_name() {
   sed -i "s/profile = '.Devel'/profile = ''/g" meson.build
+  sed -i "s/appstreamcli.found()/false/g" data/meson.build
   find . -type f -name "*$_flatpak_pkgname*" -exec bash -c 'mv "$0" "${0//'$_flatpak_pkgname'/muzika}"' {} \;
   find . -type f -exec sed -i "s/"$_flatpak_pkgname".Devel/muzika/g" {} +
   find . -type f -exec sed -i "s/"$_flatpak_pkgname"/muzika/g" {} +
+
+
 }
 
 prepare() {
