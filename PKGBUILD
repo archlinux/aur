@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=hoarder-cli
-pkgver=0.13.5
+pkgver=0.13.7
 pkgrel=1
 pkgdesc="Command Line Interface (CLI) for Hoarder"
 arch=("any")

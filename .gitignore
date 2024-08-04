@@ -1,4 +1,4 @@
 /pkg
 /src
 /cache
-*.pkg.tar.zst
+*.pkg.tar.*

@@ -1,6 +1,6 @@
 pkgbase = hoarder-cli
 	pkgdesc = Command Line Interface (CLI) for Hoarder
-	pkgver = 0.13.5
+	pkgver = 0.13.7
 	pkgrel = 1
 	url = https://github.com/hoarder-app/hoarder
 	arch = any
