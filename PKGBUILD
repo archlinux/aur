@@ -1,7 +1,7 @@
 # Maintainer: Anže Pintar <anze@anzepintar.com>
 
 pkgname=anymeal
-pkgver=1.29
+pkgver=1.30
 pkgrel=1
 pkgdesc="Recipe management software. Supports MealMaster recipes, import, export, search, display, edit, and print them."
 arch=('x86_64')
