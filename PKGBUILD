@@ -2,8 +2,10 @@
 
 pkgname=signal-cli-bin
 _pkgname=signal-cli
+provides=('signal-cli')
+conflicts=('signal-cli')
 pkgver=0.13.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Signal-cli is unofficial cmd, JSON-RPC and dbus interface for the Signal messenger"
 arch=('any')
 url="https://github.com/AsamK/signal-cli"
