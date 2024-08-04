@@ -1,8 +1,8 @@
 # Maintainer: Araaha <ara.ahady@gmail.com>
 
 pkgname=tb.go
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Tasks, boards & notes for the terminal"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
 url="https://github.com/araaha/tb.go"

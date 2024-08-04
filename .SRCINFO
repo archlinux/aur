@@ -1,7 +1,7 @@
 pkgbase = tb.go
 	pkgdesc = Tasks, boards & notes for the terminal
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://github.com/araaha/tb.go
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = tb.go
 	license = GPL3
 	makedepends = go
 	makedepends = git
-	source = tb.go::git+https://github.com/araaha/tb.go.git#tag=v1.0.1-2
+	source = tb.go::git+https://github.com/araaha/tb.go.git#tag=v1.0.2-1
 	b2sums = SKIP
 
 pkgname = tb.go
