@@ -1,4 +1,5 @@
 # Maintainer: Groctel <aur@taxorubio.com>
+# shellcheck disable=SC2034,SC2154,SC2164
 
 _name=isosurfaces
 
