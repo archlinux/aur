@@ -1,7 +1,7 @@
 pkgbase = outline-client-appimage
 	pkgdesc = The Outline clients use the popular Shadowsocks protocol, and lean on the Cordova and Electron frameworks.
 	pkgver = 1.13.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://getoutline.org
 	install = outline-client-appimage.install
 	arch = x86_64
@@ -13,10 +13,8 @@ pkgbase = outline-client-appimage
 	options = !strip
 	options = !debug
 	source = Outline-Client_1.13.1.AppImage::https://s3.amazonaws.com/outline-releases/client/linux/stable/Outline-Client.AppImage
-	source = outline-client.desktop
 	source = outline-client-appimage.install
 	sha512sums = 5a3aa5c08f1f89dab6839f462ea90e65cd8278bed7ac34deea3d2e0a5330dd54c6ae9cb2e4d418b18f8effdfb3c1a48c0db4d61c07cc48dbaecf3c4da68ad181
-	sha512sums = bfd5847f21b4da97db0e3f30312987145a451201f9a825bdd65507614fb68f074d7b68664eea63079f372aa43e9f60e44ff51d7bc9acd4c55b9fd787fc51bf97
 	sha512sums = a1704e707b0b0a927fae068647eccb426bb51ad2081d27ee18e8991949e9135d28fe502d1a1dba27d333025edd235614b195758d14be2d0eeb97172bea851ddd
 
 pkgname = outline-client-appimage

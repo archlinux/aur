@@ -1,9 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Name=Outline
-Exec=outline-client
-Terminal=false
-Type=Application
-Icon=outline-apps
-StartupWMClass=Outline
-Categories=Network;
