@@ -1,7 +1,7 @@
 # Maintainer: Kagamma <kagamma(dot)km(at)gmail(dot)com>
 
 pkgname=tparted-bin
-pkgver=2024.08.03
+pkgver=2024.08.04
 pkgrel=1
 pkgdesc="Text-based user interface (TUI) frontend for parted, based on Free Vision application framework."
 arch=(x86_64)
@@ -16,11 +16,11 @@ optdepends=('dosfstools: for fat operations'
             'xfsprogs: for xfs operations'
             'jfsutils: for jfs operations'
             'f2fs-tools: for f2fs operations')
-source=(https://github.com/Kagamma/tparted/releases/download/2024-08-03/linux_x86-64_tparted.tar.gz)
-md5sums=(9a18eb3cffa6a22b577b87dfacfd0910)
+source=(https://github.com/Kagamma/tparted/releases/download/2024-08-04/linux_x86-64_tparted_2024-08-04.tar.gz)
+md5sums=(5938fba6087b9f7f128197696b9fa29e)
 
 pkgver() {
-          printf "2024.08.03"
+          printf "2024.08.04"
 }
 
 package() {
