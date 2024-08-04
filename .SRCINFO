@@ -1,13 +1,12 @@
 pkgbase = sdrangel-bin
 	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend.
 	pkgver = 7.21.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/f4exb/sdrangel
 	arch = x86_64
 	license = GPL3
 	depends = fftw
 	depends = ffmpeg4.4
-	depends = pulseaudio
 	depends = lz4
 	depends = qt5-base
 	depends = qt5-multimedia
