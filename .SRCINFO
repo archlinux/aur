@@ -1,0 +1,23 @@
+pkgbase = bluebao
+	pkgdesc = simple bluetooth audio devices manager that lives on the tray
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/pldubouilh/bluebao
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = make
+	makedepends = pkgconf
+	makedepends = git
+	makedepends = gcc
+	makedepends = gtk3
+	makedepends = libappindicator-gtk3
+	depends = glibc
+	depends = libpulse
+	depends = bluez-utils
+	provides = bluebao
+	source = bluebao-1.0.0::git+https://github.com/pldubouilh/bluebao#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = bluebao
