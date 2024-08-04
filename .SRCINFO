@@ -7,10 +7,7 @@ pkgbase = paramotopy-git
 	license = custom:Paramotopy license
 	makedepends = git
 	makedepends = boost>=1.53
-	makedepends = bertini
 	makedepends = gmp
-	makedepends = mpfr
-	makedepends = openmpi
 	depends = glibc
 	depends = gcc-libs
 	depends = boost-libs

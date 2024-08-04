@@ -9,7 +9,7 @@ arch=('any')
 url="https://${_pkgname}.com"
 _url="https://github.com/ofloveandhate/${_pkgname}"
 license=('custom:Paramotopy license')
-makedepends=('git' 'boost>=1.53' 'bertini' 'gmp' 'mpfr' 'openmpi')
+makedepends=('git' 'boost>=1.53' 'gmp')
 depends=('glibc' 'gcc-libs' 'boost-libs' 'bertini' 'mpfr' 'openmpi')
 optdepends=('paramotopy-docs: HTML documentation')
 provides=("${_pkgname}")
