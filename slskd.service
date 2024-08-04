@@ -16,6 +16,7 @@ Type=simple
 User=slskd
 Group=slskd
 SyslogIdentifier=slskd
+WorkingDirectory=/var/lib/slskd/
 ExecStart=/usr/lib/slskd/slskd
 Restart=on-failure
 
