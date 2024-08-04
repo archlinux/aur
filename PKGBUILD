@@ -13,7 +13,7 @@ conflicts=('minecraft-world-downloader')
 options=(!strip)
 # Note: jar gets extracted, if anyone knows of a way for it NOT to do that send a comment
 source=("https://github.com/mircokroon/minecraft-world-downloader/releases/download/v${pkgver}/world-downloader.jar" "https://raw.githubusercontent.com/mircokroon/minecraft-world-downloader/master/src/main/resources/ui/icon/icon.png" "minecraft-world-downloader.desktop" "minecraft-world-downloader")
-sha256sums=('5ada3b75b1c9c83d576f1b1a1b79a41f144c9b509c3e049adff8d89d01dc668b' '04c7491d1093ecbb6bea7c42c2b682ae973a7d67cc1029e45e2f9a043220ee91' '36f5fac4ae8021b4f22e3aea1e2459a2973fb04bdb710bfd0a8040722050c2b3' '5e5cd6ca7ce427101e7008c3e327cb955c02a3195f7e5c78dae2c75f18028ef8')
+sha256sums=('5ada3b75b1c9c83d576f1b1a1b79a41f144c9b509c3e049adff8d89d01dc668b' '04c7491d1093ecbb6bea7c42c2b682ae973a7d67cc1029e45e2f9a043220ee91' '36f5fac4ae8021b4f22e3aea1e2459a2973fb04bdb710bfd0a8040722050c2b3' 'ce7be17404b73f38d1a719c98caa75611db25b666c31cded2cf58e8afbe6aa27')
 
 
 package() {
