@@ -3,7 +3,7 @@
 
 pkgname=xword-dl
 pkgver=2024.7.20
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line tool to download .puz files for online crossword puzzles'
 arch=(any)
 url='https://github.com/thisisparker/xword-dl'
@@ -13,7 +13,6 @@ depends=(
 	python-dateparser
 	python-emoji
 	python-html2text
-	python-importlib-metadata
 	python-lxml
 	python-puzpy
 	python-requests
