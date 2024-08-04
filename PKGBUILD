@@ -8,7 +8,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-cairo
 pkgver=1.18.0
-pkgrel=3
+pkgrel=4
 pkgdesc="2D graphics library with support for multiple output devices (mingw-w64)"
 arch=('any')
 url="https://cairographics.org"
@@ -20,6 +20,7 @@ depends=('mingw-w64-fontconfig'
          'mingw-w64-glib2')
 makedepends=('git'
              'mingw-w64-meson'
+             'mingw-w64-environment'
              'mingw-w64-librsvg'
              'mingw-w64-poppler')
 conflicts=("${pkgname}-bootstrap")
@@ -55,7 +56,8 @@ build() {
       -D gtk_doc=false \
       -D spectre=disabled \
       -D symbol-lookup=disabled \
-      -D tests=disabled
+      -D tests=disabled \
+      -D c_args="$CFLAGS"
     meson compile -C build-${_arch}
   done
 }
