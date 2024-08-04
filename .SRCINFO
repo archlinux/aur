@@ -5,6 +5,7 @@ pkgbase = python-shutilwhich
 	url = https://github.com/mbr/shutilwhich
 	arch = any
 	license = PSF
+	checkdepends = python-virtualenv
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
