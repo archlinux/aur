@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-bsc-git
-pkgver=1.11.0.r91.gd8203d83b
+pkgver=1.12.1.r0.gd6b096953
 pkgrel=1
 pkgdesc="Osmocom's Base Station Controller for 2G circuit-switched mobile networks"
 url="https://osmocom.org/projects/osmobsc"
@@ -21,7 +21,7 @@ makedepends=('git')
 provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
 backup=('etc/osmocom/osmo-bsc.cfg')
-source=("git+https://git.osmocom.org/${pkgname%-git}")
+source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}")
 sha256sums=('SKIP')
 
 pkgver() {
