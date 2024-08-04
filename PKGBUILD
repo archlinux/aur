@@ -1,7 +1,7 @@
 # Maintainer: Samsagax <samsagax at gmail dot com>
 _pkgbase=chimeraos-device-quirks
 pkgname=${_pkgbase}-git
-pkgver=r248.d7fbdc9
+pkgver=r251.f814dc2
 pkgrel=1
 pkgdesc="A collection of device specific configuration files"
 arch=('any')
@@ -50,6 +50,10 @@ package() {
   # Install scripts
   mkdir -p "${pkgdir}/usr/share/device-quirks"
   cp -rv usr/share/device-quirks/* "${pkgdir}/usr/share/device-quirks/."
+
+  # Install pipewire hardware configs
+  mkdir -p "${pkgdir}/usr/share/pipewire/hardware-profiles"
+  cp -rv usr/share/pipewire/hardware-profiles/* "${pkgdir}/usr/share/pipewire/hardware-profiles/."
 
   # Install device-quirks config
   mkdir -p "${pkgdir}/etc/device-quirks"
