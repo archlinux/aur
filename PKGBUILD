@@ -2,7 +2,7 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=single-file-cli
-pkgver=2.0.49
+pkgver=2.0.51
 pkgrel=1
 pkgdesc="CLI tool for saving a faithful copy of a complete web page in a single HTML file"
 arch=(any)
@@ -15,7 +15,7 @@ optdepends=(
   'playwright: for playwright-{firefox,chromium} backend'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e20e383f5c0904c4671bb0e33990748919b37f0b611a5897c1dfb83e4417d1ac')
+sha256sums=('e8de8983bddf84901a0001854ee23e117d83a66a87e7d86f0ff8ff161bbfd976')
 
 package() {
   cd $pkgname-$pkgver
