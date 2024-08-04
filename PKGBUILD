@@ -24,12 +24,12 @@ pkgver() {
 }
 
 package() {
-          tar xf ./linux_x86-64_tparted.tar.gz
+          tar xf ./linux_x86-64_tparted_2024-08-04.tar.gz
           # Install binaries & desktop file
           install -Dm755 tparted "${pkgdir}/usr/bin/tparted"
           mkdir -p ${pkgdir}/opt/tparted
           mv locale "${pkgdir}/opt/tparted/locale"
           # Cleanup
           rm -f tparted 
-          rm -f linux_x86-64_tparted.tar.gz
+          rm -f linux_x86-64_tparted_2024-08-04.tar.gz
 }
