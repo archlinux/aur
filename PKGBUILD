@@ -2,7 +2,7 @@
 
 pkgname=xorgxrdp
 pkgver=0.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Xorg drivers for xrdp"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/neutrinolabs/xorgxrdp"
@@ -21,8 +21,8 @@ build() {
 
   CFLAGS="$CFLAGS -ffat-lto-objects $(pkgconf --cflags-only-I libdrm)" \
   ./configure \
-    --prefix="/usr" \
-    --enable-glamor
+    --prefix="/usr"
+    #--enable-glamor  # not every system support it
   make
 }
 
