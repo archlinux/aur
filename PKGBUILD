@@ -2,7 +2,7 @@
 
 _pkgname=libdovi
 pkgname=lib32-${_pkgname}
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc='Library to read and write Dolby Vision metadata C-API (32-bit)'
 _pkgtag="libdovi-${pkgver}"
@@ -17,7 +17,7 @@ source=(
   "0001-lib32-libdovi-remove-subdirectory.patch"
 )
 sha256sums=(
-  '4b7e28322a5b15ea0eff5ed19e626468b17d5fc17aab9befaa9f725e466a7b40'
+  '4cd7a4c418fd8af1da13278ce7524c15b7fdf61e1fe53663aa291c68c5062777'
   '20f1168e3ad003502031578246a6f8f61a73f53cd2b00b583f944fda0dea2654'
 )
 _rootdir="dovi_tool-${_pkgtag}"

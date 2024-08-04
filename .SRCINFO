@@ -1,6 +1,6 @@
 pkgbase = lib32-libdovi
 	pkgdesc = Library to read and write Dolby Vision metadata C-API (32-bit)
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/quietvoid/dovi_tool/tree/main/dolby_vision
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = lib32-libdovi
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
 	provides = libdovi.so
-	source = https://github.com/quietvoid/dovi_tool/archive/refs/tags/libdovi-3.3.0.tar.gz
+	source = https://github.com/quietvoid/dovi_tool/archive/refs/tags/libdovi-3.3.1.tar.gz
 	source = 0001-lib32-libdovi-remove-subdirectory.patch
-	sha256sums = 4b7e28322a5b15ea0eff5ed19e626468b17d5fc17aab9befaa9f725e466a7b40
+	sha256sums = 4cd7a4c418fd8af1da13278ce7524c15b7fdf61e1fe53663aa291c68c5062777
 	sha256sums = 20f1168e3ad003502031578246a6f8f61a73f53cd2b00b583f944fda0dea2654
 
 pkgname = lib32-libdovi
