@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-inputstream-adaptive-any
 	pkgdesc = Inputstream adaptive without kodi-dev dependency, so it can be built on any architecture
-	pkgver = 21.5.0
+	pkgver = 21.5.1
 	pkgrel = 1
 	url = https://github.com/xbmc/inputstream.adaptive
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = kodi-addon-inputstream-adaptive-any
 	provides = kodi-addon-inputstream-adaptive
 	conflicts = kodi-addon-inputstream-adaptive
 	conflicts = kodi-addon-inputstream-adaptive-19
-	source = https://github.com/xbmc/inputstream.adaptive/archive/21.5.0-Omega.tar.gz
+	source = https://github.com/xbmc/inputstream.adaptive/archive/21.5.1-Omega.tar.gz
 	source = https://github.com/xbmc/xbmc/archive/21.0-Omega.tar.gz
-	sha256sums = ea9ca25a222eda6d9a60d8dd509194db58d92b491759bf17acb49736cd4393c6
+	sha256sums = 51d8f72fcaa7d2b0a8342154a69a1678b17d93f4b3b1c105ae89a46f39b93958
 	sha256sums = 7f54c1fd8456ac46221fbc85e447362bdc209163c6cb19fca98d106560071b7c
 
 pkgname = kodi-addon-inputstream-adaptive-any
