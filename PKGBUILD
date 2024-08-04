@@ -9,8 +9,9 @@ _ff_theme=official
 
 _pkgname=firefox-esr
 pkgname=firefox-esr-globalmenu
-pkgver=115.12.0
+pkgver=115.13.0
 pkgrel=1
+_ff_srcname="firefox-$pkgver"
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release. (With appmenu patch from Ubuntu)"
 url="https://www.mozilla.org/en-US/firefox/enterprise/"
 install="$_pkgname.install"
@@ -20,7 +21,6 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 depends=(
 	dbus-glib
-	botan
 	ffmpeg
 	gtk3
 	appmenu-gtk-module
@@ -70,22 +70,17 @@ source=(
 	"D208884.patch::https://phabricator.services.mozilla.com/D208884?download=true" # Unbreak distutils
 	"D194781.patch::https://phabricator.services.mozilla.com/D194781?download=true" # Unbreak distutils
 	"D205839.patch::https://phabricator.services.mozilla.com/D205839?download=true" # Unbreak distutils
+	"9e96d1447f6c.patch::https://hg.mozilla.org/mozilla-central/raw-rev/9e96d1447f6c" #MOZ Bug 1873379
+	"c4d6ad7c5e44.patch::https://hg.mozilla.org/mozilla-central/raw-rev/c4d6ad7c5e44" #MOZ Bug 1841919
+	"ea780120e917.patch::https://hg.mozilla.org/mozilla-central/raw-rev/ea780120e917" #MOZ Bug 1841919
+	"rust-1.78.0.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/1eb123764e21a3c3788240be5ca63e13d36e2b6b/0033-bmo-1882209-update-crates-for-rust-1.78-stripped-patch-from-bugs.freebsd.org-bug278834.patch" # BSD Bug 278834
+	"llvm18.patch::https://github.com/pld-linux/thunderbird/raw/1b415245f46e2d8667ee0448bfeb1ff3a0ad67ee/llvm18.patch" # BSD Bug 278989
 	"feature-unity-menubar-m-c.patch::https://github.com/Betterbird/thunderbird-patches/raw/83819e9a1df8e8e4221c3e5bce5d35492611d5ca/115/features/feature-unity-menubar-m-c.patch"
 	"fis-csd-global-menu.patch::https://github.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/raw/7e9b3f679ebf55a8dbbd52dad692167fe6ff14fb/waterfox-kde/patches/fis-csd-global-menu.patch")
 validpgpkeys=(
 	# Mozilla Software Releases <release@mozilla.com>
 	# https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
 	'14F26682D0916CDD81E37B6D61B7B526D98F0353')
-sha1sums=(
-		'd53b3a65dde69d1103aead1174deb343386f31ca'
-		'SKIP'
-		'b3ccca02959d94ef2a5db8f140ff96a2cd9724ef'
-		'559ce09fee54c849ea4da2bf881da37f5fc0cac9'
-		'0ab2fac39fc6b10eb4aa3c40435fe0d83cb73a1b'
-		'4e39ef39439bc397215c94a73dcf1660a1023258'
-		'c50399b3d9b241e938c86f07e455a730bbe0416a'
-		'0b5cb49417c6666fe9c1ff8ea6b5f0bfacac24d0'
-		'801ec02b5dce0ddae3610b84241d2528717afa5c')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -105,7 +100,7 @@ prepare() {
 		exit 1
 	fi
 	
-	cd firefox-$pkgver
+	cd "$_ff_srcname"
 
 	for patch in "${source[@]%%::*}"; do
 		if [[ $patch == *.patch ]]; then
@@ -173,10 +168,11 @@ fi
 }
 
 build() {
-	cd firefox-$pkgver
+	cd "$_ff_srcname"
 
 	# The correct Rust version for thunderbird 115 is 1.70.0
-	export RUSTUP_TOOLCHAIN=1.77
+	# packed_simd no longer builds with 1.78.0, but patched
+	export RUSTUP_TOOLCHAIN=1.78
 
 	export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=none
 	export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -230,7 +226,7 @@ package() {
 	local distdir="$pkgdir/usr/lib/$_pkgname/distribution/"
 	local nssckbi="$pkgdir/usr/lib/$_pkgname/libnssckbi.so"
 
-	cd firefox-$pkgver
+	cd "$_ff_srcname"
 	DESTDIR="$pkgdir" ./mach install
 
 	# Distribution
@@ -337,5 +333,20 @@ package() {
 	# https://bugzilla.mozilla.org/show_bug.cgi?id=658850
 	ln -srfv "$pkgdir/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
 }
+
+sha1sums=('6a3c1f36aaf06cb41745c7866d6bb7fb5016e01d'
+          'SKIP'
+          'b3ccca02959d94ef2a5db8f140ff96a2cd9724ef'
+          '559ce09fee54c849ea4da2bf881da37f5fc0cac9'
+          '0ab2fac39fc6b10eb4aa3c40435fe0d83cb73a1b'
+          '4e39ef39439bc397215c94a73dcf1660a1023258'
+          'c50399b3d9b241e938c86f07e455a730bbe0416a'
+          'eb757775d705b86a55b1da16f8fb3263d76eccfc'
+          '1029fe0d467adb991f2cc155f290fdd04844bba2'
+          'aedcae99a93ab718463cf5cc529331e9d0d4ff35'
+          '659db072059db04bfc27ac4659912f6fb5e842aa'
+          '55a2d38af72d013c4ace8b633fd9a96b48d9fcfb'
+          '0b5cb49417c6666fe9c1ff8ea6b5f0bfacac24d0'
+          '801ec02b5dce0ddae3610b84241d2528717afa5c')
 
 # vim:set sw=2 sts=-1 et:
