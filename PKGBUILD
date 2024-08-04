@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pixelflasher
-pkgver=7.3.1.0
+pkgver=7.3.1.1
 pkgrel=1
 pkgdesc="Pixel phone flashing GUI utility with features."
 arch=('any')
@@ -34,7 +34,7 @@ options=('!strip')
 source=("PixelFlasher-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'PixelFlasher.desktop'
         'PixelFlasher.sh')
-sha256sums=('4e7a3d67da607b6124993db8e3de972ba92f88a893db75d261703917894b7c19'
+sha256sums=('8e387403de95272b095af6234fb91de72483f5c9ff6f7cba7eaa4cd27a3223f5'
             '3f503e3e3b819562669e1d0a8a25043c478c8c1709b376642fd678caf3d8ee34'
             '345d09c6aa123e6d30d8156b042f4372764cbd92932ffcf978fe77a512c4502d')
 
