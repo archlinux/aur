@@ -17,6 +17,7 @@ provides=('leftwm-theme')
 conflicts=('leftwm-theme')
 source=("${pkgname}::git+https://github.com/leftwm/leftwm-theme.git")
 md5sums=('SKIP')
+options=(!lto)
 
 pkgver() {
     cd "$srcdir/$pkgname"

@@ -19,6 +19,7 @@ pkgbase = leftwm-theme-git
 	optdepends = polybar: light weight bar
 	provides = leftwm-theme
 	conflicts = leftwm-theme
+	options = !lto
 	source = leftwm-theme-git::git+https://github.com/leftwm/leftwm-theme.git
 	md5sums = SKIP
 
