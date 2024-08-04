@@ -1,4 +1,5 @@
 # Maintainer: Groctel <aur@taxorubio.com>
+# shellcheck disable=SC2034,SC2154,SC2164
 
 _name=cloup
 
@@ -26,11 +27,19 @@ makedepends=(
     "python-setuptools-scm"
     "python-wheel"
 )
+checkdepends=(
+    "python-pytest"
+)
 
 build () {
     cd "$srcdir/$_name-$pkgver"
     SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver} \
         python -m build --wheel --no-isolation
+}
+
+check () {
+    cd "$srcdir/$_name-$pkgver"
+    pytest
 }
 
 package () {

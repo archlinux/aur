@@ -5,6 +5,7 @@ pkgbase = python-cloup
 	url = https://github.com/janLuke/cloup
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
