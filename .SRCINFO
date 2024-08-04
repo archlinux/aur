@@ -1,6 +1,6 @@
 pkgbase = 0ad-git
 	pkgdesc = Cross-platform, 3D and historically-based real-time strategy game - built from git development version.
-	pkgver = A26.r1461.g26fa9aed8a
+	pkgver = A26.r1492.gf05183bf1e
 	pkgrel = 1
 	epoch = 1
 	url = http://play0ad.com/
@@ -33,10 +33,8 @@ pkgbase = 0ad-git
 	options = !debug
 	source = git+https://github.com/0ad/0ad.git
 	source = patch.patch
-	source = miniupnpc-2.2.8.patch
 	md5sums = SKIP
 	md5sums = 0c789b7aa65258125a488c857e3fb74b
-	md5sums = e9fc137822b0519f99eff66ca90bdc12
 
 pkgname = 0ad-git
 	depends = 0ad-data

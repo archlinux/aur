@@ -7,7 +7,7 @@
 pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
 epoch=1
-pkgver=A26.r1461.g26fa9aed8a
+pkgver=A26.r1492.gf05183bf1e
 pkgrel=1
 pkgdesc="Cross-platform, 3D and historically-based real-time strategy game - built from git development version."
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ makedepends=('boost' 'cmake' 'mesa' 'zip' 'libsm' 'rust' 'python311' 'python' 'g
              'libpng' 'libsodium' 'libvorbis' 'miniupnpc' 'openal'
              'sdl2' 'wxwidgets-gtk3' 'which')
 options=('!lto' '!debug') # lto breaks spidermonkey linking (https://bugs.gentoo.org/746947)
-source=("git+https://github.com/0ad/0ad.git" "patch.patch" "miniupnpc-2.2.8.patch")
-md5sums=('SKIP' '0c789b7aa65258125a488c857e3fb74b' 'e9fc137822b0519f99eff66ca90bdc12')
+source=("git+https://github.com/0ad/0ad.git" "patch.patch")
+md5sums=('SKIP' '0c789b7aa65258125a488c857e3fb74b')
 
 pkgver() {
   cd ${_pkgname}
@@ -29,7 +29,6 @@ pkgver() {
 prepare() {
   cd "$srcdir/${_pkgname}"
   patch -p1 -i ../patch.patch # Fix build with GCC 14
-  patch -p1 -i ../miniupnpc-2.2.8.patch # Fix build with miniupnpc 2.2.8
 
 }
 
