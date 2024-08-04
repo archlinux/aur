@@ -2,8 +2,8 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-bsc
-pkgver=1.11.1
-pkgrel=2
+pkgver=1.12.1
+pkgrel=1
 pkgdesc="Osmocom's Base Station Controller for 2G circuit-switched mobile networks"
 url="https://osmocom.org/projects/osmobsc"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -20,7 +20,7 @@ depends=('libosmocore'
 conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-bsc.cfg')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('11170f7a11246d4c7147ee8528ed060e54c743442ffbcee279c55261c9f59ad9')
+sha256sums=('215c96c375ac918faf809ebd5b0ea5016bc18f416195f490d27e762a21052717')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
