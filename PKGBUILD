@@ -3,8 +3,8 @@
 pkgbase="circt"
 pkgname=('firtool')
 pkgdesc="Circuit IR Compilers and Tools"
-pkgver="1.49.0"
-_llvm_commit="0a35ac6c2e0cb0160ca2e6cc11644c263692a46d"
+pkgver="1.80.0"
+_llvm_commit="0870afaaaccde5b4bae37abfc982207ffafb8332"
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -14,16 +14,17 @@ makedepends=(
   'cmake'
   'ninja'
   'python-psutil'
+  'z3'
 )
-depends=(
-  'ncurses'
+optdepends=(
+  'z3'
 )
 source=(
   "https://github.com/llvm/circt/archive/firtool-$pkgver.tar.gz"
   "git+https://github.com/llvm/llvm-project.git#commit=$_llvm_commit"
 )
-sha256sums=('ee7b60c7780bffef8a66b695596dd606623e56bc7f41fa229ac973e424c6a3d1'
-            'SKIP')
+sha256sums=('77e23a53e50ff66bcb43510857897b70acc1306c56941810ee3da864d6422b68'
+            '2fb414bf05786dd405252b26715f50b132dd096723a017618f57ad7f7aa019a9')
 options=(!lto)
 
 prepare() {
