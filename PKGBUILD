@@ -1,7 +1,7 @@
 # Maintainer: Mike Yuan <me@yhndnzj.com>
 
 pkgname=ov
-pkgver=0.35.0
+pkgver=0.36.0
 pkgrel=1
 pkgdesc="Feature-rich terminal-based text viewer"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go' 'git')
 _tag="v$pkgver"
 source=("$pkgname::git+https://github.com/noborus/ov.git#tag=$_tag")
-b2sums=('ae32745fd09b7d25a18af6c2ef0b736e033e7c8b020d9d813e347b35bdb48eac7976043323034f5978e401831664c2c08b916cf90fec744eb35d822bd5bb7816')
+b2sums=('5e95027820d7fd76261557fc743f7133031ef0acafcd61cd5e91327685195242c5947ee1a81557a3f9de0b3d224334847b5dc8720268ba6742b926348f2d55db')
 
 prepare() {
     cd "$pkgname"
@@ -44,6 +44,6 @@ check() {
 package() {
     cd "$pkgname"
     install -Dm755 "build/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -Dt "$pkgdir/usr/share/doc/$pkgname" -m644 ov.yaml ov-less.yaml ov-disable-default.yaml
+    install -Dt "$pkgdir/usr/share/doc/$pkgname" -m644 ov.yaml ov-less.yaml ov-disable-default.yaml ov.plugin.zsh
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
