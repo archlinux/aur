@@ -1,6 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=emoji-selector-applet-for-cosmic-git
-_app_id=dev.dominiccgeh.CosmicAppletEmojiSelector
 pkgver=0.1.4.r6.g4541678
 pkgrel=1
 pkgdesc="Emoji Selector for COSMIC™️ DE"
