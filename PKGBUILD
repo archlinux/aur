@@ -3,7 +3,7 @@
 pkgname=anymeal-git
 pkgver=r$(git ls-remote --short https://github.com/wedesoft/anymeal.git HEAD)
 pkgrel=1
-pkgdesc="Recipe management software. Supports MealMaster recipes, import, export, search, display, edit, and print them."
+pkgdesc="Recipe management software. Supports MealMaster recipes, import, export, search, display, edit, and printing them."
 arch=('x86_64')
 url="https://github.com/wedesoft/anymeal"
 license=('GPL3')
