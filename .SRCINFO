@@ -1,0 +1,16 @@
+pkgbase = cups-sharing-git
+	pkgdesc = CUPS Sharing Server
+	pkgver = r7.87d744e
+	pkgrel = 1
+	url = https://github.com/OpenPrinting/cups-sharing
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	makedepends = git
+	depends = libcups-git
+	depends = pappl-git
+	provides = cups-sharing
+	conflicts = cups-sharing
+	source = git+https://github.com/OpenPrinting/cups-sharing.git
+	sha256sums = SKIP
+
+pkgname = cups-sharing-git
