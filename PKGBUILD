@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-hlr-git
-pkgver=1.7.0.r16.g413f5e36
+pkgver=1.8.0.r0.gc819234a
 pkgrel=1
 pkgdesc="Osmocom HLR for GSUP protocol towards OsmoSGSN and OsmoCSCN"
 url="https://osmocom.org/projects/osmo-hlr"
@@ -34,6 +34,11 @@ build() {
               --sysconfdir=/etc \
               --localstatedir=/var
   make
+}
+
+check() {
+  cd "${pkgname%-git}"
+  make check
 }
 
 package() {
