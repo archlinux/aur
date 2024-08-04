@@ -8,7 +8,7 @@
 
 _target=arm-linux-gnueabihf
 pkgname=${_target}-gcc-stage1
-pkgver=14.1.0
+pkgver=14.2.0
 _majorver=${pkgver%%.*}
 pkgrel=1
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building"
@@ -23,7 +23,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
-sha256sums=('e283c654987afe3de9d8080bc0bd79534b5ca0d681a73a11ff2b5d3767426840'
+sha256sums=('a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9'
             'SKIP')
 
 prepare() {
