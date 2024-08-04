@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-bts-git
-pkgver=1.7.0.r68.g5076fef0e
+pkgver=1.8.0.r1.g9512355eb
 pkgrel=1
 pkgdesc="Osmocom's GSM BTS (Base Transceiver Station) with A-bis/IP interface"
 url="https://osmocom.org/projects/osmobts"
@@ -34,6 +34,11 @@ build() {
               --localstatedir=/var \
               --enable-trx
   make
+}
+
+check() {
+  cd "${pkgname%-git}"
+  make check
 }
 
 package() {
