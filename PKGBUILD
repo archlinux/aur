@@ -2,7 +2,7 @@
 
 pkgname=python-anthropic
 _pkgname=anthropic-sdk-python
-pkgver=0.31.2
+pkgver=0.32.0
 pkgrel=1
 pkgdesc="Python library that provides convenient access to the Anthropic REST API"
 arch=(any)
@@ -43,7 +43,7 @@ source=(
   "fix-pytest-asyncio-usage.patch"
 )
 sha256sums=(
-  '8699c14f6b4bdac23d10324ff2fb3c35a7c6972c8a329ad5e118352316a28727'
+  '3d7edabd9b5d879a260ec7177baf267fae1d69ddea871f1b353d5361d2193161'
   '9058cc717a6e8eebba65d9735e7376f9d1a024f0e4a2635b96278e6a39b31e01'
 )
 
@@ -82,5 +82,5 @@ package() {
   cd $_pkgname-$pkgver
 
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
