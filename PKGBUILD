@@ -14,13 +14,13 @@ conflicts=("anymeal-git")
 sha256sums=('f17dd051d0e490b663a5168b794f6f7171309dea97c9cab98051589d0d21e471')
 
 build() {
-  cd "$pkgname-$pkgver"
-  ./configure --prefix=/usr
-  make clean
-  make
+    cd "$pkgname-$pkgver"
+    ./configure --prefix=/usr
+    make clean
+    make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+    cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir/" install
 }
