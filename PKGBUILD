@@ -6,7 +6,7 @@ pkgdesc="eProsima's XRCE DDS agent"
 arch=('x86_64')
 url="https://github.com/eProsima/Micro-XRCE-DDS-Agent"
 license=('Apache')
-depends=('eprosima-micro-xrce-dds-client' 'eprosima-fast-cdr>=1.0.27' 'foonathan_memory-shared' 'eprosima-fast-dds' 'cli11' 'spdlog')
+depends=('eprosima-micro-xrce-dds-client' 'eprosima-fast-cdr>=1.0.27' 'foonathan_memory' 'eprosima-fast-dds' 'cli11' 'spdlog')
 makedepends=('cmake' 'git')
 checkdepends=()
 optdepends=()

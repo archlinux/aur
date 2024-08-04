@@ -9,7 +9,7 @@ pkgbase = eprosima-micro-xrce-dds-agent
 	makedepends = git
 	depends = eprosima-micro-xrce-dds-client
 	depends = eprosima-fast-cdr>=1.0.27
-	depends = foonathan_memory-shared
+	depends = foonathan_memory
 	depends = eprosima-fast-dds
 	depends = cli11
 	depends = spdlog
