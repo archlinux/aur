@@ -3,7 +3,7 @@
 
 pkgname=sc-im
 pkgver=0.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A spreadsheet program based on SC'
 arch=(i686 x86_64 armv7h aarch64)
 url='https://github.com/andmarti1424/sc-im'
@@ -13,14 +13,17 @@ optdepends=('libxlsxwriter: export to xlsx. Requires rebuild of sc-im'
 license=(BSD)
 conflicts=(scim-spreadsheet sc-im-git)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/andmarti1424/$pkgname/archive/v${pkgver}.tar.gz"
-        ${pkgname}_arch_0.8.3.patch)
+        ${pkgname}_arch_0.8.3.patch
+        missing_stdlib_h-0.8.3.patch)
 sha256sums=(5568f9987b6d26535c0e7a427158848f1bc03d829f74e41cbcf007d8704e9bd3
-            2ba5a7c20d250d14a32dd3fad956779551cc18ab5f080ce149ba8395a70d0c41)
+            2ba5a7c20d250d14a32dd3fad956779551cc18ab5f080ce149ba8395a70d0c41
+            422ab63540e1fe8d82d52d790c42a150838a60db427d28e94430659cfbc51d84)
 
 prepare() {
   cd "$pkgname-$pkgver/src"
   # install things in the correct place for package managers
   patch <"$srcdir/${pkgname}_arch_0.8.3.patch"
+  patch -p2 -i "$srcdir/missing_stdlib_h-0.8.3.patch"
 }
 
 build() {

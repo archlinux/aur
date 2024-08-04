@@ -1,7 +1,7 @@
 pkgbase = sc-im
 	pkgdesc = A spreadsheet program based on SC
 	pkgver = 0.8.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/andmarti1424/sc-im
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,9 @@ pkgbase = sc-im
 	conflicts = sc-im-git
 	source = sc-im-0.8.3.tar.gz::https://github.com/andmarti1424/sc-im/archive/v0.8.3.tar.gz
 	source = sc-im_arch_0.8.3.patch
+	source = missing_stdlib_h-0.8.3.patch
 	sha256sums = 5568f9987b6d26535c0e7a427158848f1bc03d829f74e41cbcf007d8704e9bd3
 	sha256sums = 2ba5a7c20d250d14a32dd3fad956779551cc18ab5f080ce149ba8395a70d0c41
+	sha256sums = 422ab63540e1fe8d82d52d790c42a150838a60db427d28e94430659cfbc51d84
 
 pkgname = sc-im
