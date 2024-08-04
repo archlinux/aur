@@ -1,7 +1,7 @@
 pkgbase = netflix
 	pkgdesc = Unnofficial Netflix desktop application
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/netflix-desktop
 	arch = x86_64
 	license = GPL

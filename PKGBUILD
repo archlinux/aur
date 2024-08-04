@@ -1,7 +1,7 @@
 pkgname=netflix
 _pkgname=Netflix
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Unnofficial Netflix desktop application"
 arch=('x86_64')
 url="https://gitlab.com/linuxbombay/netflix-desktop"
@@ -26,7 +26,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/$_pkgname/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+    ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
     install -Dm644 "$srcdir/$_pkgname/$pkgname.desktop" \
