@@ -3,7 +3,7 @@
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 
 pkgname=rpmlint
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="A tool for checking common errors in rpm packages"
 arch=(any)
@@ -45,18 +45,16 @@ optdepends=(
   'python-pyenchant: for spell checking'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('d8c000be45ae59f78fa4ed0438e1d33520d189e1ff5033cd72c6c93adf4788f3')
-
-_archive="$pkgname-$pkgver"
+sha256sums=('8c80f37b7e6ffb2eebb2d6bd8a6640fcdc280c6a52830fb083398fa33068d752')
 
 build() {
-  cd "$_archive"
+  cd $pkgname-$pkgver
 
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_archive"
+  cd $pkgname-$pkgver
 
   local pytest_args=(
     --override-ini="addopts="
@@ -69,7 +67,7 @@ check() {
 }
 
 package() {
-  cd "$_archive"
+  cd $pkgname-$pkgver
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
