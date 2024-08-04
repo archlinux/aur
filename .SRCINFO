@@ -7,9 +7,6 @@ pkgbase = bertini2-git
 	license = custom:GPL-3.0-or-later WITH Bertini2-Additional-GPL-Terms
 	makedepends = git
 	makedepends = boost>=1.83
-	makedepends = gmp
-	makedepends = mpfr
-	makedepends = libmpc
 	makedepends = eigen>=3.3
 	depends = glibc
 	depends = gcc-libs

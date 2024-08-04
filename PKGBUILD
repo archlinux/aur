@@ -8,7 +8,7 @@ pkgdesc="The redevelopment of Bertini in C++"
 arch=('any')
 url="https://github.com/bertiniteam/b2"
 license=('custom:GPL-3.0-or-later WITH Bertini2-Additional-GPL-Terms')
-makedepends=('git' 'boost>=1.83' 'gmp' 'mpfr' 'libmpc' 'eigen>=3.3')
+makedepends=('git' 'boost>=1.83' 'eigen>=3.3')
 depends=('glibc' 'gcc-libs' 'boost-libs>=1.83' 'gmp' 'mpfr' 'libmpc')
 optdepends=('pybertini: Python interface support'
             'bertini2-docs: HTML documentation')
@@ -34,10 +34,20 @@ build() {
   make
 }
 
-# check() {
-#   cd "${srcdir}/${_pkgsrc}/core"
-#   make check
-# }
+check() {
+  # Only some tests work
+  cd "${srcdir}/${_pkgsrc}/core"
+  make check TESTS="\
+    b2_classic_compatibility_test \
+    generating_test \
+    settings_test"
+    # b2_classic_compatibility_test \
+    # endgames_test \
+    # nag_algorithms_test \
+    # nag_datatypes_test \
+    # pool_test \
+    # tracking_basics_test
+}
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
