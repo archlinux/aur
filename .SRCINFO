@@ -1,6 +1,6 @@
 pkgbase = python-tree-sitter-muttrc
 	pkgdesc = muttrc grammar for tree-sitter
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/tree-sitter-muttrc
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = python-tree-sitter-muttrc
 	license = MIT
 	makedepends = python-installer
 	depends = python-tree-sitter
-	source = https://files.pythonhosted.org/packages/cp38/t/tree_sitter_muttrc/tree_sitter_muttrc-0.0.5-cp38-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-	sha256sums = 4fabf9ab6cd6e8f77002ded4101ec893fb6080a0c7f09e3c44a4d9cc94f82d1c
+	source = https://files.pythonhosted.org/packages/cp38/t/tree_sitter_muttrc/tree_sitter_muttrc-0.0.6-cp38-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums = 19e938e89dd0d896827d54115ccd9039b8b543c1dc344a2742633fc1b6c0f3f1
 
 pkgname = python-tree-sitter-muttrc
