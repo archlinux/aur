@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('sqlite' 'qt5-base')
 makedepends=('autoconf' 'automake' 'libtool' 'flex' 'gtest' 'qt5-tools')
 source=("$pkgname-$pkgver.tar.xz::https://github.com/wedesoft/anymeal/releases/download/v$pkgver/anymeal-$pkgver.tar.xz")
-sha256sums=('c3a96bd415461eb7bfc3b47f2cb34856f6aea5b13bfe33f6e399913916b9f481')
+sha256sums=('a3b0129c0e71033a849feedaa5214fd2160c9a232b703b787afe61aacb08c099')
 
 build() {
   cd "$pkgname-$pkgver"
