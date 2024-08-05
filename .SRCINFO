@@ -13,6 +13,7 @@ pkgbase = infekt-cli-git
 	depends = gcc-libs
 	depends = cairo
 	depends = libpng
+	optdepends = infekt-gtk: GTK2 user interface
 	provides = infekt-cli=1.3.0
 	conflicts = infekt-cli
 	source = infekt::git+https://github.com/syndicodefront/infekt.git
