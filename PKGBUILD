@@ -2,11 +2,11 @@
 
 pkgname=di-tui
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple terminal UI player for di.fm Premium'
 url='https://github.com/acaloiaro/di-tui'
 license=('BSD')
-depends=('pulseaudio')
+depends=('pulse-native-provider')
 makedepends=('go')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 source=("https://github.com/acaloiaro/di-tui/archive/refs/tags/${pkgver}.tar.gz")
