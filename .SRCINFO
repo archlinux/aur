@@ -1,12 +1,12 @@
 pkgbase = ponymix
 	pkgdesc = CLI PulseAudio Volume Control
 	pkgver = 5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/falconindy/ponymix
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = pulseaudio
+	depends = pulse-native-provider
 	depends = libnotify
 	source = https://pkgbuild.com/~dreisner/sources/ponymix/ponymix-5.tar.xz
 	source = https://pkgbuild.com/~dreisner/sources/ponymix/ponymix-5.tar.xz.sig
