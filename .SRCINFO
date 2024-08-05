@@ -1,7 +1,7 @@
 pkgbase = wayfire
 	pkgdesc = 3D wayland compositor
 	pkgver = 0.8.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://wayfire.org
 	arch = x86_64
 	arch = aarch64
@@ -18,7 +18,7 @@ pkgbase = wayfire
 	depends = wf-config>=0.8.0
 	depends = libjpeg
 	depends = libinput
-	depends = wlroots>=0.17
+	depends = wlroots0.17
 	source = https://github.com/WayfireWM/wayfire/releases/download/v0.8.1/wayfire-0.8.1.tar.xz
 	b2sums = 1b596b28878789ca26eeb57c6c24e0b69508731de2144e1477f8071b41f17757b2125f2f4f99670ca8b7f85172a9f641b9be1f9190eeff5b261bcc2df1bec4ab
 
