@@ -1,0 +1,15 @@
+pkgbase = liteloader-qqnt-llonebot-git
+	pkgdesc = 使你的NTQQ支持OneBot11协议进行QQ机器人开发
+	pkgver = 6b03b01
+	pkgrel = 1
+	url = https://github.com/LLOneBot/LLOneBot
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = liteloader-qqnt
+	provides = liteloader-qqnt-llonebot
+	conflicts = liteloader-qqnt-llonebot
+	source = git+https://github.com/LLOneBot/LLOneBot.git
+	sha256sums = SKIP
+
+pkgname = liteloader-qqnt-llonebot-git
