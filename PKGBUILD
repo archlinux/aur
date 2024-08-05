@@ -2,7 +2,7 @@
 pkgbase=python-crds
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=11.17.26
+pkgver=11.18.1
 pkgrel=1
 pkgdesc="Calibration Reference Data System for HST and JWST"
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-insta
 ##             'python-pylint'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       'fix-roman-asdf-test.patch')
-md5sums=('ddc5aaff148c3bc0fd5d7779aac362d0')
+md5sums=('313352063db91b176d40fd7b49d4b5be')
 
 #get_pyinfo() {
 #     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
@@ -63,6 +63,7 @@ build() {
 #        --ignore=test/bestrefs/test_table_effects.py \
 #        --deselect=test/test_bad_files.py::test_bad_references_bestrefs_script_error \
 #        --deselect=test/test_bad_files.py::test_bad_references_bestrefs_script_warning \
+#        --deselect=test/test_bad_files.py::test_bad_references_error_cache_config \
 #        --deselect=test/test_diff.py::test_diff_print_all_new_files \
 #        --deselect=test/test_sync.py::TestSync::test_sync_contexts \
 #        --deselect=test/test_sync.py::TestSync::test_sync_explicit_files \
@@ -90,6 +91,7 @@ build() {
 #        --deselect=test/submit/test_submit.py::TestSubmit::test_resetfield \
 #        --deselect=test/submit/test_submit.py::TestSubmit::test_validate \
 #        --deselect=test/submit/test_submit.py::TestSubmit::test_rmfile \
+#        --deselect=test/submit/test_submit.py::TestSubmit::test_addbadfile \
 #        --deselect=test/certify/test_certify.py::test_asdf_library_version_fail \
 #        --deselect=test/misc/test_synphot.py::test_synphot_certify_rmaps_thruput #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 #
