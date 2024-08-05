@@ -1,6 +1,6 @@
 pkgbase = json2tsv
 	pkgdesc = JSON to TSV converter
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://codemadness.org/json2tsv.html
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = json2tsv
 	license = ISC
 	depends = sh
 	depends = awk
-	source = https://codemadness.org/releases/json2tsv/json2tsv-1.1.tar.gz
-	sha256sums = eebe7e6286558af0aa0db7c552a4c1ff1e350eb662ec665155c2611990a9c34a
+	source = https://codemadness.org/releases/json2tsv/json2tsv-1.2.tar.gz
+	sha256sums = 113e5a7aeb295e7f8135f231cad900091f99aebd6c98316f761d377e9b50fd84
 
 pkgname = json2tsv
