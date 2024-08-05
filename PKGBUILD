@@ -2,8 +2,8 @@
 pkgname=cano
 _pkgname=Cano
 # alpha is represented by the last 0 since pkgver cannot contain '-'
-pkgver=0.1.0
-_pkgver=0.1.0-alpha
+pkgver=0.2.0
+_pkgver=0.2.0-alpha
 pkgrel=1
 pkgdesc="Terminal-based modal text editor"
 arch=('x86_64')
