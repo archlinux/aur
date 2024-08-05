@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 pkgname=mingw-w64-libsquish-fixed-tables
 pkgver=1.15
-pkgrel=2
+pkgrel=3
 pkgdesc="DXT compression library with Rich Geldreich's fixed solid color lookup tables (mingw-w64)"
 arch=(any)
 url="https://sourceforge.net/projects/libsquish"
@@ -10,7 +10,7 @@ makedepends=('mingw-w64-cmake' 'ninja')
 depends=(mingw-w64-libpng)
 provides=('mingw-w64-libsquish')
 conflicts=('mingw-w64-libsquish')
-options=(!strip !buildflags staticlibs)
+options=('!debug' '!strip' '!buildflags' 'staticlibs')
 source=("http://downloads.sourceforge.net/libsquish/libsquish-$pkgver.tgz"
         "gcc440.patch"
         "0001-fix-install.patch"
@@ -51,4 +51,6 @@ package() {
     ${_arch}-strip --strip-unneeded "${pkgdir}/usr/${_arch}/bin/"*.dll
     ${_arch}-strip -g "${pkgdir}/usr/${_arch}/lib/"*.a
   done
+
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }

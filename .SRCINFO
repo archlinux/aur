@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-libsquish-fixed-tables
 	pkgdesc = DXT compression library with Rich Geldreich's fixed solid color lookup tables (mingw-w64)
 	pkgver = 1.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/libsquish
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = mingw-w64-libsquish-fixed-tables
 	depends = mingw-w64-libpng
 	provides = mingw-w64-libsquish
 	conflicts = mingw-w64-libsquish
+	options = !debug
 	options = !strip
 	options = !buildflags
 	options = staticlibs
