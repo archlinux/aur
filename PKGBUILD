@@ -24,9 +24,9 @@ source=("${_pkgsrc}::git+${_url}.git"
         "${_pkgname}_fix_nfo_renderer_cpp.patch"
         "${_pkgname}_fix_nfo_view_ctrl_h.patch"
         "${_pkgname}_fix_nfo_view_ctrl_cpp.patch"
-        "${_pkgname}_fix_util_h.patch"
-        "${_pkgname}_fix_colormap_h.patch"
-        "${_pkgname}_fix_nfo_data_cpp.patch")
+        "${_pkgname}_fix_nfo_colormap_h.patch"
+        "${_pkgname}_fix_nfo_data_cpp.patch"
+        "${_pkgname}_fix_util_h.patch")
 sha256sums=('SKIP'
             'b54898446f768761f2affec657329f0778f2b217b58af5af8b59abb71856e76a'
             '200b1a655944609de6a331463ea809b8163c3f80f5766ba844fff8c1b63fd2ee'
@@ -36,9 +36,9 @@ sha256sums=('SKIP'
             '2b516b84fc5a5c4db951dddb7aa21fcd3f0982218dddb13cb13da6b6c9fe5060'
             '59f8d29ab6b6d92a533768e54ab943f5cf2c87beec57828a093ac7b2895816e1'
             '37a12dddb03fe755e2e7da4406739517378875840bb2e35970ab9218e3663ac0'
-            '53892d5903477fcd2124dcbe1188db09cecf7723a07ff84d1c1f6319a1353e6b'
             '8e86fc28563e6819a5536063e1cebdb80e9bad229554d21ed9f2ea84fb1eadcb'
-            'ffb65a24a67b32610e2ce013a511fa569c3f04f5c7cd5ab0dda39dce7a0c563c')
+            'ffb65a24a67b32610e2ce013a511fa569c3f04f5c7cd5ab0dda39dce7a0c563c'
+            '53892d5903477fcd2124dcbe1188db09cecf7723a07ff84d1c1f6319a1353e6b')
 
 pkgver() {
   cd "${_pkgsrc}"
