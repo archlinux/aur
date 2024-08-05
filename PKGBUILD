@@ -3,8 +3,8 @@
 # Maintainer: Colin Woodbury <colin@fosskers.ca>
 
 pkgname="aura-git"
-pkgver=4.0.0.r0.geaac6297
-pkgrel=4
+pkgver=4.0.1.r0.g884e787
+pkgrel=1
 pkgdesc="A package manager for Arch Linux and its AUR"
 arch=("x86_64")
 url="https://github.com/fosskers/aura"
@@ -27,7 +27,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
