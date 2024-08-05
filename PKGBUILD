@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gcap
-pkgver=2024.1.0
+pkgver=2024.1.2
 pkgrel=1
 pkgdesc='Brazilian physical person income tax (IRPF) auxiliary program for calculation of capital gains'
 arch=('any')
@@ -13,7 +13,7 @@ source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/gcap/GCA
         'gcap.desktop'
         'gcap.sh'
         'LICENSE')
-sha256sums=('69cf000bb60445c4d70298803cd594db37a79177df86b88219ad79d00b9178c0'
+sha256sums=('79c1d4cd5afa9573fc5dec08f59b756044a3dbf6188b3e0909c754590ea08bd4'
             'df111b04583a33a631ece632aa6451058a00ae3a6bee78558682e8ff253f2b51'
             '2c50b3d5df01139ce2c41b5be2ee6d34f29313de131defdf8db600d6b58b9129'
             'a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67')
@@ -31,7 +31,7 @@ package() {
     install -D -m644 "GCAP${pkgver%%.*}/Leia_me.htm" -t "${pkgdir}/usr/share/doc/${pkgname}"
     cp -dr --no-preserve='ownership' "GCAP${pkgver%%.*}/help" "${pkgdir}/usr/share/doc/${pkgname}"
     cp -dr --no-preserve='ownership' "GCAP${pkgver%%.*}/lib" "${pkgdir}/usr/share/java/${pkgname}"
-    ln -s ../../doc/gcap/help "${pkgdir}/usr/share/java/${pkgname}/help"
+    ln -s "../../doc/${pkgname}/help" "${pkgdir}/usr/share/java/${pkgname}/help"
     
     local _file
     local _res
