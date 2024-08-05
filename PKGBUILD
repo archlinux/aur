@@ -59,6 +59,10 @@ package() {
 	#Install scripts
 	mkdir -p "${pkgdir}/usr/share/device-quirks"
 	cp -rv usr/share/device-quirks/* "${pkgdir}/usr/share/device-quirks/."
+
+	# Install pipewire hardware configs
+	mkdir -p "${pkgdir}/usr/share/pipewire/hardware-profiles"
+	cp -rv usr/share/pipewire/hardware-profiles/* "${pkgdir}/usr/share/pipewire/hardware-profiles/."
 	
 	#Install device-quirks config
 	mkdir -p "${pkgdir}/etc/device-quirks"
