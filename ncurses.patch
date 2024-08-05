@@ -1,0 +1,134 @@
+diff -ur gtypist/configure.ac gtypist-new/configure.ac
+--- gtypist/configure.ac	2024-08-05 19:44:32.642253137 +0200
++++ gtypist-new/configure.ac	2024-08-05 19:58:15.874192849 +0200
+@@ -67,7 +67,7 @@
+ AC_FUNC_STRTOD
+ AC_CHECK_FUNCS([__argz_count __argz_next __argz_stringify dcgettext getcwd getwd mempcpy memset munmap nl_langinfo setlocale stpcpy strcasecmp strchr strcspn strdup strstr strtoul])
+ 
+-# check for libncursesw
++# check for libncurses
+ case $host_os in
+   *bsd* | darwin*)
+     AC_DEFINE([OS_BSD], [1], [OS BSD's curses includes ncursesw])
+@@ -79,12 +79,12 @@
+       [ncursesw library is missing: See INSTALL file for further information])])
+     ;;
+   *)
+-    AC_CHECK_HEADER(ncursesw/ncurses.h, HAVE_NCURSESW_H=1)
+-    AC_CHECK_LIB(ncursesw, add_wch, HAVE_LIBNCURSESW=1)
++    AC_CHECK_HEADER(ncurses.h, HAVE_NCURSESW_H=1)
++    AC_CHECK_LIB(ncurses, add_wch, HAVE_LIBNCURSESW=1)
+     if test -n "$HAVE_NCURSESW_H" -a -n "$HAVE_LIBNCURSESW";  then
+-       LIBS="-lncursesw $LIBS"
++       LIBS="-lncurses $LIBS"
+     else
+-       echo -e "Error:  both library and header files for the ncursesw library\n"\
++       echo -e "Error:  both library and header files for the ncurses library\n"\
+            "are required to build this package.  See INSTALL file for"\
+            "further information. On Debian/Ubuntu you need to install libncursesw5-dev."
+        exit 1;
+@@ -93,7 +93,7 @@
+ esac
+ 
+ AC_SEARCH_LIBS(cbreak, tinfo, [],
+-  [AC_MSG_ERROR([Can't find cbreak() in -lncursesw or -ltinfo])])
++  [AC_MSG_ERROR([Can't find cbreak() in -lncurses or -ltinfo])])
+ 
+ 
+ # iconv
+diff -ur gtypist/src/banner.c gtypist-new/src/banner.c
+--- gtypist/src/banner.c	2024-08-05 19:44:32.662253585 +0200
++++ gtypist-new/src/banner.c	2024-08-05 20:19:28.491190661 +0200
+@@ -32,7 +32,7 @@
+ #if defined(HAVE_PDCURSES) || defined(OS_BSD)
+ #include <curses.h>
+ #else
+-#include <ncursesw/ncurses.h>
++#include <ncurses.h>
+ #endif
+ 
+ #include "gettext.h"
+diff -ur gtypist/src/cursmenu.c gtypist-new/src/cursmenu.c
+--- gtypist/src/cursmenu.c	2024-08-05 19:55:54.614022498 +0200
++++ gtypist-new/src/cursmenu.c	2024-08-05 19:58:40.171888758 +0200
+@@ -28,7 +28,7 @@
+ #if defined(HAVE_PDCURSES) || defined(OS_BSD)
+ #include <curses.h>
+ #else
+-#include <ncursesw/ncurses.h>
++#include <ncurses.h>
+ #endif
+ 
+ #include "error.h"
+diff -ur gtypist/src/error.c gtypist-new/src/error.c
+--- gtypist/src/error.c	2024-08-05 19:55:54.614022498 +0200
++++ gtypist-new/src/error.c	2024-08-05 19:58:53.099095089 +0200
+@@ -30,7 +30,7 @@
+ #if defined(HAVE_PDCURSES) || defined(OS_BSD)
+ #include <curses.h>
+ #else
+-#include <ncursesw/ncurses.h>
++#include <ncurses.h>
+ #endif
+ 
+ #include <stdlib.h>
+diff -ur gtypist/src/gtypist.c gtypist-new/src/gtypist.c
+--- gtypist/src/gtypist.c	2024-08-05 19:55:54.614022498 +0200
++++ gtypist-new/src/gtypist.c	2024-08-05 19:59:26.210453371 +0200
+@@ -35,7 +35,7 @@
+ #if defined(HAVE_PDCURSES) || defined(OS_BSD)
+ #include <curses.h>
+ #else
+-#include <ncursesw/ncurses.h>
++#include <ncurses.h>
+ #endif
+ 
+ #include <time.h>
+diff -ur gtypist/src/infoview.c gtypist-new/src/infoview.c
+--- gtypist/src/infoview.c	2024-08-05 19:44:32.662253585 +0200
++++ gtypist-new/src/infoview.c	2024-08-05 20:18:18.142639474 +0200
+@@ -29,7 +29,7 @@
+ #if defined(HAVE_PDCURSES) || defined(OS_BSD)
+ #include <curses.h>
+ #else
+-#include <ncursesw/ncurses.h>
++#include <ncurses.h>
+ #endif
+ 
+ #include "infoview.h"
+diff -ur gtypist/src/script.c gtypist-new/src/script.c
+--- gtypist/src/script.c	2024-08-05 19:55:54.614022498 +0200
++++ gtypist-new/src/script.c	2024-08-05 19:59:56.995020088 +0200
+@@ -29,7 +29,7 @@
+ #if defined(HAVE_PDCURSES) || defined(OS_BSD)
+ #include <curses.h>
+ #else
+-#include <ncursesw/ncurses.h>
++#include <ncurses.h>
+ #endif
+ 
+ #include "error.h"
+diff -ur gtypist/src/speedbox.c gtypist-new/src/speedbox.c
+--- gtypist/src/speedbox.c	2024-08-05 19:44:32.662253585 +0200
++++ gtypist-new/src/speedbox.c	2024-08-05 20:17:51.745261606 +0200
+@@ -26,7 +26,7 @@
+ #if defined(HAVE_PDCURSES) || defined(OS_BSD)
+ #include <curses.h>
+ #else
+-#include <ncursesw/ncurses.h>
++#include <ncurses.h>
+ #endif
+ 
+ #include "speedbox.h"
+diff -ur gtypist/src/utf8.c gtypist-new/src/utf8.c
+--- gtypist/src/utf8.c	2024-08-05 19:55:54.614022498 +0200
++++ gtypist-new/src/utf8.c	2024-08-05 20:00:18.219188128 +0200
+@@ -26,7 +26,7 @@
+ #if defined(HAVE_PDCURSES) || defined(OS_BSD)
+ #include <curses.h>
+ #else
+-#include <ncursesw/ncurses.h>
++#include <ncurses.h>
+ #endif
+ 
+ #include <stdlib.h>
