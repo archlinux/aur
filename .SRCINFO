@@ -15,5 +15,6 @@ pkgbase = bux-sqlite
 	makedepends = gawk
 	depends = sqlite
 	depends = bux
+	options = !strip
 
 pkgname = bux-sqlite
