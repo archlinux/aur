@@ -1,7 +1,7 @@
 # Maintainer: Maor Kadosh <maor@avocadosh.xyz>
 pkgname=sononym
 pkgver=1.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Audio sample manager and categorizer"
 arch=("x86_64")
 url="https://www.sononym.net"
