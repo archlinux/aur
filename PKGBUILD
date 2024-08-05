@@ -1,57 +1,62 @@
-# Maintainer: yjun <jerrysteve1101 at gmail dot com>
-# Maintainer: FlyInWind <2518509078@qq.com>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: yjun <jerrysteve1101 at gmail dot com>
+# Contributor: FlyInWind <2518509078@qq.com>
 pkgname=ynote-desktop-bin
-_pkgname=${pkgname%-bin}
-pkgver=7.2.181
+_zhsname="有道云笔记"
+pkgver=8.0.10
+_electronversion=18
 pkgrel=1
-pkgdesc="Netease Youdao Ynote for Linux"
+pkgdesc="Netease Youdao Ynote for Linux.Use system-wide electron."
 arch=('x86_64')
 url="https://note.youdao.com/"
-license=('custom')
-depends=('gtk3'
-         'libnotify'
-         'nss'
-         'libxss'
-         'libxtst'
-         'xdg-utils'
-         'at-spi2-core'
-         'util-linux-libs'
-         'libappindicator-gtk3'
-         'libsecret')
-makedepends=('tar')
-provides=(${_pkgname})
-conflicts=(${_pkgname})
-source=(${_pkgname}-${pkgver}.deb::"https://cowork-common-public-cdn.lx.netease.com/artifact%2F2024%2F04%2F18%2F778e1bb6.deb"
-        "LICENSE.html::https://note.youdao.com/license.html")
-sha256sums=('14e49ffb2f73df6a5928151949a7bcac15490953bbccc9e8b3c553fc434d0a09'
-            'a8aec47c7cc6e6d838d525c89b58a962d650c84b0ebec09ecfb8955381fe6460')
-
-_install() {
-  find ${@: 2} -type f -exec install -Dm$1 {} ${pkgdir}/{} \;
+license=('LicenseRef-custom')
+provides=("${pkgname%-bin}=${pkgver}")
+conflicts=("${pkgname%-bin}")
+depends=(
+    "electron${_electronversion}"
+    'perl'
+)
+makedepends=(
+    'asar'
+)
+options=(
+    '!strip'
+    '!emptydirs'
+)
+source=(
+    "${pkgname%-bin}-${pkgver}.deb::https://cowork-common-public-cdn.lx.netease.com/artifact%2F2024%2F07%2F16%2F3144a669.deb"
+    "LICENSE.html::https://note.youdao.com/license.html"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('e0a09c0b831ab3a2086ff87321ff2990901c4a1b5dc2ace9c4b2f343e58db1ba'
+            'a8aec47c7cc6e6d838d525c89b58a962d650c84b0ebec09ecfb8955381fe6460'
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
+        -e "s|@options@||g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
+    sed -e "s|\"\/opt\/${_zhsname}\/${pkgname%-bin}\" --no-sandbox|${pkgname%-bin}|g" \
+        -e "s|\/opt\/${_zhsname}\/resources\/build\/icon.svg|${pkgname%-bin}|g" \
+        -e "s|Utility|Utility;Office|g" \
+        -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    asar e "${srcdir}/opt/${_zhsname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g;s|\.\.\/dll\/scholar|dll\/scholar|g" \
+      -i "${srcdir}/app.asar.unpacked/dist/"{main.js,scholar.js}
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
-
-prepare() {
-  mkdir -p ${srcdir}/build
-  tar -xf data.* -C build
-}
-
 package() {
-  cd ${srcdir}/build
-
-  install -dm755 ${pkgdir}/opt/${_pkgname}/
-  cp -a opt/有道云笔记/* ${pkgdir}/opt/${_pkgname}/
-
-  _install 644 usr/share/applications
-  _install 644 usr/share/icons
-
-  # desktop entry fix
-  sed -i "s|/opt/有道云笔记|/opt/${_pkgname}|g" \
-         ${pkgdir}/usr/share/applications/${_pkgname}.desktop
-
-  install -Dm644 ${srcdir}/LICENSE.html -t ${pkgdir}/usr/share/licenses/${pkgname}
-  install -d ${pkgdir}/usr/bin
-  ln -s /opt/${_pkgname}/${_pkgname} ${pkgdir}/usr/bin/
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/${_zhsname}/resources/"{app.asar.unpacked,build} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644  "${srcdir}/opt/${_zhsname}/dll/scholar/client.so" -t "${pkgdir}/usr/lib/${pkgname%-bin}/dll/scholar"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    for _icons in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    done
+    install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-# vim: set sw=2 ts=2 et:
