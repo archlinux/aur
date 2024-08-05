@@ -1,18 +1,19 @@
 pkgbase = python-psychtoolbox
 	pkgdesc = Pieces of Psychtoolbox-3 ported to CPython
-	pkgver = 3.0.18.2
+	pkgver = 3.0.19.0
 	pkgrel = 1
 	url = https://pypi.org/project/psychtoolbox/
 	arch = any
 	license = custom
 	makedepends = python-setuptools
 	makedepends = libxfixes
+	makedepends = python-wheel
 	depends = alsa-lib
 	depends = libxi
 	depends = libusb
 	depends = portaudio
 	depends = python-numpy
-	source = https://files.pythonhosted.org/packages/72/d9/063da37c6e3031479119922efad0cd2a0c15c43a6959cd1bb5eba579702d/psychtoolbox-3.0.18.2.zip
-	sha512sums = 0fedba0c953b5e78929d3afc9d149aa473072e6f2b6409533aa8a8e6e296e248b9208db3c9d1aa20aaa343b62d4ee42c912bd6e19344c6d1536ba44e46182159
+	source = https://files.pythonhosted.org/packages/source/p/psychtoolbox/psychtoolbox-3.0.19.0.tar.gz
+	sha512sums = 89711cf086e19fd02e257ca5b1acb999ca38fa2b509f60f65fa0b804f43a7850a8e20bba56fcfbb004d67bd214fd7255811c561d8b0e731d6c0347f80283e561
 
 pkgname = python-psychtoolbox
