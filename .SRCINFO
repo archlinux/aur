@@ -1,6 +1,6 @@
 pkgbase = cosmic-comp-git
 	pkgdesc = Compositor for the COSMIC desktop environment
-	pkgver = r1179.a2f9340
+	pkgver = 1.0.0.alpha.1.r0.g4748916
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-comp
 	arch = x86_64
