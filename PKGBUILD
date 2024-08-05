@@ -9,7 +9,7 @@
 pkgname="wine-staging-wow64"
 pkgver=9.14
 _pkgver="${pkgver/rc/-rc}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://www.winehq.org"
 license=('LGPL-2.1-or-later')
@@ -94,6 +94,10 @@ b2sums=(
 prepare() {
   # apply wine-staging patchset
   cd "wine-$_pkgver"
+  git -c init.defaultBranch=main init
+  git add -f .
+  git -c user.name=makepkg -c user.email=makepkg@example.com commit -m "$pkgver"
+
   "../wine-staging/staging/patchinstall.py" --all
 }
 
