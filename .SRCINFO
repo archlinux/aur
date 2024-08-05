@@ -1,0 +1,20 @@
+pkgbase = rofi-tmux
+	pkgdesc = Quickly switches tmux sessions, windows and tmuxinator projects
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/viniarck/rofi-tmux
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = rofi
+	depends = tmux
+	depends = python-rofi
+	depends = python-libtmux
+	provides = lsbi
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/r/rofi_tmux/rofi_tmux-0.4.tar.gz
+	sha256sums = 6768c28fa47c845c7a27b561f1bdf65c0b2378529146f3af9cea77d8370a488b
+
+pkgname = rofi-tmux
