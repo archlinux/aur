@@ -2,8 +2,8 @@
 
 pkgname=ramfetch-git
 _pkgname=ramfetch
-pkgver=1.0.4.ec9df6a
-pkgrel=2
+pkgver=1.1.0a.r0.gec9df6a
+pkgrel=1
 pkgdesc="A fetch which displays memory info using /proc/meminfo"
 arch=('x86_64')
 url="https://codeberg.org/jahway603/$_pkgname"
@@ -13,6 +13,12 @@ conflicts=('ramfetch')
 provides=('ramfetch')
 source=("git+$url.git")
 sha256sums=('SKIP')
+
+# https://wiki.archlinux.org/title/VCS_package_guidelines
+pkgver() {
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags --abbrev=7 | sed 's/-/.r/;s/-/./'
+}
 
 package() {
   cd $_pkgname

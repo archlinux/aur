@@ -1,7 +1,7 @@
 pkgbase = ramfetch-git
 	pkgdesc = A fetch which displays memory info using /proc/meminfo
-	pkgver = 1.0.4.ec9df6a
-	pkgrel = 2
+	pkgver = 1.1.0a.r0.gec9df6a
+	pkgrel = 1
 	url = https://codeberg.org/jahway603/ramfetch
 	arch = x86_64
 	license = MIT
