@@ -1,6 +1,6 @@
 pkgbase = arm-linux-gnueabi-gcc
 	pkgdesc = The GNU Compiler Collection - cross compiler for ARM GNU EABI little-endian target
-	pkgver = 14.1.0
+	pkgver = 14.2.0
 	pkgrel = 1
 	url = http://gcc.gnu.org/
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = arm-linux-gnueabi-gcc
 	depends = zlib
 	options = !emptydirs
 	options = !strip
-	source = https://gcc.gnu.org/pub/gcc/releases/gcc-14.1.0/gcc-14.1.0.tar.xz
-	source = https://gcc.gnu.org/pub/gcc/releases/gcc-14.1.0/gcc-14.1.0.tar.xz.sig
+	source = https://gcc.gnu.org/pub/gcc/releases/gcc-14.2.0/gcc-14.2.0.tar.xz
+	source = https://gcc.gnu.org/pub/gcc/releases/gcc-14.2.0/gcc-14.2.0.tar.xz.sig
 	source = https://libisl.sourceforge.io/isl-0.26.tar.xz
 	validpgpkeys = D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62
-	sha512sums = e9e224f2b26646fcf038d28dfa08b94c623bc57941f99894a321d01c600f7c68aff6b8837fd25e73e540de1f8de5606e98694a62cdcdfb525ce768b3ef6879ea
+	sha512sums = 932bdef0cda94bacedf452ab17f103c0cb511ff2cec55e9112fc0328cbf1d803b42595728ea7b200e0a057c03e85626f937012e49a7515bc5dd256b2bf4bc396
 	sha512sums = SKIP
 	sha512sums = 9b5ec16d14e48f9ac9bf9cd379d3022959cfc617ade9e0d4caf2862299564fecba09d67dbdf1a4071f2f743a4fd0fabd0b0c3d15f5cddfe7226cdd5d6c2a0c66
 

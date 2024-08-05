@@ -4,7 +4,7 @@
 
 _target=arm-linux-gnueabi
 pkgname=$_target-gcc
-_pkgver=14.1.0
+_pkgver=14.2.0
 pkgver=$_pkgver
 _islver=0.26
 pkgrel=1
@@ -98,7 +98,7 @@ package() {
   # Remove files that conflict with host gcc package
   rm -r "$pkgdir/usr/share/"{man/man7,info}
 }
-sha512sums=('e9e224f2b26646fcf038d28dfa08b94c623bc57941f99894a321d01c600f7c68aff6b8837fd25e73e540de1f8de5606e98694a62cdcdfb525ce768b3ef6879ea'
+sha512sums=('932bdef0cda94bacedf452ab17f103c0cb511ff2cec55e9112fc0328cbf1d803b42595728ea7b200e0a057c03e85626f937012e49a7515bc5dd256b2bf4bc396'
             'SKIP'
             '9b5ec16d14e48f9ac9bf9cd379d3022959cfc617ade9e0d4caf2862299564fecba09d67dbdf1a4071f2f743a4fd0fabd0b0c3d15f5cddfe7226cdd5d6c2a0c66')
 
