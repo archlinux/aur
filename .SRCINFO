@@ -1,0 +1,25 @@
+pkgbase = deemix-fix-gui-appimage-git
+	pkgdesc = A GUI electron app for the deemix library
+	pkgver = r264.a755828
+	pkgrel = 1
+	url = https://gitlab.com/deeplydrumming/DeemixFix
+	arch = x86_64
+	license = GPL3-or-later
+	makedepends = git
+	makedepends = pnpm
+	makedepends = electron
+	makedepends = unappimage-git
+	makedepends = cairo
+	depends = hicolor-icon-theme
+	provides = deemix
+	conflicts = deemix-gui-appimage
+	conflicts = deemix-gui-git
+	options = !strip
+	source = git+https://gitlab.com/deeplydrumming/DeemixFix
+	source = packagefix.patch
+	source = deemix-gui.desktop
+	b2sums = SKIP
+	b2sums = 8544eeed4112f12417a6fdd6e22c90a4877d013bafeb009a594314c5f0f0fd612d995af1dfea74a6c24a7f98b782f021eed75d4a8eb2081d63e4b14804fcaafc
+	b2sums = 0c2d4326bfb12715930139e055e6543fc8d6d3863725dd3e1cac4f052dd8df7b32577ea5c08ed0a903bfcff227f311d0a5a3d407ace655c89963138d1e77a60b
+
+pkgname = deemix-fix-gui-appimage-git
