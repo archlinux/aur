@@ -2,8 +2,8 @@
 
 pkgname=qimgv-qt6-kde-git
 _pkgname=qimgv
-pkgver=v1.0.3.alpha.r114.gd491927
-pkgrel=4
+pkgver=v1.0.3.alpha.r119.g82e6b75
+pkgrel=2
 pkgdesc="Qt6 image viewer. Fast, configurable, easy to use. Supports video playback."
 arch=(x86_64 i686 armv6h armv7h aarch64)
 url="https://github.com/easymodo/qimgv"
@@ -17,8 +17,11 @@ optdepends=('kimageformats: support for more image formats'
 provides=("qimgv")
 conflicts=("qimgv")
 patch="556.patch"
-source=(git+"${url}".git)
-md5sums=('SKIP')
+source=(git+"${url}".git
+        $patch
+)
+md5sums=('SKIP'
+         'baa77b45698b38f63c2e7b9a297196fb')
 
 pkgver() {
     cd ${_pkgname}
@@ -27,7 +30,7 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    patch -p1 -i ../../$patch
+    patch -p1 -i "${srcdir}/$patch"
     install -d build
 }
 
