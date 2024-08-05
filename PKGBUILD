@@ -10,7 +10,6 @@ url="https://www.bleachbit.org/"
 license=('GPL')
 depends=('bleachbit'
          'polkit')
-conflicts=('bleachbit-cli') # Requires desktop functions for bleachbit
 source=('org.bleachbit.BleachBit-Root.desktop'
         'org.bleachbit.BleachBit-Root.policy')
 sha256sums=('c2b05ba8d099ede8a39fbce96bd88a4833f37d66459aa3762665346c171a86b2'

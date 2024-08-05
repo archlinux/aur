@@ -7,7 +7,6 @@ pkgbase = bleachbit-root
 	license = GPL
 	depends = bleachbit
 	depends = polkit
-	conflicts = bleachbit-cli
 	source = org.bleachbit.BleachBit-Root.desktop
 	source = org.bleachbit.BleachBit-Root.policy
 	sha256sums = c2b05ba8d099ede8a39fbce96bd88a4833f37d66459aa3762665346c171a86b2
