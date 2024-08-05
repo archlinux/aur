@@ -32,8 +32,16 @@ makedepends=(
   nlohmann-json
 )
 
+# use any of:
+#   gpg --keyserver keyserver.ubuntu.com --search-keys me@fkoehler.org
+#   gpg --recv-keys fingerprint_below
+#   gpg --import keys/pgp/*.asc
+validpgpkeys=(
+  'C5DC80511469AD81C84E3564D55A35AFB2900A11' # Fabian Köhler <me@fkoehler.org>
+)
+
 # git tag is used by the cmake script to determine app version
-source=(git+$url.git#tag=v$pkgver)
+source=(git+$url.git#tag=v$pkgver?signed)
 sha256sums=('49a99b800db270a5ed84eaf4e19c0b258998402e2730ef86452f66b62f2d7214')
 
 prepare() {

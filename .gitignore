@@ -1,6 +1,5 @@
-*
-!.gitignore
-!.SRCINFO
-!PKGBUILD
-!/*.patch
-
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/keys/

@@ -26,7 +26,8 @@ pkgbase = ktailctl
 	depends = qt6-declarative
 	depends = qt6-svg
 	depends = tailscale
-	source = git+https://github.com/f-koehler/KTailctl.git#tag=v0.17.2
+	source = git+https://github.com/f-koehler/KTailctl.git#tag=v0.17.2?signed
+	validpgpkeys = C5DC80511469AD81C84E3564D55A35AFB2900A11
 	sha256sums = 49a99b800db270a5ed84eaf4e19c0b258998402e2730ef86452f66b62f2d7214
 
 pkgname = ktailctl
