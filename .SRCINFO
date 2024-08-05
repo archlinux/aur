@@ -1,10 +1,11 @@
 pkgbase = python-imgdiff
 	pkgdesc = Compare two images side-by-side
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/imgdiff/
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
