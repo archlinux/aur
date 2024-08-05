@@ -6,7 +6,7 @@
 _pkgname=cups
 pkgname=$_pkgname-git
 pkgver=2.4.3.r351.gefb31d1a9
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenPrinting CUPS. Monolithic VCS package providing client libraries, headers and daemon."
 arch=(x86_64)
 license=('Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND Zlib AND BSD-2-Clause')
@@ -20,7 +20,7 @@ optdepends=('cups-browsed-git: to browse the network for remote CUPS queues and 
             'colord: for ICC color profile support'
             'logrotate: for logfile rotation support')
 provides=('cups' 'libcups')
-conflicts=('cups' 'libcups' 'libcups')
+conflicts=('cups' 'libcups' 'libcups-git')
 backup=(etc/cups/cupsd.conf
         etc/cups/snmp.conf
         etc/cups/printers.conf

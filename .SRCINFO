@@ -1,7 +1,7 @@
 pkgbase = cups-git
 	pkgdesc = OpenPrinting CUPS. Monolithic VCS package providing client libraries, headers and daemon.
 	pkgver = 2.4.3.r351.gefb31d1a9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openprinting.github.io/cups/
 	install = cups.install
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = cups-git
 	provides = libcups
 	conflicts = cups
 	conflicts = libcups
-	conflicts = libcups
+	conflicts = libcups-git
 	backup = etc/cups/cupsd.conf
 	backup = etc/cups/snmp.conf
 	backup = etc/cups/printers.conf
