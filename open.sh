@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [[ $@ =~ "https://" ]] || [[ $@ =~ "http://" ]]; then
+	echo "[Info] Received a request: $@, interpreting as link"
+	/usr/lib/flatpak-xdg-utils/xdg-open "$@"
+	exit $?
+fi
+
 fakeDirBase="${XDG_DOCUMENTS_DIR}/xwechat_files"
 realDirBase="${XDG_DATA_HOME}/WeChat_Data/Documents/xwechat_files"
 
