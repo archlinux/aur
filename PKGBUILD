@@ -1,17 +1,16 @@
-# Maintainer: xerus <27f at pm dot me>
+# Maintainer: xeruf <27jf at pm dot me>
 
 _pkgname='batstat'
 pkgname="${_pkgname}-git"
 pkgver=r14.c04f124
 pkgrel=1
-pkgdesc='CLI battery status'
+pkgdesc='CLI Battery Status'
 arch=('any')
 url="https://github.com/xeruf/${_pkgname}"
 license=('unknown')
 depends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-optdepends=('')
 source=("git+${url}")
 sha512sums=('SKIP')
 

@@ -1,11 +1,10 @@
 pkgbase = batstat-git
-	pkgdesc = CLI battery status
+	pkgdesc = CLI Battery Status
 	pkgver = r14.c04f124
 	pkgrel = 1
 	url = https://github.com/xeruf/batstat
 	arch = any
 	license = unknown
-	optdepends = 
 	provides = batstat
 	conflicts = batstat
 	source = git+https://github.com/xeruf/batstat
