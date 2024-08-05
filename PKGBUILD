@@ -67,6 +67,10 @@ package() {
   cd "${srcdir}"
   DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
 
+  cd "${_pkgsrc}"
+  install -Dm644 "README.md"  "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dm644 "COPYING.md" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING.md"
+
   cd "${pkgdir}/opt/${_pkgname}"  
   find "share" -type f -exec install -Dm644 "{}" "${pkgdir}/usr/{}" \;
   sed -i 's/^Exec=miktex-console$/Exec=\/opt\/miktex\/bin\/miktex-console/' "${pkgdir}/usr/share/applications/miktex-console.desktop"
