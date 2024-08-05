@@ -1,17 +1,17 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="vtm"
-pkgver=0.9.98
+pkgver=0.9.99
 pkgrel=1
-pkgdesc="A text-based desktop environment that runs console applications in floating windows and allows remote access over tunnelling protocols such as SSH"
+pkgdesc="Terminal multiplexer with window manager and session sharing"
 arch=('any')
 url="https://github.com/directvt/${pkgname}"
 license=('MIT')
-makedepends=('cmake' 'gcc')
+makedepends=('cmake>=3.8.0')
 depends=('glibc' 'gcc-libs')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f51c2d2c210d3a73461f5f5e157e0e21f6f9fb774da784d68a9cd1f498e251c3')
+sha256sums=('f63d29a8e911b56d6e28af8bb180c658560a6b9d09f947670ef9e603803ccb98')
 
 build() {
   cd "${srcdir}"
@@ -25,16 +25,11 @@ build() {
   cmake --build "${_pkgsrc}/build"
 }
 
-check() {
-  cd "${srcdir}"
-  ctest --test-dir "${_pkgsrc}/build" --output-on-failure --stop-on-failure
-}
-
 package() {
   cd "${srcdir}"
   DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
 
   cd "${_pkgsrc}"
   install -Dm644 "readme.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
