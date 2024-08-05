@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=sysbox-ce-git
-pkgver=r1786.2c471414
-pkgrel=1
+pkgver=r1827.d61db257
+pkgrel=2
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
 arch=('x86_64' 'aarch64')
@@ -58,6 +58,12 @@ prepare() {
 		sysbox/sysbox-ipc/sysboxMgrGrpc/sysboxMgrProtobuf/Makefile
 
 	patch -d sysbox -Np1 -i "$srcdir/Honor-SOURCE_DATE_EPOCH-for-reproducible-builds.patch"
+
+	# Support for protoc-gen-go-rpc 1.5.0-1 / 1.5.1-1
+	# https://github.com/grpc/grpc-go/blob/cmd/protoc-gen-go-grpc/v1.5.1/cmd/protoc-gen-go-grpc/grpc.go#L181
+	sed -i 's/--go_out=. --go-grpc_out=./--go_out=. --go-grpc_out=. --go-grpc_opt=use_generic_streams_experimental=false/g' \
+		sysbox/sysbox-ipc/sysboxFsGrpc/sysboxFsProtobuf/Makefile \
+		sysbox/sysbox-ipc/sysboxMgrGrpc/sysboxMgrProtobuf/Makefile
 }
 
 build() {
