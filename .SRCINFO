@@ -7,5 +7,7 @@ pkgbase = hoarder-cli
 	license = AGPL-3.0-or-later
 	makedepends = npm
 	depends = nodejs
+	source = hoarder-cli-0.13.7.tgz::https://registry.npmjs.org/@hoarderapp/cli/-/cli-0.13.7.tgz
+	sha256sums = e55ab8fcd8083472d09970fb8bed52c5e7cb75bbdada10c3041fdc87360194dd
 
 pkgname = hoarder-cli
