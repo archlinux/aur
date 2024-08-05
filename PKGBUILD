@@ -5,12 +5,12 @@
 pkgname=python-soundcard
 _pkg=SoundCard
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Play and record audio without resorting to CPython extensions'
 arch=('any')
 url='https://github.com/bastibe/soundcard'
 license=('BSD')
-depends=('pulseaudio' 'python-cffi' 'python-numpy')
+depends=('pulse-native-provider' 'python-cffi' 'python-numpy')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 #source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
