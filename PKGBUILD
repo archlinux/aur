@@ -2,14 +2,14 @@
 pkgname=streamcontroller
 _pkgname=${pkgname%-git}
 _reponame=StreamController
-pkgver=r1566.8c222e9
+pkgver=r1571.488a38c
 pkgrel=1
 pkgdesc="An elegant Linux app for the Elgato Stream Deck with support for plugins"
 arch=('any')
 url="https://github.com/StreamController/StreamController"
 license=('GPL-3')
 depends=('python')
-makedepends=('git')
+makedepends=('git' 'python-pip')
 source=("git+https://github.com/StreamController/StreamController.git")
 sha256sums=('SKIP')
 
@@ -43,6 +43,9 @@ package() {
 
     # Install application entry
     install -Dm644 "$startdir/streamcontroller.desktop" "$pkgdir/usr/share/applications/streamcontroller.desktop"
+
+    # Install icon
+    install -Dm644 "$srcdir/$_reponame/flatpak/icon_256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/streamcontroller.png"
 }
 
 clean() {

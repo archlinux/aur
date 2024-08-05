@@ -5,6 +5,6 @@ Name=StreamController
 Comment=Control your Elgato Stream Decks
 Path=/
 Exec=streamcontroller
-Icon=com.core447.StreamController
+Icon=streamcontroller
 Terminal=false
 Categories=Utility
