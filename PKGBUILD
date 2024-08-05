@@ -2,7 +2,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-avro
-pkgver=1.11.3
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Avro is a serialization and RPC framework."
 arch=(any)
@@ -16,7 +16,7 @@ makedepends=('python-build'
              'python-setuptools'
              'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/a/${pkgname#python-}/${pkgname#python-}-$pkgver.tar.gz")
-b2sums=('3fbd8ea80eeea212e9136207c5207af5571ad74e21d5ab469fc1a86525cffb2f80477757be8b63cd026d9b75ec596d30b2c1bdf4abba6b15711cd3dffafcf80e')
+b2sums=('393f918c047bed572bcb1803870a7bafe29d0a14c82d2da082665a4d72bd6277bf0410e4349ca43a320682f4ebd2742b5a3262fe86e5ed861fcf1c0e49a8c778')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
