@@ -1,0 +1,15 @@
+pkgbase = python-ochre
+	pkgdesc = A down-to-earth approach to colors
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/getcuia/ochre
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	source = ochre-0.4.0.tar.gz::https://github.com/getcuia/ochre/archive/v0.4.0.tar.gz
+	sha256sums = 218482b0e5d3fab6c250091862201380e8d90a67bfef545186624399a19bd19a
+
+pkgname = python-ochre
