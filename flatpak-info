@@ -1,5 +1,5 @@
 [Application]
-name=com.qq.weixin.uos.whatever
+name=wechat
 
 [Instance]
 instance-id=114514

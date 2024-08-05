@@ -1,7 +1,6 @@
 [Desktop Entry]
 Comment=WeChat
 Comment[zh_CN]=微信
-TryExec=wechat-uos-qt
 Exec=wechat-uos-qt %u
 Icon=wechat-uos-qt
 Name=WeChat
@@ -15,6 +14,7 @@ X-GNOME-SingleWindow=true
 SingleMainWindow=true
 Actions=quit;nosandbox;opendir;
 StartupWMClass=wechat
+StartupNotify=true
 
 [Desktop Action quit]
 Name=Quit WeChat

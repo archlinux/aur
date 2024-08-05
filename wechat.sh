@@ -236,6 +236,8 @@ function execApp() {
 	-p BindReadOnlyPaths=/usr/bin/true:/usr/bin/lsblk \
 	-p BindReadOnlyPaths=/opt/wechat-uos-qt/files:/usr/lib/license \
 	-p BindReadOnlyPaths=-/run/systemd/resolve/stub-resolv.conf \
+	-p BindReadOnlyPaths=/usr/share/wechat-uos-qt/license/etc/os-release:"${osRel}" \
+	-p BindReadOnlyPaths=/usr/lib/wechat-uos-qt/flatpak-info:"${XDG_RUNTIME_DIR}/.flatpak-info" \
 	-p Environment=PATH=/sandbox:"${PATH}" \
 	-- \
 	bwrap \
@@ -268,9 +270,11 @@ function execApp() {
 		--ro-bind-try "${XAUTHORITYpath}" "${XAUTHORITYpath}" \
 		--ro-bind /usr/lib/wechat-uos-qt/open \
 			/sandbox/dde-file-manager \
+		--ro-bind /usr/lib/wechat-uos-qt/open \
+			/sandbox/xdg-open \
+		--ro-bind /usr/lib/wechat-uos-qt/open \
+			/sandbox/open \
 		--ro-bind /usr/share/wechat-uos-qt/license/var/ /var/ \
-		--ro-bind /usr/share/wechat-uos-qt/license/etc/os-release \
-			"${osRel}" \
 		--ro-bind /usr/share/wechat-uos-qt/license/etc/lsb-release \
 			/etc/lsb-release \
 		--ro-bind /usr/lib/wechat-uos-qt/user-dirs.dirs \
@@ -283,16 +287,18 @@ function execApp() {
 			"${XDG_CONFIG_HOME}"/Trolltech.conf \
 		--ro-bind-try "${XDG_CONFIG_HOME}"/kdeglobals \
 			"${XDG_CONFIG_HOME}"/kdeglobals \
-		--ro-bind /usr/lib/wechat-uos-qt/flatpak-info \
-				/.flatpak-info \
 		--ro-bind-try "/run/systemd/resolve/stub-resolv.conf" \
 			"/run/systemd/resolve/stub-resolv.conf" \
 		--dir "${XDG_DOCUMENTS_DIR}" \
-		--ro-bind "${XDG_DATA_HOME}/WeChat_Data" \
+		--bind "${XDG_DATA_HOME}/WeChat_Data" \
 			"${XDG_DATA_HOME}/WeChat_Data" \
 		${bwCamPar} \
 		--setenv XDG_DOCUMENTS_DIR "${XDG_DOCUMENTS_DIR}" \
 		--setenv XDG_DATA_HOME "${XDG_DATA_HOME}" \
+		--unshare-all \
+		--share-net \
+		--unshare-user \
+		--disable-userns \
 		-- \
 			"${launchTarget}"
 	if [[ $? = 0 ]]; then
@@ -360,6 +366,7 @@ function dbusProxy() {
 			--ro-bind /usr/lib /usr/lib \
 			--ro-bind /usr/lib64 /usr/lib64 \
 			--ro-bind /usr/bin /usr/bin \
+			--ro-bind-try /usr/share /usr/share \
 			--bind "${XDG_RUNTIME_DIR}" "${XDG_RUNTIME_DIR}" \
 			--ro-bind /usr/lib/wechat-uos-qt/flatpak-info \
 				/.flatpak-info \
@@ -369,6 +376,7 @@ function dbusProxy() {
 			--log \
 			--filter \
 			--own=org.kde.* \
+			--talk=org.freedesktop.portal.Flatpak \
 			--talk=org.freedesktop.portal.Desktop \
 			--talk=org.freedesktop.portal.* \
 			--talk=org.freedesktop.Notifications \
