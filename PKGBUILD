@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dopamine-bin
 _pkgname=Dopamine
-pkgver=3.0.0_preview.28
-_electronversion=25
+pkgver=3.0.0_preview.29
+_electronversion=26
 pkgrel=1
-pkgdesc="The audio player that keeps it simple"
+pkgdesc="The audio player that keeps it simple.Use system-wide electron."
 arch=('x86_64')
 url="https://github.com/digimezzo/dopamine"
 license=("GPL-3.0-only")
@@ -12,13 +12,12 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'nodejs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1540e9a578b843c5bd1f4896612dbc7148c01ee0a17edd31abe59c7c1910b1c4'
+sha256sums=('8aa7640e36f70f12782392d7bf6dd5953632f39d15bddd7ef5cf89324ff82b2f'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
