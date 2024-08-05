@@ -7,7 +7,7 @@ pkgdesc='A collection of post-processing shaders written in the ReShade FX shade
 arch=('any')
 url='https://github.com/crosire/reshade-shaders'
 license=('custom')
-makedepends=('git' 'curl' 'unzip')
+makedepends=('git' 'curl' 'libarchive')
 source=("git+https://github.com/crosire/reshade-shaders.git#branch=list")
 sha256sums=(SKIP)
 install=reshade-shaders.install
@@ -33,7 +33,7 @@ build() {
                 msg "Failed to download ${ini_array[url]}"
                 exit 1
             fi
-            if ! /usr/bin/unzip "${ini_array[name]}.zip"; then
+            if ! /usr/bin/bsdunzip "${ini_array[name]}.zip"; then
                 msg "Failed to extract ${ini_array[name]}.zip"
                 exit 1
             fi
