@@ -1,6 +1,6 @@
 pkgbase = cosmic-edit-git
 	pkgdesc = Text editor for the COSMIC desktop
-	pkgver = r462.df5d109
+	pkgver = 1.0.0.alpha.1.r0.gdf5d109
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-edit
 	arch = x86_64
