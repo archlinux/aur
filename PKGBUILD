@@ -2,10 +2,10 @@
 
 pkgname=mastotool-git
 _pkgname=mastotool
-pkgver=0.2.4.43a1766
+pkgver=v0.2.4.r15.g43a1766
 pkgrel=1
 pkgdesc="A collection of tools to work with your Mastodon account"
-arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/muesli/${_pkgname}"
 license=('MIT')
 provides=($_pkgname)
@@ -13,6 +13,12 @@ conflicts=($_pkgname)
 makedepends=('git' 'go')
 source=("git+$url.git")
 sha256sums=('SKIP')
+
+# https://wiki.archlinux.org/title/VCS_package_guidelines
+pkgver() {
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags --abbrev=7 | sed 's/-/.r/;s/-/./'
+}
 
 prepare() {
     export GOPATH="$srcdir/gopath"
@@ -40,9 +46,5 @@ build() {
 
 package() {
   install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
-  install -Dm755 "${srcdir}/${_pkgname}/$_pkgname" "${pkgdir}/opt/${_pkgname}/$_pkgname"
-
-  # links binary to /usr/bin
-  install -d "${pkgdir}/usr/bin"
-  ln -s /opt/${_pkgname}/$_pkgname "${pkgdir}/usr/bin"
+  install -Dm755 "${srcdir}/${_pkgname}/$_pkgname" "${pkgdir}/usr/bin/$_pkgname"
 }
