@@ -4,7 +4,7 @@
 pkgname='fastgithub-bin'
 _pkgName='fastgithub'
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Speedup github access in China"
 arch=('x86_64' 'aarch64')
 url="https://github.com/WangGithubUser/FastGitHub"
@@ -22,7 +22,13 @@ sha256sums_aarch64=('f17ffdb8ac34c64cc31a82b5a93ee904c49ba8629e9e968022b5ea4a019
 package() {
     mkdir -p "${pkgdir}/opt/${pkgname}"
     mkdir -p "${pkgdir}/usr/bin"
+    mkdir -p "${pkgdir}/usr/share/licenses"
     cp -a "${srcdir}/${_pkgName}_linux-x64/"* "${pkgdir}/opt/${pkgname}"
-    chmod +x ${pkgdir}/opt/${pkgname}/${_pkgname}
+    
+    chmod 755 "${srcdir}/${_pkgName}_linux-x64/${_pkgname}" "${pkgdir}/opt/${pkgname}/${_pkgname}"
+    chmod 755 "${srcdir}/${_pkgName}_linux-x64/dnscrypt-proxy/dnscrypt-proxy" "${pkgdir}/opt/${pkgname}/dnscrypt-proxy/dnscrypt-proxy"
+    
     ln -s "/opt/${pkgname}/${_pkgName}" "${pkgdir}/usr/bin/${_pkgName}"
+    ln -s "/opt/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    ln -s "/opt/${pkgname}/dnscrypt-proxy/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/dnscrypt-proxy_LICENSE"
 }
