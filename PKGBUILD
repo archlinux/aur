@@ -2,7 +2,7 @@
 pkgdesc='Wayfire Configuration Manager'
 pkgname=wcm
 pkgver=0.8.0
-pkgrel=5
+pkgrel=6
 arch=(x86_64 aarch64)
 url=https://wayfire.org
 license=(MIT)
@@ -14,7 +14,7 @@ b2sums=('4d845edc631bda6b3fbee181d64897b366f4e73af7fef0e912f0a5dc9c7db4dc731319b
 build ()
 {
 	rm -rf build
-	PKG_CONFIG_PATH=/usr/lib/wlroots0.16/pkgconfig \
+	PKG_CONFIG_PATH=/usr/lib/wlroots0.17/pkgconfig \
 	arch-meson "${pkgname}-${pkgver}" build \
 		--auto-features=disabled \
 		-Dwf_shell=enabled \
