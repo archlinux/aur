@@ -1,0 +1,3 @@
+[dsp56300-emulator]
+source = "git"
+git = "https://github.com/dsp56300/gearmulator.git"
