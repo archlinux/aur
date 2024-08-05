@@ -3,7 +3,7 @@
 
 _pkgname=spectre-meltdown-checker
 pkgname=${_pkgname}-pt-br
-pkgver=0.46+26+gbd0c7c9
+pkgver=0.46+29+g34c6095
 pkgrel=1
 pkgdesc="Spectre, Meltdown, Foreshadow, Fallout, RIDL, ZombieLoad verificador de vulnerabilidade/mitigação"
 arch=('any')
@@ -13,12 +13,12 @@ depends=('sh' 'sqlite')
 makedepends=('git' 'patch')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
-_commit=bd0c7c94b5dded3b3178620fc8d166f98cdf503d
+_commit=34c6095912d115551f69435a55d6e0445932fdf9
 source=("git+https://github.com/speed47/spectre-meltdown-checker.git#commit=$_commit"
         'translate-pt-br.patch')
 
-sha256sums=('SKIP'
-            '60d4ba956556ce2f6a9d6799663490888fdc50654ad02ca8dca491b94a5ab826')
+sha256sums=('fee2ea23d9e11743dcc4f06d916fba6b9b0526e84a5f514fdc495498404158d5'
+            '2a3efabcd2d75d9a4ac4a411f55b539f58d673fbd10c3d9d6a82e83a392656aa')
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
