@@ -234,6 +234,8 @@ function execApp() {
 	-p RestrictAddressFamilies=~AF_PACKET \
 	-p PrivateTmp=yes \
 	-p BindReadOnlyPaths=/usr/bin/true:/usr/bin/lsblk \
+	-p BindReadOnlyPaths=/dev/null:/proc/cpuinfo \
+	-p BindReadOnlyPaths=/dev/null:/proc/meminfo \
 	-p BindReadOnlyPaths=/opt/wechat-uos-qt/files:/usr/lib/license \
 	-p BindReadOnlyPaths=-/run/systemd/resolve/stub-resolv.conf \
 	-p BindReadOnlyPaths=/usr/share/wechat-uos-qt/license/etc/os-release:"${osRel}" \
