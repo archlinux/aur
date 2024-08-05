@@ -1,7 +1,7 @@
 pkgbase = pgvecto.rs
 	pkgdesc = Postgres extension that provides vector similarity search functions. It is written in Rust and based on pgrx.
-	pkgver = 0.2.0
-	pkgrel = 5
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/tensorchord/pgvecto.rs
 	arch = x86_64
 	license = Apache-2.0
@@ -22,10 +22,10 @@ pkgbase = pgvecto.rs
 	makedepends = postgresql>=16
 	makedepends = clang>=16
 	makedepends = rustup
-	provides = pgvecto.rs=0.2.0
+	provides = pgvecto.rs=0.3.0
 	conflicts = pgvecto.rs
 	options = !lto
-	source = pgvecto.rs-0.2.0.tar.gz::https://github.com/tensorchord/pgvecto.rs/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 671bfe39a3b87d5dfa5229ab0beffff1bd09686b53779dc511248e79aa4b2646
+	source = pgvecto.rs-0.3.0.tar.gz::https://github.com/tensorchord/pgvecto.rs/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 691c947673d0367ed93dda154ddf2e667e0165d0092dd4a43861ed9641eac93e
 
 pkgname = pgvecto.rs

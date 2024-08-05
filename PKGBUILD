@@ -3,8 +3,8 @@
 _pgver=16  # postgresql version
 _pkgbase=pgvecto.rs
 pkgname=${_pkgbase}
-pkgver=0.2.0
-pkgrel=5
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Postgres extension that provides vector similarity search functions. It is written in Rust and based on pgrx."
 arch=(x86_64)
 url="https://github.com/tensorchord/pgvecto.rs"
@@ -17,7 +17,7 @@ provides=("pgvecto.rs=$pkgver")
 conflicts=('pgvecto.rs')
 source=(
     "${_pkgbase}-${pkgver}.tar.gz::https://github.com/tensorchord/pgvecto.rs/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('671bfe39a3b87d5dfa5229ab0beffff1bd09686b53779dc511248e79aa4b2646')
+sha256sums=('691c947673d0367ed93dda154ddf2e667e0165d0092dd4a43861ed9641eac93e')
 
 _gettcstr() {
     cd ${srcdir}/${_pkgbase}-${pkgver}
