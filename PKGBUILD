@@ -2,7 +2,7 @@
 
 _name=pymodbus
 pkgname=python-${_name}
-pkgver=3.6.9
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="A fully featured modbus protocol stack in python"
 arch=("any")
@@ -12,7 +12,7 @@ depends=("python")
 makedepends=(python-build python-installer python-wheel python-setuptools)
 optdepends=("python-pygments" "python-pyserial" "python-prompt_toolkit" "python-click" "python-aiohttp" "python-typer")
 source=("v${pkgver}.tar.gz::https://github.com/pymodbus-dev/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("9d9c108f4342e4da2c7986963cdc11fb89ddfef5ab089ec12a822e6a799cc123")
+sha256sums=('4821db3fa2a47e6e945bb8dccf0954779c70366566eb19cf619ee9eafeac4e05')
 
 build() {
 	cd "${_name}-${pkgver}"
