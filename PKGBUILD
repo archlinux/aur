@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=napcat-bin
 _pkgname=NapCat
-pkgver=1.7.7
+pkgver=1.7.8
 pkgrel=1
 pkgdesc="基于NTQQ的无头Bot框架."
 arch=(
@@ -29,9 +29,9 @@ source=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}.linux.arm64.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}.linux.x64.zip")
-sha256sums=('f9dd38354229f567957ca10faeba7c2ee381db370507ca1db46d1ab7224ea5fc')
-sha256sums_aarch64=('85c6a7393a0a5e8c7d0de422c963f4e51826f519095cb0985414dc1d883c4f48')
-sha256sums_x86_64=('2dea284d631e0261cf37c9e3cdfab1890d841c774441ecd0dd9e063a5c3ee224')
+sha256sums=('1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5')
+sha256sums_aarch64=('81922d06f7b02422ed6e0fc9df445961397ec10b04e0e92bbeee8d89789d8872')
+sha256sums_x86_64=('102aede37d8b41d147c71849eb0eb066b5b1cb22876dee2982d54377bfcd7572')
 build() {
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
     chmod 755 "${srcdir}/${_pkgname}.linux."*/"${pkgname%-bin}".*
