@@ -13,12 +13,10 @@ depends=('bleachbit'
 conflicts=('bleachbit-cli') # Requires desktop functions for bleachbit
 source=('org.bleachbit.BleachBit-Root.desktop'
         'org.bleachbit.BleachBit-Root.policy')
-sha256sums=('4e05d8571e3ace3c16f99f6701ca89628d73580cf8035484c614cd6ddd845772'
+sha256sums=('c2b05ba8d099ede8a39fbce96bd88a4833f37d66459aa3762665346c171a86b2'
             '069611921297e3ab09222f594be8214e3722f2218bc48325c78758fae71f535f')
 
 package() {
   install -Dm644 org.bleachbit.BleachBit-Root.desktop -t "${pkgdir}/usr/share/applications/"
   install -Dm644 org.bleachbit.BleachBit-Root.policy -t "${pkgdir}/usr/share/polkit-1/actions/"
 }
-sha256sums=('c2b05ba8d099ede8a39fbce96bd88a4833f37d66459aa3762665346c171a86b2'
-            '069611921297e3ab09222f594be8214e3722f2218bc48325c78758fae71f535f')
