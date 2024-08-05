@@ -1,8 +1,8 @@
 pkgbase = envision-xr-git
 	pkgdesc = GUI for Monado
-	pkgver = r550.2a55ce6
+	pkgver = r558.03e3b10
 	pkgrel = 1
-	url = https://codeberg.org/gabmus/envision
+	url = https://gitlab.com/gabmus/envision
 	arch = x86_64
 	arch = aarch64
 	license = GPL
@@ -31,7 +31,7 @@ pkgbase = envision-xr-git
 	provides = envision
 	conflicts = envision
 	options = !lto
-	source = git+https://codeberg.org/gabmus/envision.git
+	source = git+https://gitlab.com/gabmus/envision.git
 	b2sums = SKIP
 
 pkgname = envision-xr-git
