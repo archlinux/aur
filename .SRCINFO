@@ -1,7 +1,7 @@
 pkgbase = posix-docs
 	pkgdesc = The Open Group Base Specifications Issue 7, 2018 Edition
 	pkgver = 1003.1_2017
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pubs.opengroup.org/onlinepubs/9699919799/
 	arch = any
 	license = custom:Propietary
