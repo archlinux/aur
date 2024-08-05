@@ -1,8 +1,8 @@
 # Maintainer: killab33z <killab33z @ protonmail-dot-com>
 pkgname=netscout-git
 _pkgname=netscout
-pkgver=0.1.1.2f409df703
-pkgrel=3
+pkgver=r37.2f409df
+pkgrel=1
 pkgdesc="OSINT tool that finds domains, subdomains, directories, endpoints and files..."
 arch=('any')
 url="https://github.com/caio-ishikawa/netscout"
