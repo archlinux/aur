@@ -1,4 +1,5 @@
 /src
 /pkg
+/npm-cache
 *.tar.gz
 *.pkg.tar.*

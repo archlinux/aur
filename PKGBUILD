@@ -10,16 +10,19 @@ license=("custom:Sustainable Use License")
 backup=("etc/default/${pkgname}")
 depends=("nodejs")
 makedepends=("npm")
-source=("${pkgname}.env"
+source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz"
+        "${pkgname}.env"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "${pkgname}.user.service")
-sha256sums=('faae87f26ac2bca25d98aa02564876742e7ed5dd4146342062196ed12d97385f'
+sha256sums=('e13cbee8ffda4b502346e6d7584fd4a0e67293b65ec23cf1c52981e2b011f7ec'
+            'faae87f26ac2bca25d98aa02564876742e7ed5dd4146342062196ed12d97385f'
             '9356600848545416c490e3d74aff8494946afca187dd409a9f768db7a364f9da'
             '6139ae944272cdc50715fd82a3c062ebf1b7fd73f7f789cba0d27f5a0436c688'
             'faa4145ec8723700c5f8f75ae2dd3d78c931597b67e200050b55fec9d73c3f06'
             '03cb79cddc04a0303be6d60ba2e7801106b6d4405d33953a2c508c5825c66a7c')
+noextract=("${pkgname}-${pkgver}.tgz")
 options=(!strip !debug)
 
 package() {
@@ -29,10 +32,14 @@ package() {
     install -Dm644 "${pkgname}.tmpfiles"     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
     install -Dm644 "${pkgname}.user.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
 
-    npm install --cache "npm-cache" --global --ignore-scripts --prefix="${pkgdir}/usr" "${pkgname}@${pkgver}"
-    npm rebuild --prefix="${pkgdir}/usr/lib/node_modules/${pkgname}" sqlite3
+    npm install --cache "${srcdir}/npm-cache" --prefix="${pkgdir}/usr" --global --ignore-scripts "${pkgname}-${pkgver}.tgz"
+    npm rebuild --cache "${srcdir}/npm-cache" --prefix="${pkgdir}/usr/lib/node_modules/${pkgname}" sqlite3
 
     find "${pkgdir}/usr/lib/node_modules/${pkgname}" -type f -name "*.ts" -o -name "*.js.map" -o -name "*.vue" | xargs rm -f
+    find "${pkgdir}/usr/lib/node_modules/${pkgname}" -type f -name "*.node" | xargs -I {} strip {}
+
+    grep -rl "${pkgdir}" "${pkgdir}" | xargs -I {} sed -i "s|${pkgdir}||g" '{}'
+    grep -rl "${srcdir}" "${pkgdir}" | xargs -I {} sed -i "s|${srcdir}||g" '{}'
 
     install -dm755 "${pkgdir}/usr/share/"{licenses,doc}"/${pkgname}"
     ln -s "/usr/lib/node_modules/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
