@@ -17,8 +17,8 @@ else
 fi
 
 pkgname=${_pkgname}-utils-staging-git
-pkgver=2.2.4.r11.g54ef0fdf60
-pkgrel=2
+pkgver=2.2.4.r12.g722af42420
+pkgrel=1
 pkgdesc="Userspace utilities for the Zettabyte File System (release staging branch)."
 arch=("i686" "x86_64" "aarch64")
 url="https://zfsonlinux.org/"
