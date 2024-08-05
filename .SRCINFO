@@ -13,6 +13,7 @@ pkgbase = cosmic-greeter-git
 	makedepends = git-lfs
 	makedepends = just
 	makedepends = mold
+	depends = cosmic-comp-git
 	depends = greetd
 	depends = libxkbcommon
 	depends = pam
