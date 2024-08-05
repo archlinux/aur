@@ -2,7 +2,7 @@
 
 pkgname=grass-sass
 _pkgname=${pkgname%-*}
-pkgver=0.13.2
+pkgver=0.13.4
 pkgrel=1
 pkgdesc='a SASS compiler written purely in Rust to replace dart-css'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -14,7 +14,7 @@ makedepends=(cargo)
 conflicts=("$_pkgname")
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('5436fb9b0e633db65be6ad42240c85a150f68858d82c5909bef0cca6ca403fcb')
+sha256sums=('577858cce48440d161c6036d83dbfb3c173058f9df297977b13b8646f88a4906')
 
 prepare() {
 	cd "$_archive"
