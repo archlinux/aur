@@ -1,20 +1,20 @@
 pkgbase = tishare-desktop-bin
 	pkgdesc = tiShare aims to send files or folders between devices easily, with cross-platform support.
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/dlguswo333/tishare-desktop
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
 	makedepends = asar
 	depends = electron26
-	provides = tishare-desktop=0.4.0
+	provides = tishare-desktop=0.5.0
 	conflicts = tishare-desktop
-	source = tishare-desktop-0.4.0.AppImage::https://github.com/dlguswo333/tishare-desktop/releases/download/v0.4.0/tiShare-0.4.0.AppImage
-	source = index-0.4.0.html::https://raw.githubusercontent.com/dlguswo333/tishare-desktop/v0.4.0/src/front/index.html
-	source = LICENSE-0.4.0::https://raw.githubusercontent.com/dlguswo333/tishare-desktop/v0.4.0/LICENSE
+	source = tishare-desktop-0.5.0.AppImage::https://github.com/dlguswo333/tishare-desktop/releases/download/v0.5.0/tiShare-0.5.0.AppImage
+	source = index-0.5.0.html::https://raw.githubusercontent.com/dlguswo333/tishare-desktop/v0.5.0/src/front/index.html
+	source = LICENSE-0.5.0::https://raw.githubusercontent.com/dlguswo333/tishare-desktop/v0.5.0/LICENSE
 	source = tishare-desktop.sh
-	sha256sums = 0df6c5896536151b3ac2538435ac673f46a50078b6886fd98e4b1e29ea56c39c
+	sha256sums = 1716876809ac032bbf470edfb1e9c8ec5f36eb2599ac36ac44e977f894d136eb
 	sha256sums = a9db662637dcb2f531e9d9078fa90a70ea9e3d8f48bdd499e30993ad6c0ce228
 	sha256sums = 5461c88ddb4ff9c0e56d75fdb18fe2719a5afe1c676513496a2e07b45ccebb99
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
