@@ -2,3 +2,8 @@ post_install()
 {
     /opt/thinlinc/sbin/tl-setup
 }
+
+post_upgrade()
+{
+    /opt/thinlinc/sbin/tl-setup
+}
