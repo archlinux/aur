@@ -1,7 +1,7 @@
 # Maintainer: OGIOS <ogios@foxmail.com>
 _pkgname=way-edges
 pkgname=way-edges-git
-pkgver=0.1
+pkgver=r234.09fec1c
 pkgrel=1
 pkgdesc="Hidden widget on screen edges"
 arch=('x86_64' 'aarch64')
@@ -11,23 +11,13 @@ depends=('gtk4' 'gtk4-layer-shell' 'cairo' 'pango' 'wayland' 'glib2' 'pipewire-p
 makedepends=(cargo git)
 provides=(way-edges)
 options=(!debug)
-# source=("$_pkgname::git+$url")
-# sha256sums=('SKIP')
-
-prepare() {
-  if [ -d "$_pkgname" ]; then
-    cd "$_pkgname"
-    git fetch origin
-    git reset --hard origin/master
-  else
-    git clone "$url.git" "$_pkgname" --depth=1
-  fi
-}
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  # printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  printf "%s" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # printf "%s" "$(git rev-parse --short HEAD)"
 }
 
 build() {
