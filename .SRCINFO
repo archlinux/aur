@@ -1,5 +1,5 @@
 pkgbase = muzika-git
-	pkgdesc = GTK4/Adwaita elegant Youtube Music streaming app
+	pkgdesc = GTK4/Adwaita Elegant Youtube Music streaming app
 	pkgver = r1262.daca260
 	pkgrel = 1
 	url = https://github.com/vixalien/muzika
@@ -14,6 +14,7 @@ pkgbase = muzika-git
 	depends = gtk4
 	depends = libportal-gtk4
 	depends = gst-plugin-gtk4
+	depends = gst-plugins-good
 	depends = gst-plugins-bad
 	depends = libadwaita
 	provides = muzika
