@@ -5,7 +5,7 @@
 
 pkgname=inn-git
 _pkgname=inn
-pkgver=2.8.0.e370638
+pkgver=r8759.6ef2828
 pkgrel=1
 pkgdesc="Complete open source Usenet system. De facto standard for handling news routing, news spool and serving the spool to customers."
 url="https://www.isc.org/othersoftware/"
@@ -68,6 +68,12 @@ sha256sums=('SKIP'
             'b8658c900f5bce5d0b09b595496137e5f3e93bbcdc1fb1f751783e6e2873de21'
             'f58a06718396628bf110de21c052cf29c0d2e7bd0c7bd645d43b592b6ac549d4'
             'a8c269bc006eb39a140af1538a0812c54ea11f444867c28f5e9792bfdd4df71a')
+
+# https://wiki.archlinux.org/title/VCS_package_guidelines
+pkgver() {
+  cd "$srcdir/${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 prepare() {
   # fix configure file missing from git repo...

@@ -1,6 +1,6 @@
 pkgbase = inn-git
 	pkgdesc = Complete open source Usenet system. De facto standard for handling news routing, news spool and serving the spool to customers.
-	pkgver = 2.8.0.e370638
+	pkgver = r8759.6ef2828
 	pkgrel = 1
 	url = https://www.isc.org/othersoftware/
 	install = inn.install
