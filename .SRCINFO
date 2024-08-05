@@ -1,7 +1,7 @@
 pkgbase = sysbox-ce
 	pkgdesc = Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)
 	pkgver = 0.6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nestybox/sysbox
 	install = install.sh
 	arch = x86_64

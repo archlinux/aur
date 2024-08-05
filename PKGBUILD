@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=sysbox-ce
 pkgver=0.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
 arch=('x86_64' 'aarch64')
@@ -77,6 +77,12 @@ prepare() {
 	patch -d sysbox/sysbox-ipc -Np1 -i "$srcdir/go-get-grpc-v1.63.0-and-tidy-sysbox-ipc.patch"
 	patch -d sysbox/sysbox-mgr -Np1 -i "$srcdir/go-get-grpc-v1.63.0-and-tidy-sysbox-mgr.patch"
 	patch -d sysbox/sysbox-runc -Np1 -i "$srcdir/go-get-grpc-v1.63.0-and-tidy-sysbox-runc.patch"
+
+	# Support for protoc-gen-go-rpc 1.5.0-1 / 1.5.1-1
+	# https://github.com/grpc/grpc-go/blob/cmd/protoc-gen-go-grpc/v1.5.1/cmd/protoc-gen-go-grpc/grpc.go#L181
+	sed -i 's/--go_out=. --go-grpc_out=./--go_out=. --go-grpc_out=. --go-grpc_opt=use_generic_streams_experimental=false/g' \
+		sysbox/sysbox-ipc/sysboxFsGrpc/sysboxFsProtobuf/Makefile \
+		sysbox/sysbox-ipc/sysboxMgrGrpc/sysboxMgrProtobuf/Makefile
 }
 
 build() {
