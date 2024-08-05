@@ -1,6 +1,6 @@
 # Maintainer: Maor Kadosh <maor@avocadosh.xyz>
 pkgname=sononym
-pkgver=1.5.3
+pkgver=1.5.5
 pkgrel=2
 pkgdesc="Audio sample manager and categorizer"
 arch=("x86_64")
