@@ -15,5 +15,6 @@ pkgbase = bux-mariadb-client
 	makedepends = gawk
 	depends = mariadb-libs
 	depends = bux
+	options = !strip
 
 pkgname = bux-mariadb-client
