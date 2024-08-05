@@ -1,6 +1,6 @@
 # Maintainer: Anže Pintar <anze@anzepintar.com>
 
-pkgname=easyindex-cli
+pkgname=easyindex-cli-bin
 pkgver=1.0.6
 pkgrel=1
 pkgdesc="Easyindex-cli makes super easy to use Google Index API and IndexNow API"
