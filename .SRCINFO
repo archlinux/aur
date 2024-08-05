@@ -1,0 +1,20 @@
+pkgbase = infekt-cli
+	pkgdesc = The ultimate best NFO viewer, ever!
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = infekt.ws
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = cmake>=3.2.0
+	makedepends = zlib
+	makedepends = pkgconf
+	depends = glibc
+	depends = gcc-libs
+	depends = cairo
+	depends = libpng
+	source = infekt-1.3.0.tar.gz::https://github.com/syndicodefront/infekt/archive/v1.3.0.tar.gz
+	source = infekt-cli_fix_build_type.patch
+	sha256sums = 0768e7147288c7150d7c8d933f36dd99df5d13e96071b3870ce1c61cc9a0765c
+	sha256sums = 1366192d7ed37dad1eb38f4b6b639740afb72ece6d47372d0bb198b0e0c3ed2f
+
+pkgname = infekt-cli
