@@ -10,7 +10,7 @@ license=('custom:sononym')
 source=("https://www.sononym.net/download/sononym-${pkgver}.tar.bz2"
         "logo.svg"
         "sononym.desktop")
-sha256sums=("08f08433c1bd2d26be15fcd5d31a7bac06e05f58a2f3c6f8847b135537bdbc23"
+sha256sums=("d8e7feecc5b289184ad3d8c949d166af5fe2335700b37d0185c159b1d8366c1e"
             "SKIP"
             "SKIP")
 
