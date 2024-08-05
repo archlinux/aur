@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-workspaces-git
-pkgver=r227.c1acf0c
+pkgver=1.0.0.alpha.1.r0.gc1acf0c
 pkgrel=1
 pkgdesc="Cosmic workspaces"
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}-epoch"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^epoch-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
