@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electron-widgets-git
 _pkgname="Electron-Widgets"
-pkgver=2.1.2.r0.g1b61725
-_electronversion=30
-_nodeversion=20
+pkgver=2.1.4.r0.g517ad3f
+_electronversion=31
+_nodeversion=22
 pkgrel=1
 pkgdesc="A desktop application developed using Electron.js and Node.js. The application allows users to create and manage widgets on their desktops."
 arch=('any')
@@ -24,7 +24,8 @@ makedepends=(
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
-    "${pkgname%-git}.sh")
+    "${pkgname%-git}.sh"
+)
 sha256sums=('SKIP'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
@@ -62,8 +63,8 @@ build() {
     else
         echo "Your network is OK."
     fi
-    npm install
-    npm run package
+    NODE_ENV=development    npm install
+    NODE_ENV=production     npm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
