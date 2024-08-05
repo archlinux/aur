@@ -1,7 +1,7 @@
 pkgbase = pip2pkgbuild
 	pkgdesc = Create PKGBUILD files for Python modules fetched with PIP
 	pkgver = 0.3.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wenLiangcan/pip2pkgbuild
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = pip2pkgbuild
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python>=3.12
+	conflicts = python2-pip2pkgbuild
 	source = https://github.com/wenLiangcan/pip2pkgbuild/archive/refs/tags/v0.3.9.tar.gz
 	source = imp_repacement.patch
 	b2sums = 8080e8bf17e8401cfb9a8aa2edb3c7bbd6a2905ea1bb16edf0250fada248b3180493c0ef4fc9c2b050efd6a077e27081db7e3cd326092efbd7e5fbe24c142caf

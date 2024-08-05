@@ -4,7 +4,7 @@
 
 pkgname='pip2pkgbuild'
 pkgver='0.3.9'
-pkgrel=2
+pkgrel=3
 pkgdesc="Create PKGBUILD files for Python modules fetched with PIP"
 url="https://github.com/wenLiangcan/pip2pkgbuild"
 depends=(
@@ -17,6 +17,7 @@ makedepends=(
 	'python-setuptools'
 )
 license=('MIT')
+conflicts=("python2-$pkgname")
 arch=('any')
 source=(
 	"${url}/archive/refs/tags/v${pkgver}.tar.gz"
