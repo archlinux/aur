@@ -1,16 +1,16 @@
 pkgbase = olagem
 	pkgdesc = A terminal based typing speed test
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
-	url = https://github.com/benjamin-voisin/olagem
+	url = https://codeberg.org/BenjaminV/olagem
 	arch = x86_64
 	license = CC0-1.0
 	makedepends = cargo
-	source = olagem-0.2.1.tar.gz::https://github.com/benjamin-voisin/olagem/archive/refs/tags/v0.2.1.tar.gz
-	source = olagem-0.2.1.tar.gz.asc::https://github.com/benjamin-voisin/olagem/releases/download/v0.2.1/olagem-0.2.1.tar.gz.asc
+	source = olagem-0.2.1.tar.gz::https://codeberg.org/BenjaminV/olagem/archive/v0.2.1.tar.gz
+	source = olagem-0.2.1.tar.gz.asc::https://codeberg.org/BenjaminV/olagem/releases/download/v0.2.1/olagem-v0.2.1.tar.gz.asc
 	validpgpkeys = F6BB766662E7D433F7EE159EC5C8EDD125FBFD78
-	sha256sums = 6d3069f47a45f2ec7f429bf0256c29f4146dfe6fdfc21cc9a52a3156d1f62029
+	sha256sums = e3cf024a816c6ea49121691f3d531c6709ce52914754f0ba5816ff597923fccf
 	sha256sums = SKIP
 
 pkgname = olagem
