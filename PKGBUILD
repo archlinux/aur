@@ -15,7 +15,7 @@ url='https://community.kde.org/KDEConnect'
 license=('GPL2')
 depends=(
 kcmutils kconfigwidgets kdbusaddons kdoctools kiconthemes kio kirigami-addons knotifications kpackage kpeople kservice kstatusnotifieritem
-libfakekey modemmanager-qt pulseaudio-qt qqc2-desktop-style qt6-declarative solid
+libfakekey modemmanager-qt pulseaudio-qt qqc2-desktop-style qt6-declarative solid qt5-connectivity
 )
 makedepends=(git extra-cmake-modules wayland-protocols)
 optdepends=('sshfs: remote filesystem browser' 'python-nautilus: Nautilus integration' 'qt6-tools: for some runcommand plugin actions')
