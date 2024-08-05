@@ -1,10 +1,5 @@
-*.tar.*
-*.zip
-*.orig
-*.rej
-*.swp
-*.part
-src
-pkg
-LICENSE
-README.md
+*
+!PKGBUILD
+!*.patch
+!.SRCINFO
+!.gitignore
