@@ -10,7 +10,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.14.22.r1.g5ee5959
+pkgver=3.14.26.r9.geafd0738
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -21,6 +21,7 @@ depends=(
     glibc
     glm
     hwdata
+    lcms2
     libavif
     libcap.so
     libdecor
@@ -65,10 +66,12 @@ source=(
     'git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git'
     'git+https://github.com/ValveSoftware/openvr.git'
     'git+https://github.com/Joshua-Ashton/reshade.git'
+    'git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1'
     'git+https://github.com/KhronosGroup/SPIRV-Headers.git'
 )
 
 b2sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -126,16 +129,23 @@ pkgver() {
 }
 
 build() {
-    arch-meson "${_pkgname}" build \
+    cd "$_pkgname"
+    arch-meson . build \
         -Dforce_fallback_for=stb,wlroots,vkroots,libliftoff,glm,libdisplay-info \
         -Dpipewire=enabled
-    ninja -C build
+    # Seems to have a depedency issue that is fixed by setting -j to a low value
+    ninja -C build -j4
 }
 
 package() {
+    cd "$srcdir/$_pkgname"
+
+    install -d "$pkgdir"/usr/share/gamescope/reshade
+    cp -r "$srcdir"/GamescopeShaders/* "$pkgdir"/usr/share/gamescope/reshade/
+    chmod -R 655 "$pkgdir"/usr/share/gamescope
+
     meson install -C build --skip-subprojects --destdir="${pkgdir}"
 
-    cd "$srcdir/$_pkgname"
     install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname/"
 }
 
