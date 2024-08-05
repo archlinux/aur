@@ -1,8 +1,8 @@
 pkgname=motionbox-bin
 _pkgname=motionbox-bin
-pkgver=2.0.0.3
+pkgver=2.0.0.4
 majver=2.0.0
-subver=3
+subver=4
 pkgrel=1
 pkgdesc="MotionBox is a Video Browser for Motion Freedom"
 arch=("x86_64")
