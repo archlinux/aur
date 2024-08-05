@@ -6,7 +6,7 @@ pkgver=1.3.0.r1.gcc99c16
 pkgrel=1
 pkgdesc="The ultimate best NFO viewer, ever!"
 arch=('any')
-url="infekt.ws"
+url="https://infekt.ws"
 _url="https://github.com/syndicodefront/infekt"
 license=('GPL-2.0-or-later')
 makedepends=('git' 'cmake>=3.2.0' 'zlib' 'pkgconf')
