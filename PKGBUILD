@@ -32,8 +32,11 @@ build() {
     pnpm install --cache "${srcdir}/npm-cache"
     pnpm run build:docker
 
+    # delete map file
+    find .next/standalone -type f -iname "*.map" | xargs rm -rf
+
     # fix path
-    grep -rl "${srcdir}" . | xargs -I {} sed -i "s|${srcdir}||g" "{}"
+    grep -rl "${srcdir}/${pkgname}-${pkgver}" .next | xargs -I {} sed -i "s|${srcdir}/${pkgname}-${pkgver}|/usr/share/${pkgname}|g" "{}"
 
     # delete musl file
     rm -rf .next/standalone/node_modules/.pnpm/*musl*
