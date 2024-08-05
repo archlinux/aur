@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=microsoft-copilot-nativefier
-pkgver=31.2.1
+pkgver=31.3.1
 pkgrel=1
 pkgdesc="Microsoft Copilot desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
