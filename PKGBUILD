@@ -1,16 +1,16 @@
 # Maintainer: Zeno Sebastian Endemann <zeno.endemann@mailbox.org>
 
 pkgname=alpela
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc='Experimental minimalist audio player'
 arch=('x86_64')
 url='https://gitlab.com/z-s-e/alpela'
 license=('GPL-3.0-or-later')
-depends=('alsa-lib' 'ffmpeg' 'hicolor-icon-theme' 'qt6-base')
+depends=('alsa-lib' 'ffmpeg' 'hicolor-icon-theme' 'qt6-base' 'gcc-libs' 'glibc')
 makedepends=('git' 'cmake')
 optdepends=('realtime-privileges: allow realtime operation')
-source=('git+https://gitlab.com/z-s-e/alpela.git#commit=84de747'
+source=('git+https://gitlab.com/z-s-e/alpela.git#commit=3c4fbef67488878cc607651c9b52a6d5364d84a3'
         'git+https://gitlab.com/z-s-e/alpe.git'
         'git+https://github.com/z-s-e/lbu.git')
 sha256sums=('SKIP'
