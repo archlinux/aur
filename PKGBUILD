@@ -22,7 +22,7 @@ options=()
 install=
 changelog=
 
-source=("https://github.com/UnicomStudio/Pkg_ReadCat/raw/main/ReadCat.desktop" "https://raw.githubusercontent.com/read-cat/read-cat/main/public/icons/512x512.png")
+source=("https://github.com/UnicomStudio/Repositories/raw/main/read-cat-insiders/ReadCat.desktop" "https://raw.githubusercontent.com/read-cat/read-cat/main/public/icons/512x512.png")
 source_x86_64=('https://github.com/read-cat/read-cat/releases/download/v1.0.0-dev.240707/ReadCat-linux-x64-1.0.0-dev.f6f397a3.tar.gz')
 noextract=()
 sha256sums=('a9d3e4af9511ff2544594a20e1665aa7a6369729d727f8881e3555ba1ec10612'
