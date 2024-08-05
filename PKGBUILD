@@ -2,7 +2,7 @@
 pkgname=403jump-git
 _pkgname="${pkgname%-git}"
 pkgver=0.1.0.772eba8f8b
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool designed to bypass HTTP 403 (Forbidden) pages using various techniques."
 arch=("any")
 url="https://github.com/trap-bytes/403jump"
@@ -12,6 +12,11 @@ provides=("$_pkgname")
 conflicts=("$_pkgname" "${_pkgname}-bin")
 source=("git+$url")
 sha512sums=("SKIP")
+
+pkgver() {
+  cd "$srcdir/${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 build() {
   cd $_pkgname
