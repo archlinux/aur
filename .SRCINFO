@@ -1,6 +1,6 @@
 pkgbase = dnstop-git
 	pkgdesc = displays various tables of DNS traffic on your network
-	pkgver = 20140915.2ec80df
+	pkgver = r229.aaf21ba
 	pkgrel = 1
 	url = https://github.com/measurement-factory/dnstop
 	arch = i686
