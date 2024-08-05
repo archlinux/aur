@@ -150,7 +150,6 @@ function execApp() {
 		done
 		echo "[Info] D-Bus proxy took $(expr ${counter} / 10)s to launch"
 	fi
-	touch "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info
 	cameraDect
 	importEnv
 	if [ ${XDG_SESSION_TYPE} = wayland ]; then
@@ -232,7 +231,6 @@ function execApp() {
 	-p ProtectHome=no \
 	-p PrivateUsers=yes \
 	-p UMask=077 \
-	-p RestrictAddressFamilies=~AF_NETLINK \
 	-p RestrictAddressFamilies=~AF_PACKET \
 	-p PrivateTmp=yes \
 	-p BindReadOnlyPaths=/usr/bin/true:/usr/bin/lsblk \
@@ -247,7 +245,6 @@ function execApp() {
 		--tmpfs /sys \
 		--ro-bind /sys/dev/char /sys/dev/char \
 		--ro-bind /sys/devices /sys/devices \
-		--proc /proc \
 		--dir /sandbox \
 		--ro-bind /usr/lib/flatpak-xdg-utils/xdg-open \
 			/sandbox/chromium \
@@ -255,7 +252,8 @@ function execApp() {
 			/sandbox/firefox \
 		--ro-bind /usr/lib/wechat-uos-qt/mimeapps.list \
 			"${XDG_DATA_HOME}"/WeChat_Data/.config/mimeapps.list \
-		--bind /tmp /tmp \
+		--tmpfs /tmp \
+		--bind /proc /proc \
 		--bind /usr /usr \
 		--ro-bind /etc /etc \
 		--ro-bind-try /lib /lib \
@@ -268,10 +266,11 @@ function execApp() {
 			"${XDG_RUNTIME_DIR}/pulse" \
 		--bind "${XDG_DATA_HOME}"/WeChat_Data "${HOME}" \
 		--ro-bind-try "${XAUTHORITYpath}" "${XAUTHORITYpath}" \
-		--unshare-all \
-		--share-net \
+		--unshare-cgroup-try \
+		--unshare-ipc \
 		--unshare-user \
 		--disable-userns \
+		--unshare-uts \
 		--ro-bind /usr/lib/wechat-uos-qt/open \
 			/sandbox/dde-file-manager \
 		--ro-bind /usr/share/wechat-uos-qt/license/var/ /var/ \
@@ -289,10 +288,8 @@ function execApp() {
 			"${XDG_CONFIG_HOME}"/Trolltech.conf \
 		--ro-bind-try "${XDG_CONFIG_HOME}"/kdeglobals \
 			"${XDG_CONFIG_HOME}"/kdeglobals \
-		--ro-bind-try "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info \
-			"${XDG_RUNTIME_DIR}/.flatpak-info" \
-		--ro-bind-try "${XDG_DATA_HOME}"/WeChat_Data/.flatpak-info \
-			/.flatpak-info \
+		--ro-bind /usr/lib/wechat-uos-qt/flatpak-info \
+				/.flatpak-info \
 		--ro-bind-try "/run/systemd/resolve/stub-resolv.conf" \
 			"/run/systemd/resolve/stub-resolv.conf" \
 		--dir "${XDG_DOCUMENTS_DIR}" \
@@ -373,9 +370,16 @@ function dbusProxy() {
 			"${DBUS_SESSION_BUS_ADDRESS}" \
 			"${busDir}/bus" \
 			--log \
-			--talk=org.freedesktop.portal.Flatpak \
+			--filter \
+			--own=org.kde.* \
+			--talk=org.kde.* \
 			--talk=org.freedesktop.portal.* \
-			--call=org.freedesktop.portal.Desktop=*=* \
+			--talk=org.freedesktop.Notifications \
+			--talk=org.freedesktop.FileManager1 \
+			--talk=org.kde.StatusNotifierWatcher \
+			--talk=org.mozilla.firefox.OpenURL \
+			--call=org.freedesktop.portal.*=* \
+			--own="${busName}" \
 			--broadcast=org.freedesktop.portal.*=@/org/freedesktop/portal/*
 }
 
