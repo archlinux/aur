@@ -107,6 +107,11 @@
 #   'n' - do not apply this patch
 #   'y' - apply this patch
 #
+# Add tweak for implementing abstract class (D94942)
+# CLANGD_IMPL_ABSTRACT_CLASS:
+#   'n' - do not apply this patch
+#   'y' - apply this patch
+#
 # Hover information: Show fields indexes in layout: `Offset: 8 bytes (index 1)`
 # CLANGD_HOVERFIELDIDX:
 #   'n' - do not apply this patch
@@ -133,10 +138,11 @@
 : ${CLANGD_HOVERRECORDPAD:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_CONFIG_INCLUDE_STYLE:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_PREPROCESSOR_FOLDING:=$CLANGD_DEFAULT_PATCH_STATE}
+: ${CLANGD_IMPL_ABSTRACT_CLASS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERFIELDIDX:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt-git
-pkgver=19.r17849.ge316f1956992
+pkgver=20.r1318.g22c06aa5e94e
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -170,6 +176,7 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=main"
         'hover-record-paddings.patch'
         'config-include-style.patch'
         'lsp-preprocessor-folding.patch'
+        'implement-abstract-class.patch'
         'hover-field-idx.patch')
 sha256sums=('SKIP'
             '8d8ce66ba3a55559dacaefc5623bd1f3298d645a724f9961cc1089c563b8677d'  # hover-doxygen-trunk
@@ -192,6 +199,7 @@ sha256sums=('SKIP'
             '0f5f7cc7f984988824bca66a2d08b0fa2b1b6ccdfcc1917e5cb0ed810036cfe7'  # hover-record-paddings
             'a05f3894ddb881ef77146da6955fc0612de684d7bc09a2ef9b9fc6aa750efcac'  # config-include-style
             '020e5509e2e13578abb6943ccf228feaa0083dd27cc611fa62c7cd3d700d82f7'  # lsp-preprocessor-folding
+            '9dceaa36e551e13c4145b45baf694b04369ed525e34baa3b7f14c15f3e248e5f'  # implement-abstract-class
             '4531b804507d11e1918858551575fee81605dbac0617d7b22f335b10642e782d') # hover-field-idx
 
 pkgver() {
@@ -259,6 +267,9 @@ prepare() {
     # Refactoring patches
     if [ "$CLANGD_EXTRACTFUNC" != "n" ]; then
         apply_patch refactor-extract-function
+    fi
+    if [ "$CLANGD_IMPL_ABSTRACT_CLASS" != "n" ]; then
+        apply_patch implement-abstract-class
     fi
 
     # Inlay hints patches
