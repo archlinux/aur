@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-panel-git
-pkgver=r445.7adb861
+pkgver=1.0.0.alpha.1.r0.g47c6720
 pkgrel=1
 pkgdesc="XDG Shell Wrapper Panel for COSMIC"
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^epoch-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
