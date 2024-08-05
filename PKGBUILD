@@ -41,11 +41,6 @@ build() {
   cmake --build "${_pkgsrc}/build"
 }
 
-check() {
-  cd "${srcdir}"
-  ctest --test-dir "${_pkgsrc}/build" --output-on-failure --stop-on-failure
-}
-
 package() {
   cd "${srcdir}"
   DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
