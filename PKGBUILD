@@ -98,7 +98,7 @@ source_loong64=(
 	wechat-loong64-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_arm64.deb"
 )
 
-md5sums=('6996cf8e4375b24da3a3c545228e386c'
+md5sums=('b03915fc71ae0b137f7cfec0010fd8f2'
          '5a4978456f4fab947c0d197412af0fd1'
          '600e74549ce2258c045d5c2f7689ea63'
          'bab8288bb500c9d4d48a88af27acd16f'
@@ -134,21 +134,33 @@ function package_wechat-uos-qt() {
 	replaces+=(wechat-universal-bwrap wechat-beta-bwrap wechat-uos-bwrap)
 	tar -xf data.tar.xz ./opt/apps/com.tencent.wechat
 	mkdir -p "${pkgdir}"/opt
-	cp opt/apps/com.tencent.wechat "${pkgdir}"/opt/wechat-uos-qt -r
-	install -Dm644 wechat-uos-qt.desktop "${pkgdir}/usr/share/applications/wechat-uos-qt.desktop"
-	install -Dm755 wechat.sh "${pkgdir}/usr/bin/wechat-uos-qt"
-	install -Dm644 user-dirs.dirs "${pkgdir}/usr/lib/wechat-uos-qt/user-dirs.dirs"
-	install -Dm755 open.sh "${pkgdir}/usr/lib/wechat-uos-qt/open"
-	install -Dm644 wechat.env "${pkgdir}/usr/lib/wechat-uos-qt/envs"
-	install -Dm644 wechat-uos-qt.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/wechat-uos-qt.svg"
-	install -Dm644 mimeapps.list "${pkgdir}/usr/lib/wechat-uos-qt/mimeapps.list"
-	mkdir -p "${pkgdir}/usr/share/wechat-uos-qt/license"
+	cp -r opt/apps/com.tencent.wechat \
+		"${pkgdir}"/opt/wechat-uos-qt
+	install -Dm644 wechat-uos-qt.desktop \
+		"${pkgdir}/usr/share/applications/wechat-uos-qt.desktop"
+	install -Dm755 wechat.sh \
+		"${pkgdir}/usr/bin/wechat-uos-qt"
+	install -Dm644 user-dirs.dirs \
+		"${pkgdir}/usr/lib/wechat-uos-qt/user-dirs.dirs"
+	install -Dm755 open.sh \
+		"${pkgdir}/usr/lib/wechat-uos-qt/open"
+	install -Dm644 wechat.env \
+		"${pkgdir}/usr/lib/wechat-uos-qt/envs"
+	install -Dm644 wechat-uos-qt.svg \
+		"${pkgdir}/usr/share/icons/hicolor/scalable/apps/wechat-uos-qt.svg"
+	install -Dm644 mimeapps.list \
+		"${pkgdir}/usr/lib/wechat-uos-qt/mimeapps.list"
+	mkdir -p \
+		"${pkgdir}/usr/share/wechat-uos-qt/license"
 	install -d "${pkgdir}/usr/lib/license"
 	chmod 0755 "${pkgdir}/usr/lib/license" -R
 	cp "${srcdir}/license"/* -r "${pkgdir}/usr/share/wechat-uos-qt/license"
 	chmod 0755 -R "${pkgdir}/usr/share/wechat-uos-qt/license"
 	install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
-	echo "https://www.wechat.com/us/service_terms.html" >"${pkgdir}/usr/share/licenses/${pkgname}/ToS.txt"
+	echo "https://www.wechat.com/us/service_terms.html" \
+		>"${pkgdir}/usr/share/licenses/${pkgname}/ToS.txt"
+	install -Dm644 "${srcdir}/flatpak-info" \
+		"${pkgdir}/usr/lib/wechat-uos-qt/flatpak-info"
 }
 
 function package_wechat-uos-bwrap() {

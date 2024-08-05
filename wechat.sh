@@ -358,11 +358,16 @@ function dbusProxy() {
 	rm "${busDir}" -r
 	mkdir "${busDir}" -p
 	echo "Starting D-Bus Proxy @ ${busDir}..."
-	systemd-run --user -u wechat-dbus-proxy \
-		env -i xdg-dbus-proxy \
+	systemd-run \
+		--user \
+		-u wechat-dbus-proxy \
+			-- bwrap --dev-bind / / \
+			-- /usr/bin/xdg-dbus-proxy \
 			"${DBUS_SESSION_BUS_ADDRESS}" \
 			"${busDir}/bus" \
 			--log \
+			--talk=org.freedesktop.portal.Flatpak \
+			--talk=org.freedesktop.portal.* \
 			--call=org.freedesktop.portal.Desktop=*=* \
 			--broadcast=org.freedesktop.portal.*=@/org/freedesktop/portal/*
 }
