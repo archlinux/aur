@@ -2,7 +2,7 @@
 
 pkgname=hoarder
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64" "aarch64")
 url="https://github.com/${pkgname}-app/${pkgname}"
@@ -48,7 +48,23 @@ build() {
 
     # build workers
     cd ../..
+    rm -rf workers &>/dev/null
     pnpm deploy --node-linker=isolated --filter @hoarder/workers --prod workers
+
+    # delete musl files, macos/win files, map file
+    find apps/web/.next -type d -name "*musl*" | xargs rm -rf
+    find workers -type f -name "*.map" | xargs rm -rf
+    find workers -type d \( -name "darwin-arm64" -o -name "darwin-x64" -o -name "win32-x64" \) | xargs rm -rf
+    case $CARCH in
+        x86_64)  find workers -type d -name "linux-arm64" | xargs rm -rf;;
+        aarch64) find workers -type d -name "linux-x64"   | xargs rm -rf;;
+    esac
+
+    # fix path
+    while read file; do
+        sed -i "s|${srcdir}/${pkgname}/workers|/usr/share/${pkgname}/apps/workers|g" "$file"
+        sed -i "s|${srcdir}/${pkgname}|/usr/share/${pkgname}|g" "$file"
+    done <<< $(grep -rl "${srcdir}/${pkgname}" .)
 }
 
 package() {

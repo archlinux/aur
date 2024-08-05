@@ -2,4 +2,4 @@
 /src
 /hoarder
 *.tar.gz
-*.pkg.tar.zst
+*.pkg.tar.*
