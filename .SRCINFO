@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
-	pkgver = 46.3.1
-	pkgrel = 2
+	pkgver = 46.4
+	pkgrel = 1
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
 	arch = x86_64
@@ -36,15 +36,15 @@ pkgbase = gnome-shell-performance
 	depends = mutter
 	depends = unzip
 	depends = upower
-	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=52fd93196c1c61b34a571c9d7940fda22576e1c1
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=7bbc1f21088b7227a47b93be70e43998972aa925
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=5f9768a2eac29c1ed56f1fbb449a77a3523683b6
 	source = mr3252.patch
 	source = fix-tray-offscreen-xwindows.patch
-	sha256sums = 51302aa72f160948e2e45f8de6978666b268e18ddbc88f377a075e2309651076
+	sha256sums = 97318752d98d1b314993f1f9262afd7b92b04799688e035af3291620b97b924c
 	sha256sums = 587319b45ff7d989635aed0c3bd9ef834d6e53ae46788cb6ba083d42d7e63855
 	sha256sums = 29abd82509db22abb4ce1b3318c9d7bf6cc23ba28d0c222412c273d784eacf1d
 	sha256sums = 065daaadcb037ebe4a449bc82a74d078243ec9a6f82e2c015d6ebcb7d95ee622
-	b2sums = 1ab8d447e52f554634dc5d80628615e2628c2e9ee2f37c5c7b01cadf33c160f64c9fdd04a1fbe1b0bbc619d7128a5364ca650398c844e505d0783d4be5b223d6
+	b2sums = 93362c6bc883f60cd8d97a4f6314a93ad86d9c3b82b3dcd43c94d53f932d971166e09561e078db91ef73c2eb4897d3b61e252a2f6c45f8061b2831e4e1b8b437
 	b2sums = e31ae379039dfc345e8032f7b9803a59ded075fc52457ba1553276d3031e7025d9304a7f2167a01be2d54c5e121bae00a2824a9c5ccbf926865d0b24520bb053
 	b2sums = bacf1db67096ebd3690de2d0a01ee1b0ba1ea3094c7539eff05e398acc230164724b3c872e468ad992409501fb027026bfad35e387be150e4dafd6be81a68841
 	b2sums = 2d923a01c48b2ea5c25fe10e40cd81e8ed49c0adc0660211b1211529a5b98040dd0ae1a406e6f250b051e7db6d47e00a1ba7e9540cd5aecc466b92ee3d2aed4e
@@ -82,8 +82,8 @@ pkgname = gnome-shell-performance
 	optdepends = python-simplejson: gnome-shell-test-tool performance tester
 	optdepends = switcheroo-control: Multi-GPU support
 	provides = gnome-shell
-	provides = gnome-shell=46.3.1
-	provides = gnome-shell=1:46.3.1
+	provides = gnome-shell=46.4
+	provides = gnome-shell=1:46.4
 	conflicts = gnome-shell
 
 pkgname = gnome-shell-performance-docs
