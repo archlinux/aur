@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-launcher-git
-pkgver=r228.d84fda0
+pkgver=1.0.0.alpha.1.r0.gd84fda0
 pkgrel=1
 pkgdesc="WIP Layer Shell frontend for Pop Launcher."
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^epoch-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
