@@ -1,6 +1,6 @@
 pkgbase = alspotron-bin
 	pkgdesc = Shows the egg lyrics of the track, playing on Spotify / YouTube Music
-	pkgver = 0.21.0
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://github.com/organization/alspotron
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = alspotron-bin
 	makedepends = asar
 	depends = java-runtime
 	depends = electron31
-	provides = alspotron=0.21.0
+	provides = alspotron=0.22.0
 	conflicts = alspotron
-	source = alspotron-0.21.0.deb::https://github.com/organization/alspotron/releases/download/v0.21.0/alspotron_0.21.0_amd64.deb
+	source = alspotron-0.22.0.deb::https://github.com/organization/alspotron/releases/download/v0.22.0/alspotron_0.22.0_amd64.deb
 	source = alspotron.sh
-	sha256sums = b6c9ed148e2e822ddfb38c63ff660fb41721c221fd2222118e28cb2e1cde9948
+	sha256sums = b54ee8ebb112eb13c00d2a9713eec20750d2db7d6becb13be7e926662d1a2ecd
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = alspotron-bin
