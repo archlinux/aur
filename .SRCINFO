@@ -12,6 +12,7 @@ pkgbase = infekt-cli
 	depends = gcc-libs
 	depends = cairo
 	depends = libpng
+	optdepends = infekt-gtk: GTK2 user interface
 	source = infekt-1.3.0.tar.gz::https://github.com/syndicodefront/infekt/archive/v1.3.0.tar.gz
 	source = infekt-cli_fix_build_type.patch
 	sha256sums = 0768e7147288c7150d7c8d933f36dd99df5d13e96071b3870ce1c61cc9a0765c
