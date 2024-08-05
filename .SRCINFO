@@ -1,0 +1,14 @@
+pkgbase = zitify-bin
+	pkgdesc = Wrapper to connect applications to an OpenZiti network
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/openziti/zitify
+	arch = x86_64
+	license = Apache-2.0
+	optdepends = python: Identity enrollment support
+	source = https://github.com/openziti/zitify/releases/download/v0.3.0/zitify-0.3.0-Linux-x86_64.tar.gz
+	source = fix-preload-directory.patch
+	sha256sums = 149a0b0a89369ccc2257b83c487d0c5f927bf28ff02411e1c62b30ea430c6de3
+	sha256sums = c5541122c11f3764541636c971695768d8afa0e371019c9a6b6f0f10d935d667
+
+pkgname = zitify-bin

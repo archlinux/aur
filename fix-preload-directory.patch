@@ -1,0 +1,11 @@
+--- zitify	2024-08-05 21:11:35.451894492 +0100
++++ zitify	2024-08-05 21:11:52.608856588 +0100
+@@ -16,7 +16,7 @@
+ # limitations under the License.
+ #
+ 
+-preload_dir=$(dirname ${BASH_SOURCE[0]})
++preload_dir="/usr/lib/zitify"
+ preload_lib=${preload_dir}/libzitify.so
+ 
+ usage() {
