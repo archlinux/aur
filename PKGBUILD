@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dopamine-git
 _pkgname=Dopamine
-pkgver=3.0.0.preiew.27.r1.gae69f13
-_electronversion=25
+pkgver=3.0.0.preiew.29.r0.g3dba305
+_electronversion=26
 _nodeversion=18
 pkgrel=1
 pkgdesc="The audio player that keeps it simple"
@@ -27,7 +27,8 @@ makedepends=(
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
-    "${pkgname%-git}.sh")
+    "${pkgname%-git}.sh"
+)
 sha256sums=('SKIP'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
