@@ -14,7 +14,8 @@ depends=(
   gtk4
   libportal-gtk4
   gst-plugin-gtk4
-  gst-plugins-bad # codecs for playing music
+  gst-plugins-good
+  gst-plugins-bad
 
   # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
   #
@@ -42,7 +43,6 @@ depends=(
   #     (however libadwaita-git requires it for compilation)
   #
   # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
 
   libadwaita # >= 1.6 (either libadwaita-git or from the gnome-unstable repo)
 )
