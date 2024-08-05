@@ -1,19 +1,25 @@
 # Maintainer: Jah Way <jahway603 at protonmail dot com>
 pkgname=goman-git
 _pkgname=goman
-pkgver=0.3.0.1f4e65d
+pkgver=0.3.2.r0.gf6d80a0
 pkgrel=1
 pkgdesc="Fetches the repo's readme as a man page replacement."
 arch=(i686 x86_64)
 url="https://github.com/appliedgocode/goman"
 license=('custom')
 depends=('go')
-conflicts=('goman')
+conflicts=('goman' 'goman-bin')
 provides=('goman')
 source=("git+$url"
         "https://raw.githubusercontent.com/appliedgocode/goman/master/LICENSE.txt")
 sha256sums=('SKIP'
             '00c7eaf22064ba6b41caa08390f90018c21516c7b172b94b913bb2eb177f78c1')
+
+# https://wiki.archlinux.org/title/VCS_package_guidelines
+pkgver() {
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd $srcdir/$_pkgname
