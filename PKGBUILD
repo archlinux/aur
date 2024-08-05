@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-greeter-git
-pkgver=r128.2294d10
+pkgver=1.0.0.alpha.1.r0.gcc744b0
 pkgrel=1
 pkgdesc="libcosmic greeter for greetd, which can be run inside cosmic-comp"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/pop-os/cosmic-greeter"
 license=('GPL-3.0-or-later')
 groups=('cosmic')
 depends=(
-  'cosmic-comp-git'
+#  'cosmic-comp-git'
   'greetd'
   'libxkbcommon'
   'pam'
@@ -29,7 +29,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^epoch-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
