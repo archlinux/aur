@@ -1,7 +1,7 @@
 # Maintainer: Matthias Debus <psic4t at data dot haus>
 
 pkgname=qcal
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='Console-based quick calendar for CalDAV'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://git.sr.ht/~psic4t/qcal'
 license=('GPL')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~psic4t/qcal/archive/${pkgver}.tar.gz")
-sha512sums=('bcd457d4b07062e0423d9efda7c50a476a23ae683d06be13ec2bf9c1136af67f7a62dce64b54c3debed06750f938234dc5cef0d8a2a93fcf71e30577f27280db')
+sha512sums=('fa122315b447a1414977fb2a464f940155f8d44128a53e99bf2969aeaf0793a12b9d35a2f65b4039c89e4d9b30f8156be54eed3b55cabe8cfd149c683d3de111')
 
 build() {
 	cd ${pkgname}-${pkgver}
