@@ -1,6 +1,6 @@
 pkgbase = python-json-tricks
 	pkgdesc = Extra features for Python's JSON
-	pkgver = 3.15.5
+	pkgver = 3.17.3
 	pkgrel = 1
 	url = https://github.com/mverleg/pyjson_tricks
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = python-json-tricks
 	optdepends = python-numpy
 	optdepends = python-pandas
 	optdepends = python-pytz
-	source = pyjson_tricks-3.15.5.tar.gz::https://github.com/mverleg/pyjson_tricks/archive/v3.15.5.tar.gz
-	sha1sums = ff07f9af781d006d05e4446bc823709fe2f8245b
+	source = pyjson_tricks-3.17.3.tar.gz::https://github.com/mverleg/pyjson_tricks/archive/v3.17.3.tar.gz
+	sha1sums = 884eba1efe60f0bf4953a3df58b27fd7cf8ca9d5
 
 pkgname = python-json-tricks
-
