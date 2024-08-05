@@ -1,5 +1,5 @@
-/src
-/pkg
-/miktex
-*.pkg.tar.xz
-*.zst
+*
+!PKGBUILD
+!*.patch
+!.SRCINFO
+!.gitignore

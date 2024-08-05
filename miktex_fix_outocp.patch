@@ -1,0 +1,11 @@
+--- a/Programs/TeXAndFriends/omega/otps/source/outocp.c
++++ b/Programs/TeXAndFriends/omega/otps/source/outocp.c
+@@ -90,7 +90,7 @@
+ void
+ ctp_abort P1C(string, s)
+ {
+-  fprintf(stderr, s);
++  fprintf(stderr, "%s", s);
+   exit(EXIT_FAILURE);
+ }
+  
