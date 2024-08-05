@@ -1,0 +1,12 @@
+diff --git a/setup.py b/setup.py
+index cd35c3c..d4461a8 100644
+--- a/setup.py
++++ b/setup.py
+@@ -17,4 +17,6 @@ import setuptools
+ 
+ setuptools.setup(
+     setup_requires=['pbr>=2.0.0'],
+-    pbr=True)
++    pbr=True,
++    package_data={'': ['templates/*']},
++    include_package_data=True)

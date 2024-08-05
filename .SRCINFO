@@ -1,7 +1,7 @@
 pkgbase = python-sushy-tools
 	pkgdesc = A set of tools to support the development and test of the Sushy library
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opendev.org/openstack/sushy-tools
 	arch = any
 	license = Apache-2.0
@@ -23,6 +23,8 @@ pkgbase = python-sushy-tools
 	depends = python-oslotest
 	depends = python-openstacksdk
 	source = python-sushy-tools-1.3.0.tar.gz::https://opendev.org/openstack/sushy-tools/archive/1.3.0.tar.gz
+	source = tmp-include-templates.diff
 	b2sums = 8713a22add7ad54a914a45be6220d672b33c0878374b3fc684507adafd5c9d785d27bbd8c2a3879b060d374dd27027b46fe17b4953eb15f5da75d9db0f65fc60
+	b2sums = 57fbf27da5ae32170c30ff7ec8fd23783ff23639d54c694a356fe5137af45d1d2aa25069106b6fb104cfbfbaf5089a7ff060a30386aadb576e128bb9704f83c2
 
 pkgname = python-sushy-tools

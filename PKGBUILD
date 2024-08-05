@@ -2,7 +2,7 @@
 
 pkgname=python-sushy-tools
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of tools to support the development and test of the Sushy library"
 arch=(any)
 url="https://opendev.org/openstack/sushy-tools"
@@ -24,11 +24,15 @@ makedepends=('python-build'
 checkdepends=('python-coverage'
               'python-stestr'
               'python-testtools')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('8713a22add7ad54a914a45be6220d672b33c0878374b3fc684507adafd5c9d785d27bbd8c2a3879b060d374dd27027b46fe17b4953eb15f5da75d9db0f65fc60')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+        "tmp-include-templates.diff")
+b2sums=('8713a22add7ad54a914a45be6220d672b33c0878374b3fc684507adafd5c9d785d27bbd8c2a3879b060d374dd27027b46fe17b4953eb15f5da75d9db0f65fc60'
+        '57fbf27da5ae32170c30ff7ec8fd23783ff23639d54c694a356fe5137af45d1d2aa25069106b6fb104cfbfbaf5089a7ff060a30386aadb576e128bb9704f83c2')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
+    cd "$pkgname-$pkgver"
+    patch -uNp1 -i ../tmp-include-templates.diff || return 1
 }
 
 build(){
