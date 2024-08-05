@@ -2,8 +2,8 @@
 pkgname=netscout-git
 _pkgname=netscout
 pkgver=0.1.1.2f409df703
-pkgrel=2
-pkgdesc="Tool designed to bypass HTTP 403 (Forbidden) pages using various techniques."
+pkgrel=3
+pkgdesc="OSINT tool that finds domains, subdomains, directories, endpoints and files..."
 arch=('any')
 url="https://github.com/caio-ishikawa/netscout"
 license=('custom')

@@ -1,7 +1,7 @@
 pkgbase = netscout-git
-	pkgdesc = Tool designed to bypass HTTP 403 (Forbidden) pages using various techniques.
+	pkgdesc = OSINT tool that finds domains, subdomains, directories, endpoints and files...
 	pkgver = 0.1.1.2f409df703
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/caio-ishikawa/netscout
 	arch = any
 	license = custom
