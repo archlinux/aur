@@ -10,7 +10,7 @@ pkgbase = goatee
 	makedepends = go
 	depends = gtk2
 	depends = gtksourceview2
-	source = git+https://github.com/sg3des/goatee.git
+	source = git+https://github.com/sg3des/goatee.git#tag=0.9.1-4
 	md5sums = SKIP
 
 pkgname = goatee
