@@ -2,11 +2,11 @@
 # Contributor: PolpOnline <aur at t0mmy dot anonaddy dot com>
 pkgname=gitify
 _pkgname=Gitify
-pkgver=5.11.0
+pkgver=5.12.0
 _electronversion=31
-_nodeversion=20.14.2
+_nodeversion=20.14.14
 pkgrel=1
-pkgdesc="GitHub notifications on your menu bar."
+pkgdesc="GitHub notifications on your menu bar.Use system-wide electron."
 arch=('any')
 url='https://www.gitify.io/'
 _ghurl="https://github.com/gitify-app/gitify"
@@ -21,12 +21,13 @@ makedepends=(
     'pnpm'
     'icoutils'
     'curl'
+    'git'
 )
 source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('7d459eb0e137b817515698a0c8b01f7bb604ad8e6bc087fcd31112a7b05afe1a'
+sha256sums=('5f453076c08ba2d1b0532eb3f76752502cb10b7bf1fc786e7eb86a057a8fc243'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -43,6 +44,7 @@ build() {
         -i "${srcdir}/${pkgname}.sh"
     gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
+    _ensure_local_nvm
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
