@@ -10,7 +10,7 @@ url='https://github.com/NVIDIA/egl-wayland'
 license=('MIT')
 depends=(
   'lib32-wayland'
-  "egl-wayland=2:${pkgver}"
+  "egl-wayland=3:${pkgver}"
 )
 makedepends=(
   'meson'
@@ -18,16 +18,9 @@ makedepends=(
   'lib32-libglvnd'
 )
 provides=('libnvidia-egl-wayland.so')
-_commit=69ae9cf07bbec3b00a682918bf0dc845e989677  # tags/1.1.13
 options=('!emptydirs')
-source=("git+${url}#commit=${_commit}")
+source=("git+${url}#tag=${pkgver}")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd egl-wayland
-#   echo $(git describe --tags | tr - +)
-  echo "$(git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g')"
-}
 
 prepare() {
   cd $_basename
