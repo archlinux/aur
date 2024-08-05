@@ -2,7 +2,7 @@
 # Test URL: https://www.dokobit.com/downloads/test-system
 pkgname=dokobit-plugin
 pkgver=1.3.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Chrome & Mozilla native smartcard plugin for Dokobit"
 url="https://www.dokobit.com/downloads"
 depends=(gcc-libs openssl-1.0 qt5-base)
@@ -18,6 +18,9 @@ package() {
 	cp -av etc usr "$pkgdir"
 	# OCD
 	chmod -x "$pkgdir"/usr/share/*/*.json
+	# for binary Google Chrome
+	mkdir "$pkgdir"/etc/opt
+	cp -av "$pkgdir"/etc/chromium "$pkgdir"/etc/opt/chrome
 	# bundled openssl 1.0.1d (we have 1.0.2u)
 	rm "$pkgdir"/usr/lib/dokobit-plugin/libcrypto.so
 }
