@@ -1,0 +1,16 @@
+pkgbase = python-stransi
+	pkgdesc = A lightweight Python parser library for ANSI escape code sequences
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/getcuia/stransi
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-ochre>=0.4.0
+	source = stransi-0.3.0.tar.gz::https://github.com/getcuia/stransi/archive/v0.3.0.tar.gz
+	sha256sums = f83fb30c418054f87f3d9bdf3f82a130ec51ec5dcf6aa372f8493ed7132ba617
+
+pkgname = python-stransi
