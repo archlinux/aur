@@ -2,8 +2,8 @@
 _appname=codius
 pkgname="vs${_appname}-bin"
 _pkgname=VSCodius
-pkgver=1.90.2
-_electronversion=29
+pkgver=1.92.0
+_electronversion=30
 pkgrel=1
 pkgdesc="Binary releases of Visual Studio Code without MS branding/telemetry/licensing and various personal workflow improvements."
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/RubisetCie/vscodius/v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ac6734b58e1540954064216438dbe837576277641a9f794bce1d783d925a8a44'
+sha256sums=('98ccb68ecacdf81ebd2eedc96eaeb063c05ee498e3f0e12b4db5b7d3e3c632c5'
             '9480271317925265e806a9a196aaa33410a962fa9d4d1e248a4a5187bc8c9df9'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
