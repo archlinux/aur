@@ -1,0 +1,10 @@
+--- a/src/lib/util.h
++++ b/src/lib/util.h
+@@ -24,6 +24,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <memory>
+ 
+ class CUtil
+ {
