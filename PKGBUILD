@@ -1,7 +1,7 @@
 # Maintainer: Your Name <martinp6282@gmail.com>
 pkgname=sysi-cz
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Jednoduchý skript pro zobrazení systémových informací"
 arch=('any')
 url="https://github.com/stuffbymax/sysi"

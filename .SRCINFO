@@ -1,7 +1,7 @@
 pkgbase = sysi-cz
 	pkgdesc = Jednoduchý skript pro zobrazení systémových informací
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/stuffbymax/sysi
 	arch = any
 	license = MIT
@@ -20,6 +20,6 @@ pkgbase = sysi-cz
 	depends = pciutils
 	depends = ttf-iosevka-nerd
 	source = sysi-cz-1.0.3.tar.gz::https://github.com/stuffbymax/sysi/archive/refs/tags/1.0.3.tar.gz
-	sha256sums = 8e69723f990dd18aed1c5f2e18fe4932547e33d17c917b9bc9d79c344b3c6aa2
+	sha256sums = 97535d8109ac34b9767b6837fb3ed532819d402b219a6c490337003cc61a4192
 
 pkgname = sysi-cz
