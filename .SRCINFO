@@ -1,0 +1,18 @@
+pkgbase = python-asyncer
+	pkgdesc = Asyncer, async and await, focused on developer experience.
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/tiangolo/asyncer
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-pdm-backend
+	depends = python
+	depends = python-anyio
+	depends = python-typing_extensions
+	source = asyncer-0.0.7.tar.gz::https://github.com/tiangolo/asyncer/archive/refs/tags/0.0.7.tar.gz
+	sha256sums = 33443e769d11343197a436cc412fd4474053d58d7bdce591c0f56f3ef84a4eae
+
+pkgname = python-asyncer
