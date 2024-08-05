@@ -1,12 +1,12 @@
 pkgbase = servitor-bin
 	pkgdesc = A command-line Fediverse client that doesn’t require a server
-	pkgver = 2
-	pkgrel = 2
+	pkgver = 3
+	pkgrel = 1
 	url = https://github.com/BentonEdmondson/servitor
 	arch = x86_64
 	arch = arm64
 	license = GPL-3.0-only
-	source = https://github.com/BentonEdmondson/servitor/releases/download/v2/servitor.linux.x86_64
-	sha256sums = 5387a1f240c0bedc0693fbc609a948803e44cb6a6e1dfee908b11d51fdfcfbac
+	source = https://github.com/BentonEdmondson/servitor/releases/download/v3/servitor.linux.x86_64
+	sha256sums = 7de82bb60850a40504a5005695d4109196b521501ae87106c10ea59377494cf4
 
 pkgname = servitor-bin
