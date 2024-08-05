@@ -1,0 +1,9 @@
+pkgbase = zswap-disable-writeback
+	pkgdesc = Disable zswap writeback using systemd cgroup configuration
+	pkgver = 1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/zswap-disable-writeback
+	arch = any
+	license = 0BSD
+
+pkgname = zswap-disable-writeback
