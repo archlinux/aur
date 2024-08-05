@@ -1,7 +1,7 @@
 pkgbase = fmsx
 	pkgdesc = Portable MSX/MSX2/MSX2+ emulator
 	pkgver = 6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fms.komkon.org/fMSX
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = fmsx
 	depends = libxext
 	depends = bash
 	depends = zlib
-	depends = pulseaudio
+	depends = libpulse
 	source = fmsx.sh
 	source = http://fms.komkon.org/fMSX/fMSX60.zip
 	source = http://fms.komkon.org/fMSX/src/CMOS.ROM
@@ -41,4 +41,3 @@ pkgbase = fmsx
 	sha512sums = 502c64f0dd0ab7f6213281eeeb222be1471f6aebc6da558d28d06a831064cab4e810175e19796e26e8f1da1e84c93593cc4ffdb8eaae75708408aadb54940744
 
 pkgname = fmsx
-

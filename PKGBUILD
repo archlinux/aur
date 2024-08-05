@@ -2,12 +2,12 @@
 pkgdesc='Portable MSX/MSX2/MSX2+ emulator'
 pkgname=fmsx
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 _dlname="fMSX${pkgver//./}"
 url=http://fms.komkon.org/fMSX
 license=(custom)
 arch=(i686 x86_64)
-depends=(libxext bash zlib pulseaudio)
+depends=(libxext bash zlib libpulse)
 makedepends=(sed)
 source=(fmsx.sh
         "${url}/${_dlname}.zip"
