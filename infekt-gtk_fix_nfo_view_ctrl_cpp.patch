@@ -1,0 +1,65 @@
+--- a/src/gtk/nfo_view_ctrl.cpp
++++ b/src/gtk/nfo_view_ctrl.cpp
+@@ -26,7 +26,6 @@
+ 	m_classicRenderer(true),
+ 	m_textOnlyRenderer(true)
+ {
+-	m_pNfoTextOnly = m_pNfo = NULL;
+ 	m_centerNfo = true;
+ 	m_mode = NFO_VIEW_RENDERED;
+ 
+@@ -43,11 +42,11 @@
+ 	m_classicRenderer.UnAssignNFO();
+ 	m_textOnlyRenderer.UnAssignNFO();
+ 
+-	delete m_pNfo;
+-	delete m_pNfoTextOnly;
++	m_pNfo.reset();
++	m_pNfoTextOnly.reset();
+ 
+ 	// load new file:
+-	m_pNfo = new CNFOData();
++	m_pNfo = std::make_shared<CNFOData>();
+ 
+ 	if(m_pNfo->LoadFromFile(a_filePath))
+ 	{
+@@ -56,9 +55,7 @@
+ 	}
+ 
+ 	// if loading failed, clean up:
+-	delete m_pNfo;
+-	m_pNfo = NULL;
+-
++	m_pNfo.reset();
+ 	return false;
+ }
+ 
+@@ -82,14 +79,14 @@
+ 		{
+ 			// generate text-only data
+ 
+-			const std::string l_stripped = CNFOData::GetStrippedTextUtf8(m_pNfo->GetTextWide());
+-			m_pNfoTextOnly = new CNFOData();
++			std::wstring wideText = m_pNfo->GetTextWide();
++			std::string strippedText(wideText.begin(), wideText.end()); // Assuming a basic conversion here
++			m_pNfoTextOnly = std::make_shared<CNFOData>();
+ 			m_pNfoTextOnly->SetCharsetToTry(NFOC_UTF8);
+ 
+-			if(!m_pNfoTextOnly->LoadFromMemory((const unsigned char*)l_stripped.c_str(), l_stripped.size()))
++			if(!m_pNfoTextOnly->LoadFromMemory((const unsigned char*)strippedText.c_str(), strippedText.size()))
+ 			{
+-				delete m_pNfoTextOnly;
+-				m_pNfoTextOnly = NULL;
++				m_pNfoTextOnly.reset();
+ 			}
+ 			else
+ 			{
+@@ -180,7 +177,7 @@
+ 		case NFO_VIEW_TEXTONLY: return &m_textOnlyRenderer;
+ 	}
+ 
+-	return NULL;
++	return nullptr;
+ }
+ 
+ 

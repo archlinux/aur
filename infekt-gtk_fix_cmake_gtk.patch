@@ -1,0 +1,19 @@
+--- a/src/gtk/CMakeLists.txt
++++ b/src/gtk/CMakeLists.txt
+@@ -26,13 +26,15 @@
+ 	main_window.cpp
+ 	nfo_view_ctrl.cpp
+ 	${INFEKT_SOURCE_DIR}/src/lib/gutf8.c
++	${INFEKT_SOURCE_DIR}/src/lib/forgiving_utf8.c
+ 	${INFEKT_SOURCE_DIR}/src/lib/nfo_data.cpp
+ 	${INFEKT_SOURCE_DIR}/src/lib/nfo_hyperlink.cpp
++	${INFEKT_SOURCE_DIR}/src/lib/nfo_colormap.cpp
+ 	${INFEKT_SOURCE_DIR}/src/lib/ansi_art.cpp
+ 	${INFEKT_SOURCE_DIR}/src/lib/nfo_renderer.cpp
+ 	${INFEKT_SOURCE_DIR}/src/lib/util.cpp
+ 	${INFEKT_SOURCE_DIR}/src/lib/cairo_box_blur.cpp
+-	${INFEKT_SOURCE_DIR}/src/lib-posix/infekt-posix.cpp
++	${INFEKT_SOURCE_DIR}/src/lib-posix/infekt-posix.h
+ 	${INFEKT_SOURCE_DIR}/src/lib-posix/iconv_string.c)
+ 
+ target_link_libraries (infekt-gtk ${LIBS})

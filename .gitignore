@@ -1,0 +1,6 @@
+*
+!PKGBUILD
+!*.patch
+!forgiving_utf8.h
+!.SRCINFO
+!.gitignore

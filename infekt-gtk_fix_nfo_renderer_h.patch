@@ -1,0 +1,10 @@
+--- a/src/lib/nfo_renderer.h
++++ b/src/lib/nfo_renderer.h
+@@ -17,6 +17,7 @@
+ 
+ #include "nfo_data.h"
+ #include "cairo_box_blur.h"
++#include <thread>
+ 
+ // http://www.alanwood.net/unicode/block_elements.html
+ // http://www.alanwood.net/demos/wgl4.html
