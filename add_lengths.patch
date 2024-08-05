@@ -1,0 +1,43 @@
+This patch adds 12", 16", and 24" as output length options.
+--- a/CTS4000.ppd	2019-01-17 22:51:22.000000000 -0500
++++ b/CTS4000.ppd	2023-03-12 22:27:02.642935440 -0400
+@@ -93,6 +93,9 @@
+ *PageSize X104MMY170MM/104mm * 170mm:          "<</PageSize[293 481]/HWResolution[203 203]/ImagingBBox null>>setpagedevice"
+ *PageSize X104MMY180MM/104mm * 180mm:          "<</PageSize[293 510]/HWResolution[203 203]/ImagingBBox null>>setpagedevice"
+ *PageSize X104MMY190MM/104mm * 190mm:          "<</PageSize[293 538]/HWResolution[203 203]/ImagingBBox null>>setpagedevice"
++*PageSize X104MMY305MM/104mm * 305mm:          "<</PageSize[293 864]/HWResolution[203 203]/ImagingBBox null>>setpagedevice"
++*PageSize X104MMY407MM/104mm * 407mm:          "<</PageSize[293 1152]/HWResolution[203 203]/ImagingBBox null>>setpagedevice"
++*PageSize X104MMY610MM/104mm * 610mm:          "<</PageSize[293 1728]/HWResolution[203 203]/ImagingBBox null>>setpagedevice"
+ *PageSize X104MMY1000MM/104mm * 1000mm:        "<</PageSize[293 2834]/HWResolution[203 203]/ImagingBBox null>>setpagedevice"
+ *PageSize X104MMY2000MM/104mm * 2000mm:        "<</PageSize[293 5669]/HWResolution[203 203]/ImagingBBox null>>setpagedevice"
+ 
+@@ -169,6 +172,9 @@
+ *PageRegion X104MMY170MM/104mm * 170mm:          "<</PageSize[293 481]/HWResolution[203 203]/ImagingBBox null>>setpagedevice"
+ *PageRegion X104MMY180MM/104mm * 180mm:          "<</PageSize[293 510]/HWResolution[203 203]/ImagingBBox null>>setpagedevice"
+ *PageRegion X104MMY190MM/104mm * 190mm:          "<</PageSize[293 538]/HWResolution[203 203]/ImagingBBox null>>setpagedevice"
++*PageRegion X104MMY305MM/104mm * 305mm:          "<</PageSize[293 864]/HWResolution[203 203]/ImagingBBox null>>setpagedevice"
++*PageRegion X104MMY407MM/104mm * 407mm:          "<</PageSize[293 1152]/HWResolution[203 203]/ImagingBBox null>>setpagedevice"
++*PageRegion X104MMY610MM/104mm * 610mm:          "<</PageSize[293 1728]/HWResolution[203 203]/ImagingBBox null>>setpagedevice"
+ *PageRegion X104MMY1000MM/104mm * 1000mm:        "<</PageSize[293 2834]/HWResolution[203 203]/ImagingBBox null>>setpagedevice"
+ *PageRegion X104MMY2000MM/104mm * 2000mm:        "<</PageSize[293 5669]/HWResolution[203 203]/ImagingBBox null>>setpagedevice"
+ 
+@@ -235,6 +241,9 @@
+ *ImageableArea X104MMY170MM:        "0.0 0.0 293.0 481.0"
+ *ImageableArea X104MMY180MM:        "0.0 0.0 293.0 510.0"
+ *ImageableArea X104MMY190MM:        "0.0 0.0 293.0 538.0"
++*ImageableArea X104MMY305MM:        "0.0 0.0 293.0 864.0"
++*ImageableArea X104MMY407MM:        "0.0 0.0 293.0 1152.0"
++*ImageableArea X104MMY610MM:        "0.0 0.0 293.0 1728.0"
+ *ImageableArea X104MMY1000MM:       "0.0 0.0 293.0 2834.0"
+ *ImageableArea X104MMY2000MM:       "0.0 0.0 293.0 5669.0"
+ 
+@@ -299,6 +308,9 @@
+ *PaperDimension X104MMY170MM:       "293 481"
+ *PaperDimension X104MMY180MM:       "293 510"
+ *PaperDimension X104MMY190MM:       "293 538"
++*PaperDimension X104MMY305MM:       "293 864"
++*PaperDimension X104MMY407MM:       "293 1152"
++*PaperDimension X104MMY610MM:       "293 1728"
+ *PaperDimension X104MMY1000MM:      "293 2834"
+ *PaperDimension X104MMY2000MM:      "293 5669"
+ 

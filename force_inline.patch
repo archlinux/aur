@@ -1,0 +1,30 @@
+This patch adds static kewords to inline function definitions, to
+prevent the linker from complaining about undefined symbols by forcing
+the compiler to actually inline these functions.
+--- a/rastertocts801ii.c	2014-12-17 22:44:45.000000000 -0500
++++ b/rastertocts801ii.c	2024-08-05 10:35:19.653359986 -0400
+@@ -189,13 +189,13 @@
+ // define Buzzer command
+ const struct command BuzzerCommand={2,(char[2]){0x1b, 0x1e}};
+ 
+-inline void outputCommand(struct command output){
++static inline void outputCommand(struct command output){
+ int	i;
+ 
+ 	for(i=0;i<output.length;i++)	putchar(output.command[i]);
+ }
+ 
+-inline int getOptionChoiceIndex(const char * choiceName, ppd_file_t * ppd)
++static inline int getOptionChoiceIndex(const char * choiceName, ppd_file_t * ppd)
+ {
+ ppd_choice_t	*choice;
+ ppd_option_t	*option;
+@@ -208,7 +208,7 @@
+ 	return atoi(choice->choice);
+ }
+ 
+-inline void getPageWidthPageHeight(ppd_file_t * ppd, struct settings_ * settings)
++static inline void getPageWidthPageHeight(ppd_file_t * ppd, struct settings_ * settings)
+ {
+ ppd_choice_t*	choice;
+ ppd_option_t*	option;
