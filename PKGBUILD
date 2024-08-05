@@ -3,7 +3,7 @@
 
 pkgname=devpod
 pkgver=0.5.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Codespaces but open-source, client-only, and unopinionated - unofficial package"
 arch=('x86_64' 'arm64' 'aarch64')
 url="https://github.com/loft-sh/devpod"
@@ -44,7 +44,7 @@ sha256sums=(
 )
 
 prepare() {
-    tar -xvf ${pkgname}-${pkgver}.tar.gz
+    tar -xf ${pkgname}-${pkgver}.tar.gz
     cd "${pkgname}-${pkgver}/desktop/src-tauri"
 
     # https://github.com/time-rs/time/issues/681
