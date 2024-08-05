@@ -266,11 +266,6 @@ function execApp() {
 			"${XDG_RUNTIME_DIR}/pulse" \
 		--bind "${XDG_DATA_HOME}"/WeChat_Data "${HOME}" \
 		--ro-bind-try "${XAUTHORITYpath}" "${XAUTHORITYpath}" \
-		--unshare-cgroup-try \
-		--unshare-ipc \
-		--unshare-user \
-		--disable-userns \
-		--unshare-uts \
 		--ro-bind /usr/lib/wechat-uos-qt/open \
 			/sandbox/dde-file-manager \
 		--ro-bind /usr/share/wechat-uos-qt/license/var/ /var/ \
@@ -293,6 +288,8 @@ function execApp() {
 		--ro-bind-try "/run/systemd/resolve/stub-resolv.conf" \
 			"/run/systemd/resolve/stub-resolv.conf" \
 		--dir "${XDG_DOCUMENTS_DIR}" \
+		--ro-bind "${XDG_DATA_HOME}/WeChat_Data" \
+			"${XDG_DATA_HOME}/WeChat_Data" \
 		${bwCamPar} \
 		--setenv XDG_DOCUMENTS_DIR "${XDG_DOCUMENTS_DIR}" \
 		--setenv XDG_DATA_HOME "${XDG_DATA_HOME}" \
@@ -372,12 +369,14 @@ function dbusProxy() {
 			--log \
 			--filter \
 			--own=org.kde.* \
-			--talk=org.kde.* \
+			--talk=org.freedesktop.portal.Desktop \
 			--talk=org.freedesktop.portal.* \
 			--talk=org.freedesktop.Notifications \
 			--talk=org.freedesktop.FileManager1 \
 			--talk=org.kde.StatusNotifierWatcher \
 			--talk=org.mozilla.firefox.OpenURL \
+			--talk=org.freedesktop.portal.OpenURI \
+			--talk=org.freedesktop.portal.OpenURI.* \
 			--call=org.freedesktop.portal.*=* \
 			--own="${busName}" \
 			--broadcast=org.freedesktop.portal.*=@/org/freedesktop/portal/*

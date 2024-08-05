@@ -3,8 +3,8 @@
 fakeDirBase="${XDG_DOCUMENTS_DIR}/xwechat_files"
 realDirBase="${XDG_DATA_HOME}/WeChat_Data/Documents/xwechat_files"
 
-#link=$(echo "$2" | sed "s|${fakeDirBase}|${reakDirBase}|g")
-link=$(echo "$2" | awk -v oldPath="${fakeDirBase}" -v newPath=${reakDirBase} '{gsub(oldPath, newPath)} 1')
+link=$(echo "$2" | sed "s|${fakeDirBase}|${reakDirBase}|g")
+#link=$(echo "$2" | awk -v oldPath="${fakeDirBase}" -v newPath=${reakDirBase} '{gsub(oldPath, newPath)} 1')
 
 link="${realDirBase}${link}"
 
