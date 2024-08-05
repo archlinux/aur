@@ -1,6 +1,6 @@
 pkgbase = libbtc-git
 	pkgdesc = Tiny Bitcoin Library written in C with bitcointool CLI tool
-	pkgver = 0.1.07933995e
+	pkgver = r526.0793399
 	pkgrel = 1
 	url = https://github.com/libbtc/libbtc
 	arch = x86_64

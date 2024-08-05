@@ -2,7 +2,7 @@
 
 pkgname=libbtc-git
 _pkgname=libbtc
-pkgver=0.1.07933995e
+pkgver=r526.0793399
 pkgrel=1
 pkgdesc='Tiny Bitcoin Library written in C with bitcointool CLI tool'
 url='https://github.com/libbtc/libbtc'
@@ -16,6 +16,12 @@ source=("git+$url.git"
         "https://raw.githubusercontent.com/jahway603/libbtc/master/LICENSE")
 sha256sums=('SKIP'
             '521d039fe41ccb983129b3a1d307ed7e413b4c4eb3d3c7616edd42633b588a11')
+
+# https://wiki.archlinux.org/title/VCS_package_guidelines
+pkgver() {
+  cd "$srcdir/${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 build() {
   cd ${_pkgname}
