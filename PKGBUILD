@@ -1,24 +1,41 @@
+# Maintainer: RubenKelevra <cyrond@gmail.com>
+# Contributor: frankspace <frank@frankspace.com>
+# Contributor: wenLiangcan <boxeed@gmail.com>
+
 pkgname='pip2pkgbuild'
-_module='pip2pkgbuild'
-_src_folder='pip2pkgbuild-0.3.9'
 pkgver='0.3.9'
-pkgrel=1
-pkgdesc="Generate PKGBUILD file for a Python module from PyPI"
+pkgrel=2
+pkgdesc="Create PKGBUILD files for Python modules fetched with PIP"
 url="https://github.com/wenLiangcan/pip2pkgbuild"
-depends=('python')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+depends=(
+	'python>=3.12'
+)
+makedepends=(
+	'python-build'
+	'python-installer'
+	'python-wheel'
+	'python-setuptools'
+)
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/9e/df/2216a70204e6e4a4aff6a709361816f5510eb211f96a21ae9bb30a1d3f9d/pip2pkgbuild-0.3.9.tar.gz")
-sha256sums=('0d88cac992472bf51505744db15cfd39dc7492e2ba2780fc04debe9c47084451')
+source=(
+	"${url}/archive/refs/tags/v${pkgver}.tar.gz"
+	'imp_repacement.patch'
+)
+b2sums=('8080e8bf17e8401cfb9a8aa2edb3c7bbd6a2905ea1bb16edf0250fada248b3180493c0ef4fc9c2b050efd6a077e27081db7e3cd326092efbd7e5fbe24c142caf'
+        '65d287bde2396e85b83ce4a7265c9082246e6b3b32b290b9526a1caffa35750af3617c99e2b5b573130480c7fc3bbc64decb1e34d68ee9f7801f296d2e6dbb55')
+
+prepare() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	patch < "${srcdir}/imp_repacement.patch"
+}
 
 build() {
-    cd "${srcdir}/${_src_folder}"
-    python -m build --wheel --no-isolation
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-    depends+=()
-    cd "${srcdir}/${_src_folder}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	python -m installer --compile-bytecode=2 --destdir="${pkgdir}" dist/*.whl
 }
