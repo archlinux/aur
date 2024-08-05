@@ -2,7 +2,7 @@
 # Contributor: Alexander Sulfrian <asulfrian@zedat.fu-berlin.de>
 pkgname=webex-bin
 pkgver=44.5.0.29672
-pkgrel=1
+pkgrel=2
 pkgdesc="Webex for Linux"
 arch=('x86_64')
 url="https://www.webex.com/"
