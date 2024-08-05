@@ -1,0 +1,12 @@
+pkgbase = app-route-jail-git
+	pkgdesc = Tweaks to force application-specific routing on Linux
+	pkgver = r16.94b955b
+	pkgrel = 1
+	url = https://github.com/Intika-Linux-Firewall/App-Route-Jail
+	arch = any
+	license = custom:none
+	options = !strip
+	source = git+https://github.com/Intika-Linux-Firewall/App-Route-Jail.git
+	b2sums = SKIP
+
+pkgname = app-route-jail-git
