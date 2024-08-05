@@ -20,7 +20,7 @@ _pkgsrc="${_pkgname}-${pkgver}"
 source=("README-${pkgver}.md::${_url_bin}/raw/v${pkgver}/README.md"
         "LICENSE-${pkgver}.md::${_url_bin}/raw/v${pkgver}/LICENSE.md"
         "MANUAL-${pkgver}.pdf::${_url_bin}/raw/v${pkgver}/cpdfmanual.pdf"
-        "${_pkgsrc}.man.1::${_url_src}raw/v${pkgver}/${_pkgname}.1")
+        "${_pkgsrc}.man.1::${_url_src}/raw/v${pkgver}/${_pkgname}.1")
 source_x86_64=("${_pkgsrc}-x86_64::${_url_bin}/raw/v${pkgver}/Linux-Intel-64bit/${_pkgname}")
 source_i686=("${_pkgsrc}-i686::${_url_bin}/raw/v${pkgver}/old32bit/Linux-Intel-32bit/${_pkgname}")
 sha256sums=('ce7ff77fcead0f883823189e5e959f272fec75ed8d33e6853244ba891915c2c7'
