@@ -39,7 +39,7 @@ build() {
             fi
 
             shaders="$(find . -mindepth 1 -type d -iname 'shaders'|head -n 1)"
-            [ -d "$shaders" ] && mv "$shaders/"* -t "../..//${ini_array[shaders]}"
+            [ -d "$shaders" ] && mv "$shaders/"* -t "../../${ini_array[shaders]}"
 
             while read -d '' -r license; do
                 mv "$license" -t "../../${ini_array[shaders]}"
