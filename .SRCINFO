@@ -1,0 +1,19 @@
+pkgbase = img2xterm-git
+	pkgdesc = Displays images on your 256-color terminal with Unicode block characters
+	pkgver = 1.0.r1.1
+	pkgrel = 1
+	url = https://github.com/denilsonsa/img2xterm
+	arch = any
+	license = CC0
+	makedepends = help2man
+	makedepends = git
+	depends = imagemagick
+	depends = ncurses
+	optdepends = gimp: palette containing the upper 240 colours used in xterm
+	provides = img2xterm
+	conflicts = img2xterm
+	options = !emptydirs
+	source = img2xterm::git+https://github.com/denilsonsa/img2xterm#branch=master
+	sha256sums = SKIP
+
+pkgname = img2xterm-git
