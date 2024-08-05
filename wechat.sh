@@ -361,7 +361,14 @@ function dbusProxy() {
 	systemd-run \
 		--user \
 		-u wechat-dbus-proxy \
-			-- bwrap --dev-bind / / \
+			-- bwrap \
+			--symlink /usr/lib64 /lib64 \
+			--ro-bind /usr/lib /usr/lib \
+			--ro-bind /usr/lib64 /usr/lib64 \
+			--ro-bind /usr/bin /usr/bin \
+			--bind "${XDG_RUNTIME_DIR}" "${XDG_RUNTIME_DIR}" \
+			--ro-bind /usr/lib/wechat-uos-qt/flatpak-info \
+				/.flatpak-info \
 			-- /usr/bin/xdg-dbus-proxy \
 			"${DBUS_SESSION_BUS_ADDRESS}" \
 			"${busDir}/bus" \

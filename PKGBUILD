@@ -84,6 +84,7 @@ source=(
 	keyBlocker.cpp
 	CMakeLists.txt
 	mimeapps.list
+	flatpak-info
 )
 
 source_x86_64=(
@@ -98,7 +99,7 @@ source_loong64=(
 	wechat-loong64-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_arm64.deb"
 )
 
-md5sums=('b03915fc71ae0b137f7cfec0010fd8f2'
+md5sums=('1917788582f3e41bebf20cc7d394ecf8'
          '5a4978456f4fab947c0d197412af0fd1'
          '600e74549ce2258c045d5c2f7689ea63'
          'bab8288bb500c9d4d48a88af27acd16f'
@@ -107,7 +108,8 @@ md5sums=('b03915fc71ae0b137f7cfec0010fd8f2'
          '629807ee393cd29e5a0e57b51dfae9e9'
          '6206b9cfc311c4763876419aaf78acad'
          '83c934cd928c7411c3b8e7d4e86fb52c'
-         'e821fd2d05d6d39c7ecf118916922414')
+         'e821fd2d05d6d39c7ecf118916922414'
+         '6e03fed54f98aecc8f179464a5dbb9a6')
 md5sums_x86_64=('2c2c8ec69b6b798b7ccaf873e27d977a')
 md5sums_aarch64=('c4d443515fe76ec35e792d43e9521887')
 md5sums_loong64=('c4d443515fe76ec35e792d43e9521887')
