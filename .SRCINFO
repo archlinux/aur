@@ -1,11 +1,13 @@
 pkgbase = python-pymatting
 	pkgdesc = A Python library for alpha matting
 	pkgver = 1.1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pymatting/pymatting
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python
 	depends = python-numpy
 	depends = python-pillow
