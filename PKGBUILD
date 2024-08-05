@@ -1,6 +1,6 @@
 # Maintainer: Look <notkool@protonmail.com>
 pkgname=miru-bin
-pkgver=5.2.7
+pkgver=5.2.12
 pkgrel=1
 pkgdesc="Bittorrent streaming software for cats"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source_x86_64=(
     "${_pkgname}.desktop"
 )
 sha512sums_x86_64=(
-    '77581ca0e333275a51134cbf06c95277a57bdb1f70bfea16c60941f469f4ff6a85fa77c7817feb539b35dc8b04f3c6f5fbd93aa31edbc9220c1c1fe17c474b3d'
+    'a0a09401e78506b4cf85f3e90b85c15571174c5143a8e6820aaf2e8fc03f9a860002157b167e1ad6de785cd449fe32f3c1bbf58f07bfb67d795ee1f5ee91dba6'
     '10ffce928a1f1785c78b23bd928e718a49f2243418aadd6e4537d83151c920ab270d7345e54646ae65351f855bdd41e41a9d3f0a94a128d618d85d9cc59e1e06'
 )
 
