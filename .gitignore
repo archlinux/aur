@@ -2,5 +2,6 @@
 /src
 *.zip
 *.zst
+*.log
 build.sh
 LICENSE
