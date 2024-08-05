@@ -9,9 +9,9 @@
 # Contributor: Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt-bin
-pkgver=9.8.0
+pkgver=9.9.0
 pkgrel=1
-pkgdesc='PeaZip file manager and archiver (Qt5, binary release)'
+pkgdesc='PeaZip file manager and archiver (binary release)'
 url='https://github.com/peazip/PeaZip'
 license=('LGPL-3.0-or-later')
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=('arc: Arc file archiver and compressor'
 provides=('peazip')
 conflicts=('peazip')
 source=("$url/releases/download/$pkgver/peazip-$pkgver.LINUX.Qt5-1.x86_64.rpm")
-sha256sums=('cdb184db053dee98cb9015bd9533b8fcb64525b74a5f47556e8d28734f3074a3')
+sha256sums=('beb0d039a4da5b3d504e177f5535520e89d08512a5d176cd36c03e42d5490a75')
 
 prepare() {
   cd usr/share/peazip
@@ -47,7 +47,8 @@ package() {
   mkdir -p "$pkgdir/usr/"{bin,lib/peazip,share/{doc/peazip,peazip,licenses/peazip,icons/hicolor/256x256/apps}}
   cd usr
   mv bin/peazip "$pkgdir/usr/bin"
-  mv lib/peazip/{peazip,pea,res} "$pkgdir/usr/lib/peazip"
+  install -Dm755 lib/peazip/{peazip,pea} "$pkgdir/usr/lib/peazip"
+  mv lib/peazip/res "$pkgdir/usr/lib/peazip"
   cd share
   mv applications "$pkgdir/usr/share"
   mv pixmaps/* "$pkgdir/usr/share/icons/hicolor/256x256/apps"
