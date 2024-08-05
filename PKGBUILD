@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Shuyuan Liu <liu_shuyuan at qq dot com>
 pkgname=issie
-pkgver=4.1.0
+pkgver=5.0.0
 _electronversion=24
 _nodeversion=18
-pkgrel=5
+pkgrel=1
 pkgdesc="An intuitive cross-platform hardware design application."
 arch=('any')
 url="https://tomcl.github.io/issie"
@@ -25,9 +25,9 @@ makedepends=(
     'git'
 )
 source=(
-    "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
+    "${pkgname}.git::git+${_ghurl}.git#tag=${pkgver}"
 )
-sha256sums=('SKIP')
+sha256sums=('afd2a478da65089f4a326f17e059c7e64d43b59ddab74e66a77196e073c31dfb')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -48,10 +48,11 @@ build() {
     export ELECTRONVERSION="${_electronversion}"
     export npm_config_disturl=https://electronjs.org/headers
     HOME="${srcdir}/.electron-gyp"
+    #sed "s|process.resourcesPath|\'\/usr\/lib\/${pkgname}\'|g" -i {webpack.config.main.js,webpack.config.renderer.js}
     dotnet tool restore
     dotnet paket install
-    npm install
-    npm run pack
+    NODE_ENV=development npm install
+    NODE_ENV=production npm run pack
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname}",usr/bin}
