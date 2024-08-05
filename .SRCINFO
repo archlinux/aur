@@ -1,7 +1,7 @@
 pkgbase = sysi
 	pkgdesc = A simple script to display system information
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 1.0.3
+	pkgrel = 3
 	url = https://github.com/stuffbymax/sysi
 	arch = any
 	license = MIT
@@ -19,7 +19,7 @@ pkgbase = sysi
 	depends = xorg-xrandr
 	depends = pciutils
 	depends = ttf-iosevka-nerd
-	source = sysi-1.0.2.tar.gz::https://github.com/stuffbymax/sysi/archive/refs/tags/1.0.2.tar.gz
-	sha256sums = 70e5b07564986a221d054088ff00209b0ff9c25b00ea78d6289dcad288cfdbdd
+	source = sysi-1.0.3.tar.gz::https://github.com/stuffbymax/sysi/archive/refs/tags/1.0.3.tar.gz
+	sha256sums = d5f6c901d12837c76a6c2eb4c604559921b13f806b03762abb182ff363d03c87
 
 pkgname = sysi
