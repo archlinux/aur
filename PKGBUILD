@@ -2,7 +2,7 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=lha
-pkgver=1.14i
+pkgver=1.14i_ac20220213
 pkgrel=1
 epoch=1
 pkgdesc="A compression and archive utility for LH-7 format archives"
@@ -11,12 +11,14 @@ url='http://lha.osdn.jp'
 license=('custom:lha')
 depends=('glibc')
 makedepends=('git')
-source=("git+https://github.com/jca02266/lha.git#commit=7c3cd95fdf0d2f9198bb779561724cd314bc39a6"
-        'LICENSE'
-        )
-sha256sums=('SKIP'
-            'c88f52b7b6b223d1347c6721c24b63ba947baa1756e3713e1fff220e974b9120'
-            )
+source=(
+  "git+https://github.com/jca02266/lha.git#commit=4f193b1e98700aa2bc9dfeef11943efc1f036154"
+  'LICENSE'
+)
+sha256sums=(
+  'SKIP'
+  'c88f52b7b6b223d1347c6721c24b63ba947baa1756e3713e1fff220e974b9120'
+)
 
 prepare() {
   mkdir -p build
