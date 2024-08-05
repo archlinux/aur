@@ -1,0 +1,15 @@
+pkgbase = python-fastdds
+	pkgdesc = Python bindings for Fast DDS
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/eProsima/Fast-DDS-python
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = swig
+	depends = fastdds
+	depends = python
+	source = python-fastdds-1.4.2.tar.gz::https://github.com/eProsima/Fast-DDS-python/archive/refs/tags/v1.4.2.tar.gz
+	md5sums = 39163fc7412476a739aabd9245ffd253
+
+pkgname = python-fastdds
