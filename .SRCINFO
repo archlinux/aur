@@ -2,7 +2,7 @@ pkgbase = infekt-cli
 	pkgdesc = The ultimate best NFO viewer, ever!
 	pkgver = 1.3.0
 	pkgrel = 1
-	url = infekt.ws
+	url = https://infekt.ws
 	arch = any
 	license = GPL-2.0-or-later
 	makedepends = cmake>=3.2.0
