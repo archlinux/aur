@@ -10,7 +10,7 @@ license=('custom:UNLICENSE')
 depends=('python' 'python-pyqt5' 'python-vdf' 'python-docopt')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('1ecf82fbb02e3e789f97081b7857ba85')
+md5sums=('1ad7f9578a16e73427202c2ab2018439')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"

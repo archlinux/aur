@@ -11,6 +11,6 @@ pkgbase = steam-acolyte
 	depends = python-vdf
 	depends = python-docopt
 	source = https://pypi.org/packages/source/s/steam-acolyte/steam-acolyte-0.10.0.tar.gz
-	md5sums = 1ecf82fbb02e3e789f97081b7857ba85
+	md5sums = 1ad7f9578a16e73427202c2ab2018439
 
 pkgname = steam-acolyte
