@@ -11,9 +11,9 @@
 pkgname=librewolf-hg
 _pkgname=librewolf-nightly
 __pkgname="Librewolf Nightly"
-pkgver=130.0a1.r829427.2265791d29a4
+pkgver=130.0a1.r830803.d3ff8ea02d53
 pkgrel=1
-pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom. (nightly edition)"
+pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom.  Mercurial version."
 arch=(x86_64 x86_64_v3 aarch64)
 license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
@@ -141,7 +141,6 @@ ac_add_options --disable-crashreporter
 ac_add_options --disable-tests
 ac_add_options --disable-debug
 ac_add_options --disable-updater
-ac_add_options --disable-gpsd
 ac_add_options --disable-synth-speechd
 ac_add_options --disable-debug-symbols
 ac_add_options --disable-debug-js-modules
