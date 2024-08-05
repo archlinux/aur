@@ -1,0 +1,12 @@
+diff -rauN chibicc-main/main.c chibicc-include-path-patch/main.c
+--- chibicc-main/main.c 2020-12-07 04:00:06.000000000 +0100
++++ chibicc-include-path-patch/main.c   2024-08-01 10:38:28.167596211 +0200
+@@ -55,6 +55,8 @@
+   // to ./include relative to argv[0].
+   strarray_push(&include_paths, format("%s/include", dirname(strdup(argv0))));
+
++  strarray_push(&include_paths, "/usr/lib/chibicc/include");
++
+   // Add standard include paths.
+   strarray_push(&include_paths, "/usr/local/include");
+   strarray_push(&include_paths, "/usr/include/x86_64-linux-gnu");
