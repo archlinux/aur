@@ -1,7 +1,7 @@
 pkgbase = pyclean-git
 	pkgdesc = A Usenet spamfilter written in Python
-	pkgver = 2023.09.16.25ccced
-	pkgrel = 2
+	pkgver = pyclean.0.2.r81.g25ccced
+	pkgrel = 1
 	url = https://github.com/crooks/pyclean
 	arch = x86_64
 	license = GPL3

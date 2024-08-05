@@ -1,8 +1,8 @@
 # Maintainer: killab33z <killab33z @ protonmail-dot-com>
 pkgname=pyclean-git
 _pkgname=pyclean
-pkgver=2023.09.16.25ccced
-pkgrel=2
+pkgver=pyclean.0.2.r81.g25ccced
+pkgrel=1
 pkgdesc="A Usenet spamfilter written in Python"
 url="https://github.com/crooks/pyclean"
 arch=('x86_64')
