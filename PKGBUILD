@@ -10,7 +10,7 @@ url='https://github.com/sg3des/goatee'
 license=('GPL')
 depends=('gtk2' 'gtksourceview2')
 makedepends=('git' 'go')
-source=("git+https://github.com/sg3des/goatee.git")
+source=("git+https://github.com/sg3des/goatee.git#tag=0.9.1-4")
 md5sums=('SKIP')
 
 
