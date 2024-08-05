@@ -3,13 +3,13 @@
 pkgname=python-pyngrok
 _name=${pkgname#python-}
 pkgver=7.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python wrapper for ngrok"
 url="https://github.com/alexdlaird/pyngrok"
 arch=('any')
 license=('MIT')
 depends=('python-pyaml')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 conflicts=('ngrok')
 
 source=("$_name-$pkgver.tar.gz"::"https://github.com/alexdlaird/pyngrok/archive/$pkgver.tar.gz")
