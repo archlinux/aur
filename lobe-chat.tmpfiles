@@ -1,0 +1,3 @@
+d /var/lib/lobe-chat       0755 lobe-chat lobe-chat -
+d /var/lib/lobe-chat/cache 0755 lobe-chat lobe-chat -
+Z /var/lib/lobe-chat       -    lobe-chat lobe-chat -

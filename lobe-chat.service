@@ -1,0 +1,14 @@
+[Unit]
+Description = Lobe-Chat Daemon
+After = network-online.target ollama.service
+Wants = network-online.target ollama.service
+
+[Service]
+User = lobe-chat
+Group = lobe-chat
+EnvironmentFile = -/etc/default/lobe-chat
+WorkingDirectory = /usr/share/lobe-chat
+ExecStart = /usr/bin/node server.js
+
+[Install]
+WantedBy = multi-user.target
