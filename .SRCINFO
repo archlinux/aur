@@ -1,7 +1,7 @@
 pkgbase = 403jump-git
 	pkgdesc = Tool designed to bypass HTTP 403 (Forbidden) pages using various techniques.
-	pkgver = 0.1.0.772eba8f8b
-	pkgrel = 3
+	pkgver = r23.772eba8
+	pkgrel = 1
 	url = https://github.com/trap-bytes/403jump
 	arch = any
 	license = MIT

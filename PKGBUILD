@@ -1,8 +1,8 @@
 # Maintainer: killab33z <killab33z @ protonmail-dot-com>
 pkgname=403jump-git
 _pkgname="${pkgname%-git}"
-pkgver=0.1.0.772eba8f8b
-pkgrel=3
+pkgver=r23.772eba8
+pkgrel=1
 pkgdesc="Tool designed to bypass HTTP 403 (Forbidden) pages using various techniques."
 arch=("any")
 url="https://github.com/trap-bytes/403jump"
