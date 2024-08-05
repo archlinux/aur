@@ -1,0 +1,15 @@
+post_install(){
+ cat <<INFO
+
+To complete the installation of App Route Jail, run two commands,
+assuming 192.168.1.1  is your router:
+
+    sudo ip rule add fwmark 10 table 100
+    sudo ip route add default via 192.168.1.1 table 100
+
+Then, launch your application (e.g. firefox) by prepending the library:
+
+    MARK=10 LD_PRELOAD=/usr/lib/mark.so firefox
+
+INFO
+}

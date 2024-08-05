@@ -2,7 +2,7 @@
 
 pkgname="app-route-jail-git"
 pkgver=r16.94b955b
-pkgrel=1
+pkgrel=2
 pkgdesc="Tweaks to force application-specific routing on Linux"
 url="https://github.com/Intika-Linux-Firewall/App-Route-Jail"
 license=("custom:none")
@@ -10,6 +10,7 @@ arch=("any")
 options=("!strip")
 source=("git+$url.git")
 b2sums=('SKIP')
+install="$pkgname.install"
 
 pkgver(){
  cd "App-Route-Jail"
@@ -26,7 +27,7 @@ build(){
 package(){
  cd "App-Route-Jail"
  install -d "$pkgdir/usr/bin"
- install -d "$pkgdir/lib"
- install -D -m 0644 newns "$pkgdir/usr/bin"
- install -D -m 0644 mark.so "$pkgdir/lib"
+ install -d "$pkgdir/usr/lib"
+ install -D -m 0755 newns "$pkgdir/usr/bin"
+ install -D -m 0644 mark.so "$pkgdir/usr/lib"
 }
