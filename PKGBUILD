@@ -4,9 +4,9 @@
 # aarch64 tester: Irissman    <irissman@probus.ca>
 # armv7h tester: kauron
 pkgname=duplicati-canary-bin
-pkgver=2.0.9.101
+pkgver=2.0.9.102
 pkgrel=1
-_date=2024-06-27
+_date=2024-08-02
 _branch=canary
 pkgdesc="A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers"
 url="http://duplicati.com"
@@ -23,11 +23,11 @@ source=(
 )
 
 source_x86_64=(
-    "${pkgname}-${pkgver}.zip::https://github.com/duplicati/duplicati/releases/download/v${pkgver}_${_branch}_${_date}/duplicati-${pkgver}_${_branch}_${_date}-linux-x64-gui.zip"
+    "${pkgname}-${pkgver}-x86_64.zip::https://github.com/duplicati/duplicati/releases/download/v${pkgver}_${_branch}_${_date}/duplicati-${pkgver}_${_branch}_${_date}-linux-x64-gui.zip"
 )
 
 source_aarch64=(
-    "${pkgname}-${pkgver}.zip::https://github.com/duplicati/duplicati/releases/download/v${pkgver}_${_branch}_${_date}/duplicati-${pkgver}_${_branch}_${_date}-linux-arm64-gui.zip"
+    "${pkgname}-${pkgver}-aarch64.zip::https://github.com/duplicati/duplicati/releases/download/v${pkgver}_${_branch}_${_date}/duplicati-${pkgver}_${_branch}_${_date}-linux-arm64-gui.zip"
 )
 
 noextract=(
@@ -43,8 +43,8 @@ sha256sums=('388c20c8739bcbdb9109cdcc9387055392db74a3a095fbef79336a7c1edd150f'
             'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
             'b6ca3d280feb753ded94bb44eef821a0dac0c0c7ed7f37dea76d445a64386c86'
             '99591e96c340b49b47341315cb42f8ac12ca66dc4d22550e4acd37cce84e8b36')
-sha256sums_x86_64=('f269fd5e578577e46818034e426d0b7580c8490500cb8f1a72889b22f9aa8e4b')
-sha256sums_aarch64=('f269fd5e578577e46818034e426d0b7580c8490500cb8f1a72889b22f9aa8e4b')
+sha256sums_x86_64=('e72ae4c065b2648337cb5a3b8bf8400d006cd97af16c448da1a7f89b187fc107')
+sha256sums_aarch64=('3847a978e24e1686f60ba2be6bf168636bb06909328f4eb2364475e1ff60adab')
 
 
 
@@ -75,7 +75,7 @@ package() {
   # Unzip doesn't have --strip-components=1, see
   # https://superuser.com/questions/518347/equivalent-to-tars-strip-components-1-in-unzip
   local DEST="${pkgdir}/opt/duplicati"
-  unzip -d "${DEST}" "${pkgname}-${pkgver}.zip" && f=("$DEST"/*) && mv "$DEST"/*/* "$DEST" && rmdir "${f[@]}"
+  unzip -d "${DEST}" "${pkgname}-${pkgver}-${CARCH}.zip" && f=("$DEST"/*) && mv "$DEST"/*/* "$DEST" && rmdir "${f[@]}"
 
   # Symlink the CLI
   mkdir -p "${pkgdir}/usr/bin"

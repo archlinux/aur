@@ -64,6 +64,16 @@ EOF
 EOF
   fi
 
+  if [ $(vercmp $2 2.0.9.102-1) -lt 0 ]; then
+    cat <<EOF
+  * Version 2.0.9.102 changes the webserver, and now requires authentication to use
+  * the default http://localhost:8200. The TrayIcon service will authenticate for you,
+  * but see https://github.com/duplicati/duplicati/releases/tag/v2.0.9.102_canary_2024-08-02
+  * for more details.
+
+EOF
+  fi
+
   cat  <<EOF
   * UI can be accessed via following URL: http://localhost:8200
   * Running duplicati user instance (using current user account)
