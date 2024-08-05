@@ -2,7 +2,7 @@
 _pkgname=buttercup
 pkgname="${_pkgname}-desktop-bin"
 _appname=Buttercup
-pkgver=2.28.0_6
+pkgver=2.28.0_7
 _electronversion=22
 pkgrel=1
 pkgdesc="Cross-Platform Passwords & Secrets Vault"
@@ -27,9 +27,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/do
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver//_/-}/${_appname}-linux-x86_64.AppImage")
 source=("${pkgname%-bin}.sh")
 sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('377b290bd01ff3ac2528a972d29d1862f35f5e2b03112b7b93b3e33486b2aeba')
-sha256sums_armv7h=('71d1401d484ba6bff6e35c5104eaa99ae43e0fb5cf8e1c4a785d348514021d1d')
-sha256sums_x86_64=('b870fcfdbcaf9ad2532479c8d9529a75e9ada0c692987b88e2272e1c414a4f11')
+sha256sums_aarch64=('2444c0895e33d0aac497e13c904bd82ff6cd80a389e9afa907b0be3420f3a7e0')
+sha256sums_armv7h=('ee81ae1d6a9e0250386d553fb05756dbe6b66aae689b4f818c09429c1189fe67')
+sha256sums_x86_64=('022a54e344d7c32c55d38cf44d64d5f463aa209d316afb5b6260f4baf53db91d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
