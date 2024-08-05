@@ -7,7 +7,6 @@ pkgbase = sysi
 	license = MIT
 	depends = lm_sensors
 	depends = procps-ng
-	depends = pacman
 	depends = glib2
 	depends = bash
 	depends = filesystem
