@@ -1,6 +1,6 @@
 pkgbase = git-next
 	pkgdesc = Trunk-based development manager for a solo developer
-	pkgver = 0.13.1
+	pkgver = 0.13.3
 	pkgrel = 1
 	url = https://git.kemitix.net/kemitix/git-next
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = git-next
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = git-next-0.13.1.tar.gz::https://git.kemitix.net/kemitix/git-next/archive/v0.13.1.tar.gz
-	sha256sums = 585dbf4cdf6069acb1db54217adb4315d9ae1d5bb3eb3eef65c9be28b3efb702
+	source = git-next-0.13.3.tar.gz::https://git.kemitix.net/kemitix/git-next/archive/v0.13.3.tar.gz
+	sha256sums = 7580f00aa52b2c4660a759cc1a704e19ddfb1bafb1689604a03e184d7ae37d12
 
 pkgname = git-next

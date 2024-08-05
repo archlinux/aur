@@ -1,3 +1,4 @@
 [git-next]
 source = "git"
 git = "https://git.kemitix.net/kemitix/git-next.git"
+prefix = "v"
