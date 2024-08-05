@@ -2,7 +2,7 @@
 pkgname=archie
 pkgver=1.1
 pkgrel=1
-pkgdesc="A brief description of your program"
+pkgdesc="Archie is a command-line tool for managing packages on Arch Linux"
 arch=('x86_64')
 url="https://github.com/zackychann/archie"
 license=('GPL')

@@ -1,5 +1,5 @@
 pkgbase = archie
-	pkgdesc = A brief description of your program
+	pkgdesc = Archie is a command-line tool for managing packages on Arch Linux
 	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/zackychann/archie
