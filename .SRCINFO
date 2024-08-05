@@ -1,6 +1,6 @@
 pkgbase = youtui
 	pkgdesc = A simple TUI YouTube Music player written in Rust aiming to implement an Artist->Albums workflow for searching for music, and using discoverability principles for navigation. Written in Rust.
-	pkgver = 0.0.10
+	pkgver = 0.0.11
 	pkgrel = 1
 	url = https://github.com/nick42d/youtui
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = youtui
 	makedepends = base-devel
 	depends = alsa-lib
 	options = !lto
-	source = youtui-0.0.10.tar.gz::https://static.crates.io/crates/youtui/youtui-0.0.10.crate
-	sha256sums = de32be59597942677cfe64c21b1b974ddfc5b01830695e4bdf67c002760c69a0
+	source = youtui-0.0.11.tar.gz::https://static.crates.io/crates/youtui/youtui-0.0.11.crate
+	sha256sums = e98a301d892df4d21828a69350564c2d1b9c2c7f2f272cd6520fca119302e4b0
 
 pkgname = youtui
