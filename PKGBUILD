@@ -4,15 +4,26 @@ pkgname=easyindex-cli
 pkgver=1.0.6
 pkgrel=1
 pkgdesc="Easyindex-cli makes super easy to use Google Index API and IndexNow API"
-arch=('x86_64')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/usk81/easyindex-cli"
 license=('MIT')
-depends=()
-makedepends=()
-source=("$pkgname-$pkgver.tar.gz::https://github.com/usk81/easyindex-cli/releases/download/v$pkgver/easyindex-cli_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('5b50e5294f6786ed2885b589ceb74f34cb9cad401f4be7b03c674cfb6ab542b7')
+depends=('glibc')
+makedepends=('go')
+source=("$pkgname-$pkgver.tar.xz::https://github.com/usk81/easyindex-cli/archive/refs/tags/v$pkgver.tar.gz")
+conflicts=("easyindex-cli-bin")
+sha256sums=('d79a7974b4bbccf6f0bcf7c018bd7301403fe9c49de2b7b0d8bc6db3c7dc022f')
+
+build() {
+	cd "$pkgname-$pkgver"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	go build -v -o easyindex-cli .
+}
 
 package() {
-	cd "$srcdir"
+	cd "$pkgname-$pkgver"
 	install -Dm755 easyindex-cli "$pkgdir/usr/bin/easyindex-cli"
 }
