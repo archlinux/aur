@@ -1,39 +1,40 @@
 # Maintainer: Colin Woodbury <colin@fosskers.ca>
+
 pkgname=aura-bin
-pkgver=3.2.9
+pkgver=4.0.1
 pkgrel=1
-pkgdesc="A secure package manager for Arch Linux and the AUR - Prebuilt binary"
+pkgdesc="A package manager for Arch Linux and its AUR - Prebuild binary"
 url="https://github.com/fosskers/aura"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 arch=('x86_64')
-depends=('gmp' 'pacman' 'git')
-optdepends=('bash-completion: for bash completions')
-provides=('aura')
-conflicts=('aura' 'aura-git')
-options=('strip')
-backup=("etc/aura.conf")
+depends=("git" "curl" "openssl" "gcc-libs" "glibc")
+optdepends=(
+    "bash-completion: for bash completions"
+    "bat: more featureful file viewing"
+    "fd: faster filesystem traversal"
+    "ripgrep: faster log searches"
+    "shellcheck: PKGBUILD scanning"
+)
+provides=("aura")
+conflicts=("aura" "aura-git" "aura3-bin")
+options=("strip")
 source=("aura-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/aura-$pkgver-x86_64.tar.gz")
-sha256sums=('95a26cf14b24740aab6beb004c62d0c7dcbc5c674dc1025f37e492163bff432b')
+sha256sums=('543e7cf429f7344dcc88e44461b6de767c8a5430a8ba5ea0e5c6613466309e67')
+
+build() {
+    # Build the `info` page.
+    makeinfo aura.texi
+}
 
 package() {
-    # Install aura binary
+    # Install binary
     install -Dm755 aura -t "$pkgdir/usr/bin/"
 
-    # Installing conf file
-    install -Dm644 aura.conf -t "$pkgdir/etc"
+    # Install man and info pages
+    install -Dm644 "aura.8" "${pkgdir}/usr/share/man/man8/aura.8"
+    install -Dm644 "aura.info" "${pkgdir}/usr/share/info/aura.info"
 
-    # Installing man pages
-    install -Dm644 aura.8 -t "$pkgdir/usr/share/man/man8"
-    install -Dm644 aura.conf.5 -t "$pkgdir/usr/share/man/man5"
-
-    # Installing bash completions
-    install -Dm644 bashcompletion.sh \
-      "$pkgdir/usr/share/bash-completion/completions/aura"
-
-    # Installing zsh completions
-    install -Dm644 _aura -t \
-      "$pkgdir/usr/share/zsh/site-functions"
-
-    # Directories for storing PKGBUILDs, source packages & installed package states
-    install -d "$pkgdir/var/cache/aura/"{pkgbuilds,src,states}
+    # Install bash and zsh completions
+    install -Dm644 "bashcompletion.sh" "${pkgdir}/usr/share/bash-completion/completions/aura"
+    install -Dm644 "_aura" "${pkgdir}/usr/share/zsh/site-functions/_aura"
 }

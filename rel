@@ -1,0 +1,45 @@
+#! /bin/bash
+
+# Needs to be passed the version number as an argument!
+[[ $1 ]] || exit
+
+echo "Working..."
+
+# Paths for syncing
+path="/home/colin/code/haskell/aura/aur-pkgs/aura-bin"
+aura="/home/colin/code/haskell/aura"
+
+# Files to copy from the current Aura source
+news=("$aura/rust/target/release/aura"
+      "$aura/misc/aura.texi"
+      "$aura/misc/aura.8"
+      "$aura/misc/completions/bashcompletion.sh"
+      "$aura/misc/completions/_aura")
+
+# Files to delete before copying
+olds=("aura"
+      "aura.texi"
+      "aura.8"
+      "bashcompletion.sh"
+      "_aura")
+
+# Remove old versions
+echo "Removing olds files..."
+rm ${olds[@]}
+
+# Remove build/source tarballs
+echo "Removing old tarballs..."
+rm aura-*
+
+# Sync new versions
+echo "Copy new files..."
+for n in ${news[@]}; do
+      cp $n $path
+done
+
+# Create x86_64 tarball
+tar -czf aura-$1-x86_64.tar.gz ${olds[@]}
+makepkg -g
+makepkg --printsrcinfo >.SRCINFO
+
+echo "Done."
