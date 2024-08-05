@@ -10,6 +10,7 @@ _url="https://github.com/syndicodefront/infekt"
 license=('GPL-2.0-or-later')
 makedepends=('cmake>=3.2.0' 'zlib' 'pkgconf')
 depends=('glibc' 'gcc-libs' 'cairo' 'libpng')
+optdepends=('infekt-gtk: GTK2 user interface')
 _pkgsrc="infekt-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/v${pkgver}.tar.gz"
         "${pkgname}_fix_build_type.patch")
