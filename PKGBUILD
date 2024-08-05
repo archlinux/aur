@@ -3,14 +3,14 @@
 pkgname=newelle
 pkgver=0.2.1
 _commit=293d38a0edf264a252b820327b4af2b8b638b093
-pkgrel=2
+pkgrel=3
 pkgdesc="Your Ultimate Virtual Assistant"
 url="https://github.com/qwersyk/Newelle"
 license=('GPL-3.0-or-later')
 arch=('any')
 depends=('gtksourceview5' 'libadwaita' 'portaudio' 'python-cffi' 'python-expandvars'
          'python-gobject' 'python-gpt4all' 'python-gtts' 'python-pip' 'python-playsound'
-         'python-pyaudio' 'python-request' 'python-speechrecognition') #'python-curl-cffi' #'python-g4f'
+         'python-pyaudio' 'python-requests' 'python-speechrecognition') #'python-curl-cffi' #'python-g4f'
 makedepends=('git' 'meson')
 source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')

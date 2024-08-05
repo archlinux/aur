@@ -1,7 +1,7 @@
 pkgbase = newelle
 	pkgdesc = Your Ultimate Virtual Assistant
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/qwersyk/Newelle
 	arch = any
 	license = GPL-3.0-or-later
@@ -18,7 +18,7 @@ pkgbase = newelle
 	depends = python-pip
 	depends = python-playsound
 	depends = python-pyaudio
-	depends = python-request
+	depends = python-requests
 	depends = python-speechrecognition
 	source = git+https://github.com/qwersyk/Newelle.git#tag=0.2.1
 	sha256sums = SKIP
