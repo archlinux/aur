@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=x11-emoji-picker
 pkgver=0.15.0
 pkgrel=1
