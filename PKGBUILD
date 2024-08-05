@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Keiran keiran0@proton.me
 pkgname=archie
 pkgver=1.1
 pkgrel=1
