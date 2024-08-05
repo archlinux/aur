@@ -1,8 +1,9 @@
-# Maintainer: Bao <qubidt at gmail dot com>
-# Contributor: Malacology <guoyizhang at malacology dot com>
+# Maintainer: Dhruva Sambrani <dhruvasambrani19 at gmail dot com>
+# Ex-Maintainer: Bao <qubidt at gmail dot com>
+# Ex-Contributor: Malacology <guoyizhang at malacology dot com>
 
 pkgname=zotero-beta-bin
-_pkgver=7.0.0-beta.81+721f54fe4
+_pkgver=7.0.0-beta.112+e307b5e4d
 pkgver="${_pkgver/-beta/beta}"
 pkgrel=1
 pkgdesc="Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share research."
@@ -21,9 +22,9 @@ depends=(
 source=('zotero-absolute-path-fix.patch')
 source_x86_64=("Zotero-${_pkgver}_linux-${CARCH}.tar.bz2::https://download.zotero.org/client/beta/${_pkgver//+/%2B}/Zotero-${_pkgver//+/%2B}_linux-x86_64.tar.bz2")
 source_i686=("Zotero-${_pkgver}_linux-${CARCH}.tar.bz2::https://download.zotero.org/client/beta/${_pkgver//+/%2B}/Zotero-${_pkgver//+/%2B}_linux-x86_64.tar.bz2")
-sha256sums=('7a633ebad3a2d7bec604cc6fdb2aae13fd6c707975978ddccd39a526f933f585')
-sha256sums_x86_64=('4945ff71a9d45eb506e923b3bcf703123d7990a3ba896aa5ae3f82f97795a8e9')
-sha256sums_i686=('4945ff71a9d45eb506e923b3bcf703123d7990a3ba896aa5ae3f82f97795a8e9')
+sha256sums=('05b7b3efb9c9a493ffb0866f2371c7c400c390b22bea86efe29e0d7b87b43698')
+sha256sums_x86_64=('7435e794cea055d6e60105d24dc81cff4e3b0ce715336272568e72fdac52e247')
+sha256sums_i686=('7435e794cea055d6e60105d24dc81cff4e3b0ce715336272568e72fdac52e247')
 
 prepare() {
 	patch --directory="Zotero_linux-${CARCH}" --forward --strip=1 --input="${srcdir}/zotero-absolute-path-fix.patch"
