@@ -1,4 +1,4 @@
-# Maintainer: Arne Beer <arne@twobeer.de>
+# Maintainer: Arne Beer <public@arne.beer>
 
 pkgname=geil-git
 pkgver=v0.0.1.alpha.0.r17.g00f5bb0
