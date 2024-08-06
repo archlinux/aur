@@ -1,9 +1,9 @@
 # Maintainer: Tsaitang <tsaitang404@@gmail.com>
 pkgname=ishell
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="轻量又高性能的SSH工具IShell：AI加持，快人一步"
-arch=('any')
+arch=('x86_64')
 url="https://ishell.cc/"
 depends=()
 source=("$pkgname-$pkgver.zip::https://ishell-down.oss-cn-beijing.aliyuncs.com/ishell_linux_$pkgver.zip")
@@ -26,8 +26,9 @@ package() {
   # 在安装目标路径创建.desktop文件
   mkdir -p "$pkgdir/usr/share/applications/"
   echo "[Desktop Entry]
-  Name=ISHELL
+  Name=ishell
   Exec=ishell
+  Icon=/usr/share/ishell/bundle/data/flutter_assets/static/img/logo.png
   Type=Application
   Categories=Utility;" > "$pkgdir/usr/share/applications/ishell.desktop"
 }
