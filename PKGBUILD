@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
 pkgname=pam-python-git
 pkgver=r31.9641aa5
-pkgrel=3
+pkgrel=4
 pkgdesc='Python for PAM (py3 fork)'
 arch=('x86_64')
 url='https://github.com/castlabs/pam-python'
@@ -12,6 +12,7 @@ depends=(
 )
 makedepends=(
 	'python-sphinx'
+	'python-setuptools'
 	'make'
         'git'
 )
