@@ -1,6 +1,6 @@
 pkgbase = openfaas-cli
 	pkgdesc = Official CLI for OpenFaaS
-	pkgver = 0.16.31
+	pkgver = 0.16.32
 	pkgrel = 1
 	url = https://github.com/openfaas/faas-cli
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = openfaas-cli
 	makedepends = git
 	depends = glibc
 	provides = faas-cli
-	source = openfaas-cli-0.16.31.tar.gz::https://github.com/openfaas/faas-cli/archive/0.16.31.tar.gz
-	sha256sums = 322520eb0c94cbe513a140ca362550ccdef42639ace4bf8e4d2a505b1fb4d905
+	source = openfaas-cli-0.16.32.tar.gz::https://github.com/openfaas/faas-cli/archive/0.16.32.tar.gz
+	sha256sums = 69fd10fc5cb28e23faad41a08de4460c42cfa1e39fddf889bc9221004a4e2cda
 
 pkgname = openfaas-cli
