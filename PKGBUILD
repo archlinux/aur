@@ -16,7 +16,7 @@ depends=(
 )
 source=(
   "gossip_${pkgver}.${pkgrel}-${_pkgpatch}_amd64.deb::https://github.com/mikedilger/gossip/releases/download/v${pkgver}.${pkgrel}/gossip_${pkgver}.${pkgrel}-${_pkgpatch}_amd64.deb"
-  "LICENSE.txt::https://github.com/mikedilger/gossip/releases/download/v${pkgver}.${pkrel}/LICENSE.txt"
+  "LICENSE.txt::https://github.com/mikedilger/gossip/releases/download/v${pkgver}.${pkgrel}/LICENSE.txt"
   "README.txt::https://github.com/mikedilger/gossip/releases/download/v${pkgver}.${pkgrel}/README.txt"
   "gossip.png::https://raw.githubusercontent.com/mikedilger/gossip/c437e3ebf30ff168395bcdcb94cab7c88a5d0543/logo/gossip.png"
 )
