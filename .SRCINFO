@@ -1,0 +1,12 @@
+pkgbase = cwe-client-cli
+	pkgdesc = Simple console client for CWE
+	pkgver = 0.2.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	makedepends = rust>=1.78
+	source = cwe-client-cli-0.2.0.tar.gz::https://github.com/NotBalds/cwe-client-cli/archive/refs/tags/0.2.0.tar.gz
+	sha256sums = 02944ebfac553b5058d846c3e49aa94cee2b579a308fe677902352cc0165ce4a
+
+pkgname = cwe-client-cli
