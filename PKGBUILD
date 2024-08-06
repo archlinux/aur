@@ -3,7 +3,7 @@
 
 pkgname=nuclear-player-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.6.35
+pkgver=0.6.36
 pkgrel=3
 pkgdesc='A free, multiplatform music player app that streams from multiple sources.'
 arch=(x86_64)
@@ -15,7 +15,7 @@ source=(
     https://github.com/nukeop/nuclear/releases/download/v$pkgver/nuclear-v$pkgver-amd64.deb
     https://raw.githubusercontent.com/nukeop/nuclear/v$pkgver/LICENSE
 )
-sha256sums=(43ae31fbf094a8eee6e62b5f834a062840be03eda191970cf325427826f2a6e4
+sha256sums=(2d364d83f78f96d9e59fc276a52ddfaaa75e647941301d419faeae06a70199bc
             SKIP)
 
 prepare() {
