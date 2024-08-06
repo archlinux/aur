@@ -4,7 +4,7 @@
 pkgname=pulseaudio-control
 _reponame="polybar-$pkgname" # expected to change
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Easily control PulseAudio from any status bar'
 url="https://github.com/marioortizmanero/${_reponame}"
 license=('custom:MIT')
@@ -14,7 +14,7 @@ arch=('any')
 depends=(
     'bash'
     'libpulse'
-    'pulseaudio'
+    'pulse-native-provider'
 )
 optdepends=(
 )
