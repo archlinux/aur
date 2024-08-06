@@ -15,7 +15,7 @@ executable = sys.argv[1]
 elf = ELFFile(open(executable, "rb"))
 symtab = elf.get_section_by_name('.symtab')
 
-krisp_initialize_address = symtab.get_symbol_by_name("_ZN7discord15KrispInitializeEv")[0].entry.st_value
+krisp_initialize_address = symtab.get_symbol_by_name("_ZN7discordL17DoKrispInitializeEv")[0].entry.st_value
 isSignedByDiscord_address = symtab.get_symbol_by_name("_ZN7discord4util17IsSignedByDiscordERKNSt4__Cr12basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE")[0].entry.st_value
 
 text = elf.get_section_by_name('.text')
