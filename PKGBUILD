@@ -38,7 +38,7 @@ build() {
 		-DWITH_TINYXML=ON \
 		-DWITH_BUILD_TINYXML=OFF \
 		-Wno-dev
-		cmake --build "build-$pkgver" -- -j $(($(nproc)-1))
+	cmake --build "build-$pkgver" -- -j $(($(nproc)-1))
 }
 
 package() {
