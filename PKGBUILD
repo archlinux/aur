@@ -2,7 +2,7 @@
 
 pkgname=gz-common5
 pkgver=5.6.0
-pkgrel=2
+pkgrel=3
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Gazebo Common, a component of Gazebo, provides a set of libraries that cover many different use cases."
@@ -11,7 +11,7 @@ url="https://github.com/gazebosim/${_pkgbase}"
 license=('Apache')
 depends=(
   'assimp'
-  'ffmpeg4.4'
+  'ffmpeg'
   'freeimage'
   'gdal'
   'glibc'  # libdl
@@ -31,7 +31,6 @@ source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.t
 sha256sums=('39d02930638c5da35bbdd4925385bfe10180a8166c9c649b8ae67e083a47130e')
 
 build() {
-  export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/lib/ffmpeg4.4/pkgconfig"
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
            -DCMAKE_BUILD_TYPE='None' \
            -DCMAKE_INSTALL_PREFIX='/usr' \

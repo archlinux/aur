@@ -1,7 +1,7 @@
 pkgbase = gz-common5
 	pkgdesc = Gazebo Common, a component of Gazebo, provides a set of libraries that cover many different use cases.
 	pkgver = 5.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gazebosim/gz-common
 	arch = any
 	license = Apache
@@ -9,7 +9,7 @@ pkgbase = gz-common5
 	makedepends = doxygen
 	makedepends = gz-cmake=3
 	depends = assimp
-	depends = ffmpeg4.4
+	depends = ffmpeg
 	depends = freeimage
 	depends = gdal
 	depends = glibc
