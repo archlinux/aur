@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.10.2.arch1
+pkgver=6.10.3.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -33,18 +33,14 @@ source=(
 #  modprobed.db
 
   # Experimental patch for AMDGPU issues
-  e3615bd198289f319172c428f20857accb46b830.patch
   9999-possible_amdgpu_fix.patch
+  0001-drm-amdgpu-fix-contiguous-handling-for-IB-parsing-v2.patch
   
   "choose-gcc-optimization.sh"
 
   "sys-kernel_arch-sources-g14-6.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-6.8-rc4%2B.patch"
   
   0001-acpi-proc-idle-skip-dummy-wait.patch
-
-  0001-Fixes-ae834a549ec1-platform-x86-asus-wmi-add-support.patch
-  0001-ALSA-hda-realtek-cs35l41-Fixup-remaining-asus-strix-.patch
-  0001-platform-x86-asus-wmi-add-support-for-vivobook-fan-p.patch
 
   0001-platform-x86-asus-wmi-add-debug-print-in-more-key-pl.patch
   0002-platform-x86-asus-wmi-don-t-fail-if-platform_profile.patch
@@ -69,7 +65,7 @@ source=(
 
   amd-tablet-sfh.patch
 
-  "0001-sched-ext.patch"::"https://raw.githubusercontent.com/cachyos/kernel-patches/master/6.10/sched/0001-sched-ext.patch"
+#  "0001-sched-ext.patch"::"https://raw.githubusercontent.com/cachyos/kernel-patches/master/6.10/sched/0001-sched-ext.patch"
   "0001-amd-pstate.patch"::"https://raw.githubusercontent.com/CachyOS/kernel-patches/master/6.10/0001-amd-pstate.patch"
 
   "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
@@ -81,19 +77,16 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('73d8520dd9cba5acfc5e7208e76b35d9740b8aae38210a9224e32ec4c0d29b70'
+sha256sums=('fa5f22fd67dd05812d39dca579320c493048e26c4a556048a12385e7ae6fc698'
             'SKIP'
-            'a4efb43085bdfff93b11f26dd276859d347752958717b99c9f4a97133b857515'
+            '0de19cd6c7cbb1140480a80f313611b2c58830b426e67621c605aa22d1516b3e'
             'SKIP'
             '1eee90934450856b6d13dbd3edc3524e5700311ca2b8e7b9ed444d1ea94c4130'
-            'd9dec748b73ad8429cf4b27e5ba145a835adfac1215a61ae951d462161cadfce'
             'f01368213b69561922f9aaf4634a4690c5163d41e5f1cfa5623ea18addb4fc70'
+            '68bc2c1f4f035b0fc59e76133771c7300570d93a3f03cabfed44c7dcb4c8b03e'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'f4e7fcd011f2691840d2c8c2361dca850a78ea33cc5c24d2e27c3e0294fd1dc5'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
-            '15b5b90592ebdcfc032251a12379714d61dd8fdc63cf4678f4ce391d0d177459'
-            'd0b568200cb530d6edaab34bf5cecf3d297ed7b9c66ebb5ce71a13aef4742923'
-            '9c8679f5995b69b6778539f48f30142e5a357213cf9a04ee0877f50f859d1233'
             '0ac28bb000cf2eb56f36d028588fd898dd8afa63ba247fcf326496570c2fe87e'
             'f45f61b9e023bf0224d70f76c73c0f667193a9915ba6ae9586046a9c4d73b8a0'
             '9de67962522d07b9babe7c97e4240bb267939c2c6c97bb91d64ed14123f81e3f'
@@ -102,7 +95,7 @@ sha256sums=('73d8520dd9cba5acfc5e7208e76b35d9740b8aae38210a9224e32ec4c0d29b70'
             '5b6a2f1ac22c55f43cd7e7b8b79b7ee8a76d58acd74abecc3102b2c32ed15576'
             '6f5325bf096668d25a9bcf7fdd9fc574fc1c16640f2d163c54b87527ed961d83'
             'b7422349428f0476477167f81d9cd9e3692f7ca7345eb6e1f861a0994f9a366e'
-            '49715c553978e15c72be5739062c11c826a208160c25dde720237645bca06122'
+            'bf4a555719354bdcc8b0f3665f58b6915494924488b48736cc04d0a11b0fa96c'
             'ed242f4be3f8eaade2a1d42157c5c6c86281917a08ae43221b088fafdc775ee7'
             'a8e1e11a4ab1995cc4975c9b134a43ddfe7054ef0c965e52a7d8f9223e15c3e0'
             '315d1839630b37894a626bbc2aea012618b2e1ccb6f9d8aa27c0a3ce5e90e99c'
@@ -111,8 +104,7 @@ sha256sums=('73d8520dd9cba5acfc5e7208e76b35d9740b8aae38210a9224e32ec4c0d29b70'
             'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
             'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04'
-            '547b97a8c10709a1974ce68de1d7f5132ebe0f54f4485b4526b0a523b1410590'
-            'ded89c00f5dd9f06648b02d6c9166a15941acddc690d66d72ba210c7713eb6cc'
+            '52be5bf9aa3e9fd52e351fccdaa799fe9124312de9b744f3ed9c11621e038869'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
             '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85')
 
@@ -125,10 +117,10 @@ sha256sums=('73d8520dd9cba5acfc5e7208e76b35d9740b8aae38210a9224e32ec4c0d29b70'
 # 98, Intel Native = CONFIG_MNATIVE_INTEL
 # 99, AMD Native = CONFIG_MNATIVE_AMD
 if [ -z ${_microarchitecture+x} ]; then
-  _microarchitecture=15
+  _microarchitecture=93
 fi
 if [ -z ${Microarchitecture+x} ]; then
-  Microarchitecture='CONFIG_MZEN3'
+  Microarchitecture='CONFIG_GENERIC_CPU3'
 fi
 
 export KBUILD_BUILD_HOST=archlinux

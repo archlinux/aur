@@ -637,47 +637,47 @@ index 999cd658ec8b..d016acb23789 100644
  	&dev_attr_mcu_powersave.attr,
  	&dev_attr_boot_sound.attr,
  	&dev_attr_panel_od.attr,
-#@@ -4414,19 +4238,33 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
-# 		ok = asus->fan_boost_mode_available;
-# 	else if (attr == &dev_attr_throttle_thermal_policy.attr)
-# 		ok = asus->throttle_thermal_policy_available;
-#-	else if (attr == &dev_attr_ppt_pl2_sppt.attr)
-#+	else if (attr == &dev_attr_ppt_pl2_sppt.attr
-#+		|| attr == &dev_attr_ppt_pl2_sppt_min.attr
-#+		|| attr == &dev_attr_ppt_pl2_sppt_max.attr)
-# 		devid = ASUS_WMI_DEVID_PPT_PL2_SPPT;
-#-	else if (attr == &dev_attr_ppt_pl1_spl.attr)
-#+	else if (attr == &dev_attr_ppt_pl1_spl.attr
-#+		|| attr == &dev_attr_ppt_pl1_spl_min.attr
-#+		|| attr == &dev_attr_ppt_pl1_spl_max.attr)
-# 		devid = ASUS_WMI_DEVID_PPT_PL1_SPL;
-#-	else if (attr == &dev_attr_ppt_fppt.attr)
-#+	else if (attr == &dev_attr_ppt_fppt.attr
-#+		|| attr == &dev_attr_ppt_fppt_min.attr
-#+		|| attr == &dev_attr_ppt_fppt_max.attr)
-# 		devid = ASUS_WMI_DEVID_PPT_FPPT;
-#-	else if (attr == &dev_attr_ppt_apu_sppt.attr)
-#+	else if (attr == &dev_attr_ppt_apu_sppt.attr
-#+		|| attr == &dev_attr_ppt_apu_sppt_min.attr
-#+		|| attr == &dev_attr_ppt_apu_sppt_max.attr)
-# 		devid = ASUS_WMI_DEVID_PPT_APU_SPPT;
-#-	else if (attr == &dev_attr_ppt_platform_sppt.attr)
-#+	else if (attr == &dev_attr_ppt_platform_sppt.attr
-#+		|| attr == &dev_attr_ppt_platform_sppt_min.attr
-#+		|| attr == &dev_attr_ppt_platform_sppt_max.attr)
-# 		devid = ASUS_WMI_DEVID_PPT_PLAT_SPPT;
-#-	else if (attr == &dev_attr_nv_dynamic_boost.attr)
-#+	else if (attr == &dev_attr_nv_dynamic_boost.attr
-#+		|| attr == &dev_attr_nv_dynamic_boost_min.attr
-#+		|| attr == &dev_attr_nv_dynamic_boost_max.attr)
-# 		devid = ASUS_WMI_DEVID_NV_DYN_BOOST;
-#-	else if (attr == &dev_attr_nv_temp_target.attr)
-#+	else if (attr == &dev_attr_nv_temp_target.attr
-#+		|| attr == &dev_attr_nv_temp_target_min.attr
-#+		|| attr == &dev_attr_nv_temp_target_max.attr)
-# 		devid = ASUS_WMI_DEVID_NV_THERM_TARGET;
-# 	else if (attr == &dev_attr_mcu_powersave.attr)
-# 		devid = ASUS_WMI_DEVID_MCU_POWERSAVE;
+@@ -4414,19 +4238,33 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
+ 		ok = asus->fan_boost_mode_available;
+ 	else if (attr == &dev_attr_throttle_thermal_policy.attr)
+ 		ok = asus->throttle_thermal_policy_available;
+-	else if (attr == &dev_attr_ppt_pl2_sppt.attr)
++	else if (attr == &dev_attr_ppt_pl2_sppt.attr
++		|| attr == &dev_attr_ppt_pl2_sppt_min.attr
++		|| attr == &dev_attr_ppt_pl2_sppt_max.attr)
+ 		devid = ASUS_WMI_DEVID_PPT_PL2_SPPT;
+-	else if (attr == &dev_attr_ppt_pl1_spl.attr)
++	else if (attr == &dev_attr_ppt_pl1_spl.attr
++		|| attr == &dev_attr_ppt_pl1_spl_min.attr
++		|| attr == &dev_attr_ppt_pl1_spl_max.attr)
+ 		devid = ASUS_WMI_DEVID_PPT_PL1_SPL;
+-	else if (attr == &dev_attr_ppt_fppt.attr)
++	else if (attr == &dev_attr_ppt_fppt.attr
++		|| attr == &dev_attr_ppt_fppt_min.attr
++		|| attr == &dev_attr_ppt_fppt_max.attr)
+ 		devid = ASUS_WMI_DEVID_PPT_FPPT;
+-	else if (attr == &dev_attr_ppt_apu_sppt.attr)
++	else if (attr == &dev_attr_ppt_apu_sppt.attr
++		|| attr == &dev_attr_ppt_apu_sppt_min.attr
++		|| attr == &dev_attr_ppt_apu_sppt_max.attr)
+ 		devid = ASUS_WMI_DEVID_PPT_APU_SPPT;
+-	else if (attr == &dev_attr_ppt_platform_sppt.attr)
++	else if (attr == &dev_attr_ppt_platform_sppt.attr
++		|| attr == &dev_attr_ppt_platform_sppt_min.attr
++		|| attr == &dev_attr_ppt_platform_sppt_max.attr)
+ 		devid = ASUS_WMI_DEVID_PPT_PLAT_SPPT;
+-	else if (attr == &dev_attr_nv_dynamic_boost.attr)
++	else if (attr == &dev_attr_nv_dynamic_boost.attr
++		|| attr == &dev_attr_nv_dynamic_boost_min.attr
++		|| attr == &dev_attr_nv_dynamic_boost_max.attr)
+ 		devid = ASUS_WMI_DEVID_NV_DYN_BOOST;
+-	else if (attr == &dev_attr_nv_temp_target.attr)
++	else if (attr == &dev_attr_nv_temp_target.attr
++		|| attr == &dev_attr_nv_temp_target_min.attr
++		|| attr == &dev_attr_nv_temp_target_max.attr)
+ 		devid = ASUS_WMI_DEVID_NV_THERM_TARGET;
+ 	else if (attr == &dev_attr_mcu_powersave.attr)
+ 		devid = ASUS_WMI_DEVID_MCU_POWERSAVE;
 @@ -4652,6 +4490,77 @@ static void asus_wmi_debugfs_init(struct asus_wmi *asus)
  
  /* Init / exit ****************************************************************/
