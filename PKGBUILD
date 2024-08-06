@@ -4,9 +4,10 @@ pkgbase="stm32cubeclt"
 pkgname="stm32cubeclt"
 # pkgname=("stm32cubeclt" "stlink-server" "stlink-udev-rules")
 _pkgname="STM32CubeCLT"
-pkgver=1.15.1
+pkgver=1.16.0
 pkgrel=1
-_pkgdesc="A toolset for third-party integrated development environment (IDE) providers, allowing the use of STMicroelectronics proprietary tools within their own IDE frameworks."
+_pkgdesc="A toolset for third-party integrated development environment (IDE) providers, allowing the use \
+of STMicroelectronics proprietary tools within their own IDE frameworks."
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubeclt.html"
 license=('custom:SLA0048')
@@ -14,9 +15,9 @@ makedepends=('tar'
              'bash')
 options=('!strip')
 
-_prefix="21094"
-_date="20240412"
-_suffix="1041"
+_prefix="21983"
+_date="20240628"
+_suffix="1741"
 _pkg_name=${pkgbase}_${pkgver}
 _pkg_license_name="SLA0048_${_pkgname}.pdf"
 _pkg_sh_name="st-${_pkg_name}_${_prefix}_${_date}_${_suffix}_amd64.sh"
@@ -27,7 +28,7 @@ _pkg_zip_name="en.${_pkg_sh_name}.zip"
 # copy from stm32cubeide
 _curl_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/120.0.0.0 \
+                        Chrome/124.0.0.0 \
                         Safari/537.36"
 _curl_useragent="$(printf '%s' "$_curl_useragent" | sed 's/[[:space:]]\+/ /g')"
 _useragent_escaped="${_curl_useragent// /\\ }"
@@ -36,7 +37,9 @@ DLAGENTS=("https::/usr/bin/curl \
               -H ${_useragent_escaped} \
               -o %o --compressed %u")
 
-_curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-ides/stm32cubeclt/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
+_curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-to\
+ols/stm32-software-development-tools/stm32-ides/stm32cubeclt/_jcr_content/get-software/getsw-table-nli.no\
+cache.html/st-site-cx/components/containers/product/get-software-table-body.html"
 
 _curl_req="$(curl -s --compressed -H "$_curl_useragent" "$_curl_req_url")"
 _pkg_url="$(grep -m 1 "${_pkg_zip_name}" <<< "$_curl_req")"
@@ -44,7 +47,7 @@ _pkg_url="$(awk -F'"' '{print $4}' <<< "$_pkg_url")"
 _download_path="https://www.st.com""$_pkg_url"
 source=("${_pkg_zip_name}"::"$_download_path"
         "https://www.st.com/resource/en/license/${_pkg_license_name}")
-sha256sums=('be9befeef5bc68e5afa2d2e52191e30d53b4e3b79cef599722af715c82a0035b'
+sha256sums=('f66be954b886d8c104b8316d833a3e4d85f6abd652862cba477627424e3eb9a0'
             '50b3b09396d8c0dad0bde596dcaf9ccb6b20d36fd6b02f8e8e5d0466087a9819')
 
 # not used, reserved.
