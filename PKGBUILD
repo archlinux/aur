@@ -59,6 +59,7 @@ prepare() {
 build() {
   cd $pkgname
   CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
+  CFLAGS+=' -Wno-error=incompatible-pointer-types -Wno-error=implicit-int'
   ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib/$pkgname \
     --enable-rdp --enable-spice --enable-compile-warnings=minimum
   make
