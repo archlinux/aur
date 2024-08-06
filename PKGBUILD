@@ -2,16 +2,16 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=wordfence-cli
-pkgver=4.0.1
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="A modern and fast real-time MIDI player written in Rust."
 url="https://github.com/wordfence/wordfence-cli"
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=(python python-packaging python-requests)
 makedepends=(python-build python-installer python-wheel python-setuptools)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wordfence/wordfence-cli/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('357f57207778a5b83f762d8bb4f32a3c5fce2bc63847ca7774f26ea4afc097610642e31f0fffbe665a5f2ff1f8d041f1b299bd9288e7d879feb5d3662c344185')
+b2sums=('d90b4e06abe16fbc50133c51235116a483f69714f0bcd487bb62eac4d0ae1bb3c15c29ca5948b08b921c8c8e8e0636bbfaf9ca93f8374e5d7943935baf5ca6db')
 
 build() {
   cd "$pkgname-$pkgver"
