@@ -7,7 +7,7 @@ _npmver=17.33.6
 
 pkgname=netlify
 pkgver=${_npmver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Create, deploy, and delete new sites hosted on Netlify straight from your terminal"
 
 arch=(any)
@@ -17,7 +17,7 @@ license=('MIT')
 options=('!strip')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
 noextract=("${_npmname}-${_npmver}.tgz")
-sha256sums=('fa58bf9937752189129c88a576805b6ad13756beee12728569a9eb8261950a20')
+sha256sums=('1261d765d0f8220919ffd84a21fb6a54667bcf7c1bd364eabb541d7f0c3af196')
 
 package() {
     cd ${srcdir}
