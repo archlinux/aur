@@ -1,0 +1,17 @@
+pkgbase = python-timg
+	pkgdesc = Display an image in terminal
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/adzierzanowski/timg
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pillow
+	source = timg-1.1.5.tar.gz::https://github.com/adzierzanowski/timg/archive/1.1.5.tar.gz
+	sha256sums = 1f1ac80e206b212be026d9584754559bf0a1df7069355f6ea7b7e2fe9f9646dc
+
+pkgname = python-timg
