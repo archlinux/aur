@@ -2,11 +2,11 @@
 
 pkgname=ctcontainer
 pkgver=r3.11ee89c
-pkgrel=1
+pkgrel=2
 pkgdesc="container manager which enable you to experience otherlinux distro with xorg/xwayland and pulseaudio support"
 arch=("any")
 url="https://github.com/kwaitsing/ctcontainer"
-depends=("fish" "sudo" "util-linux" "xorg-xhost" "pulseaudio")
+depends=("fish" "sudo" "util-linux" "xorg-xhost" "pulse-native-provider")
 makedepends=("git")
 license=("GPL-3.0-only")
 source=(git+https://github.com/kwaitsing/ctcontainer.git)
