@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ooniprobe-desktop
-pkgver=3.9.6
-_cliver=3.22.0
+pkgver=3.9.7
 pkgrel=1
-_nodeversion=18
+_cliver=3.22.0
+_nodeversion=16
 pkgdesc="The next generation OONI Probe desktop app"
 arch=('x86_64')
 url="https://ooni.org"
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-desktop}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ooni/probe-desktop/archive/v$pkgver.tar.gz"
         "${pkgname%-desktop}-${_cliver}-linux-amd64::https://github.com/ooni/probe-cli/releases/download/v${_cliver}/${pkgname%-desktop}-linux-amd64"
         "$pkgname.desktop")
-sha256sums=('b5b55e5a48f75d0a0693b1a4dada5187ec3f9367f34b3c667fbaba46f65ce826'
+sha256sums=('a90a591a47665b969c0fc6f2e8d06fd7e22a150e8a1b7d8e7eebc0acb75835d3'
             'a9d8f6b18382ea9f25a5fbe512189a8f6deeffa7e32dfd94bfbbe0377c5c8670'
             '77f39a9c8d017b391f61686ac38131a9e31435635de4b72d0f20930165404915')
 
@@ -45,7 +45,7 @@ prepare() {
 
 build() {
   cd "${pkgname#ooni}-$pkgver"
-  export NODE_OPTIONS=--openssl-legacy-provider
+#  export NODE_OPTIONS=--openssl-legacy-provider
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   _ensure_local_nvm
   yarn next build renderer
