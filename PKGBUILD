@@ -1,12 +1,11 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-_name="posting"
-pkgname="python-${_name}"
+pkgname="posting"
 pkgver=1.10.1
 pkgrel=1
 pkgdesc="The modern API client that lives in your terminal"
 arch=('any')
-url="https://github.com/darrenburns/${_name}"
+url="https://github.com/darrenburns/${pkgname}"
 license=('MIT')
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 # checkdepends=('python-pytest')
@@ -14,7 +13,7 @@ depends=('python' 'python-click' 'python-xdg-base-dirs' 'python-httpx'
          'python-click-default-group' 'python-pyperclip' 'python-pydantic'
          'python-yaml' 'python-pydantic-settings' 'python-dotenv' 'python-rich'
          'python-textual' 'python-typing_extensions' 'python-textual-autocomplete')
-_pkgsrc="${_name}-${pkgver}"
+_pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('24a42658d374bcb68fe274a7a073ff85609312fe10b9f3deb6b1937f6bacd463')
 

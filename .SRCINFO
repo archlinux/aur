@@ -1,4 +1,4 @@
-pkgbase = python-posting
+pkgbase = posting
 	pkgdesc = The modern API client that lives in your terminal
 	pkgver = 1.10.1
 	pkgrel = 1
@@ -25,4 +25,4 @@ pkgbase = python-posting
 	source = posting-1.10.1.tar.gz::https://github.com/darrenburns/posting/archive/1.10.1.tar.gz
 	sha256sums = 24a42658d374bcb68fe274a7a073ff85609312fe10b9f3deb6b1937f6bacd463
 
-pkgname = python-posting
+pkgname = posting
