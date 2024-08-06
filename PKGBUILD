@@ -1,0 +1,63 @@
+# Maintainer: Ciro Scognamiglio <ciro.scognamiglio88 at gmail dot com>
+# Contributor: Ciro Scognamiglio <ciro.scognamiglio88 at gmail dot com>
+
+pkgname='bzr-player'
+_pkgname='BZR Player'
+pkgver='2.0.73'
+pkgrel='1'
+pkgdesc='Audio player supporting a wide types of multi-platform exotic file formats'
+arch=('i686' 'x86_64')
+url="http://bzrplayer.blazer.nu"
+license=('GPL3')
+depends=('wine' 'hicolor-icon-theme')
+makedepends=('gendesk' 'libarchive')
+options=(!strip)
+_zip="BZR-Player-$pkgver.zip"
+_setup="bzr2_setup.sh"
+_mimes="x-bzr-player.xml"
+source=("$_zip::http://bzrplayer.blazer.nu/getFile.php?id=${pkgver}"
+  "https://raw.githubusercontent.com/ciros88/bzr2-linux/master/aur/$pkgname.sh"
+  "https://raw.githubusercontent.com/ciros88/bzr2-linux/master/$_setup"
+  "https://raw.githubusercontent.com/ciros88/bzr2-linux/master/$_mimes")
+noextract=("$_zip")
+sha256sums=('9f373c73e882c06fcfd68ab37af79851f79fa63f8ae2af032c2251c80c33e9ef'
+  'ed63452a9e0dc65e73c35ac770cf52ea1c81d4c9a18935225e7c1510ffbe1a76'
+  'SKIP'
+  'SKIP')
+
+prepare() {
+  mkdir -p "${pkgname}-bin"
+  bsdtar -xf "$_zip" -C "${pkgname}-bin"
+
+  mapfile -t mime_types_supported < <(sed -n "\|mime_types_supported=(| , \|)|{p; \|)|q}" "$_setup" |
+    sed -e 's:mime_types_supported=(::g' -e 's:)::g' -e 's: :\n:g' | sed '/^[[:space:]]*$/d')
+
+  for mime_type in "${mime_types_supported[@]}"; do
+    desktop_entry_mime_types="$desktop_entry_mime_types$mime_type;"
+  done
+
+  desktop_entry_mime_types="${desktop_entry_mime_types%?}"
+
+  gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
+    --name="$_pkgname" \
+    --genericname='Audio player' \
+    --exec="/usr/bin/$pkgname.sh %U" \
+    --icon="$pkgname" \
+    --categories='AudioVideo;Audio;Player;Music' \
+    --mimetype="$desktop_entry_mime_types"
+}
+
+package() {
+  install -dm755 "$pkgdir/usr/bin"
+  install -m755 "$pkgname.sh" "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share"
+  cp -a "${pkgname}-bin" "$pkgdir/usr/share/$pkgname"
+  install -Dm644 "${pkgname}-bin/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$_mimes" "$pkgdir/usr/share/mime/packages/$_mimes"
+  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+  for size in 16 32 48 64 128 256 512; do
+    install -Dm644 "$pkgdir/usr/share/$pkgname/data/resources/icon.png" \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
+  done
+}
