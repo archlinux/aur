@@ -2,7 +2,7 @@
 
 _pkgname=gBar
 pkgname=gbar-git
-pkgver=r255.81b97f9
+pkgver=r257.b1e2c2e
 pkgrel=1
 # Architectures which are atleast confirmed to somewhat work.
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ depends=('cairo'
          'libpulse'
          'libsass'
          'pamixer'
-         'pulseaudio'
+         'pulse-native-provider'
          'wayland')
 optdepends=('bluez-utils: Bluetooth support'
             'dbus: Tray and bluetooth support'
