@@ -2,8 +2,8 @@
 
 pkgname=gossip-bin
 pkgver=0.11
+pkgrel=2
 _pkgpatch=1
-pkgrel=1
 pkgdesc="gossip nostr client built with rust"
 arch=('x86_64')
 url="https://github.com/mikedilger/gossip"
@@ -15,18 +15,18 @@ depends=(
   'gcc-libs'
 )
 source=(
-  "gossip_${pkgver}.${_pkgpatch}-${pkgrel}_amd64.deb::https://github.com/mikedilger/gossip/releases/download/v${pkgver}.${_pkgpatch}/gossip_${pkgver}.${_pkgpatch}-${pkgrel}_amd64.deb"
-  "LICENSE.txt::https://github.com/mikedilger/gossip/releases/download/v${pkgver}.${_pkgpatch}/LICENSE.txt"
-  "README.txt::https://github.com/mikedilger/gossip/releases/download/v${pkgver}.${_pkgpatch}/README.txt"
+  "gossip_${pkgver}.${pkgrel}-${_pkgpatch}_amd64.deb::https://github.com/mikedilger/gossip/releases/download/v${pkgver}.${pkgrel}/gossip_${pkgver}.${pkgrel}-${_pkgpatch}_amd64.deb"
+  "LICENSE.txt::https://github.com/mikedilger/gossip/releases/download/v${pkgver}.${pkrel}/LICENSE.txt"
+  "README.txt::https://github.com/mikedilger/gossip/releases/download/v${pkgver}.${pkgrel}/README.txt"
   "gossip.png::https://raw.githubusercontent.com/mikedilger/gossip/c437e3ebf30ff168395bcdcb94cab7c88a5d0543/logo/gossip.png"
 )
-sha256sums=('e3651847f96a3a5cb89509b18d3fc57f9cea14a0f670b6defb6e76cc15a502c0'
+sha256sums=('9a90af8069c609ee6f8949ed9eb95b2f7b190cdcfc47c0a1b3e47a1d8b86a995'
             '8a8543ebe0203fa8597bfcf70e7841f6fb66367358ff6180be692d4d724def70'
-            '7acd0473c04ca9df5a1ac5556fd9ec89bdf4ce19c740b1c550a23fa03bc8f8ac'
+            '37e31f5ba5afbfedacad2e5a044736ac5a4ab64fec6948f2ed1f3d0202fe7c6b'
             '7f4f3e319a429825008c8d46cc2cfbaf3bdce70972e5900df7e548df6967258b')
 
 prepare() {
-  ar vx "${srcdir}/gossip_${pkgver}.${_pkgpatch}-${pkgrel}_amd64.deb"
+  ar vx "${srcdir}/gossip_${pkgver}.${pkgrel}-${_pkgpatch}_amd64.deb"
   bsdtar -xvf ${srcdir}/control.tar.xz
   bsdtar -xvf ${srcdir}/data.tar.xz
 }
