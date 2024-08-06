@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-jaraco.vcs
 _name=${pkgname#python-}
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Facilities for working with VCS repositories"
 arch=('any')
@@ -33,7 +33,7 @@ checkdepends=(
   'python-types-python-dateutil'
 )
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4f174630e6a91a04b3fe08025bf9b7d4a23fb9b05da4e856d3c721539e27ed74')
+sha256sums=('a948bc8a85810faae35922cb5d3b077ad40bc446f6bfd809f9b065634db421d0')
 
 build() {
   cd "$_name-$pkgver"
