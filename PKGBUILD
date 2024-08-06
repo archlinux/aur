@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 url='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'
 license=('GPL2')
 depends=('qt6-multimedia' 'qt6-multimedia-gstreamer'
-	'gst-plugins-good' 'pulseaudio')
+	'gst-plugins-good' 'pulse-native-provider')
 makedepends=('git' 'qt6-tools' 'libxrandr' 'bzip2')
 optdepends=('gst-plugins-ugly: for x264 video codec'
 	   'gst-plugins-bad: for faac')
