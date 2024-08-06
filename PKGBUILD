@@ -22,6 +22,7 @@ package() {
     ./Apidog-${pkgver}.AppImage --appimage-extract
     install -dm755 "${pkgdir}/opt/"
     cp -r "squashfs-root" "${pkgdir}/opt/apidog"
+    chmod -R 755 "${pkgdir}/opt/apidog"
     
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/apidog/apidog" "${pkgdir}/usr/bin/apidog"
