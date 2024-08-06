@@ -25,11 +25,11 @@ package() {
   bsdtar xvf "build/${_uuid}.shell-extension.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/" --no-same-owner
 
-  mv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
+  mv -v "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
 
-  install -Dm644 "extension/schemas/org.gnome.shell.extensions.AlphabeticalAppGrid.gschema.xml" -t \
+  install -Dvm644 "extension/schemas/org.gnome.shell.extensions.AlphabeticalAppGrid.gschema.xml" -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
 
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
-  rm "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/LICENSE.txt"
+  rm -rv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
+  rm -v "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/LICENSE.txt"
 }
