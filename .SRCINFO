@@ -1,6 +1,6 @@
 pkgbase = qrookie-vrp
 	pkgdesc = Download and install Quest games from ROOKIE Public Mirror
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/glaumar/QRookie
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = qrookie-vrp
 	depends = android-sdk-build-tools
 	depends = android-apktool
 	provides = QRookie
-	source = https://github.com/glaumar/QRookie/archive/refs/tags/v0.3.3.tar.gz
-	sha256sums = 26f1a30e022e9dd6e6c973c75dc19ff115dd7d5dfb3753ba70bc4ed36e723da0
+	source = https://github.com/glaumar/QRookie/archive/refs/tags/v0.3.4.tar.gz
+	sha256sums = 586957c53cc87c75d18449d2c21f246381931fd1ac6865155aab1596a7e73b81
 
 pkgname = qrookie-vrp
