@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A LaTeX math converter to unicode text"
 arch=('any')
 url="https://github.com/jb-leger/${_name}"
-license=('MIT')
+license=('BSD-2-Clause')
 makedepends=('python-build' 'python-installer' 'python-wheel'
              'python-setuptools')
 checkdepends=('python-pytest')
