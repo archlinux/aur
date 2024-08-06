@@ -1,12 +1,12 @@
 # Maintainer: Randall Winkhart <idgr at tutanota dot com>
 pkgname=mutn
 pkgver=0.2.0
-pkgrel=1
-pkgdesc='A simple, self-hosted, SSH-synchronized password/note manager based on libmutton'
+pkgrel=2
+pkgdesc='A simple, self-hosted, SSH-synchronized password/note manager for the CLI (based on libmutton)'
 arch=('x86_64' 'i686' 'i486' 'pentium4' 'aarch64' 'armv7h' 'riscv64')
 url='https://github.com/rwinkhart/MUTN'
 license=('MIT')
-makedepends=(go util-linux)
+makedepends=(go util-linux gzip)
 optdepends=(
     'wl-clipboard: Wayland clipboard support'
     'xclip: X11 clipboard support'
@@ -16,6 +16,11 @@ source=("git+https://github.com/rwinkhart/MUTN.git#tag=v${pkgver}")
 sha512sums=(SKIP)
 
 build() {
+    cd ${srcdir}/MUTN
+
+    # compress man page
+    gzip -kf ./docs/man
+
     # determine microarchitecture feature level
     case $CARCH in
         'x86_64')
@@ -33,7 +38,7 @@ build() {
         # TODO check aarch64 feature level
     esac
 
-    cd ${srcdir}/MUTN
+    # compile binary
     CGO_ENABLED=1 go build -ldflags="-s -w" -trimpath ./mutn.go
 }
 
@@ -43,4 +48,5 @@ package() {
     install -Dm644 ./LICENSE ${pkgdir}/usr/share/licenses/mutn/LICENSE
     install -Dm644 ./completions/zsh/_mutn ${pkgdir}/usr/share/zsh/site-functions/_mutn
     install -Dm644 ./completions/bash/mutn ${pkgdir}/usr/share/bash-completion/completions/mutn
+    install -Dm644 ./docs/man.gz ${pkgdir}/usr/share/man/man1/mutn.1.gz
 }
