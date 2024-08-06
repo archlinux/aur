@@ -1,6 +1,6 @@
 pkgbase = tilt-bin
 	pkgdesc = Local Kubernetes development with no stress
-	pkgver = 0.33.18
+	pkgver = 0.33.19
 	pkgrel = 1
 	url = https://tilt.dev
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = tilt-bin
 	depends = glibc
 	provides = tilt
 	conflicts = tilt
-	source = https://github.com/tilt-dev/tilt/releases/download/v0.33.18/tilt.0.33.18.linux.x86_64.tar.gz
-	sha256sums = 55c828688ee82e392816f90f0cfea2d8db9642c280108dca47f000ab24299713
+	source = https://github.com/tilt-dev/tilt/releases/download/v0.33.19/tilt.0.33.19.linux.x86_64.tar.gz
+	sha256sums = 2b414caeb735be533f96ae1f362ecb06af109d29d29c36fe9d6ecb6476ea8017
 
 pkgname = tilt-bin
