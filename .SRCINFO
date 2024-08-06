@@ -1,6 +1,6 @@
 pkgbase = angryoxide
 	pkgdesc = 802.11 Attack Tool
-	pkgver = 0.8.13
+	pkgver = 0.8.14
 	pkgrel = 1
 	url = https://github.com/Ragnt/AngryOxide
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = angryoxide
 	makedepends = cargo
 	makedepends = git
 	options = !lto
-	source = angryoxide-0.8.13::https://github.com/Ragnt/AngryOxide/archive/refs/tags/v0.8.13.tar.gz
-	b2sums = 97bddd1386400150c89803f553fdc3bbfcb3b554012d858169c87a15245473233420fef0a7e17b78e6b5137978a2b82ee1c0f03414f7598ae8e4a96e8bc5c9d8
+	source = angryoxide-0.8.14::https://github.com/Ragnt/AngryOxide/archive/refs/tags/v0.8.14.tar.gz
+	b2sums = 1f27ab592c5a34e2d2e74c8e419b34f5044fbc941a0d10667b66b6ccb23e51164abbe36f5abdb7dc6e76b660bc64ac971cc7ef9500c9f79834df86db44b1a38e
 
 pkgname = angryoxide
