@@ -1,7 +1,7 @@
 pkgbase = parsehub
 	pkgdesc = A free web scraper that is easy to use
 	pkgver = 2.4.35
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.parsehub.com/
 	arch = x86_64
 	license = custom: https://www.parsehub.com/terms

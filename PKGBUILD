@@ -1,8 +1,8 @@
-# Maintainer: Roelof Ridderman <kavaliros@ridderman.nl>
+# Maintainer: Roelof Ridderman <roelof@ridderman.nl>
 pkgname=parsehub
 pkgver=2.4.35
-pkgrel=1
-pkgdesc="A free web scraper that is easy to use "
+pkgrel=2
+pkgdesc="A free web scraper that is easy to use"
 appimage=ParseHub.AppImage
 arch=('x86_64')
 options=(!strip)
