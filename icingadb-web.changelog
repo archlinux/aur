@@ -1,3 +1,8 @@
+2024-08-06
+  - New upstream release: Version 1.1.3
+    https://github.com/Icinga/icingadb-web/releases/tag/v1.1.3
+  - Add hint about more advanced configuration to config.ini
+
 2024-04-20
   - Changed dependency:
     - icinga-php-library>=v0.13.2
