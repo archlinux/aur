@@ -1,6 +1,6 @@
 pkgbase = shimmer-firefly-wallet
 	pkgdesc = The SMR Firefly Wallet
-	pkgver = 2.1.15
+	pkgver = 2.1.16
 	pkgrel = 1
 	url = https://iota.org/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = shimmer-firefly-wallet
 	source = shimmer-firefly-wallet.desktop
 	md5sums = b86c333fd18633c8f94e86973c798eee
 	sha512sums = 3a46d0563d792d39dccdb5f9e8d64ac8009a6eae75c71b7a0b39346e75893289934e32f26678ec86a9ee11eb06e551e673a34b294359d0e68ead34b1010d64e4
-	source_x86_64 = https://github.com/iotaledger/firefly/releases/download/desktop-shimmer-2.1.15/firefly-shimmer-desktop-2.1.15.AppImage
-	sha256sums_x86_64 = 60694a23609a0ac1aa0a1725474acb0eda1793eb76b735264d420e445b5a8d5b
+	source_x86_64 = https://github.com/iotaledger/firefly/releases/download/desktop-shimmer-2.1.16/firefly-shimmer-desktop-2.1.16.AppImage
+	sha256sums_x86_64 = ffbd9fe3f648bd972e156c5b6b8baf9c3facefc4e10c156d293100a6dea3e775
 
 pkgname = shimmer-firefly-wallet
