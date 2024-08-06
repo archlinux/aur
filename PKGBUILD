@@ -4,7 +4,7 @@
 pkgname='bzr-player'
 _pkgname='BZR Player'
 pkgver='2.0.73'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Audio player supporting a wide types of multi-platform exotic file formats'
 arch=('i686' 'x86_64')
 url="http://bzrplayer.blazer.nu"
@@ -44,7 +44,7 @@ prepare() {
     --genericname='Audio player' \
     --exec="/usr/bin/$pkgname.sh %U" \
     --icon="$pkgname" \
-    --categories='AudioVideo;Audio;Player;Music' \
+    --categories='AudioVideo;Audio;Music;Player;' \
     --mimetype="$desktop_entry_mime_types"
 }
 

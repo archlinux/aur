@@ -1,7 +1,7 @@
 pkgbase = bzr-player
 	pkgdesc = Audio player supporting a wide types of multi-platform exotic file formats
 	pkgver = 2.0.73
-	pkgrel = 2
+	pkgrel = 3
 	url = http://bzrplayer.blazer.nu
 	arch = i686
 	arch = x86_64
