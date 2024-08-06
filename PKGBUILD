@@ -2,7 +2,7 @@
 
 pkgname=gz-sim8
 pkgver=8.6.0
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Open source robotics simulator"
@@ -40,7 +40,6 @@ source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.t
 sha256sums=('d709eafd7c919add5fc828e10f6605abaa2aceb6b9609f44e115f204853cf5db')
 
 build() {
-  export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/lib/ffmpeg4.4/pkgconfig"
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
            -DCMAKE_BUILD_TYPE='None' \
            -DCMAKE_INSTALL_PREFIX='/usr' \
