@@ -1,6 +1,6 @@
 pkgbase = proton-pass
 	pkgdesc = Open-source password manager for effortless protection. Securely store, share and auto-login your accounts with Proton Pass, using end-to-end encryption trusted by millions.
-	pkgver = 1.21.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://proton.me/pass
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = proton-pass
 	conflicts = proton-pass-bin
 	replaces = protonpass-bin
 	replaces = proton-pass-bin
-	source = https://proton.me/download/PassDesktop/linux/x64/ProtonPass_1.21.0.deb
-	sha256sums = 28dcf757cda5888dead7cc418c3ca98169728beefc106438c2593872e12e03b4
+	source = https://proton.me/download/PassDesktop/linux/x64/ProtonPass_1.22.0.deb
+	sha256sums = 0112141e653f60df08a0014c91cc73180a07df5bdb24b4fb1df603e9ae7b41a6
 
 pkgname = proton-pass
