@@ -12,12 +12,12 @@ source=('git+https://github.com/dglava/obquit.git')
 md5sums=('SKIP')
 
 build() {
-  cd "$srcdir/"
+  cd "$srcdir/${pkgname%-git}"
   python -m build
 }
 
 package() {
-  cd "$srcdir/dist"
+  cd "$srcdir/${pkgname%-git}/dist"
   python -m installer -d $pkgdir *.whl
-  install -Dm 644 "${srcdir}/data/obquit.conf" "${pkgdir}/etc/obquit.conf"
+  install -Dm 644 "${srcdir}/${pkgname%-git}/data/obquit.conf" "${pkgdir}/etc/obquit.conf"
 }
