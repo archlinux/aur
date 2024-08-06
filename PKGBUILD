@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <public@arne.beer>
 
 pkgname=pueue-git
-pkgver=v3.0.0.rc.0.r0.gbd6844f
+pkgver=3.4.1.r56.gafcd28d
 pkgrel=1
 arch=('any')
 pkgdesc='A task manager and scheduler for shell commands'
@@ -16,7 +16,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  version=$(git describe --long --tags --abbrev=7 | sed -r 's/([^-]*-g)/r\1/;s/-/./g')
+  # Strip the `v` from the created version tag
+  echo ${version:1}
 }
 
 build() {
