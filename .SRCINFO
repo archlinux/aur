@@ -1,6 +1,6 @@
 pkgbase = rustdesk-appimage
 	pkgdesc = Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk! (AppImage)
-	pkgver = 1.2.3
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://github.com/rustdesk/rustdesk
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = rustdesk-appimage
 	provides = rustdesk
 	conflicts = rustdesk
 	options = !strip
-	source_x86_64 = rustdesk-1.2.3-x86_64.AppImage::https://github.com/rustdesk/rustdesk/releases/download/1.2.3/rustdesk-1.2.3-x86_64.AppImage
-	sha256sums_x86_64 = SKIP
-	source_aarch64 = rustdesk-1.2.3-aarch64.AppImage::https://github.com/rustdesk/rustdesk/releases/download/1.2.3/rustdesk-1.2.3-aarch64.AppImage
-	sha256sums_aarch64 = SKIP
+	source_x86_64 = rustdesk-1.2.7-x86_64.AppImage::https://github.com/rustdesk/rustdesk/releases/download/1.2.7/rustdesk-1.2.7-x86_64.AppImage
+	sha256sums_x86_64 = d629caf642d7d139b683d080fc8504c577f6f8e88928463dce01ef7d94dd1be9
+	source_aarch64 = rustdesk-1.2.7-aarch64.AppImage::https://github.com/rustdesk/rustdesk/releases/download/1.2.7/rustdesk-1.2.7-aarch64.AppImage
+	sha256sums_aarch64 = e530b44e15a6aec52bc2aaa4c2e0675c94a8c6f0c5b9355817a2ee4b251bd7f2
 
 pkgname = rustdesk-appimage
