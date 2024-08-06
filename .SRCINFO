@@ -1,0 +1,16 @@
+pkgbase = spmp
+	pkgdesc = YouTube Music client with a focus on customisation of colours and song metadata
+	pkgver = 0.4.0.RC6
+	pkgrel = 19
+	url = https://github.com/toasterofbread/spmp
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = jdk22-openjdk
+	makedepends = jre21-openjdk
+	depends = mpv
+	depends = libayatana-appindicator
+	depends = jre22-openjdk
+	source = https://github.com/toasterofbread/spmp/archive/refs/tags/v0.4.0-RC6.tar.gz
+	sha256sums = 8127dbaccf1538628a2a06bc1b82f40ff8a0411b3981b4befc0cee95d9085669
+
+pkgname = spmp
