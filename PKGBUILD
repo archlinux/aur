@@ -10,7 +10,8 @@ arch=('any')
 # url="https://github.com/bertiniteam/b2"
 url="https://github.com/ThisIsNotANamepng/b2"
 license=('custom:GPL-3.0-or-later WITH Bertini2-Additional-GPL-Terms')
-makedepends=('git' 'cmake>=3.22' 'boost>=1.82' 'eigen>=3.3' 'python-setuptools')
+makedepends=('git' 'cmake>=3.22' 'boost>=1.82' 'eigen>=3.3' 'python-setuptools'
+             'python-build' 'python-installer' 'python-wheel')
 depends=('glibc' 'gcc-libs' 'bertini2' 'boost-libs>=1.65' 'gmp' 'mpfr' 'libmpc'
          'python' 'python-numpy' 'eigenpy>=3.3')
 optdepends=('pybertini-docs: HTML documentation')
@@ -50,7 +51,7 @@ build() {
   cmake --build "python/build"
 
   cd "python"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
@@ -64,12 +65,15 @@ package() {
 
   cd "python"
   # install -Dm644 "NEWS"    "${pkgdir}/usr/share/doc/${_pkgname}/NEWS"
-  install -Dm644 "AUTHORS" "${pkgdir}/usr/share/licenses/${_pkgname}/AUTHORS"
+  # install -Dm644 "AUTHORS" "${pkgdir}/usr/share/licenses/${_pkgname}/AUTHORS"
 
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   rm -rf "${pkgdir}${site_packages}/test"
 
   cd "${srcdir}/${_pkgsrc}/licenses"
-  install -Dm644 "GNU GENERAL PUBLIC LICENSE"    "${pkgdir}/usr/share/licenses/${_pkgname}/GPL-3.0-or-later"
+  # install -Dm644 "GNU GENERAL PUBLIC LICENSE"    "${pkgdir}/usr/share/licenses/${_pkgname}/GPL-3.0-or-later"
   install -Dm644 "BERTINI2_ADDITIONAL_GPL_TERMS" "${pkgdir}/usr/share/licenses/${_pkgname}/Bertini2-Additional-GPL-Terms"
+
+  ln -s "${pkgdir}${site_packages}/${_pkgname}-1.0a5.dist-info/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/GPL-3.0-or-later"
+  ln -s "${pkgdir}${site_packages}/${_pkgname}-1.0a5.dist-info/AUTHORS" "${pkgdir}/usr/share/licenses/${_pkgname}/AUTHORS"
 }

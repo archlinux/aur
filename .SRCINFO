@@ -10,6 +10,9 @@ pkgbase = pybertini-git
 	makedepends = boost>=1.82
 	makedepends = eigen>=3.3
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = glibc
 	depends = gcc-libs
 	depends = bertini2
