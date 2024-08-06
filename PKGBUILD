@@ -2,14 +2,15 @@
 _base=py-pde
 pkgname=python-${_base}
 pkgdesc="Python package for solving partial differential equations"
-pkgver=0.40.0
+pkgver=0.41.0
 pkgrel=1
 arch=(any)
 url="https://github.com/zwicker-group/${_base}"
 license=(MIT)
 depends=(python-matplotlib python-numba python-scipy python-sympy python-tqdm)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel)
-checkdepends=(python-pytest-cov python-h5py-openmpi python-pandas jupyter-notebook python-numba-mpi)
+checkdepends=(python-pytest-cov python-h5py-openmpi python-pandas
+  jupyter-notebook python-numba-mpi) # python-ffmpeg-python
 optdepends=('python-h5py: storing data in the hierarchical file format'
   'python-ipywidgets: jupyter notebook support'
   'python-mpi4py: parallel processing using MPI'
@@ -20,7 +21,7 @@ optdepends=('python-h5py: storing data in the hierarchical file format'
   'python-rocket-fft: Numba-compiled fast Fourier transforms'
   'python-ffmpeg-python: creating movies from matplotlib figures')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('7cfdcec5b160396e9dbce44eb2ce187a8b65ff5774565b025c264303fcaac5122c50cdd6864b955d08f4b40760823a6fe02933e58efe1634c907ee84e7572088')
+sha512sums=('456f51f22b880f8deb8667f198cec9356a14e512094698cf9c6108a19d13e38aae8952d2eb813b6f0416d317fa80f84ea0457d22472792b8161b57a90a4b98fe')
 
 build() {
   cd ${_base}-${pkgver}
