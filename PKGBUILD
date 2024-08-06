@@ -1,6 +1,6 @@
 # Maintainer: Jakob Hellermann <jakob.hellermann@protonmail.com>
 pkgname=atlas-celeste
-pkgver=1.1.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Render and visualize paths for Celeste TASes'
 url='https://github.com/jakobhellermann/Atlas'
@@ -13,7 +13,7 @@ source=(
     "https://github.com/jakobhellermann/Atlas/archive/$pkgver/$_archive.tar.gz"
     "atlas.desktop"
 )
-sha1sums=('ffcf72b9455383c6ad46397e1128c57870581448'
+sha1sums=('dee0a6c7b42a886f9531bb61c88f4d503fbb5032'
           '9921557096f013a3ef46ee24773a58e0bdb6a56e')
 
 prepare() {
@@ -32,10 +32,10 @@ package() {
     install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     mkdir -p "${pkgdir}/usr/share/icons/hicolor/"{'256x256/apps','48x48/apps','32x32/apps','16x16/apps'}
-    convert "ui/assets/icon/icon.png" -resize 256x265 "${pkgdir}/usr/share/icons/hicolor/256x256/apps/atlas.png"
-    convert "ui/assets/icon/icon.png" -resize 48x48 "${pkgdir}/usr/share/icons/hicolor/48x48/apps/atlas.png"
-    convert "ui/assets/icon/icon.png" -resize 32x32 "${pkgdir}/usr/share/icons/hicolor/32x32/apps/atlas.png"
-    convert "ui/assets/icon/icon.png" -resize 16x16 "${pkgdir}/usr/share/icons/hicolor/16x16/apps/atlas.png"
+    magick "ui/assets/icon/icon.png" -resize 256x265 "${pkgdir}/usr/share/icons/hicolor/256x256/apps/atlas.png"
+    magick "ui/assets/icon/icon.png" -resize 48x48 "${pkgdir}/usr/share/icons/hicolor/48x48/apps/atlas.png"
+    magick "ui/assets/icon/icon.png" -resize 32x32 "${pkgdir}/usr/share/icons/hicolor/32x32/apps/atlas.png"
+    magick "ui/assets/icon/icon.png" -resize 16x16 "${pkgdir}/usr/share/icons/hicolor/16x16/apps/atlas.png"
 
     install -Dm 644 "../atlas.desktop" "${pkgdir}/usr/share/applications/atlas.desktop"
 }
