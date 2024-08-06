@@ -7,7 +7,7 @@
 ## basic info
 _pkgname="peazip"
 pkgname="$_pkgname"
-pkgver=9.8.0
+pkgver=9.9.0
 pkgrel=1
 pkgdesc="Cross-platform file and archive manager (${_widgets^})"
 url="https://github.com/peazip/PeaZip"
@@ -32,9 +32,6 @@ case "${_widgets::1}" in
     depends+=("${_widgets}pas")
     ;;
 esac
-
-provides=("peazip=$pkgver")
-conflicts=("peazip")
 
 options=('!debug')
 
