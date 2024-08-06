@@ -6,9 +6,8 @@ pkgbase = cao
 	arch = any
 	license = MIT
 	depends = nodejs
-	depends = pulseaudio
+	depends = pulse-native-provider
 	source = cao-1.0.1.tar.gz::https://github.com/LevitatingBusinessMan/cao/archive/1.0.1.tar.gz
 	md5sums = 41dd303e7505a860edd890648a25c9d4
 
 pkgname = cao
-
