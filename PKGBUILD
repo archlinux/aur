@@ -1,4 +1,4 @@
-# Maintainer: Arne Beer <arne@twobeer.de>
+# Maintainer: Arne Beer <public@arne.beer>
 
 pkgname=pueue-git
 pkgver=v3.0.0.rc.0.r0.gbd6844f
