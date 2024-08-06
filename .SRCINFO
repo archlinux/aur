@@ -1,6 +1,6 @@
 pkgbase = lib32-tdb
 	pkgdesc = A Trivial Database similar to GDBM but allows simultaneous commits (32-bit)
-	pkgver = 1.4.10
+	pkgver = 1.4.11
 	pkgrel = 1
 	url = https://tdb.samba.org/
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = lib32-tdb
 	makedepends = python
 	depends = lib32-glibc
 	depends = tdb
-	source = https://www.samba.org/ftp/tdb/tdb-1.4.10.tar.gz
-	source = https://www.samba.org/ftp/tdb/tdb-1.4.10.tar.asc
+	source = https://www.samba.org/ftp/tdb/tdb-1.4.11.tar.gz
+	source = https://www.samba.org/ftp/tdb/tdb-1.4.11.tar.asc
 	validpgpkeys = 9147A339719518EE9011BCB54793916113084025
-	sha512sums = b5147d811617d90a025d1070abf16c42744b3fc3cac1042fbff03b1e635af2eaf9c957a7bffdb3f56b4a0c775b44f8027def9f23deb1b3ede817b95bbece2ce9
+	sha512sums = 96883e3c32439a69239846904ae2718561b0c57149ac729c5b188f2615e1eb51578df56498f7b6239adea1663861d8c47790ce65e2d4d75130b41704b86b81b8
 	sha512sums = SKIP
 
 pkgname = lib32-tdb
