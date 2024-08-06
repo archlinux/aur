@@ -1,0 +1,18 @@
+pkgbase = python-flatlatex
+	pkgdesc = A LaTeX math converter to unicode text
+	pkgver = 0.15
+	pkgrel = 1
+	url = https://github.com/jb-leger/flatlatex
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-regex
+	source = flatlatex-0.15.tar.gz::https://github.com/jb-leger/flatlatex/archive/v0.15.tar.gz
+	sha256sums = d4762cdb85f2f0d7817b892e805b482ab8ac6ce2ab83c39d1311c4d9d5d4fc5b
+
+pkgname = python-flatlatex
