@@ -1,10 +1,10 @@
 # Maintainer: gcb <1705-gcb@users.noreply.gitlab.archlinux.org>
 pkgname=dtui
 pkgdesc='Small TUI for introspecting the state of the system/session dbus'
-pkgver=1.0.0
+pkgver=2.0.0
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Troels51/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 #source=("${pkgname}-${pkgver}.tar.gz::git+https://github.com/Troels51/${pkgname}.git#tag=v${pkgver}")
-sha256sums=('c5f1fcdc4e1982404160fbae8327fe75f588f558da9e3e1f16ea5b95e7ad1bc8')
+sha256sums=('6467ec552ea6a468841c9186599fe757f9e66380f45244cce37103cc3ed45a29')
 pkgrel=1
 arch=('x86_64')
 url=https://github.com/Troels51/dtui
@@ -30,6 +30,6 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -o root -g root -m 0755 --preserve-timestamps target/debug/dterm /usr/bin/${pkgname}
+	install -o root -g root -m 0755 --preserve-timestamps target/debug/dtui /usr/bin/${pkgname}
 }
 
