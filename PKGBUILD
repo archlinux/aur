@@ -9,8 +9,8 @@
 # Contributor: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
 
 pkgname=ttf-google-fonts-git
-pkgver=r6359.d19527646
-pkgrel=2
+pkgver=r8380.47f307584
+pkgrel=1
 epoch=1
 pkgdesc="TrueType fonts from the Google Fonts project (git version)"
 arch=('any')
@@ -117,7 +117,8 @@ package() {
                                     [source-serif-pro]=1
                                     [tinos]=1
                                     [ubuntu]=1
-                                    [ubuntu-mono]=1)
+                                    [ubuntu-mono]=1
+				    [noto-color-emoji]=1)
 
 
   while IFS= read -rd '' file; do
