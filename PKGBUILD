@@ -7,23 +7,26 @@
 
 pkgname=python-pygatt
 _module=pygatt
-pkgver=4.0.5
-pkgrel=4
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="Python Bluetooth LE (Low Energy) and GATT Library"
 url="https://github.com/peplin/pygatt"
 license=('custom:partly Apache, partly MIT')
 arch=('any')
 depends=(python-pexpect python-pyserial)
-makedepends=(python-build python-installer python-wheel python-nose)
-checkdepends=(python-mock)
+makedepends=(python-build python-installer python-wheel)
+checkdepends=(python-mock python-pytest)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/peplin/${_module}/archive/refs/tags/v${pkgver}.tar.gz
-        0001-Remove-dependency-on-enum-compat.patch)
-sha256sums=('fdfca26688b55f8d63800dbca6989bfbfff7796e0dcba3b020daffea34e9f224'
-            '1485111d418ac0812751426bbbec76ef56f8d79b7740f41009f7f6cb7f2a1e1a')
+        0001-Remove-dependency-on-enum-compat.patch
+        0002-Relax-version-requirements.patch)
+sha256sums=('94d02ec4de32a81d1f5adc87664091a38e3cf0c2680dfe9b313c4de797e5e737'
+            '3d73f29806f1ce8d9f37927b2c9243f2ec2fd783730708ad0e9d96afa0720e2c'
+            '8928f19c185be8dc2ba4583c88cb3d1ae580667f2d902c50c72d95e1fdba6061')
 
 prepare() {
     cd "${srcdir}/${_module}-${pkgver}"
     patch -p1 < "${srcdir}/0001-Remove-dependency-on-enum-compat.patch"
+    patch -p1 < "${srcdir}/0002-Relax-version-requirements.patch"
 }
 
 build() {
@@ -33,7 +36,7 @@ build() {
 
 check() {
     cd "${srcdir}/${_module}-${pkgver}"
-    nosetests
+    pytest
 }
 
 package() {
