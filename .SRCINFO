@@ -1,0 +1,22 @@
+pkgbase = sd-mux-ctrl-git
+	pkgdesc = Software interact with SDWireC.
+	pkgver = 1.3
+	pkgrel = 0
+	url = https://github.com/Badger-Embedded/badgerd-sdwirec
+	arch = x86_64
+	arch = arm64
+	arch = riscv64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = base-devel
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = make
+	makedepends = gcc
+	depends = libftdi
+	depends = popt
+	provides = sd-mux-ctrl=$pkgver
+	source = git+https://github.com/Badger-Embedded/badgerd-sdwirec.git#branch=main
+	sha256sums = SKIP
+
+pkgname = sd-mux-ctrl-git
