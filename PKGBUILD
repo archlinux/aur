@@ -2,7 +2,7 @@
 
 pkgname=pdfio
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple C library for reading and writing PDF files"
 arch=('x86_64' 'aarch64')
 url="https://github.com/michaelrsweet/pdfio"
