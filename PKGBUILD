@@ -2,7 +2,7 @@
 
 _pkgname="caido-cli"
 pkgname="${_pkgname}-bin"
-pkgver=0.39.0
+pkgver=0.40.0
 pkgrel=1
 pkgdesc="A lightweight web security auditing toolkit"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source=("README-${pkgver}.md::${_url}/raw/v${pkgver}/README.md")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::https://storage.googleapis.com/caido-releases/v${pkgver}/${_pkgname}-v${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::https://storage.googleapis.com/caido-releases/v${pkgver}/${_pkgname}-v${pkgver}-linux-aarch64.tar.gz")
 sha256sums=('c2d91ad17ee7a2a8a706c0caf28ef6bc92dd98c5e1012e4ec7ba5af3a3982a8f')
-sha256sums_x86_64=('23c505dabcc829fa5caf1caf0dae0045e58320738a4c28f7111696846d71186d')
-sha256sums_aarch64=('af1530340629c36b0636d8ff530a99e56c39b9b1cefb1d7a8c134921b6c41190')
+sha256sums_x86_64=('1bcb20fb70a9f509128a267cd74cf88c27c6bc425414ba2b293d09987acee80a')
+sha256sums_aarch64=('28d44af3073e6d20e62e1213a876a8ec29b99509b165ba4ba33a344468f73025')
 
 package() {
   cd "${srcdir}"
