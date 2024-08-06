@@ -2,7 +2,7 @@
 # See COPYING for license details.
 
 pkgname=quartz-utils
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='Everyday CLI utilities that are easily pipable.'
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ license=('MIT')
 depends=()
 makedepends=('crystal' 'shards')
 source=("https://github.com/noraj/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('10aa7e70ab8ece5b712250ace8ae83ea81fded84d28281e5e20f8b359051922fc4adae88c11bb1c135d14f1c3cfef33efeb647da087e409337e8022c0e535ac5')
-b2sums=('72dc0d428c8ea8ba1e7cab549b1dd30762967f88be996f4749e6b2f45c217aad642e7f2afcbe117708117273fdf71c161c90e31a455738292f85b970156696e0')
+sha512sums=('408d58fdb7fc5bbe9e7513d4cb4146552c083b574b016e0778c5a806d9b3cb9f5b0cf9b8d0b4490c51f7b7b0823cccb4b606efdc865e17aa875a3ed0f8cc7c08')
+b2sums=('79a7b159919b84be5709374b801c76acf8c1791f1b514fd38270e3ef536b05d2370c774b0613ad8da8582cbfc209ee12668dfb145e7208427c5bd10e65713efd')
 provides=('quartz-utils')
 conflicts=('quartz-utils-bin' 'quartz-utils-git')
 
