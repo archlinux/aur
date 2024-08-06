@@ -3,13 +3,13 @@
 # Contributor: Alexander Matyukhin <matalex1991@gmail.com>
 pkgname=obnc
 pkgver=0.17.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Oberon compiler"
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL')
 url="http://miasap.se/obnc/"
 source=("http://miasap.se/obnc/downloads/obnc_${pkgver}.tar.gz")
-depends=("gc" "sh" "awk" "sdl")
+depends=("awk" "gc" "glibc" "sdl" "sh")
 options=(!buildflags)
 md5sums=('b49487449419f25b5bf97cf5bb2276f6')
 sha256sums=('f672663e295df6daba53ac59a0280011732b0e7f95078d7944aa8c328b5f47ec')
