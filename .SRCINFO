@@ -1,0 +1,16 @@
+pkgbase = viking-ssh
+	pkgdesc = Simple way to manage your remote machines and SSH keys
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/d3witt/viking
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = viking-ssh-0.1.0.tar.gz::https://github.com/d3witt/viking/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = a2b86d496f7348840f6038c1448ec7816c68bc33202ab8976ba7218ecc1c88bb
+
+pkgname = viking-ssh
