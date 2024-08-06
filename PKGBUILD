@@ -4,7 +4,7 @@ pkgbase=hpmicro-manufacturing-tool-bin
 pkgname=${pkgbase}
 _pkgname=HPMicro_Manufacturing_Tool
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="HPMicro Manufacturing Tool 是 HPMicro 公司推出的配置及批量烧写工具，旨在帮助企业用户快速批量的对 HPMicro 公司推出的芯片进行镜像配置及烧写。"
 arch=(x86_64)
 url="https://github.com/hpmicro/hpm_manufacturing_tool"
@@ -49,7 +49,7 @@ ACTION!="add|change", SUBSYSTEM!="usb_device", GOTO="hpmicro_rules_end"
 
 #SUBSYSTEM=="gpio", MODE="0666", GROUP="uucp", TAG+="uaccess"
 
-#SUBSYSTEM!="usb|tty|hidraw", GOTO="hpmicro_rules_end"
+SUBSYSTEM!="usb|tty|hidraw", GOTO="hpmicro_rules_end"
 
 # Please keep this list sorted by VID:PID
 
