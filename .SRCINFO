@@ -11,7 +11,7 @@ pkgbase = turbowarp-desktop-git
 	makedepends = git
 	makedepends = gcc
 	makedepends = cmake
-	depends = electron
+	depends = electron31
 	provides = turbowarp-desktop=1.12.3
 	conflicts = turbowarp-desktop
 	source = turbowarp-desktop.git::git+https://github.com/TurboWarp/desktop.git
