@@ -16,7 +16,7 @@ _pkgver='5.90';  _dl='8/0100007658/40';_suffix1='m17n';_suffix2='03'
 
 pkgver="${_pkgver}.1.${_suffix2}"
 
-pkgrel=3
+pkgrel=4
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
 arch=('x86_64' 'aarch64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
@@ -24,7 +24,7 @@ url='https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i
 license=('GPL-2.0-only' 'MIT' 'custom')
 # parts of the code are GPL or MIT licensed, some parts have a custom license
 makedepends=(jbigkit gzip gtk3)
-depends=(libcups glibc gcc-libs libxml2 glib2)
+depends=(libcups glibc gcc-libs libxml2 glib2 hicolor-icon-theme)
 optdepends=('libjpeg6-turbo: solves cpu hang on some color imageRUNNER/i-SENSYS LBP devices'
                         'jbigkit: solves some cpu hangs'
                         'ghostscript: necessary for printing on some devices'
@@ -174,6 +174,13 @@ package() {
     
     # package creates several empy directories, but those in /etc are needed. remove others.
     rmdir "$pkgdir"/usr/include
+    
+    # copy icons 
+    install -Dpm644 "cnrdrvcups-utility-${_pkgver}"/data/cngplp.png "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/cngplp.png
+    install -Dpm644 "cnrdrvcups-utility-${_pkgver}"/data/cnsetuputil.png "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/cnsetuputil.png
+    # copy .desktop files
+    install -Dpm644 "cnrdrvcups-utility-${_pkgver}"/data/cngplp2.desktop "${pkgdir}"/usr/share/applications/cngplp2.desktop
+    install -Dpm644 "cnrdrvcups-utility-${_pkgver}"/data/cnsetuputil2.desktop "${pkgdir}"/usr/share/applications/cnsetuputil2.desktop
     
     # licensing information is spread over multiple files and folders and has changed between versions
     # while they could be done in a loop iterating through dirs/files,
