@@ -2,12 +2,13 @@
 
 ## options
 : ${_widgets=qt6}
+: ${_commit=6171aaea1b33d62c0d2ec0827fde705499e13680} # 9.8.0.r30
 
 ## basic info
 _pkgname="peazip"
 pkgname="$_pkgname"
 pkgver=9.8.0
-pkgrel=3
+pkgrel=1
 pkgdesc="Cross-platform file and archive manager (${_widgets^})"
 url="https://github.com/peazip/PeaZip"
 license=('LGPL-3.0-or-later')
@@ -38,7 +39,7 @@ conflicts=("peazip")
 options=('!debug')
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url.git#tag=$pkgver")
+source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 _packets=(
@@ -57,6 +58,12 @@ prepare() {
     sed -E 's&(</CompilerOptions>)&<Other><CustomOptions Value='\''-O3 -Sa -CX -XX -k"--sort-common --as-needed -z relro -z now"'\''/></Other>\n\1&' \
       -i "$i"
   done
+}
+
+_pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
