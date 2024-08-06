@@ -10,6 +10,7 @@ arch=('i686' 'x86_64')
 url="http://bzrplayer.blazer.nu"
 license=('GPL3')
 depends=('wine' 'hicolor-icon-theme')
+optdepends=('lib32-pipewire: PipeWire audio driver')
 makedepends=('gendesk' 'libarchive')
 options=(!strip)
 _zip="BZR-Player-$pkgver.zip"
