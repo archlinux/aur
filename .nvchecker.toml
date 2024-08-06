@@ -1,0 +1,7 @@
+[lib32-libtirpc]
+source = "git"
+git = "git://git.linux-nfs.org/projects/steved/libtirpc.git"
+ignored = "0.0.10"
+exclude_regex = ".*(rc).*"
+from_pattern = 'libtirpc-(\d+)-(\d+)-(\d+)'
+to_pattern = '\1.\2.\3'
