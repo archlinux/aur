@@ -1,0 +1,24 @@
+diff --git a/anarange.c b/anarange.c
+index 5ae77f2..f72acd8 100644
+--- a/anarange.c
++++ b/anarange.c
+@@ -5,6 +5,7 @@
+ //
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <stdarg.h>
+ #include <math.h>
+diff --git a/downsample.c b/downsample.c
+index 1526afd..f7a4624 100644
+--- a/downsample.c
++++ b/downsample.c
+@@ -6,6 +6,7 @@
+ //
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+ #include "fidlib.h"

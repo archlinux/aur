@@ -6,7 +6,7 @@ pkgver=1.4.5
 _river_ver=1.4.1
 _rhybag_ver=0.1.1
 _binauralanalysis_ver=20040521
-pkgrel=8
+pkgrel=9
 pkgdesc='A binural brainwave generator'
 url='http://uazu.net/sbagen'
 license=('GPL')
@@ -23,7 +23,8 @@ source=(
   "anarange.1"
   "downsample.1"
   "rhybag.1"
-  'build-fix.patch'
+  'fix-sbagen-build.patch'
+  'fix-binaural-analysis-build.patch'
 )
 
 sha512sums=(
@@ -35,15 +36,19 @@ sha512sums=(
   'a84e774f1a4c1f57716f3097228baebb8caf5424bd1316ce1d8f596cac44e9a16c1a56814405b48b87557108db1d4cf4fee56875b82d7390ec3c41d4e2a280a8'
   'db30da37feb3c970f1dcc5271aa9350b3694c48fdb5585db2e6f3f178f9cd26af1fd48d238786ccac19d2f65ebcccff9622b358b2a16396696e94448e66648f5'
   'f16fe080432c0ea1ba6e43a0f0fa78121706ad86fc8503509d7289f62459618abc0243e398eab157808c092a5c2e2dc8b1826fc3a22340cdb5896684ed6bacaa'
+  '0184abd8129577bed153f8d687fedd65da885b415fd69442417a12cf835aeee905c592617010ca047b0359207ece890cd7adcdc6a96090d72f8db6b0120bc9d6'
 )
 
 prepare() {
   cd $pkgname-$pkgver
-  patch -p1 < ../build-fix.patch
+  patch -p1 < ../fix-sbagen-build.patch
 
   while read -r file; do
       sed -i -re 's|(river[12]\.ogg)|/usr/share/sbagen/media/\1|g' "$file"
   done < <(grep -ir "river1\.ogg" examples/ | sed 's|:.*$||')
+
+  cd ../binaural-analysis
+  patch -p1 < ../fix-binaural-analysis-build.patch
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = sbagen
 	pkgdesc = A binural brainwave generator
 	pkgver = 1.4.5
-	pkgrel = 8
+	pkgrel = 9
 	url = http://uazu.net/sbagen
 	arch = x86_64
 	license = GPL
@@ -20,7 +20,8 @@ pkgbase = sbagen
 	source = anarange.1
 	source = downsample.1
 	source = rhybag.1
-	source = build-fix.patch
+	source = fix-sbagen-build.patch
+	source = fix-binaural-analysis-build.patch
 	sha512sums = 35a8cdf0ca59cef01200a102c6f718b163006eec6c3450e7ee32bac0454be2db4d9a4df2f1a52d6cc2beda1d45bf9a7816a2c9dfae710eef14dbe5667cec9bf9
 	sha512sums = f61c9308c671dc9cef9b9e60ba37cc5a9dc6ac45b5ab34d0818e08f6006eeba0ede4756e0c5375b11963e04f4e1e801119af8df8726c867e3be399983b12bc30
 	sha512sums = 19a432b3d465881a113b0aad3f774062952b3f0229ae77e668b0c43d47c94d595cae1b7178c7a30fbc7d7f05da1cc9c0255ad0de7daba8023da2fd7fc6057e2b
@@ -29,5 +30,6 @@ pkgbase = sbagen
 	sha512sums = a84e774f1a4c1f57716f3097228baebb8caf5424bd1316ce1d8f596cac44e9a16c1a56814405b48b87557108db1d4cf4fee56875b82d7390ec3c41d4e2a280a8
 	sha512sums = db30da37feb3c970f1dcc5271aa9350b3694c48fdb5585db2e6f3f178f9cd26af1fd48d238786ccac19d2f65ebcccff9622b358b2a16396696e94448e66648f5
 	sha512sums = f16fe080432c0ea1ba6e43a0f0fa78121706ad86fc8503509d7289f62459618abc0243e398eab157808c092a5c2e2dc8b1826fc3a22340cdb5896684ed6bacaa
+	sha512sums = 0184abd8129577bed153f8d687fedd65da885b415fd69442417a12cf835aeee905c592617010ca047b0359207ece890cd7adcdc6a96090d72f8db6b0120bc9d6
 
 pkgname = sbagen
