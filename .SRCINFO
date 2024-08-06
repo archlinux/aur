@@ -1,6 +1,6 @@
 pkgbase = iota-firefly-wallet
 	pkgdesc = The IOTA Firefly Wallet
-	pkgver = 2.0.11
+	pkgver = 2.0.12
 	pkgrel = 1
 	url = https://iota.org/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = iota-firefly-wallet
 	source = iota-firefly-wallet.desktop
 	md5sums = c22e0c2b6cd8941ea147ddc01352858a
 	sha512sums = e7e47f5c99d0536de091204df8eb94fb32471ae550f7861fd0373057af90f8bf4f5aa9fa53ea4fa12303b41bb6a23905d99b751f2c849c3b2c67735a66780714
-	source_x86_64 = https://github.com/iotaledger/firefly/releases/download/desktop-iota-2.0.11/firefly-iota-desktop-2.0.11.AppImage
-	sha256sums_x86_64 = d6be93a0dea2ca6e04a878dc6b908553bd1d6e82ce40cf90c05032a106dd5ab9
+	source_x86_64 = https://github.com/iotaledger/firefly/releases/download/desktop-iota-2.0.12/firefly-iota-desktop-2.0.12.AppImage
+	sha256sums_x86_64 = 57e45bac47195a66c7bab36199ed44b9f607b44097f77c17865809346d44e2d5
 
 pkgname = iota-firefly-wallet
