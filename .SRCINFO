@@ -1,19 +1,19 @@
 pkgbase = nvidia-utils-beta
 	pkgdesc = NVIDIA drivers utilities (beta version)
-	pkgver = 560.28.03
-	pkgrel = 2
+	pkgver = 560.31.02
+	pkgrel = 1
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = LicenseRef-custom
 	options = !strip
-	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/560.28.03/NVIDIA-Linux-x86_64-560.28.03.run
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/560.31.02/NVIDIA-Linux-x86_64-560.31.02.run
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-utils.sysusers
 	source = nvidia.rules
 	source = systemd-homed-override.conf
 	source = systemd-suspend-override.conf
 	source = 120-nvidia-settings-change-desktop-paths.patch
-	sha256sums = 99aaedbf5f2f9e0601270d48154080698afeb9ceb92ad94700c74b31db5027e6
+	sha256sums = d1cc207a3a05b1e7e5d8cea3756642f8229ce7c0aa3970e34a2e2c6953cd298d
 	sha256sums = be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d
 	sha256sums = d8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167
 	sha256sums = 0e54249a7754b668b436f0f7aa7e95fff68edbb12a93dbee4660e09a8c695f84
@@ -29,11 +29,11 @@ pkgname = nvidia-utils-beta
 	optdepends = nvidia-settings-beta: for the configuration tool
 	optdepends = xorg-server-devel: for nvidia-xconfig
 	optdepends = opencl-nvidia-beta: for OpenCL support
-	provides = nvidia-utils=560.28.03
+	provides = nvidia-utils=560.31.02
 	provides = vulkan-driver
 	provides = opengl-driver
-	provides = nvidia-libgl=560.28.03
-	provides = nvidia-libgl-beta=560.28.03
+	provides = nvidia-libgl=560.31.02
+	provides = nvidia-libgl-beta=560.31.02
 	conflicts = nvidia-utils
 	conflicts = nvidia-libgl
 	replaces = nvidia-libgl
@@ -41,16 +41,16 @@ pkgname = nvidia-utils-beta
 pkgname = opencl-nvidia-beta
 	pkgdesc = OpenCL implemention for NVIDIA (beta version)
 	depends = zlib
-	depends = nvidia-utils-beta>=560.28.03
+	depends = nvidia-utils-beta>=560.31.02
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = opencl-nvidia=560.28.03
+	provides = opencl-nvidia=560.31.02
 	provides = opencl-driver
 	conflicts = opencl-nvidia
 
 pkgname = nvidia-settings-beta
 	pkgdesc = Tool for configuring the NVIDIA graphics driver (beta version)
-	depends = nvidia-utils-beta>=560.28.03
+	depends = nvidia-utils-beta>=560.31.02
 	depends = gtk3
-	provides = nvidia-settings=560.28.03
-	provides = nvidia-settings-beta=560.28.03
+	provides = nvidia-settings=560.31.02
+	provides = nvidia-settings-beta=560.31.02
 	conflicts = nvidia-settings
