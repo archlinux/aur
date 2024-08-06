@@ -74,8 +74,8 @@ function createWrapIfNotExist() {
 
 function inputMethod() {
 	if [[ ${XMODIFIERS} =~ fcitx ]]; then
-		QT_IM_MODULE=fcitx
-		GTK_IM_MODULE=fcitx
+		QT_IM_MODULE=ibus
+		GTK_IM_MODULE=ibus
 	elif [[ ${XMODIFIERS} =~ ibus ]]; then
 		QT_IM_MODULE=ibus
 		GTK_IM_MODULE=ibus
