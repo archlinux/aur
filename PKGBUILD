@@ -61,6 +61,7 @@ _fragment=${FRAGMENT:-#branch=devel}
 ((DISABLE_QWT))      && _use_qwt=OFF      || _use_qwt=ON       # Disable QWT - GUI convergence monitoring
 ((DISABLE_VTK))      && _use_vtk=OFF      || _use_vtk=ON       # Disable VTK - GUI post-process Widget and exporter
 
+((DISABLE_MPI))      && _use_mpi=OFF      || _use_mpi=ON       # Disable OpenMPI parallelization
 # Require OpenMPI
 ((DISABLE_MPI))      && eval DISABLE_{MUMPS,HYPRE}=1
 ((DISABLE_MUMPS))    && _use_mumps=OFF    || _use_mumps=ON     # Disable Mumps - gausian elimination LAS solver
