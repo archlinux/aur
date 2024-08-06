@@ -3,7 +3,7 @@
 
 pkgname=nuclear-player-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.6.33
+pkgver=0.6.34
 pkgrel=3
 pkgdesc='A free, multiplatform music player app that streams from multiple sources.'
 arch=(x86_64)
@@ -15,7 +15,7 @@ source=(
     https://github.com/nukeop/nuclear/releases/download/v$pkgver/nuclear-v$pkgver-amd64.deb
     https://raw.githubusercontent.com/nukeop/nuclear/v$pkgver/LICENSE
 )
-sha256sums=(9ec3098c629caca902dae1a77480e01d0b5d53b62159c023bfb7810b89e36b52
+sha256sums=(1b10f3a58ab01f30198c42d5e24391a18aefaac3930690f1ad28d17071e06e6b
             SKIP)
 
 prepare() {
@@ -23,7 +23,12 @@ prepare() {
 }
 
 package()   {
+    iconDir=usr/share/icons/hicolor
+    scalableDir="$iconDir/scalable"
     install -dm0755 "$pkgdir/"{opt,usr}
+    mv "$iconDir"/0x0 "$scalableDir"
+    rm "$scalableDir"/apps/nuclear.*
+    cp -a opt/nuclear/resources/media/presskit/icons/scalable/nuclear-icon.svg "$scalableDir"/apps/nuclear.svg
     cp -art "$pkgdir" opt
     cp -art "$pkgdir" usr
     install -Dm0644 -t "$pkgdir/usr/share/licenses/$_pkgname" LICENSE
