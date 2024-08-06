@@ -1,11 +1,7 @@
 #!/bin/hint/bash
-# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# Maintainer : saxonbeta <saxonbeta at gmail __com
+# Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
 # Contributor: Randy Heydon <randy dot heydon at clockworklab dot net>
-# Contributor: saxonbeta <saxonbeta at gmail __com
-
-# matc is currently bugged: https://github.com/ElmerCSC/elmerfem/issues/306
-DISABLE_MATC=1
-# allow build with `intel-mkl`
 
 # Configuration:
 # Use: makepkg VAR1=0 VAR2=1 to enable(1) disable(0) a feature
@@ -13,18 +9,46 @@ DISABLE_MATC=1
 # Use: aurutils --margs=VAR1=0,VAR2=1
 # Use: VAR1=0 VAR2=1 pamac
 
+#Default Configuration
+DISABLE_CHECK=1
+DISABLE_TRILINOS=1
+DISABLE_MMG=1
+DISABLE_ELMERICE=1
+DISABLE_CONTRIB=1
+DISABLE_LUA=1
+DISABLE_MP=0
+DISABLE_GUI=0
+DISABLE_GUILOG=0
+DISABLE_GUITEST=0
+DISABLE_MATC=0
+DISABLE_PARAVIEW=0
+DISABLE_QWT=0
+#Open cascade needs VTK, so if OCC is disabled, VTK has to be enabled to allow compilation
+DISABLE_OCC=1
+# Compilation using VTK  is currently broken.
+DISABLE_VTK=1
+# VTK also enables MPI.
+DISABLE_MPI=0
+DISABLE_MUMPS=1
+DISABLE_HYPRE=1
+#Use external (suitesparse package) or internal UMFPack implementation
+DISABLE_INTERNAL_UMFPACK=1
+
 # Use FRAGMENT=#{commit,tag,brach}=xxx for bisect build
 _fragment=${FRAGMENT:-#branch=devel}
+
 # Use CMAKE_FLAGS=xxx:yyy:zzz to define extra CMake flags
 ((CMAKE_FLAGS))      && mapfile -t -d: _CMAKE_FLAGS < <(echo -n "$CMAKE_FLAGS")
 
 ((DISABLE_ALL)) && eval DISABLE_{TRILINOS,MMG,ELMERICE,CONTRIB,LUA,GUI,MPI}=1
 ((DISABLE_TRILINOS)) && _use_trilinos=OFF || _use_trilinos=ON  # Disable Trilinos - linear system solver (Experimental)
 ((DISABLE_MMG))      && _use_mmg=OFF      || _use_mmg=ON       # Disable MMG - dynamic remeshing
-((DISABLE_ELMERICE)) && _use_elmerice=OFF || _use_elmerice=ON  # Disable ElmerICE - glacier melting solver
 ((DISABLE_CONTRIB))  && _use_contrib=OFF  || _use_contrib=ON   # Disable multishell solver for composite lamitanes
 ((DISABLE_LUA))      && _use_lua=OFF      || _use_lua=ON       # Disable LUA scripting in solver definitions
 ((DISABLE_MP))       && _use_openmp=OFF   || _use_openmp=ON    # Disable OpenMP threading
+
+((DISABLE_ELMERICE)) && _use_elmerice=OFF || _use_elmerice=ON  # Disable ElmerICE - glacier melting solver
+((!DISABLE_ELMERICE)) && eval DISABLE_{INTERNAL_UMFPACK,MPI}=0 #Elmer Ice requires MPI and uses the internal UMFPack
 
 ((DISABLE_GUI))      && _use_elmergui=OFF || _use_elmergui=ON  # Disable ElmerGUI - QT GUI
 # Requires GUI
@@ -37,11 +61,15 @@ _fragment=${FRAGMENT:-#branch=devel}
 ((DISABLE_QWT))      && _use_qwt=OFF      || _use_qwt=ON       # Disable QWT - GUI convergence monitoring
 ((DISABLE_VTK))      && _use_vtk=OFF      || _use_vtk=ON       # Disable VTK - GUI post-process Widget and exporter
 
-((DISABLE_MPI))      && _use_mpi=OFF      || _use_mpi=ON       # Disable OpenMPI parallelization
 # Require OpenMPI
 ((DISABLE_MPI))      && eval DISABLE_{MUMPS,HYPRE}=1
 ((DISABLE_MUMPS))    && _use_mumps=OFF    || _use_mumps=ON     # Disable Mumps - gausian elimination LAS solver
 ((DISABLE_HYPRE))    && _use_hypre=OFF    || _use_hypre=ON     # Disable Hypre - multigrid LAS solver
+
+((DISABLE_INTERNAL_UMFPACK)) && _use_external_umfpack=OFF || _use_external_umfpack=ON
+
+# Disable check
+((DISABLE_CHECK))    && _disable_check=OFF || _disable_check=ON # Disable CTEST Routines
 
 _CMAKE_FLAGS+=(
         -DCMAKE_BUILD_TYPE=Release
@@ -73,73 +101,64 @@ _CMAKE_FLAGS+=(
         -DWITH_VTK=${_use_vtk}
         -DWITH_PARAVIEW=${_use_paraview}
         -DWITH_Trilinos=${_use_trilinos}
+
+        -DEXTERNAL_UMFPACK=${_use_external_umfpack}
 )
 
 pkgname=elmerfem-git
 _pkgname=elmerfem
-pkgver=9.0.r741.g7665920e
+pkgver=9.0.r2914.gcd940b72e
 pkgrel=1
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
 url="http://www.elmerfem.org"
-license=('GPL')
+license=('GPL-2.0-or-later')
 
+#conflicted deps
+((!DISABLE_INTERNAL_UMFPACK)) && conflicts+=('suitesparse')
+
+#make deps
+makedepends=('git' 'gcc-fortran' 'cmake')
 # Core deps
-depends+=('arpack' 'blas' 'libnn-git' 'libcsa-git' 'scalapack')
-#depends+=('python-pyqt5')
+# arpack was removed due to conflicted file, see https://github.com/ElmerCSC/elmerfem/issues/120
+depends+=('lapack') # 'libnn-git' 'libcsa-git' 'scalapack' 'arpack')
+((ENABLE_EXTERNAL_UMFPACK)) && depends+=('suitesparse')
+
 ((!DISABLE_MPI))      && depends+=('netcdf-fortran-openmpi') || depends+=('netcdf-fortran')
+
 # Main repos
 ((!DISABLE_GUI))      && depends+=('qt5-base' 'qt5-script' 'qt5-svg' 'glew')
 ((!DISABLE_QWT))      && depends+=('qwt')
+# If VTK is enabled this line is redundant
+((!DISABLE_MPI))      && depends+=('openmpi')
+((!DISABLE_MP))       && depends+=('openmp')
+((!DISABLE_PARAVIEW)) && depends+=('paraview')
+((!DISABLE_OCC))      && depends+=('opencascade')  # opencascade
+
+#VTK deps
 ((!DISABLE_VTK))      && depends+=('vtk' 'tbb' 'openmpi' 'freetype2' 'qt5-base' 'fmt' 'glew' 'pugixml' 'libxcursor')
+((!DISABLE_VTK))      && makedepends+=('cli11' 'ospray' 'openxr' 'openvr' 'python-mpi4py' 'boost' 'pdal' 'opencascade' 'liblas' 'adios2' 'libharu' 'cgns' 'eigen' 'utf8cpp' 'fast_float' 'java-environment=11')
+((!DISABLE_VTK))      && optdepends+=('ospray' 'openxr' 'openvr' 'python-mpi4py' 'pdal' 'opencascade' 'liblas' 'adios2' 'libharu' 'cgns' 'java-runtime=11')
+
 # AUR
 ((!DISABLE_MMG))      && depends+=('mmg')
 ((!DISABLE_TRILINOS)) && depends+=('trilinos')
-((!DISABLE_PARAVIEW)) && depends+=('paraview-opt') # paraview<>vtk conflict
 ((!DISABLE_MUMPS))    && depends+=('mumps-par')    # mumps
-((!DISABLE_OCC))      && depends+=('opencascade')  # opencascade
 ((!DISABLE_HYPRE))    && depends+=('hypre')
-((!DISABLE_MPI))      && depends+=('openmpi')
-((!DISABLE_MP))       && depends+=('openmp')
 
-makedepends=('git' 'gcc-fortran' 'cmake')
+
 provides=('elmerfem')
 conflicts=('elmerfem')
 options=(!emptydirs !staticlibs)
 
 source=("git+https://github.com/ElmerCSC/elmerfem.git${_fragment}"
-        "$_pkgname.desktop"
-        "arpack.patch"
-        "print_target_properties.patch"
-        "vtk9.cmake.patch"
-        "vtk9.1.patch::https://github.com/ElmerCSC/elmerfem/pull/308.patch"
-        "cmake-fix.patch::https://github.com/ElmerCSC/elmerfem/pull/309.patch"
-        "FindMMG.patch")
+        "$_pkgname.desktop")
 
 sha256sums=('SKIP'
-            'f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca'
-            '04e73a99d7e8d501a2c7c5211a83257137a30a8b1b5c2f7c7ff6304e0e0a6da9'
-            'da0245b22e305591913e1f78c5808a2aa33b9380a6052e5596fc16280234aac0'
-            '535b030ce72952ae6c0d0e5574d343b2236be0451d3ce287d9b956ca61d072ff'
-            '5b72df017d8a5c1d482798d9fcd72e92c319844123f4a2dab57db56d340f998e'
-            '1e2c5b810dc9388f837d79c25a419d3ab250fa084b7b8f1d5b6cbe9b8dd537bf'
-            '89b0e79ca1ad8952839d0578cdbce86ea4dad46e3c68aa1ce5b8b83bcff94e57')
+            'f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca')
 
 pkgver() {
   git -C "${srcdir}/${_pkgname}" describe --long --tag| sed -r 's/^release-//;s/([^-]*-g)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$srcdir/$_pkgname"
-  sed -i 's/1 depth/1 ${depth}/g' fem/tests/CMakeLists.txt
-  sed -i 's/FALSE/false/g' ElmerGUI/Application/vtkpost/matc.cpp
-  sed -i '/OCE/s/DIRS/DIR/g;s/OCE/OpenCASCADE/g' ElmerGUI{/,/Application}/CMakeLists.txt
-  sed -i '/BRepMesh.hxx/d' ElmerGUI/Application/cad/cadview.cpp
-  ((!DISABLE_VTK)) && patch+=(vtk9{.1,.cmake}.patch)
-  ((!DISABLE_MMG)) && patch+=({FindMMG,print_target_properties}.patch)
-  for patch in "${srcdir}"/{arpack,cmake-fix}.patch "${patch[@]/#/${srcdir}/}"
-  do msg2 "Apply: ${patch##*/}"; git apply -v "$patch"
-  done
 }
 
 build() {
@@ -150,16 +169,19 @@ build() {
 }
 
 check() {
+if ((!DISABLE_CHECK)); then
   cd "$srcdir/build"
   export PATH=$PATH:$PWD/fem/src
   jobs=$(grep -oP -- "-j\s*\K[0-9]+" <<< "${MAKEFLAGS}")
   ((!DISABLE_MP)) && export OMP_NUM_THREADS=$jobs
   ctest -j "$((DISABLE_MPI?jobs:jobs/2))" -LE slow || ((DISABLE_CHECK)) && true # -LE slow: exclude test with label 'slow'
+fi
 }
 
 package() {
   make -C build DESTDIR="$pkgdir" install
   cd "$pkgdir/usr"
+  mv share/elmersolver/lib/*.so lib
 
 if ((!DISABLE_GUI)); then
   # Remove unecessary libraries
