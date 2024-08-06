@@ -1,19 +1,19 @@
 # Maintainer: Martin Reboredo <yakoyoku@gmail.com>
 
 pkgname=heroic-gogdl
-_basever=0.7.2
-pkgver=0.7.2
+_basever=1.1.1
+pkgver=1.1.1
 pkgrel=1
-_ver_commit=d7f29dfef5818e8b323d04761e18a9abb750f93e
-_cur_commit=d7f29dfef5818e8b323d04761e18a9abb750f93e
+_ver_commit=b1d9792f4b6c60382a88f09d03d6ed63afcc0310
+_cur_commit=b1d9792f4b6c60382a88f09d03d6ed63afcc0310
 pkgdesc="GOG Downloading module for Heroic Games Launcher"
 arch=('any')
 url="https://github.com/Heroic-Games-Launcher/heroic-gogdl"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('python-requests')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'git')
 source=("git+$url#commit=$_cur_commit")
-sha256sums=('SKIP')
+sha256sums=('ded2b5248dc04750e349e70ed9d3240364b5674ada9258bd3ca52a9abd89b156')
 
 pkgver() {
   cd "$srcdir/$pkgname"
