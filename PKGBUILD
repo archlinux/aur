@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 _url='https://www.citrix.com/downloads/workspace-app/additional-client-software'
 url="${_url}/${pkgname}-${_short_pkgver}.html"
 license=('custom')
-depends=('icaclient' 'libxv' 'libpulse' 'pulseaudio' 'libsndfile')
+depends=('icaclient' 'libxv' 'libpulse' 'pulse-native-provider' 'libsndfile')
 makedepends=('binutils' 'tar' 'xz' 'awk')
 install="${pkgname}.install"
 source_i686=("HDX_RealTime_Media_Engine_${pkgver}_for_Linux.zip::https:$(curl -L -silent "${_url}/${pkgname}-${_short_pkgver}.html#ctx-dl-eula" | awk -F'"' '/href=.*rel=.*Linux.zip/ { print $14 }')")

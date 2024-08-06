@@ -14,11 +14,11 @@ pkgbase = hdx-realtime-media-engine
 	depends = icaclient
 	depends = libxv
 	depends = libpulse
-	depends = pulseaudio
+	depends = pulse-native-provider
 	depends = libsndfile
-	source_i686 = HDX_RealTime_Media_Engine_2.9.700_for_Linux.zip::https://downloads.citrix.com/11448/HDX_RealTime_Media_Engine_2.9.700_for_Linux.zip?__gda__=exp=1714680334~acl=/*~hmac=9e02fc4182f893a785293e86a4c8a0acaf1c7f690d38b6188bb9833b21406966
+	source_i686 = HDX_RealTime_Media_Engine_2.9.700_for_Linux.zip::https://downloads.citrix.com/11448/HDX_RealTime_Media_Engine_2.9.700_for_Linux.zip?__gda__=exp=1722939832~acl=/*~hmac=87cdf59a7f7b08c8b3afdf677400e939dc1fd08bd95c92b8de9f6f78ac287a8d
 	sha256sums_i686 = 2d894d7c4b826d997b1de624b97080ce57bae97c74027a709463136a1f237b98
-	source_x86_64 = HDX_RealTime_Media_Engine_2.9.700_for_Linux_x64.zip::https://downloads.citrix.com/11922/HDX_RealTime_Media_Engine_2.9.700_for_Linux_x64.zip?__gda__=exp=1714680336~acl=/*~hmac=3106d432adfec2b8e7ae4fed4bb7e9c00b80a594433c1307bb1ff20f6d9f5742
+	source_x86_64 = HDX_RealTime_Media_Engine_2.9.700_for_Linux_x64.zip::https://downloads.citrix.com/11922/HDX_RealTime_Media_Engine_2.9.700_for_Linux_x64.zip?__gda__=exp=1722939833~acl=/*~hmac=7e73082e316d31dcdc28d853ff9e9e98f7bab9e2ed2ba81ac70a0214e863b3c0
 	sha256sums_x86_64 = b858ea0131e05b0a7bb84bd9c16d4b2724751cc87c3aa82677ee633adf5feb21
 
 pkgname = hdx-realtime-media-engine
