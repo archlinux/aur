@@ -1,6 +1,6 @@
 pkgbase = gqrx-git
 	pkgdesc = SDR receiver for Funcube Dongle, RTL-SDR, USRP and OsmoSDR devices.
-	pkgver = 20220130
+	pkgver = 20240418
 	pkgrel = 1
 	url = http://gqrx.dk/
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = gqrx-git
 	depends = alsa-lib
 	depends = libpulse
 	depends = libuhd
-	depends = pulseaudio
+	depends = pulse-native-provider
 	depends = gnuradio
 	depends = gnuradio-osmosdr
 	optdepends = gr-osmosdr-git: support of OsmoSDR devices
