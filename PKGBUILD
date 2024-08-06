@@ -8,9 +8,9 @@ url=https://gitlab.com/deeplydrumming/DeemixFix
 license=("GPL3-or-later")
 arch=("x86_64")
 provides=('deemix')
-conflicts=('deemix-gui-appimage' 'deemix-gui-git' 'deemix-fix-gui-appimage')
+conflicts=('deemix-gui-appimage' 'deemix-gui-git' 'deemix-fix-gui-appimage-git')
 depends=('hicolor-icon-theme' 'electron')
-makedepends=('git' 'pnpm' 'unappimage-git')
+makedepends=('git' 'pnpm' 'unappimage-git' 'cairo' 'nodejs' 'electron')
 source=('git+https://gitlab.com/deeplydrumming/DeemixFix' 'packagefix.patch' 'deemix-gui.desktop')
 b2sums=('SKIP'
         '8544eeed4112f12417a6fdd6e22c90a4877d013bafeb009a594314c5f0f0fd612d995af1dfea74a6c24a7f98b782f021eed75d4a8eb2081d63e4b14804fcaafc'
