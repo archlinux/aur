@@ -1,7 +1,7 @@
 pkgbase = casadi-git
 	pkgdesc = Symbolic framework for automatic differentiation and numeric optimization
-	pkgver = 2024.06.21
-	pkgrel = 1
+	pkgver = 3.6.6.r0.g279e0b8
+	pkgrel = 2
 	url = https://github.com/casadi/casadi
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = casadi-git
 	depends = coin-or-qpoases
 	depends = osqp
 	depends = tinyxml2
+	optdepends = fatrop
 	optdepends = dsdp
 	optdepends = proxsuite
 	optdepends = python-scipy
@@ -25,5 +26,7 @@ pkgbase = casadi-git
 	provides = casadi
 	conflicts = casadi
 	conflicts = python-casadi-bin
+	source = git+https://github.com/casadi/casadi
+	sha256sums = SKIP
 
 pkgname = casadi-git
