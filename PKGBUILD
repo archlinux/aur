@@ -2,8 +2,8 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-neutron-lib
-pkgver=3.14.0
-pkgrel=2
+pkgver=3.14.1
+pkgrel=1
 pkgdesc="Neutron shared routines and utilities"
 arch=(any)
 url="https://opendev.org/openstack/neutron-lib"
@@ -53,7 +53,7 @@ checkdepends=('bandit'
               'python-testresources'
               'python-testscenarios')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('fe0caf7685d0a7bb48c2ad3b66494a2cd5c73719ce4caeac5fea0ba81629d90685a7ebed68cfdd13f188e97890b74aeded06df2e048f6177a54a7a3a7b62ce57')
+b2sums=('1bea4a343fc6902bac4692e3e6bc7d53705abc91bbbb6e28ab41a78ba0e85599e4ab6d672e5092ca9d64620de01e6e7a09ff88790329fcaad43895b36a9e07cc')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level

@@ -1,7 +1,7 @@
 pkgbase = python-neutron-lib
 	pkgdesc = Neutron shared routines and utilities
-	pkgver = 3.14.0
-	pkgrel = 2
+	pkgver = 3.14.1
+	pkgrel = 1
 	url = https://opendev.org/openstack/neutron-lib
 	arch = any
 	license = Apache-2.0
@@ -49,7 +49,7 @@ pkgbase = python-neutron-lib
 	depends = python-requests
 	depends = python-hacking
 	depends = python-testtools
-	source = python-neutron-lib-3.14.0.tar.gz::https://opendev.org/openstack/neutron-lib/archive/3.14.0.tar.gz
-	b2sums = fe0caf7685d0a7bb48c2ad3b66494a2cd5c73719ce4caeac5fea0ba81629d90685a7ebed68cfdd13f188e97890b74aeded06df2e048f6177a54a7a3a7b62ce57
+	source = python-neutron-lib-3.14.1.tar.gz::https://opendev.org/openstack/neutron-lib/archive/3.14.1.tar.gz
+	b2sums = 1bea4a343fc6902bac4692e3e6bc7d53705abc91bbbb6e28ab41a78ba0e85599e4ab6d672e5092ca9d64620de01e6e7a09ff88790329fcaad43895b36a9e07cc
 
 pkgname = python-neutron-lib
