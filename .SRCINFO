@@ -1,7 +1,7 @@
 pkgbase = python-rembg
 	pkgdesc = Rembg is a tool to remove images background
 	pkgver = 2.0.58
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/danielgatis/rembg
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = python-rembg
 	makedepends = python-twine
 	depends = python
 	depends = python-jsonschema
-	depends = python-numpy
+	depends = python-numpy1
 	depends = python-onnxruntime
 	depends = python-opencv
 	depends = python-pillow
