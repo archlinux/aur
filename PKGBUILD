@@ -2,16 +2,17 @@
 pkgname=walker-bin
 license=('MIT')
 pkgver=0.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc='wayland application runner'
 url='https://github.com/abenz1267/walker'
 depends=('gtk4-layer-shell')
 optdepends=('wl-clipboard: for clipboard module')
-source_x86_64=("https://github.com/abenz1267/walker/releases/download/v$pkgver/walker_Linux_x86_64.tar.gz")
+source_x86_64=("https://github.com/abenz1267/walker/releases/download/v$pkgver/walker_.${pkgver}_Linux_x86_64.tar.gz")
+
 arch=('x86_64')
 conflicts=('walker')
 provides=('walker')
-sha256sums_x86_64=('d2a3593c3b6a2f9b0d694fc1d974119c7731ac4d8d69dce2962e629933840a96')
+sha256sums_x86_64=('385a2e65b72c28238c9d6c9bcc9e234f5c2cdb04bb787a48f7b0f24c03106fc2')
 
 package() {
   cd "$srcdir/"
