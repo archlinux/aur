@@ -1,4 +1,4 @@
-/pkg/
-/src/
-/ZenStates-Linux/
-/*.pkg*
+pkg/
+src/
+[Zz]en[Ss]tates-[Ll]inux/
+*.zst
