@@ -6,12 +6,12 @@
 _pkgname=feather
 pkgname="${_pkgname}wallet-appimage"
 pkgver=2.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A free Monero desktop wallet"
 arch=('x86_64')
 url="https://featherwallet.org"
 license=('GPL')
-depends=('tor' 'fuse2fs')
+depends=('tor' 'fuse2')
 provides=("$pkgname")
 conflicts=("monero-${_pkgname}" "monero-${_pkgname}-git" "monero-${_pkgname}-bin" "${_pkgname}wallet-bin")
 options=(!strip)
