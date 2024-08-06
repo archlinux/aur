@@ -1,14 +1,14 @@
 # Maintainer: Jake Leahy <jake (at) lowerCaseLastName (dot) dev
 
 pkgname=pkgbuild-updater
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Automatic PKGBUILD updater script which fetches the new version and then pushes the update"
 arch=('any')
 url="https://github.com/ire4ever1190/pkgbuild-updater"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ire4ever1190/pkgbuild-updater/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('beb6c2fb4b62360b910afa1a5138e597a7c2dc8900b46d8f5f8c3b55aa450ff4')
+sha256sums=('8e78f34404b358ebc0f431065a5fb8e5f184268b4daabcdbe01a8c9362701166')
 provides=('pkgbuild-updater')
 depends=('jq' 'pacman-contrib')
 
