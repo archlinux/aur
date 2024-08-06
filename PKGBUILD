@@ -1,65 +1,71 @@
 # Maintainer: Patrick josé Pereira  <gmail.com@patrickelectric>
+# Contributor: Helio Loureiro <helio@loureiro.eng.br>
 pkgname=qhot-git
 _realname=qhot
 confilicts=('qhot')
-pkgver=ca0722e
+pkgver=qt6+1.1.0+2.r89.20240421.9f515c6
 pkgrel=1
+gittag=qt6-1.1.0
 pkgdesc="Hot reload for nested QML files!"
 arch=('i686' 'x86_64')
 url="https://github.com/patrickelectric/qhot"
 license=('GPL3')
 buildDepends=('git')
 depends=(
-  'qt5-base'
-  'qt5-declarative'
-  'qt5-3d'
-  'qt5-charts'
-  'qt5-graphicaleffects'
-  'qt5-imageformats'
-  'qt5-location'
-  'qt5-multimedia'
-  'qt5-quickcontrols'
-  'qt5-quickcontrols2'
-  'qt5-svg'
-  'qt5-tools'
-  'qt5-translations'
-  'qt5-webengine'
-  'qt5-websockets'
-  'qt5-webglplugin'
+  'qt6-base'
+  'qt6-declarative'
+  'qt6-quick3d'
+  'qt6-charts'
+  'qt6-imageformats'
+  'qt6-location'
+  'qt6-multimedia'
+  'qt6-svg'
+  'qt6-tools'
+  'qt6-translations'
+  'qt6-webengine'
+  'qt6-websockets'
+  'clang'
 )
-source=('git://github.com/patrickelectric/qhot.git')
-md5sums=(SKIP)
+source=('git+https://github.com/patrickelectric/qhot.git')
+sha1sums=(SKIP)
 
 pkgver() {
-  cd $_realname
-  git log --pretty=format:'%h' -n 1
+  cd ${srcdir}/$_realname
+  _ver="$(git describe  --tags | sed 's|^[vV]||' | sed 's|-g[0-9a-fA-F]*$||' | tr '-' '+')"
+  _rev="$(git rev-list --count HEAD)"
+  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+  _hash="$(git rev-parse --short HEAD)"
+
+  if [ -z "${_ver}" ]; then
+    error "Version could not be determined."
+    return 1
+  else
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
+  fi
 }
 
 build() {
-  cd $_realname
-  mkdir "build" || true
-  cd "build"
-  qmake ..
-  make PREFIX=/usr
-
-  	echo "[Desktop Entry]
+  cd ${srcdir}/${_realname}
+  cmake -B build -DCMAKE_BUILD_TYPE=Release
+  cmake --build build --parallel --config Release
+  cat<<EOF > build/${_realname}.desktop 
+[Desktop Entry]
 Type=Application
 Name=QHot
 Comment=${pkgdesc}
 Path=/opt/${pkgname}/
-Exec=/usr/bin/$_realname
+Exec=/usr/bin/${_realname}
 Terminal=true
-Categories=Qt;Utility;" > "$_realname.desktop"
+Categories=Qt;Utility;
+EOF
 }
 
 package(){
-  cd $_realname
-  cd "build"
-
+  cd ${srcdir}/${_realname}/build
 
   mkdir -p "${pkgdir}/opt/" "${pkgdir}/usr/bin" "${pkgdir}/usr/share/applications"
-  cp $_realname "${pkgdir}/usr/bin/$_realname"
-  cp "$_realname.desktop" "${pkgdir}/opt/${pkgname}"
+  cp src/${_realname} "${pkgdir}/usr/bin/${_realname}"
+  cp "${_realname}.desktop" "${pkgdir}/opt/${pkgname}"
 
   ln -s "/opt/${pkgname}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
