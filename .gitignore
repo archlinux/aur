@@ -3,3 +3,4 @@ pkg/
 rmup/
 src/
 update.sh
+*.tar.gz
