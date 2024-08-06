@@ -21,11 +21,12 @@ md5sums=('52e5875f5a4af831a8f1df105870d801'
 
 package() {
 
-    install -dm 755 "${pkgdir}/opt/wechat-devtools"
+    install -dm755 "${pkgdir}/opt/wechat-devtools"
     cp -r ${srcdir}/WeChat_Dev_Tools_v${pkgver}-${pkgrel}_x86_64_linux/* ${pkgdir}/opt/wechat-devtools
 
-    install -dm 755 "${pkgdir}/usr/bin/"
-    ln -s /opt/wechat-devtools/bin/* ${pkgdir}/usr/bin/
+    install -dm755 "${pkgdir}/usr/bin/"
+    ln -s /opt/wechat-devtools/bin/wechat-devtools ${pkgdir}/usr/bin/
+    ln -s /opt/wechat-devtools/bin/wechat-devtools-cli ${pkgdir}/usr/bin/
 
     install -Dm644 ${srcdir}/wechat-devtools.desktop ${pkgdir}/usr/share/applications/wechat-devtools.desktop
     install -Dm644 ${srcdir}/wechat-devtools.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/wechat-devtools.svg
