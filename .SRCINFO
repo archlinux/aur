@@ -1,6 +1,6 @@
 pkgbase = nwg-shell
 	pkgdesc = nwg-shell meta-package
-	pkgver = 0.5.36
+	pkgver = 0.5.37
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-shell
 	arch = any
@@ -34,7 +34,6 @@ pkgbase = nwg-shell
 	depends = wlsunset
 	depends = azote
 	depends = gopsuinfo
-	depends = nwg-bar-bin
 	depends = nwg-dock-bin
 	depends = nwg-dock-hyprland-bin
 	depends = nwg-drawer-bin
@@ -56,7 +55,7 @@ pkgbase = nwg-shell
 	optdepends = mousepad: suggested text editor
 	optdepends = thunar: suggested file manager
 	optdepends = nano: in case you hate vi
-	source = nwg-shell-0.5.36.tar.gz::https://github.com/nwg-piotr/nwg-shell/releases/download/v0.5.36/nwg-shell-v0.5.36.tar.gz
-	md5sums = 09290f74163207d04a0494e22489f130
+	source = nwg-shell-0.5.37.tar.gz::https://github.com/nwg-piotr/nwg-shell/releases/download/v0.5.37/nwg-shell-v0.5.37.tar.gz
+	md5sums = dc4c9beb9138855038975958786ff20d
 
 pkgname = nwg-shell

@@ -1,6 +1,6 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-shell')
-pkgver=0.5.36
+pkgver=0.5.37
 pkgrel=1
 pkgdesc="nwg-shell meta-package"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('foot' 'gnome-themes-extra' 'grim' 'imagemagick' 'jq'
          'pacman-contrib' 'papirus-icon-theme' 'playerctl' 'polkit-gnome' 
          'python-geopy' 'python-yaml' 'slurp' 'swappy' 'sway' 'swayidle'
          'swaylock' 'swaybg' 'wl-clipboard' 'xorg-xwayland' 'wlsunset' 
-         'azote' 'gopsuinfo' 'nwg-bar-bin' 'nwg-dock-bin' 'nwg-dock-hyprland-bin' 
+         'azote' 'gopsuinfo' 'nwg-dock-bin' 'nwg-dock-hyprland-bin' 
          'nwg-drawer-bin' 'nwg-menu-bin' 'nwg-look' 'nwg-panel' 'nwg-shell-config' 
          'nwg-shell-wallpapers' 'nwg-displays' 'nwg-clipman' 'nwg-readme-browser' 
          'python-dasbus' 'swaync' 'gtklock' 'gtklock-userinfo-module' 
@@ -23,7 +23,7 @@ optdepends=('chromium: suggested web browser'
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-shell/releases/download/v"$pkgver"/nwg-shell-v"$pkgver".tar.gz")
 
-md5sums=('09290f74163207d04a0494e22489f130')
+md5sums=('dc4c9beb9138855038975958786ff20d')
 
 build() {
         cd "${pkgname}-${pkgver}"
