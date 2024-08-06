@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Xiaozhu1337 <nihaoaheheda@gmail.com>
 pkgname=siyuan
-pkgver=3.1.2
-_electronversion=31
+pkgver=3.1.3
+_electronversion=30
 _nodeversion=18
 pkgrel=1
 pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang."
@@ -34,7 +34,7 @@ source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('b10aa9f57c1c47d38ac9e24cd251903c94556955a85ac2ffeed064f2dc520275'
+sha256sums=('fdcbf9b3f009448812b1d9d78ba21d4d000f06fb1ea99ea6b66de10f2e0ec3e5'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
