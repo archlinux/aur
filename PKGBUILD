@@ -2,7 +2,7 @@
 
 pkgbase=everforest-gtk-theme-git
 pkgname=('everforest-icon-theme-git' 'everforest-gtk-theme-git')
-pkgver=r39.16a93e0a
+pkgver=r54.462458b1
 pkgrel=1
 pkgdesc='Everforest colour palette for GTK'
 arch=('any')
@@ -25,10 +25,10 @@ pkgver() {
 package_everforest-icon-theme-git() {
     cd "$srcdir/$pkgbase"
     sed -i icons/*/index.theme -e 's/oomox-//'
-    sed -i icons/everforest_light/index.theme -e 's/[Ee]verforest_[Ll]ight/Everforest-Light/g'
+    sed -i icons/Everforest-Light/index.theme -e 's/[Ee]verforest_[Ll]ight/Everforest-Light/g'
     mkdir -p "$pkgdir/usr/share/icons"
     cp -r icons/Everforest-Dark "$pkgdir/usr/share/icons/"
-    cp -r icons/everforest_light "$pkgdir/usr/share/icons/Everforest-Light"
+    cp -r icons/Everforest-Light "$pkgdir/usr/share/icons/"
 }
 
 package_everforest-gtk-theme-git() {
