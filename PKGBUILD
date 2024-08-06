@@ -2,7 +2,7 @@
 
 pkgname=gz-launch6
 pkgver=6.1.0
-pkgrel=4
+pkgrel=5
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Run and manage programs and plugins."
@@ -36,7 +36,6 @@ source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.t
 sha256sums=('ad5356c23b58487f15367a0a60680b3a557b0fb235014e2cb579c49699fc63ed')
 
 build() {
-  export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/lib/ffmpeg4.4/pkgconfig"
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
            -DCMAKE_BUILD_TYPE='None' \
            -DCMAKE_INSTALL_PREFIX='/usr' \
