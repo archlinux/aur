@@ -1,0 +1,13 @@
+pkgbase = reconn
+	pkgdesc = AutoReconnect 'reconn' is a utility designed to manage WiFi connections using ConnMan on Linux systems.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/felipealfonsog/AutoReconnect
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = python
+	depends = connman
+	source = https://github.com/felipealfonsog/AutoReconnect/archive/refs/tags/v.0.0.1.tar.gz
+	sha256sums = 13075a74d7f210a6f3606da41799bcd5c2b1258a42aabd8491257a729be9fab0
+
+pkgname = reconn
