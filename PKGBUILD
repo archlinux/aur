@@ -16,15 +16,15 @@ _pkgver='5.90';  _dl='8/0100007658/40';_suffix1='m17n';_suffix2='03'
 
 pkgver="${_pkgver}.1.${_suffix2}"
 
-pkgrel=2
+pkgrel=3
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
 arch=('x86_64' 'aarch64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
 url='https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.aspx'
 license=('GPL-2.0-only' 'MIT' 'custom')
 # parts of the code are GPL or MIT licensed, some parts have a custom license
-makedepends=('jbigkit' 'gzip' 'gtk3')
-depends=('libcups' 'glibc' 'gcc-libs' 'libxml2')
+makedepends=(jbigkit gzip gtk3)
+depends=(libcups glibc gcc-libs libxml2 glib2)
 optdepends=('libjpeg6-turbo: solves cpu hang on some color imageRUNNER/i-SENSYS LBP devices'
                         'jbigkit: solves some cpu hangs'
                         'ghostscript: necessary for printing on some devices'
@@ -36,12 +36,16 @@ optdepends=('libjpeg6-turbo: solves cpu hang on some color imageRUNNER/i-SENSYS 
 )
 
 
-conflicts=('cndrvcups-lb' 'cndrvcups-common-lb')
-options=('emptydirs' '!strip' '!libtool' '!debug')
+conflicts=(cndrvcups-lb cndrvcups-common-lb)
+options=(emptydirs !strip !libtool !debug)
 
-source=(  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-${_suffix1}-${_suffix2}.tar.gz")
-md5sums=('072004c6f1a296070b1baeb4416fbd9c')
-sha512sums=('85a2fc25da6f641e9d51168df97c148d2b6a5085ebc8504f67da6fbc08ec04b1b46128fce1921b91c4d7fa60e40aeecadfc2ca099fed0a5f735116da2aee93e3')
+source=(  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-${_suffix1}-${_suffix2}.tar.gz"
+                replace_incorrect_int_with_char.patch
+)
+md5sums=('072004c6f1a296070b1baeb4416fbd9c'
+         '8bc26ff46bf5877b5800b77685d5d917')
+sha512sums=('85a2fc25da6f641e9d51168df97c148d2b6a5085ebc8504f67da6fbc08ec04b1b46128fce1921b91c4d7fa60e40aeecadfc2ca099fed0a5f735116da2aee93e3'
+            '1d118eeee1ce069b59db00cba5b534986ccbd1da3a9c4a4ba6892be4a478c2dac4bd83dae1b2dd28f0e58a145609c60940cd661fee87d025a12f856e161b1f65')
 
 
 # Canon provides the sourcecode in a tarball within the dowload and we need to extract the code manually
@@ -67,17 +71,12 @@ prepare() {
 
     local _specs=(cnrdrvcups-lb.spec)
 
-    # cngplp/autogen.sh fails to find several libraries.
-    # adding these in the right place of the soon to be generated make script is hard,
-    # so we patch it directly into that autogen.sh
-    #    sed -e '2a export LIBS="-lgtk-x11-2.0 -lgobject-2.0 -lglib-2.0 -lgmodule-2.0"' -i "cnrdrvcups-common-${_pkgver}/cngplp/autogen.sh"
-    # the switch to gtk3 appears to have solved this
-
-    
     # the autogen.sh files from canon target an old automake/autoconf version
     # autoreconf converts them to a form compatible with archlinux autoconf/automake
     
-    pushd "${_common_dir}"
+    patch --directory="${srcdir}"/$_srcdir/$_driver_dir/cngplp/cngplpmod/ --forward --input="$srcdir"/replace_incorrect_int_with_char.patch
+    
+    pushd $_common_dir
     for i in "backend" "buftool" "cngplp" "cnjbig" "rasterfilter"
     do
         pushd "$i"
@@ -85,7 +84,7 @@ prepare() {
         popd
     done
     popd
-    pushd "${_driver_dir}"
+    pushd $_driver_dir
     for i in "cngplp/files" "cngplp" "cpca" "pdftocpca"
     do
         pushd "$i"
@@ -109,7 +108,8 @@ prepare() {
         -e '# Some autogen.sh commands in the spec file do not set  --prefix. More than one --prefix dont cause problems so we can add it to all of them.' \
         -e 's:^./autogen.sh:& --prefix=${_prefix}:g ' \
         > 'make.Arch'
-
+     sed -i '1iset -e o pipefail' make.Arch
+     
     # Generate make install from spec %install
     sed -n -e '/^%install/,/^%clean/ p' "${_specs[@]}" | \
     grep -v '^%' | \
@@ -117,10 +117,9 @@ prepare() {
         -e 's:%{:${:g' \
         -e '# Quote to handle path with spaces' \
         -e 's:${RPM_BUILD_ROOT}:"&":g' \
-        -e '# ln -f hides problems so should be avoided' \
-        -e 's:ln -sf :ln -s :g' \
         > 'make.install.Arch'
-
+    sed -i '1iset -e o pipefail' make.install.Arch
+    
 }
 
 _setvars() {
@@ -154,11 +153,13 @@ _setvars() {
 
 build() {
   
-  cd "${_srcdir}"
-  local _vars; _setvars
-  # Bash does not recognize var assigments hidden by array expansion so we use env.
-  env "${_vars[@]}" \
-  sh 'make.Arch'
+    set -e o pipefail
+    cd "${_srcdir}"
+    local _vars; _setvars
+    
+    # Bash does not recognize var assigments hidden by array expansion so we use env.
+    env "${_vars[@]}"  sh 'make.Arch'
+
 
 }
 
