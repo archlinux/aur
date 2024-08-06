@@ -1,22 +1,24 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname="python-bertini_real"
+_name="bertini_real"
+_pkgname="python-${_name}"
 pkgname="${_pkgname}-git"
 pkgver=r1517.58a8faa
 pkgrel=1
 pkgdesc="Python interface for Bertini_real"
 arch=('any')
 url="https://www.bertinireal.com"
-_url="https://github.com/ofloveandhate/bertini_real"
+_url="https://github.com/ofloveandhate/${_name}"
 license=('custom:Bertini license')
-makedepends=('git' 'python' 'python-setuptools')
+makedepends=('git' 'python' 'python-build' 'python-installer' 'python-wheel'
+             'python-setuptools')
 depends=('bertini_real' 'python' 'python-numpy' 'python-scipy' 'python-sympy'
          'python-matplotlib' 'python-algopy' 'python-trimesh' 'python-dill'
          'python-setuptools')
 optdepends=('python-glumpy: for OpenGL-accelerated rendering of surfaces')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-_pkgsrc="bertini_real"
+_pkgsrc="${_name}"
 source=("${_pkgsrc}::git+${_url}.git"
         "${_pkgname}_fix_package_data.patch")
 sha256sums=('SKIP'
@@ -34,7 +36,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgsrc}/python"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
@@ -47,7 +49,7 @@ package() {
   install -Dm644 "AUTHORS"   "${pkgdir}/usr/share/licenses/${_pkgname}/AUTHORS"
 
   cd "python"
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   rm -rf "${pkgdir}${site_packages}/build"
   rm -rf "${pkgdir}${site_packages}/docs"
   rm -rf "${pkgdir}${site_packages}/example"
