@@ -4,8 +4,8 @@
 # Based on [extra]'s thunderbird
 
 pkgname=(thunderbird-nightly-bin thunderbird-nightly-bin-noupdate)
-pkgver=130.0a1.20240709
-_version=130.0a1
+pkgver=131.0a1.20240806
+_version=131.0a1
 pkgrel=1
 arch=('x86_64')
 url="https://www.mozilla.org/thunderbird"
@@ -19,9 +19,9 @@ source=("${FX_SRC_URI}.txt"
         vendor.js
         policies.json)
 
-b2sums=('SKIP'
-        'SKIP'
-        '1f954c9a23842367be37c1f56b853de6a336c1b4156df42f88b14f1614d194c2f996f1cc589cdbfcea398bb9cedcd527ef3c6fb8b01e2f07c46290043e24c6b7'
+b2sums=('1dcf4b3969c05ff4345ffff97fdd42213c65d3b39f406d9d690637c7871de5fdb78735d73fa482f874b992c7661159ccdbac2e1d8aee10ddf7227bb3fd076854'
+        'ad779f79b6f660357095a2148fb11f9d2fc781f98c4a0e6bd2d635daac8e26a809d33d1f577eea955ee3fb3dd2135245fa44d0f6d660e8792441f4a5b63e8025'
+        '48e3b5827f5dd2e09a7c3e1ad6721d2c5fdb5962700b5e97df61d032445f7b2a9546ed057e6eb5d9676bb1d110b3b1c5e615edc4d821af63ceac9485e4c1c86c'
         '674d1ee883e675c37b0af0ac97c339a8c0f2b53cb06e64db64aaa3f22f83d7179b6fa3e122344f3413ccb9956776288db9bc608b5cedef640cbd223838be7476'
         'f8df63721191d84d8f1ceec263f63c44fd5dadeae0939baf9a4a6b1852516722b2a3d94b8d403cc7b6c6b525d5236f357ab65a72d716aab1f5bef47800b5a18c')
 
@@ -48,6 +48,8 @@ package_thunderbird-nightly-bin() {
       install -Dm644 thunderbird/chrome/icons/default/default${i/x*/}.png "${pkgdir}"/usr/share/icons/hicolor/${i}/apps/${pkgname%-bin}.png
   done
   install -Dm644 ${pkgname%-bin}.desktop "${pkgdir}"/usr/share/applications/${pkgname%-bin}.desktop
+  install -Dm644 thunderbird/chrome/icons/default/TB-symbolic.svg \
+    "${pkgdir}"/usr/share/icons/hicolor/symbolic/apps/thunderbird-symbolic.svg
   rm -rf "${pkgdir}"/opt/${pkgname%-bin}-${pkgver}/dictionaries/
   ln -sf /usr/share/hunspell/ "${pkgdir}"/opt/${pkgname%-bin}-${pkgver}/dictionaries
 }
