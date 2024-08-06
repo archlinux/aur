@@ -10,19 +10,21 @@ _url="https://github.com/joouha/${pkgname}"
 license=('MIT')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 checkdepends=('python-pytest' 'python-pytest-asyncio')
-depends=('python>=3.8' 'python-prompt_toolkit' 'python-pygments'
-         'jupyter-nbformat' 'python-jupyter-client>=7.1' 'python-aenum'
-         'python-typing_extensions' 'python-fastjsonschema'
-         'python-platformdirs' 'python-pyperclip' 'python-imagesize'
-         'python-markdown-it-py' 'python-linkify-it-py'
-         'python-mdit_py_plugins' 'python-flatlatex' 'python-timg'
-         'python-pillow>=9.0' 'python-sixelcrop' 'python-universal_pathlib'
-         'python-fsspec' 'python-jupytext>=1.14.0' 'python-jupyter-core'
-         'python-ipykernel' 'python-aiohttp' 'python-magic' 'python-asyncssh'
-         'python-pylatexenc' 'python-html2text' 'python-matplotlib'
-         'python-chafapy' 'python-sympy' 'python-rich' 'python-mtable'
-         'python-teimpy' 'python-numpy' 'python-cairosvg' 'python-ziamath'
-         'python-img2unicode')
+depends=(
+  # from pyproject.toml
+  'python>=3.8' 'python-prompt_toolkit' 'python-pygments' 'jupyter-nbformat'
+  'python-jupyter-client>=7.1' 'python-aenum' 'python-typing_extensions'
+  'python-fastjsonschema' 'python-platformdirs' 'python-pyperclip'
+  'python-imagesize' 'python-markdown-it-py' 'python-linkify-it-py'
+  'python-mdit_py_plugins' 'python-flatlatex' 'python-timg'
+  'python-pillow>=9.0' 'python-sixelcrop' 'python-universal_pathlib'
+  'python-fsspec' 'python-jupytext>=1.14.0'
+  # from namcap
+  'python-jupyter-core' 'python-ipykernel' 'python-rich' 'python-mtable'
+  'python-sympy' 'python-numpy' 'python-img2unicode' 'python-html2text'
+  'python-magic' 'python-matplotlib' 'python-cairosvg' 'python-aiohttp'
+  'python-ziamath' 'python-chafapy' 'python-teimpy' 'python-pylatexenc')
+optdepends=('python-asyncssh: for Euporie hub support')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/v${pkgver}.tar.gz")
 sha256sums=('3a3c67bb3a998189b7b738158878eb2e31acda5e7d8063a4e90380207b0f3946')
