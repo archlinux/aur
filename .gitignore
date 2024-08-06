@@ -1,4 +1,3 @@
-/fix-liblo.patch
 pkg/
 src/
 *.tar.*
