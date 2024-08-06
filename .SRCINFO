@@ -1,0 +1,15 @@
+pkgbase = harper
+	pkgdesc = The Grammar Checker for Developers.
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/elijah-potter/harper
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	provides = harper
+	options = !lto
+	source = harper-0.9.0.tar.gz::https://github.com/elijah-potter/harper/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = d4291bd58032a31095c27fb84c928fd2b0724b89d9e3ccbf3064fbf80a780778
+
+pkgname = harper

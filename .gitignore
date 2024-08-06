@@ -1,0 +1,6 @@
+*.zst
+*.log
+*.xz
+pkg
+src
+harper*
