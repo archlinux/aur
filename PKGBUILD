@@ -3,7 +3,7 @@
 pkgbase=radicle-bin
 pkgname=(radicle-bin radicle-{cli,node}-bin)
 epoch=1
-_version='1.0.0-rc.13'
+_version='1.0.0-rc.14'
 pkgver=${_version/-/}
 pkgrel=1
 pkgdesc="open source, peer-to-peer code collaboration stack built on Git"
@@ -19,10 +19,10 @@ _source=(
 )
 source_x86_64=(${_source[@]})
 source_aarch64=(${_source[@]})
-sha256sums_x86_64=('f25d8ed8348badd2067b78ac4284b532224f4f632c05423089ab2d1601d27081'
+sha256sums_x86_64=('e6855c8be7f4e8321ec03d2c82962c884b2124e5a521e5cf76194f8304fbdf6a'
                    'fff889db903497b59500b5171806c511b3c83df1100532c2f7aa8f96af46cc4d'
                    '38071bb7e6c362cd587e30e42f42abcb9960612276da88c9099367713e4ca412')
-sha256sums_aarch64=('f25d8ed8348badd2067b78ac4284b532224f4f632c05423089ab2d1601d27081'
+sha256sums_aarch64=('e6855c8be7f4e8321ec03d2c82962c884b2124e5a521e5cf76194f8304fbdf6a'
                     'fff889db903497b59500b5171806c511b3c83df1100532c2f7aa8f96af46cc4d'
                     '38071bb7e6c362cd587e30e42f42abcb9960612276da88c9099367713e4ca412')
 
