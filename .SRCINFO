@@ -1,0 +1,22 @@
+pkgbase = mutn
+	pkgdesc = A simple, self-hosted, SSH-synchronized password/note manager based on libmutton
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/rwinkhart/MUTN
+	arch = x86_64
+	arch = i686
+	arch = i486
+	arch = pentium4
+	arch = aarch64
+	arch = armv7h
+	arch = riscv64
+	license = MIT
+	makedepends = go
+	makedepends = util-linux
+	optdepends = wl-clipboard: Wayland clipboard support
+	optdepends = xclip: X11 clipboard support
+	optdepends = bash-completion: Bash completion support
+	source = git+https://github.com/rwinkhart/MUTN.git#tag=v0.2.0
+	sha512sums = SKIP
+
+pkgname = mutn
