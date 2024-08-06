@@ -1,6 +1,6 @@
 pkgname=apio
 _name=apio
-pkgver=0.8.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="Experimental micro-ecosystem for open FPGAs"
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
 makedepends=('python-build' 'python-flit-core' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('baa8edbdf933ff098178418214b19dfce0cad233ecbe5fc73b896bb7434b5d8f')
+sha256sums=('511255c3427817aabb997adc891f079dfa4e1e60c6f2a7180125d0c20057136c')
 
 build() {
   cd "${_name}-$pkgver"
