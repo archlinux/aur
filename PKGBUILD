@@ -6,12 +6,12 @@
 _pkgname=Chatbox
 pkgname="chatbox-appimage"
 pkgver=1.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Chatbox is a desktop app for GPT-4 / GPT-3.5 (OpenAI API) that supports Windows, Mac & Linux."
 arch=('x86_64')
 url="https://github.com/Bin-Huang/chatbox"
 license=('GPL')
-depends=('fuse2fs')
+depends=('fuse2')
 provides=("$pkgname")
 conflicts=("${_pkgname}-bin")
 options=(!strip)
