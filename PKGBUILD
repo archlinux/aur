@@ -57,7 +57,7 @@ optdepends=('python-nautilus: Nautilus integration'
             'sshfs: remote filesystem browser')
 groups=(kde-applications
         kde-network)
-source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-kde-$pkgver.tar.xz{,.sig}
+source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-kde-$pkgver.tar.xz{,.sig}
         https://invent.kde.org/network/kdeconnect-kde/-/commit/4f3a8968.patch)
 sha256sums=('03d827abed7b0552b536298920ce5815e321f9101b020bfcebf5bcaa4ccf054a'
             'SKIP'
@@ -67,7 +67,7 @@ validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aac
               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 
 prepare() {
-  patch -d $pkgname-kde-$pkgver -p1 < 4f3a8968.patch # Fix errors with openssh 9.8
+  patch -d $_pkgname-kde-$pkgver -p1 < 4f3a8968.patch # Fix errors with openssh 9.8
 }
 
 build() {
