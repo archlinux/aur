@@ -1,0 +1,37 @@
+From 8b963ba492ea97a8d453295185ca05a2ad270b24 Mon Sep 17 00:00:00 2001
+From: Wilken Gottwalt <wilken.gottwalt@posteo.net>
+Date: Sun, 21 Jul 2024 09:22:26 +0200
+Subject: [PATCH] gm2: add missing debug output guard
+To: gcc-patches@gcc.gnu.org
+Cc: Gaius Mulley <gaiusmod2@gmail.com>
+
+The Close() procedure in MemStream is missing a guard to prevent it from
+printing in non-debug mode.
+
+gcc/gm2:
+	* gm2-libs-iso/MemStream.mod: Guard debug output.
+
+Signed-off-by: Wilken Gottwalt <wilken.gottwalt@posteo.net>
+---
+ gcc/m2/gm2-libs-iso/MemStream.mod | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/gcc/m2/gm2-libs-iso/MemStream.mod b/gcc/m2/gm2-libs-iso/MemStream.mod
+index 9620ed2ba19..d3204692540 100644
+--- a/gcc/m2/gm2-libs-iso/MemStream.mod
++++ b/gcc/m2/gm2-libs-iso/MemStream.mod
+@@ -694,7 +694,10 @@ END handlefree ;
+ 
+ PROCEDURE Close (VAR cid: ChanId) ;
+ BEGIN
+-   printf ("Close called\n");
++   IF Debugging
++   THEN
++      printf ("Close called\n")
++   END ;
+    IF IsMem(cid)
+    THEN
+       UnMakeChan(did, cid) ;
+-- 
+2.45.2
+

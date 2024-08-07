@@ -1,0 +1,66 @@
+From 0943e017012e13080d7c3ba2bad82663500ba648 Mon Sep 17 00:00:00 2001
+From: Wilken Gottwalt <wilken.gottwalt@posteo.net>
+Date: Tue, 23 Jul 2024 07:46:44 +0200
+Subject: [PATCH] gm2: fix bad programming practice identifier warning
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+To: gcc-patches@gcc.gnu.org
+Cc: Gaius Mulley <gaiusmod2@gmail.com>
+
+Fix using keywords as identifiers to prevent warnings coming from
+Modula-2's own libraries.
+
+m2pim/DynamicStrings.mod:1358:27: note: In procedure ‘Slice’: the symbol
+name ‘end’ is legal as an identifier, however as such it might cause
+confusion and is considered bad programming practice
+ 1358 |    start, end, o: INTEGER ;
+
+m2pim/DynamicStrings.mod:1358:27: note: either the identifier has the
+same name as a keyword or alternatively a keyword has the wrong case
+(‘END’ and ‘end’)
+
+gcc/gm2:
+        * gm2-libs/DynamicStrings.mod: Fix bad identifier warning.
+
+Signed-off-by: Wilken Gottwalt <wilken.gottwalt@posteo.net>
+---
+ gcc/m2/gm2-libs/DynamicStrings.mod | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/gcc/m2/gm2-libs/DynamicStrings.mod b/gcc/m2/gm2-libs/DynamicStrings.mod
+index b53f0f285b5..982284d3629 100644
+--- a/gcc/m2/gm2-libs/DynamicStrings.mod
++++ b/gcc/m2/gm2-libs/DynamicStrings.mod
+@@ -1354,8 +1354,8 @@ END Mult ;
+ 
+ PROCEDURE Slice (s: String; low, high: INTEGER) : String ;
+ VAR
+-   d, t         : String ;
+-   start, end, o: INTEGER ;
++   d, t          : String ;
++   start, stop, o: INTEGER ;
+ BEGIN
+    IF PoisonOn
+    THEN
+@@ -1390,7 +1390,7 @@ BEGIN
+             ELSE
+                start := low - o
+             END ;
+-            end := Max (Min (MaxBuf, high - o), 0) ;
++            stop := Max (Min (MaxBuf, high - o), 0) ;
+             WHILE t^.contents.len = MaxBuf DO
+                IF t^.contents.next = NIL
+                THEN
+@@ -1408,7 +1408,7 @@ BEGIN
+                t := t^.contents.next
+             END ;
+             ConcatContentsAddress (t^.contents,
+-                                   ADR (s^.contents.buf[start]), end - start) ;
++                                   ADR (s^.contents.buf[start]), stop - start) ;
+             INC (o, s^.contents.len) ;
+             s := s^.contents.next
+          END
+-- 
+2.45.2
+

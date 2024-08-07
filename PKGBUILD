@@ -14,7 +14,7 @@ _gmpver=6.3.0
 _islver=0.26
 _mpcver=1.3.1
 _mpfrver=4.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The GNU Compiler Collection"
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -29,7 +29,10 @@ source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.
         https://gmplib.org/download/gmp/gmp-${_gmpver}.tar.xz{,.sig}
         https://libisl.sourceforge.io/isl-${_islver}.tar.xz
         https://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz
-        https://www.mpfr.org/mpfr-${_mpfrver}/mpfr-${_mpfrver}.tar.xz{,.asc})
+        https://www.mpfr.org/mpfr-${_mpfrver}/mpfr-${_mpfrver}.tar.xz{,.asc}
+        0001-gm2-add-missing-debug-output-guard.patch
+        0002-gm2-fix-bad-programming-practice-identifier-warning.patch
+        0003-gm2-fix-bad-programming-practice-warning.patch)
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
@@ -43,7 +46,10 @@ sha256sums=('a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9'
             'a0b5cb06d24f9fa9e77b55fabbe9a3c94a336190345c2555f9915bb38e976504'
             'ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8'
             '277807353a6726978996945af13e52829e3abd7a9a5b7fb2793894e18f1fcbb2'
-            'SKIP')
+            'SKIP'
+            'ce57c73ef16f4d56c2bec4cee79d876b5f2e67e85da1988b3a2cf4049575556a'
+            '9252eca98be0183732f83c383e4680a40f756bab11df9269b53484fccf106874'
+            '6fad5923d838486e72b41766b8bfd8a6785ff1fbd2005e1196107c9dc8d36a1d')
 
 prepare() {
   cd gcc-${pkgver/+/-}
@@ -55,6 +61,10 @@ prepare() {
 
   #echo "${pkgver}" > gcc/BASE-VER
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
+
+  patch -Np1 -i ${srcdir}/0001-gm2-add-missing-debug-output-guard.patch
+  patch -Np1 -i ${srcdir}/0002-gm2-fix-bad-programming-practice-identifier-warning.patch
+  patch -Np1 -i ${srcdir}/0003-gm2-fix-bad-programming-practice-warning.patch
 
   mkdir -p "${srcdir}"/gcc-build
 }

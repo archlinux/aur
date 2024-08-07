@@ -1,0 +1,113 @@
+From 4a6165ca76af7fe5c7fdd4db48293aafa2abafda Mon Sep 17 00:00:00 2001
+From: Wilken Gottwalt <wilken.gottwalt@posteo.net>
+Date: Wed, 24 Jul 2024 10:54:15 +0200
+Subject: [PATCH] gm2: fix bad programming practice warning
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+To: gcc-patches@gcc.gnu.org
+Cc: Gaius Mulley <gaiusmod2@gmail.com>
+
+Fix identifier names to be too similar to Modula-2 keywords and causing
+warnings coming from Modula-2's own libraries.
+
+m2/m2iso/StdChans.mod:54:20: note: In implementation module ‘StdChans’:
+either the identifier has the same name as a keyword or alternatively a
+keyword has the wrong case (‘IN’ and ‘in’)
+   54 |    stdnull: ChanId ;
+
+m2/m2iso/StdChans.mod:54:20: note: the symbol name ‘in’ is legal as an
+identifier, however as such it might cause confusion and is considered
+bad programming practice
+
+gcc/gm2:
+        * gm2-libs-iso/StdChans.mod: Fix bad identifier warning.
+
+Signed-off-by: Wilken Gottwalt <wilken.gottwalt@posteo.net>
+---
+ gcc/m2/gm2-libs-iso/StdChans.mod | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/gcc/m2/gm2-libs-iso/StdChans.mod b/gcc/m2/gm2-libs-iso/StdChans.mod
+index fbefbde4b10..e15d4ef9580 100644
+--- a/gcc/m2/gm2-libs-iso/StdChans.mod
++++ b/gcc/m2/gm2-libs-iso/StdChans.mod
+@@ -45,9 +45,9 @@ FROM RTgen IMPORT ChanDev, DeviceType,
+ 
+ 
+ VAR
+-   in,
+-   out,
+-   err,
++   inch,
++   outch,
++   errch,
+    stdin,
+    stdout,
+    stderr,
+@@ -169,21 +169,21 @@ END NullChan ;
+ PROCEDURE InChan () : ChanId ;
+   (* Returns the identity of the current default input channel. *)
+ BEGIN
+-   RETURN( in )
++   RETURN( inch )
+ END InChan ;
+ 
+ 
+ PROCEDURE OutChan () : ChanId ;
+   (* Returns the identity of the current default output channel. *)
+ BEGIN
+-   RETURN( out )
++   RETURN( outch )
+ END OutChan ;
+ 
+ 
+ PROCEDURE ErrChan () : ChanId ;
+   (* Returns the identity of the current default error message channel. *)
+ BEGIN
+-   RETURN( err )
++   RETURN( errch )
+ END ErrChan ;
+ 
+   (* The following procedures allow for redirection of the default channels *)
+@@ -191,21 +191,21 @@ END ErrChan ;
+ PROCEDURE SetInChan (cid: ChanId) ;
+   (* Sets the current default input channel to that identified by cid. *)
+ BEGIN
+-   in := cid
++   inch := cid
+ END SetInChan ;
+ 
+ 
+ PROCEDURE SetOutChan (cid: ChanId) ;
+   (* Sets the current default output channel to that identified by cid. *)
+ BEGIN
+-   out := cid
++   outch := cid
+ END SetOutChan ;
+ 
+ 
+ PROCEDURE SetErrChan (cid: ChanId) ;
+   (* Sets the current default error channel to that identified by cid. *)
+ BEGIN
+-   err := cid
++   errch := cid
+ END SetErrChan ;
+ 
+ 
+@@ -303,9 +303,9 @@ END Init ;
+ BEGIN
+    Init
+ FINALLY
+-   SafeClose(in) ;
+-   SafeClose(out) ;
+-   SafeClose(err) ;
++   SafeClose(inch) ;
++   SafeClose(outch) ;
++   SafeClose(errch) ;
+    SafeClose(stdin) ;
+    SafeClose(stdout) ;
+    SafeClose(stderr)
+-- 
+2.45.2
+
