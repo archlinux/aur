@@ -1,0 +1,20 @@
+pkgbase = python-tftui
+	pkgdesc = A powerful textual UI that empowers users to effortlessly view and interact with their Terraform state
+	pkgver = 0.13.5
+	pkgrel = 1
+	url = https://github.com/idoavrah/terraform-tui
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python>=3.9
+	depends = python-textual>=0.44.1
+	depends = python-posthog>=3.1.0
+	depends = python-requests>=2.31.0
+	depends = python-pyperclip>=1.8.2
+	depends = python-rich
+	source = terraform-tui-0.13.5.tar.gz::https://github.com/idoavrah/terraform-tui/archive/v0.13.5.tar.gz
+	sha256sums = a9e4121b956f6cebbe7fe9783116b9e5e61c968571abdfdf943243bf41902013
+
+pkgname = python-tftui
