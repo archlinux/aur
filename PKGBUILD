@@ -4,9 +4,12 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=127.0.6533.88
+pkgver=127.0.6533.99
 pkgrel=1
 _manual_clone=0
+# Linking to system Abseil doesn't work due to errors like this one:
+# ld.lld: error: undefined symbol: absl::lts_20240722::EqualsIgnoreCase(…)
+_system_abseil=0
 _system_clang=1
 _system_libcxx=1
 pkgdesc="The networking stack of Chromium put into a library"
@@ -24,7 +27,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-no-matching-strcat.patch
         fix-numeric_limits.patch
         fix-undeclared-isnan.patch)
-sha256sums=('fd8e2bec6aee113388e2ac269538f9e621a21c449aca925ba7d709c12a9f93a5'
+sha256sums=('e33a57b0cab75f2fb8bd128be24da0ee18d4a0052e4cd99ad37fcb8dfc9c5875'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             SKIP
@@ -41,28 +44,6 @@ fi
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-  # Abseil needs libstdc++.
-  # [absl_algorithm]=
-  # [absl_base]=abseil-cpp
-  # [absl_cleanup]=
-  # [absl_container]=
-  # [absl_crc]=
-  # [absl_debugging]=
-  # [absl_flags]=
-  # [absl_functional]=
-  # [absl_hash]=
-  # [absl_log]=
-  # [absl_log_internal]=
-  # [absl_memory]=
-  # [absl_meta]=
-  # [absl_numeric]=
-  # [absl_random]=
-  # [absl_status]=
-  # [absl_strings]=
-  # [absl_synchronization]=
-  # [absl_time]=
-  # [absl_types]=
-  # [absl_utility]=
   [brotli]=brotli
   [double-conversion]=double-conversion
   [icu]=icu
@@ -74,28 +55,6 @@ declare -gA _system_make_libs=(
   [jsoncpp]=jsoncpp
 )
 _unwanted_bundled_libs=(
-  # Abseil needs libstdc++.
-  # third_party/abseil-cpp/absl/algorithm
-  # third_party/abseil-cpp/absl/base
-  # third_party/abseil-cpp/absl/cleanup
-  # third_party/abseil-cpp/absl/container
-  # third_party/abseil-cpp/absl/crc
-  # third_party/abseil-cpp/absl/debugging
-  # third_party/abseil-cpp/absl/flags
-  # third_party/abseil-cpp/absl/functional
-  # third_party/abseil-cpp/absl/hash
-  # third_party/abseil-cpp/absl/log
-  # third_party/abseil-cpp/absl/log/internal
-  # third_party/abseil-cpp/absl/memory
-  # third_party/abseil-cpp/absl/meta
-  # third_party/abseil-cpp/absl/numeric
-  # third_party/abseil-cpp/absl/random
-  # third_party/abseil-cpp/absl/status
-  # third_party/abseil-cpp/absl/strings
-  # third_party/abseil-cpp/absl/synchronization
-  # third_party/abseil-cpp/absl/time
-  # third_party/abseil-cpp/absl/types
-  # third_party/abseil-cpp/absl/utility
   third_party/brotli
   third_party/crc32c
   third_party/dav1d
@@ -139,6 +98,56 @@ _unwanted_bundled_libs=(
   third_party/node
   third_party/jdk
 )
+
+if (( _system_abseil )); then
+  _system_libs+=(
+    [absl_algorithm]=
+    [absl_base]="abseil-cpp>=20240722.0"
+    [absl_cleanup]=
+    [absl_container]=
+    [absl_crc]=
+    [absl_debugging]=
+    [absl_flags]=
+    [absl_functional]=
+    [absl_hash]=
+    [absl_log]=
+    [absl_log_internal]=
+    [absl_memory]=
+    [absl_meta]=
+    [absl_numeric]=
+    [absl_random]=
+    [absl_status]=
+    [absl_strings]=
+    [absl_synchronization]=
+    [absl_time]=
+    [absl_types]=
+    [absl_utility]=
+  )
+  _unwanted_bundled_libs+=(
+    third_party/abseil-cpp/absl/algorithm
+    third_party/abseil-cpp/absl/base
+    third_party/abseil-cpp/absl/cleanup
+    third_party/abseil-cpp/absl/container
+    third_party/abseil-cpp/absl/crc
+    third_party/abseil-cpp/absl/debugging
+    third_party/abseil-cpp/absl/flags
+    third_party/abseil-cpp/absl/functional
+    third_party/abseil-cpp/absl/hash
+    third_party/abseil-cpp/absl/log
+    third_party/abseil-cpp/absl/log/internal
+    third_party/abseil-cpp/absl/memory
+    third_party/abseil-cpp/absl/meta
+    third_party/abseil-cpp/absl/numeric
+    third_party/abseil-cpp/absl/random
+    third_party/abseil-cpp/absl/status
+    third_party/abseil-cpp/absl/strings
+    third_party/abseil-cpp/absl/synchronization
+    third_party/abseil-cpp/absl/time
+    third_party/abseil-cpp/absl/types
+    third_party/abseil-cpp/absl/utility
+  )
+fi
+
 depends+=(${_system_libs[@]})
 makedepends+=("${_system_make_libs[@]}")
 
@@ -179,8 +188,10 @@ prepare() {
   # Disables logging as it's unconfigurable, which is undesired in a library
   patch -p0 -i ../disable-logging.patch
 
-  # Fixes building with system Abseil (needs libstdc++ and yet unreleased HexStringToBytes() variant)
-  # patch -p0 -i ../abseil-remove-unused-targets.patch
+  if (( _system_abseil )); then
+    # Fixes building with system Abseil
+    patch -p0 -i ../abseil-remove-unused-targets.patch
+  fi
 
   # Fixes `implicit instantiation of undefined template 'std::numeric_limits<unsigned long>'` error
   patch -p0 -i ../fix-numeric_limits.patch

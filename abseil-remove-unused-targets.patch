@@ -1,8 +1,8 @@
 These targets are dead code and they aren't available with system Abseil. Based on:
 https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electron
 
---- third_party/abseil-cpp/BUILD.gn	2024-05-08 22:30:02.272433000 +0200
-+++ third_party/abseil-cpp/BUILD.gn	2024-05-13 13:11:28.294308251 +0200
+--- third_party/abseil-cpp/BUILD.gn	2024-08-06 21:52:32.106545000 +0200
++++ third_party/abseil-cpp/BUILD.gn	2024-08-07 10:39:27.097578737 +0200
 @@ -150,20 +150,15 @@
    public_deps = [
      # Banned because each flag registration generates a static initializer, and
@@ -41,7 +41,25 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/container:inlined_vector_test",
          "absl/container:node_slot_policy_test",
          "absl/container:raw_hash_set_allocator_test",
-@@ -352,7 +346,6 @@
+@@ -288,7 +282,6 @@
+         "absl/crc:crc_cord_state_test",
+         "absl/crc:crc_memcpy_test",
+         "absl/crc:non_temporal_memcpy_test",
+-        "absl/debugging:demangle_rust_test",
+         "absl/debugging:stacktrace_test",
+         "absl/flags:flag_test",
+         "absl/functional:any_invocable_test",
+@@ -318,9 +311,6 @@
+         "absl/numeric:int128_test",
+         "absl/profiling:exponential_biased_test",
+         "absl/profiling:periodic_sampler_test",
+-        "absl/random:distributions_test",
+-        "absl/random:mock_distributions_test",
+-        "absl/status:status_matchers_test",
+         "absl/status:status_test",
+         "absl/status:statusor_test",
+         "absl/strings:ascii_test",
+@@ -356,7 +346,6 @@
          "absl/synchronization:waiter_test",
          "absl/time:time_test",
          "absl/types:optional_test",
