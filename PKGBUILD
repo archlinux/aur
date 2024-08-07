@@ -3,13 +3,13 @@
 
 pkgname=cava-git
 _pkgname=cava
-pkgver=r738.bed649f
-pkgrel=5
+pkgver=r957.395b36e
+pkgrel=6
 pkgdesc='Console-based Audio Visualizer for Alsa. Development version.'
 arch=('i686' 'x86_64')
 url='https://github.com/karlstav/cava'
 license=('MIT')
-depends=("fftw" "ncurses" "alsa-lib" "iniparser" "pulseaudio")
+depends=("fftw" "ncurses" "alsa-lib" "iniparser" "pulse-native-provider")
 makedepends=('git' 'xxd' 'autoconf-archive')
 source=('git+https://github.com/karlstav/cava.git')
 conflicts=($_pkgname)
