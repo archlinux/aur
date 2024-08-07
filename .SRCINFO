@@ -1,7 +1,7 @@
 pkgbase = r-fishmod
 	pkgdesc = Fits Poisson-Sum-of-Gammas GLMs, Tweedie GLMs, and Delta Log-Normal Models
 	pkgver = 0.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=fishMod
 	arch = x86_64
 	license = GPL-2.0-or-later
