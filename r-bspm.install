@@ -1,0 +1,6 @@
+post_install() {
+  echo ""
+  echo "To enable r-bspm, add \"bspm::enable()\" to /usr/lib/R/etc/Rprofile.site"
+  echo "or your .Rprofile"
+  echo ""
+}

@@ -5,13 +5,13 @@ _pkgname=bspm
 _pkgver=0.5.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=4
 pkgdesc="Bridge to System Package Manager"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
-  gobject-introspection-runtime
+  glib2
   pyalpm
   python-dbus
   python-gobject
@@ -23,6 +23,7 @@ checkdepends=(
 optdepends=(
   r-tinytest
 )
+install=r-bspm.install
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-dbus.patch")
 md5sums=('9b13de322ef5bea57ec0a7f320ef7f7d'
