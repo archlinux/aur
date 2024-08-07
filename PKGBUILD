@@ -5,7 +5,7 @@
 pkgbase=libdxvk
 pkgname=('libdxvk' 'lib32-libdxvk')
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Native Linux port of DXVK to allow usage without WINE"
 arch=(x86_64)
 url="https://github.com/doitsujin/dxvk"
@@ -43,7 +43,7 @@ package_libdxvk() {
 	depends=(sdl2 vulkan-icd-loader)
 
 	find build/dxvk-native-$pkgver/usr/lib -name '*.so' \
-		-exec install -Dm644 '{}' -t "$pkgdir/usr/lib/" \;
+		-exec install -Dm755 '{}' -t "$pkgdir/usr/lib/" \;
 	install -Dm644 dxvk/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
@@ -52,6 +52,6 @@ package_lib32-libdxvk() {
 	depends=(lib32-sdl2 lib32-vulkan-icd-loader lib32-gcc-libs)
 
 	find build/dxvk-native-$pkgver/usr/lib32 -name '*.so' \
-		-exec install -Dm644 '{}' -t "$pkgdir/usr/lib32/" \;
+		-exec install -Dm755 '{}' -t "$pkgdir/usr/lib32/" \;
 	install -Dm644 dxvk/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }

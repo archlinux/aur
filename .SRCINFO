@@ -1,7 +1,7 @@
 pkgbase = libdxvk
 	pkgdesc = Native Linux port of DXVK to allow usage without WINE
 	pkgver = 2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
 	license = Zlib
