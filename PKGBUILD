@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=biodbExpasy
-_pkgver=1.8.0
+_pkgver=1.8.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,8 +29,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('92f75401c71d864d1dc6e3311fe08ec1')
-b2sums=('6df31d697fe94759bd59a52c2f0f7d8298d534d80b1b869bf9af2f69c3cbfc8584030fd9cd9fe5c5ef356313a1ff78c450b9c9fe2716d02b07dc19379a3f0d81')
+md5sums=('320eace31880fe2731992af943a7768e')
+b2sums=('10ec1330aa75bef6fffdb22d8ff5aa98dd656079afacb18ba2d68f7388368a74af446adbf946c51cb53fe2f8ecc75626f9c25cb24292894ebbb6f1906276190c')
 
 build() {
   mkdir build
