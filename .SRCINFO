@@ -1,0 +1,15 @@
+pkgbase = rkrga-git
+	pkgdesc = Rockchip Graphics Accelerator
+	pkgver = 2024.08.07
+	pkgrel = 1
+	url = https://github.com/nyanmisaka/rk-mirrors
+	arch = aarch64
+	license = Apache-2.0
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = libdrm
+	source = rkrga-git-2024.08.07.tar.gz::https://github.com/nyanmisaka/rk-mirrors/archive/refs/heads/jellyfin-rga.zip
+	sha256sums = 1cce22778d3d74bf51ad9b06dc27e6fcee24c2e2fd3de609abaa6f722597f647
+
+pkgname = rkrga-git
