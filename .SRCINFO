@@ -1,16 +1,14 @@
-pkgbase = rkmpp-git
-	pkgdesc = Rockchip Media Process Platform (MPP) module
-	pkgver = r1958.16047eb2
+pkgbase = mpp
+	pkgdesc = Rockchip Media Processing Platform
+	pkgver = 2024.08.07
 	pkgrel = 1
-	url = https://github.com/rockchip-linux/mpp
+	url = https://github.com/nyanmisaka/mpp
 	arch = aarch64
-	license = Apache
+	license = GPL3
 	makedepends = cmake
-	makedepends = git
-	provides = rkmpp
-	conflicts = rkmpp
-	source = git+https://github.com/rockchip-linux/mpp.git
+	makedepends = ninja
+	depends = libdrm
+	source = git+https://github.com/nyanmisaka/mpp.git#branch=jellyfin-mpp
 	md5sums = SKIP
 
-pkgname = rkmpp-git
-
+pkgname = mpp
