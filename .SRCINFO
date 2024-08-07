@@ -1,7 +1,7 @@
 pkgbase = aimp
 	pkgdesc = AIMP (on Wine) is powerful free audio player.
 	pkgver = 5.30.2563
-	pkgrel = 2
+	pkgrel = 1
 	url = https://www.aimp.ru/
 	arch = x86_64
 	license = custom

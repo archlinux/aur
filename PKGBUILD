@@ -3,7 +3,7 @@
 _pkver=(5.30 2563)
 pkgname=aimp
 pkgver=${_pkver[0]}.${_pkver[1]}
-pkgrel=2
+pkgrel=1
 url="https://www.aimp.ru/"
 pkgdesc="AIMP (on Wine) is powerful free audio player."
 arch=('x86_64')
