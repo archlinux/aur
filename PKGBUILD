@@ -1,26 +1,26 @@
 # Maintainer:
 # Contributor: Oleg Shparber <trollixx+aur@gmail.com>
 
-# options
-if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ]; then
-  : ${_autoupdate:=false}
-else
+## options
+if [ -z "$_srcinfo" ] && [ -z "$_pkgver" ]; then
   : ${_autoupdate:=true}
 fi
 
-# basic info
+: ${_pkgtype=-git}
+
+## basic info
 _pkgname="material-icons"
-pkgbase="$_pkgname-git"
+pkgbase="$_pkgname${_pkgtype:-}"
 pkgver=4.0.0.r94.gf2c8df1
-pkgrel=1
+pkgrel=2
 pkgdesc="Material Design icons by Google"
 url="https://github.com/google/material-design-icons"
 license=('Apache-2.0')
 arch=('any')
 
-_main_package() {
-  options=('!debug')
+options=('!debug')
 
+_source_main() {
   _dl_url="https://github.com/google/material-design-icons/raw/${pkgver#*.g}"
   _dl_files=(
     "font/MaterialIcons-Regular.ttf"
@@ -38,7 +38,6 @@ _main_package() {
   done
 }
 
-# common functions
 _package_otf-material-icons() {
   pkgdesc="metapackage - switch to ttf-material-icons-git"
   depends=('ttf-material-icons-git')
@@ -57,7 +56,6 @@ _package_ttf-material-icons() {
   done
 }
 
-# update version
 _update_version() {
   : ${_pkgver:=$pkgver}
 
@@ -97,9 +95,8 @@ _update_version() {
   }
 }
 
-# execute
 _update_version
-_main_package
+_source_main
 
 pkgname=(
   otf-material-icons-git
