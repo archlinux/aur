@@ -3,7 +3,8 @@
 
 pkgname=sipgate-desktop
 appimage="${pkgname}.AppImage"
-pkgver=2024.2
+pkgver=2024
+pkgrel=2
 pkgdesc='Make phone calls with the Sipgate CLINQ Client'
 arch=('any')
 url="https://www.sipgate.de/app"
