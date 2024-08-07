@@ -20,7 +20,6 @@ pkgbase = ffmpeg-rockchip-git
 	depends = libvorbis
 	depends = libass
 	depends = libwebp
-	depends = libmfx
 	depends = rkmpp-git
 	depends = rkrga-git
 	source = ffmpeg-rockchip-git::git+https://github.com/nyanmisaka/ffmpeg-rockchip
