@@ -3,7 +3,7 @@ pkgname="customfetch-gui-git"
 _pkgname="customfetch"
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Highly customizable and fast system information fetch program (with GUI support)"
+pkgdesc="Highly customizable and fast system information fetch program (with GUI mode)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Toni500github/customfetch"
 license=('GPL3')
@@ -22,11 +22,11 @@ sha256sums=("SKIP")
 #}
 
 build() {
-    make -C "${srcdir}/${_pkgname}" DEBUG=0 GUI_SUPPORT=1
+    make -C "${srcdir}/${_pkgname}" DEBUG=0 GUI_MODE=1
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    make install DESTDIR="${pkgdir}" PREFIX="/usr" DEBUG=0 GUI_SUPPORT=1
+    make install DESTDIR="${pkgdir}" PREFIX="/usr" DEBUG=0 GUI_MODE=1
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
