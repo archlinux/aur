@@ -1,7 +1,7 @@
 pkgbase = quisk
 	pkgdesc = Software Defined Radio (SDR) transceiver that can control various radio hardware.
 	pkgver = 4.2.36
-	pkgrel = 1
+	pkgrel = 2
 	url = http://james.ahlstrom.name/quisk/
 	arch = x86_64
 	arch = aarch64

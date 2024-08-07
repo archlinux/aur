@@ -6,7 +6,7 @@
 
 pkgname=quisk
 pkgver=4.2.36
-pkgrel=1
+pkgrel=2
 pkgdesc='Software Defined Radio (SDR) transceiver that can control various radio hardware.'
 arch=('x86_64' 'aarch64')
 url='http://james.ahlstrom.name/quisk/'
@@ -32,7 +32,9 @@ build() {
 
 package() {
   cd ${pkgname}-${pkgver}
+  install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/${pkgname}/${pkgname}_icon.png"
+  install -Dm644 "${srcdir}/quisk.desktop" "${pkgdir}/usr/share/applications/quisk.desktop"
+  install -Dm644 "license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -D "${srcdir}/icon.png" -m 0644 "${pkgdir}/usr/share/${pkgname}/${pkgname}_icon.png"
-  install -D "${srcdir}/quisk.desktop" -m 0644 "${pkgdir}/usr/share/applications/quisk.desktop"
 }
