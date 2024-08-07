@@ -4,7 +4,7 @@
 pkgname=fortune-mod-de-git
 pkgdesc="Fortune Cookies in German, from the Debian project"
 pkgver=0.36.1.r0.gdf2bbca
-pkgrel=3
+pkgrel=4
 url="https://salsa.debian.org/debian/fortunes-de"
 arch=('any')
 groups=('fortune-mods')
@@ -20,6 +20,8 @@ options=('!strip')
 source=("${pkgname%-git}::git+https://salsa.debian.org/debian/fortunes-de.git")
 md5sums=('SKIP')
 
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 pkgver() {
         cd "$srcdir/${pkgname%-git}"
         git describe --long | sed 's/^debian\///;s/\([^-]*-g\)/r\1/;s/-/./g'
