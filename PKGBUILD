@@ -39,7 +39,7 @@ build() {
   cd "$srcdir/build"
   cmake ../$pkgname-release-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_C_FLAGS="$CFLAGS -Wno-error=format-security" \
+    -DCMAKE_C_FLAGS="$CFLAGS -Wno-error=format-security -Wno-error=implicit-function-declaration" \
     -DCMAKE_Fortran_FLAGS="$FCFLAGS -fallow-argument-mismatch -fallow-invalid-boz" \
     -DMPI_Fortran_COMPILE_FLAGS="$FCFLAGS -fallow-argument-mismatch -fallow-invalid-boz" \
     -DELMER_INSTALL_LIB_DIR=/usr/lib \
