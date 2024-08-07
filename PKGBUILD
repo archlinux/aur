@@ -9,7 +9,7 @@
 pkgname=perl-pdl
 _dist=PDL
 pkgver=2.089
-pkgrel=5
+pkgrel=6
 pkgdesc='The Perl Data Language'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
@@ -21,7 +21,7 @@ sha256sums=('9e408e4f06685de911697e12eaa5c8538e8521cbb80b876eda4bbcc7f98f196f'
 
 arch=(i686 x86_64)
 depends=(
-  perl
+  perl glibc
   perl-file-which
   perl-pod-parser
   #--- PDL::IO::Dumper

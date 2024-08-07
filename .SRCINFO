@@ -1,7 +1,7 @@
 pkgbase = perl-pdl
 	pkgdesc = The Perl Data Language
 	pkgver = 2.089
-	pkgrel = 5
+	pkgrel = 6
 	url = https://metacpan.org/release/PDL
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = perl-pdl
 	makedepends = perl-extutils-depends
 	makedepends = gcc-fortran
 	depends = perl
+	depends = glibc
 	depends = perl-file-which
 	depends = perl-pod-parser
 	depends = sharutils
