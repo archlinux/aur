@@ -3,7 +3,7 @@
 pkgname=libtmx
 provides=('libtmx')
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable C library to load tiled maps in your games."
 arch=(any)
 url="https://github.com/baylej/tmx/"

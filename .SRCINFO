@@ -1,7 +1,7 @@
 pkgbase = libtmx
 	pkgdesc = A portable C library to load tiled maps in your games.
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/baylej/tmx/
 	arch = any
 	license = BSD
