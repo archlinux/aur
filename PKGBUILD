@@ -9,14 +9,14 @@
 
 _pkgname=enlightenment
 pkgname=$_pkgname-git-asan
-pkgver=0.25.99.24774.gc8b1077de
+pkgver=0.26.99.25007.g044149406
 pkgrel=1
 pkgdesc="Enlightenment window manager - Development version - Asan debug build"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.enlightenment.org"
 license=('BSD')
 depends=('efl-git' 'udisks2' 'wayland' 'bluez-libs' 'libexif'
-         'xorg-server-xwayland' 'bluez' 'pulseaudio' 'connman' 'bc')
+         'xorg-server-xwayland' 'bluez' 'pulse-native-provider' 'connman' 'bc')
 makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot' 'ccache' 'wayland-protocols')
 optdepends=('acpid: power events on laptop lid close - almost essential for any ACPI based system like intel'
             'gdb: create backtraces on crash - needed for getting backtraces at crash time in ~/.e-crashdump.txt'
