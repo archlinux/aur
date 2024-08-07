@@ -16,7 +16,7 @@ sed "s/^_pkgver.*/_pkgver=$newver/" -i PKGBUILD
 # replace the old pkg version with the new version
 
 updpkgsums
-makepkg --printsrcinifo > .SRCINFO
+makepkg --printsrcinfo > .SRCINFO
 
 git add -A
 git commit -m "Auto-update to $newver"
