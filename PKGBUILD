@@ -7,7 +7,7 @@ arch=(any)
 url='https://github.com/siemens-mobile-hacks/ptr89'
 license=(MIT)
 depends=()
-makedepends=()
+makedepends=(cmake)
 source=(git+https://github.com/siemens-mobile-hacks/ptr89)
 sha256sums=('SKIP')
 
@@ -23,8 +23,7 @@ build() {
 }
 
 package() {
-	cd "ptr89"
-	make install
+	DESTDIR="$pkgdir" cmake --install build
 }
 
 pkgver() {

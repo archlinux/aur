@@ -5,6 +5,7 @@ pkgbase = ptr89-git
 	url = https://github.com/siemens-mobile-hacks/ptr89
 	arch = any
 	license = MIT
+	makedepends = cmake
 	source = git+https://github.com/siemens-mobile-hacks/ptr89
 	sha256sums = SKIP
 
