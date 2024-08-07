@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contriubutor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=nile-git
 pkgver=1.1.0.r0.g55287cd
 pkgrel=2
