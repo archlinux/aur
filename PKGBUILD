@@ -7,13 +7,19 @@
 # Contributor: Colin Pitrat <colin.pitrat@gmail.com>
 
 pkgname=perl-pdl
+_dist=PDL
 pkgver=2.089
 pkgrel=4
 pkgdesc='The Perl Data Language'
-_dist=PDL
-arch=(i686 x86_64)
-url="https://metacpan.org/release/$_dist"
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
+
+url="https://metacpan.org/release/$_dist"
+source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz"
+        perldl.conf)
+sha256sums=('9e408e4f06685de911697e12eaa5c8538e8521cbb80b876eda4bbcc7f98f196f'
+            'SKIP')
+
+arch=(i686 x86_64)
 depends=(
   perl
   perl-file-which
@@ -97,10 +103,6 @@ optdepends=(
   'ds9-bin: PDL::Graphics::IIS'
 )
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz"
-        perldl.conf)
-sha256sums=('9e408e4f06685de911697e12eaa5c8538e8521cbb80b876eda4bbcc7f98f196f'
-            'SKIP')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
