@@ -34,18 +34,15 @@ build(){
 }
 
 package() {
-    version = jq '.version'|tr -d 'v"'
 	cd $srcdir/${_pkgname}/dist
-    bsdtar -xf mihomo-party-linux-${version}*.deb
+    bsdtar -xf mihomo-party-linux-$(jq '.version' $srcdir/${_pkgname}/package.json | tr -d 'v"')*.deb
     bsdtar -xf data.tar.xz -C "${pkgdir}/"
     chmod +x ${pkgdir}/opt/mihomo-party/mihomo-party
     chmod +x ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo
     chmod +x ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo-alpha
     cd ${pkgdir}/../..
-    # Launcher
 	install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
 
-	# Launcher Fix
 	sed -i '3s!/opt/mihomo-party/mihomo-party!mihomo-party!' "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
     chown -R root:root ${pkgdir}
