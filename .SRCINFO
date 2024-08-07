@@ -1,7 +1,6 @@
 pkgbase = sipgate-desktop
 	pkgdesc = Make phone calls with the Sipgate CLINQ Client
-	pkgver = 2024.1
-	pkgrel = 1
+	pkgver = 2024.2
 	url = https://www.sipgate.de/app
 	arch = any
 	license = Other
