@@ -17,7 +17,7 @@ else
 fi
 
 pkgname=${_pkgname}-utils-staging-git
-pkgver=2.2.4.r12.g722af42420
+pkgver=2.2.5.r0.g33174af151
 pkgrel=1
 pkgdesc="Userspace utilities for the Zettabyte File System (release staging branch)."
 arch=("i686" "x86_64" "aarch64")
