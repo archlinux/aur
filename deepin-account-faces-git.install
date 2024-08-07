@@ -1,3 +1,7 @@
 post_install() {
     ln -sf /var/lib/AccountsService/icons/animal/raccoon.png /var/lib/AccountsService/icons/default
 }
+
+post_upgrade() {
+    ln -sf /var/lib/AccountsService/icons/animal/raccoon.png /var/lib/AccountsService/icons/default
+}
