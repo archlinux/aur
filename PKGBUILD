@@ -1,33 +1,41 @@
 # Maintainer: Stipe Kotarac <stipe@kotarac.net>
 
 pkgname=schedtoold-git
-pkgver=r9.1c085ac
+pkgver=r1.6d8e1fd
 pkgrel=1
-pkgdesc="daemon to change nice values, priorities, scheduling policies of running processes"
-url="https://github.com/kotarac/schedtoold"
+pkgdesc='daemon for automatically adjusting process scheduling'
 arch=('x86_64')
-license=('GPL')
-provides=('schedtoold')
+license=(GPL-2.0-only)
+url='https://github.com/kotarac/schedtoold'
 conflicts=('schedtoold')
 depends=('schedtool')
-makedepends=('ninja')
-source=('schedtoold::git+https://github.com/kotarac/schedtoold.git')
+makedepends=('cargo')
+source=('schedtoold::git+https://github.com/kotarac/schedtoold.git#branch=main')
+sha512sums=('SKIP')
 
 pkgver() {
   cd schedtoold/
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd schedtoold/
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
   cd schedtoold/
-  ninja
+  cargo build --release --frozen
+}
+
+check() {
+  cd schedtoold/
+  cargo test --frozen
 }
 
 package() {
   cd schedtoold/
-  install -D -m755 -s schedtoold $pkgdir/usr/bin/schedtoold
-  install -D -m644 schedtoold.conf $pkgdir/etc/schedtoold.conf
+  install -D -m755 -s target/release/schedtoold $pkgdir/usr/bin/schedtoold
   install -D -m644 schedtoold.service $pkgdir/usr/lib/systemd/system/schedtoold.service
+  install -D -m644 schedtoold.ron $pkgdir/etc/schedtoold.ron
 }
-
-sha256sums=('SKIP')
