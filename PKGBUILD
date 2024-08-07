@@ -8,7 +8,7 @@
 
 pkgname=perl-pdl
 pkgver=2.089
-pkgrel=3
+pkgrel=4
 pkgdesc='The Perl Data Language'
 _dist=PDL
 arch=(i686 x86_64)
@@ -24,11 +24,11 @@ depends=(
   perl-file-map
 
   # NOTE: the following dependencies are optional, you may comment any
-  # section - BEFORE RUNNING MAKEPKG - that you'd like to do without
-  # The related modules likely will not be very useful without these
-  # dependencies
+  # section - BEFORE RUNNING MAKEPKG - that you'd like to do without.
+  # They must be included here as they affect which modules are built.
+  # The related modules will not be very useful without these dependencies.
   #
-  # See https://metacpan.org/release/ETJ/PDL-2.085/source/DEPENDENCIES
+  # See https://metacpan.org/release/ETJ/PDL-2.089/source/DEPENDENCIES
   # for more information
 
   #-- Uncategorised
@@ -54,11 +54,6 @@ depends=(
   #--- PDL::Graphics::PGPLOT
   pgplot
   perl-pgplot
-
-  #--- PDL::Graphics::IIS (pick only one package)
-  xgterm-bin
-  # ds9
-  # ds9-bin
 
   #--- PDL::GSL
   gsl
@@ -96,11 +91,16 @@ checkdepends=(
   perl-test-exception
   perl-test-warn
 )
+optdepends=(
+  #--- PDL::Graphics::IIS
+  'ds9: PDL::Graphics::IIS'
+  'ds9-bin: PDL::Graphics::IIS'
+)
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz"
         perldl.conf)
-sha256sums=(9e408e4f06685de911697e12eaa5c8538e8521cbb80b876eda4bbcc7f98f196f
-            SKIP)
+sha256sums=('9e408e4f06685de911697e12eaa5c8538e8521cbb80b876eda4bbcc7f98f196f'
+            'SKIP')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
