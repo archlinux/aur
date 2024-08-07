@@ -6,7 +6,7 @@ pkgdesc="CLI to automate taking screenshots and uploading them to e-z.host."
 arch=('any')
 url="https://github.com/RobinTT69/e-z-screenshot-linux/"
 license=('custom')
-depends=('python-pyqt5' 'python-pillow' 'python-requests')
+depends=('python-pillow' 'python-requests')
 source=("https://github.com/RobinTT69/e-z-screenshot-linux/releases/download/v${pkgver}/e-zshot-${pkgver}.tar.gz")
 md5sums=('SKIP')
 

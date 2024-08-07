@@ -5,7 +5,6 @@ pkgbase = e-zshot
 	url = https://github.com/RobinTT69/e-z-screenshot-linux/
 	arch = any
 	license = custom
-	depends = python-pyqt5
 	depends = python-pillow
 	depends = python-requests
 	source = https://github.com/RobinTT69/e-z-screenshot-linux/releases/download/v1.2.3/e-zshot-1.2.3.tar.gz
