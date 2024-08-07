@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=redisinsight-git
 _pkgname="Redis Insight"
-pkgver=2.50.0.r0.g0870f8d
-_electronversion=25
+pkgver=2.54.r66.g5b02a83
+_electronversion=31
 _nodeversion=18
 pkgrel=1
 pkgdesc="Desktop manager that provides an intuitive and efficient GUI for Redis, allowing you to interact with your databases, monitor, and manage your data."
@@ -45,9 +45,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 build() {
-    _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} --no-sandbox %U"
     cd "${srcdir}/${pkgname//-/.}"
+    _ensure_local_nvm
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
@@ -64,14 +64,13 @@ build() {
     else
         echo "Your network is OK."
     fi
+    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-git}\"|g" \
+        -i "${srcdir}/${pkgname//-/.}/${pkgname%-git}/desktop/src/"{lib/aboutPanel/aboutPanel.ts,utils/getAssetPath.ts}
     sed "s|--linux -p never|--l --dir -p never|g" -i package.json
     yarn install --cache-folder "${srcdir}/.yarn_cache"
     yarn --cwd "${pkgname%-git}"/api/
     yarn run build:statics
     yarn run package:linux
-    asar e release/linux-*/resources/app.asar "${srcdir}/app.asar.unpacked"
-    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-git}\"|g" -i "${srcdir}/app.asar.unpacked/dist/main/main.js"
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-git}",usr/bin}
