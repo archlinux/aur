@@ -30,31 +30,31 @@ package() {
 	install -v -m755 -D -t "${pkgdir}/usr/bin/" usr/bin/*
 
 	# Install module tweaks
-	install -v -m644 -D -t "${pkgdir}/usr/lib/modprobe.d/" usr/lib/modprobe.d/*
-	install -v -m644 -D -t "${pkgdir}/usr/lib/modules-load.d/" usr/lib/modules-load.d/*
+	install -m644 -D -t "${pkgdir}/usr/lib/modprobe.d/" usr/lib/modprobe.d/*
+	install -m644 -D -t "${pkgdir}/usr/lib/modules-load.d/" usr/lib/modules-load.d/*
 
 	# Install udev tweaks
-	install -v -m644 -D -t "${pkgdir}/usr/lib/udev/rules.d/" usr/lib/udev/rules.d/*
-	install -v -m644 -D -t "${pkgdir}/usr/lib/udev/hwdb.d/" usr/lib/udev/hwdb.d/*
+	install -m644 -D -t "${pkgdir}/usr/lib/udev/rules.d/" usr/lib/udev/rules.d/*
+	install -m644 -D -t "${pkgdir}/usr/lib/udev/hwdb.d/" usr/lib/udev/hwdb.d/*
 
 	# Install systemd units
-	install -v -m644 -D -t "${pkgdir}/usr/lib/systemd/user/" usr/lib/systemd/user/*
-	install -v -m644 -D -t "${pkgdir}/usr/lib/systemd/system/" usr/lib/systemd/system/*
+	install -m644 -D -t "${pkgdir}/usr/lib/systemd/user/" usr/lib/systemd/user/*
+	install -m644 -D -t "${pkgdir}/usr/lib/systemd/system/" usr/lib/systemd/system/*
 	install -v -m755 -D -t "${pkgdir}/usr/lib/systemd/system-sleep/" usr/lib/systemd/system-sleep/*
 
 	# Install firmware
-	install -v -m644 -D -t "${pkgdir}/usr/lib/firmware/" usr/lib/firmware/*.bin
+	install -m644 -D -t "${pkgdir}/usr/lib/firmware/" usr/lib/firmware/*.bin
 
 	# Install firmware DSDT and EDID
-	install -v -m644 -D -t "${pkgdir}/usr/lib/firmware/dsdt/" usr/lib/firmware/dsdt/*
-	install -v -m644 -D -t "${pkgdir}/usr/lib/firmware/edid/" usr/lib/firmware/edid/*
+	install -m644 -D -t "${pkgdir}/usr/lib/firmware/dsdt/" usr/lib/firmware/dsdt/*
+	install -m644 -D -t "${pkgdir}/usr/lib/firmware/edid/" usr/lib/firmware/edid/*
 
 	install -dm755 "${pkgdir}/usr/lib/firmware/aw87xxx"
 	cp -rv usr/lib/firmware/aw87xxx/* "${pkgdir}/usr/lib/firmware/aw87xxx/."
 	ln -sf /etc/device-quirks/firmware/aw87xxx_acf.bin "${pkgdir}/usr/lib/firmware/aw87xxx_acf.bin"
 
 	# Install sysctl configurations
-	install -v -m644 -D -t "${pkgdir}/usr/lib/sysctl.d/" usr/lib/sysctl.d/*
+	install -m644 -D -t "${pkgdir}/usr/lib/sysctl.d/" usr/lib/sysctl.d/*
 
 	#Install scripts
 	mkdir -p "${pkgdir}/usr/share/device-quirks"
@@ -63,11 +63,18 @@ package() {
 	# Install pipewire hardware configs
 	mkdir -p "${pkgdir}/usr/share/pipewire/hardware-profiles"
 	cp -rv usr/share/pipewire/hardware-profiles/* "${pkgdir}/usr/share/pipewire/hardware-profiles/."
+
+	# Install wireplumber hardware configs
+	mkdir -p "${pkgdir}/usr/share/wireplumber/hardware-profiles"
+	cp -rv usr/share/wireplumber/hardware-profiles/* "${pkgdir}/usr/share/wireplumber/hardware-profiles/."
+	
+	install -dm755 "${pkgdir}/usr/share/wireplumber/wireplumber.conf.d"
+	install -v -m644 -D -t "${pkgdir}/usr/share/wireplumber/wireplumber.conf.d/" usr/share/wireplumber/wireplumber.conf.d/*
 	
 	#Install device-quirks config
 	mkdir -p "${pkgdir}/etc/device-quirks"
 	cp -rv etc/device-quirks/* "${pkgdir}/etc/device-quirks/."
 
 	# Install license
-	install -v -m644 -D -t "${pkgdir}/usr/share/licenses/${_pkgbase}/" LICENSE
+	install -m644 -D -t "${pkgdir}/usr/share/licenses/${_pkgbase}/" LICENSE
 }
