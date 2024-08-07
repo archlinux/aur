@@ -3,7 +3,7 @@
 pkgname=python-trogon
 _name=${pkgname#python-}
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Automatically generate a Textual TUI for your Click CLI"
 arch=('any')
@@ -14,10 +14,12 @@ provides=(${_name})
 conflicts=(${_name})
 depends=(python
     python-click
+    python-rich
     python-textual
-    python-black
 )
-makedepends=(python-build
+makedepends=(
+    python-black
+    python-build
     python-installer
     python-wheel
     python-validate-pyproject
