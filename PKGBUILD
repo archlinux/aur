@@ -8,7 +8,7 @@ pkgname=(linux-firmware-whence-git linux-firmware-git amd-ucode-git
 )
 pkgver=20240807.2519af10
 pkgrel=1
-pkgdesc="Firmware files for Linux. A hopefully very temporary package that combines the latest AMD staging firmware targeting the new Ryzen AI laptops, specifically for the Asus UM5606. DO NOT INSTALL THIS unless you know what you're getting into."
+pkgdesc="A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops. DO NOT INSTALL THIS unless you know what you're getting into."
 url="https://github.com/ThatOneCalculator/linux-firmware-amd-staging-um5606"
 license=('GPL2' 'GPL3' 'custom')
 arch=('any')
