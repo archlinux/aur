@@ -3,7 +3,7 @@
 
 pkgname=('sxmo-utils-git' 'sxmo-utils-sway-git')
 pkgver=1.15.2.r50.0b58e5e
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility scripts, programs, and configs that hold the sxmo UI environment together"
 url="https://git.sr.ht/~mil/sxmo-utils"
 arch=('x86_64' 'aarch64')
@@ -43,9 +43,7 @@ prepare() {
 }
 
 build() {
-  cd "sxmo-utils"
-
-  make
+  make -C "sxmo-utils"
 }
 
 package_sxmo-utils-git() {
@@ -80,8 +78,7 @@ package_sxmo-utils-git() {
     'bluez'
     'bluez-utils'
     'libpulse'
-    'pulseaudio'
-    'pulseaudio-alsa'
+    'pulse-native-provider'
 
     # Core GUI dependencies
     'brightnessctl'
@@ -91,13 +88,13 @@ package_sxmo-utils-git() {
     'lisgd'
     'mpv'
     'ttf-dejavu-nerd'
-    'upower'
-    )
+    'upower')
   optdepends=('bemenu-ncurses: sxmo menus over ssh'
               'bonsai: better multikey script'
               'clickclack: haptic feedback'
               'codemadness-frontends: Youtube & Reddit scripts'
               'iio-utils: proximitylock script'
+              'j4-dmenu-desktop: all apps menu generated from .desktop files'
               'mediainfo: sound recorder'
               'pipewire-pulse: recommended sound server'
               'sfeed: Rss and atom feeds'
@@ -138,6 +135,7 @@ package_sxmo-utils-sway-git() {
   depends=('bemenu-wayland'
            'foot'
            'grim'
+           'imv'
            'mako'
            'slurp'
            'sway'
