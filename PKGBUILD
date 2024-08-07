@@ -1,35 +1,27 @@
-# Maintainer: Ruben Van Boxem <vanboxem.ruben@gmail.com>
-
-pkgname=rkmpp-git
-pkgver=r1958.16047eb2
+# Maintainer: F_TD5X <mjikop1231@gmail.com> 
+pkgname=mpp
+pkgver=2024.08.07
 pkgrel=1
-pkgdesc="Rockchip Media Process Platform (MPP) module"
+pkgdesc="Rockchip Media Processing Platform"
 arch=('aarch64')
-url="https://github.com/rockchip-linux/mpp"
-license=('Apache')
-makedepends=('cmake' 'git')
-provides=('rkmpp')
-conflicts=('rkmpp')
-source=("git+https://github.com/rockchip-linux/mpp.git")
-md5sums=(SKIP)
+url="https://github.com/nyanmisaka/mpp"
+license=('GPL3')
+depends=('libdrm')
+makedepends=('cmake' 'ninja')
 
-pkgver() {
-  cd "$srcdir/mpp"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("git+https://github.com/nyanmisaka/mpp.git#branch=jellyfin-mpp")
+md5sums=('SKIP')
 
 build() {
-  cd $srcdir
+  cd "$srcdir/mpp"
   mkdir -p build
   cd build
-        
-  cmake ../mpp -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
-
-  make
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DBUILD_TEST=OFF ..
+  make -j$(nproc)
 }
 
 package() {
-  cd "$srcdir/build"
-  make DESTDIR="$pkgdir/" install
-  rm -rf "$pkgdir/usr/bin"
+  cd "$srcdir/mpp/build"
+  make DESTDIR="$pkgdir" install
 }
+
