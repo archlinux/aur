@@ -1,9 +1,9 @@
 diff --git a/Makefile b/Makefile
-index a21614a..f38386b 100644
+index 539fbe6..610ae80 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -4,7 +4,7 @@
- 
+@@ -7,7 +7,7 @@ COREFREQ_MINOR = 98
+ COREFREQ_REV = 1
  HW = $(shell uname -m)
  CC ?= cc
 -WARNING = -Wall -Wfatal-errors
@@ -11,7 +11,7 @@ index a21614a..f38386b 100644
  SYMLINK ?= ln -s
  INSTALL ?= install
  DEPMOD ?= depmod
-@@ -39,14 +39,18 @@ ccflags-y +=	-D CORE_COUNT=$(CORE_COUNT) \
+@@ -45,14 +45,18 @@ ccflags-y +=	-D COREFREQ_MAJOR=$(COREFREQ_MAJOR) \
  ccflags-y += $(WARNING)
  
  ifeq ($(OPTIM_LVL),0)
@@ -25,84 +25,87 @@ index a21614a..f38386b 100644
 +LDFLAGS += -O$(OPTIM_LVL)
  ccflags-y += -D OPTIM_LVL=$(OPTIM_LVL)
 -ccflags-y += $(OPTIM_FLG)
-+ccflags-y += -O$(OPTIM_LVL)
++ccflags-y += $(OPTIM_LVL)
  endif
  
 +CFLAGS +=  $(WARNING)
 +
- DEFINITIONS =	-D CORE_COUNT=$(CORE_COUNT) -D TASK_ORDER=$(TASK_ORDER) \
- 		-D MAX_FREQ_HZ=$(MAX_FREQ_HZ) -D UBENCH=$(UBENCH)
- 
-@@ -193,49 +197,48 @@ clean:
- 	fi
+ DEFINITIONS =	-D COREFREQ_MAJOR=$(COREFREQ_MAJOR) \
+ 		-D COREFREQ_MINOR=$(COREFREQ_MINOR) \
+ 		-D COREFREQ_REV=$(COREFREQ_REV) \
+@@ -228,46 +232,46 @@ clean:
  
  $(BUILD)/corefreqm.o: $(HW)/corefreqm.c
--	$(CC) $(OPTIM_FLG) $(WARNING) -pthread $(DEFINITIONS) \
+ 	$(if $(V), $(CC), @echo "  CC [$@]"; \
+-	$(CC)) $(OPTIM_FLG) $(WARNING) -pthread $(DEFINITIONS) \
 -	  -c $(HW)/corefreqm.c -o $(BUILD)/corefreqm.o
-+	$(CC) -c $(HW)/corefreqm.c -o $(BUILD)/corefreqm.o \
++	$(CC)) -c $(HW)/corefreqm.c -o $(BUILD)/corefreqm.o \
 +	  $(CFLAGS) $(DEFINITIONS)
  
  $(BUILD)/corefreqd.o: $(HW)/corefreqd.c
--	$(CC) $(OPTIM_FLG) $(WARNING) -pthread $(DEFINITIONS) \
+ 	$(if $(V), $(CC), @echo "  CC [$@]"; \
+-	$(CC)) $(OPTIM_FLG) $(WARNING) -pthread $(DEFINITIONS) \
 -	  -c $(HW)/corefreqd.c -o $(BUILD)/corefreqd.o
-+	$(CC) -c $(HW)/corefreqd.c -o $(BUILD)/corefreqd.o \
++	$(CC)) -c $(HW)/corefreqd.c -o $(BUILD)/corefreqd.o \
 +	  $(CFLAGS) $(DEFINITIONS) -pthread
  
  $(BUILD)/corefreqd: $(BUILD)/corefreqd.o $(BUILD)/corefreqm.o
--	$(CC) $(OPTIM_FLG) -o $(BUILD)/corefreqd \
+ 	$(if $(V), $(CC), @echo "  LD [$@]"; \
+-	$(CC)) $(OPTIM_FLG) -o $(BUILD)/corefreqd \
 -	  $(BUILD)/corefreqd.o $(BUILD)/corefreqm.o -lpthread -lm -lrt -lc
-+	$(CC) $(LDFLAGS) -o $(BUILD)/corefreqd \
++	$(CC)) $(LDFLAGS) -o $(BUILD)/corefreqd \
 +	  $(BUILD)/corefreqd.o $(BUILD)/corefreqm.o -lpthread -lm -lrt
  
  .PHONY: corefreqd
  corefreqd: $(BUILD)/corefreqd
  
  $(BUILD)/corefreq-ui.o: $(HW)/corefreq-ui.c
--	$(CC) $(OPTIM_FLG) $(WARNING) $(DEFINITIONS) \
+ 	$(if $(V), $(CC), @echo "  CC [$@]"; \
+-	$(CC)) $(OPTIM_FLG) $(WARNING) $(DEFINITIONS) \
 -	  -c $(HW)/corefreq-ui.c -o $(BUILD)/corefreq-ui.o
-+	$(CC) -c $(HW)/corefreq-ui.c -o $(BUILD)/corefreq-ui.o \
++	$(CC)) -c $(HW)/corefreq-ui.c -o $(BUILD)/corefreq-ui.o \
 +	  $(CFLAGS) $(DEFINITIONS)
  
  $(BUILD)/corefreq-cli.o: $(HW)/corefreq-cli.c
--	$(CC) $(OPTIM_FLG) $(WARNING) $(DEFINITIONS) $(LAYOUT) \
+ 	$(if $(V), $(CC), @echo "  CC [$@]"; \
+-	$(CC)) $(OPTIM_FLG) $(WARNING) $(DEFINITIONS) $(LAYOUT) \
 -	  -c $(HW)/corefreq-cli.c -o $(BUILD)/corefreq-cli.o
-+	$(CC) -c $(HW)/corefreq-cli.c -o $(BUILD)/corefreq-cli.o \
++	$(CC)) -c $(HW)/corefreq-cli.c -o $(BUILD)/corefreq-cli.o \
 +	  $(CFLAGS) $(DEFINITIONS) $(LAYOUT)
  
  $(BUILD)/corefreq-cli-rsc.o: $(HW)/corefreq-cli-rsc.c
--	$(CC) $(OPTIM_FLG) $(WARNING) $(DEFINITIONS) $(LAYOUT) \
+ 	$(if $(V), $(CC), @echo "  CC [$@]"; \
+-	$(CC)) $(OPTIM_FLG) $(WARNING) $(DEFINITIONS) $(LAYOUT) \
 -	  -c $(HW)/corefreq-cli-rsc.c -o $(BUILD)/corefreq-cli-rsc.o
-+	$(CC) -c $(HW)/corefreq-cli-rsc.c -o $(BUILD)/corefreq-cli-rsc.o \
++	$(CC)) -c $(HW)/corefreq-cli-rsc.c -o $(BUILD)/corefreq-cli-rsc.o \
 +	  $(CFLAGS) $(DEFINITIONS) $(LAYOUT)
  
  $(BUILD)/corefreq-cli-json.o: $(HW)/corefreq-cli-json.c
--	$(CC) $(OPTIM_FLG) $(WARNING) $(DEFINITIONS) \
+ 	$(if $(V), $(CC), @echo "  CC [$@]"; \
+-	$(CC)) $(OPTIM_FLG) $(WARNING) $(DEFINITIONS) \
 -	  -c $(HW)/corefreq-cli-json.c -o $(BUILD)/corefreq-cli-json.o
-+	$(CC) -c $(HW)/corefreq-cli-json.c -o $(BUILD)/corefreq-cli-json.o \
++	$(CC)) -c $(HW)/corefreq-cli-json.c -o $(BUILD)/corefreq-cli-json.o \
 +	  $(CFLAGS) $(DEFINITIONS)
  
  $(BUILD)/corefreq-cli-extra.o: $(HW)/corefreq-cli-extra.c
--	$(CC) $(OPTIM_FLG) $(WARNING) $(DEFINITIONS) \
+ 	$(if $(V), $(CC), @echo "  CC [$@]"; \
+-	$(CC)) $(OPTIM_FLG) $(WARNING) $(DEFINITIONS) \
 -	  -c $(HW)/corefreq-cli-extra.c -o $(BUILD)/corefreq-cli-extra.o
-+	$(CC) -c $(HW)/corefreq-cli-extra.c -o $(BUILD)/corefreq-cli-extra.o \
++	$(CC)) -c $(HW)/corefreq-cli-extra.c -o $(BUILD)/corefreq-cli-extra.o \
 +	  $(CFLAGS) $(DEFINITIONS)
  
  $(BUILD)/corefreq-cli:	$(BUILD)/corefreq-cli.o \
  			$(BUILD)/corefreq-ui.o \
- 			$(BUILD)/corefreq-cli-rsc.o \
+@@ -275,7 +279,7 @@ $(BUILD)/corefreq-cli:	$(BUILD)/corefreq-cli.o \
  			$(BUILD)/corefreq-cli-json.o \
  			$(BUILD)/corefreq-cli-extra.o
--	$(CC) $(OPTIM_FLG) -o $(BUILD)/corefreq-cli \
--	  $(BUILD)/corefreq-cli.o $(BUILD)/corefreq-ui.o \
--	  $(BUILD)/corefreq-cli-rsc.o $(BUILD)/corefreq-cli-json.o \
--	  $(BUILD)/corefreq-cli-extra.o -lm -lrt -lc
-+	$(CC) $(LDFLAGS) -o $(BUILD)/corefreq-cli \
-+	  $(BUILD)/corefreq-cli.o $(BUILD)/corefreq-ui.o $(BUILD)/corefreq-cli-rsc.o \
-+	  $(BUILD)/corefreq-cli-json.o $(BUILD)/corefreq-cli-extra.o -lm -lrt -lc
- 
- .PHONY: corefreq-cli
- corefreq-cli: $(BUILD)/corefreq-cli
-@@ -244,6 +247,8 @@ corefreq-cli: $(BUILD)/corefreq-cli
+ 	$(if $(V), $(CC), @echo "  LD [$@]"; \
+-	$(CC)) $(OPTIM_FLG) -o $(BUILD)/corefreq-cli \
++	$(CC)) $(LDFLAGS) -o $(BUILD)/corefreq-cli \
+ 	  $(BUILD)/corefreq-cli.o $(BUILD)/corefreq-ui.o \
+ 	  $(BUILD)/corefreq-cli-rsc.o $(BUILD)/corefreq-cli-json.o \
+ 	  $(BUILD)/corefreq-cli-extra.o -lm -lrt -lc
+@@ -287,6 +291,8 @@ corefreq-cli: $(BUILD)/corefreq-cli
  info:
  	$(info HW [$(HW)])
  	$(info CC [$(shell whereis -b $(CC))])
