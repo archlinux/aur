@@ -1,7 +1,7 @@
 # Maintainer: Stipe Kotarac <stipe@kotarac.net>
 
 pkgname=schedtoold-git
-pkgver=r1.6d8e1fd
+pkgver=r1.b063cb7
 pkgrel=1
 pkgdesc='daemon for automatically adjusting process scheduling'
 arch=('x86_64')

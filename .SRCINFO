@@ -1,6 +1,6 @@
 pkgbase = schedtoold-git
 	pkgdesc = daemon for automatically adjusting process scheduling
-	pkgver = r1.6d8e1fd
+	pkgver = r1.b063cb7
 	pkgrel = 1
 	url = https://github.com/kotarac/schedtoold
 	arch = x86_64
