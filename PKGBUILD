@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mockoon-git
-pkgver=8.3.0.r0.ge47a16b
+pkgver=8.4.0.r0.g12a46dc
 _electronversion=29
-_nodeversion=20
+_nodeversion=22
 pkgrel=1
 pkgdesc="The easiest and quickest way to run mock APIs locally. No remote deployment, no account required, open source."
 arch=('any')
@@ -65,10 +65,10 @@ build() {
         echo "Your network is OK."
     fi
     sed 's|electron-builder.linux.js",|electron-builder.linux.js --dir",|g' -i packages/desktop/package.json
-    NODE_ENV=development npm run bootstrap
-    NODE_ENV=production npm run build:libs
-    NODE_ENV=production npm run build:desktop:prod
-    NODE_ENV=production npm run package:desktop:linux
+    NODE_ENV=development    npm run bootstrap
+    NODE_ENV=production     npm run build:libs
+    NODE_ENV=production     npm run build:desktop:prod
+    NODE_ENV=production     npm run package:desktop:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
