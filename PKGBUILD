@@ -8,7 +8,7 @@ pkgdesc="Minecraft launcher with ability to manage multiple instances and suppor
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/Diegiwg/PrismLauncher-Cracked"
 license=('GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND BSD-2-Clause AND BSD-3-Clause AND LicenseRef-Batch AND OFL-1.1')
-conflicts=('prismlauncher' prismlauncher-git')
+conflicts=('prismlauncher' 'prismlauncher-git')
 depends=('java-runtime=17' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'qt6-networkauth' 'zlib' 'hicolor-icon-theme' 'quazip-qt6' 'tomlplusplus' 'cmark')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'jdk17-openjdk' 'scdoc' 'ghc-filesystem' 'gamemode')
 optdepends=('glfw: to use system GLFW libraries'
