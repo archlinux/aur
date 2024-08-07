@@ -2,13 +2,46 @@
 
 pkgname=seamonkey-bin
 pkgver=2.53.18.2
-pkgrel=1
+pkgrel=2
 pkgdesc="SeaMonkey internet suite (binary version)"
 arch=('x86_64')
 url="http://www.seamonkey-project.org/"
 license=(MPL-2.0)
-depends=('at-spi2-core' 'bash' 'cairo' 'dbus' 'dbus-glib' 'fontconfig' 'freetype2' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hunspell' 'libevent' 'libffi' 'libpulse' 'libvpx' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxrender' 'libxt' 'mime-types' 'nspr' 'nss' 'pango' 'pixman' 'sqlite' 'startup-notification' 'zlib')
-makedepends=('autoconf2.13' 'cargo' 'cbindgen' 'clang' 'imake' 'llvm' 'mesa' 'nasm' 'python' 'unzip' 'yasm' 'zip')
+depends=(
+  at-spi2-core
+  bash
+  cairo
+  dbus
+  dbus-glib
+  fontconfig
+  freetype2
+  gcc-libs
+  gdk-pixbuf2
+  glib2
+  glibc
+  gtk3
+  hunspell
+  libevent
+  libffi
+  libpulse
+  libvpx
+  libx11
+  libxcb
+  libxcomposite
+  libxdamage
+  libxext
+  libxfixes
+  libxrender
+  libxt
+  mime-types
+  nspr
+  nss
+  pango
+  pixman
+  sqlite
+  startup-notification
+  zlib
+)
 optdepends=(
   'libnotify: Notification integration'
   'networkmanager: Location detection via available WiFi networks'
