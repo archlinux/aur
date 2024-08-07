@@ -3,14 +3,14 @@
 # Contributor: Sergey Kostyaev <feo.me@ya.ru>
 
 pkgname=freelib-git
-pkgver=6.0.93.r63.g748dafb
+pkgver=6.0.93.r79.gd1d47a7
 pkgrel=1
 pkgdesc="Freelib is book library manager"
 arch=(x86_64)
 url="https://github.com/petrovvlad/freeLib"
 license=(GPL3)
 depends=(qt6-base qt6-svg qt6-httpserver quazip-qt6)
-optdepends=('kindlegen: convert to EPUB, MOBI, AZW3'
+optdepends=('kindlegen: convert to MOBI, AZW3'
             'djvulibre: djvu covers')
 makedepends=(git cmake)
 provides=(freelib)
@@ -28,6 +28,7 @@ pkgver() {
 prepare() {
   cd "freeLib"
   git submodule init
+  git config submodule.freeLib/src/quazip.update none
   git config submodule.freeLib/src/SmtpClient.url "${srcdir}/freelib-SmtpClient-for-Qt"
   git -c protocol.file.allow=always submodule update
 }
