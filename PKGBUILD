@@ -2,7 +2,7 @@
 
 pkgname=tinyget-git
 _name=${pkgname%-git}
-pkgver=r30.1e9c391
+pkgver=r34.d0593e8
 pkgrel=1
 epoch=
 pkgdesc="A cross-distro package management tool."
@@ -13,16 +13,22 @@ license=(Apache-2.0)
 groups=()
 provides=(${_name})
 conflicts=(${_name})
-depends=(python
-    python-trogon)
-makedepends=(python-build
-    python-installer
-    python-wheel
-    python-setuptools
-    python-requests
-    python-click
-    python-orjson
-    python-rich)
+_pydeps=(
+    click
+    requests
+    rich
+    trogon)
+depends=(
+    python
+    "${_pydeps[@]/#/python-}")
+_pymakedeps=(
+    orjson
+    build
+    installer
+    wheel
+    setuptools)
+makedepends=(git
+    "${_pymakedeps[@]/#/python-}")
 checkdepends=(python-pytest)
 options=('!strip')
 # source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
@@ -31,9 +37,11 @@ noextract=()
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_name}/"
-#     git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    cd "${srcdir}/${_name}"
+    ( set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 build() {
