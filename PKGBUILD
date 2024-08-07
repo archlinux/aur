@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
 _pkgname=yn
-pkgver=3.75.3
+pkgver=3.75.4
 _electronversion=28
 _nodeversion=18
 pkgrel=1
@@ -29,7 +29,7 @@ source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('edc925f3233f30e07d1dbda92a044478bad90624a43f1ef727fcb48b6306de63'
+sha256sums=('7afbdb06fc1a30d4175fa6284c846ed19d99d419ba37208a0b2f8d0d8a92661e'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -64,12 +64,12 @@ build() {
         echo "Your network is OK."
     fi
     sed "s|icon.icns|icon.png|g" -i electron-builder.json
-    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
-    NODE_ENV=development yarn run electron-rebuild
-    NODE_ENV=development npx node scripts/download-pandoc.js
-    NODE_ENV=development npx node scripts/download-plantuml.js
-    NODE_ENV=production yarn run build
-    NODE_ENV=production yarn run electron-builder -l --dir
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=development    yarn run electron-rebuild
+    NODE_ENV=development    npx node scripts/download-pandoc.js
+    NODE_ENV=development    npx node scripts/download-plantuml.js
+    NODE_ENV=production     yarn run build
+    NODE_ENV=production     yarn run electron-builder -l --dir
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
