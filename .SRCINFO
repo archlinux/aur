@@ -1,16 +1,18 @@
 pkgbase = intel-power-control-git
 	pkgdesc = GPU power management for Intel hardware on Linux
-	pkgver = r14.5b53221
+	pkgver = r37.87b4755
 	pkgrel = 1
 	url = https://github.com/jmechnich/intel-power-control
 	arch = x86_64
-	license = unknown
+	license = GPL-3.0-or-later
 	makedepends = git
-	depends = python-pyqt5
+	depends = glibc
+	depends = python-pyqt6
+	depends = hicolor-icon-theme
+	depends = python
 	provides = intel-power-control
 	conflicts = intel-power-control
 	source = git+https://github.com/jmechnich/intel-power-control
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = intel-power-control-git
-
