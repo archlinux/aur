@@ -1,7 +1,7 @@
 pkgbase = pbincli
 	pkgdesc = A command line client for PrivateBin
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/r4sas/PBinCLI
 	arch = any
 	license = MIT

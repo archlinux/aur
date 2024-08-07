@@ -4,7 +4,7 @@
 pkgname=pbincli
 _name="PBinCLI"
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 
 pkgdesc='A command line client for PrivateBin'
 arch=('any')
@@ -31,6 +31,7 @@ build() {
 
 package() {
   cd "${_pkgsrc}"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "README.rst" "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
