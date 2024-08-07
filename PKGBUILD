@@ -1,30 +1,36 @@
-# Maintainer: nblock <nblock [/at\] archlinux DOT us>
+# Maintainer: neolouker <neolouker@gmail.com>
+# Contributor: nblock <nblock [/at\] archlinux DOT us>
 
 pkgname=pbincli
 _name="PBinCLI"
-pkgver=0.3.2
+pkgver=0.3.5
 pkgrel=1
+
 pkgdesc='A command line client for PrivateBin'
 arch=('any')
-url='https://github.com/r4sas/PBinCLI'
+url="https://github.com/r4sas/${_name}"
 license=('MIT')
+
 depends=('python'
          'python-base58'
          'python-pycryptodome'
          'python-requests'
-         'python-sjcl')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha1sums=('41e414fbb3d94ebb2dad5da1dd4d8f94e7a2c694')
-sha256sums=('32cae77cc5e4e73ef0aa39a1d06701df535b30fd589327d6350d2e31814d2b61')
+         'python-sjcl'
+         'python-argcomplete'
+         'python-pysocks')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+
+_pkgsrc="${_name}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('cfd978ff8195f7f586a13095bc2cbbc43d369fd7488d951b32bff6b7cc706be4')
 
 build() {
-  cd "$_name-$pkgver"
-  python setup.py build
+  cd "${_pkgsrc}"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$_name-$pkgver"
+  cd "${_pkgsrc}"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
