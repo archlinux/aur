@@ -9,8 +9,8 @@ _pkgname='xf86-input-wacom'
 _pkgvariantsuffix='-nosystemd'
 _vcssuffix='-git'
 pkgname="${_pkgname}${_pkgvariantsuffix}${_vcssuffix}"
-pkgver=1.2.2+2.r2322.20240624.f70c7de
-pkgrel=3
+pkgver=1.2.2+3.r2323.20240731.4e1d6d6
+pkgrel=1
 pkgdesc="X.Org Wacom tablet driver. Without systemd dependency. Git checkout."
 arch=(
   'i686'
