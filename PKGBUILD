@@ -2,17 +2,26 @@
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname=perl-opengl-glut
-pkgver=0.72
-pkgrel=3
-pkgdesc='Perl bindings to GLUT/FreeGLUT GUI toolkit'
 _dist=OpenGL-GLUT
-arch=(i686 x86_64)
-url="https://metacpan.org/release/$_dist"
+pkgver=0.72
+pkgrel=4
+pkgdesc='Perl bindings to GLUT/FreeGLUT GUI toolkit'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
-depends=(perl perl-opengl)
-source=("https://cpan.metacpan.org/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz")
-options=('!emptydirs')
+
+url="https://metacpan.org/release/$_dist"
+source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz")
 sha256sums=('c91cf280ddd5505e933b1f66fd3b541e504ea59e64bfe1bdceeabd41b17e2d11')
+
+arch=(x86_64)
+depends=(
+  perl
+  perl-opengl # possibly also OpenGL::Modern ?
+  glibc
+  libGL.so=1-64
+  freeglut
+  # libglut.so=3
+)
+options=('!emptydirs')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
