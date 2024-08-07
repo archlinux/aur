@@ -19,11 +19,11 @@ sha256sums=("SKIP")
 #}
 
 build() {
-    make -C "${srcdir}/${_pkgname}" DEBUG=0 GUI_SUPPORT=0
+    make -C "${srcdir}/${_pkgname}" DEBUG=0 GUI_MODE=0
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    make install DESTDIR="${pkgdir}" PREFIX="/usr" DEBUG=0 GUI_SUPPORT=0
+    make install DESTDIR="${pkgdir}" PREFIX="/usr" DEBUG=0 GUI_MODE=0
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
