@@ -3,7 +3,7 @@
 _name=hide-keyboard-layout
 _uuid=${_name}@sitnik.ru
 pkgname=gnome-shell-extension-${_name}
-pkgver=5
+pkgver=8
 pkgrel=1
 pkgdesc="GNOME Shell extension to hide keyboard layout indicator in status bar."
 arch=("any")
@@ -12,7 +12,7 @@ license=("MIT")
 depends=("gnome-shell")
 makedepends=("git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('bc87efa5b1264fc66be9409930db353e8c01bf237bb2a44f1cd425ab2e71fe81dd9fd4957f959b5a695f0b45d807cf72ef836fe1f39175a7b8e38a83e0171b88')
+b2sums=('c6840058999ad6133cda49e03db64686d4092edb42dc2c4711b3dd8f67b28b482a68aa90db73a8457feb97df85ccb0d80769a0fc37d0d1f484cd6e9f892377e4')
 
 package() {
   install -d "$pkgdir/usr/share/gnome-shell/extensions" \
