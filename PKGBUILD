@@ -7,7 +7,7 @@ pkgdesc="Replay UDP packets from a pcap file"
 arch=('any')
 url="https://github.com/rigtorp/${pkgname}"
 license=('MIT')
-makedepends=('cmake>=3.2.0' 'libpcap')
+makedepends=('cmake>=3.2.0')
 checkdepends=('expect' 'time')
 depends=('glibc' 'gcc-libs' 'libpcap')
 _pkgsrc="${pkgname}-${pkgver}"
