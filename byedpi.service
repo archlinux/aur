@@ -1,0 +1,11 @@
+[Unit]
+Description=ByeDPI Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/byedpi
+ExecStart=/usr/bin/ciadpi --ip ${IP} --port ${PORT} ${ARGS}
+
+[Install]
+WantedBy=default.target
