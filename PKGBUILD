@@ -31,7 +31,7 @@ checkdepends=(
 
 _pkgsrc="$_module-$pkgver"
 _pkgext="tar.gz"
-source=("$pkgname-$pkgver.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
+source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
 sha256sums=('1af4e5487858dcc2576946524193f97e0638335c0b307ef3f2adfc6bebde0192')
 
 build() {
