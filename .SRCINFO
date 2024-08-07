@@ -1,6 +1,6 @@
 pkgbase = libtmx-git
-	pkgdesc = Loads .tmx tiled maps in your games.
-	pkgver = 1.10.0
+	pkgdesc = A portable C library to load tiled maps in your games.
+	pkgver = 209.11ffdcd
 	pkgrel = 1
 	url = https://github.com/baylej/tmx/
 	arch = any
@@ -8,8 +8,9 @@ pkgbase = libtmx-git
 	makedepends = cmake
 	depends = zlib
 	depends = libxml2
+	depends = zstd
 	provides = libtmx
 	source = libtmx-git::git+https://github.com/baylej/tmx.git
-	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = libtmx-git
