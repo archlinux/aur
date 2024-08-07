@@ -63,23 +63,18 @@ function _hr_yamls() {
     _multi_parts -f / hrs
 }
 function _hr_helm_opts() {
-  local command="${words[1]:2:l}"
-  [[ -z "$command" ]] && command=template
-  local -a newWords
-  local seperatorIndex=1
-  for index in {1..${#words[@]}}; do
-    if [[ "${words[$index]}" == -- ]]; then
-      seperatorIndex=$index
-      break
-    fi
-  done
-
-  CURRENT=$(( CURRENT - seperatorIndex + 2 ))
-  newWords=( helm $command ${words[$seperatorIndex+1,-1]} )
-  if [[ "${words[-1][-1]}" == "" ]]; then
-    newWords+=( - )
+  local -a command=( ${words[1]:2:l} )
+  [[ "${#command}" -eq 0 ]] && command=( template )
+  [[ "${command[1]}" == diff ]] && command=( diff upgrade )
+  local seperatorIndex=${words[(Ie)--]}
+  local -a newWords=( helm "${command[@]}" "${words[$seperatorIndex+1,-1]}" )
+  if [[ "${words[-1]}" == "" && "$CURRENT" == $(( seperatorIndex + 1 )) ]]; then
+    newWords[-1]=-
   fi
-  words=( ${newWords[@]} )
+  local CURRENT=$(( CURRENT - seperatorIndex + ${#command} + 1 ))
+  echo "$CURRENT" > /tmp/d
+  local words=( "${newWords[@]}" )
+  echo "${words[@]}<" >> /tmp/d
   _helm
 }
 function _hr_both() {
@@ -98,10 +93,25 @@ function _hr_one() {
   fi
 }
 function _hr() {
-  _arguments "1:first:_hr_both" \
-    "2:second:_hr_one" \
-    "3:seperator:(--)" \
-    "*:helm:_hr_helm_opts"
+  case "${words[(Ie)--]}" in
+    2)
+      _arguments "1:seperator:(--)" \
+        "*:helm:_hr_helm_opts"
+      ;;
+    3)
+      _arguments "1:first:_hr_one" \
+        "2:seperator:(--)" \
+        "*:helm:_hr_helm_opts"
+      ;;
+    4)
+      ;&
+    0)
+      _arguments "1:first:_hr_both" \
+        "2:second:_hr_one" \
+        "3:seperator:(--)" \
+        "*:helm:_hr_helm_opts"
+    ;;
+  esac
 }
 
 case $service in
