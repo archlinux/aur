@@ -21,6 +21,8 @@ pkgbase = ffmpeg-rockchip-git
 	depends = libass
 	depends = libwebp
 	depends = libmfx
+	depends = rkmpp-git
+	depends = rkrga-git
 	source = ffmpeg-rockchip-git::git+https://github.com/nyanmisaka/ffmpeg-rockchip
 	md5sums = SKIP
 
