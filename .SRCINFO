@@ -1,7 +1,7 @@
 pkgbase = mksusecd
 	pkgdesc = Script to create a SUSE installation ISO image.
 	pkgver = 2.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openSUSE/mksusecd
 	arch = x86_64
 	arch = aarch64

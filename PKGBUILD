@@ -2,7 +2,7 @@
 
 pkgname=mksusecd
 pkgver=2.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Script to create a SUSE installation ISO image."
 arch=(x86_64 aarch64)
 url="https://github.com/openSUSE/mksusecd"
@@ -22,10 +22,10 @@ sha256sums=(
 
 build() {
 	cd "$pkgname-$pkgver"
-  make mksusecd
+  make mksusecd VERSION="$pkgver"
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir"  VERSION="$pkgver" install
 }
