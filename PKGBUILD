@@ -1,9 +1,9 @@
 # Maintainer: Sebastian Krebs <sebastian@krebs.one>
 # Contributor: Jener Rasmussen <aur@jener.me>
 
-pkgname=opentofu-bin
+pkgname=opentofu-bin-stable
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenTofu lets you declaratively manage your cloud infrastructure."
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://opentofu.org/"
