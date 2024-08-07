@@ -1,17 +1,19 @@
-# Maintainer: Danny Holman <dholman@gymli.org>
+# Maintainer: Mike H Benton <bikepunk005 at hotmail dot com>
+# Contributor: Danny Holman <dholman@gymli.org>
 # Contributor: Kilian Köppchen <kiliankoeppchen at gmail dot com>
 pkgname=libtmx-git
 provides=('libtmx')
-pkgver=160.1900b80
+pkgver=209.11ffdcd
 pkgrel=1
-pkgdesc="Loads .tmx tiled maps in your games."
+pkgdesc="A portable C library to load tiled maps in your games."
 arch=(any)
 url="https://github.com/baylej/tmx/"
 license=('BSD')
-depends=('zlib' 'libxml2')
+depends=('zlib' 'libxml2' 'zstd')
 makedepends=('cmake')
-source=("$pkgname"::'git://github.com/baylej/tmx.git')
-sha512sums=('SKIP')
+CFLAGS+=" -ffat-lto-objects"
+source=("$pkgname"::'git+https://github.com/baylej/tmx.git')
+b2sums=('SKIP')
 
 pkgver() {
         cd "$pkgname"
@@ -22,7 +24,7 @@ build() {
         cd $pkgname
         mkdir build
         cd build
-	cmake -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_INSTALL_PREFIX=/usr ..
+	cmake -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS=yes -DWANT_ZLIB=yes -DWANT_ZSTD=yes -DZSTD_PREFER_STATIC=no  ..
 	make
 }
 
