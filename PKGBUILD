@@ -3,7 +3,7 @@
 # Contributor: Javier Tiá <javier dot tia at gmail dot com>
 pkgname=vnote-bin
 _pkgname=VNote
-pkgver=3.18.1
+pkgver=3.18.2
 pkgrel=1
 pkgdesc="A Qt-based, free and open source note-taking application, focusing on Markdown now."
 arch=('x86_64')
@@ -30,16 +30,15 @@ options=(
     '!staticlibs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.AppImage.zip"
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('398e9a20fcefc27babc47e0f4a8a9795ce216ef6221e452af5e2f52b32f62881'
+sha256sums=('6877d900e9b28dcdd32b169d3ba307a3a33a749ccb0556b786ef42ff545e9c03'
             'e262a4a522353121329ae7d80b54ed1626b37bc18b72a609b0def526453ae0a5')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    mv "${srcdir}/${_pkgname}-${pkgver}-linux-x64.AppImage" "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
 }
