@@ -1,0 +1,31 @@
+pkgbase = r-get
+	pkgdesc = Global Envelopes
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=GET
+	arch = any
+	license = GPL-3.0-only
+	depends = r-ggplot2
+	depends = r-gridextra
+	depends = r-viridislite
+	optdepends = r-crayon
+	optdepends = r-fda
+	optdepends = r-fda.usc
+	optdepends = r-geor
+	optdepends = r-gstat
+	optdepends = r-locfit
+	optdepends = r-mvtnorm
+	optdepends = r-patchwork
+	optdepends = r-quantreg
+	optdepends = r-r.rsp
+	optdepends = r-sp
+	optdepends = r-spatstat.explore
+	optdepends = r-spatstat.geom
+	optdepends = r-spatstat.linnet
+	optdepends = r-spatstat.model
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/GET_1.0-2.tar.gz
+	md5sums = 62b362832241939526359414b21b6c18
+	b2sums = 8ef0faabe2d69bc4738d973126d9f2008930e7eacccc0a8d19c06297218ea94b856c9e663fea7a454e24ac399052297d017799652c1a84b6cb77569f4218f5e8
+
+pkgname = r-get
