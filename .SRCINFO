@@ -1,7 +1,7 @@
 pkgbase = crc
 	pkgdesc = A tool that manages local OpenShift 4.x cluster, optimized for testing and development purposes
-	pkgver = 2.39.0
-	pkgrel = 2
+	pkgver = 2.40.0
+	pkgrel = 1
 	url = https://github.com/crc-org/crc
 	arch = any
 	license = Apache-2.0
@@ -15,7 +15,7 @@ pkgbase = crc
 	depends = qemu-base
 	optdepends = bash-completion: for shell auto-completion
 	optdepends = zsh-completions: for shell auto-completion
-	source = crc-2.39.0::git+https://github.com/crc-org/crc#tag=v2.39.0
-	sha256sums = 6577c4f722e0af3c25e68c4ff215e9b4dee27eba91f2f60d64abad69b87781ab
+	source = crc-2.40.0::git+https://github.com/crc-org/crc#tag=v2.40.0
+	sha256sums = 94ff3d8c344e273e003ae1af7390cc683ade0ab782580ea31e5ce1589cc6ef35
 
 pkgname = crc

@@ -1,8 +1,8 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="crc"
-pkgver=2.39.0
-pkgrel=2
+pkgver=2.40.0
+pkgrel=1
 pkgdesc="A tool that manages local OpenShift 4.x cluster, optimized for testing and development purposes"
 arch=('any')
 url="https://github.com/crc-org/${pkgname}"
@@ -13,7 +13,7 @@ optdepends=('bash-completion: for shell auto-completion'
             'zsh-completions: for shell auto-completion')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}::git+${url}#tag=v${pkgver}")
-sha256sums=('6577c4f722e0af3c25e68c4ff215e9b4dee27eba91f2f60d64abad69b87781ab')
+sha256sums=('94ff3d8c344e273e003ae1af7390cc683ade0ab782580ea31e5ce1589cc6ef35')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
