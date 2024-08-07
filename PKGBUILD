@@ -2,18 +2,20 @@
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 pkgname=perl-pod2-base
-pkgver=0.043
-pkgrel=3
-pkgdesc='Base module for translations of Perl documentation'
 _dist=POD2-Base
-arch=(any)
-url="https://metacpan.org/release/$_dist"
+pkgver=0.043
+pkgrel=4
+pkgdesc='Base module for translations of Perl documentation'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
+
+url="https://metacpan.org/release/$_dist"
+source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/F/FE/FERREIRA/$_dist-$pkgver.tar.gz")
+sha256sums=('071910a2233d11767c9576f1909b8686b4696acb6a7035d1513f9c15ccf0237e')
+
+arch=(any)
 depends=(perl)
 checkdepends=(perl-test-pod perl-test-pod-coverage)
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/F/FE/FERREIRA/$_dist-$pkgver.tar.gz")
-sha256sums=(071910a2233d11767c9576f1909b8686b4696acb6a7035d1513f9c15ccf0237e)
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
