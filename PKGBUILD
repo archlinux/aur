@@ -1,0 +1,52 @@
+pkgname=mihomo-party-git
+_pkgname=${pkgname%-git}
+pkgver=v0.1.3.r4.g935b95b
+pkgrel=1
+pkgdesc="Another Mihomo GUI."
+arch=('x86_64' 'aarch64')
+url="https://github.com/pompurin404/mihomo-party"
+license=('GPL3')
+conflicts=("mihomo-party" 'mihomo-party-bin')
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'at-spi2-core' 'libsecret')
+optdepends=('libappindicator-gtk3: Allow mihomo-party to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
+makedepends=('nodejs' 'pnpm' 'jq' 'libxcrypt-compat')
+install=$_pkgname.install
+source=("git+$url.git")
+sha256sums=("SKIP")
+options=('!lto')
+
+pkgver() {
+    cd $srcdir/${_pkgname}
+    ( set -o pipefail
+        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
+}
+
+prepare(){
+    cd $srcdir/${_pkgname}
+    pnpm install
+}
+
+build(){
+    cd $srcdir/${_pkgname}
+    pnpm build:linux deb
+}
+
+package() {
+    version = jq '.version'|tr -d 'v"'
+	cd $srcdir/${_pkgname}/dist
+    bsdtar -xf mihomo-party-linux-${version}*.deb
+    bsdtar -xf data.tar.xz -C "${pkgdir}/"
+    chmod +x ${pkgdir}/opt/mihomo-party/mihomo-party
+    chmod +x ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo
+    chmod +x ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo-alpha
+    cd ${pkgdir}/../..
+    # Launcher
+	install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+
+	# Launcher Fix
+	sed -i '3s!/opt/mihomo-party/mihomo-party!mihomo-party!' "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+    chown -R root:root ${pkgdir}
+}
