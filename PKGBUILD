@@ -3,15 +3,14 @@
 _pkgname=godot-export-templates
 pkgname=${_pkgname}-git
 _gitname=godot
-pkgver=4.1.r53814.43bf0b5e04
-pkgrel=2
+pkgver=4.3.r66012.eabeafd8c3
+pkgrel=1
 pkgdesc='Godot export templates'
 url='https://godotengine.org/'
 license=('MIT')
 arch=('i686' 'x86_64')
-makedepends=('git' 'scons' 'pulseaudio' 'clang' 'pkgconf' 'xorg-xrandr' 'yasm' 'lld')
+makedepends=('git' 'scons' 'pulse-native-provider' 'clang' 'pkgconf' 'xorg-xrandr' 'yasm' 'lld')
 optdepends=('godot: use the templates')
-
 source=(
   "godot::git+https://github.com/godotengine/${_gitname}.git"
 )
@@ -55,3 +54,4 @@ package() {
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${_pkgname}"/LICENSE
 }
 
+# vim:set ts=2 sw=2 et:
