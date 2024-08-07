@@ -1,6 +1,6 @@
 # Maintainer: Eldeberen <eldeberen@middleearth.fr>
 pkgname=cahute
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="A toolkit to handle communication and file formats related to CASIO calculators"
 arch=('x86_64')
@@ -13,7 +13,7 @@ replaces=('p7' 'libp7' 'p7screen')
 options=(!strip)
 install="$pkgname.install"
 source=("https://ftp.cahuteproject.org/releases/$pkgname-$pkgver.tar.gz")
-b2sums=("54006afd5ca624f0f89dcce02f858227b503ceec7884e6f32448d42cc470224fa4860d2b3713ac587f4bc9711766db37a5cf88659eaf1c759375eb71360f3b2e")
+b2sums=("e71dd07dff56b2593c732d6d6fa72f66465c81b1fa34c5cda84277a2d4e6197aee3d4740a425a54c9a27b781be26e032369e6add205906add00433d1fb47c2a7")
 
 prepare() {
   cd "$pkgname-$pkgver"
