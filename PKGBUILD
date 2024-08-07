@@ -3,7 +3,7 @@
 # basic info
 _pkgname="art-rawconverter"
 pkgname="$_pkgname-bin"
-pkgver=1.22.1
+pkgver=1.23
 pkgrel=1
 pkgdesc="Raw image converter forked from RawTherapee with ease of use in mind"
 url="https://bitbucket.org/agriggio/art"
@@ -16,7 +16,7 @@ conflicts=("$_pkgname")
 options=('!strip' '!debug')
 
 source=("$_pkgname-$pkgver.tar.xz"::"$url/downloads/ART-$pkgver-linux64.tar.xz")
-sha256sums=('d877ab7ca407f734e2352020413d762df5e5e0e3fbd2709c00b4ac8c44ce7d0e')
+sha256sums=('c6b8a0e4ccf2052d40fbfc1d91933ca15ada9d31a145553ee4ae395e75171da7')
 
 prepare() {
   cp -rl "ART-$pkgver-linux64" "$_pkgname-$pkgver"
