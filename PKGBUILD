@@ -1,8 +1,8 @@
 # Maintainer Matias Vazquez-Levi <matiasvlevi@gmail.com>
 
 pkgname=lu5
-pkgver=0.0.5
-pkgrel=2
+pkgver=0.0.6
+pkgrel=3
 pkgdesc="Lua interpreter for Creative Coding"
 arch=('x86_64')
 url="https://github.com/matiasvlevi/lu5"
@@ -20,4 +20,5 @@ package() {
   cd "$pkgname-$pkgver"
   sudo make install
 }
-sha256sums=('43952279d9718e9dfe798e07e71e7e9a9f7ea5c2056059b044e9f72dcd35506d')
+
+sha256sums=('a2c8305ea284e1a9f0cba1bbe6c212ce8d9fe56c7948892f2d97ff0d3619ce1d')
