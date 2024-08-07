@@ -1,19 +1,20 @@
 pkgbase = python-telegram
-	pkgdesc = Python API for the tdlib library. It helps you build your own Telegram clients.
-	pkgver = 0.18.0
+	pkgdesc = Python API for the tdlib library
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/alexander-akhmetov/python-telegram
-	arch = any
+	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python3
-	depends = libtd>=1.8.5
-	depends = python-setuptools
-	depends = python-telegram-text>=0.1
+	depends = python
+	depends = libtd
+	depends = python-telegram-text
 	conflicts = python-telegram-bot
-	source = python-telegram-0.18.0.tar.gz::https://github.com/alexander-akhmetov/python-telegram/archive/0.18.0.tar.gz
-	md5sums = 975333bb4336e764aca80d9070d4b33f
+	source = python-telegram-0.19.0.tar.gz::https://github.com/alexander-akhmetov/python-telegram/archive/0.19.0.tar.gz
+	sha256sums = dbd7a1bf313465f5fdcfd774737b197fbc3836821a4e5c57bf3fc1528d9247e0
 
 pkgname = python-telegram
