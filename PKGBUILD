@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tiny-rdm
 _pkgname="Tiny RDM"
-pkgver=1.1.14
+pkgver=1.2.0
 _nodeversion=18
-pkgrel=2
+pkgrel=1
 pkgdesc="A modern lightweight cross-platform Redis desktop manager"
 arch=('any')
 url="https://redis.tinycraft.cc/"
@@ -28,9 +28,9 @@ options=(
     '!strip'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
 )
-sha256sums=('ca29cf152e23f0aab608e67cbb68931e5c6e23113a00287e03f9ec294b5e177f')
+sha256sums=('7583619cd52dd7d588317c6271dd7e06b3a61dcbaa6f5ac99a7906947260a166')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -39,7 +39,7 @@ _ensure_local_nvm() {
 }
 build() {
     _ensure_local_nvm
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -66,11 +66,12 @@ build() {
     sed -e "s|{{.Info.ProductName}}|${_pkgname}|g" \
         -e "s|/usr/local/bin/${pkgname}|${pkgname}|g" \
         -e "s|{{.Info.Comments}}|${pkgdesc}|g" \
+        -e "s|Office|Development|g" \
         -i "build/linux/${pkgname}_0.0.0_amd64/usr/share/applications/${pkgname}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/build/bin/${pkgname}" -t "${pkgdir}/usr/bin"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/linux/${pkgname}_0.0.0_amd64/usr/share/applications/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/appicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}.git/build/bin/${pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm644 "${srcdir}/${pkgname}.git/build/linux/${pkgname}_0.0.0_amd64/usr/share/applications/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}.git/build/appicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

@@ -1,7 +1,7 @@
 pkgbase = tiny-rdm
 	pkgdesc = A modern lightweight cross-platform Redis desktop manager
-	pkgver = 1.1.14
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://redis.tinycraft.cc/
 	arch = any
 	license = GPL-3.0-only
@@ -17,7 +17,7 @@ pkgbase = tiny-rdm
 	depends = webkit2gtk
 	conflicts = tiny-rdm
 	options = !strip
-	source = tiny-rdm-1.1.14.tar.gz::https://github.com/tiny-craft/tiny-rdm/archive/refs/tags/v1.1.14.tar.gz
-	sha256sums = ca29cf152e23f0aab608e67cbb68931e5c6e23113a00287e03f9ec294b5e177f
+	source = tiny-rdm.git::git+https://github.com/tiny-craft/tiny-rdm.git#tag=v1.2.0
+	sha256sums = 7583619cd52dd7d588317c6271dd7e06b3a61dcbaa6f5ac99a7906947260a166
 
 pkgname = tiny-rdm
