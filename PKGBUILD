@@ -1,5 +1,5 @@
 # Maintainer: F_TD5X <mjikop1231@gmail.com> 
-pkgname=mpp-git
+pkgname=rkmpp-git
 pkgver=2024.08.07
 pkgrel=1
 pkgdesc="Rockchip Media Processing Platform"

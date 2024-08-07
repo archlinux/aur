@@ -1,4 +1,4 @@
-pkgbase = mpp-git
+pkgbase = rkmpp-git
 	pkgdesc = Rockchip Media Processing Platform
 	pkgver = 2024.08.07
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = mpp-git
 	source = git+https://github.com/nyanmisaka/mpp.git#branch=jellyfin-mpp
 	md5sums = SKIP
 
-pkgname = mpp-git
+pkgname = rkmpp-git
