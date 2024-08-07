@@ -10,7 +10,7 @@
 ## basic info
 _pkgname="libreoffice"
 pkgname="${_pkgname}${_pkgtype:-}"
-pkgver=24.8.0.1
+pkgver=24.8.0.2
 pkgrel=1
 pkgdesc="LibreOffice development branch"
 url="https://www.libreoffice.org/"
