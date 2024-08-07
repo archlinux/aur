@@ -1,46 +1,50 @@
-# Maintainer: Barry Smith <brrtsm at gmail dot com>
+# Maintainer:
+# Contributor: Barry Smith <brrtsm at gmail dot com>
 
-_pkgname=urlview
-pkgname=$_pkgname-git
-pkgver=r19.08767aa
-pkgrel=2
-pkgdesc="A curses URL parser for text files. Git version. Adds support for QUITONLAUNCH option."
+## links
+# https://packages.qa.debian.org/u/urlview.html
+# https://sr.ht/~nabijaczleweli/urlview-ng/
+
+# basic info
+_pkgname="urlview"
+pkgname="$_pkgname-git"
+pkgver=1d.r0.g51a8d27
+pkgrel=1
+pkgdesc="A curses URL parser for text files"
+url="https://git.sr.ht/~nabijaczleweli/urlview-ng"
+license=('0BSD' 'GPL-2.0-or-later')
 arch=('i686' 'x86_64')
-url="https://github.com/sigpipe/urlview"
-license=('GPL')
-conflicts=('urlview')
-provides=('urlview')
-depends=('bash')
-makedepends=('git' 'automake' 'autoconf')
-source=("git+https://github.com/sigpipe/${_pkgname}.git")
+
+depends=(
+  'bash'
+  'ncurses'
+)
+makedepends=(
+  'git'
+)
+
+conflicts=("$_pkgname=$pkgver")
+provides=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd $_pkgname
-  aclocal
-  automake --foreign --ignore-deps --add-missing
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_pkgname
-
-  ./configure --prefix=/usr
+  cd "$_pkgsrc"
   make
 }
 
 package() {
-  cd $_pkgname
+  cd "$_pkgsrc"
+  DESTDIR="$pkgdir" PREFIX='/usr' make install
 
-  install -d "${pkgdir}"/etc/urlview "${pkgdir}"/usr/share/man/man1
-  make prefix="${pkgdir}"/usr mandir="${pkgdir}"/usr/share/man install
-
-  install -Dm755 url_handler.sh "${pkgdir}"/etc/urlview/url_handler.sh
-  install -Dm644 sample.urlview "${pkgdir}"/etc/urlview/system.urlview
-  install -d "${pkgdir}"/usr/bin
-  ln -fs /etc/urlview/url_handler.sh "${pkgdir}"/usr/bin/url_handler.sh
+  install -Dm644 'LICENSES/0BSD.txt' "$pkgdir/usr/share/licenses/$pkgname/LICENSE.0BSD"
+  install -Dm644 'LICENSES/GPL-2.0-or-later.txt' "$pkgdir/usr/share/licenses/$pkgname/LICENSE.GPL-2.0-or-later"
 }
