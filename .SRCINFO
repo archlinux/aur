@@ -1,7 +1,7 @@
 pkgbase = linux-firmware-amd-staging-um5606-git
 	pkgdesc = A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops. DO NOT INSTALL THIS unless you know what you're getting into.
 	pkgver = 20240807.2519af10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ThatOneCalculator/linux-firmware-amd-staging-um5606
 	arch = any
 	license = GPL2
