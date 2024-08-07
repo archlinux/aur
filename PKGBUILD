@@ -1,13 +1,13 @@
-# Maintainer: buzz <buzz-AT-l4m1-DOT-de>
+# Maintainer: buzz <buzz@users.noreply.github.com>
 pkgname=volctl
 _gitname=volctl
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Per-application volume control and OSD for Linux desktops."
 arch=("any")
 url="https://buzz.github.io/volctl/"
 license=("GPL")
-depends=("python" "python-gobject" "python-setuptools" "python-cairo" "pulseaudio" "desktop-file-utils" "python-pulsectl")
+depends=("python" "python-gobject" "python-setuptools" "python-cairo" "pulse-native-provider" "desktop-file-utils" "python-pulsectl")
 optdepends=("pavucontrol: mixer support", "statusnotifier-introspection-dbus-menu: SNI support")
 makedepends=("git")
 options=(!emptydirs)
