@@ -29,8 +29,12 @@ source=(
     "git+${url}.git"
     "001-lib64-ladspa.patch"
     "002-confdir.patch"
+    "pipewire-workaround.service"
+    "wireplumber-workaround.service"
     )
 b2sums=(
+    'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -69,6 +73,9 @@ package() {
     rm -f "$pkgdir/etc/wireplumber"
     rm -f "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/pipewire-sysconf.service"
     rm -f "$pkgdir/etc/pipewire"
+
+    install -Dm644 "$srcdir/pipewire-workaround.service" "$pkgdir/usr/lib/systemd/system/pipewire-workaround.service"
+    install -Dm644 "$srcdir/wireplumber-workaround.service" "$pkgdir/usr/lib/systemd/system/wireplumber-workaround.service"
 
     rm "$pkgdir/usr/share/wireplumber/hardware-profiles/default"
     rm "$pkgdir/usr/share/pipewire/hardware-profiles/default"
