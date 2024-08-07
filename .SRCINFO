@@ -1,0 +1,15 @@
+pkgbase = r-bigd
+	pkgdesc = Flexibly Format Dates and Times to a Given Locale
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=bigD
+	arch = any
+	license = MIT
+	depends = r
+	optdepends = r-covr
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/bigD_0.2.0.tar.gz
+	md5sums = 51f023fe40d1aabc705eec86d42c73f5
+	b2sums = 28841c910a6aac91e30691a7b328f97a86064dd323e1ee15ccf95553176148a69431a2c56de8008477577475f52ea334429dad192a617af6062528e0a0132faf
+
+pkgname = r-bigd
