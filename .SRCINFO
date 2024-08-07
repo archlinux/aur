@@ -1,0 +1,15 @@
+pkgbase = sekirofpsunlock
+	pkgdesc = Patcher to set custom fps limit and resolution for Sekiro: Shadows Die Twice
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/Lahvuun/sekirofpsunlock
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gcc
+	depends = glibc
+	source = sekirofpsunlock-0.2.3.tar.gz::https://github.com/Lahvuun/sekirofpsunlock/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = 0d6a9e631ae0da32d010b63d0e69e64c3c47616dfba77ba2dae4486ee260004d
+
+pkgname = sekirofpsunlock
