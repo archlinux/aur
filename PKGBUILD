@@ -2,7 +2,7 @@
 
 _pkgname=efl
 pkgname=($_pkgname-git-asan)
-pkgver=1.26.99.66907.g7743b17dba
+pkgver=1.27.99.67082.g6860883e18
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version - Asan debug build"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ depends=('curl' 'fontconfig' 'fribidi' 'harfbuzz'
          'libpng' 'libtiff' 'giflib' 'lz4' 'zlib' 'systemd-libs' 'openssl'
          'glibc' 'libutil-linux' 'dbus'
          'shared-mime-info' 'mailcap' 'ttf-font' 'scim'
-         'wayland' 'libxkbcommon-x11' 'pulseaudio')
+         'wayland' 'libxkbcommon-x11' 'pulse-native-provider')
 makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot' 'procps-ng' 'ccache' 'wayland-protocols')
 optdepends=('gst-plugins-base: Video and thumbnail codecs'
             'gst-plugins-good: Video and thumbnail codecs'
