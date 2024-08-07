@@ -7,7 +7,7 @@ pkgname=("${pkgbase}"
          "obs-plugin-${pkgbase}")
 epoch=2
 pkgver=B6
-pkgrel=8
+pkgrel=9
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.io/"
 arch=('x86_64')
@@ -29,6 +29,9 @@ prepare() {
 	for patch in "${srcdir}"/*.patch; do
 		patch -p1 < "${patch}"
 	done
+
+	sed -i '1 i\#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"' \
+		"host/platform/Linux/capture/pipewire/src/portal.c"
 }
 
 build() {
