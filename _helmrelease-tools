@@ -72,9 +72,7 @@ function _hr_helm_opts() {
     newWords[-1]=-
   fi
   local CURRENT=$(( CURRENT - seperatorIndex + ${#command} + 1 ))
-  echo "$CURRENT" > /tmp/d
   local words=( "${newWords[@]}" )
-  echo "${words[@]}<" >> /tmp/d
   _helm
 }
 function _hr_both() {
