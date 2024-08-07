@@ -3,17 +3,17 @@
 
 pkgname=checkmedia
 pkgdesc="Check installation CDs and DVDs for errors."
-pkgver=6.2
+pkgver=6.3
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/openSUSE/checkmedia"
 license=('GPL3')
-depends=('perl')
+depends=('perl' 'git')
 provides=('libmediacheck.so=6-64')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'Makefile.patch')
-sha256sums=('2bf0edbd3ec72543d11d9be325f8b05e554020c0257f250165abdb204687eb4c'
-            'dca21889df9c1e618aeabf99fd51a5602ad0547576bb29e418f38c33579875f0')
+sha256sums=('1938bc8604c6abcf807b2365e0b9169d38845ad2c83db6e2bebfa8b0bbec9ae9'
+            '6980ac42a685594944ec41d12ab3c26177e6e9557fdc2e75a6aab15780f0d2c3')
 
 prepare(){
 	patch -p1 -d "$pkgname-$pkgver" < Makefile.patch
