@@ -7,7 +7,7 @@ _electron=electron29
 _nodejs="20.9.0"
 
 pkgname=${_pkgname}-electron
-pkgver=1.91.0.24190
+pkgver=1.91.1.24193
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -43,7 +43,7 @@ sha256sums=(
         'b96a713be2577dd07b727362c77edc7fd0430a5894eead186c1f18f666fc5536'
         'da8fbd6dcafa667e2b3368ae87ed216e7e76f56ce4a3e4ede426dc129e8f8349'
         '3010640182f3bb65404eb96e087e3cbe9f2d931c74822cc3c7547712fab1acec'
-        'f76eb3ecf7fa531e0f711938e4e10f82145b5a7bf8b24bda218acb2d47466d60'
+        '3a5bc109974fcf408855c13965f6d6be0997655c5b359de0bfd19a678c00844e'
         '6eef345b65bf2679c928c763529540435ab9c6e1836917319810a7a2d484ae1b'
 )
 
