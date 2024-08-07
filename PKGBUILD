@@ -4,7 +4,7 @@
 pkgname=pbincli
 _name="PBinCLI"
 pkgver=0.3.5
-pkgrel=2
+pkgrel=3
 
 pkgdesc='A command line client for PrivateBin'
 arch=('any')
@@ -21,6 +21,7 @@ depends=('python'
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 
 _pkgsrc="${_name}-${pkgver}"
+conflicts=(pbincli-git)
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('cfd978ff8195f7f586a13095bc2cbbc43d369fd7488d951b32bff6b7cc706be4')
 
