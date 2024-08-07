@@ -10,7 +10,8 @@ url="https://gitlab.com/CalcProgrammer1/OpenRGB"
 license=('GPL2')
 depends=('qt5-base' 'libusb' 'hidapi' 'mbedtls2')
 makedepends=('pkgconf' 'qt5-tools')
-optdepends=('i2c-tools: mainboard & RAM access')
+optdepends=('i2c-tools: mainboard & RAM access'
+            'openrazer-driver-dkms: for Razer devices')
 # Using Link Time Optimization can cause segment fault at runtime. Disabled until upstream fix
 # https://gitlab.com/CalcProgrammer1/OpenRGB/-/commit/8e6e5c1becdd610cd9206bbdcf5616ce4b43e0f1
 # https://gitlab.com/CalcProgrammer1/OpenRGB/-/merge_requests/668
