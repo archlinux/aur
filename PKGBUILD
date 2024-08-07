@@ -72,6 +72,9 @@ build() {
 package() {
   cd $_pkgname
 
+  export LD_PRELOAD="/usr/lib/libasan.so"
+  export ASAN_OPTIONS="detect_leaks=0:abort_on_error=1::new_delete_type_mismatch=0"
+
   DESTDIR="$pkgdir" ninja -C build install
 
   install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" README.md
