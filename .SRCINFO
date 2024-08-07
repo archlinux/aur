@@ -1,0 +1,27 @@
+pkgbase = ffmpeg-rockchip-git
+	pkgdesc = FFmpeg with async and zero-copy Rockchip MPP & RGA support
+	pkgver = 2024.08.07
+	pkgrel = 1
+	url = https://github.com/nyanmisaka/ffmpeg-rockchip
+	arch = aarch64
+	license = GPL2
+	license = GPL3
+	license = LGPL3
+	makedepends = git
+	depends = gcc
+	depends = make
+	depends = yasm
+	depends = pkg-config
+	depends = libx264
+	depends = libx265
+	depends = libvpx
+	depends = libfdk-aac
+	depends = libopus
+	depends = libvorbis
+	depends = libass
+	depends = libwebp
+	depends = libmfx
+	source = ffmpeg-rockchip-git::git+https://github.com/nyanmisaka/ffmpeg-rockchip
+	md5sums = SKIP
+
+pkgname = ffmpeg-rockchip-git
