@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Bruce Zhang
 pkgname=rubick
-pkgver=4.2.5
+pkgver=4.2.6
 _electronversion=26
 _nodeversion=16
 pkgrel=1
@@ -13,7 +13,6 @@ license=('MIT')
 conflicts=("${pkgname}")
 depends=(
 	"electron${_electronversion}"
-	'python>=3'
 )
 makedepends=(
 	'yarn'
@@ -32,7 +31,7 @@ source=(
 	"${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
 	"${pkgname}.sh"
 )
-sha256sums=('faf3006816cc70cae6780f24bd3ae07ad9dcba68f8f693e09d14012b466d1736'
+sha256sums=('da43b634a677851755df839675ae3e1429c222410fe7a1170d8179ed2477ef6d'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
