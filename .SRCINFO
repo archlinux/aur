@@ -1,7 +1,7 @@
 pkgbase = beeper-latest-bin
 	pkgdesc = A unified messaging app
-	pkgver = 3.107.2
-	pkgrel = 2
+	pkgver = 3.108.3
+	pkgrel = 1
 	url = https://beeper.com/
 	arch = x86_64
 	license = LicenseRef-beeper
@@ -9,7 +9,7 @@ pkgbase = beeper-latest-bin
 	conflicts = beeper
 	options = !strip
 	options = !debug
-	source = beeper-3.107.2x86_64.AppImage::https://download.beeper.com/linux/appImage/x64
+	source = beeper-3.108.3x86_64.AppImage::https://download.beeper.com/linux/appImage/x64
 	sha256sums = SKIP
 
 pkgname = beeper-latest-bin
