@@ -1,17 +1,17 @@
 pkgbase = backintime
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/bit-team/backintime
 	arch = any
 	license = GPL
 	makedepends = python
-	source = backintime-1.5.1.tar.gz::https://github.com/bit-team/backintime/archive/refs/tags/v1.5.1.tar.gz
-	sha256sums = 4c3b5cd7827d031fde5004abb4457339989f41077d9013315b5110c586277831
+	source = backintime-1.5.2.tar.gz::https://github.com/bit-team/backintime/archive/refs/tags/v1.5.2.tar.gz
+	sha256sums = 884fb4ac7299c7bcd016922aa60784d17cc0af7661f0177439c70440ebc346bd
 
 pkgname = backintime
 	pkgdesc = Simple backup system inspired from the Flyback Project and TimeVault. Qt5 GUI version.
 	install = backintime.install
-	depends = backintime-cli=1.5.1
+	depends = backintime-cli=1.5.2
 	depends = libnotify
 	depends = polkit
 	depends = python-dbus
