@@ -1,0 +1,32 @@
+pkgbase = r-ecocopula
+	pkgdesc = Graphical Modelling and Ordination using Copulas
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=ecoCopula
+	arch = any
+	license = LGPL-2.1-or-later
+	depends = r-betareg
+	depends = r-doparallel
+	depends = r-foreach
+	depends = r-glasso
+	depends = r-glm2
+	depends = r-igraph
+	depends = r-mvabund
+	depends = r-ordinal
+	depends = r-plyr
+	depends = r-sna
+	depends = r-tweedie
+	optdepends = r-ggplot2
+	optdepends = r-ggraph
+	optdepends = r-knitr
+	optdepends = r-labdsv
+	optdepends = r-rcolorbrewer
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-tidygraph
+	optdepends = r-tidyr
+	source = https://cran.r-project.org/src/contrib/ecoCopula_1.0.2.tar.gz
+	md5sums = 575012c6205ca194826e775a9060abbb
+	b2sums = 5e35b831095a79e7471ddd754429a066639ce442824a9b3b92806dd878707d5bd78b3327c370700c1a8f711f1c7a8f8b7a0c1c41176c62dd8fbad21da2d590cd
+
+pkgname = r-ecocopula
