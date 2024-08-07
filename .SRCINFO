@@ -1,7 +1,7 @@
 pkgbase = perl-pdl
 	pkgdesc = The Perl Data Language
 	pkgver = 2.089
-	pkgrel = 4
+	pkgrel = 5
 	url = https://metacpan.org/release/PDL
 	arch = i686
 	arch = x86_64
@@ -34,7 +34,6 @@ pkgbase = perl-pdl
 	depends = ffmpeg
 	depends = perl-extutils-f77
 	optdepends = ds9: PDL::Graphics::IIS
-	optdepends = ds9-bin: PDL::Graphics::IIS
 	options = !emptydirs
 	source = perl-pdl-2.089.tar.gz::https://cpan.metacpan.org/authors/id/E/ET/ETJ/PDL-2.089.tar.gz
 	source = perldl.conf

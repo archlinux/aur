@@ -9,7 +9,7 @@
 pkgname=perl-pdl
 _dist=PDL
 pkgver=2.089
-pkgrel=4
+pkgrel=5
 pkgdesc='The Perl Data Language'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
@@ -99,8 +99,7 @@ checkdepends=(
 )
 optdepends=(
   #--- PDL::Graphics::IIS
-  'ds9: PDL::Graphics::IIS'
-  'ds9-bin: PDL::Graphics::IIS'
+  'ds9: PDL::Graphics::IIS' # and ds9-bin
 )
 options=('!emptydirs')
 
