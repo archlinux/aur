@@ -64,7 +64,7 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/pipewire/hardware-profiles"
 	cp -rv usr/share/pipewire/hardware-profiles/* "${pkgdir}/usr/share/pipewire/hardware-profiles/."
 
-	# Install wireplumber hardware configs
+	# Install wireplumber hardware configs 
 	mkdir -p "${pkgdir}/usr/share/wireplumber/hardware-profiles"
 	cp -rv usr/share/wireplumber/hardware-profiles/* "${pkgdir}/usr/share/wireplumber/hardware-profiles/."
 	
