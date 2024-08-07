@@ -8,8 +8,8 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=waterfox
-pkgver=G6.0.17
-pkgrel=2
+pkgver=G6.0.18
+pkgrel=1
 pkgdesc='Fork of Mozilla Firefox featuring some privacy, usability, and speed enhancements.'
 arch=(x86_64)
 license=('MPL-2.0')
@@ -75,6 +75,7 @@ ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
+ac_add_options --enable-rust-simd
 ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
@@ -221,5 +222,5 @@ EOT
 		ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
 	fi
 }
-sha256sums=('5090fceb677c1f1973b510c7cec93a930dfef5d03728506c78eb0573ce2dda19'
+sha256sums=('5d2b4cabca1dd9111428d6ce64df69f93c207f1e5fc630b3e2581f4bf48b438c'
             '1edf74423d201cbfd4162353c2fa040bb29da9db1d3f46d7fd2eff0209140e85')
