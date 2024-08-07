@@ -17,7 +17,7 @@ sha256sums_x86_64=('b8d166f1134573336aaae1866d25262284b0cbabbf393684226aca0fd8d1
 sha256sums_aarch64=('8cd7398b8fc1cd70d41e386af9995cbddc1043d9018391c29f056f1435712a10')
 
 package() {
-    tar xpf data.tar.gz -C ${pkgdir}
+    bsdtar -xf data.tar.xz -C "${pkgdir}/"
     chmod +x ${pkgdir}/opt/mihomo-party/mihomo-party
     chmod +x ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo
     chmod +x ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo-alpha
