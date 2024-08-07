@@ -1,7 +1,7 @@
 pkgbase = linux-firmware-valve
 	pkgdesc = Firmware files for Steam Deck devices from SteamOS
 	pkgver = 20231113.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://steamdeck-packages.steamos.cloud/archlinux-mirror/jupiter-main/os/x86_64/
 	arch = any
 	license = GPL2
@@ -9,7 +9,9 @@ pkgbase = linux-firmware-valve
 	license = custom
 	source = https://steamdeck-packages.steamos.cloud/archlinux-mirror/jupiter-main/os/x86_64/linux-firmware-neptune-jupiter.20231113.1-1-any.pkg.tar.zst
 	source = https://steamdeck-packages.steamos.cloud/archlinux-mirror/jupiter-main/os/x86_64/linux-firmware-neptune-20230121.1f01c88-1-any.pkg.tar.zst
+	source = https://steamdeck-packages.steamos.cloud/archlinux-mirror/jupiter-main/os/x86_64/steamdeck-dsp-0.49-1-any.pkg.tar.zst
 	sha256sums = 3ffdfc9634fb86fcc0e93709a4908540270eff94b26e0ceae163751acc30a806
 	sha256sums = 710e37390e86598630509ed9a2ece6e67cc53a479531dc1e2030199f64947a84
+	sha256sums = 62aebc640cabdb0fa58fceb5a6c7af0d7626453e5a34445528966a99d7e8cdf2
 
 pkgname = linux-firmware-valve
