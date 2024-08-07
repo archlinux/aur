@@ -1,6 +1,6 @@
 pkgbase = mozc-with-jp-dict
 	pkgver = 2.30.5544.102
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
 	license = Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003
@@ -18,19 +18,19 @@ pkgbase = mozc-with-jp-dict
 	makedepends = ibus
 	makedepends = rustup
 	options = !lto
-	source = git+https://github.com/fcitx/mozc.git#commit=57e67f2a25e4c0861e0e422da0c7d4c232d89fcc
+	source = git+https://github.com/fcitx/mozc.git#commit=5f1b9eba9671d01253c960bf3771792ff681b673
 	source = https://github.com/fcitx/mozc/pull/61.patch
 	source = git+https://github.com/phoepsilonix/mozcdict-ext.git#commit=de931271344ebb2d1349a7ae0a8ec883457ed930
-	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240409/small_lex.zip
-	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240409/core_lex.zip
-	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240409/notcore_lex.zip
+	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240716/small_lex.zip
+	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240716/core_lex.zip
+	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20240716/notcore_lex.zip
 	source = LICENSE-SudachiDict::https://github.com/WorksApplications/SudachiDict/raw/develop/LEGAL
-	sha512sums = 2aab49c8019f5d77601d3cdf32c837ba773fb39be5e0ef383e1aa68695b75bdfb15d02c2777207b1aa8ac187b0287f9f771e5e76ce7b83f71e27e6f8a760c322
+	sha512sums = 311e30da8358c0a90f00e1b4441732ab8b5cb07857cd680d34bd0c9b816dc952e74b6319e924438005803de280f1e3fa8e71ca4b894674269876c5f9ff5a3709
 	sha512sums = 9f88e7926a8db772856049c3e8d8066ca5e663d46817f432b042d212aa4ab20ed660ab9da9fed181c80116f6900602f753f7c55e9894b69964b0a2fb7518b830
 	sha512sums = fcde4a3c0200969ebb21fa927f1ff59581386a39d83ea7ec5c0092e1566c38638129b71b286434e11fb4c6b76b48d6b36eb64b053306c2bbb8a7900e2c641558
-	sha512sums = a293c3c9b544acd49bec4809e0c7c8c6849afe5d09d19ffeb094983e10e5dddbc780aefa6bcae48b4ee586549a88a5c1fa9f244d1ce1f4e5effc2f8d6c806ce6
-	sha512sums = 68eff02c9349a3058b693fe5be4ef9f388f29a286c56ec050301ca2ecb89ed80f392a0b7b36b603dffc988de97b7150eb32b1e77d5b06fbf4d52be50e683b851
-	sha512sums = 299cd8fed5ab08eb2985e0a6f487b8dd99026950a926774c954c4daa369f82fad8117d70db549361f60e926aa2776d8e3202587f055abe5700038c704c820cbe
+	sha512sums = 9428d55d2d9603c8bfcd12cc0184415f23af1d09a2d0ebdf0cce694a09638e7cfe0c1241bf1c943427b2fccfea619ca8b2e22db3452d837b416eb31aa224e766
+	sha512sums = f0a3544dcc99bf8c4cea8ebfd31af827e209f0678997ab55f6eda54f34cad5e148d1bd156417a621665c2068e7371801dc9cf1baa34f2270a99da7055f46d95d
+	sha512sums = 5551cbf4da52bc2eb73841013f98634ac8fcb56e5f6e163c9e640d5b9eaa4eafc2fa72cc20660db012ebdb438f835c2098b77c02c483d3244df901748e3d30fa
 	sha512sums = 1a5b62c83a08781b44bd73f978a4024d93667df47b1a3f4c179096cbc32f28e803c50dca6b5b7ad20fb788d46797551c36ec1efb7782f4361b695e2e0a6060ca
 
 pkgname = ibus-mozc-with-jp-dict
