@@ -1,6 +1,6 @@
 # Maintainer: Igor Khanin <igor at khanin dot biz>
 pkgname=katvan
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A bare-bones editor for Typst files, with a bias for RTL editing'
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('cmake'
              'gtest')
 optdepends=('typst: for previews and PDF export')
 source=("https://github.com/IgKh/katvan/releases/download/v${pkgver}/${pkgname}-${pkgver}-src.tar.gz")
-sha256sums=('5148323916716a00061dd1e206d504059a2921ebb4feaf940dc87b25aee9d376')
+sha256sums=('8c1a4eb6e9047bdb3196fd9761c16c36560fd22a87bd1bc5627cc5672b63c946')
 
 build() {
     cmake -B build -S "${pkgname}-${pkgver}" -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
