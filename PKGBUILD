@@ -1,9 +1,9 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
-# Contributor: Seqularise
+# Contributors: Seqularise, complexlogic
 
 pkgname=rsgain
-pkgver=3.5.1
-pkgrel=2
+pkgver=3.5.2
+pkgrel=1
 pkgdesc="ReplayGain 2.0 loudness normalizer"
 arch=('x86_64')
 url="https://github.com/complexlogic/rsgain"
@@ -17,12 +17,13 @@ depends=(
   'libinih'
   'taglib'
   )
-makedepends=(cmake fmt)
+makedepends=(cmake)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/complexlogic/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('aaa72b6a30643f786a05503c18c4c2588b6539dcc781b27ba2716bec4957f3d246cdfe6be1569164535afdd4b19d70b5b5d33202dafbc8d7a7634ff6f6b20a6a')
+sha512sums=('330ce98d136f174c256b85163db749967a91e023d3f6baef9e929bc52e1aeb14e9c6f2a3eaef7035f6759588d0407deb83d2ce9ed2ae4b3361404bf278f25bfe')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
+        -DUSE_STD_FORMAT=ON \
         -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
 }
