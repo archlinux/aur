@@ -1,9 +1,9 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 # Contributor: Marius Hirt <marius-hirt@web.de>
 
 _pkgname="zork++"
 pkgname="${_pkgname}-bin"
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A modern C++ project manager and build system for modern C++"
 arch=('x86_64')
@@ -12,14 +12,15 @@ license=('MIT')
 depends=('glibc' 'gcc-libs')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${url}/raw/v${pkgver}/README.md")
-source_x86_64=("${url}/releases/download/v${pkgver}/default.${_pkgname}.${_pkgname}.tar.gz")
-sha256sums=('53db6f103d87763f545bc519a687098c522121a93db33642e6360587d0851d15')
-sha256sums_x86_64=('d62df381a6476697186a6de7948162c1d8d253d805751375494bdd5f57f508dc')
+_pkgsrc="${_pkgname}-${pkgver}"
+source=("README-${pkgver}.md::${url}/raw/v${pkgver}/README.md")
+source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/default.${_pkgname}.${_pkgname}.tar.gz")
+sha256sums=('cebd730a91f92604221beab1c142c8c237ad2d4669507e5b39d79491c359a022')
+sha256sums_x86_64=('9552c13aa7ace5cf5cbbff3d1aceef140f9c1e273194caad9802ad241f613daf')
 
 package() {
   cd "${srcdir}"
   install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
