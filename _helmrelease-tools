@@ -68,7 +68,7 @@ function _hr_helm_opts() {
   [[ "${command[1]}" == diff ]] && command=( diff upgrade )
   local seperatorIndex=${words[(Ie)--]}
   local -a newWords=( helm "${command[@]}" "${words[$seperatorIndex+1,-1]}" )
-  if [[ "${words[-1]}" == "" && "$CURRENT" == $(( seperatorIndex + 1 )) ]]; then
+  if [[ "${newWords[-1]}" == "" && "$CURRENT" == $(( seperatorIndex + ${#command} )) ]]; then
     newWords[-1]=-
   fi
   local CURRENT=$(( CURRENT - seperatorIndex + ${#command} + 1 ))
