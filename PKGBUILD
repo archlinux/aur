@@ -2,18 +2,20 @@
 # Contributor: Jose Riha <jose1711 gmail com>
 
 pkgname=perl-uuid
-pkgver=0.36
-pkgrel=1
-pkgdesc='Universally Unique Identifier library for Perl'
 _dist=UUID
-arch=(i686 x86_64)
-url="https://metacpan.org/release/$_dist"
+pkgver=0.36
+pkgrel=2
+pkgdesc='Universally Unique Identifier library for Perl'
 license=(Artistic-2.0)
-depends=(perl)
-makedepends=(perl-devel-checklib)
-source=("https://cpan.metacpan.org/authors/id/J/JR/JRM/$_dist-$pkgver.tar.gz")
-options=('!emptydirs')
+
+url="https://metacpan.org/release/$_dist"
+source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/J/JR/JRM/$_dist-$pkgver.tar.gz")
 sha256sums=('c182e9ad854981a90803ae25380d2197ca6f923519e1d524bc85205eaf49bf06')
+
+arch=(i686 x86_64)
+depends=(perl glibc)
+makedepends=(perl-devel-checklib)
+options=('!emptydirs')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
