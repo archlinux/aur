@@ -5,7 +5,7 @@
 _pkgbase=yt6801
 pkgname=yt6801-dkms
 pkgver=1.0.28
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel module for Motorcomm YT6801 ethernet controller (DKMS)"
 arch=('x86_64')
 url="https://deb.tuxedocomputers.com/ubuntu/pool/main/t/tuxedo-yt6801/"
@@ -27,6 +27,11 @@ package() {
 
   # Copy dkms.conf
   install -Dm644 dkms_filtered.conf ${pkgdir}/usr/src/${_fullname}/dkms.conf
+
+  sed -i -e "1i KERNELRELEASE ?= \$(shell uname -r)" \
+      -e "s|^KSRC = .*|KSRC = /lib/modules/\$(KERNELRELEASE)/build|" \
+      -e "s|^KDST = .*|KDST = /lib/modules/\$(KERNELRELEASE)/kernel/drivers/net/ethernet/motorcomm/|" \
+      Makefile
 
   # Copy sources (including Makefile)
   install -Dm644 ${srcdir}/*.c ${pkgdir}/usr/src/${_fullname}/
