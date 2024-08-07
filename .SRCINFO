@@ -1,14 +1,15 @@
 pkgbase = deepin-account-faces-git
 	pkgdesc = Account faces for Linux Deepin
-	pkgver = 1.0.12.1.r18.g9a65eb8
+	pkgver = 1.0.16.r0.g9f729c4
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-account-faces
+	install = deepin-account-faces-git.install
 	arch = any
 	license = GPL3
 	makedepends = git
 	provides = deepin-account-faces
 	conflicts = deepin-account-faces
-	source = deepin-account-faces-git::git+https://github.com/linuxdeepin/dde-account-faces/
+	source = git+https://github.com/linuxdeepin/dde-account-faces/
 	sha512sums = SKIP
 
 pkgname = deepin-account-faces-git
