@@ -8,8 +8,8 @@
 pkgbase=linux-mainline-um5606
 _tag=v6.11-rc2
 pkgver=6.11rc2
-pkgrel=2
-pkgdesc="Linux Mainline with patches for the Asus UM5606(WA) laptop."
+pkgrel=3
+pkgdesc="Linux Mainline with patches for the Asus UM5606(WA) laptop"
 arch=(x86_64)
 url="https://kernel.org/"
 license=(GPL-2.0-only)

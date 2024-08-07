@@ -1,7 +1,7 @@
 pkgbase = linux-mainline-um5606
-	pkgdesc = Linux Mainline with patches for the Asus UM5606(WA) laptop.
+	pkgdesc = Linux Mainline with patches for the Asus UM5606(WA) laptop
 	pkgver = 6.11rc2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kernel.org/
 	arch = x86_64
 	license = GPL-2.0-only
@@ -35,7 +35,7 @@ pkgbase = linux-mainline-um5606
 	sha256sums = 3dfea6ee17a195d87210762d5801e54ce60c154f376693f526ed08a98e7e0622
 
 pkgname = linux-mainline-um5606
-	pkgdesc = The Linux Mainline with patches for the Asus UM5606(WA) laptop. kernel and modules
+	pkgdesc = The Linux Mainline with patches for the Asus UM5606(WA) laptop kernel and modules
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -48,8 +48,8 @@ pkgname = linux-mainline-um5606
 	replaces = wireguard-arch
 
 pkgname = linux-mainline-um5606-headers
-	pkgdesc = Headers and scripts for building modules for the Linux Mainline with patches for the Asus UM5606(WA) laptop. kernel
+	pkgdesc = Headers and scripts for building modules for the Linux Mainline with patches for the Asus UM5606(WA) laptop kernel
 	depends = pahole
 
 pkgname = linux-mainline-um5606-docs
-	pkgdesc = Documentation for the Linux Mainline with patches for the Asus UM5606(WA) laptop. kernel
+	pkgdesc = Documentation for the Linux Mainline with patches for the Asus UM5606(WA) laptop kernel
