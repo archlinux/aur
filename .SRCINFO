@@ -1,0 +1,14 @@
+pkgbase = r-juicyjuice
+	pkgdesc = Inline CSS Properties into HTML Tags Using 'juice'
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=juicyjuice
+	arch = any
+	license = MIT
+	depends = r-v8
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/juicyjuice_0.1.0.tar.gz
+	md5sums = bf3db84d36b3734e9c323eb0e9b0b4a3
+	b2sums = bbd13cb4d72b37f327919725fa76dfbfe5232d355694456fc5e127fb690c32caf6628831a7afdc63cd7920d08ecb54683bbeed50e65b2c551a5903f0fd0f3a63
+
+pkgname = r-juicyjuice
