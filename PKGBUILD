@@ -3,7 +3,7 @@
 # Contributor: Allonsy < linuxbash8 [at@at] gmail [dot.dot] com >
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 pkgname=git-town-bin
-pkgver=14.4.1
+pkgver=15.0.0
 pkgrel=1
 pkgdesc="Git workflow automation to keep branches in sync and reduce merge conflicts."
 url="https://www.git-town.com/"
@@ -22,8 +22,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_linux_intel_64.deb")
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/git-town/git-town/v${pkgver}/LICENSE")
 sha256sums=('eec8a092b92231375231488d27b959e2fa2be80559c97db60c1b0458d3298791')
-sha256sums_aarch64=('37d1508d596ad06b60145fb56f3b06d15325811fd4bd06116d0912f2a6c9d017')
-sha256sums_x86_64=('a817b5d0915a39e21d2eeb20574e1d333cfb02ef990cacda5cc64f5087ef0976')
+sha256sums_aarch64=('fb3babc6af97e542e33390a46d2a03c7f303860569aa4ec570c0236bde11d0d9')
+sha256sums_x86_64=('444df2f5f749119cd648278f6c0252769d47968bad20f754caad4689348844fd')
 build() {
 	bsdtar -xf "${srcdir}/data."*
 }
