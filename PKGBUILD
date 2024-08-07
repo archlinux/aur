@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Rockchip Media Processing Platform"
 arch=('aarch64')
 url="https://github.com/nyanmisaka/mpp"
-license=('GPL3')
+license=('MIT' 'Apache-2.0')
 depends=('libdrm')
 makedepends=('cmake' 'ninja')
 
