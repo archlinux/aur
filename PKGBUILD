@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootlctl@gmail.com>
 
 pkgname=youtube-dl-nightly
-pkgver=2024.08.02
+pkgver=2024.08.07
 pkgrel=1
 pkgdesc='A command-line program to download videos from YouTube.com and a few more sites'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('ffmpeg: for video post-processing'
             'python-brotli: support for the Brotli compression format'
             'aria2: alternative parallel downloader')
 source=("https://github.com/ytdl-org/ytdl-nightly/releases/download/${pkgver}/youtube-dl-${pkgver}.tar.gz")
-sha256sums=('afb592e554f73ee862d31d7b8d3efae89796c9c79307795bdd98b85f037eb25a')
+sha256sums=('ba3a469eb6d7887442b427e4b76f87f2d8115be83c4e7a49f36befd3c4004169')
 
 prepare() {
   cd youtube-dl
