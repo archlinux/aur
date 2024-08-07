@@ -2,12 +2,12 @@
 _pkgname=Myxer
 pkgname=myxer-git
 pkgver=1.3.0.r0.gea53586
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern volume mixer for PulseAudio'
 arch=('x86_64')
 url='https://github.com/Aurailus/Myxer'
 license=('GPL3')
-depends=('gtk3' 'pulseaudio')
+depends=('gtk3' 'pulse-native-provider')
 makedepends=('cargo')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
