@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Shuyuan Liu <liu_shuyuan at qq dot com>
 pkgname=issie
-pkgver=5.0.0
+pkgver=5.0.1
 _electronversion=24
 _nodeversion=18
 pkgrel=1
@@ -23,11 +23,12 @@ makedepends=(
     'dotnet-sdk>=7'
     'gendesk'
     'git'
+    'curl'
 )
 source=(
-    "${pkgname}.git::git+${_ghurl}.git#tag=${pkgver}"
+    "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
 )
-sha256sums=('afd2a478da65089f4a326f17e059c7e64d43b59ddab74e66a77196e073c31dfb')
+sha256sums=('32729297903aa3ebd021be84acaf3d921c06997bdeca4c494fff2939e958e826')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]

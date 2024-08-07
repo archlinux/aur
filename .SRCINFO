@@ -1,6 +1,6 @@
 pkgbase = issie
 	pkgdesc = An intuitive cross-platform hardware design application.
-	pkgver = 5.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://tomcl.github.io/issie
 	arch = any
@@ -10,12 +10,13 @@ pkgbase = issie
 	makedepends = dotnet-sdk>=7
 	makedepends = gendesk
 	makedepends = git
+	makedepends = curl
 	depends = nspr
 	depends = nss
 	depends = alsa-lib
 	depends = gtk3
 	conflicts = issie
-	source = issie.git::git+https://github.com/tomcl/issie.git#tag=5.0.0
-	sha256sums = afd2a478da65089f4a326f17e059c7e64d43b59ddab74e66a77196e073c31dfb
+	source = issie.git::git+https://github.com/tomcl/issie.git#tag=v5.0.1
+	sha256sums = 32729297903aa3ebd021be84acaf3d921c06997bdeca4c494fff2939e958e826
 
 pkgname = issie
