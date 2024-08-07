@@ -3,16 +3,16 @@
 pkgname='hunspell-ia'
 #pkgbase='hunspell-ia'
 #pkgname=('hunspell-ia' 'hyphen-ia')
-pkgver=20140530
+pkgver=20240316
 pkgrel=1
 pkgdesc="Interlingua hunspell dictionary"
 arch=('any')
 url="https://addons.mozilla.org/en-us/firefox/addon/dict-ia"
 license=('GPL3')
 optdepends=('hunspell: the spell checking libraries and apps')
-source=("${pkgname}-${pkgver}.zip::https://addons.mozilla.org/firefox/downloads/file/260974/interlingua_sownik_ortograficzny-2014.05.30-tb+fx.xpi")
-md5sums=('b3a9affc95e781443a414ed93ad205ac')
-sha1sums=('24b54c9b6b36b96f11828ae386d2b7828fbcb93d')
+source=("${pkgname}-${pkgver}.zip::https://addons.mozilla.org/firefox/downloads/file/4251079/dict_ia-2024.3.16.xpi")
+sha1sums=('0aa2416c7bee11353220ac6c8823ad95eb54cbff')
+sha256sums=('6a896fb83d1bb492bc6f4c49304b31e9d335f7171e95fc5fdbf90c1caf7d5c8b')
 
 package() {
 	cd "$srcdir/dictionaries"
@@ -20,7 +20,7 @@ package() {
 	install -m 644 ia.{aff,dic} "$pkgdir/usr/share/hunspell"
 
 	install -d -m 755 "$pkgdir/usr/share/doc/$pkgname"
-	cp "README_dict-ia.txt" README
+	cp "../README_dict-ia.txt" README
 	install -m 644 README "$pkgdir/usr/share/doc/$pkgname"
 }
 
