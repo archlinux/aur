@@ -1,0 +1,12 @@
+pkgbase = tinytime
+	pkgdesc = A clock for the minimalist
+	pkgver = r2.b7a5799
+	pkgrel = 1
+	url = https://github.com/nikitarevenco/tinytime
+	arch = any
+	license = MIT
+	makedepends = git
+	source = tinytime::git+https://github.com/nikitarevenco/tinytime.git
+	sha256sums = SKIP
+
+pkgname = tinytime
