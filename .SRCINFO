@@ -9,7 +9,6 @@ pkgbase = mihomo-party
 	license = GPL3
 	makedepends = nodejs
 	makedepends = pnpm
-	makedepends = jq
 	makedepends = libxcrypt-compat
 	depends = gtk3
 	depends = libnotify
