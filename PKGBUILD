@@ -2,8 +2,8 @@
 
 _name=mihomo
 pkgname=$_name-git
-pkgver=alpha.20240723.2933.4b9fdacb
-pkgrel=1
+pkgver=alpha.20240806.2950.beefe372
+pkgrel=2
 pkgdesc="Mihomo Kernel by MetaCubeX, formerly known as Clash.Meta"
 arch=("x86_64" 'aarch64')
 url="https://github.com/MetaCubeX/mihomo"
@@ -14,8 +14,8 @@ conflicts=('clash-meta' 'mihomo')
 provides=('mihomo')
 backup=('etc/mihomo/config.yaml')
 install="${_name}.install"
-source=("git+https://github.com/MetaCubeX/mihomo.git#branch=Alpha")
-sha256sums=('SKIP')
+source=("git+https://github.com/MetaCubeX/mihomo.git#branch=Alpha" "${_name}.service")
+sha256sums=('SKIP' '483e00f0c60b163662c76db3aba7e1fa61a1235a38c68f4fb69c5bad81f1a46f')
 
 pkgver() {
     cd "$_name"
@@ -41,5 +41,5 @@ package() {
     cd "${srcdir}/$_name"
     install -Dm755 "${_name}-${pkgver}" "${pkgdir}/usr/bin/${_name}"
     install -Dm644 "docs/config.yaml" -t "${pkgdir}/etc/${_name}"
-    install -Dm644 ".github/${_name}.service" -t "${pkgdir}/usr/lib/systemd/system"
+    install -Dm644 "${srcdir}/${_name}.service" -t "${pkgdir}/usr/lib/systemd/system"
 }
