@@ -26,9 +26,7 @@ makedepends=(
     'gendesk'
     'gcc'
     'cmake'
-    'python'
     'curl'
-    'asar'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -64,13 +62,14 @@ build() {
     else
         echo "Your network is OK."
     fi
-    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-git}\"|g" \
-        -i "${srcdir}/${pkgname//-/.}/${pkgname%-git}/desktop/src/"{lib/aboutPanel/aboutPanel.ts,utils/getAssetPath.ts}
-    sed "s|--linux -p never|--l --dir -p never|g" -i package.json
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    #sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-git}\"|g" \
+    #    -i "${srcdir}/${pkgname//-/.}/${pkgname%-git}/desktop/src/"{lib/aboutPanel/aboutPanel.ts,utils/getAssetPath.ts}
+    sed "s|electron-builder build -p never|electron-builder build -l --dir -p never|g" -i package.json
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=development    yarn add -D "parcel" "@parcel/transformer-sass" "@parcel/transformer-less" "@nestjs/cli"
     yarn --cwd "${pkgname%-git}"/api/
-    yarn run build:statics
-    yarn run package:linux
+    NODE_ENV=production yarn run build:statics
+    NODE_ENV=production yarn run package:prod
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{opt/"${pkgname%-git}",usr/bin}
