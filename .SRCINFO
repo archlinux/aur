@@ -9,7 +9,6 @@ pkgbase = udpreplay-git
 	checkdepends = time
 	makedepends = git
 	makedepends = cmake>=3.2.0
-	makedepends = libpcap
 	depends = glibc
 	depends = gcc-libs
 	depends = libpcap
