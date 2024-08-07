@@ -1,8 +1,9 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-rad
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Nancy Grace Roman Space Telescope shared attributes for processing and archive"
 arch=('any')
@@ -13,12 +14,15 @@ makedepends=('python-setuptools-scm'
              'python-build'
              'python-installer'
              'python-sphinx-asdf'
-             'python-importlib-metadata'
              'python-matplotlib')
-checkdepends=('python-pytest-doctestplus'
-              'python-crds')
+# circular deps
+#checkdepends=('python-pytest-doctestplus'
+#              'python-pytest-xdist'
+#              'python-crds'
+#              'python-roman-datamodels'
+#)
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('8cb6a5c0a5196361bb2a7e3f9e021413')
+md5sums=('bde4d2a571c3933dec869a3712232fd3')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -34,11 +38,11 @@ build() {
     PYTHONPATH="../build/lib" make -C docs html
 }
 
-check() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    PYTHONPATH="build/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
-}
+#check() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
+#}
 
 package_python-rad() {
     depends=('python>=3.10' 'python-asdf-astropy>=0.5.0')
