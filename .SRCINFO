@@ -1,0 +1,11 @@
+pkgbase = ptr89-git
+	pkgdesc = Yet another binary pattern finder.
+	pkgver = v1.0.2
+	pkgrel = 1
+	url = https://github.com/siemens-mobile-hacks/ptr89
+	arch = any
+	license = MIT
+	source = git+https://github.com/siemens-mobile-hacks/ptr89
+	sha256sums = SKIP
+
+pkgname = ptr89-git
