@@ -1,0 +1,48 @@
+pkgbase = riven-remake-gog-bin
+	pkgdesc = 2024 remake of the game 'Riven', a puzzle adventure game with superb landscape immersion. It is different from the original also in content. You need a GOG account and have purchased the file through GOG; PKGBUILD might ask you for GOG login.
+	pkgver = 1.3.0+gog75237
+	pkgrel = 1
+	epoch = 0
+	arch = x86_64
+	groups = games
+	groups = myst
+	groups = riven
+	makedepends = imagemagick
+	makedepends = innoextract
+	makedepends = lgogdownloader
+	makedepends = libarchive
+	makedepends = optipng
+	source = riven-remake.sh
+	source = riven-remake.desktop
+	source = license-note-proprietary.txt
+	sha256sums = 2372cbefb31a6811ca3e489258dc2c1cfad16b413a9eb02af20df9e34d9ba962
+	sha256sums = 7f5ef0faf1204ec08b1f3e08ab1fda185a9e4d9613e60ca5b42b6c0b2f36607f
+	sha256sums = 505309383841e7007ee3177d6955a44005fdcdfd332ae88b03d1ff601512ef08
+
+pkgname = riven-remake-data-gog-bin
+	pkgdesc = 2024 remake of the game 'Riven', a puzzle adventure game with superb landscape immersion. It is different from the original also in content. You need a GOG account and have purchased the file through GOG; PKGBUILD might ask you for GOG login.
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	license = LicenseRef-GOG_User_Agreement
+	depends = 
+	optdepends = riven-remake-launcher: To launch the game via wine by executing '/usr/bin/riven-remake'.
+	optdepends = riven-remake-companion: For a strategy guide with hints and storytelling.
+	optdepends = the-art-of-riven-remake: For artwork and concept sketches.
+	optdepends = riven-original-data: To also play the original (1997) game 'Riven: The Sequel to Myst'.
+	provides = riven-remake-data=1.3.0+gog75237
+	provides = the-art-of-riven-remake
+	provides = riven-remake-companion
+	conflicts = riven-remake-data
+	conflicts = the-art-of-riven-remake
+	conflicts = riven-remake-companion
+
+pkgname = riven-remake-launcher
+	pkgdesc = Launcher script for the 2024 remake of the game 'Riven'.
+	arch = any
+	license = GPL-3.0-or-later
+	depends = sh
+	depends = riven-remake-data
+	depends = wine
+	optdepends = riven-original: To also play the original (1997) game 'Riven: The Sequel to Myst'.
+	provides = riven-remake=1.3.0+gog75237
+	conflicts = 

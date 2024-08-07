@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Riven Remake (2024)
+Comment=An adventure/ puzzle game with immersive landscape.
+Exec=riven-remake
+Icon=riven-remake
+Terminal=false
+Type=Application
+Categories=Game;AdventureGame;LogicGame;
