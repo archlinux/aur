@@ -1,4 +1,5 @@
-# Maintainer: Borhaneddine GUEMIDI <guemidi borhane at aina dot dz>
+# Maintainer: Jonas Leder <info@jonasled.de>
+# Contributor: Borhaneddine GUEMIDI <guemidi borhane at aina dot dz>
 # Contributor: Eli <solaceiix at gmail dot com> 
 # Based on the template from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
 
