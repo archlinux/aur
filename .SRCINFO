@@ -20,7 +20,6 @@ pkgbase = linux-mainline-um5606
 	makedepends = python-sphinx
 	makedepends = python-yaml
 	makedepends = texlive-latexextra
-	makedepends = linux-firmware-amd-staging-um5606-git
 	options = !debug
 	options = !strip
 	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v6.11-rc2
@@ -40,6 +39,7 @@ pkgname = linux-mainline-um5606
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
+	depends = linux-firmware-amd-staging-um5606-git
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	provides = KSMBD-MODULE
 	provides = VIRTUALBOX-GUEST-MODULES

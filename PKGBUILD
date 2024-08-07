@@ -31,8 +31,6 @@ makedepends=(
   python-sphinx
   python-yaml
   texlive-latexextra
-
-  linux-firmware-amd-staging-um5606-git
 )
 options=(
   !debug
@@ -98,6 +96,7 @@ _package() {
     coreutils
     initramfs
     kmod
+    linux-firmware-amd-staging-um5606-git
   )
   optdepends=(
     'wireless-regdb: to set the correct wireless channels of your country'
