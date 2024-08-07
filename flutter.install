@@ -1,3 +1,26 @@
+note() {
+  printf "${BLUE}==>${YELLOW} $1 ${WHITE}$2${ALL_OFF}\n"
+}
+
+msg1() {
+  printf "${BLUE}==>${WHITE} $1${ALL_OFF}\n"
+}
+
+msg2() {
+  printf "   ${WHITE} $1${ALL_OFF}\n"
+}
+
+ALL_OFF="$(tput sgr0)"
+BOLD="${ALL_OFF}$(tput bold)"
+BLACK="${BOLD}$(tput setaf 0)"
+RED="${BOLD}$(tput setaf 1)"
+GREEN="${BOLD}$(tput setaf 2)"
+YELLOW="${BOLD}$(tput setaf 3)"
+BLUE="${BOLD}$(tput setaf 4)"
+MAGENTA="${BOLD}$(tput setaf 5)"
+CYAN="${BOLD}$(tput setaf 6)"
+WHITE="${BOLD}$(tput setaf 7)"
+
 _builders=(
   builder
   builduser
@@ -26,15 +49,19 @@ post_install() {
     fi
   done
 
-  echo "Flutter requires write permission into its install directory."
-  echo "This package redirects writes to '~/.cache/flutter_local'."
-  echo "Users should clear the cache themselves after upgrades."
+  msg1 "Flutter requires write permission into its install directory."
+  msg2 "This package redirects writes to '~/.cache/flutter_*'."
+  msg2 "Users should unmount and clear the cache after upgrades."
   echo
-  echo "Optionally, users may be given write permission to '/opt/flutter'"
-  echo "by adding them to the 'flutter' group:"
-  echo "        sudo usermod -a -G flutter [username]"
+  msg2 "        fusermount -uq ~/.cache/flutter_sdk"
+  msg2 "        rm -rf ~/.cache/{flutter_sdk,flutter_local}"
   echo
-  echo "Warning: '/opt/flutter' will be wiped on upgrade and uninstall."
+  msg1 "Optionally, users may be given write permission to '/opt/flutter'"
+  msg2 "by adding them to the 'flutter' group:"
+  echo
+  msg2 "        sudo usermod -a -G flutter [username]"
+  echo
+  note 'Warning:' "'/opt/flutter' will be wiped on upgrade and uninstall."
 }
 
 post_upgrade() {
@@ -66,6 +93,7 @@ pre_remove() {
 post_remove() {
   rm -rf opt/flutter
 
-  echo "If no longer needed, remove the 'flutter' group:"
-  echo "        sudo groupdel flutter"
+  msg1 "If no longer needed, remove the 'flutter' group:"
+  echo
+  msg2 "        sudo groupdel flutter"
 }
