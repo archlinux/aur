@@ -22,7 +22,7 @@ check-for-update:
       - git remote add origin git@jonasled.dev:jonasled/aptakube-aur.git
     script:
       - latest_version=$(curl https://api.github.com/repos/aptakube/aptakube/releases | jq '.[0].tag_name')
-      - source <(grep = PKGBUILD)
+      - source PKGBUILD
       - |
         if [ "${pkgver}" == "${latest_version}" ]; then
           echo "Current Version (${pkgver}) is the latest one, nothing to do"
