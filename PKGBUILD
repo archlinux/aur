@@ -2,7 +2,7 @@
 
 _pkgname=onnxruntime
 pkgname=onnxruntime-git
-pkgver=1.17.0.r10276.db3c076081
+pkgver=1.20.0.r11453.621b16f478
 pkgrel=1
 pkgdesc="cross-platform inference and training machine-learning accelerator."
 arch=('x86_64')
