@@ -1,7 +1,7 @@
 # Maintainer: Olga Smirnova <mistresssilvara@hotmail.com>
 pkgbase='hunspell-ie'
 pkgname=('hunspell-ie' 'hyphen-ie')
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Interlingue hunspell dictionary"
 arch=('any')
@@ -10,8 +10,8 @@ license=('Apache')
 optdepends=('hunspell: the spell checking libraries and apps')
 changelog=ChangeLog
 source=("https://github.com/Carmina16/hunspell-ie/archive/v${pkgver}.tar.gz")
-md5sums=('d54cd51fd96a74350997fc0bc77ec123')
-sha256sums=('f1d7271c6e1da24d084fbbcb4871f25e7ab7614c33606eb1a51b07de4948aa22')
+md5sums=('9deba99345dffed67d0b09c72840b058')
+sha256sums=('a6ea4283341fc7902516a211a0dc7e762cfaf104d1be64a961a893dbdebe3507')
 
 package_hunspell-ie() {
 	cd "$srcdir/${pkgbase}-${pkgver}"
