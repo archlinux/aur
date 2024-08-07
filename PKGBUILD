@@ -1,0 +1,182 @@
+# Mostly a copy of linux-firmware PKGBUILD by Thomas Bächler <thomas@archlinux.org>
+# And linux-firmware-git PKGBUILD by Victor Dmitriev <mrvvitek@gmail.com> with contributions from xduugu
+# Maintainer: Kainoa Kanter <kainoa@t1c.dev>
+
+pkgbase=linux-firmware-amd-staging-um5606-git
+pkgname=(linux-firmware-whence-git linux-firmware-git amd-ucode-git
+         linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-git
+)
+pkgver=20240807.2519af10
+pkgrel=1
+pkgdesc="Firmware files for Linux. A hopefully very temporary package that combines the latest AMD staging firmware targeting the new Ryzen AI laptops, specifically for the Asus UM5606. DO NOT INSTALL THIS unless you know what you're getting into."
+url="https://github.com/ThatOneCalculator/linux-firmware-amd-staging-um5606"
+license=('GPL2' 'GPL3' 'custom')
+arch=('any')
+makedepends=('git' 'rdfind')
+options=(!strip)
+#source=("${pkgbase}::git+${url}.git?signed")
+# NOTE: upstream doesn't sign most commits anymore, but still signs all tags.
+# Packages in the official repos package tags.
+# You can check signatures with the following commands:
+#git log --format=raw --show-signature main
+#git tag -v $(git tag)
+source=("${pkgbase}::git+${url}.git")
+sha256sums=('SKIP')
+# validpgpkeys=('4CDE8575E547BF835FE15807A31B6BD72486CFD6') # Josh Boyer <jwboyer@fedoraproject.org>
+
+pkgver() {
+  cd ${pkgbase}
+
+  # Commit date + short rev
+  echo $(TZ=UTC git show -s --pretty=%cd --date=format-local:%Y%m%d HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  mkdir -p kernel/x86/microcode
+  cat ${pkgbase}/amd-ucode/microcode_amd*.bin > kernel/x86/microcode/AuthenticAMD.bin
+
+  # Reproducibility: set the timestamp on the bin file
+  if [[ -n ${SOURCE_DATE_EPOCH} ]]; then
+    touch -d @${SOURCE_DATE_EPOCH} kernel/x86/microcode/AuthenticAMD.bin
+  fi
+
+  # Reproducibility: strip the inode and device numbers from the cpio archive
+  echo kernel/x86/microcode/AuthenticAMD.bin |
+    bsdtar --uid 0 --gid 0 -cnf - -T - |
+    bsdtar --null -cf - --format=newc @- > amd-ucode.img
+}
+
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
+}
+
+package_linux-firmware-whence-git() {
+  conflicts=("${pkgname%-git}" 'linux-firmware<=20211216.f682ecb')
+  provides=("${pkgname%-git}=$pkgver")
+  pkgdesc+=" - contains the WHENCE license file which documents the vendor license details"
+
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname%-git}" -m644 ${pkgbase}/WHENCE
+}
+
+package_linux-firmware-git() {
+  conflicts=("${pkgname%-git}")
+  provides=("${pkgname%-git}=$pkgver")
+  depends=('linux-firmware-whence')
+
+  cd ${pkgbase}
+
+  ZSTD_CLEVEL=19 make DESTDIR="${pkgdir}" FIRMWAREDIR=/usr/lib/firmware install-zst
+
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname%-git}" -m644 LICEN*
+
+  cd "${pkgdir}"
+
+  # remove arm64 firmware https://bugs.archlinux.org/task/76583
+  rm usr/lib/firmware/mrvl/prestera/mvsw_prestera_fw_arm64-v4.1.img.zst
+
+  # split
+  _pick amd-ucode usr/lib/firmware/amd-ucode
+
+  _pick linux-firmware-nfp usr/lib/firmware/netronome
+  _pick linux-firmware-nfp usr/share/licenses/${pkgname%-git}/LICENCE.Netronome
+
+  _pick linux-firmware-mellanox usr/lib/firmware/mellanox
+
+  _pick linux-firmware-marvell usr/lib/firmware/{libertas,mwl8k,mwlwifi,mrvl}
+  _pick linux-firmware-marvell usr/share/licenses/${pkgname%-git}/LICENCE.{Marvell,NXP}
+
+  _pick linux-firmware-qcom usr/lib/firmware/{qcom,a300_*}
+  _pick linux-firmware-qcom usr/share/licenses/${pkgname%-git}/LICENSE.qcom*
+
+  _pick linux-firmware-liquidio usr/lib/firmware/liquidio
+  _pick linux-firmware-liquidio usr/share/licenses/${pkgname%-git}/LICENCE.cavium_liquidio
+
+  _pick linux-firmware-qlogic usr/lib/firmware/{qlogic,qed,ql2???_*,c{b,t,t2}fw-*}
+  _pick linux-firmware-qlogic usr/share/licenses/${pkgname%-git}/LICENCE.{qla1280,qla2xxx}
+
+  _pick linux-firmware-bnx2x usr/lib/firmware/bnx2x*
+}
+
+package_amd-ucode-git() {
+  conflicts=("${pkgname%-git}")
+  provides=("${pkgname%-git}=$pkgver")
+  pkgdesc="Microcode update image for AMD CPUs"
+  license=(custom)
+
+  mv -v amd-ucode/* "${pkgdir}"
+
+  install -Dt "${pkgdir}/boot" -m644 amd-ucode.img
+
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname%-git}" -m644 ${pkgbase}/LICENSE.amd-ucode
+}
+
+package_linux-firmware-nfp-git() {
+  conflicts=("${pkgname%-git}" 'linux-firmware<=20211216.f682ecb')
+  provides=("${pkgname%-git}=$pkgver")
+  pkgdesc+=" - nfp / Firmware for Netronome Flow Processors"
+  depends=('linux-firmware-whence')
+
+  mv -v linux-firmware-nfp/* "${pkgdir}"
+}
+
+package_linux-firmware-mellanox-git() {
+  conflicts=("${pkgname%-git}" 'linux-firmware<=20211216.f682ecb')
+  provides=("${pkgname%-git}=$pkgver")
+  pkgdesc+=" - mellanox / Firmware for Mellanox Spectrum switches"
+  depends=('linux-firmware-whence')
+
+  mv -v linux-firmware-mellanox/* "${pkgdir}"
+}
+
+package_linux-firmware-marvell-git() {
+  conflicts=("${pkgname%-git}" 'linux-firmware<=20211216.f682ecb')
+  provides=("${pkgname%-git}=$pkgver")
+  pkgdesc+=" - marvell / Firmware for Marvell devices"
+  depends=('linux-firmware-whence')
+
+  mv -v linux-firmware-marvell/* "${pkgdir}"
+}
+
+package_linux-firmware-qcom-git() {
+  conflicts=("${pkgname%-git}" 'linux-firmware<=20211216.f682ecb')
+  provides=("${pkgname%-git}=$pkgver")
+  pkgdesc+=" - qcom / Firmware for Qualcomm SoCs"
+  depends=('linux-firmware-whence')
+
+  mv -v linux-firmware-qcom/* "${pkgdir}"
+}
+
+package_linux-firmware-liquidio-git() {
+  conflicts=("${pkgname%-git}" 'linux-firmware<=20211216.f682ecb')
+  provides=("${pkgname%-git}=$pkgver")
+  pkgdesc+=" - liquidio / Firmware for Cavium LiquidIO server adapters"
+  depends=('linux-firmware-whence')
+
+  mv -v linux-firmware-liquidio/* "${pkgdir}"
+}
+
+package_linux-firmware-qlogic-git() {
+  conflicts=("${pkgname%-git}" 'linux-firmware<=20211216.f682ecb')
+  provides=("${pkgname%-git}=$pkgver")
+  pkgdesc+=" - qlogic / Firmware for QLogic devices"
+  depends=('linux-firmware-whence')
+
+  mv -v linux-firmware-qlogic/* "${pkgdir}"
+}
+
+package_linux-firmware-bnx2x-git() {
+  conflicts=("${pkgname%-git}" 'linux-firmware<=20211216.f682ecb')
+  provides=("${pkgname%-git}=$pkgver")
+  pkgdesc+=" - bnx2x / Firmware for Broadcom NetXtreme II 10Gb ethernet adapters"
+  depends=('linux-firmware-whence')
+
+  mv -v linux-firmware-bnx2x/* "${pkgdir}"
+}
+
+# vim:set sw=2 et:
