@@ -1,5 +1,5 @@
 pkgname=mingw-w64-mumps
-pkgver=5.7.2
+pkgver=5.7.3
 pkgrel=1
 pkgdesc='Sparse solver library using Gaussian elimination (mingw-w64)'
 url='https://mumps-solver.org'
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-gcc')
 arch=('any')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://mumps-solver.org/MUMPS_${pkgver}.tar.gz")
-sha256sums=('1362d377ce7422fc886c55212b4a4d2c381918b5ca4478f682a22d0627a8fbf8')
+sha256sums=('84a47f7c4231b9efdf4d4f631a2cae2bdd9adeaabc088261d15af040143ed112')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
