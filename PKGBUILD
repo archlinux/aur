@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="nak"
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A command line tool for doing all things nostr"
 arch=('any')
@@ -11,11 +11,12 @@ makedepends=('go')
 depends=('glibc')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a3768211f0ab4b74183739b06f789b9d00dc6809e096fd6f7b738012950b4849')
+sha256sums=('03caa2224b5ea2fed26f2b9c8061aaf235ce829fd523b192ea5f37a1118bd011')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   mkdir -p "build"
+  go mod download
 }
 
 build() {
@@ -37,5 +38,5 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
   install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
