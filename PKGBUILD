@@ -104,6 +104,8 @@ _CMAKE_FLAGS+=(
         -DWITH_Trilinos=${_use_trilinos}
 
         -DEXTERNAL_UMFPACK=${_use_external_umfpack}
+
+        -GNinja
 )
 
 pkgname=elmerfem-git
@@ -166,7 +168,7 @@ build() {
   export FFLAGS+=" -fallow-argument-mismatch"
   cmake -S "${srcdir}"/$_pkgname -B build \
         "${_CMAKE_FLAGS[@]}"
-  cmake --build build -- all
+  ninja -C build all
 }
 
 check() {
@@ -180,7 +182,7 @@ fi
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
   cd "$pkgdir/usr"
   mv share/elmersolver/lib/*.so lib
 
