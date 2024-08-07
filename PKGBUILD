@@ -2,8 +2,8 @@
 pkgname=losslesscut-git
 _pkgname=LosslessCut
 _appname="no.mifi.${pkgname%-git}"
-pkgver=3.61.1.r0.g0f3e2eb
-_electronversion=27
+pkgver=3.62.0.r0.g52f6154
+_electronversion=31
 _nodeversion=18
 pkgrel=1
 pkgdesc="The swiss army knife of lossless video/audio editing.Using system-wide ffmpeg."
@@ -18,15 +18,15 @@ provides=(
 )
 depends=(
     "electron${_electronversion}"
-    'ffmpeg>6'
+    'ffmpeg'
 )
 makedepends=(
     'git'
     'nvm'
     'npm'
     'yarn'
-    'base-devel'
     'gcc'
+    'cmake'
     'curl'
 )
 source=(
@@ -72,8 +72,10 @@ build() {
     fi
     # .yarnrc.yml existed
     sed "s|--linux|-l --dir|g" -i package.json
-    yarn install
-    yarn run pack-linux
+    corepack enable yarn
+    corepack yarn set version 4.4.0
+    NODE_ENV=development    yarn install
+    NODE_ENV=production     yarn run pack-linux
     sed "s|\/app\/bin\/run.sh|${pkgname%-git}|g;s|${_appname}|${pkgname%-git}|g" -i "${_appname}.desktop"
     sed "s|${_appname}|${pkgname%-git}|g" -i "${_appname}.appdata.xml"
 }
