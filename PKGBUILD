@@ -2,9 +2,9 @@
 #
 # Mantainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Piero Proietti <piero.proietti_at_gmail.com>
-_commit=94110b1282d850ac757f720e5146263289c7d3cb
+_commit=adf87f1b3ffcd7b79a98f8226a1b3f342a1786c2
 pkgname=penguins-eggs
-pkgver=10.0.20
+pkgver=10.0.24
 pkgrel=1
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
@@ -17,7 +17,7 @@ depends=('arch-install-scripts' 'dosfstools' 'erofs-utils' 'findutils' 'git' 'gr
 optdepends=('bash-completion: eggs autocomplete'
             'zsh-completions: eggs autocomplete'
             'calamares: system installer GUI')
-makedepends=('git' 'npm')
+makedepends=('git' 'pnpm')
 
 options=('!strip')
 source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}")
@@ -30,12 +30,9 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  npm set prefix "pnpm-dir"
-  npm install -g pnpm
-  
-  pnpm-dir/bin/pnpm config set cache-dir "$srcdir/pnpm-cache"
-  pnpm-dir/bin/pnpm install
-  pnpm-dir/bin/pnpm build
+  /usr/bin/pnpm config set cache-dir "$srcdir/pnpm-cache"
+  /usr/bin/pnpm install
+  /usr/bin/pnpm build  
 }
 
 package() {
@@ -84,4 +81,3 @@ package() {
   # Install icon
   install -Dm644 assets/eggs.png -t "${pkgdir}/usr/share/pixmaps/"
 }
-
