@@ -31,6 +31,9 @@ optdepends=(
   'fzf: to create groups and secret chats, used for single and multiple user selection'
 )
 
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')

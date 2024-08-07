@@ -19,6 +19,8 @@ pkgbase = telegram-tg-git
 	optdepends = ranger: can be used to choose file when sending, customizable with FILE_PICKER_CMD
 	optdepends = nnn: can be used to choose file when sending, customizable with FILE_PICKER_CMD
 	optdepends = fzf: to create groups and secret chats, used for single and multiple user selection
+	provides = telegram-tg=0.19.0
+	conflicts = telegram-tg
 	source = telegram-tg::git+https://github.com/paul-nameless/tg.git
 	sha256sums = SKIP
 
