@@ -1,0 +1,4 @@
+[lib32-tdb]
+source = "regex"
+url = "https://www.samba.org/ftp/tdb/"
+regex = "tdb-(\\d+\\.\\d+\\.\\d+).tar.gz"
