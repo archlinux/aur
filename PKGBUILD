@@ -1,14 +1,14 @@
 # Maintainer: Dirk Wilden <dirk.wilden@device-insight.com>
 
 pkgname=kafkactl
-pkgver=5.0.6
-pkgrel=3
+pkgver=5.1.0
+pkgrel=1
 pkgdesc="Command Line Tool for managing Apache Kafka"
 url="https://github.com/deviceinsight/kafkactl/"
 arch=("i686" "x86_64" "aarch64")
 license=("APACHE")
 depends=("glibc")
-makedepends=('go>=1.19')
+makedepends=('go>=1.22')
 optdepends=('kubectl: for kafka running in Kubernetes cluster',
 'bash-completion: auto-completion for kafkactl in Bash',
 'zsh-completions: auto-completion for kafkactl in ZSH')
@@ -16,7 +16,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/deviceinsight/kafkactl/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  5ee2349c162aa7490ddc9e788a9863a4e07b6bbc6117362aacaa230e48902d08
+  85a8d538aec9eacd52c0561a1ae7e928afb95b6b91e7b2641ca80ae355ae415d
 )
 
 build() {
