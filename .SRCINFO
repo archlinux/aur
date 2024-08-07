@@ -6,6 +6,7 @@ pkgbase = foxify-cli-git
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python
 	depends = python-requests
 	depends = python-ruamel-yaml
@@ -21,4 +22,3 @@ pkgbase = foxify-cli-git
 	sha256sums = SKIP
 
 pkgname = foxify-cli-git
-
