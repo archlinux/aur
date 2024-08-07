@@ -1,6 +1,6 @@
 pkgbase = gerbera-nosystemd-git
 	pkgdesc = UPnP Media Server (Based on MediaTomb). Build without systemd dependencies.
-	pkgver = 2.2.0.20+r5547.20240729.b5bcaa442
+	pkgver = 2.2.0.26+r5553.20240805.52f3c1a8f
 	pkgrel = 1
 	url = https://gerbera.io/
 	install = gerbera.install
@@ -28,9 +28,9 @@ pkgbase = gerbera-nosystemd-git
 	depends = sqlite
 	depends = taglib
 	optdepends = gerbera-openrc: For OpenRC startup script.
-	provides = gerbera=2.2.0.20+r5547.20240729.b5bcaa442
-	provides = gerbera-nosystemd=2.2.0.20+r5547.20240729.b5bcaa442
-	provides = gerbera-git=2.2.0.20+r5547.20240729.b5bcaa442
+	provides = gerbera=2.2.0.26+r5553.20240805.52f3c1a8f
+	provides = gerbera-nosystemd=2.2.0.26+r5553.20240805.52f3c1a8f
+	provides = gerbera-git=2.2.0.26+r5553.20240805.52f3c1a8f
 	conflicts = gerbera
 	options = emptydirs
 	source = gerbera::git+https://github.com/gerbera/gerbera.git
