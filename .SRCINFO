@@ -1,0 +1,13 @@
+pkgbase = python-llm
+	pkgdesc = A CLI utility and Python library for interacting with Large Language Models, both via remote APIs and models that can be installed and run on your own machine.
+	pkgver = 0.15
+	pkgrel = 1
+	url = https://github.com/simonw/llm
+	arch = any
+	license = Apache-2.0
+	depends = python
+	depends = python-setuptools
+	source = 0.15.tar.gz::https://github.com/simonw/llm/archive/0.15.tar.gz
+	sha256sums = 8efcf3704fd587ed865c2b8518d2d9fb9cf997487dbc75411ed75723a573b803
+
+pkgname = python-llm
