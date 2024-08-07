@@ -31,6 +31,8 @@ makedepends=(
   python-sphinx
   python-yaml
   texlive-latexextra
+
+  linux-firmware-amd-staging-um5606-git
 )
 options=(
   !debug
