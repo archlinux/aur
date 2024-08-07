@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasma-vault
-pkgver=6.1.3
+pkgver=6.1.4
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='Plasma applet and services for creating encrypted vaults'
@@ -32,7 +32,7 @@ optdepends=('cryfs: to use cryFS for encryption'
             'gocryptfs: to use gocryptfs for encryption')
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('d014f20f02ce6c6289f5412db685996c3ccfa704a1e6c7b22e5b342ea0441b70'
+sha256sums=('34a4ff4c5b9bf6fe75c4eab0225daea21c25129179defc89b0b92ecb1a7bc8df'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
