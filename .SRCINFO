@@ -1,0 +1,20 @@
+pkgbase = vapoursynth-plugin-resize2-git
+	pkgdesc = Plugin for VapourSynth: resize2 (GIT version)
+	pkgver = r11.3e20638
+	pkgrel = 1
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/vapoursynth-resize2
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = vapoursynth
+	depends = zimg
+	provides = vapoursynth-plugin-resize2
+	conflicts = vapoursynth-plugin-resize2
+	source = resize2::git+https://github.com/Jaded-Encoding-Thaumaturgy/vapoursynth-resize2.git
+	source = zimg::git+https://bitbucket.org/the-sekrit-twc/zimg.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-resize2-git
