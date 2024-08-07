@@ -1,4 +1,19 @@
-本版本为 Release-Candidate 候选版本。
+v1.005:
+追加调整以下字形的错形：篹（错形为「𥲻」 U+25CBB）
 
-补全 GBK 汉字，新增更多符号，[详情点此查看](https://github.com/lxgw/LxgwNeoZhiSong/blob/main/documentation/changelog/20240801.md)。
-调整以下字形：畱澑璢桺羋⺌⺩⺷⺻
+v1.004:
+追加调整以下字形的错形：萛（错形为「𦱱」 U+26C71）
+
+v1.003:
+追加调整以下字形的避让：鐆
+
+v1.002:
+追加调整以下字形的避让：穈
+
+v1.001:
+追加调整以下字形的避让：椘
+
+v1.000:
+补全 GBK 汉字，新增更多符号，[详情点此查看](https://github.com/lxgw/LxgwNeoZhiSong/blob/main/documentation/changelog/20240803.md)。
+目前本字体共收录 2.2 万字，包含 CJK 统一表意文字基本区 20992 字，以及扩展 A～I 区零星汉字。
+调整以下字形：敾桺澑灐璢畱羋黕黲黵黸⺌⺩⺷⺻
