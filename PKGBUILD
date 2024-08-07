@@ -75,7 +75,7 @@ _fragment=${FRAGMENT:-#branch=devel}
 _CMAKE_FLAGS+=(
         -DCMAKE_BUILD_TYPE=Release
         -DCMAKE_INSTALL_PREFIX=/usr
-        -DELMER_INSTALL_LIB_DIR=/usr/lib
+        -DELMER_INSTALL_LIB_DIR=/usr/lib/elmerfem
 
         -DWITH_MPI=${_use_mpi}
         -DWITH_Mumps=${_use_mumps}
@@ -110,30 +110,26 @@ _CMAKE_FLAGS+=(
 
 pkgname=elmerfem-git
 _pkgname=elmerfem
-pkgver=9.0.r2914.gcd940b72e
+pkgver=9.0.r2919.g9a7c06f5a
 pkgrel=1
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
 url="http://www.elmerfem.org"
 license=('GPL-2.0-or-later')
 
-#conflicted deps
-((!DISABLE_INTERNAL_UMFPACK)) && conflicts+=('suitesparse')
-
 #make deps
-makedepends=('git' 'gcc-fortran' 'cmake')
-# Core deps
-# arpack was removed due to conflicted file, see https://github.com/ElmerCSC/elmerfem/issues/120
-depends+=('lapack') # 'libnn-git' 'libcsa-git' 'scalapack' 'arpack')
-((ENABLE_EXTERNAL_UMFPACK)) && depends+=('suitesparse')
+makedepends=('git' 'gcc-fortran' 'cmake' 'ninja')
 
-((!DISABLE_MPI))      && depends+=('netcdf-fortran-openmpi') || depends+=('netcdf-fortran')
+# Core deps
+depends+=('blas-openblas')
 
 # Main repos
+((ENABLE_EXTERNAL_UMFPACK)) && depends+=('suitesparse')
 ((!DISABLE_GUI))      && depends+=('qt5-base' 'qt5-script' 'qt5-svg' 'glew')
 ((!DISABLE_QWT))      && depends+=('qwt')
 # If VTK is enabled this line is redundant
 ((!DISABLE_MPI))      && depends+=('openmpi')
+((!DISABLE_MPI))      && depends+=('netcdf-fortran-openmpi') || depends+=('netcdf-fortran')
 ((!DISABLE_MP))       && depends+=('openmp')
 ((!DISABLE_PARAVIEW)) && depends+=('paraview')
 ((!DISABLE_OCC))      && depends+=('opencascade')  # opencascade
@@ -146,7 +142,7 @@ depends+=('lapack') # 'libnn-git' 'libcsa-git' 'scalapack' 'arpack')
 # AUR
 ((!DISABLE_MMG))      && depends+=('mmg')
 ((!DISABLE_TRILINOS)) && depends+=('trilinos')
-((!DISABLE_MUMPS))    && depends+=('mumps-par')    # mumps
+((!DISABLE_MUMPS))    && depends+=('mumps')    # mumps
 ((!DISABLE_HYPRE))    && depends+=('hypre')
 
 
@@ -184,7 +180,6 @@ fi
 package() {
   DESTDIR="$pkgdir" ninja -C build install
   cd "$pkgdir/usr"
-  mv share/elmersolver/lib/*.so lib
 
 if ((!DISABLE_GUI)); then
   # Remove unecessary libraries
