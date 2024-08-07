@@ -1,10 +1,11 @@
+# Maintainer: neolouker <neolouker@gmail.com>
 # Contributor: ramen <hendrik@hndrkk.sh>
 # Contributor: ra1nb0w 
 # Contributor: Andreas Schreiner <andreas.schreiner@sonnenmulde.at>
 # Contributor: Mike WB2FKO <mph at sportscliche dot com>
 
 pkgname=quisk
-pkgver=4.2.34
+pkgver=4.2.36
 pkgrel=1
 pkgdesc='Software Defined Radio (SDR) transceiver that can control various radio hardware.'
 arch=('x86_64' 'aarch64')
@@ -20,7 +21,7 @@ source=(
   'icon.png'
   'quisk.desktop'
 )
-sha256sums=('3f005098be829c3a79e5e2e15ebdefa495dfe0370a030cc54829f3c6de4da1be'
+sha256sums=('4e7e7d1a004fc17e787555c7178d358632fc4b87eb819cd387f6456f297755ca'
             'a20dd6847c4554d79606cc86a1514671cbc2ef9d472d43e9c1b9d8d09665fbc8'
             '634f37687447651cd09d82583ce4a0ef5d39968f92b04671e3fbe6bbadf466a9')
 
