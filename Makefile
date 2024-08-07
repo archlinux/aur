@@ -15,7 +15,7 @@ clean:
 .PHONY: in-docker
 in-docker: clean
 	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) .
-	docker run -it --rm \
+	docker run --rm \
 		--env HOME='/home/build' \
 		--volume $(PWD):/src \
 		--workdir /src \
