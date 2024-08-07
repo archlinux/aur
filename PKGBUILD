@@ -1,8 +1,8 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 # Contributor: Marius Hirt <marius-hirt@web.de>
 
 pkgname="zork++"
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A modern C++ project manager and build system for modern C++"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('cargo')
 # checkdepends=('clang' 'gcc')
 _pkgsrc="Zork-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b6303d68cd51d9120e9d36f7811ace7679d694112042668d4f8b979ccf3d314d')
+sha256sums=('af9b4eb71635a8158a642894e4234830302350205779ff24c6fc735430666830')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}/${pkgname}"
@@ -42,5 +42,5 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
   install -Dm755 "${pkgname}/target/release/zork" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

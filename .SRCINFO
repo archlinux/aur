@@ -1,6 +1,6 @@
 pkgbase = zork++
 	pkgdesc = A modern C++ project manager and build system for modern C++
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/zerodaycode/Zork
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = zork++
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = Zork-0.9.0.tar.gz::https://github.com/zerodaycode/Zork/archive/refs/tags/v0.9.0.tar.gz
-	sha256sums = b6303d68cd51d9120e9d36f7811ace7679d694112042668d4f8b979ccf3d314d
+	source = Zork-0.10.0.tar.gz::https://github.com/zerodaycode/Zork/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = af9b4eb71635a8158a642894e4234830302350205779ff24c6fc735430666830
 
 pkgname = zork++
