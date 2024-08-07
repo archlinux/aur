@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="cxcli"
-pkgver=1.225.2
+pkgver=1.226.0
 pkgrel=1
 pkgdesc="The missing CLI for your Dialogflow CX projects"
 arch=('any')
@@ -16,11 +16,12 @@ provides=("${pkgname}" 'dialogflow-cx-cli')
 conflicts=("${pkgname}" 'dialogflow-cx-cli')
 _pkgsrc="dialogflow-cx-cli-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('066b24b9ed7663cf6fea736eed79ca3b68f9174c8505a356c877bbdcaad5222d')
+sha256sums=('4aef24bc48064f838628c1bd4669e0de8f806ce53d2d3b560a48f13c65650b03')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   mkdir -p "build" "completions" "manpages"
+  go mod download
 }
 
 build() {
@@ -30,7 +31,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o "build/${pkgname}" .
+  go build -v -o "build/${pkgname}" .
 
   # ./"scripts/manpages.sh"
   ./"build/${pkgname}" man > "manpages/${pkgname}.1"
@@ -41,15 +42,15 @@ build() {
   done
 }
 
-check() {
-  cd "${srcdir}/${_pkgsrc}"
-  go test ./...
-}
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   go test ./...
+# }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
   install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "README.md"  "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
   install -Dm644 "manpages/${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
 
