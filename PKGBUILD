@@ -1,20 +1,24 @@
 _pkgname="kst"
 pkgname="${_pkgname}-git"
 pkgrel=1
-pkgver=2.0.8r3428.606588ce
+pkgver=2.0.8r3478.acc53551
 pkgdesc="Fast real-time large-dataset viewing and plotting tool for KDE"
 arch=('i686' 'x86_64')
 url="http://kst-plot.kde.org"
 license=('GPL')
-depends=('hdf5<1.12.1' 'gsl' 'qt5-base' 'qt5-svg' 'muparser' 'python-scipy>=0.9' 'python-numpy>=1.6' 'cfitsio' 'python-pyside2')
+depends=('hdf5' 'gsl' 'qt5-base' 'qt5-svg' 'muparser' 'cfitsio')
 optdepends=(
   'getdata: provides support for files in the Dirfile format'
   'libmatio: provides support for Matlab binary files'
 )
 makedepends=('cmake')
 #install=$pkgname.install
-source=("git+https://invent.kde.org/graphics/kst-plot.git" "0001-Fixed-HDF5-patch-for-archlinux-users.patch")
-md5sums=('SKIP' '4913f0bdccfa8adba09f6b6bf5bb2d11')
+source=("git+https://invent.kde.org/graphics/kst-plot.git"
+        "0001-Fixed-HDF5-patch-for-archlinux-users.patch"
+        "hdf5_cpp.patch")
+md5sums=('SKIP'
+         '4913f0bdccfa8adba09f6b6bf5bb2d11'
+         'b2d29a046b2429a05b9b073f75b47147')
 provides=("${_pkgname}")
 pkgver() {
   cd "${srcdir}/${_pkgname}-plot"
@@ -27,18 +31,14 @@ build() {
   cmake ./ \
   -Dkst_release=2 \
   -Dkst_version_string=2.0.8 \
-  -Dkst_svnversion=0 \
-  -Dkst_python=1 \
-  -DPYTHON_EXECUTABLE=/usr/bin/python \
-  -Dkst_python_prefix=/usr/lib/python \
   -Dkst_install_prefix=/usr \
   -Dkst_qt5=ON \
-  -Dkst_merge_files=ON \
-  -DCMAKE_CXX_FLAGS="-DH5_USE_110_API"
+  -Dkst_merge_files=ON
 }
 prepare(){
-	cd "${srcdir}/${_pkgname}-plot"
-	patch -p1 < ../0001-Fixed-HDF5-patch-for-archlinux-users.patch
+  cd "${srcdir}/${_pkgname}-plot"
+  patch -Np1 -i ../0001-Fixed-HDF5-patch-for-archlinux-users.patch
+  patch -Np1 -i ../hdf5_cpp.patch
 }
 package() {
   cd "${srcdir}/${_pkgname}-plot"
