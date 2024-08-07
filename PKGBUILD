@@ -3,8 +3,8 @@ pkgname=kando-bin
 _pkgname=Kando
 pkgver=1.2.0
 _electronversion=29
-pkgrel=1
-pkgdesc="A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions. "
+pkgrel=2
+pkgdesc="A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions."
 arch=("x86_64")
 url="https://ko-fi.com/post/Introducing-Ken-Do-L3L7L0FQ2"
 _ghurl="https://github.com/kando-menu/kando"
@@ -28,7 +28,7 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/kando-menu/kando/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
