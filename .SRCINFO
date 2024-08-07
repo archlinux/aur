@@ -1,7 +1,7 @@
 pkgbase = cpdf-bin
 	pkgdesc = Coherent PDF commandline tool to manipulate PDF files
 	pkgver = 2.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://community.coherentpdf.com
 	arch = x86_64
 	arch = i686

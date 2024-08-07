@@ -6,7 +6,7 @@
 _pkgname="cpdf"
 pkgname="${_pkgname}-bin"
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Coherent PDF commandline tool to manipulate PDF files"
 arch=('x86_64' 'i686')
 url="http://community.coherentpdf.com"
