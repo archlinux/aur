@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=switchhosts-git
 _pkgname=SwitchHosts
-pkgver=4.2.0.beta.r51.gdc75a00
-_electronversion=24
-_nodeversion=18
+pkgver=4.2.0.r0.g8cc6e0e
+_electronversion=30
+_nodeversion=22
 pkgrel=1
 pkgdesc="An app for managing hosts file,and switch hosts quickly!"
 arch=('any')
@@ -19,6 +19,7 @@ makedepends=(
     'git'
     'nvm'
     'npm'
+    'curl'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
@@ -41,7 +42,7 @@ build() {
         -e "s|@appname@|${pkgname%-git}|g" \
         -e "s|@runname@|app.asar|g" \
         -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgdesc="${pkgdesc}" --categories="Utility" --pkgname="${pkgname%-git}" --name="${_pkgname}" --exec="${pkgname%-git} %U"
@@ -61,10 +62,10 @@ build() {
     else
         echo "Your network is OK."
     fi
-    sed '/deb:/d;s|app.icns|app.png|g;/npm.taobao.org/d;/AppImage:arm64/d;/AppImage:armv7l/d;s|AppImage:x64|dir|g' -i scripts/make.js
-    npm install
-    npm run build
-    npm run make:linux
+    sed "s|'AppImage:x64', 'AppImage:arm64', 'deb:x64', 'deb:arm64'|'dir'|g" -i scripts/make.js
+    NODE_ENV=development    npm install --force
+    NODE_ENV=production     npm run build
+    NODE_ENV=production     npm run make:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
