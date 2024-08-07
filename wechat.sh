@@ -260,8 +260,6 @@ function execApp() {
 		--bind /proc /proc \
 		--bind /usr /usr \
 		--ro-bind /etc /etc \
-		--ro-bind-try /dev/null /etc/machine-id \
-		--ro-bind-try /dev/null /etc/machine-info \
 		--ro-bind-try /lib /lib \
 		--ro-bind-try /lib64 /lib64 \
 		--ro-bind-try /bin /bin \
