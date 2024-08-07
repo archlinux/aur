@@ -4,7 +4,7 @@
 # Based on [extra]'s thunderbird
 
 pkgname=(thunderbird-nightly-bin thunderbird-nightly-bin-noupdate)
-pkgver=131.0a1.20240806
+pkgver=131.0a1.20240807
 _version=131.0a1
 pkgrel=1
 arch=('x86_64')

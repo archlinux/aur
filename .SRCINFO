@@ -1,5 +1,5 @@
 pkgbase = thunderbird-nightly-bin
-	pkgver = 131.0a1.20240806
+	pkgver = 131.0a1.20240807
 	pkgrel = 1
 	url = https://www.mozilla.org/thunderbird
 	arch = x86_64
