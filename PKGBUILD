@@ -14,7 +14,7 @@ _gmpver=6.3.0
 _islver=0.26
 _mpcver=1.3.1
 _mpfrver=4.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Compiler Collection"
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -124,4 +124,6 @@ package() {
   # strip it manually
   find "${pkgdir}"/usr -type f -exec /usr/bin/"${_target}"-strip --strip-unneeded {} \; 2>/dev/null || true
   find "${pkgdir}"/usr -type f -and \( -executable \) -exec /usr/bin/"${_target}"-strip --strip-unneeded {} \; 2>/dev/null || true
+  find "${pkgdir}"/usr -type f -exec /usr/bin/strip --strip-unneeded {} \; 2>/dev/null || true
+  find "${pkgdir}"/usr -type f -and \( -executable \) -exec /usr/bin/strip --strip-unneeded {} \; 2>/dev/null || true
 }
