@@ -4,24 +4,23 @@ _pkgname=rtf
 _pkgver=0.4-14.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=0
+pkgrel=1
 pkgdesc="Rich Text Format (RTF) Output"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-2.0-or-later')
 depends=(
-  r-r.oo
   r-r.methodss3
+  r-r.oo
 )
 optdepends=(
   r-ggplot2
-  r-lattice
-  r-xtable
   r-gsubfn
+  r-xtable
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('86d1ff498870a6e3a65fecc62ccfdabc')
-b2sums=('fd3af9f5474356847884048c4f9677987ee1e37d3efbcbb41b54927ef28a00d01bab748282b7a6916519e8fa6f6c4c0c2e5475d4aa7b98ee09b3be631cc6d244')
+md5sums=('b3afa99fabe3b95a92937812db98acbc')
+b2sums=('7a4a1c15f4744ca88d3781ae064a2bd7e63cccb534cac955e5485ba551d0b72d2112037d67d56f10b82acb61048cc1bb827e3a346859d29b127a4b3da848fa4d')
 
 build() {
   mkdir build
