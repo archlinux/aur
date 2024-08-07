@@ -1,6 +1,6 @@
 # Maintainer: Keiran keiran0@proton.me
 pkgname=archie
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Archie is a command-line tool for managing packages on Arch Linux"
 arch=('x86_64')
