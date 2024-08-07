@@ -1,49 +1,52 @@
-# Maintainer: j.r <j.r@jugendhacker.de>
-_pkgname=telegram-tg
-pkgname=$_pkgname-git
-pkgver=0.19.0.r3.2b0c0cf
-pkgrel=2
-pkgdesc="terminal telegram client that really works"
-arch=(any)
+# Maintainer:
+# Contributor: j.r <j.r@jugendhacker.de>
+
+_pkgname="telegram-tg"
+pkgname="$_pkgname-git"
+pkgver=0.19.0.r3.g2b0c0cf
+pkgrel=3
+pkgdesc="Telegram client for terminal"
 url="https://github.com/paul-nameless/tg"
 license=('Unlicense')
-depends=('python-telegram>=0.15.0' 'python3' 'python-setuptools')
-makedepends=('git' 'python-build' 'python-poetry' 'python-installer' 'python-wheel')
-optdepends=(
-	'libnotify: for notifications, you could also use other programs: see config'
-	'ffmpeg: to record voice msgs and upload videos correctly'
-	'urlview: to choose urls when there is multiple in message, use URL_VIEW in config file to use another app, it should accept urls in stdin'
-	'ranger: can be used to choose file when sending, customizable with FILE_PICKER_CMD'
-	'nnn: can be used to choose file when sending, customizable with FILE_PICKER_CMD'
-	'fzf: to create groups and secret chats, used for single and multiple user selection'
+arch=('any')
+
+depends=(
+  'python'
+  'python-telegram'
 )
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/paul-nameless/tg.git"
-	"0001-Allow-newer-python-telegram.patch")
-md5sums=('SKIP'
-         'd036364babd1f2cb63693c7df6b4946e')
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-poetry'
+  'python-setuptools'
+  'python-wheel'
+)
+optdepends=(
+  'libnotify: for notifications, you could also use other programs: see config'
+  'ffmpeg: to record voice msgs and upload videos correctly'
+  'urlview: to choose urls when there is multiple in message, use URL_VIEW in config file to use another app, it should accept urls in stdin'
+  'ranger: can be used to choose file when sending, customizable with FILE_PICKER_CMD'
+  'nnn: can be used to choose file when sending, customizable with FILE_PICKER_CMD'
+  'fzf: to create groups and secret chats, used for single and multiple user selection'
+)
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/\(v\)\(.*\)/\2/')"
-}
-
-prepare() {
-	cd "$srcdir/$_pkgname"
-
-	patch -p1 -i "${srcdir}/0001-Allow-newer-python-telegram.patch"
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
-
-	python setup.py bdist_wheel
+  cd "$_pkgsrc"
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-
-	python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$_pkgsrc"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
