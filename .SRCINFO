@@ -1,6 +1,6 @@
 pkgbase = wacomtablet
 	pkgdesc = GUI for Wacom Linux drivers that supports different button/pen layout profiles
-	pkgver = 6.1.3
+	pkgver = 6.1.4
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -34,13 +34,13 @@ pkgbase = wacomtablet
 	depends = xf86-input-wacom
 	conflicts = kcm-wacomtablet
 	replaces = kcm-wacomtablet
-	source = https://download.kde.org/stable/plasma/6.1.3/wacomtablet-6.1.3.tar.xz
-	source = https://download.kde.org/stable/plasma/6.1.3/wacomtablet-6.1.3.tar.xz.sig
+	source = https://download.kde.org/stable/plasma/6.1.4/wacomtablet-6.1.4.tar.xz
+	source = https://download.kde.org/stable/plasma/6.1.4/wacomtablet-6.1.4.tar.xz.sig
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = 13250251d7a0d4c1aaf9dd17843337d56d8e30b7600f38925576910248018f9f
+	sha256sums = 532f039ec5bb265b70c65c9e0e28b0361dfd4f3b7bd59e278f49d9dbab337f89
 	sha256sums = SKIP
 
 pkgname = wacomtablet
