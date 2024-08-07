@@ -7,16 +7,16 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
-# pkgname=librewolf-hg
 pkgname=librewolf-hg
 _pkgname=librewolf-nightly
 __pkgname="Librewolf Nightly"
-pkgver=130.0a1.r830803.d3ff8ea02d53
+pkgver=131.0a1.r831211.a5615acbb20e
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom.  Mercurial version."
+url="https://librewolf.net/"
+
 arch=(x86_64 x86_64_v3 aarch64)
 license=(MPL GPL LGPL)
-url="https://librewolf-community.gitlab.io/"
 depends=(
   dbus
   alsa-lib

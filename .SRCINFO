@@ -1,8 +1,8 @@
 pkgbase = librewolf-hg
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom. Mercurial version.
-	pkgver = 130.0a1.r830803.d3ff8ea02d53
+	pkgver = 131.0a1.r831211.a5615acbb20e
 	pkgrel = 1
-	url = https://librewolf-community.gitlab.io/
+	url = https://librewolf.net/
 	install = librewolf-nightly.install
 	arch = x86_64
 	arch = x86_64_v3
