@@ -1,15 +1,19 @@
 # Maintainer: Zion Nimchuk <zionnimchuk@gmail.com>
 
+## links
+# http://melonds.kuribo64.net/
+# https://github.com/melonDS-emu/melonDS
+
 pkgname=melonds-git
 _gitname=melonDS
-pkgver=0.9.5.r2388.76c2723f
+pkgver=0.9.5.r2392.b47563e8
 pkgrel=1
 pkgdesc='DS emulator, sorta'
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="http://melonds.kuribo64.net/"
+url="https://github.com/melonDS-emu/melonDS"
 license=('GPL-3.0-or-later')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 depends=('libepoxy' 'qt6-base' 'qt6-multimedia' 'sdl2')
-makedepends=('git' 'cmake' 'extra-cmake-modules' 'ninja' 'pkg-config')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'libslirp' 'ninja' 'pkg-config')
 provides=('melonds')
 conflicts=('melonds')
 
@@ -29,7 +33,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DUSE_QT6=ON
-    -DUSE_SYSTEM_LIBSLIRP=OFF
+    -DUSE_SYSTEM_LIBSLIRP=ON
     -Wno-dev
   )
 
