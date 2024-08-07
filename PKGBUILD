@@ -1,41 +1,41 @@
-# Maintainer: ml <>
+# Maintainer: ml <ml-aur@ransomware.download>
 pkgname=vt-cli
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='VirusTotal Command Line Interface'
 arch=('i686' 'x86_64')
 url=https://virustotal.github.io/vt-cli/
-license=('Apache')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 source=("https://github.com/VirusTotal/vt-cli/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('8fab50202ce3a3f8128e94565cb58cdc2cbf5f816fd7b0855d897a379c9cfaf6')
+sha256sums=('479c50038e22e9be79689b0dfdd5ed3fb90ce8651488672b6209a784303afe94')
 
 build() {
-  cd "$pkgname-$pkgver"
-  export CGO_ENABLED=1
-  export CGO_LDFLAGS="$LDFLAGS"
-  export CGO_CFLAGS="$CFLAGS"
-  export CGO_CPPFLAGS="$CPPFLAGS"
-  export CGO_CXXFLAGS="$CXXFLAGS"
-  export GOFLAGS='-buildmode=pie -trimpath -modcacherw'
-  go build -o build/vt -ldflags "-linkmode=external -X github.com/VirusTotal/vt-cli/cmd.Version=$pkgver" ./vt
-  build/vt completion bash >vt.bash
-  build/vt completion zsh >vt.zsh
-  build/vt completion fish >vt.fish
+    cd "$pkgname-$pkgver"
+    export CGO_ENABLED=1
+    export CGO_LDFLAGS="$LDFLAGS"
+    export CGO_CFLAGS="$CFLAGS"
+    export CGO_CPPFLAGS="$CPPFLAGS"
+    export CGO_CXXFLAGS="$CXXFLAGS"
+    export GOFLAGS='-buildmode=pie -trimpath -modcacherw'
+    go build -o build/vt -ldflags "-linkmode=external -X github.com/VirusTotal/vt-cli/cmd.Version=$pkgver" ./vt
+    build/vt completion bash >vt.bash
+    build/vt completion zsh >vt.zsh
+    build/vt completion fish >vt.fish
 }
 
 check() {
-  cd "$pkgname-$pkgver"
-  # yaml_test.go broken. fails upstream as well
-  go test -ldflags "-linkmode=external" -short ./utils/...
+    cd "$pkgname-$pkgver"
+    # yaml_test.go broken. fails upstream as well
+    go test -ldflags "-linkmode=external" -short ./utils/...
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 build/vt -t "$pkgdir/usr/bin"
-  install -Dm644 vt.bash "$pkgdir/usr/share/bash-completion/completions/vt"
-  install -Dm644 vt.zsh "$pkgdir/usr/share/zsh/site-functions/_vt"
-  install -Dm644 vt.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname".fish
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" doc/*
+    cd "$pkgname-$pkgver"
+    install -Dm755 build/vt -t "$pkgdir/usr/bin"
+    install -Dm644 vt.bash "$pkgdir/usr/share/bash-completion/completions/vt"
+    install -Dm644 vt.zsh "$pkgdir/usr/share/zsh/site-functions/_vt"
+    install -Dm644 vt.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname".fish
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" doc/*
 }
