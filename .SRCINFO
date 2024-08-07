@@ -8,7 +8,7 @@ pkgbase = perl-net-sftp-foreign
 	depends = perl
 	depends = openssh
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/S/SA/SALVA/Net-SFTP-Foreign-1.93.tar.gz
+	source = perl-net-sftp-foreign-1.93.tar.gz::https://cpan.metacpan.org/authors/id/S/SA/SALVA/Net-SFTP-Foreign-1.93.tar.gz
 	sha256sums = 6c7d64250876873da434800e5060a8bef7a46451d81f817e37e43cfda51a0f7a
 
 pkgname = perl-net-sftp-foreign

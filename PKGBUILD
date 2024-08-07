@@ -3,17 +3,19 @@
 # Contributor: Alessandro Sagratini <ale_sagra at hotmail dot com>
 
 pkgname=perl-net-sftp-foreign
+_dist=Net-SFTP-Foreign
 pkgver=1.93
 pkgrel=2
 pkgdesc='SSH File Transfer Protocol client using the native SSH client'
-_dist=Net-SFTP-Foreign
-arch=(any)
-url="https://metacpan.org/release/$_dist"
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
+
+url="https://metacpan.org/release/$_dist"
+source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/S/SA/SALVA/$_dist-$pkgver.tar.gz")
+sha256sums=('6c7d64250876873da434800e5060a8bef7a46451d81f817e37e43cfda51a0f7a')
+
+arch=(any)
 depends=(perl openssh)
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/S/SA/SALVA/$_dist-$pkgver.tar.gz")
-sha256sums=('6c7d64250876873da434800e5060a8bef7a46451d81f817e37e43cfda51a0f7a')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
