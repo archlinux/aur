@@ -8,7 +8,7 @@
 pkgbase=linux-mainline-um5606
 _tag=v6.11-rc2
 pkgver=6.11rc2
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Mainline with patches for the Asus UM5606(WA) laptop."
 arch=(x86_64)
 url="https://kernel.org/"
@@ -101,7 +101,6 @@ _package() {
   )
   optdepends=(
     'wireless-regdb: to set the correct wireless channels of your country'
-    'linux-firmware: firmware images needed for some devices'
   )
   provides=(
     KSMBD-MODULE
