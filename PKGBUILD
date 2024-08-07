@@ -4,13 +4,13 @@
 
 pkgname=blockify-git
 pkgver=3.6.3.r24.g370d321
-pkgrel=1
+pkgrel=2
 pkgdesc="Mutes Spotify advertisements."
 arch=("any")
 url="https://github.com/carlocastoldi/blockify"
 license=("MIT")
-depends=("spotify" "pulseaudio" "alsa-utils" "wmctrl" "libwnck3" "gst-python"
-    "gtk4" "python-dbus" "python-docopt" "gstreamer0.10")
+depends=("spotify" "alsa-utils" "wmctrl" "libwnck3" "gst-python" "gtk4"
+    "python-dbus" "python-docopt" "gstreamer0.10" "pulse-native-provider")
 makedepends=("git" "python-build" "python-installer" "python-wheel"
     "python-setuptools")
 conflicts=("blockify")
