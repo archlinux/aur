@@ -1,7 +1,7 @@
 # MAINTAINER: haagch <christoph.haag@collabora.com>
 
 pkgname=basalt-monado-git
-pkgver=r486.6e98059
+pkgver=r492.ce92fa7
 pkgrel=1
 pkgdesc="Visual-Inertial Mapping with Non-Linear Factor Recovery"
 arch=('i686' 'x86_64')
@@ -15,6 +15,8 @@ source=('git+https://gitlab.freedesktop.org/mateosss/basalt.git#branch=main'
 	'279c17d9c9eb9374c89489b449f92cb93350e8cd.patch')
 sha256sums=('SKIP'
             '04d4185309a72be30f508a9961c54b5cf69da323f54ea754482a79a999914b4c')
+provides=("basalt-monado")
+conflicts=("basalt-monado")
 #options=('debug' '!strip')
 options=('!strip')
 
@@ -26,12 +28,6 @@ pkgver() {
 prepare() {
 	cd "$_pkgname"
 	git submodule update --init --recursive
-
-	# https://github.com/stevenlovegrove/Pangolin/issues/657
-	cd thirdparty/Pangolin
-	git checkout include/pangolin/utils/picojson.h
-	git apply ../../../279c17d9c9eb9374c89489b449f92cb93350e8cd.patch
-	sed -i '1s/^/#include <stdint.h>\n/' include/pangolin/platform.h
 }
 
 build() {
