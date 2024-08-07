@@ -1,0 +1,12 @@
+pkgbase = comelz-quark-git
+	pkgdesc = Simple project management system
+	pkgver = 2024.08.07
+	pkgrel = 1
+	url = https://github.com/comelz/quark
+	arch = any
+	license = MIT
+	source = https://github.com/comelz/quark
+	sha256sums = SKIP
+
+pkgname = comelz-quark-git
+
