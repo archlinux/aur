@@ -16,6 +16,7 @@ depends=(
 )
 makedepends=(
     'fuse2'
+    'asar'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"

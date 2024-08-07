@@ -6,6 +6,7 @@ pkgbase = ooniprobe-desktop-bin
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = fuse2
+	makedepends = asar
 	depends = electron12
 	provides = ooniprobe-desktop=3.9.7
 	conflicts = ooniprobe-desktop
