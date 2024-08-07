@@ -1,4 +1,5 @@
-# Maintainer: Kilian Köppchen <kiliankoeppchen at gmail dot com>
+# Maintainer: Mike H Benton <bikepunk005 at hotmail dot com>
+# Contributor: Kilian Köppchen <kiliankoeppchen at gmail dot com>
 pkgname=libtmx
 provides=('libtmx')
 pkgver=1.10.0
