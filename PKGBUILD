@@ -1,10 +1,10 @@
 # Maintainer: Jasper <j@sperp.dev> -> https://github.com/jaspwr
 
 pkgname=volapplet-git
-pkgver=0.1.1
+pkgver=r39.5c794c0
 pkgrel=1
-pkgdesc="A simple GTK system tray volume controller applet."
-depends=('gtk3' 'pulseaudio')
+pkgdesc="A simple GTK system tray volume controller applet for pulseaudio."
+depends=('gtk3' 'pulse-native-provider')
 makedepends=('rust' 'cargo' 'git')
 license=('GPL3')
 arch=('i686' 'x86_64' 'aarch64')
