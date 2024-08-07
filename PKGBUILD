@@ -6,7 +6,7 @@ pkgdesc="FFmpeg with async and zero-copy Rockchip MPP & RGA support"
 arch=('aarch64')
 url="https://github.com/nyanmisaka/ffmpeg-rockchip"
 license=('GPL2' 'GPL3' 'LGPL3')
-depends=('gcc' 'make' 'yasm' 'pkg-config' 'x264' 'x265' 'libvpx' 'libfdk-aac' 'opus' 'libvorbis' 'libass' 'libwebp' 'libmfx' 'rkmpp-git' 'rkrga-git')
+depends=('gcc' 'make' 'yasm' 'pkg-config' 'x264' 'x265' 'libvpx' 'libfdk-aac' 'opus' 'libvorbis' 'libass' 'libwebp' 'rkmpp-git' 'rkrga-git')
 makedepends=('git')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
@@ -28,7 +28,6 @@ build() {
               --enable-libvorbis \
               --enable-libass \
               --enable-libwebp \
-              --enable-libmfx \
               --enable-rkmpp \
               --enable-rkrga
   make
