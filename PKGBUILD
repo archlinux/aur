@@ -5,7 +5,7 @@
 
 pkgname=ditana-koboldcpp
 pkgver=1.72
-pkgrel=12
+pkgrel=13
 pkgdesc="A systemd service that runs KoboldCpp with the gemma language model locally, giving you AI chat privately on your PC."
 arch=('x86_64')
 url="https://github.com/LostRuins/koboldcpp"
@@ -62,7 +62,7 @@ package() {
     install -Dm644 "$srcdir/gemma-2-2b-it-Q6_K.gguf" "$pkgdir/usr/share/koboldcpp/models/gemma-2-2b-it-Q6_K.gguf"
     install -Dm644 "$srcdir/logical_sampler_gemma_instruct.json" "$pkgdir/usr/share/koboldcpp/logical_sampler_gemma_instruct.json"
     install -Dm644 "$srcdir/koboldcpp.service" "$pkgdir/usr/lib/systemd/system/koboldcpp.service"
-    install -Dm644 "$srcdir/koboldcpp.desktop" "$pkgdir/usr/share/applications/koboldcpp.desktop"
-    install -Dm644 "$srcdir/koboldcpp.desktop" "$pkgdir/etc/skel/Desktop/koboldcpp.desktop"
+    install -Dm755 "$srcdir/koboldcpp.desktop" "$pkgdir/usr/share/applications/koboldcpp.desktop"
+    install -Dm755 "$srcdir/koboldcpp.desktop" "$pkgdir/etc/skel/Desktop/koboldcpp.desktop"
     install -Dm644 "$srcdir/koboldcpp.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/koboldcpp.svg"
 }
