@@ -1,5 +1,5 @@
 # Maintainer: jojo7682345 <jojo7682345@gmail.com>
-pkgname=avBuilder-git
+pkgname=avbuilder-git
 pkgver=v0.1.1
 pkgrel=1
 pkgdesc="A flexible build system written in C"
