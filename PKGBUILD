@@ -4,34 +4,35 @@
 
 pkgname=sdrsharp
 pkgver=1.0.0.1457
-pkgrel=2
+pkgrel=3
 pkgdesc="The most popular SDR program"
 arch=(i686 x86_64)
 url="https://airspy.com"
 license=(LicenseRef-SDRSharp) # It's basically identical to MS-RSL (which may not be suitable for binaries)
 depends=(alsa-lib bash hicolor-icon-theme mono portaudio rtl-sdr)
 makedepends=(icoutils unzip)
-source=("${pkgname}.zip::https://ftp.desolve.ru/pub/sdrsharp/SDRSharp_v${pkgver:(-4)}.zip"
+source=("${_sdrsharp}.zip::https://www.iz3mez.it/software/SDRSharp/SDRSharp_v${pkgver:(-4)}.zip"
         "sdrsharp_wrapper"
         "${pkgname}.desktop"
         "adsbspy.desktop"
         "airspycalibrate.desktop"
         "astrospy.desktop"
         "spectrumspy.desktop")
-noextract=("${pkgname}.zip")
+noextract=("${_sdrsharp}.zip")
 sha256sums=('bdf853040110dbd72720cb63b7696d574e3b00d739b17839e8d93cab3e1df400'
-            'b092a951d28cb52937d495715a7c587eb6f7bf428467338e054e07e4880ee8a7'
+            '73dc175933eff0d50494fb6c912519ac85a5a499f93b75ff7b80e77ef9de7f31'
             '38e7208e368cb27df6bb639e650726d057739bf88638a2536a32f540721a588f'
             '1501543afc7475bed9f790398aa9a8c3bb70da3750a6de02a946a9b744e2a668'
             'cfb7f32fcba96f47e770c6388819d4d88c7565afae5734cbb16e85f0742843d3'
             '886ea5ebcfef1d738a258317347cfeebc004ffa7831c91e792d4b84be8844fc8'
             '93363a6df201bf73834ded017874485188898c11122cf8a22f30e2a8f6377b08')
 install="${pkgname}.install"
+_sdrsharp="${pkgname}-${pkgver}"
 
 prepare() {
   echo "Extracting SDRSharp archive..."
-  unzip -q -o ${pkgname}.zip -d ${pkgname}
-  cd ${pkgname}
+  unzip -q -o ${_sdrsharp}.zip -d ${_sdrsharp}
+  cd ${_sdrsharp}
 
   rm httpget.exe install-rtlsdr.bat unzip.exe
 }
@@ -40,13 +41,13 @@ build() {
   mkdir build || true
 
   # compile and optimize executables
-  mono --aot --optimize=all ${pkgname}/*.exe
-  mv ${pkgname}/*.exe.so build
+  mono --aot --optimize=all ${_sdrsharp}/*.exe
+  mv ${_sdrsharp}/*.exe.so build
 }
 
 package() {
   # install stuff
-  install -Dm644 "${srcdir}"/${pkgname}/* -t "${pkgdir}"/opt/${pkgname}
+  install -Dm644 "${srcdir}"/${_sdrsharp}/* -t "${pkgdir}"/opt/${pkgname}
   install -Dm644 "${srcdir}"/build/*.exe.so "${pkgdir}"/opt/${pkgname} || true
 
   cd "${pkgdir}"/opt/${pkgname}

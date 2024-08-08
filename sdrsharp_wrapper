@@ -20,4 +20,7 @@ if [ -L /opt/sdrsharp/"${_PROGRAM}".exe.config ]; then
   [ -f "$SDR_CONFIG_HOME"/"${_PROGRAM}".exe.config ] || cp /usr/share/sdrsharp/"${_PROGRAM}".exe.config "$SDR_CONFIG_HOME"/"${_PROGRAM}".exe.config
 fi
 
+# Disable the problematic GTK theming support
+export GTK_DATA_PREFIX=
+
 exec mono /opt/sdrsharp/"${_PROGRAM}".exe "$@"
