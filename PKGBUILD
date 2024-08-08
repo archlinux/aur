@@ -22,12 +22,6 @@ makedepends=('git' 'stack' 'pandoc' 'yq')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
-pkgver() {
-    cd "$pkgname"
-    git describe --match='*[0-9]' --tags --long \
-        | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 _rmDep() {
     yq -i --yaml-output --arg pkg "$1" \
         "$(cat <<'EOF'
@@ -54,6 +48,12 @@ __repo() {
 __kv() { jq -cn '{$key: $val}' --arg key "$1" --arg val "$2"; }
 _bumpGH() { _bump "$1" "$(__repo "$(__kv github "$2")" "${@:3}")"; }
 
+pkgver() {
+    cd "$pkgname"
+    git describe --match='*[0-9]' --tags --long \
+        | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
     cd "$pkgname"
     stack config set resolver lts-22.22 # ghc-9.6.5
@@ -77,12 +77,6 @@ prepare() {
         pandoc-crossref.cabal package.yaml
 }
 
-check() {
-    cd "$pkgname"
-
-    stack test
-}
-
 build() {
     cd "$pkgname"
 
@@ -92,6 +86,12 @@ build() {
         --flag 'pandoc:embed_data_files' \
         --fast
     pandoc -s -t man docs/index.md -o pandoc-crossref.1
+}
+
+check() {
+    cd "$pkgname"
+
+    stack test
 }
 
 package() {
