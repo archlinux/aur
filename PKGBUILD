@@ -5,8 +5,8 @@
 
 pkgname=python-wsgi-intercept
 _name=${pkgname#python-}
-pkgver=1.13.0
-pkgrel=4
+pkgver=1.13.1
+pkgrel=1
 pkgdesc="Intercept socket connection to wsgi applications for testing"
 arch=(any)
 url="https://github.com/cdent/wsgi-intercept"
@@ -25,16 +25,12 @@ checkdepends=('python-httplib2'
 optdepends=('python-httplib2: for intercepting requests of python-httplib2'
             'python-requests: for intercepting requests of python-requests'
             'python-urllib3: for intercepting requests of python-urllib3')
-source=("$_name-$pkgver.tar.gz::https://api.github.com/repos/cdent/$_name/tarball/refs/tags/v$pkgver"
-        "tmp-path-to-pass-all-unit-tests.diff")
-b2sums=('57ed44e6dd1bdf70193a4920da15b8e0dd2c5dd41a61efedf6f9aaf4778114519c7766dec9a3f42690dce4be061785fd62c1f1e847d9d6f034dfe1846b454f19'
-        'b7b9b0352aadabb2c72c2f2fd66a98de7e792992bd72f78eb96877658dfe596a044421bcfde7d9e5bf3517f1e7fea1c1dfe4cd7a3c6ac4dc3e77faa039a25f67')
+source=("$_name-$pkgver.tar.gz::https://api.github.com/repos/cdent/$_name/tarball/refs/tags/v$pkgver")
+b2sums=('ae4e93ae04d86caa3a7787969e5806a386aae78b3c4369e00de211383a78aa9e213ff67ab8c7f6de7c0fef046ea63fb80c3fceb401ea956ba79af87097ed8ee8')
 
 prepare() {
     tar zxvf "$_name-$pkgver.tar.gz" --strip-components=1 --one-top-level
     cd "$_name-$pkgver"
-    patch --forward --strip 1 --input ../tmp-path-to-pass-all-unit-tests.diff
-
 }
 
 build() {
