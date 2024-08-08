@@ -3,7 +3,7 @@
 
 pkgname=tracy-x11
 pkgver=0.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Real-time, nanosecond resolution frame profiler"
 arch=('i686' 'x86_64')
 url="https://github.com/wolfpld/tracy"
@@ -30,7 +30,7 @@ build() {
   make -C import-chrome/build
   cmake -S import-fuchsia -B import-fuchsia/build -D CMAKE_BUILD_TYPE=Release -D DOWNLOAD_CAPSTONE=OFF
   make -C import-fuchsia/build
-  cmake -S profiler -B profiler/build -D CMAKE_BUILD_TYPE=Release -D DOWNLOAD_CAPSTONE=OFF
+  cmake -S profiler -B profiler/build -D CMAKE_BUILD_TYPE=Release -D DOWNLOAD_CAPSTONE=OFF -D LEGACY=ON
   make -C profiler/build
   cmake -S update -B update/build -D CMAKE_BUILD_TYPE=Release -D DOWNLOAD_CAPSTONE=OFF
   make -C update/build
