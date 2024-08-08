@@ -22,7 +22,7 @@ optdepends=(
 provides=('kotlin-native')
 conflicts=('kotlin-native' 'kotlin-native-git')
 source=(
-  "https://github.com/JetBrains/kotlin/releases/download/v${pkgver}/kotlin-native-linux-x86_64-${pkgver}.tar.gz"
+  "https://github.com/JetBrains/kotlin/releases/download/v${pkgver}/kotlin-native-prebuilt-linux-x86_64-${pkgver}.tar.gz"
 )
 sha256sums=(
   'ef16c941c87de1d59b8a7fc011a76e9c752e0ecea8a5cf06926615b4523be45e'
