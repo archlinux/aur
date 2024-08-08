@@ -1,6 +1,6 @@
 pkgname=gpt4all-chat
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="run open-source LLMs anywhere"
 arch=("x86_64")
 url="https://gpt4all.io"
@@ -13,8 +13,9 @@ makedepends=(
     "qt6-tools" "qt6-wayland" "fmt")
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/nomic-ai/gpt4all/archive/refs/tags/v$pkgver.tar.gz"
+    "https://gpt4all.io/models/gguf/nomic-embed-text-v1.5.f16.gguf"
     "001-change-binary-name.diff"
-    "002-disable-downloading-model.diff"
+    "002-install-and-load-localdocs-model-more-standardly.diff"
 )
 declare -rAg _modules_name_map=(
     [gpt4all-backend/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/c6546b0544ad2c01e8a1630b101e92336a68b036.tar.gz
@@ -41,8 +42,9 @@ do
     fi
 done
 sha256sums=('da5ce43c0dbc72611d7b0f075acac55023bc7b5bd9f6799f6a72fd01f38b0ff9'
-            '11b0dc92cff31b9eb857d6c9d0f58ebed7bad4a01faf220d66c0d2bc9cbb9593'
-            'a01b1bcf4f184a98405bfb3a848b96114b03a5c59d37927dfc47d061fe0aa25d'
+            'f7af6f66802f4df86eda10fe9bbcfc75c39562bed48ef6ace719a251cf1c2fdb'
+            'ebc6a571e828e8b31b390172374fe3667e719f6de286860934c6f6d6bfc293d3'
+            '29f37d9a314e5c7abe572d9fd2c5dda9dfdfcf710ba09128888e30e3c7f56e23'
             'b16fc2ee15a1df76e0459df32905285c94fb59135595ccbff2095167c3c865a1'
             'b5c35b9e64abe4968bd887128d94e02272072b44267c58a057a08971e3ca6806'
             '400070f7f8828256a4dd7434e5ac1d254acfcd7e3e298dc82d20347bb597693d'
@@ -81,7 +83,8 @@ prepare() {
         fi
     done
     patch -Np1 -i ../001-change-binary-name.diff
-    patch -Np1 -i ../002-disable-downloading-model.diff
+    patch -Np1 -i ../002-install-and-load-localdocs-model-more-standardly.diff
+    sed -i "s|https://gpt4all.io/models/gguf|file://$srcdir|" gpt4all-chat/CMakeLists.txt
 }
 build() {
     cmake -B build-chat -S "$srcdir/gpt4all-$pkgver/gpt4all-chat" \
@@ -89,6 +92,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_SKIP_INSTALL_RPATH=ON \
+        -DGPT4ALL_TRANSLATIONS=ON \
         -DKOMPUTE_OPT_BUILD_SHADERS=ON \
         -DKOMPUTE_OPT_DISABLE_VULKAN_VERSION_CHECK=ON \
         -DKOMPUTE_OPT_USE_BUILT_IN_FMT=OFF \
