@@ -42,7 +42,10 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgsrc}/include"
+  cd "${srcdir}/${_pkgsrc}"
+  sed -i 's/1\.3\.7/1.0.3.7/g' "COPYING"
+
+  cd "include"
   for _patch in "${srcdir}/${_pkgname}_fix_boost_timer_"*".patch"; do
     patch -p1 -i "${_patch}"
   done
