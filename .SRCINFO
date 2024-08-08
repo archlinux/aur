@@ -1,7 +1,7 @@
 pkgbase = gyroflow
 	pkgdesc = Video stabilization using gyroscope data
 	pkgver = 1.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gyroflow/gyroflow
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -21,7 +21,7 @@ pkgbase = gyroflow
 	provides = gyroflow=1.5.4
 	conflicts = gyroflow
 	options = !lto
-	source = gyroflow::git+https://github.com/gyroflow/gyroflow.git#commit=d6622f281fc72e8b68d5a5db9dacef49f7331678
+	source = gyroflow::git+https://github.com/gyroflow/gyroflow.git#commit=41005c8c15a8143f58e2abf38830103a742416af
 	sha256sums = SKIP
 
 pkgname = gyroflow

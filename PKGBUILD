@@ -5,10 +5,14 @@
 # https://gyroflow.xyz
 # https://github.com/gyroflow/gyroflow
 
+## options
+: ${_commit=41005c8c15a8143f58e2abf38830103a742416af} # 1.5.4.r338
+
+## basic info
 _pkgname="gyroflow"
 pkgname="$_pkgname"
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Video stabilization using gyroscope data"
 url="https://github.com/gyroflow/gyroflow"
 license=("GPL-3.0-or-later")
@@ -38,8 +42,6 @@ provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
 options=(!lto)
-
-_commit=d6622f281fc72e8b68d5a5db9dacef49f7331678 # 1.5.4.r283
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
