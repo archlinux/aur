@@ -1,0 +1,14 @@
+pkgbase = bertini2-docs
+	pkgdesc = HTML documentation for Betini2
+	pkgver = 2.0.alpha8
+	pkgrel = 1
+	url = https://github.com/bertiniteam/b2
+	arch = any
+	license = custom:GPL-3.0-or-later WITH Bertini2-Additional-GPL-Terms
+	makedepends = doxygen
+	makedepends = plantuml
+	makedepends = graphviz
+	source = b2-d21f2b3cbd93cd6dbae9b9306b8d7b0e765a5a91.tar.gz::https://github.com/bertiniteam/b2/archive/d21f2b3cbd93cd6dbae9b9306b8d7b0e765a5a91.tar.gz
+	sha256sums = 41471b4e0b4aeab92c0a1402bd21da9c69cfdf1c787d92eb80d35bb0b9db62f4
+
+pkgname = bertini2-docs
