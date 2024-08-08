@@ -1,7 +1,7 @@
 # Maintainer: hr567 <hr567@hr567.me>
 # Maintainer: HaroldLoui <Riven970309@gmail.com>
 pkgname=apifox
-pkgver=2.6.3
+pkgver=2.6.7
 pkgrel=1
 pkgdesc="API 文档、API 调试、API Mock、API 自动化测试"
 arch=("x86_64")
