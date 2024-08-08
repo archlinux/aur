@@ -2,14 +2,14 @@
 # Maintainer: Rene Peinthor <peinthor@gmail.com>
 
 pkgname=drbd-utils-git
-pkgver=9.3.1
-pkgrel=2
-arch=('x86_64')
+pkgver=9.28.0
+pkgrel=1
+arch=('x86_64' 'i686')
 pkgdesc='Userland tools for Distributed Replicated Block Device. (Git)'
 url='https://www.drbd.org'
 license=('GPL2')
-depends=('perl' 'bash' 'po4a')
-makedepends=('git' 'libxslt' 'systemd')
+depends=('bash')
+makedepends=('git' 'libxslt' 'systemd' 'po4a')
 provides=('drbd-utils=${pkgver}')
 conflicts=('drbd-utils')
 replaces=('drbd-utils')
@@ -22,6 +22,7 @@ prepare() {
   cd $srcdir/drbd-utils
   git submodule init
   git -c protocol.file.allow=always submodule update
+  sed -i -e "s: -Wshadow: -Wshadow $LDFLAGS:" user/drbdmon/Makefile.in
 }
 
 build() {
@@ -41,8 +42,8 @@ build() {
     --without-pacemaker \
     --without-heartbeat \
     --without-83support \
-    --without-xen \
-    --without-manual
+    --without-manual \
+    --without-xen
   make
 }
 
@@ -51,17 +52,14 @@ package() {
 
   cd "$pkgdir"
 
-  # move /lib files under /usr/lib
-  mv lib/drbd/* usr/lib/drbd
-  rmdir lib/drbd lib
-
   # move bash completion
   install -dm 755 usr/share/bash-completion
   mv etc/bash_completion.d usr/share/bash-completion/completions
 
-  # remove /var/lock
-  rmdir var/lock
-  rmdir var/run/drbd var/run
+  # remove /var establish /var/lib/drbd when installed
+  rm -r var
+  install -Dm 644 /dev/null usr/lib/tmpfiles.d/drbd.conf
+  echo "d /var/lib/drbd" >usr/lib/tmpfiles.d/drbd.conf
 
   # autoload module
   install -Dm 644 /dev/null usr/lib/modules-load.d/drbd.conf
