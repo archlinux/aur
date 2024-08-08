@@ -1,0 +1,2 @@
+ACTION=="change", KERNEL=="qcom-battmgr-bat", ATTR{status}=="Charging", RUN+="/usr/bin/tlp ac"
+ACTION=="change", KERNEL=="qcom-battmgr-bat", ATTR{status}=="Discharging", RUN+="/usr/bin/tlp bat"

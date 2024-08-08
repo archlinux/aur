@@ -1,0 +1,11 @@
+_reload() {
+	udevadm control --reload
+}
+
+post_install() {
+	_reload
+}
+
+post_remove() {
+	_reload
+}

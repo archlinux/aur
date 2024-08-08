@@ -1,0 +1,13 @@
+pkgbase = qcom-battery-tlp-switch-udev
+	pkgdesc = Udev rule to auto switch TLP modes on Qualcomm platforms like the Thinkpad X13s
+	pkgver = 1.0
+	pkgrel = 1
+	install = qcom-battery-tlp-switch-udev.install
+	arch = aarch64
+	license = MIT
+	depends = udev
+	depends = tlp
+	source = 99-qcom-battery-tlp-switch.rules
+	sha256sums = c6ef7f855982f1cdc7520a2532ee37381650c05aa9626a075ca40e31ca3b37bc
+
+pkgname = qcom-battery-tlp-switch-udev
