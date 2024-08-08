@@ -13,8 +13,8 @@ makedepends=('asar')
 install=$_pkgname.install
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/mihomo-party-linux-${pkgver}-amd64.deb")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/mihomo-party-linux-${pkgver}-arm64.deb")
-sha256sums_x86_64=("43f8b9a5818a722cdb8e5044d2a90993274860b0da96961e1a2652169539ce39")
-sha256sums_aarch64=("18574fdeb01877a629aa52ac0175335ce27c83103db4fcb2f1ad69e3e42ee10f")
+sha256sums_x86_64=("ec0e60e652fff0c5f64ab5167b4d417b0826a87afa1df07a63c6959a258b1ad5")
+sha256sums_aarch64=("d5e26b8343d95566ac24d3ae6536571c326c0d07f9cc92d851eb589d00a525e7")
 options=('!lto')
 
 package() {
