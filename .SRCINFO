@@ -39,7 +39,7 @@ pkgbase = doom3
 	depends_i686 = libstdc++5
 	optdepends_i686 = alsa-plugins: pulseaudio-support
 	optdepends_i686 = libpulse: pulseaudio support
-	makedepends_i686 = python2-scons
+	makedepends_i686 = scons2
 	makedepends_i686 = zip
 	depends_x86_64 = lib32-libgl
 	depends_x86_64 = lib32-alsa-lib
@@ -48,9 +48,8 @@ pkgbase = doom3
 	depends_x86_64 = lib32-libstdc++5
 	optdepends_x86_64 = lib32-alsa-plugins: pulseaudio-support
 	optdepends_x86_64 = lib32-libpulse: pulseaudio support
-	makedepends_x86_64 = python2-scons
+	makedepends_x86_64 = scons2
 	makedepends_x86_64 = gcc-multilib
 	makedepends_x86_64 = zip
 
 pkgname = doom3
-

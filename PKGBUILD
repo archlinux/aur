@@ -12,13 +12,13 @@ url='https://doom.com/'
 license=('custom:"DOOM 3"')
 arch=('i686' 'x86_64')
 depends_i686=('libgl' 'alsa-lib' 'openal' 'libxxf86vm' 'libstdc++5')
-makedepends_i686=('python2-scons' 'zip')
+makedepends_i686=('scons2' 'zip')
 optdepends_i686=(
     'alsa-plugins: pulseaudio-support'
     'libpulse: pulseaudio support'
 )
 depends_x86_64=('lib32-libgl' 'lib32-alsa-lib' 'lib32-openal' 'lib32-libxxf86vm' 'lib32-libstdc++5')
-makedepends_x86_64=('python2-scons' 'gcc-multilib' 'zip')
+makedepends_x86_64=('scons2' 'gcc-multilib' 'zip')
 optdepends_x86_64=(
     'lib32-alsa-plugins: pulseaudio-support'
     'lib32-libpulse: pulseaudio support'
