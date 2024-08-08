@@ -1,11 +1,12 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Gonçalo Pereira
 # Contributor: Jason Kercher <jkercher43 a gmail>
 # Contributor: Peter Ivanov <ivanovp@gmail.com>
 # Contributor: Alec Ari <neotheuser@ymail.com>
 
 pkgname=linuxcnc
 pkgver=2.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=(x86_64)
 license=(GPL2 'custom: unredestributable')
@@ -25,7 +26,7 @@ sha256sums=('061d78ad404492fe80fbc013dfd3138c9a31d0c8e38e0a4e4eaa36d40efce816'
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}/src"
-  echo "export TCLLIBPATH="$TCLLIBPATH  /usr/lib/tcltk/linuxcnc"" > ${pkgname}.sh
+  echo "[[ ":\$TCLLIBPATH:" != *":/usr/lib/tcltk/linuxcnc:"* ]] && export TCLLIBPATH="/usr/lib/tcltk/linuxcnc:\$TCLLIBPATH"" > ${pkgname}.sh
   find . -iname fixpaths.py -o -iname checkglade -o \
    -iname update_ini | xargs perl -p -i -e "s/python/python2/"
   patch -Np2 -i $srcdir/libtirpc.patch
