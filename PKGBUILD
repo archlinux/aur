@@ -2,7 +2,7 @@
 
 _pkgname="vault-unseal"
 pkgname="${_pkgname}-bin"
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Auto-unseal utility for Hashicorp Vault"
 arch=('x86_64' 'aarch64' 'armv6h')
@@ -11,19 +11,20 @@ license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-source=("${url}/raw/v${pkgver}/"{README.md,LICENSE})
+source=("README-${pkgver}.md::${url}/raw/v${pkgver}/README.md"
+        "LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 source_x86_64=("${_pkgsrc}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}_linux_amd64")
 source_aarch64=("${_pkgsrc}-aarch64::${url}/releases/download/v${pkgver}/${_pkgname}_linux_arm64")
 source_armv6h=("${_pkgsrc}-armv6h::${url}/releases/download/v${pkgver}/${_pkgname}_linux_armv6")
-sha256sums=('e35c5b1a03e4b01dc9b7c70e9c52e9a2dc9cc7e8939cedea985018a35df1e939'
-            'd040ad47a68cd4a002e148921ee7adaed03ae27e56f7911087de3a928d3af0e3')
-sha256sums_x86_64=('f1a98f4af61efd252f1eea803e88499c04261a4704bb87bd66e48be70044f77f')
-sha256sums_aarch64=('863684fb963055a8fe047b2fcd303b0fe4bef4702344381d4f0a088acff2ca42')
-sha256sums_armv6h=('3f171449824da3bdd63b3527407eef1d0558246a4ec9f97e5b33c5b89ed13b16')
+sha256sums=('e577a885a220b8ac2653154c0579f1e80dd26ef770bcd157f1939b79371ce33d'
+            '22d93750efb7875342ea064b53b257af2ab534d304e3bf613e968edf018799eb')
+sha256sums_x86_64=('67d5afab02a86b1dc1525c4f5c371f22daee587ce4d5631c6c9f5f61d3fa9cd8')
+sha256sums_aarch64=('4327955144eb280401db9b5758ef33ce2c32b2afd5cd38e14684a822f8f9ebdb')
+sha256sums_armv6h=('7b37e0066d7e124ef3ca4119a2b0a566fdc0ba5c68daf1c3ea27c7719a4ab059')
 
 package() {
   cd "${srcdir}"
   install -Dm755 "${_pkgsrc}-${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dm644 "LICENSE-${pkgver}"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
