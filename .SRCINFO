@@ -21,12 +21,6 @@ pkgbase = hardware-audio-processing-git
 	depends = noise-suppression-for-voice
 	source = git+https://gitlab.com/evlaV/valve-hardware-audio-processing.git
 	source = 001-lib64-ladspa.patch
-	source = 002-confdir.patch
-	source = pipewire-workaround.service
-	source = wireplumber-workaround.service
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 
