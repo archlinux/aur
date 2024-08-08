@@ -16,10 +16,9 @@ prepare() {
 	chmod +x *.AppImage
 	./*.AppImage --appimage-extract
 	mv squashfs-root/* ./
-	rm -rf ./usr/{lib,share/glib-2.0}
-	find ./usr/bin -type f ! -name 'caido' -exec rm -f {} +
 }
 
 package() {
-	cp -av usr $pkgdir/
+	cp caido $pkgdir/
+	cp -a usr $pkgdir/
 }
