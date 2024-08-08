@@ -1,7 +1,7 @@
 pkgbase = asterisk-espeak
 	pkgdesc = Asterisk module that provides the "eSpeak" dialplan application. It allows you to use the eSpeak text to speech synthesizer.
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zaf/asterisk-espeak
 	arch = i686
 	arch = x86_64
