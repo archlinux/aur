@@ -3,7 +3,7 @@
 # Contributor: witchymary
 
 pkgname=aegisub-arch1t3cht-git
-pkgver=3.2.2.r1183.cb930ab6b
+pkgver=3.2.2.r1188.bf20c62e6
 pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('aegisub')
 depends=('alsa-lib'
          'boost-libs'
          'ffmpeg'
-         # 'ffms2'
+         'ffms2'
          'fftw'
          'fontconfig'
          'hicolor-icon-theme'
@@ -37,7 +37,6 @@ optdepends=('vapoursynth: VapourSynth source support'
             'vapoursynth-plugin-wwxd: VapourSynth plugin for keyframe generation'
             'vapoursynth-plugin-scxvid: VapourSynth plugin for keyframe generation')
 source=("${pkgname}::git+https://github.com/arch1t3cht/Aegisub.git#branch=feature"
-        "${pkgname}-ffms2::git+https://github.com/FFMS/ffms2.git"
         "${pkgname}-bestsource::git+https://github.com/vapoursynth/bestsource.git#tag=R4"
         "${pkgname}-libp2p::git+https://bitbucket.org/the-sekrit-twc/libp2p.git#commit=1e3818bd7277165819f659d410873fe5dab37af6"
         "${pkgname}-avisynth::git+https://github.com/AviSynth/AviSynthPlus.git#tag=v3.7.2"
@@ -48,11 +47,10 @@ source=("${pkgname}::git+https://github.com/arch1t3cht/Aegisub.git#branch=featur
 noextract=("${pkgname}-gtest-1.8.1.zip"
            "${pkgname}-gtest-1.8.1-1-wrap.zip")
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
+            '5974525134da931526b09b0d1cc0348bd57f8bc760b204458ee664e057811bb9'
+            'e7a3c026a9021dc3cb33fa949d8c2aa90c256a36d3a198abed3e11ade87de1d5'
+            '5e3a79b7269b04f199b1e84fa87042d426391f11b4721d4d1e2d6256234c5507'
+            '08803fc79758494671af1029e9178c73e717393a745075a45337d56dfa1aad6c'
             'SKIP'
             '927827c183d01734cc5cfef85e0ff3f5a92ffe6188e0d18e909c5efebf28a0c7'
             'f79f5fd46e09507b3f2e09a51ea6eb20020effe543335f5aee59f30cc8d15805')
@@ -73,9 +71,6 @@ prepare() {
   if [ -d build ]; then
     MESON_FLAGS='--reconfigure'
   else
-    # Initialize subproject wraps for ffms2
-    ln -s ../../"${pkgname}-ffms2" subprojects/ffms2
-
     # Initialize subproject wraps for bestsource
     ln -s ../../"${pkgname}-bestsource" subprojects/bestsource
 
@@ -98,7 +93,6 @@ prepare() {
     ln -s ../../../"${pkgname}-gtest-1.8.1-1-wrap.zip" subprojects/packagecache/gtest-1.8.1-1-wrap.zip
   fi
 
-  meson subprojects packagefiles --apply ffms2
   meson subprojects packagefiles --apply bestsource
   meson subprojects packagefiles --apply avisynth
   meson subprojects packagefiles --apply vapoursynth
@@ -127,11 +121,11 @@ prepare() {
   )
   local BUILDTYPE="$(check_makepkg_options 2> /dev/null)"
 
-  # Disabling LTO because it seems to lead to crashing aegisub scripts for some people (https://aur.archlinux.org/packages/aegisub-arch1t3cht-git#comment-911741)
+  # Disabling LTO because it seems to lead to crashing aegisub scripts for some people
+  # (https://aur.archlinux.org/packages/aegisub-arch1t3cht-git#comment-911741)
   arch-meson --buildtype="${BUILDTYPE}" \
     -D b_lto=false \
     -D default_audio_output="${AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT}" \
-    --force-fallback-for=ffms2 -D ffms2:default_library=static \
     -D bestsource:default_library=static ${MESON_FLAGS} \
     build
 }
@@ -143,6 +137,8 @@ build() {
 
 package() {
   cd "${pkgname}"
+  # Skip bestsource to avoid conflict with official package
+  # (https://aur.archlinux.org/packages/aegisub-arch1t3cht-git#comment-979303)
   meson install --skip-subprojects bestsource -C build --destdir "${pkgdir}"
   install -Dm644 LICENCE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
