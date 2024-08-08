@@ -3,7 +3,7 @@
 _name="bertini_real"
 _pkgname="python-${_name}"
 pkgname="${_pkgname}-git"
-pkgver=1.6.1.r1517.58a8faa
+pkgver=1.7.1.r1517.58a8faa
 pkgrel=1
 pkgdesc="Python interface for Bertini_real"
 arch=('any')
@@ -28,8 +28,8 @@ pkgver() {
   local rev_count=$(git rev-list --count HEAD)
   local short_hash=$(git rev-parse --short=7 HEAD)
 
-  cd "${srcdir}/${_pkgsrc}"
-  local version=$(sed -n 's/AC_INIT(\[bertini_real\],\[\([^]]*\)\],.*/\1/p' "configure.ac")
+  cd "${srcdir}/${_pkgsrc}/python/${_name}"
+  local version=$(sed -n "s/^__version_info__ = (\(.*\))/\1/p" "__about__.py" | sed "s/, /./g")
 
   printf "%s.r%s.%s" "${version}" "${rev_count}" "${short_hash}"
 }
