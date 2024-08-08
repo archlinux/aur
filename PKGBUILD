@@ -1,12 +1,13 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=firefox-tridactyl-native-bin
-pkgver=1.24.0
+pkgver=1.24.1
 _nativever=0.4.1
 pkgrel=1
 pkgdesc="Tridactyl native messaging host application for Firefox (native: $_nativever)"
 arch=('x86_64')
 url=https://github.com/tridactyl/tridactyl
-license=('Apache')
+license=('BSD-2-Clause')
+depends=('glibc')
 provides=('firefox-tridactyl-native')
 conflicts=('firefox-tridactyl-native')
 source=("https://github.com/tridactyl/native_messenger/releases/download/$_nativever/native_main-Linux"
