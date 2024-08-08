@@ -1,0 +1,11 @@
+[Unit]
+Description=A dynamic dns client
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/dness -c /etc/dness.conf
+
+[Install]
+WantedBy=multi-user.target

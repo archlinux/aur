@@ -1,0 +1,11 @@
+pkgbase = dness-bin
+	pkgdesc = A dynamic dns client
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://github.com/nickbabcock/dness
+	arch = x86_64
+	license = MIT
+	source = https://github.com/nickbabcock/dness/releases/download/v0.5.6/dness-0.5.6-x86_64-unknown-linux-musl.tar.gz
+	sha512sums = e1cfbc1d63dd839b7a6e491474da32f0b1e6ed8aab98a5ef6d8e75add4cdf8b25fd323da482eb0ff571c98b939db583b045d60360d45762dab174ebbb9df2d72
+
+pkgname = dness-bin

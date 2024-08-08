@@ -1,0 +1,10 @@
+[Unit]
+Description=Pacman Auto Update Timer
+
+[Timer]
+OnBootSec=5min
+OnUnitInactiveSec=5min
+Unit=dness.service
+
+[Install]
+WantedBy=multi-user.target
