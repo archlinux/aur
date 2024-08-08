@@ -1,7 +1,7 @@
 # Maintainer: Schorsch <wsixcde+aur at gmail dot com>
 # Thanks to <mti at tillenius dot com> whose packages the ps7b packages were based on
 pkgname=ps7b_libps4000
-pkgver=2.1.141_2r6044
+pkgver=2.1.146_2r6147
 pkgrel=1
 pkgdesc="Library for PicoScope 4000 series in PicoScope 7 Beta"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=(!strip)
 install=$pkgname.install
 changelog=
 source=("https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps4000/libps4000_${pkgver//_/-}_amd64.deb")
-md5sums=('e887f2c3964e14a5efd30742c414c598')
+md5sums=('d7c8d57a0908e2a7bc71bf660e5475c4')
 
 package() {
   tar -xf data.tar.xz -C "${pkgdir}"
