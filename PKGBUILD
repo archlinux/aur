@@ -2,7 +2,7 @@
 # Contributor: Asuka Minato
 pkgname=caido-desktop
 pkgver=0.40.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight web security auditing toolkit."
 arch=('x86_64')
 url="https://caido.io/"
@@ -15,10 +15,19 @@ sha256sums=('88d862b4235cdb6d69630706fb4ec6bcff9b9d376d406163b25a10e4fb61da5d')
 prepare() {
 	chmod +x *.AppImage
 	./*.AppImage --appimage-extract
-	mv squashfs-root/* ./
+	mv squashfs-root/ ${srcdir}/build
 }
 
 package() {
-	cp caido $pkgdir/
-	cp -a usr $pkgdir/
+	install -dm 755 "$pkgdir/usr/bin"
+	install -dm 755 "$pkgdir/opt/$pkgname"
+
+	cp -a "${srcdir}/build/usr/share" "$pkgdir"
+	cp -aR "${srcdir}/build"/* "$pkgdir/opt/$pkgname/"
+	ln -s "/opt/$pkgname/caido" "$pkgdir/usr/bin/$provides"
+	find "$pkgdir/opt/$pkgname" -type d -exec chmod 755 {} +
+
+	sed -i 's|Exec=AppRun --no-sandbox %U|Exec=caido|' "build/caido.desktop"
+	install -Dm 644 "build/caido.desktop" -t "$pkgdir/usr/share/applications/"
+	install -Dm 644 "build/caido.png" -t "$pkgdir/usr/share/icons/hicolor/256x256/apps/"
 }

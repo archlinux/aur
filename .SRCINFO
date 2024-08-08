@@ -1,7 +1,7 @@
 pkgbase = caido-desktop
 	pkgdesc = A lightweight web security auditing toolkit.
 	pkgver = 0.40.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://caido.io/
 	arch = x86_64
 	license = private
