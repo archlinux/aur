@@ -9,7 +9,6 @@ url="https://github.com/jojo7682345/avBuilder.git"
 license=('GPL')
 makedepends=(git)
 provides=(avBuilder)
-install=${pkgname}.install
 source=("git+$url")
 md5sums=('SKIP') 
 
