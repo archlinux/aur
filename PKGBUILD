@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver(){
   cd "avBuilder"
-  printf "v0.1-r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
+  printf "v0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
 }
 
 build() {
