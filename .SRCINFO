@@ -1,6 +1,6 @@
 pkgbase = tomato-radio-automation
 	pkgdesc = Tomato Radio Automation desktop client. Dead simple radio ads.
-	pkgver = 0.8.5
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://dtcooper.github.io/tomato/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tomato-radio-automation
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
-	source = tomato-radio-automation-0.8.5.tar.gz::https://github.com/dtcooper/tomato/archive/refs/tags/v0.8.5.tar.gz
-	sha256sums = aa13748737d47582846fde843ec497b3e84cafb82c1eff2df6bfc28d98d20f57
+	source = tomato-radio-automation-0.9.1.tar.gz::https://github.com/dtcooper/tomato/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = e964f1fc8e6db14282f0cb6bcab434af0d5f0f458009d3f1cd939dede2e5e495
 
 pkgname = tomato-radio-automation

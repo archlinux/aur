@@ -2,7 +2,7 @@
 
 pkgname=tomato-radio-automation
 _pkgname="${pkgname}"
-pkgver=0.8.5
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Tomato Radio Automation desktop client. Dead simple radio ads.'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('nodejs' 'npm' 'git')
 source=(
     "tomato-radio-automation-${pkgver}.tar.gz::https://github.com/dtcooper/tomato/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('aa13748737d47582846fde843ec497b3e84cafb82c1eff2df6bfc28d98d20f57')
+sha256sums=('e964f1fc8e6db14282f0cb6bcab434af0d5f0f458009d3f1cd939dede2e5e495')
 _repodir="tomato-${pkgver}"
 
 # Source below the exact same as tomato-radio-automation-git
