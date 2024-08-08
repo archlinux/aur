@@ -2,7 +2,7 @@
 
 _pkgname="pybertini"
 pkgname="${_pkgname}-git"
-pkgver=r1703.220a4c0
+pkgver=1.0.alpha5.r1703.220a4c0
 pkgrel=1
 pkgdesc="Python interface for Bertini2"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('git' 'cmake>=3.22' 'boost>=1.82' 'eigen>=3.3' 'python-setuptools'
 depends=('glibc' 'gcc-libs' 'bertini2' 'boost-libs>=1.65' 'gmp' 'mpfr' 'libmpc'
          'python' 'python-numpy' 'eigenpy>=3.3')
 optdepends=('pybertini-docs: HTML documentation')
-provides=("${_pkgname}" '_pybertini.so')
+provides=("${_pkgname}=${pkgver%%.r*}" "_pybertini.so=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="b2"
 source=("${_pkgsrc}::git+${url}.git"
@@ -25,7 +25,13 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${_pkgsrc}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  local rev_count=$(git rev-list --count HEAD)
+  local short_hash=$(git rev-parse --short=7 HEAD)
+
+  cd "${srcdir}/${_pkgsrc}/python"
+  local version=$(sed -n 's/AC_INIT(\[pybertini\], \[\([^]]*\)\],.*/\1/p' "configure.ac" | sed 's/-/./')
+
+  printf "%s.r%s.%s" "${version}" "${rev_count}" "${short_hash}"
 }
 
 prepare(){
@@ -55,25 +61,11 @@ build() {
 }
 
 package() {
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-
   DESTDIR="${pkgdir}" cmake --install "python/build"
   libtool --finish "${pkgdir}${site_packages}"
 
   cd "python"
-  # install -Dm644 "NEWS"    "${pkgdir}/usr/share/doc/${_pkgname}/NEWS"
-  # install -Dm644 "AUTHORS" "${pkgdir}/usr/share/licenses/${_pkgname}/AUTHORS"
-
   python -m installer --destdir="${pkgdir}" dist/*.whl
   rm -rf "${pkgdir}${site_packages}/test"
-
-  cd "${srcdir}/${_pkgsrc}/licenses"
-  # install -Dm644 "GNU GENERAL PUBLIC LICENSE"    "${pkgdir}/usr/share/licenses/${_pkgname}/GPL-3.0-or-later"
-  install -Dm644 "BERTINI2_ADDITIONAL_GPL_TERMS" "${pkgdir}/usr/share/licenses/${_pkgname}/Bertini2-Additional-GPL-Terms"
-
-  ln -s "${pkgdir}${site_packages}/${_pkgname}-1.0a5.dist-info/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/GPL-3.0-or-later"
-  ln -s "${pkgdir}${site_packages}/${_pkgname}-1.0a5.dist-info/AUTHORS" "${pkgdir}/usr/share/licenses/${_pkgname}/AUTHORS"
 }

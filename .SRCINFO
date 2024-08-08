@@ -1,6 +1,6 @@
 pkgbase = pybertini-git
 	pkgdesc = Python interface for Bertini2
-	pkgver = r1703.220a4c0
+	pkgver = 1.0.alpha5.r1703.220a4c0
 	pkgrel = 1
 	url = https://github.com/ThisIsNotANamepng/b2
 	arch = any
@@ -24,8 +24,8 @@ pkgbase = pybertini-git
 	depends = python-numpy
 	depends = eigenpy>=3.3
 	optdepends = pybertini-docs: HTML documentation
-	provides = pybertini
-	provides = _pybertini.so
+	provides = pybertini=1.0.alpha5
+	provides = _pybertini.so=1.0.alpha5
 	conflicts = pybertini
 	source = b2::git+https://github.com/ThisIsNotANamepng/b2.git
 	source = pybertini_fix_cmake_targets.patch
