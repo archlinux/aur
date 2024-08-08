@@ -1,6 +1,6 @@
 pkgbase = bertini2-docs-git
 	pkgdesc = HTML documentation for Betini2
-	pkgver = r1680.78f9986
+	pkgver = 2.0.alpha8.r1680.78f9986
 	pkgrel = 1
 	url = https://github.com/bertiniteam/b2
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = bertini2-docs-git
 	makedepends = doxygen
 	makedepends = plantuml
 	makedepends = graphviz
-	provides = bertini2-docs
+	provides = bertini2-docs=2.0.alpha8
 	conflicts = bertini2-docs
 	source = b2::git+https://github.com/bertiniteam/b2.git
 	sha256sums = SKIP

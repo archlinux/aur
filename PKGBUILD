@@ -2,14 +2,14 @@
 
 _pkgname="bertini2-docs"
 pkgname="${_pkgname}-git"
-pkgver=r1680.78f9986
+pkgver=2.0.alpha8.r1680.78f9986
 pkgrel=1
 pkgdesc="HTML documentation for Betini2"
 arch=('any')
 url="https://github.com/bertiniteam/b2"
 license=('custom:GPL-3.0-or-later WITH Bertini2-Additional-GPL-Terms')
 makedepends=('git' 'doxygen' 'plantuml' 'graphviz')
-provides=("${_pkgname}")
+provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="b2"
 source=("${_pkgsrc}::git+${url}.git")
@@ -17,7 +17,13 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgsrc}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  local rev_count=$(git rev-list --count HEAD)
+  local short_hash=$(git rev-parse --short=7 HEAD)
+
+  cd "${srcdir}/${_pkgsrc}/core"
+  local version=$(sed -n 's/AC_INIT(\[b2\], \[\([^]]*\)\],.*/\1/p' "configure.ac" | sed 's/-/./')
+
+  printf "%s.r%s.%s" "${version}" "${rev_count}" "${short_hash}"
 }
 
 build() {
