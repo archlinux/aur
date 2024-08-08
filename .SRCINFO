@@ -1,11 +1,11 @@
 pkgbase = seahub
 	pkgdesc = The web frontend for seafile server
-	pkgver = 11.0.9
+	pkgver = 11.0.11
 	pkgrel = 1
 	url = https://github.com/haiwen/seahub
 	arch = any
 	license = Apache
-	depends = seafile-server>=11.0.9
+	depends = seafile-server>=11.0.11
 	depends = python-django
 	depends = python-django-statici18n
 	depends = python-django-webpack-loader
@@ -35,10 +35,10 @@ pkgbase = seahub
 	optdepends = python-pylibmc: Memcached support
 	optdepends = ffmpeg: For video thumbnails
 	options = !strip
-	source = seahub-11.0.9-server.tar.gz::https://github.com/haiwen/seahub/archive/v11.0.9-server.tar.gz
+	source = seahub-11.0.11-server.tar.gz::https://github.com/haiwen/seahub/archive/v11.0.11-server.tar.gz
 	source = seahub@.service
 	source = nginx.example.conf
-	sha256sums = b6a83f13d32fe6a75287fa6f5597222d5641c5bcbdf9dd2ff219f7bdc478d8dc
+	sha256sums = 1bbca67d0efffa35b5cabc4cbfdef4bdbb79cab18c0f643997795e489fe908e6
 	sha256sums = 67bb375871ce908b48bef53277284c9d8f80ee2e733efc89cb66d987647195e4
 	sha256sums = 461591ba500d012523d6fdecbcc230461f6fd8d708b92eefdedc8b93b1542171
 
