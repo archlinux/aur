@@ -6,8 +6,8 @@ pkgrel=2
 pkgdesc='a prometheus exporter for the mosquitto mqtt server'
 arch=('x86_64')
 url="https://github.com/sapcc/mosquitto-exporter"
-license=('Apache')
-makedepends=('go')
+license=('Apache-2.0')
+makedepends=('go' 'glibc')
 backup=("etc/conf.d/prometheus-mosquitto-exporter")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         prometheus-mosquitto-exporter.conf
@@ -29,8 +29,8 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build .
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  go build -ldflags="-linkmode=external -compressdwarf=false" -o build .
 }
 
 package() {
