@@ -1,6 +1,6 @@
 pkgbase = mihomo-party-git
 	pkgdesc = Another Mihomo GUI.
-	pkgver = 0.2.2.r0.gf0a54f5
+	pkgver = 0.2.2.r0.gc399e00
 	pkgrel = 1
 	url = https://github.com/pompurin404/mihomo-party
 	install = mihomo-party.install
@@ -23,6 +23,8 @@ pkgbase = mihomo-party-git
 	optdepends = libappindicator-gtk3: Allow mihomo-party to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).
 	conflicts = mihomo-party
 	conflicts = mihomo-party-bin
+	conflicts = mihomo-party-electron
+	conflicts = mihomo-party-electron-bin
 	options = !lto
 	source = git+https://github.com/pompurin404/mihomo-party.git
 	sha256sums = SKIP
