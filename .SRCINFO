@@ -1,6 +1,6 @@
 pkgbase = tracy-git
 	pkgdesc = Real-time, nanosecond resolution frame profiler
-	pkgver = v0.11.0.r25.gfb18a81d
+	pkgver = v0.11.0.r43.g60042d19
 	pkgrel = 1
 	url = https://github.com/wolfpld/tracy
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = tracy-git
 	makedepends = pkgconf
 	makedepends = git
 	makedepends = cmake
+	makedepends = wayland-protocols
 	depends = wayland
 	depends = libglvnd
 	depends = libxkbcommon
@@ -20,6 +21,7 @@ pkgbase = tracy-git
 	optdepends = xdg-desktop-portal: file dialogs
 	provides = tracy
 	conflicts = tracy
+	options = !lto
 	source = git+https://github.com/wolfpld/tracy
 	md5sums = SKIP
 
