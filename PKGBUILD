@@ -1,8 +1,7 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=oblivion-desktop
-pkgver=0.41.3_beta
-_pkgver="${pkgver//_/-}"
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Unofficial Warp Client"
 arch=('x86_64')
@@ -11,17 +10,17 @@ license=('LicenseRef-oblivion-desktop')
 _electron=electron27
 depends=('bash' "${_electron}")
 makedepends=('gendesk' 'npm')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.sh"
         'tray-icon.patch')
-sha256sums=('0f0cd243c96abfcd75a30eddce17ed5af81fa65482f86da4958e5846adce45dc'
+sha256sums=('ce9f9b093e6a6f3ea1a94a7fdccb787ff70de46ec7e842114c404a46521e8135'
             '31676f8268a42b7cc292e7e8d71e8dab3f41f9b4a5332471134428d821b4338f'
             'd73fe075981f414a2cd3f821f102a9aeadc6b4b61fdeefeb7ba540a3c9150289')
 
 prepare() {
     sed "s/@ELECTRON@/${_electron}/" -i "${pkgname}.sh"
 
-    cd "${pkgname}-${_pkgver}"
+    cd "${pkgname}-${pkgver}"
     patch -Np1 -i "${srcdir}/tray-icon.patch"
 
     gendesk -f -n \
@@ -35,7 +34,7 @@ prepare() {
 }
 
 build() {
-    cd "${pkgname}-${_pkgver}"
+    cd "${pkgname}-${pkgver}"
     npm run build
     npx electron-builder --linux --dir \
         -c.electronDist="/usr/lib/${_electron}" \
@@ -43,7 +42,7 @@ build() {
 }
 
 package() {
-    cd "${pkgname}-${_pkgver}"
+    cd "${pkgname}-${pkgver}"
     install -d "${pkgdir}/usr/lib"
     cp -r release/build/linux-unpacked/resources "${pkgdir}/usr/lib/${pkgname}"
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"

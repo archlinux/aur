@@ -3,5 +3,3 @@ source = "github"
 github = "bepass-org/oblivion-desktop"
 use_latest_release = true
 prefix = "v"
-from_pattern = "-"
-to_pattern = "_"
