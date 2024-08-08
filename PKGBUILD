@@ -3,20 +3,19 @@
 _name="bertini_real"
 _pkgname="python-${_name}"
 pkgname="${_pkgname}-git"
-pkgver=r1517.58a8faa
+pkgver=1.6.1.r1517.58a8faa
 pkgrel=1
 pkgdesc="Python interface for Bertini_real"
 arch=('any')
 url="https://www.bertinireal.com"
 _url="https://github.com/ofloveandhate/${_name}"
 license=('custom:Bertini license')
-makedepends=('git' 'python' 'python-build' 'python-installer' 'python-wheel'
-             'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 depends=('bertini_real' 'python' 'python-numpy' 'python-scipy' 'python-sympy'
          'python-matplotlib' 'python-algopy' 'python-trimesh' 'python-dill'
          'python-setuptools')
 optdepends=('python-glumpy: for OpenGL-accelerated rendering of surfaces')
-provides=("${_pkgname}")
+provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_name}"
 source=("${_pkgsrc}::git+${_url}.git"
@@ -26,7 +25,13 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${_pkgsrc}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  local rev_count=$(git rev-list --count HEAD)
+  local short_hash=$(git rev-parse --short=7 HEAD)
+
+  cd "${srcdir}/${_pkgsrc}"
+  local version=$(sed -n 's/AC_INIT(\[bertini_real\],\[\([^]]*\)\],.*/\1/p' "configure.ac")
+
+  printf "%s.r%s.%s" "${version}" "${rev_count}" "${short_hash}"
 }
 
 prepare() {
@@ -42,13 +47,7 @@ build() {
 package() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
-  cd "${srcdir}/${_pkgsrc}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  # install -Dm644 "NEWS"      "${pkgdir}/usr/share/doc/${_pkgname}/NEWS"
-  install -Dm644 "COPYING"   "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
-  install -Dm644 "AUTHORS"   "${pkgdir}/usr/share/licenses/${_pkgname}/AUTHORS"
-
-  cd "python"
+  cd "${srcdir}/${_pkgsrc}/python"
   python -m installer --destdir="${pkgdir}" dist/*.whl
   rm -rf "${pkgdir}${site_packages}/build"
   rm -rf "${pkgdir}${site_packages}/docs"

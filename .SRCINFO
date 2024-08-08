@@ -1,16 +1,14 @@
 pkgbase = python-bertini_real-git
 	pkgdesc = Python interface for Bertini_real
-	pkgver = r1517.58a8faa
+	pkgver = 1.6.1.r1517.58a8faa
 	pkgrel = 1
 	url = https://www.bertinireal.com
 	arch = any
 	license = custom:Bertini license
 	makedepends = git
-	makedepends = python
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-setuptools
 	depends = bertini_real
 	depends = python
 	depends = python-numpy
@@ -22,7 +20,7 @@ pkgbase = python-bertini_real-git
 	depends = python-dill
 	depends = python-setuptools
 	optdepends = python-glumpy: for OpenGL-accelerated rendering of surfaces
-	provides = python-bertini_real
+	provides = python-bertini_real=1.6.1
 	conflicts = python-bertini_real
 	source = bertini_real::git+https://github.com/ofloveandhate/bertini_real.git
 	source = python-bertini_real_fix_package_data.patch
