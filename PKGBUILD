@@ -12,14 +12,14 @@
 #
 
 pkgname=cone-simple
-pkgver=1.12
+pkgver=1.14
 pkgrel=1
 epoch=
 pkgdesc="Curses text-based mail client - handles multiple POP3, IMAP accounts, and local mail folders. contains a simple newsreader. This version has no dependencies to courier libraries (other than the mandatory courier-unicode)."
 arch=('i686' 'x86_64')
 _pkgname=cone
 url="http://courier-mta.org/cone/"
-license=('GPL2')
+license=('GPL-3.0-only')
 #groups=()
 makedepends=('procps-ng')
 depends=('libxml2' 'libidn2' 'libldap' 'aspell' 'courier-unicode')
@@ -37,7 +37,7 @@ source=(http://sourceforge.net/projects/courier/files/cone/${pkgver}/cone-${pkgv
 
 #noextract=()
 
-sha256sums=('88a891e531ed12477b1b5ef0d9400d29261b494eb793eb5c7436a08c6351dbc0')
+sha256sums=('deab6caa60242b33e44c094148b6d6af190563aa46faf76ccffb17ef2ffc53aa')
 
 #
 #
@@ -65,6 +65,9 @@ package()
 {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
+  install -m 644 -D "COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
+  install -m 644 -D "COPYING.GPL" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING.GPL"
+
 }
 
 # EOF
