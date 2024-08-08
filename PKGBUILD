@@ -1,4 +1,5 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
+# shellcheck disable=SC2034,SC2154
 pkgname=firefox-tridactyl-native-bin
 pkgver=1.24.1
 _nativever=0.4.1
@@ -11,9 +12,11 @@ depends=('glibc')
 provides=('firefox-tridactyl-native')
 conflicts=('firefox-tridactyl-native')
 source=("https://github.com/tridactyl/native_messenger/releases/download/$_nativever/native_main-Linux"
-        "https://raw.githubusercontent.com/tridactyl/native_messenger/$_nativever/tridactyl.json")
+        "https://raw.githubusercontent.com/tridactyl/native_messenger/$_nativever/tridactyl.json"
+        "https://raw.githubusercontent.com/tridactyl/native_messenger/$_nativever/LICENSE")
 b2sums=('242271577086547f7ea261358113dc418e5f880adbb40f15ba96451e1a2844ca530818f6aeb4f2486185e9173dee17ce9c09970197cec14fefd2cf3c0b70f079'
-        '1af6e9374ff2af3ac8b85c4e202d09a9b727115324b4a620d37e7db4aed291b5307b21fe4ea1d1d05c2055c84d1003b727edec84524ca4d513c847d20471f20c')
+        '1af6e9374ff2af3ac8b85c4e202d09a9b727115324b4a620d37e7db4aed291b5307b21fe4ea1d1d05c2055c84d1003b727edec84524ca4d513c847d20471f20c'
+        'f1061dc448e2c91ed7f7d85c5c319e024f6dc66e8d92e18da0317f06a714b37401bbd48af2d1a6ed514a63d37dc3231ee92b837f509eb68596fa327f44aa2c86')
 
 build() {
     sed -i -e "s-REPLACE_ME_WITH_SED-/usr/lib/tridactyl/native_main-" \
@@ -25,4 +28,6 @@ package() {
         "$pkgdir/usr/lib/tridactyl/native_main"
     install -D -m644 "$srcdir/tridactyl.json" \
         "$pkgdir/usr/lib/mozilla/native-messaging-hosts/tridactyl.json"
+    install -D -m644 "$srcdir/LICENSE" \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
