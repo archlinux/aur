@@ -1,6 +1,6 @@
 pkgbase = butt
 	pkgdesc = Easy to use, multi OS streaming tool
-	pkgver = 1.42.0
+	pkgver = 1.43.0
 	pkgrel = 1
 	url = https://danielnoethen.de/butt/
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = butt
 	depends = flac
 	depends = opus
 	depends = libsamplerate
-	source = butt-1.42.0.tar.gz::https://danielnoethen.de/butt/release/1.42.0/butt-1.42.0.tar.gz
-	sha256sums = fd8f7a3eaff70f7ee7ff625976f70443504112d1e5274df440b7ac7cdc818368
+	source = butt-1.43.0.tar.gz::https://danielnoethen.de/butt/release/1.43.0/butt-1.43.0.tar.gz
+	sha256sums = c4572e489f25cfe2c6460854452ff3df83c0907c7034af09b3896a15cf63e780
 
 pkgname = butt
