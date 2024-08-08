@@ -14,7 +14,8 @@ makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 depends=('bertini_real' 'python' 'python-numpy' 'python-scipy' 'python-sympy'
          'python-matplotlib' 'python-algopy' 'python-trimesh' 'python-dill'
          'python-setuptools')
-optdepends=('python-glumpy: for OpenGL-accelerated rendering of surfaces')
+optdepends=('python-glumpy: for OpenGL-accelerated rendering of surfaces'
+            'python-bertini_real-docs: HTML documentation')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_name}"

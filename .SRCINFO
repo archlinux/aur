@@ -20,6 +20,7 @@ pkgbase = python-bertini_real-git
 	depends = python-dill
 	depends = python-setuptools
 	optdepends = python-glumpy: for OpenGL-accelerated rendering of surfaces
+	optdepends = python-bertini_real-docs: HTML documentation
 	provides = python-bertini_real=1.7.1
 	conflicts = python-bertini_real
 	source = bertini_real::git+https://github.com/ofloveandhate/bertini_real.git
