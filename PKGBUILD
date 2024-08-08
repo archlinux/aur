@@ -1,10 +1,9 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
-# Contributor: Robin < robin@blckct.io >
 _pkgname='devtoys'
 pkgname="${_pkgname}-bin"
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-pkgver=2.0.4.0
+pkgver=2.0.5.0
 pkgrel=1
 scdir=$_pkgname
 _pkgver="${pkgver//_/-}"
