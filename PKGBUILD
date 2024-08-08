@@ -1,5 +1,5 @@
 # Mostly a copy of linux-firmware PKGBUILD by Thomas Bächler <thomas@archlinux.org>
-# And linux-firmware-amd-staging-um5606-git PKGBUILD by Victor Dmitriev <mrvvitek@gmail.com> with contributions from xduugu
+# And linux-firmware-git PKGBUILD by Victor Dmitriev <mrvvitek@gmail.com> with contributions from xduugu
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 
 pkgbase=linux-firmware-amd-staging-um5606-git
@@ -7,7 +7,7 @@ pkgname=(linux-firmware-whence-amd-staging-um5606-git linux-firmware-amd-staging
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-amd-staging-um5606-git
 )
 pkgver=20240808.9a948a0d
-pkgrel=2
+pkgrel=3
 pkgdesc="A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops, including the latest ipu (NPU) and isp (GPU) firmware."
 url="https://github.com/ThatOneCalculator/linux-firmware-amd-staging-um5606"
 license=('GPL2' 'GPL3' 'custom')
