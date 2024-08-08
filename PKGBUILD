@@ -119,7 +119,7 @@ build() {
                             -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
                             -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
                             -DCMAKE_INSTALL_PREFIX=/usr \
-                            $(yq -cr '."config-opts" | join(" ")' "$srcdir/duckstation/scripts/flatpak/$dep")
+                            $(yq -cr '[."config-opts"[] | select(. | test("_COMPILER") | not)] | join(" ")' "$srcdir/duckstation/scripts/flatpak/$dep")
                         ninja -C "build-$dep_name"
                         DESTDIR="$srcdir/deps" ninja -C "build-$dep_name" install
                     fi
