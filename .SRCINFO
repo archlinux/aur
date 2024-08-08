@@ -1,6 +1,6 @@
 pkgbase = mihomo-party-electron-bin
 	pkgdesc = Another Mihomo GUI.
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/pompurin404/mihomo-party
 	install = mihomo-party.install
@@ -24,9 +24,9 @@ pkgbase = mihomo-party-electron-bin
 	conflicts = mihomo-party-bin
 	conflicts = mihomo-party-electron
 	options = !lto
-	source_x86_64 = mihomo-party-0.2.3-x86_64.deb::https://github.com/pompurin404/mihomo-party/releases/download/v0.2.3/mihomo-party-linux-0.2.3-amd64.deb
-	sha256sums_x86_64 = b4ed831c39208a29349f1f056593819a9df7bfdd2b86e1fa9c2a33f696179b90
-	source_aarch64 = mihomo-party-0.2.3-aarch64.deb::https://github.com/pompurin404/mihomo-party/releases/download/v0.2.3/mihomo-party-linux-0.2.3-arm64.deb
-	sha256sums_aarch64 = 6f834be02e78f144cbdec24fd438db2ff1289e12137d10f8668a74b30c0459cd
+	source_x86_64 = mihomo-party-0.2.4-x86_64.deb::https://github.com/pompurin404/mihomo-party/releases/download/v0.2.4/mihomo-party-linux-0.2.4-amd64.deb
+	sha256sums_x86_64 = 841b824c56d99ec9252443d907255ba78116a5dbcac5ca16fd6872e0294fc831
+	source_aarch64 = mihomo-party-0.2.4-aarch64.deb::https://github.com/pompurin404/mihomo-party/releases/download/v0.2.4/mihomo-party-linux-0.2.4-arm64.deb
+	sha256sums_aarch64 = 45bebdd7682b51707cbee0418872620209b8b73dca64e55716aa1fea29152fbe
 
 pkgname = mihomo-party-electron-bin
