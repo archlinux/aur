@@ -1,0 +1,5 @@
+[obs-captions-plugin-bin]
+source = "git"
+git = "https://github.com/ratwithacompiler/OBS-captions-plugin.git"
+include_regex = 'v((?:\d|\.)+)'
+prefix = "v"
