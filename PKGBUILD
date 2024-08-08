@@ -1,4 +1,5 @@
-# Maintainer : Dylan Whichard <dylan at whichard dot com>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor : Dylan Whichard <dylan at whichard dot com>
 _pkgname=Asterisk-eSpeak
 pkgname=asterisk-espeak
 _pkgver=5.0-rc1
@@ -8,9 +9,9 @@ pkgdesc='Asterisk module that provides the "eSpeak" dialplan application. It all
 arch=('i686' 'x86_64')
 url='https://github.com/zaf/asterisk-espeak'
 license=('GPL2')
-depends=('asterisk>=15' 'espeak' 'libsamplerate' 'libsndfile')
-source=("https://github.com/zaf/${pkgname}/archive/v${_pkgver}.tar.gz")
-sha512sums=('cc8b646e3e050256b729f9666f11c8db583553cb15f1ee8aa9fde07272f3d59ba9b2775d110c4f629cb263205432c8c1ed9b4122bba4622970ff2cd5f4a51e5d')
+depends=('asterisk>=15' 'espeak-ng' 'libsamplerate' 'libsndfile')
+source=("https://github.com/zaf/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('e9d4cd5dd2e3227b9def7f93fbab58838409f43d5ab45f09ba6856df8e15f1023b4a32e0f3c89faeba7dc44f340a9715725e60320bb4bf8996aa7fbff0c08a96')
 backup=('etc/asterisk/espeak.conf')
 
 build() {
