@@ -3,7 +3,7 @@ pkgname=androidtoolkit-bin
 _pkgname=androidtoolkit
 pkgver=1.4.4
 _pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="Desktop tools for Android developers, supports Windows, Mac and Linux."
 arch=('x86_64')
 url="https://github.com/LazyIonEs/AndroidToolKit"
@@ -13,10 +13,10 @@ install="androidtoolkit.install"
 depends=(alsa-lib libxrender libglvnd java-runtime libxext libxtst zlib libxi gcc-libs libx11 glibc fontconfig)
 source=(
 	"${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.deb"
-    "https://github.com/LazyIonEs/AndroidToolKit/blob/main/LICENSE"
+    "LICENSE"
 )
 sha256sums=('7a2651b28fed15ac312c9d919846d8ae13be32fe7d14ebf950baced56d83f633'
-            '1ab9704c30d635bdb155827c1e3aaca86470eb5cc5216afc43c8391c215c2540')
+            '5d8e7b77c07cdf97d60ed2ec16478fa46ff34b00a00ed87ba4870a25333b8850')
 
 package() {
     msg "Converting debian package..."
