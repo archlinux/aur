@@ -2,7 +2,7 @@
 
 pkgname=nzb-monkey
 _pkgname=nzbmonkey
-pkgver=v0.2.9
+pkgver=v0.2.10
 pkgrel=1
 pkgdesc="A Reference implementation of how to handle a NZBLNK-URI, with support for SABnzbd, NZBGet and Synology Download Station"
 url="https://nzblnk.info/nzb-monkey/"
@@ -12,7 +12,7 @@ depends=("python" "python-pyperclip" "python-requests" "python-configobj"
         "python-colorama" "python-cryptography" "xdg-utils")
 install="${pkgname}.install"
 source=("https://github.com/nzblnk/${pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux.tbz2")
-sha256sums=('c16554050b93f951034d26c0e4801d25b6be576190313ac781c7141e2bfb09c5')
+sha256sums=('f034473ca863fd2e0480881ed0cb31c16c04c0c38fb39b284e2abe52898ca629')
 
 prepare() {
   # change to global folder instead of homepath
