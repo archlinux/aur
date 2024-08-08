@@ -1,7 +1,7 @@
 pkgbase = basix-git
 	pkgdesc = FEniCSx finite element basis evaluation library
 	pkgver = 0.9.0.dev0_r1058.de0bd73
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fenicsproject.org
 	arch = x86_64
 	license = MIT
@@ -19,7 +19,9 @@ pkgbase = basix-git
 	conflicts = python-fenics-basix
 	conflicts = python-basix-git
 	source = git+https://github.com/FEniCS/basix
+	source = nanobind1_workaround.patch
 	sha512sums = SKIP
+	sha512sums = 3dc15df852fe066b897c2c9103b5b8e03e0c6fc08f18a1280e7f03bc8ec8bc4fa94829fe2c897f0e4b19307eb82423af355de7e962b95e95e065b35ef35f133f
 
 pkgname = basix-git
 	depends = blas
