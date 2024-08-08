@@ -4,7 +4,7 @@
 _pkgname=openvpn3-linux
 pkgname=openvpn3
 pkgver=22_dev
-pkgrel=5
+pkgrel=6
 pkgdesc='OpenVPN 3 Linux client'
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/OpenVPN/$_pkgname"
@@ -37,7 +37,8 @@ prepare() {
 }
 
 build() {
-  arch-meson \
+  env CXXFLAGS="$CXXFLAGS -Wno-error=non-virtual-dtor" \
+    arch-meson \
     -Dselinux=disabled \
     -Dselinux_policy=disabled \
     -Dbash-completion=enabled \
@@ -49,7 +50,8 @@ build() {
 }
 
 check() {
-  arch-meson \
+  env CXXFLAGS="$CXXFLAGS -Wno-error=non-virtual-dtor" \
+    arch-meson \
     -Dselinux=disabled \
     -Dselinux_policy=disabled \
     -Dtest_programs=enabled \
