@@ -1,6 +1,6 @@
 # Maintainer: Arne Beer <public@arne.beer>
 pkgname=harper
-pkgver='0.9.0'
+pkgver='0.9.2'
 pkgrel=1
 arch=('any')
 pkgdesc='The Grammar Checker for Developers.'
@@ -11,7 +11,7 @@ provides=('harper')
 options=(!lto)
 url='https://github.com/elijah-potter/harper'
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/elijah-potter/harper/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d4291bd58032a31095c27fb84c928fd2b0724b89d9e3ccbf3064fbf80a780778')
+sha256sums=('cd67398790ff48ce52a74ba32173652795ef02234eeb857e35c80b9f60927db7')
 
 build() {
     cd "$pkgname-$pkgver"
