@@ -2,11 +2,10 @@
 
 pkgname=adguardvpn-cli-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, flexible and reliable VPN solution for command-line enthusiasts.'
 arch=('x86_64')
 url='https://adguard-vpn.com/'
-license=('MIT')
 
 source=(
 	"adguardvpn-cli_${pkgver}::https://github.com/AdguardTeam/AdGuardVPNCLI/releases/download/v${pkgver}-release/adguardvpn-cli-${pkgver}-linux-${arch}.tar.gz"
