@@ -2,7 +2,7 @@
 
 _pkgname="stirling-pdf"
 pkgname="${_pkgname}-bin"
-pkgver=0.26.1
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="Locally hosted web application that allows you to perform various operations on PDF files"
 arch=("any")
