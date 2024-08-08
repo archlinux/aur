@@ -2,7 +2,7 @@
 # Contributor: Asuka Minato
 pkgname=caido-desktop
 pkgver=0.40.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight web security auditing toolkit."
 arch=('x86_64')
 url="https://caido.io/"
