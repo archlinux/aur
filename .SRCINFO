@@ -1,12 +1,12 @@
 pkgbase = checkmedia
 	pkgdesc = Check installation CDs and DVDs for errors.
 	pkgver = 6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openSUSE/checkmedia
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = perl
-	depends = git
 	provides = libmediacheck.so=6-64
 	source = checkmedia-6.3.tar.gz::https://github.com/openSUSE/checkmedia/archive/6.3.tar.gz
 	source = Makefile.patch
