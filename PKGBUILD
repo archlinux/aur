@@ -5,7 +5,7 @@
 
 pkgname=ditana-koboldcpp
 pkgver=1.72
-pkgrel=11
+pkgrel=12
 pkgdesc="A systemd service that runs KoboldCpp with the gemma language model locally, giving you AI chat privately on your PC."
 arch=('x86_64')
 url="https://github.com/LostRuins/koboldcpp"
