@@ -1,14 +1,14 @@
 pkgbase = caido-desktop
 	pkgdesc = A lightweight web security auditing toolkit.
-	pkgver = 0.39.0
-	pkgrel = 2
+	pkgver = 0.40.0
+	pkgrel = 1
 	url = https://caido.io/
 	arch = x86_64
 	license = private
 	depends = gcc-libs
 	depends = glibc
 	provides = caido
-	source = https://storage.googleapis.com/caido-releases/v0.39.0/caido-desktop-v0.39.0-linux-x86_64.AppImage
-	sha256sums = 29841c936f9860f2c93772faa9c85a723c95cb25d1de79890d35f918f0785af2
+	source = https://storage.googleapis.com/caido-releases/v0.40.0/caido-desktop-v0.40.0-linux-x86_64.AppImage
+	sha256sums = 88d862b4235cdb6d69630706fb4ec6bcff9b9d376d406163b25a10e4fb61da5d
 
 pkgname = caido-desktop
