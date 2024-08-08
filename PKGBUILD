@@ -1,8 +1,8 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _pkgname="protolint"
 pkgname="${_pkgname}-bin"
-pkgver=0.50.4
+pkgver=0.50.5
 pkgrel=1
 pkgdesc="A pluggable linter and fixer to enforce Protocol Buffer style and conventions"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
@@ -15,10 +15,10 @@ source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
 source_armv6h=("${_pkgsrc}-armv6h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv6.tar.gz")
 source_armv7h=("${_pkgsrc}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv7.tar.gz")
-sha256sums_x86_64=('ea0e95f3e83da2e40866e1034d98702c1aa92b0bb4c670a315f44871730a1191')
-sha256sums_aarch64=('414450253afa4fb9c9ee6e01f02e1632da0011505b39745c5a7a1b659ea5e1da')
-sha256sums_armv6h=('87026086d285b23d358556284f97782484e8cc76927cf0f508a6fb46455c4b41')
-sha256sums_armv7h=('a69077842789ce23b63b4b59dca2131d445daeca585edbeaa0ea53d08fb7607d')
+sha256sums_x86_64=('f6073ee43c8f87d4a9a8479f5f806f3d3d06741534ae0facbe135a632c4e5988')
+sha256sums_aarch64=('d154ac182079d81d3b375c43c18682de8bf52c4bdc46607bd88309016f001361')
+sha256sums_armv6h=('c3f5fa9a062189c182e624138b0e369d154893d57388b10975f0b89bec6f3649')
+sha256sums_armv7h=('074e6bd9788bc9aa35d03e05a7172dcdb38750d4d2bcd013494f3d9e9e2687db')
 
 package() {
   cd "${srcdir}"
