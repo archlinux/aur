@@ -1,0 +1,16 @@
+pkgbase = paramotopy-docs
+	pkgdesc = HTML documentation for Paramotopy
+	pkgver = 1.0.3.7
+	pkgrel = 1
+	url = https://paramotopy.com
+	arch = any
+	license = custom:Paramotopy license
+	makedepends = doxygen
+	makedepends = plantuml
+	makedepends = graphviz
+	provides = paramotopy-docs
+	conflicts = paramotopy-docs
+	source = paramotopy-36121881a137cf29c7f662bd792a0e823d5742f2.tar.gz::https://github.com/ofloveandhate/paramotopy/archive/36121881a137cf29c7f662bd792a0e823d5742f2.tar.gz
+	sha256sums = 4f04d932c540d68d69d2d8605699921c4e98227016999056b8afbe5d630ca54a
+
+pkgname = paramotopy-docs
