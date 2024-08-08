@@ -10,7 +10,7 @@ url="https://paramotopy.com"
 _url="https://github.com/ofloveandhate/paramotopy"
 license=('custom:Paramotopy license')
 makedepends=('git' 'doxygen' 'plantuml' 'graphviz')
-provides=("${_pkgname}")
+provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="paramotopy"
 source=("${_pkgsrc}::git+${_url}.git")

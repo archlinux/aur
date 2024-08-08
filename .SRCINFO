@@ -9,7 +9,7 @@ pkgbase = paramotopy-docs-git
 	makedepends = doxygen
 	makedepends = plantuml
 	makedepends = graphviz
-	provides = paramotopy-docs
+	provides = paramotopy-docs=1.0.3.7
 	conflicts = paramotopy-docs
 	source = paramotopy::git+https://github.com/ofloveandhate/paramotopy.git
 	sha256sums = SKIP
