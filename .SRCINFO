@@ -1,0 +1,22 @@
+pkgbase = seashell-bin
+	pkgdesc = SSH server with virtual hosts and username-based routing
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitea.elara.ws/Elara6331/seashell
+	license = AGPLv3
+	conflicts = seashell
+	provides = seashell
+	arch = aarch64
+	source_aarch64 = https://gitea.elara.ws/Elara6331/seashell/releases/download/v0.0.1/seashell_0.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7e090cbe0231368eb3624a0ab4c1fa57609b52b40882c306b575ebd9296ce7d6
+	arch = armv6h
+	source_armv6h = https://gitea.elara.ws/Elara6331/seashell/releases/download/v0.0.1/seashell_0.0.1_linux_armv6.tar.gz
+	sha256sums_armv6h = 291c3263798421f304c8b590870500eaa4404d9819ca7774cbb4aa0c05c787af
+	arch = i686
+	source_i686 = https://gitea.elara.ws/Elara6331/seashell/releases/download/v0.0.1/seashell_0.0.1_linux_386.tar.gz
+	sha256sums_i686 = afcba43e40f89b75a280483df1aa9290ecb2027c62d22e7833bfc0ea6ab1d6ad
+	arch = x86_64
+	source_x86_64 = https://gitea.elara.ws/Elara6331/seashell/releases/download/v0.0.1/seashell_0.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = b09843337a39095368f0e5a2b9c0ebc79fbf5072669515df8fbc8097dca3cda2
+	
+pkgname = seashell-bin
