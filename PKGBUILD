@@ -1,20 +1,17 @@
 # Maintainer: Bronya <kotone[dot]olin1010[at]gmail[dot]com>
 
-## useful links
+## links
 # https://floorp.app/
 # https://github.com/Floorp-Projects/Floorp
 
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
-pkgver=11.15.0
+pkgver=11.16.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://floorp.app/"
 arch=('x86_64' 'aarch64')
-license=(
-  'MPL-2.0'
-  'LicenseRef-FSSL'
-)
+license=('MPL-2.0')
 
 makedepends=(
   'imagemagick'
@@ -34,23 +31,19 @@ conflicts=("$_pkgname")
 
 options=('!strip' '!debug')
 
-_license="LICENSE-$pkgver-$pkgrel"
-
 source=(
   "floorp.desktop"
   "floorp.png"
-  "$_license"::"https://github.com/Floorp-Projects/Floorp-private-components/raw/main/LICENSE"
 )
+source_x86_64=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/floorp-${pkgver}.linux-x86_64.tar.bz2")
+source_aarch64=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/floorp-${pkgver}.linux-aarch64.tar.bz2")
+
 sha256sums=(
   '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
   '853ba77377f296d3bf52f191131883702dd96d38084f78ea5ddb29821ac253d1'
-  'f7bca5c0edabcd0450e6c122dc008a64787e00f9e62ddd40e91accb5f79b2c1e'
 )
-sha256sums_x86_64=('c696b78d1d67583149addb84777840621f55133cf4a05eda57f38bf4bfe30d73')
-sha256sums_aarch64=('18c3b00da76109bccdbfd0c54b7dbe8b4e8a00f6bbd85c7ae739a81c2be33fc6')
-
-source_x86_64=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/floorp-${pkgver}.linux-x86_64.tar.bz2")
-source_aarch64=("https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/floorp-${pkgver}.linux-aarch64.tar.bz2")
+sha256sums_x86_64=('7f0577224342809ba16b683491acd3b1a246ccf9b99c8779e1b2e728d9bc1fb1')
+sha256sums_aarch64=('451836ccd4a7fc75f376ffa6a32dc6997d3ec1aafc63cf7cc0d9f1840b46f640')
 
 package() {
   depends=(
@@ -93,14 +86,11 @@ END
 
   # Disable auto-updates
   local _policies_json="$pkgdir/$_install_path/distribution/policies.json"
-  install -Dvm644 /dev/stdin "$_policies_json" << END
+  install -Dm644 /dev/stdin "$_policies_json" << END
 {
   "policies": {
     "DisableAppUpdate": true
   }
 }
 END
-
-  # license
-  install -Dm644 "$_license" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.components"
 }
