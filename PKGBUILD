@@ -1,7 +1,7 @@
 # Maintainer: Dee.H.Y <dongfengweixiao AT hotmail DOT com>
 pkgname=flclash-bin
 _pkgname=flclash
-pkgver=0.8.48
+pkgver=0.8.51
 pkgrel=1
 pkgdesc="A multi-platform proxy client based on ClashMeta,simple and easy to use, open-source and ad-free."
 arch=('x86_64')
@@ -9,11 +9,11 @@ url="https://github.com/chen08209/FlClash"
 license=('GPL-3.0 license')
 conflicts=("flclash-git" "flclash")
 install="flclash.install"
-depends=()
+depends=(libayatana-appindicator cairo at-spi2-core hicolor-icon-theme libdbusmenu-glib gtk3 libepoxy pango gdk-pixbuf2 harfbuzz fontconfig libayatana-indicator ayatana-ido glib2 glibc gcc-libs)
 source=(
 	"${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
 )
-sha256sums=('ddb7c16a9a9cd5be07809ef695106abbc195b9c89665f477d428e9f00223e618')
+sha256sums=('edaa7d49b65c58e1b6e2bd8efee599af300757317f23bc2b05257095f82f5b20')
 
 package() {
     msg "Converting debian package..."
