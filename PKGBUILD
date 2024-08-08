@@ -5,13 +5,13 @@
 pkgname=musicpod
 _app_id=org.feichtmeier.Musicpod
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 _flutterver=3.19.5
 pkgdesc="Music, radio, television and podcast player"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ubuntu-flutter-community/musicpod"
 license=('GPL-3.0-or-later')
-depends=('gstreamer' 'gtk3' 'mpv')
+depends=(glibc glib2 mpv cairo gdk-pixbuf2 pango libepoxy fontconfig at-spi2-core gtk3 gcc-libs)
 makedepends=('clang' 'cmake' 'fvm' 'ninja')
 provides=("${pkgname}")
 conflicts=('musicpod-git' 'musicpod-bin')
