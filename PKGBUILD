@@ -2,7 +2,7 @@
 
 _pkgname="paramotopy"
 pkgname="${_pkgname}-git"
-pkgver=r444.48174f3
+pkgver=1.0.3.7.r444.48174f3
 pkgrel=1
 pkgdesc="Parallel parameter homotopy through Bertini"
 arch=('any')
@@ -12,7 +12,7 @@ license=('custom:Paramotopy license')
 makedepends=('git' 'boost>=1.53' 'gmp')
 depends=('glibc' 'gcc-libs' 'boost-libs' 'bertini' 'mpfr' 'openmpi')
 optdepends=('paramotopy-docs: HTML documentation')
-provides=("${_pkgname}")
+provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
 source=("${_pkgsrc}::git+${_url}.git"
@@ -32,7 +32,13 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${_pkgsrc}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  local rev_count=$(git rev-list --count HEAD)
+  local short_hash=$(git rev-parse --short=7 HEAD)
+
+  cd "${srcdir}/${_pkgsrc}"
+  local version=$(sed -n 's/AC_INIT(\[paramotopy\], \[\([^]]*\)\],.*/\1/p' "configure.ac")
+
+  printf "%s.r%s.%s" "${version}" "${rev_count}" "${short_hash}"
 }
 
 prepare() {
