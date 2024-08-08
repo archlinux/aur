@@ -1,0 +1,11 @@
+pkgbase = eksctl-latest
+	pkgdesc = The official CLI for Amazon EKS
+	pkgver = latest
+	pkgrel = 1
+	url = https://eksctl.io
+	arch = x86_64
+	license = Apache
+	source = eksctl_Linux_amd64.tar.gz::https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_Linux_amd64.tar.gz
+	md5sums = SKIP
+
+pkgname = eksctl-latest
