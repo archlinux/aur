@@ -1,0 +1,13 @@
+pkgbase = doc2x
+	pkgver = 1.2.11
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = p7zip
+	makedepends = asar
+	depends = electron24
+	provides = doc2x
+	source = https://doc2x-public.s3.cn-north-1.amazonaws.com.cn/win/doc2x_1.2.11.exe
+	sha256sums = f4229345a8866d307f52c8c8ee39802330c93d754510e65039fd4310eff7bafd
+
+pkgname = doc2x
