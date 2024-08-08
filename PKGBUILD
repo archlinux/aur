@@ -5,13 +5,13 @@ pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pompurin404/mihomo-party"
 license=('GPL3')
-conflicts=("mihomo-party-git" 'mihomo-party-bin')
+conflicts=("$pkgname-git" "$pkgname-bin" "$pkgname-electron" "$pkgname-electron-bin")
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
 optdepends=('libappindicator-gtk3: Allow mihomo-party to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
 makedepends=('nodejs' 'pnpm' 'libxcrypt-compat')
 install=$pkgname.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("d78dfa8f0818bae2891e7adc22f85334df99ee6a8019817c79dd6ddab9222c14")
+sha256sums=("ec3ecd2aadc729aeb8cf9eb059f1585e86576ade90466d9366d198c2e6329ab6")
 options=('!lto')
 
 prepare(){

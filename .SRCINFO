@@ -22,8 +22,10 @@ pkgbase = mihomo-party
 	optdepends = libappindicator-gtk3: Allow mihomo-party to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).
 	conflicts = mihomo-party-git
 	conflicts = mihomo-party-bin
+	conflicts = mihomo-party-electron
+	conflicts = mihomo-party-electron-bin
 	options = !lto
 	source = mihomo-party-0.2.2.tar.gz::https://github.com/pompurin404/mihomo-party/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = d78dfa8f0818bae2891e7adc22f85334df99ee6a8019817c79dd6ddab9222c14
+	sha256sums = ec3ecd2aadc729aeb8cf9eb059f1585e86576ade90466d9366d198c2e6329ab6
 
 pkgname = mihomo-party
