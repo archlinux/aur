@@ -74,6 +74,10 @@ package() {
     rm -f "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/pipewire-sysconf.service"
     rm -f "$pkgdir/etc/pipewire"
 
+    mkdir -p "$pkgdir/usr/libexec/hwsupport"
+    mv "$pkgdir/usr/share/wireplumber/hardware-profiles/wireplumber-hwconfig" "$pkgdir/usr/libexec/hwsupport/wireplumber-hwconfig"
+    mv "$pkgdir/usr/share/pipewire/hardware-profiles/pipewire-hwconfig" "$pkgdir/usr/libexec/hwsupport/pipewire-hwconfig"
+
     install -Dm644 "$srcdir/pipewire-workaround.service" "$pkgdir/usr/lib/systemd/system/pipewire-workaround.service"
     install -Dm644 "$srcdir/wireplumber-workaround.service" "$pkgdir/usr/lib/systemd/system/wireplumber-workaround.service"
 

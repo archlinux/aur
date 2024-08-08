@@ -51,7 +51,7 @@ diff --git a/pipewire-confs/systemd/system/pipewire-sysconf.service b/pipewire-c
 index 449a278..baf3a3c 100644
 --- a/pipewire-confs/systemd/system/pipewire-sysconf.service
 +++ b/pipewire-confs/systemd/system/pipewire-sysconf.service
-@@ -11,7 +11,7 @@
+@@ -11,13 +11,13 @@
  Description=Hardware Specific Pipewire Configuration
  Before=multi-user.target
  Requisite=multi-user.target
@@ -60,6 +60,13 @@ index 449a278..baf3a3c 100644
  Before=shutdown.target
  
  [Service]
+ Type=oneshot
+ RemainAfterExit=yes
+-ExecStart=/usr/share/pipewire/hardware-profiles/pipewire-hwconfig
++ExecStart=/usr/libexec/hwsupport/pipewire-hwconfig
+ 
+ [Install]
+ WantedBy=multi-user.target
 diff --git a/wireplumber/hardware-profiles/wireplumber-hwconfig b/wireplumber/hardware-profiles/wireplumber-hwconfig
 index 3f03354..1e43489 100755
 --- a/wireplumber/hardware-profiles/wireplumber-hwconfig
@@ -123,7 +130,7 @@ diff --git a/wireplumber/systemd/system/wireplumber-sysconf.service b/wireplumbe
 index cdf5ed9..81cca6e 100644
 --- a/wireplumber/systemd/system/wireplumber-sysconf.service
 +++ b/wireplumber/systemd/system/wireplumber-sysconf.service
-@@ -11,7 +11,7 @@
+@@ -11,13 +11,13 @@
  Description=Hardware Specific Wireplumber Configuration
  Before=multi-user.target
  Requisite=multi-user.target
@@ -132,3 +139,10 @@ index cdf5ed9..81cca6e 100644
  Before=shutdown.target
  
  [Service]
+ Type=oneshot
+ RemainAfterExit=yes
+-ExecStart=/usr/share/wireplumber/hardware-profiles/wireplumber-hwconfig
++ExecStart=/usr/libexec/hwsupport/wireplumber-hwconfig
+ 
+ [Install]
+ WantedBy=multi-user.target
