@@ -74,7 +74,8 @@ package() {
     rm -f "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/pipewire-sysconf.service"
     rm -f "$pkgdir/etc/pipewire"
 
-    mkdir -p "$pkgdir/usr/libexec/hwsupport"
+    # mkdir -p "$pkgdir/usr/libexec/hwsupport"
+    install -dm755 "$pkgdir/usr/libexec/hwsupport"
     mv "$pkgdir/usr/share/wireplumber/hardware-profiles/wireplumber-hwconfig" "$pkgdir/usr/libexec/hwsupport/wireplumber-hwconfig"
     mv "$pkgdir/usr/share/pipewire/hardware-profiles/pipewire-hwconfig" "$pkgdir/usr/libexec/hwsupport/pipewire-hwconfig"
 
