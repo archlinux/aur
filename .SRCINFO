@@ -1,0 +1,15 @@
+pkgbase = ezc
+	pkgdesc = A tool to take and upload screenshots
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/keiranscript/ezc
+	arch = x86_64
+	license = GPL3
+	depends = curl
+	depends = cjson
+	depends = grim
+	depends = slurp
+	source = https://github.com/keiranscript/ezc/archive/refs/heads/main.zip
+	md5sums = SKIP
+
+pkgname = ezc
