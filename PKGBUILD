@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=git-next
-pkgver=0.13.3
+pkgver=0.13.4
 pkgrel=1
 pkgdesc='Trunk-based development manager for a solo developer'
 url="https://git.kemitix.net/kemitix/$pkgname"
@@ -16,11 +16,10 @@ checkdepends=(git)
 options=(!lto)
 _archive="$pkgname-$pkgver"
 source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7580f00aa52b2c4660a759cc1a704e19ddfb1bafb1689604a03e184d7ae37d12')
+sha256sums=('1017ea327aa0ca0753bb029be181dddd910bf1c5b2a9b4bb2af51147cbd44c91')
 
 prepare() {
 	cd "$pkgname"
-	sed -i -e 's/clang-16/clang/g' .cargo/config.toml
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -43,14 +42,14 @@ check() {
 		git::repository::open::tests::commit_log::should_return_single_item_in_commit_log_when_not_searching
 		git::repository::open::tests::read_file::should_error_on_missing_file
 		git::repository::open::tests::read_file::should_return_file
-		git::validation::tests::positions::validate_positions::where_branches_are_all_valid_should_return_positions
-		git::validation::tests::positions::validate_positions::where_dev_branch_is_not_based_on_main_should_error
-		git::validation::tests::positions::validate_positions::where_dev_branch_is_not_based_on_next_should_reset_next_branch_to_next_commit_on_dev_and_retryable_error
-		git::validation::tests::positions::validate_positions::where_next_branch_is_not_based_on_main_and_reset_of_next_fails_should_error
+		git::validation::tests::positions::validate::where_branches_are_all_valid_should_return_positions
+		git::validation::tests::positions::validate::where_dev_branch_is_not_based_on_main_should_error
+		git::validation::tests::positions::validate::where_dev_branch_is_not_based_on_next_should_reset_next_branch_to_next_commit_on_dev_and_retryable_error
+		git::validation::tests::positions::validate::where_next_branch_is_not_based_on_main_and_reset_of_next_fails_should_error
 		server::tests::gitdir_validate_should_fail_a_git_repo_with_wrong_remote
 		server::tests::gitdir_validate_should_pass_a_valid_git_repo
 		server::tests::repo_details_find_default_push_remote_finds_correct_remote
-	)
+    )
 	cargo test --frozen -- ${skipped[@]/#/--skip }
 }
 
