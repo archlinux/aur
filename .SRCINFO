@@ -1,8 +1,10 @@
 pkgbase = doc2x
+	pkgdesc = doc2x
 	pkgver = 1.2.11
 	pkgrel = 1
+	url = https://doc2x.noedgeai.com/
 	arch = x86_64
-	license = GPL
+	license = private
 	makedepends = p7zip
 	makedepends = asar
 	depends = electron24

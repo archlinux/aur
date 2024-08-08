@@ -23,6 +23,7 @@ prepare() {
 	popd
 	sed -i 's@F.app.isPackaged@(true)@g
 		s@process.platform@"win32"@g' app/dist/main/index.cjs
+	find app -iname "*.exe" -print -delete
 }
 
 package() {
