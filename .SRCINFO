@@ -1,13 +1,14 @@
 pkgbase = moe-nim
 	pkgdesc = A command line based editor inspired by vim. Written in Nim.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://editor.moe
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = nim
 	makedepends = nimble
+	depends = gcc-libs
 	depends = glibc
 	optdepends = wl-clipboard: Clipboard support (Wayland)
 	optdepends = xsel: Clipboard support (x11)

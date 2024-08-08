@@ -1,14 +1,14 @@
-# Maintainer: Firegem <mrfiregem [at] protonmail [dot] ch>
+# Contributor: Firegem <mrfiregem [at] protonmail [dot] ch>
 pkgname=moe-nim
 _pkgname=${pkgname%-nim}
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line based editor inspired by vim. Written in Nim.'
 arch=('x86_64')
 url='https://editor.moe'
 _gh='https://github.com/fox0430/moe'
-license=('GPL3')
-depends=('glibc')
+license=('GPL-3.0-or-later')
+depends=('gcc-libs' 'glibc')
 optdepends=(
   'wl-clipboard: Clipboard support (Wayland)'
   'xsel: Clipboard support (x11)'
