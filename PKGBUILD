@@ -3,15 +3,15 @@ pkgname=biyi-bin
 _pkgname=biyi
 pkgver=0.5.0
 _pkgver=18
-pkgrel=1
+pkgrel=2
 pkgdesc="a convenient translation and dictionary app written in Flutter."
 arch=('x86_64')
 url="https://biyidev.com"
-license=('AGPL-3.0 license')
+license=('AGPL-3.0-only')
 conflicts=("biyi-git")
 install="biyi.install"
 depends=(
-    "gtk3" "libkeybinder3"
+    libappindicator-gtk3 libdbusmenu-glib gst-plugins-base-libs gstreamer libkeybinder3
 )
 
 source=(
