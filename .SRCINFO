@@ -1,6 +1,6 @@
 pkgbase = okteto-bin
 	pkgdesc = Build better applications by developing and testing your code directly in Kubernetes
-	pkgver = 2.29.3
+	pkgver = 2.30.0
 	pkgrel = 1
 	url = https://github.com/okteto/okteto
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = okteto-bin
 	optdepends = kubectl
 	provides = okteto
 	conflicts = okteto
-	source = README-2.29.3.md::https://github.com/okteto/okteto/raw/2.29.3/README.md
-	source = LICENSE-2.29.3::https://github.com/okteto/okteto/raw/2.29.3/LICENSE
+	source = README-2.30.0.md::https://github.com/okteto/okteto/raw/2.30.0/README.md
+	source = LICENSE-2.30.0::https://github.com/okteto/okteto/raw/2.30.0/LICENSE
 	sha256sums = 5dcc00c6e480f2d20da2a7a4e5a7083c882e5296e0671909e3d144c8357798f8
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
-	source_x86_64 = okteto-2.29.3-x86_64::https://github.com/okteto/okteto/releases/download/2.29.3/okteto-Linux-x86_64
-	sha256sums_x86_64 = 42f643350e235f16c2cc7437ab225c45c8f0dcba298937374074d5d25aa7dbbe
-	source_aarch64 = okteto-2.29.3-aarch64::https://github.com/okteto/okteto/releases/download/2.29.3/okteto-Linux-arm64
-	sha256sums_aarch64 = 76bf45aede4368a331eb0ab7b88d779137f184c39f4adb7ade88299caab60e33
+	source_x86_64 = okteto-2.30.0-x86_64::https://github.com/okteto/okteto/releases/download/2.30.0/okteto-Linux-x86_64
+	sha256sums_x86_64 = c9a414b05f8248022f0135996b5d8ba7cc8ff4766d8a6c68102531db5516d82f
+	source_aarch64 = okteto-2.30.0-aarch64::https://github.com/okteto/okteto/releases/download/2.30.0/okteto-Linux-arm64
+	sha256sums_aarch64 = b13bd409bb3b67b61603fc753b87275e6cae0c1648501eefd0f92464afe5f757
 
 pkgname = okteto-bin
