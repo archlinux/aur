@@ -1,6 +1,6 @@
 pkgbase = gamadv-xtd3
 	pkgdesc = Free, open source command line tool for Google Workspace (formerly G Suite) Administrators to manage domain and user settings quickly and easily.
-	pkgver = 6.77.03
+	pkgver = 6.79.11
 	pkgrel = 1
 	url = https://github.com/taers232c/GAMADV-XTD3
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = gamadv-xtd3
 	depends = python-passlib
 	depends = python-lxml
 	conflicts = gam
-	source = GAMADV-XTD3-6.77.03.tar.gz::https://github.com/taers232c/GAMADV-XTD3/archive/v6.77.03.tar.gz
+	source = GAMADV-XTD3-6.79.11.tar.gz::https://github.com/taers232c/GAMADV-XTD3/archive/v6.79.11.tar.gz
 	source = gam.sh
-	sha256sums = 24f773d50aca539e53ae2b407b362a116d94047ed95b833bfa290e57d4e16a23
+	sha256sums = 4e91b345edb005258e66b921a6f58fd6dd1e035732adf55715874a5f3f5c6f3b
 	sha256sums = 05ff2239d6ac90d2ca7caa690470b797e41e802bf1fb98d6338803546b2ae68d
 
 pkgname = gamadv-xtd3
