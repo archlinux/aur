@@ -1,0 +1,8 @@
+[Unit]
+After=network.target
+Description=Import to Photoprism
+
+[Service]
+Type=oneshot
+User=photoprism
+ExecStart=/usr/bin/photoprism import
