@@ -4,8 +4,8 @@
 # shellcheck shell=bash
 
 pkgname=yazi-nightly-bin
-pkgver=0.3.0.20240807.5df6873
-pkgrel=2
+pkgver=0.3.0.20240808.407ad26
+pkgrel=1
 pkgdesc="💥 Blazing fast terminal file manager written in Rust, based on async I/O."
 arch=("x86_64" "aarch64")
 url="https://yazi-rs.github.io"
