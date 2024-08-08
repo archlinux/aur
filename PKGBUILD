@@ -31,8 +31,8 @@ _pkgname="yazi"
 _date="$(date -u +%Y%m%d)"
 source_x86_64=("$_pkgname-$_date-x86_64.zip::https://github.com/sxyazi/yazi/releases/download/nightly/yazi-x86_64-unknown-linux-gnu.zip")
 source_aarch64=("$_pkgname-$_date-aarch64.zip::https://github.com/sxyazi/yazi/releases/download/nightly/yazi-aarch64-unknown-linux-gnu.zip")
-sha256sums_x86_64=('82eed8e2b505a09dfaa161db91bcb5d3f4bda64d91e45c49014b13e92df7dbe3')
-sha256sums_aarch64=('3c6f689721ce156e0f69ccdc37d11160743dc0fe86f7f94c981f8fa72595d930')
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
 
 prepare() {
   cd "$srcdir" || exit 1
