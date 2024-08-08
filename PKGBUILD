@@ -1,7 +1,7 @@
 # Maintainer: Keiran <keiran0@proton.me>
 
 pkgname=ezc
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A tool to take and upload screenshots"
 arch=('x86_64')

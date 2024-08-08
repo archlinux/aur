@@ -1,6 +1,6 @@
 pkgbase = ezc
 	pkgdesc = A tool to take and upload screenshots
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/keiranscript/ezc
 	arch = x86_64
