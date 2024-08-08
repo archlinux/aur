@@ -5,7 +5,7 @@
 # Contributor: Quentin Stievenart <quentin.stievenart@gmail.com>
 
 pkgname=subliminal-git
-pkgver=2.2.1.r0.g79cbe21
+pkgver=2.2.1.r13.g204e543
 pkgrel=1
 pkgdesc="Python library and CLI tool for searching and downloading subtitles."
 arch=('any')
@@ -28,7 +28,8 @@ depends=('python-guessit>=3.0.0'
          'python-rarfile>=2.7'
 )
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools'
-             'python-sphinxcontrib-programoutput' 'python-sphinx_rtd_theme' 'python-wheel')
+             'python-sphinxcontrib-programoutput' 'python-sphinx_rtd_theme' 'python-wheel'
+             'python-sphinx-autodoc-typehints' 'towncrier' 'python-sphinx')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/Diaoul/subliminal.git#branch=main')
