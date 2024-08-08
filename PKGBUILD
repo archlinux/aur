@@ -2,7 +2,7 @@
 
 _pkgname="bertini2"
 pkgname="${_pkgname}-git"
-pkgver=r1680.78f9986
+pkgver=2.0.alpha8.r1680.78f9986
 pkgrel=1
 pkgdesc="The redevelopment of Bertini in C++"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('git' 'boost>=1.83' 'eigen>=3.3')
 depends=('glibc' 'gcc-libs' 'boost-libs>=1.83' 'gmp' 'mpfr' 'libmpc')
 optdepends=('pybertini: Python interface support'
             'bertini2-docs: HTML documentation')
-provides=("${_pkgname}" 'libbertini2.so')
+provides=("${_pkgname}=${pkgver%%.r*}" "libbertini2.so=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="b2"
 source=("${_pkgsrc}::git+${url}.git")
@@ -20,7 +20,13 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgsrc}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  local rev_count=$(git rev-list --count HEAD)
+  local short_hash=$(git rev-parse --short=7 HEAD)
+
+  cd "${srcdir}/${_pkgsrc}/core"
+  local version=$(sed -n 's/AC_INIT(\[b2\], \[\([^]]*\)\],.*/\1/p' "configure.ac" | sed 's/-/./')
+
+  printf "%s.r%s.%s" "${version}" "${rev_count}" "${short_hash}"
 }
 
 build() {
@@ -41,7 +47,7 @@ check() {
     b2_classic_compatibility_test \
     generating_test \
     settings_test"
-    # b2_classic_compatibility_test \
+    # b2_class_test \
     # endgames_test \
     # nag_algorithms_test \
     # nag_datatypes_test \
