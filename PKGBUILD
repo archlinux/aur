@@ -5,7 +5,7 @@
 _pkgname=chatterino7
 pkgname=chatterino2-7tv
 pkgver=7.5.1
-pkgrel=2
+pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino"'
 arch=('x86_64')
 url=https://github.com/SevenTV/chatterino7
