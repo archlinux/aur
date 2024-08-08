@@ -3,14 +3,15 @@
 
 pkgname=tracy
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-time, nanosecond resolution frame profiler"
 arch=('i686' 'x86_64')
 url="https://github.com/wolfpld/tracy"
 license=('BSD-3-Clause')
 depends=('wayland' 'libglvnd' 'libxkbcommon' 'freetype2' 'dbus' 'hicolor-icon-theme' 'intel-tbb' 'capstone')
-makedepends=('pkgconf' 'git' 'cmake')
+makedepends=('pkgconf' 'git' 'cmake' 'wayland-protocols')
 optdepends=('xdg-desktop-portal: file dialogs')
+options=('!lto')
 provides=('tracy')
 conflicts=('tracy')
 source=("git+$url#tag=v$pkgver")
@@ -42,7 +43,7 @@ package() {
   install -Dm755 csvexport/build/tracy-csvexport $pkgdir/usr/bin/tracy-csvexport
   install -Dm755 import-chrome/build/tracy-import-chrome $pkgdir/usr/bin/tracy-import-chrome
   install -Dm755 import-fuchsia/build/tracy-import-fuchsia $pkgdir/usr/bin/tracy-import-fuchsia
-  install -Dm755 profiler/build/tracy-profiler $pkgdir/usr/bin/tracy-profiler
+  install -Dm755 profiler/build/tracy-profiler $pkgdir/usr/bin/tracy
   install -Dm755 update/build/tracy-update $pkgdir/usr/bin/tracy-update
 
   mkdir -p $pkgdir/usr/include/Tracy/client
