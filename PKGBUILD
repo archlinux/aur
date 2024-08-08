@@ -5,7 +5,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
-## useful links
+## links
 # https://www.gnu.org/software/gnuzilla/
 # https://git.savannah.gnu.org/cgit/gnuzilla.git
 
@@ -24,10 +24,10 @@
 : ${_lang:=}
 
 ## update
-_icver="115.13.0"
-_commit="b2539265bcecd13abf59318c8a844b9c645e5948"
-_icsum="6c6fc30042973aab9ed0579d20b2e84f0f3a0c0978570cce3e04cd73c6e0ad6a"
-_ffsum="3fa20d1897100684d2560a193a48d4a413f31e61f2ed134713d607c5f30d5d5c"
+_icver="115.14.0"
+_commit="4bd4d4948f2db495872ee11a8a7b0dd30549656c"
+_icsum="a2162ad7e10e43782396181178994ab6e0bd2f25665aa50e95107212afc7e888"
+_ffsum="8955e1b5db83200a70c6dea4b614e19328d92b406ec9a1bde2ea86333a74dab4"
 
 if [ -n "$_srcinfo" ]; then
   : ${_lang:=en-US}
@@ -242,8 +242,6 @@ _make_icecat() {
     cp --reflink=auto -rf "$_pkgsrc.tar.zst" "$SRCDEST/"
   fi
 }
-
-_source_icecat
 
 prepare() {
   cat > icecat.desktop << END
@@ -534,7 +532,7 @@ package() {
   DESTDIR="$pkgdir" ./mach install
 
   local vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
-  install -Dvm644 /dev/stdin "$vendorjs" << END
+  install -Dm644 /dev/stdin "$vendorjs" << END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
 
@@ -561,7 +559,7 @@ pref("services.settings.main.search-telemetry-v2.last_check", $(date +%s));
 END
 
   local distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
-  install -Dvm644 /dev/stdin "$distini" << END
+  install -Dm644 /dev/stdin "$distini" << END
 [Global]
 id=archlinux
 version=${pkgver}
@@ -575,7 +573,7 @@ END
 
   # search provider
   local sprovider="$pkgdir/usr/share/gnome-shell/search-providers/$_pkgname.search-provider.ini"
-  install -Dvm644 /dev/stdin "$sprovider" << END
+  install -Dm644 /dev/stdin "$sprovider" << END
 [Shell Search Provider]
 DesktopId=$_pkgname.desktop
 BusName=org.mozilla.${_pkgname//-/}.SearchProvider
@@ -593,13 +591,15 @@ END
   fi
 
   # desktop file
-  install -Dvm644 ../$_pkgname.desktop \
+  install -Dm644 ../$_pkgname.desktop \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # icons
   local i theme=official
   for i in 16 22 24 32 48 64 128 256; do
-    install -Dvm644 browser/branding/$theme/default$i.png \
+    install -Dm644 browser/branding/$theme/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
 }
+
+_source_icecat
