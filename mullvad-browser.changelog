@@ -1,3 +1,51 @@
+Mullvad Browser 13.5.2 - August 06 2024
+ * All Platforms
+   * Updated Firefox to 115.14.0esr
+   * Updated NoScript to 11.4.31
+   * Updated uBlock Origin to 1.59.0
+   * Bug 325: Rebase Mullvad Browser Stable onto 115.14.0esr [mullvad-browser]
+   * Bug 42835: Filter data transfers containing files [tor-browser]
+   * Bug 43005: Backport security fixes from Firefox 129 [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 42470: Add merge request CI for linting [tor-browser]
+     * Bug 40964: Create new Tor Browser gpg subkey [tor-browser-build]
+     * Bug 41190: Add morgan.gpg to keyrings and list of valid keyrings in firefox+geckoview [tor-browser-build]
+     * Bug 41191: Remove richard.gpg from keyrings and list of valid keyrings in firefox+geckoview [tor-browser-build]
+     * Bug 41204: NoScript isn't added automatically to Mullvad Browser changelogs [tor-browser-build]
+
+Mullvad Browser 14.0a1 - July 24 2024
+ * All Platforms
+   * Updated Firefox to 128.0esr
+   * Bug 42441: Evaluate RR version-by-RR version rebases instead of ESR-to-ESR [tor-browser]
+   * Bug 42683: Create script to generate issue triage csv's from bugzilla query and git scraping [tor-browser]
+   * Bug 42687: Disable Privacy-Preserving Attribution [tor-browser]
+ * Windows
+   * Bug 320: Temporarily disable WebRTC and the default browser agent on Windows [mullvad-browser]
+ * Linux
+   * Bug 314: Mullvad Browser is not listed as a possible default browser application for Gnome on Ubuntu / Fedora [mullvad-browser]
+ * Build System
+   * All Platforms
+     * Bug 42470: Add merge request CI for linting [tor-browser]
+     * Bug 42722: clang-format and localization linters are not running [tor-browser]
+     * Bug 40964: Create new Tor Browser gpg subkey [tor-browser-build]
+     * Bug 41155: Update toolchains for ESR128 [tor-browser-build]
+     * Bug 41156: Split the Rust configuration options [tor-browser-build]
+     * Bug 41166: Use the GitHub repository for firefox-l10n [tor-browser-build]
+     * Bug 41176: Update list of people with github commit access in MB issue templates [tor-browser-build]
+     * Bug 41190: Add morgan.gpg to keyrings and list of valid keyrings in firefox+geckoview [tor-browser-build]
+     * Bug 41191: Remove richard.gpg from keyrings and list of valid keyrings in firefox+geckoview [tor-browser-build]
+     * Bug 40078: Update tools/tb-build-06-start-nightly-build after tor-browser-build#40829 [tor-browser-bundle-testsuite]
+   * Windows
+     * Bug 29318: Drop mingw-w64/gcc toolchain [tor-browser-build]
+     * Bug 29320: Use mingw-w64/clang toolchain to build Rust [tor-browser-build]
+     * Bug 41167: Stop generating an MB "portable" windows install and output a single build from 13.5 release [tor-browser-build]
+     * Bug 41177: Include Windows installer without -portable- in download json files [tor-browser-build]
+   * Linux
+     * Bug 41173: Fix permission issue on files in the debian directory [tor-browser-build]
+   * Windows + macOS
+     * Bug 41197: Modify update-responses to prevent upgrades on unsupported Windows and macOS versions [tor-browser-build]
+
 Mullvad Browser 13.5.1 - July 09 2024
  * All Platforms
    * Updated Firefox to 115.13.0esr
