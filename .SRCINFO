@@ -1,6 +1,6 @@
 pkgbase = mihomo-party-bin
 	pkgdesc = Another Mihomo GUI.
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/pompurin404/mihomo-party
 	install = mihomo-party.install
@@ -23,9 +23,9 @@ pkgbase = mihomo-party-bin
 	optdepends = libappindicator-gtk3: Allow mihomo-party to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).
 	conflicts = mihomo-party-git
 	conflicts = mihomo-party
-	source_x86_64 = mihomo-party-0.2.2-x86_64.deb::https://github.com/pompurin404/mihomo-party/releases/download/v0.2.2/mihomo-party-linux-0.2.2-amd64.deb
-	sha256sums_x86_64 = ec0e60e652fff0c5f64ab5167b4d417b0826a87afa1df07a63c6959a258b1ad5
-	source_aarch64 = mihomo-party-0.2.2-aarch64.deb::https://github.com/pompurin404/mihomo-party/releases/download/v0.2.2/mihomo-party-linux-0.2.2-arm64.deb
-	sha256sums_aarch64 = d5e26b8343d95566ac24d3ae6536571c326c0d07f9cc92d851eb589d00a525e7
+	source_x86_64 = mihomo-party-0.2.3-x86_64.deb::https://github.com/pompurin404/mihomo-party/releases/download/v0.2.3/mihomo-party-linux-0.2.3-amd64.deb
+	sha256sums_x86_64 = b4ed831c39208a29349f1f056593819a9df7bfdd2b86e1fa9c2a33f696179b90
+	source_aarch64 = mihomo-party-0.2.3-aarch64.deb::https://github.com/pompurin404/mihomo-party/releases/download/v0.2.3/mihomo-party-linux-0.2.3-arm64.deb
+	sha256sums_aarch64 = 6f834be02e78f144cbdec24fd438db2ff1289e12137d10f8668a74b30c0459cd
 
 pkgname = mihomo-party-bin
