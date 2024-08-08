@@ -24,7 +24,7 @@ prepare() {
 
 pkgver() {
   cd "$_pkgname-$pkgver"
-  sed -nE 's/^version = "([0-9.]*)"$/\1/p' Cargo.toml
+  git describe --exact-match --tags
 }
 
 build() {
