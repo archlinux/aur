@@ -2,7 +2,7 @@
 
 _pkgname="paramotopy-docs"
 pkgname="${_pkgname}-git"
-pkgver=r444.48174f3
+pkgver=1.0.3.7.r444.48174f3
 pkgrel=1
 pkgdesc="HTML documentation for Paramotopy"
 arch=('any')
@@ -18,7 +18,13 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgsrc}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  local rev_count=$(git rev-list --count HEAD)
+  local short_hash=$(git rev-parse --short=7 HEAD)
+
+  cd "${srcdir}/${_pkgsrc}"
+  local version=$(sed -n 's/AC_INIT(\[paramotopy\], \[\([^]]*\)\],.*/\1/p' "configure.ac")
+
+  printf "%s.r%s.%s" "${version}" "${rev_count}" "${short_hash}"
 }
 
 build() {
@@ -31,10 +37,10 @@ package() {
   find "examples" -type f -exec install -Dm644 {} "${pkgdir}/usr/share/doc/paramotopy/{}" \;
   
   cd "documentation"
-  install -Dm644 "source/paramotopy_manual.pdf" "${pkgdir}/usr/share/doc/paramotopy/paramotopy_manual.pdf"
+  install -Dm644 "source/paramotopy_manual.pdf" "${pkgdir}/usr/share/doc/paramotopy/MANUAL.pdf"
   
-  cd "generated_documentation"
+  cd "generated_documentation/doc.paramotopy.com"
   install -d "${pkgdir}/usr/share/doc/paramotopy/html"
-  find "doc.paramotopy.com" -mindepth 1 -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/paramotopy/html/" \;
+  find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/paramotopy/html/{}" \;
   rm -f "${pkgdir}/usr/share/doc/paramotopy/html/.gitignore"
 }
