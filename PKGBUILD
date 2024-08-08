@@ -1,14 +1,16 @@
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Dušan Simić <dusan.simic1810@gmail.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=nitch-git
-pkgver=0.1.6.r22.g42ad689
+pkgver=0.1.6.r36.g142fd89
 pkgrel=1
 pkgdesc="Incredibly fast system fetch written in nim - newest git checkout"
 arch=(x86_64)
 url=https://github.com/unxsh/nitch
 license=(MIT)
 makedepends=('nim' 'git' 'openssl-1.1')
+conflicts=(nitch)
+provides=(nitch)
 source=("git+$url")
 md5sums=('SKIP')
 

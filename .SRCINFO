@@ -1,6 +1,6 @@
 pkgbase = nitch-git
 	pkgdesc = Incredibly fast system fetch written in nim - newest git checkout
-	pkgver = 0.1.6.r22.g42ad689
+	pkgver = 0.1.6.r36.g142fd89
 	pkgrel = 1
 	url = https://github.com/unxsh/nitch
 	arch = x86_64
@@ -8,6 +8,8 @@ pkgbase = nitch-git
 	makedepends = nim
 	makedepends = git
 	makedepends = openssl-1.1
+	provides = nitch
+	conflicts = nitch
 	source = git+https://github.com/unxsh/nitch
 	md5sums = SKIP
 
