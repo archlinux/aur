@@ -10,12 +10,12 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.14.26.r9.geafd0738
+pkgver=3.14.28.r0.g4ccc6647
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
 url=https://github.com/ValveSoftware/gamescope
-license=(BSD)
+license=(BSD-2-Clause)
 depends=(
     gcc-libs
     glibc
@@ -133,8 +133,7 @@ build() {
     arch-meson . build \
         -Dforce_fallback_for=stb,wlroots,vkroots,libliftoff,glm,libdisplay-info \
         -Dpipewire=enabled
-    # Seems to have a depedency issue that is fixed by setting -j to a low value
-    ninja -C build -j4
+    ninja -C build
 }
 
 package() {

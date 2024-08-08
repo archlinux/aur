@@ -1,10 +1,10 @@
 pkgbase = gamescope-git
 	pkgdesc = SteamOS session compositing window manager
-	pkgver = 3.14.26.r9.geafd0738
+	pkgver = 3.14.28.r0.g4ccc6647
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/gamescope
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = benchmark
 	makedepends = cmake
 	makedepends = git
