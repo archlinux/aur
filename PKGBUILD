@@ -22,7 +22,7 @@ prepare() {
 	popd
 	popd
 	sed -i 's@F.app.isPackaged@(true)@g
-		s@process.platform@"win32"@g' app/dist/main/index.cjs
+		s@process.platform@"darwin"@g' app/dist/main/index.cjs # mac has window decoration
 	find app -iname "*.exe" -print -delete
 }
 
