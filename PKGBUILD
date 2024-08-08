@@ -5,18 +5,32 @@
 
 pkgname=ditana-koboldcpp
 pkgver=1.72
-pkgrel=9
+pkgrel=10
 pkgdesc="A systemd service that runs KoboldCpp with the gemma language model locally, giving you AI chat privately on your PC."
 arch=('x86_64')
 url="https://github.com/LostRuins/koboldcpp"
 license=('AGPL-3.0-only')
 install=ditana-koboldcpp.install
 depends=(
-    'cblas'
+    'blas-openblas'
     'clblast'
-    'openblas'
+    'cuda'
+    'cudnn'
+    'hipblas'
+    'hip-runtime-amd'
+    'ocl-icd'
+    'intel-compute-runtime' # optional dependency of ocl-icd, providing opencl-driver'
     'python'
     'systemd'
+    'vulkan-icd-loader'
+)
+makedepends=(
+    'blas-openblas'
+    'clblast'
+    'cuda'
+    'cudnn'
+    'ocl-icd'
+    'python'
     'vulkan-icd-loader'
 )
 conflicts=(
