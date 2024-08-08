@@ -1,7 +1,7 @@
 pkgbase = linux-firmware-amd-staging-um5606-git
-	pkgdesc = A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops. DO NOT INSTALL THIS unless you know what you're getting into.
-	pkgver = 20240807.2519af10
-	pkgrel = 3
+	pkgdesc = A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops, including the latest ipu (NPU) and isp (GPU) firmware.
+	pkgver = 20240808.9a948a0d
+	pkgrel = 1
 	url = https://github.com/ThatOneCalculator/linux-firmware-amd-staging-um5606
 	arch = any
 	license = GPL2
@@ -9,72 +9,73 @@ pkgbase = linux-firmware-amd-staging-um5606-git
 	license = custom
 	makedepends = git
 	makedepends = rdfind
+	optdepends = linux-mainline-um5606: kernel with ipu (NPU) drivers
 	options = !strip
 	source = linux-firmware-amd-staging-um5606-git::git+https://github.com/ThatOneCalculator/linux-firmware-amd-staging-um5606.git
 	sha256sums = SKIP
 
 pkgname = linux-firmware-whence-amd-staging-um5606-git
-	pkgdesc = A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops. DO NOT INSTALL THIS unless you know what you're getting into. - contains the WHENCE license file which documents the vendor license details
-	provides = linux-firmware-whence=20240807.2519af10
+	pkgdesc = A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops, including the latest ipu (NPU) and isp (GPU) firmware. - contains the WHENCE license file which documents the vendor license details
+	provides = linux-firmware-whence=20240808.9a948a0d
 	conflicts = linux-firmware-whence
 	conflicts = linux-firmware<=20211216.f682ecb
 
 pkgname = linux-firmware-amd-staging-um5606-git
 	depends = linux-firmware-whence
-	provides = linux-firmware=20240807.2519af10
+	provides = linux-firmware=20240808.9a948a0d
 	conflicts = linux-firmware
 
 pkgname = amd-ucode-amd-staging-um5606-git
 	pkgdesc = Microcode update image for AMD CPUs
 	license = custom
-	provides = amd-ucode=20240807.2519af10
+	provides = amd-ucode=20240808.9a948a0d
 	conflicts = amd-ucode
 
 pkgname = linux-firmware-nfp-amd-staging-um5606-git
-	pkgdesc = A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops. DO NOT INSTALL THIS unless you know what you're getting into. - nfp / Firmware for Netronome Flow Processors
+	pkgdesc = A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops, including the latest ipu (NPU) and isp (GPU) firmware. - nfp / Firmware for Netronome Flow Processors
 	depends = linux-firmware-whence
-	provides = linux-firmware-nfp=20240807.2519af10
+	provides = linux-firmware-nfp=20240808.9a948a0d
 	conflicts = linux-firmware-nfp
 	conflicts = linux-firmware<=20211216.f682ecb
 
 pkgname = linux-firmware-mellanox-amd-staging-um5606-git
-	pkgdesc = A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops. DO NOT INSTALL THIS unless you know what you're getting into. - mellanox / Firmware for Mellanox Spectrum switches
+	pkgdesc = A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops, including the latest ipu (NPU) and isp (GPU) firmware. - mellanox / Firmware for Mellanox Spectrum switches
 	depends = linux-firmware-whence
-	provides = linux-firmware-mellanox=20240807.2519af10
+	provides = linux-firmware-mellanox=20240808.9a948a0d
 	conflicts = linux-firmware-mellanox
 	conflicts = linux-firmware<=20211216.f682ecb
 
 pkgname = linux-firmware-marvell-amd-staging-um5606-git
-	pkgdesc = A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops. DO NOT INSTALL THIS unless you know what you're getting into. - marvell / Firmware for Marvell devices
+	pkgdesc = A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops, including the latest ipu (NPU) and isp (GPU) firmware. - marvell / Firmware for Marvell devices
 	depends = linux-firmware-whence
-	provides = linux-firmware-marvell=20240807.2519af10
+	provides = linux-firmware-marvell=20240808.9a948a0d
 	conflicts = linux-firmware-marvell
 	conflicts = linux-firmware<=20211216.f682ecb
 
 pkgname = linux-firmware-qcom-amd-staging-um5606-git
-	pkgdesc = A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops. DO NOT INSTALL THIS unless you know what you're getting into. - qcom / Firmware for Qualcomm SoCs
+	pkgdesc = A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops, including the latest ipu (NPU) and isp (GPU) firmware. - qcom / Firmware for Qualcomm SoCs
 	depends = linux-firmware-whence
-	provides = linux-firmware-qcom=20240807.2519af10
+	provides = linux-firmware-qcom=20240808.9a948a0d
 	conflicts = linux-firmware-qcom
 	conflicts = linux-firmware<=20211216.f682ecb
 
 pkgname = linux-firmware-liquidio-amd-staging-um5606-git
-	pkgdesc = A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops. DO NOT INSTALL THIS unless you know what you're getting into. - liquidio / Firmware for Cavium LiquidIO server adapters
+	pkgdesc = A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops, including the latest ipu (NPU) and isp (GPU) firmware. - liquidio / Firmware for Cavium LiquidIO server adapters
 	depends = linux-firmware-whence
-	provides = linux-firmware-liquidio=20240807.2519af10
+	provides = linux-firmware-liquidio=20240808.9a948a0d
 	conflicts = linux-firmware-liquidio
 	conflicts = linux-firmware<=20211216.f682ecb
 
 pkgname = linux-firmware-qlogic-amd-staging-um5606-git
-	pkgdesc = A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops. DO NOT INSTALL THIS unless you know what you're getting into. - qlogic / Firmware for QLogic devices
+	pkgdesc = A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops, including the latest ipu (NPU) and isp (GPU) firmware. - qlogic / Firmware for QLogic devices
 	depends = linux-firmware-whence
-	provides = linux-firmware-qlogic=20240807.2519af10
+	provides = linux-firmware-qlogic=20240808.9a948a0d
 	conflicts = linux-firmware-qlogic
 	conflicts = linux-firmware<=20211216.f682ecb
 
 pkgname = linux-firmware-bnx2x-amd-staging-um5606-git
-	pkgdesc = A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops. DO NOT INSTALL THIS unless you know what you're getting into. - bnx2x / Firmware for Broadcom NetXtreme II 10Gb ethernet adapters
+	pkgdesc = A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops, including the latest ipu (NPU) and isp (GPU) firmware. - bnx2x / Firmware for Broadcom NetXtreme II 10Gb ethernet adapters
 	depends = linux-firmware-whence
-	provides = linux-firmware-bnx2x=20240807.2519af10
+	provides = linux-firmware-bnx2x=20240808.9a948a0d
 	conflicts = linux-firmware-bnx2x
 	conflicts = linux-firmware<=20211216.f682ecb
