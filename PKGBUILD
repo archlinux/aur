@@ -52,6 +52,12 @@ build() {
         --fast
 }
 
+check() {
+    cd "$_pkgname"
+
+    stack build --test
+}
+
 package() {
     cd "$_pkgname"
     find ./ -path '*/dist/*' -type f -name pandoc -perm /u+x \
