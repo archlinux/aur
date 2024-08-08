@@ -1,0 +1,38 @@
+pre_install() {
+    if ! getent group koboldcpp >/dev/null; then
+        groupadd -r koboldcpp
+    fi
+    if ! getent passwd koboldcpp >/dev/null; then
+        useradd -r -g koboldcpp -d /usr/share/koboldcpp -s /usr/bin/nologin koboldcpp
+    fi
+}
+
+post_install() {
+    chown -R koboldcpp:koboldcpp /usr/share/koboldcpp
+
+    systemctl daemon-reload
+    systemctl enable koboldcpp.service
+
+    if [ -d /run/systemd/system ]; then
+        systemctl start koboldcpp.service
+    fi
+}
+
+post_upgrade() {
+    chown -R koboldcpp:koboldcpp /usr/share/koboldcpp
+
+    if [ -d /run/systemd/system ]; then
+        systemctl daemon-reload
+        systemctl restart koboldcpp.service
+    fi
+}
+
+pre_remove() {
+    systemctl stop koboldcpp.service
+    systemctl disable koboldcpp.service
+}
+
+post_remove() {
+    userdel koboldcpp
+    groupdel koboldcpp
+}

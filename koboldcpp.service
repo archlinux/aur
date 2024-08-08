@@ -1,0 +1,15 @@
+[Unit]
+Description=KoboldCPP Service
+After=network.target
+
+[Service]
+ExecStart=/usr/share/koboldcpp/koboldcpp.py --quiet --preloadstory /usr/share/koboldcpp/logical_sampler_gemma_instruct.json --chatcompletionsadapter Gemma-2 /usr/share/koboldcpp/models/gemma-2-2b-it-Q6_K.gguf 5001
+WorkingDirectory=/usr/share/koboldcpp
+User=koboldcpp
+Group=koboldcpp
+Restart=no
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
