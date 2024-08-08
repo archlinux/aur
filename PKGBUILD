@@ -12,8 +12,6 @@ license=('custom:Paramotopy license')
 makedepends=('boost>=1.53' 'gmp')
 depends=('glibc' 'gcc-libs' 'boost-libs' 'bertini' 'mpfr' 'openmpi')
 optdepends=('paramotopy-docs: HTML documentation')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
 _pkgsrc="${pkgname}-${_commit}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/${_commit}.tar.gz"
         "${pkgname}_fix_boost_timer_para_aux_funcs.patch"
