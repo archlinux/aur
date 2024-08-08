@@ -29,7 +29,7 @@ depends=(
 )
 makedepends=(
     git
-    jq
+    yq
     cmake
     clang
     lld
@@ -83,15 +83,15 @@ pkgver() {
 
 prepare() {
     # checkout correct versions of deps
-    jq -cr '.modules[] | select(type == "string")' "$srcdir/duckstation/scripts/flatpak/org.duckstation.DuckStation.json" \
+    yq -cr '.modules[] | select(type == "string")' "$srcdir/duckstation/scripts/flatpak/org.duckstation.DuckStation.yaml" \
       | while read -r dep ; do
-            local dep_name=$(jq -cr ".name" "$srcdir/duckstation/scripts/flatpak/$dep")
-            local dep_url=$(jq -cr '.sources[0].type + "+" + .sources[0].url' "$srcdir/duckstation/scripts/flatpak/$dep")
+            local dep_name=$(yq -cr ".name" "$srcdir/duckstation/scripts/flatpak/$dep")
+            local dep_url=$(yq -cr '.sources[0].type + "+" + .sources[0].url' "$srcdir/duckstation/scripts/flatpak/$dep")
             for src in "${source[@]}"; do
                 local src_name=${src%%::*}
                 local src_url=${src##*::}
                 if [ "$src_name" = "$dep_name" ] || [ "$src_url" = "$dep_url" ]; then
-                    local dep_ver=$(jq -cr ".sources[0].tag // .sources[0].commit" "$srcdir/duckstation/scripts/flatpak/$dep")
+                    local dep_ver=$(yq -cr ".sources[0].tag // .sources[0].commit" "$srcdir/duckstation/scripts/flatpak/$dep")
                     echo "Checking out $dep_ver for $src_name..."
                     git -C "$srcdir/$src_name" checkout -q "$dep_ver"
                 fi
@@ -101,11 +101,11 @@ prepare() {
 
 build() {
     # Build deps with cmake
-    jq -cr '.modules[] | select(type == "string")' "$srcdir/duckstation/scripts/flatpak/org.duckstation.DuckStation.json" \
+    yq -cr '.modules[] | select(type == "string")' "$srcdir/duckstation/scripts/flatpak/org.duckstation.DuckStation.yaml" \
       | while read -r dep ; do
-            local dep_name=$(jq -cr 'select(.buildsystem == "cmake-ninja").name' "$srcdir/duckstation/scripts/flatpak/$dep")
+            local dep_name=$(yq -cr 'select(.buildsystem == "cmake-ninja").name' "$srcdir/duckstation/scripts/flatpak/$dep")
             if [ -n "$dep_name" ]; then
-                local dep_url=$(jq -cr '.sources[0].type + "+" + .sources[0].url' "$srcdir/duckstation/scripts/flatpak/$dep")
+                local dep_url=$(yq -cr '.sources[0].type + "+" + .sources[0].url' "$srcdir/duckstation/scripts/flatpak/$dep")
                 for src in "${source[@]}"; do
                     local src_name=${src%%::*}
                     local src_url=${src##*::}
@@ -119,7 +119,7 @@ build() {
                             -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
                             -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
                             -DCMAKE_INSTALL_PREFIX=/usr \
-                            $(jq -cr '."config-opts" | join(" ")' "$srcdir/duckstation/scripts/flatpak/$dep")
+                            $(yq -cr '."config-opts" | join(" ")' "$srcdir/duckstation/scripts/flatpak/$dep")
                         ninja -C "build-$dep_name"
                         DESTDIR="$srcdir/deps" ninja -C "build-$dep_name" install
                     fi
