@@ -1,5 +1,5 @@
 # Maintainer: Jose Luis Cercos Pita <jlcercos@gmail.com>
-pkgname=moordyn-git
+pkgname=moordyn
 pkgver=2.3.5
 pkgrel=1
 pkgdesc="MoorDyn is a lumped-mass model for simulating the dynamics of mooring systems connected to floating offshore structures"
