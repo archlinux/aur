@@ -1,7 +1,7 @@
 # Maintainer: jojo7682345 <jojo7682345@gmail.com>
 pggbase=avbuilder
 pkgname=avbuilder-git
-pkgver=v0.1.1
+pkgver=v0.1
 pkgrel=1
 pkgdesc="A flexible build system written in C"
 arch=('x86_64')
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver(){
   cd "avBuilder"
-  printf "v0.1.1-r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
+  printf "v0.1-r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
 }
 
 build() {
