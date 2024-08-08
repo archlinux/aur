@@ -3,8 +3,8 @@
 # Contributor: Nicky D
 
 pkgname=firestorm
-_pkgver=6.6.14
-pkgver=6.6.14.69598
+_pkgver=7.1.9
+pkgver=7.1.9.74745
 pkgrel=1
 pkgdesc="An open source 3D browser for Second Life & OpenSIM metaverse."
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ makedepends=('cmake' 'python-virtualenv' 'python-pip' 'git' 'boost' 'xz')
 conflicts=('firestorm-bin' 'firestorm-git')
 #options=(debug !strip)
 
-source=("$pkgname"::"git+https://vcs.firestormviewer.org/phoenix-firestorm#branch=Firestorm_$_pkgver" "fs-build-variables"::'git+https://vcs.firestormviewer.org/fs-build-variables' 'firestorm.desktop' 'firestorm.launcher')
+source=("$pkgname"::"git+https://github.com/FirestormViewer/phoenix-firestorm#branch=Firestorm_${_pkgver}" "fs-build-variables"::'git+https://github.com/FirestormViewer/fs-build-variables' 'firestorm.desktop' 'firestorm.launcher')
 sha512sums=('SKIP'
             'SKIP'
             '9467b7e497dc98121df583e2432526541035fe18b254b8a9a8ed5306f4659d66b8df33452cafc94264ef7237bbd6fd5e590be42da8de8dba7a28c34435d709c6'
@@ -42,8 +42,9 @@ prepare() {
 	cd "$pkgname"
 	virtualenv ".venv" -p python3
 	source .venv/bin/activate
-	pip3 install git+https://vcs.firestormviewer.org/autobuild-3.0
-	pip3 install llbase
+	pip3 install -r "$srcdir/$pkgname/requirements.txt"
+# 	pip3 install git+https://github.com/FirestormViewer/autobuild-3.0
+# 	pip3 install llbase
 	export CXXFLAGS="$CXXFLAGS -Wno-error"
 	export CFLAGS="$CFLAGS -Wno-error"
 	autobuild configure -A 64 -c ReleaseFS_open -- -DLL_TESTS:BOOL=FALSE -DREVISION_FROM_VCS=ON -DPACKAGE:BOOL=Off --chan="ArchLinux"
