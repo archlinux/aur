@@ -4,7 +4,7 @@
 # Contributor: Benjamin Hedrich <kiwisauce (a) pagenotfound (dot) de>
 
 pkgname=tvheadend-git
-pkgver=4.3.r2342.g128d686
+pkgver=4.3.r2351.g078a822
 pkgrel=1
 pkgdesc='TV streaming server and DVR'
 #arch=(x86_64)
@@ -35,7 +35,7 @@ _print_libav_option() {
   # Compare major version numbers of ffmpeg
   ffmpeg_supported="$(awk '$1 == "FFMPEG" { print $3 }' Makefile.ffmpeg | sed 's/^ffmpeg-//' | cut -d'.' -f1)"
   ffmpeg_installed="$(pacman -Q ffmpeg | awk '{ print $2 }' | sed 's/^ *//;s/r.*[.]//;s/.*://' | cut -d'.' -f1)"
-  if ((ffmpeg_supported > 0 && ffmpeg_supported == ffmpeg_installed)); then
+  if ((ffmpeg_installed <= 7)) || ((ffmpeg_supported > 0 && ffmpeg_supported == ffmpeg_installed)); then
     libav_option='--enable-libav'
   else
     libav_option='--disable-libav'
