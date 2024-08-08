@@ -4,7 +4,7 @@
 _pkgname=openvpn3-linux
 pkgname=openvpn3-git
 pkgver=22_dev.r5.ga3de5e2
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenVPN 3 Linux client'
 arch=('x86_64' 'aarch64')
 provides=("openvpn3=${pkgver}")
@@ -53,7 +53,8 @@ prepare() {
 }
 
 build() {
-  arch-meson \
+  env CXXFLAGS="$CXXFLAGS -Wno-error=non-virtual-dtor" \
+    arch-meson \
     --auto-features auto \
       "${_pkgname}" \
       _builddir \
@@ -63,7 +64,8 @@ build() {
 }
 
 check() {
-  arch-meson \
+  env CXXFLAGS="$CXXFLAGS -Wno-error=non-virtual-dtor" \
+    arch-meson \
     --auto-features auto \
       "${_pkgname}" \
       _builddir \
