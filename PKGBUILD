@@ -23,4 +23,5 @@ package() {
     cd "$srcdir/native_messenger-$_nativever/"
     install -D -m755 -t "$pkgdir/usr/lib/tridactyl" "./native_main"
     install -D -m644 -t "$pkgdir/usr/lib/mozilla/native-messaging-hosts" "./tridactyl.json"
+    install -D -m644 -t "$pkgdir/usr/share/licenses/$pkgname" "./LICENSE"
 }
