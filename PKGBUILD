@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MungeSumstats
-_pkgver=1.12.0
+_pkgver=1.12.2
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.12.2
 pkgrel=1
 pkgdesc='Standardise summary statistics from GWAS'
 arch=('any')
@@ -51,7 +51,7 @@ optdepends=(
   r-upsetr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9bf86d9a22af9fed9823968787d42336f04e37dfb40c6fad90cc7f5b7b97ba9a')
+sha256sums=('b1a2a39f5ec3ea3b765e7359683448f5d1846740948fe5244023fcb160dbec61')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
