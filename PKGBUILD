@@ -7,7 +7,8 @@ pkgdesc='a prometheus exporter for the mosquitto mqtt server'
 arch=('x86_64')
 url="https://github.com/sapcc/mosquitto-exporter"
 license=('Apache-2.0')
-makedepends=('go' 'glibc')
+depends=('glibc')
+makedepends=('go')
 backup=("etc/conf.d/prometheus-mosquitto-exporter")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         prometheus-mosquitto-exporter.conf
