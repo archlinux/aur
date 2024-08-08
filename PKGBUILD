@@ -6,7 +6,7 @@
 
 pkgname=python-numpy1
 pkgver=1.26.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Scientific tools for Python"
 arch=('x86_64')
 license=('LicenseRef-custom')
@@ -14,7 +14,7 @@ url="https://www.numpy.org/"
 depends=('cblas' 'lapack' 'python')
 optdepends=('blas-openblas: faster linear algebra')
 makedepends=('python-build' 'python-installer' 'meson-python' 'cmake' 'gcc-fortran' 'cython')
-checkdepends=('python-pytest' 'python-hypothesis')
+checkdepends=('python-pytest' 'python-hypothesis' 'python-setuptools')
 provides=("python-numpy=$pkgver")
 conflicts=('python-numpy')
 source=("https://github.com/numpy/numpy/releases/download/v$pkgver/numpy-$pkgver.tar.gz")
@@ -46,7 +46,8 @@ check() {
   cd numpy-$pkgver
   python -m installer --destdir="$PWD/tmp_install" dist/*.whl
   cd "$PWD/tmp_install"
-  PATH="$PWD/usr/bin:$PATH" PYTHONPATH="$PWD/$site_packages:$PYTHONPATH" python -c 'import numpy; numpy.test()'
+  PATH="$PWD/usr/bin:$PATH" PYTHONPATH="$PWD/$site_packages:$PYTHONPATH" \
+    python -c 'import sys; import numpy; sys.exit(not numpy.test())'
 }
 
 package() {

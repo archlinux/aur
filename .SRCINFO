@@ -1,12 +1,13 @@
 pkgbase = python-numpy1
 	pkgdesc = Scientific tools for Python
 	pkgver = 1.26.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.numpy.org/
 	arch = x86_64
 	license = LicenseRef-custom
 	checkdepends = python-pytest
 	checkdepends = python-hypothesis
+	checkdepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = meson-python
