@@ -4,7 +4,7 @@
 pkgname=i3pystatus-git
 pkgdesc="i3status replacement written in python for the i3 window manager"
 pkgver=3.35.r407.gf3c539a
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/enkore/i3pystatus"
 license=('MIT')
@@ -21,7 +21,7 @@ optdepends=(
 	'python-basiciw: For the wireless module.'
 	'python-colour: For the pulseaudio module.')
 makedepends=('git' 'python-setuptools')
-checkdepends=('python-pytest-runner' 'python-mock')
+checkdepends=('python-colour' 'python-pytest-runner' 'python-mock')
 provides=('i3pystatus')
 conflicts=('i3pystatus')
 source=("$pkgname::git+$url"
