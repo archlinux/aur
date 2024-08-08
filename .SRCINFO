@@ -1,0 +1,16 @@
+pkgbase = todoist-dailies
+	pkgdesc = Receive a daily popup to notify about upcoming Todoist tasks
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/SSS-Says-Snek/todoist-dailies
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	depends = python-gobject
+	depends = libadwaita
+	depends = python-todoist-api-python
+	source = git+https://github.com/SSS-Says-Snek/todoist-dailies.git#tag=0.0.1
+	sha256sums = SKIP
+
+pkgname = todoist-dailies
