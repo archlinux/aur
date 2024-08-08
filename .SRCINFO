@@ -1,6 +1,6 @@
 pkgbase = python-types-pyyaml
 	pkgdesc = Typing stubs for PyYAML
-	pkgver = 6.0.12.20240311
+	pkgver = 6.0.12.20240808
 	pkgrel = 1
 	url = https://pypi.org/project/types-PyYAML
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-types-pyyaml
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/t/types-PyYAML/types-PyYAML-6.0.12.20240311.tar.gz
-	sha256sums = a9e0f0f88dc835739b0c1ca51ee90d04ca2a897a71af79de9aec5f38cb0a5342
+	source = https://files.pythonhosted.org/packages/source/t/types-PyYAML/types-PyYAML-6.0.12.20240808.tar.gz
+	sha256sums = b8f76ddbd7f65440a8bda5526a9607e4c7a322dc2f8e1a8c405644f9a6f4b9af
 
 pkgname = python-types-pyyaml

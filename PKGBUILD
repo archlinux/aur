@@ -2,7 +2,7 @@
 # Contributor: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-types-pyyaml
 _pkgname=types-PyYAML
-pkgver=6.0.12.20240311
+pkgver=6.0.12.20240808
 pkgrel=1
 pkgdesc="Typing stubs for PyYAML"
 arch=('any')
@@ -11,7 +11,7 @@ license=(Apache)
 makedepends=(python-build python-installer python-wheel python-setuptools)
 depends=(python)
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('a9e0f0f88dc835739b0c1ca51ee90d04ca2a897a71af79de9aec5f38cb0a5342')
+sha256sums=('b8f76ddbd7f65440a8bda5526a9607e4c7a322dc2f8e1a8c405644f9a6f4b9af')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
