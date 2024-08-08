@@ -1,19 +1,11 @@
 # Maintainer: Oystein Sture <oysstu at gmail.com>
-# Contributor: Mohammad Mostafa Farzan <m2_farzan@yahoo.com>
-# Contributor: mjbogusz <mjbogusz+github@gmail.com>
-# Contributor: yuanyuyuan <az6980522@gmail.com>
-# Contributor: Rémy B. (github.com/KirrimK)
-# Contributor: Renato Caldas (github.com/rmsc)
-# Contributor: goekce (github.com/goekce)
-# Contributor: David Castellon (github.com/bobosito000)
-# Contributor: Yannic Wehner <yannic.wehner@gmail.com> (github.com/ElCap1tan)
-# Acknowledgment: This work is hugely based on `ros2-arch-deps` AUR
-# package, maintained by T. Borgert.
-
 
 pkgname=ros2-humble-base
-pkgver=2024.05.23
+pkgver=2024.08.07
 pkgrel=1
+_rosdist="Humble Hawksbill"
+_rosdist_short_upper=${_rosdist%% *}
+_rosdist_short=${_rosdist_short_upper,}
 pkgdesc="A set of software libraries and tools for building robot applications (base variant)"
 url="https://index.ros.org/p/ros_base/#humble"
 arch=('any')
@@ -42,19 +34,18 @@ makedepends=(
   'git'
 )
 source=(
-    "ros2::git+https://github.com/ros2/ros2.git#tag=release-humble-${pkgver//.}"
-    "ros2_base::git+https://github.com/ros2/variants.git#branch=master"
+    "https://github.com/ros2/ros2/archive/release-${_rosdist_short}-${pkgver//.}.tar.gz"
+    "ros2-variants-0.10.0.tar.gz::https://github.com/ros2/variants/archive/0.10.0.tar.gz"
 )
-sha256sums=('SKIP'
-            'SKIP')
+sha256sums=('a842548afdb525d772fb9225d85032e7f06d39f46196fa728fdfcbcfd95bc7ed'
+            'df17f20c0168f4553e40023b8e324d93bdcc1f39932df785cb1d55051076e3f6')
 
 prepare() {
     # Clone the repos
     printf "Cloning ros2 repositories\n"
     mkdir -p $srcdir/ros2/src
-    vcs import $srcdir/ros2/src < $srcdir/ros2/ros2.repos
+    vcs import $srcdir/ros2/src < $srcdir/ros2-release-${_rosdist_short}-${pkgver//.}/ros2.repos
 
-    # Apply patches
     printf "Patching sources\n"
 
     # Missing cstdint includes
@@ -65,15 +56,10 @@ prepare() {
 }
 
 build() {
-    # Disable parallel build if RAM is low
-    if [[ $(free | grep -Po "Mem:\s+\K\d+") -lt 8000000 ]]; then
-        printf "\nRAM is smaller than 8 GB. Parallel build will be disabled for stability.\n\n"
-        export COLCON_EXTRA_ARGS="${COLCON_EXTRA_ARGS} --executor sequential"
-    fi
+    # For low-mem high core count systems, add the following to disable parallel build
+    #export COLCON_EXTRA_ARGS="${COLCON_EXTRA_ARGS} --executor sequential"
 
-    ## For people with the old version of makepkg.conf
-    #unset CPPFLAGS
-    ## For people with the new version of makepkg.conf
+    # Remove D_FORTIFY_SOURCE to avoid compilation errors
     CFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=[0-9]\s//g" <(echo $CFLAGS))
     CXXFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=[0-9]\s//g" <(echo $CXXFLAGS))
 
@@ -82,6 +68,6 @@ build() {
 }
 
 package() {
-    mkdir -p $pkgdir/opt/ros/humble-base
-    cp -r $srcdir/install/* $pkgdir/opt/ros/humble-base/
+    mkdir -p $pkgdir/opt/ros/${_rosdist_short}-base
+    cp -r $srcdir/install/* $pkgdir/opt/ros/${_rosdist_short}-base/
 }
