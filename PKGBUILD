@@ -4,13 +4,14 @@
 
 pkgname=sdrsharp
 pkgver=1.0.0.1457
-pkgrel=3
+pkgrel=4
 pkgdesc="The most popular SDR program"
 arch=(i686 x86_64)
 url="https://airspy.com"
 license=(LicenseRef-SDRSharp) # It's basically identical to MS-RSL (which may not be suitable for binaries)
 depends=(alsa-lib bash hicolor-icon-theme mono portaudio rtl-sdr)
 makedepends=(icoutils unzip)
+_sdrsharp="${pkgname}-${pkgver}"
 source=("${_sdrsharp}.zip::https://www.iz3mez.it/software/SDRSharp/SDRSharp_v${pkgver:(-4)}.zip"
         "sdrsharp_wrapper"
         "${pkgname}.desktop"
@@ -27,7 +28,6 @@ sha256sums=('bdf853040110dbd72720cb63b7696d574e3b00d739b17839e8d93cab3e1df400'
             '886ea5ebcfef1d738a258317347cfeebc004ffa7831c91e792d4b84be8844fc8'
             '93363a6df201bf73834ded017874485188898c11122cf8a22f30e2a8f6377b08')
 install="${pkgname}.install"
-_sdrsharp="${pkgname}-${pkgver}"
 
 prepare() {
   echo "Extracting SDRSharp archive..."
