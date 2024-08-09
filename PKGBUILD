@@ -3,7 +3,8 @@
 # Contributor: Serkan Hosca <serkan@hosca.com>
 
 pkgname=devpi-web
-pkgver=4.2.1
+_pkgname=devpi_web
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="Web interface plugin for devpi-server"
 arch=('any')
@@ -26,11 +27,11 @@ depends=(
 makedepends=('python-setuptools')
 # checkdepends=('python-pytest-runner' 'python-pytest-cov' 'python-mock' 'python-webtest')
 changelog=CHANGELOG
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('4787012821355fecd51244741f6cd188f5c965b7f845cb21eaf87e2ff0536b80')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=('6f18d9899b283cb64759b04fa15e7b207c19c140ad96af8c359e66cfd5ac57c4')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
   python setup.py build
 }
 
@@ -40,7 +41,7 @@ build() {
 # }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
   PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm 644 README.rst AUTHORS -t "$pkgdir/usr/share/doc/$pkgname/"

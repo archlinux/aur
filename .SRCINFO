@@ -1,6 +1,6 @@
 pkgbase = devpi-web
 	pkgdesc = Web interface plugin for devpi-server
-	pkgver = 4.2.1
+	pkgver = 4.2.2
 	pkgrel = 1
 	url = https://doc.devpi.net/
 	changelog = CHANGELOG
@@ -20,7 +20,7 @@ pkgbase = devpi-web
 	depends = python-pyramid-chameleon
 	depends = python-readme-renderer>=23.0
 	depends = python-whoosh<3
-	source = https://files.pythonhosted.org/packages/source/d/devpi-web/devpi-web-4.2.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/d/devpi-web/devpi_web-4.2.2.tar.gz
 	sha256sums = 4787012821355fecd51244741f6cd188f5c965b7f845cb21eaf87e2ff0536b80
 
 pkgname = devpi-web
