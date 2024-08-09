@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=one-gpt-bin
 pkgver=0.9.2
-pkgrel=6
+pkgrel=7
 pkgdesc="聚合ChatGPT官方版、ChatGPT免费版、文心一言、Poe、chatchat等多平台,支持自定义导入平台"
 arch=('x86_64')
 url="https://github.com/1595901624/gpt-aggregated-edition"
@@ -9,7 +9,6 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
     'webkit2gtk'
     'gtk3'
     'openssl-1.1'
@@ -19,8 +18,8 @@ source=(
 )
 sha256sums=('3da0ae73b81ff8b57b049b883041125e6c756eb49cea227ebc5b53d24331ba25')
 build() {
-    bsdtar -xf "${srcdir}/data.tar.gz"
-    sed "s|Categories=|Categories=Utility;|g;s|Exec=${pkgname%-bin}|Exec=${pkgname%-bin} --no-sandbox %U|g;5i\Comment=${pkgdesc}" \
+    bsdtar -xf "${srcdir}/data."*
+    sed "s|Categories=|Categories=Utility;|g;5i\Comment=${pkgdesc}" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
