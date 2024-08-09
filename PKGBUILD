@@ -2,20 +2,30 @@
 
 _pkgname=seafobj
 pkgname=python-$_pkgname
-pkgver=11.0.9
+pkgver=11.0.11
 pkgrel=1
 pkgdesc="Python library for accessing seafile data model"
 arch=('any')
 url="https://github.com/haiwen/seafobj"
 license=('Apache')
 depends=('python' 'python-boto3')
-makedepends=('python-setuptools')
+makedepends=('python-build')
+
 source=("${url}/archive/v${pkgver}-server.tar.gz"
-       "setup.py")
-sha256sums=('eea50d87f601d8444e8bf61da3d5daac74f8e70ba667011192266917f57e352f'
-            '907332c168e307cdc82bd17bf521231c719a7462382993c814e4a5de0953d0f7')
+        "pyproject.toml")
+
+sha256sums=('fff56dd00d5be66dd1b6737661ec4d98881cc5f171ce7bb692b4eb4a682a8297'
+            '7f59dfc6279e0b422b4d46a3714692f83497e23e661fb9cecb761a09303403ac')
+prepare() {
+  ln -sfT "$srcdir/pyproject.toml" "$srcdir/${_pkgname}-${pkgver}-server/pyproject.toml"
+}
+
+build() {
+  cd "$srcdir/${_pkgname}-${pkgver}-server"
+  python -m build --wheel --no-isolation
+}
 
 package() {
-    cd "$srcdir/$_pkgname-$pkgver-server"
-    python ../setup.py install --root="$pkgdir/" --optimize=1
+  cd "$srcdir/${_pkgname}-${pkgver}-server"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
