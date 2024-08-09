@@ -2,7 +2,7 @@
 pkgname=rickrack-bin
 _pkgname=Rickrack
 pkgver=2.9.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Generate harmonious colors freely.焰火十二卷(实时色彩工具箱)是一款免费且实用的色彩编辑器."
 arch=('x86_64')
 url="https://eigenmiao.com/rickrack/"
@@ -29,7 +29,6 @@ depends=(
     'qt5-wayland'
     'qt5-svg'
     'qt5-base'
-    'hicolor-icon-theme'
     'qt5-webchannel'
     'qt5-websockets'
     'qt5-quickcontrols2'
@@ -50,7 +49,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('928b9562eaff7aaabd18e021de2ca4dd4be8684cda2c9c361aed99e40cf14230'
-            'bbd65a055f2ed243d50972ebddd09efffe540d56961576c0476041e5b24eeb00')
+            '8f49609031896b135627818d5b1cb2696cc3104b2f7be0047aff9b3ad7d1965d')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
