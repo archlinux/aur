@@ -17,7 +17,6 @@ depends=(
     'deepin-wine6-stable'
     'spark-dwine-helper'
     'xdg-utils'
-    'hicolor-icon-theme'
 )
 makedepends=(
     'p7zip'
@@ -36,7 +35,7 @@ source=(
 sha256sums=('1c9361a9070ad2bfc85236397c75201c8e63374cc311514b68eae25877cadf84'
             '736cf7d2dca3449f71a93e9e5857a9efd4fd7c9b319cfbea116ca6418155cc58'
             '51cc8268ffb29a4155520a7d5d44cce5d0eebd6d128b7c0fefe0ab16cb897240'
-            '13483d92ba4a28446ac85790a65a4b5e61e420a1d7c19c0fce71e575030d228c')
+            '10ea79a64179945e5d5489ebf56ecbba08ee2180b251379c5f54cae8e704b5db')
 build() {
     sed -e "s|@bottlename@|Deepin-${_officalname}|g" \
         -e "s|@appver@|${pkgver}|g" \

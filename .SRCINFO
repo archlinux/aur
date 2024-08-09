@@ -10,7 +10,6 @@ pkgbase = deepin-wine-weiyunsync
 	depends = deepin-wine6-stable
 	depends = spark-dwine-helper
 	depends = xdg-utils
-	depends = hicolor-icon-theme
 	optdepends = wqy-microhei
 	optdepends = wqy-zenhei
 	provides = weiyunsync
@@ -22,6 +21,6 @@ pkgbase = deepin-wine-weiyunsync
 	sha256sums = 1c9361a9070ad2bfc85236397c75201c8e63374cc311514b68eae25877cadf84
 	sha256sums = 736cf7d2dca3449f71a93e9e5857a9efd4fd7c9b319cfbea116ca6418155cc58
 	sha256sums = 51cc8268ffb29a4155520a7d5d44cce5d0eebd6d128b7c0fefe0ab16cb897240
-	sha256sums = 13483d92ba4a28446ac85790a65a4b5e61e420a1d7c19c0fce71e575030d228c
+	sha256sums = 10ea79a64179945e5d5489ebf56ecbba08ee2180b251379c5f54cae8e704b5db
 
 pkgname = deepin-wine-weiyunsync
