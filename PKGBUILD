@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=metronome-bin
 pkgver=0.1.6
-pkgrel=6
+pkgrel=7
 pkgdesc="A metronome built w/ Tauri + React. Tempo tapper, themes, hotkeys and more!"
 arch=("x86_64")
 url="https://zane.pw/metronome"
@@ -12,7 +12,6 @@ conflicts=("${pkgname%-bin}")
 options=('!strip')
 depends=(
     'webkit2gtk'
-    'hicolor-icon-theme'
     'gtk3'
 )
 source=(
