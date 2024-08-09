@@ -1,6 +1,6 @@
 pkgbase = p4lang-p4c
 	pkgdesc = P4 reference compiler
-	pkgver = 1.2.4.11
+	pkgver = 1.2.4.14
 	pkgrel = 1
 	url = https://github.com/p4lang/p4c
 	arch = any
@@ -13,19 +13,22 @@ pkgbase = p4lang-p4c
 	makedepends = llvm
 	depends = abseil-cpp
 	depends = boost-libs
+	depends = gc
 	depends = p4lang-bmv2
 	depends = protobuf
 	depends = python
 	depends = python-ply
 	depends = python-pyroute2
 	depends = python-scapy
-	source = p4lang-p4c-1.2.4.11.tar.gz::https://github.com/p4lang/p4c/archive/refs/tags/v1.2.4.11.tar.gz
+	source = p4lang-p4c-1.2.4.14.tar.gz::https://github.com/p4lang/p4c/archive/refs/tags/v1.2.4.14.tar.gz
 	source = googletest-1.14.0.tar.gz::https://github.com/google/googletest/archive/refs/tags/v1.14.0.tar.gz
-	source = libbpf-1.2.2.tar.gz::https://github.com/libbpf/libbpf/archive/refs/tags/v1.2.2.tar.gz
-	source = git+https://github.com/p4lang/p4runtime.git#commit=1e771c4e05c4e7e250df00212b3ca02ee3202d71
-	sha256sums = 363e76eda3e7e7b4c9d4f66f59484002183097ac7c3bd1456f8865d285672512
+	source = libbpf-1.4.1.tar.gz::https://github.com/libbpf/libbpf/archive/refs/tags/v1.4.1.tar.gz
+	source = git+https://github.com/p4lang/p4runtime.git#commit=62a9bd60599b87497a15feb6c7893b7ec8ba461f
+	source = fix-gc-mark-include.patch
+	sha256sums = 5e4170868a2b73453bc54dd776a522870f540f64ad7864a0a24fbec57e3f4dc7
 	sha256sums = 8ad598c73ad796e0d8280b082cebd82a630d73e73cd3c70057938a6501bba5d7
-	sha256sums = 32b0c41eabfbbe8e0c8aea784d7495387ff9171b5a338480a8fbaceb9da8d5e5
+	sha256sums = cc01a3a05d25e5978c20be7656f14eb8b6fcb120bb1c7e8041e497814fc273cb
 	sha256sums = SKIP
+	sha256sums = b1496b361e1a531f6537b4395224a2b95c5ef7172ed8b3df68244d13bc8ca4fa
 
 pkgname = p4lang-p4c

@@ -1,0 +1,13 @@
+diff --git a/lib/gc.cpp b/lib/gc.cpp
+index c6d8bd65a..78853b560 100644
+--- a/lib/gc.cpp
++++ b/lib/gc.cpp
+@@ -31,7 +31,7 @@ limitations under the License.
+ #if HAVE_LIBGC
+ #include <gc.h>
+ #include <gc_cpp.h>
+-#include <gc_mark.h>
++#include <gc/gc_mark.h>
+ #endif /* HAVE_LIBGC */
+ #include <sys/mman.h>
+ #if HAVE_EXECINFO_H
