@@ -1,10 +1,11 @@
 pkgname=ttop
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="System monitoring tool with historical data service, triggers and top-like TUI"
 url="https://github.com/inv2004/ttop"
 license=("MIT")
 arch=('x86_64')
+depends=("glibc")
 makedepends=("git" "nim")
 source=("git+$url.git#tag=v$pkgver"
         ".INSTALL")
