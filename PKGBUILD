@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-network-displays-git
-pkgver=0.92.2.r3.g6045dc8
+pkgver=0.93.0.r2.g3738a2b
 pkgrel=1
 pkgdesc="Miracast implementation for GNOME"
 arch=('x86_64')
@@ -8,6 +8,8 @@ url="https://gitlab.gnome.org/GNOME/gnome-network-displays"
 license=('GPL-3.0-or-later')
 depends=(
   'avahi'
+  'dnsmasq'
+  'gst-plugin-pipewire'
   'gst-plugins-bad'
   'gst-plugins-good'
   'gst-plugins-ugly'
@@ -17,7 +19,6 @@ depends=(
   'libpulse'
   'networkmanager'
   'protobuf-c'
-  'python-gobject'
   'xdg-desktop-portal'
 )
 makedepends=(
@@ -26,8 +27,6 @@ makedepends=(
   'meson'
 )
 optdepends=(
-  'dnsmasq'
-  'gst-plugin-pipewire'
   'gstreamer-vaapi'
 )
 provides=("${pkgname%-git}")
