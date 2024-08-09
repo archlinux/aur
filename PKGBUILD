@@ -3,18 +3,19 @@
 # Maintainer: Colin Woodbury <colin@fosskers.ca>
 
 pkgname="aura-git"
-pkgver=4.0.1.r0.g884e787
+pkgver=4.0.2.r0.ga90e71a
 pkgrel=1
 pkgdesc="A package manager for Arch Linux and its AUR"
 arch=("x86_64")
 url="https://github.com/fosskers/aura"
 license=("GPL-3.0-or-later")
 depends=("git" "curl" "openssl" "gcc-libs" "glibc")
-makedepends=("cargo")
+makedepends=("cargo" "texinfo")
 optdepends=(
   "bash-completion: for bash completions"
   "bat: more featureful file viewing"
   "fd: faster filesystem traversal"
+  "graphviz: dependency graph generation"
   "ripgrep: faster log searches"
   "shellcheck: PKGBUILD scanning"
 )
