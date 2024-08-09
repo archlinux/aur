@@ -1,0 +1,9 @@
+post_install() {
+  echo "Please update your PATH to include /usr/bin/aqua:"
+  echo " "
+  echo '  export PATH="$(aqua root-dir)/bin:$PATH"'
+  echo " "
+  echo "Note: If you use aqua combined with other version manager such as asdf,"
+  echo "please add ${AQUA_ROOT_DIR}/bin to the environment variable PATH after other version manager."
+  echo "For detail, please see https://aquaproj.github.io/docs/reference/use-aqua-with-other-tools."
+}
