@@ -1,47 +1,64 @@
-# Maintainer: Alexander Kobel <a-kobel@a-kobel.de>
+# Maintainer:  Alexander Kobel <a-kobel@a-kobel.de>
+# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-pkgname=bertini_real-git
-pkgver=r1075.3dbac52
+_pkgname="bertini_real"
+pkgname="${_pkgname}-git"
+pkgver=1.6.1.r1517.58a8faa
 pkgrel=1
 pkgdesc="Numerical decomposition of real algebraic sets, based on the Bertini homotopy continuation solver"
-url="http://www.bertinireal.com/"
-arch=('x86_64')
-license=('custom: Bertini license')
-depends=('bertini' 'boost' 'gmp' 'mpfr' 'openmpi')
-optdepends=('python: Python interface'
-            'python-sympy: Python interface'
-            'python-scipy: Python interface'
-            'python-numpy: Python interface'
-            'python-algopy: Python interface'
-            'python-mpmath: Python interface'
-            'python-dill: Python interface'
-            'python-matplotlib: Python interface')
-provides=('bertini_real')
-source=("git://github.com/ofloveandhate/bertini_real")
-md5sums=('SKIP')
+arch=('any')
+url="https://www.bertinireal.com"
+_url="https://github.com/ofloveandhate/${_pkgname}"
+license=('custom:Bertini license')
+makedepends=('boost>=1.50')
+depends=('glibc' 'gcc-libs' 'boost-libs' 'bertini' 'gmp' 'mpfr' 'openmpi')
+optdepends=('python-bertini_real: Python interface support'
+            'bertini_real-docs: XHTML documentation')
+provides=("${_pkgname}=${pkgver%%.r*}")
+conflicts=("${_pkgname}")
+_pkgsrc="${_pkgname}"
+source=("${_pkgsrc}::git+${_url}.git"
+        "${_pkgname}_fix_decomposition_hpp.patch")
+sha256sums=('SKIP'
+            '38a788d71f39228a88225ce291de4218ec609215ab09ef10707f6cf4050002aa')
 
-pkgver () {
-  cd bertini_real
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+pkgver() {
+  cd "${_pkgsrc}"
+  local rev_count=$(git rev-list --count HEAD)
+  local short_hash=$(git rev-parse --short=7 HEAD)
+
+  cd "${srcdir}/${_pkgsrc}"
+  local version=$(sed -n 's/AC_INIT(\[bertini_real\],\[\([^]]*\)\],.*/\1/p' "configure.ac" | sed 's/-/./')
+
+  printf "%s.r%s.%s" "${version}" "${rev_count}" "${short_hash}"
 }
 
-build () {
-  cd ${srcdir}/bertini_real
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  for _patch in "${srcdir}/${_pkgname}_fix"*".patch"; do 
+    patch -p1 -i "${_patch}"
+  done
+}
+
+build() {
+  cd "${srcdir}/${_pkgsrc}"
   libtoolize
-  autoreconf -i
-  CPPFLAGS="$CPPFLAGS -I/usr/include/bertini"
-  ./configure --prefix=/usr CPPFLAGS="$CPPFLAGS" --includedir=/usr/include/bertini_real
+  autoreconf -vfi
+  autoupdate
+  CPPFLAGS+=" -I/usr/include/bertini"
+  LDFLAGS+=" -L/usr/lib/bertini -lboost_timer"
+  ./configure \
+    --prefix='/usr' \
+    --includedir='/usr/include'
   make
 }
 
 package() {
-  cd ${srcdir}/bertini_real
-  install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+  cd "${srcdir}/${_pkgsrc}"
   make DESTDIR="${pkgdir}" install
 
-  if python --version; then
-    PYV=$(python -c 'from sys import version_info; print (str (version_info[0]) + "." + str (version_info[1]))')
-    install -d "${pkgdir}/usr/lib/python${PYV}/site-packages"
-    cp -r python/bertini_real "${pkgdir}/usr/lib/python${PYV}/site-packages/"
-  fi
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  # install -Dm644 "NEWS"      "${pkgdir}/usr/share/doc/${_pkgname}/NEWS"
+  install -Dm644 "COPYING"   "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
+  install -Dm644 "AUTHORS"   "${pkgdir}/usr/share/licenses/${_pkgname}/AUTHORS"
 }
