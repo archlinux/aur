@@ -1,0 +1,18 @@
+pkgbase = sketchviz-git
+	pkgdesc = Command-line clone of sketchviz.com
+	pkgver = r5.d977905
+	pkgrel = 1
+	url = https://github.com/gpotter2/sketchviz
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	depends = nodejs
+	depends = graphviz
+	provides = sketchviz
+	conflicts = sketchviz
+	options = !emptydirs
+	source = git+https://github.com/gpotter2/sketchviz.git#branch=master
+	sha512sums = SKIP
+
+pkgname = sketchviz-git
