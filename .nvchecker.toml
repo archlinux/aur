@@ -1,0 +1,4 @@
+[python-succulent]
+source = "github"
+github = "firefly-cpp/succulent"
+use_latest_release = "true"
