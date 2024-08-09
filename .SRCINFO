@@ -1,0 +1,14 @@
+pkgbase = python-packaging-legacy
+	pkgdesc = Core utilities for legacy Python packages
+	pkgver = 23.0.post0
+	pkgrel = 1
+	url = https://github.com/di/packaging_legacy
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-pretend
+	depends = python-packaging
+	source = https://github.com/di/packaging_legacy/archive/23.0.post0/python-packaging-legacy-23.0.post0.tar.gz
+	sha512sums = df489be4845dcd915f8e35ea9d609a024f12e8941a4919268fce98913ebf785fc998264f280194755e623d75fbd0799816ca9b4a3759548cf1b67ed9cb885293
+
+pkgname = python-packaging-legacy
