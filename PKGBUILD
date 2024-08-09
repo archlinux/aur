@@ -33,8 +33,8 @@ source=(
 )
 sha256sums=('c54209c33c387908bfaae40a9c5f6c96bacaa52684f2546068e2b4441f4a53b3'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('0dceae77b30365e46093b201f4a4e4f2dc0a140aee84c16e489e0998410af345')
-sha256sums_x86_64=('4fea21b54fa69ca96d328e7ecd892e49f28a488032a14f9579fc68064dc6f6ce')
+sha256sums_aarch64=('c9f068b132002ed36d680a18dc8c42be82cd7467b04f16de831dcdf074e1ab52')
+sha256sums_x86_64=('40ea9cb9fcff9d8c86dff54282af2fd22894e64664335507047aeb040307362a')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
