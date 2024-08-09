@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=passwordsafe-bin
 pkgver=1.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Popular secure and convenient password manager"
 arch=("x86_64")
 url="https://pwsafe.org/"
@@ -13,7 +13,6 @@ depends=(
     'file'
     'curl'
     'qrencode'
-    'hicolor-icon-theme'
     'util-linux-libs'
     'wxwidgets-gtk3'
     'wxwidgets-common'
