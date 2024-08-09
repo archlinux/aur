@@ -1,7 +1,7 @@
 # Maintainer: Justin ! <just1602@riseup.net>
 
 pkgname='mtail'
-pkgver=3.0.7
+pkgver=3.0.8
 pkgrel=1
 pkgdesc='extract whitebox monitoring data from application logs for collection in a timeseries database'
 arch=('x86_64')
