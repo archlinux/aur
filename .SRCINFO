@@ -1,6 +1,6 @@
 pkgbase = ly-git
 	pkgdesc = TUI display manager
-	pkgver = 0.6.0.r9.g7506d6a
+	pkgver = 1.0.0.r94.gc87d5b4
 	pkgrel = 1
 	url = https://github.com/fairyglade/ly
 	arch = i686
@@ -15,8 +15,7 @@ pkgbase = ly-git
 	provides = ly
 	conflicts = ly
 	backup = etc/ly/config.ini
-	backup = etc/ly/wsetup.sh
-	backup = etc/ly/xsetup.sh
+	backup = etc/ly/setup.sh
 	source = git+https://github.com/fairyglade/ly.git
 	md5sums = SKIP
 
