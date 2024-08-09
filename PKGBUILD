@@ -1,5 +1,5 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-# Based on aur/electron29-bin by Yurii Kolesnykov <https://yurikoles.com/>
+# Co-maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Based on extra/electron* by
 # Bruno Pagani <archange@archlinux.org>
 # Caleb Maclennan <caleb@alerque.com>
@@ -7,7 +7,7 @@ _projectname=electron
 _major=32
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_subver="0.0-beta.4"
+_subver="0.0-beta.5"
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-/.}"
 pkgrel=1
@@ -52,12 +52,12 @@ source_x86_64=(
     "${_pkgname}-chromedriver-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-x64.zip"
     "${_pkgname}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-x64.zip"
 )
-sha256sums_aarch64=('289542552bfdc1a81843e43c3147af145b05defc4a1022a093f35fde9e855105'
-                    '2c365c65fa2e91be76fbdc249a9c591537db68ea71a364d7f35e4557ee02cd6e')
-sha256sums_armv7h=('9860709895544271b1b5f704556653776024f53981736af4b89183ddcb4348a2'
-                   'dfed32ebee13d817292ee81827164a6094ee3619679e098ae2565cc8aae88212')
-sha256sums_x86_64=('24c0e603d299f307f613ae6e1b6e040045c6fbbfad67f8e13b0036c6d30b2961'
-                   'e6ccf778f92648465329913100025119f7e37f8cb54445d38d7107e17bccdf4a')
+sha256sums_aarch64=('71ff814905e8e3abb219740f9f5cf7a5eb6ee4f63488f8c8b55d803026208a6c'
+                    'd4b48bd529cd8b818a46be90888931dee8672ab22109350a92988a18802d3941')
+sha256sums_armv7h=('a2b3c6ceb5dd57237a50695fbc53b0cf115cfb474b1d561a13f44e46bb1e1ebe'
+                   '8853b711c94aa78fde518e16186041ac3df33207a00984fe8e23a53acba801b0')
+sha256sums_x86_64=('44e926aa05f4830deececf289eb6bd344d867c64c7687ecfeac541ea2967d2d4'
+                   '11ff570a7a90104a9ec1494642da96075c4b067042de52864d18c7c1b53b70e8')
 package() {
     install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
     find . -mindepth 1 -maxdepth 1 -type f ! -name "*.zip" ! -name "LICENSE*" -exec cp -r --no-preserve=ownership --preserve=mode -t "${pkgdir}/usr/lib/${_pkgname}/." {} +
