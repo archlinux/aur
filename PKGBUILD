@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cloudpan189-go-bin
 pkgver=0.1.3
-pkgrel=6
+pkgrel=7
 pkgdesc="Cloud 189 Command Line Client (CLI), implemented based on GO.天翼云盘命令行客户端(CLI),基于GO语言实现"
 arch=(
     'aarch64'
@@ -12,13 +12,16 @@ arch=(
 url="https://github.com/tickstep/cloudpan189-go"
 license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
-conflicts=("${pkgname%-bin}" "${pkgname%-go-bin}")
+conflicts=(
+    "${pkgname%-bin}"
+    "${pkgname%-go-bin}"
+)
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-arm64.zip")
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-armv7.zip")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-386.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-amd64.zip")
 source=("${pkgname%-bin}.sh")
-sha256sums=('04d685ad024261e961bd81ade5132c0e0300c280da02933f42c97a149bd2bba6')
+sha256sums=('39113dd1722b88e9db684ddcc798c5ec4387c03f6d38966838250586db7cf416')
 sha256sums_aarch64=('ec8729093a82092b35a68a022d548f76d40a61e6ab490f1bef9842abb8134ef7')
 sha256sums_armv7h=('ba8ac3a31c61c6fb81a88e7d90167427af5d5850fb551e8422ec182c5cabb70c')
 sha256sums_i686=('f5cdf2195dc07f20cb09f716d8f916c04ee12512c2a7fe9a81d3300813a5b472')
