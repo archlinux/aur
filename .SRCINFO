@@ -1,13 +1,13 @@
 pkgbase = gowall
 	pkgdesc = A tool to convert a Wallpaper's color scheme - palette
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/Achno/gowall
 	arch = x86_64
 	license = MIT
 	makedepends = go>=1.22
 	depends = glibc
-	source = gowall-0.1.5.tar.gz::https://github.com/Achno/gowall/archive/refs/tags/v0.1.5.tar.gz
+	source = gowall-0.1.6.tar.gz::https://github.com/Achno/gowall/archive/refs/tags/v0.1.6.tar.gz
 	sha256sums = SKIP
 
 pkgname = gowall
