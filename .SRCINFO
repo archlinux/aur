@@ -1,0 +1,17 @@
+pkgbase = batrachians
+	pkgdesc = a BurgerTime clone.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://perso.b2b2c.ca/~sarrazip/dev/batrachians.html
+	arch = any
+	license = GPL-2.0-or-later
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_mixer
+	depends = sdl2_gfx
+	depends = libflatzebra
+	source = http://perso.b2b2c.ca/~sarrazip/dev/batrachians-0.2.0.tar.gz
+	sha512sums = da0429cd17a6c289f3d5dd1fad11847713c56510d9bdc7e6fa10e0045bb4985662030ea04e49db740eb361e8e016e701736a7ce52501816c68b32f2cd398c189
+
+pkgname = batrachians
