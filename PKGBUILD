@@ -23,6 +23,7 @@ pkgver() {
 build() {
 	cd "${_pkgname%}"
 	nim release
+  nim install_cfg
 }
 
 package() {
