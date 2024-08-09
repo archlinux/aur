@@ -1,0 +1,16 @@
+pkgbase = brother-dcpl2627dw
+	pkgdesc = Brother DCP-L2627DW lpr driver and CUPS wrapper
+	pkgver = 4.1.0_1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadend.aspx?c=gb&lang=en&prod=dcpl2627dw_eu&os=127&dlid=dlf106017_000&flang=4&type3=10282
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = custom:brother
+	depends = cups
+	optdepends = brscan5: scanner support.
+	optdepends = brscan-skey: scanner key tool.
+	source = https://download.brother.com/welcome/dlf106017/dcpl2627dwpdrv-4.1.0-1.i386.rpm
+	sha256sums = 35927e0fa68246ebc07c00ac59b4c6d5110dbcc9ff6adfb5e465932eeaa45b55
+
+pkgname = brother-dcpl2627dw
