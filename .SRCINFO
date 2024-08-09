@@ -1,0 +1,16 @@
+pkgbase = qrocad-desktop-bin
+	pkgdesc = The most insane, life-changing computer-aided design application on the web.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://qrodex.github.io/QroCAD/
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = electron25
+	provides = qrocad-desktop=1.5.0
+	conflicts = qrocad-desktop
+	source = qrocad-desktop-1.5.0.deb::https://github.com/Qrodex/QroCAD/releases/download/v1.5.0/qrocad-desktop_1.5.0_amd64.deb
+	source = qrocad-desktop.sh
+	sha256sums = cb2745afad57464970fa5af16dc4e923f2daa83841c120dc8b7e27c95f6e5cd6
+	sha256sums = c053a7b3ed8b0b4d77f78e81ab8a4c61cbfd773a9298b3f3a187e5df89c125c2
+
+pkgname = qrocad-desktop-bin
