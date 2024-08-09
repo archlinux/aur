@@ -1,42 +1,35 @@
-# CPAN Name  : Future
-# Contributor: Anton Leontiev <scileont /at/ gmail.com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
-
+# Contributor: loserMcloser <reebydobalina@gmail.com>
 pkgname=perl-future
-pkgver=0.49
+pkgver=0.50
 pkgrel=1
-pkgdesc='Perl module to deal with operation awaiting completion'
+pkgdesc='Perl module to represent an operation awaiting completion'
+_dist=Future
 arch=('any')
-url='https://metacpan.org/release/Future'
-license=('PerlArtistic' 'GPL')
-makedepends=('perl-module-build>=0.4004')
-checkdepends=('perl-test-fatal' 'perl-test-identity' 'perl-test-refcount')
-depends=('perl>=5.15.8')
-source=(http://search.cpan.org/CPAN/authors/id/P/PE/PEVANS/Future-0.49.tar.gz)
-options=(!emptydirs)
-md5sums=('9749e5023b9ab724acc2a034a79bc155')
-
-sanitize() {
-	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-	export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
-}
+url="https://metacpan.org/release/$_dist"
+license=('GPL')
+depends=('perl' 'perl-test-simple' 'perl-time-hires')
+makedepends=('perl-module-build')
+options=('!emptydirs' 'purge')
+source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/$_dist-$pkgver.tar.gz")
+sha512sums=('d8c0011d0dcee9bb0317a394da34925d6a5e214ff8706158268d546f5b0e6d8fad7a8edafda2eada15bcca20d2da9ae722018c6dd0ff9a69bae1c0759776f616')
 
 build() {
-	cd Future-0.49
-	sanitize
-	/usr/bin/perl Build.PL --installdirs vendor --destdir "$pkgdir"
-	/usr/bin/perl Build
+  cd $_dist-$pkgver
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+  /usr/bin/perl Build.PL
+  ./Build
 }
 
 check() {
-	cd Future-0.49
-	sanitize
-	/usr/bin/perl Build test
+  cd $_dist-$pkgver
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  ./Build test
 }
 
 package() {
-	cd Future-0.49
-	sanitize
-	/usr/bin/perl Build install
-	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
+  cd $_dist-$pkgver
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  ./Build install --installdirs=vendor --destdir="$pkgdir"
 }
