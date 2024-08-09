@@ -21,7 +21,7 @@ optdepends=('gtk2: GTK+ look and feel'
 options=('!strip')
 source=("https://redirector.gvt1.com/edgedl/android/studio/ide-zips/$pkgver/android-studio-$pkgver-linux.tar.gz"
         "$pkgname.desktop")
-sha256sums=('b104b78c12d6b94c91d633fd3c483d29fd005925d25937132565beea460824ff'
+sha256sums=('c9f6f6ddc630460854034e0291fe08db27ea99d103f6c7ffff41527962fecdee'
             '12ff377490cff386ba7b3ab9c94adfc2ca99515fdfad4773813268217dcd56b7')
 
 if [ "$CARCH" = "i686" ]; then
