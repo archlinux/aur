@@ -3,7 +3,7 @@ pkgname=ohmymd-bin
 _pkgname="Oh Mymd"
 pkgver=0.6.1
 _electronversion=24
-pkgrel=6
+pkgrel=7
 pkgdesc="A markdown editor,support cloud sync"
 arch=('x86_64')
 url="https://www.ohmymd.app/"
@@ -12,7 +12,6 @@ license=("LicenseRef-custom")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
     'alsa-lib'
     'gtk3'
     'nspr'
