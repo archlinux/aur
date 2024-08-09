@@ -8,7 +8,6 @@ pkgbase = wait_ex-git
 	makedepends = nim
 	makedepends = git
 	depends = glibc
-	depends = gcc-libs
 	provides = wait_ex
 	conflicts = wait_ex
 	source = wait_ex::git+https://git.sr.ht/~mjaa/wait_ex
