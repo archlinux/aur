@@ -23,7 +23,6 @@ prepare() {
   cd "${srcdir}/${_pkgsrc}"
   # workaround for OpenMPI 4 compatibility
   find . -type f -exec sed -i -e s/MPI_Address/MPI_Get_address/ -e s/MPI_Type_struct/MPI_Type_create_struct/ {} +
-  rm "aclocal.m4" "Makefile.in"
 
   for _patch in "${srcdir}/${pkgname}_"*".patch"; do
     patch -p1 -i "${_patch}"
@@ -32,9 +31,8 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
-  aclocal
-  automake --add-missing
-  autoconf
+  libtoolize
+  autoreconf -vfi
   autoupdate
   ./configure \
     --prefix='/usr' \
