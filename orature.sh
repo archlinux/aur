@@ -1,5 +1,5 @@
 #!/bin/bash
-set -o pipefail
+set -euo pipefail
 _APPDIR=/opt/@appname@
 _RUNNAME="${_APPDIR}/@runname@"
 export PATH="${_APPDIR}:${_APPDIR}/jre/bin:${PATH}"
