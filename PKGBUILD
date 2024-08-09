@@ -4,7 +4,7 @@ _pkgname=com.cctv.deepin
 _officalname=CBox
 pkgver=6.0.0.2
 _deepinver=1.0.0deepin9
-pkgrel=2
+pkgrel=3
 pkgdesc="CGTN CBox on Deepin Wine 6"
 arch=("x86_64")
 url="https://app.cctv.com/"
@@ -13,7 +13,6 @@ depends=(
     'deepin-wine6-stable'
     'deepin-wine-helper'
     'xdg-utils'
-    'hicolor-icon-theme'
 )
 makedepends=(
     'p7zip'
@@ -26,7 +25,7 @@ source=(
 )
 sha256sums=('6e6ca3250a3a82dd46b29df450f508eff74f22cebcead9890677210b0610a4bd'
             '519b04ac61a4b3e9422de238ce5e76d2fafefe58f93776f99494f3eb59005264'
-            'f82563924b98fb305fab9bdb4aa1d9e69cc6024b3c32fc0f6425b1508404a991')
+            '806668282a5e3cd44ba5b7020c556cdcc8de0284b24e1c146cf3e602dcdae333')
 build() {
     sed -e "s|@appname@|${_officalname}|g" \
         -e "s|@pkgname@|${pkgname}|g" \
