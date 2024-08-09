@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+set -o pipefail
 _APPDIR=/opt/@appname@
 _RUNNAME=@runname@
 export PATH="${_APPDIR}:${_APPDIR}/lib:${PATH}"
