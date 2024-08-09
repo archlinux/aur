@@ -1,0 +1,16 @@
+pkgbase = cp210x-program
+	pkgdesc = EEPROM tool for Silabs CP210x USB-Serial adapter
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/VCTLabs/cp210x-program
+	arch = any
+	license = LGPL-2.1-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyusb
+	source = https://github.com/VCTLabs/cp210x-program/archive/refs/tags/0.4.1.tar.gz
+	sha256sums = a642314c8b6409a67e08a549bf2e884cd550f386c17ae31a1fe14467ab615261
+
+pkgname = cp210x-program
