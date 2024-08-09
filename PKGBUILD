@@ -2,13 +2,13 @@
 # Contributors: Frederic Bezies, Ronan Rabouin, Yamashiro <dev cosmicheron com>
 
 pkgname='yamagi-quake2'
-pkgver=8.40
+pkgver=8.41
 pkgrel=1
 pkgdesc='Enhanced Quake II engine optimized for modern systems'
 url='https://www.yamagi.org/quake2/'
 arch=('i686' 'x86_64' 'aarch64')
-license=('custom: Info-ZIP' 'GPL-2.0')
-depends=('sdl2')
+license=('Info-ZIP' 'GPL-2.0-only')
+depends=('glibc' 'libglvnd' 'sdl2')
 optdepends=('curl: http download support'
             'openal: alternative audio backend'
             'quake2-data: game files'
@@ -17,7 +17,7 @@ makedepends=('openal' 'mesa' 'curl')
 install="${pkgname}.install"
 source=("https://deponie.yamagi.org/quake2/quake2-${pkgver}.tar.xz"
         "${pkgname}.desktop")
-sha512sums=('4e37b1f3247b0fe45604460d6eba8209b0c6701c00508ecf050e950de4a3d53125bb8fa2b370fcd336c660e76a02cf31086398255cd8e24730de211b161b7039'
+sha512sums=('42870ace797146b2913669cea796b7e5525178078274eac6011183bab90df217fd4aa1c5b7232275b6a0d05a488bd4af6e9757c9f40194a33c7512c56c2caa53'
             '540b400c0b912138f43fc9bf2a7db9cf2d1b3100ccbcd6bb1efb00332abaf97ec3b91fa924d8ed21f511fe547a6f994dc301a5ed535a962230cb73d1ed2ee764')
 
 build() {
@@ -28,7 +28,8 @@ package() {
   cd "quake2-${pkgver}"
 
   # client + server binaries, renderer libraries
-  install -Dm755 -t "${pkgdir}/usr/lib/${pkgname}" release/{quake2,q2ded,*.so}
+  install -Dm755 -t "${pkgdir}/usr/lib/${pkgname}" release/{quake2,q2ded}
+  install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}" release/*.so
 
   # symlinks to make the commands available
   install -d "${pkgdir}/usr/bin"
