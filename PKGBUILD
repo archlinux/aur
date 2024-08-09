@@ -20,7 +20,9 @@ depends=(
 makedepends=(
     'fuse2'
 )
-options=('!strip')
+options=(
+    '!strip'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-v${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
