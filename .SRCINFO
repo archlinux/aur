@@ -1,11 +1,10 @@
 pkgbase = no-fwl-bin
 	pkgdesc = NoFWL Desktop Application
 	pkgver = 0.1.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://nofwl.com/
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = hicolor-icon-theme
 	depends = gtk3
 	depends = webkit2gtk
 	provides = no-fwl=0.1.0

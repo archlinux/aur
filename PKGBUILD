@@ -2,7 +2,7 @@
 pkgname=no-fwl-bin
 _appname=NoFWL
 pkgver=0.1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="NoFWL Desktop Application"
 arch=("x86_64")
 url="https://nofwl.com/"
@@ -11,7 +11,6 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
     'gtk3'
     'webkit2gtk'
 )
