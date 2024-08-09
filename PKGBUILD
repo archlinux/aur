@@ -1,7 +1,7 @@
 # Maintainer: Javier Tia <javier dot tia at gmail dot com>
 
 pkgname='oelint-adv'
-pkgver=5.7.1
+pkgver=5.7.2
 pkgrel=1
 pkgdesc='Linter for bitbake recipes based in OE Styleguide'
 url='https://github.com/priv-kweihmann/oelint-adv'
@@ -11,7 +11,7 @@ depends=('python-urllib3' 'python-anytree' 'python-colorama' 'python-oelint-pars
 makedepends=('python-setuptools')
 provides=("${pkgname}=${pkgver}")
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('ea723ec6dd522728a7e5e321b3c04130be20fddfbf060bb1a3902530576e5a4a')
+sha256sums=('9d282daba724cf060b94794fad0e14a830bea993b6634ef1c38bcbcb551d108b')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
