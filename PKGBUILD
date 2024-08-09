@@ -12,11 +12,9 @@ conflicts=("${pkgname%-git}")
 options=('!lto')
 source=(
 	"${pkgname%-git}::git+https://github.com/ninjadev64/OpenDeck"
-	"50-elgato.rules"
 )
 
-sha256sums=('SKIP'
-            '9e15b85f84cbe38444b47439670877f77f3a5b3908687b5169731eef730e258e')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -40,7 +38,6 @@ build() {
 }
 
 package() {
-	install -Dm644 -t "$pkgdir/etc/udev/rules.d" 50-elgato.rules
 	cd "$srcdir/${pkgname%-git}"
 	dpkg-deb -R $(find . -type f -name "*.deb") $pkgdir
 	rm -rf $pkgdir/DEBIAN
