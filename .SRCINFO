@@ -1,6 +1,6 @@
 pkgbase = wallet-tracker-git
-	pkgdesc = Detect real scammers with Wallet-Tracker CLI from anywhere
-	pkgver = 2.0.r0.gff0e2b3
+	pkgdesc = Detect real scammers from anywhere
+	pkgver = 2.0.4.r2.g3a71f08
 	pkgrel = 1
 	url = https://github.com/aydinnyunus/wallet-tracker
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = wallet-tracker-git
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	provides = wallet-tracker=2.0
+	provides = wallet-tracker=2.0.4
 	conflicts = wallet-tracker
 	source = wallet-tracker::git+https://github.com/aydinnyunus/wallet-tracker.git
 	sha256sums = SKIP
