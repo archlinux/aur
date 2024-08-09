@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=image-ascii-art-tauri-bin
 pkgver=1.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Image ASCII convertissor made in React converted to desktop app using Tauri"
 arch=('x86_64')
 url="https://im-rises.github.io/image-ascii-art-website/"
@@ -10,7 +10,6 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
     'webkit2gtk'
     'gtk3'
 )
