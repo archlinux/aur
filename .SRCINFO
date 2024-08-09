@@ -6,10 +6,11 @@ pkgbase = pakku-git
 	url = https://github.com/zqqw/pakku
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = nim
 	makedepends = git
 	makedepends = asciidoc
+	depends = pacman
 	depends = libcurl.so
 	depends = git
 	provides = pakku
@@ -19,4 +20,3 @@ pkgbase = pakku-git
 	sha256sums = SKIP
 
 pkgname = pakku-git
-
