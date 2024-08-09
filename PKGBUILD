@@ -5,7 +5,7 @@ _officalname=AliMail
 _providername=Alibaba
 pkgver=2.7.1.13834
 _deepinver=1.6.7.0deepin2
-pkgrel=7
+pkgrel=8
 pkgdesc="Aliyun Mail client on Deepin Wine 6"
 arch=("x86_64")
 url="https://mail.aliyun.com/"
@@ -15,12 +15,11 @@ depends=(
     'deepin-wine-helper'
     'xdg-utils'
     'gtk2'
-    'hicolor-icon-theme'
 )
 makedepends=(
     'p7zip'
 )
-conflicts=()
+conflicts=("${pkgname}")
 install="${pkgname}.install"
 source=(
     "${_pkgname}_${_deepinver}_i386.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/c/${_pkgname}/${_pkgname}_${_deepinver}_i386.deb"
@@ -34,7 +33,7 @@ sha256sums=('7e020363732d448a29a394afa3f6a5f2c54e600987af599e3a4b6c0edec3a61e'
             'f85e4a06c6da0781c4148dbe3ca4cf591996e445449aafb4198a747e22f9c1ce'
             '3e2ed9203a5ce3b2f00b6c942d8fac6b24e7a6e7b1ebc863cee2e27d3ff487db'
             '4e1c8cac900b9eb08b5830106c32913d3a5680230e073648f788dad479fdb0f2'
-            '4a548292efa8c2bed411a5ac61189eec1876cedbadbcf1d54f5ca8954b4cb785')
+            '2383c785f8b72f3d3a3529f0a9d8c2be0f03fc01b0b98218601eab421a3301e4')
 build() {
     sed -e "s|@bottlename@|Deepin-${_officalname}|g" \
         -e "s|@sparkver@|${_deepinver}|g" \
