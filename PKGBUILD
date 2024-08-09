@@ -8,6 +8,7 @@ url="https://developer.modular.com/download"
 license=("custom:modular")
 depends=(
     "modular"
+    "mojo-libs"
     "python"
     "libbsd"
     "libmd"
@@ -19,12 +20,11 @@ depends=(
     "zlib"
 )
 arch=("x86_64")
-source=("https://raw.githubusercontent.com/Sharktheone/arch-mojo/db577ab43166228303929d4d33cf6e32279bd71a/src/install.py")
-sha256sums=("f4fe8e1ad32ce410fd325d9db032a3613ec3986ae0529b76f911b80aefd56a60")
 
 install=mojo-git.install
 
 package() {
-    python3 install.py --mojo
-    echo "Please restart your shell to use mojo"
+    export LD_LIBRARY_PATH="~/.local/lib/arch-mojo:$LD_LIBRARY_PATH"
+
+    modular install mojo
 }
