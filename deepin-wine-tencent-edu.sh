@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 BOTTLENAME=@bottlename@
 APPVER=@appver@
 WINEPREFIX="$HOME/.deepinwine/${BOTTLENAME}"

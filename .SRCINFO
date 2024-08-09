@@ -1,7 +1,7 @@
 pkgbase = deepin-wine-tencent-edu
 	pkgdesc = Tencent Classroom on Deepin Wine 6.腾讯课堂
 	pkgver = 4.6.1.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://ke.qq.com
 	install = deepin-wine-tencent-edu.install
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = deepin-wine-tencent-edu
 	depends = deepin-wine6-stable
 	depends = spark-dwine-helper
 	depends = xdg-utils
-	depends = hicolor-icon-theme
 	source = com.tencent.edu.deepin_3.0.3.55deepin6.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.edu.deepin/com.tencent.edu.deepin_3.0.3.55deepin6_i386.deb
 	source = TXEDU-4.6.1.2.exe::https://down.qq.com/txedupc/EduInstall_4.6.1.2_10193.exe
 	source = LICENSE.html::https://ke.qq.com/article/645
@@ -18,6 +17,6 @@ pkgbase = deepin-wine-tencent-edu
 	sha256sums = c61e98e1cff8eb5274c79499d807d08712f5092bff1e73c263849780c000da41
 	sha256sums = 0898729e7784b2fc63aad5cef7bda66a5a2853c3b156deea2280ede56ace218d
 	sha256sums = e7c9efe5e722cfc9c66420d5d111202a28bbbdaa14832dfaa676e9da6e44c367
-	sha256sums = ac0f69eddf715ab428ffa00a51d20e380c046d0707f2fb64cbbcd408d5fc49de
+	sha256sums = a0c3e6aeee5f2a4a7f9fec3e5e6d2e4372eba13785fe8339c446e184093bf729
 
 pkgname = deepin-wine-tencent-edu

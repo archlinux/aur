@@ -4,7 +4,7 @@ pkgver=4.6.1.2
 _pkgname=com.tencent.edu.deepin
 _deepinver=3.0.3.55deepin6
 _officalname=TXEDU
-pkgrel=5
+pkgrel=6
 pkgdesc="Tencent Classroom on Deepin Wine 6.腾讯课堂"
 arch=("x86_64")
 url="https://ke.qq.com"
@@ -13,7 +13,6 @@ depends=(
     'deepin-wine6-stable'
     'spark-dwine-helper'
     'xdg-utils'
-    'hicolor-icon-theme'
 )
 makedepends=(
     'p7zip'
@@ -28,7 +27,7 @@ source=(
 sha256sums=('c61e98e1cff8eb5274c79499d807d08712f5092bff1e73c263849780c000da41'
             '0898729e7784b2fc63aad5cef7bda66a5a2853c3b156deea2280ede56ace218d'
             'e7c9efe5e722cfc9c66420d5d111202a28bbbdaa14832dfaa676e9da6e44c367'
-            'ac0f69eddf715ab428ffa00a51d20e380c046d0707f2fb64cbbcd408d5fc49de')
+            'a0c3e6aeee5f2a4a7f9fec3e5e6d2e4372eba13785fe8339c446e184093bf729')
 build() {
     sed -e "s|@bottlename@|Deepin-${_officalname}|g" \
         -e "s|@appver@|${pkgver}|g" \
