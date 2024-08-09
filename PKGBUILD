@@ -3,7 +3,7 @@
 pkgname=('basix-git' 'python-fenics-basix-git')
 pkgdesc="FEniCSx finite element basis evaluation library"
 pkgver=0.9.0.dev0_r1058.de0bd73
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://fenicsproject.org"
 license=('MIT')
@@ -39,12 +39,7 @@ build() {
         -Wno-dev
     cmake --build build
 
-    # HACK: Install to temporary dir, required for building the wheel
-    export DESTDIR="$srcdir/tmp"
-    cmake --install build
-
     # Build the python wheel
-    export CMAKE_PREFIX_PATH="$srcdir/tmp/usr"
     python -m build --wheel --no-isolation "$srcdir/basix/python"
 }
 
