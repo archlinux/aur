@@ -1,15 +1,16 @@
-# Maintainer: mechakotik <mechakotik@gmail.com>
+# Maintainer: neolouker <neolouker@gmail.com>
+# Contributor: mechakotik <mechakotik@gmail.com>
 
 pkgname=rog-daemon
-pkgver=1.0.3
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Lightweight daemon and CLI to control ASUS ROG/TUF laptops features"
 url="https://github.com/mechakotik/rog-daemon"
 arch=('x86_64')
-license=('GPL')
+license=('GPL-3.0-or-later')
 
 source=("${pkgname}-${pkgver}::https://github.com/mechakotik/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1e450d18e0b55e0e0170db8888bbd25d98c67fca25c1414bb8d9524821d17d24')
+b2sums=('ee5af3add536fded74af3282df72e1472fa65a090d1334bc850618fb8f7386d688f82efb7b33d41ed62338106a272d72b031f25cffd569eb3132c5fb65c325c1')
 
 makedepends=(
     'gcc'
@@ -17,10 +18,13 @@ makedepends=(
 )
 
 build() {
-    arch-meson $pkgname-$pkgver build
-    meson compile -C build
+  arch-meson $pkgname-$pkgver build
+  meson compile -C build
 }
 
 package() {
-    meson install -C build --destdir "$pkgdir"
+  meson install -C build --destdir "$pkgdir"
+  cd ${pkgname}-${pkgver}
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
