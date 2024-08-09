@@ -1,7 +1,7 @@
-From 7f2469d01ecc865982bfe82c172d932a817974ef Mon Sep 17 00:00:00 2001
+From 65c7d76ccb45f83842a6474a7052ce40cee88963 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Wed, 12 Jun 2024 14:16:43 -0600
-Subject: [PATCH 34/37] Linux-6.10: define a wrapper for vmalloc
+Subject: [PATCH 2/5] Linux-6.10: define a wrapper for vmalloc
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -70,5 +70,5 @@ index e33306278..0c7489940 100644
  	printf("afs_osi_Alloc: Error in initialization(lhash_create)\n");
  	return 0;
 -- 
-2.45.2
+2.46.0
 
