@@ -3,7 +3,7 @@
 pkgname=waterfox-kde
 _pkgver=6.0.18
 pkgver=G${_pkgver}
-pkgrel=0
+pkgrel=1
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
 license=('MPL')
