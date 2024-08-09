@@ -8,6 +8,7 @@ url="https://github.com/obvMellow/hardcpy"
 license=(GPL-3.0-or-later)
 makedepends=('rust' 'cargo' 'git')
 depends=('sqlite3')
+conflicts=('hardcpy-bin')
 source=("git+https://github.com/obvMellow/hardcpy.git")
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 sha256sums=('SKIP')
