@@ -4,8 +4,8 @@
 
 pkgname=scx-scheds
 gitname=scx
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ depends=('libelf' 'zlib' 'jq')
 makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
 options=(!lto)
 source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver")
-sha256sums=('16eb0ab230ad7de16e2efae62df0cacd48700dbaf95182151a6d0b6671ec5f7a')
+sha256sums=('a158bcac703a8a548127f6adc9b3b7763f6299d3509cdf9e6bbc78a948da1c72')
 validpgpkeys=(
   697C63013E65270255EBC2608744DC1EB26B5A9A  # Tejun Heo <tj@kernel.org>
   F5504C7B7B8107B40EF9E97AA1148BB3207BCC33  # David Vernet
