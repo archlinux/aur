@@ -1,7 +1,7 @@
 pkgbase = python-environ-config
 	pkgdesc = Python Application Configuration With Environment Variables
-	pkgver = 23.2.0
-	pkgrel = 4
+	pkgver = 24.1.0
+	pkgrel = 1
 	url = https://github.com/hynek/environ-config
 	arch = any
 	license = Apache-2.0
@@ -15,7 +15,7 @@ pkgbase = python-environ-config
 	depends = python
 	depends = python-attrs
 	optdepends = python-boto3: secret extraction from AWS Secrets Manager
-	source = python-environ-config-23.2.0.tar.gz::https://github.com/hynek/environ-config/archive/refs/tags/23.2.0.tar.gz
-	sha256sums = b717dbdf671a79b8c73427bc2c8eeaabed7abf36252281accfd5db25b50db21a
+	source = python-environ-config-24.1.0.tar.gz::https://github.com/hynek/environ-config/archive/refs/tags/24.1.0.tar.gz
+	sha256sums = f90fb07cdbfaa3ef26293197a59bbf3f63aa11c4c0058138283bca40b7fe1545
 
 pkgname = python-environ-config

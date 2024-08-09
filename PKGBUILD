@@ -2,8 +2,8 @@
 
 pkgname=python-environ-config
 _name=${pkgname#python-}
-pkgver=23.2.0
-pkgrel=4
+pkgver=24.1.0
+pkgrel=1
 pkgdesc="Python Application Configuration With Environment Variables"
 arch=(any)
 url="https://github.com/hynek/environ-config"
@@ -26,7 +26,7 @@ checkdepends=(
 optdepends=('python-boto3: secret extraction from AWS Secrets Manager')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('b717dbdf671a79b8c73427bc2c8eeaabed7abf36252281accfd5db25b50db21a')
+sha256sums=('f90fb07cdbfaa3ef26293197a59bbf3f63aa11c4c0058138283bca40b7fe1545')
 
 _archive="$_name-$pkgver"
 
