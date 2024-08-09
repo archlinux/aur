@@ -1,39 +1,34 @@
-# Maintainer: Karol 'Kenji Takahashi' Woźniak @ kenji.sx
-# Based on a scangearmp-mg3200 package by morris555
+# Maintainer: Kristopher James Kent (kjkent) <aur@kjkent.dev>
+# Contributor: Karol 'Kenji Takahashi' Woźniak @ kenji.sx
 #
-# [Printer Model Name] [Printer Model ID]
-# ------------------------------------------------------------------
-#  mp230     401
-#  mg2200    402
-#  e510      403
-#  mg3200    404
-#  mg4200    405
-#  ip7200    406
-#  mg5400    407
-#  mg6300    408
+# Based on a scangearmp-mg3200 package by morris555
+# Credit for gimp 2.9+ patch: lesebas (mg3200 PKGBUILD)
 
 _name=mg4200
 _id=405
 
 pkgname=scangearmp-${_name}
 pkgver=2.00
-pkgrel=2
+pkgrel=3
 _pkgver=2.00-1
 pkgdesc="Canon Scanner Driver (for ${_name} series)"
 url="http://support-my.canon-asia.com/contents/MY/EN/0100470802.html"
 arch=('i686' 'x86_64')
 license=('custom')
-depends=('gtk2' 'sane' 'libusb-compat' 'gimp')
+depends=('gtk2' 'libusb-compat')
+makedepends=('sane' 'gimp')
 install=scangearmp-mg4200.install
 source=(
     http://gdlp01.c-wss.com/gds/8/0100004708/01/scangearmp-source-${_pkgver}.tar.gz
-    'libpng15.patch'
+    'libpng-1_5.patch'
     'fix_configure.patch'
+    'gimp-2_9.patch'
 )
 md5sums=(
     'ccd538e1333bf34aa83900f093ecd9eb'
     '5fd4f2f00aad11ff108a2c642cf1a7c1'
     '6ff76bfcfa4b4021e47677882772c895'
+    'cedd3b24a29500813f4e0f81f9abca0e'
 )
 
 if [ "$CARCH" == "x86_64" ]; then
@@ -46,7 +41,7 @@ build() {
     cd "${srcdir}/scangearmp-source-${_pkgver}"
 
     # Patch for libpng>=1.5
-    patch -p1 -i ../libpng15.patch
+    patch -p1 -i ../libpng-1_5.patch
     patch -p1 -i ../fix_configure.patch
 
     cd scangearmp
@@ -55,9 +50,16 @@ build() {
     # Force the use of system's libtool
     rm -f libtool
     ln -s `which libtool` .
+    # patch for gimp >=2.9
+    patch -p3 --binary -l -i ../../gimp-2_9.patch
     # Build package
-    make clean || return 1
-    make || return 1
+    _makeflags=(
+        '-Wno-error=implicit-function-declaration'
+        '-Wno-error=return-mismatch'
+        '-w'
+    )
+
+    make CFLAGS="${_makeflags[*]}" || return 1 
 }
 
 package() {
@@ -116,5 +118,3 @@ package() {
     rm ${pkgdir}/usr/lib/libsane-canon_mfp.a
     rm ${pkgdir}/usr/lib/libsane-canon_mfp.la
 }
-
-# vim:set ts=4 sw=4 et:
