@@ -1,0 +1,4 @@
+[godot-cpp]
+source = "github"
+github = "godotengine/godot-cpp"
+use_max_tag = true

@@ -1,18 +1,18 @@
 # Maintainer: Martin Reboredo <yakoyoku@gmail.com>
 
 pkgname=godot-cpp
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc='C++ bindings for the Godot script API'
 arch=('x86_64')
 url='https://godotengine.org'
 license=('MIT')
-makedepends=(cmake godot=$pkgver)
+makedepends=(cmake godot=$pkgver python)
 source=(
   https://github.com/godotengine/$pkgname/archive/refs/tags/godot-$pkgver-stable.tar.gz
   godot-cpp.pc.in
 )
-sha256sums=('9641cdd4ae65d32048e54335c1eac01cca0f685e1a962e6954355122d19073a5'
+sha256sums=('2eadcf70ecab951236cc97bf8fbcc8fe618596bd09b6173b5a07e845992e349c'
             '675cbdf08979edcf5cbd951b88a6b00b5d5a24fd9c68418b8d7b4c77dcf722a3')
 
 prepare() {
