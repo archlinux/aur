@@ -1,14 +1,13 @@
 pkgbase = sentio-bin
 	pkgdesc = A productivity type desktop app built around the pomodoro concept.
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://intentio.app/
 	arch = x86_64
 	license = Apache-2.0
 	license = LicenseRef-custom
 	depends = webkit2gtk
 	depends = alsa-lib
-	depends = hicolor-icon-theme
 	depends = gtk3
 	provides = sentio-1.0.0
 	conflicts = sentio

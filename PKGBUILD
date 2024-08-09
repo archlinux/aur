@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sentio-bin
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A productivity type desktop app built around the pomodoro concept."
 arch=("x86_64")
 url="https://intentio.app/"
@@ -15,7 +15,6 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'webkit2gtk'
     'alsa-lib'
-    'hicolor-icon-theme'
     'gtk3'
 )
 source=(
