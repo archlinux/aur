@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electron-utils-bin
 pkgver=3.3.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Electron Utils for every day usage as a dev."
 arch=('x86_64')
 url='https://github.com/SamTV12345/DevRustPilot'
@@ -11,7 +11,6 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'webkit2gtk'
     'gtk3'
-    'hicolor-icon-theme'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_0.0.0_amd64.deb"
