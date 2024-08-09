@@ -10,7 +10,7 @@ amdgpu_pro="opt/amdgpu-pro/lib/x86_64-linux-gnu/"
 pkgname=opencl-amd-dev
 pkgdesc="OpenCL SDK / HIP SDK / ROCM Compiler. This package needs at least 20GB of disk space."
 pkgver=6.2.0
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('x86_64')
 url='http://www.amd.com'
@@ -18,12 +18,13 @@ license=('custom:AMD')
 makedepends=('wget')
 depends=('opencl-amd' 'suitesparse' 'blas' 'lapack')
 provides=('composablekernel-dev' 'rocm-llvm' 'rocblas' 'rocblas-dev' 'rocsolver' 'rocsolver-dev' 'half' 'hipblas' 'hipblas-dev' 'hipblaslt' 'hipblaslt-dev' 'hiprand' 'hiprand-dev' 'rocprim' 'rocprim-dev' 'hipcub' 'hipcub-dev' 'rocfft' 'rocfft-dev' 'hipfft' 'hipfft-dev'
-	'hipfort' 'hipfort-dev' 'hipify-clang' 'hipsolver' 'hipsolver-dev' 'rocsparse' 'rocsparse-dev' 'hipsparse' 'hipsparse-dev' 'hipsparselt' 'hipsparselt-dev' 'hiptensor' 'hiptensor-dev' 'openmp-extras-dev' 'rccl' 'rccl-dev' 'rocrand' 'rocrand-dev' 'rocalution' 'rocalution-dev' 'rocm-hip-libraries' 'rocm-hip-runtime-dev' 'rocthrust' 'rocthrust-dev' 'rocm-hip-sdk' 'rocm-opencl-sdk' 'rocwmma-dev' 'rocm-developer-tools' 'miopen' 'miopen-hip' 'miopen-hip-dev' 'rocm-ml-libraries' 'rocm-ml-sdk')
+	'hipfort' 'hipfort-dev' 'hipify-clang' 'hipsolver' 'hipsolver-dev' 'rocsparse' 'rocsparse-dev' 'hipsparse' 'hipsparse-dev' 'hipsparselt' 'hipsparselt-dev' 'hiptensor' 'hiptensor-dev' 'openmp-extras-dev' 'omniperf' 'omnitrace' 'rccl' 'rccl-dev' 'rocrand' 'rocrand-dev' 'rocalution' 'rocalution-dev'
+	'rocm-hip-libraries' 'rocm-hip-runtime-dev' 'rocthrust' 'rocthrust-dev' 'rocm-hip-sdk' 'rocm-opencl-sdk' 'rocwmma-dev' 'rocprofiler-sdk' 'rocm-developer-tools' 'migraphx' 'migraphx-dev' 'miopen' 'miopen-hip' 'miopen-hip-dev' 'mivisionx' 'mivisionx-dev' 'rocm-ml-libraries' 'rocm-ml-sdk' 'rpp' 'rpp-dev')
 conflicts=('composablekernel-dev' 'rocm-llvm' 'rocblas' 'rocblas-dev' 'rocsolver' 'rocsolver-dev' 'hipblas' 'hipblas-dev' 'hipblaslt' 'hipblaslt-dev' 'hiprand' 'hiprand-dev' 'rocprim' 'rocprim-dev' 'hipcub' 'hipcub-dev' 'rocfft' 'rocfft-dev' 'hipfft' 'hipfft-dev'
-	'hipfort' 'hipfort-dev' 'hipify-clang' 'hipsolver' 'hipsolver-dev' 'rocsparse' 'rocsparse-dev' 'hipsparse' 'hipsparse-dev' 'hipsparselt' 'hipsparselt-dev' 'hiptensor' 'hiptensor-dev' 'openmp-extras-dev' 'rccl' 'rccl-dev' 'rocrand' 'rocrand-dev' 'rocalution' 'rocalution-dev' 'rocm-hip-libraries' 'rocm-hip-runtime-dev' 'rocthrust' 'rocthrust-dev' 'rocm-hip-sdk' 'rocm-opencl-sdk' 'rocwmma-dev' 'rocm-developer-tools' 'miopen' 'miopen-hip' 'miopen-hip-dev' 'rocm-ml-libraries' 'rocm-ml-sdk')
+	'hipfort' 'hipfort-dev' 'hipify-clang' 'hipsolver' 'hipsolver-dev' 'rocsparse' 'rocsparse-dev' 'hipsparse' 'hipsparse-dev' 'hipsparselt' 'hipsparselt-dev' 'hiptensor' 'hiptensor-dev' 'openmp-extras-dev' 'omniperf' 'omnitrace' 'rccl' 'rccl-dev' 'rocrand' 'rocrand-dev' 'rocalution' 'rocalution-dev'
+	'rocm-hip-libraries' 'rocm-hip-runtime-dev' 'rocthrust' 'rocthrust-dev' 'rocm-hip-sdk' 'rocm-opencl-sdk' 'rocwmma-dev' 'rocprofiler-sdk' 'rocm-developer-tools' 'migraphx' 'migraphx-dev' 'miopen' 'miopen-hip' 'miopen-hip-dev' 'mivisionx' 'mivisionx-dev' 'rocm-ml-libraries' 'rocm-ml-sdk' 'rpp' 'rpp-dev')
 
 source=(
-#'libmetis5'
 "https://repo.radeon.com/rocm/apt/6.2/pool/main/c/composablekernel-dev/composablekernel-dev_1.1.0.60200-66~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2/pool/main/h/half/half_1.12.0.60200-66~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2/pool/main/h/hiprand/hiprand_2.11.0.60200-66~24.04_amd64.deb"
@@ -46,6 +47,8 @@ source=(
 "https://repo.radeon.com/rocm/apt/6.2/pool/main/h/hiptensor/hiptensor_1.3.0.60200-66~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2/pool/main/h/hiptensor-dev/hiptensor-dev_1.3.0.60200-66~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2/pool/main/o/openmp-extras-dev/openmp-extras-dev_18.62.0.60200-66~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.2/pool/main/o/omniperf/omniperf_2.0.1.60200-66~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.2/pool/main/o/omnitrace/omnitrace_1.11.2.60200-66~22.04_amd64.deb" # TODO FIX
 "https://repo.radeon.com/rocm/apt/6.2/pool/main/r/rocm-llvm/rocm-llvm_18.0.0.24292.60200-66~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2/pool/main/r/rocblas/rocblas_4.2.0.60200-66~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2/pool/main/r/rocblas-dev/rocblas-dev_4.2.0.60200-66~24.04_amd64.deb"
@@ -68,11 +71,18 @@ source=(
 "https://repo.radeon.com/rocm/apt/6.2/pool/main/r/rocm-hip-sdk/rocm-hip-sdk_6.2.0.60200-66~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2/pool/main/r/rocm-opencl-sdk/rocm-opencl-sdk_6.2.0.60200-66~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2/pool/main/r/rocwmma-dev/rocwmma-dev_1.5.0.60200-66~24.04_amd64.deb"
-# ML
+"https://repo.radeon.com/rocm/apt/6.2/pool/main/r/rocprofiler-sdk/rocprofiler-sdk_0.4.0-66~24.04_amd64.deb"
+# Machine learning and computer vision
+"https://repo.radeon.com/rocm/apt/6.2/pool/main/m/migraphx/migraphx_2.10.0.60200-66~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.2/pool/main/m/migraphx-dev/migraphx-dev_2.10.0.60200-66~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2/pool/main/m/miopen-hip/miopen-hip_3.2.0.60200-66~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2/pool/main/m/miopen-hip-dev/miopen-hip-dev_3.2.0.60200-66~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.2/pool/main/m/mivisionx/mivisionx_3.0.0.60200-66~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.2/pool/main/m/mivisionx-dev/mivisionx-dev_3.0.0.60200-66~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2/pool/main/r/rocm-ml-libraries/rocm-ml-libraries_6.2.0.60200-66~24.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/6.2/pool/main/r/rocm-ml-sdk/rocm-ml-sdk_6.2.0.60200-66~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.2/pool/main/r/rpp/rpp_1.8.0.60200-66~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/6.2/pool/main/r/rpp-dev/rpp-dev_1.8.0.60200-66~24.04_amd64.deb"
 )
 
 sha256sums=(
@@ -98,6 +108,8 @@ sha256sums=(
 "f9963a30ac447c1bad675cb91bfda98fe6e4e534a037ef3322f052c54753481e"
 "eb3fb77a04a3bb713f94e3d57388acbb2225d646241da5a32021f81be012bcf4"
 "25efddbfcc3e771e2b55da3f53dc22c8b21c263cfd53bd21bfc54491c25a746b"
+"b0882bc88badd5a6622aa3c26aad02faed6c4fff6eb9ce5ce9e5ba9cf48bea8b"
+"c0b29973fc07db592793ee5c164459b74f0fe1fb79f088bb4f510ceae2de0564"
 "1c59b5dd4619a1c11dd1369d729d87e92cbda97c59c94c476b0a197755aa914b"
 "f8a56c72404c1b35fd2684a76b135746d97b13241e4a40ba6c1a73b2b5b133bb"
 "00f135ce2ae47c35085ef06248ff7d5ce8c12fd0d5b82e7bd77b1dbc0ce7058e"
@@ -120,11 +132,18 @@ sha256sums=(
 "a5f2f73f656db4aeeaceef0d2bccd2f9071b16d41cdabe5bf976edbc30a11ddd"
 "2c8f47ec1cd59411e2f64e903f9cfc4ac68ca24ef6f6f2cdbb4eb8ab4626b491"
 "b99166816370fec4ffbff14baf62af71e1a60182c9014311db6637e7d41dfd83"
-# ML
+"f879b1f80cbe7dd2fab42a5f51fe0f06f389842b2850bd3be83ba880f42d21e2"
+# Machine learning and computer vision
+"5d371ef16d96421ef876935120da70ec3347bb5436c8ecda014e732b2a968283"
+"79eda5c1fbcd145f9d61b2bd19f27e5c4202d5769626bac467a476b1cfc7d222"
 "7cc203c63a8120fbb17832b2ea2ed010f1e56028c1f8926b87ed4cf4618c0bae"
 "df5fdd2218e4d380b133ba402f3734fbe0589d9cdd8618a101b71b968909b4ba"
+"e9d4c1e9d5a6e3d4b2f5712b63921993d4523a78ba7f0777faeb345fafcbbd17"
+"b38407287afbc452063ed5a80ec5111d9a4927d71fa423a7467f76927900c370"
 "2d4884a55920288f7ff4f1aa1e21a81076d9978c2a94d5b791ac1f79690e1590"
 "dc0b6146110c17d388838e1d0a25ee0b6fa6cf255bc232e4c68fb49b24b05e45"
+"b91ce9912bf6bbe54ad0d86a14a45613ad143a0470b846230a2f324e6964e980"
+"f4d449a0c00ccd892321378c38c2efa84157c905f0e78a65547d737b1d5141ce"
 )
 
 #Extract .xz files
@@ -163,10 +182,10 @@ package() {
 	exz "${srcdir}/hipsparselt_0.2.1.60200-66~24.04_amd64.deb"
 	exz "${srcdir}/hipsparselt-dev_0.2.1.60200-66~24.04_amd64.deb"
 	exz "${srcdir}/hiptensor_1.3.0.60200-66~24.04_amd64.deb"
-	exz "${srcdir}/hiptensor-dev_1.3.0.60200-66~24.04_amd64.deb"	
-	exz "${srcdir}/miopen-hip_3.2.0.60200-66~24.04_amd64.deb"
-	exz "${srcdir}/miopen-hip-dev_3.2.0.60200-66~24.04_amd64.deb"
+	exz "${srcdir}/hiptensor-dev_1.3.0.60200-66~24.04_amd64.deb"		
 	egz "${srcdir}/openmp-extras-dev_18.62.0.60200-66~24.04_amd64.deb"
+	egz "${srcdir}/omniperf_2.0.1.60200-66~24.04_amd64.deb"
+	egz "${srcdir}/omnitrace_1.11.2.60200-66~22.04_amd64.deb"
 	egz "${srcdir}/rocm-llvm_18.0.0.24292.60200-66~24.04_amd64.deb"	
 	exz "${srcdir}/rocblas_4.2.0.60200-66~24.04_amd64.deb"
 	exz "${srcdir}/rocblas-dev_4.2.0.60200-66~24.04_amd64.deb"
@@ -188,10 +207,20 @@ package() {
 	exz "${srcdir}/rocthrust-dev_3.0.1.60200-66~24.04_amd64.deb"
 	egz "${srcdir}/rocm-hip-sdk_6.2.0.60200-66~24.04_amd64.deb"
 	egz "${srcdir}/rocm-opencl-sdk_6.2.0.60200-66~24.04_amd64.deb"
-	exz "${srcdir}/rocwmma-dev_1.5.0.60200-66~24.04_amd64.deb"	
+	exz "${srcdir}/rocwmma-dev_1.5.0.60200-66~24.04_amd64.deb"
+	egz "${srcdir}/rocprofiler-sdk_0.4.0-66~24.04_amd64.deb"	
+	# Machine learning and computer vision
+	exz "${srcdir}/migraphx_2.10.0.60200-66~24.04_amd64.deb"
+	exz "${srcdir}/migraphx-dev_2.10.0.60200-66~24.04_amd64.deb"
+	exz "${srcdir}/miopen-hip_3.2.0.60200-66~24.04_amd64.deb"
+	exz "${srcdir}/miopen-hip-dev_3.2.0.60200-66~24.04_amd64.deb"
+	egz "${srcdir}/mivisionx_3.0.0.60200-66~24.04_amd64.deb"
+	egz "${srcdir}/mivisionx-dev_3.0.0.60200-66~24.04_amd64.deb"
 	egz "${srcdir}/rocm-ml-libraries_6.2.0.60200-66~24.04_amd64.deb"	
 	egz "${srcdir}/rocm-ml-sdk_6.2.0.60200-66~24.04_amd64.deb"
-	
+	egz "${srcdir}/rpp_1.8.0.60200-66~24.04_amd64.deb"
+	egz "${srcdir}/rpp-dev_1.8.0.60200-66~24.04_amd64.deb"
+
 	mv "${srcdir}/opt/" "${pkgdir}/"
 	# mkdir -p "${pkgdir}/opt/rocm-6.2.0/hsa"
 	# ln -s "/opt/rocm-6.2.0/include/hsa" "$pkgdir/opt/rocm-6.2.0/hsa/include"
