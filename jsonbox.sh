@@ -1,5 +1,5 @@
 #!/bin/bash
-set -o pipefail
+set -euo pipefail
 _APPDIR="/usr/lib/@appname@"
 _RUNNAME="${_APPDIR}/@runname@"
 _CFGDIR="@cfgdirname@/"

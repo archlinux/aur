@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jsonbox-bin
-pkgver=2.3.3
+pkgver=2.3.4
 _electronversion=19
 pkgrel=1
 pkgdesc="A cross platform JSON formatting tool跨平台的json格式化工具"
@@ -20,8 +20,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/dist/${pkgname%-bin}-${pkgver}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('eb998cdf8565aad83b52e5b2b53e6c16281d6f72bc29f3e940194737213db6be'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums=('c3dcefcdd759f1ca15db54adf688719b925ef342ea03122b1cf1c12e453ccc82'
+            'c053a7b3ed8b0b4d77f78e81ab8a4c61cbfd773a9298b3f3a187e5df89c125c2')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -29,7 +29,7 @@ build() {
         -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    chmod u+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
