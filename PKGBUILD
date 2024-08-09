@@ -3,7 +3,8 @@ pkgname=tiantianmazi-bin
 _chsname="天天码字"
 _appname=ttmz
 pkgver=1.0.1
-pkgrel=5
+_electronversion=22
+pkgrel=6
 pkgdesc="天天码字是面向网文作者人群的一款方便,适用的码字工具平台."
 arch=('x86_64')
 url="http://www.tiantianmazi.com/"
@@ -12,12 +13,10 @@ provides=("${_appname}")
 conflicts=("${pkgname%-bin}" "${_appname}")
 depends=(
     'alsa-lib'
-    'hicolor-icon-theme'
     'gtk3'
     'nodejs'
     'nss'
     'nspr'
-    'python'
     'python-setuptools'
 )
 source=(
