@@ -3,7 +3,7 @@
 # Contributor: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=devpi-server
-pkgver=6.9.2
+pkgver=6.12.1
 pkgrel=1
 pkgdesc="Python PyPi staging server and release tool"
 arch=('any')
@@ -19,6 +19,7 @@ depends=(
   'python-defusedxml'
   'devpi-common'
   'python-execnet'
+  'python-httpx'
   'python-itsdangerous'
   'python-passlib'
   'python-pluggy'
@@ -31,11 +32,11 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 optdepends=('devpi-client')
 changelog=CHANGELOG
 source=(
-  "$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
+  "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
   'devpi-server.service'
   'devpi-server.sysusers'
   'devpi-server.tmpfiles')
-sha256sums=('5b2425632b55344183460051fbb44d3dd9d327e9a0201e50cd65552bcb5a44ad'
+sha256sums=('72bb14b545b2dda6f1b279da3885475b0eb3a763152442abcd41ce39219310c5'
             '1ebfe9edc2bf0f368162f15540e48a8e046db0023b5da23e98daf43f0e075a95'
             '4327d0e72b277ef7b05dfb4b3bac6ab4c70d55a96c9ad114a90ebb00c954bd48'
             'bcd2321ff41bebcf08392ca02dbfaa0ac2693eba3432f0e5793ff384753ce0f1')
