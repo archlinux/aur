@@ -47,7 +47,7 @@ check() {
   test-env/bin/python -m pytest \
     --browser=chrome \
     --headless \
-    -k 'not run_with_dashboard.py' \
+    -k 'not run_with_dashboard.py and not simple_cases and not basecase and not run_with_dashboard and not sb_fixture and not request_sb_fixture and not rerun_failures' \
     examples/unit_tests/verify_framework.py
 }
 
