@@ -1,7 +1,7 @@
 # Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=opendeck
 pkgver=v2.0.0_rc.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform desktop application that provides functionality for stream controller devices."
 arch=('x86_64')
 url="https://github.com/ninjadev64/OpenDeck"
@@ -34,7 +34,6 @@ build() {
 }
 
 package() {
-	install -Dm644 -t "$pkgdir/etc/udev/rules.d" 50-elgato.rules
 	cd "$srcdir/${pkgname}"
 	dpkg-deb -R $(find . -type f -name "*.deb") $pkgdir
 	rm -rf $pkgdir/DEBIAN
