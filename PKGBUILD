@@ -159,7 +159,7 @@ build() {
 }
 
 package() {
-    # Initially install everything into /usr/lib/duckstation
+    # Install everything into /usr/lib/duckstation
     install -m 755 -d "${pkgdir}/usr/lib"
     cp -drv --no-preserve='ownership' build/bin "${pkgdir}/usr/lib/${_pkgname}"
     # Install bundled libraries
@@ -167,15 +167,6 @@ package() {
 
     # rpath
     patchelf --force-rpath --set-rpath "/usr/lib/${_pkgname}" "${pkgdir}/usr/lib/${_pkgname}/$_pkgname-qt"
-
-    # Move shared data to /usr/share/duckstation
-    cd "${pkgdir}/usr/lib/${_pkgname}"
-    install -m 755 -d "${pkgdir}/usr/share/${_pkgname}"
-    for _dir in resources translations
-    do
-        mv "${_dir}" "${pkgdir}/usr/share/${_pkgname}"
-        ln -s "/usr/share/${_pkgname}/${_dir}" .
-    done
 
     # Install additional license
     install -m 755 -d "${pkgdir}/usr/share/licenses/${pkgname}/"
