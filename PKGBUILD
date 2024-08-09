@@ -2,7 +2,7 @@
 
 pkgname=mojo-git
 pkgver=24.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Mojo Programming Language - Repository: https://github.com/Sharktheone/arch-mojo"
 url="https://developer.modular.com/download"
 license=("custom:modular")
