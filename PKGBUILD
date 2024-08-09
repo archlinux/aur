@@ -1,7 +1,7 @@
 # Maintainer: muttleyxd <mateusz [at] szychowski.it>
-_gittag=master-609f1513
+_gittag=master-32d3ac78
 pkgname=clang-format-static-bin
-pkgver=12.609f1513
+pkgver=13.32d3ac78
 pkgrel=1
 pkgdesc="clang-format x86_64 static binaries (3.9, 4, 5, 6, 7, 8, 9, 10, 11, 12, 12.0.1, 13, 14, 15, 16, 17, 18)"
 arch=('x86_64')
@@ -47,7 +47,7 @@ sha256sums=('6fe5f05f710d6c02a0c9d7af6aaa15a5353bff4142a622dc45dd1fd591ab9ce0'
             'a0384e50a830db756c6318fe9f62b6778dea1df16c5aeee1a16990f47ecac0b3'
             'a4dc76a393b45411a0e7b4c7b728c91e23854ae258e1c6bcb84804a30e351121'
             'f8f5910903207ff2cce5f3fc6211ffb1b3c2dd1eddfaa15cdeaa823efba4c0c1'
-            '2a6cd633f85e96a32f68cca3f1ac2ef63c677cae0f2b2a7f2a0c3f81a36a2353'
+            '0d40ec962141303eb71efddcae9a880822ec1fa80a057dc8dfed4f82afc66e22'
             '2050acfe8b8d5ae1ef971b6ab419cd9f46e3f2d779a09966105622b3112600d9'
             'ebcd9bbf783a73d05c53ba4d586b8d5813dcdf3bbec50265860ccc885e606f47')
 
