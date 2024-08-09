@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xmachoviewer-bin
 pkgver=0.04
-pkgrel=8
+pkgrel=9
 pkgdesc="Mach-O viewer for Windows, Linux and MacOS"
 arch=(x86_64)
 url="https://horsicq.github.io/#xmachoviewer"
@@ -10,7 +10,6 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
     'qt5-base'
 )
 source=(
@@ -20,7 +19,7 @@ source=(
 )
 sha256sums=('b39f9470d3b85e84b5123349a25e35ad414371c96d2980ac035780b6f69d2a8b'
             'd0dfc6996d90bc96474a32b5656eec06bf988cdbcfd226f24fcb7a062208e4ee'
-            'a9783526d93e6c72c7e1551cc5cc513fd6056dcc4593abe8fac815721d32dd5a')
+            'eac7c8f0ec3f590fdf926d1eddb74545bc517695e04fddc2bf7c1e47f245910c')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
