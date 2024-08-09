@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=issie-bin
 pkgver=3.0.11
-pkgrel=6
+_electronversion=22
+pkgrel=7
 pkgdesc="An intuitive cross-platform hardware design application."
 arch=('x86_64')
 url="https://tomcl.github.io/issie"
@@ -24,7 +25,7 @@ sha256sums=('da0135a811e78132b06efdb4000313d36754441f1f9c7926f48777df069653a9')
 build() {
     mkdir -p "${srcdir}/opt/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/opt/${pkgname%-bin}"
-    gendesk -q -f -n --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} --no-sandbox %U"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} --no-sandbox %U"
 }
 package() {
     cp -r "${srcdir}/opt" "${pkgdir}"
