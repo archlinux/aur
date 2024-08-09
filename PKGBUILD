@@ -13,7 +13,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'alsa-lib'
-    'hicolor-icon-theme'
     'nss'
     'qt5-base'
     'openssl-1.1'
@@ -27,7 +26,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('8674986c6a73de5649b3b827faabf26153c60256480fcb8e553a63d8588251cf'
-            'ca9c62b0417153cc3259dd2dfade5318d295617669cc335d37b4644446f081a5')
+            '7110b65be39390ff2b7fec842e7a71360e68bedaa89c051dd70738858e69e9fc')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
