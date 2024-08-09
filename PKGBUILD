@@ -4,7 +4,7 @@
 pkgname=processing-bin
 _pkgname=Processing
 pkgver=4.3
-pkgrel=5
+pkgrel=6
 arch=("x86_64")
 pkgdesc="Programming environment for creating images, animations and interactions."
 url="https://processing.org/"
@@ -15,7 +15,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 options=('!strip')
 depends=(
     'alsa-lib'
-    'hicolor-icon-theme'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.tgz::${_ghurl}/releases/download/${pkgname%-bin}-1293-${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.tgz"
