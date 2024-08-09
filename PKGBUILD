@@ -4,7 +4,7 @@
 
 pkgname='pip2pkgbuild'
 pkgver='0.5.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Create PKGBUILD files for Python modules fetched with PIP"
 url="https://github.com/wenLiangcan/pip2pkgbuild"
 depends=(
@@ -14,6 +14,7 @@ makedepends=(
 	'python-build'
 	'python-installer'
 	'python-wheel'
+	'python-setuptools'
 )
 license=('MIT')
 conflicts=("python2-$pkgname")

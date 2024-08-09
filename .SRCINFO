@@ -1,13 +1,14 @@
 pkgbase = pip2pkgbuild
 	pkgdesc = Create PKGBUILD files for Python modules fetched with PIP
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wenLiangcan/pip2pkgbuild
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python>=3.12
 	conflicts = python2-pip2pkgbuild
 	source = https://github.com/wenLiangcan/pip2pkgbuild/archive/refs/tags/v0.5.0.tar.gz
