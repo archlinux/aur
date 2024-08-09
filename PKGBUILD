@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=des-talk-bin
 pkgver=0.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A ChatGPT clone for desktop made with Tauri and React.js"
 arch=('x86_64')
 url="https://github.com/Red-Spaces/DesTalk"
@@ -9,7 +9,6 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}" "destalk")
 depends=(
-    'hicolor-icon-theme'
     'gtk3'
     'webkit2gtk'
 )
