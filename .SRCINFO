@@ -1,6 +1,6 @@
 pkgbase = rojo-bin
 	pkgdesc = [Precompiled Binaries] Rojo enables Roblox developers to use professional-grade software engineering tools
-	pkgver = 7.4.2
+	pkgver = 7.4.3
 	pkgrel = 1
 	url = https://rojo.space
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = rojo-bin
 	provides = rojo
 	conflicts = rojo
 	conflicts = rojo-git
-	source_x86_64 = https://github.com/rojo-rbx/rojo/releases/download/v7.4.2/rojo-7.4.2-linux-x86_64.zip
-	sha256sums_x86_64 = 4e514474684a0a7a3e13f4d25fe6e14f216cb9af742a74153671012da5098259
+	source_x86_64 = https://github.com/rojo-rbx/rojo/releases/download/v7.4.3/rojo-7.4.3-linux-x86_64.zip
+	sha256sums_x86_64 = f5c28373a27e091f06d6bd421555cbab6c6695503f224d75a9716a2049e0e532
 
 pkgname = rojo-bin
