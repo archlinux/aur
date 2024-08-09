@@ -1,5 +1,5 @@
-#!/bin/sh
-set -e
+#!/bin/bash
+set -euo pipefail
 BOTTLENAME=Deepin-@runname@
 APPVER=@pkgver@
 EXEC_PATH="c:/Program Files/@runname@/@runname@.exe"

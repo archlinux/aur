@@ -4,7 +4,7 @@ pkgname="deepin-wine-${_officalname}"
 _sparkname="com.qianqian.${_officalname}.spark"
 _runname=TTPlayer
 pkgver=5.7
-pkgrel=7
+pkgrel=8
 pkgdesc="千千静听是一款完全免费的音乐播放软件,集播放、音效、转换、歌词等众多功能于一身。利用DeepinWine6重新进行封装。"
 arch=("x86_64")
 url="https://www.baidu.com/"
@@ -16,7 +16,6 @@ depends=(
     'deepin-wine6-stable'
     'spark-dwine-helper'
     'xdg-utils'
-    'hicolor-icon-theme'
     'p7zip'
 )
 optdepends=(
@@ -29,7 +28,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('4494df38c9bc9c47e697e8a96f69c678e4635389ccc74e19dd324f0a668c62ec'
-            'b760e2660ee191dfd92ec240f8403ffdfc4cd5d9314f263e84c9cfa66792aa90')
+            'b336ecc61a867ed21cb6a0384e68d1e2605971523adcbc0b08056e6353bc0201')
 build() {
     sed -e "s|@runname@|${_runname}|g" \
         -e "s|@pkgver@|${pkgver}|g" \
