@@ -28,7 +28,7 @@ build() {
 package() {
 	cd "${_pkgname%}"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm755 bin/catnap "$pkgdir/usr/local/bin/${_pkgname}"
+  install -Dm755 bin/catnap "$pkgdir/usr/bin/${_pkgname}"
   install -Dm644 docs/catnap.1 "$pkgdir/usr/share/man/man1/catnap.1"
   install -Dm644 docs/catnap.5 "$pkgdir/usr/share/man/man5/catnap.5"
   }
