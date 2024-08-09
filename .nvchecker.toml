@@ -1,0 +1,5 @@
+[lets]
+source = "github"
+github = "lets-cli/lets"
+use_latest_release = "true"
+prefix = "v"
