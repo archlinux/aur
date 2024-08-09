@@ -1,13 +1,13 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=elasticsearch-bin
-pkgver=8.14.3
+pkgver=8.15.0
 pkgrel=0
 pkgdesc="Log analyzer. search, store and analyze logs"
 arch=('x86_64')
 url='https://elastic.co'
 license=('ELv2')
 source_x86_64=("https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${pkgver}-linux-x86_64.tar.gz")
-sha256sums_x86_64=('7c5efbbecb1bee33c5ecdac4d3b0706d700aa79637afff280e93c8a9a2272360')
+sha256sums_x86_64=('d4179fe2c37b2c7ddc13d8e1f8e61e3a0fa613861310ee5f54db08784b415166')
 
 install=elasticsearch.install
 
