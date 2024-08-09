@@ -1,0 +1,14 @@
+pkgbase = bertini_real-docs
+	pkgdesc = XHTML documentation for Bertini_real
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://www.bertinireal.com
+	arch = any
+	license = custom:Bertini license
+	makedepends = doxygen
+	makedepends = plantuml
+	makedepends = graphviz
+	source = bertini_real-f670751e815c31bd640b9029b5496219978951e2.tar.gz::https://github.com/ofloveandhate/bertini_real/archive/f670751e815c31bd640b9029b5496219978951e2.tar.gz
+	sha256sums = 87b51a7b6abdd265578282d9a1b13dac708be892a87f5ee8bea1f55c0e543d3a
+
+pkgname = bertini_real-docs
