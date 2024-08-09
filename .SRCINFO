@@ -1,19 +1,18 @@
 pkgbase = youdao-dict
 	pkgdesc = YouDao Dictionary
 	pkgver = 6.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = http://cidian.youdao.com/
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = sqlite
+	depends = python-dbus
 	depends = python-lxml
 	depends = python-webob
 	depends = python-opengl
 	depends = python-gobject
-	depends = hicolor-icon-theme
 	depends = python-xlib
 	depends = python-pillow
-	depends = python>=3
 	depends = python-requests
 	depends = gstreamer
 	depends = python-pyquery
@@ -32,7 +31,6 @@ pkgbase = youdao-dict
 	depends = tesseract-data-osd
 	depends = wqy-microhei
 	depends = python-pillow
-	depends = dbus-python
 	depends = gst-plugins-base
 	depends = qt6-declarative
 	depends = qt6-multimedia
@@ -40,6 +38,6 @@ pkgbase = youdao-dict
 	source = youdao-dict-6.0.0.deb::http://codown.youdao.com/cidian/linux/youdao-dict_6.0.0-ubuntu-amd64.deb
 	source = youdao-dict.sh
 	sha256sums = e56f248c3caf7d0bff9f4f18780d9b258612b490c1c0f332335b8d15471e0dd2
-	sha256sums = 8b6050deff3fd8a966ec3e67021decf2dd68735dc8ffdd0286baa88eeba60854
+	sha256sums = 9b45e25768097a1f153e3b515330d4687d0909c3bbfd4c7b00298f89ea43ad1c
 
 pkgname = youdao-dict

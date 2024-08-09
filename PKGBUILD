@@ -3,7 +3,7 @@
 # Contributor: fkxxyz <fkxxyz@163.com>
 pkgname=youdao-dict
 pkgver=6.0.0
-pkgrel=8
+pkgrel=9
 pkgdesc="YouDao Dictionary"
 arch=('x86_64')
 license=('LicenseRef-custom')
@@ -11,14 +11,13 @@ conflicts=("${pkgname}")
 url="http://cidian.youdao.com/"
 depends=(
 	'sqlite'
+	'python-dbus'
 	'python-lxml'
 	'python-webob'
 	'python-opengl'
 	'python-gobject'
-	'hicolor-icon-theme'
 	'python-xlib'
 	'python-pillow'
-    'python>=3'
 	'python-requests'
 	'gstreamer'
 	'python-pyquery'
@@ -37,7 +36,6 @@ depends=(
 	'tesseract-data-osd'
 	'wqy-microhei'
 	'python-pillow'
-	'dbus-python'
 	'gst-plugins-base'
 	'qt6-declarative'
 	'qt6-multimedia'
@@ -47,7 +45,7 @@ source=(
 	"${pkgname}.sh"
 )
 sha256sums=('e56f248c3caf7d0bff9f4f18780d9b258612b490c1c0f332335b8d15471e0dd2'
-            '8b6050deff3fd8a966ec3e67021decf2dd68735dc8ffdd0286baa88eeba60854')
+            '9b45e25768097a1f153e3b515330d4687d0909c3bbfd4c7b00298f89ea43ad1c')
 build() {
 	sed -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|main.py|g" \
@@ -56,6 +54,11 @@ build() {
     sed -i '290s|self.setX(x)|self.setX(int(x))|g;291s|self.setY(y)|self.setY(int(y))|g' "${srcdir}/usr/share/${pkgname}/app/plugins/youdao/window.py"
     sed -i '644s|self.move(x, y)|self.move(int(x), int(y))|g' "${srcdir}/usr/share/${pkgname}/dae/window.py"
     sed 's|getargspec|getfullargspec|g' -i "${srcdir}/usr/share/${pkgname}/app/plugins/${pkgname%-dict}/pyquery/pyquery.py"
+	sed 's|import imp|import importlib|g;/imp.load_source/d' -i "${srcdir}/usr/share/${pkgname}/dae/plugins.py"
+	sed -e "53i\        spec = importlib.util.spec_from_file_location(plugin_name, os.path.join(path, '__init__.py'))" \
+		-e "53i\        plugin = importlib.util.module_from_spec(spec)" \
+		-e "53i\        spec.loader.exec_module(plugin)" \
+		-i "${srcdir}/usr/share/${pkgname}/dae/plugins.py"
     sed 's|usr/share|opt|g' -i "${srcdir}/usr/share/dbus-1/services/com.youdao.backend.service"
 }
 package(){
