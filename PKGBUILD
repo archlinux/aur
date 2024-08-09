@@ -67,6 +67,7 @@ package() {
   cd "${pkgdir}/usr/bin"
     mv heif-convert heif-convert-32
     mv heif-enc heif-enc-32
+    mv heif-dec heif-dec-32
     mv heif-thumbnailer heif-thumbnailer-32
     mv heif-info heif-info-32
   )
