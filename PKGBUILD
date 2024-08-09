@@ -6,7 +6,7 @@
 
 _pkgname=chromium
 pkgname=chromium-no-extras
-pkgver=127.0.6533.88
+pkgver=127.0.6533.99
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -38,7 +38,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('fd8e2bec6aee113388e2ac269538f9e621a21c449aca925ba7d709c12a9f93a5'
+sha256sums=('e33a57b0cab75f2fb8bd128be24da0ee18d4a0052e4cd99ad37fcb8dfc9c5875'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '0887d215c47085013d09252409964a5eedec453561db1f2b133914e349b8a0b2'
             '8f81059d79040ec598b5fb077808ec69d26d6c9cbebf9c4f4ea48b388a2596c5'
