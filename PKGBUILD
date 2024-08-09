@@ -1,7 +1,7 @@
 # Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 _pkgname=imjtool
 pkgname=${_pkgname}-bin
-pkgver=2.0g
+pkgver=2.0
 pkgrel=1
 pkgdesc="Rudimentary Android image and partition unpacking tool."
 	arch=('x86_64')
@@ -11,7 +11,7 @@ provides=(${_pkgname})
 source=(
   "${_pkgname}-${pkgver}.tgz::http://newandroidbook.com/tools/imjtool.tgz"
 )
-sha512sums=('a7486a23252483c6930ed3bb5c38da48320ff545fd3f312a7d12603cd9fdc30c0e711d20a71d369954dd7a4fa6dfd969e45733e3a3906fdbdf12e6ea07cd0235')
+sha512sums=('1e941f26f742c9ec7491f56351bb973e1fe6c70aff78ff2814e07ef8c10dae98c9acdbfc32aa89811a97cdec96b5c004cf3fb0cb98b20e66dd88f322912d9649')
 
 package() {
 	cd "${srcdir}"
