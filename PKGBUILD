@@ -3,7 +3,7 @@
 pkgname=('dolfinx-git' 'python-fenics-dolfinx-git')
 pkgdesc='Next generation FEniCS problem solving environment'
 pkgver=0.9.0.dev0_r27890.1dd0396
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://fenicsproject.org'
 license=('MIT')
@@ -48,13 +48,7 @@ build() {
         -Wno-dev
     cmake --build build
 
-
-    # HACK: Install to temporary dir, required for building the wheel
-    export DESTDIR="$srcdir/tmp"
-    cmake --install build
-
     # Build the python bindings
-    export CMAKE_PREFIX_PATH="$srcdir/tmp/usr"
     cd "$srcdir/dolfinx/python"
     python -m build --wheel --no-isolation "$srcdir/dolfinx/python"
 }
