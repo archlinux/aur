@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=notepad--
 _pkgname=NotePad--
-pkgver=2.17
+pkgver=2.18
 pkgrel=1
 pkgdesc="一个国产跨平台、轻量级的文本编辑器，是替换notepad++的一种选择。其内置强大的代码对比功能，让你丢掉付费的beyond compare。"
 arch=('x86_64')
@@ -21,13 +21,14 @@ makedepends=(
     'qt5-tools'
     'qt5-xmlpatterns'
     'qscintilla-qt5'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgname//--/}-v${pkgver}.tar.gz"
+    "${pkgname}.git::git+${_ghurl}.git#tag=${pkgname//--/}-v${pkgver}"
 )
-sha256sums=('8e65e233ec1e098138115af90c44ed8be948aaf8350eb0b2835e22d0c7c8ba2b')
+sha256sums=('0b5924b5ed8706cb9523e2d84ece0989427c0177d309c17b9db6dda1b58d0881')
 build() {
-    cd "${srcdir}/${pkgname}-${pkgname//--/}-v${pkgver}"
+    cd "${srcdir}/${pkgname}.git"
     sed "s|intptr_t|__intptr_t|g" -i src/qscint/src/xmlMatchedTagsHighlighter.cpp
     sed "s|intptr_t|__intptr_t|g" -i src/qscint/src/xmlMatchedTagsHighlighter.h
     cmake -S . -Bbuild -GNinja -DCMAKE_BUILD_TYPE=None -W no-dev
@@ -37,13 +38,13 @@ build() {
     sed "s|io.gitee.cxasm.${pkgname}|${pkgname}|g" -i src/linux/usr/share/metainfo/io.gitee.cxasm."${pkgname}".metainfo.xml
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname}-${pkgname//--/}-v${pkgver}/build/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgname//--/}-v${pkgver}/src/linux/usr/share/applications/${_pkgname}.desktop" \
+    install -Dm755 "${srcdir}/${pkgname}.git/build/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/src/linux/usr/share/applications/${_pkgname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     for _icons in 32x32 64x64 128x128;do
-        install -Dm644 "${srcdir}/${pkgname}-${pkgname//--/}-v${pkgver}/src/linux/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png" \
+        install -Dm644 "${srcdir}/${pkgname}.git/src/linux/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}/${pkgname}-${pkgname//--/}-v${pkgver}/src/linux/usr/share/metainfo/io.gitee.cxasm.${pkgname}.metainfo.xml" \
+    install -Dm644 "${srcdir}/${pkgname}.git/src/linux/usr/share/metainfo/io.gitee.cxasm.${pkgname}.metainfo.xml" \
         "${pkgdir}/usr/share/metainfo/${pkgname}.metainfo.xml"
 }
