@@ -1,11 +1,12 @@
 pkgbase = wcurl
 	pkgdesc = Whenever you need to download files through the terminal and dont feel like using wget
 	pkgver = 2024.07.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://samueloph.dev/blog/announcing-wcurl-a-curl-wrapper-to-download-files/
 	arch = any
-	license = curl
+	license = LicenseRef-curl
 	depends = curl
+	depends = sh
 	source = wcurl-2024.07.10.tar.gz::https://github.com/Debian/wcurl/archive/refs/tags/2024.07.10.tar.gz
 	sha256sums = 962bb72e36e6f6cedbd21c8ca3af50e7dadd587a49d2482ab3226e76cf6dcc97
 
