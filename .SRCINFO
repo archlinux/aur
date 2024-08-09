@@ -1,6 +1,6 @@
 pkgbase = verdi-git
 	pkgdesc = The elegant Wayland compositor
-	pkgver = r143.8fa0245
+	pkgver = r158.35b6499
 	pkgrel = 1
 	url = https://github.com/verdiwm/verdi
 	arch = x86_64

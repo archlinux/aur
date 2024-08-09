@@ -1,7 +1,7 @@
 # Maintainer: Federico Maria Morrone <aur at morrone dot dev>
 
 pkgname=verdi-git
-pkgver=r143.8fa0245
+pkgver=r158.35b6499
 pkgrel=1
 pkgdesc="The elegant Wayland compositor"
 arch=('x86_64' 'aarch64')
@@ -28,5 +28,4 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	just DESTDIR="$pkgdir/" install
-	install -Dm644 "$srcdir/${pkgname%-git}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
