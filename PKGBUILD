@@ -1,5 +1,5 @@
 # Maintainer: jojo7682345 <jojo7682345@gmail.com>
-pggbase=avbuilder
+pkgbase=avbuilder
 pkgname=avbuilder-git
 pkgver=v0.1
 pkgrel=1
