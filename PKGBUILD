@@ -1,15 +1,16 @@
-# Maintainer: fpaskali <paskali2005 at gmail>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+#Contributor : fpaskali <paskali2005 at gmail>
+
 pkgname=burgerspace
-pkgver=1.9.5
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="A hamburger-smashing video game"
 arch=('any')
 url="http://perso.b2b2c.ca/~sarrazip/dev/burgerspace.html"
 license=('GPL')
-groups=()
-depends=('sdl' 'sdl_image' 'sdl_mixer' 'libflatzebra')
+depends=('sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_mixer' 'sdl2_gfx' 'libflatzebra')
 source=("http://perso.b2b2c.ca/~sarrazip/dev/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('f7a1fbf516ba5a310def22381bfc4ac4297f92895296a146f4306e7b2cde21186b349d6c22abf622776a06f992a2af02b332483432002a9b04ab8e1a62655434')
+sha512sums=('7ce6fa48829414ff7a48cb038b87842112c18829769105f34a842bffcfe99072ed6201ba3772f98efd115b8ffd9de0d1d15dc9f8b80a5f978f5763b72a358d8c')
 
 build() {
   cd "$pkgname-$pkgver"
