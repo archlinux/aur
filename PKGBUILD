@@ -56,8 +56,8 @@ build() {
   libtoolize
   autoreconf -vfi
   autoupdate
-  CPPFLAGS+="-I/usr/include/bertini"
-  LDFLAGS+="-L/usr/lib/bertini"
+  CPPFLAGS+=" -I/usr/include/bertini"
+  LDFLAGS+=" -L/usr/lib/bertini"
   ./configure \
     --prefix='/usr' \
     --includedir='/usr/include'
