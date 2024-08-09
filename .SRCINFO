@@ -1,15 +1,16 @@
 pkgbase = taskopen
 	pkgdesc = Script for taking notes and open urls with taskwarrior
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/jschlatow/taskopen/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = make
 	makedepends = nim
 	depends = task>=2.5.0
 	optdepends = xdg-utils: easily use default application associated with a file type
+	optdepends = perl: for rawedit script
 	source = https://codeload.github.com/jschlatow/taskopen/tar.gz/v2.0.1
 	sha256sums = d6749ff4933393d2b4f7e9e222c19ba3cea546e4e74bdc96c7e4a31a76fd7861
 
