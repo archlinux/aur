@@ -6,7 +6,7 @@ _pkgbase=etlegacy
 pkgbase=etlegacy32
 pkgname=('etlegacy32' 'etlegacy32-mod')
 pkgver=2.82.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
 license=('GPL3' 'custom')
@@ -20,6 +20,10 @@ sha256sums=('b55084fcebd47dd08a06cd0891921b03193fdf32d176e3b687af6877ee60c189'
 
 build() {
     cd "$_pkgbase-$pkgver"
+
+    # fix for https://archlinux.org/todo/prepare-packages-for-d_fortify_source3/
+    export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+    export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
     if [[ "$CARCH" == "i686" ]]; then
         cmakeopts+=(
