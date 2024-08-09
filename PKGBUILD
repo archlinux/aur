@@ -1,6 +1,6 @@
 # Maintainer: Falko Galperin <dr (dot) asasteghof (at) gmail (dot) com>
 pkgname=python-pdfplumber
-pkgver=0.11.1
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="Plumb a PDF for detailed information about each char, rectangle, line, et cetera."
 arch=(any)
@@ -12,20 +12,20 @@ makedepends=('python-setuptools')
 changelog=$pkgname.changelog.md
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=("cb95b4369fa94c3901bc6bce89d81e098afd2bd8d88e0d9706152f4c57e82349")
+sha256sums=("43a3cac33d2135ce00ac59ad5bc3813a33afe0f513d9284c0e8cb6e447ed6e53")
 
 prepare() {
-	# Somewhat of an ugly hack, but see here: https://aur.archlinux.org/packages/python-pdfplumber#comment-864370
-	sed -i 's/pdfminer.six==/pdfminer.six>=/' "$_name-$pkgver/requirements.txt"
+  # Somewhat of an ugly hack, but see here: https://aur.archlinux.org/packages/python-pdfplumber#comment-864370
+  sed -i 's/pdfminer.six==/pdfminer.six>=/' "$_name-$pkgver/requirements.txt"
 }
 
 build() {
-	cd "$_name-$pkgver/"
-	python setup.py build
+  cd "$_name-$pkgver/"
+  python setup.py build
 }
 
 package() {
-	cd "$_name-$pkgver/"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$_name-$pkgver/"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

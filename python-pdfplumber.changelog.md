@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [0.11.3] - 2024-08-07
+
+### Added
+
+- Add `Table.columns`, analogous to `Table.rows` (h/t @Pk13055). ([#1050](https://github.com/jsvine/pdfplumber/issues/1050) + [d39302f](https://github.com/jsvine/pdfplumber/commit/d39302f))
+- Add `Page.extract_words(return_chars=True)`, mirroring `Page.search(..., return_chars=True)`; if this argument is passed, each word dictionary will include an additional key-value pair: `"chars": [char_object, ...]` (h/t @cmdlineluser). ([#1173](https://github.com/jsvine/pdfplumber/issues/1173) + [1496cbd](https://github.com/jsvine/pdfplumber/commit/1496cbd))
+- Add `pdfplumber.open(unicode_norm="NFC"/"NFD"/"NFKC"/NFKD")`, where the values are the [four options for Unicode normalization](https://unicode.org/reports/tr15/#Normalization_Forms_Table) (h/t @petermr + @agusluques). ([#905](https://github.com/jsvine/pdfplumber/issues/905) + [03a477f](https://github.com/jsvine/pdfplumber/commit/03a477f))
+
+### Changed
+
+- Change default setting `pdfplumber.repair(...)` passes to Ghostscript's `-dPDFSETTINGS` parameter, from `prepress` to `default`, and make that setting modifiable via `.repair(setting=...)`, where the value is one of `"default"`, `"prepress"`, `"printer"`, or `"ebook"` (h/t @Laubeee). ([#874](https://github.com/jsvine/pdfplumber/issues/874) + [48cab3f](https://github.com/jsvine/pdfplumber/commit/48cab3f))
+
+### Fixed
+
+- Fix handling of object coordinates when `mediabox` does not begin at `(0,0)` (h/t @wodny). ([#1181](https://github.com/jsvine/pdfplumber/issues/1181) + [9025c3f](https://github.com/jsvine/pdfplumber/commit/9025c3f) + [046bd87](https://github.com/jsvine/pdfplumber/commit/046bd87))
+- Fix error on getting `.annots`/`.hyperlinks` from `CroppedPage` (due to missing `.rotation` and `.initial_doctop` attributes) (h/t @Safrone). ([#1171](https://github.com/jsvine/pdfplumber/issues/1171) + [e5737d2](https://github.com/jsvine/pdfplumber/commit/e5737d2))
+- Fix problem where `Page.crop(...)` was not cropping `.annots/.hyperlinks` (h/t @Safrone). ([#1171](https://github.com/jsvine/pdfplumber/issues/1171) + [22494e8](https://github.com/jsvine/pdfplumber/commit/22494e8))
+- Fix calculation of coordinates for `.annots` on `CroppedPage`s. ([0bbb340](https://github.com/jsvine/pdfplumber/commit/0bbb340) + [b16acc3](https://github.com/jsvine/pdfplumber/commit/b16acc3))
+- Dereference structure element attributes (h/t @dhdaines). ([#1169](https://github.com/jsvine/pdfplumber/pull/1169) + [3f16180](https://github.com/jsvine/pdfplumber/commit/3f16180))
+- Fix `Page.get_attr(...)` so that it fully resolves references before determining whether the attribute's value is `None` (h/t @zzhangyun + @mkl-public). ([#1176](https://github.com/jsvine/pdfplumber/issues/1176) + [c20cd3b](https://github.com/jsvine/pdfplumber/commit/c20cd3b))
+
+## [0.11.2] - 2024-07-06
+
+### Added
+
+- Add `extra_attrs` parameter to `.dedupe_chars(...)` to adjust the properties used when deduplicating (h/t @QuentinAndre11). ([#1114](https://github.com/jsvine/pdfplumber/issues/1114))
+
+### Development Changes
+
+- Remove testing for Python 3.8, add testing for Python 3.12. ([944eaed](https://github.com/jsvine/pdfplumber/commit/944eaed))
+- Upgrade `flake8`, `pytest`, and `pytest-cov` — and add `setuptools` and `py` as explicit dev requirements (for Python 3.12).
+
 ## [0.11.1] - 2024-06-11
 
 ### Fixed
