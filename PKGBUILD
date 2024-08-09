@@ -2,20 +2,20 @@
 # Contributor: Christoph Gysin <christoph.gysin@gmail.com>
 
 _npmname=@feathersjs/cli
-_npmver=5.0.26
+_npmver=5.0.29
 _srcname="cli-${_npmver}.tgz"
 pkgname=nodejs-feathers-cli
 pkgver=${_npmver}
 pkgrel=0
 pkgdesc="The command line interface for Feathers applications"
 arch=(any)
-url="https://github.com/feathersjs/feathers-cli#readme"
+url="https://github.com/feathersjs/feathers#readme"
 license=()
 depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/${_npmname}/-/${_srcname})
 noextract=(${_srcname})
-sha256sums=('dc74ec802bd39f4f17805d1c7b7979943091586e419604f58b9bf039e37e6e6f')
+sha256sums=('ae113e696db08ca63a15a3265a0a48eb67fbb0357ed2b70373d129cf76eca71e')
 
 package() {
   npm install --cache "${srcdir}/npm-cache" -g --user root --prefix "$pkgdir/usr" "$srcdir/${_srcname}"
