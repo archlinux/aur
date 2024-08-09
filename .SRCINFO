@@ -1,7 +1,7 @@
 pkgbase = wayfire-plugins-scale-ipc
 	pkgdesc = Extra IPC interaction for the scale plugin of Wayfire.
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dkondor/wayfire-scale-ipc
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,8 @@ pkgbase = wayfire-plugins-scale-ipc
 	makedepends = meson
 	makedepends = ninja
 	depends = wayfire
-	source = https://github.com/dkondor/wayfire-scale-ipc/archive/395be618f8723e2639b3c40f8867bf5aadb8ee0e.zip
-	md5sums = 9e83d6eb5efecf49cceff05361427dbf
+	depends = nlohmann-json
+	source = https://github.com/dkondor/wayfire-scale-ipc/archive/e452019d6d2ad3b4b4daaa647a057394f8d42b2f.zip
+	md5sums = b8c7e0dc481043e960041dff43d76a42
 
 pkgname = wayfire-plugins-scale-ipc
