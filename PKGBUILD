@@ -9,14 +9,14 @@ __arch_pkg_commit="c2ecfe23993aeff132fbd58d6b1174c98444cbd4"
 _gtkver=3.24.43
 
 _gtk3_classic_url=https://github.com/lah7/gtk3-classic
-_gtk3_classic_commit="873ba6b2f4de1d27a343aede62bd382244383086"
+_gtk3_classic_commit="3b57bf6500de137fafe60f9b6b4cda427be11655"
 
 _gtk3_classic=gtk3-classic
 
 pkgbase=gtk3-classic-xfce
 pkgname=($pkgbase)
 pkgver=${_gtkver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched GTK+3 that provides a more classic experience, with patches for xfce"
 url="https://github.com/lah7/gtk3-classic"
 conflicts=(gtk3 gtk3-typeahead gtk3-print-backends gtk3-nocsd gtk3-nocsd-git gtk3-nocsd-legacy-git gtk3-classic)
@@ -91,7 +91,7 @@ source=(git+$_gtk3_classic_url.git#commit=$_gtk3_classic_commit
 	settings.ini
         appearance__file-chooser-xfce.patch
 )
-sha256sums=('1d8b72c4c079209047783057382746bea7dfd6714cf4f12161ecc41ca8408d00'
+sha256sums=('440e8782716db5cb8b8783d3f4f14c5aaf653c53d6111365c77f7bc947a9281c'
             '7e04f0648515034b806b74ae5d774d87cffb1a2a96c468cb5be476d51bf2f3c7'
             'a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
