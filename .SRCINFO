@@ -4,7 +4,7 @@ pkgbase = moebits-music-player-bin
 	pkgrel = 1
 	url = https://musicplayer.moe/
 	arch = x86_64
-	license = CC-by-nc-4.0
+	license = CC-BY-NC-4.0
 	makedepends = fuse2
 	depends = electron28
 	provides = moebits-music-player=0.2.6

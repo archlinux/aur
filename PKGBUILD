@@ -9,7 +9,7 @@ pkgdesc="A music player with real-time pitch shifting, time stretching, and reve
 arch=('x86_64')
 url="https://musicplayer.moe/"
 _ghurl="https://github.com/Moebits/Music-Player"
-license=('CC-by-nc-4.0')
+license=('CC-BY-NC-4.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
