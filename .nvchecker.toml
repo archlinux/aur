@@ -1,0 +1,5 @@
+[python-sphinxcontrib-youtube]
+source = "github"
+github = "sphinx-contrib/youtube"
+use_latest_release = "true"
+prefix = "v"
