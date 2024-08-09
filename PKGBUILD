@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Beliaev <trap000d@gmail.com>
 
 pkgname=python-wsgidav-seafile
-pkgver=11.0.9
+pkgver=11.0.11
 pkgrel=1
 pkgdesc="Seafile webdav server"
 arch=('any')
@@ -13,19 +13,22 @@ depends=('python'
          'python-seafobj'
          'python-defusedxml'
          'python-jinja'
-         'python-setuptools'
          'python-sqlalchemy'
          'python-yaml')
 
-makedepends=('python-pip'
+makedepends=('python-build'
              'libyaml')
 
 conflicts=('python-wsgidav')
 source=("${url}/archive/v${pkgver}-server.tar.gz")
-sha256sums=('4751c7b08954f38f85fe73dea1af1eda4729699d99e9c89f91b1b32720e25093')
+sha256sums=('b93047d8cd7fec548101265be02f8aa678a01bffd3d86af7e95dff3bdee36085')
+
+build() {
+  cd "$srcdir/seafdav-$pkgver-server"
+  python -m build --wheel --no-isolation
+}
 
 package() {
-    cd "$srcdir/seafdav-$pkgver-server"
-    python setup.py install --root="$pkgdir/" --optimize=1
-    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir/seafdav-$pkgver-server"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
