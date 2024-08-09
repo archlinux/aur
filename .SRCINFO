@@ -1,0 +1,19 @@
+pkgbase = moebits-music-player-bin
+	pkgdesc = A music player with real-time pitch shifting, time stretching, and reversing effects.
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://musicplayer.moe/
+	arch = x86_64
+	license = CC-by-nc-4.0
+	makedepends = fuse2
+	depends = electron28
+	provides = moebits-music-player=0.2.6
+	conflicts = moebits-music-player
+	source = moebits-music-player-0.2.6.AppImage::https://github.com/Moebits/Music-Player/releases/download/v0.2.6/Music-Player-0.2.6.AppImage
+	source = LICENSE-0.2.6::https://raw.githubusercontent.com/Moebits/Music-Player/v0.2.6/license.txt
+	source = moebits-music-player.sh
+	sha256sums = 6d79ec793740c5736f8cd00a888279e795f44dd09c782c9ed25372268984fadd
+	sha256sums = 8946c49d9a63a62f5621f114027b2842ee914bd237590f2a5496d4b044c95af9
+	sha256sums = c053a7b3ed8b0b4d77f78e81ab8a4c61cbfd773a9298b3f3a187e5df89c125c2
+
+pkgname = moebits-music-player-bin
