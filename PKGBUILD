@@ -4,8 +4,8 @@
 # - https://aur.archlinux.org/packages/element-desktop-nightly-bin
 
 pkgname=anytype-alpha-bin
-_truetag="" # Usually -alpha, but sometimes they do the next version as -beta or blank (stable) which is weird
-pkgver=0.42.0
+_truetag="-alpha" # Usually -alpha, but sometimes they do the next version as -beta or blank (stable) which is weird
+pkgver=0.42.8
 pkgrel=1
 pkgdesc="Local/offline first, decentralized, P2P & E2EE notes/mindmapping/'everything app' platform (alternative to Notion)."
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
 	"https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}${_truetag}/anytype_${pkgver}${_truetag}_amd64.deb"
 	"https://raw.githubusercontent.com/anyproto/anytype-ts/main/LICENSE.md"
 )
-sha256sums=('f8896ab4a6e7d909537ec577e24706a6bcc5b919ab480b8994e7c0ef49763a95'
+sha256sums=('3420d1bba8655f21e65771278352d8537c12f7b39a29c813f16769c9a117bedc'
             'daad9eb95adc6262b07115ba2cf87cd4c64acaca4b45d48e0fd3b15a72a31dc1')
 
 package() {
