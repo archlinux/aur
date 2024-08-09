@@ -2,7 +2,7 @@
 pkgname=syng-bin
 _appname=syng
 pkgver=2.0.0_beta_5
-pkgrel=5
+pkgrel=6
 pkgdesc="A free, open source, cross-platform, Chinese-To-English dictionary for desktops."
 arch=("x86_64")
 url="https://getsyng.com/"
@@ -14,7 +14,6 @@ license=(
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
     'gtk3'
     'webkit2gtk'
 )
