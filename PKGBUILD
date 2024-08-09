@@ -17,7 +17,6 @@ depends=(
 	'python-opengl'
 	'python-gobject'
 	'python-xlib'
-	'python-pillow'
 	'python-requests'
 	'gstreamer'
 	'python-pyquery'
@@ -42,10 +41,12 @@ depends=(
 )
 source=(
 	"${pkgname}-${pkgver}.deb::http://codown.youdao.com/cidian/linux/${pkgname}_${pkgver}-ubuntu-amd64.deb"
+	"License.html::https://c.youdao.com/dict/law/youdaofanyi_pc_service.html"
 	"${pkgname}.sh"
 )
 sha256sums=('e56f248c3caf7d0bff9f4f18780d9b258612b490c1c0f332335b8d15471e0dd2'
-            '9b45e25768097a1f153e3b515330d4687d0909c3bbfd4c7b00298f89ea43ad1c')
+            'a373604e2f43ced0f4e37f7adbbb8719f11b2daf49aec96e1f6d9348027e882c'
+            '57a97d391edc1fab4fa3fe2abc2ab518215ce0a51cb94a85875aed759127b622')
 build() {
 	sed -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|main.py|g" \
@@ -72,4 +73,5 @@ package(){
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}".* \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
+	install -Dm644 "${srcdir}/License.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
