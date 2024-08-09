@@ -1,0 +1,10 @@
+--- a/src/lib/nfo_data.cpp
++++ b/src/lib/nfo_data.cpp
+@@ -14,6 +14,7 @@
+ 
+ #include "stdafx.h"
+ #include "nfo_data.h"
++#include "forgiving_utf8.h"
+ #include "util.h"
+ #include "sauce.h"
+ #include "ansi_art.h"

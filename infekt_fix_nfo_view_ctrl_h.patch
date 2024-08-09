@@ -1,0 +1,21 @@
+--- a/src/gtk/nfo_view_ctrl.h
++++ b/src/gtk/nfo_view_ctrl.h
+@@ -17,6 +17,7 @@
+ 
+ #include <gtkmm/builder.h>
+ #include <gtkmm/layout.h>
++#include <memory>
+ 
+ #include "nfo_data.h"
+ #include "nfo_renderer.h"
+@@ -54,8 +55,8 @@
+ 	void ForceRedraw();
+ 
+ 	/* NFO data and renderer stuff */
+-	CNFOData* m_pNfo;
+-	CNFOData* m_pNfoTextOnly;
++	std::shared_ptr<CNFOData> m_pNfo;
++	std::shared_ptr<CNFOData> m_pNfoTextOnly;
+ 
+ 	CNFORenderer m_renderer;
+ 	CNFORenderer m_classicRenderer;
