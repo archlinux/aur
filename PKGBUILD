@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=walker
-pkgver=0.6.9
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='wayland application runner'
 url='https://github.com/abenz1267/walker'
@@ -9,12 +9,12 @@ arch=('x86_64')
 license=('MIT')
 makedepends=('go')
 depends=('gtk4-layer-shell')
-optdepends=('wl-clipboard: for clipboard module')
+optdepends=('wl-clipboard: for clipboard module' 'libqalculate: for calculator module')
 conflicts=('walker')
 provides=('walker')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('22f8cbdb5ada9433f2399f065f0c6d6f63a5e8074790326ee420ff570b7cab86')
-b2sums=('e2940b10efbb842a5201fa762ca286f69a4349fec5eb74522a48091d9e1259dde0e0f1f5ab6aee3dfbdc4938d86cce77e2e3c67d95cab89a8beab88d1a240a37')
+sha256sums=('6123bd1ecc1e2c2427c19186532cfa107fb8a7bc73b86148db62ecdf8fac7852')
+b2sums=('f6a0f4d0df60e677ce70e702480a17414cc9d47138be5ee81b512fceb491de92bc6e78700f66bab8fd9b7f1e4ee3db7fdf79df5e1bb8d081bc6ef78ea0ce676a')
 
 build() {
   cd ${pkgname}-${pkgver}/cmd
