@@ -2,7 +2,7 @@
 _appname=anythingllm
 pkgname="${_appname}-desktop-bin"
 _pkgname=Anything-LLM-Desktop
-pkgver=1.1.1
+pkgver=1.2.0
 _electronversion=26
 pkgrel=1
 pkgdesc="The all-in-one AI application, tool suite, and API for RAG & Agents for Docker & Desktop."
@@ -31,7 +31,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Mintplex-Labs/anything-llm/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7692693fa5947bbc62a886909e6c0495f617741361a7285ed29940f994a16755'
+sha256sums=('02a7c04a87a49a08a3c083e50e1216c1ae5d18c37341feddf43736a60e6b1957'
             '782d2dc18a1ed9028ca992520f42b2e0b6187807da0d14455b8ae608e2e5692e'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
