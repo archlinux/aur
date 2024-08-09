@@ -1,12 +1,12 @@
 # Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=opendeck
-pkgver=v2.0.0_beta.10
+pkgver=v2.0.0_rc.0
 pkgrel=1
-pkgdesc="OpenDeck is a desktop application that provides Stream Deck-like functionality, implementing the Elgato Stream Deck SDK for cross-compatibility."
+pkgdesc="A cross-platform desktop application that provides functionality for stream controller devices."
 arch=('x86_64')
 url="https://github.com/ninjadev64/OpenDeck"
 license=('BSD-3-Clause')
-makedepends=(git npm cargo-tauri dpkg hidapi webkit2gtk libappindicator-gtk3)
+makedepends=(git deno tauri-cli dpkg hidapi webkit2gtk libappindicator-gtk3)
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 options=('!lto')
@@ -14,20 +14,22 @@ source=(
 	"${pkgname}::git+https://github.com/ninjadev64/OpenDeck#tag=${pkgver//_/-}"
 )
 
-sha256sums=('77a6ec3286e5e67a67dcdfbf160fba64615f911b144c9bfd760064cf1f215a98')
+sha256sums=('fc695c5f19de84c4036056f1074bc8384fb4e5b5a26069e3b1fc4e153ba0399e')
 
 prepare() {
 	cd "$srcdir/${pkgname}/src-tauri"
 	export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 	cd ..
-	npm install --cache "${srcdir}/npm-cache"
+	export DENO_DIR="${srcdir}/deno-cache"
+	deno cache npm:vite
 }
 
 build() {
 	cd "$srcdir/${pkgname}/src-tauri"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	export DENO_DIR="${srcdir}/deno-cache"
 	cargo tauri build --ci -b deb -- --frozen
 }
 
