@@ -19,13 +19,12 @@ pkgver(){
 
 build() {
   cd "avBuilder"
-  chmod +x ./bootstrap.sh
-  ./bootstrap.sh
+  chmod +x ./bootstrap
+  ./bootstrap
   ./avBuilder avBuilder.project
 }
 
 package() {
   cd "avBuilder"
-
-  ./bootstrap.sh install $pkgdir/usr/bin/avBuilder
+  ./bootstrap install $pkgdir/usr/bin/avBuilder
 }
