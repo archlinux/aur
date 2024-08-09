@@ -6,7 +6,7 @@
 
 pkgname=linuxcnc
 pkgver=2.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=(x86_64)
 license=(GPL2 'custom: unredestributable')
@@ -16,7 +16,7 @@ depends=(glibc python gtk3 libusb libxss python-cairo gobject-introspection-runt
          harfbuzz gcc-libs fontconfig gdk-pixbuf2 libxext librsvg glib2 zlib cairo readline systemd-libs freetype2
          libx11 libxinerama python-configobj libgpiod python-yapps2 tcl pango bwidget)
 makedepends=(intltool boost asciidoc glu procps-ng psmisc tclx)
-options=(!emptydirs)
+options=(!emptydirs !strip)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LinuxCNC/linuxcnc/archive/refs/tags/v${pkgver}.tar.gz"
         'unredestributable.txt'
         'libtirpc.patch')
@@ -53,7 +53,7 @@ build () {
 
 package() {
   install -Dm644 unredestributable.txt   -t "${pkgdir}"/usr/share/licenses/${pkgname}/
-  #install -Dm644 linuxcnc.sh             -t "${pkgdir}"/etc/profile.d/
+  install -Dm644 "${pkgname}-${pkgver}/src/linuxcnc.sh" -t "${pkgdir}"/etc/profile.d/
 
   cd "${pkgname}-${pkgver}/src"
   install -Dm644 ../share/menus/CNC.menu -t "${pkgdir}"/etc/xdg/menus/
