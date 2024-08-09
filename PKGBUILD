@@ -1,6 +1,6 @@
 pkgname=mihomo-party-electron-bin
 _pkgname=mihomo-party
-pkgver=0.2.6
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ makedepends=('asar')
 install=$_pkgname.install
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/mihomo-party-linux-${pkgver}-amd64.deb")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/mihomo-party-linux-${pkgver}-arm64.deb")
-sha256sums_x86_64=("33e02258fea6460c8b0afc1c8e1d942aadc9a2c862fd2785e1205daf6531607f")
-sha256sums_aarch64=("888562d2b2aa908561e39e0ae2b06dfb5e3dacf78bcba7ea2d16db5873f6c064")
+sha256sums_x86_64=("8683c35c03aefd8833ee159a38c45bb7a13eccb176c4a73c96f3deeac985aaf2")
+sha256sums_aarch64=("588b3a0260ef988d66ea1622a2ed335e355b6ccb2935574d0a3bd23fc127600e")
 options=('!lto')
 
 package() {
