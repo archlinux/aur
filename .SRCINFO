@@ -1,11 +1,14 @@
 pkgbase = rkbin-git
 	pkgdesc = Rockchip Firmware and Tool Binarys
-	pkgver = r1714.b4558da
-	pkgrel = 14
+	pkgver = r1826.a2a0b89
+	pkgrel = 6
 	url = https://github.com/rockchip-linux/rkbin
 	arch = x86_64
 	license = Commercial
 	makedepends = git
+	depends = bash
+	depends = gcc-libs
+	depends = glibc
 	depends = libusb
 	source = rkbin::git+https://github.com/rockchip-linux/rkbin.git
 	sha256sums = SKIP

@@ -2,15 +2,19 @@
 
 pkgbase=rkbin-git
 pkgname=rkbin
-pkgver=r1714.b4558da
-pkgrel=14
+pkgver=r1826.a2a0b89
+pkgrel=6
 epoch=
 pkgdesc="Rockchip Firmware and Tool Binarys"
 arch=('x86_64')
 url="https://github.com/rockchip-linux/rkbin"
 license=('Commercial')
 groups=()
-depends=('libusb')
+depends=(
+    'bash'
+    'gcc-libs'
+    'glibc'
+    'libusb')
 makedepends=('git')
 checkdepends=()
 optdepends=()
@@ -24,12 +28,13 @@ changelog=
 source=("${pkgname}::git+${url}.git")
 noextract=()
 sha256sums=('SKIP')
-#validpgpkeys=()
 
 pkgver() {
-    cd "${srcdir}/${pkgname}/"
-#     git describe --long --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    cd "${srcdir}/${pkgname}"
+    ( set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 prepare()
@@ -46,5 +51,13 @@ package() {
 
     install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname}.csh" << EOF
 setenv PATH "${PATH}:/opt/rockchip/${pkgname}/tools/"
+EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname}.sh" << EOF
+#!/bin/sh
+# rkbin
+
+[ -d /opt/rockchip/rkbin/tools/ ] && append_path '/opt/rockchip/rkbin/tools/'
+
+export PATH
 EOF
 }
