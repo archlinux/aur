@@ -2,25 +2,23 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=('dolfinx-git' 'python-fenics-dolfinx-git')
 pkgdesc='Next generation FEniCS problem solving environment'
-pkgver=0.7.0.dev0_r27527.200e94c
+pkgver=0.9.0.dev0_r27890.1dd0396
 pkgrel=1
 arch=('x86_64')
 url='https://fenicsproject.org'
 license=('MIT')
-depends=('basix-git' 'boost-libs' 'petsc' 'pugixml' 'hdf5-openmpi' 'adios2' 'scotch'
-         'python-fenics-ufl-git' 'python-fenics-basix-git')
+depends=('basix-git' 'boost-libs' 'petsc' 'pugixml' 'hdf5-openmpi' 'adios2' 'scotch' 'slepc'
+         'parmetis' 'python-fenics-ufl-git' 'python-fenics-basix-git')
 makedepends=('git' 'cmake' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools'
-             'pybind11' 'chrpath' 'python-fenics-ffcx-git' 'python-mpi4py')
-optdepends=('slepc: for use SLEPc eigen solver'
-            'parmetis: for compute graph partition'
-            'kahip: for compute graph partition')
-source=('git+https://github.com/FEniCS/dolfinx')
+             'nanobind' 'chrpath' 'python-fenics-ffcx-git' 'python-mpi4py')
+optdepends=()
+source=("git+https://github.com/FEniCS/dolfinx")
 sha512sums=('SKIP')
 
 pkgver()  {
     cd "$srcdir/dolfinx"
     # The main repo unfortunately has no meaningful tags..
-    printf "%s_r%s.%s" "$(sed -n -e 's/^VERSION *= \"*\(.*\)\"/\1/p' python/setup.py)" \
+    printf "%s_r%s.%s" "$(sed -n -e 's/^version *= \"*\(.*\)\"/\1/p' python/pyproject.toml)" \
         "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
@@ -31,6 +29,7 @@ prepare() {
 build() {
     cd "$srcdir/dolfinx"
     source /etc/profile.d/petsc.sh
+    source /etc/profile.d/slepc.sh
 
     # Build c++ library
     cmake -DCMAKE_BUILD_TYPE="Release" \
@@ -40,10 +39,11 @@ build() {
         -DCMAKE_CXX_STANDARD=20 \
         -DCMAKE_C_COMPILER=gcc \
         -DCMAKE_CXX_COMPILER=g++ \
-        -DDOLFINX_ENABLE_KAHIP=ON \
+        -DDOLFINX_ENABLE_ADIOS2=ON \
         -DDOLFINX_ENABLE_PARMETIS=ON \
         -DDOLFINX_ENABLE_SCOTCH=ON \
         -DDOLFINX_ENABLE_SLEPC=ON \
+        -DDOLFINX_ENABLE_KAHIP=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -Wno-dev
     cmake --build build
