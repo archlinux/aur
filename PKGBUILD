@@ -11,7 +11,7 @@ url="https://www.bertinireal.com"
 _url="https://github.com/ofloveandhate/${pkgname}"
 license=('custom:Bertini license')
 makedepends=('boost>=1.50')
-depends=('glibc' 'gcc-libs' 'boost-libs' 'bertini' 'gmp' 'mpfr' 'openmpi')
+depends=('glibc' 'gcc-libs' 'boost-libs' 'bertini-parallel' 'gmp' 'mpfr' 'openmpi')
 optdepends=('python-bertini_real: Python interface support'
             'bertini_real-docs: XHTML documentation')
 _pkgsrc="${pkgname}-${_commit}"
