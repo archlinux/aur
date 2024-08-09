@@ -1,7 +1,7 @@
-From 39a5b7d566d481aa1a7cfeff05916635155cbca4 Mon Sep 17 00:00:00 2001
+From feba246068976dc09a0885ca7e816364073a07c1 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Wed, 12 Jun 2024 14:24:01 -0600
-Subject: [PATCH 36/37] afs: avoid empty-body warning
+Subject: [PATCH 4/5] afs: avoid empty-body warning
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -81,5 +81,5 @@ index 2dd633588..11e3aa3f1 100644
      return;
  }				/* afs_DequeueCallback */
 -- 
-2.45.2
+2.46.0
 

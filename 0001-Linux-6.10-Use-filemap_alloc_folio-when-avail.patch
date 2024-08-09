@@ -1,7 +1,7 @@
-From a34e6b03172f64d698da7a78670d024a9f240ca4 Mon Sep 17 00:00:00 2001
+From e846b6d15a6f6cd0a5b4c3c4d6cbe7b01ab7c7e6 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Wed, 12 Jun 2024 14:13:59 -0600
-Subject: [PATCH 33/37] Linux-6.10: Use filemap_alloc_folio when avail
+Subject: [PATCH 1/5] Linux-6.10: Use filemap_alloc_folio when avail
 
 The Linux 6.10 commit:
     "mm: remove page_cache_alloc()" (3f2ae4ebd5)
@@ -98,5 +98,5 @@ index 6f9d35022..54fc6786c 100644
  dnl                above tests
  AS_IF([test "x$ac_cv_linux_func_d_alloc_anon" = "xno"],
 -- 
-2.45.2
+2.46.0
 

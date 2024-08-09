@@ -1,7 +1,7 @@
-From 2fb8d5167f40d5a72568ad421531f179483506b0 Mon Sep 17 00:00:00 2001
+From 0b11f30f3ee63b32f2e8ce182bb54674535893ac Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 6 Jun 2024 10:42:57 -0600
-Subject: [PATCH 37/37] Linux 6.10: Move 'inline' before func return type
+Subject: [PATCH 5/5] Linux 6.10: Move 'inline' before func return type
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -55,5 +55,5 @@ index 0e92215cb..ba0d9bceb 100644
  {
      loff_t offset = page_offset(pp);
 -- 
-2.45.2
+2.46.0
 
