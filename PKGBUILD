@@ -4,7 +4,7 @@
 
 pkgname=cyberghostvpn
 pkgver=1.4.1
-pkgrel=10
+pkgrel=11
 pkgdesc="CyberGhost VPN"
 url="https://www.cyberghostvpn.com"
 arch=(any)
@@ -42,7 +42,7 @@ prepare() {
 	true | openssl s_client -verify 5 -connect ${_wireguard_certificate_server} -servername ${_wireguard_certificate_servername}| openssl x509 > "${srcdir}/cg-dialup-net.pem"
 
 	sha256sum "${srcdir}/cg-dialup-net.pem"
-	sha256sum --check <( echo "3e98585e37b2b34eb6099f36bb7290cc992c054ae4491890406eab4d72c20ca9  ${srcdir}/cg-dialup-net.pem"  )
+	sha256sum --check <( echo "f2c824893394028ba078bbf13029a57bab8143ac9fdaef69122134712ac47fbd	${srcdir}/cg-dialup-net.pem"  )
 
 	openssl x509 -in "${srcdir}/cg-dialup-net.pem" > "${srcdir}/wireguard_ca.crt"
 }
