@@ -3,7 +3,7 @@
 pkgname="wallet-tracker"
 pkgver=2.0.4
 pkgrel=1
-pkgdesc="Detect real scammers with Wallet-Tracker CLI from anywhere"
+pkgdesc="Detect real scammers from anywhere"
 arch=('any')
 url="https://github.com/aydinnyunus/${pkgname}"
 license=('Apache-2.0')
