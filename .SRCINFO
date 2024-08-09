@@ -1,0 +1,23 @@
+pkgbase = bertini-parallel
+	pkgdesc = Homotopy continuation solver for systems of polynomial equations - OpenMPI parallelism
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://bertini.nd.edu
+	arch = any
+	license = custom:Bertini license
+	depends = glibc
+	depends = gmp
+	depends = mpfr
+	depends = openmpi
+	provides = bertini
+	provides = bertini-serial
+	provides = bertini-parallel
+	provides = libbertini-serial.so
+	provides = libbertini-parallel.so
+	conflicts = bertini
+	source = BertiniSource_v16.tar.gz::https://bertini.nd.edu/BertiniSource_v1.6.tar.gz
+	source = MANUAL.pdf::https://bertini.nd.edu/BertiniUsersManual.pdf
+	sha256sums = 0bc4c5f0b057366500fc62b37526af116cadb7dcc190ca454e0ebe00a8998998
+	sha256sums = 017313464d162bb32640858faa0dc40ec8498eee439cb703dc22507baa15394f
+
+pkgname = bertini-parallel
