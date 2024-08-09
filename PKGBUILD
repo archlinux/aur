@@ -1,8 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sub-trans-bin
-_pkgname="Panfu Desktop"
 pkgver=0.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A GUI tool swap subtitle between tchinese and schinese"
 arch=("x86_64")
 url="https://github.com/dreamfliper/subTrans"
@@ -12,7 +11,6 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'gtk3'
     'webkit2gtk'
-    'hicolor-icon-theme'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
