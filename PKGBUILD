@@ -2,7 +2,7 @@
 _appname=trilium
 pkgname="${_appname}next-bin"
 _pkgname="TriliumNext Notes"
-pkgver=0.90.3
+pkgver=0.90.4
 _electronversion=31
 pkgrel=1
 pkgdesc="Build your personal knowledge base with TriliumNext Notes"
@@ -26,8 +26,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_appname}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('fa89a350bc94e40c1e26835407979e204d2cd0ad67c0e787e62d88022aefe497'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums=('4c44a699bd72220214ec3cdc65ac0c1e441d8d32f8499a75692cfb34778a4c89'
+            'c053a7b3ed8b0b4d77f78e81ab8a4c61cbfd773a9298b3f3a187e5df89c125c2')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
