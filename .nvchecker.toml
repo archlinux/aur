@@ -1,0 +1,4 @@
+[python-fireflyalgorithm]
+source = "github"
+github = "firefly-cpp/FireflyAlgorithm"
+use_latest_release = "true"
