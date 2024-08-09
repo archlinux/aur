@@ -1,11 +1,10 @@
 pkgbase = pomota-bin
 	pkgdesc = A simple user-friendly cross-platform tauri based pomodoro timer app that forces you to take a break
 	pkgver = 0.0.7
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/p32929/pomota
 	arch = x86_64
 	license = MIT
-	depends = hicolor-icon-theme
 	depends = webkit2gtk
 	depends = gtk3
 	provides = pomota=0.0.7

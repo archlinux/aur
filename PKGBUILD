@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pomota-bin
 pkgver=0.0.7
-pkgrel=5
+pkgrel=6
 pkgdesc="A simple user-friendly cross-platform tauri based pomodoro timer app that forces you to take a break"
 arch=('x86_64')
 url="https://github.com/p32929/pomota"
@@ -9,7 +9,6 @@ license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
     'webkit2gtk'
     'gtk3'
 )
