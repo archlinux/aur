@@ -1,7 +1,7 @@
 # Maintainer: Federico Maria Morrone <aur at morrone dot dev>
 
 pkgname=hwfetch-git
-pkgver=r5.c379d6f
+pkgver=r23.e02d38d
 pkgrel=1
 pkgdesc="A really bad hardware fetch"
 arch=('x86_64' 'aarch64')
@@ -26,5 +26,4 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	just DESTDIR="$pkgdir/" install
-	install -Dm644 "$srcdir/${pkgname%-git}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

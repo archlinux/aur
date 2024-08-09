@@ -1,6 +1,6 @@
 pkgbase = hwfetch-git
 	pkgdesc = A really bad hardware fetch
-	pkgver = r5.c379d6f
+	pkgver = r23.e02d38d
 	pkgrel = 1
 	url = https://github.com/morr0ne/hwfetch
 	arch = x86_64
