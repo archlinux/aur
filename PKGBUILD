@@ -16,6 +16,7 @@ depends=(
   python-httpx
   python-httpx-sse
   python-pydantic
+  python-pydantic-core
   python-requests
   python-tokenizers
   python-typing_extensions

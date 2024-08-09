@@ -18,6 +18,7 @@ pkgbase = python-cohere
 	depends = python-httpx
 	depends = python-httpx-sse
 	depends = python-pydantic
+	depends = python-pydantic-core
 	depends = python-requests
 	depends = python-tokenizers
 	depends = python-typing_extensions
