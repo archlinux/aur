@@ -1,12 +1,11 @@
 pkgbase = mdsilo-bin
 	pkgdesc = Lightweight Knowledge Base and Feed Reader.
 	pkgver = 0.5.7
-	pkgrel = 4
+	pkgrel = 5
 	url = https://mdsilo.com/
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	depends = gtk3
-	depends = hicolor-icon-theme
 	depends = webkit2gtk
 	depends = libsoup
 	provides = mdsilo=0.5.7

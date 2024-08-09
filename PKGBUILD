@@ -2,7 +2,7 @@
 # Contributor: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 pkgname=mdsilo-bin
 pkgver=0.5.7
-pkgrel=4
+pkgrel=5
 pkgdesc="Lightweight Knowledge Base and Feed Reader."
 arch=('x86_64')
 url="https://mdsilo.com/"
@@ -12,7 +12,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
   'gtk3'
-  'hicolor-icon-theme'
   'webkit2gtk'
   'libsoup'
 )
