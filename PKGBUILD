@@ -2,7 +2,7 @@
 pkgname=timecop-bin
 _appname=ca.hamaluik.Timecop
 pkgver=1.8.0
-pkgrel=7
+pkgrel=8
 pkgdesc='A time tracking app that respects your privacy and the gets the job done without being fancy.'
 arch=(
     'aarch64'
@@ -14,13 +14,12 @@ license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
     'gtk3'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-aarch64.tar.xz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x86_64.tar.xz")
 source=("${pkgname%-bin}.sh")
-sha256sums=('87aad073913a72e5fa1c7f4e0f6f695dafc5ba8ea675a62be03c532c701c243a')
+sha256sums=('89d44211b9d8efc96b5133c33e6be3752fd8c1a9207dfa63d216e0005474fb5f')
 sha256sums_aarch64=('cf376f25cde81d5299c4f543eee15380450470512630ae28697557ddea77bd47')
 sha256sums_x86_64=('c2a00bdcb9a32eeaa566d0f1de4d1253460761abe358767209b441748818233c')
 build() {
