@@ -5,7 +5,7 @@ pkgbase = trgui-ng-git
 	url = https://github.com/openscopeproject/TrguiNG
 	arch = x86_64
 	license = AGPL-3.0
-	makedepends = rust>=1.69.0
+	makedepends = rust>=1.70.0
 	makedepends = nodejs>=16.0.0
 	makedepends = npm
 	makedepends = git
