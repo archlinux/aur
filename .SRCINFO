@@ -1,12 +1,11 @@
 pkgbase = beam-wallet-bin
 	pkgdesc = Beam Desktop Wallet
 	pkgver = 7.5.13840.5763
-	pkgrel = 2
+	pkgrel = 3
 	url = https://beam.mw/
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = fuse2
-	depends = hicolor-icon-theme
 	depends = gmp
 	depends = qt6-declarative
 	depends = alsa-lib
@@ -17,6 +16,6 @@ pkgbase = beam-wallet-bin
 	source = beam-wallet-7.5.13840.5763.zip::https://github.com/BeamMW/beam-ui/releases/download/beam-7.5.13840.5763/Linux-Beam-Wallet-7.5.13840.5763.zip
 	source = beam-wallet.sh
 	sha256sums = ada4ac7a89eebca55c6ed3e49dad98174d014fd942dabaf13f2759ff3e035008
-	sha256sums = 2bb166f660981dbadbeb2d3cf32abbff9000778ce8e434f89db86e0359b45a49
+	sha256sums = 349d0f7ebbffef915a1c7c34cd9f3fbd5baaad644c41730c4fbb9e569c152db6
 
 pkgname = beam-wallet-bin

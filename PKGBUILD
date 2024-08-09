@@ -2,7 +2,7 @@
 pkgname=beam-wallet-bin
 _pkgname="Beam-Wallet"
 pkgver=7.5.13840.5763
-pkgrel=2
+pkgrel=3
 pkgdesc="Beam Desktop Wallet"
 arch=('x86_64')
 url="https://beam.mw/"
@@ -11,7 +11,6 @@ license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-	'hicolor-icon-theme'
 	'gmp'
 	'qt6-declarative'
 	'alsa-lib'
@@ -26,7 +25,7 @@ source=(
 	"${pkgname%-bin}.sh"
 )
 sha256sums=('ada4ac7a89eebca55c6ed3e49dad98174d014fd942dabaf13f2759ff3e035008'
-            '2bb166f660981dbadbeb2d3cf32abbff9000778ce8e434f89db86e0359b45a49')
+            '349d0f7ebbffef915a1c7c34cd9f3fbd5baaad644c41730c4fbb9e569c152db6')
 build() {
 	sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname//-/}|g" \
