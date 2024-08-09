@@ -10,13 +10,11 @@ license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'hicolor-icon-theme'
     'libgpg-error'
     'libxcb'
     'libx11'
     'freetype2'
     'libglvnd'
-    'fontconfig'
 )
 makedepends=(
     'fuse2'
@@ -29,7 +27,7 @@ source=(
 )
 sha256sums=('065cc364897f2181dd0c4d32decb6d7e38309ae12ed1319a52e6648223cd55db'
             '2af9cacb9ee73bed57c14ae509681749e1b12521878ce3a9b4f64add0b572078'
-            '1b9695792c203e8786fba8ac9557f306d5357096067fd9176b577681d85cc8c9')
+            '25bd1e3b89a7a00446cd65b8c5595a1ecd8e39db0c02b75ce1bfa209bfcc268d')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \

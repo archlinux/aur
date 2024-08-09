@@ -6,13 +6,11 @@ pkgbase = ripes-bin
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
-	depends = hicolor-icon-theme
 	depends = libgpg-error
 	depends = libxcb
 	depends = libx11
 	depends = freetype2
 	depends = libglvnd
-	depends = fontconfig
 	provides = ripes=2.2.6
 	conflicts = ripes
 	options = !strip
@@ -21,6 +19,6 @@ pkgbase = ripes-bin
 	source = ripes.sh
 	sha256sums = 065cc364897f2181dd0c4d32decb6d7e38309ae12ed1319a52e6648223cd55db
 	sha256sums = 2af9cacb9ee73bed57c14ae509681749e1b12521878ce3a9b4f64add0b572078
-	sha256sums = 1b9695792c203e8786fba8ac9557f306d5357096067fd9176b577681d85cc8c9
+	sha256sums = 25bd1e3b89a7a00446cd65b8c5595a1ecd8e39db0c02b75ce1bfa209bfcc268d
 
 pkgname = ripes-bin
