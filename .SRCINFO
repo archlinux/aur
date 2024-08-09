@@ -1,7 +1,7 @@
 pkgbase = gitify
 	pkgdesc = GitHub notifications on your menu bar.Use system-wide electron.
 	pkgver = 5.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gitify.io/
 	arch = any
 	license = MIT

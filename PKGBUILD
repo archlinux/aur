@@ -4,8 +4,8 @@ pkgname=gitify
 _pkgname=Gitify
 pkgver=5.12.1
 _electronversion=31
-_nodeversion=20.14.14
-pkgrel=1
+_nodeversion=20.14.0
+pkgrel=2
 pkgdesc="GitHub notifications on your menu bar.Use system-wide electron."
 arch=('any')
 url='https://www.gitify.io/'
@@ -66,7 +66,7 @@ build() {
     icotool -x assets/images/app-icon.ico -o assets/images/app-icon.png
     NODE_ENV=development pnpm install
     NODE_ENV=production pnpm run build
-    pnpm run make:linux --publish=never
+    NODE_ENV=production pnpm run make:linux --publish=never
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
