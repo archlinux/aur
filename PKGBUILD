@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=manga-tui
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Terminal-based manga reader and downloader with image support"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'sqlite')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('b1a1b073615035b6d92b16c55064ebcee1b9ea725036fc54dd89d5b878f9679bd06aa33577af7b2bbbdb687f5b3cbcc6be0ab7be2b11e37fa431e6b84cd8d31f')
+sha512sums=('f33b704cde5d72ffd6c78a1d6633bcbd5ed8c88240906a97d04813c05363db2198f6bb801c591a2d113f8934f8c6f3d10d8ca8b4dbd46eaeedd5491ce935bea1')
 options=('!lto')
 
 prepare() {
@@ -33,5 +33,5 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-  # install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
