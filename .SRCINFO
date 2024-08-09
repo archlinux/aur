@@ -1,7 +1,7 @@
 pkgbase = devpi-client
 	pkgdesc = Workflow commands for Python developers
-	pkgver = 7.0.1
-	pkgrel = 2
+	pkgver = 7.1.0
+	pkgrel = 1
 	url = https://doc.devpi.net/
 	arch = any
 	groups = devpi
@@ -19,7 +19,7 @@ pkgbase = devpi-client
 	depends = python-platformdirs
 	depends = python-pluggy
 	depends = python-py
-	source = devpi-client-7.0.1.tar.gz::https://files.pythonhosted.org/packages/source/d/devpi-client/devpi-client-7.0.1.tar.gz
-	sha256sums = 8bcb292d9bcf56ed43992ffbc4ab14559c6c6a05f8019ccaeeba9c5d3466d383
+	source = https://files.pythonhosted.org/packages/source/d/devpi-client/devpi_client-7.1.0.tar.gz
+	sha256sums = 3706e1ae88f13894a90ef324d0c6c01826e3992f33da0d729d6eb3ce056fcbf3
 
 pkgname = devpi-client
