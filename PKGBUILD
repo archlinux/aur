@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=appimagepool-bin
 pkgver=5.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple, modern AppImageHub Client, powered by flutter."
 arch=('x86_64')
 url="https://www.pling.com/p/1547076/"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('265d503d064f92334a5c7f4a90988931dee9451f4831c3751b49eeea7a016769'
-            '87aad073913a72e5fa1c7f4e0f6f695dafc5ba8ea675a62be03c532c701c243a')
+            '7f422f490e2e651370bd242273f193133b021481a1550ac6d29b918e00ab5b28')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
