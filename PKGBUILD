@@ -1,12 +1,13 @@
 # Maintainer: Deniz Demir <darkenedMellow@protonmail.com>
 
 pkgname=hardcpy-git
-pkgver=r10.f90471a
+pkgver=r20.16c0a51
 pkgrel=1
 pkgdesc="Simple backup tool written in Rust"
 url="https://github.com/obvMellow/hardcpy"
 license=(GPL-3.0-or-later)
 makedepends=('rust' 'cargo' 'git')
+depends=('sqlite3')
 source=("git+https://github.com/obvMellow/hardcpy.git")
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 sha256sums=('SKIP')

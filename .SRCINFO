@@ -1,6 +1,6 @@
 pkgbase = hardcpy-git
 	pkgdesc = Simple backup tool written in Rust
-	pkgver = r10.f90471a
+	pkgver = r20.16c0a51
 	pkgrel = 1
 	url = https://github.com/obvMellow/hardcpy
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = hardcpy-git
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
+	depends = sqlite3
 	source = git+https://github.com/obvMellow/hardcpy.git
 	sha256sums = SKIP
 
