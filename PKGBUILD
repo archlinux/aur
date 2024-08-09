@@ -1,13 +1,13 @@
 # Contributor: loserMcloser <reebydobalina@gmail.com>
 pkgname=perl-future
 pkgver=0.50
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl module to represent an operation awaiting completion'
 _dist=Future
 arch=('any')
 url="https://metacpan.org/release/$_dist"
 license=('GPL')
-depends=('perl' 'perl-test-simple' 'perl-time-hires')
+depends=('perl')
 makedepends=('perl-module-build')
 options=('!emptydirs' 'purge')
 source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/$_dist-$pkgver.tar.gz")
