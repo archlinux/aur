@@ -1,0 +1,20 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -102,7 +102,16 @@
+ 
+ 
+ #this calls a file in the m4/ directory, which sets up the MPI wrapper stuffs
+-LX_FIND_MPI
++# Add an option to configure to disable MPI
++AC_ARG_ENABLE([mpi],
++  [AS_HELP_STRING([--disable-mpi], [Disable MPI support])],
++  [if test "x$enable_mpi" = "xno"; then
++     have_C_mpi=no
++   else
++     LX_FIND_MPI
++   fi],
++  [LX_FIND_MPI]  # Default action if no option is provided
++)
+ 
+ AM_CONDITIONAL(BUILD_PARALLEL,[test "$have_C_mpi" = "yes"])
+ 
