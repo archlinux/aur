@@ -1,5 +1,8 @@
-/*.war
-/*.pkg.tar.*
-/src/
-/pkg/
-
+*
+!/.SRCINFO
+!/PKGBUILD
+!/gerrit.conf
+!/gerrit.install
+!/gerrit.service
+!/gerrit.sh
+!/gerrit.sysusers
