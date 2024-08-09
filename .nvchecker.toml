@@ -1,0 +1,4 @@
+[altermime]
+source = "github"
+github = "inflex/alterMIME"
+use_latest_release = "true"

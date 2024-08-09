@@ -1,29 +1,30 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Sebastian 'Swift Geek' Grzywna <swiftgeek@gmail.com>
-pkgname=altermime
-pkgver=0.3.11
-pkgrel=0
+_base=alterMIME
+pkgname=${_base,,}
+pkgver=0.3.12
+pkgrel=1
 pkgdesc="MIME encoded email pack alteration tool"
-arch=('i686' 'x86_64' 'armv7h' 'armv6h')
+arch=(i686 x86_64 armv7h armv6h)
 url="https://pldaniels.com/${pkgname}"
-license=('custom')
-source=("${url}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('9e5082abc72a0f0d77ee947c61c654ff7f90151b7d7a7e36819e85420dbd9e7cfdb4d053cebcbfd629380aab3d9998ed802a59212ac5c433d50e006b1558dc5f')
+license=(BSD-2-Clause)
+source=(${_base}-${pkgver}.tar.gz::https://github.com/inflex/${_base}/archive/${pkgver}.tar.gz)
+sha512sums=('72a2dfef5489d1e798e121308b03d272b2e679e15d3a45f3d25f9e27f9f6211a68ad032f33082a4bc38960f0a407b6892ec41e7fbd2073e950763da3942a7346')
 
 prepare() {
-  sed -i 's/^CFLAGS=-Wall -Werror -g -I. -O2 $(ALTERMIME_OPTIONS)/CFLAGS=-Wall $(ALTERMIME_OPTIONS)/' "${pkgname}-${pkgver}/Makefile"
-  sed -i 's/^	${CC} ${CFLAGS} altermime.c ${OBJS} -o altermime/	${CC} ${CFLAGS} ${LDFLAGS} altermime.c ${OBJS} -o altermime/' "${pkgname}-${pkgver}/Makefile"
+  sed -i 's/^CFLAGS=-Wall -Werror -g -I. -O2 $(ALTERMIME_OPTIONS)/CFLAGS=-Wall $(ALTERMIME_OPTIONS)/' "${_base}-${pkgver}/Makefile"
+  sed -i 's/^	${CC} ${CFLAGS} altermime.c ${OBJS} -o altermime/	${CC} ${CFLAGS} ${LDFLAGS} altermime.c ${OBJS} -o altermime/' "${_base}-${pkgver}/Makefile"
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd ${_base}-${pkgver}
   make
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd ${_base}-${pkgver}
   install -d "${pkgdir}/usr/bin/"
   install -m 755 ${pkgname} "${pkgdir}/usr/bin/"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m 644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 }
