@@ -1,6 +1,6 @@
 pkgbase = typstyle-bin
 	pkgdesc = Beautiful and reliable typst code formatter
-	pkgver = 0.11.30
+	pkgver = 0.11.31
 	pkgrel = 1
 	url = https://github.com/Enter-tainer/typstyle
 	arch = aarch64
@@ -12,11 +12,11 @@ pkgbase = typstyle-bin
 	optdepends = typst: For typst compilation
 	provides = typstyle
 	conflicts = typstyle
-	source_aarch64 = typstyle-aarch64-0.11.30::https://github.com/Enter-tainer/typstyle/releases/download/v0.11.30/typstyle-aarch64-unknown-linux-gnu
-	sha256sums_aarch64 = 55e346d812e62c973625d36425d7184b2b1082357362222f61c104afcd6e5ae3
-	source_x86_64 = typstyle-x86_64-0.11.30::https://github.com/Enter-tainer/typstyle/releases/download/v0.11.30/typstyle-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = b216dbf631c0cb5e8154b80da08d6efd432d796eddadc3f1cfc61ed4765a92db
-	source_armv7h = typstyle-armv7h-0.11.30::https://github.com/Enter-tainer/typstyle/releases/download/v0.11.30/typstyle-arm-unknown-linux-gnueabihf
-	sha256sums_armv7h = 29ae8e4089e2c3ac682dde526711cc454a66048bc4fa19e745fac2f881e9f268
+	source_aarch64 = typstyle-aarch64-0.11.31::https://github.com/Enter-tainer/typstyle/releases/download/v0.11.31/typstyle-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 80286b03bb21c095402e5fc0d83434ad57b764e0a74b6872ca5dbac022ee219f
+	source_x86_64 = typstyle-x86_64-0.11.31::https://github.com/Enter-tainer/typstyle/releases/download/v0.11.31/typstyle-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = b747107590be0565a169cb8201db22c2e3b55e8453b4bc39eaf205e0cb7843d6
+	source_armv7h = typstyle-armv7h-0.11.31::https://github.com/Enter-tainer/typstyle/releases/download/v0.11.31/typstyle-arm-unknown-linux-gnueabihf
+	sha256sums_armv7h = b4c82e7ef21edc689a6afa8f58688ab1f102a555b0dbaea5652a99613424dc64
 
 pkgname = typstyle-bin
