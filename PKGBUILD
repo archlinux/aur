@@ -1,18 +1,18 @@
 # Maintainer: A. Benz <hello@benz.dev>
 pkgname=walker-bin
 license=('MIT')
-pkgver=0.6.9
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='wayland application runner'
 url='https://github.com/abenz1267/walker'
 depends=('gtk4-layer-shell')
-optdepends=('wl-clipboard: for clipboard module')
+optdepends=('wl-clipboard: for clipboard module' 'libqalculate: for calculator module')
 source_x86_64=("https://github.com/abenz1267/walker/releases/download/v$pkgver/walker_.${pkgver}_Linux_x86_64.tar.gz")
 
 arch=('x86_64')
 conflicts=('walker')
 provides=('walker')
-sha256sums_x86_64=('0e54f9101d02cf4a03ec73ac77fe6c029d3f66ea0671b2d168ce4b6ce8f20f12')
+sha256sums_x86_64=('053acaef9b32655d29e74320308f99f8bbbb0ec689f668e3cc65025523f4910e')
 
 package() {
   cd "$srcdir/"
