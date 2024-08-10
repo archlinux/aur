@@ -1,7 +1,7 @@
 # Maintainer: maoyaotang <292898660@qq.com>
 pkgname=cn.i4tools-bin
 _pkgname=i4tools
-pkgver=v3.06.002
+pkgver=v3.06.003
 pkgrel=2
 pkgdesc='简单好用的多功能苹果设备管理助手。'
 arch=('x86_64')
@@ -9,12 +9,12 @@ url="https://www.i4.cn/pro_pc.html"
 license=('custom')
 depends=('git')
 source=(
-    "i4tools_v3.06.002.rpm::https://d-updater.i4.cn/i4linux/deb/${_pkgname}_${pkgver}.rpm"
+    "i4tools_v3.06.003.rpm::https://d-updater.i4.cn/i4linux/deb/${_pkgname}_${pkgver}.rpm"
     "cn.i4Tools.desktop"
     "run.sh"
     "LICENSE.html::https://www.i4.cn/copyright.html"
 )
-sha256sums=('1d3c09e1a595e6bf1e66e9e283656bee7975d0353cf9926f5c5deaaff19e7d3b'
+sha256sums=('749e7f7eeff272bfb557a0af4df0f86ddd3ce3a325546e5121be07336d8bc656'
             'c39f1408107cd69076a37d14326609fb8773717914b5ee335cb039e0bd66e1ed'
             'b7fc9c90852ce99769fb31352e33d387cb8fe8ea3ec4c6a745c73cfd719020b7'
             'f3cc70ece76bae973291aa37ced5a48da64360ec4860e8549240a5f6cd3babd4')
