@@ -1,6 +1,8 @@
 # Maintainer:
 
-_pkgname=vdhcoapp-filepicker
+: ${CARGO_HOME:=$SRCDEST/cargo-home}
+
+_pkgname="vdhcoapp-filepicker"
 pkgname="$_pkgname"
 pkgver=1.0.1
 pkgrel=1
@@ -10,10 +12,7 @@ license=('GPL-2.0-or-later')
 arch=('x86_64')
 
 depends=(
-  'at-spi2-core'
-  'gdk-pixbuf2'
   'gtk3'
-  'pango'
 )
 makedepends=(
   'cargo'
@@ -25,8 +24,8 @@ source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 _cargo_env() {
-  export CARGO_HOME="${CARGO_HOME:-$SRCDEST/cargo-home}"
-  export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
+  export CARGO_HOME
+  export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 }
 
@@ -45,5 +44,6 @@ build() {
 }
 
 package() {
+  _cargo_env
   install -Dm755 "$_pkgsrc/$CARGO_TARGET_DIR/release/filepicker" -t "$pkgdir/usr/bin/"
 }

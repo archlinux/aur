@@ -1,22 +1,19 @@
 pkgbase = vdhcoapp-git
 	pkgdesc = Companion application for Video DownloadHelper browser add-on
-	pkgver = 2.0.19.r4.g0b40d3e
-	pkgrel = 2
+	pkgver = 2.0.20.r0.g0b40d3e
+	pkgrel = 1
 	url = https://github.com/aclap-dev/vdhcoapp
 	install = vdhcoapp.install
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = esbuild
 	makedepends = jq
-	makedepends = yq
 	makedepends = nvm
+	makedepends = yq
 	makedepends = cargo
 	makedepends = git
-	depends = at-spi2-core
-	depends = gdk-pixbuf2
 	depends = gtk3
-	depends = pango
-	provides = vdhcoapp=2.0.19
+	provides = vdhcoapp=2.0.20
 	conflicts = vdhcoapp
 	options = emptydirs
 	options = !strip
@@ -27,8 +24,5 @@ pkgbase = vdhcoapp-git
 	sha256sums = SKIP
 
 pkgname = vdhcoapp-git
-	depends = at-spi2-core
-	depends = gdk-pixbuf2
 	depends = gtk3
-	depends = pango
 	depends = ffmpeg
