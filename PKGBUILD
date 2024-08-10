@@ -5,7 +5,7 @@ _pkgname="python-${_name}"
 pkgname="${_pkgname}-git"
 pkgver=1.7.1.r113.58a8faa
 _commit="bdd3757964b8b6d03615a0d7ca045886dbe962e8"
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface for Bertini_real"
 arch=('any')
 url="https://www.bertinireal.com"
@@ -37,6 +37,8 @@ pkgver() {
 }
 
 prepare() {
+  git -C "${srcdir}/${_pkgsrc}" clean -dfx
+
   cd "${srcdir}/${_pkgsrc}/python"
   patch -p1 -i "${srcdir}/${_pkgname}_fix_package_data.patch"
 }

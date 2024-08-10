@@ -1,7 +1,7 @@
 pkgbase = python-bertini_real-git
 	pkgdesc = Python interface for Bertini_real
 	pkgver = 1.7.1.r113.58a8faa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bertinireal.com
 	arch = any
 	license = custom:Bertini license
