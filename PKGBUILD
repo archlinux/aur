@@ -3,7 +3,8 @@
 
 _pkgname="bertini_real"
 pkgname="${_pkgname}-git"
-pkgver=1.6.1.r1517.58a8faa
+pkgver=1.6.1.r278.58a8faa
+_commit="95a90e8bca7787731ba5b300f409bea0806fe112"
 pkgrel=1
 pkgdesc="Numerical decomposition of real algebraic sets, based on the Bertini homotopy continuation solver"
 arch=('any')
@@ -24,7 +25,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${_pkgsrc}"
-  local rev_count=$(git rev-list --count HEAD)
+  local rev_count=$(git rev-list --count "${_commit}..HEAD")
   local short_hash=$(git rev-parse --short=7 HEAD)
 
   cd "${srcdir}/${_pkgsrc}"
