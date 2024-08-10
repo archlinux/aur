@@ -1,5 +1,5 @@
 pkgbase = pybertini-docs
-	pkgdesc = HTML documentation for pybetini
+	pkgdesc = HTML documentation for Pybertini
 	pkgver = 1.0.alpha5
 	pkgrel = 1
 	url = https://github.com/bertiniteam/b2
