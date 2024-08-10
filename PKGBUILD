@@ -4,7 +4,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-librsvg
-pkgver=2.58.1
+pkgver=2.58.2
 pkgrel=1
 pkgdesc="SVG rendering library (mingw-w64)"
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=('mingw-w64-configure'
              'git')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("git+https://gitlab.gnome.org/GNOME/librsvg.git?signed#tag=$pkgver")
-b2sums=('146472a97dc2bf7b4b0150b2984b45e91ea5e188d162a37c3e3123f750e788c7b618f44e37ca1e96c6e2de354633e4918ba52531b725dc02e5d3325727c73853')
+b2sums=('a77ade3efef46dff529b2dcaffffaa49292b1af2f8154ff5f6caec66ccb2e32425d416fd0a4cdd5c4964fdac3684bebdf22abfd5291eeec64ad37cb7967c3554')
 validpgpkeys=(
   263F590F7E0FE1CB3EA274B0167637EB6FB8DCCE # Federico Mena Quintero <federico@gnome.org>
 )
