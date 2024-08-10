@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.38.0.r60.ge855836ed1
+pkgver=0.38.0.r683.g70fad1daa6
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -90,7 +90,7 @@ depends=(
          'openmp'
          'opus'
          'pipewire'
-         'pulseaudio'
+         'pulse-native-provider'
          'rav1e'
          'rtmpdump'
          'rubberband'
@@ -459,6 +459,9 @@ prepare() {
     '-Dios-gl=disabled'
     '-Dvideotoolbox-gl=disabled'
     '-Dvideotoolbox-pl=disabled'
+
+    # windows features
+    '-Dwin32-smtc=disabled'
 
     # manpages
     '-Dmanpage-build=enabled'
