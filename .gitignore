@@ -1,0 +1,4 @@
+python-poetry-plugin-sync-pre-commit-lock*.pkg.tar.xz
+sync-pre-commit-lock*.tar.gz
+pkg/*
+src/*
