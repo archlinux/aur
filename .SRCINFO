@@ -1,7 +1,7 @@
 pkgbase = libgamma
 	pkgdesc = Display server abstraction layer for gamma ramps
 	pkgver = 0.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/maandree/libgamma
 	arch = i686
 	arch = x86_64

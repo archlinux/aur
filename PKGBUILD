@@ -2,7 +2,7 @@
 
 pkgname=libgamma
 pkgver=0.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Display server abstraction layer for gamma ramps"
 arch=(i686 x86_64)
 url="https://codeberg.org/maandree/libgamma"
@@ -13,14 +13,19 @@ source=(libgamma-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
 sha256sums=(6c15eab2c2d4651cd590d85df3dcbd9657c634c78a7c80aad5f9a9d2561e963a)
 
 
+prepare () {
+  cd "$srcdir/libgamma"
+  printf '%s\n' 'CC = cc' >> config.mk
+}
+
 build() {
   cd "$srcdir/libgamma"
-  make PREFIX=/usr
+  make CONFIGFILE=config.mk PREFIX=/usr
 }
 
 
 package() {
   cd "$srcdir/libgamma"
-  make PREFIX=/usr DESTDIR="$pkgdir" install
+  make CONFIGFILE=config.mk PREFIX=/usr DESTDIR="$pkgdir" install
 }
 
