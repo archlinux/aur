@@ -2,7 +2,8 @@
 
 _pkgname="pybertini"
 pkgname="${_pkgname}-git"
-pkgver=1.0.alpha5.r1703.220a4c0
+pkgver=1.0.alpha5.r36.220a4c0
+_commit="436c6ec507594b13edf67212256f90d2b83fa121"
 pkgrel=1
 pkgdesc="Python interface for Bertini2"
 arch=('any')
@@ -25,7 +26,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${_pkgsrc}"
-  local rev_count=$(git rev-list --count HEAD)
+  local rev_count=$(git rev-list --count "${_commit}..HEAD")
   local short_hash=$(git rev-parse --short=7 HEAD)
 
   cd "${srcdir}/${_pkgsrc}/python"
