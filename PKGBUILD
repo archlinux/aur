@@ -1,13 +1,13 @@
-# Maintainer: Abdur-Rahman Mansoor <armansoor at posteo dot net>
+# Maintainer: Abdur-Rahman Mansoor <armansoor at missingno dot dev>
 # Contributor: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 pkgname=inetsim
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Internet Services Simulation Suite"
 url="https://www.inetsim.org"
 depends=('perl-net-server' 'perl-net-dns' 'perl-ipc-shareable' 'perl-digest-sha1' 'perl-io-socket-ssl' 'perl-json' 'perl-string-crc32')
 arch=('any')
-license=('GPL')
+license=('GPL-3.0-only')
 source=("${pkgname}-${pkgver}.tar.gz::https://www.inetsim.org/downloads/${pkgname}-${pkgver}.tar.gz"
         "inetsim.service"
         "${pkgname}-${pkgver}.tar.gz.asc::https://www.inetsim.org/downloads/${pkgname}-${pkgver}.tar.gz.sig")
