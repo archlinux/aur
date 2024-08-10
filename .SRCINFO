@@ -1,7 +1,7 @@
 pkgbase = xnine-git
 	pkgdesc = Native Direct3D9 driver for DXVK-Native games.
 	pkgver = r45.4f38fd5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zmike/Xnine
 	arch = x86_64
 	license = MIT

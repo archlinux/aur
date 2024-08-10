@@ -1,7 +1,7 @@
 # Maintainer: Ícar N. S. <icar.nin@protonmail.com>
 pkgname=xnine-git
 pkgver=r45.4f38fd5
-pkgrel=2
+pkgrel=3
 pkgdesc="Native Direct3D9 driver for DXVK-Native games."
 arch=(x86_64)
 url="https://github.com/zmike/Xnine"
