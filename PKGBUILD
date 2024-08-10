@@ -4,7 +4,7 @@
 # Contributor: PedroHLC <root@pedrohlc.com>
 
 pkgname=gamescope
-pkgver=3.14.24
+pkgver=3.14.29
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -18,6 +18,7 @@ depends=(
   libdecor
   libdrm
   libinput
+  liblcms2.so
   libpipewire-0.3.so
   libx11
   libxcb
@@ -49,7 +50,7 @@ makedepends=(
   vulkan-headers
   wayland-protocols
 )
-_tag=cf2497fd7ec83f3d0dd5cb31b69540a2d129edad
+_tag=db245f3963e5ee27ed41acdf4a50c65d6ed38932
 source=(
   git+https://github.com/ValveSoftware/gamescope.git#tag=${_tag}
   git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git
@@ -60,7 +61,7 @@ source=(
   git+https://github.com/Joshua-Ashton/vkroots.git
   git+https://github.com/Joshua-Ashton/wlroots.git
 )
-b2sums=('272b4df0782c6dfe3f428e396f4e2ab93594e6b086bba25d0116995883e84944788760a24feb0d8a61d615c4d4ecee9d7648a5cdcee128620aaa9d24d2606284'
+b2sums=('4a28e153f5ef63b73695b83cc5dea8352fc2b910dca2efc135f1542d89e229e9c397881d245cb9ab91cdd990085d8d385488af44616d49c3b2c0be8c63e669a3'
         'SKIP'
         'SKIP'
         'SKIP'
