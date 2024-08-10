@@ -14,7 +14,7 @@ source=("byedpi-conf.d"
         "${url}/raw/main/LICENSE"
         "${url}/archive/refs/tags/v${pkgver}.tar.gz")
 md5sums=('3dae0ba370e2b37192676e20d6dfe027'
-         '87cbe870d3dcce986e85d9119e997bc6'
+         '1a858d0bb64fa7d58e9afad9b8e68bec'
          '20705d22c5efeef4fb304664c0e1b799'
          '7f9d1d02664f052059f5526c41bd7b72')
 
