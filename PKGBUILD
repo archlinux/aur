@@ -8,16 +8,18 @@ pkgdesc="A library for Probabilistic Graphical Models"
 arch=(any)
 url="https://github.com/${_base}/${_base}"
 license=(MIT)
-depends=(python-networkx python-scikit-learn python-pytorch python-statsmodels python-tqdm python-joblib python-opt_einsum)
+depends=(python-networkx python-scikit-learn python-pytorch python-statsmodels
+  python-tqdm python-joblib python-opt_einsum python-xgboost python-google-generativeai)
 optdepends=('python-daft' 'python-lxml')
-makedepends=(python-build python-installer python-setuptools python-wheel python-nbsphinx python-sphinx_rtd_theme)
+makedepends=(python-build python-installer python-setuptools python-wheel
+  python-nbsphinx python-sphinx_rtd_theme)
 checkdepends=(python-pytest python-mock python-daft)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('916c3b82bb573672d31d016b4e1526bdb38fcfbae315f7cdf8cc1ce89340423da7ec45df6f211e6cef942bc017b30771d16aeee3997293a34bc0dbbf2f499d3e')
 
-prepare() {
-  sed -i '/"tests"/s/tests/*tests*/' ${_base}-${pkgver}/setup.py
-}
+# prepare() {
+#   sed -i '/"tests"/s/tests/*tests*/' ${_base}-${pkgver}/setup.py
+# }
 
 build() {
   cd ${_base}-${pkgver}
