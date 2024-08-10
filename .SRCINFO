@@ -1,7 +1,7 @@
 pkgbase = python-poetry-plugin-sync-pre-commit-lock
 	pkgdesc = Automatically sync pre-commit hooks version from PDM or Poetry lockfile, and install them automatically.
 	pkgver = 0.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/GabDug/sync-pre-commit-lock
 	arch = any
 	license = GPL3
@@ -10,6 +10,7 @@ pkgbase = python-poetry-plugin-sync-pre-commit-lock
 	makedepends = python-wheel
 	makedepends = python-pdm-backend
 	depends = python
+	depends = python-strictyaml
 	source = sync-pre-commit-lock-0.6.1.tar.gz::https://github.com/GabDug/sync-pre-commit-lock/archive/refs/tags/v0.6.1.tar.gz
 	sha256sums = 1bb7cbcabcb6a5f08a75d9b82d8cf45143e7326d7c1329116698d82df5f7dcca
 
