@@ -1,3 +1,4 @@
+# Maintainer: unit73e <unit73e@gmail.com>
 # Contributor: Jorge Mokross <mokross@gmail.com>
 # Contributor: noonov <noonov@gmail.com>
 
