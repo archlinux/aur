@@ -1,13 +1,14 @@
 pkgbase = zsh-sudo-git
 	pkgdesc = Easily prefix your current or previous commands with sudo by pressing esc twice
 	pkgver = r6614.6622210d7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/sudo
 	install = zsh-sudo-git.install
 	arch = any
 	license = unknown
 	makedepends = git
 	depends = zsh
+	conflicts = zsh-sudo
 	source = git+https://github.com/ohmyzsh/ohmyzsh.git
 	sha256sums = SKIP
 
