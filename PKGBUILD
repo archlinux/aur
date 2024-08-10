@@ -2,7 +2,7 @@
 
 _pkgname=mephisto.lv2
 pkgname="$_pkgname-git"
-pkgver=0.18.2.r99.ge25b1a9
+pkgver=0.18.2.r100.gc33b96b
 pkgrel=1
 pkgdesc='A Just-in-Time FAUST compiler embedded in an LV2 plugin (git version)'
 arch=(x86_64)
@@ -29,7 +29,7 @@ pkgver() {
 }
 
 build() {
-  test -d $_pkgname-build || extra_args="--reconfigure"
+  test -d $_pkgname-build && extra_args="--reconfigure"
   arch-meson $extra_args $_pkgname-build $_pkgname
   meson compile -C $_pkgname-build
 }

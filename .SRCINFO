@@ -1,6 +1,6 @@
 pkgbase = mephisto.lv2-git
 	pkgdesc = A Just-in-Time FAUST compiler embedded in an LV2 plugin (git version)
-	pkgver = 0.18.2.r99.ge25b1a9
+	pkgver = 0.18.2.r100.gc33b96b
 	pkgrel = 1
 	url = https://git.open-music-kontrollers.ch/~hp/mephisto.lv2
 	arch = x86_64
