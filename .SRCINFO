@@ -1,0 +1,18 @@
+pkgbase = jdk24-graalvm-ea-bin
+	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 24 early access
+	pkgver = 24.0.0
+	pkgrel = 1
+	url = https://www.graalvm.org/
+	install = jdk24-graalvm-ea-bin.install
+	arch = x86_64
+	license = LicenseRef-GFTC
+	depends = java-runtime-common
+	depends = java-environment-common
+	provides = java-runtime=24
+	provides = java-environment=24
+	options = staticlibs
+	options = !debug
+	source_x86_64 = https://github.com/graalvm/oracle-graalvm-ea-builds/releases/download/jdk-24.0.0-ea.07/graalvm-jdk-24.0.0-ea.07_linux-x64_bin.tar.gz
+	sha256sums_x86_64 = 85ee77e0b9ceb07750ea338b89cf21dc82b378aeb84b378f78bf3c46c97383b7
+
+pkgname = jdk24-graalvm-ea-bin
