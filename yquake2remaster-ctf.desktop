@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Yamagi Quake II Remaster - Capture The Flag
+Icon=yquake2remaster
+Exec=yquake2remaster +set game ctf
+Categories=Game;Shooter;
+Terminal=false
+StartupNotify=false
