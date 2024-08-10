@@ -1,13 +1,13 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess DOT mn>
 
 pkgname=musikcube-git
-pkgver=3.0.2.r13.g40a26d7f9
+pkgver=3.0.4.r0.g009e9620b
 pkgrel=1
 pkgdesc="a terminal-based cross-platform music player, audio engine, metadata indexer, and server"
 arch=('x86_64')
 url="https://github.com/clangen/musikcube"
 license=('BSD')
-depends=('libogg' 'libvorbis' 'libmicrohttpd' 'ffmpeg' 'lame' 'ncurses' 'pulseaudio'
+depends=('libogg' 'libvorbis' 'libmicrohttpd' 'ffmpeg' 'lame' 'ncurses' 'pulse-native-provider'
          'libpulse' 'alsa-lib' 'curl' 'libev' 'taglib' 'libopenmpt' 'asio')
 makedepends=('cmake' 'git')
 provides=('musikcube')
