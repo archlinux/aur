@@ -3,14 +3,13 @@
 _pkgbase='yquake2remaster'
 pkgname="${_pkgbase}-git"
 pkgver=r4342.ab6ce60
-pkgrel=1
+pkgrel=2
 pkgdesc='Experimental fork of Yamagi Quake II to add support for Quake II Enhanced/Remaster(ed)'
 url="https://github.com/yquake2/${_pkgbase}"
 arch=('i686' 'x86_64' 'aarch64')
 license=('Info-ZIP' 'GPL-2.0-only')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
-makedepends=('git')
 depends=('ffmpeg' 'glibc' 'libglvnd' 'sdl2')
 makedepends=('curl' 'git' 'openal' 'vulkan-headers')
 optdepends=('curl' 'openal' 'quake2-data' 'quake2-demo' 'vulkan-driver')
