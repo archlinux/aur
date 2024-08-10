@@ -1,24 +1,24 @@
 pkgbase = gossip-bin
 	pkgdesc = gossip nostr client built with rust
 	pkgver = 0.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mikedilger/gossip
 	arch = x86_64
 	license = MIT
 	depends = glibc
 	depends = gcc-libs
-	provides = gossip=${pkgver}
+	provides = gossip=${pkgver}.${pkgrel}
 	conflicts = gossip
 	conflicts = gossip-git
-	source = gossip_0.11.2-1_amd64.deb::https://github.com/mikedilger/gossip/releases/download/v0.11.2/gossip_0.11.2-1_amd64.deb
-	source = LICENSE.txt::https://github.com/mikedilger/gossip/releases/download/v0.11.2/LICENSE.txt
-	source = README.txt::https://github.com/mikedilger/gossip/releases/download/v0.11.2/README.txt
-	source = changelog.txt::https://github.com/mikedilger/gossip/releases/download/v0.11.2/changelog-0.11.2.txt
+	source = gossip_0.11.3-1_amd64.deb::https://github.com/mikedilger/gossip/releases/download/v0.11.3/gossip_0.11.3-1_amd64.deb
+	source = LICENSE.txt::https://github.com/mikedilger/gossip/releases/download/v0.11.3/LICENSE.txt
+	source = README.txt::https://github.com/mikedilger/gossip/releases/download/v0.11.3/README.txt
+	source = changelog.txt::https://github.com/mikedilger/gossip/releases/download/v0.11.3/changelog-0.11.3.txt
 	source = gossip.png::https://raw.githubusercontent.com/mikedilger/gossip/c437e3ebf30ff168395bcdcb94cab7c88a5d0543/logo/gossip.png
-	sha256sums = 9a90af8069c609ee6f8949ed9eb95b2f7b190cdcfc47c0a1b3e47a1d8b86a995
+	sha256sums = cfabc8788aca8e4ac07d4cf6da605de8729cbbac0e356563b12c796be680ed1a
 	sha256sums = 8a8543ebe0203fa8597bfcf70e7841f6fb66367358ff6180be692d4d724def70
-	sha256sums = 37e31f5ba5afbfedacad2e5a044736ac5a4ab64fec6948f2ed1f3d0202fe7c6b
-	sha256sums = 8e1fe3260c91569121a8407f8e5962067ce4b47d49f886c35fff1ba1d320ded4
+	sha256sums = 2314c3d6c044e57531fea4e6fc67686e0794d9ac83f6d3bfa9b07e095ba6c54d
+	sha256sums = 660df6dacde13c3c9ebc10a57e81c87d467278e3baa16be29e856987601209f9
 	sha256sums = 7f4f3e319a429825008c8d46cc2cfbaf3bdce70972e5900df7e548df6967258b
 
 pkgname = gossip-bin

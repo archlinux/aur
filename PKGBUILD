@@ -2,35 +2,32 @@
 
 pkgname=gossip-bin
 pkgver=0.11
-pkgrel=2
-_pkgrel=2
-_pkgpatch=1
-_rel=2
+pkgrel=3
 pkgdesc="gossip nostr client built with rust"
 arch=('x86_64')
 url="https://github.com/mikedilger/gossip"
 license=(MIT)
-provides=('gossip=${pkgver}')
+provides=('gossip=${pkgver}.${pkgrel}')
 conflicts=('gossip' 'gossip-git')
 depends=(
   'glibc'
   'gcc-libs'
 )
 source=(
-  "gossip_${pkgver}.${_pkgrel}-${_pkgpatch}_amd64.deb::https://github.com/mikedilger/gossip/releases/download/v${pkgver}.${_pkgrel}/gossip_${pkgver}.${_pkgrel}-${_pkgpatch}_amd64.deb"
-  "LICENSE.txt::https://github.com/mikedilger/gossip/releases/download/v${pkgver}.${_pkgrel}/LICENSE.txt"
-  "README.txt::https://github.com/mikedilger/gossip/releases/download/v${pkgver}.${_pkgrel}/README.txt"
-  "changelog.txt::https://github.com/mikedilger/gossip/releases/download/v${pkgver}.${_pkgrel}/changelog-${pkgver}.${_pkgrel}.txt"
+  "gossip_${pkgver}.${pkgrel}-1_amd64.deb::https://github.com/mikedilger/gossip/releases/download/v${pkgver}.${pkgrel}/gossip_${pkgver}.${pkgrel}-1_amd64.deb"
+  "LICENSE.txt::https://github.com/mikedilger/gossip/releases/download/v${pkgver}.${pkgrel}/LICENSE.txt"
+  "README.txt::https://github.com/mikedilger/gossip/releases/download/v${pkgver}.${pkgrel}/README.txt"
+  "changelog.txt::https://github.com/mikedilger/gossip/releases/download/v${pkgver}.${pkgrel}/changelog-${pkgver}.${pkgrel}.txt"
   "gossip.png::https://raw.githubusercontent.com/mikedilger/gossip/c437e3ebf30ff168395bcdcb94cab7c88a5d0543/logo/gossip.png"
 )
-sha256sums=('9a90af8069c609ee6f8949ed9eb95b2f7b190cdcfc47c0a1b3e47a1d8b86a995'
+sha256sums=('cfabc8788aca8e4ac07d4cf6da605de8729cbbac0e356563b12c796be680ed1a'
             '8a8543ebe0203fa8597bfcf70e7841f6fb66367358ff6180be692d4d724def70'
-            '37e31f5ba5afbfedacad2e5a044736ac5a4ab64fec6948f2ed1f3d0202fe7c6b'
-            '8e1fe3260c91569121a8407f8e5962067ce4b47d49f886c35fff1ba1d320ded4'
+            '2314c3d6c044e57531fea4e6fc67686e0794d9ac83f6d3bfa9b07e095ba6c54d'
+            '660df6dacde13c3c9ebc10a57e81c87d467278e3baa16be29e856987601209f9'
             '7f4f3e319a429825008c8d46cc2cfbaf3bdce70972e5900df7e548df6967258b')
 
 prepare() {
-  ar vx "${srcdir}/gossip_${pkgver}.${_pkgrel}-${_pkgpatch}_amd64.deb"
+  ar vx "${srcdir}/gossip_${pkgver}.${pkgrel}-1_amd64.deb"
   bsdtar -xvf ${srcdir}/control.tar.xz
   bsdtar -xvf ${srcdir}/data.tar.xz
 }
