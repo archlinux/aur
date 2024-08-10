@@ -1,7 +1,7 @@
 pkgbase = cartesi-machine
 	pkgdesc = Cartesi Machine
 	pkgver = 0.18.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://cartesi.io/
 	arch = any
 	license = LGPL

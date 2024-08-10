@@ -1,6 +1,6 @@
 pkgname=(cartesi-machine)
 pkgver=0.18.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Cartesi Machine'
 arch=(any)
 options=(!lto)
@@ -26,7 +26,7 @@ sha256sums=('d12cdc7b3b15056f67a00d20cd8cd5111021c9ad921dc60421992d014e2f6f7c'
 
 prepare() {
   cd machine-emulator-${pkgver_emulator}
-  [ -f src/machine-c-version.h ] || patch -Np1 < ../add-generated-files.diff
+  [ -f src/machine-c-version.h ] || patch -Np0 < ../add-generated-files.diff
   [ -f src/interpret-jump-table.h ] || patch -Np1 < ../226.patch
 }
 
