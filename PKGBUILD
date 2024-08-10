@@ -1,6 +1,6 @@
 pkgname=mingw-w64-cmake-static
 pkgver=1
-pkgrel=2
+pkgrel=5
 arch=('any')
 pkgdesc='CMake wrapper for MinGW (mingw-w64, static)'
 depends=('mingw-w64-cmake')
@@ -13,10 +13,8 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   for _arch in ${_architectures}; do
-    for _variant in '' '-static'; do
-      sed "s|@TRIPLE@|${_arch}|g;s|@PROCESSOR@|${_arch::-12}|g" toolchain-mingw-static.cmake > toolchain-${_arch}-static.cmake
-      sed "s|@TRIPLE@|${_arch}|g" mingw-cmake-static.sh > ${_arch}-cmake-static
-    done
+    sed "s|@TRIPLE@|${_arch}|g;s|@PROCESSOR@|${_arch::-12}|g" toolchain-mingw-static.cmake > toolchain-${_arch}-static.cmake
+    sed "s|@TRIPLE@|${_arch}|g" mingw-cmake-static.sh > ${_arch}-cmake-static
   done
 }
 
