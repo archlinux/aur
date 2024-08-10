@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-daemon-git
-pkgver=1.0.0.alpha.1.r0.g362c77f
+pkgver=1.0.0.alpha.1.r1.g75f9213
 pkgrel=1
 pkgdesc="Cosmic settings daemon"
 arch=('x86_64' 'aarch64')
@@ -35,6 +35,10 @@ prepare() {
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
   sed -i 's|libexec|lib|g' Makefile src/main.rs
+
+  # Use wheel instead of sudo group
+  # https://github.com/pop-os/cosmic-settings-daemon/issues/42
+  sed -i 's|sudo|wheel|g' "data/polkit-1/rules.d/${pkgname%-git}.rules"
 }
 
 build() {
