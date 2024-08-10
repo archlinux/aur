@@ -5,7 +5,7 @@
 _gemname='bcrypt'
 pkgname="ruby-${_gemname}"
 pkgver=3.1.20
-pkgrel=3
+pkgrel=4
 pkgdesc="bcrypt-ruby is a Ruby binding for the OpenBSD bcrypt() password hashing algorithm, allowing you to easily store a secure hash of your users' passwords."
 arch=('x86_64')
 url='https://github.com/bcrypt-ruby/bcrypt-ruby'
@@ -42,7 +42,8 @@ package() {
 
   local _gemdir="$(gem env gemdir)"
 
-  gem install --ignore-dependencies --no-user-install --install-dir "${pkgdir}/${_gemdir}" --bindir "${pkgdir}/usr/bin" "pkg/${_gemname}-${pkgver}.gem"
+  gem install --ignore-dependencies --no-user-install --install-dir "${pkgdir}/${_gemdir}" --bindir "${pkgdir}/usr/bin" "pkg/${_gemname}-${pkgver}.gem" \
+  -- --with-ldflags="-Wl,-z,shstk"
 
   rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
 

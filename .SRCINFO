@@ -1,7 +1,7 @@
 pkgbase = ruby-bcrypt
 	pkgdesc = bcrypt-ruby is a Ruby binding for the OpenBSD bcrypt() password hashing algorithm, allowing you to easily store a secure hash of your users' passwords.
 	pkgver = 3.1.20
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bcrypt-ruby/bcrypt-ruby
 	arch = x86_64
 	license = MIT
