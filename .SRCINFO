@@ -27,6 +27,8 @@ pkgbase = xnine-git
 	provides = xnine
 	conflicts = xnine
 	source = Xnine::git+https://github.com/zmike/Xnine#branch=master
+	source = build-fix.patch
 	md5sums = SKIP
+	md5sums = d19f019a8dc90fa3d9eca6972ca8cada
 
 pkgname = xnine-git

@@ -9,30 +9,36 @@ license=('MIT')
 makedepends=('git' 'make' 'gcc')
 depends=(
     'mesa'
-	'lib32-mesa'
-	'sdl2'
-	'lib32-sdl2'
-	'libx11'
-	'lib32-libx11'
-	'libxcb'
-	'lib32-libxcb'
-	'libxext'
-	'lib32-libxext'
-	'glibc'
-	'lib32-glibc'
-	'libxau'
-	'lib32-libxau'
-	'libxdmcp'
-	'lib32-libxdmcp'
+    'lib32-mesa'
+    'sdl2'
+    'lib32-sdl2'
+    'libx11'
+    'lib32-libx11'
+    'libxcb'
+    'lib32-libxcb'
+    'libxext'
+    'lib32-libxext'
+    'glibc'
+    'lib32-glibc'
+    'libxau'
+    'lib32-libxau'
+    'libxdmcp'
+    'lib32-libxdmcp'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("Xnine::git+$url#branch=master")
-md5sums=('SKIP')
+source=("Xnine::git+$url#branch=master" build-fix.patch)
+md5sums=('SKIP'
+         'd19f019a8dc90fa3d9eca6972ca8cada')
+
+prepare() {
+    cd Xnine
+    patch -Np1 -i ../build-fix.patch
+}
 
 pkgver() {
-	cd Xnine
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd Xnine
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -41,13 +47,9 @@ build() {
 }
 
 package() {
-	cd Xnine
+    cd Xnine
     mkdir -p "$pkgdir/usr/share/Xnine/"
     install -Dm755 nine_sdl.so "$pkgdir/usr/share/Xnine/"
     install -Dm755 nine_sdl64.so "$pkgdir/usr/share/Xnine/"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/Xnine/LICENSE"
-}
-
-post_install() {
-    msg "In Steam properties, make sure to 'LD_PRELOAD=\"/usr/share/Xnine/nine_sdl.so /usr/share/Xnine/nine_sdl64.so\" %command%' -vulkan"
 }
