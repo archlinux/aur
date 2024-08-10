@@ -479,11 +479,6 @@ prepare() {
     '-Dd3d11=disabled'
   )
 
-  if [ ! -f /usr/lib/libHLSL.so ]; then
-    sed -i 's|-lHLSL||g' ffmpeg/configure;
-    sed -i 's|-lOGLCompiler||g' ffmpeg/configure;
-  fi
-
   if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
     if [ -f /usr/lib/libdavs2.so ]; then
       _ffmpeg_options+=('--enable-libdavs2')
