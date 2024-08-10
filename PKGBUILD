@@ -5,19 +5,19 @@ pkgver=0.1.2
 pkgrel=1
 pkgdesc="A real-time audio time-scale modification library"
 url="https://github.com/Muges/audiotsm"
-depends=('python' )
-makedepends=('python3' )
+depends=('python')
+makedepends=('python3' 'python-setuptools')
 license=('MIT')
 arch=('any')
 source=('https://files.pythonhosted.org/packages/f8/b8/721a9c613641c938a6fb9c7c3efb173b7f77b519de066e9cd2eeb27c3289/audiotsm-0.1.2.tar.gz')
 md5sums=('5fb754f002da8f68688988fd773c1902')
 
 build() {
-    cd $srcdir/audiotsm-0.1.2
-    python setup.py build
+	cd $srcdir/audiotsm-0.1.2
+	python setup.py build
 }
 
 package() {
-    cd $srcdir/audiotsm-0.1.2
-    python setup.py install --root="$pkgdir" --optimize=1 
+	cd $srcdir/audiotsm-0.1.2
+	python setup.py install --root="$pkgdir" --optimize=1
 }
