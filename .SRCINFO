@@ -1,0 +1,11 @@
+pkgbase = xilinx-u280-gen3x16-xdma-dev
+	pkgdesc = Deployment platform firmware for AMD Alveo U280 dev package
+	pkgver = 202211.3585755
+	pkgrel = 1
+	url = https://docs.xilinx.com/r/en-US/ug1301-getting-started-guide-alveo-accelerator-cards
+	arch = any
+	license = custom
+	source = file://xilinx-u280-gen3x16-xdma-1-202211-1-dev_1-3585755_all.deb
+	sha512sums = c9f8000063448eaa7491b74db6ce951a61d064353933bfc9f0449fe7f08dec5b0a8532d5330edf7db9a846cc4751fbd9406d406fde7fb7d3ee74c37244897074
+
+pkgname = xilinx-u280-gen3x16-xdma-dev
