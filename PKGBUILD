@@ -2,7 +2,8 @@
 
 _pkgname="bertini2-docs"
 pkgname="${_pkgname}-git"
-pkgver=2.0.alpha8.r1680.78f9986
+pkgver=2.0.alpha8.r76.78f9986
+_commit="d21f2b3cbd93cd6dbae9b9306b8d7b0e765a5a91"
 pkgrel=1
 pkgdesc="HTML documentation for Betini2"
 arch=('any')
@@ -17,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgsrc}"
-  local rev_count=$(git rev-list --count HEAD)
+  local rev_count=$(git rev-list --count "${_commit}..HEAD")
   local short_hash=$(git rev-parse --short=7 HEAD)
 
   cd "${srcdir}/${_pkgsrc}/core"
