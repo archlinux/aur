@@ -1,6 +1,6 @@
 # Maintainer: NSK-1010 <kotone[dot]olin1010[at]gmail[dot]com>
 
-## useful links
+## links
 # http://floorp.app/
 # https://github.com/Floorp-Projects/Floorp
 # https://github.com/Floorp-Projects/Floorp-core
@@ -12,11 +12,12 @@
 
 : ${_ver_clang=17}
 : ${RUSTUP_TOOLCHAIN:=1.77}
+: ${_commit=2c730dfb9a19d64582c5fe73502f98cf6c156c87} # 11.16.0
 
 ## basic info
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=11.15.0
+pkgver=11.16.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -103,7 +104,7 @@ options=(
 _source_floorp() {
   _pkgsrc="Floorp"
   source=(
-    "$_pkgsrc"::"git+https://github.com/Floorp-Projects/Floorp.git#tag=v$pkgver"
+    "$_pkgsrc"::"git+https://github.com/Floorp-Projects/Floorp.git#tag=$_commit"
     "floorp-projects.floorp-core"::"git+https://github.com/Floorp-Projects/Floorp-core.git"
     "floorp-projects.unified-l10n-central"::"git+https://github.com/Floorp-Projects/Unified-l10n-central.git"
     "$_pkgname.desktop"
@@ -419,7 +420,7 @@ package() {
   DESTDIR="$pkgdir" ./mach install
 
   local vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
-  install -Dvm644 /dev/stdin "$vendorjs" << END
+  install -Dm644 /dev/stdin "$vendorjs" << END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
 
@@ -446,7 +447,7 @@ pref("services.settings.main.search-telemetry-v2.last_check", $(date +%s));
 END
 
   local distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
-  install -Dvm644 /dev/stdin "$distini" << END
+  install -Dm644 /dev/stdin "$distini" << END
 [Global]
 id=archlinux
 version=rolling
@@ -460,7 +461,7 @@ END
 
   # search provider
   local sprovider="$pkgdir/usr/share/gnome-shell/search-providers/$_pkgname.search-provider.ini"
-  install -Dvm644 /dev/stdin "$sprovider" << END
+  install -Dm644 /dev/stdin "$sprovider" << END
 [Shell Search Provider]
 DesktopId=$_pkgname.desktop
 BusName=org.mozilla.${_pkgname//-/}.SearchProvider
@@ -478,13 +479,13 @@ END
   fi
 
   # desktop file
-  install -Dvm644 ../$_pkgname.desktop \
+  install -Dm644 ../$_pkgname.desktop \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # icons
   local i theme=official
   for i in 16 22 24 32 48 64 128 256; do
-    install -Dvm644 browser/branding/$theme/default$i.png \
+    install -Dm644 browser/branding/$theme/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
 }
