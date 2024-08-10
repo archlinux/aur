@@ -3,7 +3,7 @@
 
 pkgname="zork++"
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern C++ project manager and build system for modern C++"
 arch=('any')
 url='https://github.com/zerodaycode/Zork'
@@ -13,7 +13,7 @@ makedepends=('cargo')
 # checkdepends=('clang' 'gcc')
 _pkgsrc="Zork-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a894c1acc492dee0a359936fe992eb26e0a4317772d211327a8c2c7b2b18e547')
+sha256sums=('1c1e9f19e0ad0d63029d4f23e1eff05acf2aeed09b7bbcea62807d2bf8c0fd60')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}/${pkgname}"
