@@ -2,8 +2,8 @@
 
 _pkgname=kdenlive
 pkgname=kdenlive-appimage
-pkgver=24.02.2
-pkgrel=0
+pkgver=24.05.0
+pkgrel=1
 pkgdesc="A non-linear video editor for Linux using the MLT video framework"
 arch=('x86_64')
 #url="https://www.kdenlive.org"
@@ -13,8 +13,8 @@ conflicts=('kdenlive')
 depends=('breeze' 'breeze-icons')
 makedepends=('breeze' 'breeze-icons')
 _filename="${_pkgname}-${pkgver}-${arch}.AppImage"
-source=("${_filename}::https://download.kde.org/stable/kdenlive/24.02/linux/${_pkgname}-${pkgver}-x86_64.AppImage")
-md5sums=('3e5d85c1a194034a0170e75019081a10')
+source=("${_filename}::https://download.kde.org/stable/kdenlive/24.05/linux/${_pkgname}-${pkgver}-x86_64.AppImage")
+sha256sums=('b2ea1c3cc5af7eda58c5a19bfd35cde9a050fb70c5f2526117c9cc69a46576f0')
 options=(!strip)
 prepare() 
 {
