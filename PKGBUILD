@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/bggRGjQaUbCoE/${_pkgname}"
 license=('AGPL-3.0-or-later')
 depends=('gtk3')
-makedepends=('git' 'flutter-tool' 'flutter-target-linux')
+makedepends=('git' 'flutter-tool' 'flutter-target-linux' 'cmake')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
@@ -36,7 +36,10 @@ build() {
 }
 
 package() {
+	install -Dm644 "${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+
 	cd "${_pkgname}/"
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
 
 	case "${CARCH}" in
 	"x86_64")
@@ -47,7 +50,10 @@ package() {
 		;;
 	esac
 
-	install -Dm755 "build/linux/${_dartarch}/release/bundle/${_pkgname}" -t "${pkgdir}/usr/bin/"
-	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
-	install -Dm644 "../${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+	cd "build/linux/${_dartarch}/release/"
+	cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/lib/${_pkgname}" .
+	cmake -P cmake_install.cmake
+
+	install -dm755 "${pkgdir}/usr/bin/"
+	ln -s "/usr/lib/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
