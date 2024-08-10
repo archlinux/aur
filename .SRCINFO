@@ -12,6 +12,8 @@ pkgbase = c001apk-flutter-git
 	provides = c001apk-flutter
 	conflicts = c001apk-flutter
 	source = git+https://github.com/bggRGjQaUbCoE/c001apk-flutter.git
+	source = c001apk-flutter.desktop
 	sha256sums = SKIP
+	sha256sums = c41cc46fe55767d54349a7c8f3aefa0dcd1e08b196759bd77affedd4ceef5f4e
 
 pkgname = c001apk-flutter-git
