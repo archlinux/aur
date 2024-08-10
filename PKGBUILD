@@ -2,12 +2,12 @@
 
 pkgbase=tensorrt
 pkgname=('tensorrt' 'python-tensorrt')
-pkgver=10.1.0.27
-_cudaver=12.4
+pkgver=10.3.0.26
+_cudaver=12.5
 _protobuf_ver=3.20.1
 _pybind11_ver=2.9.2
 _onnx_graphsurgeon_ver=0.5.2
-_polygraphy_ver=0.49.12
+_polygraphy_ver=0.49.13
 _tensorflow_quantization_ver=0.2.0
 pkgrel=1
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
@@ -27,10 +27,11 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         "https://github.com/google/protobuf/releases/download/v${_protobuf_ver}/protobuf-cpp-${_protobuf_ver}.tar.gz"
         '010-tensorrt-use-local-protobuf-sources.patch'
         '020-tensorrt-fix-python.patch'
+        '030-tensorrt-onnx-tensorrt-disable-missing-source-file.patch'
         'TensorRT-SLA.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('606436ed219c72d1a25a889b2b0ae5cb5a68499dd6f944da4cabb3c34c067d55'
-            '52afa7bf384524ff990ebe211e175684a1cc1e9a3f456ba6bc64c6492a4cae0a'
+sha256sums=('adff1cd5abe5d87013806172351e58fd024e5bf0fc61d49ef4b84cd38ed99081'
+            '264cdbd9512d1d5c33329c62e1522aca70121eb6de966a30f648bcf680532b9e'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -39,8 +40,9 @@ sha256sums=('606436ed219c72d1a25a889b2b0ae5cb5a68499dd6f944da4cabb3c34c067d55'
             'SKIP'
             'dddd73664306d7d895a95e1cf18925b31b52785e468727e4635b45edae5166f9'
             'ba94c0685216fe9566f7989df98b372e72a8da04b66d64380024107f2f7f4a8f'
-            '55a5c6ccd054b8b5abb761bc64523daf31eed2982f20cef47812f7926143e7d3'
-            '5f68360b4ac4758d207e30fec89c5e829d45bb4c27cae99e3fa6d2b170789370')
+            '62109d798ecfe286aa12d8c848927baa074b422669fb6248590a7ae00074ab26'
+            '5b90eb795c5d7a209a67c7aad73f3b472650e52c0c42f8cd15b43b5a6c6396c4'
+            'c493df1b40477f750d9840a1b0b6cf5ec36c1b6bde3bcd6c7029e27e60df3c58')
 
 prepare() {
     # tensorrt git submodules
@@ -69,6 +71,9 @@ prepare() {
 
     patch -d TensorRT -Np1 -i "${srcdir}/010-tensorrt-use-local-protobuf-sources.patch"
     patch -d TensorRT -Np1 -i "${srcdir}/020-tensorrt-fix-python.patch"
+    
+    # https://github.com/onnx/onnx-tensorrt/issues/979
+    patch -d TensorRT/parsers/onnx -Np1 -i "${srcdir}/030-tensorrt-onnx-tensorrt-disable-missing-source-file.patch"
 }
 
 build() {
@@ -80,7 +85,6 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DTRT_LIB_DIR="${srcdir}/TensorRT-${pkgver}/lib" \
-        -DCUDNN_ROOT_DIR='/usr' \
         -DGPU_ARCHS='50 52 53 60 61 62 70 72 75 80 86 87 89 90' \
         -DPROTOBUF_VERSION="$_protobuf_ver" \
         -Wno-dev

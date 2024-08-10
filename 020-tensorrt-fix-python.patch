@@ -26,7 +26,7 @@
 +link_directories(${TENSORRT_BUILD} $ENV{TRT_NONOSS_ROOT}/lib)
  
  if (MSVC)
-     message(STATUS "include_dirs: ${MSVC_COMPILER_DIR}/include ${MSVC_COMPILER_DIR}/../ucrt/include ${NV_WDKSDK_INC}/um ${NV_WDKSDK_INC}/shared")
+   # Prevent pybind11 from sharing resources with other, potentially ABI incompatible modules
 --- a/python/build.sh
 +++ b/python/build.sh
 @@ -35,15 +35,17 @@ cmake .. -DCMAKE_BUILD_TYPE=Release \
