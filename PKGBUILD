@@ -2,18 +2,18 @@
 # Contributor: Marius Hirt <marius-hirt@web.de>
 
 pkgname="zork++"
-pkgver=0.10.1
-pkgrel=2
+pkgver=0.10.2
+pkgrel=1
 pkgdesc="A modern C++ project manager and build system for modern C++"
 arch=('any')
 url='https://github.com/zerodaycode/Zork'
 license=('MIT')
-depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 # checkdepends=('clang' 'gcc')
+depends=('glibc' 'gcc-libs')
 _pkgsrc="Zork-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1c1e9f19e0ad0d63029d4f23e1eff05acf2aeed09b7bbcea62807d2bf8c0fd60')
+sha256sums=('76b5fe75cb24a2e4a1f2752e1e1904ff3f87f59f6f68fde3136b168865a69442')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}/${pkgname}"
