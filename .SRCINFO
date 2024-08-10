@@ -1,0 +1,17 @@
+pkgbase = padfolio-git
+	pkgdesc = Minimal Wayland clipboard manager
+	pkgver = r7.56b5ccb
+	pkgrel = 1
+	url = https://github.com/verdiwm/padfolio
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cargo
+	makedepends = just
+	provides = padfolio
+	conflicts = padfolio
+	source = git+https://github.com/verdiwm/padfolio.git
+	sha256sums = SKIP
+
+pkgname = padfolio-git
