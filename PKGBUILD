@@ -4,7 +4,7 @@ _pkgname="pybertini"
 pkgname="${_pkgname}-git"
 pkgver=1.0.alpha5.r36.220a4c0
 _commit="436c6ec507594b13edf67212256f90d2b83fa121"
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface for Bertini2"
 arch=('any')
 # We'll use a fork created by one of the maintainers with CMake build support until it is merged
@@ -37,6 +37,8 @@ pkgver() {
 
 prepare(){
   local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+
+  git -C "${srcdir}/${_pkgsrc}" clean -dfx
 
   cd "${srcdir}/${_pkgsrc}/python"
   sed -i "s/python311/python${python_version//./}/g" CMakeLists.txt
