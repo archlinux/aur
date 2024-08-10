@@ -2,8 +2,8 @@
 pkgname=python-poetry-plugin-sync-pre-commit-lock
 _name=sync-pre-commit-lock
 pkgver=0.6.1
-pkgrel=1
-pkgdesc="Sync pre-commit lock file across multiple repositories"
+pkgrel=2
+pkgdesc="Automatically sync pre-commit hooks version from PDM or Poetry lockfile, and install them automatically."
 arch=('any')
 url="https://github.com/GabDug/sync-pre-commit-lock"
 license=('GPL3')
