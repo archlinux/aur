@@ -1,6 +1,6 @@
 pkgname=(cartesi-machine)
 pkgver=0.18.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Cartesi Machine'
 arch=(any)
 options=(!lto)
@@ -9,18 +9,18 @@ license=(LGPL)
 depends=(lua)
 optdepends=('lua-socket: GDB plugin support')
 makedepends=(boost)
-pkgver_emulator=0.18.0-test1
+pkgver_emulator=0.18.0
 pkgver_linux=0.20.0
 pkgver_linux_kernel=6.5.13-ctsi-1-v${pkgver_linux}
-pkgver_tools=0.15.0
+pkgver_tools=0.16.0
 source=("machine-emulator-${pkgver_emulator}.tar.gz::https://github.com/cartesi/machine-emulator/archive/refs/tags/v${pkgver_emulator}.tar.gz"
         "https://github.com/cartesi/machine-emulator/releases/download/v${pkgver_emulator}/add-generated-files.diff"
         "https://github.com/cartesi/image-kernel/releases/download/v${pkgver_linux}/linux-${pkgver_linux_kernel}.bin"
         "https://github.com/cartesi/machine-emulator-tools/releases/download/v${pkgver_tools}/rootfs-tools-v${pkgver_tools}.ext2")
-sha256sums=('10b3157c89dce5366dda49a15d9f7c5293e4df081f679bd869ef8546d4104ac2'
-            '5ddb29d3a0259f9295dc303110d5b24a880e3db19fe77b2a0a1a0a89d3cf8b71'
+sha256sums=('d12cdc7b3b15056f67a00d20cd8cd5111021c9ad921dc60421992d014e2f6f7c'
+            'da739e9c68b5e392e6dc634e0c1a2302b6d71e9548cc8cfb288e0ef59950062f'
             '65dd100ff6204346ac2f50f772721358b5c1451450ceb39a154542ee27b4c947'
-            'dee8f9b739814f0076cd629f1de98fd71a4b5bc57a417678f80422dc9ef85550')
+            '9bb25541c3e42e329d83cca40066772ac3d51491300bb32100127e04e4e6c531')
 
 prepare() {
   cd machine-emulator-${pkgver_emulator}
