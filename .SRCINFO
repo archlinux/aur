@@ -1,0 +1,14 @@
+pkgbase = openrgb-plugin-visual-map-git
+	pkgdesc = Visual Map plugin for OpenRGB
+	pkgver = r729.bc7c308
+	pkgrel = 1
+	url = https://gitlab.com/OpenRGBDevelopers/OpenRGBVisualMapPlugin
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = qt5-tools
+	depends = openrgb
+	source = git+https://gitlab.com/OpenRGBDevelopers/OpenRGBVisualMapPlugin.git
+	sha256sums = SKIP
+
+pkgname = openrgb-plugin-visual-map-git
