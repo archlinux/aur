@@ -2,13 +2,13 @@
 
 pkgname=chessx
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform chess database and PGN viewer"
 arch=(x86_64)
 url=http://chessx.sourceforge.net
 license=(GPL-2.0-or-later)
-depends=(qt6-svg qt6-speech)
-makedepends=(qt6-tools)
+depends=(qt5-svg qt5-speech)
+makedepends=(qt5-tools)
 conflicts=($pkgname-svn)
 source=("https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver.tgz"
         "chessx.patch")
