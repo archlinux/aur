@@ -1,36 +1,36 @@
 pkgbase = linux-lts-versioned-bin
 	pkgdesc = The LTS Linux kernel and modules | repackaged with a unique package name for each version
-	pkgver = 6.6.42
-	pkgrel = 1
+	pkgver = 6.6.44
+	pkgrel = 3
 	url = https://www.kernel.org
 	arch = x86_64
 	license = GPL2
-	noextract = linux-lts-6.6.42-1-x86_64.pkg.tar.zst
-	noextract = linux-lts-headers-6.6.42-1-x86_64.pkg.tar.zst
-	noextract = linux-lts-docs-6.6.42-1-x86_64.pkg.tar.zst
+	noextract = linux-lts-6.6.44-3-x86_64.pkg.tar.zst
+	noextract = linux-lts-headers-6.6.44-3-x86_64.pkg.tar.zst
+	noextract = linux-lts-docs-6.6.44-3-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://mirror.aarnet.edu.au/pub/archlinux/core/os/x86_64/linux-lts-6.6.42-1-x86_64.pkg.tar.zst
-	source = https://mirror.aarnet.edu.au/pub/archlinux/core/os/x86_64/linux-lts-headers-6.6.42-1-x86_64.pkg.tar.zst
-	source = https://mirror.aarnet.edu.au/pub/archlinux/core/os/x86_64/linux-lts-docs-6.6.42-1-x86_64.pkg.tar.zst
-	sha256sums = 690244abc37c39c4f3f14a4f84dd14234d58eb66337e30baac94e9ae0bc5b652
-	sha256sums = dfbf32ee49ec3c825d7375e72d4925d1f33c7c8557fb18f862a2d751933a1717
-	sha256sums = d02b4572c89da1e28cc959a357afe67275617c53d1bbc53ef252826a564f49ef
+	source = https://mirror.aarnet.edu.au/pub/archlinux/core/os/x86_64/linux-lts-6.6.44-3-x86_64.pkg.tar.zst
+	source = https://mirror.aarnet.edu.au/pub/archlinux/core/os/x86_64/linux-lts-headers-6.6.44-3-x86_64.pkg.tar.zst
+	source = https://mirror.aarnet.edu.au/pub/archlinux/core/os/x86_64/linux-lts-docs-6.6.44-3-x86_64.pkg.tar.zst
+	sha256sums = f8775651d3be21ef8c9075631954883bbfaa50414fc76ef889d2709667eb04c1
+	sha256sums = 593ce3e1314045e6ee0783d576f5b7157a11c9c51291caedbb81c65566aa863d
+	sha256sums = 58e484f4523f452884089af6d9b441b7db08b1de3d1273d1b81d5dad74bef121
 
 pkgname = linux-lts-versioned-bin
-	pkgdesc = Metapackage depending on linux6.6.42-1-lts-bin
-	depends = linux6.6.42-1-lts-bin
+	pkgdesc = Metapackage depending on linux6.6.44-3-lts-bin
+	depends = linux6.6.44-3-lts-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-lts-versioned-headers-bin
-	pkgdesc = Metapackage depending on linux6.6.42-1-lts-headers-bin
-	depends = linux6.6.42-1-lts-headers-bin
+	pkgdesc = Metapackage depending on linux6.6.44-3-lts-headers-bin
+	depends = linux6.6.44-3-lts-headers-bin
 
 pkgname = linux-lts-versioned-docs-bin
-	pkgdesc = Metapackage depending on linux6.6.42-1-lts-docs-bin
-	depends = linux6.6.42-1-lts-docs-bin
+	pkgdesc = Metapackage depending on linux6.6.44-3-lts-docs-bin
+	depends = linux6.6.44-3-lts-docs-bin
 
-pkgname = linux6.6.42-1-lts-bin
-	pkgdesc = The LTS Linux kernel and modules, version 6.6.42-1-lts
+pkgname = linux6.6.44-3-lts-bin
+	pkgdesc = The LTS Linux kernel and modules, version 6.6.44-3-lts
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -42,11 +42,11 @@ pkgname = linux6.6.42-1-lts-bin
 	conflicts = linux-lts
 	replaces = wireguard-lts
 
-pkgname = linux6.6.42-1-lts-headers-bin
-	pkgdesc = Headers and scripts for building modules for the LTS Linux kernel 6.6.42-1-lts
+pkgname = linux6.6.44-3-lts-headers-bin
+	pkgdesc = Headers and scripts for building modules for the LTS Linux kernel 6.6.44-3-lts
 	depends = pahole
 	conflicts = linux-lts-headers
 
-pkgname = linux6.6.42-1-lts-docs-bin
-	pkgdesc = Documentation for the LTS Linux kernel 6.6.42-1-lts
+pkgname = linux6.6.44-3-lts-docs-bin
+	pkgdesc = Documentation for the LTS Linux kernel 6.6.44-3-lts
 	conflicts = linux-lts-docs
