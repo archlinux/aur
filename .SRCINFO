@@ -1,0 +1,24 @@
+pkgbase = marsdev-git
+	pkgdesc = Cross-platform Sega Mega Drive / Super 32X / Sharp X68000 toolchain
+	pkgver = r153.d4d51e1
+	pkgrel = 1
+	url = https://github.com/andwn/marsdev
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = texinfo
+	makedepends = wget
+	makedepends = java-environment>=11
+	depends = java-environment>=11
+	provides = marsdev
+	provides = x68k-tools
+	provides = sik-tools
+	provides = flamewing-tools
+	provides = sgdk
+	options = !strip
+	options = !debug
+	options = !lto
+	source = git+https://github.com/andwn/marsdev
+	sha256sums = SKIP
+
+pkgname = marsdev-git
