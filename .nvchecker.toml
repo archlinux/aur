@@ -1,0 +1,5 @@
+[python-pgmpy]
+source = "github"
+github = "pgmpy/pgmpy"
+use_latest_release = "true"
+prefix = "v"

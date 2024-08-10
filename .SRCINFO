@@ -1,6 +1,6 @@
 pkgbase = python-pgmpy
 	pkgdesc = A library for Probabilistic Graphical Models
-	pkgver = 0.1.25
+	pkgver = 0.1.26
 	pkgrel = 1
 	url = https://github.com/pgmpy/pgmpy
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = python-pgmpy
 	depends = python-opt_einsum
 	optdepends = python-daft
 	optdepends = python-lxml
-	source = pgmpy-0.1.25.tar.gz::https://github.com/pgmpy/pgmpy/archive/v0.1.25.tar.gz
-	sha512sums = 51cc6948031ec048c3bd980f5c776b40b43a3221d4773622e2de20cbcd7e6ca54043ce1ce682da65f244aa5d1df016313ecbf8c51c979035efd784ed09450174
+	source = pgmpy-0.1.26.tar.gz::https://github.com/pgmpy/pgmpy/archive/v0.1.26.tar.gz
+	sha512sums = 916c3b82bb573672d31d016b4e1526bdb38fcfbae315f7cdf8cc1ce89340423da7ec45df6f211e6cef942bc017b30771d16aeee3997293a34bc0dbbf2f499d3e
 
 pkgname = python-pgmpy

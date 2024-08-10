@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=pgmpy
 pkgname=python-${_base}
-pkgver=0.1.25
+pkgver=0.1.26
 pkgrel=1
 pkgdesc="A library for Probabilistic Graphical Models"
 arch=(any)
@@ -13,7 +13,7 @@ optdepends=('python-daft' 'python-lxml')
 makedepends=(python-build python-installer python-setuptools python-wheel python-nbsphinx python-sphinx_rtd_theme)
 checkdepends=(python-pytest python-mock python-daft)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('51cc6948031ec048c3bd980f5c776b40b43a3221d4773622e2de20cbcd7e6ca54043ce1ce682da65f244aa5d1df016313ecbf8c51c979035efd784ed09450174')
+sha512sums=('916c3b82bb573672d31d016b4e1526bdb38fcfbae315f7cdf8cc1ce89340423da7ec45df6f211e6cef942bc017b30771d16aeee3997293a34bc0dbbf2f499d3e')
 
 prepare() {
   sed -i '/"tests"/s/tests/*tests*/' ${_base}-${pkgver}/setup.py
