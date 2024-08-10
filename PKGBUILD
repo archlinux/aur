@@ -3,7 +3,8 @@
 _name="bertini_real"
 _pkgname="python-${_name}"
 pkgname="${_pkgname}-git"
-pkgver=1.7.1.r1517.58a8faa
+pkgver=1.7.1.r113.58a8faa
+_commit="bdd3757964b8b6d03615a0d7ca045886dbe962e8"
 pkgrel=1
 pkgdesc="Python interface for Bertini_real"
 arch=('any')
@@ -26,7 +27,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${_pkgsrc}"
-  local rev_count=$(git rev-list --count HEAD)
+  local rev_count=$(git rev-list --count "${_commit}..HEAD")
   local short_hash=$(git rev-parse --short=7 HEAD)
 
   cd "${srcdir}/${_pkgsrc}/python/${_name}"
