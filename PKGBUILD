@@ -1,0 +1,47 @@
+# Maintainer: Integral <integral@member.fsf.org>
+
+pkgname=c001apk-flutter-git
+_pkgname=${pkgname%-git}
+pkgver=r4.5e8cb92
+pkgrel=1
+pkgdesc="A third-party CoolApk client written in Flutter | 使用 Flutter 开发的第三方酷安客户端"
+arch=('x86_64' 'aarch64')
+url="https://github.com/bggRGjQaUbCoE/${_pkgname}"
+license=('AGPL-3.0-or-later')
+makedepends=('git' 'flutter-tool' 'flutter-target-linux')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "${_pkgname}/"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+	cd "${_pkgname}/"
+	flutter pub get --enforce-lockfile || flutter pub get
+}
+
+build() {
+	cd "${_pkgname}/"
+	flutter build linux --no-pub --release
+}
+
+package() {
+	cd "${_pkgname}/"
+
+	case "${CARCH}" in
+	"x86_64")
+		local _dartarch="x64"
+		;;
+	"aarch64")
+		local _dartarch="arm64"
+		;;
+	esac
+
+	install -Dm755 "build/linux/${_dartarch}/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
+	install -Dm644 "${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+}

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=c001apk
+Comment=A third-party CoolApk client written in Flutter
+Exec=c001apk-flutter
+Terminal=false
+StartupNotify=false
+Categories=Network
