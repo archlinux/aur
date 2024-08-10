@@ -2,13 +2,13 @@
 
 pkgname=chessx
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform chess database and PGN viewer"
 arch=(x86_64)
 url=http://chessx.sourceforge.net
-license=(GPL2)
-depends=(qt5-svg qt5-speech)
-makedepends=(qt5-tools)
+license=(GPL-2.0-or-later)
+depends=(qt6-svg qt6-speech)
+makedepends=(qt6-tools)
 conflicts=($pkgname-svn)
 source=("https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver.tgz"
         "chessx.patch")
@@ -29,8 +29,8 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  install -Dm644 unix/$pkgname.desktop -t "$pkgdir/usr/share/applications/"
-  install -Dm644 data/images/$pkgname.png -t "$pkgdir/usr/share/pixmaps/"
-  install -Dm755 release/$pkgname $pkgdir/usr/bin/$pkgname
-  install -Dm644 ChangeLog* README* -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dvm644 unix/$pkgname.desktop -t "$pkgdir/usr/share/applications/"
+  install -Dvm644 data/images/$pkgname.png -t "$pkgdir/usr/share/pixmaps/"
+  install -Dvm755 release/$pkgname $pkgdir/usr/bin/$pkgname
+  install -Dvm644 ChangeLog* README* -t "$pkgdir/usr/share/doc/$pkgname/"
 }
