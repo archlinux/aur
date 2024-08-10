@@ -1,6 +1,6 @@
 pkgbase = bertini_real-docs-git
 	pkgdesc = XHTML documentation for Bertini_real
-	pkgver = 1.6.1.r1517.58a8faa
+	pkgver = 1.6.1.r278.58a8faa
 	pkgrel = 1
 	url = https://www.bertinireal.com
 	arch = any

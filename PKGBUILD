@@ -3,7 +3,8 @@
 _name="bertini_real"
 _pkgname="${_name}-docs"
 pkgname="${_pkgname}-git"
-pkgver=1.6.1.r1517.58a8faa
+pkgver=1.6.1.r278.58a8faa
+_commit="95a90e8bca7787731ba5b300f409bea0806fe112"
 pkgrel=1
 pkgdesc="XHTML documentation for Bertini_real"
 arch=('any')
@@ -19,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgsrc}"
-  local rev_count=$(git rev-list --count HEAD)
+  local rev_count=$(git rev-list --count "${_commit}..HEAD")
   local short_hash=$(git rev-parse --short=7 HEAD)
 
   cd "${srcdir}/${_pkgsrc}"
