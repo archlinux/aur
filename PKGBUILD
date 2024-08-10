@@ -4,13 +4,13 @@ _extname=Lockdown
 _extname_lowercase="${_extname,,}"
 _pkgname_base="mediawiki-extension-${_extname_lowercase}"
 
-_mediawiki_mainver=1.41
+_mediawiki_mainver=1.42
 _mediawiki_mainver_succ=${_mediawiki_mainver%.*}.$((${_mediawiki_mainver##*.}+1))
 _branch="REL${_mediawiki_mainver/./_}"
 
 pkgname="${_pkgname_base}-git"
 epoch=1
-pkgver=r201.f86778d
+pkgver=r205.71786f3
 pkgrel=1
 pkgdesc="MediaWiki extension implementing per-namespace group permissions"
 arch=('any')
