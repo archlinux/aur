@@ -2,12 +2,12 @@
 
 pkgname="ftxui"
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ Functional Terminal User Interface"
 arch=('any')
 url="https://github.com/ArthurSonzogni/${pkgname}"
 license=('MIT')
-makedepends=('cmake' 'gcc' 'benchmark')
+makedepends=('cmake>=3.12' 'gtest>=1.10.0' 'benchmark>=1.8.2')
 _pkgsrc="FTXUI-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('a2991cb222c944aee14397965d9f6b050245da849d8c5da7c72d112de2786b5b')
