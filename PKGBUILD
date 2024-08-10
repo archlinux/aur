@@ -9,13 +9,13 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
-pkgver=127.0.6533.72
-pkgrel=6
+pkgver=127.0.6533.99
+pkgrel=1
 _launcher_ver=8
 _system_clang=1
 # ungoogled chromium variables
 _uc_usr=ungoogled-software
-_uc_ver=127.0.6533.72-1
+_uc_ver=127.0.6533.99-1
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
 url="https://github.com/ungoogled-software/ungoogled-chromium"
@@ -49,8 +49,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         0001-ozone-wayland-implement-text_input_manager_v3.patch
         0001-ozone-wayland-implement-text_input_manager-fixes.patch
         0001-vaapi-flag-ozone-wayland.patch)
-sha256sums=('7f21f1bfc89e1a2c474463ef950b72e6401d1375cf3c17d907bf3d346720efbe'
-            '45ce5780948b1348c21b23efbc93a78ec2b706a469856a7d0e4c9afbfaea601e'
+sha256sums=('e33a57b0cab75f2fb8bd128be24da0ee18d4a0052e4cd99ad37fcb8dfc9c5875'
+            '8d3b6c61cf024642aff0ec850df6c22fc1f7f4a6529ee3276af60eaef6dcc6ba'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '0887d215c47085013d09252409964a5eedec453561db1f2b133914e349b8a0b2'
             '8f81059d79040ec598b5fb077808ec69d26d6c9cbebf9c4f4ea48b388a2596c5'
