@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=IDA Pro
+Comment=The Interactive Disassembler
+Exec=/usr/bin/ida64
+Icon=ida-pro
+Terminal=false
+Type=Application
+Categories=Development

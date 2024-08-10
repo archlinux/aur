@@ -1,0 +1,19 @@
+pkgbase = ida-pro-patched
+	pkgdesc = IDA - The Interactive Disassembler (Patched)
+	pkgver = 9.0
+	pkgrel = 1
+	url = https://hex-rays.com/ida-pro/
+	arch = x86_64
+	license = custom
+	makedepends = fakechroot
+	depends = python>=3
+	depends = python<4
+	options = !strip
+	source = ida-pro-9.0.run::https://out5.hex-rays.com/beta90_6ba923/idapro_90_x64linux.run
+	source = patch.py
+	source = ida-pro.desktop
+	sha256sums = 0b12a798f0e2ab7c5b7a795eb275136af7fce88356fddefd7f7776c6aa588372
+	sha256sums = 6c17bab8d31a7a72641a6b2d13de90ab9e26757b02124d2bc588b45d21912e89
+	sha256sums = aebb90e61e40e6cacf6493ecd8308a3389d2ebe5afd1503209250b38a0b89a95
+
+pkgname = ida-pro-patched
