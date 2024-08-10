@@ -3,7 +3,7 @@
 _pkgname=marsdev
 pkgname=${_pkgname}-git
 pkgver=r153.d4d51e1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform Sega Mega Drive / Super 32X / Sharp X68000 toolchain"
 arch=('x86_64')
 url="https://github.com/andwn/${_pkgname}"
@@ -49,5 +49,6 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   make install
+  find "${srcdir}/${_pkgname}/examples" -type f -exec install -o root -g root -Dm 644 "{}" "${pkgdir}/opt/marsdev/examples/{}" \;
   sed -i "s|${pkgdir}||g" "${pkgdir}/opt/marsdev/mars.sh"
 }
