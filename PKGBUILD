@@ -1,11 +1,11 @@
 # Maintainer: MieraK <mrkpwnz@gmail.com>
 pkgname=rmpc-git
 _pkgname=rmpc
-pkgver=0.2.1.r7.g7e6d326
+pkgver=0.2.1.r18.g19bb814
 pkgrel=1
 pkgdesc='A beautiful and configurable TUI client for MPD'
 url='https://mierak.github.io/rmpc/'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('BSD-3-Clause')
 depends=(gcc-libs glibc)
 optdepends=(
