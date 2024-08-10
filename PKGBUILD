@@ -4,7 +4,7 @@
 pkgname=jj-bin
 _pkgname=jj
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="JSON Stream Editor (command line utility)"
 arch=('x86_64')
 license=('MIT')
@@ -16,4 +16,5 @@ package() {
     cd "$srcdir/$_pkgname-$pkgver-linux-amd64"
 
 	install -Dm755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
