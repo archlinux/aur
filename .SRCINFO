@@ -1,0 +1,18 @@
+pkgbase = vortex-tracker-ii
+	pkgdesc = PT3 music editor for Windows
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://bulba.untergrund.net/vortex_e.htm
+	arch = x86_64
+	arch = i686
+	makedepends = p7zip
+	depends = wine
+	depends = winetricks
+	source = https://bulba.untergrund.net/VT1.0-32.7z
+	source = vortex-tracker-ii
+	source = vortex-tracker-ii.desktop
+	source = vortex-tracker-ii.png
+	md5sums = d582da62b836928c17127bca26910322
+
+pkgname = vortex-tracker-ii
+

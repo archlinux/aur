@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Vortex Tracker II
+Comment=PT3 music editor for Windows
+Exec=vortex-tracker-ii
+Icon=vortex-tracker-ii
+Terminal=false
+Categories=Wine;AudioVideo;Tracker;

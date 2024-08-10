@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# WINE Launcher script for Vortex Tracker II
+wine /usr/share/vortex-tracker-ii/VT.EXE "$(winepath -w "$1")"
