@@ -13,7 +13,7 @@ depends=('pi-hole-ftl' 'netcat' 'inetutils' 'iproute2' 'bind-tools' 'sudo' 'lsof
 makedepends=('git')
 conflicts=('pi-hole-server')
 install=$pkgname.install
-backup=('etc/dnsmasq.d/01-pihole.conf')
+backup=()
 
 source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 		"https://raw.githubusercontent.com/max72bra/pi-hole-standalone-archlinux-customization/master/arch-server-core-$pkgver-$pkgrel.patch"
