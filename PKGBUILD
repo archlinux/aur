@@ -42,11 +42,11 @@ depends=(
 	unzip
 	zlib
 	pybind11
+	xilinx-u280-gen3x16-xdma-base  # create_xsabin.sh in post_install, otherwise platform file empty
 )
 makedepends=(
 	cmake
 	git
-    xilinx-u280-gen3x16-xdma-base  # create_xsabin.sh
 )
 provides=($_name)
 conflicts=($_name)
@@ -57,6 +57,7 @@ options=(!debug)
 	#xocl-driver-fixes-for-current-kernels.patch::https://github.com/Xilinx/XRT/pull/8005.patch
 source=(
 	$_name::git+https://github.com/xilinx/XRT
+	#xocl-driver-fixes-for-current-kernels.patch::https://github.com/Xilinx/XRT/pull/8005.patch
 	git+https://github.com/Xilinx/dma_ip_drivers
 	git+https://github.com/serge1/ELFIO
     xrt-precompiled::https://packages.xilinx.com/artifactory/debian-packages-cache/pool/xrt_202320.2.16.204_22.04-amd64-xrt.deb
@@ -64,6 +65,7 @@ source=(
 )
 sha256sums=(
 	SKIP
+	#SKIP
 	SKIP
 	SKIP
 	SKIP
