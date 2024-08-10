@@ -2,7 +2,7 @@
 
 pkgname=liblcf
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to handle RPG Maker 2000/2003 and EasyRPG projects"
 arch=('i686' 'x86_64')
 url="https://easyrpg.org"
@@ -12,7 +12,14 @@ depends=('gcc-libs' 'expat' 'icu')
 source=("https://easyrpg.org/downloads/player/$pkgver/liblcf-$pkgver.tar.xz")
 sha256sums=('6b0d8c7fefe3d66865336406f69ddf03fe59e52b5601687265a4d1e47a25c386')
 
-build () {
+prepare() {
+  cd liblcf-$pkgver
+
+  # ICU needs c++17 nowadays
+  sed -i 's/-std=gnu++14/-std=gnu++17/g' Makefile{.am,.in}
+}
+
+build() {
   cd liblcf-$pkgver
 
   ./configure --prefix=/usr \
