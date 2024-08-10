@@ -1,4 +1,4 @@
-From 19c277e150d5d12b5eb1bd80ce8a1f6863fafbb2 Mon Sep 17 00:00:00 2001
+From a989a5c0ed590db9fe7c571e65b30881aa6108ad Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 4 Dec 2016 20:35:47 +0100
 Subject: [PATCH 24/32] Fix macro invoking moc, rcc and uic
@@ -18,7 +18,7 @@ Change-Id: I6fde86d0a3ade37b4376604a1eb6d5723eda8b4c
  2 files changed, 8 insertions(+), 4 deletions(-)
 
 diff --git a/src/corelib/Qt5CoreMacros.cmake b/src/corelib/Qt5CoreMacros.cmake
-index d91873f1bc9..8f1fb177225 100644
+index d91873f1bc..8f1fb17722 100644
 --- a/src/corelib/Qt5CoreMacros.cmake
 +++ b/src/corelib/Qt5CoreMacros.cmake
 @@ -153,8 +153,9 @@ function(qt5_create_moc_command infile outfile moc_flags moc_options moc_target
@@ -55,7 +55,7 @@ index d91873f1bc9..8f1fb177225 100644
                             MAIN_DEPENDENCY ${infile}
                             DEPENDS ${_rc_depends} "${_out_depends}" VERBATIM)
 diff --git a/src/widgets/Qt5WidgetsMacros.cmake b/src/widgets/Qt5WidgetsMacros.cmake
-index 35d2a2dc546..99f061f1b82 100644
+index 35d2a2dc54..99f061f1b8 100644
 --- a/src/widgets/Qt5WidgetsMacros.cmake
 +++ b/src/widgets/Qt5WidgetsMacros.cmake
 @@ -55,8 +55,9 @@ function(qt5_wrap_ui outfiles )
@@ -70,5 +70,5 @@ index 35d2a2dc546..99f061f1b82 100644
            MAIN_DEPENDENCY ${infile} VERBATIM)
          set_source_files_properties(${infile} PROPERTIES SKIP_AUTOUIC ON)
 -- 
-2.45.1
+2.46.0
 
