@@ -4,7 +4,7 @@
 
 _pkgname=vdhcoapp
 pkgname="$_pkgname-bin"
-pkgver=2.0.19
+pkgver=2.0.20
 pkgrel=2
 arch=('x86_64')
 pkgdesc="Companion application for Video DownloadHelper browser add-on (binary version)"
@@ -19,7 +19,7 @@ conflicts=('vdhcoapp')
 
 source=("$_pkgname-$pkgver-linux-$arch.deb::https://github.com/aclap-dev/$_pkgname/releases/download/v${pkgver}/$_pkgname-linux-$arch.deb")
 
-sha256sums=('496d341eef326f3fb6f0ddf825b309d6e18a4ddb7f1bec7fe74d9282ae94dfc4')
+sha256sums=('312423d4ad54bf8bf391efa3669a4aafa7c98d9aaf1fe4af3d5b5014c28f4730')
 
 prepare() {
   mkdir -p "$srcdir/$pkgname"
