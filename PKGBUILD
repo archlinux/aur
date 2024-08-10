@@ -2,7 +2,7 @@
 
 pkgname=squareline-studio
 _pkgname=SquareLine_Studio
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Visual drag-and-drop UI editor to create beautiful Graphical User Interfaces quickly and easily"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://squareline.io/"
 license=('custom')
 source=("https://static.squareline.io/downloads/${_pkgname}_Linux_v${pkgver//./_}.zip")
 makedepends=("unzip")
-sha256sums=('f9e583ce60d37137f8bfd45975ca982b0599874cb90f94a649719f0ca2803e7e')
+sha256sums=('2a5d2984727864fb969e95cca19ab883111a12a685d5b06f8cffe95d3e749a0a')
 noextract=("${_pkgname}_Linux_v${pkgver//./_}.zip")
 
 package() {
