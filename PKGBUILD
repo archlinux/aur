@@ -8,6 +8,7 @@ pkgdesc="A third-party CoolApk client written in Flutter | 使用 Flutter 开发
 arch=('x86_64' 'aarch64')
 url="https://github.com/bggRGjQaUbCoE/${_pkgname}"
 license=('AGPL-3.0-or-later')
+depends=('gtk3')
 makedepends=('git' 'flutter-tool' 'flutter-target-linux')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
