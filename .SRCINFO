@@ -1,6 +1,6 @@
 pkgbase = bertini2-git
 	pkgdesc = The redevelopment of Bertini in C++
-	pkgver = 2.0.alpha8.r1680.78f9986
+	pkgver = 2.0.alpha8.r76.78f9986
 	pkgrel = 1
 	url = https://github.com/bertiniteam/b2
 	arch = any
