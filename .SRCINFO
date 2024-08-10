@@ -5,8 +5,11 @@ pkgbase = wickedengine
 	url = https://wickedengine.net/
 	arch = any
 	license = MIT
+	makedepends = cmake
+	makedepends = sdl2
+	makedepends = gcc
 	depends = sdl2
-	source = https://github.com/turanszkij/wickedengine/releases/download/v0.71.532/Editor.Linux.zip
-	sha256sums = 7be7c94cfb4526f64ca0aee382aa781cf29e0d0c57c5568000d490a131d0aeaa
+	source = https://github.com/turanszkij/WickedEngine/archive/refs/tags/v0.71.532.tar.gz
+	sha256sums = aebd608c321808ed4735155800bacad02e50b8f0c505e9e13ec352dea678ecc3
 
 pkgname = wickedengine
