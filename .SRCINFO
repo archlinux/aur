@@ -1,6 +1,6 @@
 pkgbase = crawley-bin
 	pkgdesc = The unix-way web crawler
-	pkgver = 1.7.5
+	pkgver = 1.7.7
 	pkgrel = 1
 	url = https://github.com/s0rg/crawley
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = crawley-bin
 	provides = crawley
 	conflicts = crawley
 	conflicts = crawley-git
-	source_x86_64 = crawley-bin-1.7.5-x86_64.tar.gz::https://github.com/s0rg/crawley/releases/download/v1.7.5/crawley_v1.7.5_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 9dc17f73a9500ca3ded09ddd4b7e07a124dd681ad3e73773c966fceedb90cd5f
-	source_aarch64 = crawley-bin-1.7.5-aarch64.tar.gz::https://github.com/s0rg/crawley/releases/download/v1.7.5/crawley_v1.7.5_linux_arm64.tar.gz
-	sha256sums_aarch64 = 0fe81f47c01c13470a342b9c95faea954206a30e5619d473cd113e0fa9790309
+	source_x86_64 = crawley-bin-1.7.7-x86_64.tar.gz::https://github.com/s0rg/crawley/releases/download/v1.7.7/crawley_v1.7.7_linux_x86_64.tar.gz
+	sha256sums_x86_64 = c8e0c388334ec0fd4c89453dfc75b69441a348fe64e0c96d773591181368747f
+	source_aarch64 = crawley-bin-1.7.7-aarch64.tar.gz::https://github.com/s0rg/crawley/releases/download/v1.7.7/crawley_v1.7.7_linux_arm64.tar.gz
+	sha256sums_aarch64 = a2bf1db9e7be42edbdbe80175fd011d24a757091c16b72d02a33103ec4a9b2af
 
 pkgname = crawley-bin
