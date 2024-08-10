@@ -1,8 +1,10 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname="pybertini-docs"
+_name="pybertini"
+_pkgname="${_name}-docs"
 pkgname="${_pkgname}-git"
-pkgver=1.0.alpha5.r1680.78f9986
+pkgver=1.0.alpha5.r13.78f9986
+_commit="436c6ec507594b13edf67212256f90d2b83fa121"
 pkgrel=1
 pkgdesc="HTML documentation for pybetini"
 arch=('any')
@@ -17,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgsrc}"
-  local rev_count=$(git rev-list --count HEAD)
+  local rev_count=$(git rev-list --count "${_commit}..HEAD")
   local short_hash=$(git rev-parse --short=7 HEAD)
 
   cd "${srcdir}/${_pkgsrc}/python"
@@ -39,8 +41,8 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}/python"
-  find "examples" -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/pybertini/{}" \;
+  find "examples" -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/${_name}/{}" \;
   
   cd "docs/build"
-  find "html" -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/pybertini/{}" \;
+  find "html" -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/${_name}/{}" \;
 }
