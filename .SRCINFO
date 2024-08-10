@@ -1,0 +1,11 @@
+pkgbase = numi-bin
+	pkgdesc = Beautiful calculator app for macOS, Linux & Windows
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://numi.app
+	arch = x86_64
+	license = MIT
+	source = https://s3.numi.app/desktop/v0.4.0/numi-v0.4.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = SKIP
+
+pkgname = numi-bin
