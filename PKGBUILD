@@ -1,13 +1,14 @@
-# Maintainer: Myrddin Wyllt <darknesseatsall at aim dot com>
+# Maintainer: Adam Honse <calcprogrammer1@gmail.com>
+# Contributor: Myrddin Wyllt <darknesseatsall at aim dot com>
 
 pkgname=openrgb-git
-pkgver=r2626.f44cd691
+pkgver=r4155.27128373
 pkgrel=1
 pkgdesc="Configuration utility for RGB lights supporting motherboards, RAM, & peripherals"
 arch=('x86_64')
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
 license=('GPL2')
-depends=('qt5-tools' 'libusb' 'hidapi' 'mbedtls')
+depends=('qt5-tools' 'libusb' 'hidapi' 'mbedtls2')
 makedepends=('git')
 optdepends=('i2c-tools: Motherboard & RAM access')
 provides=('openrgb')
@@ -26,7 +27,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/OpenRGB"
-    qmake OpenRGB.pro
+    qmake OpenRGB.pro PREFIX=/usr
     make -j$(nproc)
 }
 
