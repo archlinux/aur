@@ -9,7 +9,6 @@ pkgbase = cargo-mommy
 	arch = aarch64
 	license = Apache-2.0
 	license = MIT
-	makedepends = git
 	depends = gcc-libs
 	depends = glibc
 	depends = cargo
