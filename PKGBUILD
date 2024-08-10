@@ -2,7 +2,8 @@
 
 _pkgname="paramotopy"
 pkgname="${_pkgname}-git"
-pkgver=1.0.3.7.r444.48174f3
+pkgver=1.0.3.7.r15.48174f3
+_commit="36121881a137cf29c7f662bd792a0e823d5742f2"
 pkgrel=1
 pkgdesc="Parallel parameter homotopy through Bertini"
 arch=('any')
@@ -32,7 +33,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${_pkgsrc}"
-  local rev_count=$(git rev-list --count HEAD)
+  local rev_count=$(git rev-list --count "${_commit}..HEAD")
   local short_hash=$(git rev-parse --short=7 HEAD)
 
   cd "${srcdir}/${_pkgsrc}"
