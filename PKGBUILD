@@ -14,7 +14,7 @@ conflicts=('maid' 'maid-git')
 provides=('maid')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=("46d0ea4458a708dcdddd35db91bd900bfe4b9026f228b121406b04dd82c4f145")
-options=(!strip)
+options=(!strip !debug)
 
 package() {
   mkdir -p "$pkgdir/usr"
