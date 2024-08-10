@@ -2,7 +2,7 @@
 
 pkgname=ros2-jazzy-base
 pkgver=2024.07.05
-pkgrel=4
+pkgrel=5
 _rosdist="Jazzy Jalisco"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -53,7 +53,9 @@ prepare() {
     git -C "$srcdir/ros2/src/ros/urdfdom" cherry-pick -n 483ff92a7e631283117ca3d421d58e146c8b6d21
 
     # https://github.com/ros/urdfdom_headers/pull/79
-    git -C "$srcdir/ros2/src/ros/urdfdom_headers" cherry-pick -n 9fb4517d82a0f925247b5afd3e5eace3ecfc6c26
+    git -C "$srcdir/ros2/src/ros/urdfdom_headers" remote add oysstu "https://github.com/oysstu/urdfdom_headers.git"
+    git -C "$srcdir/ros2/src/ros/urdfdom_headers" fetch --all
+    git -C "$srcdir/ros2/src/ros/urdfdom_headers" merge oysstu/fix/pkgconfig_relocatable
 }
 
 build() {
