@@ -1,17 +1,20 @@
 pkgname=ardupilot-mission-planner
-pkgver=1.3.81
+pkgver=1.3.82
 epoch=2
-pkgrel=5  # Todo: reset to 1 when changing the version!
+pkgrel=1
 pkgdesc="Full-featured ground station application for the ArduPilot open source autopilot project"
 arch=('x86_64')
 url="https://github.com/ArduPilot/MissionPlanner"
 license=("GPL3")
 depends=('mono')
 
-source=("https://firmware.ardupilot.org/Tools/MissionPlanner/MissionPlanner-${pkgver}.zip" ${pkgname}.desktop)
+source=(
+  "https://firmware.ardupilot.org/Tools/MissionPlanner/MissionPlanner-${pkgver}.zip"
+  ${pkgname}.desktop
+)
 
 sha256sums=(
-  '197fcbba1e8c3c3ccc0afc568d4565cd253424618f0ecdeb69b04a8309c86cbf'
+  'e79e1f143c47328e23577cab3dd1a00d843a5de5be4d675520890640805dac24'
   'e2b0bde2cf9dd598103c2d6babeeae82c72901cdff19b8db1fe579d176a6139f'
 )
 
