@@ -1,12 +1,11 @@
 # Maintainer: Nriver <6752679+Nriver@users.noreply.github.com>
 pkgname="trilium-next-server-bin"
 pkgver=0.90.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Trilium Notes Server Next version"
 arch=('x86_64')
 url="https://github.com/TriliumNext/Notes"
 license=('AGPL3')
-source=("$pkgname-$pkgver.zip::https://github.com/Nriver/trilium-translation/releases/download/v$pkgver/trilium-cn-linux-x64-server.zip")
 source=("$pkgname-$pkgver.zip::https://github.com/TriliumNext/Notes/releases/download/v$pkgver/trilium-linux-x64-server-$pkgver.tar.xz")
 sha256sums=('SKIP')
 
