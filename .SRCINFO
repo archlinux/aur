@@ -1,0 +1,16 @@
+pkgbase = rsls-git
+	pkgdesc = ls with icons, written in Rust
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/joeleehen/rsls
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = ttf-nerd-fonts-symbols
+	source = rsls::git+https://github.com/joeleehen/rsls.git#branch=master
+	sha256sums = SKIP
+
+pkgname = rsls-git
