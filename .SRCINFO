@@ -1,15 +1,14 @@
 pkgbase = ttf-umeplus
 	pkgdesc = Modified Ume and M+ fonts for Japanese
 	pkgver = 20180604
-	pkgrel = 2
+	pkgrel = 3
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = any
 	license = custom
 	depends = fontconfig
 	depends = xorg-mkfontscale
-	source = https://osdn.net/users/utuhiro/pf/utuhiro/dl/umeplus-fonts-20180604.tar.xz
+	source = https://github.com/utuhiro78/modified-fonts/raw/main/umeplus-fonts-20180604.tar.xz
 	md5sums = 43f5864d9035706f8320849e7011d6e7
 	b2sums = 5b0f2677fca36a59886f389189256c78276fef8a93215090505431aa22df220e0837ee230126d4ccc019c8c252a422406e80413aa38a7a775797a24c4f88cd96
 
 pkgname = ttf-umeplus
-
