@@ -1,0 +1,23 @@
+diff -u --recursive --text Zotero_linux-x86_64.orig/zotero Zotero_linux-x86_64/zotero
+--- Zotero_linux-x86_64.orig/zotero	2024-02-26 04:17:15
++++ Zotero_linux-x86_64/zotero	2024-02-27 10:45:07
+@@ -16,5 +16,4 @@
+ # Use wayland backend when available
+ export MOZ_ENABLE_WAYLAND=1
+ 
+-CALLDIR="$(dirname "$(readlink -f "$0")")"
+-"$CALLDIR/zotero-bin" -app "$CALLDIR/app/application.ini" "$@"
++exec "/usr/lib/zotero/zotero-bin" -app "/usr/lib/zotero/app/application.ini" "$@"
+diff -u --recursive --text Zotero_linux-x86_64.orig/zotero.desktop Zotero_linux-x86_64/zotero.desktop
+--- Zotero_linux-x86_64.orig/zotero.desktop	2024-02-26 04:17:15
++++ Zotero_linux-x86_64/zotero.desktop	2024-02-27 10:45:05
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Name=Zotero
+-Exec=bash -c "$(dirname $(realpath $(echo %k | sed -e 's/^file:\\/\\///')))/zotero -url %U"
+-Icon=zotero.ico
++Exec=/usr/lib/zotero/zotero -url %U
++Icon=zotero
+ Type=Application
+ Terminal=false
+ Categories=Office;
