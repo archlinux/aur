@@ -1,0 +1,18 @@
+pkgbase = cosmosmash
+	pkgdesc = an Astrosmash clone.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://perso.b2b2c.ca/~sarrazip/dev/cosmosmash.html
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_mixer
+	depends = sdl2_gfx
+	depends = libflatzebra
+	source = http://perso.b2b2c.ca/~sarrazip/dev/cosmosmash-1.5.0.tar.gz
+	sha512sums = 3be4b535d68eca185d3f48ff04c11c912fdcbc17470848650b20410030c7619f9dcffaeaf3bacb3a95eb37c5944724af7fc9978613c3252af1ec725504129c23
+
+pkgname = cosmosmash
