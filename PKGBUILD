@@ -1,6 +1,6 @@
 # Maintainer: Robert Labudda <contact+aur-pter@vonshednob.cc>
 pkgname="pter"
-pkgver='3.16.3'
+pkgver='3.17.0'
 pkgrel='1'
 pkgdesc="Console UI to manage your todo.txt file(s)"
 url="https://codeberg.org/vonshednob/${pkgname}/"
@@ -14,7 +14,7 @@ makedepends=('python-setuptools'
              'python-installer'
              'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('c5034d48f0b6a4fbeb73fbfb8fe2cabddad15578d261a2870648f1f819d49cc1')
+sha256sums=('2f961f4e0e3152f215df46c06914f3e343a9e2751b0e121a5bf5bf9d4394bb1c')
 
 build() {
     cd "${pkgname}-${pkgver}"
