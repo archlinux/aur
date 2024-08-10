@@ -1,6 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname="bertini2-docs"
+_name="bertini2"
+_pkgname="${_name}-docs"
 pkgname="${_pkgname}-git"
 pkgver=2.0.alpha8.r76.78f9986
 _commit="d21f2b3cbd93cd6dbae9b9306b8d7b0e765a5a91"
@@ -29,12 +30,12 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgsrc}/core/doc"
-  doxygen bertini.doxy.config
+  doxygen "bertini.doxy.config"
 }
 
 package() {
   cd "${srcdir}/${_pkgsrc}/core/doc/generated_documentation/doc.bertini"
-  install -d "${pkgdir}/usr/share/doc/bertini2/html"
-  find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/bertini2/html/{}" \;
-  rm -f "${pkgdir}/usr/share/doc/bertini2/html/.gitignore"
+  install -d "${pkgdir}/usr/share/doc/${_name}/html"
+  find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/${_name}/html/{}" \;
+  rm -f "${pkgdir}/usr/share/doc/${_name}/html/.gitignore"
 }
