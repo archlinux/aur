@@ -9,8 +9,10 @@ pkgbase = rubygems-user
 	checkdepends = ruby-webrick
 	checkdepends = git
 	checkdepends = cmake
+	makedepends = rubygems
 	depends = ruby
 	provides = rubygems=3.5.6
+	provides = ruby-rubygems
 	conflicts = rubygems
 	options = !emptydirs
 	source = https://github.com/rubygems/rubygems/archive/refs/tags/v3.5.6.tar.gz
