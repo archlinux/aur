@@ -2,7 +2,7 @@
 
 pkgname=ros2-jazzy-base
 pkgver=2024.07.05
-pkgrel=3
+pkgrel=4
 _rosdist="Jazzy Jalisco"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -51,6 +51,9 @@ prepare() {
 
     # https://github.com/ros/urdfdom/pull/205
     git -C "$srcdir/ros2/src/ros/urdfdom" cherry-pick -n 483ff92a7e631283117ca3d421d58e146c8b6d21
+
+    # https://github.com/ros/urdfdom_headers/pull/79
+    git -C "$srcdir/ros2/src/ros/urdfdom_headers" cherry-pick -n 9fb4517d82a0f925247b5afd3e5eace3ecfc6c26
 }
 
 build() {
