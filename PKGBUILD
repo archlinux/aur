@@ -1,7 +1,7 @@
 # Maintainer: Furdox <furdox at furdox dot tk>
 pkgname=brawlcrate-wine-bin
 pkgver=0.42h1
-pkgrel=1
+pkgrel=2
 pkgdesc="BrawlCrate - An updated fork of BrawlBox (uses Wine)"
 arch=('x86_64')
 url="https://github.com/soopercool101/BrawlCrate"
@@ -26,12 +26,12 @@ prepare() {
 }
 
 package() {
-    # Run the self-extracting executable with Wine to extract its contents
+    # Run the self-extracting executable with Wine to extract its contents. No longer needed.
     # WINEPREFIX="${_wineprefix}" WINEARCH=win32 wine "${srcdir}/BrawlCrate.v${pkgver}.x86.exe"
 
     # Move all files from the extraction directory to the package directory
     install -d "${pkgdir}/opt/brawlcrate"
-    cp -r "${HOME}/src/." "${pkgdir}/opt/brawlcrate/"
+    cp -r "${srcdir}/." "${pkgdir}/opt/brawlcrate/"
 
     # Create a launcher script
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/brawlcrate" <<EOF
@@ -143,10 +143,13 @@ build() {
 # Clean up
 clean() {
     echo "Running cleanup..."
-    rm -rf "${srcdir}"/*
-    rm -rf "${pkgdir}"/*
-    rm -rf "${HOME}/src"
-    rm -rf "${HOME}/pkg"
+    rm -rf "${srcdir}/*"
+    rm -rf "${pkgdir}/*"
+    
+    # Currently doesn't work.
+    rm -f "${pkgdir}/../BrawlCrate.v${pkgver}.x86.exe"
+    # rm -f "${pkgdir}/../brawlcrate-wine-bin-${pkgver}-${pkgrel}-x86_64.pkg.tar"
+    
     echo "Cleanup done."
 }
 
