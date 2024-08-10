@@ -1,7 +1,7 @@
 # Maintainer: Felipe Contreras <felipe.contreras@gmail.com>
 
 pkgname='rubygems-user'
-pkgver=3.5.6
+pkgver=3.5.17
 pkgrel=1
 pkgdesc='Package management framework for Ruby (user default)'
 arch=('any')
@@ -14,9 +14,9 @@ options=('!emptydirs')
 source=("https://github.com/rubygems/rubygems/archive/refs/tags/v${pkgver}.tar.gz"
 	'Gem.default_install.patch'
 	'operating_system.rb')
-sha512sums=('251f20e2ccb1969ecc5c337aef7dc20a767eaee5096c7d111c5139220039bb2ac64037d8e55f43f35e8a5698696390788d3564d9f999a80dfd6a465795fa60b2'
-	'84ac1ea8ccaa350db8d9176d357d0d09f95e32411887c45f939e9d8dd6be6a55bb4a4087580d4a3bd9c2aeee65dc0313088e96ecac5653fd95f0105060fd8e53'
-	'3462dfe94f51d31dd616fae4107c7410d8513323dd8dffd657271a31363abd3b87d2150cda47fd9b1a8b9b63b4c57c03740e26941ac6ef55be9848fe56db8af4')
+sha512sums=('1c34f881c5130394bc443f573421e8d04b435fb268723d67215ed4c4b6f2aec64bb74ad7c7f27950d146f8077c8ecd07841abf5af620ea4e6a8deed51c50f7d9'
+            '84ac1ea8ccaa350db8d9176d357d0d09f95e32411887c45f939e9d8dd6be6a55bb4a4087580d4a3bd9c2aeee65dc0313088e96ecac5653fd95f0105060fd8e53'
+            '3462dfe94f51d31dd616fae4107c7410d8513323dd8dffd657271a31363abd3b87d2150cda47fd9b1a8b9b63b4c57c03740e26941ac6ef55be9848fe56db8af4')
 
 provides=("rubygems=$pkgver" 'ruby-rubygems')
 conflicts=(rubygems)
