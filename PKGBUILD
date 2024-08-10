@@ -2,7 +2,7 @@
 _base=nbQA
 pkgname=${_base,,}
 pkgdesc="Run any standard Python code quality tool on a Jupyter Notebook"
-pkgver=1.8.5
+pkgver=1.8.7
 pkgrel=1
 arch=(any)
 url="https://github.com/${_base}-dev/${_base}"
@@ -21,7 +21,7 @@ optdepends=('python-black: toolchain support'
   'pyupgrade: toolchain support'
   'python-ruff: toolchain support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('5161b92060d326092c5e1f4eb747467f3fd9c0f649d75e21ca32f08b250e37c4af66cdf30c3244002ccd0ff5eb59fb4d95026608dcd1850cb0f996fd9657f249')
+sha512sums=('dd33a5e0f22047c2bea202ea45146386b3561627503db23cdf21c4eb71f33b7ed9a916a99cd1351e44a02c70d1788aa7e252f06dccdcdd5957e50d3a87a349e8')
 
 build() {
   cd ${_base}-${pkgver}
@@ -33,10 +33,10 @@ check() {
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest tests \
-  --ignore=tests/test_return_code.py \
-  --ignore=tests/test_version.py \
-  --ignore=tests/tools/test_ruff_works.py \
-  -k 'not successive_runs_using_black and not pylint_works'
+    --ignore=tests/test_return_code.py \
+    --ignore=tests/test_version.py \
+    --ignore=tests/tools/test_ruff_works.py \
+    -k 'not successive_runs_using_black'
 }
 
 package() {
