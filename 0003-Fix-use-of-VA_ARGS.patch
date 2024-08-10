@@ -1,0 +1,26 @@
+From bf3de1852ccae4c127cb5e3738697c46ab6e45a2 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sat, 10 Aug 2024 17:51:39 +0200
+Subject: [PATCH 3/3] Fix use of VA_ARGS
+
+This patch is taken from https://raw.githubusercontent.com/msys2/MINGW-packages/master/mingw-w64-libmariadbclient/003-gcc-fix-use_VA_ARGS.patch.
+---
+ libmariadb/secure/schannel_certs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libmariadb/secure/schannel_certs.c b/libmariadb/secure/schannel_certs.c
+index c8ff3753..d5992f8a 100644
+--- a/libmariadb/secure/schannel_certs.c
++++ b/libmariadb/secure/schannel_certs.c
+@@ -64,7 +64,7 @@ static DWORD get_last_error()
+ #define FAIL(...) \
+    do{\
+      status = get_last_error();\
+-     ma_format_win32_error(errmsg, errmsg_len, status, __VA_ARGS__);\
++     ma_format_win32_error(errmsg, errmsg_len, status, ##__VA_ARGS__);\
+      goto cleanup;\
+   } while (0)
+ 
+-- 
+2.46.0
+

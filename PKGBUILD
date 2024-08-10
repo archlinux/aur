@@ -7,26 +7,26 @@
 # All patches are managed at https://github.com/Martchus/mariadb-connector-c
 
 pkgname=mingw-w64-mariadb-connector-c
-pkgver=3.3.1
-pkgrel=2
-pkgdesc='MariaDB Connector/C is used to connect applications developed in C/C++ to MariaDB and MySQL databases (mingw-w64)'
+pkgver=3.3.10
+pkgrel=1
+pkgdesc='MariaDB client libraries (mingw-w64)'
 arch=('any')
 url='https://mariadb.com/kb/en/mariadb/about-mariadb-connector-c'
-license=('LGPL')
+license=('LGPL-2.1-or-later')
 replaces=('mingw-w64-libmariadbclient')
 conflicts=('mingw-w64-libmariadbclient')
 provides=("mingw-w64-libmariadbclient=$pkgver")
-depends=('mingw-w64-crt' 'mingw-w64-openssl' 'mingw-w64-zlib' 'mingw-w64-curl')
-makedepends=('mingw-w64-cmake')
+depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-curl')
+makedepends=('mingw-w64-cmake' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs')
-source=(
-  "https://github.com/mariadb-corporation/mariadb-connector-c/archive/refs/tags/v$pkgver.tar.gz"
-  '0001-Fix-mingw-w64-build.patch'
-  '0002-Enable-pkg-config-for-mingw-w64-build.patch'
-)
-sha256sums=('be0c15661d5984afdce313dd760cd725806c59f7e9891e344e4871c1805395e9'
-            '148983c92018f684f6e351e23b273ab3f4f2a51a5e65bce6150c0ddd8dc30654'
-            '6bd3ed4c80a2756cc59129011b95e67cacb3b64832b48b9898aa5cb44dab6214')
+source=("https://github.com/mariadb-corporation/mariadb-connector-c/archive/refs/tags/v$pkgver.tar.gz"
+        '0001-Fix-mingw-w64-build.patch'
+        '0002-Fix-prototype.patch'
+        '0003-Fix-use-of-VA_ARGS.patch')
+sha256sums=('0a79088af2fbde4dbe6655dbc51bbb272b606c0d9116745697e08879e70198a7'
+            '89a8f6d778763a241050fe501147507020cc00cbb5690d47c2d66dfab18c70e0'
+            '248a7539e9bda0538992cde14e3f3b81b8db9eb90af1cce9830e28e291782f3d'
+            'f0d1807e6610c25ab3badd99e542e9e10e50b2152220ac86a0a5e6f0163da185')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -38,18 +38,29 @@ prepare() {
 }
 
 build() {
-  unset LDFLAGS
   cd "$srcdir/mariadb-connector-c-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake \
-      -DCMAKE_BUILD_TYPE=RELEASE \
+    ${_arch}-cmake -G Ninja \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DINSTALL_LIBDIR=lib \
       -DWITH_EXTERNAL_ZLIB=ON \
-      -DWITH_SSL=OPENSSL \
       -DWITH_MYSQLCOMPAT=ON \
+      -DWITH_SSL="SCHANNEL" \
       -DWITH_UNIT_TESTS=OFF \
+      -DCLIENT_PLUGIN_AUTH_GSSAPI_CLIENT=STATIC \
+      -DCLIENT_PLUGIN_DIALOG=STATIC \
+      -DCLIENT_PLUGIN_REMOTE_IO=STATIC \
+      -DCLIENT_PLUGIN_PVIO_NPIPE=STATIC \
+      -DCLIENT_PLUGIN_PVIO_SHMEM=STATIC \
+      -DCLIENT_PLUGIN_CLIENT_ED25519=STATIC \
+      -DCLIENT_PLUGIN_CACHING_SHA2_PASSWORD=STATIC \
+      -DCLIENT_PLUGIN_SHA256_PASSWORD=STATIC \
+      -DCLIENT_PLUGIN_MYSQL_CLEAR_PASSWORD=STATIC \
+      -DCLIENT_PLUGIN_MYSQL_OLD_PASSWORD=STATIC \
+      -DCLIENT_PLUGIN_ZSTD=STATIC \
       ..
-    make
+    cmake --build .
     popd
   done
 }
@@ -57,10 +68,12 @@ build() {
 package() {
   for _arch in ${_architectures}; do
     cd "$srcdir/mariadb-connector-c-${pkgver}/build-${_arch}"
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" cmake --install .
     ln -s mariadb "$pkgdir"/usr/${_arch}/include/mysql
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/lib/plugin/*.dll
+    if [[ -d $pkgdir/usr/$_arch/lib/plugin ]]; then
+      ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/lib/plugin/*.dll
+    fi
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }

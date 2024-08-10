@@ -1,92 +1,33 @@
-From 16d52c5ed320dcd7912d4e23c538608a42f32d04 Mon Sep 17 00:00:00 2001
-From: Tilmann Meyer <allescrafterx@gmail.com>
-Date: Fri, 17 Apr 2020 02:12:23 +0200
-Subject: [PATCH 1/2] Fix mingw-w64 build
+From f1095a1c3cc81a3ab05e92dd9fea23756409ae18 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sat, 10 Aug 2024 17:49:11 +0200
+Subject: [PATCH 1/3] Fix mingw-w64 build
 
+This patch is taken from https://raw.githubusercontent.com/msys2/MINGW-packages/master/mingw-w64-libmariadbclient/001-mingw-build.patch.
 ---
- CMakeLists.txt                | 35 +++++++++++++++++++---------------
- cmake/install.cmake           |  4 ++--
- cmake/symlink.cmake           |  2 +-
- include/ma_global.h           |  4 ++--
- include/mysql.h               |  6 +-----
- include/mysql/client_plugin.h |  2 +-
- libmariadb/CMakeLists.txt     | 36 +++++++++++++++++------------------
- plugins/auth/CMakeLists.txt   |  2 +-
- plugins/io/CMakeLists.txt     |  2 +-
- 9 files changed, 46 insertions(+), 47 deletions(-)
+ CMakeLists.txt            |  2 +-
+ cmake/install.cmake       |  6 +++---
+ libmariadb/CMakeLists.txt | 11 ++++++++++-
+ 3 files changed, 14 insertions(+), 5 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 2584e93..6c67324 100644
+index b987bc7f..dbf008d8 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -3,6 +3,9 @@
- # This is the LGPL libmariadb project.
- 
- CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12 FATAL_ERROR)
-+
-+add_definitions(-D_WIN32_WINNT=0x0601)
-+
- INCLUDE(CheckFunctionExists)
- IF(COMMAND CMAKE_POLICY)
-   SET(NEW_POLICIES CMP0003 CMP0022 CMP0023 CMP0077 CMP0069 CMP0075)
-@@ -51,20 +54,16 @@ MACRO(ADD_OPTION _name _text _default)
- ENDMACRO()
- 
- ### Options ###
--IF(NOT WIN32)
--  ADD_OPTION(WITH_MYSQLCOMPAT "creates libmysql* symbolic links" OFF)
--ELSE()
--  ADD_OPTION(WITH_MSI "Build MSI installation package" OFF)
--  ADD_OPTION(WITH_SIGNCODE "digitally sign files" OFF)
--  ADD_OPTION(WITH_RTC "enables run time checks for debug builds" OFF)
--  ADD_OPTION(WITH_ICONV "enables character set conversion" OFF)
--ENDIF()
--
-+ADD_OPTION(WITH_MYSQLCOMPAT "creates libmysql* symbolic links" OFF)
-+ADD_OPTION(WITH_MSI "Build MSI installation package" OFF)
-+ADD_OPTION(WITH_SIGNCODE "digitally sign files" OFF)
-+ADD_OPTION(WITH_RTC "enables run time checks for debug builds" OFF)
- ADD_OPTION(WITH_UNIT_TESTS "build test suite" ON)
- ADD_OPTION(WITH_DYNCOL "Enables support of dynamic columns" ON)
- ADD_OPTION(WITH_EXTERNAL_ZLIB "Enables use of external zlib" OFF)
- ADD_OPTION(WITH_CURL "Enables use of curl" ON)
- ADD_OPTION(WITH_SSL "Enables use of TLS/SSL library" ON)
-+ADD_OPTION(WITH_ICONV "enables character set conversion" OFF)
- ###############
- 
- INCLUDE(${CC_SOURCE_DIR}/cmake/misc.cmake)
-@@ -251,14 +250,20 @@ IF(UNIX)
-   SET(CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} ${LIBNSL} ${LIBBIND} ${LIBICONV} ${ZLIB_LIBRARY} 
-       ${LIBSOCKET} ${CMAKE_DL_LIBS} ${LIBM} ${LIBPTHREAD})
-   SET(SYSTEM_LIBS ${SYSTEM_LIBS} ${LIBNSL} ${LIBBIND} ${LIBICONV} 
--    ${LIBSOCKET} ${CMAKE_DL_LIBS} ${LIBM} ${LIBPTHREAD})
--  #remove possible dups from required libraries
--  LIST(LENGTH CMAKE_REQUIRED_LIBRARIES rllength)
--  IF(${rllength} GREATER 0)
--    LIST(REMOVE_DUPLICATES CMAKE_REQUIRED_LIBRARIES)
--  ENDIF()
-+    ${LIBSOCKET} ${CMAKE_DL_LIBS} ${LIBDL} ${LIBM} ${LIBPTHREAD})
+@@ -428,7 +428,7 @@ ENDIF()
+ INCLUDE(${CC_SOURCE_DIR}/plugins/CMakeLists.txt)
+ ADD_SUBDIRECTORY(include)
+ ADD_SUBDIRECTORY(libmariadb)
+-IF((NOT WIN32) OR CYGWIN)
++IF((NOT MSVC) OR CYGWIN)
+   ADD_SUBDIRECTORY(mariadb_config)
  ENDIF()
  
-+IF(MINGW)
-+  FIND_PACKAGE(Threads)
-+  LIST(APPEND CMAKE_REQUIRED_LIBRARIES ${LIBPTHREAD})
-+  LIST(APPEND SYSTEM_LIBS ${LIBPTHREAD})
-+ENDIF()
-+
-+#remove possible dups from required libraries
-+LIST(LENGTH CMAKE_REQUIRED_LIBRARIES rllength)
-+IF(${rllength} GREATER 0)
-+  LIST(REMOVE_DUPLICATES CMAKE_REQUIRED_LIBRARIES)
-+ENDIF()
- 
- IF(CMAKE_HAVE_PTHREAD_H)
-   SET(CMAKE_REQUIRED_INCLUDES pthread.h)
 diff --git a/cmake/install.cmake b/cmake/install.cmake
-index 90bae8b..0fdde87 100644
+index 90bae8b5..d9797138 100644
 --- a/cmake/install.cmake
 +++ b/cmake/install.cmake
-@@ -62,13 +62,13 @@ ENDIF()
+@@ -62,11 +62,11 @@ ENDIF()
  #
  
  SET(INSTALL_BINDIR_DEFAULT "bin")
@@ -94,208 +35,42 @@ index 90bae8b..0fdde87 100644
 +SET(INSTALL_LIBDIR_DEFAULT "lib")
  SET(INSTALL_PCDIR_DEFAULT "lib/pkgconfig")
  SET(INSTALL_INCLUDEDIR_DEFAULT "include/mariadb")
- SET(INSTALL_DOCDIR_DEFAULT "docs")
- SET(INSTALL_MANDIR_DEFAULT "man")
+-SET(INSTALL_DOCDIR_DEFAULT "docs")
+-SET(INSTALL_MANDIR_DEFAULT "man")
++SET(INSTALL_DOCDIR_DEFAULT "share/docs/mariadb")
++SET(INSTALL_MANDIR_DEFAULT "share/man")
  IF(NOT IS_SUBPROJECT)
--  SET(INSTALL_PLUGINDIR_DEFAULT "lib/mariadb/plugin")
-+  SET(INSTALL_PLUGINDIR_DEFAULT "lib/plugin")
+   SET(INSTALL_PLUGINDIR_DEFAULT "lib/mariadb/plugin")
  ELSE()
- ENDIF()
- SET(LIBMARIADB_STATIC_DEFAULT "mariadbclient")
-diff --git a/cmake/symlink.cmake b/cmake/symlink.cmake
-index c1c883d..cdca6dc 100644
---- a/cmake/symlink.cmake
-+++ b/cmake/symlink.cmake
-@@ -7,7 +7,7 @@
- #
- MACRO(create_symlink symlink_name target install_path)
- # According to cmake documentation symlinks work on unix systems only
--IF(UNIX)
-+IF(UNIX OR MINGW)
-   # Get target components 
-   ADD_CUSTOM_COMMAND(
-     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${symlink_name}
-diff --git a/include/ma_global.h b/include/ma_global.h
-index d6077f3..d68f921 100644
---- a/include/ma_global.h
-+++ b/include/ma_global.h
-@@ -34,7 +34,7 @@
- #define snprintf _snprintf
- #endif
- #endif
--#define STDCALL __stdcall 
-+#define STDCALL
- #endif
- 
- #include <ma_config.h>
-@@ -440,7 +440,7 @@ typedef SOCKET_SIZE_TYPE size_socket;
- #define NO_PISAM		/* Not needed anymore */
- #define NO_MISAM		/* Not needed anymore */
- #define NO_HASH			/* Not needed anymore */
--#ifdef _WIN32
-+#if defined(_WIN32) && !defined(__MINGW32__)
- #define NO_DIR_LIBRARY		/* Not standard dir-library */
- #define USE_MY_STAT_STRUCT	/* For my_lib */
- #ifdef _MSC_VER
-diff --git a/include/mysql.h b/include/mysql.h
-index 8a3884c..a2bc3cd 100644
---- a/include/mysql.h
-+++ b/include/mysql.h
-@@ -39,11 +39,7 @@ extern "C" {
- typedef char my_bool;
- typedef unsigned long long my_ulonglong;
- 
--#if !defined(_WIN32)
- #define STDCALL
--#else
--#define STDCALL __stdcall
--#endif
- 
- #ifndef my_socket_defined
- #define my_socket_defined
-@@ -471,7 +467,7 @@ struct st_mysql_client_plugin
-   MYSQL_CLIENT_PLUGIN_HEADER
- };
- 
--struct st_mysql_client_plugin *
-+struct st_mysql_client_plugin * STDCALL
- mysql_load_plugin(struct st_mysql *mysql, const char *name, int type,
-                   int argc, ...);
- struct st_mysql_client_plugin * STDCALL
-diff --git a/include/mysql/client_plugin.h b/include/mysql/client_plugin.h
-index 262fd4a..9a0e1e6 100644
---- a/include/mysql/client_plugin.h
-+++ b/include/mysql/client_plugin.h
-@@ -194,7 +194,7 @@ typedef struct st_mysql_client_plugin_REMOTEIO
-   @retval
-   a pointer to the loaded plugin, or NULL in case of a failure
- */
--struct st_mysql_client_plugin *
-+struct st_mysql_client_plugin * STDCALL
- mysql_load_plugin(struct st_mysql *mysql, const char *name, int type,
-                   int argc, ...);
- 
 diff --git a/libmariadb/CMakeLists.txt b/libmariadb/CMakeLists.txt
-index 7faf827..43ab846 100644
+index 43ed67b4..82068487 100644
 --- a/libmariadb/CMakeLists.txt
 +++ b/libmariadb/CMakeLists.txt
-@@ -405,7 +405,7 @@ ENDIF()
- FILE(WRITE ${CC_BINARY_DIR}/manpages.list "${MARIADB_LIB_SYMBOLS};${MYSQL_LIB_SYMBOLS}")
- 
- IF(WIN32)
--  SET_VERSION_INFO("TARGET:libmariadb"
-+  SET_VERSION_INFO("TARGET:mariadb"
-                    "FILE_TYPE:VFT_DLL"
-                    "SOURCE_FILE:libmariadb/libmariadb.c"
-                    "ORIGINAL_FILE_NAME:libmariadb.dll"
-@@ -417,30 +417,28 @@ ADD_LIBRARY(mariadbclient STATIC  ${MARIADB_OBJECTS} ${EMPTY_FILE})
- TARGET_LINK_LIBRARIES(mariadbclient ${SYSTEM_LIBS})
- 
- IF(UNIX)
--  ADD_LIBRARY(libmariadb SHARED ${libmariadb_RC} ${MARIADB_OBJECTS} ${EMPTY_FILE})
--  SET_TARGET_PROPERTIES(libmariadb PROPERTIES COMPILE_FLAGS "${CMAKE_SHARED_LIBRARY_C_FLAGS}")
-+  ADD_LIBRARY(mariadb SHARED ${mariadb_RC} ${MARIADB_OBJECTS} ${EMPTY_FILE})
-+  SET_TARGET_PROPERTIES(mariadb PROPERTIES COMPILE_FLAGS "${CMAKE_SHARED_LIBRARY_C_FLAGS}")
- ELSE()
--  ADD_LIBRARY(libmariadb SHARED ${libmariadb_RC} ${MARIADB_OBJECTS} mariadbclient.def)
--  SET_TARGET_PROPERTIES(libmariadb PROPERTIES LINKER_LANGUAGE C)
-+  ADD_LIBRARY(mariadb SHARED ${libmariadb_RC} ${MARIADB_OBJECTS} mariadbclient.def)
-+  SET_TARGET_PROPERTIES(mariadb PROPERTIES LINKER_LANGUAGE C)
- ENDIF()
- 
--TARGET_LINK_LIBRARIES(libmariadb LINK_PRIVATE ${SYSTEM_LIBS})
-+TARGET_LINK_LIBRARIES(mariadb LINK_PRIVATE ${SYSTEM_LIBS})
- 
--SIGN_TARGET(libmariadb)
-+SIGN_TARGET(mariadb)
- 
- IF(CMAKE_SYSTEM_NAME MATCHES "Linux" OR
-    CMAKE_SYSTEM_NAME MATCHES "kFreeBSD" OR
-    CMAKE_SYSTEM_NAME MATCHES "GNU")
-   IF (NOT WITH_ASAN AND NOT WITH_TSAN AND NOT WITH_UBSAN AND NOT WITH_MSAN)
--    TARGET_LINK_LIBRARIES (libmariadb LINK_PRIVATE "-Wl,--no-undefined")
-+    TARGET_LINK_LIBRARIES (mariadb LINK_PRIVATE "-Wl,--no-undefined")
-   ENDIF()
--  SET_TARGET_PROPERTIES(libmariadb PROPERTIES LINK_FLAGS "${CC_BINARY_DIR}/libmariadb/mariadbclient.def")
-+  SET_TARGET_PROPERTIES(mariadb PROPERTIES LINK_FLAGS "${CC_BINARY_DIR}/libmariadb/mariadbclient.def")
- ENDIF()
- 
- SET_TARGET_PROPERTIES(mariadbclient PROPERTIES IMPORTED_INTERFACE_LINK_LIBRARIES "${SYSTEM_LIBS}")
--SET_TARGET_PROPERTIES(libmariadb PROPERTIES IMPORTED_INTERFACE_LINK_LIBRARIES "${SYSTEM_LIBS}")
--
--SET_TARGET_PROPERTIES(libmariadb PROPERTIES PREFIX "")
-+SET_TARGET_PROPERTIES(mariadb PROPERTIES IMPORTED_INTERFACE_LINK_LIBRARIES "${SYSTEM_LIBS}")
- 
- #
- # Installation
-@@ -452,8 +450,8 @@ INCLUDE(${CC_SOURCE_DIR}/cmake/symlink.cmake)
- # use mariadb client library we provide libmysql symlinks
- 
- IF(WITH_MYSQLCOMPAT)
--  create_symlink(libmysqlclient${CMAKE_SHARED_LIBRARY_SUFFIX} libmariadb ${INSTALL_LIBDIR})
--  create_symlink(libmysqlclient_r${CMAKE_SHARED_LIBRARY_SUFFIX} libmariadb ${INSTALL_LIBDIR})
-+  create_symlink(libmysqlclient${CMAKE_SHARED_LIBRARY_SUFFIX} mariadb ${INSTALL_BINDIR})
-+  create_symlink(libmysqlclient_r${CMAKE_SHARED_LIBRARY_SUFFIX} mariadb ${INSTALL_BINDIR})
-   IF(NOT CMAKE_SYSTEM_NAME MATCHES AIX)
-     create_symlink(libmysqlclient${CMAKE_STATIC_LIBRARY_SUFFIX} mariadbclient ${INSTALL_LIBDIR})
-     create_symlink(libmysqlclient_r${CMAKE_STATIC_LIBRARY_SUFFIX} mariadbclient ${INSTALL_LIBDIR})
-@@ -462,7 +460,7 @@ ENDIF()
- 
- create_symlink(libmariadb${CMAKE_STATIC_LIBRARY_SUFFIX} mariadbclient ${INSTALL_LIBDIR})
- 
--SET_TARGET_PROPERTIES(libmariadb PROPERTIES VERSION
-+SET_TARGET_PROPERTIES(mariadb PROPERTIES VERSION
+@@ -496,6 +496,13 @@ SET_TARGET_PROPERTIES(libmariadb PROPERTIES VERSION
   ${CPACK_PACKAGE_VERSION_MAJOR}
   SOVERSION ${CPACK_PACKAGE_VERSION_MAJOR})
  
-@@ -479,18 +477,18 @@ INSTALL(TARGETS libmariadb
-         DESTINATION ${INSTALL_LIBDIR})
++IF(MINGW)
++  SET_TARGET_PROPERTIES(libmariadb PROPERTIES
++                        OUTPUT_NAME mariadb
++                        RUNTIME_OUTPUT_NAME libmariadb
++                        ARCHIVE_OUTPUT_NAME mariadb)
++ENDIF()
++
+ IF(NOT WIN32)
+   SET_TARGET_PROPERTIES(mariadbclient PROPERTIES OUTPUT_NAME "${LIBMARIADB_STATIC_NAME}")
+ ENDIF()
+@@ -506,7 +513,9 @@ INSTALL(TARGETS mariadbclient
+ IF(WIN32)
+ INSTALL(TARGETS libmariadb
+         COMPONENT SharedLibraries
+-        DESTINATION ${INSTALL_LIBDIR})
++        RUNTIME DESTINATION ${INSTALL_BINDIR}
++        LIBRARY DESTINATION ${INSTALL_LIBDIR}
++        ARCHIVE DESTINATION ${INSTALL_LIBDIR})
  ELSE()
  # in cmake 3.12+ we can use
--#INSTALL(TARGETS libmariadb LIBRARY DESTINATION ${INSTALL_LIBDIR}
-+#INSTALL(TARGETS mariadb LIBRARY DESTINATION ${INSTALL_LIBDIR} RUNTIME DESTINATION ${INSTALL_BINDIR} ARCHIVE DESTINATION ${INSTALL_LIBDIR}
- #        COMPONENT SharedLibraries NAMELINK_COMPONENT Development)
- # but as long as we build on CentOS 7 with its cmake 2.8.12.2 we have to use
--INSTALL(TARGETS libmariadb LIBRARY DESTINATION ${INSTALL_LIBDIR}
-+INSTALL(TARGETS mariadb LIBRARY DESTINATION ${INSTALL_LIBDIR} RUNTIME DESTINATION ${INSTALL_BINDIR} ARCHIVE DESTINATION ${INSTALL_LIBDIR}
-         COMPONENT SharedLibraries NAMELINK_SKIP)
--INSTALL(TARGETS libmariadb LIBRARY DESTINATION ${INSTALL_LIBDIR}
-+INSTALL(TARGETS mariadb LIBRARY DESTINATION ${INSTALL_LIBDIR} RUNTIME DESTINATION ${INSTALL_BINDIR} ARCHIVE DESTINATION ${INSTALL_LIBDIR}
-         COMPONENT Development NAMELINK_ONLY)
- ENDIF()
- 
- IF(MSVC)
-    # On Windows, install PDB
--   INSTALL(FILES $<TARGET_PDB_FILE:libmariadb> DESTINATION "${INSTALL_LIBDIR}"
-+   INSTALL(FILES $<TARGET_PDB_FILE:mariadb> DESTINATION "${INSTALL_LIBDIR}"
-            CONFIGURATIONS Debug RelWithDebInfo
-            COMPONENT Development)
- ENDIF()
-diff --git a/plugins/auth/CMakeLists.txt b/plugins/auth/CMakeLists.txt
-index e5448f8..ae2cf27 100644
---- a/plugins/auth/CMakeLists.txt
-+++ b/plugins/auth/CMakeLists.txt
-@@ -4,7 +4,7 @@ INCLUDE_DIRECTORIES(${AUTH_DIR})
- INCLUDE_DIRECTORIES(${CC_SOURCE_DIR}/include)
- 
- SET(CRYPTO_PLUGIN 1)
--IF(WIN32)
-+IF(WIN32 AND NOT MINGW)
-   ADD_DEFINITIONS(-DHAVE_WINCRYPT)
-   SET(CRYPT_SOURCE ${CC_SOURCE_DIR}/libmariadb/secure/win_crypt.c)
-   SET(CRYPT_LIBS crypt32 bcrypt)
-diff --git a/plugins/io/CMakeLists.txt b/plugins/io/CMakeLists.txt
-index 8c304c9..e2e9c5a 100644
---- a/plugins/io/CMakeLists.txt
-+++ b/plugins/io/CMakeLists.txt
-@@ -10,6 +10,6 @@ IF (WITH_CURL)
-                   DEFAULT DYNAMIC
-                   SOURCES ${CC_SOURCE_DIR}/plugins/io/remote_io.c
-                   INCLUDES ${CURL_INCLUDE_DIR}
--                  LIBRARIES ${CURL_LIBRARIES})
-+                  LIBRARIES ${CURL_LIBRARIES} ws2_32)
-   ENDIF()
- ENDIF()
+ #INSTALL(TARGETS libmariadb LIBRARY DESTINATION ${INSTALL_LIBDIR}
 -- 
-2.37.1
+2.46.0
 
