@@ -3,7 +3,7 @@
 _name="notes"
 _pkgname=$_name.lv2
 pkgname=$_pkgname-git
-pkgver=0.4.0.r52.g76403d0
+pkgver=0.4.0.r60.g6458018
 pkgrel=1
 pkgdesc='An LV2 plugin to store arbitrary notes and images in your project (git version)'
 arch=(x86_64)
@@ -28,13 +28,12 @@ pkgver() {
 }
 
 build() {
-  cd $_pkgname
-  arch-meson $_pkgname-build
+  test -d $_pkgname-build && extra_args="--reconfigure"
+  arch-meson $extra_args $_pkgname-build $_pkgname
   meson compile -C $_pkgname-build
 }
 
 check() {
-  cd $_pkgname
   #lv2lint -s 'pugl*' -Mpack -I "build/" \
   #  "http://open-music-kontrollers.ch/lv2/${_pkgname}#${_plugin}"
   lv2lint -Mpack -I $_pkgname-build \
@@ -42,8 +41,8 @@ check() {
 }
 
 package() {
-  cd $_pkgname
   DESTDIR="${pkgdir}" meson install -C $_pkgname-build
+  cd $_pkgname
   install -vDm 644 ChangeLog README.md \
     -t "$pkgdir"/usr/share/doc/$pkgname
   install -vDm 644 LICENSES/* \
