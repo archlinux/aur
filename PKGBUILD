@@ -1,12 +1,12 @@
 # Maintainer: Jonas Costa <contact@jonascosta.ch>
 pkgname=world-of-goo-2
 pkgver=12329.171
-pkgrel=1
+pkgrel=2
 pkgdesc="Build bridges, grow towers, terraform terrain, and fuel flying machines in the followup to World of Goo."
 arch=("x86_64")
 url="https://worldofgoo2.com"
 license=('custom')
-depends=()
+depends=('libcurl-gnutls')
 source=("world-of-goo-2.desktop" 
         "world-of-goo-2.png" 
         "local://World_of_Goo_2-x86_64.12329.171.AppImage")
