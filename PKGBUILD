@@ -7,7 +7,7 @@ pkgname=(linux-firmware-whence-amd-staging-um5606-git linux-firmware-amd-staging
   linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-amd-staging-um5606-git
 )
 pkgver=20240810.20a48a10
-pkgrel=1
+pkgrel=2
 pkgdesc="A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops, including the latest ipu (NPU) and isp (GPU) firmware."
 url="https://github.com/ThatOneCalculator/linux-firmware-amd-staging-um5606"
 license=('GPL2' 'GPL3' 'custom')
@@ -59,7 +59,7 @@ _pick() {
 }
 
 package_linux-firmware-whence-amd-staging-um5606-git() {
-  conflicts=("${pkgname%-git}" 'linux-firmware<=20211216.f682ecb')
+  conflicts=("${pkgname%-git}" "${pkgname%-amd-staging-um5606-git}" 'linux-firmware<=20211216.f682ecb')
   provides=("${pkgname%-amd-staging-um5606-git}=$pkgver")
   pkgdesc+=" - contains the WHENCE license file which documents the vendor license details"
 
@@ -67,7 +67,7 @@ package_linux-firmware-whence-amd-staging-um5606-git() {
 }
 
 package_linux-firmware-amd-staging-um5606-git() {
-  conflicts=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}" "${pkgname%-amd-staging-um5606-git}")
   provides=("${pkgname%-amd-staging-um5606-git}=$pkgver")
   depends=('linux-firmware-whence')
 
@@ -106,7 +106,7 @@ package_linux-firmware-amd-staging-um5606-git() {
 }
 
 package_amd-ucode-amd-staging-um5606-git() {
-  conflicts=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}" "${pkgname%-amd-staging-um5606-git}")
   provides=("${pkgname%-amd-staging-um5606-git}=$pkgver")
   pkgdesc="Microcode update image for AMD CPUs"
   license=(custom)
@@ -119,7 +119,7 @@ package_amd-ucode-amd-staging-um5606-git() {
 }
 
 package_linux-firmware-nfp-amd-staging-um5606-git() {
-  conflicts=("${pkgname%-git}" 'linux-firmware<=20211216.f682ecb')
+  conflicts=("${pkgname%-git}" "${pkgname%-amd-staging-um5606-git}" 'linux-firmware<=20211216.f682ecb')
   provides=("${pkgname%-amd-staging-um5606-git}=$pkgver")
   pkgdesc+=" - nfp / Firmware for Netronome Flow Processors"
   depends=('linux-firmware-whence')
@@ -128,7 +128,7 @@ package_linux-firmware-nfp-amd-staging-um5606-git() {
 }
 
 package_linux-firmware-mellanox-amd-staging-um5606-git() {
-  conflicts=("${pkgname%-git}" 'linux-firmware<=20211216.f682ecb')
+  conflicts=("${pkgname%-git}" "${pkgname%-amd-staging-um5606-git}" 'linux-firmware<=20211216.f682ecb')
   provides=("${pkgname%-amd-staging-um5606-git}=$pkgver")
   pkgdesc+=" - mellanox / Firmware for Mellanox Spectrum switches"
   depends=('linux-firmware-whence')
@@ -137,7 +137,7 @@ package_linux-firmware-mellanox-amd-staging-um5606-git() {
 }
 
 package_linux-firmware-marvell-amd-staging-um5606-git() {
-  conflicts=("${pkgname%-git}" 'linux-firmware<=20211216.f682ecb')
+  conflicts=("${pkgname%-git}" "${pkgname%-amd-staging-um5606-git}" 'linux-firmware<=20211216.f682ecb')
   provides=("${pkgname%-amd-staging-um5606-git}=$pkgver")
   pkgdesc+=" - marvell / Firmware for Marvell devices"
   depends=('linux-firmware-whence')
@@ -146,7 +146,7 @@ package_linux-firmware-marvell-amd-staging-um5606-git() {
 }
 
 package_linux-firmware-qcom-amd-staging-um5606-git() {
-  conflicts=("${pkgname%-git}" 'linux-firmware<=20211216.f682ecb')
+  conflicts=("${pkgname%-git}" "${pkgname%-amd-staging-um5606-git}" 'linux-firmware<=20211216.f682ecb')
   provides=("${pkgname%-amd-staging-um5606-git}=$pkgver")
   pkgdesc+=" - qcom / Firmware for Qualcomm SoCs"
   depends=('linux-firmware-whence')
@@ -155,7 +155,7 @@ package_linux-firmware-qcom-amd-staging-um5606-git() {
 }
 
 package_linux-firmware-liquidio-amd-staging-um5606-git() {
-  conflicts=("${pkgname%-git}" 'linux-firmware<=20211216.f682ecb')
+  conflicts=("${pkgname%-git}" "${pkgname%-amd-staging-um5606-git}" 'linux-firmware<=20211216.f682ecb')
   provides=("${pkgname%-amd-staging-um5606-git}=$pkgver")
   pkgdesc+=" - liquidio / Firmware for Cavium LiquidIO server adapters"
   depends=('linux-firmware-whence')
@@ -164,7 +164,7 @@ package_linux-firmware-liquidio-amd-staging-um5606-git() {
 }
 
 package_linux-firmware-qlogic-amd-staging-um5606-git() {
-  conflicts=("${pkgname%-git}" 'linux-firmware<=20211216.f682ecb')
+  conflicts=("${pkgname%-git}" "${pkgname%-amd-staging-um5606-git}" 'linux-firmware<=20211216.f682ecb')
   provides=("${pkgname%-amd-staging-um5606-git}=$pkgver")
   pkgdesc+=" - qlogic / Firmware for QLogic devices"
   depends=('linux-firmware-whence')
@@ -173,7 +173,7 @@ package_linux-firmware-qlogic-amd-staging-um5606-git() {
 }
 
 package_linux-firmware-bnx2x-amd-staging-um5606-git() {
-  conflicts=("${pkgname%-git}" 'linux-firmware<=20211216.f682ecb')
+  conflicts=("${pkgname%-git}" "${pkgname%-amd-staging-um5606-git}" 'linux-firmware<=20211216.f682ecb')
   provides=("${pkgname%-amd-staging-um5606-git}=$pkgver")
   pkgdesc+=" - bnx2x / Firmware for Broadcom NetXtreme II 10Gb ethernet adapters"
   depends=('linux-firmware-whence')
