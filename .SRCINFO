@@ -1,18 +1,24 @@
 pkgbase = greatfet-git
 	pkgdesc = GreatFET firmware and host software
-	pkgver = v2018.12.1.60.g4c40233
+	pkgver = 2024.0.1
 	pkgrel = 1
 	url = https://github.com/greatscottgadgets/greatfet
 	install = greatfet-git.install
 	arch = any
 	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pyproject-patcher
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = ipython
 	depends = python-pyusb
 	depends = python-future
-	depends = pygreat-git
+	depends = python-pygreat
+	depends = python-cmsis-svd-git
+	depends = python-pyfwup
 	provides = greatfet
 	source = git+https://github.com/greatscottgadgets/greatfet
 	sha1sums = SKIP
 
 pkgname = greatfet-git
-
