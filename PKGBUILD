@@ -1,7 +1,8 @@
 # Maintainer: graysky <therealgraysky AT protonmail DOT com>
 # Contributor: Kevin Schmidt <kevin.patrick.schmidt@googlemail.com>
+
 pkgname=openwrt-devel
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Metapackage to pull all dependencies required to build OpenWrt'
 arch=('x86_64')
@@ -13,7 +14,14 @@ depends=(
   openssl patch pkgconf 'python-setuptools>=1:69.0.3-6' rsync sed swig texinfo time unzip
   util-linux wget which zlib
 )
-optdepends=(asciidoc help2man intltool perl-extutils-makemaker swig)
+optdepends=(
+  'asciidoc'
+  'help2man'
+  'intltool'
+  'perl-extutils-makemaker'
+  'python-elftools: compiling uboot for arm'
+  'swig'
+)
 
 package() {
   # currently, OpenWrt expects /usr/bin/python3.11
