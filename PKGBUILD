@@ -9,31 +9,40 @@ pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
 url=https://github.com/ValveSoftware/gamescope
-license=(BSD-2-Clause BSD-3-Clause LicenseRef-Reshade)
+license=(
+  BSD-2-Clause
+  BSD-3-Clause
+  LicenseRef-Reshade
+)
 depends=(
   gcc-libs
   glibc
+  lcms2
   libavif
   libcap.so
   libdecor
   libdrm
+  libei
   libinput
-  liblcms2.so
   libpipewire-0.3.so
   libx11
   libxcb
   libxcomposite
+  libxcursor
   libxdamage
   libxext
   libxfixes
+  libxi
   libxkbcommon.so
   libxmu
   libxrender
   libxres
   libxtst
   libxxf86vm
+  pixman
   sdl2
   seatd
+  systemd-libs
   vulkan-icd-loader
   wayland
   xcb-util-errors
