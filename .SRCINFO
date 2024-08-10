@@ -1,6 +1,6 @@
 pkgbase = nxp-gui-guider
 	pkgdesc = A user-friendly graphical user interface development tool from NXP that enables the rapid development of high quality displays with the open-source LVGL graphics library
-	pkgver = 1.7.2
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://www.nxp.com/design/software/development-software/gui-guider:GUI-GUIDER
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = nxp-gui-guider
 	depends = libffi
 	depends = gcc
 	options = !strip
-	source = local://Gui-Guider-Setup-1.7.2-GA.deb
-	sha256sums = 9831b493fef2b4a1b3829ccc2b98fbb33aa901f213b89528d06cdf9ab49a25ff
+	source = local://Gui-Guider-Setup-1.8.0-GA.deb
+	sha256sums = b4157e0b03d5a3be3d30552278bc4dc1fca5aaacc1ecd8be866a1a0341fe981f
 
 pkgname = nxp-gui-guider
