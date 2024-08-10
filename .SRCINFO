@@ -9,6 +9,7 @@ pkgbase = c001apk-flutter-git
 	makedepends = git
 	makedepends = flutter-tool
 	makedepends = flutter-target-linux
+	depends = gtk3
 	provides = c001apk-flutter
 	conflicts = c001apk-flutter
 	source = git+https://github.com/bggRGjQaUbCoE/c001apk-flutter.git
