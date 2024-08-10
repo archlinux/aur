@@ -2,7 +2,7 @@
 
 pkgname='liteloader-qqnt-llonebot-bin'
 _pkgname='LiteLoaderQQNT-LLOneBot-bin'
-pkgver='3.28.0'
+pkgver='3.28.2'
 pkgrel=1
 pkgdesc='使你的NTQQ支持OneBot11协议进行QQ机器人开发 '
 arch=('any')
@@ -13,7 +13,7 @@ provides=("liteloader-qqnt-llonebot")
 conflicts=("liteloader-qqnt-llonebot")
 
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/LLOneBot.zip")
-sha256sums=('b0c3a75b66b00b5910dc5bbb28eede4b37626f2de5966ff7f8287696937a4280')
+sha256sums=('faddb5f393fe03c55b5326884e783f41626a8d08095044a2f1ec196afccfb65a')
 
 package() {
     mkdir -p "${pkgdir}/opt/LiteLoaderQQNT/plugins/LLOneBot"
