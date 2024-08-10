@@ -1,7 +1,7 @@
 # Maintainer: CsiPA0723 <csizipeti0723@gmail.com>
 _pkgname=weylus
 pkgname="$_pkgname-community-git"
-pkgver=2024.8.3
+pkgver=2024.8.10
 pkgrel=1
 pkgdesc="Use your tablet as graphic tablet/touch screen on your computer."
 arch=("x86_64")

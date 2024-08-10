@@ -1,6 +1,6 @@
 pkgbase = weylus-community-git
 	pkgdesc = Use your tablet as graphic tablet/touch screen on your computer.
-	pkgver = 2024.8.3
+	pkgver = 2024.8.10
 	pkgrel = 1
 	url = https://github.com/electronstudio/WeylusCommunityEdition
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = weylus-community-git
 	conflicts = weylus-bin
 	options = !debug
 	options = !lto
-	source = weylus-2024.8.3::git+https://github.com/electronstudio/WeylusCommunityEdition.git#tag=2024.8.3
+	source = weylus-2024.8.10::git+https://github.com/electronstudio/WeylusCommunityEdition.git#tag=2024.8.10
 	sha256sums = SKIP
 
 pkgname = weylus-community-git
