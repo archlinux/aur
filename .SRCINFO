@@ -1,6 +1,6 @@
 pkgbase = pico-sdk
 	pkgdesc = Libraries and tools for C/C++ development on RP2040 microcontrollers.
-	pkgver = 1.5.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/raspberrypi/pico-sdk
 	install = reload-environment-variables.install
@@ -15,7 +15,7 @@ pkgbase = pico-sdk
 	provides = raspberry-pico-sdk-git
 	conflicts = raspberry-pico-sdk-git
 	options = !strip
-	source = git+https://github.com/raspberrypi/pico-sdk.git#tag=1.5.1
+	source = git+https://github.com/raspberrypi/pico-sdk.git#tag=2.0.0
 	source = git+https://github.com/bluekitchen/btstack.git
 	source = git+https://github.com/georgerobotics/cyw43-driver.git
 	source = git+https://github.com/lwip-tcpip/lwip.git
