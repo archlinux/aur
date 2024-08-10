@@ -11,8 +11,12 @@ license=('AGPL-3.0-or-later')
 makedepends=('git' 'flutter-tool' 'flutter-target-linux')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=(
+	"git+${url}.git"
+	"${_pkgname}.desktop"
+)
+sha256sums=('SKIP'
+            'c41cc46fe55767d54349a7c8f3aefa0dcd1e08b196759bd77affedd4ceef5f4e')
 
 pkgver() {
 	cd "${_pkgname}/"
@@ -21,6 +25,7 @@ pkgver() {
 
 prepare() {
 	cd "${_pkgname}/"
+	sed -i '/build_runner/s/2.4.12/2.4.11/' pubspec.yaml # Temporarily fix Dart SDK version incompatibility
 	flutter pub get --enforce-lockfile || flutter pub get
 }
 
@@ -41,7 +46,7 @@ package() {
 		;;
 	esac
 
-	install -Dm755 "build/linux/${_dartarch}/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
+	install -Dm755 "build/linux/${_dartarch}/release/bundle/${_pkgname}" -t "${pkgdir}/usr/bin/"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
-	install -Dm644 "${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+	install -Dm644 "../${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
 }
