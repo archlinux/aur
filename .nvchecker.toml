@@ -1,0 +1,3 @@
+[sos]
+source = "git"
+git = "https://github.com/sosreport/sos.git"

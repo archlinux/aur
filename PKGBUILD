@@ -1,29 +1,22 @@
+# Maintainer: Munzir Taha <munzirtaha@gmail.com>
 # Contributor: chr0mag <phillips.julian AT gmail DOT com>
 
 pkgname=sos
-pkgver=4.5.5
-pkgrel=2
-pkgdesc="unified tool for collecting system logs and other debug information"
+pkgver=4.7.2
+pkgrel=1
+pkgdesc="A unified tool for collecting system logs and other debug information"
 arch=('any')
 url="https://github.com/sosreport/sos"
-license=('GPL2')
-depends=(python
-         python-pexpect
-         python-pyaml)
-makedepends=('python-sphinx' 'python-setuptools') 
-checkdepends=(python-coverage python-pycodestyle)
-backup=('etc/sos.conf')
-_archpullreq="1198.patch"
-source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/sosreport/sos/archive/$pkgver.tar.gz"
-	      "https://patch-diff.githubusercontent.com/raw/sosreport/sos/pull/$_archpullreq")
-sha256sums=('8a5ebe38ade95f0cd7d5b2388fedd91239c117709c0f7d533824112cda65b605'
-            '2b99f0cb275438c3b1a5f6e260bd057851c14408398e0d25486c642c1c739723')
-
+license=('GPL-2.0-only')
+depends=('python' 'python-pexpect' 'python-yaml' 'python-magic' 'python-packaging' 'python-boto3' 'python-simplejson' 'python-requests' 'python-setuptools' 'python-selinux')
+optdepends=('usbutils')
+makedepends=('python-sphinx')
+checkdepends=('python-coverage' 'python-pycodestyle')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sosreport/sos/archive/${pkgver}.tar.gz")
+sha256sums=('ad6d8a1210db16a2b3e6f5012cbb192f2e63edd70aee33775963246260fb3b2e')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	# Currently doesn't work with 4.x.x
-	#patch --strip=1 < ../$_archpullreq
 }
 
 build() {
