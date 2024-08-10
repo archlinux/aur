@@ -2,7 +2,7 @@
 
 _pkgname=wlx-overlay-s
 pkgname=$_pkgname-git
-pkgver=0.4.2.r0.10db0f6
+pkgver=0.4.4.r0.d9287f3
 pkgrel=1
 pkgdesc="Access your Wayland/X11 desktop from SteamVR/Monado (OpenVR+OpenXR support)"
 url="https://github.com/galister/wlx-overlay-s"
