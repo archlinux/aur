@@ -1,6 +1,6 @@
 pkgbase = cargo-careful-git
 	pkgdesc = Execute Rust code carefully, with extra checking along the way
-	pkgver = 0.4.2.r0.g12e0bf1
+	pkgver = 0.4.3.r0.g8d6a486
 	pkgrel = 1
 	url = https://github.com/RalfJung/cargo-careful
 	arch = x86_64

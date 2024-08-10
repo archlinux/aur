@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-careful-git
-pkgver=0.4.2.r0.g12e0bf1
+pkgver=0.4.3.r0.g8d6a486
 pkgrel=1
 pkgdesc="Execute Rust code carefully, with extra checking along the way"
 arch=('x86_64')
