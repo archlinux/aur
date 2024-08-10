@@ -1,0 +1,11 @@
+pkgbase = xilinx-cmc-u280
+	pkgdesc = Card management controller firmware for AMD Alveo U280
+	pkgver = 1.3.5.3592445
+	pkgrel = 1
+	url = https://docs.xilinx.com/r/en-US/ug1301-getting-started-guide-alveo-accelerator-cards
+	arch = any
+	license = custom
+	source = https://packages.xilinx.com/artifactory/debian-packages-cache/pool/xilinx-cmc-u280_1.3.5-3592445_all.deb
+	b2sums = 59a480408f7003f84ba9777e8872cbb874615980045582444e44c278a71c9df102c937389a13192f46daa1cc103f34f7850469e559e3f7666da853cc4bce0c5c
+
+pkgname = xilinx-cmc-u280
