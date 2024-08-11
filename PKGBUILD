@@ -21,7 +21,7 @@ makedepends=(
   'llvm14'
 )
 provides=("vapoursynth-plugin-${_plug}")
-conflicts=("vapoursynth-plugin-${_plug}" "vapoursynth-plugin-vsakarin")
+conflicts=("vapoursynth-plugin-${_plug}" "vapoursynth-plugin-vsakarin-git")
 source=("${_plug}::git+https://github.com/akarinVS/vapoursynth-plugin.git")
 sha256sums=('SKIP')
 options=('debug')
