@@ -1,6 +1,6 @@
 pkgbase=archlinux-studio-utils
-pkgname=('archlinux-studio-utils-cpufreq-scaling' 'archlinux-studio-utils-efistub' 'archlinux-studio-utils-efistub-intel-toggle' 'archlinux-studio-utils-pipewire')
-pkgver=r6.ef10814
+pkgname=('archlinux-studio-utils-cpufreq-scaling' 'archlinux-studio-utils-efistub' 'archlinux-studio-utils-pipewire')
+pkgver=r10.9fde6a9
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/usrmusicman/ArchLinuxStudioUtils"
@@ -26,26 +26,15 @@ package_archlinux-studio-utils-cpufreq-scaling() {
 
 package_archlinux-studio-utils-efistub() {
     depends=('efibootmgr')
+    replaces=('archlinux-studio-utils-efistub-intel-toggle')
+    conflicts=('archlinux-studio-utils-efistub-intel-toggle')
     pkgdesc="EFI boot entry creation and removal tool"
 
     ## Install Script
     install -Dm755 "$pkgbase/efistub/script/efistub-manager" "$pkgdir/usr/bin/efistub-manager"
 
     ## Install Menu Entries
-    install -Dm644 "$pkgbase/efistub/menu_entry/EFIStub Create.desktop" "$pkgdir/usr/share/applications/EFIStub Create.desktop"
-    install -Dm644 "$pkgbase/efistub/menu_entry/EFIStub Delete.desktop" "$pkgdir/usr/share/applications/EFIStub Delete.desktop"
-}
-
-package_archlinux-studio-utils-efistub-intel-toggle() {
-    depends=('efibootmgr')
-    pkgdesc="Intel XE driver toggle tool"
-
-    ## Install Script (Intel Only)
-    install -Dm755 "$pkgbase/efistub/script/xe-kernel-driver-toggle" "$pkgdir/usr/bin/xe-kernel-driver-toggle"
-
-    ## Install Menu Entries (Intel Only)
-    install -Dm644 "$pkgbase/efistub/menu_entry/Intel XE Enable.desktop" "$pkgdir/usr/share/applications/Intel XE Enable.desktop"
-    install -Dm644 "$pkgbase/efistub/menu_entry/Intel XE Disable.desktop" "$pkgdir/usr/share/applications/Intel XE Disable.desktop"
+    install -Dm644 "$pkgbase/efistub/menu_entry/EFI Stub Manager.desktop" "$pkgdir/usr/share/applications/EFI Stub Manager.desktop"
 }
 
 package_archlinux-studio-utils-pipewire() {
