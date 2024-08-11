@@ -1,6 +1,6 @@
 pkgbase=archlinux-studio-utils
 pkgname=('archlinux-studio-utils-cpufreq-scaling' 'archlinux-studio-utils-efistub' 'archlinux-studio-utils-pipewire')
-pkgver=r10.9fde6a9
+pkgver=r11.2f7ad47
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/usrmusicman/ArchLinuxStudioUtils"
