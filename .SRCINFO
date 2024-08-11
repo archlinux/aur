@@ -5,10 +5,12 @@ pkgbase = python-ochre
 	url = https://github.com/getcuia/ochre
 	arch = any
 	license = MIT
+	checkdepends = python-pytest>=6.2
+	checkdepends = python-hypothesis>=6.31.6
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-poetry-core
-	depends = python
+	makedepends = python-poetry-core>=1.0.0
+	depends = python>=3.8
 	source = ochre-0.4.0.tar.gz::https://github.com/getcuia/ochre/archive/v0.4.0.tar.gz
 	sha256sums = 218482b0e5d3fab6c250091862201380e8d90a67bfef545186624399a19bd19a
 

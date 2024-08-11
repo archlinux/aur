@@ -8,24 +8,24 @@ pkgdesc="A down-to-earth approach to colors"
 arch=('any')
 url="https://github.com/getcuia/${_name}"
 license=('MIT')
-makedepends=('python-build' 'python-installer' 'python-poetry-core')
-# checkdepends=('python-pytest' 'python-hypothesis')
-depends=('python')
+makedepends=('python-build' 'python-installer' 'python-poetry-core>=1.0.0')
+checkdepends=('python-pytest>=6.2' 'python-hypothesis>=6.31.6')
+depends=('python>=3.8')
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('218482b0e5d3fab6c250091862201380e8d90a67bfef545186624399a19bd19a')
 
-build () {
+build() {
   cd "${srcdir}/${_pkgsrc}"
   python -m build --wheel --no-isolation
 }
 
-# check () {
-#   cd "${srcdir}/${_pkgsrc}"
-#   pytest
-# }
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  PYTHONPATH=src pytest
+}
 
-package () {
+package() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
   cd "${srcdir}/${_pkgsrc}"
