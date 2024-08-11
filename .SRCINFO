@@ -1,0 +1,13 @@
+pkgbase = r-epitools
+	pkgdesc = Epidemiology Tools
+	pkgver = 0.5.10.1
+	pkgrel = 0
+	url = https://cran.r-project.org/package=epitools
+	arch = any
+	license = GPL-2.0-or-later
+	depends = r
+	source = https://cran.r-project.org/src/contrib/epitools_0.5-10.1.tar.gz
+	md5sums = 5687c399ed86c5de206164cd449e42ba
+	sha256sums = b418854de1fcedd126f3bf19dc27e8a71ee6efae5371098ab64a53a2d51d164b
+
+pkgname = r-epitools
