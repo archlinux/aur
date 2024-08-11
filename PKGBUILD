@@ -8,7 +8,7 @@
 # Profile with xvfb-run, if possible
 : ${_build_pgo_xvfb:=false}
 
-_pkgver=11.15.0-1
+_pkgver=11.16.0-1
 _pkgrel=1
 
 pkgname=firedragon
@@ -19,7 +19,7 @@ epoch=1
 pkgdesc="Floorp fork build using custom branding and settings"
 url='https://garudalinux.org'
 arch=('x86_64')
-license=('MPL2' 'Floorp Shared Source License')
+license=('MPL2')
 depends=(dbus
   dbus-glib
   ffmpeg
@@ -85,7 +85,7 @@ source=(https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v${_pkgver
   rustup.sh::https://sh.rustup.rs
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.psd
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.desktop)
-sha256sums=('4282968e77c7d402a135604ab7d5e155bbc34cbfecef18cb8c464086dc8a3c3d'
+sha256sums=('5f5e6a2cf2e6faa53f9e1a1707374941a10cfcaffb7e695c9f6cd376e6c406b1'
             '9516c36c145d365c3b65153d83a5b3b0dd8a319b5c30d47a390070892bd431b3'
             '168d16a027a81c311c58f9302858244dfa5517f0a95a8d3df1abbf9b93b9d455'
             'df27ed1e0da5b192224978dc2a593a97e18e6e22062c611fc32b277500324e62'
