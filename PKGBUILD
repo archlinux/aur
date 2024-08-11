@@ -192,6 +192,7 @@ prepare() {
   ./Engine/Build/BatchFiles/Linux/SetupToolchain.sh
   ./Engine/Build/BatchFiles/Linux/BuildThirdParty.sh
   ./Engine/Build/BatchFiles/Linux/SetupDotnet.sh
+  ./Engine/Build/BatchFiles/Linux/FixDependencyFiles.sh
 }
 
 build() {
