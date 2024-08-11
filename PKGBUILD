@@ -1,7 +1,7 @@
 # Maintainer: Hans-Nikola Viessmann <hans AT viess DOT mn>
 _name=eduvpn-common
 pkgname="python-${_name/-/_}"
-pkgver=1.2.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='EduVPN common library for python clients'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'glibc')
 makedepends=('go' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$url/releases/download/$pkgver/$_name-$pkgver.tar".{xz,xz.asc})
-sha256sums=('0aaa4e82f1860faa56d377ef294ce0a1e0b3e98827cee60adaee596f0fbf2ace'
+sha256sums=('3a07229c478a303b598f74f0fbb70cb05dfce59653051fc9e5da888a10d3963f'
             'SKIP')
 validpgpkeys=('227FF3F8F829D9A9314D9EBA02BB8048BBFF222C')
 
