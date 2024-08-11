@@ -1,10 +1,10 @@
 pkgbase = openrgb-plugin-e131-receiver-git
 	pkgdesc = E1.31 Receiver plugin for OpenRGB
-	pkgver = r57.54f3575
+	pkgver = 0.9.r4.g54f3575
 	pkgrel = 1
 	url = https://gitlab.com/OpenRGBDevelopers/OpenRGBE131ReceiverPlugin
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = git
 	depends = qt5-tools
 	depends = openrgb

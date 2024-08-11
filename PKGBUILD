@@ -1,11 +1,11 @@
 # Maintainer: Adam Honse <calcprogrammer10@gmail.com>
 pkgname=openrgb-plugin-e131-receiver-git
-pkgver=r57.54f3575
+pkgver=0.9.r4.g54f3575
 pkgrel=1
 pkgdesc="E1.31 Receiver plugin for OpenRGB"
 arch=('any')
 url="https://gitlab.com/OpenRGBDevelopers/OpenRGBE131ReceiverPlugin"
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('qt5-tools' 'openrgb')
 makedepends=('git')
 source=("git+https://gitlab.com/OpenRGBDevelopers/OpenRGBE131ReceiverPlugin.git")
@@ -13,14 +13,14 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd OpenRGBE131ReceiverPlugin
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
     cd "$srcdir/OpenRGBE131ReceiverPlugin"
     git submodule update --init --recursive
     qmake OpenRGBE131ReceiverPlugin.pro PREFIX=/usr/
-    make -j$(nproc)
+    make
 }
 
 package() {
