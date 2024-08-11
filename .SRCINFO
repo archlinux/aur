@@ -1,0 +1,22 @@
+pkgbase = sen-git
+	pkgdesc = Terminal User Interface for containers
+	pkgver = 0.7.0.r0.gec292b5
+	pkgrel = 1
+	url = https://github.com/TomasTomecek/sen
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-urwid
+	depends = python-docker
+	depends = python-urwidtrees
+	provides = sen=0.7.0
+	conflicts = sen
+	source = sen::git+https://github.com/TomasTomecek/sen.git
+	sha256sums = SKIP
+
+pkgname = sen-git
