@@ -1,7 +1,7 @@
 pkgbase = cytoplasm-git
 	pkgdesc = The Telodendria core library
 	pkgver = 0.4.1
-	pkgrel = 7
+	pkgrel = 2
 	url = https://git.telodendria.io/Telodendria/Cytoplasm
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = cytoplasm-git
 	license = Telodendria
 	makedepends = git
 	depends = openssl
+	depends = lmdb
 	provides = cytoplasm
 	source = cytoplasm-git::git+https://git.telodendria.io/Telodendria/Cytoplasm.git
 	md5sums = SKIP
