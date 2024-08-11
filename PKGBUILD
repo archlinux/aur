@@ -1,7 +1,7 @@
 # Maintainer: Jonas Hvid <mail@johv.dk>
 pkgname=muwrap-git
 pkgver=r21.414e7e9
-pkgrel=1
+pkgrel=2
 pkgdesc="Text word wrapping utility for the command line"
 arch=('x86_64')
 url="https://github.com/c2d7fa/muwrap"
