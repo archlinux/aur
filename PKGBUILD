@@ -2,7 +2,7 @@
 # Contributor: Integral
 
 pkgname=qcm
-pkgver=1.0.4.r0.gab41d748
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
@@ -56,11 +56,6 @@ function prepare() {
 		rm -rf qml_material
 	fi
 	git clone https://github.com/hypengw/QmlMaterial.git qml_material
-}
-
-function pkgver(){
-	cd Qcm
-	git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 function build(){
