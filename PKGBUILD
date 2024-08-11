@@ -8,7 +8,7 @@ pkgdesc="A small, terminal-based journaling tool"
 arch=('any')
 url="https://github.com/NikolaDucak/${_pkgname}"
 license=('MIT')
-makedepends=('git' 'cmake' 'gcc' 'boost' 'libgit2' 'openssl' 'fmt' 'ftxui')
+makedepends=('git' 'cmake' 'boost' 'ftxui')
 depends=('glibc' 'gcc-libs' 'boost-libs' 'libgit2' 'openssl' 'fmt')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
