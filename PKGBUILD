@@ -4,13 +4,13 @@
 # Contributor: Eli Schwartz <eschwartz93@gmail.com>
 pkgname='python-dukpy'
 pkgver=0.4.0
-pkgrel=8
+pkgrel=9
 name=dukpy
 pkgdesc="Python bindings for the duktape embeddable JavaScript engine"
 arch=('x86_64')
 url="https://github.com/amol-/dukpy"
 license=('MIT')
-depends=('python')
+depends=('python' 'python-mutf8')
 makedepends=('python-setuptools')
 source=("dukpy-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${name}-${pkgver}.tar.gz")
 
