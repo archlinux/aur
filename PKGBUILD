@@ -6,13 +6,13 @@
 
 pkgname=melonds-git
 _gitname=melonDS
-pkgver=0.9.5.r2392.b47563e8
+pkgver=0.9.5.r2398.e290c423
 pkgrel=1
 pkgdesc='DS emulator, sorta'
 url="https://github.com/melonDS-emu/melonDS"
 license=('GPL-3.0-or-later')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-depends=('libepoxy' 'qt6-base' 'qt6-multimedia' 'sdl2')
+depends=('enet' 'libepoxy' 'qt6-base' 'qt6-multimedia' 'sdl2')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'libslirp' 'ninja' 'pkg-config')
 provides=('melonds')
 conflicts=('melonds')
