@@ -1,7 +1,7 @@
 # Maintainer: Wolfgang Gehrhardt <gehwolf at freenet dot de>
 
 pkgname=elos
-pkgver=0.59.2
+pkgver=0.61.4
 pkgrel=1
 pkgdesc="An event logging system"
 arch=('x86_64')
@@ -90,4 +90,4 @@ export ELOS_CONFIG_PATH=\"/etc/elos/elosd.json\"
   # fix elosd port in smoke test as the port is partially hard coded
   sed -i 's,54323,54321,g' "$pkgdir/${_ELOS_TEST_DIR}/smoketest.sh"
 }
-md5sums=('fed1f1c6e7572206f549d97eae64f86a')
+sha256sums=('b64fe7d241e3358c85ca0a3d968292d667327874fddc9b36bffa623b13aa9124')
