@@ -6,7 +6,7 @@
 
 pkgname=python-hupper
 _pkg="${pkgname#python-}"
-pkgver=1.12
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="Integrated process monitor for developing servers"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-watchdog')
 changelog=CHANGES.rst
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/h/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('18b1653d9832c9f8e7d3401986c7e7af2ae6783616be0bc406bfe0b14134a5c6')
+sha256sums=('06bf54170ff4ecf4c84ad5f188dee3901173ab449c2608ad05b9bfd6b13e32eb')
 
 build() {
 	cd "$_pkg-$pkgver"
