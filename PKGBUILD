@@ -9,7 +9,7 @@ pkgrel=3
 pkgdesc="A command-line program to download videos from YouTube.com and a few more sites"
 arch=('any')
 url="https://ytdl-org.github.io/youtube-dl/"
-license=('custom')
+license=('Unlicense')
 depends=('python')
 makedepends=('python-setuptools')
 optdepends=('ffmpeg: for video post-processing'
@@ -38,5 +38,4 @@ package() {
   mv "${pkgdir}/usr/share/bash-completion/completions/${pkgname}.bash-completion" \
      "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
   install -Dm644 ${pkgname}.zsh "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
