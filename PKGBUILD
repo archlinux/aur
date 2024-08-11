@@ -1,5 +1,5 @@
 pkgname=soundcloud-dl
-pkgver=2.11.2
+pkgver=2.11.4
 pkgrel=1
 pkgdesc="Souncloud music downloader"
 url="https://github.com/flyingrub/scdl"
@@ -12,13 +12,10 @@ depends=(
   'python-requests'
   'python-pathvalidate'
   'python-soundcloud-v2'
-  'python-build'
-  'python-wheel'
-  'python-installer'
 )
-makedepends=(git python-setuptools)
+makedepends=(git python-installer python-build python-wheel)
 source=("$pkgname-$pkgver.tag.gz::https://github.com/flyingrub/scdl/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b2a4b5459f412be6056d0d4a1c10e67288824fcb5a5582aa4f86b3d5a1c80bbd')
+sha256sums=('d059d5ad0b53944c635c4811a4eacfbac118ccc8a2a76435836cfdb06160cd88')
 
 license=(GPL-2.0-only)
 
