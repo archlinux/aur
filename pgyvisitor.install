@@ -1,0 +1,66 @@
+pre_install(){
+    if [ -f "/etc/oray/pgyvpn/config.ini" ]; then
+        cp /etc/oray/pgyvpn/config.ini /tmp/pgyconfig.ini > /dev/null 2>&1
+        exit 0;
+    fi
+}
+
+post_install() {
+    if [ ! -d "/var/log/oray/pgyvpn" ];then
+        mkdir -p /var/log/oray/pgyvpn
+    fi
+    chown $USER:$USER /var/log/oray/pgyvpn
+
+	systemctl enable pgyvpn.service
+	systemctl start pgyvpn.service
+
+    if [ -e "/usr/share/pgyvpn/script/pgyvpn_track" ]; then
+        /usr/share/pgyvpn/script/pgyvpn_track install
+    fi
+
+    echo "PgyVisitor Install Success"
+}
+
+pre_remove() {
+
+    #kill all runing pgyvpn
+    killall pgyvpn_svr > /dev/null 2>&1
+    killall pgyvisitor > /dev/null 2>&1
+    killall pgyvpn_oraysl > /dev/null 2>&1
+    killall pgyvpn_monitor > /dev/null 2>&1
+    killall pgyvpn_proxy > /dev/null 2>&1
+    killall pgystarnet > /dev/null 2>&1
+
+    route_del()
+    {
+        while true
+        do
+            route_lines=$(/sbin/route -n | awk '$8 == "oray_vnc" {print $8}' >/dev/null 2>&1)
+            if [  -z "$route_lines" ]; then
+                break;
+            else
+                route_n=$(/sbin/route -n | grep "oray_vnc")
+                net_ip=$(echo $route_n | cut -d " " -f 1)
+                net_mask=$(echo $route_n | cut -d " " -f 3)
+                /sbin/route delete -net $net_ip netmask $net_mask >>/dev/null 2>&1
+            fi
+        done
+        return 0
+    }
+
+    systemctl stop pgyvpn.service
+    systemctl disable pgyvpn.service
+
+    /usr/share/pgyvpn/script/pgyvpn_track uninstall
+
+    rm -rf /var/log/oray > /dev/null 2>&1
+    rm -rf /etc/oray > /dev/null 2>&1
+    rm /tmp/pgyconfig.ini > /dev/null 2>&1
+    rm -rf /usr/share/pgyvpn > /dev/null 2>&1
+
+    ##route delete###
+    route_del
+
+    echo "PgyVisitor Remove Success"
+}
+
