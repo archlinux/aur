@@ -4,17 +4,13 @@ _pkgname=Stat2Data
 _pkgver=2.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=0
+pkgrel=1
 pkgdesc="Datasets for Stat2"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL-3.0-only')
 depends=(
   r
-)
-optdepends=(
-  r-graphics
-  r-stats
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('9716c4c61a593a257824b4096ec9c2f9')
