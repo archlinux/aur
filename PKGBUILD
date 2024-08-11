@@ -9,7 +9,7 @@
 _pkgname="systemd-cron-next"
 pkgname="$_pkgname-git"
 pkgver=1.0.2.r22.gfe1f4a6
-pkgrel=1
+pkgrel=2
 pkgdesc="Systemd generator to generate timers/services from crontab and anacrontab files"
 url="https://github.com/systemd-cron/systemd-cron-next"
 license=('MIT')
@@ -28,17 +28,16 @@ optdepends=(
 )
 
 provides=(
+  "$_pkgname=$pkgver"
   'anacron'
   'cron'
   'systemd-cron'
 )
 conflicts=(
+  "$_pkgname"
   'anacron'
   'cron'
 )
-
-provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
 source=(

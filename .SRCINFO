@@ -1,7 +1,7 @@
 pkgbase = systemd-cron-next-git
 	pkgdesc = Systemd generator to generate timers/services from crontab and anacrontab files
 	pkgver = 1.0.2.r22.gfe1f4a6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/systemd-cron/systemd-cron-next
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,12 @@ pkgbase = systemd-cron-next-git
 	depends = systemd
 	optdepends = smtp-forwarder: sending emails
 	provides = systemd-cron-next=1.0.2.r22.gfe1f4a6
+	provides = anacron
+	provides = cron
+	provides = systemd-cron
 	conflicts = systemd-cron-next
+	conflicts = anacron
+	conflicts = cron
 	source = systemd-cron-next::git+https://github.com/systemd-cron/systemd-cron-next.git
 	source = 0001-makefile-git.patch
 	sha256sums = SKIP
