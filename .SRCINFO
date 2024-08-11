@@ -1,6 +1,6 @@
 pkgbase = art-rawconverter-ctlscripts
 	pkgdesc = add on for ART raw converter with various CTL scripts
-	pkgver = 1.0.1
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://bitbucket.org/agriggio/art-ctlscripts/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = art-rawconverter-ctlscripts
 	makedepends = fakeroot
 	depends = art-rawconverter
 	depends = ctl
-	source = art-rawconverter-ctlscripts_1.0.1::git+https://bitbucket.org/agriggio/art-ctlscripts.git#tag=1.0.1
+	source = art-rawconverter-ctlscripts_1.1::git+https://bitbucket.org/agriggio/art-ctlscripts.git#tag=1.1
 	sha256sums = SKIP
 
 pkgname = art-rawconverter-ctlscripts
