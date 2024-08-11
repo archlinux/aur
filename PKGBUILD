@@ -2,9 +2,9 @@
 _pkgname=github-desktop
 _appname="GitHub Desktop"
 pkgname="${_pkgname}-zh-bin"
-pkgver=3.4.2_linux1
+pkgver=3.4.3_linux1
 #_zhpkgver="${pkgver%_linux2}"
-_zhpkgver=3.4.2
+_zhpkgver=3.4.3
 _electronversion=30
 pkgrel=1
 pkgdesc="GUI for managing Git and GitHub.Chinese SC Version.Github Desktop 汉化版"
@@ -38,12 +38,12 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/shiftkey/desktop/release-${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0faf5f118152dabbffe63ccc9e47222532f5290d2a30044df5f9b33801009477'
+sha256sums=('1a7a9a76d130e5f29ab5ff6ebcfade329530d05c87e2378aef000dbac5fac69c'
             '891d678cd6aa67c0712f663b5fee690f24d11d360795300814f7bf2eb91ba530'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('55b3e34f3e316066953b7b8e1ba950350ad5126c77f87ffecbcfabd0ee796948')
-sha256sums_armv7h=('a7a4bdddbcb6686b7e1ff943c3c7ba92debfe60ef216e84ffacbc2e37e0cd654')
-sha256sums_x86_64=('a98e6b0af3a07f5fd9d345d9eb2027eb329d519fba9783c2b613d4e385cb2a17')
+            'c053a7b3ed8b0b4d77f78e81ab8a4c61cbfd773a9298b3f3a187e5df89c125c2')
+sha256sums_aarch64=('da070a8379dda95cceb6c2a331fde7d33d56feee31de647e334435d34c6cfb22')
+sha256sums_armv7h=('44b85e5a3fdb1c575b6ee6101f45c97680554f143add2dec330104575e10468b')
+sha256sums_x86_64=('e2c8aa0ee4f67b1d12e96080fef4dd342b0fd7aa619ead158f1e48cd5123c238')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
