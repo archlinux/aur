@@ -3,12 +3,12 @@
 
 pkgname=lib32-vulkan-icd-loader-git
 pkgdesc='Vulkan Installable Client Driver (ICD) Loader (32-bit) (git version)'
-pkgver=1.3.289.r1.g3869180
+pkgver=1.3.292.r0.gfaeb588
 pkgrel=1
 arch=(i686 x86_64)
 url='https://github.com/KhronosGroup/Vulkan-Loader'
 license=(Apache-2.0)
-makedepends=(cmake python lib32-libx11 lib32-libxrandr lib32-wayland vulkan-headers-git git ninja make)
+makedepends=(cmake python lib32-libx11 lib32-libxrandr lib32-wayland vulkan-headers git ninja make)
 depends=(lib32-glibc)
 optdepends=('lib32-vulkan-driver: packaged vulkan driver')
 conflicts=(lib32-vulkan-icd-loader)
