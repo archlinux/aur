@@ -8,6 +8,8 @@ url="https://gitlab.com/OpenRGBDevelopers/OpenRGBHardwareSyncPlugin"
 license=('GPL-2.0-only')
 depends=('qt5-tools' 'openrgb' 'libgtop')
 makedepends=('git')
+provides=('openrgb-plugin-hardware-sync')
+conflicts=('openrgb-plugin-hardware-sync')
 source=("git+https://gitlab.com/OpenRGBDevelopers/OpenRGBHardwareSyncPlugin.git")
 sha256sums=('SKIP')
 
