@@ -3,7 +3,7 @@
 # Co-Maintainer: stefanwimmer128 <info at stefanwimmer128 dot xyz>
 
 _pkgname=firedragon
-_pkgver=11.15.0-1
+_pkgver=11.16.0-1
 _pkgrel=1
 
 pkgname=${_pkgname}-bin
@@ -13,7 +13,7 @@ epoch=1
 pkgdesc="Floorp fork build using custom branding and settings"
 url='https://garudalinux.org'
 arch=('x86_64')
-license=('MPL2' 'Floorp Shared Source License')
+license=('MPL2')
 depends=(dbus
   dbus-glib
   ffmpeg
@@ -48,7 +48,7 @@ backup=("usr/lib/${_pkgname}/${_pkgname}.cfg"
 source=(https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v${_pkgver}/downloads/firedragon-v${_pkgver}.linux-x86_64.tar.bz2
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.psd
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.desktop)
-sha256sums=('cc3af38a68267771c251d65431111fd864ca61f6422fb24f172c4fa758a13e75'
+sha256sums=('e3f82613914115cc19931afdf75693ae0736d3e75d9feeffcafd67b20e8d1267'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
 
