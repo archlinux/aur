@@ -32,6 +32,6 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   mkdir -p "$pkgdir/usr/bin"
   cp main "$pkgdir/usr/bin/muwrap"
-  mkdir -p "$pkgdir/usr/share/licenses/muwrap"
-  cp LICENSE "$pkgdir/usr/share/licenses/muwrap/LICENSE"
+  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+  cp LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
