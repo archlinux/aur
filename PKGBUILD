@@ -93,11 +93,13 @@ source=(
   https://gitlab.com/api/v4/projects/32320088/packages/generic/librewolf-source/${pkgver}-${pkgrel}/librewolf-${pkgver}-${pkgrel}.source.tar.gz # {,.sig} sig files are currently broken, it seems
   $__pkgname.desktop
   "default192x192.png"
+  allow_dark.patch
 )
 
 sha256sums=('df1033b7d825da65e1892f599e65525e8d138374f75c5ebb76ee13ab818b4020'
             '7d01d317b7db7416783febc18ee1237ade2ec86c1567e2c2dd628a94cbf2f25d'
-            '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1')
+            '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
+            '6817edf16463f262de3b78f3e075a680ddad5036eee36d1855cfd35b11c2d88d')
 
 validpgpkeys=('034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3') # maltej(?)
 
@@ -108,6 +110,8 @@ _build_profiled_x86_64=true
 prepare() {
   mkdir -p mozbuild
   cd librewolf-$pkgver-$pkgrel
+
+  patch -p1 -i ../allow_dark.patch
 
   mv mozconfig ../mozconfig
 

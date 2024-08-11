@@ -1,0 +1,58 @@
+diff -ru a/browser/components/preferences/main.js b/browser/components/preferences/main.js
+--- a/browser/components/preferences/main.js
++++ b/browser/components/preferences/main.js
+@@ -4245,6 +4245,7 @@
+     FORCED_COLORS_QUERY.addEventListener("change", this);
+     Services.prefs.addObserver(PREF_USE_SYSTEM_COLORS, this);
+     Services.prefs.addObserver("privacy.resistFingerprinting", this);
++    Services.prefs.addObserver("privacy.privacy.override_rfp_for_color_scheme", this);
+     Services.obs.addObserver(this, "look-and-feel-changed");
+     this._update();
+   },
+@@ -4282,6 +4283,7 @@
+   destroy() {
+     Services.prefs.removeObserver(PREF_USE_SYSTEM_COLORS, this);
+     Services.prefs.removeObserver("privacy.resistFingerprinting", this);
++    Services.prefs.removeObserver("privacy.override_rfp_for_color_scheme", this);
+     Services.obs.removeObserver(this, "look-and-feel-changed");
+     FORCED_COLORS_QUERY.removeEventListener("change", this);
+   },
+@@ -4323,7 +4325,8 @@
+     this.warning.hidden = !forcingColorsAndNoColorSchemeSupport;
+ 
+     document.getElementById("web-appearance-rfp-warning")?.remove();
+-    if (Services.prefs.getBoolPref("privacy.resistFingerprinting")) {
++    if (Services.prefs.getBoolPref("privacy.resistFingerprinting") &&
++        !Services.prefs.getBoolPref("privacy.override_rfp_for_color_scheme")) {
+       document.getElementById("web-appearance-chooser").style.opacity = 0.3;
+       document.getElementById("web-appearance-chooser").style.pointerEvents = "none";
+       const infoBox = document.createElement("div");
+diff -ru a/dom/base/Document.cpp b/dom/base/Document.cpp
+--- a/dom/base/Document.cpp
++++ b/dom/base/Document.cpp
+@@ -18865,7 +18865,8 @@
+ 
+ ColorScheme Document::PreferredColorScheme(IgnoreRFP aIgnoreRFP) const {
+   if (ShouldResistFingerprinting(RFPTarget::CSSPrefersColorScheme) &&
+-      aIgnoreRFP == IgnoreRFP::No) {
++      aIgnoreRFP == IgnoreRFP::No &&
++      !StaticPrefs::privacy_override_rfp_for_color_scheme()) {
+     return ColorScheme::Light;
+   }
+ 
+diff -ru a/modules/libpref/init/StaticPrefList.yaml b/modules/libpref/init/StaticPrefList.yaml
+--- a/modules/libpref/init/StaticPrefList.yaml
++++ b/modules/libpref/init/StaticPrefList.yaml
+@@ -13940,6 +13940,12 @@
+   value: false
+   mirror: always
+ 
++# Allows overriding RFP for only the dark/light pref
++- name: privacy.override_rfp_for_color_scheme
++  type: bool
++  value: false
++  mirror: always
++
+ # Enforce tracking protection in all modes.
+ - name: privacy.trackingprotection.enabled
+   type: bool
