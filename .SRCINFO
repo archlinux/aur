@@ -1,8 +1,8 @@
-pkgbase = lala-musicbar
-	pkgdesc = A music bar with layershell
-	pkgver = 0.2.7
+pkgbase = lala-bar
+	pkgdesc = A bar with layershell
+	pkgver = 0.2.8
 	pkgrel = 1.0
-	url = https://github.com/Decodetalkers/lala-musicbar
+	url = https://github.com/Decodetalkers/lala-bar
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = lala-musicbar
 	makedepends = meson
 	makedepends = rust
 	options = !lto
-	source = lala-musicbar-v0.2.7.tar.gz::https://github.com/Decodetalkers/lala-musicbar/archive/refs/tags/v0.2.7.tar.gz
-	sha256sums = edec2a97bb28755e8cb1809743579d558892690e1b9bcfc8d6de9a804622866b
+	source = lala-bar-v0.2.8.tar.gz::https://github.com/Decodetalkers/lala-bar/archive/refs/tags/v0.2.8.tar.gz
+	sha256sums = 6eff7d812a597159ae08e2a21f67be2f1526b5051fec39dd67712f565bbfe96a
 
-pkgname = lala-musicbar
+pkgname = lala-bar
