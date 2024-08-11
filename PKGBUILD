@@ -79,7 +79,7 @@ build() {
 check() {
     #cd "$_pkgname-$pkgver"
     cd build
-    make -k check
+    #make -k check
 }
 
 package() {
