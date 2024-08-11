@@ -7,7 +7,7 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 pkgname="haveno-reto"
-pkgver="1.0.9"
+pkgver="1.0.10"
 pkgrel="1"
 pkgdesc="Decentralised P2P exchange built on Monero and Tor - unofficial Reto network"
 arch=("any")
@@ -18,7 +18,7 @@ makedepends=("java-environment=21")
 conflicts=("haveno")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.desktop")
-sha512sums=("fc7b46806deec98d6aad6588f814e4c76df3d04a6fa7f5705d539cf205b3b516f7812d7a1a8107978ec26c50668c5c496a5eccc7410a63d24f4e631f70ee0c22"
+sha512sums=("2612921d3a39082b707d178cbdecb8dce535f8ad2b3104b46f151428059eeab713663a19557e866a2c7619ec7b463f2e1fb031c2f6d0b2af5a956ff3e81dd978"
     "90103d36dfbc4d5da1c16774a9474c5e4b9bcc9d9354d35060187aa89176989119a7ec83bd36beca9e79103aae5329db72bf981a622be1daf248bb6dffceae5c")
 install="${pkgname}.install"
 
