@@ -38,10 +38,6 @@ prepare() {
 }
 
 build() {
-  export CFLAGS="${CFLAGS/-fno-plt}"
-  export CXXFLAGS="${CXXFLAGS/-fno-plt}"
-  export LDFLAGS="${LDFLAGS/,-z,now}"
-
   build_xgl() {
     bitness=$1
     shift
