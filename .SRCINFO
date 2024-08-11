@@ -1,13 +1,13 @@
 pkgbase = i3-wallpaper-manager-bin
 	pkgdesc = Per-workspace wallpaper setter for i3-wm
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://gitnet.fr/deblan/i3-wallpaper-manager
 	arch = x86_64
 	license = GPL
 	depends = i3-wm
 	optdepends = feh: default wallpaper setter
-	source = https://gitnet.fr/deblan/i3-wallpaper-manager/releases/download/v1.2.0/i3-wallpaper-manager-1.2.0-linux-amd64
-	sha256sums = 0d6b83426c4eb48fb7eac4078549e42088825d095fa6712ce40920d211ba897e
+	source = https://gitnet.fr/deblan/i3-wallpaper-manager/releases/download/v1.2.1/i3-wallpaper-manager-1.2.1-linux-amd64
+	sha256sums = b0efa7484c63e0ecff8657d2648f74fea01d01a959eb4f1e0a7d5e447db3e8e3
 
 pkgname = i3-wallpaper-manager-bin

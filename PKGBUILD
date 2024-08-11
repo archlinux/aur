@@ -1,7 +1,7 @@
 # Maintainer: Yusuf Aktepe <yusuf@yusufaktepe.com>
 
 pkgname=i3-wallpaper-manager-bin
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Per-workspace wallpaper setter for i3-wm"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('i3-wm')
 optdepends=( 'feh: default wallpaper setter' )
 source=("$url/releases/download/v$pkgver/i3-wallpaper-manager-$pkgver-linux-amd64")
-sha256sums=('0d6b83426c4eb48fb7eac4078549e42088825d095fa6712ce40920d211ba897e')
+sha256sums=('b0efa7484c63e0ecff8657d2648f74fea01d01a959eb4f1e0a7d5e447db3e8e3')
 
 package() {
 	install -vDm755 "i3-wallpaper-manager-$pkgver-linux-amd64" "$pkgdir/usr/bin/i3-wallpaper-manager"
