@@ -1,7 +1,7 @@
 pkgbase = linvam
 	pkgdesc = Linux voice activated macros
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stele95/LinVAM
 	install = linvam.install
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = linvam
 	depends = python-requests
 	depends = python-tqdm
 	depends = python-sounddevice
-	depends = python-vosk-bin
+	depends = python-vosk
 	depends = ffmpeg
 	depends = ydotool
 	provides = linvam

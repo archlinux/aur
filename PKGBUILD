@@ -2,7 +2,7 @@
 
 pkgname='linvam'
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux voice activated macros'
 arch=('x86_64')
 url='https://github.com/stele95/LinVAM'
@@ -19,7 +19,7 @@ depends=(
   'python-requests'
   'python-tqdm'
   'python-sounddevice'
-  'python-vosk-bin'
+  'python-vosk'
   'ffmpeg'
   'ydotool'
 )
