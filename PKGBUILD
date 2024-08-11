@@ -2,7 +2,7 @@
 # makepkg --printsrcinfo > .SRCINFO && makepkg -scC --nocheck --skipchecksums --skipinteg --skippgpcheck
 
 pkgname=dmde-linux
-pkgver=4.0.6.806
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="DMDE is a powerful tool for data searching, editing, and recovery on disks"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=(zenity sudo)
 makedepends=(unzip)
 replaces=($pkgname)
 
-source_x86_64=("https://dmde.ru/download/dmde-4-0-6-806-lin64-gui.zip")
+source_x86_64=("https://dmde.ru/download/dmde-4-2-0-814-lin64-gui.zip")
 
 source=(dmde-linux.desktop
 		logo.png
