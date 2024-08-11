@@ -1,0 +1,25 @@
+pkgbase = python-extruct-git
+	pkgdesc = Extract embedded metadata from HTML markup
+	pkgver = 550.3bf7546
+	pkgrel = 1
+	url = https://github.com/scrapinghub/extruct
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	depends = python-html-text
+	depends = python-jstyleson
+	depends = python-lxml
+	depends = python-lxml-html-clean
+	depends = python-mf2py
+	depends = python-pyrdfa3
+	depends = python-rdflib
+	depends = python-w3lib
+	provides = python-extruct
+	conflicts = python-extruct
+	source = git+https://github.com/scrapinghub/extruct.git
+	sha256sums = SKIP
+
+pkgname = python-extruct-git
