@@ -30,7 +30,6 @@ depends=(
     'tinyxml2'
 )
 makedepends=(
-  'procps-ng'  # For 'free'
   'python-rosinstall_generator'
   'python-vcstool'
 )
