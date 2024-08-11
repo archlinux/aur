@@ -1,7 +1,7 @@
 pkgname=python-chibi-dl
 _pyname=chibi_dl
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="python lib to create scrapers"
 arch=('any')
 url="https://pypi.org/project/chibi-dl/"

@@ -1,7 +1,7 @@
 pkgbase = python-chibi-dl
 	pkgdesc = python lib to create scrapers
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/chibi-dl/
 	arch = any
 	license = WTFPL
