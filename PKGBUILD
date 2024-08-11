@@ -4,7 +4,7 @@
 
 pkgname=python-keyboard
 pkgver=0.13.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Hook and simulate keyboard events on Windows and Linux"
 arch=('any')
 license=('MIT')
@@ -21,6 +21,7 @@ build() {
 
 package() {
   cd keyboard-$pkgver
+  install -Dpm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   python setup.py install --root="$pkgdir" --optimize=1
 }
 

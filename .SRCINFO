@@ -1,7 +1,7 @@
 pkgbase = python-keyboard
 	pkgdesc = Hook and simulate keyboard events on Windows and Linux
 	pkgver = 0.13.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/boppreh/keyboard
 	arch = any
 	license = MIT
