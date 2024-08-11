@@ -1,11 +1,11 @@
-# Maintainer: zer0-x < Matrix: "@zer0-x:kde.org" >
+# Maintainer: zefr0x < Matrix: "@zer0-x:kde.org" >
 
 pkgname="cwitch"
 pkgver="0.3.0"
 pkgrel=1
 pkgdesc="CLI tool to watch Twitch live streams and videos with the help of mpv and yt-dlp."
 arch=('any')
-url="https://github.com/zer0-x/cwitch"
+url="https://github.com/zefr0x/cwitch"
 license=('GPL3')
 depends=('mpv' 'python-mpv' 'yt-dlp' 'python-prompt_toolkit')
 makedepends=('python-setuptools')
