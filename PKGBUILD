@@ -8,8 +8,8 @@ url="https://gitlab.com/OpenRGBDevelopers/OpenRGBE131ReceiverPlugin"
 license=('GPL-2.0-only')
 depends=('qt5-tools' 'openrgb')
 makedepends=('git')
-provides('openrgb-plugin-e131-receiver')
-conflicts('openrgb-plugin-e131-receiver')
+provides=('openrgb-plugin-e131-receiver')
+conflicts=('openrgb-plugin-e131-receiver')
 source=("git+https://gitlab.com/OpenRGBDevelopers/OpenRGBE131ReceiverPlugin.git")
 sha256sums=('SKIP')
 
