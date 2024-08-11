@@ -1,6 +1,6 @@
 pkgbase = r-sponge
 	pkgdesc = Sparse Partial Correlations On Gene Expression
-	pkgver = 1.24.0
+	pkgver = 1.26.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SPONGE
 	arch = any
@@ -24,7 +24,6 @@ pkgbase = r-sponge
 	depends = r-iterators
 	depends = r-logging
 	depends = r-metbrewer
-	depends = r-mirbaseconverter
 	depends = r-ppcor
 	depends = r-randomforest
 	depends = r-rlang
@@ -42,8 +41,8 @@ pkgbase = r-sponge
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-visnetwork
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SPONGE_1.24.0.tar.gz
-	md5sums = 627eb768a9021200f9bafc4e6402c58f
-	b2sums = 66a147d616fb2297a706848690759f2cf058875c5bf60d2edcdcf303bcb9bbb20d27284f446d0c6dd506b4bba9a1b8bc7cc057677e3595fbc549ceedc7dd7f87
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SPONGE_1.26.1.tar.gz
+	md5sums = fe6976386739e0c851946d13300fa033
+	b2sums = aef9652f45a727466be616819cdb0cf96d8bd7f6c085ffc622c1b9aa24b09e2f2fe79ea018efc46eb1d367e047b98375fc71259b99ac0324a709cf595be38a17
 
 pkgname = r-sponge
