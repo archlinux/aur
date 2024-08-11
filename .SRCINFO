@@ -1,0 +1,19 @@
+pkgbase = python-narwhals
+	pkgdesc = Extremely lightweight compatibility layer between dataframe libraries
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/narwhals-dev/narwhals
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	optdepends = python-pandas: for Pandas support
+	optdepends = python-polars: for Polars support
+	optdepends = python-pyarrow: for PyArrows support
+	source = https://github.com/narwhals-dev/narwhals/releases/download/v1.3.0/narwhals-1.3.0.tar.gz
+	sha256sums = e30408c88c401de3c65a98edd7a444e181adfe7dec715cd9aa2899cc118e98a1
+
+pkgname = python-narwhals
