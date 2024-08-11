@@ -1,0 +1,37 @@
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+
+pkgname="elia"
+pkgver=1.8.0
+pkgrel=1
+pkgdesc="A powerful terminal user interface for interacting with large language models"
+arch=('any')
+url="https://github.com/darrenburns/${pkgname}"
+license=('Apache-2.0')
+makedepends=('python-build' 'python-installer' 'python-hatchling')
+depends=('python>=3.11' 'python-textual' 'python-sqlmodel>=0.0.9'
+         'python-humanize>=4.6.0' 'python-click>=8.1.6'
+         'python-xdg-base-dirs>=6.0.1' 'python-aiosqlite>=0.20.0'
+         'python-click-default-group>=1.2.4' 'python-greenlet>=3.0.3'
+         'python-google-generativeai>=0.5.3' 'python-pyperclip>=1.8.2'
+         'litellm>=1.37.19' 'python-tiktoken' 'python-rich' 'python-sqlalchemy'
+         'python-pydantic')
+_pkgsrc="${pkgname}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('dd6d3168ba7130cb938854ebdf948ce5cfd8815a609d6695bb9c3c5fcf478bb5')
+
+build () {
+  cd "${srcdir}/${_pkgsrc}"
+  python -m build --wheel --no-isolation
+}
+
+package () {
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
+  cd "${srcdir}/${_pkgsrc}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s "${pkgdir}${site_packages}/${pkgname}_chat-${pkgver}.dist-info/licenses/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}

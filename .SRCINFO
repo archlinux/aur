@@ -1,0 +1,30 @@
+pkgbase = elia
+	pkgdesc = A powerful terminal user interface for interacting with large language models
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/darrenburns/elia
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python>=3.11
+	depends = python-textual
+	depends = python-sqlmodel>=0.0.9
+	depends = python-humanize>=4.6.0
+	depends = python-click>=8.1.6
+	depends = python-xdg-base-dirs>=6.0.1
+	depends = python-aiosqlite>=0.20.0
+	depends = python-click-default-group>=1.2.4
+	depends = python-greenlet>=3.0.3
+	depends = python-google-generativeai>=0.5.3
+	depends = python-pyperclip>=1.8.2
+	depends = litellm>=1.37.19
+	depends = python-tiktoken
+	depends = python-rich
+	depends = python-sqlalchemy
+	depends = python-pydantic
+	source = elia-1.8.0.tar.gz::https://github.com/darrenburns/elia/archive/1.8.0.tar.gz
+	sha256sums = dd6d3168ba7130cb938854ebdf948ce5cfd8815a609d6695bb9c3c5fcf478bb5
+
+pkgname = elia
