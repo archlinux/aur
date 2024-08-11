@@ -2,7 +2,7 @@
 pkgname=servicemaster-bin
 _pkgname=ServiceMaster
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux systemd administration tool with nice TUI written in C."
 arch=("x86_64")
 url="https://github.com/Lennart1978/servicemaster"
@@ -14,7 +14,7 @@ source=(
     "${pkgname%-bin}-${pkgver}::${url}/releases/download/V${pkgver}/${pkgname%-bin}"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Lennart1978/servicemaster/V${pkgver}/LICENSE"
 )
-sha256sums=('ad54358df4dbfe2490e78434b4ee981ecae98cf949c20adf2c5f9ed6361a2e92'
+sha256sums=('2d059340487899b8976df61d13c3e938a47a87a6fe90544111dfc3ae35a705ef'
             'e0700a990ed324ecd265aa8730096db225f9a0e795b221541f3b02cbfab47899')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}" "${pkgdir}/usr/bin/${pkgname%-bin}"
