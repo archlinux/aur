@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-greeter-git
 pkgver=1.0.0.alpha.1.r0.gcc744b0
-pkgrel=1
+pkgrel=2
 pkgdesc="libcosmic greeter for greetd, which can be run inside cosmic-comp"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-greeter"
@@ -57,4 +57,7 @@ build() {
 package() {
   cd "${pkgname%-git}"
   just rootdir="$pkgdir" install
+
+  install -Dm644 "${pkgname%-git}.toml" -t "$pkgdir/etc/greetd/"
+  install -Dm644 "${pkgname%-git}-daemon.service" -t "$pkgdir/usr/lib/systemd/system/"
 }
