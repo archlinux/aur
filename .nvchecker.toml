@@ -1,0 +1,5 @@
+[wire-desktop]
+source = "git"
+git = "https://github.com/wireapp/wire-desktop"
+prefix = "linux/"
+include_regex = 'linux/\d+\.\d+\.\d+'
