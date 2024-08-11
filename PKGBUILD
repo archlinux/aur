@@ -5,13 +5,16 @@
 _pkgname=moc
 pkgname="${_pkgname}-pulse-svn"
 pkgver=r3005
-pkgrel=3
+pkgrel=4
 pkgdesc='An ncurses console audio player with support for pulseaudio (SVN)'
 url='http://moc.daper.net'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL')
 depends=('libmad' 'libid3tag' 'jack' 'curl' 'libltdl' 'file' 'sndio')
-makedepends=('speex' 'ffmpeg4.4' 'taglib' 'libmpcdec' 'wavpack' 'libmodplug' 'faad2' 'subversion')
+makedepends=('speex' 'ffmpeg4.4' 'taglib' 'libmpcdec' 'wavpack' 'libmodplug' 'faad2' 'subversion'
+           # 'sidplay2-libs' # uncomment to compile libsidplay2/SID file support
+           # 'pulse-native-provider' # uncomment to compile pulseaudio support
+            )
 optdepends=('speex: for using the speex plugin'
             'ffmpeg4.4: for using the ffmpeg plugin'
             'taglib: for using the musepack plugin'
@@ -19,7 +22,8 @@ optdepends=('speex: for using the speex plugin'
             'wavpack: for using the wavpack plugin'
             'libmodplug: for using the modplug plugin'
             'faad2: for use the aac plugin'
-            'pulseaudio: for using the pulseaudio plugin')
+            'sidplay2-libs: for use the SID plugin'
+            'pulse-native-provider: for using the pulseaudio plugin')
 conflicts=('moc')
 provides=('moc')
 options=('!libtool')
@@ -57,7 +61,8 @@ build() {
     --with-alsa --with-oss --with-jack --with-aac --with-mp3 \
     --with-musepack --with-vorbis --with-flac --with-wavpack \
     --with-sndfile --with-modplug --with-ffmpeg --with-speex \
-    --with-samplerate --with-curl --disable-cache --disable-debug
+    --with-samplerate --with-curl --with-sidplay2 \
+    --disable-cache --disable-debug
   make
 }
 
