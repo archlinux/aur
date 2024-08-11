@@ -1,6 +1,6 @@
 pkgbase = qcm
 	pkgdesc = Qt client for netease cloud music
-	pkgver = 1.0.3
+	pkgver = 1.0.4.r0.gab41d748
 	pkgrel = 1
 	url = https://github.com/hypengw/Qcm
 	arch = x86_64
@@ -37,7 +37,8 @@ pkgbase = qcm
 	depends = libgpg-error
 	depends = ffmpeg
 	provides = qcm
-	source = git+https://github.com/hypengw/Qcm.git#tag=v1.0.3
+	conflicts = qcm
+	source = git+https://github.com/hypengw/Qcm.git#tag=v1.0.4.r0.gab41d748
 	sha256sums = SKIP
 
 pkgname = qcm
