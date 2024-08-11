@@ -6,101 +6,117 @@
 
 pkgname=gamescope-nvidia-git
 _pkgname=gamescope
-pkgver=3.14.3.r8.gf88723f
+pkgver=3.14.29.r9.g94271f31
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager (NVIDIA patch)'
 arch=(x86_64)
 url=https://github.com/sharkautarch/gamescope/tree/nvidia-fix
-license=('BSD-2-Clause')
+license=(
+  'BSD-2-Clause'
+  'BSD-3-Clause'
+  'LicenseRef-Reshade')
 install="$_pkgname.install"
 depends=(
   'libpipewire'
   'libcap'
-  'libliftoff'
   'libxcomposite'
   'libxdamage'
   'libxkbcommon'
   'libxmu'
   'libxres'
   'libxxf86vm'
+  'lcms2'
+  'libei'
+  'libxi'
   'seatd' # wlroots deps
   'xcb-util-errors' # wlroots deps
-  'libdisplay-info' # wlroots deps
   'sdl2'
   'vulkan-icd-loader'
   'xorg-xwayland')
 makedepends=(
   'git'
-  'glm'
+  'glm' # tested work version v1.0.1
   'glslang'
   'meson'
+  'cmake'
   'ninja'
   'vulkan-headers'
   'wayland-protocols')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-  "git+https://github.com/ValveSoftware/gamescope.git"
-  "git+https://github.com/ValveSoftware/openvr.git"
-  "git+https://github.com/Joshua-Ashton/reshade.git"
-  "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
-  "git+https://github.com/Joshua-Ashton/vkroots.git"
-  "git+https://github.com/Joshua-Ashton/wlroots.git"
-  "git+https://github.com/nothings/stb.git"
-  "reverts-bd722f7.patch")
-sha1sums=('SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          '6573136d575068266dcb67459545ab06db58758a')
+  "$_pkgname::git+https://github.com/ValveSoftware/gamescope.git"
+  "subprojects|stb::git+https://github.com/nothings/stb.git#commit=5736b15f7ea0ffb08dd38af21067c314d6a3aae9"
+  "reverts-bd722f7.patch") # https://github.com/sharkautarch/gamescope/tree/nvidia-fix
 
 prepare() {
-  # apply nvidia-fix patchs from
-  # https://github.com/sharkautarch/gamescope/tree/nvidia-fix
   for patch in "${source[@]}"; do
+    patch="${patch%%::*}"
+    patch="${patch##*/}"
     if [[ $patch == *.patch ]]; then
       msg2 "Applying $patch"
-      patch --no-backup-if-mismatch -d gamescope -Np1 -i "$srcdir/$patch"
+      patch --no-backup-if-mismatch -d "$_pkgname" -Np1 -i "$srcdir/$patch"
     fi
   done
 
-  cd gamescope
+  cd $_pkgname
 
   msg2 'Retrieving git build dependencies...'
-  # configure build deps
-  git -c submodule.src/reshade.url="$srcdir/reshade" \
-      -c submodule.subprojects/vkroots.url="$srcdir/vkroots" \
-      -c submodule.subprojects/wlroots.url="$srcdir/wlroots" \
-      -c submodule.thirdparty/SPIRV-Headers.url="$srcdir/SPIRV-Headers" \
-      -c submodule.subprojects/openvr.url="$srcdir/openvr" \
-      -c submodule.subprojects/libdisplay-info.update=none \
-      -c submodule.subprojects/libliftoff.update=none \
-      -c protocol.file.allow=always submodule update --init --progress
+  bash -c '
+    startdir='"$startdir"'
+    srcdir='"$srcdir"'
+    source "$startdir/updpkgsrc.sh"
+    message=$(updateBuildScriptForSubModule "$startdir/PKGBUILD"); code=$?
+    # shellcheck disable=SC2181
+    if [[ $code == 0 ]]; then
+      echo "$message"
+    else
+      echo "$message"
+      exit $code
+    fi
+    eval "$(echoGitCMDForSubModule)"
+  '
 
   msg2 'Retrieving meson build dependencies...'
-  # meson wrap deps that can't be replaced with system one
-  sed -i "s|^url =.*|url = file://$srcdir/stb|" subprojects/stb.wrap
+  sed -i "s#^url =.*#url = file://$srcdir/subprojects|stb#" subprojects/stb.wrap
   meson subprojects download stb
 }
 
 pkgver() {
-  git -C "${_pkgname}" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C "$_pkgname" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson gamescope build \
-    -Dforce_fallback_for=stb,vkroots \
+  arch-meson "$_pkgname" build \
+    --auto-features=enabled \
     -Dbenchmark=disabled \
     -Dpipewire=enabled
   meson compile -C build
 }
 
 package() {
-  DESTDIR="${pkgdir}" meson install -C build --skip-subprojects
-  install -Dm 644 gamescope/LICENSE -t "${pkgdir}"/usr/share/licenses/gamescope/
+  DESTDIR="$pkgdir" meson install -C build --skip-subprojects
+  install -Dm 644 "$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }
+
+# Auto generate, do not edit.
+source+=('thirdparty|SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers/#commit=d790ced752b5bfc06b6988baadef6eb2d16bdf96'
+         'subprojects|vkroots::git+https://github.com/Joshua-Ashton/vkroots#commit=5106d8a0df95de66cc58dc1ea37e69c99afc9540'
+         'subprojects|openvr::git+https://github.com/ValveSoftware/openvr.git#commit=ebd425331229365dc3ec42d1bb8b2cc3c2332f81'
+         'src|reshade::git+https://github.com/Joshua-Ashton/reshade#commit=696b14cd6006ae9ca174e6164450619ace043283'
+         'subprojects|libdisplay-info::git+https://gitlab.freedesktop.org/emersion/libdisplay-info#commit=66b802d05b374cd8f388dc6ad1e7ae4f08cb3300'
+         'subprojects|libliftoff::git+https://gitlab.freedesktop.org/emersion/libliftoff.git#commit=8b08dc1c14fd019cc90ddabe34ad16596b0691f4'
+         'subprojects|wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=4bc5333a2cbba0b0b88559f281dbde04b849e6ef') # End
+
+sha512sums=('SKIP'
+            '53ff8f7a4ae987b84398bf6b35bccb5aec5337d4e57660f599776eb62f692aa40be671e2c456f24de16c07d27272431b807ca3fd4a97d297bb2a8f35c3df665f'
+            '52a7c6670c2ceb2110b1a374db152abf8697e731665ceed9b651f94f95300579d6488c931a29c11d08bf2dc11af5859b0189757a6ebcc4ec494d10c65a088b27'
+            '65490f89498b351e737eb79fe498dd428af84ad85e28f41fdf1f62d31dc90f29836be5f3eb754f58353dca63a9ffa858073a97fea0a69cf0e07185fb62b6adc0'
+            '0a6fc80fd713c86117fab40e1b92ba8953bb8e68c4ac933fa8f6c04a4b10edba6ebb19cfc74d560c6007d5bcb3ca9d4de63d6cae800f1d426a97ff25f0b7f0fc'
+            'fd02c3aab84bc2ff8b3210fad0d83aaa5c6807f90e3672d87c5429da305860c88a3f3dd059233ce899fb4f4431a44b63fd194a91fcbffb3bc9293242c13a0256'
+            '5629b847abdab649a205470e9128ffc104231f5cf248bbeb01fe555429f24206760c3aea8139d8b18e41ce5f423fd177515eb21f31b2d9b0a2fd19dfe20062ea'
+            '69cc98e1f4e8b9949a15f80f8d05f0b143f3fee544357d097d5e0d6634f381ce853b8be83770b96545e782686b824ae77f8dc3a9946344341d6464463125db55'
+            'f947f3a52f0d6aa4b2762f646cf785cea90c299d7116692120ebe2fc703ea79f52bc98d71631a07a87695addf2d8fd0e7c39d6690e0b18148c8652cf155cf17f'
+            '5b91669bb41c38fd83b6f8da5788fb42caa5781b4c20fbc712108eaf88c1f982436b7a8a0de782d2d2a31cd69c35114c39cdb7f5c9ab6da46d22fadcfa00f448')
 
 # vim: ts=2 sw=2 et:
