@@ -1,0 +1,13 @@
+pkgbase = python-tarsafe
+	pkgdesc = A safe subclass of the TarFile class for interacting with tar files. Can be used as a direct drop-in replacement for safe usage of extractall()
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/beatsbears/tarsafe/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-pip
+	source = git+https://github.com/beatsbears/tarsafe.git#branch=v0.0.5
+	sha256sums = SKIP
+
+pkgname = python-tarsafe
