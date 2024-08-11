@@ -1,7 +1,9 @@
 [Trigger]
 Type = Package
 Operation = Upgrade
-Target = iceshrimp.net-git
+Target = iceshrimp.net-pre-bin
+Target = aspnet-runtime
+Target = dotnet-runtime
 
 [Action]
 Description = Restarting iceshrimp.net daemon...
