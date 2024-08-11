@@ -53,8 +53,8 @@ prepare() {
     git -C "$srcdir/ros2/src/ros/urdfdom" cherry-pick -n 483ff92a7e631283117ca3d421d58e146c8b6d21
 
     # https://github.com/ros/urdfdom_headers/pull/79
-    git -C "$srcdir/ros2/src/ros/urdfdom_headers" remote add oysstu "https://github.com/oysstu/urdfdom_headers.git"
-    git -C "$srcdir/ros2/src/ros/urdfdom_headers" fetch --all
+    git -C "$srcdir/ros2/src/ros/urdfdom_headers" config remote.oysstu.url >&- || git -C "$srcdir/ros2/src/ros/urdfdom_headers" remote add oysstu "https://github.com/oysstu/urdfdom_headers.git"
+    git -C "$srcdir/ros2/src/ros/urdfdom_headers" fetch oysstu
     git -C "$srcdir/ros2/src/ros/urdfdom_headers" merge oysstu/fix/pkgconfig_relocatable
 }
 
@@ -68,6 +68,11 @@ build() {
 
     # Build
     colcon build --packages-up-to ros_base --merge-install ${COLCON_EXTRA_ARGS} --cmake-args -DBUILD_TESTING=OFF
+
+    # Replace all references to srcdir in colcon shell files
+    _outdir=$srcdir/install
+    _instdir=/opt/ros/${_rosdist_short}-base
+    grep --include \*.sh --binary-files without-match -rl ${_outdir} . | xargs sed -i 's|'${_outdir}'|'${_instdir}'|g'
 }
 
 package() {
