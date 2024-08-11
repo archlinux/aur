@@ -16,14 +16,15 @@
 _qt_module=qtactiveqt
 pkgname=mingw-w64-qt5-activeqt
 pkgver=5.15.14
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="ActiveX integration framework (mingw-w64)"
 depends=('mingw-w64-qt5-base')
-makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'python')
+makedepends=('mingw-w64-qt5-declarative' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'python')
 license=('GPL3' 'LGPL3' 'LGPL2.1' 'FDL' 'custom')
 _commit=91bfd21f86c450b129ac2dde9d33b32e140d8a0c
 _basever=${pkgver%%+*}
+pkgver+=+kde+r0
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')

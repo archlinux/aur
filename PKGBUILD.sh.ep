@@ -11,11 +11,11 @@
 % end
 \
 pkgver=5.15.14
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="ActiveX integration framework (mingw-w64)"
 depends=(<%== qt5deps qw(base) %>)
-makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'python')
+makedepends=(<%== qt5deps qw(declarative) %> 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'python')
 license=('GPL3' 'LGPL3' 'LGPL2.1' 'FDL' 'custom')
 \
 % content_for package => begin
