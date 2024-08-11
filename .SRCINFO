@@ -1,5 +1,5 @@
 pkgbase = archlinux-studio-utils
-	pkgver = r12.53cd022
+	pkgver = r13.b076202
 	pkgrel = 1
 	url = https://github.com/usrmusicman/ArchLinuxStudioUtils
 	arch = x86_64
