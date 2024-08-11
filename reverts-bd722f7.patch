@@ -1,6 +1,6 @@
-From 0156f6e96a4abb5ac52a8a7176c879652db4eb71 Mon Sep 17 00:00:00 2001
+From 6384251e5d547059f4839008aa4a34217c9be556 Mon Sep 17 00:00:00 2001
 From: detiam <dehe_tian@outlook.com>
-Date: Sat, 13 Jul 2024 00:46:48 +0800
+Date: Sun, 11 Aug 2024 17:56:18 +0800
 Subject: [PATCH] reverts bd722f7
 
 ---
@@ -10,7 +10,7 @@ Subject: [PATCH] reverts bd722f7
  3 files changed, 14 insertions(+), 60 deletions(-)
 
 diff --git a/src/rendervulkan.cpp b/src/rendervulkan.cpp
-index 649eddc..804ec8c 100644
+index 01b8e94..f4a1ee7 100644
 --- a/src/rendervulkan.cpp
 +++ b/src/rendervulkan.cpp
 @@ -375,7 +375,6 @@ bool CVulkanDevice::selectPhysDev(VkSurfaceKHR surface)
@@ -128,10 +128,10 @@ index 649eddc..804ec8c 100644
  			VK_DESCRIPTOR_TYPE_STORAGE_IMAGE,
  			uint32_t(m_descriptorSets.size()) * 2,
 diff --git a/src/rendervulkan.hpp b/src/rendervulkan.hpp
-index dca98dd..4ed9fa3 100644
+index ebae5aa..2b10528 100644
 --- a/src/rendervulkan.hpp
 +++ b/src/rendervulkan.hpp
-@@ -739,11 +739,8 @@ public:
+@@ -758,11 +758,8 @@ public:
  	inline VkPhysicalDevice physDev() {return m_physDev; }
  	inline VkInstance instance() { return m_instance; }
  	inline VkQueue queue() {return m_queue;}
@@ -143,7 +143,7 @@ index dca98dd..4ed9fa3 100644
  	inline VkBuffer uploadBuffer() {return m_uploadBuffer;}
  	inline VkPipelineLayout pipelineLayout() {return m_pipelineLayout;}
  	inline int drmRenderFd() {return m_drmRendererFd;}
-@@ -794,17 +791,14 @@ protected:
+@@ -813,17 +810,14 @@ protected:
  	VkPhysicalDevice m_physDev = nullptr;
  	VkInstance m_instance = nullptr;
  	VkQueue m_queue = nullptr;
@@ -184,5 +184,5 @@ index fa37a5c..f8cdc20 100644
  
      // Create Uniform Buffer
 -- 
-2.45.2
+2.46.0
 
