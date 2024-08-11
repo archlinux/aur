@@ -13,11 +13,12 @@ pkgbase = quickshell
 	depends = qt6-base
 	depends = jemalloc
 	depends = qt6-svg
-	optdepends = libxcb: X11 support
-	optdepends = qt6-wayland: Wayland support
-	optdepends = wayland-protocols: Wayland support
-	optdepends = wayland: Wayland support
-	optdepends = libpipewire: Pipewire support
+	depends = libpipewire
+	depends = qt6-wayland
+	depends = wayland-protocols
+	depends = libxcb
+	depends = wayland
+	depends = cli11
 	source = git+https://github.com/outfoxxed/quickshell.git
 	sha256sums = SKIP
 
