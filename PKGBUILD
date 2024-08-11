@@ -1,6 +1,6 @@
 pkgname=python-chibi-dl-tmo
 _pyname=chibi_dl_tmo
-pkgver=0.1.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="command script for download mangas from lectortmo.com or visortmo.com"
 arch=('any')
@@ -10,7 +10,7 @@ groups=()
 depends=("python-chibi-dl" "python-undetected-chromedriver")
 makedepends=("python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname//-/_}/${_pyname//-/_}-$pkgver.tar.gz")
-sha256sums=('40c0a5bbe320f9d6bfd6854038b44bfec7733e67e6b653c6c295fb65de64ad00')
+sha256sums=('40582b63cae040a72c45b9e35f608936414c10fc7a2cd61309f06cc2f708fd78')
 
 build() {
 	cd "$_pyname-$pkgver"
