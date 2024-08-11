@@ -2,8 +2,8 @@
 
 pkgname=shell-gpt
 _pkgname=${pkgname/-/_}
-pkgver=1.4.3
-pkgrel=2
+pkgver=1.4.4
+pkgrel=1
 pkgdesc="A command-line productivity tool powered by OpenAI's ChatGPT"
 arch=(any)
 url="https://github.com/TheR1D/shell_gpt"
@@ -27,12 +27,10 @@ makedepends=(
 )
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('0b7f6facf708a55ddc3b4a2495a445e90711b1100c489735afe289c062c33c45')
-
-_archive="$_pkgname-$pkgver"
+sha256sums=('b858c4f88604499cbbe23908e369652895ffcbedde13afe24b05d39a2cfe2498')
 
 prepare() {
-  cd "$_archive"
+  cd "$_pkgname-$pkgver"
 
   # If building inside a Git repository, hatch will determine which files to
   # install using the unrelated .gitignore file. This is likely to exclude all
@@ -47,14 +45,14 @@ prepare() {
 }
 
 build() {
-  cd "$_archive"
+  cd "$_pkgname-$pkgver"
 
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_archive"
+  cd "$_pkgname-$pkgver"
 
   # Randomly generated mock API key
   export OPENAI_API_KEY=sk-dBAe8c5a9bc4294cca9bed292cd61e0ff9030bB94647adfb
@@ -65,9 +63,8 @@ check() {
 }
 
 package() {
-  cd "$_archive"
+  cd "$_pkgname-$pkgver"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
-
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
