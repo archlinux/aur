@@ -3,7 +3,7 @@
 
 _crate="faketty"
 pkgname="faketty"
-pkgver=1.0.17
+pkgver=1.0.18
 pkgrel=1
 pkgdesc='Wrapper to exec a command in a pty, even if redirecting the output'
 url='https://crates.io/crates/faketty'
@@ -12,14 +12,14 @@ license=('Apache-2.0' 'MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 
-source=("$_crate-1.0.17.tar.gz::https://crates.io/api/v1/crates/faketty/1.0.17/download")
-sha512sums=('90b4ebf65e6a60fb6e42230cccf5ef5fb83247a47798c42f88166806756ee87e9ba6e325182fc27b29fcd02025c96f20e7955283ed7ba5c4cba293fde0ba5b33')
+source=("$_crate-1.0.18.tar.gz::https://crates.io/api/v1/crates/faketty/1.0.18/download")
+sha512sums=('d6f18f19a32c8f3bae95e7f9c1e9c84e579a2906ad1584b9597039af8a09108a1c30fc87531e086362d4f1629b6cc5399be0a0cc85645ea3559dc45f053f740d')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
 
 prepare() {
-	cd "$srcdir/$_crate-1.0.17"
+	cd "$srcdir/$_crate-1.0.18"
 
 	export RUSTUP_TOOLCHAIN=stable
 
@@ -27,7 +27,7 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/$_crate-1.0.17"
+	cd "$srcdir/$_crate-1.0.18"
 	
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
@@ -41,7 +41,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_crate-1.0.17"
+	cd "$srcdir/$_crate-1.0.18"
 	install -Dm755 "target/release/faketty" -t "$pkgdir/usr/bin"
 	install -Dm644 'LICENSE-MIT' -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 'LICENSE-APACHE' -t "$pkgdir/usr/share/licenses/$pkgname/"
