@@ -19,7 +19,7 @@ depends=(
   'python-requests'
   'python-tqdm'
   'python-sounddevice'
-  'python-vosk-bin'
+  'python-vosk'
   'ffmpeg'
   'ydotool'
 )
