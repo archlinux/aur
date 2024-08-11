@@ -2,7 +2,7 @@
 pkgname=sk-chos-tool-git
 _pkgname=sk-chos-tool
 _reponame=sk-chos-config
-pkgver=r495.e687b37
+pkgver=r28.4a52d21
 pkgrel=1
 pkgdesc="A custom configs tool for sk-chimeros"
 arch=('any')
