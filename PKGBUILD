@@ -2,20 +2,21 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cliqueMS
-_pkgver=1.16.0
+_pkgver=1.18.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Annotation of Isotopes, Adducts and Fragmentation Adducts for in-Source LC/MS Metabolomics Data"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('GPL-2.0-or-later')
 depends=(
+  r-coop
   r-igraph
   r-matrixstats
   r-msnbase
-  r-qlcmatrix
   r-rcpp
+  r-slam
   r-xcms
 )
 makedepends=(
@@ -26,14 +27,15 @@ checkdepends=(
   r-testthat
 )
 optdepends=(
+  r-biocparallel
   r-camera
   r-knitr
   r-rmarkdown
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f423e41dd4ca04cefe4bd5be77ceec3a')
-b2sums=('2c72994f9293a1866ae771456ed15a8651499fe99402bb5fe30c8b09bf3574f1376bf59ae212d0b211961bf0cf60c4ea6e81298fceb15ba558e8d237138a743b')
+md5sums=('2e260bec18ac872450215aec5cb95f16')
+b2sums=('492822bd915f14f3ccefd6addbdfe40919a2272dde5c8b9f59f163fb8e9f36ed4d7da8428d71f7b2ad44f427c396c65b8b622ec693a3074be808c68aa2ff8f5f')
 
 build() {
   mkdir build
