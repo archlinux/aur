@@ -19,7 +19,7 @@ bsdsed: freebsd-src-release-$(FREEBSDVER)/usr.bin/sed/compile.o \
 	$(CC) $(CFLAGS) $(LDFLAGS) -o bsdsed $^
 
 bsdsed.1:
-	@sed 's/\bsed/bsdsed/;s/GNU bsd/GNU /' freebsd-src-release-$(FREEBSDVER)/usr.bin/sed/sed.1 > bsdsed.1
+	@sed 's/\bsed/bsdsed/;s/\bSED/BSDSED/;s/GNU bsd/GNU /' freebsd-src-release-$(FREEBSDVER)/usr.bin/sed/sed.1 > bsdsed.1
 
 install: bsdsed bsdsed.1
 	$(INSTALL_PROGRAM) -t $(DESTDIR)$(bindir) bsdsed
