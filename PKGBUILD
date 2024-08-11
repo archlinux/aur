@@ -3,13 +3,13 @@
 
 pkgname=vulkan-extension-layers-git
 pkgdesc='Layer providing Vulkan features when native support is unavailable (git version)'
-pkgver=1.3.289.r2.g484c128
+pkgver=1.3.290.r4.g7aa7f45
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/KhronosGroup/Vulkan-ExtensionLayer.git'
 license=(Apache-2.0)
 makedepends=(cmake python-lxml libxrandr wayland git ninja make)
-depends=(gcc-libs vulkan-icd-loader-git vulkan-headers-git vulkan-utility-libraries-git volk libx11)
+depends=(gcc-libs vulkan-icd-loader vulkan-headers vulkan-utility-libraries volk libx11)
 ### conflicts/provides/replaces: not in official archliux repos, so list a few package names that archlinnux packager can use
 conflicts=(vulkan-extensionlayer-git vulkan-extension-layers vulkan-extension-layer vulkan-extensionlayer vulkan-extensionlayers)
 provides=(vulkan-extensionlayers vulkan-extensionlayer vulkan-extension-layer vulkan-extension-layers)
@@ -25,7 +25,7 @@ pkgver(){
 build(){
   rm -rf "${srcdir}"/build
 
-  "${srcdir}"/Vulkan-ExtensionLayer/scripts/update_deps.py --config release
+  "${srcdir}"/Vulkan-ExtensionLayer/scripts/update_deps.py --config release --generator Ninja
 
   cmake -C helper.cmake -B "${srcdir}"/build -S "${srcdir}"/Vulkan-ExtensionLayer \
   -G Ninja \
