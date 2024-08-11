@@ -1,11 +1,12 @@
 # Maintainer: Jonas Hvid <mail@johv.dk>
 pkgname=muwrap-git
-pkgver=r19.228a0b2
+pkgver=r21.414e7e9
 pkgrel=1
 pkgdesc="Text word wrapping utility for the command line"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/c2d7fa/muwrap"
 license=('MIT')
+depends=('glibc')
 makedepends=('git' 'nim')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -31,4 +32,6 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   mkdir -p "$pkgdir/usr/bin"
   cp main "$pkgdir/usr/bin/muwrap"
+  mkdir -p "$pkgdir/usr/share/licenses/muwrap"
+  cp LICENSE "$pkgdir/usr/share/licenses/muwrap/LICENSE"
 }
