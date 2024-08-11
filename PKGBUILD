@@ -89,8 +89,15 @@ export DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=0
 
 # arch_auto=""
 
+if [ ! "$(command -v tr)" ]; then
+  :
+else
+  # shellcheck disable=SC2006
+  arch_auto="$(echo "${arch_auto}" | tr '[:upper:]' '[:lower:]')"
+fi
+
 case "${arch_auto}" in
-  "auto"|"true"|"enable"|"enabled"|"native"|"false"|"disable"|"disabled")
+  "auto"|"true"|"enable"|"enabled"|"1"|"native"|"false"|"disable"|"disabled"|"2")
     :
   ;;
 
@@ -111,24 +118,24 @@ if [ -f "$(find /usr/lib -name 'LLVMPolly.so')" ] || [ -f "$(find /usr/lib64 -na
   export CFLAGS="${CFLAGS} -fplugin=LLVMPolly.so -mllvm=-polly -mllvm=-polly-ast-use-context -mllvm=-polly-vectorizer=stripmine -mllvm=-polly-invariant-load-hoisting -mllvm=-polly-run-inliner -mllvm=-polly-run-dce"
 fi
 
-if [[ ${arch_auto} == auto ]]
+if [ "${arch_auto}" = "auto" ] || [ "${arch_auto}" = "true" ] || [ "${arch_auto}" = "enable" ] || [ "${arch_auto}" = "enabled" ] || [ "${arch_auto}" = "1" ]
 then
   ## Architecture checks and compile flag adjustments - shellcheck throws a fit about the build function but it looks fine to me; checks for the highest available x64 support level and falls back to "native" if either not available
   if [ "$(uname -m)" == "x86_64" ]; then
     if [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v4' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == 'x86-64-v4 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64-v4 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fpic -fpie -Wp,-D_FORTIFY_SOURCE=2"
+      export CFLAGS="${CFLAGS} -march=x86-64-v4 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fPIC -fpie -Wp,-D_FORTIFY_SOURCE=2"
       export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
       export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
     elif [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v3' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == 'x86-64-v3 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64-v3 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fpic -fpie -Wp,-D_FORTIFY_SOURCE=2"
+      export CFLAGS="${CFLAGS} -march=x86-64-v3 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fPIC -fpie -Wp,-D_FORTIFY_SOURCE=2"
       export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
       export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
     elif [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v2' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == 'x86-64-v2 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64-v2 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fpic -fpie -Wp,-D_FORTIFY_SOURCE=2"
+      export CFLAGS="${CFLAGS} -march=x86-64-v2 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fPIC -fpie -Wp,-D_FORTIFY_SOURCE=2"
       export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
       export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
     elif [ "$(/lib/ld-linux-x86-64.so.2 --help | grep 'x86_64' | grep 'supported' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /' | grep -w '^x86_64 - supported')" == 'x86_64 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fpic -fpie -Wp,-D_FORTIFY_SOURCE=2"
+      export CFLAGS="${CFLAGS} -march=x86-64 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fPIC -fpie -Wp,-D_FORTIFY_SOURCE=2"
       export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
       export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
     fi
@@ -145,6 +152,19 @@ elif [[ "${arch_auto}" == native ]]; then
     export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
     export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
 fi
+
+case "${arch_auto}" in
+  "auto"|"true"|"enable"|"enabled"|"native"|"1")
+    :
+  ;;
+
+  *)
+    if [ -f "$(find /usr/lib -name 'LLVMPolly.so')" ] || [ -f "$(find /usr/lib64 -name 'LLVMPolly.so')" ]; then
+      ## Make sure that if polly is installed and the auto-flags above are not used, to add the polly flags to CXXFLAGS for consistency with having them set as CFLAGS
+      CXXFLAGS="${CXXFLAGS} -fplugin=LLVMPolly.so -mllvm=-polly -mllvm=-polly-ast-use-context -mllvm=-polly-vectorizer=stripmine -mllvm=-polly-invariant-load-hoisting -mllvm=-polly-run-inliner -mllvm=-polly-run-dce"
+    fi
+  ;;
+esac
 
 prepare() {
   # Check access to the repository
