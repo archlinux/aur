@@ -5,11 +5,12 @@ pkgbase = python-prompt-toolkit
 	url = https://python-prompt-toolkit.readthedocs.io
 	arch = any
 	license = BSD-3-Clause
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
-	depends = python
+	depends = python>=3.7.0
 	depends = python-pygments
 	depends = python-typing_extensions
 	depends = python-wcwidth

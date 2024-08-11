@@ -10,24 +10,24 @@ url="https://${pkgname}.readthedocs.io"
 _url="https://github.com/prompt-toolkit/${pkgname}"
 license=('BSD-3-Clause')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-# checkdepends=('python-pytest')
-depends=('python' 'python-pygments' 'python-typing_extensions' 'python-wcwidth'
-         'python-pyperclip' 'python-asyncssh')
+checkdepends=('python-pytest')
+depends=('python>=3.7.0' 'python-pygments' 'python-typing_extensions'
+         'python-wcwidth' 'python-pyperclip' 'python-asyncssh')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/${pkgver}.tar.gz")
 sha256sums=('c272136b184e313191a4f3cbc497ed5f3a29ebea3df1aae4eb8619e3d2654aaa')
 
-build () {
+build() {
   cd "${srcdir}/${_pkgsrc}"
   python -m build --wheel --no-isolation
 }
 
-# check () {
-#   cd "${srcdir}/${_pkgsrc}"
-#   pytest
-# }
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  PYTHONPATH="src" pytest
+}
 
-package () {
+package() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
   cd "${srcdir}/${_pkgsrc}"
