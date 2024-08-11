@@ -1,0 +1,19 @@
+pkgbase = minterm-bin
+	pkgdesc = A lightweight terminal-app for serialport communication.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/peace317/minterm
+	arch = x86_64
+	license = MIT
+	makedepends = fuse2
+	depends = electron16
+	provides = minterm=1.0.0
+	conflicts = minterm
+	source = minterm-1.0.0.AppImage::https://github.com/peace317/minterm/releases/download/release%2F1.0.0/MinTerm-1.0.0.AppImage
+	source = LICENSE-1.0.0.md::https://raw.githubusercontent.com/peace317/minterm/main/LICENSE.md
+	source = minterm.sh
+	sha256sums = 8a438f6a2e5ed90d59b15731217393b404a2731b467614355de4813e1ecceed7
+	sha256sums = ba96c22d4811e8e475a6126944a146181ad550b1f78248d70a613396e954cf9c
+	sha256sums = c053a7b3ed8b0b4d77f78e81ab8a4c61cbfd773a9298b3f3a187e5df89c125c2
+
+pkgname = minterm-bin
