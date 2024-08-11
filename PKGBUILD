@@ -1,7 +1,7 @@
 # Maintainer: Stefan Dimitrijevic <stefanstele95@hotmail.com>
 
 pkgname='linvam-git'
-pkgver=v0.7.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Linux voice activated macros'
 arch=('x86_64')
