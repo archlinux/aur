@@ -1,7 +1,7 @@
 # Maintainer: iamawacko <iamawacko@protonmail.com>
 pkgname=kipr
-pkgver=0.4.0
-pkgrel=3
+pkgver=0.4.1
+pkgrel=1
 pkgdesc='Command Line Password Manager'
 url='https://github.com/grahamking/kipr'
 license=('MIT')
@@ -10,7 +10,7 @@ source=("https://github.com/grahamking/kipr/archive/refs/tags/v${pkgver}.tar.gz"
 makedepends=(cargo)
 depends=("gnupg")
 optdepends=('xclip: Clipoard functionality')
-sha256sums=('a4ce0a5563f0a620679681645b451a26b732f3b531baf0b60aafbc947291fcb1')
+sha256sums=('cf0640d82e1b88da0d8cf04a5cea61c5953b99bbf5123602adfac62612cecb82')
 
 prepare() {
 	cd "$pkgname-$pkgver"
