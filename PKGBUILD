@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/c2d7fa/muwrap"
 license=('MIT')
 depends=('glibc')
-makedepends=('git' 'nim')
+makedepends=('git' 'nim' 'grep' 'findutils' 'patchelf')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('muwrap::git+https://github.com/c2d7fa/muwrap.git')
@@ -21,6 +21,8 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname%-git}"
   nim compile -d:release --opt:size --passL:-s main.nim
+  # Remove unused dynamically libraries added by Nim:
+  ldd -u main | grep -Po '/usr/lib/\K\S+' | xargs -I% patchelf --remove-needed % main
 }
 
 check() {
