@@ -1,7 +1,7 @@
 pkgbase = python-cheap_repr
 	pkgdesc = Better version of repr/reprlib for short, cheap string representations
-	pkgver = 0.5.1
-	pkgrel = 6
+	pkgver = 0.5.2
+	pkgrel = 1
 	url = http://github.com/alexmojaki/cheap_repr
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = python-cheap_repr
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python
-	source = cheap_repr-0.5.1.tar.gz::http://github.com/alexmojaki/cheap_repr/archive/v0.5.1.tar.gz
-	sha512sums = fc4531da1c8618a85bc6957ac8410f3594f603e71943efa5fa37d2263dbde83a0f1c3a88357e3c7338595e5c4b7378b713a5bcfa18067eba8435633fcccb624a
+	source = cheap_repr-0.5.2.tar.gz::http://github.com/alexmojaki/cheap_repr/archive/v0.5.2.tar.gz
+	sha512sums = e1b1d2cade37fc70ac7d8bb96ad030001328abf6fb3b187763495baee3fc62fa24bae82caa0fd6321b07efa8960f0fcfad42e59a8eccba933d7a6c2bbe36d67f
 
 pkgname = python-cheap_repr
