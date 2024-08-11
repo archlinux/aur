@@ -12,7 +12,7 @@ sha512sums=('42346e9c4e880089703a1a93c84da8460e915a8867d3b6f5a2cd854489b565ef200
 
 build() {
 	cd "$pkgname-$pkgver"
-	gcc -o fumosay fumosay.c fumoutil.c fumolang.c -lm -unistring
+	gcc -o fumosay fumosay.c fumoutil.c fumolang.c -lm -lunistring
 }
 
 package() {
