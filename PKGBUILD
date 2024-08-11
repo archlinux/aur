@@ -12,7 +12,7 @@ depends=(wolframengine nodejs glibc bash libuv java-runtime)
 provides=(wolfram-js-frontend)
 conflicts=(wolfram-js-frontend)
 source=("https://github.com/JerryI/wolfram-js-frontend/releases/download/$_ver/wljs-notebook_${pkgver}_amd64.deb")
-sha256sums=('4c4ae42175f53a28f4029d819a7f033ef53652cc96ff719a8ec06ebe1ff22fb3')
+sha256sums=('520eb0861165f634c4aadadf940da48244e8a4a2b23837655d7ea832940706b5')
 
 package() {
 	bsdtar -xf "$srcdir"/data.tar.* -C "$pkgdir"
