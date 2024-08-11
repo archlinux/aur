@@ -27,6 +27,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/OpenRGB"
+    export CXXFLAGS=${CXXFLAGS/-pipe}
     qmake OpenRGB.pro PREFIX=/usr
     make -j$(nproc)
 }
