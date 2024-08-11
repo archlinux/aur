@@ -1,14 +1,13 @@
 pkgbase = r-stat2data
 	pkgdesc = Datasets for Stat2
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=Stat2Data
 	arch = any
 	license = GPL-3.0-only
 	depends = r
 	source = https://cran.r-project.org/src/contrib/Stat2Data_2.0.0.tar.gz
 	md5sums = 9716c4c61a593a257824b4096ec9c2f9
-	sha256sums = 137c114ed62df7bc4909705d3ad8f91c5cbc7723d2dfc9932a21f533c91af7ba
 	b2sums = 1a743f6a054cc664f3d92099d7c00e0676e41530101c22b010a34f13eb463baf5b6efabc659554c69dfde31806e0ae8055fe8a75a95ed11c39a917a3c331e627
 
 pkgname = r-stat2data
