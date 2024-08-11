@@ -2,8 +2,8 @@
 # Contributor: erk <v at erk dot io>
 
 pkgname=vnote
-pkgver=3.18.1
-pkgrel=2
+pkgver=3.18.2
+pkgrel=1
 pkgdesc="A Vim-inspired note-taking application, especially for Markdown."
 arch=(x86_64 i686 armv7h aarch64)
 url="https://vnotex.github.io/vnote/en_us/"
@@ -16,7 +16,7 @@ source=("git+https://github.com/vnotex/vnote.git#tag=v${pkgver}"
         "vnotex-syntax-highlighting::git+https://github.com/vnotex/syntax-highlighting"
         "vnotex-hunspell::git+https://github.com/vnotex/hunspell"
         "vnotex-sonnet::git+https://github.com/vnotex/sonnet")
-sha256sums=('SKIP'
+sha256sums=('623af002789e033614eb4b06a53c8b7c2713bfc185930a1ad9dfa69b73dd34f3'
             'SKIP'
             'SKIP'
             'SKIP'
