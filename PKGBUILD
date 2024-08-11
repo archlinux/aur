@@ -1,22 +1,24 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=heroic-games-launcher
-pkgver=2.14.1
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="Native GOG, Epic Games and Amazon games launcher for Linux"
 arch=(x86_64)
 url="https://heroicgameslauncher.com/"
 license=(GPL3)
 depends=(alsa-lib gtk3 nss )
-makedepends=(git yarn node-gyp)
+makedepends=(git pnpm) #yarn node-gyp
 options=(!debug)
 source=("git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
   cd HeroicGamesLauncher
-  yarn
-  yarn dist:linux tar.xz
+  #yarn
+  #yarn dist:linux tar.xz
+  pnpm install
+  pnpm dist:linux tar.xz
 }
 
 package() {
