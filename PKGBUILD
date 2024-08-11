@@ -3,7 +3,7 @@
 
 pkgbase=vulkan-lunarg-tools-git
 pkgname=(vulkan-extra-tools-git vulkan-extra-layers-git)
-pkgver=1.3.283.r12136.g65c8c768c
+pkgver=1.3.292.r12147.ga12be9485
 _major=1.3
 pkgrel=1
 arch=(x86_64)
@@ -34,7 +34,7 @@ pkgver(){
 build(){
   rm -rf "${srcdir}"/{build,fakeinstall}
 
-  "${srcdir}"/VulkanTools/scripts/update_deps.py --config release
+  "${srcdir}"/VulkanTools/scripts/update_deps.py --config release --generator Ninja
 
   cmake -C helper.cmake -B "${srcdir}"/build -S "${srcdir}"/VulkanTools \
   -G Ninja \
@@ -52,10 +52,10 @@ build(){
   -D BUILD_TESTS=OFF \
   -D BUILD_VIA=OFF \
   -Wno-dev
-  
+
   ninja -j$(nproc) -C "${srcdir}"/build
 
-  ninja -j$(nproc) -C "${srcdir}"/build DESTDIR="${srcdir}/fakeinstall" install
+  DESTDIR="${srcdir}"/fakeinstall ninja -j$(nproc) -C "${srcdir}"/build install
 }
 
 package_vulkan-extra-tools-git(){
@@ -81,7 +81,7 @@ package_vulkan-extra-layers-git(){
   depends=(vulkan-validation-layers)
   conflicts=(vulkan-extra-layers)
   provides=(vulkan-extra-layers)
-  
+
   _install fakeinstall/usr/lib/libVkLayer_api_dump.so
   _install fakeinstall/usr/lib/libVkLayer_monitor.so
   _install fakeinstall/usr/lib/libVkLayer_screenshot.so
