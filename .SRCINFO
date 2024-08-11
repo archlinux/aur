@@ -1,6 +1,6 @@
 pkgbase = nri-docker-bin
 	pkgdesc = Docker integration for New Relic
-	pkgver = 2.0.3
+	pkgver = 2.0.7
 	pkgrel = 1
 	url = https://github.com/newrelic/nri-docker
 	changelog = CHANGELOG
@@ -12,11 +12,11 @@ pkgbase = nri-docker-bin
 	depends = newrelic-infra
 	provides = nri-docker
 	conflicts = nri-docker
-	source_aarch64 = https://github.com/newrelic/nri-docker/releases/download/v2.0.3/nri-docker_linux_2.0.3_arm64.tar.gz
-	sha256sums_aarch64 = 5a80efd56294ac4123d6e2c7afc03b891f2501371d6ae16f8cad423e67cafdb4
-	source_armv7h = https://github.com/newrelic/nri-docker/releases/download/v2.0.3/nri-docker_linux_2.0.3_arm.tar.gz
-	sha256sums_armv7h = 02214fd2f77c1b450603e7139b8e6b3b826aebb086f58ded048cbedaf1a7e317
-	source_x86_64 = https://github.com/newrelic/nri-docker/releases/download/v2.0.3/nri-docker_linux_2.0.3_amd64.tar.gz
-	sha256sums_x86_64 = bc6507745b9dd544b106f1242eac06eb61ca5bbe148ae080de1baa1c716263a4
+	source_aarch64 = https://github.com/newrelic/nri-docker/releases/download/v2.0.7/nri-docker_linux_2.0.7_arm64.tar.gz
+	sha256sums_aarch64 = 9d2a92ac9e0463be6eb5fc8251e26d3f08477669574bf166e8d69e8ef7cb1253
+	source_armv7h = https://github.com/newrelic/nri-docker/releases/download/v2.0.7/nri-docker_linux_2.0.7_arm.tar.gz
+	sha256sums_armv7h = ec862466fe897dc81b84737807a90b110d6a7545b8b1b9ef5c6247754a84fe82
+	source_x86_64 = https://github.com/newrelic/nri-docker/releases/download/v2.0.7/nri-docker_linux_2.0.7_amd64.tar.gz
+	sha256sums_x86_64 = 4d323fd35042311031d03a4f1186d24b941e6e42d4ad79ea9f827ce356d5a50f
 
 pkgname = nri-docker-bin
