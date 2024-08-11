@@ -1,14 +1,14 @@
 pkgbase = python-cos-python-sdk-v5
 	pkgdesc = 腾讯云COSV5Python SDK
 	pkgver = 1.9.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tencentyun/cos-python-sdk-v5
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-requests
 	depends = python-six
-	depends = python-dicttoxml
+	depends = python-xmltodict
 	depends = python-crcmod
 	depends = python-pycryptodome
 	source = python-cos-python-sdk-v5-1.9.30.tar.gz::https://github.com/tencentyun/cos-python-sdk-v5/archive/V1.9.30.tar.gz

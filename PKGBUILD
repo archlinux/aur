@@ -3,14 +3,14 @@
 pkgname=python-cos-python-sdk-v5
 _pkgname=${pkgname/python-}
 pkgver=1.9.30
-pkgrel=1
+pkgrel=2
 pkgdesc="腾讯云COSV5Python SDK"
 arch=('any')
 url="https://github.com/tencentyun/cos-python-sdk-v5"
 license=('MIT')
 depends=('python-requests'
          'python-six'
-         'python-dicttoxml'
+         'python-xmltodict'
          'python-crcmod'
          'python-pycryptodome')
 makedepends=('python-setuptools')
