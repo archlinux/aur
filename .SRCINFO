@@ -6,6 +6,7 @@ pkgbase = wl-colorpicker-plasma-git
 	arch = any
 	license = GPL-2.0-or-later
 	depends = python
+	depends = python-pyqt6
 	source = wl-colorpicker-plasma-git::git+https://github.com/SASUPERNOVA/wl-colorpicker-plasma
 	sha256sums = SKIP
 
