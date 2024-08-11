@@ -1,8 +1,8 @@
 # Maintainer: Max le Fou (buttbadger at gmail dot com)
 
 pkgname=ultrastar-creator
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="Qt program used to generate USDX songs from scratch"
 url=https://github.com/UltraStar-Deluxe/UltraStar-Creator
 license=('GPL2')
@@ -14,7 +14,7 @@ source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
         'ultrastar-creator.desktop'
         'ultrastar-creator')
 
-md5sums=('5e994a6d9ab19452509a7f6907a1e004'
+md5sums=('53b4fb2128416fca07c84594f9b34098'
          'f5fbb7d6e481005d7b90b738ef04957f'
          'f5ff1a7eb66be5ee58c3dcec1d6f3f54')
 	
