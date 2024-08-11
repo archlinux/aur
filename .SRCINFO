@@ -14,6 +14,7 @@ pkgbase = vapoursynth-plugin-vsakarin-llvm14-git
 	depends = llvm14-libs
 	provides = vapoursynth-plugin-vsakarin-llvm14
 	conflicts = vapoursynth-plugin-vsakarin-llvm14
+	conflicts = vapoursynth-plugin-vsakarin
 	options = debug
 	source = vsakarin-llvm14::git+https://github.com/akarinVS/vapoursynth-plugin.git
 	sha256sums = SKIP
