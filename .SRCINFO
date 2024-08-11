@@ -1,0 +1,19 @@
+pkgbase = mandarine-appimage
+	pkgdesc = 3ds emulator - citra fork with tweaks/enhancements
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/mandarine3ds/mandarine
+	arch = x86_64
+	license = GPL-2.0
+	depends = ffmpeg
+	depends = sdl2
+	provides = mandarine
+	conflicts = mandarine
+	conflicts = mandarine-git
+	options = !strip
+	source = https://github.com/mandarine3ds/mandarine/releases/download/r1.0/mandarine-linux-appimage-20240806-a22d894.tar.gz
+	source = https://raw.githubusercontent.com/mandarine3ds/mandarine/master/dist/mandarine-qt.desktop
+	b2sums = ce3157363c0a103b7a6180c928b95ccbeceb0df67a87a68b2898eabcc88b6306cb476040b74b952910d2fa9b75c01869b9693a65338fc62a8e9302b84bc5b966
+	b2sums = 40f02263d45ab7e78be042e6b7d2fa05bedd12563853f57250089e0e0001f6192e5e7e7a9bac174c4c81581a92d8951be10388c4b219f8f27c0b91f4e35fd5bb
+
+pkgname = mandarine-appimage
