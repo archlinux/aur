@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miRspongeR
-_pkgver=2.6.0
+_pkgver=2.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('145c70b6246eb437d83d3257b5eda98a')
-b2sums=('31e9d882e4179753ed3e1353f81f76a9b7d7cd22c34e7a8f49c205b6d0f7320cfdf8d099b7236e60daf179aac4f443c8657e75a8e4553013acf3e0a19146d850')
+md5sums=('e5667a271e4f42e02a2784fa5c5eaa66')
+b2sums=('fbe946028941480e60c1bec2ec6aee4ed71834f46f395c69602705fa14c96e2c9bd201d660760661f8b242e581315c8bdd2b67abcc069f1720d6eb42ba4e41dd')
 
 build() {
   mkdir build
