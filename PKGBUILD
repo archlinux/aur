@@ -15,8 +15,8 @@ depends=('fuse')
 optdepends=('jre-openjdk: for launch Minecraft')
 source_x86_64=("${_pkgname}-${arch}.AppImage::${url}/releases/download/AutoBuild_master/${_pkgname}.${pkgver}.linux-x64.AppImage")
 source_aarch64=("${_pkgname}-${arch}.AppImage::${url}/releases/download/AutoBuild_master/${_pkgname}.${pkgver}.linux-arm64.AppImage")
-sha512sums_x86_64=('SKIP')
-sha512sums_aarch=('SKIP')
+sha512sums_x86_64=('6b0812fd2ecea88d5212d86acd5fb405eb7f1d6b56e58fcadcf031c6d9a3bf585c9508f048a4b224081d988ea63c17a7621d14df9f731074b247050072e1fbc4')
+sha512sums_aarch64=('6b0812fd2ecea88d5212d86acd5fb405eb7f1d6b56e58fcadcf031c6d9a3bf585c9508f048a4b224081d988ea63c17a7621d14df9f731074b247050072e1fbc4')
 _appimage="${_pkgname}-${arch}.AppImage"
 
 prepare() {
