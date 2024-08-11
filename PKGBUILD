@@ -4,7 +4,7 @@
 # Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 pkgname=netatalk2
 _pkgname=netatalk
-pkgver=2.4.4
+pkgver=2.4.6
 pkgrel=1
 pkgdesc="Open-source implementation of the Apple Filing Protocol (for old Macs)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -41,7 +41,7 @@ backup=(
 options=()
 install=
 source=("https://github.com/Netatalk/$_pkgname/releases/download/$_pkgname-${pkgver//./-}/$_pkgname-$pkgver.tar.xz")
-sha256sums=('c9a67320441838df6b70c22fe219d8461ef5a3683fbfcd82f44307d3cb08e908')
+sha256sums=('067c8b0ed1e583547794c31c205d59f6fb764d69da7df8f3c04957dcb97e1e19')
 
 #prepare() {
 #    cd "$_pkgname-$pkgver"
