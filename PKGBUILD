@@ -9,12 +9,12 @@
 _pkgname=godot
 pkgname=godot3-mono
 pkgver=3.5.3
-pkgrel=5
+pkgrel=6
 pkgdesc='Advanced cross-platform 2D and 3D game engine (3.x Branch Mono)'
 url='https://godotengine.org'
 license=(MIT)
 arch=(x86_64)
-makedepends=(gcc scons yasm alsa-lib pulseaudio nuget xorg-server-xvfb)
+makedepends=(gcc scons yasm alsa-lib pulse-native-provider nuget xorg-server-xvfb)
 depends=(embree3 freetype2 libglvnd libtheora libvorbis libvpx libwebp libwslay
          libsquish libxcursor libxi libxinerama libxrandr opusfile mono mono-msbuild miniupnpc)
 optdepends=(pipewire-alsa pipewire-pulse)
