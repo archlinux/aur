@@ -6,7 +6,7 @@ pkgdesc="A standalone color picker for Wayland and KDE Plasma."
 arch=('any')
 url="https://github.com/SASUPERNOVA/wl-colorpicker-plasma"
 license=('GPL-2.0-or-later')
-depends=(python)
+depends=(python python-pyqt6)
 source=("${pkgname%-VCS}::git+https://github.com/SASUPERNOVA/wl-colorpicker-plasma")
 sha256sums=('SKIP')
 
