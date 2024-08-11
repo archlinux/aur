@@ -2,8 +2,8 @@
 
 _name=pytest-skip-markers
 pkgname=python-pytest-skip-markers
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.5.2
+pkgrel=1
 pkgdesc="A Pytest plugin which implements a few useful skip markers"
 arch=(any)
 url="https://github.com/saltstack/pytest-skip-markers"
@@ -28,8 +28,8 @@ checkdepends=(
   python-pytest-subtests
 )
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('b1260be0d48335083171abd7418faa457c4a34a743f0fb2a0a7fcaa947ebb211')
-b2sums=('f8f23bf64dfc23263ee58397fa8571bf76a77820230f8f27003f72f0a26cbb19ae76185ed203e5b516326a40a355c2d006101f2eb7cd4df40f4a4d80e8e7c629')
+sha256sums=('b081a66020b2573eebe3a74b5936e3fe0ebbd64a581a71e8afba6c452a739af4')
+b2sums=('51eb60d13a4b91030f68cf95cf1cb1987cc77bc105355fbceb289e73412f577347ba0340403e32b7930c08945b4d0292b7eededc84e8a5932c457073c823be1e')
 
 build() {
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
