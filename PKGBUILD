@@ -31,14 +31,15 @@ fonts=(NotoSans
        NotoSansMono
        NotoSerif)
 
-package_noto-fonts() {
+package() {
   optdepends=('noto-fonts-cjk: CJK characters' 'noto-fonts-emoji: Emoji characters'
               'noto-fonts-extra: additional variants (condensed, semi-bold, extra-light)')
   provides=(ttf-font)
 
-  for fontname in $fonts ; do
+  for fontname in "${fonts[@]}" ; do
+    echo "installing $fontname"
     install -Dm644 $fontname/hinted/ttf/*.tt[fc] -t "$pkgdir"/usr/share/fonts/noto
-    install -Dm644 OFL.txt -t "$pkgdir"/usr/share/licenses/noto-fonts/LICENSE
+    install -Dm644 OFL.txt -T "$pkgdir"/usr/share/licenses/noto-fonts/LICENSE
   done
 
   # Move to noto-fonts-extra

@@ -28,3 +28,7 @@ pkgbase = noto-fonts-latin-greek-cyrillic
 	sha256sums = f5c09b37280d7569b6c99a78511639be4ae25b8c5406464422fe0421fe13a884
 
 pkgname = noto-fonts-latin-greek-cyrillic
+	optdepends = noto-fonts-cjk: CJK characters
+	optdepends = noto-fonts-emoji: Emoji characters
+	optdepends = noto-fonts-extra: additional variants (condensed, semi-bold, extra-light)
+	provides = ttf-font
