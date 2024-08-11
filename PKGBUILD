@@ -10,7 +10,7 @@ groups=()
 depends=("python-chibi" "python-chibi-requests" "python-selenium" "python")
 makedepends=("python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname//-/_}/${_pyname//-/_}-$pkgver.tar.gz")
-sha256sums=('fc507a6041a9d1d6766bd8c03a9cc4ec89a8c5f45948a0bf59be0e8ddac9c5c1')
+sha256sums=('b1c2aed40034c84d3e3c6a9f53cef0c9b9d98da6bce1a914f20853bd84fa4ac1')
 
 build() {
 	cd "$_pyname-$pkgver"
