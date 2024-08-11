@@ -1,6 +1,6 @@
 pkgbase = freelib-git
 	pkgdesc = Freelib is book library manager
-	pkgver = 6.0.93.r79.gd1d47a7
+	pkgver = 6.1.0.r0.g185afe6
 	pkgrel = 1
 	url = https://github.com/petrovvlad/freeLib
 	arch = x86_64
