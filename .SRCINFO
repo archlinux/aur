@@ -1,6 +1,6 @@
 pkgbase = python-chibi-dl
 	pkgdesc = python lib to create scrapers
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://pypi.org/project/chibi-dl/
 	arch = any
@@ -9,9 +9,8 @@ pkgbase = python-chibi-dl
 	depends = python-chibi
 	depends = python-chibi-requests
 	depends = python-selenium
-	depends = python-cfscrape
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/chibi_dl/chibi_dl-0.1.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/c/chibi_dl/chibi_dl-0.2.0.tar.gz
 	sha256sums = fc507a6041a9d1d6766bd8c03a9cc4ec89a8c5f45948a0bf59be0e8ddac9c5c1
 
 pkgname = python-chibi-dl
