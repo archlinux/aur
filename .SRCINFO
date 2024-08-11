@@ -1,5 +1,5 @@
-pkgbase = librewolf
-	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
+pkgbase = librewolf-allow-dark
+	pkgdesc = Librewolf with the privacy.override_rfp_for_color_scheme about:config option added, which (if enabled) let's you change the color scheme even if rfp is turned on
 	pkgver = 128.0.3
 	pkgrel = 2
 	url = https://librewolf.net/
@@ -67,6 +67,8 @@ pkgbase = librewolf
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
+	provides = librewolf
+	conflicts = librewolf
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
@@ -80,4 +82,4 @@ pkgbase = librewolf
 	sha256sums = 7d01d317b7db7416783febc18ee1237ade2ec86c1567e2c2dd628a94cbf2f25d
 	sha256sums = 959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1
 
-pkgname = librewolf
+pkgname = librewolf-allow-dark

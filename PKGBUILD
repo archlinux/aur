@@ -1,10 +1,12 @@
-# Maintainer: ohfp/lsf <lsf at pfho dot net>
-
-pkgname=librewolf
+# Maintainer: mecso2
+pkgname=librewolf-allow-dark
+provides=(librewolf)
+conflicts=(librewolf)
+__pkgname=librewolf
 _pkgname=LibreWolf
 pkgver=128.0.3
 pkgrel=2
-pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
+pkgdesc="Librewolf with the privacy.override_rfp_for_color_scheme about:config option added, which (if enabled) let's you change the color scheme even if rfp is turned on"
 url="https://librewolf.net/"
 arch=(x86_64 aarch64)
 license=(
@@ -89,7 +91,7 @@ _arch_git=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/ra
 install='librewolf.install'
 source=(
   https://gitlab.com/api/v4/projects/32320088/packages/generic/librewolf-source/${pkgver}-${pkgrel}/librewolf-${pkgver}-${pkgrel}.source.tar.gz # {,.sig} sig files are currently broken, it seems
-  $pkgname.desktop
+  $__pkgname.desktop
   "default192x192.png"
 )
 
@@ -122,14 +124,14 @@ export CC='clang'
 export CXX='clang++'
 
 # Branding
-ac_add_options --with-app-name=${pkgname}
+ac_add_options --with-app-name=${__pkgname}
 # is this one required? upstream lw doesn't use it
 ac_add_options --enable-update-channel=release
 # unlear?
 # ac_add_options --with-app-basename=${_pkgname}
 
 # needed? yep.
-export MOZ_APP_REMOTINGNAME=${pkgname}
+export MOZ_APP_REMOTINGNAME=${__pkgname}
 
 # System libraries
 ac_add_options --with-system-nspr
@@ -277,7 +279,7 @@ package() {
   # mv ${pkgdir}/usr/local/bin ${pkgdir}/usr/bin/
   # rm -r ${pkgdir}/usr/local
 
-  local vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
+  local vendorjs="$pkgdir/usr/lib/$__pkgname/browser/defaults/preferences/vendor.js"
 
   install -Dvm644 /dev/stdin "$vendorjs" <<END
 // Use system-provided dictionaries
@@ -288,47 +290,47 @@ pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 // pref("extensions.autoDisableScopes", 11);
 END
 
-  local distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
+  local distini="$pkgdir/usr/lib/$__pkgname/distribution/distribution.ini"
   install -Dvm644 /dev/stdin "$distini" <<END
 
 [Global]
-id=io.gitlab.${pkgname}-community
+id=io.gitlab.${__pkgname}-community
 version=1.0
 about=LibreWolf
 
 [Preferences]
 app.distributor="LibreWolf Community"
-app.distributor.channel=$pkgname
-app.partner.librewolf=$pkgname
+app.distributor.channel=$__pkgname
+app.partner.librewolf=$__pkgname
 END
 
   for i in 16 32 48 64 128; do
-    install -Dvm644 browser/branding/${pkgname}/default$i.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
+    install -Dvm644 browser/branding/${__pkgname}/default$i.png \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$__pkgname.png"
   done
   # install -Dvm644 browser/branding/librewolf/content/about-logo.png \
-    # "$pkgdir/usr/share/icons/hicolor/192x192/apps/$pkgname.png"
+    # "$pkgdir/usr/share/icons/hicolor/192x192/apps/$__pkgname.png"
   install -Dvm644 ${srcdir}/default192x192.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$pkgname.png"
+    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$__pkgname.png"
 
   # arch upstream provides a separate svg for this. we don't have that, so let's re-use 16.png
-  install -Dvm644 browser/branding/${pkgname}/default16.png \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$pkgname-symbolic.png"
+  install -Dvm644 browser/branding/${__pkgname}/default16.png \
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$__pkgname-symbolic.png"
 
-  install -Dvm644 ../$pkgname.desktop \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dvm644 ../$__pkgname.desktop \
+    "$pkgdir/usr/share/applications/$__pkgname.desktop"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
+  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$__pkgname" <<END
 #!/bin/sh
-exec /usr/lib/$pkgname/librewolf "\$@"
+exec /usr/lib/$__pkgname/librewolf "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/lib/$pkgname/librewolf-bin"
+  ln -srfv "$pkgdir/usr/bin/$__pkgname" "$pkgdir/usr/lib/$__pkgname/librewolf-bin"
   # Use system certificates
-  local nssckbi="$pkgdir/usr/lib/$pkgname/libnssckbi.so"
+  local nssckbi="$pkgdir/usr/lib/$__pkgname/libnssckbi.so"
   if [[ -e $nssckbi ]]; then
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
