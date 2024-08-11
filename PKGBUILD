@@ -4,7 +4,7 @@ _pkgver=v2024.1-beta2.security3
 
 pkgname=iceshrimp.net
 pkgver=2024.1.beta2.security3
-pkgrel=1
+pkgrel=2
 pkgdesc="Decentralized and federated social networking service, implementing the ActivityPub standard"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp.net"
@@ -34,7 +34,7 @@ sha512sums=('f4e54aa74d44e3810d1ef3d10bebd1de69a0e09132d2c845fcd33c1635f41e6f462
             '9adf1781842ae7ff2779ca561f06ab2b6fb93e206698084283986627aba69b0fd4482ccbed3daebb2517e5966c326604e1cc57618589f331a966fee2db63815d'
             '0665aa7af2b2aa4405289ce9119439ddcc6b9e6c81dc8e3b9ed5d8ecdc4a39d49c950d41d3098ce99fe294ce51a2dee55ec7248c1756783b0e9aad0bde4654fa'
             '0a0467df278f3bd739114725b373f5ec6c7296f609f0a9bcb4f8142b44856fc63e32f76390adf757005035dc691a4c54a662cc8a287572b61e215c29e3d3cbf2'
-            'fe5bc19c5f84e77954a023d054414f355b21918465f11ffcd09c139d1ce9de6258b12d4be5a0a6123844bc0f1458a9b45e49d2619440b3124f30d3dea3a7c6fb')
+            '78c4eb031a3e9e6976760c3b3016fc3ff6d764aa123140dbf095d3834c7e8af2f4490a0874394f43e320c421136aa87388b309f3b181336347510fcc82d590c7')
 
 pkgver() {
   local res
