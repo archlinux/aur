@@ -3,7 +3,7 @@
 
 pkgname=stabilitymatrix-bin
 pkgver=2.11.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-Platform Package Manager for Stable Diffusion. Binary version.'
 arch=('x86_64')
 url='https://github.com/LykosAI/StabilityMatrix'
@@ -12,7 +12,7 @@ depends=('libxcrypt-compat' 'zlib')
 options=('!strip')
 provides=('stabilitymatrix')
 conflicts=('stabilitymatrix')
-source=("https://github.com/LykosAI/StabilityMatrix/releases/download/v${pkgver}/StabilityMatrix-linux-x64.zip")
+source=("stabilitymatrix-${pkgver}.zip::https://github.com/LykosAI/StabilityMatrix/releases/download/v${pkgver}/StabilityMatrix-linux-x64.zip")
 sha256sums=('5c9b4da713815132886be253cea177cba952d3497550fb01d2b9f3f654c83a35')
 
 build() {
