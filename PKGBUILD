@@ -3,7 +3,7 @@
 
 pkgname=lib32-volk-git
 pkgdesc='Meta loader for Vulkan API (32-bit) (git version)'
-pkgver=1.3.289.r353.g692bef4
+pkgver=1.3.292.r359.g8a73954
 _major=1.3
 pkgrel=1
 arch=(x86_64)
