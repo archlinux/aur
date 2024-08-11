@@ -3,12 +3,12 @@
 
 pkgname=vulkan-tools-git
 pkgdesc='Vulkan Utilities and Tools (git version)'
-pkgver=1.3.289.r2.g7e13360
+pkgver=1.3.292.r1.g7d5cdf6
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/KhronosGroup/Vulkan-Tools'
 license=(Apache-2.0)
-makedepends=(cmake python vulkan-headers-git vulkan-icd-loader-git wayland-protocols glslang spirv-tools git ninja make volk)
+makedepends=(cmake python vulkan-headers vulkan-icd-loader wayland-protocols glslang spirv-tools git ninja make volk)
 depends=(libx11 wayland libvulkan.so)
 conflicts=(vulkan-tools)
 provides=(vulkan-tools vulkan-tools-git)
