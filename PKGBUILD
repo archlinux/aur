@@ -8,9 +8,9 @@ pkgdesc="A lightweight Python parser library for ANSI escape code sequences"
 arch=('any')
 url="https://github.com/getcuia/${_name}"
 license=('MIT')
-makedepends=('python-build' 'python-installer' 'python-poetry-core')
-# checkdepends=('python-pytest' 'python-hypothesis')
-depends=('python' 'python-ochre>=0.4.0')
+makedepends=('python-build' 'python-installer' 'python-poetry-core>=1.0.0')
+checkdepends=('python-pytest>=6.2' 'python-hypothesis>=6.31.6')
+depends=('python>=3.8' 'python-ochre>=0.4.0')
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('f83fb30c418054f87f3d9bdf3f82a130ec51ec5dcf6aa372f8493ed7132ba617')
@@ -20,10 +20,10 @@ build () {
   python -m build --wheel --no-isolation
 }
 
-# check () {
-#   cd "${srcdir}/${_pkgsrc}"
-#   pytest
-# }
+check () {
+  cd "${srcdir}/${_pkgsrc}"
+  PYTHONPATH=src pytest
+}
 
 package () {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")

@@ -5,10 +5,12 @@ pkgbase = python-stransi
 	url = https://github.com/getcuia/stransi
 	arch = any
 	license = MIT
+	checkdepends = python-pytest>=6.2
+	checkdepends = python-hypothesis>=6.31.6
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-poetry-core
-	depends = python
+	makedepends = python-poetry-core>=1.0.0
+	depends = python>=3.8
 	depends = python-ochre>=0.4.0
 	source = stransi-0.3.0.tar.gz::https://github.com/getcuia/stransi/archive/v0.3.0.tar.gz
 	sha256sums = f83fb30c418054f87f3d9bdf3f82a130ec51ec5dcf6aa372f8493ed7132ba617
