@@ -8,6 +8,8 @@ url="https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin"
 license=('GPL-2.0-only')
 depends=('qt5-tools' 'openrgb' 'openal')
 makedepends=('git')
+provides=('openrgb-plugin-effects')
+conflicts=('openrgb-plugin-effects')
 source=("git+https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin.git")
 sha256sums=('SKIP')
 
