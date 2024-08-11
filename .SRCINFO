@@ -9,9 +9,10 @@ pkgbase = avt
 	depends = bash
 	depends = ffmpeg
 	depends = pipewire
-	depends = pulseaudio
+	depends = pulse-native-provider
+	depends = libpulse
 	depends = xorg-xdpyinfo
-	source = git+https://gitlab.com/alifurkany/avt.git#tag=v1.1.8
+	source = git+https://gitlab.com/slonkazoid/avt.git#tag=v1.1.8
 	sha256sums = SKIP
 
 pkgname = avt

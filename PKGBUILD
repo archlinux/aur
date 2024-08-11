@@ -6,9 +6,9 @@ pkgdesc="ali's video tool"
 arch=(any)
 url='https://gitlab.com/alifurkany/avt'
 license=('GPL3')
-depends=('bash' 'ffmpeg' 'pipewire' 'pulseaudio' 'xorg-xdpyinfo')
+depends=('bash' 'ffmpeg' 'pipewire' 'pulse-native-provider' 'libpulse' 'xorg-xdpyinfo')
 makedepends=('git')
-source=("git+https://gitlab.com/alifurkany/avt.git#tag=v${pkgver}")
+source=("git+https://gitlab.com/slonkazoid/avt.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 package() {
