@@ -4,13 +4,13 @@
 
 pkgname=lib32-vulkan-utility-libraries-git
 pkgdesc='Vulkan Utility Libraries (32-bit) (git version)'
-pkgver=1.3.289.r1.gd13c1ee
+pkgver=1.3.292.r0.g45b8815
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/KhronosGroup/Vulkan-Utility-Libraries'
 license=(Apache-2.0)
-depends=(libvulkan.so vulkan-utility-libraries-git)
-makedepends=(cmake git ninja make python vulkan-headers-git)
+depends=(libvulkan.so vulkan-utility-libraries)
+makedepends=(cmake git ninja make python vulkan-headers)
 conflicts=(lib32-vulkan-utility-libraries)
 provides=(lib32-vulkan-utility-libraries)
 options=(!lto !strip) # disable LTO
@@ -31,6 +31,7 @@ export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
   rm -rf "${srcdir}"/build
 
   cmake -B "${srcdir}"/build -S "${srcdir}"/Vulkan-Utility-Libraries \
+  -D UPDATE_DEPS=OFF \
   -D CMAKE_C_FLAGS=-m32 \
   -D CMAKE_CXX_FLAGS=-m32 \
   -G Ninja \
