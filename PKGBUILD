@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=extraChIPs
-_pkgver=1.8.1
+_pkgver=1.8.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -45,15 +45,16 @@ depends=(
   r-venndiagram
 )
 checkdepends=(
+  r-apeglm
   r-deseq2
   r-enrichedheatmap
   r-harmonicmeanp
   r-testthat
 )
 optdepends=(
+  r-apeglm
   r-biocstyle
   r-covr
-  r-cqn
   r-deseq2
   r-enrichedheatmap
   r-gviz
@@ -69,8 +70,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0afeb5903409d749f90b4e5a3aab9fad')
-b2sums=('4fcd2558a82f28d88d6e79e513a5024c575cd58e90ca5258e35a8783ea815c800fc99ec68a420ad16067d2f1d7010576fc3151c8dc7622c9d1224e2c24d11b81')
+md5sums=('d515730a24ba1c2498470f5640bf8a27')
+b2sums=('f48b70df77b0ae1ecc3ffb6b6bb188f7bdcbc3f9dd4a88714b4bc63a7802fe470e74a546bc65140c4a2ceebd64550ae9b93b782e499e79c61568a32c6a5f6165')
 
 build() {
   mkdir build
