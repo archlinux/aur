@@ -8,7 +8,7 @@
 
 pkgname=mingw-w64-mariadb-connector-c
 pkgver=3.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc='MariaDB client libraries (mingw-w64)'
 arch=('any')
 url='https://mariadb.com/kb/en/mariadb/about-mariadb-connector-c'
@@ -40,14 +40,15 @@ prepare() {
 build() {
   cd "$srcdir/mariadb-connector-c-${pkgver}"
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -G Ninja \
+    ${_arch}-cmake -B build-${_arch}-static -S . -G Ninja \
       -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=/usr/$_arch/static \
       -DINSTALL_LIBDIR=lib \
       -DWITH_EXTERNAL_ZLIB=ON \
       -DWITH_MYSQLCOMPAT=ON \
       -DWITH_SSL="SCHANNEL" \
       -DWITH_UNIT_TESTS=OFF \
+      -DWITH_CURL=OFF \
       -DCLIENT_PLUGIN_AUTH_GSSAPI_CLIENT=STATIC \
       -DCLIENT_PLUGIN_DIALOG=STATIC \
       -DCLIENT_PLUGIN_REMOTE_IO=STATIC \
@@ -58,17 +59,37 @@ build() {
       -DCLIENT_PLUGIN_SHA256_PASSWORD=STATIC \
       -DCLIENT_PLUGIN_MYSQL_CLEAR_PASSWORD=STATIC \
       -DCLIENT_PLUGIN_MYSQL_OLD_PASSWORD=STATIC \
-      -DCLIENT_PLUGIN_ZSTD=STATIC \
-      ..
-    cmake --build .
-    popd
+      -DCLIENT_PLUGIN_ZSTD=STATIC 
+    cmake --build build-${_arch}-static
+    ${_arch}-cmake -B build-${_arch} -S . -G Ninja \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DINSTALL_LIBDIR=lib \
+      -DWITH_EXTERNAL_ZLIB=ON \
+      -DWITH_MYSQLCOMPAT=ON \
+      -DWITH_SSL="SCHANNEL" \
+      -DWITH_UNIT_TESTS=OFF \
+      -DWITH_CURL=ON \
+      -DCLIENT_PLUGIN_AUTH_GSSAPI_CLIENT=STATIC \
+      -DCLIENT_PLUGIN_DIALOG=STATIC \
+      -DCLIENT_PLUGIN_REMOTE_IO=STATIC \
+      -DCLIENT_PLUGIN_PVIO_NPIPE=STATIC \
+      -DCLIENT_PLUGIN_PVIO_SHMEM=STATIC \
+      -DCLIENT_PLUGIN_CLIENT_ED25519=STATIC \
+      -DCLIENT_PLUGIN_CACHING_SHA2_PASSWORD=STATIC \
+      -DCLIENT_PLUGIN_SHA256_PASSWORD=STATIC \
+      -DCLIENT_PLUGIN_MYSQL_CLEAR_PASSWORD=STATIC \
+      -DCLIENT_PLUGIN_MYSQL_OLD_PASSWORD=STATIC \
+      -DCLIENT_PLUGIN_ZSTD=STATIC 
+    cmake --build build-${_arch} 
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd "$srcdir/mariadb-connector-c-${pkgver}/build-${_arch}"
-    DESTDIR="${pkgdir}" cmake --install .
+    DESTDIR="${pkgdir}" cmake --install "$srcdir/mariadb-connector-c-${pkgver}/build-${_arch}-static"
+    DESTDIR="${pkgdir}" cmake --install "$srcdir/mariadb-connector-c-${pkgver}/build-${_arch}"
+    mv -v "$pkgdir"/usr/${_arch}/{static/,}lib/libmariadbclient.a
+    rm -vr "$pkgdir"/usr/${_arch}/static
     ln -s mariadb "$pkgdir"/usr/${_arch}/include/mysql
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     if [[ -d $pkgdir/usr/$_arch/lib/plugin ]]; then
