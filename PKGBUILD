@@ -3,8 +3,8 @@
 
 _pkgname=kime
 pkgname=kime-bin
-pkgver=3.0.2
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 # official binary have kime-window
@@ -26,8 +26,8 @@ source=(
     ${_pkgname}-${pkgver}-bin.tar.zst::"https://github.com/Riey/kime/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.tar.zst"
 )
 
-sha256sums=('cf7379765d5d8e0c3f03847e29d33b461e118e8691d47cc12a041a3e49eed756'
-            'f39255f467d1d6de2e80de75b695f62e47c884f57c488472a255f067eea4f052')
+sha256sums=('0a7a82b7e901f288295fbb755db247cf495b79e300e20554dda183c51fe5b369'
+            'b6b634d15084913de6709279cfd649a6a5448825cf711a6ba68bd0ba5c23c696')
 
  
 build() {
