@@ -7,7 +7,7 @@
 # Contributor: Alexey Pavlov <alexpux@gmail.com>
 
 pkgname=mingw-w64-libssh
-pkgver=0.10.6
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Library for accessing ssh client services through C libraries (mingw-w64)"
 url="https://www.libssh.org/"
@@ -18,9 +18,10 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-pkg-config' 'mingw-w64
 options=(!strip !buildflags staticlibs)
 #cmocka
 source=(https://www.libssh.org/files/${pkgver%.*}/libssh-$pkgver.tar.xz{,.asc})
-sha256sums=('1861d498f5b6f1741b6abc73e608478491edcf9c9d4b6630eef6e74596de9dc1'
+sha256sums=('860e814579e7606f3fc3db98c5807bef2ab60f793ec871d81bcd23acdcdd3e91'
             'SKIP')
-validpgpkeys=('8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D') # Andreas Schneider <asn@cryptomilk.org>
+validpgpkeys=('8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D'  # Andreas Schneider <asn@cryptomilk.org>
+              '88A228D89B07C2C77D0C780903D5DF8CFDD3E8E7') # libssh release key (release key) <libssh@libssh.org>
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -52,7 +53,7 @@ build() {
       -DWITH_EXAMPLES=OFF
 
     #${_arch}-cmake --build "${srcdir}"/build-${_arch}-static
-    make -C "${srcdir}"/build-${_arch}-static
+    make -j 1 -C "${srcdir}"/build-${_arch}-static
   done
 
   for _arch in ${_architectures}; do
@@ -65,7 +66,6 @@ build() {
       -DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
       -DCMAKE_BUILD_TYPE=Release \
       -DWITH_GSSAPI=OFF \
-      -DWITH_STATIC_LIB=ON \
       -DOPENSSL_FOUND:BOOL=ON \
       -DOPENSSL_INCLUDE_DIR:FILEPATH=/usr/${_arch}/include/ \
       -DOPENSSL_SSL_LIBRARY:FILEPATH="$libssl" \
