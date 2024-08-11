@@ -1,7 +1,7 @@
 pkgbase = python-chibi-requests
 	pkgdesc = python lib to make more easy use and human requests
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/chibi-requests/
 	arch = any
 	license = WTFPL
