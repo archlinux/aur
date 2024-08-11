@@ -1,28 +1,29 @@
 # Maintainer: OSAMC <https://github.com/osam-cologne/archlinux-proaudio>
 # Contributor: Florian Hülsmann <fh@cbix.de>
+# Contributor: Chris Arndt <aur -at- chrisarndt -dot- de>
 
 _name=VSTPlugins-UhhyouPlugins
 pkgname=uhhyou-plugins
-pkgver=0.61.0
+pkgver=0.62.0
 pkgrel=1
 pkgdesc='A collection of synthesizer and effect VST3 plugins'
 arch=(aarch64 x86_64)
 url='https://ryukau.github.io/VSTPlugins/'
-license=(GPL3)
+license=(GPL-3.0-only)
 groups=(pro-audio vst3-plugins)
 depends=(cairo gcc-libs glibc libxcb xcb-util xcb-util-cursor)
 makedepends=(cmake fontconfig git gtkmm3 libx11 libxkbcommon-x11 pango vst3sdk
              xcb-util-keysyms)
 optdepends=('vst3-host: for running VST3 plugins')
-_pocketfft_ref=128707f
+_pocketfft_ref=61f446c
 _vcl_ref=4c90584
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/ryukau/VSTPlugins/archive/refs/tags/UhhyouPlugins$pkgver.tar.gz"
   "pocketfft-$_pocketfft_ref.tar.gz::https://gitlab.mpcdf.mpg.de/mtr/pocketfft/-/archive/$_pocketfft_ref/pocketfft-$_pocketfft_ref.tar.gz"
   "vcl-$_vcl_ref.tar.gz::https://github.com/vectorclass/version2/archive/$_vcl_ref.tar.gz"
 )
-sha256sums=('a7f3c968985b1e0e3075fddb7a68b4a683db7c3e0f57107372f4622d2f2ef343'
-            'd1877fcdb44e619dd593d33412fe4328e70515863ab3a5de214bc59aa6a4f039'
+sha256sums=('a4d9e9b30903be7c6b6d8901aefe4f5b9e673be12c6195a393fdf7beacccbb5a'
+            '1e9aa6022bd23affd36d21e0e8c874d08cda5701a102f8da865ca66ff2309dc7'
             'd2a36ccedf4585b33fdba6cb38000aaa022c5b5306efeff2ad58cca52999c827')
 
 prepare() {
