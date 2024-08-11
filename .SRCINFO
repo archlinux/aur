@@ -1,0 +1,25 @@
+pkgbase = pgyvisitor
+	pkgdesc = 贝锐蒲公英客户端 Oray Pgy Visitor
+	pkgver = 6.2.0
+	pkgrel = 1
+	url = https://pgy.oray.com
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = custom
+	options = !strip
+	options = !debug
+	source = LICENSE::https://service.oray.com/question/1820.htm
+	sha256sums = SKIP
+	source_x86_64 = PgyVisitor-6.2.0.deb::https://pgy.oray.com/softwares/153/download/2156/PgyVisitor.deb
+	sha256sums_x86_64 = e062a592f1f127fa589f6919b3c6e96b71e403854d22d30d75b2cd753c45f2bc
+	source_i686 = PgyVisitor-6.2.0.deb::https://pgy.oray.com/softwares/153/download/2156/PgyVisitor.deb
+	sha256sums_i686 = a68066fa0b910a4dba6766c6a4d75807daa33ab3ebe9bfe9b093aee907d46705
+	source_aarch64 = PgyVisitor-6.2.0.deb::https://pgy.oray.com/softwares/153/download/2156/PgyVisitor.deb
+	sha256sums_aarch64 = 4b71ac53e7f87ff49e1b9b7aa3d3499fa6f2b56679d27a368dd5a19f32d1df66
+	source_armv7h = PgyVisitor-6.2.0.deb::https://pgy.oray.com/softwares/153/download/2156/PgyVisitor.deb
+	sha256sums_armv7h = 94fadf907b9f0376e35c6de2d2ae019ff06be9b5848856022f1c58075a9f98ff
+
+pkgname = pgyvisitor
+	install = pgyvisitor.install
