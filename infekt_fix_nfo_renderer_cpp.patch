@@ -1,0 +1,11 @@
+--- a/src/lib/nfo_renderer.cpp
++++ b/src/lib/nfo_renderer.cpp
+@@ -15,7 +15,7 @@
+ #include "stdafx.h"
+ #include "nfo_renderer.h"
+ #include "cairo_box_blur.h"
+-
++#include <cmath>
+ 
+ CNFORenderer::CNFORenderer(bool a_classicMode) :
+ 	m_classic(a_classicMode),
