@@ -2,7 +2,7 @@
 
 pkgname=python-wsgidav-seafile
 pkgver=11.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Seafile webdav server"
 arch=('any')
 url="https://github.com/haiwen/seafdav"
@@ -16,8 +16,7 @@ depends=('python'
          'python-sqlalchemy'
          'python-yaml')
 
-makedepends=('python-build'
-             'libyaml')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'libyaml')
 
 conflicts=('python-wsgidav')
 source=("${url}/archive/v${pkgver}-server.tar.gz")

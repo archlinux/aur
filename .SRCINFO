@@ -1,11 +1,14 @@
 pkgbase = python-wsgidav-seafile
 	pkgdesc = Seafile webdav server
 	pkgver = 11.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haiwen/seafdav
 	arch = any
 	license = MIT
 	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
 	makedepends = libyaml
 	depends = python
 	depends = python-json5
