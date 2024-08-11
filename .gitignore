@@ -1,8 +1,4 @@
-/*
-!/.gitignore
-!/.SRCINFO
-!/PKGBUILD
-!/sensible-utils*.asc
-!/*.patch
-!/*.install
-!/sensible-envvars
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
