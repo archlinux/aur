@@ -1,0 +1,34 @@
+From 3560875a7d919106ca0934c49441bcae3e24fe3d Mon Sep 17 00:00:00 2001
+From: oweissbarth <mail@oweissbarth.de>
+Date: Sun, 11 Aug 2024 17:33:03 +0200
+Subject: [PATCH] FFmpeg 6.x
+
+---
+ lib/djvAV/FFmpegRead.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/djvAV/FFmpegRead.cpp b/lib/djvAV/FFmpegRead.cpp
+index 0f00ac871..218e97331 100644
+--- a/lib/djvAV/FFmpegRead.cpp
++++ b/lib/djvAV/FFmpegRead.cpp
+@@ -270,7 +270,7 @@ namespace djv
+                                     av_get_time_base_q(),
+                                     avAudioStream->time_base);
+                             }
+-                            uint8_t channelCount = p.avCodecParameters[p.avAudioStream]->channels;
++                            uint8_t channelCount = p.avCodecParameters[p.avAudioStream]->ch_layout.nb_channels;
+                             switch (channelCount)
+                             {
+                             case 1:
+@@ -719,7 +719,7 @@ namespace djv
+                         extractAudio(
+                             p.avFrame->data,
+                             p.avCodecParameters[p.avAudioStream]->format,
+-                            p.avCodecParameters[p.avAudioStream]->channels,
++                            p.avCodecParameters[p.avAudioStream]->ch_layout.nb_channels,
+                             audioData);
+                         {
+                             std::lock_guard<std::mutex> lock(_mutex);
+-- 
+2.46.0
+
