@@ -8,7 +8,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
 pkgver=5.4.3
-pkgrel=0
+pkgrel=1
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -188,6 +188,10 @@ prepare() {
   fi
   
   ./Setup.sh
+  cd ./Engine/Build/BatchFiles/Linux/ || return
+  ./Engine/Build/BatchFiles/Linux/SetupToolchain.sh
+  ./Engine/Build/BatchFiles/Linux/BuildThirdParty.sh
+  ./Engine/Build/BatchFiles/Linux/SetupDotnet.sh
 }
 
 build() {
