@@ -1,0 +1,34 @@
+diff --git a/setup.py b/setup.py
+index 1ea236b..72ca098 100644
+--- a/setup.py
++++ b/setup.py
+@@ -24,6 +24,11 @@ setup(
+     install_requires=[
+         'tarsafe>=0.0.2',
+     ],
++    entry_points={
++        "console_scripts": [
++            "unitypackage_extractor = unitypackage_extractor.extractor:cli",
++        ],
++    },
+     keywords='untiy unity3d unitypackage extract tar extractor',
+     packages=['unitypackage_extractor']
+ )
+diff --git a/unitypackage_extractor/extractor.py b/unitypackage_extractor/extractor.py
+index be55b6f..5adc611 100644
+--- a/unitypackage_extractor/extractor.py
++++ b/unitypackage_extractor/extractor.py
+@@ -48,10 +48,12 @@ def extractPackage(packagePath, outputPath=None, encoding='utf-8'):
+       os.makedirs(os.path.dirname(assetOutPath), exist_ok=True) #Make the dirs up to the given folder
+       shutil.move(f"{assetEntryDir}/asset", assetOutPath)
+ 
+-def cli(args):
++def cli(args=None):
+   """
+   CLI entrypoint, takes CLI arguments array
+   """
++  if args is None:
++      args = sys.argv[1:]
+   if not args:
+     raise TypeError("No .unitypackage path was given. \n\nUSAGE: unitypackage_extractor [XXX.unitypackage] (optional/output/path)")
+   startTime = time.time()

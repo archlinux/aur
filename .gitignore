@@ -1,0 +1,4 @@
+pkg/
+src/
+unitypackage_extractor/
+*.zst
