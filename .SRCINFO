@@ -1,17 +1,17 @@
 pkgbase = bsdsed
 	pkgdesc = BSD variant of sed
-	pkgver = 1.0.0
+	pkgver = 14.1.0
 	pkgrel = 1
 	url = https://github.com/freebsd/freebsd-src/tree/main/usr.bin/sed
 	arch = x86_64
 	license = BSD
 	depends = glibc
-	source = https://github.com/freebsd/freebsd-src/archive/refs/tags/release/14.0.0.tar.gz
+	source = https://github.com/freebsd/freebsd-src/archive/refs/tags/release/14.1.0.tar.gz
 	source = Makefile
 	source = errc.c
 	source = linux_compat.h
-	sha256sums = ebdb7af04060d0a52e713bab4eba274ab2c9c6b94e657e67b32c80086ccbeabc
-	sha256sums = 394e15e993e651f98f5d0a7c69714f1a1b9870d500a9ead7616f0dfb1a34fddd
+	sha256sums = 87e1968215be2e0ec5a8e30bf79f227399608a4e8e16af697f12e0ab34fcb5bf
+	sha256sums = 56fb2d9d72cb3542a5fd3eb34c82088a6b31d5f5cbde78df0c5abbf16e7afe7b
 	sha256sums = ffa4df0805e86b6298758b0abd4857b189d2d8b4df0de510376efd064a3d5e64
 	sha256sums = 64c848535ea2af835c1cf3b24a0843408bc4ecd542ff660f023fe9413d6888c2
 

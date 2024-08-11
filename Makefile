@@ -1,4 +1,4 @@
-FREEBSDVER?=14.0.0
+FREEBSDVER?=14.1.0
 
 INSTALL?=/usr/bin/install
 INSTALL_PROGRAM=$(INSTALL) -Dm755
@@ -19,8 +19,8 @@ bsdsed: freebsd-src-release-$(FREEBSDVER)/usr.bin/sed/compile.o \
 	$(CC) $(CFLAGS) $(LDFLAGS) -o bsdsed $^
 
 bsdsed.1:
-	@sed 's/sed/bsdsed/;s/GNU bsd/GNU /' freebsd-src-release-$(FREEBSDVER)/usr.bin/sed/sed.1 > bsdsed.1
-	
+	@sed 's/\bsed/bsdsed/;s/GNU bsd/GNU /' freebsd-src-release-$(FREEBSDVER)/usr.bin/sed/sed.1 > bsdsed.1
+
 install: bsdsed bsdsed.1
 	$(INSTALL_PROGRAM) -t $(DESTDIR)$(bindir) bsdsed
 	$(INSTALL_DATA) -t $(DESTDIR)$(man1dir) bsdsed.1
