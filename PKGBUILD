@@ -1,12 +1,13 @@
 pkgname='mandarine'
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 pkgdesc='3ds emulator - citra fork with tweaks/enhancements'
 url='https://github.com/mandarine3ds/mandarine'
 license=("GPL-2.0")
 depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio' 'zstd' 'soundtouch' 'fmt' 'libinih' 'openal' 'enet')
 makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'libc++' 'ninja')
+conflicts=('mandarine-git' 'mandarine-appimage')
 source=("git+https://github.com/mandarine3ds/mandarine#tag=r$pkgver"
 	"boost::git+https://github.com/PabloMK7/ext-boost.git"
 	"git+https://github.com/neobrain/nihstro.git"
