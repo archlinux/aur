@@ -14,6 +14,7 @@ pkgbase = cosmic-edit-git
 	depends = libxkbcommon
 	depends = wayland
 	provides = cosmic-edit
+	provides = cosmic-text-editor
 	conflicts = cosmic-edit
 	conflicts = cosmic-text-editor
 	options = !lto

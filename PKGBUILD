@@ -19,7 +19,7 @@ makedepends=(
   'just'
   'mold'
 )
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}" 'cosmic-text-editor')
 conflicts=("${pkgname%-git}" 'cosmic-text-editor')
 options=('!lto')
 source=('git+https://github.com/pop-os/cosmic-edit.git')
