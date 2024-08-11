@@ -1,6 +1,6 @@
 pkgbase = turbovnc
 	pkgdesc = A derivative of Virtual Network Computing that is tuned to provide peak performance for 3D and video workloads
-	pkgver = 3.1.1
+	pkgver = 3.1.2
 	pkgrel = 2
 	url = http://www.turbovnc.org/
 	arch = i686
@@ -37,12 +37,12 @@ pkgbase = turbovnc
 	conflicts = tightvnc-git
 	backup = etc/turbovnc/turbovncserver.conf
 	backup = etc/turbovnc/turbovncserver-security.conf
-	source = https://github.com/TurboVNC/turbovnc/releases/download/3.1.1/turbovnc-3.1.1.tar.gz
-	source = https://github.com/TurboVNC/turbovnc/releases/download/3.1.1/turbovnc-3.1.1.tar.gz.sig
+	source = https://github.com/TurboVNC/turbovnc/releases/download/3.1.2/turbovnc-3.1.2.tar.gz
+	source = https://github.com/TurboVNC/turbovnc/releases/download/3.1.2/turbovnc-3.1.2.tar.gz.sig
 	source = vncserver.service
 	validpgpkeys = AE1A7BA4EFFF9A9987E1474C4BACCAB36E7FE9A1
-	sha256sums = 3530a4ab7dfe36be7aa1bd9da6e9cf048be9f585b1940949d3c286ce53ec2b30
-	sha256sums = 8849ad625dfa64c1e175f0f4556b68179164e4c5a487de4ce4c53196059e19ff
+	sha256sums = 09809ac107ac038bd896c3a89d3988d5222e8d0f26bcbb62e92b65bced5b30e8
+	sha256sums = d01405273c3d4e350dd792f33afc65186aa572709789efead0fc9c7f73e084f5
 	sha256sums = ccadf1fc708fad601e6113464d6c533a629f6dc9116f6071347cd0b465c1f48b
 
 pkgname = turbovnc
