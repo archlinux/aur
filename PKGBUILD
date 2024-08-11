@@ -9,8 +9,8 @@
 
 pkgbase=handbrake-full
 pkgname=(handbrake-full handbrake-full-cli)
-pkgver=1.8.1
-pkgrel=2
+pkgver=1.8.2
+pkgrel=1
 pkgdesc="Multithreaded video transcoder. Enabled: x265, nvenc, fdk-aac, qsv, vce, numa, hardened"
 arch=(x86_64 i686)
 url="https://handbrake.fr/"
@@ -26,7 +26,7 @@ optdepends=('libdvdcss: for decoding encrypted DVDs'
             'nvidia-utils: for enabling Nvidia nvenc and nvdec'
             'cuda: for enabling Nvidia nvenc and nvdec'
             'amf-amdgpu-pro: for enabling AMD AMF')
-sha256sums=('99a054f95dc789bb6bf5b69cea5a5dd64653cd991102ed409495d421c04bf227')
+sha256sums=('e2f31934d4fffc130a42998fd7d7a206e30f9884ee957fe20370ae07a13683c8')
 options=(!lto)
 
  build() {
