@@ -1,7 +1,7 @@
 pkgbase = python-eduvpn-client
 	pkgdesc = Linux client and Python client API for eduVPN
-	pkgver = 4.2.1
-	pkgrel = 2
+	pkgver = 4.4.0
+	pkgrel = 1
 	url = https://github.com/eduvpn/python-eduvpn-client
 	arch = any
 	license = GPL
@@ -16,7 +16,7 @@ pkgbase = python-eduvpn-client
 	depends = dbus-python
 	depends = python-gobject
 	depends = hicolor-icon-theme
-	depends = python-eduvpn_common>=1.1.0
+	depends = python-eduvpn_common>=2.1.0
 	depends = python-pyqt5
 	depends = libibus
 	depends = libgexiv2
@@ -27,10 +27,10 @@ pkgbase = python-eduvpn-client
 	depends = gtk3
 	depends = libnm
 	depends = networkmanager-openvpn
-	source = https://github.com/eduvpn/python-eduvpn-client/releases/download/4.2.1/python-eduvpn-client-4.2.1.tar.xz
-	source = https://github.com/eduvpn/python-eduvpn-client/releases/download/4.2.1/python-eduvpn-client-4.2.1.tar.xz.asc
+	source = https://github.com/eduvpn/python-eduvpn-client/releases/download/4.4.0/python-eduvpn-client-4.4.0.tar.xz
+	source = https://github.com/eduvpn/python-eduvpn-client/releases/download/4.4.0/python-eduvpn-client-4.4.0.tar.xz.asc
 	validpgpkeys = 227FF3F8F829D9A9314D9EBA02BB8048BBFF222C
-	sha256sums = e7b10a58ecc67c0e22855613c9f2c5db2a1eee137fece9c4906fb32f3ed0b712
+	sha256sums = 2074488ebc8021e19c16acf904c5ac134fe00a56929a7c168637357f573af6f9
 	sha256sums = SKIP
 
 pkgname = python-eduvpn-client
