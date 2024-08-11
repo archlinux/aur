@@ -1,7 +1,7 @@
 pkgbase = fumosay
 	pkgdesc = cowsay with fumofumos written in C.
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/randomtwdude/fumosay
 	arch = x86_64
 	license = BSD-3-Clause

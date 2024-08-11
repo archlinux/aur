@@ -1,7 +1,7 @@
 # Maintainer: randomTWdude
 pkgname=fumosay
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='cowsay with fumofumos written in C.'
 arch=('x86_64')
 url='https://github.com/randomtwdude/fumosay'
