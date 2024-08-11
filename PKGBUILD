@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elevate-git
-pkgver=7.1.0.r1.g13e2a50
+pkgver=7.2.0.r1.g3316006
 _electronversion=27
-_nodeversion=16
+_nodeversion=18
 pkgrel=1
 pkgdesc="A sport app to 'Elevate' your training experience and goals! Track your fitness and progressions over time. Analyse deeper your activities. And more..."
 arch=('any')
@@ -17,10 +17,12 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
+    'curl'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
-    "${pkgname%-git}.sh")
+    "${pkgname%-git}.sh"
+)
 sha256sums=('SKIP'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
@@ -42,7 +44,6 @@ build() {
         -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname//-/.}/desktop"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -58,8 +59,12 @@ build() {
     else
         echo "Your network is OK."
     fi
+    cd "${srcdir}/${pkgname//-/.}"
+    NODE_ENV=development    npm add -D husky
+    NODE_ENV=development    npm install
+    cd "${srcdir}/${pkgname//-/.}/desktop"
     sed "s| --linux| -l --dir|g" -i package.json
-    npm run build:package:linux
+    NODE_ENV=production     npm run build:package:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
