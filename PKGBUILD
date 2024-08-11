@@ -9,7 +9,7 @@ _ff_theme=official
 
 _pkgname=firefox-esr
 pkgname=firefox-esr-globalmenu
-pkgver=115.13.0
+pkgver=115.14.0
 pkgrel=1
 _ff_srcname="firefox-$pkgver"
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release. (With appmenu patch from Ubuntu)"
@@ -334,7 +334,7 @@ package() {
 	ln -srfv "$pkgdir/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
 }
 
-sha1sums=('6a3c1f36aaf06cb41745c7866d6bb7fb5016e01d'
+sha1sums=('7ecbc5b05fc5671ffd79b54275d4375b30818fcc'
           'SKIP'
           'b3ccca02959d94ef2a5db8f140ff96a2cd9724ef'
           '559ce09fee54c849ea4da2bf881da37f5fc0cac9'
