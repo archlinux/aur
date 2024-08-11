@@ -3,13 +3,13 @@
 
 pkgname=vulkan-validation-layers-git
 pkgdesc='Vulkan Validation Layers (git version)'
-pkgver=1.3.289.r53.gd1a44af
+pkgver=1.3.292.r19.gd8bbb73
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/KhronosGroup/Vulkan-ValidationLayers'
 license=(custom)
 makedepends=(cmake python-lxml libxrandr wayland git ninja make)
-depends=(gcc-libs vulkan-icd-loader-git vulkan-headers-git vulkan-utility-libraries-git libx11)
+depends=(gcc-libs vulkan-icd-loader vulkan-headers vulkan-utility-libraries libx11)
 conflicts=(vulkan-validation-layers)
 provides=(vulkan-validation-layers vulkan-validation-layers-git libVkLayer_khronos_validation.so)
 options=(!lto !strip) # disable LTO (https://github.com/KhronosGroup/Vulkan-ValidationLayers/issues/5994)
@@ -23,7 +23,7 @@ pkgver(){
 build(){
   rm -rf "${srcdir}"/build
 
-  "${srcdir}"/Vulkan-ValidationLayers/scripts/update_deps.py --config release
+  "${srcdir}"/Vulkan-ValidationLayers/scripts/update_deps.py --config release --generator Ninja
 
   cmake -C helper.cmake -B "${srcdir}"/build -S "${srcdir}"/Vulkan-ValidationLayers \
   -G Ninja \
