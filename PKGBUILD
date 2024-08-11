@@ -8,14 +8,14 @@
 
 _pkgname=godot
 pkgname=godot3-git
-pkgver=r34303.338114d
+pkgver=r34466.470ef4d
 _pkgverbranch=3.5
-pkgrel=3
+pkgrel=1
 pkgdesc='Advanced cross-platform 2D and 3D game engine (3.x Branch)'
 url='https://godotengine.org'
 license=(MIT)
 arch=(x86_64)
-makedepends=(gcc scons yasm alsa-lib pulseaudio)
+makedepends=(gcc scons yasm alsa-lib pulse-native-provider)
 depends=(embree3 freetype2 libglvnd libtheora libvorbis libvpx libwebp libwslay
          libsquish libxcursor libxi libxinerama libxrandr miniupnpc opusfile)
 optdepends=(pipewire-alsa pipewire-pulse)
