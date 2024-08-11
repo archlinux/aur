@@ -2,7 +2,7 @@
 
 pkgname=tomato-radio-automation-git
 _pkgname=tomato-radio-automation
-pkgver=0.9.1.r1.g9b83a2ea
+pkgver=r1056.735d292d
 pkgrel=1
 pkgdesc='Tomato Radio Automation desktop client. Dead simple radio ads. Preview version.'
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ _repodir="${_pkgname}"
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --exclude=preview-build --long --tags --abbrev=8 | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//'
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short=8 HEAD)"
 }
 
 # Source below the exact same as tomato-radio-automation
