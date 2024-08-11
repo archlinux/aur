@@ -3,8 +3,7 @@
 
 pkgname=noto-fonts-latin-greek-cyrillic
 provides=('noto-fonts')
-conflicts=('noto-fonts'
-           'noto-fonts-extra')
+conflicts=('noto-fonts')
 epoch=1
 pkgver=2.013
 pkgverMono=2.014  # Error in 2.013 package

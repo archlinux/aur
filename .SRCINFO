@@ -8,7 +8,6 @@ pkgbase = noto-fonts-latin-greek-cyrillic
 	license = custom:SIL
 	provides = noto-fonts
 	conflicts = noto-fonts
-	conflicts = noto-fonts-extra
 	source = https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSans-v2.013/NotoSans-v2.013.zip
 	source = https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSansMono-v2.014/NotoSansMono-v2.014.zip
 	source = https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSerif-v2.013/NotoSerif-v2.013.zip
