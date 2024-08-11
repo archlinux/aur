@@ -4,7 +4,7 @@
 # Contributor: Roberto Carvajal <roberto@archlinux.org>
 
 pkgname=multitail
-pkgver=7.1.3
+pkgver=7.1.4
 pkgrel=1
 pkgdesc='View one or multiple files like the original tail program'
 arch=('x86_64')
@@ -14,12 +14,13 @@ depends=('glibc' 'bash' 'ncurses' 'perl')
 makedepends=('cmake')
 backup=('etc/multitail.conf')
 source=(https://github.com/folkertvanheusden/multitail/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('f55732781f7319e137a3ff642a347af1aaf3ed5265ed12526bdd0666d708d805')
+sha256sums=('96b781a9c22f3518fc25c4f3ce3833ec5069158b2a743a30f7586cd063824704')
 
 prepare() {
   cd $pkgname-$pkgver
   sed -i 's|ncursesw/panel.h|panel.h|' mt.h
   sed -i 's|ncursesw/ncurses.h|ncurses.h|' mt.h
+  echo "VERSION=$pkgver" >version
 }
 
 build() {
