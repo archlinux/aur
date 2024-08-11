@@ -1,0 +1,20 @@
+pkgbase = python-recipe-scrapers-git
+	pkgdesc = Python package for scraping recipes data
+	pkgver = 1416.3834dfc9
+	pkgrel = 1
+	url = https://github.com/hhursev/recipe-scrapers
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	depends = python-bs4
+	depends = python-extruct-git
+	depends = python-isodate
+	depends = python-requests
+	provides = python-recipe-scrapers
+	source = git+https://github.com/hhursev/recipe-scrapers.git
+	sha256sums = SKIP
+
+pkgname = python-recipe-scrapers-git
