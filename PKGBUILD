@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dash-player-git
 _pkgname=DashPlayer
-pkgver=4.2.0.r0.g14563a1
+pkgver=4.2.4.r0.gbe9904f
 _electronversion=29
 _nodeversion=18
 pkgrel=1
@@ -23,8 +23,8 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
-    'base-devel'
     'gcc'
+    'cmake'
     'curl'
 )
 source=(
@@ -74,9 +74,9 @@ build() {
     ln -sf "/usr/bin/ffmpeg" lib/ffmpeg
     ln -sf "/usr/bin/ffprobe" lib/ffprobe
     ln -sf "/usr/bin/yt-dlp" lib/yt-dlp
-    sed "s|\${process.resourcesPath}|/usr/lib/${pkgname%-git}|g" -i src/backend/db/migrate.ts
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn run package
+    sed "s|\${process.resourcesPath}|\/usr\/lib\/${pkgname%-git}|g" -i src/backend/{db/migrate.ts,services/LocationService.ts}
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production     yarn run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
