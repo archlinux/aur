@@ -4,17 +4,17 @@ _pkgname=epitools
 _pkgver=0.5-10.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=0
+pkgrel=2
 pkgdesc="Epidemiology Tools"
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-2.0-or-later')
 depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('5687c399ed86c5de206164cd449e42ba')
-sha256sums=('b418854de1fcedd126f3bf19dc27e8a71ee6efae5371098ab64a53a2d51d164b')
+b2sums=('ffc8ece8b0f1834a50ac77c9122cf47639a4eaca080582930ee34d1d3d291ed62d2a1d60a87debc3f50709f3531acfc182b6da483d7bd02b9944637275c4e92d')
 
 build() {
   mkdir build
@@ -24,7 +24,4 @@ build() {
 package() {
   install -d "$pkgdir/usr/lib/R/library"
   cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
-
-  install -d "$pkgdir/usr/share/licenses/$pkgname"
-  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
