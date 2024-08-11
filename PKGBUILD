@@ -34,7 +34,8 @@ fonts=(NotoSans
 package() {
   optdepends=('noto-fonts-cjk: CJK characters' 'noto-fonts-emoji: Emoji characters'
               'noto-fonts-extra: additional variants (condensed, semi-bold, extra-light)')
-  provides=(ttf-font)
+  provides=(ttf-font
+            noto-fonts)
 
   for fontname in "${fonts[@]}" ; do
     echo "installing $fontname"

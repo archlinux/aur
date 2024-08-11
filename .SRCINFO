@@ -32,3 +32,4 @@ pkgname = noto-fonts-latin-greek-cyrillic
 	optdepends = noto-fonts-emoji: Emoji characters
 	optdepends = noto-fonts-extra: additional variants (condensed, semi-bold, extra-light)
 	provides = ttf-font
+	provides = noto-fonts
