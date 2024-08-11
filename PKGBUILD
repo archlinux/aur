@@ -7,11 +7,11 @@ pkgrel=1
 pkgdesc="Minimal GUI Application using the QCSXCAD library. Built from git."
 arch=('x86_64')
 url="https://github.com/thliebig/$_pkgname"
-license=('GPL')
-depends=("csxcad-git" "openems-git" "qcsxcad" "hdf5" "vtk" "qt5-base" "qt5-x11extras" "libxcursor")
+license=('GPL-3.0-or-later')
+depends=('csxcad-git' 'openems-git' 'qcsxcad' 'vtk' 'qt5-base' 'qt5-x11extras' 'libxcursor' 'glew' 'hdf5-openmpi')
 provides=('appcsxcad')
 conflicts=('appcsxcad')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'nlohmann-json')
 source=("git+https://github.com/thliebig/$_pkgname")
 md5sums=('SKIP')
 
