@@ -1,6 +1,6 @@
 pkgbase = baru
 	pkgdesc = A system monitor written in Rust and C
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/doums/baru
 	arch = x86_64
@@ -10,7 +10,8 @@ pkgbase = baru
 	depends = libpulse
 	provides = baru
 	conflicts = baru
-	source = baru-0.3.1.tar.gz::https://github.com/doums/baru/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = aabb3e977d7485f3f28c8231783b768c7da9ed3346bdcae72b7319614f03ffb2
+	options = !debug
+	source = baru-0.3.2.tar.gz::https://github.com/doums/baru/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = 9371eaec27163ad98a549f82b2290a95e828a5ca69ee646376ec6830958761e1
 
 pkgname = baru
