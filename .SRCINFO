@@ -1,6 +1,6 @@
 pkgbase = zef
 	pkgdesc = Rakudo (Perl6) Module Management
-	pkgver = 0.22.0
+	pkgver = 0.22.1
 	pkgrel = 1
 	url = https://github.com/ugexe/zef
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = zef
 	makedepends = git
 	depends = perl6
 	options = !purge
-	source = zef-0.22.0.tar.gz::https://codeload.github.com/ugexe/zef/tar.gz/v0.22.0
-	sha256sums = 8041c9609b950298fbedef6152a1a0307644f2407164b4803f76c33f1d6ac87d
+	source = zef-0.22.1.tar.gz::https://codeload.github.com/ugexe/zef/tar.gz/v0.22.1
+	sha256sums = 16b113eb73433e20d1db3cb2d78e9afc0cff3b2af9661fc2e7646ae2a1ac8b49
 
 pkgname = zef
