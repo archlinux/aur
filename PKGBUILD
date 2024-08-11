@@ -1,7 +1,7 @@
 #Maintainer: rmbgame<rmb@rmbgame.net>
 #Maintainer: AigioL<https://github.com/AigioL>
 _tag=3.0.0-rc.9
-pkgname=watt-toolkit-bin
+pkgname=watt-toolkit-bin-gitee
 pkgdesc=一个开源跨平台的多功能Steam工具箱。本包完全等同于watt-toolkit-bin,只是将下载源替换为了gitee。
 pkgver=${_tag//-/.}
 pkgrel=1
