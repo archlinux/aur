@@ -1,3 +1,6 @@
+[build-system]
+requires = ["setuptools","wheel"]
+
 [project]
 name = "seafobj"
 version = "11.0.11"
@@ -6,7 +9,7 @@ authors = [
     {name = "Seafile Ltd.", email = "info@seafile.com"}
 ]
 dependencies = [
-    "boto3==1.28.12",
+    "boto3",
 ]
 requires-python = ">=3.8"
 readme = "README.md"
