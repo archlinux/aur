@@ -10,7 +10,7 @@ groups=()
 depends=("python-chibi" "python-requests" "python-beautifulsoup4" "python-marshmallow" "python")
 makedepends=("python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname//-/_}/${_pyname//-/_}-$pkgver.tar.gz")
-sha256sums=('fc507a6041a9d1d6766bd8c03a9cc4ec89a8c5f45948a0bf59be0e8ddac9c5c1')
+sha256sums=('ef39543b3a919981abd765564e5f3bae3ebb73bf0f616eb95e9940bcc0cfa7b0')
 
 build() {
 	cd "$_pyname-$pkgver"

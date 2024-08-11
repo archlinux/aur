@@ -12,6 +12,6 @@ pkgbase = python-chibi-requests
 	depends = python-marshmallow
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/c/chibi_requests/chibi_requests-0.7.0.tar.gz
-	sha256sums = fc507a6041a9d1d6766bd8c03a9cc4ec89a8c5f45948a0bf59be0e8ddac9c5c1
+	sha256sums = ef39543b3a919981abd765564e5f3bae3ebb73bf0f616eb95e9940bcc0cfa7b0
 
 pkgname = python-chibi-requests
