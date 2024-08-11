@@ -2,7 +2,7 @@
 
 pkgname=ctune-git
 pkgver=v1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="NCurses internet radio player for Linux."
 arch=('x86_64' 'aarch64')
 url="https://github.com/An7ar35/ctune"
@@ -12,7 +12,6 @@ depends=('ncurses'
          'curl'
          'ffmpeg'
          'alsa-lib'
-         'pipewire-pulse'
          'libbsd')
 
 makedepends=('make'
@@ -20,7 +19,9 @@ makedepends=('make'
              'git'
              'pandoc')
 
-optdepends=('sdl2: for SDL2 output plugin support'
+optdepends=('pulseaudio: for PulseAudio plugin support'
+            'pipewire-pulse: for using the pulseaudio plugin on Pipewire'
+            'sdl2: for SDL2 output plugin support'
             'sndio: for SNDIO output plugin support'
             'vlc: for VLC player plugin support')
 
