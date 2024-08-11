@@ -4,7 +4,7 @@ _pkgver=v2024.1-beta2.security3
 
 pkgname=iceshrimp.net-bin
 pkgver=2024.1.beta2.security3
-pkgrel=1
+pkgrel=2
 pkgdesc="Decentralized and federated social networking service, implementing the ActivityPub standard"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp.net"
