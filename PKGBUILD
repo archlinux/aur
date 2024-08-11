@@ -10,7 +10,7 @@ url="https://github.com/guardkenzie/chafa.py"
 license=('GPL-3.0-or-later' 'LGPL-3.0-or-later')
 makedepends=('python-build' 'python-installer' 'python-wheel'
              'python-hatchling')
-# checkdepends=('python-pytest' 'python-pillow')
+checkdepends=('python-pytest' 'python-pillow' 'python-numpy' 'python-wand')
 depends=('glibc' 'python>=3.8' 'chafa' 'glib2')
 _pkgsrc="chafa.py-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
@@ -26,10 +26,10 @@ build () {
   python -m build --wheel --no-isolation
 }
 
-# check () {
-#   cd "${srcdir}/${_pkgsrc}"
-#   pytest
-# }
+check () {
+  cd "${srcdir}/${_pkgsrc}"
+  PYTHONPATH=src pytest
+}
 
 package () {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
