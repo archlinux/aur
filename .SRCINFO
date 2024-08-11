@@ -1,13 +1,14 @@
 pkgbase = topinambour-git
 	pkgdesc = vte terminal based on the ruby-gtk3 bindings
 	pkgver = 2.0.4.r68.g437f5ff
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cedlemo/topinambour
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = fish
+	makedepends = ruby-rake
+	depends = zsh
 	depends = ruby
 	depends = ruby-gtk3
 	depends = ruby-vte3
