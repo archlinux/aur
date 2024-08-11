@@ -29,6 +29,7 @@ pkgbase = unreal-engine
 	depends = steam
 	depends = coreutils
 	depends = findutils
+	optdepends = polly: for potentially increased performance
 	optdepends = qt5-base: qmake build system for projects
 	optdepends = cmake: build system for projects
 	optdepends = qtcreator: IDE for projects

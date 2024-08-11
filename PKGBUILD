@@ -9,13 +9,15 @@
 pkgname=unreal-engine
 pkgver=5.4.3
 pkgrel=2
+## Check unreal-engine/Engine/Config/Linux/Linux_SDK.json (MainVersion value) for what the below should be set to
 UE_SDK_VERSION="native-linux-v22_clang-16.0.6-centos7"
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
 makedepends=('git' 'openssh' 'sed' 'grep' 'glibc' 'wget')
 depends=('icu63' 'sdl2' 'python' 'dotnet-runtime' 'dotnet-sdk' 'vulkan-icd-loader' 'lld' 'xdg-user-dirs' 'dos2unix' 'openssl' 'steam' 'coreutils' 'findutils')
-optdepends=('qt5-base: qmake build system for projects'
+optdepends=('polly: for potentially increased performance'
+            'qt5-base: qmake build system for projects'
             'cmake: build system for projects'
             'qtcreator: IDE for projects'
             'codelite: IDE for projects'
@@ -105,29 +107,33 @@ else
   opt_level="-O3"
 fi
 
+if [ -f "$(find /usr/lib -name 'LLVMPolly.so')" ] || [ -f "$(find /usr/lib64 -name 'LLVMPolly.so')" ]; then
+  export CFLAGS="${CFLAGS} -fplugin=LLVMPolly.so -mllvm=-polly -mllvm=-polly-ast-use-context -mllvm=-polly-vectorizer=stripmine -mllvm=-polly-invariant-load-hoisting -mllvm=-polly-run-inliner -mllvm=-polly-run-dce"
+fi
+
 if [[ ${arch_auto} == auto ]]
 then
   ## Architecture checks and compile flag adjustments - shellcheck throws a fit about the build function but it looks fine to me; checks for the highest available x64 support level and falls back to "native" if either not available
   if [ "$(uname -m)" == "x86_64" ]; then
     if [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v4' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == 'x86-64-v4 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64-v4 -mtune=x86-64-v4 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -w -Wformat -Werror=format-security -fpic -fpie -Wp,-D_FORTIFY_SOURCE=2"
+      export CFLAGS="${CFLAGS} -march=x86-64-v4 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fpic -fpie -Wp,-D_FORTIFY_SOURCE=2"
       export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
       export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
     elif [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v3' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == 'x86-64-v3 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64-v3 -mtune=x86-64-v3 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -w -Wformat -Werror=format-security -fpic -fpie -Wp,-D_FORTIFY_SOURCE=2"
+      export CFLAGS="${CFLAGS} -march=x86-64-v3 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fpic -fpie -Wp,-D_FORTIFY_SOURCE=2"
       export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
       export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
     elif [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v2' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == 'x86-64-v2 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64-v2 -mtune=x86-64-v2 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -w -Wformat -Werror=format-security -fpic -fpie -Wp,-D_FORTIFY_SOURCE=2"
+      export CFLAGS="${CFLAGS} -march=x86-64-v2 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fpic -fpie -Wp,-D_FORTIFY_SOURCE=2"
       export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
       export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
     elif [ "$(/lib/ld-linux-x86-64.so.2 --help | grep 'x86_64' | grep 'supported' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /' | grep -w '^x86_64 - supported')" == 'x86_64 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64 -mtune=x86-64 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -w -Wformat -Werror=format-security -fpic -fpie -Wp,-D_FORTIFY_SOURCE=2"
+      export CFLAGS="${CFLAGS} -march=x86-64 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fpic -fpie -Wp,-D_FORTIFY_SOURCE=2"
       export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
       export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
     fi
   elif [ "$(uname -m)" == "aarch64" ]; then
-    export CFLAGS="${CFLAGS} -march=aarch64 -mtune=aarch64 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -w -Wformat -Werror=format-security -fPIC -fPIE -Wp,-D_FORTIFY_SOURCE=2"
+    export CFLAGS="${CFLAGS} -march=aarch64 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fPIC -fPIE -Wp,-D_FORTIFY_SOURCE=2"
     export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
     export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
   else
@@ -135,11 +141,10 @@ then
     return
   fi
 elif [[ "${arch_auto}" == native ]]; then
-    export CFLAGS="${CFLAGS} -march=native -mtune=native ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -w -Wformat -Werror=format-security -fPIC -fPIE -Wp,-D_FORTIFY_SOURCE=2"
+    export CFLAGS="${CFLAGS} -march=native -mtune=native ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fPIC -fPIE -Wp,-D_FORTIFY_SOURCE=2"
     export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
     export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
 fi
-
 
 prepare() {
   # Check access to the repository
