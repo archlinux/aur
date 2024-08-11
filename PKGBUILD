@@ -4,7 +4,7 @@ pkgname="${_appname}next-bin"
 _pkgname="TriliumNext Notes"
 pkgver=0.90.4
 _electronversion=31
-pkgrel=1
+pkgrel=2
 pkgdesc="Build your personal knowledge base with TriliumNext Notes"
 arch=("x86_64")
 url="https://github.com/TriliumNext/Notes"
@@ -27,11 +27,11 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('4c44a699bd72220214ec3cdc65ac0c1e441d8d32f8499a75692cfb34778a4c89'
-            'c053a7b3ed8b0b4d77f78e81ab8a4c61cbfd773a9298b3f3a187e5df89c125c2')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app|g" \
+        -e "s|@runname@|app.asar|g" \
         -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
