@@ -3,15 +3,15 @@
 
 pkgname=lib32-vulkan-extension-layers-git
 pkgdesc='Layer providing Vulkan features when native support is unavailable (32-bit) (git version)'
-pkgver=1.3.289.r2.g484c128
+pkgver=1.3.290.r4.g7aa7f45
 pkgrel=1
 arch=(i686 x86_64)
 url='https://github.com/KhronosGroup/Vulkan-ExtensionLayer.git'
 license=(Apache-2.0)
 makedepends=(cmake python lib32-libx11 lib32-libxrandr lib32-wayland git ninja make)
-depends=(lib32-gcc-libs lib32-vulkan-icd-loader-git vulkan-headers-git lib32-vulkan-utility-libraries-git lib32-volk lib32-libx11)
+depends=(lib32-gcc-libs lib32-vulkan-icd-loader vulkan-headers lib32-vulkan-utility-libraries lib32-volk lib32-libx11)
 # For the layer JSON description
-depends+=(vulkan-extension-layers-git)
+depends+=(vulkan-extension-layers)
 ### conflicts/provides/replaces: not in official archliux repos, so list a few package names that archlinnux packager can use
 conflicts=(lib32-vulkan-extensionlayer-git lib32-vulkan-extension-layers lib32-vulkan-extension-layer lib32-vulkan-extensionlayer lib32-vulkan-extensionlayers)
 provides=(lib32-vulkan-extensionlayers lib32-vulkan-extensionlayer lib32-vulkan-extension-layer lib32-vulkan-extension-layers)
@@ -35,7 +35,7 @@ export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
 
   rm -rf "${srcdir}"/build
 
-  "${srcdir}"/Vulkan-ExtensionLayer/scripts/update_deps.py --config release --arch 32
+  "${srcdir}"/Vulkan-ExtensionLayer/scripts/update_deps.py --config release --generator Ninja --arch 32
 
   cmake -C helper.cmake -B "${srcdir}"/build -S "${srcdir}"/Vulkan-ExtensionLayer \
   -G Ninja \
