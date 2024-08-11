@@ -167,10 +167,10 @@ else
   cat >>../mozconfig <<END
 # Arch upstream has it in their PKGBUILD, ALARM does not for aarch64:
 ac_add_options --disable-elf-hack
-
+END
 # might help with failing x86_64 builds?
 export LDFLAGS+=" -Wl,--no-keep-memory"
-END
+
 fi
 
   # upstream Arch fixes
