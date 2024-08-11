@@ -1,7 +1,7 @@
 pkgbase = kipr-git
 	pkgdesc = Command Line Password Manager
-	pkgver = 0.4.0.r1.g7442962
-	pkgrel = 2
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/grahamking/kipr
 	arch = any
 	license = MIT

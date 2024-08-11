@@ -1,7 +1,7 @@
 # Maintainer: iamawacko <iamawacko@protonmail.com>
 pkgname=kipr-git
-pkgver=0.4.0.r1.g7442962
-pkgrel=2
+pkgver=0.4.1.r0.ge191a1f
+pkgrel=1
 pkgdesc='Command Line Password Manager'
 url='https://github.com/grahamking/kipr'
 license=('MIT')
