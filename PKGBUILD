@@ -44,8 +44,8 @@ sha256sums=('e6e31d637d13eade09db85789ffc213c075784136cce159220ae6874f35136c3'
 prepare() {
     # Clone the repos
     printf "Cloning ros2 repositories\n"
-    mkdir -p $srcdir/ros2/src
-    vcs import $srcdir/ros2/src < $srcdir/ros2-release-${_rosdist_short}-${pkgver//.}/ros2.repos
+    mkdir -p "$srcdir/ros2/src"
+    vcs import "$srcdir/ros2/src" < $srcdir/ros2-release-${_rosdist_short}-${pkgver//.}/ros2.repos
 
     printf "Patching sources\n"
 
@@ -70,12 +70,13 @@ build() {
     colcon build --packages-up-to ros_base --merge-install ${COLCON_EXTRA_ARGS} --cmake-args -DBUILD_TESTING=OFF
 
     # Replace all references to srcdir in colcon shell files
-    _outdir=$srcdir/install
-    _instdir=/opt/ros/${_rosdist_short}-base
+     printf "Replace references to srcdir in colcon shell files\n"
+    _outdir="$srcdir/install"
+    _instdir="/opt/ros/${_rosdist_short}-base"
     grep --include \*.sh --binary-files without-match -rl ${_outdir} . | xargs sed -i 's|'${_outdir}'|'${_instdir}'|g'
 }
 
 package() {
-    mkdir -p $pkgdir/opt/ros/${_rosdist_short}-base
-    cp -r $srcdir/install/* $pkgdir/opt/ros/${_rosdist_short}-base/
+    mkdir -p "$pkgdir/opt/ros/${_rosdist_short}-base"
+    cp -r "$srcdir/install/*" "$pkgdir/opt/ros/${_rosdist_short}-base/"
 }
