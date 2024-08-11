@@ -2,8 +2,8 @@
 # Maintainer: Moon Sungjoon <sumoon at seoulsaram dot org>
 
 pkgname=kime
-pkgver=3.0.2
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 depends=('noto-fonts-cjk')
@@ -16,7 +16,7 @@ arch=('any')
 license=('GPL3')
 source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz")
 
-sha256sums=('cf7379765d5d8e0c3f03847e29d33b461e118e8691d47cc12a041a3e49eed756')
+sha256sums=('0a7a82b7e901f288295fbb755db247cf495b79e300e20554dda183c51fe5b369')
 
 build() {
     cd "${pkgname}-${pkgver}"
