@@ -1,6 +1,6 @@
 pkgbase = nwg-dock-hyprland
 	pkgdesc = GTK3-based dock for Hyprland Wayland compositor
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-dock-hyprland
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = nwg-dock-hyprland
 	provides = nwg-dock-hyprland
 	conflicts = nwg-dock-hyprland-git
 	conflicts = nwg-dock-hyprland-bin
-	source = nwg-dock-hyprland-0.2.0.tar.gz::https://github.com/nwg-piotr/nwg-dock-hyprland/archive/v0.2.0.tar.gz
-	md5sums = 8efef7ef6b368280dc26eb2437aba418
+	source = nwg-dock-hyprland-0.2.1.tar.gz::https://github.com/nwg-piotr/nwg-dock-hyprland/archive/v0.2.1.tar.gz
+	md5sums = c61cd4d68bf9df81be821fd1d12195bd
 
 pkgname = nwg-dock-hyprland
