@@ -9,6 +9,7 @@ pkgbase = tomato-radio-automation
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = git
+	makedepends = jq
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib

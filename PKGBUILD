@@ -9,13 +9,20 @@ arch=('x86_64' 'aarch64')
 url='https://dtcooper.github.io/tomato/'
 license=('MIT')
 depends=('gtk3' 'nss' 'alsa-lib')
-makedepends=('nodejs' 'npm' 'git')
+makedepends=('nodejs' 'npm' 'git' 'jq')
 source=(
     "tomato-radio-automation-${pkgver}.tar.gz::https://github.com/dtcooper/tomato/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=('e911205811f2e57eb69f524fdc323b7bbdc1a8367b0c2fd41110f043fe201b64')
 _repodir="tomato-${pkgver}"
-_buildver="v${pkgver}"
+
+_shortver() {
+    echo "${pkgver}"
+}
+
+_longver() {
+    echo "${pkgver}"
+}
 
 # Source below the exact same as tomato-radio-automation-git
 prepare() {
@@ -27,7 +34,9 @@ prepare() {
 
 build() {
     cd "${_repodir}/client"
-    TOMATO_VERSION="${_buildver} (arch)" npm run package
+    jq '.version = "'"$(_shortver)"'"' package.json > package.json.tmp
+    mv -v package.json.tmp package.json
+    TOMATO_VERSION="$(_longver) (arch)" npm run package
     mv -v "out/Tomato-linux-"* "out/${_pkgname}"
     chmod 0755 "out/${_pkgname}"
 }
