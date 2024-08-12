@@ -1,0 +1,6 @@
+*
+!PKGBUILD
+!*.patch
+!*.cmake.in
+!.SRCINFO
+!.gitignore
