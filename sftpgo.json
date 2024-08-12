@@ -24,6 +24,7 @@
     "allow_self_connections": 0,
     "umask": "",
     "server_version": "",
+    "tz": "",
     "metadata": {
       "read": 0
     },
@@ -162,6 +163,7 @@
         "tls_cipher_suites": [],
         "tls_protocols": [],
         "prefix": "",
+        "proxy_mode": 0,
         "proxy_allowed": [],
         "client_ip_proxy_header": "",
         "client_ip_header_depth": 0,
@@ -274,6 +276,7 @@
         "client_auth_type": 0,
         "tls_cipher_suites": [],
         "tls_protocols": [],
+        "proxy_mode": 0,
         "proxy_allowed": [],
         "client_ip_proxy_header": "",
         "client_ip_header_depth": 0,
@@ -311,7 +314,8 @@
           "content_type_nosniff": false,
           "content_security_policy": "",
           "permissions_policy": "",
-          "cross_origin_opener_policy": ""
+          "cross_origin_opener_policy": "",
+          "cache_control": ""
         },
         "branding": {
           "web_admin": {
