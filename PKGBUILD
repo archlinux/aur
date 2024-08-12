@@ -2,7 +2,7 @@
 
 pkgname=tomato-radio-automation-git
 _pkgname=tomato-radio-automation
-pkgver=r1056.735d292d
+pkgver=1058.19911f54
 pkgrel=1
 pkgdesc='Tomato Radio Automation desktop client. Dead simple radio ads. Preview version.'
 arch=('x86_64' 'aarch64')
@@ -17,10 +17,11 @@ sha256sums=('SKIP')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 _repodir="${_pkgname}"
+_buildver="r${pkgver}"
 
 pkgver() {
   cd "${_pkgname}"
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short=8 HEAD)"
+  echo "$(git rev-list --count HEAD).$(git rev-parse --short=8 HEAD)"
 }
 
 # Source below the exact same as tomato-radio-automation
@@ -28,12 +29,12 @@ prepare() {
     cd "${_repodir}/client"
     npm install
     cp "scripts/debian/tomato.desktop" "${srcdir}/${_pkgname}.desktop"
-    sed "s/^\(Exec\|Icon\)=tomato/\1=${_pkgname}/" scripts/debian/tomato.desktop > "${srcdir}/${_pkgname}.desktop"
+    sed "s/^\(\(Exec\|Icon\)=.*\)tomato/\1${_pkgname}/" scripts/debian/tomato.desktop > "${srcdir}/${_pkgname}.desktop"
 }
 
 build() {
     cd "${_repodir}/client"
-    TOMATO_VERSION="${pkgver} (arch)" npm run package
+    TOMATO_VERSION="${_buildver} (arch)" npm run package
     mv -v "out/Tomato-linux-"* "out/${_pkgname}"
     chmod 0755 "out/${_pkgname}"
 }
