@@ -56,11 +56,12 @@ package() {
 Type=Application
 Name=Keyguard
 Comment=$pkgdesc
+Version=$pkgver
 Path=/opt/keyguard/bin
 Exec=/opt/keyguard/bin/Keyguard
 Icon=keyguard
 Terminal=false
-Cateogories=Utility
+Categories=Utility
 StartupWMClass=Keyguard;
 Keywords=keyguard;bitwarden
 EOL
