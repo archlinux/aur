@@ -1,7 +1,7 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgbase=rubymine-eap
 pkgname=(rubymine-eap rubymine-eap-jre)
-pkgver=242.20224.155
+pkgver=242.20224.338
 _pkgname=RubyMine
 _pkgver=2024.2
 pkgrel=1
@@ -13,10 +13,10 @@ license=('custom')
 depends=('desktop-file-utils' 'gtk-update-icon-cache')
 optdepends=('ruby: Ruby run/debug support')
 install=rubymine.install
-source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
+source=(https://download.jetbrains.com/ruby/${_pkgname}-${_pkgver}.tar.gz
         rubymine-eap.desktop
         rubymine.install)
-sha256sums=('03f9ad612bc5f45f710213057abfecd118e5e1459b8348f2fa32c3193f908d65'
+sha256sums=('0871a2e0d1249c4e80b1b8cadf35c82d23ea97e8e817be6dffac02d848e33a34'
             '02b32d973da26ef7d61e4c291fff71229729b203661dc75cc947c8098cb8e660'
             'fe42e281cdcaca5008d3f254a16974504c9271407800d0234ce06476ea9e3bdd')
 
