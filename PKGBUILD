@@ -6,7 +6,9 @@ pkgver=r20.e7da256
 pkgrel=1
 epoch=
 pkgdesc="NuTool-USB to Serial Port is a host-side software, it passes through and montiors I2C, SPI and CAN data of Nu-Link2-Pro® adapter"
-arch=('any')
+arch=('x86_64'
+    'aarch64'
+    'riscv64')
 url="https://gitee.com/OpenNuvoton/NuTool-USB-to-Serial-Port"
 license=('GPL-3.0-or-only')
 groups=()
