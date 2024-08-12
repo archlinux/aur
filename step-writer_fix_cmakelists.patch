@@ -1,0 +1,102 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,23 +8,20 @@
+ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
+ set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -g")
+ 
+-include(FetchContent)
++# Find system-provided FTXUI
++find_package(ftxui REQUIRED)
+ 
+-# Fetch and include FTXUI
+-FetchContent_Declare(
+-    ftxui
+-    GIT_REPOSITORY https://github.com/ArthurSonzogni/ftxui
+-    GIT_TAG v5.0.0
+-)
+-FetchContent_MakeAvailable(ftxui)
++# Find system-provided GoogleTest
++find_package(GTest REQUIRED)
+ 
+-# Fetch and include GoogleTest
+-FetchContent_Declare(
+-    googletest
+-    URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+-)
+-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+-FetchContent_MakeAvailable(googletest)
++# Manually find Tree-sitter and Tree-sitter C++ libraries
++find_path(TREESITTER_INCLUDE_DIR NAMES tree_sitter/api.h)
++find_library(TREESITTER_LIBRARY NAMES tree-sitter)
++find_library(TREESITTER_CPP_LIBRARY NAMES tree-sitter-cpp)
++
++if(NOT TREESITTER_INCLUDE_DIR OR NOT TREESITTER_LIBRARY OR NOT TREESITTER_CPP_LIBRARY)
++    message(FATAL_ERROR "Could not find Tree-sitter or Tree-sitter C++ libraries. Please make sure they are installed.")
++endif()
+ 
+ # Define the main executable
+ add_executable(step-writer
+@@ -37,39 +34,21 @@
+     src/DirectoryFile.cpp
+ )
+ 
+-# Add Tree-sitter C++ grammar
+-add_library(ts-cpp STATIC
+-    third-party/tree-sitter-cpp/src/parser.c
+-    third-party/tree-sitter-cpp/src/scanner.c
+-)
+-
+-# Include directories for Tree-sitter C++ grammar
+-target_include_directories(ts-cpp PUBLIC
+-    third-party/tree-sitter-cpp/src
+-)
+-
+-# Add Tree-sitter library
+-add_library(ts-lib STATIC
+-    third-party/tree-sitter/lib/src/lib.c
+-)
+-
+-# Include directories for Tree-sitter
+-target_include_directories(ts-lib PUBLIC
+-    third-party/tree-sitter/lib/include
+-    third-party/tree-sitter/lib/src
+-)
+-
+-target_include_directories(step-writer PRIVATE include)
++target_include_directories(step-writer PRIVATE include ${TREESITTER_INCLUDE_DIR})
+ 
+ # Link libraries to the main executable
+ target_link_libraries(step-writer
+     PRIVATE ftxui::screen
+     PRIVATE ftxui::dom
+     PRIVATE ftxui::component
+-    PRIVATE ts-lib
+-    PRIVATE ts-cpp
++    PRIVATE ${TREESITTER_LIBRARY}
++    PRIVATE ${TREESITTER_CPP_LIBRARY}
+ )
+ 
++# Install the main executable
++install(TARGETS step-writer
++        RUNTIME DESTINATION bin)
++
+ # Enable testing
+ enable_testing()
+ 
+@@ -81,12 +60,13 @@
+     src/Document.cpp
+ )
+ 
+-target_include_directories(all-test PRIVATE include)
++target_include_directories(all-test PRIVATE include ${TREESITTER_INCLUDE_DIR})
++
+ # Link libraries to the test executable
+ target_link_libraries(all-test PRIVATE GTest::gtest_main
+                                PRIVATE ftxui::component
+-                               PRIVATE ts-lib
+-                               PRIVATE ts-cpp)
++                               PRIVATE ${TREESITTER_LIBRARY}
++                               PRIVATE ${TREESITTER_CPP_LIBRARY})
+ 
+ # Include GoogleTest CMake functions
+ include(GoogleTest)
