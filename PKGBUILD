@@ -2,13 +2,13 @@
 
 pkgname=openhd-git
 _reponame=OpenHD
-pkgver=2.6.0.r9.g6360d3f
-pkgrel=2
+pkgver=2.6.0.r31.gc762b40
+pkgrel=3
 pkgdesc='Open-source digital FPV system'
 arch=(any)
 url='https://openhdfpv.org'
 license=(GPL3)
-depends=(gst-plugins-good gst-plugins-bad gst-plugins-ugly gst-plugin-libcamera libpcap libsodium sdl2 sudo v4l-utils)
+depends=(gst-plugins-good gst-plugins-bad gst-plugins-ugly gst-plugin-libcamera libpcap libsodium poco sdl2 sudo v4l-utils)
 makedepends=(cmake git)
 optdepends=(
 	'rtl88x2bu-openhd-dkms-git: driver for RTL88x2BU Wi-Fi cards'

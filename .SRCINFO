@@ -1,7 +1,7 @@
 pkgbase = openhd-git
 	pkgdesc = Open-source digital FPV system
-	pkgver = 2.6.0.r9.g6360d3f
-	pkgrel = 2
+	pkgver = 2.6.0.r31.gc762b40
+	pkgrel = 3
 	url = https://openhdfpv.org
 	arch = any
 	license = GPL3
@@ -13,6 +13,7 @@ pkgbase = openhd-git
 	depends = gst-plugin-libcamera
 	depends = libpcap
 	depends = libsodium
+	depends = poco
 	depends = sdl2
 	depends = sudo
 	depends = v4l-utils
