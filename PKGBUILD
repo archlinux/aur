@@ -2,14 +2,14 @@
 
 pkgname=svix-server
 _pkgname=${pkgname}
-pkgver=1.20.0
+pkgver=1.29.0
 pkgrel=1
 pkgdesc="Svix webhooks server"
 arch=(x86_64)
 url="https://www.svix.com"
 license=('MIT')
 makedepends=('cargo' 'git')
-source=("${_pkgname}::git+https://github.com/svix/svix-webhooks.git?tag=v$pkgver")
+source=("${_pkgname}::git+https://github.com/svix/svix-webhooks.git#tag=v$pkgver")
 sha512sums=('SKIP')
 
 prepare() {
