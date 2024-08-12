@@ -1,6 +1,6 @@
 pkgbase = bluesky
 	pkgdesc = Unofficial bluesky desktop application
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/bluesky
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = bluesky
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/bluesky/application/-/archive/1.0.0-1/application-1.0.0-1.tar.bz2
-	sha256sums = 4841ed07c34f8c30a7c5ac78bbb0caf5790115693c6306880a31ddcf175d26f5
+	source = https://gitlab.com/linuxbombay/bluesky/application/-/archive/1.0.1/application-1.0.1.tar.bz2
+	sha256sums = 437f6ed5420d1db8ac1bbb8d22f8aff1de71b08c5082122db00b365cfda9e540
 
 pkgname = bluesky
