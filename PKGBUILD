@@ -1,5 +1,5 @@
 pkgname=gale-bin
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Lightweight Thunderstore client"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('GPL-3.0-or-later')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'openssl-1.1' 'pango' 'webkit2gtk')
 options=('!strip' '!emptydirs')
 source_x86_64=("https://github.com/Kesomannen/gale/releases/download/$pkgver/gale_"$pkgver"_amd64.deb")
-sha256sums_x86_64=('0bb8f18daf77d47069f8d8d98295682aa6fd066b90019647917f78bf81d83dba')
+sha256sums_x86_64=('8f11ca973d660a526df668561ddb731f8a3809a387a4ec662d4676adebbc1568')
 
 package(){
     # extract package data
