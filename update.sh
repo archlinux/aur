@@ -1,5 +1,5 @@
 #!/bin/bash
-source <(grep = PKGBUILD)
+source PKGBUILD
 
 if [ "${pkgver}" == "${1}" ]; then
     echo "Same version as PKGBUILD; nothing to do"
@@ -8,9 +8,9 @@ fi
 
 echo "Updating PKGBUILD file with latest upstream release"
 
-sed -i "s/pkgver=${pkgver}/pkgver=${1}/g" PKGBUILD
+echo sed -i "s/pkgver=${pkgver}/pkgver=${1}/g" PKGBUILD
 sed -i "s/${pkgver}/${1}/g" .SRCINFO
-source <(grep = PKGBUILD)
+source PKGBUILD 
 
 for type in source sha256sums; do
     for architecture in ${arch[@]}; do
