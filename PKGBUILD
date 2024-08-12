@@ -6,14 +6,14 @@ pkgbase=linux-firmware-amd-staging-um5606-git
 pkgname=(linux-firmware-whence-amd-staging-um5606-git linux-firmware-amd-staging-um5606-git amd-ucode-amd-staging-um5606-git
   linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-amd-staging-um5606-git
 )
-pkgver=20240810.20a48a10
-pkgrel=2
+pkgver=20240812.386d69c2
+pkgrel=1
 pkgdesc="A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops, including the latest ipu (NPU) and isp (GPU) firmware."
 url="https://github.com/ThatOneCalculator/linux-firmware-amd-staging-um5606"
 license=('GPL2' 'GPL3' 'custom')
 arch=('any')
 makedepends=('git' 'rdfind')
-optdepends=('linux-mainline-um5606: kernel with ipu (NPU) drivers')
+optdepends=('linux-mainline-um5606: kernel with ipu (NPU) drivers for the HX 365/370')
 options=(!strip)
 #source=("${pkgbase}::git+${url}.git?signed")
 # NOTE: upstream doesn't sign most commits anymore, but still signs all tags.
