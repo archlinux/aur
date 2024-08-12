@@ -1,0 +1,5 @@
+[python-cmasher]
+source = "github"
+github = "1313e/CMasher"
+use_latest_release = "true"
+prefix = "v"
