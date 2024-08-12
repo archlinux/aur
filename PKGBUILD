@@ -1,7 +1,7 @@
 # Maintainer: OrkenWhite <orkenwhite@disroot.org>
 pkgname=ytfe
 pkgver=1.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight YouTube client using the LCL toolkit"
 arch=('x86_64' 'i686')
 url="http://oscomp.hu"
