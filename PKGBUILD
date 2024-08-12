@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/nazarewk/keyring_pass'
 license=('MIT')
 depends=('python-keyring' 'python-jaraco.classes' 'pass')
-makedepends=('python-build' 'python-installer')
+makedepends=('python-build' 'python-installer' 'python-poetry-core')
 source=("https://files.pythonhosted.org/packages/source/k/${_pkgname/_/-}/$_pkgname-$pkgver.tar.gz")
 b2sums=('e0da97f33347493dc5411144795699a850238e095cfd2abb7602443cff297d3ffcac4fb3adab98cbed34b9c1d3308053e40cf6a80f7ba14cf54ba63b2e79a4b2')
 
