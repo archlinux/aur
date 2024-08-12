@@ -1,0 +1,5 @@
+[dropbox]
+source = "httpheader"
+url = "https://www.dropbox.com/download?plat=lnx.x86_64"
+header = "Location"
+regex = "\\d+\\.4\\.\\d+(?=\\.tar\\.gz)"
