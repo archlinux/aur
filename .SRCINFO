@@ -1,0 +1,19 @@
+pkgbase = python-aquarel
+	pkgdesc = Lightweight templating engine for matplotlib
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/lgienapp/aquarel
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-matplotlib
+	depends = python-cycler
+	depends = python-seaborn
+	source = aquarel-0.0.6.tar.gz::https://github.com/lgienapp/aquarel/archive/v0.0.6.tar.gz
+	sha512sums = bedc765104d68081fde800f9c46fcbd070d61f841e784f541f3128b497bab2375c9f314188da38a0ff0e27b08be0eabee56edc6be73fb63042e8d0942ba61f32
+
+pkgname = python-aquarel

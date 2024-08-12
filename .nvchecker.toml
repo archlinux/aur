@@ -1,0 +1,5 @@
+[python-aquarel]
+source = "github"
+github = "lgienapp/aquarel"
+use_latest_release = "true"
+prefix = "v"
