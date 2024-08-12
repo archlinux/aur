@@ -4,19 +4,15 @@ _pkgname=mratios
 _pkgver=1.4.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=0
+pkgrel=1
 pkgdesc="Ratios of Coefficients in the General Linear Model"
 arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL-2.0-only')
 depends=(
-  r
   r-multcomp
   r-mvtnorm
   r-survpresmooth
-)
-optdepends=(
-  r-nlme
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('d149775b424e2540090aa039867effe2')
