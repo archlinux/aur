@@ -13,8 +13,12 @@ depends=(libdbusmenu-gtk3 gtk3 gtk-layer-shell)
 provides=(eww)
 conflicts=(eww)
 install=$pkgname.install
-source=("git+$url?signed#commit=d87c2fdbfdc012e76d229e4e9ea3325bc0f23e89")
-b2sums=('87aed3824d8549bf031a288c116bab16767d130e6939a8c12d03370dda4945260cf88185ce4680ac4b742f67e609bd429642995a6a91c967258022f8c50e7362')
+source=(
+	"git+$url?signed#commit=d87c2fdbfdc012e76d229e4e9ea3325bc0f23e89"
+	"eww-lockfile.patch::https://raw.githubusercontent.com/NixOS/nixpkgs/8b14399f5e10211f569b3b8321988c1fb7c7ba2e/pkgs/by-name/ew/eww/lockfile.patch"
+)
+b2sums=('87aed3824d8549bf031a288c116bab16767d130e6939a8c12d03370dda4945260cf88185ce4680ac4b742f67e609bd429642995a6a91c967258022f8c50e7362'
+        'a2d953b7cea414cceb3beb6dbb8a17a7503d2b5a0d38fd1a235dbe3edae56d66c3f42003b3fab7633c233056cb556925e57f6f218f0eb0fb445a5873c884d7a5')
 validpgpkeys=(
 	'9EFD181455D31DD0F42DA932862BA3D7D7760F13' # Leon Kowarschick <5300871+elkowar@users.noreply.github.com>
 	'968479A1AFF927E37D1A566BB5690EEEBB952194' # GitHub (web-flow commit signing) <noreply@github.com>
@@ -22,6 +26,7 @@ validpgpkeys=(
 
 prepare() {
 	cd $pkgname
+	patch -Np1 -i "$srcdir/eww-lockfile.patch"
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
