@@ -7,7 +7,7 @@ pkgver() {
 	cd "$_pkgname" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
-pkgrel=2
+pkgrel=3
 pkgdesc="Keyguard is an alternative client for the Bitwarden® platform, created to provide the best user experience possible."
 arch=("x86_64")
 license=("custom")
@@ -61,7 +61,7 @@ Path=/opt/keyguard/bin
 Exec=/opt/keyguard/bin/Keyguard
 Icon=keyguard
 Terminal=false
-Categories=Utility;Internet;
+Categories=Utility;
 StartupWMClass=Keyguard;
 Keywords=keyguard;bitwarden;
 EOL
