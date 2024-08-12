@@ -2,7 +2,7 @@
 
 pkgname=tomato-radio-automation-git
 _pkgname=tomato-radio-automation
-pkgver=1060.2432278d
+pkgver=0.9.15.next.10.9d829367
 pkgrel=1
 pkgdesc='Tomato Radio Automation desktop client. Dead simple radio ads. Preview version.'
 arch=('x86_64' 'aarch64')
@@ -19,9 +19,17 @@ conflicts=("$_pkgname")
 _repodir="${_pkgname}"
 _buildver="r${pkgver}"
 
+_shortver() {
+  git describe --exclude=preview-build --tags | sed 's/^v//' | sed 's/-g.*$//' | sed 's/-/-next./'
+}
+
+_longver() {
+  echo "$(_shortver)-$(git rev-parse --short=8 HEAD)"
+}
+
 pkgver() {
   cd "${_pkgname}"
-  echo "$(git rev-list --count HEAD).$(git rev-parse --short=8 HEAD)"
+  _longver | sed 's/-/./g'
 }
 
 # Source below the exact same as tomato-radio-automation
@@ -34,7 +42,9 @@ prepare() {
 
 build() {
     cd "${_repodir}/client"
-    TOMATO_VERSION="${_buildver} (arch)" npm run package
+    jq '.version = "'"$(_shortver)"'"' package.json > package.json.tmp
+    mv -v package.json.tmp package.json
+    TOMATO_VERSION="$(_longver) (arch)" npm run package
     mv -v "out/Tomato-linux-"* "out/${_pkgname}"
     chmod 0755 "out/${_pkgname}"
 }
