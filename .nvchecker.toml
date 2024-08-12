@@ -1,0 +1,7 @@
+[theia-electron]
+source = 'github'
+github = 'eclipse-theia/theia'
+use_max_tag = true
+prefix = 'v'
+include_regex = 'v\d.*'
+
