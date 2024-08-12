@@ -7,7 +7,7 @@ pkgbase = chromium-bypass-paywalls-clean
 	arch = any
 	license = MIT
 	makedepends = jq
-	source = bypass-paywalls-chrome-clean-3.7.9.0.zip::https://github.com/bpc-clone/bpc_updates/releases/download/latest/bypass-paywalls-chrome-clean-master.zip
+	source = bypass-paywalls-chrome-clean-3.7.9.0.zip::https://gitflic.ru/project/magnolia1234/bpc_uploads/blob/raw?file=bypass-paywalls-chrome-clean-master.zip
 	sha256sums = SKIP
 
 pkgname = chromium-bypass-paywalls-clean

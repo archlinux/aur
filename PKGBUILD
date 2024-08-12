@@ -3,7 +3,7 @@
 
 _pkgname=bypass-paywalls-chrome-clean
 _archive="${_pkgname}-master"
-_source="https://github.com/bpc-clone/bpc_updates/releases/download/latest/${_archive}.zip"
+_source="https://gitflic.ru/project/magnolia1234/bpc_uploads/blob/raw?file=${_archive}.zip"
 pkgname=chromium-bypass-paywalls-clean
 pkgver=3.7.9.0
 pkgrel=1
