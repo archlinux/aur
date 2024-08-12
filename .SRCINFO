@@ -1,14 +1,13 @@
 pkgbase = wiiload
 	pkgdesc = Load homebrew apps over network/usbgecko to your Wii
-	pkgver = 0.5.1
+	pkgver = 0.5.3
 	pkgrel = 2
 	url = http://hbc.hackmii.com/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = zlib
-	source = https://github.com/devkitPro/wiiload/releases/download/v0.5.1/wiiload-0.5.1.tar.bz2
-	sha256sums = 83217d819a60ea09bd395752289324c767be2438226f0d155845cacd289a9595
+	source = https://github.com/devkitPro/wiiload/archive/refs/tags/v0.5.3.tar.gz
+	sha256sums = a3e4389bc9c6bc684e76baeb48903e59ac9e336148f0a29972b9671574fb6736
 
 pkgname = wiiload
-
