@@ -1,0 +1,5 @@
+[python-colormaps]
+source = "github"
+github = "pratiman-91/colormaps"
+use_latest_release = "true"
+prefix = "v"
