@@ -1,0 +1,43 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -38,6 +38,39 @@
+ 
+ add_subdirectory(src/cpp subprocess)
+ 
++# Include CMakePackageConfigHelpers to assist with the config file creation
++include(CMakePackageConfigHelpers)
++
++# Configure the package config file
++configure_package_config_file(
++    "${CMAKE_CURRENT_SOURCE_DIR}/src/cpp/subprocessConfig.cmake.in"
++    "${CMAKE_CURRENT_BINARY_DIR}/subprocessConfig.cmake"
++    INSTALL_DESTINATION lib/cmake/subprocess
++)
++
++# Configure the package version file
++write_basic_package_version_file(
++    "${CMAKE_CURRENT_BINARY_DIR}/subprocessConfigVersion.cmake"
++    VERSION ${PROJECT_VERSION}
++    COMPATIBILITY AnyNewerVersion
++)
++
++# Install the library
++install(TARGETS subprocess
++        DESTINATION lib)
++
++# Install the header files
++install(DIRECTORY src/cpp/subprocess
++        DESTINATION include
++        FILES_MATCHING PATTERN "*.hpp")
++
++# Install the CMake config files
++install(FILES
++    "${CMAKE_CURRENT_BINARY_DIR}/subprocessConfig.cmake"
++    "${CMAKE_CURRENT_BINARY_DIR}/subprocessConfigVersion.cmake"
++    DESTINATION lib/cmake/subprocess
++)
++
+ # TODO testing
+ enable_testing()
+ add_subdirectory(test)
+\ No newline at end of file
