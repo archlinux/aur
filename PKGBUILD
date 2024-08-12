@@ -9,9 +9,9 @@
 
 _proj=curl
 pkgname=curl-c-ares
-pkgver=8.7.1
+pkgver=8.9.1
 _git_tag="curl-${pkgver//./_}"
-pkgrel=2
+pkgrel=1
 pkgdesc='command line tool and library for transferring data with URLs (built with c-ares)'
 arch=('x86_64')
 url='https://curl.se/'
@@ -95,3 +95,4 @@ package() {
   # license
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m0644 COPYING
 }
+sha512sums=('402e12ad615c1db98df9cc8199d46f5c7a9bd174a457e469acbd9d3f567cc36b2db1fc3a010c3aa8e752da182f48d3b4590c98f15f6fad6ed063c4224d794442')
