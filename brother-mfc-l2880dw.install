@@ -1,0 +1,11 @@
+post_install() {
+	post_upgrade;
+}
+
+post_upgrade() {
+  echo "Restart CUPS in order to load the new files"
+  echo "systemctl restart cups"
+  echo "Register the new print at \"http://localhost:631/\"."
+  echo -e "\n  To avoid errors like \"Unable to locate printer...\" when printing via network:"
+  echo "  Add the printer with its socket address \"socket://<printer ip>:9100\""
+}

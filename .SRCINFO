@@ -1,0 +1,15 @@
+pkgbase = brother-mfc-l2880dw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-L2880DW
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-mfc-l2880dw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	source = http://download.brother.com/welcome/dlf106075/mfcl2880dwpdrv-4.1.0-1.i386.rpm
+	md5sums = e03e7d0863f9ed0864a191273f349508
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-l2880dw
