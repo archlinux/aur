@@ -1,0 +1,78 @@
+From 9d1dada57741d204f8a95aa2b0c89a7242e101f1 Mon Sep 17 00:00:00 2001
+From: Nathan Ridge <zeratul976@hotmail.com>
+Date: Thu, 18 Jan 2024 01:51:43 -0500
+Subject: [PATCH] [clangd] Handle an expanded token range that ends in the
+ `eof` token in TokenBuffer::spelledForExpanded() (#78092)
+
+Such ranges can legitimately arise in the case of invalid code, such as
+a declaration missing an ending brace.
+
+Fixes https://github.com/clangd/clangd/issues/1559
+---
+ clang-tools-extra/clangd/unittests/DumpASTTests.cpp | 11 +++++++++++
+ clang/lib/Tooling/Syntax/Tokens.cpp                 |  6 ++++++
+ clang/unittests/Tooling/Syntax/TokensTest.cpp       | 12 ++++++++++++
+ 3 files changed, 29 insertions(+)
+
+diff --git a/clang-tools-extra/clangd/unittests/DumpASTTests.cpp b/clang-tools-extra/clangd/unittests/DumpASTTests.cpp
+index d1b8f21b82c65a..304682118c871d 100644
+--- a/clang-tools-extra/clangd/unittests/DumpASTTests.cpp
++++ b/clang-tools-extra/clangd/unittests/DumpASTTests.cpp
+@@ -186,6 +186,17 @@ TEST(DumpASTTests, Arcana) {
+   EXPECT_THAT(Node.children.front().arcana, testing::StartsWith("QualType "));
+ }
+ 
++TEST(DumpASTTests, UnbalancedBraces) {
++  // Test that we don't crash while trying to compute a source range for the
++  // node whose ending brace is missing, and also that the source range is
++  // not empty.
++  Annotations Case("/*error-ok*/ $func[[int main() {]]");
++  ParsedAST AST = TestTU::withCode(Case.code()).build();
++  auto Node = dumpAST(DynTypedNode::create(findDecl(AST, "main")),
++                      AST.getTokens(), AST.getASTContext());
++  ASSERT_EQ(Node.range, Case.range("func"));
++}
++
+ } // namespace
+ } // namespace clangd
+ } // namespace clang
+diff --git a/clang/lib/Tooling/Syntax/Tokens.cpp b/clang/lib/Tooling/Syntax/Tokens.cpp
+index 2f28b9cf286a63..8d32c45a4a70cf 100644
+--- a/clang/lib/Tooling/Syntax/Tokens.cpp
++++ b/clang/lib/Tooling/Syntax/Tokens.cpp
+@@ -401,6 +401,12 @@ std::string TokenBuffer::Mapping::str() const {
+ 
+ std::optional<llvm::ArrayRef<syntax::Token>>
+ TokenBuffer::spelledForExpanded(llvm::ArrayRef<syntax::Token> Expanded) const {
++  // In cases of invalid code, AST nodes can have source ranges that include
++  // the `eof` token. As there's no spelling for this token, exclude it from
++  // the range.
++  if (!Expanded.empty() && Expanded.back().kind() == tok::eof) {
++    Expanded = Expanded.drop_back();
++  }
+   // Mapping an empty range is ambiguous in case of empty mappings at either end
+   // of the range, bail out in that case.
+   if (Expanded.empty())
+diff --git a/clang/unittests/Tooling/Syntax/TokensTest.cpp b/clang/unittests/Tooling/Syntax/TokensTest.cpp
+index 0c08318a637c0b..42f51697139658 100644
+--- a/clang/unittests/Tooling/Syntax/TokensTest.cpp
++++ b/clang/unittests/Tooling/Syntax/TokensTest.cpp
+@@ -816,6 +816,18 @@ TEST_F(TokenBufferTest, SpelledByExpanded) {
+   EXPECT_EQ(Buffer.spelledForExpanded(findExpanded("prev good")), std::nullopt);
+ }
+ 
++TEST_F(TokenBufferTest, NoCrashForEofToken) {
++  recordTokens(R"cpp(
++    int main() {
++  )cpp");
++  ASSERT_TRUE(!Buffer.expandedTokens().empty());
++  ASSERT_EQ(Buffer.expandedTokens().back().kind(), tok::eof);
++  // Expanded range including `eof` is handled gracefully (`eof` is ignored).
++  EXPECT_THAT(
++      Buffer.spelledForExpanded(Buffer.expandedTokens()),
++      ValueIs(SameRange(Buffer.spelledTokens(SourceMgr->getMainFileID()))));
++}
++
+ TEST_F(TokenBufferTest, ExpandedTokensForRange) {
+   recordTokens(R"cpp(
+     #define SIGN(X) X##_washere

@@ -6,7 +6,7 @@
 
 pkgname=clang17
 pkgver=17.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="C language family frontend for LLVM 17"
 arch=('x86_64')
 url="https://clang.llvm.org/"
@@ -22,14 +22,14 @@ source=($_source_base/clang-$pkgver.src.tar.xz
         $_source_base/llvm-$pkgver.src.tar.xz
         $_source_base/cmake-$pkgver.src.tar.xz
         $_source_base/third-party-$pkgver.src.tar.xz
-        clangd-handle-missing-ending-brace.patch::https://github.com/llvm/llvm-project/commit/9d1dada57741.patch
+        clangd-handle-missing-ending-brace.patch
         enable-fstack-protector-strong-by-default.patch)
 sha256sums=('a78f668a726ae1d3d9a7179996d97b12b90fb76ab9442a43110b972ff7ad9029'
             'aa774642415d338d7b77a66fcbad6fd1f77f382dabcb67422a6230614eff1ab9'
             'b638167da139126ca11917b6880207cc6e8f9d1cbb1a48d87d017f697ef78188'
             '807f069c54dc20cb47b21c1f6acafdd9c649f3ae015609040d6182cab01140f4'
             '3054d0a9c9375dab1a4539cc2cc45ab340341c5d71475f9599ba7752e222947b'
-            '0d4dc477f5a28f9f16639dc094b6d9bc14228d5de771547394799d2d5f8cd1df'
+            'c102e8a6a2adb0e8729865ffb8799b22bb8a9bdf0f421991880fa4393378370a'
             '45da5783f4e89e4507a351ed0ffbbe6ec240e21ff7070797a89c5ccf434ac612')
 
 # Utilizing LLVM_DISTRIBUTION_COMPONENTS to avoid
