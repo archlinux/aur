@@ -2,13 +2,17 @@
 
 pkgname=veloren-bin
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The last stable release of an open-world, open-source multiplayer voxel RPG"
 arch=('x86_64')
 url="https://veloren.net/"
 license=('GPL3')
 options=('!strip')
-depends=('alsa-lib' 'glslang' 'libxkbcommon-x11' 'pulseaudio-alsa' 'vulkan-icd-loader')
+depends=('alsa-lib' 'glslang' 'libxkbcommon-x11' 'vulkan-icd-loader')
+optdepends=(
+    'pulseaudio-alsa: audio support on pulseaudio'
+    'pipewire-alsa: audio support on pipewire'
+)
 makedepends=()
 provides=('veloren')
 conflicts=('veloren')
