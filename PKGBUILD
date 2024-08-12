@@ -2,7 +2,7 @@
 _pkgname=WiiUDownloader
 pkgname=wiiudownloader
 pkgver=2.60
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows to download encrypted wiiu files from nintendo's official servers"
 arch=('x86_64')
 url="https://github.com/Xpl0itU/WiiUDownloader"
@@ -19,7 +19,7 @@ prepare() {
 	gendesk -n \
 	--pkgname=$pkgname \
 	--pkgdesc="$pkgdesc" \
-	--name=$pkgname.desktop \
+	--name=$_pkgname \
 	--exec="/usr/bin/$pkgname" \
 	--icon="$pkgname" \
 	--terminal=false
