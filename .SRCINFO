@@ -9,6 +9,8 @@ pkgbase = openrgb-plugin-effects-git
 	depends = qt5-tools
 	depends = openrgb
 	depends = openal
+	provides = openrgb-plugin-effects
+	conflicts = openrgb-plugin-effects
 	source = git+https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin.git
 	sha256sums = SKIP
 
