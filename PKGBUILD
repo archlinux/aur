@@ -2,15 +2,19 @@
 
 pkgname=nutool-usbtoserialport-git
 _pkgname=NuTool-USBtoSerialPort
-pkgver=e7da256
+pkgver=r20.e7da256
 pkgrel=1
 epoch=
 pkgdesc="NuTool-USB to Serial Port is a host-side software, it passes through and montiors I2C, SPI and CAN data of Nu-Link2-Pro® adapter"
 arch=('any')
 url="https://gitee.com/OpenNuvoton/NuTool-USB-to-Serial-Port"
-license=('GPL3')
+license=('GPL-3.0-or-only')
 groups=()
-depends=('qt5-serialport')
+depends=(
+  gcc-libs
+  glibc
+  qt5-base
+  qt5-serialport)
 makedepends=('qt5-tools' 'git')
 checkdepends=()
 optdepends=()
@@ -27,9 +31,11 @@ sha256sums=('SKIP')
 #validpgpkeys=()
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}/"
-#     git describe --long --tags | sed 's/V//g;s/\([^-]*-g\)/r\1/;s/-/./g'
-    git describe --always | sed 's|-|.|g'
+    cd "${srcdir}/${_pkgname}"
+    ( set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 build() {
