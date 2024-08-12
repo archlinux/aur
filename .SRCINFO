@@ -1,6 +1,6 @@
 pkgbase = mysqltuner
 	pkgdesc = MySQLTuner - review configuration quickly and make adjustments to increase performance and stability
-	pkgver = 2.5.4
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = http://www.mysqltuner.com
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = mysqltuner
 	makedepends = git
 	makedepends = discount
 	depends = perl
-	source = mysqltuner::git+https://github.com/rackerhacker/MySQLTuner-perl.git#tag=763ba108720d5fae68964640f0f3c7797b62b8f2
+	source = mysqltuner::git+https://github.com/rackerhacker/MySQLTuner-perl.git#tag=13ec5072fb3adb8a353d8b87e1b205f13e3bc11f
 	sha256sums = 715eb49fe8e9cb45b44fb9f1e678dc94a96c4dee32ab52a0fe34434440526870
 
 pkgname = mysqltuner
