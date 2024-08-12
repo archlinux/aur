@@ -1,0 +1,10 @@
+pkgbase = airport-utils-bin
+	pkgdesc = Configuration and management utilities for Apple AirPort base stations
+	pkgver = 2_5
+	pkgrel = 1
+	arch = x86_64
+	depends = java-environment
+	source = http://launchpadlibrarian.net/205833754/airport-utils_2-5_all.deb
+	sha256sums = 912ea041fa86652550c9e9502a9e2fa58dd098a89b82491081d8e55e43db07de
+
+pkgname = airport-utils-bin
