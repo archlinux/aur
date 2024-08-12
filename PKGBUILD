@@ -1,16 +1,22 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=nuc970-nuwriter-git
-pkgver=1328b10
+pkgver=r13.1328b10
 pkgrel=1
 epoch=
 pkgdesc="The Nu-writer Command Tool is a linux console application consisting of functions to access storage(eg. DRAM,NAND,SPINOR,SPINAND,SD) in a NUC970 family processors"
-arch=('any')
+arch=('x86_64'
+    'aarch64'
+    'riscv64')
 url="https://gitee.com/OpenNuvoton/NUC970_NuWriter_CMD"
-license=('GPL3')
+license=('GPL-3.0-or-only')
 groups=()
-depends=('libusb')
-makedepends=("gcc" "git" "automake" "pkgconfig")
+depends=(
+    glibc
+    libusb)
+makedepends=(git
+    automake
+    pkgconf)
 checkdepends=()
 optdepends=()
 provides=('NUC970_NuWriter_CMD')
@@ -26,9 +32,11 @@ sha256sums=('SKIP')
 #validpgpkeys=()
 
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}/"
-#     git describe --long --tags | sed 's/V//g;s/\([^-]*-g\)/r\1/;s/-/./g'
-    git describe --always | sed 's|-|.|g'
+    cd "${srcdir}/${pkgname%-git}"
+    ( set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 build() {
