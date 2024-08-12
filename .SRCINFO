@@ -1,0 +1,13 @@
+pkgbase = cgaserver-bin
+	pkgdesc = GNU/Linux dedicated server for Classic Gaming Arena.
+	pkgver = 4.0.2.0
+	pkgrel = 1
+	url = https://www.classicgamingarena.com/
+	arch = x86_64
+	license = Unlicense
+	source = https://www.classicgamingarena.com/download-cgaserver-linux-64bit-tar
+	source = https://gist.githubusercontent.com/keyboardcrash32/d4e06e450da65aec5e60e0ecc88f0098/raw/fd84449731543643c0bfd638d49dd89860d7766a/cgaserver.service
+	sha512sums = 167696a88a250783c4ee3a462ba19f0d581191d0017bb5ca7218d9094ba2c8547fdafcd398aee3283f357646be45dc0052bbd3e724d734c586caa4b12daac800
+	sha512sums = fc26a1adcb6f1ee088b095457054b0df3546dd10bf31340730e53b2fd7b85002e2385e76da6ef165c0115d068bb16845ee114414270b70712b69193d6c072e9f
+
+pkgname = cgaserver-bin
