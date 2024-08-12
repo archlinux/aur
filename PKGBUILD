@@ -4,13 +4,17 @@
 export GIT_LFS_SKIP_SMUDGE=1 # This is to prevent Git LFS errors
 pkgname=veloren
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The last stable release of an open-world, open-source multiplayer voxel RPG.'
 arch=('x86_64' 'i686')
 url='https://veloren.net/'
 license=('GPL3')
 options=('!strip') # This makes debugging issues easier sometimes, comment out if small package size is needed
-depends=('alsa-lib' 'glslang' 'libxkbcommon-x11' 'pulseaudio-alsa' 'vulkan-icd-loader')
+depends=('alsa-lib' 'glslang' 'libxkbcommon-x11' 'vulkan-icd-loader')
+optdepends=(
+    'pulseaudio-alsa: audio support on pulseaudio'
+    'pipewire-alsa: audio support on pipewire'
+)
 makedepends=('atk' 'cairo' 'cmake' 'gdk-pixbuf2' 'git' 'git-lfs' 'openssl' 'pango' 'python' 'rustup' 'udev')
 provides=()
 conflicts=()
