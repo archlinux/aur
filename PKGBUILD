@@ -3,9 +3,9 @@
 
 _pkgname="zork++"
 pkgname="${_pkgname}-bin"
-pkgver=0.10.1
-pkgrel=2
-pkgdesc="A modern C++ project manager and build system for modern C++"
+pkgver=0.10.3
+pkgrel=1
+pkgdesc="A project manager and build system for modern C++"
 arch=('x86_64')
 url='https://github.com/zerodaycode/Zork'
 license=('MIT')
@@ -15,8 +15,8 @@ conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source=("README-${pkgver}.md::${url}/raw/v${pkgver}/README.md")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/default.${_pkgname}.${_pkgname}.tar.gz")
-sha256sums=('cebd730a91f92604221beab1c142c8c237ad2d4669507e5b39d79491c359a022')
-sha256sums_x86_64=('16b41b1ab6aa4c7050549f57b65312afd13b71ced40ef194a67f33960cf4f393')
+sha256sums=('a705d01df63a842b2edce3bb47c86eeb1783b3381ca9214ac073fc5145531327')
+sha256sums_x86_64=('a394aa8d599bb1fccee0475d3d94ee7f66cd3cf1b7c1180be25cb92f25b32fe0')
 
 package() {
   cd "${srcdir}"
