@@ -1,6 +1,6 @@
 pkgbase = eww-git
 	pkgdesc = ElKowar's wacky widgets
-	pkgver = 0.5.0.r9.g149727c
+	pkgver = 0.6.0.r8.g4d55e9a
 	pkgrel = 1
 	url = https://github.com/elkowar/eww
 	arch = x86_64
@@ -14,6 +14,8 @@ pkgbase = eww-git
 	provides = eww
 	conflicts = eww
 	source = git+https://github.com/elkowar/eww.git
+	source = eww-lockfile.patch::https://raw.githubusercontent.com/NixOS/nixpkgs/8b14399f5e10211f569b3b8321988c1fb7c7ba2e/pkgs/by-name/ew/eww/lockfile.patch
 	b2sums = SKIP
+	b2sums = a2d953b7cea414cceb3beb6dbb8a17a7503d2b5a0d38fd1a235dbe3edae56d66c3f42003b3fab7633c233056cb556925e57f6f218f0eb0fb445a5873c884d7a5
 
 pkgname = eww-git
