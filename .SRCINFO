@@ -1,0 +1,23 @@
+pkgbase = step-writer-git
+	pkgdesc = A simple & lightweight C++ TUI text editor
+	pkgver = r32.0f64c02
+	pkgrel = 1
+	url = https://github.com/BrianAnakPintar/step-writer
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake>=3.14
+	makedepends = ftxui>=5.0.0
+	makedepends = gtest
+	depends = glibc
+	depends = gcc-libs
+	depends = tree-sitter
+	depends = tree-sitter-cpp
+	provides = step-writer=r32.0f64c02
+	conflicts = step-writer
+	source = step-writer::git+https://github.com/BrianAnakPintar/step-writer.git
+	source = step-writer_fix_cmakelists.patch
+	sha256sums = SKIP
+	sha256sums = f7b5f37b838edce2cf1a182010ad32ea4b525a675e910d67446a4da013f68a12
+
+pkgname = step-writer-git
