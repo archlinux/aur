@@ -3,7 +3,7 @@
 # Maintainer: Colin Woodbury <colin@fosskers.ca>
 
 pkgname="aura-git"
-pkgver=4.0.2.r0.ga90e71a
+pkgver=4.0.2.r2.g9ade871
 pkgrel=1
 pkgdesc="A package manager for Arch Linux and its AUR"
 arch=("x86_64")
@@ -56,7 +56,8 @@ package() {
   install -Dm644 "misc/aura.8" "${pkgdir}/usr/share/man/man8/aura.8"
   install -Dm644 "misc/aura.info" "${pkgdir}/usr/share/info/aura.info"
 
-  # Install bash and zsh completions
+  # Install completions
   install -Dm644 "misc/completions/bashcompletion.sh" "${pkgdir}/usr/share/bash-completion/completions/aura"
   install -Dm644 "misc/completions/_aura" "${pkgdir}/usr/share/zsh/site-functions/_aura"
+  install -Dm644 "misc/completions/aura.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/aura.fish"
 }
