@@ -1,5 +1,5 @@
 pkgname=mihomo-party
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ optdepends=('libappindicator-gtk3: Allow mihomo-party to extend a menu via Ayata
 makedepends=('nodejs' 'pnpm' 'libxcrypt-compat')
 install=$pkgname.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("96a7830d000eeea6bf5afbba5aa48fc2b417742c20e4fc7835e54111e2a20718")
+sha256sums=("b92c69b9be037cfc38d1c0b418da7dbff6167cc73150c93eac7c7a021a436629")
 options=('!lto')
 
 prepare(){
