@@ -1,0 +1,6 @@
+src/
+pkg/
+*.tar.gz
+*.pkg.tar.zst
+*.svg
+clean-and-build.sh

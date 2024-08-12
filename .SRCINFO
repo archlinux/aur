@@ -1,0 +1,24 @@
+pkgbase = flexbv-free
+	pkgdesc = FlexBV Free. Professional Boardview Software.
+	pkgver = 5.0360
+	pkgrel = 1
+	url = https://pldaniels.com/flexbv5/
+	arch = x86_64
+	license = custom
+	depends = sdl2
+	depends = fontconfig
+	depends = sqlite
+	depends = zlib
+	depends = gtk3
+	depends = libpng
+	conflicts = flexbv-beta-bin
+	conflicts = flexbv-bin
+	conflicts = flexbv-unstable-bin
+	source = flexbv-free-5.0360.tar.gz::https://pldaniels.com/flexbv5/free/FlexBVFree-5.0360-linux.tar.gz
+	source = flexbv.desktop
+	source = flexbv-free-icon.svg::https://pldaniels.com/flexbv5/assets/flexbv-free-icon.svg
+	sha256sums = 1bcfd1fa10a47a940505f6c4916f0e2ed4b36a054715baa60f8a23efe61a2ee4
+	sha256sums = ee12188b6faa294e00751c99c92cdfb744fc8b8fb0f9a9585c42e4b4b1a17ed8
+	sha256sums = 4e45f984734fcfb402d265955439ccdfb2f60c8634e46f9e3d8c1ba434f8293c
+
+pkgname = flexbv-free
