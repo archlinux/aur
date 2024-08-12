@@ -1,0 +1,23 @@
+From 39fff84428876839a048262506d7df78c6abed0e Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sun, 12 May 2024 10:58:16 +0000
+Subject: [PATCH] Link against system openssl, libsodium
+
+---
+ Cargo.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Cargo.toml b/Cargo.toml
+index 8d99585..72ca2f7 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -19,5 +19,5 @@ log = "^0.4.6"
+ 
+ [dependencies]
+ cpython = { version = "0.7", features = ["extension-module"] }
+-openssl = { version = "0.10.55", features = ["vendored"] }
++libsodium-sys = { version = "0.2.7", features = ["use-pkg-config"] }
+ etebase = { version = "^0.6.0" }
+-- 
+2.45.0
+

@@ -1,0 +1,278 @@
+From d23e4edf123270c4aafeb4e96972ffd2559cf917 Mon Sep 17 00:00:00 2001
+From: ghpzin <ghpzin@gmail.com>
+Date: Wed, 24 Jul 2024 15:47:35 +0300
+Subject: [PATCH 1/2] update cpython to 0.7.2
+
+cpython 0.7.2 includes support for python 3.12
+---
+ Cargo.lock | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index dee908e..ca5396f 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -145,9 +145,9 @@ checksum = "06ea2b9bc92be3c2baa9334a323ebca2d6f074ff852cd1d7b11064035cd3868f"
+ 
+ [[package]]
+ name = "cpython"
+-version = "0.7.1"
++version = "0.7.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "3052106c29da7390237bc2310c1928335733b286287754ea85e6093d2495280e"
++checksum = "43b398a2c65baaf5892f10bb69b52508bf7a993380cc4ecd3785aaebb5c79389"
+ dependencies = [
+  "libc",
+  "num-traits",
+@@ -804,9 +804,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "python3-sys"
+-version = "0.7.1"
++version = "0.7.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "49f8b50d72fb3015735aa403eebf19bbd72c093bfeeae24ee798be5f2f1aab52"
++checksum = "0f53ef6740367a09718d2cd21ba15b0d7972342a38e554736bcee7773e45c9f5"
+ dependencies = [
+  "libc",
+  "regex",
+
+From d8668c0d6934dd1c5ab49b49e669b7ac862efb0c Mon Sep 17 00:00:00 2001
+From: ghpzin <ghpzin@gmail.com>
+Date: Wed, 24 Jul 2024 15:56:26 +0300
+Subject: [PATCH 2/2] update flapigen to 0.6.1
+
+replaces flapigen git dependency in Cargo.lock to crate version 0.6.1
+---
+ Cargo.lock | 91 +++++++++++++++++++++++++++---------------------------
+ Cargo.toml |  2 +-
+ 2 files changed, 47 insertions(+), 46 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index ca5396f..93fadc9 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -173,6 +173,12 @@ dependencies = [
+  "signature",
+ ]
+ 
++[[package]]
++name = "either"
++version = "1.13.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "60b1af1c220855b6ceac025d3f6ecdd2b7c4894bfe9cd9bda4fbb4bc7c0d4cf0"
++
+ [[package]]
+ name = "encoding_rs"
+ version = "0.8.33"
+@@ -251,14 +257,15 @@ checksum = "25cbce373ec4653f1a01a31e8a5e5ec0c622dc27ff9c4e6606eefef5cbbed4a5"
+ 
+ [[package]]
+ name = "fixedbitset"
+-version = "0.2.0"
++version = "0.4.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "37ab347416e802de484e4d03c7316c48f1ecb56574dfd4a46a80f173ce1de04d"
++checksum = "0ce7134b9999ecaf8bcd65542e436736ef32ddca1b3e06094cb6ec5755203b80"
+ 
+ [[package]]
+ name = "flapigen"
+-version = "0.6.0-pre8"
+-source = "git+https://github.com/Dushistov/flapigen-rs?rev=2bf1533140ff54239cbc659d70b071ac8ed5cd2a#2bf1533140ff54239cbc659d70b071ac8ed5cd2a"
++version = "0.6.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "6134eaa9c43f777ea460b3ebaefb81d60c9c5f2fda00e8544722e7e29811941b"
+ dependencies = [
+  "bitflags 1.3.2",
+  "heck",
+@@ -385,19 +392,13 @@ dependencies = [
+  "futures-sink",
+  "futures-util",
+  "http",
+- "indexmap 2.1.0",
++ "indexmap",
+  "slab",
+  "tokio",
+  "tokio-util",
+  "tracing",
+ ]
+ 
+-[[package]]
+-name = "hashbrown"
+-version = "0.12.3"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "8a9ee70c43aaf417c914396645a0fa852624801b24ebb7ae78fe8272889ac888"
+-
+ [[package]]
+ name = "hashbrown"
+ version = "0.14.3"
+@@ -406,12 +407,9 @@ checksum = "290f1a1d9242c78d09ce40a5e87e7554ee637af1351968159f4952f028f75604"
+ 
+ [[package]]
+ name = "heck"
+-version = "0.3.3"
++version = "0.4.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "6d621efb26863f0e9924c6ac577e8275e5e6b77455db64ffa6c65c904e9e132c"
+-dependencies = [
+- "unicode-segmentation",
+-]
++checksum = "95505c38b4572b2d910cecb0281560f54b440a19336cbbcb27bf6ce6adc6f5a8"
+ 
+ [[package]]
+ name = "hermit-abi"
+@@ -428,6 +426,15 @@ version = "0.3.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "d77f7ec81a6d05a3abb01ab6eb7590f6083d08449fe5a1c8b1e620283546ccb7"
+ 
++[[package]]
++name = "home"
++version = "0.5.9"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "e3d1354bf6b7235cb4a0576c2619fd4ed18183f689b12b006a0ee7329eeff9a5"
++dependencies = [
++ "windows-sys 0.52.0",
++]
++
+ [[package]]
+ name = "http"
+ version = "0.2.11"
+@@ -518,16 +525,6 @@ dependencies = [
+  "unicode-normalization",
+ ]
+ 
+-[[package]]
+-name = "indexmap"
+-version = "1.9.3"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "bd070e393353796e801d209ad339e89596eb4c8d430d18ede6a1cced8fafbd99"
+-dependencies = [
+- "autocfg",
+- "hashbrown 0.12.3",
+-]
+-
+ [[package]]
+ name = "indexmap"
+ version = "2.1.0"
+@@ -535,7 +532,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "d530e1a18b1cb4c484e6e34556a0d948706958449fca0cab753d649f2bce3d1f"
+ dependencies = [
+  "equivalent",
+- "hashbrown 0.14.3",
++ "hashbrown",
+ ]
+ 
+ [[package]]
+@@ -767,12 +764,12 @@ checksum = "e3148f5046208a5d56bcfc03053e3ca6334e51da8dfb19b6cdc8b306fae3283e"
+ 
+ [[package]]
+ name = "petgraph"
+-version = "0.5.1"
++version = "0.6.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "467d164a6de56270bd7c4d070df81d07beace25012d5103ced4e9ff08d6afdb7"
++checksum = "b4c5cc86750666a3ed20bdaf5ca2a0344f9c67674cae0515bec2da16fbaa47db"
+ dependencies = [
+  "fixedbitset",
+- "indexmap 1.9.3",
++ "indexmap",
+ ]
+ 
+ [[package]]
+@@ -966,6 +963,12 @@ dependencies = [
+  "windows-sys 0.52.0",
+ ]
+ 
++[[package]]
++name = "rustversion"
++version = "1.0.17"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "955d28af4278de8121b7ebeb796b6a45735dc01436d898801014aced2773a3d6"
++
+ [[package]]
+ name = "ryu"
+ version = "1.0.16"
+@@ -1099,9 +1102,9 @@ checksum = "4dccd0940a2dcdf68d092b8cbab7dc0ad8fa938bf95787e1b916b0e3d0e8e970"
+ 
+ [[package]]
+ name = "smol_str"
+-version = "0.1.24"
++version = "0.2.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "fad6c857cbab2627dcf01ec85a623ca4e7dcb5691cbaa3d7fb7653671f0d09c9"
++checksum = "dd538fb6910ac1099850255cf94a94df6551fbdd602454387d0adb2d1ca6dead"
+ dependencies = [
+  "serde",
+ ]
+@@ -1136,22 +1139,23 @@ checksum = "a8f112729512f8e442d81f95a8a7ddf2b7c6b8a1a6f509a95864142b30cab2d3"
+ 
+ [[package]]
+ name = "strum"
+-version = "0.18.0"
++version = "0.24.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "57bd81eb48f4c437cadc685403cad539345bf703d78e63707418431cecd4522b"
++checksum = "063e6045c0e62079840579a7e47a355ae92f60eb74daaf156fb1e84ba164e63f"
+ dependencies = [
+  "strum_macros",
+ ]
+ 
+ [[package]]
+ name = "strum_macros"
+-version = "0.18.0"
++version = "0.24.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "87c85aa3f8ea653bfd3ddf25f7ee357ee4d204731f6aa9ad04002306f6e2774c"
++checksum = "1e385be0d24f186b4ce2f9982191e7101bb737312ad61c1f2f984f34bcf85d59"
+ dependencies = [
+  "heck",
+  "proc-macro2",
+  "quote",
++ "rustversion",
+  "syn 1.0.109",
+ ]
+ 
+@@ -1327,12 +1331,6 @@ dependencies = [
+  "tinyvec",
+ ]
+ 
+-[[package]]
+-name = "unicode-segmentation"
+-version = "1.10.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "1dd624098567895118886609431a7c3b8f516e41d30e0643f03d94592a147e36"
+-
+ [[package]]
+ name = "url"
+ version = "2.5.0"
+@@ -1453,11 +1451,14 @@ dependencies = [
+ 
+ [[package]]
+ name = "which"
+-version = "3.1.1"
++version = "4.4.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d011071ae14a2f6671d0b74080ae0cd8ebf3a6f8c9589a2cd45f23126fe29724"
++checksum = "87ba24419a2078cd2b0f2ede2691b6c66d8e47836da3b6db8265ebad47afbfc7"
+ dependencies = [
+- "libc",
++ "either",
++ "home",
++ "once_cell",
++ "rustix",
+ ]
+ 
+ [[package]]
+diff --git a/Cargo.toml b/Cargo.toml
+index 8d99585..a2ddfb3 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -13,7 +13,7 @@ readme = "README.md"
+ crate-type = ["cdylib"]
+ 
+ [build-dependencies]
+-flapigen = { git = "https://github.com/Dushistov/flapigen-rs", rev = "2bf1533140ff54239cbc659d70b071ac8ed5cd2a" }
++flapigen = "^0.6"
+ env_logger = "^0.7"
+ log = "^0.4.6"
+ 
