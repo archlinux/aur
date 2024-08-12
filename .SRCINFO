@@ -8,6 +8,7 @@ pkgbase = python-print-color
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-poetry-core
 	depends = python
 	source = python-print-color-0.4.6.tar.gz::https://github.com/xy3/print-color/archive/refs/tags/v0.4.6.tar.gz
 	sha256sums = fae0613dba48f6a2b7d652003e0993dcec0e3bc064ce535a95aadc6bb3de2d32
