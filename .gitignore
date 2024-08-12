@@ -2,3 +2,4 @@
 /src
 /*.AppImage
 *.pkg.*
+*.tmp
