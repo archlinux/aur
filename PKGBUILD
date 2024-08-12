@@ -1,6 +1,6 @@
 _name=7-zip
 pkgname=${_name}-bin
-pkgver=24.07
+pkgver=24.08
 pkgrel=1
 pkgdesc='File archiver with a high compression ratio (binary release)'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -21,10 +21,10 @@ source_i686=("$(_get_source x86)")
 source_aarch64=("$(_get_source arm64)")
 source_armv7h=("$(_get_source arm)")
 
-sha256sums_x86_64=('4a47877a7f6eba7fe6c900f7379bb2061b9620b588cf3189d99ae2a8aaa8f503')
-sha256sums_i686=('b3e343ca66a628a64d2a86c01f794311f4fb391b42eaa975e8a030d83ca366db')
-sha256sums_aarch64=('676b554713620546df56a3d4652b979a9537890d364ca2616ddd7fb270467e90')
-sha256sums_armv7h=('cb73f46d3bbaadc9cca7c28b63c0385bcddda95eb6d5b00be56be3340a972176')
+sha256sums_x86_64=('9b3a2edf0644a2b00b0a39ab6843f426128e4a6f6f98c40f8c02a668e5b5b59b')
+sha256sums_i686=('d260712a3d6535a00310fa310eae52e3c35d4e0c99c1b526fa3d9d9ac0450356')
+sha256sums_aarch64=('45f467562911ceb817a47f47a39451faaae8f8686caca7898d46f1c78043be33')
+sha256sums_armv7h=('4bfc54f2ec5a6ba292280a2125ebc52a59746bc91b1753888cd13881f882f9eb')
 
 package() {
     install -Dm755 -t "${pkgdir}/usr/bin" \
@@ -33,9 +33,10 @@ package() {
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
         'License.txt'
 
-    install -Dm644 -t "${pkgdir}/usr/share/doc/${_name}" \
+    local doc="${pkgdir}/usr/share/doc/${_name}"
+    install -Dm644 -t "${doc}" \
         'History.txt' 'readme.txt'
 
-    cp -rdt "${pkgdir}/usr/share/doc/${_name}" \
+    cp -rdt "${doc}" \
         'MANUAL'
 }
