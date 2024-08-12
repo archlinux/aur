@@ -3,7 +3,7 @@
 _gemname=batch_rename
 pkgname=batch-rename
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Command line tool to bulk-rename files interactively'
 arch=('any')
 url='https://github.com/claui/batch_rename'
