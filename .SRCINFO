@@ -1,0 +1,13 @@
+pkgbase = r-survpresmooth
+	pkgdesc = Presmoothed Estimation in Survival Analysis
+	pkgver = 1.1.11
+	pkgrel = 0
+	url = https://cran.r-project.org/package=survPresmooth
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = r
+	source = https://cran.r-project.org/src/contrib/survPresmooth_1.1-11.tar.gz
+	md5sums = 5ad1dc74295f383c18b8b9d285592c21
+	b2sums = 33fde0607be8ec0437e780a1e1e3141720842640e6bbc2c91fa359df6bda2d1ea5d0b4cd8710fa3c85c99cfd21d6227e4134651997e864cc0ef75cd43c13737e
+
+pkgname = r-survpresmooth
