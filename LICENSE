@@ -1,4 +1,4 @@
-LA_OPT_NXP_Software_License v56 April 2024
+LA_OPT_NXP_Software_License v57 July 2024
 
 IMPORTANT.  Read the following NXP Software License Agreement ("Agreement") completely. By selecting the "I Accept" button at the end of this page, or by downloading, installing, or using the Licensed Software, you indicate that you accept the terms of the Agreement, and you acknowledge that you have the authority, for yourself or on behalf of your company, to bind your company to these terms. You may then download or install the file. In the event of a conflict between the terms of this Agreement and any license terms and conditions for NXP’s proprietary software embedded anywhere in the Licensed Software file, the terms of this Agreement shall control.  If a separate license agreement for the Licensed Software has been signed by you and NXP, then that agreement shall govern your use of the Licensed Software and shall supersede this Agreement.
 
@@ -232,8 +232,6 @@ Au-Zone Technologies: eIQ Portal, Model Tool, DeepViewRT and ModelRunner are dis
 
  
 
- 
-
 Broadcom Corporation: Your use of Broadcom Corporation software is restricted to Authorized Systems that incorporate a compatible integrated circuit device manufactured or sold by Broadcom.
 
  
@@ -442,6 +440,10 @@ TES Electronic Solutions Germany (TES):  TES 3D Surround View software and assoc
 
  
 
+Vivante: Distribution of Vivante software must be a part of, or embedded within, Authorized Systems that include a Vivante Graphics Processing Unit. 
+
  
 
-Vivante: Distribution of Vivante software must be a part of, or embedded within, Authorized Systems that include a Vivante Graphics Processing Unit. 
+ 
+
+Wittenstein:  Your use of the SafeRTOS v9.x and Networking Stack, in object form, is limited to your internal testing, evaluation, feedback and development specifically for use with an NXP Product.  Licensee’s license to use and supply the software to you expires on June 25, 2026.  Further rights must be obtained directly from Wittenstein.

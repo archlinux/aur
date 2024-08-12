@@ -1,7 +1,7 @@
 # Maintainer: Daniel Plaza <daniel.plaza.espi at gmail dot com>
 
 pkgname=mcuxpresso-config-tools
-pkgver=15.1
+pkgver=16
 pkgrel=1
 epoch=
 pkgdesc="Integrated suite of configuration tools for NXP's microcontrollers. From BIN package distributed by NXP."
@@ -10,8 +10,8 @@ url="http://www.nxp.com/products/software-and-tools/run-time-software/mcuxpresso
 license=('custom:"NXP"')
 depends=('java-environment' 'libxslt' 'libxtst' 'gcc-libs-multilib' 'gtk2' 'alsa-lib' 'libnet')
 source=("file://mcuxpresso-config-tools-v${pkgver}-1_amd64.deb.bin" "LICENSE" "${pkgname}.install")
-sha256sums=('bcf05598920afc1c5e7b917d5ce8df0701de549ef6af45b6c3bfaafeac5e86bb'
-            'ab113d327305ee137428d18c7d41224fbabb4c91ecef1c059094033a5d11b9d0'
+sha256sums=('05b130c66d6ead5d88ae05224e23011003efa27406c1d2f87e9a857ed1a04712'
+            '7f8e4f42422ed630eb3af8fc761b91c6154e69959a3a112bd463f067f4814692'
             '6435144e9b28ec594ebea3e598e01e23a4d41c3787a67de68dafedcf71bc18ed')
 
 options=('!strip')
