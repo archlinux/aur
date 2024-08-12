@@ -6,7 +6,7 @@
 
 pkgname=xmrig-donateless
 _pkgname='xmrig'
-pkgver=6.21.3
+pkgver=6.22.0
 pkgrel=1
 pkgdesc='RandomX, KawPow, CryptoNight, AstroBWT and GhostRider unified CPU/GPU miner and RandomX benchmark - No Donate Version'
 url='https://github.com/xmrig/xmrig'
@@ -25,7 +25,7 @@ conflicts=('xmrig')
 source=(https://github.com/xmrig/${_pkgname}/archive/v${pkgver}/${_pkgname}-${pkgver}.tar.gz
         xmrig@.service
         xmrig.sysusers)
-sha256sums=('5d76fb19190956c564b405119315bc93db4ed8062b251d5e96bed70c5fa8033c'
+sha256sums=('8a5b047cbbb67e508fd5c2cfb75e138d36b1eb19aaadcbe59a5034ca9af0ebb0'
             'bbc54b04a7da5ea473eb7d976307eb995fbfd96f0d012f1553b8c487182d9fb3'
             'd8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6')
 
@@ -47,5 +47,5 @@ package() {
   install -Dm775 "build/${_pkgname}" -t "${pkgdir}/usr/bin"
   install -Dm644 "src/config.json" "${pkgdir}/etc/${_pkgname}/xmrig.conf"
   install -Dm644 "${srcdir}/${_pkgname}@.service" -t "${pkgdir}/usr/lib/systemd/system"
-  install -Dm0644 "${srcdir}/${_pkgname}.sysusers" -t "${pkgdir}/usr/lib/sysusers.d"
+  install -Dm0644 "${srcdir}/${_pkgname}.sysusers" -T "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
 }
