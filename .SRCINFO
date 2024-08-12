@@ -1,0 +1,16 @@
+pkgbase = hid-logitech-dj-lightspeed12-dkms-git
+	pkgdesc = hid-logitech-dj with G502 X Plus (and others) support
+	pkgver = 0.2.r1.gec38a6a
+	pkgrel = 1
+	url = https://github.com/fridtjof/hid-logitech-dj
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = gcc
+	makedepends = glibc
+	depends = dkms
+	source = git+https://github.com/fridtjof/hid-logitech-dj
+	sha256sums = SKIP
+	sha256sums = daad4466b9c1221e562c75adf809e622ee282484394aef860311d9759154265c
+
+pkgname = hid-logitech-dj-lightspeed12-dkms-git
