@@ -1,6 +1,6 @@
 pkgbase = datagrip
 	pkgdesc = Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity
-	pkgver = 2024.1.5
+	pkgver = 2024.2
 	pkgrel = 1
 	url = https://www.jetbrains.com/datagrip/
 	arch = any
@@ -9,11 +9,11 @@ pkgbase = datagrip
 	conflicts = 0xdbe
 	conflicts = 0xdbe-eap
 	options = !strip
-	source = https://download-cf.jetbrains.com/datagrip/datagrip-2024.1.5.tar.gz
+	source = https://download-cf.jetbrains.com/datagrip/datagrip-2024.2.tar.gz
 	source = jetbrains-datagrip.desktop
 	source = LICENSE
-	b2sums = 8134f1d6e7a6c601def90ebbf54ceb70dae3899f3956eade9d86232e4864e9ad793aa518615bc0a9d2de995a753010ea6c0953eb2cad2130e0caf42d5c6ed0bb
-	b2sums = 780f396da1c57c872b17e10576f2671346ad7c0442efec77369428b465befe772b5fd2c9c81a46ffe458472c2550082fb12adaf9d39b51fb41499bfb1bbca441
+	b2sums = b105b4c489d733f9e78e205b98742cf44d489852c4338284c8e2fad23ffdbd649aa0ec0dfa7b7107e4f89757853775b9e246d8bb8fa1abd3e1252de14a1662a5
+	b2sums = a06ba3ed28a0e972f3b09b4713754da81970c3520df78730ce078b6d2097b3e79461a649f214e096081bb39e663779bcc143fa8695eaa53bbbab49521099030e
 	b2sums = dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77
 
 pkgname = datagrip
