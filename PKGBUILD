@@ -24,7 +24,7 @@ makedepends=(
 optdepends=('android-tools: Android platform tools')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
-options=('!strip')
+options=(!debug)
 
 pkgver() {
     cd "${srcdir}/${pkgname}"

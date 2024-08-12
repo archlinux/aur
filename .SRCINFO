@@ -17,7 +17,7 @@ pkgbase = magiskboot-git
 	optdepends = android-tools: Android platform tools
 	provides = magiskboot
 	conflicts = magiskboot
-	options = !strip
+	options = !debug
 	source = magiskboot-git::git+https://github.com/xiaoxindada/magiskboot_ndk_on_linux.git
 	sha256sums = SKIP
 
