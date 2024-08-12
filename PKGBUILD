@@ -1,6 +1,6 @@
 # Maintainer: Molyuu <mi@molyuu.cyou>
 pkgname=ttf-sarasa-gothic-sc
-pkgver=1.0.17
+pkgver=1.0.18
 pkgrel=1
 url=https://github.com/be5invis/Sarasa-Gothic
 pkgdesc="A CJK programming font based on Iosevka and Source Han Sans. (only Sarasa Gothic SC inside)"
@@ -11,21 +11,21 @@ makedepends=("p7zip")
 provides=("ttf-sarasa-gothic-sc")
 conflicts=("ttf-sarasa-gothic")
 source=(
-		"https://mirrors.bfsu.edu.cn/github-release/be5invis/Sarasa-Gothic/LatestRelease/Sarasa-TTF-$pkgver.7z"
+		"https://mirrors.bfsu.edu.cn/github-release/be5invis/Sarasa-Gothic/LatestRelease/SarasaGothicSC-TTF-$pkgver.7z"
 		"LICENSE"
 )
-sha256sums=('b90f42349f6f6880e25be68a82c6b4405c6d714f6d17dd069310fe5ab05e2999'
+sha256sums=('da3552a4f34f3ed30a24673d8411ef5b8e42460dcc5e3ddfd8a64c0daf6de12c'
             '9caccb70771a676613a8a9a9863f20c49c861383af99c1dd7cc354226b375832')
 
-noextract=("Sarasa-TTF-$pkgver.7z")
+noextract=("SarasaGothicSC-TTF-$pkgver.7z")
 
 prepare() {
     if [ -d "sarasa-$pkgver" ]; then
         rm -rf "sarasa-$pkgver"
-    fi
+    fi      
 	mkdir "sarasa-$pkgver"
     cd "sarasa-$pkgver"
-    7z x "$srcdir/Sarasa-TTF-$pkgver.7z"
+    7z x "$srcdir/SarasaGothicSC-TTF-$pkgver.7z"
 }
 
 package() {
