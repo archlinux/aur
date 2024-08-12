@@ -1,0 +1,5 @@
+[python-glasbey]
+source = "github"
+github = "lmcinnes/glasbey"
+use_latest_release = "true"
+prefix = "release-"
