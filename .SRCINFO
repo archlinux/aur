@@ -1,6 +1,6 @@
 pkgbase = image-colorizer
 	pkgdesc = Snap an image to a colorscheme extremely quickly
-	pkgver = 1.0.4
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/TaylorBeeston/image-colorizer
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = image-colorizer
 	optdepends = nvidia-utils: for Vulkan support on NVIDIA GPUs
 	optdepends = vulkan-intel: for Vulkan support on Intel GPUs
 	optdepends = vulkan-radeon: for Vulkan support on AMD GPUs
-	source = image-colorizer-1.0.4.tar.gz::https://crates.io/api/v1/crates/image-colorizer/1.0.4/download
-	sha256sums = 7c358a11399f48ca73202382e87f224c3946f53a6eba6d02d2b5902950073c4a
+	source = image-colorizer-1.1.4.tar.gz::https://crates.io/api/v1/crates/image-colorizer/1.1.4/download
+	sha256sums = 8de8eb1c361c6b470441e30147c5216bc03c657b2f0cb150926d93efaa616a10
 
 pkgname = image-colorizer
