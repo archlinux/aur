@@ -1,4 +1,5 @@
-# Maintainer: Renato Molnar <renato dot molnar at posteo dot net>
+# Maintainer: Marcus B Spencer <marcus at marcusspencer dot xyz>
+# Contributor: Renato Molnar <renato dot molnar at posteo dot net>
 
 # Use the following variable to change package architecture.
 # To use OS architecture please uncomment it
@@ -15,7 +16,7 @@ esac
 pkgbase=notepadpp
 pkgname=notepad++
 _pkgname=notepad-plus-plus
-pkgver=8.6.7
+pkgver=8.6.9
 pkgrel=1
 pkgdesc="A free source code editor for Windows"
 url="https://${_pkgname}.org/"
@@ -33,9 +34,9 @@ source=(notepad++
 sha256sums=('643713113d26d32b2e6d861e9cd6db8153a3359f3784dbd1710f12e89468654a'
             '98693e0f57a9fab55dd31dfaf9b3a13234f14e1b193b56ac52eff33c987d4354'
             '04c8ad254a41350078bba4d56ad54f7b4c0df125029aee021ea0ac632971ebad'
-            '0bc4ea27d84ae46b42f1639b6d7fc1e5ddb87f23bcadb98aeb2431de2571d345'
+            '045b5989fe3cb03aa1977d6b897e672928bf14ceddc089b2196bf383d6195173'
             'SKIP'
-            '2db1d62cfc39ba8b4eea961b361f5d03118e4a33a8a285c9debd013edb014c88'
+            'c1478faf2a2ec8c78c9d92b22445d53027c85d142165015cf9ed0aca80b13679'
             'SKIP')
 
 noextract=("npp.${pkgver}.portable.zip"
