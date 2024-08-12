@@ -16,7 +16,7 @@ build() {
 
     cd "python-client-${pkgver}"
 
-    SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}" python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation
 
 }
 
