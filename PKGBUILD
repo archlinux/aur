@@ -1,7 +1,7 @@
 # Maintainer: Dino Morelli <dino@ui3.info>
 
 pkgname=photoname
-pkgver=5.1
+pkgver=5.2
 pkgrel=1
 pkgdesc='Rename JPEG photo files based on shoot date'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=()
 options=(!strip)
 source=("https://github.com/dino-/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-${arch}.AppImage")
 
-sha256sums=('ad27fc292470f51806a292de6785b080d041e0344588e24845dfba213cbfbcee')
+sha256sums=('a18c06759bf0007e79e01ad75a5fade8e10a0ddd73ee9a7887681df1534d8714')
 
 
 # PKGBUILD functions

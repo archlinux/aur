@@ -1,13 +1,13 @@
 pkgbase = photoname
 	pkgdesc = Rename JPEG photo files based on shoot date
-	pkgver = 5.1
+	pkgver = 5.2
 	pkgrel = 1
 	url = https://github.com/dino-/photoname
 	arch = x86_64
 	license = ISC
 	depends = fuse2
 	options = !strip
-	source = https://github.com/dino-/photoname/releases/download/5.1/photoname-5.1-x86_64.AppImage
-	sha256sums = ad27fc292470f51806a292de6785b080d041e0344588e24845dfba213cbfbcee
+	source = https://github.com/dino-/photoname/releases/download/5.2/photoname-5.2-x86_64.AppImage
+	sha256sums = a18c06759bf0007e79e01ad75a5fade8e10a0ddd73ee9a7887681df1534d8714
 
 pkgname = photoname
