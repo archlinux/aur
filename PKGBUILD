@@ -26,6 +26,7 @@ depends=(
     libcurl.so
     systemd-libs libudev.so
     hicolor-icon-theme
+    ffmpeg
 )
 makedepends=(
     git

@@ -44,6 +44,7 @@ pkgbase = duckstation-git
 	depends = systemd-libs
 	depends = libudev.so
 	depends = hicolor-icon-theme
+	depends = ffmpeg
 	optdepends = qt6-wayland: Wayland support
 	optdepends = libpulse: Pulseaudio support
 	optdepends = sndio: Small audio support
