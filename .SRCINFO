@@ -7,6 +7,7 @@ pkgbase = python-keyring-pass
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-poetry-core
 	depends = python-keyring
 	depends = python-jaraco.classes
 	depends = pass
