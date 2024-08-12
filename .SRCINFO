@@ -1,15 +1,15 @@
 pkgbase = aptakube-appimage
 	pkgdesc = A modern and lightweight Kubernetes desktop client to help you operate workloads on multiple clusters. (free to use during the public preview)
-	pkgver = 1.6.10
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://aptakube.com/
 	arch = x86_64
 	license = Proprietary
 	depends = zlib
 	depends = hicolor-icon-theme
-	noextract = aptakube-appimage-1.6.10.AppImage
+	noextract = aptakube-appimage-1.7.0.AppImage
 	options = !strip
-	source_x86_64 = aptakube-appimage-1.6.10.AppImage::https://releases.aptakube.com/aptakube_1.6.10_amd64.AppImage
-	sha256sums_x86_64 = 50db4d248d3fd969196c8f3d8fdc2dd77033b2c281e4384836dcd3e6bf784d0c
+	source_x86_64 = aptakube-appimage-1.7.0.AppImage::https://releases.aptakube.com/aptakube_1.7.0_amd64.AppImage
+	sha256sums_x86_64 = e80f10e1b8fc17a609d6511fc6ab849fd96d214c8fd648798ca52b21d5c98cdc
 
 pkgname = aptakube-appimage
