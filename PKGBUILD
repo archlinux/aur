@@ -2,11 +2,14 @@
 pkgbase=inpulse-to-talk
 pkgname=inpulse-to-talk
 pkgver=v3.0
-pkgrel=1
-pkgdesc="Push-to-Talk with libinput + Pulseaudio"
+pkgrel=2
+pkgdesc="Push-to-Talk with libinput + Pulseaudio/Pipewire"
 url="https://gitlab.com/somini/inpulse-to-talk"
-# Technically, 'pulseaudio-ctl' is optdepends
-depends=('libinput' 'pulseaudio-ctl')
+depends=('libinput')
+optdepends=(
+    'pulseaudio-ctl: PulseAudio Audio Server'
+    'wireplumber: Pipewire Audio Server'
+)
 makedepends=('cargo')
 license=('GPL3')
 arch=('x86_64')

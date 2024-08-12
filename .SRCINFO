@@ -1,13 +1,14 @@
 pkgbase = inpulse-to-talk
-	pkgdesc = Push-to-Talk with libinput + Pulseaudio
+	pkgdesc = Push-to-Talk with libinput + Pulseaudio/Pipewire
 	pkgver = v3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/somini/inpulse-to-talk
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
 	depends = libinput
-	depends = pulseaudio-ctl
+	optdepends = pulseaudio-ctl: PulseAudio Audio Server
+	optdepends = wireplumber: Pipewire Audio Server
 	source = inpulse-to-talk-v3.0.tar.gz::https://gitlab.com/somini/inpulse-to-talk/-/archive/v3.0/inpulse-to-talk-v3.0.tar.gz
 	sha256sums = dfa817df9d119213eb688e30bd63578b589c0eef32324bfd05d3c3025108e1cd
 
