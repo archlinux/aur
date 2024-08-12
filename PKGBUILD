@@ -2,14 +2,18 @@
 # Co-Maintainer: Mckol <mckol363@gmail.com>
 
 pkgname=veloren-nightly
-pkgver=0.13.0.r37.525866816
+pkgver=0.16.0.r410.5ec99290f
 pkgrel=1
 pkgdesc="An open-world, open-source multiplayer voxel RPG. Version matches official server."
 arch=('x86_64' 'i686')
 url='https://veloren.net/'
 license=('GPL3')
 options=('!strip') # This makes debugging issues easier sometimes, comment out if small package size is needed
-depends=('systemd-libs' 'alsa-lib' 'libxcb' 'pulseaudio-alsa')
+depends=('alsa-lib' 'glslang' 'libxkbcommon-x11' 'vulkan-icd-loader')
+optdepends=(
+    'pulseaudio-alsa: audio support on pulseaudio'
+    'pipewire-alsa: audio support on pipewire'
+)
 makedepends=('git' 'git-lfs' 'rustup' 'cairo' 'pango' 'atk' 'gdk-pixbuf2' 'python' 'openssl' 'cmake' 'udev')
 provides=('veloren')
 conflicts=('veloren')
