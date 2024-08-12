@@ -2,14 +2,18 @@
 
 export GIT_LFS_SKIP_SMUDGE=1
 pkgname=veloren-git
-pkgver=0.15.0.r961.gb744f66733
+pkgver=0.16.0.r410.g5ec99290f2
 pkgrel=1
 pkgdesc="The development version of an open-world, open-source multiplayer voxel RPG"
 arch=('x86_64' 'i686')
 url='https://gitlab.com/veloren/veloren'
 license=('GPL3')
 options=('!strip') # This makes debugging issues easier sometimes, comment out if small package size is needed
-depends=('alsa-lib' 'glslang' 'libxkbcommon-x11' 'pulseaudio-alsa' 'vulkan-icd-loader')
+depends=('alsa-lib' 'glslang' 'libxkbcommon-x11' 'vulkan-icd-loader')
+optdepends=(
+    'pulseaudio-alsa: audio support on pulseaudio'
+    'pipewire-alsa: audio support on pipewire'
+)
 makedepends=('atk' 'cmake' 'cairo' 'gdk-pixbuf2' 'git' 'git-lfs' 'openssl' 'pango' 'python' 'rustup' 'udev')
 provides=('veloren')
 conflicts=('veloren')
