@@ -4,6 +4,6 @@ Comment=Create new songs for UltraStarDX from scratch.
 Exec=/opt/ultrastar-creator/UltraStar-Creator /dev/null 2>&1
 Icon=UltraStar-Creator
 Name=UltraStar-Creator
-Name[en]=ultrastar-creator.desktop
+Name[en]=UltraStar-Creator
 Terminal=false
 Type=Application
