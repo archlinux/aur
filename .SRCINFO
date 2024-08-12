@@ -6,7 +6,6 @@ pkgbase = firedragon-bin
 	url = https://garudalinux.org
 	arch = x86_64
 	license = MPL2
-	license = Floorp Shared Source License
 	depends = dbus
 	depends = dbus-glib
 	depends = ffmpeg
