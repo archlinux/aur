@@ -7,24 +7,46 @@
 # See https://github.com/flutter/flutter/issues/65400
 # for workarounds to `Insecure RPATH '<build path>' in opt/spotube/lib/lib*_plugin.so`
 
+_system_flutter=false # build_system part seems missing in aur/flutter
+_flutter_version=3.22.3
+
 pkgname=spotube
-pkgver=3.7.1
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!"
 arch=("x86_64" "aarch64")
 url="https://spotube.krtirtho.dev/"
 license=("BSD-4-Clause")
-depends=("mpv" "libappindicator-gtk3" "libsecret" "libnotify" "at-spi2-core" "libepoxy")
+depends=("gcc-libs" "mpv" "libappindicator-gtk3" "libsecret" "libnotify" "webkit2gtk-4.1" "libsoup3")
 makedepends=(
-    "flutter-tool>=3.16.0" "flutter-target-linux>=3.16.0" "clang" "cmake" "ninja"
-    "pkgconf" "gtk3" "imagemagick" "jsoncpp"
+    "clang" "cmake" "ninja" "pkgconf" "gtk3" "rustup" "imagemagick" "jsoncpp"
+)
+optdepends=(
+    "avahi: required if using remote controlling"
+    "nss-mdns: required if using remote controlling"
+    "mdns-scan: required if using remote controlling"
 )
 source=(
     "spotube-$pkgver.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('d528c7be9db77786a5646982597bf7e48ca595bbc0d9f4ead528d5e7677f28fc')
+sha256sums=('ddd529502397062060cd9f3624b4b29cc9b57a71fc02468d3cf9bc96dcade92a'
+            '9c5f70ba118b9163552144901a2efd91d40b22a68a04e67271d6a5ad936e8368')
 
-_release_date=2024-06-06
+_release_date=2024-08-11
+
+
+if $_system_flutter
+then
+    makedepends+=(
+        "flutter-tool=$_flutter_version" 
+        "flutter-target-linux=$_flutter_version"
+    )
+else
+    source+=("flutter-$_flutter_version.tar.gz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_$_flutter_version-stable.tar.xz")
+    makedepends+=(
+        "curl" "git" "unzip" "xz" "zip" "libglvnd"
+    )
+fi
 
 prepare() {
     cd "$srcdir/spotube-$pkgver"
@@ -36,14 +58,34 @@ prepare() {
         echo "RELEASE_CHANNEL=stable"
     } > .env
 
+
+    sed -i '89s/locale/locale as Locale/' \
+        lib/pages/getting_started/sections/region.dart
+
+    if $_system_flutter
+    then
+        export FLUTTER_ROOT=/usr/lib/flutter
+    else
+        export FLUTTER_ROOT="$srcdir/flutter"
+        export PATH="$PATH:$FLUTTER_ROOT/bin"
+    fi
+    export PATH="$PATH:$HOME/.pub-cache/bin"
+
     flutter config --no-analytics
     flutter config --enable-linux-desktop
     flutter pub get
     dart pub global activate flutter_gen
+    rustup default stable
 }
 build() {
     cd "$srcdir/spotube-$pkgver"
-    export FLUTTER_ROOT=/usr/lib/flutter
+    if $_system_flutter
+    then
+        export FLUTTER_ROOT=/usr/lib/flutter
+    else
+        export FLUTTER_ROOT="$srcdir/flutter"
+        export PATH="$PATH:$FLUTTER_ROOT/bin"
+    fi
     export PATH="$PATH:$HOME/.pub-cache/bin"
      
     dart run build_runner build --delete-conflicting-outputs
