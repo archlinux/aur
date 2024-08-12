@@ -2,40 +2,36 @@
 
 pkgbase=magiskboot-git
 pkgname=magiskboot-git
-pkgver=26101.37.r2.gf5dfa8f0
+pkgver=27006.69.r1.gd9901db
 pkgrel=1
 pkgdesc="Magiskboot_ndk"
 arch=(x86_64
       i686
       aarch64
-      armv7h)
+      armv7h
+      riscv64)
 url="https://github.com/xiaoxindada/magiskboot_ndk_on_linux"
-license=(' GPL-3.0')
-provides=(${pkgbase%-git
-            busybox})
-conflicts=(${pkgbase%-git}
-            busybox)
-depends=(p7zip
-        wget
-        tar
-        python3)
+license=('GPL-3.0-or-later')
+provides=(${pkgbase%-git})
+conflicts=(${pkgbase%-git})
+depends=()
 makedepends=(
-#             rust
-#             rust-src
-            git
-#             xz
-#             lz4
-#             bzip2
-#             zlib
-            )
+    cargo
+    git
+    python
+    python-wget
+    tar)
 optdepends=('android-tools: Android platform tools')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 options=('!strip')
 
 pkgver() {
-    cd "${srcdir}/${pkgname}/"
-    git describe --long --tags | sed 's/^Magiskboot-//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/${pkgname}"
+    ( set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^Magiskboot-//g;s/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 prepare() {
@@ -45,23 +41,21 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    ./build.sh setup
+    python ./build.py --build_binary
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
 
     if [ ${CARCH} = "x86_64" ]; then
-        install -Dm755 out/$arch/busybox ${pkgdir}/usr/bin/busybox
         install -Dm755 out/$arch/magiskboot ${pkgdir}/usr/bin/magiskboot
     elif [ ${CARCH} = "aarch64" ]; then
-        install -Dm755 out/arm64-v8a/busybox ${pkgdir}/usr/bin/busybox
         install -Dm755 out/arm64-v8a/magiskboot ${pkgdir}/usr/bin/magiskboot
     elif [ ${CARCH} = "i686" ]; then
-        install -Dm755 out/x86/busybox ${pkgdir}/usr/bin/busybox
         install -Dm755 out/x86/magiskboot ${pkgdir}/usr/bin/magiskboot
     elif [ ${CARCH} = "armv7h" ]; then
-        install -Dm755 out/armeabi-v7a/busybox ${pkgdir}/usr/bin/busybox
         install -Dm755 out/armeabi-v7a/magiskboot ${pkgdir}/usr/bin/magiskboot
+    elif [ ${CARCH} = "riscv64" ]; then
+        install -Dm755 out/riscv64/magiskboot ${pkgdir}/usr/bin/magiskboot
     fi
 }
