@@ -1,7 +1,7 @@
 pkgbase = prismlauncher-cracked
 	pkgdesc = Minecraft launcher with ability to manage multiple instances and support for offline accounts.
 	pkgver = 8.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Diegiwg/PrismLauncher-Cracked
 	arch = i686
 	arch = x86_64
@@ -32,6 +32,7 @@ pkgbase = prismlauncher-cracked
 	optdepends = xorg-xrandr: for older minecraft versions
 	optdepends = java-runtime=8: for older minecraft versions
 	optdepends = flite: minecraft voice narration
+	provides = prismlauncher
 	conflicts = prismlauncher
 	conflicts = prismlauncher-git
 	source = https://github.com/Diegiwg/PrismLauncher-Cracked/releases/download/v8.4.1/PrismLauncher-v8.4.1.tar.gz
