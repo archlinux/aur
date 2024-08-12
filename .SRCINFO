@@ -1,6 +1,6 @@
 pkgbase = cli-of-life
 	pkgdesc = Play Conway's Game of Life in your terminal
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/gabe565/cli-of-life
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = cli-of-life
 	depends = glibc
 	optdepends = bash-completion: for shell auto-completion
 	optdepends = zsh-completions: for shell auto-completion
-	source = cli-of-life-0.2.0.tar.gz::https://github.com/gabe565/cli-of-life/archive/v0.2.0.tar.gz
-	sha256sums = 93d7b4968acc2fbe69c3304c251d6e726c79209d5046d3cda0b8ea1f6500e3e2
+	source = cli-of-life-0.3.0.tar.gz::https://github.com/gabe565/cli-of-life/archive/v0.3.0.tar.gz
+	sha256sums = 8505aaab9fd07f82dfaee7883703e0c6fb00cbdc7cf17c092c8554f41ce3be6a
 
 pkgname = cli-of-life
