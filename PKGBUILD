@@ -4,7 +4,7 @@
 # Contributor: Ewout van Mansom <ewout@vanmansom.name>
 
 pkgname=dxvk-gplasync-bin
-pkgver=2.3.1
+pkgver=2.4
 pkgrel=1
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 9/10/11 (with gplasync patch)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("$url/-/raw/main/releases/dxvk-gplasync-v$pkgver-$pkgrel.tar.gz"
         'dxvk-gplasync-env.conf'
         'setup_dxvk_proton.sh'
         'https://raw.githubusercontent.com/doitsujin/dxvk/4f90d7bf5f9ad785660507e0cb459a14dab5ac75/setup_dxvk.sh')
-sha256sums=('763bb5bd22c1f56925afbab3a4590c84b6d4776f2d6bdd2cdda943c3cb66d9b6'
+sha256sums=('687d6ef959a949f786155e6632849b919b47b63da316110cf0bf3d43e548b380'
             '2bce3bf5dc5a3c7312bbaae96daf82e0fe6c370e96017ce5a0c49f40901866e3'
             '64fbbf9f30f2f4e8d1d82b088ade92f1bf8817a4bf6e21d7dd978f4276abe1a6'
             '0f688815530ab5e8cc89b9b45d9b1d66cd8cd5a7770fb8249339af555a30dfe7')
