@@ -1,0 +1,26 @@
+pkgbase = radar-contact
+	pkgdesc = Radar Contact is an air traffic control simulation game.
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://github.com/Bogdanctx/Radar-Contact
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = gcc
+	depends = curl
+	depends = libxrandr
+	depends = libxcursor
+	depends = libsystemd
+	depends = openal
+	depends = flac
+	depends = libvorbis
+	depends = mesa
+	depends = libegl
+	depends = libdrm
+	depends = freetype2
+	provides = radar-contact
+	conflicts = radar-contact
+	source = radar-contact-3.1.tar.gz::https://github.com/Bogdanctx/Radar-Contact/archive/refs/tags/v3.1.tar.gz
+	sha256sums = 1407854c489a0fa5b3a2f73cf5e1999212a7377cfbbd83de0e77043cc43e6983
+
+pkgname = radar-contact
