@@ -1,0 +1,18 @@
+pkgbase = hostapd-wpe-fork
+	pkgdesc = Modified hostapd to facilitate AP impersonation attacks.
+	pkgver = 2.9.1
+	pkgrel = 3
+	url = https://w1.fi/hostapd/
+	install = hostapd-wpe.install
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	depends = libnl
+	depends = sqlite
+	conflicts = hostapd-wpe
+	source = https://w1.fi/releases/hostapd-2.9.tar.gz
+	source = https://patches.aircrack-ng.org/wpe/hostapd-wpe/hostapd-wpe.patch
+	sha512sums = 66c729380152db18b64520bda55dfa00af3b0264f97b5de100b81a46e2593571626c4bdcf900f0988ea2131e30bc8788f75d8489dd1f57e37fd56e8098e48a9c
+	sha512sums = c1ef9f6b9b3d3d04fa98fb9568acc45a5c52a00411a5ebbbf3a80835cc27f6cdc5003343f37964fbac2c7c1fefffdf999d620f0e39797c0c37030090735526a5
+
+pkgname = hostapd-wpe-fork
