@@ -166,7 +166,7 @@ index 902014a9cc1..cfe1a503532 100644
        export_file = make_temp_file (".x");
  #endif
 diff --git a/gcc/config/i386/djgpp.cc b/gcc/config/i386/djgpp.cc
-index a553c771d4f1..0519294a6248 100644
+index a553c771d4f..0519294a624 100644
 --- a/gcc/config/i386/djgpp.cc
 +++ b/gcc/config/i386/djgpp.cc
 @@ -36,6 +36,8 @@ i386_djgpp_asm_named_section(const char *name, unsigned int flags,
@@ -179,7 +179,7 @@ index a553c771d4f1..0519294a6248 100644
    /* LTO sections need 1-byte alignment to avoid confusing the
       zlib decompression algorithm with trailing zero pad bytes.  */
 diff --git a/gcc/config/i386/xm-djgpp.h b/gcc/config/i386/xm-djgpp.h
-index ee9e400be142..6b34b8c39814 100644
+index ee9e400be14..6b34b8c3981 100644
 --- a/gcc/config/i386/xm-djgpp.h
 +++ b/gcc/config/i386/xm-djgpp.h
 @@ -30,6 +30,8 @@ along with GCC; see the file COPYING3.  If not see
@@ -836,7 +836,7 @@ index 758507fb126d..fa5c753e7b4c 100644
  
  _GLIBCXX_END_NAMESPACE_VERSION
 diff --git a/libstdc++-v3/include/experimental/bits/fs_path.h b/libstdc++-v3/include/experimental/bits/fs_path.h
-index 5008e26af8db..3591d6764be3 100644
+index 5008e26af8d..3591d6764be 100644
 --- a/libstdc++-v3/include/experimental/bits/fs_path.h
 +++ b/libstdc++-v3/include/experimental/bits/fs_path.h
 @@ -53,6 +53,11 @@
