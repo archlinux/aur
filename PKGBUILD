@@ -2,12 +2,12 @@
 pkgname=gnome-shell-extension-material-you-colors-git
 _uuid=material-you-colors@francescocaracciolo.github.io
 pkgver=r134.3f6a005
-pkgrel=1
+pkgrel=2
 pkgdesc="Applies generated libadwaita theme from wallpaper using Material You"
 arch=('any')
 url="https://github.com/FrancescoCaracciolo/material-you-colors"
 license=('GPL-3.0-or-later')
-depends=('adw-gtk3' 'gnome-shell' 'nodejs')
+depends=('adw-gtk-theme' 'gnome-shell' 'nodejs')
 makedepends=('git' 'npm')
 optdepends=('gdm-tools: GDM theming'
             'gnome-shell-extensions: GNOME Shell theming via User Themes extension'
