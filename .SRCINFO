@@ -1,0 +1,11 @@
+pkgbase = promql-cli
+	pkgdesc = Query prometheus from the command line for quick analysis.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/nalbury/promql-cli
+	arch = x86_64
+	license = Apache 2.0
+	provides = promql-cli
+	source = https://github.com/nalbury/promql-cli/releases/download/v0.3.0/promql-v0.3.0-linux-amd64.tar.gz
+
+pkgname = promql-cli
