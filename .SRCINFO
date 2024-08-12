@@ -1,7 +1,7 @@
 pkgbase = mandarine-git
 	pkgdesc = 3ds emulator - citra fork with tweaks/enhancements
 	pkgver = r10174.9a45cc0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mandarine3ds/mandarine
 	arch = x86_64
 	license = GPL-2.0
@@ -38,6 +38,7 @@ pkgbase = mandarine-git
 	depends = openal
 	depends = enet
 	conflicts = mandarine
+	conflicts = mandarine-appimage
 	source = git+https://github.com/mandarine3ds/mandarine
 	source = boost::git+https://github.com/PabloMK7/ext-boost.git
 	source = git+https://github.com/neobrain/nihstro.git
