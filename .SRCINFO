@@ -1,13 +1,14 @@
 pkgbase = octobrowser
 	pkgdesc = Fast anti-detect browser for multi-accounting with maximum protection against browser identification
 	pkgver = 2.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://octobrowser.net
 	arch = x86_64
 	license = MIT License
 	depends = libxcrypt-compat
 	depends = libselinux
 	depends = unzip
+	depends = xdg-desktop-portal-gtk
 	provides = octobrowser
 	conflicts = octobrowser
 	options = !strip
