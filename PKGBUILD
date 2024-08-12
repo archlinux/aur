@@ -1,7 +1,7 @@
 # Maintainer: OrkenWhite <orkenwhite@disroot.org>
 pkgname=ytfe
-pkgver=1.20.7
-pkgrel=3
+pkgver=1.22.0
+pkgrel=1
 pkgdesc="Lightweight YouTube client using the LCL toolkit"
 arch=('x86_64' 'i686')
 url="http://oscomp.hu"
@@ -12,8 +12,8 @@ source=('http://oscomp.hu/depot/ytfe.png' 'http://oscomp.hu/depot/edl-preloader.
 source_x86_64=("http://oscomp.hu/depot/ytfe_direct/$pkgver/ytfe_linux_x86_64.xz")
 source_i686=("http://oscomp.hu/depot/ytfe_direct/$pkgver/ytfe_linux_i686.xz")
 sha256sums=( '29220d99cb0e33675e2d349a023eea0877a3befefc61b19f4d901db29f7d1698' '1538efd4ad69915c36a12e48b2fb67606983d8dd38811726640952d6a3c03149' '44bc1c569ae7829e65bc5ec3525ad260a2dc64d340da0f9912c4395552134eae' 'bf8e1295602992c618eacbc43a36c201293c8a159f49dd42a724c72f5e8a5267')
-sha256sums_x86_64=('ed6d4351ea39ec53c4f989b56d1e8e3735f6cba784ace2990fa010210d686e40')
-sha256sums_i686=('1f9bf101f6f25195b6963ceee6ef434cf7939de63a52283ed04a60445afc5cb0')
+sha256sums_x86_64=('0654fc386878663061b7b89ba5f035d4e118500babd70d70db4d4784611cbf93  ytfe_linux_x86_64.xz')
+sha256sums_i686=('fbf4a54817672ec978b9326a076b0b7c1befb5d825a0ec7bce4e062bfb91aa34  ytfe_linux_i686.xz)
 optdepends=('youtube-dl: default downloader' 
 	'mpv: default player'
 	'vlc: compatible video player')
