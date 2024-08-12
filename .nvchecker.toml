@@ -1,0 +1,4 @@
+[vitis]
+source = 'regex'
+url = 'https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis.html'
+regex = ' href="/member/forms/download/xef.html\?filename=FPGAs_AdaptiveSoCs_Unified_([.0-9]+)_[0-9_]+\.tar\.gz"'
