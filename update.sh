@@ -8,7 +8,7 @@ fi
 
 echo "Updating PKGBUILD file with latest upstream release"
 
-echo sed -i "s/pkgver=${pkgver}/pkgver=${1}/g" PKGBUILD
+sed -i "s/pkgver=${pkgver}/pkgver=${1}/g" PKGBUILD
 sed -i "s/${pkgver}/${1}/g" .SRCINFO
 source PKGBUILD 
 
