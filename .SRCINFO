@@ -1,0 +1,23 @@
+pkgbase = python-google-cloud-container
+	pkgdesc = Google Cloud Container API client library
+	pkgver = 2.50.0
+	pkgrel = 1
+	url = https://github.com/googleapis/google-cloud-python
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-recommonmark
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-wheel
+	depends = python-google-api-core
+	depends = python-google-auth
+	depends = python-google-cloud-core
+	depends = python-google-resumable-media
+	depends = python-requests
+	optdepends = python-protobuf
+	source = python-google-cloud-container-2.50.0.tar.gz::https://github.com/googleapis/google-cloud-python/archive/google-cloud-container-v2.50.0.tar.gz
+	sha256sums = f71b9879fcbbd1faab87b31ffa65f33c9f9a08967b0b92428d7b054dd1417ceb
+
+pkgname = python-google-cloud-container
