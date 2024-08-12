@@ -2,7 +2,7 @@
 
 pkgname=ophis
 _pkgname=Ophis
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 epoch=
 pkgdesc="An assembler for the 6502 microprocessor"
@@ -10,8 +10,8 @@ arch=('i686' 'x86_64')
 url="http://michaelcmartin.github.io/Ophis/"
 license=('MIT')
 groups=()
-depends=('python2')
-makedepends=()
+depends=('python')
+makedepends=(python-build python-installer python-wheel)
 checkdepends=()
 optdepends=()
 provides=()
@@ -21,17 +21,17 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://github.com/michaelcmartin/${pkgname}/archive/v${pkgver}.tar.gz)
-sha1sums=('3cab892b4347fcd398676d6adc36340f847632cc')
+source=(https://github.com/michaelcmartin/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz)
+sha1sums=('ced176c3e237f4f774d04b2d8d59eefbd2c87ea9')
 
 build() {
-  cd ${srcdir}/${_pkgname}-${pkgver}/src
-  
-  python2 setup.py build
+  cd ${srcdir}/${_pkgname}-${pkgver}
+
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}-${pkgver}/src
+  cd ${srcdir}/${_pkgname}-${pkgver}
 
-  python2 setup.py install --root=${pkgdir} --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
