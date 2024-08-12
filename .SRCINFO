@@ -8,6 +8,8 @@ pkgbase = openrgb-plugin-e131-receiver-git
 	makedepends = git
 	depends = qt5-tools
 	depends = openrgb
+	provides = openrgb-plugin-e131-receiver
+	conflicts = openrgb-plugin-e131-receiver
 	source = git+https://gitlab.com/OpenRGBDevelopers/OpenRGBE131ReceiverPlugin.git
 	sha256sums = SKIP
 
