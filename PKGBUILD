@@ -1,6 +1,6 @@
 # Maintainer: libook <libook7@gmail.com>
 pkgname=net-ssr
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Network Secondary Surveillance Radar"
 arch=('x86_64' 'aarch64')
@@ -57,6 +57,9 @@ package() {
     # Install man pages
     install -Dm644 "man/interrogator.1" "${pkgdir}/usr/share/man/man1/interrogator.1"
     install -Dm644 "man/transponder.1" "${pkgdir}/usr/share/man/man1/transponder.1"
+
+    # Install Systemd service
+    install -Dm644 "systemd/transponder.service" "${pkgdir}/usr/lib/systemd/system/transponder.service"
 
     # Install shell completions
     install -Dm644 "completions/_interrogator" "${pkgdir}/usr/share/zsh/site-functions/_interrogator"
