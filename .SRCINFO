@@ -8,6 +8,9 @@ pkgbase = openrgb-plugin-hardware-sync-git
 	makedepends = git
 	depends = qt5-tools
 	depends = openrgb
+	depends = libgtop
+	provides = openrgb-plugin-hardware-sync
+	conflicts = openrgb-plugin-hardware-sync
 	source = git+https://gitlab.com/OpenRGBDevelopers/OpenRGBHardwareSyncPlugin.git
 	sha256sums = SKIP
 
