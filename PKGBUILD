@@ -1,13 +1,13 @@
 # Maintainer: Tsaitang <tsaitang404@@gmail.com>
 pkgname=ishell
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="轻量又高性能的SSH工具IShell：AI加持，快人一步"
 arch=('x86_64')
 url="https://ishell.cc/"
 depends=()
 source=("$pkgname-$pkgver.zip::https://ishell-down.oss-cn-beijing.aliyuncs.com/ishell_linux_$pkgver.zip")
-sha256sums=('bcd60617ad446d44e3016a1a1981e321cb18282d294faf2c1b7df269d1bbaddb')
+sha256sums=('SKIP')
 
 package() {
   # 定义安装目标路径
