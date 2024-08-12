@@ -10,7 +10,6 @@ pkgbase = protonvpn-cli
 	depends = python-pythondialog
 	depends = network-manager-applet
 	source = https://github.com/ProtonVPN/linux-cli/archive/refs/tags/3.13.0.tar.gz
-	validpgpkeys = 6A5571928D2222D83BC7456E4EDE055B645F044F
 	sha256sums = d295d6c899638a88d615e2cacb078ecf2aee8c771ebb087c9edb43aea25aacd9
 
 pkgname = protonvpn-cli
