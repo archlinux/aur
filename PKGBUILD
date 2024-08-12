@@ -4,7 +4,7 @@
 
 pkgname=session-desktop-appimage
 _pkgname=session-desktop
-pkgver=1.12.5
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Private messaging from your desktop (AppImage version)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("${_bin}::$url/releases/download/v${pkgver}/${_bin}"
         "https://raw.githubusercontent.com/oxen-io/session-desktop/clearnet/LICENSE"
         'session-desktop.desktop'
         'session-desktop.png')
-sha512sums=('6df598e83915f87aff7c5f23ce11a86fbbfd6d9d34f87b2e6777f9dbca0faf341863894e62300f627020db2a4e260318b385d43d15ec252f7d851605694c9b8a'
+sha512sums=('67d914b3c9af75cf864df338a29efcb5a06dfc0632bf53204856b9dc93f14ece225bcc289a7b12f903c1dd60ae708eebd3e78ff948cfcde42f8e9b28ff46283f'
             'ea093221d733c540ae68e959d1f99a7983f1467641c04ec829ae4d458577bd5f92b5b624e6114cd3dc25bd97705a9678aa909a004cbafc5847224917793a04ea'
             '96e2a021ebf7a5904cbd47aabf8d03f450a3ee2831d7ecfad5f1518b4214609acc9fd51ad8ca189875c19a99f28f7fd71e5028999c58e404210f2401f4e6babd'
             '209d1483601018e2191719117a59da3112570b2e1ae176337a918d4ab2c4032dfddf14d42e4a3b2153888167e694542bbc1f42297589d035ab29f2578877425d')
