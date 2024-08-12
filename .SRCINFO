@@ -10,6 +10,9 @@ pkgbase = ssh-chat-git
 	license = MIT
 	makedepends = go
 	makedepends = git
+	provides = ssh-chat=r583.daf4677
+	source = git+https://github.com/shazow/ssh-chat.git
+	sha25sums = SKIP
 
 pkgname = ssh-chat-git
 
