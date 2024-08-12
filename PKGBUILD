@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://pldaniels.com/flexbv5/free/FlexBVF
 	"flexbv-free-icon.svg::https://pldaniels.com/flexbv5/assets/flexbv-free-icon.svg")
 sha256sums=('1bcfd1fa10a47a940505f6c4916f0e2ed4b36a054715baa60f8a23efe61a2ee4'
             'ee12188b6faa294e00751c99c92cdfb744fc8b8fb0f9a9585c42e4b4b1a17ed8'
-            '4e45f984734fcfb402d265955439ccdfb2f60c8634e46f9e3d8c1ba434f8293c')
+            'e19c10e335eb9ba4278317c5f0f07f25e9051f0bcd3b6bb0fb85b3b2ee73124e')
 
 package() {
 	install -D "FlexBVFree-$pkgver-linux"/* "$pkgdir/usr/bin/flexbv"
