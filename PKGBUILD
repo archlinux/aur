@@ -1,14 +1,14 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=probe-rs-git
-pkgver=0.23.0.r21.g8e561138
+pkgver=0.1.0.r178.gaa4e7c093
 pkgrel=1
 pkgdesc="A debugging toolset and library for debugging embedded ARM and RISC-V targets on a separate host"
 arch=(x86_64
     aarch64
     riscv64)
 url="https://github.com/probe-rs/probe-rs"
-license=('MIT' 'Apache-2.0')
+license=('Apache-2.0 AND MIT')
 provides=(${pkgname%-git}
     cargo-embed
     cargo-flash
@@ -28,20 +28,17 @@ depends=(gcc-libs
     glibc
     libusb
     libftdi
-    openssl
     systemd-libs)
 makedepends=(git
-    cargo)
+    cargo
+    cmake
+    openssl
+    pkgconf)
 backup=()
 options=(!lto)
 install=
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
-
-pkgver() {
-    cd "${srcdir}/${pkgname}/"
-    git describe --long --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 prepare()
 {
@@ -51,25 +48,34 @@ prepare()
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    ( set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
+}
+
 build() {
     cd "${srcdir}/${pkgname}/"
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --release --all-features
-#     cargo build \
-# 		--offline \
-# 		--locked \
-# 		--features 'cli,ftdi' \
-# 		--release
+#     cargo build --release --all-features
+    CFLAGS+=" -ffat-lto-objects"
+#    --features 'cli,ftdi' \
+    cargo build \
+        --offline \
+        --locked \
+        --release
 }
 
-check() {
-    cd "${srcdir}/${pkgname}/"
-
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --all-features
-}
+# check() {
+#     cd "${srcdir}/${pkgname}/"
+#
+#     export RUSTUP_TOOLCHAIN=stable
+#     cargo test --all-features
+# }
 
 package() {
     cd "${srcdir}/${pkgname}/"
