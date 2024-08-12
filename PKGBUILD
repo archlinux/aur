@@ -6,7 +6,7 @@ _archive="${_pkgname}-master"
 _source="https://gitflic.ru/project/magnolia1234/bpc_uploads/blob/raw?file=${_archive}.zip"
 pkgname=chromium-bypass-paywalls-clean
 pkgver=3.7.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium extension to bypass paywalls"
 url="https://github.com/bpc-clone/bpc_updates"
 arch=('any')
