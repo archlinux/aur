@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://ishell.cc/"
 depends=()
 source=("$pkgname-$pkgver.zip::https://ishell-down.oss-cn-beijing.aliyuncs.com/ishell_linux_$pkgver.zip")
-sha256sums=('SKIP')
+sha256sums=('9cb7522b0049dde86051ed67da44abba0942da4c081a6e832366d80be9436a82')
 
 package() {
   # 定义安装目标路径
