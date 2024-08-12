@@ -2,15 +2,15 @@
 
 pkgname=krita-ai-diffusion
 pkgver=1.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin to use generative AI in image painting and editing workflows from within Krita"
 arch=('any')
 url="https://github.com/Acly/krita-ai-diffusion"
 license=('GPL-3.0-or-later')
 depends=(
     'krita'
-    'python' # Required to create a virtual environment (for server.py)
     'python-pyqt5'
+    'python311' # Required to create a virtual environment (for server.py)
     'qt5-imageformats'
 )
 makedepends=('git')
@@ -27,7 +27,7 @@ prepare() {
     cd "$srcdir/$pkgname-$pkgver"
     patch -Np1 -i ../add-regex-to-requirements.patch
     git submodule update --init --recursive
-    python -m venv .venv
+    python3.11 -m venv .venv
     source .venv/bin/activate
     pip install -r requirements.txt
 }
