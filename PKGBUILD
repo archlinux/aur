@@ -6,13 +6,13 @@
 
 pkgname=masterpdfeditor
 pkgver=5.9.85
-pkgrel=1
+pkgrel=2
 pkgdesc='A complete solution for viewing, creating and editing PDF files'
 url='https://code-industry.net/free-pdf-editor/'
 arch=('x86_64')
 license=('custom')
 makedepends=('patchelf')
-source_x86_64=("https://code-industry.net/public/master-pdf-editor-${pkgver}.x86_64-qt5_include.tar.gz")
+source_x86_64=("https://code-industry.net/public/master-pdf-editor-${pkgver}-qt5.x86_64-qt_include.tar.gz")
 sha1sums_x86_64=('ff0a147ba96723f5c3216855ec3f49d61c124e6a')
 
 package() {
