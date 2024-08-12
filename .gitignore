@@ -1,1 +1,3 @@
-/home/aksr/arch/pkg/.gitignore
+src/
+ssh-chat/
+*.tar.zst
