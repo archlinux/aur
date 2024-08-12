@@ -1,6 +1,6 @@
 pkgbase = linux-vfio-lts
 	pkgdesc = LTS Linux
-	pkgver = 6.6.43
+	pkgver = 6.6.45
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = x86_64
@@ -19,23 +19,25 @@ pkgbase = linux-vfio-lts
 	makedepends = python-sphinx
 	makedepends = texlive-latexextra
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.43.tar.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.43.tar.sign
-	source = config-6.6.43::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/config
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.45.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.45.tar.sign
+	source = config-6.6.45::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/config
 	source = 1001-6.6.7-add-acs-overrides.patch
 	source = 1002-6.6.7-i915-vga-arbiter.patch
-	source = 0001-6.6.43-disallow-unprivileged-CLONE_NEWUSER.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-	source = 0002-6.6.43-nvidia-skip-simpledrm.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/0002-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch
+	source = 0001-6.6.45-disallow-unprivileged-CLONE_NEWUSER.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+	source = 0002-6.6.45-nvidia-skip-simpledrm.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/0002-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch
+	source = 0003-6.6.45-set-default-aslr-bits.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/0003-Default-to-maximum-amount-of-ASLR-bits.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 83BC8889351B5DEBBB68416EB8AC08600F108CDF
-	sha256sums = 0ad83b1a1a780a1aad948d55aa55ee63c50c626f2d46910b9d2180028d100a5e
+	sha256sums = 121bed240767e4a0959c1609e78eeaaf3e0620d9d1a5ed1f6e36bdf609c4f179
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = f342986bd27980c96c952b0dd8103d3e21a942d87f18df1308fab370e20010fb
 	sha256sums = 2a3c732d4d61a631c98b2a3e4afb1fa5dbf8be5c43519b2a59d0e65170c9d8db
 	sha256sums = 21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889
 	sha256sums = 2f23be91455e529d16aa2bbf5f2c7fe3d10812749828fc752240c21b2b845849
+	sha256sums = 6400a06e6eb3a24b650bc3b1bba9626622f132697987f718e7ed6a5b8c0317bc
 
 pkgname = linux-vfio-lts
 	pkgdesc = The LTS Linux kernel and modules (ACS override and i915 VGA arbiter patches)

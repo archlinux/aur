@@ -15,13 +15,13 @@
 unset _pkgtype
 [[ "${_build_vfio::1}" == "t" ]] && _pkgtype+="-vfio"
 [[ "${_build_lts::1}" == "t" ]] && _pkgtype+="-lts"
-[[ "${_build_v3::1}" == "t" ]] && _pkgtype+="-v3"
+[[ "${_build_v3::1}" == "t" ]] && _pkgtype+="-x64v3"
 
 ## basic info
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.6.43
+pkgver=6.6.45
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -52,7 +52,7 @@ source+=(
   "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/config
 )
 sha256sums+=(
-  '0ad83b1a1a780a1aad948d55aa55ee63c50c626f2d46910b9d2180028d100a5e' ###
+  '121bed240767e4a0959c1609e78eeaaf3e0620d9d1a5ed1f6e36bdf609c4f179' ###
   'SKIP'
   'SKIP'
 )
@@ -78,10 +78,12 @@ if [[ ${_build_arch_patch::1} == "t" ]]; then
   source+=(
     "0001-$pkgver-disallow-unprivileged-CLONE_NEWUSER.patch"::"$_dl_url_arch/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
     "0002-$pkgver-nvidia-skip-simpledrm.patch"::"$_dl_url_arch/0002-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch"
+    "0003-$pkgver-set-default-aslr-bits.patch"::"$_dl_url_arch/0003-Default-to-maximum-amount-of-ASLR-bits.patch"
   )
   sha256sums+=(
     '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
     '2f23be91455e529d16aa2bbf5f2c7fe3d10812749828fc752240c21b2b845849'
+    '6400a06e6eb3a24b650bc3b1bba9626622f132697987f718e7ed6a5b8c0317bc'
   )
 fi
 
