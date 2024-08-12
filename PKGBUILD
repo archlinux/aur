@@ -2,7 +2,7 @@
 pkgname=radar-contact
 pkgver=3.1
 pkgrel=1
-pkgdesc="Radar Contact is an air traffic control simulation game."
+pkgdesc="Radar Contact is a 2D game where you manage airspace, guiding planes to their destinations while avoiding collisions and storms."
 arch=('x86_64')
 url="https://github.com/Bogdanctx/Radar-Contact"
 license=('custom')
