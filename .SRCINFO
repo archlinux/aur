@@ -8,6 +8,8 @@ pkgbase = openrgb-plugin-visual-map-git
 	makedepends = git
 	depends = qt5-tools
 	depends = openrgb
+	provides = openrgb-plugin-visual-map
+	conflicts = openrgb-plugin-visual-map
 	source = git+https://gitlab.com/OpenRGBDevelopers/OpenRGBVisualMapPlugin.git
 	sha256sums = SKIP
 
