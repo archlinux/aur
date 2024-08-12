@@ -1,30 +1,48 @@
+# Maintainer: karboncore
 # Maintainer: detiam <dehe_tian@outlook.com>
 # Contributor: Nikita Tarasov <nikatar@disroot.org>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
-_pkgname=firefox
 pkgname=firefox-globalmenu
-pkgver=124.0.2
+pkgver=129.0
 pkgrel=1
-pkgdesc="Standalone web browser from mozilla.org, with appmenu patch."
-url="https://www.mozilla.org/$_pkgname/"
+pkgdesc="Fast, Private & Safe Web Browser"
+url="https://www.mozilla.org/firefox/"
 arch=(x86_64)
 license=(MPL-2.0)
-provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
 depends=(
+  alsa-lib
+  at-spi2-core
+  bash
+  cairo
   dbus
   ffmpeg
+  fontconfig
+  freetype2
+  gcc-libs
+  gdk-pixbuf2
+  glib2
+  glibc
   gtk3
-  appmenu-gtk-module
+  hicolor-icon-theme
   libpulse
+  libx11
+  libxcb
+  libxcomposite
+  libxdamage
+  libxext
+  libxfixes
+  libxrandr
   libxss
   libxt
   mime-types
+  nspr
   nss
-  ttf-font)
+  pango
+  ttf-font
+)
 makedepends=(
   cbindgen
   clang
@@ -46,32 +64,51 @@ makedepends=(
   wasi-libc++abi
   xorg-server-xvfb
   yasm
-  zip)
+  zip
+)
 optdepends=(
   'hunspell-en_US: Spell checking, American English'
   'libnotify: Notification integration'
   'networkmanager: Location detection via available WiFi networks'
-  'pulseaudio: Audio support'
   'speech-dispatcher: Text-to-Speech'
-  'xdg-desktop-portal: Screensharing with Wayland')
+  'xdg-desktop-portal: Screensharing with Wayland'
+)
 options=(
   !emptydirs
   !lto
-  !makeflags)
+  !makeflags
+)
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/e0b7b3c23a8edbcefb1c23eac25331e006e1240f
 source=(
-  "https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz"{,.asc}
-  assert.patch
-  unity-menubar.patch
-  fix_csd_window_buttons.patch)
+  https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
+  $commit/firefox-symbolic.svg
+  $commit/firefox.desktop
+  $commit/org.mozilla.firefox.metainfo.xml
+  $commit/0001-Bug-1898476-Wayland-Move-MozContainerSurfaceLock-fro.patch
+  $commit/0002-Bug-1898476-Wayland-Provide-surface-lock-by-GtkCompo.patch
+  $commit/0003-Bug-1898476-Wayland-Lock-Wayland-surface-before-Swap.patch
+)
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
   # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
-  '14F26682D0916CDD81E37B6D61B7B526D98F0353')
-sha1sums=('837016d4da3b9c39c11abdecff03fdd81b15a8ee'
-          'SKIP'
-          'bb4bbaddc549edd3506b5e955840fcebffcafb71'
-          '076dc68b2ec6c454afe9b5a9b3fbb7908ce575b8'
-          '4193d307cfc152ef2813973b0eae4385a4a2a968')
+  14F26682D0916CDD81E37B6D61B7B526D98F0353
+)
+sha256sums=('4b9ff955de7099f09aa1f00985e34695fa1a911e56c2d46cb4d60c3bff3d9174'
+            'SKIP'
+            'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
+            '1f241fdc619f92a914c75aece7c7c717401d7467c9a306458e106b05f34e5044'
+            '58d78ce57b3ee936bc966458d6b20ab142d02a897bbe924b3f26717af0c5bee1'
+            'f4e1db05768325bce5f38b67263c47b3aa4038cfadbdbf8a9e0cbec061a58c57'
+            '588b0b94fe188c5f0a133a8bfd88d7d60123315e6f509b119728409ff164419f'
+            'cbe19f6c95d27d50e3b6664907f8d084784162ea35d5d98fadbb91dbb77ef700')
+b2sums=('abd8b0008dfd0948234baf7c307c42051e2f58a9c7ebd07b3b0dec9bdb6d8d78e4e1ae25d552aba8685e8b307dbdeb1360d873fef98ac108671dbbbc53c2a3af'
+        'SKIP'
+        '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
+        'd07557840097dd48a60c51cc5111950781e1c6ce255557693bd11306c7a9258b2a82548329762148f117b2295145f9e66e0483a18e2fe09c5afcffed2e4b8628'
+        '2ce33432f8a73a4f1a412b7a065d3c124e1ca9f6bdf3fad0407e897efc0840f8ef43eeeb1b9bef4a102d9fac0b2c4a2ef205726b817f83fe9c3742d076778b14'
+        '2d4c421aec450c85c25554a8f312df8b74bb184e13fdd631ec7b34abbc3e5b1015fdef8d7ee637638c916f8bdd9cecfcb9c2713055471feb863888fd238e288e'
+        '884183ba979c844a2119dbb28cb1bbe64228b1a1a6b020abea9dfb5bd60487853a1da1012e157b8149f3e89b3d35c76042aa143b28fd55b0120edb03c63f9a81'
+        'b649c5c3edc4a0319d012ff0c12dbc97f3bb244220c9db5334a921864f57e05506943f50ccd7ee832b881ace642ce294892e25eaa555716d2dcc726f4790c605')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -87,217 +124,167 @@ _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 
 prepare() {
   mkdir mozbuild
-  cd $_pkgname-$pkgver
+  cd firefox-$pkgver
 
-  for patch in "${source[@]}"; do
-    if [[ $patch == *.patch ]]; then
-      msg2 "applying $patch"
-      patch --no-backup-if-mismatch -Np1 < "$srcdir/$patch"
-    fi
-  done
+  # Backport fixes for NVIDIA crashes
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/issues/7
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1898476
+  patch -Np1 -i ../0001-Bug-1898476-Wayland-Move-MozContainerSurfaceLock-fro.patch
+  patch -Np1 -i ../0002-Bug-1898476-Wayland-Provide-surface-lock-by-GtkCompo.patch
+  patch -Np1 -i ../0003-Bug-1898476-Wayland-Lock-Wayland-surface-before-Swap.patch
+
+  # Appmenu patches
+  patch -Np1 -i ../unity-menubar.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
 
-	cat >../mozconfig <<-END
-		ac_add_options --enable-application=browser
-		mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
+  cat >../mozconfig <<END
+ac_add_options --enable-application=browser
+mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
-		ac_add_options --prefix=/usr
-		ac_add_options --enable-release
-		ac_add_options --enable-hardening
-		ac_add_options --enable-optimize
-		ac_add_options --enable-rust-simd
-		ac_add_options --enable-linker=lld
-		ac_add_options --disable-install-strip
-		ac_add_options --disable-elf-hack
-		ac_add_options --disable-bootstrap
-		ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
+ac_add_options --prefix=/usr
+ac_add_options --enable-release
+ac_add_options --enable-hardening
+ac_add_options --enable-optimize
+ac_add_options --enable-rust-simd
+ac_add_options --enable-linker=lld
+ac_add_options --disable-install-strip
+ac_add_options --disable-elf-hack
+ac_add_options --disable-bootstrap
+ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
-		# Branding
-		ac_add_options --enable-official-branding
-		ac_add_options --enable-update-channel=release
-		ac_add_options --with-distribution-id=org.archlinux
-		ac_add_options --with-unsigned-addon-scopes=app,system
-		ac_add_options --allow-addon-sideload
-		export MOZILLA_OFFICIAL=1
-		export MOZ_APP_REMOTINGNAME=${_pkgname}
+# Branding
+ac_add_options --enable-official-branding
+ac_add_options --enable-update-channel=release
+ac_add_options --with-distribution-id=org.archlinux
+ac_add_options --with-unsigned-addon-scopes=app,system
+ac_add_options --allow-addon-sideload
+export MOZILLA_OFFICIAL=1
+export MOZ_APP_REMOTINGNAME=firefox
 
-		# Keys
-		ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
-		ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
-		ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
+# Keys
+ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
+ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
+ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
-		# System libraries
-		ac_add_options --with-system-nspr
-		ac_add_options --with-system-nss
+# System libraries
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
 
-		# Features
-		ac_add_options --enable-alsa
-		ac_add_options --enable-jack
-		ac_add_options --enable-crashreporter
-		ac_add_options --disable-updater
-		ac_add_options --disable-tests
-
-	END
-
-if [[ -n $_SCCACHE ]]; then
-  echo 'ac_add_options --with-ccache=sccache' >> ../mozconfig
-fi
+# Features
+ac_add_options --enable-alsa
+ac_add_options --enable-jack
+ac_add_options --enable-crashreporter
+ac_add_options --disable-updater
+ac_add_options --disable-tests
+END
 }
 
 build() {
-  cd $_pkgname-$pkgver
+  cd firefox-$pkgver
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
+  export MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
   export MOZ_NOSPAM=1
-  MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
-  export MOZ_BUILD_DATE
 
   # malloc_usable_size is used in various parts of the codebase
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
   CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
+  # Breaks compilation since https://bugzilla.mozilla.org/show_bug.cgi?id=1896066
+  CFLAGS="${CFLAGS/-fexceptions/}"
+  CXXFLAGS="${CXXFLAGS/-fexceptions/}"
+
   # LTO needs more open files
   ulimit -n 4096
 
-  # Do 3-tier PGO
-  echo "Building instrumented browser..."
   cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-profile-generate=cross
+ac_add_options --enable-lto=cross,thin
 END
-  ./mach build
-
-  echo "Profiling instrumented browser..."
-
-  ./mach package
-  LLVM_PROFDATA=llvm-profdata \
-    JARLOG_FILE="$PWD/jarlog" \
-    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
-    ./mach python build/pgo/profileserver.py
-
-  stat -c "Profile data found (%s bytes)" merged.profdata
-  test -s merged.profdata
-
-  stat -c "Jar log found (%s bytes)" jarlog
-  test -s jarlog
-
-  echo "Removing instrumented browser..."
-  ./mach clobber
-
-  echo "Building optimized browser..."
-	cat >.mozconfig ../mozconfig - <<-END
-		ac_add_options --enable-lto=cross
-		ac_add_options --enable-profile-use=cross
-		ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
-		ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-	END
-  ./mach build # && echo "Building symbol archive..." & ./mach buildsymbols
+  ./mach build --priority normal
 }
 
 package() {
-  local desktopid=org.mozilla.$_pkgname
-  local vendordir="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/"
-  local distdir="$pkgdir/usr/lib/$_pkgname/distribution/"
-  local nssckbi="$pkgdir/usr/lib/$_pkgname/libnssckbi.so"
-  local i theme=official
-
-  cd $_pkgname-$pkgver
+  cd firefox-$pkgver
   DESTDIR="$pkgdir" ./mach install
 
-  # Distribution
-	install -Dvm644 /dev/stdin "$vendordir/default-preferences.js" <<-END
-		// Use LANG environment variable to choose locale
-		pref("intl.locale.requested", "");
+  local vendorjs="$pkgdir/usr/lib/firefox/browser/defaults/preferences/vendor.js"
+  install -Dvm644 /dev/stdin "$vendorjs" <<END
+// Use LANG environment variable to choose locale
+pref("intl.locale.requested", "");
 
-		// Don't disable extensions in the application directory
-		pref("extensions.autoDisableScopes", 0);
-		pref("extensions.enabledScopes", 15);
+// Use system-provided dictionaries
+pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 
-	END
+// Disable default browser checking.
+pref("browser.shell.checkDefaultBrowser", false);
 
-	install -Dvm644 /dev/stdin "$distdir/distribution.ini" <<-END
-		[Global]
-		id=archlinux
-		version=1.0
-		about=Mozilla Firefox for Arch Linux [Global Menu]
+// Don't disable extensions in the application directory
+pref("extensions.autoDisableScopes", 11);
 
-		[Preferences]
-		# Distribution
-		mozilla.partner.id="archlinux"
-		app.distributor=archlinux
-		app.distributor.channel=$pkgname
-		app.partner.archlinux=archlinux
+// Enable GNOME Shell search provider
+pref("browser.gnome-search-provider.enabled", true);
+END
 
-		# Enable GNOME Shell search provider
-		browser.gnome-search-provider.enabled=true
+  local distini="$pkgdir/usr/lib/firefox/distribution/distribution.ini"
+  install -Dvm644 /dev/stdin "$distini" <<END
+[Global]
+id=archlinux
+version=1.0
+about=Mozilla Firefox for Arch Linux
 
-		# Enable backspace button backward
-		browser.backspace_action=0
+[Preferences]
+app.distributor=archlinux
+app.distributor.channel=firefox
+app.partner.archlinux=archlinux
+END
 
-		# Default use system title bar
-		browser.tabs.inTitlebar=0
-		browser.theme.dark-private-windows=false
-
-		# Use system-provided dictionaries
-		spellchecker.dictionary_path="/usr/share/hunspell"
-
-		# Restore Compact Mode
-		browser.compactmode.show=true
-
-	END
-
-  # Icons
-  for i in 22 24 256; do
+  local i theme=official
+  for i in 16 22 24 32 48 64 128 256; do
     install -Dvm644 browser/branding/$theme/default$i.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$desktopid.png"
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/firefox.png"
   done
-  for i in 16 32 48 64 128; do
-    install -dvm755 "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/"
-    ln -svf "/usr/lib/$_pkgname/browser/chrome/icons/default/default$i.png" \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$desktopid.png"
-  done
-
   install -Dvm644 browser/branding/$theme/content/about-logo.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$desktopid.png"
+    "$pkgdir/usr/share/icons/hicolor/192x192/apps/firefox.png"
   install -Dvm644 browser/branding/$theme/content/about-logo@2x.png \
-    "$pkgdir/usr/share/icons/hicolor/384x384/apps/$desktopid.png"
-
+    "$pkgdir/usr/share/icons/hicolor/384x384/apps/firefox.png"
   install -Dvm644 browser/branding/$theme/content/about-logo.svg \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$desktopid.svg"
-  install -Dvm644 taskcluster/docker/firefox-flatpak/$_pkgname-symbolic.svg \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$desktopid-symbolic.svg"
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/firefox.svg"
 
-  # Replace duplicate binary with link
+  install -Dvm644 ../firefox-symbolic.svg -t "$pkgdir/usr/share/icons/hicolor/symbolic/apps"
+  install -Dvm644 ../firefox.desktop -t "$pkgdir/usr/share/applications"
+  install -Dvm644 ../org.mozilla.firefox.metainfo.xml -t "$pkgdir/usr/share/metainfo"
+
+  # Install a wrapper to avoid confusion about binary path
+  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/firefox" <<END
+#!/bin/sh
+exec /usr/lib/firefox/firefox "\$@"
+END
+
+  # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
-
-  # Desktop
-  install -Dvm755 /dev/stdin "$pkgdir/usr/share/applications/$desktopid.desktop" < <(\
-    sed "s|Exec=firefox |Exec=/usr/lib/$_pkgname/$_pkgname --name $desktopid |g" \
-      taskcluster/docker/firefox-flatpak/$desktopid.desktop\
-  )
-
-  # Metainfo
-  install -Dvm644 /dev/stdin "$pkgdir/usr/share/metainfo/$desktopid.appdata.xml" < <(\
-    VERSION=$pkgver DATE=$(date +%Y-%m-%d) envsubst < \
-      taskcluster/docker/firefox-flatpak/$desktopid.appdata.xml.in\
-  )
+  ln -srfv "$pkgdir/usr/bin/firefox" "$pkgdir/usr/lib/firefox/firefox-bin"
 
   # Use system certificates
+  local nssckbi="$pkgdir/usr/lib/firefox/libnssckbi.so"
   if [[ -e $nssckbi ]]; then
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
 
-  # Search Providers
-  install -Dvm644 browser/components/shell/search-provider-files/$desktopid.SearchProvider.service \
-    "$pkgdir/usr/share/dbus-1/services/$desktopid.SearchProvider.service"
-  install -Dvm644 /dev/stdin \
-  "$pkgdir/usr/share/gnome-shell/search-providers/$desktopid.search-provider.ini" < <(\
-    sed "s|firefox.desktop|$desktopid.desktop|" \
-      browser/components/shell/search-provider-files/$desktopid.search-provider.ini\
-  )
+  local sprovider="$pkgdir/usr/share/gnome-shell/search-providers/firefox.search-provider.ini"
+  install -Dvm644 /dev/stdin "$sprovider" <<END
+[Shell Search Provider]
+DesktopId=firefox.desktop
+BusName=org.mozilla.firefox.SearchProvider
+ObjectPath=/org/mozilla/firefox/SearchProvider
+Version=2
+END
 }
 
-# vim:set sw=2 sts=-1 et:
+source+=('unity-menubar.patch')
+sha256sums+=('668b265edafa5cf50e2ef7be743b1db66a3173a850c738631905935ba3c82370')
+b2sums+=('3924adb68fe38df9010c47634485bbba79971e0cc206f2c1476eb72a5540cacfc60017290eb6ef6789585709beedda341f7d19e30140e9db7bd9c8b8187663fe')
+provides=(firefox)
+conflicts=(firefox)
