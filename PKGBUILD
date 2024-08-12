@@ -1,14 +1,14 @@
 # Maintainer: oscarcl <oscar.cowderylack@gmail.com>
 pkgname=casparcg-server-git
-pkgver=2.3.3.r200.g817a9a6
-pkgrel=2
+pkgver=2.3.3.r250.g5b0716e
+pkgrel=1
 pkgdesc="Software used to play out professional graphics, audio and video to multiple outputs"
 arch=('x86_64')
 url="https://github.com/CasparCG/server"
 license=('GPL-3.0-or-later')
 conflicts=(casparcg-server)
 provides=(casparcg-server)
-depends=(ffmpeg4.4 boost-libs libgl freeimage glew tbb openal sfml libxcomposite libxdamage libxkbcommon libxss libcups pango nss at-spi2-atk ttf-liberation)
+depends=(ffmpeg boost-libs libgl freeimage glew tbb openal sfml libxcomposite libxdamage libxkbcommon libxss libcups pango nss at-spi2-atk ttf-liberation)
 makedepends=(git cmake ninja boost dos2unix)
 source=("casparcg-server::git+https://github.com/CasparCG/server.git"
         casparcg)
