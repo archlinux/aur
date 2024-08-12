@@ -1,0 +1,20 @@
+pkgbase = python-ochre-git
+	pkgdesc = A down-to-earth approach to colors
+	pkgver = 0.4.0.r84.gcf2808f
+	pkgrel = 1
+	url = https://github.com/getcuia/ochre
+	arch = any
+	license = MIT
+	checkdepends = python-pytest>=7.1
+	checkdepends = python-hypothesis>=6.49.1
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core>=1.0.0
+	depends = python>=3.8
+	provides = python-ochre=0.4.0
+	conflicts = python-ochre
+	source = ochre::git+https://github.com/getcuia/ochre.git
+	sha256sums = SKIP
+
+pkgname = python-ochre-git
