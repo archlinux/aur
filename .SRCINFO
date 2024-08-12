@@ -1,6 +1,6 @@
 pkgbase = djgpp-gcc
 	pkgdesc = GCC for the djgpp cross-compiler
-	pkgver = 14.1.0
+	pkgver = 14.2.0
 	pkgrel = 1
 	url = http://gcc.gnu.org
 	arch = i686
@@ -21,11 +21,11 @@ pkgbase = djgpp-gcc
 	options = staticlibs
 	options = !emptydirs
 	options = !buildflags
-	source = https://ftp.gnu.org/gnu/gcc/gcc-14.1.0/gcc-14.1.0.tar.xz
+	source = https://ftp.gnu.org/gnu/gcc/gcc-14.2.0/gcc-14.2.0.tar.xz
 	source = lto.patch
 	source = gcc-djgpp.diff
-	sha256sums = e283c654987afe3de9d8080bc0bd79534b5ca0d681a73a11ff2b5d3767426840
+	sha256sums = a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9
 	sha256sums = c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0
-	sha256sums = 2ccbf490286562def128c7585e294f05c1cad9790ce6306076580b3901b4fec0
+	sha256sums = b25fb12b24009497700b196dc32b6d2d9047ef89fd0126f99cb50e214158726b
 
 pkgname = djgpp-gcc

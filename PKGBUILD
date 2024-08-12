@@ -3,7 +3,7 @@
 # Contributor: felix <base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg==>
 
 pkgname=djgpp-gcc
-pkgver=14.1.0
+pkgver=14.2.0
 _target="i686-pc-msdosdjgpp"
 _djver=2.05
 _build_ada=no
@@ -21,9 +21,9 @@ options=('!strip' 'staticlibs' '!emptydirs' '!buildflags')
 source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "lto.patch"
 	"gcc-djgpp.diff")
-sha256sums=('e283c654987afe3de9d8080bc0bd79534b5ca0d681a73a11ff2b5d3767426840'
+sha256sums=('a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9'
             'c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0'
-            '2ccbf490286562def128c7585e294f05c1cad9790ce6306076580b3901b4fec0')
+            'b25fb12b24009497700b196dc32b6d2d9047ef89fd0126f99cb50e214158726b')
 
 prepare() {
   cd gcc-$pkgver
@@ -36,7 +36,15 @@ prepare() {
 }
 
 build() {
+  #############################################################################################
+  # pacman 6.1.0-3 has broken support of MAKFLAGS when options list contains '!buildflags
+  # Look https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/25 for details
+  # (2024/08/17) Still no new version after the problem was detected
+  # Try to restore MAKEFLAGS from /etc/makepkg.conf
+  export MAKEFLAGS=$( (grep -e ^MAKEFLAGS /etc/makepkg.conf; echo 'echo ${MAKEFLAGS}' ) | /bin/sh )
+  #############################################################################################
   export CPPFLAGS="$CPPFLAGS -O2"
+  echo MAKEFLAGS=$MAKEFLAGS
   rm -rf gcc-build-native gcc-install-native gcc-build-$_target
   if [ "$_build_ada" == "yes" ] ; then
      _bootstrap_languages=c,c++,ada
