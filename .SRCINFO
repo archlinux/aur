@@ -6,9 +6,11 @@ pkgbase = python-miniflux
 	arch = any
 	license = MIT
 	makedepends = python-build
+	makedepends = python-setuptools
 	makedepends = python-installer
 	makedepends = python-wheel
-	source = python-miniflux-1.0.1::git+https://github.com/miniflux/python-client#tag=1.0.1
-	sha512sums = c8a50130643e7b85724ffa3fae22bddd1fc6ebc757cb4cfea8cdf38d1de6bff6c4101ab077f7e7d18ae7afe38b415cc628982a82cfe0c56bfa753b507226dc09
+	depends = python-requests
+	source = python-miniflux-1.0.1.tar.gz::https://github.com/miniflux/python-client/archive/refs/tags/1.0.1.tar.gz
+	sha512sums = d38f6c1ef389e4d49ab0aca8d7ed8587b997cb5e48ff0c18b22b826aa92ed4e62417f7341a4cc77c2fea38861577d28e1644a838fc3afd5d3287273473de3aa3
 
 pkgname = python-miniflux

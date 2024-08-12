@@ -7,21 +7,22 @@ pkgdesc="Python client for Miniflux API."
 arch=('any')
 url="https://github.com/miniflux/python-client"
 license=('MIT')
-makedepends=('python-build' 'python-installer' 'python-wheel')
-source=("${pkgname}-${pkgver}::git+${url}#tag=${pkgver}")
-sha512sums=('c8a50130643e7b85724ffa3fae22bddd1fc6ebc757cb4cfea8cdf38d1de6bff6c4101ab077f7e7d18ae7afe38b415cc628982a82cfe0c56bfa753b507226dc09')
+depends=('python-requests')
+makedepends=('python-build' 'python-setuptools' 'python-installer' 'python-wheel')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/miniflux/python-client/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('d38f6c1ef389e4d49ab0aca8d7ed8587b997cb5e48ff0c18b22b826aa92ed4e62417f7341a4cc77c2fea38861577d28e1644a838fc3afd5d3287273473de3aa3')
 
 build() {
 
-    cd ${pkgname}-${pkgver}
+    cd "python-client-${pkgver}"
 
-    python -m build --wheel --no-isolation
+    SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}" python -m build --wheel --no-isolation
 
 }
 
 package() {
 
-    cd ${pkgname}-${pkgver}
+    cd "python-client-${pkgver}"
 
     python -m installer --destdir="${pkgdir}" dist/*.whl
 
