@@ -173,7 +173,7 @@ elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.6
-_minor=35
+_minor=45
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -183,13 +183,29 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux EEVDF-BORE scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=2
+pkgrel=1
 _kernver=$pkgver-$pkgrel
-arch=('x86_64' 'x86_64_v3')
+_kernuname="${pkgver}-${pkgsuffix}"
+arch=('x86_64')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL-2.0-only')
 options=('!strip' '!debug' '!lto')
-makedepends=('bc' 'libelf' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'zstd' 'gcc' 'gcc-libs' 'glibc' 'binutils' 'make' 'patch' 'python')
+makedepends=(
+  bc
+  libelf
+  pahole
+  cpio
+  perl
+  tar
+  xz
+  zstd
+  gcc
+  gcc-libs
+  glibc
+  make
+  patch
+  python
+)
 # LLVM makedepends
 if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_kcfi" ]; then
     makedepends+=(clang llvm lld)
@@ -202,7 +218,7 @@ if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_k
 fi
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=555.58.02
+_nv_ver=560.31.02
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="open-gpu-kernel-modules-${_nv_ver}"
 source=(
@@ -219,7 +235,7 @@ fi
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=228ff3867f53d31dab403a3b6b3b555eaf8bdc04")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=55a3483f28e69bf0514abb8c0a8e3812da282e73")
 fi
 
 # NVIDIA pre-build module support
@@ -231,11 +247,10 @@ fi
 if [ -n "$_build_nvidia_open" ]; then
     source+=("nvidia-open-${_nv_ver}.tar.gz::https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/${_nv_ver}.tar.gz"
              "${_patchsource}/misc/nvidia/make-modeset-fbdev-default.patch"
-             "${_patchsource}/misc/nvidia/nvidia-open-gcc-ibt-sls.patch"
-             "${_patchsource}/misc/nvidia/gsp-fix-stutter.patch")
+             "${_patchsource}/misc/nvidia/nvidia-open-gcc-ibt-sls.patch")
 fi
 
-## ToDo: Adjust for new Scheduler Changes
+## List of CachyOS schedulers
 case "$_cpusched" in
     cachyos) # CachyOS Scheduler (EEVDF + BORE)
         source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
@@ -283,7 +298,6 @@ prepare() {
         src="${src%.zst}"
         [[ $src = make-modeset-fbdev-default.patch ]] && continue
         [[ $src = nvidia-open-gcc-ibt-sls.patch ]] && continue
-        [[ $src = gsp-fix-stutter.patch ]] && continue
         [[ $src = *.patch ]] || continue
         echo "Applying patch $src..."
         patch -Np1 < "../$src"
@@ -591,8 +605,6 @@ prepare() {
         patch -Np1 -i "${srcdir}/make-modeset-fbdev-default.patch" -d "${srcdir}/${_nv_open_pkg}/kernel-open"
         # Fix for https://bugs.archlinux.org/task/74886
         patch -Np1 --no-backup-if-mismatch -i "${srcdir}/nvidia-open-gcc-ibt-sls.patch" -d "${srcdir}/${_nv_open_pkg}"
-        # Fix for Stutters in KDE
-        patch -Np1 -i "${srcdir}/gsp-fix-stutter.patch" -d "${srcdir}/${_nv_open_pkg}"
     fi
 }
 
@@ -603,7 +615,7 @@ build() {
 
     if [ -n "$_build_nvidia" ]; then
         local MODULE_FLAGS=(
-           KERNEL_UNAME="${pkgver}-${pkgsuffix}"
+           KERNEL_UNAME="${_kernuname}"
            IGNORE_PREEMPT_RT_PRESENCE=1
            NV_EXCLUDE_BUILD_MODULES='__EXCLUDE_MODULES'
            SYSSRC="${srcdir}/${_srcname}"
@@ -618,7 +630,7 @@ build() {
     if [ -n "$_build_nvidia_open" ]; then
         cd "${srcdir}/${_nv_open_pkg}"
         local MODULE_FLAGS=(
-           KERNEL_UNAME="${pkgver}-${pkgsuffix}"
+           KERNEL_UNAME="${_kernuname}"
            IGNORE_PREEMPT_RT_PRESENCE=1
            IGNORE_CC_MISMATCH=yes
            SYSSRC="${srcdir}/${_srcname}"
@@ -634,7 +646,7 @@ build() {
         [ "$_use_llvm_lto" != "none" ] && CONFIGURE_FLAGS+=("KERNEL_LLVM=1")
 
         ./autogen.sh
-        sed -i "s|\$(uname -r)|${pkgver}-${pkgsuffix}|g" configure
+        sed -i "s|\$(uname -r)|${_kernuname}|g" configure
         ./configure ${CONFIGURE_FLAGS[*]} --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin \
             --libdir=/usr/lib --datadir=/usr/share --includedir=/usr/include \
             --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs --with-config=kernel \
@@ -675,7 +687,7 @@ _package() {
 
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-    depends=('pahole' linux-${pkgsuffix} )
+    depends=('pahole' ${pkgbase} )
 
     cd ${srcdir}/${_srcname}
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -759,11 +771,11 @@ _package-headers() {
 
 _package-dbg(){
     pkgdesc="Non-stripped vmlinux file for the $pkgdesc kernel"
-    depends=(linux-${pkgsuffix}-headers)
+    depends=(${pkgbase}-headers)
 
     cd "${srcdir}/${_srcname}"
-    mkdir -p "$pkgdir/usr/src/debug/linux-${pkgsuffix}"
-    install -Dt "$pkgdir/usr/src/debug/linux-${pkgsuffix}" -m644 vmlinux
+    mkdir -p "$pkgdir/usr/src/debug/${pkgbase}"
+    install -Dt "$pkgdir/usr/src/debug/${pkgbase}" -m644 vmlinux
 }
 
 _package-zfs(){
@@ -772,38 +784,49 @@ _package-zfs(){
     provides=('ZFS-MODULE')
     license=('CDDL')
 
+    cd ${srcdir}/$_srcname
+    local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
+
     cd ${srcdir}/"zfs"
-    install -dm755 "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
-    install -m644 module/*.ko "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
-    find "$pkgdir" -name '*.ko' -exec zstd --rm -10 {} +
+    install -dm755 "${modulesdir}"
+    install -m644 module/*.ko "${modulesdir}"
+    find "$pkgdir" -name '*.ko' -exec zstd --rm -19 {} +
     #  sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${pkgver}-${pkgbase}'/" "$startdir/zfs.install"
 }
 
 _package-nvidia(){
-    pkgdesc="nvidia module of ${_nv_ver} driver for the linux-$pkgsuffix kernel"
+    pkgdesc="nvidia module of ${_nv_ver} driver for the ${pkgbase} kernel"
     depends=("$pkgbase=$_kernver" "nvidia-utils=${_nv_ver}" "libglvnd")
     provides=('NVIDIA-MODULE')
+    conflicts=("$pkgbase-nvidia-open")
     license=('custom')
 
+    cd ${srcdir}/$_srcname
+    local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
+
     cd "${srcdir}/${_nv_pkg}/"
-    install -dm755 "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
-    install -m644 kernel/*.ko "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
+    install -dm755 "${modulesdir}"
+    install -m644 kernel/*.ko "${modulesdir}"
     install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 LICENSE
-    find "$pkgdir" -name '*.ko' -exec zstd --rm -10 {} +
+    find "$pkgdir" -name '*.ko' -exec zstd --rm -19 {} +
 }
 
 _package-nvidia-open(){
-    pkgdesc="nvidia open modules of ${_nv_ver} driver for the linux-$pkgsuffix kernel"
+    pkgdesc="nvidia open modules of ${_nv_ver} driver for the ${pkgbase} kernel"
     depends=("$pkgbase=$_kernver" "nvidia-utils=${_nv_ver}" "libglvnd")
     provides=('NVIDIA-MODULE')
-    license=(GPL-1.0-only)
+    conflicts=("$pkgbase-nvidia")
+    license=('MIT AND GPL-2.0-only')
+
+    cd ${srcdir}/$_srcname
+    local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
     cd "${srcdir}/${_nv_open_pkg}"
-    install -dm755 "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
-    install -m644 kernel-open/*.ko "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
+    install -dm755 "${modulesdir}"
+    install -m644 kernel-open/*.ko "${modulesdir}"
     install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 COPYING
 
-    find "$pkgdir" -name '*.ko' -exec zstd --rm -10 {} +
+    find "$pkgdir" -name '*.ko' -exec zstd --rm -19 {} +
 }
 
 pkgname=("$pkgbase")
@@ -819,8 +842,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('fce3ee728712ed063aa8c14a8756c8ff8c7a46ba3827f61d2b04a73c7cf5dd9e'
-            '5e60f3ecbc564f2ebdd01abd2e18403a3195f79a44edbfe4d46875e11cbe7801'
+sha256sums=('121bed240767e4a0959c1609e78eeaaf3e0620d9d1a5ed1f6e36bdf609c4f179'
+            '2b43da6d7704b1f80db835079a3d6f921ce84f2215017b75156cbf12f7370646'
             'a91249420d61edb17b8659ab3feca86d24cf3b1c941b14f232c47064fa4f4ce7'
-            '3da8e7b2805047104a93ba87ee8d392e7271a34a5b612206f98ce9872e65d58f'
-            'e5bac2247f709a073ff5c901e9ec2043641d0cf61d8e64dcdfd35f489c72c13a')
+            '6516e23cf0daed0d565766840342276e00516c732a0e70f996b0e8319221f8c2'
+            '8b71209aa8b091dea5fa85921fbd888b5d8a4d351f04ce12d70b9c8d22758389')
