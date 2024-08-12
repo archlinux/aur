@@ -36,6 +36,7 @@ pkgbase = qcm-git
 	depends = lz4
 	depends = libgpg-error
 	depends = ffmpeg
+	depends = fmt
 	provides = qcm
 	conflicts = qcm
 	source = git+https://github.com/hypengw/Qcm.git

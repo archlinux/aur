@@ -35,7 +35,8 @@ depends=(
 	'graphite'
 	'lz4'
 	'libgpg-error'
-	'ffmpeg')
+	'ffmpeg'
+	"fmt")
 makedepends=(
 	'git'
 	'cmake'
@@ -67,7 +68,7 @@ function build(){
 	cd Qcm
 	mkdir build -p
 	cd build
-	cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release
+	cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_INSTALL_RPATH=YES
 	ninja
 }
 
