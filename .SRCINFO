@@ -1,6 +1,6 @@
 pkgbase = cosmic-settings-git
 	pkgdesc = The settings application for the COSMIC desktop environment.
-	pkgver = 1.0.0.alpha.1.r0.g648c4e2
+	pkgver = 1.0.0.alpha.1.r4.g66f3216
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-settings
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = cosmic-settings-git
 	depends = otf-fira-sans
 	depends = systemd-libs
 	depends = wayland
-	optdepends = adw-gtk3
+	optdepends = adw-gtk-theme
 	optdepends = power-profiles-daemon: power profiles
 	provides = cosmic-settings
 	conflicts = cosmic-settings

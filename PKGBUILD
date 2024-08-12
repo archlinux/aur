@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-settings-git
-pkgver=1.0.0.alpha.1.r0.g648c4e2
+pkgver=1.0.0.alpha.1.r4.g66f3216
 pkgrel=1
 pkgdesc="The settings application for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
@@ -30,7 +30,7 @@ makedepends=(
   'mold'
 )
 optdepends=(
-  'adw-gtk3'
+  'adw-gtk-theme'
   'power-profiles-daemon: power profiles'
 )
 provides=("${pkgname%-git}")
