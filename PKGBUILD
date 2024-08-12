@@ -4,7 +4,7 @@
 pkgname=wonderlab-appimage
 _pkgname=wonderlab
 pkgver=1.2.8.2
-pkgrel=1.0
+pkgrel=2
 pkgdesc="The next generation cross-platform Minecraft launcher. (master branch)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Blessing-Studio/WonderLab.Override"
@@ -31,10 +31,10 @@ build() {
 
 package() {
 	# AppImage
-	install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${_pkgname}/${_pkgname}.AppImage"
+	install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
 
 	# Desktop
-	install -Dm644 "${srcdir}/squashfs-root/blessing.${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+	install -Dm644 "${srcdir}/squashfs-root/blessing.${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
 	# Icon
 	install -dm755 "${pkgdir}/usr/share/"
@@ -42,5 +42,5 @@ package() {
 
 	# Symlink executable
 	install -dm755 "${pkgdir}/usr/bin"
-	ln -s "/opt/${_pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+	ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 }
