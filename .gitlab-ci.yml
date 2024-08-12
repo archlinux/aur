@@ -21,7 +21,7 @@ check-for-update:
       - git remote rm origin
       - git remote add origin git@jonasled.dev:jonasled/aptakube-aur.git
     script:
-      - latest_version=$(curl https://api.github.com/repos/aptakube/aptakube/releases | jq '.[0].tag_name')
+      - latest_version=$(curl https://api.github.com/repos/aptakube/aptakube/releases | jq -r '.[0].tag_name')
       - source PKGBUILD
       - |
         if [ "${pkgver}" == "${latest_version}" ]; then
