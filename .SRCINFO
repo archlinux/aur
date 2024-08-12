@@ -1,7 +1,7 @@
 pkgbase = bluetuith
 	pkgdesc = TUI-based bluetooth manager
-	pkgver = 0.2.2
-	pkgrel = 2
+	pkgver = 0.2.3
+	pkgrel = 1
 	url = https://github.com/darkhz/bluetuith
 	arch = x86_64
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = bluetuith
 	depends = bluez
 	depends = dbus
 	optdepends = bluez-obex: send and receive files via OBEX
-	source = bluetuith-0.2.2.tar.gz::https://github.com/darkhz/bluetuith/archive/v0.2.2.tar.gz
-	sha256sums = 2a02f51c53668fa3171e642e25f268fc50fbb2438f764956fb7cd46fb786083d
+	source = bluetuith-0.2.3.tar.gz::https://github.com/darkhz/bluetuith/archive/v0.2.3.tar.gz
+	sha256sums = ff4ca6e5fda87b33c472b703c81b4000d1df4efb2bdc0af1762e4a3e3c507228
 
 pkgname = bluetuith
