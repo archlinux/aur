@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-store-git
-pkgver=1.0.0.alpha.1.r0.g639a17c
+pkgver=1.0.0.alpha.1.r5.g0ade5e8
 pkgrel=1
 pkgdesc="Cosmic App Store"
 arch=('x86_64' 'aarch64')
@@ -10,18 +10,17 @@ groups=('cosmic')
 depends=(
   'archlinux-appstream-data'
   'cosmic-icons-git'
+  'flatpak'
   'glib2'
   'libxkbcommon'
 )
 makedepends=(
   'cargo'
-  'flatpak'
   'git'
   'just'
   'mold'
 )
 optdepends=(
-  'flatpak: Flatpak packages support'
   'packagekit: package manager integration module'
 )
 provides=("${pkgname%-git}")
