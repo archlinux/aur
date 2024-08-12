@@ -78,5 +78,5 @@ build() {
 
 package() {
     mkdir -p "$pkgdir/opt/ros/${_rosdist_short}-base"
-    cp -r "$srcdir/install/*" "$pkgdir/opt/ros/${_rosdist_short}-base/"
+    cp -r $srcdir/install/* $pkgdir/opt/ros/${_rosdist_short}-base/
 }
