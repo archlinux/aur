@@ -18,13 +18,13 @@
 unset _pkgtype
 [[ "${_build_vfio::1}" == "t" ]] && _pkgtype+="-vfio"
 [[ "${_build_lts::1}" == "t" ]] && _pkgtype+="-lts"
-[[ "${_build_v3::1}" == "t" ]] && _pkgtype+="-v3"
+[[ "${_build_v3::1}" == "t" ]] && _pkgtype+="-x64v3"
 
 ## basic info
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.10.3
+pkgver=6.10.4
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -56,7 +56,7 @@ source+=(
   "config-$pkgver"::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/main/config
 )
 sha256sums+=(
-  'fa5f22fd67dd05812d39dca579320c493048e26c4a556048a12385e7ae6fc698' ###
+  'e2c69dfd5fa00c741ebac4560bed9f7be6abb727d05a719e4df9e99df11555f8' ###
   'SKIP'
   'SKIP'
 )
