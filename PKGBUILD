@@ -2,22 +2,49 @@
 #
 # Mantainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Piero Proietti <piero.proietti_at_gmail.com>
-_commit=03b146cd097e23f72b8a290ffeff1434ec68a0a0
+_commit=d0a09d2dc5ea3ed55d427f60c3fdcf6a50d59d13
+
 pkgname=penguins-eggs
-pkgver=10.0.24
-pkgrel=2
+pkgver=10.0.25
+pkgrel=1
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
 url="https://penguins-eggs.net"
 license=('GPL2')
-depends=('arch-install-scripts' 'dosfstools' 'erofs-utils' 'findutils' 'git' 'grub' 
-         'jq' 'libarchive' 'libisoburn' 'lsb-release' 'lvm2' 'mkinitcpio-archiso'
-         'mkinitcpio-nfs-utils' 'mtools' 'nbd' 'nodejs' 'pacman-contrib' 'parted' 
-         'procps-ng' 'pv' 'python' 'rsync' 'squashfs-tools' 'sshfs' 'syslinux' 'xdg-utils')
-optdepends=('bash-completion: eggs autocomplete'
-            'zsh-completions: eggs autocomplete'
-            'calamares: system installer GUI')
-makedepends=('git' 'pnpm')
+depends=(
+    'arch-install-scripts'
+    'dosfstools'
+    'erofs-utils'
+    'findutils' 
+    'grub'
+    'jq'
+    'libarchive'
+    'libisoburn'
+    'lsb-release' 
+    'lvm2'
+    'mkinitcpio-archiso'
+    'mkinitcpio-nfs-utils'
+    'mtools'
+    'nbd'
+    'nodejs'
+    'pacman-contrib'
+    'parted'
+    'procps-ng'
+    'pv'
+    'python'
+    'rsync'
+    'squashfs-tools'
+    'sshfs'
+    'syslinux'
+    'xdg-utils' 
+    'bash-completion'
+  )
+optdepends=(
+      'bash-completion: eggs autocomplete'
+      'calamares: system installer GUI'
+      'zsh-completions: eggs autocomplete'
+    )
+makedepends=('git')
 
 options=('!strip')
 source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}")
@@ -30,9 +57,9 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  /usr/bin/pnpm config set cache-dir "$srcdir/pnpm-cache"
-  /usr/bin/pnpm install
-  /usr/bin/pnpm build  
+  #pnpm config set cache-dir "$srcdir/pnpm-cache"
+  pnpm install
+  pnpm build  
 }
 
 package() {
