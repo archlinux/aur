@@ -1,0 +1,5 @@
+[thorium-browser-bin]
+source = "github"
+github = "Alex313031/Thorium"
+prefix = "M"
+use_latest_release = true

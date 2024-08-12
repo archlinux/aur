@@ -3,32 +3,24 @@
 # Contributor: Dominik Adrian Grzywak <starterx4 at gmail dot com>
 
 # options
-if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ]; then
-  : ${_autoupdate:=false}
-else
+if [ -z "$_srcinfo" ] && [ -z "$_pkgver" ]; then
   : ${_autoupdate:=true}
 fi
 
 # basic info
 _pkgname="thorium-browser"
 pkgname="$_pkgname-bin"
-pkgver=124.0.6367.218
+pkgver=126.0.6478.231
 pkgrel=1
 pkgdesc="Chromium fork focused on high performance and security"
 url="https://github.com/Alex313031/Thorium"
 license=('BSD')
 arch=('x86_64')
 
-# main package
-_main_package() {
-  _update_version
+options=('!emptydirs' '!strip' '!debug')
+install="$_pkgname.install"
 
-  depends=()
-  makedepends=()
-
-  options=('!emptydirs' '!strip')
-  install="$_pkgname.install"
-
+_source_main() {
   _dl_url="$url/releases/download/M${_pkgver:?}"
   _dl_filename="${_pkgname}_${_pkgver:?}_SSE3.deb"
   noextract+=("$_dl_filename")
@@ -41,7 +33,6 @@ _main_package() {
   }
 }
 
-# common functions
 prepare() {
   install -Dvm644 /dev/stdin "$_pkgname.sh" << END
 #!/usr/bin/env bash
@@ -150,7 +141,6 @@ package() {
     "$pkgdir/usr/share/menu/"
 }
 
-# update version
 _update_version() {
   : ${_pkgver:=${pkgver%%.r*}}
 
@@ -160,7 +150,6 @@ _update_version() {
   local _blacklist _response _tags _tag _pkgver_new
 
   _blacklist=(
-    123.0.6312.134
   )
   _response=$(curl -Ssf "$url/releases.atom")
   _tags=$(
@@ -181,5 +170,5 @@ _update_version() {
   fi
 }
 
-# execute
-_main_package
+_update_version
+_source_main
