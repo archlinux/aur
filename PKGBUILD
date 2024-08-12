@@ -1,32 +1,32 @@
 # $Id$
 # Maintainer: Shane Stone <shanewstone gmail>
 _pkgname=cmcrameri
-pkgname=python-${_pkgname}
+pkgname=python-"${_pkgname}"
 pkgver=1.9
 pkgrel=1
-pkgdesc="A wrapper around Fabio Crameri's perceptually uniform colourmaps for geosciences."
+pkgdesc="A wrapper around Fabio Crameris perceptually uniform colourmaps for geosciences."
 arch=('any')
 url="https://github.com/callumrollo/${_pkgname}/"
 license=('MIT')
-makedepends=('python-setuptools' 'python-setuptools-scm' 'python-build' 'python-installer')
-depends=('python-numpy' 'python-matplotlib')
-source=("git+${url}#tag=v${pkgver}")
-sha512sums=('e725218782fa44c96ab962ab788a4f171e746afc098cdc1331fd776d00045d8fb590cbb8eed1bb011413f7f08520f44b7dfd9bbdf4e731274856d626006362b5')
+makedepends=('python-setuptools' 'python-setuptools-scm' 'python-build' 'python-wheel' 'python-installer')
+depends=('python-numpy' 'python-matplotlib' 'python-packaging')
+source=("${pkgname}-${pkgver}::https://github.com/callumrollo/cmcrameri/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('64949ae66f6cef480022ecd4aec91e71e565bf9058845a6beeec5ebf23054ba3aa3a3c8f1cc0d09154ca95d0615f00e1a9a43b0f58ffe36f8fbec4854711f1de')
 
 build() {
 
-    cd ${_pkgname}
+    cd "${_pkgname}-${pkgver}"
 
-    python -m build --wheel --no-isolation
+    SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}" python -m build --wheel --no-isolation
 
 }
 
 package() {
 
-    cd ${_pkgname}
+    cd "${_pkgname}-${pkgver}"
 
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 
-    install -Dm644 LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }
