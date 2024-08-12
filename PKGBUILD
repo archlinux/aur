@@ -1,3 +1,5 @@
+# Maintainer: Chance Parsons <chance lorne at icloud dot com>
+
 pkgname="airport-utils-bin"
 pkgver="2_5"
 pkgrel=1
