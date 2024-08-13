@@ -1,4 +1,5 @@
-/psc-package-git*.tar.xz
-/pkg
-/src
-/psc-package-git
+/*.pkg.tar.*
+/pkg/
+/src/
+/psc-package-git/
+/psc-package/
