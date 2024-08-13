@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=(wechat-uos-bwrap wechat-uos-qt wechat-key-block)
 pkgver=1.0.0.241
-pkgrel=26
+pkgrel=27
 epoch=
 pkgdesc="WeChat Qt, the so-called universal version"
 arch=('x86_64' 'aarch64' 'loong64')
@@ -64,7 +64,10 @@ depends=(
 	"flatpak-xdg-utils"
 )
 
-optdepends=('wechat: The meta package')
+optdepends=(
+	'wechat: The meta package'
+	'ttf-twemoji: An emoji font that will work with WeChat'
+)
 
 makedepends+=(
 	"libarchive"
@@ -99,7 +102,7 @@ source_loong64=(
 	wechat-loong64-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_arm64.deb"
 )
 
-md5sums=('343b0f8ce691c759335b6d1b9bd0c519'
+md5sums=('2069f81cb829bc7bd51d230ee46010a0'
          '860ea16819270285e22ef0dee6abd217'
          '468e0367346707c026e577e7bf3e3a82'
          '7a2c5273e7f2ff118ce904861e3cbed1'
