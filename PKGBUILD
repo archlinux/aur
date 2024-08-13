@@ -1,7 +1,7 @@
 # Maintainer: David Harrigan <dharrigan [@] gmail [dot] com>
 
 pkgname=ijq-bin
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Interactive jq tool. Like jqplay for the commandline'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-bin}")
 
 source_x86_64=("${url}/refs/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.tar.gz")
 
-sha256sums_x86_64=('5102a292a22d28124d19f5c11d694838ecc6879b606f044cd131e727f4eefe98')
+sha256sums_x86_64=('26b93929b72938d0f2b1d62cd9fea1e8caadaacfd4c155aa515242ae028e6654')
 
 package() {
   install -Dm755 "${srcdir}/ijq-${pkgver}/ijq" "${pkgdir}/usr/bin/ijq"
