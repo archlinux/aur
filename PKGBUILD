@@ -4,7 +4,7 @@
 # Contributor: Benjamin Hedrich <kiwisauce (a) pagenotfound (dot) de>
 
 pkgname=tvheadend-git
-pkgver=4.3.r2351.g078a822
+pkgver=4.3.r2354.gadef81b
 pkgrel=1
 pkgdesc='TV streaming server and DVR'
 #arch=(x86_64)
@@ -12,10 +12,12 @@ arch=(aarch64 arm armv6h armv7h i686 x86_64)
 url=https://tvheadend.org/
 license=(GPL-3.0-or-later)
 depends=(
-  avahi ffmpeg libdvbcsa libfdk-aac libhdhomerun libogg libtheora libvorbis libvpx
+  avahi ffmpeg libdvbcsa libfdk-aac libogg libtheora libvorbis libvpx
   openssl opus pcre2 pngquant uriparser x264 x265)
 makedepends=(git python)
-optdepends=('xmltv: alternative source of programme listings')
+optdepends=(
+  'libhdhomerun: HDHomeRun support'
+  'xmltv: alternative source of programme listings')
 options=(!buildflags !strip emptydirs)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -33,6 +35,7 @@ _print_libav_option() {
   local ffmpeg_supported ffmpeg_installed libav_option
 
   # Compare major version numbers of ffmpeg
+  # Check the minimal supported version and the version used by the makefile
   ffmpeg_supported="$(awk '$1 == "FFMPEG" { print $3 }' Makefile.ffmpeg | sed 's/^ffmpeg-//' | cut -d'.' -f1)"
   ffmpeg_installed="$(pacman -Q ffmpeg | awk '{ print $2 }' | sed 's/^ *//;s/r.*[.]//;s/.*://' | cut -d'.' -f1)"
   if ((ffmpeg_installed <= 7)) || ((ffmpeg_supported > 0 && ffmpeg_supported == ffmpeg_installed)); then
@@ -55,6 +58,11 @@ build() {
   libav_option="$(_print_libav_option)"
   printf 'Checking for libav (ffmpeg transcoding) support: %s\n' "$libav_option"
 
+  local libhdhomerun_option=
+  if pacman -Q libhdhomerun >/dev/null 2>&1; then
+    libhdhomerun_option='--enable-hdhomerun_client'
+  fi
+
   ./configure \
     --datadir=/var/lib \
     --disable-ffmpeg_static \
@@ -68,6 +76,7 @@ build() {
     --disable-libx264_static \
     --disable-libx265_static \
     "$libav_option" \
+    $libhdhomerun_option \
     --enable-avahi \
     --enable-pngquant \
     --enable-vaapi \
