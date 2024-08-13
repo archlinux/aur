@@ -20,33 +20,24 @@ source=("http://proj-clhep.web.cern.ch/proj-clhep/dist1/${pkgname}-${pkgver}.tgz
 sha256sums=('fcd007f11b10ba4af28d027222b63148d0eb44ff7a082eee353bdf921f9c684a')
 
 build() {
-
-  msg 'Creating building directory'
-  [ -d ${srcdir}/build ] && rm -rf ${srcdir}/build
-  mkdir ${srcdir}/build
-  cd ${srcdir}/build
-
   msg 'Compiling the package'
   cmake \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCLHEP_BUILD_DOCS=ON \
-    ${srcdir}/${pkgver}/${_pkgname}
-  make || return 1
+      -S ${pkgver}/${_pkgname} \
+      -B build \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCLHEP_BUILD_DOCS=ON \
+      ${srcdir}/${pkgver}/${_pkgname}
+  cmake --build build --target all
 }
 
 check() {
-
-  cd ${srcdir}/build
-  make test
-
+  msg 'Running the tests'
+  ctest --test-dir build
 }
 
 package() {
-
-  msg 'Creating the package'
-  cd ${srcdir}/build
-  make DESTDIR="${pkgdir}" install
-  install -Dm644 ${srcdir}/${pkgver}/${_pkgname}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-
+    msg 'Creating the package'
+    DESTDIR="${pkgdir}" cmake --build build --target install
+    install -Dm644 ${srcdir}/${pkgver}/${_pkgname}/COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
