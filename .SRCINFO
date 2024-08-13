@@ -1,6 +1,6 @@
 pkgbase = drumlabooh-git
 	pkgdesc = LV2/VSTi drum machine that supports Hydrogen, Drumlabooh and SFZ drumkits
-	pkgver = 3.1.0.r1.g0fa1cda
+	pkgver = 4.0.0.r1.gb6e0021
 	pkgrel = 1
 	url = https://github.com/psemiletov/drumlabooh
 	arch = x86_64
