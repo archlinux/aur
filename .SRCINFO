@@ -1,7 +1,7 @@
 pkgbase = utools-bin
 	pkgdesc = uTools Utilities.新一代效率工具平台,自由组合插件应用,打造专属你的趁手工具集
 	pkgver = 5.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://u.tools
 	arch = x86_64
 	license = LicenseRef-custom

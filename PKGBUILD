@@ -3,7 +3,7 @@ pkgname=utools-bin
 _pkgname=uTools
 pkgver=5.1.1
 _electronversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="uTools Utilities.新一代效率工具平台,自由组合插件应用,打造专属你的趁手工具集"
 arch=("x86_64")
 url="https://u.tools"
@@ -29,6 +29,7 @@ sha256sums=('92935705df72cc517e5db9a4a290f9f8066a4b1c6030a79a752c3781535450c0'
 build() {
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin} --no-sandbox|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    rm -rf "${srcdir}/opt/${_pkgname}/resources/app-update.yml"
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr/bin"
