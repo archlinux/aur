@@ -1,0 +1,12 @@
+[Unit]
+Description = M3U filter and Xtream API server
+After = network-online.target
+
+[Service]
+User = m3u-filter
+Group = m3u-filter
+WorkingDirectory = /var/lib/m3u-filter
+ExecStart = /usr/bin/m3u-filter --config-path /etc/m3u-filter --server
+
+[Install]
+WantedBy = multi-user.target

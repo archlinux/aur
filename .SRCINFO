@@ -1,0 +1,22 @@
+pkgbase = m3u-filter-bin
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/euzu/m3u-filter
+	arch = x86_64
+	license = MIT
+	provides = m3u-filter
+	conflicts = m3u-filter
+	backup = etc/m3u-filter/api-proxy.yml
+	backup = etc/m3u-filter/config.yml
+	backup = etc/m3u-filter/source.yml
+	backup = etc/m3u-filter/mapping.yml
+	source = m3u-filter-2.0.3.tar.gz::https://github.com/euzu/m3u-filter/releases/download/v2.0.3/m3u-filter_v2.0.3_linux_x86_64.tgz
+	source = m3u-filter.service
+	source = m3u-filter.sysusers
+	source = m3u-filter.tmpfiles
+	sha256sums = 4bf4110b13948240298dfa275b32198f61cb262aafaccf327fa4c8f7750a455a
+	sha256sums = b29b853ac4fd75083c65a743d7e3880f6aeb212e82fd10113b490ab0cec7eec4
+	sha256sums = 9999d2cc2d9dfdb612aa43770b0db258c51deca42e02be835951e2ce32aeafca
+	sha256sums = 8dbae83347f65360c92d9adb84073be2963c33bce16fbe5adeab369cc5cb3a30
+
+pkgname = m3u-filter-bin
