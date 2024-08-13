@@ -3,8 +3,8 @@ pkgname=compasscad-bin
 _pkgname=CompassCAD
 pkgver=1.2.0
 _electronversion=31
-pkgrel=1
-pkgdesc="Very good CAD software. plan out buildings, and show it off to your boss."
+pkgrel=2
+pkgdesc="very good CAD software. plan out buildings, and show it off to your boss."
 arch=("x86_64")
 url="https://github.com/zeankundev/CompassCAD"
 license=("LicenseRef-UFOL-2.0")
@@ -15,7 +15,6 @@ depends=(
 )
 makedepends=(
     'asar'
-    'npm'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"

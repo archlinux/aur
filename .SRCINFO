@@ -1,12 +1,11 @@
 pkgbase = compasscad-bin
-	pkgdesc = Very good CAD software. plan out buildings, and show it off to your boss.
+	pkgdesc = very good CAD software. plan out buildings, and show it off to your boss.
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zeankundev/CompassCAD
 	arch = x86_64
 	license = LicenseRef-UFOL-2.0
 	makedepends = asar
-	makedepends = npm
 	depends = electron31
 	provides = compasscad=1.2.0
 	conflicts = compasscad
