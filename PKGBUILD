@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=opengamepadui-bin
 _pkgbase=opengamepadui
-pkgver=0.33.3
+pkgver=0.33.4
 pkgrel=1
 pkgdesc="Open source game launcher"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('opengamepadui')
 conflicts=('opengamepadui-git')
 source=(opengamepadui-v$pkgver.tar.gz::https://github.com/ShadowBlip/OpenGamepadUI/releases/download/v$pkgver/opengamepadui.tar.gz)
 
-sha256sums=('734b38acefa95f4f8ce5859c450063031a2e663e45bef7534da3a8cfa8644f54')
+sha256sums=('c202d1dc858bdad6d814bab0018d5af22515a4c80f28b6100bc504b4c22977d3')
 
 package() {
   options=('!strip')
@@ -32,12 +32,13 @@ package() {
   install -Dm444 usr/share/icons/hicolor/scalable/apps/opengamepadui.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/opengamepadui.svg
 
   mkdir -p "${pkgdir}"/usr/share/opengamepadui/scripts
-  install -Dm644 usr/share/opengamepadui/libpty.linux.template_debug.x86_64.so "${pkgdir}"/usr/share/opengamepadui/libpty.linux.template_debug.x86_64.so
-  install -Dm644 usr/share/opengamepadui/libxlib.linux.template_debug.x86_64.so "${pkgdir}"/usr/share/opengamepadui/libxlib.linux.template_debug.x86_64.so
-  install -Dm644 usr/share/opengamepadui/libunixsock.linux.template_debug.x86_64.so "${pkgdir}"/usr/share/opengamepadui/libunixsock.linux.template_debug.x86_64.so
-  install -Dm644 usr/share/opengamepadui/libdbus.linux.template_debug.x86_64.so "${pkgdir}"/usr/share/opengamepadui/libdbus.linux.template_debug.x86_64.so
-  install -Dm644 usr/share/opengamepadui/liblinuxthread.linux.template_debug.x86_64.so "${pkgdir}"/usr/share/opengamepadui/liblinuxthread.linux.template_debug.x86_64.so
+  install -Dm644 usr/share/opengamepadui/libpty.linux.template_release.x86_64.so "${pkgdir}"/usr/share/opengamepadui/libpty.linux.template_release.x86_64.so
+  install -Dm644 usr/share/opengamepadui/libxlib.linux.template_release.x86_64.so "${pkgdir}"/usr/share/opengamepadui/libxlib.linux.template_release.x86_64.so
+  install -Dm644 usr/share/opengamepadui/libunixsock.linux.template_release.x86_64.so "${pkgdir}"/usr/share/opengamepadui/libunixsock.linux.template_release.x86_64.so
+  install -Dm644 usr/share/opengamepadui/libdbus.linux.template_release.x86_64.so "${pkgdir}"/usr/share/opengamepadui/libdbus.linux.template_release.x86_64.so
+  install -Dm644 usr/share/opengamepadui/liblinuxthread.linux.template_release.x86_64.so "${pkgdir}"/usr/share/opengamepadui/liblinuxthread.linux.template_release.x86_64.so
   install -Dm755 usr/share/opengamepadui/opengamepad-ui.x86_64 "${pkgdir}"/usr/share/opengamepadui/opengamepad-ui.x86_64
+  install -Dm755 usr/share/opengamepadui/opengamepad-ui.pck "${pkgdir}"/usr/share/opengamepadui/opengamepad-ui.pck
   install -Dm755 usr/share/opengamepadui/scripts/manage_input "${pkgdir}"/usr/share/opengamepadui/scripts/manage_input
   install -Dm755 usr/share/opengamepadui/scripts/make_nice "${pkgdir}"/usr/share/opengamepadui/scripts/make_nice
   setcap 'cap_sys_nice=eip' "${pkgdir}/usr/share/opengamepadui/opengamepad-ui.x86_64"
