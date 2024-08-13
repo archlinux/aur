@@ -1,21 +1,20 @@
 # Maintainer: AltoXorg <atrl101 AT yahoo DOT com>
 
 _reponame=Shipwright
-_lus_commit=96c8a8929c18c1bffd7d92a35a589f74cf16fc59
-#_lus_tag=1.4.1
+_lus_commit=1ca7d0fa78013e49450a4a9881236a19a6600d64
 _ZAPDTR_commit=eff29036118349e142ee8efca80fd975a2a2b6ff
 _OTRExporter_commit=04b85b95fab07a394b62dcd28a502a3040f08e0c
 
 pkgbase=soh
 pkgname=(soh soh-otr-exporter)
-pkgver=8.0.5
-pkgrel=2
+pkgver=8.0.6
+pkgrel=1
 arch=("x86_64" "i686" "armv7h" "aarch64")
 url="https://shipofharkinian.com/"
 _depends_soh=("sdl2" "sdl2_net" "libpulse" "glew" "zenity")
 _depends_soh_otr_exporter=("libpng")
 depends=("${_depends_soh[@]}" "${_depends_soh_otr_exporter[@]}")
-makedepends=("cmake" "ninja" "python" "curl" "lsb-release" "libxrandr" "libxinerama" "libxi" "glu" "boost")
+makedepends=("cmake" "ninja" "python" "curl" "lsb-release" "boost")
 source=("${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_reponame}/archive/refs/tags/${pkgver}.tar.gz"
         "libultraship-${_lus_commit:0:8}.tar.gz::https://github.com/Kenix3/libultraship/archive/${_lus_commit}.tar.gz"
         #"libultraship-${_lus_tag}.tar.gz::https://github.com/Kenix3/libultraship/archive/refs/tags/${_lus_tag}.tar.gz"
@@ -23,21 +22,25 @@ source=("${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_rep
         "OTRExporter-${_OTRExporter_commit:0:8}.tar.gz::https://github.com/HarbourMasters/OTRExporter/archive/${_OTRExporter_commit}.tar.gz"
         "misc-compile-fixes.patch::https://github.com/HarbourMasters/${_reponame}/commit/1bc15d5bf3042d4fd64e1952eb68c47a7d5d8061.patch"
         "soh.desktop")
-sha256sums=('95b5ad92d197528523869f59f386755e981cc68ae640e99bc1efbe9128cc7e63'
-            '52486d1de70a7298b5930309d34ccf7f30c3341cb6f817aaf4d1e8f3e814cc5a'
+sha256sums=('cd1f45b19266d8848cd3251600a4fb3d255fb359bd02bc9e9294332b1f8e9a65'
+            'f85227373ed22e6d016266563fb3eb68a2dc3a5476b4ad9ac9c1c1a4a4c6ec85'
             '6438cd1c7abad6ea9b65326892a1b220384bdce78e9d1a324c132d68c982111c'
             '5f5ff0a0eb7f5536c9076dd777d3914c4b2e064c7a22303a24c1a4a9ed7d462f'
             'e39dbd17a8b2e584465bfc5c0c5667bf331072edf9d08abde328393ece626f5e'
             '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2')
 
 # NOTE: If compiling complains about missing headers, set __generate_headers below to 1
-# Changable options for debugging:
-__debug=0             # Build with debug flag
 __generate_headers=0  # Generate OTR (unnecessary) and asset headers. **requires rom**
 
-if [ "$__debug" = 1 ]; then
-  options=(debug strip)
-fi
+_is_debug() {
+  for opt in "${OPTIONS[@]}"; do
+    if [ "$opt" = debug ]; then
+      return 0
+    fi
+  done
+
+  return 1
+}
 
 SHIP_PREFIX=/opt/soh
 
@@ -46,7 +49,6 @@ prepare() {
 
   rm -r libultraship ZAPDTR OTRExporter
   cp -r ../libultraship-${_lus_commit} libultraship
-  #cp -r ../libultraship-${_lus_tag} libultraship
   cp -r ../ZAPDTR-${_ZAPDTR_commit} ZAPDTR
   cp -r ../OTRExporter-${_OTRExporter_commit} OTRExporter
 
@@ -70,16 +72,17 @@ prepare() {
 build() {
   cd "${srcdir}/${_reponame}-${pkgver}"
 
-  if [ "$__debug" = 1 ]; then
+  if _is_debug; then
     BUILD_TYPE=Debug
   else
     BUILD_TYPE=Release
   fi
 
-  export CFLAGS="${CFLAGS/-Werror=format-security/}"
-  export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
-
-  cmake . -Bbuild -GNinja \
+  CFLAGS="${CFLAGS/-Werror=format-security/}" \
+  CXXFLAGS="${CXXFLAGS/-Werror=format-security/}" \
+  cmake . \
+    -Bbuild \
+    -GNinja \
     -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
     -DNON_PORTABLE=On \
     -DCMAKE_INSTALL_PREFIX=$SHIP_PREFIX \
@@ -98,7 +101,7 @@ build() {
 
 package_soh() {
   pkgdesc="An unofficial port of The Legend of Zelda Ocarina of Time for PC, Wii U, and Switch"
-  depends=("${_depends_soh[@]}")
+  depends=("${_depends_soh[@]}" "${_depends_lus[@]}")
   license=("unknown")
   install=soh.install
   optdepends=("soh-otr: OTR asset file in order to run"
@@ -122,7 +125,7 @@ package_soh() {
 package_soh-otr-exporter() {
   pkgdesc="OTR generation tools for SoH. Includes asset XML files needed for generation."
   license=("MIT")
-  depends=("${_depends_soh_otr_exporter[@]}")
+  depends=("${_depends_soh_otr_exporter[@]}" "${_depends_lus[@]}")
 
   cd "${srcdir}/${_reponame}-${pkgver}"
 
