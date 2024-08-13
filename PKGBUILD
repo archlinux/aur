@@ -1,9 +1,9 @@
-# Maintainer: Your Name <stefanov.m@ati.su>
+# Maintainer: Milen <stefanov.m@ati.su>
 _basename=time-desktop
 _baseurl=https://time-apps.tinkoff.ru
 pkgname=${_basename}-bin
 pkgver=6.21.0
-pkgrel=3
+pkgrel=4
 pkgdesc="TiMe (Tinkoff Messenger) is a corporate messenger based on Mattermost. This package provides the Linux desktop application."
 arch=('x86_64')
 url="${_baseurl}/production/on-premise/download-page/index.html"
