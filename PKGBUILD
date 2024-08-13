@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=nuitka-git
-pkgver=1.6.r105.gd263e6fd2
+pkgver=2.4.6.r61.g58d849260
 pkgrel=1
 pkgdesc="A Python compiler"
 arch=('any')
 url="https://nuitka.net/"
-license=('Apache')
-depends=('libxml2' 'python' 'python-setuptools' 'python-wheel')
+license=('Apache-2.0')
+depends=('libxml2' 'libxslt' 'python' 'python-ordered-set' 'python-pip' 'python-setuptools' 'python-tomli' 'python-wheel' 'python-yaml')
 makedepends=('git' 'python-build' 'python-installer')
 optdepends=('chrpath: for building standalone executables')
 provides=("nuitka=$pkgver")
