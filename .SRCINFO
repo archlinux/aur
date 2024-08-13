@@ -1,6 +1,6 @@
 pkgbase = mod_jk
 	pkgdesc = The Apache Tomcat Connector
-	pkgver = 1.2.49
+	pkgver = 1.2.50
 	pkgrel = 1
 	url = https://tomcat.apache.org/connectors-doc/
 	arch = i686
@@ -8,8 +8,7 @@ pkgbase = mod_jk
 	license = Apache
 	depends = java-environment
 	depends = apache
-	source = https://downloads.apache.org/tomcat/tomcat-connectors/jk/tomcat-connectors-1.2.49-src.tar.gz
-	sha1sums = 25dd674678c424053bca903298d19a3aa1b19b7a
-	sha512sums = 936eb017ff9d9011996933838d5c306ede9ae1886405f4daed60719ee522cca6075dedb3b647863ef12155cca93f6db8e58209a5d3bbd2da157ffc536a6809f2
+	source = https://downloads.apache.org/tomcat/tomcat-connectors/jk/tomcat-connectors-1.2.50-src.tar.gz
+	sha512sums = 9b5a1eb1c0fd38627c574102b3551cdc96fc438b00be5d65770c55b43234af445e642fe8bcbdfe47686b0f3aadab3679340fa76b54b693f57f2273e83ac114ab
 
 pkgname = mod_jk
