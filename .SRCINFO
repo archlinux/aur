@@ -1,6 +1,6 @@
 pkgbase = lala-bar
 	pkgdesc = A bar with layershell
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1.0
 	url = https://github.com/Decodetalkers/lala-bar
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = lala-bar
 	makedepends = meson
 	makedepends = rust
 	options = !lto
-	source = lala-bar-v0.3.3.tar.gz::https://github.com/Decodetalkers/lala-bar/archive/refs/tags/v0.3.3.tar.gz
-	sha256sums = 6d758e28c94cdbc47940040b38209508798c65131696b3c71845cf5054bd213a
+	source = lala-bar-v0.3.4.tar.gz::https://github.com/Decodetalkers/lala-bar/archive/refs/tags/v0.3.4.tar.gz
+	sha256sums = fe17b50323d64463a978cbcc67f9e1cf4ec1845fb6d7dceae77f1290b8ed7699
 
 pkgname = lala-bar
