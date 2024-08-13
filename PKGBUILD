@@ -1,6 +1,6 @@
 pkgname=gpt4all-chat
-pkgver=3.1.1
-pkgrel=2
+pkgver=3.2.0
+pkgrel=1
 pkgdesc="run open-source LLMs anywhere"
 arch=("x86_64")
 url="https://gpt4all.io"
@@ -18,7 +18,7 @@ source=(
     "002-install-and-load-localdocs-model-more-standardly.diff"
 )
 declare -rAg _modules_name_map=(
-    [gpt4all-backend/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/c6546b0544ad2c01e8a1630b101e92336a68b036.tar.gz
+    [gpt4all-backend/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/add387854ea73d83770a62282089dea666fa266f.tar.gz
     [gpt4all-backend/llama.cpp-mainline/ggml/src/kompute]=https://github.com/nomic-ai/kompute/archive/f592b5bca3cbc169feb194218a086b18d618cca4.tar.gz
     [gpt4all-chat/usearch]=https://github.com/nomic-ai/usearch/archive/22cfa3bd00ea542132ee826cdb220f9d6434bd43.tar.gz
     [gpt4all-chat/usearch/fp16]=https://github.com/Maratyszcza/FP16/archive/0a92994d729ff76a58f692d3028ca1b64b145d91.tar.gz
@@ -41,13 +41,13 @@ do
         source+=("$_source_str")
     fi
 done
-sha256sums=('da5ce43c0dbc72611d7b0f075acac55023bc7b5bd9f6799f6a72fd01f38b0ff9'
+sha256sums=('02d6b4c5a0d77f38627011adbacad2983b58c3281b18bde79dd6a4af9ba9a556'
             'f7af6f66802f4df86eda10fe9bbcfc75c39562bed48ef6ace719a251cf1c2fdb'
             'ebc6a571e828e8b31b390172374fe3667e719f6de286860934c6f6d6bfc293d3'
             '29f37d9a314e5c7abe572d9fd2c5dda9dfdfcf710ba09128888e30e3c7f56e23'
             'b16fc2ee15a1df76e0459df32905285c94fb59135595ccbff2095167c3c865a1'
             'b5c35b9e64abe4968bd887128d94e02272072b44267c58a057a08971e3ca6806'
-            '400070f7f8828256a4dd7434e5ac1d254acfcd7e3e298dc82d20347bb597693d'
+            '829ee72db790a2604fbe920e5b36b49203c5e27a1e2b65920ca78b1e04f2bf4d'
             '5f151fe3d71bb7b719eb50ed4bdedfde9c92d9d21c7eea172eec177b9875eff5'
             'a91f4770ff9c39f4d72e339c379f566b3bbb359fa66122d85fc0bae3dde7abc7'
             '8c7450f146920b7f312d51aede2ff39561fb2d926c2abd61ab136187ffaf9620')
@@ -87,12 +87,13 @@ prepare() {
     sed -i "s|https://gpt4all.io/models/gguf|file://$srcdir|" gpt4all-chat/CMakeLists.txt
 }
 build() {
+    CFLAGS+=" -DNDEBUG"
+    CXXFLAGS+=" -DNDEBUG"
     cmake -B build-chat -S "$srcdir/gpt4all-$pkgver/gpt4all-chat" \
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_SKIP_INSTALL_RPATH=ON \
-        -DGPT4ALL_TRANSLATIONS=ON \
         -DKOMPUTE_OPT_BUILD_SHADERS=ON \
         -DKOMPUTE_OPT_DISABLE_VULKAN_VERSION_CHECK=ON \
         -DKOMPUTE_OPT_USE_BUILT_IN_FMT=OFF \
