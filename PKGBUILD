@@ -4,7 +4,7 @@
 # Maintainer: Quey-Liang Kao <s101062801@m101.nthu.edu.tw>
 
 pkgname=openscap
-pkgver=1.3.10
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Open Source Security Compliance Solution"
 
@@ -23,7 +23,7 @@ depends=('swig' 'python' 'acl' 'libcap' 'curl' 'libgcrypt' 'libxml2' 'libxslt'
 optdepends=()
 makedepends=('doxygen' 'cmake')
 source=("https://github.com/OpenSCAP/openscap/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('007556b8f020636f6613c2b1192a8b96dfb21b62994a3e257619d48021ad962f95b724c3ac9709a60dbbf7dba8f2499ff8b9b56a7f2d293ca3a8d6ec8107f595')
+sha512sums=('93229826010b2034cb03f34f40c875fc667820b5f7c6332778a908aceeb2a15b5151abd0491c167ed83baff0c4bec3aa1425e40702eda8113a6d1885cb356a03')
 
 build() {
 	cd "$pkgname-$pkgver"
