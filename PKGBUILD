@@ -3,8 +3,8 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=budgie-indicator-applet
-pkgver=0.7.2.r1.g6ff6208
-_commit=6ff6208c28ebf97c80b2534511e48e95fef3d5b8
+pkgver=0.7.2.r2.g15fac7e
+_commit=15fac7ed13a2481583c26b541d1bb9456b996764
 pkgrel=1
 pkgdesc="Application Indicator Applet for the budgie-desktop"
 url='https://github.com/UbuntuBudgie/budgie-indicator-applet'
@@ -47,7 +47,7 @@ prepare() {
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  git describe --long --tags| sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

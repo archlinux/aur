@@ -1,6 +1,6 @@
 pkgbase = budgie-indicator-applet
 	pkgdesc = Application Indicator Applet for the budgie-desktop
-	pkgver = 0.7.2.r1.g6ff6208
+	pkgver = 0.7.2.r2.g15fac7e
 	pkgrel = 1
 	url = https://github.com/UbuntuBudgie/budgie-indicator-applet
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = budgie-indicator-applet
 	depends = gtk3
 	depends = libayatana-indicator
 	depends = libpeas
-	source = git+https://github.com/UbuntuBudgie/budgie-indicator-applet.git#commit=6ff6208c28ebf97c80b2534511e48e95fef3d5b8
+	source = git+https://github.com/UbuntuBudgie/budgie-indicator-applet.git#commit=15fac7ed13a2481583c26b541d1bb9456b996764
 	b2sums = SKIP
 
 pkgname = budgie-indicator-applet
