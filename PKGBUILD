@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=wivrn-server
 pkgver=0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/Meumeu/WiVRn"
@@ -36,7 +36,7 @@ sha256sums=('2e6e0813b82e97ed3230140764cf935f06208a89f0dd5ac883825ba5c458ee3f')
 build() {
 	cd "WiVRn-$pkgver"
 	cmake -B build-server . -GNinja \
-	-DGIT_DESC=${pkgver} \
+	-DGIT_DESC=v${pkgver} \
 	-DWIVRN_BUILD_CLIENT=OFF \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 	-DCMAKE_INSTALL_PREFIX="/usr" \
