@@ -1,20 +1,21 @@
---- a/src/systems/base/system.h
-+++ b/src/systems/base/system.h
-@@ -33,6 +33,7 @@
+--- a/src/modules/module_sys_save.cc
++++ b/src/modules/module_sys_save.cc
+@@ -28,6 +28,7 @@
+ #include "modules/module_sys_save.h"
+ 
+ #include <boost/algorithm/string/predicate.hpp>
++#include <boost/filesystem/directory.hpp>
+ #include <boost/filesystem/fstream.hpp>
+ #include <boost/filesystem/operations.hpp>
  #include <boost/filesystem/path.hpp>
+--- a/src/systems/base/system.cc
++++ b/src/systems/base/system.cc
+@@ -28,7 +28,7 @@
+ #include "systems/base/system.h"
  
- #include <map>
-+#include <memory>
- #include <sstream>
- #include <string>
- #include <utility>
---- a/src/utilities/file.h
-+++ b/src/utilities/file.h
-@@ -31,6 +31,7 @@
- #include <boost/filesystem.hpp>
- 
- #include <iosfwd>
-+#include <memory>
- #include <string>
- #include <vector>
+ #include <boost/algorithm/string.hpp>
+-#include <boost/filesystem/convenience.hpp>
++#include <boost/filesystem/directory.hpp>
+ #include <boost/filesystem/operations.hpp>
+ #include <boost/filesystem/path.hpp>
  

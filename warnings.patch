@@ -1,25 +1,3 @@
---- a/src/libreallive/archive.cc
-+++ b/src/libreallive/archive.cc
-@@ -132,7 +132,7 @@
- void Archive::ReadOverrides() {
-   // Iterate over all files in the directory and override the table of contents
-   // if there is a free SEENXXXX.TXT file.
--  fs::path seen_dir = fs::path(name_).branch_path();
-+  fs::path seen_dir = fs::path(name_).parent_path();
-   fs::directory_iterator end;
-   for (fs::directory_iterator it(seen_dir); it != end; ++it) {
-     std::string filename = it->path().filename().string();
---- a/src/utilities/file.cc
-+++ b/src/utilities/file.cc
-@@ -72,7 +72,7 @@
-   std::stack<std::string> pathElts;
-   while (!Path.empty() && !fs::exists(Path)) {
-     pathElts.push(Path.filename().string());
--    Path = Path.branch_path();
-+    Path = Path.parent_path();
-   }
-   // Now proceed forwards through the possibly-incorrect elements.
-   while (!pathElts.empty()) {
 --- a/vendor/xclannad/file.cc
 +++ b/vendor/xclannad/file.cc
 @@ -260,7 +260,6 @@

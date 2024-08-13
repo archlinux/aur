@@ -18,8 +18,8 @@ source=("git+https://github.com/eglaysher/rlvm.git"
         "warnings.patch"
         "gtk+3.patch")
 sha256sums=('SKIP'
-            '05b4c17fe4132b3877b53ba34076c4f21b0982d40ec134400697a51f7ea52226'
-            '9e7d10880051c11062b67ca9ac5f53bf7277588228f0103e93ac6cccb72e57cc'
+            '56ba8679f806163e30962a0418ba462edca52050c6ac88edfadaead68a1b94a8'
+            'dcbd9e0de8ccb91983d691f0b5fd6938fef45653ac20d244c1c19a3df01b7550'
             '6bf8a1d8cd64b05057859338132acef11db573c58adc3913679776b8d4a7b83a')
 
 pkgver() {
