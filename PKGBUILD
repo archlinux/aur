@@ -8,7 +8,7 @@
 # Contributor: Lucas H. Gabrielli <heitzmann@gmail.com>
 pkgname=slepc
 pkgver=3.21.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Scalable library for Eigenvalue problem computations"
 arch=(x86_64)
 url="https://${pkgname}.upv.es"
@@ -69,13 +69,17 @@ package() {
   unset PETSC_ARCH
 
   sed -i "s#${pkgdir}##g" "${_dest_dir}/include/slepcconf.h"
-  sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/pkgconfig/slepc.pc"
+  sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/pkgconfig/SLEPc.pc"
   sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/modules/${pkgname}/${pkgver}"
+  sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/configure-hash"
   sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/slepc_rules"
+  sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/slepc_rules_doc.mk"
+  sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/slepc_rules_util.mk"
   sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/slepc_variables"
-  # sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/slepcrules"
+  sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/slepcrules"
   sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/slepcvariables"
   sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/uninstall.py"
+  sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc4py/lib/slepc.cfg"
   sed -i "s#${_build_dir}#${_install_dir}#g" "${_dest_dir}/lib/slepc/conf/uninstall.py"
 
   # remove logs containing references to the build dir

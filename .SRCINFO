@@ -1,7 +1,7 @@
 pkgbase = slepc
 	pkgdesc = Scalable library for Eigenvalue problem computations
 	pkgver = 3.21.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://slepc.upv.es
 	install = slepc.install
 	arch = x86_64
