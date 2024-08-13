@@ -2,8 +2,8 @@
 
 pkgname=python-gotenberg-client
 _pkgname=gotenberg-client
-pkgver=0.5.0
-pkgrel=5
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="A Python client for interfacing with the Gotenberg API"
 arch=('any')
 url="https://github.com/stumpylog/gotenberg-client"
@@ -23,7 +23,7 @@ checkdepends=(
   'python-pytest-httpx'
 )
 source=("${pkgname}::git+${url}#tag=${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('61e60c4b418ce23745ed50f2718f02223fa4e5b3650c2ff6fbdc5ec450b62f45')
 
 #check() {}
 # Testing requires complex setup
