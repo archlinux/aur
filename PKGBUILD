@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=chawan-git
-pkgver=r2024.cb07433
+pkgver=r2201.a766983b
 pkgrel=1
 pkgdesc="Web browser for your terminal"
 arch=(x86_64)
@@ -9,12 +9,10 @@ url="https://git.sr.ht/~bptato/${pkgname%-git}"
 license=(Unlicense)
 depends=(
   bash
-  # gcc-libs
   glibc
   libseccomp
   ncurses
   openssl
-  zlib
 )
 makedepends=(
   git
@@ -40,7 +38,7 @@ prepare() {
 
 build() {
   cd ${pkgname%-git}
-  make
+  make LIBEXECDIR=/usr/lib/${pkgname%-git}
 }
 
 package() {

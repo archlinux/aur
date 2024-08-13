@@ -1,6 +1,6 @@
 pkgbase = chawan-git
 	pkgdesc = Web browser for your terminal
-	pkgver = r2024.cb07433
+	pkgver = r2201.a766983b
 	pkgrel = 1
 	url = https://git.sr.ht/~bptato/chawan
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = chawan-git
 	depends = libseccomp
 	depends = ncurses
 	depends = openssl
-	depends = zlib
 	optdepends = termcap: to use display computer terminals in a device-independent manner
 	provides = chawan
 	conflicts = chawan
