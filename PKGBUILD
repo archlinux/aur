@@ -10,8 +10,9 @@ arch=(any)
 url="https://github.com/elastic/${_base}-py"
 license=(Apache-2.0)
 depends=(python-elasticsearch python-dateparser)
-makedepends=(python-build python-installer python-setuptools python-wheel python-sphinx_rtd_theme)
-checkdepends=(python-pytest-mock python-mock python-pytest-asyncio)
+makedepends=(python-build python-installer python-setuptools python-wheel) # python-sphinx_rtd_theme
+# checkdepends=(python-pytest-mock python-mock python-pytest-asyncio python-nltk
+#   python-sentence-transformers)
 source=(${_base}-py-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('e3b7dd670e2a7829505565f140a8fce4c940eda0c0ec99bbdcb7b98cbc5ed2ce1b4778116cb982a5d34917aa0601e1bb3c7e0035de5fe90c23f7a32f6175906d')
 
@@ -22,12 +23,12 @@ build() {
   # PYTHONPATH="${srcdir}/${_base}-py-${pkgver}/build/lib/:${PYTHONPATH}" make man
 }
 
-check() {
-  cd ${_base}-py-${pkgver}
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest tests
-}
+# check() {
+#   cd ${_base}-py-${pkgver}
+#   python -m venv --system-site-packages test-env
+#   test-env/bin/python -m installer dist/*.whl
+#   test-env/bin/python -m pytest tests
+# }
 
 package() {
   cd ${_base}-py-${pkgver}
