@@ -1,0 +1,14 @@
+pkgbase = numlockw
+	pkgdesc = A Wayland clone of numlockx
+	pkgver = r14.e5a0e83
+	pkgrel = 1
+	url = https://github.com/xz-dev/numlockw
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-pipx
+	depends = python
+	source = git+https://github.com/xz-dev/numlockw
+	sha256sums = SKIP
+
+pkgname = numlockw
