@@ -2,7 +2,7 @@
 # Maintainer: Kyohei Kadota <lufia (at) lufia.org>
 # Contributor: Yusuke Miyazaki <miyazaki.dev (at) gmail.com>
 pkgname=mackerel-agent
-pkgver=0.80.0
+pkgver=0.82.0
 pkgrel=1
 pkgdesc="A revolutionary new kind of application performance management"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ conflicts=('mackerel-agent-git')
 makedepends=('go-pie')
 backup=('etc/mackerel-agent/mackerel-agent.conf')
 source=("https://github.com/mackerelio/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('f496f25e2209dfa0857252e54e18279e')
+sha256sums=('b024056e42784b70d620ac052214619d78ba755dc0b30e108b271c921a7609fb')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
