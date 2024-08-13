@@ -1,8 +1,8 @@
 pkgbase = time-desktop-bin
-	pkgdesc = Time Desktop App
-	pkgver = 6.21.0
-	pkgrel = 2
-	url = https://time-apps.tinkoff.ru/production/on-premise/desktop/linux
+	pkgdesc = TiMe (Tinkoff Messenger) is a corporate messenger based on Mattermost. This package provides the Linux desktop application.
+	pkgver = 6.23.0
+	pkgrel = 0
+	url = https://time-apps.tinkoff.ru/production/on-premise/download-page/index.html
 	arch = x86_64
 	license = Apache License, Version 2.0
 	depends = glibc
