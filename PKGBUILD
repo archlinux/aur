@@ -27,4 +27,5 @@ build() {
 package() {
   cd "avBuilder"
   ./bootstrap install $pkgdir/usr/bin/avBuilder
+  ./avBuilder save ./library/c/stdc.project std/c
 }
