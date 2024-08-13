@@ -8,24 +8,29 @@ arch=(x86_64
     aarch64
     riscv64)
 url="https://github.com/YuzukiTsuru/YFEL"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
-depends=(libusb
-    qt6-tools
-    xfel)
+depends=(
+    gcc-libs
+    glibc
+    libusb
+    qt6-base)
 makedepends=(
     cmake
     git
-    gcc
-    ninja)
+    ninja
+    qt6-tools)
+optdepends=(xfel)
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-#     git describe --long --tags | sed 's/^v//g' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    ( set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 prepare()
