@@ -2,7 +2,7 @@
 
 _pkgname=libheif
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.18.1
+pkgver=1.18.2
 pkgrel=1
 pkgdesc='HEIF file format decoder and encoder (mingw-w64)'
 url='https://github.com/strukturag/libheif'
@@ -26,8 +26,11 @@ makedepends=('mingw-w64-cmake' 'ninja')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
-sha256sums=('73bc94442038d44d56fe730f72516ae53134eb15b878a7ad89ef60fac93a3318')
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/strukturag/libheif/archive/v${pkgver}.tar.gz")
+sha256sums=('c2bf75ff61250fcdcb831f0d5d9d06808205d9ee3dd0749ef7a7c6f85dd30dc9'
+            '58d309d8da8793d4e5df18df566d7ab5b681fd858d10abdc8dd29b616d1987eb')
+source=(
+	"$_pkgname-$pkgver.tar.gz::https://github.com/strukturag/${_pkgname}/archive/v${pkgver}.tar.gz"
+	"https://github.com/strukturag/${_pkgname}/commit/83a5ad207facdc14b09065151a527db60637fd14.patch")
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
@@ -47,8 +50,6 @@ _flags=(
 	-DWITH_FFMPEG_DECODER_PLUGIN=OFF
 	-DWITH_OpenJPEG_DECODER=ON
 	-DWITH_OpenJPEG_DECODER_PLUGIN=OFF
-	-DWITH_OpenJPEG_ENCODER=ON
-	-DWITH_OpenJPEG_ENCODER_PLUGIN=OFF
 	-DWITH_KVAZAAR=ON
 	-DWITH_KVAZAAR_PLUGIN=OFF )
 
@@ -63,6 +64,8 @@ EOF
 	) > 'cmake/modules/FindRAV1E.cmake'
 
   sed -i 's/${${varName}_INCLUDE_DIR}/${${varName}_INCLUDE_DIRS}/' 'libheif/plugins/CMakeLists.txt'
+
+  patch -p1 -i "${srcdir}/83a5ad207facdc14b09065151a527db60637fd14.patch"
 }
 
 build() {
