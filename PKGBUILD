@@ -3,7 +3,7 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 _base=elasticsearch-dsl
 pkgname=python-${_base}
-pkgver=8.14.0
+pkgver=8.15.0
 pkgrel=1
 pkgdesc="Python client for Elasticsearch"
 arch=(any)
@@ -11,9 +11,9 @@ url="https://github.com/elastic/${_base}-py"
 license=(Apache-2.0)
 depends=(python-elasticsearch python-dateparser)
 makedepends=(python-build python-installer python-setuptools python-wheel python-sphinx_rtd_theme)
-# checkdepends=(python-pytest-mock python-mock)
+checkdepends=(python-pytest-mock python-mock)
 source=(${_base}-py-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('268bfed84254a363cf579f2394fee1299828f96fdd39a18032bbf2dd1f5526c2428f131ea7dd3236573fd02acaf4872ad98d9ae4c93fd137caf13c5735273cfd')
+sha512sums=('e3b7dd670e2a7829505565f140a8fce4c940eda0c0ec99bbdcb7b98cbc5ed2ce1b4778116cb982a5d34917aa0601e1bb3c7e0035de5fe90c23f7a32f6175906d')
 
 build() {
   cd ${_base}-py-${pkgver}
@@ -22,12 +22,12 @@ build() {
   # PYTHONPATH="${srcdir}/${_base}-py-${pkgver}/build/lib/:${PYTHONPATH}" make man
 }
 
-# check() {
-#   cd ${_base}-py-${pkgver}
-#   python -m venv --system-site-packages test-env
-#   test-env/bin/python -m installer dist/*.whl
-#   test-env/bin/python -m pytest tests
-# }
+check() {
+  cd ${_base}-py-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest tests
+}
 
 package() {
   cd ${_base}-py-${pkgver}
