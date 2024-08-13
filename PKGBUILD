@@ -1,17 +1,19 @@
 # Maintainer: username227 <gfrank227 at gmail dot com>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 # The pkgbuild is based on the original pkgbuild for citra.
 
 pkgname=lime3ds-git
-pkgver=r10426.5fc08dd
+pkgver=r10441.5a5e4c9
 pkgrel=1
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 url='https://github.com/Lime3DS/Lime3DS'
-license=('GPL-2.0')
-depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio' 'zstd' 'soundtouch' 'fmt' 'libinih' 'openal' 'enet' 'zydis')
-makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'libc++' 'ninja')
+license=('GPL-2.0-only')
+depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio' 'zstd' 'soundtouch' 'fmt' 'libinih' 'openal' 'enet' 'zydis' 'boost-libs' 'boost')
+makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'ninja')
 conflicts=('lime3ds-appimage' 'lime3ds')
-options=('lto' '!buildflags')
+provides=('lim3ds')
+options=('!lto')
 source=("Lime3DS::git+https://github.com/Lime3DS/Lime3DS"
         "boost::git+https://github.com/blitzingeagle/ext-boost.git"
         "nihstro::git+https://github.com/neobrain/nihstro.git"
@@ -49,7 +51,7 @@ source=("Lime3DS::git+https://github.com/Lime3DS/Lime3DS"
         "git+https://github.com/arsenm/sanitizers-cmake.git"
         #sirit's submodules
         "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
-        #libadrenotools' submodule
+        #libadrenotools submodule
         "git+https://github.com/bylaws/liblinkernsbypass.git"
         "git+https://github.com/Lime3DS/compatibility-list"
         #dynarmic submodules
@@ -62,13 +64,13 @@ source=("Lime3DS::git+https://github.com/Lime3DS/Lime3DS"
         "git+https://github.com/zyantific/zydis"
         )
 md5sums=('SKIP'
-	 'SKIP'
-	 'SKIP'
-	 'SKIP'
-	 'SKIP'
-	 'SKIP'
-	 'SKIP'
-	 'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -152,23 +154,38 @@ prepare() {
 
 build() {
     # Fix to help cmake find libusb
-    CXXFLAGS+=" -I/usr/lib/libusb-1.0"
+    export CFLAGS=$(echo $CFLAGS | sed 's/-Wp,-D_FORTIFY_SOURCE=3//g')
+    export CXXFLAGS=$(echo $CXXFLAGS | sed 's/-Wp,-D_FORTIFY_SOURCE=3//g')
+    CXXFLAGS+=" -I/usr/lib/libusb-1.0 -flto=thin"
+    CFLAGS+=" -flto=thin"
     
     cmake -B build -S "Lime3DS" -G Ninja \
-    	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DCMAKE_BUILD_TYPE=Release \
-    	-DCMAKE_CXX_COMPILER=clang++ \
-    	-DCMAKE_C_COMPILER=clang \
-    	-DENABLE_QT_TRANSLATION=ON \
-    	-DUSE_DISCORD_PRESENCE=ON \
-    	-DCMAKE_CXX_FLAGS="-O2" \
-    	-DCMAKE_C_FLAGS="-O2"
-    cd build
-    ninja
-    strip -s bin/Release/*
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_CXX_COMPILER=clang++ \
+        -DCMAKE_C_COMPILER=clang \
+        -DENABLE_QT_TRANSLATION=ON \
+        -DUSE_DISCORD_PRESENCE=ON \
+        -DCMAKE_CXX_FLAGS="$CFLAGS" \
+        -DCMAKE_C_FLAGS="$CXXFLAGS" \
+        -DUSE_SYSTEM_BOOST=ON \
+        -DUSE_SYSTEM_CATCH2=ON \
+        -DUSE_SYSTEM_FMT=ON \
+        -DUSE_SYSTEM_GLSLANG=ON \
+        -DUSE_SYSTEM_INIH=ON \
+        -DUSE_SYSTEM_JSON=ON \
+        -DUSE_SYSTEM_LIBUSB=ON \
+        -DUSE_SYSTEM_OPENAL=ON \
+        -DUSE_SYSTEM_OPENSSL=ON \
+        -DUSE_SYSTEM_SDL2=ON \
+        -DUSE_SYSTEM_SOUNDTOUCH=ON \
+        -DUSE_SYSTEM_VULKAN_HEADERS=ON \
+        -DUSE_SYSTEM_ZSTD=ON
+
+    cmake --build build
 }
 
 package() {   
-    DESTDIR="$pkgdir/" ninja -C build install
+    DESTDIR="$pkgdir/" cmake --install build
     rm -rf $pkgdir/usr/include/enet
 }
