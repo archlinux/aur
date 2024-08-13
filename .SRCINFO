@@ -1,7 +1,7 @@
 pkgbase = ffmpeg5.1
 	pkgdesc = Complete solution to record, convert and stream audio and video (legacy v5.1 branch, with libavcodec v59)
-	pkgver = 5.1.4
-	pkgrel = 3
+	pkgver = 5.1.6
+	pkgrel = 1
 	epoch = 1
 	url = https://ffmpeg.org
 	arch = aarch64
@@ -41,7 +41,6 @@ pkgbase = ffmpeg5.1
 	depends = libgl
 	depends = libiec61883
 	depends = libmodplug
-	depends = libplacebo
 	depends = libpulse
 	depends = libraw1394
 	depends = librsvg
@@ -80,13 +79,11 @@ pkgbase = ffmpeg5.1
 	optdepends = ladspa: LADSPA filters
 	provides = ffmpeg-compat-59
 	conflicts = ffmpeg-compat-59
-	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=n5.1.4
-	source = ffmpeg5.1-commit_1231003-fix_libplacebo_v6_compatibility.patch
+	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=n5.1.6
 	validpgpkeys = DD1EC9E8DE085C629B3E1846B18E8928B3948D64
 	b2sums = SKIP
-	b2sums = e44b4415a4071bbc9c56be5683fc9636a4d999366b8df8cb661f90a82e71a38161ce91da9e1fde7966dbf4940ec68eb3993ec9e903ff8792b945bf4ce9062c19
 	depends_x86_64 = libmfx
-	optdepends_x86_64 = nvidia-utils: Nvidia NVDEC/NVENC support
+	optdepends_x86_64 = nvidia-utils: Nvidia NVDEC support (NVENC no longer supported by this FFMPEG version)
 
 pkgname = ffmpeg5.1
 	depends = alsa-lib
@@ -112,7 +109,6 @@ pkgname = ffmpeg5.1
 	depends = libgl
 	depends = libiec61883
 	depends = libmodplug
-	depends = libplacebo
 	depends = libpulse
 	depends = libraw1394
 	depends = librsvg
