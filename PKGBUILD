@@ -3,7 +3,7 @@
 pkgname=polycule-git
 _name=polycule
 _appid=business.braid.polycule
-pkgver=ed45f83
+pkgver=55f0bd2
 pkgrel=1
 pkgdesc="A geeky and efficient [matrix] client for power users."
 # Flutter officially supports amd64 and AArch64
@@ -110,6 +110,7 @@ package() {
 
   # install desktop file, metainfo, license and icons
   install -Dm 644 "${srcdir}/${_name}/linux/${_appid}.desktop" "${pkgdir}/usr/share/applications/${_appid}.desktop"
+  install -Dm 644 "${srcdir}/${_name}/linux/${_appid}.service" "${pkgdir}/usr/share/dbus-1/services/${_appid}.service"
   install -Dm 644 "${srcdir}/${_name}/linux/${_appid}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${_appid}.metainfo.xml"
   install -Dm644 "${srcdir}/${_name}/LICENSE" "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
   install -Dm 644 "${srcdir}/${_name}/assets/logo/logo-circle.svg" "${pkgdir}/usr/share/pixmaps/${_appid}.svg"
