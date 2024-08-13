@@ -1,6 +1,6 @@
 pkgbase = hyprnome
 	pkgdesc = GNOME-like workspace switching in Hyprland.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/donovanglover/hyprnome
 	arch = x86_64
