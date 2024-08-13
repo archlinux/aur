@@ -1,0 +1,14 @@
+_notice() {
+  echo "==> Wire Desktop defaults to using gnome-keyring for secret storage."
+  echo "    To change this to, e.g. to kwallet, set the environment variable"
+  echo "    WIRE_PASSWORD_STORE. For possible options, see:"
+  echo "    https://www.electronjs.org/docs/latest/api/safe-storage#safestoragegetselectedstoragebackend-linux"
+}
+
+post_install() {
+  _notice
+}
+
+post_upgrade() {
+  _notice
+}

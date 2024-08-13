@@ -1,55 +1,58 @@
-# Maintainer: Maxim Baz <archlinux at maximbaz dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Contributor: Maxim Baz <archlinux at maximbaz dot com>
 # Contributor: Conor Anderson <conor@conr.ca>
 
-_electron=electron29
 pkgname=wire-desktop
-pkgver=3.35.3348
-pkgrel=2
-pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
-arch=('any')
-url='https://wire.com/'
-license=('GPL3')
-depends=("${_electron}" 'xdg-utils')
-makedepends=('git' 'npm' 'yarn' 'nodejs-lts-hydrogen')
+pkgver=3.36.3462
+pkgrel=1
+pkgdesc="End-to-end encrypted messenger with file sharing, voice calls and video conferences"
+arch=(any)
+url="https://wire.com/"
+license=(GPL-3.0-or-later)
+_electronver=29
+depends=(
+  "electron$_electronver"
+  hicolor-icon-theme
+  org.freedesktop.secrets
+)
+makedepends=(
+  git
+  libxcrypt-compat
+  yarn
+)
 optdepends=('emoji-font: colorful emoji')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wireapp/${pkgname}/archive/linux/${pkgver}.tar.gz"
-        "${pkgname}-${pkgver}.tar.gz.sig::https://github.com/wireapp/${pkgname}/releases/download/linux%2F${pkgver}/${pkgver}.tar.gz.sig"
-        "${pkgname}.desktop")
-b2sums=('f8cfb6881c34711706e36ed802ae0797002220edc1989e4a8d44bacedba87f4211686ba2a36bfcf474071f0e42cb3de8ea0b1787ffb18e054059e826eb548321'
-        'SKIP'
-        '63ec6be507993c3bfffbae86841a9f34151ef8ba9249f32dd3fa758921e1adbcaa22c59e575e8079edb796a64395e26da311302658b62c3819fd6c7946b357c0')
-validpgpkeys=('ABBA007D6E14E2DB5B283C45D599C1AA126762B1')
+install=$pkgname.install
+source=(
+  "$pkgname-$pkgver.tar.gz::https://github.com/wireapp/wire-desktop/archive/linux/$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz.sig::https://github.com/wireapp/wire-desktop/releases/download/linux%2F$pkgver/$pkgver.tar.gz.sig"
+  "$pkgname.desktop"
+  "$pkgname.sh"
+)
+sha256sums=('d96d5512072f21652fa973a1558677ab716a256160adac40c1e7d3a0d3f0c455'
+            'SKIP'
+            '53f37e99d4c2f41a3e31fd70154d82ba06a4af578c68df86af4906f7f37ec787'
+            '39133f29fd442da4d71e7b16d832b616da080ad1740c680a964db8521fd5a624')
+validpgpkeys=('ABBA007D6E14E2DB5B283C45D599C1AA126762B1') # Wire Releases Signing Key <releases@wire.com>
 
 prepare() {
-    # Create launcher script
-    cat << EOF > "${pkgname}"
-#!/usr/bin/env sh
-
-${_electron} "/usr/lib/${pkgname}" "\$@"
-EOF
+  cd $pkgname-linux-$pkgver
+  sed -i "s/@_electronver@/$_electronver/" "$srcdir/wire-desktop.sh"
+  yarn install --immutable
 }
 
 build() {
-    cd "${pkgname}-linux-${pkgver}"
-
-    yarn
-    BUILD_NUMBER="${pkgver##*.}" LINUX_TARGET=dir ENABLE_ASAR=false yarn build:linux
+  cd $pkgname-linux-$pkgver
+  export BUILD_NUMBER="${pkgver##*.}"
+  export LINUX_TARGET=pacman
+  yarn build:linux
 }
 
 package() {
-    # Place files
-    install -d "${pkgdir}/usr/lib/${pkgname}"
-    cp -a "${pkgname}-linux-${pkgver}/wrap/dist/linux-unpacked/resources/app/"{electron,node_modules,package.json} "${pkgdir}/usr/lib/${pkgname}"
+  cd $pkgname-linux-$pkgver
+  install -vDm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+  install -vDm644 -t "$pkgdir/usr/lib/$pkgname" wrap/dist/linux-unpacked/resources/app.asar
 
-    # Place launcher script
-    install -Dm755 -t "${pkgdir}/usr/bin/" "${pkgname}"
-
-    # Place desktop entry and icon
-    desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${pkgname}.desktop"
-    local res
-    for res in 32x32 256x256; do
-        install -Dm644 "${pkgname}-linux-${pkgver}/resources/icons/${res}.png" "${pkgdir}/usr/share/icons/hicolor/${res}/apps/${pkgname}.png"
-    done
+  install -vDm644 -t "$pkgdir/usr/share/applications" "$srcdir/$pkgname.desktop"
+  install -vDm644 resources/icons/32x32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
+  install -vDm644 resources/icons/256x256.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
 }
-
-# vim:set ts=4 sw=4 et:
