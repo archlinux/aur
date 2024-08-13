@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=3.0
+Name=Aqua
+Icon=aqua
+GenericName=IDE
+Comment=The IDE for test automation
+Exec="/opt/aqua/bin/aqua" %f
+Terminal=false
+Type=Application
+Categories=Development
+StartupWMClass=jetbrains-aqua
