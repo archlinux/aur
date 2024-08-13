@@ -7,16 +7,15 @@ url="https://github.com/atomicobject/heatshrink"
 license=("ISC")
 arch=('x86_64')
 source=("https://github.com/atomicobject/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
-'https://github.com/atomicobject/heatshrink/pull/77.patch')
+'https://gitweb.gentoo.org/repo/gentoo.git/plain/dev-libs/heatshrink/files/heatshrink-0.4.1-cmake.patch')
 sha256sums=('SKIP' 'SKIP')
 
 build() {
   cd "${pkgname}-${pkgver}"
-  patch -p1 < ../77.patch
+  patch -p1 < ../heatshrink-0.4.1-cmake.patch
 
   cmake \
     -B build \
-    -S "cmake" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -Wno-dev
 

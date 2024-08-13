@@ -6,7 +6,7 @@ pkgbase = heatshrink
 	arch = x86_64
 	license = ISC
 	source = https://github.com/atomicobject/heatshrink/archive/refs/tags/v0.4.1.tar.gz
-	source = https://github.com/atomicobject/heatshrink/pull/77.patch
+	source = https://gitweb.gentoo.org/repo/gentoo.git/plain/dev-libs/heatshrink/files/heatshrink-0.4.1-cmake.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 
