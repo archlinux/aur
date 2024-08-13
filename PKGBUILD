@@ -1,7 +1,7 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=chiaki-ng
-pkgver=1.8.0
+pkgver=1.8.1
 _commit="cb979c551f8240094fd45ba7fd680e3b7ce38e37"
 pkgrel=1
 pkgdesc="Unofficial PlayStation 4 remote play client"
