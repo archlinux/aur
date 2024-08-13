@@ -1,4 +1,5 @@
-# Maintainer: Max le Fou (buttbadger at gmail dot com)
+# Maintainer: Jannick Kremer (jannick dot kremer at mailbox dot org)
+# Contributor: Max le Fou (buttbadger at gmail dot com)
 
 pkgname=ultrastar-creator
 pkgver=1.3.1
