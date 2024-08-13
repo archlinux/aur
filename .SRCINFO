@@ -1,0 +1,16 @@
+pkgbase = netradio
+	pkgdesc = YouTube ve internet radyolarını oynatan ve indiren Python tabanlı bir uygulama
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://gitlab.com/saydut/netradio
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = mpv
+	depends = yt-dlp
+	depends = python
+	depends = youtube-search-python
+	source = git+https://gitlab.com/saydut/netradio.git#branch=master
+	md5sums = SKIP
+
+pkgname = netradio
