@@ -2,7 +2,7 @@
 
 _pkgname="mozillavpn"
 pkgname="$_pkgname-git"
-pkgver=2.23.1.r96.g066ac95
+pkgver=2.23.1.r103.gedf3406
 pkgrel=1
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 url="https://github.com/mozilla-mobile/mozilla-vpn-client"
@@ -35,7 +35,8 @@ makedepends=(
   'cmake'
   'git'
   'go'
-  'python-glean-parser'
+  'ninja'
+  'python-glean-parser' # AUR
   'python-lxml'
   'python-yaml'
   'qt6-tools'
@@ -50,20 +51,10 @@ install="$_pkgname.install"
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
-_pkgsrc="$_pkgname"
-source+=("$_pkgsrc"::"git+$url.git")
-sha256sums+=('SKIP')
-
-pkgver() {
-  cd "$_pkgsrc"
-  local _tag=$(git tag | sort -rV | head -1)
-  local _revision=$(git rev-list --count --cherry-pick $_tag...HEAD)
-  local _hash=$(git rev-parse --short=7 HEAD)
-
-  printf '%s.r%s.g%s' \
-    "${_tag#v}" \
-    "$_revision" \
-    "$_hash"
+_source_main() {
+  _pkgsrc="$_pkgname"
+  source=("$_pkgsrc"::"git+$url.git")
+  sha256sums=('SKIP')
 }
 
 _source_mozillavpn() {
@@ -133,10 +124,14 @@ _prepare_getsentry_sentry_native() (
 
 _cargo_env() {
   : ${CARGO_HOME:=$SRCDEST/cargo-home}
+  export CARGO_HOME
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+
+  CFLAGS+=" -ffat-lto-objects"
 }
 
+_source_main
 _source_mozillavpn
 _source_getsentry_sentry_native
 
@@ -161,14 +156,25 @@ prepare() {
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
+pkgver() {
+  cd "$_pkgsrc"
+  local _tag=$(git tag | sort -rV | head -1)
+  local _revision=$(git rev-list --count --cherry-pick $_tag...HEAD)
+  local _hash=$(git rev-parse --short=7 HEAD)
+
+  printf '%s.r%s.g%s' \
+    "${_tag#v}" \
+    "$_revision" \
+    "$_hash"
+}
+
 build() {
   _cargo_env
-
-  CFLAGS+=" -ffat-lto-objects"
 
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
+    -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -Wno-dev

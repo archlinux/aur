@@ -1,6 +1,6 @@
 pkgbase = mozillavpn-git
 	pkgdesc = Fast, secure, and easy to use VPN from the makers of Firefox
-	pkgver = 2.23.1.r96.g066ac95
+	pkgver = 2.23.1.r103.gedf3406
 	pkgrel = 1
 	url = https://github.com/mozilla-mobile/mozilla-vpn-client
 	install = mozillavpn.install
@@ -11,6 +11,7 @@ pkgbase = mozillavpn-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = go
+	makedepends = ninja
 	makedepends = python-glean-parser
 	makedepends = python-lxml
 	makedepends = python-yaml
