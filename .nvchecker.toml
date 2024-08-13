@@ -1,0 +1,4 @@
+[kokkos]
+source = "github"
+github = "kokkos/kokkos"
+use_latest_release = "true"
