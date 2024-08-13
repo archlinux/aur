@@ -1,6 +1,6 @@
 pkgbase = rotki-bin
 	pkgdesc = A portfolio tracking, analytics, accounting and tax reporting application that respects your privacy
-	pkgver = 1.34.1
+	pkgver = 1.34.2
 	pkgrel = 1
 	url = https://rotki.com
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = rotki-bin
 	depends = gtk3
 	depends = nss
 	provides = rotki
-	noextract = rotki-1.34.1.tar.xz
+	noextract = rotki-1.34.2.tar.xz
 	options = !strip
-	source = rotki-1.34.1.tar.xz::https://github.com/rotki/rotki/releases/download/v1.34.1/rotki-linux_x64-v1.34.1.tar.xz
-	source = rotki-1.34.1-rotki.png::https://raw.githubusercontent.com/rotki/rotki/v1.34.1/frontend/app/public/assets/images/rotki_1024x1024.png
-	source = rotki-1.34.1-LICENSE::https://github.com/rotki/rotki/raw/v1.34.1/LICENSE.md
-	sha256sums = 12940e7b280e5f38187861b99d31dfda43f46d2c41783c62ca3710f1704b7aa7
+	source = rotki-1.34.2.tar.xz::https://github.com/rotki/rotki/releases/download/v1.34.2/rotki-linux_x64-v1.34.2.tar.xz
+	source = rotki-1.34.2-rotki.png::https://raw.githubusercontent.com/rotki/rotki/v1.34.2/frontend/app/public/assets/images/rotki_1024x1024.png
+	source = rotki-1.34.2-LICENSE::https://github.com/rotki/rotki/raw/v1.34.2/LICENSE.md
+	sha256sums = 874d0675d0f83db88f2e644b38436aed8e938e74980c182787a6b23aa70287d0
 	sha256sums = 391e4e2bfe352660a151b8f7143f8057ad43aafb256d4e3dfbf15546c3541270
 	sha256sums = eb6f58a98d8bdb6d3c8fee3817543589f3cd0921d14748fa0630edff2d4c08b0
 
