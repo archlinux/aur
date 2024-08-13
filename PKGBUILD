@@ -10,7 +10,7 @@ url='https://github.com/NVIDIA/egl-wayland'
 license=('MIT')
 depends=(
   'lib32-wayland'
-  "egl-wayland=3:${pkgver}"
+  "egl-wayland=4:${pkgver}"
 )
 makedepends=(
   'meson'
