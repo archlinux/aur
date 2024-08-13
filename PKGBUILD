@@ -3,7 +3,7 @@
 pkgbase=python-mike
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Manage multiple versions of your MkDocs-powered documentation"
 arch=('any')
@@ -14,17 +14,16 @@ makedepends=('python-setuptools')
 #            'python-build'
 #            'python-installer'
 checkdepends=('python-pytest'
-              'python-importlib-metadata'
               'python-importlib_resources'
 #             'python-pytest-xdist'
               'python-pyparsing'
               'python-shtab'
               'python-verspec'
               'mkdocs'
-              'git')
+              'git')  # jinja, importlib-metadata <- mkdocs
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/jimporter/mike/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('bee9ae3c467305a08b10d2119b6ec84e')
+md5sums=('6e9796ab0bd5a3bca6c4ac1ef7a59ce6')
 
 get_pyinfo() {
      [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
@@ -48,7 +47,7 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     python setup.py install --root=tmp_install --prefix=/usr --optimize=1
-    PATH="${PWD}/tmp_install/usr/bin:${PATH}" PYTHONPATH="${PWD}/tmp_install/$(get_pyinfo site)" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 5
+    PATH="${PWD}/tmp_install/usr/bin:${PATH}" PYTHONPATH="${PWD}/tmp_install/$(get_pyinfo site)" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
 }
 
 package_python-mike() {
