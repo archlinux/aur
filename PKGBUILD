@@ -2,7 +2,7 @@
 
 _pkgname=iyuuplus
 pkgname="${_pkgname}-git"
-pkgver=20240602.124924
+pkgver=20240812.110712
 pkgrel=1
 pkgdesc="IYUU Auto Reseed Plus"
 arch=("any")
