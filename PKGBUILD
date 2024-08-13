@@ -4,16 +4,16 @@
 
 pkgname=lime3ds
 pkgver=2116
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 url='https://github.com/Lime3DS/Lime3DS'
 license=('GPL-2.0-or-later')
-depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio' 'zstd' 'soundtouch' 'fmt' 'libinih' 'openal' 'enet' 'zydis' 'boost-libs' 'boost')
+depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio' 'zstd' 'soundtouch' 'fmt' 'libinih' 'openal' 'enet' 'zydis' 'boost-libs')
 makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'ninja' 'boost')
 conflicts=('lime3ds-appimage' 'lime3ds-git')
 options=('!lto')
-source=("lime3ds::https://github.com/Lime3DS/Lime3DS/releases/download/$pkgver/$pkgname-unified-source-$pkgver.tar.xz")
+source=("https://github.com/Lime3DS/Lime3DS/releases/download/$pkgver/$pkgname-unified-source-$pkgver.tar.xz")
 md5sums=('914c969f4a4018783bec3377e031b037')
 
 build() {
@@ -51,5 +51,5 @@ build() {
 
 package() {   
     DESTDIR="$pkgdir/" ninja -C build install
-    rm -rf $pkgdir/usr/include/enet
+    rm -rf $pkgdir/usr/include/
 }
