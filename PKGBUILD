@@ -3,7 +3,7 @@
 # COntributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=pcs
-pkgver=0.11.7
+pkgver=0.11.8
 pkgrel=1
 pkgdesc='pacemaker corosync shell utility for cluster configuration'
 arch=('any')
@@ -24,7 +24,7 @@ depends=('pacemaker'
          'ttf-liberation')
 
 makedepends=('wget' 'python-setuptools' 'python-setuptools-scm' 'python-pip' 'ruby-bundler' 'fontconfig' 'ruby-bundler')
-source=("git+https://github.com/ClusterLabs/$pkgname#tag=v$pkgver")
+source=("git+https://github.com/ClusterLabs/$pkgname#commit=694c165b81af4847965afa1cdf61a1441e98dfc4")
 sha256sums=(SKIP)
 
 prepare() {
