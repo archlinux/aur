@@ -1,6 +1,6 @@
 # Maintainer: Laura Demkowicz-Duffy <dev@demkowiczduffy.co.uk>
 pkgname=protolint
-pkgver=0.50.3
+pkgver=0.50.5
 pkgrel=1
 pkgdesc="A pluggable linter and fixer to enforce Protocol Buffer style and conventions"
 arch=('x86_64')
@@ -9,11 +9,14 @@ license=('MIT')
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f0555090c3b435a942ee3db80d63a862de9728a14ad3b831bc4445a1e824bf85')
+sha256sums=('1be01df54565c4831db8f1dcef38347e25a7a945d9f3ff77ca7a488e0307b3ac')
 
 build() {
 	cd "$pkgname-$pkgver"
 	export GOFLAGS="-trimpath -buildmode=pie -mod=readonly -modcacherw -ldflags=-linkmode=external"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	go build ./cmd/protolint
 	go build ./cmd/protoc-gen-protolint
