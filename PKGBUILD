@@ -1,4 +1,5 @@
-# Maintainer: hype-vhs <4498312-hypevhs@users.noreply.gitlab.com>
+# Maintainer: Maddie Mewmews <maddie at mewmews dot gay>
+# Contributor: hype-vhs <4498312-hypevhs@users.noreply.gitlab.com>
 # Contributor: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=cherry-doom
 _pkgname=cherry-doom
