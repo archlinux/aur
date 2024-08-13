@@ -1,0 +1,14 @@
+pkgbase = daytona
+	pkgdesc = The Open Source Dev Environment Manager.
+	pkgver = 0.25.0
+	pkgrel = 1
+	url = https://www.daytona.io/
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	depends = docker
+	provides = daytona
+	source = daytona-v0.25.0.zip::https://github.com/daytonaio/daytona/archive/refs/tags/v0.25.0.zip
+	sha256sums = 4ab2d912d7660f54914641171d945dff0ebf17c40b0bf50ce27f06e0521e77b8
+
+pkgname = daytona
