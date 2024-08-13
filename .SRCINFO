@@ -4,13 +4,13 @@ pkgbase = jupyter-nbextension-rise
 	pkgrel = 2
 	url = https://github.com/damianavila/RISE
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python
+	makedepends = python-wheel
 	depends = jupyter-notebook
-	conflicts = python-rise
-	source = https://files.pythonhosted.org/packages/source/r/rise/rise-5.7.1.tar.gz
-	sha256sums = 641db777cb907bf5e6dc053098d7fd213813fa9a946542e52b900eb7095289a6
+	source = https://pypi.org/packages/source/r/rise/rise-5.7.1.tar.gz
+	sha512sums = df750daf98043d86e270deeefe03bdca9f5794710be634c9f2eae11f015d0ffffefac1951eb3a2849cd542d7b72a560555b4256567dac82f256efbca3c402591
 
 pkgname = jupyter-nbextension-rise
-
