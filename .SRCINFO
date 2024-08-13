@@ -1,24 +1,20 @@
 pkgbase = podman-desktop-companion-bin
 	pkgdesc = Cross-platform desktop integrated application with consistent UI,Learning tool for the powerful podman command line interface
-	pkgver = 4.1.0_rc.28
-	pkgrel = 7
+	pkgver = 5.2.0_rc.1
+	pkgrel = 1
 	url = https://iongion.github.io/podman-desktop-companion/
-	arch = aarch64
 	arch = x86_64
 	license = MIT
-	depends = gtk3
-	depends = alsa-lib
-	depends = nss
-	depends = nspr
+	depends = electron31
 	depends = podman
 	depends = docker
 	provides = podman-desktop-companion
-	conflicts = podman-desktop-companion=4.1.0_rc.28
-	source = LICENSE-4.1.0_rc.28::https://raw.githubusercontent.com/iongion/podman-desktop-companion/4.1.0-rc.28/LICENSE
+	conflicts = podman-desktop-companion=5.2.0_rc.1
+	source = podman-desktop-companion-5.2.0_rc.1.deb::https://github.com/iongion/podman-desktop-companion/releases/download/5.2.0-rc.1/podman-desktop-companion-amd64-5.2.0-rc.1.deb
+	source = LICENSE-5.2.0_rc.1::https://raw.githubusercontent.com/iongion/podman-desktop-companion/5.2.0-rc.1/LICENSE
+	source = podman-desktop-companion.sh
+	sha256sums = 0f6ab3f8f1b5969c3223bdeb1c6d81601c715181ce21dc56f29f3b67c2da0c3c
 	sha256sums = 1a33f39c0fb06d0bf3bc82dbb2ca621ebd225158dd9a73557f7f583a9d61ece6
-	source_aarch64 = podman-desktop-companion-4.1.0_rc.28-aarch64.deb::https://github.com/iongion/podman-desktop-companion/releases/download/4.1.0-rc.28/podman-desktop-companion-arm64-4.1.0-rc.28.deb
-	sha256sums_aarch64 = 5e506578978e843362ebfdd6b27778a65491264599e442e246784e570ea9d392
-	source_x86_64 = podman-desktop-companion-4.1.0_rc.28-x86_64.deb::https://github.com/iongion/podman-desktop-companion/releases/download/4.1.0-rc.28/podman-desktop-companion-amd64-4.1.0-rc.28.deb
-	sha256sums_x86_64 = 7801f0c01c402807bba07dc9ca7d559b0181d05a8049a33a776c55a44eed2c38
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = podman-desktop-companion-bin
