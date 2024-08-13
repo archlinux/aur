@@ -12,7 +12,7 @@ license=('BSD')
 depends=('nvidia-utils' 'python')
 makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('d027b21b95b1088b9fc278117f9f61b7c67f8e33a787e9f83f735f0f71ac32d0')
+sha256sums=('183d223ae487e5f00402d8da06c68c978ef8a9295793ee75559839c6ade7b229')
 
 # prepare() {
 # 	cd "$pkgname-$pkgver"
