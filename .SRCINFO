@@ -1,10 +1,10 @@
 pkgbase = decasify
 	pkgdesc = cast strings to title-case according to locale specific style guides including Turkish
-	pkgver = 0.5.8
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/alerque/decasify
 	arch = x86_64
-	license = GPL-3.0-only
+	license = LGPL-3.0-only
 	makedepends = cargo
 	makedepends = lua
 	makedepends = lua-luarocks-build-rust-mlua
@@ -22,10 +22,10 @@ pkgbase = decasify
 	makedepends = jq
 	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/alerque/decasify/releases/download/v0.5.8/decasify-0.5.8.tar.zst
-	source = https://github.com/alerque/decasify/releases/download/v0.5.8/decasify-0.5.8.tar.zst.asc
+	source = https://github.com/alerque/decasify/releases/download/v0.6.0/decasify-0.6.0.tar.zst
+	source = https://github.com/alerque/decasify/releases/download/v0.6.0/decasify-0.6.0.tar.zst.asc
 	validpgpkeys = 9F377DDB6D3153A48EB3EB1E63CC496475267693
-	sha256sums = b69c6584b6bb2b80d9c4f8c5e61a5524e44d99ea5b9c991d059d9ab3d547ba69
+	sha256sums = 01293c3300692bc4596ad8f91e9dbd0d0adb0bccf35a5ebac04047ce693d3c0b
 	sha256sums = SKIP
 
 pkgname = decasify
