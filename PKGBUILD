@@ -1,9 +1,9 @@
 # Maintainer: Dee.H.Y <dongfengweixiao AT hotmail DOT com>
 pkgname=androidtoolkit-bin
 _pkgname=androidtoolkit
-pkgver=1.4.4
+pkgver=1.5.0
 _pkgver=1
-pkgrel=4
+pkgrel=1
 pkgdesc="Desktop tools for Android developers, supports Windows, Mac and Linux."
 arch=('x86_64')
 url="https://github.com/LazyIonEs/AndroidToolKit"
@@ -15,7 +15,7 @@ source=(
 	"${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.deb"
     "LICENSE"
 )
-sha256sums=('7a2651b28fed15ac312c9d919846d8ae13be32fe7d14ebf950baced56d83f633'
+sha256sums=('caf57f325c7cd545a78439949816cee3b4990d736b786e66f636dafff2aacfb6'
             '5d8e7b77c07cdf97d60ed2ec16478fa46ff34b00a00ed87ba4870a25333b8850')
 
 package() {
