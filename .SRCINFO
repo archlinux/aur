@@ -1,0 +1,13 @@
+pkgbase = heatshrink
+	pkgdesc = A data compression/decompression library for embedded/real-time systems
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/atomicobject/heatshrink
+	arch = x86_64
+	license = ISC
+	source = https://github.com/atomicobject/heatshrink/archive/refs/tags/v0.4.1.tar.gz
+	source = https://github.com/atomicobject/heatshrink/pull/77.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = heatshrink
