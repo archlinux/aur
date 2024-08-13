@@ -1,5 +1,5 @@
 # Maintainer: Barry Smith <brrtsm at gmmal dot com>
-# Contributor: johnnybash <georg at grgw dot de> PGP D126E2910543DE2D
+# Contributor: johnnybash <georg at grgw dot de>
 # Contributor: jrdemasi <jrdemasi@gmai.com>
 # Contributor: Fernando Manfredi <contact at acidhub.click>
 # Contributor: Evan Teitelman <teitelmanevan at gmail dot com>
@@ -7,9 +7,9 @@
 # Contributor: CRT <cirkit@kode.email>
 validpgpkeys=('EFD9413B17293AFDFE6EA6F1402A088DEDF104CB')
 pkgname=ntopng
-pkgver=6.0
-_ndpiver=4.8
-pkgrel=2
+pkgver=6.2
+_ndpiver=4.10
+pkgrel=1
 pkgdesc='The next generation version of the original ntop, a network traffic probe that shows the network usage'
 arch=('x86_64' 'i686')
 url='http://www.ntop.org/'
@@ -22,8 +22,8 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ntop/$pkgname/archive/$pkgv
 	"$pkgname@.service"
 	"$pkgname.install"
 	"$pkgname.sysusers")
-sha512sums=('d9d27bed0706d36c82a5b22b2b918014fed7d614e11c79cc47ee1033ae5fd2f703a67f3c5205c63c014bbd2839eb7c78616137ee6cc11d09ebcf6fafc7a658d2'
-            'f76eb99a83262a6d148509c7ce457b9af35dce3657c8191405ba15999b25c323ee0bee2907b0a7e6ba6f12a63182fde839e0098a4e8e0f63999e600526f3036b'
+sha512sums=('00370116dc6ed13b78c5da4338c359abc6a9b24c529c06ce4298df9a6b411d3e5799f29b41543a17d7fc70a3f5b1717306723f5a6899ee2c971ad9eafff602d8'
+            '311836477bafc9c7a4ef6cf18438870ec186db4407390883bcd8376bd709cd5c5700e8a3f028dbc3e49012e828ee5199ee86e76ad4d7b1595903818e96bf9cb8'
             'b3d9a2032cce91ee4faf81522a30a2877540b3fc7a0d43f8fe4f01c16efb0b8f6e73cfe26028b3a070296d7156abf511d3e11f93635ca2de8a4d67322b0ade60'
             '72749fbade0f14345481815355f42552bac3a9d053d86cf62caecd3cf7d304fadafd7ccf9a6a456ab7e5b8b0d36a3b92b1f4e1ecd0c40fa3d11e4a7d98cab39e'
             'bb7f81a43e6bd1d58e41693dca1b5f03e507fb040bf036a5847a273f55bcfa665e8512220a54495c2926afb64e786d4e666556d7880be432cc7660de105e3ee4')
