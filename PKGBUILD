@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-settings-git
-pkgver=1.0.0.alpha.1.r4.g66f3216
+pkgver=1.0.0.alpha.1.r16.g6f26ad7
 pkgrel=1
 pkgdesc="The settings application for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
@@ -16,6 +16,8 @@ depends=(
   'fontconfig'
   'iso-codes'
   'libinput'
+  'libpipewire'
+  'libpulse'
   'libxkbcommon'
   'otf-fira-mono'
   'otf-fira-sans'
