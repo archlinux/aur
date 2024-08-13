@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 basedir="$(dirname "$(readlink -f "$0")")"
-dlls=(dxgi.dll d3d9.dll d3d10core.dll d3d11.dll)
+dlls=(dxgi.dll d3d8.dll d3d9.dll d3d10core.dll d3d11.dll)
 dxvk_lib32_path="$basedir/x32"
 dxvk_lib64_path="$basedir/x64"
 

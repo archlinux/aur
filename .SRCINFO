@@ -1,7 +1,7 @@
 pkgbase = dxvk-gplasync-bin
 	pkgdesc = A Vulkan-based compatibility layer for Direct3D 9/10/11 (with gplasync patch)
 	pkgver = 2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Ph42oN/dxvk-gplasync
 	arch = x86_64
 	license = zlib-acknowledgement
@@ -11,17 +11,19 @@ pkgbase = dxvk-gplasync-bin
 	optdepends = wine
 	optdepends = proton
 	provides = dxvk=2.4
+	provides = d8vk
 	provides = d9vk
 	conflicts = dxvk
+	conflicts = d8vk
 	conflicts = d9vk
 	options = !strip
 	source = https://gitlab.com/Ph42oN/dxvk-gplasync/-/raw/main/releases/dxvk-gplasync-v2.4-1.tar.gz
 	source = dxvk-gplasync-env.conf
 	source = setup_dxvk_proton.sh
-	source = https://raw.githubusercontent.com/doitsujin/dxvk/4f90d7bf5f9ad785660507e0cb459a14dab5ac75/setup_dxvk.sh
+	source = setup_dxvk.sh
 	sha256sums = 687d6ef959a949f786155e6632849b919b47b63da316110cf0bf3d43e548b380
 	sha256sums = 2bce3bf5dc5a3c7312bbaae96daf82e0fe6c370e96017ce5a0c49f40901866e3
-	sha256sums = 64fbbf9f30f2f4e8d1d82b088ade92f1bf8817a4bf6e21d7dd978f4276abe1a6
-	sha256sums = 0f688815530ab5e8cc89b9b45d9b1d66cd8cd5a7770fb8249339af555a30dfe7
+	sha256sums = ce5712e2287b1ab52a9160dd7bacf0694ee3e7a5888bd71a06f27ca67af051d6
+	sha256sums = 778ec44acc09ac9c718354c9a96776b60bd4156dacf584e5c29b2c9697c76684
 
 pkgname = dxvk-gplasync-bin

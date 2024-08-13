@@ -3,29 +3,31 @@
 # Contributor: giantdwarf <17hoehbr@gmail.com>
 # Contributor: Ewout van Mansom <ewout@vanmansom.name>
 
-pkgname=dxvk-gplasync-bin
+_pkgname=dxvk-gplasync
+pkgname=$_pkgname-bin
 pkgver=2.4
-pkgrel=1
+pkgrel=2
+_srcver="v$pkgver-1"
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 9/10/11 (with gplasync patch)"
 arch=('x86_64')
-url="https://gitlab.com/Ph42oN/dxvk-gplasync"
+url="https://gitlab.com/Ph42oN/$_pkgname"
 license=('zlib-acknowledgement')
 depends=('vulkan-icd-loader' 'lib32-vulkan-icd-loader' 'bash')
 optdepends=('wine' 'proton')
-provides=("dxvk=$pkgver" 'd9vk')
-conflicts=('dxvk' 'd9vk')
+provides=("dxvk=$pkgver" 'd8vk' 'd9vk')
+conflicts=('dxvk' 'd8vk' 'd9vk')
 options=(!strip)
-source=("$url/-/raw/main/releases/dxvk-gplasync-v$pkgver-$pkgrel.tar.gz"
-        'dxvk-gplasync-env.conf'
+source=("$url/-/raw/main/releases/$_pkgname-$_srcver.tar.gz"
+        "$_pkgname-env.conf"
         'setup_dxvk_proton.sh'
-        'https://raw.githubusercontent.com/doitsujin/dxvk/4f90d7bf5f9ad785660507e0cb459a14dab5ac75/setup_dxvk.sh')
+        'setup_dxvk.sh') # https://raw.githubusercontent.com/doitsujin/dxvk/4f90d7bf5f9ad785660507e0cb459a14dab5ac75/setup_dxvk.sh
 sha256sums=('687d6ef959a949f786155e6632849b919b47b63da316110cf0bf3d43e548b380'
             '2bce3bf5dc5a3c7312bbaae96daf82e0fe6c370e96017ce5a0c49f40901866e3'
-            '64fbbf9f30f2f4e8d1d82b088ade92f1bf8817a4bf6e21d7dd978f4276abe1a6'
-            '0f688815530ab5e8cc89b9b45d9b1d66cd8cd5a7770fb8249339af555a30dfe7')
+            'ce5712e2287b1ab52a9160dd7bacf0694ee3e7a5888bd71a06f27ca67af051d6'
+            '778ec44acc09ac9c718354c9a96776b60bd4156dacf584e5c29b2c9697c76684')
 
 package() {
-  cd "dxvk-gplasync-v$pkgver-$pkgrel" || exit 1
+  cd "$_pkgname-$_srcver" || exit 1
 
   install -dm755 "$pkgdir/usr/share"
   cp -dr --preserve=mode,timestamp . "$pkgdir/usr/share/dxvk"
@@ -37,5 +39,5 @@ package() {
   ln -s /usr/share/dxvk/setup_dxvk_proton.sh "$pkgdir/usr/bin/setup_dxvk_proton"
 
   install -dm755 "$pkgdir/etc/environment.d"
-  install -Dm644 "$srcdir/dxvk-gplasync-env.conf" "$pkgdir/etc/environment.d/dxvk-gplasync-env.conf"
+  install -Dm644 "$srcdir/$_pkgname-env.conf" "$pkgdir/etc/environment.d/$_pkgname-env.conf"
 }
