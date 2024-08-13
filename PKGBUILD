@@ -66,7 +66,7 @@ After=network-online.target network.target
 [Service]
 Type=exec
 Environment="LOCAL_ROOT_PATH=/media/clouddrive"
-ExecStart=clouddrive
+ExecStart=/opt/clouddrive/clouddrive
 
 [Install]
 WantedBy=multi-user.target
