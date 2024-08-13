@@ -3,9 +3,9 @@
 # Contributor: Holger Schramm <dev@strace.it>
 pkgname=mingo-bin
 _pkgname=Mingo
-pkgver=1.13.5
+pkgver=1.14.1
 _electronversion=27
-pkgrel=4
+pkgrel=1
 pkgdesc="A proprietary MongoDB GUI based on electron from developers for developers"
 arch=(
     'aarch64'
@@ -26,10 +26,10 @@ source=(
     "LICENSE-${pkgver}.html::${url}/eula"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('39a09147a94e3b8c7d749fc4ccfd9aaf38f5928f80fddb3175954202e41f8e6f'
+sha256sums=('55f554ca553f458700927b374d1ffb390a13c42bd082b986b626f1410c92a842'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('fd6a0c03d3de97c51021a3bf833d527be8db092cc8cabada36b679ab74919cf3')
-sha256sums_x86_64=('af92ee85287d8bd8f57f71568121a7cd866880346c1edf961022191cd98bbf35')
+sha256sums_aarch64=('d1d47b9c3e860fd5d198c7e03976383c8b47b6d1f5f989d7a495f9815c2c9f02')
+sha256sums_x86_64=('a8675bf3d08815a9e77f97be3f2827ccd53aab0d79ee8b6a3d27398abd3f1eaa')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
