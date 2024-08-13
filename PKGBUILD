@@ -1,40 +1,37 @@
 # Maintainer: Piroro-hs
 
 pkgname=hyprland-nox
-pkgver=0.41.2
+pkgver=0.42.0
 pkgrel=1
-pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (w/o XWayland support)"
+pkgdesc="An independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks. (w/o XWayland support)"
 arch=('x86_64')
 url='https://github.com/hyprwm/Hyprland'
 license=('BSD-3-Clause')
 groups=()
-depends=('cairo'
+depends=('aquamarine'
+         'cairo'
          'gcc-libs'
          'glib2'
          'glibc'
          'hyprcursor'
          'hyprlang'
          'hyprutils'
-         'libdisplay-info'
          'libdrm'
          'libglvnd'
          'libinput'
-         'libliftoff'
+         'libxcursor'
          'libxkbcommon'
-         'opengl-driver'
+         'mesa'
          'pango'
          'pixman'
-         'seatd'
-         'systemd-libs'
-         'tomlplusplus'
          'util-linux-libs'
          'wayland')
 makedepends=('cmake'
              'git'
              'hwdata'
              'hyprwayland-scanner'
-             'meson'
              'ninja'
+             'python'
              'wayland-protocols')
 optdepends=('cmake: to build and install plugins using hyprpm'
             'cpio: to build and install plugins using hyprpm'
@@ -44,11 +41,9 @@ conflicts=("${pkgname%-nox}")
 replaces=()
 backup=()
 source=("$pkgname::git+$url#tag=v$pkgver"
-        "${pkgname}_wlroots-hyprland::git+https://github.com/hyprwm/wlroots-hyprland.git"
         "${pkgname}_hyprland-protocols::git+https://github.com/hyprwm/hyprland-protocols.git"
         "${pkgname}_udis86::git+https://github.com/canihavesomecoffee/udis86.git")
-sha256sums=('4e6e6b98c4f52be94b77cd0487552713ff0ddaa348b58e4d6e0ced56636f8606'
-            'SKIP'
+sha256sums=('cda4d93ec3fdb537ec1a4e84e9cfe603a59b7bc29fa98f8c678d764171293beb'
             'SKIP'
             'SKIP')
 
@@ -56,10 +51,11 @@ prepare() {
   cd "$srcdir/$pkgname"
   git submodule init
   git submodule deinit subprojects/tracy
-  git config submodule.subprojects/wlroots-hyprland.url "$srcdir/${pkgname}_wlroots-hyprland"
   git config submodule.subprojects/hyprland-protocols.url "$srcdir/${pkgname}_hyprland-protocols"
   git config submodule.subprojects/udis86.url "$srcdir/${pkgname}_udis86"
   git -c protocol.file.allow=always submodule update
+
+  sed -E -i '/lib(seat|display-info|liftoff)/d' "$srcdir/${pkgname}/CMakeLists.txt"
 }
 
 build() {
