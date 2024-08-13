@@ -2,7 +2,7 @@
 # Contributor: Stefan Tatschner <stefan@rumpelsepp.org>
 
 pkgname=meli
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
 pkgdesc='A MUA for the terminal aiming for configurability and extensibility with sane defaults'
 arch=(x86_64)
@@ -12,10 +12,12 @@ depends=(dbus-glib)
 makedepends=(cargo
              mandoc)
 source=("$pkgname-$pkgver.tag.gz::https://git.meli.delivery/meli/meli/archive/v$pkgver.tar.gz")
-sha256sums=('4d59309bfd8420556bb452092086958b40dcf7755e1363bdc64f4c0d19a14970')
+sha256sums=('3d7067ec336c58f96c6c1ebaf7a7817a86dbc40cf2133114b1788a10088bdbc2')
 
 prepare() {
 	cd "$pkgname"
+	# Upstream pinned dependencies don't build on 1.80
+	cargo update
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
