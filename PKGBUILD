@@ -16,10 +16,8 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 build() {
   cd "${srcdir}/pagmo2-$pkgver"
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DPAGMO_WITH_EIGEN3=ON -DPAGMO_WITH_NLOPT=ON -DPAGMO_WITH_IPOPT=ON ..
-    make
-    popd
+    ${_arch}-cmake -DPAGMO_WITH_EIGEN3=ON -DPAGMO_WITH_NLOPT=ON -DPAGMO_WITH_IPOPT=ON -DCMAKE_UNITY_BUILD=ON -B build-${_arch} .
+    make -C build-${_arch}
   done
 }
 
