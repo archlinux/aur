@@ -1,7 +1,7 @@
 # Maintainer: FlekGeKei <FlekGeKei@outlook.com>
 
 pkgname=elyprismlauncher
-pkgver=8.3
+pkgver=8.4
 pkgrel=1
 pkgdesc="This fork of Prism Launcher replaces legacy Mojang accounts with Ely.by accounts. This is not endorsed by Prism Launcher or Ely.by."
 arch=('i686' 'x86_64' 'aarch64')
