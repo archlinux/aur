@@ -1,0 +1,20 @@
+pkgbase = acados-git
+	pkgdesc = Fast and embedded solvers for nonlinear optimal control
+	pkgver = 0.3.5.r7.gf0f474c
+	pkgrel = 1
+	url = https://github.com/acados/acados
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = cmake
+	optdepends = casadi
+	optdepends = blasfeo
+	optdepends = hpipm
+	optdepends = coin-or-qpoases
+	optdepends = osqp
+	provides = acados
+	source = git+https://github.com/acados/acados
+	sha256sums = SKIP
+
+pkgname = acados-git
