@@ -1,23 +1,21 @@
 # Maintainer: Michael Clark <iiridayn@gmail.com>
 pkgname=pico-tts
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="lib and unix binary for text-to-speech engine from Android"
 arch=('x86_64')
 url="https://github.com/Iiridayn/pico-tts"
 license=('MIT')
-makedepends=('binutils' 'git')
-provides=('libsvoxpico.so')
+depends=('glibc')
+makedepends=('git')
+source=("git+$url.git#tag=$pkgver"
+       "git+https://android.googlesource.com/platform/external/svox")
+sha256sums=("SKIP" "SKIP")
 
 prepare() {
-	if [ -d "$pkgname" ]; then
-		git -C "$pkgname" fetch
-	else
-		git clone --recurse-submodules "https://github.com/Iiridayn/pico-tts.git"
-	fi
 	cd "$pkgname"
-	git checkout tags/"$pkgver"
-	git submodule update
+	git config submodule.svox.url "${srcdir}/svox"
+	git submodule--helper update
 }
 
 build() {
@@ -28,4 +26,6 @@ build() {
 package() {
 	cd "$pkgname"
 	make DESTDIR="$pkgdir/" install
+	# https://wiki.archlinux.org/title/PKGBUILD#license
+	install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
