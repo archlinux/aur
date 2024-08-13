@@ -1,0 +1,103 @@
+diff -Naur unzip-jp-gui-old/README.md unzip-jp-gui/README.md
+--- unzip-jp-gui-old/README.md	2024-08-13 17:09:47.591027449 -0400
++++ unzip-jp-gui/README.md	2024-08-13 17:10:12.484889916 -0400
+@@ -38,6 +38,31 @@
+ ```
+ python archive_gui.py
+ ```
++
++## Unzip JP Command Line
++
++A command-line version of the tool exists as 'unzip\_jp':
++
++```
++usage: unzip-jp [-h] [-d EXTRACTION_LOCATION] [-P PASSWORD] archive
++
++Unzips archives containing Shift-JIS-encoded characters
++
++positional arguments:
++  archive               The archive to extract.
++
++options:
++  -h, --help            show this help message and exit
++  -d EXTRACTION_LOCATION, --extraction-location EXTRACTION_LOCATION
++                        Location to place the extracted files. If not given,
++                        the current directory will be used.
++  -P PASSWORD, --password PASSWORD
++                        The password (if any) for the zip archive.
++```
++
++Can be installed by marking executable and placing in ~/.local/bin (or other $PATH location) on Linux.
++No other setup is necessary, uses python standard library only.
++
+ ## Acknowledgements
+ 
+  - [Norbert Pozar](https://github.com/rekka/unzip-jp)
+diff -Naur unzip-jp-gui-old/unzip-jp unzip-jp-gui/unzip-jp
+--- unzip-jp-gui-old/unzip-jp	1969-12-31 19:00:00.000000000 -0500
++++ unzip-jp-gui/unzip-jp	2024-08-13 17:10:12.484889916 -0400
+@@ -0,0 +1,64 @@
++#!/usr/bin/env python3
++
++# Extracts a zip archive while converting file names from Shift-JIS encoding to UTF-8.
++
++import zipfile
++import sys
++import os
++import codecs
++import argparse
++
++argument_parser = argparse.ArgumentParser(prog='unzip-jp',
++                                          description='Unzips archives containing Shift-JIS-encoded characters')
++
++argument_parser.add_argument('archive',
++                             type=argparse.FileType('rb'),
++                             help="The archive to extract.")
++
++argument_parser.add_argument('-d','--extraction-location',
++                             action='store',
++                             default=os.getcwd(),
++                             help="Location to place the extracted files. If not given, the current directory will be used.")
++
++argument_parser.add_argument('-P', '--password',
++                             action='store',
++                             help="The password (if any) for the zip archive.")
++
++args = argument_parser.parse_args()
++
++directory = os.path.splitext(os.path.basename(args.archive.name))[0]
++
++if not os.path.exists(os.path.join(args.extraction_location, directory)):
++    os.makedirs(os.path.join(args.extraction_location, directory))
++    directory = os.path.join(args.extraction_location, directory)
++
++with zipfile.ZipFile(args.archive, 'r') as z:
++    if args.password:
++        z.setpassword(args.password.encode('cp850','replace'))
++
++    for f in z.infolist():
++        bad_filename = f.filename
++        if bytes != str:
++            # Python 3 - decode filename into bytes
++            # assume CP437 - these zip files were from Windows anyway
++            bad_filename = bytes(bad_filename, 'cp437')
++        try:
++            uf = codecs.decode(bad_filename, 'sjis')
++        except:
++            uf = codecs.decode(bad_filename, 'shift_jisx0213')
++        # need to print repr in Python 2 as we may encounter UnicodeEncodeError
++        # when printing to a Windows console
++        print(repr(uf))
++        filename=os.path.join(directory, uf)
++
++        # create directories if necessary
++        if not os.path.exists(os.path.dirname(filename)):
++            try:
++                os.makedirs(os.path.dirname(filename))
++            except OSError as exc: # Guard against race condition
++                if exc.errno != errno.EEXIST:
++                    raise
++        # don't try to write to directories
++        if not filename.endswith('/'):
++            with open(filename, 'wb') as dest:
++                dest.write(z.read(f))

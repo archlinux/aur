@@ -1,0 +1,18 @@
+pkgbase = unzip-jp-gui-git
+	pkgdesc = unzip SHIFT-JIS encoded zip archives
+	pkgver = v1.0.0.r4.d082e31
+	pkgrel = 1
+	url = https://github.com/saberzero1/unzip-jp-gui
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = tk
+	provides = unzip-jp-gui
+	conflicts = unzip-jp-gui
+	source = git+https://github.com/saberzero1/unzip-jp-gui
+	source = cli.patch
+	sha256sums = SKIP
+	sha256sums = 5184f21e1bd66ed70d98181b97a397932a8418a285dfe9600dfc129f698b0b9e
+
+pkgname = unzip-jp-gui-git
