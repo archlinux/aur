@@ -2,7 +2,7 @@
 
 _pkgname=pynvml
 pkgname=python-pynvml
-pkgver=11.5.0
+pkgver=11.5.3
 pkgrel=1
 epoch=
 pkgdesc="Python Bindings for the NVIDIA Management Library"
