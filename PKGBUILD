@@ -35,7 +35,7 @@ _print_libav_option() {
   local ffmpeg_supported ffmpeg_installed libav_option
 
   # Compare major version numbers of ffmpeg
-  # Check the minimal supported version and the version used by the makefile
+  # Check the maximum known supported version and the version used by the makefile
   ffmpeg_supported="$(awk '$1 == "FFMPEG" { print $3 }' Makefile.ffmpeg | sed 's/^ffmpeg-//' | cut -d'.' -f1)"
   ffmpeg_installed="$(pacman -Q ffmpeg | awk '{ print $2 }' | sed 's/^ *//;s/r.*[.]//;s/.*://' | cut -d'.' -f1)"
   if ((ffmpeg_installed <= 7)) || ((ffmpeg_supported > 0 && ffmpeg_supported == ffmpeg_installed)); then
