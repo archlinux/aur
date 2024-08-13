@@ -3,7 +3,7 @@
 
 _pkgname="ferretdb"
 pkgname="${_pkgname}-bin"
-pkgver=1.23.0
+pkgver=1.23.1
 pkgrel=1
 pkgdesc="A proxy that converts MongoDB queries to SQL and uses PostgreSQL as the database engine"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -28,9 +28,9 @@ sha256sums=('9cf47a729f549108eba8eb574cdfe00a555c1a30c2d9f85a2ccd16a45cfdbdc8'
             '69123ae494b201311bf053e109fad0a539549937aab1ec3777a557762cbbabeb'
             'c832b3591708948a205d5625900b84f359a01213edc2f44e8c725997c52d995d'
             'e4e1239ca097f1e45c453a847c6f3ba4a0f5830ab031c3e085261326e45bccb1')
-sha256sums_x86_64=('fa0615a28f938ff2f4876ff0ec5ebba6f472466f0454410166f6788eea1d834c')
-sha256sums_aarch64=('9fce10a51d087268f682b28a5e86775a84f39601018e62cc8c4f77f0f0a7836d')
-sha256sums_armv7h=('cee77d4e45aba4fc62a9345111c8b923c86b4b6edf36e926bd2dc7d5420c69e7')
+sha256sums_x86_64=('f8141bf02874b4b1583a7927423e6c713ab95947b617e575b9eebf0804dd9e10')
+sha256sums_aarch64=('b588462d94d0a04b5dce45d5fd042f7d008e8c3c915a7da63a3710ac7e4da22e')
+sha256sums_armv7h=('b448845103c0d481fd2ef22c0d90f996696133b9f193595cd32794ad45ea1caa')
 
 package() {
   cd "${srcdir}"
