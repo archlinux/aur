@@ -1,4 +1,4 @@
-# Maintainer: Sencyy <sencyy@protonmail.com>
+# Maintainer: Sencyy <sencyy@cock.li>
 # Most of this PKGBUILD was taken from prismlauncher
 
 pkgname=prismlauncher-cracked
