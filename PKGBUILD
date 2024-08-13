@@ -17,7 +17,7 @@ checkdepends=()
 optdepends=('restic')
 provides=('borgtui')
 conflicts=('borgtui')
-options=()
+options=('!lto')
 source=("git+https://github.com/dpbriggs/borgtui")
 sha256sums=(SKIP)
 

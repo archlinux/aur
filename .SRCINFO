@@ -18,6 +18,7 @@ pkgbase = borgtui-git
 	optdepends = restic
 	provides = borgtui
 	conflicts = borgtui
+	options = !lto
 	source = git+https://github.com/dpbriggs/borgtui
 	sha256sums = SKIP
 
