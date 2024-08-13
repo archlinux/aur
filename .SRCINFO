@@ -1,13 +1,12 @@
 pkgbase = rdrview
 	pkgdesc = Firefox Reader View as a command line tool
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/eafer/rdrview
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
 	depends = curl
-	depends = glibc
 	depends = libseccomp
 	depends = libxml2
 	optdepends = elinks: open pages in elinks

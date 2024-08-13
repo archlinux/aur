@@ -2,14 +2,13 @@
 
 pkgname=rdrview
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Firefox Reader View as a command line tool"
 arch=(x86_64)
 url="https://github.com/eafer/$pkgname"
 license=(Apache-2.0)
 depends=(
   curl
-  glibc
   libseccomp
   libxml2
 )
