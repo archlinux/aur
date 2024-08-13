@@ -1,5 +1,5 @@
 pkgbase = lazap-bin
-	pkgdesc = Lightweight cross-platform client, unifying games into a single, modern library 🎮 (binary release)
+	pkgdesc = Lightweight cross-platform software, unifying games into a single, modern library (binary release)
 	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/Lazap-Development/Lazap

@@ -4,7 +4,7 @@
 pkgname=lazap-bin
 pkgver=0.8.3
 pkgrel=1
-pkgdesc="Lightweight cross-platform client, unifying games into a single, modern library 🎮 (binary release)"
+pkgdesc="Lightweight cross-platform software, unifying games into a single, modern library (binary release)"
 url="https://github.com/Lazap-Development/Lazap"
 license=('CC-BY-NC-SA-4.0')
 arch=('x86_64')
