@@ -2,17 +2,17 @@
 # Co-Maintainer: p0ryae
 
 pkgname=lazap-bin
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Lightweight cross-platform client, unifying games into a single, modern library 🎮 (binary release)"
 url="https://github.com/Lazap-Development/Lazap"
 license=('CC-BY-NC-SA-4.0')
 arch=('x86_64')
-depends=('libayatana-appindicator' 'libxtst' 'webkit2gtk')
+depends=('gtk3' 'libappindicator-gtk3' 'webkit2gtk' 'xdotool')
 provides=("lazap")
 conflicts=("lazap")
 source=("$url/releases/download/v$pkgver/lazap-$pkgver-1.x86_64.rpm")
-sha256sums=('da92cde6c5036e04dcfb7391526f318b36995d0d3db9fcef9a7bfa78bb10ef5b')
+sha256sums=('f05a0c398c57001124b43589493d5f5956662b34c9e92ba090f227f546a651d0')
 
 package() {
   mv usr "$pkgdir"
