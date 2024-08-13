@@ -1,0 +1,23 @@
+pkgbase = cherry-doom
+	pkgdesc = Fork of Nugget Doom with more additional features
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/xemonix0/Cherry-Doom/
+	install = install.sh
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = python3
+	depends = sdl2
+	depends = sdl2_net
+	depends = openal
+	depends = libsndfile
+	depends = hicolor-icon-theme
+	depends = glibc
+	depends = fluidsynth
+	depends = libxmp
+	optdepends = soundfont-fluid: soundfont for MIDI playback
+	source = cherry-doom-2.0.0.tar.gz::https://github.com/xemonix0/Cherry-Doom//archive/refs/tags/cherry-doom-2.0.0.tar.gz
+	b2sums = c32b039af7283234339aac4beca78ab20ac70c8baac90f195c3b55bcf716b5d1
+
+pkgname = cherry-doom
