@@ -2,16 +2,16 @@
 # Maintainer: wheaney <wayne at xronlinux dot com>
 _pkgbase=XRLinuxDriver
 pkgname="xr-driver-breezy-gnome-git"
-pkgver=0.10.5
-pkgrel=3
+pkgver=0.10.6
+pkgrel=1
 pkgdesc="XR Linux Driver for Breezy GNOME"
 arch=('x86_64' 'aarch64')
 url="https://github.com/wheaney/XRLinuxDriver"
 license=('GPL-3.0')
 install=hooks.install
 makedepends=('cmake' 'make')
-depends=('openssl' 'libevdev' 'libusb' 'json-c' 'curl' 'hidapi' 'python-yaml')
-source=("git+${url}")
+depends=('openssl' 'libevdev' 'libusb' 'json-c' 'curl' 'hidapi')
+source=("git+${url}#commit=c1089867b32039efe92870f9b0ca32cedf7a3124")
 md5sums=(SKIP)
 
 build() {
@@ -44,6 +44,7 @@ package() {
     install -Dm644 ${_pkgbase}/udev/70-viture-xr.rules "${pkgdir}"/usr/lib/udev/rules.d/70-viture-xr.rules
     install -Dm644 ${_pkgbase}/udev/70-xreal-xr.rules "${pkgdir}"/usr/lib/udev/rules.d/70-xreal-xr.rules
     install -Dm644 ${_pkgbase}/udev/70-rayneo-xr.rules "${pkgdir}"/usr/lib/udev/rules.d/70-rayneo-xr.rules
+    install -Dm644 ${_pkgbase}/udev/70-rokid-xr.rules "${pkgdir}"/usr/lib/udev/rules.d/70-rokid-xr.rules
     install -Dm644 ${_pkgbase}/udev/70-uinput-xr.rules "${pkgdir}"/usr/lib/udev/rules.d/70-uinput-xr.rules
 
     # make sure uinput module is loaded
