@@ -12,3 +12,19 @@ pkgbase = python-sty
 	b2sums = 7b2d74cf0b669c94916e33be79e30eb8e7679bbeecad3edc6a230b1c66011d800ea58b2a0aa8bc31a603815cd77f1befb392a6627f2f19ccf939135570cd61c2
 
 pkgname = python-sty
+pkgbase = python-sty
+	pkgdesc = String styling for your terminal
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://sty.mewo.dev/
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
+	depends = python
+	source = python-sty-1.0.5.tar.gz::https://github.com/feluxe/sty/archive/refs/tags/v1.0.5.tar.gz
+	b2sums = 99c3c75111395b26a7d0904cdbe8244363cc65f05e788b6470c45f7033f39a3ad5ab15e8ab3db92bde34f9c76ba78fbca61c2aee18f1f8cf1f7d17bb3c0b2a9c
+
+pkgname = python-sty

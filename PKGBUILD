@@ -2,24 +2,24 @@
 
 _name=sty
 pkgname=python-${_name}
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="String styling for your terminal"
 arch=(any)
 url="https://sty.mewo.dev/"
-license=(Apache)
+license=(Apache-2.0)
 depends=(python)
-makedepends=(python-setuptools python-toml)
+makedepends=(python-build python-installer python-wheel python-poetry)
 source=($pkgname-$pkgver.tar.gz::"https://github.com/feluxe/sty/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=("7b2d74cf0b669c94916e33be79e30eb8e7679bbeecad3edc6a230b1c66011d800ea58b2a0aa8bc31a603815cd77f1befb392a6627f2f19ccf939135570cd61c2")
+b2sums=("99c3c75111395b26a7d0904cdbe8244363cc65f05e788b6470c45f7033f39a3ad5ab15e8ab3db92bde34f9c76ba78fbca61c2aee18f1f8cf1f7d17bb3c0b2a9c")
 
 build() {
 	cd $_name-$pkgver
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package(){
 	cd $_name-$pkgver
-	python setup.py install --root="$pkgdir" --optimize=1
+	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
