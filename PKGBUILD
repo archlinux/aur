@@ -1,14 +1,15 @@
 # Maintainer: Your Name <stefanov.m@ati.su>
 _basename=time-desktop
+_baseurl=https://time-apps.tinkoff.ru
 pkgname=${_basename}-bin
 pkgver=6.21.0
-pkgrel=2
-pkgdesc="Time Desktop App"
+pkgrel=3
+pkgdesc="TiMe (Tinkoff Messenger) is a corporate messenger based on Mattermost. This package provides the Linux desktop application."
 arch=('x86_64')
-url="https://time-apps.tinkoff.ru/production/on-premise/desktop/linux"
+url="${_baseurl}/production/on-premise/download-page/index.html"
 license=('Apache License, Version 2.0')
 depends=('glibc')
-source=("${url}/time-desktop-linux-x64.tar.gz" "time.desktop")
+source=("${_baseurl}/production/on-premise/desktop/linux/time-desktop-linux-x64.tar.gz" "time.desktop")
 sha256sums=('397494dc055e8426f29d3dfeef1e4635e671507cbc184c9f91d4fc680e17dc49'
             '858a3b5d784c0e9499c83e8d580695514206556e8dc4877f54a14e4aa7903111')
 
