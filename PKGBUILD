@@ -5,7 +5,7 @@
 pkgname=netatalk2
 _pkgname=netatalk
 pkgver=2.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source implementation of the Apple Filing Protocol (for old Macs)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://netatalk.sourceforge.io"
@@ -25,7 +25,7 @@ depends=(
     'pam'
     'perl'
 )
-makedepends=()
+makedepends=('meson')
 optdepends=('cups: Printer support')
 conflicts=(netatalk)
 backup=(
@@ -52,38 +52,30 @@ sha256sums=('067c8b0ed1e583547794c31c205d59f6fb764d69da7df8f3c04957dcb97e1e19')
 #}
 
 build() {
-    cd "$_pkgname-$pkgver"
-    autoreconf -fi
-    rm -rf ../build
-    mkdir ../build
-    cd ../build
-    "../$_pkgname-$pkgver/configure" \
-        --disable-install-privileged \
-        --disable-zeroconf \
-        --enable-ddp \
-        --enable-pgp-uam \
-        --enable-shared \
-        --enable-srvloc \
-        --enable-systemd \
-        --libexecdir=/usr/lib \
-        --localstatedir=/var \
-        --prefix=/usr \
-        --runstatedir=/run \
-        --sbindir=/usr/bin \
-        --sysconfdir=/etc \
-        --with-systemd-prefix=/usr/lib \
-        --without-cracklib
-    make
+    arch-meson "$_pkgname-$pkgver" build \
+        --localstatedir /var \
+        --sysconfdir /etc \
+        -Dwith-cracklib=false \
+        -Dwith-ddp=true \
+        -Dwith-init-hooks=false \
+        -Dwith-init-style=systemd \
+        -Dwith-kerberos=false \
+        -Dwith-pam-config-path=/etc/pam.d \
+        -Dwith-pgp-uam=true \
+        -Dwith-pkgconfdir-path=/etc/netatalk \
+        -Dwith-spooldir=/var/spool/netatalk \
+        -Dwith-srvloc=true \
+        -Dwith-tests=true \
+        -Dwith-zeroconf=false
+
+    meson compile -C build
 }
 
 check() {
-    #cd "$_pkgname-$pkgver"
-    cd build
-    #make -k check
+    meson test -C build
 }
 
 package() {
-    #cd "$_pkgname-$pkgver"
-    cd build
-    make DESTDIR="$pkgdir/" install
+    meson install -C build --destdir "$pkgdir"
+    rm -rf "$pkgdir/etc/ld.so.conf.d"
 }
