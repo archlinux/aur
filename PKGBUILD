@@ -2,7 +2,7 @@
 # Contributor: Steven Seifried <gitlab@canox.net>
 _pkgname=tuxedo-drivers
 pkgname=tuxedo-drivers-dkms
-pkgver=4.6.1
+pkgver=4.6.2
 pkgrel=1
 pkgdesc="TUXEDO Computers kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface"
 url="https://github.com/tuxedocomputers/tuxedo-drivers"
@@ -27,20 +27,13 @@ provides=('tuxedo-keyboard'
           'ite_829x')
 conflicts=('tuxedo-keyboard-dkms' 'tuxedo-keyboard-ite-dkms')
 #backup=(etc/modprobe.d/tuxedo_keyboard.conf)
-source=($pkgname-$pkgver.tar.gz::https://github.com/tuxedocomputers/tuxedo-drivers/archive/v${pkgver}.tar.gz tuxedo_io.conf dkms.conf kernel_6.10.patch)
-sha256sums=('94f3a3a0d491b9f030c93384a7b7f0fc10bba43bcb98f4c084b195500a3728e8'
+source=($pkgname-$pkgver.tar.gz::https://github.com/tuxedocomputers/tuxedo-drivers/archive/v${pkgver}.tar.gz tuxedo_io.conf dkms.conf)
+sha256sums=('1fb7f08448a3d028986dcfaca753722e442bc258b31c8ff11564d8534e86a614'
             'd94d305bfd2767ad047bc25cc5ce986e76804e7376c3dd4d8e500ebe2c7bef3c'
-            '7d4c57502aced846f10bac83719052f89667c40b455588989c57a6cb3cbd1f6f'
-            '8aae47cb3b1c3fd4b4ec615c859fe23f3bfddd11d1faca3801b49c347c731eac')
-sha512sums=('9f487240e0db52cd9910ec43a1774d6f234e6d2946ffd20a9e3ce0624c1f961516dd4c008e9968dbca3088be055c422f571813b78639e5545fa3747523e068a0'
+            '7d4c57502aced846f10bac83719052f89667c40b455588989c57a6cb3cbd1f6f')
+sha512sums=('cfe37045dac1799e2dcfa061ca79ff62c98c1ebf0adea2808e691a008ab301edf391b160bec8a2a79b1319d31b68d9d25d14abd365723622f27f2f99488e91ba'
             '3101d1063e9c45eccb505fa21578cba33ae5c85b3d5b1c62c90806ad9d7b04410c91ded7a7115a85d1f6ecbd90ccc9e5f2ecf269dac4a557baa017a629bbcf81'
-            'b78ac72e83263b947896fffc3463b8c6a5d793013c8dbed7e3c5c7d50492ca383ce8473c470dde8d1f64c373dce1f132cd7a463149c303b2c641748112ef6d70'
-            '54955d62e52bbd3d5b18bfeead66366b2cc51f0e9330ea2d9eff4909f2ae565f6df1888dd98de56da04f729b867068d2dba2832b44c5e0468044a6da1d6abf9b')
-
-prepare() {
-  # fix for Kernel 6.10 compatibility. 
-  patch -d "${srcdir}/${_pkgname}-${pkgver}/src/" -l -i "${srcdir}/kernel_6.10.patch"
-}
+            'b78ac72e83263b947896fffc3463b8c6a5d793013c8dbed7e3c5c7d50492ca383ce8473c470dde8d1f64c373dce1f132cd7a463149c303b2c641748112ef6d70')
 
 package() {
   mkdir -p "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
