@@ -5,13 +5,14 @@ pkgrel=1
 pkgdesc="A spaceflight simulator in massive universe"
 arch=('i686' 'x86_64')
 url="https://www.vega-strike.org"
-license=('GPL')
-depends=('boost' 'python' 'freeglut' 'gtk3' 'libvorbis' 'openal' 'sdl' 'glu')
+license=('GPL-3.0-only')
+depends=('boost-libs' 'python' 'freeglut' 'gtk3' 'libvorbis' 'openal' 'sdl2' 'glu')
 #optdepends=('vegastrike-data: original dataset')
 makedepends=('git' 'cmake')
 provides=('vegastrike-engine')
 conflicts=('vegastrike-engine')
 #install=$pkgname.install
+#Options to make debugging easier
 #options=(!makeflags debug !strip)
 
 source=('git+https://github.com/vegastrike/Vega-Strike-Engine-Source')
@@ -47,13 +48,6 @@ build(){
 }
 
 package() {
-#Hopefully we are done horsing around with this now. 
-
-#mkdir -p "${pkgdir}"/usr/bin
-#  cd build
-#  cp -vp {vegastrike,setup/vegasettings,objconv/mesh_tool} "${pkgdir}"/usr/bin
-#
-#This should be the only way to install
 make -C build DESTDIR="${pkgdir}" install
 rm -rf ${pkgdir}/usr/include
 rm -rf ${pkgdir}/usr/lib
