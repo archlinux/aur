@@ -1,11 +1,12 @@
 pkgbase = jqp-bin
 	pkgdesc = A TUI playground to experiment with jq
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/noahgorstein/jqp
 	arch = x86_64
 	license = MIT
 	depends = tar
+	provides = jqp=0.7.0
 	conflicts = jqp
 	options = !strip
 	source = jqp-0.7.0.tar.gz::https://github.com/noahgorstein/jqp/releases/download/v0.7.0/jqp_Linux_x86_64.tar.gz

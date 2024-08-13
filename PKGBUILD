@@ -2,14 +2,15 @@
 
 pkgname=jqp-bin
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI playground to experiment with jq"
 arch=('x86_64')
 url="https://github.com/noahgorstein/jqp"
 license=('MIT')
 conflicts=('jqp')
+provides=("jqp=${pkgver}")
 depends=('tar')
-options=(!strip) # necessary otherwise the AppImage file in the package is truncated
+options=(!strip)
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/jqp_Linux_${arch[0]}.tar.gz")
 sha256sums=('53d595ad76f2a91dcba0b1de71f720c36c3021e37fe114184b4eb4d949c4d2bc')
 
