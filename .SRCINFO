@@ -1,7 +1,8 @@
 pkgbase = unzip-jp-gui-git
 	pkgdesc = unzip SHIFT-JIS encoded zip archives
-	pkgver = v1.0.0.r4.d082e31
+	pkgver = 1.0.0.r4.d082e31
 	pkgrel = 1
+	epoch = 2
 	url = https://github.com/saberzero1/unzip-jp-gui
 	arch = any
 	license = MIT
