@@ -1,13 +1,15 @@
 pkgbase = pico-tts
 	pkgdesc = lib and unix binary for text-to-speech engine from Android
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Iiridayn/pico-tts
 	arch = x86_64
 	license = MIT
-	makedepends = binutils
 	makedepends = git
-	provides = libsvoxpico.so
+	depends = glibc
+	source = git+https://github.com/Iiridayn/pico-tts.git#tag=0.1
+	source = git+https://android.googlesource.com/platform/external/svox
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = pico-tts
-
