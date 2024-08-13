@@ -1,7 +1,7 @@
 pkgbase = breezy-desktop-gnome-git
 	pkgdesc = Breezy GNOME - XR desktop
-	pkgver = 0.10.5
-	pkgrel = 3
+	pkgver = 0.10.6
+	pkgrel = 1
 	url = https://github.com/wheaney/breezy-desktop
 	arch = x86_64
 	arch = aarch64
@@ -9,11 +9,13 @@ pkgbase = breezy-desktop-gnome-git
 	makedepends = ninja
 	makedepends = meson
 	makedepends = librsvg
+	depends = gtk4
 	depends = python
 	depends = python-pydbus
+	depends = python-yaml
 	depends = gnome-shell>=45.0
 	depends = xr-driver-breezy-gnome-git
-	source = git+https://github.com/wheaney/breezy-desktop
+	source = git+https://github.com/wheaney/breezy-desktop#commit=a5e3498223dab1c1e9d9520b08b11e9d85f623ce
 	md5sums = SKIP
 
 pkgname = breezy-desktop-gnome-git
