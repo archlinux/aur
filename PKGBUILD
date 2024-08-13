@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=certbox-bin
-pkgver=1.8.1
-_electronversion=30
-pkgrel=2
+pkgver=1.8.2
+_electronversion=31
+pkgrel=1
 pkgdesc="A X.509 certificate toolbox on your desktop or in your browser. It allows you to easily generate entire certificate chains, issue certificates from existing roots, clone certificates, and more."
 arch=(
     'aarch64'
@@ -23,8 +23,8 @@ source=(
     "${pkgname%-bin}.sh")
 sha256sums=('6b2fa2b36ced9533ff04ff21bd9c7d22b4fd1747bcdc8a840f009943a51b628e'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('da9e18f9f965896f9c220f09556cc06d74e394602398e859591939d58190fe33')
-sha256sums_x86_64=('6ec9cffa9be2b5ebe3b16d2928570c57d4d78fb5da1a68f9e3a44a4bd1de6b32')
+sha256sums_aarch64=('55dc884c402205531c9449c23e6f18652aa604246bea487b4a83d224b1301f93')
+sha256sums_x86_64=('2971d052e2419a668b3cf7c99aaf638ee89334bb909088f97fec987ef4b84307')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
