@@ -1,13 +1,13 @@
 pkgbase = volta-bin
-	pkgdesc = JavaScript Launcher
-	pkgver = 1.1.1
-	pkgrel = 2
+	pkgdesc = JS Toolchains as Code
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://volta.sh/
 	arch = x86_64
-	license = BSD
-	source = volta-bin-1.1.1.tar.gz::https://github.com/volta-cli/volta/releases/download/v1.1.1/volta-1.1.1-linux.tar.gz
-	source = https://raw.githubusercontent.com/volta-cli/volta/v1.1.1/LICENSE
-	md5sums = f290b349022127633cf1e4df93f28067
-	md5sums = a8a025d12adc6bd305a7402166baefef
+	license = BSD-2-Clause
+	source = volta-bin-2.0.0.tar.gz::https://github.com/volta-cli/volta/releases/download/v2.0.0/volta-2.0.0-linux.tar.gz
+	source = https://raw.githubusercontent.com/volta-cli/volta/v2.0.0/LICENSE
+	b2sums = cb0f3f91462e2d2e4906e5bbdecd2d7697325959413600f65a07e6ef85267f0cec6814679a3bbb5ce404a871e7351066c3c1f61f9e2898b81110e1ff3ef56db8
+	b2sums = c76c693cbeb154a7613f248c4b091c3d2713afc784166e446889e6ada4f4ac304706e04a97aed80003750f7118612881b1f7fc64ac0459c9310083cccb878865
 
 pkgname = volta-bin
