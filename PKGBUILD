@@ -1,5 +1,5 @@
 pkgname=qlot
-pkgver=1.5.8
+pkgver=1.5.9
 pkgrel=1
 pkgdesc="Common Lisp library manager"
 url="https://github.com/fukamachi/qlot"
@@ -7,7 +7,7 @@ arch=('any')
 license=('MIT')
 depends=('sbcl')
 source=("https://github.com/fukamachi/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('166afea4fcbf01bf325f7f0aa95b4b114a17c4ab059b2491a98f28b5146d4b6b')
+sha256sums=('aab01b53f7ee94184f43dc1f57fab9fe568791262fc03d39a21e427eea74fab4')
 
 build() {
 	cd ${srcdir}/${pkgname}
