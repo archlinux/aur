@@ -2,19 +2,19 @@
 
 pkgname='python-pyjson5'
 _name='pyjson5'
-pkgver=1.6.4
+pkgver=1.6.6
 pkgrel=1
 pkgdesc="A JSON5 serializer and parser library for Python 3 written in Cython."
 url="https://github.com/Kijewski/pyjson5"
 depends=('cython' 'python-more-itertools')
 makedepends=('python-build' 'python-colorama' 'python-docutils' 'python-setuptools' 'python-sphinx' 'python-sphinx-autodoc-typehints' 'python-sphinx_rtd_theme' 'python-wheel')
-license=('Apache')
+license=('Apache-2.0')
 arch=('any')
-source=("https://github.com/Kijewski/pyjson5/archive/refs/tags/v$pkgver.tar.gz" "https://github.com/lemire/fast_double_parser/archive/refs/tags/v0.7.0.tar.gz")
-sha256sums=('7d853614607ee5fc6ae8a7dd5cb68644db7fb95422fd320fc8238ba7674bb1b5' 'eb80a1d9c406bbe8cb22fffd3c007651f716abd03225009302d8aba8e9c4df77')
+source=("https://github.com/Kijewski/pyjson5/archive/refs/tags/v$pkgver.tar.gz" "https://github.com/lemire/fast_double_parser/archive/refs/tags/v0.8.0.tar.gz")
+sha256sums=('ae62286609d14fe7aaf6e650c2dc586283275a09e0de4552d3dabe05505490c9' '9ad74e059cc7c3e53a3057ca97a74c88ae2a6a7d36ce470193557cbd05ee8f92')
 
 build() {
-  cp -r -T fast_double_parser-0.7.0 "$_name-$pkgver/third-party/fast_double_parser"
+  cp -r -T fast_double_parser-0.8.0 "$_name-$pkgver/third-party/fast_double_parser"
   cd "$_name-$pkgver"
   python setup.py build
 }
