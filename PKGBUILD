@@ -8,8 +8,8 @@ pkgdesc="Real-time stream processing for python"
 arch=(any)
 url="https://github.com/${pkgname}/${_base}"
 license=(BSD-3-Clause)
-depends=(python-tornado python-toolz python-zict python-six lzo snappy)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+depends=(python-tornado python-toolz python-zict python-six python-setuptools lzo snappy)
+makedepends=(python-build python-installer python-wheel)
 checkdepends=(python-pytest python-pandas python-distributed
   python-flaky python-networkx python-graphviz) # python-dask-expr
 optdepends=('python-pandas: for supports streams of Pandas dataframes or Pandas series'
