@@ -3,7 +3,7 @@
 # Contributor: Adam S Levy <adam@aslevy.com>
 
 pkgname=telegraf
-pkgver=1.31.2
+pkgver=1.31.3
 pkgrel=1
 pkgdesc='Plugin-driven server agent for reporting metrics into InfluxDB'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -17,7 +17,7 @@ install="${pkgname}.install"
 source=("https://github.com/influxdata/${pkgname}/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
         "${pkgname}.install"
         "${pkgname}.service")
-b2sums=('502c98cf28f1dd8d5451ddc02c8c378fabdaca3395531441af8700682c4e41d7d93184954f601a01bc81cb1cc377d9d8af7ad57206d502b2c040072b662ec9ca'
+b2sums=('7597cd790c04eb2aaa5c25a1264415708bd7eccd362fdae4af840d380c0eeedc714f2f9f4fda05bf883d44ef41ba80188421817c32ad99a0341ae3b54b0640e8'
         'a6b2fd7a688ef5a23539c1256380a6389e6fa474312ad9dee5cc77bcfabe92910a8913ffcf599c940a93bb3a5c89e01f3bedad4176f4d57dd33a68e0499c30bd'
         'd5a6845cb1ddb07f0cac20215c15d059f0c18aa43a7b549e7e738e58b8686b4db26b71426aafc8e682d6fd6f676fc0f468f53ea61968c4184feaaa22a23f5bc5')
 
@@ -35,6 +35,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   _LDFLAGS="-X main.goos=$(go env GOOS) -X main.goarch=$(go env GOARCH) -X main.version=${pkgver} -X main.branch=tag-${pkgver} -X main.commit=tag-${pkgver}"
   go build -o build -ldflags="${_LDFLAGS}" "./cmd/telegraf"
+  ./build/telegraf config > telegraf.conf
 }
 
 package() {
@@ -44,7 +45,7 @@ package() {
 
   # configuration files
   install -dD -m755 "${pkgdir}/etc/telegraf/telegraf.d"
-  "${srcdir}/${pkgname}-${pkgver}/build/telegraf" config > \
+  install -m644 "${srcdir}/${pkgname}-${pkgver}/telegraf.conf" \
     "${pkgdir}/etc/telegraf/telegraf.conf"
 
   # license
