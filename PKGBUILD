@@ -21,5 +21,10 @@ pkgver() {
 }
 
 package() {
-    PIPX_GLOBAL_BIN_DIR="$pkgdir/usr/bin" pipx install --global "$srcdir/$pkgname"
+    # set up env vars to avoid permission errors
+    export PIPX_GLOBAL_HOME="$pkgdir/opt/pipx"
+    export PIPX_GLOBAL_BIN_DIR="$pkgdir/usr/bin"
+    export PIPX_GLOBAL_MAN_DIR="$pkgdir/usr/share/man"
+
+    pipx install --global "$srcdir/$pkgname"
 }
