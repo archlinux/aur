@@ -3,7 +3,7 @@
 pkgname=wolai-bin
 pkgver=1.2.10
 _electronversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="wolai是一种新形态的文档/笔记/信息系统,它与你过去使用的所有传统文档、在线文档都有很多不同,学会使用wolai就等于拥有了一个强大的个人与团队生产力工具。"
 arch=(
     "aarch64"
@@ -38,8 +38,9 @@ build() {
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "3i\Name[zh_CN]=我来" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed "s|(resourcesPath,|(\"\/usr\/lib\/${pkgname%-bin}\",|g" -i "${srcdir}/app.asar.unpacked/packages/main/dist/index.cjs"
+    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g" -i "${srcdir}/app.asar.unpacked/packages/main/dist/index.cjs"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
