@@ -2,7 +2,7 @@
 
 pkgname=heroic-games-launcher
 pkgver=2.15.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Native GOG, Epic Games and Amazon games launcher for Linux"
 arch=(x86_64)
 url="https://heroicgameslauncher.com/"
@@ -16,7 +16,7 @@ sha256sums=('51c2d2e40ce034f6029f3979d7dbab101411396341b2e5f2d889a6a52ba35079')
 build() {
   cd HeroicGamesLauncher
   pnpm install
-  pnpm download-helper-binaries
+  pnpm run download-helper-binaries
   pnpm dist:linux tar.xz
 }
 
