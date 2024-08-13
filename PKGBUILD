@@ -4,8 +4,8 @@ provides=(librewolf)
 conflicts=(librewolf)
 __pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=128.0.3
-pkgrel=2
+pkgver=129.0
+pkgrel=1
 pkgdesc="Librewolf with the privacy.override_rfp_for_color_scheme about:config option added, which (if enabled) let's you change the color scheme even if rfp is turned on"
 url="https://librewolf.net/"
 arch=(x86_64 aarch64)
@@ -96,10 +96,10 @@ source=(
   allow_dark.patch
 )
 
-sha256sums=('df1033b7d825da65e1892f599e65525e8d138374f75c5ebb76ee13ab818b4020'
+sha256sums=('ff03845699e62aa68f31fb7b17193636e9e8a63dd824011f3d84059574c9b09d'
             '7d01d317b7db7416783febc18ee1237ade2ec86c1567e2c2dd628a94cbf2f25d'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
-            '6817edf16463f262de3b78f3e075a680ddad5036eee36d1855cfd35b11c2d88d')
+            '50453830bde4aeb8c97612b48c9f21735d5a7bf3862e4489dce7161b73596493')
 
 validpgpkeys=('034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3') # maltej(?)
 
