@@ -3,7 +3,7 @@
 
 pkgname=conserve-git
 pkgver=23.11.0.r1.g69a5901
-pkgrel=1
+pkgrel=2
 pkgdesc="Robust portable backup tool written in Rust (git)"
 arch=('x86_64')
 url="https://github.com/sourcefrog/conserve"
@@ -14,6 +14,7 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
 sha512sums=('SKIP')
+options=('!lto')
 
 pkgver() {
   cd "${pkgname%-git}"
