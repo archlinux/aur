@@ -2,8 +2,8 @@
 
 pkgname=python-aiowinreg
 _pkgname=aiowinreg
-pkgver=0.0.9
-pkgrel=2
+pkgver=0.0.12
+pkgrel=1
 pkgdesc="Windows registry file reader, written in python"
 url="https://github.com/skelsec/aiowinreg"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://github.com/skelsec/aiowinreg/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('55b59dec411661d7042a9a7f4091a6ce83483f701fea517e91ced22643bfa92e')
+sha256sums=('c51a0a211e68a9eb410dd296b7d0956e5d814154ed15ef0fd837a155c91b5eca')
 
 build() {
     cd "${_pkgname}-${pkgver}"
