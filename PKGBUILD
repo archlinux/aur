@@ -21,7 +21,7 @@ if [[ ${pkgrel} > 1 ]]; then
 else
   source=("https://github.com/Octol1ttle/ElyPrismLauncher/releases/download/${pkgver}/PrismLauncher-${pkgver}.tar.gz")
 fi
-sha256sums=('6760da939ffc55e43014230c99d599cd9f37f3646b66b01ed59ca0d0e84843c3')
+sha256sums=('1b70923daa5659118a45f178af900d4e120aa946c661c7a02b375a3b0e5ae47c')
 
 build() {
   if [[ ${pkgrel} > 1 ]]; then
