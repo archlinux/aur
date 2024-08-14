@@ -16,11 +16,11 @@
 #
 # https://ghc.gitlab.haskell.org/ghc/doc/users_guide/intro.html#ghc-version-numbering-policy
 # https://www.haskell.org/ghc/download.html
-# https://www.haskell.org/ghc/download_ghc_9_8_1.html
+# https://www.haskell.org/ghc/download_ghc_9_8_2.html
 
 pkgname=ghc9.8-bin
-pkgver=9.8.1
-pkgrel=5
+pkgver=9.8.2
+pkgrel=1
 _ver_branch=9.8
 pkgdesc="Binary GHC ${_ver_branch} installed on /usr/bin/ghc-${_ver_branch}"
 arch=('x86_64')
@@ -31,14 +31,32 @@ install='ghc.install'
 provides=("ghc${_ver_branch}")
 conflicts=("ghc${_ver_branch}")
 source=("https://www.haskell.org/ghc/dist/${pkgver}/ghc-${pkgver}-${CARCH}-deb12-linux.tar.xz")
-sha256sums=('92c79d502c946463d2dd3c63dfd1d6d1ddda139d0b2654c2ce5e56ab8b045e06')
+sha256sums=('41bf9bfb00f7b9e8ec4ccec8b44d5b36cf3e6ba83d1892ebbf64ba3deee23d39')
 
-build() {
+prepare() {
   cd ghc-${pkgver}-${CARCH}-unknown-linux
 
+  # Starting with GHC 9.8.2,
+  # ./configure happens in prepare() to avoid the following error:
+  #
+  #     $ makepkg
+  #     checking size of void *... 0
+  #     configure: error: Failed to determine machine word size. Does your toolchain actually work?
+  #     ==> ERROR: A failure occurred in build().
+  #         Aborting...
+  #
+  # The makepkg tool sets LDFLAGS
+  # as non-exported in prepare()
+  # but as exported in build().
+  # When LDFLAGS are set, GHC fails to configure.
+  # See: https://github.com/commercialhaskell/stack/issues/6525
   ./configure \
     --prefix=/usr \
     --docdir=/usr/share/doc/ghc-${_ver_branch}
+}
+
+build() {
+  cd ghc-${pkgver}-${CARCH}-unknown-linux
 
   # Since GHC it is not shipped with a LICENSE file.
   # We build one now to use in package()
