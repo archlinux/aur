@@ -7,10 +7,10 @@
 # Contributor: Masutu Subric <masutu.arch at googlemail dot com>
 # Contributor: TIanyi Cui <tianyicui@gmail.com>
 
-pkgbase=nodejs-shared
-pkgname=(nodejs-shared libnode)
-pkgver=21.7.1
-pkgrel=4
+#pkgbase=nodejs-shared
+pkgname=nodejs-shared
+pkgver=22.6.0
+pkgrel=1
 pkgdesc='Evented I/O for V8 javascript'
 arch=('x86_64')
 url='https://nodejs.org/'
@@ -19,7 +19,7 @@ options=(!lto)
 depends=('icu' 'libuv' 'libnghttp2' 'libnghttp3' 'libngtcp2' 'openssl' 'zlib' 'brotli' 'c-ares') # 'http-parser' 'v8')
 makedepends=('git' 'python' 'procps-ng')
 source=("nodejs-${pkgver}.tar.gz::https://github.com/nodejs/node/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('8d8c4d006c72315da80a52d15ea59c9cda3109bd58b086c3c5a153fa8af098c221cc3f3eb5bef287ad233195ab0ff728dfbbe14f0fed0f3c286479d63d29aab5')
+sha512sums=('de04d1d2dec6668c06143b0a4d6bb4cc51b61b80a6030120d099ba7b6c8d83804ae097f8c9a057724414be24616db5e0f65c75fbaf91e047dc792ce5429e9bd5')
 
 build() {
   cd node-${pkgver}
