@@ -1,8 +1,8 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=python-proton-vpn-network-manager-wireguard
-pkgver=0.0.12
-pkgrel=2
+pkgver=0.1.0
+pkgrel=1
 pkgdesc="The proton-vpn-network-manager-wireguard component implements the wireguard VPN protocol using NetworkManager."
 arch=("any")
 url="https://github.com/ProtonVPN/python-proton-vpn-network-manager-wireguard"
