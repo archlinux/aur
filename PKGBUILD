@@ -1,7 +1,7 @@
 # Maintainer(s): Derek Porcelli derekp5831@gmail.com
 
 pkgname=lmp
-pkgver=1
+pkgver=r14.2fb928a
 pkgrel=1
 pkgdesc="A lightweight media player script"
 arch=('x86_64')
@@ -14,7 +14,7 @@ packager="Derek Porcelli derekp5831@gmail.com"
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
