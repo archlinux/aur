@@ -10,5 +10,9 @@
 *.sig
 *.zst
 
+aws_zsh_completer.sh
+aws_bash_completer
+LICENSE.txt
+
 pkg/
 src/
