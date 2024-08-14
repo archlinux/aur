@@ -1,33 +1,34 @@
-# Maintainer: Haruue Icymoon <haruue@caoyue.com.cn>
+# Maintainer: Catty Steve <cattysteve89265@163.com>
+# Contributor: Haruue Icymoon <haruue@caoyue.com.cn>
 
 pkgname=ncmdump-git
 _basename="${pkgname%-git}"
-pkgver=r9.131e769
+pkgver=1.3.2 # pkgver is updated due to upstream change
 pkgrel=1
-epoch=1
-pkgdesc='netease cloud music copyright protection file dump'
+epoch=2
+pkgdesc='Convert Netease Cloud Music ncm files to mp3/flac files.'
 arch=('any')
 url='https://github.com/taurusxin/ncmdump'
 conflicts=("$_basename")
 provides=("$_basename")
-license=('unknown')
-depends=('taglib')
+license=('MIT')
 makedepends=('git')
 source=("$_basename"::'git+https://github.com/taurusxin/ncmdump')
 sha256sums=('SKIP')
 
-pkgver() {
+prepare() {
   cd "$srcdir/$_basename"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git submodule update --init --recursive
 }
 
 build() {
   cd "$srcdir/$_basename"
-  make linux
+  cmake -DCMAKE_BUILD_TYPE=Release -B build
+  cmake --build build -j 8
 }
 
 package() {
-  install -Dm755 "$srcdir/$_basename/$_basename" "$pkgdir/usr/bin/$_basename"
+  install -Dm755 "$srcdir/$_basename/build/ncmdump" "$pkgdir/usr/bin/ncmdump"
 }
 
 # vim:set ts=8 sts=2 sw=2 et:

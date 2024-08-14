@@ -1,13 +1,12 @@
 pkgbase = ncmdump-git
-	pkgdesc = netease cloud music copyright protection file dump
-	pkgver = r9.131e769
+	pkgdesc = Convert Netease Cloud Music ncm files to mp3/flac files.
+	pkgver = 1.3.2
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = https://github.com/taurusxin/ncmdump
 	arch = any
-	license = unknown
+	license = MIT
 	makedepends = git
-	depends = taglib
 	provides = ncmdump
 	conflicts = ncmdump
 	source = ncmdump::git+https://github.com/taurusxin/ncmdump
