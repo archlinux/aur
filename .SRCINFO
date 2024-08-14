@@ -1,13 +1,13 @@
 pkgbase = rgs-bin
 	pkgdesc = Batch git repository analysis tool
-	pkgver = 1.14.4
+	pkgver = 1.14.5
 	pkgrel = 1
 	url = https://github.com/7aske/rgs
 	arch = x86_64
 	license = GPL2
 	depends = libgit2
 	conflicts = rgs
-	source = https://github.com/7aske/rgs/releases/download/1.14.4/rgs-1.14.4-linux-x86_64
-	sha256sums = 2952bc2f17854c73dc109af6a58ca266a8ea85a3dcfad02fa2fb4110afd4e861
+	source = https://github.com/7aske/rgs/releases/download/1.14.5/rgs-1.14.5-linux-x86_64
+	sha256sums = ccf3c12eece69de41d7c476488a7ac3f235b8cfa60ab46d544bc9fd90de12e24
 
 pkgname = rgs-bin
