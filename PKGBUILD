@@ -1,9 +1,9 @@
 # Maintainer: username227 <gfrank227 [at] gmail [dot] com> 
 _pkgname=torzu
 pkgname=torzu
-pkgver=2024.05.31
-_pkgver=2024-05-31
-pkgrel=4
+pkgver=2024.08.10
+_pkgver=2024-08-10
+pkgrel=1
 pkgdesc="Torzu is a fork of yuzu, the world's most popular, open-source, Nintendo Switch emulator. It is written in C++ with portability in mind."
 arch=(x86_64)
 url=https://codeberg.org/litucks/torzu.git
