@@ -1,7 +1,7 @@
 pkgbase = clhep
 	pkgdesc = A Class library for High Energy Physics
-	pkgver = 2.4.6.3
-	pkgrel = 2
+	pkgver = 2.4.7.1
+	pkgrel = 1
 	url = http://proj-clhep.web.cern.ch/
 	arch = x86_64
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = clhep
 	depends = bash
 	options = !emptydirs
 	options = staticlibs
-	source = http://proj-clhep.web.cern.ch/proj-clhep/dist1/clhep-2.4.6.3.tgz
-	sha256sums = fcd007f11b10ba4af28d027222b63148d0eb44ff7a082eee353bdf921f9c684a
+	source = http://proj-clhep.web.cern.ch/proj-clhep/dist1/clhep-2.4.7.1.tgz
+	sha256sums = 1c8304a7772ac6b99195f1300378c6e3ddf4ad07c85d64a04505652abb8a55f9
 
 pkgname = clhep
