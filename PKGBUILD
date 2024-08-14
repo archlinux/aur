@@ -3,8 +3,8 @@
 
 _reponame=bubblewrap
 pkgname=${_reponame}-overlayfs
-pkgver=0.9.0.r0.g8e51677
-pkgrel=2
+pkgver=0.10.0.r0.gdc63ec6
+pkgrel=1
 pkgdesc='Unprivileged sandboxing tool (with overlay enabled)'
 url='https://github.com/containers/bubblewrap'
 arch=(x86_64)
@@ -21,13 +21,13 @@ makedepends=(
   libxslt
   meson
 )
-_commit=8e51677abd7e3338e4952370bf7d902e37d8cbb6  # tags/v0.9.0^0
+_commit=dc63ec667e6546f34e0b6c088cdf8ae7c7dea0f3  # tags/v0.10.0^0
 source=(
   "git+$url#commit=$_commit"
   "$pkgname-overlayfs.patch::$url/pull/547.patch"
 )
 
-sha256sums=('866b405721bf9bb3f6f1154e14517a6d4708f07673c60b78cc265c91a56c4289'
+sha256sums=('96245c818e9533927863ba1cec173fdbd3dd9759e86861aaee843bb90c4fd0d7'
             '508ca9db98d61be50904e126a30550ae1527ee6801767ba204390f88127b2f8c')
 
 pkgver() {
