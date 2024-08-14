@@ -4,7 +4,7 @@
 
 pkgname=webkit2gtk-4.1-imgpaste
 pkgver=2.44.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Web content engine for GTK (with patches for pasting images from clipboard)"
 url="https://webkitgtk.org"
 arch=(x86_64)
@@ -145,16 +145,7 @@ build() {
     -DENABLE_MINIBROWSER=ON
   )
 
-  # GCC with LTO fails to link libjavascriptcoregtk
-  #     /usr/bin/ld: /tmp/ccXxyWZV.ltrans0.ltrans.o: in function `ipint_table_size_validate':
-  #     <artificial>:(.text+0x49f0f): undefined reference to `ipint_extern_table_size'
-  #     /usr/bin/ld: /tmp/ccXxyWZV.ltrans0.ltrans.o: in function `ipint_table_fill_validate':
-  #     <artificial>:(.text+0x4a019): undefined reference to `ipint_extern_table_fill'
-  #     collect2: error: ld returned 1 exit status
-  export CC=clang CXX=clang++
-  LDFLAGS+=" -fuse-ld=lld"
-
-    # JITted code crashes when CET is used
+  # JITted code crashes when CET is used
   CFLAGS+=' -fcf-protection=none'
   CXXFLAGS+=' -fcf-protection=none'
 
@@ -168,10 +159,6 @@ build() {
 }
 
 package() {
-  depends+=(
-    libWPEBackend-fdo-1.0.so
-    libwpe-1.0.so
-  )
   provides+=(
     libjavascriptcoregtk-4.1.so
     libwebkit2gtk-4.1.so
