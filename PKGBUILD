@@ -47,7 +47,6 @@ depends=(
 )
 makedepends=(
   binutils
-  cbindgen
   clang
   diffutils
   git
@@ -185,6 +184,10 @@ fi
 
 
 build() {
+  mkdir cbindgen
+  cargo install --target-dir cbindgen --root cbindgen cbindgen@0.26.0 
+  export PATH="$(pwd)/cbindgen/bin${PATH:+:$PATH}"
+
   cd librewolf-$pkgver-$pkgrel
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip

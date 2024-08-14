@@ -10,7 +10,6 @@ pkgbase = librewolf-allow-dark
 	license = LGPL
 	license = MPL
 	makedepends = binutils
-	makedepends = cbindgen
 	makedepends = clang
 	makedepends = diffutils
 	makedepends = git
