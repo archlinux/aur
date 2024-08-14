@@ -2,10 +2,10 @@
 pkgname="elite-beep-beep-git"
 _pkgname="elite-beep-beep"
 pkgver=r10.7ce6cf9
-pkgrel=1
+pkgrel=2
 pkgdesc="Elite Dangerous player indicator"
 arch=("x86_64")
-url="https://github.com/CMDR-WDX/elite-pip-macro"
+url="https://github.com/CMDR-WDX/elite-beep-beep"
 license=('MIT')
 depends=('glibc' 'alsa-lib' 'gcc-libs')
 makedepends=('cargo' 'git')

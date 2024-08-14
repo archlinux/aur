@@ -1,8 +1,8 @@
 pkgbase = elite-beep-beep-git
 	pkgdesc = Elite Dangerous player indicator
 	pkgver = r10.7ce6cf9
-	pkgrel = 1
-	url = https://github.com/CMDR-WDX/elite-pip-macro
+	pkgrel = 2
+	url = https://github.com/CMDR-WDX/elite-beep-beep
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
