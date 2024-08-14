@@ -13,6 +13,7 @@ source_aarch64=("$pkgname-$pkgver-aarch64.zip::https://github.com/EasyTier/EasyT
 sha256sums=('SKIP')
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
+options=('!strip')
 
 prepare() {
   cd "$srcdir" || exit 1
