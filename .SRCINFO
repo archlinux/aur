@@ -6,8 +6,8 @@ pkgbase = fuse-ufs
 	arch = x86_64
 	license = BSD
 	makedepends = cargo
-	makedepends = fuse3
+	depends = fuse3
 	source = fuse-ufs-0.2.0.tar.gz::https://github.com/realchonk/fuse-ufs/archive/refs/tags/0.2.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 9a23f69abace347dba309326cc23834a1f760071b3f5b20768159218719e294b
 
 pkgname = fuse-ufs
