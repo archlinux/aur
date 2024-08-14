@@ -3,7 +3,7 @@ pkgbase=ensenso-sdk
 pkgname=(ensenso-sdk ensenso-sdk-runtime ensenso-sdk-gui ensenso-sdk-doc ensenso-sdk-examples)
 pkgdesc="Ensenso SDK and tools"
 pkgver=4.0.1486
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=(custom)
 url='http://ensenso.com'
@@ -14,6 +14,7 @@ source=(
 	nxProfiler
 	nxTreeEdit
 	nxView
+	ensenso-sdk.sh
 )
 
 sha512sums=(
@@ -22,6 +23,7 @@ sha512sums=(
 	'646f56e962e0150cc40a54c6cee546992af79e4e1fff290fadb97d12453bf8778706d690e3650418636d73215d4dce825b6d7ae84ecff3840d53764ec5427d19'
 	'4c3e8a8f3a2953cfed52c355d6847dc075aad52f80bb04fd898008c57e629e8a25c497396beef120f948faa7ea0a92125b3dde5c7390db7ad3137deeffeb3c79'
 	'421a4e0c742bf60ddee785021e9e81bab14f36e5fde22a6db5dee8fdf8d0b7e303394cfbef855d775cdf8e701ed3fa416d50ec1145a8cb2c875cc2553b5e2c06'
+	'8ba4af7b9af3a5bc997e515532aebd2c206fcda17eb2f941ca930d3c358badc354c137e2bbd5ff93446c250137dd5d829163cec01bc25a726ad8448cbc7bc9d7'
 )
 
 _dir="ensenso-sdk-$pkgver-x64"
@@ -55,11 +57,15 @@ package_ensenso-sdk-runtime() {
 	rm -r "$pkgdir/opt/ensenso/lib"
 	rm -r "$pkgdir/opt/ensenso/manual"
 
-	ln -s "/opt/ensenso/development/c/include" "$pkgdir/usr/include/ensenso"
-	ln -s "/opt/ensenso/pkgconfig/"* "$pkgdir/usr/lib/pkgconfig/"
+	ln -s "../../opt/ensenso/development/c/include" "$pkgdir/usr/include/ensenso"
+	(
+		cd "$pkgdir/usr/lib/pkgconfig/"
+		ln -s "../../../opt/ensenso/pkgconfig/"* ./
+	)
 
-	install -D "$dir/opt/ensenso/eula.txt" "$pkgdir/usr/share/licenses/$pkgname/eula.txt"
-	install -D "$dir/Readme"               "$pkgdir/opt/ensenso/"
+	install -Dt "$pkgdir/etc/profile.d/"               "ensenso-sdk.sh"
+	install -Dt "$pkgdir/usr/share/licenses/$pkgname/" "$dir/opt/ensenso/eula.txt"
+	install -Dt "$pkgdir/opt/ensenso/"                 "$dir/Readme"
 }
 
 package_ensenso-sdk-gui() {
