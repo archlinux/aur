@@ -2,7 +2,7 @@
 
 pkgname=cryptpad-sso
 pkgver=0.1.0.r8.gdc081cb
-pkgrel=2
+pkgrel=3
 pkgdesc="SSO plugin for Cryptpad"
 arch=('any')
 url="https://github.com/cryptpad/sso"
@@ -21,18 +21,16 @@ pkgver() {
 }
 
 package() {
-    #install -Dm755 "$pkgdir/etc/webapps/cryptpad"
-    #install -Dm755 "$pkgdir/usr/share/webapps/cryptpad/plugins"
     install -Dm644 sso.example.js "$pkgdir/etc/webapps/cryptpad/sso.js"
 
     cd sso
-    install -Dm644 challenge.js "$pkgdir/usr/share/webapps/cryptpad/plugins/challenge.js"
-    install -m644 get-saml-metadata.js "$pkgdir/usr/share/webapps/cryptpad/plugins/get-saml-metadata.js"
-    install -m644 index.js "$pkgdir/usr/share/webapps/cryptpad/plugins/index.js"
-    install -m644 sso-utils.js "$pkgdir/usr/share/webapps/cryptpad/plugins/sso-utils.js"
+    install -Dm644 challenge.js "$pkgdir/usr/share/webapps/cryptpad/lib/plugins/sso/challenge.js"
+    install -m644 get-saml-metadata.js "$pkgdir/usr/share/webapps/cryptpad/lib/plugins/sso/get-saml-metadata.js"
+    install -m644 index.js "$pkgdir/usr/share/webapps/cryptpad/lib/plugins/sso/index.js"
+    install -m644 sso-utils.js "$pkgdir/usr/share/webapps/cryptpad/lib/plugins/sso/sso-utils.js"
 
     cd protocols
-    install -dm755 "$pkgdir/usr/share/webapps/cryptpad/plugins/protocols"
-    install -m644 oidc.js "$pkgdir/usr/share/webapps/cryptpad/plugins/protocols/oidc.js"
-    install -m644 saml.js "$pkgdir/usr/share/webapps/cryptpad/plugins/protocols/saml.js"
+    install -dm755 "$pkgdir/usr/share/webapps/cryptpad/lib/plugins/sso/protocols"
+    install -m644 oidc.js "$pkgdir/usr/share/webapps/cryptpad/lib/plugins/sso/protocols/oidc.js"
+    install -m644 saml.js "$pkgdir/usr/share/webapps/cryptpad/lib/plugins/sso/protocols/saml.js"
 }

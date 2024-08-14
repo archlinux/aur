@@ -1,7 +1,7 @@
 pkgbase = cryptpad-sso
 	pkgdesc = SSO plugin for Cryptpad
 	pkgver = 0.1.0.r8.gdc081cb
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cryptpad/sso
 	arch = any
 	license = AGPL-3.0-or-later
