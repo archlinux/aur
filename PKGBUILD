@@ -2,10 +2,10 @@
 
 _githubuser=gwenhael-le-moine
 _githubrepo=x48ng
-_pkgtagname=0.37.0
+_pkgtagname=0.38.0
 
 pkgname=x48ng
-pkgver=0.37.0
+pkgver=0.38.0
 pkgrel=1
 pkgdesc='A reboot of the x48 HP 48 emulator'
 arch=('any')
@@ -16,18 +16,17 @@ makedepends=('lua')
 install="${pkgname}.install"
 source=("${_githubrepo}-${pkgver}.tar.gz::https://github.com/${_githubuser}/${_githubrepo}/archive/refs/tags/${_pkgtagname}.tar.gz"
         'ui_text.c_1.patch')
-sha256sums=('b5d06fe04ff50c48f1316fca5dddbba54bf5b4595777c89330fe9b12021497c9'
+sha256sums=('06004b8121758e63723137a057149bdf5db9bf259f60d7596abe606c9790edc1'
             '94550704486e179bf0e1495b5fb6fc55c9663fe61d6e44dd45cff8bfe840f301')
 
 build() {
 	cd "${_githubrepo}-${pkgver}"
-	patch --forward --strip=1 --input="${srcdir}/ui_text.c_1.patch"
-	make GUI=x11
+	make clean-all && make GUI=x11
 }
 
 package() {
 	cd "${_githubrepo}-${pkgver}"
-	make DESTDIR="${pkgdir}/" install
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+        make DESTDIR="${pkgdir}/" install
+        install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/x48ng/LICENSE"
 }
 
