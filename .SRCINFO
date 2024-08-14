@@ -1,0 +1,22 @@
+pkgbase = libretro-gearcoleco-git
+	pkgdesc = Coleco ColecoVision core
+	pkgver = 1.2.0.r4.g99033ec
+	pkgrel = 1
+	url = https://github.com/drhelius/Gearcoleco
+	arch = aarch64
+	arch = armv7h
+	arch = i486
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	groups = libretro
+	license = GPL-3.0-only
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = libretro-gearcoleco=1.2.0.r4.g99033ec
+	conflicts = libretro-gearcoleco
+	source = libretro-gearcoleco::git+https://github.com/drhelius/Gearcoleco.git
+	b2sums = SKIP
+
+pkgname = libretro-gearcoleco-git
