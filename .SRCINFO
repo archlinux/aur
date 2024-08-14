@@ -8,6 +8,7 @@ pkgbase = vegastrike-engine-git
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = cmake
+	makedepends = boost
 	depends = boost-libs
 	depends = python
 	depends = freeglut
