@@ -4,7 +4,7 @@ _pkgname=grpreg
 _pkgver=3.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=0
+pkgrel=1
 pkgdesc="Regularization Paths for Regression Models with Grouped Covariates"
 arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,13 +15,11 @@ depends=(
 optdepends=(
   r-knitr
   r-rmarkdown
-  r-splines
-  r-survival
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('51f023fe40d1aabc705eec86d42c73f5')
-b2sums=('28841c910a6aac91e30691a7b328f97a86064dd323e1ee15ccf95553176148a69431a2c56de8008477577475f52ea334429dad192a617af6062528e0a0132faf')
+md5sums=('bc7e8148a92adc041f15a05bf243e700')
+b2sums=('2a5171970fc2faa62e84114ca567e2eeca54ac2388155370192d38cf28c121e51bb3df4cd04143d12b88e0f2eb4e921c46211cca12fb7ce48eb793f76e6b4127')
 
 build() {
   mkdir build
