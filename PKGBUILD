@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-randr-git
 pkgver=1.0.0.alpha.1.r0.g71fabbb
-pkgrel=1
+pkgrel=2
 pkgdesc="Library and utility for displaying and configuring Wayland outputs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-randr"
@@ -34,6 +34,7 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
 
   # use nice to build with lower priority
   nice just build-release --frozen
