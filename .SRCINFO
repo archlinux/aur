@@ -1,7 +1,7 @@
 pkgbase = python-proton-vpn-network-manager-openvpn
 	pkgdesc = The proton-vpn-network-manager-openvpn component adds support for the OpenVPN protocol using NetworkManager.
-	pkgver = 0.0.7
-	pkgrel = 3
+	pkgver = 0.1.0
+	pkgrel = 1
 	url = https://github.com/ProtonVPN/python-proton-vpn-network-manager-openvpn
 	arch = any
 	groups = ProtonVPN
@@ -10,7 +10,7 @@ pkgbase = python-proton-vpn-network-manager-openvpn
 	makedepends = python-setuptools
 	makedepends = python-proton-vpn-network-manager
 	depends = networkmanager-openvpn
-	source = git+https://github.com/ProtonVPN/python-proton-vpn-network-manager-openvpn.git#tag=v0.0.7
+	source = git+https://github.com/ProtonVPN/python-proton-vpn-network-manager-openvpn.git#tag=v0.1.0
 	sha256sums = SKIP
 
 pkgname = python-proton-vpn-network-manager-openvpn

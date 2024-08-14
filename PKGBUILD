@@ -1,8 +1,8 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=python-proton-vpn-network-manager-openvpn
-pkgver=0.0.7
-pkgrel=3
+pkgver=0.1.0
+pkgrel=1
 pkgdesc="The proton-vpn-network-manager-openvpn component adds support for the OpenVPN protocol using NetworkManager."
 arch=("any")
 url="https://github.com/ProtonVPN/python-proton-vpn-network-manager-openvpn"
