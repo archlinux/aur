@@ -1,6 +1,6 @@
 # Maintainer: libook <libook7@gmail.com>
 pkgname=net-ssr
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Network Secondary Surveillance Radar"
 arch=('x86_64' 'aarch64')
