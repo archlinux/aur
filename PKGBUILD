@@ -16,11 +16,11 @@
 #
 # https://ghc.gitlab.haskell.org/ghc/doc/users_guide/intro.html#ghc-version-numbering-policy
 # https://www.haskell.org/ghc/download.html
-# https://www.haskell.org/ghc/download_ghc_9_6_4.html
+# https://www.haskell.org/ghc/download_ghc_9_6_6.html
 
 pkgname=ghc9.6-bin
-pkgver=9.6.4
-pkgrel=2
+pkgver=9.6.6
+pkgrel=1
 _ver_branch=9.6
 pkgdesc="Binary GHC ${_ver_branch} installed on /usr/bin/ghc-${_ver_branch}"
 arch=('x86_64')
@@ -31,7 +31,7 @@ install='ghc.install'
 provides=("ghc${_ver_branch}")
 conflicts=("ghc${_ver_branch}")
 source=("https://www.haskell.org/ghc/dist/${pkgver}/ghc-${pkgver}-${CARCH}-deb11-linux.tar.xz")
-sha256sums=('9c96072c64ea022f0006cc444762f666b7fbadfdc9ac556089a4ea2448187a73')
+sha256sums=('a34bdfc1f65b000135d9c8eb12d69670026a64043a8b33ef5ba24b0f8e28d046')
 
 build() {
   cd ghc-${pkgver}-${CARCH}-unknown-linux
