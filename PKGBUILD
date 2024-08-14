@@ -1,8 +1,8 @@
 # Maintainer: Vekhir <vekhir AT yahoo DOT com>
 
 pkgname=hedgewars-server-hg
-pkgver=r15991+.00bf5adba849+
-pkgrel=2
+pkgver=r16017+.e8afb1bf2779+
+pkgrel=1
 pkgdesc="Turn-based strategy artillery game similiar to Worms (Server component)"
 arch=('x86_64')
 url="https://hedgewars.org"
@@ -13,7 +13,7 @@ depends=('ghc-libs' 'haskell-entropy' 'haskell-sha' 'haskell-random' 'haskell-re
 makedepends=('mercurial' 'ghc' 'uusi')
 provides=('hedgewars-server')
 conflicts=('hedgewars' 'hedgewars-hg')
-source=("$pkgname::hg+https://hedgewars.org:8443/hedgewars/")
+source=("$pkgname::hg+https://hg.hedgewars.org/hedgewars/")
 sha512sums=('SKIP')
 
 pkgver() {
