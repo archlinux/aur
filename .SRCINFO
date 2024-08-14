@@ -1,6 +1,6 @@
 pkgbase = frzr
 	pkgdesc = A deployment and update system for read-only btrfs subvolume based operating systems
-	pkgver = 0.15.2
+	pkgver = 0.15.2.r0.gfd1cd3b
 	pkgrel = 1
 	url = https://github.com/gamer-os/frzr
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = frzr
 	optdepends = dracut: generate initramfs for kernels installed via frzr kernel command
 	source = frzr-0.15.2.tar.gz::https://github.com/gamer-os/frzr/archive/0.15.2.tar.gz
 	source = 99-frzr-kernel-install.hook
-	md5sums = b4a5bb450c2b32d37742d598c20b12f0
+	md5sums = SKIP
 	md5sums = 6bc04b77f135f2bf7d07c2f8c0ffaca0
 
 pkgname = frzr
