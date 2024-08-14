@@ -8,7 +8,9 @@ pkgdesc='Git submodule alternative'
 arch=(any)
 url="https://github.com/ingydotnet/$pkgname"
 license=(MIT)
-depends=(bash bashplus git)
+depends=(bash
+         bashplus
+         git)
 checkdepends=(perl)
 source=("git+$url.git#tag=$pkgver"
         0001-hardcode-path-to-bashplus.patch)
@@ -20,6 +22,8 @@ prepare() {
 	patch -Np1 -i ../0001-hardcode-path-to-bashplus.patch
 	# remove flaky tests
 	rm -rf test/{push-force,status}.t
+	# remove tests irrelevant to integration
+	rm -rf test/{shellcheck,zsh}.t
 }
 
 check() {
@@ -32,7 +36,7 @@ package() {
 	cd $pkgname
 	install -Dm755 -t "$pkgdir/usr/bin/" "lib/$pkgname"
 	install -Dm644 -t "$pkgdir/usr/share/man/man1/" "man/man1/$pkgname.1"
-	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" License
 	install -Dm644 share/completion.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
 	install -Dm644 -t "$pkgdir/usr/share/zsh/site-functions/" "share/zsh-completion/_$pkgname"
 }
