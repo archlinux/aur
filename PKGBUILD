@@ -1,4 +1,4 @@
-# Maintainer(s): Derek Porcelli derekp5831@gmail.com
+# Maintainer: Derek Porcelli <derekp5831@gmail.com>
 
 pkgname=lmp
 pkgver=r15.c524d38
@@ -10,15 +10,14 @@ license=('GPL')
 depends=('python' 'mpv')
 source=("git+https://github.com/derekporcelli/lmp.git")
 sha256sums=('SKIP')
-packager="Derek Porcelli derekp5831@gmail.com"
 
 pkgver() {
-    cd "$srcdir/lmp"
+    cd "$srcdir/$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
-    cd "$srcdir/lmp"
+    cd "$srcdir/$pkgname"
     install -Dm755 lmp "$pkgdir/usr/bin/lmp"
     install -Dm644 lmp.conf "$pkgdir/etc/lmp/lmp.conf" 
 }
