@@ -2,7 +2,7 @@
 
 pkgname=cryptpad-sso
 pkgver=0.1.0.r8.gdc081cb
-pkgrel=1
+pkgrel=2
 pkgdesc="SSO plugin for Cryptpad"
 arch=('any')
 url="https://github.com/cryptpad/sso"
@@ -34,5 +34,5 @@ package() {
     cd protocols
     install -dm755 "$pkgdir/usr/share/webapps/cryptpad/plugins/protocols"
     install -m644 oidc.js "$pkgdir/usr/share/webapps/cryptpad/plugins/protocols/oidc.js"
-    install -m644 saml.js "$pkgdir/usr/share/webapps/cryptpad/plugins/protocols/oidc.js"
+    install -m644 saml.js "$pkgdir/usr/share/webapps/cryptpad/plugins/protocols/saml.js"
 }
