@@ -9,6 +9,7 @@ pkgbase = fastly-git
 	license = Apache
 	makedepends = git
 	makedepends = go
+	makedepends = rust
 	depends = glibc
 	provides = fastly
 	conflicts = fastly-bin
