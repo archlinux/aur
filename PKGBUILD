@@ -1,7 +1,7 @@
 # Maintainer: Leandro Costa <lokidarkeden@gmail.com>
 
 pkgname=mactelnet
-pkgver=0.5.2
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='A linux console tool for connecting to MikroTik RouterOS devices via their ethernet address'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 url='https://github.com/haakonnessjoen/MAC-Telnet'
 backup=('etc/mactelnetd.users')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('77f542d47848f1e43ebfc9c9c09b67a74e4d73ee9e45277b8ad5f19fb5e13f2e')
+sha256sums=('c6e2760d62bba643e9ac93b6e5664d109e42666cf8a1de7a9518eec191cfbb34')
 
 prepare() {
   cd ${srcdir}/MAC-Telnet-${pkgver}/
