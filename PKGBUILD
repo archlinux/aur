@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=less-player-bin
 _pkgname="Less Player"
-pkgver=0.1.24
+pkgver=0.1.25
 _electronversion=22
 pkgrel=1
 pkgdesc="Less is More~ All for One, One for All ! Less Player, 基于Electron + Vue3开发、插件化的播放器"
@@ -25,8 +25,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname// /.}.v${pkgver}.linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname// /.}.v${pkgver}.linux-x86_64.AppImage")
 sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('573e2d3e8ea5c27fd1efddb950895689224b1d40f0f8d2e6b0423692c8a5e67a')
-sha256sums_x86_64=('3f381dcd0cd4badd214439f55f9d2e2a0be698067dc9c2d9bd8e4814d63c9c2b')
+sha256sums_aarch64=('53b050e702b4b8c1fb6e596baa04fb6d6be2525b37f3af1d1af9b8d39486cbae')
+sha256sums_x86_64=('6818e938b1c2aa62312d4dddcdb0375652f69296fd6516b997ad9a9d540e50b2')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
