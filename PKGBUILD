@@ -2,7 +2,7 @@
 # Previous Maintainer: (huyz)
 
 pkgname=python-lion-pytorch
-pkgver=0.1.4
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="🦁 Lion, new optimizer discovered by Google Brain using genetic algorithms that is purportedly better than Adam(w), in Pytorch"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-pytorch')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lucidrains/lion-pytorch/archive/$pkgver.tar.gz")
-sha512sums=('0413eb0badf89a4899c79d949d96d4d4d0bbc8dd1f5ec85ab3ebacdc41cf9c6ed863f8da7135a7b3d78c49cd3e36a92a944647274b7f0f9f61292b4d215fa6a3')
+sha512sums=('fbe3f8594c8fc752e0b7647e50159201b9f3033f41fbf40f0d80fe4045987561dd497017309827a15922efe102ff246c45a07ea40e87788ac4849c2ffef06b0a')
 
 build() {
     cd lion-pytorch-$pkgver
