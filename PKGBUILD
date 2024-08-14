@@ -1,18 +1,18 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ijq
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Interactive jq tool, like jqplay for the commandline'
 arch=(x86_64)
 url="https://git.sr.ht/~gpanders/$pkgname"
-license=(GPL3)
+license=(GPL-3.0-only)
 depends=(jq)
 makedepends=(go
              scdoc)
 _archive="$pkgname-v$pkgver"
 source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('04d2de1be4da46923e6920cd2f102113b267b1cd2e5c09e9145f837d87780828')
+sha256sums=('dd5055e7a740c54a32043b744f061b1a00a4d2f97f6c6214c2109fd22491b9f3')
 
 prepare(){
 	cd "$_archive"
