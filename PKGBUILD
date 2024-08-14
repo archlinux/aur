@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/derekporcelli/lmp"
 license=('GPL')
 depends=('python' 'mpv')
-source=("lmp::git+https://github.com/derekporcelli/lmp.git")
+source=("git+https://github.com/derekporcelli/lmp.git")
 sha256sums=('SKIP')
 packager="Derek Porcelli derekp5831@gmail.com"
 

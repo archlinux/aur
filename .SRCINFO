@@ -7,7 +7,7 @@ pkgbase = lmp
 	license = GPL
 	depends = python
 	depends = mpv
-	source = lmp::git+https://github.com/derekporcelli/lmp.git
+	source = git+https://github.com/derekporcelli/lmp.git
 	sha256sums = SKIP
 
 pkgname = lmp
