@@ -1,0 +1,16 @@
+pkgbase = xcursor-medium5
+	pkgdesc = Cursor for X11
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/BreakTheMyth/xcursor-medium5/
+	install = xcursor-medium5.install
+	arch = any
+	license = custom
+	makedepends = tar
+	makedepends = gzip
+	source = https://github.com/BreakTheMyth/xcursor-medium5/archive/refs/tags/v1.0.tar.gz
+	source = xcursor-medium5.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = xcursor-medium5
