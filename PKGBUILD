@@ -2,7 +2,7 @@
 # Contributor: Siavash Askari Nasr <ciavash@protonmail.com>
 pkgname=restfox-bin
 _pkgname=Restfox
-pkgver=0.21.0
+pkgver=0.22.0
 _electronversion=29
 pkgrel=1
 pkgdesc="Offline-first web HTTP client"
@@ -24,7 +24,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/flawiddsouza/Restfox/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('983cbe388c06f1573e18052e0cf57bbb2bc5240e0b21872e75836080c0d08573'
+sha256sums=('a90699f20f5fc518810664af2c06e4be820b6e6a4b1aef50ae2ee1ac281c463f'
             '82601c8ed24f59528b28c23a2fb309f9743dffc860ba06ce8d253e1ed8959a16'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
