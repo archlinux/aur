@@ -5,7 +5,7 @@ pkgname=steam-rom-manager-git
 pkgdesc="An app for managing ROMs in Steam (Git version)."
 license=("GPL-3.0-only")
 url="https://github.com/SteamGridDB/steam-rom-manager"
-pkgver=2.5.21
+pkgver=2.5.21.r4.g58718da
 pkgrel=1
 arch=("x86_64")
 makedepends=("git" "nodejs" "npm" "nodejs-cross-env" "typescript" "yarn" "libxcrypt-compat" "python-setuptools")
@@ -21,11 +21,8 @@ sha512sums=("SKIP"
 pkgver() {
   cd $pkgname
 
-  ( set -o pipefail
-    # cutting off 'v' prefix that presents in the git tag
-    git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+  | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 
