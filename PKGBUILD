@@ -2,7 +2,7 @@
 
 pkgname=rtl88x2ce-dkms-git
 _pkgbase=rtl88x2ce
-pkgver=r48.488172d
+pkgver=r50.eb2fff0
 pkgrel=1
 pkgdesc="Realtek RTL8822CE WLAN GNU/Linux Driver"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ package() {
     cd ${srcdir}/${_pkgbase}-dkms
     mkdir -p ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
     cp -pr * ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
-    
+
     # Set name and version
     sed -e "s/@_PKGBASE@/${_pkgbase}-dkms/" \
         -e "s/@PKGVER@/${pkgver}/" \
