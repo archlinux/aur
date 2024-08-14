@@ -1,0 +1,4 @@
+[git-subrepo]
+source = "git"
+git = "https://github.com/ingydotnet/git-subrepo.git"
+include_regex = '\d+\.\d+\.\d+'
