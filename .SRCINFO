@@ -1,6 +1,6 @@
 pkgbase = watershot-wayshot-git
 	pkgdesc = Watershot fork with libwayshot instead of grim
-	pkgver = r76.78fd616
+	pkgver = r82.8dbd789
 	pkgrel = 1
 	url = github.com/Gigas002/watershot
 	arch = x86_64

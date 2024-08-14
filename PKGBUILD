@@ -2,7 +2,7 @@
 
 _pkgname="watershot"
 pkgname="${_pkgname}-wayshot-git"
-pkgver=r76.78fd616
+pkgver=r82.8dbd789
 pkgrel=1
 pkgdesc="Watershot fork with libwayshot instead of grim"
 arch=("x86_64")
