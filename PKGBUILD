@@ -3,7 +3,7 @@
 _pkgname=marsdev
 pkgname=${_pkgname}-git
 pkgver=r153.d4d51e1
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform Sega Mega Drive / Super 32X / Sharp X68000 toolchain"
 arch=('x86_64')
 url="https://github.com/andwn/${_pkgname}"
@@ -11,8 +11,8 @@ makedepends=('boost' 'texinfo' 'wget' 'java-environment>=11')
 depends=('java-environment>=11')
 provides=('marsdev' 'x68k-tools' 'sik-tools' 'flamewing-tools' 'sgdk')
 license=('MIT')
-source=("git+$url")
-sha256sums=('SKIP')
+source=("git+$url" "marsdev.sh")
+sha256sums=('SKIP' 'cecabf6171a6d102320cd213e9cb9128f41c215f73385828067a135ecdeddbe7')
 options=('!strip' '!debug' '!lto')
 
 pkgver() {
@@ -51,4 +51,6 @@ package() {
   make install
   cp -Rpd "${srcdir}/${_pkgname}/examples" "${pkgdir}/opt/marsdev/examples";
   sed -i "s|${pkgdir}||g" "${pkgdir}/opt/marsdev/mars.sh"
+  mkdir -p "${pkgdir}/etc/profile.d"
+  cp "${srcdir}/marsdev.sh" "${pkgdir}/etc/profile.d/marsdev.sh"
 }
