@@ -1,8 +1,8 @@
 # Maintainer: spaceslug <me at spaceslug dot no>
 _base=mouse-actions
 pkgname=$_base-gui-bin
-pkgver=0.4.4
-pkgrel=3
+pkgver=0.4.5
+pkgrel=1
 pkgdesc="Use your mouse to execute commands, for X11 and Wayland. You can use gestures, hot corners and modifier keys. Mouse-actions is a mix between Easystroke and Compiz edge commands. This is the GUI version but you can still use CLI!"
 arch=('x86_64')
 url="https://github.com/jersou/$_base"
@@ -17,7 +17,7 @@ source=(
     "80-mouse-actions.rules"
 )
 sha256sums=(
-    '4016df9f5a35991169110ff4b2d751f2c2ee4f09d0bf1e5e5144b7912a96635b'
+    'e16a284c8291909399989cd72d5fabfd1f9f98cada9152186c1dde2ae76dfe14'
     '03fb24d88be86c6496a659568882ccd0086846e762704b58951cd72b9942b51e'
     '1522b3a2314c17f576214c93949916aee95740919ecc3838a9a32dc6f3f74dec'
     '27e69cdde6bcbb696b345efc7646c9be04357243dd8afa3f0a5c521d5cd87b1b'
