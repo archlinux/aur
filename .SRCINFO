@@ -1,14 +1,17 @@
 pkgbase = json2tsv-git
 	pkgdesc = JSON to TSV converter
-	pkgver = 1.1.r0.g137d638
+	pkgver = 1.2.r0.g66e7e40
 	pkgrel = 1
 	url = https://codemadness.org/json2tsv.html
 	arch = x86_64
 	license = ISC
 	makedepends = git
+	depends = awk
 	depends = glibc
+	depends = sh
 	provides = json2tsv
 	conflicts = json2tsv
+	conflicts = jaq
 	source = git://git.codemadness.org/json2tsv
 	sha256sums = SKIP
 
