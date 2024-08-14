@@ -1,0 +1,18 @@
+pkgbase = python-scikit-fmm
+	pkgdesc = The fast marching method for Python
+	pkgver = 2024.05.29
+	pkgrel = 1
+	url = https://github.com/scikit-fmm/scikit-fmm
+	arch = any
+	license = BSD-3-Clause
+	makedepends = gcc
+	makedepends = meson-python
+	makedepends = python-build
+	makedepends = python-numpy1>=1.0.2
+	makedepends = python-wheel
+	depends = python-numpy
+	depends = python-scipy
+	source = https://github.com/scikit-fmm/scikit-fmm/archive/refs/tags/2024.05.29.tar.gz
+	sha256sums = 9f6973d1bd1b90dcdef4f94339e52402dc1a3d843e46f6505444f1368982ebe2
+
+pkgname = python-scikit-fmm
