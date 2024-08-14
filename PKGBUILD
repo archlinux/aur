@@ -1,13 +1,14 @@
+# Maintainer: username227 <gfrank227 at gmail dot com>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname='mandarine'
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 pkgdesc='3ds emulator - citra fork with tweaks/enhancements'
 url='https://github.com/mandarine3ds/mandarine'
-license=("GPL-2.0")
-depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio' 'zstd' 'soundtouch' 'fmt' 'libinih' 'openal' 'enet')
-makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'libc++' 'ninja')
-conflicts=('mandarine-git' 'mandarine-appimage')
+license=("GPL-2.0-or-later")
+depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio' 'zstd' 'soundtouch' 'fmt' 'libinih' 'openal' 'enet' 'boost-libs')
+makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'ninja' 'boost')
 source=("git+https://github.com/mandarine3ds/mandarine#tag=r$pkgver"
 	"boost::git+https://github.com/PabloMK7/ext-boost.git"
 	"git+https://github.com/neobrain/nihstro.git"
@@ -85,16 +86,11 @@ sha256sums=('5447f1ac1e9f934328898f41366b1f4dd30504d9523c830669e7f809bc0489f1'
 prepare() {
     cd "$srcdir/$pkgname"
     git submodule init
-    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,libusb,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,dds-ktx,openal-soft,glslang,vma,vulkan-headers,sirit,library-headers,libadrenotools,oaknut,oboe};
+    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,inih,libressl,libusb,cubeb,discord-rpc,cpp-jwt,teakra,lodepng,zstd,libyuv,sdl2,cryptopp-cmake,cryptopp,dds-ktx,openal-soft,glslang,vma,vulkan-headers,sirit,faad2,library-headers,libadrenotools,oaknut};
     do
     git config submodule.${submodule}.url "$srcdir/${submodule}"
     done
-    git -c protocol.file.allow=always submodule update
-    for submodule in {libusb,lodepng,faad2}
-    do
-    git config submodule.${submodule}.url "$srcdir/${submodule}/${submodule}"
-    done
-    git config submodule.sdl2.url "$srcdir/SDL"
+    git config submodule.externals/oboe.url "$srcdir/oboe"
     git -c protocol.file.allow=always submodule update
     
     cd "$srcdir/$pkgname/externals/cubeb"
@@ -114,20 +110,36 @@ prepare() {
     git -c protocol.file.allow=always submodule update
 }
 build() {
+    export CFLAGS=$(echo $CFLAGS | sed 's/-Wp,-D_FORTIFY_SOURCE=3//g')
+    export CXXFLAGS=$(echo $CXXFLAGS | sed 's/-Wp,-D_FORTIFY_SOURCE=3//g')
+    CXXFLAGS+=" -I/usr/lib/libusb-1.0 -flto=thin"
+    CFLAGS+=" -flto=thin"
+
     cmake -B build -S "$pkgname" -G Ninja \
 	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_BUILD_TYPE=None \
     	-DCMAKE_CXX_COMPILER=clang++ \
     	-DCMAKE_C_COMPILER=clang \
     	-DENABLE_QT_TRANSLATION=ON \
     	-DUSE_DISCORD_PRESENCE=ON \
-    	-DCMAKE_CXX_FLAGS="-O2" \
-    	-DCMAKE_C_FLAGS="-O2"
-    cd build
-    ninja
+	-DCMAKE_CXX_FLAGS="$CXXFLAGS" \
+	-DCMAKE_C_FLAGS="$CFLAGS" \
+	-DUSE_SYSTEM_BOOST=ON \
+	-DUSE_SYSTEM_CATCH2=ON \
+	-DUSE_SYSTEM_FMT=ON \
+	-DUSE_SYSTEM_GLSLANG=ON \
+	-DUSE_SYSTEM_INIH=ON \
+	-DUSE_SYSTEM_JSON=ON \
+	-DUSE_SYSTEM_LIBUSB=ON \
+	-DUSE_SYSTEM_OPENAL=ON \
+	-DUSE_SYSTEM_OPENSSL=ON \
+	-DUSE_SYSTEM_SDL2=ON \
+	-DUSE_SYSTEM_SOUNDTOUCH=ON \
+	-DUSE_SYSTEM_VULKAN_HEADERS=ON \
+	-DUSE_SYSTEM_ZSTD=ON
+    cmake --build build
 }
 package() {
-    DESTDIR="$pkgdir/" ninja -C build install
-    rm -rf $pkgdir/usr/include/enet
-    rm -rf $pkgdir/usr/lib/libenet.a
+    DESTDIR="$pkgdir/" cmake --install build
+    rm -rf "$pkgdir/usr/include" "$pkgdir/usr/lib"
 }
