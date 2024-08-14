@@ -3,7 +3,7 @@
 
 pkgname=cosmic-settings-git
 pkgver=1.0.0.alpha.1.r16.g6f26ad7
-pkgrel=1
+pkgrel=2
 pkgdesc="The settings application for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-settings"
@@ -55,6 +55,7 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
 
   # use mold instead of lld to speed up build
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
