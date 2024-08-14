@@ -1,7 +1,7 @@
 pkgbase = kwalletcli-bin
 	pkgdesc = Command-Line Interface for the KDE Wallet
 	pkgver = 3.03
-	pkgrel = 4.1
+	pkgrel = 4.2
 	url = https://www.mirbsd.org/kwalletcli.htm
 	arch = x86_64
 	license = custom:MirOS
@@ -10,7 +10,8 @@ pkgbase = kwalletcli-bin
 	depends = mksh
 	provides = kwalletcli
 	conflicts = kwalletcli
-	source = kwalletcli-3.03-4-x86_64.tar.zst::https://gitlab.com/api/v4/projects/59987755/packages/generic/kwalletcli/3.03-4/kwalletcli-3.03-4-x86_64.pkg.tar.zst
+	noextract = kwalletcli-3.03-4.2-x86_64.tar.zst
+	source = kwalletcli-3.03-4.2-x86_64.tar.zst::https://gitlab.com/api/v4/projects/59987755/packages/generic/kwalletcli/3.03-4/kwalletcli-3.03-4-x86_64.pkg.tar.zst
 	sha256sums = 9e0e1362fb11e723651acbc8b9e43e3aa3a4f48ca1c5ab228dec8ab6e581b8f6
 
 pkgname = kwalletcli-bin
