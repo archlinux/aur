@@ -27,10 +27,10 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  mkdir build
+  mkdir -p build
   cd build
-  make
   cmake -DCMAKE_CXX_FLAGS=-DUPDATE_TYPE_PKGMAN -DCMAKE_INSTALL_PREFIX=/usr ..
+  make
 }
 package() {
   cd "$srcdir/$_pkgname"
