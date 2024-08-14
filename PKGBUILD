@@ -1,7 +1,7 @@
 # Maintainer: Dhruva Srinivas <dhruva******@gmail.com>
 
 pkgname=remind-me-git
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Lightweight system reminders for the command line"
 arch=('x86_64')
