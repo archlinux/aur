@@ -4,14 +4,14 @@
 
 pkgname=liquidwar
 pkgver=5.6.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A unique multiplayer wargame"
 arch=('i686' 'x86_64')
 url="https://www.ufoot.org/liquidwar/"
 license=('GPL')
 depends=('allegro4')
 makedepends=('python')
-source=("http://www.ufoot.org/download/$pkgname/v5/$pkgver/$pkgname-$pkgver.tar.gz"
+source=("https://github.com/ufoot/liquidwar5/releases/download/v$pkgver/liquidwar-$pkgver.tar.gz"
         "gcc10.patch"
         "doc.patch")
 sha256sums=('dad0aa84dd416cad055421ed9b40df39efae78d3df759c0583c64c54f7f2ff5f'
