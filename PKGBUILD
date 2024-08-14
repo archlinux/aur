@@ -1,15 +1,15 @@
 # Maintainer: Slavi Pantaleev <slavi at devture dot com>
 
 pkgname=agru
-pkgver=0.1.10
-pkgrel=1
+pkgver=0.1.11
+pkgrel=0
 pkgdesc="Ansible-Galaxy Requirements Updater - a fast ansible-galaxy replacement"
 arch=('any')
-url="https://gitlab.com/etke.cc/tools/agru"
+url="https://github.com/etkecc/agru"
 license=('GPL3')
 depends=()
 makedepends=('git' 'go')
-source=('vcs-repository::git+https://gitlab.com/etke.cc/tools/agru.git#tag=v'$pkgver)
+source=('vcs-repository::git+https://github.com/etkecc/agru#tag=v'$pkgver)
 md5sums=('SKIP')
 
 build() {
@@ -22,7 +22,7 @@ build() {
 
 	cd "$srcdir/vcs-repository"
 
-	go build -v -o agru ./cmd/agru
+	go build -v -o agru ./cmd/main.go
 }
 
 package() {
