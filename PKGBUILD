@@ -2,7 +2,7 @@
 
 _pkgname=replaywebpage
 pkgname=$_pkgname-bin
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc='Serverless Web Archive Replay'
 url='https://github.com/webrecorder/replayweb.page'
@@ -14,7 +14,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 options=('!strip')
 source=("https://github.com/webrecorder/replayweb.page/releases/download/v${pkgver}/ReplayWeb.page-${pkgver}.AppImage")
-sha512sums=('0e0a59f8255ae91bdb5c3ab629d51511391970e70b1a84ef8103ecefa4309e6b6b2c6c17aa823fa71a8b4cd321adf97f6fa89e632a60fe7ff70458447910ecf4')
+sha512sums=('a7aecd912d00176398e1b9925e2436442086811f759c68d23a655f457c3d906704850e04aec4c50cdfbaa04ef88461db74d20b44d326ac9e604bbd61c4da0012')
 
 prepare() {
   [[ -d squashfs-root ]] && rm -rf squashfs-root
