@@ -1,4 +1,4 @@
-# Maintainor: Pig2014 <18111431031@163.com>
+# Maintainor: Catty Steve <cattysteve89265@163.com>
 # Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
 # Forked from aur/firefox-extension-keepassxc-browser. Original contributors:
 # Contributor: Hezekiah Michael <spiritomb at protonmail dot com>
