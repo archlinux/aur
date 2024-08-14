@@ -1,5 +1,5 @@
 pkgname=mingw-w64-freeglut
-pkgver=3.4.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Provides functionality for small OpenGL programs (mingw-w64)"
 arch=(any)
@@ -9,17 +9,15 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=(!strip !buildflags staticlibs)
 source=("https://downloads.sourceforge.net/freeglut/freeglut-${pkgver}.tar.gz")
-sha256sums=('3c0bcb915d9b180a97edaebd011b7a1de54583a838644dcd42bb0ea0c6f3eaec')
+sha256sums=('9c3d4d6516fbfa0280edc93c77698fb7303e443c1aaaf37d269e3288a6c3ea52')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "${srcdir}/freeglut-${pkgver}"
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DFREEGLUT_BUILD_DEMOS=OFF ..
-    make
-    popd
+    ${_arch}-cmake -DFREEGLUT_BUILD_DEMOS=OFF -B build-${_arch} .
+    make -C build-${_arch}
   done
 }
 
