@@ -1,6 +1,6 @@
 pkgbase = packetry
 	pkgdesc = USB 2.0 protocol analysis app for use with Cynthion
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/greatscottgadgets/packetry
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = packetry
 	depends = gtk4
 	depends = hicolor-icon-theme
 	depends = pango
-	source = packetry-0.1.0.tar.gz::https://github.com/greatscottgadgets/packetry/archive/v0.1.0.tar.gz
+	source = packetry-0.2.0.tar.gz::https://github.com/greatscottgadgets/packetry/archive/v0.2.0.tar.gz
 	source = icon.svg
 	source = packetry.desktop
-	sha512sums = 17030aa32e1936ce1a9e8dbbea8a8ee510c136bf433c429b009860473baa0335fdd7bc839c9dd807e39a5d50d804d18d0ee79ba7ef9fff46d759151841c8889e
+	sha512sums = 15ef16af212cb96522cac39cb3e41207274d7915fd38ab71cb4a63e2ff11feef51063f8d32ebfbc0c6e91623ee6361c930ba623893598de1b2af462b1ccdd6f1
 	sha512sums = 1ab20c64195fb67204d1b0aab17e5f1d54b9d0b416074eb32fa5806a4618d0c6d3b5beb54473160690f56f969598b5d1c2de0eaaa5c87f43c14e18059d259212
 	sha512sums = 92b735f7cdd5c07797bd48cdffc4cef2218df1a0d0517a8acb6813e41a972a0881eadf617dfe7524f4ed48e5e14fd55743a986f50a707bfca0f279068f46e410
 
