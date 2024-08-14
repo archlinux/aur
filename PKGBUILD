@@ -1,4 +1,6 @@
 # Maintainer: Janek Graff <janek.graff at gmx dot com>
+# This is a modified version of xorlys' serialplot-hg package (https://aur.archlinux.org/packages/serialplot-hg)
+# It changes the upstream to the git repository and uses the qwt dependency that is delivered by the build process of serialplot
 pkgname=serialplot-git
 _pkgname=serialplot
 pkgver=v0.12.0.r24.gd130116
