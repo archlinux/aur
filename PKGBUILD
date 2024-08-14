@@ -1,7 +1,7 @@
 # Maintainer: Matt Coffin <mcoffin13@gmail.com>
 pkgname=hid-fanatecff-dkms
 _pkgname="${pkgname%-*}"
-pkgver=0.1.1.r0.c2a96ed
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Driver to support force feedback and load cells for the FANATEC controller ecosystem'
 arch=(any)
@@ -27,15 +27,6 @@ prepare() {
 		echo -e "Applying patch: \\033[1;36m$src\\033[0m"
 		patch -Np1 < "$srcdir/$src"
 	done
-}
-
-pkgver() {
-	# Git, tags available
-	# git -C "$srcdir/$_pkgname" describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
-	# Git, no tags available
-	# printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	git -C "$srcdir/$_pkgname" describe --long --tags \
-		| awk -F '-' '{ sub(/^v/, ""); v = $1 ".r" $2 "." substr($3, 2); printf "%s", v; }'
 }
 
 package() {
