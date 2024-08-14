@@ -1,4 +1,4 @@
-pkgbase = fastly
+pkgbase = fastly-git
 	pkgdesc = CLI for the Fastly platform
 	pkgver = r1071.gfc70ca57
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = fastly
 	source = fastly::git+https://github.com/fastly/cli
 	sha256sums = SKIP
 
-pkgname = fastly
+pkgname = fastly-git

@@ -2,7 +2,8 @@
 # Based on `fastly` by Luis Martinez <luis.martinez@disroot.org>
 # Contributor: oss@fastly.com
 
-pkgname=fastly
+_pkgname=fastly
+pkgname="$_pkgname-git"
 pkgver=r1071.gfc70ca57
 pkgrel=1
 pkgdesc='CLI for the Fastly platform'
@@ -13,16 +14,16 @@ depends=('glibc')
 makedepends=('git' 'go')
 provides=('fastly')
 conflicts=('fastly-bin' 'fastly')
-source=("$pkgname::git+$url")
+source=("$_pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}" || exit
+    cd "${srcdir}/${_pkgname}" || exit
     printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$pkgname"
+	cd "$_pkgname"
 	go mod download
 	sed -i '/CGO_ENABLED=/s/0/1/g' Makefile
 }
@@ -33,7 +34,7 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	cd "$pkgname"
+	cd "$_pkgname"
 	make build \
 		VERSION="$pkgver" \
 		CLI_ENV="production" \
@@ -49,13 +50,13 @@ check() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	cd "$pkgname"
+	cd "$_pkgname"
 	go test ./...
 }
 
 package() {
-	cd "$pkgname"
+	cd "$_pkgname"
 	install -Dv fastly -t "$pkgdir/usr/bin/"
-	install -Dvm644 fastly.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+	install -Dvm644 fastly.bash "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
 	install -Dvm644 _fastly -t "$pkgdir/usr/share/zsh/site-functions/"
 }
