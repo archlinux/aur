@@ -2,7 +2,7 @@
 pkgbase=python-astroplan
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.10
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="A python package to help astronomers plan observations"
 arch=('any')
@@ -24,7 +24,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       "http://hpiers.obspm.fr/iers/eop/eopc04/eopc04_IAU2000.62-now"
 #       "https://skyview.gsfc.nasa.gov/tempspace/fits/skv9820097384828.fits"
         'fix_doc_index_astropy_link.patch')
-md5sums=('3d823e9f1bdf5f4183149e73c63557dc'
+md5sums=('9c0c5def3324369b47a7ff62b161fcc0'
          'be56be5926b43589b273c16544c5241a')
 
 get_pyver() {
