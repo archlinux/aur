@@ -1,6 +1,6 @@
 pkgbase = prunef
 	pkgdesc = A backup rotation filter
-	pkgver = 0.2.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://git.sr.ht/~apreiml/prunef
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = prunef
 	makedepends = scdoc
 	provides = prunef
 	conflicts = prunef
-	source = prunef-0.2.0.tar.gz::https://git.sr.ht/~apreiml/prunef/archive/v0.2.0.tar.gz
-	sha256sums = 26211ec89deef5ee33562966c843a35aeee38c053691e427545885f21dd0d660
+	source = prunef-1.0.0.tar.gz::https://git.sr.ht/~apreiml/prunef/archive/v1.0.0.tar.gz
+	sha256sums = 6260021d226b9f8b31617e60b203d7bd99fa33fcc2ebc18688d79faa0199ce8c
 
 pkgname = prunef
