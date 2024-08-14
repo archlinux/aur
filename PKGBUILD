@@ -1,11 +1,12 @@
-# Maintainer: Pellegrino Prevete    pellegrinoprevete at gmail dot com
-# Maintainer: Truocolo              ttuocolo at aol dot com
+# Maintainer: Michał Wojdyła        micwoj9292 at gmail dot com
+# Contributor: Pellegrino Prevete   pellegrinoprevete at gmail dot com
+# Contributor: Truocolo             ttuocolo at aol dot com
 # Contributor: Johannes Dewender    arch at JonnyJD dot net
 # Contributor: Jacob Alexander      haata at kiibohd dot com
 
 _pkg="apt"
 pkgname="python-${_pkg}"
-pkgver=2.7.2
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Python binding of lib${_pkg}-pkg"
 arch=('any')
@@ -19,7 +20,7 @@ options=(!emptydirs)
 source=(
   "${_url}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=(
-  71ea9b9f2efbb68f336a14a48e1b2f8765083c27ef5345968e1c6812cab3983239e50a70aea9c48ebef135de0da0231f70022213dcec136da9be29ee81460772
+  9d43d1d82c704985f741982dce0c9b32bbfacb0f479ca0b98869d3be43dd553c2ba46da1c70dec090e5cd7aebf41b4ebd5b93551c6f8bae8870fdaf3c8e5361b
   )
 
 package_python-apt() {
