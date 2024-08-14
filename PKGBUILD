@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=copybook-bin
-pkgver=1.0.1096
-pkgrel=5
+pkgver=1.0.1102
+pkgrel=1
 pkgdesc='生成拼音、汉字、汉字字帖'
 arch=(x86_64)
 url="https://github.com/xxNull-lsk/Copybook"
@@ -15,8 +15,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_x64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5378a01b40833eac3d0383bd55eec8c6c742f53a2b812cc5d94a34be7a3ef2da'
-            '1e338ff128b2be2b0d484ea2d00814db6709a5e2cc455a373428d21f8ed690d5')
+sha256sums=('add5907d8e6bb710327b5a719ba7cf9d004efb021c68475a47644dc50524fe77'
+            '7a232e68a07c829390ea2b50cf8214db1d02ebe5fa8713722869352365aa2e92')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \

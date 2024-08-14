@@ -1,16 +1,16 @@
 pkgbase = copybook-bin
 	pkgdesc = 生成拼音、汉字、汉字字帖
-	pkgver = 1.0.1096
-	pkgrel = 5
+	pkgver = 1.0.1102
+	pkgrel = 1
 	url = https://github.com/xxNull-lsk/Copybook
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = gtk3
-	provides = copybook=1.0.1096
+	provides = copybook=1.0.1102
 	conflicts = copybook
-	source = copybook-1.0.1096.deb::https://github.com/xxNull-lsk/Copybook/releases/download/v1.0.1096/copybook_1.0.1096_linux_x64.deb
+	source = copybook-1.0.1102.deb::https://github.com/xxNull-lsk/Copybook/releases/download/v1.0.1102/copybook_1.0.1102_linux_x64.deb
 	source = copybook.sh
-	sha256sums = 5378a01b40833eac3d0383bd55eec8c6c742f53a2b812cc5d94a34be7a3ef2da
-	sha256sums = 1e338ff128b2be2b0d484ea2d00814db6709a5e2cc455a373428d21f8ed690d5
+	sha256sums = add5907d8e6bb710327b5a719ba7cf9d004efb021c68475a47644dc50524fe77
+	sha256sums = 7a232e68a07c829390ea2b50cf8214db1d02ebe5fa8713722869352365aa2e92
 
 pkgname = copybook-bin
