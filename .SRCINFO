@@ -1,0 +1,21 @@
+pkgbase = wayfire-firedecor-mntmn-git
+	pkgdesc = An advanced window decoration plugin for the wayfire window manager.Modified by mntmn to add newer wayfire API support.
+	pkgver = 1.127.d4992ea
+	pkgrel = 1
+	url = https://github.com/mntmn/wayfire-firedecor.git
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = cmake
+	depends = wayfire-git
+	depends = librsvg
+	depends = boost
+	provides = wayfire-firedecor-git
+	provides = wayfire-firedecor
+	conflicts = wayfire-firedecor-git
+	source = git+https://github.com/mntmn/Firedecor.git
+	sha256sums = SKIP
+
+pkgname = wayfire-firedecor-mntmn-git
