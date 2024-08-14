@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=127.0.6533.99
+pkgver=127.0.6533.119
 pkgrel=1
 _manual_clone=0
 # Linking to system Abseil doesn't work due to errors like this one:
@@ -27,7 +27,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-no-matching-strcat.patch
         fix-numeric_limits.patch
         fix-undeclared-isnan.patch)
-sha256sums=('e33a57b0cab75f2fb8bd128be24da0ee18d4a0052e4cd99ad37fcb8dfc9c5875'
+sha256sums=('acc9e3f9fd2d180b8831865a1ac4f5cdd9ffe6211f47f467296d9ee1be2a577e'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             SKIP
