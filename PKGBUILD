@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=spark-dwine-helper
 pkgver=5.6.4.4_5.3.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Modify deepin-wine to make it perform better.修改和增强deepin-wine来提升体验."
 arch=("any")
 url="https://gitee.com/spark-store-project/spark-wine"
@@ -23,4 +23,6 @@ build() {
 }
 package() {
 	cp -r "${srcdir}/"{opt,usr} "${pkgdir}"
+	install -Dm755 -d "${pkgdir}/opt/deepinwine/tools"
+	ln -sf "/opt/apps/store.spark-app.${pkgname}/files/deepinwine/tools/spark_run_v4.sh" "${pkgdir}/opt/deepinwine/tools/spark_run_v4.sh"
 }
