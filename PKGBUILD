@@ -1,6 +1,6 @@
 pkgname=mihomo-party-bin
 _pkgname=mihomo-party
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ makedepends=('nodejs' 'pnpm' 'jq' 'libxcrypt-compat')
 install=$_pkgname.install
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/mihomo-party-linux-${pkgver}-amd64.deb")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/mihomo-party-linux-${pkgver}-arm64.deb")
-sha256sums_x86_64=("e2e02dd0dc642072a684fdc64959d4df3151bb3a64d52376fdc49fd2b8470ff0")
-sha256sums_aarch64=("3697b898c04318bac79923aac005d9a07628b5c013d847841ed490e16bbd915a")
+sha256sums_x86_64=("c08dd6d64456795415fc8c7119313b3e223178de4099d6f062d4dbd01aa675bd")
+sha256sums_aarch64=("76a3f53c2163ba3e8c169f5b8dbd5a5ef8f9ee7b9dccb5dab1b757848f782dee")
 
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}/"
