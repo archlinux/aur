@@ -1,0 +1,34 @@
+pkgbase = r-mplot
+	pkgdesc = Graphical Model Stability and Variable Selection Procedures
+	pkgver = 1.0.6
+	pkgrel = 0
+	url = https://cran.r-project.org/package=mplot
+	arch = any
+	license = GPL-2.0-or-later
+	depends = r-bestglm
+	depends = r-doparallel
+	depends = r-dorng
+	depends = r-dplyr
+	depends = r-foreach
+	depends = r-ggplot2
+	depends = r-glmnet
+	depends = r-googlevis
+	depends = r-leaps
+	depends = r-magrittr
+	depends = r-plyr
+	depends = r-reshape2
+	depends = r-scales
+	depends = r-shiny
+	depends = r-shinydashboard
+	depends = r-tidyr
+	optdepends = r-dt
+	optdepends = r-glmulti
+	optdepends = r-knitr
+	optdepends = r-mass
+	optdepends = r-mvoutlier
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/mplot_1.0.6.tar.gz
+	md5sums = 51f023fe40d1aabc705eec86d42c73f5
+	b2sums = 28841c910a6aac91e30691a7b328f97a86064dd323e1ee15ccf95553176148a69431a2c56de8008477577475f52ea334429dad192a617af6062528e0a0132faf
+
+pkgname = r-mplot
