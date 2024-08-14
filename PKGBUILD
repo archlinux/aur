@@ -3,14 +3,14 @@
 # The pkgbuild is based on the original pkgbuild for citra.
 
 pkgname=lime3ds-git
-pkgver=r10441.5a5e4c9
+pkgver=r10443.afe9ee8
 pkgrel=1
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 url='https://github.com/Lime3DS/Lime3DS'
 license=('GPL-2.0-only')
-depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio' 'zstd' 'soundtouch' 'fmt' 'libinih' 'openal' 'enet' 'zydis' 'boost-libs' 'boost')
-makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'ninja')
+depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio' 'zstd' 'soundtouch' 'fmt' 'libinih' 'openal' 'enet' 'zydis' 'boost-libs')
+makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'ninja' 'boost')
 conflicts=('lime3ds-appimage' 'lime3ds')
 provides=('lim3ds')
 options=('!lto')
@@ -187,5 +187,5 @@ build() {
 
 package() {   
     DESTDIR="$pkgdir/" cmake --install build
-    rm -rf $pkgdir/usr/include/enet
+    rm -rf $pkgdir/usr/include/ "$pkgdir/usr/lib"
 }
