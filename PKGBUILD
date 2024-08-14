@@ -3,20 +3,20 @@
 
 _pkgname=snappy
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='A fast compressor/decompressor library (mingw-w64)'
 arch=('any')
 url="https://google.github.io/snappy/"
 license=('BSD')
-depends=('mingw-w64-crt')
+depends=('mingw-w64-crt' 'mingw-w64-winpthreads')
 makedepends=('mingw-w64-cmake' 'git')
 checkdepends=('mingw-w64-wine' 'mingw-w64-zlib' 'mingw-w64-lzo' 'mingw-w64-lz4')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(
 	"git+https://github.com/google/snappy.git#tag=${pkgver}"
 	'git+https://github.com/google/googletest.git')
-sha256sums=('99b5c9e017d904b88ce09369c0dd3fcaf07beaad49e3223d346e1fbcfcec3731'
+sha256sums=('1fe95cdb4e11b0bce890d162587592ae8910733e66510d28fd7644bf16095895'
             'SKIP')
 
 _srcdir="${_pkgname}"
@@ -32,7 +32,7 @@ prepare() {
 	cd "${_srcdir}"
 	git config --file=.gitmodules submodule.third_party/googletest.url "$srcdir/googletest"
 	git -c protocol.file.allow=always submodule update --init
-	
+
 	sed -i 's|COMMAND "${PROJECT_BINARY_DIR}/snappy_unittest"|COMMAND snappy_unittest|' 'CMakeLists.txt'
 }
 
@@ -43,7 +43,7 @@ build() {
 			-DBUILD_SHARED_LIBS=OFF \
 			-DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
-		
+
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" \
 			-DSNAPPY_BUILD_TESTS=OFF
 		cmake --build "build-${_arch}"
@@ -55,6 +55,7 @@ check() {
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" \
 			-DSNAPPY_BUILD_TESTS=ON
 		cmake --build "build-${_arch}"
+		cp -f "build-${_arch}/bin"/* "build-${_arch}"
 		cmake --build "build-${_arch}" --target test
 	done
 }
@@ -63,7 +64,7 @@ package() {
 	for _arch in ${_architectures}; do
 		DESTDIR="${pkgdir}" cmake --install "build-${_arch}-static"
 		${_arch}-strip -g "$pkgdir"/usr/${_arch}/static/lib/*.a
-		
+
 		DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
 		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
 		${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
