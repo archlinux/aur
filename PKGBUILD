@@ -13,6 +13,7 @@ pkgbase="$_pkgname-git"
 pkgname=(
     pulseaudio-git
     libpulse-git
+    pulseaudio-lirc-git
     pulseaudio-zeroconf-git
     pulseaudio-jack-git
     pulseaudio-bluetooth-git
@@ -20,7 +21,7 @@ pkgname=(
     pulseaudio-rtp-git
 )
 pkgdesc="A featureful, general-purpose sound server (development version)"
-pkgver=17.0.r4.g5d7cd8bd0
+pkgver=17.0.r38.gcba313d8f
 pkgrel=1
 arch=("i686" "x86_64" "armv7h")
 url="http://pulseaudio.org/"
@@ -80,7 +81,7 @@ build() {
     -D udevrulesdir=/usr/lib/udev/rules.d \
     -D elogind=disabled \
     -D consolekit=disabled
-  ninja -C build
+    meson compile -C build
 }
 
 check() {
@@ -104,7 +105,7 @@ package_pulseaudio-git() {
     fftw
     libcap
     libltdl
-    "libpulse=$pkgver-$pkgrel"
+    "libpulse-git=$pkgver-$pkgrel"
     libsm
     libsoxr
     libxtst
@@ -139,10 +140,7 @@ package_pulseaudio-git() {
     'pulseaudio-xen<=9.0'
   )
 
-
-
-
-    DESTDIR="$pkgdir" meson install -C build
+     meson install -C build --destdir "$pkgdir"
 
     cd "$pkgdir"
 
@@ -246,7 +244,7 @@ package_pulseaudio-zeroconf-git() {
   mv zeroconf/* "$pkgdir"
 }
 
-package_pulseaudio-lirc() {
+package_pulseaudio-lirc-git() {
   pkgdesc="IR (lirc) support for PulseAudio (development)"
   depends=(
     lirc
