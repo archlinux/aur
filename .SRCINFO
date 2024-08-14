@@ -1,0 +1,13 @@
+pkgbase = python-pyqt-distutils
+	pkgdesc = A set of distutils extension to work with PyQt applications and UI files.
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://github.com/ColinDuquesnoy/pyqt_distutils
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = docopt
+	source = https://github.com/ColinDuquesnoy/pyqt_distutils/archive/refs/tags/0.7.3.tar.gz
+	sha256sums = 9951e0a71919ab2d047625796904815f471b2239520c3041e16c9b07b956d0ae
+
+pkgname = python-pyqt-distutils
