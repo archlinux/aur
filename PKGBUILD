@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-applibrary-git
-pkgver=1.0.0.alpha.1.r0.g1416b80
+pkgver=1.0.0.alpha.1.r5.g864564b
 pkgrel=1
 pkgdesc="WIP Cosmic App Library"
 arch=('x86_64' 'aarch64')
@@ -38,6 +38,7 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
 
   # use mold instead of lld to speed up build
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
