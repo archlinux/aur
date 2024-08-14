@@ -1,0 +1,24 @@
+pkgbase = libnode
+	pkgdesc = libnode.so from nodejs-shared
+	pkgver = 22.6.0
+	pkgrel = 1
+	url = https://nodejs.org/
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	makedepends = procps-ng
+	depends = icu
+	depends = libuv
+	depends = libnghttp2
+	depends = libnghttp3
+	depends = libngtcp2
+	depends = openssl
+	depends = zlib
+	depends = brotli
+	depends = c-ares
+	options = !lto
+	source = nodejs-22.6.0.tar.gz::https://github.com/nodejs/node/archive/refs/tags/v22.6.0.tar.gz
+	sha512sums = de04d1d2dec6668c06143b0a4d6bb4cc51b61b80a6030120d099ba7b6c8d83804ae097f8c9a057724414be24616db5e0f65c75fbaf91e047dc792ce5429e9bd5
+
+pkgname = libnode
+	conflicts = nodejs-shared
