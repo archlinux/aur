@@ -7,7 +7,7 @@
 # Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=megasync
-pkgver=5.4.0.0
+pkgver=5.4.1.0
 pkgrel=1
 pkgdesc='Official MEGA desktop application for syncing with MEGA Cloud Drive'
 arch=('x86_64')
@@ -38,18 +38,26 @@ depends=('c-ares'
          'zlib'
 )
 makedepends=('git' 'cmake' 'qt5-tools')
-source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_OSX"
+source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_Linux"
         'meganz-sdk'::'git+https://github.com/meganz/sdk.git'
         '010-megasync-freeimage-remove-obsolete-ffmpeg-macros.patch'
         '020-megasync-sdk-fix-cmake-dependencies-detection.patch'
-        '030-megasync-app-fix-cmake-dependencies-detection.patch')
-sha256sums=('c0efb546e08db4c97c54bcab6b670d98ccfe220bc6a186ecf6b75c9b2a4ba765'
+        '030-megasync-app-fix-cmake-dependencies-detection.patch'
+        '040-megasync-restore-version.patch')
+sha256sums=('8bd224547574f9da02d1db3532ca63e95253b80499c323e01fe8d6f7f76cdc1b'
             'SKIP'
             '3df5d43ca1951c9e48dbb7f8e221bc8fff1a9fb1b7c934cb5ea7f195ae8f2e04'
             '2da83bb6a20aa19b58b4115646bacb9d76e2504b45b5094abeba94beac2301fb'
-            'a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171')
+            'a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171'
+            '1fc357c73283aac125d8ca391033d800993dff196bd23f59890e92d5415ae22f')
 
 prepare() {
+    # at the time of writting, there are no versions 7.7.0-rc.3, 7.7.0-rc2 and 7.7.0
+    # in the public sdk repository, which are referenced by the commits bellow
+    git -C MEGAsync revert --no-edit --no-commit 243d77ebb7239d7ff5cd8b7aea6c0158d1c6c813
+    git -C MEGAsync revert --no-edit --no-commit 21514f4407764f7760d6dbc60fab98b46108b888
+    git -C MEGAsync revert --no-edit --no-commit 8241bfea13cfcdc5362db148ce8ac2b05db46c9d
+    
     git -C MEGAsync submodule init
     git -C MEGAsync config --local submodule.src/MEGASync/mega.url "${srcdir}/meganz-sdk"
     git -C MEGAsync -c protocol.file.allow='always' submodule update
@@ -57,6 +65,9 @@ prepare() {
     patch -d MEGAsync/src/MEGASync/mega -Np1 -i "${srcdir}/010-megasync-freeimage-remove-obsolete-ffmpeg-macros.patch"
     patch -d MEGAsync/src/MEGASync/mega -Np1 -i "${srcdir}/020-megasync-sdk-fix-cmake-dependencies-detection.patch"
     patch -d MEGAsync -Np1 -i "${srcdir}/030-megasync-app-fix-cmake-dependencies-detection.patch"
+    
+    # restore the 5.4.1.0 version (reverted by the git revert commands above)
+    patch -d MEGAsync -Np1 -i "${srcdir}/040-megasync-restore-version.patch"
 }
 
 build() {
