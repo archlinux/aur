@@ -1,6 +1,6 @@
 pkgbase = openbuilds-control-git
 	pkgdesc = Grbl Host / Interface for all CNC style machines running Grbl
-	pkgver = v1.0.378.r9.gdeff1fa
+	pkgver = 1.0.378.r9.gdeff1fa
 	pkgrel = 1
 	url = https://github.com/OpenBuilds/OpenBuilds-CONTROL
 	arch = x86_64
