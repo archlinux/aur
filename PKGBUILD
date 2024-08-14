@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-daemon-git
-pkgver=1.0.0.alpha.1.r1.g75f9213
-pkgrel=2
+pkgver=1.0.0.alpha.1.r3.g93c5494
+pkgrel=1
 pkgdesc="Cosmic settings daemon"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-settings-daemon"
@@ -44,6 +44,7 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
 
   # use mold instead of lld to speed up build
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
