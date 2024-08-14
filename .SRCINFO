@@ -1,0 +1,18 @@
+pkgbase = ghc9.10-bin
+	pkgdesc = Binary GHC 9.10 installed on /usr/bin/ghc-9.10
+	pkgver = 9.10.1
+	pkgrel = 1
+	url = http://www.haskell.org/ghc/
+	install = ghc.install
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = gcc
+	depends = ncurses
+	depends = libffi
+	depends = gmp
+	provides = ghc9.10
+	conflicts = ghc9.10
+	source = https://www.haskell.org/ghc/dist/9.10.1/ghc-9.10.1-x86_64-deb12-linux.tar.xz
+	sha256sums = 330c43eea88434e2de3480e05a5ea5cf7664090ef12245602dfe8463ac5dc496
+
+pkgname = ghc9.10-bin
