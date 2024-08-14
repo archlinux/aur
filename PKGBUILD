@@ -8,6 +8,8 @@ arch=('any')
 url="https://github.com/cryptpad/sso"
 license=('AGPL-3.0-or-later')
 depends=('cryptpad')
+backup=(etc/webapps/cryptpad/sso.js)
+options=(!strip)
 source=("git+$url"
         "https://github.com/cryptpad/cryptpad/raw/main/config/sso.example.js")
 sha256sums=('SKIP'
@@ -21,7 +23,7 @@ pkgver() {
 package() {
     #install -Dm755 "$pkgdir/etc/webapps/cryptpad"
     #install -Dm755 "$pkgdir/usr/share/webapps/cryptpad/plugins"
-    install -Dm644 sso.example.js "$pkgdir/etc/webapps/cryptpad/sso.example.js"
+    install -Dm644 sso.example.js "$pkgdir/etc/webapps/cryptpad/sso.js"
 
     cd sso
     install -Dm644 challenge.js "$pkgdir/usr/share/webapps/cryptpad/plugins/challenge.js"
