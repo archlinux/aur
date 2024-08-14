@@ -1,6 +1,6 @@
 pkgbase = zerochess-git
 	pkgdesc = Chess game precision analysis app
-	pkgver = 1.0.0.r0.g11f2663
+	pkgver = 1.0.2.r0.g68aa1fa
 	pkgrel = 1
 	url = https://github.com/OscarDavilaSampedro/zerochess
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = zerochess-git
 	makedepends = cmake
 	makedepends = curl
 	depends = electron27
-	provides = zerochess=1.0.0
+	provides = zerochess=1.0.2
 	conflicts = zerochess
 	source = zerochess.git::git+https://github.com/OscarDavilaSampedro/zerochess.git
 	source = zerochess.sh
