@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ooniprobe-desktop
-pkgver=3.9.7
+pkgver=3.9.8
 pkgrel=1
-_cliver=3.22.0
-_nodeversion=16
+_cliver=3.23.0
+_nodeversion=18
 pkgdesc="The next generation OONI Probe desktop app"
 arch=('x86_64')
 url="https://ooni.org"
@@ -14,8 +14,8 @@ conflicts=("${pkgname%-desktop}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ooni/probe-desktop/archive/v$pkgver.tar.gz"
         "${pkgname%-desktop}-${_cliver}-linux-amd64::https://github.com/ooni/probe-cli/releases/download/v${_cliver}/${pkgname%-desktop}-linux-amd64"
         "$pkgname.desktop")
-sha256sums=('a90a591a47665b969c0fc6f2e8d06fd7e22a150e8a1b7d8e7eebc0acb75835d3'
-            'a9d8f6b18382ea9f25a5fbe512189a8f6deeffa7e32dfd94bfbbe0377c5c8670'
+sha256sums=('b688a9c45490dcf06068da1e4a60cd3e5e33d77ea29e41316591265f2c4d4a93'
+            '9e9e950ad213be817f9064c5bc099443f632235cfe8d22db81ac561e741c861b'
             '77f39a9c8d017b391f61686ac38131a9e31435635de4b72d0f20930165404915')
 
 _ensure_local_nvm() {
@@ -45,7 +45,7 @@ prepare() {
 
 build() {
   cd "${pkgname#ooni}-$pkgver"
-#  export NODE_OPTIONS=--openssl-legacy-provider
+  export NODE_OPTIONS=--openssl-legacy-provider
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   _ensure_local_nvm
   yarn next build renderer
@@ -60,10 +60,10 @@ package() {
   chmod 4755 "$pkgdir/opt/OONI Probe/chrome-sandbox"
 
   install -d "$pkgdir/usr/bin"
-  ln -sf "/opt/OONI Probe/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  ln -sf "/opt/OONI Probe/$pkgname" "$pkgdir/usr/bin/"
 
   install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 
   for i in 16 48; do
     install -Dm644 "dist/.icon-set/icon_${i}x${i}.png" \
