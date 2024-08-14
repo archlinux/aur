@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=('pop-launcher-git' 'pop-shell-plugin-system76-power-git')
 pkgbase=pop-launcher-git
-pkgver=1.2.1.r64.ge44d6cd
-pkgrel=3
+pkgver=1.2.1.r65.gc994240
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
 license=('MPL-2.0')
@@ -41,6 +41,7 @@ prepare() {
 build() {
   cd launcher
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   just build-release --frozen
 }
 
