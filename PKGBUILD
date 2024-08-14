@@ -10,6 +10,7 @@ license=('Apache License 2.0')
 source=("easytier.service")
 source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://github.com/EasyTier/EasyTier/releases/download/v1.2.2/easytier-linux-x86_64-v1.2.2.zip")
 source_aarch64=("$pkgname-$pkgver-aarch64.zip::https://github.com/EasyTier/EasyTier/releases/download/v1.2.2/easytier-linux-aarch64-v1.2.2.zip")
+sha256sums=('SKIP')
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 
