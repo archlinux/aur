@@ -1,0 +1,20 @@
+pkgbase = serialplot-git
+	pkgdesc = Small and simple software for plotting data from serial port in realtime
+	pkgver = v0.12.0.r24.gd130116
+	pkgrel = 1
+	url = https://github.com/hyOzd/serialplot
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	depends = qt5-base
+	depends = qt5-serialport
+	depends = hicolor-icon-theme
+	provides = serialplot
+	conflicts = serialplot-hg
+	source = git+https://github.com/hyOzd/serialplot.git
+	sha256sums = SKIP
+
+pkgname = serialplot-git

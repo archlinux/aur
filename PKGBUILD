@@ -1,0 +1,37 @@
+# Maintainer: Janek Graff <janek.graff at gmx dot com>
+pkgname=serialplot-git
+_pkgname=serialplot
+pkgver=v0.12.0.r24.gd130116
+pkgrel=1
+pkgdesc="Small and simple software for plotting data from serial port in realtime"
+arch=('i686' 'x86_64')
+url="https://github.com/hyOzd/serialplot"
+license=('GPL3')
+depends=('qt5-base' 'qt5-serialport' 'hicolor-icon-theme')
+makedepends=('git' 'cmake' 'make')
+provides=('serialplot')
+conflicts=('serialplot-hg')
+source=('git+https://github.com/hyOzd/serialplot.git')
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  (
+    set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
+
+build() {
+  cd "$srcdir/$_pkgname"
+  mkdir build
+  cd build
+  make
+  cmake -DCMAKE_CXX_FLAGS=-DUPDATE_TYPE_PKGMAN -DCMAKE_INSTALL_PREFIX=/usr ..
+}
+package() {
+  cd "$srcdir/$_pkgname"
+  cd build
+  make DESTDIR="${pkgdir}" install
+}
