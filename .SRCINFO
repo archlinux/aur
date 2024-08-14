@@ -4,12 +4,13 @@ pkgbase = jpegrescan-git
 	pkgrel = 1
 	url = https://github.com/kud/jpegrescan
 	arch = any
-	license = custom
+	license = custom:Public Domain
 	makedepends = git
 	depends = perl-file-slurp
 	depends = libjpeg-turbo
+	provides = jpegrescan=1.1.0
+	conflicts = jpegrescan
 	source = git+https://github.com/kud/jpegrescan.git
 	sha512sums = SKIP
 
 pkgname = jpegrescan-git
-
