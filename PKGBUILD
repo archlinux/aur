@@ -2,7 +2,7 @@
 
 pkgname=sofastats
 pkgver=1.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Statistics Open For All"
 arch=('any')
 url="http://www.sofastatistics.com/"
@@ -12,11 +12,11 @@ depends=('bash-completion' 'ghostscript'
          'python' 'wkhtmltopdf' 'python-wxpython'
          'python-matplotlib' 'python-numpy' 'python-psycopg2' 
          'python-requests' 'python-wxpython')
-makedepends=('python2-distribute')
+makedepends=('python-distribute')
 replaces=('sofa')
-source=("http://downloads.sourceforge.net/projects/sofastatistics/sofastatistics/$pkgver/"$pkgname"-"$pkgver".tar.gz" "setup.py" "sofastats.desktop")
+source=("http://downloads.sourceforge.net/project/sofastatistics/sofastatistics/$pkgver/"$pkgname"-"$pkgver".tar.gz" "setup.py" "sofastats.desktop")
 md5sums=('300ff3613e90e9a89366c763f96b32af'
-         '9b3104b2b8636f77330fcf6539ab1bac'
+         '3372a43d8c291d883bd0ad2b38f7e85d'
          'f267ddd0371a29a3466bec780eda3fd6')
 
 build() {
@@ -29,7 +29,7 @@ package() {
   cd $srcdir/$pkgname-$pkgver
   python setup.py install --root=$pkgdir
   echo "#!/bin/bash" > sofastats
-  echo "/usr/bin/env python2 "\
+  echo "/usr/bin/env python "\
   "/usr/lib/python$(pacman -Q python | colrm 1 8 | colrm 4)/site-packages/sofastats/start.py "\
   >> sofastats
   chmod a+x sofastats
