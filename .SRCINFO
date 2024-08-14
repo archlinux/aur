@@ -1,6 +1,6 @@
 pkgbase = cito-git
 	pkgdesc = The Ć Programming Language. A programming language which can be translated automatically to C, C++, C#, D, Java, JavaScript, Python, Swift, TypeScript and OpenCL C.
-	pkgver = 3.2.5+17.r2602.20240806.62d3f35
+	pkgver = 3.2.6+6.r2612.20240813.0cebb16
 	pkgrel = 1
 	url = http://github.com/pfusik/cito
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = cito-git
 	depends = dotnet-runtime
 	depends = gcc-libs
 	depends = glibc
-	provides = cito=3.2.5+17.r2602.20240806.62d3f35
+	provides = cito=3.2.6+6.r2612.20240813.0cebb16
 	conflicts = cito
 	source = cito::git+https://github.com/pfusik/cito.git
 	sha256sums = SKIP
