@@ -1,6 +1,6 @@
 pkgbase = pulseaudio-git
 	pkgdesc = A featureful, general-purpose sound server (development version)
-	pkgver = 17.0.r4.g5d7cd8bd0
+	pkgver = 17.0.r38.gcba313d8f
 	pkgrel = 1
 	url = http://pulseaudio.org/
 	install = pulseaudio.install
@@ -55,7 +55,7 @@ pkgname = pulseaudio-git
 	depends = fftw
 	depends = libcap
 	depends = libltdl
-	depends = libpulse=17.0.r4.g5d7cd8bd0-1
+	depends = libpulse-git=17.0.r38.gcba313d8f-1
 	depends = libsm
 	depends = libsoxr
 	depends = libxtst
@@ -98,17 +98,24 @@ pkgname = libpulse-git
 	conflicts = libpulse
 	backup = etc/pulse/client.conf
 
+pkgname = pulseaudio-lirc-git
+	pkgdesc = IR (lirc) support for PulseAudio (development)
+	depends = lirc
+	depends = pulseaudio-git=17.0.r38.gcba313d8f-1
+	provides = pulseaudio-lirc
+	conflicts = pulseaudio-lirc
+
 pkgname = pulseaudio-zeroconf-git
 	pkgdesc = Zeroconf support for PulseAudio (development)
 	depends = avahi
-	depends = pulseaudio-git=17.0.r4.g5d7cd8bd0-1
+	depends = pulseaudio-git=17.0.r38.gcba313d8f-1
 	provides = pulseaudio-zeroconf
 	conflicts = pulseaudio-zeroconf
 
 pkgname = pulseaudio-jack-git
 	pkgdesc = Jack support for PulseAudio (development)
 	depends = jack
-	depends = pulseaudio-git=17.0.r4.g5d7cd8bd0-1
+	depends = pulseaudio-git=17.0.r38.gcba313d8f-1
 	provides = pulseaudio-jack
 	conflicts = pulseaudio-jack
 
@@ -117,7 +124,7 @@ pkgname = pulseaudio-bluetooth-git
 	depends = bluez
 	depends = bluez-libs
 	depends = gst-plugins-base-libs
-	depends = pulseaudio-git=17.0.r4.g5d7cd8bd0-1
+	depends = pulseaudio-git=17.0.r38.gcba313d8f-1
 	depends = sbc
 	optdepends = gst-plugins-bad: AptX and LDAC support
 	provides = pulseaudio-bluetooth
@@ -125,7 +132,7 @@ pkgname = pulseaudio-bluetooth-git
 
 pkgname = pulseaudio-equalizer-git
 	pkgdesc = Graphical equalizer for PulseAudio (development)
-	depends = pulseaudio-git=17.0.r4.g5d7cd8bd0-1
+	depends = pulseaudio-git=17.0.r38.gcba313d8f-1
 	depends = python-dbus
 	depends = python-pyqt5
 	depends = fftw
@@ -141,6 +148,6 @@ pkgname = pulseaudio-rtp-git
 	depends = gst-plugins-base-libs
 	depends = gst-plugins-good
 	depends = openssl
-	depends = pulseaudio-git=17.0.r4.g5d7cd8bd0-1
+	depends = pulseaudio-git=17.0.r38.gcba313d8f-1
 	provides = pulseaudio-rtp
 	conflicts = pulseaudio-rtp
