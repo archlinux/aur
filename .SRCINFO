@@ -1,6 +1,6 @@
 pkgbase = dolphin-meld
 	pkgdesc = KDE File Manager, using Meld rather than Kompare
-	pkgver = 24.02.2
+	pkgver = 24.05.2
 	pkgrel = 1
 	url = https://apps.kde.org/dolphin/
 	arch = x86_64
@@ -45,21 +45,20 @@ pkgbase = dolphin-meld
 	optdepends = ffmpegthumbs: video thumbnails
 	optdepends = kde-cli-tools: for editing file type options
 	optdepends = kdegraphics-thumbnailers: PDF and PS thumbnails
-	optdepends = konsole: terminal panel
+	optdepends = kdenetwork-filesharing: samba usershare properties menu
 	optdepends = kio-admin: for managing files as administrator
+	optdepends = konsole: terminal panel
 	optdepends = purpose: share context menu
-	provides = dolphin=24.02.2
-	conflicts = dolphin=24.02.2
-	source = https://download.kde.org/stable/release-service/24.02.2/src/dolphin-24.02.2.tar.xz
-	source = https://download.kde.org/stable/release-service/24.02.2/src/dolphin-24.02.2.tar.xz.sig
-	source = https://invent.kde.org/system/dolphin/-/commit/a07f2422.patch
+	provides = dolphin=24.05.2
+	conflicts = dolphin=24.05.2
+	source = https://download.kde.org/stable/release-service/24.05.2/src/dolphin-24.05.2.tar.xz
+	source = https://download.kde.org/stable/release-service/24.05.2/src/dolphin-24.05.2.tar.xz.sig
 	source = dolphin-meld.patch
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = 50844490d45159ca16c1d8d9f5f0701f118772e4b09adad270835b67bb26a701
+	sha256sums = 5f850a4fd7f463f93e05c1b162be55f7d4360cca2189b446fa296ceef35f3567
 	sha256sums = SKIP
-	sha256sums = 9a0d799832323ca78be78189fcd569b6911f0d024dda6b9429312ebcea4bc22e
 	sha256sums = a69abda1bd78cbaf3eb92ed645637fce1ea04a3528c90e22ab2abbdd809a0b15
 
 pkgname = dolphin-meld
