@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lyrically-bin
 _pkgname=Lyrically
-pkgver=0.2.0
+pkgver=0.2.1
 _electronversion=28
-pkgrel=4
+pkgrel=1
 pkgdesc="Music player inspired by Lyric Speaker"
 arch=('x86_64')
 url="https://github.com/CyanSalt/lyrically"
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/CyanSalt/lyrically/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('11706f4ef803ea2c0b1d57152987e91c6a9d7bc4f031d90b73e74766a3a9cfab'
+sha256sums=('c379a0625ed7e1ef8c867af8b57049bbe7a5616b6d4702257e339505e6761779'
             'ab219244090109bd4c111ee2f8d574337bc668860f9e9678190f4591df4dec1a'
             '9950b2ef9948d119f67c09e78478be5c96db2028bebf735ee60a9e3c5afe0bc0'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
