@@ -2,7 +2,7 @@
 _appname=ooniprobe
 pkgname="${_appname}-desktop-bin"
 _pkgname=OONI-Probe
-pkgver=3.9.7
+pkgver=3.9.8
 _electronversion=12
 pkgrel=1
 pkgdesc="The next generation OONI Probe desktop app"
@@ -23,7 +23,7 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/ooni/probe-desktop/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('232d1948c2889759768cc2167d3ad2a7cc2d5cfa9dcdce6cd0a122d4d689694f'
+sha256sums=('2218defdc160ff2f187db3b5df5bc84f1922d4c8653b6e5ae2c39e289c5002cd'
             '1fc3f6a8bf2909bfaad6d6f4825c8e8b6dfed17e3b5270a9fd060d6de7938f8d'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
