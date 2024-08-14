@@ -1,0 +1,33 @@
+pkgbase = openmotor
+	pkgdesc = Internal ballistics simulator for rocket motor experimenters
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/reilleya/openMotor
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-pyqt-distutils
+	makedepends = python-setuptools
+	depends = docopt>=0.6.2
+	depends = python-appdirs>=1.4.4
+	depends = python-cycler>=0.11.0
+	depends = python-decorator>=5.1.1
+	depends = python-ezdxf>=1.0.3
+	depends = python-imageio>=2.31.0
+	depends = python-matplotlib>=3.7.1
+	depends = python-networkx>=3.1
+	depends = python-numpy1>=1.24.3
+	depends = python-pillow>=9.5.0
+	depends = python-pyparsing>=3.0.9
+	depends = python-pyqt6>=6.4.2
+	depends = python-pyqt6-sip>=13.4.1
+	depends = python-dateutil>=2.8.2
+	depends = python-yaml>=6.0
+	depends = python-scikit-fmm>=2023.4.2
+	depends = python-scikit-image>=0.21.0
+	depends = python-six>=1.16.0
+	depends = python-sphinx>=7.0.1
+	source = git+https://github.com/reilleya/openMotor.git
+	sha256sums = SKIP
+
+pkgname = openmotor
