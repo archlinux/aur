@@ -1,6 +1,6 @@
 pkgbase = cosmic-panel-git
 	pkgdesc = XDG Shell Wrapper Panel for COSMIC
-	pkgver = 1.0.0.alpha.1.r0.g47c6720
+	pkgver = 1.0.0.alpha.1.r4.ge184d10
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-panel
 	arch = x86_64
