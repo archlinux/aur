@@ -1,7 +1,7 @@
 pkgname=termusix-bin
  pkgdesc="A terminal-based music player with a user-friendly terminal UI, built with Rust."
  pkgrel=1
- pkgver=0.1.0
+ pkgver=0.1.1
  url="https://github.com/sumoduduk/termusix"
  license=("GPL-3.0")
  arch=("x86_64")
@@ -9,7 +9,7 @@ pkgname=termusix-bin
  conflicts=("termusix")
  depends=("alsa-lib" "dbus")
  source=("https://github.com/sumoduduk/termusix/releases/download/v$pkgver/termusix-$CARCH-linux")
- sha256sums=("3753aa26c81fdb3a8e645a653cad90394cd714517f2e261d4b34013b35cd5a7f")
+ sha256sums=("840843a738efecc5e17debe02801a69edf16a77ee614c04dc866e84f22c4260c")
 
  package() {
     mv termusix-x86_64-linux termusix
