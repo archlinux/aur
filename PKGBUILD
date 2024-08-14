@@ -2,8 +2,8 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname="modsecurity-crs"
-pkgver=4.2.0
-pkgrel=3
+pkgver=4.5.0
+pkgrel=1
 pkgdesc="OWASP ModSecurity Core Rule Set"
 url="https://coreruleset.org"
 license=("Apache-2.0")
@@ -12,16 +12,13 @@ depends=("libmodsecurity")
 optdepends=("geoip-database: for coutry-based rules"
             "nginx: HTTP server"
             "angie: HTTP server")
-source=("load.conf"
-        "https://github.com/coreruleset/coreruleset/archive/refs/tags/v$pkgver.tar.gz"
+source=("https://github.com/coreruleset/coreruleset/archive/refs/tags/v$pkgver.tar.gz"
         "https://raw.githubusercontent.com/owasp-modsecurity/ModSecurity/v3/master/modsecurity.conf-recommended"
         "https://raw.githubusercontent.com/owasp-modsecurity/ModSecurity/v3/master/unicode.mapping")
-b2sums=('3ef10f3f3d5cb30c9969346bbfa592e15574ad60d701311c7646d00b5929b2402c2e2d9e745eea6bd78a06231bb8d63a5581acfd89082aa99a9e953dff3cc1d1'
-        'f33d1a2bfac809e08ce5480af68b2380b19ea33f4d1409dd79d2117e451631df5b73ba2ccbc6eae2757df3b092c9439bfe79b49658d76fda1a1237f204317080'
-        '6f9f2ea061ec423a28c0ad9c8cc5d70535208f2bae6b94292ede9cf7348d892efd47a9637e230f1a3e60a3f82be49e260bfb5a236ee831f0c40ad3bee692ae41'
-        '81760f570952b472dcdd3a5b5a2214136e21d1a1cdf65b6d16c615ef4ac6df056b37eebe9ce1f175aa72c664fa7405b1e6edc57847e64511cc64d969ad4490e7')
-backup=("etc/modsecurity/load.conf"
-        "etc/modsecurity/modsecurity.conf"
+sha512sums=('057ed442b435efe4f6092bc05e55a7d133e3a62b92744c2a151291e6e21722fa37857729c4434814f0996b3f814118fd64a76c8ceb7b430cbe0b8921295556df'
+            '402a6b4f462ffd73f4bfc636d279337db0be6c260981b94312053c6e787cc81831cc5f702b42344f59cc9d31ac5dffb9dcd1595a78b7d45abe534ff63cb81867'
+            'da4a211a1791e4fc68b7cf18917c892d72fd6e1c22b312a21ae21ff8fba25365a9efeee4a9a00352ada25b3b0f6226e844f7f9bbedbcb7ab6424349841c3d42e')
+backup=("etc/modsecurity/modsecurity.conf"
         "etc/modsecurity/crs/crs-setup.conf"
         "etc/modsecurity/crs/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf"
         "etc/modsecurity/crs/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf")
@@ -34,6 +31,13 @@ prepare(){
      -e "s|SecRuleEngine DetectionOnly|#&\nSecRuleEngine On|" \
      -e "s|SecAuditEngine RelevantOnly|#&\nSecAuditEngine Off|" \
      -e "s|SecStatusEngine On|#&\nSecStatusEngine Off|"
+
+ echo "
+Include /etc/modsecurity/crs/crs-setup.conf
+Include /usr/share/modsecurity/crs/plugins/*-config.conf
+Include /etc/modsecurity/crs/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
+Include /usr/share/modsecurity/crs/rules/*.conf
+Include /etc/modsecurity/crs/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf" >> "$srcdir/modsecurity.conf-recommended"
 }
 
 package(){
@@ -48,12 +52,9 @@ package(){
  mv "rules/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf.example" "$pkgdir/etc/modsecurity/crs/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf"
 
  # community rules
- install -d    "$pkgdir/usr/share/modsecurity/crs"
- cp -r "rules" "$pkgdir/usr/share/modsecurity/crs"
- cp -r "util"  "$pkgdir/usr/share/modsecurity/crs"
-
- # loading file for nginx
- # https://coreruleset.org/docs/deployment/install/#includes-for-nginx
- # https://medium.com/codelogicx/securing-nginx-server-using-modsecurity-oswaf-7ba79906d84c
- install -D -m 644 "$srcdir/load.conf" "$pkgdir/etc/modsecurity/load.conf"
+ install -d             "$pkgdir/usr/share/modsecurity/crs"
+ cp -r "rules"          "$pkgdir/usr/share/modsecurity/crs"
+ cp -r "util"           "$pkgdir/usr/share/modsecurity/crs"
+ cp -r "regex-assembly" "$pkgdir/usr/share/modsecurity/crs"
+ cp -r "plugins"        "$pkgdir/usr/share/modsecurity/crs"
 }

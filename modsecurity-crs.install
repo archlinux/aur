@@ -9,7 +9,7 @@ add the following directives to your NginX or Angie configuration:
 
     http {
         modsecurity on;
-        modsecurity_rules_file /etc/modsecurity/load.conf;
+        modsecurity_rules_file /etc/modsecurity/modsecurity.conf;
         modsecurity_transaction_id "$request_id";
     }
 
