@@ -1,19 +1,22 @@
 # Maintainer: ml <ml-aur@ransomware.download>
 pkgname=vt-cli
+_gitcommit=4ece259925ad5b08ea5883d595437e57ce2e3d6e
 epoch=1
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='VirusTotal Command Line Interface'
 arch=('i686' 'x86_64')
 url=https://virustotal.github.io/vt-cli/
 license=('Apache-2.0')
 depends=('glibc')
-makedepends=('go')
-source=("https://github.com/VirusTotal/vt-cli/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('479c50038e22e9be79689b0dfdd5ed3fb90ce8651488672b6209a784303afe94')
+makedepends=('git' 'go')
+#source=("https://github.com/VirusTotal/vt-cli/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+source=("$pkgname"::git+https://github.com/VirusTotal/vt-cli#commit="${_gitcommit}")
+sha256sums=('71a2a57a0c1b636710cde6f1de8025429c74fd089b51f9bc9544f69a6710127a')
 
 build() {
-    cd "$pkgname-$pkgver"
+    #cd "$pkgname-$pkgver"
+    cd "$pkgname"
     export CGO_ENABLED=1
     export CGO_LDFLAGS="$LDFLAGS"
     export CGO_CFLAGS="$CFLAGS"
@@ -27,13 +30,13 @@ build() {
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     # yaml_test.go broken. fails upstream as well
     go test -ldflags "-linkmode=external" -short ./utils/...
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     install -Dm755 build/vt -t "$pkgdir/usr/bin"
     install -Dm644 vt.bash "$pkgdir/usr/share/bash-completion/completions/vt"
     install -Dm644 vt.zsh "$pkgdir/usr/share/zsh/site-functions/_vt"
