@@ -6,6 +6,7 @@ pkgbase = easytier
 	arch = x86_64
 	arch = aarch64
 	license = Apache License 2.0
+	source = easytier.service
 	source_x86_64 = easytier-1.2.2-x86_64.zip::https://github.com/EasyTier/EasyTier/releases/download/v1.2.2/easytier-linux-x86_64-v1.2.2.zip
 	sha256sums_x86_64 = SKIP
 	source_aarch64 = easytier-1.2.2-aarch64.zip::https://github.com/EasyTier/EasyTier/releases/download/v1.2.2/easytier-linux-aarch64-v1.2.2.zip

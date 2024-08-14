@@ -1,0 +1,11 @@
+[Unit]
+Description=Easytier Application Description
+After=network.target
+
+[Service]
+ExecStart=easytier-core --ipv4 IP地址 --peers 云端服务地址
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
