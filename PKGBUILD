@@ -3,11 +3,11 @@
 pkgbase=gtksourceview-pkgbuild
 pkgname=(mime-pkgbuild gtksourceview3-pkgbuild gtksourceview4-pkgbuild gtksourceview5-pkgbuild)
 pkgver=5
-pkgrel=1
+pkgrel=2
 pkgdesc="PKGBUILD syntax highlight support in GtkSourceView"
 arch=(any)
 url="https://gitlab.com/rafaelff/$pkgbase"
-license=(LGPL2.1)
+license=(LGPL-2.1-or-later)
 source=("$url/-/archive/v$pkgver/$pkgbase-v$pkgver.tar.bz2")
 sha256sums=('75320b33a21baf929a785690d1570e1b853383c31b6473df572ddb4b921c9f73')
 
@@ -25,6 +25,7 @@ package_gtksourceview3-pkgbuild() {
 
   cd $pkgbase-v$pkgver
   install -Dm644 pkgbuild.lang -t "$pkgdir"/usr/share/gtksourceview-3.0/language-specs
+  install -Dm644 pkgbuild.lang -t "$pkgdir"/usr/share/libgedit-gtksourceview-300/language-specs/pkgbuild.lang
 }
 
 package_gtksourceview4-pkgbuild() {
