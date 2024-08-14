@@ -1,4 +1,4 @@
-# Maintainer: Pig2014 <18111431031@163.com>
+# Maintainer: Catty Steve <cattysteve89265@163.com>
 
 pkgname=plikd
 pkgver=1.3.6
