@@ -1,6 +1,6 @@
 pkgbase = android-google-apis-playstore-x86-64-system-image
 	pkgdesc = Android with Google APIs and Play Store x86_64 Atom System Image, latest API
-	pkgver = 33_r07
+	pkgver = 34_r14
 	pkgrel = 1
 	url = https://developer.android.com/studio/index.html
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = android-google-apis-playstore-x86-64-system-image
 	depends = android-platform
 	optdepends = qemu
 	optdepends = libvirt
-	provides = android-google-apis-playstore-x86-64-system-image-33
-	conflicts = android-google-apis-playstore-x86-64-system-image-33
+	provides = android-google-apis-playstore-x86-64-system-image-34
+	conflicts = android-google-apis-playstore-x86-64-system-image-34
 	options = !strip
-	source = android-google-apis-playstore-x86-64-system-image-33_r07.zip::http://dl.google.com/android/repository/sys-img/google_apis_playstore/x86_64-33_r07.zip
+	source = android-google-apis-playstore-x86-64-system-image-34_r14.zip::http://dl.google.com/android/repository/sys-img/google_apis_playstore/x86_64-34_r14.zip
 	source = package.xml
-	sha256sums = 74b0a57c2cfee755dcf7645e5da9d5468a2982af0bf012dfb46f661bc8b9f84a
+	sha256sums = 22e7797a7e14d346bc6ed867d84ed423beaf4364db567edaa97f85a99558cf80
 	sha256sums = f9e506475a22eed319e187dd908da12ea75a0694476e0401bab3a63dd891a1ef
 
 pkgname = android-google-apis-playstore-x86-64-system-image
