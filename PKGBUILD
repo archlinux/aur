@@ -1,9 +1,10 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-stregion
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc="Python parser for ds9 region files"
 arch=('i686' 'x86_64')
@@ -14,8 +15,7 @@ makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
              'python-installer'
-             'python-numpy'
-             'gcc13')
+             'python-numpy')
 #            'python-sphinx'
 #            'python-matplotlib'
 #            'python-pyparsing'
@@ -25,7 +25,7 @@ checkdepends=('python-pytest'
               'python-matplotlib')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       "https://raw.githubusercontent.com/spacetelescope/stregion/master/LICENSE.txt"
-md5sums=('3a515d1b8a3405ac99e3ee90df985814')
+md5sums=('843bfd6831701b278a7bd03a3a13d137')
 
 get_pyinfo() {
      [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
@@ -40,7 +40,7 @@ get_pyinfo() {
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    CC=gcc-13 CXX=g++-13 python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation
 
 #    msg "Building Docs"
 ##   PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyinfo)" make -C doc html
