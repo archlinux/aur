@@ -1,0 +1,29 @@
+pkgbase = xterminal-deb
+	pkgdesc = SSH和RDP Windows客户端（使用内置electron）
+	pkgver = 1.31.4
+	pkgrel = 1
+	url = https://www.xterminal.cn/
+	install = xterminal.install
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	optdepends = libappindicator-gtk3
+	provides = xterminal=1.31.4
+	conflicts = xterminal-bin
+	conflicts = xterminal
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://cdn-cn.xterminal.cn/downloads/XTerminal-1.31.4-linux-amd64.deb
+	sha512sums_x86_64 = 789604eb52e98f7b85b39c703c0cb7e4801cdcb652135ee070efef2d73ba4170ca98b80603c760b0810dde9c00b88016c63dede39e129eadc87cc150e6623e0b
+
+pkgname = xterminal-deb
