@@ -1,13 +1,13 @@
 pkgbase = lmp
 	pkgdesc = A lightweight media player script
-	pkgver = r14.2fb928a
+	pkgver = r15.c524d38
 	pkgrel = 1
 	url = https://github.com/derekporcelli/lmp
 	arch = x86_64
 	license = GPL
 	depends = python
 	depends = mpv
-	source = git+git://github.com/derekporcelli/lmp.git
+	source = git+https://github.com/derekporcelli/lmp.git
 	sha256sums = SKIP
 
 pkgname = lmp
