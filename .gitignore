@@ -1,9 +1,4 @@
 /src
 /pkg
-/etcd-git
-*.xz
+/etcd
 *.tar.*
-*.pkg.*
-*.zip
-*.zip.sig
-*.log
