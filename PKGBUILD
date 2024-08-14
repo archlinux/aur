@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-store-git
-pkgver=1.0.0.alpha.1.r5.g0ade5e8
+pkgver=1.0.0.alpha.1.r6.g0a0132d
 pkgrel=1
 pkgdesc="Cosmic App Store"
 arch=('x86_64' 'aarch64')
@@ -42,6 +42,7 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
 
   # use mold instead of lld to speed up build
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
