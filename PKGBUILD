@@ -1,12 +1,12 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=nightpdf
-pkgver=2.0.3
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Dark mode PDF reader'
 arch=('x86_64')
 url='https://github.com/Lunarequest/NightPDF/'
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('sh' 'alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'glib2' 'gtk3' 'libcups' 'libdrm'
          'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon'
          'libxrandr' 'mesa' 'nspr' 'nss' 'pango' 'hicolor-icon-theme')
@@ -15,10 +15,10 @@ source=("https://github.com/Lunarequest/NightPDF/archive/v${pkgver}/${pkgname}-$
         'nightpdf.sh'
         'nightpdf.desktop'
         '010-nightpdf-remove-unwanted-targets.patch')
-sha256sums=('728fbfdca180c424c3764168f6b4e6177ceda37214a72e930eaf454c264d3fb3'
+sha256sums=('dd157fe873ed9df51ccdebf04cc23cf810dd0867c079ef7d9c733c3c8952b120'
             '0984811e96d0350fc7c2a0cba279a96c24b671b240d2f9d5370ceece47530334'
-            '1eb70aff787a3a18fb2d5f8f3efabefd4ee0f9a8ec0fdac02c2c25decc5c31b3'
-            '4cf7cd9a7b19bd218cddf936ddf11b44560a177e5dc715fa107d9fe4bb736e62')
+            '507f4eac993d1b818e8b44dc138d838a5ba7549e5fa0a2f87536ada0a39ee73a'
+            'a88db4d53517ae3405b83fbaa78867b8193fc17fb452d0d9bc39993ece08e154')
 
 prepare() {
     patch -d "NightPDF-${pkgver}" -Np1 -i "${srcdir}/010-nightpdf-remove-unwanted-targets.patch"

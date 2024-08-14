@@ -1,20 +1,13 @@
 --- a/electron-builder-config.js
 +++ b/electron-builder-config.js
-@@ -35,16 +35,8 @@ const config = {
+@@ -66,9 +66,7 @@ const config = {
+ 		synopsis: "Dark Mode PDF reader",
  		publish: ["github"],
  		target: [
- 			{
--				target: "AppImage",
--				arch: ["x64", "arm64"],
--			},
--			{
- 				target: "deb",
--				arch: ["x64", "arm64"],
--			},
--			{
--				target: "rpm",
--				arch: ["x64", "arm64"],
-+				arch: ["x64"],
- 			},
+-			{ target: "AppImage", arch: ["x64", "arm64"] },
+-			{ target: "deb", arch: ["x64", "arm64"] },
+-			{ target: "rpm", arch: ["x64", "arm64"] },
++			{ target: "deb", arch: ["x64"] },
  		],
- 		mimeTypes: ["application/pdf", "application/x-pdf"],
+ 		mimeTypes: [
+ 			"application/pdf",
