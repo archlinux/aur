@@ -14,6 +14,7 @@ sha256sums=('SKIP')
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 options=('!strip')
+install='librewolf-bin.install'
 
 prepare() {
   cd "$srcdir" || exit 1
@@ -27,7 +28,7 @@ prepare() {
 package() {
   cd "$srcdir" || exit 1
 
-	install -Dm644 easytier.service -t "$pkgdir/usr/lib/systemd/system"
+	install -Dm644 easytier.service -t "$pkgdir/etc/systemd/system"
   install -Dm755 easytier-core "$pkgdir/usr/bin/easytier-core"
   install -Dm755 easytier-cli "$pkgdir/usr/bin/easytier-cli"
 }
