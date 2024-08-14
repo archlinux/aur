@@ -397,7 +397,9 @@ function dbusProxy() {
 			--talk=org.freedesktop.portal.OpenURI.* \
 			--call=org.freedesktop.portal.*=* \
 			--own="${busName}" \
-			--broadcast=org.freedesktop.portal.*=@/org/freedesktop/portal/*
+			--broadcast=org.freedesktop.portal.*=@/org/freedesktop/portal/* \
+			--call=org.a11y.atspi.Registry=org.a11y.atspi.Registry.GetRegisteredEvents@/org/a11y/atspi/registry \
+			--broadcast=org.a11y.atspi.Registry=@/org/a11y/atspi/registry
 }
 
 function execAppUnsafe() {
