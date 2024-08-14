@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OpenBuilds CONTROL
+Exec=/usr/bin/openbuildscontrol %U
+Terminal=false
+Type=Application
+Icon=openbuildscontrol
+StartupWMClass=OpenBuilds CONTROL
+Comment=OpenBuilds CONTROL CNC Machine Host Software
+Categories=Graphics;
