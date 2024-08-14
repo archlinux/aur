@@ -1,6 +1,6 @@
 pkgbase = lmp
 	pkgdesc = A lightweight media player script
-	pkgver = 1.0.8
+	pkgver = 1
 	pkgrel = 1
 	url = https://github.com/derekporcelli/lmp
 	arch = x86_64
