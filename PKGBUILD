@@ -4,7 +4,7 @@
 
 pkgname=lime3ds-git
 pkgver=r10443.afe9ee8
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 url='https://github.com/Lime3DS/Lime3DS'
@@ -53,15 +53,15 @@ source=("Lime3DS::git+https://github.com/Lime3DS/Lime3DS"
         "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
         #libadrenotools submodule
         "git+https://github.com/bylaws/liblinkernsbypass.git"
-        "git+https://github.com/Lime3DS/compatibility-list"
+        "lime3ds-compatibility-list::git+https://github.com/Lime3DS/compatibility-list"
         #dynarmic submodules
         "git+https://github.com/lioncash/biscuit"
         "catch::git+https://github.com/catchorg/Catch2"
         "git+https://github.com/rtiangha/mcl"
         "git+https://github.com/Tessil/robin-map"
-        "git+https://github.com/herumi/xbyak"
-        "git+https://github.com/zyantific/zycore-c"
+        "zycore::git+https://github.com/zyantific/zycore-c"
         "git+https://github.com/zyantific/zydis"
+	"oaknut-dynarmic::git+https://github.com/rtiangha/oaknut.git"
         )
 md5sums=('SKIP'
          'SKIP'
@@ -118,7 +118,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/Lime3DS"
     git submodule init
-    for submodule in {boost,nihstro,catch2,soundtouch,dynarmic,xbyak,enet,inih,libressl,libusb,cubeb,discord-rpc,cpp-jwt,teakra,lodepng,zstd,libyuv,cryptopp-cmake,cryptopp,openal-soft,glslang,vma,vulkan-headers,sirit,faad2,library-headers,libadrenotools,oaknut,dds-ktx,fmt,sdl2,compatibility-list};
+    for submodule in {boost,nihstro,catch2,soundtouch,dynarmic,xbyak,enet,inih,libressl,libusb,cubeb,discord-rpc,cpp-jwt,teakra,lodepng,zstd,libyuv,cryptopp-cmake,cryptopp,openal-soft,glslang,vma,vulkan-headers,sirit,faad2,library-headers,libadrenotools,oaknut,dds-ktx,fmt,sdl2,lime3ds-compatibility-list};
     do
     git config submodule.${submodule}.url "$srcdir/${submodule}"
     done
@@ -142,11 +142,12 @@ prepare() {
     
     cd "$srcdir/Lime3DS/externals/dynarmic/"
     git submodule init
-    for submodule in {biscuit,catch,fmt,mcl,oaknut,robin-map,xbayk,zycore,zydis}
+    for submodule in {biscuit,catch,fmt,mcl,robin-map,xbyak,zycore,zydis}
     do
-    git config submodule.${submodule}.url "$srcdir/${submodule}"
+    git config submodule.externals/${submodule}.url "$srcdir/${submodule}"
     done
-    git -c protocol.file.allow=always submodule update
+    git config submodule.externals/oaknut.url "$srcdir/oaknut-dynarmic"
+    git -c protocol.file.allow=always submodule update --init
     
     cd "$srcdir/Lime3DS"
     # mkdir build
