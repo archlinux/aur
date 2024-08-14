@@ -4,7 +4,7 @@ _pkgname=mplot
 _pkgver=1.0.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=0
+pkgrel=1
 pkgdesc="Graphical Model Stability and Variable Selection Procedures"
 arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -31,13 +31,12 @@ optdepends=(
   r-dt
   r-glmulti
   r-knitr
-  r-mass
   r-mvoutlier
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('51f023fe40d1aabc705eec86d42c73f5')
-b2sums=('28841c910a6aac91e30691a7b328f97a86064dd323e1ee15ccf95553176148a69431a2c56de8008477577475f52ea334429dad192a617af6062528e0a0132faf')
+md5sums=('78087394e1789662440a3a99a036c03c')
+b2sums=('c23cebea73fd1ca40304b3dbb6bff6ce6923e7707c9c88769ae672bd03d5f70a70eee7d2b1122c9943a3b56e270bf050c8ca40ba2569b3e6c7165d15cf9964ab')
 
 build() {
   mkdir build
