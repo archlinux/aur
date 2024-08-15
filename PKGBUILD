@@ -4,7 +4,7 @@
 modulename=csiread
 pkgname=python-$modulename
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast channel state information parser for Intel, Atheros, Nexmon, ESP32 and PicoScenes in Python.'
 arch=('any')
 url="https://github.com/citysu/csiread/"
