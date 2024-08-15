@@ -1,7 +1,7 @@
 pkgbase = vlc-luajit
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility
 	pkgver = 3.0.21
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.videolan.org/vlc/
 	arch = x86_64
 	arch = aarch64
@@ -55,7 +55,7 @@ pkgbase = vlc-luajit
 	makedepends = opus
 	makedepends = pcsclite
 	makedepends = projectm
-	makedepends = protobuf>=27
+	makedepends = protobuf>=27.3
 	makedepends = sdl_image
 	makedepends = smbclient
 	makedepends = speex
@@ -70,7 +70,7 @@ pkgbase = vlc-luajit
 	makedepends = zvbi
 	makedepends = lua51
 	depends = a52dec
-	depends = abseil-cpp>=20240116
+	depends = abseil-cpp>=20240722
 	depends = aribb24
 	depends = bash
 	depends = cairo
@@ -167,7 +167,7 @@ pkgbase = vlc-luajit
 	optdepends = opus: opus codec
 	optdepends = pcsclite: aribcam support
 	optdepends = projectm: ProjectM visualisation
-	optdepends = protobuf>=27: chromecast streaming
+	optdepends = protobuf>=27.3: chromecast streaming
 	optdepends = sdl12-compat: SDL image support
 	optdepends = sdl_image: SDL image support
 	optdepends = smbclient: SMB access plugin

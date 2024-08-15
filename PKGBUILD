@@ -5,7 +5,7 @@ _vlcver=3.0.21
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=2
+pkgrel=3
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ license=(
 )
 # To manage dependency rebuild easily, this will prevent you to rebuild VLC on non-updated system
 _aomver=3
-_abseilcppver=20240116
+_abseilcppver=20240722
 _dav1dver=1.3.0
 _flacver=1.4.0
 _libdc1394ver=2.2.7
@@ -24,7 +24,7 @@ _libupnpver=1.14
 _libvpxver=1.14
 _livemedia=2024.04.19
 _mpg123ver=1.32.2
-_protobufver=27
+_protobufver=27.3
 _taglibver=2
 _srtver=1.5
 _x264ver=0.164
