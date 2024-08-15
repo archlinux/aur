@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.10.4.arch2
+pkgver=6.10.5.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -32,8 +32,8 @@ source=(
   config         # the main kernel config file
 #  modprobed.db
 
-  # Experimental patch for AMDGPU issues - mesa 21.1.6 should make this one unnecessary
-  9999-possible_amdgpu_fix.patch
+  # Experimental patch for AMDGPU issues - mesa 21.1.5-2 should make this one unnecessary
+  #9999-possible_amdgpu_fix.patch
   
   "choose-gcc-optimization.sh"
 
@@ -76,12 +76,11 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('e2c69dfd5fa00c741ebac4560bed9f7be6abb727d05a719e4df9e99df11555f8'
+sha256sums=('30909eb2e0434dce97a93cd97ed0dfab7688a124bc3ebc3ecf6c776de09ccc0b'
             'SKIP'
-            '65bf2cbe8a52358ba29cdb141c6eeb7d4c4b739ff875634db4f1ea02a95f5067'
+            '22ebc3047c4e5f327e49a078951802a2e6e3b6af523f4cc6b4e9dacf1ca18cda'
             'SKIP'
             '191ef33bcf70e182c1217be3d1c0449bd24109d29ea027764fefe9c5056ab9fd'
-            'f01368213b69561922f9aaf4634a4690c5163d41e5f1cfa5623ea18addb4fc70'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'f4e7fcd011f2691840d2c8c2361dca850a78ea33cc5c24d2e27c3e0294fd1dc5'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
@@ -102,7 +101,7 @@ sha256sums=('e2c69dfd5fa00c741ebac4560bed9f7be6abb727d05a719e4df9e99df11555f8'
             'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
             'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04'
-            'd8dcf4d00c9977444b32a9dffa84e621d6880b9ced130b3806cbdf4844d7dd4f'
+            'a12aa94431ad439ea1e1a8563bb51c465343214af267337c7293c219c6b62b8b'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
             '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85')
 
