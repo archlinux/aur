@@ -2,7 +2,7 @@
 # Last images added on 2022-06-09
 
 pkgname="trougnouf-backgrounds"
-pkgver=2.4
+pkgver=2.5
 pkgrel=1
 pkgdesc="Wallpapers made of photographs posted by User:Trougnouf on Wikimedia Commons, with GNOME integration and transitions built-in to match the time pictures were taken"
 url='https://commons.wikimedia.org/wiki/User:Trougnouf'
@@ -17,6 +17,7 @@ _images=(
   '1987,_European_year_of_the_environment_at_Place_Schuman_by_Fred_Bellefroid_and_Herman_Dottermans_(DSCF7552).jpg'
   'Tent_camping_along_the_Sulayr_trail_in_La_Taha,_Sierra_Nevada_National_Park_(DSCF5147).jpg'
   'GR129_in_Thuin_(DSC_0158).jpg'
+  'Hawaiʻi_Volcanoes_National_Park_(DSC08881).jpg'
   'Fagne_wallonne_(DSCF6607-DSCF6627).jpg'
   'Mossy_forest_in_Lierneux_(DSC01260).jpg'
   'Inside_an_abandoned_military_building_in_Fort_de_la_Chartreuse,_Liege,_Belgium_(DSCF3343).jpg'
@@ -33,6 +34,7 @@ _images=(
   'The_village_of_Bubiòn_viewed_from_Plaza_Vieja_in_Capileira_(DSCF5824).jpg'
   'Lac_de_Virelles_(frozen),_Chimay_(DSC_0251).jpg'   # 16h21 to 16h35
   'Street_art_in_the_tunnel_at_Rue_des_Tanneurs_under_the_railway_(Brussels,_Belgium).jpg'
+  'Trekkers_heading_West_towards_Halapē_in_Hawaiʻi_Volcanoes_National_Park_(DSC08997).jpg'
   'Grassy_hill_and_a_cluster_of_trees_along_Sendero_Hoya_del_Portillo_in_La_Taha,_Sierra_Nevada_National_Park_(DSCF5122).jpg'  # 17h12
   'Tunnel_Belliard,_coming_out_on_Rue_de_la_Loi.jpg'
   'View_of_Greenock_from_Auchmountain_Road_(Inverclyde,_Scotland,_DSCF9281).jpg'
@@ -62,7 +64,8 @@ _stimes=(
   7560 # 5h56 to 8h02 = 126 minutes       Mont_des_Arts_during_morning_civil_twilight_(DSCF7450).jpg
   960  # 8h02 to 8h18 = 16 minutes        1987,_European_year_of_the_environment_at_Place_Schuman_by_Fred_Bellefroid_and_Herman_Dottermans_(DSCF7552).jpg
   4140 # 8h18 to 9h27 = 69 minutes        Tent_camping_along_the_Sulayr_trail_in_La_Taha,_Sierra_Nevada_National_Park_(DSCF5147).jpg
-  480  # 9h27 to 9h35 = 8 minutes         GR129_in_Thuin_(DSC_0158).jpg
+  60   # 9h27 to 9h28 = 1 minutes         GR129_in_Thuin_(DSC_0158).jpg
+  420  # 9h28 to 9h35 = 7 minutes         Hawaiʻi Volcanoes National Park (DSC08881).jpg
   2160 # 9h35 to 10h11 = 36 minutes       Fagne_wallonne_(DSCF6607-DSCF6627).jpg
   300  # 10h11 to 10h16 = 5 minutes       Mossy forest in Lierneux (DSC01260).jpg
   7500 # 10h16 to 12h21 = 125 minutes     Inside_an_abandoned_military_building_in_Fort_de_la_Chartreuse,_Liege,_Belgium_(DSCF3343).jpg
@@ -78,7 +81,8 @@ _stimes=(
   780  # 15h30 to 15h43 = 13 minutes      A_tree_South_of_Doel,_Belgium_(DSCF3811).jpg
   2280 # 15h43 to 16h21 = 38 minutes      The_village_of_Bubiòn_viewed_from_Plaza_Vieja_in_Capileira_(DSCF5824).jpg
   840  # 16h21 to 16h35 = 14 minutes      Lac_de_Virelles_(frozen),_Chimay_(DSC_0251).jpg
-  2220 # 16h35 to 17h12 = 37 minutes      Street_art_in_the_tunnel_at_Rue_des_Tanneurs_under_the_railway_(Brussels,_Belgium).jpg
+  1920 # 16h35 to 17h07 = 32 minutes      Street_art_in_the_tunnel_at_Rue_des_Tanneurs_under_the_railway_(Brussels,_Belgium).jpg
+  300  # 17h07 to 17h12 = 5 minutes       Trekkers_heading_West_towards_Halapē_in_Hawaiʻi_Volcanoes_National_Park_(DSC08997).jpg
   240  # 17h12 to 17h16 = 4 minutes       Grassy_hill_and_a_cluster_of_trees_along_Sendero_Hoya_del_Portillo_in_La_Taha,_Sierra_Nevada_National_Park_(DSCF5122).jpg
   1020 # 17h16 to 17h33 = 17 minutes      Tunnel_Belliard,_coming_out_on_Rue_de_la_Loi.jpg
   900  # 17h33 to 17h48 = 15 minutes      View_of_Greenock_from_Auchmountain_Road_(Inverclyde,_Scotland,_DSCF9281).jpg
@@ -102,11 +106,12 @@ _stimes=(
   14220 # 23h49 to 3h46 = 237 min         Campsite_38_in_Bowron_Lake_Provincial_Park_at_night_(DSCF3026).jpg
 )
   
-sha256sums=('4e51508df22826986f7d6aafdf43db7178b7615c4bd77bb9f68c0aefa8211990'
+sha256sums=('7a57abe4e8e1f121e9d5b889b87b5102d6bfaa19fadbe355997ac3c1dd9d50e4'
             '2f8b487dc492033d8559808b78aaa52f1bee2d3e76ed2e77e8bb2cda43daa72e'
             '578d1aec14fe9a686dc86af9ed4df4eeacf3f851b681e3800cd1bfba4b5b6684'
             'c9fd7d91284b2dbbc094b66f4ae816203f429da82e13985f6545372d36c4dc3a'
             'f07c4025e1c9e04a114974886b140eb1654f94217b7a61b9f19cb131eb6668d7'
+            'eb8b552967ece1288abbd8367e214bb8a77df6c1176d42f01ea3874574846b98'
             '8fef489be84366d39ddd43b02bfc687d4f1182d385681a7e0e0fa76b416e2466'
             '5a77d7afb3848709cd60dbfa46aca61d053c338c946fcd5025a787bbf2fab49e'
             '60da898f8fb43491594e7466f44294db43795d61de124f590eb2be2d42ea208a'
@@ -123,6 +128,7 @@ sha256sums=('4e51508df22826986f7d6aafdf43db7178b7615c4bd77bb9f68c0aefa8211990'
             '83abbdf27eb7aabd0cabae2e5594447bdd2ffc6a065fb7d85525f848bcc1bd4c'
             '57222827c856252af6631acd494fb6739130b7a8f5fa0b1f45ec405c72f6a4a5'
             'cf08f4598bd569eb8df860a83fd44110f5a25282e508732e924de1c3fab581c2'
+            '0b9a6ea694b24c2c6ff28b12fd7e49dcec7140a3955496c229647f2d2ca001ab'
             'a676e4e7fd3f4d8308182ce1660d7bd45757ab00a91694c9dff5c0a625783c5f'
             '0f7fed8930d452f4355d1f9026aeedcc74587a7344c9758959de0b329fa08e5e'
             'a636ab97fe31f77be0dc86591e854fbd082716ad7a54dbbb97a883ce29927005'
