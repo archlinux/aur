@@ -1,30 +1,46 @@
-# Maintainer:  Sapphira Armageddos <shadowkyogre.public@gmail.com>
-# Contributor: martadinata666 <martadinata666@gmail.com>
+# Maintainer:
+# Contributor: Sapphira Armageddos <shadowkyogre.public@gmail.com>
 
 # Flag for whether to use marco
-_use_marco=0
+: ${_use_marco=0}
 
-# Flag for whether to use GTK+3
-# Autoset depending on marco option
-_use_gtk3=0
+: ${_pkgtype=}
 
-_upstream="compiz-core"
-_pkgver=0.8.18
-_micro=""
-
-pkgbase=compiz-core
-pkgname=(compiz-core compiz-gtk)
-pkgver="${_pkgver}${_micro}"
-pkgrel=3
-pkgdesc="This is the latest stable release of Compiz without DE deps"
-url="https://gitlab.com/compiz/${_upstream}/"
-license=('GPL' 'LGPL' 'MIT')
+_pkgname="compiz-core"
+pkgbase="$_pkgname${_pkgtype:-}"
+pkgver=0.8.18
+pkgrel=4
+pkgdesc="Compositing manager without desktop-environment depends"
+url="https://gitlab.com/compiz/compiz-core"
+license=('GPL-2.0-or-later' 'LGPL-2.1-or-later' 'MIT')
 arch=('i686' 'x86_64')
-depends=('startup-notification' 'librsvg' 'dbus' 'glu' 'libxslt' 'libxrandr' 'libsm' 'libxcomposite' 'libxinerama' 'libxi' 'libxcursor')
-makedepends=('intltool' 'libice')
-options=(!libtool !emptydirs)
-source=("${url}-/archive/v${pkgver}/${_upstream}-v${pkgver}.tar.bz2"
-"fix-rsvg-features-include.patch")
+
+depends=(
+  'dbus'
+  'glu'
+  'librsvg'
+  'libsm'
+  'libxcomposite'
+  'libxcursor'
+  'libxdamage'
+  'libxi'
+  'libxinerama'
+  'libxrandr'
+  'libxslt'
+  'startup-notification'
+)
+makedepends=(
+  'git'
+  'intltool'
+  'libice'
+)
+
+options=('!libtool' '!emptydirs')
+
+_pkgsrc="$_pkgname-v$pkgver"
+_pkgext="tar.bz2"
+source=("$url/-/archive/v${pkgver}/$_pkgsrc.$_pkgext")
+sha256sums=('e87018b2d6c9ab3da87d910b117a7ae35f64328eea485e6c2a532501b361144c')
 
 _configure_opts=(
   --prefix=/usr
@@ -35,55 +51,37 @@ _configure_opts=(
   --enable-glib
   --disable-static
   --disable-inotify
+  --with-gtk=3.0
 )
 
-if (("${_use_marco}" == 1));then
+if (("${_use_marco}" == 0)); then
+  echo "Marco theme support disabled, rebuild with _use_marco=1 if you want it" >&2
+  _configure_opts+=("--disable-marco")
+else
+  echo "Marco theme support enabled" >&2
   _configure_opts+=("--enable-marco")
   makedepends+=("marco")
-  _use_gtk3=1
-  echo "Marco theme support enabled with GTK+3" >&2
-elif (("${_use_marco}" == 2));then
-  _configure_opts+=("--enable-marco")
-  makedepends+=("marco-gtk2")
-  _use_gtk3=0
-  echo "Marco theme support enabled with GTK+2" >&2
-else
-  _configure_opts+=("--disable-marco")
-  echo "Marco theme support disabled, rebuild with _use_marco=1 in the PKGBUILD if you want it" >&2
-  echo "Rebuild with _use_marco=2 in the PKGBUILD if you have marco-gtk2" >&2
 fi
 
-if (("${_use_gtk3}" >= 1)); then
-	_configure_opts+=("--with-gtk=3.0")
-	echo "Using GTK+3 for gtk-window-decorator" >&2
-else
-	_configure_opts+=("--with-gtk=2.0")
-	echo "Using GTK+2 for gtk-window-decorator" >&2
-fi
-
-prepare()
-{
-  cd "${srcdir}/${_upstream}-v${pkgver}"
-  patch -Np1 -i "${srcdir}/fix-rsvg-features-include.patch"
+prepare() {
+  cd "$_pkgsrc"
+  sed -E -e 's&\blibrsvg-features\.h\b&rsvg-features.h&' -i "plugins/svg.c"
+  sed '1 i#include <stdlib.h>' -i "include/compiz-core.h"
 }
 
-build()
-{
-  cd "${srcdir}/${_upstream}-v${pkgver}"
+build() {
+  export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
+
+  cd "$_pkgsrc"
 
   NOCONFIGURE=1 ./autogen.sh
   ./configure "${_configure_opts[@]}"
 
-  if ! grep -q pkg_cv_GTK config.log;then
-    # make sure only compiz-core is created if gtk is missing
-    echo "Making sure only $pkgbase is made, gtk+2 or gtk+3 is missing" >&2
-    pkgname=("$pkgbase")
-  fi
   make
 }
 
-package_compiz-core() {
-  cd "${srcdir}/${_upstream}-v${pkgver}"
+_package_compiz-core() {
+  cd "$_pkgsrc"
 
   pkgdesc+=" (Core w/o decorator)"
   conflicts=('compiz')
@@ -98,50 +96,49 @@ package_compiz-core() {
   )
   # Believe it or not, you CAN fill an array using wildcards in bash
 
-  for fname in "${REMOVE_THESE[@]}";do
-    if [ -e "$fname" ];then
+  for fname in "${REMOVE_THESE[@]}"; do
+    if [ -e "$fname" ]; then
       rm "$fname"
     fi
   done
 }
 
-package_compiz-gtk()
-{
-  #separating libmarco-private would be nice, but this is a workaround for now
-  depends+=('compiz-core')
-  #separating libmarco-private would be nice, but this is a workaround for now
-  if (("${_use_marco}" == 1));then
-    depends+=('marco')
-  elif (("${_use_marco}" == 2));then
-    depends+=('marco-gtk2')
-  fi
-
-  if (( "${_use_gtk3}" >= 1 ));then
-    depends+=('libwnck3')
-  else
-    depends+=('libwnck')
-  fi
-
+_package_compiz-gtk() {
   pkgdesc+=" (GTK+ window decorator)"
+  depends+=(
+    'compiz-core'
+    'libwnck3'
+  )
 
-  cd "${srcdir}/${_upstream}-v${pkgver}/gtk-window-decorator"
-  make DESTDIR="${pkgdir}" install
+  if (("${_use_marco}" > 0)); then
+    depends+=('marco')
+  fi
 
-  cd "${srcdir}/${_upstream}-v${pkgver}/images"
-  make DESTDIR="${pkgdir}" install
+  cd "$srcdir/$_pkgsrc/gtk-window-decorator"
+  make DESTDIR="$pkgdir" install
+
+  cd "$srcdir/$_pkgsrc/images"
+  make DESTDIR="$pkgdir" install
 
   local REMOVE_THESE=(
-    "${pkgdir}/usr/share/icons/hicolor/"*"/apps/compiz."*
-    "${pkgdir}/usr/share/compiz/"*.png
+    "$pkgdir"/usr/share/icons/hicolor/*/apps/compiz.*
+    "$pkgdir"/usr/share/compiz/*.png
   )
-  # Believe it or not, you CAN fill an array using wildcards in bash
 
-  for fname in "${REMOVE_THESE[@]}";do
-    if [ -e "$fname" ];then
+  for fname in "${REMOVE_THESE[@]}"; do
+    if [ -e "$fname" ]; then
       rm "$fname"
     fi
   done
 }
 
-sha256sums=('e87018b2d6c9ab3da87d910b117a7ae35f64328eea485e6c2a532501b361144c'
-            'eeeb8629fb4757a8305aa782aae7dba41e82ab12b330e461b10a2b5935f68f77')
+pkgname=(
+  "compiz-core${_pkgtype:-}"
+  "compiz-gtk${_pkgtype:-}"
+)
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package_${_p%$_pkgtype}")
+    _package_${_p%$_pkgtype}
+  }"
+done
