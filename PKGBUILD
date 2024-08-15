@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=amdgpu_top-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Tool to display AMDGPU usage (binary release)"
 url="https://github.com/Umio-Yasuno/amdgpu_top"
@@ -11,7 +11,7 @@ depends=('libdrm')
 provides=("amdgpu_top")
 conflicts=("amdgpu_top")
 source=("$url/releases/download/v$pkgver/amdgpu-top_${pkgver}-1_amd64.deb")
-sha256sums=('1811fc750317f303a74e71f22755f0a939462d44e48833d02d59cacbe81fd2d8')
+sha256sums=('715a4bd662e33921128045ffb716526c8449c920600046124e24f825f28ce4a1')
 
 package() {
   tar -xf data.tar.xz -C "$pkgdir"
