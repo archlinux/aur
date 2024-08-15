@@ -1,5 +1,5 @@
 [Unit]
-Description=mosdns - A DNS forwarder
+Description=mosdns DNS forwarder
 After=network.target
 
 [Service]
