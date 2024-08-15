@@ -3,7 +3,7 @@
 # Contributor: Ernesto Castellotti <mail@ernestocastellotti.it>
 
 pkgname=boosteroid
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="Boosteroid client desktop"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=("binutils" "tar" "coreutils" "wget")
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
 source=("https://boosteroid.com/linux/installer/boosteroid-install-x64.deb")
-md5sums=("1b179204d4681b92ad7d78566b751461")
+md5sums=("4c4fa6583b9fa912793836be160ab51d")
 
 prepare() {
   cd "$srcdir"
