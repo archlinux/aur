@@ -1,11 +1,11 @@
 # Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=opendeck
-pkgver=v2.0.0_rc.0
-pkgrel=2
+pkgver=v2.0.0_rc.1
+pkgrel=1
 pkgdesc="A cross-platform desktop application that provides functionality for stream controller devices."
 arch=('x86_64')
 url="https://github.com/ninjadev64/OpenDeck"
-license=('BSD-3-Clause')
+license=('MIT')
 makedepends=(git deno tauri-cli dpkg hidapi webkit2gtk libappindicator-gtk3)
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -14,7 +14,7 @@ source=(
 	"${pkgname}::git+https://github.com/ninjadev64/OpenDeck#tag=${pkgver//_/-}"
 )
 
-sha256sums=('fc695c5f19de84c4036056f1074bc8384fb4e5b5a26069e3b1fc4e153ba0399e')
+sha256sums=('de6b23893f69a3e32a6c6fe8545c809e54cb2707380a9ae996067d39db9c8d53')
 
 prepare() {
 	cd "$srcdir/${pkgname}/src-tauri"
