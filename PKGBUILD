@@ -34,11 +34,11 @@ fi
 ###################################################################################
 
 pkgbase=linux-bore
-pkgver=6.10.1
-_pkgver=6.10.1
+pkgver=6.10.3
+_pkgver=6.10.3
 pkgrel=1
 major=6.10
-commit=c46c57d605e71bd94b6842006b68ce9277fddf15
+commit=9f4aff504e923944a54f32eba06de62be2f66097
 arch=(x86_64)
 url='https://www.kernel.org/'
 license=(GPL-2.0-only)
@@ -94,8 +94,10 @@ source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
         0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
         0002-drivers-firmware-skip-simpledrm-if-nvidia-drm.modese.patch
         0003-arch-Kconfig-Default-to-maximum-amount-of-ASLR-bits.patch
+        0004-ALSA-hda-Conditionally-use-snooping-for-AMD-HDMI.patch
+        0005-x86-apic-Remove-logical-destination-mode-for-64-bit.patch
         # BORE Patch
-        0001-linux6.10.y-bore5.2.6r2.patch)
+        0001-linux6.10.y-bore5.2.8.patch)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -348,12 +350,14 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('70109dfd1cd1c5f8a58eb1cb37122b9bf93f9c6a6280bf91019263c7339cf76b'
-            'b7fc249683be13c565a941976c2d2c0bc90185ae1bf97779ee0c269fb3d90a37'
-            '34af4212998f8866c13edbaca3f6da262aba7807856802b7588426e6cd5359c9'
-            '893a8b1f0cfd419f22b04aebc2790f5384d42ed7e2f3703774b69afce7b72cdc'
-            '997777f15a43e2e5f9e97e61f1cccbd00e62f236851a1016d43ecb6865375f35'
-            '3f0dd16deaa4346b88e4c873ea09bac2d980578fed99202ffc520ea44ba30286')
+sha256sums=('fa5f22fd67dd05812d39dca579320c493048e26c4a556048a12385e7ae6fc698'
+            '84832e092a359aae3a4a7467a61e3e9c8ee855954f15ce389d5356dba5971b2b'
+            'd2d673e130d2a8006aeca9892238db432fe6de628327e6999b3567c0e40a01ae'
+            '2bd0cd7ea72b0330006a5159e8016fdf391cbd3e222b263c6603670d90383d05'
+            '6759cdb5efcacc56b071dddb85f2dd6a54485a046f61f40f9854246c1480603c'
+            '368fd17ebf97ca8b6ca7129b1626a43d12617cbbe3c6af53313b0a52b8fa65ab'
+            '84bbf16ba166b016e050ab69e69a54798963d3a03ed65dea7bf39b0a371fbdb8'
+            'b8e5c01906743ff3b98a8a835e0b94d6b0877f4c420a35d66f8a225f95f806ff')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do
