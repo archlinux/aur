@@ -1,7 +1,0 @@
-#!/bin/bash
-
-while read -r f; do
-  if [[ -d ${f}scalable ]]; then
-    rm -f "${f}icon-theme.cache"
-  fi
-done
