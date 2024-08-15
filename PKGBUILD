@@ -1,7 +1,7 @@
 # Maintainer: Standa Lukeš <archpkg@exyi.cz>
 
 pkgname='trimal'
-pkgver=1.4.1
+pkgver=1.5.0
 pkgdesc="A tool for automated alignment trimming in large-scale phylogenetic analyses"
 pkgrel=1
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/inab/trimal'
 license=('GPL')
 makedepends=('make' 'gcc')
 source=("${pkgname}-${pkgver}.tgz::https://github.com/inab/trimal/archive/v${pkgver}.tar.gz")
-sha256sums=('cb8110ca24433f85c33797b930fa10fe833fa677825103d6e7f81dd7551b9b4e')
+sha256sums=('3fba2e07bffb7290c34e713a052d0f0ff1ce0792861740a8cec46f40685c6d73')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/source"
