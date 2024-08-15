@@ -3,7 +3,7 @@
 
 pkgname=python-pyngus
 pkgver=2.3.1
-pkgrel=2
+pkgrel=4
 pkgdesc="A connection oriented messaging framework using QPID Proton"
 arch=(any)
 url="https://github.com/kgiusti/pyngus"
