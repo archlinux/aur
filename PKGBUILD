@@ -35,11 +35,11 @@ fi
 ###################################################################################
 
 pkgbase=linux-amd
-pkgver=6.10.3
-_pkgver=6.10.3
+pkgver=6.10.5
+_pkgver=6.10.5
 pkgrel=1
 major=6.10
-commit=9f4aff504e923944a54f32eba06de62be2f66097
+commit=335b711f590650ef037442bf876f3551e5af0669
 arch=(x86_64)
 url='https://www.kernel.org/'
 license=(GPL-2.0-only)
@@ -99,7 +99,11 @@ source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
         0005-x86-apic-Remove-logical-destination-mode-for-64-bit.patch
         # AMD Patches
         # sirlucjan
-        0001-amd-pstate-patches.patch)
+        0001-amd-pstate-patches.patch
+        # Zen kernel
+        0001-drm-amd-display-fix-corruption-with-high-refresh-rat.patch
+        0001-ZEN-cpufreq-Remove-schedutil-dependency-on-Intel-AMD.patch
+        0001-ZEN-drm-amdgpu-pm-Allow-override-of-min_power_limit-.patch)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -352,14 +356,17 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('fa5f22fd67dd05812d39dca579320c493048e26c4a556048a12385e7ae6fc698'
-            '84832e092a359aae3a4a7467a61e3e9c8ee855954f15ce389d5356dba5971b2b'
+sha256sums=('30909eb2e0434dce97a93cd97ed0dfab7688a124bc3ebc3ecf6c776de09ccc0b'
+            '09bc22332affedcdf96cfa7b4ff3dcf1d087d1bde818b9929f5ad1102bc4f775'
             'd2d673e130d2a8006aeca9892238db432fe6de628327e6999b3567c0e40a01ae'
             '2bd0cd7ea72b0330006a5159e8016fdf391cbd3e222b263c6603670d90383d05'
             '6759cdb5efcacc56b071dddb85f2dd6a54485a046f61f40f9854246c1480603c'
             '368fd17ebf97ca8b6ca7129b1626a43d12617cbbe3c6af53313b0a52b8fa65ab'
             '84bbf16ba166b016e050ab69e69a54798963d3a03ed65dea7bf39b0a371fbdb8'
-            '57b0e324bbb1c3017899b76cdeb01ce4670599378017c47852787996d63189ef')
+            '57b0e324bbb1c3017899b76cdeb01ce4670599378017c47852787996d63189ef'
+            'dda19bde26827b0489318b872a6ef4f5a0b8154ab5f254a23eee260dd2c24d01'
+            'e96ca0986eee226aa74501cc400363d38e8355040ac0d6b2d2be009cd2210c02'
+            'fb7daf2046c9ad11aa8409eb3f0f7ca53b8de216f2efce9390940a441831dfa3')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do
