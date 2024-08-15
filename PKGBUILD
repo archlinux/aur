@@ -22,4 +22,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 gols "$pkgdir/usr/bin/gols"
+  install -Dm644 gols.1 "$pkgdir/usr/share/man/man1/gols.1"
 }
