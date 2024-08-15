@@ -35,10 +35,10 @@ fi
 ###################################################################################
 
 pkgbase=linux-rc
-pkgver=6.10rc1
-_pkgver=6.10-rc1
+pkgver=6.11rc3
+_pkgver=6.11-rc3
 pkgrel=1
-commit=1e29f0ecf2221b2fbf580752f42ab5040d88b5e0
+commit=335b711f590650ef037442bf876f3551e5af0669
 arch=(x86_64)
 url='https://www.kernel.org/'
 license=(GPL-2.0-only)
@@ -163,6 +163,13 @@ prepare(){
     sleep 2s
     plain ""
   fi
+
+  msg "Set Font"
+  scripts/config --disable CONFIG_FONTS
+  scripts/config --enable CONFIG_FONT_8x8
+  scripts/config --enable CONFIG_FONT_8x16
+
+  sleep 2s
 
   # Supress depmod
   msg "Supress depmod..."
@@ -328,9 +335,9 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('102823885970d7d7bcf05a9b55dbe851ef95d99ba4b2d779e3e6343bdd4b6ecc'
-            '5f8a4de3f17d6d1b624e70514327b05fafffe8af913f95829b9c6830b4a8a4e3'
-            'e3ff7450ac5ce41729febf471cba26446f88c3e711808cb01a012ed4d9f8d345')
+sha256sums=('0b5b2461dc372b972e780b8da4c7ec471166e2f556420898dfce75c1e2a2637d'
+            '09bc22332affedcdf96cfa7b4ff3dcf1d087d1bde818b9929f5ad1102bc4f775'
+            'd2d673e130d2a8006aeca9892238db432fe6de628327e6999b3567c0e40a01ae')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do
