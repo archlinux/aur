@@ -1,6 +1,6 @@
 pkgbase = stavekontrolden
 	pkgdesc = Danish dictionaries; for use with multiple programs
-	pkgver = 2.8.119
+	pkgver = 2.8.120
 	pkgrel = 1
 	url = https://stavekontrolden.dk/
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = stavekontrolden
 	conflicts = hunspell-da
 	conflicts = hyphen-da
 	conflicts = mythes-da
-	source = https://stavekontrolden.dk/dictionaries/da_DK/da_DK-2.8.119.oxt
-	b2sums = d523d93bc800d8fdd7402b66489834dd7df7752791b5e6e602b2a777c03f795c4a810e6e706dac269002cfde3c7e7ba509e659d34620f04aa9200825989aa4c2
+	source = https://stavekontrolden.dk/dictionaries/da_DK/da_DK-2.8.120.oxt
+	b2sums = a951fdcca84c232a5d9716d4ae62487145d017162b99efb63fa065a6e8e58eade8dd4f06e7e1f81c4d5f48d70920df02a7c221cae4bef765348be82a41061776
 
 pkgname = stavekontrolden
