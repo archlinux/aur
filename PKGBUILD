@@ -1,14 +1,14 @@
 # Maintainer: Colin Woodbury <colin@fosskers.ca>
 
 pkgname=aura
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="A package manager for Arch Linux and its AUR"
 url="https://github.com/fosskers/aura"
 license=('GPL-3.0-or-later')
 arch=("x86_64")
 depends=("git" "curl" "openssl" "gcc-libs" "glibc")
-makedepends=("cargo" "texinfo")
+makedepends=("cargo")
 optdepends=(
   "bash-completion: for bash completions"
   "bat: more featureful file viewing"
@@ -16,11 +16,12 @@ optdepends=(
   "graphviz: dependency graph generation"
   "ripgrep: faster log searches"
   "shellcheck: PKGBUILD scanning"
+  "xdg-utils: for xdg-open"
 )
 conflicts=("aura-bin" "aura-git" "aura3-bin")
 options=("strip")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('88c5a6dd3fca36c1b321f5e8957e5b09e3b581aeeffad473f07449be4925fc79')
+sha256sums=('6fe154ff9baf30344e3471ef7fa44d10a95bcdbfd3fc64c0cb21d839e4fea4dd')
 
 prepare() {
   cd "${pkgname}-${pkgver}/rust"
@@ -50,4 +51,5 @@ package() {
   # Install bash and zsh completions
   install -Dm644 "misc/completions/bashcompletion.sh" "${pkgdir}/usr/share/bash-completion/completions/aura"
   install -Dm644 "misc/completions/_aura" "${pkgdir}/usr/share/zsh/site-functions/_aura"
+  install -Dm644 "misc/completions/aura.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/aura.fish"
 }
