@@ -1,0 +1,11 @@
+--- net/cert/internal/trust_store_chrome.cc	2024-08-16 18:50:39.885286030 +0200
++++ net/cert/internal/trust_store_chrome.cc	2024-08-17 00:59:00.825009861 +0200
+@@ -223,7 +223,7 @@
+ TrustStoreChrome::ConstraintOverrideMap
+ TrustStoreChrome::InitializeConstraintsOverrides() {
+   base::CommandLine* command_line = base::CommandLine::ForCurrentProcess();
+-  if (command_line->HasSwitch(kTestCrsConstraintsSwitch)) {
++  if (command_line && command_line->HasSwitch(kTestCrsConstraintsSwitch)) {
+     return ParseCrsConstraintsSwitch(
+         command_line->GetSwitchValueASCII(kTestCrsConstraintsSwitch));
+   }

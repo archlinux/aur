@@ -1,69 +1,34 @@
 These targets are dead code and they aren't available with system Abseil. Based on:
 https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electron
 
---- third_party/abseil-cpp/BUILD.gn	2024-08-06 21:52:32.106545000 +0200
-+++ third_party/abseil-cpp/BUILD.gn	2024-08-07 10:39:27.097578737 +0200
-@@ -150,20 +150,15 @@
-   public_deps = [
-     # Banned because each flag registration generates a static initializer, and
-     # the flag registration mechanism is problematic in component builds.
--    "//third_party/abseil-cpp/absl/flags:config",
-     "//third_party/abseil-cpp/absl/flags:flag",
-     "//third_party/abseil-cpp/absl/flags:parse",
--    "//third_party/abseil-cpp/absl/flags:reflection",
-     "//third_party/abseil-cpp/absl/flags:usage",
+--- third_party/abseil-cpp/BUILD.gn	2024-08-14 22:55:11.256275700 +0200
++++ third_party/abseil-cpp/BUILD.gn	2024-08-15 18:24:44.474626026 +0200
+@@ -269,7 +269,6 @@
+         "absl/base:config_test",
+         "absl/base:no_destructor_test",
+         "absl/base:nullability_test",
+-        "absl/base:poison_test",
+         "absl/base:prefetch_test",
+         "absl/cleanup:cleanup_test",
  
-     # Banned because the LOG and CHECK macros conflict with Chrome's version of
-     # those macros.
-     "//third_party/abseil-cpp/absl/log",
--    "//third_party/abseil-cpp/absl/log:check",
- 
-     # TODO(danilchap): Investigate if these targets need to be banned in 3rd party library code.
--    "//third_party/abseil-cpp/absl/log:globals",
--    "//third_party/abseil-cpp/absl/log:initialize",
-     "//third_party/abseil-cpp/absl/random:bit_gen_ref",
-   ]
- 
-@@ -172,7 +167,7 @@
-     ":absl_full",
-   ]
- 
--  public_configs = [ "//third_party/abseil-cpp/absl/flags:absl_flags_config" ]
-+  public_configs = []
- }
- 
- config("absl_include_config") {
-@@ -278,7 +273,6 @@
-         "absl/container:fixed_array_test",
-         "absl/container:flat_hash_map_test",
+@@ -281,8 +280,6 @@
          "absl/container:flat_hash_set_test",
--        "absl/container:hash_function_defaults_test",
+         "absl/container:hash_function_defaults_test",
          "absl/container:inlined_vector_test",
+-        "absl/container:node_hash_map_test",
+-        "absl/container:node_hash_set_test",
          "absl/container:node_slot_policy_test",
          "absl/container:raw_hash_set_allocator_test",
-@@ -288,7 +282,6 @@
+         "absl/container:raw_hash_set_test",
+@@ -291,11 +288,8 @@
          "absl/crc:crc_cord_state_test",
          "absl/crc:crc_memcpy_test",
          "absl/crc:non_temporal_memcpy_test",
--        "absl/debugging:demangle_rust_test",
+-        "absl/debugging:bounded_utf8_length_sequence_test",
+-        "absl/debugging:decode_rust_punycode_test",
+         "absl/debugging:demangle_rust_test",
          "absl/debugging:stacktrace_test",
+-        "absl/debugging:utf8_for_code_point_test",
          "absl/flags:flag_test",
          "absl/functional:any_invocable_test",
-@@ -318,9 +311,6 @@
-         "absl/numeric:int128_test",
-         "absl/profiling:exponential_biased_test",
-         "absl/profiling:periodic_sampler_test",
--        "absl/random:distributions_test",
--        "absl/random:mock_distributions_test",
--        "absl/status:status_matchers_test",
-         "absl/status:status_test",
-         "absl/status:statusor_test",
-         "absl/strings:ascii_test",
-@@ -356,7 +346,6 @@
-         "absl/synchronization:waiter_test",
-         "absl/time:time_test",
-         "absl/types:optional_test",
--        "absl/types:span_test",
-         "absl/types:variant_test",
-         "absl/utility:if_constexpr_test",
-         "//third_party/googletest:gtest_main",
+         "absl/functional:function_ref_test",

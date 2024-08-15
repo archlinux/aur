@@ -4,14 +4,12 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=127.0.6533.119
+pkgver=128.0.6613.36
 pkgrel=1
 _manual_clone=0
-# Linking to system Abseil doesn't work due to errors like this one:
-# ld.lld: error: undefined symbol: absl::lts_20240722::EqualsIgnoreCase(…)
-_system_abseil=0
+_system_abseil=1
 _system_clang=1
-_system_libcxx=1
+_system_stdlib=libstdc++
 pkgdesc="The networking stack of Chromium put into a library"
 arch=('x86_64')
 url="https://chromium.googlesource.com/chromium/src/+/refs/heads/main/components/cronet"
@@ -20,16 +18,22 @@ depends=('nss' 'libffi')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'rust' 'rust-bindgen' 'git')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
+        https://github.com/chromium/chromium/commit/daa9f2af75e031f917c26446b6015eb96328c670.patch
+        https://github.com/chromium/chromium/commit/5c1e85eb085658187f4475ff5e56962473b6f10a.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         abseil-remove-unused-targets.patch
         disable-logging.patch
         fix-no-matching-strcat.patch
         fix-numeric_limits.patch
+        fix-trust-store-segfault.patch
         fix-undeclared-isnan.patch)
-sha256sums=('acc9e3f9fd2d180b8831865a1ac4f5cdd9ffe6211f47f467296d9ee1be2a577e'
+sha256sums=('3e9bdb12600e7f03cda9e0e60df027227752f339a45e680ca1a689e595c7d7a8'
+            '83c75c3c46f01b3832d6c03a219ed2228b9c76205f53ec629bb34d091a33b2df'
+            'cd8f24fd092cdebacdf7f679413c52e50e6517479c6e608be49ef27fdab2de53'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
+            SKIP
             SKIP
             SKIP
             SKIP
@@ -99,6 +103,11 @@ _unwanted_bundled_libs=(
   third_party/jdk
 )
 
+# System Abseil needs libstdc++.
+# https://stackoverflow.com/q/12542971
+if [[ "${_system_stdlib}" != libstdc++ ]]; then
+  _system_abseil=0
+fi
 if (( _system_abseil )); then
   _system_libs+=(
     [absl_algorithm]=
@@ -151,15 +160,19 @@ fi
 depends+=(${_system_libs[@]})
 makedepends+=("${_system_make_libs[@]}")
 
-if (( _system_libcxx )); then
+case "${_system_stdlib}" in
+libc++)
   depends+=(
     libc++
   )
+  ;&
+libstdc++)
   _unwanted_bundled_libs+=(
     third_party/libc++
     third_party/libc++abi
   )
-fi
+  ;;
+esac
 
 prepare() {
   if (( _manual_clone )); then
@@ -200,10 +213,13 @@ prepare() {
   # ../../net/third_party/quiche/src/quiche/web_transport/encapsulated/encapsulated_web_transport.cc:351:16: error: no matching function for call to 'StrCat'
   patch -p0 -i ../fix-no-matching-strcat.patch
 
-  # test deps are broken for ui/lens with system ICU
-  # "//third_party/icu:icuuc_public" (taken from Gentoo ebuild)
-  sed -i '/source_set("unit_tests") {/,/}/d' chrome/browser/ui/lens/BUILD.gn
-  sed -i '/lens:unit_tests/d' chrome/test/BUILD.gn components/BUILD.gn
+  # Fixes building with libstdc++.
+  # See https://issues.chromium.org/issues/41455655.
+  patch -p1 -i ../daa9f2af75e031f917c26446b6015eb96328c670.patch
+  patch -p1 -i ../5c1e85eb085658187f4475ff5e56962473b6f10a.patch
+
+  # Fixes segfault caused by `command_line` being null
+  patch -p0 -i ../fix-trust-store-segfault.patch
 
   if (( !_system_clang )); then
     # Use prebuilt rust as system rust cannot be used due to the error:
@@ -222,7 +238,7 @@ prepare() {
     find "$_lib" -type f \
       \! -path "$_lib/chromium/*" \
       \! -path "$_lib/google/*" \
-      \! -path "third_party/abseil-cpp/absl/base/dynamic_annotations.h" \
+      \! -path "third_party/abseil-cpp/absl/base/internal/raw_logging.h" \
       \! -regex '.*\.\(gn\|gni\|isolate\)' \
       -delete
   done
@@ -281,18 +297,17 @@ build() {
     )
   fi
 
-  if (( _system_libcxx )); then
+  case "${_system_stdlib}" in
+  libc++)
+    CXXFLAGS+=' -stdlib=libc++'
+    LDFLAGS+=' -stdlib=libc++'
+    ;&
+  libstdc++)
     _flags+=(
       'use_custom_libcxx=false'
     )
-
-    CXXFLAGS+=' -stdlib=libc++'
-    LDFLAGS+=' -stdlib=libc++'
-  else
-    _flags+=(
-      'use_custom_libcxx=true'
-    )
-  fi
+    ;;
+  esac
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
   CFLAGS+='   -Wno-builtin-macro-redefined'
