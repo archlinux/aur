@@ -4,12 +4,12 @@ pkgbase=mkdocstrings-python
 _pyname=("${pkgbase//-/_}")
 pkgname=("${pkgbase}")
 #"${pkgbase}-doc")
-pkgver=1.10.7
+pkgver=1.10.8
 pkgrel=1
 pkgdesc="A Python handler for mkdocstrings"
 url="https://mkdocstrings.github.io"
 license=('ISC')
-arch=("any")
+arch=('any')
 makedepends=('python-pdm-backend'
              'python-build'
              'python-installer')
@@ -30,7 +30,7 @@ checkdepends=('python-pytest'
               'mkdocs-material')
 #source=("https://github.com/mkdocstrings/mkdocstrings/archive/refs/tags/${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('bfb5e29acfc69c9177d2b11c18d3127d16e553b8da9bb6d184e428d54795600b')
+sha256sums=('5856a59cbebbb8deb133224a540de1ff60bded25e54d8beacc375bb133d39016')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -55,13 +55,12 @@ check() {
     mkdir -p dist/lib
     bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
     PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
-#   pytest -vv -l -ra --color=yes -o console_output_style=count #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_mkdocstrings-python() {
     depends=('python>=3.8'
              'mkdocstrings>=0.25'
-             'python-griffe>=0.48')
+             'python-griffe>=0.49')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
