@@ -1,5 +1,5 @@
 [python-rdt]
 source = "github"
 github = "sdv-dev/RDT"
-use_latest_release = "true"
+use_max_tag = "true"
 prefix = "v"
