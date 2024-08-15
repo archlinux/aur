@@ -2,29 +2,26 @@
 # Maintainer: Carlos A Becker <carlos@charm.sh>
 
 pkgname='melt-bin'
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='Backup and restore Ed25519 SSH keys with seed words'
 url='https://charm.sh/'
-arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 license=('MIT')
 provides=('melt')
 conflicts=('melt')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.6.1/melt_0.6.1_Linux_arm64.tar.gz")
-sha256sums_aarch64=('48421396d9daf065ed5dfafd0c52377407fad12108f4d8ffba3a40365471163d')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.6.2/melt_0.6.2_Linux_arm64.tar.gz")
+sha256sums_aarch64=('12cdf4ee09b5fea8bba9388495912c19c784c844f407dddadb86e1d2b7b63acd')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.6.1/melt_0.6.1_Linux_armv6.tar.gz")
-sha256sums_armv6h=('1828cb5b74f3de5b9a4546b1a7bfea1c85dd576ac78b2f9f7faa55fff825c2b6')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.6.2/melt_0.6.2_Linux_armv7.tar.gz")
+sha256sums_armv7h=('deaa82d0ba3e8cf67e3ea9e1ad4cd2267f80bbe23d9ec854e628004915c72d24')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.6.1/melt_0.6.1_Linux_armv7.tar.gz")
-sha256sums_armv7h=('29630f5542281977528e9b8e050e526c120cf2256f45918e228319438220b499')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.6.2/melt_0.6.2_Linux_i386.tar.gz")
+sha256sums_i686=('b3660a496b04b63fb7765d1f78666aef0330e01a3b13317e735ab0f1fa6e6e77')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.6.1/melt_0.6.1_Linux_i386.tar.gz")
-sha256sums_i686=('1b70fa17eecf0bf8c855850e6ad007adc88f3c31d0e1b0b69e14b822ce70c6ad')
-
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.6.1/melt_0.6.1_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('84c2a77731ee71a4705e022f644ae95daa2e72c888ee398bebc555417add5caa')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.6.2/melt_0.6.2_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('82f543dcade2244a86196a506a28dcd41b55d5e0be71d692d291fc4f6803ac82')
 
 package() {
   cd "${srcdir}/melt_${pkgver}_Linux_${CARCH}"
@@ -42,4 +39,7 @@ package() {
   install -Dm644 "./completions/melt.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/melt.fish"
   # man pages
   install -Dm644 "./manpages/melt.1.gz" "${pkgdir}/usr/share/man/man1/melt.1.gz"
+  # readme
+  mkdir -pv "${pkgdir}/usr/share/doc/melt/"
+  install -Dm644 README* "${pkgdir}/usr/share/doc/melt/"
 }
