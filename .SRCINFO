@@ -1,12 +1,13 @@
 pkgbase = swayblocks
 	pkgdesc = a highly customizable, language agnostic status bar manager for i3 and sway written in elixir
-	pkgver = r45.9257a84
+	pkgver = r60.6aa045d
 	pkgrel = 1
 	url = https://github.com/rei2hu/swayblocks
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = elixir
+	makedepends = git
 	depends = elixir
 	optdepends = acpi: for battery script,
 	optdepends = brightnessctl: for brightness script,
@@ -14,8 +15,7 @@ pkgbase = swayblocks
 	optdepends = alsa-utils: for volume script
 	provides = swayblocks
 	conflicts = swayblocks
-	source = git+https://github.com/rei2hu/swayblocks
+	source = git+https://github.com/rei2hu/swayblocks#commit=6aa045d8119d647bca04f0250e3d23c4c0491bc3
 	md5sums = SKIP
 
 pkgname = swayblocks
-
