@@ -1,8 +1,7 @@
-# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
-# Contributor: Nep_Nep <nepnep91 at child dot pizza>
+# Maintainer: Nep_Nep <nepnep91 at child dot pizza>
 
 pkgname=simplex-desktop-bin
-pkgver=6.0.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="SimpleX Chat, the first messaging network operating without user identifiers of any kind"
 arch=(x86_64)
@@ -22,4 +21,5 @@ package() {
     mkdir -p "$pkgdir/usr/bin"
     ln -s /opt/simplex/bin/simplex "$pkgdir/usr/bin/simplex-desktop"
 }
+sha256sums=('dd2b10646186be2dbc9810a867365df94fd67a22735b77d512d91f3b991e4deb')
 sha256sums=('dd2b10646186be2dbc9810a867365df94fd67a22735b77d512d91f3b991e4deb')
