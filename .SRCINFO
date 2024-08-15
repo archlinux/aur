@@ -1,0 +1,16 @@
+pkgbase = i2c-nct6793-dkms-git
+	pkgdesc = Nuvoton NCT6793 and compatible SMBus kernel driver.
+	pkgver = 0.1.r0.g887a50d
+	pkgrel = 1
+	url = https://gitlab.com/CalcProgrammer1/i2c-nct6793-dkms
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = dkms
+	provides = i2c-nct6793-dkms
+	conflicts = i2c-nct6793-dkms
+	source = git+https://gitlab.com/CalcProgrammer1/i2c-nct6793-dkms
+	sha256sums = SKIP
+
+pkgname = i2c-nct6793-dkms-git
