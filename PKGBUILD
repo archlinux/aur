@@ -1,38 +1,34 @@
-# Maintainer: BigfootACA <bigfoot@classfun.cn>
+# Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+# Contributor: BigfootACA <bigfoot@classfun.cn>
 
-_pyname=pyngus
-pkgbase=python-$_pyname
-pkgname=(python-$_pyname)
+pkgname=python-pyngus
 pkgver=2.3.1
-pkgrel=3
-pkgdesc="Callback API implemented over Proton"
-arch=('any')
+pkgrel=2
+pkgdesc="A connection oriented messaging framework using QPID Proton"
+arch=(any)
 url="https://github.com/kgiusti/pyngus"
-license=(Apache)
-makedepends=(
-	python
-	python-qpid-proton
-	python-setuptools
-)
-source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('e240e95cfe58adc45aaa92789e056152')
-sha256sums=('d925868637fcaf2b6a2174137d39af909d1e95f5c8a27c816b55b5a204e9240d')
-sha512sums=('0e5ae71288b1e4ef2a630218322aa23fd537dcb068689f235b019e48ef94522639408be4d1dbd2e53c347ae1427024b8936a58fe005c1ea600bde82facb4c1dc')
+license=('Apache-2.0')
+depends=('python'
+         'python-qpid-proton')
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel'
+             'tar')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/${pkgname#python-}/${pkgname#python-}-$pkgver.tar.gz")
+b2sums=('ee1aa0110e8f331c97eaeaa11929e2fe645bb4df03111df6f2a67a246668b24b3f1f9fef78012f039282c60733af167da3bc748a1b128597bc83a75e7c17f445')
+
+prepare() {
+    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
+}
 
 build(){
-	pushd $_pyname-$pkgver
-	python setup.py build
-	popd
+    cd "$pkgname-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
-_package_python(){
-	depends=(
-		python
-		python-qpid-proton
-	)
-	cd $_pyname-$pkgver
-	python setup.py install --root "$pkgdir" --optimize=1
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+package(){
+    cd "$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 README.md -t "$pkgdir/usr/share/$pkgname/"
 }
-
-eval "package_python-${_pyname}(){ _package_python; }"
