@@ -1,16 +1,20 @@
 pkgbase = protocol-git
 	pkgdesc = An ASCII Header Generator for Network Protocols
-	pkgver = d450da7
+	pkgver = r16.4e8326e
 	pkgrel = 1
 	url = http://www.luismg.com/protocol/
 	arch = any
 	license = GPL3
 	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	provides = protocol
 	conflicts = protocol
 	source = git+https://github.com/luismartingarcia/protocol
+	source = fix-setup-py.patch
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = protocol-git
-
