@@ -1,6 +1,6 @@
 pkgbase = kaskade
 	pkgdesc = A text user interface for Kafka. Interact and consume topics from your terminal in style!
-	pkgver = 2.3.2
+	pkgver = 2.3.5
 	pkgrel = 1
 	url = https://github.com/sauljabin/kaskade
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = kaskade
 	makedepends = python-poetry-core>=1.0.0
 	depends = python>=3.10
 	depends = python-cloup>=3.0
-	depends = python-textual>=0.72
+	depends = python-textual>=0.76
 	depends = python-confluent-kafka>=2.5
 	depends = python-rich
 	depends = python-protobuf
 	depends = python-click
-	source = kaskade-2.3.2.tar.gz::https://github.com/sauljabin/kaskade/archive/v2.3.2.tar.gz
-	sha256sums = b3adc9f55b36ea2949effb97b43c009edebf61a8d1b63e46fb84b6bffe01d7ff
+	source = kaskade-2.3.5.tar.gz::https://github.com/sauljabin/kaskade/archive/v2.3.5.tar.gz
+	sha256sums = a5344d14373b13dbd51e901da0fb10a678d4ab95ba780169ca9bfaaca6d19d88
 
 pkgname = kaskade
