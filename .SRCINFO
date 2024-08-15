@@ -1,6 +1,6 @@
 pkgbase = ducker
 	pkgdesc = A terminal app for managing docker containers
-	pkgver = 0.0.7
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/robertpsoane/ducker
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ducker
 	makedepends = cargo
 	depends = gcc-libs
 	options = !lto
-	source = ducker-0.0.7.tar.gz::https://github.com/robertpsoane/ducker/archive/v0.0.7.tar.gz
-	sha512sums = 412762527de7405a62e830893b498814c94306bc9c17d6ca81c1d2480387ac75a2f8234972a1cdfaf1c507a1a878539d38312f4b41cf34dd7f7d50c9d26c1edd
+	source = ducker-0.1.1.tar.gz::https://github.com/robertpsoane/ducker/archive/v0.1.1.tar.gz
+	sha512sums = 6d61f6efc282184605c06140b981ff2de29d02f6ddc6f2365f603735c08f2361d24f3e7a3c81bd4cc94cfc070df1fbf32297e4dce2979087ea7d3650f5138313
 
 pkgname = ducker
