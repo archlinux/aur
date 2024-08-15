@@ -1,7 +1,7 @@
 pkgbase = haskell-hmenu
 	pkgdesc = CLI fuzzy finder and launcher
 	pkgver = 0.2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hackage.haskell.org/package/hmenu
 	arch = x86_64
 	license = BSD
