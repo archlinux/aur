@@ -2,7 +2,7 @@
 
 pkgname=calendarsync-bin
 _pkgname=calendarsync
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='Stateless CLI tool to sync calendars across different calendaring systems'
 arch=(x86_64 armv6 armv7 arm64)
@@ -17,10 +17,10 @@ source_armv6=("$_pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/Calen
 source_armv7=("$_pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/CalendarSync_${pkgver}_linux_armv7.tar.gz")
 source_arm64=("$_pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/CalendarSync_${pkgver}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('147a8e5427a46c494f6b285319b5b62aafebcde20996421d53ec0ae14be9c698')
-sha256sums_armv6=('dfba40c82087c6ceffbb6a0816f766850cc351e2d5968c951eb33fcc5be91f86')
-sha256sums_armv7=('4280964506c9171dd4e8010c7220c952ec69b5e9ca483956dd430625a27ad869')
-sha256sums_arm64=('d2f0b152b3c26ae9876482e89ed1b813b87216e59f745c37b2d4b98638fdf32f')
+sha256sums_x86_64=('7338261da0f665b6550f4a88da7800c5fb0550bbb3c412930b9ceddf40a7e2db')
+sha256sums_armv6=('98946a30b58f85e50732f6130546ab73e47fe4aa70684f59b5054e299a59c059')
+sha256sums_armv7=('3e59d95aa02a050bdcf8c6ed478558eae9c427166fac81f9461d7caebb549644')
+sha256sums_arm64=('ab6aef0892ce020c329990abdb21b92cb10538dd49f4fd3c352cb5391fa4e52a')
 
 package() {
     cd "$srcdir/"
