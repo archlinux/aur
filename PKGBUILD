@@ -10,7 +10,7 @@
 # Contributor: dada513 <dada513@protonmail.com>
 
 pkgname=fjordlauncher
-pkgver=8.4.1
+pkgver=8.4.2
 pkgrel=1
 pkgdesc="Prism Launcher fork with support for alternative auth servers"
 arch=('i686' 'x86_64' 'aarch64')
@@ -25,7 +25,7 @@ optdepends=('glfw: to use system GLFW libraries'
             'java-runtime=8: for older minecraft versions'
             'flite: minecraft voice narration')
 source=("https://github.com/unmojang/FjordLauncher/releases/download/${pkgver}/FjordLauncher-${pkgver}.tar.gz")
-sha256sums=('a10fe260522b0af1e57711e17c8bba26ddb41a0ce08324d04c71b31a9f4e1880')
+sha256sums=('6a4290ed37615f37449659433338cb205813b34a9da7e30543ab3497dfd7282b')
 
 prepare() {
   cd "FjordLauncher-${pkgver}"
