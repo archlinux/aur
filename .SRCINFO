@@ -1,0 +1,17 @@
+pkgbase = ruby-base64-nonstd
+	pkgdesc = Support for encoding and decoding binary data using a Base64 representation
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/ruby/base64
+	arch = any
+	license = BSD
+	license = RUBY
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-test-unit
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/ruby/base64/archive/v0.2.0/ruby-base64-0.2.0.tar.gz
+	b2sums = a70b357f4998925dc9c6c365e23f0c45eca100170271d2daf3ead56a3656d0a5cc77f8d4e84796c486a7f96dcf520e0a4ba22d3b880926afe41f0603952a93ef
+
+pkgname = ruby-base64-nonstd
