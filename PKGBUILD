@@ -2,19 +2,19 @@
 
 pkgname=warcraftlogsuploader-appimage
 _pkgapp=warcraftlogsuploader
-pkgver=8.12.22
+pkgver=8.12.33
 pkgrel=1
 pkgdesc="warcraftlogs.com desktop client for Linux"
 arch=('x86_64')
 depends=("fuse2")
 conflicts=("warcraftlogsuploader")
 url="https://warcraftlogs.com/"
-source=("$_pkgapp.AppImage::https://github.com/RPGLogs/Uploaders-warcraftlogs/releases/download/v8.12.22/warcraftlogs-v8.12.22.AppImage"
+source=("$_pkgapp.AppImage::https://github.com/RPGLogs/Uploaders-warcraftlogs/releases/download/v8.12.33/warcraftlogs-v8.12.33.AppImage"
         'start')
 license=('custom' 'MIT' 'custom:chromium-licenses')
 options=(!strip)
 # Skip checksum check for the WarcraftLogs binary, to avoid breakage on updates
-sha512sums=('d493246180a56bf776c1f2c9d7a66784d065eebd307577048efc81baa23df0e094ec93c5eb0d09223b2845fde925e64288f46b9c97eeb6324b730a254e6ac579'
+sha512sums=('53d06ac5cd91a2d2c04db42111cd44f104ccbd857d0ed768c397df6bbc97ad26bbbf7f45ea48063045f7701c28d5a4d737d1c71892c30a14ea2dad80e49e2102'
             '1f8d504fb27e815f7efcc8e97672bad12f531d171ab8a08c49439fb4ee63b07e9355c49e56b5fb2eb2f6d202ce56a0526b609fef4b6209832026709002eba22a')
 
 pkgver() {
