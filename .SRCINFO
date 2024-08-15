@@ -1,7 +1,7 @@
 pkgbase = aqualung-git
 	pkgdesc = High quality music player with gapless support
 	pkgver = 1.2.r6.gb9e3f5c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aqualung.jeremyevans.net/
 	arch = x86_64
 	arch = i686
@@ -15,7 +15,6 @@ pkgbase = aqualung-git
 	depends = libpulse
 	depends = liboggz
 	depends = libusb-compat
-	depends = libifp
 	depends = ffmpeg
 	depends = libvorbis
 	depends = libsndfile
