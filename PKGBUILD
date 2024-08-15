@@ -1,7 +1,7 @@
 # Maintainer: Tim Hellhake
 
 pkgname=rider
-pkgver='2024.1.5'
+pkgver='2024.2'
 pkgrel=1
 epoch=1
 pkgdesc='A cross-platform .NET IDE by JetBrains.'
@@ -18,9 +18,9 @@ _installdir='/usr/share'
 _pkgdir="JetBrains Rider-${pkgver}"
 _srcfile="JetBrains.Rider-${pkgver}"
 source_x86_64=("https://download-cf.jetbrains.com/rider/${_srcfile}.tar.gz")
-sha256sums_x86_64=('22347912b46be29c3e585e47774fedaae9a8b4ef5cdab9f9794ff0cc98b30793')
+sha256sums_x86_64=('b68cc7f109347cedb93817cc35a6e1f0089b205e6ae5ae8ce400fbb2ff613c0a')
 source_aarch64=("https://download-cf.jetbrains.com/rider/${_srcfile}-aarch64.tar.gz")
-sha256sums_aarch64=('b8949fd72d5b320efdd42abb0f27e487850b9f16b0eda1b9720a330df10689be')
+sha256sums_aarch64=('27248613777239d43d8377261b860f6b748859045196dcc57327afd126dcb9c5')
 
 package() {
     cd "${srcdir}"
