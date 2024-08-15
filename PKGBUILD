@@ -2,14 +2,15 @@
 # Based on AUR package [marcel](https://aur.archlinux.org/packages/marcel) by Jiri Pospisil
 
 pkgname=marcel-git
-_reponame=marcel
-pkgver=v0.27.0.r0.g166d186
+_pkgbase=marcel
+pkgver=v0.30.0.r0.g17f66cc
 pkgrel=1
 pkgdesc='A modern shell that accepts Python code and uses Python objects for piping'
 url='https://www.marceltheshell.org/'
 source=("git+https://github.com/geophile/marcel.git")
 arch=('any')
 depends=('python' 'python-dill' 'python-psutil')
+provides=($_pkgbase)
 makedepends=(
   'git'
   'python-build'
@@ -17,24 +18,24 @@ makedepends=(
   'python-wheel'
   'python-setuptools'
 )
-conflicts=('marcel')
+conflicts=($_pkgbase)
 license=('GPL-3.0-only')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_reponame"
+    cd "$srcdir/$_pkgbase"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_reponame"
+  cd "$srcdir/$_pkgbase"
 
   rm -rf test
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$_reponame"
+  cd "$srcdir/$_pkgbase"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
