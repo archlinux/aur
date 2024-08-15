@@ -1,8 +1,8 @@
 # Maintainer: trougnouf (Benoit Brummer) <trougnouf at gmail dot com>
-# Last images added on 2022-06-09
+# Last images added on 2024-08-15
 
 pkgname="trougnouf-backgrounds"
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="Wallpapers made of photographs posted by User:Trougnouf on Wikimedia Commons, with GNOME integration and transitions built-in to match the time pictures were taken"
 url='https://commons.wikimedia.org/wiki/User:Trougnouf'
@@ -23,15 +23,17 @@ _images=(
   'Inside_an_abandoned_military_building_in_Fort_de_la_Chartreuse,_Liege,_Belgium_(DSCF3343).jpg'
   'Lemonnier_premetro_station_rails_tunnel_in_Brussels,_BE_(DSCF5655).jpg'  # 12h21
   'Pears_covered_in_snow_at_Marché_de_Boitsfort_(Belgium).jpg'
+  'Bois_Raquet,_in_the_High_Fens_–_Eifel_Nature_Park_(DSCF6655).jpg'
   'Canadian_geese_flying_from_Le_Rondeau,_Rambouillet_(DSC_7090).jpg'
   'Mute_swan_in_the_Semois_river_(DSC_8387).jpg'  # 13h27
+  'Fort_de_la_Chartreuse_(DSCF3625-hdr).jpg' # 13h40
   'View_through_the_shattered_glass_of_a_door_in_the_SNCB_B22490_type-K3_carriage,_looking_at_a_yellow_H._Weyhausen_KG_backhoe_loader_in_As,_Belgium_(DSCF3088-hdr).jpg'
   'Stawamus_Chief_Provincial_Park,_BC_(DSCF7828).jpg'
   'Snowy_trees_on_the_GR-16_between_Membre_and_Vresse-sur-Semois_(DSCF4800).jpg'
   'Pipes_in_the_water_treatment_plant_of_an_abandoned_steel_factory_in_Oupeye,_Belgium_(DSCF3276).jpg'
   'Water_treatment_plant_in_an_abandoned_steel_factory_in_Oupeye,_Belgium_(DSCF3285).jpg'  # 14h56 to 15h30
   'A_tree_South_of_Doel,_Belgium_(DSCF3811).jpg'  # 15h30 to 16h21
-  'The_village_of_Bubiòn_viewed_from_Plaza_Vieja_in_Capileira_(DSCF5824).jpg'
+  'The_village_of_Pampaneira_viewed_from_Plaza_Vieja_in_Capileira_(DSCF5824).jpg'
   'Lac_de_Virelles_(frozen),_Chimay_(DSC_0251).jpg'   # 16h21 to 16h35
   'Street_art_in_the_tunnel_at_Rue_des_Tanneurs_under_the_railway_(Brussels,_Belgium).jpg'
   'Trekkers_heading_West_towards_Halapē_in_Hawaiʻi_Volcanoes_National_Park_(DSC08997).jpg'
@@ -70,16 +72,18 @@ _stimes=(
   300  # 10h11 to 10h16 = 5 minutes       Mossy forest in Lierneux (DSC01260).jpg
   7500 # 10h16 to 12h21 = 125 minutes     Inside_an_abandoned_military_building_in_Fort_de_la_Chartreuse,_Liege,_Belgium_(DSCF3343).jpg
   600  # 12h21 to 12h31 = 10 minutes      Lemonnier_premetro_station_rails_tunnel_in_Brussels,_BE_(DSCF5655).jpg
-  2220 # 12h31 to 13h08 = 37 minutes      Pears_covered_in_snow_at_Marché_de_Boitsfort_(Belgium).jpg
+  1380 # 12h31 to 12h54 = 23 minutes      Pears_covered_in_snow_at_Marché_de_Boitsfort_(Belgium).jpg
+  840  # 12h54 to 13h08 = 14 minutes      Bois Raquet, in the High Fens – Eifel Nature Park (DSCF6655).jpg
   1140 # 13h08 to 13h27 = 19 minutes      Canadian_geese_flying_from_Le_Rondeau,_Rambouillet_(DSC_7090).jpg
-  1380 # 13h27 to 13h50 = 23 minutes      Mute swan in the Semois river (DSC 8387).jpg
+  780  # 13h27 to 13h40 = 13 minutes      Mute swan in the Semois river (DSC 8387).jpg
+  600  # 13h40 to 13h50 = 10 minutes      Fort de la Chartreuse (DSCF3625-hdr).jpg
   1080 # 13h50 to 14h08 = 18 minutes      View_through_the_shattered_glass_of_a_door_in_the_SNCB_B22490_type-K3_carriage,_looking_at_a_yellow_H._Weyhausen_KG_backhoe_loader_in_As,_Belgium_(DSCF3088-hdr).jpg
   720  # 14h08 to 14h20 = 12 minutes      Stawamus_Chief_Provincial_Park,_BC_(DSCF7828).jpg
   1080 # 14h20 to 14h38 = 18 minutes      Snowy_trees_on_the_GR-16_between_Membre_and_Vresse-sur-Semois_(DSCF4800).jpg
   1080 # 14h38 to 14h56 = 18 minutes      Pipes_in_the_water_treatment_plant_of_an_abandoned_steel_factory_in_Oupeye,_Belgium_(DSCF3276).jpg
   2040 # 14h56 to 15h30 = 34 minutes      Water_treatment_plant_in_an_abandoned_steel_factory_in_Oupeye,_Belgium_(DSCF3285).jpg
   780  # 15h30 to 15h43 = 13 minutes      A_tree_South_of_Doel,_Belgium_(DSCF3811).jpg
-  2280 # 15h43 to 16h21 = 38 minutes      The_village_of_Bubiòn_viewed_from_Plaza_Vieja_in_Capileira_(DSCF5824).jpg
+  2280 # 15h43 to 16h21 = 38 minutes      The_village_of_Pampaneira_viewed_from_Plaza_Vieja_in_Capileira_(DSCF5824).jpg
   840  # 16h21 to 16h35 = 14 minutes      Lac_de_Virelles_(frozen),_Chimay_(DSC_0251).jpg
   1920 # 16h35 to 17h07 = 32 minutes      Street_art_in_the_tunnel_at_Rue_des_Tanneurs_under_the_railway_(Brussels,_Belgium).jpg
   300  # 17h07 to 17h12 = 5 minutes       Trekkers_heading_West_towards_Halapē_in_Hawaiʻi_Volcanoes_National_Park_(DSC08997).jpg
@@ -117,8 +121,10 @@ sha256sums=('7a57abe4e8e1f121e9d5b889b87b5102d6bfaa19fadbe355997ac3c1dd9d50e4'
             '60da898f8fb43491594e7466f44294db43795d61de124f590eb2be2d42ea208a'
             'ea23392a1914371d3fe41751bf14c7a3341d4d7c5c87c712150e21fbcaaa9dd7'
             '0381dac0c5cfdb7d3068d9758222708fcc281f4b45d115d93ed524894d723ccd'
+            '4eac3e6eb11afcaf3423ff649a4806e3cc3f3b4f2bf4a31ee053e16f847bf7c8'
             '995e55218358d8da826c5a5f45063b3c4dcc581e83372254e144ed44a5a46e2e'
             '2a510c4dd858737a322c67584510a1ead5414d555515745ff5403f4851d1b026'
+            '3ea85ba642bd555b14eade0894ce2830f242139ad4fcf65f677d7c13edf65185'
             '4890081d1a7cdacb036da85e54f900c5effc40741c2a76816ad316b41931ad2b'
             '799cf4bd62c5ac685acf28fe0fd8555db2fe318020767cc8dee3e377abb18a68'
             '14e555f429f2e3e759be419a92f73f386891865c3cc2ff635d62a2b4a966fd2f'
