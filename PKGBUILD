@@ -2,7 +2,7 @@
 
 _pkgname=spplice
 pkgname=${_pkgname}-bin
-pkgver=2.0.7
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="The first ever dedicated Portal 2 mod launcher"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   "spplice-launcher.sh"
 )
 sha512sums=(
-    "a205d5eb660de9b926a424a9d7bec325908e8df9dad0afeec1635728a97d2fedc0947528b0dcb75aec8bf1961df3da62987f12fd4407a07300b64e9fb533f271"
+    "0b305ab1364486be5e47119ad0fadae4b8ce44cfb17ca887d736a9be16c8b26b8ab8b46d7e27b51d39cba5ec46897a56eb7e74da5377df9c38aa0bbbb3198830"
     "35f99141441bf76fa55f8b313c0a149bc0f8772bfea39d1b3cc156539886f3f482c33dad791441930576fd3c4d46d3fecef47b776ed9b283b034cffd27fa4850"
 )
 noextract=("${_appimage}")
