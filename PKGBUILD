@@ -3,13 +3,13 @@
 
 pkgname=aqualung
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="High quality music player w/ gapless support"
 arch=(i686 x86_64)
 url="https://aqualung.jeremyevans.net/"
 license=(GPL2)
 depends=(gtk2 libxml2 alsa-lib sndio jack libpulse liboggz libusb-compat
-         libifp ffmpeg libvorbis libsndfile lua52 wavpack libcdio-paranoia
+         ffmpeg libvorbis libsndfile lua52 wavpack libcdio-paranoia
          libmad flac liblrdf libmpcdec libsamplerate libcddb speex lame libmodplug # mac
 
          # namcap implicit depends
@@ -28,7 +28,9 @@ prepare() {
 build() {
   cd "${pkgname}"
   ./configure \
-    --prefix=/usr
+    --prefix=/usr \
+    --without-ifp
+
   make
 }
 
