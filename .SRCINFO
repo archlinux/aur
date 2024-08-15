@@ -1,6 +1,6 @@
 pkgbase = acter-bin
 	pkgdesc = Casual Community Organizing
-	pkgver = 1.24.8080
+	pkgver = 1.24.8150
 	pkgrel = 2
 	url = https://acter.global
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = acter-bin
 	depends = jsoncpp
 	depends = xdg-user-dirs
 	conflicts = acter-nightly-bin
-	source = https://github.com/acterglobal/a3/releases/download/v1.24.8080/acter-linux-x64-1.24.8080.tar.bz2
-	md5sums = ec344ae86dc9c92c22ed804cbb467e7c
+	source = https://github.com/acterglobal/a3/releases/download/v1.24.8150/acter-linux-x64-1.24.8150.tar.bz2
+	md5sums = 1d3843f702ad98d938d689cc6ec895a1
 
 pkgname = acter-bin
