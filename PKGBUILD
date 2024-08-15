@@ -92,8 +92,9 @@ build() {
   # CUDA and/or ROCm support are experimental and may break!
   # In order to enable support for either, please uncomment
   # the respective entry in makedepends_x86_64 (or install
-  # the dependency package first) and change FULL_BUILD
-  # value below to true *before* making the build.
+  # the dependency package first) *before* making the build.
+  # You can disable CUDA/ROCm support by changing FULL_BUILD
+  # below to false before building as well.
   ##########################################################
 
   FULL_BUILD=true
