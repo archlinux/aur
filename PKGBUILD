@@ -19,6 +19,7 @@ pkgver(){
 
 build() {
   cd "avBuilder"
+  git submodule update --init --recursive
   chmod +x ./bootstrap
   ./bootstrap
   ./avBuilder avBuilder.project
