@@ -1,0 +1,29 @@
+post_install() {
+    echo "To use rclone-bisync-manager:"
+    echo ""
+    echo "1. Set up the configuration:"
+    echo "   - Copy the sample configuration file:"
+    echo "     cp /usr/share/doc/rclone-bisync-manager/config.yaml.sexample ~/.config/rclone-bisync-manager/config.yaml"
+    echo "   - Edit the configuration file to suit your needs:"
+    echo "     nano ~/.config/rclone-bisync-manager/config.yaml"
+    echo ""
+    echo "2. To use as a user service:"
+    echo "   a. Install the service file:"
+    echo "      mkdir -p ~/.config/systemd/user"
+    echo "      cp /usr/lib/systemd/user/rclone-bisync-manager.service ~/.config/systemd/user/"
+    echo ""
+    echo "   b. Reload the systemd user daemon:"
+    echo "      systemctl --user daemon-reload"
+    echo ""
+    echo "   c. Enable and start the service:"
+    echo "      systemctl --user enable --now rclone-bisync-manager.service"
+    echo ""
+    echo "3. To check the status of the service:"
+    echo "   systemctl --user status rclone-bisync-manager.service"
+    echo ""
+    echo "For more information, please refer to the documentation."
+}
+
+post_upgrade() {
+    post_install
+}
