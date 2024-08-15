@@ -1,28 +1,22 @@
-# Maintainer: Sven Fischer <sven |a| leiderfischer |.| de>
-# Contributor: Thomas Robinson <robinsthom |a| gmail |.| com>
-#              Visa Jokelainen <visaj |a| iki |.| fi>
+# Maintainer: atomicfs <https://aur.archlinux.org/account/atomicfs>
+
 pkgname=robotframework
-pkgver=6.0.2
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="A keyword-driven test automation framework"
 arch=('any')
 url="http://www.robotframework.org"
-license=('Apache')
+license=('Apache-2.0')
 depends=('python')
-optdepends=('jython: for using robotframework with Java (must be installed before running PKGBUILD)')
 source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('8abf14ae37187dd9c4d1046cfe88367e')
+sha512sums=('8098c760888a139d17c9ecf3e791a6926cd9f0f6e42e22e07c238273b373827a6aa6c0238346151784a0cfb90f573618904329310c5c9f433f426369dc753427')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python -m build --wheel --no-isolation
+}
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-
-    echo "creating pybot scripts"
-    python setup.py install --prefix=/usr --root="$pkgdir" || return 1
-
-    if pacman -Qsq ^jython$;
-    then
-        echo "creating jybot scripts"
-        jython setup.py install --prefix=/opt/jython --root="$pkgdir" || return 1
-        mv $pkgdir/opt/jython/bin/* $pkgdir/usr/bin/
-    fi
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
