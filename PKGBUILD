@@ -3,7 +3,7 @@
 _hkgname=posix-paths
 pkgname=haskell-posix-paths
 pkgver=0.3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="POSIX filepath/directory functionality"
 url="git://github.com/JohnLato/posix-paths.git"
 license=("BSD")
