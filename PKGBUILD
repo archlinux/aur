@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=greetd-ddlm-git
-pkgver=r23.d8d1b24
+pkgver=r25.8a72139
 pkgrel=2
 pkgdesc="deathowl's dummy login manager"
 arch=('x86_64')
@@ -12,10 +12,8 @@ depends=('greetd')
 makedepends=('cargo' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("Remove-osstrtools.patch"
-	"$pkgname::git+$url")
-sha256sums=('f8f63b04b91479df52ea8ec3ff9742b3af860222b30aaaa3310d6cffaf7d985a'
-            'SKIP')
+source=("$pkgname::git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
@@ -23,7 +21,6 @@ pkgver() {
 }
 
 prepare() {
-	patch --directory="$pkgname" --forward --strip=1 --input="${srcdir}/Remove-osstrtools.patch"
 	cd "$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
