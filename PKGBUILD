@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=universalmotif
-_pkgver=1.22.0
+_pkgver=1.22.1
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.22.1
 pkgrel=1
 pkgdesc='Import, Modify, and Export Motifs with R'
 arch=('x86_64')
@@ -45,7 +45,7 @@ optdepends=(
   r-tfbstools
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fed7c59661771c859e093f9a51668468df773e1af0e3e40abec85c3a56ac5acd')
+sha256sums=('def3642204a359cde737ba96e2a1dd4533f1c6b891b8b74eb666269e01eb6259')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
