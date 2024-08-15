@@ -1,199 +1,372 @@
-# Maintainer: Steven De Bondt <egnappah at gmail dot com>
+#Maintainer: archdevlab <https://github.com/archdevlab>
+#Credits: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+#Credits: Andreas Radke <andyrtr@archlinux.org>
+#Credits: Steven De Bondt <egnappah at gmail dot com>
+
+################################# Arch ################################
+
+ARCH=x86
+
+################################# Grep GCC version ################################
+
+_gccversion=$(gcc -dumpversion)
+
+################################# CC/CXX/HOSTCC/HOSTCXX ################################
+
+#Set compiler to build the kernel
+#Set '1' to build with GCC
+#Set '2' to build with CLANG and LLVM
+#Default is empty. It will build with GCC. To build with different compiler just use : env _compiler=(1 or 2) makepkg -s
+if [ -z ${_compiler+x} ]; then
+  _compiler=
+fi
+
+if [[ "$_compiler" = "1" ]]; then
+  _compiler=1
+  BUILD_FLAGS=(CC=gcc CXX=g++ HOSTCC=gcc HOSTCXX=g++)
+elif [[ "$_compiler" = "2" ]]; then
+  _compiler=2
+  BUILD_FLAGS=(CC=clang CXX=clang++ HOSTCC=clang HOSTCXX=clang++ LD=ld.lld LLVM=1 LLVM_IAS=1)
+else
+  _compiler=1
+  BUILD_FLAGS=(CC=gcc CXX=g++ HOSTCC=gcc HOSTCXX=g++)
+fi
+
+###################################################################################
 
 pkgbase=linux-amd
-_srcname=linux
-gitver=v6.8.8
-patchver=20240221.2
-patchname=more-uarches-for-kernel-6.8-rc4+.patch
-pkgver=6.8.v.8
-pkgrel=2
-arch=('x86_64')
-url="https://www.kernel.org/"
-license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf' 'lzop' 'gcc>=10.3')
-options=('!strip')
-
-source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=$gitver"
-        # the main kernel config files
-        'config.x86_64'
-	# patch from our graysky archlinux colleague
-	"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/$patchver/$patchname"
-	# fast cppc patch
-	'fast_cppc.patch'
+pkgver=6.10.3
+_pkgver=6.10.3
+pkgrel=1
+major=6.10
+commit=9f4aff504e923944a54f32eba06de62be2f66097
+arch=(x86_64)
+url='https://www.kernel.org/'
+license=(GPL-2.0-only)
+makedepends=(
+  bc
+  cpio
+  gettext
+  libelf
+  pahole
+  perl
+  python
+  tar
+  xz
+  kmod
+  xmlto
+  # htmldocs
+  graphviz
+  imagemagick
+  python-sphinx
+  python-yaml
+  texlive-latexextra
 )
-sha256sums=('SKIP'
-            #config.x86_64
-            '5330fce19698bef9deb603bb20addc1abf137ad9f4dbdad57587228e3f69e713'
-            #grayskypatch
-            'd69232afd0dd6982ae941cf2d1f577f4be2011e3bb847d1db37952acf416b5d3'
-            #fast cppc patch
-            'f8a69166a3ee91b797198b4e82b6e397a8f7749feed8aed7f3b323b020798a66'
+makedepends+=(
+  bison
+  flex
+  zstd
+  make
+  patch
+  gcc
+  gcc-libs
+  glibc
+  binutils
+  git
 )
+if [[ "$_compiler" = "2" ]]; then
+  makedepends+=(
+    clang
+    llvm
+    llvm-libs
+    lld
+    clang
+    python
+  )
+fi
+options=(
+  !debug
+  !strip
+)
+archlinuxpath=https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/$commit
+source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
+        ${archlinuxpath}/config
+        # Arch patches
+        0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+        0002-drivers-firmware-skip-simpledrm-if-nvidia-drm.modese.patch
+        0003-arch-Kconfig-Default-to-maximum-amount-of-ASLR-bits.patch
+        0004-ALSA-hda-Conditionally-use-snooping-for-AMD-HDMI.patch
+        0005-x86-apic-Remove-logical-destination-mode-for-64-bit.patch
+        # AMD Patches
+        # sirlucjan
+        0001-amd-pstate-patches.patch)
 
-_kernelname=${pkgbase#linux}
+export KBUILD_BUILD_HOST=archlinux
+export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
-pkgver() {
-  echo $pkgver
-}
+prepare(){
+  cd ${srcdir}/linux-$_pkgver
 
-prepare() {
-  cd "${_srcname}"
-  if [ "${CARCH}" = "x86_64" ]; then
-    cat "${srcdir}/config.x86_64" > ./.config
-  else
-    echo "Sorry, non x86_64 arch not supported."
-      exit 2
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    msg "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
+
+  plain ""
+
+  # Copy the config file first
+  msg "Copy the config file first..."
+  cp "${srcdir}"/config .config
+
+  sleep 2s
+
+  plain ""
+
+  #  # Remove gcc-plugin if gcc version = 13.0.0
+  #  if [[ "$_gccversion" = "13.0.0" ]]; then
+  #
+  #    msg "Remove GCC_PLUGINS"
+  #    scripts/config --disable CONFIG_HAVE_GCC_PLUGINS
+  #    scripts/config --disable CONFIG_GCC_PLUGINS
+  #
+  #    sleep 2s
+  #    plain ""
+  #  fi
+
+  # Set LTO with CLANG/LLVM
+
+  if [[ "$_compiler" = "2" ]]; then
+
+    msg "Enable THIN LTO"
+    scripts/config --enable CONFIG_LTO
+    scripts/config --enable CONFIG_LTO_CLANG
+    scripts/config --enable CONFIG_ARCH_SUPPORTS_LTO_CLANG
+    scripts/config --enable CONFIG_ARCH_SUPPORTS_LTO_CLANG_THIN
+    scripts/config --disable CONFIG_LTO_NONE
+    scripts/config --enable CONFIG_HAS_LTO_CLANG
+    scripts/config --disable CONFIG_LTO_CLANG_FULL
+    scripts/config --enable CONFIG_LTO_CLANG_THIN
+    scripts/config --enable CONFIG_HAVE_GCC_PLUGINS
+
+    #msg "Enable FULL LTO"
+    #scripts/config --enable CONFIG_LTO
+    #scripts/config --enable CONFIG_LTO_CLANG
+    #scripts/config --enable CONFIG_ARCH_SUPPORTS_LTO_CLANG
+    #scripts/config --enable CONFIG_ARCH_SUPPORTS_LTO_CLANG_THIN
+    #scripts/config --disable CONFIG_LTO_NONE
+    #scripts/config --enable CONFIG_HAS_LTO_CLANG
+    #scripts/config --enable CONFIG_LTO_CLANG_FULL
+    #scripts/config --disable CONFIG_LTO_CLANG_THIN
+    #scripts/config --enable CONFIG_HAVE_GCC_PLUGINS
+
+    #msg "Disable LTO"
+    #scripts/config --enable CONFIG_LTO_NONE
+
+    sleep 2s
+    plain ""
   fi
 
-  # Implement all packaged patches and reverts.
-  msg2 "Implementing custom kernel patches/reverts"
-  while read patch; do
-   echo "Applying $patch"
-   git apply $patch || exit 2
-  done <<< $(ls ../*.patch)
+  msg "Enable AMD Zen2 support"
+  scripts/config --disable CONFIG_GENERIC_CPU
+  scripts/config --enable CONFIG_MZEN2
 
-  # get kernel version
-  msg2 "Preparing kernel"
-  yes "" | make prepare
+  sleep 2s
 
-  # load configuration
-  msg2 "Preparing config"
-  # Configure the kernel. Replace the line below with one of your choice.
-  #make menuconfig # CLI menu for configuration
-  #make nconfig # new CLI menu for configuration
-  #make xconfig # X-based configuration
-  #make oldconfig # using old config from previous kernel version
-  make olddefconfig # old config from previous kernel, defaults for new options
-  # ... or manually edit .config
+  plain ""
+
+  msg "Set Font"
+  scripts/config --disable CONFIG_FONTS
+  scripts/config --enable CONFIG_FONT_8x8
+  scripts/config --enable CONFIG_FONT_8x16
+
+  sleep 2s
+
+  plain ""
+
+  # Supress depmod
+  msg "Supress depmod..."
+  sed -i '2iexit 0' scripts/depmod.sh
+
+  sleep 2s
+
+  plain ""
+
+  # Setting localversion
+  msg "Setting localversion..."
+  # --save-scmversion as been removed in upstream
+  # https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/scripts/setlocalversion?h=v6.3-rc1&id=f6e09b07cc12a4d104bb19fe7566b0636f60c413
+  # scripts/setlocalversion --save-scmversion
+  echo "-${pkgbase}" > localversion
+
+  plain ""
+
+  # Config
+  msg "make olddefconfig..."
+  make ARCH=${ARCH} ${BUILD_FLAGS[*]} olddefconfig
+
+  plain ""
+
+  make -s kernelrelease > version
+  msg "Prepared $pkgbase version $(<version)"
+
+  plain ""
 }
 
-build() {
-  cd "${_srcname}"
+build(){
+  cd ${srcdir}/linux-$_pkgver
 
-  #Force zenv4 architecture optimisation and other optimisations.
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules KCFLAGS='-march=znver4 -mtune=znver4 -O2 -pipe -fstack-protector-strong'
+  msg "make all"
+  make ARCH=${ARCH} ${BUILD_FLAGS[*]} KCFLAGS="-O2 -pipe -march=znver2 -mtune=znver2 -fstack-protector-strong" -j$(nproc) all
+  msg "make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1"
+  make ARCH=${ARCH} ${BUILD_FLAGS[*]} KCFLAGS="-O2 -pipe -march=znver2 -mtune=znver2 -fstack-protector-strong" -j$(nproc) -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 }
 
-_package() {
-  pkgdesc="Linux kernel aimed at the ZNVER4/MZEN4 AMD Ryzen CPU based hardware"
-  depends=('coreutils' 'linux-firmware' 'kmod' 'lzop')
-  optdepends=('crda: to set the correct wireless channels of your country')
+_package(){
+  pkgdesc='The Linux kernel and modules - Compile with AMD Family 17h Zen 2 processors support'
+  depends=(
+    coreutils
+    initramfs
+    kmod
+  )
+  optdepends=(
+    'wireless-regdb: to set the correct wireless channels of your country'
+    'linux-firmware: firmware images needed for some devices'
+  )
+  provides=(
+    KSMBD-MODULE
+    VIRTUALBOX-GUEST-MODULES
+    WIREGUARD-MODULE
+  )
+  replaces=(
+    virtualbox-guest-modules-arch
+    wireguard-arch
+  )
 
-  cd "${_srcname}"
+  cd ${srcdir}/linux-$_pkgver
 
-  KARCH=x86
+  local kernver="$(<version)"
+  local modulesdir="${pkgdir}"/usr/lib/modules/${kernver}
 
-  # get kernel version
-  _kernver="$(make LOCALVERSION= kernelrelease)"
-  _basekernel=${_kernver%%-*}
-  _basekernel=${_basekernel%.*}
+  msg "Installing boot image..."
+  # systemd expects to find the kernel here to allow hibernation
+  # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
-  mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
+  # Used by mkinitcpio to name the kernel
+  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
-  # remove build link
-  rm -f "${pkgdir}"/lib/modules/${_kernver}/build
-  # remove the firmware
-  rm -rf "${pkgdir}/lib/firmware"
+  msg "Installing modules..."
+  ZSTD_CLEVEL=19 make ARCH=${ARCH} ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}"/usr INSTALL_MOD_STRIP=1 -j$(nproc) modules_install
 
-  # move module tree /lib -> /usr/lib
-  mkdir -p "${pkgdir}/usr"
-  mv "${pkgdir}/lib" "${pkgdir}/usr/"
-
-  # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
-
-  # add vmlinuz in /usr/lib/modules/ and info for correct hook triggers
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/usr/lib/modules/${_kernver}/vmlinuz"
-  echo ${pkgbase} > "${pkgdir}/usr/lib/modules/${_kernver}/pkgbase"
-
-  # add System.map
-  install -D -m644 System.map "${pkgdir}/boot/System.map-${_kernver}"
+  # remove build and source links
+  msg "Remove build dir and source dir..."
+  rm -rf "$modulesdir"/{source,build}
 }
 
-_package-headers() {
-  pkgdesc="Header files and scripts for building modules for Linux kernel aimed at the ZNVER4/MZEN4 AMD CPU based hardware"
+_package-headers(){
+  pkgdesc="Headers and scripts for building modules for the $pkgbase package"
+  depends=("${pkgbase}" pahole)
 
-  install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
+  cd ${srcdir}/linux-$_pkgver
 
-  cd "${_srcname}"
-  install -D -m644 Makefile \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
-  install -D -m644 kernel/Makefile \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/kernel/Makefile"
-  install -D -m644 .config \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/.config"
+  local builddir="$pkgdir"/usr/lib/modules/"$(<version)"/build
 
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
+  msg "Installing build files..."
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map *localversion* version vmlinux tools/bpf/bpftool/vmlinux.h
+  install -Dt "$builddir/kernel" -m644 kernel/Makefile
+  install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
+  cp -t "$builddir" -a scripts
 
-  for i in $(ls include/); do
-    cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
+  # required when STACK_VALIDATION is enabled
+  install -Dt "$builddir/tools/objtool" tools/objtool/objtool
+
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  if [ -f tools/bpf/resolve_btfids/resolve_btfids ]; then
+    install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  fi
+
+  msg "Installing headers..."
+  cp -t "$builddir" -a include
+  cp -t "$builddir/arch/x86" -a arch/x86/include
+  install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
+
+  install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
+  install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
+
+  # https://bugs.archlinux.org/task/13146
+  install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
+
+  # https://bugs.archlinux.org/task/20402
+  install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
+  install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
+  install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
+
+  msg "Installing Kconfig files..."
+  find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
+
+  msg "Removing unneeded architectures..."
+  local arch
+  for arch in "$builddir"/arch/*/; do
+    [[ $arch = */x86/ ]] && continue
+    msg2 "Removing $(basename "$arch")"
+    rm -r "$arch"
   done
 
-  # copy arch includes for external modules
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/x86"
-  cp -a arch/x86/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/x86/"
+  msg "Removing documentation..."
+  rm -r "$builddir/Documentation"
 
-  # copy files necessary for later builds, like nvidia and vmware
-  cp Module.symvers "${pkgdir}/usr/lib/modules/${_kernver}/build"
-  cp -a scripts "${pkgdir}/usr/lib/modules/${_kernver}/build"
+  msg "Removing broken symlinks..."
+  find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-  # Make tmpdir for versions
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/.tmp_versions"
+  msg "Removing loose objects..."
+  find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-  # add kernel files to headers
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel"
-  cp arch/${KARCH}/Makefile "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
-  cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
-
-  # add dm headers
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
-  cp drivers/md/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/md"
-
-  # add inotify.h
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include/linux"
-  cp include/linux/inotify.h "${pkgdir}/usr/lib/modules/${_kernver}/build/include/linux/"
-
-  # add wireless headers
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/net/mac80211/"
-  cp net/mac80211/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/net/mac80211/"
-
-  # copy in Kconfig files
-  for i in $(find . -name "Kconfig*"); do
-    mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
-    cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
-  done
-
-  # Add objtool for CONFIG_STACK_VALIDATION
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
-  cp -a tools/objtool "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
-
-  chown -R root:root "${pkgdir}/usr/lib/modules/${_kernver}/build"
-  find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
-
-  # strip scripts directory
-  find "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
-    case "$(file -bi "${binary}")" in
-      *application/x-sharedlib*) # Libraries (.so)
-        /usr/bin/strip ${STRIP_SHARED} "${binary}";;
-      *application/x-archive*) # Libraries (.a)
-        /usr/bin/strip ${STRIP_STATIC} "${binary}";;
-      *application/x-executable*) # Binaries
-        /usr/bin/strip ${STRIP_BINARIES} "${binary}";;
+  msg "Stripping build tools..."
+  local file
+  while read -rd '' file; do
+    case "$(file -Sib "$file")" in
+      application/x-sharedlib\;*)      # Libraries (.so)
+        strip -v $STRIP_SHARED "$file" ;;
+      application/x-archive\;*)        # Libraries (.a)
+        strip -v $STRIP_STATIC "$file" ;;
+      application/x-executable\;*)     # Binaries
+        strip -v $STRIP_BINARIES "$file" ;;
+      application/x-pie-executable\;*) # Relocatable binaries
+        strip -v $STRIP_SHARED "$file" ;;
     esac
-  done
+  done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-  # remove unneeded architectures
-  while read modarch; do
-   rm -rf $modarch
-  done <<< $(find "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/ -maxdepth 1 -mindepth 1 -type d | grep -v /x86$)
+  msg "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
 
+  msg "Adding symlink..."
+  mkdir -p "$pkgdir/usr/src"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-pkgname=("${pkgbase}" "${pkgbase}-headers")
-for _p in ${pkgname[@]}; do
-  eval "package_${_p}() {
-    $(declare -f "_package${_p#${pkgbase}}")
-    _package${_p#${pkgbase}}
+sha256sums=('fa5f22fd67dd05812d39dca579320c493048e26c4a556048a12385e7ae6fc698'
+            '84832e092a359aae3a4a7467a61e3e9c8ee855954f15ce389d5356dba5971b2b'
+            'd2d673e130d2a8006aeca9892238db432fe6de628327e6999b3567c0e40a01ae'
+            '2bd0cd7ea72b0330006a5159e8016fdf391cbd3e222b263c6603670d90383d05'
+            '6759cdb5efcacc56b071dddb85f2dd6a54485a046f61f40f9854246c1480603c'
+            '368fd17ebf97ca8b6ca7129b1626a43d12617cbbe3c6af53313b0a52b8fa65ab'
+            '84bbf16ba166b016e050ab69e69a54798963d3a03ed65dea7bf39b0a371fbdb8'
+            '57b0e324bbb1c3017899b76cdeb01ce4670599378017c47852787996d63189ef')
+
+pkgname=($pkgbase $pkgbase-headers)
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
   }"
 done
+
+# vim:set ts=8 sts=2 sw=2 et:
