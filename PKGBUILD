@@ -1,7 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=curlyq
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc="A command line helper for curl and web scraping"
 arch=(any)
@@ -21,11 +22,12 @@ checkdepends=(
   ruby-rake
   ruby-tty-spinner
   ruby-yard
+  ruby-test-unit
 )
 options=(!emptydirs)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('43a98b5f924980c01a0dd1666a4cd6132141b92942a5a1f0023ef653719a9e91')
+sha256sums=('a1a2c94adfaceec490a55c105e9c405233f4dcfddd425b357ef9c3110e9f0f9b')
 
 _archive="$pkgname-$pkgver"
 
