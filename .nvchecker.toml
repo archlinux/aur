@@ -1,0 +1,5 @@
+[python-mpld3]
+source = "github"
+github = "mpld3/mpld3"
+use_max_tag = "true"
+prefix = "v"
