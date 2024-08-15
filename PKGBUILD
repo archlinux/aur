@@ -3,13 +3,13 @@
 pkgname=dosbox-ece
 _pkgver=4482
 pkgver=${_pkgver}
-pkgrel=1
+pkgrel=3
 pkgdesc="DOS/x86 emulator focusing on ease of use. Based on DOSBox"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://yesterplay.net/dosboxece/"
 license=('GPLv2')
 depends=('sdl2' 'sdl2_net' 'opusfile'  'alsa-lib' 'munt' 'openglide-git')
-optdepends=('libpng' 'ncurses')
+optdepends=('libpng' 'ncurses' 'fluidsynth')
 makedepends=('autoconf' 'automake' 'gcc' 'dos2unix')
 provides=("dosbox")
 conflicts=("dosbox")
