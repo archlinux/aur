@@ -102,7 +102,19 @@ source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
         0001-amd-pstate-patches.patch
         # Zen kernel
         0001-ZEN-cpufreq-Remove-schedutil-dependency-on-Intel-AMD.patch
-        0001-ZEN-drm-amdgpu-pm-Allow-override-of-min_power_limit-.patch)
+        0001-ZEN-drm-amdgpu-pm-Allow-override-of-min_power_limit-.patch
+        # Pf Kernel
+        0001-x86-topology-Introduce-topology_logical_core_id.patch
+        0002-perf-x86-rapl-Fix-the-energy-pkg-event-for-AMD-CPUs.patch
+        0003-perf-x86-rapl-Rename-rapl_pmu-variables.patch
+        0004-perf-x86-rapl-Make-rapl_model-struct-global.patch
+        0005-perf-x86-rapl-Move-cpumask-variable-to-rapl_pmus-str.patch
+        0006-perf-x86-rapl-Add-wrapper-for-online-offline-functio.patch
+        0007-perf-x86-rapl-Add-an-argument-to-the-cleanup-and-ini.patch
+        0008-perf-x86-rapl-Modify-the-generic-variable-names-to-_.patch
+        0009-perf-x86-rapl-Remove-the-global-variable-rapl_msrs.patch
+        0010-perf-x86-rapl-Add-per-core-energy-counter-support-fo.patch
+        0011-perf-x86-rapl-Remove-the-unused-function-cpu_to_rapl.patch)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -356,7 +368,18 @@ sha256sums=('30909eb2e0434dce97a93cd97ed0dfab7688a124bc3ebc3ecf6c776de09ccc0b'
             '994514f16122c25e6b8debf79aab539f92ad3f25f94729197912f250eaf75a11'
             '57b0e324bbb1c3017899b76cdeb01ce4670599378017c47852787996d63189ef'
             'e96ca0986eee226aa74501cc400363d38e8355040ac0d6b2d2be009cd2210c02'
-            'fb7daf2046c9ad11aa8409eb3f0f7ca53b8de216f2efce9390940a441831dfa3')
+            'fb7daf2046c9ad11aa8409eb3f0f7ca53b8de216f2efce9390940a441831dfa3'
+            '9d9dbd0f7288fc0508d650e5b35f3d3c329416ff5fce19b6c2ba27a0932ef661'
+            '428a323e29c3944956ba08611b2569e51e74142e52e6b924ce312207b1a824a7'
+            '3480c98c5b4416e6dadf5d5f935dc9a1b50c38f949228089d7ee06f83169ae50'
+            'c323e50d0bcb336186ceca83eeae8a75f9598e4f8a765cd2ae7f3df2e1a3f4cc'
+            '2fe247a57584fb1b1e3188503a0f6fd28aa7ddceffbb2350d344062f0f0e6131'
+            '3f87680763d1db945205ea10492c1d1d081882b52b2b4db5c9c5d44a7704f9d4'
+            '1d0d797b283ae72ed38d8c7d0691172f9c4e1201e3d2573403936b571dffc6e3'
+            'caa0a2dfd2374bb5a9ed6a784bf3987caa27f65bc0ef43788a503f9932ddfe67'
+            '37842271915562e4ab6e1edae833545644aa09509dfebd6e8a5ddc3b1d8c6bce'
+            '3db50e53e9ec604b0076e12f4af04b7ef067704a4f45fe0bec88309604532b9f'
+            '8759e49e691eb48913e0f4dbc814f99f943f9796e7e38a98b381d3f3fd5a0469')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do
