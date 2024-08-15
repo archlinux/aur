@@ -1,0 +1,21 @@
+pkgbase = python-ghidra-bridge
+	pkgdesc = RPC bridge from Python to Ghidra Jython
+	pkgver = 1.0.0
+	pkgrel = 00
+	url = https://github.com/justfoxing/ghidra_bridge
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	depends = python-jfx-bridge
+	depends = python-setuptools
+	depends = python-pytest
+	noextract = ghidra_bridge-1.0.0-py2.py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/c9/27/68da14f96a9df404acd800969fb12058274f717668ca876be2a2b4d98387/ghidra_bridge-1.0.0-py2.py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 472d51082a30a167c9d2c11bc6b7f15a
+	md5sums = 26e9ee191ef03479b6f1425e9253c6ee
+
+pkgname = python-ghidra-bridge
