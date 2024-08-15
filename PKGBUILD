@@ -19,7 +19,13 @@ arch=('x86_64' 'i686')
 url="https://www.r-studio.com/data_recovery_linux/"
 license=('custom')
 depends=(
-  'qt4'
+  'xdg-utils'
+  'polkit'
+  'hicolor-icon-theme'
+  'gcc-libs'
+  'glibc'
+  'alsa-lib'
+  'freetype2'
 )
 provides=('r-studio-for-linux-bin')
 conflicts=('r-studio-for-linux-bin')
