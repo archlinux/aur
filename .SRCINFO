@@ -1,6 +1,6 @@
 pkgbase = stretchly-electron-bin
 	pkgdesc = The break time reminder app
-	pkgver = 1.15.1
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/hovancik/stretchly/
 	arch = any
@@ -14,9 +14,9 @@ pkgbase = stretchly-electron-bin
 	depends = electron27
 	provides = stretchly
 	conflicts = stretchly
-	source = LICENSE::https://raw.githubusercontent.com/hovancik/stretchly/v1.15.1/LICENSE
-	source = https://github.com/hovancik/stretchly//releases/download/v1.15.1/stretchly-1.15.1.pacman
+	source = LICENSE::https://raw.githubusercontent.com/hovancik/stretchly/v1.16.0/LICENSE
+	source = https://github.com/hovancik/stretchly//releases/download/v1.16.0/stretchly-1.16.0.pacman
 	sha256sums = d4262f71a6c02b19bdbdf760033803c0c7ca24acf2591ba425633f7e3315790a
-	sha256sums = edb0f5d62ac53da08ac658d44aa5c22c82b1f02e4e0b52efe8dc2fb34073f09f
+	sha256sums = 9b6dc40ad5cfa0f3efd14f917d4d239775391af1071ca24857dff5a71e4743d2
 
 pkgname = stretchly-electron-bin
