@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="n8n"
-pkgver=1.54.3
+pkgver=1.54.4
 pkgrel=1
 pkgdesc="Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services."
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkg
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "${pkgname}.user.service")
-sha256sums=('5abdd4e761da04028b3662f53240bbbc414eeabc23937c6786ac8dd46c55ba2f'
+sha256sums=('3a1d167cc8e1a9ecab1d3a6d6fe9416c37791815447b746345fb35bfe3eb05f2'
             'faae87f26ac2bca25d98aa02564876742e7ed5dd4146342062196ed12d97385f'
             '9356600848545416c490e3d74aff8494946afca187dd409a9f768db7a364f9da'
             '6139ae944272cdc50715fd82a3c062ebf1b7fd73f7f789cba0d27f5a0436c688'
