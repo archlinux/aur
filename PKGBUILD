@@ -2,7 +2,7 @@
 # Based on "citra-appimage" pkg made by AlphaJack as a base
 
 pkgname="lime3ds-appimage"
-pkgver=2116
+pkgver=2117
 pkgrel=1
 epoch=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger, AppImage version"
@@ -16,7 +16,7 @@ depends=("ffmpeg"
          "sdl2")
 source=("https://github.com/Lime3DS/Lime3DS/releases/download/$pkgver/lime3ds-$pkgver-linux-appimage.tar.gz"
         "https://raw.githubusercontent.com/Lime3DS/Lime3DS/master/dist/lime3ds-gui.desktop")
-b2sums=('6016138aa9730372082c1d3a25e635dfcafc356e33c7f773e718fc19dfd8228b46672b8689e6f06b680bcc201b4ac86d68131147b63366e2368c6fe23d667e91'
+b2sums=('213a3430cf0aafb1eec5b3c99c589fe43a1d9412534f5230e6ae4825946c150a4cc63dae257ee3915fa23e45d44199f20b09924c7ed161b231ba928c81227b26'
         'be5cbb996af3fdd28b955d3a32171138a696753edd73d5d7b4de645f22f4e49bb5b51dab12309962189ac32d0913dde1dc9f15f50437ee2f621803a6b1e0edd4')
 options=("!strip")
 
