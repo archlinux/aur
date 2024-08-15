@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-core
-pkgver=4.8.0
+pkgver=4.9.0
 pkgrel=1
 pkgdesc="Core DNF Plugins"
 arch=('any')
@@ -16,6 +16,7 @@ optdepends=('createrepo_c: for local plugin'
 conflicts=('dnf-plugins-extras<4.1.0')
 backup=('etc/dnf/plugins/copr.conf'
         'etc/dnf/plugins/debuginfo-install.conf'
+        'etc/dnf/plugins/expired-pgp-keys.conf'
         'etc/dnf/plugins/local.conf'
         'etc/dnf/plugins/pre-transaction-actions.conf'
         'etc/dnf/plugins/post-transaction-actions.conf'
@@ -23,7 +24,7 @@ backup=('etc/dnf/plugins/copr.conf'
         'etc/dnf/plugins/versionlock.list')
 options=('!emptydirs')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('b5772aab995caf6d64779876271d2939f89df0deb749952f47ec2d831cc3fc55')
+sha256sums=('719baf4c71c520e2ed67c6920719531fea2fd26832dd23a6d898246e24129c9f')
 
 prepare() {
 	cd "$pkgname-$pkgver"
