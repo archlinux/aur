@@ -3,7 +3,7 @@
 
 pkgname=boatswain
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Control Elgato Stream Deck devices'
 arch=(x86_64)
 url='https://gitlab.gnome.org/World/boatswain'
@@ -19,6 +19,7 @@ depends=(
 makedepends=(
   git
   meson
+  glib2-devel
   gobject-introspection
 )
 _commit=c7049d3d # tags/0.4.0
