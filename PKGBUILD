@@ -1,7 +1,7 @@
 # Maintainer: Dee.H.Y <dongfengweixiao AT hotmail DOT com>
 pkgname=flclash-bin
 _pkgname=flclash
-pkgver=0.8.52
+pkgver=0.8.53
 pkgrel=1
 pkgdesc="A multi-platform proxy client based on ClashMeta,simple and easy to use, open-source and ad-free."
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(libayatana-appindicator cairo at-spi2-core hicolor-icon-theme libdbusme
 source=(
 	"${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
 )
-sha256sums=('9020b4b7dfe43ba5e5dad0d0ba62137d1aab8190f6a689daf54cd6be73363fad')
+sha256sums=('c4add83ca2dab9eb3e1ba05f1614c28c26ab83f5551174428b2bc30e46306cfb')
 
 package() {
     msg "Converting debian package..."
