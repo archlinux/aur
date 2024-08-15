@@ -2,7 +2,7 @@
 
 pkgname=python-aiohttp-middlewares
 _pkgname=${pkgname#python-}
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Collection of useful middlewares for aiohttp.web applications"
 arch=(any)
@@ -27,31 +27,24 @@ checkdepends=(
   python-pytest-asyncio
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('34930447fe09ed66f9dd2d91a9ecc4a6d00c9671bf7e04dae55d3c96d64649e2')
-
-_archive="$_pkgname-$pkgver"
+sha256sums=('5828f8640b6f8701a07f57a4f52812105275c9dffb64395f27aa382c449a41a3')
 
 build() {
-  cd "$_archive"
-
+  cd "$_pkgname-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_archive"
-
+  cd "$_pkgname-$pkgver"
   rm -rf tmp_install
   python -m installer --destdir=tmp_install dist/*.whl
-
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   export PYTHONPATH="$PWD/tmp_install/$site_packages"
   pytest --override-ini="addopts="
 }
 
 package() {
-  cd "$_archive"
-
+  cd "$_pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
-
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }

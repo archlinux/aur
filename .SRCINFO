@@ -1,6 +1,6 @@
 pkgbase = python-aiohttp-middlewares
 	pkgdesc = Collection of useful middlewares for aiohttp.web applications
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/playpauseandstop/aiohttp-middlewares
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-aiohttp-middlewares
 	depends = python-async-timeout
 	depends = python-attrs
 	depends = python-yarl
-	source = python-aiohttp-middlewares-2.3.0.tar.gz::https://github.com/playpauseandstop/aiohttp-middlewares/archive/refs/tags/v2.3.0.tar.gz
-	sha256sums = 34930447fe09ed66f9dd2d91a9ecc4a6d00c9671bf7e04dae55d3c96d64649e2
+	source = python-aiohttp-middlewares-2.4.0.tar.gz::https://github.com/playpauseandstop/aiohttp-middlewares/archive/refs/tags/v2.4.0.tar.gz
+	sha256sums = 5828f8640b6f8701a07f57a4f52812105275c9dffb64395f27aa382c449a41a3
 
 pkgname = python-aiohttp-middlewares
