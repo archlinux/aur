@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit
 pkgver=4.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
@@ -35,6 +35,9 @@ sha256sums=('bf3d1fdd7279fbba120125e44344d1dd94b50309f66084086654753d289fc752'
 
 prepare() {
 	cd "$srcdir/$pkgname"
+	# Set a username and email to allow building in chroot
+	git config user.email "fake@fake.com"
+	git config user.name "Fakey McFakerton"
 	git cherry-pick 6bab39f6b22a0622c3b251ecb98f75974ee81ac8
 	git submodule init
 	for submodule in {miniaudio,discord}; do
