@@ -175,14 +175,6 @@ prepare(){
     plain ""
   fi
 
-  msg "Enable AMD Zen2 support"
-  scripts/config --disable CONFIG_GENERIC_CPU
-  scripts/config --enable CONFIG_MZEN2
-
-  sleep 2s
-
-  plain ""
-
   msg "Set Font"
   scripts/config --disable CONFIG_FONTS
   scripts/config --enable CONFIG_FONT_8x8
