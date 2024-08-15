@@ -101,8 +101,6 @@ source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
         # sirlucjan
         0001-amd-pstate-patches.patch
         # Zen kernel
-        0001-drm-amd-display-fix-corruption-with-high-refresh-rat.patch
-        0001-ALSA-hda-Conditionally-use-snooping-for-AMD-HDMI.patch
         0001-ZEN-cpufreq-Remove-schedutil-dependency-on-Intel-AMD.patch
         0001-ZEN-drm-amdgpu-pm-Allow-override-of-min_power_limit-.patch)
 
@@ -357,8 +355,6 @@ sha256sums=('30909eb2e0434dce97a93cd97ed0dfab7688a124bc3ebc3ecf6c776de09ccc0b'
             '74d12e96b8ce056a5f1b4fd10cf3f4b671eb3d50d4124cd8fa7a81c83b55ae1e'
             '994514f16122c25e6b8debf79aab539f92ad3f25f94729197912f250eaf75a11'
             '57b0e324bbb1c3017899b76cdeb01ce4670599378017c47852787996d63189ef'
-            'dda19bde26827b0489318b872a6ef4f5a0b8154ab5f254a23eee260dd2c24d01'
-            '4a60e3e980b7356272cdda0eea9a616d0baeb9c6feb50328f603c755c6cfede9'
             'e96ca0986eee226aa74501cc400363d38e8355040ac0d6b2d2be009cd2210c02'
             'fb7daf2046c9ad11aa8409eb3f0f7ca53b8de216f2efce9390940a441831dfa3')
 
