@@ -75,7 +75,7 @@ _fragment=${FRAGMENT:-#branch=devel}
 _CMAKE_FLAGS+=(
         -DCMAKE_BUILD_TYPE=Release
         -DCMAKE_INSTALL_PREFIX=/usr
-        -DELMER_INSTALL_LIB_DIR=/usr/lib/elmerfem
+        -DELMER_INSTALL_LIB_DIR=/usr/lib
 
         -DWITH_MPI=${_use_mpi}
         -DWITH_Mumps=${_use_mumps}
@@ -110,12 +110,15 @@ _CMAKE_FLAGS+=(
 
 pkgname=elmerfem-git
 _pkgname=elmerfem
-pkgver=9.0.r2919.g9a7c06f5a
+pkgver=9.0.r2945.g0fbce7aac
 pkgrel=1
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
 url="http://www.elmerfem.org"
 license=('GPL-2.0-or-later')
+
+#conflicted deps
+((!DISABLE_INTERNAL_UMFPACK)) && conflicts+=('suitesparse')
 
 #make deps
 makedepends=('git' 'gcc-fortran' 'cmake' 'ninja')
