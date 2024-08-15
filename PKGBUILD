@@ -1,6 +1,7 @@
 # Maintainer: Jonathan Bangert <jonathan@bangert.dk>
+# Maintainer: Bastien Cabay <bastien@cabay.eu>
 pkgname='music-assistant-desktop-bin'
-pkgver=0.0.67
+pkgver=0.0.70
 pkgrel=1
 pkgdesc="Music Assistant Companion App"
 arch=('x86_64')
