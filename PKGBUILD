@@ -1,7 +1,7 @@
 # Maintainer: Colin Woodbury <colin@fosskers.ca>
 
 pkgname=aura-bin
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="A package manager for Arch Linux and its AUR - Prebuild binary"
 url="https://github.com/fosskers/aura"
@@ -15,12 +15,13 @@ optdepends=(
     "graphviz: dependency graph generation"
     "ripgrep: faster log searches"
     "shellcheck: PKGBUILD scanning"
+    "xdg-utils: for xdg-open"
 )
 provides=("aura")
 conflicts=("aura" "aura-git" "aura3-bin")
 options=("strip")
 source=("aura-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/aura-$pkgver-x86_64.tar.gz")
-sha256sums=('ee2a515784c317e333defbff23572c52df3683a217c6ba5ef9448d46600d65bc')
+sha256sums=('3b926b7a41cef2b310ef5da83f5a7ce454363cb8b8d4e2ceb504785385d9d554')
 
 build() {
     # Build the `info` page.
@@ -38,4 +39,5 @@ package() {
     # Install bash and zsh completions
     install -Dm644 "bashcompletion.sh" "${pkgdir}/usr/share/bash-completion/completions/aura"
     install -Dm644 "_aura" "${pkgdir}/usr/share/zsh/site-functions/_aura"
+    install -Dm644 "aura.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/aura.fish"
 }
