@@ -8,7 +8,6 @@ pkgbase = compiz-core
 	license = GPL-2.0-or-later
 	license = LGPL-2.1-or-later
 	license = MIT
-	makedepends = git
 	makedepends = intltool
 	makedepends = libice
 	depends = dbus

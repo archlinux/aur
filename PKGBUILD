@@ -30,7 +30,6 @@ depends=(
   'startup-notification'
 )
 makedepends=(
-  'git'
   'intltool'
   'libice'
 )
