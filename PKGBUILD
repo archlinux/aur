@@ -16,7 +16,7 @@ pkgname=(
   java-openjfx-doc
   java-openjfx-src
 )
-pkgver=22.0.1.u7
+pkgver=22.0.2.u4
 pkgrel=1
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
 arch=(x86_64 x86_64_v3)
@@ -55,7 +55,7 @@ source=(
   gradle.properties
   java-openjfx-flags.patch
 )
-b2sums=('bedd7feaa9967053399e400efad60208c9eb8e49518922e6b9b2a041232689039f40ce091f04748540d7f19ba6ef6bd926b38657ceb802325d3643e879f7b45d'
+b2sums=('d744b8d2018ff69d1356d9381d1541ecc69dc5ff3c92aea7a3ed1992d7b2b146fb68371fa8c4b8b20532a9077ef64350a769885bbb454316c35e6775c8e7f4c6'
         'a77fd8814a5978827de01a652f7b945f3439df04606434ced8998c8d77a82985292490e6965299aeb52f9da3d8069b4091d75519bd4ec8a15f70bc6d28b13498'
         '5b6dafc22995b57564fda89aaedeb2b6ee58b2c635336ac43a123ea4ac6ced3a20eba39d99cc4eb7ec7b29fc7541f5c3bee454ee55ca79fd2d7ce5ef4ed65cd3')
 
