@@ -1,14 +1,20 @@
 # Maintainer: Hao Long <aur@esd.cc>
-
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 _gemname=selenium-webdriver
 pkgname=ruby-$_gemname
 pkgver=4.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A browser automation framework and ecosystem"
 arch=(x86_64)
 url=https://github.com/SeleniumHQ/selenium
 license=(Apache)
-depends=(ruby-childprocess ruby-rubyzip)
+depends=(
+ruby-base64-nonstd # workaround, see https://gitlab.archlinux.org/archlinux/packaging/packages/ruby/-/issues/6
+ruby-logger
+ruby-rexml
+ruby-rubyzip
+ruby-websocket
+)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)

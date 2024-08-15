@@ -1,12 +1,15 @@
 pkgbase = ruby-selenium-webdriver
 	pkgdesc = A browser automation framework and ecosystem
 	pkgver = 4.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SeleniumHQ/selenium
 	arch = x86_64
 	license = Apache
-	depends = ruby-childprocess
+	depends = ruby-base64-nonstd
+	depends = ruby-logger
+	depends = ruby-rexml
 	depends = ruby-rubyzip
+	depends = ruby-websocket
 	noextract = selenium-webdriver-4.23.0.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/selenium-webdriver-4.23.0.gem
