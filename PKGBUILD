@@ -3,14 +3,14 @@
 _base=mpld3
 pkgname=python-${_base}
 pkgver=0.5.10
-pkgrel=1
+pkgrel=2
 pkgdesc="D3 Viewer for Matplotlib"
 arch=(any)
 url="https://${_base}.github.io"
 license=(BSD-3-Clause)
 depends=(python-jinja python-matplotlib)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(python-pytest python-diffimg python-nose2)
+checkdepends=(python-pytest)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
 sha512sums=('3c5426e4413ce57fdf388af5fdfaae3ec4496da56e2ac0576a98b1246cedc646ccec61c8b96a381bb150512378de39e997133c190f7ae8d3872ea627933a0857')
 
