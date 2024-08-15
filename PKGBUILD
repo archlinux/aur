@@ -18,8 +18,8 @@ pkgname=(
   # "java-openjfx-doc"
   # "java-openjfx-src"
 )
-pkgver=22.0.1.u7
-pkgrel=3
+pkgver=22.0.2.u4
+pkgrel=1
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - version following latest major Arch Linux OpenJDK java release. Build without WebKit support."
 arch=(
   "x86_64"
@@ -61,11 +61,9 @@ source=(
   "gradle.properties"
   "java-openjfx-flags.patch"
 )
-b2sums=(
-  'bedd7feaa9967053399e400efad60208c9eb8e49518922e6b9b2a041232689039f40ce091f04748540d7f19ba6ef6bd926b38657ceb802325d3643e879f7b45d'
-  '0c023ef99e7ee600710c54dad0ad59070620595109ca42c5057fa2ab74ef6d244631745f5cd4c1bea9c0321ee69f1e1efaab820ff124ad1d4f453121e77fd14f'
-  '5b6dafc22995b57564fda89aaedeb2b6ee58b2c635336ac43a123ea4ac6ced3a20eba39d99cc4eb7ec7b29fc7541f5c3bee454ee55ca79fd2d7ce5ef4ed65cd3'
-)
+b2sums=('d744b8d2018ff69d1356d9381d1541ecc69dc5ff3c92aea7a3ed1992d7b2b146fb68371fa8c4b8b20532a9077ef64350a769885bbb454316c35e6775c8e7f4c6'
+        '0c023ef99e7ee600710c54dad0ad59070620595109ca42c5057fa2ab74ef6d244631745f5cd4c1bea9c0321ee69f1e1efaab820ff124ad1d4f453121e77fd14f'
+        '5b6dafc22995b57564fda89aaedeb2b6ee58b2c635336ac43a123ea4ac6ced3a20eba39d99cc4eb7ec7b29fc7541f5c3bee454ee55ca79fd2d7ce5ef4ed65cd3')
 
 _jfxdir="jfx${pkgver%%.*}u-${pkgver//.u/-}"
 
