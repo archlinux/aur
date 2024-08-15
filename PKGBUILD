@@ -21,12 +21,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  make build
+  make PREFIX=/usr DESTDIR="$pkgdir/" build
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  make DESTDIR="$pkgdir/" install
+  make PREFIX=/usr DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
