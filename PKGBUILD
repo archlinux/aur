@@ -1,7 +1,7 @@
 # Maintainer: dcordonu
 
 pkgname=connect-tunnel
-pkgver=12.42.00673
+pkgver=12.43.00271
 pkgrel=1
 pkgdesc="SonicWALL Connect Tunnel VPN Client"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
     "ConnectTunnel_Linux64-${pkgver}.tar::https://software.sonicwall.com/CT-NX-VPNClients/CT-$(sed 's/[0-9]$/.&/' <<< "${pkgver%.*}")/ConnectTunnel_Linux64-${pkgver}.tar"
     "https://www.sonicwall.com/legal/general-product-agreement"
 )
-md5sums=('2a90251b3b480bab68a9d3d8682f350e' 'SKIP')
+md5sums=('113fd4d700e3fb55134b9482e2d63a0c' 'SKIP')
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
 install=${pkgname}.install
@@ -31,7 +31,7 @@ package() {
     install -Dm 644 man/ct.5 ${pkgdir}/usr/local/Aventail/man/ct.5
     install -Dm 755 startct.sh ${pkgdir}/usr/local/Aventail/startct.sh
     install -Dm 755 startctui.sh ${pkgdir}/usr/local/Aventail/startctui.sh
-    install -Dm 644 nui/nui.jar ${pkgdir}/usr/local/Aventail/nui/nui.jar
+    install -Dm 644 ui/SnwlConnect.jar ${pkgdir}/usr/local/Aventail/ui/SnwlConnect.jar
     install -Dm 4755 AvConnect ${pkgdir}/usr/local/Aventail/AvConnect
 
     gendesk -n -f --pkgname ${pkgname} --pkgdesc "${pkgdesc}" --name "Connect Tunnel" --exec startctui
