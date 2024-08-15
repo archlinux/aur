@@ -9,7 +9,7 @@ pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
 _sticker_creator="sticker-creator"
 _desktop_file='signalbeta.desktop'
-pkgver=7.20.0beta1
+pkgver=7.21.0beta1
 pkgrel=1
 pkgdesc='Signal Private Messenger for Linux - Beta version.'
 license=('GPL3')
@@ -26,7 +26,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver//beta*}-beta.${pkgver##*beta}.tar.gz"
   "${_desktop_file}"
   )
-sha512sums=('a6253be206f9b7630397a86ca824d7181b78cf723692da2e8c1ad0dc05e0490989a11424a0187c7f1915bb3722b27e3e4c8ce833b95c220e5e185853a9e83878'
+sha512sums=('556943fb56d036e7d1e0878f02a593d39b4ee7931b22970dc642d025d1e59b1bb4c9c92cfcfe61592f641e7519ef4371091bb95a82bcb58ee3381c8a1df8f9f7'
             '5ae001faedff440776f4a62235c294454a951f4cc412665a21cd958bdf4a0223c89f741f2786d93727c7acf49a8a98d75156c6e14ba1f01da261fba373ef675a')
 
 prepare() {
