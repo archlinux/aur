@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=jnv
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Interactive JSON filter using jq"
 arch=(x86_64)
@@ -17,36 +17,29 @@ makedepends=(
 )
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4cbb0700b3b1c4212c97edca577039abf4ea238ca8c966978825d537f13f8885')
-
-_archive="$pkgname-$pkgver"
+sha256sums=('88462d1a8dbb2a362a594d09c75b52d5798124981c9924ae7cff704e213b24f4')
 
 prepare() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
 check() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --all-features
 }
 
 package() {
-  cd "$_archive"
-
-  install -Dm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
-
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  cd $pkgname-$pkgver
+  install -vDm755 -t "$pkgdir/usr/bin" target/release/$pkgname
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
