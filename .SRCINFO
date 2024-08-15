@@ -1,6 +1,6 @@
 pkgbase = tuisky
 	pkgdesc = A TUI client for Bluesky
-	pkgver = 0.0.5
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/sugyan/tuisky
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = tuisky
 	makedepends = cargo
 	depends = gcc-libs
 	depends = openssl
-	source = tuisky-0.0.5.tar.gz::https://github.com/sugyan/tuisky/archive/v0.0.5.tar.gz
-	sha512sums = 7fec2a01a5400c86b585d1c1d1886c8912c47ed8912e098bbea67ad0e6a7b5f1794fa8c83c6606fada22897edf6b5e16519801c875ab5a5b64ae80775e5e06e8
+	source = tuisky-0.1.1.tar.gz::https://github.com/sugyan/tuisky/archive/v0.1.1.tar.gz
+	sha512sums = 00a221543b8ae3c5fd9c7631c54f1ee935e4655a1c589bdf4f330b1505e5993ae85bc201cdb646fe79964821c82840c790855ed3f2f71e87dcd0e0af2a6e0a0e
 
 pkgname = tuisky
