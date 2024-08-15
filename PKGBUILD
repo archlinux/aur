@@ -3,7 +3,7 @@
 
 pkgname=aider-chat
 _pkgname=aider
-pkgver=0.49.1
+pkgver=0.50.1
 pkgrel=1
 pkgdesc="AI pair programming in your terminal"
 url="https://github.com/paul-gauthier/aider"
@@ -53,24 +53,15 @@ optdepends=(
   'python-soundfile: portaudio support'
 )
 source=("$pkgname::git+$url.git#tag=v$pkgver")
-sha256sums=('d0f6a3bf7464aefe08e1476c3a0e9d8641ac750d78096b5f07ce55e5ada4d67f')
-
-prepare() {
-  cd $pkgname
-
-  # Exclude benchmarks from the installed package
-  sed -i "s|find_packages()|find_packages(exclude=['benchmark', 'benchmark.*'])|" setup.py
-}
+sha256sums=('fc406a5d3146985b71ad5dca38e36bcdecc103449c6dae5e16ae616337bd05d5')
 
 build() {
   cd $pkgname
-
   python -m build --wheel --no-isolation
 }
 
 check() {
   cd $pkgname
-
   rm -rf tmp_install
   python -m installer --destdir=tmp_install dist/*.whl
 
@@ -79,19 +70,19 @@ check() {
   # Deselect failing tests:
   # - test_commands.py: TypeError, not sure why.
   # - test_repomap.py: exception in python-tree-sitter-languages-bin.
-  # - tests/basic/test_sendchat.py: missing attribute in litellm.exceptions
   # - test_help.py - requires missing deps.
-  # - test_scrape.py - invokes sudo when building in a chroot for some reason.
+  # - test_scrape.py - Not sure why this fails.
   pytest \
     --deselect tests/basic/test_commands.py::TestCommands::test_cmd_tokens_output \
     --deselect tests/basic/test_repomap.py \
-    --deselect tests/basic/test_sendchat.py \
     --deselect tests/help/test_help.py \
-    --deselect tests/scrape/test_scrape.py
+    --deselect tests/scrape/test_scrape.py::TestScrape::test_cmd_web_imports_playwright \
+    --deselect tests/scrape/test_scrape.py::TestScrape::test_scrape_actual_url_with_playwright \
+    --deselect tests/scrape/test_scrape.py::TestScrape::test_scrape_self_signed_ssl \
+    --deselect tests/scrape/test_scrape.py::TestScrape::test_scrape_with_playwright_error_handling
 }
 
 package() {
   cd $pkgname
-
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
