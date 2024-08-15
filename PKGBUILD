@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gemma.R
-_pkgver=3.0.12
+_pkgver=3.0.14
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -56,8 +56,8 @@ optdepends=(
   r-viridis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e396c958de68e9ba545c3ec1594e8f7e')
-b2sums=('fe3e25b335801c1e5433d1a51df784cfe00a12bf1b4926cc0b9989047d930fb2536f9d1443db861a5c456f6d88b67f42cabb6d71bd005494a644bda7823983a4')
+md5sums=('453a308e3f080b07b10994f835dd3455')
+b2sums=('cc54f9a34e227e972a5979d1ba1585b3cc813312a1a0058dd4b90575675dada0a54a75394aef4dc618adfe3dfdfd6743bb6c073a478f8747195990e1b63a69cd')
 
 build() {
   mkdir build
