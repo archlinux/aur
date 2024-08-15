@@ -32,6 +32,7 @@ check() {
 package() {
   cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -d ${pkgdir}/usr/share/doc/${pkgname}
   mv examples "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
