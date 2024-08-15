@@ -1,0 +1,18 @@
+pkgbase = python-jfx-bridge
+	pkgdesc = RPC bridge to/from Python2/Python3/Jython/etc
+	pkgver = 1.0.0
+	pkgrel = 00
+	url = https://github.com/justfoxing/jfx_bridge
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	noextract = jfx_bridge-1.0.0-py2.py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/49/8b/6b054a1dd51f71da6324554eceb30e0bd4c8254c1d7c2744b9791fb0547c/jfx_bridge-1.0.0-py2.py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 2909a36c44f33b9a0f6172bf4e3dd836
+	md5sums = 26e9ee191ef03479b6f1425e9253c6ee
+
+pkgname = python-jfx-bridge
