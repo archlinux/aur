@@ -1,8 +1,8 @@
 pkgbase = mingw-w64-scotch
-	pkgdesc = Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. (mingw-w64)
-	pkgver = 7.0.3
+	pkgdesc = Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering (mingw-w64)
+	pkgver = 7.0.5
 	pkgrel = 1
-	url = https://www.unidata.ucar.edu/software/netcdf/
+	url = https://gitlab.inria.fr/scotch/scotch
 	arch = any
 	license = custom:CeCILL-C
 	makedepends = mingw-w64-cmake
@@ -12,7 +12,7 @@ pkgbase = mingw-w64-scotch
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = https://gitlab.inria.fr/scotch/scotch/-/archive/v7.0.3/scotch-v7.0.3.tar.gz
-	sha256sums = SKIP
+	source = https://gitlab.inria.fr/scotch/scotch/-/archive/v7.0.5/scotch-v7.0.5.tar.gz
+	sha256sums = 385507a9712bb9057497b9ac3f24ad2132bd3f3f8c7a62e78324fc58f2a0079b
 
 pkgname = mingw-w64-scotch
