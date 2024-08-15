@@ -1,6 +1,6 @@
 pkgbase = fjordlauncher-qt5-bin
 	pkgdesc = Prism Launcher fork with support for alternative auth servers
-	pkgver = 8.4.1
+	pkgver = 8.4.2
 	pkgrel = 1
 	url = https://github.com/unmojang/FjordLauncher
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = fjordlauncher-qt5-bin
 	provides = fjordlauncher-qt5
 	conflicts = fjordlauncher
 	conflicts = fjordlauncher-qt5
-	noextract = FjordLauncher-Linux-Qt5-8.4.1.tar.gz
-	source = https://github.com/unmojang/FjordLauncher/releases/download/8.4.1/FjordLauncher-Linux-Qt5-8.4.1.tar.gz
-	sha256sums = 83bf4ddf70d516a3d61a617dcaf67ab6a98531b8c9a26fd67737a2f8846fbe29
+	noextract = FjordLauncher-Linux-Qt5-8.4.2.tar.gz
+	source = https://github.com/unmojang/FjordLauncher/releases/download/8.4.2/FjordLauncher-Linux-Qt5-8.4.2.tar.gz
+	sha256sums = f0ae88c0e785bdbe4160e2ab05563dcc5e748b7bbe73796d35f04a83d6c6dea2
 
 pkgname = fjordlauncher-qt5-bin
