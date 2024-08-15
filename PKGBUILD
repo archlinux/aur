@@ -2,7 +2,7 @@
 # Please note that this is my first AUR package ever, let me know if I made any mistakes or you have any improvements.
 
 pkgname=stabilitymatrix
-pkgver=2.11.6
+pkgver=2.11.7
 pkgrel=1
 pkgdesc='Multi-Platform Package Manager for Stable Diffusion'
 arch=('any')
