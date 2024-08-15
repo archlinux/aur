@@ -35,11 +35,11 @@ fi
 ###################################################################################
 
 pkgbase=linux-intel
-pkgver=6.10.3
-_pkgver=6.10.3
+pkgver=6.10.5
+_pkgver=6.10.5
 pkgrel=1
 major=6.10
-commit=9f4aff504e923944a54f32eba06de62be2f66097
+commit=335b711f590650ef037442bf876f3551e5af0669
 arch=(x86_64)
 url='https://www.kernel.org/'
 license=(GPL-2.0-only)
@@ -106,7 +106,14 @@ source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
         # sirlucjan
         0001-x86-sched-Introduce-arch_rebuild_sched_domains.patch
         0002-x86-sched-Add-basic-support-for-CPU-capacity-scaling.patch
-        0003-cpufreq-intel_pstate-Set-asymmetric-CPU-capacity-on-.patch)
+        0003-cpufreq-intel_pstate-Set-asymmetric-CPU-capacity-on-.patch
+        # Zen Kernel
+        0001-cpufreq-intel_pstate-Update-Arrow-Lake-EPPs.patch
+        0001-cpufreq-intel_pstate-Update-Meteor-Lake-EPPs.patch
+        0001-drm-i915-display-correct-dual-pps-handling-for-MTL_P.patch
+        0001-ZEN-PCI-Add-Intel-remapped-NVMe-device-support.patch
+        0001-ZEN-cpufreq-Remove-schedutil-dependency-on-Intel-AMD.patch
+        0001-ZEN-intel-pstate-Implement-enable-parameter.patch)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -360,8 +367,8 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('fa5f22fd67dd05812d39dca579320c493048e26c4a556048a12385e7ae6fc698'
-            '84832e092a359aae3a4a7467a61e3e9c8ee855954f15ce389d5356dba5971b2b'
+sha256sums=('30909eb2e0434dce97a93cd97ed0dfab7688a124bc3ebc3ecf6c776de09ccc0b'
+            '09bc22332affedcdf96cfa7b4ff3dcf1d087d1bde818b9929f5ad1102bc4f775'
             'd2d673e130d2a8006aeca9892238db432fe6de628327e6999b3567c0e40a01ae'
             '2bd0cd7ea72b0330006a5159e8016fdf391cbd3e222b263c6603670d90383d05'
             '6759cdb5efcacc56b071dddb85f2dd6a54485a046f61f40f9854246c1480603c'
@@ -373,7 +380,13 @@ sha256sums=('fa5f22fd67dd05812d39dca579320c493048e26c4a556048a12385e7ae6fc698'
             '20104f3240903bc7bf596b565186b6bb7e5bb8597c8f809d977ad9f2f5c6a7b0'
             '787b796dad8108000390de02c4ba950ae6786b3615b84aacbadade6c020327f1'
             '742e3a2961ca5dbfdee8537ec67d02be3d6394782261995550e8e2470cd05e2f'
-            '9ffc49bbb91302b5ee885d4f852b5749ab163ece601242a3d2806106b4c5ec32')
+            '9ffc49bbb91302b5ee885d4f852b5749ab163ece601242a3d2806106b4c5ec32'
+            'ea676482e85465fd6c86c88f5f5b80014f524b3eba368d0bd6884f304272bcf5'
+            '892edf5b447b627cb5521bb6efa0d4e25e0650aac503504e5d1aca22fe37d763'
+            '1ef204db1513c023a88ffcfbca13cf1fd644018245acb8ead5bb0693e8b3248b'
+            'e5c8eea58bab557c7617713e8e0b74b1aa746c2b18b05444349c3194ca7d7e95'
+            'e96ca0986eee226aa74501cc400363d38e8355040ac0d6b2d2be009cd2210c02'
+            '0e42a3d9644e3ff3b9a2ef8824333a6dde2f86ecc1ecbb34f5c16a338e7a8948')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do

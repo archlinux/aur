@@ -1,0 +1,28 @@
+From 1b9f883484537db7cdfead69c0c45274d5ed36c5 Mon Sep 17 00:00:00 2001
+From: Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>
+Date: Thu, 6 Jun 2024 11:27:48 -0700
+Subject: [PATCH] cpufreq: intel_pstate: Update Arrow Lake EPPs
+
+Use the same default EPPs as Meteor Lake generation.
+
+Signed-off-by: Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>
+---
+ drivers/cpufreq/intel_pstate.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/cpufreq/intel_pstate.c b/drivers/cpufreq/intel_pstate.c
+index c84e2d448..6cb5943f3 100644
+--- a/drivers/cpufreq/intel_pstate.c
++++ b/drivers/cpufreq/intel_pstate.c
+@@ -3394,6 +3394,8 @@ static const struct x86_cpu_id intel_epp_default[] = {
+ 	X86_MATCH_INTEL_FAM6_MODEL(SAPPHIRERAPIDS_X, HWP_SET_DEF_BALANCE_PERF_EPP(32)),
+ 	X86_MATCH_INTEL_FAM6_MODEL(METEORLAKE_L, HWP_SET_EPP_VALUES(HWP_EPP_POWERSAVE,
+ 								    179, 64, 16)),
++	X86_MATCH_INTEL_FAM6_MODEL(ARROWLAKE, HWP_SET_EPP_VALUES(HWP_EPP_POWERSAVE,
++								 179, 64, 16)),
+ 	{}
+ };
+ 
+-- 
+2.46.0
+

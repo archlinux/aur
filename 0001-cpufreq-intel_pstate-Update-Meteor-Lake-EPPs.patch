@@ -1,0 +1,55 @@
+From 52bcd7c2e609f71ca26ff1c4bca3678c659db5db Mon Sep 17 00:00:00 2001
+From: Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>
+Date: Thu, 6 Jun 2024 11:12:14 -0700
+Subject: [PATCH] cpufreq: intel_pstate: Update Meteor Lake EPPs
+
+Update the default balance_performance EPP to 64. This gives better
+performance and also perf/watt compared to current value of 115.
+
+For example:
+
+Speedometer 2.1
+	score: +19%
+	Perf/watt: +5.25%
+
+Webxprt 4 score
+	score: +12%
+	Perf/watt: +6.12%
+
+3DMark Wildlife extreme unlimited score
+	score: +3.2%
+	Perf/watt: +11.5%
+
+Geekbench6 MT
+	score: +2.14%
+	Perf/watt: +0.32%
+
+Also update balance_power EPP default to 179. With this change:
+	Video Playback power is reduced by 52%
+	Team video conference power is reduced by 35%
+
+With Power profile daemon now sets balance_power EPP on DC instead of
+balance_performance, updating balance_power EPP will help to extend
+battery life.
+
+Signed-off-by: Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>
+---
+ drivers/cpufreq/intel_pstate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/cpufreq/intel_pstate.c b/drivers/cpufreq/intel_pstate.c
+index c31914a98..c84e2d448 100644
+--- a/drivers/cpufreq/intel_pstate.c
++++ b/drivers/cpufreq/intel_pstate.c
+@@ -3393,7 +3393,7 @@ static const struct x86_cpu_id intel_epp_default[] = {
+ 	X86_MATCH_INTEL_FAM6_MODEL(ALDERLAKE_L, HWP_SET_DEF_BALANCE_PERF_EPP(102)),
+ 	X86_MATCH_INTEL_FAM6_MODEL(SAPPHIRERAPIDS_X, HWP_SET_DEF_BALANCE_PERF_EPP(32)),
+ 	X86_MATCH_INTEL_FAM6_MODEL(METEORLAKE_L, HWP_SET_EPP_VALUES(HWP_EPP_POWERSAVE,
+-							HWP_EPP_BALANCE_POWERSAVE, 115, 16)),
++								    179, 64, 16)),
+ 	{}
+ };
+ 
+-- 
+2.46.0
+
