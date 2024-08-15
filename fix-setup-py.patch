@@ -1,0 +1,11 @@
+diff -ura src/protocol/setup.py src/protocol/setup.py
+--- src/protocol/setup.py
++++ src/protocol/setup.py
+@@ -58,5 +58,6 @@
+ from distutils.core import setup, Extension
+ setup(name='protocol',
+       version='0.1',
+-      scripts=['protocol', 'constants.py', 'specs.py']
++      scripts=['protocol', 'constants.py', 'specs.py'],
++      py_modules=[]
+       )
