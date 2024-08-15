@@ -1,8 +1,8 @@
 # Maintainer: Paul Jones <paul@spacefreak18.xyz>
 _reponame=monocoque
 pkgname=monocoque-git
-pkgver=0.1.0r0
-pkgrel=1
+pkgver=0.1.0r2
+pkgrel=2
 pkgdesc="Device Manager for Racing Sims"
 arch=('x86_64')
 url="https://github.com/spacefreak18/monocoque"
