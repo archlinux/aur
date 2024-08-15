@@ -6,7 +6,7 @@
 
 _pkgname=chromium
 pkgname=chromium-no-extras
-pkgver=127.0.6533.119
+pkgver=128.0.6613.36
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -32,17 +32,13 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
-        https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
         allow-ANGLEImplementation-kVulkan.patch
-        chromium-browser-ui-missing-deps.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('acc9e3f9fd2d180b8831865a1ac4f5cdd9ffe6211f47f467296d9ee1be2a577e'
+sha256sums=('3e9bdb12600e7f03cda9e0e60df027227752f339a45e680ca1a689e595c7d7a8'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '0887d215c47085013d09252409964a5eedec453561db1f2b133914e349b8a0b2'
-            '8f81059d79040ec598b5fb077808ec69d26d6c9cbebf9c4f4ea48b388a2596c5'
-            '75f9c3ccdcc914d029ddcc5ca181df90177db35a343bf44ff541ff127bcea43d'
+            '1a5bc75a90abad153c8eb6dbdce138132a5f11190b0a40c925958a72d706b2aa'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             'a9b417b96daec33c9059065e15b3a92ae1bf4b59f89d353659b335d9e0379db6')
@@ -65,7 +61,7 @@ declare -gA _system_libs=(
   [icu]=icu
   #[jsoncpp]=jsoncpp  # needs libstdc++
   #[libaom]=aom
-  #[libavif]=libavif  # needs https://github.com/AOMediaCodec/libavif/commit/5410b23f76
+  #[libavif]=libavif  # needs -DAVIF_ENABLE_EXPERIMENTAL_GAIN_MAP=ON
   [libdrm]=
   [libjpeg]=libjpeg
   [libpng]=libpng
@@ -125,9 +121,6 @@ prepare() {
   # Upstream fixes
   patch -Np1 -i ../allow-ANGLEImplementation-kVulkan.patch
 
-  # https://issues.chromium.org/issues/351157339
-  patch -Np1 -i ../chromium-browser-ui-missing-deps.patch
-
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
 
@@ -135,7 +128,6 @@ prepare() {
   patch -Np1 -i ../increase-fortify-level.patch
 
   # Fixes for building with libstdc++ instead of libc++
-  patch -Np1 -i ../chromium-patches-*/chromium-117-material-color-include.patch
 
   # Link to system tools required by the build
   rm third_party/node/linux/node-linux-x64/bin/node
