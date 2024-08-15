@@ -56,7 +56,7 @@ pkgbase = linux-amd
 	sha256sums = fb7daf2046c9ad11aa8409eb3f0f7ca53b8de216f2efce9390940a441831dfa3
 
 pkgname = linux-amd
-	pkgdesc = The Linux kernel and modules - Compile with AMD Family 17h Zen 2 processors support
+	pkgdesc = The Linux kernel and modules - With some improvement patches
 	depends = coreutils
 	depends = initramfs
 	depends = kmod

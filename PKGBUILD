@@ -231,7 +231,7 @@ build(){
 }
 
 _package(){
-  pkgdesc='The Linux kernel and modules - Compile with AMD Family 17h Zen 2 processors support'
+  pkgdesc='The Linux kernel and modules - With some improvement patches'
   depends=(
     coreutils
     initramfs
