@@ -3,8 +3,8 @@
 
 pkgname=python-klein
 # https://github.com/twisted/klein/blob/trunk/NEWS.rst
-pkgver=23.12.0
-pkgrel=2
+pkgver=24.8.0
+pkgrel=1
 arch=(any)
 pkgdesc='A web micro-framework built on werkzeug and twisted.web'
 url='https://github.com/twisted/klein'
@@ -16,7 +16,7 @@ depends=(python python-attrs python-hyperlink python-incremental
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-hypothesis python-treq python-pytest)
 source=("https://github.com/twisted/klein/archive/$pkgver/klein-$pkgver.tar.gz")
-sha512sums=('c06169a9e619b2f8f60b59e469429f63ceb22a775ef3cf3c688826208d291335e0922ad96b633f71f5e5cf93a05f7ed879b4ca605ee9c593239d54b4dc7d1151')
+sha512sums=('ef7ac0b268f3e10b5e4279014282a27fece4423d9fff1ee9ef6aa3aff0ad6a2f7d72b02951ac609a99b29c8f0b8fb98991b92a8e8bb8bd104eb8519d809fc398')
 
 build() {
   cd klein-$pkgver
