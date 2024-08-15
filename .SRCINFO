@@ -1,0 +1,18 @@
+pkgbase = doomrunner-git
+	pkgdesc = Modern preset-oriented graphical launcher of ZDoom and derivatives
+	pkgver = 1.8.2+32+g75965db
+	pkgrel = 1
+	url = https://github.com/Youda008/DoomRunner
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = imagemagick
+	depends = qt6-base
+	provides = doomrunner
+	conflicts = doomrunner
+	backup = opt/DoomRunner
+	source = git+https://github.com/Youda008/DoomRunner
+	md5sums = SKIP
+
+pkgname = doomrunner-git
