@@ -1,0 +1,26 @@
+pkgbase = gamma-launcher
+	pkgdesc = S.T.A.L.K.E.R GAMMA launcher for Linux
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/Mord3rca/gamma-launcher
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-setuptools
+	depends = python
+	depends = python-bs4
+	depends = python-platformdirs
+	depends = python-py7zr
+	depends = python-unrar
+	depends = python-requests
+	depends = python-tenacity
+	depends = python-tqdm
+	depends = python-magic
+	depends = python-rarfile
+	optdepends = unrar
+	provides = gamma-launcher
+	source = git+https://github.com/Mord3rca/gamma-launcher
+	md5sums = SKIP
+
+pkgname = gamma-launcher
