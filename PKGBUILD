@@ -2,14 +2,15 @@
 
 pkgname=robotframework-lint
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linter for robot framework plain text files"
 arch=('any')
 url="https://github.com/boakley/robotframework-lint"
+urlfork="https://github.com/jstvz/robotframework-lint"
 license=('Apache-2.0')
 depends=('python')
-source=("${pkgname}::git+${url}#commit=b0619ac58a8b1be125f9c98856a664594614570f")
-sha512sums=('84eb1c90ac3eb2935588c0fed90ddfb3b4f3c776aefcbe7f701c17e96298d7f7df976cabf214f8e661868dd98858eab69232ce89626ce1f24c0447111e97f789')
+source=("${pkgname}::git+${urlfork}#commit=a69b00851279fd3e3c729e313e5c8bce4b38f12a")
+sha512sums=('fbd42f8632485720c3f52ff1ec8a4cecd662dbd9e512d5a598a94ec6cd7f7f0e7f11c40b42027c10c12072e5a46a32705fae0f7b988cdaea5c9b97754898b5df')
 
 build() {
   cd "${srcdir}/${pkgname}"
