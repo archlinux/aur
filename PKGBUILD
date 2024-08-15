@@ -108,9 +108,7 @@ source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
         0002-x86-sched-Add-basic-support-for-CPU-capacity-scaling.patch
         0003-cpufreq-intel_pstate-Set-asymmetric-CPU-capacity-on-.patch
         # Zen Kernel
-        0001-cpufreq-intel_pstate-Update-Arrow-Lake-EPPs.patch
         0001-cpufreq-intel_pstate-Update-Meteor-Lake-EPPs.patch
-        0001-drm-i915-display-correct-dual-pps-handling-for-MTL_P.patch
         0001-ZEN-PCI-Add-Intel-remapped-NVMe-device-support.patch
         0001-ZEN-cpufreq-Remove-schedutil-dependency-on-Intel-AMD.patch
         0001-ZEN-intel-pstate-Implement-enable-parameter.patch)
@@ -381,9 +379,7 @@ sha256sums=('30909eb2e0434dce97a93cd97ed0dfab7688a124bc3ebc3ecf6c776de09ccc0b'
             '787b796dad8108000390de02c4ba950ae6786b3615b84aacbadade6c020327f1'
             '742e3a2961ca5dbfdee8537ec67d02be3d6394782261995550e8e2470cd05e2f'
             '9ffc49bbb91302b5ee885d4f852b5749ab163ece601242a3d2806106b4c5ec32'
-            'ea676482e85465fd6c86c88f5f5b80014f524b3eba368d0bd6884f304272bcf5'
             '892edf5b447b627cb5521bb6efa0d4e25e0650aac503504e5d1aca22fe37d763'
-            '1ef204db1513c023a88ffcfbca13cf1fd644018245acb8ead5bb0693e8b3248b'
             'e5c8eea58bab557c7617713e8e0b74b1aa746c2b18b05444349c3194ca7d7e95'
             'e96ca0986eee226aa74501cc400363d38e8355040ac0d6b2d2be009cd2210c02'
             '0e42a3d9644e3ff3b9a2ef8824333a6dde2f86ecc1ecbb34f5c16a338e7a8948')
