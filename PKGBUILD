@@ -1,19 +1,19 @@
 # Maintainer: Paul Jones <paul@spacefreak18.xyz>
 _reponame=monocoque
 pkgname=monocoque-git
-pkgver=0.1.0r2
-pkgrel=2
+pkgver=0.1.0r3
+pkgrel=3
 pkgdesc="Device Manager for Racing Sims"
 arch=('x86_64')
 url="https://github.com/spacefreak18/monocoque"
 license=('GPL3')
 depends=(
-        pulseaudio
         hidapi
 	libserialport
 	libxml2
 	argtable
 	libconfig
+	pipewire-pulse
 )
 makedepends=(
   git
