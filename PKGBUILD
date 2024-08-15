@@ -1,6 +1,6 @@
 pkgname=mihomo-party-electron
 _pkgname=mihomo-party
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=('libappindicator-gtk3: Allow mihomo-party to extend a menu via Ayata
 makedepends=('nodejs' 'pnpm' 'libxcrypt-compat' 'asar')
 install=$_pkgname.install
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("0b4cca1ca691374643f25568aec3391749454e62fc3e98d04b8eaecfb85e1a7c")
+sha256sums=("79db5e5c95f4fd166956c14d0b43bd933d6a7083600203c0582be5445f5ecf2f")
 options=('!lto')
 
 prepare(){
