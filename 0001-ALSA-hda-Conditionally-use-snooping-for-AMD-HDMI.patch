@@ -1,7 +1,7 @@
-From 9e05ab3319582d7e35b8672d77e2e70739ee124c Mon Sep 17 00:00:00 2001
+From ff379c8d78552849681279a675699f71854730b3 Mon Sep 17 00:00:00 2001
 From: Takashi Iwai <tiwai@suse.de>
 Date: Wed, 31 Jul 2024 19:05:15 +0200
-Subject: [PATCH 4/5] ALSA: hda: Conditionally use snooping for AMD HDMI
+Subject: [PATCH] ALSA: hda: Conditionally use snooping for AMD HDMI
 
 The recent regression report revealed that the use of WC pages for AMD
 HDMI device together with AMD IOMMU leads to unexpected truncation or
