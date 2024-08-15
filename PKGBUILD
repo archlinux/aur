@@ -2,9 +2,9 @@
 
 pkgname=crispy-doom
 pkgdesc="Vanilla-compatible enhanced Doom engine"
-pkgver=6.0
-pkgrel=3
-arch=('i686' 'x86_64' 'aarch64')
+pkgver=7.0
+pkgrel=1
+arch=('x86_64' 'aarch64')
 url="http://fabiangreffrath.github.io/crispy-doom"
 license=('GPL2')
 depends=('fluidsynth' 'hicolor-icon-theme' 'libpng' 'libsamplerate' 'sdl2_mixer' 'sdl2_net')
@@ -14,7 +14,7 @@ optdepends=('freedm: Free deathmatch game'
             'freedoom2: Free Doom II-compatible game')
 install=crispy-doom.install
 source=(https://github.com/fabiangreffrath/$pkgname/archive/$pkgname-$pkgver.tar.gz)
-b2sums=('fc864ae55100db0d074d14eae795bd603b355fba8eaa783b564b167cf1bf65ff1e97f4640d2b0d56f8c4ec076125fd0f0e2a95bc5eac7251997e9f7757f4d295')
+b2sums=('307a2f98e37ac902e938433d9ee660e301ea38f1f0404354e1c0e3cb7d7c06c576da6711465f050ab7a25e2417edc8845db3ffb018b5eec588799d08084ff578')
 
 prepare() {
   cd "$pkgname-$pkgname-$pkgver"
