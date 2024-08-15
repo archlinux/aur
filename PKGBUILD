@@ -1,9 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mubu-bin
 _pkgname=Mubu
+_zhsname="幕布"
 pkgver=4.0.4
 _electronversion=9
-pkgrel=1
+pkgrel=2
 pkgdesc="一款结合了大纲笔记和思维导图的头脑管理工具(packed from origin exe, use system electron)"
 arch=('x86_64')
 url="https://mubu.com"
@@ -34,6 +35,7 @@ build() {
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -f -n -q --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Office" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    sed "3i\Name[zh_CN]=${_zhsname}" -i "${srcdir}/${pkgname%-bin}.desktop"
     7z x -aoa "${srcdir}/${pkgname%-bin}-${pkgver}.exe"
     install -Dm755 -d "${srcdir}/tmp"
     7z x -aoa "${srcdir}/\$PLUGINSDIR/app-32.7z" -o"${srcdir}/tmp"
