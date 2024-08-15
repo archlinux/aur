@@ -1,6 +1,6 @@
 pkgbase = rclone-bisync-manager-tray-git
 	pkgdesc = System tray application for RClone BiSync Manager
-	pkgver = 0.2.5
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/Gunther-Schulz/rclone-bisync-manager
 	arch = any
@@ -8,12 +8,13 @@ pkgbase = rclone-bisync-manager-tray-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python>=3.12
-	depends = rclone-bisync-manager-git=0.2.5
 	depends = python-pillow
 	depends = python-pystray
 	depends = python-gobject
-	source = rclone-bisync-manager-tray-git-0.2.5.tar.gz::https://github.com/Gunther-Schulz/rclone-bisync-manager/archive/v0.2.5.tar.gz
-	sha256sums = 4e5bc4b455353728432dff50b7160a455eb4f04569cd48b7ecc90d9f83f8b8d4
+	depends = rclone-bisync-manager-git>=0.2.6
+	source = rclone-bisync-manager-tray-git-0.2.7.tar.gz::https://github.com/Gunther-Schulz/rclone-bisync-manager/archive/v0.2.7.tar.gz
+	sha256sums = 3983367dc4b82319d15cfa5604d525065a008de25705c666aec7eb402b52c3ee
 
 pkgname = rclone-bisync-manager-tray-git
