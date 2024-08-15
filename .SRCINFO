@@ -1,6 +1,6 @@
 pkgbase = tinymist-git
 	pkgdesc = An integrated language service for Typst
-	pkgver = v0.11.5.r2.g73c6447
+	pkgver = v0.11.19.r4.g1295c87
 	pkgrel = 1
 	url = https://github.com/Myriad-Dreamin/tinymist
 	arch = any

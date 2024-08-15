@@ -1,7 +1,7 @@
 # Maintainer: Alejandro Osornio <aoxo.contact@gmail.com>
 pkgname=tinymist-git
 _pkgname=tinymist
-pkgver=v0.11.5.r2.g73c6447
+pkgver=v0.11.19.r4.g1295c87
 pkgrel=1
 pkgdesc="An integrated language service for Typst"
 arch=('any')
@@ -35,7 +35,7 @@ prepare() {
 build() {
 	_srcenv
     cd "${_pkgname}"
-    cargo build --frozen --bin tinymist --release --all-features
+    cargo build --frozen --bin tinymist --release
 }
 
 check() {
