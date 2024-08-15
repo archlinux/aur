@@ -1,12 +1,11 @@
 pkgbase = freetype2-git
 	pkgdesc = Font rasterization library (from git)
-	pkgver = 2.13.1+p0+ge4586d960
+	pkgver = 2.13.3+p1+gc4e6791f8
 	pkgrel = 1
 	epoch = 1
 	url = https://www.freetype.org/
-	arch = i686
 	arch = x86_64
-	license = GPL
+	license = FTL OR GPL-2.0-or-later
 	makedepends = git
 	makedepends = librsvg
 	makedepends = libx11
@@ -27,15 +26,15 @@ pkgbase = freetype2-git
 	validpgpkeys = E30674707856409FF1948010BE6C3AAC63AD8E3F
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 2c148694e150b3faae9dc46ead824ae6d94cfe34f2918bc9066f45bab7e6b6f77b4d4b2fee00c3d466d866e1985132cea4a774dcf1bab95409b7cf55efff01e1
-	b2sums = 9598d13eae0411878c1af8e5d875c3b1fc09f4e6649edfbbf3b0a819c4c585648521f0b30ffd1318f5106cfde9c899d3db70c8ffe36dac59f3f98b5fd7dab115
-	b2sums = 66deb179d1f1f4e2e35f6d50acfbacce80595d5128f5fed8c1871838c210dbf1a7173a87dd937d64997844c8f478c8f81120f71e33b9d59d980e179d103ff31c
+	b2sums = b7e3b72e2d6aed548c1762a16ee08ac47a05caf29c5d37ef03c6791e6dbd109fdfef0b246540c35e968d54f2103b70e80eccff72ac54d34224c6d064aa53d720
+	b2sums = d2b507830adf1bb9db619cd2e0bbb0dfe5b16ba7d4467ad503e954cf91715c5aa5b52b1d3865abc9841990cda56f223eb6f282d4baf7f31fd525cc90aa96b884
+	b2sums = b83a599da8eef1c39a268482db8e82f03a2c9b68850a0ec782e9839e7b45a3b0f989d997647eb55e5b18f2fe0c988e73f0ec6c4eb4c0787689f9e0213faa4320
 	b2sums = a964f46886b5017a5c180f29408f72ae8aba29f37404c48b4681ff12ca0a2cfa2a8e219480e98d63d45fb5c266a6e5826df170c9a0d701cd866e395c5ac6e87d
 
 pkgname = freetype2-git
 	install = freetype2.install
 	provides = libfreetype.so
-	provides = freetype2=2.13.1+p0+ge4586d960
+	provides = freetype2=2.13.3+p1+gc4e6791f8
 	conflicts = freetype2
 	backup = etc/profile.d/freetype2.sh
 
@@ -45,5 +44,5 @@ pkgname = freetype2-demos-git
 	depends = librsvg
 	depends = libx11
 	optdepends = qt5-base: ftinspect
-	provides = freetype2-demos=2.13.1+p0+ge4586d960
+	provides = freetype2-demos=2.13.3+p1+gc4e6791f8
 	conflicts = freetype2-demos
