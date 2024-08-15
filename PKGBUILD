@@ -1,7 +1,7 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 pkgname=backlight-sync-git
 pkgver=r17.f65d3d9
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Automatic backlight sync between a laptop and a monitor"
 arch=('any')
