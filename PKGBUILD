@@ -1,8 +1,8 @@
-# Maintainer: Julian Daube <joposter at gmail dot com>
+# Maintainer: Scott Alfter <scott@alfter.us>
 # Contributor: Julian Daube <joposter at gmail dot com>
 pkgname=kikit-git
 pkgdesc="Automation for KiCAD boards"
-pkgver=r700.e19408a
+pkgver=r702.ec75c91
 pkgrel=1
 
 url="https://github.com/yaqwsx/KiKit.git"
