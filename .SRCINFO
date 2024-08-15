@@ -1,6 +1,6 @@
 pkgbase = armv7l-gcc
 	pkgdesc = The GNU Compiler Collection - cross compiler for armv7l
-	pkgver = 14.1.0
+	pkgver = 14.2.1
 	pkgrel = 1
 	url = https://gcc.gnu.org/
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = armv7l-gcc
 	options = !emptydirs
 	options = !strip
 	options = staticlibs
-	source = git+https://sourceware.org/git/gcc.git#commit=cd0059a1976303638cea95f216de129334fc04d1
+	source = git+https://sourceware.org/git/gcc.git#commit=04696df09633baf97cdbbdd6e9929b9d472161d3
 	validpgpkeys = F3691687D867B81B51CE07D9BBE43771487328A9
 	validpgpkeys = 86CFFCA918CF3AF47147588051E8B148A9999C34
 	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
 	validpgpkeys = D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62
-	sha256sums = SKIP
+	sha256sums = a0c5c9a2e09198436b0bcccba6deef7cb439a5364d56ffbb9ac17a9d24240034
 
 pkgname = armv7l-gcc
