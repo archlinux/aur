@@ -95,8 +95,8 @@ source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
         0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
         0002-drivers-firmware-skip-simpledrm-if-nvidia-drm.modese.patch
         0003-arch-Kconfig-Default-to-maximum-amount-of-ASLR-bits.patch
-        0004-ALSA-hda-Conditionally-use-snooping-for-AMD-HDMI.patch
-        0005-x86-apic-Remove-logical-destination-mode-for-64-bit.patch
+        0004-x86-apic-Remove-logical-destination-mode-for-64-bit.patch
+        0005-btrfs-only-run-the-extent-map-shrinker-from-kswapd-t.patch
         # Intel Patches
         # Xanmod
         0001-sched-wait-Do-accept-in-LIFO-order-for-cache-efficie.patch
@@ -372,8 +372,8 @@ sha256sums=('30909eb2e0434dce97a93cd97ed0dfab7688a124bc3ebc3ecf6c776de09ccc0b'
             'd2d673e130d2a8006aeca9892238db432fe6de628327e6999b3567c0e40a01ae'
             '2bd0cd7ea72b0330006a5159e8016fdf391cbd3e222b263c6603670d90383d05'
             '6759cdb5efcacc56b071dddb85f2dd6a54485a046f61f40f9854246c1480603c'
-            '368fd17ebf97ca8b6ca7129b1626a43d12617cbbe3c6af53313b0a52b8fa65ab'
-            '84bbf16ba166b016e050ab69e69a54798963d3a03ed65dea7bf39b0a371fbdb8'
+            '74d12e96b8ce056a5f1b4fd10cf3f4b671eb3d50d4124cd8fa7a81c83b55ae1e'
+            '994514f16122c25e6b8debf79aab539f92ad3f25f94729197912f250eaf75a11'
             '69b89348660c89a295c45ac273df967be3aa7e59713654e585077cc54babdfd8'
             '63a794c9acc0ee3ddf6e1bea1d90d4c2ec5f2e64273c4b7e84b2085c9340bbfb'
             '463ebc4d4da63bda3714f16142b8b8b092c5589a84a7b4debc2067cd7fc5600d'
