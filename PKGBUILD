@@ -1,13 +1,13 @@
 # Maintainer: Soma Zambelly <zambelly.soma@gmail.com>
 pkgname=reveng
-pkgver=3.0.5
+pkgver=3.0.6
 pkgrel=1
 pkgdesc="Arbitrary-precision CRC calculator and algorithm finder"
 arch=(x86_64)
 url="http://reveng.sourceforge.net/"
 license=('GPL')
 source=("https://sourceforge.net/projects/$pkgname/files/$pkgver/$pkgname-$pkgver.tar.xz/download")
-sha256sums=("446c9a49c563b99e2bbebadbd399e9860a6ef05cc140ab9e32217dd7b5276ba0")
+sha256sums=("73ed19acdf0b8cef518c00579b14f0ecec23669ad55b60b1d00a2966f6b36de3")
 
 build() {
 	cd "$pkgname-$pkgver"
