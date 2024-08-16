@@ -2,7 +2,7 @@
 
 pkgname=cypherock-cysync-appimage
 pkgver=2.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="The all-in-one-app to manage your Crypto assets with the Cypherock X1."
 arch=('x86_64')
 url="https://www.cypherock.com/cysync"
