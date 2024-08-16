@@ -3,20 +3,20 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 
 pkgname=rust-nightly-bin
-pkgver=1.66.0_2022.10.29
+pkgver=1.82.0_2024.08.15
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Fast, concurrent, safe. The Rust programming language and its package manager, Cargo.'
 url='https://www.rust-lang.org/'
-license=('MIT' 'Apache' 'custom')
+license=("Apache-2.0 OR MIT")
 provides=('rust' 'rust-nightly' 'cargo' 'cargo-nightly' 'rust-docs')
 conflicts=('rust' 'rust-git' 'rust-nightly' 'cargo-nightly-bin' 'cargo' 'cargo-git' 'cargo-nightly' 'cargo-nightly-bin' 'rust-docs')
-depends=('gcc-libs' 'llvm' 'zlib' 'sh')
+depends=('gcc-libs' 'llvm' 'zlib' 'sh' 'python' )
 source=("rust-nightly-${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz::https://static.rust-lang.org/dist/rust-nightly-${CARCH}-unknown-linux-gnu.tar.gz"
 )
 
 sha256sums=('SKIP')
-options=(staticlibs !strip)
+options=(staticlibs !debug)
 
 pkgver() {
   cd ${srcdir}/rust-nightly-${CARCH}-unknown-linux-gnu
@@ -32,7 +32,7 @@ package() {
         --disable-ldconfig \
         --destdir="${pkgdir}" \
         --prefix=/usr/ \
-        --components=rustc,cargo,llvm-tools-preview,rust-std-x86_64-unknown-linux-gnu,rust-docs,rust-analysis-x86_64-unknown-linux-gnu
+        --components=rustc,cargo,llvm-tools-preview,rust-std-${CARCH}-unknown-linux-gnu,rust-docs,rust-analysis-x86_64-unknown-linux-gnu
 
 
     install -dm755 "${pkgdir}/usr/share/bash-completion/"
@@ -46,7 +46,7 @@ package() {
 
     # Remove cruft.
     rm "${pkgdir}/usr/lib/rustlib/"{manifest-*,install.log,uninstall.sh,components,rust-installer-version}
-    #This is where the dependency on llvm svn pops up
+    #This is where the dependency on llvm git pops up
     rm  $pkgdir/usr/lib/libLLVM-*.so
     # Remove duplicate .so libraries and symlink to them.
     # https://github.com/rust-lang/rust/issues/37971
