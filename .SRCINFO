@@ -1,0 +1,31 @@
+pkgbase = ruyi
+	pkgdesc = RuyiSDK Package Manager
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/ruyisdk/ruyi
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-arpy
+	checkdepends = python-rich
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python>=3.11
+	depends = python-rich
+	depends = python-xingque
+	depends = python-frontmatter
+	optdepends = bzip2
+	optdepends = coreutils
+	optdepends = gzip
+	optdepends = sudo
+	optdepends = tar
+	optdepends = unzip
+	optdepends = xz
+	optdepends = zstd
+	optdepends = wget
+	provides = python-ruyi
+	source = ruyi-0.16.0.tar.gz::https://github.com/ruyisdk/ruyi/archive/refs/tags/0.16.0.tar.gz
+	sha256sums = dc9e3d76f93953a58492dc4e8c95cece3cfac0e546e4f3eaf051f67951ef8bd1
+	sha512sums = 136d9b7b6cf93cb1dd9b8385a28d87b9e993111025bb307d77c90cff993baf60af02af2bc98efa5680a4b9297b83b2a604da1d4ae114223cf7028a0bcde93f77
+
+pkgname = ruyi
