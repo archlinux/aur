@@ -4,6 +4,20 @@
 
 [1]: https://pypi.org/project/google-cloud-storage/#history
 
+## [2.18.2](https://github.com/googleapis/python-storage/compare/v2.18.1...v2.18.2) (2024-08-08)
+
+
+### Bug Fixes
+
+* Add regression test for range read retry issue and bump dependency to fix ([#1338](https://github.com/googleapis/python-storage/issues/1338)) ([0323647](https://github.com/googleapis/python-storage/commit/0323647d768b3be834cfab53efb3c557a47d41c3))
+
+## [2.18.1](https://github.com/googleapis/python-storage/compare/v2.18.0...v2.18.1) (2024-08-05)
+
+
+### Bug Fixes
+
+* Properly escape URL construction for XML MPU API ([#1333](https://github.com/googleapis/python-storage/issues/1333)) ([bf4d0e0](https://github.com/googleapis/python-storage/commit/bf4d0e0a2ef1d608d679c22b13d8f5d90b39c7b2))
+
 ## [2.18.0](https://github.com/googleapis/python-storage/compare/v2.17.0...v2.18.0) (2024-07-09)
 
 
