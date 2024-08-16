@@ -4,17 +4,17 @@
 # Contributor: Niklas <dev@n1klas.net>
 
 pkgname=qt6-mqtt
-_qtver=6.5.2
+_qtver=6.7.2
 pkgver=${_qtver/-/}
 pkgrel=2
 pkgdesc="Module to implement MQTT protocol v3.1/3.1.1/5.0 for Qt 6"
 arch=(x86_64)
-url="http://qt-project.org/"
+url="https://qt-project.org/"
 license=(GPL3 custom)
 depends=(qt6-base)
 makedepends=(cmake git ninja)
 source=("git+https://code.qt.io/qt/qtmqtt.git#tag=v$_qtver")
-sha512sums=('SKIP')
+sha256sums=('bf96251956dec4f5580e2b0188128769b2b0c971379cedb7389df08a891a1502')
 _pkgfqn=${pkgname/6-/}
 
 build() {
