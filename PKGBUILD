@@ -1,7 +1,7 @@
 # Maintainer: Hubert "hkk" Batkiewicz <hubert@batkiewi.cz>
 pkgname=gamma-launcher
 pkgver=1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="S.T.A.L.K.E.R GAMMA launcher for Linux"
 arch=(x86_64)
 url="https://github.com/Mord3rca/gamma-launcher"
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 build() {
     cd "$pkgname"
-    git checkout tags/"$pkgver"
+    git checkout tags/v"$pkgver"
     python setup.py build
 }
 
