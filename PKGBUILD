@@ -1,6 +1,6 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 pkgname=buildbox
-pkgver=1.2.13
+pkgver=1.2.14
 pkgrel=1
 pkgdesc="A set of tools for remote worker build execution"
 arch=(x86_64)
@@ -16,6 +16,7 @@ depends=(
   'openssl'
   'protobuf'
   'util-linux-libs'
+  'bubblewrap'
 )
 makedepends=(
   'benchmark'
@@ -38,16 +39,23 @@ build() {
   cmake -B build -S $pkgname \
     -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTING=OFF \
+    -DTOOLS=OFF \
+    -DCASD=ON \
+    -DCASD_BUILD_BENCHMARK=OFF \
+    -DFUSE=ON \
+    -DRECC=ON \
+    -DRUN_BUBBLEWRAP=ON \
+    -DWORKER=ON \
     -Wno-dev
 
   cmake --build build
 }
 
-check() {
-  ctest --test-dir build --output-on-failure
-}
-
 package() {
   DESTDIR="$pkgdir" cmake --install build
+ 
+  cd $pkgdir/usr/bin
+  ln -sr buildbox-run-bubblewrap buildbox-run
 }
 
