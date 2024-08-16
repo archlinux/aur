@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=7.1.r115973.g127545350f
+pkgver=7.1.r116685.ga797317ab1
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -108,9 +108,9 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '050-ffmpeg-fix-segfault-with-avisynthplus.patch'
         '060-ffmpeg-fix-nvidia-vulkan-decoding-segfault.patch')
 sha256sums=('SKIP'
-            '67e87527ba853c2b59fa5efd9e116c157f0abb18a40e3bc55673cf0d98364923'
-            'e97272668cd16493e520f0188eea265e2372c98b3c09585781e7a453ddb5478f'
-            'f2f73793a45c9dffb033f23c1b10a612abe6528cbd06c04b06e8189d1ef208be')
+            'c413f87df4ec496b0e8be705be407ee9c43f09a24ea14b01ea9688d5b410f0f0'
+            '26419f819d1f3e4d0534995b73d05a8195bc7c892b74c37c3880085af027515b'
+            'aa054ee88401c7f7b189fee350438c9b3cabbc544a8b533d39e4a4dd267a09fb')
 
 prepare() {
     patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
