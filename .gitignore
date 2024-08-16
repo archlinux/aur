@@ -1,0 +1,4 @@
+gnome-summoner-*.pkg.tar.*
+gnome-summoner-*.tar.gz                
+/src/
+/pkg/
