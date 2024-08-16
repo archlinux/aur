@@ -1,6 +1,6 @@
 pkgname=mihomo-party-git
 _pkgname=${pkgname%-git}
-pkgver=0.5.5.r1.gb8957fb
+pkgver=0.5.5.r2.gedc018e
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 
 optdepends=('libappindicator-gtk3: Allow mihomo-party to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
 makedepends=('nodejs' 'pnpm' 'jq' 'libxcrypt-compat')
 install=$_pkgname.install
-source=("git+$url.git")
-sha256sums=("SKIP")
+source=("${_pkgname}.sh" "git+$url.git")
+sha256sums=("f8049c1f26d5a92fbcebd7bebbdedbb3eab53422b21cf6127418251ccd061282" "SKIP")
 options=('!lto')
 
 pkgver() {
