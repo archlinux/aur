@@ -3,21 +3,21 @@
 # Based on labwc AUR from Lex Black <autumn-wind@web.de>
 
 pkgname=labwc-im
-pkgver=0.7.4
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='stacking wayland compositor with look and feel from openbox (with text-input-v1 support)'
 url="https://github.com/labwc/labwc"
 arch=('x86_64')
 license=('GPL2')
-depends=('libpng' 'librsvg' 'pango' 'seatd' 'libwlroots.so=12-64' 'wayland' 'xorg-xwayland')
+depends=('libpng' 'librsvg' 'pango' 'seatd' 'libwlroots-0.18.so' 'wayland' 'xorg-xwayland')
 makedepends=('meson' 'scdoc' 'wayland-protocols')
 optdepends=("bemenu: default launcher via Alt+F3")
 conflicts=(labwc)
 provides=(labwc)
 source=(labwc-${pkgver}.tar.gz::"https://github.com/labwc/labwc/archive/${pkgver}.tar.gz"
         '0001-IME-support-text-input-v1.patch')
-b2sums=('8aa259682ff6b937f02e50b0a61385e2fd48e43692123efdfc6a8ab7868f8168337d087d62387d8da03c5a0e0594163a11147056f61ef86ec83d8fd9c896a356'
-        '65708bcfa6341643bc261a643f00143cab648b1ec7117219757bb3316e5ae761a6232007b560def56989e0b75684e78a39b99da677af22eaf8922843dc6ffc9d')
+b2sums=('7f7a96752505fdee76846fcf3bf1924627a8657ff45dbc8df1eb61b76a0eb08bd278bab2a6adbaaf09c92a93aa7c292613fcd31b356bdef39aa8662e48f966a6'
+        'c936efeb8c5914da2edc1d913277219879e227d4fbaea8dfffbfbe39f34fc53dd4ddb17b950c85cf0200180995ac0d40f9a73fe11183532bb0d713d3b785f0f9')
 
 prepare() {
   cd "labwc-$pkgver"
@@ -25,7 +25,6 @@ prepare() {
 }
 
 build() {
-  export PKG_CONFIG_PATH='/usr/lib/wlroots0.17/pkgconfig'
   arch-meson -Dman-pages=enabled "labwc-$pkgver" build
   meson compile -C build
 }

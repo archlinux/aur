@@ -1,4 +1,4 @@
-From 9640010216d78beec3bc28084c98fd7ce1491238 Mon Sep 17 00:00:00 2001
+From e11bce133d21723bea4aae292f32796c9296596f Mon Sep 17 00:00:00 2001
 From: tokyo4j <hrak1529@gmail.com>
 Date: Fri, 23 Feb 2024 03:57:01 +0900
 Subject: [PATCH] IME: support text-input-v1
@@ -22,7 +22,7 @@ index 189f51f1..6a5e95f0 100644
  
  	struct wl_listener enable;
 diff --git a/protocols/meson.build b/protocols/meson.build
-index b0c2f5ab..ab6d48a8 100644
+index 0ee40bf4..d8f670d1 100644
 --- a/protocols/meson.build
 +++ b/protocols/meson.build
 @@ -21,6 +21,7 @@ server_protocols = [
@@ -429,5 +429,5 @@ index c09ef948..592bd9b2 100644
  }
  
 -- 
-2.45.2
+2.46.0
 
