@@ -2,7 +2,7 @@
 
 pkgname=qdvdauthor
 pkgver=2.3.1
-pkgrel=13
+pkgrel=15
 pkgdesc='A GUI frontend for dvdauthor, video DVD creator'
 url='https://sourceforge.net/projects/qdvd'
 license=('GPL2')
@@ -33,14 +33,14 @@ provides=(
   'qrender'
 )
 source=(
-  "https://sourceforge.net/projects/qdvd/files/qdvd-${pkgver}-qt5/qdvdauthor-${pkgver}-013.tar.gz"
+  "https://sourceforge.net/projects/qdvd/files/qdvd-${pkgver}-qt5/qdvdauthor-${pkgver}-015.tar.gz"
   'https://ffmpeg.org/releases/ffmpeg-0.6.7.tar.bz2'
   'mathops_fix.patch'
   'found_ffmpeg.patch'
   'qxinewidget_stack_smashing_detected_fix.patch'
 )
 sha256sums=(
-  'fa1710a0147acd14067464dedad2e263dc159d892b465eebc8db26deaf3efd32'
+  'a8543f303fee6181854cf3fd72e200cfd4d9c8aec513416a9f27db266bf18f60'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -52,31 +52,39 @@ prepare() {
   patch -d ffmpeg-0.6.7 -p1 -i "${srcdir}/mathops_fix.patch"
   patch -d "$pkgname-$pkgver" -p1 -i "${srcdir}/found_ffmpeg.patch"
   patch -d "$pkgname-$pkgver" -p1 -i "${srcdir}/qxinewidget_stack_smashing_detected_fix.patch"
+  cp -r ffmpeg-0.6.7 "${srcdir}/$pkgname-$pkgver/qrender"
 }
 
 build() {
-  cd ffmpeg-0.6.7
-
+  cd "${srcdir}/$pkgname-$pkgver/qrender/ffmpeg-0.6.7"
+  
   CFLAGS="${CFLAGS} -Wno-incompatible-pointer-types -Wno-implicit-function-declaration" \
   ./configure \
-    --prefix="${srcdir}/fakeroot" \
+    --prefix="${srcdir}/$pkgname-$pkgver/qrender/ffmpeg-0.6.7"  \
     --disable-ffmpeg \
     --disable-ffplay \
     --disable-ffprobe \
     --disable-ffserver \
+    --enable-static \
+    --enable-shared \
+    --libdir=lib \
+    --incdir=include \
     --enable-pic \
     --disable-doc
 
   make
   make install
-
+  
   cd ..
-  export PKG_CONFIG_LIBDIR="${srcdir}/fakeroot/lib/pkgconfig"
+  cd ..
+  cd ..
+  #export PKG_CONFIG_LIBDIR="${srcdir}/ffmpeg-0.6.7/lib/pkgconfig"
+  export PKG_CONFIG_LIBDIR="${srcdir}/$pkgname-$pkgver/qrender/ffmpeg-0.6.7/lib/pkgconfig"
   export PKG_CONFIG_PATH="${PKG_CONFIG_LIBDIR}:/usr/lib/pkgconfig:/usr/share/pkgconfig"
 
   cmake -S "qdvdauthor-${pkgver}" -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DFFMPEG_DIRS="${srcdir}/fakeroot"
+    -DFFMPEG_DIRS="${srcdir}/$pkgname-$pkgver/qrender/ffmpeg-0.6.7"
 
   cmake --build build
 }
