@@ -1,11 +1,8 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
-# Maintainer: Giancarlo Razzolini <grazzolini@archlinux.org>
-# Contributor: Anton Hvornum <anton@hvornum.se>
-# Contributor: demostanis worlds <demostanis@protonmail.com>
+# Maintainer: Anton Hvornum <anton@hvornum.se>
 
 pkgname=python-onepassword-keyring
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Keyring backend reading password data from 1Password"
 arch=(any)
 url="https://github.com/falling-springs/onepassword-keyring"
