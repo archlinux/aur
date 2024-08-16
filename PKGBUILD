@@ -1,13 +1,15 @@
-# Maintainer: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 _pkgname=lscd
 pkgname=$_pkgname-git
 pkgver=0.r35.989cb7e
-pkgrel=1
+pkgrel=2
 pkgdesc="file browser written in bash with an interface similar to ranger's"
 arch=('any')
 url="https://github.com/hut/lscd"
-license=('GPL3')
+license=('GPL-3.0-only')
 makedepends=('git')
+depends=('less' 'sh' 'inetutils')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
