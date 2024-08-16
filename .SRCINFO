@@ -1,0 +1,16 @@
+pkgbase = ovn
+	pkgdesc = Open Virtual Network
+	pkgver = 24.03.2
+	pkgrel = 1
+	url = https://github.com/ovn-org/ovn
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = openvswitch
+	depends = libxdp
+	depends = numactl
+	depends = libunwind
+	source = git+https://github.com/ovn-org/ovn#tag=v24.03.2
+	sha256sums = ab461f916607f3b998541f9370e3a0f859f8c883b62fbd50d1c41167371b938f
+
+pkgname = ovn
