@@ -1,7 +1,7 @@
 # Maintainer: awe00 < awe00 AT hotmail DOT fr>
 # Contributor: Ondřej Hlavatý <ohlavaty at redhat dot com>
 pkgname=plotnetcfg-git
-pkgver=v0.4.1.r65.gbb4e154
+pkgver=v0.4.1.r121.g6a3074d
 pkgrel=1
 pkgdesc="A tool that scans networking configuration on the machine and plots a diagram of the configuration hierarchy"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git')
 provides=('plotnetcfg')
 conflicts=('plotnetcfg')
 source=("git+https://github.com/jbenc/plotnetcfg" "plotnetcfg-git.patch")
-md5sums=('SKIP' '54a548645f6d46633e5c3b19a608de36')
+md5sums=('SKIP' '2b10c6f12eb07338b57b6ad874106713')
 _gitrepo=plotnetcfg
 
 pkgver() {
