@@ -2,14 +2,14 @@
 # Contributor: George Kiselyov <i[dot]am[at]kiselyov-george[dot]ru>
 
 pkgname=rudesktop
-pkgver=2.6.1618
+pkgver=2.6.1644
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Ru-Desktop client for home use"
 url="https://rudesktop.ru/downloads/"
 license=('custom')
 source=("https://rudesktop.ru/download/rudesktop-amd64.deb")
-sha256sums=('d4530c801e03508ff53119dd6b50c800d9822e0a88d66095fac85beee5737ce4')
+sha256sums=('6aa554622932cf0507975e68a5635e5bf680f8690f505229ea5a8a412e349f10')
 depends=(python-six glib2 python-xlib libxinerama python gdk-pixbuf2 libx11 libxcb gcc-libs hicolor-icon-theme glibc cairo libpulse python-evdev pango libxkbcommon libxtst util-linux-libs libxfixes gtk3)
 
 prepare() {
