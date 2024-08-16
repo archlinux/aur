@@ -28,7 +28,7 @@ install="$pkgname.install"
 source_x86_64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jdk${pkgver}-linux_x64.tar.gz")
 sha256sums_x86_64=('78fd81083efbb919ae91de3cfa90e5225868b3d4632fd558c7cb6941dab6b8da')
 
-_jvmdir="/usr/lib/jvm/${_jdkname}"
+_jvmdir="/usr/lib/jvm/${pkgname}"
 
 package() {
   cd "$srcdir/zulu${_zulu_build}-jdk${pkgver}-linux_x64"
@@ -40,21 +40,21 @@ package() {
 
   # Conf
   install -dm 755 "${pkgdir}/etc"
-  cp -r conf "${pkgdir}/etc/${_jdkname}"
+  cp -r conf "${pkgdir}/etc/${pkgname}"
   rm -r "${pkgdir}/${_jvmdir}/conf"
-  ln -s "/etc/${_jdkname}" "${pkgdir}/${_jvmdir}/conf"
+  ln -s "/etc/${pkgname}" "${pkgdir}/${_jvmdir}/conf"
 
   # Legal
   install -dm 755 "${pkgdir}/usr/share/licenses"
-  cp -r legal "${pkgdir}/usr/share/licenses/${_jdkname}"
+  cp -r legal "${pkgdir}/usr/share/licenses/${pkgname}"
   rm -r "${pkgdir}/${_jvmdir}/legal"
-  ln -s "/usr/share/licenses/${_jdkname}" "${pkgdir}/${_jvmdir}/legal"
+  ln -s "/usr/share/licenses/${pkgname}" "${pkgdir}/${_jvmdir}/legal"
 
   # Man pages
   for f in bin/*; do
     f=$(basename "${f}")
     _man=man/man1/"${f}.1"
-    test -f "${_man}" && install -Dm 644 "${_man}" "${pkgdir}/usr/share/man/man1/${f}-${_jdkname}.1"
+    test -f "${_man}" && install -Dm 644 "${_man}" "${pkgdir}/usr/share/man/man1/${f}-${pkgname}.1"
   done
   rm -r "${pkgdir}/${_jvmdir}/man"
   ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
