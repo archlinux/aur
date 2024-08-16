@@ -1,13 +1,16 @@
 pkgbase = xcursor-pro-cursor-theme
 	pkgdesc = Modern X11 Cursor Theme
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/ful1e5/XCursor-pro
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = python-clickgen>=2.0.0
+	noextract = xcursor-pro-cursor-theme-2.0.2-bitmaps.zip
 	options = !strip
-	source = xcursor-pro-cursor-theme-2.0.1.tar.gz::https://github.com/ful1e5/XCursor-pro/archive/v2.0.1.tar.gz
-	sha256sums = 2fa5dd0666169ee98ff1ce9a3ff139726798e45b945eeafb633112b36dc38653
+	source = xcursor-pro-cursor-theme-2.0.2.tar.gz::https://github.com/ful1e5/XCursor-pro/archive/v2.0.2.tar.gz
+	source = xcursor-pro-cursor-theme-2.0.2-bitmaps.zip::https://github.com/ful1e5/XCursor-pro/releases/download/v2.0.2/bitmaps.zip
+	sha256sums = 5baf8557e6cd0504540c258ada32898358e9aaa77d95e0e0f460bad494078445
+	sha256sums = b6549857dfe5062f42551efccaeded9aee8703a9c41510ba59c20414c38ac84b
 
 pkgname = xcursor-pro-cursor-theme
