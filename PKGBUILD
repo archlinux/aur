@@ -1,7 +1,7 @@
 # Maintainer: Elaina Martineau <elainamartineau@gmail.com>
 pkgname=ttf-octicons
 pkgver=19.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A scalable set of icons handcrafted with <3 by GitHub"
 arch=('any')
 license=('MIT')
@@ -33,8 +33,8 @@ build() {
     npm install
 
   npm install fantasticon
-  mkdir 'font'
-  npm exec -- fantasticon icons -o font -t ttf -n octicons
+  mkdir -p 'font'
+  npm exec -- fantasticon octicons-${pgkver}/icons -o font -t ttf -n octicons
 }
 
 package() {
@@ -42,5 +42,5 @@ package() {
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
   install -d $pkgdir/usr/share/fonts/TTF/
-  install -m644 font/octicons.ttf $pkgdir/usr/share/fonts/TTF/
+  install -m644 ../font/octicons.ttf $pkgdir/usr/share/fonts/TTF/
 }
