@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=diffsitter
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="Tree-sitter based AST diff tool"
 arch=(x86_64 i686 arm aarch64)
@@ -13,7 +13,7 @@ makedepends=(git cargo)
 checkdepends=(tree-sitter-cpp tree-sitter-python tree-sitter-rust)
 options=('!lto')
 source=(git+${url}.git?signed#tag=v${pkgver})
-sha512sums=('bb8a927a7e50ea1c2729667f3bbf22f54060df6a7febed1d4e839ff910ba78ac0dad49ef0c1921075e7ca25b1258688f9c2632c1b1143b7f3f31f1e7df487fd4')
+sha512sums=('8aba61084813d5f4e018925c28f134339c045cb5ce01585824d320b457297fcf95725b95831c3d4911809b6a309934326fd14af71e3468dab17c5b89e4c464ef')
 validpgpkeys=('1C519E4FEF5757BFB30C636494EEFE1FD178056B') # Afnan Enayet <afnan@afnan.io>
 
 prepare() {
