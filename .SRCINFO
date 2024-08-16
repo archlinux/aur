@@ -1,0 +1,13 @@
+pkgbase = fcitx5-medium5-haiyi
+	pkgdesc = A Medium⁵.Haiyi theme for fcitx5
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/BreakTheMyth/fcitx5-medium5-haiyi/
+	arch = any
+	license = custom
+	makedepends = tar
+	makedepends = gzip
+	source = https://github.com/BreakTheMyth/fcitx5-medium5-haiyi/archive/refs/tags/v1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = fcitx5-medium5-haiyi
