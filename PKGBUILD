@@ -17,8 +17,10 @@ provides=("java-runtime=${_java}"
 options=('staticlibs'
          '!debug')
 install="$pkgname.install"
-sha256sums_x86_64=('85ee77e0b9ceb07750ea338b89cf21dc82b378aeb84b378f78bf3c46c97383b7')
-source_x86_64=("https://github.com/graalvm/oracle-graalvm-ea-builds/releases/download/jdk-${pkgver//_/-}/graalvm-jdk-${pkgver//_/-}_linux-x64_bin.tar.gz")
+sha256sums_x86_64=('85ee77e0b9ceb07750ea338b89cf21dc82b378aeb84b378f78bf3c46c97383b7'
+                   'eae06c1b4e8b19a918a049b42fcbacb6d416c4da559d6da65dd2046d5838472d')
+source_x86_64=("https://github.com/graalvm/oracle-graalvm-ea-builds/releases/download/jdk-${pkgver//_/-}/graalvm-jdk-${pkgver//_/-}_linux-x64_bin.tar.gz"
+               "$install")
 
 package() {
 	cd "graalvm-jdk-${_java}${_java_minor}"
