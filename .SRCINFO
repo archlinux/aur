@@ -1,7 +1,7 @@
 pkgbase = compiz-core
 	pkgdesc = Compositing manager without desktop-environment depends
 	pkgver = 0.8.18
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/compiz/compiz-core
 	arch = i686
 	arch = x86_64
@@ -25,7 +25,9 @@ pkgbase = compiz-core
 	options = !libtool
 	options = !emptydirs
 	source = https://gitlab.com/compiz/compiz-core/-/archive/v0.8.18/compiz-core-v0.8.18.tar.bz2
+	source = 0001-fix-libxml-2.12-compatibility-ea7b373.patch::https://gitlab.com/compiz/compiz-core/-/commit/ea7b3731b1a8a0f2fb7aa765a84374658b67b1b7.patch
 	sha256sums = e87018b2d6c9ab3da87d910b117a7ae35f64328eea485e6c2a532501b361144c
+	sha256sums = 237fe7ef98ebde56bf262c6e86f2906837868d804327b90f100d60c7e5c08e2e
 
 pkgname = compiz-core
 	pkgdesc = Compositing manager without desktop-environment depends (Core w/o decorator)

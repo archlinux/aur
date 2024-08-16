@@ -9,7 +9,7 @@
 _pkgname="compiz-core"
 pkgbase="$_pkgname${_pkgtype:-}"
 pkgver=0.8.18
-pkgrel=4
+pkgrel=5
 pkgdesc="Compositing manager without desktop-environment depends"
 url="https://gitlab.com/compiz/compiz-core"
 license=('GPL-2.0-or-later' 'LGPL-2.1-or-later' 'MIT')
@@ -38,8 +38,14 @@ options=('!libtool' '!emptydirs')
 
 _pkgsrc="$_pkgname-v$pkgver"
 _pkgext="tar.bz2"
-source=("$url/-/archive/v${pkgver}/$_pkgsrc.$_pkgext")
-sha256sums=('e87018b2d6c9ab3da87d910b117a7ae35f64328eea485e6c2a532501b361144c')
+source=(
+  "$url/-/archive/v${pkgver}/$_pkgsrc.$_pkgext"
+  "0001-fix-libxml-2.12-compatibility-ea7b373.patch"::"https://gitlab.com/compiz/compiz-core/-/commit/ea7b3731b1a8a0f2fb7aa765a84374658b67b1b7.patch"
+)
+sha256sums=(
+  'e87018b2d6c9ab3da87d910b117a7ae35f64328eea485e6c2a532501b361144c'
+  '237fe7ef98ebde56bf262c6e86f2906837868d804327b90f100d60c7e5c08e2e'
+)
 
 _configure_opts=(
   --prefix=/usr
@@ -64,6 +70,18 @@ fi
 
 prepare() {
   cd "$_pkgsrc"
+
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.zst}"
+    if [[ $src == *.patch ]]; then
+      printf '\nApplying patch: %s\n' "$src"
+      patch -Np1 -F100 -i "${srcdir:?}/$src"
+    fi
+  done
+
   sed -E -e 's&\blibrsvg-features\.h\b&rsvg-features.h&' -i "plugins/svg.c"
   sed '1 i#include <stdlib.h>' -i "include/compiz-core.h"
 }
