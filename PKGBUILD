@@ -95,10 +95,10 @@ source=(
   allow_dark.patch
 )
 
-sha256sums=('89f50c949cfedf6b54be0e79d67490ef1f7ad9490b31e2482434942f34d1fb3e'
+sha256sums=('8868128bf1681eb7cc6df0abe33b6bd44de73ba38ad0528ee1ee90ddc8a94fdf'
             '7d01d317b7db7416783febc18ee1237ade2ec86c1567e2c2dd628a94cbf2f25d'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
-            '50453830bde4aeb8c97612b48c9f21735d5a7bf3862e4489dce7161b73596493')
+            '89f50c949cfedf6b54be0e79d67490ef1f7ad9490b31e2482434942f34d1fb3e')
 
 validpgpkeys=('034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3') # maltej(?)
 
