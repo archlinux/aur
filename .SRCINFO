@@ -1,0 +1,17 @@
+pkgbase = python-pelican-sitemap
+	pkgdesc = Pelican plugin that generates a sitemap
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/pelican-plugins/sitemap
+	arch = any
+	license = AGPL-3.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python
+	depends = pelican
+	source = https://github.com/pelican-plugins/sitemap/archive/refs/tags/1.1.0.tar.gz
+	md5sums = ee34d66f96cfeb8e0456fa515dbcad8f
+
+pkgname = python-pelican-sitemap
