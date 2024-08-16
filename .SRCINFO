@@ -1,7 +1,7 @@
 pkgbase = wrapsix
 	pkgdesc = Fast userspace NAT64 daemon for Linux
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.semirocket.science/projects/wrapsix/
 	arch = x86_64
 	license = GPL3

@@ -1,7 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.mx>
 pkgname=wrapsix
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast userspace NAT64 daemon for Linux"
 arch=('x86_64')
 url="https://www.semirocket.science/projects/wrapsix/"
