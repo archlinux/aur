@@ -1,6 +1,6 @@
 pkgbase = marcel-git
 	pkgdesc = A modern shell that accepts Python code and uses Python objects for piping
-	pkgver = latest
+	pkgver = v0.30.0.r0.g17f66cc
 	pkgrel = 1
 	url = https://www.marceltheshell.org/
 	arch = any
