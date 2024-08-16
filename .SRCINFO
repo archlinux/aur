@@ -1,0 +1,13 @@
+pkgbase = config-file-validator
+	pkgdesc = A tool to validate the syntax of configuration files
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://github.com/Boeing/config-file-validator
+	arch = x86_64
+	license = Apache 2.0
+	makedepends = go>=1.21
+	depends = glibc
+	source = config-file-validator-1.7.1.tar.gz::https://github.com/Boeing/config-file-validator/archive/refs/tags/v1.7.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = config-file-validator
