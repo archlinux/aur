@@ -1,12 +1,12 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-git
-pkgver=2.3.2.r31.g92e71f7
+pkgver=3.0.5.r94.ge5fa914
 pkgrel=1
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher'
 arch=(x86_64)
 url=https://github.com/elementary/wingpanel
-license=(GPL3)
+license=(GPL-3.0-or-later)
 groups=(pantheon-unstable)
 depends=(
   glib2
@@ -17,9 +17,9 @@ depends=(
   mutter
 )
 makedepends=(
-  gala-git
+  gala
   git
-  granite-git
+  granite
   meson
   vala
 )
@@ -38,8 +38,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson wingpanel build \
-    -D b_pie=false
+  arch-meson wingpanel build
   ninja -C build
 }
 
