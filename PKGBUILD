@@ -2,7 +2,7 @@
 
 _appname=poly
 pkgname=polylith-bin
-pkgver=0.2.20
+pkgver=0.2.21
 pkgrel=1
 pkgdesc="An open source tool used to develop Polylith based architectures in Clojure"
 arch=(any)
@@ -14,7 +14,7 @@ depends=('java-runtime' 'git')
 optdepends=('clojure: Lisp dialect for the JVM')
 source=("${url}/releases/download/v${pkgver//_/-}/${_appname}-${pkgver//_/-}.tar.gz"
         'poly.sh')
-sha256sums=('d63cffaf4229dd1d6012e1156ab1ed837f87afadfd014d7cb416ef705709cca6'
+sha256sums=('8cf74e5a9e9d639911477fd6cc77393e80dca52f4d0f209425259ba408280e4e'
             'ca3e71533f73d85a4bd00e8afcae08b8989e1774b1e4336f387e428f69ee1093')
 options=(!strip)
 
