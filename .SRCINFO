@@ -1,6 +1,6 @@
 pkgbase = mihomo-party-bin
 	pkgdesc = Another Mihomo GUI.
-	pkgver = 0.5.6
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://github.com/pompurin404/mihomo-party
 	install = mihomo-party.install
@@ -25,9 +25,9 @@ pkgbase = mihomo-party-bin
 	conflicts = mihomo-party
 	source = mihomo-party.sh
 	sha256sums = f8049c1f26d5a92fbcebd7bebbdedbb3eab53422b21cf6127418251ccd061282
-	source_x86_64 = mihomo-party-0.5.6-x86_64.deb::https://github.com/pompurin404/mihomo-party/releases/download/v0.5.6/mihomo-party-linux-0.5.6-amd64.deb
-	sha256sums_x86_64 = 36a8571b43a8eb54c731cc56feb99023587c703c21922635b4c7b357b273a938
-	source_aarch64 = mihomo-party-0.5.6-aarch64.deb::https://github.com/pompurin404/mihomo-party/releases/download/v0.5.6/mihomo-party-linux-0.5.6-arm64.deb
-	sha256sums_aarch64 = d3fa1e03cf702571c4e8d21b715ee6f2ae1ecf4dab51d51b2307c86047b771f3
+	source_x86_64 = mihomo-party-0.5.7-x86_64.deb::https://github.com/pompurin404/mihomo-party/releases/download/v0.5.7/mihomo-party-linux-0.5.7-amd64.deb
+	sha256sums_x86_64 = 1a3859f319c3cab00f01f3342390ac9ce0e64db412129fd8f619cffe80cf779c
+	source_aarch64 = mihomo-party-0.5.7-aarch64.deb::https://github.com/pompurin404/mihomo-party/releases/download/v0.5.7/mihomo-party-linux-0.5.7-arm64.deb
+	sha256sums_aarch64 = a2633155d8b14609fe7f41258295b6bfec570c8aa113de4d470061adbdbb1c76
 
 pkgname = mihomo-party-bin
