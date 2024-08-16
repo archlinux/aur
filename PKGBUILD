@@ -1,8 +1,9 @@
-# Maintainer: Raryel C. Souza <raryel.csouza at protonmail dot com>
+# Maintainer: Jagapathi Gondi <gondijagapathi at gmail dot com>
+# Contributor: Raryel C. Souza <raryel.csouza at protonmail dot com>
 pkgname=zoom-citrix-plugin
-pkgver=5.14.11
-_subver=23790
-pkgrel=1
+pkgver=5.16.11
+_subver=24500
+pkgrel=2
 pkgdesc="Zoom VDI Citrix plugin "
 arch=('x86_64')
 license=('custom')
@@ -11,9 +12,9 @@ depends=('icaclient')
 optdepends=()
 replaces=('zoomcitrixplugin')
 
-source=("https://cdn.zoom.us/prod/vdi/${pkgver}.${_subver}/zoomcitrixplugin-centos_${pkgver}.rpm")
+source=("https://zoom.us/download/vdi/${pkgver}.${_subver}/zoomvdi-universal-plugin-centos_${pkgver}.rpm")
 
-sha512sums=('eed2f3ef802ca613b26adcc916022d05a4a6daf9fbad865caf9a7e34172ab26348093b21953e634b8009af6d58923c8968c636547e7c6b8b189c986296264b88')
+sha512sums=('26e47efc316c349ca4b0f9dc06e0a9e61816bb38834333ac01662699062ab8ebdea8168e76986e5c8940bd882c675af1d4a03f2e3a8ac57b46cd7126c92b89c1')
 
 package() {
   find $srcdir/ -mindepth 1 -maxdepth 1 -type d | xargs cp -r -t "$pkgdir"
