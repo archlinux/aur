@@ -3,7 +3,7 @@
 
 pkgname=xmage
 pkgver=1.4.53
-pkgrel=1
+pkgrel=2
 _java_version=8u201
 _java_dir=jre1.8.0_201
 
@@ -46,12 +46,12 @@ package() {
 	sed -i '2i cd /usr/share/xmage/xmage/mage-server' xmage/mage-server/startServer-unix.sh
 
 	echo "changing location of java binary for x86_64 architecture..."
-	sed -i "s|java|/usr/share/xmage/"'"${_java_dir}"'"/bin/java|g" mage-client/startClient-unix.sh
-	sed -i "s|java|/usr/share/xmage/"'"${_java_dir}"'"/bin/java|g" mage-server/startServer-unix.sh
+	sed -i "s|java|/usr/share/xmage/${_java_dir}/bin/java|g" xmage/mage-client/startClient-unix.sh
+	sed -i "s|java|/usr/share/xmage/${_java_dir}/bin/java|g" xmage/mage-server/startServer-unix.sh
 
 	echo "increasing default memory limit of client and server"
-	sed -i 's|-Xmx512m|-Xmx2048m|g' mage-client/startClient-unix.sh
-	sed -i 's|-Xmx512m|-Xmx2048m|g' mage-server/startServer-unix.sh
+	sed -i 's|-Xmx512m|-Xmx2048m|g' xmage/mage-client/startClient-unix.sh
+	sed -i 's|-Xmx512m|-Xmx2048m|g' xmage/mage-server/startServer-unix.sh
 
 	echo "moving files..."
 	install -Dm755 xmage/mage-client/startClient-unix.sh "${pkgdir}"/usr/bin/mage-client
