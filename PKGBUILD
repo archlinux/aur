@@ -2,8 +2,8 @@
 # Contributor: Darvin Delgado <dnmodder@gmail.com>
 
 pkgname=oversteer
-pkgver=0.8.2
-pkgrel=2
+pkgver=0.8.3
+pkgrel=1
 pkgdesc='Graphical application to configure Logitech Wheels'
 arch=(any)
 url=https://github.com/berarma/oversteer
@@ -23,7 +23,7 @@ depends=(
 )
 makedepends=(meson)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/berarma/${pkgname}/archive/v${pkgver}.tar.gz)
-b2sums=(e8762e8dc7bcf5ffcc577c11632a5bdfac74be013eb7e8694dc2571a6654f73b9550ebed61762ef3823e3a23f9dfd45a93fe498747848963a4c2a3522604ea45)
+b2sums=(30cc41e000a67d52a7f759019d97fb5a5f2d031de278ac026e623cbed2a020df9141cac1fe41ee1a30ab14c7c2846bdbb31d0165badac45c95c25750721a9ebb)
 
 build() {
   cd ${pkgname}-${pkgver}
