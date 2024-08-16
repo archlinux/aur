@@ -3,7 +3,7 @@
 
 _name=ldap_contacts_backend
 pkgname=nextcloud-app-ldap_contacts_backend
-pkgver=1.7.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="LDAP backend for Contacts"
 arch=('any')
@@ -12,7 +12,7 @@ license=('AGPL3')
 makedepends=('nextcloud' 'yq')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nextcloud-releases/${_name}/releases/download/v${pkgver}/${_name}-v${pkgver}.tar.gz")
-sha512sums=('2e476d7d0058138852c51cfa59206b48b503f91c41ab21e3810dad8fdb02e1e0ac8c1bf15b5b10415049859f1724c183bd1811b74197686c921b7daf0e9b28eb')
+sha512sums=('a0593a01ddddc832e5b3a4a0be5f5f6bd62b63d5870a1d698a219e167587d4edd1cad47d2b5e0e9099edc062f29e321abb558aa50bdd608cf0c211cdd73a2156')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
