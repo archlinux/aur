@@ -1,18 +1,15 @@
 # Maintainer: ookami <mail@ookami.one>
 pkgname=proxy-ns
-pkgver=1.2.7
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Run programs in a network namespace where all traffic go through proxy"
 arch=('x86_64')
 url="https://github.com/OkamiW/proxy-ns"
 license=('GPL')
-depends=('bash' 'glibc' 'libcap' 'iproute2' 'badvpn-git')
-makedepends=('git' 'make')
+depends=()
+makedepends=('git' 'make' 'go')
 source=("git+$url")
 sha512sums=('SKIP')
-backup=(
-    etc/proxy-nsd/main.conf
-)
 
 build() {
     cd "$srcdir/$pkgname"

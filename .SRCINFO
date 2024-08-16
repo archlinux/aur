@@ -1,18 +1,13 @@
 pkgbase = proxy-ns
 	pkgdesc = Run programs in a network namespace where all traffic go through proxy
-	pkgver = 1.2.7
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/OkamiW/proxy-ns
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = make
-	depends = bash
-	depends = glibc
-	depends = libcap
-	depends = iproute2
-	depends = badvpn-git
-	backup = etc/proxy-nsd/main.conf
+	makedepends = go
 	source = git+https://github.com/OkamiW/proxy-ns
 	sha512sums = SKIP
 
