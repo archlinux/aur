@@ -1,33 +1,40 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="posting"
-pkgver=1.10.1
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="The modern API client that lives in your terminal"
 arch=('any')
 url="https://github.com/darrenburns/${pkgname}"
 license=('MIT')
 makedepends=('python-build' 'python-installer' 'python-hatchling')
-# checkdepends=('python-pytest')
-depends=('python' 'python-click' 'python-xdg-base-dirs' 'python-httpx'
+# checkdepends=('python-pytest>=8.3.1' 'python-pytest-cov' 'python-pytest-xdist')
+depends=('python>=3.11' 'python-click' 'python-xdg-base-dirs' 'python-httpx'
          'python-click-default-group' 'python-pyperclip' 'python-pydantic'
          'python-yaml' 'python-pydantic-settings' 'python-dotenv' 'python-rich'
          'python-textual' 'python-typing_extensions' 'python-textual-autocomplete')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('24a42658d374bcb68fe274a7a073ff85609312fe10b9f3deb6b1937f6bacd463')
+sha256sums=('252406c7470032e0287a514d173e8610b14ebb707fdbd74f9f784ac9b17686f2')
 
-build () {
+# prepare() {
+#   cd "${srcdir}/${_pkgsrc}/src/${pkgname}"
+#   mv types.py posting_types.py
+#   find . -type f -name '*.py' -exec sed -i 's/from posting.types/from posting.posting_types/g' {} +
+#   find . -type f -name '*.py' -exec sed -i 's/import posting.types/import posting.posting_types/g' {} +
+# }
+
+build() {
   cd "${srcdir}/${_pkgsrc}"
   python -m build --wheel --no-isolation
 }
 
-# check () {
+# check() {
 #   cd "${srcdir}/${_pkgsrc}"
-#   pytest
+#   PYTHONPATH=src pytest tests/ -m "not serial"
 # }
 
-package () {
+package() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
   cd "${srcdir}/${_pkgsrc}"
