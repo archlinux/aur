@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=packetry
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='USB 2.0 protocol analysis app for use with Cynthion'
 arch=('x86_64')
@@ -33,7 +33,7 @@ source=(
   'packetry.desktop'
 )
 
-sha512sums=('15ef16af212cb96522cac39cb3e41207274d7915fd38ab71cb4a63e2ff11feef51063f8d32ebfbc0c6e91623ee6361c930ba623893598de1b2af462b1ccdd6f1'
+sha512sums=('e05708ace8ba743e6869e1acbf9cac5feed9587c944865979d62d09faa85250914bc6598b747086d57bb48940590a5f2d12bc89f039a661d36b31b11a40a7e53'
             '1ab20c64195fb67204d1b0aab17e5f1d54b9d0b416074eb32fa5806a4618d0c6d3b5beb54473160690f56f969598b5d1c2de0eaaa5c87f43c14e18059d259212'
             '92b735f7cdd5c07797bd48cdffc4cef2218df1a0d0517a8acb6813e41a972a0881eadf617dfe7524f4ed48e5e14fd55743a986f50a707bfca0f279068f46e410')
 
