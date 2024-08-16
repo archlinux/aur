@@ -1,0 +1,11 @@
+pkgbase = adwaita-cursors-not-hidden
+	pkgdesc = visible adwaita cursor theme
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://github.com/funny0facer/AdwaitaCursorNotHidden
+	arch = any
+	license = CC-BY-SA-3.0 OR LGPL-3.0-only
+	source = https://github.com/funny0facer/AdwaitaCursorNotHidden/releases/download/v1.0.0/adwaita-cursors-not-hidden.tar.gz
+	b2sums = 1c984758347efbbbc1da3d4195c55b2c231db24e82e0a2ecac4d96334c17a6ca4f1b3cdac1bf04305457739d6a136c7477ab518148173bd908b2a1d322a9438b
+
+pkgname = adwaita-cursors-not-hidden
