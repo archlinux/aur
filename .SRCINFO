@@ -1,6 +1,6 @@
 pkgbase = arch-update
 	pkgdesc = An update notifier/applier that assists you with important pre/post update tasks.
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/Antiz96/arch-update
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = arch-update
 	optdepends = qt6-wayland: Systray applet support on Wayland
 	optdepends = sudo: Privilege elevation
 	optdepends = doas: Privilege elavation
-	source = arch-update-2.3.1.tar.gz::https://github.com/Antiz96/arch-update/archive/v2.3.1.tar.gz
-	sha256sums = 5436abcc52f7986b78b28da2af6712129505e93a919c629fcc59141b95df0d49
+	source = arch-update-2.3.2.tar.gz::https://github.com/Antiz96/arch-update/archive/v2.3.2.tar.gz
+	sha256sums = cfb3031004245500617418758490d234c4384cc43644585c6439172f047833b8
 
 pkgname = arch-update
