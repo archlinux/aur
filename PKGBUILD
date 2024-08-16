@@ -1,7 +1,7 @@
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 
 pkgname=cohesion-git
-pkgrel=1
+pkgrel=2
 pkgver=r173.gda1c1d0
 pkgdesc="Notion client for Linux"
 arch=(x86_64)
@@ -63,7 +63,7 @@ package() {
     install -d "${pkgdir}/opt/cohesion/" "${pkgdir}/usr/bin" "${pkgdir}/usr/share/doc" "${pkgdir}/usr/share/licenses"
 
     cp -r build/linux-unpacked/* "${pkgdir}/opt/cohesion/"
-	cp -r data/icons/* "${pkgdir}/usr/share/icons/"
+	cp -r data/icons/* "${pkgdir}/usr/share/icons/hicolor/"
     chmod +x "${pkgdir}/opt/cohesion/cohesion"
 
     ln -s "/opt/cohesion/cohesion" "${pkgdir}/usr/bin/cohesion"
