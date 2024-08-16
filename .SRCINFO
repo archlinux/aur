@@ -1,12 +1,12 @@
 pkgbase = kops
 	pkgdesc = Kubernetes Operations - Production Grade K8s Installation, Upgrades, and Management (build from src)
-	pkgver = 1.29.2
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://github.com/kubernetes/kops
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	source = kops-1.29.2.tar.gz::https://github.com/kubernetes/kops/archive/refs/tags/v1.29.2.tar.gz
-	sha256sums = 0e3d5e367cd7ced41a8499ec45c3d90fa2c3852f758aa737d8f925089f702e77
+	source = kops-1.30.0.tar.gz::https://github.com/kubernetes/kops/archive/refs/tags/v1.30.0.tar.gz
+	sha256sums = 16e8cc80a6d4403baba7c56a76807be48ef6add32172e3c80c58f17bffdef3f7
 
 pkgname = kops
