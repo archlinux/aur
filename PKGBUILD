@@ -1,30 +1,40 @@
 # Maintainer: Laura Demkowicz-Duffy <laura@demkowiczduffy.co.uk>
 pkgname=osabie-git
-pkgver=r857.f34df35
-pkgrel=2
+_pkgname=osabie
+pkgver=r871.1d532f3
+pkgrel=1
 pkgdesc="An esoteric code golfing language"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/Adriandmen/05AB1E"
 license=('MIT')
-makedepends=('elixir')
-provides=('osabie')
-source=("$pkgname::git+https://github.com/Adriandmen/05AB1E.git#branch=master")
+makedepends=(elixir git)
+depends=('erlang-nox')
+provides=("$_pkgname")
+source=("$_pkgname::git+$url.git#branch=master"
+		"ssl_verify_fun_bump.patch")
 noextract=()
+sha256sums=('SKIP'
+            'b8cec5248bee838a9e97997cb81e912b9c9e3811995fc9d1a178eb1dca2535f9')
+
+prepare() {
+	cd "$_pkgname"
+	patch -p2 -i ../ssl_verify_fun_bump.patch
+}
 
 pkgver() {
-	cd "$pkgname"
+	cd "$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$pkgname"
+	cd "$_pkgname"
 	mix local.hex --force
 	mix deps.get
 	MIX_ENV=prod mix escript.build
 }
 
 package() {
-	cd "$pkgname"
-	install -Dm 755 osabie $pkgdir/usr/bin/osabie
+	cd "$_pkgname"
+	install -Dm0755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
+	install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
-sha256sums=('SKIP')

@@ -1,13 +1,17 @@
 pkgbase = osabie-git
 	pkgdesc = An esoteric code golfing language
-	pkgver = r857.f34df35
-	pkgrel = 2
+	pkgver = r871.1d532f3
+	pkgrel = 1
 	url = https://github.com/Adriandmen/05AB1E
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = elixir
+	makedepends = git
+	depends = erlang-nox
 	provides = osabie
-	source = osabie-git::git+https://github.com/Adriandmen/05AB1E.git#branch=master
+	source = osabie::git+https://github.com/Adriandmen/05AB1E.git#branch=master
+	source = ssl_verify_fun_bump.patch
 	sha256sums = SKIP
+	sha256sums = b8cec5248bee838a9e97997cb81e912b9c9e3811995fc9d1a178eb1dca2535f9
 
 pkgname = osabie-git
