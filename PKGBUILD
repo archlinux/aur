@@ -1,7 +1,7 @@
 # Maintainer: James R Larrowe <rot13 yneebjr.frznw11@tznvy.pbz>
 
 _java=24
-_java_minor=+8.1
+_java_minor=+10.1
 pkgname="jdk24-graalvm-ea-bin"
 pkgver=24.0.0_ea.08
 pkgrel=1
