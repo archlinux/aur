@@ -1,22 +1,14 @@
 pkgbase = fixit-bin
 	pkgdesc = A utility to fix mistakes in your commands.
-	pkgver = 0.4.0_beta
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/eugene-babichenko/fixit
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = fixit-x86_64-0.4.0-beta.tar.gz::https://github.com/eugene-babichenko/fixit/releases/download/v0.4.0-beta/fixit-v0.4.0-beta-x86_64-unknown-linux-musl.tar.gz
-	source_x86_64 = https://raw.githubusercontent.com/eugene-babichenko/fixit/v0.4.0-beta/README.md
-	source_x86_64 = https://raw.githubusercontent.com/eugene-babichenko/fixit/v0.4.0-beta/LICENSE
-	sha256sums_x86_64 = 0baf14e635f0dcb065328c6fe0e207a9bbe2e6e42e55c2f3e327c8df53aed957
-	sha256sums_x86_64 = SKIP
-	sha256sums_x86_64 = SKIP
-	source_aarch64 = fixit-aarch64-0.4.0-beta.tar.gz::https://github.com/eugene-babichenko/fixit/releases/download/v0.4.0-beta/fixit-v0.4.0-beta-aarch64-unknown-linux-musl.tar.gz
-	source_aarch64 = https://raw.githubusercontent.com/eugene-babichenko/fixit/v0.4.0-beta/README.md
-	source_aarch64 = https://raw.githubusercontent.com/eugene-babichenko/fixit/v0.4.0-beta/LICENSE
-	sha256sums_aarch64 = 4247b5aa8003e70ec062c7360afd748f312ec8b1aa9ba95c32dd92edd53cdb05
-	sha256sums_aarch64 = SKIP
-	sha256sums_aarch64 = SKIP
+	source_x86_64 = fixit-x86_64-0.5.0.tar.gz::https://github.com/eugene-babichenko/fixit/releases/download/v0.5.0/fixit-v0.5.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 5b0adc517462236225a5bc572c16e93b02a599c31fe6cbfd452490a33d211124
+	source_aarch64 = fixit-aarch64-0.5.0.tar.gz::https://github.com/eugene-babichenko/fixit/releases/download/v0.5.0/fixit-v0.5.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 55092eee5a94b464b40d213fe92bd3dea6d5ab5cee6345acfb5e12f02b8b5920
 
 pkgname = fixit-bin
