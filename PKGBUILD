@@ -1,4 +1,5 @@
 pkgname=mingw-w64-spirv-headers
+epoch=1
 pkgver=1.3.283.0
 pkgrel=1
 pkgdesc='SPIR-V Headers (mingw-w64)'
