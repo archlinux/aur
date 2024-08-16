@@ -21,3 +21,4 @@ package() {
     mkdir -p "$pkgdir/usr/bin"
     ln -s /opt/simplex/bin/simplex "$pkgdir/usr/bin/simplex-desktop"
 }
+sha256sums=('2ca6fdb49532308258b871ae1272491125baefd3d616248d7c59a496a80512d5')
