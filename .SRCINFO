@@ -16,6 +16,7 @@ pkgbase = zulu11-fx-bin
 	provides = java-runtime-headless=11
 	provides = java-runtime-headless-openjdk=11
 	provides = java-openjfx=11
+	conflicts = zulu-11-bin
 	options = !debug
 	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu11.74.15-ca-fx-jdk11.0.24-linux_x64.tar.gz
 	sha256sums_x86_64 = 78fd81083efbb919ae91de3cfa90e5225868b3d4632fd558c7cb6941dab6b8da
