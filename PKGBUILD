@@ -2,18 +2,18 @@
 
 _pkgname=Frappe-Books
 pkgname=frappebooks-appimage
-pkgver=0.16.0
-pkgrel=3
+pkgver=0.21.2
+pkgrel=0
 pkgdesc="Frappe Books is a simple, well-designed, desktop accounting software for freelancers and small businesses ."
 arch=('x86_64')
-url="https://frappebooks.com/"
+url="https://frappe.io/"
 license=('CC-BY-SA 3.0')
 provides=('frappe-books')
 conflicts=('frappe-books' 'frappe-books-appimage')
 depends=('fuse-common')
 _filename="${_pkgname}-${pkgver}-${arch}.AppImage"
 source=("${_filename}::https://github.com/frappe/books/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
-md5sums=('08feab012e0285a6d44afc2a5d6719ca')
+sha256sums=('bd0ee74662c9631c4c20d424ce9a60c2767342094b0f0c4b87f5a84308326cb8')
 options=(!strip)
 prepare() 
 {
@@ -26,13 +26,8 @@ prepare()
 package() 
 {
   # Install AppImage
-  install -Dm755 "${srcdir}/${_filename}" "${pkgdir}/opt/appimages/${_filename}"
+  install -Dm755 "${srcdir}/${_filename}" "${pkgdir}/opt/appimages/${_pkgname}.AppImage"
 
-  # Install Exec Script
-  ExecScript="#!/bin/sh\nexec /opt/appimages/${_filename} \"\$@\""
-  install -dm755 "${pkgdir}/usr/bin"
-  echo -e $ExecScript > "${pkgdir}/usr/bin/${_pkgname}"
-  chmod +x "${pkgdir}/usr/bin/${_pkgname}"
 
   # Install global Desktop-Integration
   _sizes=('256x256' '128x128' '64x64' '48x48' '32x32' '16x16')
@@ -41,7 +36,8 @@ package()
 
   #Modify and integrate desktop shortcut
   install -Dm644 "${srcdir}/squashfs-root/frappe-books.desktop" "${pkgdir}/usr/share/applications/frappe-books.desktop"  
-  sed -i 's/Exec=AppRun --no-sandbox %U/Exec=Frappe-Books %U/g' "${pkgdir}/usr/share/applications/frappe-books.desktop"
+  sed -i -E 's|Exec=AppRun --no-sandbox %U|Exec=/opt/appimages/Frappe-Books.AppImage %U|g' "${pkgdir}/usr/share/applications/frappe-books.desktop"
+
 
 done
 }
