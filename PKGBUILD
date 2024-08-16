@@ -1,4 +1,5 @@
-# Maintainer: gborzi <gborzi@ieee.org>
+# Maintainer: Sam Toxopeus <sam@toxopeus.it>
+# Contributor: gborzi <gborzi@ieee.org>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
@@ -6,13 +7,13 @@
 pkgname=libfprint-1
 _pkgname=libfprint
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for fingerprint readers - old stable version"
 arch=(x86_64)
 url="https://fprint.freedesktop.org/"
 license=(LGPL)
 depends=(libusb nss pixman glib2)
-makedepends=(git meson gtk-doc)
+makedepends=(git meson gtk-doc systemd)
 provides=('libfprint=1.0')
 groups=(fprint)
 _commit=823f2c1067a27deae4153dd9ece6ce24bedc0680  # tags/V_1_0^0
