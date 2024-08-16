@@ -2,7 +2,7 @@
 # Maintainer: sunflowercx <1527981693@qq.com>
 
 pkgname=winegame
-pkgver=0.5.13.1
+pkgver=0.5.12.5
 pkgrel=1
 epoch=
 pkgdesc="开源游戏平台，帮您在UOS/Linux系统中运行Windows游戏"
