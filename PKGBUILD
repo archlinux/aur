@@ -2,7 +2,7 @@
 # Contributor: zoorat <zoorat [at] protonmail [dot] com>
 
 pkgname=terser
-pkgver=5.31.3
+pkgver=5.31.6
 pkgrel=1
 pkgdesc='JavaScript parser, mangler and compressor toolkit for ES6+'
 arch=('any')
@@ -14,7 +14,7 @@ provides=('nodejs-terser')
 conflicts=('nodejs-terser')
 replaces=('nodejs-terser')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('8b5200f85f41748ff1524c211b2c472d69734c0dfd90e118ec077352576b83ba')
+sha256sums=('228d32188177269314cafb2d83ee45d9a20c3cd02335f9fb0a3b95f2d05b2d21')
 
 package() {
   # based on https://wiki.archlinux.org/index.php/Node.js_package_guidelines as of 2021-09-30
