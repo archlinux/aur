@@ -1,0 +1,8 @@
+post_install() {
+    udevadm trigger
+    udevadm control --reload
+    echo ":: Add yourself to the uucp group to allow communication with the Cypherock X1 Vault:"
+    echo "   sudo usermod -a -G uucp <user>"
+    echo "   Please checkout the wiki for further information."
+}
+
