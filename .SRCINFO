@@ -1,0 +1,15 @@
+pkgbase = jfq
+	pkgdesc = JSONata on the command line
+	pkgver = 1.2.11
+	pkgrel = 1
+	url = https://github.com/blgm/jfq
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	provides = jfq
+	conflicts = jfq
+	noextract = jfq-1.2.11.tgz
+	source = https://registry.npmjs.org/jfq/-/jfq-1.2.11.tgz
+	sha256sums = 0c2ddd4335b99db0664f185a030dd209c57d47d810b7f0642a39e0c290a9414d
+
+pkgname = jfq
