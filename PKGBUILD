@@ -1,7 +1,7 @@
 # Maintainer: anispwyn <anisphia_wynn_palettia@proton.me>
 
 pkgname=sleepy-launcher-bin
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Sleepy game launcher for Linux with telemetry disabling"
 url="https://github.com/an-anime-team/sleepy-launcher"
@@ -18,7 +18,6 @@ depends=(
     "git"
     "gtk4"
     "glibc"
-    "gstreamer"
 )
 
 optdepends=(
@@ -33,7 +32,7 @@ source=(
     "sleepy-launcher.desktop"
 )
 
-md5sums=('e73ddd5391051ba9e8660d36065c75e1'
+md5sums=('e2bef71a69c55e9e3857ed1f9157299a'
          '808f0ccaac7bac70b56e400760f0b764'
          'a039b4bdbc28710d8784c84e2da16785')
 
