@@ -5,7 +5,7 @@
 pkgname=netatalk2
 _pkgname=netatalk
 pkgver=2.4.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Open-source implementation of the Apple Filing Protocol (for old Macs)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://netatalk.sourceforge.io"
@@ -71,7 +71,7 @@ build() {
         -Dwith-srvloc=true \
         -Dwith-tests=true \
         -Dwith-zeroconf=false \
-        -Dwith-lockfile-path=/run/lock/netatalk
+        -Dwith-lockfile-path=/run/lock/netatalk/
 
     meson compile -C build
 }
