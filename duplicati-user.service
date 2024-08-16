@@ -3,7 +3,7 @@ Description=Duplicati
 
 [Service]
 ExecStartPre=/usr/bin/sleep 5
-ExecStart=/opt/duplicati/duplicati --webservice-port=8200
+ExecStart=/opt/duplicati/duplicati --webservice-port=8200 --auto-update=false
 Restart=on-abort
 Environment=AUTOUPDATER_Duplicati_SKIP_UPDATE=1
 
