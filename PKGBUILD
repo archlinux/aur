@@ -7,7 +7,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=12.7.171
+pkgver=12.9.199
 pkgrel=1
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
@@ -24,13 +24,15 @@ source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot
         "v8_libbase.pc"
         "v8_libplatform.pc"
         "d8"
-        "include_ifdef.diff")
+        "include_ifdef.diff"
+        "silence_build.diff")
 sha256sums=('SKIP'
             'aa704f4549d240b568304e30714e042f6da41b39847949c1018652acf07942a9'
             'efb37bd706e6535abfa20c77bb16597253391619dae275627312d00ee7332fa3'
             'ae23d543f655b4d8449f98828d0aff6858a777429b9ebdd2e23541f89645d4eb'
             '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0'
-            'f6056910ce7a6379060a35ba2d6e5a67c7bdf15dc0c25f6864b08dadb98f4167')
+            'f6056910ce7a6379060a35ba2d6e5a67c7bdf15dc0c25f6864b08dadb98f4167'
+            'cb7eb20b6b0558a75a1862e6b9eb2414f1c2b981afca2e9e5208b23748849688')
 
 OUTFLD=x64.release
 
@@ -63,6 +65,8 @@ prepare() {
 
   # fix build
   git apply ${srcdir}/include_ifdef.diff
+  # silence warnings
+  git apply ${srcdir}/silence_build.diff
 
   # provide pkgconfig files
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8.pc"
@@ -82,6 +86,7 @@ prepare() {
             use_custom_libcxx=false
             use_lld=true
             use_sysroot=false
+            icu_use_data_file=false
             v8_enable_backtrace=true
             v8_enable_disassembler=true
             v8_enable_i18n_support=true
@@ -99,6 +104,7 @@ prepare() {
 }
 
 build() {
+
   export PATH=`pwd`/depot_tools:"$PATH"
 
   cd $srcdir/v8
