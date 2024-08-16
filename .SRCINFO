@@ -1,6 +1,6 @@
 pkgbase = tinydm
 	pkgdesc = Tiny wayland / x11 session starter for single user machines
-	pkgver = 1.1.3
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://gitlab.com/postmarketOS/tinydm
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = tinydm
 	makedepends = git
 	depends = xorg-xinit
 	depends = autologin
-	source = tinydm-1.1.3.tar.bz2::https://gitlab.com/postmarketOS/tinydm/-/archive/1.1.3/tinydm-1.1.3.tar.bz2
-	sha256sums = 2a86434bf712fdf32c550b5cddeb5768203ca06c3938ad5117bd6cee5336edb2
+	source = tinydm-1.2.0.tar.bz2::https://gitlab.com/postmarketOS/tinydm/-/archive/1.2.0/tinydm-1.2.0.tar.bz2
+	sha256sums = 5539f3270a4890b5c7a73d05fcdc9a6eb832a86e02050111515f074bbcd3ae27
 
 pkgname = tinydm
