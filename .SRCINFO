@@ -1,10 +1,10 @@
 pkgbase = python-click-default-group
 	pkgdesc = Extends click.Group to invoke a command without explicit subcommand name
 	pkgver = 1.2.4
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/click-contrib/click-default-group
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
