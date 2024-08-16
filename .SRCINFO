@@ -1,20 +1,21 @@
 pkgbase = xmap-git
 	pkgdesc = Fast Internet-wide IPv6 & IPv4 network scanner
-	pkgver = 2.0.1.r13.g15f628c
+	pkgver = 2.0.2.r0.g86ae0fe
 	pkgrel = 1
 	url = https://github.com/idealeer/xmap
 	arch = x86_64
 	license = Apache-2.0
+	makedepends = byacc
 	makedepends = cmake
 	makedepends = flex
-	makedepends = byacc
+	makedepends = gengetopt
 	makedepends = git
+	makedepends = ninja
 	depends = gmp
-	depends = gengetopt
 	depends = libpcap
 	depends = json-c
 	depends = libunistring
-	provides = xmap=2.0.1
+	provides = xmap=2.0.2
 	conflicts = xmap
 	source = git+https://github.com/idealeer/xmap.git
 	sha256sums = SKIP

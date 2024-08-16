@@ -2,15 +2,15 @@
 
 _pkgname="xmap"
 pkgname="$_pkgname-git"
-pkgver=2.0.1.r13.g15f628c
+pkgver=2.0.2.r0.g86ae0fe
 pkgrel=1
 pkgdesc="Fast Internet-wide IPv6 & IPv4 network scanner"
 url="https://github.com/idealeer/xmap"
 license=('Apache-2.0')
 arch=('x86_64')
 
-depends=('gmp' 'gengetopt' 'libpcap' 'json-c' 'libunistring')
-makedepends=('cmake' 'flex' 'byacc' 'git')
+depends=('gmp' 'libpcap' 'json-c' 'libunistring')
+makedepends=('byacc' 'cmake' 'flex' 'gengetopt' 'git' 'ninja')
 
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
@@ -26,13 +26,7 @@ pkgver() {
 
 prepare() {
   sed -E 's|DESTINATION sbin|DESTINATION bin|' -i "$_pkgsrc/src/CMakeLists.txt"
-
-  # https://github.com/idealeer/xmap/issues/23
-  sed -E '/source_ip_addresses/s& = NULL,& = 0,&' -i "$_pkgsrc/src/state.c"
-
-  # https://github.com/idealeer/xmap/issues/24
-  sed '1 i#include <sys/time.h>' \
-    -i "$_pkgsrc"/src/probe_modules/module_dns*.c
+  sed '/set(XMAP_VERSION DEVELOPMENT)/d' -i "$_pkgsrc/CMakeLists.txt"
 }
 
 build() {
@@ -42,9 +36,12 @@ build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DENABLE_DEVELOPMENT=OFF
     -DENABLE_LOG_TRACE=OFF
+    -DXMAP_VERSION="AUR $pkgver"
     -Wno-dev
   )
   cmake "${_cmake_options[@]}"
