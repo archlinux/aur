@@ -2,21 +2,21 @@
 # Feedback is appreciated
 
 pkgname=xmage
-pkgver=1.4.50V2
+pkgver=1.4.53
 pkgrel=0
 
 pkgdesc="Java-based program for playing Magic:The Gathering, including client and server"
 
 arch=('any')
-url="http://xmage.de"
+url="http://xmage.today"
 license=('MIT')
 
-
-source=("http://xmage.de/files/xmage_${pkgver}.zip"
+source=(
+	"http://beta.xmage.today/files/mage-full_1.4.53-dev_2024-08-16_15-45.zip"
 	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt'
 	'https://raw.githubusercontent.com/magefree/Launcher/master/src/main/resources/icon-mage.png')
 
-sha256sums=("b75a5e1d8c02472df0888230383de7532a3148ec5bc3a07f83ef80d687c86e68" 
+sha256sums=("389eec3cb38a2e20fbc3d24d3a78935d2c93434e92201441cf34bc7dffdd020c" 
 	"SKIP"
 	"SKIP")
 
@@ -28,43 +28,43 @@ package() {
 
 	cd "${srcdir}"
 
-	msg2 "changing file format of included scripts..."
+	echo "changing file format of included scripts..."
 	awk '{ sub("\r$", ""); print }' mage-client/startClient.sh > mage-client/startClient-unix.sh
 	awk '{ sub("\r$", ""); print }' mage-server/startServer.sh > mage-server/startServer-unix.sh
 
-	msg2 "changing default locations of scripts..."
+	echo "changing default locations of scripts..."
 	sed -i 's|\.\/lib|\/usr\/share\/xmage\/mage-client\/lib|' mage-client/startClient-unix.sh
 	sed -i 's|\.\/lib|\/usr\/share\/xmage\/mage-server\/lib|' mage-server/startServer-unix.sh
 
-	msg2 "adding cd to relevant /usr/share/xmage/ directory..."
+	echo "adding cd to relevant /usr/share/xmage/ directory..."
 	sed -i '2i cd /usr/share/xmage/mage-client' mage-client/startClient-unix.sh
 	sed -i '2i cd /usr/share/xmage/mage-server' mage-server/startServer-unix.sh
 
-	msg2 "increasing default memory limit of client and server"
+	echo "increasing default memory limit of client and server"
 	sed -i 's|-Xmx512m|-Xmx2048m|g' mage-client/startClient-unix.sh
 	sed -i 's|-Xmx512m|-Xmx2048m|g' mage-server/startServer-unix.sh
 
-	msg2 "moving files..."
-	install -Dm755 mage-client/startClient-unix.sh ${pkgdir}/usr/bin/mage-client
-	install -Dm755 mage-server/startServer-unix.sh ${pkgdir}/usr/bin/mage-server
+	echo "moving files..."
+	install -Dm755 mage-client/startClient-unix.sh "${pkgdir}"/usr/bin/mage-client
+	install -Dm755 mage-server/startServer-unix.sh "${pkgdir}"/usr/bin/mage-server
 
-	msg2 "creating /usr/share/xmage..."
-	install -dm755 ${pkgdir}/usr/share/xmage
+	echo "creating /usr/share/xmage..."
+	install -dm755 "${pkgdir}"/usr/share/xmage
 
-	msg2 "copying files to /usr/share/xmage..."
-	cp -ra ./* ${pkgdir}/usr/share/xmage/
+	echo "copying files to /usr/share/xmage..."
+	cp -ra ./* "${pkgdir}"/usr/share/xmage/
 	
-	msg2 "setting permissions of /usr/share/xmage..."
-	chmod -R a+rwx ${pkgdir}/usr/share/xmage
+	echo "setting permissions of /usr/share/xmage..."
+	chmod -R a+rwx "${pkgdir}"/usr/share/xmage
 
-	msg2 "installing license: ${license}..."
+	echo "installing license: ${license}..."
 	install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licences/"${pkgname}"/LICENSE.txt
 	
-	msg2 "installing mage-server systemd unit file to /usr/lib/systemd/system..."
+	echo "installing mage-server systemd unit file to /usr/lib/systemd/system..."
 	mkdir -p "${pkgdir}"/usr/lib/systemd/system
 	install -m755 ../mage-server.service "${pkgdir}"/usr/lib/systemd/system
 	
-	msg2 "installing icon and .desktop file..."
+	echo "installing icon and .desktop file..."
 	mkdir -p "${pkgdir}"/usr/share/icons
 	install -m755 icon-mage.png "${pkgdir}"/usr/share/icons/
 	mkdir -p "${pkgdir}"/usr/share/applications
