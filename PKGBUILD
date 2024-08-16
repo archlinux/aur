@@ -2,19 +2,19 @@
 # Contributor: Ryan Corder <ryanc@greengrey.org>
 
 pkgname=tenshi
-pkgver=0.17
-pkgrel=3
+pkgver=0.18
+pkgrel=1
 pkgdesc="real-time log monitor from the Gentoo Linux project"
 url="https://inversepath.com/tenshi.html"
 arch=(any)
 license=("custom")
 depends=('perl' 'perl-io-bufferedselect')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/inversepath/tenshi/archive/$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/f-secure-foundry/tenshi/archive/$pkgver.tar.gz"
         'tenshi.service'
         'tenshi.sysusers'
         'tenshi.tmpfiles'
         'conf.diff')
-sha256sums=('9b7e72b6496e2f6abd77d1dd3c4c6b77bdce61ca5531f9f1c62376b020904db7'
+sha256sums=('84ceedb32498ce8cbef6b7cb6863a15a5c8fc6187a22afd0c089497a2faecc12'
             'e4ed6b3ec69e4f0f3011b5ddb6bb8888814be25ef110099c16a1281ba63fc3ad'
             'a4909d42e2e7df439af60e3d9967eabe4575c1e2788accd24d6269c698f359c5'
             'dddb7e52546e5a58d809cbb8214f02c2e5a6c931a622b9cfc26f462481525ac9'
