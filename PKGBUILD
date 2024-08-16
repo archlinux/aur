@@ -2,8 +2,8 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=ddd
-pkgver=3.4.0
-pkgrel=12
+pkgver=3.4.1
+pkgrel=1
 pkgdesc="A graphical front-end for command-line debuggers such as GDB, JDB, pydb, perl debugger..."
 arch=('x86_64')
 url="http://www.gnu.org/software/ddd/"
@@ -13,7 +13,7 @@ optdepends=('gdb: to use the Gnu debugger'
         'java-runtime-openjdk: to use the Java debugger' 
         'perl: to use the Perl debugger')
 source=(http://ftp.gnu.org/gnu/ddd/${pkgname}-${pkgver}.tar.gz)
-sha1sums=('cf01bd6727a2b957ae27796bb807298bb34fbbb0')
+sha1sums=('0bcb90b8ded114b3953eb2c5f77f3c636f317cdd')
   
 prepare() {
   cd ${pkgname}-${pkgver}
