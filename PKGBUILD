@@ -13,7 +13,7 @@ _generic_release=false
 # hack taken from wine-tkg PKGBUILD, real pkgrel is the eval one
 pkgver=9.15
 pkgrel=1
-eval pkgrel=1
+eval pkgrel=2
 
 ################################################################################################################################
 ################################################################################################################################
@@ -21,10 +21,15 @@ eval pkgrel=1
 ################################################################################################################################
 ################################################################################################################################
 
-_disabled_staging="" ## e.g. "-W Compiler_Warnings -W user32-. . ."
+## apply staging patches?
+_use_staging=true
+
+## if staging patches are to be applied, what patches to omit?
+## e.g. "-W Compiler_Warnings -W user32-. . ."
+_disabled_staging=""
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="08-11-2024-ad8b2870-92374493"
+_patchbase_tag="08-15-2024-16a6b0ad-a90554bb"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the custompatches folder
@@ -34,25 +39,34 @@ _custompatches=false
 
 ## uses wine/staging master if empty, uses given commit or tag if set
 ## only applies if _custompatches is true, otherwise overwritten by upstream commits from patchbase repo
-_desired_wine_commit=ad8b2870312a373fb0ab0ff2cbf6d42b3f08c15a
-_desired_staging_commit=92374493ee7d657b198ca9db2f3ef32e3dc27a82
+_desired_wine_commit=16a6b0ad65e9b8cdbb68fc9125951483781ca616
+_desired_staging_commit=a90554bb0489659c0ab632bb6a263ab4198e9985
 
+## .a libs which may be required for external programs such as winestreamproxy
+_install_static=true
+
+## removes src, pkg folders on exit (both failure and success)
+_cleanbuildfolders=false
+
+## removes unneeded symbols from binaries
 _strip_package=true
-_install_static=true ## .a libs which may be required for external programs such as winestreamproxy
 
-_autoupdate=false ## not functional yet
+_use_clang=true
 
-_cleanbuildfolders=false ## removes src, pkg folders on exit (both failure and success)
+_use_llvm_mingw=true
 
 ## (true: wow64) leave empty unless you want to manually change the type of build
-wow64build=
+_wow64build=
+
+## not functional yet
+_autoupdate=false
 
 ################################################################################################################################
 ################################################################################################################################
 
-wow64build=${wow64build:-"$(cat "${_where}/buildiswow64")"}
+_wow64build=${_wow64build:-"$(cat "${_where}/buildiswow64")"}
 if [ "${_custompatches}" != "true" ]; then _custompatches= ; fi
-if [ "$wow64build" = "true" ]; then _wowname="-wow64"; else _wowname=""; fi
+if [ "$_wow64build" = "true" ]; then _wowname="-wow64"; else _wowname=""; fi
 
 if [ "${_generic_release}" = "true" ]; then
   PKGEXT='.pkg.tar.xz'
@@ -65,7 +79,7 @@ fi
 pkgname=wine-osu-spectator"${_wowname}"
 
 pkgdesc="A compatibility layer for running Windows programs, but with osu! specific patches"
-if [ "$wow64build" = "true" ]; then pkgdesc+=" (WoW64 version)"; fi
+if [ "$_wow64build" = "true" ]; then pkgdesc+=" (WoW64 version)"; fi
 
 provides=(wine-osu-spectator"${_wowname}")
 conflicts=(wine-osu-spectator"${_wowname}")
@@ -82,6 +96,8 @@ source=(
   "30-win32-aliases.conf"
   "wine-binfmt.conf"
   "Makefile.single"
+  "lto-fixup.patch"
+  "mingw-gcc-float-precision-fix.patch"
   "buildiswow64"
   "git+https://gitlab.winehq.org/wine/wine.git#commit=${_desired_wine_commit:-master}"
   "git+https://github.com/wine-staging/wine-staging.git#commit=${_desired_staging_commit:-master}"
@@ -92,6 +108,8 @@ sha512sums=(
   '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
   'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
   '59920a54e9bd8d1f73c15675f7df29829680b59f4d1c4fc74fe710e4b596fd6a96f3b43994eb5da0fd1e50299b0ada933c6f3796e1d0698febb7870995f7f266'
+  'c949136c1dca345ab4e86cb7ac6d0f02595e09a9f0c344dc9ca454cfa3aab8845a2e1f36f27e9357f3a6a3ead0d6b7f1ffb1444246cd3b76aedbe30942d20859'
+  '78e639a52e940573bcced55502fc04dfa4791486cd3c2f7b79c581b8c79bfad46f99b1586928973b6863ad54e3feb83d2ff63cb6e03dfa5bc22f453f1379f438'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -131,9 +149,6 @@ depends=(
 
 makedepends=(autoconf bison ccache perl fontforge flex
   gcc
-  clang
-  llvm-libs
-  llvm-mingw-w64-toolchain
   giflib
   libpng
   libxmu
@@ -187,50 +202,86 @@ optdepends=(
   samba dosbox
 )
 
-if [ "${wow64build}" != "true" ]; then
-  depends+=(lib32-libxkbcommon libvulkan.so=1-32 lib32-gnutls lib32-libxcomposite lib32-libpulse lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
-  makedepends+=(lib32-wayland lib32-gtk3 lib32-attr lib32-llvm-libs lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-lib lib32-gst-plugins-base-libs lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2 lib32-libcups)
-  optdepends+=(lib32-libxinerama lib32-giflib lib32-libpng lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
-fi
-
-makedepends=("${makedepends[@]}" "${depends[@]}")
-
 pkgver() {
   cd "${srcdir}/${pkgname}" || true
   git describe --tags --abbrev=0 | cut -f2 -d'-'
 }
 
+if [ "${_wow64build}" != "true" ]; then
+  depends+=(lib32-libxkbcommon libvulkan.so=1-32 lib32-gnutls lib32-libxcomposite lib32-libpulse lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
+  makedepends+=(lib32-wayland lib32-gtk3 lib32-attr lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-lib lib32-gst-plugins-base-libs lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2 lib32-libcups)
+  optdepends+=(lib32-libxinerama lib32-giflib lib32-libpng lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
+  if [ "${_use_clang}" = "true" ]; then makedepends+=(lib32-llvm-libs); fi
+fi
+
+makedepends=("${makedepends[@]}" "${depends[@]}")
+
+if [ "${_use_clang}" = "true" ]; then
+  makedepends+=(clang llvm-libs)
+
+  _cc="/usr/bin/clang"
+  _cxx="/usr/bin/clang++"
+
+  _LTO_FLAGS="-flto=full -Wl,--flto=full"
+else
+  _cc="/usr/bin/gcc"
+  _cxx="/usr/bin/g++"
+
+  _LTO_FLAGS="-fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto -Wl,-flto"
+fi
+
+if [ "${_use_llvm_mingw}" = "true" ]; then
+  makedepends+=(llvm-mingw-w64-toolchain)
+
+  _cross64="x86_64-w64-mingw32-clang"
+  _crossxx64="x86_64-w64-mingw32-clang++"
+  _cross32="i686-w64-mingw32-clang"
+  _crossxx32="i686-w64-mingw32-clang++"
+
+  _CROSS_PATH="/opt/llvm-mingw/bin":"${PATH}"
+else
+  makedepends+=(mingw-w64-gcc)
+
+  _cross64="x86_64-w64-mingw32-gcc"
+  _crossxx64="x86_64-w64-mingw32-g++"
+  _cross32="i686-w64-mingw32-gcc"
+  _crossxx32="i686-w64-mingw32-g++"
+
+  if [[ "${PATH}" =~ "/opt/llvm-mingw/bin" ]]; then
+    _CROSS_PATH="$(echo "${PATH}" | sed 's/\/opt\/llvm-mingw\/bin//g')" || _failure
+  else
+    _CROSS_PATH="${PATH}"
+  fi
+fi
+
 # exported at the start of every function
 _set_vars() {
   export build64dir="${_where}/src/${pkgname}-64-build"
   export build32dir="${_where}/src/${pkgname}-32-build"
+  
+  export PATH="${_CROSS_PATH}"
 
-  export PATH="/opt/llvm-mingw/bin":"${PATH}"
-
-  #_GCC_LTO_FLAGS="-fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto -Wl,-flto" #requires lto-fixup.patch
-  _CLANG_LTO_FLAGS="-flto=full -Wl,--flto=full"
   #_GRAPHITE_FLAGS="-floop-nest-optimize -fgraphite-identity -floop-strip-mine"
   #_OPTIMIZE_HARDER_FLAGS="-fipa-pta -fgcse-sm -fgcse-las -fira-loop-pressure" # -fsched-pressure -fsched-spec-load
 
-  _common_cflags="${_CPU_TARGET} -O3 -pipe -fomit-frame-pointer -fno-semantic-interposition -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=return-mismatch -Wno-error=int-conversion -w"
-  #_native_common_cflags="${_GCC_LTO_FLAGS} ${_GRAPHITE_FLAGS} ${_OPTIMIZE_HARDER_FLAGS}" # only for the non-mingw side
-  _native_common_cflags="${_CLANG_LTO_FLAGS}" # only for the non-mingw side
+  _common_cflags="${_CPU_TARGET} -O3 -pipe -fomit-frame-pointer -fwrapv -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion -w"
+  _native_common_cflags="${_LTO_FLAGS}" # only for the non-mingw side
 
   export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
   _GCC_FLAGS="${_common_cflags} ${_native_common_cflags} ${CPPFLAGS}"
   _LD_FLAGS="${_GCC_FLAGS} -Wl,-O2,--sort-common,--as-needed"
 
-  _CROSS_FLAGS="${_common_cflags} ${CPPFLAGS} -L/opt/llvm-mingw/lib -I/opt/llvm-mingw/include -I/opt/llvm-mingw/lib/clang/${__llvm_ver}/include -I/opt/llvm-mingw/generic-w64-mingw32/include -L/opt/llvm-mingw/x86_64-w64-mingw32/lib -L/opt/llvm-mingw/i686-w64-mingw32/lib -L/opt/llvm-mingw/lib/clang/${__llvm_ver}/lib/windows"
+  _CROSS_FLAGS="${_common_cflags} ${CPPFLAGS}"
   _CROSS_LD_FLAGS="${_CROSS_FLAGS} -Wl,-O2,--sort-common,--as-needed,--file-alignment=4096"
 
-  export CC="ccache /usr/bin/clang"
-  export CXX="ccache /usr/bin/clang++"
+  export CC="ccache ${_cc}"
+  export CXX="ccache ${_cxx}"
 
-  export x86_64_CC="ccache x86_64-w64-mingw32-clang"
-  export x86_64_CXX="ccache x86_64-w64-mingw32-clang++"
+  export x86_64_CC="ccache ${_cross64}"
+  export x86_64_CXX="ccache ${_crossxx64}"
 
-  export i386_CC="ccache i686-w64-mingw32-clang"
-  export i386_CXX="ccache i686-w64-mingw32-clang++"
+  export i386_CC="ccache ${_cross32}"
+  export i386_CXX="ccache ${_crossxx32}"
 
   export CFLAGS="${_GCC_FLAGS}"
   export CXXFLAGS="${_GCC_FLAGS}"
@@ -242,22 +293,24 @@ _set_vars() {
 }
 
 _set_vars64() {
-  export PKG_CONFIG_LIBDIR=/opt/llvm-mingw/x86_64-w64-mingw32/lib/pkgconfig:/usr/lib/pkgconfig
-  export PKG_CONFIG_PATH=$PKG_CONFIG_LIBDIR:$PKG_CONFIG_PATH_CUSTOM
+  if [ "${_use_llvm_mingw}" = "true" ]; then
+    export PKG_CONFIG_LIBDIR=/opt/llvm-mingw/x86_64-w64-mingw32/lib/pkgconfig:/usr/lib/pkgconfig
+    export PKG_CONFIG_PATH=$PKG_CONFIG_LIBDIR:$PKG_CONFIG_PATH_CUSTOM
+  fi
 
-  export CROSSCC="ccache x86_64-w64-mingw32-clang"
+  export CROSSCC="${x86_64_CC}"
 }
 
 _set_vars32() {
-  export PKG_CONFIG_LIBDIR=/opt/llvm-mingw/i686-w64-mingw32/lib/pkgconfig:/usr/lib32/pkgconfig
-  export PKG_CONFIG_PATH=$PKG_CONFIG_LIBDIR:$PKG_CONFIG_PATH_CUSTOM
-
-  export CROSSCC="ccache i686-w64-mingw32-clang"
+  if [ "${_use_llvm_mingw}" = "true" ]; then
+    export PKG_CONFIG_LIBDIR=/opt/llvm-mingw/i686-w64-mingw32/lib/pkgconfig:/usr/lib32/pkgconfig
+    export PKG_CONFIG_PATH=$PKG_CONFIG_LIBDIR:$PKG_CONFIG_PATH_CUSTOM
+  fi
 
   # lib32 fsync doesn't compile with clang due to undefined atomic ops otherwise (ntdll.so)
-  if [[ "${CC}" =~ "clang" ]]; then
-    export I386_LIBS="-latomic"
-  fi
+  if [ "${_use_clang}" = "true" ]; then export I386_LIBS="-latomic"; fi
+
+  export CROSSCC="${i386_CC}"
 }
 
 prepare() { _set_vars;
@@ -275,6 +328,7 @@ prepare() { _set_vars;
   if [ "${_custompatches}" != "true" ]; then
     _patchbase_wine_commit=$(cat "${srcdir}"/wine-osu-patches/wine-commit)
     _patchbase_staging_commit=$(cat "${srcdir}"/wine-osu-patches/staging-commit)
+    _disabled_staging="$(cat "${srcdir}"/wine-osu-patches/staging-exclude)"
     if [ "${_autoupdate}" != "true" ]; then
       _desired_wine_commit=$_patchbase_wine_commit
       _desired_staging_commit=$_patchbase_staging_commit
@@ -324,13 +378,15 @@ prepare() { _set_vars;
   printf "Wine commit: %s\nStaging commit: %s\n" "${_patchbase_wine_commit}" "${_patchbase_staging_commit}" > "${_where}"/patchlog.txt
 
   ## Apply wine-staging patchset
-  msg2 "Applying staging patches"
-  printf "\nApplying staging patches\n\n" >> "${_where}"/patchlog.txt
-  pushd wine-staging/staging >/dev/null || _failure
-  # shellcheck disable=SC2086
-  ./patchinstall.py DESTDIR="${srcdir}"/"${pkgname}" --no-autoconf --all $_disabled_staging &>> "${_where}"/patchlog.txt || \
-      _failure "Error applying staging patches, check patchlog.txt for info."
-  popd >/dev/null || _failure
+  if [ "${_use_staging}" != "false" ]; then
+    msg2 "Applying staging patches"
+    printf "\nApplying staging patches\n\n" >> "${_where}"/patchlog.txt
+    pushd wine-staging/staging >/dev/null || _failure
+    # shellcheck disable=SC2086
+    ./patchinstall.py DESTDIR="${srcdir}"/"${pkgname}" --no-autoconf --all $_disabled_staging &>> "${_where}"/patchlog.txt || \
+        _failure "Error applying staging patches, check patchlog.txt for info."
+    popd >/dev/null || _failure
+  fi
 
   ## Apply patches
 
@@ -342,16 +398,26 @@ prepare() { _set_vars;
     patchdir="${_where}/custompatches"
     echo -n "${_desired_wine_commit}" > "${patchdir}/wine-commit"
     echo -n "${_desired_staging_commit}" > "${patchdir}/staging-commit"
+    echo -n " ${_disabled_staging}" > "${patchdir}/staging-exclude"
   else
     patchdir="${srcdir}/wine-osu-patches"
   fi
 
-  for patch in $(find "${patchdir}" -type f -regex ".*\.patch" | LC_ALL=C sort -f); do
-    shortname="${patch#"${patchdir}/"}"
+  patchlist=()
+
+  if [ "${_use_llvm_mingw}" != "true" ]; then patchlist+=("${srcdir}"/mingw-gcc-float-precision-fix.patch); fi
+  if [ "${_use_clang}" != "true" ]; then patchlist+=("${srcdir}"/lto-fixup.patch); fi
+
+  mapfile -t patchlist_tmp < <(find "${patchdir}" -type f -regex ".*\.patch" | LC_ALL=C sort -f)
+
+  patchlist+=("${patchlist_tmp[@]}")
+
+  for patch in "${patchlist[@]}"; do
+    shortname="${patch#"${_where}/"}"
     printf "\nApplying %s\n\n" "${shortname}" >> "${_where}"/patchlog.txt
     msg2 "Applying '${shortname}'"
     patch -Np1 <"${patch}" &>> "${_where}"/patchlog.txt || \
-        _failure "An error occurred applying ${_custompatches:+custompatches/}${shortname}, check patchlog.txt for info."
+        _failure "An error occurred applying ${shortname}, check patchlog.txt for info."
   done
 
   ## make tools/make_makefiles happy
@@ -361,6 +427,7 @@ prepare() { _set_vars;
   git commit --allow-empty -m "makepkg" &>/dev/null || true
 
   tools/make_makefiles
+  # ./dlls/winevulkan/make_vulkan # don't really need dx12 support for this package...
   tools/make_requests
   if [ -e tools/make_specfiles ]; then
     tools/make_specfiles
@@ -434,10 +501,10 @@ build() { _set_vars;
 
   _wine64opts=(
     --libdir=/opt/"${pkgname}"/lib64
-    --with-mingw="ccache x86_64-w64-mingw32-clang"
+    --with-mingw="${x86_64_CC}"
   )
 
-  if [ "${wow64build}" = "true" ]; then
+  if [ "${_wow64build}" = "true" ]; then
     _wine64opts+=(--enable-archs="x86_64,i386")
   else
     _wine64opts+=(--enable-win64)
@@ -445,7 +512,7 @@ build() { _set_vars;
     _wine32opts=(
       --libdir=/opt/"${pkgname}"/lib
       --with-wine64="${build64dir}"
-      --with-mingw="ccache i686-w64-mingw32-clang" 
+      --with-mingw="${i386_CC}" 
     )
   fi
 
@@ -460,7 +527,7 @@ build() { _set_vars;
   mkdir "${build64dir}"
 
   ## don't build lib32 for wow64 builds
-  if [ "${wow64build}" = "true" ]; then
+  if [ "${_wow64build}" = "true" ]; then
     _configure64
     _build64
   else
@@ -479,8 +546,8 @@ package() { _set_vars;
     _installtype="install-lib"
   fi
 
-  if [ "${wow64build}" != "true" ]; then
-    export CROSSCC="ccache i686-w64-mingw32-clang"
+  if [ "${_wow64build}" != "true" ]; then
+    export CROSSCC="${i386_CC}"
     msg2 "Packaging Wine-32"
     cd "${build32dir}" || _failure
     make -j$(($(nproc) + 1)) \
@@ -489,7 +556,7 @@ package() { _set_vars;
       dlldir="${pkgdir}"/opt/"${pkgname}"/lib/wine $_installtype || _failure "Wine-32 installation failed"
   fi
 
-  export CROSSCC="ccache x86_64-w64-mingw32-clang"
+  export CROSSCC="${x86_64_CC}"
   msg2 "Packaging Wine-64"
   cd "${build64dir}"|| _failure
   # clang doesn't like static libs on lib64 for some reason, use gcc
@@ -516,7 +583,7 @@ package() { _set_vars;
       | xargs -0 /usr/bin/strip --strip-unneeded &>/dev/null || true
   fi
 
-  if [ "${wow64build}" = "true" ]; then
+  if [ "${_wow64build}" = "true" ]; then
     ln -sf /opt/"${pkgname}"/bin/wine "${pkgdir}"/opt/"${pkgname}"/bin/wine64
   fi
 
@@ -548,9 +615,5 @@ _failure() {
   error "Exiting."
   exit 1
 }
-
-# this is a bit hideous, what could go wrong?
-__llvm_ver="$(env ls -1 /opt/llvm-mingw/lib/clang/)" || \
-  _failure "A numbered folder in /opt/llvm-mingw/lib/clang/ wasn't found. Are you sure you have the llvm-mingw toolchain installed?"
 
 trap _exit_cleanup EXIT

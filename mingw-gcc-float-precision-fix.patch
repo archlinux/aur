@@ -1,0 +1,66 @@
+From 1c51e2260b86736387d36aa21856783a9270517e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Martin=20Storsj=C3=B6?= <martin@martin.st>
+Date: Mon, 11 Mar 2024 14:38:27 +0200
+Subject: [PATCH] musl: Fix limiting the float precision in intermediates.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+musl itself expects to be configured to compile with either
+-ffloat-store or -fexcess-precision=standard - but when imported
+into Wine, those flags aren't used.
+
+This seems to be essential for getting reasonable precision
+from some math functions such as exp2() - without the expected
+precision truncation, the output value of exp2() can be off by
+as much as 0.2% in some cases.
+
+As Wine doesn't build the musl sources with those flags, use
+volatile to force storing/reloading floats in order to limit
+their intermediate precision, as musl expects. Only do this on
+i386 where this is known be required.
+
+This fixes https://bugs.winehq.org/show_bug.cgi?id=56372.
+
+Apparently this issue only appears when compiled with GCC; with
+Clang, this already works as expected.
+
+Signed-off-by: Martin Storsjö <martin@martin.st>
+---
+ libs/musl/src/internal/libm.h | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/libs/musl/src/internal/libm.h b/libs/musl/src/internal/libm.h
+index a1e9bc08716..afa987d9c7d 100644
+--- a/libs/musl/src/internal/libm.h
++++ b/libs/musl/src/internal/libm.h
+@@ -104,16 +104,25 @@ static int32_t converttoint(double_t);
+ /* Evaluate an expression as the specified type. With standard excess
+    precision handling a type cast or assignment is enough (with
+    -ffloat-store an assignment is required, in old compilers argument
+-   passing and return statement may not drop excess precision).  */
++   passing and return statement may not drop excess precision).
++
++   If compiled without -ffloat-store or -fexcess-precision=standard,
++   an extra volatile qualifier here will force limiting the precision.  */
+ 
+ static inline float eval_as_float(float x)
+ {
++#ifdef __i386__
++	volatile
++#endif
+ 	float y = x;
+ 	return y;
+ }
+ 
+ static inline double eval_as_double(double x)
+ {
++#ifdef __i386__
++	volatile
++#endif
+ 	double y = x;
+ 	return y;
+ }
+-- 
+GitLab
+
