@@ -3,7 +3,7 @@
 _pkgname=xingque
 pkgname=python-xingque
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another Python binding to starlark-rust, exposing the Starlark language to your Python projects."
 arch=('x86_64')
 url="https://github.com/xen0n/xingque"
@@ -32,7 +32,7 @@ check() {
 package() {
   cd "$_pkgname-$pkgver"
 
-  test_venv/bin/pip install --isolated --no-deps --prefix="$pkgdir" --ignore-installed target/wheels/xingque-*.whl
+  test_venv/bin/pip install --isolated --no-deps --prefix="$pkgdir"/usr --ignore-installed target/wheels/xingque-*.whl
 
   install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
