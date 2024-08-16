@@ -1,46 +1,30 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-music-git
-pkgver=5.0.5.r94.gb09e38ef
+pkgver=8.0.0.r16.g24912715
 pkgrel=1
 pkgdesc='The Pantheon Music Player'
 arch=(x86_64)
 url=https://github.com/elementary/music
-license=(GPL3)
+license=(GPL-3.0-or-later)
 groups=(pantheon-unstable)
 depends=(
-  cairo
   gdk-pixbuf2
   glib2
   glibc
   gst-plugins-base-libs
   gstreamer
-  gtk3
-  json-glib
-  libaccounts-glib
-  libgda
-  libhandy
-  libgee
-  libgpod
-  libgranite.so
-  libhandy-1.so
-  libgsignon-glib
-  libpeas
-  libsignon-glib
-  libsoup
-  pango
-  taglib
-  zeitgeist
+  libadwaita
+  libgranite-7.so
 )
 makedepends=(
   appstream
   git
   gobject-introspection
-  granite-git
+  granite7
   intltool
   meson
   vala
-  libhandy
 )
 optdepends=(
   'gst-plugins-base: "Base" plugin libraries'
