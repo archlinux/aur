@@ -1,9 +1,9 @@
 # Maintainer: Holden Grayer <grayer0113@outlook.com>
 
 pkgname=leavesmc
-_pkgver=1.21
-_build=ec274f5
-_buildid=37
+_pkgver=1.21.1
+_build=e199edf
+_buildid=52
 pkgver="${_pkgver}+${_buildid}.${_build}"
 pkgrel=1
 pkgdesc="Fork of Paper aimed at repairing broken vanilla properties."
@@ -26,7 +26,7 @@ sha256sums=("720ee68108bbe12c362cf5ed05b3ad5b28bbaf53f3d7952d389bfc404a5baaac"
             "4a03cc59260564cbd176260250a4256e56793d4e82e40c61d421dd549c981022"
             "8d2cad3c8e9f7e9f2c6ba88235b75dfc8ba0b2729b39fdad06c23aeb8910f681"
             "af0f7f846da7e5da02193538d5120fdb40cc3730e1ec0574c23583bc0b03841f"
-            "444294937f4532a5da153ff9297e626597ba0104684beee2dac6221893668011"
+            "d219c2f82905bb4b805ec0d3808e2ae85b98444556f88cbc669fea2f746246a4"
             "0e1372769c3ea4ce2a8fb0955a02adf8e88d1804c6143518dee9f969eb0911f7"
             "559c62b6c55d1288098a4f744832081cdb7e0015139636cbbad1ad6cbe55ffea")
 
