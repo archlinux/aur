@@ -2,8 +2,8 @@
 
 _npmname=bittorrent-tracker
 pkgname=webtorrent-$_npmname
-pkgver=11.1.1
-pkgrel=2
+pkgver=11.1.2
+pkgrel=1
 
 pkgdesc="Simple, robust, BitTorrent tracker (client & server) implementation"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 	"file://webtorrent-bittorrent-tracker.service"
 	"file://webtorrent-bittorrent-tracker.conf")
 noextract=("${_npmname}-${pkgver}.tgz")
-b2sums=('f860b9dcbfb880bd229361d36ee3003ca019dbf0bbbb1e780df37051b3c50d6a107fb1222a71b2bdd514e83f3b42d9874d95eae9d1089a785c357e5ae7aa83db'
+b2sums=('fc4a3b3f4fe638642492c3236d82fee442b0c9774fe72971d765e2106f75cf8bcea3391a348c49404906642c57b888100c3afc93edbfae2ca27c811f7e2fbdd7'
 	'3890a8cd095787f6ab383fe3ca0a0bf0999d80a7ea65627bb1a50f1c2690987f53e0619df5745ba47d6ef46d32e03573b5a52330a7c857220e4db96a33203019'
 	'04597f1a6ab59151a31df5fb5d9220b1bea69faba6f6bc19dfd9f1091800a195c7bb4ac2307a8d59a0039f46877961136ca19e1351f8a07a244044067ba26c99'
 	'72f2b302238d243cd3d5673404deeecd92a05b610b036625ff1c57f12be324312a6495fdf351e37299470157ed6adea97b699ffdba431e9389c426ba1224053b')
