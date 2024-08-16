@@ -1,22 +1,23 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=monkeyjump
-pkgver=0.5
-pkgrel=5
-pkgdesc='Minimalistic GUI for playing Go with GnuGo and other GTP applications'
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='Minimalistic GUI for playing Go with GnuGo'
 arch=(any)
 url='https://github.com/xyproto/monkeyjump'
-license=(GPL2)
-depends=(python2-pygame gnugo)
-makedepends=(gendesk setconf)
-backup=(etc/monkeyjump/gnugocmd.conf etc/monkeyjump/theme.conf etc/monkeyjump/keybindings.conf)
-source=("git+$url#commit=a6fcea4e0f03c09a47b0117567893d0fe882b2a8")
-md5sums=('SKIP')
+license=(GPL-2.0-or-later)
+depends=(python-pygame gnugo)
+makedepends=(gendesk git python-pip python-poetry setconf)
+backup=(etc/monkeyjump/gnugocmd.conf
+        etc/monkeyjump/theme.conf
+        etc/monkeyjump/keybindings.conf)
+source=("git+$url#commit=9235ffdfe8a32ad5a3200e0c35c153d80834a30f") # tag: v1.0.0
+b2sums=('d7d32b864df6da48a02fb5982cad8c0d55623655dfcfe4ed0a56cfe50c41682ddc5916101bfdcbe81a2cd03dc22ceee2f90368954932499c06da0fb77081de97')
 
 prepare() {
   cd $pkgname
-
-  gendesk -f -n \
+  gendesk -f -n -q \
     --pkgname="$pkgname" \
     --pkgdesc="$pkgdesc" \
     --exec="/usr/bin/monkeyjump 19" \
@@ -27,9 +28,13 @@ prepare() {
 }
 
 package() {
-  cd "$pkgname"
+  cd $pkgname
 
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  # Build the package using Poetry and create a wheel
+  poetry build -f wheel
+
+  # Install the wheel into the pkgdir
+  pip install --force-reinstall --no-deps --root="$pkgdir" dist/*.whl
 
   # Executable
   install -Dm755 monkeyjump "$pkgdir/usr/bin/monkeyjump"
