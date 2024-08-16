@@ -2,7 +2,7 @@
 
 _pkgname=oversteer
 pkgname=${_pkgname}-git
-pkgver=0.8.2.r0.g4c7062e
+pkgver=0.8.3.r7.ga418ffa
 pkgrel=1
 pkgdesc='Graphical application to configure Logitech Wheels'
 arch=(any)
@@ -27,17 +27,12 @@ makedepends=(
 )
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-source=(${_pkgname}::git+${url}.git#branch=v0.8.x)
+source=(${_pkgname}::git+${url}.git)
 b2sums=(SKIP)
 
 pkgver() {
   cd ${_pkgname}
   git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd ${_pkgname}
-  sed -i "s|version: '0.8.1',|version: '0.8.2',|g" meson.build
 }
 
 build() {

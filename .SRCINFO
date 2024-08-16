@@ -1,6 +1,6 @@
 pkgbase = oversteer-git
 	pkgdesc = Graphical application to configure Logitech Wheels
-	pkgver = 0.8.2.r0.g4c7062e
+	pkgver = 0.8.3.r7.ga418ffa
 	pkgrel = 1
 	url = https://github.com/berarma/oversteer
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = oversteer-git
 	depends = python-scipy
 	provides = oversteer
 	conflicts = oversteer
-	source = oversteer::git+https://github.com/berarma/oversteer.git#branch=v0.8.x
+	source = oversteer::git+https://github.com/berarma/oversteer.git
 	b2sums = SKIP
 
 pkgname = oversteer-git
