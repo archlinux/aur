@@ -2,26 +2,26 @@
 # Contributor: Morten Linderud <morten@linderud.pw>
 
 pkgname=python-vagrant
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Python bindings for interacting with Vagrant virtual machines."
 url="https://github.com/todddeluca/python-vagrant"
 license=('MIT')
 arch=('any')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
 #checkdepends=('vagrant')
-source=("${pkgname}-${pkgver}.tar.gz::https://pypi.io/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('a90e8c10122f0119088f96b75dfc353b067273cf1dc05a2eb5dc60f8154656d6b2e0f91c941936dd482faf82ea3e00ea8492b76ff7ffab78d3a20e534a019fe9')
+source=(git+https://github.com/pycontribs/python-vagrant#tag=v$pkgver)
+sha512sums=('60a18c56b658d08f36a4bba4a67ffc76a216671cfb311164076cb8cff696c371cc021d747f1904e6f7a428f5be364220ff4e9afc4dc13c6faae05c0f84a1759e')
 
 prepare() {
-  cd ${pkgbase}-${pkgver}
+  cd ${pkgbase}
 
   sed -e '/setuptools_scm_git_archive/d' -i pyproject.toml
 }
 
 build() {
-  cd ${pkgbase}-${pkgver}
+  cd ${pkgbase}
   SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver" python -m build --wheel --no-isolation
 }
 
@@ -32,7 +32,7 @@ build() {
 #}
 
 package() {
-  cd ${pkgbase}-${pkgver}
+  cd ${pkgbase}
 
   python -m installer --destdir="${pkgdir}" dist/*.whl
 

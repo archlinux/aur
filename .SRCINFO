@@ -1,16 +1,17 @@
 pkgbase = python-vagrant
 	pkgdesc = Python bindings for interacting with Vagrant virtual machines.
-	pkgver = 1.0.0
-	pkgrel = 4
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/todddeluca/python-vagrant
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python
-	source = python-vagrant-1.0.0.tar.gz::https://pypi.io/packages/source/p/python-vagrant/python-vagrant-1.0.0.tar.gz
-	sha512sums = a90e8c10122f0119088f96b75dfc353b067273cf1dc05a2eb5dc60f8154656d6b2e0f91c941936dd482faf82ea3e00ea8492b76ff7ffab78d3a20e534a019fe9
+	source = git+https://github.com/pycontribs/python-vagrant#tag=v1.1.0
+	sha512sums = 60a18c56b658d08f36a4bba4a67ffc76a216671cfb311164076cb8cff696c371cc021d747f1904e6f7a428f5be364220ff4e9afc4dc13c6faae05c0f84a1759e
 
 pkgname = python-vagrant
