@@ -3,6 +3,7 @@
 pkgname=pantheon-dock-git
 pkgver=r560.a4f2137
 pkgrel=1
+epoch=1
 pkgdesc='The Pantheon Dock'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/dock'
