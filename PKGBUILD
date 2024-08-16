@@ -2,15 +2,15 @@
 
 pkgname=ruyi
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="RuyiSDK Package Manager"
 arch=(any)
 url="https://github.com/ruyisdk/ruyi"
 license=(Apache-2.0)
-depends=('python>=3.11' 'python-rich' 'python-xingque' 'python-frontmatter')
-makedepends=('python-build' 'python-installer')
-checkdepends=(python-pytest python-arpy python-rich)
-optdepends=('bzip2' 'coreutils' 'gzip' 'sudo' 'tar' 'unzip' 'xz' 'zstd' 'wget')
+depends=('python>=3.11' 'python-arpy' 'python-certifi' 'python-frontmatter' 'python-jinja' 'python-packaging' 'python-pygit2' 'python-requests' 'python-rich' 'python-semver' 'python-tomlkit' 'python-xingque' 'python-yaml')
+makedepends=('python-build' 'python-installer' 'python-poetry-core')
+checkdepends=('python-pytest')
+optdepends=('bzip2' 'curl' 'coreutils' 'gzip' 'sudo' 'tar' 'unzip' 'wget' 'xz' 'zstd')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ruyisdk/ruyi/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('dc9e3d76f93953a58492dc4e8c95cece3cfac0e546e4f3eaf051f67951ef8bd1')
 sha512sums=('136d9b7b6cf93cb1dd9b8385a28d87b9e993111025bb307d77c90cff993baf60af02af2bc98efa5680a4b9297b83b2a604da1d4ae114223cf7028a0bcde93f77')
