@@ -1,7 +1,7 @@
 pkgbase = gtk3-libwinmenu
 	pkgdesc = Gtk+ module to hide menubar by default
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.linux.org.ru/jump-message.jsp?msgid=5606544&cid=5617512
 	arch = i686
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = gtk3-libwinmenu
 	source = add_arandr_whitelist.patch
 	source = update_to_gtk3.patch
 	md5sums = 20a2e4823e8d2baf1e33de97335a040b
-	md5sums = f90fd2c86b796a0c9d9e4a646539ec31
+	md5sums = bea7864ffb1fe89ed61160b31b58f528
 	md5sums = 5e28dd91b09c3503759c3c960b8f2322
 	md5sums = eb9d4660537a95689066f84b0563dbb9
 	md5sums = effe0ea4178afb25d9d98538855b0a18
-	md5sums = 74be862c8c78489fa5b03c80f35792dc
+	md5sums = e6d3240baee4f4c7189b30d6dedcbc74
 
 pkgname = gtk3-libwinmenu

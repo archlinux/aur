@@ -2,8 +2,8 @@
 +++ b/Makefile
 @@ -1,2 +1,2 @@
  all:
--	gcc -shared -fPIC `pkg-config gtk+-x11-2.0 --cflags --libs` -o libwinmenu.so libwinmenu.c
-+	gcc -shared -fPIC `pkg-config gtk+-x11-3.0 --cflags --libs` -o libwinmenu.so libwinmenu.c
+-	gcc -Wno-incompatible-pointer-types -shared -fPIC `pkg-config gtk+-x11-2.0 --cflags --libs` -o libwinmenu.so libwinmenu.c
++	gcc -Wno-incompatible-pointer-types -shared -fPIC `pkg-config gtk+-x11-3.0 --cflags --libs` -o libwinmenu.so libwinmenu.c
 --- a/libwinmenu.c
 +++ b/libwinmenu.c
 @@ -16,7 +16,7 @@ static void toggle_menu_bar (GtkWidget *widget, gpointer user_data)
