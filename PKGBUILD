@@ -3,7 +3,7 @@
 
 pkgname=xmage
 pkgver=1.4.53
-pkgrel=0
+pkgrel=1
 
 pkgdesc="Java-based program for playing Magic:The Gathering, including client and server"
 
@@ -26,27 +26,29 @@ install="${pkgname}.install"
 
 package() {
 
-	cd "${srcdir}"
+	#cd "${srcdir}"
+	pwd
+	pwd -P
 
 	echo "changing file format of included scripts..."
-	awk '{ sub("\r$", ""); print }' mage-client/startClient.sh > mage-client/startClient-unix.sh
-	awk '{ sub("\r$", ""); print }' mage-server/startServer.sh > mage-server/startServer-unix.sh
+	awk '{ sub("\r$", ""); print }' xmage/mage-client/startClient.sh > xmage/mage-client/startClient-unix.sh
+	awk '{ sub("\r$", ""); print }' xmage/mage-server/startServer.sh > xmage/mage-server/startServer-unix.sh
 
 	echo "changing default locations of scripts..."
-	sed -i 's|\.\/lib|\/usr\/share\/xmage\/mage-client\/lib|' mage-client/startClient-unix.sh
-	sed -i 's|\.\/lib|\/usr\/share\/xmage\/mage-server\/lib|' mage-server/startServer-unix.sh
+	sed -i 's|\.\/lib|\/usr\/share\/xmage\/xmage\/mage-client\/lib|' xmage/mage-client/startClient-unix.sh
+	sed -i 's|\.\/lib|\/usr\/share\/xmage\/xmage\/mage-server\/lib|' xmage/mage-server/startServer-unix.sh
 
 	echo "adding cd to relevant /usr/share/xmage/ directory..."
-	sed -i '2i cd /usr/share/xmage/mage-client' mage-client/startClient-unix.sh
-	sed -i '2i cd /usr/share/xmage/mage-server' mage-server/startServer-unix.sh
+	sed -i '2i cd /usr/share/xmage/xmage/mage-client' xmage/mage-client/startClient-unix.sh
+	sed -i '2i cd /usr/share/xmage/xmage/mage-server' xmage/mage-server/startServer-unix.sh
 
 	echo "increasing default memory limit of client and server"
-	sed -i 's|-Xmx512m|-Xmx2048m|g' mage-client/startClient-unix.sh
-	sed -i 's|-Xmx512m|-Xmx2048m|g' mage-server/startServer-unix.sh
+	sed -i 's|-Xmx1024m|-Xmx2048m|g' xmage/mage-client/startClient-unix.sh
+	sed -i 's|-Xmx1024m|-Xmx2048m|g' xmage/mage-server/startServer-unix.sh
 
 	echo "moving files..."
-	install -Dm755 mage-client/startClient-unix.sh "${pkgdir}"/usr/bin/mage-client
-	install -Dm755 mage-server/startServer-unix.sh "${pkgdir}"/usr/bin/mage-server
+	install -Dm755 xmage/mage-client/startClient-unix.sh "${pkgdir}"/usr/bin/mage-client
+	install -Dm755 xmage/mage-server/startServer-unix.sh "${pkgdir}"/usr/bin/mage-server
 
 	echo "creating /usr/share/xmage..."
 	install -dm755 "${pkgdir}"/usr/share/xmage
