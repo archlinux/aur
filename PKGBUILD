@@ -5,8 +5,8 @@ _dotnet_version=8.0
 
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.0.0.rc8.r0.g542b528b9
-pkgrel=2
+pkgver=3.0.0.rc9.r26.g59636940c
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
 license=('GPL-3.0-only')
@@ -212,4 +212,6 @@ package(){
     echo "Stripping binaries..."
     find "${pkgdir}/usr/lib/watt-toolkit" -type f -name '*.dll' -exec strip $STRIP_STATIC {} \;
     find "${pkgdir}/usr/lib/watt-toolkit" -type f -name '*.so' -exec strip $STRIP_SHARED {} \;
+    # Fix https://github.com/BeyondDimension/SteamTools/issues/3403
+    ln -srfv "$pkgdir/usr/lib/watt-toolkit/Steam++" "$pkgdir/usr/lib/watt-toolkit/Steam++.sh"
 }
