@@ -4,10 +4,10 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=V8
-_pkgver=4.4.2
+_pkgver=5.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Embedded JavaScript and WebAssembly Engine for R"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -27,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f34175ae36832619da40067f3d278c46')
-b2sums=('668830408eab269dd9bffb1abc0bdfba7f89d1fc4ec713ede68204bd97a5d03aa2e8f1c43ad8ec31290b425b90a09b88dee70b9cc0b47f707ca2d53c19fb89e2')
+md5sums=('9b7ec3691c553457b27327dc082febf0')
+b2sums=('ee1738e5db84ba36e9610163de0362dc88ab13bb60ece2128c4257dcfc07f87bbefcb1c4f1535e256bec67ec8e52d27ba5872ac7dd02b0a7be54ae6b53e296f7')
 
 build() {
   mkdir build
