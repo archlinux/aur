@@ -3,7 +3,7 @@
 
 pkgname=zed-preview
 _pkgname=${pkgname%-preview}
-pkgver=0.149.0
+pkgver=0.149.1
 pkgrel=1
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
@@ -40,7 +40,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 _archive="zed-$pkgver-pre"
 source=("$_url/archive/v$pkgver-pre/$_archive.tar.gz")
-sha256sums=('4924d4c852fcd456f6c14d1ecc959029a57797104e7b99c089b2a6e1eaf9fac3')
+sha256sums=('ed1dafb01c8e5e0a49ece81e89d136d57dea2baa0cbb4c628fee0c50808b0628')
 
 _binname=zeditor
 _appid=dev.zed.Zed-Preview
