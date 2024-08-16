@@ -1,5 +1,5 @@
 pkgbase = clairvoyant
-	pkgdesc = Magic 8-Ball fortune teller of sorts
+	pkgdesc = Magic 8-Ball Fortune Teller
 	pkgver = 3.1.7
 	pkgrel = 1
 	url = https://github.com/cassidyjames/clairvoyant
