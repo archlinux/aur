@@ -1,21 +1,20 @@
 # Maintainer: Lex Black <autumn-wind@web.de>
 
 pkgname=labwc
-pkgver=0.7.4
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc='stacking wayland compositor with look and feel from openbox'
 url="https://github.com/labwc/labwc"
 arch=('x86_64')
 license=('GPL-2.0-only')
-depends=('libpng' 'librsvg' 'pango' 'seatd' 'ttf-font' 'libwlroots.so=12-64' 'wayland' 'xorg-xwayland')
+depends=('libpng' 'librsvg' 'pango' 'seatd' 'ttf-font' 'libwlroots-0.18.so' 'wayland' 'xorg-xwayland')
 makedepends=('meson' 'scdoc' 'wayland-protocols')
 optdepends=("bemenu: default launcher via Alt+F3")
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/labwc/labwc/archive/${pkgver}.tar.gz")
-b2sums=('8aa259682ff6b937f02e50b0a61385e2fd48e43692123efdfc6a8ab7868f8168337d087d62387d8da03c5a0e0594163a11147056f61ef86ec83d8fd9c896a356')
+b2sums=('7f7a96752505fdee76846fcf3bf1924627a8657ff45dbc8df1eb61b76a0eb08bd278bab2a6adbaaf09c92a93aa7c292613fcd31b356bdef39aa8662e48f966a6')
 
 
 build() {
-  export PKG_CONFIG_PATH='/usr/lib/wlroots0.17/pkgconfig'
   arch-meson -Dman-pages=enabled "$pkgname-$pkgver" build
   meson compile -C build
 }
