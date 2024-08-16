@@ -2,7 +2,7 @@
 
 pkgname=monkeyjump
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimalistic GUI for playing Go with GnuGo'
 arch=(any)
 url='https://github.com/xyproto/monkeyjump'
@@ -17,11 +17,11 @@ b2sums=('d7d32b864df6da48a02fb5982cad8c0d55623655dfcfe4ed0a56cfe50c41682ddc59161
 
 prepare() {
   cd $pkgname
-  gendesk -f -n -q \
+  gendesk -f -n \
     --pkgname="$pkgname" \
     --pkgdesc="$pkgdesc" \
     --exec="/usr/bin/monkeyjump 19" \
-    --categories="Game;BoardGame;" \
+    --categories="Game;BoardGame" \
     --terminal=true
   setconf monkeyjump CONFDIR=\"/etc/monkeyjump\"
   setconf monkeyjump THEMEDIR=\"/usr/share/monkeyjump/themes\"
@@ -34,7 +34,7 @@ package() {
   poetry build -f wheel
 
   # Install the wheel into the pkgdir
-  pip install --force-reinstall --no-deps --root="$pkgdir" dist/*.whl
+  pip install --ignore-installed --force-reinstall --no-deps --no-warn-script-location --root="$pkgdir" dist/*.whl
 
   # Executable
   install -Dm755 monkeyjump "$pkgdir/usr/bin/monkeyjump"

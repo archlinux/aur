@@ -1,7 +1,7 @@
 pkgbase = monkeyjump
 	pkgdesc = Minimalistic GUI for playing Go with GnuGo
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xyproto/monkeyjump
 	arch = any
 	license = GPL-2.0-or-later
