@@ -8,7 +8,7 @@ pkgname=(
   mutter-text-input-v1
   mutter-text-input-v1-docs
 )
-pkgver=46.3.1
+pkgver=46.4
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME with text-input-v1 support"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -87,7 +87,7 @@ source=(
   "grab.patch::https://gitlab.gnome.org/GNOME/mutter/-/commit/a99e139a68bd4e5350033163dfd85b6ce6da92a2.patch"
   "text-input-v1.patch::$url/-/merge_requests/3751/diffs.patch"
 )
-b2sums=('7d9041df986220470c287fe65194ec6e4da8f15540140fb7e0c3fddc95ce6e9ec9fd4f691ed349a31af28e903c769c97d9817ac65c3cc424b002e095cf559606'
+b2sums=('fc21cb8e56728873196fba12ba7a0522aeb9d6e7f6204ac21ade4c632b081fe45e0633d1c072c2416d81faa0f6b63cb69b278ef7b440e2bfccaff775501d3028'
         '70b633145e51ccfba39d4a1baf65b31167f91d32c33adcce19dff67bc41deec7e4cd71e7d0d3fd5b85066da36eec11c2783f2fac9b5ec1fe49a0dbdfd4e8d3f5'
         'de33e73ea61a99bbe9ce7e37869d558c7602a381d301d59147f53acb483483a36c39dfabce05ee1414414abc8971430c8c597879fcc216be83f6588f5ff63f69')
 
