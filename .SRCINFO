@@ -1,6 +1,6 @@
 pkgbase = winegame
 	pkgdesc = 开源游戏平台，帮您在UOS/Linux系统中运行Windows游戏
-	pkgver = 0.5.12.2
+	pkgver = 0.5.13.1
 	pkgrel = 1
 	url = https://winegame.net/
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = winegame
 	optdepends = zenity: Show winetricks GUI
 	optdepends = gamemode: Feral GameMode
 	optdepends = lib32-gamemode: Feral GameMode for 32-bit apps
-	source = https://file.winegame.net/packages/debian/0.5.12.2/net.winegame.client_0.5.12.2_amd64.deb
-	sha512sums = 81d6579e51cf47db3827c02a0e778dfb49e0b95c00ee16dc31d283a1e6cfb9c558df763427bc1f3cb512d39d5c9a83bea171b59b2eb5cfacb91233d4801cc40a
+	source = https://file.winegame.net/packages/debian/0.5.12.5/net.winegame.client_0.5.12.5_amd64.deb
+	sha512sums = 555e9c461db9ea49d807843a5c5f4554e6ec04ead3f67525ec65e7cc7259863276c1d3f18ff6a3cd80cc122d13bbaebddeb403392d19af161afe06ad6ab5f776
 
 pkgname = winegame
