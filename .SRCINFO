@@ -1,6 +1,6 @@
 pkgbase = python-npyosmium
 	pkgdesc = Fork with numpy interface - Python bindings for libosmium, the data processing library for OSM data
-	pkgver = 3.6.3
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://github.com/agrenott/npyosmium
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-npyosmium
 	depends = python
 	depends = libosmium
 	depends = pybind11
-	source = npyosmium-3.6.3.tar.gz::https://github.com/agrenott/npyosmium/archive/refs/tags/v3.6.3.tar.gz
-	sha256sums = 3833af97e248c7f8290ab3a8c4b88d5c0bd57f107975e778211fa25a7e1c34f7
+	source = npyosmium-3.7.0.tar.gz::https://github.com/agrenott/npyosmium/archive/refs/tags/v3.7.0.tar.gz
+	sha256sums = 7559d1d0af07c8177aff38f5bcc344740764911494eb8227468dfb7a9a0f9e38
 
 pkgname = python-npyosmium
