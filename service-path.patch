@@ -1,0 +1,17 @@
+diff --unified --recursive --text a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2024-08-16 10:39:32.258218388 -0600
++++ b/CMakeLists.txt	2024-08-16 10:40:29.390737812 -0600
+@@ -486,12 +486,7 @@
+ configure_file(hardinfo2.desktop.cmake ${CMAKE_BINARY_DIR}/hardinfo2.desktop @ONLY)
+ 
+ if(HARDINFO2_SERVICE)
+-#    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/tools/hardinfo2.service DESTINATION ${CMAKE_INSTALL_LIBDIR}/systemd/system/)
+-if(${RPM})
+-    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/tools/hardinfo2.service DESTINATION /usr/lib/systemd/system/)
+-else()
+-    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/tools/hardinfo2.service DESTINATION /lib/systemd/system/)
+-endif()
++    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/tools/hardinfo2.service DESTINATION ${CMAKE_INSTALL_LIBDIR}/systemd/system/)
+     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/tools/postinst ${CMAKE_CURRENT_BINARY_DIR}/packaging/postinst)
+     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/tools/postrm ${CMAKE_CURRENT_BINARY_DIR}/packaging/postrm)
+ endif()

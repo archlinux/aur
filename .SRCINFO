@@ -1,6 +1,6 @@
 pkgbase = hardinfo2-git
 	pkgdesc = System Information and Benchmark for Linux Systems.
-	pkgver = 2.0.18.r2.g60796c2
+	pkgver = 2.1.11.r33.ge395445
 	pkgrel = 1
 	url = https://www.hardinfo2.org
 	arch = x86_64
@@ -25,6 +25,8 @@ pkgbase = hardinfo2-git
 	conflicts = hardinfo2
 	conflicts = hardinfo
 	source = git+https://github.com/hardinfo2/hardinfo2.git
+	source = service-path.patch
 	sha256sums = SKIP
+	sha256sums = da199d1dbc28d1652dee627a4ba2bb063ac38707f4807f3479e354a8e5c5740d
 
 pkgname = hardinfo2-git

@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2-git
-pkgver=2.0.18.r2.g60796c2
+pkgver=2.1.11.r33.ge395445
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64')
@@ -22,19 +22,27 @@ optdepends=(
   'xdg-utils: open your browser for bugs, homepage & links')
 provides=("${pkgname%-git}" 'hardinfo')
 conflicts=("${pkgname%-git}" 'hardinfo')
-source=('git+https://github.com/hardinfo2/hardinfo2.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/hardinfo2/hardinfo2.git'
+        'service-path.patch')
+sha256sums=('SKIP'
+            'da199d1dbc28d1652dee627a4ba2bb063ac38707f4807f3479e354a8e5c5740d')
 
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags | sed 's/^release.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${pkgname%-git}"
+
+  # Fix service install path
+  patch -Np1 -i ../service-path.patch
+}
+
 build() {
   cmake -B build -S "${pkgname%-git}" \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='lib' \
     -Wno-dev
   cmake --build build
 }
