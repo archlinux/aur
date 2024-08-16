@@ -1,0 +1,17 @@
+pkgbase = python-pelican-pandoc-reader
+	pkgdesc = Pelican plugin that converts documents written in Pandoc's markdown
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/pelican-plugins/pandoc-reader
+	arch = any
+	license = AGPL-3.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python
+	depends = pelican
+	source = https://github.com/pelican-plugins/pandoc-reader/archive/refs/tags/2.1.0.tar.gz
+	md5sums = 80cca2421643c0496f7d5d5983a7db32
+
+pkgname = python-pelican-pandoc-reader
