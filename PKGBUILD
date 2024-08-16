@@ -3,7 +3,7 @@
 pkgname=python-gtts
 _name=gTTS
 pkgver=2.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library and CLI tool to interface with Google Translate's text-to-speech API"
 arch=('any')
 url="https://github.com/pndurette/gTTS"
@@ -29,4 +29,8 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+  # Remove installed tests
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  rm -r "${pkgdir}${site_packages}"/gtts/{tests,tokenizer/tests}/
 }
