@@ -1,24 +1,28 @@
 pkgname=wl-screenrec
 pkgver=0.1.5
-pkgrel=0
+pkgrel=1
 pkgdesc="High performance hardware accelerated wlroots screen recorder"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/russelltg/wl-screenrec"
 license=('APACHE')
 provides=("wl-screenrec")
-makedepends=('cargo' 'git' 'clang' 'rust' 'cargo')
-depends=('ffmpeg' 'libva-driver')
+makedepends=('cargo' 'clang' 'rust')
+depends=('ffmpeg' 'libva-driver' 'gcc-libs' 'glibc')
 conflicts=('wl-screenrec-git')
 source=("https://github.com/russelltg/wl-screenrec/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('b28a013d7418491da82efe25101f0a778e47c34d195f88d48c3132f9d223190d')
 
+prepare() {
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
   cd "$pkgname-$pkgver"
-  if command -v rustup > /dev/null 2>&1; then
-    rustup run stable cargo build --release
-  else
-    cargo build --release
-  fi
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
 
   ./target/release/wl-screenrec --generate-completions bash > wl-screenrec.bash
   ./target/release/wl-screenrec --generate-completions zsh > wl-screenrec.zsh
