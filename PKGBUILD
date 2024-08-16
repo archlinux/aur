@@ -13,7 +13,7 @@ _generic_release=false
 # hack taken from wine-tkg PKGBUILD, real pkgrel is the eval one
 pkgver=9.15
 pkgrel=1
-eval pkgrel=2
+eval pkgrel=3
 
 ################################################################################################################################
 ################################################################################################################################
@@ -29,7 +29,7 @@ _use_staging=true
 _disabled_staging=""
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="08-15-2024-16a6b0ad-a90554bb"
+_patchbase_tag="08-16-2024-3af5a02a-a90554bb"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the custompatches folder
@@ -39,7 +39,7 @@ _custompatches=false
 
 ## uses wine/staging master if empty, uses given commit or tag if set
 ## only applies if _custompatches is true, otherwise overwritten by upstream commits from patchbase repo
-_desired_wine_commit=16a6b0ad65e9b8cdbb68fc9125951483781ca616
+_desired_wine_commit=3af5a02a83b5b63dae7070c259fcebf46761988d
 _desired_staging_commit=a90554bb0489659c0ab632bb6a263ab4198e9985
 
 ## .a libs which may be required for external programs such as winestreamproxy
