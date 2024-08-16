@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Schleifer <js@nil.im>
 pkgname=('libobjfw' 'libobjfwrt' 'libobjfwtls' 'ofarc' 'ofdns' 'ofhash' 'ofhttp')
 pkgbase=objfw
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="Portable, lightweight framework for the Objective-C language"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('LGPL3')
 groups=(objfw)
 makedepends=(clang)
 source=("https://objfw.nil.im/downloads/$pkgbase-$pkgver.tar.gz")
-sha256sums=(9d45d2009a0bb9b1a0918918e454b47b8161670df8016b5f3a85eccea91d8988)
+sha256sums=(c19a97a011e14780fb32cfbdbbd6a699a955b57124e4e079768cb8aad4430e1d)
 
 build() {
 	cd "$pkgbase-$pkgver"
