@@ -3,8 +3,7 @@ set -euxo pipefail
 
 # Get latest version
 VER=$(curl -sSf https://dl.lazycat.cloud/client/desktop/lzc-client-desktop.tar.zst.metadata.json | 
-  awk '/buildVersion/{print $2}' |
-  tr -d '",')
+  grep -o '"buildVersion": "[^"]*' | grep -o '[^"]*$')
 
 # Insert latest version into PKGBUILD and update hashes
 sed -i \
