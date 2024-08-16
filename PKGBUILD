@@ -13,7 +13,7 @@ provides=("liteloader-qqnt-llonebot")
 conflicts=("liteloader-qqnt-llonebot")
 
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/LLOneBot.zip")
-sha256sums=('6cf4c049c91997cd914e919b10cb590f88955e22d98f2742459092d20a7c6704')
+sha256sums=('c845b3653b71e08f98d32665634d7898c2c3bc586bbbe54954dffec2c36a26d0')
 
 package() {
     mkdir -p "${pkgdir}/opt/LiteLoaderQQNT/plugins/LLOneBot"
