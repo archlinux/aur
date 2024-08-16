@@ -1,6 +1,6 @@
 pkgbase = hyprpanel-bin
 	pkgdesc = An opinionated panel/shell for the Hyprland compositor.
-	pkgver = 0.1.10
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/pdf/hyprpanel
 	arch = x86_64
@@ -8,16 +8,16 @@ pkgbase = hyprpanel-bin
 	license = MIT
 	depends = gtk4
 	depends = gtk4-layer-shell
-	depends = hyprland>=0.37.0
+	depends = hyprland>=0.42.0
 	optdepends = systemd: logging support
 	optdepends = pulse-native-provider: volume control support
 	optdepends = upower: battery status support
 	provides = hyprpanel
 	conflicts = hyprpanel
 	options = !strip
-	source_x86_64 = hyprpanel-bin-0.1.10-x86_64.tar.gz::https://github.com/pdf/hyprpanel/releases/download/v0.1.10/hyprpanel_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 0e5871f5e461e389169bdfee683bf1d7f2426d94cc385b397b5485eee282e858
-	source_aarch64 = hyprpanel-bin-0.1.10-aarch64.tar.gz::https://github.com/pdf/hyprpanel/releases/download/v0.1.10/hyprpanel_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 081df976ce957993a086e0bc987d1bffeaac55cec8466780cc49059813ed1f69
+	source_x86_64 = hyprpanel-bin-0.2.0-x86_64.tar.gz::https://github.com/pdf/hyprpanel/releases/download/v0.2.0/hyprpanel_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 173f666448847aa3504aa36f867ff70fa2b176313fefcad1e124bd0ff8c747c2
+	source_aarch64 = hyprpanel-bin-0.2.0-aarch64.tar.gz::https://github.com/pdf/hyprpanel/releases/download/v0.2.0/hyprpanel_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 5dd460ac942912c5cd88dab02aed525526d96004d39c494f07186236fa56f454
 
 pkgname = hyprpanel-bin
