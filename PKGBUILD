@@ -6,24 +6,20 @@ pkgrel=1
 pkgdesc='Switchboard Desktop Plug'
 arch=(x86_64)
 url=https://github.com/elementary/switchboard-plug-pantheon-shell
-license=(GPL3)
+license=(GPL-3.0-or-later)
 groups=(pantheon-unstable)
 depends=(
   gdk-pixbuf2
   glib2
-  gnome-desktop
-  gtk3
+  gtk4
   libgee
   libgexiv2
-  libgranite.so
+  libgranite-7.so
   libswitchboard-3.so
-  pantheon-dock
-  tumbler
 )
 makedepends=(
   git
-  granite
-  libgexiv2
+  granite7
   meson
   switchboard
   vala
