@@ -1,7 +1,7 @@
 # Maintainer: Elaina Martineau <elainamartineau@gmail.com>
 pkgname=ttf-octicons
 pkgver=19.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A scalable set of icons handcrafted with <3 by GitHub"
 arch=('any')
 license=('MIT')
@@ -34,7 +34,7 @@ build() {
 
   npm install fantasticon
   mkdir -p 'font'
-  npm exec -- fantasticon octicons-${pgkver}/icons -o font -t ttf -n octicons
+  npm exec -- fantasticon octicons-${pkgver}/icons -o font -t ttf -n octicons
 }
 
 package() {
