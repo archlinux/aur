@@ -1,7 +1,7 @@
 # Maintainer: Elaina Martineau <elainamartineau@gmail.com>
 pkgname=ttf-octicons
 pkgver=19.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A scalable set of icons handcrafted with <3 by GitHub"
 arch=('any')
 license=('MIT')
@@ -25,7 +25,7 @@ _ensure_local_nvm() {
 
 prepare() {
     _ensure_local_nvm
-    nvm install 16.0.0
+    nvm install 18.20.4
 }
 
 build() {
