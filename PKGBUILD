@@ -9,7 +9,7 @@ url=http://larsenwork.github.io/monoid/
 makedepends=(git fontforge python)
 conflicts=(ttf-mono16 ttf-mono16-git ttf-monoid)
 provides=("${conflicts[@]}")
-source=("${pkgname}::git://github.com/larsenwork/monoid.git")
+source=("${pkgname}::git+https://github.com/larsenwork/monoid.git")
 sha512sums=('SKIP')
 
 pkgver () {

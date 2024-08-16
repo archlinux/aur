@@ -14,8 +14,7 @@ pkgbase = ttf-monoid-git
 	conflicts = ttf-mono16
 	conflicts = ttf-mono16-git
 	conflicts = ttf-monoid
-	source = ttf-monoid-git::git://github.com/larsenwork/monoid.git
+	source = ttf-monoid-git::git+https://github.com/larsenwork/monoid.git
 	sha512sums = SKIP
 
 pkgname = ttf-monoid-git
-
