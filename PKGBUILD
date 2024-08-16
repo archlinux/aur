@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.1.0.r226.ga7c9bfa5
+pkgver=0.2.0.r14.g154771cc
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('x86_64')
@@ -13,17 +13,19 @@ depends=(
 	'gcc-libs'
 	'glibc'
 	'glslang>=14.2'
-	'sdl3'
+	'sdl3' # 'sdl3>=3.0.0.r5769'
 	'zlib-ng>=2.1.6'
 )
 makedepends=(
 	# 'boost>=1.84'
 	'cmake>=3.16.3'
+	'ffmpeg'
 	'fmt>=10.2'
 	'git'
 	'magic_enum>=0.9.5'
 	'qt6-base'
 	'rapidjson'
+	'renderdoc'
 	'robin-map>=1.3'
 	'spirv-headers'
 	'toml11>=3.8.1'
@@ -57,7 +59,7 @@ b2sums=(
 
 pkgver() {
 	cd $_pkgname
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v\.\?//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -84,7 +86,12 @@ build() {
 
 package() {
 	depends+=(
+		'libavcodec.so'
+		'libavformat.so'
+		'libavutil.so'
 		'libfmt.so'
+		'libswresample.so'
+		'libswscale.so'
 		'libxxhash.so'
 		# 'libZydis.so'
 		'qt6-base'
