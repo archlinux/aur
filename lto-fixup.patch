@@ -1,0 +1,101 @@
+diff --git a/loader/preloader.c b/loader/preloader.c
+index 11111111111..11111111111 100644
+--- a/loader/preloader.c
++++ b/loader/preloader.c
+@@ -352,7 +352,7 @@ void __stack_chk_fail(void) { return; }
+ 
+ /* data for setting up the glibc-style thread-local storage in %gs */
+ 
+-static int thread_data[256];
++static int thread_data[256] __attribute__((used));
+ 
+ struct
+ {
+@@ -367,7 +367,7 @@ struct
+     unsigned int  seg_not_present : 1;
+     unsigned int  usable : 1;
+     unsigned int  garbage : 25;
+-} thread_ldt = { -1, (unsigned long)thread_data, 0xfffff, 1, 0, 0, 1, 0, 1, 0 };
++} thread_ldt __attribute__((used)) = { -1, (unsigned long)thread_data, 0xfffff, 1, 0, 0, 1, 0, 1, 0 };
+ 
+ typedef unsigned long wld_old_sigset_t;
+ 
+@@ -593,7 +593,7 @@ static inline pid_t wld_getpid( void )
+ 
+ #elif defined(__x86_64__)
+ 
+-void *thread_data[256];
++void *thread_data[256] __attribute__((used));
+ 
+ /*
+  * The _start function is the entry and exit point of this program
+@@ -692,7 +692,7 @@ SYSCALL_NOERR( wld_getegid, 108 /* SYS_getegid */ );
+ 
+ #elif defined(__aarch64__)
+ 
+-void *thread_data[256];
++void *thread_data[256] __attribute__((used));
+ 
+ /*
+  * The _start function is the entry and exit point of this program
+@@ -2677,7 +2677,7 @@ static void map_reserve_preload_ranges( const struct vma_area_list *vma_list )
+  *  Load the binary and then its ELF interpreter.
+  *  Note, we assume that the binary is a dynamically linked ELF shared object.
+  */
+-void* wld_start( void **stack )
++__attribute__((used)) void* wld_start( void **stack )
+ {
+     long i;
+     char *interp, *reserve;
+diff --git a/dlls/ntdll/unix/signal_arm.c b/dlls/ntdll/unix/signal_arm.c
+index 9098f58b046..10e154554a7 100644
+--- a/dlls/ntdll/unix/signal_arm.c
++++ b/dlls/ntdll/unix/signal_arm.c
+@@ -1125,7 +1125,7 @@ void signal_init_early(void)
+ /***********************************************************************
+  *           call_init_thunk
+  */
+-void call_init_thunk( LPTHREAD_START_ROUTINE entry, void *arg, BOOL suspend, TEB *teb,
++__attribute__((used)) void call_init_thunk( LPTHREAD_START_ROUTINE entry, void *arg, BOOL suspend, TEB *teb,
+                       struct syscall_frame *frame, void *syscall_cfa )
+ {
+     struct arm_thread_data *thread_data = (struct arm_thread_data *)&teb->GdiTebBatch;
+diff --git a/dlls/ntdll/unix/signal_i386.c b/dlls/ntdll/unix/signal_i386.c
+index f5f58b409d6..8d67e9bbf6e 100644
+--- a/dlls/ntdll/unix/signal_i386.c
++++ b/dlls/ntdll/unix/signal_i386.c
+@@ -2563,7 +2563,7 @@ error:
+ /***********************************************************************
+  *           call_init_thunk
+  */
+-void call_init_thunk( LPTHREAD_START_ROUTINE entry, void *arg, BOOL suspend, TEB *teb,
++__attribute__((used)) void call_init_thunk( LPTHREAD_START_ROUTINE entry, void *arg, BOOL suspend, TEB *teb,
+                       struct syscall_frame *frame, void *syscall_cfa )
+ {
+     struct x86_thread_data *thread_data = (struct x86_thread_data *)&teb->GdiTebBatch;
+diff --git a/dlls/ntdll/unix/signal_x86_64.c b/dlls/ntdll/unix/signal_x86_64.c
+index 258b49ff108..15f5ce7a833 100644
+--- a/dlls/ntdll/unix/signal_x86_64.c
++++ b/dlls/ntdll/unix/signal_x86_64.c
+@@ -2762,7 +2762,7 @@ void signal_init_early(void)
+ /***********************************************************************
+  *           call_init_thunk
+  */
+-void call_init_thunk( LPTHREAD_START_ROUTINE entry, void *arg, BOOL suspend, TEB *teb,
++__attribute__((used)) void call_init_thunk( LPTHREAD_START_ROUTINE entry, void *arg, BOOL suspend, TEB *teb,
+                       struct syscall_frame *frame, void *syscall_cfa )
+ {
+     struct amd64_thread_data *thread_data = (struct amd64_thread_data *)&teb->GdiTebBatch;
+diff --git a/dlls/ntdll/unix/signal_arm64.c b/dlls/ntdll/unix/signal_arm64.c
+index fa14c6193cc..954a99be28c 100644
+--- a/dlls/ntdll/unix/signal_arm64.c
++++ b/dlls/ntdll/unix/signal_arm64.c
+@@ -1376,7 +1376,7 @@ void syscall_dispatcher_return_slowpath(void)
+ /***********************************************************************
+  *           call_init_thunk
+  */
+-void call_init_thunk( LPTHREAD_START_ROUTINE entry, void *arg, BOOL suspend, TEB *teb,
++__attribute__((used)) void call_init_thunk( LPTHREAD_START_ROUTINE entry, void *arg, BOOL suspend, TEB *teb,
+                       struct syscall_frame *frame, void *syscall_cfa )
+ {
+     struct arm64_thread_data *thread_data = (struct arm64_thread_data *)&teb->GdiTebBatch;
