@@ -5,7 +5,7 @@
 
 pkgname=akkoma-git
 _pkgname=akkoma
-pkgver=3.10.4
+pkgver=3.13.2
 pkgrel=1
 pkgdesc='Akkoma is faster-paced fork of Pleroma (devel version)'
 url='https://akkoma.dev/AkkomaGang/akkoma'
@@ -24,9 +24,9 @@ source=('akkoma.sysusers'
         'akkoma.tmpfiles'
         'akkoma.service'
         "git+${url}.git")
-sha256sums=('4df8a0099dada9bf652fb07677a9c6a66cad1f26498f08a55d8acb0186b78979'
-            'b6e6ad0f2c3caea38a30dddb303728271d6b56c13a2f4d82959b871844811f4c'
-            '268952ef036ef65ab146a38ff20bbba35759c0f33510fe6ca15d6765285938ed'
+sha256sums=('0247ee5cc24049ebc37a00634aad8ed9a44d0f9a399a1373284375f5c861a089'
+            'ae5bd0e7ee501c4535a52650574a69ca0ba9b60315ec3b7c8a1d98a8246cea6b'
+            '83a90cf08dbe715a5c28545c85faba6fe9a76e0808ce8aa0aa7b54b718e35beb'
             'SKIP')
 pkgver() {
     cd $_pkgname
