@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=('pop-launcher-git' 'pop-shell-plugin-system76-power-git')
 pkgbase=pop-launcher-git
-pkgver=1.2.1.r65.gc994240
+pkgver=1.2.1.r66.g6a1b8b9
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
@@ -10,6 +10,8 @@ depends=(
   'dbus'
   'fd'
   'libqalculate'
+  'libegl'
+  'libxkbcommon'
   'pop-icon-theme-git'
   'sh'
   'xdg-utils'
@@ -18,8 +20,6 @@ makedepends=(
   'cargo'
   'git'
   'just'
-  'libegl'
-  'libxkbcommon'
 )
 options=('!lto')
 source=('git+https://github.com/pop-os/launcher.git')
@@ -34,8 +34,6 @@ prepare() {
   cd launcher
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-
-  sed -i 's|{{bin-path}}|/usr/bin/pop-launcher|g' justfile
 }
 
 build() {
