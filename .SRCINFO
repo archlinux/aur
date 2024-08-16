@@ -1,11 +1,11 @@
 pkgbase = freebsd-pkg
 	pkgdesc = Package management tool for FreeBSD.
-	pkgver = 1.20.0
+	pkgver = 1.21.3
 	pkgrel = 1
 	url = https://github.com/freebsd/pkg
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = BSD-2-Clause
 	makedepends = autoconf
 	makedepends = automake
 	makedepends = libtool
@@ -13,7 +13,7 @@ pkgbase = freebsd-pkg
 	depends = libarchive
 	depends = libbsd
 	depends = libelf
-	source = https://github.com/freebsd/pkg/archive/refs/tags/1.20.0.tar.gz
-	sha256sums = bce659b9d50f3e341afe12ac9b367d4d455ac380e5f6c319095c5b26f42538ee
+	source = freebsd-pkg-1.21.3.tar.gz::https://github.com/freebsd/pkg/archive/refs/tags/1.21.3.tar.gz
+	sha256sums = dbf84db9f83f5b504e71b57460e9e9dd590871e3cd87f5f7c8a208839d34f0d0
 
 pkgname = freebsd-pkg
