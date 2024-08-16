@@ -1,0 +1,14 @@
+pkgbase = adb-wifi
+	pkgdesc = A CLI tool which shows QR code and makes seamless connection to the ADB bridge
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/saleehk/adb-wifi
+	arch = any
+	license = custom:None
+	makedepends = npm
+	depends = nodejs
+	noextract = adb-wifi-0.1.2.tgz
+	source = adb-wifi-0.1.2.tgz::https://registry.npmjs.org/adb-wifi/-/adb-wifi-0.1.2.tgz
+	sha256sums = 7e96f443a6a4eb39bd5881beb9476c0c0f4d19759935131fe56d79d67a44e43a
+
+pkgname = adb-wifi
