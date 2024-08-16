@@ -25,6 +25,7 @@ provides=(
   "java-runtime-headless-openjdk=$_java_ver"
   "java-openjfx=$_java_ver"
 )
+conflicts=('zulu-8-bin')
 options=('!debug')
 install="$pkgname.install"
 source_x86_64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jdk${pkgver}-linux_x64.tar.gz")
