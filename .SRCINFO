@@ -16,6 +16,7 @@ pkgbase = zulu21-fx-bin
 	provides = java-runtime-headless=21
 	provides = java-runtime-headless-openjdk=21
 	provides = java-openjfx=21
+	conflicts = zulu-21-bin
 	options = !debug
 	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu21.36.17-ca-fx-jdk21.0.4-linux_x64.tar.gz
 	sha256sums_x86_64 = 4366dd334fdadade5a051088cd70658576a67fc37bc1d494b0ae5585a53d0dc6
