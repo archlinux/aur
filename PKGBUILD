@@ -1,6 +1,6 @@
 pkgname=mihomo-party-bin
 _pkgname=mihomo-party
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -12,10 +12,12 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 
 optdepends=('libappindicator-gtk3: Allow mihomo-party to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
 makedepends=('nodejs' 'pnpm' 'jq' 'libxcrypt-compat')
 install=$_pkgname.install
+source=("${_pkgname}.sh")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/mihomo-party-linux-${pkgver}-amd64.deb")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/mihomo-party-linux-${pkgver}-arm64.deb")
-sha256sums_x86_64=("1f3a2a771751ef52e5d6d4852d9caa6ed9952d1491b7c36209ef448ea894493e")
-sha256sums_aarch64=("8296b9ac1df978334ec4072f377aac2f3d5fb8d436fcc31374f8913ecf3036d5")
+sha256sums=('f8049c1f26d5a92fbcebd7bebbdedbb3eab53422b21cf6127418251ccd061282')
+sha256sums_x86_64=("36a8571b43a8eb54c731cc56feb99023587c703c21922635b4c7b357b273a938")
+sha256sums_aarch64=("d3fa1e03cf702571c4e8d21b715ee6f2ae1ecf4dab51d51b2307c86047b771f3")
 
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}/"
