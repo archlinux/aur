@@ -1,45 +1,49 @@
 # Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
+# Contributor: Erikas Rudinskas <erikmnkl at gmail dot com>
 
 pkgname=wg++
-pkgver=5.2.1
+pkgver=5.2.2
 pkgrel=1
 pkgdesc='WebGrab+Plus is a Freeware, closed-source multi-site incremental XMLTV EPG grabber'
-arch=('any')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="http://webgrabplus.com/"
 license=('custom')
 depends=('dotnet-runtime-8.0' 'unzip' 'libxml2' 'curl' 'wget')
-source=("http://webgrabplus.com/sites/default/files/download/SW/V5.2.0/WebGrabPlus_V5.2_install.tar_0.gz"
-	"http://webgrabplus.com/sites/default/files/download/SW/V${pkgver}/WebGrabPlus_V${pkgver}_beta_install.tar.gz"
-	'wgpp.sh')
-sha256sums=('4b8862672d79280037806075c573ffc8ad4703b470058b374ed1e09914c008ff'
-            'e34505f31751b1bd38829d1793d7cd95284303b7ca6a43ce5cb7694ae78367e3'
-            'ea58bc3aaa40c549808e185ed85356a3823490b9a37fd617cd7801358144b6cd')
+optdepends=('dotnet-runtime-bin: binary dotnet core runtime alternative')
+source=("http://webgrabplus.com/sites/default/files/download/SW/V5.2.0/WebGrabPlus_V5.2_install.tar.gz"
+        "http://webgrabplus.com/sites/default/files/download/SW/V${pkgver}/WebGrabPlus_V${pkgver}_beta_install.tar.gz"
+        'wgpp.sh')
+sha256sums=('dd472d58a84114d42776d3e04738f962b7a89e150dbd828d0db137a445ff8f1b'
+            '29e151515df3cf1348b1b6ac03596f084380aa0cea84d4ffd7d983eb3e2d071c'
+            '8cfd3acd0e7fe8d78990de1243e4f3dd6a0f18d4c59128a4de8b0f61ee6fa086')
 
 prepare() {
-	# Rename folder
-	mv ".$pkgname" "$pkgname"
-	# Check for latest version of SiteIniPack from 'http://webgrabplus.com/epg-channels'
-	curl -sL http://webgrabplus.com/epg-channels | grep 'SiteIni\.Pack_' |
-		sed -e 's/.*btn"><a href="//' -e 's/".*//' -e 's/[^0-9][^0-9][^0-9]*//g' >siteini_ver
-	# Download latest version of SiteIniPack
-	if [ -s siteini_ver ]; then
-		_siteini_ver=$(cat siteini_ver)
-		msg2 "Found latest SiteIniPack_V${_siteini_ver}"
-		curl -LO http://webgrabplus.com/sites/default/files/download/ini/SiteIni.Pack_${_siteini_ver}.zip
-		bsdtar -xf SiteIni.Pack_${_siteini_ver}.zip
-		rm -r "$pkgname/siteini.pack.update/"*
-		cp -r siteini.pack/* "$pkgname/siteini.pack.update"
-	fi
-	# Run 'install.sh' script
-	cd "$pkgname"
-	./install.sh
-	# Fix for 'No Internet' issue
-	sed -i 's/guide\.xml/latest\.xml/g' WebGrab++.config.xml
+  # Rename folder
+  mv ".$pkgname" "$pkgname"
+  # Check for latest version of SiteIniPack from 'http://webgrabplus.com/epg-channels'
+  curl -sL http://webgrabplus.com/epg-channels | grep 'SiteIni\.Pack_' |
+    sed -e 's/.*btn"><a href="//' -e 's/".*//' -e 's/[^0-9][^0-9][^0-9]*//g' >siteini_ver
+  # Download latest version of SiteIniPack
+  if [ -s siteini_ver ]; then
+    _siteini_ver=$(cat siteini_ver)
+    msg2 "Found latest SiteIniPack_V${_siteini_ver}"
+    curl -LO http://webgrabplus.com/sites/default/files/download/ini/SiteIni.Pack_${_siteini_ver}.zip
+    bsdtar -xf SiteIni.Pack_${_siteini_ver}.zip
+    rm -r "$pkgname/siteini.pack.update/"*
+    cp -r siteini.pack/* "$pkgname/siteini.pack.update"
+  fi
+  # Run 'install.sh' script
+  cd "$pkgname"
+  ./install.sh
+  # Adaptation for XML pretty formatting
+  sed -i 's/guide\.xml/latest\.xml/g' WebGrab++.config.xml
 }
 
 package() {
-	install -d "$pkgdir/usr/share/$pkgname"
-	cp -a --no-preserve='mode,ownership' "$srcdir/$pkgname" "$pkgdir/usr/share"
-	find "$pkgdir" -type f -name '*.sh' -exec chmod u=rwx,go=rx {} \;
-	install -Dm755 "$srcdir/wgpp.sh" "$pkgdir/usr/bin/$pkgname"
+  install -d "$pkgdir/usr/share/$pkgname"
+  cp -a --no-preserve='mode,ownership' "$srcdir/$pkgname" "$pkgdir/usr/share"
+  find "$pkgdir" -type f -name '*.sh' -exec chmod u=rwx,go=rx {} \;
+  install -Dm755 "$srcdir/wgpp.sh" "$pkgdir/usr/bin/$pkgname"
 }
+
+# vim:set ts=2 sw=2 et:
