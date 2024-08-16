@@ -5,8 +5,8 @@
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#
 pkgname=termius-deb
 _pkgname=Termius
-pkgver=8.12.9
-pkgrel=2
+pkgver=9.3.2
+pkgrel=1
 pkgdesc='Desktop SSH Client (deb release)'
 arch=('x86_64')
 url='https://termius.com'
