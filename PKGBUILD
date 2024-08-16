@@ -1,25 +1,30 @@
+# Maintainer: detiam <dehe underline tian at outlook dot com>
 # Contributor: Sebastian Wolf <swolf at melonkru dot de>
-pkgname=xseticon
+
+_pkgname=xseticon
+pkgname="$_pkgname-detiam"
 pkgver=0.1+bzr14
 pkgrel=1
 pkgdesc="Set the X11 window icon for any given window to that of a given image file"
 arch=('i686' 'x86_64')
-url="http://www.leonerd.org.uk/code/xseticon/"
-depends=('gd')
+url="https://github.com/detiam/${_pkgname}"
+depends=('gd' 'imagemagick')
 makedepends=('libx11')
-license=('GPL')
-source=("http://www.leonerd.org.uk/code/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('048a8339b47030ebbff9cce4b58cb071a5c5f5a2cd7ff1ecc8434f95b2f8e4c5')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+license=('GPL-2.0-or-later')
+source=("git+${url}#tag=${pkgver}")
+sha256sums=('6ed8b8c1e75c03425e5a4d55c978bc10e49e72de012afeb28a3083f0b5290290')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
   make || return 1
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
   install -m755 -d "${pkgdir}/usr/bin"
-  install -m755 ${pkgname} "${pkgdir}/usr/bin/"
-  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -m755 ${_pkgname} "${pkgdir}/usr/bin/"
+  install -m755 -d "${pkgdir}/usr/share/licenses/${_pkgname}"
+  install -m644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/"
 }
