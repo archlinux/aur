@@ -2,7 +2,7 @@
 
 pkgname=deepin-daemon-git
 _pkgname=deepin-daemon
-pkgver=6.0.40.r2.g3945d685
+pkgver=6.0.43.r3.g36a1edc9
 pkgrel=1
 pkgdesc='Daemon handling the DDE session settings'
 arch=('x86_64' 'aarch64')
