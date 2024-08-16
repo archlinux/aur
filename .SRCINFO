@@ -1,0 +1,14 @@
+pkgbase = 9cc-git
+	pkgdesc = Simple and clean C11 compiler
+	pkgver = r267.ea2f4b8
+	pkgrel = 1
+	url = https://github.com/rui314/9cc
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	source = git+http://github.com/rui314/9cc
+	sha1sums = SKIP
+
+pkgname = 9cc-git
