@@ -4,7 +4,7 @@
 # Contributor: Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
 
 pkgname=pulldown-cmark
-pkgver=0.11.0
+pkgver=0.11.2
 pkgrel=1
 pkgdesc='Pull parser for CommonMark, written in Rust'
 arch=(x86_64)
@@ -16,7 +16,7 @@ makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_archive.tar.gz::https://static.crates.io/crates/$pkgname/$_archive.crate"
         "$_archive-LICENSE::$url/raw/v$pkgver/LICENSE")
-sha256sums=('8746739f11d39ce5ad5c2520a9b75285310dbfe78c541ccf832d38615765aec0'
+sha256sums=('cb4e75767fbc9d92b90e4d0c011f61358cde9513b31ef07ea3631b15ffc3b4fd'
             'c4f10f55904bdb9f27d3fbf94c354926d6cfe8b982276e556238c258941b243b')
 
 prepare() {
