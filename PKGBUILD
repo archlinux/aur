@@ -31,7 +31,7 @@ install="$pkgname.install"
 source_x86_64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jdk${pkgver}-linux_x64.tar.gz")
 sha256sums_x86_64=('2ecdac1c2b4ff61b41203c2ae5f343440dff6c63746f368ca7a9cd923535cf1f')
 
-_jvmdir="/usr/lib/jvm/${_jdkname}"
+_jvmdir="/usr/lib/jvm/${pkgname}"
 
 # Upstream config files that should go to etc and get backup
 _conf_files=(
@@ -65,11 +65,11 @@ package() {
   mv "${pkgdir}${_jvmdir}"/jre/lib/management/snmp.acl{.template,}
 
   # Conf
-  install -dm 755 "${pkgdir}/etc/${_jdkname}"
+  install -dm 755 "${pkgdir}/etc/${pkgname}"
   for f in "${_conf_files[@]}"; do
     _file="${_jvmdir}/jre/lib/$f"
-    install -D -m 644 "${pkgdir}${_file}" "${pkgdir}/etc/${_jdkname}/$f"
-    ln -sf "/etc/${_jdkname}/$f" "${pkgdir}${_file}"
+    install -D -m 644 "${pkgdir}${_file}" "${pkgdir}/etc/${pkgname}/$f"
+    ln -sf "/etc/${pkgname}/$f" "${pkgdir}${_file}"
   done
 
   # Install license
