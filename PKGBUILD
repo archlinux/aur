@@ -1,23 +1,22 @@
-# Maintainer <shlomochoina@gmail.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=pantheon-dock-git
-pkgver=r2240.ca3d330e
+pkgver=r560.a4f2137
 pkgrel=1
 pkgdesc='The Pantheon Dock'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/dock'
-license=('GPL3')
-depends=(libgee bamf python granite  gnome-menus)
-makedepends=('git' 'gnome-common' 'meson' 'vala' 'gnome-menus' 'libdbusmenu-gtk3')
+license=(GPL-3.0-or-later)
+depends=(libgee libadwaita granite7 wayland gtk4)
+makedepends=('git' 'gnome-common' 'meson' 'vala')
 conflicts=('plank' 'pantheon-dock')
 provides=('plank' 'pantheon-dock')
-source=(pantheon-dock::git+$url#branch=master)
+source=(pantheon-dock::git+$url)
 sha256sums=('SKIP')
 
 pkgver() {
   cd pantheon-dock
-
-   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
