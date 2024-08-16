@@ -1,6 +1,6 @@
 pkgbase = penguins-eggs
 	pkgdesc = A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE
-	pkgver = 10.0.26
+	pkgver = 10.0.27
 	pkgrel = 1
 	url = https://penguins-eggs.net
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = penguins-eggs
 	optdepends = calamares: system installer GUI
 	optdepends = zsh-completions: eggs autocomplete
 	options = !strip
-	source = git+https://github.com/pieroproietti/penguins-eggs.git#commit=d5e6c1ab85e05db89f116a68d512ce291e332913
+	source = git+https://github.com/pieroproietti/penguins-eggs.git#commit=887d790bd1b7fdb070bec75c0f64895acf1ded63
 	sha256sums = SKIP
 
 pkgname = penguins-eggs
