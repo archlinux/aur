@@ -118,6 +118,7 @@ if [[ $_ENABLE_PYTHON = 1 ]]; then
     'python-pytorch'
     'python-torchaudio'
     'python-torchvision'
+    'python-accelerate'
   )
 fi
 

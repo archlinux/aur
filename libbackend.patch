@@ -1,54 +1,50 @@
 diff --git a/backend/python/common/libbackend.sh b/backend/python/common/libbackend.sh
-index e8dfea03..ae497ee1 100644
+index 934b1fd3..870ba409 100644
 --- a/backend/python/common/libbackend.sh
 +++ b/backend/python/common/libbackend.sh
-@@ -1,7 +1,7 @@
- 
- 
- # init handles the setup of the library
--# 
-+#
- # use the library by adding the following line to a script:
- # source $(dirname $0)/../common/libbackend.sh
- #
-@@ -75,10 +75,9 @@ function getBuildProfile() {
+@@ -88,7 +88,7 @@ function getBuildProfile() {
  # always result in an activated virtual environment
  function ensureVenv() {
-     if [ ! -d "${MY_DIR}/venv" ]; then
--        uv venv ${MY_DIR}/venv
-+        python3 -m venv --system-site-packages ${MY_DIR}/venv
+     if [ ! -d "${EDIR}/venv" ]; then
+-        uv venv ${EDIR}/venv
++        uv venv --system-site-packages ${EDIR}/venv
          echo "virtualenv created"
      fi
--    
-     if [ "x${VIRTUAL_ENV}" != "x${MY_DIR}/venv" ]; then
-         source ${MY_DIR}/venv/bin/activate
-         echo "virtualenv activated"
-@@ -111,24 +110,15 @@ function ensureVenv() {
+ 
+@@ -125,35 +125,12 @@ function ensureVenv() {
  function installRequirements() {
      ensureVenv
  
 -    # These are the requirements files we will attempt to install, in order
 -    declare -a requirementFiles=(
--        "${MY_DIR}/requirements-install.txt"
--        "${MY_DIR}/requirements.txt"
--        "${MY_DIR}/requirements-${BUILD_TYPE}.txt"
+-        "${EDIR}/requirements-install.txt"
+-        "${EDIR}/requirements.txt"
+-        "${EDIR}/requirements-${BUILD_TYPE}.txt"
 -    )
 -
 -    if [ "x${BUILD_TYPE}" != "x${BUILD_PROFILE}" ]; then
--        requirementFiles+=("${MY_DIR}/requirements-${BUILD_PROFILE}.txt")
+-        requirementFiles+=("${EDIR}/requirements-${BUILD_PROFILE}.txt")
+-    fi
+-
+-    # if BUILD_TYPE is empty, we are a CPU build, so we should try to install the CPU requirements
+-    if [ "x${BUILD_TYPE}" == "x" ]; then
+-        requirementFiles+=("${EDIR}/requirements-cpu.txt")
+-    fi
+-
+-    requirementFiles+=("${EDIR}/requirements-after.txt")
+-
+-    if [ "x${BUILD_TYPE}" != "x${BUILD_PROFILE}" ]; then
+-        requirementFiles+=("${EDIR}/requirements-${BUILD_PROFILE}-after.txt")
 -    fi
 -
 -    for reqFile in ${requirementFiles[@]}; do
-+    for reqFile in "${MY_DIR}/requirements.txt"; do
++    reqFile="${EDIR}/requirements.txt"
          if [ -f ${reqFile} ]; then
-+            sed -ri '/^(torch|torchvision|torchaudio)/d' "${reqFile}"
              echo "starting requirements install for ${reqFile}"
--            uv pip install ${EXTRA_PIP_INSTALL_FLAGS} --requirement ${reqFile}
-+            pip install --requirement ${reqFile}
+             uv pip install ${EXTRA_PIP_INSTALL_FLAGS} --requirement ${reqFile}
              echo "finished requirements install for ${reqFile}"
          fi
-     done
-+
+-    done
  }
  
  # startBackend discovers and runs the backend GRPC server
