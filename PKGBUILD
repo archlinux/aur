@@ -4,7 +4,7 @@ _tag=3.0.0-rc.9
 pkgname=watt-toolkit-bin
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
 pkgver=${_tag//-/.}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url=https://steampp.net/
 license=('GPL-3.0-only')
@@ -61,4 +61,6 @@ package(){
     install -Dm755 "${srcdir}/watt-toolkit" "${pkgdir}/usr/bin/watt-toolkit"
     install -Dm644 "${srcdir}/set-cap.hook" "${pkgdir}/usr/share/libalpm/hooks/watt-toolkit-set-cap.hook"
     install -Dm644 "${srcdir}/watt-toolkit.desktop" "${pkgdir}/usr/share/applications/watt-toolkit.desktop"
+    # Steam++.sh is required by https://github.com/BeyondDimension/SteamTools/issues/3403
+    ln -srfv "$pkgdir/usr/bin/watt-toolkit" "$pkgdir/usr/lib/watt-toolkit/Steam++.sh"
 }
