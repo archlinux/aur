@@ -8,7 +8,7 @@ _pkgbase='logisim-evolution'
 pkgbase="${_pkgbase}-git"
 pkgname="${_pkgbase}-git"
 pkgver=3.9.0+7.r4998.20240816.cd3a765af
-pkgrel=1
+pkgrel=2
 provides=("${_pkgbase}=${pkgver}")
 conflicts=("${_pkgbase}")
 pkgdesc='An educational tool for designing and simulating digital logic circuits.'
@@ -23,7 +23,8 @@ depends=(
 makedepends=(
   'git'
   'gradle>=8.5'
-  'java-environment'
+  # 'java-environment>=22'
+  'jdk-openjdk>=22'
   'optipng'
 )
 
