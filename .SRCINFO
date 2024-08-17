@@ -1,0 +1,14 @@
+pkgbase = catppuccin-sddm-theme-latte
+	pkgdesc = Soothing pastel theme for SDDM - Latte
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/catppuccin/sddm
+	arch = any
+	license = MIT
+	depends = sddm
+	depends = qt6-svg
+	depends = qt6-declarative
+	source = catppuccin-sddm-theme-latte-1.0.0.zip::https://github.com/catppuccin/sddm/releases/download/v1.0.0/catppuccin-latte.zip
+	sha256sums = 19cc14098c9cc709334b6f65598520834f373bd24702301411c6ac1a6ecc4c32
+
+pkgname = catppuccin-sddm-theme-latte
