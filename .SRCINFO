@@ -1,0 +1,11 @@
+pkgbase = python-sphinxcontrib-openapi
+	pkgdesc = OpenAPI (fka Swagger) spec renderer for Sphinx
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://github.com/sphinx-contrib/openapi
+	arch = any
+	license = BSD
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-sphinxcontrib-openapi
