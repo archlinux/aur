@@ -1,4 +1,4 @@
-# Mantainer: Igor Deyashkin <ovsyanka42 at gmail dot com>
+# Maintainer: Igor Deyashkin <ovsyanka42 at gmail dot com>
 # Contributor: Sneakatoo <corinne.9 at hotmail.it>
 # Contributor: Pellegrino Prevete <pellegrinoprevete at gmail.com>
 # Contributor: Martin Patz <mailto at martin-patz.de>
