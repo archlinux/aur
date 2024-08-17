@@ -1,7 +1,7 @@
 pkgbase = androidtoolkit-bin
 	pkgdesc = Desktop tools for Android developers, supports Windows, Mac and Linux.
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LazyIonEs/AndroidToolKit
 	install = androidtoolkit.install
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = androidtoolkit-bin
 	conflicts = androidtoolkit
 	source = androidtoolkit-1.5.0.deb::https://github.com/LazyIonEs/AndroidToolKit/releases/download/v1.5.0/androidtoolkit-1.5.0-linux.deb
 	source = LICENSE
-	sha256sums = 7a2651b28fed15ac312c9d919846d8ae13be32fe7d14ebf950baced56d83f633
+	sha256sums = caf57f325c7cd545a78439949816cee3b4990d736b786e66f636dafff2aacfb6
 	sha256sums = 5d8e7b77c07cdf97d60ed2ec16478fa46ff34b00a00ed87ba4870a25333b8850
 
 pkgname = androidtoolkit-bin

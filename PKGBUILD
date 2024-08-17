@@ -2,8 +2,7 @@
 pkgname=androidtoolkit-bin
 _pkgname=androidtoolkit
 pkgver=1.5.0
-_pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop tools for Android developers, supports Windows, Mac and Linux."
 arch=('x86_64')
 url="https://github.com/LazyIonEs/AndroidToolKit"
@@ -25,4 +24,5 @@ package() {
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
     find "$pkgdir" -type d -exec chmod 755 {} \;
     chmod a+x "$pkgdir/opt/androidtoolkit/lib/app/resources/aapt2"
+    sed -i 's/^Categories=.*/Categories=Utility/' "$pkgdir/opt/$_pkgname/lib/androidtoolkit-AndroidToolKit.desktop"
 }
