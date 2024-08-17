@@ -2,7 +2,8 @@
 
 pkgname=libsignal-ffi
 _pkgname=libsignal
-pkgver=0.52.0
+pkgver=0.55.0
+_message_backups_tests_hash="216bbb5e58afe0577c3bb7d732458c4d2a6477c5"
 pkgrel=1
 pkgdesc='Library for the Signal Protocol (ffi component)'
 url="https://github.com/signalapp/${_pkgname}/tree/main/rust/bridge/ffi"
@@ -20,13 +21,18 @@ options=(!lto)
 arch=('x86_64' 'aarch64')
 license=('GPL-3.0-or-later')
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/refs/tags/v$pkgver.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/refs/tags/v$pkgver.tar.gz"
+  "Signal-Message-Backup-Tests-${_message_backups_tests_hash}.zip::https://github.com/signalapp/Signal-Message-Backup-Tests/archive/${_message_backups_tests_hash}.zip"
 )
 
-sha512sums=('f9410e47214ef013b2afa4971400526c9eece8ce58e7dc942a139c999b2426c668f415ac3abdde8b77ccca9a0bc342b2f51df4856d3b8e58c563753d26b4530a')
+sha256sums=('ad7c5d305b6cdb9108efa037303bfb73465e90c073ec8de95a9b3a6934bd8660'
+            '410938965db4cd3b4e66bb335eb4bdda46dc0f8a871a1bd558dfea9a7f970b2a')
 
 prepare() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  mkdir -p "rust/message-backup/tests/res/"
+  rm -R "rust/message-backup/tests/res/Signal-Message-Backup-Tests"
+  ln -s "${srcdir}/Signal-Message-Backup-Tests-${_message_backups_tests_hash}" "rust/message-backup/tests/res/Signal-Message-Backup-Tests"
   export RUSTUP_TOOLCHAIN=stable
   export RUST_BACKTRACE=full
   cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
