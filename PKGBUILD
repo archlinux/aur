@@ -1,6 +1,6 @@
 # Maintainer: Tobias Leupold <tl at stonemx dot de>
 pkgname=smartmontools-openrc
-pkgver=20230110
+pkgver=20240817
 pkgrel=1
 pkgdesc="OpenRC smartmontools init script"
 arch=( "any" )
