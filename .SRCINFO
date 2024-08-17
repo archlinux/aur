@@ -1,6 +1,6 @@
 pkgbase = ace
 	pkgdesc = Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems.
-	pkgver = 8.0.0
+	pkgver = 8.0.1
 	pkgrel = 2
 	url = https://www.dre.vanderbilt.edu/~schmidt/ACE.html
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = ace
 	provides = libACE_RMCast.so
 	provides = libACE_TMCast.so
 	provides = libKokyu.so
-	source = https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-8_0_0/ACE-src-8.0.0.tar.gz
-	sha256sums = 9d2d3c24d33742ea348a841dcc46efbf86d6d350ef57dd31176ac941be838259
+	source = https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-8_0_1/ACE-src-8.0.1.tar.gz
+	sha256sums = 1230874c8f24b82d5da842236695a1278ceb5efda9bebcd6e38c4db51cdd7b25
 
 pkgname = ace
