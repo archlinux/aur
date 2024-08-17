@@ -1,6 +1,5 @@
 /pkg/
 /src/
-/*.tar.gz
-/*.xz
-/*.zst
-/*.swp
+/*.log
+/*.pkg.tar.zst
+/ffmpeg-normalize-*.tar.gz
