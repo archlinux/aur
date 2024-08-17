@@ -5,9 +5,14 @@ pkgbase = python-vega_datasets
 	url = http://github.com/altair-viz/vega_datasets
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pandas
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	source = vega_datasets-0.9.tar.gz::https://github.com/altair-viz/vega_datasets/archive/v0.9.tar.gz
-	sha256sums = 863a1c0f2da1310a0d676cae4c0f74ce7cb0aaa822909ea6f6e96eeaf4d348b1
+	source = vega_datasets-0.9.tar.gz::http://github.com/altair-viz/vega_datasets/archive/v0.9.tar.gz
+	sha512sums = 26362eb98b6ee5fc18b12dd9894b4fbd5fbfe4291585e55af34aa39fac8315646710083bc18b395a6bf0b1cc9f25404ee31b887fe939f77ab7f96d07cb991705
 
 pkgname = python-vega_datasets
-

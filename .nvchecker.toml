@@ -1,0 +1,5 @@
+[python-vega_datasets]
+source = "github"
+github = "altair-viz/vega_datasets"
+use_max_tag = true
+prefix = "v"
