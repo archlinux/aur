@@ -3,7 +3,7 @@
 pkgname=gnome-x11-gesture-daemon
 _name=gesture_improvements_gesture_daemon
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GNOME gesture improvements daemon"
 arch=('x86_64')
 url="https://github.com/harshadgavali/gnome-x11-gesture-daemon"
@@ -25,7 +25,6 @@ prepare() {
 build() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
