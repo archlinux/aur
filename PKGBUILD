@@ -4,7 +4,7 @@ pkgname=syspower
 pkgver=0.1
 pkgrel=1
 pkgdesc="Simple power menu/shutdown screen written in gtkmm4"
-arch=('any')
+arch=('aarch64' 'x86_64')
 url="https://github.com/System64fumo/syspower"
 depends=('gtkmm-4.0' 'gtk4-layer-shell')
 source=("git+https://github.com/System64fumo/syspower")
@@ -17,6 +17,5 @@ build() {
 
 package() {
 	cd "${pkgname}"
-	mkdir "${pkgdir}/usr"
-	make DESTDIR="${pkgdir}/usr" install
+	make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
