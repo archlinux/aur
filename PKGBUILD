@@ -4,7 +4,7 @@
 _watch=('https://www.realvnc.com/en/connect/download/viewer/linux/' 'VNC-Viewer-(\d[\d.]*\d+)-Linux-x64\.deb')
 
 pkgname=realvnc-vnc-viewer
-pkgver=7.12.0
+pkgver=7.12.1
 pkgrel=1
 pkgdesc='VNC remote desktop client software by RealVNC'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -15,9 +15,9 @@ conflicts=('tightvnc' 'tigervnc' 'turbovnc')
 source_x86_64=("https://downloads.realvnc.com/download/file/viewer.files/VNC-Viewer-${pkgver}-Linux-x64.deb")
 source_armv7h=("https://downloads.realvnc.com/download/file/viewer.files/VNC-Viewer-${pkgver}-Linux-ARM.deb")
 source_aarch64=("https://downloads.realvnc.com/download/file/viewer.files/VNC-Viewer-${pkgver}-Linux-ARM64.deb")
-sha256sums_x86_64=('a6d040da35a68f0d6aea4bc1c70a00bff47fee5f06c5f78c3e27e71a6ebe9af8')
-sha256sums_armv7h=('a46c22a4b1598d1039ef55d6e7a128c84b142060f3a8eb6e2692229b7d8792f8')
-sha256sums_aarch64=('5a8780135fe52d46e4740f754c4f50bb75449f8c5cb1def9a3ee38d8cae2cdcb')
+sha256sums_x86_64=('588a9adccab720ab2591e1b642506d02fc7f14a3da4cb8202f34d8f22ad13729')
+sha256sums_armv7h=('90af0f2a38fd3ac3b10a4bc93d5c79b9e4126906be3c40350ede232e4b811957')
+sha256sums_aarch64=('e788110eb5c9630c2c5259d2c9662edc4cf0f26eddfbc528c9d9d41d773403b8')
 
 package() {
     bsdtar -xv -C "${pkgdir}" -f "${srcdir}/data.tar.xz"
