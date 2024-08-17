@@ -1,6 +1,6 @@
 # Maintainer: Anders Pedersen <silwerspawn+aur.archlinux.org@gmail.com>
 pkgname=edrawmax-bin
-pkgver=13.0.0
+pkgver=13.5.2
 pkgrel=0
 pkgmaver=13
 pkgmaname=EdrawMax
@@ -23,22 +23,22 @@ backup=()
 options=(!strip)
 install=
 changelog=
-source=(https://download.edrawsoft.com/archives/${_pkgmaname_}_en_full${_pkgmaver_}.rpm edrawmax.desktop)
-sha256sums=('a897f5a688686b644f258a5a11a324bece23aad6ef27839dba130665abc7c270'
+source=(https://download.wondershare.com/prd/${_pkgmaname_}_full${_pkgmaver_}.rpm edrawmax.desktop)
+sha256sums=('7c49123d306876a160ea663128d1c564d32f8522b5d9ba98a88e87e63fc660d6'
 '6ef72d55814737c3d49497857377ebadcf2f985da378605202e643e8cc450fc6')
 noextract=()
 
 package() {
-  mkdir -p "${pkgdir}/opt/${_pkgmaname_}/${pkgmaver}"
+  mkdir -p "${pkgdir}/opt/${_pkgmaname_}"
   mkdir -p "${pkgdir}/usr/share"
-  mv "${srcdir}/opt/EdrawMax-${pkgmaver}/"* "${pkgdir}/opt/${_pkgmaname_}/${pkgmaver}/"
+  mv "${srcdir}/opt/apps/edrawmax/"* "${pkgdir}/opt/${_pkgmaname_}/"
   mv "${srcdir}/usr/share/"* "${pkgdir}/usr/share"
   mkdir -p "${pkgdir}/usr/bin/"
-  sed -i "s#/opt/EdrawMax-#/opt/edrawmax/#" ${pkgdir}/opt/${_pkgmaname_}/${pkgmaver}/edrawmax.sh
-  sed -i "s#/opt/EdrawMax-13#/opt/edrawmax/13#" ${pkgdir}/usr/share/applications/edrawmax.desktop
-  chmod +x ${pkgdir}/opt/${_pkgmaname_}/${pkgmaver}/edrawmax.sh
-  cd "${pkgdir}/opt/${_pkgmaname_}/${pkgmaver}"
-  ln -f -s "/opt/${_pkgmaname_}/${pkgmaver}/${_pkgmaname_}.sh" "${pkgdir}/usr/bin/edrawmax"
+  sed -i "s#/opt/apps/edrawmax#/opt/edrawmax/#" ${pkgdir}/opt/${_pkgmaname_}/edrawmax.sh
+  sed -i "s#/opt/apps/edrawmax#/opt/edrawmax#" ${pkgdir}/usr/share/applications/edrawmax.desktop
+  chmod +x ${pkgdir}/opt/${_pkgmaname_}/edrawmax.sh
+  cd "${pkgdir}/opt/${_pkgmaname_}"
+  ln -f -s "/opt/${_pkgmaname_}/${_pkgmaname_}.sh" "${pkgdir}/usr/bin/edrawmax"
 }
 
 post_install() {

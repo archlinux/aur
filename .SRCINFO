@@ -1,6 +1,6 @@
 pkgbase = edrawmax-bin
 	pkgdesc = All-in-One Diagram Software
-	pkgver = 13.0.0
+	pkgver = 13.5.2
 	pkgrel = 0
 	url = https://www.edrawsoft.com/edraw-max/
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = edrawmax-bin
 	depends = qt5-declarative
 	depends = curl
 	options = !strip
-	source = https://download.edrawsoft.com/archives/edrawmax_en_full5371.rpm
+	source = https://download.wondershare.com/prd/edrawmax_full5371.rpm
 	source = edrawmax.desktop
-	sha256sums = a897f5a688686b644f258a5a11a324bece23aad6ef27839dba130665abc7c270
+	sha256sums = 7c49123d306876a160ea663128d1c564d32f8522b5d9ba98a88e87e63fc660d6
 	sha256sums = 6ef72d55814737c3d49497857377ebadcf2f985da378605202e643e8cc450fc6
 
 pkgname = edrawmax-bin
