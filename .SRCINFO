@@ -1,6 +1,6 @@
 pkgbase = python-sphinx_mdinclude
 	pkgdesc = Markdown extension for Sphinx
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://sphinx-mdinclude.readthedocs.io
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = python-sphinx_mdinclude
 	makedepends = python-installer
 	makedepends = python-sphinx
 	makedepends = python-mistune>=3.0
-	source = https://files.pythonhosted.org/packages/source/s/sphinx_mdinclude/sphinx_mdinclude-0.6.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/s/sphinx_mdinclude/sphinx_mdinclude-0.6.2.tar.gz
 	source = Makefile
-	md5sums = 1705b74f3affd93694a7b6b73341f994
+	md5sums = 6ee1de048365f0f960f299faa183bb7f
 	md5sums = a6aa4bc42b138d75f938065a0994c3e1
 
 pkgname = python-sphinx_mdinclude

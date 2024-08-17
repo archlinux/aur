@@ -3,7 +3,7 @@
 pkgbase=python-sphinx_mdinclude
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Markdown extension for Sphinx"
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('python-flit-core'
 checkdepends=('python-pytest') # mistune sphinx already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'Makefile')
-md5sums=('1705b74f3affd93694a7b6b73341f994'
+md5sums=('6ee1de048365f0f960f299faa183bb7f'
          'a6aa4bc42b138d75f938065a0994c3e1')
 
 prepare() {
