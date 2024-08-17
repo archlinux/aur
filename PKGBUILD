@@ -1,11 +1,11 @@
-# Maintainer: Kyle Westhaus <kwesthaus+aur at gmail dot com>
-# Maintainer: Kevin Orr <kevinorr54+aur at gmail dot com>
+# Contributor: Kyle Westhaus <kwesthaus+aur at gmail dot com>
+# Contributor: Kevin Orr <kevinorr54+aur at gmail dot com>
 # Contributor: Kaley Main <kaleypoole17 at gmail dot com>
 # Contributor: John Trengrove <john at retrofilter dot com>
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=dgraph-bin
-pkgver=23.1.0
+pkgver=24.0.2
 pkgrel=1
 pkgdesc='Fast, transactional, distributed graph database'
 arch=('x86_64')
@@ -22,8 +22,8 @@ source=("dgraph-$pkgver.tar.gz::$url/releases/download/v$pkgver/dgraph-linux-amd
         "$url/raw/v$pkgver/contrib/systemd/centos/dgraph-alpha.service"
         "$url/raw/v$pkgver/contrib/systemd/centos/dgraph-zero.service"
         "$url/raw/v$pkgver/contrib/systemd/centos/add_dgraph_account.sh")
-sha256sums=('45a4e169e7a19a1d564e019ca6e4477d482ac4c41e8361b01b7d6633e1fb98f1'
-            '183fc799c8b9ea3135595e00c5c926382be2eb976e7f19e4693b5b74e6ff4d27'
+sha256sums=('4654a4d589577c22dd64cd9ba62b7d25a47cf426a84db6ed462983a7336639e5'
+            '4d542605bc002c2f4a4a3146a44760b277d9d6691d351c3483e2df33cccc960d'
             'a50101d04f47153139ea5e2a09e7c4c243c37d9137dead20034dd77f8c74b88c'
             'a4cc988284f651e850b85b02b41a8d4d6a4a22e967bf679b89dc0d14d8d189e3'
             'bfdc75136567068dd049c2d226049a57de5f4a1871eab7429c022e95952efb0d'
