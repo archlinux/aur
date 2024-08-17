@@ -1,0 +1,6 @@
+post_install() {
+    printf '%s\n' 'The following permissions must be enabled for using the extension:'
+    printf '%s\n' '  - Control browser proxy settings'
+    printf '%s\n' '  - Access your data for all websites'
+    printf '%s\n' 'This can be configured at about:addons->Extensions->Proton VPN->Permissions'
+}

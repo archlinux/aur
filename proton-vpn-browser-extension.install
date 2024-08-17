@@ -1,0 +1,3 @@
+post_install() {
+    printf '%s\n' 'The extension needs to be manually loaded at chrome://extensions->Load unpacked'
+}
