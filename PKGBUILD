@@ -4,7 +4,7 @@
 _libname=npyosmium
 pkgname="python-${_libname}"
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork with numpy interface - Python bindings for libosmium, the data processing library for OSM data"
 _rootdir="${_libname}-${pkgver}"
 url="https://github.com/agrenott/npyosmium"
@@ -13,7 +13,7 @@ makedepends=('cmake' 'python-build' 'python-installer' 'python-wheel' 'protozero
 license=('BSD')
 arch=('x86_64')
 source=("${_rootdir}.tar.gz::https://github.com/agrenott/npyosmium/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7559d1d0af07c8177aff38f5bcc344740764911494eb8227468dfb7a9a0f9e38')
+sha256sums=('7a743099c10e67901abe004c526164a97dd399d6ced86878642245e77937e119')
 
 build() {
     cd "${_rootdir}"
