@@ -1,7 +1,7 @@
 # Maintainer: Janne Veteläinen <janne.p.w.vetelainen@gmail.com>
 
 pkgname=vmangos-git
-pkgver=r6209.1ba3b859c
+pkgver=r6292.9b3b375ef
 pkgrel=1
 pkgdesc="MMORPG server emulator"
 arch=('x86_64')
@@ -15,7 +15,6 @@ depends=(
     'mariadb-libs'
     'onetbb'
     'openssl'
-    'readline'
     'zlib'
 )
 makedepends=(

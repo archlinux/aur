@@ -1,6 +1,6 @@
 pkgbase = vmangos-git
 	pkgdesc = MMORPG server emulator
-	pkgver = r6209.1ba3b859c
+	pkgver = r6292.9b3b375ef
 	pkgrel = 1
 	url = https://github.com/vmangos/
 	install = vmangos-git.install
@@ -16,7 +16,6 @@ pkgbase = vmangos-git
 	depends = mariadb-libs
 	depends = onetbb
 	depends = openssl
-	depends = readline
 	depends = zlib
 	optdepends = vmangos-setupdb: Pacman hook to (insecurely) set up MariaDB
 	provides = vmangos
