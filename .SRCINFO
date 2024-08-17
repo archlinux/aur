@@ -5,6 +5,16 @@ pkgbase = ragnarwm
 	url = https://github.com/cococry/Ragnar
 	arch = x86_64
 	license = GPL
+  depdens = xcb-util
+  depdens = xcb-util-keysyms
+  depdens = xcb-util-cursor
+  depdens = xcb-util-wm
+  depdens = xorg-server
+  depdens = xorg-xinit
+  depdens = mesa
+  depdens = libconfig
+  depdens = xcb-proto
+  
 	makedepends = git
 	makedepends = make
 	makedepends = gcc
