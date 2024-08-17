@@ -2,11 +2,11 @@
 
 pkgname=flowfox-bin
 _pkgname=flowfox
-pkgver=129.0
+pkgver=129.0.2
 pkgrel=1
 url=https://github.com/Troplo/ffox
 conflicts=("flowfox")
-_github_rel=firefox-129.0.en-US.linux-x86_64-1
+_github_rel=firefox-129.0.2.en-US.linux-x86_64-1
 pkgdesc="Fork of Firefox with minimal changes, including rebinding of default keyboard shortcuts to better match Chromium. Not affiliated with Mozilla. (Binary version)"
 arch=('x86_64' 'i686')
 license=(MPL GPL LGPL)

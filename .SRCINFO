@@ -1,6 +1,6 @@
 pkgbase = flowfox-bin
 	pkgdesc = Fork of Firefox with minimal changes, including rebinding of default keyboard shortcuts to better match Chromium. Not affiliated with Mozilla. (Binary version)
-	pkgver = 129.0
+	pkgver = 129.0.2
 	pkgrel = 1
 	url = https://github.com/Troplo/ffox
 	arch = x86_64
@@ -50,7 +50,7 @@ pkgbase = flowfox-bin
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = firefox-129.0-x86_64.tar.bz2::https://github.com/Troplo/foxrel/releases/download/firefox-129.0.en-US.linux-x86_64-1/firefox-129.0.en-US.linux-x86_64.tar.bz2
+	source_x86_64 = firefox-129.0.2-x86_64.tar.bz2::https://github.com/Troplo/foxrel/releases/download/firefox-129.0.2.en-US.linux-x86_64-1/firefox-129.0.2.en-US.linux-x86_64.tar.bz2
 	sha256sums_x86_64 = SKIP
 
 pkgname = flowfox-bin

@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /opt/flowfox/firefox --class "Firefox" --name "Flowfox" "$@"
+exec /opt/flowfox/firefox --class "Flowfox" --name "Flowfox" "$@"
