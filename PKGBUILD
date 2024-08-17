@@ -7,7 +7,7 @@ _channel=stable
 _rel=1
 #pkgver=${_pkgver}.${_channel}${_rel}  # beta
 pkgver=${_pkgver}.${_channel}  # stable
-pkgrel=1
+pkgrel=2
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64')
@@ -82,7 +82,6 @@ build() {
   cd mullvadvpn-app
   CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
   local RUSTC_VERSION=$(rustc --version)
   local PRODUCT_VERSION=$(cargo run -q --bin mullvad-version)
 
