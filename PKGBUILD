@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=HSAUR3
-_pkgver=1.0-14
+_pkgver=1.0-15
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="A Handbook of Statistical Analyses Using R (3rd Edition)"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -42,8 +42,8 @@ optdepends=(
   r-wordcloud
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f2cd2053cefc5025deb4bdc0307249e1')
-b2sums=('51e230397ff0f0797d1c283a4c3b7a9d820a97125b6ea3035978ac4f349f54324fd99642d1666e99c62268a8d4250f4fdf32833b580cdefc6913dfa1a4b5a396')
+md5sums=('ad511d4510711a4c8519f386d72e3c05')
+b2sums=('442fa3d9a349a2dabea4a8553cd9ae43fbce48c1453c246d86a4a2f8739d73b1301ff615a101652e89c0164dc7d998ab56aa5204b76422e68934901ba5d65b44')
 
 build() {
   mkdir build
