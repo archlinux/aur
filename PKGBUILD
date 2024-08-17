@@ -3,7 +3,7 @@
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 pkgname=mullvad-vpn-cli
 pkgver=2024.4
-pkgrel=2
+pkgrel=3
 pkgdesc="The Mullvad VPN CLI client"
 arch=('x86_64')
 url="https://www.mullvad.net"
@@ -43,7 +43,6 @@ build() {
   cd mullvadvpn-app
   CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
   local RUSTC_VERSION=$(rustc --version)
   local PRODUCT_VERSION=$(cargo run -q --bin mullvad-version)
 
