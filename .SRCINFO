@@ -1,0 +1,17 @@
+pkgbase = gfont
+	pkgdesc = Browse and install google fonts from terminal
+	pkgver = 0.14.2
+	pkgrel = 1
+	url = https://github.com/nureon22/gfont
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = python
+	depends = python-requests
+	depends = python-urllib3
+	source = gfont-0.14.2.tar.gz::https://github.com/nureon22/gfont/archive/refs/tags/0.14.2.tar.gz
+	sha256sums = 82a06c0ceb20b9b0e9a330a7a479eeb29fbd2b90be404438737ba0f69715f262
+
+pkgname = gfont
