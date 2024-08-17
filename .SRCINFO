@@ -8,7 +8,6 @@ pkgbase = ovpnconn
 	depends = python
 	depends = openvpn
 	depends = python-pyqt5
-	depends = pkexec
 	depends = curl
 	source = https://github.com/felipealfonsog/OpenVPN-GUI-Connect/archive/refs/tags/v.0.0.1.tar.gz
 	sha256sums = 975e7d58c9991ebd04865c8da84ee4699e1c35eb8c67ce1ccde8afa2f28f1a96

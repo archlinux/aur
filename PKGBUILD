@@ -6,7 +6,7 @@ pkgdesc="OpenVPN-GUI-Connect (ovpnconn): Streamlined graphical interface for con
 arch=('x86_64')
 url="https://github.com/felipealfonsog/OpenVPN-GUI-Connect"
 license=('BSD-3-Clause')
-depends=('python' 'openvpn' 'python-pyqt5' 'pkexec' 'curl')
+depends=('python' 'openvpn' 'python-pyqt5' 'curl')
 
 source=("https://github.com/felipealfonsog/OpenVPN-GUI-Connect/archive/refs/tags/v.${pkgver}.tar.gz")
 
