@@ -1,12 +1,12 @@
 pkgbase = raccoon-bin
 	pkgdesc = Alternative Google Play (with GUI) client to download Android APK files to your computer, binary version
 	pkgver = 4.24.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://raccoon.onyxbits.de
 	arch = any
 	groups = raccoon
 	license = Apache
-	depends = java-environment
+	depends = java-runtime
 	optdepends = dummydroid
 	provides = raccoon=4.24.0
 	conflicts = raccoon
