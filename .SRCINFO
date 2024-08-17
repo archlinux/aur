@@ -1,0 +1,14 @@
+pkgbase = catppuccin-sddm-theme-macchiato
+	pkgdesc = Soothing pastel theme for SDDM - Macchiato
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/catppuccin/sddm
+	arch = any
+	license = MIT
+	depends = sddm
+	depends = qt6-svg
+	depends = qt6-declarative
+	source = catppuccin-sddm-theme-macchiato-1.0.0.zip::https://github.com/catppuccin/sddm/releases/download/v1.0.0/catppuccin-macchiato.zip
+	sha256sums = 4a43034dfe13195632fea8243d3f732c2a5806b7857ae131ba2ba0da7a7204fa
+
+pkgname = catppuccin-sddm-theme-macchiato
