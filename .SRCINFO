@@ -1,5 +1,5 @@
-pkgbase = franz
-	pkgdesc = Free messaging app for services like WhatsApp, Slack, Messenger and many more.
+pkgbase = franz-wayland
+	pkgdesc = Messaging app for services like WhatsApp, Slack, Messenger and many more.
 	pkgver = 5.10.0
 	pkgrel = 1
 	epoch = 1
@@ -12,11 +12,13 @@ pkgbase = franz
 	makedepends = nvm
 	makedepends = python
 	depends = electron25
+	provides = franz
+	conflicts = franz
 	source = git+https://github.com/meetfranz/franz#tag=v5.10.0
 	source = franz.desktop
 	source = franz.sh.in
-	sha512sums = SKIP
-	sha512sums = 049c4bf2e0f362f892e8eef28dd18a6c321251c686a9c9e49e4abfb778057de2fc68b95b4ff7bb8030a828a48b58554a56b810aba078c220cb01d5837083992e
+	sha512sums = 29f765521ea3c67c22d10719ae3a21f4840fd7d0add42f7ebd793abc96060f230a8716b6a3b9566c76fccaabb22ecc93bc3d9842214fda7681f6de1369b5a540
+	sha512sums = 2b9353ae27b9062bedaab7200151484e9083f6b4c16471225e4bfd5d475ea70b91c4d0fa5c05aa1f035552ca5a6147d5135e2f5e3d0af114e62a701ea7cf446e
 	sha512sums = 7ccf058421b173830493f35417d204e3a735fc20f801283dad3f658abeb484f6244bc535634c2f02ab2cb8e35a0e1a92dd3d06be5943e121ddccbbee7ad74b48
 
-pkgname = franz
+pkgname = franz-wayland
