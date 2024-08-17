@@ -1,16 +1,19 @@
 pkgbase = python-micro-manager-precice
-	pkgdesc = micro-manager-precice is a package which facilitates two-scale macro-micro coupled simulations using preCICE
-	pkgver = 0.4.0
-	pkgrel = 3
+	pkgdesc = A tool which facilitates two-scale macro-micro coupled simulations using preCICE
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://precice.org/tooling-micro-manager-overview.html
 	arch = any
 	license = LGPL-3.0-or-later
+	checkdepends = python-scikit-learn
+	checkdepends = python-h5py-openmpi
+	checkdepends = pybind11
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-pyprecice
-	source = micro-manager-0.4.0.tar.gz::https://github.com/precice/micro-manager/archive/v0.4.0.tar.gz
-	sha512sums = 72c1ddbd6a759075b0f47200b8290b286aae7acfe0a425b28bbf7681f712e7c7a0d94357ea9e5335deedad2284f41234648888b0152b10c104eeefb8cb8e6567
+	source = micro-manager-0.5.0.tar.gz::https://github.com/precice/micro-manager/archive/v0.5.0.tar.gz
+	sha512sums = ae78aee94ba673750685f0bcfb7c71637f1fb3413d4c3f29bb9735f04b79dab054052bd3d8423ebb9d38e3c2783a22137951e6f816a3e9e3487b73fdce73ae3d
 
 pkgname = python-micro-manager-precice
