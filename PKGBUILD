@@ -1,8 +1,8 @@
 # Maintainer: Posi<posi1981@gmail.com>
 pkgname=betterbird-pt-bin
 _pkgname=betterbird
-pkgver=115.13.0
-_build=bb30
+pkgver=115.14.0
+_build=bb31
 pkgrel=1
 pkgdesc="PORTUGUESE // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
@@ -42,6 +42,6 @@ package() {
             "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
     done
 }
-sha256sums=('75a6bffd2218287271f35a91334a7c1fe975d1063ff2fa13d090ca808e288503'
+sha256sums=('4be08907c1eac5fef37f016bdaf668eb3befd61e396e82bd4cdbea20217a9fbd'
             'b664d5453512ba1c8a58699d106fb1248991dbae0ee44464484be0886278945b')
 
