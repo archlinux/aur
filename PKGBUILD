@@ -5,7 +5,7 @@ _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
 #pkgname=("${_pname}" "${_pname}-doc")
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A simple task runner."
 arch=('any')
@@ -14,12 +14,30 @@ license=('ISC')
 makedepends=('python-pdm-backend'
              'python-build'
              'python-installer')
-#            'mkdocs')
-#checkdepends=('python-pytest'
-#              )
+#            'mkdocs-material'
+#            'mkdocs-autorefs'
+#            'mkdocs-gen-files'
+#            'mkdocs-literate-nav'
+#            'mkdocs-coverage'
+#            'mkdocstrings-python'
+#            'mkdocs-git-committers-plugin-2'
+#            'python-markdown-callouts'
+#            'python-markdown-exec'
+#            )
+checkdepends=('python-pytest'
+              'python-failprint')
 #source=("https://github.com/oprypin/mkdocs-section-index/archive/refs/tags/v${pkgver}.tar.gz")
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('06cf730fe78f4b8dd51d7c3cb6f5fb7c2331e90464f91dfb3f1ff832072b00eb')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+        "${pkgver}-demo.svg::https://github.com/pawamoy/duty/raw/${pkgver}/demo.svg")
+sha256sums=('ef5b5cc51f60286756074f14f4f5b3430c965b63595adaa0618f61921971ad20'
+            '4a8b3802ce16ee44950846226fb530397502bdf6ae7157170107f7e777e9d4ed')
+
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#    # Too much makedepends
+#    ln -rs {${srcdir}/${pkgver}-,}demo.svg
+#    sed -i -e '$a use_directory_urls: false' mkdocs.yml
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -29,14 +47,13 @@ build() {
 #   mkdocs build
 }
 
-#check() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#
-##   mkdir -p dist/lib
-##   bsdtar -xpf dist/${_pyname//-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-##   PYTHONPATH="dist/lib" pytest -vv -l -ra --color=yes -o console_output_style=count #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
-#    pytest -vv -l -ra --color=yes -o console_output_style=count #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
-#}
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    mkdir -p dist/lib
+    bsdtar -xpf dist/${_pyname//-/_}-${pkgver}-py3-none-any.whl -C dist/lib
+    PYTHONPATH="dist/lib" pytest|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+}
 
 package_python-duty() {
     depends=('python>=3.8' 'python-failprint>1.0.0')

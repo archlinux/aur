@@ -8,6 +8,7 @@
 *.log
 *.log.*
 *.sig
+*.svg
 
 pkg/
 src/
