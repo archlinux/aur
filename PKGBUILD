@@ -3,7 +3,7 @@ pkgname=ente-server-git
 _pkgname_alt=museum
 _pkg_git_src=https://github.com/ente-io/ente.git
 pkgver=r1.af57166
-pkgrel=7
+pkgrel=8
 pkgdesc="Self hosted server for Ente (mobile) clients"
 arch=(x86_64)
 url="https://github.com/ente-io"
@@ -43,7 +43,7 @@ sha256sums=(
     "405365bd47efa25b8bcefc93a5c0535fd50cce22b5d8dcea070098aa432ff87e"
     "a1149c57e233f7be2f12668f5ef0f03409bd5ad37b1a223bb56d2ae865cf6358"
     "863d111071bb32c8b5f8baa34731a94861940d2d276ffadf9426d3fc492588b6"
-    "297bc7d90c473758c9054aaaa6155b4e7232d0dfea761a4e55ed8b743f289f86"
+    "9c17fc4c875fbe8b78e33a47619bd247a8243b6404fe06fa2c00fb12192a6e9d"
 )
 
 pkgver() {

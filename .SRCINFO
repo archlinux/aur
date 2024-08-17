@@ -1,7 +1,7 @@
 pkgbase = ente-server-git
 	pkgdesc = Self hosted server for Ente (mobile) clients
 	pkgver = r1.af57166
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/ente-io
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -42,6 +42,6 @@ pkgbase = ente-server-git
 	sha256sums = 405365bd47efa25b8bcefc93a5c0535fd50cce22b5d8dcea070098aa432ff87e
 	sha256sums = a1149c57e233f7be2f12668f5ef0f03409bd5ad37b1a223bb56d2ae865cf6358
 	sha256sums = 863d111071bb32c8b5f8baa34731a94861940d2d276ffadf9426d3fc492588b6
-	sha256sums = 297bc7d90c473758c9054aaaa6155b4e7232d0dfea761a4e55ed8b743f289f86
+	sha256sums = 9c17fc4c875fbe8b78e33a47619bd247a8243b6404fe06fa2c00fb12192a6e9d
 
 pkgname = ente-server-git

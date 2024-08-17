@@ -2,14 +2,18 @@ abi <abi/3.0>,
 
 include <tunables/global>
 
-/usr/bin/ente-server flags=(complain) {
+/usr/bin/ente-server {
   include <abstractions/base>
 
   network inet stream,
   network inet6 stream,
 
+  /etc/ca-certificates/extracted/cadir/*.pem r,
+  /etc/ca-certificates/extracted/tls-ca-bundle.pem r,
   /etc/host.conf r,
   /etc/nsswitch.conf r,
+  /etc/ssl/certs/ r,
+  /etc/ssl/certs/java/ r,
   /proc/sys/net/core/somaxconn r,
   /run/systemd/resolve/stub-resolv.conf r,
   /usr/bin/ente-server mr,
