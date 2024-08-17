@@ -269,7 +269,7 @@ prepare() {
   # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
   # Type: 1
   # Status: 2 & 3
-  # Comment: Help GPU frequencies to scale up but not currently working on Wayland.
+  # Comment: Help GPU frequencies to scale up.
   #          Including mr3912 and mr3934.
   pick_mr '1441' 'mr1441.patch' 'patch'
 
