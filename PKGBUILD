@@ -1,6 +1,6 @@
 pkgname=mihomo-party-electron
 _pkgname=mihomo-party
-pkgver=0.5.7
+pkgver=0.5.8
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -12,11 +12,13 @@ optdepends=('libappindicator-gtk3: Allow mihomo-party to extend a menu via Ayata
 makedepends=('nodejs' 'pnpm' 'libxcrypt-compat' 'asar')
 install=$_pkgname.install
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${_pkgname}.desktop"
     "${_pkgname}.sh"
 )
-sha256sums=("a4dc4b87fb9604c93295b2f3f1bd2917f83dc0bf200dea669f591044448da38d"
-"f8049c1f26d5a92fbcebd7bebbdedbb3eab53422b21cf6127418251ccd061282"
+sha256sums=("255e4f5c15fcdcd2ed183f0106001bd104d8d69fd188bea71584952033cd1566"
+"96a6250f67517493f839f964c024434dbcf784b25a73f074bb505f1521f52844"
+"560733f0e5bd9b47ff50c849301c8a22ae17a5df26830d8c97033dfcbd392382"
 )
 options=('!lto')
 
@@ -32,6 +34,8 @@ build(){
 
 package() {
     asar extract $srcdir/${_pkgname}-${pkgver}/dist/linux-unpacked/resources/app.asar ${pkgdir}/opt/mihomo-party
+    cp -r $srcdir/${_pkgname}-${pkgver}/extra/sidecar ${pkgdir}/opt/mihomo-party/resources/
+    cp -r $srcdir/${_pkgname}-${pkgver}/extra/files ${pkgdir}/opt/mihomo-party/resources/
     chmod +x ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo
     chmod +x ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo-alpha
     cd ${pkgdir}/../..
