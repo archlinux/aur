@@ -17,8 +17,8 @@ main() {
     fi
     update_db
     if [[ ${IS_UPDATE} == 0 ]]; then
-		print_instructions
-	fi
+        print_instructions
+    fi
 }
 
 is_update () {
@@ -61,18 +61,16 @@ update_db () {
 }
 
 print_instructions () {
-	cat <<EOF
+    cat <<EOF
+Final steps to get your server working are creating a realm and an account.
 
-    Final steps to get your server working are creating a realm and an account.
+To create a realm, in mariadb:
+    > USE realmd;
+    > INSERT INTO realmlist (name,address) VALUES ("examplerealm","your address");
 
-    To create a realm, in mariadb:
-        > USE realmd;
-        > INSERT INTO realmlist (name,address) VALUES ("examplerealm","your address");
-
-    To create an account with admin rights, in terminal (systemd services running):
-        $ echo "account create *username* *password*" > /run/vmangos-mangosd.stdin
-        $ echo "account set gmlevel *username* 6 > /run/vmangos-mangosd.stdin
-
+To create an account with admin rights, in terminal (systemd services running):
+    $ echo "account create *username* *password*" > /run/vmangos-mangosd.stdin
+    $ echo "account set gmlevel *username* 6 > /run/vmangos-mangosd.stdin
 EOF
 }
 
