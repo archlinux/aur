@@ -1,6 +1,6 @@
 pkgbase = cosmic-store-git
 	pkgdesc = Cosmic App Store
-	pkgver = 1.0.0.alpha.1.r6.g0a0132d
+	pkgver = 1.0.0.alpha.1.r9.g83866da
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-store
 	arch = x86_64
