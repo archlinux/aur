@@ -1,0 +1,11 @@
+pkgbase = python-sphinxcontrib-redoc
+	pkgdesc = ReDoc powered OpenAPI (fka Swagger) spec renderer for Sphinx
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/ikalnytskyi/sphinxcontrib-redoc
+	arch = any
+	license = BSD
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-sphinxcontrib-redoc
