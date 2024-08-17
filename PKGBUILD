@@ -35,7 +35,6 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  # forgive me
   npm install
 }
 
@@ -44,4 +43,5 @@ package() {
   mkdir -p ${pkgdir}/usr/lib/
   mkdir -p ${pkgdir}/usr/bin/
 	cp -r "$pkgname" ${pkgdir}/usr/lib/mpdproxy
+  cp "$srcdir/../mpdproxy" ${pkgdir}/usr/bin/
 }
