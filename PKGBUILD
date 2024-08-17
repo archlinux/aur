@@ -1,6 +1,6 @@
 # Maintainer: Michael Clark <iiridayn@gmail.com>
 pkgname=pico-tts
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="lib and unix binary for text-to-speech engine from Android"
 arch=('x86_64')
