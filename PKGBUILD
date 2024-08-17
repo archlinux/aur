@@ -5,7 +5,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=2.1.9.r0.gdfb857b68f
+pkgver=2.1.93.r0.g10b264b9ec
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -76,7 +76,7 @@ source=(
     git+https://github.com/KhronosGroup/glslang.git#commit=$SHADERC_GLSLANG
     git+https://github.com/KhronosGroup/SPIRV-Headers.git#commit=$SHADERC_SPIRVHEADERS
     git+https://github.com/KhronosGroup/SPIRV-Tools.git#commit=$SHADERC_SPIRVTOOLS
-    pcsx2-qt.sh
+    ShaderName.patch
 )
 install=pcsx2-git.install
 
@@ -89,7 +89,9 @@ prepare()
     cd ..
     patch -p1 < "${srcdir}/pcsx2/.github/workflows/scripts/common/shaderc-changes.patch"
 
-    cd ${srcdir}
+    cd ${srcdir}/pcsx2
+
+    patch -p1 < "${srcdir}/ShaderName.patch"
 }
 
 pkgver() {
@@ -104,6 +106,7 @@ build()
     ./configure --prefix="${srcdir}/deps-build"
     make
     make install
+
     cd ${srcdir}
 
     echo "Building shaderc..."
@@ -119,6 +122,9 @@ build()
     ninja -C build install
     cd ..
 
+    mv ${srcdir}/deps-build/lib/libshaderc_shared.so.1 ${srcdir}/deps-build/lib/libshaderc_pcsx2.so.1
+
+
     # See .github/workflows/scripts/linux/generate-cmake-qt.sh
     cmake -S pcsx2 -B build \
     -G Ninja \
@@ -127,39 +133,31 @@ build()
     -DCMAKE_CXX_COMPILER=clang++ \
     -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
     -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
-    -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
     -DUSE_VULKAN=ON \
     -DENABLE_SETCAP=OFF \
     -DWAYLAND_API=ON \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DDISABLE_ADVANCE_SIMD=ON \
     -DCMAKE_PREFIX_PATH="${srcdir}/deps-build" \
-    -DCMAKE_BUILD_RPATH="/opt/pcsx2/lib"
+    -DPACKAGE_MODE=ON
 
-    cd build
-    ccache -p
-    ccache -z
     # Build
-    ninja
-    # Save the Cache
-    ccache -s
-
-    cd ..
+    ninja -C build
     
     cd pcsx2_patches
     7z a -r ../patches.zip patches/.
 }
 
 package() {
-    install -dm755  "${pkgdir}"/opt/
-    cp -r build/bin "${pkgdir}"/opt/"${pkgname%-git}"
-    install -Dm755 pcsx2-qt.sh "$pkgdir"/usr/bin/pcsx2-qt
+    DESTDIR="${pkgdir}" cmake --install build
+
     install -Dm644 pcsx2/.github/workflows/scripts/linux/pcsx2-qt.desktop \
     "${pkgdir}"/usr/share/applications/PCSX2.desktop
     install -Dm644 pcsx2/bin/resources/icons/AppIconLarge.png \
     "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/PCSX2.png
-    install -Dm644 -t "${pkgdir}"/opt/"${pkgname%-git}"/resources/ patches.zip
-    install -Dm644 -t "${pkgdir}"/opt/"${pkgname%-git}"/lib ${srcdir}/deps-build/lib/libshaderc_shared.so.1
+    install -Dm644 -t "${pkgdir}"/usr/share/PCSX2/resources/ patches.zip
+    install -Dm644 -t "${pkgdir}"/usr/lib/ ${srcdir}/deps-build/lib/libshaderc_pcsx2.so.1
 }
 
 sha256sums=(
@@ -170,4 +168,5 @@ sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
-'df12ffbed9f48b6ece56fc894e37e1f390874d669eb637150461b61cb462e24e')
+    'SKIP'
+)

@@ -1,0 +1,13 @@
+diff --git a/pcsx2/GS/Renderers/Vulkan/VKShaderCache.cpp b/pcsx2/GS/Renderers/Vulkan/VKShaderCache.cpp
+index d4df38661..1a71152a5 100644
+--- a/pcsx2/GS/Renderers/Vulkan/VKShaderCache.cpp
++++ b/pcsx2/GS/Renderers/Vulkan/VKShaderCache.cpp
+@@ -142,7 +142,7 @@ bool dyn_shaderc::Open()
+ 	const std::string libname = DynamicLibrary::GetVersionedFilename("shaderc_shared");
+ #else
+ 	// Use versioned, bundle post-processing adds it..
+-	const std::string libname = DynamicLibrary::GetVersionedFilename("shaderc_shared", 1);
++	const std::string libname = DynamicLibrary::GetVersionedFilename("shaderc_pcsx2", 1);
+ #endif
+ 	if (!s_library.Open(libname.c_str(), &error))
+ 	{

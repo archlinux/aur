@@ -1,6 +1,6 @@
 pkgbase = pcsx2-git
 	pkgdesc = A Sony PlayStation 2 emulator
-	pkgver = 2.1.9.r0.gdfb857b68f
+	pkgver = 2.1.93.r0.g10b264b9ec
 	pkgrel = 1
 	url = https://github.com/PCSX2/pcsx2
 	install = pcsx2-git.install
@@ -51,7 +51,7 @@ pkgbase = pcsx2-git
 	source = git+https://github.com/KhronosGroup/glslang.git#commit=142052fa30f9eca191aa9dcf65359fcaed09eeec
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git#commit=5e3ad389ee56fca27c9705d093ae5387ce404df4
 	source = git+https://github.com/KhronosGroup/SPIRV-Tools.git#commit=dd4b663e13c07fea4fbb3f70c1c91c86731099f7
-	source = pcsx2-qt.sh
+	source = ShaderName.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -59,6 +59,6 @@ pkgbase = pcsx2-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = df12ffbed9f48b6ece56fc894e37e1f390874d669eb637150461b61cb462e24e
+	sha256sums = SKIP
 
 pkgname = pcsx2-git
