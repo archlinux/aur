@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cba
-_pkgver=0.2-24
+_pkgver=0.2-25
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-gclus
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6e5861366f7c567c64ed74e276ca482e')
-b2sums=('416f54e6060ada9f95346080275c5d3840a6758abc7bd84a814772de1139523392a373fbe29bc54222ca0551b86e3a204ece3f636375253e9bd8d19deefecffd')
+md5sums=('827c0fd7155bf248f960d4a59706a16e')
+b2sums=('2720d6575c09f1b547d443fce8da25af52a845514c97a3267f82d191c9df1fbfcdaf0ae5f774a4ae67feb36181874d3178aae83d65637e06647aeb99837c188b')
 
 build() {
   mkdir build
