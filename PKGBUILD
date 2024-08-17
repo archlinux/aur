@@ -3,41 +3,47 @@
 # Contributor: robertfoster
 
 pkgname=rtpengine
-pkgver=12.4.1.7
+pkgver=12.5.1.2
 pkgrel=1
 pkgdesc='The Sipwise media proxy for Kamailio'
 url="https://github.com/sipwise/rtpengine"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 depends=(
-  'json-glib'
-  'zlib'
-  'openssl'
-  'pcre'
-  'pcre2'
-  'libxmlrpc'
+  'curl'
+  'gcc-libs'
+  'glib2'
+  'glibc'
   'hiredis'
-  'libcurl-compat'
+  'iptables'
+  'json-glib'
   'libevent'
+  'libmnl'
+  'libnftnl'
   'libpcap'
-  'systemd-libs'
-  'spandsp'
-  'mosquitto'
+  'liburing'
   'libwebsockets'
+  'libxmlrpc'
+  'mariadb-libs'
+  'mosquitto'
+  'ncurses'
+  'openssl'
   'opus'
-  'perl-config-tiny'
+  'pcre2'
+  'perl'
+  'rtpengine-kernel-dkms'
+  'spandsp'
+  'systemd-libs'
+  'zlib'
 )
 optdepends=(
-  'mariadb-clients: Media playback and call recording daemon support'
-  'libiptcdata: Iptables management support'
-  'ffmpeg: Transcoding support'
   'bcg729: G.729 transcoding support'
-  'rtpengine-kernel-dkms: Kernel module for rtpengine media proxy'
-  'linux-lts-headers: Build the module for LTS Arch kernel'
+  'ffmpeg: transcoding support'
+  'libiptcdata: iptables management support'
+  'mariadb-clients: media playback and call recording daemon support'
 )
 makedepends=(
   'gperf'
-  'glib2'
   'pkgconf'
   'pandoc-cli'
   'gcc13'
@@ -48,7 +54,7 @@ backup=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sipwise/rtpengine/archive/refs/tags/mr${pkgver}.tar.gz"
         'rtpengine.sysusers')
-sha256sums=('0ad6475f03ae6a9afd527a3077388339900c73d13ff88d7f61597150949eb8c2'
+sha256sums=('2f316ed10d3efd29cbc7dc5a001d2a5b9265b20e71437cc4c0a0a0fbd1a51e28'
             'ea1580fbf7372309533e56d2a33714dc4d58311429ba60bf25b1bddee5ff7231')
 
 package() {
