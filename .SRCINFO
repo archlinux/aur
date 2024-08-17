@@ -1,7 +1,7 @@
 pkgbase = redisinsight
 	pkgdesc = Desktop manager that provides an intuitive and efficient GUI for Redis, allowing you to interact with your databases, monitor, and manage your data.
 	pkgver = 2.54
-	pkgrel = 1
+	pkgrel = 2
 	url = https://redis.com/redis-enterprise/redis-insight
 	arch = x86_64
 	license = custom:SSPL

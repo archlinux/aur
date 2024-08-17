@@ -1,7 +1,7 @@
 # Maintainer: Dan Walsh <dan@danwalsh.ca>
 pkgname=redisinsight
 pkgver=2.54
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop manager that provides an intuitive and efficient GUI for Redis, allowing you to interact with your databases, monitor, and manage your data."
 arch=('x86_64')
 url='https://redis.com/redis-enterprise/redis-insight'
