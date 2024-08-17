@@ -321,6 +321,7 @@ package() {
 		_package_grub-emu
 	fi
 
+	cd ${srcdir}
 	install grub-once "${pkgdir}/usr/bin"
 
 	echo "Package grub bios stuff..."
