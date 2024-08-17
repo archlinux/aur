@@ -1,0 +1,21 @@
+pkgbase = qflipper-momentum-git
+	pkgdesc = Desktop qFlipper app configured with Momentum Firmware update server
+	pkgver = 1.3.3.r7.g25691ce
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt6-tools
+	depends = libusb
+	depends = qt6-5compat
+	depends = qt6-quickcontrols2
+	depends = qt6-serialport
+	depends = qt6-svg
+	source = libwdi::git+https://github.com/pbatard/libwdi
+	source = nanopb::git+https://github.com/nanopb/nanopb
+	source = qflipper::git+https://github.com/Next-Flip/qFlipper
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = qflipper-momentum-git
