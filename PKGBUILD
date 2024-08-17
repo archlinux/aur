@@ -1,19 +1,19 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 
 pkgname=fronde
-pkgver=0.4.0
-_tagname=0.4 # stupid me 🤦
-pkgrel=3
+pkgver=0.5.0
+_tagname=0.5 # stupid me 🤦
+pkgrel=1
 pkgdesc="An opinionated static website generator for Emacs Org mode"
 url="https://etienne.depar.is/fronde"
 arch=("any")
 license=("custom:WTFPL")
 checkdepends=("ruby-rspec" "ruby-simplecov")
-depends=("emacs" "ruby" "ruby-liquid" "ruby-nokogiri>=1.15" "ruby-r18n-core"
-         "ruby-rainbow" "ruby-rake" "ruby-webrick")
+depends=("emacs" "ruby>=3.2.0" "ruby<3.3.0" "ruby-liquid" "ruby-nokogiri>=1.15"
+         "ruby-r18n-core" "ruby-rainbow" "ruby-rake" "ruby-webrick")
 options=("!emptydirs")
 source=("https://git.umaneti.net/${pkgname}/snapshot/${pkgname}-${_tagname}.tar.gz")
-sha512sums=('1b2cac48b3565261cc2a1211b97559f0bbc5fd929df8b619e99ae7fcb0e050f75821bdd302d5cdea19e442663668601a785e364ab50cfc6a32cd99037f546674')
+sha512sums=('cb9bb5c45768f65a48b201977dd04ba6cc4dff4ecb4a1fae411affa03bac5b3d1a07626ff51e54dafbeb853be03885ba6be667c388dbd65adcb103ef0e0dd88d')
 
 prepare() {
     cd ${pkgname}-${_tagname}
