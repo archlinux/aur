@@ -2,14 +2,15 @@
 
 pkgname=libgtpnl-git
 pkgver=1.3.0.r0.33afef9
-pkgrel=1
+pkgrel=2
 pkgdesc="netlink library for Linux kernel GTP code"
 url="https://osmocom.org/projects/linux-kernel-gtp-u/wiki/Libgtpnl"
 arch=('x86_64')
 license=('LGPL-2.1-only')
 depends=('libmnl')
 conflicts=("${pkgname}")
-provides=('libgtpnl.so=0-64')
+provides=("${pkgname%-git}=${pkgver}"
+          'libgtpnl.so=0-64')
 source=("git+https://gitea.osmocom.org/cellular-infrastructure/libgtpnl.git")
 sha256sums=('SKIP')
 
