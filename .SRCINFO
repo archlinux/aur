@@ -1,7 +1,7 @@
 pkgbase = java-openjfx-nowebkit
 	pkgdesc = Java OpenJFX client application platform (open-source implementation of JavaFX) - version following latest major Arch Linux OpenJDK java release. Build without WebKit support.
 	pkgver = 22.0.2.u4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.openjdk.java.net/display/OpenJFX/Main
 	arch = x86_64
 	arch = x86_64_v3

@@ -1,5 +1,5 @@
 # Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
-# Contributor: Frederik “Freso” S. Olesen <archlinux@freso.dk> (https://aur.archlinux.org/account/Freso)
+# Maintainer:  Frederik “Freso” S. Olesen <archlinux@freso.dk> (https://aur.archlinux.org/account/Freso)
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Frederik Schwan <freswa at archlinux dot org> (https://aur.archlinux.org/account/freswa)
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
@@ -19,7 +19,7 @@ pkgname=(
   # "java-openjfx-src"
 )
 pkgver=22.0.2.u4
-pkgrel=1
+pkgrel=2
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - version following latest major Arch Linux OpenJDK java release. Build without WebKit support."
 arch=(
   "x86_64"
