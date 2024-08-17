@@ -1,8 +1,8 @@
 # Maintainer: Nikolas Koesling <nikolas@koesling.network>
 
 pkgname=shm-modbus
-pkgrel=2
-pkgver=2.0.0
+pkgrel=1
+pkgver=2.1.3
 pkgdesc="A collection of applications to simulate a shared memory based Modbus client"
 url="https://github.com/SHMModbus/SHM_Modbus"
 license=('GPL-3.0-only')
@@ -19,6 +19,4 @@ package() {
 
     cd SHM_Modbus
     install -Dm755 shm-modbus "${pkgdir}/usr/share/shm-modbus/shm-modbus.sh"
-    install -Dm644 guided-commands.sh "${pkgdir}/usr/share/shm-modbus/guided-commands.sh"
-    install -Dm644 manual-commands.sh "${pkgdir}/usr/share/shm-modbus/manual-commands.sh"
 }
