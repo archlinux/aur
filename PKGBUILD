@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('b70e13c22bd3d0cc028890daa1d03304db8c48d0101214102b3b170c936bf30ff5d114f0534fee1c0d04913b13ccfb3e6e028c2ff10c8d6fd5b4c7b0ad03d048')
+sha512sums=('8f0dbbe57c9829d5cfd4a404c7e18772f12581977562c655ff5b0815c8ce7230dc13e30561a23da2d3dba0dbdac16a9ea24862068b0f50d388e645d03fefefa7')
 
 build() {
   cd ${_base}-${pkgver}
