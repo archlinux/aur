@@ -1,24 +1,23 @@
-# Maintainer: Sebastian Weiss <dl3yc@darc.de>
-
 _target=arm-none-eabi
 pkgname=$_target-picolibc
-pkgver=1.7.9
+pkgver=1.8.6
 pkgrel=1
 pkgdesc='Fork of newlib with stdio bits from avrlibc'
-conflicts=("$_target-newlib")
 arch=('i686' 'x86_64')
 url='https://github.com/picolibc/picolibc'
 license=('BSD')
 makedepends=("$_target-gcc" 'meson')
 source=("picolibc-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('ad08e5b849a7c64338896f99177a0215cd47a805efcdf625eb4c9bc1b39bd1d3')
+sha256sums=('42696b358c249cfd6e13db672438d6549873ad26816823236e7c9447dbd01db0')
 options=(!strip !buildflags)
 
 build() {
   meson \
-    --prefix="/usr/$_target" \
-    --buildtype=plain \
+    --prefix="/usr/$_target"/picolibc \
     --cross-file "picolibc-$pkgver/scripts/cross-${_target}.txt" \
+    -Dspecsdir="/usr/$_target/lib" \
+    -Dsystem-libc=false \
+    --buildtype=plain \
     "picolibc-$pkgver" build
 
   meson compile -C build
