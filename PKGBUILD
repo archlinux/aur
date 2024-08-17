@@ -47,6 +47,7 @@ depends=(
 )
 makedepends=(
   binutils
+  cbindgen
   clang
   diffutils
   git
@@ -92,12 +93,14 @@ source=(
   https://gitlab.com/api/v4/projects/32320088/packages/generic/librewolf-source/${pkgver}-${pkgrel}/librewolf-${pkgver}-${pkgrel}.source.tar.gz # {,.sig} sig files are currently broken, it seems
   $__pkgname.desktop
   "default192x192.png"
+  "${_arch_git}/f5580e563ac0dc7f0095af92bc59d849f0f45849/0004-Bug-1912663-Fix-some-build-issues-with-cbindgen-0.27.patch"
   allow_dark.patch
 )
 
 sha256sums=('8868128bf1681eb7cc6df0abe33b6bd44de73ba38ad0528ee1ee90ddc8a94fdf'
             '7d01d317b7db7416783febc18ee1237ade2ec86c1567e2c2dd628a94cbf2f25d'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
+            'dd2aba1c02c21b89ceed0713a6aa0241365fe79b1e3a4d21cdcd7231db6fab5e'
             '89f50c949cfedf6b54be0e79d67490ef1f7ad9490b31e2482434942f34d1fb3e')
 
 validpgpkeys=('034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3') # maltej(?)
@@ -180,14 +183,14 @@ fi
 
   # upstream Arch fixes
 
+  # Fix build with cinbdgen 0.27.0
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1912663
+  patch -Np1 -i ../0004-Bug-1912663-Fix-some-build-issues-with-cbindgen-0.27.patch
+
 }
 
 
 build() {
-  mkdir cbindgen
-  cargo install --target-dir cbindgen --root cbindgen cbindgen@0.26.0 
-  export PATH="$(pwd)/cbindgen/bin${PATH:+:$PATH}"
-
   cd librewolf-$pkgver-$pkgrel
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
