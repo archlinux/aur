@@ -1,6 +1,6 @@
 pkgbase = dsd-fme-git
 	pkgdesc = Digital Speech Decoder - Florida Man Edition
-	pkgver = 2024.r156.g3def1f5
+	pkgver = 2024.r262.gf6fc91a
 	pkgrel = 1
 	url = https://github.com/lwvmobile/dsd-fme.git
 	install = dsd-fme-git.install
@@ -41,8 +41,8 @@ pkgbase = dsd-fme-git
 	depends = zstd
 	depends = libgpg-error
 	optdepends = pulseaudio: use pulse as audio input device
-	provides = dsd
-	conflicts = dsd
+	provides = dsd-fme
+	conflicts = dsd-fme
 	source = dsd-fme-git::git+https://github.com/lwvmobile/dsd-fme.git
 	sha256sums = SKIP
 

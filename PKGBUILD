@@ -3,7 +3,7 @@
 
 pkgname=dsd-fme-git
 _pkgname=dsd-fme
-pkgver=2024.r156.g3def1f5
+pkgver=2024.r262.gf6fc91a
 pkgrel=1
 pkgdesc="Digital Speech Decoder - Florida Man Edition"
 arch=('i686' 'x86_64' 'aarch64')
@@ -44,8 +44,8 @@ depends=(
 )
 optdepends=('pulseaudio: use pulse as audio input device')
 makedepends=('cmake' 'git')
-provides=('dsd')
-conflicts=('dsd')
+provides=('dsd-fme')
+conflicts=('dsd-fme')
 source=("$pkgname::git+https://github.com/lwvmobile/$_pkgname.git")
 sha256sums=('SKIP')
 
