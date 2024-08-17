@@ -2,7 +2,7 @@
 pkgname=boxbuddy
 _app_id=io.github.dvlv.boxbuddyrs
 pkgver=2.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A Graphical Interface for Distrobox"
 arch=('x86_64')
 url="https://github.com/Dvlv/BoxBuddyRS"
@@ -24,7 +24,6 @@ build() {
 #  CFLAGS+=" -ffat-lto-objects"
   export GETTEXT_SYSTEM=true
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
