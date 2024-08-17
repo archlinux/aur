@@ -56,9 +56,7 @@ package_pop-launcher-git() {
   conflicts=("${pkgname%-git}")
 
   cd launcher
-  install -Dm755 "target/release/${pkgname%-git}-bin" "$pkgdir/usr/bin/${pkgname%-git}"
-
-  just rootdir="$pkgdir" install-plugins install-scripts
+  just rootdir="$pkgdir" install
 
   rm -rf "$pkgdir/usr/lib/${pkgname%-git}/scripts/system76-power"
 }
