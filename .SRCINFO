@@ -1,0 +1,15 @@
+pkgbase = lacc-git
+	pkgdesc = A simple, self-hosting C compiler
+	pkgver = r1023.3083984
+	pkgrel = 1
+	url = https://github.com/larmel/lacc
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	source = git+https://github.com/larmel/lacc
+	source = lacc-path.patch
+	sha1sums = SKIP
+	sha1sums = 13297866fc99bcc1f651f6afdcad01bee9eebf13
+
+pkgname = lacc-git
