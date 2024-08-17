@@ -1,0 +1,16 @@
+pkgbase = ovpnconn
+	pkgdesc = OpenVPN-GUI-Connect (ovpnconn): Streamlined graphical interface for connecting to VPNs using OpenVPN, with file selection and credential entry features.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/felipealfonsog/OpenVPN-GUI-Connect
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = python
+	depends = openvpn
+	depends = python-pyqt5
+	depends = pkexec
+	depends = curl
+	source = https://github.com/felipealfonsog/OpenVPN-GUI-Connect/archive/refs/tags/v.0.0.1.tar.gz
+	sha256sums = 975e7d58c9991ebd04865c8da84ee4699e1c35eb8c67ce1ccde8afa2f28f1a96
+
+pkgname = ovpnconn
