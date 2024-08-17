@@ -13,6 +13,8 @@ pkgbase = python-micro-manager-precice
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-pyprecice
+	optdepends = python-scikit-learn: for crash handling by interpolation
+	optdepends = python-h5py: for snapshot computations
 	source = micro-manager-0.5.0.tar.gz::https://github.com/precice/micro-manager/archive/v0.5.0.tar.gz
 	sha512sums = ae78aee94ba673750685f0bcfb7c71637f1fb3413d4c3f29bb9735f04b79dab054052bd3d8423ebb9d38e3c2783a22137951e6f816a3e9e3487b73fdce73ae3d
 

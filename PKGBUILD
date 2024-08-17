@@ -11,6 +11,8 @@ license=(LGPL-3.0-or-later)
 depends=(python-pyprecice)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-scikit-learn python-h5py-openmpi pybind11)
+optdepends=('python-scikit-learn: for crash handling by interpolation'
+  'python-h5py: for snapshot computations')
 source=(${_base}-${pkgver}.tar.gz::https://github.com/precice/${_base}/archive/v${pkgver}.tar.gz)
 sha512sums=('ae78aee94ba673750685f0bcfb7c71637f1fb3413d4c3f29bb9735f04b79dab054052bd3d8423ebb9d38e3c2783a22137951e6f816a3e9e3487b73fdce73ae3d')
 
