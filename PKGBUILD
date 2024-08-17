@@ -1,38 +1,42 @@
-# Maintainer: spider-mario <spidermario@free.fr>
-# Contributor : Michael DeGuzis <mdeguzis@gmail.com>
-# Contributor:  prettyvanilla <prettyvanilla@posteo.at>
-# Contributor: almostalive   <almostalive2003 at gmail dot com>
-
-_pkgbase=libretro-desmume
-pkgname=libretro-desmume-git
-pkgver=r5267.a5a4e9b
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Contributor: spider-mario <spidermario@free.fr>
+# Contributor: Michael DeGuzis <mdeguzis@gmail.com>
+# Contributor: prettyvanilla <prettyvanilla@posteo.at>
+# Contributor: almostalive <almostalive2003 at gmail dot com>
+_pkgname=libretro-desmume
+pkgname=$_pkgname-git
+pkgver=r6359.b518fec5
 pkgrel=1
-pkgdesc="libretro implementation of DeSmuME. (Nintendo DS)"
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+pkgdesc="Nintendo DS core"
+arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/desmume"
-license=('GPL')
+license=('GPL-2.0-only')
 groups=('libretro')
-depends=('libglvnd')
-makedepends=('git')
-provides=("$_pkgbase")
-conflicts=("$_pkgbase")
-_libname=desmume_libretro
-source=("$_pkgbase::git+https://github.com/libretro/desmume.git"
-        "https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
-sha512sums=('SKIP'
-            'SKIP')
+depends=('gcc-libs' 'glibc' 'libretro-core-info')
+makedepends=('git' 'libgl' 'libpcap')
+provides=("$_pkgname=${pkgver#r}")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgbase"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd $_pkgname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd $_pkgname
+	sed -i 's/-O[0123s]//' desmume/src/frontend/libretro/Makefile.libretro
 }
 
 build() {
-  cd "$_pkgbase/desmume/src/frontend/libretro"
-  make -f Makefile.libretro
+	cd $_pkgname
+	make -C desmume/src/frontend/libretro
 }
 
 package() {
-  install -Dm644 "$_pkgbase/desmume/src/frontend/libretro/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/lib/libretro/${_libname}.info"
+	depends+=('libGL.so')
+	cd $_pkgname
+	# shellcheck disable=SC2154
+	make -C desmume/src/frontend/libretro DESTDIR="$pkgdir" install
 }
