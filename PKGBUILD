@@ -1,14 +1,14 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=ndecrypt
 pkgname=$_pkgname-git
-pkgver=0.2.5.r1.g71199ee
-pkgrel=3
+pkgver=0.2.5.r20.g450f6fb
+pkgrel=1
 pkgdesc="DS/3DS Encryption Tool"
 arch=('x86_64')
 url="https://github.com/SabreTools/NDecrypt"
 license=('MIT')
-depends=('dotnet-runtime-6.0' 'gcc-libs' 'glibc')
-makedepends=('dotnet-sdk>=6' 'git')
+depends=('dotnet-runtime-8.0' 'gcc-libs' 'glibc')
+makedepends=('dotnet-sdk>=8' 'git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
@@ -16,11 +16,7 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	sed -i 's/\(NDecrypt\)\.exe/\1/' $_pkgname/NDecrypt/Program.cs
+	git describe --long --tags --exclude=rolling | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -28,7 +24,7 @@ build() {
 	export DOTNET_NOLOGO=true
 	dotnet publish $_pkgname/NDecrypt \
 		--configuration Release \
-		--framework net6.0 \
+		--framework net8.0 \
 		--output build \
 		--runtime linux-x64 \
 		--self-contained false
