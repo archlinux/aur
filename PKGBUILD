@@ -1,6 +1,6 @@
 pkgname=garden-tools
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Garden grows and cultivates collections of Git trees"
 arch=('x86_64')
 url="https://gitlab.com/garden-rs/garden"
@@ -19,7 +19,6 @@ prepare() {
 build() {
   cd "garden-v${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 
   # completions
