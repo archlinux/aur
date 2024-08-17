@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2-git
-pkgver=2.1.11.r33.ge395445
+pkgver=2.1.11.r36.g23fbafc
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64')
@@ -25,7 +25,7 @@ conflicts=("${pkgname%-git}" 'hardinfo')
 source=('git+https://github.com/hardinfo2/hardinfo2.git'
         'service-path.patch')
 sha256sums=('SKIP'
-            'da199d1dbc28d1652dee627a4ba2bb063ac38707f4807f3479e354a8e5c5740d')
+            'fe827c3ccb656fcc6e2ede31ad14975da8aa8042fe51797865dae8afc2bbe246')
 
 pkgver() {
   cd "${pkgname%-git}"
