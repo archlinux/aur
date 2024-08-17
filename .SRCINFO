@@ -11,7 +11,7 @@ pkgbase = epson-inkjet-printer-201401w
 	depends = ghostscript
 	depends = automake
 	depends = libtool
-	source = https://download3.ebz.epson.net/dsc/f/03/00/03/45/41/92e9c9254f0ee4230a069545ba27ec2858a2c457/epson-inkjet-printer-201401w-1.0.0-1lsb3.2.src.rpm
+	source = https://download3.ebz.epson.net/dsc/f/03/00/15/66/49/15de0a76a6f210cd3dcff8bafd80bbf2c89e2f3e/epson-inkjet-printer-201401w-1.0.1-1.src.rpm
 	sha256sums = 05dda3ae3f128cd3f2411ce32d79f4549e11e41e28b0de47cce9cdbde2cf1e66
 
 pkgname = epson-inkjet-printer-201401w
