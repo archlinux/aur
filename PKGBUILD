@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=rclone-bisync-manager-tray-git
-pkgver=0.2.10
+pkgver=0.3.0
 pkgrel=4
 pkgdesc="System tray application for RClone BiSync Manager"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python>=3.12' 'python-pillow' 'python-pystray' 'python-gobject' "rclone-bisync-manager-git>=${pkgver}")
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('286d992a2808d21ea4a9a3a9ed1ed14235e3b8ebd1bd0a1c0a7d99cb9692a563')
+sha256sums=('7f5a3e4356d044a3a359ad8bbe97dc931b4af67663441367be6d92cda4c3f0c1')
 
 build() {
     cd "$srcdir/rclone-bisync-manager-$pkgver"
