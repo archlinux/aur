@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://gitlab.com/surfer-project/surfer"
 license=('EUPL')
 groups=()
-depends=('openssl')
+depends=('openssl' 'python')
 makedepends=('rust' 'cargo' 'git' 'desktop-file-utils' 'gcc' 'binutils')
 checkdepends=()
 optdepends=()
@@ -22,7 +22,7 @@ source=('surfer-waveform-git::git+https://gitlab.com/surfer-project/surfer#branc
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
-pkgver=v0.2.0.r102.ga7c819b
+pkgver=v0.2.0.r147.g8e60006
 
 pkgver() {
     cd "$pkgname"

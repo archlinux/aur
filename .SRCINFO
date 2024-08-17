@@ -1,6 +1,6 @@
 pkgbase = surfer-waveform-git
 	pkgdesc = A waveform viewer with a focus on a snappy usable interface, and extensibility.
-	pkgver = v0.2.0.r102.ga7c819b
+	pkgver = v0.2.0.r147.g8e60006
 	pkgrel = 1
 	url = https://gitlab.com/surfer-project/surfer
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = surfer-waveform-git
 	makedepends = gcc
 	makedepends = binutils
 	depends = openssl
+	depends = python
 	provides = surfer-waveform
 	options = !lto
 	source = surfer-waveform-git::git+https://gitlab.com/surfer-project/surfer#branch=main
