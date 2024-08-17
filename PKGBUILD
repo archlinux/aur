@@ -1,7 +1,7 @@
 # Maintainer: Mydayyy <dev@mydayyy.eu>
 
 pkgname=pbcli
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="pbcli is a command line client which allows to upload and download pastes from privatebin directly from the command line."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT' 'custom')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Mydayyy/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('1798f5432b044711fb64fdcf640aab6559c5f38d9959f8ef41649855c652bc0a77b59ca321c9420b07228dabc904ee6d2e6637576089f3dee606e0e8694a238c')
+sha512sums=('8d2ec101b5fc01fa2add99fb49b2d93749a4436acbd9dc4f88fcad8f32f7a91e0b21f0b9fd6c8420d1f610e40f889486ffaaccd12e575c6ab387cb2cf75ffc7b')
 options=(!lto)
 
 build() {
