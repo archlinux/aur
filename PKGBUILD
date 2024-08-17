@@ -1,16 +1,19 @@
 # Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
 
 pkgname=rtpengine-kernel-dkms
-pkgver=12.4.1.7
+pkgver=12.5.1.2
 pkgrel=1
 pkgdesc='Kernel module for rtpengine media proxy'
 url="https://github.com/sipwise/rtpengine"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 depends=('dkms')
-optdepends=('linux-lts-headers: Build the module for LTS Arch kernel')
+optdepends=('linux-headers: build modules against the Arch kernel'
+            'linux-lts-headers: build modules against the LTS kernel'
+            'linux-zen-headers: build modules against the ZEN kernel'
+            'linux-hardened-headers: build modules against the HARDENED kernel')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sipwise/rtpengine/archive/refs/tags/mr${pkgver}.tar.gz")
-sha256sums=('0ad6475f03ae6a9afd527a3077388339900c73d13ff88d7f61597150949eb8c2')
+sha256sums=('2f316ed10d3efd29cbc7dc5a001d2a5b9265b20e71437cc4c0a0a0fbd1a51e28')
 
 prepare() {
   cd rtpengine-mr${pkgver}
