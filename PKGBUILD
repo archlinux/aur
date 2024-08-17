@@ -8,31 +8,94 @@
 
 _pkgname=ardour
 pkgname=$_pkgname-git
-pkgver=8.0.rc1.r11.geed79f45d7
+pkgver=8.6.r406.g35cb60c2dc
 pkgrel=1
-pkgdesc='A multichannel hard disk recorder and digital audio workstation (git version)'
+pkgdesc='Professional-grade digital audio workstation (git version)'
 arch=(x86_64)
 url='https://ardour.org/'
-license=(GPL2)
+license=(
+  CC0-1.0
+  GPL-2.0-or-later
+  GPL-3.0-or-later
+  MIT
+)
 groups=(pro-audio)
-depends=(atkmm cairo cairomm fontconfig gdk-pixbuf2 gcc-libs
-         glibc glibmm gtkmm libx11 libxml2 pangomm soundtouch
-         taglib)
-makedepends=(atk aubio boost cppunit curl dbus doxygen fftw
-             flac fluidsynth freetype2 git glib2 graphviz gtk2
-             harfbuzz itstool libarchive liblo liblrdf libltc
-             libogg libpulse libsamplerate libsndfile libusb
-             libwebsockets lilv lv2 pango readline rubberband
-             serd sord sratom suil unzip vamp-plugin-sdk)
-optdepends=('harvid: video timeline'
-            'libwebsockets: WebSockets control support'
-            'non-session-manager: for session management'
-            'xjadeo: video monitoring')
-provides=($_pkgname ladspa-host lv2-host vst-host vst3-host)
+depends=(
+  cairo
+  gcc-libs
+  glibc
+  hicolor-icon-theme
+  libsigc++
+  libx11
+  libxext
+  libxinerama
+  libxrandr
+  sh
+  taglib
+)
+makedepends=(
+  aubio
+  boost
+  cairomm
+  cppunit
+  curl
+  dbus
+  doxygen
+  fftw
+  flac
+  fluidsynth
+  fontconfig
+  freetype2
+  git
+  glib2
+  glibmm
+  graphviz
+  hidapi
+  itstool
+  jack
+  libarchive
+  liblo
+  liblrdf
+  libltc
+  libogg
+  libpng
+  libpulse
+  libsamplerate
+  libsndfile
+  libusb
+  libwebsockets
+  libxml2
+  lilv
+  lv2
+  pango
+  pangomm
+  python
+  readline
+  rubberband
+  serd
+  sord
+  sratom
+  unzip
+  vamp-plugin-sdk
+)
+optdepends=(
+  'harvid: video timeline'
+  'non-session-manager: for session management'
+  'xjadeo: video monitoring'
+)
+provides=(
+  $_pkgname
+  ladspa-host
+  lv2-host
+  vamp-host
+  vst-host
+  vst3-host
+)
 conflicts=($_pkgname)
 source=("$_pkgname::git+https://github.com/Ardour/ardour.git"
         "$_pkgname-midi-${pkgver%%.*}.zip::http://stuff.ardour.org/loops/ArdourBundledMedia.zip"
         'ardour-7.x-vendor_qm-dsp.patch')
+noextract=($_pkgname-midi-${pkgver%%.*}.zip)
 sha256sums=('SKIP'
             'a00de00671cdc329b2ca35c2a5c4150af3d6588147f9dca2e3dea752aa2e234c'
             '6393d52d2c084e03ba24f657352a76a58d5e9f530cfeecb87babf8990c902cbc')
@@ -55,12 +118,12 @@ prepare() {
 build() {
   cd $_pkgname
 
+  export LINKFLAGS="$LDFLAGS"
   python waf configure \
     --prefix=/usr \
     --configdir=/etc \
     --cxx11 \
     --freedesktop \
-    --libjack=weak \
     --no-phone-home \
     --optimize \
     --ptformat \
@@ -70,17 +133,36 @@ build() {
 }
 
 package() {
-  depends+=(libFLAC.so libasound.so libatk-1.0.so libaubio.so
-            libarchive.so libcurl.so libdbus-1.so libfftw3f.so
-            libfftw3f_threads.so libfluidsynth.so libfreetype.so
-            libgdk-x11-2.0.so libgio-2.0.so libglib-2.0.so
-            libgobject-2.0.so libgtk-x11-2.0.so libharfbuzz.so
-            liblo.so liblilv-0.so liblrdf.so libltc.so libogg.so
-            libpango-1.0.so libpangocairo-1.0.so libpangoft2-1.0.so
-            libpulse.so libreadline.so librubberband.so
-            libsamplerate.so libserd-0.so libsndfile.so libsord-0.so
-            libsratom-0.so libsuil-0.so libusb-1.0.so
-            libvamp-hostsdk.so libvamp-sdk.so)
+  depends+=(
+    alsa-lib libasound.so
+    aubio libaubio.so
+    cairomm libcairomm-1.0.so
+    curl libcurl.so
+    dbus libdbus-1.so
+    fftw libfftw3f.so libfftw3f_threads.so
+    fluidsynth libfluidsynth.so
+    fontconfig libfontconfig.so
+    glib2 libglib-2.0.so libgobject-2.0.so
+    glibmm libglibmm-2.4.so
+    jack libjack.so
+    libarchive libarchive.so
+    liblo liblo.so
+    libpulse libpulse.so
+    liblrdf liblrdf.so
+    libltc libltc.so
+    libpng libpng16.so
+    libsamplerate libsamplerate.so
+    libsndfile libsndfile.so
+    libusb libusb-1.0.so
+    libwebsockets libwebsockets.so
+    libxml2 libxml2.so
+    lilv liblilv-0.so
+    pango libpango-1.0.so libpangocairo-1.0.so libpangoft2-1.0.so
+    pangomm libpangomm-1.4.so
+    readline libreadline.so
+    rubberband librubberband.so
+    vamp-plugin-sdk libvamp-hostsdk.so libvamp-sdk.so
+  )
 
   cd $_pkgname
 
