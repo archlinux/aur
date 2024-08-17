@@ -10,7 +10,10 @@ pkgdesc="A structured wysiwyg scientific text editor"
 arch=("x86_64")
 url="https://github.com/XmacsLabs/mogan"
 license=("GPL3")
-depends=("qt5-base" "qt5-svg" "qt6-base" "qt6-svg" "sqlite" "zlib" "unzip" "curl" "texlive-core" "python" "libxext" "libgit2")
+depends=(
+  "qt6-base" "qt6-svg" "noto-fonts-cjk" "libpng" "libjpeg" "sqlite"
+  "zlib" "unzip" "curl" "texlive-core" "python" "libxext" "libgit2"
+  "mimalloc" "fontconfig" "freetype2" "openssl")
 makedepends=("git" "xmake")
 optdepends=(
   "gawk: Conversion of some files"
@@ -28,7 +31,8 @@ prepare() {
 build() {
   cd "${pkgname}"
   xmake repo --update --yes
-  xmake config -vD --policies=build.ccache -m releasedbg --yes
+  QT6_VERSION=$(qmake6 -query QT_VERSION)
+  xmake config -vD --policies=build.ccache -m releasedbg --yes --qt_sdkver=${QT6_VERSION}
   xmake build --yes -vD research
 }
 
