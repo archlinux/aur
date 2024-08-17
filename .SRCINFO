@@ -1,0 +1,14 @@
+pkgbase = catppuccin-sddm-theme-mocha
+	pkgdesc = Soothing pastel theme for SDDM - Mocha
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/catppuccin/sddm
+	arch = any
+	license = MIT
+	depends = sddm
+	depends = qt6-svg
+	depends = qt6-declarative
+	source = catppuccin-sddm-theme-mocha-1.0.0.zip::https://github.com/catppuccin/sddm/releases/download/v1.0.0/catppuccin-mocha.zip
+	sha256sums = 1fb17a79685d97ea616e81c0b9f4fd01c70bdd08f4f5c11d33db7eb0b1d32999
+
+pkgname = catppuccin-sddm-theme-mocha
