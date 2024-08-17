@@ -2,7 +2,7 @@
 # Contributor: soloturn <soloturn@gmail.com>
 pkgname=cosmic-notifications-git
 pkgver=1.0.0.alpha.1.r0.ge9abef5
-pkgrel=2
+pkgrel=3
 pkgdesc="Layer Shell notifications daemon which integrates with COSMIC."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-notifications"
@@ -42,7 +42,6 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
 
   # use nice to build with lower priority
   nice just build-release --frozen

@@ -1,7 +1,7 @@
 pkgbase = cosmic-notifications-git
 	pkgdesc = Layer Shell notifications daemon which integrates with COSMIC.
 	pkgver = 1.0.0.alpha.1.r0.ge9abef5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pop-os/cosmic-notifications
 	arch = x86_64
 	arch = aarch64
