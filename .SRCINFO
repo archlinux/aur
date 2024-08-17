@@ -1,6 +1,6 @@
 pkgbase = llamafile-bin
 	pkgdesc = Distribute and run LLMs with a single file.
-	pkgver = 0.8.9
+	pkgver = 0.8.12
 	pkgrel = 1
 	url = https://github.com/Mozilla-Ocho/llamafile
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = llamafile-bin
 	conflicts = android-sdk-build-tools
 	conflicts = zipalign
 	options = !strip
-	source = llamafile-bin::https://github.com/Mozilla-Ocho/llamafile/releases/download/0.8.9/llamafile-0.8.9.zip
+	source = llamafile-bin::https://github.com/Mozilla-Ocho/llamafile/releases/download/0.8.12/llamafile-0.8.12.zip
 	sha256sums = c0978c9fe7551bc1f6e17caea29687d6c684c820e3444bd47228a2148ac220ab
 
 pkgname = llamafile-bin
