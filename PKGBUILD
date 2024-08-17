@@ -3,7 +3,7 @@
 pkgname=ludusavi
 _app_id="com.github.mtkennerly.$pkgname"
 pkgver=0.24.3
-pkgrel=2
+pkgrel=1
 pkgdesc="Backup tool for PC game saves"
 arch=('x86_64')
 url="https://github.com/mtkennerly/ludusavi"
@@ -42,6 +42,7 @@ build() {
   cd "$pkgname-$pkgver"
   CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
