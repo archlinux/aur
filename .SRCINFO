@@ -1,0 +1,14 @@
+pkgbase = catppuccin-sddm-theme-frappe
+	pkgdesc = Soothing pastel theme for SDDM - Frappe
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/catppuccin/sddm
+	arch = any
+	license = MIT
+	depends = sddm
+	depends = qt6-svg
+	depends = qt6-declarative
+	source = catppuccin-sddm-theme-frappe-1.0.0.zip::https://github.com/catppuccin/sddm/releases/download/v1.0.0/catppuccin-frappe.zip
+	sha256sums = 6b7eb5e549e9a2bb28f7c6f8f42997bd55aaac172158aa2dcd780c2bfa262774
+
+pkgname = catppuccin-sddm-theme-frappe
