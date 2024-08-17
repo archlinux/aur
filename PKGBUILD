@@ -10,7 +10,7 @@ license=("MIT")
 
 pkgdesc='Command line interface to manage clipboard'
 
-source=("$_pkgname::git://github.com/yaa110/cb.git")
+source=("$_pkgname::git+https://github.com/yaa110/cb.git")
 sha512sums=('SKIP')
 makedepends=('rust' 'python3')
 depends=('gcc-libs' 'libxcb')
@@ -18,8 +18,8 @@ conflicts=('cb' 'cb-bin')
 provides=('cb')
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$_pkgname"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

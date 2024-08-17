@@ -13,8 +13,7 @@ pkgbase = cb-git
 	provides = cb
 	conflicts = cb
 	conflicts = cb-bin
-	source = cb::git://github.com/yaa110/cb.git
+	source = cb::git+https://github.com/yaa110/cb.git
 	sha512sums = SKIP
 
 pkgname = cb-git
-
