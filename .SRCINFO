@@ -1,0 +1,14 @@
+pkgbase = encrypter
+	pkgdesc = Dosya ve klasör şifreleme uygulaması
+	pkgver = 1.2.8
+	pkgrel = 1
+	url = https://gitlab.com/saydut/encrpter
+	arch = any
+	license = GPL3
+	depends = python
+	depends = tk
+	depends = python-cryptography
+	source = git+https://gitlab.com/saydut/encrpter.git#branch=master
+	md5sums = SKIP
+
+pkgname = encrypter
