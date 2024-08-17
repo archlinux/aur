@@ -1,5 +1,6 @@
-# Mantainer: Sneakatoo <corinne.9 at hotmail.it>
-# Co-maintainer: Pellegrino Prevete <pellegrinoprevete at gmail.com>
+# Mantainer: Igor Deyashkin <ovsyanka42 at gmail dot com>
+# Contributor: Sneakatoo <corinne.9 at hotmail.it>
+# Contributor: Pellegrino Prevete <pellegrinoprevete at gmail.com>
 # Contributor: Martin Patz <mailto at martin-patz.de>
 # Contributor: Nicky Heinimann <nicky.heinimann at posteo.de>
 # Contributor: milkii
