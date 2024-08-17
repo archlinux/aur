@@ -6,11 +6,6 @@
 # Basically, it is Pd-L2Ork with the Tk GUI replaced with a JavaScript GUI
 # implemented using nw.js (http://nwjs.io/).
 
-# This is a "stable" snapshot of purr-data, meaning that it will be updated
-# less frequently, and ideally only after some testing. As an alternative,
-# there's also the purr-data-git package which builds straight from the latest
-# upstream source, also available from the AUR.
-
 # This package can be installed alongside pd-l2ork, as well as vanilla pd or
 # pd-extended. To avoid conflicts with any of these, the main contents of the
 # package can be found under /opt/purr-data by default (you can change this
@@ -23,7 +18,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data
-pkgver=2.19.3.r5038.e9fca4f8
+pkgver=2.19.4.r5122.2a2333ee
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://agraef.github.io/purr-data/"
@@ -49,12 +44,12 @@ source=("$pkgname::git+https://github.com/agraef/purr-data.git#branch=release")
 md5sums=('SKIP')
 # nw.js sdk binaries
 nwjsname=nwjs-sdk
-nwjsver=0.28.3
+nwjsver=0.67.0
 source_common="http://dl.nwjs.io/v$nwjsver/$nwjsname-v$nwjsver-linux"
 source_i686=("$source_common-ia32.tar.gz")
 source_x86_64=("$source_common-x64.tar.gz")
-md5sums_i686=('858a5269dc7072c8d9e8ce9e880e4112')
-md5sums_x86_64=('c80b2b25b8b482568754f2bb586030a9')
+md5sums_i686=('b28aa869f8cc839747596cb69b051cb6')
+md5sums_x86_64=('b36f08cbdc3daa682fbc499786d52acd')
 
 if [ "$CARCH" = "i686" ]; then
   _arch="ia32"
@@ -102,6 +97,12 @@ build() {
   make prefix="$prefix" $buildopt
 }
 
+check() {
+  # also do a `make check`, to be on the safe side
+  cd $srcdir/$pkgname
+  make prefix="$prefix" check
+}
+
 package() {
   cd $srcdir/$pkgname
   make install prefix="$prefix" DESTDIR="$pkgdir"
@@ -127,17 +128,6 @@ package() {
   # Remove libtool archives and extra object files.
   cd "$pkgdir$prefix"
   rm -f lib/pd-l2ork/extra/*/*.la lib/pd-l2ork/extra/*/*.pd_linux_o
-  # Sanitize permissions.
-  cd "$pkgdir"
-  chmod -R go-w *
-  chmod -R a+r *
-  chmod a-x .$prefix/lib/pd-l2ork/default.settings
-  find .$prefix/lib/pd-l2ork/bin/nw -executable -not -type d -exec chmod a+x {} +
-  #find . -executable -name '*.pd_linux' -exec chmod a-x {} +
-  find . -executable -name '*.pd' -exec chmod a-x {} +
-  find . -executable -name '*.txt' -exec chmod a-x {} +
-  find . -executable -name '*.aif*' -exec chmod a-x {} +
-  find . -type d -exec chmod a+x {} +
 }
 
 # vim:set ts=2 sw=2 et:
