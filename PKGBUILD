@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=minimon-applet-for-cosmic
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A System Monitor applet for COSMIC"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Hyperchaotic/minimon-applet"
@@ -20,7 +20,6 @@ prepare() {
 build() {
   cd "minimon-applet-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
   just build-release
 }
 
