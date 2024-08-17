@@ -1,10 +1,8 @@
 # Maintainer: Talo Halton <talohalton@gmail.com>
 pkgname=spmp
-pkgver=5491d4a50e68b3ba4296062eeef863f0edac042e
-_ver=5491d4a50e68b3ba4296062eeef863f0edac042e
-pkgver=0.4.0.RC6
-_ver=0.4.0-RC6
-pkgrel=19
+pkgver=0.4.0
+_ver=0.4.0
+pkgrel=20
 pkgdesc="YouTube Music client with a focus on customisation of colours and song metadata"
 arch=("x86_64")
 url="https://github.com/toasterofbread/spmp"
@@ -13,7 +11,7 @@ depends=("mpv" "libayatana-appindicator" "jre22-openjdk")
 makedepends=("jdk22-openjdk" "jre21-openjdk")
 
 source=("https://github.com/toasterofbread/spmp/archive/refs/tags/v${_ver}.tar.gz")
-sha256sums=("8127dbaccf1538628a2a06bc1b82f40ff8a0411b3981b4befc0cee95d9085669")
+sha256sums=("88db1272d201b7d2e16ee3e00dbb67ec6308a6357507ff98beaeeeabe2482f25")
 
 build() {
     cd "$srcdir/${pkgname}-${_ver}"
