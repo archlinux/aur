@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-workspaces-git
 pkgver=1.0.0.alpha.1.r1.g70d6c41
-pkgrel=1
+pkgrel=2
 pkgdesc="Cosmic workspaces"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-workspaces-epoch"
@@ -37,7 +37,6 @@ prepare() {
 build() {
   cd "${pkgname%-git}-epoch"
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
 
   # use mold instead of lld to speed up build
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
