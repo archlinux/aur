@@ -1,24 +1,25 @@
-# Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
-
-pkgname='python-hexbytes'
-_pkgname=${pkgname#python-}
-pkgver=0.3.1
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Kewl <xrjy@nygb.rh.bet(rot13)>
+_base=hexbytes
+pkgname=python-${_base}
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Python bytes subclass that decodes hex, with a readable console output"
-arch=('any')
-depends=()
-makedepends=('python-setuptools')
-url="https://github.com/ethereum/$_pkgname"
-license=('GPL3')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('a3fe35c6831ee8fafd048c4c086b986075fc14fd46258fa24ecb8d65745f9a9d')
+arch=(any)
+url="https://github.com/ethereum/$_base"
+license=(MIT)
+depends=(python)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('b70e13c22bd3d0cc028890daa1d03304db8c48d0101214102b3b170c936bf30ff5d114f0534fee1c0d04913b13ccfb3e6e028c2ff10c8d6fd5b4c7b0ad03d048')
 
 build() {
-  cd $_pkgname-$pkgver
-  python setup.py build
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
-  cd $_pkgname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

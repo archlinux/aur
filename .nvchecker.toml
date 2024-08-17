@@ -1,0 +1,5 @@
+[python-hexbytes]
+source = "github"
+github = "ethereum/hexbytes"
+use_max_tag = true
+prefix = "v"
