@@ -1,7 +1,7 @@
 pkgbase = apps-menu-applet-for-cosmic-git
 	pkgdesc = Category based menu for apps for COSMIC™️ DE
 	pkgver = 0.1.6.r15.g21c3063
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/leb-kuchen/apps-menu-applet-for-cosmic
 	arch = x86_64
 	license = GPL-3.0-or-later

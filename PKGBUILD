@@ -2,7 +2,7 @@
 pkgname=apps-menu-applet-for-cosmic-git
 _app_id=dev.dominiccgeh.CosmicAppletAppsMenu
 pkgver=0.1.6.r15.g21c3063
-pkgrel=2
+pkgrel=1
 pkgdesc="Category based menu for apps for COSMIC™️ DE"
 arch=('x86_64')
 url="https://github.com/leb-kuchen/apps-menu-applet-for-cosmic"
@@ -28,6 +28,7 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
