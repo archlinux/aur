@@ -4,12 +4,12 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-ffmpeg
 pkgver=7.0.1
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Complete solution to record, convert and stream audio and video (Android ${_android_arch})"
 url="http://ffmpeg.org/"
 license=('GPL3')
-groups=(android-ffmpeg)
+groups=('android-ffmpeg')
 depends=("android-${_android_arch}-alsa-lib"
          "android-${_android_arch}-aom"
          "android-${_android_arch}-bzip2"
@@ -35,7 +35,6 @@ depends=("android-${_android_arch}-alsa-lib"
          "android-${_android_arch}-libopenmpt"
          "android-${_android_arch}-libraw1394"
          "android-${_android_arch}-libsoxr"
-         "android-${_android_arch}-libssh"
          "android-${_android_arch}-libtheora"
          "android-${_android_arch}-libva"
          "android-${_android_arch}-libvdpau"
@@ -57,7 +56,6 @@ depends=("android-${_android_arch}-alsa-lib"
          "android-${_android_arch}-sdl2"
          "android-${_android_arch}-snappy"
          "android-${_android_arch}-speex"
-         "android-${_android_arch}-srt"
          "android-${_android_arch}-svt-av1"
          "android-${_android_arch}-vid.stab"
          "android-${_android_arch}-vmaf"
@@ -67,6 +65,8 @@ depends=("android-${_android_arch}-alsa-lib"
          "android-${_android_arch}-xz"
          "android-${_android_arch}-zlib")
 #depends+=("android-${_android_arch}-librsvg"
+#          "android-${_android_arch}-libssh"
+#          "android-${_android_arch}-srt"
 #          "android-${_android_arch}-vapoursynth"
 #          "android-${_android_arch}-zimg")
 makedepends=('android-configure'
@@ -106,7 +106,8 @@ build() {
     case "$_android_arch" in
         aarch64)
             target_arch=aarch64
-            export LDFLAGS="${LDFLAGS} -lm -logg -lvorbis -lssh -lcrypto -lssl"
+            export LDFLAGS="${LDFLAGS} -lm -logg -lvorbis -lcrypto -lssl"
+            # export LDFLAGS="${LDFLAGS} -lssh"
             ;;
         armv7a-eabi)
             target_arch=arm
@@ -140,14 +141,17 @@ build() {
         extra_options="${extra_options} --enable-libxcb"
     fi
 
-    # Not yet available
+    # Not yet available.
     # extra_options="${extra_options} --enable-frei0r"
 
     # For some unknown reason, librsvg is not exporting any symbol so disable for now.
     # extra_options="${extra_options} --enable-librsvg"
 
-    # Fail with message 'cannot locate symbol "__eqtf2"' in zimg
+    # Fail with message 'cannot locate symbol "__eqtf2"' in zimg.
     # extra_options="${extra_options} --enable-libzimg --enable-vapoursynth"
+
+    # Disable this features because it makes fail when loading libavformat.
+    # extra_options="${extra_options} --enable-libsrt --enable-libssh"
 
     ./configure \
         --prefix=${ANDROID_PREFIX} \
@@ -208,9 +212,6 @@ build() {
         --enable-libsnappy \
         --enable-libsoxr \
         --enable-libspeex \
-        --enable-libsrt \
-        --enable-libssh \
-        --enable-libsvtav1 \
         --enable-libtheora \
         --enable-libvidstab \
         --enable-libvmaf \
@@ -223,6 +224,7 @@ build() {
         --enable-libxml2 \
         --enable-libxvid \
         --enable-opencl \
+        --enable-libsvtav1 \
         ${extra_options}
     make $MAKEFLAGS
 }
@@ -231,7 +233,7 @@ package() {
     cd "${srcdir}/ffmpeg-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
