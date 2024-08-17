@@ -16,6 +16,7 @@ pkgbase = laptop-mode-tools-git
 	optdepends = wireless_tools: Wi-Fi support
 	optdepends = xorg-xset: DPMS standby support
 	optdepends = hal: HAL polling support
+	optdepends = blktrace: lm-profiler
 	optdepends = python-pyqt5: LMT GUI
 	provides = laptop-mode-tools
 	conflicts = laptop-mode-tools

@@ -26,6 +26,7 @@ optdepends=('acpid: ACPI support'
     'wireless_tools: Wi-Fi support'
     'xorg-xset: DPMS standby support'
     'hal: HAL polling support'
+    'blktrace: lm-profiler'
     'python-pyqt5: LMT GUI')
 backup=('etc/laptop-mode/conf.d/ac97-powersave.conf'
     'etc/laptop-mode/conf.d/auto-hibernate.conf'
