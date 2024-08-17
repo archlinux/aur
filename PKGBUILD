@@ -3,7 +3,7 @@
 # Maintainer: Vitalij Berdinskih <vitalij_r2 at outlook dot com>
 
 pkgname=slf4j
-pkgver=2.0.13
+pkgver=2.0.16
 pkgrel=1
 pkgdesc="Simple Logging Facade for Java for various logging frameworks (e.g. java.util.logging, logback, log4j)"
 arch=('any')
@@ -59,33 +59,18 @@ package() {
 	done
 }
 
-md5sums=('91cf470930de587e31989fcee4fb5ab2'
-         '1760aae467a5ac09abdccef211fddd89'
-         'd44cfe5a86dae2488e228cac617c6f0e'
-         '7001aab64046efc897555a2d8906f5e1'
-         'de6a0e8642982b3be0a467e6f7de937c'
-         '7f4028aa04f75427327f3f30cd62ba4e'
-         'd65f8a7e4347b8e5ae77897a9440bb0b'
-         'f1e9a007826032162cc2e222cae96720'
-         '354fa90039a9336a23f1a34dbca0ce9e'
-         '2af84489be016394234b4c7c1c69b42b'
-         '4880106ae5dfc2a4b282193c813a31f2'
-         '9fc96c487556ee4b3e0ca498e90b394c'
-         '4196990c1480726609474e897fe0bdc7'
-         'dc577595071657290ba80857958dd909'
-         '9939d1d46aa38b00af24f36b6f59b0f0')
 sha256sums=('6fbe2eaf44b193b8a40eed9208f52848572224ad8d7672dd09418aa174847e73'
-            'c53560fa3a0837964207dd1f7835d0e6cea0835bd110e94696f2dc65f27e6f5a'
-            'fa5ed8f23df2158d0d4d5c82f85cae289d36cc3cd7b7497deff5a37b0b7d7878'
-            'fe55a985e82370e5c457119a79195a4639cbd6ffa73963d4fdae85dfa228e724'
-            'd9b46b52ccceb78b64ad11d454cdf2c2f2c317a0d43b8b9ba33108063aaf1ce9'
-            'e7c2a48e8515ba1f49fa637d57b4e2f590b3f5bd97407ac699c3aa5efb1204a9'
-            '9963ed4a45df1ad7d197f6940e99b8063edab645370d427bea4901bad5846c95'
-            'fe53a727b14c6486675d292cb059be3d3c9b5c1081a8ecb9cdaf2e06c7fcf984'
-            '83f17205a6470c3cd4214306d3ed011651c173297f705acef544c01795f253cd'
-            'e5c88ca5558c7456afc2cc52ad0f4f4b965eac48e72348677f8a5529aba8ebd7'
-            'b4e833686f144f3d381419457697faf35effeebd4461adb8f30dc74ef17e7119'
-            '8962a107b4a8bdf80b6c17e470cd3614ad3329643833ff5cf0c60c7dce9deaac'
-            '3153fe1d689cffb94f1530b58470c306685ba68844de8857116e3b6ebb81d9f7'
+            '5744d62c5af556e839ab922c9fa3f737f0a5971e478ba68b2eb5256b2842ec78'
+            '0f2ec396ea29c9a440890d1f09fdb82fdd574b47b298435764235451c193861d'
+            '0a4c4314b80d7b0ec733efb3cfbeb9005e7488e64132716396e33ef0ca1ac52d'
+            'a49a983dd004e6a1f5417b970973616bd01810fd40b8fb93c42f422ae5d45b1c'
+            'a12578dde1ba00bd9b816d388a0b879928d00bab3c83c240f7013bf4196c579a'
+            '64527060fc741829277e24ff410a23923cf040a47b0045adb63df565d2cf5bbf'
+            'bb82348666a695258d6a7aa47f164704355f3452a4266cefdd006ecaadfaaa45'
+            '0fcf97cf6dd1f5768cfd57ed5d742fe7114b55a4948dab0d76271a30af859057'
+            '803b894ee3a60e516c4de3f747c130639a05a25bcaf0aa00baab1c45e0e8bd57'
+            'ed6243c03ae5bb71ec5654e4d7b2bc9c45c4b729807300063611d8caf95b5739'
+            'deca6c04ed35515a0a911fa44c0e836bee92c0c59d2e8fa9bab8ffbc464a9ba7'
+            'effc32018658bea09d1e08c7d1060ccad46c086960f583d07dd7ffe9c1172a47'
             '95e460406c5b9416bb51eb452e40b2d8987401e55cdd3da6b062851cd0e56e82'
             '3fa0fb54bd4b0cd91e16b882002943d0ea3d0985ecf8fa870c9afc9b73656dba')
