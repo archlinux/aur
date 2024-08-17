@@ -2,26 +2,23 @@
 # Maintainer: Gabe Cook <gabe565@gmail.com>
 
 pkgname='castsponsorskip-bin'
-pkgver=0.7.4
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Skip YouTube ads and sponsorships on all local Google Cast devices'
 url='https://github.com/gabe565/CastSponsorSkip'
-arch=('aarch64' 'armv6h' 'armv7h' 'x86_64')
+arch=('aarch64' 'armv7h' 'x86_64')
 license=('GPL-3.0')
 provides=('castsponsorskip')
 conflicts=('castsponsorskip')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/CastSponsorSkip/releases/download/v0.7.4/castsponsorskip_0.7.4_linux_arm64.tar.gz")
-sha256sums_aarch64=('840364e1c7ac054ef90940c9d43f7f257702305cb2b70b88f08754345f6d8519')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/CastSponsorSkip/releases/download/v0.8.0/castsponsorskip_0.8.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('c8a53a46b8e0dee680e18c3a5d9a03a950ddcd3304e4e93e2181d837ba8e2af7')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/gabe565/CastSponsorSkip/releases/download/v0.7.4/castsponsorskip_0.7.4_linux_armv6.tar.gz")
-sha256sums_armv6h=('95fdef16cc52531ffa080456569d385d6fcacd598520aa69c094a8d4cb223fed')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/CastSponsorSkip/releases/download/v0.8.0/castsponsorskip_0.8.0_linux_armv7.tar.gz")
+sha256sums_armv7h=('e2aa4f95b35eea0fb51afd9bdbd41be7e3d2e377805e3853f339069f5c8d49e0')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/CastSponsorSkip/releases/download/v0.7.4/castsponsorskip_0.7.4_linux_armv7.tar.gz")
-sha256sums_armv7h=('8ad7e5f07c14861aceeb2eabeb1ef24f6a832c0cae9fcbf3582acabe13f569d7')
-
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/CastSponsorSkip/releases/download/v0.7.4/castsponsorskip_0.7.4_linux_amd64.tar.gz")
-sha256sums_x86_64=('e594ca11d528c8794177bb1f50813678c61a0bfbd4c1786af3f1a2a1b5f66f2d')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/CastSponsorSkip/releases/download/v0.8.0/castsponsorskip_0.8.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('a4398c7cdafbdd98ec83c213f3ac1205d014090ec6f3f90823276415f7fd0f49')
 
 package() {
   # bin
