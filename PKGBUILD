@@ -4,12 +4,11 @@ pkgname=syshud
 pkgver=0.1
 pkgrel=1
 pkgdesc="Simple heads up display written in gtkmm 4"
-arch=(x86_64 aarch64)
+arch=('aarch64' 'x86_64')
 url="https://github.com/System64fumo/syshud"
 license=('WTFPL')
 groups=('sysshell')
 depends=('gtkmm-4.0' 'gtk4-layer-shell')
-packager="System64 <system64fumo@protonmail.com>"
 source=("git+https://github.com/System64fumo/syshud")
 sha256sums=('SKIP')
 
@@ -31,6 +30,5 @@ build() {
 
 package() {
 	cd "${pkgname}"
-	mkdir "${pkgdir}/usr"
-	make DESTDIR="${pkgdir}/usr" PULSEAUDIO=$PULSEAUDIO install
+	make PREFIX=/usr DESTDIR="${pkgdir}" PULSEAUDIO=$PULSEAUDIO install
 }
