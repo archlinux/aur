@@ -13,7 +13,9 @@ url='https://stable-diffusion-ui.github.io/'
 source=("${pkgname}-${pkgver}.zip::https://github.com/easydiffusion/easydiffusion/releases/download/v${pkgver}/Easy-Diffusion-Linux.zip")
 license=('custom')
 provides=('stable-diffusion-ui')
-depends=('curl' 'tar' 'bzip2' 'git')
+depends=('curl' 'tar' 'bzip2' 'git' 'micromamba-bin')
+optdepends=('micromamba: compiled version')
+
 makedepends=()
 sha512sums=('d073deda7c3dd4494be0678f0939e29578a7037525cfe14165ca0959154fe530014083b8875a692fed9ae5e1b3a12668e8a6d50765553d6debbc62d039a84f01')
 install='stable-diffusion-ui.install'
