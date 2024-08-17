@@ -1,7 +1,7 @@
 pkgbase = shm-modbus
 	pkgdesc = A collection of applications to simulate a shared memory based Modbus client
 	pkgver = 2.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SHMModbus/SHM_Modbus
 	arch = x86_64
 	arch = aarch64

@@ -1,7 +1,7 @@
 # Maintainer: Nikolas Koesling <nikolas@koesling.network>
 
 pkgname=shm-modbus
-pkgrel=2
+pkgrel=3
 pkgver=2.1.3
 pkgdesc="A collection of applications to simulate a shared memory based Modbus client"
 url="https://github.com/SHMModbus/SHM_Modbus"
