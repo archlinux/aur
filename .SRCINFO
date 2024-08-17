@@ -1,7 +1,7 @@
 pkgbase = cosmopolitan-bin
 	pkgdesc = Build-once run-anywhere c library.
-	pkgver = 3.3.3
-	pkgrel = 5
+	pkgver = 3.7.1
+	pkgrel = 1
 	url = https://github.com/jart/cosmopolitan
 	arch = x86_64
 	license = ISC
@@ -28,10 +28,10 @@ pkgbase = cosmopolitan-bin
 	conflicts = wine
 	conflicts = wine-staging
 	options = !strip
-	source = cosmopolitan-bin::https://github.com/jart/cosmopolitan/releases/download/3.3.3/cosmocc-3.3.3.zip
+	source = cosmopolitan-bin::https://github.com/jart/cosmopolitan/releases/download/3.7.1/cosmocc-3.7.1.zip
 	source = ape.conf
 	source = ape-jart.conf
-	sha256sums = e4d0fa63cd79cc3bfff6c2d015f1776db081409907625aea8ad40cefc1996d08
+	sha256sums = 13b65b0e659b493bd82f3d0a319d0265d66f849839e484aa2a54191024711e85
 	sha256sums = 0a5d918ef46aaf764293fb18794eac021cb93637fe6abed7c9d3f06b7b2f4cad
 	sha256sums = 9351247b53d34dc584170c435512954b8eb1a69c7b3ff0bee43ce21264b8d467
 
