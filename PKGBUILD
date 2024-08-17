@@ -3,13 +3,13 @@
 _pkgname=xingque
 pkgname=python-xingque
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet another Python binding to starlark-rust, exposing the Starlark language to your Python projects."
-arch=('x86_64')
+arch=('aarch64' 'armv7h' 'loong64' 'riscv64' 'x86_64')
 url="https://github.com/xen0n/xingque"
 license=(Apache-2.0)
 depends=('python>=3.8')
-makedepends=(maturin)
+makedepends=('maturin>=1.6')
 checkdepends=(python-pytest)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/xen0n/xingque/archive/${pkgver}.tar.gz")
 sha256sums=('ba5768f62122ad2ce0abe85d2db7782f03a94da67bd71f576ce6362022e9d2d2')
