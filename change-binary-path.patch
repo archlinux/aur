@@ -1,0 +1,13 @@
+diff --git a/illuminanced.service b/illuminanced.service
+index df2321b..65e06e1 100644
+--- a/illuminanced.service
++++ b/illuminanced.service
+@@ -5,7 +5,7 @@ Documentation=https://github.com/mikhail-m1/illuminanced
+ 
+ [Service]
+ Type=forking
+-ExecStart=/usr/local/sbin/illuminanced
++ExecStart=/usr/bin/illuminanced
+ PIDFile=/run/illuminanced.pid
+ Restart=on-failure
+ 

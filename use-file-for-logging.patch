@@ -1,0 +1,23 @@
+diff --git a/illuminanced.service b/illuminanced.service
+index df2321b..b863514 100644
+--- a/illuminanced.service
++++ b/illuminanced.service
+@@ -1,6 +1,5 @@
+ [Unit]
+ Description=Ambient light monitoring Service
+-Requires=syslog.socket
+ Documentation=https://github.com/mikhail-m1/illuminanced
+ 
+ [Service]
+diff --git a/illuminanced.toml b/illuminanced.toml
+index 8f70f55..c4f0256 100644
+--- a/illuminanced.toml
++++ b/illuminanced.toml
+@@ -1,6 +1,6 @@
+ [daemonize]
+ # log_to = "syslog" or /file/path
+-log_to = "syslog"
++log_to = "/var/log/illuminanced.log"
+ pid_file = "/run/illuminanced.pid"
+ # log_level = "OFF", "ERROR", "WARN", "INFO", "DEBUG", "TRACE"
+ log_level = "ERROR"
