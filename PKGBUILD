@@ -1,6 +1,6 @@
 pkgname=mihomo-party-electron-bin
 _pkgname=mihomo-party
-pkgver=0.5.7
+pkgver=0.5.8
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -11,17 +11,22 @@ depends=('electron' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-
 optdepends=('libappindicator-gtk3: Allow mihomo-party to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
 makedepends=('asar')
 install=$_pkgname.install
-source=("${_pkgname}.sh")
+source=("${_pkgname}.desktop" "${_pkgname}.sh")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/mihomo-party-linux-${pkgver}-amd64.deb")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/mihomo-party-linux-${pkgver}-arm64.deb")
-sha256sums=("560733f0e5bd9b47ff50c849301c8a22ae17a5df26830d8c97033dfcbd392382")
-sha256sums_x86_64=("1a3859f319c3cab00f01f3342390ac9ce0e64db412129fd8f619cffe80cf779c")
-sha256sums_aarch64=("a2633155d8b14609fe7f41258295b6bfec570c8aa113de4d470061adbdbb1c76")
+sha256sums=(
+    "96a6250f67517493f839f964c024434dbcf784b25a73f074bb505f1521f52844"
+    "560733f0e5bd9b47ff50c849301c8a22ae17a5df26830d8c97033dfcbd392382"
+)
+sha256sums_x86_64=("267db303d6fa7bda1c40b49b9a9fc22f58c06c299f25db345c1c94f031a613fe")
+sha256sums_aarch64=("f3ec769443f88375342d10a812129811e2717f36a3b862760fde1cb629dce1b9")
 options=('!lto')
 
 package() {
     bsdtar -xf data.tar.xz -C $srcdir
     asar extract $srcdir/opt/mihomo-party/resources/app.asar ${pkgdir}/opt/mihomo-party
+    cp -r $srcdir/${_pkgname}-${pkgver}/extra/sidecar ${pkgdir}/opt/mihomo-party/resources/
+    cp -r $srcdir/${_pkgname}-${pkgver}/extra/files ${pkgdir}/opt/mihomo-party/resources/
     chmod +x ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo
     chmod +x ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo-alpha
     cd ${pkgdir}/../..
