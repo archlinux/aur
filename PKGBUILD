@@ -1,5 +1,5 @@
 pkgname=neocmakelsp
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1.0
 pkgdesc='CMake LSP implementation based on Tower and Tree-sitter'
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ license=('MIT')
 makedepends=('git' 'ninja' 'meson' 'rust')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/Decodetalkers/neocmakelsp/archive/refs/tags/v${pkgver}.tar.gz")
 options+=(!lto)
-sha256sums=('7fbe5501d36885e7a93b8d2122eb8506e6fa7d75d43718f0ee0fab09bc7ee5e8')
+sha256sums=('23d2fd6f6bd0152dad9b6bdf9b5d6932d97ccd106bfb47d6d6fee563ea5a7eec')
 
 build() {
   cd ${pkgname}-$pkgver
