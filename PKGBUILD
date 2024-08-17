@@ -2,7 +2,7 @@
 
 pkgname=rclone-bisync-manager-tray-git
 pkgver=0.3.0
-pkgrel=4
+pkgrel=6
 pkgdesc="System tray application for RClone BiSync Manager"
 arch=('any')
 url="https://github.com/Gunther-Schulz/rclone-bisync-manager"

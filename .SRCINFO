@@ -1,7 +1,7 @@
 pkgbase = rclone-bisync-manager-tray-git
 	pkgdesc = System tray application for RClone BiSync Manager
 	pkgver = 0.3.0
-	pkgrel = 4
+	pkgrel = 6
 	url = https://github.com/Gunther-Schulz/rclone-bisync-manager
 	arch = any
 	license = MIT
