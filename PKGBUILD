@@ -1,32 +1,70 @@
-# Maintainer: Matthew Sexton <matthew@asylumtech.com>
+# Maintainer:
+# Contributor: Matthew Sexton <matthew@asylumtech.com>
 # Contributor: Felix Bühler <account at buehler dot rocks>
 # Contirbutor: Nils Czernia <nils[at]czserver.de>
-# Contributor: Gaetan Bisson <bisson@archlinux.org>
-# Contributor: Angel Velasquez <angvp@archlinux.org>
-# Contributor: Hugo Doria <hugo@archlinux.org>
 
-pkgname=zenmap
-_pkgname=nmap
-pkgver=7.94
-pkgrel=2
+: ${_sync_nmap:=false}
+
+_gitname="nmap"
+_pkgname="zenmap"
+pkgname="$_pkgname"
+pkgver=7.95
+pkgrel=1
 pkgdesc="Graphical Nmap frontend and results viewer"
-url="https://nmap.org/"
-arch=("any")
-license=("GPL2")
-depends=("python" "python-cairo" "nmap" "gtk3" "python-gobject")
-optdepends=("gksu: starting zenmap as root")
-source=("https://nmap.org/dist/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=("d71be189eec43d7e099bac8571509d316c4577ca79491832ac3e1217bc8f92cc")
+url='https://github.com/nmap/nmap'
+license=('LicenseRef-Nmap-Public-Source-License-Version-0.95')
+arch=('any')
+
+depends=(
+  'gtk3'
+  'nmap'
+  'python'
+  'python-cairo'
+  'python-gobject'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+optdepends=(
+  'gksu: start zenmap as root'
+)
+
+_source_main() {
+  local _pkgver=$(pkgver)
+
+  _pkgsrc="$_gitname-$_pkgver"
+  _pkgext="tar.bz2"
+  source=("$_pkgsrc.$_pkgext"::"https://nmap.org/dist/$_pkgsrc.$_pkgext")
+  sha256sums=('SKIP')
+}
+
+pkgver() {
+  if [[ "${_sync_nmap::1}" == "t" ]]; then
+    LANG=C LC_ALL=C pacman -Si nmap | grep -Pom1 '^Version\s+:\s+\K\S+(?=-[0-9])'
+  else
+    echo "${pkgver:?}"
+  fi
+}
+
+build() {
+  cd "$_pkgsrc/zenmap"
+  python -m build --no-isolation --wheel
+}
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}/${pkgname}"
-	python3 setup.py install --prefix "/usr" --root="${pkgdir}" --optimize=1
-	rm "${pkgdir}/usr/bin/uninstall_zenmap"
-	ln -s zenmap "${pkgdir}/usr/bin/nmapfe"
-	ln -s zenmap "${pkgdir}/usr/bin/xnmap"
-	install -Dm644 ../docs/zenmap.1 "${pkgdir}/usr/share/man/man1/zenmap.1"
+  cd "$_pkgsrc"
+  install -Dm644 "docs/zenmap.1" -t "$pkgdir/usr/share/man/man1/"
+  install -Dm755 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
-	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-	ln -s "../${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	python3 -m compileall "${pkgdir}"/usr/lib/python3.11/site-packages
+  cd zenmap
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  ln -s zenmap "$pkgdir/usr/bin/nmapfe"
+  ln -s zenmap "$pkgdir/usr/bin/xnmap"
 }
+
+_source_main
