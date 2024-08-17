@@ -1,15 +1,16 @@
 pkgbase = python-eth-hash
-	pkgdesc = The Ethereum hashing function, keccak256, sometimes (erroneously) called sha256 or sha3.
-	pkgver = 0.3.2
-	pkgrel = 2
+	pkgdesc = The Ethereum hashing function, keccak256, sometimes (erroneously) called sha256 or sha3
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://github.com/ethereum/eth-hash
-	arch = x86_64
+	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python
-	depends = python-pysha3
+	makedepends = python-wheel
 	depends = python-pycryptodome
-	source = python-eth-hash-0.3.2.tar.gz::https://github.com/ethereum/eth-hash/archive/v0.3.2.tar.gz
-	sha256sums = c3ea0bf417e0c227ad630e7a6905be85f26f92dcb5b48fd8f5584a3f77a08312
+	source = eth-hash-0.7.0.tar.gz::https://github.com/ethereum/eth-hash/archive/v0.7.0.tar.gz
+	sha512sums = 8e3821be3a646f4eb6d76b844693ac0db742b6361cd3a8641e3441bb04bd5bee7a96b09aa5cc2077bf868387bb8f5f8e3f56952cc11006eeb8c379bed9805add
 
 pkgname = python-eth-hash

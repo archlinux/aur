@@ -1,0 +1,5 @@
+[python-eth-hash]
+source = "github"
+github = "ethereum/eth-hash"
+use_max_tag = true
+prefix = "v"
