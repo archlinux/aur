@@ -1,0 +1,83 @@
+# Colored makepkg-like functions
+note() {
+    printf "${_blue}==>${_yellow} NOTE:${_bold} %s${_all_off}\n" "$1"
+}
+
+_all_off="$(tput sgr0)"
+_bold="${_all_off}$(tput bold)"
+_blue="${_bold}$(tput setaf 4)"
+_yellow="${_bold}$(tput setaf 3)"
+
+post_install() {
+    # Check if Citrix is installed
+    RESULT_CITRIX_EXIST=$(pacman -Qs icaclient)
+
+    if [ "$RESULT_CITRIX_EXIST" != "" ]; then
+        citrix_default_directory="/opt/Citrix/ICAClient"
+
+        # Create the directory if it doesn't exist
+        if [ ! -d "$citrix_default_directory" ]; then
+            sudo mkdir -p "$citrix_default_directory"
+            echo "auto created directory '$citrix_default_directory'"
+        fi
+
+        # Locate the module.ini configuration file
+        CONFIG_LINK_FILE=/opt/Citrix/ICAClient/config/module.ini
+
+        if [ ! -f "$CONFIG_LINK_FILE" ]; then
+            echo "Error: $CONFIG_LINK_FILE does not exist!"
+            exit 1
+        fi
+
+        if [ ! -L "$CONFIG_LINK_FILE" ]; then
+            CONFIG_FILE=$CONFIG_LINK_FILE
+        else
+            CONFIG_FILE=$(readlink -f $CONFIG_LINK_FILE)
+
+            if [ ! -f "$CONFIG_FILE" ]; then
+                echo "Error: $CONFIG_FILE does not exist!"
+                exit 1
+            fi
+        fi
+
+        # Find the line containing VirtualDriver
+        line=$(grep -n "VirtualDriver" $CONFIG_FILE | cut -d ":" -f 1)
+
+        VIRTUAL_CONTENT=$(sed -n "${line}p" $CONFIG_FILE | grep "ZoomMedia")
+
+        if [ -z "$VIRTUAL_CONTENT" ]; then
+            echo "Zoom media plugin has not been installed before."
+        else
+            echo "Zoom media plugin has already been installed, skipping this step."
+            exit 0
+        fi
+
+        # Find the first empty line after the VirtualDriver entry
+        EMPTY_LINES=$(sed -n '/^$/=' $CONFIG_FILE)
+        FIRST_EMPTY_LINE=1
+
+        for itemline in $EMPTY_LINES; do
+            if [ $itemline -gt $line ]; then
+                FIRST_EMPTY_LINE=$itemline
+                break
+            fi
+        done
+
+        if [ $FIRST_EMPTY_LINE -eq 1 ]; then
+            echo "No suitable location to add ZoomMedia configuration."
+            exit 1
+        fi
+
+        echo "Adding ZoomMedia configuration to $CONFIG_FILE"
+
+        sudo sed -i "/VirtualDriver/s/$/, ZoomMedia/" $CONFIG_FILE
+        sudo sed -i "${FIRST_EMPTY_LINE}i ZoomMedia=On" $CONFIG_FILE
+        FIRST_EMPTY_LINE=$((FIRST_EMPTY_LINE + 2))
+        sudo sed -i "${FIRST_EMPTY_LINE}i [ZoomMedia]" $CONFIG_FILE
+        FIRST_EMPTY_LINE=$((FIRST_EMPTY_LINE + 1))
+        sudo sed -i "${FIRST_EMPTY_LINE}i DriverName=ZoomMedia.so" $CONFIG_FILE
+    fi
+
+    note "Config write completed to $CONFIG_LINK_FILE"
+    note "Please reboot are Killall citrix instances Ex: killall wfica"
+}
