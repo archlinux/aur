@@ -2,19 +2,19 @@
 
 _target=mips64el-linux-gnu
 pkgname="${_target}-glibc"
-pkgver=2.36
+pkgver=2.40
 pkgrel=1
 pkgdesc='GNU C library for the MIPS64EL target with multilib ABI'
 arch=('any')
 url='https://www.gnu.org/software/libc/'
-license=('GPL' 'LGPL')
+license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
 depends=("${_target}-linux-api-headers")
 makedepends=("${_target}-gcc-bootstrap" 'python')
-options=('!emptydirs' '!strip' 'staticlibs' '!lto')
+options=('!emptydirs' '!strip' 'staticlibs' '!lto' '!debug')
 source=("https://ftp.gnu.org/gnu/glibc/glibc-${pkgver}.tar.xz"{,.sig}
         'sdt-config.h'
         'sdt.h')
-sha256sums=('1c959fea240906226062cb4b1e7ebce71a9f0e3c0836c09e7e3423d434fcfe75'
+sha256sums=('19a890175e9263d748f627993de6f4b1af9cd21e03f080e4bfb3a1fac10205a2'
             'SKIP'
             'cdc234959c6fdb43f000d3bb7d1080b0103f4080f5e67bcfe8ae1aaf477812f0'
             '774061aff612a377714a509918a9e0e0aafce708b87d2d7e06b1bd1f6542fe70')
@@ -54,6 +54,7 @@ build() {
         '--enable-add-ons'
         '--enable-bind-now'
         '--disable-cet'
+        '--enable-fortify-source'
         '--enable-kernel=4.4'
         '--enable-lock-elision'
         '--disable-multi-arch'
@@ -61,19 +62,19 @@ build() {
         '--enable-stackguard-randomization'
         '--disable-static-pie'
         '--enable-systemtap'
+        '--disable-nscd'
         '--disable-profile'
         '--disable-werror')
     
     # remove fortify for building libraries
-    export CFLAGS="${CFLAGS/-Wp,-D_FORTIFY_SOURCE=2/}"
-    export CXXFLAGS="${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=2/}"
+    export CFLAGS="${CFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
+    export CXXFLAGS="${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}"
     
     # build fixes
-    export CFLAGS="$(sed -E 's/\-fno\-plt//;s/\-fcf\-protection//' <<< "$CFLAGS")"
-    export CXXFLAGS="$(sed -E 's/\-fno\-plt//;s/\-fcf\-protection//' <<< "$CXXFLAGS")"
-    export CFLAGS="$(sed -E 's/\-m(arch|tune|cpu|fpu|abi)(=|[[:space:]]*)[[:alnum:]\-]*//g' <<< "$CFLAGS")"
-    export CXXFLAGS="$(sed -E 's/\-m(arch|tune|cpu|fpu|abi)(=|[[:space:]]*)([[:alnum:]\-]*)//g' <<< "$CXXFLAGS")"
-    export LDFLAGS="${LDFLAGS/,-z,now/}"
+    export CFLAGS="$(sed -E 's/-fno-plt//;s/-fcf-protection//;s/-mno-omit-leaf-frame-pointer//' <<< "$CFLAGS")"
+    export CXXFLAGS="$(sed -E 's/-fno-plt//;s/-fcf-protection//;s/-mno-omit-leaf-frame-pointer//' <<< "$CXXFLAGS")"
+    export CFLAGS="$(sed -E 's/\-m(arch|tune|cpu|fpu|abi)(=|[[:space:]]*|)[[:alnum:]-]*//g' <<< "$CFLAGS")"
+    export CXXFLAGS="$(sed -E 's/\-m(arch|tune|cpu|fpu|abi)(=|[[:space:]]*|)[[:alnum:]-]*//g' <<< "$CXXFLAGS")"
     
     export BUILD_CC='gcc'
     export AR="${_target}-ar"
