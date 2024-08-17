@@ -1,0 +1,9 @@
+# Blacklist:
+*
+
+# Whitelist:
+!.gitignore
+!.SRCINFO
+!Outertale.desktop
+!outertale.sh
+!PKGBUILD
