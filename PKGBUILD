@@ -1,4 +1,4 @@
-# Maintainer: system64 <system64fumo@protonmail>
+# Maintainer: system64 <system64fumo@protonmail.com>
 
 pkgname=syspower
 pkgver=0.1
