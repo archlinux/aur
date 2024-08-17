@@ -2,21 +2,22 @@
 # Contributor: Ashwin <ashwinvis+arch_@t_Pr0t0nM4il_c0m>
 _base=fluiddyn
 pkgname=python-${_base}
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="Framework for studying fluid dynamics"
 arch=(any)
 url="https://foss.heptapod.net/${_base}/${_base}"
 license=(CECILL-B)
 depends=(python-matplotlib python-h5netcdf python-psutil python-distro python-simpleeval)
-makedepends=(python-build python-installer python-pdm python-wheel)
+makedepends=(python-build python-installer python-pdm-backend python-wheel)
 optdepends=('python-pyfftw: Calculate FFT'
   'python-pulp: LP problem support'
-  'python-mpi4py: MPI support')
-# 'python-shtns' 'python-scikit-image' 'python-opencv'
+  'python-mpi4py: MPI support'
+  'python-scikit-image'
+  'python-opencv') # 'python-shtns'
 checkdepends=(python-pytest python-scipy ipython)
 source=(${url}/-/archive/${pkgver}/${_base}-${pkgver}.tar.gz)
-sha512sums=('1317162795e3577d63d3a739d43936af54382f906aa06bf2f8992265eed43b5e6cfaf0635a675fbe8520faed1ede617ea11632c53084a739ff61785f8c07ae29')
+sha512sums=('55a196344a1ac7d578716acd9789e3489c96787c4ddda42b7c03c289f1fb59caf9f1c25474fdd828c815659de4ec37a83ea11991c2b573c55cb17e146fa6258a')
 
 build() {
   cd ${_base}-${pkgver}
