@@ -17,7 +17,7 @@ options=('staticlibs' 'libtool' '!strip')
 # > [Java 1.8 or higher runtime](https://jdk.java.net/11/).
 depends=('java-environment>=8')
 optdepends=(
-  'lldb: for konan-lldb'
+	'lldb: for konan-lldb'
 )
 provides=('kotlin-native')
 conflicts=('kotlin-native' 'kotlin-native-git')
@@ -32,7 +32,7 @@ package() {
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/lib"
 
-  cp -r "kotlin-native-linux-x86_64-${pkgver}" "${pkgdir}/usr/lib/kotlin-native"
+  cp -r "kotlin-native-prebuilt-linux-x86_64-${pkgver}" "${pkgdir}/usr/lib/kotlin-native"
   # Fix permissions for some files, e.g. /usr/lib/kotlin-native/klib/common/stdlib/ir/ir_tables/*.knt
   chmod -R +r "${pkgdir}/usr/lib/kotlin-native"
   # Fix per user cache not working
