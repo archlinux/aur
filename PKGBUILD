@@ -1,18 +1,19 @@
-# Maintainer: Morteza NourelahiAlamdari <m@0t1.me>
+# Contributor: Morteza NourelahiAlamdari <m@0t1.me>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: tee < teeaur at duck dot com >
 
 pkgname=badgerdb
 _name=badger
-pkgver=4.0.1
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="An embeddable, persistent and fast key-value (KV) database written in pure Go"
 arch=('x86_64')
-url='https://blog.dgraph.io/post/badger'
+url='https://dgraph.io/badger'
 license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dgraph-io/badger/archive/v${pkgver}.tar.gz")
-sha256sums=('e99f97ca28f3ac39a0aafefd74ef1448ff9df5daf58aadb1be6521225347c9af')
+sha256sums=('f4fcbcb96edc09c6ac201bf720e0ac4ea7b9ba636c76f4ae31200f6840fd9cf7')
 
 prepare() {
   cd "${srcdir}/${_name}-${pkgver}/badger"
