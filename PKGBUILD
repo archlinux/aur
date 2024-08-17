@@ -18,7 +18,7 @@ epoch=2
 _pkgver=2.12
 _unifont_ver='15.1.05'
 pkgver=${_pkgver/-/}
-pkgrel=2
+pkgrel=3
 url='https://www.gnu.org/software/grub/'
 arch=('x86_64')
 license=('GPL-3.0-or-later')
@@ -33,7 +33,7 @@ provides=('grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}" 'grub')
 
 makedepends=('git' 'rsync' 'xz' 'freetype2' 'ttf-dejavu' 'python' 'autogen'
              'texinfo' 'help2man' 'gettext' 'device-mapper' 'fuse3')
-depends=('sh' 'xz' 'gettext' 'device-mapper')
+depends=('sh' 'xz' 'gettext' 'device-mapper' 'perl')
 optdepends=('freetype2: For grub-mkfont usage'
             'fuse3: For grub-mount usage'
             'dosfstools: For grub-mkrescue FAT FS and EFI support'
@@ -60,6 +60,7 @@ source=("git+https://git.savannah.gnu.org/git/grub.git#tag=grub-${_pkgver}"
         '0002-10_linux-detect-archlinux-initramfs.patch'
         '0003-support-dropins-for-default-configuration.patch'
 		'grub2-grubenv-in-btrfs-header.patch'
+		'grub-once'
         'grub.default'
         'sbat.csv')
 
@@ -70,6 +71,7 @@ sha256sums=('SKIP'
             '8488aec30a93e8fe66c23ef8c23aefda39c38389530e9e73ba3fbcc8315d244d'
             'b5d9fcd62ffb3c3950fdeb7089ec2dc2294ac52e9861980ad90a437dedbd3d47'
 			'b9f89772727ff9b4b1a232f6549e4fa8ebc330d798b6698340825a4b0a7a81f3'
+			'8a92290abb1629f7e1c8b569ddd13ed4aaa1c287b499ae48e4361fe344fa2dfa'
             '7df3f5cb5df7d2dfb17f4c9b5c5dedc9519ddce6f8d2c6cd43d1be17cecb65cb'
             'f34c2b0aa2ed4ab9c7e7bcab5197470c30fedc6c2148f337839dd24bceae35fd')
 
@@ -318,6 +320,8 @@ package() {
 		echo "Package grub emu stuff..."
 		_package_grub-emu
 	fi
+
+	install grub-once "${pkgdir}/usr/bin"
 
 	echo "Package grub bios stuff..."
 	_package_grub-common_and_bios
