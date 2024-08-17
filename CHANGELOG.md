@@ -1,3 +1,50 @@
+# New Features in 24.2.0
+
+- Commands added to create and manage a list of directories you can shortcut to through a directory stack.
+  - dirs displays the list of currently saved directories
+  - pushd adds directories to the stack
+  - popd removes directories from the stack
+- awr command added that creates and retrieves automatic workload repository (AWR) reports.
+  - These reports provide metrics on the database’s workload, performance, and resource usage
+- Option added to pass custom TNS Location when starting up SQLcl from your operating system’s command prompt.
+  - Use the new -tnsadmin parameter with the sql startup command
+- Support added for saving proxy connections in named connections.
+- If connection attempts fail there is no longer a retry prompt and you will need to input the startup or connect command again.
+  - Previously the connection would be retried up to three times.
+- -thin parameter added to the sql startup command. This sets SQLcl to use the JDBC drivers.
+  - If neither the -thick or -thin parameter is set and there is an ORACLE_HOME it will attempt thick
+- New alias oraversion provided out of the box with SQLcl. Run oraversion to display the database version of your current connection.
+- describe and info commands now include the new domains feature introduced in Oracle Database 23ai in column definitions.
+
+# Issues Fixed in 24.2.0
+
+The main bugs of note this release are:
+
+- 36267492 - Parser doesn’t recognize “instances” keywords for “create materialized view log”
+- 36579914 – SODA commands fail when connected to 23ai database
+- 35315378 – Error shown when login.sql has “show connection”
+- 36493438 - describe and info commands don’t show vector information correctly
+- 36387137 – describe package command not working as expected
+- 36010058 – apex export -dir parameter not creating new directory
+- 36627790 - Intellisense does not work after between clause
+- 36622578 - Parser failure for exported materialized views
+- 36212405 - Aliases are case sensitive
+- 36478929 - Codescan false positives
+- 36212396 - describe command slow
+- Liquibase Functionality in SQLcl
+  - 36654639 - Liquibase not respecting FAILONERROR=”TRUE” attribute in changelog header
+  - 36438248 – liquibase update-sql SQL output file can’t be run completely due to missing / at end of package body
+  - 35042293 - Liquibase grants and filter options return errors when used together
+  - 36242264 - liquibase generate-schema fails with grants parameter
+  - 36519116 - liquibase generate-ords-module failing with JAVA.LANG.BOOLEAN.BOOLEANVALUE
+  - 36486336 - liquibase drop-all command failing
+  - 36557643 - liquibase update command using a combination of -output-default-schema, -default-schema-name, and -liquibase-schema-name parameters cause validation error
+  - 36518887 - liquibase generate-ords-schema failing with error
+  - 36735091 - Liquibase updates breaking sequence database object counter
+  - 36409273 – Liquibase output not being logged in spool files
+  - 36400458 - Background task for Liquibase displaying STD Out at prompt vs staying in jobs log
+  - 36641556 - -show-summary parameter values are case sensitive
+
 # New Features in 24.1.0
 
 *   SQLcl users now have the ability to run tasks in the background.
@@ -198,7 +245,7 @@ Error at Command Line : 1 Column : 18
 Error report -
 SQL Error: ORA-00933: SQL command not properly ended
 00933. 00000 -  "SQL command not properly ended"
-*Cause:    
+*Cause:
 *Action:
 
 More Details :
@@ -246,7 +293,7 @@ HR@23c >oci profile
 Configured Profiles:
     *DEFAULT
         UKWEST
-HR@23c >     
+HR@23c >
 ``````
 - SQLCL now supports OCI configuration inheritance
 ```
@@ -291,12 +338,12 @@ For example:
 
     SQL>BEGIN
         BEGIN
-            null; 
+            null;
         END;
     END;
     /
 
-    SQL best practice warning (1,7): G-1010: Try to label your sub blocks 
+    SQL best practice warning (1,7): G-1010: Try to label your sub blocks
 
     PL/SQL procedure successfully completed.
 
@@ -304,7 +351,7 @@ Then fix the problem
 
     SQL >begin
 
-        <<label>> 
+        <<label>>
             BEGIN
             NULL;
             END label;
