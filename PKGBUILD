@@ -75,9 +75,7 @@ build() {
   make
   make install
   
-  cd ..
-  cd ..
-  cd ..
+  cd ${srcdir}
   #export PKG_CONFIG_LIBDIR="${srcdir}/ffmpeg-0.6.7/lib/pkgconfig"
   export PKG_CONFIG_LIBDIR="${srcdir}/$pkgname-$pkgver/qrender/ffmpeg-0.6.7/lib/pkgconfig"
   export PKG_CONFIG_PATH="${PKG_CONFIG_LIBDIR}:/usr/lib/pkgconfig:/usr/share/pkgconfig"
@@ -91,4 +89,12 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
+}
+
+post_install() {
+  ldconfig
+}
+
+post_upgrade() {
+  ldconfig
 }
