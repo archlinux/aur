@@ -1,0 +1,12 @@
+pkgbase = btop-theme-catppuccin
+	pkgdesc = Soothing pastel theme for btop
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/catppuccin/btop
+	arch = any
+	license = MIT
+	depends = btop
+	source = btop-theme-catppuccin-1.0.0.tar.gz::https://github.com/catppuccin/btop/releases/download/1.0.0/themes.tar.gz
+	b2sums = c63aa3250653d94b088f7dfbeb8c6efc86b863c7dbe44277b4948b9a3a0b52f008ad1846f7bbf78b19a4df0b0a7f0a61fe5c8bd25de6b5215735b7ab9870fdef
+
+pkgname = btop-theme-catppuccin
