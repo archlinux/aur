@@ -4,7 +4,7 @@ _repo=harakit
 _pkgname=$_repo
 pkgname=$_pkgname-git
 pkgver=r292.4b3333d
-pkgrel=1
+pkgrel=2
 pkgdesc="New utilities for a new era."
 arch=('any')
 url="https://git.tebibyte.media/bonsai/$_repo"
@@ -28,15 +28,13 @@ pkgver() {
 
 build() {
 	cd "$_repo"
-	make
+	make all
 }
 
-# for when testing works
-#
-# check() {
-# 	cd "$_pkgname"
-# 	make test
-# }
+check() {
+	cd "$_pkgname"
+	make test
+}
 
 package() {
 	profile_d="$pkgdir/etc/profile.d"

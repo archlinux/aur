@@ -1,7 +1,7 @@
 pkgbase = harakit-git
 	pkgdesc = New utilities for a new era.
 	pkgver = r292.4b3333d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.tebibyte.media/bonsai/harakit
 	arch = any
 	license = AGPL
