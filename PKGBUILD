@@ -4,7 +4,7 @@ pkgname=sysmenu
 pkgver=0.1
 pkgrel=1
 pkgdesc="A simple and efficient gtk4 program launcher"
-arch=('any')
+arch=('aarch64' 'x86_64')
 url="https://github.com/System64fumo/sysmenu"
 depends=('gtkmm-4.0' 'gtk4-layer-shell')
 source=("git+https://github.com/System64fumo/sysmenu")
@@ -17,6 +17,5 @@ build() {
 
 package() {
 	cd "${pkgname}"
-	mkdir "${pkgdir}/usr"
-	make DESTDIR="${pkgdir}/usr" install
+	make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
