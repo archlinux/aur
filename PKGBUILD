@@ -2,7 +2,7 @@
 pkgname=fan-control
 _app_id="io.github.wiiznokes.$pkgname"
 pkgver=2024.7.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Control your fans with different behaviors"
 arch=('x86_64')
 url="https://github.com/wiiznokes/fan-control"
@@ -31,7 +31,6 @@ build() {
   cd "$pkgname"
   CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
   just libsensors
   cargo build --release
 }
