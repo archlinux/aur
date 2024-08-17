@@ -1,0 +1,20 @@
+pkgbase = osmo-upf-git
+	pkgdesc = Osmocom implementation of the 3GPP UPF (User Plane Function)
+	pkgver = 0.1.1.r103.g3efa019
+	pkgrel = 1
+	url = https://osmocom.org/projects/osmo-upf
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = libosmocore-git
+	depends = libosmo-pfcp-git
+	depends = libgtpnl-git
+	depends = nftables
+	depends = talloc
+	provides = osmo-upf=0.1.1.r103.g3efa019
+	conflicts = osmo-upf
+	backup = etc/osmocom/osmo-upf.cfg
+	source = git+https://gitea.osmocom.org/cellular-infrastructure/osmo-upf
+	sha256sums = SKIP
+
+pkgname = osmo-upf-git
