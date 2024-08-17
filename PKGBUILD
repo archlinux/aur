@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=rust
-_pkgver=1.4.2
+_pkgver=1.4.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Ratio-of-Uniforms Simulation with Transformation"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -29,8 +29,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('50a94d316fe586446812ab92a4a3e9cc')
-b2sums=('6472cac6bc2fa208611d4c7244b2417db979f716b84d040cc57680eb6faab618024176dd1f2c8575ebeac4579e557639c03e35c995438f7d456c9d08fd05634a')
+md5sums=('76e4a31f057f6e760dcedab092ca4982')
+b2sums=('1c421d7fb127b62acfa1865ce1149ce9194ae35dd20d22e0e62a3eaf22cbf03a893458687dfd759548755762250fe26b309581f28debb6215ccd05036e84121f')
 
 build() {
   mkdir build
