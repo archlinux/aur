@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=moonlander-git
 pkgver=r229.abfb9cd
-pkgrel=2
+pkgrel=1
 pkgdesc="Just another "fancy" Gemini client."
 arch=('x86_64')
 url="https://git.sr.ht/~admicos/moonlander"
@@ -28,6 +28,7 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
