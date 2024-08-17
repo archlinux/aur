@@ -1,4 +1,5 @@
-# Maintainer: wangjiezhe <wangjiezhe AT yandex DOT com>
+# Maintainer: David Cohen <dacohen@pm.me>
+# Contributor: wangjiezhe <wangjiezhe AT yandex DOT com>
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 # Contributor: Aaditya Bagga <aaditya_gnulinux@zoho.com>
@@ -7,7 +8,7 @@
 
 pkgname=laptop-mode-tools-git
 _pkgname=laptop-mode-tools
-pkgver=1.72.2.37.gc2b8ddc
+pkgver=1.74.29.gb5eefe0
 pkgrel=1
 pkgdesc='Power Savings tool for Linux'
 arch=('any')
@@ -15,7 +16,8 @@ url='https://github.com/rickysarraf/laptop-mode-tools'
 source=("${_pkgname}::git+https://github.com/rickysarraf/laptop-mode-tools.git")
 sha256sums=('SKIP')
 license=('GPL2')
-depends=('bash')
+depends=('bash'
+	'procps-ng')
 optdepends=('acpid: ACPI support'
     'bluez-utils: Bluetooth support'
     'hdparm: hard disk power management'

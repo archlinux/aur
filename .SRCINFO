@@ -1,12 +1,13 @@
 pkgbase = laptop-mode-tools-git
 	pkgdesc = Power Savings tool for Linux
-	pkgver = 1.72.2.37.gc2b8ddc
+	pkgver = 1.74.29.gb5eefe0
 	pkgrel = 1
 	url = https://github.com/rickysarraf/laptop-mode-tools
 	arch = any
 	license = GPL2
 	makedepends = git
 	depends = bash
+	depends = procps-ng
 	optdepends = acpid: ACPI support
 	optdepends = bluez-utils: Bluetooth support
 	optdepends = hdparm: hard disk power management
@@ -49,4 +50,3 @@ pkgbase = laptop-mode-tools-git
 	sha256sums = SKIP
 
 pkgname = laptop-mode-tools-git
-
