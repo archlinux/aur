@@ -1,22 +1,20 @@
 pkgbase = mips64el-linux-gnu-binutils
 	pkgdesc = Tools to assemble and manipulate binary and object files for the MIPS64EL target (for the toolchain with GNU C library and multilib ABI)
-	pkgver = 2.39
+	pkgver = 2.43
 	pkgrel = 1
 	url = https://www.gnu.org/software/binutils/
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
 	depends = libelf
 	depends = zlib
 	options = !emptydirs
 	options = staticlibs
 	options = !distcc
 	options = !ccache
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.39.tar.xz
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.39.tar.xz.sig
-	source = 010-binutils-mips64-default-to-64-emulation.patch
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.43.tar.xz
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.43.tar.xz.sig
 	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
-	sha256sums = 645c25f563b8adc0a81dbd6a41cffbf4d37083a382e02d5d3df4f65c09516d00
+	sha256sums = b53606f443ac8f01d1d5fc9c39497f2af322d99e14cea5c0b4b124d630379365
 	sha256sums = SKIP
-	sha256sums = 44e1420a85f0209d72e7e6595006066492dcc0accb0eb3ae416e2659ec3f224b
 
 pkgname = mips64el-linux-gnu-binutils
