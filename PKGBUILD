@@ -3,7 +3,8 @@
 _name=photon
 pkgname="$_name-lemmy"
 pkgver=1.31.2
-pkgrel=1
+_pkgver=1.31.2-fix.1
+pkgrel=2
 pkgdesc='An alternative front end for Lemmy'
 arch=('any')
 url="https://github.com/Xyphyn/$_name"
@@ -16,7 +17,7 @@ makedepends=(
 )
 backup=('etc/photon-lemmy/config.env')
 source=(
-  "$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  "$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$_pkgver.tar.gz"
   'systemd.service'
   'sysusers.conf'
   'tmpfiles.conf'
