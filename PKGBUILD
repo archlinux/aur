@@ -2,7 +2,7 @@
 pkgname=docker-slim-bin
 _pkgname=docker-slim
 pkgver=1.41.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Don't change anything in your Docker container image and minify it by up to 30x (and for compiled languages even more) making it secure too! (free and open source)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/docker-slim/docker-slim"
@@ -16,6 +16,8 @@ sha512sums_aarch64=('c22c12557a28147f2c07dc9581452567f1d96767d5221b009feb97e8092
 
 package() {
 	cd "${srcdir}"
-    install -Dm755 "dist_linux"*"/mint"                        "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm755 "dist_linux"*"/mint-sensor"                 "${pkgdir}/usr/bin/${_pkgname}-sensor"
-}
+    install -Dm755 "dist_linux"*"/${_pkgname}"                 "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "dist_linux"*"/mint-sensor"                 "${pkgdir}/usr/bin/mint-sensor"
+    install -Dm755 "dist_linux"*"/mint"                        "${pkgdir}/usr/bin/mint"
+    install -Dm755 "dist_linux"*"/slim"                        "${pkgdir}/usr/bin/slim"
+    }
