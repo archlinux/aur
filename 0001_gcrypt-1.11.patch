@@ -1,0 +1,75 @@
+From 9f44e07345400144150f5d71a2efa80908d19f0c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Juan=20Jos=C3=A9=20Nicola?= <juan.nicola@greenbone.net>
+Date: Thu, 15 Aug 2024 10:06:31 +0200
+Subject: [PATCH] Fix: CMake. Use pkg-config instead of the droped
+ libgcript-config (#1694)
+
+---
+ nasl/CMakeLists.txt | 21 +--------------------
+ src/CMakeLists.txt  | 21 +--------------------
+ 2 files changed, 2 insertions(+), 40 deletions(-)
+
+diff --git a/nasl/CMakeLists.txt b/nasl/CMakeLists.txt
+index 845cd1ac9..2e888f1a4 100644
+--- a/nasl/CMakeLists.txt
++++ b/nasl/CMakeLists.txt
+@@ -84,26 +84,7 @@ if (NETSNMP)
+ endif (NETSNMP)
+ 
+ message (STATUS "Looking for libgcrypt...")
+-find_library (GCRYPT gcrypt)
+-message (STATUS "Looking for libgcrypt... ${GCRYPT}")
+-if (NOT GCRYPT)
+-  message (SEND_ERROR "The libgcrypt library is required.")
+-else (NOT GCRYPT)
+-  execute_process (COMMAND libgcrypt-config --libs
+-    OUTPUT_VARIABLE GCRYPT_LDFLAGS
+-    OUTPUT_STRIP_TRAILING_WHITESPACE)
+-  execute_process (COMMAND libgcrypt-config --cflags
+-    OUTPUT_VARIABLE GCRYPT_CFLAGS
+-    OUTPUT_STRIP_TRAILING_WHITESPACE)
+-  execute_process (COMMAND libgcrypt-config --version
+-    OUTPUT_VARIABLE GCRYPT_VERSION
+-    OUTPUT_STRIP_TRAILING_WHITESPACE)
+-  message (STATUS "  found libgcrypt, version ${GCRYPT_VERSION}")
+-  if (GCRYPT_VERSION VERSION_LESS "1.6")
+-    message (SEND_ERROR "libgcrypt 1.6 or greater is required")
+-  endif (GCRYPT_VERSION VERSION_LESS "1.6")
+-  string(REPLACE "-I" "" GCRYPT_INCLUDE_DIRS "${GCRYPT_CFLAGS}")
+-endif (NOT GCRYPT)
++pkg_check_modules (GCRYPT REQUIRED libgcrypt)
+ 
+ 
+ ## Library
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 24b5b0994..23d061df8 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -19,26 +19,7 @@ pkg_check_modules (GLIB REQUIRED glib-2.0>=2.42)
+ pkg_check_modules (LIBBSD REQUIRED libbsd)
+ 
+ message (STATUS "Looking for libgcrypt...")
+-find_library (GCRYPT gcrypt)
+-if (NOT GCRYPT)
+-  message (SEND_ERROR "The libgcrypt library is required.")
+-else (NOT GCRYPT)
+-  message (STATUS "Looking for libgcrypt... ${GCRYPT}")
+-  execute_process (COMMAND libgcrypt-config --libs
+-    OUTPUT_VARIABLE GCRYPT_LDFLAGS
+-    OUTPUT_STRIP_TRAILING_WHITESPACE)
+-  execute_process (COMMAND libgcrypt-config --cflags
+-    OUTPUT_VARIABLE GCRYPT_CFLAGS
+-    OUTPUT_STRIP_TRAILING_WHITESPACE)
+-  execute_process (COMMAND libgcrypt-config --version
+-    OUTPUT_VARIABLE GCRYPT_VERSION
+-    OUTPUT_STRIP_TRAILING_WHITESPACE)
+-  message (STATUS "  found libgcrypt, version ${GCRYPT_VERSION}")
+-  if (GCRYPT_VERSION VERSION_LESS "1.6")
+-    message (SEND_ERROR "libgcrypt 1.6 or greater is required")
+-  endif (GCRYPT_VERSION VERSION_LESS "1.6")
+-  string(REPLACE "-I" "" GCRYPT_INCLUDE_DIRS "${GCRYPT_CFLAGS}")
+-endif (NOT GCRYPT)
++pkg_check_modules (GCRYPT REQUIRED libgcrypt)
+ 
+ message (STATUS "Looking for pcap...")
+ find_library (PCAP pcap)
