@@ -4,7 +4,7 @@
 pkgname=cosmic-applets-git
 pkgver=1.0.0.alpha.1.r18.g323e8a5
 pkgrel=1
-pkgdesc="WIP applets for COSMIC Panel"
+pkgdesc="Applets for COSMIC Panel"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-applets"
 license=('GPL-3.0-or-later')
