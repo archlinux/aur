@@ -15,6 +15,7 @@ arch=('any')
 url="https://github.com/catppuccin/plymouth"
 license=('MIT')
 depends=('plymouth')
+makedepends=('git')
 source=("$pkgbase::git+https://github.com/catppuccin/plymouth.git")
 sha512sums=('SKIP')
 
