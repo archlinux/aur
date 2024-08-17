@@ -16,6 +16,9 @@ yarn
 npm
 nvm
 jq
+make
+python-setuptools
+clang
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RedisInsight/RedisInsight/archive/$pkgver.tar.gz")
 sha256sums=('c31f99f0bc65cb926c42680b71bf9114aefea890183736a2fbe51a7b35744b21')
