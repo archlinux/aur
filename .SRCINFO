@@ -1,6 +1,6 @@
 pkgbase = sshs-bin
 	pkgdesc = Terminal user interface for SSH (Binary)
-	pkgver = 4.4.0
+	pkgver = 4.5.1
 	pkgrel = 1
 	url = https://github.com/quantumsheep/sshs
 	changelog = CHANGELOG.md
@@ -10,11 +10,11 @@ pkgbase = sshs-bin
 	depends = openssh
 	provides = sshs
 	conflicts = sshs
-	source = https://github.com/quantumsheep/sshs/raw/4.4.0/LICENSE
+	source = https://github.com/quantumsheep/sshs/raw/4.5.1/LICENSE
 	sha256sums = 711a86d103b497d5dc01a1864ff8192885fdeb946fd6984dbba5367c058918a1
-	source_x86_64 = sshs::https://github.com/quantumsheep/sshs/releases/download/4.4.0/sshs-linux-amd64
-	sha256sums_x86_64 = 77fd4e00a2f767ed9b238a5994606d02a78b3c5d9a271c4080317d64415fa259
-	source_aarch64 = sshs::https://github.com/quantumsheep/sshs/releases/download/4.4.0/sshs-linux-arm64
-	sha256sums_aarch64 = 6341a1ebc142cc9c141255df568bdabc1f3330b2b22c3d02df650028b8a087db
+	source_x86_64 = sshs::https://github.com/quantumsheep/sshs/releases/download/4.5.1/sshs-linux-amd64
+	sha256sums_x86_64 = f4a2069b743e0573f9adad72e667697cd15d4f04522effccfea40f8ac18780e2
+	source_aarch64 = sshs::https://github.com/quantumsheep/sshs/releases/download/4.5.1/sshs-linux-arm64
+	sha256sums_aarch64 = 500947cbaba72ab91d23283710f807e6e05e8aa0d26345f4f9065ee2ef25e020
 
 pkgname = sshs-bin
