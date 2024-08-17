@@ -10,14 +10,14 @@
 : ${_build_pgo_reuse:=try}
 : ${_build_pgo_xvfb:=false}
 
-: ${_ver_clang=17}
-: ${RUSTUP_TOOLCHAIN:=1.77}
-: ${_commit=2c730dfb9a19d64582c5fe73502f98cf6c156c87} # 11.16.0
+: ${_ver_clang=}
+: ${RUSTUP_TOOLCHAIN:=stable}
+: ${_commit=9be6d263bdb58d53a50bd83aeec7aa55f2057cdb} # 11.17.1
 
 ## basic info
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=11.16.0
+pkgver=11.17.1
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -47,6 +47,7 @@ makedepends=(
   "lld${_ver_clang:-}"
   "llvm${_ver_clang:-}"
   "wasi-compiler-rt${_ver_clang:-}"
+  cargo
   cbindgen
   diffutils
   dump_syms
@@ -60,7 +61,6 @@ makedepends=(
   nodejs
   python
   python-setuptools
-  rustup
   unzip
   wasi-libc
   wasi-libc++
@@ -116,25 +116,19 @@ _source_floorp() {
     '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
   )
 
-  _patch_commit_1="24a6ea8"
-  _patch_commit_2="3d03cbfb37298c494be59bb34e3da365f10c00a3"
+  _patch_commit_1=d2127a9424507a38cff13cce49403214a8190bed
+  _url_arch="https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/$_patch_commit_1"
   source+=(
-    "patch-python3.12-bug1831512-${_patch_commit_2::7}.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1831512.patch?h=firedragon&id=$_patch_commit_2"
-    "patch-python3.12-bug1860051-${_patch_commit_2::7}.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1860051.patch?h=firedragon&id=$_patch_commit_2"
-    "patch-python3.12-bug1866829-${_patch_commit_2::7}.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1866829.patch?h=firedragon&id=$_patch_commit_2"
-    "patch-python3.12-bug1874280-${_patch_commit_2::7}.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1874280.patch?h=firedragon&id=$_patch_commit_2"
-    "18d19413472f-$_patch_commit_1.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/18d19413472f.patch?h=firefox-esr&id=$_patch_commit_1"
-    #"6af7194e2778-$_patch_commit_1.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/6af7194e2778.patch?h=firefox-esr&id=$_patch_commit_1"
-    "b1cc62489fae-$_patch_commit_1.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/b1cc62489fae.patch?h=firefox-esr&id=$_patch_commit_1"
+    "0001-Bug-1898476-${_patch_commit_1::7}.patch"::"$_url_arch/0001-Bug-1898476-Wayland-Move-MozContainerSurfaceLock-fro.patch"
+    "0002-Bug-1898476-${_patch_commit_1::7}.patch"::"$_url_arch/0002-Bug-1898476-Wayland-Provide-surface-lock-by-GtkCompo.patch"
+    "0003-Bug-1898476-${_patch_commit_1::7}.patch"::"$_url_arch/0003-Bug-1898476-Wayland-Lock-Wayland-surface-before-Swap.patch"
+    "0004-Bug-1912663-${_patch_commit_1::7}.patch"::"$_url_arch/0004-Bug-1912663-Fix-some-build-issues-with-cbindgen-0.27.patch"
   )
   sha256sums+=(
-    '9516c36c145d365c3b65153d83a5b3b0dd8a319b5c30d47a390070892bd431b3'
-    '168d16a027a81c311c58f9302858244dfa5517f0a95a8d3df1abbf9b93b9d455'
-    'df27ed1e0da5b192224978dc2a593a97e18e6e22062c611fc32b277500324e62'
-    'cf1c69fd3338fd8f5e482f55b669160b08dfb021f2348b620f0a85dd9dee8150'
-    '3cc55401ed5e027f1b9e667b0b52296af11f3c5c62b4a80b7e55cda0e117ed18'
-    #'6952f93889acb514e3b06e251ea901df88c39b429da9677cd5547d90a8b6c73e'
-    'f66a944fa8804c16b1f7bd9b42b18bfc2552a891adc148085f4b91685e8db117'
+    'f4e1db05768325bce5f38b67263c47b3aa4038cfadbdbf8a9e0cbec061a58c57'
+    '588b0b94fe188c5f0a133a8bfd88d7d60123315e6f509b119728409ff164419f'
+    'cbe19f6c95d27d50e3b6664907f8d084784162ea35d5d98fadbb91dbb77ef700'
+    'dd2aba1c02c21b89ceed0713a6aa0241365fe79b1e3a4d21cdcd7231db6fab5e'
   )
 }
 
@@ -202,7 +196,6 @@ export MOZILLA_OFFICIAL=1
 export MOZ_APP_REMOTINGNAME=$_pkgname
 
 # Floorp Upstream
-ac_add_options --enable-private-components
 ac_add_options --enable-proxy-bypass-protection
 ac_add_options --enable-unverified-updates
 ac_add_options --with-l10n-base=${PWD@Q}/floorp/browser/locales/l10n-central
