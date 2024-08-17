@@ -3,7 +3,7 @@
 # Contributor : Ben Ellis <benx45h@gmail.com>
 
 pkgname=renode-bin
-pkgver=1.15.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="A virtual development framework for multinode embedded networks"
 url="https://www.renode.io"
@@ -21,12 +21,15 @@ depends=('mono'
 	 'python-pip'
 	 'python-yaml'
 	 'python-pyelftools'
-	 'python-psutil')
+	 'python-psutil'
+	 'python-pandas'
+	 'python-matplotlib'
+	 'python-pexpect')
 
-source=("$pkgname-$pkgver-$pkgrel.tar.xz::https://github.com/renode/renode/releases/download/v${pkgver}/renode-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz")
+source=("$pkgname-$pkgver-$pkgrel.tar.xz::https://github.com/renode/renode/releases/download/v${pkgver}/renode-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.xz")
 
 # checksum from package at time of pkgbuild
-sha256sums=('ff8451766571b34e09e50d1bf8ad847506d07e65f03a38846af9ebf916bf73c2')
+sha256sums=('ed8563d77bf09037d0a638e1d8b55384c6e5b786c23f59343fce5eb39fba1d1e')
 
 package() {
     cp -a "$srcdir/opt" "$pkgdir/opt" 
