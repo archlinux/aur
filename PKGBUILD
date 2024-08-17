@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=emoji-selector-applet-for-cosmic-git
-pkgver=0.1.4.r6.g4541678
+pkgver=0.1.5.r11.ga5d94f6
 pkgrel=1
 pkgdesc="Emoji Selector for COSMIC™️ DE"
 arch=('x86_64')
@@ -27,7 +27,6 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
   cargo build --release --all-features
 }
 
