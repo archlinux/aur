@@ -1,9 +1,9 @@
 #!/usr/bin/env python
+import curses
 import subprocess
 import os
-import sys
-import atexit
 import signal
+import atexit
 from youtubesearchpython import VideosSearch
 
 RADIO_STATIONS = [
@@ -22,111 +22,134 @@ mpv_process = None
 def search_youtube(term):
     videos_search = VideosSearch(term, limit=10)
     results = videos_search.result()["result"]
-    return [(result["title"], result["id"]) for result in results]
-
-def show_mpv_shortcuts():
-    print("\033[91m" + "Player kısayolları:" + "\033[0m")
-    print("\033[91m" + "=====(m) Mute (Space) Duraklat (Ok Tuşları) İleri-geri sarma (q) Playeri durdurup ana menüye dönme=====" + "\033[0m")
+    return [(result["title"], result["link"]) for result in results]
 
 def play_media(url, media_type, quality):
     global mpv_process
-    show_mpv_shortcuts()
+    
     if media_type == "audio":
         format_option = "bestaudio"
-        if quality == "1":  # Yüksek kalite
-            audio_quality = "0"
-        elif quality == "2":  # Orta kalite
-            audio_quality = "5"
-        elif quality == "3":  # Düşük kalite
-            audio_quality = "9"
+        audio_quality = {"1": "0", "2": "5", "3": "9"}.get(quality, "5")
         command = f'yt-dlp -f {format_option} --audio-quality {audio_quality} -o - {url} | mpv -'
     elif media_type == "video":
-        format_option = "best" if quality == "1" else "worst"
-        command = f'yt-dlp -f {format_option} -o - {url} | mpv -'
+        if quality == "1":
+            command = f'mpv {url}'
+        else:
+            format_option = "best" if quality == "2" else "worst"
+            command = f'yt-dlp -f {format_option} -o - {url} | mpv -'
     
     if mpv_process:
         mpv_process.terminate()
+        mpv_process.wait()  # Ensure the previous process has ended
     
     mpv_process = subprocess.Popen(command, shell=True, preexec_fn=os.setsid)
-    
-def download_media(video_id, media_type, quality):
-    # Kullanıcı ev dizininde netradio klasörünü oluştur
-    home_dir = os.path.expanduser("~")
-    download_dir = os.path.join(home_dir, "netradio")
-    os.makedirs(download_dir, exist_ok=True)
 
-    # İndirme URL'si
-    url = f"https://www.youtube.com/watch?v={video_id}"
-
-    # İndirme komutları
+def download_media(video_url, media_type, quality):
     if media_type == "audio":
         format_option = "bestaudio"
-        if quality == "1":
-            audio_quality = "0"
-        elif quality == "2":
-            audio_quality = "5"
-        elif quality == "3":
-            audio_quality = "9"
-        command = ['yt-dlp', '-f', format_option, '--audio-quality', audio_quality, '-o', os.path.join(download_dir, '%(title)s.%(ext)s'), url]
+        audio_quality = {"1": "0", "2": "5", "3": "9"}.get(quality, "5")
+        command = ['yt-dlp', '-f', format_option, '--audio-quality', audio_quality, '-o', '%(title)s.%(ext)s', video_url]
     elif media_type == "video":
-        if quality == "1":
-            format_option = "bestvideo+bestaudio"
-        elif quality == "2":
-            format_option = "worstvideo+bestaudio"
-        elif quality == "3":
-            format_option = "worstvideo+worstaudio"
-        command = ['yt-dlp', '-f', format_option, '-o', os.path.join(download_dir, '%(title)s.%(ext)s'), url]
-
+        format_option = {"1": "bestvideo+bestaudio", "2": "worstvideo+bestaudio", "3": "worstvideo+worstaudio"}.get(quality, "worstvideo+bestaudio")
+        command = ['yt-dlp', '-f', format_option, '-o', '%(title)s.%(ext)s', video_url]
+    
     subprocess.run(command)
 
 def cleanup():
+    global mpv_process
     if mpv_process:
         os.killpg(os.getpgid(mpv_process.pid), signal.SIGTERM)
+        mpv_process.wait()  # Ensure the process has ended
 
-def main():
+def draw_menu(stdscr, selected_row_idx, menu_items):
+    stdscr.clear()
+    h, w = stdscr.getmaxyx()
+    
+    for idx, row in enumerate(menu_items):
+        x = w//2 - len(row)//2
+        y = h//2 - len(menu_items)//2 + idx
+        if idx == selected_row_idx:
+            stdscr.attron(curses.color_pair(1))
+            stdscr.addstr(y, x, row)
+            stdscr.attroff(curses.color_pair(1))
+        else:
+            stdscr.addstr(y, x, row)
+    
+    stdscr.refresh()
+
+def menu(stdscr, menu_items):
+    curses.curs_set(0)
+    curses.init_pair(1, curses.COLOR_BLACK, curses.COLOR_WHITE)
+
+    current_row = 0
+    draw_menu(stdscr, current_row, menu_items)
+
+    global mpv_process
+
+    while True:
+        key = stdscr.getch()
+
+        if key == curses.KEY_UP and current_row > 0:
+            current_row -= 1
+        elif key == curses.KEY_DOWN and current_row < len(menu_items) - 1:
+            current_row += 1
+        elif key == curses.KEY_ENTER or key in [10, 13]:
+            return current_row
+        elif key == ord('q'):
+            if mpv_process:
+                os.killpg(os.getpgid(mpv_process.pid), signal.SIGTERM)
+                mpv_process = None
+            return None
+        
+        draw_menu(stdscr, current_row, menu_items)
+
+def main(stdscr):
     atexit.register(cleanup)
 
     while True:
-        print("Seçenekler:")
-        print("1) İnternet Radyosu")
-        print("2) YouTube Podcast")
-        print("3) Çıkış")
-        choice = input("Seçiminizi yapın: ")
-
-        if choice == "1":
-            for idx, (name, _) in enumerate(RADIO_STATIONS):
-                print(f"{idx + 1}) {name}")
-            station_choice = int(input("Çalmak için bir radyo istasyonu seçin: "))
-            station_url = RADIO_STATIONS[station_choice - 1][1]
-            play_media(station_url, "audio", "1")
+        main_menu = ["1) İnternet Radyosu", "2) YouTube Podcast", "3) Çıkış"]
+        selected_option = menu(stdscr, main_menu)
         
-        elif choice == "2":
-            term = input("Aranacak kanal veya terimi girin: ")
+        if selected_option is None:
+            continue
+        
+        if selected_option == 0:
+            radio_menu = [station[0] for station in RADIO_STATIONS]
+            selected_station = menu(stdscr, radio_menu)
+            if selected_station != -1:
+                play_media(RADIO_STATIONS[selected_station][1], "audio", "1")
+        
+        elif selected_option == 1:
+            stdscr.clear()
+            curses.echo()
+            stdscr.addstr(0, 0, "Aranacak kanal veya terimi girin: ")
+            term = stdscr.getstr().decode("utf-8")
+            curses.noecho()
+
             results = search_youtube(term)
-            for idx, (title, _) in enumerate(results):
-                print(f"{idx + 1}) {title}")
-            podcast_choice = int(input("Oynatmak veya indirmek için bir podcast seçin: "))
-            video_id = results[podcast_choice - 1][1]
-            print("Seçenekler:")
-            print("1) Oynat (ses)")
-            print("2) Oynat (video)")
-            print("3) İndir (ses)")
-            print("4) İndir (video)")
-            action_choice = int(input("Seçiminizi yapın: "))
-            print("Kalite seçenekleri: 1) Yüksek, 2) Orta, 3) Düşük")
-            quality_choice = input("Kalite seçimini yapın (1/2/3): ")
-
-            if action_choice == 1:
-                play_media(video_id, "audio", quality_choice)
-            elif action_choice == 2:
-                play_media(video_id, "video", quality_choice)
-            elif action_choice == 3:
-                download_media(video_id, "audio", quality_choice)
-            elif action_choice == 4:
-                download_media(video_id, "video", quality_choice)
+            podcast_menu = [result[0] for result in results]
+            selected_podcast = menu(stdscr, podcast_menu)
+            
+            if selected_podcast != -1:
+                video_url = results[selected_podcast][1]
+                action_menu = ["1) Oynat (ses)", "2) Oynat (video)", "3) İndir (ses)", "4) İndir (video)"]
+                selected_action = menu(stdscr, action_menu)
+                
+                if selected_action != -1:
+                    quality_menu = ["1) Yüksek", "2) Orta", "3) Düşük"]
+                    selected_quality = menu(stdscr, quality_menu) + 1
+                    
+                    if selected_action == 0:
+                        play_media(video_url, "audio", str(selected_quality))
+                    elif selected_action == 1:
+                        play_media(video_url, "video", str(selected_quality))
+                    elif selected_action == 2:
+                        download_media(video_url, "audio", str(selected_quality))
+                    elif selected_action == 3:
+                        download_media(video_url, "video", str(selected_quality))
         
-        elif choice == "3":
+        elif selected_option == 2:
             break
 
 if __name__ == "__main__":
-    main()
+    curses.wrapper(main)
