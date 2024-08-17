@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-files-git
-pkgver=1.0.0.alpha.1.r16.g8e8ea23
+pkgver=1.0.0.alpha.1.r29.gaebc652
 pkgrel=1
 pkgdesc="File manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -38,7 +38,6 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
 
   # use mold instead of lld to speed up build
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"

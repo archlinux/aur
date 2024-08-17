@@ -1,6 +1,6 @@
 pkgbase = cosmic-files-git
 	pkgdesc = File manager for the COSMIC desktop environment
-	pkgver = 1.0.0.alpha.1.r16.g8e8ea23
+	pkgver = 1.0.0.alpha.1.r29.gaebc652
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-files
 	arch = x86_64
