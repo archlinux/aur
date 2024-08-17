@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-launcher-git
 pkgver=1.0.0.alpha.1.r0.gd84fda0
-pkgrel=2
-pkgdesc="WIP Layer Shell frontend for Pop Launcher."
+pkgrel=3
+pkgdesc="Layer Shell frontend for Pop Launcher."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-launcher"
 license=('GPL-3.0-or-later')
@@ -40,7 +40,6 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
 
   # use nice to build with lower priority
   nice just build-release --frozen
