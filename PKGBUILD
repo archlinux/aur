@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='Understated cursor theme'
 pkgbase=xcursor-cz-viator
-pkgname=(xcursor-cz-viator-{hourglass,ring,rotor,windmill}-{white,black} xcursor-cz-hickson)
+pkgname=(xcursor-cz-viator-{hourglass,ring,rotor,windmill}-{white,black} xcursor-cz-hickson{,-white,-black})
 pkgver=20230203
 pkgrel=1
 _commit=9b6bc8874d9de7fa264dcf1571d2e7e51d75e06f
@@ -44,6 +44,11 @@ build () {
 	msg2 "Rendering variant: Hickson"
 	python render-pngs.py "more-themes/cz-Hickson/cz-Hickson.svg"
 	themetitle="cz-Hickson" ./make.sh
+	for color in white black ; do
+		msg2 "Rendering variant: Hickson v3 $color"
+		python render-pngs.py "more-themes/cz-Hickson/cz-Hickson_v3-$color.svg"
+		themetitle="cz-Hickson-$color" ./make.sh
+	done
 }
 
 _package () {
@@ -98,4 +103,14 @@ package_xcursor-cz-viator-windmill-black () {
 package_xcursor-cz-hickson () {
 	pkgdesc="${pkgdesc} - tailless"
 	_package cz-Hickson
+}
+
+package_xcursor-cz-hickson-white () {
+	pkgdesc="${pkgdesc} - white, tailless"
+	_package cz-Hickson-white
+}
+
+package_xcursor-cz-hickson-black () {
+	pkgdesc="${pkgdesc} - black, tailless"
+	_package cz-Hickson-black
 }

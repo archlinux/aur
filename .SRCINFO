@@ -41,3 +41,9 @@ pkgname = xcursor-cz-viator-windmill-black
 
 pkgname = xcursor-cz-hickson
 	pkgdesc = Understated cursor theme - tailless
+
+pkgname = xcursor-cz-hickson-white
+	pkgdesc = Understated cursor theme - white, tailless
+
+pkgname = xcursor-cz-hickson-black
+	pkgdesc = Understated cursor theme - black, tailless
