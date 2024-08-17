@@ -1,6 +1,6 @@
 --- a/gcc/configure.ac
 +++ b/gcc/configure.ac
-@@ -570,7 +570,7 @@ AC_ARG_ENABLE(build-format-warnings,
+@@ -593,7 +593,7 @@ AC_ARG_ENABLE(build-format-warnings,
    AS_HELP_STRING([--disable-build-format-warnings],[don't use -Wformat while building GCC]),
    [],[enable_build_format_warnings=yes])
  AS_IF([test $enable_build_format_warnings = no],
@@ -11,7 +11,7 @@
  		       [-Wcast-qual $wf_opt])),
 --- a/gcc/configure
 +++ b/gcc/configure
-@@ -7080,7 +7080,7 @@ else
+@@ -7160,7 +7160,7 @@ else
  fi
  
  if test $enable_build_format_warnings = no; then :

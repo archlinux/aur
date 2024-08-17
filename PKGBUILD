@@ -11,13 +11,13 @@
 
 _target=mips64-linux-gnu
 pkgname="${_target}-gcc-bootstrap"
-pkgver=12.2.0
+pkgver=14.2.0
 _majorver="${pkgver%%.*}"
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - bootstrap/stage1 cross compiler for the MIPS64 target (for the toolchain with GNU C library and multilib ABI)'
 arch=('x86_64')
 url='https://gcc.gnu.org/'
-license=('GPL' 'LGPL' 'FDL' 'custom')
+license=('GPL-3.0-with-GCC-exception' 'GFDL-1.3-or-later')
 depends=('gmp' 'libmpc' "${_target}-binutils" 'libisl' 'mpfr' 'sh' 'zlib' 'zstd')
 makedepends=("${_target}-linux-api-headers")
 provides=('mips64-linux-gnuabi64-gcc-bootstrap' 'mips64-linux-gnuabi32-gcc-bootstrap'
@@ -27,9 +27,9 @@ conflicts=('mips64-linux-gnuabi64-gcc-bootstrap' 'mips64-linux-gnuabi32-gcc-boot
 options=('!emptydirs' '!lto')
 source=("https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"{,.sig}
         '010-gcc-Wno-format-security.patch')
-sha256sums=('e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff'
+sha256sums=('a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9'
             'SKIP'
-            '77e3976bb82a2e47e9334b9b865fd9b2f02e0b726f6489ef890a9b26696b1284')
+            'ae8f9bc913cef8d538003242d4661fddaf7cf261da17e978c7e7db995c7a1a97')
 validpgpkeys=('13975A70E63C361C73AE69EF6EEB81F8981C74C7'  # Richard Guenther <richard.guenther@gmail.com>
               'D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62') # Jakub Jelinek <jakub@redhat.com>
 
