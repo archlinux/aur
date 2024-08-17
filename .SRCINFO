@@ -1,11 +1,12 @@
 pkgbase = naps2
 	pkgdesc = NAPS2 - Not Another PDF Scanner. Scan documents to PDF and more, as simply as possible.
-	pkgver = 7.5.0
+	pkgver = 7.5.1
 	pkgrel = 1
 	url = https://www.naps2.com
+	arch = aarch64
 	arch = x86_64
 	license = GPL-2.0-or-later
-	makedepends = dotnet-sdk
+	makedepends = dotnet-sdk>=8.0.0
 	makedepends = dpkg
 	makedepends = ttf-liberation
 	makedepends = noto-fonts
@@ -15,7 +16,7 @@ pkgbase = naps2
 	optdepends = sane-airscan: airscan support
 	options = !strip
 	options = !debug
-	source = naps2-7.5.0.tar.gz::https://github.com/cyanfish/naps2/archive/refs/tags/v7.5.0.tar.gz
-	b2sums = b6cedf0ae55e33d2bcde8e31dfec1948d36f214d6249e4612a161780675665ebbc0e69a697a80837b9f417c4dead4d27efa46e7fc3f7a4df9c0d0bf43c557d4c
+	source = naps2-7.5.1.tar.gz::https://github.com/cyanfish/naps2/archive/refs/tags/v7.5.1.tar.gz
+	b2sums = d64c2a910b5bc0e4c8182ba5e2face0973ff710fdd04b65477ec47be55cfd0570a9c198ca9d79d72fd8b657bd2ad18564e01654d773b91de5b3a3be73257553a
 
 pkgname = naps2
