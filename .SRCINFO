@@ -1,6 +1,6 @@
 pkgbase = r-omnipathr
 	pkgdesc = OmniPath web service client and more
-	pkgver = 3.11.10
+	pkgver = 3.12.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/OmnipathR
 	arch = any
@@ -49,8 +49,8 @@ pkgbase = r-omnipathr
 	optdepends = r-smoof
 	optdepends = r-suprahex
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/OmnipathR_3.11.10.tar.gz
-	md5sums = 4ea1ea4056248615d3cf047520da09d9
-	b2sums = 993000e16d9238df065855dc5256f12ddf8e9fb22b39b728a09bc5272d71c6a71198bf1ecf8d581d102babb8c22689e11290f1a71229d572fd7b410a996472fc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/OmnipathR_3.12.2.tar.gz
+	md5sums = 4b016e8f17efd328324acd46bcfadc88
+	b2sums = efb8d9aa7454d3d3ac090a34b978a84b481047abf8dfd608e3e4fa6ef955f3f09794600a89bcbe13761b410a42c40d5f95a06187bbfe84fa1b7b24b996d163d9
 
 pkgname = r-omnipathr
