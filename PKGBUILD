@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=opencpu
-_pkgver=2.2.12
+_pkgver=2.2.13
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -39,8 +39,8 @@ optdepends=(
   r-unix
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('30227fe77179e600ca729d4d3b00c9bb')
-b2sums=('2bf54984c6876e46c0714d4c692a5879f9dca92edaab0cd6dbcd1b3553bc2f5afbdf9eef807c754d68717c0111255507c7ff25c3f35f0c806fd98ce993f0f0f5')
+md5sums=('fd605684d0f8f10499df0b418d2951e5')
+b2sums=('11da468ac17cf8ec6796d32c39e8b89c56e33d7645a311f30ada5281d0e94897baf4c6f17412150d0ace0c72b62b9d584ab28c0b430b6af13d28d81b573c0767')
 
 build() {
   mkdir build
