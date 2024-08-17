@@ -9,13 +9,13 @@ pkgbase="${_pkgbase}-bin"
 pkgname="${_pkgname}-bin"
 groups=("raccoon")
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="A compagnion tool for Raccoon, to spoof arbitrary Android devices and generate a GSF ID / User Agent String for them, and check if a given proxy server is suitable for downloading geo blocked apps. It also allows web browser based login for Racoon. "
 url="https://raccoon.onyxbits.de/dummydroid/"
 license=('Apache')
 depends=(
-  'java-environment'
+  'java-runtime'
   'sh'
 )
 optdepends=('raccoon')
