@@ -1,0 +1,26 @@
+pkgbase = easyaudiosync
+	pkgdesc = Audio library syncing and conversion utility
+	pkgver = 1.1.1
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/complexlogic/EasyAudioSync
+	arch = x86_64
+	license = Unlicense
+	makedepends = cmake
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = libavcodec.so
+	depends = libavformat.so
+	depends = libswresample.so
+	depends = libavfilter.so
+	depends = libavutil.so
+	depends = taglib
+	depends = spdlog
+	depends = fmt
+	provides = easyaudiosync
+	source = https://github.com/complexlogic/EasyAudioSync/releases/download/v1.1.1/easyaudiosync-1.1.1-source.tar.xz
+	source = 001-fix-qt-translation.patch
+	sha256sums = a70e346b592429c48b4580f9be2d32bb345ab85e3d63d0eacfb3eab2001e0a97
+	sha256sums = cf5b19a0017f87b7d1443dfa8b813a3e379172a452aa43d09833e31cabe537c3
+
+pkgname = easyaudiosync
