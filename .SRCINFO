@@ -1,7 +1,7 @@
 pkgbase = rclone-bisync-manager-git
 	pkgdesc = A daemon-based solution for automated, bidirectional synchronization of files using RClone
 	pkgver = 0.3.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/Gunther-Schulz/rclone-bisync-manager
 	install = rclone-bisync-manager.install
 	arch = any
