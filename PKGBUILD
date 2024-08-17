@@ -6,8 +6,8 @@ _pkgname=perl-travel-status-de-deutschebahn
 pkgname="${_pkgname}-git"
 _pkgver="latest"
 epoch=1
-pkgver=6.07+r466.20240812.g31f18dd
-pkgrel=1
+pkgver=6.08+r478.20240816.g82989ba
+pkgrel=1.1
 pkgdesc='Interface to the DeutscheBahn online departure monitor'
 url='http://finalrewind.org/projects/Travel-Status-DE-DeutscheBahn/'
 license=('PerlArtistic')
@@ -49,18 +49,39 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_perlmod}"
+
+  printf '\n'
+  printf '%s\n' "  > running 'perl Build.PL installdirs=vendor destdir="${pkgdir}"' ..."
+  printf '\n'
   perl Build.PL installdirs=vendor destdir="${pkgdir}"
+  printf '\n'
+
+  printf '\n'
+  printf '%s\n' "  > running './Build' ..."
+  printf '\n'
   ./Build
+  printf '\n'
 }
 
 check() {
   cd "${srcdir}/${_perlmod}"
+
+  printf '\n'
+  printf '%s\n' "  > running './Build test' ..."
+  printf '\n'
   ./Build test
+  printf '\n'
 }
 
 package() {
   cd "${srcdir}/${_perlmod}"
+
+  printf '\n'
+  printf '%s\n' "  > running './Build install' ..."
+  printf '\n'
   ./Build install
+  printf '\n'
+
   install -D -v -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.PerlArtistic.txt"
   install -D -v -m644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -D -v -m644 Changelog "${pkgdir}/usr/share/doc/${_pkgname}/Changelog"
