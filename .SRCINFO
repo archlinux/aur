@@ -1,15 +1,17 @@
 pkgbase = ttf-udev-gothic
 	pkgdesc = A composite font of BIZ UD Gothic and JetBrains Mono
-	pkgver = 1.3.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/yuru7/udev-gothic
 	arch = any
 	license = custom:SIL
-	source = https://github.com/yuru7/udev-gothic/releases/download/v1.3.1/UDEVGothic_v1.3.1.zip
-	source = https://github.com/yuru7/udev-gothic/releases/download/v1.3.1/UDEVGothic_NF_v1.3.1.zip
-	source = https://raw.githubusercontent.com/yuru7/udev-gothic/v1.3.1/LICENSE
-	sha256sums = 13525cc73ea604b3a40a0e9be222cda41d53c217092546a4b178c7e8bf732002
-	sha256sums = 84004a3038bdf528286a113b4db076d8412bb4ca6771d02a240318473f9b9fce
+	source = https://github.com/yuru7/udev-gothic/releases/download/v2.0.0/UDEVGothic_v2.0.0.zip
+	source = https://github.com/yuru7/udev-gothic/releases/download/v2.0.0/UDEVGothic_NF_v2.0.0.zip
+	source = https://github.com/yuru7/udev-gothic/releases/download/v2.0.0/UDEVGothic_HS_v2.0.0.zip
+	source = https://raw.githubusercontent.com/yuru7/udev-gothic/v2.0.0/LICENSE
+	sha256sums = 50f04adcae9eaa112aa3d68eb06541ab7502ae976221df2f50195ac7696c74be
+	sha256sums = 551f1e89861f71cdf0c714cea42e503dbec5a6064f07af1711f1731003433039
+	sha256sums = 7b4334786a9d42d5407fd187befc6c92be291ddf9ea678b5e4c6aee266790384
 	sha256sums = 3e04c747c9c9535224f6163a290caf022877759db5183a00aef6134d3f5643f0
 
 pkgname = ttf-udev-gothic
