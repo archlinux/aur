@@ -1,0 +1,55 @@
+diff -rauN lacc/configure lacc-path-patch/configure
+--- lacc/configure	2024-08-17 08:30:14.001553300 +0200
++++ lacc-path-patch/configure	2024-08-17 08:30:45.074887701 +0200
+@@ -145,7 +145,7 @@
+ done
+ 
+ case "$host" in
+-	*-linux-gnu)
++	*-linux-gnu|*-linux)
+ 		echo '#define UNIX 1' >> config.h
+ 		echo '#define LINUX 1' >> config.h
+ 		echo '#define GLIBC 1' >> config.h
+diff -rauN lacc/src/backend/linker.c lacc-path-patch/src/backend/linker.c
+--- lacc/src/backend/linker.c	2024-08-17 08:30:14.001553300 +0200
++++ lacc-path-patch/src/backend/linker.c	2024-08-17 08:31:12.971555326 +0200
+@@ -66,16 +66,16 @@
+         add_option(&ld_args, "-e");
+         add_option(&ld_args, "_start");
+         add_option(&ld_args, "-dynamic-linker");
+-        add_option(&ld_args, "/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2");
++        add_option(&ld_args, "/usr/lib/ld-linux-x86-64.so.2");
+         if (context.pic) {
+-            add_option(&ld_args, "/usr/lib/x86_64-linux-gnu/Scrt1.o");
++            add_option(&ld_args, "/usr/lib/Scrt1.o");
+         } else {
+-            add_option(&ld_args, "/usr/lib/x86_64-linux-gnu/crt1.o");
++            add_option(&ld_args, "/usr/lib/crt1.o");
+         }
+     }
+ 
+-    add_option(&ld_args, "/usr/lib/x86_64-linux-gnu/crti.o");
+-    add_option(&ld_args, "-L/usr/lib/x86_64-linux-gnu");
++    add_option(&ld_args, "/usr/lib/crti.o");
++    add_option(&ld_args, "-L/usr/lib/x86_64-linux");
+ #elif MUSL
+     if (!is_shared) {
+         add_option(&ld_args, "-e");
+@@ -83,7 +83,7 @@
+         add_option(&ld_args, "-dynamic-linker");
+         add_option(&ld_args, "/lib/ld-musl-x86_64.so.1");
+         if (context.pic) {
+-            add_option(&ld_args, "/usr/lib/Scrt1.o");
++            add_option(&ld_args, "/usr/lib/musl/lib/Scrt1.o");
+         } else {
+             add_option(&ld_args, "/usr/lib/crt1.o");
+         }
+@@ -135,7 +135,7 @@
+ #if __OpenBSD__
+     add_option(&ld_args, "/usr/lib/crtend.o");
+ #elif GLIBC
+-    add_option(&ld_args, "/usr/lib/x86_64-linux-gnu/crtn.o");
++    add_option(&ld_args, "/usr/lib/crtn.o");
+ #elif MUSL
+     add_option(&ld_args, "/usr/lib/crtn.o");
+ #endif
