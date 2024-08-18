@@ -1,0 +1,12 @@
+pkgbase = zsh-bitbake
+	pkgdesc = Bitbake completion for zsh
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/antznin/zsh-bitbake
+	arch = any
+	license = MIT
+	depends = zsh
+	source = https://github.com/antznin/zsh-bitbake/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = 99f66b5b732146f49023de7c22a77da2a8ff125c09dcb98ef4e7bee1b6e010c4
+
+pkgname = zsh-bitbake
