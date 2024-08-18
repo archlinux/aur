@@ -3,7 +3,7 @@
 _pkgbasename=libffi
 pkgname=libffi7
 pkgver=3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Portable foreign function interface library (ABI version 7)"
 arch=('x86_64')
 url="http://sourceware.org/libffi"
@@ -23,7 +23,7 @@ build() {
 		--prefix=/usr \
 		--disable-static \
 		--enable-pax_emutramp
-	make
+	make all
 }
 
 package() {
