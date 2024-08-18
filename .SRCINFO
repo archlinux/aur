@@ -1,0 +1,18 @@
+pkgbase = dvbinspector
+	pkgdesc = DVB analyzer, written in java
+	pkgver = 1.19.2
+	pkgrel = 1
+	url = https://github.com/EricBerendsen/dvbinspector
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = maven
+	makedepends = jdk17-openjdk
+	depends = java-runtime>=17
+	source = https://github.com/EricBerendsen/dvbinspector/archive/refs/tags/release_1_19_2.tar.gz
+	source = dvbinspector.sh
+	source = version-1.19.2.patch
+	sha256sums = 40e8c85549362ded8e7661c2ca0c9e5284ae2a4d2b63b5e1ef95e25df1ae8b3e
+	sha256sums = af320db41a920b3838a7598c8d0712352a59081112015f893f7b713d407773e4
+	sha256sums = 2cd4b535278a29cb78ce4cbffc6ea7ca8244ecda98f23c03092fe5fc66826a2f
+
+pkgname = dvbinspector
