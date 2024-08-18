@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dnsmasq-git
-pkgver=2.89.r39.g1d6fe0e
+pkgver=2.90.r9.g550c368
 pkgrel=1
 pkgdesc="Lightweight, easy to configure DNS forwarder and DHCP server"
 arch=('i686' 'x86_64')
 url="https://thekelleys.org.uk/dnsmasq/doc.html"
-license=('GPL')
-depends=('glibc' 'gmp' 'libdbus' 'libidn2' 'libnetfilter_conntrack' 'nettle')
+license=('GPL-2.0-or-later' 'GPL-3.0-or-later')
+depends=('glibc' 'gmp' 'libdbus' 'libidn2' 'libnetfilter_conntrack' 'nettle' 'nftables')
 makedepends=('git')
 provides=("dnsmasq=$pkgver")
 conflicts=('dnsmasq')
@@ -24,12 +24,16 @@ _build_copts=" \
   -DHAVE_CONNTRACK \
   -DHAVE_DBUS \
   -DHAVE_DNSSEC \
-  -DHAVE_LIBIDN2"
+  -DHAVE_LIBIDN2 \
+  -DHAVE_NFTSET"
 
 pkgver() {
   cd "dnsmasq"
 
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
