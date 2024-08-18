@@ -1,0 +1,4 @@
+[pulsar-bin]
+source = "git"
+git = "https://github.com/pulsar-edit/pulsar.git"
+prefix = "v"
