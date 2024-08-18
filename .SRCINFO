@@ -1,14 +1,14 @@
 pkgbase = silverbullet
 	pkgdesc = Clean Markdown-based writing/note taking application
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/silverbulletmd/silverbullet
 	arch = any
 	license = MIT
 	depends = deno
-	source = silverbullet-0.9.0.tar.gz::https://github.com/silverbulletmd/silverbullet/archive/refs/tags/0.9.0.tar.gz
+	source = silverbullet-0.9.1.tar.gz::https://github.com/silverbulletmd/silverbullet/archive/refs/tags/0.9.1.tar.gz
 	source = silverbullet.service
-	sha256sums = 3bc46147f926ff6ce8e3cdd84157d9e4c2aefeb0f916c68da8b309bc6993ac09
+	sha256sums = 42fbdf555d29c17babf82c6ef735a29f55bf27b6074952a0bd08fed2989ca862
 	sha256sums = b32f789c76e6db00e69bfbb7b00567dbb84104a723b3130e1afe55b7a72bbb59
 
 pkgname = silverbullet
