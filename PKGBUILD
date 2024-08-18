@@ -5,13 +5,13 @@ pkgver=7.0.0
 pkgdesc="Cross-platform application for managing your YubiKey's second factor credentials (version 7)"
 arch=('x86_64')
 url="https://github.com/Yubico/yubioath-flutter"
-license=('GPL')
+license=('Apache')
 depends=('ccid' 'zenity')
 conflicts=('yubico-authenticator')
 options=(!strip)
 optdepends=('gnome-screenshot: QR scanning feature on GNOME'
             'spectacle: QR scanning feature on KDE')
-pkgrel=2
+pkgrel=3
 source=(
     "${url}/releases/download/${pkgver}/yubico-authenticator-${pkgver}-linux.tar.gz"{,.sig}
 )
