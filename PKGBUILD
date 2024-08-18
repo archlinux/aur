@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=revdbayes
-_pkgver=1.5.4
+_pkgver=1.5.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,9 +31,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-tests.patch")
-md5sums=('334f2487c7d1da593e4bd41865fc360e'
+md5sums=('d45e11a9c6588568cbf133ad48e16b81'
          'dd7ce9091e07ca9a47821e8bcf561b08')
-b2sums=('1d00242d9ffbd39316eed67091524976a3d387845954a5f34f3abf7c4a5848aac8272457a721a895854688354db0f1f553f171252608d3c11d9c3c0ab407e746'
+b2sums=('16cc44e738f685530db47d754fb476ad0e6df44fc303587c41fdfb6b2b4bd1a2fc04b591785f584594ddd03a0f955c7e95c0dc3e32b2bfebff68ab39aca2daba'
         '97d09c073f004e7b1afa24422817e8458534ed643a7b7a9d0dbfc48681fdee0187fcbe3ffc6b713cc5ad541106b055931ffa05be2c1828029f23daa92059371a')
 
 prepare() {
