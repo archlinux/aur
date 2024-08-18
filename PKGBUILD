@@ -10,6 +10,8 @@ makedepends=(mingw-w64-configure)
 options=(!strip !buildflags staticlibs)
 source=("https://pallini.di.uniroma1.it/nauty${pkgver//./_}.tar.gz")
 sha256sums=('159d2156810a6bb240410cd61eb641add85088d9f15c888cdaa37b8681f929ce')
+source=("http://users.cecs.anu.edu.au/~bdm/nauty/nauty2_8_8.tar.gz")
+
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
