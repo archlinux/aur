@@ -3,7 +3,7 @@
 
 pkgname=cosmic-settings-git
 pkgver=1.0.0.alpha.1.r27.g83a4296
-pkgrel=1
+pkgrel=2
 pkgdesc="The settings application for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-settings"
@@ -29,7 +29,7 @@ makedepends=(
   'clang'
   'git'
   'just'
-  'mold'
+  'lld'
 )
 optdepends=(
   'adw-gtk-theme'
@@ -37,7 +37,6 @@ optdepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-options=('!lto')
 source=('git+https://github.com/pop-os/cosmic-settings.git')
 sha256sums=('SKIP')
 
@@ -56,8 +55,8 @@ build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
 
-  # use mold instead of lld to speed up build
-  RUSTFLAGS="-C link-arg=-fuse-ld=mold"
+  # use lld instead of mold as linking fails with LTO enabled
+  RUSTFLAGS+=" -C link-arg=-fuse-ld=lld"
 
   # use nice to build with lower priority
   nice just build-release --frozen
