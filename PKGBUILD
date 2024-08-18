@@ -2,11 +2,11 @@
 
 _pkgname=beaver-notes
 pkgname=beaver-notes-git
-pkgver=r444.25c951b
+pkgver=r596.db57a04
 pkgrel=1
 epoch=
 pkgdesc="A privacy-focused, cross-platform note-taking application."
-_electron=electron29
+_electron=electron
 arch=('x86_64')
 url="https://www.beavernotes.com/"
 license=('MIT')
