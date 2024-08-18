@@ -2,7 +2,7 @@
 # Maintainer: German Lashevich <german.lashevich@gmail.com>
 
 pkgname='cloudflare-dynamic-dns-bin'
-pkgver=4.2.14
+pkgver=4.2.15
 pkgrel=1
 pkgdesc='Dynamic DNS client for Cloudflare with IPv6/IPv4 support'
 url='https://github.com/zebradil/cloudflare-dynamic-dns'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('cloudflare-dynamic-dns')
 conflicts=('cloudflare-dynamic-dns')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Zebradil/cloudflare-dynamic-dns/releases/download/4.2.14/cloudflare-dynamic-dns_linux_arm64.tar.gz")
-sha256sums_aarch64=('a424eaae553845f823f91c8bcffe42aec193ca44edc0fbdb2fdf39b53d41f445')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Zebradil/cloudflare-dynamic-dns/releases/download/4.2.15/cloudflare-dynamic-dns_linux_arm64.tar.gz")
+sha256sums_aarch64=('31c966645682921e1d6eff8f71f72e625c69f44fb20c6dc98c4a44bdadad8fde')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/Zebradil/cloudflare-dynamic-dns/releases/download/4.2.14/cloudflare-dynamic-dns_linux_armv7.tar.gz")
-sha256sums_armv7h=('244264bdee74c112937e04f6e84ca5167940e40fdd73e8f5319c228e80608472')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/Zebradil/cloudflare-dynamic-dns/releases/download/4.2.15/cloudflare-dynamic-dns_linux_armv7.tar.gz")
+sha256sums_armv7h=('e2b73beaf353c99d2af664e13db3105fca38fcc3805933fc96be46a2576050cb')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Zebradil/cloudflare-dynamic-dns/releases/download/4.2.14/cloudflare-dynamic-dns_linux_386.tar.gz")
-sha256sums_i686=('6ec9d2bc895496c4d9e03fea844ea1b9dacc7c53122b4df216d08bf9edffba50')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Zebradil/cloudflare-dynamic-dns/releases/download/4.2.15/cloudflare-dynamic-dns_linux_386.tar.gz")
+sha256sums_i686=('84d889dc680a388afa5c26939eb71215a407f521a1117d9b3254dc288497f8db')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Zebradil/cloudflare-dynamic-dns/releases/download/4.2.14/cloudflare-dynamic-dns_linux_amd64.tar.gz")
-sha256sums_x86_64=('99953be8a44d7ea2dacd1ac886313a227c0bf64fca2b0382135076c51a0f1769')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Zebradil/cloudflare-dynamic-dns/releases/download/4.2.15/cloudflare-dynamic-dns_linux_amd64.tar.gz")
+sha256sums_x86_64=('628e12b4cfddd5730c9ef827c7ebdab9308d821ec8e332d92515e0f23a7d6955')
 
 package() {
   BIN=cloudflare-dynamic-dns
