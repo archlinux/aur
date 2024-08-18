@@ -1,7 +1,7 @@
 pkgbase = finkyo-bin
 	pkgdesc = file server
 	pkgver = 0.3.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/quantulr/finkyo
 	arch = x86_64
 	arch = aarch64
