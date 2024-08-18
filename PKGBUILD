@@ -18,7 +18,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 provides=("chromium=$pkgver" "chromedriver=$pkgver")
 conflicts=('chromium' 'chromedriver')
 source=(https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/$pkgver-$pkgrel/ungoogled-chromium-$pkgver-$pkgrel-x86_64.pkg.tar.zst)
-sha256sums=('4ae53a1d3e76700c2efb5ba1b012f3df4c3e6d641948804f70823c58a9bf643a')
+sha256sums=('be8c901bfdc4771ba6fabd46f05285432a9accb3d5c8cf22f2844bf88eb53ed6')
 
 declare -gA _system_libs=(
     #[brotli]=brotli
