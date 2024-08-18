@@ -3,6 +3,7 @@
 
 pkgname=dmde-linux
 pkgver=4.2.0
+pkg_name="dmde-4-2-0-814-lin64-gui.zip"
 pkgrel=1
 pkgdesc="DMDE is a powerful tool for data searching, editing, and recovery on disks"
 arch=('x86_64')
@@ -12,7 +13,7 @@ depends=(zenity sudo)
 makedepends=(unzip)
 replaces=($pkgname)
 
-source_x86_64=("https://dmde.ru/download/dmde-4-2-0-814-lin64-gui.zip")
+source_x86_64=("https://dmde.ru/download/${pkg_name}")
 
 source=(dmde-linux.desktop
 		logo.png
@@ -27,7 +28,7 @@ sha512sums_x86_64=('4827fed6a327984ce3e762fc35e4430956bdf6a253df6ff2b247646555bf
 package() {
 	cd $srcdir
 	mkdir -p ./usr/share/dmde-linux/ $pkgdir/usr/bin/ $pkgdir/usr/share/applications/ $pkgdir/usr/share/pixmaps/
-	unzip ./dmde-4-0-6-806-lin64-gui.zip -d $srcdir/usr/share/dmde-linux/
+	unzip "./${pkg_name}" -d $srcdir/usr/share/dmde-linux/
 	cp -r usr $pkgdir
 	chmod +x $pkgdir/usr/share/dmde-linux/dmde
 	chmod +x $pkgdir/usr/share/dmde-linux/dmde-su
