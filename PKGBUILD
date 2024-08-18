@@ -1,10 +1,11 @@
-# Maintainer:  Jonathon Fernyhough <jonathon+m2x+dev>
+# Maintainer:  Florian Sorko <florian.begusch@gmail.com>
+# Contributor: Jonathon Fernyhough <jonathon+m2x+dev>
 # Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: Romain Bouchaud-Leduc <r0m1.bl@camaris.org>
 
 pkgname=trickle
 pkgver=1.07
-pkgrel=12
+pkgrel=13
 pkgdesc="Lightweight userspace bandwidth shaper"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mariusae/trickle"
@@ -13,10 +14,12 @@ depends=('libevent' 'libtirpc')
 _commit=a2aeb9f30aa3c651580b9be9ba3c9c13bf51a416 # "import of trickle 1.07"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mariusae/trickle/archive/${_commit}.tar.gz"
         "fix-crasher.patch"
-        "$url/commit/20f221f166fc03323ed28dc3cad0b0da2c879513.patch")
+        "$url/commit/20f221f166fc03323ed28dc3cad0b0da2c879513.patch"
+        "trickle-gcc14.patch")
 sha256sums=('b07ffdff831d11972dc802a4fc2d4000af844933b39ad7f88de20a2866a55f37'
             '495aeb95039dcdeb3bfde46c40b3391fe2416ec51678a1ded9bbeced6f6d1349'
-            '432194c2a25e934a865a06de9fa876545431a1729028ca1a60943554865fb40c')
+            '432194c2a25e934a865a06de9fa876545431a1729028ca1a60943554865fb40c'
+            '07614e2a07ab61e95572da44b22b7a05b14d958ec62f4c400f7527104ff3492f')
 
 prepare() {
   cd $pkgname-$_commit
@@ -29,6 +32,8 @@ prepare() {
 
   # Fix build with -Werror=format-security, https://github.com/mariusae/trickle/commit/20f221f166fc03323ed28dc3cad0b0da2c879513
   patch -Np1 -i ../20f221f166fc03323ed28dc3cad0b0da2c879513.patch
+  patch -Np1 -i ../trickle-gcc14.patch
+  autoconf
 }
 
 build() {
