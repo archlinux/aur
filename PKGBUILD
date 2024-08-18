@@ -26,9 +26,13 @@ sha512sums=('3a4718b824861ea8a72a93cc7ae66828e5160d3642331e1b8f1d299affcfdd71f32
 sha512sums_x86_64=('4827fed6a327984ce3e762fc35e4430956bdf6a253df6ff2b247646555bf67fdc88e797e2e5d10c85121a20965c7823105b86806d0003b224dd118ab3e4fc136')
 
 package() {
+	replaces=("${pkgname[0]}")
+	depends=(zenity sudo)
 	cd $srcdir
 	mkdir -p ./usr/share/dmde-linux/ $pkgdir/usr/bin/ $pkgdir/usr/share/applications/ $pkgdir/usr/share/pixmaps/
-	unzip "./${pkg_name}" -d $srcdir/usr/share/dmde-linux/
+	_pkgname=$(basename "${source_x86_64[0]}")
+	rm -rf $srcdir/usr/share/dmde-cli
+	unzip "./${_pkgname[*]}" -d $srcdir/usr/share/dmde-linux/
 	cp -r usr $pkgdir
 	chmod +x $pkgdir/usr/share/dmde-linux/dmde
 	chmod +x $pkgdir/usr/share/dmde-linux/dmde-su
