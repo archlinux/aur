@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-gtest
 	pkgdesc = Google Test - C++ testing utility (Android armv7a-eabi)
-	pkgver = 1.14.0
-	pkgrel = 2
+	pkgver = 1.15.2
+	pkgrel = 1
 	url = https://github.com/google/googletest
 	arch = any
 	license = BSD
@@ -16,9 +16,9 @@ pkgbase = android-armv7a-eabi-gtest
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/google/googletest/archive/v1.14.0.tar.gz
-	source = gtest-version.patch
-	md5sums = c8340a482851ef6a3fe618a082304cfc
+	source = https://github.com/google/googletest/archive/v1.15.2.tar.gz
+	source = 0001-gtest-version.patch
+	md5sums = 7e11f6cfcf6498324ac82d567dcb891e
 	md5sums = 4b2b6493b95389d3428470eb3f904df6
 
 pkgname = android-armv7a-eabi-gtest
