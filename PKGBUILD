@@ -7,7 +7,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libebml
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Extensible Binary Meta Language library (Android ${_android_arch})"
 url='https://github.com/Matroska-Org/libebml'
