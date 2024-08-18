@@ -1,8 +1,8 @@
 # Maintainer: kobe-koto <admin at koto dot cc>
 pkgname="sharp-craft-launcher-bin"
 _pkgname="SharpCraftLauncher"
-pkgver=1.1.1
-_pkgdate=20230208
+pkgver=1.2.0
+_pkgdate=20240216
 pkgrel=1
 pkgdesc="A super light, fast, clean minecraft launcher framework written in rust."
 arch=('x86_64' 'aarch64')
@@ -34,7 +34,7 @@ sha256sums=(
 
 package() {
 	#mv "${srcdir}"/${_pkgname}-${_pkgdate}-${pkgver}-linux-* ${srcdir}/${_pkgname}
-	install -Dm755 "${srcdir}"/${_pkgname}-${_pkgdate}-${pkgver}-linux-* "${pkgdir}/opt/${pkgname}/${_pkgname}"
+	install -Dm755 "${srcdir}"/${_pkgname}-${_pkgdate}-${pkgver}-* "${pkgdir}/opt/${pkgname}/${_pkgname}"
 	install -Dm644 $(readlink "${srcdir}/SCL-icon.png") "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
 	install -Dm644 $(readlink "${srcdir}/SCL.desktop")  "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }

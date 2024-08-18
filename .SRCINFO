@@ -1,6 +1,6 @@
 pkgbase = sharp-craft-launcher-bin
 	pkgdesc = A super light, fast, clean minecraft launcher framework written in rust.
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Steve-xmh/scl
 	arch = x86_64
@@ -68,9 +68,9 @@ pkgbase = sharp-craft-launcher-bin
 	source = SCL.desktop
 	sha256sums = ac418e2a871efc0eb4393a15da1352771524fb94b998a8614e158a8ab581f6be
 	sha256sums = b9201fd7dda93168660eb835363cb8262ecb177c0d2de1b2ba997b838488cdec
-	source_x86_64 = sharp-craft-launcher-bin-1.1.1-1-x86_64.tar.gz::https://github.com/Steve-xmh/scl/releases/download/v1.1.1/SharpCraftLauncher-20230208-1.1.1-linux-x86_64.tar.gz
+	source_x86_64 = sharp-craft-launcher-bin-1.2.0-1-x86_64.tar.gz::https://github.com/Steve-xmh/scl/releases/download/v1.2.0/SharpCraftLauncher-20240216-1.2.0-linux-x86_64.tar.gz
 	md5sums_x86_64 = SKIP
-	source_aarch64 = sharp-craft-launcher-bin-1.1.1-1-aarch64.tar.gz::https://github.com/Steve-xmh/scl/releases/download/v1.1.1/SharpCraftLauncher-20230208-1.1.1-linux-aarch64.tar.gz
+	source_aarch64 = sharp-craft-launcher-bin-1.2.0-1-aarch64.tar.gz::https://github.com/Steve-xmh/scl/releases/download/v1.2.0/SharpCraftLauncher-20240216-1.2.0-linux-aarch64.tar.gz
 	md5sums_aarch64 = SKIP
 
 pkgname = sharp-craft-launcher-bin
