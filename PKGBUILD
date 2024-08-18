@@ -4,7 +4,7 @@
 
 pkgname=mcpelauncher-linux
 pkgver=0.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64' 'i686')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
@@ -127,14 +127,17 @@ prepare() {
 }
 
 build() {
+	export CXXFLAGS=$(echo $CXXFLAGS | sed 's/-Wp,-D_FORTIFY_SOURCE=3//g')
+	export CXXFLAGS+="$CXXFLAGS -flto=thin"
+	export CFLAGS+="$CFLAGS -flto=thin"
   cmake -S mcpelauncher-manifest \
     -DCMAKE_C_COMPILER=clang \
     -DCMAKE_CXX_COMPILER=clang++ \
     -B build -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_BUILD_TYPE=None \
     -DENABLE_DEV_PATHS=OFF \
     -Wno-dev
-  cmake --build build --parallel
+  cmake --build build
 }
 
 package() {
