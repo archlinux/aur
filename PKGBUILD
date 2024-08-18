@@ -3,14 +3,15 @@
 _pkgname=godot-mono
 pkgname=godot-mono
 pkgver=4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 arch=('x86_64')
 url="https://godotengine.org/"
 license=('MIT')
 depends=(brotli ca-certificates embree freetype2 graphite harfbuzz harfbuzz-icu libglvnd
    libspeechd libsquish libtheora libvorbis libwebp libwslay libxcursor libxi libxinerama 
-   libxrandr mbedtls2 openxr pcre2 dotnet-sdk hicolor-icon-theme)
+   libxrandr mbedtls2 openxr miniupnpc pcre2 dotnet-sdk hicolor-icon-theme
+   libogg libpng zlib glibc zstd)
 makedepends=(alsa-lib gcc pulse-native-provider scons yasm nuget python git rsync python)
 optdepends=('pipewire-alsa: for audio support'
             'pipewire-pulse: for audio support')
@@ -21,6 +22,8 @@ prepare() {
   # Update the MIME info, ref FS#77810
   sed -i 's,xmlns="https://specifications.freedesktop.org/shared-mime-info-spec",xmlns="http://www.freedesktop.org/standards/shared-mime-info",g' \
     "${srcdir}/godot-${pkgver}-stable"/misc/dist/linux/org.godotengine.Godot.xml
+  # Patch miniupnpc
+  sed -i 's/addr, 16/addr, 16, nullptr, 0/g' "$srcdir"/godot-$pkgver-stable/modules/upnp/upnp.cpp
 }
 
 
@@ -54,7 +57,7 @@ build() {
     builtin_libwebp=no \
     builtin_wslay=yes \
     builtin_mbedtls=no \
-    builtin_miniupnpc=yes \
+    builtin_miniupnpc=no \
     builtin_openxr=no \
     builtin_pcre2=no \
     builtin_pcre2_with_jit=no \
