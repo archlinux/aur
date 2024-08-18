@@ -1,6 +1,6 @@
 pkgbase = python-pytest-gitconfig
 	pkgdesc = A gitconfig sandbox for testing
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/noirbizarre/pytest-gitconfig
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-pytest-gitconfig
 	makedepends = python-installer
 	makedepends = python-pdm-backend
 	depends = python-pytest
-	source = https://files.pythonhosted.org/packages/source/p/pytest_gitconfig/pytest_gitconfig-0.6.0.tar.gz
-	sha256sums = ee06963e24c5a79f1b4bbcf86e071d54a147508a1a1a19269316531df4382cb5
+	source = https://files.pythonhosted.org/packages/source/p/pytest_gitconfig/pytest_gitconfig-0.7.0.tar.gz
+	sha256sums = 7d8a49747c09da0416704e911d4eccecbae11a28f997cdeba77aab9ab4975b1f
 
 pkgname = python-pytest-gitconfig
