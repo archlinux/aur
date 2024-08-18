@@ -23,7 +23,7 @@ source=(
     "https://modrinth-betas.flawcra.cc/versions/${pkgver}-${pkgrel}/linux/modrinth-app_${pkgver}-${pkgrel}_amd64.deb"
     "modrinth-app"
 )
-sha256sums=('90e3f6bfd4cd2600756db46ea44f560d394f8925d04353cec9a95f344b5b51cb'
+sha256sums=('7266a00c16caff0f45c3ec76e0634dba46e3018c87241bdda2e42afbb9144229'
             '5404b4e7b25903afe43ab2f2451be4b27f4823c6785327b166f2faa519fa38a9')
 
 build() {
