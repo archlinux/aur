@@ -19,11 +19,11 @@ BUILD_FLAGS=(CC=clang CXX=clang++ HOSTCC=clang HOSTCXX=clang++ LD=ld.lld LLVM=1 
 ###################################################################################
 
 pkgbase=linux-llvm
-pkgver=6.10.3
-_pkgver=6.10.3
+pkgver=6.10.5
+_pkgver=6.10.5
 pkgrel=1
 major=6.10
-commit=9f4aff504e923944a54f32eba06de62be2f66097
+commit=335b711f590650ef037442bf876f3551e5af0669
 arch=(x86_64)
 url='https://www.kernel.org/'
 license=(GPL-2.0-only)
@@ -76,8 +76,8 @@ source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
         0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
         0002-drivers-firmware-skip-simpledrm-if-nvidia-drm.modese.patch
         0003-arch-Kconfig-Default-to-maximum-amount-of-ASLR-bits.patch
-        0004-ALSA-hda-Conditionally-use-snooping-for-AMD-HDMI.patch
-        0005-x86-apic-Remove-logical-destination-mode-for-64-bit.patch)
+        0004-x86-apic-Remove-logical-destination-mode-for-64-bit.patch
+        0005-btrfs-only-run-the-extent-map-shrinker-from-kswapd-t.patch)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -320,13 +320,13 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('fa5f22fd67dd05812d39dca579320c493048e26c4a556048a12385e7ae6fc698'
-            '84832e092a359aae3a4a7467a61e3e9c8ee855954f15ce389d5356dba5971b2b'
+sha256sums=('30909eb2e0434dce97a93cd97ed0dfab7688a124bc3ebc3ecf6c776de09ccc0b'
+            '09bc22332affedcdf96cfa7b4ff3dcf1d087d1bde818b9929f5ad1102bc4f775'
             'd2d673e130d2a8006aeca9892238db432fe6de628327e6999b3567c0e40a01ae'
             '2bd0cd7ea72b0330006a5159e8016fdf391cbd3e222b263c6603670d90383d05'
             '6759cdb5efcacc56b071dddb85f2dd6a54485a046f61f40f9854246c1480603c'
-            '368fd17ebf97ca8b6ca7129b1626a43d12617cbbe3c6af53313b0a52b8fa65ab'
-            '84bbf16ba166b016e050ab69e69a54798963d3a03ed65dea7bf39b0a371fbdb8')
+            '74d12e96b8ce056a5f1b4fd10cf3f4b671eb3d50d4124cd8fa7a81c83b55ae1e'
+            '994514f16122c25e6b8debf79aab539f92ad3f25f94729197912f250eaf75a11')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do
