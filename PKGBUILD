@@ -1,16 +1,55 @@
 # Maintainer: noraj <printf %s 'YWxleGFuZHJlLnphbm5pQGV1cm9wZS5jb20='|base64 -d>
 
 pkgname=firefox-extension-arch-search
-pkgver=1.0.5
-_alpkgs_ver=1.0.2
-_alwiki_ver=1.0.3
-_alaur_ver=1.0.4
-_albugsfs_ver=1.0.2
-_albugst_ver=1.0.2
-_alforuma_ver=1.0.2
-_alforumk_ver=1.0.2
-_alman_ver=1.0.3
-pkgrel=2
+pkgver=2.0.0
+_amo_base_url=https://addons.mozilla.org/firefox/downloads/file
+
+_alpkgs_code=archlinux_packages_search
+_alpkgs_ver=1.0.3
+_alpkgs_dl_id=4337415
+_alpkgs_gecko_id=ArchPkgs@archlinux.org
+
+_alwiki_code=archlinux_wiki_search
+_alwiki_ver=1.0.4
+_alwiki_dl_id=4337417
+_alwiki_gecko_id=ArchWiki@archlinux.org
+
+_alaur_code=archlinux_aur_search
+_alaur_ver=1.0.5
+_alaur_dl_id=4337418
+_alaur_gecko_id=ArchAur@archlinux.org.xpi
+
+_albugs_code=archlinux_bugtracker_search
+_albugs_ver=1.0.0
+_albugs_dl_id=4338127
+_albugs_gecko_id=ArchBugs@archlinux.org
+
+_alforuma_code=archlinux_forum_by_author_search
+_alforuma_ver=1.0.3
+_alforuma_dl_id=4337411
+_alforuma_gecko_id=ArchForumA@archlinux.org
+
+_alforumk_code=archlinux_forum_by_keywords_search
+_alforumk_ver=1.0.3
+_alforumk_dl_id=4337414
+_alforumk_gecko_id=ArchForumK@archlinux.org
+
+_alman_code=archlinux_manual_pages_search
+_alman_ver=1.0.4
+_alman_dl_id=4337416
+_alman_gecko_id=ArchMan@archlinux.org
+
+_alsec_code=archlinux_security_search
+_alsec_ver=1.0.0
+_alsec_dl_id=4337406
+_alsec_gecko_id=ArchSec@archlinux.org
+
+_alsrc_code=archlinux_pkgbuild_search
+_alsrc_ver=1.0.0
+_alsrc_dl_id=4337419
+_alsrc_gecko_id=ArchSrc@archlinux.org
+
+pkgrel=1
 pkgdesc="A set of Web Extensions that adds ArchLinux (bug tracker, forum, packages, wiki, AUR) as a search engine to the Firefox browser."
 arch=('any')
 url="https://github.com/noraj/firefox-extension-arch-search"
@@ -18,43 +57,47 @@ license=('MIT')
 groups=('firefox-addons')
 depends=("firefox")
 replaces=('arch-firefox3-search' 'arch-firefox-search')
-source=("https://addons.mozilla.org/firefox/downloads/file/4119642/archlinux_aur_search-$_alaur_ver-an+fx.xpi"
-        "https://addons.mozilla.org/firefox/downloads/file/4119649/archlinux_bugtracker_by_fs_search-$_albugsfs_ver-fx.xpi"
-        "https://addons.mozilla.org/firefox/downloads/file/4119648/archlinux_bugtracker_by_text_search-$_albugst_ver-fx.xpi"
-        "https://addons.mozilla.org/firefox/downloads/file/4119647/archlinux_forum_by_author_search-$_alforuma_ver-fx.xpi"
-        "https://addons.mozilla.org/firefox/downloads/file/4119646/archlinux_forum_by_keywords_search-$_alforumk_ver-fx.xpi"
-        "https://addons.mozilla.org/firefox/downloads/file/4119645/archlinux_packages_search-$_alpkgs_ver-fx.xpi"
-        "https://addons.mozilla.org/firefox/downloads/file/4119643/archlinux_wiki_search-$_alwiki_ver-fx.xpi"
-        "https://addons.mozilla.org/firefox/downloads/file/4119644/archlinux_manual_pages_search-$_alman_ver-fx.xpi"
+source=("$_amo_base_url/$_alaur_dl_id/$_alaur_code-$_alaur_ver.xpi"
+        "$_amo_base_url/$_albugs_dl_id/$_albugs_code-$_albugs_ver.xpi"
+        "$_amo_base_url/$_alforuma_dl_id/$_alforuma_code-$_alforuma_ver.xpi"
+        "$_amo_base_url/$_alforumk_dl_id/$_alforumk_code-$_alforumk_ver.xpi"
+        "$_amo_base_url/$_alpkgs_dl_id/$_alpkgs_code-$_alpkgs_ver.xpi"
+        "$_amo_base_url/$_alwiki_dl_id/$_alwiki_code-$_alwiki_ver.xpi"
+        "$_amo_base_url/$_alman_dl_id/$_alman_code-$_alman_ver.xpi"
+        "$_amo_base_url/$_alsec_dl_id/$_alsec_code-$_alsec_ver.xpi"
+        "$_amo_base_url/$_alsrc_dl_id/$_alsrc_code-$_alsrc_ver.xpi"
         "https://raw.githubusercontent.com/noraj/$pkgname/master/LICENSE")
-noextract=("archlinux_aur_search-$_alaur_ver-an+fx.xpi"
-           "archlinux_bugtracker_by_fs_search-$_albugsfs_ver-fx.xpi"
-           "archlinux_bugtracker_by_text_search-$_albugst_ver-fx.xpi"
-           "archlinux_forum_by_author_search-$_alforuma_ver-fx.xpi"
-           "archlinux_forum_by_keywords_search-$_alforumk_ver-fx.xpi"
-           "archlinux_packages_search-$_alpkgs_ver-fx.xpi"
-           "archlinux_wiki_search-$_alwiki_ver-fx.xpi"
-           "archlinux_manual_pages_search-$_alman_ver-fx.xpi")
-b2sums=('a02d0934decf27e98b2a7d8dd10724e5a9020bdc0a1e5cde182b49d9731153dcbf085d68ac19600dd7dce5c59f577a1e242f96758cfe13370e78914c9a193107'
-        '77e85f399e59e7fae9537f32ec3b9afc56935b202fa037766b7a414a807cd6fc980cd49300016c231426c4062c85b78e64b6918ce4c40fc3c410dcda350f5bb8'
-        '8c4ea19b27a04a507907b360a13ef9a42044627c00e9d500654a0f5f098dc744aa60ccc9a2814b1bce6f2123c8f7d44f9f78062d47bcad51f356d25f736e49c3'
-        'cb167e2b02295f77be2e3df5229281d8aef4acd9cff54f7578122c4b39b030ef42393a0179ddc62704e67e8b68b227accfabf8f0a2f9d370082e1b9932a8270d'
-        'a5c1531cd97b8f3946d1d6fa4ce5f8c7bdd7ce03bcb910726493eed7cdb797c1b04ada1a93dc10f29392030203e08f3a5c55dd4cff0d859dcf4b13d0098cfc08'
-        '2d0aeab08ebb2791f7aec7b61de7cba44c82e5a49652b72bc58f27e5af7aebf3ca553696342574b51b6d9ddf6d910687786d6c4f4766a4c07f8ab9c12118b75a'
-        '59d870e45b57b388daeb8f6e85d15d44339d3b68634d5c2d65acb60d770cb33549864327801832acabcf89fef0a7df2293a50180c3ee2e6a2c910236e8e664df'
-        '671faf32a319404b68eb372f749c8105fd5850831f37d34fc80f61d699856a0e2ac7d8d7772639a36dffff1c89b215c896907cb32aa1a5188934a2930806dcaf'
+noextract=("$_alaur_code-$_alaur_ver.xpi"
+           "$_albugs_code-$_albugs_ver.xpi"
+           "$_alforuma_code-$_alforuma_ver.xpi"
+           "$_alforumk_code-$_alforumk_ver.xpi"
+           "$_alpkgs_code-$_alpkgs_ver.xpi"
+           "$_alwiki_code-$_alwiki_ver.xpi"
+           "$_alman_code-$_alman_ver.xpi"
+           "$_alsec_code-$_alsec_ver.xpi"
+           "$_alsrc_code-$_alsrc_ver.xpi")
+b2sums=('1a0010fefea0986b0ded2c483e56244418b000712d84c0d252a00f35622905f4e6dd67d3037e183012d03b1233523d613cf0d8c525a3668058f92c7769409c42'
+        'f7e38c977546fd3cf5ae104ade76291ea622bc0a372887d1cde4a7090bfda875454db58b5be83415b0faa1a4798702e21ba41a126e1c1506001bfc6cc163e5fd'
+        '883c3569f1e1ad12cd3d1109fadde148fd8040126dcd6bff4aeec027c246f3b4d5e7d8552934eb7cc29b357152699606df3d4656d86fae0722054b13914e46bb'
+        '2980f6e853a2d30236bed266da9a942f41b6393c1aa14b5bab38e79d26f4e741bd536331476b364e98f333a83e04f364554e141e1eab63ee0c1bf69615c9aa2a'
+        'ae8574a0899510a7d6f338a24f0ca96456fd3ff3e14a1c1c1e5a7d4a225df1dcb23329ce71c5d49d3b4374f7c595ba390b5556d3bb83d3a13147d38103473e17'
+        'e498b4cc098ef64f4d1c2b51b9988eecded6e7695db17b5edd483098bae132f55eae437d7ee23520a6f5b1d80ea1c5fced5bff6a13c2b17a89add242447a22d6'
+        'e422cde6ee9d0ff10866713a5ebc5219dbafc9e0381d7aa6f185ed14a2758c53e56a020502c2b8badc1eb2e8844ee73c74f0a8a2f41588638be53077677f53cc'
+        'ef1683e513719d083a2478d1418e10ddc35364e799032ea3a027b40c50c39b51ffbcf9aa25dac935b14bf4dc5d45ee29cbc8b924c16cbbcf3de0e7c3c5738a43'
+        'b82d5f510ecdd9eb3ec75ae8f73c4a3e06da80e31f6f972a192534ebebf029b1be4f260cd907296274d184a9ac00162f2ff3c0707471e443ce225b93d8b2e218'
         'a4c401071f50f885cea359404502a4da0459efd97fef9310d9484e9801b8b6eff3085dd0cfc6917b575dd3def37695c8cbeb37221e51855b8e97376c59b3d39a')
 
 package() {
 
-  install -Dm644 "archlinux_aur_search-$_alaur_ver-an+fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchAur@archlinux.org.xpi"
-  install -Dm644 "archlinux_bugtracker_by_fs_search-$_albugsfs_ver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchBugsFs@archlinux.org.xpi"
-  install -Dm644 "archlinux_bugtracker_by_text_search-$_albugst_ver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchBugsT@archlinux.org.xpi"
-  install -Dm644 "archlinux_forum_by_author_search-$_alforuma_ver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchForumA@archlinux.org.xpi"
-  install -Dm644 "archlinux_forum_by_keywords_search-$_alforumk_ver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchForumK@archlinux.org.xpi"
-  install -Dm644 "archlinux_packages_search-$_alpkgs_ver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchPkgs@archlinux.org.xpi"
-  install -Dm644 "archlinux_wiki_search-$_alwiki_ver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchWiki@archlinux.org.xpi"
-  install -Dm644 "archlinux_manual_pages_search-$_alman_ver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchMan@archlinux.org.xpi"
+  install -Dm644 "$_alaur_code-$_alaur_ver.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/$_alaur_gecko_id"
+  install -Dm644 "$_albugs_code-$_albugs_ver.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/$_albugs_gecko_id.xpi"
+  install -Dm644 "$_alforuma_code-$_alforuma_ver.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/$_alforuma_gecko_id.xpi"
+  install -Dm644 "$_alforumk_code-$_alforumk_ver.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/$_alforumk_gecko_id.xpi"
+  install -Dm644 "$_alpkgs_code-$_alpkgs_ver.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/$_alpkgs_gecko_id.xpi"
+  install -Dm644 "$_alwiki_code-$_alwiki_ver.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/$_alwiki_gecko_id.xpi"
+  install -Dm644 "$_alman_code-$_alman_ver.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/$_alman_gecko_id.xpi"
+  install -Dm644 "$_alsec_code-$_alsec_ver.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/$_alsec_gecko_id.xpi"
+  install -Dm644 "$_alsrc_code-$_alsrc_ver.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/$_alsrc_gecko_id.xpi"
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
