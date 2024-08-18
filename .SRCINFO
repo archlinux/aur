@@ -1,6 +1,6 @@
 pkgbase = perl-text-csv-xs
 	pkgdesc = Comma-separated values manipulation routines
-	pkgver = 1.55
+	pkgver = 1.56
 	pkgrel = 1
 	url = https://metacpan.org/release/Text-CSV_XS
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = perl-text-csv-xs
 	depends = perl
 	options = !emptydirs
 	options = purge
-	source = https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/Text-CSV_XS-1.55.tgz
-	sha512sums = d9b1f5cef29ba01a89037822c12f7abcb2ebf0c2090635c878edbfb968820dc458f4245775717f798b48444280cf49164ef7f8ce51d93b9b2dc77a75cd4fab70
+	source = https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/Text-CSV_XS-1.56.tgz
+	sha512sums = c178851ded84189420ab65de6177b6fd579ba661f86b8c93cf5aee142f6cc35b651e4a78e4750455e1c377b13fc58b1d6c2abc0b892f5542966e2f70c074c71d
 
 pkgname = perl-text-csv-xs
