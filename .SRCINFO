@@ -1,0 +1,12 @@
+pkgbase = python-types-click
+	pkgdesc = Typing stubs for click
+	pkgver = 7.1.8
+	pkgrel = 1
+	url = https://pypi.org/project/types-click
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/t/types-click/types-click-7.1.8.tar.gz
+	sha256sums = b6604968be6401dc516311ca50708a0a28baa7a0cb840efd7412f0dbbff4e092
+
+pkgname = python-types-click
