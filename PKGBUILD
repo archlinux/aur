@@ -2,7 +2,7 @@
 
 _pkgname="getparty"
 pkgname="${_pkgname}-bin"
-pkgver=1.22.1
+pkgver=1.22.2
 pkgrel=1
 pkgdesc="HTTP download manager with multi-parts"
 arch=('x86_64' 'i686' 'aarch64')
@@ -16,11 +16,11 @@ source=("README-${pkgver}.md::${url}/raw/v${pkgver}/README.md"
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_x86_64.tar.gz")
 source_i686=("${_pkgsrc}-i686.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_i386.tar.gz")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_arm64.tar.gz")
-sha256sums=('12a31a9c4e7da16be6baa263a1696f576cda6917ac5b6a33b419ad800a7787b6'
+sha256sums=('fd0d1dbbdc791ad72461b58d54af5c0e1b4b13b77f7b6833c037a4478cee3db0'
             '05825076a9292282160131e3644317e5977c13c414144e76c6658008c78989cd')
-sha256sums_x86_64=('a170d60e2185b47e043c8e60c13bdddbb00c1c94f0e075e1954dd60c2b475446')
-sha256sums_i686=('e1feae24b4c214ef0f97af4f6b113268c3f8861dec81cf91ed971fe7f5e5b93d')
-sha256sums_aarch64=('ed52f036675576adf415f256863327e4c68e9edc7603fb001c4e8177f063fd75')
+sha256sums_x86_64=('23a74c5b986c09d9ade0b4ebabb5d7afac4505ee5db3a6702add82af4cf3606a')
+sha256sums_i686=('150a49b4b97f2c0f480ce055abaa2b1552723923d93ff85d89302e619382b993')
+sha256sums_aarch64=('2fdec687efe28b745d947f0f6cfad2725bb6fffb30698076d9ce8337e7fa8d93')
 
 package() {
   cd "${srcdir}"
