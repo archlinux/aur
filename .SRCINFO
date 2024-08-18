@@ -1,0 +1,15 @@
+pkgbase = 2048.zig-bin
+	pkgdesc = 2048 made in zig
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/ratakor/2048.zig
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = ISC
+	provides = 2048
+	conflicts = 2048
+	source = https://github.com/ratakor/2048.zig/releases/download/0.2.3/x86_64-linux-2048
+	sha256sums = SKIP
+
+pkgname = 2048.zig-bin
