@@ -2,6 +2,7 @@
 
 pkgname=firefox-extension-arch-search
 pkgver=2.0.0
+pkgrel=2
 _amo_base_url=https://addons.mozilla.org/firefox/downloads/file
 
 _alpkgs_code=archlinux_packages_search
@@ -49,7 +50,6 @@ _alsrc_ver=1.0.0
 _alsrc_dl_id=4337419
 _alsrc_gecko_id=ArchSrc@archlinux.org
 
-pkgrel=1
 pkgdesc="A set of Web Extensions that adds ArchLinux (bug tracker, forum, packages, wiki, AUR) as a search engine to the Firefox browser."
 arch=('any')
 url="https://github.com/noraj/firefox-extension-arch-search"
@@ -77,7 +77,7 @@ noextract=("$_alaur_code-$_alaur_ver.xpi"
            "$_alsec_code-$_alsec_ver.xpi"
            "$_alsrc_code-$_alsrc_ver.xpi")
 b2sums=('1a0010fefea0986b0ded2c483e56244418b000712d84c0d252a00f35622905f4e6dd67d3037e183012d03b1233523d613cf0d8c525a3668058f92c7769409c42'
-        'f7e38c977546fd3cf5ae104ade76291ea622bc0a372887d1cde4a7090bfda875454db58b5be83415b0faa1a4798702e21ba41a126e1c1506001bfc6cc163e5fd'
+        '7e9c6978dacf709cf8dc0be044492ef276c1835ed30db5aa64fbc35f3a45608885a6662fc4048985ae74e812f94b202d543dcdfcbb431454c2898f3337e98c22'
         '883c3569f1e1ad12cd3d1109fadde148fd8040126dcd6bff4aeec027c246f3b4d5e7d8552934eb7cc29b357152699606df3d4656d86fae0722054b13914e46bb'
         '2980f6e853a2d30236bed266da9a942f41b6393c1aa14b5bab38e79d26f4e741bd536331476b364e98f333a83e04f364554e141e1eab63ee0c1bf69615c9aa2a'
         'ae8574a0899510a7d6f338a24f0ca96456fd3ff3e14a1c1c1e5a7d4a225df1dcb23329ce71c5d49d3b4374f7c595ba390b5556d3bb83d3a13147d38103473e17'
