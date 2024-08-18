@@ -1,8 +1,8 @@
 # Maintainer: Giuseppe Sellaroli <g.sellaroli  at  yahoo  dot  it>
 pkgname=input-wacom-dkms
 _pkgname=input-wacom
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Latest Kernel modules form Wacom tablets (DKMS). Useful if your wacom tablet is not supported upstream yet."
 arch=('any')
 url="https://github.com/linuxwacom/input-wacom/wiki/Installing-input-wacom-from-source"
@@ -15,19 +15,13 @@ source=(
 	"dkms.conf"
 	"blacklist-input-wacom-dkms.conf"
 	"move-modules"
-	"9dbad4457f9cfe48b57f39055498559639fb04c0.patch"
 )
 noextract=()
-md5sums=('66d909c5e3de6b1a038da2a73f1461da'
-         'b1a1c062fe2d5c9e961ba6b1ffac30fe'
+md5sums=('8b8453c359d11d65b967a575c9256f9f'
+         '641959c08e87fc438768194126be9813'
          'da99119208e69b9a611b1809e1f241f8'
-         '8a851dede08da29c2810fb58e8b69910'
-         'a5d9e4c91cc7af6d04af9c9589e4bb51')
+         '8a851dede08da29c2810fb58e8b69910')
          
-prepare() {
-    cd ${_pkgname}-${pkgver}
-    patch --forward --strip=1 --input=../9dbad4457f9cfe48b57f39055498559639fb04c0.patch
-}
 package() {      
  
 	installdir="$pkgdir/usr/src/$_pkgname-$pkgver"
