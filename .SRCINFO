@@ -1,6 +1,6 @@
 pkgbase = alephium-desktop-wallet-bin
 	pkgdesc = The official Alephium desktop wallet.
-	pkgver = 2.3.3
+	pkgver = 2.3.6
 	pkgrel = 1
 	url = https://github.com/alephium/alephium-frontend/tree/master/apps/desktop-wallet
 	arch = x86_64
@@ -47,7 +47,7 @@ pkgbase = alephium-desktop-wallet-bin
 	optdepends = libappindicator-gtk3
 	conflicts = alephium-wallet-bin
 	replaces = alephium-wallet-bin
-	source_x86_64 = https://github.com/alephium/alephium-frontend/releases/download/alephium-desktop-wallet%402.3.3/alephium-desktop-wallet_2.3.3_amd64.deb
-	sha256sums_x86_64 = 1dbd18299e983db61f729a0daf40fa4d7c68c6539fb2e909727ff5e0b998bddb
+	source_x86_64 = https://github.com/alephium/alephium-frontend/releases/download/alephium-desktop-wallet%402.3.6/alephium-desktop-wallet_2.3.6_amd64.deb
+	sha256sums_x86_64 = b43505ba3a1a1f445316c24508a02c9804742a8fd2c5cf82f90e6806240668a9
 
 pkgname = alephium-desktop-wallet-bin
