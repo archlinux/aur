@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Corey Hinshaw <corey@electrickite.org>
 pkgname=system76-firmware-git
-pkgver=1.0.62.r3.g5b54270
+pkgver=1.0.62.r4.g987eb58
 pkgrel=1
 pkgdesc="System76 Firmware Tool and Daemon"
 arch=('x86_64' 'aarch64')
@@ -35,13 +35,13 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  make vendor
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  make VENDORED=1
+  ARGS+=" --frozen" make
 }
 
 package() {
