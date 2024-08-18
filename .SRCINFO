@@ -1,0 +1,15 @@
+pkgbase = jlecmd-git
+	pkgdesc = Automatic and Custom Destinations jump list parser with Windows 10 support
+	pkgver = 1.1.0.0.r54.gf76cae2
+	pkgrel = 1
+	url = https://github.com/EricZimmerman/JLECmd
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-6.0
+	makedepends = git
+	depends = dotnet-runtime-6.0
+	options = !strip
+	source = git+https://github.com/EricZimmerman/JLECmd
+	b2sums = SKIP
+
+pkgname = jlecmd-git
