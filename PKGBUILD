@@ -2,7 +2,7 @@
 # Co-Maintainer: soloturn <soloturn@gmail.com>
 pkgname=cosmic-edit-git
 pkgver=1.0.0.alpha.1.r2.g536cc2f
-pkgrel=1
+pkgrel=2
 pkgdesc="Text editor for the COSMIC desktop"
 arch=('x86_64')
 url="https://github.com/pop-os/cosmic-edit"
@@ -21,7 +21,6 @@ makedepends=(
 )
 provides=("${pkgname%-git}" 'cosmic-text-editor')
 conflicts=("${pkgname%-git}" 'cosmic-text-editor')
-options=('!lto')
 source=('git+https://github.com/pop-os/cosmic-edit.git')
 sha256sums=('SKIP')
 
