@@ -2,18 +2,18 @@
 # Contributor: Marius Hirt <marius-hirt@web.de>
 
 pkgname="zork++"
-pkgver=0.10.3
+pkgver=0.10.4
 pkgrel=1
 pkgdesc="A project manager and build system for modern C++"
 arch=('any')
 url='https://github.com/zerodaycode/Zork'
 license=('MIT')
 makedepends=('cargo')
-# checkdepends=('clang' 'gcc')
+# checkdepends=('clang')
 depends=('glibc' 'gcc-libs')
 _pkgsrc="Zork-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d8171e719c5148206760d56a86438c694c7e780874bc065b67aa0fbc82e9476f')
+sha256sums=('8e9f79f92d74ed9e440500c60fc5e4e0edc03a8644be110370f725c8ea2da953')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}/${pkgname}"
@@ -31,7 +31,6 @@ build() {
 check() {
   cd "${srcdir}/${_pkgsrc}/${pkgname}"
   export RUSTUP_TOOLCHAIN=stable
-  # Integration tests would need clang20 and gcc, so we skip them
   # cargo test --frozen --all-features
   cargo test --release --frozen --all-features --bins
   cargo test --release --frozen --all-features --lib
