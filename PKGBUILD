@@ -18,5 +18,4 @@ chmod +x "${srcdir}/neolux-tictactoe-archlinux"
 }
 package() {
 install -Dm755 "${srcdir}/neolux-tictactoe-archlinux" "${pkgdir}/usr/bin/neolux-tictactoe"
-echo ${pkgdir}
 }

@@ -8,4 +8,4 @@ pkgbase = neolux-tic-tac-toe
 	source = neolux-tictactoe-archlinux::https://github.com/neoluxis/GTK-Tic-Tac-Toe/releases/download/1.0/TicTacToe-GTK-archlinux
 	sha256sums = bbd034cd6d593a8bd212cb7e7d7ebbfccd22338f948185ccf961c7c38ddad5a7
 
-pkgname = neolux-tic-tac-toe-bin
+pkgname = neolux-tic-tac-toe
