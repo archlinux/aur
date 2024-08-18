@@ -1,10 +1,10 @@
 # Maintainer: Groctel <aur@taxorubio.com>
-# shellcheck disable=SC2034,SC2154,SC2164
+# shellcheck disable=SC1091,SC2034,SC2154,SC2164
 
 _name=moderngl
 
 pkgname=python-moderngl-git
-pkgver=5.10.0.r16.g27575f16
+pkgver=5.11.1.r0.g11d3e2ea
 pkgrel=1
 pkgdesc="Modern OpenGL binding for python."
 
@@ -13,9 +13,10 @@ license=("MIT")
 url="https://github.com/moderngl/moderngl"
 
 source=("git+$url.git")
-sha512sums=("SKIP")
+sha512sums=('SKIP')
 
 options=(!emptydirs)
+conflicts=(python-moderngl)
 
 depends=(
     "libgl"
@@ -28,6 +29,9 @@ makedepends=(
     "python-setuptools"
     "python-wheel"
 )
+checkdepends=(
+    "python-virtualenv"
+)
 
 pkgver () {
     cd "$srcdir/$_name"
@@ -37,6 +41,20 @@ pkgver () {
 build () {
     cd "$srcdir/$_name"
     python -m build --wheel --no-isolation
+}
+
+check () {
+    cd "$srcdir/$_name"
+
+
+    python -m venv venv
+    (
+        source venv/bin/activate
+        pip install ./dist/*.whl numpy pytest scipy setuptools
+        python setup.py build_ext -i
+        python -m pytest
+    )
+    rm -rf venv
 }
 
 package () {
