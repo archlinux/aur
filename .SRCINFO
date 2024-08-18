@@ -8,7 +8,6 @@ pkgbase = python-term-image
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-pytest
 	depends = python-requests
 	depends = python-pillow
 	depends = python-typing_extensions

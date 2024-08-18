@@ -10,7 +10,7 @@ license=('MIT')
 _name=${pkgname#python-}
 depends=(python-requests python-pillow python-typing_extensions)
 optdepends=(python-urwid)
-makedepends=(python-build python-installer python-wheel python-pytest)
+makedepends=(python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
 sha256sums=('07320573baa667dcde145d55e94769cbaafeea43b61245245153ff5075b55ffb')
 
