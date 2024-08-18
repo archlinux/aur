@@ -1,7 +1,7 @@
 pkgbase = cosmic-applets-git
 	pkgdesc = Applets for COSMIC Panel
 	pkgver = 1.0.0.alpha.1.r18.g323e8a5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/cosmic-applets
 	arch = x86_64
 	arch = aarch64
@@ -18,7 +18,6 @@ pkgbase = cosmic-applets-git
 	depends = libxkbcommon
 	provides = cosmic-applets
 	conflicts = cosmic-applets
-	options = !lto
 	source = git+https://github.com/pop-os/cosmic-applets.git
 	sha256sums = SKIP
 

@@ -3,7 +3,7 @@
 
 pkgname=cosmic-applets-git
 pkgver=1.0.0.alpha.1.r18.g323e8a5
-pkgrel=1
+pkgrel=2
 pkgdesc="Applets for COSMIC Panel"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-applets"
@@ -24,7 +24,6 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-options=('!lto')
 source=('git+https://github.com/pop-os/cosmic-applets.git')
 sha256sums=('SKIP')
 
@@ -37,6 +36,9 @@ prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+
+  # Use thin LTO objects
+  sed -i 's/lto = "fat"/lto = "thin"/' Cargo.toml
 }
 
 build() {
