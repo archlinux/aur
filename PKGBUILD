@@ -1,6 +1,6 @@
 # Maintainer: Martin Kühl <martin.kuehl@posteo.net>
 pkgname=gnome-summoner
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 epoch=
 pkgdesc="Launcher for Gnome that doesn't search, it summons"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 noextract=()
-sha512sums=('3d2a3938fe655385f76dcb1c89fd7cf99115fbb4d92a3bfb69a79b47f2182338e5b631ba886c2e8e123069238bcddd43b21e972f00a162aee3421038c19f44ec')
+sha512sums=('fbde5a7ff6978d2692ef00a32d521fa4cb19695634b753632bec0d0f94882edf4fec1b2823ad52330a95028d9fd2001528ebdff80b2d59c1461dec12e0306832')
 validpgpkeys=()
 
 prepare() {
