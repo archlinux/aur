@@ -1,0 +1,12 @@
+diff --unified --recursive --text a/debian/cosmic-greeter.service b/debian/cosmic-greeter.service
+--- a/debian/cosmic-greeter.service	2024-08-05 12:38:49.374088578 -0600
++++ b/debian/cosmic-greeter.service	2024-08-18 09:39:23.736710701 -0600
+@@ -17,6 +17,5 @@
+ StartLimitBurst=5
+ StartLimitInterval=30
+ 
+-# Managed by debconf
+-#[Install]
+-#Alias=display-manager.service
++[Install]
++Alias=display-manager.service

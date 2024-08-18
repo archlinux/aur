@@ -1,7 +1,7 @@
 pkgbase = cosmic-greeter-git
 	pkgdesc = libcosmic greeter for greetd, which can be run inside cosmic-comp
 	pkgver = 1.0.0.alpha.1.r5.g3679ee5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/cosmic-greeter
 	arch = x86_64
 	arch = aarch64
@@ -21,6 +21,8 @@ pkgbase = cosmic-greeter-git
 	provides = cosmic-greeter
 	conflicts = cosmic-greeter
 	source = git+https://github.com/pop-os/cosmic-greeter.git
+	source = display-manager.patch
 	sha256sums = SKIP
+	sha256sums = 12772a54559f299f9f8e8c5687b9aff30f37e38328e59692e27861f94cf6a0c7
 
 pkgname = cosmic-greeter-git
