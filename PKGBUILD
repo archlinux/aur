@@ -1,8 +1,8 @@
 # Maintainer: E.A.Davison <eadavison at protonmail dot com>
 
 pkgname=ctune-git
-pkgver=v1.2.0
-pkgrel=2
+pkgver=v1.3.0
+pkgrel=0
 pkgdesc="NCurses internet radio player for Linux."
 arch=('x86_64' 'aarch64')
 url="https://github.com/An7ar35/ctune"
@@ -21,6 +21,7 @@ makedepends=('make'
 
 optdepends=('pulseaudio: for PulseAudio plugin support'
             'pipewire-pulse: for using the pulseaudio plugin on Pipewire'
+            'pipewire: for PipeWire plugin support'
             'sdl2: for SDL2 output plugin support'
             'sndio: for SNDIO output plugin support'
             'vlc: for VLC player plugin support')
@@ -28,7 +29,7 @@ optdepends=('pulseaudio: for PulseAudio plugin support'
 conflicts=('ctune')
 provides=('ctune')
 license=('AGPL3')
-source=(git+https://github.com/An7ar35/ctune.git#branch=origin/dev)
+source=(git+https://github.com/An7ar35/ctune.git#tag=v1.3.0)
 sha512sums=('SKIP')
 
 build() {
