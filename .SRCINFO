@@ -1,7 +1,7 @@
 pkgbase = mkdocs-material
 	pkgdesc = Material design theme for MkDocs
 	pkgver = 9.5.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://squidfunk.github.io/mkdocs-material/
 	arch = any
 	license = MIT
@@ -26,7 +26,6 @@ pkgbase = mkdocs-material
 	optdepends = python-jieba: allow search for chinese language
 	provides = mkdocs-material
 	provides = python-mkdocs-material
-	provides = mkdocs-material-extensions
 	conflicts = python-mkdocs-material
 	replaces = python-mkdocs-material
 	options = !strip

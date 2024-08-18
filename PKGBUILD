@@ -6,12 +6,12 @@
 
 pkgname="mkdocs-material"
 pkgver=9.5.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Material design theme for MkDocs"
 url="https://squidfunk.github.io/mkdocs-material/"
 license=("MIT")
 arch=("any")
-provides=("mkdocs-material" "python-mkdocs-material" "mkdocs-material-extensions")
+provides=("mkdocs-material" "python-mkdocs-material")
 conflicts=("python-mkdocs-material")
 replaces=("python-mkdocs-material")
 depends=("mkdocs"
