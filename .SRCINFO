@@ -1,7 +1,7 @@
 pkgbase = firefox-extension-arch-search
 	pkgdesc = A set of Web Extensions that adds ArchLinux (bug tracker, forum, packages, wiki, AUR) as a search engine to the Firefox browser.
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/noraj/firefox-extension-arch-search
 	arch = any
 	groups = firefox-addons
@@ -37,6 +37,6 @@ pkgbase = firefox-extension-arch-search
 	b2sums = e422cde6ee9d0ff10866713a5ebc5219dbafc9e0381d7aa6f185ed14a2758c53e56a020502c2b8badc1eb2e8844ee73c74f0a8a2f41588638be53077677f53cc
 	b2sums = ef1683e513719d083a2478d1418e10ddc35364e799032ea3a027b40c50c39b51ffbcf9aa25dac935b14bf4dc5d45ee29cbc8b924c16cbbcf3de0e7c3c5738a43
 	b2sums = b82d5f510ecdd9eb3ec75ae8f73c4a3e06da80e31f6f972a192534ebebf029b1be4f260cd907296274d184a9ac00162f2ff3c0707471e443ce225b93d8b2e218
-	b2sums = a4c401071f50f885cea359404502a4da0459efd97fef9310d9484e9801b8b6eff3085dd0cfc6917b575dd3def37695c8cbeb37221e51855b8e97376c59b3d39a
+	b2sums = 34a88b0db4073f62e676a5f00808deec333e71090799ef011c8d75904e865d566539ba7a495fd2738bf8e34429240b31648664cdd37fe28feb2f298ee3bb5f6e
 
 pkgname = firefox-extension-arch-search
