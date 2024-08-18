@@ -7,11 +7,11 @@ pkgname="${_pkgname}-git"
 _pkgver="latest"
 epoch=1
 pkgver=6.08+r479.20240817.gb08f091
-pkgrel=1
+pkgrel=2
 pkgdesc='Interface to the DeutscheBahn online departure monitor'
 url='http://finalrewind.org/projects/Travel-Status-DE-DeutscheBahn/'
 license=(
-  'PerlArtistic'
+  'Artistic-1.0-Perl'
   'CC0-1.0'
 )
 arch=('any')
@@ -107,8 +107,10 @@ package() {
   ./Build install
   printf '\n'
 
-  install -D -v -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.PerlArtistic.txt"
   install -D -v -m644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -D -v -m644 Changelog "${pkgdir}/usr/share/doc/${_pkgname}/Changelog"
   install -D -v -m644 git.log "${pkgdir}/usr/share/doc/${_pkgname}/git.log"
+
+  install -D -v -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.Travel-Status-DE-DeutscheBahn.PerlArtistic.txt"
+  install -D -v -m644 ext/transport-apis/license "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.git_submodule_transport-apis.CC0.txt"
 }
