@@ -1,6 +1,36 @@
 Version history
 ===============
 
+0.10.26
+-------
+
+2024-08-17
+
+In multiplayer, when you've selected a spawn delay handicap, the in-game panel
+shows you the remaining time until your first lix spawns.
+
+Fix an animation regression from Lix 0.10.25: Amanda's occult-style hatch
+animated only through its first row of frames, then disappeared. This didn't
+affect physics, the lix continued to spawn correctly from thin air. Now, all
+hatches animate correctly through all frames again.
+
+Refactor permutations to be allocation-free.
+
+
+
+0.10.25
+-------
+
+2024-07-24
+
+Refactor the collision code between lix and goals a.k.a. exits.
+This speeds up rewinding and mass replay verification by at least 13 %.
+
+Refactor the world into a mutable and an immutable half to make savestates
+smaller and speed up rewinding. This brings only a small improvement.
+
+Add Rainbow Day, a 2-player and 4-player map by Miri.
+
 
 
 0.10.24
