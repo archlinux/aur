@@ -1,6 +1,6 @@
 # Maintainer: Neolux Lee <aur.neolux@neolux.cn.eu.org>
 
-pkgname=neolux-tic-tac-toe-bin
+pkgname=neolux-tic-tac-toe
 pkgver=1.0
 pkgrel=0
 pkgdesc='A simple tic-tac-toe game written in GTK'

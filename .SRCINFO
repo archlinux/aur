@@ -1,4 +1,4 @@
-pkgbase = neolux-tic-tac-toe-bin
+pkgbase = neolux-tic-tac-toe
 	pkgdesc = A simple tic-tac-toe game written in GTK
 	pkgver = 1.0
 	pkgrel = 0
