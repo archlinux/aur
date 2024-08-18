@@ -10,8 +10,8 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-gtest
-pkgver=1.14.0
-pkgrel=2
+pkgver=1.15.2
+pkgrel=1
 arch=('any')
 pkgdesc="Google Test - C++ testing utility (Android ${_android_arch})"
 url='https://github.com/google/googletest'
@@ -25,16 +25,17 @@ replaces=("android-${_android_arch}-gmock")
 provides=("android-${_android_arch}-gmock")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/google/googletest/archive/v${pkgver}.tar.gz"
-        'gtest-version.patch')
-md5sums=('c8340a482851ef6a3fe618a082304cfc'
+        '0001-gtest-version.patch')
+md5sums=('7e11f6cfcf6498324ac82d567dcb891e'
          '4b2b6493b95389d3428470eb3f904df6')
 
 prepare() {
     cd "${srcdir}/googletest-${pkgver}"
 
-    patch -Np1 -i ../gtest-version.patch
+    patch -Np1 -i ../0001-gtest-version.patch
     sed -i "s|__GOOGLETEST_VERSION__|${pkgver}|g" googlemock/CMakeLists.txt
     sed -i "s|__GOOGLETEST_VERSION__|${pkgver}|g" googletest/CMakeLists.txt
+    sed -i "s|GTEST_INTERNAL_ATTRIBUTE_MAYBE_UNUSED||g" googlemock/include/gmock/gmock-matchers.h
 }
 
 build() {
