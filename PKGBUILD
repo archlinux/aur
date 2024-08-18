@@ -3,7 +3,7 @@
 
 pkgname=rar2fs-git
 _pkgname=rar2fs
-pkgver=1.29.7.r0.g799ca3b
+pkgver=1.29.7.r1.gba480df
 _unrarver=7.0.9
 pkgrel=1
 pkgdesc="Fuse file system for reading Rar archives"
@@ -11,8 +11,8 @@ arch=("i686" "x86_64")
 license=("GPL-3.0-only")
 url="https://github.com/hasse69/rar2fs"
 url="https://hasse69.github.io/rar2fs/"
-depends=("fuse2" "glibc" "gcc-libs")
-makedepends=("git")
+depends=(fuse2 glibc gcc-libs)
+makedepends=(git autoconf automake)
 source=("http://www.rarlab.com/rar/unrarsrc-${_unrarver}.tar.gz"
 	git+https://github.com/hasse69/rar2fs.git)
 md5sums=('a18509f604f31cf7a73473ee97d08ce5'

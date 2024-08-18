@@ -1,12 +1,14 @@
 pkgbase = rar2fs-git
 	pkgdesc = Fuse file system for reading Rar archives
-	pkgver = 1.29.7.r0.g799ca3b
+	pkgver = 1.29.7.r1.gba480df
 	pkgrel = 1
 	url = https://hasse69.github.io/rar2fs/
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
 	depends = fuse2
 	depends = glibc
 	depends = gcc-libs
