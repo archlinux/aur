@@ -1,0 +1,18 @@
+pkgbase = python-picharsso
+	pkgdesc = A utility for converting images to text art.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/kelvindecosta/picharsso
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-click
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-sty
+	source = https://files.pythonhosted.org/packages/source/p/picharsso/picharsso-2.0.1.tar.gz
+	source = LICENSE::https://github.com/kelvindecosta/picharsso/raw/v2.0.1/LICENSE
+	sha256sums = eb4d8b1a1fe6927874d02362eeb2436f86bf9b4fee02cc0ac769e8b761c1276f
+	sha256sums = SKIP
+
+pkgname = python-picharsso
