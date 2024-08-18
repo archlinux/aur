@@ -1,13 +1,14 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=en-croissant
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Modern chess GUI and analysis tool'
 arch=('x86_64')
 url='https://github.com/franciscoBSalgueiro/en-croissant'
 license=('GPL-3.0-only')
 depends=(
+  'bzip2'
   'cairo'
   'gcc-libs'
   'gdk-pixbuf2'
@@ -39,11 +40,9 @@ source=(
   'en-croissant.desktop'
 )
 
-sha512sums=(
-  'f5c72be4efa7a12e14cde95f9a8b93417cb0073e681f9e35ba01fb4b92962284948ed9bdeff648f59355a0ac03e3b509c068a32835388e639a943d8114f6785e'
-  'fe5dbb7df6b25d9c1512bf9e38dc4eb8096d5c9bcafe328f7e55fb42064695234016e3baed7008bded04501494e149bcbb34ad5ebbaa885eda880497d8cd208e'
-  '0ca0416ec4941d0a9194048b7e099c433bdb7f309dd0746e272757f02e5d13bb899090ac390b9fbdd6f075070e5cf54996d63348f5f1cafdc8f5d7d798b92023'
-)
+sha512sums=('122b1b5fcad7bc473b5ce8e2f627bd4e784cbf26aba60ec43cf1c8ef2405370df30892b39c9101b070f1930c25d6a25a5889d7af50e9260eaa5c915c0c5c7339'
+            'fe5dbb7df6b25d9c1512bf9e38dc4eb8096d5c9bcafe328f7e55fb42064695234016e3baed7008bded04501494e149bcbb34ad5ebbaa885eda880497d8cd208e'
+            '0ca0416ec4941d0a9194048b7e099c433bdb7f309dd0746e272757f02e5d13bb899090ac390b9fbdd6f075070e5cf54996d63348f5f1cafdc8f5d7d798b92023')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
