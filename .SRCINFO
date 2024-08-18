@@ -1,6 +1,6 @@
 pkgbase = r-shinydashboardplus
 	pkgdesc = Add More 'AdminLTE2' Components to 'shinydashboard'
-	pkgver = 2.0.4
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=shinydashboardPlus
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-shinydashboardplus
 	optdepends = r-shinyjqui
 	optdepends = r-shinywidgets
 	optdepends = r-styler
-	source = https://cran.r-project.org/src/contrib/shinydashboardPlus_2.0.4.tar.gz
-	sha256sums = b87cd038ed94235d6210a434d1fa80abac3ecea47e01ad8d9892ec4023ea9385
+	source = https://cran.r-project.org/src/contrib/shinydashboardPlus_2.0.5.tar.gz
+	sha256sums = 0bc34cd75f6df1d9c6cb8e7e98e18c5c9c4f739ef54c8d79462597dd1cf3a3cc
 
 pkgname = r-shinydashboardplus
