@@ -17,7 +17,7 @@ pkgver() {
 
 package() {
 	mkdir -p "${pkgdir}/usr/share/albert/python/plugins/"
-	cp -rf "${srcdir}/python/." "${pkgdir}/usr/share/albert/python/plugins/"
+	cp -rf "${srcdir}/${pkgname}/." "${pkgdir}/usr/share/albert/python/plugins/"
 	rm -rf "${pkgdir}/usr/share/albert/python/plugins/README.md"
 	rm -rf "${pkgdir}/usr/share/albert/python/plugins/CONTRIBUTING.md"
 }
