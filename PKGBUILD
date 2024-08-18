@@ -2,7 +2,7 @@
 
 _pkgname=converternow
 pkgname=$_pkgname-bin
-pkgver=4.2.2
+pkgver=4.2.3
 pkgrel=1
 pkgdesc="The Unit Converter app: easy, immediate and multi-platform (binary release)"
 url="https://github.com/ferraridamiano/ConverterNOW"
@@ -12,7 +12,7 @@ depends=('gtk3')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=($_pkgname-linux-x64-$pkgver.tar.gz::"$url/releases/download/v$pkgver/$_pkgname-linux-x64.tar.gz")
-sha256sums=('4128dff75c59c6194269b2ec1c70791869db4cf26c8815d4345caf4ad0962842')
+sha256sums=('0eb04537fc26c4f106755c81e1baa4e38cde4cb3b230e5287303c3e883fde20f')
 
 prepare() {
 # Create a shortcut
