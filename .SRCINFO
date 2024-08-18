@@ -1,15 +1,16 @@
 pkgbase = usql-bin
 	pkgdesc = Universal command-line interface for SQL databases
-	pkgver = 0.12.0
+	pkgver = 0.19.3
 	pkgrel = 1
-	url = https://github.com/xo/usql
+	url = https://github.com/xo/usql/
+	arch = amd64
+	arch = arm
+	arch = arm64
 	arch = x86_64
 	license = MIT
 	provides = usql
-	options = !strip
-	source = usql-bin-0.12.0.tar.bz2::https://github.com/xo/usql/releases/download/v0.12.0/usql_static-0.12.0-linux-amd64.tar.bz2
-	source = LICENSE::https://github.com/xo/usql/raw/master/LICENSE
-	sha256sums = b4d289124f8106dafaf71de4d75f121f48d14ee33ecc17ac46256e3d1ef0ab9e
-	sha256sums = ab7cf54dcb0b4de0442aa073f93501b667dcfba13e7576d9a54f46e1109a6365
+	conflicts = usql
+	source = https://github.com/xo/usql/releases/download/v0.19.3/usql-0.19.3-linux-amd64.tar.bz2
+	b2sums = efdc7bbb7b5b25554230da9a79fa06aa356f82ccb232c7cb424bf16214913f9cea861f4017d454f1b10f3550c087748e19f987b427811cf6a0dc2d073c06a321
 
 pkgname = usql-bin
