@@ -2,7 +2,7 @@
 
 pkgname=maelstrom-git
 pkgver=r11.767d95c
-pkgrel=3
+pkgrel=4
 pkgdesc='Asteroids-type game with sound and 3D objects'
 arch=('x86_64')
 license=('GPL')
@@ -40,6 +40,6 @@ package() {
   install -d "${pkgdir}/usr/share/applications"
   install -dm755 "${pkgdir}/usr/bin"
   install -m644 "${srcdir}/Maelstrom.desktop" "${pkgdir}/usr/share/applications/Maelstrom.desktop"
-  ln -s "${pkgdir}/usr/share/Maelstrom/Maelstrom" "${pkgdir}/usr/bin/Maelstrom"
+  ln -s ../share/Maelstrom/Maelstrom "$pkgdir"/usr/bin/Maelstrom
 }
 

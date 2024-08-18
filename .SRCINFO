@@ -1,7 +1,7 @@
 pkgbase = maelstrom-git
 	pkgdesc = Asteroids-type game with sound and 3D objects
 	pkgver = r11.767d95c
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/libsdl-org/Maelstrom
 	arch = x86_64
 	license = GPL
