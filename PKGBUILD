@@ -1,8 +1,8 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=radio
-pkgver=1.0.14
-_commit=e2637eec7575c098994bbb775fc04770cdceadd0
+pkgver=1.0.15
+_commit=ee7bc7a2d4010b892b4f3da7c10ca6fad4ab7e9b
 pkgrel=1
 pkgdesc='Simple Radio for Linux'
 url="https://github.com/alexkdeveloper/radio"
