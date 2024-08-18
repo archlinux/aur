@@ -9,7 +9,7 @@
 _pkgname="godot-mono"
 pkgname="$_pkgname-bin"
 pkgver=4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 url="https://github.com/godotengine/godot"
 license=('MIT')
@@ -35,10 +35,10 @@ optdepends=(
 )
 
 source=(
-  "https://raw.githubusercontent.com/godotengine/godot/$pkgver-stable/misc/dist/linux/org.godotengine.Godot.desktop"
-  "https://raw.githubusercontent.com/godotengine/godot/$pkgver-stable/misc/dist/linux/godot.6"
-  "https://raw.githubusercontent.com/godotengine/godot/$pkgver-stable/icon.svg"
-  "https://raw.githubusercontent.com/godotengine/godot/$pkgver-stable/LICENSE.txt"
+  "$_pkgname-$pkgver.desktop"::"https://raw.githubusercontent.com/godotengine/godot/$pkgver-stable/misc/dist/linux/org.godotengine.Godot.desktop"
+  "$_pkgname-$pkgver.6"::"https://raw.githubusercontent.com/godotengine/godot/$pkgver-stable/misc/dist/linux/godot.6"
+  "$_pkgname-$pkgver.svg"::"https://raw.githubusercontent.com/godotengine/godot/$pkgver-stable/icon.svg"
+  "$_pkgname-$pkgver-license.txt"::"https://raw.githubusercontent.com/godotengine/godot/$pkgver-stable/LICENSE.txt"
 )
 source_x86_64=("https://github.com/godotengine/godot/releases/download/${pkgver}-stable/Godot_v${pkgver}-stable_mono_linux_x86_64.zip")
 source_i686=("https://github.com/godotengine/godot/releases/download/${pkgver}-stable/Godot_v${pkgver}-stable_mono_linux_x86_32.zip")
@@ -46,9 +46,9 @@ source_armv7h=("https://github.com/godotengine/godot/releases/download/${pkgver}
 source_aarch64=("https://github.com/godotengine/godot/releases/download/${pkgver}-stable/Godot_v${pkgver}-stable_mono_linux_arm64.zip")
 
 sha256sums=(
-  '3b4b5da098a9eaaf0b99cb2880b7ecf7ff875b703afd82c7e62f2b44f2a45933'
+  'eb8fb0f247b2bb2cff59ae88e6232286bd584ad13c005e41b7d9d7396bd5ef3c'
   '23f418e34ceeae51bc1c802645d6a56a6420e1bea0fbed503f66550539d01995'
-  '28770187b6f1d3fdc8a8c01879fefa1a17c350923ed26349e0fddd11d6df4c7c'
+  '7a91200f9b7fd77721ebdf01ea9f5f9b7b12937cf2eb5de6cd743893985ec048'
   'b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80'
 )
 sha256sums_x86_64=('ecdf3cd5a6004a6568c199581d58ba685a9905926e51677906b76fbdd9cad351')
@@ -82,19 +82,19 @@ package() {
   esac
 
   install -Dm644 \
-    "${srcdir}/icon.svg" \
-    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+    "${srcdir}/$_pkgname-$pkgver.svg" \
+    "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
 
   install -Dm644 \
-    "${srcdir}/LICENSE.txt" \
+    "${srcdir}/$_pkgname-$pkgver-license.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -Dm644 \
-    "${srcdir}/godot.6" \
+    "${srcdir}/$_pkgname-$pkgver.6" \
     "${pkgdir}/usr/share/man/man6/godot-mono-bin.6"
 
   install -Dm644 \
-    "${srcdir}/org.godotengine.Godot.desktop" \
+    "${srcdir}/$_pkgname-$pkgver.desktop" \
     "${pkgdir}/usr/share/applications/org.godotengine.Godot-mono-bin.desktop"
 
   sed -i "s/Exec=godot/Exec=godot-mono-bin/g" "$pkgdir/usr/share/applications/org.godotengine.Godot-mono-bin.desktop"
