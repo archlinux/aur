@@ -4,13 +4,13 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-freetype2-bootstrap
-pkgver=2.13.2
-pkgrel=3
+pkgver=2.13.3
+pkgrel=1
 arch=('any')
 pkgdesc="Font rasterization library (Android ${_android_arch})"
 url='https://www.freetype.org/'
 license=('GPL')
-groups=(android-freetype2)
+groups=('android-freetype2-bootstrap')
 depends=("android-ndk"
          "android-${_android_arch}-zlib"
          "android-${_android_arch}-bzip2"
@@ -20,11 +20,11 @@ provides=("android-${_android_arch}-freetype2")
 conflicts=("android-${_android_arch}-freetype2")
 makedepends=('android-meson')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://download-mirror.savannah.gnu.org/releases/freetype/freetype-$pkgver.tar.xz"{,.sig}
+source=("https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.xz"{,.sig}
         '0001-Enable-table-validation-modules.patch'
         '0002-Enable-subpixel-rendering.patch'
         '0003-Enable-long-PCF-family-names.patch')
-md5sums=('1f625f0a913c449551b1e3790a1817d7'
+md5sums=('f3b4432c4212064c00500e1ad63fbc64'
          'SKIP'
          'edae0c9068cd60c4edde79e89534726e'
          '699b3c133ce7006e0e3f2a2f84982acb'
@@ -48,7 +48,7 @@ build() {
     bzip2opt=enabled
 
     # Platform specific patches
-    case "$_android_arch" in
+    case "${_android_arch}" in
         x86)
             bzip2opt=disabled
             ;;
