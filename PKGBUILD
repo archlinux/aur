@@ -1,14 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-store-git
 pkgver=1.0.0.alpha.1.r9.g83866da
-pkgrel=1
+pkgrel=2
 pkgdesc="Cosmic App Store"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-store"
 license=('GPL-3.0-or-later')
 groups=('cosmic')
 depends=(
-  'archlinux-appstream-data'
   'cosmic-icons-git'
   'flatpak'
   'glib2'
@@ -21,6 +20,7 @@ makedepends=(
   'mold'
 )
 optdepends=(
+  'archlinux-appstream-data: Appstream data for use with packagekit'
   'packagekit: package manager integration module'
 )
 provides=("${pkgname%-git}")
