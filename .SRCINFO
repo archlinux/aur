@@ -1,0 +1,12 @@
+pkgbase = albert-python-plugins-git
+	pkgdesc = albert offical python plugins
+	pkgver = r438.522196f
+	pkgrel = 1
+	url = https://github.com/albertlauncher/python
+	arch = x86_64
+	license = custom
+	depends = albert
+	source = albert-python-plugins-git::git+https://github.com/albertlauncher/python.git
+	sha256sums = SKIP
+
+pkgname = albert-python-plugins-git
