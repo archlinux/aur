@@ -59,7 +59,8 @@ package_x86_64() {
 		_pkgname=$(basename "${source_i686[0]}")
 	fi
 	mkdir -p ./usr/share/dmde-cli/ $pkgdir/usr/bin/ $pkgdir/usr/share/applications/ $pkgdir/usr/share/pixmaps/
-	unzip "./${pkg_name_64}" -d $srcdir/usr/share/dmde-cli/
+	rm -rf $srcdir/usr/share/dmde-linux/
+	unzip "./${_pkgname[*]}" -d $srcdir/usr/share/dmde-cli/
 	cp -r usr $pkgdir
 	chmod +x $pkgdir/usr/share/dmde-cli/dmde
 	chmod +x $pkgdir/usr/share/dmde-cli/dmde-su.sh
