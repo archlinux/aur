@@ -2,7 +2,7 @@
 
 pkgname=maelstrom-git
 pkgver=r11.767d95c
-pkgrel=1
+pkgrel=2
 pkgdesc='Asteroids-type game with sound and 3D objects'
 arch=('x86_64')
 license=('GPL')
@@ -31,7 +31,6 @@ build() {
 
   ./autogen.sh
   ./configure --prefix=/usr
-  ls -al
   make
 }
 
