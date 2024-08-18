@@ -5,7 +5,7 @@
 # Contributor: Emerson Almeida <duke.m16@gmail.com>
 
 pkgname=zoho-mail-desktop
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc='Lite desktop version of Zoho email client.'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 	"https://downloads.zohocdn.com/zmail-desktop/linux/${pkgname}-lite-installer-x64-v${pkgver}.deb"
 )
 sha512sums=(
-	'4f76e4db5f6979146a78d900188e8a07663089cbba36baf96c4f96ce5a082084b1939386f97bb666f8b2b895bdc15a5a2ebf38afffca412521c1f93c47a8dec6'
+	'8f9d6bf41f3dee3602c700e0e0483c6f0ff535b9392ca196c071ea6aa9528d8d369ebf79121856284d86b5fa77572fdeec6d1e5de36b780323b8cef38a03e0d1'
 )
 
 package() {
