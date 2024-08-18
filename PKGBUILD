@@ -3,7 +3,7 @@
 
 pkgname=cosmic-applibrary-git
 pkgver=1.0.0.alpha.1.r5.g864564b
-pkgrel=2
+pkgrel=3
 pkgdesc="An application launcher for the COSMIC desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-applibrary"
@@ -20,7 +20,6 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-options=('!lto')
 source=('git+https://github.com/pop-os/cosmic-applibrary.git')
 sha256sums=('SKIP')
 
