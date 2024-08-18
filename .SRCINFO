@@ -1,13 +1,13 @@
 pkgbase = python-chibi-donkey
 	pkgdesc = library for proccess the format double undescore
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://pypi.org/project/chibi_donkey/
 	arch = any
 	license = WTFPL
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/chibi_donkey/chibi_donkey-1.0.1.tar.gz
-	sha256sums = 218a1a707a9687df51480a720eb2d3db7730924e50320b0e77ad3f2899bf56e5
+	source = https://files.pythonhosted.org/packages/source/c/chibi_donkey/chibi_donkey-1.0.2.tar.gz
+	sha256sums = 39b5c196480119e05432ccfa500225d26ebd910db1725d0b7d9ffd0870142f09
 
 pkgname = python-chibi-donkey

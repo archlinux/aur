@@ -2,7 +2,7 @@
 
 pkgname=python-chibi-donkey
 _pyname=chibi_donkey
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="library for proccess the format double undescore"
 arch=('any')
@@ -12,7 +12,7 @@ groups=()
 depends=("python")
 makedepends=("python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname//-/_}/${_pyname//-/_}-$pkgver.tar.gz")
-sha256sums=('218a1a707a9687df51480a720eb2d3db7730924e50320b0e77ad3f2899bf56e5')
+sha256sums=('39b5c196480119e05432ccfa500225d26ebd910db1725d0b7d9ffd0870142f09')
 
 build() {
 	cd "$_pyname-$pkgver"
