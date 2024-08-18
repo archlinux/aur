@@ -1,7 +1,7 @@
 pkgbase = vdhcoapp
 	pkgdesc = Companion application for Video DownloadHelper browser add-on
 	pkgver = 2.0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aclap-dev/vdhcoapp
 	install = vdhcoapp.install
 	arch = x86_64

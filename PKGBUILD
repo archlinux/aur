@@ -8,7 +8,7 @@
 _pkgname="vdhcoapp"
 pkgname="$_pkgname"
 pkgver=2.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Companion application for Video DownloadHelper browser add-on"
 url="https://github.com/aclap-dev/vdhcoapp"
 license=('GPL-2.0-or-later')
@@ -54,6 +54,7 @@ _prepare_vdhcoapp() (
   tomlq . ./config.toml \
     | jq '.target.os = "linux"' \
     | jq '.target.arch = "amd64"' \
+    | jq ".meta.version = \"${pkgver}\"" \
       > src/config.json
 
   # fix path to config.json
