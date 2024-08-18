@@ -3,7 +3,7 @@
 # Contributor: Beej Jorgensen <beej@beej.us>
 # Contributor: Martin Lüthi <mluethi@tnoo.net>
 pkgname=survex
-pkgver=1.4.10
+pkgver=1.4.11
 pkgrel=1
 pkgdesc="Cave survey software"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ install=${pkgname}.install
 source=(http://survex.com/software/$pkgver/$pkgname-$pkgver.tar.gz
 	http://survex.com/software/sample.tar.gz
 )
-sha512sums=('b53f6687115196953f116118c2675b0f99cc3e67f75f4b03d8d38da1769ddf12dc99b70faa9477c26ee6ed982b3d585f2ca849d180696274249931c2163c8fdf'
+sha512sums=('3815942ef119026c5cf52293f58b1167bf7275253ec9b8fb52c2cbbd3ec73f6435c12d70a6714ed9e8846144d0f396254b0817006a6227bbff5d6e902641c9a3'
             'af915b8fcd3949160049946b6a195750f4d16689eb7a341dbad1c2c4cfd36d85c955abbf9e6ecb0f26db0ae073ff76e0d9c1cb0591d6d5d9c1b7a8cd80a74da9')
 
 build() {
