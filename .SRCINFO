@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-gnutls
 	pkgdesc = A library which provides a secure layer over a reliable transport layer (Android x86-64)
-	pkgver = 3.8.6
+	pkgver = 3.8.7
 	pkgrel = 1
 	url = https://www.gnutls.org/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = android-x86-64-gnutls
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.6.tar.xz
-	md5sums = 29d50ccec120cb486adca2b15b8cdd4b
+	source = https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.7.tar.xz
+	md5sums = 539ac7a878a42f86242f75b19733e052
 
 pkgname = android-x86-64-gnutls
