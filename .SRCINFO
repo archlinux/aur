@@ -1,0 +1,11 @@
+pkgbase = neolux-tic-tac-toe-bin
+	pkgdesc = A simple tic-tac-toe game written in GTK
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/neoluxis/GTK-Tic-Tac-Toe
+	arch = x86_64
+	depends = gtk4
+	source = neolux-tictactoe-archlinux::https://github.com/neoluxis/GTK-Tic-Tac-Toe/releases/download/1.0/TicTacToe-GTK-archlinux
+	sha256sums = bbd034cd6d593a8bd212cb7e7d7ebbfccd22338f948185ccf961c7c38ddad5a7
+
+pkgname = neolux-tic-tac-toe-bin
