@@ -1,6 +1,6 @@
 pkgbase = clash-verge-rev-alpha-bin
 	pkgdesc = Continuation of Clash Verge | A Clash Meta GUI based on Tauri | Alpha Version
-	pkgver = 1.7.5
+	pkgver = 1.7.6
 	pkgrel = 3
 	url = https://github.com/clash-verge-rev/clash-verge-rev
 	install = .install
@@ -17,13 +17,13 @@ pkgbase = clash-verge-rev-alpha-bin
 	conflicts = clash-verge-rev-git
 	conflicts = clash-verge
 	conflicts = clash-verge-bin
-	source_x86_64 = clash-verge-rev-1.7.5-x86_64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/alpha/clash-verge_1.7.5_amd64.deb
+	source_x86_64 = clash-verge-rev-1.7.6-x86_64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/alpha/clash-verge_1.7.6_amd64.deb
 	sha512sums_x86_64 = SKIP
-	source_i686 = clash-verge-rev-1.7.5-i686.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/alpha/clash-verge_1.7.5_i386.deb
+	source_i686 = clash-verge-rev-1.7.6-i686.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/alpha/clash-verge_1.7.6_i386.deb
 	sha512sums_i686 = SKIP
-	source_aarch64 = clash-verge-rev-1.7.5-aarch64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/alpha/clash-verge_1.7.5_arm64.deb
+	source_aarch64 = clash-verge-rev-1.7.6-aarch64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/alpha/clash-verge_1.7.6_arm64.deb
 	sha512sums_aarch64 = SKIP
-	source_armv7h = clash-verge-rev-1.7.5-armv7h.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/alpha/clash-verge_1.7.5_armhf.deb
+	source_armv7h = clash-verge-rev-1.7.6-armv7h.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/alpha/clash-verge_1.7.6_armhf.deb
 	sha512sums_armv7h = SKIP
 
 pkgname = clash-verge-rev-alpha-bin
