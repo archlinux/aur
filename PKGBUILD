@@ -6,7 +6,7 @@
 _pkgname="vdhcoapp"
 pkgname="$_pkgname-git"
 pkgver=2.0.20.r0.g0b40d3e
-pkgrel=1
+pkgrel=2
 pkgdesc="Companion application for Video DownloadHelper browser add-on"
 url="https://github.com/aclap-dev/vdhcoapp"
 license=('GPL-2.0-or-later')
@@ -54,6 +54,7 @@ _prepare_vdhcoapp() (
   tomlq . ./config.toml \
     | jq '.target.os = "linux"' \
     | jq '.target.arch = "amd64"' \
+    | jq ".meta.version = \"${pkgver%%.r*}\"" \
       > src/config.json
 
   # fix path to config.json
@@ -141,14 +142,15 @@ _nvm_env() {
 _source_vdhcoapp
 _source_filepicker
 
-pkgver() {
-  cd "$_pkgsrc"
-  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
   _prepare_vdhcoapp
   _prepare_filepicker
+}
+
+pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
