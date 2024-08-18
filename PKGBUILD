@@ -8,7 +8,7 @@ pkgname=(
   'colloid-nord-gtk-theme-git'
 )
 pkgbase=colloid-gtk-theme-git
-pkgver=2024.06.18.r4.gdfff1a7
+pkgver=2024.06.18.r21.g482c350
 pkgrel=1
 pkgdesc="Gtk theme for Linux"
 arch=('any')
@@ -26,6 +26,13 @@ sha256sums=('SKIP')
 pkgver() {
   cd Colloid-gtk-theme
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd Colloid-gtk-theme
+
+  # Don't call clean_theme function
+  sed -i 's/clean_theme && install_theme/install_theme/g' install.sh
 }
 
 package_colloid-gtk-theme-git() {
