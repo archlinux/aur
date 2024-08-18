@@ -6,7 +6,7 @@
 
 pkgname=gnome-shell-beta-performance
 pkgver=47.beta.r10.g752948b
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell"
 url="https://gitlab.gnome.org/GNOME/gnome-shell"
@@ -105,7 +105,7 @@ build() {
 }
 
 package() {
-  provides=(gnome-shell)
+  provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
   conflicts=(gnome-shell)
   depends+=(libmutter-15.so)
   optdepends=(
