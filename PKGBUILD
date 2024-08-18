@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=xdg-desktop-portal-cosmic-git
 pkgver=1.0.0.alpha.1.r0.g41c1e7c
-pkgrel=3
+pkgrel=4
 pkgdesc="A backend implementation for xdg-desktop-portal for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/xdg-desktop-portal-cosmic"
@@ -40,7 +40,6 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
 
   # use mold instead of lld to speed up build
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
@@ -51,6 +50,5 @@ build() {
 
 package() {
   cd "${pkgname%-git}"
-  export CARGO_TARGET_DIR=target
   make prefix='/usr' libexecdir='/usr/lib' DESTDIR="$pkgdir" install
 }
