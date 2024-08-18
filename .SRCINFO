@@ -1,0 +1,14 @@
+pkgbase = encrpter
+	pkgdesc = A simple file encryption tool
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://gitlab.com/saydut/encrpter
+	arch = any
+	license = GPL3
+	depends = python
+	depends = tk
+	depends = python-cryptography
+	source = encrpter-1.5.tar.gz::https://gitlab.com/saydut/encrpter/archive/v1.5.tar.gz
+	sha256sums = SKIP
+
+pkgname = encrpter
