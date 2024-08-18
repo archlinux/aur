@@ -2,6 +2,8 @@
 # makepkg --printsrcinfo > .SRCINFO && makepkg -scC --nocheck --skipchecksums --skipinteg --skippgpcheck
 
 pkgname=dmde-cli
+pkg_name_32="dmde-4-2-0-814-lin32-con.zip"
+pkg_name_64="dmde-4-2-0-814-lin64-con.zip"
 pkgver=4.2.0
 pkgrel=1
 pkgdesc="DMDE is a powerful tool for data searching, editing, and recovery on disks - cli version"
@@ -12,9 +14,9 @@ depends=(sudo)
 makedepends=(unzip)
 replaces=($pkgname)
 
-source_x86_64=("https://dmde.ru/download/dmde-4-2-0-814-lin64-con.zip")
+source_x86_64=("https://dmde.ru/download/${pkg_name_64}")
 
-source_i686=("https://dmde.ru/download/dmde-4-2-0-814-lin32-con.zip")
+source_i686=("https://dmde.ru/download/${pkg_name_32}")
 
 source=(dmde-cli.desktop
 		logo.png)
@@ -30,7 +32,7 @@ package_i686() {
 	depends=(sudo)
 	cd $srcdir
 	mkdir -p ./usr/share/dmde-cli/ $pkgdir/usr/bin/ $pkgdir/usr/share/applications/ $pkgdir/usr/share/pixmaps/
-	unzip ./dmde-4-0-6-806-lin32-con.zip -d $srcdir/usr/share/dmde-cli/
+	unzip "./${pkg_name_32}" -d $srcdir/usr/share/dmde-cli/
 	cp -r usr $pkgdir
 	chmod +x $pkgdir/usr/share/dmde-cli/dmde
 	chmod +x $pkgdir/usr/share/dmde-cli/dmde-su.sh
@@ -44,7 +46,7 @@ package_x86_64() {
 	depends=(sudo)
 	cd $srcdir
 	mkdir -p ./usr/share/dmde-cli/ $pkgdir/usr/bin/ $pkgdir/usr/share/applications/ $pkgdir/usr/share/pixmaps/
-	unzip ./dmde-4-0-6-806-lin64-con.zip -d $srcdir/usr/share/dmde-cli/
+	unzip "./${pkg_name_64}" -d $srcdir/usr/share/dmde-cli/
 	cp -r usr $pkgdir
 	chmod +x $pkgdir/usr/share/dmde-cli/dmde
 	chmod +x $pkgdir/usr/share/dmde-cli/dmde-su.sh
