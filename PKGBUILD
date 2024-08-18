@@ -6,11 +6,14 @@ _pkgname=perl-travel-status-de-deutschebahn
 pkgname="${_pkgname}-git"
 _pkgver="latest"
 epoch=1
-pkgver=6.08+r478.20240816.g82989ba
-pkgrel=1.1
+pkgver=6.08+r479.20240817.gb08f091
+pkgrel=1
 pkgdesc='Interface to the DeutscheBahn online departure monitor'
 url='http://finalrewind.org/projects/Travel-Status-DE-DeutscheBahn/'
-license=('PerlArtistic')
+license=(
+  'PerlArtistic'
+  'CC0-1.0'
+)
 arch=('any')
 depends=(
   'perl-class-accessor'
@@ -34,8 +37,24 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!emptydirs')
 # source=("http://finalrewind.org/projects/${_perlmod}/${_perlmod}-${pkgver}.tar.gz"{,.asc})
-source=("${_perlmod}::git+https://git.finalrewind.org/${_perlmod}")
-md5sums=('SKIP')
+source=(
+  "${_perlmod}::git+https://git.finalrewind.org/${_perlmod}"
+  "transport-apis::git+https://github.com/public-transport/transport-apis.git"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
+
+prepare() {
+  cd "${srcdir}/${_perlmod}"
+
+  git submodule init
+  git config submodule.ext/transport-apis.url "${srcdir}/transport-apis"
+  git -c protocol.file.allow=always submodule update
+
+  git log > git.log
+}
 
 pkgver() {
   cd "${srcdir}/${_perlmod}"
@@ -55,6 +74,12 @@ build() {
   printf '\n'
   perl Build.PL installdirs=vendor destdir="${pkgdir}"
   printf '\n'
+
+  # printf '\n'
+  # printf '%s\n' "  > running './Build manifest' ..."
+  # printf '\n'
+  # ./Build manifest
+  # printf '\n'
 
   printf '\n'
   printf '%s\n' "  > running './Build' ..."
@@ -85,4 +110,5 @@ package() {
   install -D -v -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.PerlArtistic.txt"
   install -D -v -m644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -D -v -m644 Changelog "${pkgdir}/usr/share/doc/${_pkgname}/Changelog"
+  install -D -v -m644 git.log "${pkgdir}/usr/share/doc/${_pkgname}/git.log"
 }
