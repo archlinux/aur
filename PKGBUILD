@@ -1,35 +1,32 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-calendar-git
-pkgver=6.1.2.r0.g7ade6132
+pkgver=8.0.0.r1.gf2938b8c
 pkgrel=1
 pkgdesc='The Pantheon Calendar'
 arch=(x86_64)
 url=https://github.com/elementary/calendar
-license=(GPL3)
+license=(GPL-3.0-or-later)
 groups=(pantheon-unstable)
 depends=(
-  cairo
   clutter
   clutter-gtk
   evolution-data-server
   folks
   gdk-pixbuf2
   geoclue
-  geocode-glib
   glib2
   gtk3
   libchamplain
   libgee
   libgranite.so
   libical
-  libnotify
-  libsoup
   libhandy-1.so
+  libportal-gtk3
 )
 makedepends=(
   git
-  granite-git
+  granite
   intltool
   meson
   vala
