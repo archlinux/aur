@@ -29,10 +29,17 @@ sha512sums_x86_64=('f8c15f1146d8cae297ca775ef5e255706c4d79c2c23acaeba38851275ddd
 sha512sums_i686=('34b2208cb64a88131e64a9eb103345368c8c65e839c6da861959be4f84c07e4178f246f30c0c7e3829963c1bc9d9fc935ba88e78d667013bbabba157c1384f84')
 
 package_i686() {
+	replaces=("${pkgname[0]}")
 	depends=(sudo)
 	cd $srcdir
+	if [[ "${_archi[*]}" == "x86_64" ]]; then
+		_pkgname=$(basename "${source_x86_64[0]}")
+	else
+		_pkgname=$(basename "${source_i686[0]}")
+	fi
 	mkdir -p ./usr/share/dmde-cli/ $pkgdir/usr/bin/ $pkgdir/usr/share/applications/ $pkgdir/usr/share/pixmaps/
-	unzip "./${pkg_name_32}" -d $srcdir/usr/share/dmde-cli/
+	rm -rf $srcdir/usr/share/dmde-linux/
+	unzip "./${_pkgname[*]}" -d $srcdir/usr/share/dmde-cli/
 	cp -r usr $pkgdir
 	chmod +x $pkgdir/usr/share/dmde-cli/dmde
 	chmod +x $pkgdir/usr/share/dmde-cli/dmde-su.sh
@@ -43,8 +50,14 @@ package_i686() {
 }
 
 package_x86_64() {
+	replaces=("${pkgname[0]}")
 	depends=(sudo)
 	cd $srcdir
+	if [[ "${_archi[*]}" == "x86_64" ]]; then
+		_pkgname=$(basename "${source_x86_64[1]}")
+	else
+		_pkgname=$(basename "${source_i686[0]}")
+	fi
 	mkdir -p ./usr/share/dmde-cli/ $pkgdir/usr/bin/ $pkgdir/usr/share/applications/ $pkgdir/usr/share/pixmaps/
 	unzip "./${pkg_name_64}" -d $srcdir/usr/share/dmde-cli/
 	cp -r usr $pkgdir
