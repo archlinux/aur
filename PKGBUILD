@@ -5,12 +5,18 @@ _pkgname=signal-cli
 provides=('signal-cli')
 conflicts=('signal-cli')
 pkgver=0.13.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Signal-cli is unofficial cmd, JSON-RPC and dbus interface for the Signal messenger"
 arch=('any')
 url="https://github.com/AsamK/signal-cli"
 license=('GPL-3.0-only')
-depends=('java-runtime-headless>=21' 'java-commons-logging' 'sh' 'libsignal-client')
+depends=(
+  'asciidoc'
+  'java-commons-logging'
+  'java-runtime-headless>=21'
+  'libsignal-client'
+  'sh'
+)
 source=("https://github.com/AsamK/${_pkgname}/archive/v${pkgver}.tar.gz"
         "https://github.com/AsamK/${_pkgname}/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc"
         "https://github.com/AsamK/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-Linux-native.tar.gz")

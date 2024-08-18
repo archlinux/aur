@@ -1,14 +1,15 @@
 pkgbase = signal-cli-bin
 	pkgdesc = Signal-cli is unofficial cmd, JSON-RPC and dbus interface for the Signal messenger
 	pkgver = 0.13.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AsamK/signal-cli
 	arch = any
 	license = GPL-3.0-only
-	depends = java-runtime-headless>=21
+	depends = asciidoc
 	depends = java-commons-logging
-	depends = sh
+	depends = java-runtime-headless>=21
 	depends = libsignal-client
+	depends = sh
 	provides = signal-cli
 	conflicts = signal-cli
 	source = https://github.com/AsamK/signal-cli/archive/v0.13.5.tar.gz
