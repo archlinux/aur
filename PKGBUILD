@@ -1,8 +1,6 @@
 # Maintainer: Sukanka <su975853527 [AT] gmail.com>
 pkgbase=yade
-pkgname=(yade yade-cuda
-    # yade-doc
-)
+pkgname=(yade yade-cuda yade-doc)
 pkgver=2024.08a
 pkgrel=2
 pkgdesc="Yet Another Dynamic Engine, free software for discrete element modeling."

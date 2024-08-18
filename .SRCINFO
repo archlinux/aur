@@ -89,3 +89,8 @@ pkgname = yade-cuda
 	depends = cuda
 	provides = yade
 	conflicts = yade
+
+pkgname = yade-doc
+	pkgdesc = Yet Another Dynamic Engine, free software for discrete element modeling.(Documentation)
+	arch = any
+	depends = 
