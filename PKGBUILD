@@ -2,7 +2,7 @@
 
 pkgname=mcpelauncher-appimage
 _pkgname=${pkgname/appimage/ui-qt}
-_pkgver=0.15.2-796
+_pkgver=1.0.0-798
 pkgver="${_pkgver/-/.}"
 pkgrel=1
 pkgdesc="Minecraft Bedrock Launcher for Linux"
@@ -17,9 +17,9 @@ options=(!strip)
 source_x86_64=("mcpelauncher-x86_64-v${pkgver}.AppImage::$url/releases/download/v${_pkgver}/Minecraft_Bedrock_Launcher-x86_64-v${pkgver}.AppImage")
 source_armv7h=("mcpelauncher-armv7h-v${pkgver}.AppImage::$url/releases/download/v${_pkgver}/Minecraft_Bedrock_Launcher-armhf-v${pkgver}.AppImage")
 source_aarch64=("mcpelauncher-aarch64-v${pkgver}.AppImage::$url/releases/download/v${_pkgver}/Minecraft_Bedrock_Launcher-arm64-v${pkgver}.AppImage")
-sha512sums_x86_64=('d2317bccef6fa72b3cbad30348456ecd51ba4b8450e98beda3bc086b0bb45f2d606b107a14efe73951b2f2f6b294b1e0cc0409143c6275c2e8c5d9cdcd9a200a')
-sha512sums_armv7h=('d08067880f4ed17aa957fa8a1cf1d92000efe75dc82177659a0e7ba9f9f2f363f62632bbdcb1306e19e0edc45f676690b3181e982c6e797bc651201f3b3aee89')
-sha512sums_aarch64=('a310658c3c62a774452548a5d17522c8f942f1b8c3ffeb315afcfbeacb120749392ee0528a7a7be05164eeea7f40a272631a1aea5a50c6ffcf3147b484e9272f')
+sha512sums_x86_64=('5f9cb98dd4c7a7a286ca224546b7b8a8f6474859c4a87951ebe54befbde42ba18778eac2fafc4bca4523de21ba3d120476bd4904589e10b1650e4ff5a773fe82')
+sha512sums_armv7h=('bfab2dab83d03c93b70c3444262fa815f3b11a23876a741869a851fdea4fa70ac32fccc077e05562c43fc08de18b34c92360bd10c4a53d0b48d6c21284fed8ab')
+sha512sums_aarch64=('ccbde22b9f45e6e30a128029827073342a76e087d3bfce7f5abba7b0d4aecf79d2c83a1197368efab7a53dfcb1fb44399e6c2468273d15455ce7e1c31fb9e143')
 _fileName="mcpelauncher-${CARCH}-v${pkgver}.AppImage"
 _desktopFile="usr/share/applications/mcpelauncher-ui-qt.desktop"
 _scalableIcon="usr/share/icons/hicolor/scalable/apps/mcpelauncher-ui-qt.svg"
