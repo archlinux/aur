@@ -1,7 +1,7 @@
 pkgbase = nbpreview
 	pkgdesc = A terminal viewer for Jupyter notebooks. It's like cat for ipynb files.
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/paw-lu/nbpreview
 	arch = x86_64
 	license = MIT
@@ -19,7 +19,7 @@ pkgbase = nbpreview
 	depends = python-httpx
 	depends = python-jinja
 	depends = python-html2text
-	depends = python-click
+	depends = python-types-click
 	depends = python-pillow
 	depends = python-picharsso
 	depends = python-validators
