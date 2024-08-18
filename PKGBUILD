@@ -2,8 +2,7 @@
 
 pkgname=neolux-tic-tac-toe-bin
 pkgver=1.0
-pkgrel=1
-_image_url_x86_64=https://wow.likangfeng.eu.org/wp-content/uploads/2024/08/icon.png
+pkgrel=0
 pkgdesc='A simple tic-tac-toe game written in GTK'
 arch=(
     'x86_64'
@@ -19,4 +18,5 @@ chmod +x "${srcdir}/neolux-tictactoe-archlinux"
 }
 package() {
 install -Dm755 "${srcdir}/neolux-tictactoe-archlinux" "${pkgdir}/usr/bin/neolux-tictactoe"
+echo ${pkgdir}
 }
