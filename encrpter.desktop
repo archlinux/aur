@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Encrypter
+Comment=Dosya ve klasör şifreleme uygulaması
+Exec=encrypter
+Icon=icon    
+Terminal=false
+Type=Application
+Categories=Utility;Security;
