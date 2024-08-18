@@ -1,7 +1,7 @@
 pkgbase = adw-gtk3
-	pkgdesc = The theme from libadwaita ported to GTK-3
+	pkgdesc = An unofficial GTK3 port of libadwaita.
 	pkgver = 5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lassekongo83/adw-gtk3
 	arch = any
 	license = LGPL-2.1-only

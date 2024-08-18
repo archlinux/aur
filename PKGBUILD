@@ -1,10 +1,11 @@
+# Maintainer: BingBong
 # Maintainer: Max Harmathy <harmathy@mailbox.org>
 # Contributor: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=adw-gtk3
 pkgver=5.3
-pkgrel=2
-pkgdesc='The theme from libadwaita ported to GTK-3'
+pkgrel=3
+pkgdesc='An unofficial GTK3 port of libadwaita.'
 arch=(any)
 url=https://github.com/lassekongo83/adw-gtk3
 license=('LGPL-2.1-only')
