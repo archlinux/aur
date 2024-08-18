@@ -1,7 +1,7 @@
 # Maintainer: Joseph Hendrix <joeylhendrix@gmail.com>
 pkgname='rsls-git'
-pkgver=1.0
-pkgrel=1
+pkgver=1.0.1
+pkgrel=2
 pkgdesc="ls with icons, written in Rust"
 arch=("x86_64")
 url="https://github.com/joeleehen/rsls"
