@@ -1,0 +1,19 @@
+pkgbase = python-term-image
+	pkgdesc = Display images in the terminal with python
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/AnonymouX47/term-image
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-pytest
+	depends = python-requests
+	depends = python-pillow
+	depends = python-typing_extensions
+	optdepends = python-urwid
+	source = https://files.pythonhosted.org/packages/source/t/term_image/term_image-0.7.2.tar.gz
+	sha256sums = 07320573baa667dcde145d55e94769cbaafeea43b61245245153ff5075b55ffb
+
+pkgname = python-term-image
