@@ -1,11 +1,11 @@
 # Arch
 #
-# Mantainer: Muflone http://www.muflone.com/contacts/english/
-# Contributor: Piero Proietti <piero.proietti_at_gmail.com>
-_commit=887d790bd1b7fdb070bec75c0f64895acf1ded63
+# mantainer: Muflone http://www.muflone.com/contacts/english/
+# contributor: Piero Proietti <piero.proietti_at_gmail.com>
+_commit=fd3c9a5ea6ca44508af380b2753fc8889e161374
 pkgname=penguins-eggs
-pkgver=10.0.27
-pkgrel=2
+pkgver=10.0.28
+pkgrel=1
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
 url="https://penguins-eggs.net"
@@ -65,7 +65,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir"/"$pkgname"
 	install -Dm644 .oclif.manifest.json package.json -t "$pkgdir"/usr/lib/"$pkgname"
 	cp -r addons assets bin conf ipxe dracut dist eui mkinitcpio mkinitfs node_modules scripts \
 		"$pkgdir"/usr/lib/"$pkgname/"
@@ -74,10 +74,10 @@ package() {
 	chown root:root "$pkgdir"/usr/lib/"$pkgname/"{dist,node_modules}
 
 	# Package contains reference to $srcdir
-	find "$pkgdir/usr/lib/$pkgname" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+	find "$pkgdir"/usr/lib/"$pkgname" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 
 	local tmppackage="$(mktemp)"
-	local pkgjson="$pkgdir/usr/lib/$pkgname/package.json"
+	local pkgjson="$pkgdir"/usr/lib/"$pkgname"/package.json
 	jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
 	mv "$tmppackage" "$pkgjson"
 	chmod 644 "$pkgjson"
@@ -87,30 +87,30 @@ package() {
 		"s#$srcdir/$pkgname-$pkgver/#/usr/lib/eggs/#"
 
 	# Install documentation
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir"/usr/share/doc/"$pkgname"/
 
 	# Symlink executable
-	install -d "$pkgdir/usr/bin"
-	ln -s "/usr/lib/$pkgname/bin/run.js" "$pkgdir/usr/bin/eggs"
+	install -d "$pkgdir"/usr/bin
+	ln -s "$pkgdir"/usr/lib/"$pkgname"/bin/run.js "$pkgdir"/usr/bin/eggs
 
 	# Install bash-completion files
-	install -d "$pkgdir/usr/share/bash-completion/completions"
-	ln -s "$pkgdir/usr/lib/$pkgname/scripts/eggs.bash" \
-		"$pkgdir/usr/share/bash-completion/completions/"
+	install -d "$pkgdir"/usr/share/bash-completion/completions
+	ln -s "$pkgdir"/usr/lib/"$pkgname"/scripts/eggs.bash \
+		"$pkgdir"/usr/share/bash-completion/completions/
 
 	# Install zsh-completion files
 	install -d "$pkgdir/usr/share/zsh/functions/Completion/Zsh/"
-	ln -s "$pkgdir/usr/lib/$pkgname/scripts/_eggs" \
-		"$pkgdir/usr/share/zsh/functions/Completion/Zsh/"
+	ln -s "$pkgdir"/usr/lib/"$pkgname"/scripts/_eggs \
+		"$pkgdir"/usr/share/zsh/functions/Completion/Zsh/
 
 	# Install man page
-	install -Dm644 manpages/doc/man/eggs.1.gz -t "$pkgdir/usr/share/man/man1/"
+	install -Dm644 manpages/doc/man/eggs.1.gz -t "$pkgdir"/usr/share/man/man1/
 
 	# Install desktop file
-	install -Dm644 "assets/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+	install -Dm644 assets/"$pkgname".desktop -t "$pkgdir"/usr/share/applications/
 
 	# Install icon
-	install -Dm644 assets/eggs.png -t "$pkgdir/usr/share/pixmaps/"
+	install -Dm644 assets/eggs.png -t "$pkgdir"/usr/share/pixmaps/
 
 	# link to adapt
 	ln -s "$pkgdir"/usr/lib/"$pkgname"/addons/eggs/adapt/bin/adapt "$pkgdir"/usr/bin/adapt
