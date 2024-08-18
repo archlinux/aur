@@ -11,7 +11,7 @@ makedepends=()
 source=("${pkgname}-${pkgver}.tar.gz::https://pldaniels.com/flexbv5/free/FlexBVFree-${pkgver}-linux.tar.gz"
 	"flexbv.sh")
 sha256sums=('1bcfd1fa10a47a940505f6c4916f0e2ed4b36a054715baa60f8a23efe61a2ee4'
-            '80eeaabbdc0b4b1046e36ddaceed5ab7a6a028151632099589fd26a9c9d53fa3')
+            '462632dd61e766ac7d68374c62d855a21067b021638b80c914b4632f72c2e9c5')
 
 package() {
 	install -d -m755 "$pkgdir/opt/flexbv"
