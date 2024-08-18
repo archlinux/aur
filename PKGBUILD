@@ -2,7 +2,7 @@
 
 pkgname=python-term-image
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Display images in the terminal with python"
 arch=(any)
 url="https://github.com/AnonymouX47/term-image"

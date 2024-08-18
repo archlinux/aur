@@ -1,7 +1,7 @@
 pkgbase = python-term-image
 	pkgdesc = Display images in the terminal with python
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AnonymouX47/term-image
 	arch = any
 	license = MIT
