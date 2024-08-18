@@ -3,7 +3,7 @@
 
 pkgname=byedpi
 pkgver=0.12
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple and fast software designed to bypass Deep Packet Inspection"
 arch=(aarch64 armv6h armv7h x86_64)
 url="https://github.com/hufrea/$pkgname"
@@ -17,7 +17,7 @@ source=(
   $url/archive/v$pkgver/$pkgname-$pkgver.tar.gz
 )
 b2sums=('48efdd4c15bfab7b259717f2858ea774c037ce2e07f9535ffdc6ad9c267e04585644b37980e288354c368681ed43e0f2b7b57c8a5525886949054c2a5740da6f'
-        'f823a9eefa791dd392a75ec14f72bf89d3ed6c62feb15c5b6194a7dcfbc0b8939654f3b3a677b399ac62a6d252d3a6f8e4d6d074f50bc243454eeff96d972fdc'
+        '0ea6f6639a746299a9670b651cf87abbd0ae8bb73d858e9b153416e9d49078577b31350bb95a017e941274a6007c405dbbf84cfef2418fe173985c7c4ce3ca6f'
         'dd51700e972d759a2297bddc15455477a9574b98174e48c6c89236999fb028c09b8eff8a67067bc49e1a8830e43c7a6d76c4c5c644716562818b02320463e1aa'
         'da1d9bbc80c868fb16c4f6e24c3fe00d5d03d5bb0a6d71dac16999b652e81fc9c2a5f0f57e350260b9295d953cb0c3fe316440279dd26b09ee895bf81771cc2b')
 

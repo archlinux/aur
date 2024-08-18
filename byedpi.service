@@ -1,15 +1,15 @@
 [Unit]
 Description=Bypass DPI service
-IDocumentation=https://github.com/hufrea/byedpi/blob/main/readme.txt
+Documentation=https://github.com/hufrea/byedpi/blob/main/readme.txt
 Wants=network-online.target
-OAfter=network-online.target nss-lookup.target
+After=network-online.target nss-lookup.target
 
 [Service]
 EnvironmentFile=/etc/byedpi.conf
 ExecStart=/usr/bin/ciadpi \
-    --ip ${IP} \
-    --port ${PORT} \
-    $ARGS
+  --ip ${IP} \
+  --port ${PORT} \
+  $ARGS
 
 [Install]
 WantedBy=multi-user.target
