@@ -2,8 +2,8 @@
 
 pkgname=python-cdsapi
 _name=${pkgname#python-}
-pkgdesc="Climate Data Store API"
-pkgver=0.6.1
+pkgdesc="Copernicus Common Data Store API (was Climate Data Store)"
+pkgver=0.7.0 # renovate: datasource=github-tags depName=ecmwf/cdsapi
 pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://github.com/ecmwf/cdsapi"
@@ -15,7 +15,7 @@ makedepends=('python-setuptools')
 source=(
   https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz
 )
-b2sums=('f1a06c822bde79d77c74e7e337e49f071e7a9561cf722b97f31fe5bc4dd860404552e1c4b3e2fefe9fd994a4a4a9211e37a4a01444fedaed46b53bf73e126a67')
+b2sums=('2a954e36114120236185739b66351fc2a4108d34b1dda0d86b4fda0281810ff09fb601221d7d4a5a3cadf1ddb799b51789b8ae1a7fcaeec9e897f831c1106857')
 
 build() {
   cd "$_name-$pkgver"
