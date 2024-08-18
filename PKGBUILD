@@ -10,7 +10,8 @@ arch=("i686" "x86_64")
 license=("GPL-3.0-only")
 url="https://github.com/hasse69/rar2fs"
 url="https://hasse69.github.io/rar2fs/"
-depends=("fuse2" "glibc" "gcc-libs")
+depends=(fuse2 glibc gcc-libs)
+makedepends=(autoconf automake)
 source=("rar2fs-v$pkgver.tar.gz"::"https://github.com/hasse69/rar2fs/archive/refs/tags/v$pkgver.tar.gz"
         "http://www.rarlab.com/rar/unrarsrc-${_unrarver}.tar.gz")
 md5sums=('4da83c672c93a103f179e264c9a54236'
