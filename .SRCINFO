@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-libebml
 	pkgdesc = Extensible Binary Meta Language library (Android aarch64)
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Matroska-Org/libebml
 	arch = any
 	groups = android-libebml
