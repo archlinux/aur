@@ -5,7 +5,7 @@
 # Contributor: Fergus Symon <fergofrog@fergofrog.com>
 
 pkgname=razercfg
-pkgver=0.42
+pkgver=0.43
 pkgrel=10
 pkgdesc='Razer mouse configuration tool'
 arch=('x86_64')
