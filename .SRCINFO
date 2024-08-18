@@ -1,0 +1,24 @@
+pkgbase = augety-dwm
+	pkgdesc = A dynamic window manager for X
+	pkgver = 6.5
+	pkgrel = 1
+	url = http://augety.net/augety/dwm
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	depends = freetype2
+	depends = imlib2
+	options = zipman
+	source = dwm.desktop
+	source = augety-dwm::git+http://augety.net/augety/dwm.git
+	sha256sums = bc36426772e1471d6dd8c8aed91f288e16949e3463a9933fee6390ee0ccd3f81
+	sha256sums = SKIP
+
+pkgname = augety-dwm
