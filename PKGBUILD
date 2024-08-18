@@ -3,7 +3,7 @@
 _name='chompjs'
 _framework='python'
 pkgname="${_framework}-${_name}"
-pkgver=1.2.4
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Parsing JavaScript objects into Python data structures'
 arch=('any')
@@ -16,10 +16,10 @@ depends=(
 	'python>=3'
 )
 source=(
-	"${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/2a/7a/a8c24d8822edf1143aa1f5febd0c445ccd594183949d47ee925908f27bab/${_name}-${pkgver}.tar.gz"
+	"${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/05/aa/19e20c5157bcb76f22395143d9a26b33e82d5aff37e25f2feef259f13131/chompjs-1.3.0.tar.gz"
 )
 provides=("${_framework}-${_name}")
-b2sums=('66c04675d251989dc59f5355a3e64961c2f70163c7ec63610fe8ee09cd2ffba348c3d9e2a276ea5178ed00f732bcd8d77d1318a0002eabec9cca069ba1ac2117')
+b2sums=('a3fdf2a683413e937c1a00aa07b1b9caec2da4ea4913613129259491408b20a0ba8d49e863f0d9e6a3171c188c523c48aa841635a6982ba6de4e1364ce19cd3b')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
