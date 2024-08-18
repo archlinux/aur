@@ -1,6 +1,6 @@
 # Maintainer: Lonny Wong <lonnywong@qq.com>
 pkgname="tsshd"
-pkgver="0.1.2"
+pkgver="0.1.3"
 pkgrel=1
 epoch=0
 pkgdesc="The tsshd works like mosh-server, while the 'tssh --udp' works like mosh."
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/trzsz/tsshd/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-md5sums=('82737dcb1d58abf38ff96ce0182b1383')
+md5sums=('b9b21455f74e48c54fc0b1d4f4b58d6c')
 validpgpkeys=()
 
 build() {
