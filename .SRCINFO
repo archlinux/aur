@@ -1,6 +1,6 @@
 pkgbase = proto-bin
 	pkgdesc = Pluggable multi-language version manager
-	pkgver = 0.39.7
+	pkgver = 0.40.0
 	pkgrel = 1
 	url = https://github.com/moonrepo/proto
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = proto-bin
 	depends = xz
 	provides = proto
 	conflicts = proto
-	source = proto-bin-0.39.7.tar.xz::https://github.com/moonrepo/proto/releases/download/v0.39.7/proto_cli-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums = 1bcf5a825d8e9f2f9d55ed50dbd7b6b8e67eec8b693c367aa558a36164aa8be5
+	source = proto-bin-0.40.0.tar.xz::https://github.com/moonrepo/proto/releases/download/v0.40.0/proto_cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = 6bb0540664b876bbd041ccde20075ab7e4c7272dbab45ab5b695b4ebef0895a9
 
 pkgname = proto-bin
