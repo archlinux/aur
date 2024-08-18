@@ -1,8 +1,8 @@
 # Maintainer: Sergey Mezentsev <thebits@yandex.ru>
 
 pkgname=datafusion-cli
-pkgver=40.0.0
-pkgrel=2
+pkgver=41.0.0
+pkgrel=1
 pkgdesc="The DataFusion CLI is a command-line interactive SQL utility for executing queries against any supported data files."
 url="https://github.com/apache/datafusion"
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=(
   cargo
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/apache/arrow-datafusion/archive/tags/$pkgver.tar.gz")
-b2sums=('7821227e4aeefb479706ddbf98fdbb29861d2a60bedcfd5c3d4ff5dcaf610a68d334f1926bb4eb284ce34735259167598f8884a913d5ce79f0589971156005b4')
+b2sums=('972427ac12720ffbdcb66f3e440d0f3ac30dbd6daf0967a2dc7ec99f9946eecd7f6255e03b5820a4149a2b0fb479801d80fbeda7e12e979595a1d637242c3959')
 
 build() {
   export CARGO_TARGET_DIR=target
