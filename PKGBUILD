@@ -3,7 +3,7 @@
 
 _name=igbinary
 pkgname=php82-igbinary
-pkgver=3.2.15
+pkgver=3.2.16
 pkgrel=1
 pkgdesc="A drop in replacement for the standard php serializer (PHP 8.2)"
 arch=('x86_64')
@@ -13,8 +13,8 @@ depends=('glibc')
 makedepends=('php82')
 backup=("etc/php82/conf.d/${_name}.ini")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_name}/${_name}/archive/${pkgver}.tar.gz")
-sha512sums=('285adae14c3104c4c53eec7b7e9b96e097096a06e2517ac554a4ecf5066f9b75318b6e29486cc41aa89a21ef46980285d1fa0d09a1f2b750253951c6d0480869')
-b2sums=('affe47386e65576ee44fc7616a3c1c923a5af4b50308caa02f6c75ea9a2ba483ab90a9c656f5631fb5bee7360a1505525dfadb4083e668b58d149dfc7379bd4e')
+sha512sums=('d4599ee18e2202a56e955b37153e1e7d4d303aadc26f1f152cb64029e03f79760162a422793e319861b95a801a2fb18261216c080c2d400dd94d34e951e53cca')
+b2sums=('5a4d654f8672c199d7e5cf662975d127de66835298fe286f806ad721d4bc1652eb542353402bb56822ca4c33ab26e3d9ca9ed91f2ad42d817b1ab996234ad726')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "$pkgname-$pkgver"
