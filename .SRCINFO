@@ -1,0 +1,17 @@
+pkgbase = python-factoriolib
+	pkgdesc = Python package able to create and mainpulate factorio blueprint
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://gitlab.com/justin-guth.de/factoriolib
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	conflicts = python-factoriolib-git
+	source = https://files.pythonhosted.org/packages/source/f/factoriolib/factoriolib-0.0.2.tar.gz
+	sha512sums = 31c0467b6a4e9796d49edd853f57bf90d56f24c6d0a4b57991a59e66091562fa9354ed4ae6780899be5c5092cb50b998fb5af5dad6bd1dbc9a0b1eb6b2906adc
+
+pkgname = python-factoriolib
