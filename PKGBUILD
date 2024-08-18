@@ -1,6 +1,6 @@
 # Maintainer: Lonny Wong <lonnywong@qq.com>
 pkgname="trzsz"
-pkgver="1.1.7"
+pkgver="1.1.8"
 pkgrel=1
 epoch=0
 pkgdesc="Simple file transfer tools, similar to lrzsz (rz/sz), and compatible with tmux."
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/trzsz/trzsz-go/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-md5sums=('0bace0b58f767eab0636d597c7c37ec4')
+md5sums=('e102a86fe45b3ceda295e6f5c5685162')
 validpgpkeys=()
 
 build() {
