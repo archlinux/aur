@@ -8,7 +8,7 @@
 # Profile with xvfb-run, if possible
 : ${_build_pgo_xvfb:=false}
 
-_pkgver=11.16.0-1
+_pkgver=11.17.4-1
 _pkgrel=1
 
 pkgname=firedragon
@@ -37,7 +37,7 @@ depends=(dbus
   ttf-font
   zlib)
 makedepends=(cbindgen
-  clang17
+  clang
   diffutils
   dump_syms
   imagemagick
@@ -45,15 +45,16 @@ makedepends=(cbindgen
   inetutils
   git
   jack
-  lld17
-  llvm17
+  lld
+  llvm
   mesa
   mold
   nasm
   nodejs
   python
+  rust
   unzip
-  wasi-compiler-rt17
+  wasi-compiler-rt
   wasi-libc
   wasi-libc++
   wasi-libc++abi
@@ -78,21 +79,9 @@ options=(!debug
 backup=("usr/lib/${pkgname}/${pkgname}.cfg"
   "usr/lib/${pkgname}/distribution/policies.json")
 source=(https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v${_pkgver}/downloads/firedragon-v${_pkgver}.source.tar.zst
-  patch-python3.12-bug1831512.patch
-  patch-python3.12-bug1860051.patch
-  patch-python3.12-bug1866829.patch
-  patch-python3.12-bug1874280.patch
-  0036-bmo-1912663-cbindgen-0.27.0-fixes.patch
-  rustup.sh::https://sh.rustup.rs
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.psd
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.desktop)
-sha256sums=('5f5e6a2cf2e6faa53f9e1a1707374941a10cfcaffb7e695c9f6cd376e6c406b1'
-            '9516c36c145d365c3b65153d83a5b3b0dd8a319b5c30d47a390070892bd431b3'
-            '168d16a027a81c311c58f9302858244dfa5517f0a95a8d3df1abbf9b93b9d455'
-            'df27ed1e0da5b192224978dc2a593a97e18e6e22062c611fc32b277500324e62'
-            'cf1c69fd3338fd8f5e482f55b669160b08dfb021f2348b620f0a85dd9dee8150'
-            '2a4585f6b7060b1a73affd51f6d7b8fefbc4e5d7b760294c23d638e7b3bfcef4'
-            '32a680a84cf76014915b3f8aa44e3e40731f3af92cd45eb0fcc6264fd257c428'
+sha256sums=('c86d77a7e6ffadb4303c04601aac886af3573cc90a82d34e59b86e941f4a94ff'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
 
@@ -109,23 +98,7 @@ prepare() {
   rm -rf "${srcdir}/mozbuild"
   mkdir "${srcdir}/mozbuild"
 
-  # Install rust 1.77 in $srcdir and preprend to path
-  export RUSTUP_HOME="${srcdir}/rustup"
-  export CARGO_HOME="${srcdir}/cargo"
-  export RUSTUP_INIT_SKIP_PATH_CHECK=yes
-  sh "${srcdir}/rustup.sh" -q -y --no-modify-path --default-toolchain 1.77
-  export PATH="${srcdir}/cargo/bin:$PATH"
-
   cd firedragon-v"${_pkgver}" || exit
-
-  patch -Nsp1 -i "${srcdir}/patch-python3.12-bug1831512.patch"
-  patch -Nsp1 -i "${srcdir}/patch-python3.12-bug1860051.patch"
-  patch -Nsp1 -i "${srcdir}/patch-python3.12-bug1866829.patch"
-  patch -Nsp1 -i "${srcdir}/patch-python3.12-bug1874280.patch"
-  patch -Nsp1 -i "${srcdir}/0036-bmo-1912663-cbindgen-0.27.0-fixes.patch"
-
-  export PATH="/usr/lib/llvm17/bin:$PATH"
-  export LD_LIBRARY_PATH=/usr/lib/llvm17/lib
 
   cat > ../mozconfig << END
 ac_add_options --with-app-basename=${_pkgname}
@@ -133,7 +106,6 @@ ac_add_options --with-app-name=${pkgname}
 ac_add_options --with-branding=browser/branding/firedragon
 ac_add_options --with-l10n-base=${PWD@Q}/floorp/browser/locales/l10n-central
 ac_add_options --enable-application=browser
-ac_add_options --enable-private-components
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
 # Build options
@@ -160,7 +132,7 @@ export MOZ_APP_REMOTINGNAME=${pkgname}
 export MOZ_CRASHREPORTER=
 export MOZ_DATA_REPORTING=
 export MOZ_REQUIRE_SIGNING=
-export MOZ_SERVICES_HEALTHREPORT=
+mk_add_options MOZ_SERVICES_HEALTHREPORT=0
 export MOZ_TELEMETRY_REPORTING=
 
 # System libraries
@@ -206,11 +178,11 @@ ac_add_options OPT_LEVEL="3"
 ac_add_options RUSTC_OPT_LEVEL="3"
 
 # Other
-export AR=/usr/lib/llvm17/bin/llvm-ar
-export CC=/usr/lib/llvm17/bin/clang
-export CXX=/usr/lib/llvm17/bin/clang++
-export NM=/usr/lib/llvm17/bin/llvm-nm
-export RANLIB=/usr/lib/llvm17/bin/llvm-ranlib
+export AR=/usr/bin/llvm-ar
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
+export NM=/usr/bin/llvm-nm
+export RANLIB=/usr/bin/llvm-ranlib
 END
 }
 
@@ -229,6 +201,10 @@ build() {
   # Malloc_usable_size is used in various parts of the codebase
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
   CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+
+  # Breaks compilation since https://bugzilla.mozilla.org/show_bug.cgi?id=1896066
+  CFLAGS="${CFLAGS/-fexceptions/}"
+  CXXFLAGS="${CXXFLAGS/-fexceptions/}"
 
   # LTO needs more open files
   ulimit -n 4096
