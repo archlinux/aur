@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="fava-dashboards-git"
-pkgver=r74.df40f4e
+pkgver=r93.50a0b7c
 pkgrel=1
 pkgdesc="Custom Dashboards for Beancount in Fava"
 url="https://github.com/andreasgerstmayr/fava-dashboards"

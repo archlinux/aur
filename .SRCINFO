@@ -1,6 +1,6 @@
 pkgbase = fava-dashboards-git
 	pkgdesc = Custom Dashboards for Beancount in Fava
-	pkgver = r74.df40f4e
+	pkgver = r93.50a0b7c
 	pkgrel = 1
 	url = https://github.com/andreasgerstmayr/fava-dashboards
 	arch = any
