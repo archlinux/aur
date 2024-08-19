@@ -1,7 +1,7 @@
 pkgbase = xfce4-power-manager-devel
 	pkgdesc = Power manager for Xfce desktop
 	pkgver = 4.19.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.xfce.org/xfce/xfce4-power-manager/start
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = xfce4-power-manager-devel
 	makedepends = wayland-protocols
 	makedepends = glib2-devel
 	depends = libxfce4ui
+	depends = libxfce4util>=4.19.2
 	depends = upower
 	depends = libnotify
 	depends = xfce4-notifyd
