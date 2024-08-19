@@ -2,16 +2,16 @@
 
 pkgname=algotex-git
 _pkgname=AlgoTeX
-pkgver=r148.27c1844
+pkgver=r189.16afd82
 pkgrel=1
-pkgdesc='AlgoTeX - A LaTeX-Template based on tuda-ci used for FoP and AuD'
-arch=('any')
-url='https://github.com/TUDalgo/AlgoTeX'
-license=('custom')
-depends=('python-pygments')
+pkgdesc="AlgoTeX - A LaTeX-Template based on tuda-ci used for FoP and AuD"
+arch=("any")
+url="https://github.com/TUDalgo/AlgoTeX"
+license=("GPL-3.0-or-later")
+depends=("python-pygments" "latex-tuda-ci-logos")
 makedepends=()
 source=("${pkgname}::git+https://github.com/TUDalgo/AlgoTeX.git")
-sha256sums=('SKIP')
+sha256sums=("SKIP")
 
 # Dynamically update Package Version from Git
 pkgver() {
