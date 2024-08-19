@@ -2,12 +2,12 @@
 
 ## options
 : ${_widgets=qt6}
-: ${_commit=6171aaea1b33d62c0d2ec0827fde705499e13680} # 9.8.0.r30
+: ${_commit=34fa5f9e778111c22dc1e72c6c0a0fff8233831c} # 9.9.1
 
 ## basic info
 _pkgname="peazip"
 pkgname="$_pkgname"
-pkgver=9.9.0
+pkgver=9.9.1
 pkgrel=1
 pkgdesc="Cross-platform file and archive manager (${_widgets^})"
 url="https://github.com/peazip/PeaZip"
