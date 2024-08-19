@@ -2,7 +2,7 @@
 _base=pystencils
 pkgname=python-${_base}
 pkgdesc="Speeding up stencil computations on CPUs and GPUs"
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 arch=(any)
 url="https://i10git.cs.fau.de/pycodegen/${_base}"
@@ -25,7 +25,12 @@ optdepends=('python-cupy: for gpu support'
   'python-rich: for interactive support'
   'python-graphviz: for interactive support')
 source=(${url}/-/archive/release/${pkgver}/${_base}-release-${pkgver}.tar.gz)
-sha512sums=('eb036438768fa847e3380f08a2ee25c0a06a11e27da3257c8a135b783e22b9af224977177bbac624fda6cc3ecb5f139ccb714d24e5560c733274f2b01f93286f')
+sha512sums=('b66b32cbbf949edf8eca70fe599ce69138d8e057a76185ae37885fa9bc1ed768f91a7c7cec4f54579cc3e662b799e2e36a938cd7953ab71531a2bdb15e9ae7e3')
+
+prepare() {
+  sed -i '1 a import math' ${_base}-release-${pkgver}/tests/test_fvm.py
+  sed -i 's/np.math/math/' ${_base}-release-${pkgver}/tests/test_fvm.py
+}
 
 build() {
   cd ${_base}-release-${pkgver}
@@ -38,11 +43,11 @@ check() {
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest \
     --ignore=tests/test_random.py \
-    --ignore=tests/test_vectorization.py \
-    --ignore=tests/test_simplification_strategy.py
+    --ignore=tests/test_vectorization.py
 }
 
 package() {
   cd ${_base}-release-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 COPYING.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
