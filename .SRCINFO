@@ -1,6 +1,6 @@
 pkgbase = chat-gpt-next-web-bin
 	pkgdesc = A cross-platform ChatGPT/Gemini UI (Web / PWA / Linux / Win / MacOS). 一键拥有你自己的跨平台 ChatGPT/Gemini 应用。
-	pkgver = 2.14.1
+	pkgver = 2.14.2
 	pkgrel = 1
 	url = https://app.nextchat.dev/
 	arch = x86_64
@@ -18,14 +18,14 @@ pkgbase = chat-gpt-next-web-bin
 	depends = glibc
 	depends = pango
 	depends = cairo
-	provides = chat-gpt-next-web-bin-2.14.1
+	provides = chat-gpt-next-web-bin-2.14.2
 	conflicts = chat-gpt-next-web-bin
 	conflicts = chat-gpt-next-web
 	conflicts = next-chat-bin
 	conflicts = next-chat
-	source = chat-gpt-next-web-bin-2.14.1.deb::https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web/releases/download/v2.14.1/next-chat_2.14.1_amd64.deb
+	source = chat-gpt-next-web-bin-2.14.2.deb::https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web/releases/download/v2.14.2/next-chat_2.14.2_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/ChatGPTNextWeb/ChatGPT-Next-Web/main/LICENSE
-	sha256sums = a6cc750069ab3f00554677a9510a11b8452af6a903e167f38ae744cd4e06b6f1
+	sha256sums = ab39071cfe8d113006c5519972aeb9bca14f60701d0f6f82f21d57228ec393d1
 	sha256sums = edc5ddb0ceb70e4c76021ddb6d17bb8f1bc59b03228bb17a7acfcf8a1b4afd99
 
 pkgname = chat-gpt-next-web-bin
