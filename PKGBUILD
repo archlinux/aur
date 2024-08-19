@@ -228,8 +228,8 @@ if [ "${CARCH}" = "i486" -o  "${CARCH}" = "i686" -o "${CARCH}" = "pentium4" ]; t
   # fail if upstream's .config changes
   for ((i=0; i<${#sha256sums[@]}; i++)); do
     if [ "${sha256sums[${i}]}" = 'f32dbc7b4202be0f907efe79f8a7bfb308b8a8b26900a9559b8d5ce2575fa8cf' ]; then
-      sha256sums_pentium4=('229d167dd6866159aa438972513b31c21b8cb1e1506b01e91420')
-      sha256sums_i686=('506ef4cb9a3f7dd4346344e03f2e8244d15c8e49dff8914e40c9')
+      sha256sums_pentium4=('5dabd9823df0229d167dd6866159aa438972513b31c21b8cb1e1506b01e91420')
+      sha256sums_i686=('0c61a3582a4c506ef4cb9a3f7dd4346344e03f2e8244d15c8e49dff8914e40c9')
       sha256sums_i486=('c6b06fb7362a0b7fb8d0b1353f9c0266ac3b09748baeae71db26090652be3248')
     fi
   done
