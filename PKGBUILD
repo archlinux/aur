@@ -2,7 +2,7 @@
 
 _pkgname=zsh-auto-venv
 pkgname=${_pkgname}-git
-pkgver=r8.1cc8385
+pkgver=8.1cc8385
 pkgrel=1
 pkgdesc='Automatically activates the Python virtual environment in the current directory or its parent directories.'
 arch=('any')
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
