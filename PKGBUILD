@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: kyngs <aurmail at kyngs dot xyz>
 pkgname=miru-git
-pkgver=5.2.16.r0.g0ef55b1
+pkgver=5.3.1.r0.g9770eb9
 _electronversion=29
 _nodeversion=18
 pkgrel=1
@@ -68,12 +68,12 @@ build() {
     else
         echo "Your network is OK."
     fi
-    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
     cd "${srcdir}/${pkgname//-/.}/electron"
     rm -rf dist node_modules
     sed 's|electron-builder",|electron-builder -l --dir",|g;/aa910d571134/d;/2ffc48f0b43f/d;s|"version": "29.1.4",|"version": "29.1.4"|g' -i package.json
-    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
-    NODE_ENV=production yarn run build
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production     yarn run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
