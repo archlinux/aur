@@ -8,6 +8,7 @@ url="https://github.com/andreasgerstmayr/fava-dashboards"
 license=("GPL3")
 arch=("any")
 depends=(    "fava"
+             "beanquery"
              "python-pyaml")
 makedepends=("git"
              "python-build"

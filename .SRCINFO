@@ -13,6 +13,7 @@ pkgbase = fava-dashboards-git
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = fava
+	depends = beanquery
 	depends = python-pyaml
 	options = !strip
 	source = git+https://github.com/andreasgerstmayr/fava-dashboards
