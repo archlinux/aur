@@ -1,0 +1,11 @@
+pkgbase = fluorine
+	pkgdesc = Simple desktop environment targeted for old systems and HiDPI compatible
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	depends = wget
+	source = flstart
+	sha512sums = SKIP
+
+pkgname = fluorine
