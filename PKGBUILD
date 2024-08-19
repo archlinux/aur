@@ -3,14 +3,14 @@
 pkgname=fastd-git
 arch=("x86_64")
 pkgver=22.13.g2456f767edc6
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and secure tunneling daemon (git version)"
-makedepends=('meson')
-depends=('libcap' 'libuecc>=6' 'libsodium' 'json-c' 'openssl' 'libmnl')
+makedepends=('git' 'meson')
+depends=('glibc' 'libcap' 'libuecc>=6' 'libsodium' 'json-c' 'openssl' 'libmnl')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 url="https://github.com/neocturne/fastd/"
-license=('BSD')
+license=('BSD-2-Clause')
 source=("git+https://github.com/neocturne/fastd.git")
 sha512sums=('SKIP')
 _gitname="fastd"
