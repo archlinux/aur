@@ -2,7 +2,7 @@
 
 pkgname=kf6-servicemenus-rootactions
 pkgver=1.1.0
-pkgrel=5
+pkgrel=1
 pkgdesc='Allows admin users to perform several root only actions from dolphin via polkit agent.'
 arch=(any)
 url='https://gitlab.com/stefanwimmer128/kf6-servicemenus-rootactions'
