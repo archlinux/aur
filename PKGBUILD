@@ -5,9 +5,9 @@
 _pkgname="diodon"
 pkgname="$_pkgname"
 pkgver=1.13.0
-pkgrel=3
+pkgrel=4
 pkgdesc="GTK+ clipboard manager"
-url="https://launchpad.net/diodon"
+url="https://github.com/diodon-dev/diodon"
 license=('GPL-2.0-or-later')
 arch=('x86_64')
 
@@ -24,9 +24,9 @@ makedepends=(
 )
 
 _pkgsrc="$pkgname-$pkgver"
-_pkgext="tar.xz"
-source=("$_pkgsrc.$_pkgext"::"$url/trunk/$pkgver/+download/$_pkgsrc.$_pkgext")
-sha256sums=('5f25ce431ef083afdefa50103f22d3e16d47ec753ed2b29867a04e25146e17a1')
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/$pkgver.$_pkgext")
+sha256sums=('387e78e24dfcac5a73c65ff758c66894a712f7d10754b4ffcfdc11590a9e0a10')
 
 build() {
   arch-meson "$_pkgsrc" build

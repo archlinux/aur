@@ -1,8 +1,8 @@
 pkgbase = diodon
 	pkgdesc = GTK+ clipboard manager
 	pkgver = 1.13.0
-	pkgrel = 3
-	url = https://launchpad.net/diodon
+	pkgrel = 4
+	url = https://github.com/diodon-dev/diodon
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = gobject-introspection
@@ -12,7 +12,7 @@ pkgbase = diodon
 	depends = libayatana-appindicator
 	depends = libpeas
 	depends = zeitgeist
-	source = diodon-1.13.0.tar.xz::https://launchpad.net/diodon/trunk/1.13.0/+download/diodon-1.13.0.tar.xz
-	sha256sums = 5f25ce431ef083afdefa50103f22d3e16d47ec753ed2b29867a04e25146e17a1
+	source = diodon-1.13.0.tar.gz::https://github.com/diodon-dev/diodon/archive/refs/tags/1.13.0.tar.gz
+	sha256sums = 387e78e24dfcac5a73c65ff758c66894a712f7d10754b4ffcfdc11590a9e0a10
 
 pkgname = diodon
