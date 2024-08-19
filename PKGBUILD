@@ -4,7 +4,7 @@
 : ${_build_avx:=false}
 : ${_build_git:=false}
 
-: ${_commit:=df979d4648eec73ed8b3ab61fe246706670574a0} # 0.1.7139
+: ${_commit:=3a08ad18406efc1ddc4927a59bea715961bb63fa} # 0.1.7294
 : ${_scripts:=scripts/deps}
 
 unset _pkgtype
@@ -14,7 +14,7 @@ unset _pkgtype
 # basic info
 _pkgname="duckstation"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.1.7139
+pkgver=0.1.7294
 pkgrel=1
 pkgdesc="Playstation emulator"
 url="https://github.com/stenzek/duckstation"
@@ -117,24 +117,6 @@ _source_shaderc() {
     'spirv-headers'
   )
 
-  _pkgsrc_shaderc="google.shaderc"
-  source+=(
-    "$_pkgsrc_shaderc"::"git+https://github.com/google/shaderc.git"
-  )
-  sha256sums+=(
-    'SKIP'
-  )
-}
-
-_source_shaderc_git() {
-  depends+=(
-    'glslang'
-    'spirv-tools'
-  )
-  makedepends+=(
-    'spirv-headers'
-  )
-
   _pkgsrc_shaderc="stenzek.shaderc"
   source+=(
     "$_pkgsrc_shaderc"::"git+https://github.com/stenzek/shaderc.git"
@@ -182,23 +164,6 @@ _prepare_discord_rpc() (
 )
 
 _prepare_shaderc() (
-  local _version_shaderc=$(grep -E -m1 'SHADERC=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*SHADERC=(\S+)$&\1&')
-  echo "shaderc = $_version_shaderc"
-
-  git -c advice.detachedHead=false -C "$srcdir/$_pkgsrc_shaderc" checkout -f "v$_version_shaderc"
-
-  filterdiff "$srcdir/$_pkgsrc/$_scripts/shaderc-changes.patch" \
-    | sed -E 's&non_sematic_debug_info&non_semantic_debug_info&' \
-      > shaderc-changes.patch
-
-  cd "$srcdir/$_pkgsrc_shaderc"
-  git apply "$srcdir/shaderc-changes.patch"
-
-  sed -E -e '/\(glslc\)/d;/examples/d;/third_party/d' \
-    -i CMakeLists.txt
-)
-
-_prepare_shaderc_git() (
   local _version_shaderc=$(grep -E -m1 'SHADERC=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*SHADERC=(\S+)$&\1&')
   echo "shaderc = $_version_shaderc"
 
@@ -286,14 +251,9 @@ prepare() {
   _prepare_backtrace
   _prepare_cpuinfo
   _prepare_discord_rpc
+  _prepare_shaderc
+  _prepare_soundtouch
   _prepare_spirv_cross
-
-  if [[ "${_build_git::1}" == "t" ]]; then
-    _prepare_shaderc_git
-    _prepare_soundtouch
-  else
-    _prepare_shaderc
-  fi
 
   _prepare_duckstation
 }
@@ -434,16 +394,11 @@ _build_duckstation() {
     -DLIBBACKTRACE_LIBRARY="$srcdir/deps/libbacktrace.a"
     -DSHADERC_INCLUDE_DIR="$srcdir/deps/usr/include"
     -DSHADERC_LIBRARY="$srcdir/deps/usr/lib/libshaderc_shared.so"
+    -DSoundTouch_DIR="$srcdir/deps/usr/lib/cmake/SoundTouch"
     -Dcpuinfo_DIR="$srcdir/deps/usr/share/cpuinfo"
     -Dspirv_cross_c_shared_DIR="$srcdir/deps/usr/share/spirv_cross_c_shared/cmake"
     -Wno-dev
   )
-
-  if [[ "${_build_git::1}" == "t" ]]; then
-    _cmake_options+=(
-      -DSoundTouch_DIR="$srcdir/deps/usr/lib/cmake/SoundTouch"
-    )
-  fi
 
   cmake "${_cmake_options[@]}"
   cmake --build build
@@ -469,11 +424,8 @@ build() {
   _build_cpuinfo
   _build_discord_rpc
   _build_shaderc
+  _build_soundtouch
   _build_spirv_cross
-
-  if [[ "${_build_git::1}" == "t" ]]; then
-    _build_soundtouch
-  fi
 
   _build_duckstation
 }
@@ -518,14 +470,13 @@ END
 
 if [[ "${_build_git::1}" == "t" ]]; then
   _source_duckstation_git
-  _source_shaderc_git
-  _source_soundtouch
 else
   _source_duckstation
-  _source_shaderc
 fi
 
 _source_backtrace
 _source_cpuinfo
 _source_discord_rpc
+_source_shaderc
+_source_soundtouch
 _source_spirv_cross
