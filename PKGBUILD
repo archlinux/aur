@@ -4,12 +4,12 @@
 
 pkgname=theia-electron
 pkgver=1.52.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
 pkgdesc="Cloud & Desktop IDE Platform"
 license=('EPL2')
-depends=('nodejs-lts-hydrogen' 'nss' 'gtk3' 'libxss' 'libxkbfile')
+depends=('nodejs>=18.17.0' 'nodejs<21' 'nss' 'gtk3' 'libxss' 'libxkbfile')
 makedepends=('bash>=5' 'curl' 'diffutils' 'jq'
              'gcc' 'make' 'node-gyp' 'npm' 'pkgconf' 'python-setuptools' 'yarn')
 optdepends=('git: git support' 'libsecret: keytar support')
@@ -79,7 +79,7 @@ package() {
       src-gen lib node_modules package.json \
       plugins \
       "$pkgdir/usr/lib/$pkgname/"
-  chmod -R a+rX "$pkgdir/usr/lib/$pkgname/"
+  chmod -R a+rX,go-w "$pkgdir/usr/lib/$pkgname/"
 
   # Executable
   install -Dm755 theia-electron.sh "$pkgdir/usr/bin/$pkgname"
