@@ -901,3 +901,22 @@ Improvements:
 - The time zone selector in the Open Invite and Scheduling link settings has been enhanced for better usability and consistency.
 - You can now use the time zone selector to change the time zone of copied availability slots, making it easier to share your availability in your contact's time zone.
  
+
+
+=== Morgen 3.5.5
+New Features:
+- If your primary account connected to Morgen is Google, it's now faster to sign in to a new device with the new Sign In with Google. Available on desktop and the Morgen web platform.
+
+Improvements:
+- Fetching the Morgen unified availability of team members using Outlook calendars is now significantly faster.
+- When a task is listed in the overdue or due soon lists, the task along with its subtasks will be displayed, regardless of whether those subtasks are overdue or due soon. This provides a more complete picture of the work required to meet due dates.
+- The calendar options in Preferences > Calendars have been migrated to our new design system to improve UI and usability.
+- When a new Morgen task list is created, it will be kept visible even if Hide empty groups is enabled.
+ 
+Fixes:
+- An issue updating and creating new tags for events has been fixed.
+- The color selector for tags, calendars, and task lists is now fully visible again. It was partially cut off in the previous version.
+- We fixed the button to add attendees to an event, which was sometimes unresponsive.
+- An issue with the keyboard shortcut C to create new events, which was not opening the details widget, has been rectified.
+- The time label in the event preview tooltip now updates correctly with a time zone change.
+- Task titles in the task Archive are no longer truncated when there is enough horizontal space.
