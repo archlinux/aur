@@ -3,7 +3,7 @@
 pkgname=mayland-git
 _pkgname=mayland
 pkgver=r110.d6511fe
-pkgrel=1
+pkgrel=2
 pkgdesc="a bad wayland compositor"
 arch=('x86_64')
 url="https://github.com/m4rch3n1ng/mayland"
