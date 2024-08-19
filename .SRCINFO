@@ -1,9 +1,10 @@
 pkgbase = android-aarch64-libxtst
 	pkgdesc = X11 Testing -- Resource extension library (Android aarch64)
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://xorg.freedesktop.org/
 	arch = any
+	groups = android-libxtst
 	license = custom
 	makedepends = android-aarch64-xorg-util-macros
 	makedepends = android-aarch64-xorgproto
@@ -14,10 +15,10 @@ pkgbase = android-aarch64-libxtst
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://xorg.freedesktop.org//releases/individual/lib/libXtst-1.2.4.tar.xz
-	source = https://xorg.freedesktop.org//releases/individual/lib/libXtst-1.2.4.tar.xz.sig
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXtst-1.2.5.tar.xz
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXtst-1.2.5.tar.xz.sig
 	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
-	sha512sums = f2f4e01239b892b8e26284cede90feb4fe7738beb243bca0f6adb349029f8bf87b5a482911edcd2401733c92ef78eec07fcd455b92e5b8c4828374769e60098d
-	sha512sums = SKIP
+	md5sums = b62dc44d8e63a67bb10230d54c44dcb7
+	md5sums = SKIP
 
 pkgname = android-aarch64-libxtst
