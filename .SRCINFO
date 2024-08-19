@@ -1,6 +1,6 @@
 pkgbase = ludusavi
 	pkgdesc = Backup tool for PC game saves
-	pkgver = 0.24.3
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/mtkennerly/ludusavi
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = ludusavi
 	depends = gcc-libs
 	depends = hicolor-icon-theme
 	optdepends = rclone: upload backups to the cloud
-	source = ludusavi-0.24.3.tar.gz::https://github.com/mtkennerly/ludusavi/archive/v0.24.3.tar.gz
-	source = https://github.com/mtkennerly/ludusavi/releases/download/v0.24.3/ludusavi-v0.24.3-legal.zip
-	sha256sums = 14c60e7e550909aaedfaaa2998573aeb7ec46a6330ca517e0f6ab796aff4a11a
-	sha256sums = 39bf114820d85da481326a11fdda39e6e8f3fd23c2b68937e09024e2c3622451
+	source = ludusavi-0.25.0.tar.gz::https://github.com/mtkennerly/ludusavi/archive/v0.25.0.tar.gz
+	source = https://github.com/mtkennerly/ludusavi/releases/download/v0.25.0/ludusavi-v0.25.0-legal.zip
+	sha256sums = 26fbbed72a8314fa3c25b3cd4434988952c78cd21e22fb0dd041ca1a9cfed988
+	sha256sums = defe971723d004ebd5257c9b13221fe02cc5093c07403379770bce0992e0b273
 
 pkgname = ludusavi
