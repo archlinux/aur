@@ -13,7 +13,7 @@ license=("custom:ISC")
 
 depends=("python" "boost-libs")
 makedepends=("git" "gcc" "cmake" "pkgconf" "gawk" "eigen" "boost" "prjxray-db>=r258" "pypy3")
-conflicts=("nextpnr" "nextpnr-xilinx")
+conflicts=("nextpnr")
 
 source=(
 	"$_pkgname::git+$url"

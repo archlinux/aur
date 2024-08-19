@@ -17,7 +17,6 @@ pkgbase = nextpnr-himbaechel-git
 	depends = python
 	depends = boost-libs
 	conflicts = nextpnr
-	conflicts = nextpnr-xilinx
 	source = nextpnr-himbaechel::git+https://github.com/YosysHQ/nextpnr
 	sha256sums = SKIP
 
