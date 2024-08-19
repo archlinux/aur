@@ -4,7 +4,7 @@
 
 pkgname=katago-cuda
 _pkgname=katago
-pkgver=1.15.1
+pkgver=1.15.3
 pkgrel=1
 pkgdesc='Baduk engine with no human-provided knowledge'
 arch=(x86_64)
@@ -15,25 +15,18 @@ license=(MIT)
 depends=(libzip)
 makedepends=(cmake cuda cudnn ninja)
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "cpp.patch"
         # Strongest confidently-rated network
-        "https://media.katagotraining.org/uploaded/networks/models/kata1/kata1-b28c512nbt-s7168446720-d4316919285.bin.gz"
+        "https://media.katagotraining.org/uploaded/networks/models/kata1/kata1-b28c512nbt-s7332806912-d4357057652.bin.gz"
         # Latest network
-        "https://media.katagotraining.org/uploaded/networks/models/kata1/kata1-b28c512nbt-s7415360768-d4383183533.bin.gz"
+        "https://media.katagotraining.org/uploaded/networks/models/kata1/kata1-b28c512nbt-s7503868160-d4406856118.bin.gz"
 )
-b2sums=('129856dfce328a574d7fd8aff2d71ab88dcdc21984c035de1c3f69af9343601e8a2573b7a5c9151e23b52da59dfb42d72af50634dc7ced57b684f8e62d0774b7'
-        'a1a9c21121460d43c5d94a292b35bf2e032a09e31371685eb5b27d58283140930e9ea63b202059258d9f89bbdb711238398f4f33c7de52bf1c55d3ed0d80daab'
-        'fea3ed0d0feb548940c1b2b8c9a4538113d4483f58dd119d591f466c71cc2b65757e52867e68170df5da29bf2ca0a41c933d4e96b55daae0324881b71e6d2e70'
-        'c79a5aea46e666b85e3003b225094825296d694f48f818f3006196c684d4da24032a500c86b7b4df479ffebb86de612335a3658c226e1983a193e98b4824bed6'
+b2sums=('4d93899bb1f6084788971591d4c4200eacd754e0fb47da6407afb47c23a9d358c14ab261d064c0c8d8f31343cb0ce2f983afd38ab850a08950d65ef2b814f8cf'
+        '5c21ee85b74c661fdaefd5e6d5bfb86f6d0c23b4b26474052b72d7901e6944b0626a751d7ccc2b90eed6255c500980b9512892965f2bf265049b00618f693f68'
+        '34db5b039ffa00953cf9fd0ad36f608f71ccaf0a3b29128a53bc10117dfa6a923bf2a7a24886d5a0f18444f9cfa86dedecf27862bc3c7949d18c6ece802c8802'
 )
-_model_source=("${source[@]:2}")
+_model_source=("${source[@]:1}")
 _model=("${_model_source[@]##*/}")
 noextract=("${_model[@]}")
-
-prepare() {
-  cd "KataGo-${pkgver}"
-  patch -p0 -i "${srcdir}/cpp.patch"
-}
 
 build() {
   cmake \
