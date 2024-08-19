@@ -3,21 +3,21 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=basilisk
-pkgver=2024.05.11
-platform=RB_20240423
-pkgrel=2
+pkgver=2024.08.16
+platform=RB_20240812
+pkgrel=1
 pkgdesc="A XUL-based web-browser demonstrating the Unified XUL Platform (UXP)"
 arch=('x86_64')
 url="https://www.basilisk-browser.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk3' 'gtk2' 'libxt' 'mime-types' 'alsa-lib' 'ffmpeg' 'ttf-font')
-makedepends=('unzip' 'zip' 'python2' 'yasm' 'mesa' 'autoconf2.13' 'gcc13')
+makedepends=('unzip' 'zip' 'python2' 'yasm' 'mesa')
 options=('!emptydirs')
 source=("https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v${pkgver}.tar.gz"
         "https://repo.palemoon.org/MoonchildProductions/UXP/archive/${platform}.tar.gz"
         "https://repo.palemoon.org/mcp-graveyard/Pale-Moon/raw/commit/54aeb54828aba7ab47d6ec4a2ee432589efa2b4f/palemoon/branding/unofficial/browser.desktop")
-sha256sums=('0c7ac14540e0f5fb643e258c5995da9e5d4a556ffab38c858a6786e054678f62'
-            '0d6a073c8a4bd6c0de00c19e571e541f306c12a7a3929848cca5dcd70c5d06cf'
+sha256sums=('0dfd13bfe1f80336c3892bfe75908d6976cb84122421c5a635643f308af8a6ef'
+            '4b997d0bf2a9ae5fffb3e94ec0dce2c9cc96190f42ad394e3b76c77e866957c4'
             '9ffbaa46c277e3c9addc2ce61b17e8eccffd3860706ca75d4fd70eeaa6f5e380')
 
 prepare() {
@@ -105,14 +105,14 @@ EOF
 build() {
   cd "$srcdir/$pkgname"
 
-  export CC=gcc-13
+  #export CC=gcc-13
   ./mach build
 }
 
 package() {
   cd "$srcdir/$pkgname"
 
-  export CC=gcc-13
+  #export CC=gcc-13
   DESTDIR="$pkgdir" ./mach install
 
   # Install icons and .desktop for menu entry
