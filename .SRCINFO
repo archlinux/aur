@@ -1,9 +1,10 @@
 pkgbase = android-aarch64-lz4
 	pkgdesc = Very fast lossless compression algorithm (Android aarch64)
-	pkgver = 1.9.4
-	pkgrel = 2
+	pkgver = 1.10.0
+	pkgrel = 1
 	url = http://lz4.github.io/lz4/
 	arch = any
+	groups = android-lz4
 	license = GPL2
 	makedepends = android-cmake
 	depends = android-ndk
@@ -11,7 +12,7 @@ pkgbase = android-aarch64-lz4
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/lz4/lz4/archive/v1.9.4.tar.gz
-	sha256sums = 0b0e3aa07c8c063ddf40b082bdf7e37a1562bda40a0ff5272957f3e987e0e54b
+	source = https://github.com/lz4/lz4/archive/v1.10.0.tar.gz
+	md5sums = dead9f5f1966d9ae56e1e32761e4e675
 
 pkgname = android-aarch64-lz4
