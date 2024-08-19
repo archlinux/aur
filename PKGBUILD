@@ -3,32 +3,33 @@
 pkgname=libsoundio
 pkgver=2.0.1
 _pkgver=$pkgver-7
-pkgrel=1
-pkgdesc="A C99 library providing cross-platform audio input and output"
+pkgrel=2
+pkgdesc='A C99 library providing cross-platform audio input and output'
 arch=('i686' 'x86_64')
 url='https://www.github.com/andrewrk/libsoundio'
 license=('MIT')
 source=("https://github.com/andrewrk/$pkgname/archive/$_pkgver.tar.gz")
-options=('!buildflags')
 depends=('jack')
 makedepends=('cmake')
 md5sums=('7a8d22fc28a5331e26ed318283f40d96')
 
 build() {
-    cmake \
-      -B build \
-      -S "$pkgname-$_pkgver" \
-      -D CMAKE_BUILD_TYPE=Release \
-      -D CMAKE_INSTALL_PREFIX=/usr \
-      -D CMAKE_INSTALL_LIBDIR=lib \
-      -D BUILD_EXAMPLE_PROGRAMS=OFF \
-      -D BUILD_TESTS=OFF \
-      -D BUILD_STATIC_LIBS=OFF \
-      -D ENABLE_JACK=ON \
+  cmake \
+    -B build \
+    -S "$pkgname-$_pkgver" \
+    -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_INSTALL_LIBDIR=lib \
+    -D BUILD_EXAMPLE_PROGRAMS=OFF \
+    -D BUILD_TESTS=OFF \
+    -D BUILD_STATIC_LIBS=OFF \
+    -D ENABLE_JACK=ON \
 
-    cmake --build build
+  cmake --build build
 }
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+
+  install -Dm644 "$pkgname-$_pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
