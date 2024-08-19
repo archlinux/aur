@@ -2,7 +2,7 @@
 
 pkgname="toc"
 _pkgname="tableofcontents"
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="Generate a table of contents from the comments of a file"
 url="https://github.com/AlphaJack/toc"
@@ -11,7 +11,7 @@ arch=("any")
 depends=("python" "python-importlib-metadata")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('d0c922fa76e0ff0df7a8d27d9e571e2554ef4374208c70543f61c06626c85ea2eefae4d95f3368a171d5142d89955dad19ecc8632f33e65bb5560fed6757f595')
+b2sums=('c13ffb2dce1e7be3dffbaadfba17d05e0cd87f4762871f6226e5e98365bee802c4b2e0288365969af269550433d975992e079429eb6669339da0dc82e4a87163')
 
 build(){
  cd "$_pkgname-$pkgver"
