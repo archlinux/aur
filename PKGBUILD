@@ -4,9 +4,10 @@
 # Contributor: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl3
-pkgver=3.1.1
+pkgver=3.0.0.r5823.geb212ac
+epoch=1
 pkgrel=1
-pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3)"
+pkgdesc="Simple Directmedia Layer (Version 3 Pre-Release, Updated weekly)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.libsdl.org"
 license=('Zlib')
@@ -19,8 +20,13 @@ optdepends=('alsa-lib: ALSA audio driver'
             'jack: JACK audio driver'
 	    'pipewire: PipeWire audio driver'
 	    'libdecor: Wayland client decorations')
-source=("git+https://github.com/libsdl-org/SDL.git#tag=prerelease-${pkgver}")
-sha256sums=('170e00bcd9e9a431198fd67782f070c068e17c2af35367b840409230b5cd43b2')
+source=("git+https://github.com/libsdl-org/SDL.git#commit=eb212ac4edcc331b8215dc706abca95af2d51d87")
+sha256sums=('348e2a3ad7bb8615ad33171f644457f28e2e476ad216094ac50e8cf732d087e8')
+
+pkgver(){
+	cd "$srcdir/SDL"
+	git describe --tags --long --abbrev=7 | sed 's/^prerelease-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
 	cd "$srcdir"
