@@ -2,15 +2,14 @@
 
 pkgname=latex-tuda-ci-logos
 pkgver=3.03
-pkgrel=2
+pkgrel=3
 pkgdesc='Logos for TUDa-CI from Technische Universität Darmstadt'
 arch=('any')
-url='https://www.ce.tu-darmstadt.de/ce/latex_tuda/index.de.jsp'
+url='https://download.hrz.tu-darmstadt.de/protected/ULB/tuda_logo.pdf'
 license=('custom')
-source=('local://logo_bundle.zip')
-b2sums=('662e3cb1a16703a7a8d6e73fe042752be4cd285db0a8a14fdd6b86ac1905551f67e46fba563971244fc41dc6e029996884eefabf7e05e28419309b661b263fb8')
+source=('local://tuda_logo.pdf')
+b2sums=('a7489d78e968996a41537f1957f6081cf4c6c7d64f9c5e9b3e293fda9e258c5b8a1aa647d85d78b80d3081f6e4c682236c240a761a8ccfaa1999a7758b2e740e')
 
 package() {
-  cd tex/latex/tuda-ci
   install -Dm644 -t "${pkgdir}"/usr/share/texmf/tex/latex/tuda-ci/ *.pdf
 }
