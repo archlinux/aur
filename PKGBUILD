@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cpeditor-bin
 pkgver=7.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="The IDE for competitive programming Fetch, Code, Compile, Run, Check, Submit"
 arch=("x86_64")
 url="https://cpeditor.org/"
@@ -19,7 +19,7 @@ depends=(
     'fontconfig'
     'libglvnd'
     'libxcb'
-    'syntax-highlighting5'
+    'syntax-highlighting'
 )
 optdepends=(
     'cf-tool: submit to Codeforces'
@@ -34,7 +34,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('30303f0c7bcac3ae9cc6550ed9e86e5be8c4c1d49e09542dca18f17a2561b0a6'
-            '0acb6f9ce3037b89f24bf8218bc42418104d837a9e09c366106e5142ffbe9af1')
+            '34694e75d045d429afa55a693245d376eff2e75aacab96c20f563156d3da3207')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
