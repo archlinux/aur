@@ -1,6 +1,6 @@
 pkgbase = zsh-auto-venv-git
 	pkgdesc = Automatically activates the Python virtual environment in the current directory or its parent directories.
-	pkgver = 8.1cc8385
+	pkgver = r8.1cc8385
 	pkgrel = 1
 	url = https://github.com/Skylor-Tang/auto-venv
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = zsh-auto-venv-git
 	depends = zsh
 	provides = zsh-auto-venv
 	conflicts = zsh-auto-venv
-	source = git+https://github.com/Skylor-Tang/auto-venv
+	source = zsh-auto-venv::git+https://github.com/Skylor-Tang/auto-venv.git
 	sha512sums = SKIP
 
 pkgname = zsh-auto-venv-git
