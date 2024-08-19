@@ -1,6 +1,6 @@
 pkgbase = coolvlviewer
 	pkgdesc = A third-party viewer for Second Life and OpenSim grids. (built from source)
-	pkgver = 1.32.2.7
+	pkgver = 1.32.2.9
 	pkgrel = 1
 	url = http://sldev.free.fr
 	install = coolvlviewer.install
@@ -53,10 +53,10 @@ pkgbase = coolvlviewer
 	optdepends = wine: for SLVoice support
 	provides = coolvlviewer
 	conflicts = coolvlviewer-bin
-	source = http://sldev.free.fr/sources/CoolVLViewer-src-13227.tar.bz2
+	source = http://sldev.free.fr/sources/CoolVLViewer-src-13229.tar.bz2
 	source = coolvlviewer.desktop
 	source = coolvlviewer.launcher
-	sha1sums = 7dbbd422b44999ea265fd9e6d2ed730fdb42a2f7
+	sha1sums = 5670b4b808d77e85b7692c6709df178b6e01c5ee
 	sha1sums = 6336a03697c321495c3c9aacc57274b4a054f08a
 	sha1sums = 3ef1284a00a4437e4c34f809311ee0672604ef04
 

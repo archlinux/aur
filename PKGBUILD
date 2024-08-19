@@ -1,6 +1,6 @@
 # Maintainer: Alex Tharp <alex at toastercup dot io>
 pkgname=coolvlviewer
-pkgver=1.32.2.7
+pkgver=1.32.2.9
 pkgrel=1
 pkgdesc="A third-party viewer for Second Life and OpenSim grids. (built from source)"
 url="http://sldev.free.fr"
@@ -66,7 +66,7 @@ source=(
   "coolvlviewer.launcher"
 )
 sha1sums=(
-  '7dbbd422b44999ea265fd9e6d2ed730fdb42a2f7'
+  '5670b4b808d77e85b7692c6709df178b6e01c5ee'
   '6336a03697c321495c3c9aacc57274b4a054f08a'
   '3ef1284a00a4437e4c34f809311ee0672604ef04'
 )
