@@ -1,7 +1,7 @@
 pkgbase = cosmic-settings-git
 	pkgdesc = The settings application for the COSMIC desktop environment.
 	pkgver = 1.0.0.alpha.1.r27.g83a4296
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pop-os/cosmic-settings
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = cosmic-settings-git
 	makedepends = clang
 	makedepends = git
 	makedepends = just
-	makedepends = lld
+	makedepends = mold
 	depends = accountsservice
 	depends = cosmic-icons-git
 	depends = cosmic-randr-git
