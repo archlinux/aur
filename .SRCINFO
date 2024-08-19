@@ -1,6 +1,6 @@
 pkgbase = go-hass-agent-bin
-	pkgdesc = A Home Assistant， native app integration for desktop/laptop devices.
-	pkgver = 9.6.0
+	pkgdesc = A Home Assistant, native app integration for desktop/laptop devices.
+	pkgver = 10.0.0
 	pkgrel = 1
 	url = https://github.com/joshuar/go-hass-agent
 	arch = aarch64
@@ -9,13 +9,13 @@ pkgbase = go-hass-agent-bin
 	license = MIT
 	depends = libx11
 	depends = libglvnd
-	provides = go-hass-agent=9.6.0
+	provides = go-hass-agent=10.0.0
 	conflicts = go-hass-agent
-	source_aarch64 = go-hass-agent-9.6.0-aarch64.deb::https://github.com/joshuar/go-hass-agent/releases/download/v9.6.0/go-hass-agent_9.6.0_arm64.deb
-	sha256sums_aarch64 = 96dbf3b8a33c9803d12f6b6a3b905999d98b85e9463f4ce7f5d1c14fd9aca39c
-	source_armv7h = go-hass-agent-9.6.0-armv7h.deb::https://github.com/joshuar/go-hass-agent/releases/download/v9.6.0/go-hass-agent_9.6.0_arm7hf.deb
-	sha256sums_armv7h = 3efba1d9641360ee5861b636e6a378f44e317cb1925c3c18dc8913deba6bb4db
-	source_x86_64 = go-hass-agent-9.6.0-x86_64.deb::https://github.com/joshuar/go-hass-agent/releases/download/v9.6.0/go-hass-agent_9.6.0_amd64.deb
-	sha256sums_x86_64 = 1b9c69b23df3a7466b980c7cfb5754ec68339e0b7224cff87a14b380f86cb5d3
+	source_aarch64 = go-hass-agent-10.0.0-aarch64.deb::https://github.com/joshuar/go-hass-agent/releases/download/v10.0.0/go-hass-agent_10.0.0_arm64.deb
+	sha256sums_aarch64 = dc249675a6a970fb927f96d54fc59739b69366cfe7e296b5314694907c001582
+	source_armv7h = go-hass-agent-10.0.0-armv7h.deb::https://github.com/joshuar/go-hass-agent/releases/download/v10.0.0/go-hass-agent_10.0.0_arm7hf.deb
+	sha256sums_armv7h = ff30222c160d47a2e5c0b1e64d6b2ac528a8ace9d412d947168ee8ad682600dc
+	source_x86_64 = go-hass-agent-10.0.0-x86_64.deb::https://github.com/joshuar/go-hass-agent/releases/download/v10.0.0/go-hass-agent_10.0.0_amd64.deb
+	sha256sums_x86_64 = cdace433ac2cdb307ff53b76ac3fca53c21ccf2a0893446d006d9db505071c12
 
 pkgname = go-hass-agent-bin
