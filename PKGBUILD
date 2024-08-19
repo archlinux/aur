@@ -5,20 +5,21 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libdeflate
-pkgver=1.20
+pkgver=1.21
 pkgrel=1
 arch=('any')
 pkgdesc="Heavily optimized library for DEFLATE/zlib/gzip compression and decompression (Android ${_android_arch})"
 url='https://github.com/ebiggers/libdeflate'
 license=('MIT')
+groups=('android-libdeflate')
 depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/ebiggers/libdeflate/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('14494b58c42b3bf65b4c469a8e4252ab')
+md5sums=('2eb438e8c465c6fbde9bc20f4813ee60')
 
 build() {
-    cd "${srcdir}/libdeflate-$pkgver"
+    cd "${srcdir}/libdeflate-${pkgver}"
     source android-env ${_android_arch}
 
     android-${_android_arch}-cmake \
@@ -31,10 +32,10 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/libdeflate-$pkgver"
+    cd "${srcdir}/libdeflate-${pkgver}"
     source android-env ${_android_arch}
 
     DESTDIR="${pkgdir}" cmake --install build
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
