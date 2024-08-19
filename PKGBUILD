@@ -4,7 +4,7 @@
 
 pkgname=gnome-system-tools
 pkgver=3.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc='Cross-platform configuration utilities for GNOME'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://en.wikipedia.org/wiki/GNOME_System_Tools'
@@ -18,6 +18,7 @@ depends=('libtool'
 makedepends=('intltool')
 install=gnome-system-tools.install
 source=("${pkgname}-${pkgver}.tar.bz2::https://download.gnome.org/sources/gnome-system-tools/3.0/gnome-system-tools-3.0.0.tar.bz2"
+	'po.patch'
 	'01_wait_for_backends.patch'
 	'10_disable_interfaces.patch'   
 	'11_dont_show_shares.patch'        
@@ -42,6 +43,7 @@ source=("${pkgname}-${pkgver}.tar.bz2::https://download.gnome.org/sources/gnome-
 	'time-tool.c.patch'
        )
 sha256sums=('905df26c02f00a6c2c18706ba3db7eab764e3df6576289e103504aa39a47ae0b'
+	    '827c3169ae5060403b3f833b0f9c1d5cefe1d80aa5ade22e2ff7908b1ce1b5ef'
 	    'c0c9c795aa2146e5dcdde32151c0bd4f406a9369b8bb0e7e1acb13ea464f1021'
 	    'c94e8944bc3d4b2ccfe93e2e7cc591c9680291c2f004f63d3c5cf6a7f2a426dd'
 	    '18c7f34fefda27a47805f2e3a59ea67f14a2192ced0087ce11206c6b73154520'
