@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat
 _pkgname=GhostChat
-pkgver=3.2.1
+pkgver=3.2.2
 _electronversion=31
 _nodeversion=20
 pkgrel=2
@@ -14,17 +14,18 @@ depends=(
     "electron${_electronversion}"
 )
 makedepends=(
-    'pnpm>=9'
+    'pnpm'
     'gendesk'
     'npm'
     'nvm'
     'curl'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('04db0fc4a0c63f31e6543352492d7e9de8f1ac6b5eeb4d897f156df65730a747'
+sha256sums=('52dbdc8f57aa2310ee911e7faefafa758bbeb0ad119f4f1bf81e9d4a8bf8b564'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -41,7 +42,7 @@ build() {
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
@@ -61,16 +62,16 @@ build() {
     fi
     sed "s|out\/release\/\${version}|release|g;s|\/\/ ||g;s|AppImage|dir|g" -i electron-builder.config.cjs
     cp public/icons/icon-512x125.png public/icons/icon-512x512.png
-    NODE_ENV=development pnpm install --no-lockfile
-    NODE_ENV=production pnpm run release
+    NODE_ENV=development    pnpm install --no-lockfile
+    NODE_ENV=production     pnpm run release
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname}.git/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     for _icons in 16x16 32x32 64x64 128x128 256x256 512x512;do
-        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/public/icons/icon-${_icons}.png" \
+        install -Dm644 "${srcdir}/${pkgname}.git/public/icons/icon-${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644  "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644  "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
