@@ -2,7 +2,7 @@
 pkgname=akuse-bin
 pkgver=1.4.0
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and easy to use anime streaming desktop app without ads."
 arch=('any')
 url="https://github.com/akuse-app/akuse"
@@ -24,7 +24,7 @@ sha256sums=('09869a61253aed7e8e3baef5cc93fbd08d0188c261b3e91e6e7624f891fc579e'
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app|g" \
+        -e "s|@runname@|app.asar|g" \
         -e "s|@cfgdirname@|${pkgname%-bin}-beta|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"

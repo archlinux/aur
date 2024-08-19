@@ -1,7 +1,7 @@
 pkgbase = akuse-bin
 	pkgdesc = Simple and easy to use anime streaming desktop app without ads.
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/akuse-app/akuse
 	arch = any
 	license = GPL-3.0-or-later
