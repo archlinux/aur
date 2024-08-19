@@ -1,5 +1,5 @@
 
-# Maintainer: Michael Riegert <michael at eowyn net>
+# Contributor: Michael Riegert <michael at eowyn net>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Daniel M. Capella <polyzen@archlinux.info>
@@ -13,7 +13,13 @@ pkgdesc='Library for Python 3 to communicate with the Google Chromecast'
 arch=('any')
 url=https://github.com/balloob/pychromecast
 license=('MIT')
-depends=('python' 'python-protobuf' 'python-requests' 'python-zeroconf' 'python-six' 'python-setuptools' 'python-casttube')
+depends=(
+    'python'
+    'python-casttube'
+    'python-protobuf'
+    'python-requests'
+    'python-zeroconf'
+)
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/balloob/pychromecast/archive/$pkgver.tar.gz"
         "is_alive.patch")
