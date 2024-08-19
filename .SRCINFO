@@ -6,7 +6,7 @@ pkgbase = secure-delete
 	install = secure-delete.install
 	arch = i686
 	arch = x86_64
-	license = GPLv2
+	license = GPL2
 	depends = glibc
 	depends = sh
 	conflicts = srm
@@ -14,4 +14,3 @@ pkgbase = secure-delete
 	sha256sums = 2bb8d1f9dbfd2e14f194ee88c730ef8abb8737bf183f715f45b9ca17d59bcebf
 
 pkgname = secure-delete
-
