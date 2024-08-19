@@ -4,7 +4,7 @@ _pkgname=telegram-a
 realname=telegram-t
 
 pkgname="${_pkgname}"-appimage
-pkgver=10.9.5
+pkgver=10.9.9
 pkgrel=1
 pkgdesc="Official Telegram Web client version A AppImage version"
 arch=('x86_64')
@@ -16,7 +16,7 @@ _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/Ajaxy/telegram-tt/releases/download/v${pkgver}/Telegram-A-x86_64.AppImage"
                "https://github.com/Ajaxy/telegram-tt/raw/v${pkgver}/LICENSE")
 noextract=("${_appimage}")
-sha256sums_x86_64=('83341899eb2c87dc1175aa4fc6be41e87edaa7fe15d435c1d33e9d8e23da0966'
+sha256sums_x86_64=('19047943bd402b774bb7c3a819b3338e797d4459b3976e1798a100c503a3f930'
                    'e1c0ad728983d8a57335e52cf1064f1affd1d454173d8cebd3ed8b4a72b48704')
 
 prepare() {
