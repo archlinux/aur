@@ -2,8 +2,8 @@
 
 pkgbase=gcc-snapshot
 pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-ada,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,lto-dump,libgccjit}-snapshot)
-pkgver=15.1.0.snapshot20240811
-_pkgver=15-20240811
+pkgver=15.1.0.snapshot20240818
+_pkgver=15-20240818
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
@@ -26,16 +26,14 @@ source=(https://ftp.fu-berlin.de/unix/languages/gcc/snapshots/${_pkgver}/gcc-${_
         https://www.mpfr.org/mpfr-${_mpfrver}/mpfr-${_mpfrver}.tar.xz{,.asc}
         c89
         c99
-        gcc-ada-repro.patch
-        0002-gm2-fix-bad-programming-practice-identifier-warning.patch
-        0003-gm2-fix-bad-programming-practice-warning.patch)
+        gcc-ada-repro.patch)
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # nisse@lysator.liu.se
               A534BE3F83E241D918280AEB5831D11A0D4DB02A) # vincent@vinc17.net
-sha256sums=('11c3bf4fcb44309162d3e6c558aab48b27de8318e17f06b38da0f5634e4e1146'
+sha256sums=('02a7a8de5d83079d1fe11c75a5d03e01f32a937917e1c15aa95f94cb54573aae'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
@@ -44,9 +42,7 @@ sha256sums=('11c3bf4fcb44309162d3e6c558aab48b27de8318e17f06b38da0f5634e4e1146'
             'SKIP'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
             '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
-            '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f'
-            '9252eca98be0183732f83c383e4680a40f756bab11df9269b53484fccf106874'
-            '6fad5923d838486e72b41766b8bfd8a6785ff1fbd2005e1196107c9dc8d36a1d')
+            '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f')
 
 prepare() {
   if [ ! -d gcc ]; then
@@ -64,8 +60,6 @@ prepare() {
   sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
 
   patch -Np0 -i ${srcdir}/gcc-ada-repro.patch
-  patch -Np1 -i ${srcdir}/0002-gm2-fix-bad-programming-practice-identifier-warning.patch
-  patch -Np1 -i ${srcdir}/0003-gm2-fix-bad-programming-practice-warning.patch
 
   mkdir -p ${srcdir}/gcc-build ${srcdir}/libgccjit-build
 }
