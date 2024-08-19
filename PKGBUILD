@@ -8,6 +8,7 @@ pkgdesc="a bad wayland compositor"
 arch=('x86_64')
 url="https://github.com/m4rch3n1ng/mayland"
 license=('GPL-3.0-or-later')
+depends=('glibc' 'mesa' 'seatd' 'libinput' 'libxkbcommon' 'wayland')
 makedepends=('cargo')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
