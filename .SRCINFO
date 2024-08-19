@@ -1,0 +1,23 @@
+pkgbase = getorganelle
+	pkgdesc = Get organelle genomes from genome skimming data https://doi.org/10.1186/s13059-020-02154-5
+	pkgver = 1.7.7.1
+	pkgrel = 0
+	url = https://github.com/Kinggerm/GetOrganelle
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-setuptools
+	depends = python
+	depends = perl
+	depends = pigz
+	depends = spades
+	depends = onetbb
+	depends = bowtie2
+	depends = blast+
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-sympy
+	depends = python-requests
+	source = getorganelle-1.7.7.1.tar.gz::https://github.com/Kinggerm/GetOrganelle/archive/1.7.7.1.tar.gz
+	sha256sums = cf8e14766de43967182be839de20c9d1709b60fae38a0b3d175742dfad7a5d44
+
+pkgname = getorganelle
