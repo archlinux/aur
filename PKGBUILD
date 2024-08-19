@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=mixo
-pkgver=1.47.0
+pkgver=1.71.0
 pkgrel=1
 pkgdesc="Connect your DJ software, sync your library to all your devices, listen to your sets on your phone, and backup your library to the cloud"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://www.mixo.tech/download/MIXO-${pkgver}.AppImage"
         'LICENSE')
-sha256sums=('9cc6ad148b36f8ebef02835d29a0f3f8d66cfd0d28ab91a2ac0d977ab84fdcb9'
+sha256sums=('df877806141c5c89c64178b041a00d1aeecc075252f05561c4c98b8d696e7512'
             '84b2a88e0ca0dad3ddca2244b6300af37da7c79eb83b7dfa21457f8a72def1ee')
 package() {
   chmod 755 ./${pkgname}-${pkgver}.AppImage
