@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=uyou-todo-bin
 _pkgname=uyoutodo
-pkgver=3.0.2
+pkgver=3.0.3
 _electronversion=31
 pkgrel=1
 pkgdesc="A todo list with electron"
@@ -28,8 +28,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/dow
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/uyou.ToDo-${pkgver}.AppImage")
 sha256sums=('39db5a38eec57377569ab296b6a804062b8e7a72908db228ae1d6d91bcbb61d3'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('a328397aea11557980ee5a2a7f246314bee3195dd0d1a20e5b364d2b42be95d6')
-sha256sums_x86_64=('a57de262e2d570a65f2518c58b9af2370652db79f4ed0f3114ba32f456404956')
+sha256sums_aarch64=('aa84c2bb682402bbf1cd723b3163d810ef0501f137d356bfa7ee55678086d0ba')
+sha256sums_x86_64=('1bae20fb273ae578a76bce81c39add9dea9a1d2579a1e2c31e8c49ee4df7f71c')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
