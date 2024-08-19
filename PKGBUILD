@@ -2,7 +2,7 @@
 # Contributor: Yunhui Fu <yhfudev@gmail.com>
 
 pkgname=tulip
-pkgver=5.7.3
+pkgver=5.7.4
 pkgrel=1
 pkgdesc='An information visualization framework dedicated to the analysis and visualization of relational data.'
 arch=( 'i686' 'x86_64' 'armv6' 'armv6h' 'arm7h' )
@@ -31,18 +31,8 @@ optdepends=(
     'doxygen'
     'python-sphinx'
     )
-source=(
-    "https://sourceforge.net/projects/auber/files/tulip/tulip-${pkgver}/tulip-${pkgver}_src.tar.gz"
-    "tulip-894.patch"
-    )
-sha256sums=('6aba42f85b0360631fe3ba61b52cf28e3bc383f518652f9a90e7b90987da8dd5'
-            '59430c405e5ce81729ed0582e3ec02b89b2e682341c3c79e12143e38c1558fad')
-
-prepare()
-{
-    cd "$pkgbase-$pkgver"
-    patch -p0 -i "$srcdir/tulip-894.patch"
-}
+source=("https://sourceforge.net/projects/auber/files/tulip/tulip-${pkgver}/tulip-${pkgver}_src.tar.gz")
+sha256sums=('ef3db55a43e2d6fd801a2b210e65d93c079d3238173d19e95221d3cc49dce4b6')
 
 build()
 {
