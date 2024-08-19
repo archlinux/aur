@@ -2,7 +2,7 @@
 
 pkgname=byedpi-bin
 pkgver=0.12
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple and fast software designed to bypass Deep Packet Inspection"
 arch=(aarch64 armv6h armv7h x86_64)
 url="https://github.com/hufrea/${pkgname%-bin}"
@@ -10,7 +10,7 @@ license=(MIT)
 provides=(${pkgname%-bin})
 conflicts=(${pkgname%-bin})
 options=(!debug)
-backup=(etc/$pkgname.conf)
+backup=(etc/${pkgname%-bin}.conf)
 source=(
   ${pkgname%-bin}.{conf,service}
   $url/raw/main/LICENSE
@@ -28,7 +28,7 @@ b2sums_armv7h=('703bdb6c3cfee65ba78ed1e2c453c8d85b1bd80ff187bc5f585c049e2aa30a28
 b2sums_x86_64=('68a1386fad473b10e253f3b3b774201feaf2b124c1571b0a0102df2a3d1194a353ac02a1e0dbb2cbd4e312899b0ae08c07176b269f068eb2800bc53994396b3c')
 
 package() {
-  install -vDm644 $pkgname.conf           -t "$pkgdir"/etc/
+  install -vDm644 ${pkgname%-bin}.conf    -t "$pkgdir"/etc/
   install -vDm755 ciadpi-*                   "$pkgdir"/usr/bin/ciadpi
   install -vDm644 ${pkgname%-bin}.service -t "$pkgdir"/usr/lib/systemd/system/
   install -vDm644 LICENSE                 -t "$pkgdir"/usr/share/licenses/$pkgname/
