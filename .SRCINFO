@@ -1,0 +1,19 @@
+pkgbase = apprhyme-bin
+	pkgdesc = 使用Flutter和Rust构建的开源免费音乐软件
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = https://github.com/canxin121/app_rhyme
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	depends = gtk3
+	provides = apprhyme=1.0.9
+	conflicts = apprhyme
+	source = apprhyme-1.0.9.deb::https://github.com/canxin121/app_rhyme/releases/download/v1.0.9/AppRhyme-release-linux-x86_64-1.0.9.deb
+	source = LICENSE-MIT-1.0.9.txt::https://raw.githubusercontent.com/canxin121/app_rhyme/v1.0.9/LICENSE-MIT.txt
+	source = apprhyme.sh
+	sha256sums = 7133825d58a742a2c918b4f3bfdf8fc7ecb3912db319c5e856d599e85606969e
+	sha256sums = c42abea1f8991d1a9024792163533e7976a13e8cdf5e6a3daaf7b3e8188239d9
+	sha256sums = e1d93e9b149ac01fac5fc49f54c78e9f4fa1c134c52925af59e1f33ce79a4f93
+
+pkgname = apprhyme-bin
