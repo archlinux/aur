@@ -2,14 +2,14 @@
 # Contributor: Ersei <contact at ersei dot net>
 # Contributor: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui
-pkgver=0.15.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Minecraft: PE Linux launcher UI"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-ui-manifest"
 license=('GPL-3.0-only' 'MIT')
-makedepends=('git' 'cmake')
-depends=('qt6-base' 'qt6-webengine' 'qt6-declarative' 'qt6-svg' 'libzip' 'protobuf' 'libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'mcpelauncher-client')
+makedepends=('git' 'cmake' 'clang' 'qt6-tools')
+depends=('qt6-base' 'qt6-webengine' 'qt6-declarative' 'qt6-svg' 'libzip' 'protobuf' 'libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'mcpelauncher-client' 'zlib' 'curl' 'glibc' 'qt6-webchannel' 'gcc-libs' 'openssl')
 optdepends=('mcpelauncher-msa-ui-qt: Microsoft authentication for version before 1.16.1X')
 source=(
   "git+https://github.com/minecraft-linux/mcpelauncher-ui-manifest.git#tag=v${pkgver}-qt6"
@@ -22,7 +22,7 @@ source=(
   'git+https://github.com/minecraft-linux/mcpelauncher-ui-qt.git'
   'git+https://github.com/minecraft-linux/playdl-signin-ui-qt.git'
 )
-sha256sums=('852c9e0b9da1fcbea7b7399529b639891b0a91537ab777060b8c2e2c4093a646'
+sha256sums=('cfb52c64be87c8a6216693e2ae31a0b5d8f1414ebf380e6ad3ae5a30a3c785fd'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -33,28 +33,33 @@ sha256sums=('852c9e0b9da1fcbea7b7399529b639891b0a91537ab777060b8c2e2c4093a646'
             'SKIP')
 
 prepare() {
-  cd mcpelauncher-ui-manifest
+  cd "$srcdir/$pkgname-manifest"
   git submodule init
-  git config submodule.file-util.url $srcdir/file-util
-  git config submodule.axml-parser.url $srcdir/axml-parser
-  git config submodule.mcpelauncher-apkinfo.url $srcdir/mcpelauncher-apkinfo
-  git config submodule.mcpelauncher-extract.url $srcdir/mcpelauncher-extract
-  git config submodule.mcpelauncher-common.url $srcdir/mcpelauncher-common
-  git config submodule.google-play-api.url $srcdir/google-play-api
-  git config submodule.playdl-signin-ui-qt.url $srcdir/playdl-signin-ui-qt
-  git config submodule.mcpelauncher-ui-qt.url $srcdir/mcpelauncher-ui-qt
+  for submodule in {file-util,axml-parser,mcpelauncher-apkinfo,mcpelauncher-extract,google-play-api,playdl-signin-ui-qt,mcpelauncher-ui-qt,mcpelauncher-common};
+  do
+	git config submodule.$submodule.url "$srcdir/$submodule"
+  done
   git -c protocol.file.allow=always submodule update
 }
 build() {
-  cd mcpelauncher-ui-manifest
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
-  make
+  cd "$srcdir"
+
+  cmake -B build -S "$pkgname-manifest" \
+  -DCMAKE_C_COMPILER=clang \
+  -DCMAKE_CXX_COMPILER=clang++ \
+  -DCMAKE_C_FLAGS="$CFLAGS -flto=thin" \
+  -DCMAKE_CXX_FLAGS="$CXXFLAGS -flto=thin" \
+  -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -Wl,--copy-dt-needed-entries" \
+  -DCMAKE_INSTALL_PREFIX=/usr \
+  -DCMAKE_BUILD_TYPE=None \
+  -Wno-dev
+
+  cmake --build build
 }
 package() {
-  cd mcpelauncher-ui-manifest/build
-  make DESTDIR="$pkgdir" install
-  sed -i 's/ -name mcpelauncher//g' "$pkgdir/usr/share/applications/mcpelauncher-ui-qt.desktop" # The desktop file is broken
-  install -Dm644 ../mcpelauncher-ui-qt/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir"
+
+  DESTDIR="$pkgdir" cmake --install build
+
+  install -Dm644 "$srcdir/$pkgname-qt/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
