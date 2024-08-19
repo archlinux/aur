@@ -1,12 +1,12 @@
 # Maintainer: Sving1024 <piano5432@outlook.com>
 pkgname=albert-python-plugins-git
 pkgver=r438.522196f
-pkgrel=1
+pkgrel=2
 pkgdesc="albert offical python plugins"
 arch=(x86_64)
 url="https://github.com/albertlauncher/python"
-license=('custom')
-depends=('albert')
+license=('MIT' 'BSD')
+depends=('albert' 'python')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
