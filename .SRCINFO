@@ -1,7 +1,7 @@
 pkgbase = radiotray-ng
 	pkgdesc = An Internet radio player for Linux
 	pkgver = 0.2.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ebruck/radiotray-ng
 	arch = i686
 	arch = x86_64

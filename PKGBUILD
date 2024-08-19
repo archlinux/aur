@@ -2,7 +2,7 @@
 
 pkgname=radiotray-ng
 pkgver=0.2.8
-pkgrel=3
+pkgrel=4
 pkgdesc="An Internet radio player for Linux"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/ebruck/radiotray-ng"
@@ -37,4 +37,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
   make DESTDIR="$pkgdir" install
+  
+  # Don't install the autostart file
+  rm -fr "${pkgdir}"/etc/xdg/autostart/radiotray-ng.desktop
 }
