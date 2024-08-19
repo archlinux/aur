@@ -6,7 +6,7 @@
 
 pkgname=gamescope-nvidia-git
 _pkgname=gamescope
-pkgver=3.14.29.r9.g94271f31
+pkgver=3.14.29.r20.gb768e8f7
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager (NVIDIA patch)'
 arch=(x86_64)
@@ -28,6 +28,8 @@ depends=(
   'lcms2'
   'libei'
   'libxi'
+  'libavif'
+  'libdecor'
   'seatd' # wlroots deps
   'xcb-util-errors' # wlroots deps
   'sdl2'
