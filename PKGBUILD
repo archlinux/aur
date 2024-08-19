@@ -2,7 +2,7 @@
 
 _name=unoserver
 pkgname="python-${_name}"
-pkgver=2.1
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Using LibreOffice as a server for converting documents"
 arch=('any')
@@ -23,4 +23,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-sha256sums=('792bd29b38ba2934924e90191df14acc30e9b9026ea464c78901956851eefc21')
+sha256sums=('fb53683e44f6f9514a55c413cb6461c1e781922d5eda14af036c73460a7b4c96')
