@@ -6,10 +6,10 @@ pkgver=0.5.3
 pkgrel=2
 pkgdesc='Load homebrew apps over network/usbgecko to your Wii'
 arch=('i686' 'x86_64')
-url='http://hbc.hackmii.com/'
+url='https://github.com/devkitPro/wiiload'
 license=('GPL2')
 depends=('zlib')
-source=("https://github.com/devkitPro/wiiload/archive/refs/tags/v$pkgver.tar.gz")
+source=("https://github.com/devkitPro/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('a3e4389bc9c6bc684e76baeb48903e59ac9e336148f0a29972b9671574fb6736')
 
 build() {
