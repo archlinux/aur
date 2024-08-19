@@ -1,6 +1,6 @@
 # Maintainer: Serene-Arc <https://aur.archlinux.org/account/serene-arc>
 pkgname=sgf-render
-pkgver=3.1.4
+pkgver=3.1.5
 pkgrel=1
 pkgdesc="Sgf Rendering CLI written in Rust"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=(
     'cargo'
     )
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('ab226df955e6f6866f315f0eba2ef09ba3f61062584d4bf0244a976f75f0cb9c')
+sha256sums=('b1a7d95a7026ea49d9f9bbd21fd09393043fd82333fdd477ef6d51e36905647e')
 options=("debug" "!strip")
 
 prepare() {
