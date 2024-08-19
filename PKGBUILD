@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=miteiru
 _pkgname=Miteiru
-pkgver=4.6.1
-_electronversion=21
-_nodeversion=16
+pkgver=5.0.0
+_electronversion=31
+_nodeversion=20
 pkgrel=1
 pkgdesc="An open source Electron video player to learn Japanese. It has main language dictionary and tokenizer (morphological analyzer), heavily based on External software MeCab"
 arch=('any')
@@ -12,7 +12,7 @@ license=("CC-BY-NC-4.0")
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'mecab'
+    #'mecab'
     'java-runtime'
 )
 makedepends=(
@@ -33,7 +33,7 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('3e65a290fa4b667ae5e4792086174967f9374c053cf54ab1e4751cd6cddff8c9'
+sha256sums=('edcc8d2bed100bb21f47815d7fd8e8b5e3c9251672a4fd2d9ec51845298f5fe4'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
