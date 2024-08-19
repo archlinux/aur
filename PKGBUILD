@@ -1,44 +1,56 @@
-# Maintainer: Alexander Lutsai <s.lyra@ya.ru>
-# Contributor: Stephen Gregoratto <dev@sgregoratto.me>
-# Contributor: gilbus <aur@tinkershell.eu>
-pkgname=swaylock-fprintd-git
+# Maintainer:
+# Contributor: Alexander Lutsai <s.lyra@ya.ru>
+
+_pkgname="swaylock-fprintd"
+pkgname="$_pkgname-git"
 pkgver=r314.ffd639a
-pkgrel=1
+pkgrel=2
 pkgdesc='Screen locker for Wayland with integrated fingerprint support via fprintd'
 url='https://github.com/SL-RU/swaylock-fprintd'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('MIT')
+
+depends=(
+  'cairo'
+  'dbus'
+  'fprintd'
+  'gdk-pixbuf2'
+  'libxkbcommon'
+  'pam'
+  'wayland'
+)
+makedepends=(
+  'git'
+  'glib2-devel'
+  'meson'
+  'scdoc'
+  'wayland-protocols'
+)
+
 provides=('swaylock')
 conflicts=('swaylock')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-depends=('wayland' 'libxkbcommon' 'pam' 'cairo' 'gdk-pixbuf2' 'dbus' 'fprintd')
-makedepends=('meson' 'git' 'scdoc' 'wayland-protocols')
-source=("${pkgname%-git}::git+$url")
-sha1sums=('SKIP')
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "$_pkgsrc"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${pkgname%-git}"
+  cd "$_pkgsrc"
   # Fix ticket FS#31544, sed line taken from gentoo
-  sed -i -e 's:login:system-auth:' "pam/swaylock"
+  sed -i -e 's:login:system-auth:g' "pam/swaylock"
 }
 
 build() {
-  mkdir -p build
-  # makepkg is unable to strip the binary, so we tell meson to do it.
-  arch-meson build "${pkgname%-git}" -Dwerror=false --strip
-  ninja -C build
+  arch-meson build "$_pkgsrc"
+  meson compile -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
-  install -Dm644 "${pkgname%-git}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  meson install -C build --destdir "$pkgdir"
+  install -Dm644 "${pkgname%-git}/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
-# vim: ts=2 sw=2 et
