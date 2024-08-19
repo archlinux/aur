@@ -1,6 +1,6 @@
 pkgbase = slack-desktop
 	pkgdesc = Slack Desktop (Beta) for Linux
-	pkgver = 4.39.88
+	pkgver = 4.39.95
 	pkgrel = 1
 	url = https://slack.com/downloads
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = slack-desktop
 	depends = xdg-utils
 	optdepends = libappindicator-gtk3: Systray indicator support
 	optdepends = org.freedesktop.secrets: Keyring password store support
-	noextract = slack-desktop-4.39.88-amd64.deb
+	noextract = slack-desktop-4.39.95-amd64.deb
 	options = !debug
-	source = https://downloads.slack-edge.com/desktop-releases/linux/x64/4.39.88/slack-desktop-4.39.88-amd64.deb
+	source = https://downloads.slack-edge.com/desktop-releases/linux/x64/4.39.95/slack-desktop-4.39.95-amd64.deb
 	source = slack-desktop.patch
-	b2sums = 09d0383444b342c8d0d14cd7c6a3cfb4f32ff1eeabed883b7c62cf42ed7859d7796abe99a0ad9d1602aac183182d0a02931282318e358e6e1b1b1956d03a29f5
+	b2sums = dbe778c7be44a5e477f58e08aa204ead4e79fc511757ef4f8f7a3b8f1a3612694f955805731180f79e2df55c5af610cdd775d456ddfe2365caeadb7ac23e4cf5
 	b2sums = b5786265fcaf85be4134a444d5c2376f3b3753b667ac8b5237d74cbc643433148ec0a4f8ddfe65276d6029cc6941b464938e6c37f904c2369cbe14ca3f1819dd
 
 pkgname = slack-desktop
