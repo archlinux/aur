@@ -1,0 +1,16 @@
+post_install() {
+    cat << __EOF__
+Add the following to the respective sections of your UnrealTournament.ini:
+    [Engine.GameEngine]
+    ServerPackages=SkeletalChars
+__EOF__
+}
+
+post_remove() {
+    cat << __EOF__
+Remove the following from the respective sections of your UnrealTournament.ini:
+    [Engine.GameEngine]
+    ServerPackages=SkeletalChars
+__EOF__
+}
+

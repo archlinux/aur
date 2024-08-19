@@ -1,0 +1,19 @@
+pkgbase = unrealtournament-bonuspacks
+	pkgver = 20240724
+	pkgrel = 1
+	url = http://www.unrealtournament2004.com/utgoty/
+	arch = i686
+	arch = x86_64
+	groups = unrealtournament
+	groups = unrealtournament-bonuspacks
+	license = custom
+	makedepends = umodunpack
+	depends = unrealtournament
+	source = ut99-bonuspacks.zip::https://archive.org/download/UT-Bonus-Packs/Unreal%20tournament.zip
+	source = unrealtournament-bonuspack2.install
+	source = unrealtournament-bonuspack4.install
+	sha256sums = 0c4361bc9ee71fcd4b52ca6c0cb8754cece655dee82eeb7995994495dc440fe1
+	sha256sums = e680c71d08f7deda634aa51903911d76aa158ac3cf34c7a5d9fc7dd6ef4563eb
+	sha256sums = ef3b336730fbf605c0f01376d75228069deeabfa04623f5ef35200acebda2b77
+
+pkgname = unrealtournament-bonuspacks

@@ -1,0 +1,14 @@
+pre_install() {
+    # backup original files
+    mv /opt/ut/System/epiccustommodels.u{,.backup}
+    mv /opt/ut/System/multimesh.u{,.backup}
+    mv /opt/ut/System/relics.u{,.backup}
+}
+
+post_remove() {
+    # restore original files
+    mv /opt/ut/System/epiccustommodels.u{.backup,}
+    mv /opt/ut/System/multimesh.u{.backup,}
+    mv /opt/ut/System/relics.u{.backup,}
+}
+
