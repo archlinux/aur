@@ -3,7 +3,7 @@
 pkgname=polycule-git
 _name=polycule
 _appid=business.braid.polycule
-pkgver=55f0bd2
+pkgver=56969c1
 pkgrel=1
 pkgdesc="A geeky and efficient [matrix] client for power users."
 # Flutter officially supports amd64 and AArch64
@@ -92,7 +92,7 @@ build() {
   cd "${srcdir}/${_name}"
 
   # build in release mode without running pub
-  flutter build linux --no-pub --release
+  flutter build linux --no-pub --release --dart-define=POLYCULE_VERSION=${pkgver}
 }
 
 package() {
