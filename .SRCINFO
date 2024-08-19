@@ -10,15 +10,15 @@ pkgbase = nginx-mod-ipscrub
 	arch = armv7h
 	license = custom
 	depends = libbsd
-	depends = nginx=1.26.1
-	source = https://nginx.org/download/nginx-1.26.1.tar.gz
-	source = https://nginx.org/download/nginx-1.26.1.tar.gz.asc
+	depends = nginx=1.26.2
+	source = https://nginx.org/download/nginx-1.26.2.tar.gz
+	source = https://nginx.org/download/nginx-1.26.2.tar.gz.asc
 	source = nginx-mod-ipscrub-1.0.1.tar.gz::https://github.com/masonicboom/ipscrub/archive/v1.0.1.tar.gz
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
 	validpgpkeys = 43387825DDB1BB97EC36BA5D007C8D7C15D87369
 	validpgpkeys = D6786CE303D9A9022998DC6CC8464D549AF75C0A
 	validpgpkeys = 13C82A63B603576156E30A4EA0EA981B66B0D967
-	sha512sums = dfaadde78eb5cf8c8c3a43ead9ac49fc852c8de3e70e69754e3ffafc88c50c8bc08cdac0cc0ba8a9d8c155bdb334865e2e6c7dc1144c79959c426a9e087b3e37
+	sha512sums = 470efe9ae5d6150ecbf133979c6c36415679a2156499a3b6820a85eb8f3038a8aa06f7b28ddd834cffb0e982f3ddc89e4b1649d536eba4f84019a72d4cfa3539
 	sha512sums = SKIP
 	sha512sums = 71d376c8d26d1f697ded361675186a2bd44b56afbfe6a2db3bee82d83402876e7ac685bd1e1318d9b2143ee9f85196e60c828af62b2685e8b1165dcaa025d196
 
