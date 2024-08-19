@@ -1,0 +1,42 @@
+# Maintainer: edwloef
+
+pkgname=mayland-git
+_pkgname=mayland
+pkgver=r110.d6511fe
+pkgrel=1
+pkgdesc="a bad wayland compositor"
+arch=('x86_64')
+url="https://github.com/m4rch3n1ng/mayland"
+license=('GPL-3.0-or-later')
+makedepends=('cargo')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("git+https://github.com/m4rch3n1ng/mayland.git")
+sha256sums=(SKIP)
+
+pkgver() {
+	cd "${_pkgname}"
+	
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "${_pkgname}"
+	
+	export RUSTUP_TOOLCHAN=stable
+	cargo fetch --locked
+}
+
+build() {
+	cd "${_pkgname}"
+	
+	export RUSTUP_TOOLCHAIN=stable
+	cargo build --release --frozen
+}
+
+package() {
+	cd "${_pkgname}"
+
+	install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
