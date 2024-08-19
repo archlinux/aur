@@ -1,12 +1,12 @@
 pkgbase = sheepchat-bin
 	pkgdesc = Multi chat for Streamers
-	pkgver = 1.9.132
+	pkgver = 1.9.159
 	pkgrel = 1
 	url = https://github.com/sheepchat/desktop
 	arch = x86_64
 	license = custom:unknown
 	depends = libappindicator-gtk3
-	source = https://github.com/sheepchat/desktop/releases/download/392/sheepchat-1.9.132-linux-x64-setup-prod.deb
-	sha512sums = 24d45d8cb48fe78b53184dc0b7c2e8925f90c978eaaf499a30deda28f80fc09ca3a9a39564b9a27ea661d6bf9b4c99864998b97cafe190f1f588a856870abef3
+	source = https://github.com/sheepchat/desktop/releases/download/419/sheepchat-1.9.159-linux-x64-setup-prod.deb
+	sha512sums = 78b0f81350135e3d6eb22665dfd01264db773d925523bb40ed4fbda7f235dce1316b3a7e51702d48d65947ddb5fa1fa0dec5817791d9f1c3ea5576fcb87f9ac5
 
 pkgname = sheepchat-bin
