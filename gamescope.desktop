@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Gamescope-3.12.5
+Comment=Run gamescope
+Exec=/usr/bin/gamescope
+Icon=icon
+Terminal=false
+Categories=Utility;
+StartupNotify=true
