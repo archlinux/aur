@@ -2,10 +2,10 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=rugarch
-_pkgver=1.5-1
+_pkgver=1.5-2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Univariate GARCH Models"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -31,8 +31,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('98d9cb00c50db386ca21f716656df2b6')
-b2sums=('7b10a89b3709e56f38b5060064a2d654d3c2b8103ee2274296b961eaf1e8c7cd24c99ec3817485240cff0bc5703cbdd007b564ce9ecf37ec964ed0ffae937a78')
+md5sums=('8b90637c6e30c41ef077abbed88aadb3')
+b2sums=('e0b0431d6c85611386145c0320e752a60835a4e29e28c75f86ff51fe2b1b81fc8e6c93731eb8bae586696c3ec73e767973ccf04761cb1acd6f6f1a2a46eedd48')
 
 build() {
   mkdir build
