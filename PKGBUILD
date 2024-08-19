@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=responsively-git
 _pkgname=Responsively
-pkgver=1.12.0.r0.g936b1d5
+pkgver=1.14.0.r0.g5326597
 _electronversion=27
 _nodeversion=20
 pkgrel=1
@@ -67,8 +67,8 @@ build() {
         echo "Your network is OK."
     fi
     sed "s|AppImage|dir|g" -i package.json
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn run package
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production     yarn run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
