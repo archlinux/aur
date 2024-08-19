@@ -1,8 +1,8 @@
-pkgbase = polybar-git
-	pkgdesc = A fast and easy-to-use status bar
+pkgbase = polybar-wireguard-git
+	pkgdesc = A fast and easy-to-use status bar, with patches to support WireGuard networks.
 	pkgver = 3.7.2
 	pkgrel = 1
-	url = https://github.com/polybar/polybar
+	url = https://github.com/Swivelgames/polybar
 	arch = i686
 	arch = x86_64
 	arch = aarch64
@@ -29,8 +29,9 @@ pkgbase = polybar-git
 	optdepends = i3-wm: i3 module support
 	provides = polybar
 	conflicts = polybar
+	conflicts = polybar-git
 	backup = etc/polybar/config.ini
-	source = polybar::git+https://github.com/polybar/polybar.git
+	source = polybar::git+https://github.com/Swivelgames/polybar.git
 	sha256sums = SKIP
 
-pkgname = polybar-git
+pkgname = polybar-wireguard-git

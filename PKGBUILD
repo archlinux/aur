@@ -1,12 +1,14 @@
-# Maintainer: Patrick Ziegler <p.ziegler96@gmail.com>
+# Maintainer: Joseph Dalrymple <joseph.dalrymple@bluelogicteam.com>
+# Contributor: Patrick Ziegler <p.ziegler96@gmail.com>
 _pkgname=polybar
-pkgname="${_pkgname}-git"
+pkgname="${_pkgname}-wireguard-git"
 pkgver=3.7.2
 pkgrel=1
-pkgdesc="A fast and easy-to-use status bar"
+pkgdesc="A fast and easy-to-use status bar, with patches to support WireGuard networks."
 # aarch64 is not officially supported by polybar, it is only listed here for convenience
 arch=("i686" "x86_64" "aarch64")
-url="https://github.com/polybar/polybar"
+url="https://github.com/Swivelgames/polybar"
+_branchname="ephemeral-interfaces"
 license=("MIT")
 depends=("libuv" "cairo" "xcb-util-image" "xcb-util-wm" "xcb-util-xrm"
          "xcb-util-cursor" "alsa-lib" "libpulse" "libmpdclient" "libnl"
@@ -16,7 +18,7 @@ makedepends=("cmake" "git" "python" "pkg-config" "python-sphinx"
              "python-packaging" "i3-wm")
 backup=("etc/polybar/config.ini")
 provides=("polybar")
-conflicts=("polybar")
+conflicts=("polybar" "polybar-git")
 source=("${_pkgname}::git+${url}.git")
 sha256sums=("SKIP")
 
@@ -26,7 +28,10 @@ pkgver() {
 
 prepare() {
   git -C "${_pkgname}" submodule update --init --recursive
-  mkdir -p "${_pkgname}/build"
+  cd "${_pkgname}" || exit 1
+  git checkout ${_branchname}
+  mkdir -p "build"
+  cd ".." || exit 1
 }
 
 build() {
