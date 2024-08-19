@@ -7,8 +7,8 @@ pkgdesc="OCF resource agents for rgmanager and pacemaker"
 arch=('x86_64')
 url='http://clusterlabs.org/'
 license=('GPL2')
-makedepends=('libxslt' 'python' 'docbook-xsl')
-depends=('bash' 'perl')
+makedepends=('libxslt' 'python' 'docbook-xsl' 'libqb')
+depends=('perl')
 optdepends=('pacemaker: for these to be useful'
             'python: for azure-events')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ClusterLabs/$pkgname/archive/v$pkgver.tar.gz")
