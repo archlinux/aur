@@ -2,12 +2,12 @@
 
 pkgname=mcrl2-bin
 pkgver=202407.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A formal specification language with an associated toolset installed from the 'deb' GitHub release package."
 arch=('x86_64')
 provides=('mcrl2')
 conflicts=('mcrl2')
-depends=('qt5-base' 'glu' 'hicolor-icon-theme')
+depends=('qt6-base' 'glu' 'hicolor-icon-theme')
 optdepends=('python: for easily running the included examples')
 url=https://www.mcrl2.org
 license=('Boost')

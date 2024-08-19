@@ -1,12 +1,12 @@
 pkgbase = mcrl2-bin
 	pkgdesc = A formal specification language with an associated toolset installed from the 'deb' GitHub release package.
 	pkgver = 202407.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mcrl2.org
 	install = mcrl2.install
 	arch = x86_64
 	license = Boost
-	depends = qt5-base
+	depends = qt6-base
 	depends = glu
 	depends = hicolor-icon-theme
 	optdepends = python: for easily running the included examples
