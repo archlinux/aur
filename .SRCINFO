@@ -16,4 +16,21 @@ pkgbase = unrealtournament-bonuspacks
 	sha256sums = e680c71d08f7deda634aa51903911d76aa158ac3cf34c7a5d9fc7dd6ef4563eb
 	sha256sums = ef3b336730fbf605c0f01376d75228069deeabfa04623f5ef35200acebda2b77
 
-pkgname = unrealtournament-bonuspacks
+pkgname = unrealtournament-bonuspack1
+	pkgdesc = Bonuspack 1: The Epic Pack for Unreal Tournament.
+	install = unrealtournament-bonuspack1.install
+	conflicts = ut1999-bonuspack1
+
+pkgname = unrealtournament-bonuspack2
+	pkgdesc = Bonuspack 2: The Digital Extremes Pack for Unreal Tournament.
+	install = unrealtournament-bonuspack2.install
+	conflicts = ut1999-bonuspack2
+
+pkgname = unrealtournament-bonuspack3
+	pkgdesc = Bonuspack 3: The Inoxx Pack for Unreal Tournament.
+	conflicts = ut1999-bonuspack3
+
+pkgname = unrealtournament-bonuspack4
+	pkgdesc = Bonuspack 4: The Christmas 2000 Pack for Unreal Tournament.
+	install = unrealtournament-bonuspack4.install
+	conflicts = ut1999-bonuspack4

@@ -2,8 +2,7 @@
 # Maintainer: XenGi
 
 pkgbase="unrealtournament-bonuspacks"
-pkgname="unrealtournament-bonuspacks"
-#pkgname=("unrealtournament-bonuspack1" "unrealtournament-bonuspack2" "unrealtournament-bonuspack3" "unrealtournament-bonuspack4")
+pkgname=("unrealtournament-bonuspack1" "unrealtournament-bonuspack2" "unrealtournament-bonuspack3" "unrealtournament-bonuspack4")
 pkgver=20240724
 pkgrel=1
 arch=("i686" "x86_64")
