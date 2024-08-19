@@ -4,12 +4,13 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libfabric
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
 arch=('any')
 pkgdesc="User-space API for OpenFabrics Interfaces (OFI) (Android ${_android_arch})"
 url="https://ofiwg.github.io/libfabric/"
 license=('GPL2')
+groups=('android-libfabric')
 depends=("android-${_android_arch}-numactl")
 makedepends=("android-configure")
 options=(!strip !buildflags staticlibs !emptydirs)
@@ -19,7 +20,7 @@ source=("https://github.com/ofiwg/libfabric/releases/download/v${pkgver}/libfabr
         '0003-Remove-shmctl.patch'
         '0004-Fix-osd.patch'
         '0005-Fix-smr.patch')
-sha256sums=('0c1b7b830d9147f661e5d7f359250b85b5a9885c330464cd3b5e5d35b86551c7'
+sha256sums=('485e6cafa66c9e4f6aa688d2c9526e274c47fda3a783cf1dd8f7c69a07e2d5fe'
             '4c9e4afc69b152d97505faeae12a29959ba092bd16e7455b0b624619a54f3368'
             '9ddff13b067c035afd252829e53f8488228ae6d42ee6bf7786a572a0af17e690'
             'e1592bece8eaec5c8f4fe9f0fb145cd7d8771653ca5cb3f144e6e731d30eb987'
@@ -66,6 +67,6 @@ package() {
     make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
