@@ -8,8 +8,8 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-libfdk_aac
-pkgver=7.0.1
-pkgrel=2
+pkgver=7.0.2
+pkgrel=1
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -28,6 +28,7 @@ depends=(
   glib2
   glibc
   gmp
+  gnutls
   gsm
   harfbuzz
   jack
@@ -61,7 +62,6 @@ depends=(
   libxext
   libxml2
   libxv
-  mbedtls2
   ocl-icd
   onevpl
   opencore-amr
@@ -122,12 +122,12 @@ provides=(
 options=(
   debug
 )
-_tag=47f70eda3e2ff003a787e512afd07b0c266f7a70
+_tag=a18b979d17fa169a6f93c5be8732533c8e06337d
 source=(
   git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
   add-av_stream_get_first_dts-for-chromium.patch
 )
-b2sums=('d2d6a645509e697932dc8f7a57719e069299e53eb37cda7bf01fd94c9e9956e5532dc5c923fa86d72d0e3a051a7f405e768c73c66ca8aea29271923a17222e03'
+b2sums=('bcc0fb367d2822665f0918292a0cf581e0119d6ba6d2e3d0b6e794b6f74d30c118b5c47e26b5687473f01b346f8ec7e885f80729ce6115e18003b2371ff4553f'
         '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de')
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
@@ -156,6 +156,7 @@ build() {
     --enable-fontconfig \
     --enable-frei0r \
     --enable-gmp \
+    --enable-gnutls \
     --enable-gpl \
     --enable-ladspa \
     --enable-libaom \
@@ -205,7 +206,6 @@ build() {
     --enable-libxml2 \
     --enable-libxvid \
     --enable-libzimg \
-    --enable-mbedtls \
     --enable-nvdec \
     --enable-nvenc \
     --enable-opencl \
