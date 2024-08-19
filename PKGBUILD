@@ -25,7 +25,6 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/balloob/pychromecast/archiv
         "is_alive.patch")
 sha512sums=('f4b881a559e89d7eb81487ce44c13ac707831a731d348418a78d4786a559abb3c6e98c6b1aa762ad14e5c4461de9a7254ce68c7543bb80e30ce4c3af08d7b24e'
             'bfe81d4de9011084046a487ba76cb6bc2d70fd7e7eeeaf9de45d0454353bcfd974c1df494ebb286d0438d4a6534101a83da8d95d2333af4b5d45b45f56f9aa3a')
-provides=("python-pychromecast=$pkgver")
 conflicts=('python-pychromecast')
 
 build() {
