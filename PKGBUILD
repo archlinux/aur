@@ -1,9 +1,9 @@
-# Maintainer: Guilhem Saurel <saurel@laas.fr>
+# Maintainer: Guilhem Saurel <guilhem.saurel@laas.fr>
 
 _org=coin-or
 _pkgname=CppAD
 pkgname=cppad
-pkgver=20240000.4
+pkgver=20240000.7
 pkgrel=1
 pkgdesc="A C++ Algorithmic Differentiation Package"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('gcc-libs')
 optdepends=()
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('0dfc1e30b32d5dd3086ee3adb6d2746a019e9d670b644c4d5ec1df3c35dd1fe5')
+sha256sums=('b3cdc7e18fe3cb2bd427be4abb264c3c58bbb3bd5f88a4244a92c34f893dbab7')
 
 build() {
     cmake -B "build-$pkgver" -S "$_pkgname-$pkgver" -DCMAKE_INSTALL_PREFIX=/usr
