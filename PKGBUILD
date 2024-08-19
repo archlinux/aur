@@ -2,14 +2,14 @@
 # Contributor: Sebastien MacDougall-Landry
 
 pkgname=zpl
-pkgver=19.4.1
+pkgver=19.5.0
 pkgrel=1
 pkgdesc='C99 header-only library oriented towards improving the coding experience.'
 url='https://github.com/zpl-c/zpl'
 source=("$url/releases/download/$pkgver/zpl.h")
 arch=('any')
 license=('Unlicense' 'BSD')
-sha256sums=('9ff91837e6f0eb37b0090f33077fce6461ad0f01ebcb7e0f8d3fd19b0aeb66a2')
+sha256sums=('f1b3098600e3dc73ec6765c3e108f8506f6299237d837808992a42c0f33dfbdb')
 
 package () {
   install -Dm644 zpl.h -t "$pkgdir/usr/include/"
