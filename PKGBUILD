@@ -5,19 +5,20 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-mpg123
-pkgver=1.32.6
+pkgver=1.32.7
 pkgrel=1
 arch=('any')
 pkgdesc="Console based real time MPEG Audio Player for Layer 1, 2 and 3 (Android ${_android_arch})"
 url='https://mpg123.de/'
 license=('LGPL2.1')
+groups=('android-mpg123')
 depends=("android-${_android_arch}-alsa-lib")
 makedepends=('android-configure'
              "android-${_android_arch}-sdl2")
 optdepends=("android-${_android_arch}-sdl2: for sdl audio support")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://downloads.sourceforge.net/sourceforge/mpg123/mpg123-${pkgver}.tar.bz2"{,.sig})
-md5sums=('19443e8ef816c95fb2ed92aa35ece1d3'
+md5sums=('45820aa078659c98c42bb676025365db'
          'SKIP')
 validpgpkeys=('D021FF8ECF4BE09719D61A27231C4CBC60D5CAFE')
 
