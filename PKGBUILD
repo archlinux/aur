@@ -4,7 +4,7 @@
 _pkgname=libsoundio
 pkgname=${_pkgname}-git
 pkgver=2.0.0.5.g49a1f78
-pkgrel=1
+pkgrel=2
 pkgdesc='A C99 library providing cross-platform audio input and output'
 arch=('i686' 'x86_64')
 url='https://www.github.com/andrewrk/libsoundio'
@@ -13,7 +13,7 @@ source=('git+https://github.com/andrewrk/libsoundio.git')
 depends=('alsa-lib' 'glibc' 'jack')
 makedepends=('git' 'cmake')
 provides=('libsoundio')
-conflicts=('libsoundio')
+conflicts=('libsoundio' 'libsoundio-debug')
 md5sums=('SKIP')
 
 pkgver() {
@@ -22,24 +22,22 @@ pkgver() {
 }
 
 build() {
-    mkdir -p "$_pkgname.build"
-    cd "$_pkgname.build"
-    cmake \
-        -D CMAKE_BUILD_TYPE=Release \
-        -D CMAKE_INSTALL_PREFIX=/usr \
-        -D CMAKE_INSTALL_LIBDIR=lib \
-        -D BUILD_EXAMPLE_PROGRAMS=OFF \
-        -D BUILD_TESTS=OFF \
-        -D BUILD_STATIC_LIBS=OFF \
-        -D ENABLE_JACK=ON \
-        "$srcdir/$_pkgname"
-    make
+  cmake \
+    -B build \
+    -S "$_pkgname" \
+    -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_INSTALL_LIBDIR=lib \
+    -D BUILD_EXAMPLE_PROGRAMS=OFF \
+    -D BUILD_TESTS=OFF \
+    -D BUILD_STATIC_LIBS=OFF \
+    -D ENABLE_JACK=ON \
+
+  cmake --build build
 }
 
 package() {
-    make \
-        -C "$_pkgname.build" \
-        install DESTDIR="$pkgdir"
+  DESTDIR="$pkgdir" cmake --install build
 
-    install -Dm644 "$srcdir/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
