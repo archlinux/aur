@@ -5,13 +5,13 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-nss
-pkgver=3.102.1
+pkgver=3.103
 pkgrel=1
 arch=('any')
 pkgdesc="Network Security Services (Android ${_android_arch})"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 license=('MPL-2.0')
-groups=(android-nss)
+groups=('android-nss')
 depends=("android-${_android_arch}-nspr>=4.35"
          "android-${_android_arch}-p11-kit>=0.23.19"
          "android-${_android_arch}-sqlite"
@@ -27,7 +27,7 @@ source=("https://ftp.mozilla.org/pub/security/nss/releases/NSS_${pkgver//./_}_RT
         'Linux.mk.patch'
         'FreeblMakefile.patch'
         'mpcpucache.c.patch')
-md5sums=('56bc8d284e3eb2fc49c65022d8a1d71e'
+md5sums=('2823082a44b9dd71d6281108e0bab03f'
          'd70d79aa9d8914a9e9d3df1739b63c00'
          'abd61b14e76846b4eb67556211ab8d9d'
          '2cc719ad09173f4eb818ce2badcab283')
