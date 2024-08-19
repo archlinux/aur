@@ -8,7 +8,7 @@
 
 pkgname=home-assistant-git
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2024.7.3
+pkgver=2024.8.2
 pkgrel=1
 arch=(any)
 url=https://home-assistant.io/
@@ -33,18 +33,18 @@ makedepends=(
   python-setuptools-git
   python-wheel
 )
-_tag=267dfac737b80b30196fc8cc72e72b4602362933
+_tag=94516de7244ac73549695177a465064ad147884c
 source=(
   "$pkgname::git+https://github.com/home-assistant/core.git#tag=${_tag}"
   home-assistant-git.service
 )
-b2sums=('37e773165a4be39e79769cfc10ac7f8943d7a2e6d2f6ae8b8d092c5904c6cd4e7703ae9781d43f0945314987df11fa355899e101bd1ae668b7214489d9545a64'
+b2sums=('32c4b58de1ba10c12addd100d873d973b623c76112d3c4ef3cee878a20b848586c989b313ff3d350a45e96b7cd1b47059daad1a258920949ab3cf4bd7c9a6513'
         '289b6d19fa36b8bcea5790da13b83211eb44fcda889a24bf07a2ef70e806b5bb138c8f6387057d153e109a3bdabd0f4009c171fc82e021cdfd43db376704d416')
 
 prepare() {
   cd "${srcdir}"/home-assistant-git
   # allow any setuptools and wheel to be used
-  sed 's/==69.2.0//; s/~=0.40.0//' -i pyproject.toml
+  sed 's/==69.2.0//; s/~=0.43.0//' -i pyproject.toml
 }
 
 pkgver() {
