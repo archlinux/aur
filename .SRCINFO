@@ -14,6 +14,7 @@ pkgbase = miteiru
 	makedepends = cmake
 	makedepends = git
 	depends = electron31
+	depends = mecab
 	depends = java-runtime
 	optdepends = python-jieba
 	optdepends = pypinyin
