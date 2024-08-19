@@ -3,7 +3,7 @@
 _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname="Nuclear Player"
-pkgver=0.6.36
+pkgver=0.6.37
 _electronversion=12
 _nodeversion=18
 pkgrel=1
@@ -29,7 +29,7 @@ source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('64ab97783537bbf392a0e1e61ca0352ac0e939829233c24b349b62e6a70259f2'
+sha256sums=('3c938eab14f42e3bfade7f752f184ab1fe86c256401ac1ab292e3407866ddef2'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
