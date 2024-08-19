@@ -2,18 +2,21 @@
 
 pkgname=intel-lms
 pkgver=2406.0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows applications to access the Intel AMT firmware via the Intel MEI"
 arch=('x86_64')
 url="https://github.com/intel/lms"
 license=('Apache-2.0')
 depends=('glib2' 'curl' 'xerces-c' 'libnl' 'libxml2' 'ace' 'intel-metee')
-makedepends=('cmake')
-source=("lms-${pkgver}.tar.gz::https://github.com/intel/lms/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3ca0411f243a4056c0514a13c7af5d6b508c49f3e22eb7505ac46d070f1c49b6')
+makedepends=('cmake' 'glib2-devel')
+source=("lms-${pkgver}.tar.gz::https://github.com/intel/lms/archive/refs/tags/v${pkgver}.tar.gz"
+	"fix-metee-guid-conflict.patch")
+sha256sums=('3ca0411f243a4056c0514a13c7af5d6b508c49f3e22eb7505ac46d070f1c49b6'
+	'19360a28b77730a29b50a18964957eca275183fdf4053bea8837a79e685c558a')
 
 prepare() {
 	cd "lms-$pkgver"
+	patch -p1 -i "${srcdir}/fix-metee-guid-conflict.patch"
 }
 
 build() {

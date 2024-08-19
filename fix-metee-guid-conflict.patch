@@ -1,0 +1,20 @@
+diff --git a/MEIClient/Include/heci.h b/MEIClient/Include/heci.h
+index 6420017..2db776a 100644
+--- a/MEIClient/Include/heci.h
++++ b/MEIClient/Include/heci.h
+@@ -11,14 +11,9 @@
+ #ifndef __HECI_H__
+ #define __HECI_H__
+ 
+-#ifdef WIN32
+-#include <Windows.h>
+-#else
+-#include <linux/uuid.h>
+-#define GUID uuid_le
+-#endif
+ #include <string>
+ #include <memory>
++#include <metee.h>
+ 
+ struct _TEEHANDLE;
+ 
