@@ -1,0 +1,13 @@
+[Unit]
+Description=Music Player Daemon MPRIS bridge
+BindsTo=mpd.service
+After=mpd.service
+
+[Service]
+Type=notify-reload
+NotifyAccess=main
+Restart=on-failure
+ExecStart=/usr/bin/mpdris --service
+
+[Install]
+RequiredBy=mpd.service

@@ -1,22 +1,33 @@
-# Contributor: Adria Arrufat <swiftscythe@gmail.com>
-pkgname=mpdris
-pkgver=0.1.2
-pkgrel=2
-pkgdesc="An implementation of the XMMS2 media player interface MPRIS as a client for MPD"
-arch=('i686' 'x86_64')
-url="http://ayeon.org/projects/mpDris/"
-license=('GPL')
-depends=('dbus-python>=0.80' 'pygobject>=2.14' 'python2-mpd>=0.2.0')
-optdepends=('mpd: the Music Player Daemon')
-makedepends=('subversion')
-backup=(etc/mpDris.conf)
-source=('http://ayeon.org/projects/mpDris/mpDris-0.1.2.tar.bz2')
-md5sums=('c4b94b119592474e387f8a988f6ce7d3')
+# Maintainer: J. Gerhards <g1.jasger@gmail.com>
+# Author: J. Gerhards <g1.jasger@gmail.com>
+
+pkgname=mpDris
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='A MPD client implementing the dbus MPRIS standard'
+url='https://github.com/jasger9000/mpDris'
+license=('MIT')
+arch=('any')
+provides=('mpdris')
+depends=('dbus' 'mpd' 'glibc' 'systemd')
+makedepends=('glibc' 'systemd-libs' 'cargo')
+source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+	"mpdris.service")
+sha256sums=('6e1b4bf12f7e8fe045017a12390f1c92fa16d480f84f6acea57335be49bc9dbe'
+	'7abdce25984c597a15639536bf4462a8d475f75802573d59bae637a66ffe5557')
+validpgpkeys=('B92EEA8B7EAB2BAAD8FA90E5115AF2F755802897')
+hash='3963f9a'
 
 build() {
-  cd "$srcdir/mpDris-$pkgver"
+  cd $pkgname-$pkgver
+  GIT_HASH=$hash cargo build --release --locked
+}
 
-  python2 setup.py install --root=$pkgdir
-  sed "1s/python/&2/" $pkgdir/usr/bin/mpDris
-  install -m 0644 -D mpDris.conf $pkgdir/etc/mpDris.conf
+package() {
+  cd $pkgname-$pkgver
+
+  install -Dm755 "target/release/mpDris" "$pkgdir/usr/bin/mpdris"
+  install -Dm644 "../mpdris.service" "$pkgdir/usr/lib/systemd/user/mpdris.service"
+  install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
