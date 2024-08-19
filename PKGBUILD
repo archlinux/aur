@@ -3,7 +3,7 @@
 # Contributor: Kim Scarborough <sluggo@unknown.nu>
 
 pkgname=cantata-qt6
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Qt6 graphical client for Music Player Daemon (MPD), nullobsi fork"
 arch=(x86_64 i686 aarch64 armv7h)
