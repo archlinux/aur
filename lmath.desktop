@@ -1,11 +1,13 @@
 [Desktop Entry]
 Name=L'Math
-Comment=Proprietary LaTeX based math editor
-GenericName=Math Editor
-Exec=/usr/bin/lmath %F
-Icon=lmath
-Type=Application
-StartupNotify=false
-Categories=TextEditor;MathEditor;Math;Education;
-MimeType=application/x-lmath-file;
+Comment=A notebook software for writing and saving mathematical text and formulas with the Digabi rich text editor
+Icon=/usr/share/icons/hicolor/512x512/apps/lmath.png
+Categories=Education;
 Keywords=lmath;l'math;math;
+Type=Application
+
+Exec=/usr/bin/lmath %F
+StartupNotify=false
+Terminal=false
+MimeType=application/x-lmath-file;
+StartupWMClass=LMath

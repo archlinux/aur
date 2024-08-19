@@ -1,2 +1,2 @@
 #!/bin/sh
-exec "/opt/lmath/lmath" "$@"
+APPIMAGELAUNCHER_DISABLE=1 /opt/lmath/lmath.AppImage "$@"
