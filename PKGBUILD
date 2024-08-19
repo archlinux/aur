@@ -3,7 +3,7 @@
 pkgname=sourcegit-bin
 _name=${pkgname%-bin}
 pkgver=8.26
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI client for GIT users"
 arch=('x86_64')
 url='https://github.com/sourcegit-scm/sourcegit'
@@ -20,7 +20,7 @@ sha256sums=('cc1d7c2b60fca61e01a609c83b92f6409ad385be2711dc9767a20da1dec187dd'
             '6cef41c8a297f46faafe40016ffcce9d968b3722048b81cd768fdbaa1be02ca1')
 
 prepare() {
-    bsdtar -xf data.tar.xz
+    bsdtar -xf data.tar.*
 
     desktop-file-edit usr/share/applications/sourcegit.desktop \
         --set-icon=sourcegit --set-key=Exec --set-value=sourcegit
