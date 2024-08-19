@@ -3,16 +3,17 @@
 
 pkgname=python-social-auth-core
 pkgver=4.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Python Social Auth core component'
 arch=('any')
 url='https://github.com/python-social-auth/social-core'
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('python-six' 'python-defusedxml' 'python-pyjwt' 'python-jose' 'python-requests-oauthlib'
   'python-openid' 'python-cryptography' 'python3-saml')
 makedepends=( 
   'python-build'
   'python-installer'
+  'python-setuptools'
   'python-wheel'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
