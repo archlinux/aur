@@ -2,7 +2,7 @@
 _pkgname=eudic
 pkgname="eusoft-${_pkgname}-bin"
 pkgver=2024.07.16
-pkgrel=1
+pkgrel=2
 pkgdesc="权威的英语词典软件,英语学习者必备的工具,支持学习笔记、生词本多平台同步,让你随时随地学英语."
 arch=('x86_64')
 url="https://www.eudic.net/v4/en/app/eudic"
@@ -22,14 +22,17 @@ depends=(
 makedepends=(
     'fuse2'
 )
+options=(
+    '!emptydirs'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::https://static-main.frdic.com/pkg/eudic.AppImage?v=${pkgver//./-}"
     "LICENSE-${pkgver}.html::https://www.eudic.net/v4/en/home/privacy"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('5b5e107fc99b700bfb519d2ecaf6877bbf117ceee7cc8f784c784e0be8b0a2a3'
-            '9c1dde62844990b3c8f5425bd6ef50e82118a16594e3fe8aac924539e20a9870'
-            'bad85a7b54f8cc4862da97e8ebb9109ccbd0f77f690dc459f15bb8d9b1ce2a69')
+            '501f1b110d37e7585c4b4d71d1730be75745c3cd4d293bf4f75fdfc161668e3f'
+            'c4c09b5c790da86a44dfad58946d2531f0136b0ad65732b09375fd157fe9c6cf')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
