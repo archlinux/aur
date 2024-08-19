@@ -3,13 +3,13 @@
 pkgname=python-multipledispatch
 _name=${pkgname#python-}
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Multiple dispatch implementation in Python'
 arch=('any')
 url='https://github.com/mrocklin/multipledispatch'
-license=('BSD')
-makedepends=(python-build python-installer python-wheel)
-depends=(python-six)
+license=('BSD-3-Clause')
+makedepends=(python-build python-installer python-wheel python-setuptools)
+depends=(python)
 source=(multipledispatch-$pkgver.tar.gz::https://github.com/mrocklin/multipledispatch/archive/$pkgver.tar.gz)
 sha256sums=('a9eb21390e5051ce28b2ee7acd02bb21885b9e2a4ce6e5fdbb1f338b48b54203')
 
