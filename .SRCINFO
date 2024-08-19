@@ -1,0 +1,14 @@
+pkgbase = php-glfw
+	pkgdesc = A fully-featured OpenGL and GLFW extension for PHP
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/mario-deluna/php-glfw
+	arch = x86_64
+	license = MIT
+	makedepends = php
+	makedepends = git
+	depends = glfw
+	source = https://github.com/mario-deluna/php-glfw/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = 5b8a2d344ac55dff4193c2e20ce335faa4241ec8d5969c9cffc878afde8cea9a
+
+pkgname = php-glfw
