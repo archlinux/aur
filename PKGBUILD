@@ -1,4 +1,5 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: omgold@aur
+# Contibutor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=resource-agents
 pkgver=4.10.0
