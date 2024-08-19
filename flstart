@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+if [ -d ~/.fluorine ]; then
+  startx
+  exit
+fi
+
+bash <(wget -qO- https://raw.githubusercontent.com/4194304/fluorine-desktop/main/install.sh)
+echo "Thanks for using fluorine! Your new desktop will start soon!"
+sleep 3
+startx
