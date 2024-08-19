@@ -1,9 +1,9 @@
 # Maintainer: Pierre Dommerc <dommerc.pierre@gmail.com>
 
 pkgname=baru
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
-pkgdesc='A system monitor written in Rust and C'
+pkgdesc='A simple system monitor for WM statusbar'
 arch=('x86_64')
 url='https://github.com/doums/baru'
 license=('MPL2')
@@ -13,7 +13,7 @@ provides=('baru')
 conflicts=('baru')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9371eaec27163ad98a549f82b2290a95e828a5ca69ee646376ec6830958761e1')
+sha256sums=('49f09c7b356b5eefbeba9f208b100661cc9c6be09eff2ba737a19ab2e15b6711')
 
 build() {
   cd "$pkgname-$pkgver"
