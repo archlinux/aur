@@ -28,6 +28,8 @@ depends=(
   'lcms2'
   'libei'
   'libxi'
+  'libavif'
+  'libdecor'
   'seatd' # wlroots deps
   'xcb-util-errors' # wlroots deps
   'sdl2'
