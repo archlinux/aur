@@ -1,19 +1,18 @@
 pkgbase = resource-agents
 	pkgdesc = OCF resource agents for rgmanager and pacemaker
-	pkgver = 4.10.0
+	pkgver = 4.15.1
 	pkgrel = 1
 	url = http://clusterlabs.org/
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = libxslt
 	makedepends = python
 	makedepends = docbook-xsl
-	depends = bash
+	makedepends = libqb
 	depends = perl
 	optdepends = pacemaker: for these to be useful
 	optdepends = python: for azure-events
-	source = resource-agents-4.10.0.tar.gz::https://github.com/ClusterLabs/resource-agents/archive/v4.10.0.tar.gz
-	sha512sums = f32b1b45f6c51ddd7e87b438c776a0a7f7d23cf4af2531ea921f4811bebfff9e32f702234bf12056590f8c5745b53ec1d3d06a4e38a6f69653752779627d197c
+	source = resource-agents-4.15.1.tar.gz::https://github.com/ClusterLabs/resource-agents/archive/v4.15.1.tar.gz
+	sha256sums = cc91cf9f4d277f226522782116b4e2ac643d1f23093ce65c4c98a7e0f5c67c25
 
 pkgname = resource-agents
