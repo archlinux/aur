@@ -11,7 +11,7 @@ index ecb55bd..64ca240 100644
      <PublishAot>true</PublishAot>
      <PublishTrimmed>true</PublishTrimmed>
      <TrimMode>link</TrimMode>
-     <OptimizationPreference>Size</OptimizationPreference>
+     <OptimizationPreference>Speed</OptimizationPreference>
 -  </PropertyGroup>
 +  </PropertyGroup> -->
  
