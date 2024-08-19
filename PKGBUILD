@@ -4,13 +4,13 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-kmod
-pkgver=32
-pkgrel=5
-pkgdesc="Linux kernel module management tools and library (Android, ${_android_arch})"
+pkgver=33
+pkgrel=1
+pkgdesc="Linux kernel module management tools and library (Android ${_android_arch})"
 arch=('any')
 url='https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
 license=('GPL2')
-groups=(android-kmod)
+groups=('android-kmod')
 depends=("android-${_android_arch}-zlib"
          "android-${_android_arch}-openssl"
          "android-${_android_arch}-xz"
@@ -18,14 +18,10 @@ depends=("android-${_android_arch}-zlib"
 makedepends=('android-environment')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-${pkgver}.tar."{xz,sign}
-        'basename-impl.h'
-        '0001-Use-getcwd.patch'
-        '0002-Define-basename.patch')
-md5sums=('1046fda48766fae905f83150d12eec78'
+        '0001-Use-getcwd.patch')
+md5sums=('c451c4aa61521adbe8af147f498046f8'
          'SKIP'
-         '975e90408275d4d16b97f1fbbaa86302'
-         'c3d62ea51e242a716752f988c742a4b8'
-         '6ce8129da6aa5df9dab858f2f1b1412a')
+         'c3d62ea51e242a716752f988c742a4b8')
 validpgpkeys=('EAB33C9690013C733916AC839BA2A5A630CBEA53')  # Lucas DeMarchi
 
 prepare() {
@@ -33,10 +29,6 @@ prepare() {
     source android-env ${_android_arch}
 
     patch -Np1 -i ../0001-Use-getcwd.patch
-
-    if [ "${ANDROID_MINIMUM_PLATFORM}" -lt 23 ]; then
-        patch -Np1 -i ../0002-Define-basename.patch
-    fi
 }
 
 build() {
