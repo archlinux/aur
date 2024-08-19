@@ -1,15 +1,16 @@
 pkgbase = ssmping
 	pkgdesc = SSM ping
 	pkgver = 0.9.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.venaas.no/multicast/ssmping/
-	arch = i686
 	arch = x86_64
-	license = Custom
+	license = LicenseRef-custom
+	depends = glibc
 	source = http://http.debian.net/debian/pool/main/s/ssmping/ssmping_0.9.1.orig.tar.gz
 	source = ssmping_x86_64.patch
+	source = LICENSE
 	sha512sums = 7929b43867f29ac7f93298820149fd326d8540187a59e4f28f226e1c0dbfcdc60dc3da437de250e4082a2d6bd845ae9e619bf3b592b824dd8d529bf093cdedff
-	sha512sums = 9255dc2d9591f083c04040de821ae23da6a7c3b94b28aeeb6035eaf365dd562d6398a0c876afb569777571f42c6badbc18614dadc9bb11a4d73e18d1b00f818b
+	sha512sums = a73afe31f1241261ab14e3c4fbcec17c2941894de512ee0e755eb123cf74ac0432fbb1ce52a508b1be0cd1023eba5d69ef536a4853039f847da2e6ee29b67031
+	sha512sums = dac6d0aad1ead90503a3010de35b0a2718ebdf57b473cefab3bc159f1c9f6060f05aa413b1b3d2029d172d3aa2fe5def1860b4fa0627ecaf4cf75d21006a6733
 
 pkgname = ssmping
-
