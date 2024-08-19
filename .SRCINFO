@@ -1,16 +1,14 @@
 pkgbase = quimup
 	pkgdesc = A simple Qt6 frontend to MPD
-	pkgver = 2.0.1
-	pkgrel = 4
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://sourceforge.net/projects/quimup/
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = mpd
 	depends = qt6-base
 	depends = taglib
-	source = quimup-2.0.1-source.tar.gz::https://sourceforge.net/projects/quimup/files/Quimup%202.0/Quimup-2.0.1.source.tar.gz
-	source = format-security.patch
-	sha512sums = fa4090bf4b573b5bd5b370a10e22dfac1608226cf6939e9a722bebf373218e12b8298a7b17e1eab241617ebd9bc5ddfe297f87a71daf0bcb3100bc1c902ee068
-	sha512sums = b3b1b8318c8b29892eb2c197ab4a2c76c767b09ca904b2c20a6fb84f4315cb14adfbc9752d9c7a920c24aade3225a111c9ed0b253870d60ecfefb88fa0b67766
+	source = quimup-2.1.0-source.tar.gz::https://sourceforge.net/projects/quimup/files/Quimup%202.1/Quimup-2.1.0.source.tar.gz
+	sha512sums = c7d86deaa6483ea9467e2bc8dd7e413f67ebf271713cab939cda8c9689a52651b45724d99cdec7d72350273fb59e2542acf82ebc9da1cea8e0210f575351e686
 
 pkgname = quimup

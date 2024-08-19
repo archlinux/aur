@@ -1,28 +1,25 @@
 # Maintainer: Evgeniy Alekseev <arcanis at archlinux dot org>
 
 pkgname=quimup
-_pkgepoch=2.0
-pkgver=2.0.1
-pkgrel=4
+_pkgepoch=2.1
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="A simple Qt6 frontend to MPD"
 arch=('x86_64')
 url="https://sourceforge.net/projects/quimup/"
 license=('GPL-3.0-or-later')
 makedepends=()
 depends=('mpd' 'qt6-base' 'taglib')
-source=("quimup-$pkgver-source.tar.gz::https://sourceforge.net/projects/quimup/files/Quimup%20$_pkgepoch/Quimup-$pkgver.source.tar.gz"
-        'format-security.patch')
+source=("quimup-$pkgver-source.tar.gz::https://sourceforge.net/projects/quimup/files/Quimup%20$_pkgepoch/Quimup-$pkgver.source.tar.gz")
 
 prepare() {
   rm -rf "$srcdir/build"
   mkdir "$srcdir/build"
-
-  patch -p0 -i "$srcdir/format-security.patch"
 }
 
 build() {
   cd build
-  qmake6 PREFIX=/usr -Wnone "../Quimup"
+  qmake6 PREFIX=/usr -Wnone "../Quimup-$pkgver.source"
   make
 }
 
@@ -32,10 +29,9 @@ package() {
 
   # icons and other stuff
   install -dm755 "$pkgdir/usr/share"
-  cp -r "$srcdir/Quimup/RPM_DEB_build/share/applications" "$pkgdir/usr/share"
-  cp -r "$srcdir/Quimup/RPM_DEB_build/share/icons" "$pkgdir/usr/share"
-  cp -r "$srcdir/Quimup/RPM_DEB_build/share/man" "$pkgdir/usr/share"
+  cp -r "$srcdir/Quimup-$pkgver.source/RPM_DEB_build/share/applications" "$pkgdir/usr/share"
+  cp -r "$srcdir/Quimup-$pkgver.source/RPM_DEB_build/share/icons" "$pkgdir/usr/share"
+  cp -r "$srcdir/Quimup-$pkgver.source/RPM_DEB_build/share/man" "$pkgdir/usr/share"
 }
 
-sha512sums=('fa4090bf4b573b5bd5b370a10e22dfac1608226cf6939e9a722bebf373218e12b8298a7b17e1eab241617ebd9bc5ddfe297f87a71daf0bcb3100bc1c902ee068'
-            'b3b1b8318c8b29892eb2c197ab4a2c76c767b09ca904b2c20a6fb84f4315cb14adfbc9752d9c7a920c24aade3225a111c9ed0b253870d60ecfefb88fa0b67766')
+sha512sums=('c7d86deaa6483ea9467e2bc8dd7e413f67ebf271713cab939cda8c9689a52651b45724d99cdec7d72350273fb59e2542acf82ebc9da1cea8e0210f575351e686')
