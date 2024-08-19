@@ -1,6 +1,6 @@
 pkgbase = devilutionx-graphics-tools-git
 	pkgdesc = DevilutionX graphics format conversion tools (git version)
-	pkgver = 1
+	pkgver = 1.2.0.r1.64c0629
 	pkgrel = 1
 	url = https://github.com/diasurgical/devilutionx-graphics-tools
 	arch = armv6h
