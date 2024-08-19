@@ -4,7 +4,7 @@ pkgname="${_pkgname}-desktop-bin"
 _appname=TidGi
 pkgver=0.10.3
 _electronversion=31
-pkgrel=1
+pkgrel=2
 pkgdesc="an privatcy-in-mind, automated, auto-git-backup, freely-deployed Tiddlywiki knowledge management Desktop note app, with local REST API."
 arch=(
     'aarch64'
@@ -58,7 +58,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/usr/lib/${_pkgname}/resources/"{app.asar.unpacked,localization,node_modules,wiki} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/usr/lib/${_pkgname}/resources/"{app.asar.unpacked,localization,node_modules,wiki,*.png} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/doc/${_pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
