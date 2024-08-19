@@ -4,7 +4,7 @@ pkgbase=python-ewah-bool-utils
 _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="EWAH Bool Array utils for yt"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ makedepends=('python-setuptools'
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix-title-underline.patch')
-md5sums=('ef2eb7b525ff5efde44ebc24869839ce'
+md5sums=('838b7aec61a271a862d51c6630d588a8'
          '7c4351256659c6fe4d7d369e3ff57398')
 
 get_pyver() {
@@ -52,7 +52,7 @@ check() {
 }
 
 package_python-ewah-bool-utils() {
-    depends=('python-numpy>=1.19.3')
+    depends=('python-numpy>=2.0.0')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
