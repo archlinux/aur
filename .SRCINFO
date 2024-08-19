@@ -1,14 +1,10 @@
 pkgbase = python-pymeasure
 	pkgdesc = Scientific measurement library for instruments, experiments, and live-plotting
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pypi.python.org/pypi/PyMeasure
 	arch = any
 	license = MIT
-	checkdepends = python-pytest>=3.3.0
-	checkdepends = python-pytest-cov>=4.1.0
-	checkdepends = python-pytest-qt>=2.4.0
-	checkdepends = python-pyvisa-sim>=0.4.0
 	makedepends = python-setuptools>=45
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm>=6.2
