@@ -7,14 +7,14 @@
 _pkgname=xfce4-power-manager
 pkgname=${_pkgname}-devel
 pkgver=4.19.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Power manager for Xfce desktop"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://docs.xfce.org/xfce/xfce4-power-manager/start"
 license=('GPL2')
 groups=('xfce4-devel')
 depends=('libxfce4ui' 'libxfce4util>=4.19.2' 'upower' 'libnotify' 'xfce4-notifyd' 'hicolor-icon-theme' 'networkmanager')
-makedepends=('xfce4-panel' 'wayland' 'wayland-protocols' 'glib2-devel')
+makedepends=('xfce4-panel' 'wayland' 'wayland-protocols' 'glib2-devel' 'wlr-protocols')
 optdepends=('xfce4-panel: Xfce panel plugin support')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
