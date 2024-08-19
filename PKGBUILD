@@ -5,7 +5,7 @@ pkgname=${_pkgname}-git
 _pkgver=0.2.9
 _branch=v${_pkgver}-dev
 epoch=1
-pkgver=0.2.9dev+3+c98c0b5
+pkgver=0.2.9dev+18+ad24857
 pkgrel=1
 pkgdesc="An Internet radio player for Linux"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -47,4 +47,7 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}/build"
   make DESTDIR="$pkgdir" install
+
+  # Don't install the autostart file
+  rm -fr "${pkgdir}"/etc/xdg/autostart/radiotray-ng.desktop
 }
