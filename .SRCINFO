@@ -1,21 +1,21 @@
 pkgbase = tssh-bin
 	pkgdesc = Simple ssh client with trzsz ( trz / tsz ) support.
-	pkgver = 0.1.21
+	pkgver = 0.1.22
 	pkgrel = 1
 	url = https://trzsz.github.io/ssh
 	arch = aarch64
 	arch = i686
 	arch = x86_64
 	license = MIT
-	provides = tssh=0.1.21
+	provides = tssh=0.1.22
 	conflicts = tssh
-	source = LICENSE-0.1.21::https://raw.githubusercontent.com/trzsz/trzsz-ssh/v0.1.21/LICENSE
+	source = LICENSE-0.1.22::https://raw.githubusercontent.com/trzsz/trzsz-ssh/v0.1.22/LICENSE
 	sha256sums = af5ce9b9e9948f7afc2c2bd80a3dc27d94df19d5987fad4a5ff8a5f105637c9a
-	source_aarch64 = tssh-0.1.21-aarch64.tar.gz::https://github.com/trzsz/trzsz-ssh/releases/download/v0.1.21/tssh_0.1.21_linux_aarch64.tar.gz
-	sha256sums_aarch64 = 8b9b0e73e259ddbe13aa9e1ea679c6706ae7d141cfdacacf6008b35820b31066
-	source_i686 = tssh-0.1.21-i686.tar.gz::https://github.com/trzsz/trzsz-ssh/releases/download/v0.1.21/tssh_0.1.21_linux_i386.tar.gz
-	sha256sums_i686 = e3fa844cff16c0b3c5367f714d2d92e7e64f91a67336953a69ba81f2e0ba796e
-	source_x86_64 = tssh-0.1.21-x86_64.tar.gz::https://github.com/trzsz/trzsz-ssh/releases/download/v0.1.21/tssh_0.1.21_linux_x86_64.tar.gz
-	sha256sums_x86_64 = a98e06ff1a9939edf11f0c7af59f9ad4cac188184c8849d8fac98aee941cf8ad
+	source_aarch64 = tssh-0.1.22-aarch64.tar.gz::https://github.com/trzsz/trzsz-ssh/releases/download/v0.1.22/tssh_0.1.22_linux_aarch64.tar.gz
+	sha256sums_aarch64 = ecc3efd021a1932c1d61dc76d36cac0f2e1bd1c0ea8c6634f9521a36f388c301
+	source_i686 = tssh-0.1.22-i686.tar.gz::https://github.com/trzsz/trzsz-ssh/releases/download/v0.1.22/tssh_0.1.22_linux_i386.tar.gz
+	sha256sums_i686 = c5b01af3cac28e6255ede17c27de4618e77ffa54327f82111a1922e0f4091719
+	source_x86_64 = tssh-0.1.22-x86_64.tar.gz::https://github.com/trzsz/trzsz-ssh/releases/download/v0.1.22/tssh_0.1.22_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 41a3dc9102f6e4b8df0d553d43b3c576e0487da0b1ba804352e2c0e07b564131
 
 pkgname = tssh-bin
