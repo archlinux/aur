@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=emoji-selector-applet-for-cosmic-git
-pkgver=0.1.5.r11.ga5d94f6
+pkgver=0.1.5.r17.g13c0a7e
 pkgrel=1
 pkgdesc="Emoji Selector for COSMIC™️ DE"
 arch=('x86_64')
 url="https://github.com/leb-kuchen/emoji-selector-applet-for-cosmic_tm"
-license=('MPL-2.0')
+license=('MPL-2.0 AND MIT')
 depends=('cosmic-applets' 'noto-fonts-emoji')
 makedepends=('cargo' 'git' 'just')
 provides=("${pkgname%-git}")
@@ -33,4 +33,6 @@ build() {
 package() {
   cd "${pkgname%-git}"
   just rootdir="$pkgdir" install
+
+  install -Dm644 LICENSE-MIT -t "$pkgdir/usr/share/licences/$pkgname/"
 }
