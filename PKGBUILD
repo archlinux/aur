@@ -1,7 +1,7 @@
 # Maintainer: noodle <silentnoodle@cock.li>
 pkgname=dwarfs-bin
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast high compression read-only file system (pre-compiled binaries)'
 url='https://github.com/mhx/dwarfs'
 source_x86_64=("dwarfs-${pkgver}-Linux-x86_64.tar.xz::https://github.com/mhx/dwarfs/releases/download/v${pkgver}/dwarfs-${pkgver}-Linux-x86_64-clang.tar.xz")
@@ -21,7 +21,6 @@ sha256sums_aarch64=('f272f667649d71ec7d29d6822ad4198e13a33e997d722f74f2bca23b239
 package() {
   cd "${srcdir}/dwarfs-${pkgver}-Linux-$arch-clang"
 
-  install -Dm755 bin/dwarfsbench "${pkgdir}/usr/bin/dwarfsbench"
   install -Dm755 bin/dwarfsck "${pkgdir}/usr/bin/dwarfsck"
   install -Dm755 bin/dwarfsextract "${pkgdir}/usr/bin/dwarfsextract"
   install -Dm755 bin/mkdwarfs "${pkgdir}/usr/bin/mkdwarfs"
