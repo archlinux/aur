@@ -1,6 +1,6 @@
 pkgname=ruffle-bin
-pkgver=2024.07.19
-pkgrel=2
+pkgver=2024.08.19
+pkgrel=1
 scriptver=1.0.2
 _pkgrel_x86_64=1
 _pkgrel_i386=1
@@ -14,15 +14,15 @@ license=('Apache' 'MIT')
 depends=('gtk3' 'libxcb' 'zlib' 'libxcb' 'alsa-lib' 'libxkbcommon-x11')
 makedepends=('unzip')
 conflicts=(ruffle-git)
-sha256sums_i386=('6f848d8bf331c6cff9332dd7da33435aca5cae2cfa4bebc62752c27dd6308673'
+sha256sums_i386=('4dfb6e74aed87415a2be4cfd852e7e7034231848ebb070b1e7b4e2bbeab87674'
                  'f043303d00abda09e5f23823cd9211b16b9448ac81f87b3c609e7158d4ef5920')
-sha256sums_pentium4=('6f848d8bf331c6cff9332dd7da33435aca5cae2cfa4bebc62752c27dd6308673'
+sha256sums_pentium4=('4dfb6e74aed87415a2be4cfd852e7e7034231848ebb070b1e7b4e2bbeab87674'
                      'f043303d00abda09e5f23823cd9211b16b9448ac81f87b3c609e7158d4ef5920')
-sha256sums_i686=('6f848d8bf331c6cff9332dd7da33435aca5cae2cfa4bebc62752c27dd6308673'
+sha256sums_i686=('4dfb6e74aed87415a2be4cfd852e7e7034231848ebb070b1e7b4e2bbeab87674'
                  'f043303d00abda09e5f23823cd9211b16b9448ac81f87b3c609e7158d4ef5920')
-sha256sums_x86_64=('b5434257c2373c922a5e5693423a2bd58a665770559ab39d605f07e9fdd0680c'
+sha256sums_x86_64=('6f848d8bf331c6cff9332dd7da33435aca5cae2cfa4bebc62752c27dd6308673'
                    'f043303d00abda09e5f23823cd9211b16b9448ac81f87b3c609e7158d4ef5920')
-sha256sums_aarch64=('a8806801fea4bc04487b815e1769255aef2804eb4d5527e7a0ae47829a5df14b'
+sha256sums_aarch64=('e3b9cddf5f47bebf8bf68a3acdd418a3d778e59bc79b05a3e466f59ca87cd55b'
                     'f043303d00abda09e5f23823cd9211b16b9448ac81f87b3c609e7158d4ef5920')
 source_x86_64=("https://gitlab.com/linuxbombay/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-x64.tar.xz" 
 "https://gitlab.com/linuxbombay/ruffle-linux/ruffle-packaging/-/archive/$scriptver/ruffle-packaging-$scriptver.tar.bz2")
