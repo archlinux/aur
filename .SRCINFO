@@ -1,20 +1,23 @@
 pkgbase = podman-desktop-companion-bin
 	pkgdesc = Cross-platform desktop integrated application with consistent UI,Learning tool for the powerful podman command line interface
-	pkgver = 5.2.0_rc.1
+	pkgver = 5.2.0_rc.3
 	pkgrel = 1
 	url = https://iongion.github.io/podman-desktop-companion/
+	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = electron31
 	depends = podman
 	depends = docker
 	provides = podman-desktop-companion
-	conflicts = podman-desktop-companion=5.2.0_rc.1
-	source = podman-desktop-companion-5.2.0_rc.1.deb::https://github.com/iongion/podman-desktop-companion/releases/download/5.2.0-rc.1/podman-desktop-companion-amd64-5.2.0-rc.1.deb
-	source = LICENSE-5.2.0_rc.1::https://raw.githubusercontent.com/iongion/podman-desktop-companion/5.2.0-rc.1/LICENSE
+	conflicts = podman-desktop-companion=5.2.0_rc.3
+	source = LICENSE-5.2.0_rc.3::https://raw.githubusercontent.com/iongion/podman-desktop-companion/5.2.0-rc.3/LICENSE
 	source = podman-desktop-companion.sh
-	sha256sums = 0f6ab3f8f1b5969c3223bdeb1c6d81601c715181ce21dc56f29f3b67c2da0c3c
-	sha256sums = 1a33f39c0fb06d0bf3bc82dbb2ca621ebd225158dd9a73557f7f583a9d61ece6
+	sha256sums = fd5805079cad1ee5ebcfd2a2a58e16553314c51700ce5f4e32dba06d9ce49283
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	source_aarch64 = podman-desktop-companion-5.2.0_rc.3-aarch64.pacman::https://github.com/iongion/podman-desktop-companion/releases/download/5.2.0-rc.3/podman-desktop-companion-aarch64-5.2.0-rc.3.pacman
+	sha256sums_aarch64 = 765bcb62c7def22ec8ce37083f088b89f691e00fd055b931b5d5465fbcd871d2
+	source_x86_64 = podman-desktop-companion-5.2.0_rc.3-x86_64.pacman::https://github.com/iongion/podman-desktop-companion/releases/download/5.2.0-rc.3/podman-desktop-companion-x64-5.2.0-rc.3.pacman
+	sha256sums_x86_64 = 010d01e146fef21b09bc38cf3e0a952ec9d359a5029e193435e640d3dd21592a
 
 pkgname = podman-desktop-companion-bin
