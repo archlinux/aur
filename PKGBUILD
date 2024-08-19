@@ -2,7 +2,7 @@
 
 pkgname=byedpi-bin
 pkgver=0.12
-pkgrel=5
+pkgrel=6
 pkgdesc="A simple and fast software designed to bypass Deep Packet Inspection"
 arch=(aarch64 armv6h armv7h x86_64)
 url="https://github.com/hufrea/${pkgname%-bin}"
