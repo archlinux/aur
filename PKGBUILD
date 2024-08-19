@@ -29,7 +29,6 @@ makedepends=(
   'clang'
   'git'
   'just'
-#  'lld'
   'mold'
 )
 optdepends=(
@@ -38,6 +37,7 @@ optdepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+options=('!lto')
 source=('git+https://github.com/pop-os/cosmic-settings.git')
 sha256sums=('SKIP')
 
@@ -58,9 +58,6 @@ build() {
 
   # use mold instead of lld to speed up build
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
-
-  # use lld instead of mold as linking fails with LTO enabled
-#  RUSTFLAGS+=" -C link-arg=-fuse-ld=lld"
 
   # use nice to build with lower priority
   nice just build-release --frozen

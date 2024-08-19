@@ -29,6 +29,7 @@ pkgbase = cosmic-settings-git
 	optdepends = power-profiles-daemon: power profiles
 	provides = cosmic-settings
 	conflicts = cosmic-settings
+	options = !lto
 	source = git+https://github.com/pop-os/cosmic-settings.git
 	sha256sums = SKIP
 
