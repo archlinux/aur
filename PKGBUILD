@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.13.2.r0.g67061ed
+pkgver=0.13.4.r31.g4a276b1
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -35,6 +35,7 @@ depends=(bc
          moreutils
          nodejs
          pandoc-sile-git
+         parallel
          pcre
          pdftk
          perl
@@ -43,6 +44,7 @@ depends=(bc
          povray
          procps-ng
          python
+         ripgrep
          sassc
          sile
          sqlite
