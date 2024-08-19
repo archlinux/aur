@@ -1,6 +1,6 @@
 pkgbase = libblake3
 	pkgdesc = the C implementations of the BLAKE3 cryptographic hash function
-	pkgver = 1.5.3
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://blake3.io/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = libblake3
 	makedepends = cmake
 	depends = glibc
 	provides = libblake3.so
-	source = libblake3-1.5.3.tar.gz::https://github.com/BLAKE3-team/BLAKE3/archive/refs/tags/1.5.3.tar.gz
-	sha256sums = ec9114480857334858e73b727199c573bfdbed6138a83be573f076d37e671fc1
+	source = libblake3-1.5.4.tar.gz::https://github.com/BLAKE3-team/BLAKE3/archive/refs/tags/1.5.4.tar.gz
+	sha256sums = ddd24f26a31d23373e63d9be2e723263ac46c8b6d49902ab08024b573fd2a416
 
 pkgname = libblake3
