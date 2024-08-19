@@ -3,7 +3,7 @@
 # Contributor: Ishan Arora <ishanarora@gmail.com>
 _base=oct2py
 pkgname=python-${_base}
-pkgver=5.7.1
+pkgver=5.7.2
 pkgrel=1
 pkgdesc="Python to GNU Octave bridge --> run m-files from python"
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(python-build python-installer python-setuptools python-hatchling py
 checkdepends=(python-pytest-timeout octave-signal python-pandas) # jupyter-nbconvert
 optdepends=('python-pandas: for Pandas DataFrames and Series support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-b2sums=('f920564361fe3efa2159b2d7c8175435716250c548c8a46a110d511311686ca924dc0f6079f5f4796f85ab569dc9e923198f45db93688be3b770786cc8925b20')
+b2sums=('824c28c81ee6fd1770a37799c7e231be0877e4cf74b3af770a5d1c6f69a11ebfbfaface435ebcb99b02b8fc33abb3402c57b984d40e48418ff543cd5c8a2242f')
 
 build() {
   cd ${_base}-${pkgver}
@@ -25,9 +25,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest \
-    --ignore=tests/test_usage.py \
-    -k 'not deprecated_return_both'
+  test-env/bin/python -m pytest
 }
 
 package() {
