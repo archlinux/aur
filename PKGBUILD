@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elephicon
-pkgver=3.0.4
+pkgver=3.0.5
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -17,12 +17,13 @@ makedepends=(
     'npm'
     'nvm'
     'curl'
+    'git'
 )
 source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('c28005eefd2dea8e958386d675ab620d144eb3f8be130cf035d71944bfb2da90'
+sha256sums=('78506bf59cc9c40ca26f6058d3edb226a4c602d27d74e4712bd4326763570b4a'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
