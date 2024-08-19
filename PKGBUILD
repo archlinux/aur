@@ -36,4 +36,9 @@ package() {
   install -D -m644 qbpm.1 ${pkgdir}/usr/share/man/man1/qbpm.1
 
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -d "$pkgdir/usr/share/"{bash-completion/completions,zsh/site-functions}
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  PYTHONPATH=${pkgdir}/${site_packages} _QBPM_COMPLETE=bash_source ${pkgdir}/usr/bin/qbpm > ${pkgdir}/usr/share/bash-completion/completions/qbpm
+  PYTHONPATH=${pkgdir}/${site_packages} _QBPM_COMPLETE=zsh_source  ${pkgdir}/usr/bin/qbpm > ${pkgdir}/usr/share/zsh/site-functions/qbpm
 }
