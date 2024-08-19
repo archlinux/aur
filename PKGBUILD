@@ -2,7 +2,7 @@
 
 pkgname=opensubtitlesdownload
 _pkgname=OpenSubtitlesDownload
-pkgver=6.2
+pkgver=6.3
 pkgrel=1
 arch=('any')
 pkgdesc="An application to help you quickly find and download subtitles for your favorite videos"
@@ -11,11 +11,11 @@ license=('GPL3')
 provides=('OpenSubtitlesDownload')
 depends=('python' 'wget')
 optdepends=(
-    'zenity: only needed for GNOME based desktop environments'
-    'kdialog: only needed for KDE based desktop environments'
+    'zenity: Only needed for GNOME based desktop environments'
+    'kdialog: Only needed for KDE based desktop environments'
 )
 source=("$_pkgname-$pkgver::https://github.com/emericg/$_pkgname/archive/v$pkgver.tar.gz")
-md5sums=('f52fc69fc206421e48c5414c2ab5d965')
+md5sums=('6b74f129397ec73c8e7e5345a5a7c60e')
 
 prepare() {
   sed 's/"%F"/%F/' -i "$_pkgname-$pkgver/desktop-files/$_pkgname-gnome.desktop"
