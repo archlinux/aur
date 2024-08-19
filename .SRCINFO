@@ -1,4 +1,4 @@
-pkgbase = audioleaf-bin
+pkgbase = audioleaf
 	pkgdesc = Visualize music on your Nanoleaf Canvas
 	pkgver = 1.1.0
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = audioleaf-bin
 	source = https://github.com/alfazet/audioleaf/releases/download/v1.1.0/audioleaf-1.1.0-x86_64.tar.gz
 	sha256sums = 69e2ffb9b8a7cd7ae10a4b6c9a5e405370064e533fa4fd3de7837c745de28d60
 
-pkgname = audioleaf-bin
+pkgname = audioleaf
