@@ -2,7 +2,7 @@
 pkgname=udeler
 _pkgname=Udeler
 _appname=udemy-downloader-gui
-pkgver=1.13.0
+pkgver=1.13.1
 _electronversion=11
 _nodeversion=18
 pkgrel=1
@@ -25,10 +25,10 @@ makedepends=(
     'curl'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('ae670fe2f8e75658246ca0bdbef8c3004c9895c65222db123f5ff983bdef4d4d'
+sha256sums=('b26bfeb3085d25e60e34938a02996903acb4ddb5a98763c65cfc5e6396a98b51'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -45,7 +45,7 @@ build() {
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${_appname}-${pkgver}"
+    cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -68,8 +68,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${_appname}-${pkgver}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${_appname}-${pkgver}/app/assets/images/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/app/assets/images/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${_appname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
