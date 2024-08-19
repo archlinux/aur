@@ -1,7 +1,7 @@
 # Use environment variable MAKEPKG_AYUGRAM_API_ID and MAKEPKG_AYUGRAM_API_HASH to override default values
 
 pkgname=ayugram-desktop
-pkgver=5.3.2
+pkgver=5.4.1
 pkgrel=1
 pkgdesc="Desktop Telegram client with good customization and Ghost mode."
 arch=("x86_64")
@@ -23,18 +23,16 @@ optdepends=(
     "webkit2gtk: embedded browser features"
     "xdg-desktop-portal: desktop integration"
 )
-_commit=7d9a69bca9f00692596d012f12949944fe8e2a10
 source=(
-    #"AyuGram-v$pkgver.tar.gz::https://github.com/AyuGram/AyuGramDesktop/archive/refs/tags/v$pkgver.tar.gz"
-    "AyuGram-$_commit.tar.gz::https://github.com/AyuGram/AyuGramDesktop/archive/$_commit.tar.gz"
+    "AyuGram-v$pkgver.tar.gz::https://github.com/AyuGram/AyuGramDesktop/archive/refs/tags/v$pkgver.tar.gz"
 )
 declare -rAg _modules_name_map=(
-    [cmake]=https://github.com/desktop-app/cmake_helpers/archive/08de4f18f5e4459689957b3aa115e10d8cbef9d6.tar.gz
+    [cmake]=https://github.com/desktop-app/cmake_helpers/archive/7b11e62e2a40a3dab7f039d4953f1514c73cb6d5.tar.gz
     [cmake/external/Implib.so]=https://github.com/yugr/Implib.so/archive/0ddaa715d2572b100f8248c0fa4450fbf895be14.tar.gz
     [cmake/external/glib/cppgir]=https://gitlab.com/mnauw/cppgir/-/archive/9c4f5820d94d62ab451501f016bfea97156518f4/cppgir-9c4f5820d94d62ab451501f016bfea97156518f4.tar.gz
     [cmake/external/glib/cppgir/expected-lite]=https://github.com/martinmoene/expected-lite/archive/95b9cb015fa17baa749c2b396b335906e1596a9e.tar.gz
     [Telegram/codegen]=https://github.com/desktop-app/codegen/archive/0af136124083369073b8fdaf45f0816fd2b10bad.tar.gz
-    [Telegram/lib_base]=https://github.com/desktop-app/lib_base/archive/ca4503b3075fcaed5719b6ff1f40e40d14d08d95.tar.gz
+    [Telegram/lib_base]=https://github.com/desktop-app/lib_base/archive/fa02c719d19bc647bcde4ba172b72d05bacb6a79.tar.gz
     [Telegram/lib_crl]=https://github.com/desktop-app/lib_crl/archive/c1d6b0273653095b10b4d0f4f7c30b614b690fd5.tar.gz
     [Telegram/lib_lottie]=https://github.com/desktop-app/lib_lottie/archive/1a700e5a0d7c3e2f617530354ff2a47c5c72bb4a.tar.gz
     [Telegram/lib_qr]=https://github.com/desktop-app/lib_qr/archive/501f4c3502fd872ab4d777df8911bdac32de7c48.tar.gz
@@ -42,7 +40,7 @@ declare -rAg _modules_name_map=(
     [Telegram/lib_spellcheck]=https://github.com/desktop-app/lib_spellcheck/archive/0b7622ff38778e9cd03d3997de59351973480a1f.tar.gz
     [Telegram/lib_storage]=https://github.com/desktop-app/lib_storage/archive/ccdc72548a5065b5991b4e06e610d76bc4f6023e.tar.gz
     [Telegram/lib_tl]=https://github.com/AyuGram/lib_tl/archive/11c8ae47ff9c9d69b0470700fff9ed924a97acd3.tar.gz
-    [Telegram/lib_ui]=https://github.com/AyuGram/lib_ui/archive/7f2817b4b9f0894eedd42922ab439e0e04221b40.tar.gz
+    [Telegram/lib_ui]=https://github.com/AyuGram/lib_ui/archive/817486ca25ba0c5a84c86cd73323fd3461cacfa1.tar.gz
     [Telegram/lib_webrtc]=https://github.com/desktop-app/lib_webrtc/archive/8751e27d50d2f26b5d20673e5ddba38e90953570.tar.gz
     [Telegram/lib_webview]=https://github.com/desktop-app/lib_webview/archive/c27c69953db52cfcb56abc3d422764f0fb4c2152.tar.gz
     [Telegram/ThirdParty/GSL]=https://github.com/desktop-app/GSL/archive/09938e870420b69a01f55c755207c871bc20b4e5.tar.gz
@@ -83,16 +81,16 @@ do
         source+=("$source_str")
     fi
 done
-sha256sums=('fb36ea4397236c2940d905653a830e88f9a7d60f92dc436fe3fa86bbb3afc4be'
+sha256sums=('1a8d1fcb44161f544eebcc89bc62a87aad56d96d6bf677ee6634f9e56548c6b9'
             'd0d4ea2fddcbc7d10ace2c37309feb09da87e8ce7ced6ce73592da1359f4765f'
             '72ecdcd66728a073ca9bfaa3662155c28530b8f61d2241c193c04d6f2ae3a8c6'
             '8b4ba7258685e49c9b7f2c60925264c3b2713805ad21304404d5f6b77cd5582b'
             'cbc1f4bf8c28ffeb89852eda7056ff6aa80d49cb45736a583c931d5ceeccdcdd'
             '3e7253b2cc31bdf68fa50d105715158e649812e5ad6b4f1f6e5fd1e89b3ffdfd'
             'c9aa4e32eb5e475d0826154055ff4749c07bb46d83b12f1641d31557e944a16f'
-            'e4ec73d69618ced3cdcc2cbb45a84c11c2102d8d31e9959e86ccbe41878d1204'
+            'c7c39f293f89fae3b47e33b0803c73989a3fc6cf61aefc50e9384e8e25273331'
             'e9b050279a52e48f1fed56e76ed3995329b2f99518b6afba4f97ecb13088f935'
-            'e92fec09e5d550c8a00d7580f58be3efc6cda6463b68fc874536c78f3a608071'
+            'ecbb183303a4b49edda9836062e66f891781d29ffd223d6637180a6572fdb78f'
             '9b1afca339bd4e0579e73e92478ea26bb0c845dca7231de031e66c2f1a4ea5d9'
             '716fbe4fc85ecd36488afbbc635b59b5ab6aba5ed3b69d4a32a46eae5a453d38'
             '11b926f9605b258c35bd9ed806a10cab7ef5edd673ad53a014427b1c71d24a9e'
@@ -105,7 +103,7 @@ sha256sums=('fb36ea4397236c2940d905653a830e88f9a7d60f92dc436fe3fa86bbb3afc4be'
             'ec25bbd47ba895684e9f9a3dfbb9aa96a7573c4c84455542be23998d5eb0fad8'
             '612b5d89f58a578240b28a1304ffb0d085686ebe0137adf175ed0e3382b7ed58'
             '996fdbcc6f99f44963c867a701bf8ab4179f32f3536ed32895a009ab569a4d66'
-            'f59fb7ab9daf8364e225350de60166fc9e7cf2a33c5ca52a5bc5cbfc4060dae7'
+            '2b4c99261ab5db5b536c0aaf4e7ff406ab490aed04685c524c2251ed95dd426b'
             '976909135282818237954bce77b5b21f6c88f1bf34f749ef0be6ea2058ded207'
             'd80795686f3e58448c7b76830bb5c40847b7eaae1996c28f0422a029b66c2bb0'
             'aba69c97d466e82a13ae6c1d52628c7f7ec8f85c5224f8634fa26a313ebcc95f'
@@ -123,8 +121,7 @@ sha256sums=('fb36ea4397236c2940d905653a830e88f9a7d60f92dc436fe3fa86bbb3afc4be'
             '0bb1ac2b495bf7056a57a1b9bd6020007041eb7b6cc85467ae55d0eb5c8254e8')
 
 prepare() {
-    #cd "$srcdir/AyuGramDesktop-$pkgver"
-    cd "$srcdir/AyuGramDesktop-$_commit"
+    cd "$srcdir/AyuGramDesktop-$pkgver"
     declare -ra _modules=(
         cmake cmake/external/Implib.so cmake/external/glib/cppgir cmake/external/glib/cppgir/expected-lite
         Telegram/codegen Telegram/lib_base Telegram/lib_crl Telegram/lib_lottie Telegram/lib_qr Telegram/lib_rpl
@@ -170,8 +167,7 @@ build() {
     CXXFLAGS+=' -ffat-lto-objects'
     # https://github.com/AyuGram/AyuGramDesktop/blob/dev/docs/building-linux.md#building-the-project
     # for API_ID and API_HASH
-    #cmake -B build -S AyuGramDesktop-v$pkgver -G Ninja \
-    cmake -B build -S AyuGramDesktop-$_commit -G Ninja \
+    cmake -B build -S AyuGramDesktop-$pkgver -G Ninja \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID="${MAKEPKG_AYUGRAM_API_ID:-2040}" \
