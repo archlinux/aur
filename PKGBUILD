@@ -13,7 +13,7 @@ provides=("rencfs")
 conflicts=("rencfs")
 depends=("fuse3")
 source=("https://github.com/radumarias/rencfs/releases/download/v$pkgver/rencfs-$pkgver-x86_64.tar.gz")
-sha256sums=("79510af39b1744759302a4795a7d231a49dc3b3671d3e78675016acd0c2430b1")
+sha256sums=("13db14f90292d0fb6b9eb5b03adc4ebf16b1789e24df4161967db47884d895a4")
 
 package() {
     install -Dm755 rencfs -t "$pkgdir/usr/bin"
