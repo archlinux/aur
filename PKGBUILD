@@ -7,12 +7,13 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-hwloc
-pkgver=2.10.0
-pkgrel=4
+pkgver=2.11.1
+pkgrel=1
 arch=('any')
-pkgdesc="Portable Hardware Locality is a portable abstraction of hierarchical architectures (Android, ${_android_arch})"
+pkgdesc="Portable Hardware Locality is a portable abstraction of hierarchical architectures (Android ${_android_arch})"
 url='https://www.open-mpi.org/projects/hwloc/'
 license=('BSD')
+groups=('android-hwloc')
 depends=("android-${_android_arch}-libtool"
          "android-${_android_arch}-libpciaccess")
 makedepends=("android-${_android_arch}-cairo"
@@ -25,11 +26,17 @@ optdepends=("android-${_android_arch}-cairo"
             "android-${_android_arch}-pciutils"
             "android-${_android_arch}-libx11")
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://www.open-mpi.org/software/hwloc/v${pkgver%.*}/downloads/hwloc-${pkgver}.tar.bz2")
-sha256sums=('0305dd60c9de2fbe6519fe2a4e8fdc6d3db8de574a0ca7812b92e80c05ae1392')
+source=("https://www.open-mpi.org/software/hwloc/v${pkgver%.*}/downloads/hwloc-${pkgver}.tar.bz2"
+        '0001-Added-missing-macros.patch')
+md5sums=('d1c163b73a4819bc912dd6f30233d6d5'
+         '540c7ecb4997cfcd37d4d9b450b21dcf')
 
 prepare() {
     cd "${srcdir}/hwloc-${pkgver}"
+
+    export aclocalVersion=$(aclocal --version | head -n 1 | awk '{print $NF}')
+    sed -i "s|am__api_version='1.[0-9]*'|am__api_version='${aclocalVersion}'|g" aclocal.m4
+    sed -i "s|am__api_version='1.[0-9]*'|am__api_version='${aclocalVersion}'|g" configure
 
     # Remove all references to -lpthread
 
@@ -44,6 +51,8 @@ prepare() {
     sed -i 's|HWLOC_LIBS_PRIVATE -lpthread|HWLOC_LIBS_PRIVATE|g' config/hwloc.m4
     sed -i 's|LIBS -lpthread|LIBS|g' config/hwloc.m4
     sed -i 's|HWLOC_LIBS -lpthread|HWLOC_LIBS|g' config/hwloc.m4
+
+    patch -Np1 -i ../0001-Added-missing-macros.patch
 }
 
 build() {
@@ -64,6 +73,6 @@ package() {
     make -C "${PWD}/hwloc" DESTDIR="${pkgdir}" install
     make -C "${PWD}/include" DESTDIR="${pkgdir}" install
     make DESTDIR="${pkgdir}" install-hwlocpkgconfigDATA
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
