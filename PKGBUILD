@@ -4,12 +4,13 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libx11
-pkgver=1.8.9
-pkgrel=3
+pkgver=1.8.10
+pkgrel=1
 arch=('any')
 pkgdesc="X11 client-side library (Android ${_android_arch})"
 url="https://xorg.freedesktop.org/"
 license=('custom')
+groups=('android-libx11')
 # keep xorgproto runtime dependency
 # https://lists.archlinux.org/pipermail/arch-dev-public/2019-December/029767.html
 depends=("android-${_android_arch}-libxcb"
@@ -20,7 +21,7 @@ makedepends=('android-configure'
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/releases/individual/lib/libX11-${pkgver}.tar.xz"{,.sig}
         '0001-Fix-missing-symbols.patch')
-md5sums=('b006876e5b749d82801fe9450d700daf'
+md5sums=('5b8fa54e0ef94136b56f887a5e6cf6c9'
          'SKIP'
          '7aa12ed8ce6ef220c1e0b8c2b2982d27')
 validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') # Alan Coopersmith <alanc@freedesktop.org>
