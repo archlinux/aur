@@ -2,7 +2,7 @@
 # Contibutor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=fence-agents
-pkgver=4.11.0
+pkgver=4.15.0
 pkgrel=1
 pkgdesc="OCF fence agents for rgmanager and pacemaker"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
     'libvirt: for virt'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ClusterLabs/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('21be9fcbc6f49815ca989d4f7b584cb1793b360be34da3b0afa9c0e21dbf2c7db363716abd702ba38f7863904c7a3bd26caba2005b0572d6e336c052f210328f')
+sha256sums=('9faaf0e50b6f25edb5df47e85a815f0a770a9d5cf4a020f24ece6b368454f725')
 
 prepare() {
   cd $pkgname-$pkgver
