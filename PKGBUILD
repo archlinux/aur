@@ -1,7 +1,7 @@
 # Maintainer: stefanwimmer128 <info@stefanwimmer128.xyz>
 
 pkgname=kf6-servicemenus-rootactions
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=5
 pkgdesc='Allows admin users to perform several root only actions from dolphin via polkit agent.'
 arch=(any)
