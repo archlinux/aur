@@ -1,0 +1,25 @@
+--- a/xsysinfo.c	1997-10-11 11:55:32.000000000 +0200
++++ b/xsysinfo.c	2024-08-19 23:13:51.816285354 +0200
+@@ -27,6 +27,7 @@
+ #include <X11/Xaw/Label.h>
+ #include "BarGauge.h"
+ #include <stdio.h>
++#include <stdlib.h>
+ #include "sysinfo.h"
+ 
+ #define norm(x,max)	((max) == 0 ? 0 : (double)(x) / (max))
+@@ -298,7 +299,7 @@
+ 	fprintf(stderr,"\nor one of the standard toolkit options.\n\n");
+ }
+ 
+-main( argc, argv )
++int main( argc, argv )
+ 	int argc;
+ char **argv;
+ {
+@@ -331,4 +332,5 @@
+ 
+ 	XtRealizeWidget(toplevel);
+ 	XtAppMainLoop(context);
++        return 0;
+ }

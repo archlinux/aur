@@ -1,0 +1,10 @@
+--- a/sysinfo.c	1997-10-08 12:36:33.000000000 +0200
++++ b/sysinfo.c	2024-08-19 23:11:58.456981769 +0200
+@@ -24,6 +24,7 @@
+  
+ #include "sysinfo.h"
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <unistd.h>
+ #include <string.h>
+ #include <fcntl.h>
