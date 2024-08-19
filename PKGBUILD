@@ -1,4 +1,5 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: omgold@aur
+# Contibutor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=fence-agents
 pkgver=4.11.0
