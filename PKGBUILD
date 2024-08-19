@@ -1,8 +1,10 @@
 # Maintainer: Deepjyoti <deep.barman30@gmail.com>
 
+: ${_commit=d8f288c6a0e9258d073100283c65a2e03a761777}
+
 _pkgname="ytmdl"
 pkgname="$_pkgname"
-pkgver=2024.04.14
+pkgver=2024.08.15.1
 pkgrel=1
 pkgdesc="Download songs from YouTube with metadata from iTunes, Spotify, LastFM, etc"
 arch=("any")
@@ -21,7 +23,7 @@ makedepends=(
 )
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url.git#tag=$pkgver")
+source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
 sha256sums=("SKIP")
 
 prepare() {

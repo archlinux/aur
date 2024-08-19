@@ -1,6 +1,6 @@
 pkgbase = ytmdl
 	pkgdesc = Download songs from YouTube with metadata from iTunes, Spotify, LastFM, etc
-	pkgver = 2024.04.14
+	pkgver = 2024.08.15.1
 	pkgrel = 1
 	url = https://github.com/deepjyoti30/ytmdl
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ytmdl
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = ytmdl::git+https://github.com/deepjyoti30/ytmdl.git#tag=2024.04.14
+	source = ytmdl::git+https://github.com/deepjyoti30/ytmdl.git#commit=d8f288c6a0e9258d073100283c65a2e03a761777
 	sha256sums = SKIP
 
 pkgname = ytmdl
