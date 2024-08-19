@@ -15,6 +15,7 @@ pkgbase = xfce4-power-manager-git
 	makedepends = git
 	makedepends = xfce4-dev-tools
 	makedepends = glib2-devel
+	makedepends = wlr-protocols
 	depends = libxfce4ui
 	depends = upower
 	depends = libnotify
