@@ -1,0 +1,14 @@
+# Turn off telemetry. See
+# https://docs.wandb.ai/guides/track/environment-variables for details.
+
+post_install() {
+  echo 'Disable telemetry and error reporting by default (see '
+  echo 'https://docs.wandb.ai/guides/track/environment-variables for details.'
+  sed \
+    -i '/WANDB_ERROR_REPORTING=/b;$a WANDB_ERROR_REPORTING=false' \
+    /etc/environment
+}
+
+post_remove() {
+  sed -i '/WANDB_ERROR_REPORTING=/d' /etc/environment
+}
