@@ -1,0 +1,21 @@
+pkgbase = itex2mml-bzr
+	pkgdesc = iTeX to MathML converter
+	pkgver = r85
+	pkgrel = 1
+	url = https://golem.ph.utexas.edu/~distler/blog/itex2MML.html
+	arch = x86_64
+	license = custom:GPL-unknown-version
+	license = custom:LGPL-unknown-version
+	license = custom:MPL-unknown-version
+	makedepends = bzr
+	depends = glibc
+	depends = gcc-libs
+	provides = itex2mml=r85
+	conflicts = itex2mml
+	noextract = itex2mml.tar.gz
+	source = itex2mml::bzr+https://golem.ph.utexas.edu/~distler/code/itexToMML
+	source = itex2mml_fix_makefile.patch
+	sha256sums = SKIP
+	sha256sums = 88905ddf2aa4add02ba100afa71b209f1f9eae51e26239b1590de7b4df407c75
+
+pkgname = itex2mml-bzr
