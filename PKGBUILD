@@ -4,12 +4,12 @@
 
 pkgname=wgrib2
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to read and write grib2 files"
 arch=('x86_64')
 url="https://github.com/NOAA-EMC/wgrib2"
 license=('GPL' 'Apache' 'custom')
-depends=('glibc' 'gcc-libs')
+depends=('netcdf' 'hdf5' 'libaec')
 makedepends=('gcc-fortran' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NOAA-EMC/wgrib2/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('ecbce2209c09bd63f1bca824f58a60aa89db6762603bda7d7d3fa2148b4a0536')
