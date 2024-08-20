@@ -1,6 +1,6 @@
 # Maintainer: Eugene Dvoretsky <radioxoma at gmail dot com>
 pkgname=pilorama-git
-pkgver=v3.0.3.r5.g805a363
+pkgver=3.0.3
 pkgrel=1
 epoch=
 pkgdesc="Advanced timeboxing pomodoro timer"
@@ -18,15 +18,15 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname::git+https://github.com/eplatonoff/pilorama")
+source=("$pkgname::git+https://github.com/eplatonoff/pilorama#tag=v$pkgver")
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
 
-pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+# pkgver() {
+#   cd "$pkgname"
+#   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+# }
 
 build() {
     cd "$srcdir/$pkgname"

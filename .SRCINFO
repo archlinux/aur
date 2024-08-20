@@ -1,6 +1,6 @@
 pkgbase = pilorama-git
 	pkgdesc = Advanced timeboxing pomodoro timer
-	pkgver = v3.0.3.r4.g268c3c2
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://github.com/eplatonoff/pilorama
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = pilorama-git
 	depends = qt5-graphicaleffects
 	depends = qt5-multimedia
 	provides = pilorama
-	source = pilorama-git::git+https://github.com/eplatonoff/pilorama
+	source = pilorama-git::git+https://github.com/eplatonoff/pilorama#tag=v3.0.3
 	sha256sums = SKIP
 
 pkgname = pilorama-git
