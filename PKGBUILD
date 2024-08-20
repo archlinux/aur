@@ -1,6 +1,6 @@
 pkgname=otf-misans-meta
 pkgver=4.003
-pkgrel=2
+pkgrel=3
 pkgdesc='Meta package to install Misans(otf)'
 arch=(any)
 license=(None)
@@ -18,5 +18,5 @@ depends=(otf-misans
          otf-misans-tc
          otf-misans-thai
          otf-misans-tibetan
-         misans-fontconfig
 )
+optdepends=(misans-fontconfig)
