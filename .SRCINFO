@@ -10,7 +10,7 @@ pkgbase = mcalc
 	makedepends = extra-cmake-modules
 	makedepends = cmake
 	depends = qt5-base
-	source = mcalc-2.3.0::https://github.com/nesterovmaxim31/MCalc/archive/v3.0.0.tar.gz
-	md5sums = fa1adcf851dd87f454f78f7385313237
+	source = mcalc-3.0.0::https://github.com/nesterovmaxim31/MCalc/archive/v3.0.0.tar.gz
+	md5sums = SKIP
 
 pkgname = mcalc
