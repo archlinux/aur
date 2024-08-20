@@ -1,20 +1,20 @@
 pkgbase = witsy-bin
 	pkgdesc = Generative AI desktop application
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/nbonamy/witsy
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = gendesk
 	depends = electron29
-	provides = witsy=1.8.1
+	provides = witsy=1.8.2
 	conflicts = witsy
 	options = !emptydirs
-	source = witsy-1.8.1.zip::https://github.com/nbonamy/witsy/releases/download/v1.8.1/Witsy-linux-x64-1.8.1.zip
-	source = witsy-1.8.1.png::https://raw.githubusercontent.com/nbonamy/witsy/v1.8.1/assets/icon.png
+	source = witsy-1.8.2.zip::https://github.com/nbonamy/witsy/releases/download/v1.8.2/Witsy-linux-x64-1.8.2.zip
+	source = witsy-1.8.2.png::https://raw.githubusercontent.com/nbonamy/witsy/v1.8.2/assets/icon.png
 	source = witsy.sh
-	sha256sums = 07ddea6d102bce4df0d0f3ccda8a289bf91f724347b7945a967c5ed2164469f0
+	sha256sums = 3500f8545fc814fd94b986b720dc6fc136d79589bb2c936f89d1e97c7d77f153
 	sha256sums = 1f290bf14df85930c04881b362b015791a0c94dd491979acfccb0bdcfd35e58e
-	sha256sums = 41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = witsy-bin
