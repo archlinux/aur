@@ -1,0 +1,11 @@
+--- a/Maelstrom-netd.c
++++ b/Maelstrom-netd.c
+@@ -7,7 +7,7 @@
+ #include <signal.h>
+ #include <errno.h>
+ #include <sys/types.h>
+-#include <sys/time.h>
++#include <time.h>
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
