@@ -4,7 +4,7 @@
 
 pkgname=pokerth
 pkgver=1.1.2
-pkgrel=39
+pkgrel=40
 
 pkgdesc="Client to online Poker game written in C++/Qt"
 arch=('i686' 'x86_64')
@@ -27,6 +27,18 @@ md5sums=('8fd7d7fc7ece17315e58aa3240dd4586'
          '5bdcc1f2240c20f4b766b183d93836b3'
          '64e1b4b08353c11370ea32dfc381ca97'
          'e61eae14e6394f4745245e2ef42d812c')
+
+# -------------------------------------------------------------------------
+# Possible build speed-ups
+# These changes are better made in /etc/makepkg.conf
+# This is trade-off between size (+12%) & speed (-2%)
+# The optimum is reckoned to be COMPRESSZST=(zstd -c -T0 -18 -)
+#COMPRESSZST=(zstd -c -T0 -)
+# the debug option incurs a large penalty (-15% speed-up)
+#OPTIONS=(strip docs !libtool !staticlibs emptydirs zipman purge !debug !lto)
+# use all your cores (-35% speed-up possible)
+#MAKEFLAGS="--jobs=$(nproc)"
+# -------------------------------------------------------------------------
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver-rc"
