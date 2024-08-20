@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-cronomix-git
+	pkgdesc = All-in-one timer, stopwatch, pomodoro, alarm, todo and time tracker gnome-shell extension (Github version).
+	pkgver = r728.83e9089
+	pkgrel = 1
+	url = https://github.com/zagortenay333/cronomix
+	install = gnome-shell-extension-cronomix.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = typescript
+	depends = gnome-shell
+	provides = gnome-shell-extension-cronomix
+	conflicts = gnome-shell-extension-cronomix
+	source = gnome-shell-extension-cronomix::git+https://github.com/zagortenay333/cronomix.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-cronomix-git
