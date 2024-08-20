@@ -5,6 +5,7 @@ pkgdesc="A virtual machine/assembler for MattBatwings' redstone CPU"
 arch=('x86_64')
 url="https://github.com/AdoHTQ/Batpu2-VM"
 license=('MIT')
+depends=('python3')
 source=("https://github.com/consler/Batpu2-VM/releases/download/AUR5/batpu2-vm.tar.gz")
 sha256sums=('SKIP') 
 
