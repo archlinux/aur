@@ -54,6 +54,7 @@ pre:
 	git diff
 
 	git add PKGBUILD
+	git add changelog.md
 	git add .SRCINFO
 	git add .gitignore
 	git add Makefile

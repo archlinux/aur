@@ -3,6 +3,7 @@ pkgbase = graphite-cli
 	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://graphite.dev/
+	changelog = changelog.md
 	arch = any
 	license = None
 	makedepends = npm

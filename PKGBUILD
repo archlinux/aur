@@ -15,6 +15,8 @@ makedepends=("npm" "jq")
 # provides=("$_npmname")
 # conflicts=("$_npmname")
 
+changelog="changelog.md"
+
 source=("https://registry.npmjs.org/@withgraphite/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 noextract=("${_npmname}-${pkgver}.tgz")
 b2sums=('fa39bbdb334a36bc25add12b0c184cb37c4b791891a26296eb919b9d7f2bcc29f269d6d23fa3a1b50ecc4dc2d44c87022f6dd8de6de8fe0f206817f64d68d095')
@@ -46,4 +48,27 @@ package() {
 		mv "$tmppackage" "$pkgjson"
 		chmod 644 "$pkgjson"
 	done
+
+	#
+	# taken from https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=graphite-cli-git
+
+	# graphite uses the values in the SHELL and ZSH_NAME environmental variables to detect which shell it is running within
+	# when generating completions
+	SHELL=bash node $pkgdir/usr/bin/graphite completion >"$srcdir/pre-bash-graphite-completions"
+	SHELL=zsh node $pkgdir/usr/bin/graphite completion >"$srcdir/pre-zsh-graphite-completions"
+
+	# make the completion script suitable to be a loadable function
+	sed 's/compdef _index.js_yargs_completions index.js/_index.js_yargs_completions/' -i "$srcdir/pre-zsh-graphite-completions"
+
+	# make it so autocompletion works for both graphite and gt on both zsh and bash
+
+	sed 's/\(.\/dist\/src\/\)\{0,1\}index.js/graphite/g' "$srcdir/pre-bash-graphite-completions" >"$srcdir/bash-graphite-completions"
+	sed 's/\(.\/dist\/src\/\)\{0,1\}index.js/gt/g' "$srcdir/pre-bash-graphite-completions" >"$srcdir/bash-gt-completions"
+	sed 's/\(.\/dist\/src\/\)\{0,1\}index.js/graphite/g' "$srcdir/pre-zsh-graphite-completions" >"$srcdir/zsh-graphite-completions"
+	sed 's/\(.\/dist\/src\/\)\{0,1\}index.js/gt/g' "$srcdir/pre-zsh-graphite-completions" >"$srcdir/zsh-gt-completions"
+
+	install -D --mode=u=rw,go=r "$srcdir/bash-graphite-completions" "$pkgdir/usr/share/bash-completion/completions/graphite"
+	install -D --mode=u=rw,go=r "$srcdir/bash-gt-completions" "$pkgdir/usr/share/bash-completion/completions/gt"
+	install -D --mode=u=rw,go=r "$srcdir/zsh-graphite-completions" "$pkgdir/usr/share/zsh/site-functions/_graphite"
+	install -D --mode=u=rw,go=r "$srcdir/zsh-gt-completions" "$pkgdir/usr/share/zsh/site-functions/_gt"
 }
