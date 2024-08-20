@@ -1,36 +1,24 @@
-# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: MarsSeed <marcell.meszaros@runbox.eu>
+# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: John Proctor <jproctor@prium.net>
-# Contributor: MarsSeed <marcell.meszaros@runbox.eu>
 
-_py="python2"
-_pkg="libxml2"
-pkgname="${_py}-${_pkg}"
+_modulename="libxml2"
+_pyruntime=python2
+pkgname="${_pyruntime}-${_modulename}"
 pkgver=2.9.14
-_pkgver=2.9.10
 pkgrel=1
-pkgdesc='XML parsing library, version 2'
-_url="https://gitlab.gnome.org/GNOME/${_pkg}"
+pkgdesc='Python 2 bindings for the XML parsing library v2'
+_url="https://gitlab.gnome.org/GNOME/${_modulename}"
 url="${_url}/-/wikis/home"
-arch=(
-  x86_64
-  aarch64
-  i686
-  pentium4
-  armv7h
-  armv6l
-)
+arch=(x86_64 aarch64 i686 armv7h)
 license=(MIT)
 depends=(
-  icu
-  ncurses
-  "${_py}"
-  "${_pkg}=${_pkgver}"
-  readline
-  xz
-  zlib
+  glibc
+  libxml2-2.9
+  "${_pyruntime}"
 )
 makedepends=(
   git
@@ -80,14 +68,14 @@ build() (
     --prefix=/usr
     --with-threads
     --with-history
-    --with-python="/usr/bin/${_py}"
+    --with-python="/usr/bin/${_pyruntime}"
     --with-icu
   )
   local _cflags=(
-    "-I/usr/include/${_pkg}-2.9"
+    "-I/usr/include/${_modulename}-2.9"
   )
   local _ldflags=(
-    "-L/usr/lib/${_pkg}-2.9"
+    "-L/usr/lib/${_modulename}-2.9"
   )
 
   cd build
@@ -113,9 +101,9 @@ check() {
 
 package() {
   make DESTDIR="${pkgdir}" -C build install
-  "${_py}" -m compileall \
+  "${_pyruntime}" -m compileall \
            -d /usr/lib "${pkgdir}/usr/lib"
-  "${_py}" -O \
+  "${_pyruntime}" -O \
            -m compileall \
            -d /usr/lib "${pkgdir}/usr/lib"
 
@@ -124,17 +112,15 @@ package() {
 
   rm -rf "${pkgdir}/usr/bin/"
   rm -rf "${pkgdir}/usr/bin/"
-  rm -rf "${pkgdir}/usr/include/${_pkg}/libxml"
+  rm -rf "${pkgdir}/usr/include/${_modulename}/libxml"
   rm -rf "${pkgdir}/usr/lib/cmake"
-  rm -rf "${pkgdir}/usr/lib/${_pkg}"*
+  rm -rf "${pkgdir}/usr/lib/${_modulename}"*
   rm -rf "${pkgdir}/usr/lib/pkgconfig"
   rm -rf "${pkgdir}/usr/lib/xml2Conf.sh"
   rm -rf "${pkgdir}/usr/share/aclocal"
-  rm -rf "${pkgdir}/usr/share/doc/${_pkg}"
-  rm -rf "${pkgdir}/usr/share/doc/${_pkg}-python-${pkgver}"
-  rm -rf "${pkgdir}/usr/share/gtk-doc/html/${_pkg}"
+  rm -rf "${pkgdir}/usr/share/doc/${_modulename}"
+  rm -rf "${pkgdir}/usr/share/doc/${_modulename}-${_pyruntime}-${pkgver}"
+  rm -rf "${pkgdir}/usr/share/gtk-doc/html/${_modulename}"
   rm -rf "${pkgdir}/usr/share/man/man1"
   rm -rf "${pkgdir}/usr/share/man/man3"
 }
-
-# vim: ts=2 sw=2 et:
