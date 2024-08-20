@@ -1,6 +1,6 @@
 pkgbase = rabtap
 	pkgdesc = RabbitMQ wire tap and swiss army knife
-	pkgver = 1.39.3
+	pkgver = 1.40
 	pkgrel = 1
 	url = https://github.com/jandelgado/rabtap
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = rabtap
 	arch = x86_64
 	license = GPL3
 	makedepends = go
-	source = rabtap-1.39.3.tar.gz::https://github.com/jandelgado/rabtap/archive/v1.39.3.tar.gz
-	sha256sums = 038ab3de14fd5376e5281c0b2d0c562a06b2876f3b23c6f04fb2aed12fd66adb
+	source = rabtap-1.40.tar.gz::https://github.com/jandelgado/rabtap/archive/v1.40.tar.gz
+	sha256sums = 95314a642f7812d0985138d24a6852bf7da42e64d03a06a380e5431795708045
 
 pkgname = rabtap
