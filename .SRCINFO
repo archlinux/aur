@@ -1,7 +1,7 @@
 pkgbase = spacefm-thermitegod
 	pkgdesc = Multi-panel tabbed file manager
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/thermitegod/spacefm
 	arch = x86_64
 	license = GPL3

@@ -4,7 +4,7 @@
 
 pkgname=spacefm-thermitegod
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi-panel tabbed file manager"
 arch=(x86_64)
 url="https://github.com/thermitegod/spacefm"
@@ -46,6 +46,8 @@ prepare() {
 }
 
 build() {
+  CFLAGS+=" -Wno-error=incompatible-pointer-types"
+
   cd "spacefm-thermitegod"
   arch-meson build
   ninja -C build
