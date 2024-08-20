@@ -1,9 +1,10 @@
 pkgbase = android-aarch64-protobuf
 	pkgdesc = Protocol Buffers - Google's data interchange format (Android aarch64)
-	pkgver = 27.2
+	pkgver = 27.3
 	pkgrel = 1
 	url = https://developers.google.com/protocol-buffers/
 	arch = any
+	groups = android-protobuf
 	license = BSD
 	makedepends = android-cmake
 	depends = android-aarch64-zlib
@@ -12,9 +13,9 @@ pkgbase = android-aarch64-protobuf
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/protocolbuffers/protobuf/archive/v27.2/protobuf-27.2.tar.gz
+	source = https://github.com/protocolbuffers/protobuf/archive/v27.3/protobuf-27.3.tar.gz
 	source = https://github.com/protocolbuffers/protobuf/commit/2e62ef1e.patch
-	md5sums = 0ac311cc460fa11d8281c15a0069a9b0
+	md5sums = c7feee9c4a6856d39e2b9d6876a487f5
 	md5sums = SKIP
 
 pkgname = android-aarch64-protobuf
