@@ -1,13 +1,13 @@
 pkgbase = kor
 	pkgdesc = Kubernetes Orphaned Resources Finder
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://github.com/yonahd/kor
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = https://github.com/yonahd/kor/archive/v0.5.4/kor-0.5.4.tar.gz
-	b2sums = a96b3e879ed2d40f9bb08726c2c93654b09a26f89fb56e90661a4d02ffe83b3bffef53933724741e32752621d224c1801f3743451a5733b26afd0e52b2bb461c
+	source = https://github.com/yonahd/kor/archive/v0.5.5/kor-0.5.5.tar.gz
+	b2sums = f53ecdf78354e0afe9cc35dd35632bf6a33d90fbd74d85bfaba5ff73df082a1a843c74b6e09bd26013507561f0a5ce14b50a92bdd9794e3dba0e7a467ecbbdbb
 
 pkgname = kor
