@@ -4,35 +4,39 @@
 # Contributor: Randy Heydon <randy dot heydon at clockworklab dot net>
 
 # Configuration:
-# Use: makepkg VAR1=0 VAR2=1 to enable(1) disable(0) a feature
-# Use: {yay,paru} --mflags=VAR1=0,VAR2=1
-# Use: aurutils --margs=VAR1=0,VAR2=1
-# Use: VAR1=0 VAR2=1 pamac
+# Use: makepkg DISABLE_AUTOCONFIG=1 VAR1=0 VAR2=1 to enable(1) disable(0) a feature
+# Use: {yay,paru} --mflags=DISABLE_AUTOCONFIG=1,VAR1=0,VAR2=1
+# Use: aurutils --margs=DISABLE_AUTOCONFIG=1,VAR1=0,VAR2=1
+# Use: DISABLE_AUTOCONFIG=1 VAR1=0 VAR2=1 pamac
+# If parallel compilation fails due to race conditions, define NJOBS from 1 to ~24 jobs (try and error).
 
-#Default Configuration
-DISABLE_CHECK=1
-DISABLE_TRILINOS=1
-DISABLE_MMG=1
-DISABLE_ELMERICE=1
-DISABLE_CONTRIB=1
-DISABLE_LUA=1
-DISABLE_MP=0
-DISABLE_GUI=0
-DISABLE_GUILOG=0
-DISABLE_GUITEST=0
-DISABLE_MATC=0
-DISABLE_PARAVIEW=0
-DISABLE_QWT=0
-#Open cascade needs VTK, so if OCC is disabled, VTK has to be enabled to allow compilation
-DISABLE_OCC=1
-# Compilation using VTK  is currently broken.
-DISABLE_VTK=1
-# VTK also enables MPI.
-DISABLE_MPI=0
-DISABLE_MUMPS=1
-DISABLE_HYPRE=1
-#Use external (suitesparse package) or internal UMFPack implementation
-DISABLE_INTERNAL_UMFPACK=1
+# Build using a working configuration that not depens on other AUR packages
+# Use DISABLE_AUTOCONFIG=1 to build using all the available options. This can cause compilation problems
+if((!DISABLE_AUTOCONFIG)); then
+  DISABLE_CHECK=1
+  DISABLE_TRILINOS=1
+  DISABLE_MMG=1
+  DISABLE_ELMERICE=1
+  DISABLE_CONTRIB=1
+  DISABLE_LUA=1
+  DISABLE_MP=0
+  DISABLE_GUI=0
+  DISABLE_GUILOG=0
+  DISABLE_GUITEST=0
+  DISABLE_MATC=0
+  DISABLE_PARAVIEW=0
+  DISABLE_QWT=0
+  #Open cascade needs VTK, so if OCC is disabled, VTK has to be enabled to allow compilation
+  DISABLE_OCC=1
+  # Compilation using VTK  is currently broken.
+  DISABLE_VTK=1
+  # VTK also enables MPI.
+  DISABLE_MPI=0
+  DISABLE_MUMPS=1
+  DISABLE_HYPRE=1
+  #Use external (suitesparse package) or internal UMFPack implementation
+  DISABLE_INTERNAL_UMFPACK=1
+fi
 
 # Use FRAGMENT=#{commit,tag,brach}=xxx for bisect build
 _fragment=${FRAGMENT:-#branch=devel}
@@ -110,7 +114,7 @@ _CMAKE_FLAGS+=(
 
 pkgname=elmerfem-git
 _pkgname=elmerfem
-pkgver=9.0.r2945.g0fbce7aac
+pkgver=9.0.r2987.gf41275819
 pkgrel=1
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
@@ -167,7 +171,14 @@ build() {
   export FFLAGS+=" -fallow-argument-mismatch"
   cmake -S "${srcdir}"/$_pkgname -B build \
         "${_CMAKE_FLAGS[@]}"
-  ninja -C build all
+  # If not defined, ninja will use all the available CPUs
+  if ((NJOBS)); then
+    echo "$NJOBS CPUs used for compilation"
+    ninja -j$NJOBS -C build all
+  else
+    echo "All CPUs used for compilation"
+    ninja -C build all
+  fi
 }
 
 check() {
