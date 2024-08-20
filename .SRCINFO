@@ -1,6 +1,6 @@
 pkgbase = sing-box-alpha
 	pkgdesc = The universal proxy platform.
-	pkgver = 1.10.0beta.2
+	pkgver = 1.10.0beta.3
 	pkgrel = 1
 	epoch = 1
 	url = https://sing-box.sagernet.org/
@@ -18,9 +18,9 @@ pkgbase = sing-box-alpha
 	provides = sing-box
 	conflicts = sing-box
 	backup = etc/sing-box/config.json
-	source = sing-box-1.10.0-beta.2.tar.gz::https://github.com/SagerNet/sing-box/archive/v1.10.0-beta.2.tar.gz
+	source = sing-box-1.10.0-beta.3.tar.gz::https://github.com/SagerNet/sing-box/archive/v1.10.0-beta.3.tar.gz
 	source = sing-box.rules
-	sha256sums = 8e041bab43e32c17af1be156e0d6e78a73e0e5fd952a3793443039c80837105b
+	sha256sums = 45d9dddbeb463ee74e4a6b1d0cc22b9660551ac3f20746ba1d973ec582442aad
 	sha256sums = 1365536e1875043b969e2e18d7313ab7c6f7f9f63387f25506bb04362b44f206
 
 pkgname = sing-box-alpha
