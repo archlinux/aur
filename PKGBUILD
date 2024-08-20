@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-buildlog-consultant
 _name=${pkgname#python-}
-pkgver=0.0.38
+pkgver=0.0.39
 pkgrel=1
 pkgdesc="Build log parser and analyser"
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   'python-openai'
 )
 source=("$_name-$pkgver.tar.gz::https://github.com/jelmer/buildlog-consultant/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('812fed360686f0c8c9b54fce33d9cf0201982c36b93937bf3dec86ce3eb03d0e')
+sha256sums=('2bc1fa8245547f7bebcc02cccdcffd4a699c772ce35ac6f78f6fd22da49fa1e3')
 
 prepare() {
   cd "$_name-$pkgver"
