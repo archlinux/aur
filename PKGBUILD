@@ -1,6 +1,6 @@
 # Maintainer: WitheringAway <124115470+notwithering@users.noreply.github.com>
 pkgname=evi
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Editing layer for secure, encrypted documents"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9441d08037b7f97ddc232a540df949c40fd349cf31e1055c0dc91faa4eb6e8e0')
+sha256sums=('fb1052c349858362beb333bb97c6798d9983d6c9852ad124b41049f4391b30f6')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
