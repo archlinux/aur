@@ -3,7 +3,7 @@
 # Contributor: mike2208
 
 pkgname=python-ovs
-pkgver=3.3.1
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Open vSwitch library"
 arch=(any)
@@ -19,7 +19,7 @@ optdepends=('python-netaddr: flow'
             'python-pyparsing: flow'
             'unbound: dns')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/o/${pkgname#python-}/${pkgname#python-}-$pkgver.tar.gz")
-b2sums=('0f658b37cb2fcdc13ce6f4b06dea7ee6cffc9537ef08d70d2eb5b61b74891d7bce19b05929dc58a93acfa5fce8ad75e4566225374885db3a48eb29f1ffbd513a')
+b2sums=('068d47eca0d7ba688f4cfa3fac44092e541af6f0f5417d029c4b9d47434ff25fcf9f52928fe5c564095d12480e22776fd0c197da3378af5863d0051bd68c58a4')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
