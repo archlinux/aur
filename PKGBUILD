@@ -1,6 +1,6 @@
 # Maintainer: Your Maksim <maxgoonfuture@gmail.com>
 pkgname=mcalc
-pkgver=2.3.0
+pkgver=3.0.0
 pkgrel=2
 pkgdesc="MCalc - calculator for performing simple mathematical operations in all existing number systems"
 arch=('x86_64')
