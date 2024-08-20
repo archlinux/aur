@@ -2,7 +2,7 @@
 
 pkgname=nueclipse
 _pkgname=NuEclipse
-pkgver=1.02.021
+pkgver=1.02.027
 pkgrel=1
 pkgdesc="Ecipse base C/C++ IDE for Nuvoton Microcontroller"
 arch=('x86_64')
@@ -17,8 +17,8 @@ conflicts=()
 replaces=()
 backup=()
 options=(!strip)
-source=("https://www.nuvoton.com/export/resource-files/${_pkgname}_V${pkgver}_Linux_Setup.tar.gz")
-sha256sums=('5ff91759943683943aeb323aff1dfabb857485e519edb3e8b01a40067476abcb')
+source=("https://www.nuvoton.com/export/resource-files/en-us--${_pkgname}_V${pkgver}_Linux_Setup.tar.gz")
+sha256sums=('3cb857a1a5efac10cc8a463ce4a9a7e2dcb63fbaba42d2682bb6ab115bbeeb2d')
 
 package() {
     cd "$srcdir/${_pkgname}_V${pkgver}_Linux_Setup"
