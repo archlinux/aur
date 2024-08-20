@@ -1,4 +1,4 @@
-# Maintainer: Mark Grimes <mgrimes at peculier dot com>
+# Maintainer: Mark Grimes <mgrimes at tgfmail dot org>
 # https://github.com/mvgrimes/aur-perl-datetime-format-datemanip
 
 pkgname=perl-datetime-format-datemanip
