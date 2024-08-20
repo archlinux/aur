@@ -1,0 +1,11 @@
+diff --unified --recursive --text --color ots-0.5.0.orig/src/grader-tf.c ots-0.5.0.new/src/grader-tf.c
+--- ots-0.5.0.orig/src/grader-tf.c	2003-11-26 09:47:48.000000000 +0200
++++ ots-0.5.0.new/src/grader-tf.c	2024-05-20 15:24:16.491929913 +0300
+@@ -18,6 +18,7 @@
+  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  */
+ 
++#include <math.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>

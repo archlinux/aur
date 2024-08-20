@@ -1,7 +1,7 @@
 pkgbase = libots
 	pkgdesc = Open Text Summarizer
 	pkgver = 0.5.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://libots.sourceforge.net/
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,9 @@ pkgbase = libots
 	depends = popt
 	source = https://sources.archlinux.org/other/packages/libots/ots-0.5.0.tar.gz
 	source = libots-fix-build.patch
+	source = libots-fix-build-gcc14-math-include.patch
 	sha256sums = ea908d22256166d1200fef55a82dd3ea8e096a249eaaf0b926f3577f1a63e137
 	sha256sums = 0c5033302ffe8d87dd2f85745ea2a531ac573a901302d1b15bf51a3327102f6a
+	sha256sums = 0992cd147e96f2cc9e81bf6c7d611643ba794021466ad6937e984607fb6fa9f2
 
 pkgname = libots
