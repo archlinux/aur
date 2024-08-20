@@ -1,0 +1,19 @@
+pkgbase = libid3tag-git
+	pkgdesc = Library for reading ID3 metadata tags from MP3 files
+	pkgver = 0.16.3.r0.ge02ecf1
+	pkgrel = 1
+	url = https://codeberg.org/tenacityteam/libid3tag
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	depends = zlib
+	provides = libid3tag=0.16.3.r0.ge02ecf1
+	provides = libid3tag.so
+	conflicts = libid3tag
+	source = git+https://codeberg.org/tenacityteam/libid3tag.git
+	sha256sums = SKIP
+
+pkgname = libid3tag-git
