@@ -1,7 +1,7 @@
 pkgbase = syncyomi-git
 	pkgdesc = Synchronization for Tachiyomi manga reading progress and library across multiple devices
 	pkgver = v1.1.1.r0.g347c5d8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/syncyomi/syncyomi
 	arch = x86_64
 	license = MIT

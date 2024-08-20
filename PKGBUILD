@@ -1,6 +1,6 @@
 # Maintainer: Javier Domingo Cansino <javierdo1@gmail.com>
 pkgname=syncyomi-git
-pkgrel=1
+pkgrel=2
 pkgver=v1.1.1.r0.g347c5d8
 pkgdesc="Synchronization for Tachiyomi manga reading progress and library across multiple devices"
 arch=('x86_64')
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}/web"
-	# pnpm build
+	pnpm build
 	cd "$srcdir/${pkgname%-git}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
