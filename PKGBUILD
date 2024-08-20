@@ -6,7 +6,7 @@
 
 pkgname=pdfstudioviewer
 _pkgname=pdfstudioviewer2024
-pkgver=2024.0.0
+pkgver=2024.0.1
 pkgrel=1
 pkgdesc='Review, annotate, and edit PDF Documents'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ makedepends=('dpkg' 'desktop-file-utils' 'gendesk' 'libarchive')
 _deb="${pkgname}-${pkgver}_linux64.deb"
 noextract=("${_deb}")
 source=("${_deb}::https://download.qoppa.com/${pkgname}/PDFStudioViewer_linux64.deb")
-b2sums=('46973e71bfdad70640d8056139bfbfa9c4ca11ebed3f1136b04d606e657e8affd68849f53f126a7a46d3c8aa0f3a6d51b5eda215447bbc33e472914433e56a8d')
+b2sums=('165ee30182fc17799604c942f1a5cfc02d9ab22dc5ad118a5f1f1394bb824000084847d720976e7caf3cac363c05c9ddbbfd2be2b1d00bb74d36307699037be5')
 
 # Desktop File parameters; validate via `gendesk -n PKGBUILD`
 _name='PDF Studio Viewer 2024'
