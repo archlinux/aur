@@ -13,7 +13,7 @@
 # You can pass parameters to `ninja` via MAKEFLAGS
 
 pkgname=telegram-desktop-dev
-pkgver=5.2.3
+pkgver=5.4.1
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -21,10 +21,11 @@ url="https://desktop.telegram.org/"
 license=('GPL3')
 # Although not in order, keeping them in the same order of the standard package
 # for my mental sanity.
+# libtg_owt-git for now until the official repo is updated.
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
-         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
+         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash' 'ada'
          'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'libxcomposite' 'libxdamage' 'abseil-cpp' 'libdispatch'
-         'openssl' 'protobuf' 'glib2' 'libsigc++-3.0' 'kcoreaddons')
+         'openssl' 'protobuf' 'glib2' 'libsigc++-3.0' 'kcoreaddons' 'openh264')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
              'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt'
              'gobject-introspection' 'boost' 'fmt' 'mm-common' 'perl-xml-parser' 'python-packaging'
@@ -49,7 +50,7 @@ source=(
     # New approach: source tarball, same as the stable Arch package
     "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
 )
-sha512sums=('5d5bf1f5c35af11b2adf7db075832e7cca5768c2c5f82d9fc5054b9d45f964a3520eb88864aefc3de593ce1359534b210b1e5d89495819e7386f6ca15fd4a15c')
+sha512sums=('f86b86c6001b2c214d897821c175f41c53ca44401285909b2b12254634cca821137d61a28c75d79ed757c1ade08873035397aae7c462494c1ab6382501a8072a')
 
 prepare() {
     # Magic submodule configuration, thanks to the Python script
