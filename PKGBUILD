@@ -7,7 +7,7 @@ pkgrel=3
 pkgdesc="CLI diagnostics SW for Samsung SSD PM863, PM863a, SM863, SM863a, PM963 non-customized, 860 DCT, 883 DCT, 983 DCT, 983 DCT M.2 and 983 ZET"
 url='https://semiconductor.samsung.com/consumer-storage/support/tools/'
 arch=('x86_64')
-license=('custom')
+license=('LicenseRef-Samsung-Magician-Software-License-Agreement')
 depends=(
         'gcc-libs'
         'glibc'
