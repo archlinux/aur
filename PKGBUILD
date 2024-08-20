@@ -12,6 +12,7 @@ url='https://www.terabox.com/chinese/'
 
 depends=(
     'gtkmm3'
+    'gtkmm'
 )
 
 optdepends=(

@@ -6,6 +6,7 @@ pkgbase = terabox-bin
 	arch = x86_64
 	license = custom
 	depends = gtkmm3
+	depends = gtkmm
 	optdepends = libappindicator-gtk3
 	options = !strip
 	source = https://data.nephobox.com/issue/terabox/Linux/1.5.0/TeraBox_1.5.0_amd64.deb
