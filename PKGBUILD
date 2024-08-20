@@ -1,36 +1,36 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=multiqc
-pkgver=1.23
+pkgver=1.24
 pkgrel=1
 pkgdesc="Aggregate results from bioinformatics analyses across many samples into a single report"
 arch=('any')
 url="https://multiqc.info/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
-	python-click
-	python-coloredlogs
+    python-click
+    python-coloredlogs
     python-humanize
-	python-importlib-metadata
-	python-jinja
+    python-importlib-metadata
+    python-jinja
     python-kaleido-bin
-	python-markdown
-	python-matplotlib
-	python-numpy
-	python-requests
+    python-markdown
+    python-matplotlib
+    python-numpy
+    python-requests
     python-pillow
     python-plotly
-	python-yaml
-	python-pyaml-env
-	python-rich
-	python-rich-click
-	python-spectra
-	python-tqdm
-	python-pydantic
-	python-typeguard
+    python-yaml
+    python-pyaml-env
+    python-rich
+    python-rich-click
+    python-spectra
+    python-tqdm
+    python-pydantic
+    python-typeguard
 )
 makedepends=(python-build python-installer python-wheel)
 source=($pkgname-$pkgver.tar.gz::https://github.com/MultiQC/MultiQC/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('1f874e3bdaf3f183ff474126e76791e420732764c2988d8074b826d92aa7282a')
+sha256sums=('9293f130c3f9ad5ead7b8a1aca96c56f261809bdb7d3a5790892b5f74c862a37')
 
 build() {
   cd MultiQC-$pkgver
