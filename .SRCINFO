@@ -1,12 +1,14 @@
 pkgbase = hdapsd-git
 	pkgdesc = HDAPS userspace hard drive protection daemon
-	pkgver = 20150215
+	pkgver = 20240820
 	pkgrel = 1
 	url = https://github.com/evgeni/hdapsd/
 	arch = i686
 	arch = x86_64
-	license = GPL
-	optdepends = libconfig: (buildtime) for configuration file support
+	license = GPL-2.0-only
+	makedepends = git
+	depends = glibc
+	depends = libconfig
 	provides = hdapsd
 	conflicts = hdapsd
 	backup = etc/hdapsd.conf
@@ -14,4 +16,3 @@ pkgbase = hdapsd-git
 	sha256sums = SKIP
 
 pkgname = hdapsd-git
-
