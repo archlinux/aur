@@ -21,7 +21,6 @@ build() {
 
 package() {
 	    cd "bat-${pkgver}/"
-	    mv bin/bat bin/${pkgname}
-	    install -Dm 755 "bin/${pkgname}" -t "${pkgdir}/usr/bin"
-	    install -Dm 644 bat.1 -t "${pkgdir}"/usr/share/man/man1/
+	    install -Dm 755 "bin/bat" "${pkgdir}/usr/bin/${pkgname}"
+	    install -Dm 644 bat.1 "${pkgdir}"/usr/share/man/man1/${pkgname}.1
 	}
