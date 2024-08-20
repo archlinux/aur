@@ -1,0 +1,29 @@
+--- a/Makefile
++++ b/Makefile
+@@ -2,8 +2,7 @@
+ YACC=bison -y  -v
+ LEX=flex -P$(YYPREFIX) -olex.yy.c
+ SWIG=swig
+-#RUBY=ruby
+-RUBY=ruby26
++RUBY=ruby
+ 
+ RM=rm -f
+ INSTALL=install -c
+@@ -20,13 +19,13 @@
+ 		$(LEX) itex2MML.l
+ 
+ y.tab.o:	y.tab.c itex2MML.h
+-		$(CC) $(CFLAGS) -c -o y.tab.o y.tab.c
++		$(CC) $(CFLAGS) $(LDFLAGS) -c -o y.tab.o y.tab.c
+ 
+ lex.yy.o:	lex.yy.c y.tab.c itex2MML.h
+-		$(CC) $(CFLAGS) -c -o lex.yy.o lex.yy.c
++		$(CC) $(CFLAGS) $(LDFLAGS) -c -o lex.yy.o lex.yy.c
+ 
+ itex2MML:	lex.yy.o y.tab.o itex2MML.cc itex2MML.h
+-		$(CXX) $(CFLAGS) -o itex2MML lex.yy.o y.tab.o itex2MML.cc
++		$(CXX) $(CFLAGS) $(LDFLAGS) -o itex2MML lex.yy.o y.tab.o itex2MML.cc
+ 
+ universal:
+ 		CFLAGS='-arch i686 -arch ppc' make all
