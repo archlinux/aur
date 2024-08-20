@@ -23,9 +23,6 @@ sha256sums_i686=('35c6f6973c5ee69fdac88ed658f6d38ac6bfc7457c01158005860fd2c5d289
 sha256sums_armv7h=('5d4e9147564cc38fdaf02891bb55b0e13c3f3a1ce2971cb9142a260a1ae32cda')
 sha256sums_aarch64=('14a649001aa9d1ce3004514f1536f26a84ad20ec17d2b87eece480f7e8309210')
 
-# There is also ArmEABI architecture for android devices available. Download with:
-# https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.18.3_armel.deb
-
 package() {
     bsdtar -O -xf *.deb data.tar.gz | bsdtar -C "${pkgdir}" -xJf -
 
