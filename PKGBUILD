@@ -18,22 +18,20 @@
 ###############################################################################
 _phpbase="84"
 _suffix=""
-pkgver="8.4.0alpha2"
-pkgbase_rc="alpha2"
+pkgver="8.4.0beta3"
+pkgbase_rc="beta3"
 pkgrel="1"
 pkgbase="php84"
-pkgdesc="PHP 8.4.0alpha2 compiled as to not conflict with mainline php"
+pkgdesc="PHP 8.4.0beta3 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
 _build_conf_d="etc/php84/conf.d"
-_build_forced_openssl_11="0"
 _build_fpm_name="php-fpm84"
 _build_fpm_service_name="php84-fpm"
 _build_icu_src_dir="icu/source"
 _build_ini_per_sapi="0"
 _build_mysql_socket="/run/mysqld/mysqld.sock"
-_build_openssl_v11_patch="0"
 _build_phpdbg="1"
 _build_sapi_ini_apache="etc/php84"
 _build_sapi_ini_cgi="etc/php84"
@@ -129,8 +127,7 @@ source=(
     "php-makefile-patcher.php"
     "php-apache.conf"
     "pear-config-patcher.php"
-    "https://downloads.php.net/~calvinb/php-8.4.0alpha2.tar.xz"
-    "libxml-pear.patch"
+    "https://downloads.php.net/~calvinb/php-8.4.0beta3.tar.xz"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
     "timezonedb-php8.4.patch"
@@ -197,7 +194,6 @@ makedepends=(
 arch=(
 )
 _patches=(
-    "libxml-pear.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
     "timezonedb-php8.4.patch"
@@ -209,20 +205,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php84=8.4.0alpha2"
+    "php84=8.4.0beta3"
     "net-snmp"
     "openssl"
 )
 _ext_depends_ftp=(
-    "php84=8.4.0alpha2"
+    "php84=8.4.0beta3"
     "openssl"
 )
 _ext_depends_intl=(
-    "php84=8.4.0alpha2"
+    "php84=8.4.0beta3"
     "icu"
 )
 _ext_depends_imap=(
-    "php84=8.4.0alpha2"
+    "php84=8.4.0beta3"
     "pam"
     "krb5"
     "c-client"
@@ -230,45 +226,45 @@ _ext_depends_imap=(
     "openssl"
 )
 _ext_depends_gd=(
-    "php84=8.4.0alpha2"
+    "php84=8.4.0beta3"
     "gd"
 )
 _ext_depends_mysql=(
-    "php84=8.4.0alpha2"
-    "php84-pdo=8.4.0alpha2"
-    "php84-openssl=8.4.0alpha2"
+    "php84=8.4.0beta3"
+    "php84-pdo=8.4.0beta3"
+    "php84-openssl=8.4.0beta3"
 )
 _ext_depends_dba=(
-    "php84=8.4.0alpha2"
+    "php84=8.4.0beta3"
     "db5.3"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php84=8.4.0alpha2"
+    "php84=8.4.0beta3"
     "unixodbc"
-    "php84-pdo=8.4.0alpha2"
+    "php84-pdo=8.4.0beta3"
 )
 _ext_depends_pgsql=(
-    "php84=8.4.0alpha2"
+    "php84=8.4.0beta3"
     "postgresql-libs"
-    "php84-pdo=8.4.0alpha2"
+    "php84-pdo=8.4.0beta3"
 )
 _ext_depends_firebird=(
-    "php84=8.4.0alpha2"
+    "php84=8.4.0beta3"
     "libfbclient"
-    "php84-pdo=8.4.0alpha2"
+    "php84-pdo=8.4.0beta3"
 )
 _ext_depends_sqlite=(
-    "php84=8.4.0alpha2"
+    "php84=8.4.0beta3"
     "sqlite"
-    "php84-pdo=8.4.0alpha2"
+    "php84-pdo=8.4.0beta3"
 )
 _ext_depends_mbstring=(
-    "php84=8.4.0alpha2"
+    "php84=8.4.0beta3"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php84=8.4.0alpha2"
+    "php84=8.4.0beta3"
     "krb5"
     "e2fsprogs"
     "openssl"
@@ -451,12 +447,7 @@ prepare() {
         echo "[PATCH] Applying source patch ${patch_name}";
         patch -p1 -i "../${patch_name}"
     done
-
-    if ((_phpbase <= 53)); then
-        PHP_AUTOCONF="/usr/bin/autoconf-2.13" ./buildconf --force
-    else
-        ./buildconf --force
-    fi
+    ./buildconf --force
     rm -f tests/output/stream_isatty_*.phpt
     rm -f Zend/tests/arginfo_zpp_mismatch*.phpt
     rm -f Zend/tests/bug79919.phpt
@@ -499,13 +490,14 @@ _build_sapi() {
 # BUILD them all
 ################################################################################
 build() {
-    export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types"
-    export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17"
-    export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
-    if ((_build_forced_openssl_11)); then
-        export PHP_OPENSSL_DIR="/usr/lib/openssl-1.1"
-        export PKG_CONFIG_PATH="/usr/lib/openssl-1.1/pkgconfig"
+    if ((_phpbase <= 80)); then
+        export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types -Wno-implicit-function-declaration -fpermissive"
+        export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17 -Wno-implicit-function-declaration -fpermissive"
+    else
+        export CFLAGS="${CFLAGS} -fPIC -Wno-error=incompatible-pointer-types"
+        export CXXFLAGS="${CXXFLAGS} -fPIC -Wno-error=incompatible-pointer-types -std=c++17"
     fi
+    export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
     if [[ ! -z "${_cppflags}" ]]; then
         CPPFLAGS+=" $_cppflags "
     fi
@@ -1478,8 +1470,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
-            '12495b447da6aeb0e16b3db1a9d68f5c9d41bcc097ff1cc5d43732a47a7fd5b1'
-            'b5a6b99214dce395a058f40bffee50511adaf58ee84ee6fbb7ca7bdc3c07cb3c'
+            '6938140a64b7b5d577d38020d390d939b2ca4d0f178293487c70116e1a59500c'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
             'e2b4bad971ed569e9e898dcb2c7451d53e9b55f473123bbd4765d126efea6466')
