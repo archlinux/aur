@@ -1,6 +1,6 @@
 pkgname=woff2-misans-meta
 pkgver=4.003
-pkgrel=2
+pkgrel=3
 pkgdesc='Meta package to install Misans(woff2)'
 arch=(any)
 license=(None)
@@ -18,5 +18,5 @@ depends=(woff2-misans
          woff2-misans-tc
          woff2-misans-thai
          woff2-misans-tibetan
-         misans-fontconfig
 )
+optdepends=(misans-fontconfig)

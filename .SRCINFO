@@ -1,7 +1,7 @@
 pkgbase = woff2-misans-meta
 	pkgdesc = Meta package to install Misans(woff2)
 	pkgver = 4.003
-	pkgrel = 2
+	pkgrel = 3
 	url = https://hyperos.mi.com/font/download
 	arch = any
 	license = None
@@ -18,6 +18,6 @@ pkgbase = woff2-misans-meta
 	depends = woff2-misans-tc
 	depends = woff2-misans-thai
 	depends = woff2-misans-tibetan
-	depends = misans-fontconfig
+	optdepends = misans-fontconfig
 
 pkgname = woff2-misans-meta
