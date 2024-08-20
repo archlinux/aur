@@ -1,0 +1,19 @@
+pkgbase = libmole
+	pkgdesc = Mimetic Operators Library Enhanced
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/csrc-sdsu/mole
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = doxygen
+	makedepends = eigen
+	makedepends = graphviz
+	makedepends = openblas
+	depends = armadillo
+	optdepends = matlab: for MATLAB support
+	optdepends = octave: for Octave support
+	optdepends = eigen: for the sparse LU factorization
+	source = mole-1.0.tar.gz::https://github.com/csrc-sdsu/mole/archive/v1.0.tar.gz
+	sha512sums = c9a167d30b4adaabb3e3ea9f3ab4f135ae8e23335b7ebf324d011a7ca944c0fd33debcbf2e2f5a9ba56b3c1d84c5d2f15246bca568034719fe42d776a41b7de1
+
+pkgname = libmole

@@ -1,0 +1,5 @@
+[libmole]
+source = "github"
+github = "csrc-sdsu/mole"
+use_latest_release = "true"
+prefix = "v"
