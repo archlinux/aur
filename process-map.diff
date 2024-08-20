@@ -1,0 +1,74 @@
+diff --git a/Makefile b/Makefile
+index 13a9007..82d7a34 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,5 @@
+ # -Wno-unused-parameter is needed for raygui.h
+-CFLAGS = -std=c99 -Wall -Wextra -Werror -Wno-unused-parameter
++CFLAGS = -std=c99 -Wall -Wextra -Wno-unused-parameter -Wno-incompatible-pointer-types
+ CPPFLAGS = -I deps/include
+ LDLIBS += -lGL -lm -lpthread -ldl -lrt -lX11
+ 
+@@ -23,4 +23,4 @@ deps/lib/libraylib.a: deps/raylib.tar.gz
+ 
+ 
+ clean:
+-	rm -rf map deps/include deps/lib deps/raylib
+\ No newline at end of file
++	rm -rf map deps/include deps/lib deps/raylib
+diff --git a/map.c b/map.c
+index edf846a..2a511b4 100644
+--- a/map.c
++++ b/map.c
+@@ -123,9 +123,9 @@ int main(int argc, char** argv) {
+ 	SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_RESIZABLE);
+ 	InitWindow(screenWidth, screenHeight, TextFormat("Memory map of process %s: %s", argv[1], cmdLine));
+ 	
+-	Font uiFont      = LoadFontEx("NotoSans-Regular.ttf", 16, NULL, 0);
+-	Font mapLabelSdfFont = LoadSdfFont("NotoSans-Regular.ttf");
+-	Shader sdfFontShader = LoadShader(NULL, "sdf-text.fs");
++	Font uiFont      = LoadFontEx("/usr/share/fonts/noto/NotoSans-Regular.ttf", 16, NULL, 0);
++	Font mapLabelSdfFont = LoadSdfFont("/usr/share/fonts/noto/NotoSans-Regular.ttf");
++	Shader sdfFontShader = LoadShader(NULL, "/usr/share/process-map/sdf-text.fs");
+ 	
+ 	GuiSetFont(uiFont);
+ 	
+@@ -136,9 +136,9 @@ int main(int argc, char** argv) {
+ 	Texture2D mapTexture = PlotAddrRanges(ranges, rangeCount, mapLabelSdfFont, &hilbertCurveOrder);
+ 	PlotRangeElfSymbols(ranges, rangeCount, hilbertCurveOrder, mapLabelSdfFont);
+ 	
+-	Shader mapShader = LoadShader(NULL, "range-map2.fs");
++	Shader mapShader = LoadShader(NULL, "/usr/share/process-map/range-map2.fs");
+ 	int selectedColorLoc = GetShaderLocation(mapShader, "selectedColor");
+-	Shader symbolMapShader = LoadShader(NULL, "symbol-map.fs");
++	Shader symbolMapShader = LoadShader(NULL, "/usr/share/process-map/symbol-map.fs");
+ 	
+ 	TaskTraces traces = LoadTaskTraces(argv[1]);
+ 	
+@@ -188,8 +188,8 @@ int main(int argc, char** argv) {
+ 		
+ 		// Handle keyboard input
+ 		if (IsKeyPressed(KEY_R)) {
+-			mapShader = LoadShader(NULL, "range-map2.fs");
+-			symbolMapShader = LoadShader(NULL, "symbol-map.fs");
++			mapShader = LoadShader(NULL, "/usr/share/process-map/range-map2.fs");
++			symbolMapShader = LoadShader(NULL, "/usr/share/process-map/symbol-map.fs");
+ 		}
+ 		
+ 		// Picking
+@@ -793,7 +793,7 @@ TaskTraces LoadTaskTraces(char* pid) {
+ 	traces.focusedTaskIndex = -1;
+ 	
+ 	glEnable(GL_PROGRAM_POINT_SIZE);
+-	traces.particleShader = LoadShader("particle.vs", "particle.fs");
++	traces.particleShader = LoadShader("/usr/share/process-map/particle.vs", "/usr/share/process-map/particle.fs");
+ 	int shaderPosLocation = GetShaderLocationAttrib(traces.particleShader, "pos");
+ 	int shaderTimeLocation = GetShaderLocationAttrib(traces.particleShader, "time");
+ 	traces.shaderColorLocation = GetShaderLocation(traces.particleShader, "color");
+@@ -915,4 +915,4 @@ void UnloadTaskTraces(TaskTraces* traces) {
+ 	
+ 	free(traces->tasks);
+ 	UnloadShader(traces->particleShader);
+-}
+\ No newline at end of file
++}
