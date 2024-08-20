@@ -19,9 +19,9 @@ makedepends=(
 optdepends=(
   'autoconf: support for autotools package management'
   'bash-completion: shell completion for bash'
-  'bzr: supporting for Bazaar cloning'
+  'bzr: support for Bazaar cloning'
   'cmake: support for CMake package management'
-  'cvs: supporting for CVS checkouts'
+  'cvs: support for CVS checkouts'
   'fish: shell completion for fish'
   'git: support for Git cloning'
   'gnupg: support for GPG verification of downloaded packages'
@@ -34,7 +34,7 @@ optdepends=(
   'python-matplotlib: support for PDF generation of build statistics'
   'python-numpy: support for PDF generation of build statistics'
   'scons: support for building SCons-dependent packages'
-  'subversion: supporting for Subversion checkouts'
+  'subversion: support for Subversion checkouts'
   'zsh-completions: shell completion for zsh'
 )
 _base_url=https://github.com/releng-tool/releng-tool/releases/download
