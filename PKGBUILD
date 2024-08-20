@@ -1,7 +1,7 @@
 # Maintainer: metamuffin <metamuffin@disroot.org>
 
 pkgname=hurrycurry-server
-pkgver=1.3.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A game about cooking (server)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ source=("hurrcurry-$pkgver.tar.gz::https://codeberg.org/hurrycurry/hurrycurry/ar
         "hurrycurry.service"
         "hurrycurry.yaml"
         "sysusers.conf")
-sha256sums=('4852c4e313fa921cc8216219956c877f1d1983e9b3a10f72608d2c45ab46743e'
+sha256sums=('847888ff40ceaa59179663d1afb3cc9fefe36885189b9b536248bcb625941011'
             'd520ab278a04fd434429833e806b67f876529fcbbf7e8f5aa80c3e102b621750'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
             'bbb29eff6b62d4530b04c0a964a88229212fea165f97a1c4674c53fae9fb4fe4')
@@ -27,7 +27,8 @@ build() {
     cd "hurrycurry"
     cargo +nightly build --frozen --release --target "$CHOST" --bin hurrycurry-server
     cargo +nightly build --frozen --release --target "$CHOST" --bin hurrycurry-replaytool
-    make -C data all graphs
+    # make -C data all
+    make -C data recipes/default.svg
     esbuild test-client/main.ts --bundle --outdir=test-client
 }
 package() {
