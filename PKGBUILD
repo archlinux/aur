@@ -5,7 +5,7 @@
 
 _pkgname=exercism
 pkgname="${_pkgname}-bin"
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="Command line client for exercism.io"
 arch=("i686" "x86_64")
