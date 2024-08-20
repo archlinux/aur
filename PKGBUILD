@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.2.0.r14.g154771cc
+pkgver=0.2.0.r55.gc60bfbe2
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('x86_64')
@@ -28,14 +28,17 @@ makedepends=(
 	'renderdoc'
 	'robin-map>=1.3'
 	'spirv-headers'
-	'toml11>=3.8.1'
+	'toml11>=4.2'
 	'vulkan-headers>=1:1.3.289'
 	'vulkan-memory-allocator>=3.1'
 	'xbyak>=7.07'
 	'xxhash>=0.8.2'
 	'zycore-c' # 'zydis>=4.1'
 )
-optdepends=('renderdoc')
+optdepends=(
+	'renderdoc'
+	'vulkan-validation-layers'
+)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=(
@@ -71,6 +74,8 @@ prepare() {
 	git config submodule.externals/zydis.url ../zydis
 	git -c protocol.file.allow=always submodule update
 	sed -ri '/find_package/s/\b[.0-9]+\b//' CMakeLists.txt
+	# https://github.com/shadps4-emu/shadPS4/issues/486
+	sed -i '/SDL_init/i #include <SDL3/SDL_events.h>' src/audio_core/sdl_audio.cpp
 }
 
 build() {
