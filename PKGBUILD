@@ -47,7 +47,7 @@ check() {
 	mkdir "${tmp}" || exit 1
 	# shellcheck disable=SC2064
 	trap "rm -fr ${tmp}" EXIT
-	sed -i -e "s,/tmp/fangfrisch/unittest,${tmp},g" tests/*
+	sed -i -e "s,/tmp/fangfrisch/unittest,${tmp},g" tests/*.*
 	sqlite3 "${tmp}"/db.sqlite <tests/tests.sql
 	python -m unittest discover -v tests/
 	popd >/dev/null || exit 1
