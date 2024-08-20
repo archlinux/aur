@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Discord
+Comment=Discord built with nativefier (electron)
+Exec=discord
+Icon=discord
+Encoding=UTF-8
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Chat;InstantMessaging;Application;

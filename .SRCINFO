@@ -1,0 +1,22 @@
+pkgbase = discord-nativefier
+	pkgdesc = Discord built with nativefier, with working share screen audio & Krisp
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/klubuntu/discord-nativefier.git
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = assets/logo.png
+	source = assets/discord-nativefier.desktop
+	sha256sums = 79117e2c7881cca6f89fed19689bacef7b283f6e21440bab41016dba5917422d
+	sha256sums = 47da6a369f2653be718213ae533b62f13a0e4f53f1e9e718721ffbd79468bc2b
+
+pkgname = discord-nativefier

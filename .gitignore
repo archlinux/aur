@@ -1,0 +1,6 @@
+discord-nativefier-*.pkg.tar.zst
+discord-nativefier-*.pkg.tar.xz
+discord-nativefier-*.log
+PKGBUILD-namcap.log
+pkg/
+src/
