@@ -10,7 +10,7 @@ depends=('java-runtime>=11' 'jemalloc')
 replaces=('pantheon')
 #changelog=
 source=("https://github.com/hyperledger/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('a3d51358dfae9caa053b50b708b6f40f3084ba521f5de729aeb8fc53f87f5e3d')
+sha256sums=('9671157a623fb94005357bc409d1697a0d62bb6fd434b1733441bb301a9534a4')
 
 check() {
   "$pkgname-$pkgver/bin/$pkgname" --version
