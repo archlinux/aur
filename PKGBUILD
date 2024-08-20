@@ -25,14 +25,14 @@ _renderer=gles
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r66559.cdfc755adde
+pkgver=r66565.3a1a944b00e
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
 makedepends=(
-  'afpfs-ng' 'bluez-libs' 'cmake' 'curl' 'dav1d' 'doxygen' 'git' 'glew'
-  'gperf' 'hicolor-icon-theme' 'java-runtime' 'fmt' 'libaacs' 'libass'
+  'bluez-libs' 'cmake' 'curl' 'dav1d' 'doxygen' 'git' 'glew'
+  'gperf' 'hicolor-icon-theme' 'java-runtime' 'fmt' 'libass'
   'libbluray' 'libcdio' 'libcec' 'libgl' 'mariadb-libs' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libva'
   'libva-vdpau-driver' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
@@ -197,13 +197,12 @@ package_kodi-git() {
     'libplist' 'libpulse' 'libva' 'libvdpau' 'libxslt' 'lirc' 'lzo'
     'mariadb-libs' 'mesa' 'libpipewire' 'python-pillow' 'python-pycryptodomex'
     'python-simplejson' 'shairplay' 'smbclient' 'sndio' 'spdlog' 'sqlite'
-    'taglib' 'tinyxml' 'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput'
+    'tinyxml' 'taglib' 'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput'
     'pcre' 'tinyxml2' 'libdisplay-info' 'exiv2'
   )
   [[ -n "$_clangbuild" ]] && depends+=('glu')
 
   optdepends=(
-    'afpfs-ng: Apple shares support'
     'bluez: Blutooth support'
     'python-pybluez: Bluetooth support'
     'pulseaudio: PulseAudio support'

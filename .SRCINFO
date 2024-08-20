@@ -1,10 +1,9 @@
 pkgbase = kodi-git
-	pkgver = r66559.cdfc755adde
+	pkgver = r66565.3a1a944b00e
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
-	makedepends = afpfs-ng
 	makedepends = bluez-libs
 	makedepends = cmake
 	makedepends = curl
@@ -16,7 +15,6 @@ pkgbase = kodi-git
 	makedepends = hicolor-icon-theme
 	makedepends = java-runtime
 	makedepends = fmt
-	makedepends = libaacs
 	makedepends = libass
 	makedepends = libbluray
 	makedepends = libcdio
@@ -128,8 +126,8 @@ pkgname = kodi-git
 	depends = sndio
 	depends = spdlog
 	depends = sqlite
-	depends = taglib
 	depends = tinyxml
+	depends = taglib
 	depends = libxrandr
 	depends = libxkbcommon
 	depends = waylandpp
@@ -138,13 +136,12 @@ pkgname = kodi-git
 	depends = tinyxml2
 	depends = libdisplay-info
 	depends = exiv2
-	optdepends = afpfs-ng: Apple shares support
 	optdepends = bluez: Blutooth support
 	optdepends = python-pybluez: Bluetooth support
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = pipewire: PipeWire support
 	optdepends = upower: Display battery level
-	provides = kodi-common=r66559.cdfc755adde
+	provides = kodi-common=r66565.3a1a944b00e
 	provides = kodi-x11
 	provides = kodi-wayland
 	provides = kodi-gbm
@@ -158,7 +155,7 @@ pkgname = kodi-git-eventclients
 	pkgdesc = Kodi Event Clients (master branch)
 	optdepends = kodi: local machine eventclient use
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=r66559.cdfc755adde
+	provides = kodi-eventclients=r66565.3a1a944b00e
 	conflicts = kodi-eventclients
 
 pkgname = kodi-git-tools-texturepacker
@@ -167,10 +164,10 @@ pkgname = kodi-git-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=r66559.cdfc755adde
+	provides = kodi-tools-texturepacker=r66565.3a1a944b00e
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-git-dev
 	pkgdesc = Kodi dev files (master branch)
-	provides = kodi-dev=r66559.cdfc755adde
+	provides = kodi-dev=r66565.3a1a944b00e
 	conflicts = kodi-dev
