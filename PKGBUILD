@@ -5,8 +5,8 @@ pkgrel=1
 arch=('any')
 
 url='https://github.com/ls0f/phone'
-pkgdesc='手机号码归属地库, 数据更新 2023-12'
-license=()
+pkgdesc='Chinese Mobile phone number location database, data. 手机号码归属地库, 数据更新 2023-12'
+license=('MIT')
 
 _name=${pkgname#python-}
 

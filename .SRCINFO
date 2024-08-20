@@ -1,9 +1,10 @@
 pkgbase = python-phone
-	pkgdesc = 手机号码归属地库, 数据更新 2023-12
+	pkgdesc = Chinese Mobile phone number location database, data. 手机号码归属地库, 数据更新 2023-12
 	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/ls0f/phone
 	arch = any
+	license = MIT
 	makedepends = python-setuptools
 	source = https://files.pythonhosted.org/packages/source/p/phone/phone-0.4.5.tar.gz
 	sha256sums = 96d2f83c1698155227ca143abd8b1d50d04a46f5764ddee6b03ebe60a55037ec
