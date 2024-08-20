@@ -1,0 +1,17 @@
+pkgbase = taskfinder-bin
+	pkgdesc = A terminal user interface that extracts and displays tasks from notes files
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://codeberg.org/kdwarn/taskfinder
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = glibc
+	depends = gcc-libs
+	provides = taskfinder
+	conflicts = taskfinder
+	source = https://codeberg.org/kdwarn/taskfinder/raw/tag/v2.2.0/USAGE.md
+	sha256sums = 1a6b139417b7ad3637bb36caf4d1e275ca574fe2f8edce2dc63d32d3215b0983
+	source_x86_64 = bin-2.2.0-x86_64::https://codeberg.org/kdwarn/taskfinder/releases/download/v2.2.0/tf-linux
+	sha256sums_x86_64 = 02d2cebac00ceef01d5164a3ac7adbe4ffafa6139256d1a84882255188e4f490
+
+pkgname = taskfinder-bin
