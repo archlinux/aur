@@ -20,7 +20,7 @@ source=(
 	"$_launcher::$_url/download/$pkgver/$_launcher"
 	"$_sd::$_url/download/$pkgver/$_sd"
 )
-sha256sums=('644755e1e27fe8842724e1bda34d390b1ecac61d7eb13b59975f40c5a1efd836' '1b9dce2fb0eac3ad8cc809826b3b6bfd4ce30dbfc394eaa586e35dcd356fd189' '9363a85f4c445c91c1017939b0bb57f62029b2ae39e6732270efaa52c309aa5f')
+sha256sums=('644755e1e27fe8842724e1bda34d390b1ecac61d7eb13b59975f40c5a1efd836' '1b9dce2fb0eac3ad8cc809826b3b6bfd4ce30dbfc394eaa586e35dcd356fd189' 'f3774b46f1b2c52feca49549d2081e7aed6c1398ebcbc442155367b90257ee16')
 
 prepare() {
 	chmod +x "$srcdir/$_package"
