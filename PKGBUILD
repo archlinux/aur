@@ -1,7 +1,7 @@
 # Maintainer: metamuffin <metamuffin@disroot.org>
 
 pkgname=hurrycurry-client
-pkgver=1.3.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A game about cooking (client)"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('godot')
 source=("hurrycurry-$pkgver.tar.gz::https://codeberg.org/hurrycurry/hurrycurry/archive/v$pkgver.tar.gz"
         "hurrycurry-client"
         "hurrycurry-client.desktop")
-sha256sums=('4852c4e313fa921cc8216219956c877f1d1983e9b3a10f72608d2c45ab46743e'
+sha256sums=('847888ff40ceaa59179663d1afb3cc9fefe36885189b9b536248bcb625941011'
             '2853345b64837352f576397aac7659aa0306e03ca7de4cdd04bb64bab9c8706c'
             '2607233a774b1f74f10deb0ef1c594e418554c4b5701d0e700016368e6d59718')
 
@@ -20,7 +20,7 @@ build() {
     cd "hurrycurry"
     make client
     mkdir -p target/release
-    godot --headless --export-pack $CHOST ../target/release/client.pck client/project.godot
+    godot --headless --export-pack wasm32-unknown-unknown ../target/release/client.pck client/project.godot
 }
 package() {
     install -Dm755 hurrycurry-client "$pkgdir/usr/bin/hurrycurry-client"
