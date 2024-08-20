@@ -1,0 +1,23 @@
+pkgbase = ttf-misans-meta
+	pkgdesc = Meta package to install Misans(ttf)
+	pkgver = 4.003
+	pkgrel = 2
+	url = https://hyperos.mi.com/font/download
+	arch = any
+	license = None
+	depends = ttf-misans
+	depends = ttf-misans-arabic
+	depends = ttf-misans-devanagari
+	depends = ttf-misans-gujarati
+	depends = ttf-misans-gurmukhi
+	depends = ttf-misans-khmer
+	depends = ttf-misans-l3
+	depends = ttf-misans-lao
+	depends = ttf-misans-latin
+	depends = ttf-misans-myanmar
+	depends = ttf-misans-tc
+	depends = ttf-misans-thai
+	depends = ttf-misans-tibetan
+	depends = misans-fontconfig
+
+pkgname = ttf-misans-meta
