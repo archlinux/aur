@@ -1,0 +1,15 @@
+pkgbase = graphite-cli
+	pkgdesc = Graphite helps you create smaller pull requests, stay unblocked, and ship faster.
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://graphite.dev/
+	arch = any
+	license = None
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	noextract = graphite-cli-1.4.3.tgz
+	source = https://registry.npmjs.org/@withgraphite/graphite-cli/-/graphite-cli-1.4.3.tgz
+	b2sums = fa39bbdb334a36bc25add12b0c184cb37c4b791891a26296eb919b9d7f2bcc29f269d6d23fa3a1b50ecc4dc2d44c87022f6dd8de6de8fe0f206817f64d68d095
+
+pkgname = graphite-cli
