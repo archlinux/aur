@@ -2,10 +2,10 @@
 # Contributor: PolpOnline <aur at t0mmy dot anonaddy dot com>
 pkgname=gitify
 _pkgname=Gitify
-pkgver=5.12.1
+pkgver=5.13.0
 _electronversion=31
-_nodeversion=20.14.0
-pkgrel=2
+_nodeversion=20
+pkgrel=1
 pkgdesc="GitHub notifications on your menu bar.Use system-wide electron."
 arch=('any')
 url='https://www.gitify.io/'
@@ -27,7 +27,7 @@ source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('4f2cf89f91e520480a45b27d7165e1d38ef9340b2fcc62ce9e951a48c5efa9b4'
+sha256sums=('f877ba16c1c93a4eb7ad6a203f21ea72fa0a658ec98b169c95368149aac09b9f'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -62,7 +62,7 @@ build() {
     else
         echo "Your network is OK."
     fi
-    sed 's|"AppImage", "deb", "rpm", "snap"|"dir"|g;/packageManager/d' -i package.json
+    sed 's|"AppImage", "deb", "rpm"|"dir"|g;/packageManager/d' -i package.json
     icotool -x assets/images/app-icon.ico -o assets/images/app-icon.png
     NODE_ENV=development pnpm install
     NODE_ENV=production pnpm run build
