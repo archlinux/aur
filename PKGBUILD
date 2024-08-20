@@ -4,7 +4,7 @@
 
 pkgname=spacefm-git
 pkgver=1.0.6.r80.ge257d15
-pkgrel=3
+pkgrel=4
 pkgdesc="Multi-panel tabbed file manager"
 arch=(i686 x86_64)
 url="https://ignorantguru.github.io/spacefm"
@@ -46,6 +46,8 @@ prepare() {
 }
 
 build() {
+  CFLAGS+=" -Wno-error=incompatible-pointer-types"
+
   cd "spacefm"
   ./configure \
     --prefix=/usr \
