@@ -2,8 +2,8 @@
 
 pkgname=releng-tool
 _pkgpyname=releng_tool
-pkgver=1.2.0
-_pkgtarget=v1.2
+pkgver=1.3.0
+_pkgtarget=v1.3
 pkgrel=1
 pkgdesc='A tool to manage the building of packages'
 url=https://releng.io/
@@ -33,6 +33,7 @@ optdepends=(
   'python-certifi: support using Mozilla'\''s CA Bundle for Bazaar cloning'
   'python-matplotlib: support for PDF generation of build statistics'
   'python-numpy: support for PDF generation of build statistics'
+  'rust: support for Cargo package management'
   'scons: support for building SCons-dependent packages'
   'subversion: support for Subversion checkouts'
   'zsh-completions: shell completion for zsh'
@@ -43,8 +44,8 @@ source=(
   $_base_url/$_pkgtarget/$_pkgpyname-$pkgver.tar.gz.asc
 )
 sha512sums=(
-  1a2d5d916c3e505d32c6e79b1052743dbdb7eb0fc3a5249b5f309c760ffc5bf4bafcc4261fbdfab725b5adf4c4c2235c771cb1f3049de02d8f284d742b996c5a
-  5873ec342c37e5e27b7d8a28d61b0eeb634b40afb210fb164e374a0888f9526bb5449030da9efe8efb83578fcf88e8c442b8250de868ec028b824744f7a45d61
+  6c9c0e57321a586dd1a8cee206ed4eaf03aa8b86f3e9bf9bada3d24b8e712708b4cfe5fd282f134b1ef6fa7248bb07f8a3bd31d638fa853a70391abf441506f2
+  af4bd3e6f4af34b255d67456f02c6ef0754558e4517b9a53a3ba1999beb450ec8c7684d896a68c52ebe4856ab01a9db0c72f9846b785ab8644020317bd29db3d
 )
 validpgpkeys=(D04A27BA9305DBBD354E653902D3C27B922CCC13)
 
