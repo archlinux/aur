@@ -1,0 +1,22 @@
+pkgbase = ruby-itex2mml-bzr
+	pkgdesc = iTeX to MathML converter
+	pkgver = r85
+	pkgrel = 1
+	url = https://golem.ph.utexas.edu/~distler/blog/itex2MML.html
+	arch = x86_64
+	license = custom:GPL-unknown-version
+	license = custom:LGPL-unknown-version
+	license = custom:MPL-unknown-version
+	makedepends = bzr
+	makedepends = swig
+	depends = glibc
+	depends = ruby
+	provides = ruby-itex2mml=r85
+	conflicts = ruby-itex2mml
+	noextract = itex2mml.tar.gz
+	source = itex2mml::bzr+https://golem.ph.utexas.edu/~distler/code/itexToMML
+	source = itex2mml_fix_makefile.patch
+	sha256sums = SKIP
+	sha256sums = 51f400e16b20f0e14df6f2f5c265f2e9ce686e646374545ee953773193e326d1
+
+pkgname = ruby-itex2mml-bzr

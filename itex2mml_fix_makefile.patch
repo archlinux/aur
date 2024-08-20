@@ -1,0 +1,69 @@
+--- a/Makefile	2024-08-20 17:09:43.086996261 +0300
++++ b/Makefile	2024-08-20 23:25:09.983326863 +0300
+@@ -1,13 +1,15 @@
++PREFIX ?= /usr/local
++DESTDIR ?=
++
+ #YACC=yacc
+ YACC=bison -y  -v
+ LEX=flex -P$(YYPREFIX) -olex.yy.c
+ SWIG=swig
+-#RUBY=ruby
+-RUBY=ruby26
++RUBY=ruby
+ 
+ RM=rm -f
+-INSTALL=install -c
+-BINDIR=/usr/local/bin
++BINDIR=$(PREFIX)/bin
++INSTALL=$(BINDIR)/install
+ 
+ YYPREFIX=itex2MML_yy
+ 
+@@ -26,7 +28,7 @@
+ 		$(CC) $(CFLAGS) -c -o lex.yy.o lex.yy.c
+ 
+ itex2MML:	lex.yy.o y.tab.o itex2MML.cc itex2MML.h
+-		$(CXX) $(CFLAGS) -o itex2MML lex.yy.o y.tab.o itex2MML.cc
++		$(CXX) $(CFLAGS) $(LDFLAGS) -o itex2MML lex.yy.o y.tab.o itex2MML.cc
+ 
+ universal:
+ 		CFLAGS='-arch i686 -arch ppc' make all
+@@ -35,17 +37,18 @@
+ 		$(RM) y.tab.* lex.yy.c itex2MML *.o *.output *.so *.dll *.sl *.bundle itex2MML_ruby.c
+ 
+ install:	itex2MML
+-		$(INSTALL) itex2MML $(BINDIR)
++		$(INSTALL) itex2MML $(DESTDIR)/$(BINDIR)
+ 
+ RUBY_CFLAGS = $(shell $(RUBY) -e 'require "rbconfig"; print RbConfig::CONFIG["CFLAGS"]')
+ RUBY_LD = $(shell $(RUBY) -e 'require "rbconfig"; print RbConfig::CONFIG["LDSHARED"]')
++RUBY_LDFLAGS = $(shell $(RUBY) -e 'require "rbconfig"; print RbConfig::CONFIG["LDFLAGS"]')
+ RUBYLIBDIR = $(shell $(RUBY) -e 'require "rbconfig"; print RbConfig::CONFIG["libdir"]')
+ RUBY_PREFIX =  $(shell $(RUBY) -e 'require "rbconfig"; print RbConfig::CONFIG["rubylibdir"]')
+ RUBY_ARCH = $(shell $(RUBY) -e 'require "rbconfig"; print RbConfig::CONFIG["arch"]')
+ RUBYDIR = $(shell $(RUBY) -e 'require "rbconfig"; print RbConfig::CONFIG["archdir"]')
+ RUBYHDRDIR = $(shell $(RUBY) -e 'require "rbconfig"; print RbConfig::CONFIG["rubyhdrdir"]')
+-RUBY_SITEDIR = $(shell $(RUBY) -e 'require "rbconfig"; print RbConfig::CONFIG["sitelibdir"]')
+-RUBY_SITEARCHDIR = $(shell $(RUBY) -e 'require "rbconfig"; print RbConfig::CONFIG["sitearchdir"]')
++RUBY_VENDORARCHDIR = $(shell $(RUBY) -e 'require "rbconfig"; print RbConfig::CONFIG["vendorarchdir"]')
++RUBY_VENDORLIBDIR = $(shell $(RUBY) -e 'require "rbconfig"; print RbConfig::CONFIG["vendorlibdir"]')
+ LIBRUBYARG = $(shell $(RUBY) -e 'require "rbconfig"; print RbConfig::CONFIG["LIBRUBYARG"]')
+ DYLIB_EXT = $(shell $(RUBY) -e 'require "rbconfig"; print RbConfig::CONFIG["DLEXT"]')
+ RUBY_target_os = $(shell $(RUBY) -e 'require "rbconfig"; print RbConfig::CONFIG["target_os"]')
+@@ -71,11 +74,12 @@
+ 		$(CC) $(RUBY_CFLAGS) -c -o lex.yy_ruby.o lex.yy.c
+ 
+ ruby:	itex2MML_ruby.o y.tab_ruby.o lex.yy_ruby.o
+-	$(LD_TARGET) $(RUBY_LD) itex2MML_ruby.o y.tab_ruby.o lex.yy_ruby.o -L$(RUBYLIBDIR) $(LIBRUBYARG) -o itex2MML.$(DYLIB_EXT)
++	$(LD_TARGET) $(RUBY_LD) $(RUBY_LDFLAGS) itex2MML_ruby.o y.tab_ruby.o lex.yy_ruby.o -L$(RUBYLIBDIR) $(LIBRUBYARG) -o itex2MML.$(DYLIB_EXT)
+ 
+ test_ruby:
+ 	$(RUBY) -I . ./itextomml.rb
+ 
+ install_ruby:	itex2MML.$(DYLIB_EXT)
+-	$(INSTALL) itex2MML.$(DYLIB_EXT) $(RUBY_SITEARCHDIR)
+-	$(INSTALL) itextomml.rb itex_stringsupport.rb $(RUBY_SITEDIR)
++	$(INSTALL) -Dm755 itex2MML.$(DYLIB_EXT) $(DESTDIR)$(RUBY_VENDORARCHDIR)/tex2MML.$(DYLIB_EXT)
++	$(INSTALL) -Dm644 itextomml.rb $(DESTDIR)$(RUBY_VENDORLIBDIR)/itextomml.rb
++	$(INSTALL) -Dm644 itex_stringsupport.rb $(DESTDIR)$(RUBY_VENDORLIBDIR)/itex_stringsupport.rb
