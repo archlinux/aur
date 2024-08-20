@@ -1,7 +1,7 @@
 pkgbase = graphite-cli
 	pkgdesc = Graphite helps you create smaller pull requests, stay unblocked, and ship faster.
 	pkgver = 1.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://graphite.dev/
 	changelog = changelog.md
 	arch = any

@@ -3,7 +3,7 @@
 _npmname=graphite-cli
 pkgname=$_npmname
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Graphite helps you create smaller pull requests, stay unblocked, and ship faster."
 arch=(any)
@@ -67,8 +67,9 @@ package() {
 	sed 's/\(.\/dist\/src\/\)\{0,1\}index.js/graphite/g' "$srcdir/pre-zsh-graphite-completions" >"$srcdir/zsh-graphite-completions"
 	sed 's/\(.\/dist\/src\/\)\{0,1\}index.js/gt/g' "$srcdir/pre-zsh-graphite-completions" >"$srcdir/zsh-gt-completions"
 
-	install -D --mode=u=rw,go=r "$srcdir/bash-graphite-completions" "$pkgdir/usr/share/bash-completion/completions/graphite"
-	install -D --mode=u=rw,go=r "$srcdir/bash-gt-completions" "$pkgdir/usr/share/bash-completion/completions/gt"
-	install -D --mode=u=rw,go=r "$srcdir/zsh-graphite-completions" "$pkgdir/usr/share/zsh/site-functions/_graphite"
-	install -D --mode=u=rw,go=r "$srcdir/zsh-gt-completions" "$pkgdir/usr/share/zsh/site-functions/_gt"
+	install -Dm 644 "$srcdir/bash-graphite-completions" "$pkgdir/usr/share/bash-completion/completions/graphite"
+	install -Dm 644 "$srcdir/bash-gt-completions" "$pkgdir/usr/share/bash-completion/completions/gt"
+	install -Dm 644 "$srcdir/zsh-graphite-completions" "$pkgdir/usr/share/zsh/site-functions/_graphite"
+	install -Dm 644 "$srcdir/zsh-gt-completions" "$pkgdir/usr/share/zsh/site-functions/_gt"
+	install -Dm 644 "$pkgdir/usr/lib/node_modules/@withgraphite/graphite-cli/gt.fish" "$pkgdir/usr/share/fish/completions/gt.fish"
 }
