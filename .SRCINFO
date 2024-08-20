@@ -1,0 +1,25 @@
+pkgbase = oneplay-git
+	pkgdesc = A music player for Windows, Mac and Linux.Use system-wide electron.
+	pkgver = 1.1.1.r6.g91e80dc
+	pkgrel = 1
+	url = https://github.com/ndungtse/oneplay_desktop_app
+	arch = any
+	license = LicenseRef-Oneplay
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = curl
+	makedepends = yarn
+	makedepends = icoutils
+	depends = electron21
+	provides = oneplay=1.1.1
+	conflicts = oneplay
+	source = oneplay.git::git+https://github.com/ndungtse/oneplay_desktop_app.git
+	source = oneplay.sh
+	sha256sums = SKIP
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+
+pkgname = oneplay-git
