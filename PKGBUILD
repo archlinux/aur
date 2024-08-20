@@ -18,13 +18,13 @@ prepare() {
 
 package() {
   # Install the noip-admin.sh script
-  install -Dm755 "$srcdir"/NoIP-Manager-"${pkgver}"/src/noip-admin.sh "${pkgdir}/usr/local/bin/noip-admin"
+  install -Dm755 "$srcdir"/NoIP-Manager-v."${pkgver}"/src/noip-admin.sh "${pkgdir}/usr/local/bin/noip-admin"
   
   # Install the installer script (if needed)
-  install -Dm755 "$srcdir"/NoIP-Manager-"${pkgver}"/installer.sh "${pkgdir}/usr/local/bin/noipconf-installer"
+  install -Dm755 "$srcdir"/NoIP-Manager-v."${pkgver}"/installer.sh "${pkgdir}/usr/local/bin/noipconf-installer"
 
   # Optionally, you can install the uninstaller as well
-  install -Dm755 "$srcdir"/NoIP-Manager-"${pkgver}"/uninstaller.sh "${pkgdir}/usr/local/bin/noipconf-uninstaller"
+  install -Dm755 "$srcdir"/NoIP-Manager-v."${pkgver}"/uninstaller.sh "${pkgdir}/usr/local/bin/noipconf-uninstaller"
 }
 
 
