@@ -4,12 +4,13 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-sdl2
-pkgver=2.30.5
+pkgver=2.30.6
 pkgrel=1
 arch=('any')
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2) (Android ${_android_arch})"
 url="https://www.libsdl.org"
 license=('MIT')
+groups=('android-sdl2')
 depends=("android-${_android_arch}-libxext"
          "android-${_android_arch}-libxrender"
          "android-${_android_arch}-libx11"
@@ -25,7 +26,7 @@ makedepends=('android-cmake'
 optdepends=("android-${_android_arch}-alsa-lib: ALSA audio driver")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/libsdl-org/SDL/releases/download/release-${pkgver}/SDL2-${pkgver}.tar.gz"{,.sig})
-md5sums=('6af6db485fcd005b05acc0cb00499dd5'
+md5sums=('ab12cc1cf58a5dd25e69c924acb93402'
          'SKIP')
 validpgpkeys=('1528635D8053A57F77D1E08630A59377A7763BE6') # Sam Lantinga
 clases_file_name=sdl2.jar
