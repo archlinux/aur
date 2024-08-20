@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-xml-feed'
-pkgver='0.63'
+pkgver='0.65'
 pkgrel='1'
 pkgdesc="Syndication feed parser and auto-discovery"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('perl-class-errorhandler' 'perl-feed-find' 'perl-datetime-format-flexib
 makedepends=()
 url='http://search.cpan.org/dist/XML-Feed'
 source=("http://search.cpan.org/CPAN/authors/id/D/DA/DAVECROSS/XML-Feed-${pkgver}.tar.gz")
-sha256sums=('9c8a996c82c2915b2fce820ef49f79184a7fef5e3aaadc688a00fb3a23c4d911')
+sha256sums=('98baeba339610d82d020bd400f81380bd33ae7d90a21df250b6f5180a78e230b')
 _distdir="XML-Feed-${pkgver}"
 
 build() {
