@@ -132,7 +132,6 @@ pkgname = kodi-stable-git
 	depends = pcre
 	depends = tinyxml2
 	depends = libdisplay-info
-	optdepends = afpfs-ng: Apple shares support
 	optdepends = bluez: Blutooth support
 	optdepends = python-pybluez: Bluetooth support
 	optdepends = pulseaudio: PulseAudio support

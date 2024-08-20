@@ -198,7 +198,6 @@ package_kodi-stable-git() {
   [[ -n "$_clangbuild" ]] && depends+=('glu')
 
   optdepends=(
-    'afpfs-ng: Apple shares support'
     'bluez: Blutooth support'
     'python-pybluez: Bluetooth support'
     'pulseaudio: PulseAudio support'
