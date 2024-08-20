@@ -1,7 +1,7 @@
 # Maintainer: Your Maksim <maxgoonfuture@gmail.com>
 pkgname=mcalc
 pkgver=3.0.0
-pkgrel=2
+pkgrel=6
 pkgdesc="MCalc - calculator for performing simple mathematical operations in all existing number systems"
 arch=('x86_64')
 url="https://github.com/nesterovmaxim31/MCalc"
@@ -12,7 +12,6 @@ changelog=
 source=("$pkgname-$pkgver::https://github.com/nesterovmaxim31/MCalc/archive/v$pkgver.tar.gz")
 # md5sums=('eb51403ae0d243c321fd63e62f3963df')
 md5sums=('SKIP')
-validpgpkeys=()
 
 
 
