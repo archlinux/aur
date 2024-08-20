@@ -1,0 +1,13 @@
+pkgbase = rhp-git
+	pkgdesc = An rusherhack plugin manager
+	pkgver = r46.7082f68
+	pkgrel = 1
+	url = https://github.com/kybe236/rhp
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = zig
+	source = git+https://github.com/kybe236/rhp.git
+	sha256sums = SKIP
+
+pkgname = rhp-git
