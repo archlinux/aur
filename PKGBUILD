@@ -7,8 +7,8 @@ _android_arch=x86-64
 pkgbase=android-${_android_arch}-sqlite
 pkgname=("android-${_android_arch}-sqlite"
          "android-${_android_arch}-sqlite-tcl")
-pkgver=3.46.0
-_srcver=3460000
+pkgver=3.46.1
+_srcver=3460100
 pkgrel=1
 arch=('any')
 pkgdesc="A C library that implements an SQL database engine (Android ${_android_arch})"
@@ -20,7 +20,7 @@ makedepends=('android-configure'
              "android-${_android_arch}-zlib")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.sqlite.org/2024/sqlite-src-${_srcver}.zip")
-md5sums=('13e62c260e796acd51a1262350f76909')
+md5sums=('ce83f1ffb3b051856e072678cbd3039f')
 
 prepare() {
     cd "${srcdir}/sqlite-src-${_srcver}"
@@ -65,6 +65,7 @@ build() {
 
 package_android-x86-64-sqlite() {
     pkgdesc="A C library that implements an SQL database engine (Android ${_android_arch})"
+    groups=('android-sqlite')
     depends=("android-${_android_arch}-readline"
              "android-${_android_arch}-zlib")
 
@@ -73,16 +74,17 @@ package_android-x86-64-sqlite() {
 
     make DESTDIR="${pkgdir}" install
     rm -rf "$pkgdir/${ANDROID_PREFIX_BIN}"
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
 
     # split out tcl extension
-    mkdir -p "$srcdir"/tcl
-    mv -f "$pkgdir/${ANDROID_PREFIX_LIB}"/sqlite* "$srcdir"/tcl
+    mkdir -p "${srcdir}/tcl"
+    mv -f "${pkgdir}/${ANDROID_PREFIX_LIB}"/sqlite* "${srcdir}/tcl"
 }
 
 package_android-x86-64-sqlite-tcl() {
     pkgdesc="sqlite Tcl Extension Architecture (TEA) (Android ${_android_arch})"
+    groups=('android-sqlite-tcl')
     depends=("android-${_android_arch}-sqlite")
 
     cd "${srcdir}/sqlite-src-$_srcver"
