@@ -1,14 +1,14 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=batman-alfred
-pkgver=2021.3
+pkgver=2024.2
 pkgrel=1
 pkgdesc='Almighty Lightweight Fact Remote Exchange Daemon'
 arch=('i686' 'x86_64')
 url='http://www.open-mesh.net/'
-license=('GPL')
+license=('GPL-2.0-only')
 source=("http://downloads.open-mesh.net/batman/releases/batman-adv-${pkgver}/alfred-${pkgver}.tar.gz")
-depends=('gpsd' 'libnl' 'libcap')
+depends=('glibc' 'gpsd' 'libnl' 'libcap')
 
 build(){
   cd "${srcdir}/alfred-${pkgver}"
@@ -19,4 +19,4 @@ package() {
   make DESTDIR="${pkgdir}"  PREFIX=/usr SBINDIR=/usr/bin install
 }
 
-sha256sums=('be6229edf2a3e9cf69122e5283d113e9405f1455e8fd4ebd55294e9bf9157b5a')
+sha256sums=('a8404c6617ee9b5a4e605b516bc694afc6596130bc802bfd30fbc7a1db3aef1f')
