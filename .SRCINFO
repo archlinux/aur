@@ -1,7 +1,7 @@
 pkgbase = r-grpreg
 	pkgdesc = Regularization Paths for Regression Models with Grouped Covariates
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=grpreg
 	arch = x86_64
 	license = GPL-3.0-only
