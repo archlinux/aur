@@ -2,7 +2,7 @@
 
 _pkgname=extension-downloader
 pkgname=${_pkgname}-git
-pkgver=v0.1.0.r14.g69b2e17
+pkgver=v0.1.0.r21.g473b4c6
 pkgrel=1
 pkgdesc='Download browser extensions for Firefox and Chromium-based browsers'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
