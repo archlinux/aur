@@ -1,7 +1,7 @@
 pkgbase = shadps4-git
 	pkgdesc = Sony PlayStation 4 emulator
 	pkgver = 0.2.0.r55.gc60bfbe2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shadps4.net/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -28,8 +28,8 @@ pkgbase = shadps4-git
 	depends = glslang>=14.2
 	depends = sdl3
 	depends = zlib-ng>=2.1.6
-	optdepends = renderdoc
-	optdepends = vulkan-validation-layers
+	optdepends = renderdoc: for graphics debugging
+	optdepends = vulkan-validation-layers: for vulkan debugging
 	provides = shadps4=0.2.0.r55.gc60bfbe2
 	conflicts = shadps4
 	source = shadps4::git+https://github.com/shadps4-emu/shadPS4.git

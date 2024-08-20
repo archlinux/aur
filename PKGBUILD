@@ -2,7 +2,7 @@
 _pkgname=shadps4
 pkgname=$_pkgname-git
 pkgver=0.2.0.r55.gc60bfbe2
-pkgrel=1
+pkgrel=2
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('x86_64')
 url="https://shadps4.net/"
@@ -36,8 +36,8 @@ makedepends=(
 	'zycore-c' # 'zydis>=4.1'
 )
 optdepends=(
-	'renderdoc'
-	'vulkan-validation-layers'
+	'renderdoc: for graphics debugging'
+	'vulkan-validation-layers: for vulkan debugging'
 )
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
@@ -83,6 +83,8 @@ build() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
+		-DCMAKE_DISABLE_FIND_PACKAGE_Boost=ON \
+		-DCMAKE_DISABLE_FIND_PACKAGE_Zydis=ON \
 		-DENABLE_QT_GUI=ON \
 		-DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
 		-Wno-dev
