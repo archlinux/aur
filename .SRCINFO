@@ -1,7 +1,7 @@
 pkgbase = mcalc
 	pkgdesc = MCalc - calculator for performing simple mathematical operations in all existing number systems
 	pkgver = 3.0.0
-	pkgrel = 2
+	pkgrel = 6
 	url = https://github.com/nesterovmaxim31/MCalc
 	arch = x86_64
 	license = MIT
