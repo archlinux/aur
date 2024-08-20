@@ -2,11 +2,11 @@
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn-beta
-_pkgver=2024.4
-_channel=stable
+_pkgver=2024.5
+_channel=beta
 _rel=1
-#pkgver=${_pkgver}.${_channel}${_rel}  # beta
-pkgver=${_pkgver}.${_channel}  # stable
+pkgver=${_pkgver}.${_channel}${_rel}  # beta
+#pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
@@ -18,23 +18,29 @@ makedepends=('cargo' 'git' 'go' 'libxcrypt-compat' 'nvm' 'protobuf')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
-_commit=e9043f890c56b4d0db50851e3fa4db10f230118e
+_ab_commit=b0c37cecd9b671d2480a7dc9636da93d76e2b14c
+_wg_commit=f4bc3aefeb6c6ae50567a4bfc177593337eb9cba
+_mn_commit=b06094e81701782d28cd2312f58e0654109d04ce
 source=(
-#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}"  # beta
-  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}"  # stable
-  "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
+  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
+#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}"  # stable
+  "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_ab_commit}?signed"
+  "git+https://github.com/mullvad/wireguard-go.git#commit=${_wg_commit}"
+  "git+https://github.com/mullvad/maybenot.git#commit=#commit=${_mn_commit}"
   'no-rpm.diff'
   'no-publish.diff'
   "${pkgname%-beta}.sh"
 )
-sha256sums=('6186c0023698431e75aa2fd1720b083abc560a13f02e364ca0b2daa7c67e9084'
-            'f097255f0d415597cce88ae7a8de24440a533620a932d492fbe4e84c76f7c8d1'
+sha256sums=('ad3e215144c59ba9210f8d33ca1ae23f94a2787588f8d1aed3f6f3ba5419cddc'
+            '3e4b6d2f867809a02b286a5614f17a42d037a41a6c6247dbf51051a305242291'
+            '6273c817e7312eac192be50ad5b00d7053b12cd36afc18b65123969160101454'
+            '905d2c0b697cb594babdf4e84066f3bdf666ab5d889642b002a1390f52fc7cf8'
             'ea35edffea2cbbb05586abce19581fdd9f133801ed47e6af30fa64a29c5cf116'
             '968967efff8e9588f15c382825b609cf89d54c47e0632e92e9ef2354aa46f31b'
             '2262346cb57deb187fe32a88ccd873dab669598889269088e749197c6e88954f')
 validpgpkeys=('225E40C8F1C8DEB7977ABF59F293063FECE2E8ED' # Linus Färnstrand <linus@mullvad.net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net>
-              '4B986EF5222BA1B810230C602F391DE6B00D619C' # Oskar Nyberg (code signing) <oskar@mullvad.net>
+              '1D0026CBD1F1858DF8DB54DFCB87E2B919A6454C' # Oskar Nyberg <oskar@mullvad.net>
               )
 
 _ensure_local_nvm() {
@@ -52,7 +58,12 @@ prepare() {
   cd mullvadvpn-app
   git submodule init
   git config submodule.dist-assets/binaries.url "$srcdir/mullvadvpn-app-binaries"
+  git config submodule.wireguard-go-rs/libwg/wireguard-go.url "$srcdir/wireguard-go"
+#  git config submodule.wireguard-go-rs/libwg/wireguard-go/maybenot.url "$srcdir/maybenot"
   git -c protocol.file.allow=always submodule update
+
+  # It might help to add a .gitmodules for the submodule...
+  cp -rf "$srcdir/maybenot" wireguard-go-rs/libwg/wireguard-go/
 
   # Disable building rpm
   patch --strip=1 gui/tasks/distribution.js < ../no-rpm.diff
@@ -63,7 +74,7 @@ prepare() {
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
-  pushd wireguard/libwg
+  pushd wireguard-go-rs/libwg
   export GOPATH="$srcdir/gopath"
   mkdir -p "../../build/lib/$CARCH-unknown-linux-gnu"
   go mod download -x
@@ -89,7 +100,7 @@ build() {
   echo "Building Mullvad VPN ${PRODUCT_VERSION}..."
 
   echo "Building wireguard-go..."
-  pushd wireguard/libwg
+  pushd wireguard-go-rs/libwg
   export GOPATH="$srcdir/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
