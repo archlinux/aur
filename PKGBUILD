@@ -1,6 +1,8 @@
+# Maintainer: Consler <consler2000@gmail.com>
+
 pkgname=batpu2-vm
 pkgver=2.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A virtual machine/assembler for MattBatwings' redstone CPU"
 arch=('x86_64')
 url="https://github.com/AdoHTQ/Batpu2-VM"
