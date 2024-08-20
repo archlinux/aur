@@ -2,7 +2,7 @@
 # Maintainer: shilka <shilkazx at gmail dot com>
 
 pkgname=tencent-docs-bin
-pkgver=3.6.3
+pkgver=3.6.4
 pkgrel=1
 pkgdesc="腾讯文档 Tencent Docs - 让协作更高效，创作更轻松"
 arch=("x86_64" "aarch64")
@@ -16,8 +16,8 @@ source_aarch64=("${pkgname}-${pkgver}-${pkgrel}-aarch64.deb::https://docs.qq.com
 
 
 sha256sums=("7dd7432ece74ddd5d5fd6de07e6b521a4b84206a8fa099b754f2a994641404d7")
-sha256sums_x86_64=('c109c3bbb91fc78d74a446def0cb7a17da3d6d2fbbf21921e986ab13d09616e4')
-sha256sums_aarch64=('0853a1fdd7ae82da331ee49568b9d9f3fc5f5c5cc26e6eeb0261035b5b0b81bb')
+sha256sums_x86_64=('4124397ec3d0ab144f4a76d3616c41545f66f454df579bccb993ce156ac0aa89')
+sha256sums_aarch64=('cd25ea88b405e89eaa5bd88dbb4d62c9d1f4ad5f261e0447ca1a9e075f34a9de')
 
 package() {
     tar xpf data.tar.xz -C ${pkgdir}
