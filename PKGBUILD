@@ -3,7 +3,7 @@
 # Contributor: Radoslaw Mejer <radmen@radmen.info>
 _pkgname=jd
 pkgname="${_pkgname}-tool-bin"
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="JSON diff and patch"
 arch=(
@@ -21,9 +21,9 @@ source=(
 source_aarch64=("${pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/${_pkgname}-arm64-linux")
 source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}-amd64-linux")
 sha256sums=('7db445fe94ae6fb0c5ab69a6b47ec38a0e4b6d5a38f9d1493c0d8cb7c8ad2516')
-sha256sums_aarch64=('4d8a0fa05b733b01c8aa4d30f536b947c7251f606930c4513760be8672fb222f')
-sha256sums_x86_64=('a61c4d11d87e80a8f73ef72c8acb120199146c16b04b6b3ff840e18360aac5dc')
+sha256sums_aarch64=('29f0df95c3bbc064bffab1b31a1c156aafbd92cd5fa0fe0dc31b616604db80f7')
+sha256sums_x86_64=('382a69c0720a94515cb07bf8e0b89fbfa577140fc92e23b128455b5ae682e523')
 package() {
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
