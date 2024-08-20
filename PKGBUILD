@@ -5,7 +5,7 @@ pkgname=(
 )
 pkgbase=python-jaraco.packaging
 _name=${pkgbase#python-}
-pkgver=10.2.2
+pkgver=10.2.3
 pkgrel=1
 pkgdesc="Tools to supplement packaging Python releases"
 arch=('any')
@@ -18,6 +18,7 @@ depends=(
 makedepends=(
 #  'python-domdf-python-tools'  ## docs
   'python-installer'
+#  'python-jaraco.path'  ## docs
 #  'python-rst.linker'  ## docs
   'python-setuptools-scm'
 #  'python-sphinx-furo'  ## docs
@@ -32,7 +33,7 @@ checkdepends=(
   'python-sphinx'
 )
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d7adf9e4be8a4f3dd669f146450ede2f6a04f79c208f5e742ba41784a536d3ed')
+sha256sums=('a12e479e164389aad635dd5373b068d0961eb55c21a1b34d9ed42ecf3b06c20f')
 
 build() {
   cd "$_name-$pkgver"
