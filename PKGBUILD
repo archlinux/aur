@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onlook-git
 _pkgname=Onlook
-pkgver=r78.9805b98
+pkgver=r103.effbb17
 _electronversion=31
 _nodeversion=20
 pkgrel=1
