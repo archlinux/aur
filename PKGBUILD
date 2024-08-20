@@ -1,20 +1,15 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
-pkgname=NAME
-pkgver=VERSION
+# Maintainer: Ted Hahn <thahn@tcbtech.com>
+pkgname=qxmoji
+pkgver=0.7
 pkgrel=1
-epoch=
-pkgdesc=""
-arch=()
-url=""
-license=('GPL')
+# epoch=
+pkgdesc="X11 emoji keyboard"
+arch=("x86_64")
+url="https://github.com/Zirias/qxmoji"
+license=('BSD-2-Clause')
 groups=()
-depends=()
-makedepends=()
+depends=("noto-fonts-emoji")
+makedepends=("git")
 checkdepends=()
 optdepends=()
 provides=()
@@ -24,31 +19,38 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz"
-        "$pkgname-$pkgver.patch")
+source=("qxmoji::git+https://github.com/Zirias/qxmoji.git#tag=v${pkgver}")
 noextract=()
-sha256sums=()
+sha256sums=('31646caac6508c16384cd2041892105a60eb34b28eacee183cef5b545ccacc18')
 validpgpkeys=()
 
+# For building -git versions
+# pkgver() {
+#   cd "$pkgname"
+#   # cutting off 'v' prefix that presents in the git tag
+#   git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+# }
+
 prepare() {
-	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+	cd "$pkgname"
+  git submodule update --init
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
+	cd "$pkgname"
+
 	make
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	make -k check
+	cd "$pkgname"
+	# make -k check
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	cd "$pkgname"
+	mkdir -p "$pkgdir/usr/bin"
+	mv "bin/$arch-pc-linux-gnu/release/qxmoji" "$pkgdir/usr/bin"
 }
 
 

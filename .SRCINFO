@@ -1,0 +1,13 @@
+pkgbase = qxmoji
+	pkgdesc = X11 emoji keyboard
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/Zirias/qxmoji
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	depends = noto-fonts-emoji
+	source = qxmoji::git+https://github.com/Zirias/qxmoji.git#tag=v0.7
+	sha256sums = 31646caac6508c16384cd2041892105a60eb34b28eacee183cef5b545ccacc18
+
+pkgname = qxmoji
