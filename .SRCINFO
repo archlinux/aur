@@ -6,8 +6,8 @@ pkgbase = perl-datetime-format-datemanip
 	arch = any
 	license = GPL
 	license = PerlArtistic
+	makedepends = perl-datetime
 	depends = perl
-	depends = perl-datetime
 	depends = perl-date-manip
 	depends = perl-module-build
 	options = !emptydirs
@@ -16,4 +16,3 @@ pkgbase = perl-datetime-format-datemanip
 	md5sums = 5965a3b4760c8aafb7471ba37d3a39c4
 
 pkgname = perl-datetime-format-datemanip
-
