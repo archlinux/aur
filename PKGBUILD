@@ -7,7 +7,7 @@ arch=('any')
 url="http://www.luismg.com/protocol/"
 license=('GPL3')
 depends=('python')
-makedepends=('python' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('git' 'python' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 provides=('protocol')
 conflicts=('protocol')
 source=("git+https://github.com/luismartingarcia/protocol" "fix-setup-py.patch")
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 prepare() {
-  patch -Np1 -i ../fix-setup-py.patch
+  patch -Np1 -i "$srcdir"/fix-setup-py.patch
 }
 
 build() {
