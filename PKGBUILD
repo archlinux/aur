@@ -1,0 +1,22 @@
+pkgname=woff-misans-meta
+pkgver=4.003
+pkgrel=2
+pkgdesc='Meta package to install Misans(woff)'
+arch=(any)
+license=(None)
+url='https://hyperos.mi.com/font/download'
+depends=(woff-misans
+         woff-misans-arabic
+         woff-misans-devanagari
+         woff-misans-gujarati
+         woff-misans-gurmukhi
+         woff-misans-khmer
+         woff-misans-l3
+         woff-misans-lao
+         woff-misans-latin
+         woff-misans-myanmar
+         woff-misans-tc
+         woff-misans-thai
+         woff-misans-tibetan
+         misans-fontconfig
+)
