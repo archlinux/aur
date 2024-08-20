@@ -5,6 +5,7 @@ pkgbase = ttf-maple-beta
         url = https://github.com/subframe7536/maple-font
         arch = any
         license = OFL
+        conflicts = ttf-maple
         source = ttf-maple-beta-7.0-beta24-MapleMono-TTF.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0-beta24/MapleMono-TTF.zip
         source = ttf-maple-beta-7.0-beta24-MapleMono-NF.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0-beta24/MapleMono-NF.zip
         source = ttf-maple-beta-7.0-beta24-MapleMono-NF-CN.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0-beta24/MapleMono-NF-CN.zip

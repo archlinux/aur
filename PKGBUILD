@@ -7,6 +7,7 @@ pkgdesc="Open source monospace font with round corner, ligatures and Nerd-Font f
 arch=("any")
 url="https://github.com/subframe7536/maple-font"
 license=("OFL")
+conflicts=(ttf-maple)
 source=("$pkgname-${pkgver//_/-}-MapleMono-TTF.zip::$url/releases/download/v${pkgver//_/-}/MapleMono-TTF.zip"
         "$pkgname-${pkgver//_/-}-MapleMono-NF.zip::$url/releases/download/v${pkgver//_/-}/MapleMono-NF.zip"
         "$pkgname-${pkgver//_/-}-MapleMono-NF-CN.zip::$url/releases/download/v${pkgver//_/-}/MapleMono-NF-CN.zip"
