@@ -1,0 +1,19 @@
+pkgbase = clang-uml
+        pkgdesc = Customizable automatic UML diagram generator for C++ based on Clang.
+        pkgver = 0.5.4
+        pkgrel = 1
+        url = https://github.com/bkryza/clang-uml
+        arch = x86_64
+        license = Apache-2.0
+        makedepends = cmake
+        makedepends = llvm<19.0
+        makedepends = ninja
+        depends = clang<19.0
+        depends = gcc-libs
+        depends = glibc
+        depends = llvm-libs<19.0
+        depends = yaml-cpp
+        source = clang-uml-0.5.4.tar.gz::https://github.com/bkryza/clang-uml/archive/refs/tags/0.5.4.tar.gz
+        sha512sums = ee92e2608788d59b68539853809c708aa5d8fd46defc35dca2421633db79159fe92c26835edba16baa32e69d1efaf3caf92b3b3f5384bc2fffa4062d5df4331c
+
+pkgname = clang-uml
