@@ -1,18 +1,17 @@
 pkgbase = python-pystun3
 	pkgdesc = A Python STUN client for getting NAT type and external IP
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/talkiq/pystun3
 	arch = any
 	license = MIT
-	checkdepends = python-pytest-runner
-	checkdepends = python-coverage
-	checkdepends = python-nose
-	checkdepends = python-prospector
-	checkdepends = python-coveralls
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = python-pystun3-1.0.0.tar.gz::https://github.com/talkiq/pystun3/archive/1.0.0.tar.gz
-	sha512sums = 3d44205016d44192f3af8e8504e2adc7ce31d1a40042c3cd15c61f207fc923338dc30f0c093dc8ac9269a4e629a8bded6fd4d507b3bb3321de480fbe6fc7804e
+	source = pystun3-5fdc6fa446924b575250acf853a8f7eea0c8b8c9.tar.gz::https://github.com/talkiq/pystun3/archive/5fdc6fa446924b575250acf853a8f7eea0c8b8c9.tar.gz
+	sha512sums = dd1100d7836ac93731a6e70c352b37e28b61225c67d43fad12beeae193baf10e040b2c7e3161b248935a210078885336f2e9605a1b8981d6b2cfec3e94a87513
 
 pkgname = python-pystun3
