@@ -1,40 +1,26 @@
-# Maintainer: Matthew Gamble <git@matthewgamble.net>
+# Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=drawio
-pkgver=20.7.4
+pkgver=24.7.5
 pkgrel=1
 pkgdesc="Diagram drawing application built on web technology"
 arch=("any")
 url="https://github.com/jgraph/drawio"
 license=("Apache")
+makedepends=('ant' 'npm')
 options=(!strip)
-source=("draw-${pkgver}.war::https://github.com/jgraph/drawio/releases/download/v${pkgver}/draw.war")
-sha256sums=("67219941033c7bf8c68dc15affd30c503fbfb2e174d6a29559ce7cf89becfa30")
+source=("drawio-${pkgver}.tar.gz::https://github.com/jgraph/drawio/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('bc0aae1ef1bf9c7bad3ffb04ccebab5d9f93c0dfe7312cb097f9b95f8d9b8f4118726d5f989638d697cdb5ab988877b0fdaf33a904250a1d39cbd8a864a05782')
 
-prepare() {
-    rm -rf META-INF WEB-INF
-    rm -f yarn.lock
-    rm -f service-worker.js
-
-    sed -i '/<!--.*\[if IE\].*\[endif\]-->/d' index.html
-    sed -i '/itemprop="image".*googleusercontent/d' index.html
-    sed -i '/rel="chrome-webstore-item"/d' index.html
-    sed -i '/rel="preconnect".*googleapis\.com/d' index.html
-    sed -i '/rel="canonical".*app\.diagrams\.net/d' index.html
-    sed -i '/itemprop="image".*googleusercontent/d' teams.html
-    sed -i '/rel="chrome-webstore-item"/d' teams.html
-    sed -i '/rel="preconnect".*googleapis\.com/d' teams.html
-    sed -i 's/return false/return true/' disableUpdate.js
-    sed -i "s/'electron': 'plugins\/electron.js',//" js/diagramly/App.js
-    rm -f electron.js electronFilesWorker.js plugins/electron.js
+build() {
+	cd "${srcdir}/${pkgname}-${pkgver}/etc/dependencies/"
+	npm install
+	cd "${srcdir}/${pkgname}-${pkgver}/etc/build/"
+	ant all
 }
 
 package() {
-    install -dm755 "${pkgdir}/usr/share"
-
-    cp -r . "${pkgdir}/usr/share/draw.io"
-    rm "${pkgdir}/usr/share/draw.io/draw-${pkgver}.war"
-
-    chmod -R 0000 "${pkgdir}/usr/share/draw.io"
-    chmod -R u+rwX,g+rX,o+rX "${pkgdir}/usr/share/draw.io"
+	install -dm0755 "${pkgdir}/usr/share/webapps/drawio"
+	cp -r ${srcdir}/${pkgname}-${pkgver}/src/main/webapp/* "${pkgdir}/usr/share/webapps/drawio/"
+	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
