@@ -13,7 +13,6 @@ conflicts=('jikkou')
 source=("https://github.com/streamthoughts/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${CARCH}.tar.gz")
 depends=('zlib')
 
-#options=("!strip")
 sha256sums=("82f26c3e115c2eb4df9e64a701ca963339960e84309a77943c21721925366a80")
 
 package() {

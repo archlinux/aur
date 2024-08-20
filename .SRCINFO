@@ -8,7 +8,7 @@ pkgbase = jikkou-bin
 	depends = zlib
 	provides = jikkou
 	conflicts = jikkou
-	source = https://github.com/streamthoughts/jikkou/releases/download/v0.35.2/jikkou-0.35.2-linux-.tar.gz
+	source = https://github.com/streamthoughts/jikkou/releases/download/v0.35.2/jikkou-0.35.2-linux-x86_64.tar.gz
 	sha256sums = 82f26c3e115c2eb4df9e64a701ca963339960e84309a77943c21721925366a80
 
 pkgname = jikkou-bin
