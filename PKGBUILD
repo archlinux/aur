@@ -1,7 +1,7 @@
 # Maintainer: László Várady <laszlo.varady93@gmail.com>
 
 pkgname=paho-mqtt-c
-pkgver=1.3.12
+pkgver=1.3.13
 pkgrel=1
 pkgdesc="Eclipse Paho C Client Library for the MQTT Protocol"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom:EPL2' 'custom:EDL')
 depends=('openssl')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/eclipse/paho.mqtt.c/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6a70a664ed3bbcc1eafdc45a5dc11f3ad70c9bac12a54c2f8cef15c0e7d0a93b')
+sha256sums=('47c77e95609812da82feee30db435c3b7c720d4fd3147d466ead126e657b6d9c')
 
 build() {
   cd "${pkgname//-/.}-${pkgver}"
@@ -27,7 +27,7 @@ check() {
 
 package() {
   cd "${pkgname//-/.}-${pkgver}"
-  cmake --build build --target install -- DESTDIR="$pkgdir/"
+  DESTDIR="$pkgdir/" cmake --install build
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 edl-v10 "${pkgdir}/usr/share/licenses/${pkgname}/edl-v10"
