@@ -2,10 +2,10 @@
 #
 # mantainer: Muflone http://www.muflone.com/contacts/english/
 # contributor: Piero Proietti <piero.proietti_at_gmail.com>
-_commit=fd3c9a5ea6ca44508af380b2753fc8889e161374
+_commit=17ecf8d67550c6be3b2c2c01a999aa54511181ba
 pkgname=penguins-eggs
-pkgver=10.0.28
-pkgrel=2
+pkgver=10.0.29
+pkgrel=1
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
 url="https://penguins-eggs.net"
@@ -15,6 +15,7 @@ depends=(
 		'dosfstools'
 		'erofs-utils'
 		'findutils' 
+		'git'
 		'grub'
 		'jq'
 		'libarchive'
@@ -44,7 +45,6 @@ optdepends=(
 			'zsh-completions: eggs autocomplete'
 		)
 makedepends=(
-		'git'
 		'pnpm'
 	)
 
@@ -112,6 +112,4 @@ package() {
 	# Symlink to adapt
 	ln -s /usr/lib/"$pkgname/"addons/eggs/adapt/bin/adapt "$pkgdir/"usr/bin/adapt
 
-	# Symlink to love
-	ln -s /usr/lib/"$pkgname/"scripts/love "$pkgdir/"usr/bin/love
 }
