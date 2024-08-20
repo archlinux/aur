@@ -1,0 +1,12 @@
+pkgbase = conman
+	pkgdesc = a (con)figuration (man)ager
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/teaperr/conman
+	arch = any
+	license = MIT
+	depends = go
+	source = git+https://github.com/teaperr/conman.git#branch=master
+	md5sums = SKIP
+
+pkgname = conman
