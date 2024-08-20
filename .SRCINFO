@@ -1,14 +1,13 @@
 pkgbase = samsung-ssd-dc-toolkit
 	pkgdesc = CLI diagnostics SW for Samsung SSD PM863, PM863a, SM863, SM863a, PM963 non-customized, 860 DCT, 883 DCT, 983 DCT, 983 DCT M.2 and 983 ZET
 	pkgver = 2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://semiconductor.samsung.com/consumer-storage/support/tools/
 	arch = x86_64
 	license = LicenseRef-Samsung-Magician-Software-License-Agreement
 	depends = gcc-libs
 	depends = glibc
 	depends = hdparm
-	depends = jsoncpp
 	conflicts = samsung_magician-consumer-ssd
 	options = !strip
 	source = https://download.semiconductor.samsung.com/resources/software-resources/Samsung_SSD_DC_Toolkit_for_Linux_V2.1
