@@ -1,7 +1,7 @@
 pkgbase = r-mplot
 	pkgdesc = Graphical Model Stability and Variable Selection Procedures
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=mplot
 	arch = any
 	license = GPL-2.0-or-later
