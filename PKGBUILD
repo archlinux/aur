@@ -3,7 +3,7 @@
 # Contributor: Roman Timushev <romikt@gmail.com>
 pkgname=gnome-defaults-list
 pkgver=46.0
-pkgrel=5
+pkgrel=7
 pkgdesc="Default file associations for GNOME environment"
 url="https://tracker.debian.org/pkg/gnome-session"
 arch=(any)
@@ -12,7 +12,7 @@ source=("https://deb.debian.org/debian/pool/main/g/gnome-session/gnome-session_$
 # Old Ubuntu source
 #_ubuntuver=0ubuntu5
 #source=(http://archive.ubuntu.com/ubuntu/pool/main/g/gnome-session/gnome-session_${pkgver}-${_ubuntuver}.debian.tar.xz)
-sha256sums=('c5298b04dcf5d2d866cf611ad7bb6909867c5291024e0bb202d756fad49a8b5c')
+sha256sums=('07db376d2bb6928b653d6c73a915ad3aaad17aafb629c051f582868c157ce88f')
 
 package() {
 	install -d "$pkgdir/usr/share/applications"
@@ -22,4 +22,3 @@ package() {
 	#ln -s "$pkgdir/usr/share/applications/gnome-mimeapps.list" "/etc/gnome/defaults.list"
 	#sed -i "s/libreoffice\-//g" $pkgdir/etc/gnome/defaults.list
 }
-
