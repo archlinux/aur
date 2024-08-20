@@ -1,9 +1,9 @@
 pkgbase = r-bestglm
 	pkgdesc = Best Subset GLM and Regression Utilities
 	pkgver = 0.37.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=bestglm
-	arch = x86_64
+	arch = any
 	license = GPL-2.0-or-later
 	depends = r-glmnet
 	depends = r-grpreg
