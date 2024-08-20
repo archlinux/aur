@@ -1,6 +1,6 @@
 pkgbase = python-flake8-bugbear
 	pkgdesc = Plugin for Flake8 finding likely bugs and design problems in your program
-	pkgver = 24.4.26
+	pkgver = 24.8.19
 	pkgrel = 1
 	url = https://github.com/PyCQA/flake8-bugbear
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-flake8-bugbear
 	makedepends = python-wheel
 	depends = flake8
 	depends = python-attrs
-	source = https://github.com/PyCQA/flake8-bugbear/archive/refs/tags/24.4.26.tar.gz
-	sha512sums = 2a36e96bdabd44f2162991507b5525388b932501a623a64febc103e53b753ec92465b2a20076ecb048d0d9df4c0d42faed70a81506885f54b5669cfeb666534f
+	source = https://github.com/PyCQA/flake8-bugbear/archive/refs/tags/24.8.19.tar.gz
+	sha512sums = 282e75230846a9c87aa1cbf0f02ddcf2ae9292059b4f768cc236237b765230295dd0536878bece2675be7bb94a43938a62e6a73ec96cc615f9312c5c574d31ba
 
 pkgname = python-flake8-bugbear
