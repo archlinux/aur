@@ -1,6 +1,6 @@
 pkgbase = netease-cloud-music-gtk-bin
 	pkgdesc = Linux 平台下基于 Rust + GTK 开发的网易云音乐播放器
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/gmg137/netease-cloud-music-gtk
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = netease-cloud-music-gtk-bin
 	depends = gst-plugins-good
 	optdepends = gst-plugins-bad: extra media codecs
 	optdepends = gst-plugins-ugly: extra media codecs
-	provides = netease-cloud-music-gtk=2.4.0
-	provides = netease-cloud-music-gtk4=2.4.0
+	provides = netease-cloud-music-gtk=2.4.1
+	provides = netease-cloud-music-gtk4=2.4.1
 	conflicts = netease-cloud-music-gtk
 	conflicts = netease-cloud-music-gtk4
-	source = netease-cloud-music-gtk-2.4.0.deb::https://github.com/gmg137/netease-cloud-music-gtk/releases/download/2.4.0/netease-cloud-music-gtk-ubuntu22.04_2.4.0-1_amd64.deb
-	sha256sums = 3461de75b7e7675e6d27e221a96c8e117b40b04a88751ceda834b97d45bf17cf
+	source = netease-cloud-music-gtk-2.4.1.rpm::https://download.opensuse.org/repositories/openSUSE:/Factory/standard/x86_64/netease-cloud-music-gtk-2.4.1-1.1.x86_64.rpm
+	sha256sums = 595877d5f42ffb9187a5de8513ac939d985960def51ac39b6717c2f2f24c0f98
 
 pkgname = netease-cloud-music-gtk-bin
