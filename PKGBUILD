@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=rainfrog
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="A database management TUI for Postgres"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('65a07e4587850109dba711e08c162205ac5d7dd938bf8c0cafb99ef0a96b890f3b78d807768c92ff6937d8e62fd9fadf4d6e67be99028d0e9a0e9dc6e664bde2')
+sha512sums=('578735f28616ea5bd428f8fbe638eb60faf288c51fd74a675e423c984fee41c0b287ac302c9739a467656c3c844d80aa2d0b9409967a59f72cb5dd13df72d7d8')
 options=('!lto')
 
 prepare() {
