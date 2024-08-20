@@ -1,0 +1,21 @@
+pkgbase = apx-gui
+	pkgdesc = A frontend in GTK 4 and Libadwaita for Apx.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/Vanilla-OS/apx-gui
+	arch = any
+	license = GPL-3.0-only
+	makedepends = meson
+	makedepends = ninja
+	makedepends = libadwaita
+	depends = apx
+	depends = gtk4
+	depends = libadwaita
+	depends = python
+	depends = python-gobject
+	depends = python-requests
+	depends = vte4
+	source = apx-gui-1.0.3.tar.gz::https://github.com/Vanilla-OS/apx-gui/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = apx-gui
