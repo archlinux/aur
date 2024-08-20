@@ -7,7 +7,7 @@ pkgdesc="Replicate the functionality of the ASUS Battery Health Charging on Wind
 arch=("x86_64")
 makedepends=('make' 'go')
 provides=('bat-asus-battery')
-conflicts=('bat-asus-battery')
+conflicts=('bat-asus-battery-bin')
 license=('MIT')
 url="https://github.com/tshakalekholoane/bat"
 

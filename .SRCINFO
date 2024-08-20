@@ -8,7 +8,7 @@ pkgbase = bat-asus-battery
 	makedepends = make
 	makedepends = go
 	provides = bat-asus-battery
-	conflicts = bat-asus-battery
+	conflicts = bat-asus-battery-bin
 	source = bat-1.1.tar.gz::https://github.com/tshakalekholoane/bat/archive/1.1.tar.gz
 	sha256sums = 60433cf3f15c0ba972ab2bb2fa66d62ff81f0eee406cfee95adb17c3fe522b2c
 
