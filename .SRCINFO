@@ -1,5 +1,5 @@
 pkgbase = ruby-itex2mml-bzr
-	pkgdesc = iTeX to MathML converter
+	pkgdesc = Ruby bindings for itex2mml
 	pkgver = r85
 	pkgrel = 1
 	url = https://golem.ph.utexas.edu/~distler/blog/itex2MML.html
