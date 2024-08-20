@@ -1,7 +1,7 @@
 pkgbase = spacefm
 	pkgdesc = Multi-panel tabbed file manager
 	pkgver = 1.0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://ignorantguru.github.io/spacefm/
 	arch = i686
 	arch = x86_64
@@ -31,4 +31,3 @@ pkgbase = spacefm
 	sha256sums = 12411055df994211d2968cb52746b6caefce6926aed1ed33b542bd70b571ce7e
 
 pkgname = spacefm
-
