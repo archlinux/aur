@@ -3,12 +3,14 @@
 
 pkgname=popsicle-bin
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux utility for flashing multiple USB devices in parallel, written in Rust"
 arch=('x86_64')
 url="https://github.com/pop-os/popsicle"
 license=('MIT')
 options=('!strip')
+provides=(popsicle)
+conflicts=(popsicle)
 _filename="Popsicle_USB_Flasher-$pkgver-x86_64.AppImage"
 source=("https://github.com/pop-os/popsicle/releases/download/$pkgver/$_filename")
 sha256sums=('fb975b0362032213564531c0bfb5f2b064825b9fa58c89d6b8ebd75dfcb2db50')
