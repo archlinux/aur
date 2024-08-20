@@ -40,7 +40,7 @@ source=(
   'qxinewidget_stack_smashing_detected_fix.patch'
 )
 sha256sums=(
-  'a8543f303fee6181854cf3fd72e200cfd4d9c8aec513416a9f27db266bf18f60'
+  'f539e4f587e8531f30da97d1655033150b643b56e609bf76e25ee8ebf984fd39'
   'SKIP'
   'SKIP'
   'SKIP'
