@@ -10,7 +10,7 @@ depends=(qt5-base)
 makedepends=(git gcc extra-cmake-modules cmake)
 changelog=
 source=("$pkgname-$pkgver::https://github.com/nesterovmaxim31/MCalc/archive/v$pkgver.tar.gz")
-md5sums=('971e66aa5ccf25830d1114a513f8eb2f')
+md5sums=('eb51403ae0d243c321fd63e62f3963df')
 validpgpkeys=()
 
 
