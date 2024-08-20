@@ -4,8 +4,8 @@
 _pkgname=quint
 pkgname="quint-bin"
 _orgname=informalsystems
-pkgver=0.21.0
-pkgrel=4
+pkgver=0.21.1
+pkgrel=1
 pkgdesc="An executable specification language with delightful tooling based on the temporal logic of actions (TLA)"
 arch=('any')
 url="https://github.com/${_orgname}/${_pkgname}"
