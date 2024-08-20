@@ -5,7 +5,7 @@ pkgbase=python-glymur
 _pyname=${pkgbase#python-}
 #_pyname=Glymur
 pkgname=('python-glymur' 'python-glymur-doc')
-pkgver=0.13.5
+pkgver=0.13.6
 #_commit="d0134123978678d33573d53a144ce1634e770e10"
 pkgrel=1
 pkgdesc="Tools for accessing JPEG2000 files"
@@ -27,7 +27,8 @@ checkdepends=('python-pytest'
               'python-scikit-image'
               'python-gdal')
 #              'python-imagecodecs')
-source=("https://github.com/quintusdias/glymur/archive/refs/tags/v${pkgver}.tar.gz")
+source=("https://github.com/quintusdias/glymur/archive/refs/tags/v${pkgver}.tar.gz"
+        'fix-sphinx8-intersphinx.patch')
 #source=("https://github.com/quintusdias/glymur/archive/refs/tags/v${pkgver/.p/p}.tar.gz")
 #source=("${_pyname}-${pkgver}.tar.gz::https://github.com/quintusdias/glymur/archive/${_commit}.tar.gz")
 #source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
@@ -41,7 +42,8 @@ source=("https://github.com/quintusdias/glymur/archive/refs/tags/v${pkgver}.tar.
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.10.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.11.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.12.rst")
-md5sums=('c6aa3a4f081ef50b9b96ea270bb68118')
+md5sums=('68ce97d344a389b7dc63a4cc87f5c128'
+         'c95fe75b7d3b0e8d1de91a7d9dfc2c2a')
 #        'SKIP'
 #        'SKIP'
 #        'SKIP'
@@ -57,8 +59,8 @@ get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
-#prepare() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
 #
 #    ln -rs ${srcdir}/issue* tests/data
 #    ln -rs ${srcdir}/0220* tests/data
@@ -67,7 +69,8 @@ get_pyver() {
 #    ln -rs ${srcdir}/0.10.rst docs/source/whatsnew
 #    ln -rs ${srcdir}/0.11.rst docs/source/whatsnew
 #    ln -rs ${srcdir}/0.12.rst docs/source/whatsnew
-#}
+    patch -Np1 -i "${srcdir}/fix-sphinx8-intersphinx.patch"
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}

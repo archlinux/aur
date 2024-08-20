@@ -1,6 +1,6 @@
 pkgbase = python-glymur
 	pkgdesc = Tools for accessing JPEG2000 files
-	pkgver = 0.13.5
+	pkgver = 0.13.6
 	pkgrel = 1
 	url = https://glymur.readthedocs.org
 	arch = any
@@ -17,8 +17,10 @@ pkgbase = python-glymur
 	makedepends = python-numpydoc
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-lxml
-	source = https://github.com/quintusdias/glymur/archive/refs/tags/v0.13.5.tar.gz
-	md5sums = c6aa3a4f081ef50b9b96ea270bb68118
+	source = https://github.com/quintusdias/glymur/archive/refs/tags/v0.13.6.tar.gz
+	source = fix-sphinx8-intersphinx.patch
+	md5sums = 68ce97d344a389b7dc63a4cc87f5c128
+	md5sums = c95fe75b7d3b0e8d1de91a7d9dfc2c2a
 
 pkgname = python-glymur
 	depends = python-numpy

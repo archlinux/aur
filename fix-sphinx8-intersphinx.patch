@@ -1,0 +1,10 @@
+--- a/docs/source/conf.py	2024-08-20 01:47:42.000000000 +0800
++++ b/docs/source/conf.py	2024-08-20 13:15:47.086144491 +0800
+@@ -270,6 +270,6 @@
+ 
+ 
+ # Example configuration for intersphinx: refer to the Python standard library.
+-intersphinx_mapping = {'http://docs.python.org/': None}
++intersphinx_mapping = {"python": ('http://docs.python.org/', None)}
+ 
+ numpydoc_show_class_members = False
