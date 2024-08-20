@@ -1,17 +1,18 @@
 pkgbase = itex2mml
-	pkgdesc = tex to MathML converter
-	pkgver = 1.5.1
+	pkgdesc = iTeX to MathML converter
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = http://golem.ph.utexas.edu/~distler/blog/itex2MML.html
-	arch = i686
 	arch = x86_64
-	license = GPL
-	license = MPL
+	license = custom:GPL-unknown-version
+	license = custom:LGPL-unknown-version
+	license = custom:MPL-unknown-version
+	depends = glibc
 	depends = gcc-libs
-	source = itex2mml-1.5.1.tar.gz::http://golem.ph.utexas.edu/~distler/blog/files/itexToMML.tar.gz
-	source = bison3-fix.patch
-	md5sums = 409f4b2f9f9ec1baeff811feb1b3a4e7
-	md5sums = 7c82a3de132e5662726c2aea384c2814
+	noextract = itex2mml-1.6.1.tar.gz
+	source = itex2mml-1.6.1.tar.gz::http://golem.ph.utexas.edu/~distler/blog/files/itexToMML.tar.gz
+	source = itex2mml_fix_makefile.patch
+	sha256sums = 3ef2572aa3421cf4d12321905c9c3f6b68911c3c9283483b7a554007010be55f
+	sha256sums = 88905ddf2aa4add02ba100afa71b209f1f9eae51e26239b1590de7b4df407c75
 
 pkgname = itex2mml
-
