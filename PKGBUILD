@@ -1,0 +1,22 @@
+pkgname=otf-misans-meta
+pkgver=4.003
+pkgrel=2
+pkgdesc='Meta package to install Misans(otf)'
+arch=(any)
+license=(None)
+url='https://hyperos.mi.com/font/download'
+depends=(otf-misans
+         otf-misans-arabic
+         otf-misans-devanagari
+         otf-misans-gujarati
+         otf-misans-gurmukhi
+         otf-misans-khmer
+         otf-misans-l3
+         otf-misans-lao
+         otf-misans-latin
+         otf-misans-myanmar
+         otf-misans-tc
+         otf-misans-thai
+         otf-misans-tibetan
+         misans-fontconfig
+)
