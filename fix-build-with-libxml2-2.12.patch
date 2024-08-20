@@ -1,0 +1,10 @@
+--- a/src/af/util/xp/ut_std_string.cpp
++++ b/src/af/util/xp/ut_std_string.cpp
+@@ -27,6 +27,7 @@
+ #include <list>
+ 
+ #include <libxml/uri.h>
++#include <libxml/xmlmemory.h>
+ 
+ #include "ut_assert.h"
+ #include "ut_std_string.h"
