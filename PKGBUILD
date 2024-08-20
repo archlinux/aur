@@ -1,6 +1,6 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
-pkgname=drawio
+pkgname=drawio-bin
 pkgver=24.7.5
 pkgrel=1
 pkgdesc="Diagram drawing application built on web technology"
