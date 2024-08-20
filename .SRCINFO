@@ -20,6 +20,6 @@ pkgbase = limine-snapper-sync
 	conflicts = limine-snapper-sync-git
 	backup = etc/limine-snapper-sync.conf
 	source = limine-snapper-sync-1.0.0.tar.gz::https://gitlab.com/Zesko/limine-snapper-sync/-/archive/1.0.0/limine-snapper-sync-1.0.0.tar.gz
-	sha256sums = 76671e5d672d7ad747c0c59fdbf5151bd7ae58d8cd53226b785f9b6731e2c6ce
+	sha256sums = 44c33afed8c70b5c9af59e25fc9e3a81d3258d7572adab82b2d1607039dfefea
 
 pkgname = limine-snapper-sync

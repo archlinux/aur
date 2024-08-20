@@ -23,7 +23,7 @@ optdepends=(
 makedepends=('git' 'maven')
 backup=(etc/limine-snapper-sync.conf)
 conflicts=('limine-snapper-sync-git')
-sha256sums=('76671e5d672d7ad747c0c59fdbf5151bd7ae58d8cd53226b785f9b6731e2c6ce')
+sha256sums=('44c33afed8c70b5c9af59e25fc9e3a81d3258d7572adab82b2d1607039dfefea')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
