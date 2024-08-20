@@ -1,0 +1,18 @@
+pkgbase = saturn-desktop-bin
+	pkgdesc = Electron-based Deezer Client with FLAC & more! [UPDATED FREEZER]
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://saturn.kim/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = electron19
+	provides = saturn-desktop=1.1.0
+	conflicts = saturn-desktop
+	options = !strip
+	options = !emptydirs
+	source = saturn-desktop-1.1.0.deb::https://github.com/SaturnMusic/PC/releases/download/v1.1.0/saturn_1.1.0_amd64.deb
+	source = saturn-desktop.sh
+	sha256sums = 05f303fc8f2f979f308a43882b6ed3f961996ab330efd88bcaca3b3fcdb89f07
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+
+pkgname = saturn-desktop-bin
