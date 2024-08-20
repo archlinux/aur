@@ -23,7 +23,7 @@ pkgver=2406
 _build1=8.13.0
 _build2=9995429239
 _cart="CART25FQ2_LIN64_${pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop'
 arch=('x86_64')
 options=('!debug')
@@ -37,7 +37,7 @@ source=("${pkgbase}-${pkgver}-${_build1}-${_build2}-x86_64.bundle::https://downl
         'vmware-horizon.svg')
 sha256sums=('e0f152f92495de0d98948fd0ad6eba093f3b6cbec3db7072b657d841c0f595df'
             'd6863e92b891fc506fc8e81714a47ca3f9f74b7fe68bdf48be058d5e0d433033'
-            '008b60ebf45f7d1e033c8ad8ce1688d5e1c59fc0668493067fb89b563b1dc00f'
+            '2c5ff5dc4b69a7d15ffd284971414c781dce73980e5ec0d24c5974b0ef2517ac'
             'a897c1b9e8928fc222880ebbfc7bb6aff940bff4acf4e4e0cd4002fff81c7226'
             '0fe0b3d1c253361321e96d50997eaf151d311c55c62c73e8ea5007f9ae4448cb')
 

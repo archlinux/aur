@@ -1,7 +1,7 @@
 pkgbase = vmware-horizon-client
 	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop
 	pkgver = 2406
-	pkgrel = 1
+	pkgrel = 2
 	url = https://customerconnect.omnissa.com/downloads/info/slug/desktop_end_user_computing/vmware_horizon_clients/horizon_8
 	arch = x86_64
 	license = custom
@@ -16,7 +16,7 @@ pkgbase = vmware-horizon-client
 	source = vmware-horizon.svg
 	sha256sums = e0f152f92495de0d98948fd0ad6eba093f3b6cbec3db7072b657d841c0f595df
 	sha256sums = d6863e92b891fc506fc8e81714a47ca3f9f74b7fe68bdf48be058d5e0d433033
-	sha256sums = 008b60ebf45f7d1e033c8ad8ce1688d5e1c59fc0668493067fb89b563b1dc00f
+	sha256sums = 2c5ff5dc4b69a7d15ffd284971414c781dce73980e5ec0d24c5974b0ef2517ac
 	sha256sums = a897c1b9e8928fc222880ebbfc7bb6aff940bff4acf4e4e0cd4002fff81c7226
 	sha256sums = 0fe0b3d1c253361321e96d50997eaf151d311c55c62c73e8ea5007f9ae4448cb
 
