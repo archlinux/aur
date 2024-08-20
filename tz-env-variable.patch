@@ -1,0 +1,19 @@
+Description: Avoid deprecation warning from Date::Manip
+ WARNING: the TZ Date::Manip config variable is deprecated
+          and will be removed in version 7.00.  Please use
+          the SetDate or ForceDate config variables instead.
+Origin: vendor
+Author: gregor herrmann <gregoa@debian.org>
+Last-Update: 2022-08-13
+
+--- a/t/01conversions.t
++++ b/t/01conversions.t
+@@ -15,7 +15,7 @@
+ 
+ # Setup Date::Manip manually so we can force the TZ to beat a config
+ # file setting
+-Date_Init("TZ=$dm_tz");
++Date_Init("setdate=now,$dm_tz");
+ 
+ ## Date::Manip to DateTime
+ my @dm_to_dt_tests = 

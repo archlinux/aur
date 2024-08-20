@@ -1,7 +1,7 @@
 pkgbase = perl-datetime-format-datemanip
 	pkgdesc = Perl DateTime extension to convert Date::Manip dates and durations to DateTimes and vice versa.
 	pkgver = 0.04
-	pkgrel = 6
+	pkgrel = 7
 	url = https://metacpan.org/release/DateTime-Format-DateManip
 	arch = any
 	license = GPL
@@ -13,6 +13,8 @@ pkgbase = perl-datetime-format-datemanip
 	options = !emptydirs
 	options = purge
 	source = http://cpan.metacpan.org/authors/id/B/BB/BBENNETT/dt-fmt-datemanip/DateTime-Format-DateManip-0.04.tar.gz
+	source = tz-env-variable.patch
 	md5sums = 5965a3b4760c8aafb7471ba37d3a39c4
+	md5sums = 4244322a3e412ea4e84003cee83b6f40
 
 pkgname = perl-datetime-format-datemanip
