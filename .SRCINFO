@@ -1,6 +1,6 @@
 pkgbase = hardinfo2-git
 	pkgdesc = System Information and Benchmark for Linux Systems.
-	pkgver = 2.1.11.r36.g23fbafc
+	pkgver = 2.1.11.r48.g7e20789
 	pkgrel = 1
 	url = https://www.hardinfo2.org
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = hardinfo2-git
 	makedepends = git
 	depends = gtk3
 	depends = libsoup3
+	depends = qt5-base
 	optdepends = dmidecode: Memory Devices / System DMI module
 	optdepends = fwupd: Firmware module
 	optdepends = iperf3: Internal Network Speed benchmark

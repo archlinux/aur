@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2-git
-pkgver=2.1.11.r36.g23fbafc
+pkgver=2.1.11.r48.g7e20789
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64')
 url="https://www.hardinfo2.org"
 license=('GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later')
-depends=('gtk3' 'libsoup3')
+depends=('gtk3' 'libsoup3' 'qt5-base')
 makedepends=('cmake' 'git')
 optdepends=(
   'dmidecode: Memory Devices / System DMI module'
