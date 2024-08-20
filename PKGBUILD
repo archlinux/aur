@@ -4,10 +4,10 @@ _pkgname=mratios
 _pkgver=1.4.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Ratios of Coefficients in the General Linear Model"
 arch=(any)
-url="https://cran.r-project.org/package=${_pkgname}"
+url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-2.0-only')
 depends=(
   r-multcomp
@@ -26,7 +26,4 @@ build() {
 package() {
   install -d "$pkgdir/usr/lib/R/library"
   cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
-
-  install -d "$pkgdir/usr/share/licenses/$pkgname"
-  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }

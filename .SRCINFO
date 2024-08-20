@@ -1,7 +1,7 @@
 pkgbase = r-mratios
 	pkgdesc = Ratios of Coefficients in the General Linear Model
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=mratios
 	arch = any
 	license = GPL-2.0-only
