@@ -1,0 +1,36 @@
+--- a/support/shlib-install
++++ b/support/shlib-install
+@@ -119,17 +119,6 @@
+ #
+ case "$host_os-$host_vendor" in
+ *linux*|freebsd*|dragonfly*)
+-	# libname.so.M -> libname.so.M.N
+-	${echo} ${RM} ${INSTALLDIR}/$LINK2
+-	if [ -z "$uninstall" ]; then
+-		eval $INSTALL_LINK2
+-	fi
+-
+-	# libname.so -> libname.so.M
+-	${echo} ${RM} ${INSTALLDIR}/$LINK1
+-	if [ -z "$uninstall" ]; then
+-		${echo} cd $INSTALLDIR && ${echo} ${LN} $LINK2 $LINK1
+-	fi
+ 	;;
+ 
+ bsdi4*|*gnu*|darwin*|macosx*|netbsd*|mirbsd*)
+--- a/support/shobj-conf
++++ b/support/shobj-conf
+@@ -126,10 +126,9 @@
+ linux*-*|gnu*-*|k*bsd*-gnu-*|midnightbsd*|freebsd*|dragonfly*)
+ 	SHOBJ_CFLAGS=-fPIC
+ 	SHOBJ_LD='${CC}'
+-	SHOBJ_LDFLAGS='-shared -Wl,-soname,$@'
+-
+-	SHLIB_XLDFLAGS='-Wl,-rpath,$(libdir) -Wl,-soname,`basename $@ $(SHLIB_MINOR)`'
+-	SHLIB_LIBVERSION='$(SHLIB_LIBSUFF).$(SHLIB_MAJOR)$(SHLIB_MINOR)'
++	SHOBJ_LDFLAGS='-shared'
++
++	SHLIB_LIBVERSION='$(SHLIB_LIBSUFF)'
+ 	;;
+ 
+ # Darwin/MacOS X
