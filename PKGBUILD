@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fBasics
-_pkgver=4032.96
+_pkgver=4041.97
 pkgname=r-${_pkgname,,}
-pkgver=4032.96
+pkgver=4041.97
 pkgrel=1
 pkgdesc='Rmetrics - Markets and Basic Statistics'
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   r-tcltk
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e1556909871c836668b10bf90e1676aac6a2892a04663d7ab00c22a64c0b8690')
+sha256sums=('9942055e06e892e00616fa96255977c8bd7622666d4890b259e89f3ac74915ab')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
