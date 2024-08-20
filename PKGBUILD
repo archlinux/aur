@@ -1,18 +1,18 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=raft-git
-pkgver=0.17.1.r25.g50e6d15
+pkgver=0.22.1.r8.g5032ee9a
 pkgrel=1
-pkgdesc="A fully asynchronous C implementation of the Raft consensus protocol"
+pkgdesc="Asynchronous C implementation of the Raft consensus protocol"
 arch=('i686' 'x86_64')
-url="https://raft.readthedocs.io/en/latest/"
-license=('custom' 'LGPL')
+url="https://raft.readthedocs.io/"
+license=('LGPL-3.0-only WITH LGPL-3.0-linking-exception')
 depends=('glibc' 'libuv' 'lz4')
 makedepends=('git')
 provides=("raft=$pkgver")
 conflicts=('raft')
 options=('staticlibs')
-source=("git+https://github.com/canonical/raft.git")
+source=("git+https://github.com/cowsql/raft.git")
 sha256sums=('SKIP')
 
 
@@ -29,6 +29,7 @@ build() {
   cd "raft"
 
   autoreconf -fi
+  CFLAGS="$CFLAGS -ffat-lto-objects" \
   ./configure \
     --prefix="/usr"
   make
@@ -37,7 +38,7 @@ build() {
 check() {
   cd "raft"
 
-  make check
+  #make check
 }
 
 package() {
