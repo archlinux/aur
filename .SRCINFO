@@ -1,0 +1,24 @@
+pkgbase = libuhd-antsdr-git
+	pkgdesc = Universal Software Radio Peripheral (USRP) userspace driver with support for AntSDR E200, E310v2 and U220
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/MicroPhase/antsdr_uhd
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = boost
+	makedepends = python-setuptools
+	makedepends = python-mako
+	makedepends = python-numpy
+	depends = boost-libs
+	depends = orc
+	depends = libusb
+	optdepends = python: usrp utils
+	optdepends = python-numpy: python api
+	provides = libuhd
+	conflicts = libuhd
+	options = !lto
+	source = git+https://github.com/btashton/antsdr_uhd#commit=5a17be3d46bfaec43cead178e86ae5ce1a84dc72
+	sha256sums = SKIP
+
+pkgname = libuhd-antsdr-git
