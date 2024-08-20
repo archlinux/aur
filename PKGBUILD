@@ -4,7 +4,7 @@
 # Before executing makepkg, you can set FVM_CACHE_PATH to $HOME/fvm or the path specified by the cachePath field in the $HOME/.config/fvm/.fvmrc file.
 pkgname=musicpod
 _app_id=org.feichtmeier.Musicpod
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 _flutterver=3.24.0
 pkgdesc="Music, radio, television and podcast player"
@@ -16,7 +16,7 @@ makedepends=('clang' 'cmake' 'fvm' 'ninja')
 provides=("${pkgname}")
 conflicts=('musicpod-git' 'musicpod-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ubuntu-flutter-community/musicpod/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1c32bf6bc288e26679d79abc221c73e326cf3b36e9c28204cec9f1339c0c59ce')
+sha256sums=('592b06f664494554c65d4ca93d181bf3960a31efe417a19692abedb49670fa01')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
