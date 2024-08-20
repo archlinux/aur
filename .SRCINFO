@@ -1,6 +1,6 @@
 pkgbase = skypeforlinux-bin
 	pkgdesc = Skype for Linux
-	pkgver = 8.125.0.201
+	pkgver = 8.126.0.208
 	pkgrel = 1
 	url = https://www.skype.com/
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = skypeforlinux-bin
 	options = !emptydirs
 	source = flags.sh
 	sha256sums = d83693ffd8034c21030262ac00ce529c8da7b0196ea4b4eb2168861fc2657a2a
-	source_x86_64 = skypeforlinux-8.125.0.201-x86_64.snap::https://api.snapcraft.io/api/v1/snaps/download/QRDEfjn4WJYnm0FzDKwqqRZZI77awQEV_353.snap
-	sha256sums_x86_64 = a719f3429acdbb77e6ff7f69f971bf181c24b49a6cbdb90729e0671b134f29ff
+	source_x86_64 = skypeforlinux-8.126.0.208-x86_64.snap::https://api.snapcraft.io/api/v1/snaps/download/QRDEfjn4WJYnm0FzDKwqqRZZI77awQEV_357.snap
+	sha256sums_x86_64 = 7f24052deb3386548371659c3be2a1cc2d12f5782a24ae5f78c2cbfb91d4235e
 
 pkgname = skypeforlinux-bin
