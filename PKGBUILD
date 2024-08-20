@@ -53,5 +53,5 @@ package() {
   install -Dm 644 "armcord.desktop" "$pkgdir/usr/share/applications/armcord.desktop" 
 
   install -Dm 644 "$pkgname/build/icon.png" "$pkgdir/usr/share/pixmaps/armcord.png"
-  install -Dm 644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 644 "$pkgname/license.txt" "$pkgdir/usr/share/licenses/$pkgname/license.txt"
 }
