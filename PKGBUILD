@@ -1,6 +1,6 @@
 pkgname=ttf-misans-meta
 pkgver=4.003
-pkgrel=2
+pkgrel=3
 pkgdesc='Meta package to install Misans(ttf)'
 arch=(any)
 license=(None)
@@ -18,5 +18,5 @@ depends=(ttf-misans
          ttf-misans-tc
          ttf-misans-thai
          ttf-misans-tibetan
-         misans-fontconfig
 )
+optdepends=(misans-fontconfig)
