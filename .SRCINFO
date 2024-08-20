@@ -1,0 +1,15 @@
+pkgbase = incus-ui
+	pkgdesc = LXD-UI patched for Incus
+	pkgver = 0.12
+	pkgrel = 1
+	url = https://github.com/canonical/lxd-ui
+	arch = any
+	license = GPL
+	source = git+https://github.com/zabbly/incus.git
+	source = lxd-ui::https://github.com/canonical/lxd-ui/archive/refs/tags/0.12.tar.gz
+	source = incus-ui.conf
+	sha256sums = SKIP
+	sha256sums = a82779ba405bda6bf0c704edbd3c153a7719197383928512e8a9519650662849
+	sha256sums = f6f1a4669e7ac2c733544c6ee96ae739f77981184603d36fc8ae906481177bee
+
+pkgname = incus-ui
