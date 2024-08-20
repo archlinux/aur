@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://codeberg.org/hurrycurry/hurrycurry"
 license=('AGPL3')
 makedepends=('rustup' 'deno' 'graphviz' 'godot')
-source=("hurrcurry-$pkgver.tar.gz::https://codeberg.org/hurrycurry/hurrycurry/archive/v$pkgver.tar.gz"
+source=("hurrycurry-$pkgver.tar.gz::https://codeberg.org/hurrycurry/hurrycurry/archive/v$pkgver.tar.gz"
         "hurrycurry.service"
         "hurrycurry.yaml"
         "sysusers.conf")
