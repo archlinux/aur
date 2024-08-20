@@ -8,22 +8,30 @@
 readonly _pkgname="maison"
 
 pkgname="python-maison"
-pkgver="1.4.3"
+pkgver="2.0.0"
 pkgrel="1"
 pkgdesc="Read settings from config files."
 arch=("any")
 url="https://github.com/dbatten5/${_pkgname}"
 license=("MIT")
-depends=("python" "python-click" "python-pydantic" "python-toml")
+depends=("python" "python-click" "python-toml")
 makedepends=("python-build" "python-installer" "python-poetry")
+checkdepends=("python-coverage" "python-pydantic" "python-pytest" "python-six")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("f02d598efba1f1a67f01fb16cf100e70d691064c546e8b3d5e52a7f0f1b07d59355ebed9f24f72f21a6888c2bd11c7236ea84a6d6dcd27a184f5f96611d87356")
+sha512sums=("9274fc89083eec10f933a6f0e40556e18fea0ef11c13cb10338a90070b4042d87b0250a9c112a059644f6db1da4c5bbd956e3efa0cd9bd1ac1d2059f1a659eb0")
 
 build()
 {
     cd "${srcdir}"/"${_pkgname}"-"${pkgver}"/ || exit 1
     # -n cannot be used as Python files will be missing.
     python -m build -w
+}
+
+check()
+{
+    cd "${srcdir}"/"${_pkgname}"-"${pkgver}"/ || exit 1
+    # Does not work.
+    # pytest
 }
 
 package()
