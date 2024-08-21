@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=ElectronShogi
-Exec=/opt/electron-shogi/electron-shogi -enable-features=UseOzonePlatform -ozone-platform=wayland
+Exec=/opt/electron-shogi/electron-shogi
 Terminal=false
 Type=Application
 Categories=Game;

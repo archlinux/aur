@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sunfish-shogi/${pkgname
     "ElectronShogi.desktop")
 
 sha512sums=('1bf03eb4015e63cf4814d670a681c95f4adc4b1477290ac342858b66ec54997d601a3cc02e2c8d5d7905be96266a2cdada2fd27543482d2a7f336539758dfbe9'
-            'd3e054caee3152c60c93f9a3160b389000c09583811ea5b6fa571a13c53f9c48e4b85665d31531fba2e18d06ae9f4e40620d772c1319309f77cb803da351c6b0')
+            '874e1834d3c8220a3c2772a372549a83f4c67ef7d487903d54f2b4d3f0dedcb2e70a13796a88d9d4ce1b7fa958c4a492efa586c65f9ec32851b75d5226f08978')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
