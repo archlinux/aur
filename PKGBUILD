@@ -2,7 +2,7 @@
 
 pkgname=modrinth-app-appimage
 _pkgname=${pkgname%-appimage}
-pkgver=0.7.1
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
@@ -19,20 +19,20 @@ source=(
 )
 options=(!strip !debug)
 noextract=("modrinth-app_${pkgver}_amd64.AppImage")
-sha256sums=('24f6a53b34eec89d9f8651daab871d5be0fe2616da8d163609728c2c1906c0c5'
+sha256sums=('8028219cdd64b9433e440a698e56124e3566d5d76fd4f3a2e6a1cf3894d10fac'
             '891da8d3927841954ee771c80fe6018b90553902dcfc9f1e945a2c52a80874bc')
 
 package() {
     cd "$srcdir"
 
     chmod +x "$_pkgname-$pkgver.AppImage"
-    "./$_pkgname-$pkgver.AppImage" --appimage-extract "modrinth-app.desktop"
+    "./$_pkgname-$pkgver.AppImage" --appimage-extract "usr/share/applications/modrinth-app.desktop"
     "./$_pkgname-$pkgver.AppImage" --appimage-extract "usr/share/icons/hicolor/128x128/apps/modrinth-app.png"
     "./$_pkgname-$pkgver.AppImage" --appimage-extract "usr/share/icons/hicolor/256x256@2/apps/modrinth-app.png"
 
     cp -r "squashfs-root/usr/" "${pkgdir}"
 
-    install -Dm644 "squashfs-root/modrinth-app.desktop" "$pkgdir/usr/share/applications/modrinth-app.desktop"
+    install -Dm644 "squashfs-root/usr/share/applications/modrinth-app.desktop" "$pkgdir/usr/share/applications/modrinth-app.desktop"
     install -Dm755 "$_pkgname-$pkgver.AppImage" "$pkgdir/opt/modrinth-app/modrinth-app.AppImage"
     install -Dm755 "modrinth-app" "$pkgdir/usr/bin/modrinth-app"
 }
