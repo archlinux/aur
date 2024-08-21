@@ -38,8 +38,13 @@ build() {
     -mod=readonly \
     -modcacherw \
     ../
+  go run ../ completion bash >bash-completion
+  go run ../ completion zsh >zsh-completion
 }
 
 package() {
-  install -Dm755 "${srcdir}/${_pkgname}/build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  cd "${srcdir}/${_pkgname}/build"
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 bash-completion "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+  install -Dm644 zsh-completion "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
 }
