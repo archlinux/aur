@@ -1,11 +1,11 @@
-# Maintainer: Bernhard Landauer <oberon@manjaro.org>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Bernhard Landauer <oberon@manjaro.org>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Cristian Maureira <saint@archlinux.cl>
 # Contributor: Dr.Egg <rwhite@archlinux.us>
 
 pkgname=musescore-git
 pkgver=3.2.r6.gf8dfe6d5c
-_branch=3.2.1
 pkgrel=1
 pkgdesc='git-version of the sheet music editor MuseScore'
 arch=('i686' 'x86_64')
@@ -33,8 +33,7 @@ makedepends=(  cmake
 optdepends=('lame: MP3 export')
 conflicts=('musescore')
 provides=('musescore')
-install=musescore.install
-source=("git+$url.git#branch=$_branch")
+source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -47,7 +46,6 @@ build() {
   make revision
   cmake -DCMAKE_BUILD_TYPE=RELEASE \
 	-DCMAKE_INSTALL_PREFIX="/usr" \
-	-DMSCORE_INSTALL_SUFFIX="-git" \
 	-DMUSESCORE_LABEL="Git Build" \
 	-DBUILD_LAME="ON" \
 	-DCMAKE_SKIP_RPATH="FALSE" \
@@ -60,5 +58,5 @@ build() {
 
 package() {
   cd MuseScore
-  make DESTDIR="${pkgdir}" SUFFIX="-git" LABEL="Git Build" install
+  make DESTDIR="${pkgdir}" LABEL="Git Build" install
 }
