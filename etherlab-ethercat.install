@@ -1,4 +1,0 @@
-post_install() {
-	groupadd -f ethercat
-	echo "NOTE: to access EtherCAT devices as normal user, he must be into the 'ethercat' group"
-}
