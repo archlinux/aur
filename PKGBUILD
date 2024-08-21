@@ -2,24 +2,24 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 _base=mwoauth
 pkgname=python-${_base}
-pkgver=0.3.8
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Generic MediaWiki OAuth handshake helper for Python"
 license=(MIT)
 arch=(any)
 url="https://github.com/mediawiki-utilities/${pkgname}"
 depends=(python-pyjwt python-requests-oauthlib)
-makedepends=(python-setuptools)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('29e70f7e40e4a7625c50ba3b619124c33af2cb82139895eaa834e161e4650a6b08e987f04b2a2b09395f625b146c052bb04a512b1939a8b931947b20dee1f6df')
+sha512sums=('29362d3c0c24e7ea10c537f02f2815fb721d57c14862953d43312edd10142c7df174628d1eb097fb4d8304d989290a1f314f0e8e11d693238c9743b03e569436')
 
 build() {
   cd ${_base}-${pkgver}
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
