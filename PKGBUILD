@@ -1,7 +1,7 @@
 # Maintainer: Klaus Alexander Seiﬆrup <klaus at seistrup dot dk>
 pkgname=dooble-git
 _pkgname=Dooble
-pkgver=2024.01.25.r25.gd1fdfdcf
+pkgver=2024.08.20.r0.g364b1433
 pkgrel=1
 pkgdesc="Web browser based on QtWebEngine"
 arch=("x86_64")
@@ -25,7 +25,7 @@ makedepends=(
     'qt6-base'
     'qt6-charts'
     'gcc'
-    'base-devel'
+    'cmake'
     'fakeroot'
 )
 source=(
@@ -33,7 +33,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '8c1c658ce21dc1f5fe8687c7406b3f263dc53e2498662c538d963644e9dacdf1')
+            '6b7934c7d560fb22f89b067bf31c3e6c897d767f45299fff244d923c036498af')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -44,7 +44,9 @@ build() {
         -i "${srcdir}/${pkgname%-git}.sh"
     cd "${srcdir}/${pkgname//-/.}"
     sed "s|/usr/bin/${pkgname%-git}|${pkgname%-git} %U|g" -i Distributions/"${pkgname%-git}".desktop
-    sed '38i\#include <QInputDialog>' -i Source/dooble.cc
+    #sed '38i\#include <QInputDialog>' -i Source/dooble.cc
+    sed "/-Werror/d" -i "${pkgname%-git}.pro"
+    sed "s|-Werror=format-security||g;s|-Werror||g" -i Makefile
     qmake -o Makefile "${pkgname%-git}.pro"
     make
 }
