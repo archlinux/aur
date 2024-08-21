@@ -58,6 +58,7 @@ package_goffice08() {
            'pango>=1.8.1' 'cairo>=1.2.0' 'gtk2>=2.12.0' 'gdk-pixbuf2' 'pcre'
            'lasem02' 'at-spi2-core')
   optdepends=("${pkgbase}-docs: HTML documentation")
+  provides=("${_name}=${pkgver}" "${name}-0.8=${pkgver}")
 
   cd "${srcdir}/${_pkgsrc}"
   make DESTDIR="${pkgdir}" install
