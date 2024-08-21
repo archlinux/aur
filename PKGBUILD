@@ -1,7 +1,7 @@
 # Maintainer: Toni500 <tonino512@linuxmail.org>
 pkgname="tabaur-git"
 _pkgname="TabAUR"
-pkgver=0.6.7.r0.4dc1eba
+pkgver=0.6.9.r0.4dc1eba
 pkgrel=1
 pkgdesc="A customizable and lightweight AUR helper, designed to be simple but powerful."
 arch=('x86_64' 'aarch64')
