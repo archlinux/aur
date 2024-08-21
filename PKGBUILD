@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=blender-bin
 pkgver=4.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)"
 arch=('x86_64')
 url="https://blender.org"
@@ -16,6 +16,7 @@ license=(
   MPL-2.0
   Zlib
 )
+makedepends=('rsync')
 depends=('glibc' 'bash' 'hicolor-icon-theme'
 'libxkbcommon'
 'libxi'
