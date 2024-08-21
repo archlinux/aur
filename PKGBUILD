@@ -5,7 +5,7 @@
 # Contributor: Fredrick Brennan <copypaste@kittens.ph>
 
 pkgname=mastodon
-pkgver=4.2.10
+pkgver=4.2.12
 pkgrel=1
 pkgdesc='Your self-hosted, globally interconnected microblogging community'
 arch=(any)
@@ -22,9 +22,9 @@ depends=(ffmpeg
          nodejs
          postgresql
          protobuf
-         redis
          ruby-bundler
          sudo
+         valkey
          yarn
          zlib)
 backup=(etc/mastodon.conf)
@@ -34,19 +34,25 @@ source=(https://github.com/mastodon/mastodon/archive/v$pkgver.tar.gz
         mastodon.target
         mastodon.sysusers.d
         mastodon.tmpfiles.d)
-sha512sums=('1fe5417136bc020a83b83eaccef7f1f46c13fc8318681f12ba556b1b6b03e25ef7b6335c28f4e6722101e97b63020cbd0d3fbacdaf9b3b5a4b73c3cf3e230813'
-            'bbce4ff9142265fc7d5f7669637c112240bc6d1b39dedf212faf8acb09fb9b4b2acc07038df5e790c60baff51bc44ffef9318f9fce043c6831ae5e5f02fea5a6'
+sha512sums=('511ce2df1860150c7544581628937cc91a1441de58656c8064702ccffc59197406b0c5df083ffa7e836c4e4354d0183778c1caa0561e0ab4a43ebb4c4afe765f'
+            'ce9fe810654f3a641bbc1ea9707fa1b149e3955bfc55da20ed27e58f9c768dd65534fa43c9d67042fff40c48ef33c660efac8ef11c60f1111173326e2a93814c'
             '4ee4210bde391e6dc782cb7c14f2cb968c95ad541aa0efcf843a811f8cc5f0d1067ee3c8346bb412aa9fd1dd5a8bd05a4524df7dc4a106957009853dd237074a'
             '27c4eb01d462c525b59e5808a3b2501b63a34425752128388fbde82f7eb5944b20d2f8d8b1be8ed8adb165cab4cfb8e13f90215f20989ca671a0422ffa37001f')
 
 build() {
   cd mastodon-$pkgver
   sed -i '/husky install/d' package.json # Stop husky from hijacking git hooks
-  bundle config deployment 'true'
+  bundle config set deployment true
   bundle config without 'development test'
   bundle config with 'pam_authentication'
+  bundle config set frozen false
+  bundle add erb
   bundle install -j$(getconf _NPROCESSORS_ONLN)
   yarn install --pure-lockfile
+  # https://aur.archlinux.org/packages/mastodon?O=0#comment-986425
+  cd vendor/bundle/ruby/*/gems/ox-*/ext/ox
+  make
+  cp ox.so ../../lib
 }
 
 package() {
