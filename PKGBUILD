@@ -4,7 +4,7 @@
 # Forked from "flexbv-bin" and modified
 
 pkgname=flexbv-free
-pkgver=5.0360
+pkgver=5.0373
 pkgrel=1
 pkgdesc="FlexBV Free. Professional Boardview Software."
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=()
 source=("${pkgname}-${pkgver}.tar.gz::https://pldaniels.com/flexbv5/free/FlexBVFree-${pkgver}-linux.tar.gz"
 	"flexbv.desktop"
 	"flexbv-free-icon.svg::https://pldaniels.com/flexbv5/assets/flexbv-free-icon.svg")
-sha256sums=('1bcfd1fa10a47a940505f6c4916f0e2ed4b36a054715baa60f8a23efe61a2ee4'
+sha256sums=('9d9ef206edaf0f00e03abf489ee567381bdaac6192e40eb73b15477ddc857d22'
             'ee12188b6faa294e00751c99c92cdfb744fc8b8fb0f9a9585c42e4b4b1a17ed8'
             'e19c10e335eb9ba4278317c5f0f07f25e9051f0bcd3b6bb0fb85b3b2ee73124e')
 
