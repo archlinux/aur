@@ -1,9 +1,9 @@
 # Maintainer: Patrick Wicki <patrick.wicki96 at gmail dot com>
 
 pkgname=barify
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
-pkgdesc='Modify volume or brightness and display result as a bar via notifications'
+pkgdesc='Adjust volume/brightness and display result as a bar via notifications'
 arch=(any)
 url="https://github.com/arctize/barify"
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(git notification-daemon)
 optdepends=('dunst: for notifications on Xorg'
             'mako: for notifications on Wayland')
-sha256sums=('ff83fe082833c346756a4fa9e77927f4f39f9538362304f04db9351291f22e53')
+sha256sums=('05c5dbd45707d6e9f22396f72bbb0b77ea93c731b6c4517a37e4930dbf48df2e')
 
 package() {
   cd ${pkgname}-${pkgver}
