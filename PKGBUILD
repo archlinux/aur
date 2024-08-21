@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _gemname=tcxread
 pkgname=ruby-${_gemname}
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="A parser for TCX files"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(ruby-nokogiri)
 source=(https://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
 noextract=(${_gemname}-${pkgver}.gem)
-sha256sums=('fafa2a7f9f994b428894f66a68a05f0210cfc95b492e3abf5c48f77f6de3cb3e')
+sha256sums=('ef9de56cbf2531ea3ed33a23f0f061c0cf3609468776d5c0998b1dda907bbe3c')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
