@@ -2,9 +2,9 @@
 # Contributor: Nicolas FORMICHELLA <stigpro@outlook.fr>
 
 pkgname=image-optimizer
-pkgver=0.1.23
+pkgver=0.1.25
 pkgrel=1
-_commit=4d525e9cc0792331a1435c351014152c93bb7dd5
+_commit=8212165c7c8aa6e704e6c11c9d914103667eb66b
 pkgdesc="Simple lossless compression"
 url="https://github.com/gijsgoudzwaard/image-optimizer"
 license=('MIT')

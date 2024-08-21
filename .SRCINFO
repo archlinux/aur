@@ -1,6 +1,6 @@
 pkgbase = image-optimizer
 	pkgdesc = Simple lossless compression
-	pkgver = 0.1.23
+	pkgver = 0.1.25
 	pkgrel = 1
 	url = https://github.com/gijsgoudzwaard/image-optimizer
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = image-optimizer
 	depends = granite
 	depends = optipng
 	depends = jpegoptim
-	source = git+https://github.com/gijsgoudzwaard/image-optimizer.git#commit=4d525e9cc0792331a1435c351014152c93bb7dd5
+	source = git+https://github.com/gijsgoudzwaard/image-optimizer.git#commit=8212165c7c8aa6e704e6c11c9d914103667eb66b
 	sha256sums = SKIP
 
 pkgname = image-optimizer
