@@ -4,7 +4,7 @@
 
 pkgname=albert
 pkgver=0.26.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
 url="https://github.com/albertlauncher"
@@ -21,7 +21,13 @@ optdepends=('ddgr: duckduckgo search plugin'
             'python-syncthing: syncthing plugin'
             'python-urllib3: python web plugins'
             'python-virtualbox: virtualbox plugin')
-source=("https://github.com/albertlauncher/albert/releases/download/v${pkgver}/v${pkgver}.tar.gz")
+source=("https://github.com/albertlauncher/albert/releases/download/v${pkgver}/v${pkgver}.tar.gz"
+        "gh1426.patch")
+
+prepare() {
+  # remove after fix https://github.com/albertlauncher/albert/issues/1426g
+  patch -p0 -i gh1426.patch
+}
 
 build() {
   mkdir -p build
@@ -67,4 +73,5 @@ package() {
   install -Dm644 "$srcdir/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha512sums=('dba6a850bbc787aae8e1ca7c65b98a84f892405e75042c153255756f85c0b1b552be199416dd65e555291b5d731823c290639d8903c87d1b5af1a0b7dc96765b')
+sha512sums=('dba6a850bbc787aae8e1ca7c65b98a84f892405e75042c153255756f85c0b1b552be199416dd65e555291b5d731823c290639d8903c87d1b5af1a0b7dc96765b'
+            '225819b49f30b9a17527d48ec5fe29b82c50127c5e116833ddc91e6d4ae3680d639de4bb749d26195d9d196d9f68fa55fdc30761c126569e3778fb882ea86cb4')
