@@ -1,9 +1,10 @@
 pkgbase = android-armv7a-eabi-librsvg
 	pkgdesc = SVG rendering library (Android armv7a-eabi)
-	pkgver = 2.58.1
+	pkgver = 2.58.3
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/LibRsvg
 	arch = any
+	groups = android-librsvg
 	license = LGPL-2.1-or-later
 	makedepends = android-configure
 	makedepends = android-rust
@@ -18,7 +19,7 @@ pkgbase = android-armv7a-eabi-librsvg
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://gitlab.gnome.org/GNOME/librsvg/-/archive/2.58.1/librsvg-2.58.1.tar.bz2
-	md5sums = 43ea095ba01ff3cad6d7d6860543527e
+	source = https://gitlab.gnome.org/GNOME/librsvg/-/archive/2.58.3/librsvg-2.58.3.tar.bz2
+	md5sums = 285238be66277c056c4456e779038407
 
 pkgname = android-armv7a-eabi-librsvg

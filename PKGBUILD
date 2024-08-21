@@ -6,12 +6,13 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-librsvg
-pkgver=2.58.1
+pkgver=2.58.3
 pkgrel=1
 arch=('any')
 pkgdesc="SVG rendering library (Android ${_android_arch})"
 url="https://wiki.gnome.org/Projects/LibRsvg"
 license=('LGPL-2.1-or-later')
+groups=('android-librsvg')
 depends=("android-${_android_arch}-cairo"
          "android-${_android_arch}-freetype2"
          "android-${_android_arch}-gdk-pixbuf2"
@@ -23,10 +24,10 @@ makedepends=('android-configure'
              'android-rust')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.gnome.org/GNOME/librsvg/-/archive/${pkgver}/librsvg-${pkgver}.tar.bz2")
-md5sums=('43ea095ba01ff3cad6d7d6860543527e')
+md5sums=('285238be66277c056c4456e779038407')
 
 prepare() {
-    cd "${srcdir}/librsvg-$pkgver"
+    cd "${srcdir}/librsvg-${pkgver}"
     source android-rust-env ${_android_arch}
     android_rust_prepare
 
@@ -40,7 +41,7 @@ export CARGO_PROFILE_RELEASE_LTO=true CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
 export CARGO_PROFILE_RELEASE_DEBUG=2
 
 build() {
-    cd "${srcdir}/librsvg-$pkgver"
+    cd "${srcdir}/librsvg-${pkgver}"
     source android-rust-env ${_android_arch}
 
     export RST2MAN=no
@@ -54,10 +55,10 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/librsvg-$pkgver"
+    cd "${srcdir}/librsvg-${pkgver}"
     source android-rust-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}/"{doc,man}
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
