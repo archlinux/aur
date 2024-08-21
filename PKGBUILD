@@ -2,7 +2,7 @@
 
 pkgname=('etherlab-ethercat' 'etherlab-ethercat-tools')
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='https://etherlab.org'
 license=('GPL2')
@@ -47,6 +47,7 @@ package_etherlab-ethercat() {
 package_etherlab-ethercat-tools() {
   pkgdesc="Tools for IgH EtherCAT(R) Master component"
   install='etherlab-ethercat.install'
+  backup=('etc/ethercat.conf')
 
   install -Dt "$pkgdir/etc/udev/rules.d/" -m0644 99-EtherCAT.rules
 
