@@ -1,4 +1,4 @@
-# Maintainer: tamer <tamer.fahmy at gmail dot com>
+# Maintainer: tuhtah <tamer.fahmy at gmail dot com>
 # Adapted from benthos-bin: https://aur.archlinux.org/packages/benthos-bin
 
 pkgname=bento-bin
