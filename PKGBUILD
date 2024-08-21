@@ -3,7 +3,7 @@
 pkgname=kaggle-api
 _name=${pkgname%-api}
 pkgver=1.6.17
-pkgrel=1
+pkgrel=2
 pkgdesc='Kaggle API CLI'
 arch=('any')
 url="https://github.com/Kaggle/kaggle-api"
@@ -19,7 +19,6 @@ depends=(
   'python-slugify'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-replaces=('kaggle-api')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 
 build() {
