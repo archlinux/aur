@@ -1,7 +1,7 @@
 pkgname=deepin-application-manager-git
 _pkgname=deepin-application-manager
 sourcename=dde-application-manager
-pkgver=1.1.7.r2.g95019a3
+pkgver=1.2.15.r2.g0e6c213
 pkgrel=1
 pkgdesc='App manager of Deepin Desktop Environment'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/linuxdeepin/dde-application-manager"
 license=('GPL3')
 # deepin-wloutput-daemon: org.deepin.dde.KWayland1
 # startdde: org.deepin.dde.XSettings1
-depends=('qt6-base' 'glibc' 'gcc-libs' 'systemd-libs' 'deepin-wloutput-daemon' 'startdde')
+depends=('qt6-base' 'glibc' 'gcc-libs' 'systemd-libs')
 makedepends=('cmake' 'ninja' 'gtest')
 conflicts=($_pkgname)
 provides=($_pkgname)
