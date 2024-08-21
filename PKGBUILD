@@ -2,7 +2,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-oslo-upgradecheck
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Common code for writing OpenStack upgrade checks"
 arch=(any)
@@ -27,7 +27,7 @@ checkdepends=('python-hacking'
               'python-stestr'
               'pre-commit')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('bb7d79c03626c882f927a6037b19fb51141c27373ca1a35d10ba30ee30c82ba1c9564a3517294d6d947ba441f35026598e3df879c0a4d0559d21a8d57099aadb')
+b2sums=('94275dc5241c255461e4d04e01f0fddf1c2f11f34dd3e5e8ea404d52704843a39d0cca7845851abf7260f26c0a6d9f03d0a6ba80da0eb790524c72d32f15f678')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
