@@ -6,7 +6,7 @@ pkgdesc="NoIP Manager: A simple tool to manage No-IP dynamic DNS configurations.
 arch=('x86_64')
 url="https://github.com/felipealfonsog/NoIP-Manager"
 license=('BSD-3-Clause')
-depends=('bash')
+depends=('bash' 'noip')
 
 source=("https://github.com/felipealfonsog/NoIP-Manager/archive/refs/tags/v.${pkgver}.tar.gz")
 

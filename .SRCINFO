@@ -6,6 +6,7 @@ pkgbase = noipconf
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = bash
+	depends = noip
 	source = https://github.com/felipealfonsog/NoIP-Manager/archive/refs/tags/v.0.0.1.tar.gz
 	sha256sums = 76e5f742f3e737b580cea52c6dd97df2e4d94a59eb9b410dad1c35306fffb3ec
 
