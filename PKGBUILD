@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-color-monitor
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="This plugin provides three sources to monitor color balances"
 arch=("x86_64" "aarch64")
@@ -11,12 +11,12 @@ depends=("obs-studio>=28" "glibc" "gcc-libs" "qt6-base")
 makedepends=("cmake")
 options=('debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/norihiro/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=("27acaa2914cc5143738dd270b9d816b1de58df2364fec5dde088b9b2b3298c4e")
+sha256sums=("0543571521cb0fbac133bbd5d1e7a38c1ffe20d22b0f059d250516de99d2be07")
 
 build() {
   cd "$pkgname-$pkgver"
   cmake -B build \
-  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
   -DLINUX_PORTABLE=OFF \
