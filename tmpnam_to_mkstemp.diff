@@ -1,0 +1,59 @@
+=== src/plotone.c
+==================================================================
+Index: grace-5.1.22/src/plotone.c
+===================================================================
+--- grace-5.1.22.orig/src/plotone.c	2005-05-19 13:30:25.000000000 -0700
++++ grace-5.1.22/src/plotone.c	2011-01-09 13:01:35.003652015 -0800
+@@ -121,18 +121,28 @@
+             sprintf(print_file, "%s.%s", get_docbname(), dev.fext);
+         }
+         strcpy(fname, print_file);
++        prstream = grace_openw(fname);
+     } else {
++        int hdfd;
++
+         s = get_print_cmd();
+         if (s == NULL || s[0] == '\0') {
+             errmsg("No print command defined, output aborted");
+             return;
+         }
+-        tmpnam(fname);
+-        /* VMS doesn't like extensionless files */
+-        strcat(fname, ".prn");
++	strcpy(fname, "/tmp/grace-hardcopy-XXXXXX");
++        hdfd=mkstemp(fname);
++	if (hdfd == -1) {
++		errmsg("Could not create a temporary file, output aborted.");
++		return;
++	}
++	prstream = fdopen(hdfd, "wb");
++	if (prstream == NULL) {
++		errmsg("Could not create a temporary file, output aborted.");
++		return;
++	}
+     }
+     
+-    prstream = grace_openw(fname);
+     
+     if (prstream == NULL) {
+         return;
+Index: grace-5.1.22/src/editpwin.c
+===================================================================
+--- grace-5.1.22.orig/src/editpwin.c	2006-06-03 14:19:52.000000000 -0700
++++ grace-5.1.22/src/editpwin.c	2011-01-09 13:01:09.887113854 -0800
+@@ -776,12 +776,12 @@
+  */
+ void do_ext_editor(int gno, int setno)
+ {
+-    char *fname, ebuf[256];
++    char fname[64], ebuf[256];
+     FILE *cp;
+     int save_autos;
+ 
+-    fname = tmpnam(NULL);
+-    cp = grace_openw(fname);
++    strcpy(fname, "/tmp/grace-XXXXXX");
++    cp = fdopen(mkstemp(fname), "wb");
+     if (cp == NULL) {
+         return;
+     }

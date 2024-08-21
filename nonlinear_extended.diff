@@ -1,0 +1,756 @@
+Description: Add multiple non-linear data fitting functions
+ One of the most used features in software for scientific data analysis is
+ the ability to perform non linear peak fitting (specifically Lorentzian and
+ Gaussian fits). Xmgrace sorely lacks this capability, unless you consider
+ adding manually the required formula.
+ .
+ This implements a substantial library of such functions and documentation
+ for their use.
+Author: Nicola Ferralis <feranick@hotmail.com>
+Bug: http://plasma-gate.weizmann.ac.il/Grace/phpbb/w3todo.php?action=view_report&project_id=1&todo_id=2220
+Bug-Debian: http://bugs.debian.org/578435
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/grace/+bug/535459
+Last-Update: 2010-05-26
+Index: grace-5.1.22/doc/UsersGuide.html
+===================================================================
+--- grace-5.1.22.orig/doc/UsersGuide.html	2008-05-21 13:52:14.000000000 -0700
++++ grace-5.1.22/doc/UsersGuide.html	2010-07-27 11:01:29.000000000 -0700
+@@ -1516,6 +1516,103 @@
+ sample range or to produce an evenly spaced set from an irregular
+ one.</P>
+ 
++<P>Under the "Library" menu, several functions are available under the
++categories: "Gaussian Functions", "Lorentzian Functions", "Peak Functions",
++ "Periodic Peak Functions" and "Baseline Functions".</P>
++
++<P><i>Gaussian</i><br>&nbsp y = A0 + (A3*2*sqrt(ln(2)/pi)/A2)*exp(-4*ln(2)*((x-A1)/A2)^2)<br>
++&nbsp where: A0: Baseline offset; A1: Center of the peak; A2: Full width at half
++maximum; A3: Peak area.<br> The center and initial amplitude of the peak can be set from
++ user input (via mouse coordinates). </P>
++
++<br>
++<P><i>Gaussian (Chromatography):</i><br>
++&nbsp y = A0 + (1/sqrt(2*pi))*(A3/A2)*exp(-(x-A1)^2/2*A2^2)
++ A0: Baseline offset; A1: Center of the peak (retention time); A2:
++ Standard deviation of the peak; A3: Peak area. <br> The center and initial amplitude of the peak can be set from
++ user input (via mouse coordinates). </P>
++
++<br>
++<P><i>Lorentzian</i><br>&nbsp y = A0 + (2*A2*A3/pi)/(4*(x-A1)^2 + A2^2)<br>
++&nbsp where: A0: Baseline offset; A1: Center of the peak; A2: Full width at half
++maximum; A3: Peak area. <br> The center and initial amplitude of the peak can be set from
++ user input (via mouse coordinates).</P>
++
++<br>
++<P><i>Peak Functions</i><br>
++<i>Pseudo Voigt 1</i><br>
++&nbsp y = A0 + A3 * (A4*(2/pi)*A2/(4*(x-A1)^2+A2^2) + <br>(1-A4)*exp(-4*ln(2)*(x-A1)^2/A2^2)*(sqrt(4*ln(2))/(A2*sqrt(pi))))<br>
++&nbsp where: Gaussian and Lorentzian have the same width; A0: Baseline offset;
++ A1: Center of the peak; A2: Full width at half maximum; A3: Amplitude;
++ A4: Profile shape factor.<br>
++<i>Pseudo Voigt 2</i><br>
++&nbsp y = A0 + A3 * (A5*(2/pi)*A2/(4*(x-A1)^2+A2^2) + (1-A5)*exp(-4*ln(2)*(x-A1)^2/A4^2)*(sqrt(4*ln(2))/(A2*sqrt(pi))))<br>
++&nbsp where: Gaussian and Lorentzian have different width; A0: Baseline offset;
++ A1: Center of the peak; A2: Full width at half maximum; A3: Amplitude;
++ A4: Profile shape factor.<br>
++<i>Doniach-Sunjic</i><br>
++&nbsp y = A0 + A3*cos((pi*A4/2)+(1-A4)*atan((x-A1)/A2))/(A2^2+(x-A1)^2)^((1-A4)/2)<br>
++&nbsp where:A0: Baseline offset; A1: Center of the peak; A2: Full width at half maximum;<br>
++&nbspA3: Peak area; A4: Asymmetry parameter.<br>
++<i>Asymmetric double Sigmoidal</i><br>
++&nbsp y = A0 + A3*(1/(1+exp(-(x-A1+A2/2)/A4)))*(1-(1/(1+exp(-(x-A1-A2/2)/A5))))<br>
++&nbsp where: A0: Baseline offset; A1: Center of the peak; A2: Width 1;
++ A3: Amplitude; A4: Width 2; A5: Width 5.<br>
++<i>Logarithm Normal:</i> <br>
++&nbsp y = A0 + A3*exp(-((ln(x)-ln(A1))^2)/(2*A2))<br>
++&nbsp where: A0: Baseline offset; A1: Center of the peak; A2: Width <br>
++<i>Gram-Charlier A-Series (GCAS)</i><br>
++&nbsp y = A0 + A3/(A2*sqrt(2*pi))*exp(-0.5*((x-A1)/A2)^2)*(1+(A4/6)*
++ (((x-A1)/A2)^3-3*(x-A1)/A2)+(A5/24)*(((x-A1)/A2)^4-6*((x-A1)/A2)^3+3))<br>
++&nbsp where: A0: Baseline offset; A1: Center of the peak; A2: Standard deviation;
++ A3: Peak Area; A4: Skew; A5: Excess. <br>
++<i>Edgeworth-Cramer Series</i><br>
++&nbsp y = A0 + A3/(A2*sqrt(2*pi))*exp(-0.5*((x-A1)/A2)^2)*(1+(A4/6)*
++ (((x-A1)/A2)^3-3*(x-A1)/A2)+(A5/24)*(((x-A1)/A2)^4-6 *((x-A1)/A2)^3+3)
++ +(A5^2/720)*(((x-A1)/A2)^6-15*((x-A1)/A2)^4+45*((x-A1)/A2)^2-15))<br>
++&nbsp where: A0: Baseline offset; A1: Center of the peak; A2: Standard deviation;
++ A3: Peak Area; A4: Skew; A5: Excess. <br>
++<i>Inverse Polynomial</i><br>
++&nbsp y=A0+A3/(1+ A4*(2*(x-A1)/A2)^2 + A5*(2*(x-A1)/A2)^4 + A6*(2*(x-A1)/A2)^6) <br>
++&nbsp where: A0: Baseline offset; A1: Center of the peak; A2: Standard deviation;
++ A3: Peak Area; A4, A5, A6: Parameters. <br>
++ </P>
++
++<br>
++<P><i>Periodic Peak Functions</i><br>
++<i>Sine:</i> <br>
++&nbspy=A0+A3*sin(pi*(x-A1)/A2)<br>
++&nbspwhere: A0: Baseline offset; A1: Center; A2: Width; A3: Amplitude.<br>
++<i>Sine Square: </i><br>
++&nbspy=A0+A3*sin(pi*(x-A1)/A2)^2<br>
++&nbspwhere: A0: Baseline offset; A1: Center; A2: Width; A3: Amplitude.<br>
++<i>Sine damp: </i><br>
++&nbspy=A0+A3*exp(-x/A4)*sin(pi*(x-A1)/A2)<br>
++&nbspwhere: A0: Baseline offset; A1: Center; A2: Width; A3: Amplitude; A4: Decay time. <br>
++</P>
++
++<br>
++<P><i>Baseline Functions</i><br>
++<i>Exponential Decay 1:</i><br>
++&nbsp;y=A0+A3*exp(-(x-A1)/A2)<br>
++<b>Exponential Decay 2:</b> <br>
++&nbsp;y=A0+A3*exp(-(x-A1)/A2)+A6*exp(-(x-A4)/A5);<br>
++<i>Exponential Growth 1:</i> <br>
++&nbsp;y=A0+A3*exp((x-A1)/A2)<br>
++<i>Exponential Growth 2: </i><br>
++&nbsp;y=A0+A3*exp(-(x-A1)/A2)+A6*exp((x-A4)/A5);<br>
++<i>Hyperbolic:</i><br>
++&nbsp;y=A0+(A1*x)/(A2+x)<br>
++<i>Bradley:</i> <br>
++&nbsp;y=A0*ln(-A1*ln(x))<br>
++<i>Logarithm 3 Parameters: </i><br>
++&nbsp;y=A0-A1*ln(x+A2)<br>
++<i>Weibull Probability Density 2 Parameters: </i><br>
++&nbsp;y=(A0/A1)*((x/A1)^(A0-1))*exp(-(x/A1)^A0)<br>
++<i>Weibull Cumulative Distribution 2 Parameters: </i><br>
++&nbsp;y=1-exp(-(x/A1)^A0)<br>
++</P>
++
+ <H3><A NAME="correlation/covariance"></A> Correlation/covariance          </H3>
+ 
+ <P>This popup can be used to compute autocorrelation
+Index: grace-5.1.22/src/draw.c
+===================================================================
+--- grace-5.1.22.orig/src/draw.c	2005-11-19 13:53:24.000000000 -0800
++++ grace-5.1.22/src/draw.c	2010-07-27 10:50:30.000000000 -0700
+@@ -258,6 +258,12 @@
+     return (vp);
+ }
+ 
++WPoint Vpoint2Wpoint(VPoint vp)
++{
++    WPoint wp;
++    view2world(vp.x, vp.y, &wp.x, &wp.y);
++    return (wp);
++}
+ 
+ void symplus(VPoint vp, double s)
+ {
+Index: grace-5.1.22/src/draw.h
+===================================================================
+--- grace-5.1.22.orig/src/draw.h	2004-07-03 13:47:45.000000000 -0700
++++ grace-5.1.22/src/draw.h	2010-07-27 10:50:30.000000000 -0700
+@@ -236,6 +236,7 @@
+ double xy_xconv(double wx);
+ double xy_yconv(double wy);
+ VPoint Wpoint2Vpoint(WPoint wp);
++WPoint Vpoint2Wpoint(VPoint vp);
+ int world2view(double x, double y, double *xv, double *yv);
+ void view2world(double xv, double yv, double *xw, double *yw);
+ 
+Index: grace-5.1.22/src/events.c
+===================================================================
+--- grace-5.1.22.orig/src/events.c	2008-04-26 12:12:11.000000000 -0700
++++ grace-5.1.22/src/events.c	2010-07-27 10:50:30.000000000 -0700
+@@ -111,6 +111,7 @@
+     int axisno;
+     Datapoint dpoint;
+     GLocator locator;
++    static char buf[256];
+     
+     cg = get_cg();
+     get_tracking_props(&track_setno, &move_dir, &add_at);
+@@ -487,6 +488,60 @@
+                 }
+                 select_line(anchor_x, anchor_y, x, y, 0);
+ 		break;
++	    case PEAK_POS:
++		anchor_point(x, y, vp);
++		sprintf(buf, "Initial peak position, intensity: %f, %f \n", Vpoint2Wpoint(vp).x, Vpoint2Wpoint(vp).y);
++		stufftext(buf);
++		nonl_parms[1].value = Vpoint2Wpoint(vp).x;
++		nonl_parms[3].value = Vpoint2Wpoint(vp).y;
++		set_actioncb(NULL);
++		update_nonl_frame();
++		break;
++	    case PEAK_POS1:
++		anchor_point(x, y, vp);
++		sprintf(buf, "Initial position, intensity peak #1: %f, %f \n", Vpoint2Wpoint(vp).x, Vpoint2Wpoint(vp).y);
++		stufftext(buf);
++		nonl_parms[1].value = Vpoint2Wpoint(vp).x;
++		nonl_parms[3].value = Vpoint2Wpoint(vp).y;
++		set_actioncb((void*) PEAK_POS2);
++		update_nonl_frame();
++		break;
++	    case PEAK_POS2:
++		anchor_point(x, y, vp);
++		sprintf(buf, "Initial position, intensity peak #2: %f, %f \n", Vpoint2Wpoint(vp).x, Vpoint2Wpoint(vp).y);
++		stufftext(buf);
++		nonl_parms[4].value = Vpoint2Wpoint(vp).x;
++		nonl_parms[6].value = Vpoint2Wpoint(vp).y;
++		set_actioncb(NULL);
++		update_nonl_frame();
++		break;
++	    case PEAK_POS1B:
++		anchor_point(x, y, vp);
++		sprintf(buf, "Initial position, intensity peak #1: %f, %f \n", Vpoint2Wpoint(vp).x, Vpoint2Wpoint(vp).y);
++		stufftext(buf);
++		nonl_parms[1].value = Vpoint2Wpoint(vp).x;
++		nonl_parms[3].value = Vpoint2Wpoint(vp).y;
++		set_actioncb((void*) PEAK_POS2B);
++		update_nonl_frame();
++		break;
++	    case PEAK_POS2B:
++		anchor_point(x, y, vp);
++		sprintf(buf, "Initial position, intensity peak #2: %f, %f \n", Vpoint2Wpoint(vp).x, Vpoint2Wpoint(vp).y);
++		stufftext(buf);
++		nonl_parms[4].value = Vpoint2Wpoint(vp).x;
++		nonl_parms[6].value = Vpoint2Wpoint(vp).y;
++		set_actioncb((void*) PEAK_POS3B);
++		update_nonl_frame();
++		break;
++	    case PEAK_POS3B:
++		anchor_point(x, y, vp);
++		sprintf(buf, "Initial position, intensity peak #3: %f, %f \n", Vpoint2Wpoint(vp).x, Vpoint2Wpoint(vp).y);
++		stufftext(buf);
++		nonl_parms[7].value = Vpoint2Wpoint(vp).x;
++		nonl_parms[9].value = Vpoint2Wpoint(vp).y;
++		set_actioncb(NULL);
++		update_nonl_frame();
++		break;
+             default:
+                 break;
+             }
+@@ -567,6 +622,7 @@
+ void set_action(CanvasAction act)
+ {
+     int i;
++    static char buf[256];
+ /*
+  * indicate what's happening with a message in the left footer
+  */
+@@ -760,6 +816,42 @@
+ 	set_cursor(0);
+ 	set_left_footer("Pick ending point");
+ 	break;
++    case PEAK_POS:
++	set_cursor(0);
++	set_left_footer("Click on the approximate position of the maximum of the peak");
++	sprintf(buf, "Click on the approximate position of the maximum of the peak.\n");
++	stufftext(buf);
++	break;
++    case PEAK_POS1:
++	set_cursor(0);
++	set_left_footer("Click on the approximate position of the maximum of the peak #1");
++	sprintf(buf, "Click on the approximate position of the maximum of the peak #1.\n");
++	stufftext(buf);
++	break;
++    case PEAK_POS2:
++	set_cursor(0);
++	set_left_footer("Click on the approximate position of the maximum of the peak #2");
++	sprintf(buf, "Click on the approximate position of the maximum of the peak #2.\n");
++	stufftext(buf);
++	break;
++    case PEAK_POS1B:
++	set_cursor(0);
++	set_left_footer("Click on the approximate position of the maximum of the peak #1");
++	sprintf(buf, "Click on the approximate position of the maximum of the peak #1.\n");
++	stufftext(buf);
++	break;
++    case PEAK_POS2B:
++	set_cursor(0);
++	set_left_footer("Click on the approximate position of the maximum of the peak #2");
++	sprintf(buf, "Click on the approximate position of the maximum of the peak #2.\n");
++	stufftext(buf);
++	break;
++    case PEAK_POS3B:
++	set_cursor(0);
++	set_left_footer("Click on the approximate position of the maximum of the peak #3");
++	sprintf(buf, "Click on the approximate position of the maximum of the peak #3.\n");
++	stufftext(buf);
++	break;
+     }
+ 
+     action_flag = act;
+Index: grace-5.1.22/src/events.h
+===================================================================
+--- grace-5.1.22.orig/src/events.h	2004-07-03 13:47:45.000000000 -0700
++++ grace-5.1.22/src/events.h	2010-07-27 10:50:30.000000000 -0700
+@@ -81,7 +81,13 @@
+     ZOOMY_1ST,
+     ZOOMY_2ND,
+     DISLINE1ST,
+-    DISLINE2ND
++    DISLINE2ND,
++    PEAK_POS,
++    PEAK_POS1,
++    PEAK_POS2,
++    PEAK_POS1B,
++    PEAK_POS2B,
++    PEAK_POS3B
+ } CanvasAction;
+ 
+ /* add points at */
+Index: grace-5.1.22/src/nonlwin.c
+===================================================================
+--- grace-5.1.22.orig/src/nonlwin.c	2010-07-27 10:50:30.000000000 -0700
++++ grace-5.1.22/src/nonlwin.c	2010-07-27 11:01:29.000000000 -0700
+@@ -7,6 +7,7 @@
+  * Copyright (c) 1996-2000 Grace Development Team
+  * 
+  * Maintained by Evgeny Stambulchik
++ * Additional non linear fitting functions by Nicola Ferralis
+  * 
+  * 
+  *                           All Rights Reserved
+@@ -47,6 +48,7 @@
+ #include "parser.h"
+ #include "motifinc.h"
+ #include "protos.h"
++#include "events.h"
+ 
+ /* nonlprefs.load possible values */
+ #define LOAD_VALUES         0
+@@ -98,6 +100,34 @@
+ static void nonl_wf_cb(int value, void *data);
+ static void do_constr_toggle(int onoff, void *data);
+ 
++static void nonl_Lorentzian_cb(void *data);
++static void nonl_doubleLorentzian_cb(void *data);
++static void nonl_tripleLorentzian_cb(void *data);
++static void nonl_Gaussian_cb(void *data);
++static void nonl_doubleGaussian_cb(void *data);
++static void nonl_tripleGaussian_cb(void *data);
++static void nonl_Gaussian2_cb(void *data);
++static void nonl_PsVoight1_cb(void *data);
++static void nonl_PsVoight2_cb(void *data);
++static void nonl_DS_cb(void *data);
++static void nonl_Asym2Sig_cb(void *data);
++static void nonl_LogNormal_cb(void *data);
++static void nonl_GCAS_cb(void *data);
++static void nonl_ECS_cb(void *data);
++static void nonl_InvPoly_cb(void *data);
++static void nonl_Sine_cb(void *data);
++static void nonl_Sinesq_cb(void *data);
++static void nonl_Sinedamp_cb(void *data);
++static void nonl_ExpDec1_cb(void *data);
++static void nonl_ExpDec2_cb(void *data);
++static void nonl_ExpGrow1_cb(void *data);
++static void nonl_ExpGrow2_cb(void *data);
++static void nonl_Hyperbol_cb(void *data);
++static void nonl_Bradley_cb(void *data);
++static void nonl_Log3_cb(void *data);
++static void nonl_WeibullPD_cb(void *data);
++static void nonl_WeibullCD_cb(void *data);
++
+ static void update_nonl_frame_cb(void *data);
+ static void reset_nonl_frame_cb(void *data);
+ 
+@@ -118,7 +148,7 @@
+     if (nonl_frame == NULL) {
+         int i;
+         OptionItem np_option_items[MAXPARM + 1], option_items[5];
+-        Widget menubar, menupane;
++        Widget menubar, menupane, submenugauss, submenulorentz, submenupeak, submenubaseline, submenuperiodic;
+         Widget nonl_tab, nonl_main, nonl_advanced;
+         Widget sw, title_fr, fr3, rc1, rc2, rc3, lab;
+ 
+@@ -145,6 +175,54 @@
+         CreateMenuSeparator(menupane);
+         CreateMenuButton(menupane, "Update", 'U', update_nonl_frame_cb, NULL);
+ 
++	menupane = CreateMenu(menubar, "Library", 'L', FALSE);
++
++	submenugauss = CreateMenu(menupane, "Gaussian Functions", 'G', FALSE);
++	CreateMenuButton(submenugauss, "Single", 'g', nonl_Gaussian_cb, NULL);
++	CreateMenuButton(submenugauss, "Double", 'D', nonl_doubleGaussian_cb, NULL);
++	CreateMenuButton(submenugauss, "Triple", 'T', nonl_tripleGaussian_cb, NULL);
++	CreateMenuSeparator(submenugauss);
++	CreateMenuButton(submenugauss, "Single (chromatography)", 'c', nonl_Gaussian2_cb, NULL);
++	CreateMenuSeparator(menupane);
++
++	submenulorentz = CreateMenu(menupane, "Lorentzian Functions", 'L', FALSE);
++	CreateMenuButton(submenulorentz, "Single", 'S', nonl_Lorentzian_cb, NULL);
++	CreateMenuButton(submenulorentz, "Double", 'D', nonl_doubleLorentzian_cb, NULL);
++	CreateMenuButton(submenulorentz, "Triple", 'T', nonl_tripleLorentzian_cb, NULL);
++	CreateMenuSeparator(menupane);
++
++	submenupeak = CreateMenu(menupane, "Peak Functions", 'P', FALSE);
++	CreateMenuButton(submenupeak, "Pseudo Voigt 1", 'V', nonl_PsVoight1_cb, NULL);
++	CreateMenuButton(submenupeak, "Pseudo Voigt 2", 'o', nonl_PsVoight2_cb, NULL);
++	CreateMenuButton(submenupeak, "Doniach-Sunjic", 'D', nonl_DS_cb, NULL);
++	CreateMenuButton(submenupeak, "Asymmetric Double Sigmoidal", 'S', nonl_Asym2Sig_cb, NULL);
++	CreateMenuButton(submenupeak, "LogNormal", 'L', nonl_LogNormal_cb, NULL);
++	CreateMenuButton(submenupeak, "Gram-Charlier A-Series", 'C', nonl_GCAS_cb, NULL);
++	CreateMenuButton(submenupeak, "Edgeworth-Cramer Series", 'E', nonl_ECS_cb, NULL);
++	CreateMenuButton(submenupeak, "Inverse Polynomial", 'I', nonl_InvPoly_cb, NULL);
++	CreateMenuSeparator(menupane);
++
++	submenuperiodic = CreateMenu(menupane, "Periodic Peak Functions", 'e', FALSE);
++	CreateMenuButton(submenuperiodic, "Sine", 'S', nonl_Sine_cb, NULL);
++	CreateMenuButton(submenuperiodic, "Sine Square", 'q', nonl_Sinesq_cb, NULL);
++	CreateMenuButton(submenuperiodic, "Sine Damp", 'D', nonl_Sinedamp_cb, NULL);
++	CreateMenuSeparator(menupane);
++
++	submenubaseline = CreateMenu(menupane, "Baseline Functions", 'B', FALSE);
++	CreateMenuButton(submenubaseline, "Exponential Decay 1", 'D', nonl_ExpDec1_cb, NULL);
++	CreateMenuButton(submenubaseline, "Exponential Decay 2", 'e', nonl_ExpDec2_cb, NULL);
++	CreateMenuButton(submenubaseline, "Exponential Growth 1", 'G', nonl_ExpGrow1_cb, NULL);
++	CreateMenuButton(submenubaseline, "Exponential Growth 2", 'r', nonl_ExpGrow2_cb, NULL);
++	CreateMenuButton(submenubaseline, "Hyperbolic Function", 'H', nonl_Hyperbol_cb, NULL);
++	CreateMenuSeparator(submenubaseline);
++	CreateMenuButton(submenubaseline, "Bradley", 'B', nonl_Bradley_cb, NULL);
++	CreateMenuButton(submenubaseline, "Logarithm 3", 'L', nonl_Log3_cb, NULL);
++	CreateMenuSeparator(submenubaseline);
++	CreateMenuButton(submenubaseline, "Weibull Probability Density", 'W', nonl_WeibullPD_cb, NULL);
++	CreateMenuButton(submenubaseline, "Weibull Cumulative", 'w', nonl_WeibullCD_cb, NULL);
++	CreateMenuSeparator(menupane);
++
++	CreateMenuButton(menupane, "Reset fit parameters", 'R', reset_nonl_frame_cb, NULL);
+         menupane = CreateMenu(menubar, "Help", 'H', TRUE);
+ 
+         CreateMenuHelpButton(menupane, "On fit", 'f',
+@@ -712,3 +790,343 @@
+     }
+     return TRUE;
+ }
++
++
++static void nonl_Lorentzian_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Lorentzian function");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + (2*A2*A3/pi)/(4*(x-A1)^2 + A2^2)");
++    nonl_opts.parnum = 4;
++
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++
++    sprintf(buf, "A0: Baseline offset\nA1: Center of the peak\nA2: Full width at half maximum\nA3: Peak area\n\n");
++    stufftext(buf);
++
++    set_actioncb( (void *) PEAK_POS);
++    update_nonl_frame();
++}
++
++static void nonl_doubleLorentzian_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Double Lorentzian function");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + (2*A2*A3/pi)/(4*(x-A1)^2 + A2^2) + (2*A5*A6/pi)/(4*(x-A4)^2 + A5^2)");
++    nonl_opts.parnum = 7;
++
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++
++    sprintf(buf, "A0: Baseline offset\nA1, A4: Center of peaks 1, 2\nA2, A5: Full width at half maximum of peaks 1, 2\nA3, A6: Area of peaks 1, 2\n\n");
++    stufftext(buf);
++    set_actioncb( (void *) PEAK_POS1);
++    update_nonl_frame();
++}
++
++static void nonl_tripleLorentzian_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Double Lorentzian function");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + (2*A2*A3/pi)/(4*(x-A1)^2 + A2^2) + (2*A5*A6/pi)/(4*(x-A4)^2 + A5^2) + (2*A8*A9/pi)/(4*(x-A7)^2 + A8^2)");
++    nonl_opts.parnum = 10;
++
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++
++    sprintf(buf, "A0: Baseline offset\nA1, A4, A7: Center of peaks 1, 2, 3\nA2, A5, A7: Full width at half maximum of peaks 1, 2, 3\nA3, A6, A9: Area of peaks 1, 2, 3\n\n");
++    stufftext(buf);
++    set_actioncb( (void *) PEAK_POS1B);
++    update_nonl_frame();
++}
++
++static void nonl_Gaussian_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Gaussian function");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + (A3*2*sqrt(ln(2)/pi)/A2)*exp(-4*ln(2)*((x-A1)/A2)^2)");
++    nonl_opts.parnum = 4;
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++    sprintf(buf, "A0: Baseline offset\nA1: Center of the peak\nA2: Full width at half maximum\nA3: Peak area\n\n");
++    stufftext(buf);
++    set_actioncb( (void *) PEAK_POS);
++    update_nonl_frame();
++}
++
++static void nonl_doubleGaussian_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Double Gaussian function");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + (A3*2*sqrt(ln(2)/pi)/A2)*exp(-4*ln(2)*((x-A1)/A2)^2) + (A6*2*sqrt(ln(2)/pi)/A5)*exp(-4*ln(2)*((x-A4)/A5)^2)");
++    nonl_opts.parnum = 7;
++
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++
++    sprintf(buf, "A0: Baseline offset\nA1, A4: Center of peaks 1, 2\nA2, A5: Full width at half maximum of peaks 1, 2\nA3, A6: Area of peaks 1, 2\n\n");
++    stufftext(buf);
++    set_actioncb( (void *) PEAK_POS1);
++    update_nonl_frame();
++}
++
++static void nonl_tripleGaussian_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Double Gaussian function");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + (A3*2*sqrt(ln(2)/pi)/A2)*exp(-4*ln(2)*((x-A1)/A2)^2) + (A6*2*sqrt(ln(2)/pi)/A5)*exp(-4*ln(2)*((x-A4)/A5)^2)+ (A9*2*sqrt(ln(2)/pi)/A8)*exp(-4*ln(2)*((x-A7)/A8)^2)");
++    nonl_opts.parnum = 10;
++
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++
++    sprintf(buf, "A0: Baseline offset\nA1, A4, A7: Center of peaks 1, 2, 3\nA2, A5, A8: Full width at half maximum of peaks 1, 2, 3\nA3, A6, A9: Area of peaks 1, 2, 3\n\n");
++    stufftext(buf);
++    set_actioncb( (void *) PEAK_POS1B);
++    update_nonl_frame();
++}
++
++static void nonl_Gaussian2_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Gaussian (chromatography) function");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + (1/sqrt(2*pi))*(A3/A2)*exp(-(x-A1)^2/2*A2^2)");
++    nonl_opts.parnum = 4;
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++    sprintf(buf, "A0: Baseline offset\nA1: Center of the peak (retention time)\nA2: Standard deviation of the peak\nA3: Peak area\n\n");
++    stufftext(buf);
++    set_actioncb( (void *) PEAK_POS);
++    update_nonl_frame();
++}
++
++static void nonl_PsVoight1_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Pseudo Voigt 1 function");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + A3 * (A4*(2/pi)*A2/(4*(x-A1)^2+A2^2) + (1-A4)*exp(-4*ln(2)*(x-A1)^2/A2^2)*(sqrt(4*ln(2))/(A2*sqrt(pi))))");
++    nonl_opts.parnum = 5;
++    for (i=0; i<nonl_opts.parnum-1; i++)
++	{nonl_parms[i].value=1;}
++    nonl_parms[4].value=0.5;
++    sprintf(buf, "Gaussian and Lorentzian have the same width\nA0: Baseline offset\nA1: Center of the peak\nA2: Full width at half maximum\nA3: Amplitude\nA4: Profile shape factor \n\n");
++    stufftext(buf);
++    set_actioncb( (void *) PEAK_POS);
++    update_nonl_frame();
++}
++
++static void nonl_PsVoight2_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Pseudo Voigt 2 function");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + A3 * (A5*(2/pi)*A2/(4*(x-A1)^2+A2^2) + (1-A5)*exp(-4*ln(2)*(x-A1)^2/A4^2)*(sqrt(4*ln(2))/(A2*sqrt(pi))))");
++    nonl_opts.parnum = 6;
++    for (i=0; i<nonl_opts.parnum-1; i++)
++	{nonl_parms[i].value=1;}
++    nonl_parms[5].value=0.5;
++    sprintf(buf, "Gaussian and Lorentzian have different width\nA0: Baseline offset\nA1: Center of the peak\nA2: Full width at half maximum (Lorentzian)\nA3: Amplitude\nA4: Full width at half maximum (Gaussian) \nA5: Profile shape factor \n\n");
++    stufftext(buf);
++    set_actioncb( (void *) PEAK_POS);
++    update_nonl_frame();
++}
++
++static void nonl_DS_cb(void *data)
++{   nonl_opts.title   = copy_string(nonl_opts.title, "Doniach-Sunjic function");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + A3*cos((pi*A4/2)+(1-A4)*atan((x-A1)/A2))/(A2^2+(x-A1)^2)^((1-A4)/2)");
++    nonl_opts.parnum = 5;
++
++    nonl_parms[0].value=1;
++    nonl_parms[2].value=1;
++    nonl_parms[4].value=0.5;
++
++    sprintf(buf, "A0: Baseline offset\nA1: Center of the peak\nA2: Full width at half maximum\nA3: Peak area\nA4: Asymmetry parameter \n\n");
++    stufftext(buf);
++    set_actioncb( (void *) PEAK_POS);
++    update_nonl_frame();
++}
++
++static void nonl_Asym2Sig_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Asymmetric double sigmoidal function");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + A3*(1/(1+exp(-(x-A1+A2/2)/A4)))*(1-(1/(1+exp(-(x-A1-A2/2)/A5))))");
++    nonl_opts.parnum = 6;
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++    sprintf(buf, "A0: Baseline offset\nA1: Center of the peak\nA2: Width 1\nA3: Amplitude\nA4: Width 2\nA5: Width 5 \n\n");
++    stufftext(buf);
++    set_actioncb( (void *) PEAK_POS);
++    update_nonl_frame();
++}
++
++static void nonl_LogNormal_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Log Normal Function");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + A3*exp(-((ln(x)-ln(A1))^2)/(2*A2))");
++    nonl_opts.parnum = 4;
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++    sprintf(buf, "A0: Baseline offset\nA1: Center of the peak\nA2: Width\nA3: Amplitude\n\n");
++    stufftext(buf);
++    set_actioncb( (void *) PEAK_POS);
++    update_nonl_frame();
++}
++
++static void nonl_GCAS_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Gram-Charlier A-Series");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + A3/(A2*sqrt(2*pi))*exp(-0.5*((x-A1)/A2)^2)*(1+(A4/6)*(((x-A1)/A2)^3-3*(x-A1)/A2)+(A5/24)*(((x-A1)/A2)^4-6*((x-A1)/A2)^3+3))");
++    nonl_opts.parnum = 5;
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++    sprintf(buf, "A0: Baseline offset\nA1: Center of the peak\nA2: Standard deviation\nA3: Peak Area\nA4: Skew\nA5: Excess\n\n");
++    stufftext(buf);
++    set_actioncb( (void *) PEAK_POS);
++    update_nonl_frame();
++}
++
++static void nonl_ECS_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Edgeworth-Cramer Series");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y = A0 + A3/(A2*sqrt(2*pi))*exp(-0.5*((x-A1)/A2)^2)*(1+(A4/6)*(((x-A1)/A2)^3-3*(x-A1)/A2)+(A5/24)*(((x-A1)/A2)^4-6*((x-A1)/A2)^3+3) + (A5^2/720)*(((x-A1)/A2)^6-15*((x-A1)/A2)^4+45*((x-A1)/A2)^2-15))");
++    nonl_opts.parnum = 5;
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++    sprintf(buf, "A0: Baseline offset\nA1: Center of the peak\nA2: Standard deviation\nA3: Peak Area\nA4: Skew\nA5: Excess\n\n");
++    stufftext(buf);
++    set_actioncb( (void *) PEAK_POS);
++    update_nonl_frame();
++}
++
++static void nonl_InvPoly_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Inverse Polynomial Function");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0+A3/(1+ A4*(2*(x-A1)/A2)^2 + A5*(2*(x-A1)/A2)^4 + A6*(2*(x-A1)/A2)^6)");
++    nonl_opts.parnum = 7;
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++    sprintf(buf, "A0: Baseline offset\nA1: Center of the peak\nA2: Standard deviation\nA3: Peak Area\nA4, A5, A6: Parameters\n\n");
++    stufftext(buf);
++    set_actioncb( (void *) PEAK_POS);
++    update_nonl_frame();
++}
++
++static void nonl_Sine_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Sine Function");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0+A3*sin(pi*(x-A1)/A2)");
++    nonl_opts.parnum = 4;
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++    sprintf(buf, "A0: Baseline offset\nA1: Center\nA2: Width\nA3: Amplitude\n\n");
++    stufftext(buf);
++    set_actioncb( (void *) PEAK_POS);
++    update_nonl_frame();
++}
++
++static void nonl_Sinesq_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Sine Function");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0+A3*(sin(pi*(x-A1)/A2))^2");
++    nonl_opts.parnum = 4;
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++    sprintf(buf, "A0: Baseline offset\nA1: Center\nA2: Width\nA3: Amplitude\n\n");
++    stufftext(buf);
++    set_actioncb( (void *) PEAK_POS);
++    update_nonl_frame();
++}
++
++static void nonl_Sinedamp_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Sine Function");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0+A3*exp(-x/A4)*sin(pi*(x-A1)/A2)");
++    nonl_opts.parnum = 5;
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++    sprintf(buf, "A0: Baseline offset\nA1: Center\nA2: Width\nA3: Amplitude\nA4: Decay time\n\n");
++    stufftext(buf);
++    set_actioncb( (void *) PEAK_POS);
++    update_nonl_frame();
++}
++
++static void nonl_ExpDec1_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Exponential Decay 1");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0+A3*exp(-(x-A1)/A2)");
++    nonl_opts.parnum = 4;
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++    update_nonl_frame();
++}
++
++static void nonl_ExpDec2_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Exponential Decay 2");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0+A3*exp(-(x-A1)/A2)+A6*exp(-(x-A4)/A5)");
++    nonl_opts.parnum = 7;
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++    update_nonl_frame();
++}
++
++static void nonl_ExpGrow1_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Exponential Growth 1");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0+A3*exp((x-A1)/A2)");
++    nonl_opts.parnum = 4;
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++    update_nonl_frame();
++}
++
++static void nonl_ExpGrow2_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Exponential Growth 2");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0+A3*exp((x-A1)/A2)+A6*exp((x-A4)/A5)");
++    nonl_opts.parnum = 7;
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++    update_nonl_frame();
++}
++
++static void nonl_Hyperbol_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Hyperbolic");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0+(A1*x)/(A2+x)");
++    nonl_opts.parnum = 3;
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++    update_nonl_frame();
++}
++
++static void nonl_Bradley_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Bradley");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0*ln(-A1*ln(x))");
++    nonl_opts.parnum = 2;
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++    update_nonl_frame();
++}
++
++static void nonl_Log3_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Logarithm 3");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y=A0-A1*ln(x+A2)");
++    nonl_opts.parnum = 3;
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++    update_nonl_frame();
++}
++
++static void nonl_WeibullPD_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Weibull Probability Density");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y=(A0/A1)*((x/A1)^(A0-1))*exp(-(x/A1)^A0)");
++    nonl_opts.parnum = 2;
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++    update_nonl_frame();
++}
++
++static void nonl_WeibullCD_cb(void *data)
++{   int i;
++    nonl_opts.title   = copy_string(nonl_opts.title, "Weibull Cumulative Distribution");
++    nonl_opts.formula = copy_string(nonl_opts.formula, "y=1-exp(-(x/A1)^A0)");
++    nonl_opts.parnum = 2;
++    for (i=0; i<nonl_opts.parnum; i++)
++	{nonl_parms[i].value=1;}
++    update_nonl_frame();
++}

@@ -1,0 +1,66 @@
+Description: Configure with -Werror=implicit-function-declaration
+ New flags in dpkg 1.22.6 trigger errors on various parts of the configure
+ script.  This adds explicit declarations; please see the Macports bug for
+ useful context and problem-solving.  Patch is lightly modified from their
+ version.
+Origin: other, https://github.com/macports/macports-ports/blob/8e5162b8e36511d287b5e7ee70470c7dd1242a9e/x11/grace/files/implicit.patch
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1066669
+Bug-Macports: https://trac.macports.org/ticket/61261
+Last-Update: 2024-03-13
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+Index: grace/configure
+===================================================================
+--- grace.orig/configure
++++ grace/configure
+@@ -4931,6 +4931,7 @@ else
+ /* end confdefs.h.  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ 
+ #define LOG2EA 0.44269504088896340735992
+@@ -8309,6 +8310,7 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++#include <stdlib.h>
+ #include <string.h>
+ #include <zlib.h>
+       int main(void) {
+@@ -8395,6 +8397,7 @@ else
+ /* end confdefs.h.  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <jpeglib.h>
+       int main(void) {
+         int vinc;
+@@ -8479,6 +8482,7 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++#include <stdlib.h>
+ #include <string.h>
+ #include <png.h>
+       int main(void) {
+@@ -8566,6 +8570,8 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++#include <stdlib.h>
++#include <string.h>
+ #include <pdflib.h>
+       int main(void) {
+         char *vinc;
+@@ -9516,7 +9522,9 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++#include <stdlib.h>
+ #include <Xm/XmAll.h>
++void XmRegisterConverters(void);
+       int main(void) {
+         int vlibn, vincn;
+         vincn = XmVersion;

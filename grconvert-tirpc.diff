@@ -1,0 +1,49 @@
+Description: Build grconvert against TI-RPC
+ Mainline glibc no longer builds SunRPC, which grconvert (somewhat inexplicably)
+ depends upon; replace it with TI-RPC.
+Author: Nicholas Breen <nbreen@debian.org>
+Origin: vendor
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=994003
+Forwarded: no
+Last-Update: 2021-09-09
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+Index: grace/ac-tools/configure.in
+===================================================================
+--- grace.orig/ac-tools/configure.in
++++ grace/ac-tools/configure.in
+@@ -515,7 +515,7 @@ else
+ fi
+ 
+ dnl **** Check for XDR
+-AC_SEARCH_LIBS(xdrstdio_create, nsl rpc xdr rpclib, XDR_LIB=$mdw_cv_lib_xdrstdio_create, XDR_LIB="NONE")
++AC_SEARCH_LIBS(xdrstdio_create, tirpc nsl rpc xdr rpclib, XDR_LIB=$mdw_cv_lib_xdrstdio_create, XDR_LIB="NONE")
+ 
+ if test "${XDR_LIB}" = "NONE"; then
+   XDR_LIB=
+Index: grace/grconvert/Makefile
+===================================================================
+--- grace.orig/grconvert/Makefile
++++ grace/grconvert/Makefile
+@@ -16,7 +16,7 @@ SRCS = grconvert.c defaults.c readbin.c
+ 
+ OBJS = grconvert$(O) defaults$(O) readbin$(O) writeasc$(O) util$(O)
+ 
+-CFLAGS = $(CFLAGS0) -I$(TOP) -I. $(CPPFLAGS)
++CFLAGS = $(CFLAGS0) -I$(TOP) -I. $(CPPFLAGS) -I/usr/include/tirpc
+ 
+ LIBS = $(XDR_LIB) $(NOGUI_LIBS)
+ 
+Index: grace/configure
+===================================================================
+--- grace.orig/configure
++++ grace/configure
+@@ -7996,7 +7996,7 @@ return xdrstdio_create ();
+   return 0;
+ }
+ _ACEOF
+-for ac_lib in '' nsl rpc xdr rpclib; do
++for ac_lib in '' tirpc nsl rpc xdr rpclib; do
+   if test -z "$ac_lib"; then
+     ac_res="none required"
+   else

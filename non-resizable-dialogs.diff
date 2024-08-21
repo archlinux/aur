@@ -1,0 +1,77 @@
+Description: Set certain dialog boxes to fixed sizes
+ Some dialog boxes could cause display errors and conceal their action
+ buttons when resized.  This sets minimum sizes on such boxes to prevent
+ such problems.
+Bug: http://bugs.debian.org/253087
+Author: Nicholas Breen
+Index: grace-5.1.25/src/motifinc.h
+===================================================================
+--- grace-5.1.25.orig/src/motifinc.h
++++ grace-5.1.25/src/motifinc.h
+@@ -450,4 +450,6 @@ void destroy_dialog_cb(void *data);
+ void savewidget(Widget w);
+ void deletewidget(Widget w);
+ 
++void FixWidgetSize(Widget w);
++
+ #endif /* __MOTIFINC_H_ */
+Index: grace-5.1.25/src/motifutils.c
+===================================================================
+--- grace-5.1.25.orig/src/motifutils.c
++++ grace-5.1.25/src/motifutils.c
+@@ -4198,3 +4198,28 @@ void update_all_cb(void *data)
+ {
+     update_all();
+ }
++
++/* Make a widget non-resizable, so that buttons and controls cannot be obscured;
++   also prevents some display errors when a dialog is shrunk and then expanded.
++   See http://bugs.debian.org/253087
++*/
++void FixWidgetSize(Widget w)
++{
++    Display *display = XtDisplay(XtParent(w));
++    Window window = XtWindow(XtParent(w));
++    XSizeHints sizeHint = *XAllocSizeHints();
++    Window root;
++    int x, y;
++    unsigned int width, height, border, depth;
++
++    XGetGeometry(display, window, &root, &x, &y, &width, &height, &border, &depth);
++
++    sizeHint.min_width = width;
++    sizeHint.min_height = height;
++    sizeHint.max_width = width;
++    sizeHint.max_height = height;
++    sizeHint.flags = PMinSize | PMaxSize;
++
++    XSetWMNormalHints(display, window, &sizeHint);
++}
++
+Index: grace-5.1.25/src/setappwin.c
+===================================================================
+--- grace-5.1.25.orig/src/setappwin.c
++++ grace-5.1.25/src/setappwin.c
+@@ -399,6 +399,8 @@ void define_symbols_popup(void *data)
+ 
+ 
+         CreateAACDialog(setapp_dialog, setapp_tab, setapp_aac_cb, NULL);
++
++	FixWidgetSize(setapp_dialog);
+     }
+     updatesymbols(cg, cset);
+     
+Index: grace-5.1.25/src/tickwin.c
+===================================================================
+--- grace-5.1.25.orig/src/tickwin.c
++++ grace-5.1.25/src/tickwin.c
+@@ -454,6 +454,9 @@ void create_axes_dialog(int axisno)
+             int maxval;
+             XtVaGetValues(vbar, XmNmaximum, &maxval, NULL);
+             XtVaSetValues(vbar, XmNincrement, (int) rint(maxval/MAX_TICKS), NULL);
++
++	/* prevent dialog from shrinking */
++	FixWidgetSize(axes_dialog);
+         }
+     }
+     update_ticks(cg);

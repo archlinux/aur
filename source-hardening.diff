@@ -1,0 +1,59 @@
+Description: Permit compilation with hardening flags in dpkg >= 1.16.0
+Origin: vendor
+Author: Nicholas Breen
+Index: grace-5.1.22/src/utils.c
+===================================================================
+--- grace-5.1.22.orig/src/utils.c	2012-05-17 19:00:52.144748609 -0700
++++ grace-5.1.22/src/utils.c	2012-05-17 19:00:54.000000000 -0700
+@@ -1171,12 +1171,12 @@
+     if (inwin) {
+         stufftextwin(s);
+     } else {
+-        printf(s);
++        printf("%s", s);
+     }
+ #endif
+     /* log results to file */
+     if (resfp != NULL) {
+-	fprintf(resfp, s);
++	fprintf(resfp, "%s", s);
+     }
+ }
+ 
+@@ -1222,7 +1222,9 @@
+     char buf[GR_MAXPATHLEN];
+     
+     if (wd == NULL) {
+-        getcwd(workingdir, GR_MAXPATHLEN - 1);
++        if (getcwd(workingdir, GR_MAXPATHLEN - 1) == NULL) {
++	    return RETURN_FAILURE;
++        }
+         if (workingdir[strlen(workingdir)-1] != '/') {
+             strcat(workingdir, "/");
+         }
+Index: grace-5.1.22/src/svgdrv.c
+===================================================================
+--- grace-5.1.22.orig/src/svgdrv.c	2012-05-17 19:00:52.144748609 -0700
++++ grace-5.1.22/src/svgdrv.c	2012-05-17 19:00:54.000000000 -0700
+@@ -745,7 +745,7 @@
+             -tm->cxy, -tm->cyy,
+             scaleval(vp.x), scaleval(vp.y));
+ 
+-    fprintf(prstream, escape_specials((unsigned char *) s, len));
++    fprintf(prstream, "%s", escape_specials((unsigned char *) s, len));
+ 
+     fprintf(prstream, "</text>\n");
+ }
+Index: grace-5.1.22/auxiliary/Makefile
+===================================================================
+--- grace-5.1.22.orig/auxiliary/Makefile	2012-05-17 19:00:52.144748609 -0700
++++ grace-5.1.22/auxiliary/Makefile	2012-05-17 19:08:21.791557072 -0700
+@@ -22,7 +22,7 @@
+ devclean : distclean
+ 
+ convcal$(EXE) : convcal.c
+-	$(CC) $(CFLAGS0) $(CPPFLAGS) -o $@ convcal.c $(NOGUI_LIBS)
++	$(CC) $(CFLAGS0) $(CPPFLAGS) -Wl,-z,relro -Wl,-z,now -o $@ convcal.c $(NOGUI_LIBS)
+ 
+ install : $(AUXILIARIES) $(PROGRAMS) $(SCRIPTS)
+ 	$(MKINSTALLDIRS) $(DESTDIR)$(GRACE_HOME)/auxiliary

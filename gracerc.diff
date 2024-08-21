@@ -1,0 +1,19 @@
+=== gracerc
+==================================================================
+Index: grace-5.1.22/gracerc
+===================================================================
+--- grace-5.1.22.orig/gracerc	2008-06-13 08:50:19.000000000 +0200
++++ grace-5.1.22/gracerc	2008-06-13 08:51:50.000000000 +0200
+@@ -4,10 +4,10 @@
+ #     +------------------------------------+
+ #
+ # Convert old binary projects on-the-fly
+-DEFINE IFILTER "bin/grconvert %s -" MAGIC "00000031" 
++DEFINE IFILTER "grconvert %s -" MAGIC "00000031" 
+ #
+ # This one is for automatic import of Origin-4 fit description files
+-DEFINE IFILTER "auxiliary/fdf2fit %s -" PATTERN "*.fdf"
++DEFINE IFILTER "fdf2fit %s -" PATTERN "*.fdf"
+ #
+ # Save disk space by keeping files gzip'ed
+ DEFINE IFILTER "gzip -dc %s" PATTERN "*.gz"

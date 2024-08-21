@@ -1,0 +1,180 @@
+Description: Update NETCDF macro in autotools
+Author: Ionut Georgescu
+Index: grace-5.1.24-patch/ac-tools/configure.in
+===================================================================
+--- grace-5.1.24-patch.orig/ac-tools/configure.in
++++ grace-5.1.24-patch/ac-tools/configure.in
+@@ -548,8 +548,17 @@ fi
+ 
+ if test $netcdf = true
+ then
+-  ACX_CHECK_NETCDF(3.0, AC_DEFINE(HAVE_NETCDF),
+-                   AC_MSG_RESULT(--> support for netCDF is disabled))
++  AC_CHECK_HEADERS(netcdf.h,
++  [
++	AC_CHECK_LIB(netcdf, nc_open,
++	[
++		NETCDF_LIBS="-lnetcdf"
++		AC_DEFINE(HAVE_NETCDF)
++	],
++	[AC_MSG_RESULT([--> support for netCDF is disabled])]
++	)
++   ],
++   [AC_MSG_RESULT([--> support for netCDF is disabled])])
+ fi
+ 
+ if test $fftw = true
+Index: grace-5.1.24-patch/configure
+===================================================================
+--- grace-5.1.24-patch.orig/configure
++++ grace-5.1.24-patch/configure
+@@ -747,7 +747,6 @@ with_helpviewer
+ with_printcmd
+ enable_debug
+ enable_maintainer
+-with_netcdf_libraries
+ with_zlib_library
+ with_jpeg_library
+ with_png_library
+@@ -1410,7 +1409,6 @@ Optional Packages:
+   --with-editor=COMMAND        define editor ["xterm -e vi"]
+   --with-helpviewer=COMMAND    define help viewer command ["mozilla %s"]
+   --with-printcmd=PROG         use PROG for printing
+-  --with-netcdf-libraries=OBJ  use OBJ as netCDF libraries [-lnetcdf]
+   --with-zlib-library=OBJ      use OBJ as ZLIB library [-lz]
+   --with-jpeg-library=OBJ      use OBJ as JPEG library [-ljpeg]
+   --with-png-library=OBJ       use OBJ as PNG library [-lpng]
+@@ -8138,86 +8136,69 @@ fi
+ 
+ if test $netcdf = true
+ then
++  for ac_header in netcdf.h
++do :
++  ac_fn_c_check_header_mongrel "$LINENO" "netcdf.h" "ac_cv_header_netcdf_h" "$ac_includes_default"
++if test "x$ac_cv_header_netcdf_h" = xyes; then :
++  cat >>confdefs.h <<_ACEOF
++#define HAVE_NETCDF_H 1
++_ACEOF
+ 
+-
+-# Check whether --with-netcdf_libraries was given.
+-if test "${with_netcdf_libraries+set}" = set; then :
+-  withval=$with_netcdf_libraries; netcdf_libraries="$withval"
+-fi
+-
+-  if test "x$netcdf_libraries" = "x"
+-  then
+-    netcdf_libraries=-lnetcdf
+-  fi
+-
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for netCDF API version >= 3.0" >&5
+-$as_echo_n "checking for netCDF API version >= 3.0... " >&6; }
+-if ${acx_cv_netcdf+:} false; then :
++	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for nc_open in -lnetcdf" >&5
++$as_echo_n "checking for nc_open in -lnetcdf... " >&6; }
++if ${ac_cv_lib_netcdf_nc_open+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+-  if ${acx_cv_netcdf_libraries+:} false; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  acx_cv_netcdf_libraries=$netcdf_libraries
+-fi
+-
+-
+-    save_CFLAGS=$CFLAGS
+-    save_CPPFLAGS=$CPPFLAGS
+-    save_LDFLAGS=$LDFLAGS
+-    save_LIBS=$LIBS
+-
+-    LIBS="$acx_cv_netcdf_libraries $LIBS"
+-
+-
+-    if test "$cross_compiling" = yes; then :
+-  acx_cv_netcdf="no"
+-
+-else
+-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++  ac_check_lib_save_LIBS=$LIBS
++LIBS="-lnetcdf  $LIBS"
++cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+-#include <stdio.h>
+-#include <netcdf.h>
+-      int main(void) {
+-        char *vlib;
+-        vlib = nc_inq_libvers();
+-        if (strcmp(vlib, "3.0") < 0) {
+-          exit(1);
+-        }
+-        exit(0);
+-      }
+-
++/* Override any GCC internal prototype to avoid an error.
++   Use char because int might match the return type of a GCC
++   builtin and then its argument prototype would still apply.  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char nc_open ();
++int
++main ()
++{
++return nc_open ();
++  ;
++  return 0;
++}
+ _ACEOF
+-if ac_fn_c_try_run "$LINENO"; then :
+-  acx_cv_netcdf="yes"
++if ac_fn_c_try_link "$LINENO"; then :
++  ac_cv_lib_netcdf_nc_open=yes
+ else
+-  acx_cv_netcdf="no"
++  ac_cv_lib_netcdf_nc_open=no
+ fi
+-rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
+-  conftest.$ac_objext conftest.beam conftest.$ac_ext
++rm -f core conftest.err conftest.$ac_objext \
++    conftest$ac_exeext conftest.$ac_ext
++LIBS=$ac_check_lib_save_LIBS
+ fi
++{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_netcdf_nc_open" >&5
++$as_echo "$ac_cv_lib_netcdf_nc_open" >&6; }
++if test "x$ac_cv_lib_netcdf_nc_open" = xyes; then :
+ 
++		NETCDF_LIBS="-lnetcdf"
++		$as_echo "#define HAVE_NETCDF 1" >>confdefs.h
+ 
+-    CFLAGS=$save_CFLAGS
+-    CPPFLAGS=$save_CPPFLAGS
+-    LDFLAGS=$save_LDFLAGS
+-    LIBS=$save_LIBS
+ 
++else
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: --> support for netCDF is disabled" >&5
++$as_echo "--> support for netCDF is disabled" >&6; }
+ 
+ fi
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $acx_cv_netcdf" >&5
+-$as_echo "$acx_cv_netcdf" >&6; }
+-  if test "$acx_cv_netcdf" = "yes"
+-  then
+-    NETCDF_LIBS="$acx_cv_netcdf_libraries"
+-    $as_echo "#define HAVE_NETCDF 1" >>confdefs.h
+ 
+-  else
+-    NETCDF_LIBS=
+-    { $as_echo "$as_me:${as_lineno-$LINENO}: result: --> support for netCDF is disabled" >&5
++
++else
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: --> support for netCDF is disabled" >&5
+ $as_echo "--> support for netCDF is disabled" >&6; }
+-  fi
++fi
++
++done
+ 
+ fi
+ 

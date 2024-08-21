@@ -1,0 +1,42 @@
+Description: Improve display on small-resolution screens, e.g. netbooks
+Author: Nicola Ferralis
+Bug: https://bugs.launchpad.net/ubuntu/+source/grace/+bug/391833
+Index: grace-5.1.22/src/motifutils.c
+===================================================================
+--- grace-5.1.22.orig/src/motifutils.c	2010-05-26 13:41:04.000000000 -0700
++++ grace-5.1.22/src/motifutils.c	2010-05-26 13:41:12.000000000 -0700
+@@ -1065,7 +1065,7 @@
+     xfree(bufp);
+     
+     xmstr = XmStringCreateLocalized(get_workingdir());
+-    XtVaSetValues(retval->FSB, XmNdirectory, xmstr, NULL);
++    XtVaSetValues(retval->FSB, XmNdirectory, xmstr, XmNmarginHeight, 0, NULL);
+     XmStringFree(xmstr);
+     
+     XtAddCallback(retval->FSB,
+Index: grace-5.1.22/src/nonlwin.c
+===================================================================
+--- grace-5.1.22.orig/src/nonlwin.c	2010-05-26 13:41:04.000000000 -0700
++++ grace-5.1.22/src/nonlwin.c	2010-05-26 13:41:12.000000000 -0700
+@@ -190,7 +190,7 @@
+         
+ 	sw = XtVaCreateManagedWidget("sw",
+ 				     xmScrolledWindowWidgetClass, nonl_main,
+-				     XmNheight, 180,
++				     XmNheight, 140,
+ 				     XmNscrollingPolicy, XmAUTOMATIC,
+ 				     NULL);
+ 
+Index: grace-5.1.22/src/strwin.c
+===================================================================
+--- grace-5.1.22.orig/src/strwin.c	2010-05-26 13:41:04.000000000 -0700
++++ grace-5.1.22/src/strwin.c	2010-05-26 13:41:12.000000000 -0700
+@@ -939,7 +939,7 @@
+ 	line_ui.y2_item = CreateTextItem2(rc, 12, "Y2 = ");
+ 	ManageChild(rc);
+ 
+-	CreateSeparator(panel);
++	//CreateSeparator(panel);
+ 
+ 	CreateCommandButtons(panel, 2, buts, label1);
+ 	XtAddCallback(buts[0], XmNactivateCallback,

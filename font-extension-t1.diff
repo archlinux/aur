@@ -1,0 +1,55 @@
+Description: Search for .t1 as a font file extension, in addition to .pfa/.pfb
+ .t1 is now seen as a file extension, in addition to the classic .pfa and
+ .pfb extensions, particularly in fonts-urw-base35; search for .t1 as well.
+Author: Nicholas Breen
+Origin: vendor
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=934662
+Last-Update: 2019-08-14
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+
+Index: grace-5.1.25/T1lib/t1lib/t1base.c
+===================================================================
+--- grace-5.1.25.orig/T1lib/t1lib/t1base.c
++++ grace-5.1.25/T1lib/t1lib/t1base.c
+@@ -869,7 +869,7 @@ int T1_CheckForFontID( int FontID)
+  
+ 
+ 
+-/* test_for_t1_file returns 0 if a file "name.pfa" or "name.pfb"
++/* test_for_t1_file returns 0 if a file "name.pfa", "name.pfb" or "name.t1"
+    was found. Else, -1 is returned. If successful, buffer contains the
+    found filename string */
+ static int test_for_t1_file( char *buffer )
+@@ -887,11 +887,21 @@ static int test_for_t1_file( char *buffe
+   while (buffer[i]!=0){
+     i++;
+   }
++  /* One-and-a-halfth case: t1, alternate extension for pfb */
++  /* Check this first in case the buffer is one character shorter from the two-character extension */
++  buffer[i] = '.';
++  buffer[i+1]='t';
++  buffer[i+2]='1';
++  buffer[i+3]='\0';
++  if ((FullName=intT1_Env_GetCompletePath(buffer,T1_PFAB_ptr))!=NULL) {
++    free(FullName);
++    return(0);
++  }
++
+   buffer[i]='.';
+   buffer[i+1]='p';
+   buffer[i+2]='f';
+   buffer[i+4]=0;
+-
+   
+   /* Second case: A PostScript Font ASCII File */
+   buffer[i+3]='a';
+@@ -905,7 +915,7 @@ static int test_for_t1_file( char *buffe
+     free(FullName);
+     return(0);
+   }
+-  
++
+   /* If we get here no file was found => Set buffer
+      to an empty string and return -1 */
+   
