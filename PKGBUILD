@@ -7,11 +7,11 @@ __ver=0.0.1
 pkgname=hay-${__lib}-git
 pkgdesc="${__desc}"
 pkgver=0.0.1+g5894389
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://codeberg.org/hay/${__lib}"
 license=('MPL-2.0')
-depends=('cmake' 'gcc' 'make')
+makedepends=('cmake' 'gcc' 'make')
 source=("git+${url}.git")
 b2sums=('SKIP')
 
