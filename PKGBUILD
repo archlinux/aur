@@ -3,12 +3,12 @@
 
 _pkgname=image-optimizer
 pkgname=$_pkgname-git
-pkgver=0.1.22.r2.g99ebc8a
+pkgver=0.1.23.r4.g6d8cdeb
 pkgrel=1
 pkgdesc="Simple lossless compression (latest commit)"
-arch=('x86_64' 'i686')
 url="https://github.com/gijsgoudzwaard/image-optimizer"
 license=('MIT')
+arch=('x86_64' 'i686')
 depends=('granite' 'optipng' 'jpegoptim')
 makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream-glib')
@@ -32,7 +32,7 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
   install -Dm644 $_pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
   ln -s com.github.gijsgoudzwaard.$_pkgname "$pkgdir/usr/bin/$_pkgname"
   rm -dr "$pkgdir/usr/share/contractor"
