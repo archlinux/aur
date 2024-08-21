@@ -5,20 +5,21 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-liburing
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 arch=('any')
 pkgdesc="Linux-native io_uring I/O access library (Android ${_android_arch})"
-url="https://git.kernel.dk/cgit/liburing"
+url='https://git.kernel.dk/cgit/liburing'
 license=('(GPL-2.0-only WITH Linux-syscall-note) OR MIT'
          'LGPL-2.0-or-later'
          'MIT')
+groups=('android-liburing')
 depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/axboe/liburing/archive/refs/tags/liburing-${pkgver}.tar.gz"
         '0001-Fix-libs-install.patch')
-md5sums=('612e93b702a617e3d3e363311bef804d'
+md5sums=('20a95f2edfb9742001ed4772458aa002'
          'a0de03236c46346326adadb0139bc03d')
 
 prepare() {
