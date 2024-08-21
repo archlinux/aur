@@ -1,8 +1,9 @@
 pkgbase = foldingathome
-	pkgdesc = A distributed computing project for simulating protein folding
+	pkgdesc = A distributed computing project for simulating protein dynamics
 	pkgver = 8.4.3
 	pkgrel = 1
 	url = https://foldingathome.org/
+	install = fah.install
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
@@ -20,6 +21,8 @@ pkgbase = foldingathome
 	depends = sqlite
 	depends = systemd-libs
 	depends = zlib
+	optdepends = opencl-driver: GPU support
+	backup = etc/fah-client/config.xml
 	source = git+https://github.com/cauldrondevelopmentllc/cbang#commit=f7709f903788bfcf74c54b3d923434cd49e2f61f
 	source = git+https://github.com/foldingathome/fah-client-bastet#commit=881ebd700a62dd46df9ddd8ccb8b5320227891d3
 	sha256sums = ae7ff310f47d97124042873652f27409c5070d47f5c0ec7b7fccedb2efa99e62
