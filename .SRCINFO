@@ -1,0 +1,13 @@
+pkgbase = java-20-jdk
+	pkgdesc = Official Java SE 20 JDK
+	pkgver = 20.0.2
+	pkgrel = 1
+	url = https://www.oracle.com/java/technologies/javase/jdk20-archive-downloads.html
+	arch = x86_64
+	license = nftc
+	options = !debug
+	options = !strip
+	source = https://download.oracle.com/java/20/archive/jdk-20.0.2_linux-x64_bin.tar.gz
+	md5sums = 8bc65a504421051c41df053fb06f804a
+
+pkgname = java-20-jdk
