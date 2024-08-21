@@ -12,6 +12,7 @@ makedepends=('git' 'intltool>=0.35.0' 'pkgconf>=0.9.0' 'glib2-devel' 'gobject-in
              'perl>=5.8.1')
 depends=('glibc' 'glib2' 'gtk2>=2.16' 'gdk-pixbuf2>=2.16' 'cairo>=1.2' 'pango'
          'libxml2' 'harfbuzz')
+provides=("${_name}=${pkgver}" "${_name}-0.2=${pkgver}")
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}::git+${url}.git#tag=LASEM_${pkgver//./_}"
         "itex2mml-1.6.1.tar.gz::https://golem.ph.utexas.edu/~distler/blog/files/itexToMML.tar.gz"

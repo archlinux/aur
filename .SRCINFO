@@ -19,6 +19,8 @@ pkgbase = lasem02
 	depends = pango
 	depends = libxml2
 	depends = harfbuzz
+	provides = lasem=0.2.1
+	provides = lasem-0.2=0.2.1
 	noextract = itex2mml-1.6.1.tar.gz
 	source = lasem-0.2.1::git+https://github.com/LasemProject/lasem.git#tag=LASEM_0_2_1
 	source = itex2mml-1.6.1.tar.gz::https://golem.ph.utexas.edu/~distler/blog/files/itexToMML.tar.gz
