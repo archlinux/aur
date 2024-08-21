@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -o pipefail
 XDG_DATA_HOME="/var/tmp"
 _APPNAME=@appname@
 _APPDIR="/opt/${_APPNAME}"

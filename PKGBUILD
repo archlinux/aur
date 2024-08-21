@@ -3,7 +3,7 @@
 pkgname=gstarcad-bin
 pkgver=24.1
 _subver=sp1
-pkgrel=4
+pkgrel=5
 pkgdesc="浩辰 CAD.Free trial for 30 days"
 arch=(
     'aarch64'
@@ -26,7 +26,7 @@ depends=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_downurl}/linux/2024/${_subver}/deb/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_downurl}/linux/2024/${_subver}/deb/${pkgname%-bin}_${pkgver}_amd64.deb")
 source=("${pkgname%-bin}.sh")
-sha256sums=('c676f1f8e53bd460a5cfab81dfc52ee3c1b96819c8862e1996517988c065a3b9')
+sha256sums=('98059fc1a3005687212f6aea6116ff74aa5413c5d0507cbd3b98c743cdd1ffbe')
 sha256sums_aarch64=('bee290f7578d2c7ede25551b8ebf978834812d27fb1868dd8f800ae0f85656dc')
 sha256sums_x86_64=('cac879546a1ad8aabad0246d95ea25f77b628a0879392f570269f50882a8e8b5')
 build(){
