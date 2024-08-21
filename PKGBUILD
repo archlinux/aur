@@ -7,11 +7,10 @@ pkgver=6.2.2
 pkgrel=1
 pkgdesc="A library of exchange-correlation functionals for density-functional theory"
 arch=(i686 x86_64 aarch64)
-url="https://www.tddft.org/programs/${pkgname}"
+url="https://${pkgname}.gitlab.io"
 license=(MPL-2.0)
 depends=(python-numpy)
 makedepends=(gcc-fortran cmake)
-#source=(${url}/down.php?file=${pkgver}/${pkgname}-${pkgver}.tar.gz)
 source=(https://gitlab.com/${pkgname}/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
 sha512sums=('cf7271e3b3866150b3f83aec3260e54bb98488597845c34fadc2b627eabbac4acd69fbe42cb3119c4b3a6cbb0929009823cb40cf4c896526e4a5cab1027dd270')
 options=(staticlibs)
