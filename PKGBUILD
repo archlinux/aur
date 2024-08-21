@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=webutils
-_pkgver=1.2.0
+_pkgver=1.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Utility Functions for Developing Web Applications"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -23,8 +23,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b22bccdb361730d8aa1d7cf2cbd3e9fa')
-b2sums=('fc480ff6e4e8829c9acb6988a6fffeb63ea373dda9f1f53f38d8c9f44395db9f1e669334236d76bbc06d9f237109f5e3120ac821c25564fba5e1ab8030e295ee')
+md5sums=('af2696a58e8d787ccd4415f916bf915a')
+b2sums=('cb9d9df3d78ed4448c6d4864e9af882c119d06fe1896b97c1d348fa06cf036ffdf042a98b5758ac27755abcd35a2c4f8fe026d3fdbb915ea8384faecf678debd')
 
 build() {
   mkdir build
