@@ -1,7 +1,7 @@
 # Maintainer: fiatjaf <fiatjaf@gmail.com>
 
 pkgname="nak-bin"
-pkgver="0.7.1"
+pkgver="0.7.3"
 pkgrel="1"
 pkgdesc="a command line tool for doing all things nostr"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=()
 provides=("nak")
 conflicts=("nak")
 source=("$pkgname-$pkgver::https://github.com/fiatjaf/nak/releases/download/v$pkgver/nak-v$pkgver-linux-amd64")
-sha256sums=('81ce79a7de58f22646141f54a7cc6acb9bdb00bee7ec8b182c80a1923da55f3a')
+sha256sums=('7024add27fde7b51864e2dac667d664a28155453841db995bf96fba00b380c94')
 
 package() {
     mkdir -p "$pkgdir/usr/bin"
