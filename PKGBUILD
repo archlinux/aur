@@ -2,7 +2,7 @@
 # Contributor: asermax <asermax@gmail.com>
 pkgname=kaggle-api
 _name=${pkgname%-api}
-pkgver=1.6.3
+pkgver=1.6.17
 pkgrel=1
 pkgdesc='Kaggle API CLI'
 arch=('any')
@@ -31,4 +31,4 @@ package() {
     cd "$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
-sha256sums=('27614ecd72613b9f586b872313af1638ad8c0a17d0c78ad9d4a71879becd72e4')
+sha256sums=('439a7dea1d5039f320fd6ad5ec21b688dcfa70d405cb42095b81f41edc401b81')
