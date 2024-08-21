@@ -25,7 +25,7 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     mkdir -p "$pkgdir/opt"
-    cp -r "dist_electron/linux-unpacked" "$pkgdir/opt/$pkgname"
+    cp -r "dist/linux-unpacked" "$pkgdir/opt/$pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm755 "$srcdir/ElectronShogi.desktop" "$pkgdir/usr/share/applications/electron-shogi.desktop"
 }
