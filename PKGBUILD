@@ -20,7 +20,6 @@ depends=(
   'python-pyelftools'
   'python-marshmallow'
   'python-zeroconf'
-  'python-aiofiles'
   'python-ajsonrpc'
   'python-starlette'
   'python-wsproto'
