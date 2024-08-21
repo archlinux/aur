@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-dashboard
-pkgver=4.8.0
+pkgver=4.8.2
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
@@ -14,10 +14,6 @@ depends=(
 );
 optdepends=(
 );
-validpgpkeys=(
-  '9E646BB0630C8FD18ACD15541B93E6A766CD229D' #madara125 GPGKey
-  '2B9D22B41F2AF1042BFCE73A3CA0B9DF1BE7CE09' #MrHacker GPGKey
-)
 
 source=(
   "https://packages.wazuh.com/4.x/yum/${pkgname}-${_prodver}.x86_64.rpm"
@@ -29,7 +25,7 @@ backup=(
   'usr/share/wazuh-dashboard/data/wazuh/config/wazuh.yml'
   )
 
-sha512sums=('7a4fdc3be5a68679bd07216f9b50f3ce798fe569a54e6da9e4257c17217b86b803d1797cdc4488be1f2843c02fd8daf21be700b3c09ae0bb464f8618b000c8ca')
+sha512sums=('39163e37e3930d01ae95264d8522edc052d0a031892df14e9e8c4d8e6a7c85aa902b45bb40142696b778a7b9d38706833aa06be746317e68f6b70121a21f7d76')
 
 install=$pkgname.install
 
