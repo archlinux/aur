@@ -228,9 +228,9 @@ build(){
   cd ${srcdir}/linux-$_pkgver
 
   msg "make all"
-  make ARCH=${ARCH} ${BUILD_FLAGS[*]} KCFLAGS="-O2 -pipe -march=znver2 -mtune=znver2 -fstack-protector-strong" -j$(nproc) all
+  make ARCH=${ARCH} ${BUILD_FLAGS[*]} -j$(nproc) all
   msg "make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1"
-  make ARCH=${ARCH} ${BUILD_FLAGS[*]} KCFLAGS="-O2 -pipe -march=znver2 -mtune=znver2 -fstack-protector-strong" -j$(nproc) -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
+  make ARCH=${ARCH} ${BUILD_FLAGS[*]} -j$(nproc) -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 }
 
 _package(){
