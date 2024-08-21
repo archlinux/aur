@@ -1,7 +1,7 @@
 pkgbase = python-onepassword-keyring
 	pkgdesc = Keyring backend reading password data from 1Password
 	pkgver = 0.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/falling-springs/onepassword-keyring
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = python-onepassword-keyring
 	makedepends = flake8
 	makedepends = python-pytest
 	makedepends = python-pytest-mock
+	makedepends = python-setuptools
 	depends = python-keyring
 	provides = python-onepassword-keyring
 	conflicts = python-onepassword-keyring
