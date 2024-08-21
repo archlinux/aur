@@ -2,7 +2,7 @@
 # Contributor: Martin Dørum <martid0311@gmail.com>
 _gitname=swaylock-effects
 pkgname="$_gitname-git"
-pkgver=r402.9ac172a
+pkgver=r470.496059a
 pkgrel=1
 pkgdesc="A fancier screen locker for Wayland."
 arch=('i686' 'x86_64' 'aarch64')
@@ -12,6 +12,7 @@ depends=('libxkbcommon' 'cairo' 'gdk-pixbuf2' 'pam' 'wayland')
 makedepends=('git' 'meson' 'ninja' 'scdoc' 'wayland-protocols')
 provides=('swaylock' 'swaylock-effects')
 conflicts=('swaylock')
+backup=('etc/pam.d/swaylock')
 source=("git+$url.git")
 md5sums=('SKIP')
 
