@@ -3,8 +3,8 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-ffmpeg
-pkgver=7.0.1
-pkgrel=3
+pkgver=7.0.2
+pkgrel=1
 arch=('any')
 pkgdesc="Complete solution to record, convert and stream audio and video (Android ${_android_arch})"
 url="http://ffmpeg.org/"
@@ -81,7 +81,7 @@ optdepends=("android-${_android_arch}-avisynthplus: AviSynthPlus support"
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
         'configure.patch')
-md5sums=('81d5e65494f573ec28c9f56e99247815'
+md5sums=('e22725fc3738e314d71a7fb32f2336db'
          'c1851376794c16bcb37cfa8918e10cba')
 
 prepare() {
