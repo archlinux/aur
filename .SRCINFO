@@ -1,6 +1,6 @@
 pkgbase = python-pytest-textual-snapshot
 	pkgdesc = Snapshot testing for Textual apps
-	pkgver = 0.4.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/Textualize/pytest-textual-snapshot
 	arch = any
@@ -9,13 +9,13 @@ pkgbase = python-pytest-textual-snapshot
 	makedepends = python-poetry-core
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/p/pytest_textual_snapshot/pytest_textual_snapshot-0.4.0.tar.gz
-	md5sums = 5842a00bf14bf764dbc309b8fe6eddf5
+	source = https://files.pythonhosted.org/packages/source/p/pytest_textual_snapshot/pytest_textual_snapshot-1.0.0.tar.gz
+	md5sums = bb7c5d3259eb51b3a1b7f93ed7689285
 
 pkgname = python-pytest-textual-snapshot
-	depends = python>=3.6
-	depends = python-pytest>=7.0.0
+	depends = python>=3.8.1
+	depends = python-pytest>=8.0.0
 	depends = python-jinja>=3.0.0
 	depends = python-rich>=12.0.0
-	depends = python-syrupy>=3.0.0
+	depends = python-syrupy>=4.0.0
 	depends = python-textual>=0.28.0
