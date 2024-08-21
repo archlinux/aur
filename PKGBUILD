@@ -2,10 +2,10 @@
 
 pkgname=choosenim
 pkgdesc='Installs different versions of Nim compiler and tools and switches between them'
-url='https://github.com/dom96/choosenim'
+url='https://github.com/nim-lang/choosenim'
 license=(BSD-3-Clause)
-pkgver=0.8.4
-pkgrel=3
+pkgver=0.8.5
+pkgrel=1
 arch=(x86_64)
 depends=(glibc curl)
 makedepends=(git nim nimble)
@@ -14,8 +14,8 @@ optdepends=(
   'clang: C/C++ backend'
   'gcc: C/C++ backend'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/dom96/choosenim/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c849fb531a3b19d362288a59cc78044221b01cb752e0f5f40810707e6377b09c')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nim-lang/choosenim/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('11c3cfdc8623a5882cbec03a863915a7d1be1bd92e9c0f167b23b772bf44d756')
 
 prepare() {
   cd $pkgname-$pkgver
