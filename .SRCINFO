@@ -1,6 +1,6 @@
 pkgbase = python-oslo-privsep
 	pkgdesc = OpenStack library for privilege separation
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://opendev.org/openstack/oslo.privsep
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = python-oslo-privsep
 	depends = python-testtools
 	depends = python-oslotest
 	depends = python-pbr
-	source = python-oslo-privsep-3.3.0.tar.gz::https://opendev.org/openstack/oslo.privsep/archive/3.3.0.tar.gz
-	b2sums = 88cf18e8f7d871d1a285d94830523319b5b80c06758486c037b03df2834a4a4b83bded2035db54ed814b4d4dcfa63fe21d4651a2f5561d91e3081ca50ca344e6
+	source = python-oslo-privsep-3.4.0.tar.gz::https://opendev.org/openstack/oslo.privsep/archive/3.4.0.tar.gz
+	b2sums = 94da5cc6cd868e6b6c0ff7105f7f79abb428e82ef19a9b5662a62bb90d50f228df64c9af7aec6ae102f6d22e7ed2d246a6fefce35c49d31fd20d661f42b58efc
 
 pkgname = python-oslo-privsep

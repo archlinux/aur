@@ -2,7 +2,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-oslo-privsep
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="OpenStack library for privilege separation"
 arch=(any)
@@ -30,7 +30,7 @@ checkdepends=('python-hacking'
               'bandit'
               'pre-commit')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('88cf18e8f7d871d1a285d94830523319b5b80c06758486c037b03df2834a4a4b83bded2035db54ed814b4d4dcfa63fe21d4651a2f5561d91e3081ca50ca344e6')
+b2sums=('94da5cc6cd868e6b6c0ff7105f7f79abb428e82ef19a9b5662a62bb90d50f228df64c9af7aec6ae102f6d22e7ed2d246a6fefce35c49d31fd20d661f42b58efc')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
