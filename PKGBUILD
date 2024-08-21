@@ -1,7 +1,7 @@
 # Maintainer: geov <code@mail.geov.name>
 
 pkgname=tgp
-pkgrel=2
+pkgrel=3
 pkgver=0.9.8
 pkgdesc="tgp telegram proxy written in go"
 arch=('x86_64' 'aarch64' 'i686')
@@ -21,7 +21,7 @@ backup=("etc/tgp.toml")
 build() {
     cd $pkgname-$pkgver
     export GOPATH="${srcdir}"
-    export GOFLAGS="-trimpath"
+    export GOFLAGS="-trimpath -modcacherw"
     go build ./cmd/tgp
 }
 
