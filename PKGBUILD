@@ -2,26 +2,26 @@
 # Created: 2013-03-17
 
 pkgname=zulucrypt
-pkgver=6.2.0
+pkgver=7.0.0
 pkgrel=1
 _altpkgname=zuluCrypt
 pkgdesc="A cli and gui frontend to cryptsetup"
 url="https://mhogomchungu.github.io/${_altpkgname}"
 arch=('x86_64' 'i686')
 license=('GPL')
-depends=('cryptsetup' 'qt5-base' 'libpwquality' 'libsecret' 'libxkbcommon-x11' )
+depends=('cryptsetup' 'qt5-base' 'libpwquality' 'libsecret' 'libxkbcommon-x11' 'util-linux')
 optdepends=('kwalletmanager: retrieve volume keys from kde kwallet')
 conflicts=('zulucrypt-git')
 makedepends=('cmake')
 source=("https://github.com/mhogomchungu/zuluCrypt/releases/download/${pkgver}/${_altpkgname}-${pkgver}.tar.xz")
-md5sums=('ca53ef782f84ac62d0e95ec0fc03ad1c')
-sha256sums=('090f3d561add1c5a5fc5158bf346155d43e2b42e7c47939a403ae2f8dcf8eaa3')
+md5sums=('457f6a06e166a29f6b8f806508d3aed0')
+sha256sums=('55cedd886f32d4c660d8b076e5a8f285bad7f585eec30a5e681ff31645065df6')
 
 build() {
   cd "${srcdir}/${_altpkgname}-${pkgver}"
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DLIB_SUFFIX=lib -DNOGUI=false -DQT5=true -DHOMEMOUNTPREFIX=false -DCMAKE_BUILD_TYPE=release . ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DLIB_SUFFIX=lib -DNOGUI=false -DQT5=true -DHOMEMOUNTPREFIX=false -DCMAKE_BUILD_TYPE=release -DWITH_UUID=e2fs . ..
   make
 }
 
