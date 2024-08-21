@@ -1,0 +1,14 @@
+--- a/goffice/utils/regutf8.c
++++ b/goffice/utils/regutf8.c
+@@ -155,7 +155,10 @@
+ 		default: return GO_REG_BADPAT;
+ 		}
+ 	} else {
+-		gor->re_nsub = pcre_info (r, NULL, NULL);
++		int capture_count;
++		pcre_fullinfo(r, NULL, PCRE_INFO_CAPTURECOUNT, &capture_count);
++		gor->re_nsub = capture_count;
++
+ 		gor->nosub = (cflags & GO_REG_NOSUB) != 0;
+ 		return 0;
+ 	}

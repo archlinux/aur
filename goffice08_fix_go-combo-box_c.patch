@@ -1,0 +1,11 @@
+--- a/goffice/gtk/go-combo-box.c
++++ b/goffice/gtk/go-combo-box.c
+@@ -185,7 +185,7 @@
+ 	gdk_display_pointer_ungrab (gtk_widget_get_display (combo_box->priv->toplevel),
+ 				    GDK_CURRENT_TIME);
+ 
+-	pdc = g_object_ref (combo_box->priv->popdown_container);
++	pdc = G_OBJECT(g_object_ref (combo_box->priv->popdown_container));
+ 	g_signal_emit (combo_box,
+ 		       go_combo_box_signals [POP_DOWN_DONE], 0,
+ 		       pdc, &popup_info_destroyed);

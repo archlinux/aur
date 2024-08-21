@@ -1,0 +1,11 @@
+--- a/docs/reference/Makefile.am
++++ b/docs/reference/Makefile.am
+@@ -6,7 +6,7 @@
+ 
+ DOC_SOURCE_DIR=../../goffice
+ 
+-SCANGOBJ_OPTIONS= --nogtkinit --type-init-func="g_type_init ()"
++SCANGOBJ_OPTIONS=
+ 
+ SCAN_OPTIONS=--rebuild-types
+ 
