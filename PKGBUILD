@@ -16,7 +16,7 @@ optdepends=(
 )
 conflicts=('tabaur' 'tabaur-git')
 source=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.tar.zst")
-sha256sums=("7b20cc048148ad86afcaf652811f0610f846a8d3a5902c6faf59ab7285714404")
+sha256sums=("b40ce475dd44dd77156ba5eb1352803cbfb4ebabfa8e3c7e0bd768aed5c69fa3")
 
 package() {
     cd "${srcdir}/"
