@@ -1,15 +1,15 @@
 pkgname=lsp-ai
-_tag=v0.5.1
-pkgver=0.5.1
+_fragment=tag=v0.6.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A language server that performs completion using large language models (LLMs)'
 arch=('x86_64')
 license=('MIT')
 url='https://github.com/SilasMarvin/lsp-ai'
-source=("$pkgname::git+$url.git#tag=$_tag")
+source=("$pkgname::git+$url.git#$_fragment")
 depends=(gcc-libs)
 makedepends=(base-devel cargo git)
-sha1sums=('e72421d92bd94e259e32a9fd29c43a5a2625b46d')
+sha1sums=('1666df9c9e37ea97e46bb243084ae1ec98d8d8e6')
 
 pkgver() {
 	cd $pkgname
