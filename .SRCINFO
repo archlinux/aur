@@ -1,0 +1,16 @@
+pkgbase = sirula-extended-git
+	pkgdesc = An app launcher for wayland with cgroup support, close on unfocus and more smaller features
+	pkgver = r87.ae9d39a
+	pkgrel = 2
+	url = https://github.com/jlo62/sirula
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gtk-layer-shell
+	provides = sirula
+	conflicts = sirula
+	source = sirula::git+https://github.com/jlo62/sirula.git
+	sha256sums = SKIP
+
+pkgname = sirula-extended-git
