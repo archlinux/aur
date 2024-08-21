@@ -3,7 +3,7 @@ pkgname=brisqi-bin
 _pkgname=Brisqi
 pkgver=0.12.1
 _electronversion=31
-pkgrel=1
+pkgrel=2
 pkgdesc="Offline-first personal Kanban app."
 arch=('x86_64')
 url="https://brisqi.com/"
@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=('a3d79661f404813d2dfdbd3a7ec29d506d7f0a194a19ee51f17ae63531baaa70'
             '657a86267eec01065fcceb2af12d005f70d8baf8ceb4519015e2679d86cc3f52'
-            'c053a7b3ed8b0b4d77f78e81ab8a4c61cbfd773a9298b3f3a187e5df89c125c2')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
