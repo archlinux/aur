@@ -1,6 +1,6 @@
 pkgbase = starkli
 	pkgdesc = A blazing fast CLI tool for Starknet powered by starknet-rs
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://book.starkli.rs
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = starkli
 	depends = libusb
 	optdepends = bash-completion: for shell auto-completion
 	optdepends = zsh-completions: for shell auto-completion
-	source = starkli-0.3.3.tar.gz::https://github.com/xJonathanLEI/starkli/archive/refs/tags/v0.3.3.tar.gz
-	sha256sums = 14483c8f31406f86c52b0dd885013c108ca6a611fd6696abbf52103e7c5408ad
+	source = starkli-0.3.4.tar.gz::https://github.com/xJonathanLEI/starkli/archive/refs/tags/v0.3.4.tar.gz
+	sha256sums = a5ade27f4644ecae0d5d92539ee55762d7e2791438104480dc7e41603cf2556b
 
 pkgname = starkli

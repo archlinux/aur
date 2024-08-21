@@ -1,7 +1,7 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="starkli"
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="A blazing fast CLI tool for Starknet powered by starknet-rs"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('bash-completion: for shell auto-completion'
             'zsh-completions: for shell auto-completion')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('14483c8f31406f86c52b0dd885013c108ca6a611fd6696abbf52103e7c5408ad')
+sha256sums=('a5ade27f4644ecae0d5d92539ee55762d7e2791438104480dc7e41603cf2556b')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
