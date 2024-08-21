@@ -2,7 +2,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-oslo-rootwrap
-pkgver=7.2.0
+pkgver=7.3.0
 pkgrel=1
 pkgdesc="OpenStack library for rootwrap"
 arch=(any)
@@ -24,7 +24,7 @@ checkdepends=('python-hacking'
               'bandit'
               'pre-commit')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('83d0e5e6799ca9b1b0f5000581792a31f4260ebd5355ba92164c99321f1ca1d86bdc515f00b6f289208f31913f84632ccf7fda0ba8ec094b29f750937e170187')
+b2sums=('dda183fd1aa5d4c8b511c792890a5158a7cc6b7578229c6497e7233d82cbdf239760c1de0813775bc4187a417d50dd44c4d572b4c81968433589a94dea2aaec6')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
