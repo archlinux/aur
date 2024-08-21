@@ -1,4 +1,4 @@
-# Maintainer: James R Larrowe <rot13 yneebjr.frznw11@tznvy.pbz>
+# Maintainer: JL2210 <rot13 yneebjr.frznw11@tznvy.pbz>
 
 _java=24
 _java_minor=+10.1
