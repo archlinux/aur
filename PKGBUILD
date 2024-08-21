@@ -1,25 +1,24 @@
-# Maintainer: SanskritFritz (gmail)
+# Maintainer: Louis Rannou (louson at gresille dot org)
 
-pkgname=python-pick
-_name=${pkgname#python-}
-pkgver=1.0.0
+_name=pick
+pkgname=python-${_name}
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Python library to create interactive selection list in the terminal"
 arch=('any')
 url="https://github.com/wong2/pick"
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools')
-source=("https://github.com/wong2/pick/archive/v$pkgver.tar.gz")
-md5sums=('937254e385c8a33bf511741974942eb5')
+makedepends=(python-build python-installer python-wheel python-poetry-core)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/wong2/pick/archive/v$pkgver.tar.gz")
+md5sums=('148311e5a9afdf2d72e24796500f60e8')
 
 build() {
     cd $_name-$pkgver
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd $_name-$pkgver
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
