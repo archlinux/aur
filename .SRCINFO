@@ -1,7 +1,7 @@
 pkgbase = android-x86-rubberband
 	pkgdesc = Time-stretching and pitch-shifting audio library and utility
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.breakfastquay.com/rubberband/
 	arch = any
 	license = GPL2
@@ -22,24 +22,28 @@ pkgbase = android-x86-rubberband
 
 pkgname = android-x86-rubberband
 	pkgdesc = Time-stretching and pitch-shifting audio library and utility - VAMP plugin (Android x86)
+	groups = android-rubberband
 	depends = android-x86-fftw
 	depends = android-x86-libsamplerate
 	depends = android-x86-libsndfile
 
 pkgname = android-x86-rubberband-ladspa
 	pkgdesc = Time-stretching and pitch-shifting audio library and utility - LADSPA plugin (Android x86)
+	groups = android-rubberband-ladspa
 	depends = android-x86-fftw
 	depends = android-x86-libsamplerate
 	depends = android-x86-ladspa
 
 pkgname = android-x86-rubberband-lv2
 	pkgdesc = Time-stretching and pitch-shifting audio library and utility - LV2 plugin (Android x86)
+	groups = android-rubberband-lv2
 	depends = android-x86-fftw
 	depends = android-x86-libsamplerate
 	depends = android-x86-lv2
 
 pkgname = android-x86-rubberband-vamp
 	pkgdesc = Time-stretching and pitch-shifting audio library and utility - VAMP plugin (Android x86)
+	groups = android-rubberband-vamp
 	depends = android-x86-fftw
 	depends = android-x86-libsamplerate
 	depends = android-x86-vamp-plugin-sdk
