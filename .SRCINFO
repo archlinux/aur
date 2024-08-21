@@ -1,7 +1,7 @@
 pkgbase = proton-ge-custom-rtsp-bin
 	pkgdesc = A fancy custom distribution of Valves Proton with various patches
 	pkgver = GE_Proton9_10_rtsp13
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/SpookySkeletons/proton-ge-rtsp
 	install = pleasenote.install
@@ -42,12 +42,12 @@ pkgbase = proton-ge-custom-rtsp-bin
 	optdepends = wine: support for 32bit prefixes
 	optdepends = xboxdrv: gamepad driver service
 	provides = proton
-	provides = proton-ge-custom=GE.Proton9_10_rtsp13
-	conflicts = proton-ge-custom
+	provides = proton-ge-custom-rtsp=GE.Proton9_10_rtsp13
+	conflicts = proton-ge-custom-rtsp
 	options = !strip
 	options = emptydirs
 	backup = usr/share/steam/compatibilitytools.d/proton-ge-custom-rtsp/user_settings.py
-	source = GE-Proton9-10-rtsp13_1.tar.gz::https://github.com/SpookySkeletons/proton-ge-rtsp/releases/download/GE-Proton9-10-rtsp13/GE-Proton9-10-rtsp13.tar.gz
+	source = GE-Proton9-10-rtsp13_2.tar.gz::https://github.com/SpookySkeletons/proton-ge-rtsp/releases/download/GE-Proton9-10-rtsp13/GE-Proton9-10-rtsp13.tar.gz
 	source = user_settings.py
 	source = launcher.sh
 	source = pam_limits.conf

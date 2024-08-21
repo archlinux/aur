@@ -13,13 +13,13 @@
 pkgdesc='A fancy custom distribution of Valves Proton with various patches'
 pkgname=proton-ge-custom-rtsp-bin
 pkgver=GE_Proton9_10_rtsp13
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 changelog=changelog.md
-provides=('proton' "proton-ge-custom=${pkgver/_/.}")
-conflicts=('proton-ge-custom')
+provides=('proton' "proton-ge-custom-rtsp=${pkgver/_/.}")
+conflicts=('proton-ge-custom-rtsp')
 
 ## dependencies
 depends=('python'
@@ -66,7 +66,7 @@ _srcdir=${_pkgver}
 ## paths and files
 _protondir=usr/share/steam/compatibilitytools.d/${_pkgname}
 _licensedir=usr/share/licenses/${pkgname}
-_execfile=usr/bin/proton
+_execfile=usr/bin/proton-rtsp
 _protoncfg=${_protondir}/user_settings.py
 
 ## user edited files to backup
@@ -86,7 +86,7 @@ sha512sums=('c36e0a7315c3b813569aff4da14c06868205bfd720e4f81de0e208b8fd7e3ff8783
 build() {
   ## patches
   sed -i "s|_proton=echo|_proton=/${_protondir}/proton|" "${srcdir}"/launcher.sh
-  sed -i -r 's|"GE-Proton.*"|"Proton-GE"|' "${_srcdir}"/compatibilitytool.vdf
+  sed -i -r 's|"GE-Proton.*"|"Proton-GE-RTSP"|' "${_srcdir}"/compatibilitytool.vdf
   ## remove artifacts
   rm "${_srcdir}"/protonfixes/*.tar.xz
   rm -rf "${_srcdir}"/protonfixes/.git*
@@ -107,7 +107,7 @@ package() {
   mv "${_srcdir}/protonfixes/LICENSE" "${pkgdir}/${_licensedir}/license_protonfixes"
   ## config files
   install --mode=0775 --group=50 "${srcdir}"/user_settings.py "${pkgdir}/${_protoncfg}"
-  install --mode=0644 "${srcdir}"/pam_limits.conf "${pkgdir}"/etc/security/limits.d/10-games.conf
+  install --mode=0644 "${srcdir}"/pam_limits.conf "${pkgdir}"/etc/security/limits.d/11-games.conf
   ## executables
   mv "${_srcdir}"/* "${pkgdir}/${_protondir}"
   install --mode=0755 "${srcdir}"/launcher.sh "${pkgdir}/${_execfile}"
