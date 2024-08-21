@@ -1,6 +1,6 @@
 pkgbase = iamb-bin
 	pkgdesc = A Matrix client for Vim addicts
-	pkgver = 0.0.9
+	pkgver = 0.0.10
 	pkgrel = 1
 	url = https://github.com/ulyssa/iamb
 	arch = x86_64
@@ -8,9 +8,7 @@ pkgbase = iamb-bin
 	makedepends = git
 	provides = iamb
 	conflicts = iamb
-	source = https://github.com/ulyssa/iamb/releases/download/v0.0.9/iamb-v0.0.9-x86_64-unknown-linux-musl.tgz
-	source = https://raw.githubusercontent.com/ulyssa/iamb/v0.0.9/LICENSE
-	b2sums = 19e107466f129fc79e8088306a7074795878fdbba1600ad2b44d3957c5cee2f8d458d0fe01728dce31413f69a0ada3711aba9680ba9f679b962822c8fcdea75b
-	b2sums = 43452dd4216bba835bff542c02fcd0a80b77fef97a6f1042adcbbbcf312bb856b0707c35b2f1af356e0b4262e501a159f06bf1f947f182d0023cdd4aefbd8a85
+	source = https://github.com/ulyssa/iamb/releases/download/v0.0.10/iamb-x86_64-unknown-linux-musl.tgz
+	b2sums = ee1f8ab0c1de59ec4363ea094a438a4df9766065b380a7b55a20810e3ec2c70c492fa6cb563d6b9586a9bc3abec3ed7c3b22390eb62ed567ddbb9bd75ecaf178
 
 pkgname = iamb-bin
