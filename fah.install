@@ -1,0 +1,74 @@
+#Adapted from upsteam Debian install scripts
+
+pre_install() {
+	# Old v7 init script is broken and does not stop when told so
+	if [ -e /etc/init.d/FAHClient ]; then
+		systemctl kill FAHClient 2>/dev/null || true
+
+		# Missing PID file in init scripts cripples systemd monitoring,
+		# requiring manual waiting for process exit
+		TRY=0
+		while pgrep -x FAHClient >/dev/null && [ $TRY -lt 120 ]; do
+		sleep 1
+		TRY=$((TRY+1))
+		done
+	fi
+}
+
+post_install() {
+	NAME=fah-client
+	CLIENT_CONFIG=/etc/$NAME
+	CLIENT_HOME=/var/lib/$NAME
+	CLIENT_LOGS=/var/log/$NAME
+
+	# Create directories
+	install -d -m 644 -o $NAME -g $NAME $CLIENT_HOME $CLIENT_LOGS
+
+	# Create group if it does not exist
+	if ! getent group $NAME >/dev/null; then
+		groupadd --system $NAME || true
+	fi
+
+	# Create user if it does not exist
+	if ! getent passwd $NAME >/dev/null; then
+		useradd --system --gid $NAME --shell /usr/bin/nologin \
+		--home-dir $CLIENT_HOME --no-create-home \
+		--groups video,render $NAME || true
+	fi
+
+	#Give user ownership of config
+	chown $NAME:$NAME $CLIENT_CONFIG/config.xml
+	chmod 0644 $CLIENT_CONFIG/config.xml
+
+	echo
+	echo "The Folding@home client is now installed"
+	echo
+	echo "File locations:"
+	echo
+	echo "  Logs: /var/log/$NAME"
+	echo "  Data: /var/lib/$NAME"
+	echo
+	echo "Service commands:"
+	echo
+	echo "  systemctl status $NAME"
+	echo "  sudo systemctl enable $NAME"
+	echo "  sudo systemctl start $NAME"
+	echo "  sudo systemctl stop $NAME"
+	echo "  sudo systemctl restart $NAME"
+	echo
+	echo "Access the web interface by going to:"
+	echo
+	echo " https://v8-4.foldingathome.org/"
+	echo
+}
+
+pre_remove() {
+	NAME=fah-client
+	systemctl stop $NAME
+}
+
+post_remove() {
+	NAME=fah-client
+	deluser  --quiet $NAME
+	delgroup --quiet $NAME
+}

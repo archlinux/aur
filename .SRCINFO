@@ -1,26 +1,28 @@
 pkgbase = foldingathome
-	pkgdesc = A distributed computing project for simulating protein dynamics
-	pkgver = 7.6.21
+	pkgdesc = A distributed computing project for simulating protein folding
+	pkgver = 8.4.3
 	pkgrel = 1
 	url = https://foldingathome.org/
-	install = foldingathome.install
 	arch = x86_64
-	license = custom
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = leveldb
+	makedepends = libyaml
+	makedepends = re2
+	makedepends = scons
+	makedepends = snappy
+	depends = bzip2
+	depends = expat
 	depends = gcc-libs
 	depends = glibc
+	depends = lz4
+	depends = openssl
+	depends = sqlite
+	depends = systemd-libs
 	depends = zlib
-	optdepends = clinfo: for folding with an NVIDIA GPU
-	optdepends = cuda: for folding with an NVIDIA GPU
-	optdepends = ocl-icd: for folding with any GPU
-	optdepends = opencl-driver: for folding with any GPU
-	backup = etc/foldingathome/config.xml
-	source = https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-64bit/v7.6/fahclient_7.6.21-64bit-release.tar.bz2
-	source = foldingathome.service
-	source = foldingathome-nvidia.service
-	source = foldingathome-user.service
-	sha256sums = 37652bd897b4d9fe3e0dbe067df203aa6b29f243c4b8f5e73c18953acd77e6b2
-	sha256sums = a5cb7d55bbccbfd95f40e4b489d6de99c2e9336c2ff9ee5ce5ec70893551a84f
-	sha256sums = 2b50df72017d4312b6af19733aefbcac7f459599f2fb32b66e6abc0887b48d60
-	sha256sums = 41997239dc363570e2ca5bec0eca8c7d88aada6ace0bb5793bf3ec6d101f40bb
+	source = git+https://github.com/cauldrondevelopmentllc/cbang#commit=f7709f903788bfcf74c54b3d923434cd49e2f61f
+	source = git+https://github.com/foldingathome/fah-client-bastet#commit=881ebd700a62dd46df9ddd8ccb8b5320227891d3
+	sha256sums = ae7ff310f47d97124042873652f27409c5070d47f5c0ec7b7fccedb2efa99e62
+	sha256sums = 688bfc3d440bf25bf79095c16c9649f28f039def044b4c1bb5bd64163e0f68b5
 
 pkgname = foldingathome

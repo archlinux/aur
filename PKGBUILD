@@ -1,49 +1,48 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Jonathan Kotta <jpkotta@gmail.com>
 # Contributor: paul2lv <paul2lv@gmail.com>
 # Contributor: dtw <dibblethewrecker@gmail.com>
-
 pkgname=foldingathome
-pkgver=7.6.21
+pkgver=8.4.3
 pkgrel=1
-pkgdesc='A distributed computing project for simulating protein dynamics'
+pkgdesc='A distributed computing project for simulating protein folding'
 arch=(x86_64)
 url=https://foldingathome.org/
-license=(custom)
-depends=(
-  gcc-libs
-  glibc
-  zlib
+license=(GPL-3.0-or-later)
+depends=('bzip2'
+         'expat'
+         'gcc-libs'
+         'glibc'
+         'lz4'
+         'openssl'
+         'sqlite'
+         'systemd-libs'
+         'zlib')
+makedepends=('git'
+             'leveldb'
+             'libyaml'
+             're2'
+             'scons'
+             'snappy')
+source=("git+https://github.com/cauldrondevelopmentllc/cbang#commit=f7709f903788bfcf74c54b3d923434cd49e2f61f"
+        "git+https://github.com/foldingathome/fah-client-bastet#commit=881ebd700a62dd46df9ddd8ccb8b5320227891d3"
 )
-optdepends=(
-  'clinfo: for folding with an NVIDIA GPU'
-  'cuda: for folding with an NVIDIA GPU'
-  'ocl-icd: for folding with any GPU'
-  'opencl-driver: for folding with any GPU'
-)
-backup=(etc/foldingathome/config.xml)
-install=foldingathome.install
-source=(
-  https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-64bit/v${pkgver%.*}/fahclient_${pkgver}-64bit-release.tar.bz2
-  foldingathome.service
-  foldingathome-nvidia.service
-  foldingathome-user.service
-)
-sha256sums=('37652bd897b4d9fe3e0dbe067df203aa6b29f243c4b8f5e73c18953acd77e6b2'
-            'a5cb7d55bbccbfd95f40e4b489d6de99c2e9336c2ff9ee5ce5ec70893551a84f'
-            '2b50df72017d4312b6af19733aefbcac7f459599f2fb32b66e6abc0887b48d60'
-            '41997239dc363570e2ca5bec0eca8c7d88aada6ace0bb5793bf3ec6d101f40bb')
+sha256sums=('ae7ff310f47d97124042873652f27409c5070d47f5c0ec7b7fccedb2efa99e62'
+            '688bfc3d440bf25bf79095c16c9649f28f039def044b4c1bb5bd64163e0f68b5')
 
-package() {
-  install -Dm 755 fahclient_${pkgver}-64bit-release/FAHClient -t "${pkgdir}"/usr/bin/
-  install -Dm 755 fahclient_${pkgver}-64bit-release/FAHCoreWrapper -t "${pkgdir}"/usr/bin/
-  install -Dm 644 fahclient_${pkgver}-64bit-release/CHANGELOG.md -t "${pkgdir}"/usr/share/doc/foldingathome/
-  install -Dm 644 fahclient_${pkgver}-64bit-release/README.md -t "${pkgdir}"/usr/share/doc/foldingathome/
-  install -Dm 644 fahclient_${pkgver}-64bit-release/copyright -t "${pkgdir}"/usr/share/licenses/foldingathome/
-  install -Dm 644 fahclient_${pkgver}-64bit-release/sample-config.xml "${pkgdir}"/etc/foldingathome/config.xml
-  install -Dm 644 foldingathome.service -t "${pkgdir}"/usr/lib/systemd/system/
-  install -Dm 644 foldingathome-nvidia.service -t "${pkgdir}"/usr/lib/systemd/system/
-  install -Dm 644 foldingathome-user.service "${pkgdir}"/usr/lib/systemd/user/foldingathome.service
+build() {
+	export CBANG_HOME=$PWD/cbang
+	scons -C cbang
+	scons -C fah-client-bastet
 }
 
-# vim: ts=2 sw=2 et:
+package() {
+	cd "fah-client-bastet"
+	install -Dm755 -t "${pkgdir}/usr/bin/" fah-client
+	install -Dm644 -t "${pkgdir}/usr/share/doc/foldingathome/" README.md
+	install -Dm644 -t "${pkgdir}/usr/share/doc/foldingathome/" CHANGELOG.md
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/foldingathome/" CODE_TAG
+	install -Dm644 -t "${pkgdir}usr/share/polkit-1/rules.d/" install/lin/fah-client.rules
+	install -Dm644 -t "${pkgdir}/usr/lib/systemd/system/" install/lin/fah-client.service
+}
