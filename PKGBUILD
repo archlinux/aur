@@ -1,5 +1,5 @@
 # Maintainer: Sterophonick
-# i made this package because i needed 20 for my
+# i made this package because i needed 20 for my funny compsci class
 pkgname=java-20-jdk
 _pkgname='java-20-jdk'
 pkgver=20.0.2
