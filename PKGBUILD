@@ -24,7 +24,7 @@ source=(
     "modrinth-app"
 )
 sha256sums=('2006d3e0ce83c28c45efe4beecd2515af947c813eb98101d01089d1fa71ec8c0'
-            '5404b4e7b25903afe43ab2f2451be4b27f4823c6785327b166f2faa519fa38a9')
+            '8b4f95adec7a0d84b11c304430b1a1e5bcb8422314072b3c56ed53e22cd22030')
 
 build() {
     cd "$srcdir/"
