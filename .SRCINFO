@@ -1,0 +1,14 @@
+pkgbase = hay-utils-git
+	pkgdesc = utility functions for various Hay projects
+	pkgver = 0.0.1+gaa4e623
+	pkgrel = 1
+	url = https://codeberg.org/hay/utils
+	arch = any
+	license = MPL-2.0
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	source = git+https://codeberg.org/hay/utils.git
+	b2sums = SKIP
+
+pkgname = hay-utils-git
