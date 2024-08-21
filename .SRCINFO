@@ -1,0 +1,15 @@
+pkgbase = carma
+	pkgdesc = Converters between Armadillo matrices (C++) and Numpy arrays using Pybind11
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/RUrlus/carma
+	arch = any
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = pybind11
+	depends = armadillo
+	depends = python-numpy
+	source = carma-0.8.0.tar.gz::https://github.com/RUrlus/carma/archive/v0.8.0.tar.gz
+	sha512sums = acaa12482303e2c27df35eadbd5f6a1acf848724a7695d68c374015aa06dd907c83ee95c88c24eab450c38a5a82ec544d0802771bba63591e1e923a990422c4b
+
+pkgname = carma

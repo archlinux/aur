@@ -1,0 +1,5 @@
+[carma]
+source = "github"
+github = "RUrlus/carma"
+use_latest_release = true
+prefix = "v"
