@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pdmaner-bin
 _pkgname=PDManer
-pkgver=4.9.3
+pkgver=4.9.4
 _electronversion=13
 pkgrel=1
-pkgdesc="A multi operating system open source and free desktop version relational database modeling tool.一款多操作系统开源免费的桌面版关系数据库模型建模工具"
+pkgdesc="A multi operating system open source and free desktop version relational database modeling tool.一款多操作系统开源免费的桌面版关系数据库模型建模工具."
 arch=("x86_64")
 url="http://www.pdmaner.com"
 _dlurl="https://github.com/zxp19821005/My_AUR_Files"
@@ -23,7 +23,7 @@ source=(
     "LICENSE-${pkgver}::https://gitee.com/robergroup/pdmaner/raw/master/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e29a1e577a69802aba8f7c54806c4328d10de3bc29da59979a3523245f8ae699'
+sha256sums=('33e3b36de4426f0e539fe1ec6a83f41d19ac8727faeb3ac84bc8e16e5c6c778c'
             '7c91afc2c15fc478de3fc38f2678e560906859da6932f2c03b6bc9076d592d18'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
