@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-indexer
-pkgver=4.8.0
+pkgver=4.8.2
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
@@ -29,7 +29,7 @@ backup=(
   'etc/wazuh-indexer/opensearch.keystore'
   )
 
-sha512sums=('abed500c3d03b40f80f8f2579ef648b6f70628ee30107f62b9caa5d98c4ea2e1d2e8cc10bd93cbfde5697e6edd8987c7b3faef59c27002f26a9ff886756a788b')
+sha512sums=('5bc033f84e37884f5d602477e012cb176a4e34767a417de9ce2e0aa6cfab12c22f1690807299d03df121b4c64c55f171af96ec0587b2c6e6be84fd14556a6531')
 
 install=$pkgname.install
 
