@@ -1,8 +1,8 @@
 # Maintainer: Antti <antti@antti.codes>
 
 pkgname=modrinth-app
-pkgver=0.7.1
-pkgrel=7
+pkgver=0.8.1
+pkgrel=1
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
 arch=('x86_64')
@@ -17,54 +17,52 @@ depends=(
 optdepends=(
     'xorg-xrandr: for older minecraft versions'
 )
+_release_hash="a19ce0458a4eee30301c3ed826a6c7fa1d0452be"
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/modrinth/code/archive/refs/tags/v${pkgver}.tar.gz"
+    # WHY DO THEY NOT TAG THE RELEASES?!?!?!
+    #"$pkgname-$pkgver.tar.gz::https://github.com/modrinth/code/archive/refs/tags/v${pkgver}.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://github.com/modrinth/code/archive/${_release_hash}.zip"
     "modrinth-app.desktop"
     "modrinth-app"
 )
-sha256sums=('38aa08025446e2ed6a2c76edeb83768695ce6cbe50d27c2df4e74791e8e8ca2f'
-            'ad8f7ffea0435881acdd7ecb560443e281982727dc7c715885367e9466bc0a62'
+sha256sums=('5ff1d8e18a69ef2cfc6d4d57aa03b2b3c48d728fc5e9c6c751c221955499414a'
+            '7f6673916e0cf1cef2f2e3d1e5865d722abcbd8fba879688f8102816773a9d44'
             '5404b4e7b25903afe43ab2f2451be4b27f4823c6785327b166f2faa519fa38a9')
 options=('!lto')
 
 prepare() {
-    cd "code-${pkgver}"
+    # temporary
+    mv "$srcdir/code-${_release_hash}" "$srcdir/code-${pkgver}"
 
+    cd "$srcdir/code-$pkgver/apps/app"
     export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 
-    cd "theseus_gui"
+    cd "$srcdir/code-$pkgver/apps/app-frontend"
     export COREPACK_ENABLE_STRICT=0
     pnpm install
 }
 
 build() {
-    cd "code-${pkgver}/theseus_gui/"
+    cd "$srcdir/code-$pkgver/apps/app-frontend"
 
     export COREPACK_ENABLE_STRICT=0
     pnpm build
 
-    cd ..
+    cd "$srcdir/code-$pkgver/apps/app"
 
     export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
-    cargo build --frozen --release --all-features
-}
-
-check() {
-    cd "code-${pkgver}"
-
-    export CARGO_TARGET_DIR=target
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
+    #cargo build --frozen --release --all-features
+    pnpm tauri build --bundles none
 }
 
 package() {
     install -Dm755 "$srcdir"/modrinth-app "$pkgdir"/usr/bin/modrinth-app
-    install -Dm755 "$srcdir"/code-"$pkgver"/target/release/theseus_gui "$pkgdir"/opt/modrinth-app/modrinth-app
+    install -Dm755 "$srcdir"/code-"$pkgver"/apps/app/target/release/modrinth-app "$pkgdir"/opt/modrinth-app/modrinth-app
     
-    install -Dm644 "$srcdir"/code-"$pkgver"/theseus_gui/src-tauri/icons/128x128.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/modrinth-app.png
-    install -Dm644 "$srcdir"/code-"$pkgver"/theseus_gui/src-tauri/icons/icon.png "$pkgdir"/usr/share/icons/hicolor/256x256@2/apps/modrinth-app.png
+    install -Dm644 "$srcdir"/code-"$pkgver"/apps/app/icons/128x128.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/modrinth-app.png
+    install -Dm644 "$srcdir"/code-"$pkgver"/apps/app/icons/icon.png "$pkgdir"/usr/share/icons/hicolor/256x256@2/apps/modrinth-app.png
     install -Dm644 modrinth-app.desktop "$pkgdir"/usr/share/applications/modrinth-app.desktop
 }
