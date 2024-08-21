@@ -1,14 +1,15 @@
 # Maintainer: Alexandre Bury <alexandre.bury@gmail.com>
 
 pkgname=bearlibterminal-git
-pkgver=r412.0be5bf6
+pkgver=r417.036ba1a
 pkgrel=1
 pkgdesc='BearLibTerminal is a library that creates a terminal-like window facilitating flexible textual output and uncomplicated input processing.'
 arch=('i686' 'x86_64')
 url='http://foo.wyrd.name/en:bearlibterminal'
 license=('MIT')
 replaces=('bearlibterminal-hg')
-makedepends=('cmake' 'python-setuptools' 'python2-setuptools' 'git')
+makedepends=('cmake' 'python-setuptools' 'git' 'libgl')
+depends=('libgl')
 provides=('bearlibterminal')
 source=('bearlibterminal-git::git+https://github.com/cfyzium/bearlibterminal')
 md5sums=('SKIP')
@@ -41,7 +42,6 @@ package() {
     cp "$SOLIB" "$INCDIR/Python/bearlibterminal/"
     cd "$INCDIR/Python"
     python3 setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
-    python2 setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
 
     # TODO: other languages?
 }
