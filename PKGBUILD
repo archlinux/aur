@@ -1,6 +1,6 @@
 pkgname=xenia-git
 pkgver=r6950.3d30b2eec
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental emulator for the Xbox 360."
 arch=('x86_64')
 url="http://xenia.jp"
@@ -107,6 +107,9 @@ prepare() {
 }
 
 build() {
+  CFLAGS=${CFLAGS/-fvar-tracking-assignments}
+  CXXFLAGS=${CXXFLAGS/-fvar-tracking-assignments}
+
   cd "${srcdir}/${pkgname%-git}"
   mkdir -p build
   ./xenia-build \
