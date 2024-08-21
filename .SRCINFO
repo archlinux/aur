@@ -1,0 +1,19 @@
+pkgbase = perl-itex2mml
+	pkgdesc = Perl bindings for itex2mml
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://golem.ph.utexas.edu/~distler/blog/itex2MML.html
+	arch = x86_64
+	license = custom:GPL-unknown-version
+	license = custom:LGPL-unknown-version
+	license = custom:MPL-unknown-version
+	license = Artistic-1.0-Perl
+	depends = glibc
+	depends = perl
+	noextract = itex2mml-1.6.1.tar.gz
+	options = !emptydirs
+	options = purge
+	source = itex2mml-1.6.1.tar.gz::http://golem.ph.utexas.edu/~distler/blog/files/itexToMML.tar.gz
+	sha256sums = 3ef2572aa3421cf4d12321905c9c3f6b68911c3c9283483b7a554007010be55f
+
+pkgname = perl-itex2mml
