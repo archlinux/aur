@@ -1,4 +1,4 @@
-/libcaption
-/*.pkg.tar.*
-/pkg/
-/src/
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
