@@ -1,36 +1,39 @@
 # Maintainer: Adrian Holfter < aholfter PLUS aur AT googlemail DOT com >
 pkgname=laslib-git
-pkgver=r653.20e9673
-pkgrel=2
+pkgver=2.0.3.r65.g29a7174
+pkgrel=1
 pkgdesc="LASlib is a C++ programming API for reading / writing LIDAR data stored in standard LAS format."
 arch=('i686' 'x86_64')
 url="http://lastools.org/"
 license=('LGPL')
 provides=('laslib')
 conflicts=('laslib')
+
 source=("git+https://github.com/LAStools/LAStools.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "LAStools"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "$srcdir/LAStools"
+  rm -rf build
+  mkdir build
+  cd build
+  cmake "$srcdir/LAStools" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_SHARED_LIBS=ON \
+    -DCMAKE_BUILD_TYPE=Release \
+
   make
 }
 
 package() {
-  # LASzip include headers are needed, too
-  cd "$srcdir/LAStools/LASzip/src"
-  find . -iname "*.hpp" -exec install -Dm644 {} "$pkgdir/usr/include/laslib/{}" \;
+  cd "$srcdir/LAStools/build"
+  make DESTDIR="${pkgdir}" install
 
-  # install LASlib include headers
-  cd "$srcdir/LAStools/LASlib/inc"
-  find . -exec install -Dm644 {} "$pkgdir/usr/include/laslib/{}" \;
-
-  # install library
-  cd "$srcdir/LAStools/LASlib/"
-  install -Dm644 "$srcdir/LAStools/LASlib/lib/liblas.a" "$pkgdir/usr/lib/liblaslib.a"
+  # Remove binaries that are part of LAStools - if you need them, install lastools-git.
+  rm -rf "${pkgdir}/usr/bin"
 }
