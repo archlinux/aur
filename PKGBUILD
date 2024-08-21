@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="ipsw"
-pkgver=3.1.535
+pkgver=3.1.536
 pkgrel=1
 pkgdesc="iOS/macOS Research Swiss Army Knife"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('bash-completion: for shell auto-completion'
 backup=("etc/${pkgname}.conf")
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}::git+${url}#tag=v${pkgver}")
-sha256sums=('a652d1d7c581b8bdd90acecb5fb6511350e94233c731c2d10d65d484398d7120')
+sha256sums=('a0bc853e92dab181b93aea9ef06d0b1afec1cea0f2c2bab93a9f435565bcc2fe')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
