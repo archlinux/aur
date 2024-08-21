@@ -53,9 +53,7 @@ prepare() {
     git -C "$srcdir/ros2/src/ros/urdfdom" cherry-pick -n 483ff92a7e631283117ca3d421d58e146c8b6d21
 
     # https://github.com/ros/urdfdom_headers/pull/79
-    git -C "$srcdir/ros2/src/ros/urdfdom_headers" config remote.oysstu.url >&- || git -C "$srcdir/ros2/src/ros/urdfdom_headers" remote add oysstu "https://github.com/oysstu/urdfdom_headers.git"
-    git -C "$srcdir/ros2/src/ros/urdfdom_headers" fetch oysstu
-    git -C "$srcdir/ros2/src/ros/urdfdom_headers" merge oysstu/fix/pkgconfig_relocatable
+    git -C "$srcdir/ros2/src/ros/urdfdom_headers" cherry-pick -n 94953f0bd332e7a9fc2b54c2179763a00d9ab603
 }
 
 build() {
