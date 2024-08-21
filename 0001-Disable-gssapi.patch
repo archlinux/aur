@@ -20,8 +20,8 @@
  ADD_SUBDIRECTORY(libmariadb)
 --- a/libmariadb/plugins/auth/CMakeLists.txt
 +++ b/libmariadb/plugins/auth/CMakeLists.txt
-@@ -94,38 +94,6 @@
-   ENDIF()
+@@ -131,38 +131,6 @@
+ 
  ENDIF()
  
 -#GSSAPI client authentication plugin
@@ -46,7 +46,7 @@
 -                  CONFIGURATIONS DYNAMIC STATIC OFF DYNAMIC_AND_STATIC
 -                  DEFAULT ${AUTH_GSSAPI_DEFAULT_CONFIG}
 -                  SOURCES ${GSSAPI_SOURCES}
--                  INCLUDES ${CC_SOURCE_DIR}/plugins/auth ${GSSAPI_INCS}
+-                  INCLUDES ${AUTH_DIR} ${GSSAPI_INCS}
 -                  LIBRARIES ${GSSAPI_LIBS})
 -  IF(CMAKE_C_COMPILER_ID MATCHES "Clang")
 -    SET_SOURCE_FILES_PROPERTIES(${GSSAPI_SOURCES} PROPERTY COMPILE_FLAGS "-Wno-deprecated-declarations")
