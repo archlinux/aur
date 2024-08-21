@@ -1,6 +1,6 @@
 pkgbase = droidcam-obs-plugin
 	pkgdesc = plugin for droidcam obs
-	pkgver = 2.3.2
+	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://dev47apps.com/obs/
 	arch = x86_64
