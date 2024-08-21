@@ -1,5 +1,5 @@
 pkgname=('aocc-flang')
-pkgver=4.1
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="AOCC Flang"
 arch=('x86_64')
