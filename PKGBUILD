@@ -2,7 +2,7 @@
 # Contributor: ELmoussaoui Bilal <bil dot elmoussaoui at gmail dot com>
 
 pkgname=dippi
-pkgver=4.0.6
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='Calculate display info like DPI and aspect ratio'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('gtk4' 'gobject-introspection' 'libgee' 'libadwaita')
 makedepends=('gnome-common' 'desktop-file-utils' 'meson' 'gettext' 'appstream-glib' 'vala')
 options=('!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/cassidyjames/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('e5be5e48137b24721c918bdcff41a00bddcd0eddc6aac3646cadfb8977bc28e0')
+sha256sums=('87e49a74588810f44f8d884e586cbec1441e78fd61a297d05a262767997fa9f8')
 provides=("dippi=${pkgver}")
 
 build() {
