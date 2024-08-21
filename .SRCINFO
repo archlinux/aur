@@ -1,6 +1,6 @@
 pkgbase = fav-git
 	pkgdesc = Back up your favorite bilibili resources with CLI
-	pkgver = v0.2.31.r0.g57ab91b
+	pkgver = v0.2.32.r0.g00cda56
 	pkgrel = 1
 	url = https://github.com/kingwingfly/fav
 	arch = x86_64
