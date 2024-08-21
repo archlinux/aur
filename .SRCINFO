@@ -1,16 +1,16 @@
 pkgbase = imgui
 	pkgdesc = Bloat-free Graphical User interface for C++
-	pkgver = 1.90.7
+	pkgver = 1.91.0
 	pkgrel = 1
 	url = https://github.com/ocornut/imgui
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = gcc-libs
-	source = imgui-1.90.7.tar.gz::https://codeload.github.com/ocornut/imgui/tar.gz/v1.90.7
-	source = CMakeLists.v1.90.7-1.txt::https://raw.githubusercontent.com/microsoft/vcpkg/f7a371bbd9945c9059875492ba018ec12cb925c2/ports/imgui/CMakeLists.txt
-	source = imgui-config.v1.90.7-1.cmake.in::https://raw.githubusercontent.com/microsoft/vcpkg/f7a371bbd9945c9059875492ba018ec12cb925c2/ports/imgui/imgui-config.cmake.in
-	sha256sums = 872574217643d4ad7e9e6df420bb8d9e0d468fb90641c2bf50fd61745e05de99
+	source = imgui-1.91.0.tar.gz::https://codeload.github.com/ocornut/imgui/tar.gz/v1.91.0
+	source = CMakeLists.v1.91.0-1.txt::https://raw.githubusercontent.com/microsoft/vcpkg/f7a371bbd9945c9059875492ba018ec12cb925c2/ports/imgui/CMakeLists.txt
+	source = imgui-config.v1.91.0-1.cmake.in::https://raw.githubusercontent.com/microsoft/vcpkg/f7a371bbd9945c9059875492ba018ec12cb925c2/ports/imgui/imgui-config.cmake.in
+	sha256sums = 6e62c87252e6b3725ba478a1c04dc604aa0aaeec78fedcf4011f1e52548f4cc9
 	sha256sums = f1d4a017e97f2a43ee4f79ceba7a7c26c068bc29703e8d3a937193b7729260c5
 	sha256sums = dc7580735db811d67e61fc3a37037f72aabc36c23d074ab98e670b00ad3f4a97
 
