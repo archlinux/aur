@@ -1,6 +1,6 @@
 pkgbase = drasl-git
 	pkgdesc = Self-hosted API server for Minecraft
-	pkgver = 0.9.4.r4.g3dbc20a
+	pkgver = 2.0.0.r1.ga249e96
 	pkgrel = 1
 	url = https://github.com/unmojang/drasl
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = drasl-git
 	makedepends = gcc
 	makedepends = nodejs
 	makedepends = npm
+	makedepends = swag
 	provides = drasl
 	conflicts = drasl
 	source = drasl::git+https://github.com/unmojang/drasl.git

@@ -1,13 +1,13 @@
 # Maintainer: evan <mail@evangoo.de>
 _pkgname=drasl
 pkgname="${_pkgname}-git"
-pkgver=0.9.4.r4.g3dbc20a
+pkgver=2.0.0.r1.ga249e96
 pkgrel=1
 pkgdesc="Self-hosted API server for Minecraft"
 arch=('x86_64')
 url="https://github.com/unmojang/drasl"
 license=('GPL-3.0-only')
-makedepends=('git' 'go' 'gcc' 'nodejs' 'npm')
+makedepends=('git' 'go' 'gcc' 'nodejs' 'npm' 'swag')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
