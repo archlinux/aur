@@ -26,6 +26,10 @@ function prepare() {
 }
 
 build() {
+	if [ ! ${cinnyBase} ]; then
+		cinnyBase='/'
+	fi
+	sed -i "s|/|${cinnyBase}|g" "${srcdir}"/"cinny-${pkgver}"/build.config.ts
 	cd "cinny-${pkgver}"
 	NODE_OPTIONS="--max_old_space_size=4096"
 	#yarn dist
