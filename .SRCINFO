@@ -1,0 +1,16 @@
+pkgbase = python-types-tensorflow
+	pkgdesc = Typing stubs for tensorflow
+	pkgver = 2.17.0.20240820
+	pkgrel = 1
+	url = https://pypi.org/project/types-tensorflow/
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-types-protobuf
+	depends = python-types-requests
+	source = https://files.pythonhosted.org/packages/source/t/types-tensorflow/types-tensorflow-2.17.0.20240820.tar.gz
+	sha256sums = 8259f4458776cad1abc799fc996c38e74f5d3b7b150f6683315f40164af71414
+
+pkgname = python-types-tensorflow
