@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2-git
-pkgver=2.1.11.r48.g7e20789
+pkgver=2.1.11.r52.g0bcb2d9
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64')
@@ -20,23 +20,15 @@ optdepends=(
   'udisks2: Storage module'
   'usbutils: USB Devices module'
   'xdg-utils: open your browser for bugs, homepage & links')
+install="${pkgname%-git}.install"
 provides=("${pkgname%-git}" 'hardinfo')
 conflicts=("${pkgname%-git}" 'hardinfo')
-source=('git+https://github.com/hardinfo2/hardinfo2.git'
-        'service-path.patch')
-sha256sums=('SKIP'
-            'fe827c3ccb656fcc6e2ede31ad14975da8aa8042fe51797865dae8afc2bbe246')
+source=('git+https://github.com/hardinfo2/hardinfo2.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags | sed 's/^release.//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${pkgname%-git}"
-
-  # Fix service install path
-  patch -Np1 -i ../service-path.patch
 }
 
 build() {

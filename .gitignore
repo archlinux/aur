@@ -5,4 +5,4 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!service-path.patch
+!hardinfo2.install
