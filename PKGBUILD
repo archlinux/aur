@@ -8,7 +8,7 @@
 # Profile with xvfb-run, if possible
 : ${_build_pgo_xvfb:=false}
 
-_pkgver=11.17.4-2
+_pkgver=11.17.4-3
 _pkgrel=1
 
 pkgname=firedragon
@@ -17,7 +17,7 @@ pkgver=${_pkgver%-*}
 pkgrel=${_pkgver#*-}.${_pkgrel}
 epoch=1
 pkgdesc="Floorp fork build using custom branding and settings"
-url='https://garudalinux.org'
+url='https://firedragon.garudalinux.org'
 arch=('x86_64')
 license=('MPL2')
 depends=(dbus
@@ -81,7 +81,7 @@ backup=("usr/lib/${pkgname}/${pkgname}.cfg"
 source=(https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v${_pkgver}/downloads/firedragon-v${_pkgver}.source.tar.zst
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.psd
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.desktop)
-sha256sums=('001845f6d62399fdfc9097532031590795ecf616abf6126c4751945b4bd2334e'
+sha256sums=('7e02bd98c8d0f64922c66190f9c3944ca4488011828303ee296fc0f32bc8057f'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
 
