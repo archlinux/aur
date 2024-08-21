@@ -1,5 +1,9 @@
 Release history
 
+  Version 3.13 (2024-08-09)
+
+     * Fixed bug regards display of 64-bit input registers
+
   Version 3.12 (2024-07-26)
 
      * Added support for 64-bit data types for FC3, FC4 and FC16
