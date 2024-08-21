@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-agent
-pkgver=4.8.0
+pkgver=4.8.2
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
@@ -50,8 +50,8 @@ backup=(
   'var/ossec/etc/ossec.conf'
 )
 
-sha512sums_x86_64=('4e732801f52538f5a8fdb3e41b72e85f7cef02b076f6f61b4786a38584933119e4b7c4e56a976ee55c3a5330e3e0aa5d3f95b8cbf01c0d7e2f485561c16839fd')
-sha512sums_aarch64=('dd4b059f6fde5759361b3d5401f62647e942d53586acd95cf720c5074d3882c20aa7ead50b470cdf1ea3ab78c586c6f0331f0eacac51a6f24e0a0ad09c3448b6')
+sha512sums_x86_64=('823df7dad40a74ff84d5568fc1404ed7c197a4139a7324abb860e7404d4ead655f57d0b06e6d47d30a0f27e720461b2ee2a4a31e4d20589733144d1fe47f148e')
+sha512sums_aarch64=('8e138ea4801ef4bea28021a7f4ccbb4ab92d80a6039f0f73472dadc5c130bd30c2751b2c61dc6c9559b13b2d7b4b488f5498c40542ccef517cd177b13783103c')
 
 install=$pkgname.install
 
