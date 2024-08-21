@@ -2,7 +2,7 @@
 # Contributor: xiliuya <xiliuya@aliyun.com>
 # Contributor: Alexandre `Zopieux` Macabies <web+aur@zopieux.com>
 pkgname=ffdec
-pkgver=21.0.1
+pkgver=21.0.2
 pkgrel=1
 pkgdesc="Open source Flash SWF decompiler and editor"
 arch=('any')
@@ -14,7 +14,7 @@ source=(https://github.com/jindrapetrik/jpexs-decompiler/archive/refs/tags/versi
         $pkgname
         $pkgname.desktop
         version.patch)
-b2sums=('881c819641821da0ccb217a1884bd994a103b7317126bb0303bbf929b96ba9a55cab84ee8bef5ca9be185232038b3593765bebf7422f33f19c109b8c5681bc0d'
+b2sums=('af55a1b521c8af140022d3eac9d7368b888ab756dec8c7b01d4d17e1ed1ced398101b8b3cec9433006f8bd54e1491f7ef6e6030627176474cf8d5a695ccf1400'
         '9fb18759764df78715295e3e110edde21fde377117a0166cb94677f9824e43624933e2fb49d2a9787531aa0f3ddcb22d9b6702f13d05d5667136b6cea674b546'
         '4ab0b43f051893bbc5ea8b5c4822474b139622f5023b157e7763ca8802494fd53af4eaf1471ea03c0130f339e838604daf84c2766935e4bc00c75d1d9a566fef'
         'd874316146f395ddde442cf73610aa0213d51df9b7b6e5de7fe06254119d7937cdfb07ce6aeb0aedbf37635356069331011e64e47aec06db10dd5c46abca4b7c')
