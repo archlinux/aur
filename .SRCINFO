@@ -1,0 +1,18 @@
+pkgbase = v2dat-git
+	pkgdesc = A cli tool that can unpack v2ray data packages
+	pkgver = r2.47b8ee5
+	pkgrel = 1
+	url = https://github.com/urlesistiana/v2dat
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = v2dat
+	conflicts = v2dat
+	source = v2dat::git+https://github.com/urlesistiana/v2dat.git
+	sha512sums = SKIP
+
+pkgname = v2dat-git
