@@ -3,12 +3,12 @@ pkgbase = pypy-setuptools
 	pkgver = 68.0.0
 	pkgrel = 1
 	epoch = 1
-	url = http://pypi.python.org/pypi/setuptools
+	url = https://setuptools.pypa.io
 	arch = any
-	license = PSF
+	license = MIT
 	makedepends = pypy3
-	source = https://pypi.io/packages/source/s/setuptools/setuptools-68.0.0.tar.gz
-	sha256sums = baf1fdb41c6da4cd2eae722e135500da913332ab3f2f5c7d33af9b492acb5235
+	source = https://pypi.org/packages/source/s/setuptools/setuptools-68.0.0.tar.gz
+	sha512sums = da6d535a0db6eaf477c8c2148efbc2100fd88a14f3adad44d20e22bf52bee3f00fe86547ea650fe653519bd6ff5f9ef033a55bb3a05fed041e88e78cdfb81d7e
 
 pkgname = pypy3-setuptools
 	depends = pypy3
