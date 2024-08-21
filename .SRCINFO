@@ -1,6 +1,6 @@
 pkgbase = modrinth-app-git
 	pkgdesc = An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.
-	pkgver = r1394.90f7442
+	pkgver = r1430.9ed1dd7
 	pkgrel = 1
 	url = https://modrinth.com/app
 	arch = x86_64
