@@ -1,6 +1,6 @@
 # Maintainer: AsamK <asamk@gmx.de>
 pkgname=sequoia-octopus-librnp
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='A Sequoia-based OpenPGP Backend for Thunderbird'
 url="https://gitlab.com/sequoia-pgp/${pkgname}"
@@ -11,12 +11,15 @@ license=('GPL2')
 makedepends=('cargo' 'clang' 'libgit2')
 install="${pkgname}.install"
 depends=('thunderbird')
-sha256sums=('c65decf33b62e0e3fd39b33fd9d83cb0494a7af192947033828b64cf81281b93'
+sha256sums=('ba3ec47bd109814f70b14c32c4764777a4675617c11b7e03dbb473f05ba4df1a'
             'aa2bda370a1e9b4a880e275291caac486db65095c34d013561d6127777589709')
 
 prepare () {
   cd "$srcdir/$pkgname-v$pkgver"
 #  sed -i 's/^const CLAIMED_RNP_VERSION: \[u32; 3\] = \[.*\];$/const CLAIMED_RNP_VERSION: [u32; 3] = [0, 16, 3];/' src/version.rs
+  sed -i '/libgit2-sys = /d' Cargo.toml
+  sed -i 's/#git2 = { version = "=0.12" }/git2 = { version = "0.19" }/' Cargo.toml
+  cargo update
 }
 
 build () {
