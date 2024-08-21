@@ -1,45 +1,39 @@
-# Maintainer: Matt Coffin <mcoffin13@gmail.com>
+# Maintainer: a821 at mail de
+# Contributor: Matt Coffin <mcoffin13@gmail.com>
 
 pkgname=bzip2-git
-pkgver=r66.ad723d6
-pkgrel=3
-pkgdesc="A parallel, SMP-based, bzip2-compatible compression utility"
-arch=('i686' 'x86_64')
-url="https://sourceware.org/bzip2/"
+pkgver=r181.66c46b8
+pkgrel=1
+pkgdesc="A high-quality data compression program (future branch)"
+arch=('x86_64')
+url="https://gitlab.com/bzip2/bzip2"
 license=('custom')
-depends=('glibc')
+depends=('bash' 'glibc')
 makedepends=('perl' 'git' 'meson' 'ninja')
+checkdepends=('python-pytest')
 provides=('bzip2')
 conflicts=('bzip2')
-
-_gitname="bzip2"
-source=($_gitname'::git+https://gitlab.com/federicomenaquintero/bzip2.git#branch=master')
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd $pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$_gitname"
-  meson \
-    --prefix=/usr \
-    --buildtype release \
-    builddir
-  ninja -C builddir
+  arch-meson --buildtype release -Ddocs=disabled build $pkgname
+  ninja -C build
 }
 
 check() {
-  cd "$srcdir/$_gitname"
-  meson test -C builddir --print-errorlogs
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  DESTDIR="$pkgdir" meson install -C builddir
+  DESTDIR="${pkgdir}" ninja -C build install
 
-  install -D -m644 -t "$pkgdir/usr/share/licenses/$pkgname" ./COPYING
+  install -D -m644 "$pkgname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   cd "$pkgdir/usr/lib"
   if [ ! -e libbz2.so.1.0 ]; then
