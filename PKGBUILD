@@ -1,13 +1,13 @@
 # Maintainer: Nicolas Martyanoff <nicolas@n16f.net>
 
 pkgname="k3s-bin"
-pkgver="1.30.2+k3s1"
+pkgver="1.30.3+k3s1"
 pkgrel="1"
 pkgdesc="Lightweight Kubernetes"
 url="https://k3s.io"
 license=("Apache")
 arch=("x86_64" "armv7h" "aarch64")
-conflicts=("k3s-git")
+conflicts=("k3s" "k3s-git")
 backup=("etc/systemd/system/k3s.service.env")
 
 source=(
@@ -33,15 +33,15 @@ sha256sums=(
 )
 
 sha256sums_x86_64=(
-    "77dea8d77d077779f9805ea1775651aa0e9850f972ec0d968fa71423e02f4962"
+    "00e9752be22c0e440cee3a8ffd51e2b8c18ef10cea7edf11cc33f37c70bb6385"
 )
 
 sha256sums_armv7h=(
-    "000778d81afdb1965c804b5f4fec8411f2a0ba2a8a326c22a53dec402db56566"
+    "52e896f21b919fc54d17c4038d8fd080a5df036f211c2ba31336d7329c98012b"
 )
 
 sha256sums_aarch64=(
-    "3f24ab230a520e92f09afd036c06d416143cd8ac7176a967f95cda441150bd19"
+    "00786746ad8b61efc96e3ea9d4dd3315fbd47818d89d8f5cad2be8a17e69b9aa"
 )
 
 package() {
