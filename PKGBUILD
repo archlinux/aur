@@ -1,11 +1,11 @@
 # Maintainer: username227 <gfrank227 at gmail dot com>
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 
-_pkgver=518f723
-_date=20240717
+_pkgver=5115f64
+_date=20240821
 _pkgname=unified-source-$_date-$_pkgver
 pkgname=citra
-pkgver=r10091.518f723
+pkgver=r10102.5115f64
 pkgrel=2
 epoch=1
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gc
 conflicts=('citra-appimage')
 options=('!lto')
 source=("https://github.com/PabloMK7/citra/releases/download/r$_pkgver/citra-unified-source-$_date-$_pkgver.tar.xz")
-sha256sums=('3cb51ca2666d7ce44066966ab5b986c3d7e3e4ab9b12c67d5cd97d6a676c40ec')
+sha256sums=('6f980ef54a133caf385b84e15894ffd313ffc272fbc4470968d1ca7461c13ed5')
 
 build() {
     # Fix to help cmake find libusb

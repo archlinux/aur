@@ -1,6 +1,6 @@
 pkgbase = citra
 	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger
-	pkgver = r10091.518f723
+	pkgver = r10102.5115f64
 	pkgrel = 2
 	epoch = 1
 	url = https://github.com/PabloMK7/citra
@@ -42,7 +42,7 @@ pkgbase = citra
 	depends = zydis
 	conflicts = citra-appimage
 	options = !lto
-	source = https://github.com/PabloMK7/citra/releases/download/r518f723/citra-unified-source-20240717-518f723.tar.xz
-	sha256sums = 3cb51ca2666d7ce44066966ab5b986c3d7e3e4ab9b12c67d5cd97d6a676c40ec
+	source = https://github.com/PabloMK7/citra/releases/download/r5115f64/citra-unified-source-20240821-5115f64.tar.xz
+	sha256sums = 6f980ef54a133caf385b84e15894ffd313ffc272fbc4470968d1ca7461c13ed5
 
 pkgname = citra
