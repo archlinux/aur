@@ -1,7 +1,7 @@
 # Maintainer: Tom Wadley <tom@tomwadley.net>
 
 pkgname=chamber
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A tool for managing secrets using AWS SSM Parameter Store"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/segmentio/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/segmentio/$pkgname/v$pkgver/LICENSE")
-sha256sums=('20ab38fa94daedf2965997c487223831035028de93ddf73c6b92e68558e229f7'
+sha256sums=('759fab49724d7473b11e076fda932dd173558eb6c3287e8673b6a092f2103b66'
             'feaff489d3c077f7b48cf76a5f038604338a092be379c1297c64c26c6b81714b')
 
 declare -A _archmap=( ['x86_64']='amd64' ['aarch64']='arm64' )
