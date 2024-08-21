@@ -1,0 +1,13 @@
+pkgbase = rm-improved-bin
+	pkgdesc = A safe and ergonomic alternative to rm.
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/nivekuil/rip
+	arch = x86_64
+	license = GPL-3.0-only
+	conflicts = rip
+	conflicts = rm-improved
+	source = rip::https://github.com/nivekuil/rip/releases/download/0.12.0/rip
+	sha256sums = 90bd42faa1c0ffe953459ac3501ef6b1455f6f12ff63e1cfb34fcc7560d8ca53
+
+pkgname = rm-improved-bin
