@@ -37,6 +37,7 @@ makedepends=(
   gi-docgen
   sassc
   gobject-introspection
+  glib2-devel
   vala)
 checkdepends=(
   appstream

@@ -18,6 +18,7 @@ pkgbase = libadwaita-git
 	makedepends = gi-docgen
 	makedepends = sassc
 	makedepends = gobject-introspection
+	makedepends = glib2-devel
 	makedepends = vala
 	depends = gtk4-git
 	source = libadwaita::git+https://gitlab.gnome.org/GNOME/libadwaita
