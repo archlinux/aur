@@ -3,9 +3,9 @@
 pkgname=leavesmc-git
 _pkgname=leavesmc
 _pkgver=1.21.1
-_build=e199edf
-_buildid=52
-pkgver="${_pkgver}+${_buildid}.${_build}"
+_buildid=699
+_build=595afb8
+pkgver=${_pkgver}+${_buildid}.${_build}
 pkgrel=1
 pkgdesc="Fork of Paper aimed at repairing broken vanilla properties."
 arch=('any')
@@ -28,9 +28,13 @@ sha256sums=("720ee68108bbe12c362cf5ed05b3ad5b28bbaf53f3d7952d389bfc404a5baaac"
             "af0f7f846da7e5da02193538d5120fdb40cc3730e1ec0574c23583bc0b03841f"
             "SKIP")
 
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    printf "${_pkgver}+%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
     cd "${srcdir}/${pkgname}"
-    git checkout ${_build}
     ./gradlew applyPatches
     ./gradlew createMojmapLeavesclipJar
 }
