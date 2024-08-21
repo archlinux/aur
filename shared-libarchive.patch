@@ -61,10 +61,10 @@ index ffd1c0cfcd..4839d4097c 100644
  
  # libarchive
 +if(NOT USE_SHARED_LIBARCHIVE)
- set(ENABLE_WERROR OFF CACHE BOOL "Treat warnings as errors - default is ON for Debug, OFF otherwise.")
- set(ENABLE_TEST OFF CACHE BOOL "Enable unit and regression tests")
- set(ENABLE_COVERAGE OFF CACHE BOOL "Enable code coverage (GCC only, automatically sets ENABLE_TEST to ON)")
-@@ -123,6 +124,7 @@ set(ENABLE_CPIO OFF CACHE BOOL "Enable cpio building")
+ set(HAVE_WCSCPY 1)
+ set(HAVE_WCSLEN 1)
+
+@@ -126,6 +127,7 @@ set(ENABLE_CPIO OFF CACHE BOOL "Enable cpio building")
  add_subdirectory(libarchive)
  target_include_directories(archive_static INTERFACE
    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/libarchive/libarchive>)
