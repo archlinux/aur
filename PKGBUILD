@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SGCP
-_pkgver=1.4.1
+_pkgver=1.4.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -39,8 +39,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c511f41bf8d2edd51cfc81b73c3d067c')
-b2sums=('99529be47906c84b09c7f13545faf3b54ec937aff279357cce77f017e3b01d36b5a8f5c52e552b634ccba263fe5545d52e5262b5e937067b4af65a0953d13780')
+md5sums=('516651ecbf7bfcae780859fa677c6b88')
+b2sums=('686bea5e667e0ae7bf28cdf58453e55e6e2ff27afe705ebcc13da24c0aad1637cba3edff0cce4c7531cb240645c422e9153c096ca6f820d00f2952c7c7acbe63')
 
 build() {
   mkdir build
