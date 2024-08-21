@@ -2,7 +2,7 @@
 
 _pkgname="starkli"
 pkgname="${_pkgname}-bin"
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="A blazing fast CLI tool for Starknet powered by starknet-rs"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}
 sha256sums=('c754365c41980e392e9c2e8d6c446b4856e1d7da6d4a95ac80debfb3de51cc56'
             '93ca65a55581bae536fc2e6bafc613f22fc1bec74b36081ea08ccb199fed4e48'
             'ece393ef82b9a2c92affd94872d3b52064f8a82904f64861b93e49b1fc7833d5')
-sha256sums_x86_64=('9c3df145a65aade4732af25686e95cea3fa725e0f6b9d0019abb5a57d6c409e6')
-sha256sums_aarch64=('53397d3bf7ee6e7648ccc7d3e6e46995df8f3e668f17fdccaf1f60d50a8f114d')
+sha256sums_x86_64=('df6a392f90178870efc4418f53a1e00d5726c0e1f75e0746f8a8aa7e164ada95')
+sha256sums_aarch64=('d5f4c2aa5741a388f81af1bb9a1a2bd1c25189c60f1b6a4b5b3e85f57f0ea014')
 
 prepare() {
   cd "${srcdir}"
