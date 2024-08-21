@@ -30,8 +30,11 @@ build()
 check()
 {
     cd "${srcdir}"/"${_pkgname}"-"${pkgver}"/ || exit 1
-    # Does not work.
-    # pytest
+    poetry install
+    # shellcheck disable=SC1091
+    source ./.venv/bin/activate
+    pytest
+    deactivate
 }
 
 package()
@@ -51,5 +54,5 @@ package()
     find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -type f -exec chmod 644 {} +
 
     # Install the license.
-    install -Dm644 "${srcdir}"/"${_pkgname}"-"${pkgver}"/LICENSE.rst "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    install -Dm644 "${srcdir}"/"${_pkgname}"-"${pkgver}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }
