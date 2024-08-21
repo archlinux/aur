@@ -5,11 +5,12 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-mariadb
 pkgdesc="Fast SQL database server, derived from MySQL (Android ${_android_arch})"
-pkgver=11.4.2
+pkgver=11.5.2
 pkgrel=1
 arch=('any')
 license=('GPL')
 url='https://mariadb.org/'
+groups=('android-mariadb')
 depends=("android-${_android_arch}-bzip2"
          "android-${_android_arch}-jemalloc"
          "android-${_android_arch}-liburing"
@@ -56,19 +57,19 @@ source=("https://rsync.osuosl.org/pub/mariadb/mariadb-${pkgver}/source/mariadb-$
         '0005-Add-missing-headers.patch'
         '0006-Remove-endpwent.patch'
         '0008-Fix-ncurses-headers.patch')
-sha256sums=('8c600e38adb899316c1cb11c68b87979668f4fb9d858000e347e6d8b7abe51b0'
-            'SKIP'
-            '387ad00885efee2cfad861445c477121dcda294df3112204fb3197235254f7d0'
-            'f38a62d8fcf13a63c1368816ae9f97505f73343941ca667d91adf8f51176787e'
-            '281f85613b325d1cc35ea3701d8a7cb54971389a23ad9e90df0214d3672174d5'
-            'd025b6710cbca6e64d395b322d622ef1b1bb868893ee0550150d5ff5000c2d57'
-            '21529ea4e45530f43b393e117b9263ad5b19c452d67396b6fe8cfc7651b9296b'
-            '909d2b7893864c31dea42b92e1593d4dc9abecfa5db50fd5c0a3864e72023d2f'
-            'f9dccbec9b8bc20aacfc73c92dac3a0496ab9eaac5d772b991e943a232163eb1')
+md5sums=('b1387fc485b7c802615ea6b9835b6b9c'
+         'SKIP'
+         'fe9715a2a09603a0e95d087481a3dfc8'
+         '8f2f84a58b52e348ebdb9a1cf385eb00'
+         '068a65705c097321d40cadaaafe37429'
+         '05ce29a22db5d51618eb62fd01cf77ed'
+         '7b53dfa88c8b7a83fad76c454222d9f7'
+         '481e93621e4c2e040b4eb380904e1865'
+         'bd8ebd1967c42f660dcd59503ca0213d')
 validpgpkeys=('177F4010FE56CA3336300305F1656F24C74CD1D8') # MariaDB Signing Key <signing-key@mariadb.org>
 
 prepare() {
-    cd "${srcdir}/mariadb-$pkgver"
+    cd "${srcdir}/mariadb-${pkgver}"
     source android-env ${_android_arch}
 
     patch -Np1 -i ../0001-Disable-gssapi.patch
@@ -89,10 +90,15 @@ prepare() {
 
     rm -rf plugin/auth_gssapi
     rm -f libmariadb/cmake/FindGSSAPI.cmake
+
+#     CMake Error: try_run() invoked in cross-compiling mode, please set the following cache variables appropriately:
+#     HAVE_SYSTEM_LIBFMT_EXITCODE (advanced)
+#     For details see /home/hipersayan_x/Documentos/CarpetaPersonal/Proyectos/ArchPackages/android-mariadb/android-aarch64-mariadb/src/mariadb-11.5.2/build/TryRunResults.cmake
+
 }
 
 build() {
-    cd "${srcdir}/mariadb-$pkgver"
+    cd "${srcdir}/mariadb-${pkgver}"
 
     unset CC
     unset CXX
@@ -145,6 +151,7 @@ build() {
         -DPLUGIN_FEEDBACK=NO \
         -DWITH_EXTRA_CHARSETS=complex \
         -DWITH_JEMALLOC=ON \
+        -DWITH_LIBFMT=system \
         -DWITH_LIBWRAP=OFF \
         -DWITH_PCRE2=system \
         -DWITH_READLINE=ON \
@@ -180,12 +187,13 @@ build() {
         -DSNAPPY_LIBRARIES="${ANDROID_PREFIX_LIB}/libsnappy.so" \
         -DSNAPPY_INCLUDE_DIRS="${ANDROID_PREFIX_INCLUDE}" \
         -DJudy_INCLUDE_DIRS="${ANDROID_PREFIX_INCLUDE}" \
-        -DJudy_LIBRARIES="${ANDROID_PREFIX_LIB}/libljudy.so"
+        -DJudy_LIBRARIES="${ANDROID_PREFIX_LIB}/libljudy.so" \
+        -DLIBFMT_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}"
     make -C build $MAKEFLAGS
 }
 
 package() {
-    cd "${srcdir}/mariadb-$pkgver"
+    cd "${srcdir}/mariadb-${pkgver}"
     source android-env ${_android_arch}
 
     make -C build DESTDIR="${pkgdir}" install
