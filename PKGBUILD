@@ -2,7 +2,7 @@
 pkgname=python-fangfrisch
 _name=${pkgname#python-}
 pkgver=1.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Freshclam like utility that allows downloading unofficial virus definition files"
 arch=('any')
 license=('GPL')
