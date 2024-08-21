@@ -3,7 +3,7 @@
 _pkgname=koboldcpp
 _cudaversion=1210
 pkgname=koboldcpp-bin
-pkgver=1.73
+pkgver=1.73.1
 pkgrel=1
 pkgdesc="A simple one-file way to run various GGML and GGUF models with KoboldAI's UI. (Requires AVX2 support)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('glibc')
 conflicts=('koboldcpp')
 provides=("koboldcpp=$pkgver")
 source=("https://github.com/LostRuins/koboldcpp/releases/download/v$pkgver/${_pkgname}-linux-x64-cuda${_cudaversion}")
-sha256sums=('49b2419ef59cb4c5a11f4d929756d0c75a89e27a7c34debcec06cd96e377f825')
+sha256sums=('8c3c0bb947a240eed9f509f17bac2c39bfa9ca432434469a3c0edea5035aa99a')
 
 package() {
   install -D -m 0755 ${_pkgname}-linux-x64-cuda${_cudaversion} ${pkgdir}/usr/bin/${_pkgname}
