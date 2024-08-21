@@ -27,7 +27,7 @@ build() {
     cd "hurrycurry"
     cargo +nightly build --frozen --release --target "$CHOST" --bin hurrycurry-server
     cargo +nightly build --frozen --release --target "$CHOST" --bin hurrycurry-replaytool
-    # make -C data all
+    make -C data all
     make -C data recipes/default.svg
     esbuild test-client/main.ts --bundle --outdir=test-client
 }
