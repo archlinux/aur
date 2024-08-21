@@ -7,7 +7,7 @@
 pkgname=wine-stable
 _pkgver=9.0
 pkgver=${_pkgver/-/}  # Useful for wine-stable-next
-pkgrel=2
+pkgrel=3
 
 source=(https://dl.winehq.org/wine/source/9.0/wine-$_pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
@@ -116,7 +116,7 @@ build() {
 
   # https://bugs.winehq.org/show_bug.cgi?id=43530
   export CFLAGS="${CFLAGS/-fno-plt/}"
-  export LDFLAGS="${LDFLAGS/,-z,now/}"
+  export LDFLAGS="${LDFLAGS/-Wl,-z,now/}"
 
   ../wine/configure \
       --prefix=/usr \
