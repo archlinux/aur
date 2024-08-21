@@ -2,7 +2,7 @@
 
 pkgname=('etherlab-ethercat' 'etherlab-ethercat-tools')
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='https://etherlab.org'
 license=('GPL2')
@@ -33,22 +33,24 @@ check() {
 
 package_etherlab-ethercat() {
   pkgdesc="Kernel modules for IgH EtherCAT(R) Master component"
-  depends=('etherlab-ethercat-tools')
-  install='etherlab-ethercat.install'
-
-  install -Dt "$pkgdir/etc/udev/rules.d/" -m0644 99-EtherCAT.rules
+  depends=('linux' 'etherlab-ethercat-tools')
 
   cd "ethercat-$pkgver"
-  # By default kernel modules are installed in `/lib`
-  # but archlinux expects them in `/usr/lib`
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  # 1. Skip `depmod`: it will be executed automatically
+  #    by pacman hooks on the target OS
+  # 2. By default kernel modules are installed in `/lib`
+  #    but archlinux expects them in `/usr/lib`
+  make cmd_depmod=: INSTALL_MOD_PATH="$pkgdir/usr" modules_install
   rm -f "$pkgdir"/usr/lib/modules/*/modules.*
 }
 
 package_etherlab-ethercat-tools() {
   pkgdesc="Tools for IgH EtherCAT(R) Master component"
+  install='etherlab-ethercat.install'
+
+  install -Dt "$pkgdir/etc/udev/rules.d/" -m0644 99-EtherCAT.rules
 
   cd "ethercat-$pkgver"
   make DESTDIR="$pkgdir/" install
-  install -Dt "$pkgdir/etc/systemd/system/" -m644 script/ethercat.service
+  install -Dt "$pkgdir/etc/systemd/system/" -m0644 script/ethercat.service
 }

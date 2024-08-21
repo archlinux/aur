@@ -1,6 +1,6 @@
 pkgbase = etherlab-ethercat
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://etherlab.org
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,9 @@ pkgbase = etherlab-ethercat
 
 pkgname = etherlab-ethercat
 	pkgdesc = Kernel modules for IgH EtherCAT(R) Master component
-	install = etherlab-ethercat.install
+	depends = linux
 	depends = etherlab-ethercat-tools
 
 pkgname = etherlab-ethercat-tools
 	pkgdesc = Tools for IgH EtherCAT(R) Master component
+	install = etherlab-ethercat.install
