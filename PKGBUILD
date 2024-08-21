@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="supabase"
-pkgver=1.188.4
+pkgver=1.190.0
 pkgrel=1
 pkgdesc="A CLI for Supabase, an open source Firebase alternative"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('bash-completion: for shell auto-completion'
             'zsh-completions: for shell auto-completion')
 _pkgsrc="cli-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0821cff028da303c20a4a34a060fe67d802dc9e56e1030e9ae34a65955a637d2')
+sha256sums=('915dfb8659ec0985430332208f21e2827e1c9112f71cbf1f0933fe4787467a19')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -45,7 +45,7 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
   install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   cd "completions"
   install -Dm644 "${pkgname}.bash"       "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
