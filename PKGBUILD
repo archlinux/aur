@@ -16,8 +16,8 @@ source=("${_pkgname}.sh")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/mihomo-party-linux-${pkgver}-amd64.deb")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/mihomo-party-linux-${pkgver}-arm64.deb")
 sha256sums=('f8049c1f26d5a92fbcebd7bebbdedbb3eab53422b21cf6127418251ccd061282')
-sha256sums_x86_64=("431cc8820bcffb4f3285310c923d0f1bc732137ce3b537321f15834e5303bdc6")
-sha256sums_aarch64=("a476ee38472573911b8155d83d5bb113bbe0aaaec15666a3872734ab198d2aa7")
+sha256sums_x86_64=("6b7b787325262f004239812ada82db02980616361149413befa2c3c7dc61675c")
+sha256sums_aarch64=("352c0a5333bf54b2e524b438c89bcbf6d48f47261aefc2142ea525ba9f459bf2")
 
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}/"
