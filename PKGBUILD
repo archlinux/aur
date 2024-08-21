@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=planify
 _app_id=io.github.alainm23.planify
-pkgver=4.10.7
+pkgver=4.10.8
 pkgrel=1
 pkgdesc="Task manager with Todoist and Nextcloud support"
 arch=('x86_64')
@@ -24,7 +24,7 @@ makedepends=(
 )
 conflicts=('elementary-planner')
 source=("git+https://github.com/alainm23/planify.git#tag=$pkgver")
-sha256sums=('1a6b2701534630b516583a06ae4888829ed5743917356c1b3011d0a6fdbaa387')
+sha256sums=('d1a369be51c8a4ab9a07b7261e44151c3c336c74226c412d021f963185d446ae')
 
 build() {
   arch-meson "$pkgname" build -Dprofile=default
