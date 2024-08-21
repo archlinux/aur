@@ -1,5 +1,5 @@
 # Maintainer: tuhtah <tamer.fahmy at gmail dot com>
-# Adapted from benthos-bin: https://aur.archlinux.org/packages/benthos
+# Adapted from benthos: https://aur.archlinux.org/packages/benthos
 
 pkgname=bento
 pkgdesc='Fancy stream processing made operationally mundane.'
