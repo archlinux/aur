@@ -14,7 +14,7 @@ options=(!debug)
 source=("https://github.com/bitscoper/Bitscoper_Cyber_ToolBox/releases/latest/download/Linux_x64_Executable.zip")
 sha256sums=("SKIP")
 arch=("x86_64")
-pkgver=8.0.6
+pkgver=8.0.7
 pkgrel=1
 
 package() {
