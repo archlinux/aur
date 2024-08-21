@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=local-llama-git
 _pkgname="Local Llama"
-pkgver=0.0.7.r9.g07db14c
+pkgver=1.0.0.r0.g24e6c75
 _electronversion=31
 _nodeversion=18
 pkgrel=1
@@ -66,8 +66,8 @@ build() {
     else
         echo "Your network is OK."
     fi
-    NODE_ENV=development npm install
-    NODE_ENV=production npm run build
+    NODE_ENV=development    npm install
+    NODE_ENV=production     npm run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
