@@ -1,13 +1,13 @@
 pkgbase = hay-flags-git
 	pkgdesc = A pure-C Library to parse command line arguments
-	pkgver = 0.0.1
-	pkgrel = 1
+	pkgver = 0.0.1+g5894389
+	pkgrel = 2
 	url = https://codeberg.org/hay/flags
 	arch = any
 	license = MPL-2.0
-	depends = cmake
-	depends = gcc
-	depends = make
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
 	source = git+https://codeberg.org/hay/flags.git
 	b2sums = SKIP
 
