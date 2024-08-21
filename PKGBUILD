@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=yt-dlp-git
-pkgver=2024.03.10.r9.g86d2f4d
+pkgver=2024.08.06.r10.g6f9e653
 pkgrel=1
 pkgdesc='A youtube-dl fork with additional features and fixes (git)'
 arch=(any)
@@ -47,7 +47,7 @@ build() {
 
 check() {
     cd "${pkgname%-git}"
-    pytest -v -m "not download"
+    pytest -v -m "not download" -k 'not Websockets' # revert when extra/python-websockets updates to 13
 }
 
 package() {
