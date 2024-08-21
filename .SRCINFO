@@ -1,6 +1,6 @@
 pkgbase = antares-sql-bin
 	pkgdesc = A modern, fast and productivity driven SQL client with a focus in UX.
-	pkgver = 0.7.27
+	pkgver = 0.7.28
 	pkgrel = 1
 	url = https://antares-sql.app/
 	arch = aarch64
@@ -8,17 +8,17 @@ pkgbase = antares-sql-bin
 	arch = x86_64
 	license = MIT
 	depends = electron30
-	provides = antares-sql=0.7.27
+	provides = antares-sql=0.7.28
 	conflicts = antares-sql
-	source = LICENSE-0.7.27::https://raw.githubusercontent.com/antares-sql/antares/v0.7.27/LICENSE
+	source = LICENSE-0.7.28::https://raw.githubusercontent.com/antares-sql/antares/v0.7.28/LICENSE
 	source = antares-sql.sh
 	sha256sums = 7b960bb0bed7d2228b6a8a879558c97906cc041ab14ab1d1089959902f386613
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
-	source_aarch64 = antares-sql-0.7.27-aarch64.deb::https://github.com/antares-sql/antares/releases/download/v0.7.27/Antares-0.7.27-linux_arm64.deb
-	sha256sums_aarch64 = 75d57cfaaa3ce7113c5b3b01be5ba67b4171d1264fa7cbb6ac203820788467eb
-	source_armv7h = antares-sql-0.7.27-armv7h.deb::https://github.com/antares-sql/antares/releases/download/v0.7.27/Antares-0.7.27-linux_armv7l.deb
-	sha256sums_armv7h = 2925916008737aafaa7398c9ab2aa8530c26455f41a37db2f116f75331c12ae3
-	source_x86_64 = antares-sql-0.7.27-x86_64.deb::https://github.com/antares-sql/antares/releases/download/v0.7.27/Antares-0.7.27-linux_amd64.deb
-	sha256sums_x86_64 = 224c7beccdc0af970a721ec089838324ef60192a0ab39c31b069ce020ec21c2b
+	source_aarch64 = antares-sql-0.7.28-aarch64.deb::https://github.com/antares-sql/antares/releases/download/v0.7.28/Antares-0.7.28-linux_arm64.deb
+	sha256sums_aarch64 = 3dbd4789b3f60c9851a26e4c69111ee826c9b39878d529d44db6111aa2fc2634
+	source_armv7h = antares-sql-0.7.28-armv7h.deb::https://github.com/antares-sql/antares/releases/download/v0.7.28/Antares-0.7.28-linux_armv7l.deb
+	sha256sums_armv7h = 202f4cb2f029a29db36a537393ac2db1f88f7c11a489727ac76df7e1a9b7931f
+	source_x86_64 = antares-sql-0.7.28-x86_64.deb::https://github.com/antares-sql/antares/releases/download/v0.7.28/Antares-0.7.28-linux_amd64.deb
+	sha256sums_x86_64 = aaeb418049ee13d9cd0ff5e06d0a62ec56e750a777c126b3f1749a4a1b40f347
 
 pkgname = antares-sql-bin
