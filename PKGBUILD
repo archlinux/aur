@@ -3,8 +3,8 @@
 
 _pkgname="gala"
 pkgname="$_pkgname-git"
-pkgver=7.1.3.r182.g5c7fd36
-pkgrel=0.1
+pkgver=8.0.0.r4.gc46810f
+pkgrel=1
 pkgdesc='The Pantheon Window Manager'
 url='https://github.com/elementary/gala'
 license=('GPL-3.0-or-later')
@@ -39,7 +39,7 @@ provides=(
 conflicts=(gala)
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+https://github.com/elementary/gala.git")
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -49,6 +49,9 @@ pkgver() {
 }
 
 build() {
+  export CFLAGS
+  CFLAGS+=" -Wno-error=implicit-function-declaration"
+
   arch-meson "$_pkgsrc" build
   meson compile -C build
 }
