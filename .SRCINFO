@@ -1,6 +1,6 @@
 pkgbase = exoscale-cli-git
 	pkgdesc = Command-line tool for everything at Exoscale: compute, storage, dns
-	pkgver = 1.78.3.r1.g4e378270
+	pkgver = 1.79.0.r1.gb88d7736
 	pkgrel = 1
 	url = https://github.com/exoscale/cli
 	arch = x86_64
