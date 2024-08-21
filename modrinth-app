@@ -1,2 +1,8 @@
 #!/bin/sh
-env WEBKIT_DISABLE_DMABUF_RENDERER=1 /opt/modrinth-app/modrinth-app "$@"
+
+export WEBKIT_DISABLE_DMABUF_RENDERER=1
+export LIBGL_ALWAYS_SOFTWARE=1
+export GDK_BACKEND=x11
+
+# Launch the modrinth app
+exec /opt/modrinth-app/modrinth-app "$@"

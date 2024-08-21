@@ -1,6 +1,7 @@
+# Maintainer: Refreeze5911
 # Maintainer: Antti <antti@antti.codes>
 
-pkgname=modrinth-app-bin
+pkgname=modrinth-app-segfault-fix-bin
 pkgver=0.8.1
 pkgrel=1
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'

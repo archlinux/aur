@@ -1,4 +1,4 @@
-pkgbase = modrinth-app-bin
+pkgbase = modrinth-app-segfault-fix-bin
 	pkgdesc = An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.
 	pkgver = 0.8.1
 	pkgrel = 1
@@ -27,4 +27,4 @@ pkgbase = modrinth-app-bin
 	sha256sums = 2006d3e0ce83c28c45efe4beecd2515af947c813eb98101d01089d1fa71ec8c0
 	sha256sums = 5404b4e7b25903afe43ab2f2451be4b27f4823c6785327b166f2faa519fa38a9
 
-pkgname = modrinth-app-bin
+pkgname = modrinth-app-segfault-fix-bin
