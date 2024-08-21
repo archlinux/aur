@@ -1,17 +1,17 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="hevi"
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A modern hex viewer"
-arch=('any')
+arch=('x86_64')
 url="https://arnau478.github.io/${pkgname}"
 _url="https://github.com/Arnau478/${pkgname}"
 license=('GPL-3.0-or-later')
 makedepends=('zig')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0741eec017e37b3903727a56e0be33290884f29ac51a751e7c073d30a87c5e4c')
+sha256sums=('d1c444301c65910b171541f1e3d1445cc3ff003dfc8218b976982f80bccd9ee0')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
