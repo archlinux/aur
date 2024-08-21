@@ -15,8 +15,8 @@ pkgname=(
   "${pkgbase}"
   "${_pkgname}-git-docs"
   "${_pkgname}-git-demos")
-pkgver=1.3.rc+311+ge810d86b
-pkgrel=2
+pkgver=1.5.0+7+ge3497de8
+pkgrel=1
 pkgdesc="Building blocks for modern adaptive GNOME applications"
 _url="https://gitlab.gnome.org/GNOME/${_pkgname}"
 url="https://gnome.pages.gitlab.gnome.org/${_pkgname}"
@@ -29,7 +29,7 @@ arch=(
   'armv7h')
 license=(LGPL)
 depends=(
-  "gtk4>=4.11")
+  "gtk4-git")
 makedepends=(
   cmake
   git
@@ -56,6 +56,7 @@ build() {
 }
 
 check() {
+  bash -c ' \
   export XDG_RUNTIME_DIR="$PWD/runtime-dir" \
          WAYLAND_DISPLAY=wayland-5
 
@@ -65,12 +66,13 @@ check() {
          --idle-time=0 &
   _w=$!
 
-  bash trap "kill ${_w}; wait" EXIT
+  trap "kill ${_w}; wait" EXIT
 
   meson \
     test \
       -C build \
       --print-errorlogs
+  '
 }
 
 _pick() {
