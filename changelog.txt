@@ -1,4 +1,51 @@
--- $MawkId: CHANGES,v 1.378 2024/06/22 19:14:46 tom Exp $
+-- $MawkId: CHANGES,v 1.382 2024/08/19 08:12:22 tom Exp $
+
+20240819
+	+ several changes to improve results with lcov, increasing coverage
+	  measured by line/function percentages from 82.3/89.2 to 90.5/96.0;
+	  using new bundled and separate test-cases as well as some code fixes.
+	  + some code-changes provide for overriding compiled-in limits to make
+	    testing simpler, e.g., SP_SIZE, FB_SHIFT, SPRINTF_LIMIT.
+	  + adjusted ifdef's based on coverage analysis which showed used code
+	  + test package builds with "unused" cases in rexp*.c disabled
+	  + new bundled test cases include cclass.awk and mawkerrs script.
+	    The latter is invoked via the "mawk_errs" target in the makefile.
+	  + correct a case in rexp3.c which addressed past end of string.
+	  + improve regex handling of nul character.
+	  + add a null pointer check to cell_destroy()
+	  + show state value in the panic exit in rexp0.c
+	  + add RE_bad_state, for panics in rexp2.c and rexp3.c
+	  + add workaround in rexp.c for patterns like /{0}/ and /^{0]/ where
+	    nothing could match, for now with a comment indicating that a
+	    RE_none() along with a M_REJECT state seems the way to completely
+	    resolve this.  The workaround was needed because trimming the {0}
+	    caused out-of-bounds access.
+	  + use C_NOINIT in bi_funct.c for readability
+	  + address special-case in the trace call in execute.c, to avoid
+	    calling da_type_name() when sp happens to be just before
+	    eval_stack[] -- which happens in the first call from the main
+	    program.
+	  + add/use TRACE_FUNC2 for cases where we know the number of arguments
+	    is not sp->type
+	  + fix a regression in fin.c introduced by buffer-changes in 20230808
+	  + fixes for is_string_split() function, making it work for both
+	    internal and external regex.
+	+ change ifdef in version.c to provide for test-package showing the
+	  effective limit of sprintf buffer.
+	+ correction to usage message: -W traditional rather than -W compat
+	+ test/mawktest uses mktemp for the working files
+	+ add test/longline.sh
+	+ add test/hashbang-S.sh for later use in testing.
+	+ add test/cclass.awk script for character-classes
+	+ improve regular expression matching (Original Mawk #76).
+
+20240716
+	+ add --enable-arc4random option to configure script; this is normally
+	  disabled for mawk because the developer of arc4random did not provide
+	  a useful method for initialization (Debian #1075717).
+	+ improve configure-check for clock_gettime, checking for both
+	  monotonic and realtime clocks, as well as adding a check for
+	  clock_gettime in the "rt" library for Solaris
 
 20240622
 	+ ensure input buffer is null-terminated (patch by James Cowgill,
