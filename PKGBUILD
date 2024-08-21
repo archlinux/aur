@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rapiclient
-_pkgver=0.1.5
+_pkgver=0.1.6
 pkgname=r-${_pkgname,,}
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='Dynamic OpenAPI/Swagger Client'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8ac59641aed91d13d0086ddb180de1cddf935f0b7388bd2b0793e62c66ade6f6')
+sha256sums=('b2b77f1234f53f1732360bef2b813291413d28891a93437d9cbd888fdf4f804f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
