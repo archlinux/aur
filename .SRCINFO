@@ -1,0 +1,27 @@
+pkgbase = kunifiedpush-git
+	pkgdesc = UnifiedPush client library and distributor daemon.
+	pkgver = r293.77e2803
+	pkgrel = 1
+	url = https://invent.kde.org/libraries/kunifiedpush
+	arch = x86_64
+	license = LGPL-2.0-or-later
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = wayland-protocols
+	makedepends = cmake
+	makedepends = ninja
+	depends = kcmutils
+	depends = kconfigwidgets
+	depends = kdbusaddons
+	depends = kdoctools
+	depends = kiconthemes
+	depends = kirigami-addons
+	depends = knotifications
+	depends = kservice
+	depends = qt6-declarative
+	provides = kunifiedpush
+	conflicts = kunifiedpush
+	source = git+https://invent.kde.org/libraries/kunifiedpush.git
+	sha256sums = SKIP
+
+pkgname = kunifiedpush-git
