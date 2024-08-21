@@ -2,7 +2,7 @@
 
 pkgname=routedns-git
 _pkgname=routedns
-pkgver=0.1.51.r16.g3aa67c5
+pkgver=0.1.80.r0.g53bf18e
 pkgrel=1
 pkgdesc="DNS stub resolver, proxy and router (git version)"
 arch=('any')
