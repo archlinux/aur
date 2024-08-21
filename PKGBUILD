@@ -71,6 +71,9 @@ prepare() {
   # Disable publishing for CIs
   patch --strip=1 gui/tasks/distribution.js < ../no-publish.diff
 
+  # Create shell-completions output directory
+  mkdir -p build/shell-completions
+
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
@@ -126,7 +129,6 @@ build() {
   cargo build --frozen --release "${cargo_crates_to_build[@]}"
 
   echo "Preparing for packaging Mullvad VPN ${PRODUCT_VERSION}..."
-  mkdir -p build/shell-completions
   for sh in bash zsh fish; do
     echo "Generating shell completion script for ${sh}..."
     cargo run --bin mullvad --frozen --release -- shell-completions ${sh} \
