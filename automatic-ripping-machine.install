@@ -1,0 +1,2 @@
+echo 'for i in $(ls /dev/sr?); do sudo mkdir -p /mnt$i; done'
+echo '/dev/sr0  /mnt/dev/sr0  udf,iso9660  users,noauto,exec,utf8  0  0'

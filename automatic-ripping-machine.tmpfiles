@@ -1,0 +1,9 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /home/arm 0755 arm arm
+d /home/arm/logs 0755 arm arm
+d /home/arm/logs/progress 0755 arm arm
+d /home/arm/media 0755 arm arm
+d /home/arm/media/transcode 0755 arm arm
+d /home/arm/media/completed 0755 arm arm
+d /home/arm/media/raw 0755 arm arm
+d /home/arm/music 0755 arm arm
