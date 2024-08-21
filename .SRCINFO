@@ -1,14 +1,16 @@
 pkgbase = agave
 	pkgdesc = Legacy colorscheme designer tool for GNOME2
 	pkgver = 0.4.7
-	pkgrel = 12
+	pkgrel = 13
 	url = https://web.archive.org/web/20170327063642/http://home.gna.org/colorscheme/
 	arch = x86_64
 	license = GPL
+	makedepends = libxslt
 	makedepends = gnome-doc-utils
 	makedepends = intltool
 	makedepends = boost
 	depends = libglademm
+	depends = gtkmm
 	source = http://archive.ubuntu.com/ubuntu/pool/universe/a/agave/agave_0.4.7.orig.tar.gz
 	source = agave-0.4.7-mdv-fix-str-fmt.patch
 	source = schemebox.patch
