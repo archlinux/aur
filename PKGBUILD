@@ -2,7 +2,7 @@
 _appname=music-player
 pkgname="moebits-${_appname}-bin"
 _pkgname="Moebits Music Player"
-pkgver=0.2.6
+pkgver=0.2.8
 _electronversion=28
 pkgrel=1
 pkgdesc="A music player with real-time pitch shifting, time stretching, and reversing effects."
@@ -14,6 +14,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
+    'nodejs'
 )
 makedepends=(
     'fuse2'
@@ -23,15 +24,15 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Moebits/Music-Player/v${pkgver}/license.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6d79ec793740c5736f8cd00a888279e795f44dd09c782c9ed25372268984fadd'
+sha256sums=('9a090bb65ef41e3c715c82a817d3bff2feff885a97472109d4dce004806a9b47'
             '8946c49d9a63a62f5621f114027b2842ee914bd237590f2a5496d4b044c95af9'
-            'c053a7b3ed8b0b4d77f78e81ab8a4c61cbfd773a9298b3f3a187e5df89c125c2')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
