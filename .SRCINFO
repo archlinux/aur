@@ -15,6 +15,6 @@ pkgbase = tabaur-bin
 	conflicts = tabaur
 	conflicts = tabaur-git
 	source = https://github.com/BurntRanch/TabAUR/releases/download/v0.6.9/TabAUR-v0.6.9.tar.zst
-	sha256sums = 7b20cc048148ad86afcaf652811f0610f846a8d3a5902c6faf59ab7285714404
+	sha256sums = b40ce475dd44dd77156ba5eb1352803cbfb4ebabfa8e3c7e0bd768aed5c69fa3
 
 pkgname = tabaur-bin
