@@ -1,7 +1,7 @@
 pkgbase = peazip
 	pkgdesc = Cross-platform file and archive manager (Qt6)
 	pkgver = 9.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/peazip/PeaZip
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = peazip
 
 pkgname = peazip
 	depends = qt6pas
-	depends = 7-zip
 	depends = brotli
+	depends = p7zip
 	depends = zstd
 	depends = hicolor-icon-theme

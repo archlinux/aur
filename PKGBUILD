@@ -8,7 +8,7 @@
 _pkgname="peazip"
 pkgname="$_pkgname"
 pkgver=9.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform file and archive manager (${_widgets^})"
 url="https://github.com/peazip/PeaZip"
 license=('LGPL-3.0-or-later')
@@ -82,8 +82,8 @@ build() {
 
 package() {
   depends+=(
-    '7-zip'
     'brotli'
+    'p7zip'
     'zstd'
   )
   depends+=('hicolor-icon-theme')
@@ -110,12 +110,11 @@ package() {
   ln -sf /usr/share/peazip "$pkgdir/usr/lib/peazip/res/share"
 
   # 3rdparty binary
-  install -d "$pkgdir/usr/lib/peazip/res/bin"
-  install -d "$pkgdir/usr/lib/peazip/res/bin/7z"
-  ln -sf /usr/bin/7zz "$pkgdir/usr/lib/peazip/res/bin/7z/7z"
-  for _file in brotli/brotli lpaq/lpaq8 paq/paq8o quad/bcm unace/unace upx/upx zpaq/zpaq zstd/zstd; do
-    install -d "$pkgdir/usr/lib/peazip/res/bin/$(dirname $_file)/"
-    ln -sf "/usr/bin/$(basename $_file)" "$pkgdir/usr/lib/peazip/res/bin/$_file"
+  local _dir _file
+  for _file in 7z/7z brotli/brotli unace/unace upx/upx zstd/zstd; do
+    _dir="$(dirname $_file)"
+    install -dm755 "$pkgdir/usr/lib/peazip/res/bin/$_dir/"
+    ln -sf "/usr/bin/$_dir" "$pkgdir/usr/lib/peazip/res/bin/$_file"
   done
 
   install -d "$pkgdir"/usr/bin/
