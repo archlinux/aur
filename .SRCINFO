@@ -1,0 +1,34 @@
+pkgbase = lasem02
+	pkgdesc = SVG and MathML rendering library
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/LasemProject/lasem
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = intltool>=0.35.0
+	makedepends = pkgconf>=0.9.0
+	makedepends = glib2-devel
+	makedepends = gobject-introspection
+	makedepends = perl>=5.8.1
+	depends = glibc
+	depends = glib2
+	depends = gtk2>=2.16
+	depends = gdk-pixbuf2>=2.16
+	depends = cairo>=1.2
+	depends = pango
+	depends = libxml2
+	depends = harfbuzz
+	noextract = itex2mml-1.6.1.tar.gz
+	source = lasem-0.2.1::git+https://github.com/LasemProject/lasem.git#tag=LASEM_0_2_1
+	source = itex2mml-1.6.1.tar.gz::https://golem.ph.utexas.edu/~distler/blog/files/itexToMML.tar.gz
+	source = lasem02_fix_lsmmathmlutils_h.patch
+	source = lasem02_fix_makefile_am.patch
+	source = lasem02_fix_potfiles_in.patch
+	sha256sums = a8e3b0b9074b76718227b20468018afdfd63fae426ecc500c703badc2eb1085f
+	sha256sums = 3ef2572aa3421cf4d12321905c9c3f6b68911c3c9283483b7a554007010be55f
+	sha256sums = 4aa69c1d61a04c97df670d23e46f52709b535510e01247ef59db342d878f8822
+	sha256sums = 46a4773b20990d6e27e65870983d01366c46f16aee09070389935281baaa825b
+	sha256sums = b9c0d1ea7e5e6f1af8395a2c37ef429a49e65e0ad6dcb9f30ad7a9c9f751e59a
+
+pkgname = lasem02

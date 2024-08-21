@@ -1,0 +1,5 @@
+--- a/po/POTFILES.in
++++ b/po/POTFILES.in
+@@ -1 +1,2 @@
+ # List of source files containing translatable strings.
++itex2mml/y.tab.c

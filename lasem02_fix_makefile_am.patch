@@ -1,0 +1,11 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2,7 +2,7 @@
+ 
+ SUBDIRS = itex2mml src po
+ 
+-lasemdocdir = ${prefix}/doc/lasem-@LASEM_API_VERSION@
++lasemdocdir = ${prefix}/share/doc/lasem-@LASEM_API_VERSION@
+ lasemdoc_DATA = 	\
+ 	README		\
+ 	COPYING		\
