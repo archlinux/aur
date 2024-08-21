@@ -3,7 +3,7 @@
 
 _pkgname=image-optimizer
 pkgname=$_pkgname-git
-pkgver=0.1.23.r4.g6d8cdeb
+pkgver=0.1.25.r0.g8212165
 pkgrel=1
 pkgdesc="Simple lossless compression (latest commit)"
 url="https://github.com/gijsgoudzwaard/image-optimizer"
