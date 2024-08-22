@@ -21,6 +21,7 @@ pkgbase = rbenv-vagrant-setup-git
 	depends = rsync
 	depends = xz
 	depends = perl
+	depends = ruby-build
 	optdepends = dnsmasq: if using libvirt
 	provides = rbenv-vagrant-setup
 	conflicts = rbenv-vagrant-setup

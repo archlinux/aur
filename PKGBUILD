@@ -8,7 +8,7 @@ url="https://gitlab.com/ssfdust/rbenv-vagrant-setup"
 license=('MIT')
 groups=()
 depends=('python' 'python-requests' 'go' 'rbenv' 'curl' 'libarchive'
-         'libssh2' 'libxml2' 'libxslt' 'rsync' 'xz' 'perl'
+         'libssh2' 'libxml2' 'libxslt' 'rsync' 'xz' 'perl' 'ruby-build'
 )
 makedepends=('git' 'python-pip' 'python-installer' 'python-wheel')
 optdepends=('dnsmasq: if using libvirt')
