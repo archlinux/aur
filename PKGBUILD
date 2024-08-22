@@ -5,7 +5,7 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-beta-performance
-pkgver=47.beta.r136.geaa4169
+pkgver=47.beta.r139.gc7acd60
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -78,13 +78,13 @@ makedepends=(
   sysprof
   wayland-protocols
 )
-_commit=eaa416904d17e1073df02f76913eb56293d6394e
+_commit=c7acd6074b85829868cbf5136874a6627d2afd76
 source=(
   "mr1441.patch::$url/-/merge_requests/1441.patch"
   "git+$url.git#commit=$_commit"
 )
 b2sums=('29e0ea8be2b5a684d13979024265bb4c558d59b7e3683c58b99fd00c187f9191d0d0ebab0c296950996809619981fe74d43c9259355e3a799c0572cfcb104b8f'
-        '1172cabaa0a590e206e1b15ee9ab81cacc96705d0ce4bcfe89585257299411632920ac87e11f7d68fa30180bd51f704fafbf3f63f986a2f1794f6438eadb98e0')
+        'fdf700facf8e2ca7967227d43b61c95a08292777c515434d8484233ea2ebb09c5934a9e66244a82e77eee2169dfb3dc149dbbc2e4cf7a45881c54552b88e630d')
 
 pkgver() {
   cd mutter
