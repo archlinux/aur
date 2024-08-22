@@ -1,0 +1,31 @@
+post_install() {
+    case ${LANG} in
+        'zh_CN.UTF-8')
+            printf "\033[1;31m请手动更改目录/opt/${pkgname}的所有者,所属组 \033[1;32mchown -R user:group /opt/${pkgname}\033[0m\n"
+            ;;
+        'en_US.UTF-8')
+            printf "\033[1;31mPlease manually change the owner and group of the /opt/${pkgname} directory \033[1;32mchown -R user:group /opt/${pkgname}\033[0m\n"
+            ;;
+        'fr_FR.UTF-8')
+            printf "\033[1;31mVeuillez changer manuellement le propriétaire et le groupe du répertoire /opt/${pkgname} \033[1;32mchown -R user:group /opt/${pkgname}\033[0m\n"
+            ;;
+        'de_DE.UTF-8')
+            printf "\033[1;31mBitte ändern Sie manuell den Besitzer und die Gruppe des Verzeichnisses /opt/${pkgname} \033[1;32mchown -R user:group /opt/${pkgname}\033[0m\n"
+            ;;
+        'es_ES.UTF-8')
+            printf "\033[1;31mPor favor, cambie manualmente el propietario y el grupo del directorio /opt/${pkgname} \033[1;32mchown -R user:group /opt/${pkgname}\033[0m\n"
+            ;;
+        'it_IT.UTF-8')
+            printf "\033[1;31mSi prega di cambiare manualmente il proprietario e il gruppo della directory /opt/${pkgname} \033[1;32mchown -R user:group /opt/${pkgname}\033[0m\n"
+            ;;
+        'ja_JP.UTF-8')
+            printf "\033[1;31mディレクトリ /opt/${pkgname} の所有者とグループを手動で変更してください \033[1;32mchown -R user:group /opt/${pkgname}\033[0m\n"
+            ;;
+        'ko_KR.UTF-8')
+            printf "\033[1;31m디렉토리 /opt/${pkgname}의 소유자와 그룹을 수동으로 변경하십시오 \033[1;32mchown -R user:group /opt/${pkgname}\033[0m\n"
+            ;;
+        *)
+            printf "\033[1;31mPlease manually change the owner and group of the /opt/${pkgname} directory \033[1;32mchown -R user:group /opt/${pkgname}\033[0m\n"
+            ;;
+    esac
+}
