@@ -85,6 +85,7 @@ source=(
   $pkgname-symbolic.svg
   $pkgname.desktop
   org.mozilla.$pkgname.metainfo.xml
+  0001-Bug-1914428-Skip-LLVM-Profile-Error-check-when-UPLOA.patch
   firefox-install-dir.patch
 )
 validpgpkeys=(
@@ -96,11 +97,13 @@ sha256sums=('SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             '781896224710e0b6eb262cbfb27a48d2b2c2ff95e4f307792eddc379c98c559d'
             '41f24752cf1a1d2f757cb14aa0fab34453470386800360c7689825f925c2ba91'
+            'a667c12fa22590927418bcaf694491a7a2b8350d0b29cea276e755b0f59434f2'
             'c80937969086550237b0e89a02330d438ce17c3764e43cc5d030cb21c2abce5f')
 b2sums=('SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         'fd23653ae8c758ef0351a8b5ff98dfa438cd8a83e9bc56d8103161a940276ee828f4856fec56e29f3c158caf75a4968bc80e5891633cb9435f92fe73faf77456'
         '10329d1988275cbbe20edc8fa764e7743b75797132f222ccff68b3a3ecd45de3e63689e487afd8284a14226fe1827281717eb1b559896b7d5a3e6414c050243a'
+        'a90ddd11f5db4c0ffa04e2dc3a202f44d15b0ed100afbd966af79cdb9075c4d4ead56ba482194391749bfee26ab28d43cce0c63a382fcbbd345209f4256d51c6'
         'f76eb72c326f347991133c004b252ed2e037e72a7a436012fb1495668d2b9194d836765b58b01ba0bd9f5c4b888ee5ee715bdb458823a2a7822f1b299f4d1948')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -133,6 +136,10 @@ pkgver() {
 prepare() {
   mkdir mozbuild
   cd mozilla-central
+
+  # Unbreak PGO
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1914428
+  patch -Np1 -i ../0001-Bug-1914428-Skip-LLVM-Profile-Error-check-when-UPLOA.patch
 
   # Change install dir from 'firefox' to 'firefox-nightly'
   patch -Np1 -i ../firefox-install-dir.patch
@@ -205,8 +212,15 @@ END
 
   echo "Profiling instrumented browser..."
   ./mach package
-  LLVM_PROFDATA=llvm-profdata \
-    JARLOG_FILE="$PWD/jarlog" \
+  LLVM_PROFDATA=llvm-profdata JARLOG_FILE="$PWD/jarlog" \
+    MOZ_DISABLE_CONTENT_SANDBOX=1 \
+    MOZ_DISABLE_GMP_SANDBOX=1 \
+    MOZ_DISABLE_GPU_SANDBOX=1 \
+    MOZ_DISABLE_RDD_SANDBOX=1 \
+    MOZ_DISABLE_SOCKET_PROCESS_SANDBOX=1 \
+    MOZ_DISABLE_UTILITY_SANDBOX=1 \
+    MOZ_DISABLE_VR_SANDBOX=1 \
+    GTK_A11Y=none NO_AT_BRIDGE=1 dbus-run-session \
     xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
     ./mach python build/pgo/profileserver.py
 
