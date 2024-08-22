@@ -5,6 +5,7 @@ pkgbase = libindi-eqmod
 	url = http://www.indilib.org/index.php?title=Main_Page
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = cmake
 	depends = libindi=2.0.9
