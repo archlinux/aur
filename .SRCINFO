@@ -1,10 +1,10 @@
 pkgbase = python-diffpy.structure
 	pkgdesc = Storage and manipulation of crystal structure data in python
 	pkgver = 3.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.diffpy.org/diffpy.structure/
 	arch = any
-	license = Open Source Licensce Agreement
+	license = BSD-3-Clause
 	makedepends = python-setuptools
 	makedepends = python-setuptools-git-versioning<2
 	depends = python

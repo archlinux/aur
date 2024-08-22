@@ -3,11 +3,11 @@
 pkgname=python-diffpy.structure
 pkgshort=diffpy.structure
 pkgver=3.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Storage and manipulation of crystal structure data in python"
 arch=('any')
 url="https://www.diffpy.org/diffpy.structure/"
-license=('Open Source Licensce Agreement')
+license=('BSD-3-Clause')
 
 depends=('python'
          'python-six'
