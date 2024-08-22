@@ -1,4 +1,4 @@
-From 5f602e3785936d45731be30f9134c88b8d6bd8fb Mon Sep 17 00:00:00 2001
+From f8f00bbcac51e3e5812a6af56c524950bbc30e1c Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Fri, 17 Sep 2021 17:48:20 +0800
 Subject: [PATCH 01/28] cogl/onscreen: Add function
@@ -43,7 +43,7 @@ index 3bcb23307e..cde6da308f 100644
 GitLab
 
 
-From 9eab00651e79144b87dacb5bd84bd1f21d5321f5 Mon Sep 17 00:00:00 2001
+From 34ae0039131d9a376ce130d3a4e97a3e0e321176 Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Mon, 12 Feb 2024 17:16:03 +0800
 Subject: [PATCH 02/28] cogl/onscreen: Indent declaration parameters to align
@@ -71,7 +71,7 @@ index c7c3925926..77b09bf2e6 100644
 GitLab
 
 
-From 413a310bc9465df3dd431570962f466b481919b3 Mon Sep 17 00:00:00 2001
+From ff0e8365d8f01a8a8a3893803c3d018e2d6a5bb1 Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Wed, 20 Apr 2022 18:33:43 +0800
 Subject: [PATCH 03/28] kms: Keep a shutting_down flag
@@ -82,7 +82,7 @@ Subject: [PATCH 03/28] kms: Keep a shutting_down flag
  2 files changed, 11 insertions(+)
 
 diff --git a/src/backends/native/meta-kms.c b/src/backends/native/meta-kms.c
-index 32f3a0088e..d7d6a4001e 100644
+index 9af95ca9c1..3d8bffca30 100644
 --- a/src/backends/native/meta-kms.c
 +++ b/src/backends/native/meta-kms.c
 @@ -66,6 +66,8 @@ struct _MetaKms
@@ -94,16 +94,8 @@ index 32f3a0088e..d7d6a4001e 100644
  };
  
  G_DEFINE_TYPE (MetaKms, meta_kms, META_TYPE_THREAD)
-@@ -367,6 +369,7 @@ static void
- on_prepare_shutdown (MetaBackend *backend,
-                      MetaKms     *kms)
- {
-+  kms->shutting_down = TRUE;
-   meta_kms_run_impl_task_sync (kms, prepare_shutdown_in_impl, NULL, NULL);
-   meta_thread_flush_callbacks (META_THREAD (kms));
- 
-@@ -428,6 +431,12 @@ meta_kms_new (MetaBackend   *backend,
-   return kms;
+@@ -352,6 +354,12 @@ meta_kms_create_device (MetaKms            *kms,
+   return device;
  }
  
 +gboolean
@@ -112,11 +104,19 @@ index 32f3a0088e..d7d6a4001e 100644
 +  return kms->shutting_down;
 +}
 +
- static void
- meta_kms_finalize (GObject *object)
+ static gpointer
+ prepare_shutdown_in_impl (MetaThreadImpl  *thread_impl,
+                           gpointer         user_data,
+@@ -367,6 +375,7 @@ static void
+ on_prepare_shutdown (MetaBackend *backend,
+                      MetaKms     *kms)
  {
++  kms->shutting_down = TRUE;
+   meta_kms_run_impl_task_sync (kms, prepare_shutdown_in_impl, NULL, NULL);
+   meta_thread_flush_callbacks (META_THREAD (kms));
+ 
 diff --git a/src/backends/native/meta-kms.h b/src/backends/native/meta-kms.h
-index 7434014063..f6b19520be 100644
+index 057c7a2348..0d6986529c 100644
 --- a/src/backends/native/meta-kms.h
 +++ b/src/backends/native/meta-kms.h
 @@ -60,6 +60,8 @@ MetaKmsDevice * meta_kms_create_device (MetaKms            *kms,
@@ -132,7 +132,7 @@ index 7434014063..f6b19520be 100644
 GitLab
 
 
-From eccf112ad711edc7c8bcc602529f0731db92748f Mon Sep 17 00:00:00 2001
+From 13c3a1f4f036ef7ca8721caa1c582e065c4a0a2c Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Tue, 26 Oct 2021 18:50:50 +0800
 Subject: [PATCH 04/28] renderer/native: Avoid requeuing the same onscreen for
@@ -166,7 +166,7 @@ index 7034206bcd..570a7d3fb5 100644
 GitLab
 
 
-From 1d6103041247a6ad13707d17770226328939859c Mon Sep 17 00:00:00 2001
+From a9d7397f5b28a995c6d8defb34427da5423db616 Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Mon, 1 Nov 2021 19:35:34 +0800
 Subject: [PATCH 05/28] renderer/native: Steal the power save flip list before
@@ -206,7 +206,7 @@ index 570a7d3fb5..986c7f64a6 100644
 GitLab
 
 
-From 0257b855f08a4298a8c072ead3c26cfc5ff9afe1 Mon Sep 17 00:00:00 2001
+From 6fadcfa70ce79ec63b0c10e0187d7711a51e8511 Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Tue, 23 Jul 2024 16:58:05 +0800
 Subject: [PATCH 06/28] backends/native: Add set/get_damage functions to
@@ -291,7 +291,7 @@ index 3df4eff78f..84bd43b8c6 100644
 GitLab
 
 
-From 396a03b8e87a31d23b1753f99c4fd97f4efb7469 Mon Sep 17 00:00:00 2001
+From c49ff4c9fdb486d0637ae826b7f0d544621fc3e8 Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Fri, 10 Dec 2021 16:40:58 +0800
 Subject: [PATCH 07/28] onscreen/native: Log swapbuffers and N-buffering when
@@ -329,7 +329,7 @@ index 229aed3756..2eeec22d0f 100644
 GitLab
 
 
-From 43ff0d0feffd73cd82c45af38e2d2505e0caf316 Mon Sep 17 00:00:00 2001
+From 141c3401d71bff0b79ffaf997785b52a42cedb10 Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Wed, 28 Jul 2021 16:35:56 +0800
 Subject: [PATCH 08/28] onscreen/native: Replace an assertion that double
@@ -359,7 +359,7 @@ index 2eeec22d0f..a5bfa1db32 100644
 GitLab
 
 
-From 988ff41cf20e91107555ab8fd26fe57bb067de4a Mon Sep 17 00:00:00 2001
+From 86444357effbb67a9fbb8c8192e7c72a3722ca07 Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Thu, 16 Sep 2021 16:26:25 +0800
 Subject: [PATCH 09/28] onscreen/native: Deduplicate calls to
@@ -438,7 +438,7 @@ index a5bfa1db32..df73d22874 100644
 GitLab
 
 
-From ac06b2a3ca85533a97918ca480caf5a0c5e9acd7 Mon Sep 17 00:00:00 2001
+From 5c669b891173ec1a60ac4898c0635b859c412665 Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Wed, 28 Jul 2021 16:29:27 +0800
 Subject: [PATCH 10/28] onscreen/native: Split swap_buffers_with_damage into
@@ -572,7 +572,7 @@ index df73d22874..9b9beb9a05 100644
 GitLab
 
 
-From 9bc3ab4faab157942ba7ff00f4f4d1ea7929c2bd Mon Sep 17 00:00:00 2001
+From 3dbef18f4305e88b92ead8b22e2c418117f002c7 Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Tue, 5 Dec 2023 17:50:44 +0800
 Subject: [PATCH 11/28] onscreen/native: Insert a 'posted' frame between 'next'
@@ -732,7 +732,7 @@ index 9b9beb9a05..4ab71f4e7e 100644
 GitLab
 
 
-From c5c0c68a332d38cb65e1a035d0210b15ba728452 Mon Sep 17 00:00:00 2001
+From 69451c6b6dfd57acfaa3e1eef24b95bdc71a306f Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Fri, 17 Sep 2021 17:59:28 +0800
 Subject: [PATCH 12/28] onscreen/native: Defer posting if there's already a
@@ -1107,7 +1107,7 @@ index 4ab71f4e7e..3ad5df41f9 100644
 GitLab
 
 
-From 347b0ec5ff707930bb958faf65c8623072bc60a1 Mon Sep 17 00:00:00 2001
+From 703f28b819dabe01aea6685209b0e318ab9dc407 Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Fri, 9 Dec 2022 14:22:31 +0800
 Subject: [PATCH 13/28] onscreen/native: Increase secondary GPU dumb_fbs from 2
@@ -1160,7 +1160,7 @@ index 3ad5df41f9..3ca28c1c1a 100644
 GitLab
 
 
-From 81719a93ff9d0552e784691bbb5c8566196b2f5f Mon Sep 17 00:00:00 2001
+From c94d896270f1c3ee46d3a66732a2e8ffab70d41c Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Thu, 4 Nov 2021 16:09:26 +0800
 Subject: [PATCH 14/28] onscreen/native: Add function
@@ -1210,7 +1210,7 @@ index 0e1193325a..e30357d19d 100644
 GitLab
 
 
-From d926b0c7e27f684cfe838f33db622c413f382604 Mon Sep 17 00:00:00 2001
+From b8cdf9e571e5541e09a5269091260231978e6d9e Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Wed, 11 May 2022 16:00:32 +0800
 Subject: [PATCH 15/28] onscreen/native: Skip try_post_latest_swap if shutting
@@ -1259,7 +1259,7 @@ index 1863467bca..608957091b 100644
 GitLab
 
 
-From 937e50f2bbee9d1931826dda7c3123af1d1974bc Mon Sep 17 00:00:00 2001
+From 626071735d363cc54886c95049039c328076e6fe Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Thu, 4 Nov 2021 16:09:52 +0800
 Subject: [PATCH 16/28] renderer/native: Discard pending swaps when rebuilding
@@ -1318,7 +1318,7 @@ index 986c7f64a6..d4ff9e2177 100644
 GitLab
 
 
-From c8035ff0709e9e75dae376babf97a7ff8a427e1b Mon Sep 17 00:00:00 2001
+From 82cc00847aa41d1b790352f347339582a3042f5d Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Tue, 10 Aug 2021 17:46:49 +0800
 Subject: [PATCH 17/28] clutter/frame-clock: Lower the threshold for disabling
@@ -1367,7 +1367,7 @@ index 0c3ab8a010..d51c49acb4 100644
 GitLab
 
 
-From b389b8dd313822ef63acfa0f515659153d952b35 Mon Sep 17 00:00:00 2001
+From 006ea6ed9ad0a71efd22955b5161631a4d0e1d27 Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Fri, 24 Jul 2020 14:13:11 +0800
 Subject: [PATCH 18/28] clutter/frame-clock: Merge states DISPATCHING and
@@ -1505,7 +1505,7 @@ index d51c49acb4..5306d4796e 100644
 GitLab
 
 
-From 3ca254d93b7c08160463ccd3adfcf562b3ce169e Mon Sep 17 00:00:00 2001
+From d412892421b855bdd76bd37f6f11f0baafd94fea Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Thu, 10 Sep 2020 16:34:53 +0800
 Subject: [PATCH 19/28] clutter/frame-clock: Add triple buffering support
@@ -1903,7 +1903,7 @@ index 5306d4796e..3d2c64a206 100644
 GitLab
 
 
-From 58add4fbad31cf8675f332f4e3cd3012d24e0786 Mon Sep 17 00:00:00 2001
+From adfab605a925c055b0f6499ab2a93379aa5b6bba Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Fri, 10 Dec 2021 16:28:04 +0800
 Subject: [PATCH 20/28] clutter/frame-clock: Log N-buffers in
@@ -1954,7 +1954,7 @@ index 3d2c64a206..7806167b82 100644
 GitLab
 
 
-From 5d164ac548f4ddebd3dfdfa3507cb6f5abdc0222 Mon Sep 17 00:00:00 2001
+From ee915d4fa526f3a912763537d6416a06a42fd9b9 Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Tue, 7 Sep 2021 19:08:15 +0800
 Subject: [PATCH 21/28] clutter/frame: Add ClutterFrameHint to ClutterFrame
@@ -2038,7 +2038,7 @@ index 34f0770bd7..c7b3d02acb 100644
 GitLab
 
 
-From ddcb6a6fec57153e7150e9e1bbeadf9c2ac78ccd Mon Sep 17 00:00:00 2001
+From 18ab4a9a5bcec16755ae9a440689c61828e28a45 Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Tue, 7 Sep 2021 19:10:26 +0800
 Subject: [PATCH 22/28] backends: Flag that the frame attempted direct scanout
@@ -2068,7 +2068,7 @@ index 0894dd93f1..323f0132a0 100644
 GitLab
 
 
-From f0f1a7351ac71d606d6dc296bbe039bc52add47d Mon Sep 17 00:00:00 2001
+From 0a6dba845e82dbcce612be3fe527145cc4b9a7cc Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Tue, 7 Sep 2021 19:15:18 +0800
 Subject: [PATCH 23/28] clutter: Pass ClutterFrameHint(s) to the frame clock
@@ -2156,7 +2156,7 @@ index 3434988ed9..a41ae10d17 100644
 GitLab
 
 
-From 62ba63564dbb22a5e783cd14554bb7ad0cb9871c Mon Sep 17 00:00:00 2001
+From ce66907df141bc0bc956368e6c037864d4827e6a Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Tue, 7 Sep 2021 19:15:55 +0800
 Subject: [PATCH 24/28] clutter/frame-clock: Conditionally disable triple
@@ -2319,7 +2319,7 @@ index b9d6b67f23..4a061d066a 100644
 GitLab
 
 
-From f5f4f26d6523a49ec7c1aac15e57030dbdc8b252 Mon Sep 17 00:00:00 2001
+From a1e6f925f00e5b712b52feff3f5f6864ff67e28c Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Thu, 30 Jun 2022 18:56:06 +0800
 Subject: [PATCH 25/28] tests/native-kms-render: Fix failing client-scanout
@@ -2580,7 +2580,7 @@ index f5ebc23fec..2f870fdc33 100644
 GitLab
 
 
-From eb411245f13819739352dd628bef61f192fcb1b7 Mon Sep 17 00:00:00 2001
+From b9fb50bca8bf487753f47fcce1c8fe2c5e18eaf7 Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Thu, 22 Jun 2023 15:19:53 +0800
 Subject: [PATCH 26/28] onscreen/native: Avoid callbacks on "detached"
@@ -2610,7 +2610,7 @@ index 608957091b..c72b55ade3 100644
 GitLab
 
 
-From cc090932160dfa28c1f9cd86ad1911fdb11d9f8c Mon Sep 17 00:00:00 2001
+From fd74af8f7d2c0babcbe27c21dbb0cfcfc180faae Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Tue, 18 Jul 2023 16:08:25 +0800
 Subject: [PATCH 27/28] clutter/frame-clock: Record measurements of zero for
@@ -2687,7 +2687,7 @@ index 4a061d066a..f24c97c6e4 100644
 GitLab
 
 
-From 7a1dbab76a49b6dde6813604a3776ced39be91e1 Mon Sep 17 00:00:00 2001
+From 2e0b275c54ab28bcfd948950ba821587aeccee6f Mon Sep 17 00:00:00 2001
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Date: Wed, 17 Jan 2024 17:21:03 +0800
 Subject: [PATCH 28/28] clutter/frame-clock: Optimize latency for platforms
