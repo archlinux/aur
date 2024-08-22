@@ -1,0 +1,39 @@
+diff --git a/contrib/requirements/requirements.txt b/contrib/requirements/requirements.txt
+index c59f61c471a6..49e720f0c6bd 100644
+--- a/contrib/requirements/requirements.txt
++++ b/contrib/requirements/requirements.txt
+@@ -2,7 +2,7 @@ pyaes>=0.1a1
+ ecdsa>=0.9
+ requests
+ qrcode
+-protobuf>=3.20,<4
++protobuf
+ jsonrpclib-pelix
+ PySocks>=1.6.6
+ qdarkstyle>=2.8
+diff --git a/electron-cash.desktop b/electron-cash.desktop
+index 392e6c56cff0..d01785285a20 100644
+--- a/electron-cash.desktop
++++ b/electron-cash.desktop
+@@ -10,7 +10,7 @@ Icon=electron-cash
+ Name=Electron Cash
+ Categories=Finance;Network;
+ StartupNotify=true
+-StartupWMClass=Electron Cash
++StartupWMClass=electron-cash
+ Terminal=false
+ Type=Application
+ MimeType=x-scheme-handler/bitcoincash;x-scheme-handler/cashacct;
+diff --git a/setup.py b/setup.py
+index 749e323ac1cc..08a1f8d8574e 100755
+--- a/setup.py
++++ b/setup.py
+@@ -64,7 +64,7 @@ def load_source(module_name, module_path):
+         # Menu icon
+         (os.path.join(share_dir, 'icons/hicolor/256x256/apps/'),   ['icons/electron-cash.png']),
+         (os.path.join(share_dir, 'pixmaps/'),                      ['icons/electron-cash.png']),
+-        (os.path.join(share_dir, 'icons/hicolor/scaleable/apps/'), ['icons/electron-cash.svg']),
++        (os.path.join(share_dir, 'icons/hicolor/scalable/apps/'),  ['icons/electron-cash.svg']),
+         # Menu entry
+         (os.path.join(share_dir, 'applications/'), ['electron-cash.desktop']),
+         # App stream (store) metadata

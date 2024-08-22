@@ -9,7 +9,7 @@ pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
 pkgver=4.4.1
 secp256k1ver=0.20.9
-pkgrel=1
+pkgrel=2
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
@@ -60,14 +60,20 @@ optdepends=(
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver}.tar.gz"
-        "secp256k1-${secp256k1ver}.tar.gz::https://github.com/Bitcoin-ABC/secp256k1/archive/v${secp256k1ver}.tar.gz")
+        "secp256k1-${secp256k1ver}.tar.gz::https://github.com/Electron-Cash/secp256k1/archive/v${secp256k1ver}.tar.gz"
+        "fix-compilation.patch"
+        "make_locale.patch")
 sha256sums=('2b4c0576c3bde1e863c4b0647e78987102f45c9fe36cc65387fcececb955e4b5'
-            '68e84775e57da77e19ccb6b0dde6ca0882377bdd48ecc6da0047a70201ec64c8')
+            '68e84775e57da77e19ccb6b0dde6ca0882377bdd48ecc6da0047a70201ec64c8'
+            'SKIP'
+            'SKIP')
 
 prepare() {
   rmdir "Electron-Cash-${pkgver}/contrib/secp256k1"
   ln -s "${PWD}/secp256k1-${secp256k1ver}" "Electron-Cash-${pkgver}/contrib/secp256k1"
 
+  patch -Np1 -d "Electron-Cash-${pkgver}" < fix-compilation.patch
+  patch -Np1 -d "Electron-Cash-${pkgver}" < make_locale.patch
   sed -i 's/py\.test/pytest/'  "Electron-Cash-${pkgver}/tox.ini"
 }
 
@@ -94,7 +100,7 @@ build() {
 check() {
   cd "Electron-Cash-${pkgver}"
 
-  tox -e py312 -- --ignore-glob='*regtest*' --deselect='electroncash/tests/test_transaction.py::TestTransaction::test_tx_unsigned'
+  tox -e py312 -- --ignore-glob='*regtest*'
 }
 
 package() {

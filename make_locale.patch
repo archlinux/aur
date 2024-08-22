@@ -1,0 +1,11 @@
+--- a/contrib/make_locale.old	2024-08-22 16:53:43.309073159 -0500
++++ a/contrib/make_locale	2024-08-22 16:53:58.469318477 -0500
+@@ -83,7 +83,7 @@
+ 
+ if len(sys.argv) < 2:
+     # Download & unzip
+-    s = requests.request('GET', 'https://crowdin.com/backend/download/project/' + crowdin_identifier + '.zip').content
++    s = requests.request('GET', "https://github.com/Electron-Cash/electrum-locale/archive/refs/heads/master.zip").content
+     zfobj = zipfile.ZipFile(io.BytesIO(s))
+ else:
+     zfobj = zipfile.ZipFile(os.path.join(os.path.relpath(original_dir, os.getcwd()), sys.argv[1]))
