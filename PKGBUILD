@@ -2,8 +2,8 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-os-ken
-pkgver=2.9.0
-pkgrel=3
+pkgver=2.10.0
+pkgrel=1
 pkgdesc="A component-based software defined networking framework for OpenStack"
 arch=(any)
 url="https://opendev.org/openstack/os-ken"
@@ -38,7 +38,7 @@ checkdepends=('python-hacking'
               'python-pycodestyle'
               'python-pylint')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('d452cf3277873c8a318e5d5ff81fd87be863f784773206f5dca8ffe4eb2d1cd724a723c264bcc79d209b061d7b9708d77a0dab450cd75aedd9f461dde9aad7b3')
+b2sums=('e375cae3883dbd08ac3386e413496f6c0f96ed5b4618ac035946b469e80a8ded1590e3b463a820f84705e884db475ade214bb3be83a324ee6f1d1f0586cde32a')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
