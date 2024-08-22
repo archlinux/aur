@@ -1,21 +1,36 @@
 pkgname=flexbv-bin
-pkgver=5.0360
+pkgver=5.0373
 pkgrel=1
 pkgdesc="FlexBV Free Professional Boardview"
 arch=('x86_64')
 url="https://pldaniels.com/flexbv/"
 license=('custom')
 conflicts=('flexbv-beta-bin')
-depends=('sdl2' 'fontconfig' 'sqlite' 'zlib' 'gtk3' 'libpng')
-makedepends=()
+depends=(
+sdl2
+fontconfig
+sqlite
+zlib
+gtk3
+libpng
+)
+makedepends=(
+gendesk
+)
 source=("${pkgname}-${pkgver}.tar.gz::https://pldaniels.com/flexbv5/free/FlexBVFree-${pkgver}-linux.tar.gz"
-	"flexbv.sh")
-sha256sums=('1bcfd1fa10a47a940505f6c4916f0e2ed4b36a054715baa60f8a23efe61a2ee4'
-            '462632dd61e766ac7d68374c62d855a21067b021638b80c914b4632f72c2e9c5')
+	"${pkgname}-icon-${pkgver}.svg::https://pldaniels.com/flexbv5/assets/flexbv-free-icon.svg"
+	LICENSE.txt)
+sha256sums=('9d9ef206edaf0f00e03abf489ee567381bdaac6192e40eb73b15477ddc857d22'
+            'e19c10e335eb9ba4278317c5f0f07f25e9051f0bcd3b6bb0fb85b3b2ee73124e'
+            '12f5872b4bfed1620dd57e213ac2dd18b9fe02753ef70ebc89f10b6d72244e23')
+
+prepare() {
+	gendesk -n --pkgname "flexbv" --pkgdesc "${pkgdesc}" --exec='flexbv' --name "FlexBV" --icon "${pkgname}.svg"
+}
 
 package() {
-	install -d -m755 "$pkgdir/opt/flexbv"
-	cp -a "FlexBVFree-$pkgver-linux"/* "${pkgdir}/opt/flexbv"
-	install -D -m755 flexbv.sh "${pkgdir}/usr/bin/flexbv"
-	ln -s "/tmp/flexbv.log" "${pkgdir}/opt/flexbv/flexbv.log"
+	install -Dm644 "flexbv.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm644 "${pkgname}-icon-${pkgver}.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
+	install -D -m755 "FlexBVFree-${pkgver}-linux/flexbv" "${pkgdir}/usr/bin/flexbv"
+	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
