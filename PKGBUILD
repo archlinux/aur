@@ -3,7 +3,7 @@
 
 pkgname=contour
 pkgver=0.4.3.6442
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
 url="https://github.com/contour-terminal/contour"
@@ -26,8 +26,6 @@ build() {
 
   export XDG_STATE_HOME="$PWD"
 
-  _cpuCount=$(grep -c -w ^processor /proc/cpuinfo)
-
   CFLAGS=${CFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 
@@ -40,7 +38,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCONTOUR_QT_VERSION=6 \
         -DCONTOUR_TESTING=ON
-  cmake --build build --parallel $_cpuCount
+  cmake --build build
 }
 
 check() {

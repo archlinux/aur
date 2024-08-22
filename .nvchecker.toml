@@ -1,0 +1,4 @@
+[contour]
+source = "git"
+git = "https://github.com/contour-terminal/contour.git"
+prefix = "v"
