@@ -1,0 +1,19 @@
+[Unit]
+Description=Ziti Edge Tunnel
+After=network-online.target
+
+[Service]
+Type=simple
+Environment="ZITI_IDENTITY_DIR=/opt/openziti/etc/identities"
+Environment="ZITI_VERBOSE=2"
+User=ziti
+Group=ziti
+UMask=0007
+AmbientCapabilities=CAP_NET_ADMIN
+ExecStartPre=/usr/bin/ziti-edge-tunnel-enroll
+ExecStart=/usr/bin/ziti-edge-tunnel run --verbose=${ZITI_VERBOSE} --identity-dir=${ZITI_IDENTITY_DIR}
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
