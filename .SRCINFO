@@ -1,7 +1,7 @@
 pkgbase = sdl3
 	pkgdesc = Simple Directmedia Layer (Version 3 Pre-Release, Updated weekly)
 	pkgver = 3.0.0.r5823.geb212ac
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.libsdl.org
 	arch = x86_64
@@ -25,6 +25,7 @@ pkgbase = sdl3
 	makedepends = pipewire
 	makedepends = libdecor
 	makedepends = git
+	makedepends = sndio
 	depends = glibc
 	depends = libxext
 	depends = libxrender
@@ -37,6 +38,7 @@ pkgbase = sdl3
 	optdepends = libpulse: PulseAudio audio driver
 	optdepends = jack: JACK audio driver
 	optdepends = pipewire: PipeWire audio driver
+	optdepends = sndio: MIDI audio driver
 	optdepends = libdecor: Wayland client decorations
 	source = git+https://github.com/libsdl-org/SDL.git#commit=eb212ac4edcc331b8215dc706abca95af2d51d87
 	sha256sums = 348e2a3ad7bb8615ad33171f644457f28e2e476ad216094ac50e8cf732d087e8
