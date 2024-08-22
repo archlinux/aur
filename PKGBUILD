@@ -2,7 +2,7 @@
 
 _name=Moodle-DL
 pkgname=moodle-dl
-pkgver=2.3.9
+pkgver=2.3.11
 pkgrel=1
 pkgdesc='A Moodle downloader that downloads course content fast from Moodle (eg. lecture pdfs)'
 arch=('any')
@@ -24,7 +24,7 @@ depends=('ffmpeg'
          'yt-dlp>=2021.10.22')
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=("$url/archive/$pkgver.tar.gz")
-b2sums=('866426b1385aa5aebf69dc435e11aaee8b37bd437c79ad17ab39cb15f242b76cf06d26b1102fd830a1c889d7887a11d3c705683fda437ad1789aa13ccd7a3a1a')
+b2sums=('dc05a5b920cb89002e802ec5590c044a9b87017f35e9eee96dce7dc066b4d7878b327b4a7b61b15c214e2b765181ad3ed807c310c5b61c5a539f7302aa588638')
 
 build() {
     cd $_name-$pkgver
