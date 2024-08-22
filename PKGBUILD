@@ -6,7 +6,7 @@ pkgbase=linux-firmware-amd-staging-um5606-git
 pkgname=(linux-firmware-whence-amd-staging-um5606-git linux-firmware-amd-staging-um5606-git amd-ucode-amd-staging-um5606-git
   linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-amd-staging-um5606-git
 )
-pkgver=20240817.d204967f
+pkgver=20240822.bff29712
 pkgrel=1
 pkgdesc="A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops, including the latest ipu (NPU) and isp (GPU) firmware."
 url="https://github.com/ThatOneCalculator/linux-firmware-amd-staging-um5606"
