@@ -1,0 +1,61 @@
+From git@z Thu Jan  1 00:00:00 1970
+Subject: [PATCH] ASoC: amd: acp: add ZSC control register programming
+ sequence
+From: Vijendar Mukunda <Vijendar.Mukunda@amd.com>
+Date: Wed, 07 Aug 2024 14:21:48 +0530
+Message-Id: <20240807085154.1987681-1-Vijendar.Mukunda@amd.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Add ZSC Control register programming sequence for ACP D0 and D3 state
+transitions for ACP7.0 onwards. This will allow ACP to enter low power
+state when ACP enters D3 state. When ACP enters D0 State, ZSC control
+should be disabled.
+
+Tested-by: Leo Li <sunpeng.li@amd.com>
+Signed-off-by: Vijendar Mukunda <Vijendar.Mukunda@amd.com>
+---
+ sound/soc/amd/acp/acp-legacy-common.c | 5 +++++
+ sound/soc/amd/acp/amd.h               | 2 ++
+ 2 files changed, 7 insertions(+)
+
+diff --git a/sound/soc/amd/acp/acp-legacy-common.c b/sound/soc/amd/acp/acp-legacy-common.c
+index 4422cec81e3c..04bd605fdce3 100644
+--- a/sound/soc/amd/acp/acp-legacy-common.c
++++ b/sound/soc/amd/acp/acp-legacy-common.c
+@@ -321,6 +321,8 @@ int acp_init(struct acp_chip_info *chip)
+ 		pr_err("ACP reset failed\n");
+ 		return ret;
+ 	}
++	if (chip->acp_rev >= ACP70_DEV)
++		writel(0, chip->base + ACP_ZSC_DSP_CTRL);
+ 	return 0;
+ }
+ EXPORT_SYMBOL_NS_GPL(acp_init, SND_SOC_ACP_COMMON);
+@@ -336,6 +338,9 @@ int acp_deinit(struct acp_chip_info *chip)
+ 
+ 	if (chip->acp_rev != ACP70_DEV)
+ 		writel(0, chip->base + ACP_CONTROL);
++
++	if (chip->acp_rev >= ACP70_DEV)
++		writel(0x01, chip->base + ACP_ZSC_DSP_CTRL);
+ 	return 0;
+ }
+ EXPORT_SYMBOL_NS_GPL(acp_deinit, SND_SOC_ACP_COMMON);
+diff --git a/sound/soc/amd/acp/amd.h b/sound/soc/amd/acp/amd.h
+index 87a4813783f9..c095a34a7229 100644
+--- a/sound/soc/amd/acp/amd.h
++++ b/sound/soc/amd/acp/amd.h
+@@ -103,6 +103,8 @@
+ #define ACP70_PGFSM_CONTROL			ACP6X_PGFSM_CONTROL
+ #define ACP70_PGFSM_STATUS			ACP6X_PGFSM_STATUS
+ 
++#define ACP_ZSC_DSP_CTRL			0x0001014
++#define ACP_ZSC_STS				0x0001018
+ #define ACP_SOFT_RST_DONE_MASK	0x00010001
+ 
+ #define ACP_PGFSM_CNTL_POWER_ON_MASK            0xffffffff
+-- 
+2.34.1
+
