@@ -3,7 +3,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts510
-pkgver=5.10.223
+pkgver=5.10.224
 pkgrel=1
 pkgdesc='LTS 5.10 Linux'
 url="https://www.kernel.org/"
@@ -22,22 +22,28 @@ source=(
   # https://build.opensuse.org/package/show/home:curb:ArchLinux/linux-lts510
   #0002-reorganize-gimple-includes-for-GCC-13.patch # https://lore.kernel.org/lkml/20230118202355.never.520-kees@kernel.org/raw
   '0003-Sphinx-7.2.2-8.0-PosixPath.patch'
+  '0004-depmod-remove-depmod_hack_needed.patch'
+  '0005-kernel-5.10-depmod-disable-for-packaging.patch'
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-md5sums=('38b8bd691f667634ff353bd5fe834c0e'
+md5sums=('6a2895f2a6085bcc835d22a55479f7d3'
          'SKIP'
          '8b8fa773fe9c7938a76ba07ca2933ed8'
          'd31360693fb06a0d69c1f126350baa6d'
-         'c1f10e50f7ca23d07ae83ae6252854d5')
-sha256sums=('ca09d86a6b79706c33382d3f8606f476eb07918417a87fb1815f6a4aa81f2ba1'
+         'c1f10e50f7ca23d07ae83ae6252854d5'
+         'd15820a808c3cc159e6e5916a8c05e8f'
+         '32277e1b48dd6f00b5e31f3cb3f0f44c')
+sha256sums=('19b099c67324bba6378e22dc51ad3906e4dcd6a908d137766b4bfa9174ddd11a'
             'SKIP'
             'ddc8d7c604a2f8373a25674d06cd377fdf80adca9bd426f4c8a50f3d52403001'
             '96a72e1652314215da7140956c3abcf495cafd00811eda3cf4ce03ec5f791f1e'
-            '453ad77883c50b5d5b1373241a5a27a5f7cdc11c5b66dd929338fc622de6cf14')
+            '453ad77883c50b5d5b1373241a5a27a5f7cdc11c5b66dd929338fc622de6cf14'
+            '64b521b3963781c60e9a33db40c523bf65a119cb1dfec182a737e90d2609df5a'
+            '0514cb38c60afd7ae113f679508b83d253c6415a19c4a4a94e514c7f5b877bf2')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -56,9 +62,12 @@ prepare() {
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
-    echo "Applying patch $src..."
+    msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+
+  #cd '..'; cp -pr "${_srcname}" 'a'; ln -s "${_srcname}" 'b'; cd "${_srcname}"; false
+  # diff -pNaru5 'a' 'b' > 0000-$RANDOM.patch
 
   echo "Setting config..."
   cp ../config .config
@@ -70,8 +79,8 @@ prepare() {
 
 build() {
   cd $_srcname
-  make all
-  make -i htmldocs SPHINXOPTS='-T --keep-going'
+  nice -n1 make all
+  nice -n1 make -i htmldocs SPHINXOPTS='-T --keep-going'
 }
 
 _package() {
