@@ -1,7 +1,7 @@
 # Maintainer: Antti <antti@antti.codes>
 
 pkgname=modrinth-app
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
@@ -17,15 +17,15 @@ depends=(
 optdepends=(
     'xorg-xrandr: for older minecraft versions'
 )
-_release_hash="a19ce0458a4eee30301c3ed826a6c7fa1d0452be"
+_release_hash="a0bd011b808cdc998ef27960f610a8d99550c914"
 source=(
     # WHY DO THEY NOT TAG THE RELEASES?!?!?!
     #"$pkgname-$pkgver.tar.gz::https://github.com/modrinth/code/archive/refs/tags/v${pkgver}.tar.gz"
-    "$pkgname-$pkgver.tar.gz::https://github.com/modrinth/code/archive/${_release_hash}.zip"
+    "$pkgname-${_release_hash}.tar.gz::https://github.com/modrinth/code/archive/${_release_hash}.zip"
     "modrinth-app.desktop"
     "modrinth-app"
 )
-sha256sums=('5ff1d8e18a69ef2cfc6d4d57aa03b2b3c48d728fc5e9c6c751c221955499414a'
+sha256sums=('5cf7dd55e30edbd326cc41d33f6a6efcca3b27f25793fe9d586afffb37799970'
             '7f6673916e0cf1cef2f2e3d1e5865d722abcbd8fba879688f8102816773a9d44'
             '5404b4e7b25903afe43ab2f2451be4b27f4823c6785327b166f2faa519fa38a9')
 options=('!lto')
