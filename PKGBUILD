@@ -4,7 +4,7 @@
 _name=ShazamIO
 pkgname=python-shazamio
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Is a asynchronous framework from reverse engineered Shazam API written in Python 3.8+ with asyncio and aiohttp.'
 arch=('any')
 url='https://github.com/shazamio/ShazamIO'
@@ -24,6 +24,12 @@ depends=(
 makedepends=(python-build python-installer 'python-poetry-core>=1.0.0' 'python-wheel>=0.36')
 source=("$url/archive/$pkgver.tar.gz")
 b2sums=('d85c8317d42a5080c2371bc12c0d4d47998ee2fa28b2fb92ffc2117488bc010c3439c7de0f05d970eb5b3f45df013d68aaf76a4f5e6edad0b1fa25f8cd1ca624')
+
+prepare() {
+    cd $_name-$pkgver
+    sed -i 's/from pydantic.generics import GenericModel//g' shazamio/schemas/base.py
+    sed -i 's/GenericModel, //' shazamio/schemas/base.py
+}
 
 build() {
     cd $_name-$pkgver

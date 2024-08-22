@@ -1,7 +1,7 @@
 pkgbase = python-shazamio
 	pkgdesc = Is a asynchronous framework from reverse engineered Shazam API written in Python 3.8+ with asyncio and aiohttp.
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/shazamio/ShazamIO
 	arch = any
 	license = MIT
