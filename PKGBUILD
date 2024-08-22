@@ -5,7 +5,7 @@
 
 pkgname=python-oletools
 _pkg="${pkgname#python-}"
-pkgver=0.60.1
+pkgver=0.60.2
 pkgrel=1
 pkgdesc="Python tools to analyze security characteristics of MS Office and OLE files"
 arch=('any')
@@ -14,7 +14,7 @@ license=('BSD')
 depends=('python-colorclass' 'python-easygui' 'python-pyparsing' 'python-msoffcrypto-tool')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.zip::https://files.pythonhosted.org/packages/source/o/$_pkg/$_pkg-$pkgver.zip")
-sha256sums=('67a796da4c4b8e2feb9a6b2495bef8798a3323a75512de4e5669d9dc9d1fae31')
+sha256sums=('ad452099f4695ffd8855113f453348200d195ee9fa341a09e197d66ee7e0b2c3')
 
 prepare() {
   cd "$_pkg-$pkgver"
@@ -43,9 +43,7 @@ package() {
     "$pkgdir/usr/share/licenses/$pkgname/thirdparty/prettytable/LICENSE"
 }
 
-# Checks are currently broken upstream for version 0.60.1
-# but they are working in master branch: uncomment in the next release!
-# check() {
-#   cd "${srcdir}/${_pyname}-${pkgver}"
-#   python setup.py test
-# }
+check() {
+   cd "${srcdir}/${_pyname}-${pkgver}"
+   python setup.py test
+}
