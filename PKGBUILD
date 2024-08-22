@@ -2,7 +2,7 @@
 
 _pkgname="flutter"
 pkgname="$_pkgname-bin"
-pkgver=3.24.0
+pkgver=3.24.1
 pkgrel=1
 pkgdesc="Cross platform widget toolkit for Dart (monolithic)"
 arch=("x86_64")
@@ -61,7 +61,7 @@ source=(
 )
 
 sha256sums=(
-  'd52a5d12f17d8bcf868d1ccc01fe0f7ffb05b53d9628aa21b07a18f9d33621f2'
+  '32daf9d5a8e430f57fb139921400c7ecf34e4e7e404818ac55658a5a0eaa28f0'
 )
 
 prepare() {
@@ -84,9 +84,10 @@ package() {
   install -dm755 "$pkgdir/opt"
   bsdtar -xf "$srcdir/$_pkgsrc.$_pkgext" -C "$pkgdir/opt"
 
-  install -Dm755 "flutter_init.sh" "$pkgdir/usr/bin/flutter_init"
-  install -Dm755 "flutter_dart.sh" "$pkgdir/usr/bin/dart"
   install -Dm755 "flutter.sh" "$pkgdir/usr/bin/flutter"
+  install -Dm755 "flutter_dart.sh" "$pkgdir/usr/bin/dart"
+  install -Dm644 "flutter_init.sh" "$pkgdir/opt/flutter/flutter_init.sh"
+  echo "flutter_init.sh" >> "$pkgdir/opt/flutter/.git/info/exclude"
 
   install -Dm644 "$pkgdir/opt/flutter/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 "$pkgdir/opt/flutter/PATENT_GRANT" -t "$pkgdir/usr/share/licenses/$pkgname/"
@@ -98,7 +99,7 @@ _gen_scripts() {
   cat > flutter_dart.sh << 'END'
 #!/usr/bin/env bash
 
-source /usr/bin/flutter_init
+source /opt/flutter/flutter_init.sh
 
 if ! grep -q '/usr/bin' <<< "$(which dart)"; then
   exec dart "$@"
@@ -108,7 +109,7 @@ END
   cat > flutter.sh << 'END'
 #!/usr/bin/env bash
 
-source /usr/bin/flutter_init
+source /opt/flutter/flutter_init.sh
 
 if ! grep -q '/usr/bin' <<< "$(which flutter)"; then
   exec flutter "$@"
@@ -116,7 +117,7 @@ fi
 END
 
   cat > flutter_init.sh << 'END'
-#!/usr/bin/env bash
+# do not execute this script directly
 
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 

@@ -49,15 +49,15 @@ post_install() {
     fi
   done
 
-  msg1 "Flutter requires write permission into its install directory."
+  msg1 "Flutter requires write permission to its install directory."
+  echo
   msg2 "This package redirects writes to '~/.cache/flutter_*'."
   msg2 "Users should unmount and clear the cache after upgrades."
   echo
   msg2 "        fusermount -uq ~/.cache/flutter_sdk"
   msg2 "        rm -rf ~/.cache/{flutter_sdk,flutter_local}"
   echo
-  msg1 "Optionally, users may be given write permission to '/opt/flutter'"
-  msg2 "by adding them to the 'flutter' group:"
+  msg2 "Optionally, users may be added to the 'flutter' group:"
   echo
   msg2 "        sudo usermod -a -G flutter [username]"
   echo
