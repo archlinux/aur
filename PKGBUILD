@@ -2,11 +2,12 @@
 
 pkgname=ttf-maple
 pkgver=6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source monospace/Nerd Font font with round corner for IDE and command line"
 arch=("any")
 url="https://github.com/subframe7536/maple-font"
 license=("OFL")
+conflicts=("ttf-maple-beta")
 source=("$pkgname-$pkgver-MapleMono-ttf.zip::https://github.com/subframe7536/Maple-font/releases/download/v$pkgver/MapleMono-ttf.zip"
         "$pkgname-$pkgver-MapleMono-NF.zip::https://github.com/subframe7536/Maple-font/releases/download/v$pkgver/MapleMono-NF.zip"
         "$pkgname-$pkgver-MapleMono-SC-NF.zip::https://github.com/subframe7536/Maple-font/releases/download/v$pkgver/MapleMono-SC-NF.zip"
