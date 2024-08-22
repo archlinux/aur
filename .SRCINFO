@@ -1,6 +1,6 @@
 pkgbase = python-tkvdb
 	pkgdesc = Cython wrapper for tkvdb radix trie key-value database
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/vladimir-g/python-tkvdb/
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = python-tkvdb
 	makedepends = python-setuptools
 	depends = python
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/p/python-tkvdb/python-tkvdb-0.2.2.tar.gz
-	sha256sums = 2c8b616451854f43ed0954b901089a9bf042d71d9ea7030b51d831862f487b90
+	source = https://files.pythonhosted.org/packages/source/p/python_tkvdb/python_tkvdb-0.2.3.tar.gz
+	sha256sums = 0338c3b84a1faac09c4fe0edae484aeb609798d29d639215b28e70c733f7de79
 
 pkgname = python-tkvdb
-
