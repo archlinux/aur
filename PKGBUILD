@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-amdvcnfix
-pkgver=6.10.4.arch1
+pkgver=6.10.6.arch1
 pkgrel=1
 pkgdesc='Linux'
 url='https://github.com/archlinux/linux'
@@ -44,18 +44,18 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('e2c69dfd5fa00c741ebac4560bed9f7be6abb727d05a719e4df9e99df11555f8'
+sha256sums=('e0d50d5b74f8599375660e79f187af7493864dba5ff6671b14983376a070b3d1'
             'SKIP'
-            '18431387014924b033b244e80e12cb92206c080ae7e335476946f6521a4429cf'
+            '744bb671da084dd2c45652340d672379c8e29ce50c4d460d4f3bd589a2ac72a7'
             'SKIP'
-            'b7fc249683be13c565a941976c2d2c0bc90185ae1bf97779ee0c269fb3d90a37'
+            'da08a9669bce07f2ac2d0d47bc0b8fd8e731a92bfca68f8f10c85df83782636c'
             'ab9ed3d8aa3bf4398911f80a0b777ec7f758d83df8c1009289e56b7d62ac1791'
             '25838b179654c43c7d4fd8da642bd242da3052adfcaa218fb2600c95a0a2e6a8')
-b2sums=('ea7e9a7d74621a6e76b2828ee80cf5df1fcf139469bb8877d93f30d7766f9145961324de5b2cadba29126d7df82a7eeba80303c82c7c1140be3fb46cf213e503'
+b2sums=('e0e2c2419b6da1a6c5caaf9df669a362bdef3d6fb19742da6c5300a6f6d0994259ea2acde7f6a4a20d1e2b71528bbed0e7fd51cbca33ddbf78f2d832a291148f'
         'SKIP'
-        'f43bcca641ca9b97f57700714ae419b5c13ab2a883d52a53421fd928828ffab674cbdfb42aa1612367e5a05bbc50c48bdc6f1483dfd463ed15cfbceab25af5de'
+        '2a5d88d8f1f1e8189552be98a4d8dc84665f34aebf295daec6f2e589fcbb9867d4cc760e1b415fee92f22984116b8363602b6a4b2931bddc920c5897b10cdf4b'
         'SKIP'
-        '00dde098ab988db02a0667288546eae32208a30dbcf5edae6905c54edae51969c9a7eec8aa5a25363b0aa7463f716ac621aee8b0c1dc4c7d149e270e851aaa5c'
+        '8ab064481b4a8bfbad75f58812062af228bce888152e9f4ad93041da977fefdf295e6237090e965680fe3ed067d8bb1ec43439a25b57aa3dd4f18a8e82792ee6'
         '2da40f6c2088646452247c4d3d81a8f41384e3f8a80e27020cee12fb3771b59ff51e4f07cfacdd120bebc466e9cc01f473dd2855f256d0d696592fe00230c3e6'
         'a32fb901e95a618842de712ac6a3613c826ac3151ef880a6ab913b5bf578095a29c670231b25d37700beb0c9340440daa90afe2fcbb047a92a622a497c067562')
 
