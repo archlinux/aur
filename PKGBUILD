@@ -5,7 +5,7 @@
 
 pkgname=lib32-sdl3
 pkgver=3.0.0.r5823.geb212ac
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Simple Directmedia Layer (Version 3 Pre-Release, Updated weekly)"
 arch=('x86_64' 'i686')
@@ -13,11 +13,12 @@ url="https://www.libsdl.org"
 license=('Zlib')
 depends=('sdl3' 'lib32-glibc' 'lib32-libxext' 'lib32-libxrender' 'lib32-libx11' 'lib32-libgl' 'lib32-libxcursor' 'hidapi' 'lib32-libusb')
 makedepends=('lib32-alsa-lib' 'lib32-mesa' 'lib32-libpulse' 'lib32-libxrandr' 'lib32-libxinerama' 'lib32-wayland' 'lib32-libxkbcommon'
-             'wayland-protocols' 'lib32-libxss' 'cmake' 'lib32-jack' 'ninja' 'lib32-pipewire' 'lib32-libdecor' 'git')
+             'wayland-protocols' 'lib32-libxss' 'cmake' 'lib32-jack' 'ninja' 'lib32-pipewire' 'lib32-libdecor' 'git' 'lib32-sndio')
 optdepends=('lib32-alsa-lib: ALSA audio driver'
             'lib32-libpulse: PulseAudio audio driver'
             'lib32-jack: JACK audio driver'
 	    'lib32-pipewire: PipeWire audio driver'
+	    'lib32-sndio: MIDI audio driver'
 	    'lib32-libdecor: Wayland client decorations')
 # Switching to weekley updates as all SDL3 tags have been removed, keeping in line with `sdl3`
 source=("git+https://github.com/libsdl-org/SDL.git#commit=eb212ac4edcc331b8215dc706abca95af2d51d87")
