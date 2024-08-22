@@ -5,14 +5,14 @@
 
 pkgname=betcon
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Sports betting management"
 url="http://betcon.eduardoparra.es"
 arch=('any')
 license=('GPLv3')
 depends=('python' 'python-pyqt5' 'sqlite' 'python-pyexcel-ods3' 'python-yaml' 'python-pillow')
 source=("https://github.com/soker90/betcon/archive/$pkgver.tar.gz")
-md5sums=('22328a83375d6873338f2463d0eb24fd')
+md5sums=('4e4d3ca8b6b0ad3b1f4f2d52f82a0bbf')
 
 package() {
 	mkdir -p ${pkgdir}/usr/share/betcon/default/
