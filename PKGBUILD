@@ -1,7 +1,7 @@
 # Maintainer: tleydxdy <shironeko(at)waifu(dot)club>
 
 pkgname=system76-power
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="System76 Power Management"
 arch=('any')
@@ -24,7 +24,7 @@ source=(
 "https://github.com/pop-os/${pkgname}/archive/${pkgver}.tar.gz"
 'use-mkinitcpio.patch'
 )
-sha256sums=('c2038fe46adca52f4fc1422231d743553cc7ef882b68c3697da874013c97cef9'
+sha256sums=('90b796e72a442a7968fc80b269ed2a936c6541bcba939a72612898082fbd7ec3'
             'bae03d96faea0f7ea80cb1cc5d4f2f97804509db378aaacb3e1d08cd38e05765')
 
 prepare() {
