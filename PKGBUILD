@@ -1,22 +1,25 @@
-# Maintainer: Arthur Zamarin <arthurzam@gmail.com> 
-
-pkgname=ip2location-python
-pkgver=7.0.0
+# Maintainer: IP2Location <support@ip2location.io>
+pkgname=IP2Location-Python
+pkgver=8.10.2  # Replace with the actual latest version
 pkgrel=1
-pkgdesc="Python library enables the user to find info of any IP address or hostname"
-arch=(any)
-url="http://www.ip2location.com/developers/python"
-license=('GPL3')
+pkgdesc="A Python Library that enables the user to find the country, region, city, coordinates, zip code, ISP, domain name, timezone, connection speed, IDD code, area code, weather station code, weather station name, mobile, usage types, address type and IAB category that any IP address or host name originates from."
+arch=('any')
+url="https://github.com/chrislim2888/IP2Location-Python"
+license=('MIT')
 depends=('python')
-source=("http://www.ip2location.com/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('5111176a160ff5acd9fbd824038a2503a1b784a57eb48e712facc7716a8a4b5e')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/chrislim2888/IP2Location-Python/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('0b35b2cc8992ea2ff9c85791652a2d8215380461940c7882e87cb9dce84fc434')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py build
+    cd "$srcdir/$pkgname-$pkgver"
+    # Build the wheel
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root=$pkgdir
+    cd "$srcdir/$pkgname-$pkgver"
+    
+    # Use python -m installer to install into the package directory
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
