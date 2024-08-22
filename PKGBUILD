@@ -1,4 +1,4 @@
-# Maintainer: Penelope Belle <penny belle 98 at gmail dot com>
+# Maintainer: Penelope Belle <contact at pennybelle dot dev>
 pkgname=pbfetch-git
 pkgver=r216.a959519
 pkgrel=1
