@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qtl
-_pkgver=1.66
+_pkgver=1.70
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Tools for Analyzing QTL Experiments"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6b196598f827825cf7c9063fb740b61e')
-b2sums=('6595ec110cebe1bcafddaa2e74d11e6ec20ef813bd4ff95b611b32b535af12e45b8b3a6403290b515722412f5f131a0db7f03b8057b2589a0a75d9b998693d6c')
+md5sums=('4950adb04bace9b665b1d1cbf0aff6f1')
+b2sums=('c9c3c54c5ed58a18058e232017db6f445a3bd2ad1dc5c199e310039138635d9cc0e2a64f44ba51ffa1283bb878311d6faa5a9989fb388685d66b9e2cf9870c94')
 
 build() {
   mkdir build
