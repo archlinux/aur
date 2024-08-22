@@ -5,7 +5,7 @@
 
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'opencl-nvidia-beta' 'nvidia-settings-beta')
-pkgver=560.31.02
+pkgver=560.35.03
 pkgrel=1
 pkgdesc='NVIDIA drivers utilities (beta version)'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         'systemd-homed-override.conf'
         'systemd-suspend-override.conf'
         '120-nvidia-settings-change-desktop-paths.patch')
-sha256sums=('d1cc207a3a05b1e7e5d8cea3756642f8229ce7c0aa3970e34a2e2c6953cd298d'
+sha256sums=('f2932c92fadd43c5b2341be453fc4f73f0ad7185c26bb7a43fbde81ae29f1fe3'
             'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
             '0e54249a7754b668b436f0f7aa7e95fff68edbb12a93dbee4660e09a8c695f84'
@@ -107,6 +107,12 @@ package_nvidia-utils-beta() {
     # X driver
     install -D -m755 nvidia_drv.so -t "${pkgdir}/usr/lib/xorg/modules/drivers"
     
+    # Wayland/GBM
+    install -D -m755 libnvidia-egl-gbm.so.1.1.1         -t "${pkgdir}/usr/lib"
+    install -D -m644 15_nvidia_gbm.json -t "${pkgdir}/usr/share/egl/egl_external_platform.d"
+    install -d -m755 "${pkgdir}/usr/lib/gbm"
+    ln -s "../libnvidia-allocator.so.${pkgver}" "${pkgdir}/usr/lib/gbm/nvidia-drm_gbm.so"
+    
     # firmware
     install -D -m644 firmware/*.bin -t "${pkgdir}/usr/lib/firmware/nvidia/${pkgver}"
     
@@ -136,6 +142,7 @@ package_nvidia-utils-beta() {
     install -D -m755 "libnvidia-cfg.so.${pkgver}"       -t "${pkgdir}/usr/lib"
     install -D -m755 "libnvidia-ml.so.${pkgver}"        -t "${pkgdir}/usr/lib"
     install -D -m755 "libnvidia-glvkspirv.so.${pkgver}" -t "${pkgdir}/usr/lib"
+    install -D -m755 "libnvidia-allocator.so.${pkgver}" -t "${pkgdir}/usr/lib"
     install -D -m755 "libnvidia-gpucomp.so.${pkgver}"   -t "${pkgdir}/usr/lib"
     
     # Vulkan ICD
@@ -154,42 +161,38 @@ package_nvidia-utils-beta() {
     install -D -m755 "libnvidia-tls.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
     # CUDA
-    install -D -m755 "libcuda.so.${pkgver}"    -t "${pkgdir}/usr/lib"
-    install -D -m755 "libnvcuvid.so.${pkgver}" -t "${pkgdir}/usr/lib"
-    
-    # PTX JIT Compiler (Parallel Thread Execution (PTX) is a pseudo-assembly language for CUDA)
-    install -D -m755 "libnvidia-ptxjitcompiler.so.${pkgver}" -t "${pkgdir}/usr/lib"
+    install -D -m755 "libcuda.so.${pkgver}"         -t "${pkgdir}/usr/lib"
+    install -D -m755 "libnvcuvid.so.${pkgver}"      -t "${pkgdir}/usr/lib"
+    install -D -m755 "libcudadebugger.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
     # NVVM Compiler (JIT link-time-optimization for CUDA)
     install -D -m755 "libnvidia-nvvm.so.${pkgver}" -t "${pkgdir}/usr/lib"
+    
+    # PTX JIT Compiler (Parallel Thread Execution (PTX) is a pseudo-assembly language for CUDA)
+    install -D -m755 "libnvidia-ptxjitcompiler.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
     # raytracing
     install -D -m755 "libnvoptix.so.${pkgver}"       -t "${pkgdir}/usr/lib"
     install -D -m755 "libnvidia-rtcore.so.${pkgver}" -t "${pkgdir}/usr/lib"
     install -D -m755 "nvoptix.bin"                   -t "${pkgdir}/usr/share/nvidia/nvoptix.bin"
     
+    # NGX / DLSS
+    install -D -m755 nvidia-ngx-updater -t "${pkgdir}/usr/bin"
+    install -D -m755 "libnvidia-ngx.so.${pkgver}" -t "${pkgdir}/usr/lib"
+    install -D -m644 {,_}nvngx.dll -t "${pkgdir}/usr/lib/nvidia/wine"
+    
     # Optical flow
     install -D -m755 "libnvidia-opticalflow.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
-    # NGX
-    install -D -m755 "libnvidia-ngx.so.${pkgver}" -t "${pkgdir}/usr/lib"
-    
-    # DLSS
-    install -D -m755 nvidia-ngx-updater -t "${pkgdir}/usr/bin"
-    install -D -m644 {,_}nvngx.dll -t "${pkgdir}/usr/lib/nvidia/wine"
+    # Cryptography library wrapper
+    install -D -m755 "libnvidia-pkcs11.so.${pkgver}"          -t "${pkgdir}/usr/lib"
+    install -D -m755 "libnvidia-pkcs11-openssl3.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
     # Xorg
     install -D -m755 libnvidia-egl-xcb.so.1  -t "${pkgdir}/usr/lib"
     install -D -m755 libnvidia-egl-xlib.so.1 -t "${pkgdir}/usr/lib"
     install -D -m644 20_nvidia_xcb.json  -t "${pkgdir}/usr/share/egl/egl_external_platform.d"
     install -D -m644 20_nvidia_xlib.json -t "${pkgdir}/usr/share/egl/egl_external_platform.d"
-    
-    # Wayland/GBM
-    install -D -m755 "libnvidia-allocator.so.${pkgver}" -t "${pkgdir}/usr/lib"
-    install -D -m755 libnvidia-egl-gbm.so.1.1.1         -t "${pkgdir}/usr/lib"
-    install -D -m644 15_nvidia_gbm.json -t "${pkgdir}/usr/share/egl/egl_external_platform.d"
-    install -d -m755 "${pkgdir}/usr/lib/gbm"
-    ln -s "../libnvidia-allocator.so.${pkgver}" "${pkgdir}/usr/lib/gbm/nvidia-drm_gbm.so"
     
     # Debug
     install -D -m755 nvidia-debugdump -t "${pkgdir}/usr/bin"
