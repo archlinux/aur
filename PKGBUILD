@@ -2,7 +2,7 @@
 # Contributor: Hilton Medeiros <medeiros.hilton@gmail.com>
 
 pkgname=pixelorama
-pkgver=1.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A free & open-source 2D sprite editor"
 arch=('x86_64')
@@ -10,10 +10,10 @@ url="https://orama-interactive.itch.io/pixelorama"
 _url="https://github.com/Orama-Interactive/Pixelorama"
 license=('MIT')
 depends=('hicolor-icon-theme' 'libglvnd' 'libxcursor' 'libxi' 'libxinerama' 'libxrandr')
-makedepends=('curl' 'godot' 'unzip')
+makedepends=('curl' 'godot>=4.3' 'unzip')
 provides=('pixelorama')
 source=("${pkgname^}-${pkgver}.tar.gz::${_url}/archive/v${pkgver}.tar.gz")
-b2sums=('10cdcf19ea69aba218788e6424744aa29ecca5d6ab0e43239997b18c751a2b1dca23c3f57f20cedd3289098ff169d6f69acd0eb0214c97301f5fc7bd4d3d49e9')
+b2sums=('99be4cebe743259554dd4c12bdd2072a29f9eef033e415cfc9ef00e9a95cb47cdb070aa652d98177bc7a512d4b7e21630651e813f89ee7a68b685d46b65a112a')
 
 prepare() {
   # Checks if the user's directory has the export templates
