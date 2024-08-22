@@ -38,15 +38,14 @@ package() {
     cd "$pkgdir/opt/nvidia/hpc_sdk/modulefiles"
     find . -type f -exec sed -i "s@$pkgdir@@g" {} \;
 
+    # Rewrite localrc to use gcc-13 as default compiler
+    $pkgdir/opt/nvidia/hpc_sdk/Linux_x86_64/$pkgver/compilers/bin/makelocalrc \
+        -d "$pkgdir/opt/nvidia/hpc_sdk/Linux_x86_64/$pkgver/compilers/bin" -x -gcc gcc-13
+
     # Install license
     cd "$srcdir/$_pkgname/install_components/Linux_$arch/$pkgver/compilers/license"
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 
     # Install script to set path
     install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/opt/nvidia/$pkgname.sh"
-}
-
-post_install() {
-    source /opt/nvidia/$pkgname.sh
-    makelocalrc -x -gcc gcc-13
 }
