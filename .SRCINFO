@@ -1,6 +1,6 @@
 pkgbase = r-mboost
 	pkgdesc = Model-Based Boosting
-	pkgver = 2.9.10
+	pkgver = 2.9.11
 	pkgrel = 1
 	url = https://cran.r-project.org/package=mboost
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = r-mboost
 	optdepends = r-rpart
 	optdepends = r-testthat
 	optdepends = r-th.data
-	source = https://cran.r-project.org/src/contrib/mboost_2.9-10.tar.gz
-	sha256sums = e713a47faa94424b497685eb3b1df3d376be5f126b48e3f834b6b897f0d0b08d
+	source = https://cran.r-project.org/src/contrib/mboost_2.9-11.tar.gz
+	sha256sums = 9f37a50c7ff594b8332a31725ae144c48f50c1c9891d44b721cd37e895bfbc58
 
 pkgname = r-mboost
