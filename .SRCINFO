@@ -1,0 +1,13 @@
+pkgbase = viddy-git
+	pkgdesc = A modern watch command
+	pkgver = 1.0.0.r0.gda2c0af
+	pkgrel = 1
+	url = https://github.com/sachaos/viddy
+	arch = any
+	license = MIT
+	makedepends = cargo
+	options = !lto
+	source = git+https://github.com/sachaos/viddy.git
+	md5sums = SKIP
+
+pkgname = viddy-git
