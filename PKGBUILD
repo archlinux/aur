@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=frhelper
 pkgname="eusoft-${_pkgname}-bin"
-pkgver=2024.02.27
+pkgver=2024.08.20
 pkgrel=1
 pkgdesc="法语助手,权威的法语词典软件,法语学习者必备的工具.支持学习笔记、生词本多平台同步，让你随时随地学法语."
 arch=('x86_64')
@@ -66,8 +66,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ce5fcba8f0a2ffd0bff6b62e63f658883e795577caca130698de799a8647530c'
-            '21e001fde21fdd190dd3fd47ca496be4bd945955d96f0987bccf059e5643b344'
-            'c68de8f6be6059bc0019b5d2ef43edfabe15bd2c213d671ca39ed69ae0619c66')
+            '89862f4074e530896863738bf9d49c03c8d0cd0f6a543d4ccc1cdc53e8f83a24'
+            'ae64ad6d7898f5b3ab9efd0c34798bccfb8ce820b1b4e7af39e7a6f1ed62aafd')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|${_pkgname}|g" \
