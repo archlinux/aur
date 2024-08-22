@@ -1,7 +1,7 @@
 pkgbase=linux-lts419
 _basever=4.19
 _srcname=linux-$_basever
-pkgver=${_basever}.319
+pkgver=${_basever}.320
 pkgrel=1
 pkgdesc='LTS 4.19 Linux'
 url="https://www.kernel.org/"
@@ -18,6 +18,8 @@ source=(
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   "0002-modinfo-898490c010b.patch::https://gitlab.manjaro.org/packages/core/linux419/-/raw/e3143217878250b8321e5927dc95543c166df8da/898490c010b.patch?inline=false"
+  '0003-depmod-remove-depmod_hack_needed.patch'
+  '0004-kernel-4.19-depmod-disable-for-packaging.patch'
 )
 #validpgpkeys=(
 #  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -25,15 +27,19 @@ source=(
 #)
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 md5sums=('740a90cf810c2105df8ee12e5d0bb900'
-         'f5d2a734e054592f94c3bae911fd1e91'
+         '825d2fb943ba4308ff2094c989cc6071'
          '1472f2999cfe2d48eb27a889a5780a6d'
          '8d3adddbed67c62b0910ec68c78ebbac'
-         '2674295f31c55d4982a98a914028d684')
+         '2674295f31c55d4982a98a914028d684'
+         'd15820a808c3cc159e6e5916a8c05e8f'
+         '690edf27af78406c3fb9c2b871857b33')
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
-            'fae20826b23df521eeb52099d7cc3c9eff72e390d30498d3a62e9ede086972e5'
+            '2389fdcf5105a2383b95f51fddd9027ba496b42ce418498a1dd274a2d7a9f7a3'
             'c24a94ee3a6eb042a67b97c57e036e5abab519e8427fff4dcb9cea1e6cc5e3cd'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2'
-            '1a4b6378407e2fc3b84fdffa22ce74de326992bb2e927411607b78cf6a31374e')
+            '1a4b6378407e2fc3b84fdffa22ce74de326992bb2e927411607b78cf6a31374e'
+            '64b521b3963781c60e9a33db40c523bf65a119cb1dfec182a737e90d2609df5a'
+            '7a4ac87e950bb18737f74c1a472f45ff03621ca9584c3b7ebd92731a521a9516')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -57,9 +63,12 @@ prepare() {
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
-    echo "Applying patch $src..."
+    msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+
+  #cd '..'; cp -pr "${_srcname}" 'a'; ln -s "${_srcname}" 'b'; cd "${_srcname}"; false
+  # diff -pNaru5 'a' 'b' > 0000-$RANDOM.patch
 
   echo "Setting config..."
   cp ../config .config
@@ -71,7 +80,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make bzImage modules
+  nice -n1 make bzImage modules
   #make htmldocs
 }
 

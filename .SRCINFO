@@ -1,6 +1,6 @@
 pkgbase = linux-lts419
 	pkgdesc = LTS 4.19 Linux
-	pkgver = 4.19.319
+	pkgver = 4.19.320
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -15,20 +15,26 @@ pkgbase = linux-lts419
 	makedepends = imagemagick
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.19.319.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.19.320.xz
 	source = config
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	source = 0002-modinfo-898490c010b.patch::https://gitlab.manjaro.org/packages/core/linux419/-/raw/e3143217878250b8321e5927dc95543c166df8da/898490c010b.patch?inline=false
+	source = 0003-depmod-remove-depmod_hack_needed.patch
+	source = 0004-kernel-4.19-depmod-disable-for-packaging.patch
 	md5sums = 740a90cf810c2105df8ee12e5d0bb900
-	md5sums = f5d2a734e054592f94c3bae911fd1e91
+	md5sums = 825d2fb943ba4308ff2094c989cc6071
 	md5sums = 1472f2999cfe2d48eb27a889a5780a6d
 	md5sums = 8d3adddbed67c62b0910ec68c78ebbac
 	md5sums = 2674295f31c55d4982a98a914028d684
+	md5sums = d15820a808c3cc159e6e5916a8c05e8f
+	md5sums = 690edf27af78406c3fb9c2b871857b33
 	sha256sums = 0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1
-	sha256sums = fae20826b23df521eeb52099d7cc3c9eff72e390d30498d3a62e9ede086972e5
+	sha256sums = 2389fdcf5105a2383b95f51fddd9027ba496b42ce418498a1dd274a2d7a9f7a3
 	sha256sums = c24a94ee3a6eb042a67b97c57e036e5abab519e8427fff4dcb9cea1e6cc5e3cd
 	sha256sums = a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2
 	sha256sums = 1a4b6378407e2fc3b84fdffa22ce74de326992bb2e927411607b78cf6a31374e
+	sha256sums = 64b521b3963781c60e9a33db40c523bf65a119cb1dfec182a737e90d2609df5a
+	sha256sums = 7a4ac87e950bb18737f74c1a472f45ff03621ca9584c3b7ebd92731a521a9516
 
 pkgname = linux-lts419
 	pkgdesc = The LTS 4.19 Linux kernel and modules
