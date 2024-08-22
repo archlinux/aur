@@ -5,58 +5,73 @@
 # Contributor: Dr.Egg <rwhite@archlinux.us>
 
 pkgname=musescore-git
-pkgver=3.2.r6.gf8dfe6d5c
+pkgver=4.0_alpha_2.r10409.gfab8002
 pkgrel=1
-pkgdesc='git-version of the sheet music editor MuseScore'
-arch=('i686' 'x86_64')
-url='https://github.com/musescore/MuseScore'
-license=('GPL')
-depends=(alsa-lib
-  libpulse
-  libsndfile
-  libvorbisfile.so
-  portaudio
-  portmidi
-  qt5-base
-  qt5-declarative
-  qt5-svg
-  qt5-tools
-  qt5-webengine
-  qt5-xmlpatterns
-  zlib)
-makedepends=(  cmake
+pkgdesc="Create, play and print beautiful sheet music"
+arch=(x86_64 i686)
+url="https://github.com/musescore/MuseScore"
+license=(GPL-3.0-only)
+groups=(pro-audio)
+depends=(
+  gcc-libs
+  glibc
+  hicolor-icon-theme
+  libasound.so
+  libfreetype.so
+  libsndfile.so
+  qt6-5compat
+  qt6-base
+  qt6-declarative
+  #qt6-graphicaleffects
+  qt6-networkauth
+  #qt6-quickcontrols
+  #qt6-quickcontrols2
+  qt6-scxml
+  qt6-svg
+  zlib
+)
+makedepends=(
+  cmake
   doxygen
   git
   lame
-  qt5-script
-  texlive-core)
+  ninja
+  python
+  qt6-tools
+)
 optdepends=('lame: MP3 export')
-conflicts=('musescore')
-provides=('musescore')
-source=("git+$url.git")
+options=(!lto)
+conflicts=(musescore)
+provides=(musescore)
+source=("git+https://github.com/musescore/MuseScore.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd MuseScore
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd MuseScore
-  make revision
-  cmake -DCMAKE_BUILD_TYPE=RELEASE \
-	-DCMAKE_INSTALL_PREFIX="/usr" \
-	-DMUSESCORE_LABEL="Git Build" \
-	-DBUILD_LAME="ON" \
-	-DCMAKE_SKIP_RPATH="FALSE" \
-	-DBUILD_JACK="ON" \
-	-DBUILD_PORTAUDIO="ON" \
-	-DUSE_SYSTEM_FREETYPE="ON" .
-  make lrelease
-  make
+  cmake -S MuseScore -B build -G Ninja \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_C_FLAGS_RELEASE="$CFLAGS" \
+    -DCMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DMUSESCORE_BUILD_CONFIGURATION=app \
+    -DMUSESCORE_BUILD_MODE=release \
+    -DMUSESCORE_REVISION=$(git rev-parse --short=7 HEAD) \
+    -DMUE_BUILD_CRASHPAD_CLIENT=OFF \
+    -DMUE_BUILD_UNIT_TESTS=OFF \
+    -DMUE_COMPILE_USE_SYSTEM_FREETYPE=ON \
+    -DMUE_ENABLE_FILE_ASSOCIATION=ON \
+    -DMUE_INSTALL_SOUNDFONT=ON \
+    -Wno-dev
+  cmake --build build
 }
 
 package() {
-  cd MuseScore
-  make DESTDIR="${pkgdir}" LABEL="Git Build" install
+  DESTDIR="${pkgdir}" cmake --install build
+  rm -rf "${pkgdir}"/usr/{bin/crashpad_handler,include,lib}
 }
+
