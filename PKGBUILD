@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=eshelper
 pkgname="eusoft-${_pkgname}-bin"
-pkgver=2024.02.27
+pkgver=2024.08.20
 pkgrel=1
 pkgdesc="西班牙语助手,权威的西班牙语词典软件,西班牙语学习者必备的工具.支持学习笔记、生词本多平台同步，让你随时随地学西班牙语."
 arch=('x86_64')
@@ -52,8 +52,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('59af3b48c1cda58220e303c479d8244257fb2d7c7be7d229b83f3e8dc23ee358'
-            '21e001fde21fdd190dd3fd47ca496be4bd945955d96f0987bccf059e5643b344'
-            '0ed2b777bd6eaf7986a79e6cbf63f067ff135298f9a8c6f8d9eb671b50c5ec86')
+            '89862f4074e530896863738bf9d49c03c8d0cd0f6a543d4ccc1cdc53e8f83a24'
+            'ad3e35428234bc137bb85f2364bba92e7057a6074f08c17a775274995aaa44d4')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@appasar@|${_pkgname}|g" \
