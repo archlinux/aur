@@ -1,0 +1,19 @@
+pkgbase = decrypto-pro-git
+	pkgdesc = Utility for converting CryptoPro CSP key containers to PEM keys
+	pkgver = r4.5db36aa
+	pkgrel = 1
+	url = https://github.com/vitalif/decrypto-pro
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	depends = openssl-gost-engine
+	source = decrypto-pro::git+https://github.com/vitalif/decrypto-pro.git
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = 168909dca43214f35d033012836ccabaee1f2258f2cfd37b76bcd78136eae6f4
+
+pkgname = decrypto-pro-git
