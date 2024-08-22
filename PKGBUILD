@@ -2,16 +2,16 @@
 # Maintainer: Sebastian Baberowski <sebastian@baberowski.com>
 
 pkgname=libindi-eqmod
-pkgver=2.0.1
+pkgver=2.0.9
 pkgrel=1
 pkgdesc="3rd party drivers for INDI: EQMod"
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(GPL3)
-arch=(i686 x86_64)
+arch=(i686 x86_64 aarch64)
 depends=(libindi=${pkgver})
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
-sha256sums=("be98a84ab6166321fe5aa74fca132cd866ae4e6910ef3b97e3502a44c59d277d")
+sha256sums=("f9e0af8f81c6a94a9b078f78c04f50c6b6c419e8a61df99e19b40dbead7a64b3")
 
 prepare() {
   mkdir -p build
