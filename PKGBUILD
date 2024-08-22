@@ -1,7 +1,7 @@
 # Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
 
 pkgname=python-ironic-lib
-pkgver=6.1.0
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="A common library to be used exclusively by projects under the Ironic governance."
 arch=(any)
@@ -31,7 +31,7 @@ makedepends=('python-build'
 checkdepends=('python-coverage'
               'python-stestr')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('ddbe35962d08c16a07bc4ba528097c9e4d2b64070d6279c1d11cfa55cf80187f63858bb60a01b3072d32df33b46e4927bd74787bf352cc01d4dab6893b08b258')
+b2sums=('5274dedebedaaf0dc607da3926862b46d5793735f96ecd58c59802d7b4315e43fc10471702e6348dc0655e895bc40cb989e3ba1e2b463043346f9a088cde2bb9')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level

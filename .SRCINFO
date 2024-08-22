@@ -1,6 +1,6 @@
 pkgbase = python-ironic-lib
 	pkgdesc = A common library to be used exclusively by projects under the Ironic governance.
-	pkgver = 6.1.0
+	pkgver = 6.2.0
 	pkgrel = 1
 	url = https://opendev.org/openstack/ironic-lib
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = python-ironic-lib
 	depends = python-oslotest
 	depends = python-fixtures
 	depends = python-setuptools
-	source = python-ironic-lib-6.1.0.tar.gz::https://opendev.org/openstack/ironic-lib/archive/6.1.0.tar.gz
-	b2sums = ddbe35962d08c16a07bc4ba528097c9e4d2b64070d6279c1d11cfa55cf80187f63858bb60a01b3072d32df33b46e4927bd74787bf352cc01d4dab6893b08b258
+	source = python-ironic-lib-6.2.0.tar.gz::https://opendev.org/openstack/ironic-lib/archive/6.2.0.tar.gz
+	b2sums = 5274dedebedaaf0dc607da3926862b46d5793735f96ecd58c59802d7b4315e43fc10471702e6348dc0655e895bc40cb989e3ba1e2b463043346f9a088cde2bb9
 
 pkgname = python-ironic-lib
