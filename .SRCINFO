@@ -1,0 +1,27 @@
+pkgbase = fatelf
+	pkgdesc = Utilities for a file format that allows you to package several ELF binaries in one file
+	pkgver = ed748c44c3a5eefa669ecf684acc6c4b2d23408a
+	pkgrel = 1
+	url = https://github.com/icculus/fatelf
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = libselinux-1.0
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = fatelf-extract=ed748c44c3a5eefa669ecf684acc6c4b2d23408a
+	provides = fatelf-glue=ed748c44c3a5eefa669ecf684acc6c4b2d23408a
+	provides = fatelf-info=ed748c44c3a5eefa669ecf684acc6c4b2d23408a
+	provides = fatelf-remove=ed748c44c3a5eefa669ecf684acc6c4b2d23408a
+	provides = fatelf-replace=ed748c44c3a5eefa669ecf684acc6c4b2d23408a
+	provides = fatelf-split=ed748c44c3a5eefa669ecf684acc6c4b2d23408a
+	provides = fatelf-validate=ed748c44c3a5eefa669ecf684acc6c4b2d23408a
+	provides = fatelf-verify=ed748c44c3a5eefa669ecf684acc6c4b2d23408a
+	source = git+https://github.com/icculus/fatelf
+	sha512sums = SKIP
+
+pkgname = fatelf
