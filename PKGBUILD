@@ -11,9 +11,10 @@ _base=56-2
 pkgname=lattice-diamond
 pkgdesc='Lattice Diamond design software'
 url=http://www.latticesemi.com/
+depends=('libusb-compat')
 license=('custom')
 pkgver=${_version}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 install=$pkgname.install
 source=("http://files.latticesemi.com/Diamond/${_version}/diamond_${_version/"."/"_"}-base-${_base}-${arch}-linux.rpm"
@@ -22,7 +23,7 @@ source=("http://files.latticesemi.com/Diamond/${_version}/diamond_${_version/"."
         "${pkgname}.install")
 sha512sums=('76b2d77c61a532278470f5dfab7ed409d467f6f5566e56bc9680761c429ad90ac2881b17cac6ef297bc0ddd246ab92403c1a56caa22890b6393e18bb25d7f980'
             '772fa260bb1a4ed7c4e328a99b3cd16b625e8880d7731abbe0cd59dbe4d743265e169a26ceba7b619a87c1cb9638a268a5501d3358863171ee808e59b2d3b0ac'
-            '9cc87b6e05bc47ef3db9066a06384c0710a4aeaf725f24beaa45732474ed40b0b637c664c1e3f014a7f7dfc25401e872d38497015576c18d3929f38975504d9b'
+            'dcfe4d3d4c6892e29456bf898827818dabd02a7ed9f767339bc548ba7dfb9a73e60306484d09ec62693e0899cc1ea2b7ef4550e90dfd8780d505da03fb9cdd3e'
             '0f6f4463e1b1266a151afaaf6fefb3d69b712fafd6f2fa20beb211a3f9dd4db216be7255cc8fddaac946534754739c13406476fc6474236e7505bcd033a71d81')
 options=('!strip')
 PKGEXT=".pkg.tar.zst"
