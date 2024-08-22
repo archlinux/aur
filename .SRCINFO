@@ -1,6 +1,6 @@
 pkgbase = baru
 	pkgdesc = A simple system monitor for WM statusbar
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/doums/baru
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = baru
 	provides = baru
 	conflicts = baru
 	options = !debug
-	source = baru-0.4.0.tar.gz::https://github.com/doums/baru/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = 49f09c7b356b5eefbeba9f208b100661cc9c6be09eff2ba737a19ab2e15b6711
+	source = baru-0.4.1.tar.gz::https://github.com/doums/baru/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 3b771e624ea89857761609b7ee58581f1f70efa574d181acc14671f05be63307
 
 pkgname = baru
