@@ -1,0 +1,13 @@
+[Unit]
+Description=IronMime daemon
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=3
+ExecStart=/usr/bin/ironmime
+User=<User>
+Group=input
+
+[Install]
+WantedBy=default.target

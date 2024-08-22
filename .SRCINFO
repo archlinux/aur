@@ -1,0 +1,20 @@
+pkgbase = ironmime-git
+	pkgdesc = IronMime is a Linux daemon to bind touchpad gestures to shell commands.
+	pkgver = 0.3.0.r0.gdbc34b5
+	pkgrel = 1
+	url = https://github.com/cyber-sushi/ironmime
+	install = ironmime.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = ironmime
+	conflicts = ironmime
+	source = ironmime-git::git+https://github.com/cyber-sushi/ironmime#branch=main
+	source = ironmime.service
+	source = ironmime.install
+	sha256sums = SKIP
+	sha256sums = 8d21f5ea62ea1224f0b9be3f47f3402f4c971ed785d5c1a1855b8bfedab86ac6
+	sha256sums = 982d14240039144fadc409592fb342b7d1e0dcf2c25c33cb0a5d7c7f7ec78905
+
+pkgname = ironmime-git

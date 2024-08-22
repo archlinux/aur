@@ -1,0 +1,13 @@
+post_install() {
+        echo
+        echo "==> You must do the following steps:"
+        echo "1) Replace <User> for your username in /usr/lib/systemd/system/ironmime.service"
+        echo '2) Configure ironmime in $HOME/.config/ironmime/ironmime.conf'
+        echo "Check the documentation for configuration: https://github.com/cyber-sushi/ironmime?tab=readme-ov-file#configuration"
+        echo "3) Enable ironmime with: systemctl enable ironmime"
+        echo
+}
+
+post_upgrade() {
+        post_install
+}
