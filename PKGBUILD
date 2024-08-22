@@ -3,7 +3,7 @@
 
 pkgname=pato
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PATO: high PerformAnce TriplexatOr is a high performance tool for the fast and efficient detection of triple helices and triplex features in nucleotide sequences"
 arch=('any')
 url="https://github.com/UDC-GAC/PATO"
@@ -15,11 +15,11 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('50a7992ddf87b36d24bdc1f83da3d346205158fc9a8c1de664df75d6f85fe507')
 
 build() {
-  cmake -Bbuild \
+  cmake -B"$srcdir/PATO-$pkgver/build" \
         -S"$srcdir/PATO-$pkgver" \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -Wno-dev
-  cmake --build build
+  cmake --build "$srcdir/PATO-$pkgver/build"
 }
 
 check() {
@@ -28,5 +28,5 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="$pkgdir" cmake --install "$srcdir/PATO-$pkgver/build"
 }
