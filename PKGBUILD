@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RMySQL
-_pkgver=0.10.27
+_pkgver=0.10.28
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Database Interface and 'MySQL' Driver for R"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -23,8 +23,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('82055849b6008a804c59c5f1a9dafdaf')
-b2sums=('3a846ffffae569da472cc75e9cccfd55b3ea35c05ba159f736f317e634884e74fe7f92146c7b24a04896680fdca91a7a76468b69a948447875ddc1a6fd212c47')
+md5sums=('4b76d49f1853dddd6b633e570ebc4dd4')
+b2sums=('52cdf1fdd0055e68cbb7f9c04edb8da572a853b9db6e28f8a949f26729c3d2550dc606bd2d55d1969493d096c66a698417f6d730ac81c6b69752a5c527e39fde')
 
 build() {
   mkdir build
