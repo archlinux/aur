@@ -1,13 +1,14 @@
 pkgbase = auto-editor
 	pkgdesc = A command line application for automatically editing video and audio.
 	pkgver = 25.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://auto-editor.com/
 	arch = any
 	license = Unlicense
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	depends = python-numpy
 	depends = python-av
