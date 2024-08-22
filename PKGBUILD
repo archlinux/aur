@@ -2,7 +2,7 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=mldonkey
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc='A multi-network P2P client'
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=("https://github.com/ygrek/mldonkey/releases/download/release-${pkgver//.
         mldonkey.service
         mldonkey.tmpfiles
         mldonkey.sysusers)
-sha256sums=('82f3ed726c3b93c2b336183a2d07b60ecb6a278f83aa3efe0821cddb17fa4db7'
+sha256sums=('9c0be397ab2193256f52f7bafaf210bf29c93bb4758bb1818f4633763b996bc7'
             'f1d9401cefd591662d49011c53fdb2788755a6f745a963e46d8037b990edeb6a'
             '778cebe8edcffd63db3594054c2daa62ce571644a96ad235b8c95470b55c0415'
             '9c78fbfbba4f8286e2c2299e4da6f76d0f34f33fde26964922707c34fb75157b'
