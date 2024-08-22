@@ -1,0 +1,25 @@
+pkgbase = cloudhub-bin
+	pkgdesc = 云之家桌面端
+	pkgver = 4.3.2
+	pkgrel = 1
+	url = https://www.yunzhijia.com
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-custom
+	makedepends = asar
+	depends = electron12
+	depends = nodejs
+	depends = gtk2
+	depends = java-runtime
+	provides = cloudhub=4.3.2
+	conflicts = cloudhub
+	source = LICENSE-4.3.2.html::https://www.yunzhijia.com/public/agreement/client-agreement.html
+	source = cloudhub.sh
+	sha256sums = c4088260f72395d24a8ba49eaaa78620895489107af496c7d00976f8c8825dae
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	source_aarch64 = cloudhub-4.3.2-aarch64.deb::https://res.yunzhijia.com/mixed/cloudhubx/linux_arm64/CloudHub_arm64_4.3.2_2408121234.deb
+	sha256sums_aarch64 = 7a5189dd2bb3832ba5fce18824dbc8963a440a3825f38e388a242d613274de69
+	source_x86_64 = cloudhub-4.3.2-x86_64.deb::https://res.yunzhijia.com/mixed/cloudhubx/linux_x64/CloudHub_x64_4.3.2_2408121234.deb
+	sha256sums_x86_64 = 5e4d341d7aa30363fce77f23a9602eefd794c1da1a3057fec912814f516bf7db
+
+pkgname = cloudhub-bin
