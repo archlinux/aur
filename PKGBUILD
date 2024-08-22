@@ -2,14 +2,14 @@
 # Co-Maintainer: Felix Golatofski <contact@xdfr.de>
 
 pkgname=bisq2
-pkgver=2.0.4
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="The Decentralized Trading Platform"
-arch=('any')
+arch=('x86_64')
 url="https://bisq.network"
 license=('AGPL3')
-depends=('java-runtime=17')
-makedepends=('java-environment=17' 'git')
+depends=('java-runtime=22')
+makedepends=('java-environment=22' 'git')
 source=("git+https://github.com/bisq-network/bisq2#tag=v$pkgver"
 	"bisq2.desktop")
 sha256sums=('SKIP'
@@ -21,7 +21,7 @@ provides=("bisq2")
 build() {
   cd "${srcdir}/${pkgname}"
   msg2 "Building bisq2..."
-  ./gradlew desktop:desktop-app:build
+  ./gradlew apps:desktop:desktop-app:build
 }
 
 check() {
@@ -33,7 +33,7 @@ check() {
 package() {
   # Install executable.
   optdir="${pkgdir}/opt/bisq2"
-  install -Dm644 "${srcdir}/${pkgname}/apps/desktop/desktop-app/build/libs/desktop-app-$pkgver-all.jar" "${optdir}/lib/desktop-app-$pkgver-all.jar"
+  install -Dm644 "${srcdir}/${pkgname}/apps/desktop/desktop-app/build/libs/desktop-app-$pkgver-linux_x86_64-all.jar" "${optdir}/lib/desktop-app-$pkgver-linux_x86_64-all.jar"
   install -Dm755 "${srcdir}/${pkgname}/apps/desktop/desktop-app/build/scriptsShadow/desktop-app" "${optdir}/bin/bisq2-desktop"
   install -d "${pkgdir}/usr/bin"
   ln -s "/opt/bisq2/bin/bisq2-desktop" "${pkgdir}/usr/bin/bisq2-desktop"
