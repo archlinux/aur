@@ -1,14 +1,14 @@
 pkgbase = magicq-beta
 	pkgdesc = Lighting control software from ChamSys
-	pkgver = 1.9.6.0
+	pkgver = 1.9.6.1
 	pkgrel = 1
 	url = https://chamsyslighting.com/products/magicq
 	arch = x86_64
 	license = custom
 	conflicts = magicq
 	options = !strip
-	source = http://files.magicq.co.uk/v1_9_6_0/magicq_ubuntu_v1_9_6_0.deb
-	sha256sums = 6ffac9d6247aeb5b62e639a706b99455ffce24f0b94a3c31003de60e920428bc
+	source = http://files.magicq.co.uk/v1_9_6_1/magicq_ubuntu_v1_9_6_1.deb
+	sha256sums = 6116eefecd6c4a4d3a64896359148ce947ede1597e81ddb70108b8c419b18248
 
 pkgname = magicq-beta
 	depends = alsa-lib

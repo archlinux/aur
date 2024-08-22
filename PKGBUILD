@@ -2,7 +2,7 @@
 # Contributor: Ben Cooper <contactme@bengcooper.co.uk>
 # Contributor: Johan Förberg <johan@forberg.se>
 pkgname=magicq-beta
-pkgver=1.9.6.0
+pkgver=1.9.6.1
 pkgrel=1
 pkgdesc='Lighting control software from ChamSys'
 arch=(x86_64)
@@ -14,7 +14,7 @@ options=('!strip') # Binaries are already stripped.
 
 _pkgver="${pkgver//[^[:alnum:]]/_}"
 source=("http://files.magicq.co.uk/v${_pkgver}/magicq_ubuntu_v${_pkgver}.deb")
-sha256sums=('6ffac9d6247aeb5b62e639a706b99455ffce24f0b94a3c31003de60e920428bc')
+sha256sums=('6116eefecd6c4a4d3a64896359148ce947ede1597e81ddb70108b8c419b18248')
 
 package() {
     depends=(
