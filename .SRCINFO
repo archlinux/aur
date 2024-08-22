@@ -1,6 +1,6 @@
 pkgbase = z-library-electron
 	pkgdesc = Stay connected to our library! use system electron
-	pkgver = 1.1.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://go-to-zlibrary.se/#desktop_app_tab
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = z-library-electron
 	depends = electron
 	depends = bash
 	depends = hicolor-icon-theme
-	source = https://go-to-zlibrary.se/soft/zlibrary-setup-latest.deb
-	sha256sums = 7fbdcefcea789dea4e2cde07593fdfa2c35626e94d03e017047ee96f597fefe3
+	source = https://go-to-library.sk/soft/zlibrary-setup-latest.deb
+	sha256sums = d3d6c845fafd3a16bd1cb28451bfa8295767c6942fb0449930ee51db54b94c7f
 
 pkgname = z-library-electron
