@@ -1,7 +1,7 @@
 pkgbase = firedragon
 	pkgdesc = Floorp fork build using custom branding and settings
-	pkgver = 11.17.4
-	pkgrel = 3.1
+	pkgver = 11.17.6
+	pkgrel = 1.1
 	epoch = 1
 	url = https://firedragon.garudalinux.org
 	arch = x86_64
@@ -66,10 +66,10 @@ pkgbase = firedragon
 	options = !strip
 	backup = usr/lib/firedragon/firedragon.cfg
 	backup = usr/lib/firedragon/distribution/policies.json
-	source = https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v11.17.4-3/downloads/firedragon-v11.17.4-3.source.tar.zst
+	source = https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v11.17.6-1/downloads/firedragon-v11.17.6-1.source.tar.zst
 	source = https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.psd
 	source = https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.desktop
-	sha256sums = 7e02bd98c8d0f64922c66190f9c3944ca4488011828303ee296fc0f32bc8057f
+	sha256sums = 0d302c848e461298446c256ca3330c747583b58ada01edc81ce7f02c64b2e6b5
 	sha256sums = 61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0
 	sha256sums = 53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560
 
