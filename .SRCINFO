@@ -1,0 +1,17 @@
+pkgbase = python-shazamio-core
+	pkgdesc = Core of python-shazamio
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/shazamio/shazamio-core
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-maturin
+	makedepends = python-wheel
+	depends = alsa-lib
+	depends = python>=3.8
+	source = https://github.com/shazamio/shazamio-core/archive/1.0.7.tar.gz
+	b2sums = 65f1827ab6bd02724528155959a7cf01a0713f9e9d1e2a938dce9a74e94881272444eb407462f5160df90549d81f576cf05c71603557ed61c8b95e104bc3f66a
+
+pkgname = python-shazamio-core
