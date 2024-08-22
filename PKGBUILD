@@ -1,7 +1,7 @@
 # Maintainer: Will Gauvin <wgauvin@gmail.com>
 
 pkgname=libindi-astromechfoc
-pkgver=2.0.2
+pkgver=2.0.9
 pkgrel=1
 pkgdesc="3rd party drivers for INDI, support for Astromechanics Focuser T-Ring"
 url="http://www.indilib.org/index.php?title=Main_Page"
