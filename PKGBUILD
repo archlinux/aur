@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='barman'
-pkgver='3.10.1'
+pkgver='3.11.1'
 pkgrel='1'
 pkgdesc="Backup and recovery manager for PostgreSQL"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ source=("https://github.com/EnterpriseDB/${pkgname}/archive/refs/tags/release/${
 	"passive-server.conf-template"
 	"ssh-server.conf-template"
 	"streaming-server.conf-template")
-sha256sums=('ed9c6f7c663920baa7a5c95245e8c41e06391efceced6fd33a5d013988aea0f6'
+sha256sums=('61a5d687a56b42c2a9adeb6dd3760d2654990f0760230c721cc8a73a910a9f0a'
             '43e90f39b167b682aa98e753c1803cf6244ba6c1eeb5738270fcb47837c25147'
             '723ba6c8ddce9284d48243787e6d24c40db98933f28bf6a79ce53a2c15bb261c'
             '631afa66223a705db3c1d5a4749b8f60368f86b72a3c0fc7eef9ca48af312c50'
