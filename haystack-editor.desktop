@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=Haystack Editor
+Comment=Code Editing. Refined.
+GenericName=Text Editor
+Exec=/usr/bin/haystack-editor %F
+Icon=haystack-editor
+Type=Application
+StartupNotify=false
+StartupWMClass=Code
+Categories=TextEditor;Development;IDE;
+MimeType=text/plain;inode/directory;application/x-code-workspace;
+Actions=new-empty-window;
+Keywords=haystack;
+
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Exec=/usr/bin/haystack-editor --new-window %F
+Icon=haystack-editor
