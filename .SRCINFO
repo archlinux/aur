@@ -1,6 +1,6 @@
 pkgbase = python-glean-parser
 	pkgdesc = Tools for parsing the metadata for Mozilla's glean telemetry SDK
-	pkgver = 14.5.2
+	pkgver = 15.0.0
 	pkgrel = 1
 	url = https://github.com/mozilla/glean_parser
 	arch = any
@@ -17,9 +17,9 @@ pkgbase = python-glean-parser
 	depends = python-jinja
 	depends = python-jsonschema
 	depends = python-yaml
-	provides = python-glean_parser=14.5.2
+	provides = python-glean_parser=15.0.0
 	conflicts = python-glean_parser
-	source = glean_parser-14.5.2.tar.gz::https://files.pythonhosted.org/packages/source/g/glean_parser/glean_parser-14.5.2.tar.gz
-	sha256sums = ec466d151618938efb03f17c16caeb12666bd889c64562b8e34bcd2d95e072f7
+	source = glean_parser-15.0.0.tar.gz::https://files.pythonhosted.org/packages/source/g/glean_parser/glean_parser-15.0.0.tar.gz
+	sha256sums = b9ec85b8fc4c1ebc9c1ccb69afb948fe1387f2f1ce2e5c63a0a221f2961de8b6
 
 pkgname = python-glean-parser
