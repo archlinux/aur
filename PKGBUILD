@@ -11,6 +11,7 @@ license=('GPL3')
 
 depends=(
     'glibc'
+    'webkit2gtk-4.1'
 )
 
 url="https://github.com/GUI-for-Cores/${_pkgname}"
