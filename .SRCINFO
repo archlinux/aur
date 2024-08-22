@@ -1,0 +1,18 @@
+pkgbase = ruby-tracer
+	pkgdesc = Outputs a source level execution trace of a Ruby program.
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/ruby/tracer
+	arch = any
+	license = Ruby
+	license = BSD-2-Clause
+	checkdepends = ruby-bundler
+	checkdepends = ruby-irb
+	checkdepends = ruby-rake
+	checkdepends = ruby-test-unit
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/ruby/tracer/archive/v0.2.3/tracer-0.2.3.tar.gz
+	sha256sums = 28adc54d53ea8bb7b4a7624b9fcbc440ebd884626a891d67bd1d7afee3d7e660
+
+pkgname = ruby-tracer
