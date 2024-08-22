@@ -1,6 +1,6 @@
 # Maintainer: sunplan
 pkgname=nndownload
-pkgver=1.16.3
+pkgver=1.18
 pkgrel=1
 pkgdesc='Download and process links from Niconico (nicovideo.jp)'
 arch=('any')
@@ -12,12 +12,13 @@ depends=('python'
          'python-beautifulsoup4'
          'python-ffmpeg-python'
          'python-mutagen'
+         'python-mutagen'
          'python-requests'
          'python-rich')
 makedepends=('python-setuptools'
              'dos2unix')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('49f8b24fadef9c4223dc58526d056397373d33890c3ff412b015cfb8eb3882a9')
+sha256sums=('f4cd35fa44c61ffbce6fa654d9711ec27b90d9d81acc74d4d642775365a9bbad')
 
 prepare() {
 	# > nndownload.py
