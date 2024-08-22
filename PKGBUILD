@@ -2,7 +2,7 @@
 
 pkgname=singularity-ce
 pkgver=4.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source container platform designed to be simple, fast, and secure.'
 arch=(x86_64)
 url='https://github.com/sylabs/singularity'
@@ -37,10 +37,10 @@ build() {
     cd $pkgname-$pkgver
 
     export CGO_ENABLED="1"
-    # export CGO_CPPFLAGS="$CPPFLAGS"
-    # export CGO_CFLAGS="$CFLAGS"
-    # export CGO_CXXFLAGS="$CXXFLAGS"
-    # export CGO_LDFLAGS="$LDFLAGS"
+    export CGO_CPPFLAGS="$CPPFLAGS"
+    export CGO_CFLAGS="$CFLAGS"
+    export CGO_CXXFLAGS="$CXXFLAGS"
+    export CGO_LDFLAGS="$LDFLAGS"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
     # libexecdir is recommended here https://wiki.archlinux.org/title/Arch_package_guidelines#Package_etiquette
