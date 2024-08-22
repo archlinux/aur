@@ -1,6 +1,6 @@
 pkgbase = libqhy
 	pkgdesc = libqhy used by INDI QHY drivers. Please note that for sake of simplicity package version follows libindi versionning.
-	pkgver = 2.0.1
+	pkgver = 2.0.9
 	pkgrel = 1
 	url = http://www.indilib.org/index.php?title=Main_Page
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = libqhy
 	license = MIT
 	makedepends = cmake
 	conflicts = libqhy-git
-	source = https://github.com/indilib/indi-3rdparty/archive/v2.0.1.tar.gz
-	sha256sums = be98a84ab6166321fe5aa74fca132cd866ae4e6910ef3b97e3502a44c59d277d
+	source = https://github.com/indilib/indi-3rdparty/archive/v2.0.9.tar.gz
+	sha256sums = f9e0af8f81c6a94a9b078f78c04f50c6b6c419e8a61df99e19b40dbead7a64b3
 
 pkgname = libqhy
