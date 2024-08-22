@@ -3,9 +3,8 @@ pkgver=5.0373
 pkgrel=1
 pkgdesc="FlexBV Free Professional Boardview"
 arch=('x86_64')
-url="https://pldaniels.com/flexbv/"
-license=('custom')
-conflicts=('flexbv-beta-bin')
+url="https://pldaniels.com/flexbv5/"
+license=('custom:flexbv')
 depends=(
 sdl2
 fontconfig
@@ -25,12 +24,12 @@ sha256sums=('9d9ef206edaf0f00e03abf489ee567381bdaac6192e40eb73b15477ddc857d22'
             '12f5872b4bfed1620dd57e213ac2dd18b9fe02753ef70ebc89f10b6d72244e23')
 
 prepare() {
-	gendesk -n --pkgname "flexbv" --pkgdesc "${pkgdesc}" --exec='flexbv' --name "FlexBV" --icon "${pkgname}.svg"
+	gendesk -n --pkgname "flexbv" --pkgdesc "${pkgdesc}" --exec='flexbv' --name "FlexBV Free" --icon "${pkgname}.svg"
 }
 
 package() {
 	install -Dm644 "flexbv.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -Dm644 "${pkgname}-icon-${pkgver}.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
-	install -D -m755 "FlexBVFree-${pkgver}-linux/flexbv" "${pkgdir}/usr/bin/flexbv"
+	install -Dm755 "FlexBVFree-${pkgver}-linux/flexbv" "${pkgdir}/usr/bin/flexbv"
 	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
