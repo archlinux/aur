@@ -1,26 +1,25 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Corey Hinshaw <coreyhinshaw(at)gmail(dot)com>
 pkgname=system76-io-dkms
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="DKMS module for controlling System76 Io board"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/system76-io-dkms"
 license=('GPL3')
 depends=('dkms')
 makedepends=('git')
-_commit=0f86350b4f608f0dca7d87ab95d035137995b88d  # tags/1.0.3^0
-source=("git+https://github.com/pop-os/system76-io-dkms.git#commit=${_commit}")
-sha256sums=('SKIP')
+source=("git+https://github.com/pop-os/system76-io-dkms.git#tag=$pkgver")
+sha256sums=('b80de8520d0635500eb13b857578b6c0a817e610b14d26d192af936d61dc9286')
 #validpgpkeys=('DA0878FCF806089ED4FDDF58E988B49EE78A7FB1') # Jeremy Soller <jeremy@system76.com>
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   git describe --tags | sed 's/-/+/g'
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
 
   # Install source files
   for file in {Makefile,*.c,*.h}; do
