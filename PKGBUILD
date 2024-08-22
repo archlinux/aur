@@ -8,7 +8,7 @@
 # or use: $ curl -sSf https://dl.google.com/linux/chrome/deb/dists/stable/main/binary-amd64/Packages | grep -A1 "Package: google-chrome-stable" | awk '/Version/{print $2}' | cut -d '-' -f1
 
 pkgname=google-chrome-wayland-vulkan
-pkgver=127.0.6533.119
+pkgver=128.0.6613.84
 pkgrel=1
 pkgdesc="The popular web browser by Google (Stable Channel) with a binary patch to enable support for Vulkan with --ozone-platform=wayland."
 arch=('x86_64')
@@ -42,10 +42,10 @@ source=("https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_cha
 	'eula_text.html'
 	"google-chrome-$_channel.sh"
 	'r2-binary-patch-script')
-sha512sums=('2df346bb75942b167606a7bfcdc1638e42885204c7ea9e0dabdf749421ed38192f014a6d7d68cc541bde07588f54229f3fad5896afc66cbdf7f807187993330b'
+sha512sums=('fcf4341e031826e708ceeb3b0a4faef229d69d3d8606a23570c0b09c524145eca521158ba6d7a7b9fff716fd0de51697c68e204b09ed0bc3770c8d587160bdca'
             'a225555c06b7c32f9f2657004558e3f996c981481dbb0d3cd79b1d59fa3f05d591af88399422d3ab29d9446c103e98d567aeafe061d9550817ab6e7eb0498396'
             'de02b498a4b5b93e21622c8dba57befe795d733a04656be911cc38e28bfef0e20470450f44be523bbde8d4de28f79c10434846ca01fc2a2f4e67707b79332f94'
-            '0a539cc4410cac6431d78d88a4b8539aa2f2d52d6c1a8f48248406d99f689cb4f51b423637c48a127ccc182e2fe26bd001d544c7054b7c80f76f75b2a83d2615')
+            '64cd1f5fed2f2fc01daf0d64c7ab524db8cc37afc74c8031794bbf3101da500a500d073615b406c8061f23846350bd44e7cf3e61f082b82c46d568d6f4b3a5d8')
 
 package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
