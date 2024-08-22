@@ -1,0 +1,16 @@
+pkgbase = ip2location-python-csv-converter
+	pkgdesc = Python script converts IP2Location CSV database into IP range or CIDR format.
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/ip2location/ip2location-io-python
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = ip2location-python-csv-converter-1.2.3.tar.gz::https://github.com/ip2location/ip2location-python-csv-converter/archive/refs/tags/1.2.3.tar.gz
+	sha256sums = 80e353bc62da9882c70e9250220b307d0ce89cb51c4c2dec7e80482008ae9578
+
+pkgname = ip2location-python-csv-converter
