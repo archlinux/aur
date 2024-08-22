@@ -2,8 +2,8 @@
 # Contributors: prettyvanilla, rabyte, Marcin Skory
 
 pkgname=alephone-infinity
-pkgver=20240712
-pkgrel=2
+pkgver=20240822
+pkgrel=1
 pkgdesc="Marathon Infinity scenario data files for Aleph One"
 arch=('any')
 url="https://alephone.lhowon.org/"
@@ -13,7 +13,7 @@ source=("https://github.com/Aleph-One-Marathon/alephone/releases/download/releas
         "$pkgname.sh"
         "LICENSE" # TODO: clarify where this file comes from
         "$pkgname.desktop")
-sha256sums=('21b979cf2235c4d5579269cf5515ca0e1518f9f5946d672142d92c49e7d8a55c'
+sha256sums=('6ce2d8a8487beff5f77ab41bb3de346603c66ffbec67a755f335bcc44688c5fa'
             '5ec43ca790491113335cc0f22abc2acbf204d9d3551a1b45e41f157753ee826b'
             '0dde70e490e4cb3e262ed7cc4f7ef6bdc49db557a14fc8674de38b2a9a426504'
             '9f0fa2edac76cf9a5d1a4b6c97bdfc040831fb4401f8626be85a0170ec756b25')
