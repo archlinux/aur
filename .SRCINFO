@@ -1,0 +1,19 @@
+pkgbase = ip2location-io-python
+	pkgdesc = A Python client library for accessing the IP2Location.io API.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/ip2location/ip2location-io-python
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-virtualenv
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	source = ip2location-io-python-1.0.4.tar.gz::https://github.com/ip2location/ip2location-io-python/archive/refs/tags/1.0.4.tar.gz
+	sha256sums = e26d1b2fd67af00af2f7d536dfee1fed632f2f46843766069b77e006dd03387d
+
+pkgname = ip2location-io-python
