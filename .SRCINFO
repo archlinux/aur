@@ -1,6 +1,6 @@
 pkgbase = clash-verge-rev
 	pkgdesc = Continuation of Clash Verge | A Clash Meta GUI based on Tauri
-	pkgver = 1.7.6
+	pkgver = 1.7.7
 	pkgrel = 3
 	url = https://github.com/clash-verge-rev/clash-verge-rev
 	install = .install
@@ -22,7 +22,7 @@ pkgbase = clash-verge-rev
 	conflicts = clash-verge
 	conflicts = clash-verge-bin
 	options = !lto
-	source = clash-verge-rev-1.7.6.tar.gz::https://github.com/clash-verge-rev/clash-verge-rev/archive/refs/tags/v1.7.6.tar.gz
-	sha512sums = 42abe3d4d446d37ebc51fd6e15735e8516bd831129c95028487f883561d3a8eee48ceca44ed510698af6e4e6f5a727681b3c96f1a57e65359d41968ddfac2e5e
+	source = clash-verge-rev-1.7.7.tar.gz::https://github.com/clash-verge-rev/clash-verge-rev/archive/refs/tags/v1.7.7.tar.gz
+	sha512sums = 22d915d2946ad327236769aa95594060dfd8f0e53d3e6d7c6a567512a2152ac80797afa45104a0b7f200abe37bba7629567fa4d0d247324c154e009fe76231d4
 
 pkgname = clash-verge-rev
