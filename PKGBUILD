@@ -1,21 +1,26 @@
-# Maintainer: Wouter de Vries <wouter@wouter-web.nl>
-_name=ripe.atlas.sagan
-pkgname=python-ripe-atlas-sagan
-pkgver=1.3.0
+# Maintainer: Marek Küthe <m.k@mk16.de>
+
+_pkgname=ripe-atlas-sagan
+pkgname=python-$_pkgname
+pkgver=1.3.1
 pkgrel=1
-pkgdesc="A parsing library for RIPE Atlas measurement results"
-arch=('any')
-url="https://pypi.python.org/pypi/$_name"
-license=('GPL3')
-depends=('python>=3.4' 'python-dateutil' 'python-pytz' 'python-ipy' 'python-pyopenssl')
-optdepends=('python-ujson: faster json decoding' 'python-sphinx: documentation generator')
-makedepends=('python-setuptools')
-provides=('python-ripe-atlas-sagan')
-source=("https://pypi.io/packages/source/r/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('0a1d7548032a7521fcde6db6a766a5e01b06968d21691f9c89076561b8416222')
+pkgdesc="parsing library for RIPE Atlas measurement results "
+arch=('x86_64')
+url="https://github.com/RIPE-NCC/ripe-atlas-sagan"
+license=('GPL-3.0-or-later')
+depends=('python-pytz')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/RIPE-NCC/ripe-atlas-sagan/archive/refs/tags/v$pkgver.tar.gz")
+sha512sums=(aac4f06a6a9e0d189128b9ed21ab7119fb24d228bcd1d18bef6b9ec029635b478eb6cb5992e2ae7dfe65def8c6f2199bc43d9e1862591070ced7b734e1ed3e37)
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  python setup.py build
+}
 
 package() {
-    cd "$srcdir/$_name-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 || return 1
-    rm -rf "ripe/__pycache__" "ripe/atlas/__pycache__"
+  cd "$_pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --optimize=1
 }
+
