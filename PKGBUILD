@@ -3,7 +3,7 @@
 
 pkgname=lib32-vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) Mesa driver with some additions (32-bit Git version)"
-pkgver=24.2.branchpoint.r28.g149e8bf
+pkgver=24.2.branchpoint.r1576.g2a20cdf
 pkgrel=1
 arch=('x86_64')
 depends=('lib32-libdrm' 'lib32-libxshmfence' 'lib32-libx11' 'lib32-systemd' 'lib32-vulkan-icd-loader' 'lib32-wayland')
@@ -55,12 +55,15 @@ build() {
   # Auto-download Rust crates for NAK/NIL (removes extra code for crate handling)
   _nvk_crate="--force-fallback-for=paste,syn"
 
-  # HACK: Remove crate .rlib files before build
+  # HACK: Remove crate library files before build
   # (This prevents build errors after a Rust update: https://github.com/mesonbuild/meson/issues/10706)
-  [ -d build/subprojects ] && find build/subprojects \( -iname "*.rlib" -o -iname "*.so" \) -delete
-  [ -d build/src/nouveau/compiler ] && find build/src/nouveau/compiler -iname "*.rlib" -delete
-  [ -d build/src/nouveau/headers ] && find build/src/nouveau/headers -iname "*.rlib" -delete
-  [ -d build/src/nouveau/nil ] && find build/src/nouveau/nil -iname "*.rlib" -delete
+  [ -d build ] && find build -iname "*.rlib" -delete
+  [ -d build/subprojects ] && find build/subprojects -iname "*.so" -delete
+
+  # HACK: Force the 32-bit Rust target for bindgen
+  # (This makes bindgen produce the correct 32-bit struct sizes)
+  # FIXME: This probably breaks non-x86 compilation
+  export TARGET=i686-unknown-linux-gnu
 
   # As you can see, I optimized the build options pretty well 🐸
   arch-meson mesa build \

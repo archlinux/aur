@@ -1,4 +1,5 @@
 # Ignore makepkg generated directories/files
+mesa
 mesa/
 pkg/
 src/
