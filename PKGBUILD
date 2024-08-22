@@ -3,14 +3,14 @@
 pkgname=armadillo
 pkgver=14.0.2
 _pkgver=${pkgver/_/-} # For use with RC releases, to replace the _ with -
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ linear algebra library"
 arch=('i686' 'x86_64')
 url="http://arma.sourceforge.net/"
 license=('Apache')
 depends=('lapack' 'blas' 'arpack' 'superlu>=5.2.0')
 optdepends=('hdf5: HDF5 output'
-            'intel-mkl: Intel Math Kernel Library support')
+            'intel-oneapi-mkl: Intel Math Kernel Library support')
 makedepends=('cmake')
 source=("http://downloads.sourceforge.net/sourceforge/arma/$pkgname-$_pkgver.tar.xz")
 install=armadillo.install
