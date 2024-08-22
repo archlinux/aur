@@ -1,6 +1,6 @@
 pkgbase = ytdesk-git
 	pkgdesc = Youtube & YT Music Supercharged
-	pkgver = 0.2.3.r0.gd995ba6
+	pkgver = r2.95b3ff7
 	pkgrel = 1
 	url = https://ytdesk.isaxk.com/
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = ytdesk-git
 	makedepends = gcc
 	makedepends = cmake
 	makedepends = curl
-	depends = electron31
-	provides = ytdesk=0.2.3
+	depends = electron32
+	provides = ytdesk=r2.95b3ff7
 	conflicts = ytdesk
 	source = ytdesk.git::git+https://github.com/isaxk/ytdesk.git
 	source = ytdesk.sh
