@@ -2,7 +2,7 @@
 
 pkgname=clash-verge-rev-alpha-bin
 _pkgname=clash-verge-rev
-pkgver=1.7.6
+pkgver=1.7.7
 pkgrel=3
 pkgdesc="Continuation of Clash Verge | A Clash Meta GUI based on Tauri | Alpha Version"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
