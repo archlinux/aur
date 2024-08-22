@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Beliaev <trap000d at gmail dot com>
 
 pkgname=quarto-cli-pre-release
-pkgver=1.6.5
+pkgver=1.6.6
 pkgrel=3
 _pkgbasename=quarto-cli
 _denodomver="0.1.35-alpha-artifacts"
@@ -23,7 +23,7 @@ source=("${_pkgbasename}-${pkgver}.tar.gz::https://github.com/quarto-dev/quarto-
         "000_pandoc_lua.diff"
         )
 
-sha256sums=('c6a7d40cd9bad97cfe4fee1357f1156ddb050ca7615191e4b3587262076442c1'
+sha256sums=('625d2bd96fa51963ae4dbbf8a360d0558ec9a55c3118a21e43d4b32f7de118ec'
             '2d148c7ae8dbe2f8703654a8d3cb59e16613005a29180c3377c103799728474a'
             '14fb042a6912041b9fda91fd643cf278764d075bc9539aa1e107475915cd896c'
             '0f27dff1e1b16e4f2f21c43b838aaae18bf9f82339eb65878b24de128f89450f')
