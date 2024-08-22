@@ -1,0 +1,13 @@
+pkgbase = iplib
+	pkgdesc = Grid interpolation library
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = https://github.com/NOAA-EMC/NCEPLIBS-ip
+	arch = x86_64
+	license = LGPL-3.0-only
+	makedepends = gcc-fortran
+	makedepends = cmake
+	source = iplib-5.1.0.tar.gz::https://github.com/NOAA-EMC/NCEPLIBS-ip/archive/refs/tags/v5.1.0.tar.gz
+	sha256sums = 5279f11f4c12db68ece74cec392b7a2a6b5166bc505877289f34cc3149779619
+
+pkgname = iplib
