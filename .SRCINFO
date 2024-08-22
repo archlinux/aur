@@ -1,5 +1,5 @@
 pkgbase = ip2proxy-python
-	pkgdesc = Python script converts IP2Location CSV database into IP range or CIDR format.
+	pkgdesc = Python library for IP2Proxy database lookup. It can be used to find the IP addresses which are used as VPN anonymizer, open proxies, web proxies and Tor exits.
 	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/ip2location/ip2proxy-python

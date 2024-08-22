@@ -2,7 +2,7 @@
 pkgname=ip2proxy-python
 pkgver=3.4.0  # Replace with the actual latest version
 pkgrel=1
-pkgdesc="Python script converts IP2Location CSV database into IP range or CIDR format."
+pkgdesc="Python library for IP2Proxy database lookup. It can be used to find the IP addresses which are used as VPN anonymizer, open proxies, web proxies and Tor exits."
 arch=('any')
 url="https://github.com/ip2location/ip2proxy-python"
 license=('MIT')
