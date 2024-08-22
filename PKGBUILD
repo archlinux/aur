@@ -2,8 +2,8 @@
 _pkgname=slimjet
 pkgname="${_pkgname}-beta-bin"
 _appname="flashpeak-${_pkgname}"
-pkgver=44.0.0
-_libffmpegver=0.87.0
+pkgver=44.0.1.0
+_libffmpegver=0.91.0
 pkgrel=1
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('x86_64')
@@ -39,13 +39,13 @@ source=(
     "${pkgname%-bin}-${pkgver}_amd64.deb::${_dlurl}/beta/${_pkgname}_amd64.deb"
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
 )
-sha256sums=('3034b4fe633c220d3b25881c90ed3f1c3d2c798222ec0cc73c30cb3984af18e3'
-            'e0d604a319b74c864ad48d632ad320a95f9b3b5b50f9d18431f18307f1208a2a')
+sha256sums=('2b2785711d8956c460e6311878e98f6116a457b1da86349088c5bf68f31c0689'
+            '0ba64e63ea05c9662a2efa5898cf4a9d0dc1ef2d09017a7849b78d058bdc51ed')
 build() {
     bsdtar -xf "${srcdir}/data."*
     bsdtar -xf "${srcdir}/control."*
     find "${srcdir}" -type d -exec chmod 755 {} \;
-    rm -rf "${srcdir}/opt/.gitkeep"
+    find "${srcdir}" -type f -name ".gitkeep" -exec rm -rf {} \;
 }
 package() {
     cp -r "${srcdir}/opt" "${pkgdir}"
@@ -57,4 +57,8 @@ package() {
     install -Dm644 "${srcdir}/usr/share/gnome-control-center/default-apps/${_pkgname}.xml" -t "${pkgdir}/usr/share/gnome-control-center/default-apps".
     install -Dm644 "${srcdir}/usr/share/menu/${_pkgname}.menu" -t "${pkgdir}/usr/share/menu"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${_pkgname}.xpm" -t "${pkgdir}/usr/share/pixmaps"
+    for _icons in 16 24 32 48 64 128 256;do
+        install -Dm644 "${srcdir}/opt/${_pkgname}/product_logo_${_icons}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps/${_appname}.png"
+    done
 }
