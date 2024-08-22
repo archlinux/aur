@@ -1,6 +1,6 @@
 pkgbase = casile-git
 	pkgdesc = Caleb’s SILE publishing toolkit
-	pkgver = 0.13.4.r31.g4a276b1
+	pkgver = 0.13.4.r62.g9c6ad26
 	pkgrel = 1
 	url = https://github.com/sile-typesetter/casile
 	arch = x86_64
@@ -77,7 +77,7 @@ pkgbase = casile-git
 	depends = python-pantable
 	depends = python-ruamel-yaml
 	depends = python-usfm2osis-cw-git
-	provides = casile=0.13.4.r31.g4a276b1
+	provides = casile=0.13.4.r62.g9c6ad26
 	conflicts = casile
 	source = casile-git::git+https://github.com/sile-typesetter/casile.git
 	sha256sums = SKIP
