@@ -1,22 +1,22 @@
 # Maintainer: waschtl <tyrolyean@tyrolyean.net>
 
 pkgname=icy_draw-bin
-pkgver=0.2.1
+pkgver=0.3.1
 pkgrel=1
 provides=("icy_draw")
 pkgdesc="IcyDraw is a full features ansi drawing tool doing things a bit different than other tools."
 arch=('x86_64')
-url="https://github.com/mkrueger/icy_draw"
+url="https://github.com/mkrueger/icy_tools"
 license=('Apache-2.0')
 makedepends=()
 optdepends=()
-source=("$url/releases/download/$pkgver/icy_draw_linux_$pkgver.zip")
-sha256sums=('6a5a747583b5a6e9add1bde66db4f8e6fa2c3fc7a6a0a0762b7308db8e976a2a')
-sha512sums=('4b526ae01109c8a13bb28c4aceae0279dc5dd9a21f857c3c4267fdb4c927c836efb4a401ccafa2cfaf4bb3a1951bf5fd263ac32a5f68b66e08d378507e9c8acd')
+source=("$url/releases/download/IcyDraw$pkgver/icy_draw_linux_$pkgver.zip")
+sha256sums=('d3dca3f1fd483a21fe8db261171a4269261ab30c8fe7e7f6ebf5439991e73f5f')
+sha512sums=('041befbb8c6b6ba67457e96a78eb18f4979154875d4be67204912aa319b5f0bc9f310d8b857e29af04d056fcf3d2b44862fc5863e15dfc7c01d181e9cab2e2b8')
 
 prepare() {
 	cd "${srcdir}/"
-	ar -x "icy_draw_${pkgver}_amd64.deb"
+	ar -x "icy_draw.deb"
 	bsdtar -xvf data.tar.xz
 }
 
