@@ -1,21 +1,34 @@
-# Maintainer: Wouter de Vries <wouter@wouter-web.nl>
-_name=ripe.atlas.tools
+# Maintainer: Marek Küthe <m.k@mk16.de>
+
 pkgname=ripe-atlas-tools
-pkgver=2.3.0
+pkgver=3.1.0
 pkgrel=1
-pkgdesc="The official command-line client for RIPE Atlas"
-arch=('any')
-url="https://pypi.python.org/pypi/$_name"
-license=('GPL3')
-optdepends=('python-ujson: faster json decoding' 'python-sphinx: documentation generator')
-depends=('python>=3.4' 'python-dateutil>=2.4.2' 'python-requests>=2.7.0' 'python-ripe-atlas-cousteau>=1.4.2' 'python-ripe-atlas-sagan>=1.3.0' 'python-tzlocal' 'python-yaml' 'python-pyopenssl>=0.13')
-makedepends=('python-setuptools')
-provides=('ripe-atlas-tools')
-source=("https://pypi.io/packages/source/r/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('edb979ebb8e91ce994559ccf36733ea60480960a4c2a6d8c48d5420cdc99c148')
+pkgdesc="Official command-line client for RIPE Atlas"
+arch=('x86_64')
+url="https://github.com/RIPE-NCC/ripe-atlas-tools"
+license=('GPL-3.0-or-later')
+depends=('python-ripe-atlas-cousteau' 'python-ripe-atlas-sagan')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/RIPE-NCC/ripe-atlas-tools/archive/refs/tags/v$pkgver.tar.gz")
+sha512sums=(caa10e59cb40f631a234318b3e33edcdc1074a46c298648ccc3f299ed7ec8e4ecde089df1950372b97bf736aaf5cfabe340fc88f7f18045bb9c4f32fc3b3b69e)
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  python setup.py build
+}
 
 package() {
-    cd "$srcdir/$_name-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 || return 1
-    rm -rf "ripe/__pycache__" "ripe/atlas/__pycache__"
+  cd "$pkgname-$pkgver"
+
+  python setup.py install --root="$pkgdir" --optimize=1
+
+  # Remove shortcuts
+  # see https://github.com/RIPE-NCC/ripe-atlas-tools/issues/245
+  rm "$pkgdir/usr/bin/adig"
+  rm "$pkgdir/usr/bin/ahttp"
+  rm "$pkgdir/usr/bin/antp"
+  rm "$pkgdir/usr/bin/aping"
+  rm "$pkgdir/usr/bin/asslcert"
+  rm "$pkgdir/usr/bin/atraceroute"
 }
+
