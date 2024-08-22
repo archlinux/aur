@@ -2,14 +2,14 @@
 pkgbase=xsg-fonts
 pkgname=(xsg-fonts-bdf xsg-fonts-otb xsg-fonts-pcf)
 pkgdesc='Condensed terminal emulator Unicode bitmap font'
-pkgver=0.2021.04.01
+pkgver=0.2024.05.30
 pkgrel=1
-url=https://github.com/nereusx/xsg-fonts
+url=https://codeberg.org/nereusx/xsg-fonts
 arch=(any)
-license=(custom:OFL)
+license=(OFL-1.1)
 makedepends=(fontforge git xorg-bdftopcf fonttosfnt)
-_commit_id=170be2c9b665d99e619c6dd2030fb3bb4fdf98ec
-source=("${pkgbase}-${pkgver}::git+${url}#commit=${_commit_id}" Makefile)
+_commit_id=df79d35911d8a63ced1f06ae4bff2e35e181bad6
+source=("${pkgbase}-${pkgver}::git+${url}.git#commit=${_commit_id}" Makefile)
 b2sums=('SKIP'
         '8c0cf64ecb1db6e30e5b0e50e7d6de4fbd96acbab351e9ca00921f645fc207728953b9eba6f59a2b445902351b331ab2671972852cfff96cf66f4675e0e80ece')
 
@@ -22,7 +22,6 @@ build ()
 _package ()
 {
 	pkgdesc+=" (${pkgname##*-} format)"
-	install -Dm644 OFL.txt "${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt"
 	install -Dm644 -t "${pkgdir}/usr/share/fonts/${pkgbase}" "$@"
 }
 
