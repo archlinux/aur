@@ -1,0 +1,34 @@
+# See ovn-controller(8) for details about ovn-controller.
+#
+# To customize the ovn-controller service, you may create a configuration file
+# in the /etc/systemd/system/ovn-controller.d/ directory.  For example, to specify
+# additional options to be passed to the "ovn-ctl start_controller" command, you
+# could place the following contents in
+# /etc/systemd/system/ovn-controller.d/local.conf:
+#
+#   [System]
+#   Environment="OVN_CONTROLLER_OPTS=--ovn-controller-log=-vconsole:emer -vsyslog:err -vfile:info"
+#
+# Alternatively, you may specify environment variables in the file /etc/sysconfig/ovn-controller:
+#
+#   OVN_CONTROLLER_OPTS="--ovn-controller-log=-vconsole:emer -vsyslog:err -vfile:info"
+
+[Unit]
+Description=OVN controller daemon
+Requires=ovs-vswitchd.service
+After=ovs-vswitchd.service
+
+[Service]
+Type=forking
+PIDFile=/run/ovn/ovn-controller.pid
+Restart=on-failure
+Environment=OVN_RUNDIR=%t/ovn OVS_RUNDIR=%t/openvswitch
+EnvironmentFile=-/etc/sysconfig/ovn
+EnvironmentFile=-/etc/sysconfig/ovn-controller
+ExecStart=/usr/share/ovn/scripts/ovn-ctl --no-monitor \
+           --ovn-user=${OVN_USER_ID} \
+          start_controller $OVN_CONTROLLER_OPTS
+ExecStop=/usr/share/ovn/scripts/ovn-ctl stop_controller
+
+[Install]
+WantedBy=multi-user.target

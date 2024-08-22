@@ -1,7 +1,7 @@
 pkgbase = ovn
 	pkgdesc = Open Virtual Network
 	pkgver = 24.03.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ovn-org/ovn
 	arch = x86_64
 	license = Apache
@@ -11,6 +11,20 @@ pkgbase = ovn
 	depends = numactl
 	depends = libunwind
 	source = git+https://github.com/ovn-org/ovn#tag=v24.03.2
+	source = ovn-controller-vtep.service
+	source = ovn-controller.service
+	source = ovn-db@.service
+	source = ovn-ic-db.service
+	source = ovn-ic.service
+	source = ovn-northd.service
+	source = sysconfig.template
 	sha256sums = ab461f916607f3b998541f9370e3a0f859f8c883b62fbd50d1c41167371b938f
+	sha256sums = 4c749321376d086749ba91f2dac4152f233af93bde8099291eb3e16cb2543915
+	sha256sums = 48a8f2f84466e00dd8323dc1da4916708e6393e75454bec8d407bae65444f380
+	sha256sums = 52b96809234cfcae4e0d0a7f78677d9f5c8aaaa4e6cf88e489b1d4c87544e639
+	sha256sums = f053953c364b69578635a60712c0370d29ae57eea0fb927a5a5968c2c662cb71
+	sha256sums = 180092323affdd6e00741b483eb581dc2ee1b771f8e9366e98640b54872365fb
+	sha256sums = ec9c87b7a6f2d1df27cd0a58791e055e32c964aed1e4c23dbcb69f7019438edf
+	sha256sums = 6bb0f44a927e45978a1ff733167749958ccf96701ffb89141e3c12d4d870372a
 
 pkgname = ovn
