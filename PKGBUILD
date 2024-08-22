@@ -4,7 +4,7 @@
 _name=dataclass-factory
 pkgname=python-$_name
 pkgver=2.16
-pkgrel=2
+pkgrel=3
 pkgdesc='An utility class for creating instances of dataclasses'
 arch=('any')
 url='https://github.com/reagento/dataclass-factory'

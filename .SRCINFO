@@ -1,7 +1,7 @@
 pkgbase = python-dataclass-factory
 	pkgdesc = An utility class for creating instances of dataclasses
 	pkgver = 2.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/reagento/dataclass-factory
 	arch = any
 	license = Apache
