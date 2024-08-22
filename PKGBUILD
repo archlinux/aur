@@ -4,7 +4,7 @@ pkgname=nvhpc
 _REL_YEAR=2024
 _CUDA_VER=12.5
 pkgver=24.7
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA HPC SDK'
 arch=('x86_64')
 url="https://gitlab.com/badwaik/archlinux/aur/nvhpc"
@@ -34,16 +34,7 @@ package() {
     NVHPC_INSTALL_DIR="$pkgdir/opt/nvidia/hpc_sdk" \
     bash ./install
 
-    # Patch localrc to use GCC 13
-    GCC_VERSION=13.3.0
-    localrc="$pkgdir/opt/nvidia/hpc_sdk/Linux_x86_64/$pkgver/compilers/bin/localrc"
-    sed -i "s|set GCCDIR.*|set GCCDIR=/usr/lib/gcc/x86_64-pc-linux-gnu/$GCC_VERSION/;|" "$localrc"
-    sed -i "s|set GCCINC.*|set GCCINC=/usr/lib/gcc/x86_64-pc-linux-gnu/$GCC_VERSION/include /usr/local/include /usr/lib/gcc/x86_64-pc-linux-gnu/$GCC_VERSION/include-fixed /usr/include;|" "$localrc"
-    sed -i "s|set GPPDIR.*|set GPPDIR=/usr/lib/gcc/x86_64-pc-linux-gnu/$GCC_VERSION/include/c++ /usr/lib/gcc/x86_64-pc-linux-gnu/$GCC_VERSION/include/c++/x86_64-pc-linux-gnu /usr/lib/gcc/x86_64-pc-linux-gnu/$GCC_VERSION/include/c++/backward /usr/lib/gcc/x86_64-pc-linux-gnu/$GCC_VERSION/include /usr/local/include /usr/lib/gcc/x86_64-pc-linux-gnu/$GCC_VERSION/include-fixed /usr/include;|" "$localrc"
-    sed -i "s|# GCC version.*|# GCC version $GCC_VERSION|" "$localrc"
-    sed -i "s|set GCCVERSION.*|set GCCVERSION=$GCC_VERSION;|" "$localrc"
-
-    # Remove references to $pkgdir from module files
+   # Remove references to $pkgdir from module files
     cd "$pkgdir/opt/nvidia/hpc_sdk/modulefiles"
     find . -type f -exec sed -i "s@$pkgdir@@g" {} \;
 
@@ -53,4 +44,9 @@ package() {
 
     # Install script to set path
     install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/opt/nvidia/$pkgname.sh"
+}
+
+post_install() {
+    source /opt/nvidia/$pkgname.sh
+    makelocalrc -x -gcc gcc-13
 }
