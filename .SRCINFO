@@ -1,0 +1,16 @@
+pkgbase = ip2proxy-python
+	pkgdesc = Python script converts IP2Location CSV database into IP range or CIDR format.
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://github.com/ip2location/ip2proxy-python
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = ip2proxy-python-3.4.0.tar.gz::https://github.com/ip2location/ip2proxy-python/archive/refs/tags/3.4.0.tar.gz
+	sha256sums = d410b1d1790dc9214ade7b4f323e90f3ab5b942c3cbbd972a754684b35378ec0
+
+pkgname = ip2proxy-python
