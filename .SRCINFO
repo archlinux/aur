@@ -1,0 +1,20 @@
+pkgbase = realesrgan-gui-bin
+	pkgdesc = 实用、美观的 Real-ESRGAN 图形界面，同时支持 Windows、Ubuntu 和 macOS 平台。现在也支持 Real-CUGAN 了！(Cross-platform GUI for image upscaler Real-ESRGAN with additional features. Now with Real-CUGAN support!)
+	pkgver = 0.2.5.0
+	pkgrel = 1
+	url = http://akarin.dev/realesrgan-gui/
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = gendesk
+	depends = vulkan-icd-loader
+	depends = zlib
+	depends = gcc-libs
+	provides = realesrgan-gui=0.2.5.0
+	conflicts = realesrgan-gui
+	options = !emptydirs
+	source = realesrgan-gui-0.2.5.0.tar.xz::https://github.com/TransparentLC/realesrgan-gui/releases/download/autobuild-20240602-060617/realesrgan-gui-ubuntu-bundled-v0.2.5.0.tar.xz
+	source = realesrgan-gui-0.2.5.0.png::https://raw.githubusercontent.com/TransparentLC/realesrgan-gui/autobuild-20240602-060617/icon-1024px.png
+	sha256sums = faf3f876ec173ed98c4ba7a5724aad2efa0088fbb1608639503ff822d484ff33
+	sha256sums = a989cff54510fcdd651a0e6d1818288ce7633cc6ba968adf6dd92bb21b813831
+
+pkgname = realesrgan-gui-bin
