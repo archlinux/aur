@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [0.11.4] - 2024-08-18
+
+### Fixed
+
+- Fix one type hint so that it doesn't throw error on Python 3.8 (h/t @andrekeller). ([#1184](https://github.com/jsvine/pdfplumber/issues/1184))
+
 ## [0.11.3] - 2024-08-07
 
 ### Added
