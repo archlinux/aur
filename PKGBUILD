@@ -2,8 +2,8 @@
 # Contributors: Marcin Skory, Arkham, Christoph Zeiler, Jacek Poplawski, carstene1ns
 
 pkgname=alephone
-_pkgdate=20240712
-pkgver=1.9_$_pkgdate
+_pkgdate=20240822
+pkgver=1.10_$_pkgdate
 pkgrel=1
 pkgdesc='A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software'
 arch=('i686' 'x86_64')
@@ -17,15 +17,12 @@ optdepends=('alephone-eternalx: community-made scenario'
             'alephone-marathon: M1A1 data converted for AlephOne'
             'alephone-marathon2: original data for Marathon 2: Durandal')
 makedepends=('boost' 'mesa' 'icoutils')
-source=("https://github.com/Aleph-One-Marathon/alephone/releases/download/release-$_pkgdate/AlephOne-$_pkgdate.tar.bz2"
-	build.patch)
-sha256sums=('3bbb32e7d9115157eccab033108b866886b64e90d8be9da6b9e236bab2592407'
-            '594524004f24ca26818ca54442c8f7626b5e4bec12408bf3b6673ec766122de2')
+source=("https://github.com/Aleph-One-Marathon/alephone/releases/download/release-$_pkgdate/AlephOne-$_pkgdate.tar.bz2")
+sha256sums=('12cd94a3444824761e3bfeb45e21d52c97bd1286a7f03444b402362868ee2da3')
 
 prepare() {
   cd AlephOne-$_pkgdate
-  patch -p1 -i ../build.patch 
-
+  
   # convert the windows icons
   cd Resources/Windows
   icotool -x -w 48 alephone.ico -o "$srcdir"/alephone.png
