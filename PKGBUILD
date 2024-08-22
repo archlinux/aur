@@ -1,7 +1,7 @@
 # Maintainer: koyu.space <aur at koyu dot space>
 
 pkgname="bbz-cloud"
-pkgver="1.8.1"
+pkgver="1.8.5"
 pkgrel="1"
 pkgdesc="Die Desktop-App für die BBZ Cloud - eine All-in-One-Plattform für Unterricht und Zusammenarbeit"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=("http-parser" "minizip" "re2")
 _filename="bbzcloud-${pkgver}.pacman"
 source=("$url/releases/download/v${pkgver}/${_filename}")
 noextract=("${_filename}")
-md5sums=("ff3f7c179abdec4affb1372b14f012c7")
+md5sums=("84164060c2f88f4a4973c0ddc261d608")
 options=(!strip)
 conflicts=("bbz-cloud-sus")
 
