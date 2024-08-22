@@ -1,14 +1,10 @@
 # Maintainer:
 
-## links
-# https://salsa.debian.org/debian/debhelper
-# https://salsa.debian.org/reproducible-builds/strip-nondeterminism
-
 _pkgname="debhelper"
 pkgname="$_pkgname-git"
-pkgver=13.18.r0.g5b2b08b
+pkgver=13.19.r0.g5e3d015
 pkgrel=1
-pkgdesc="A collection of programs that can be used in a debian/rules file to automate common tasks"
+pkgdesc="Programs to automate common tasks in debian/rules when building Debian packages"
 url="https://salsa.debian.org/debian/debhelper"
 license=('GPL-2.0-or-later')
 arch=('any')
@@ -34,16 +30,16 @@ _source_main() {
   sha256sums=('SKIP')
 }
 
-_source_dh_strip_nondeterminism() {
+_source_dh_strip_nd() {
   conflicts+=("dh-strip-nondeterminism")
 
-  _pkgsrc_dh_strip_nd="dh_strip_nondeterminism"
+  _pkgsrc_dh_strip_nd="strip-nondeterminism"
   source+=("$_pkgsrc_dh_strip_nd"::"git+https://salsa.debian.org/reproducible-builds/strip-nondeterminism.git")
   sha256sums+=('SKIP')
 }
 
 _source_main
-_source_dh_strip_nondeterminism
+_source_dh_strip_nd
 
 prepare() {
   cd "$_pkgsrc"
