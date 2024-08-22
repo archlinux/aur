@@ -1,7 +1,7 @@
 # Maintainer: Erica Marigold <hi@devcomp.xyz>
 
 pkgname=rojo-bin
-pkgver=7.4.3
+pkgver=7.4.4
 pkgrel=1
 pkgdesc="[Precompiled Binaries] Rojo enables Roblox developers to use professional-grade software engineering tools"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(MPL2)
 depends=(gcc-libs glibc)
 provides=(rojo)
 source_x86_64=("https://github.com/rojo-rbx/rojo/releases/download/v$pkgver/rojo-$pkgver-linux-x86_64.zip")
-sha256sums_x86_64=('f5c28373a27e091f06d6bd421555cbab6c6695503f224d75a9716a2049e0e532')
+sha256sums_x86_64=('784e2cd42af3d565826c4910df94f45080fc7ed6206eb6808dbc79b516323652')
 
 package() {
   install -Dm755 -t "$pkgdir/usr/bin" rojo 
