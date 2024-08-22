@@ -3,7 +3,7 @@
 
 pkgname=bzip2-git
 pkgver=r181.66c46b8
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-quality data compression program (future branch)"
 arch=('x86_64')
 url="https://gitlab.com/bzip2/bzip2"
@@ -11,7 +11,7 @@ license=('custom')
 depends=('bash' 'glibc')
 makedepends=('perl' 'git' 'meson' 'ninja')
 checkdepends=('python-pytest')
-provides=('bzip2')
+provides=('bzip2' 'libbz2.so=1.0')
 conflicts=('bzip2')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')

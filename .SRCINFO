@@ -1,7 +1,7 @@
 pkgbase = bzip2-git
 	pkgdesc = A high-quality data compression program (future branch)
 	pkgver = r181.66c46b8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/bzip2/bzip2
 	arch = x86_64
 	license = custom
@@ -13,6 +13,7 @@ pkgbase = bzip2-git
 	depends = bash
 	depends = glibc
 	provides = bzip2
+	provides = libbz2.so=1.0
 	conflicts = bzip2
 	source = bzip2-git::git+https://gitlab.com/bzip2/bzip2.git
 	sha256sums = SKIP
