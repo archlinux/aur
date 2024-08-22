@@ -3,7 +3,7 @@
 
 pkgname=maptool
 _pkgname=MapTool
-pkgver=1.14.3
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('git' 'dpkg' 'jdk21-openjdk' 'gradle' 'xdg-utils' 'rpm-tools')
 source=(
 	"git+https://github.com/RPTools/${pkgname}.git#tag=${pkgver}"
 	"${pkgname}.sh")
-sha256sums=('6c7ba98ffb42566e26f802f7dc59b46352ce08a44749fa397f540d240a711c33'
+sha256sums=('880e732a054805ef63757c3e0a00bf8eb1f66e8e324204fc9fda0009c1f314ad'
             'c1b1977801cfd84514359f405b5cb3fbeb56b1466d8cabc2ab87c41f79a590f9')
 install="${pkgname}.install"
 
@@ -42,25 +42,25 @@ check() {
 
 package() {
 	depends+=('java-runtime=21' 'java-openjfx=21')
-	
+
 	cd "${pkgdir}"
-	
+
 	dpkg-deb -x "${srcdir}/${pkgname}/releases/"*.deb .
-	
+
 	install -dm755 "usr/share/java/${pkgname}"
 	rm "${_prefix}/lib/app"/javafx*.jar
 	mv "${_prefix}/lib/app"/*.jar "usr/share/java/${pkgname}"
 	mv "${_prefix}/lib/"*.xml "usr/share/java/${pkgname}/${pkgname}-mimeinfo.xml"
-	
+
 	install -dm755 'usr/share/pixmaps'
 	mv "${_prefix}/lib/"*.png "usr/share/pixmaps/${pkgname}.png"
-	
+
 	install -dm755 'usr/share/applications'
 	mv "${pkgdir}/${_prefix}/lib/"*.desktop "usr/share/applications/${pkgname}.desktop"
 	sed -i 's|Exec=/opt/maptool/bin/MapTool|Exec=/usr/bin/maptool|' "usr/share/applications/${pkgname}.desktop"
 	sed -i -E 's|Icon=.*|Icon=maptool|' "usr/share/applications/${pkgname}.desktop"
-	
+
 	install -Dm755 "${srcdir}/${pkgname}.sh" "usr/bin/${pkgname}"
-	
+
 	rm -rf "${_prefix}"
 }
