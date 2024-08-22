@@ -1,38 +1,51 @@
-# Maintainer: libele <libele@disroot.org>
-
-_pkgname=dust3d
-pkgname="${_pkgname}-git"
-pkgver=1.0.0.rc.7.r27.g3a0d07b
-pkgrel=2
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: libele <libele@disroot.org>
+pkgname=dust3d-git
+_pkgname=Dust3D
+pkgver=1.0.0.rc.9.r23.g6195093
+pkgrel=1
 pkgdesc="3D watertight modeling software (git version)"
+arch=('any')
 url="https://dust3d.org/"
+_ghurl="https://github.com/huxingyi/dust3d"
 license=('MIT')
-depends=('qt5-base' 'qt5-svg')
-makedepends=('git')
-provides=('dust3d')
-conflicts=('dust3d')
-arch=('aarch64' 'x86_64')
-
-source=('git+https://github.com/huxingyi/dust3d'
-	'dust3d.desktop')
-md5sums=('SKIP'
-	 '063ee64a0c73d48400176ad240f5a9db')
-
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver%.r*}")
+depends=(
+    'qt5-base'
+    'qt5-svg'
+)
+makedepends=(
+    'git'
+    'gendesk'
+    'gcc'
+    'cmake'
+    'libicns'
+)
+source=(
+    "${pkgname//-/.}::git+${_ghurl}.git"
+)
+sha256sums=('SKIP')
 pkgver() {
-  cd "$_pkgname"
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/${pkgname//-/.}"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
-
 build() {
-  cd "$srcdir/$_pkgname/application"
-  qmake
-  make
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Graphics" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    cd "${srcdir}/${pkgname//-/.}"
+    sed "28i\#include <cstdint>;s|const std::uint8_t|const uint8_t|g" -i "${pkgname%-git}"/base/ds3_file.h
+    sed "30i\#include <stdint.h>" -i "${pkgname%-git}"/mesh/solid_mesh_boolean_operation.h
+    sed "4i\#include <cstdint>;s|std::uint32_t|uint32_t|g" -i application/third_party/fbx/src/fbxnode.h
+    cd "${srcdir}/${pkgname//-/.}/application"
+    icns2png -x "${pkgname%-git}.icns"
+    mv "${pkgname%-git}_512x512x32.png" "${pkgname%-git}.png"
+    sed "s|${pkgname%-git}.icns|${pkgname%-git}.png|g" -i application.pro
+    qmake
+    make
 }
-
 package() {
-  install -t "$pkgdir/usr/share/applications" -Dm644 dust3d.desktop
-
-  cd "$srcdir/$_pkgname"
-  install -t "$pkgdir/usr/bin" -D application/dust3d
-  install -t "$pkgdir/usr/share/licenses/dust3d" -Dm644 LICENSE
+    install -Dm755 "${srcdir}/${pkgname//-/.}/application/${pkgname%-git}" -t "${pkgdir}/usr/bin"
+    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/application/${pkgname%-git}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
