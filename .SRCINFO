@@ -1,4 +1,4 @@
-pkgbase = IP2Location-Python
+pkgbase = ip2location-python
 	pkgdesc = A Python Library that enables the user to find the country, region, city, coordinates, zip code, ISP, domain name, timezone, connection speed, IDD code, area code, weather station code, weather station name, mobile, usage types, address type and IAB category that any IP address or host name originates from.
 	pkgver = 8.10.2
 	pkgrel = 1
@@ -10,7 +10,9 @@ pkgbase = IP2Location-Python
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
+	provides = ip2location-python
+	conflicts = ip2location-python
 	source = IP2Location-Python-8.10.2.tar.gz::https://github.com/chrislim2888/IP2Location-Python/archive/refs/tags/8.10.2.tar.gz
 	sha256sums = 0b35b2cc8992ea2ff9c85791652a2d8215380461940c7882e87cb9dce84fc434
 
-pkgname = IP2Location-Python
+pkgname = ip2location-python
