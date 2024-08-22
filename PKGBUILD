@@ -10,6 +10,7 @@ depends=()
 provides=('rime-moe-pinyin')
 source=("git+https://github.com/Kimiblock/moeOS-pinyin.git#tag=${pkgver}")
 sha256sums=("SKIP")
+makedepends=("git")
 
 function prepare() {
 	cd moeOS-pinyin
