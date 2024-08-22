@@ -1,4 +1,5 @@
 # Maintainer: Chi_Tang <me@chitang.dev>
+# Contributor:  <noreply@chitang.dev>
 pkgname=viddy-git
 pkgver=1.0.0.r0.gda2c0af
 pkgrel=1
@@ -8,6 +9,8 @@ url="https://github.com/sachaos/viddy"
 license=('MIT')
 options=('!lto')
 makedepends=('cargo')
+provides=('viddy')
+conflicts=('viddy' 'viddy-bin')
 source=("git+https://github.com/sachaos/viddy.git")
 md5sums=('SKIP')
 
