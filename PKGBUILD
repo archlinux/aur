@@ -1,7 +1,7 @@
 # Maintainer: Chi_Tang <me@chitang.dev>
 # Contributor:  <noreply@chitang.dev>
 pkgname=viddy-git
-pkgver=1.0.0.r0.gda2c0af
+pkgver=1.0.0.r2.g1871b3b
 pkgrel=1
 pkgdesc="A modern watch command"
 arch=('any')
