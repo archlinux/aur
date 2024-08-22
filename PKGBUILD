@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/Kimiblock/moeOS-pinyin"
 license=('GPL-3.0-or-later')
 depends=()
+makedepends=("git")
 provides=('rime-moe-pinyin')
 conflicts=('rime-moe-pinyin')
 source=("git+https://github.com/Kimiblock/moeOS-pinyin.git")
