@@ -1,12 +1,16 @@
 pkgbase = mcpelauncher-linux
 	pkgdesc = Minecraft: Pocket Edition launcher for Linux
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/minecraft-linux/mcpelauncher-manifest
 	arch = x86_64
 	arch = i686
 	license = GPL-3.0-only
 	optdepends = mcpelauncher-ui: GUI for Launcher
+	optdepends = pipewire: Pipewire Sound Driver
+	optdepends = libpulse: Pulseaudio Sound Driver
+	optdepends = jack: JACK Sound Driver
+	optdepends = alsa-lib: ALSA Sound Driver
 	provides = mcpelauncher-client
 	source = git+https://github.com/minecraft-linux/mcpelauncher-manifest.git#tag=v1.0.0-qt6
 	source = git+https://github.com/minecraft-linux/android-support-headers
@@ -90,5 +94,17 @@ pkgbase = mcpelauncher-linux
 	makedepends_x86_64 = git
 	makedepends_x86_64 = cmake
 	makedepends_x86_64 = clang
+	makedepends_x86_64 = alsa-lib
+	makedepends_x86_64 = mesa
+	makedepends_x86_64 = libpulse
+	makedepends_x86_64 = libxrandr
+	makedepends_x86_64 = libxinerama
+	makedepends_x86_64 = libxkbcommon
+	makedepends_x86_64 = ibus
+	makedepends_x86_64 = fcitx5
+	makedepends_x86_64 = libxss
+	makedepends_x86_64 = jack
+	makedepends_x86_64 = pipewire
+	makedepends_x86_64 = sndio
 
 pkgname = mcpelauncher-linux
