@@ -19,9 +19,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/VTK-${pkgver}"
-
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DCMAKE_BUILD_TYPE=Release \
       -DVTK_USE_EXTERNAL=ON \
@@ -31,11 +29,9 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_fmt=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_fast_float=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_pegtl=OFF \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_token=OFF \
       -DVTK_MODULE_ENABLE_VTK_IOExportPDF=NO \
-      ..
-    make
-    popd
+      -B build-${_arch} .
+    make -C build-${_arch}
   done
 }
 
