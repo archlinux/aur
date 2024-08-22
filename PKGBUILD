@@ -1,17 +1,17 @@
 # Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
 pkgname=flomo-electron
-pkgver=5.24.32
+pkgver=5.24.81
 pkgrel=1
 pkgdesc="浮墨笔记,像发微博一样记笔记,记录你想法的川流.全平台覆盖,还支持微信服务号输入."
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+arch=('any')
 url="https://flomoapp.com/"
-license=('private')
-depends=(electron21 bash hicolor-icon-theme)
+license=('LicenseRef-custom')
+depends=(electron20 bash hicolor-icon-theme)
 makedepends=(p7zip)
 provides=(flomo)
 conflicts=(flomo-pake)
 source=("local://flomo-${pkgver}.exe" $pkgname.desktop)
-sha256sums=('2d95e96dc0f9fa6e4b2448687ae4c4a37405f33eb89eedc6a333d00cfe27e8ce'
+sha256sums=('ddfacd31139e85919fc539bee61c549ada30683bd1fefd89c39dab0e9456f7de'
             'ad1d9d71bd7f6765f1caef32532e233def9e09632262b3cfbc909e042b6961ef')
 
 prepare() {
@@ -28,7 +28,7 @@ package() {
 	printf "desktop file\n"
 
 	printf "#!/bin/sh
-exec electron21 /opt/$pkgname/app \"\$@\"
+exec electron20 /opt/$pkgname/app \"\$@\"
 " | install -Dm755 /dev/stdin $pkgdir/usr/bin/flomo
 
 	printf "icon\n"
