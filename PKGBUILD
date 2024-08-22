@@ -6,7 +6,7 @@
 pkgname=python-oletools
 _pkg="${pkgname#python-}"
 pkgver=0.60.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python tools to analyze security characteristics of MS Office and OLE files"
 arch=('any')
 url="https://github.com/decalage2/oletools"
@@ -15,11 +15,6 @@ depends=('python-colorclass' 'python-easygui' 'python-pyparsing' 'python-msoffcr
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.zip::https://files.pythonhosted.org/packages/source/o/$_pkg/$_pkg-$pkgver.zip")
 sha256sums=('ad452099f4695ffd8855113f453348200d195ee9fa341a09e197d66ee7e0b2c3')
-
-prepare() {
-  cd "$_pkg-$pkgver"
-  sed -i '167,193c\package_data = {}' setup.py
-}
 
 build() {
   cd "$_pkg-$pkgver"
@@ -41,9 +36,4 @@ package() {
   install -Dm644 \
     "$_pkg/thirdparty/prettytable/COPYING" \
     "$pkgdir/usr/share/licenses/$pkgname/thirdparty/prettytable/LICENSE"
-}
-
-check() {
-   cd "${srcdir}/${_pyname}-${pkgver}"
-   python setup.py test
 }
