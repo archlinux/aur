@@ -32,6 +32,8 @@ source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0004-Sphinx-7.2.2-8.0-PosixPath.patch
+  '0005-depmod-remove-depmod_hack_needed.patch'
+  '0006-kernel-6.1-depmod-disable-for-packaging.patch'
   config  # the main kernel config file
 )
 validpgpkeys=(
@@ -43,16 +45,22 @@ md5sums=('2dea4573968a7057acba5789a3ab98bd'
          'SKIP'
          'cb32cb125ea45ac05782630dfc9fc951'
          '806e76e95002ecbf49b03d6e655dc567'
+         'd15820a808c3cc159e6e5916a8c05e8f'
+         'f24ee48c4c30cb428d0258aa3c25bd19'
          'c7f23b1bcb226f29451d47bb7ae8604b')
 sha256sums=('3773c9052c7ba7432e8337ca84bee115c1a94ccef9d62b72b99ae30c4cd5f80f'
             'SKIP'
             '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
             '08ef05d8a4fc8117d131f219d753caa138a0fb7c8f00690ff6dc35ac6aacdb83'
+            '64b521b3963781c60e9a33db40c523bf65a119cb1dfec182a737e90d2609df5a'
+            '20d2afcc83f04d5409dcb5452763c625069dc00bfa7e60457902256dfbb58bdd'
             'ea7a177caf7170b9f3746732e3d32703357d19cbafd463069aa34a8d8386c1e9')
 b2sums=('bcd4bce2bf35411fc1e13afa5c6935ee5cfbb13e4395fa7215d34b6f964d433c54f1b5a1022ee57bb439593b5196a9a4733f79d5590b05defda60b62845e4eef'
         'SKIP'
         '02a10396c92ab93124139fc3e37b1d4d8654227556d0d11486390da35dfc401ff5784ad86d0d2aa7eacac12bc451aa2ff138749748c7e24deadd040d5404734c'
         'a208eece0028ca98e64637b58d0d4c2e641a111d2f8f9f4a9c71531bb12f75edae14c9e7dbeb840d88be9fdc0b0022cf0a30e3f6a9c34d58e068e02a79940ea8'
+        'a0cb29f2c4a4bbd815daa2fc399c7014dcc880a73130f5cf26a0e428b73e23911858a9274e15b62c3cd90a82f6c46c83ecfb4b2fdcdaef8e10bf24f6766ae049'
+        '7b24fa23ffb4ef7c998e7b43a60d3df094220ff6e60f49cb4a9dcd712f657b40c022bf1b94f81d41ddb4008ef3200649a672025ccf63f50079320a951538cb4f'
         'c277e4a3bb39e126fc10d37fe98e34c93332c8f7db6d134fd6d2e7ce30ae4840596eff5fdf3ce85f923b944981bd3a2fea912c11dedaa25d04d460b6d112806a')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -72,9 +80,12 @@ prepare() {
     src="${src##*/}"
     src="${src%.zst}"
     [[ $src = *.patch ]] || continue
-    echo "Applying patch $src..."
+    msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+
+  #cd '..'; cp -pr "${_srcname}" 'a'; ln -s "${_srcname}" 'b'; cd "${_srcname}"; false
+  # diff -pNaru5 'a' 'b' > 0000-$RANDOM.patch
 
   echo "Setting config..."
   cp ../config .config
@@ -87,8 +98,8 @@ prepare() {
 
 build() {
   cd $_srcname
-  make all
-  make -i htmldocs SPHINXOPTS='--keep-going'
+  nice -n1 make all
+  nice -n1 make -i htmldocs SPHINXOPTS='--keep-going'
 }
 
 _package() {
@@ -123,8 +134,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
-    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
+  ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}

@@ -1,0 +1,64 @@
+https://bbs.archlinux.org/viewtopic.php?pid=2191292
+
+2024-08-22 Arch Linux changed the default module folder
+from /lib/modules to /usr/lib/modules. Unfortunately there
+are a lot of scripts and makefiles that use one or the
+other and contain a lot of hacks to add or remove /usr as
+necessary. Changing the default in depmod breaks various
+scripts which aren't yet written to handle both folder
+names. DEPMOD is needed for make install. It is not needed
+for packaging where an alpm hook runs DEPMOD. Until the
+scripts are fixed, running DEPMOD for packaging is crashing
+packages like zfs that build kernel modules in make
+module_install.
+
+Linux 6.6 and 6.10 have fixed the problem and eliminated
+the wasted time by disabling DEPMOD with
+DEPMOD=/doesnt/exist. Here we disable DEPMOD for anything
+except "sudo make install."
+
+According to make help, the default for INSTALL_MOD_PATH is
+"/". If it can be blank, this won't work right. This has
+been tested with "make install DESTDIR=..." for the kernel
+and packages. This has not been tested with "make install."
+This patch will break distros that don't have a depmod
+hook.
+
+Alas, this blanket fix will leave all those scripts and
+makefiles with their buggy hacks unfixed.
+
+For 4.19 I originally patched out $(call cmd,depmod) in
+_modinst_post kernel compile and _emodinst_post for a
+package that includes a kernel module like zfs. However I
+decided that silently dropping DEPMOD obfuscates what we're
+doing leading to bugs that noone knows how to report. This
+patch shows it on the screen so where it is wrong, bug
+reports can be filed with the appropriate distros.
+
+A good patch would probably include an override to force
+the DEPMOD.
+
+CJS severach@aur
+
+diff -pNaru5 a/Makefile b/Makefile
+--- a/Makefile	2024-08-19 00:00:07.000000000 -0400
++++ b/Makefile	2024-08-22 15:54:13.098832901 -0400
+@@ -1926,13 +1926,18 @@ endif
+ 
+ PHONY += modules_check
+ modules_check: $(MODORDER)
+ 	$(Q)$(CONFIG_SHELL) $(srctree)/scripts/modules-check.sh $<
+ 
++ifeq ($(INSTALL_MOD_PATH),/)
+ quiet_cmd_depmod = DEPMOD  $(MODLIB)
+       cmd_depmod = $(CONFIG_SHELL) $(srctree)/scripts/depmod.sh $(DEPMOD) \
+                    $(KERNELRELEASE)
++else
++quiet_cmd_depmod = DEPMOD  $(MODLIB) skipped for packaging to $(INSTALL_MOD_PATH)
++      cmd_depmod = true depmod $(KERNELRELEASE) skipped for packaging to $(INSTALL_MOD_PATH)
++endif
+ 
+ modules_install:
+ 	$(Q)$(MAKE) -f $(srctree)/scripts/Makefile.modinst
+ ifndef modules_sign_only
+ 	$(call cmd,depmod)
