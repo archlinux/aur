@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=lobe-chat
-pkgver=1.12.4
+pkgver=1.12.5
 pkgrel=1
 pkgdesc="An open-source, modern-design LLMs/AI chat framework"
 arch=("x86_64" "aarch64")
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('f7024eab04abc98ae0879f91c85637ed7205f4f488b9fee990cc3d1213213bf0'
+sha256sums=('c895ae0e223b6fc911361051b9f7ca93bc01481d59a4de7689ca0df6c941eadf'
             '26adc067ffaf314590b113c05f60e78f35938a74062a887c4af88a5d3828c235'
             '2dd8de2018bce82b092ac5fd70ad1ed09537a685270dcef0e2811cf1692c5382'
             'b370a660e91eacd7fee44691ff8de4446f4c8f36634a2d96a2f982b5fea9a0a6'
@@ -53,7 +53,6 @@ package() {
 
     cp -r --preserve=mode .next/standalone "${pkgdir}/usr/share/${pkgname}"
     cp -r --preserve=mode .next/static     "${pkgdir}/usr/share/${pkgname}/.next/static"
-    cp -r --preserve=mode public           "${pkgdir}/usr/share/${pkgname}/public"
 
     ln -s "/var/lib/${pkgname}/cache"      "${pkgdir}/usr/share/${pkgname}/.next/cache"
 }
