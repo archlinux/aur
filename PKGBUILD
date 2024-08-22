@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NMF
-_pkgver=0.27
+_pkgver=0.28
 pkgname=r-${_pkgname,,}
-pkgver=0.27
+pkgver=0.28
 pkgrel=1
 pkgdesc='Algorithms and Framework for Nonnegative Matrix Factorization (NMF)'
 arch=('x86_64')
@@ -38,7 +38,7 @@ optdepends=(
   r-xtable
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('af4302efca4a7654fecd31c376f1bb3496428279a50b8d5691c8a7e66e3f3ef9')
+sha256sums=('77dfe7b323ee5e5f8801851d1d4356932e2ffc810a7ac7faf5542cbfd92eeefb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
