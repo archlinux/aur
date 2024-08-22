@@ -1,8 +1,8 @@
 # Maintainer:  Marco Rubin <marco.rubin@protonmail.com>
 # Contributor: WhiredPlanck
 
-_name=dataclass-factory
-pkgname=python-$_name
+_name=adaptix
+pkgname=python-dataclass-factory
 pkgver=2.16
 pkgrel=4
 pkgdesc='An utility class for creating instances of dataclasses'
