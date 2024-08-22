@@ -1,21 +1,22 @@
 # Maintainer:
 # Contributor: twa022 <twa022 at gmail dot com>
 
-## useful links:
+## links
 # https://www.libreoffice.org/
 # https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/
 
-: ${_pkgtype:="-dev-bin"}
+: ${_pkgtype=-dev-bin}
+: ${_pkgnamefmt:=LibreOffice}
 
 ## basic info
 _pkgname="libreoffice"
 pkgname="${_pkgname}${_pkgtype:-}"
-pkgver=24.8.0.2
+pkgdesc="A free and powerful office suite - development branch"
+pkgver=24.8.0.3
 pkgrel=1
-pkgdesc="LibreOffice development branch"
 url="https://www.libreoffice.org/"
-arch=('x86_64')
 license=('MPL-2.0' 'LGPL-3.0-or-later')
+arch=('x86_64')
 
 optdepends=(
   'coin-or-mp: required by the Calc solver'
@@ -32,7 +33,6 @@ options=("!strip" "!debug")
 
 _dl_url="https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64"
 
-_pkgnamefmt=LibreOffice
 source=("$_dl_url/${_pkgnamefmt}_${pkgver}_Linux_x86-64_rpm.tar.gz"{,.asc})
 sha256sums=('SKIP' 'SKIP')
 validpgpkeys=(
