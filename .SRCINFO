@@ -1,7 +1,7 @@
 pkgbase = decrypto-pro-git
 	pkgdesc = Utility for converting CryptoPro CSP key containers to PEM keys
 	pkgver = r4.5db36aa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vitalif/decrypto-pro
 	arch = x86_64
 	arch = i686
