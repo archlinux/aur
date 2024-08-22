@@ -1,37 +1,36 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 # Contributor: Robert Greener <me@r0bert.dev>
+
 _pkgname=cNORM
-_pkgver=3.1.0
+_pkgver=3.2.0
 pkgname=r-${_pkgname,,}
-pkgver=3.1.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Continuous Norming'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('AGPL')
+pkgdesc="Continuous Norming"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('AGPL-3.0-only')
 depends=(
-  r
-  r-latticeextra
+  r-ggplot2
   r-leaps
 )
 optdepends=(
-  r-foreign
   r-knitr
   r-readxl
   r-rmarkdown
   r-shiny
-  r-shinycssloaders
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3648400bed80d8ffeb3417b00812894f0c8244e940ca74a566856040fd159805')
+md5sums=('649043ec3a60f1922be8bd02ac1289c1')
+b2sums=('1b55bd820167dcd94b0ca273ff5802e7484f33856c39fd8bf4ec5f12e1e61b27f2c9e27be4a6e00f0108dee8dfe2e3e0cb13b015ef87985be70050a62457fb08')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
