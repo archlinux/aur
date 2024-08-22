@@ -1,0 +1,5 @@
+[pypy3-setuptools]
+source = "github"
+github = "pypa/setuptools"
+use_max_tag = "true"
+prefix = "v"
