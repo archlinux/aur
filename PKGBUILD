@@ -4,8 +4,8 @@
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 pkgname=ffmpeg-amd-full
-pkgver=7.0.1
-pkgrel=3
+pkgver=7.0.2
+pkgrel=1
 _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
 _svt_vp9_ver='3b9a3fa43da4cc5fe60c7d22afe2be15341392ea'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD)'
@@ -152,7 +152,7 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "050-ffmpeg-fix-segfault-with-avisynthplus.patch"
         '070-ffmpeg-xeve0.5.1-support.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/3e6c7948626f19c46c1a630c788ea6bbd9e7fbcb'
         "LICENSE")
-sha256sums=('bce9eeb0f17ef8982390b1f37711a61b4290dc8c2a0c1a37b5857e85bfb0e4ff'
+sha256sums=('8646515b638a3ad303e23af6a3587734447cb8fc0a0c064ecdb8e95c4fd8b389'
             'SKIP'
             '9047e18d34716812d4ea7eafc1d0fd8b376d922a4b6b4dc20237662fcaf0c996'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
@@ -176,10 +176,10 @@ prepare() {
 build() {
     cd "ffmpeg-${pkgver}"
     printf '%s\n' '  -> Running ffmpeg configure script...'
-    
+
     # fix build of libavfilter/asrc_flite.c with gcc 14
     export CFLAGS+=' -Wno-incompatible-pointer-types'
-    
+
     ./configure \
         --prefix='/usr' \
         --enable-lto \
