@@ -34,7 +34,7 @@ package() {
     NVHPC_INSTALL_DIR="$pkgdir/opt/nvidia/hpc_sdk" \
     bash ./install
 
-   # Remove references to $pkgdir from module files
+    # Remove references to $pkgdir from module files
     cd "$pkgdir/opt/nvidia/hpc_sdk/modulefiles"
     find . -type f -exec sed -i "s@$pkgdir@@g" {} \;
 
