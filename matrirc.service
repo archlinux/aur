@@ -1,0 +1,13 @@
+[Unit]
+Description=irc gateway to matrix
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=matrirc
+Group=matrirc
+ExecStart=/usr/bin/matrirc
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

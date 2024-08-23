@@ -1,0 +1,22 @@
+pkgbase = matrirc
+	pkgdesc = irc gateway to matrix
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/martinetd/matrirc
+	arch = x86_64
+	license = WTFPL
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	depends = sqlite
+	source = matrirc-1.0.tar.gz::https://github.com/martinetd/matrirc/archive/refs/tags/1.0.tar.gz
+	source = matrirc.service
+	source = matrirc.sysusers
+	source = matrirc.tmpfiles
+	sha256sums = a139d022b23951694f403f7b392d72ff887f26f3dce394f4c1f796f3054116d1
+	sha256sums = b47df86911f82af9090f84b04376631a84ebc69a7347b7476f3cfdab2cab27c3
+	sha256sums = 45ecdbe6e339c1a84f39d09a9134dfe9fd5543bc5ddfb5c55c2156f21d503f6a
+	sha256sums = 5ad4c29dc31ced4572c9c5e0cc37adbedbb420b3159ad34288c8555f0eaa40ed
+
+pkgname = matrirc

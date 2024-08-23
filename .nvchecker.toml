@@ -1,0 +1,3 @@
+[matrirc]
+source = "git"
+git = "https://github.com/martinetd/matrirc.git"
