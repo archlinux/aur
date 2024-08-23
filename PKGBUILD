@@ -3,8 +3,8 @@
 
 pkgname=deal-ii
 _realname=dealii
-pkgver=9.5.2
-pkgrel=3
+pkgver=9.6.0
+pkgrel=1
 pkgdesc="An Open Source Finite Element Differential Equations Analysis Library"
 arch=("i686" "x86_64")
 url="https://www.dealii.org/"
@@ -12,7 +12,7 @@ license=('LGPL-2.1-or-later')
 # deal.II depends on Kokkos which is implicitly provided by Trilinos. Trilinos
 # does not yet support configuration with an external copy of Kokkos so do not
 # yet depend on that package.
-depends=('boost' 'trilinos')
+depends=('boost' 'kokkos')
 optdepends=(
       # adol-c is not compatible with Trilinos - if both are installed then deal.II will use Trilinos
       'adol-c: automatic differentiation library'
@@ -37,26 +37,21 @@ optdepends=(
       'slepc: Scalable library for Eigenvalue problem computations'
       'sundials: Suite of nonlinear differential/algebraic equation solvers'
       'symengine: Fast symbolic manipulation library'
+      # taskflow is not as well supported as TBB yet, so prefer TBB
+      # 'taskflow-git: Simple resource-aware task scheduler'
       'tbb: High level abstract threading library'
+      'trilinos: algorithms for the solution of large-scale scientific problems'
       'suitesparse: A collection of sparse matrix libraries'
+      'vtk: Software system for 3D computer graphics, image processing, and visualization'
       'zlib: Compression library implementing the deflate compression method found in gzip and PKZIP'
       )
 makedepends=('cmake')
 install=deal-ii.install
-source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz
-       sundials-7.patch)
-sha1sums=('126183aaaf75eaa1b4c3812f6e44aa32a60f4da1'
-          'caf299701c7be38a2bdd367ff254ec370af79f96')
+source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz)
+sha1sums=('1e48edfaffb86b5ba51c72b5300bbf3e7b634f52')
 # where to install deal.II: change to something else (e.g., /opt/deal.II/)
 # if desired.
 _installation_prefix=/usr
-
-prepare() {
-  # Avoid errors on multiple runs by deleting the new header before possibly
-  # re-creating it
-  rm -f dealii-$pkgver/include/deal.II/sundials/sundials_types.h
-  patch --strip=1 --input="${srcdir}/sundials-7.patch" --directory=dealii-$pkgver
-}
 
 build() {
   # Since deal.II relies on a relatively large number of packages that are
@@ -145,14 +140,6 @@ build() {
 
   cd "${srcdir}/build"
   echo "export DEAL_II_DIR=$_installation_prefix" > ./deal-ii.sh
-}
-
-check() {
-    cd "${srcdir}/build"
-    # workaround a bug by setting the number of jobs to 1 (though this still
-    # runs in parallel). Also permit the p4est test to oversubscribe
-    export PRTE_MCA_rmaps_default_mapping_policy=:oversubscribe
-    make -j1 test
 }
 
 package() {
