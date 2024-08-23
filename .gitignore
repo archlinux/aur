@@ -1,6 +1,5 @@
-*.tar.*
-*.zip
-src/
-pkg/
-LICENSE
-cache/
+*
+
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
