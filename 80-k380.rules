@@ -1,1 +1,11 @@
-ACTION== "add", KERNEL=="hidraw[0-9]*", RUN+="/usr/bin/fn_on.sh /dev/%k"
+#
+# Note that there is an issue in BlueZ which makes this rule apply only
+# for the initial connection. When disconnected and reconnected later,
+# the "add" action is never produced:
+#
+#   https://github.com/bluez/bluez/issues/933
+#
+# This means that power-cycling the keyboard after the initial connection
+# will lose the Fn key setting and it will NOT be re-applied on reconnection.
+#
+ACTION=="add", SUBSYSTEM=="hidraw", KERNEL=="hidraw*", SUBSYSTEMS=="hid", KERNELS="*:046D:B342.*" RUN+="/usr/bin/k380_conf -d /dev/%k -f on"
