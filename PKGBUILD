@@ -1,8 +1,8 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='BASIC language cross-compiler for ColecoVision/SG1000/MSX'
 pkgname=cvbasic
-pkgver=0.5.1
-_commit=5ef09b297431dd4f5ba772981f956f44171b420c
+pkgver=0.6.0
+_commit=61ad63583eb3d3ad39f9a7b040ed9639d6dbb0cc
 pkgrel=1
 url=https://nanochess.org/cvbasic.html
 arch=(x86_64)
@@ -11,8 +11,8 @@ depends=(glibc)
 makedepends=(git)
 source=("$pkgname-$pkgver::git+https://github.com/nanochess/CVBasic.git#commit=$_commit"
 	    cvbasic-asm-file-paths.patch)
-b2sums=('0f9613bccd0d64c7bce6950581f1571db65fa8d511c7701f2fa69adbc4ff121a0b4629fe9880944e437380c073bab0919b98d746a3c42f4b7b0e37e21b38586d'
-        '491312824d2d689c6439911ba3d5e981445a6999cf403ed1b00fe5090e91b959aa5aba9afc46a6896cd74efb8ed5fd9cc8bfa24aeba5abdedb4956895311bc04')
+b2sums=('d90deed16316e79d4eb1052e8f558d3ded1506d6c1fab2c6932f52f61ee235210adbc4be7cdf7b161cc3582effc9e790a988d7db5efc09433f9c8aa9df5d34ae'
+        'c89c2c40a45ea1ab40ce850deb689cfe46d346c4659db32b80b28f306a0de063c7eaaa1c883acf79b92a4e6c9b7b9ba571f11d2982a6511d1270777fc9c17e20')
 
 prepare () {
 	cd "$pkgname-$pkgver"
@@ -21,12 +21,12 @@ prepare () {
 
 build () {
 	cd "$pkgname-$pkgver"
-	"${CC:-gcc}" ${CFLAGS} ${LDFLAGS} -o cvbasic cvbasic.c node.c
+	"${CC:-gcc}" ${CFLAGS} ${LDFLAGS} -o cvbasic cvbasic.c node.c driver.c cpuz80.c cpu6502.c
 }
 
 package () {
 	cd "$pkgname-$pkgver"
-	install -Dm644 -t "$pkgdir/usr/share/cvbasic" cvbasic_{pro,epi}logue.asm
+	install -Dm644 -t "$pkgdir/usr/share/cvbasic" cvbasic_{,6502_}{pro,epi}logue.asm
 	install -Dm755 -t "$pkgdir/usr/bin" cvbasic
 
 	install -Dm644 -t "$pkgdir/usr/share/doc/cvbasic" README.md manual.txt
