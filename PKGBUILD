@@ -9,7 +9,7 @@ pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
 pkgver=4.4.1
 secp256k1ver=0.20.9
-pkgrel=2
+pkgrel=3
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
@@ -62,9 +62,11 @@ conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver}.tar.gz"
         "secp256k1-${secp256k1ver}.tar.gz::https://github.com/Electron-Cash/secp256k1/archive/v${secp256k1ver}.tar.gz"
         "fix-compilation.patch"
-        "make_locale.patch")
+        "make_locale.patch"
+        "fix-fusion.patch")
 sha256sums=('2b4c0576c3bde1e863c4b0647e78987102f45c9fe36cc65387fcececb955e4b5'
             '68e84775e57da77e19ccb6b0dde6ca0882377bdd48ecc6da0047a70201ec64c8'
+            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -74,6 +76,7 @@ prepare() {
 
   patch -Np1 -d "Electron-Cash-${pkgver}" < fix-compilation.patch
   patch -Np1 -d "Electron-Cash-${pkgver}" < make_locale.patch
+  patch -Np1 -d "Electron-Cash-${pkgver}" < fix-fusion.patch
   sed -i 's/py\.test/pytest/'  "Electron-Cash-${pkgver}/tox.ini"
 }
 

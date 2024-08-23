@@ -1,0 +1,19 @@
+--- a/electroncash_plugins/fusion/validation.py	2024-04-30 13:12:07.000000000 -0500
++++ b/electroncash_plugins/fusion/validation.py	2024-08-22 19:26:02.828810280 -0500
+@@ -39,6 +39,7 @@
+ import electroncash.schnorr as schnorr
+ 
+ from google.protobuf.message import DecodeError
++from google.protobuf.unknown_fields import UnknownFieldSet
+ 
+ 
+ class ValidationError(FusionError):
+@@ -71,7 +72,7 @@
+     except DecodeError:
+         raise ValidationError("decode error")
+     check(msg.IsInitialized(), "missing fields")
+-    check(not msg.UnknownFields(), "has extra fields")
++    check(not UnknownFieldSet(msg), "has extra fields")
+     # Protobuf silently ignores unwanted repeated tags, and gives no direct way
+     # to detect this. This sucks because it means someone could send us a giant
+     # message even if we check all fields' lengths. This is the only way to
