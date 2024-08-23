@@ -1,22 +1,24 @@
 pkgbase = gstreamer113
 	pkgdesc = GStreamer open-source multimedia framework core library
 	pkgver = 1.13.91
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gstreamer.freedesktop.org
 	install = gstreamer.install
-	arch = any
+	arch = x86_64
 	license = LGPL-2.0-or-later
 	makedepends = gtk-doc>=1.12
 	makedepends = glib2-devel
 	makedepends = gobject-introspection>=1.31.1
 	makedepends = libunwind
-	source = gstreamer-bc431c2af309ed78881da7e07011be7f3152db0a.tar.gz::https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/bc431c2af309ed78881da7e07011be7f3152db0a/gstreamer-bc431c2af309ed78881da7e07011be7f3152db0a.tar.gz
+	source = gstreamer-1.13.91.tar.gz::https://gitlab.freedesktop.org/gstreamer/gstreamer/-/archive/1.13.91/gstreamer-1.13.91.tar.gz
 	source = common-f0c2dc9aadfa05bb5274c40da750104ecbb88cba.tar.gz::https://gitlab.freedesktop.org/gstreamer/common/-/archive/f0c2dc9aadfa05bb5274c40da750104ecbb88cba/common-f0c2dc9aadfa05bb5274c40da750104ecbb88cba.tar.gz
 	source = gstreamer.install
+	source = gstreamer113_fix_g_object.patch
 	source = gstreamer113_fix_make43.patch
-	sha256sums = 93b7dabf9dba0c7ff39e65142e7646d701d25bf5340d4e6e8b2103c25870180d
+	sha256sums = 1fe669d99225cfad8ff529e4d362eddd310c3ba87bc914f001e365b9709f6081
 	sha256sums = 58aaa46f3f1c29aa6f363a102fb6dff20beb240e6536256cdd161dce277ee345
 	sha256sums = e092452caee7f04f6fde34c3e84552b5322b31cd86b6dbe98d7e30a8e2756f26
+	sha256sums = 38dbb3fffc6ef809df43dd13bc36bbe0ab25d294f75bf9b2bcb068b89434d179
 	sha256sums = 6b76b79280040e42f8d64622983f8580fb0d94e44b4aa74d4c7ea27d60003f83
 
 pkgname = gstreamer113
@@ -27,7 +29,6 @@ pkgname = gstreamer113
 	depends = libcap
 	depends = libelf
 	depends = libunwind
-	optdepends = bash-completion: for shell autocompletion
 	optdepends = gstreamer113-docs: HTML documentation
 	provides = gstreamer=1.13.91
 	conflicts = gstreamer

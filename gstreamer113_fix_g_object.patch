@@ -1,0 +1,23 @@
+--- a/gst/parse/grammar.y
++++ b/gst/parse/grammar.y
+@@ -406,7 +406,7 @@
+   } else {
+     pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (element), value);
+     if (pspec != NULL) {
+-      target = g_object_ref (element);
++      target = G_OBJECT (g_object_ref (element));
+       GST_CAT_LOG_OBJECT (GST_CAT_PIPELINE, target, "found %s property", value);
+     } else {
+       SET_ERROR (graph->error, GST_PARSE_ERROR_NO_SUCH_PROPERTY, \
+
+--- a/gst/gstchildproxy.c
++++ b/gst/gstchildproxy.c
+@@ -209,7 +209,7 @@
+   g_return_val_if_fail (GST_IS_CHILD_PROXY (object), FALSE);
+   g_return_val_if_fail (name != NULL, FALSE);
+ 
+-  obj = g_object_ref (object);
++  obj = G_OBJECT (g_object_ref (object));
+ 
+   current = names = g_strsplit (name, "::", -1);
+   /* find the owner of the property */
