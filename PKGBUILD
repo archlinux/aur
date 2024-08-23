@@ -1,8 +1,8 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=python-proton-vpn-killswitch-network-manager-wireguard
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="The proton-vpn-killswitch-networ-managerwireguard component is the implementation of the proton-vpn-killswitch interface adapted for Wireguard."
 arch=("any")
 url="https://github.com/ProtonVPN/python-proton-vpn-killswitch-network-manager-wireguard"
