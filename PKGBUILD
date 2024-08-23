@@ -3,13 +3,13 @@
 # Contributor: Haruue Icymoon <i@haruue.moe>
 
 pkgname=erofs-utils-git
-pkgver=1.7.1.r0.g83d94dc
+pkgver=1.8.1.r0.gddbed14
 pkgrel=1
 pkgdesc='Userspace tools for EROFS'
 arch=('x86_64')
 url='https://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs-utils.git'
 license=('GPL-2.0-or-later AND Apache-2.0')
-depends=('lz4' 'util-linux-libs' 'xz')
+depends=('glibc' 'libdeflate' 'lz4' 'zlib' 'util-linux' 'xz' 'zstd')
 makedepends=('git' 'fuse2')
 optdepends=('fuse2: for erofsfuse')
 conflicts=("${pkgname%-git}")
@@ -22,12 +22,20 @@ pkgver() {
 	git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+	cd "${srcdir}/${pkgname%-git}"
+	autoreconf -fiv
+}
 
 build() {
 	cd "${srcdir}/${pkgname%-git}"
-	./autogen.sh
-	./configure --prefix=/usr --with-lz4-libdir=/usr/lib --with-liblzma-libdir=/usr/lib --enable-fuse --enable-lzma
+	./configure --prefix=/usr --enable-fuse --enable-lzma --with-libdeflate --enable-multithreading
 	make
+}
+
+check() {
+	cd "${srcdir}/${pkgname%-git}"
+	make -k check
 }
 
 package() {
