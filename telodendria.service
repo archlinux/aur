@@ -1,0 +1,12 @@
+[Unit]
+Description=telodendria matrix homeserver
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/telodendria -d /var/lib/telodendria
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

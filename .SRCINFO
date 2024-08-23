@@ -1,0 +1,15 @@
+pkgbase = telodendria-git
+	pkgdesc = Telodendria Matrix homeserver
+	pkgver = 0.3.0.r140.ge263eca
+	pkgrel = 1
+	url = https://git.telodendria.io
+	arch = any
+	license = MIT
+	depends = cytoplasm
+	provides = telodendria
+	source = telodendria-git::git+https://git.telodendria.io/Telodendria/Telodendria
+	source = telodendria.service
+	sha256sums = SKIP
+	sha256sums = 194b1af3a980fa1567bfa4a9d869d4fb3169a4166caa578e570e5371d8077194
+
+pkgname = telodendria-git
