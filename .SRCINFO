@@ -1,0 +1,16 @@
+pkgbase = pop-sound-theme-git
+	pkgdesc = System76 Pop sound theme
+	pkgver = 5.5.1.r7.g25ea85d
+	pkgrel = 1
+	url = https://github.com/pop-os/gtk-theme
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = setconf
+	provides = pop-sound-theme
+	conflicts = pop-sound-theme
+	conflicts = pop-gtk-theme
+	source = git+https://github.com/pop-os/gtk-theme.git
+	sha256sums = SKIP
+
+pkgname = pop-sound-theme-git
