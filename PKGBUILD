@@ -1,13 +1,13 @@
 # Maintainer: Ice Layer <ice1ay3r@gmail.com>
 pkgname="cwe-client-cli"
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Simple console client for CWE"
 arch=("x86_64")
 license=("GPL")
 makedepends=("cargo" "rust>=1.78")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/NotBalds/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=(cfa1f6210ff4bb18065d231236e92b99bfa459995c511ed253d536909045c866)  
+source=("$pkgname-$pkgver.tar.gz::https://github.com/NotBalds/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=(8eb44d091bfd9a7a11f32b06f92246a94057db730bb9efcba1afd515fe19a9ea)  
 
 build() {
 	cd "$pkgname-$pkgver"
