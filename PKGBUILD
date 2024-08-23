@@ -2,7 +2,7 @@
 
 _name='awatcher'
 pkgname="$_name-git"
-pkgver=r85.cba6687
+pkgver=0.3.0.r3.ga045780
 pkgrel=1
 pkgdesc="Activity and idle watchers"
 arch=('x86_64')
@@ -28,7 +28,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${_name}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
