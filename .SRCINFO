@@ -1,15 +1,31 @@
 pkgbase = pylon
 	pkgdesc = Basler camera Software suite
-	pkgver = 7.4.0.14900
+	pkgver = 7.5.0.15658
 	pkgrel = 1
 	url = https://www.baslerweb.com/en/downloads/software-downloads/#os=linuxx8664bit;type=pylonsoftware
 	arch = x86_64
 	license = custom
 	makedepends = patchelf
-	depends = qt5-base
-	source = https://www2.baslerweb.com/media/downloads/software/pylon_software/pylon-7.4.0.14900_linux-x86_64_setup.tar.gz
+	depends = fontconfig
+	depends = freetype2
+	depends = mesa-utils
+	depends = libice
+	depends = libsm
+	depends = libusb
+	depends = libx11
+	depends = libxcb
+	depends = xcb-util
+	depends = xcb-util-image
+	depends = xcb-util-keysyms
+	depends = xcb-util-renderutil
+	depends = libxext
+	depends = libxkbcommon
+	depends = zlib
+	depends = ld-lsb
+	options = !strip
+	source = https://www2.baslerweb.com/media/downloads/software/pylon_software/pylon-7.5.0.15658_linux-x86_64_setup.tar.gz
 	source = LICENSE
-	sha512sums = 8d01888c1e849877fe30d2061f6d77f54952c8902f7e1e14db99732cc94432fe7bc21a09e67bfe076a26ad741ffa00191f6fe44d169fac0400fcf556e2ba7e70
+	sha512sums = 3ac3b608d3cab415fe45a680278459aaa13f1fa9db94c514c1355215e1d53a0d83131a43d120310c0ad5da919bf9df6263b4f804993a0b757bc5fa5e21aaffb5
 	sha512sums = a88072c34d5b18ebbdcc3003c7bbd899f81557500f963cda988239df7e692637fe29948b866fe80341b28c4820e1593f35fe37473de9ba35f7de8a8b31601ae1
 
 pkgname = pylon

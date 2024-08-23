@@ -3,13 +3,15 @@
 
 pkgname=pylon
 pkgdesc="Basler camera Software suite"
-pkgver=7.4.0.14900
+pkgver=7.5.0.15658
 pkgrel=1
 arch=(x86_64)
 license=(custom)
 url="https://www.baslerweb.com/en/downloads/software-downloads/#os=linuxx8664bit;type=pylonsoftware"
 
-depends=(qt5-base)
+options=(!strip)
+
+depends=(fontconfig freetype2 mesa-utils libice libsm libusb libx11 libxcb xcb-util xcb-util-image xcb-util-keysyms xcb-util-renderutil libxext libxkbcommon zlib ld-lsb)
 makedepends=(patchelf)
 
 source=(
@@ -18,7 +20,7 @@ source=(
 )
 
 
-sha512sums=('8d01888c1e849877fe30d2061f6d77f54952c8902f7e1e14db99732cc94432fe7bc21a09e67bfe076a26ad741ffa00191f6fe44d169fac0400fcf556e2ba7e70'
+sha512sums=('3ac3b608d3cab415fe45a680278459aaa13f1fa9db94c514c1355215e1d53a0d83131a43d120310c0ad5da919bf9df6263b4f804993a0b757bc5fa5e21aaffb5'
 'a88072c34d5b18ebbdcc3003c7bbd899f81557500f963cda988239df7e692637fe29948b866fe80341b28c4820e1593f35fe37473de9ba35f7de8a8b31601ae1')
 
 _dir="$pkgname_$pkgver_$CARCH"
@@ -28,7 +30,6 @@ prepare() {
 	cd "$srcdir/$_dir"
 	bsdtar -xf "../${pkgname}-${pkgver}_linux-${CARCH}_setup.tar.gz"
 	bsdtar -xf "${pkgname}-${pkgver}_linux-${CARCH}.tar.gz"
-	sed -i 's/, TAG+="udev-acl"\|, MODE:="0666"//g' "share/pylon/69-basler-cameras.rules"
 }
 
 _shrink_rpaths() {
@@ -47,6 +48,6 @@ package() {
 	install -m 644  -Dt "$pkgdir/usr/lib/udev/rules.d"         "$srcdir/$_dir/share/pylon/69-basler-cameras.rules"
 	install -m 644  -Dt "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/LICENSE"
 
-	_shrink_rpaths "$pkgdir/opt/pylon/lib64/"*
+	_shrink_rpaths "$pkgdir/opt/pylon/lib/"*
 	_shrink_rpaths "$pkgdir/opt/pylon/bin/"*
 }
