@@ -1,6 +1,6 @@
 pkgbase = numbat
 	pkgdesc = A statically typed programming language for scientific computations with first class support for physical dimensions and units
-	pkgver = 1.12.0
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/sharkdp/numbat
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = numbat
 	makedepends = cargo
 	provides = numbat
 	options = !lto
-	source = numbat-1.12.0.tar.gz::https://static.crates.io/crates/numbat-cli/numbat-cli-1.12.0.crate
-	source = v1.12.0::https://github.com/sharkdp/numbat/archive/refs/tags/v1.12.0.tar.gz
-	sha256sums = 2cb920fc2b3c0816413cf2e0dabe3c68ceb4c2ac1d883c26c44a9d2d347c1e2d
-	sha256sums = 6e5f2d3e912d38c2b55d10e151498d9d7837541502243bdf1330a7b44cd9da24
+	source = numbat-1.13.0.tar.gz::https://static.crates.io/crates/numbat-cli/numbat-cli-1.13.0.crate
+	source = v1.13.0::https://github.com/sharkdp/numbat/archive/refs/tags/v1.13.0.tar.gz
+	sha256sums = 27ca884b6c9514e0d1e75a3c9f4f84cde414e8b4e6601ef899e37829d63bafda
+	sha256sums = 3c152ec83dd0615cc62d7f92164fabad361d853f3796db22c79c20fa060e26b4
 
 pkgname = numbat

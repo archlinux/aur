@@ -1,7 +1,7 @@
 # Maintainer: João Freitas <joaj.freitas@gmail.com>
 pkgname=numbat
 _pkgname=numbat-cli
-pkgver=1.12.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="A statically typed programming language for scientific computations with first class support for physical dimensions and units"
 arch=('any')
@@ -17,8 +17,8 @@ source=(
 options=(!lto)
 
 sha256sums=(
-  '2cb920fc2b3c0816413cf2e0dabe3c68ceb4c2ac1d883c26c44a9d2d347c1e2d'
-  '6e5f2d3e912d38c2b55d10e151498d9d7837541502243bdf1330a7b44cd9da24'
+  '27ca884b6c9514e0d1e75a3c9f4f84cde414e8b4e6601ef899e37829d63bafda'
+  '3c152ec83dd0615cc62d7f92164fabad361d853f3796db22c79c20fa060e26b4'
 )
 
 prepare() {
@@ -48,13 +48,13 @@ package() {
     install -Dm644 "$pkgname-$pkgver/LICENSE-MIT" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-MIT"
     install -Dm644 "$pkgname-$pkgver/LICENSE-APACHE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-APACHE"
     install -Dm644 "$pkgname-$pkgver/README.md" "$pkgdir/usr/doc/$pkgname/README.md"
-	  install -Dm644 "$pkgname-$pkgver/assets/numbat.desktop" "$pkgdir/usr/share/applications/numbat.desktop"
-	  install -Dm644 "$pkgname-$pkgver/assets/numbat.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/numbat.svg"
+    install -Dm644 "$pkgname-$pkgver/assets/numbat.desktop" "$pkgdir/usr/share/applications/numbat.desktop"
+    install -Dm644 "$pkgname-$pkgver/assets/numbat.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/numbat.svg"
 
-  for icon in $(ls $pkgname-$pkgver/assets/numbat-*x*.png)
-  do
-    filename_without_prefix=${icon#*-}
-    icon_size=${filename_without_prefix%.*}
-    install -Dm644 "$icon" "$pkgdir/usr/share/icons/hicolor/$icon_size/apps/numbat.png"
-  done
+    for icon in $(ls $pkgname-$pkgver/assets/numbat-*x*.png)
+    do
+      filename_without_prefix=${icon#*-}
+      icon_size=${filename_without_prefix%.*}
+      install -Dm644 "$icon" "$pkgdir/usr/share/icons/hicolor/$icon_size/apps/numbat.png"
+    done
 }
