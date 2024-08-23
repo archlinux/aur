@@ -1,6 +1,6 @@
 pkgbase = scwrypts
 	pkgdesc = devops script runner for local and CI
-	pkgver = 4.4.3
+	pkgver = 4.4.4
 	pkgrel = 1
 	url = https://github.com/wrynegade/scwrypts.git
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = scwrypts
 	optdepends = postgresql-libs: postgresql support
 	optdepends = redis: redis support for cache and utilities
 	optdepends = yamllint: helm chart development
-	source = https://github.com/wrynegade/scwrypts/archive/refs/tags/v4.4.3.tar.gz
-	sha256sums = b9fdfb6283d8c618cb782a6a461f2730fd9902622bb6d67df180f78ef937cbfc
+	source = https://github.com/wrynegade/scwrypts/archive/refs/tags/v4.4.4.tar.gz
+	sha256sums = 4f0c08e57ede9e7a92638afd2609bf0ab15ad10df7a92575169ddec4ef90a416
 
 pkgname = scwrypts
