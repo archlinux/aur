@@ -1,17 +1,17 @@
 pkgbase = barklarm-bin
 	pkgdesc = Displays the status of projects as an item in the tray menu bar
-	pkgver = 2.0.2
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://www.barklarm.com
 	arch = x86_64
 	license = Apache-2.0
 	depends = electron31
-	provides = barklarm=2.0.2
+	provides = barklarm=2.1.0
 	conflicts = barklarm
 	options = !emptydirs
-	source = barklarm-2.0.2.deb::https://github.com/Barklarm/barklarm-app/releases/download/v2.0.2/barklarm_2.0.2_amd64.deb
+	source = barklarm-2.1.0.deb::https://github.com/Barklarm/barklarm-app/releases/download/v2.1.0/barklarm_2.1.0_amd64.deb
 	source = barklarm.sh
-	sha256sums = f459bf1ec768ef6d73ffa0253bb8abd4a4a938c27f58fb5cd74e025886d48e00
+	sha256sums = 5dcc631ff8b853e2e66662c014884b16eaed41cffcb581d006e276d186314980
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = barklarm-bin
