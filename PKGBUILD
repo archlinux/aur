@@ -6,7 +6,7 @@
 _pkgname=aptakube
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.7.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A modern and lightweight Kubernetes desktop client to help you operate workloads on multiple clusters. (free to use during the public preview)"
 arch=('x86_64')
