@@ -10,7 +10,7 @@ license=('custom:jetbrains')
 url='https://www.jetbrains.com/dataspell/'
 depends=('glib2' 'python')
 options=('!strip')
-source=("https://download-cf.jetbrains.com/python/dataspell-${pkgver}.tar.gz"
+source=("https://download.jetbrains.com/python/dataspell-${pkgver}.tar.gz"
         jetbrains-dataspell.desktop
         LICENSE)
 b2sums=('c107a62548e616be08554e6664dd3dcfaba8ce123e615dd0869380086698e343ee610386a2507439e06655570bb967ad4c1d717a6a9aa69179d4659ecf21f3dc'
