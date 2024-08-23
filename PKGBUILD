@@ -17,6 +17,7 @@ sha256sums=('fab5f2ac6c842d949861c07cb520afe5bee3dce55805151ce9cd01be0ec46fcd')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+	export CFLAGS="-fpermissive"
   ./configure --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var --disable-static
   make
