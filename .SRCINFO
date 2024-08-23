@@ -1,6 +1,6 @@
 pkgbase = shaq
 	pkgdesc = A bare-bones Shazam CLI client
-	pkgver = 0.0.1
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/woodruffw/shaq
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = shaq
 	depends = python-pyaudio>=0.2.13
 	depends = python-pydub>=0.25.1
 	depends = python-rich>=13.4
-	depends = python-shazamio>=0.4.0.1
-	source = https://github.com/woodruffw/shaq/archive/v0.0.1.tar.gz
-	b2sums = 25defb296bba73d43907dea55461b31f840091975ea96855515a63ff0f81a3a2ef8e807a04d837e585f06f22225ad317c93b34d68e346e8b65e5a4903c6c4178
+	depends = python-shazamio>=0.6.0
+	source = https://github.com/woodruffw/shaq/archive/v0.0.3.tar.gz
+	b2sums = e5654996403984117bebe9c47e24dbc0729a9a8b1d841db5aa3f32fa2581e5dc92bf1bfb59313d4940576ba0fa1d1c750a163ab6c53e31b04f2151698f014ac4
 
 pkgname = shaq
