@@ -4,22 +4,37 @@
 
 pkgname=gocr
 pkgver=0.52
-pkgrel=2
+pkgrel=3
 pkgdesc='OCR (Optical Character Recognition) program, which converts scanned images of text back to text files'
-arch=('x86_64')
+arch=(x86_64)
 url='https://www-e.uni-magdeburg.de/jschulen/ocr/'
-license=('GPL')
-depends=('libjpeg-turbo' 'netpbm')
-optdepends=('fig2dev: read xfig images'
-            'tk: to use the tk frontend')
+license=(GPL-2.0-or-later)
+depends=(
+  glibc
+  libjpeg-turbo
+  netpbm
+)
+optdepends=(
+  'fig2dev: Read xfig images'
+  'tk: Tk frontend'
+)
 source=("https://www-e.uni-magdeburg.de/jschulen/ocr/$pkgname-$pkgver.tar.gz"{,.asc})
-sha256sums=('df906463105f5f4273becc2404570f187d4ea52bd5769d33a7a8661a747b8686'
-            'SKIP')
-validpgpkeys=('3816B803D578F5AD12FDFE065D330C4953BDFBE3')
+b2sums=(
+  1f22f5377bb95053e3ab4ede074b3fceca4065f9ca0ede05a8023ebe807f41074f5ead84e133281e98be7f68f13b036dc759cccaf4a5688bf776f62f2de1970a
+  SKIP
+)
+validpgpkeys=(3816B803D578F5AD12FDFE065D330C4953BDFBE3)
+
+prepare() {
+  cd $pkgname-$pkgver
+  autoreconf -fi
+}
 
 build() {
   cd $pkgname-$pkgver
-  ./configure --bindir=/usr/bin --mandir=/usr/share/man
+  ./configure \
+    --bindir=/usr/bin \
+    --mandir=/usr/share/man
   make
 }
 

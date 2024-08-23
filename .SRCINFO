@@ -1,0 +1,19 @@
+pkgbase = gocr
+	pkgdesc = OCR (Optical Character Recognition) program, which converts scanned images of text back to text files
+	pkgver = 0.52
+	pkgrel = 3
+	url = https://www-e.uni-magdeburg.de/jschulen/ocr/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = glibc
+	depends = libjpeg-turbo
+	depends = netpbm
+	optdepends = fig2dev: Read xfig images
+	optdepends = tk: Tk frontend
+	source = https://www-e.uni-magdeburg.de/jschulen/ocr/gocr-0.52.tar.gz
+	source = https://www-e.uni-magdeburg.de/jschulen/ocr/gocr-0.52.tar.gz.asc
+	validpgpkeys = 3816B803D578F5AD12FDFE065D330C4953BDFBE3
+	b2sums = 1f22f5377bb95053e3ab4ede074b3fceca4065f9ca0ede05a8023ebe807f41074f5ead84e133281e98be7f68f13b036dc759cccaf4a5688bf776f62f2de1970a
+	b2sums = SKIP
+
+pkgname = gocr

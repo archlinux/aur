@@ -1,0 +1,4 @@
+[gocr]
+source = "regex"
+url = "https://www-e.uni-magdeburg.de/jschulen/ocr/download.html"
+regex = "gocr-(.*).tar"
