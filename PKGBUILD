@@ -3,8 +3,8 @@
 # Contributor: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
 
 pkgname=kdeconnect
-pkgver=24.05.2
-pkgrel=2
+pkgver=24.08.0
+pkgrel=1
 pkgdesc='Adds communication between KDE and your smartphone'
 url='https://kdeconnect.kde.org/'
 arch=(x86_64)
@@ -56,7 +56,7 @@ groups=(kde-applications
         kde-network)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-kde-$pkgver.tar.xz{,.sig}
         https://invent.kde.org/network/kdeconnect-kde/-/commit/4f3a8968.patch)
-sha256sums=('03d827abed7b0552b536298920ce5815e321f9101b020bfcebf5bcaa4ccf054a'
+sha256sums=('cbd102cf3083d2c043e875cc4ef1ac3a33837484f440b2e7377bc9c0bd3212ae'
             'SKIP'
             '1bb736087df5017141f4490727167c84f0baa4828e12786965c36964d6178635')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
