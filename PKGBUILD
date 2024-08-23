@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  install -Dm755 "cmd/$pkgname/$pkgname" -t "$pkgdir"/usr/bin
-  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/"$pkgname"
+  local _srcdir="${pkgname}-${pkgver}"
+  install -Dm755 -t "${pkgdir}/usr/bin" "${_srcdir}/cmd/${pkgname}/${pkgname}"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_srcdir}/LICENSE"
 }
