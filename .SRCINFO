@@ -1,12 +1,12 @@
 pkgbase = livekit-cli
 	pkgdesc = LiveKit CLI: command line utilities that interacts with LiveKit
-	pkgver = 2.0.4
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://livekit.io/
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	source = https://github.com/livekit/livekit-cli/archive/refs/tags/v2.0.4.tar.gz
-	sha256sums = 66d7080ff5f339f69ddd39a715defc4aaa2f3e5f4d6a1ef815a070b759602c74
+	source = https://github.com/livekit/livekit-cli/archive/refs/tags/v2.1.0.tar.gz
+	sha256sums = b49a395169381140f39a9da8308ac100626e7697862fbee1e6c49fa9d1bce657
 
 pkgname = livekit-cli
