@@ -1,0 +1,18 @@
+pkgbase = perl-object-result
+	pkgdesc = A module for handling results with exception-like behavior
+	pkgver = 0.03
+	pkgrel = 1
+	url = https://metacpan.org/pod/Object::Result
+	arch = any
+	license = Artistic-2.0
+	makedepends = perl-module-build
+	depends = perl
+	depends = perl-try-tiny
+	depends = perl-exporter-tiny
+	depends = perl-role-tiny
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/Object-Result-0.000003.tar.gz
+	sha256sums = 01ce06fcf30dd062e42c2ab1917535d7649fe5088f28850ae14fe3ef3a6cb9be
+
+pkgname = perl-object-result
