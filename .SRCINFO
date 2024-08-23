@@ -1,6 +1,6 @@
 pkgbase = openafs-modules-dkms
 	pkgdesc = Kernel module for OpenAFS (dkms)
-	pkgver = 1.8.12
+	pkgver = 1.8.12.1
 	pkgrel = 1
 	url = http://www.openafs.org
 	arch = i686
@@ -10,24 +10,14 @@ pkgbase = openafs-modules-dkms
 	depends = dkms
 	depends = libelf
 	depends = openafs
-	provides = openafs-modules=1.8.12
+	provides = openafs-modules=1.8.12.1
 	conflicts = openafs-features-libafs
 	conflicts = openafs-modules
 	conflicts = openafs<1.6.6-2
 	options = !emptydirs
-	source = http://openafs.org/dl/openafs/1.8.12/openafs-1.8.12-src.tar.bz2
-	source = 0001-Linux-6.10-Use-filemap_alloc_folio-when-avail.patch
-	source = 0002-Linux-6.10-define-a-wrapper-for-vmalloc.patch
-	source = 0003-Linux-6.10-remove-includes-for-asm-ia32_unistd.h.patch
-	source = 0004-afs-avoid-empty-body-warning.patch
-	source = 0005-Linux-6.10-Move-inline-before-func-return-type.patch
+	source = http://openafs.org/dl/openafs/1.8.12.1/openafs-1.8.12.1-src.tar.bz2
 	source = dkms.conf
-	sha256sums = 10fea6810c6c0b00ffb2cd3f38ed732c17cfd7955ca0954dc24a2a6172a26e75
-	sha256sums = 9e6605fd9f045b85d28d6b275e7f77f93d991cb266f10877d5e4b820322b2e13
-	sha256sums = fd4fe8f2a1cd99c239a4bf42f600fcec5399206395c72297631dcfb7b8b7302a
-	sha256sums = 40cc3b6588c9bfab6d1eb8f0785952791b728f0c2bb17a35ee0d3084afd36aeb
-	sha256sums = c5287bf9f467af7e7db37dbe193f53983b955a32117018d7984b9a75fee79af5
-	sha256sums = 60104dc7d8418829f2e5670783f1a7548e22f717673a1a312ed455c464d6116e
+	sha256sums = dfe2f39bef9fb3d6791d602e725be7c34b885e4299018266ff9743cb401e594a
 	sha256sums = 5ea5e184f9b44f5ed45817d2b5a10149d15c8c54f49e0b5b4b773652673cb9b0
 
 pkgname = openafs-modules-dkms
