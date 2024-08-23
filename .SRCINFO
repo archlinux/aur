@@ -1,7 +1,7 @@
 pkgbase = firedragon
 	pkgdesc = Floorp fork build using custom branding and settings
-	pkgver = 11.17.6
-	pkgrel = 1.1
+	pkgver = 11.17.6_1
+	pkgrel = 1
 	epoch = 1
 	url = https://firedragon.garudalinux.org
 	arch = x86_64
