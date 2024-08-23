@@ -1,0 +1,9 @@
+*
+!.gitignore
+!Makefile
+!PKGBUILD
+!.SRCINFO
+!changelog.md
+!policies.json
+!zen-browser-optimized.desktop
+!zen-browser-optimized.sh
