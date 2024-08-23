@@ -1,8 +1,8 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=python-proton-vpn-killswitch-network-manager
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.4
+pkgrel=1
 pkgdesc="The proton-vpn-killswitch-network-manager component is the implementation of the proton-vpn-killswitch interface using Network Manager."
 arch=("any")
 url="https://github.com/ProtonVPN/python-proton-vpn-killswitch-network-manager"
