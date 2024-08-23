@@ -51,8 +51,8 @@ if [[ -z "$FFMPEG_OBS_VULKAN" ]]; then
 fi
 
 pkgname=ffmpeg-obs
-pkgver=7.0.1
-pkgrel=3
+pkgver=7.0.2
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -175,7 +175,7 @@ provides=(
   libswscale.so
 )
 conflicts=(ffmpeg)
-_tag=af25a4bfd2503caf3ee485b27b99b620302f5718
+_tag=e3a61e91030696348b56361bdf80ea358aef4a19
 _deps_tag=2023-11-03
 source=(
   "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
