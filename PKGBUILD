@@ -3,7 +3,7 @@
 # Contributor: asuka minato
 
 pkgname=lib32-gtest
-pkgver=1.14.0
+pkgver=1.15.2
 pkgrel=1
 pkgdesc="Google Test - C++ testing utility based on the xUnit framework (like JUnit)"
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(gtest lib32-glibc lib32-gcc-libs)
 makedepends=(cmake)
 options=(!buildflags staticlibs !strip)
 source=("gtest-${pkgver}.tar.gz::https://github.com/google/googletest/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('765c326ccc1b87a01027385e69238266e356361cd4ee3e18e3c9d137a5d11fa5d657c164d02dd1be8fe693c8e10f2b580588dbfa57d27f070e2750f50d3e662c')
+sha512sums=('9046841044a2bf7edfd96854ad9c44ffae4fcb9fb59a075b367507c0762a98eb32cb6968d46663228272e26321e96f4dd287c95baa22c6af9bad902b8b6ede4e')
 
 build() {
   cd "googletest-${pkgver}"
