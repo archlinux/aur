@@ -5,8 +5,8 @@
 _binname="kubedb"
 _pkgname="${_binname}-cli"
 pkgname="${_pkgname}-bin"
-pkgver=0.46.0
-pkgrel=3
+pkgver=0.47.0
+pkgrel=1
 pkgdesc="kubectl plugin for KubeDB"
 arch=('x86_64' 'aarch64' 'arm')
 url="https://${_binname}.com"
@@ -24,9 +24,9 @@ source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}
 source_arm=("${_pkgsrc}-arm.tar.gz::${_url}/releases/download/v${pkgver}/kubectl-dba-linux-arm.tar.gz")
 sha512sums=('249ab166610634cdb55dd1ee2ad1bfe46905af77e37a6fcd662285cf1784bc71d0981bcea476c06b3679116ed018f42bf8c2d3e01b7c9fd8fe7965efb659b15b'
             '3ccf552f646ca9716b660cec0da9f1bcabe3c88c55e992ce18f963341701f7ddbe131fd08b657e861572168482a74dded6c617f8deb4131f3b70669eeae45d93')
-sha512sums_x86_64=('118a466cef51e9f10e0c00b90ace5f73d39add55603a717ea6a1af82dd21734cbaf009ccebc4c6bf6904656c576bbd4a241c56b74a99685885e6c4d51ca9d38b')
-sha512sums_aarch64=('932b7c5c7ee1a45367e965d6750e6297dfa46754ea64946bff0e3f68974609243d9d1ced1acd3200b142ee37b8b74c8dffddbbc6cdcd7dda89800979fccefa9d')
-sha512sums_arm=('40c55568419ac52cd1e9f86b7ddbab0bf5c44f4a9b79570745f57eec952b4d39b4b9b4ef251d82f184c503be5e167f5b69af46c8a682bf603b7169794124d5ca')
+sha512sums_x86_64=('2a9d784d495d21555fce2e6ff9596182129e7ec4118d58d032a5afbe6ca592c66e4ebeeda7c3792fa78dc7c44dfd960f596e13b861188662cf28964aab885bff')
+sha512sums_aarch64=('f8649bae6ac80ea6be76195e2c74b9a2ee45ae394387717b98b915bc0057f04d4ebd0b7ff896141b3a27925f31c79e02eb57d4e41b972beacdc2fa60d726f4e3')
+sha512sums_arm=('3398aa2d9df871575f33ae683579d2e8c7758e0129830e9164b241947407c9893c17a34bd0f4725b1b145219bedb8d16923fd3ed2d88cc22a971416b8a7f01c5')
 
 case "${CARCH}" in
   x86_64)
