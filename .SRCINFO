@@ -1,19 +1,19 @@
 pkgbase = ttf-lxgw-heart-serif
 	pkgdesc = 基于「こころ明朝体」以及「霞鹜新致宋」「霞鹜致宋 CL/MN」衍生的中文黑体字型。将字面横向压缩 85%，并增加圆角，更加清瘦、圆润。
-	pkgver = 0.924.2
+	pkgver = 1.011
 	pkgrel = 1
 	url = https://github.com/lxgw/LxgwHeartSerif
 	changelog = changelog.txt
 	arch = any
 	license = custom:IPA
 	conflicts = ttf-lxgw-heart-serif
-	source = ttf-lxgw-heart-serif-0.924.2-1.ttf::https://github.com/lxgw/LxgwHeartSerif/releases/download/v0.924.2/LXGWHeartSerif.ttf
-	source = ttf-lxgw-heart-serif-0.924.2-CL-1.ttf::https://github.com/lxgw/LxgwHeartSerif/releases/download/v0.924.2/LXGWHeartSerifCL.ttf
-	source = ttf-lxgw-heart-serif-0.924.2-MN-1.ttf::https://github.com/lxgw/LxgwHeartSerif/releases/download/v0.924.2/LXGWHeartSerifMN.ttf
+	source = ttf-lxgw-heart-serif-1.011-1.ttf::https://github.com/lxgw/LxgwHeartSerif/releases/download/v1.011/LXGWHeartSerif.ttf
+	source = ttf-lxgw-heart-serif-1.011-CL-1.ttf::https://github.com/lxgw/LxgwHeartSerif/releases/download/v1.011/LXGWHeartSerifCL.ttf
+	source = ttf-lxgw-heart-serif-1.011-MN-1.ttf::https://github.com/lxgw/LxgwHeartSerif/releases/download/v1.011/LXGWHeartSerifMN.ttf
 	source = license.txt
-	sha256sums = ad5808fcef71962064804e01024b637bdea44e8b57a482d2048cc02e805d1182
-	sha256sums = 14fd175550a20ebf488b87d24cecf4eae3dfcefe355f2ffd9648f7c862385a4e
-	sha256sums = 6c558bab89ecd0c273a4e6f12ceb1749babe3d5266fe29eea264ef99b82671b8
+	sha256sums = c31ad15b1b3eee633ff74ac3d7b6440a73be7286a508ad190ffbb54b3cd61c31
+	sha256sums = a9d5046959849e0b22288cabe847db0c643e9e4f331032a669cf69c5b59324e1
+	sha256sums = 05e82824536e9e0e78b1fc608033cc5885a36107148dea60297deddb643f9ea9
 	sha256sums = daf91386d6f9a6a78e4e736c0c00375cae30214ac5c1dab2479f0a05fcb63edd
 
 pkgname = ttf-lxgw-heart-serif
