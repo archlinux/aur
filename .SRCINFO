@@ -1,6 +1,6 @@
 pkgbase = timepatrol-git
 	pkgdesc = BTRFS snapshots manager and rollback tool
-	pkgver = r152.bf67733
+	pkgver = r154.3ca3de5
 	pkgrel = 1
 	url = https://github.com/abdeoliveira/timepatrol
 	arch = any
