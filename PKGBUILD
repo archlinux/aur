@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=cervisia
-pkgver=24.05.2
+pkgver=24.08.0
 pkgrel=1
 pkgdesc='CVS Frontend'
 url='https://apps.kde.org/cervisia/'
@@ -33,7 +33,7 @@ makedepends=(extra-cmake-modules
 groups=(kde-applications
         kdesdk)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('6ba852614980c540866e362d834291f846e1e205e070c34610c2ba6087f03f53'
+sha256sums=('aa63c6f874731a33b0fae82bdc8bafdb2982817818ed06b96ccb28f6b6d1d567'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
