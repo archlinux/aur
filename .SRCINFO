@@ -12,6 +12,7 @@ pkgbase = zen-browser-avx2-bin
 	depends = dbus-glib
 	depends = nss
 	depends = ttf-font
+	depends = systemd
 	optdepends = ffmpeg: H264/AAC/MP3 decoding
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = libnotify: Notification integration

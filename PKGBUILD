@@ -15,7 +15,7 @@ pkgdesc="Standalone web browser - Static binaries from upstream"
 arch=('x86_64' 'i686')
 url="https://github.com/zen-browser/desktop"
 license=(MPL-2.0)
-depends=(gtk3 libxt mime-types dbus-glib nss ttf-font)
+depends=(gtk3 libxt mime-types dbus-glib nss ttf-font systemd)
 optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
