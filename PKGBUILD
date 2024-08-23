@@ -4,11 +4,10 @@
 
 _pkgname=firedragon
 _pkgver=11.17.6-1
-_pkgrel=1
 
 pkgname=${_pkgname}-bin
-pkgver=${_pkgver%-*}
-pkgrel=${_pkgver#*-}.${_pkgrel}
+pkgver=${_pkgver//-/_}
+pkgrel=1
 epoch=1
 pkgdesc="Floorp fork build using custom branding and settings"
 url='https://firedragon.garudalinux.org'
