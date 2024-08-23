@@ -1,7 +1,7 @@
 # Maintainer: Berrit Birkner <aur at bbirkner.de>
 
 pkgname=python-apkinspector
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A tool to decode and manipulate android apks"
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   'python'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/erev0s/apkInspector/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c35c7e3eb6e94e3d988db9968f6e85e1d94b7c57b1cbad052524a9d15a999eb1')
+sha256sums=('4d20522cc86c8d072b7602a46e2e2dda244dd47831dfcd5e609e49c89cc98ec6')
 
 build () {
   cd "${srcdir}/apkInspector-${pkgver}"

@@ -1,6 +1,6 @@
 pkgbase = python-apkinspector
 	pkgdesc = A tool to decode and manipulate android apks
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/erev0s/apkInspector
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-apkinspector
 	makedepends = python-installer
 	makedepends = python-poetry-core
 	depends = python
-	source = python-apkinspector-1.3.0.tar.gz::https://github.com/erev0s/apkInspector/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = c35c7e3eb6e94e3d988db9968f6e85e1d94b7c57b1cbad052524a9d15a999eb1
+	source = python-apkinspector-1.3.1.tar.gz::https://github.com/erev0s/apkInspector/archive/refs/tags/v1.3.1.tar.gz
+	sha256sums = 4d20522cc86c8d072b7602a46e2e2dda244dd47831dfcd5e609e49c89cc98ec6
 
 pkgname = python-apkinspector
