@@ -11,7 +11,7 @@ license=('custom:jetbrains')
 depends=('glib2')
 conflicts=('0xdbe' '0xdbe-eap')
 options=('!strip')
-source=("https://download-cf.jetbrains.com/${pkgbase}/${pkgbase}-${pkgver}.tar.gz"
+source=("https://download.jetbrains.com/${pkgbase}/${pkgbase}-${pkgver}.tar.gz"
         jetbrains-datagrip.desktop
         LICENSE)
 b2sums=('185cebfe87e47af192934447b6116f38c8780e21d437799657d85ef713ccf1826aba3285e177cf489e7360aff5ea8cda9f0ac716e22567528d0f658c9388c469'
