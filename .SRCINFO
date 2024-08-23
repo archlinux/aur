@@ -1,6 +1,6 @@
 pkgbase = posting
 	pkgdesc = The modern API client that lives in your terminal
-	pkgver = 1.12.0
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = https://github.com/darrenburns/posting
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = posting
 	depends = python-textual
 	depends = python-typing_extensions
 	depends = python-textual-autocomplete
-	source = posting-1.12.0.tar.gz::https://github.com/darrenburns/posting/archive/1.12.0.tar.gz
-	sha256sums = cbf2321f6c432590dfdff205486dc5da465847d6baa78b823a2209ffaffb0f9f
+	source = posting-1.12.1.tar.gz::https://github.com/darrenburns/posting/archive/1.12.1.tar.gz
+	sha256sums = e7bc1810f6b3ee64d34e61b0ebf8dcd4e36105dab21e9fe60c0256ad1207567f
 
 pkgname = posting

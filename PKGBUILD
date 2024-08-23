@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="posting"
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="The modern API client that lives in your terminal"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('python>=3.11' 'python-click' 'python-xdg-base-dirs' 'python-httpx'
          'python-textual' 'python-typing_extensions' 'python-textual-autocomplete')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('cbf2321f6c432590dfdff205486dc5da465847d6baa78b823a2209ffaffb0f9f')
+sha256sums=('e7bc1810f6b3ee64d34e61b0ebf8dcd4e36105dab21e9fe60c0256ad1207567f')
 
 # prepare() {
 #   cd "${srcdir}/${_pkgsrc}/src/${pkgname}"
@@ -31,7 +31,7 @@ build() {
 
 # check() {
 #   cd "${srcdir}/${_pkgsrc}"
-#   PYTHONPATH=src pytest tests/ -m "not serial"
+#   PYTHONPATH="src/${pkgname}" pytest tests/ -m "not serial"
 # }
 
 package() {
