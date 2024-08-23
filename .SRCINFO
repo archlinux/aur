@@ -1,16 +1,14 @@
 pkgbase = exercism-bin
 	pkgdesc = Command line client for exercism.io
-	pkgver = 3.4.2
-	pkgrel = 2
+	pkgver = 3.5.0
+	pkgrel = 1
 	url = https://github.com/exercism/cli
 	arch = i686
 	arch = x86_64
 	license = MIT
 	conflicts = exercism
 	replaces = exercism-cli
-	source_i686 = https://github.com/exercism/cli/releases/download/v3.4.2/exercism-3.4.2-linux-i386.tar.gz
-	sha256sums_i686 = 91c857f3a55b1374c5d9c261b173d4a2413868eb56e82d3bd98b2ab93ec73c0e
-	source_x86_64 = https://github.com/exercism/cli/releases/download/v3.4.2/exercism-3.4.2-linux-x86_64.tar.gz
-	sha256sums_x86_64 = b548793bf6296041e0bfcf7485d9f002660a518c67d642fe0fc9d97eb677e66c
+	source_x86_64 = https://github.com/exercism/cli/releases/download/v3.5.0/exercism-3.5.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 002520b300f7faa7f2bfe80d8f111e6484a303e640d71f5ada60d1a645432db8
 
 pkgname = exercism-bin
