@@ -2,7 +2,7 @@
 # Co-maintainer: Nebulosa <nebulosa2007 at yandex dot ru>
 
 pkgname=cassette-git
-pkgver=0.2.0.r22.g4c1ddb7
+pkgver=0.2.0.r23.gbd0e6d7
 pkgrel=1
 pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
 arch=(aarch64 x86_64)
@@ -14,6 +14,7 @@ depends=(
   gdk-pixbuf2
   glibc
   glib2
+  gst-plugins-good
   "gtk4>=1:4.15"
   hicolor-icon-theme
   "libadwaita>=1:1.6beta"
@@ -27,11 +28,6 @@ makedepends=(
   git
   meson
   vala
-)
-optdepends=(
-  'gst-libav: nonfree media decoding'
-  'gst-plugins-bad: media decoding'
-  'gst-plugins-good: media decoding'
 )
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
