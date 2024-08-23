@@ -1,6 +1,6 @@
 pkgbase = python-proton-vpn-network-manager-wireguard
 	pkgdesc = The proton-vpn-network-manager-wireguard component implements the wireguard VPN protocol using NetworkManager.
-	pkgver = 0.1.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/ProtonVPN/python-proton-vpn-network-manager-wireguard
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-proton-vpn-network-manager-wireguard
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-proton-vpn-network-manager
-	source = git+https://github.com/ProtonVPN/python-proton-vpn-network-manager-wireguard.git#tag=v0.1.0
+	source = git+https://github.com/ProtonVPN/python-proton-vpn-network-manager-wireguard.git#tag=v0.4.1
 	sha256sums = SKIP
 
 pkgname = python-proton-vpn-network-manager-wireguard
