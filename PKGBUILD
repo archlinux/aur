@@ -9,7 +9,7 @@ license=('EUPL')
 groups=()
 depends=('openssl' 'python')
 makedepends=('rust' 'cargo' 'git' 'desktop-file-utils' 'gcc' 'binutils')
-checkdepends=()
+checkdepends=('fontconfig' 'freetype2')
 optdepends=()
 provides=('surfer-waveform')
 conflicts=()
@@ -22,7 +22,7 @@ source=('surfer-waveform-git::git+https://gitlab.com/surfer-project/surfer#branc
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
-pkgver=v0.2.0.r147.g8e60006
+pkgver=v0.2.0.r156.gc008d28
 
 pkgver() {
     cd "$pkgname"
@@ -46,7 +46,7 @@ build() {
 check() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --release --all-features
+    cargo test --frozen --all-features
 }
 
 package() {

@@ -1,10 +1,12 @@
 pkgbase = surfer-waveform-git
 	pkgdesc = A waveform viewer with a focus on a snappy usable interface, and extensibility.
-	pkgver = v0.2.0.r147.g8e60006
+	pkgver = v0.2.0.r156.gc008d28
 	pkgrel = 1
 	url = https://gitlab.com/surfer-project/surfer
 	arch = x86_64
 	license = EUPL
+	checkdepends = fontconfig
+	checkdepends = freetype2
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
