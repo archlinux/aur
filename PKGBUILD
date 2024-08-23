@@ -2,7 +2,7 @@
 
 _pkgname='gotify-cli'
 pkgname="${_pkgname}-bin"
-pkgver=2.2.3
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='Command line interface for pushing messages to gotify server'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -16,11 +16,11 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver
 source_armv7h=("${_pkgname}-${pkgver}-armv7h::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm-7")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64")
 
-sha256sums=('ec5096c0281e3a6a88212a08378c99ad6cb63677742d9d801753d12f1d169bd7'
+sha256sums=('5eed9472de7c82c8e07d286f2ae9e4125930f91791d16b5c4e0a04d65bd8d284'
             '5df0ff608e5281cbd72c7087c1f60b0ed241a627d6249b89ad9da8853c7771f7')
-sha256sums_x86_64=('3baeab63dfeed975b4a63f18fa9236e58ff6cfc6f16505562dc8c5cc5c34738e')
-sha256sums_armv7h=('60ddb04d47bf157680cd913c29b9ea2c9348dce80951343a29381e99df9a86fc')
-sha256sums_aarch64=('04860e411378249db70a67115425801c58bb71789fd6e5e7cfb9aeb5e0da8c2d')
+sha256sums_x86_64=('22d42aa978d9c63b9578b82a5c13579655cd266836bff20af5afec17abc1b28f')
+sha256sums_armv7h=('dd24d099157e965a6741ed11cb9186a788ccf17162034c2a70fe65a64001c286')
+sha256sums_aarch64=('8f647d4382c7628553da7d6cda1eee0397e08b8a822d59e61b965ec4aeef620f')
 
 package() {
   install -Dm755 "${_pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
