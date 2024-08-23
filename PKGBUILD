@@ -1,7 +1,7 @@
-# Maintainer: let <let@notlet.dev>
+# Maintainers: let <let@notlet.dev>, EnumDev <enumdev@enumerated.dev>
 
 pkgname=stormfetch
-pkgver=5.2.r4.ge311649
+pkgver=5.3.r0.g0fd198d
 pkgrel=1
 pkgdesc='A simple linux fetch program written in go and bash'
 arch=('any')
