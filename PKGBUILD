@@ -1,0 +1,85 @@
+# Maintainer: Denis Benato <benato.denis96@gmail.com>
+
+pkgname=sbctl-dracut-conf
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Dracut-specific configuration for sbctl"
+arch=('any')
+license=('MIT')
+
+backup=(
+    'etc/dracut.conf.d/01-cmdline.conf'
+)
+
+depends=(
+    'dracut' # regenerate the initramfs
+    #'plymouth' # support for boot animations
+    'sbctl' # support for secure-boot
+    'btrfs-progs' # btrfs hook
+    'binutils' # allow usage of --strip
+)
+
+conflicts=(
+    'mkinitcpio'
+)
+
+source=(
+    "dracut-install.sh"
+    "dracut-remove.sh"
+    "00-base.conf"
+    "01-cmdline.conf"
+    "10-fstab.conf"
+    "20-plymouth.conf"
+    "30-filesystems.conf"
+    "40-resume_from_hibernate.conf"
+    "50-brltty.conf"
+    "60-networking.conf"
+    "70-nvdimm.conf"
+    "80-qemu.conf"
+    "90-bluetooth.conf"
+    "60-dracut-remove.hook"
+    "90-dracut-install.hook"
+)
+
+sha256sums=(
+    '47dd65bbc08195fb60110569d220647bd9d74e04f6571ee54405ca5851b68046' # dracut-install.sh
+    'ef41ef9a6b03e968b9ade1b6d92237b081fbcd58132d98f20d44e643f44d79d1' # dracut-remove.sh
+    '704aafe8b5194dc653543febbee8eb13afc52cf353fb0010722ed31409136d9e' # 00-base.conf
+    '399fa1a896df221a9bf544b5437a901684f8876cae9c24fa16a3d44652f832cd' # 01-cmdline.conf
+    '7886062a7293d2e6bd6e975c4a8aaae63342af366479db8adf1b75860081cf53' # 10-fstab.conf
+    '103cf3322954202c3f0f740cd9079546d059f919c8b1b07ac703ec6f94cf17fb' # 20-plymouth.conf
+    '676b4a216cd3787882edf2e5bdaebce4577a11dbae176f81bab1c1b72917fc09' # 30-filesystems.conf
+    'e68879e7993bab99e13f6696fc47e4f2f6ae9d458ebf576cf4d5f0dc38fbc23a' # 40-resume_from_hibernate.conf
+    'fc326305712dde6930ff7186480bd724ecb0922e6eabcf7a9677285b9818ec0a' # 50-brltty.conf
+    'e1f9caf3878e65ca28951642ad02c1b167eacba777b4ccc893f6b8702a6d474e' # 60-networking.conf
+    '5822aa5a698577937820ab2565a203492b6af81434bf1423664ef68bba8c1617' # 70-nvdimm.conf
+    'b126149ca9f79bb1deb7ec640f4452dd61f4214558f954b7bc9196c5e9ca6ef0' # 80-qemu.conf
+    'e983493fe3e7d9395dd8d1c8949150144c8d4318ff17ff2aca004235734c8299' # 90-bluetooth.conf
+    '41c996bf7ef90e6a81690c4a06cbef89167882a036699834fe22637a1a184982' # 60-dracut-remove.hook
+    'df94baaf97d110f65f1443dd7063fe0e8ec1f73b5baf142c6ff08c260e571fcb' # 90-dracut-install.hook
+)
+
+package() {
+    mkdir -p "$pkgdir/etc/dracut.conf.d/"
+    mkdir -p "$pkgdir/usr/local/bin/"
+    mkdir -p "$pkgdir/usr/share/libalpm/hooks"
+    
+    install -m 755 "$srcdir/dracut-install.sh" "$pkgdir/usr/local/bin"
+    install -m 755 "$srcdir/dracut-remove.sh" "$pkgdir/usr/local/bin"
+
+    install -m 644 "$srcdir/60-dracut-remove.hook" "$pkgdir/usr/share/libalpm/hooks"
+    install -m 644 "$srcdir/90-dracut-install.hook" "$pkgdir/usr/share/libalpm/hooks"
+
+    install -m 644 "$srcdir/00-base.conf" "$pkgdir/etc/dracut.conf.d"
+    install -m 644 "$srcdir/01-cmdline.conf" "$pkgdir/etc/dracut.conf.d"
+    install -m 644 "$srcdir/10-fstab.conf" "$pkgdir/etc/dracut.conf.d"
+    install -m 644 "$srcdir/20-plymouth.conf" "$pkgdir/etc/dracut.conf.d"
+    install -m 644 "$srcdir/30-filesystems.conf" "$pkgdir/etc/dracut.conf.d"
+    install -m 644 "$srcdir/40-resume_from_hibernate.conf" "$pkgdir/etc/dracut.conf.d"
+    install -m 644 "$srcdir/50-brltty.conf" "$pkgdir/etc/dracut.conf.d"
+    install -m 644 "$srcdir/60-networking.conf" "$pkgdir/etc/dracut.conf.d"
+    install -m 644 "$srcdir/70-nvdimm.conf" "$pkgdir/etc/dracut.conf.d"
+    install -m 644 "$srcdir/80-qemu.conf" "$pkgdir/etc/dracut.conf.d"
+    install -m 644 "$srcdir/90-bluetooth.conf" "$pkgdir/etc/dracut.conf.d"
+}
+
