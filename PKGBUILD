@@ -3,18 +3,19 @@
 
 _pkgname="bertini_real"
 pkgname="${_pkgname}-git"
-pkgver=1.6.1.r278.58a8faa
+pkgver=1.6.1.r280.6bd1ddf
 _commit="95a90e8bca7787731ba5b300f409bea0806fe112"
 pkgrel=1
 pkgdesc="Numerical decomposition of real algebraic sets, based on the Bertini homotopy continuation solver"
-arch=('any')
+arch=('x86_64')
 url="https://www.bertinireal.com"
 _url="https://github.com/ofloveandhate/${_pkgname}"
 license=('custom:Bertini license')
-makedepends=('boost>=1.50')
-depends=('glibc' 'gcc-libs' 'boost-libs' 'bertini-parallel' 'gmp' 'mpfr' 'openmpi')
-optdepends=('python-bertini_real: Python interface support'
-            'bertini_real-docs: XHTML documentation')
+makedepends=('git' 'boost>=1.50')
+depends=('glibc' 'gcc-libs' 'boost-libs>=1.50' 'bertini-parallel' 'gmp' 'mpfr'
+         'openmpi')
+optdepends=("python-${_pkgname}: Python interface support"
+            "${_pkgname}-docs: XHTML documentation")
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"

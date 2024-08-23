@@ -1,14 +1,15 @@
 pkgbase = bertini_real-git
 	pkgdesc = Numerical decomposition of real algebraic sets, based on the Bertini homotopy continuation solver
-	pkgver = 1.6.1.r278.58a8faa
+	pkgver = 1.6.1.r280.6bd1ddf
 	pkgrel = 1
 	url = https://www.bertinireal.com
-	arch = any
+	arch = x86_64
 	license = custom:Bertini license
+	makedepends = git
 	makedepends = boost>=1.50
 	depends = glibc
 	depends = gcc-libs
-	depends = boost-libs
+	depends = boost-libs>=1.50
 	depends = bertini-parallel
 	depends = gmp
 	depends = mpfr
