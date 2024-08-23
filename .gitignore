@@ -3,3 +3,4 @@ src/
 tuxguitar-*
 *.log
 *.pkg.tar.*
+*.zip

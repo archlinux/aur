@@ -6,7 +6,7 @@
 # Contributor: |AhIoRoS| < ahioros@gmail.com >
 
 pkgname=tuxguitar
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc='A multitrack guitar tablature editor and player'
 arch=('x86_64' 'aarch64')
@@ -23,17 +23,17 @@ optdepends=('fluidsynth: FluidSynth plugin support'
             'lilypond: Compile exported LilyPond files')
 replaces=('tuxguitar-common' 'tuxguitar-gtk2')
 source=("tuxguitar-$pkgver.zip::https://github.com/helge17/tuxguitar/archive/refs/tags/$pkgver.zip")
-source_x86_64=("https://archive.eclipse.org/eclipse/downloads/drops4/R-4.21-202109060500/swt-4.21-gtk-linux-x86_64.zip")
-source_aarch64=("https://archive.eclipse.org/eclipse/downloads/drops4/R-4.21-202109060500/swt-4.21-gtk-linux-aarch64.zip")
-sha256sums=('5a0855ea63e32773670dc7bc85ae4e76c055c8afd12016307e60d02135fde62c')
-sha256sums_x86_64=('3e35a4ababf504bcf64df864e4a957aaa2f0dec9696a922d936c7ee224fa4c5f')
-sha256sums_aarch64=('6d0e8d28eebe051710bc379d86a1ff8141aadcac633be0e02ce0a1eaab01a144')
+source_x86_64=("https://archive.eclipse.org/eclipse/downloads/drops4/R-4.26-202211231800/swt-4.26-gtk-linux-x86_64.zip")
+source_aarch64=("https://archive.eclipse.org/eclipse/downloads/drops4/R-4.26-202211231800/swt-4.26-gtk-linux-aarch64.zip")
+sha256sums=('fc31b04725369d99507b6df16047f288a3bd174e09df751d46ea399f9f1a3c6e')
+sha256sums_x86_64=('fac4cb43891114d56fae2771f3d03759befac05c4777c190662ce24386d332e2')
+sha256sums_aarch64=('e5deda6315ccee51b6cd907af936adc0f861cf35cf444f812d8c7a6d1bf707e8')
 
 prepare() {
     export MAVEN_OPTS="$MAVEN_OPTS -Duser.home=$srcdir"
 
-    # Install SWT manually (see https://github.com/helge17/tuxguitar/blob/1.6.3/INSTALL.md#download-and-install-swt-for-linux)
-    mvn install:install-file -Dfile=swt.jar -DgroupId=org.eclipse.swt -DartifactId=org.eclipse.swt.gtk.linux -Dpackaging=jar -Dversion=4.21
+    # Install SWT manually (see https://github.com/helge17/tuxguitar/blob/1.6.4/INSTALL.md#download-and-install-swt-for-linux)
+    mvn install:install-file -Dfile=swt.jar -DgroupId=org.eclipse.swt -DartifactId=org.eclipse.swt.gtk.linux -Dpackaging=jar -Dversion=4.26
 }
 
 build() {
@@ -63,6 +63,6 @@ package() {
     ln -s /opt/tuxguitar/tuxguitar.sh usr/bin/tuxguitar
     ln -s /opt/tuxguitar/share/applications/tuxguitar.desktop usr/share/applications/
     ln -s /opt/tuxguitar/share/mime/packages/tuxguitar.xml usr/share/mime/packages/
-    ln -s /opt/tuxguitar/share/pixmaps/tuxguitar.xpm usr/share/pixmaps/
+    ln -s /opt/tuxguitar/share/pixmaps/tuxguitar.png usr/share/pixmaps/
     ln -s /opt/tuxguitar/share/man/man1/tuxguitar.1.gz usr/share/man/man1/tuxguitar.1.gz
 }
