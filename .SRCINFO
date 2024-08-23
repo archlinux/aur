@@ -5,7 +5,7 @@ pkgbase = ocm-cli
 	url = https://github.com/open-component-model/ocm
 	arch = x86_64
 	license = Apache-2.0
-	source = https://github.com/open-component-model/ocm/releases/download/v0.13.0/ocm-0.12.0-linux-amd64.tar.gz
+	source = https://github.com/open-component-model/ocm/releases/download/v0.13.0/ocm-0.13.0-linux-amd64.tar.gz
 	b2sums = c13da1d6d67d5418c1e7aac4e708407ee038aa276927d5147a3a3e5fe2b322fda175b550860ca1cf1c27583471d2613dee6e5b30c98899e8e791f3e912ce2bf8
 
 pkgname = ocm-cli
