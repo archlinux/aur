@@ -1,6 +1,6 @@
 pkgbase = xmcl-launcher
 	pkgdesc = X Minecraft Launcher - 一个现代化的 Minecraft 启动器
-	pkgver = 0.45.2
+	pkgver = 0.46.0
 	pkgrel = 1
 	url = https://xmcl.app/
 	arch = x86_64
