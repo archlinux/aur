@@ -26,8 +26,7 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS='-buildmode=pie -trimpath -modcacherw'
 
-  cd "${pkgname}-${pkgver}/cmd/${pkgname}"
-  go build -ldflags="${_flags[*]}"
+  go build -C "${pkgname}-${pkgver}/cmd/${pkgname}" -ldflags="${_flags[*]}"
 }
 
 package() {
