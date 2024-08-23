@@ -1,14 +1,17 @@
-pkgbase = calibre-plugin-kobo-driver
+pkgbase = calibre-plugin-kobo-driver-git
 	pkgdesc = An extension of the existing KoboTouch driver provided with Calibre
 	pkgver = 3.6.7
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/jgoguen/calibre-kobo-driver/
 	arch = any
 	license = GPL3
 	makedepends = python
 	makedepends = zip
+	makedepends = git
 	depends = calibre
-	source = https://github.com/jgoguen/calibre-kobo-driver/archive/refs/tags/v3.6.7.tar.gz
-	sha256sums = 99ff267f5ca417eb6d51dd73744ba62adf32d8507638db64b91f87e4d5a3b5cf
+	provides = calibre-plugin-kobo-driver
+	conflicts = calibre-plugin-kobo-driver
+	source = git+https://github.com/jgoguen/calibre-kobo-driver.git
+	sha256sums = SKIP
 
-pkgname = calibre-plugin-kobo-driver
+pkgname = calibre-plugin-kobo-driver-git
