@@ -1,15 +1,15 @@
 pkgbase = srgn
 	pkgdesc = A code surgeon for precise text and code transplantation
-	pkgver = 0.12.0
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/alexpovel/srgn
 	arch = x86_64
-	license = MIT
+	license = MIT OR Apache-2.0
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = srgn-0.12.0.tar.gz::https://github.com/alexpovel/srgn/archive/srgn-v0.12.0.tar.gz
-	sha256sums = 6b87c2c26da7dcbf97d875f742bc00428d23d5a3a1d0cd788918dfa1764d9cc5
+	source = srgn-0.13.1.tar.gz::https://github.com/alexpovel/srgn/archive/srgn-v0.13.1.tar.gz
+	sha256sums = 1300d0490a21988f5bdbdb291457c1ebfa1140a05c9c94b29a0df898dc383791
 
 pkgname = srgn
