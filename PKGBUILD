@@ -1,13 +1,13 @@
 # Maintainer: bl4ckw1d0w bl4ckw1d0w.github@gmail.com
-pkgname=dracut-network-manager-wireless
+pkgname=dracut-network-manager-wireless-iwlwifi-ath9k-iwlwifi-ath9k
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A custom dracut module for initializing Wi-Fi connections during the early boot process."
 arch=('any')
-url="https://github.com/bl4ckw1d0w/dracut-network-manager-wireless"
+url="https://github.com/bl4ckw1d0w/dracut-network-manager-wireless-iwlwifi-ath9k"
 license=('Apache')
 depends=('dracut' 'networkmanager' 'wpa_supplicant' 'clevis')
-source=("dracut-network-manager-wireless-v$pkgver.tar.gz::https://raw.githubusercontent.com/b14ckw1d0w/dracut-network-manager-wireless/main/main/dracut-network-manager-wireless-v$pkgver.tar.gz")
+source=("dracut-network-manager-wireless-iwlwifi-ath9k-v$pkgver.tar.gz::https://raw.githubusercontent.com/b14ckw1d0w/dracut-network-manager-wireless-iwlwifi-ath9k/main/main/dracut-network-manager-wireless-iwlwifi-ath9k-v$pkgver.tar.gz")
 sha256sums=('e529ef35230a647c351dc186b8e697144010c3f8adf7c4f741b481dc9071451e')
 
 package() {
