@@ -2,16 +2,16 @@
 
 pkgname=swaydim
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Dims your display using brightnessctl"
 arch=('any')
-url="https://aur.archlinux.org/packages/swaydim"
+url="https://codeberg.org/fossdd/swaydim"
 license=('Unlicense')
 depends=('python' 'brightnessctl')
 makedepends=('git')
-source=("swaydim")
-md5sums=('e899fdf800fc6dac8904e09028240717')
+source=("git+$url?tag=$pkgver")
+md5sums=('SKIP')
 
 package() {
-	install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 "$srcdir/$pkgname/$pkgname.py" "$pkgdir/usr/bin/$pkgname"
 }
