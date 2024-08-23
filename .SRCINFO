@@ -1,17 +1,17 @@
 pkgbase = lib32-check
 	pkgdesc = A unit testing framework for C (32-bit)
 	pkgver = 0.15.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libcheck.github.io/check/
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-or-later
 	makedepends = git
 	makedepends = gcc-multilib
 	makedepends = lib32-gcc-libs
 	depends = lib32-glibc
 	depends = check
+	depends = lib32-gcc-libs
 	source = git+https://github.com/libcheck/check#commit=11970a7e112dfe243a2e68773f014687df2900e8
-	md5sums = SKIP
+	sha512sums = 24d2f93cf92f04c1c3bbd4a60c5f0ad355808f5c0535eb5668f5fe857bce0069690a6c12f37f04ca22f3ba7a4d148bc02195d03f59c24b1a50f54d8bbe3b2cd7
 
 pkgname = lib32-check
-
