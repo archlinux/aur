@@ -2,7 +2,7 @@
 # Maintainer:  Radu Potop <radu at wooptoo dot com>
 
 pkgname=cshatag
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='Detect silent data corruption using checksums in Ext4 extended attributes'
 arch=('x86_64')
@@ -28,4 +28,4 @@ package() {
     install -vDm 644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
 }
 
-sha256sums=('02c80ab8fe21a06206e6e2216724ad4882d7bc527fac71ff1e5e80f0a5c92964')
+sha256sums=('7b7b3c5e0261335c1fff8383f85beefc59ffa9d1fa762b5bd897b97a303ef401')

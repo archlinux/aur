@@ -1,6 +1,6 @@
 pkgbase = cshatag
 	pkgdesc = Detect silent data corruption using checksums in Ext4 extended attributes
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/rfjakob/cshatag
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cshatag
 	makedepends = bats
 	makedepends = go
 	optdepends = attr: Inspect extended file attributes
-	source = https://github.com/rfjakob/cshatag/archive/refs/tags/v2.2.0.tar.gz
-	sha256sums = 02c80ab8fe21a06206e6e2216724ad4882d7bc527fac71ff1e5e80f0a5c92964
+	source = https://github.com/rfjakob/cshatag/archive/refs/tags/v2.2.1.tar.gz
+	sha256sums = 7b7b3c5e0261335c1fff8383f85beefc59ffa9d1fa762b5bd897b97a303ef401
 
 pkgname = cshatag
