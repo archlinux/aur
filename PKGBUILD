@@ -1,5 +1,3 @@
-# Maintainer: BingBong
-
 pkgname=lib32-intel-media-driver
 pkgver=24.2.5
 pkgrel=1
