@@ -26,7 +26,6 @@ pkgver() {
 
 prepare() {
 	cd "${_pkgname}/"
-	sed -i '/build_runner/s/2.4.12/2.4.11/' pubspec.yaml # Temporarily fix Dart SDK version incompatibility
 	flutter pub get --enforce-lockfile || flutter pub get
 }
 
