@@ -1,6 +1,6 @@
 pkgbase = yirl-git
 	pkgdesc = Modular Game Engine
-	pkgver = r2109.4fa4384e
+	pkgver = r2693.0e055645
 	pkgrel = 1
 	url = http://github.com/cosmo-ray/yirl
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = yirl-git
 	makedepends = make
 	makedepends = autoconf
 	makedepends = cmake
+	makedepends = git
 	depends = lua
 	depends = json-c
 	depends = sdl2

@@ -1,7 +1,7 @@
 # Maintainer: Matthias Gatto <uso.cosmo.ray at gmail dot com>
 
 pkgname=yirl-git
-pkgver=r2109.4fa4384e
+pkgver=r2693.0e055645
 pkgrel=1
 pkgdesc='Modular Game Engine'
 
@@ -17,7 +17,7 @@ pkgver() {
 	 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-makedepends=(gcc make autoconf cmake)
+makedepends=(gcc make autoconf cmake git)
 # hopefully I should be able to remove glib2 and add sdl2-mixer soon
 depends=(lua json-c sdl2 sdl2_image sdl2_ttf sdl2_mixer glib2)
 
