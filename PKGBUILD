@@ -3,8 +3,8 @@
 # Contributor: Mihai Bişog <mihai.bisog@gmail.com>
 
 pkgname=lib32-fmt
-pkgver=10.1.1
-pkgrel=2
+pkgver=10.2.0
+pkgrel=1
 pkgdesc='Open-source formatting library for C++'
 arch=(x86_64)
 url=https://fmt.dev
@@ -15,13 +15,10 @@ makedepends=(
   git
   ninja
 )
-_tag=f5e54359df4c26b6230fc61d38aa294581393084
-source=(
-  git+https://github.com/fmtlib/fmt.git#tag=${_tag}
-  "https://gitlab.archlinux.org/archlinux/packaging/packages/fmt/-/raw/main/fmt-no-pip-no-virtualenv.patch"
-)
+source=(git+https://github.com/fmtlib/fmt.git#tag=${pkgver}
+        "https://gitlab.archlinux.org/archlinux/packaging/packages/fmt/-/raw/${pkgver}-1/fmt-no-pip-no-virtualenv.patch")
 b2sums=('SKIP'
-        '4e19e7b2cd8fd049b7c692c0efbc4b2f1dd6062f44a600f4f47be81ed0ed14defb4285eb09b8d8fb8bb55441689c3a659e157e91d2cdd94e4d7b00c28b6534f2')
+        '0bc421afdc4c2527525ce2e21740c9f72e05431394fb4710c1a8fa6d3bb2ee20d0630e2a76ddbac3c0ba27c1ab08f0c8e27d060def1370721b1c94246cbbf0ff')
 
 prepare() {
   cd fmt
@@ -57,5 +54,5 @@ package() {
   DESTDIR="${pkgdir}" cmake --build build --target install
   rm -rf "${pkgdir}"/usr/{include,share}
 
-  install -Dm 644 fmt/LICENSE.rst -t "${pkgdir}"/usr/share/licenses/${pkgname}/
+  install -Dm 644 fmt/LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
