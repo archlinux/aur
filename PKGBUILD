@@ -4,13 +4,13 @@
 # Contributor: Klaus Alexander Seistrup <klaus@seistrup.dk>
 
 pkgname='bc-gh'
-pkgver=6.7.6
+pkgver=7.0.0
 pkgrel=1
 pkgdesc='Implementation of dc and POSIX bc with GNU extensions'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/gavinhoward/bc'
 license=('BSD-2-Clause')  # SPDX-License-Identifier: BSD-2-Clause
-provides=('bc')
+provides=('bc' 'dc')
 conflicts=('bc')
 depends=('glibc' 'libedit')
 options=('lto' '!makeflags')
@@ -19,12 +19,12 @@ source=(
   "$pkgname-$pkgver.tar.xz.sig::$url/releases/download/$pkgver/bc-$pkgver.tar.xz.sig"
 )
 sha512sums=(
-  '418ce61e8151a548627b794692325f48c68f8cedca7a0cb8d896bb74510f55b33486214af0af1b160c1f387f3d034300dff6fbc29c2d44d7b304a7a37c3c478b'
-  'd25ef2fdd03b59156b2856d278779ebb8ee28e495444ac6ab71b4b352b957ff378b5f69ef81aa71a0cd3fb1607e5c4e09bea90a05bbbb0bb4d7a3c12c04fb55d'
+  'ef89525eea8773dddb7efd3dd33f589de287ac807b772480e884bd666f29b2b0b362c999029cc6d82733f830195ca3f6fd867f15190fbcbf807ddbc4b24abb65'
+  '189a769cb328a83dd83ddc64b0e03943973cbde5c40f9950fd0a5077987c6548d5369f29d1ecef1791d95fcd4adf0548396a70ab308471020e48189b62612db3'
 )
 sha256sums=(
-  '828f390c2a552cadbc8c8ad5fde6eeaee398dc8d59d706559158330f3629ce35'
-  'e25673e6ed8f22919d19e60254cc1330e6f9c905188a8e6233f51548f90b9ee1'
+  '301dc2a5cac6b01eb6d0e56b487cc01b6bdd02c9dab526779cbf9c54afe88fb5'
+  'e1ca4ce1ee3fcf6414425615ab4d2a5f3d60d3770e79bf301d7402344858d03c'
 )
 validpgpkeys=('FF360647C7A7147F27DAAEC1B132F881C306590A')
 
