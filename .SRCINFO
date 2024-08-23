@@ -1,6 +1,6 @@
 pkgbase = cubeb
 	pkgdesc = Cross platform audio library
-	pkgver = 20230517
+	pkgver = 20240817
 	pkgrel = 1
 	url = https://github.com/mozilla/cubeb
 	arch = aarch64
@@ -10,7 +10,6 @@ pkgbase = cubeb
 	arch = pentium4
 	arch = x86_64
 	license = ISC
-	checkdepends = gtest
 	makedepends = alsa-lib
 	makedepends = cmake
 	makedepends = doxygen
@@ -23,11 +22,16 @@ pkgbase = cubeb
 	optdepends = jack: for JACK backend
 	optdepends = libpulse: for PulseAudio backend
 	optdepends = sndio: for sndio backend
-	provides = cubeb=20230517
-	provides = libcubeb.so
 	conflicts = cubeb-git
-	source = git+https://github.com/mozilla/cubeb#commit=48689ae7a73caeb747953f9ed664dc71d2f918d8
-	b2sums = SKIP
+	source = git+https://github.com/mozilla/cubeb#commit=8f6c9a01ddd7c1ac8360b9a31c54e24826ad073f
+	b2sums = defe0612774d2ca77cc5475c6cb579a67fc144b012a87d0329b30aa5785b5cbb17d29cc32c9fa51f0a4893a3fcb972a108212c21859c7ee0728b53168dcbe3b5
 
 pkgname = cubeb
 	depends = libspeexdsp.so
+	depends = glibc
+	depends = gcc-libs
+	provides = cubeb=20240817
+	provides = libcubeb.so
+
+pkgname = cubeb-docs
+	arch = any
