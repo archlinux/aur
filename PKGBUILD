@@ -1,6 +1,7 @@
 # Maintainer: BingBong
 # Maintainer: Proton Technologies AG <opensource at proton dot me>
 # Co-Maintainer: Alexandru Cheltutior <acrandom at pm dot me>
+
 pkgname=python-protonvpn-nm-lib
 _gitpkgname=protonvpn-nm-lib
 pkgver=3.16.0
@@ -16,11 +17,11 @@ source=("https://github.com/ProtonVPN/protonvpn-nm-lib/archive/refs/tags/$pkgver
 sha256sums=('9edf705d435b65d54c7224d4bc853b4b7e02a228a57264083b2776b8424aee36')
 
 build() {
-    cd "$_gitpkgname-$pkgver"
-    python setup.py build
+        cd "$_gitpkgname-$pkgver"
+        python setup.py build
 }
 
 package() {
-    cd "$_gitpkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1
+        cd "$_gitpkgname-$pkgver"
+        python setup.py install --root="$pkgdir" --optimize=1
 }
