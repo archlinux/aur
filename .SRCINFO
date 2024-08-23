@@ -9,7 +9,7 @@ pkgbase = dracut-network-manager-wireless-iwlwifi-ath9k
 	depends = networkmanager
 	depends = wpa_supplicant
 	depends = clevis
-	source = dracut-network-manager-wireless-iwlwifi-ath9k-v$pkgver.tar.gz::https://raw.githubusercontent.com/b14ckw1d0w/dracut-network-manager-wireless/main/main/dracut-network-manager-wireless-iwlwifi-ath9k-v$pkgver.tar.gz
+	source = dracut-network-manager-wireless-iwlwifi-ath9k-v$pkgver.tar.gz::https://github.com/b14ckw1d0w/dracut-network-manager-wireless/blob/49ba3bf53030b06758cd42d9c7c5ab1b5f1498a5/aur/dracut-network-manager-wireless-iwlwifi-ath9k-v$pkgver.tar.gz
 	sha256sums = e529ef35230a647c351dc186b8e697144010c3f8adf7c4f741b481dc9071451e
 
 pkgname = dracut-network-manager-wireless-iwlwifi-ath9k
