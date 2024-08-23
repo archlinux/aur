@@ -1,6 +1,6 @@
 pkgbase = lantern-bin
 	pkgdesc = A censorship circumvention tool that delivers fast, reliable, and secure access to the open internet
-	pkgver = 7.9.2
+	pkgver = 7.9.4
 	pkgrel = 1
 	url = https://lantern.io
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = lantern-bin
 	provides = lantern
 	conflicts = lantern
 	options = !docs
-	source = lantern-bin-7.9.2.deb::https://github.com/getlantern/lantern-binaries/raw/84cfddcba6e764d11e90f57c8aba1cbc92d21c84/lantern-installer-64-bit.deb
+	source = lantern-bin-7.9.4.deb::https://github.com/getlantern/lantern-binaries/raw/a3b9fcf7560c6399cabbce2b988e3ea3481520e4/lantern-installer-64-bit.deb
 	source = lantern.service
-	sha256sums = 841cddf2cb1632e406a8a73e6902a1cb5bca88b7a194892da481809b2f25fcf1
+	sha256sums = 1b5bdf25920f6717b867c5207869e0fd7344d3a0ad96c5d5257b6bf374fc1ca8
 	sha256sums = fdece37945be10c00210bbde7b4058c356ef1df0554bd963fcddd12990ff930b
 
 pkgname = lantern-bin
