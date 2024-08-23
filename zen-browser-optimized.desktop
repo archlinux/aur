@@ -3,10 +3,24 @@ Version=0.0
 Name=Zen Browser (Optimized)
 GenericName=Web Browser
 Comment=Browse the Web
+Keywords=Internet;WWW;Browser;Web;Explorer
 Exec=/opt/zen-browser-optimized-bin/zen-bin %U
 Icon=zen-browser-optimized
 Terminal=false
 Type=Application
+MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;application/pdf;application/json;
+StartupWMClass=Zen Browser
 Categories=Network;WebBrowser;
-MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;
-StartupWMClass=Zen Browser Optimized
+Actions=new-window;new-private-window;profile-manager-window;
+
+[Desktop Action new-window]
+Name=Open a New Window
+Exec=/opt/zen-browser-optimized-bin/zen-bin --new-window %u
+
+[Desktop Action new-private-window]
+Name=Open a New Private Window
+Exec=/opt/zen-browser-optimized-bin/zen-bin --private-window %u
+
+[Desktop Action profile-manager-window]
+Name=Open the Profile Manager
+Exec=/opt/zen-browser-optimized-bin/zen-bin --ProfileManager %u

@@ -7,7 +7,7 @@ pkgname=zen-browser-optimized-bin
 _pkgname=zen-browser-optimized
 _realpkgver=1.0.0-a.28
 pkgver=1.0.0.a.28
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Experience tranquillity while browsing the web without people tracking you! (optimized/specific binary)"
 arch=('x86_64' 'i686')
@@ -44,7 +44,7 @@ source=("https://github.com/zen-browser/desktop/releases/download/$_realpkgver/z
 )
 b2sums=('4335c5c21934155a4d072948fb2da6f0d1590a9c9146c7bc26b729230100c9dd98cdd02daf25042c0040fec92d7fce5a1f25a43a3fad95256c0d06bbaea2534a'
 	'6f30f2b0325dc975f64b1cc35d175946a0978f856f52993c32bfb0d86bf90d94069764aafc78d767d10d2775d3cae277499e6a67b85d29c39c1e366d60cee72f'
-	'0d2772efc8ab9b5db1df6ba6ba748a0bed4e9161850ed723077d40a0af62cea7bdaaa6def2e5a08662c6a4ba6ef31930d464a1c97084f3a45adff232d58a3bc7'
+	'e68e9312ec7f68c6f65fbb15ba34523b7e8173006ec0947013a8ab263c1832c4bfa7d25ebf14ba1dbdfdfc03a5318b7861672607653e6ae844e12f985a955ca5'
 	'22da0ff6348186a5b05ec68cf7b262a0a061bd1de7777fa8b6fcf092f75453ea0d88d8e05a0e741803aa6c3f723a7801cefc697ac4a10e9c0ed28ec99ab89299'
 	'019f24b4a5c65da2757108a3774d9bf5e995ae280b754e204578330c98622cd2f0f8cdb685d770f6c241cbfd0dd5dcda69b052349c5be40562dd31e263ecb276')
 
