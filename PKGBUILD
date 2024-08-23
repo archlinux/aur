@@ -2,7 +2,7 @@
 
 pkgname='ahriman'
 pkgver=2.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ArcH linux ReposItory MANager"
 arch=('any')
 url="https://github.com/arcan1s/ahriman"
@@ -57,4 +57,4 @@ package() {
 
 sha512sums=('fa0756e0114bf61a4e719aa7b7334553a624ddb0f533e919c13e857527032a79eee3c21016bb768293cfae3e297b3c356b4345e6ed5927147970639e6e6e9769'
             'b1dd772f8802be99ccba3add5f1e6f78e5e79d0967342668dd12e472651a6b91c342f11fba330caaca421cc3d6c7e2011e09a6bd131f8ba14bbc4a6206cce539'
-            'ac22af25fc08f5bf1b9acbb77bbb6b2bb7af12d78ff1ae99463c16f36f1dd5ebae3af1413e353634aed5275af0eefee41257eded7987e67ae6a9411999d5a2ba')
+            '331e286cc82a7aca07b0332fab886e7404884a83f942afcee590b4a7a06abc1e3daa2dcf50d45041007ad7f3b93f760bfea5c7d38aa57937b0e103fd65b36564')
