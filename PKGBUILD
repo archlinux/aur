@@ -1,7 +1,7 @@
 # Maintainer: Toni500 <tonino512@linuxmail.org>
 pkgname="customfetch-git"
 _pkgname="customfetch"
-pkgver=0.1.0
+pkgver=0.8.6.r2.fad7a19
 pkgrel=1
 pkgdesc="Highly customizable and fast system information fetch program"
 arch=('x86_64' 'aarch64')
@@ -13,10 +13,10 @@ conflicts=('customfetch-gui-git')
 source=("git+${url}.git")
 sha256sums=("SKIP")
 
-#pkgver() {
-#    cd "${srcdir}/${_pkgname}"
-#    git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
-#}
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+    git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+}
 
 build() {
     make -C "${srcdir}/${_pkgname}" DEBUG=0 GUI_MODE=0
