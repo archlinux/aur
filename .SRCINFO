@@ -1,11 +1,13 @@
 pkgbase = quickhash-gui-bin
 	pkgdesc = QuickHash is an open-source Linux GUI that enables hashing of files, text, entire folder trees of files, and physical disks
 	pkgver = 3.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://quickhash-gui.org/
 	arch = x86_64
 	license = GPL2
+	makedepends = gendesk
 	depends = gtk2
+	depends = libewf
 	provides = quickhash-gui
 	conflicts = quickhash-gui
 	source = quickhash-gui-bin-3.3.4.zip::https://quickhash-gui.org/download/quickhash-v3-3-4-debian-packages-for-linux/?wpdmdl=2257
