@@ -9,7 +9,7 @@ url='https://www.jetbrains.com/go/'
 license=('custom:jetbrains')
 depends=('glib2')
 options=('!strip')
-source=("https://download-cf.jetbrains.com/go/${pkgbase}-${pkgver}.tar.gz"
+source=("https://download.jetbrains.com/go/${pkgbase}-${pkgver}.tar.gz"
         jetbrains-goland.desktop
         LICENSE)
 b2sums=('69481ed0fcc140ddc13ef5e874244e6516c9c700fbbfd87e6301d843d0a492a9b4693a823c63bfb56dfe73d65f465b2ee73b3f11d2b25c8e33afb39df2940d1e'
