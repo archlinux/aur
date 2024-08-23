@@ -6,7 +6,7 @@
 # Contributor: Artem Klevtsov <a.a.klevtsov@gmail.com>
 
 pkgname=lantern-bin
-pkgver=7.9.4
+pkgver=7.9.5
 pkgrel=1
 pkgdesc="A censorship circumvention tool that delivers fast, reliable, and secure access to the open internet"
 arch=('x86_64')
@@ -16,10 +16,10 @@ depends=('bash' 'gcc-libs' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libayata
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 options=('!docs')
-_commit=a3b9fcf7560c6399cabbce2b988e3ea3481520e4
+_commit=9911ca51534c2f3db233db8499525cc2d31aa422
 source=("${pkgname}-${pkgver}.deb::https://github.com/getlantern/lantern-binaries/raw/${_commit}/lantern-installer-64-bit.deb"
         "${pkgname%-bin}.service")
-sha256sums=('1b5bdf25920f6717b867c5207869e0fd7344d3a0ad96c5d5257b6bf374fc1ca8'
+sha256sums=('71838161314ff08efadc31c3ed10afc70cc074af689f0f8ed81c7dfaebcc189f'
             'fdece37945be10c00210bbde7b4058c356ef1df0554bd963fcddd12990ff930b')
 
 package() {
