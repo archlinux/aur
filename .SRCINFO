@@ -1,6 +1,6 @@
 pkgbase = cinny-desktop-appimage
 	pkgdesc = Yet another matrix client for desktop
-	pkgver = 3.0.0
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/cinnyapp/cinny-desktop
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cinny-desktop-appimage
 	conflicts = cinny-desktop
 	conflicts = cinny-dekstop-bin
 	options = !strip
-	source = https://github.com/cinnyapp/cinny-desktop/releases/download/v3.0.0/Cinny_desktop-x86_64.AppImage
-	sha256sums = 9d86b7a4adb66d2f0c3ca81bd9d55b3997d769426743a1aa9ea333a93a014c13
+	source = https://github.com/cinnyapp/cinny-desktop/releases/download/v4.1.0/Cinny_desktop-x86_64.AppImage
+	sha256sums = 26f817a5ff7a97cc6090fe5f1e13f9ac01f0dcc6ab6f02451936642bc689b1b6
 
 pkgname = cinny-desktop-appimage
