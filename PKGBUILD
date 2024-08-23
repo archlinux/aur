@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=poibin
-_pkgver=1.5
+_pkgver=1.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=8
+pkgrel=1
 pkgdesc="The Poisson Binomial Distribution"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ccb27983b15b6670ae4b454bea9bd0a1')
-b2sums=('818f937ae9c1b013dff2b623185b7337a7a0d411c53098a178f6e65b19a1c396b2235a056d9e3510436d9ea1787b4b11189653f2a0719a1d448ed63e17d6256a')
+md5sums=('8b5262241d78a182923b68aa61b70af0')
+b2sums=('0cafc80790640a0718279566dd0c4d8d19f234101a0952f7bbf1739e8f0ff8cbb3b906894af1282b3e0a685ee08441aa7c1b4b2705fd6ff596e63c176d5f0196')
 
 build() {
   mkdir build
