@@ -1,6 +1,6 @@
 pkgbase = purr-data
 	pkgdesc = Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)
-	pkgver = 2.19.4.r5122.2a2333ee
+	pkgver = 2.19.4.r5135.1b0bf712
 	pkgrel = 1
 	url = https://agraef.github.io/purr-data/
 	install = purr-data.install
@@ -58,9 +58,9 @@ pkgbase = purr-data
 	options = !strip
 	source = purr-data::git+https://github.com/agraef/purr-data.git#branch=release
 	md5sums = SKIP
-	source_i686 = http://dl.nwjs.io/v0.67.0/nwjs-sdk-v0.67.0-linux-ia32.tar.gz
-	md5sums_i686 = b28aa869f8cc839747596cb69b051cb6
-	source_x86_64 = http://dl.nwjs.io/v0.67.0/nwjs-sdk-v0.67.0-linux-x64.tar.gz
-	md5sums_x86_64 = b36f08cbdc3daa682fbc499786d52acd
+	source_i686 = http://dl.nwjs.io/v0.55.0/nwjs-sdk-v0.55.0-linux-ia32.tar.gz
+	md5sums_i686 = e770757de2fc9bcbec8bb3fbe6d7d1c6
+	source_x86_64 = http://dl.nwjs.io/v0.55.0/nwjs-sdk-v0.55.0-linux-x64.tar.gz
+	md5sums_x86_64 = ac7680788544c457daee11aaf69798fe
 
 pkgname = purr-data
