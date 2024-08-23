@@ -8,19 +8,19 @@ pkgdesc="SVG and MathML rendering library"
 arch=('x86_64')
 url="https://github.com/LasemProject/${_name}"
 license=('LGPL-2.1-or-later')
-makedepends=('git' 'intltool>=0.35.0' 'pkgconf>=0.9.0' 'glib2-devel' 'gobject-introspection'
-             'perl>=5.8.1')
+makedepends=('intltool>=0.35.0' 'pkgconf>=0.9.0' 'glib2-devel' 'perl>=5.8.1'
+             'gobject-introspection')
 depends=('glibc' 'glib2' 'gtk2>=2.16' 'gdk-pixbuf2>=2.16' 'cairo>=1.2' 'pango'
          'libxml2' 'harfbuzz')
-provides=("${_name}=${pkgver}" "${_name}-0.2=${pkgver}")
-_pkgsrc="${_name}-${pkgver}"
-source=("${_pkgsrc}::git+${url}.git#tag=LASEM_${pkgver//./_}"
+provides=("${_name}=${pkgver}" "${_name}-0.2")
+_pkgsrc="${_name}-${_name^^}_${pkgver//./_}"
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/LASEM_${pkgver//./_}.tar.gz"
         "itex2mml-1.6.1.tar.gz::https://golem.ph.utexas.edu/~distler/blog/files/itexToMML.tar.gz"
         "${pkgname}_fix_lsmmathmlutils_h.patch"
         "${pkgname}_fix_makefile_am.patch"
         "${pkgname}_fix_potfiles_in.patch")
 noextract=("itex2mml-1.6.1.tar.gz")
-sha256sums=('a8e3b0b9074b76718227b20468018afdfd63fae426ecc500c703badc2eb1085f'
+sha256sums=('7bcad1cfa85b5c36743fae9e16f828c440210151c716a1268adf25a9e14fe70d'
             '3ef2572aa3421cf4d12321905c9c3f6b68911c3c9283483b7a554007010be55f'
             '4aa69c1d61a04c97df670d23e46f52709b535510e01247ef59db342d878f8822'
             '46a4773b20990d6e27e65870983d01366c46f16aee09070389935281baaa825b'
