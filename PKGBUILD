@@ -5,7 +5,7 @@
 
 pkgname='bc-gh'
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Implementation of dc and POSIX bc with GNU extensions'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/gavinhoward/bc'
@@ -60,7 +60,7 @@ package() {
   DESTDIR="$pkgdir" make install
 
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
-    {NEWS,NOTICE,README}.md
+    {MEMORY_BUGS,NEWS,NOTICE,README}.md
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE.md
 }
