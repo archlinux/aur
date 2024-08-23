@@ -3,12 +3,12 @@
 
 pkgname=lbdb
 pkgver=0.54
-pkgrel=1
+pkgrel=2
 pkgdesc="The little brother's database for the mutt mail reader"
 arch=('i686' 'x86_64')
 url="http://www.spinnaker.de/lbdb/"
 license=('GPL-2.0-only')
-depends=('awk' 'perl')
+depends=('awk' 'bash' 'glibc' 'perl')
 optdepends=(
   'libvformat: for reading vcard files [needed at compile time]'
 	'inetutils: provides the hostname binary'
@@ -20,7 +20,7 @@ sha256sums=('1579c38655d5cf7e2c6ca8aabc02b6590c8794ef0ae1fbb0c4d99226ffce5be7')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  ./configure --prefix=/usr --sysconfdir=/etc
+  ./configure --libdir=/usr/lib/$pkgname --sysconfdir=/etc
   make
 }
 

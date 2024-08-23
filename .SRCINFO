@@ -1,12 +1,14 @@
 pkgbase = lbdb
 	pkgdesc = The little brother's database for the mutt mail reader
 	pkgver = 0.54
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.spinnaker.de/lbdb/
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-only
 	depends = awk
+	depends = bash
+	depends = glibc
 	depends = perl
 	optdepends = libvformat: for reading vcard files [needed at compile time]
 	optdepends = inetutils: provides the hostname binary
