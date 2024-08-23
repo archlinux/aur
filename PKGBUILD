@@ -5,18 +5,12 @@ pkgname=('cubeb' 'cubeb-docs')
 pkgver=20240817
 #_commit=48689ae7a73caeb747953f9ed664dc71d2f918d8
 _commit=8f6c9a01ddd7c1ac8360b9a31c54e24826ad073f
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform audio library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/mozilla/cubeb"
 license=('ISC')
 makedepends=('alsa-lib' 'cmake' 'doxygen' 'git' 'jack' 'libpulse' 'sndio' 'speexdsp')
-optdepends=(
-    'alsa-lib: for ALSA backend'
-    'jack: for JACK backend'
-    'libpulse: for PulseAudio backend'
-    'sndio: for sndio backend'
-)
 conflicts=("$pkgname-git")
 source=(git+$url#commit=$_commit)
 b2sums=('defe0612774d2ca77cc5475c6cb579a67fc144b012a87d0329b30aa5785b5cbb17d29cc32c9fa51f0a4893a3fcb972a108212c21859c7ee0728b53168dcbe3b5')
@@ -46,6 +40,11 @@ build() {
 }
 
 package_cubeb() {
+ optdepends+=(
+    'alsa-lib: for ALSA backend'
+    'jack: for JACK backend'
+    'libpulse: for PulseAudio backend'
+    'sndio: for sndio backend')
     depends+=('libspeexdsp.so' 'glibc' 'gcc-libs')
     provides+=("$pkgname=$pkgver" 'libcubeb.so')
 
@@ -59,5 +58,5 @@ package_cubeb-docs() {
 	cd "$srcdir"
 	DESTDIR="$pkgdir" cmake --install build
 	install -Dm644 "$srcdir/cubeb/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	rm -rf "$pkgdir/usr/lib" "$pkgdir/usr/bin"
+	rm -rf "$pkgdir/usr/lib" "$pkgdir/usr/bin" "$pkgdir/usr/include"
 }
