@@ -53,6 +53,11 @@ build() {
   make
 }
 
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  make check
+}
+
 package_goffice08() {
   arch=('x86_64')
   depends=('glibc' 'glib2>=2.8.0' 'libgsf>=1.14.9' 'libxml2>=2.4.12'
