@@ -1,6 +1,6 @@
 pkgbase = python-s3fs
 	pkgdesc = A python file interface to S3.
-	pkgver = 2024.6.0
+	pkgver = 2024.6.1
 	pkgrel = 1
 	url = https://github.com/fsspec/s3fs
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = python-s3fs
 	makedepends = python-setuptools
 	depends = python
 	depends = python-aiobotocore
-	depends = python-fsspec=2024.6.0
-	source = python-s3fs-2024.6.0.tar.gz::https://github.com/fsspec/s3fs/archive/refs/tags/2024.6.0.tar.gz
-	sha256sums = 88e858f0960a17df3062c22e2a9cf208edaba1d4f9c578595833143bff2bfff4
+	depends = python-fsspec=2024.6.1
+	source = python-s3fs-2024.6.1.tar.gz::https://github.com/fsspec/s3fs/archive/refs/tags/2024.6.1.tar.gz
+	sha256sums = d92b2dce6ce5a3c07cc5b779b3fa5529539a350701b86e5c50e8046abf1cab0d
 
 pkgname = python-s3fs
