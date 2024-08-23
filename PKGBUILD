@@ -4,12 +4,12 @@
 
 pkgname=gdlauncher-bin
 pkgver=2.0.20
-pkgrel=3
+pkgrel=4
 pkgdesc='A simple, yet powerful Minecraft custom launcher with a strong focus on the user experience (binary release)'
 arch=('x86_64')
 url=https://gdlauncher.com
 license=('BUSL-1.1')
-_electron=electron30
+_electron=electron32
 provides=("${pkgname//-bin}")
 conflicts=("${pkgname//-bin}")
 source=("$pkgname-$pkgver.AppImage::https://cdn-raw.gdl.gg/launcher/GDLauncher__${pkgver}__linux__x64.AppImage"

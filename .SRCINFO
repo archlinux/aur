@@ -1,7 +1,7 @@
 pkgbase = gdlauncher-bin
 	pkgdesc = A simple, yet powerful Minecraft custom launcher with a strong focus on the user experience (binary release)
 	pkgver = 2.0.20
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gdlauncher.com
 	arch = x86_64
 	license = BUSL-1.1
@@ -15,7 +15,7 @@ pkgbase = gdlauncher-bin
 	b2sums = 93aed8a6736b73bc8ce08847d9dc895c0e14310125811ea43fbfe9977faa186c4d8f8ffcf88a2a17ab8ae34ab82e1ffbe84e1c590456d4bef46e552b5f80cee7
 
 pkgname = gdlauncher-bin
-	depends = electron30
+	depends = electron32
 	depends = gcc-libs
 	depends = glibc
 	depends = libxcb
