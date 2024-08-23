@@ -58,7 +58,7 @@ build() {
 
 	for res in 16x16 32x32 48x48 64x64 128x128 256x256; do
 		mkdir -p "icons/hicolor/${res}/apps/"
-		convert 'alvr/dashboard/resources/dashboard.ico' -thumbnail "${res}" -alpha on -background none -flatten "./icons/hicolor/${res}/apps/alvr.png"
+		magick 'alvr/dashboard/resources/dashboard.ico' -thumbnail "${res}" -alpha on -background none -flatten "./icons/hicolor/${res}/apps/alvr.png"
 	done
 }
 
