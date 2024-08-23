@@ -1,6 +1,6 @@
 pkgbase = tmsay
 	pkgdesc = like cowsay, but with anything or anyone you want.
-	pkgver = 0.2.r8.4923e84
+	pkgver = 0.2.r11.79d9fde
 	pkgrel = 1
 	url = https://git.trbn.xyz/turbine/tmsay.git
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = tmsay
 	depends = bash
 	provides = tmsay
 	conflicts = tmsay
-	source = tmsay::git+https://git.trbn.xyz/turbine/tmsay.git
+	source = tmsay::git+https://git.trbn.xyz/turbine/tmsay.git#branch=main
 	sha256sums = SKIP
 
 pkgname = tmsay

@@ -5,7 +5,7 @@
 
 # Maintainer: TRBN <turbine@trbn.net>
 pkgname=tmsay
-pkgver=0.2.r8.4923e84
+pkgver=0.2.r11.79d9fde
 pkgrel=1
 epoch=
 pkgdesc="like cowsay, but with anything or anyone you want."
@@ -24,7 +24,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname::git+$url")
+source=("$pkgname::git+$url#branch=main")
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
