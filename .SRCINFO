@@ -1,16 +1,16 @@
 pkgbase = paramotopy-git
 	pkgdesc = Parallel parameter homotopy through Bertini
 	pkgver = 1.0.3.7.r15.48174f3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://paramotopy.com
-	arch = any
+	arch = x86_64
 	license = custom:Paramotopy license
 	makedepends = git
 	makedepends = boost>=1.53
 	makedepends = gmp
 	depends = glibc
 	depends = gcc-libs
-	depends = boost-libs
+	depends = boost-libs>=1.53
 	depends = bertini
 	depends = mpfr
 	depends = openmpi
@@ -18,18 +18,8 @@ pkgbase = paramotopy-git
 	provides = paramotopy=1.0.3.7
 	conflicts = paramotopy
 	source = paramotopy::git+https://github.com/ofloveandhate/paramotopy.git
-	source = paramotopy_fix_boost_timer_para_aux_funcs.patch
-	source = paramotopy_fix_boost_timer_point.patch
-	source = paramotopy_fix_boost_timer_runinfo.patch
-	source = paramotopy_fix_boost_timer_step2.patch
-	source = paramotopy_fix_boost_timer_timing.patch
-	source = paramotopy_fix_boost_timer_xml_preferences.patch
+	source = paramotopy_fix_deprecated_boost_timer.patch
 	sha256sums = SKIP
-	sha256sums = 591a4d680eae9efdc0ed523eb0183369f8afc424a8a1501f58b0bf64fac237f4
-	sha256sums = 54f62a75a856706fe07ae691126c35a182462e80fbc47601a8544e7502b81e68
-	sha256sums = 696692d4a08bc6ab23f516ee86a617eca5228ab5608fb6b5e5250acdabb0094b
-	sha256sums = e3aa61174f4189cfb9f4e408240431e5856ed07a44abae5f79bd370b0e2aa52b
-	sha256sums = 85d53fa8ad80d00d34ef57df47e577569076d0046c0899a0aaab6302c08bca38
-	sha256sums = aed8f50b9572b5055ff0d862870a12328207627a326a54de16763d8d8df87c40
+	sha256sums = e355ddea4c31f22c008e63f0418a2a6e77103b6779763a817604daaa3b644c21
 
 pkgname = paramotopy-git
