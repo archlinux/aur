@@ -2,8 +2,8 @@
 
 _binname="kubedb"
 pkgname="${_binname}-cli"
-pkgver=0.46.0
-pkgrel=2
+pkgver=0.47.0
+pkgrel=1
 pkgdesc="kubectl plugin for KubeDB"
 arch=('any')
 url="https://${_binname}.com"
@@ -18,12 +18,13 @@ optdepends=('bash-completion: for shell auto-completion'
 _pkgsrc="cli-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
         "LICENSE.md::https://github.com/appscode/licenses/raw/1.0.0/AppsCode-Community-1.0.0.md")
-sha256sums=('58c22e60fb667f8f000e19dcf9668f2a185c039c28561518163dab138f1ea14a'
+sha256sums=('9bad4453f6e89b704d00207f0008a1d5fa2289ae9011cabb48f7a4e32a8e776f'
             '98112798ec6560d74223511ed367c2c170a63e5cdf5855dd444009cb3c80b07c')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   mkdir -p "build" "completions"
+  go mod download
 }
 
 build() {
