@@ -2,7 +2,7 @@
 
 pkgname=alvr
 pkgver=20.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
@@ -49,7 +49,7 @@ build() {
 	cargo build \
 		--frozen \
 		--release \
-		-p alvr_server \
+		-p alvr_server_openvr \
 		-p alvr_dashboard \
 		-p alvr_vulkan_layer \
 		-p alvr_vrcompositor_wrapper
@@ -70,7 +70,7 @@ package() {
 	install -Dm644 target/release/alvr_drm_lease_shim.so "$pkgdir/usr/lib/alvr/alvr_drm_lease_shim.so"
 
 	# OpenVR Driver
-	install -Dm644 target/release/libalvr_server.so "$pkgdir/usr/lib/steamvr/alvr/bin/linux64/driver_alvr_server.so"
+	install -Dm644 target/release/libalvr_server_openvr.so "$pkgdir/usr/lib/steamvr/alvr/bin/linux64/driver_alvr_server.so"
 	install -Dm644 alvr/xtask/resources/driver.vrdrivermanifest -t "$pkgdir/usr/lib/steamvr/alvr/"
 
 	# Vulkan Layer
