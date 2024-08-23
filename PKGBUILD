@@ -1,7 +1,7 @@
 # Maintainer: Toni500 <tonino512@linuxmail.org>
 pkgname="customfetch-gui-git"
 _pkgname="customfetch"
-pkgver=0.1.0
+pkgver=0.8.6.r2.fad7a19
 pkgrel=1
 pkgdesc="Highly customizable and fast system information fetch program (with GUI mode)"
 arch=('x86_64' 'aarch64')
@@ -12,14 +12,14 @@ makedepends=('base-devel')
 optdepends=(
 	"ttf-liberation: Font to be used for GUI (recommended)"
 )
-conflicts=('customfetch' 'customfetch-bin' "customfetch-git")
+conflicts=('customfetch' 'customfetch-gui' "customfetch-git")
 source=("git+${url}.git")
 sha256sums=("SKIP")
 
-#pkgver() {
-#    cd "${srcdir}/${_pkgname}"
-#    git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
-#}
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+    git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+}
 
 build() {
     make -C "${srcdir}/${_pkgname}" DEBUG=0 GUI_MODE=1
