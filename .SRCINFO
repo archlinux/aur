@@ -1,6 +1,6 @@
 pkgbase = ipsw
 	pkgdesc = iOS/macOS Research Swiss Army Knife
-	pkgver = 3.1.536
+	pkgver = 3.1.537
 	pkgrel = 1
 	url = https://github.com/blacktop/ipsw
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ipsw
 	optdepends = bash-completion: for shell auto-completion
 	optdepends = zsh-completions: for shell auto-completion
 	backup = etc/ipsw.conf
-	source = ipsw-3.1.536::git+https://github.com/blacktop/ipsw#tag=v3.1.536
-	sha256sums = a0bc853e92dab181b93aea9ef06d0b1afec1cea0f2c2bab93a9f435565bcc2fe
+	source = ipsw-3.1.537::git+https://github.com/blacktop/ipsw#tag=v3.1.537
+	sha256sums = db2cfd57cf6655af45b4a5280c561624e2758d61563980ccd76613a3da4fb726
 
 pkgname = ipsw
