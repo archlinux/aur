@@ -2,21 +2,31 @@
 # Contributor: Ersei <contact at ersei dot net>
 # Contributer: Paul <paul@mrarm.io>
 
+# In order to build mcpelauncher-client32, set MCPELAUNCHER_LINUX_32=ON as an environment variable
+if [[ -z "$MCPELAUNCHER_LINUX_32" ]]; then
+	MCPELAUNCHER_LINUX_32=OFF
+else
+	MCPELAUNCHER_LINUX_32=ON
+fi
 pkgname=mcpelauncher-linux
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
 license=('GPL-3.0-only')
-makedepends_x86_64=('git' 'cmake' 'clang' 'alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'libxkbcommon' 'ibus' 'fcitx5' 'libxss' 'jack' 'pipewire' 'sndio')
-depends_x86_64=('curl' 'libx11' 'zlib' 'libpng' 'libevdev' 'libxi' 'libegl' 'qt6-base' 'qt6-declarative' 'qt6-webengine' 'libuv' 'systemd-libs' 'openssl' 'gcc-libs' 'glibc')
+makedepends=('git' 'cmake' 'clang' 'alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'libxkbcommon' 'ibus' 'fcitx5' 'libxss' 'jack' 'pipewire' 'sndio')
+depends=('curl' 'libx11' 'zlib' 'libpng' 'libevdev' 'libxi' 'libegl' 'qt6-base' 'qt6-declarative' 'qt6-webengine' 'libuv' 'systemd-libs' 'openssl' 'gcc-libs' 'glibc')
 optdepends=('mcpelauncher-ui: GUI for Launcher'
 		'pipewire: Pipewire Sound Driver'
 		'libpulse: Pulseaudio Sound Driver'
 		'jack: JACK Sound Driver'
 		'alsa-lib: ALSA Sound Driver')
 provides=('mcpelauncher-client')
+if [[ $MCPELAUNCHER_LINUX_32 == 'ON' ]]; then
+	depends+=(lib32-systemd lib32-libx11 lib32-zlib lib32-glibc lib32-gcc-libs lib32-libpng lib32-openssl lib32-libevdev lib32-libglvnd)
+	makedepends+=(lib32-alsa-lib lib32-mesa lib32-libpulse lib32-libxrandr lib32-libxinerama lib32-libxkbcommon lib32-libxss lib32-jack lib32-pipewire)
+fi
 
 source=(
   "git+https://github.com/minecraft-linux/mcpelauncher-manifest.git#tag=v${pkgver}-qt6"
@@ -141,20 +151,31 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DENABLE_DEV_PATHS=OFF \
     -Wno-dev
+if [[ $MCPELAUNCHER_LINUX_32 == 'ON' ]]; then
+  PKG_CONFIG_PATH="/usr/lib32/pkgconfig" cmake -S mcpelauncher-manifest \
+  -DCMAKE_C_COMPILER=clang \
+  -DCMAKE_CXX_COMPILER=clang++ \
+  -B build32 -DCMAKE_INSTALL_PREFIX=/usr \
+  -DCMAKE_BUILD_TYPE=None \
+  -DENABLE_DEV_PATHS=OFF \
+  -DCMAKE_C_FLAGS="$CFLAGS -m32" \
+  -DCMAKE_CXX_FLAGS="$CXXFLAGS -m32" \
+  -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -m32" \
+  -DENABLE_QT_ERROR_UI=OFF \
+  -DENABLE_ERROR_WINDOW=OFF \
+  -DBUILD_WEBVIEW=OFF \
+  -Wno-dev
+
+  PKG_CONFIG_PATH="/usr/lib32/pkgconfig" cmake --build build32
+fi
   cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir" install
-  if [[ $CARCH == "i686" ]]; then
-    mv "$pkgdir/usr/bin/mcpelauncher-client" "$pkgdir/usr/bin/mcpelauncher-client32"
-    rm -rf "$pkgdir/usr/share/mcpelauncher/lib/native/x86_64"
-  fi
-
-  if [[ $CARCH == "x86_64" ]]; then
-    rm -rf "$pkgdir/usr/share/mcpelauncher/lib/native/x86"
-  fi
-
+  DESTDIR="$pkgdir" cmake --install build
+if [[ $MCPELAUNCHER_LINUX_32 == 'ON' ]]; then
+    install -Dm755 "$srcdir/build32/mcpelauncher-client/mcpelauncher-client" "$pkgdir/usr/bin/mcpelauncher-client32"
+fi
   install -Dm644 mcpelauncher-manifest/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 mcpelauncher-manifest/msa-daemon-client/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.MIT"
   install -Dm644 mcpelauncher-manifest/mcpelauncher-linux-bin/FMod\ License.txt "$pkgdir/usr/share/licenses/$pkgname/fmod_license.txt"
