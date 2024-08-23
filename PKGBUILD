@@ -10,7 +10,7 @@ url='https://www.jetbrains.com/rust/'
 license=('custom:jetbrains')
 depends=('glib2')
 options=('!strip')
-source=("https://download-cf.jetbrains.com/${pkgbase}/RustRover-${pkgver}.tar.gz"
+source=("https://download.jetbrains.com/${pkgbase}/RustRover-${pkgver}.tar.gz"
         jetbrains-rustrover.desktop
         LICENSE)
 b2sums=('97a05b4db569acd606f263e01b9eac89550b3ae0b8da698f4d125015ed01198010f9614ce5f1882cca4ef2f1aff20f42db54f1011c3b9bea092eb00584ae8634'
