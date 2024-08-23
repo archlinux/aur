@@ -2,7 +2,7 @@
 
 pkgname=gql
 _pkgname=GQL
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="Git Query language (GQL) is an SQL like language to perform queries on .git files"
 url="https://github.com/AmrDeveloper/GQL"
@@ -19,37 +19,30 @@ makedepends=(
 conflicts=(gitql)
 options=(!lto) # Linking zlib with flake2 fails with LTO enabled
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('7eb75c9bb49f8b51524155b9c5d64294ac2bcf2b00812e3c39c1dd7e45aaf96e')
-
-_archive="$_pkgname-$pkgver"
+sha256sums=('a73c5640c6d3fdbb40d64cfad0aa10194321b0442d19300688bdc569b6def295')
 
 prepare() {
-  cd "$_archive"
-
+  cd $_pkgname-$pkgver
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "$_archive"
-
+  cd $_pkgname-$pkgver
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
 check() {
-  cd "$_archive"
-
+  cd $_pkgname-$pkgver
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --all-features --package gitql-cli
 }
 
 package() {
-  cd "$_archive"
-
-  install -Dm755 -t "$pkgdir/usr/bin" target/release/gitql
-
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  cd $_pkgname-$pkgver
+  install -vDm755 -t "$pkgdir/usr/bin" target/release/gitql
+  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
