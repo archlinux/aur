@@ -1,20 +1,21 @@
 pkgname=mingw-w64-paraview
-pkgver=5.12.1
+pkgver=5.13.0
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
 url='https://www.paraview.org'
 license=('custom')
 depends=('mingw-w64-qt5-tools' 'mingw-w64-qt5-svg' 'mingw-w64-boost' 'mingw-w64-glew' 'mingw-w64-freetype2' 'mingw-w64-libxml2' 'mingw-w64-libtiff' 'mingw-w64-jsoncpp' 'mingw-w64-hdf5' 'mingw-w64-lz4' 'mingw-w64-proj' 'mingw-w64-cgns' 'mingw-w64-netcdf' 'mingw-w64-double-conversion' 'mingw-w64-protobuf' 'mingw-w64-libtheora' 'mingw-w64-pugixml' 'mingw-w64-gl2ps' 'mingw-w64-libharu' 'mingw-w64-verdict')
-makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-wine' 'protobuf' 'mingw-w64-nlohmann-json')
+makedepends=('mingw-w64-cmake' 'mingw-w64-wine' 'protobuf')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("${url}/files/v${pkgver:0:4}/ParaView-v${pkgver}.tar.xz")
-sha256sums=('927f880c13deb6dde4172f4727d2b66f5576e15237b35778344f5dd1ddec863e')
+sha256sums=('886f530bebd6b24c6a7f8a5f4b1afa72c53d4737ccaa4b5fd5946b4e5a758c91')
 
 _architectures="x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/ParaView-v${pkgver}"
+  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/11239.patch | patch -p1 -d VTK
 }
 
 build() {
@@ -32,11 +33,15 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_ioss=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_fmt=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_cli11=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_eigen=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_exprtk=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_fast_float=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_nlohmannjson=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_pegtl=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_token=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_utf8=OFF \
       -DCMAKE_CXX_STANDARD=17 \
-      -DVTK_IGNORE_CMAKE_CXX11_CHECKS=ON \
+      -DPARAVIEW_IGNORE_CMAKE_CXX11_CHECKS=ON \
       -B build-${_arch} .
     WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make -C build-${_arch}
   done
