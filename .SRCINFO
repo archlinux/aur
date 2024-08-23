@@ -1,6 +1,6 @@
 pkgbase = local-ai
 	pkgdesc = Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first
-	pkgver = 2.19.4
+	pkgver = 2.20.1
 	pkgrel = 1
 	url = https://github.com/mudler/LocalAI
 	arch = x86_64
@@ -25,12 +25,12 @@ pkgbase = local-ai
 	conflicts = local-ai
 	options = !strip
 	backup = etc/local-ai/local-ai.conf
-	source = local-ai-2.19.4.tar.gz::https://github.com/mudler/LocalAI/archive/refs/tags/v2.19.4.tar.gz
+	source = local-ai-2.20.1.tar.gz::https://github.com/mudler/LocalAI/archive/refs/tags/v2.20.1.tar.gz
 	source = local-ai.conf
 	source = local-ai.tmpfiles
 	source = local-ai.sysusers
 	source = local-ai.service
-	sha256sums = 838ae9b7c93bc8ca95c550eb1213d480eb65e8c73be28ffa3dd0e53c388e933d
+	sha256sums = 24161994bb7b2f170d29b106540775468792a6b6bddb43acf6b1a63bbb9d516b
 	sha256sums = 095c6f530c0c2f864d7aa1c22b88e111b1adc54c85e3510156dcc5b6675de00c
 	sha256sums = 90e042d0f5885b63a6aa4db7f87d6b931956f6c9b022407593466f61f6973312
 	sha256sums = 97ba21355c50ec658e220bc0558f506227b3dc77cc51f343b6f5657b0d77a19b
@@ -40,39 +40,39 @@ pkgname = local-ai
 	pkgdesc = Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first (with OPENBlas CPU optimizations)
 	depends = glibc
 	depends = openblas
-	provides = local-ai=2.19.4
+	provides = local-ai=2.20.1
 
 pkgname = local-ai-cublas
 	pkgdesc = Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first (with NVIDIA CUDA optimizations)
 	depends = glibc
 	depends = cuda
-	provides = local-ai=2.19.4
+	provides = local-ai=2.20.1
 	conflicts = local-ai
 
 pkgname = local-ai-clblas
 	pkgdesc = Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first (with OpenCL optimizations)
 	depends = glibc
 	depends = clblast
-	provides = local-ai=2.19.4
+	provides = local-ai=2.20.1
 	conflicts = local-ai
 
 pkgname = local-ai-hipblas
 	pkgdesc = Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first (with AMD ROCm optimizations)
 	depends = glibc
 	depends = rocm-hip-runtime
-	provides = local-ai=2.19.4
+	provides = local-ai=2.20.1
 	conflicts = local-ai
 
 pkgname = local-ai-sycl-f16
 	pkgdesc = Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first (with Intel SYCL GPU optimizations and F16)
 	depends = glibc
 	depends = intel-oneapi-basekit
-	provides = local-ai=2.19.4
+	provides = local-ai=2.20.1
 	conflicts = local-ai
 
 pkgname = local-ai-sycl-f32
 	pkgdesc = Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first (with Intel SYCL GPU optimizations and F32)
 	depends = glibc
 	depends = intel-oneapi-basekit
-	provides = local-ai=2.19.4
+	provides = local-ai=2.20.1
 	conflicts = local-ai
