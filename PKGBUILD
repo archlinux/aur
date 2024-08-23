@@ -11,7 +11,8 @@
 # If parallel compilation fails due to race conditions, define NJOBS from 1 to ~24 jobs (try and error).
 
 # Build using a working configuration that not depens on other AUR packages
-# Use DISABLE_AUTOCONFIG=1 to build using all the available options. This can cause compilation problems
+# Use DISABLE_AUTOCONFIG=1 to build using all the available options (This can cause compilation problems)
+#  or use the syntax mentioned earlier to enable the desired options
 if((!DISABLE_AUTOCONFIG)); then
   DISABLE_CHECK=1
   DISABLE_TRILINOS=1
@@ -26,11 +27,13 @@ if((!DISABLE_AUTOCONFIG)); then
   DISABLE_MATC=0
   DISABLE_PARAVIEW=0
   DISABLE_QWT=0
-  #Open cascade needs VTK, so if OCC is disabled, VTK has to be enabled to allow compilation
+  #DISABLE_ZOLTAN
+  #Open cascade needs VTK
   DISABLE_OCC=1
-  # Compilation using VTK  is currently broken.
+  # Compilation using VTK is currently broken if MATC is enabled.
+  # https://github.com/ElmerCSC/elmerfem/issues/532
   DISABLE_VTK=1
-  # VTK also enables MPI.
+  # VTK also needs MPI.
   DISABLE_MPI=0
   DISABLE_MUMPS=1
   DISABLE_HYPRE=1
@@ -71,7 +74,7 @@ _fragment=${FRAGMENT:-#branch=devel}
 ((DISABLE_MUMPS))    && _use_mumps=OFF    || _use_mumps=ON     # Disable Mumps - gausian elimination LAS solver
 ((DISABLE_HYPRE))    && _use_hypre=OFF    || _use_hypre=ON     # Disable Hypre - multigrid LAS solver
 
-((DISABLE_INTERNAL_UMFPACK)) && _use_external_umfpack=OFF || _use_external_umfpack=ON
+((DISABLE_INTERNAL_UMFPACK)) && _use_external_umfpack=ON || _use_external_umfpack=OFF
 
 # Disable check
 ((DISABLE_CHECK))    && _disable_check=OFF || _disable_check=ON # Disable CTEST Routines
@@ -110,25 +113,27 @@ _CMAKE_FLAGS+=(
         -DEXTERNAL_UMFPACK=${_use_external_umfpack}
 
         -GNinja
+        -Wno-dev
 )
 
 pkgname=elmerfem-git
 _pkgname=elmerfem
-pkgver=9.0.r2987.gf41275819
+pkgver=9.0.r3015.g39dcbd08b
 pkgrel=1
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
 url="http://www.elmerfem.org"
 license=('GPL-2.0-or-later')
-
-#conflicted deps
-((!DISABLE_INTERNAL_UMFPACK)) && conflicts+=('suitesparse')
+provides=('elmerfem')
 
 #make deps
 makedepends=('git' 'gcc-fortran' 'cmake' 'ninja')
 
 # Core deps
 depends+=('blas-openblas')
+
+#conflicted deps
+conflicts=('elmerfem' 'arpack')
 
 # Main repos
 ((ENABLE_EXTERNAL_UMFPACK)) && depends+=('suitesparse')
@@ -142,9 +147,9 @@ depends+=('blas-openblas')
 ((!DISABLE_OCC))      && depends+=('opencascade')  # opencascade
 
 #VTK deps
-((!DISABLE_VTK))      && depends+=('vtk' 'tbb' 'openmpi' 'freetype2' 'qt5-base' 'fmt' 'glew' 'pugixml' 'libxcursor')
-((!DISABLE_VTK))      && makedepends+=('cli11' 'ospray' 'openxr' 'openvr' 'python-mpi4py' 'boost' 'pdal' 'opencascade' 'liblas' 'adios2' 'libharu' 'cgns' 'eigen' 'utf8cpp' 'fast_float' 'java-environment=11')
-((!DISABLE_VTK))      && optdepends+=('ospray' 'openxr' 'openvr' 'python-mpi4py' 'pdal' 'opencascade' 'liblas' 'adios2' 'libharu' 'cgns' 'java-runtime=11')
+((!DISABLE_VTK))      && depends+=('vtk' 'tbb' 'openmpi' 'freetype2' 'qt5-base' 'fmt' 'glew' 'pugixml' 'libxcursor' 'mariadb-libs' 'jdk11-openjdk')
+((!DISABLE_VTK))      && makedepends+=('cli11' 'ospray' 'openxr' 'openvr' 'python-mpi4py' 'boost' 'pdal' 'opencascade' \
+                                        'liblas' 'adios2' 'libharu' 'cgns' 'eigen' 'utf8cpp' 'fast_float')
 
 # AUR
 ((!DISABLE_MMG))      && depends+=('mmg')
@@ -152,19 +157,28 @@ depends+=('blas-openblas')
 ((!DISABLE_MUMPS))    && depends+=('mumps')    # mumps
 ((!DISABLE_HYPRE))    && depends+=('hypre')
 
-
-provides=('elmerfem')
-conflicts=('elmerfem')
 options=(!emptydirs !staticlibs)
 
 source=("git+https://github.com/ElmerCSC/elmerfem.git${_fragment}"
-        "$_pkgname.desktop")
+        "$_pkgname.desktop"
+        "vtk9.1.patch")
 
 sha256sums=('SKIP'
-            'f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca')
+            'f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca'
+            'd13ade4a1f20b61ed675af4a894154030a1b2d2baf39da24d9614954f744c159')
 
 pkgver() {
   git -C "${srcdir}/${_pkgname}" describe --long --tag| sed -r 's/^release-//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  patch -d "$srcdir/$_pkgname" -Np1 -i ../vtk9.1.patch
+  cd "$srcdir"
+  if((!DISABLE_VTK)); then
+     sed -i \
+      's\Exec=ElmerGUI\Exec=LD_LIBRARY_PATH="/usr/lib/jvm/java-11-openjdk/lib;/usr/lib/jvm/java-11-openjdk/lib/server" ElmerGUI\g' \
+      elmerfem.desktop
+  fi
 }
 
 build() {

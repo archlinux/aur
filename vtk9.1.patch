@@ -1,0 +1,38 @@
+diff --unified --recursive --text a/ElmerGUI/Application/cad/cadview.h b/ElmerGUI/Application/cad/cadview.h
+--- a/ElmerGUI/Application/cad/cadview.h	2024-08-20 14:30:05.855951677 -0600
++++ b/ElmerGUI/Application/cad/cadview.h	2024-08-21 13:48:40.130823655 -0600
+@@ -58,11 +58,14 @@
+ #include <BRepMesh_IncrementalMesh.hxx>
+ #endif
+ 
+-#include "vtkConfigure.h"
+ #ifndef VTK_MAJOR_VERSION
+ #include "vtkVersionMacros.h"
+ #endif
+ 
++#if VTK_MAJOR_VERSION <= 9 && VTK_MINOR_VERSION < 1
++#include "vtkConfigure.h"
++#endif
++
+ class QMenu;
+ class QAction;
+ #if VTK_MAJOR_VERSION >= 8
+diff --unified --recursive --text a/ElmerGUI/Application/vtkpost/vtkpost.h b/ElmerGUI/Application/vtkpost/vtkpost.h
+--- a/ElmerGUI/Application/vtkpost/vtkpost.h	2024-08-20 14:30:05.875951676 -0600
++++ b/ElmerGUI/Application/vtkpost/vtkpost.h	2024-08-21 13:48:59.070823122 -0600
+@@ -57,11 +57,14 @@
+ #include <gui/PythonQtScriptingConsole.h>
+ #endif
+ 
+-#include "vtkConfigure.h"
+ #ifndef VTK_MAJOR_VERSION
+ #include "vtkVersionMacros.h"
+ #endif
+ 
++#if VTK_MAJOR_VERSION <= 9 && VTK_MINOR_VERSION < 1
++#include "vtkConfigure.h"
++#endif
++
+ class EpMesh;
+ class ScalarField;
+ #if VTK_MAJOR_VERSION >= 8
