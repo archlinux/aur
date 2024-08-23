@@ -1,6 +1,6 @@
 pkgbase = gapless
 	pkgdesc = Play your music elegantly (AKA: G4Music)
-	pkgver = 3.8.1
+	pkgver = 3.8.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/neithern/g4music
 	arch = aarch64
@@ -25,7 +25,7 @@ pkgbase = gapless
 	optdepends = gst-plugins-ugly: "ugly" plugin libraries
 	provides = g4music
 	conflicts = g4music
-	source = https://gitlab.gnome.org/neithern/g4music/-/archive/v3.8.1/g4music-v3.8.1.tar.gz
-	b2sums = 54160810a394b3546d1772125751771ea2ec31aca198a1a96ac5c5050211d6cea70c57359f40d1b656a08163b0fa42e926b875ad92c1125bbaf5c6c5b4b5f199
+	source = https://gitlab.gnome.org/neithern/g4music/-/archive/v3.8.2/g4music-v3.8.2.tar.gz
+	b2sums = 7ac7039d42e81745bef5075b6895132ee3172fbb7c4907b90d61efd37fe136d1e3c0a8e9ae00fd384543645e230f62c2a2ddc62e612766289369eaae7993a814
 
 pkgname = gapless
