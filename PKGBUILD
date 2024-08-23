@@ -1,7 +1,4 @@
-#Maintainer: BingBong
-
 pkgname=lib32-intel-gmmlib
-tarname=${pkgname/lib32-/}
 pkgver=22.5.0
 pkgrel=1
 pkgdesc="Intel Graphics Memory Management Library — 32-bit"
