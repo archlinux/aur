@@ -1,0 +1,12 @@
+diff --git a/source/frontends/libretro/info/applewin_libretro.info b/source/frontends/libretro/info/applewin_libretro.info
+index 433685e2..e433d5d0 100644
+--- a/source/frontends/libretro/info/applewin_libretro.info
++++ b/source/frontends/libretro/info/applewin_libretro.info
+@@ -1,6 +1,7 @@
+ # Software Information - Information about the core software itself
+ display_name = "Apple - apple ][ (AppleWin)"
+ license = "GPLv2"
++supported_extensions = "po|dsk|nib|zip"
+ categories = "Emulator"
+ manufacturer = "Apple"
+ 
