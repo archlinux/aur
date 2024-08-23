@@ -14,7 +14,6 @@ pkgbase = xmcl-launcher
 	source = LICENSE::https://raw.githubusercontent.com/Voxelum/x-minecraft-launcher/master/LICENSE
 	source = xmcl.desktop
 	source = xmcl.png
-	source = xmcl-launcher
 	sha256sums = ce0eb533f258dd9c01813ca64bf048f9d1a06175fe5fb49326a547fa77ecaad0
 	sha256sums = 5c9471e64980df1165bb0fa3e8934e99ebe5e1e2c073088d6b95ec70de23a1bc
 	sha256sums = 4c56e72cc6784c4c2d870c307d74e7afa6c13b001bb52f9b255cd82ab709adcb
