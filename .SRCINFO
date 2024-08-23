@@ -1,17 +1,17 @@
 pkgbase = lib32-intel-gmmlib
-	pkgdesc = Intel Graphics Memory Management Library
-	pkgver = 22.3.10
+	pkgdesc = Intel Graphics Memory Management Library — 32-bit
+	pkgver = 22.5.0
 	pkgrel = 1
-	url = https://github.com/intel/gmmlib/
+	url = https://github.com/intel/gmmlib
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = lib32-gcc-libs
-	provides = lib32-intel-gmmlib
-	conflicts = lib32-intel-gmmlib
-	replaces = lib32-intel-gmmlib
+	provides = lib32-gmmlib
+	conflicts = lib32-gmmlib
+	replaces = lib32-gmmlib
 	options = !emptydirs
-	source = https://github.com/intel/gmmlib/archive/intel-gmmlib-22.3.10.tar.gz
-	sha256sums = 8a6005440bf336309a2abbeeb3e006e229715c4b39ca31c6d0e510050e53dcc7
+	source = https://github.com/intel/gmmlib/archive/intel-gmmlib-22.5.0.tar.gz
+	sha256sums = a3f37dff076503b833ce2dc5c0f9cf854ad706c7857fa6a70972716342efe523
 
 pkgname = lib32-intel-gmmlib
