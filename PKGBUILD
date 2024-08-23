@@ -45,6 +45,7 @@ build() {
     --sysconfdir='/etc' \
     --sbindir='/usr/bin' \
     --disable-static \
+    --enable-introspection \
     --with-lasem \
     --enable-gtk-doc
     
@@ -58,7 +59,7 @@ package_goffice08() {
            'pango>=1.8.1' 'cairo>=1.2.0' 'gtk2>=2.12.0' 'gdk-pixbuf2' 'pcre'
            'lasem02' 'at-spi2-core')
   optdepends=("${pkgbase}-docs: HTML documentation")
-  provides=("${_name}=${pkgver}" "${name}-0.8=${pkgver}")
+  provides=("${_name}=${pkgver}" "${_name}-0.8=${pkgver}")
 
   cd "${srcdir}/${_pkgsrc}"
   make DESTDIR="${pkgdir}" install
@@ -79,6 +80,7 @@ package_goffice08() {
 
 package_goffice08-docs() {
   pkgdesc="HTML documentation for ${pkgbase}"
+
   cd "${srcdir}/${_pkgsrc}/docs"
   make DESTDIR="${pkgdir}" install
 }

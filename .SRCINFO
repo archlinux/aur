@@ -42,7 +42,7 @@ pkgname = goffice08
 	depends = at-spi2-core
 	optdepends = goffice08-docs: HTML documentation
 	provides = goffice=0.8.17
-	provides = goffice08-docs-0.8=0.8.17
+	provides = goffice-0.8=0.8.17
 
 pkgname = goffice08-docs
 	pkgdesc = HTML documentation for goffice08
