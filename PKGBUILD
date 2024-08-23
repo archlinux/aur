@@ -2,26 +2,23 @@
 # Maintainer: Christian Winther <scm-engine at jippi dot dev>
 
 pkgname='scm-engine-bin'
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc='Makes working with .env files easy'
 url='https://github.com/jippi/scm-engine'
-arch=('aarch64' 'armv7h' 'i686' 'x86_64')
+arch=('aarch64' 'armv7h' 'x86_64')
 license=('MIT')
 provides=('scm-engine')
 conflicts=('scm-engine')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jippi/scm-engine/releases/download/v0.10.1/scm-engine_Linux_arm64.tar.gz")
-sha256sums_aarch64=('77c701914de228bc7e3336ecf8c723ec7dbed353697351c2bde38aadf4d47d18')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jippi/scm-engine/releases/download/v0.10.2/scm-engine_Linux_arm64.tar.gz")
+sha256sums_aarch64=('4f24643c58ef4b3584941874672821bc803afda2c26454beb847d894ad42145e')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jippi/scm-engine/releases/download/v0.10.1/scm-engine_Linux_armv7.tar.gz")
-sha256sums_armv7h=('772947bf041cd76ef8ba3d8ac0117c57ed573b9fd16ffbd5ec2ddf3622d4c3b7')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jippi/scm-engine/releases/download/v0.10.2/scm-engine_Linux_armv7.tar.gz")
+sha256sums_armv7h=('d335e004735b06f63e4b774ad628395d93a367bf74788d68a7438a3f46451a9c')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/jippi/scm-engine/releases/download/v0.10.1/scm-engine_Linux_i386.tar.gz")
-sha256sums_i686=('f61d0f3746df03735a005a2a13340c2b4cdf0a027b2c01df55680c9cc179b937')
-
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jippi/scm-engine/releases/download/v0.10.1/scm-engine_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('19f7f3907ab78abd3c513e503c12d0cc7bd96b6435fa2572c9aba416de7f2f93')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jippi/scm-engine/releases/download/v0.10.2/scm-engine_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('dd96399f8f3d04ee19b12bb4091e44978d275d4d99f68e3afd3c2c1cf22143f9')
 
 package() {
   # bin
