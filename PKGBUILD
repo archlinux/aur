@@ -2,7 +2,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=youki
-pkgver=0.3.3
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A container runtime written in Rust'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 )
 options=('!lto')
 source=("git+https://github.com/containers/youki.git#tag=v$pkgver")
-sha256sums=('8a675b03e839967ffee2992f45d5e17edc41ddbc5117247d26b71e1d1d01cddf')
+sha256sums=('e22ec3fb11a65151214427d3c212c13743e68e1e88dcce35be678868a1fbc52c')
 
 prepare() {
   cd youki

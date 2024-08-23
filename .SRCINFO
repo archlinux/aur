@@ -1,6 +1,6 @@
 pkgbase = youki
 	pkgdesc = A container runtime written in Rust
-	pkgver = 0.3.3
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://containers.github.io/youki
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = youki
 	optdepends = docker: run via docker
 	optdepends = podman: run via podman
 	options = !lto
-	source = git+https://github.com/containers/youki.git#tag=v0.3.3
-	sha256sums = 8a675b03e839967ffee2992f45d5e17edc41ddbc5117247d26b71e1d1d01cddf
+	source = git+https://github.com/containers/youki.git#tag=v0.4.0
+	sha256sums = e22ec3fb11a65151214427d3c212c13743e68e1e88dcce35be678868a1fbc52c
 
 pkgname = youki
