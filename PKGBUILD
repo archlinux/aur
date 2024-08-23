@@ -7,7 +7,11 @@ pkgdesc="Highly customizable and fast system information fetch program"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Toni500github/customfetch"
 license=('GPL3')
-#depends=() # some of them are in the "base" meta-package anyway so basically no extra depends
+depends=('gtk3' 'gtkmm3')
+optdepends=(
+        "ttf-liberation: Font to be used for GUI (recommended)"
+)
+conflicts=('customfetch' 'customfetch-git-gui' "customfetch-git")
 makedepends=('base-devel')
 conflicts=('customfetch-gui-git')
 source=("git+${url}.git")
