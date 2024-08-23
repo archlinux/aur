@@ -12,7 +12,7 @@ url='https://www.jetbrains.com/webstorm/'
 license=('custom:jetbrains')
 depends=('glib2')
 options=('!strip')
-source=("https://download-cf.jetbrains.com/webstorm/WebStorm-${pkgver}.tar.gz"
+source=("https://download.jetbrains.com/webstorm/WebStorm-${pkgver}.tar.gz"
         jetbrains-webstorm.desktop
         LICENSE)
 b2sums=('1b2e00718f1d92868c8585c89f2502b6d9099b3289ae298cc14a637077f72c30fe75dbeb54e0d31c9fa4885896b09414f5e02dac7ffd6f93ad6410c0f275e345'
