@@ -1,0 +1,22 @@
+pkgbase = perl-influxdb-http
+	pkgdesc = Perl client for the InfluxDB HTTP API
+	pkgver = 0.04
+	pkgrel = 1
+	url = https://metacpan.org/pod/InfluxDB::HTTP
+	arch = any
+	license = Artistic-1.0-Perl
+	makedepends = perl-module-build
+	depends = perl
+	depends = perl-http-tiny
+	depends = perl-json
+	depends = perl-encode
+	depends = perl-uri
+	depends = perl-json-maybexs
+	depends = perl-lwp-useragent-cached
+	depends = perl-object-result
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/R/RA/RAPHI/InfluxDB-HTTP-0.04.tar.gz
+	sha256sums = d5cbb9c8f56e071772c56526e6e0fcb41a6573b184b9900d348932df5fafe3e3
+
+pkgname = perl-influxdb-http
