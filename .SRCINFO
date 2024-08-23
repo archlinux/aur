@@ -1,13 +1,13 @@
 pkgbase = pybertini-git
 	pkgdesc = Python interface for Bertini2
-	pkgver = 1.0.alpha5.r36.220a4c0
-	pkgrel = 2
-	url = https://github.com/ThisIsNotANamepng/b2
-	arch = any
+	pkgver = 1.0.alpha5.r38.245ed70
+	pkgrel = 1
+	url = https://github.com/bertiniteam/b2
+	arch = x86_64
 	license = custom:GPL-3.0-or-later WITH Bertini2-Additional-GPL-Terms
 	makedepends = git
 	makedepends = cmake>=3.22
-	makedepends = boost>=1.82
+	makedepends = boost>=1.83
 	makedepends = eigen>=3.3
 	makedepends = python-setuptools
 	makedepends = python-build
@@ -16,7 +16,7 @@ pkgbase = pybertini-git
 	depends = glibc
 	depends = gcc-libs
 	depends = bertini2
-	depends = boost-libs>=1.65
+	depends = boost-libs>=1.83
 	depends = gmp
 	depends = mpfr
 	depends = libmpc
@@ -25,9 +25,8 @@ pkgbase = pybertini-git
 	depends = eigenpy>=3.3
 	optdepends = pybertini-docs: HTML documentation
 	provides = pybertini=1.0.alpha5
-	provides = _pybertini.so=1.0.alpha5
 	conflicts = pybertini
-	source = b2::git+https://github.com/ThisIsNotANamepng/b2.git
+	source = b2::git+https://github.com/bertiniteam/b2.git
 	source = pybertini_fix_cmake_targets.patch
 	sha256sums = SKIP
 	sha256sums = bc474c961e44078114d4429bc711e0e7a09ac153157360dad9a4b3550f21d66d

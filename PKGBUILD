@@ -2,21 +2,19 @@
 
 _pkgname="pybertini"
 pkgname="${_pkgname}-git"
-pkgver=1.0.alpha5.r36.220a4c0
+pkgver=1.0.alpha5.r38.245ed70
 _commit="436c6ec507594b13edf67212256f90d2b83fa121"
-pkgrel=2
+pkgrel=1
 pkgdesc="Python interface for Bertini2"
-arch=('any')
-# We'll use a fork created by one of the maintainers with CMake build support until it is merged
-# url="https://github.com/bertiniteam/b2"
-url="https://github.com/ThisIsNotANamepng/b2"
+arch=('x86_64')
+url="https://github.com/bertiniteam/b2"
 license=('custom:GPL-3.0-or-later WITH Bertini2-Additional-GPL-Terms')
-makedepends=('git' 'cmake>=3.22' 'boost>=1.82' 'eigen>=3.3' 'python-setuptools'
+makedepends=('git' 'cmake>=3.22' 'boost>=1.83' 'eigen>=3.3' 'python-setuptools'
              'python-build' 'python-installer' 'python-wheel')
-depends=('glibc' 'gcc-libs' 'bertini2' 'boost-libs>=1.65' 'gmp' 'mpfr' 'libmpc'
+depends=('glibc' 'gcc-libs' 'bertini2' 'boost-libs>=1.83' 'gmp' 'mpfr' 'libmpc'
          'python' 'python-numpy' 'eigenpy>=3.3')
-optdepends=('pybertini-docs: HTML documentation')
-provides=("${_pkgname}=${pkgver%%.r*}" "_pybertini.so=${pkgver%%.r*}")
+optdepends=("${_pkgname}-docs: HTML documentation")
+provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="b2"
 source=("${_pkgsrc}::git+${url}.git"
@@ -63,7 +61,14 @@ build() {
   python -m build --wheel --no-isolation
 }
 
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   PYTHONPATH="${PWD}/build/lib/${_pkgname}" pytest
+# }
+
 package() {
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
   cd "${srcdir}/${_pkgsrc}"
   DESTDIR="${pkgdir}" cmake --install "python/build"
   libtool --finish "${pkgdir}${site_packages}"
