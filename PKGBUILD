@@ -2,8 +2,8 @@
 
 pkgname=c001apk-flutter-git
 _pkgname=${pkgname%-git}
-pkgver=r4.5e8cb92
-pkgrel=2
+pkgver=r31.726c162
+pkgrel=1
 pkgdesc="A third-party CoolApk client written in Flutter | 使用 Flutter 开发的第三方酷安客户端"
 arch=('x86_64' 'aarch64')
 url="https://github.com/bggRGjQaUbCoE/${_pkgname}"
