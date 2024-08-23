@@ -1,14 +1,16 @@
 pkgbase = firefox-extension-bitwarden
-	pkgdesc = Bitwarden addon for Firefox
-	pkgver = 2023.1.0
+	pkgdesc = Bitwarden browser extension for Firefox
+	pkgver = 2024.8.0
 	pkgrel = 1
-	url = https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/
+	url = https://github.com/bitwarden/clients
 	arch = any
 	groups = firefox-addons
-	license = GPLV3
-	depends = firefox
-	noextract = firefox-bitwarden-2023.1.0.xpi
-	source = firefox-bitwarden-2023.1.0.xpi::https://addons.mozilla.org/firefox/downloads/file/4054938/bitwarden_free_password_manager-2023.1.0-an+fx.xpi
-	sha512sums = 12bc4a05e670d28c8b970d58f853e6dd9628d45c85f2d94331ab08f358c48bafafb3bee06acab98931ca7b1bfb84dd7412b3355040cd4829b5367c9239dd0adb
+	license = GPL-3.0-or-later
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = unzip
+	optdepends = firefox
+	source = firefox-extension-bitwarden-2024.8.0.tar.gz::https://github.com/bitwarden/clients/archive/refs/tags/browser-v2024.8.0.tar.gz
+	sha256sums = 920173232d67b883ee98369856ca162d18bd817c031d7709b8459c4d22f1dd08
 
 pkgname = firefox-extension-bitwarden
