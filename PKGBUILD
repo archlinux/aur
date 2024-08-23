@@ -14,6 +14,7 @@ makedepends=('cmake' 'git')
 depends=()
 source=("git+https://github.com/OpenEtherCATsociety/SOEM.git#commit=${_commit}"
 "fix-scatech.patch")
+options=('!lto')
 sha256sums=('SKIP'
             'a3755e1a5f371bae982b4c36b5a3df0d1ff6d38c2f31b1b70326e5b8343050fe')
 

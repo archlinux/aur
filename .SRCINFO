@@ -7,6 +7,7 @@ pkgbase = soem
 	license = GPL2
 	makedepends = cmake
 	makedepends = git
+	options = !lto
 	source = git+https://github.com/OpenEtherCATsociety/SOEM.git#commit=1817b8b4fec10c66e4d97de73302ebe496bb82ce
 	source = fix-scatech.patch
 	sha256sums = SKIP
