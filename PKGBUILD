@@ -1,6 +1,6 @@
 # Maintainer: Stephan Raabe <mail@ml4w.com>
 pkgname='ml4w-hyprland-git'
-pkgver=2.9.5.r60.g7bf1ace
+pkgver=2.9.5.r61.g64ea548
 pkgrel=1
 pkgdesc="The ML4W Dotfiles for Hyprland - An advanced and full-featured configuration for the dynamic tiling window manager Hyprland including an easy to use installation script for Arch based Linux distributions. "
 arch=(any)
