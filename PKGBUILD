@@ -18,6 +18,7 @@ sha256sums=('03e71752a6e0212af11d9c32aa40a22679157b4597b1f5e2c25399e0b78c7a55')
 prepare() {
     cd "$pkgname-$_commit"
     msg2 'Running autogen. Please wait...'
+		export CFLAGS="-fpermissive"
     ./autogen.sh --prefix=/usr --disable-static --enable-gtk-doc
 }
 
