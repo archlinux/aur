@@ -1,7 +1,7 @@
 pkgbase = nhiicc
 	pkgdesc = 台灣健保卡網路註冊憑證元件 (National Health Insurance IC Card)
 	pkgver = 20240710.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mEventesting.htm
 	install = nhiicc.install
@@ -19,6 +19,6 @@ pkgbase = nhiicc
 	md5sums = 3bbad14d8ce82a504811319e06c3cdac
 	md5sums = 3a7ba068b49eab2edca614ea2495e706
 	md5sums = e4a249ff4e638527a0bde9deec6eeb5a
-	md5sums = 605ed8db0ec700bb07ca256c5282ae6a
+	md5sums = 97e402f39fffe35e411419d062f6baf8
 
 pkgname = nhiicc

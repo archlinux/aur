@@ -40,4 +40,4 @@ ln -sf /etc/ca-certificates/trust-source/anchors/NHIRootCA.crt "$out_dir/NHIRoot
 install -Dm644 localhost.crt "$out_dir/NHIServerCert.crt"
 install -Dm600 localhost.key "$out_dir/NHIServerCert-real.key"
 
-/usr/bin/update-ca-trust
+update-ca-trust

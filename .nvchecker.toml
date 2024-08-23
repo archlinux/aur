@@ -1,8 +1,5 @@
-# Disabled - the link on https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/Eventesting.aspx is dead (HTTP 404),
-# and the old version is still available
-
 [nhiicc]
 source = "regex"
 url = "https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/Eventesting.aspx"
-regex = "mLNHIICC_Setup\\.(.*)\\.tar\\.xz\\s"
-encoding = "utf-8"
+regex = "mLNHIICC_Setup\\.(.*)\\.tar\\.xz"
+encoding = "utf-8"  # Parse the web page as utf-8
