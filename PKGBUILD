@@ -2,7 +2,7 @@
 
 pkgname=p4est-deal-ii
 _realname=p4est
-pkgver=2.8.5
+pkgver=2.8.6
 pkgrel=1
 pkgdesc="The parallel forest (p4est) library, built to work with deal.II (i.e., the deal-ii package)"
 arch=("i686" "x86_64")
@@ -16,7 +16,7 @@ depends=('openmpi' 'zlib' 'lua' 'gcc-fortran')
 makedepends=('gcc-fortran')
 source=(https://p4est.github.io/release/p4est-$pkgver.tar.gz)
 
-sha1sums=('4c1424b263379a022375289bac40cd30bad4a35c')
+sha1sums=('089cc13e0596bf221bbb508318c58c12fa7b9d6f')
 
 install_dir=/opt/$pkgname/
 
@@ -29,6 +29,9 @@ build() {
 
     mkdir -p $build_fast_dir
     mkdir -p $build_debug_dir
+
+    # mold requires this flag to link the examples
+    export LIBS="-lm"
 
     CFLAGS_FAST="$CFLAGS -g"
     CFLAGS_DEBUG="$DEBUG_CFLAGS"

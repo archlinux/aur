@@ -1,6 +1,6 @@
 pkgbase = p4est-deal-ii
 	pkgdesc = The parallel forest (p4est) library, built to work with deal.II (i.e., the deal-ii package)
-	pkgver = 2.8.5
+	pkgver = 2.8.6
 	pkgrel = 1
 	url = http://www.p4est.org/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = p4est-deal-ii
 	depends = lua
 	depends = gcc-fortran
 	options = libtool
-	source = https://p4est.github.io/release/p4est-2.8.5.tar.gz
-	sha1sums = 4c1424b263379a022375289bac40cd30bad4a35c
+	source = https://p4est.github.io/release/p4est-2.8.6.tar.gz
+	sha1sums = 089cc13e0596bf221bbb508318c58c12fa7b9d6f
 
 pkgname = p4est-deal-ii
