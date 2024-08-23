@@ -1,0 +1,16 @@
+pkgbase = fuse-ufs-git
+	pkgdesc = FUSE implementation of FreeBSD's UFSv2
+	pkgver = 0.2.1.r8.ga1ab71e
+	pkgrel = 1
+	url = https://github.com/realchonk/fuse-ufs
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cargo
+	depends = fuse3
+	provides = fuse-ufs=0.2.1.r8.ga1ab71e
+	conflicts = fuse-ufs
+	source = fuse-ufs::git+https://github.com/realchonk/fuse-ufs
+	sha256sums = SKIP
+
+pkgname = fuse-ufs-git
