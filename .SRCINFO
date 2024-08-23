@@ -1,20 +1,20 @@
 pkgbase = lib32-libevdev
 	pkgdesc = Wrapper library for evdev devices (32-bit)
-	pkgver = 1.12.0
+	pkgver = 1.13.2
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/libevdev/
 	arch = x86_64
-	license = custom:X11
+	license = MIT
 	makedepends = python
 	makedepends = gcc-multilib
-	makedepends = lib32-check
 	makedepends = valgrind
 	makedepends = doxygen
 	makedepends = meson
 	makedepends = lib32-gcc-libs
 	depends = lib32-glibc
 	depends = libevdev
-	source = https://freedesktop.org/software/libevdev/libevdev-1.12.0.tar.xz
-	sha512sums = 6c1c1362d5112cdf3816d1f735c27e625f5463ebf10a83d675cd9364c3fb291ebcb91c051da442f1a36ed28ba7dd99af74546707f61274f7d5715c544a0ed04c
+	depends = lib32-check
+	source = https://www.freedesktop.org/software/libevdev/libevdev-1.13.2.tar.xz
+	sha512sums = 558267df0e45d8641a58dddb9fe30e2235ce247d96710189b09512d19d691afbd25189d188bb26bb5092fbbe249fbc7ca60a9e6af4fab535a946d5a3e030a21f
 
 pkgname = lib32-libevdev
