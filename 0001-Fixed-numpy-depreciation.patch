@@ -1,0 +1,40 @@
+From 838925d438c02a0bdb9735ff9223be78a28cd833 Mon Sep 17 00:00:00 2001
+From: gentlegiantJGC <gentlegiantJGC@users.noreply.github.com>
+Date: Wed, 14 Feb 2024 15:55:48 +0000
+Subject: [PATCH] Fixed numpy depreciation
+
+numpy has depreciated creating arrays with values out of range
+---
+ tests/test_massive_nbt.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/test_massive_nbt.py b/tests/test_massive_nbt.py
+index 6f5de99..46eb0b2 100644
+--- a/tests/test_massive_nbt.py
++++ b/tests/test_massive_nbt.py
+@@ -67,19 +67,19 @@ class MassiveNBTTests(unittest.TestCase):
+             numpy.array([i for i in range(-128, 127)], dtype=int)
+         )
+         compound["numpyDtypeuTestByteArray"] = ByteArrayTag(
+-            numpy.array([i for i in range(-128, 127)], dtype=numpy.uint)
++            numpy.array([i for i in range(0, 255)], dtype=numpy.uint)
+         )
+         compound["numpyDtypeTestIntArray"] = IntArrayTag(
+             numpy.array([i for i in range(-400, 400)], dtype=int)
+         )
+         compound["numpyDtypeuTestIntArray"] = IntArrayTag(
+-            numpy.array([i for i in range(-400, 400)], dtype=numpy.uint)
++            numpy.array([i for i in range(0, 800)], dtype=numpy.uint)
+         )
+         compound["numpyDtypeTestLongArray"] = LongArrayTag(
+             numpy.array([i for i in range(-400, 400)], dtype=int)
+         )
+         compound["numpyDtypeuTestLongArray"] = LongArrayTag(
+-            numpy.array([i for i in range(-400, 400)], dtype=numpy.uint)
++            numpy.array([i for i in range(0, 800)], dtype=numpy.uint)
+         )
+ 
+         compound["numpyDtypedTestByteArray"] = ByteArrayTag(
+-- 
+2.46.0
+
