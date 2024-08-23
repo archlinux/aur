@@ -14,7 +14,7 @@ conflicts=("${pkgname}")
 source=("${pkgname}"::"git+https://github.com/alvr-org/ALVR.git#tag=v$pkgver"
 		"git+https://github.com/ValveSoftware/openvr.git"
 )
-md5sums=('f127285737bcc5a04aa3ad5ce99a0660'
+md5sums=('a21ba7fdc0b51a862f48656202f1eaee'
          'SKIP')
 options=('!lto')
 
