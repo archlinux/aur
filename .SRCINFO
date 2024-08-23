@@ -1,0 +1,22 @@
+pkgbase = python-accesser
+	pkgdesc = A tool for solving SNI RST
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://github.com/URenko/Accesser
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-packaging
+	depends = python-cryptography
+	depends = python-tld
+	depends = python-tomli
+	depends = python-dnspython
+	optdepends = python-rich
+	source = https://files.pythonhosted.org/packages/source/a/accesser/accesser-0.9.4.tar.gz
+	sha256sums = 4e164790f71b5794856fdc12a80284897a7afe8bef96a8735d115881a98585b2
+
+pkgname = python-accesser
