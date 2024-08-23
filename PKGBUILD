@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onlook-git
 _pkgname=Onlook
-pkgver=r103.effbb17
+pkgver=r114.f46acfd
 _electronversion=31
 _nodeversion=20
 pkgrel=1
@@ -54,9 +54,9 @@ build() {
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
@@ -66,6 +66,7 @@ build() {
     else
         echo "Your network is OK."
     fi
+    sed "/\"electron\":/d;90i\        \"electron\": \"${SYSTEM_ELECTRON_VERSION}\"," -i package.json
     sed "s|\/\${version}||g;s|'AppImage', 'deb', 'rpm'|'dir'|g" -i electron-builder.json5
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run build
