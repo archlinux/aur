@@ -1,6 +1,6 @@
 pkgbase = acter-nightly-bin
 	pkgdesc = Casual Community Organizing
-	pkgver = 1.24.8200
+	pkgver = 1.24.8230
 	pkgrel = 1
 	url = https://acter.global
 	arch = x86_64
@@ -9,8 +9,9 @@ pkgbase = acter-nightly-bin
 	depends = libsecret
 	depends = jsoncpp
 	depends = xdg-user-dirs
+	depends = libayatana-appindicator3-1
 	conflicts = acter-bin
-	source = https://github.com/acterglobal/a3/releases/download/nightly-2024-08-20/acter-nightly-linux-x64-1.24.8200.tar.bz2
-	md5sums = f3fa7b71f27770af7302aed26c94488a
+	source = https://github.com/acterglobal/a3/releases/download/nightly-2024-08-23/acter-nightly-linux-x64-1.24.8230.tar.bz2
+	md5sums = 24218e51f4b146dbe567bd2b7095ea1c
 
 pkgname = acter-nightly-bin

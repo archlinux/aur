@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Kampmann <ben@acter.global>
 pkgname=acter-nightly-bin
-pkgver=1.24.8200
+pkgver=1.24.8230
 pkgrel=1
 epoch=
 pkgdesc="Casual Community Organizing"
@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://acter.global"
 license=('custom:Acter Public Source License 1.0')
 groups=()
-depends=('mpv' 'libsecret' 'jsoncpp' 'xdg-user-dirs')
+depends=('mpv' 'libsecret' 'jsoncpp' 'xdg-user-dirs' 'libayatana-appindicator3-1')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/acterglobal/a3/releases/download/nightly-2024-08-20/acter-nightly-linux-x64-1.24.8200.tar.bz2")
+source=("https://github.com/acterglobal/a3/releases/download/nightly-2024-08-23/acter-nightly-linux-x64-1.24.8230.tar.bz2")
 noextract=()
-md5sums=("f3fa7b71f27770af7302aed26c94488a")
+md5sums=("24218e51f4b146dbe567bd2b7095ea1c")
 validpgpkeys=()
 
 package() {
