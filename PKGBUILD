@@ -10,7 +10,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=128.0.6613.84
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _system_clang=1
 # ungoogled chromium variables
@@ -50,7 +50,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
 sha256sums=('9297c1e1dc9310534f6a48f90eacc2eac1d964ac3c827dc0798594e8a2742dc4'
             'a6898d0cf47025126a8795947397ee35a10a623fdbe0c8616c1dfcca51ebe500'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '75f9c3ccdcc914d029ddcc5ca181df90177db35a343bf44ff541ff127bcea43d'
+            '1a5bc75a90abad153c8eb6dbdce138132a5f11190b0a40c925958a72d706b2aa'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             'a9b417b96daec33c9059065e15b3a92ae1bf4b59f89d353659b335d9e0379db6'
