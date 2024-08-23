@@ -2,8 +2,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=dragonflydb
-pkgver=1.21.2
-pkgrel=2
+pkgver=1.21.4
+pkgrel=1
 pkgdesc='A fast in-memory store that is fully compatible with Redis and Memcached'
 arch=('x86_64')
 url='https://dragonflydb.io'
