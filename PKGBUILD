@@ -2,16 +2,16 @@
 pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
-url='https://damask.mpie.de'
+url='https://damask-multiphysics.org'
 license=('AGPL-3.0-or-later')
 makedepends=('cmake' 'python-setuptools'
              'petsc<3.22' 'hdf5-openmpi' 'fftw-openmpi' 'zlib' 'libfyaml'
              'python-matplotlib' 'python-scipy' 'python-pandas' 'python-h5py' 'python-pyaml')
 optdepends=('paraview: post-processing')
-source=(https://damask.mpie.de/download/damask-${pkgver}.tar.xz)
+source=(https://damask-multiphysics.org/download/damask-${pkgver}.tar.xz)
 
 sha512sums=('f8e2f398c558f90ed4cac8fa60d57bd179a98f1d437ed0b5a5bd9801354cf74f12dba40551dbeabe00ad6e53709bd2daa3b64f759f3170c4766d8795d3f76483')
 
