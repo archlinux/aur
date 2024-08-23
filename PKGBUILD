@@ -35,16 +35,15 @@ pkgver() {
 }
 package() {
 	cd tmsay
-	back=$(pwd)
 	mkdir -p $pkgdir/usr/share/$pkgname
 	mkdir -p $pkgdir/usr/bin
 	cp default $pkgdir/usr/share/$pkgname/default
 	cp tmsay $pkgdir/usr/share/$pkgname/tmsay
 	cd $pkgdir/usr/bin
-	ln -s ../share/tmsay/tmsay
-	cd $back
+	ln -s ../share/tmsay/tmsay tmsay
+	cd $srcdir/tmsay
 	install -Dm755 "tmsay" "${pkgdir}/usr/share/${pkgname}/tmsay"
 	install -Dm755 "default" "${pkgdir}/usr/share/${pkgname}/default"
-	install -Dm755 "tmsay" "${pkgdir}/usr/bin/tmsay"
+	#install -Dm755 "tmsay" "${pkgdir}/usr/bin/tmsay"
 	
 }
