@@ -1,7 +1,7 @@
 # Maintainer: Amurru Zerouk <ammarzerouk[at]gmail[dot]com>
 pkgname=ballerina-bin
 _pkgname=ballerina
-pkgver=2201.9.0
+pkgver=2201.10.0
 pkgrel=1
 pkgdesc="Ballerina, an open-source programming language for the cloud"
 arch=("any")
@@ -19,7 +19,7 @@ https://github.com/ballerina-platform/ballerina-distribution/releases/download/v
 )
 sha256sums=(
 '7089633fd3b49a6d3e5ea2c793e213907ca7fc4bd670a422f911a74bbf470c95'
-'e89d6b2102b9c16b898f9652bc917f32bbb6e5ddd40d554fe3f732bb292c07e7'
+'fa00fa7c30ade1f650ea118d80f46b174b0b87d593030d199a23758a9edbc3ea'
 )
 
 prepare() {
