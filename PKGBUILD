@@ -8,7 +8,7 @@ pkgver=3.13.0
 pkgrel=3
 pkgdesc="Official Legacy ProtonVPN Command Line Interface, used to be maintained by the ProtonVPN team."
 arch=("any")
-url="https://github.com/ProtonVPN/"
+url="https://github.com/ProtonVPN"
 license=("GPL3")
 depends=("python-protonvpn-nm-lib>=3.10.0" "python-pythondialog" "network-manager-applet")
 makedepends=("python-setuptools")
