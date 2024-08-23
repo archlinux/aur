@@ -5,7 +5,7 @@ pkgbase = cssc
 	url = http://savannah.gnu.org/projects/cssc
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	depends = sh
 	provides = sccs
 	options = !emptydirs
@@ -13,4 +13,3 @@ pkgbase = cssc
 	md5sums = c9aaae7602e39b7a5d438b0cc48fcaa3
 
 pkgname = cssc
-
