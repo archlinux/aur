@@ -3,7 +3,7 @@
 
 pkgname=cassette
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
 arch=(aarch64 x86_64)
 url="https://github.com/Rirusha/${pkgname^}"
@@ -14,6 +14,7 @@ depends=(
   gdk-pixbuf2
   glibc
   glib2
+  gst-plugins-good
   gtk4
   hicolor-icon-theme
   libadwaita
@@ -26,11 +27,6 @@ makedepends=(
   blueprint-compiler
   meson
   vala
-)
-optdepends=(
-  'gst-libav: nonfree media decoding'
-  'gst-plugins-bad: media decoding'
-  'gst-plugins-good: media decoding'
 )
 options=(!debug)
 source=($url/archive/ver-$pkgver/$pkgname-ver-$pkgver.tar.gz)
