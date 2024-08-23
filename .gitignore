@@ -1,5 +1,5 @@
 *
 !PKGBUILD
-!paramotopy_fix_boost_timer_*.patch
+!*.patch
 !.SRCINFO
 !.gitignore

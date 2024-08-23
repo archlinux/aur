@@ -1,0 +1,66 @@
+--- a/include/para_aux_funcs.hpp
++++ b/include/para_aux_funcs.hpp
+@@ -28,6 +28,7 @@
+ 
+ #define BOOST_FILESYSTEM_VERSION 3
+ #define BOOST_FILESYSTEM_NO_DEPRECATED
++#define BOOST_TIMER_ENABLE_DEPRECATED
+ 
+ #include <boost/filesystem.hpp>
+ #include <boost/filesystem/operations.hpp>
+
+--- a/include/point.hpp
++++ b/include/point.hpp
+@@ -14,6 +14,7 @@
+ #include <sys/stat.h>
+ #include <sys/types.h>
+ 
++#define BOOST_TIMER_ENABLE_DEPRECATED
+ 
+ #include <boost/filesystem/operations.hpp>
+ #include <boost/filesystem/path.hpp>
+
+--- a/include/runinfo.hpp
++++ b/include/runinfo.hpp
+@@ -14,6 +14,7 @@
+ #include <sys/stat.h>
+ #include <sys/types.h> 
+ 
++#define BOOST_TIMER_ENABLE_DEPRECATED
+ 
+ #include <boost/filesystem/operations.hpp>
+ #include <boost/filesystem/path.hpp>
+
+--- a/include/step2.hpp
++++ b/include/step2.hpp
+@@ -17,6 +17,7 @@
+ 
+ #define BOOST_FILESYSTEM_VERSION 3
+ #define BOOST_FILESYSTEM_NO_DEPRECATED
++#define BOOST_TIMER_ENABLE_DEPRECATED
+ 
+ #include <boost/filesystem.hpp>
+ #include <boost/filesystem/operations.hpp>
+
+--- a/include/timing.hpp
++++ b/include/timing.hpp
+@@ -16,6 +16,7 @@
+ 
+ #define BOOST_FILESYSTEM_VERSION 3
+ #define BOOST_FILESYSTEM_NO_DEPRECATED
++#define BOOST_TIMER_ENABLE_DEPRECATED
+ 
+ #include <boost/filesystem.hpp>
+ #include <boost/filesystem/operations.hpp>
+
+--- a/include/xml_preferences.hpp
++++ b/include/xml_preferences.hpp
+@@ -10,6 +10,8 @@
+ #include <set>
+ #include "tinyxml.h"
+ 
++#define BOOST_TIMER_ENABLE_DEPRECATED
++
+ #include <boost/algorithm/string/case_conv.hpp>
+ #include <boost/filesystem/operations.hpp>
+ #include <boost/filesystem/path.hpp>
