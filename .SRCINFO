@@ -1,0 +1,14 @@
+pkgbase = customfetch-gui
+	pkgdesc = Highly customizable and fast system information fetch program
+	pkgver = 0.8.6
+	pkgrel = 1
+	url = https://github.com/Toni500github/customfetch
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = base-devel
+	conflicts = customfetch-gui-git
+	source = git+https://github.com/Toni500github/customfetch.git
+	sha256sums = SKIP
+
+pkgname = customfetch-gui
