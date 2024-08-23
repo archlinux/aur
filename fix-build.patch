@@ -1,0 +1,94 @@
+diff --git a/config.py b/config.py
+index 47339cc8..261f65d1 100644
+--- a/config.py
++++ b/config.py
+@@ -265,7 +265,7 @@ class Config:
+                 env.ParseConfig( 'pkg-config zlib --cflags --libs' )
+ 
+         env.Append( CCFLAGS = baseflags )
+-        env.Append( CXXFLAGS = baseflags + [ '-fpermissive', '-fvisibility-inlines-hidden' ] )
++        env.Append( CXXFLAGS = baseflags + [ '-fpermissive', '-fvisibility-inlines-hidden', '-std=c++14' ] )
+         env.Append( CPPPATH = [ 'include', 'libs' ] )
+         env.Append( CPPDEFINES = [ 'Q_NO_STLPORT' ] )
+         if ( config == 'debug' ):
+diff --git a/libs/bytebool.h b/libs/bytebool.h
+index 01c98747..67cafbb5 100644
+--- a/libs/bytebool.h
++++ b/libs/bytebool.h
+@@ -28,14 +28,10 @@
+ // this header is not really meant for direct inclusion,
+ // it is used by mathlib and cmdlib
+ 
+-#ifdef __cplusplus
++#include <stdbool.h>
+ typedef bool qboolean;
+ #define qtrue true
+ #define qfalse false
+-#else
+-typedef enum { qfalse, qtrue } qboolean;
+-typedef qboolean bool; // some code uses bool directly ..
+-#endif
+ 
+ typedef unsigned char byte;
+ 
+diff --git a/libs/picomodel/lwo/pntspols.c b/libs/picomodel/lwo/pntspols.c
+index 965ebda8..af019c12 100644
+--- a/libs/picomodel/lwo/pntspols.c
++++ b/libs/picomodel/lwo/pntspols.c
+@@ -532,7 +532,7 @@ int lwGetTags( picoMemStream_t *fp, int cksize, lwTagList *tlist ){
+ 
+ 	bp = buf;
+ 	for ( i = 0; i < ntags; i++ )
+-		tlist->tag[ i + tlist->offset ] = sgetS0( &bp );
++		tlist->tag[ i + tlist->offset ] = sgetS0( (unsigned char**)&bp );
+ 
+ 	_pico_free( buf );
+ 	return 1;
+diff --git a/tools/quake3/q3data/p3dlib.c b/tools/quake3/q3data/p3dlib.c
+index adb2f348..42ed3d1d 100644
+--- a/tools/quake3/q3data/p3dlib.c
++++ b/tools/quake3/q3data/p3dlib.c
+@@ -68,7 +68,7 @@ int P3DLoad( const char *filename ){
+ 
+ 	memset( &p3d, 0, sizeof( p3d ) );
+ 
+-	p3d.len = filelength( fileno( fp ) );
++	p3d.len = filelength( fp );
+ 
+ 	p3d.curpos = p3d.buffer = malloc( p3d.len );
+ 
+diff --git a/tools/urt/tools/quake3/q3map2/main.c b/tools/urt/tools/quake3/q3map2/main.c
+index 924881b9..435d36d4 100644
+--- a/tools/urt/tools/quake3/q3map2/main.c
++++ b/tools/urt/tools/quake3/q3map2/main.c
+@@ -550,7 +550,7 @@ int main( int argc, char **argv ){
+ 	PicoSetMallocFunc( safe_malloc );
+ 	PicoSetFreeFunc( free );
+ 	PicoSetPrintFunc( PicoPrintFunc );
+-	PicoSetLoadFileFunc( PicoLoadFileFunc );
++	PicoSetLoadFileFunc( (void (*)(const char*, unsigned char**, int*))PicoLoadFileFunc );
+ 	PicoSetFreeFileFunc( free );
+ 
+ 	/* set number of threads */
+diff --git a/tools/urt/tools/quake3/q3map2/q3map2.h b/tools/urt/tools/quake3/q3map2/q3map2.h
+index c4cccba4..655773d8 100644
+--- a/tools/urt/tools/quake3/q3map2/q3map2.h
++++ b/tools/urt/tools/quake3/q3map2/q3map2.h
+@@ -1737,7 +1737,8 @@ void                        CreateTraceLightsForSurface( int num, trace_t *trace
+ 
+ /* lightmaps_ydnar.c */
+ void                        ExportLightmaps( void );
+-
++void                        ClearLightMap( rawLightmap_t *lm );
++	
+ int                         ExportLightmapsMain( int argc, char **argv );
+ int                         ImportLightmapsMain( int argc, char **argv );
+ 
+@@ -1745,7 +1746,6 @@ void                        SetupSurfaceLightmaps( void );
+ void                        StitchSurfaceLightmaps( void );
+ void                        StoreSurfaceLightmaps( void );
+ 
+-
+ /* exportents.c */
+ void                        ExportEntities( void );
+ int                         ExportEntitiesMain( int argc, char **argv );
