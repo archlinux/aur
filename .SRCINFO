@@ -1,6 +1,6 @@
 pkgbase = electricfence
 	pkgdesc = A malloc(3) debugger that uses virtual memory hardware to detect illegal memory accesses.
-	pkgver = 2.2.6
+	pkgver = 2.2.7
 	pkgrel = 1
 	url = https://packages.debian.org/sid/electric-fence
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = electricfence
 	license = GPL2
 	depends = glibc
 	depends = bash
-	source = http://archive.ubuntu.com/ubuntu/pool/universe/e/electric-fence/electric-fence_2.2.6.tar.gz
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/e/electric-fence/electric-fence_2.2.7.tar.gz
 	source = ef.sh
-	sha512sums = ba58aa854dcf0749dc0881aa7d947da878ad1f73f58a735b6bc8b04d39bebbe2f9c5c94443d57a277e7828d61fc21397605129b2ed10339263b108cbf698be42
+	sha512sums = 7cf9db3888ea5499b78f6cf62d58e05748269ac5b26a47aab4b2a812f8b44814c9f16f733432f3af6694aebe6fd9cc2d5a8b5a5d1f7e7c3be054f002f90752b8
 	sha512sums = 8f9c9ac510636d380c5e388c8039435dc66cd488082ef074c6fe2f512ac2a8d286b023184443b0717ef7b7abfa34061474ad59ffade0a9cd510819be5ff6d406
 
 pkgname = electricfence
