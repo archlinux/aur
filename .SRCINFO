@@ -1,13 +1,13 @@
 pkgbase = r-intervals
 	pkgdesc = Tools for Working with Points and Intervals
-	pkgver = 0.15.4
-	pkgrel = 2
+	pkgver = 0.15.5
+	pkgrel = 1
 	url = https://cran.r-project.org/package=intervals
 	arch = x86_64
 	license = Artistic-2.0
 	depends = r
-	source = https://cran.r-project.org/src/contrib/intervals_0.15.4.tar.gz
-	md5sums = 3ae67facc1528d3626057793aa553924
-	b2sums = e77edfab823a5c06345f631832ac2b7174ce7eb7153d3eaccd40414034c853959b1c2d5bd54bb39177a68b6f51e1fc423f55e12560a131bbd4f43b357498c110
+	source = https://cran.r-project.org/src/contrib/intervals_0.15.5.tar.gz
+	md5sums = 95313aa861d2cd7a172f0ef373680cf6
+	b2sums = be2a28e9e2263808e604174fbe3ac5a211f0a9351d6f16da92541a543f11b9f798da1ad521c257bc3833bd963255ec28ed373882f230c030c24a12ef84b73919
 
 pkgname = r-intervals
