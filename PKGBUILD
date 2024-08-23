@@ -2,9 +2,9 @@
 # Contributor: lsf
 
 pkgname=briar-desktop
-pkgver=0.6.1.beta
+pkgver=0.6.2.beta
 pkgrel=1
-_bin_ver=0.6.1
+_bin_ver=0.6.2
 _build_type=beta
 pkgdesc='Prototyping the next generation for Briar on desktop devices'
 
@@ -23,8 +23,8 @@ source=(
 )
 
 sha256sums=(
-	"SKIP"
-	"SKIP"
+	"6dcc4a4b033ea503822108825c062e36b8cb72caa70b84b6552b85a92fd857fa"
+	"e7718648b7afbedbcbb4d9936c1d9813e8fb3dc3190476f244a2a044a6bd7965"
 	"965d7c617e345b809f84c8bf73d9cb0acaf763c16a4b367698218b90c1c92669"
 	"3feb96f9b9c01085170a44fdbf8bca43b1e586fe3b68dab37fb5cb9fd4ca1fa6"
 	"3ba1a6a3561f3b879d8295cf3397bda6c7710f138f6cbd7effe4f650765610a0"
