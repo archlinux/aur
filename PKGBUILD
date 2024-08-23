@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onemouse-bin
 _pkgname="One Mouse"
-pkgver=1.0.0
+pkgver=1.1.0
 _electronversion=30
 pkgrel=1
 pkgdesc="An intranet remote control tool.一个内网远程控制工具"
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/release-v${pkgver}/onemouse_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e0edcc3f8040daf5dabeceb92f5c27369ab08b3aab548886e73a55f5a2d2d2c6'
+sha256sums=('1ce5f4f61e49483324f85395e06ae7d8e2433a0f39a2b2c71a154d57dc868c52'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
