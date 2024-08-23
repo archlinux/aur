@@ -2,7 +2,7 @@
 # Contributor: Fabio 'Lolix' Loli <lolix@disroot.org>
 # Contributor: Nikola Hadžić <nikola@firemail.cc>
 pkgname=gst-plugins-rs
-pkgver=1.24.6
+pkgver=1.24.7
 pkgrel=1
 pkgdesc="GStreamer plugins written in Rust"
 arch=('x86_64')
@@ -34,7 +34,7 @@ makedepends=(
 provides=('gst-plugin-gtk4')
 conflicts=('gst-plugin-gtk4')
 source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git#tag=gstreamer-$pkgver")
-sha256sums=('fd933436b1d7b467ee7d78869167e832abc3e37c358b9180250f1607825c9d3e')
+sha256sums=('391188e862210d463e16cdcd6e0529c0326750c2ca383095f6349158ba3a78d9')
 
 prepare() {
   cd "$pkgname"
