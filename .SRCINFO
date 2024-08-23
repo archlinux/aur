@@ -1,7 +1,7 @@
 pkgbase = surrealdb
 	pkgdesc = A scalable, distributed, collaborative, document-graph database, for the realtime web
 	pkgver = 1.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/surrealdb/surrealdb
 	arch = x86_64
 	license = custom:BSL

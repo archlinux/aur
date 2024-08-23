@@ -3,8 +3,7 @@
 
 pkgname=surrealdb
 pkgver=1.5.4
-pkgrel=1
-epoch=
+pkgrel=2
 pkgdesc="A scalable, distributed, collaborative, document-graph database, for the realtime web"
 arch=('x86_64')
 url="https://github.com/surrealdb/surrealdb"
@@ -36,7 +35,7 @@ build() {
 
 check() {
 	cd "$pkgname-${pkgver//_/-}" || exit
-	cargo make -k check
+	cargo make check
 }
 
 package() {
