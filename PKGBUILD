@@ -2,7 +2,7 @@
 # Contributor: Mr.Smith1974
 
 pkgname=openloco
-pkgver=24.04
+pkgver=24.08
 pkgrel=1
 pkgdesc="An open source re-implementation of Chris Sawyer's Locomotion"
 arch=(x86_64 i686)
@@ -18,15 +18,21 @@ optdepends=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/OpenLoco/OpenLoco/archive/refs/tags/v${pkgver}.tar.gz"
 	    "openloco.desktop")
-sha256sums=('2141891fc795460e92657aead379a3bdf32069f7f938e42eae4a1e595edd686b'
+sha256sums=('dfed9fda0e52a83dd8a256f9ab31f98da533b38127ea1aac82c9554c22400da4'
             '57512f00144c1e0d2cc91c3adbf38460d5ec1223afc27bd16e1271760bce02ae')
 options=(!lto)
 
 build() {
-  export CXXFLAGS="$CXXFLAGS -m32"
+	local _flags=(
+    -DFETCHCONTENT_QUIET:BOOL=OFF
+	)
+
+  export CXXFLAGS="$CXXFLAGS -m32 -Wno-error=null-dereference"
+
   cmake -G "Unix Makefiles" -B build -S "OpenLoco-${pkgver}" -Wno-dev \
     -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
 
   cmake --build build
 }
@@ -39,4 +45,7 @@ package() {
   install -Dm644 "openloco.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   DESTDIR="${pkgdir}" cmake --install build
   install -D "OpenLoco-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  #remove bundled sfl from package
+  rm -rf "${pkgdir}/usr/include/sfl"
 }
