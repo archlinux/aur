@@ -3,7 +3,7 @@ pkgname="customfetch-gui"
 _pkgname="customfetch"
 pkgver=0.8.6
 pkgrel=1
-pkgdesc="Highly customizable and fast system information fetch program"
+pkgdesc="Highly customizable and fast system information fetch program (with GUI mode)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Toni500github/customfetch"
 license=('GPL3')
@@ -11,9 +11,8 @@ depends=('gtk3' 'gtkmm3')
 optdepends=(
         "ttf-liberation: Font to be used for GUI (recommended)"
 )
-conflicts=('customfetch' 'customfetch-git-gui' "customfetch-git")
+conflicts=('customfetch' 'customfetch-gui-git' "customfetch-git")
 makedepends=('base-devel')
-conflicts=('customfetch-gui-git')
 source=("git+${url}.git")
 sha256sums=("SKIP")
 
