@@ -2,7 +2,7 @@
 
 _plug=resize2
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r11.3e20638
+pkgver=r16.4fb7511
 pkgrel=1
 pkgdesc="Plugin for VapourSynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -32,6 +32,8 @@ prepare() {
   # but -static builds for this fail on Arch, and we want to use the system vapoursynth
   sed -i "s|link_args: \['-static'],|#link_args: \['-static'],|" meson.build
   sed -i "s|include_directories('vapoursynth/include'),|#include_directories('vapoursynth/include'),|" meson.build
+  cp zimg.patch ./zimg
+  git -C zimg apply zimg.patch
   arch-meson build \
     --buildtype=release \
     --libdir /usr/lib/vapoursynth
