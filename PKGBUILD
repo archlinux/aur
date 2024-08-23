@@ -2,14 +2,14 @@
 _pkgname=nintyfont
 pkgname=$_pkgname-git
 pkgver=1.0.alpha.2.r2.g38af946
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo binary font editor"
 arch=('any')
 url="https://github.com/hadashisora/NintyFont"
 license=('GPL3')
 groups=()
 depends=('fmt9')
-makedepends=('base-devel' 'qt5-base' 'cmake')
+makedepends=('base-devel' 'qt5-base' 'cmake' 'git')
 source=("${_pkgname}::git+https://github.com/hadashisora/NintyFont.git")
 md5sums=('SKIP')
 
