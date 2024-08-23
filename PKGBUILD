@@ -10,7 +10,7 @@ license=('custom:jetbrains')
 url='https://www.jetbrains.com/remote-development/gateway/'
 depends=('glib2')
 options=('!strip')
-source=("https://download-cf.jetbrains.com/idea/gateway/JetBrainsGateway-${pkgver}.tar.gz"
+source=("https://download.jetbrains.com/idea/gateway/JetBrainsGateway-${pkgver}.tar.gz"
         jetbrains-gateway.desktop
         LICENSE)
 b2sums=('15f65b73e081a79195521a29f0d408f84a77e655bf0468344f74a0cefcf22027c6ad7cfba2e58f5f7fc64c8e5d613d477e9c0158b7104d6b3f0037ee13e043d1'
