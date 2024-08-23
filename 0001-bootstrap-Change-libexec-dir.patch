@@ -1,0 +1,36 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Thu, 6 May 2021 20:14:58 +0200
+Subject: [PATCH] bootstrap: Change libexec dir
+
+---
+ src/bootstrap/src/core/build_steps/dist.rs | 2 +-
+ src/bootstrap/src/core/build_steps/tool.rs | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/bootstrap/src/core/build_steps/dist.rs b/src/bootstrap/src/core/build_steps/dist.rs
+index 91039d0c8dcc..b01827f85ca1 100644
+--- a/src/bootstrap/src/core/build_steps/dist.rs
++++ b/src/bootstrap/src/core/build_steps/dist.rs
+@@ -426,7 +426,7 @@ fn prepare_image(builder: &Builder<'_>, compiler: Compiler, image: &Path) {
+                 },
+                 builder.kind,
+             ) {
+-                builder.install(&ra_proc_macro_srv, &image.join("libexec"), 0o755);
++                builder.install(&ra_proc_macro_srv, &image.join("lib"), 0o755);
+             }
+ 
+             let libdir_relative = builder.libdir_relative(compiler);
+diff --git a/src/bootstrap/src/core/build_steps/tool.rs b/src/bootstrap/src/core/build_steps/tool.rs
+index 9df4698f21f3..ad0514be5f1d 100644
+--- a/src/bootstrap/src/core/build_steps/tool.rs
++++ b/src/bootstrap/src/core/build_steps/tool.rs
+@@ -724,7 +724,7 @@ fn run(self, builder: &Builder<'_>) -> Option<PathBuf> {
+ 
+         // Copy `rust-analyzer-proc-macro-srv` to `<sysroot>/libexec/`
+         // so that r-a can use it.
+-        let libexec_path = builder.sysroot(self.compiler).join("libexec");
++        let libexec_path = builder.sysroot(self.compiler).join("lib");
+         t!(fs::create_dir_all(&libexec_path));
+         builder.copy_link(&path, &libexec_path.join("rust-analyzer-proc-macro-srv"));
+ 
