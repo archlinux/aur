@@ -1,7 +1,7 @@
 pkgbase = shadps4-git
 	pkgdesc = Sony PlayStation 4 emulator
-	pkgver = 0.2.0.r55.gc60bfbe2
-	pkgrel = 2
+	pkgver = 0.2.0.r87.g9852f95c
+	pkgrel = 1
 	url = https://shadps4.net/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -9,7 +9,7 @@ pkgbase = shadps4-git
 	makedepends = ffmpeg
 	makedepends = fmt>=10.2
 	makedepends = git
-	makedepends = magic_enum>=0.9.5
+	makedepends = magic_enum>=0.9.6
 	makedepends = qt6-base
 	makedepends = rapidjson
 	makedepends = renderdoc
@@ -26,20 +26,19 @@ pkgbase = shadps4-git
 	depends = gcc-libs
 	depends = glibc
 	depends = glslang>=14.2
+	depends = hicolor-icon-theme
 	depends = sdl3
-	depends = zlib-ng>=2.1.6
+	depends = zlib-ng>=2.1.7
 	optdepends = renderdoc: for graphics debugging
 	optdepends = vulkan-validation-layers: for vulkan debugging
-	provides = shadps4=0.2.0.r55.gc60bfbe2
+	provides = shadps4=0.2.0.r87.g9852f95c
 	conflicts = shadps4
 	source = shadps4::git+https://github.com/shadps4-emu/shadPS4.git
 	source = shadps4-boost::git+https://github.com/shadps4-emu/ext-boost.git
-	source = shadps4-discord-rpc::git+https://github.com/shadps4-emu/ext-discord-rpc.git
 	source = shadps4-sirit::git+https://github.com/shadps4-emu/sirit.git
 	source = shadps4-tracy::git+https://github.com/shadps4-emu/tracy.git
 	source = zydis::git+https://github.com/zyantific/zydis.git
 	source = shadps4.sh
-	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -53,8 +52,9 @@ pkgname = shadps4-git
 	depends = gcc-libs
 	depends = glibc
 	depends = glslang>=14.2
+	depends = hicolor-icon-theme
 	depends = sdl3
-	depends = zlib-ng>=2.1.6
+	depends = zlib-ng>=2.1.7
 	depends = libavcodec.so
 	depends = libavformat.so
 	depends = libavutil.so

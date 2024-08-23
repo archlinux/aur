@@ -1,8 +1,8 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.2.0.r55.gc60bfbe2
-pkgrel=2
+pkgver=0.2.0.r87.g9852f95c
+pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('x86_64')
 url="https://shadps4.net/"
@@ -13,8 +13,9 @@ depends=(
 	'gcc-libs'
 	'glibc'
 	'glslang>=14.2'
+	'hicolor-icon-theme'
 	'sdl3' # 'sdl3>=3.0.0.r5769'
-	'zlib-ng>=2.1.6'
+	'zlib-ng>=2.1.7'
 )
 makedepends=(
 	# 'boost>=1.84'
@@ -22,7 +23,7 @@ makedepends=(
 	'ffmpeg'
 	'fmt>=10.2'
 	'git'
-	'magic_enum>=0.9.5'
+	'magic_enum>=0.9.6'
 	'qt6-base'
 	'rapidjson'
 	'renderdoc'
@@ -33,7 +34,7 @@ makedepends=(
 	'vulkan-memory-allocator>=3.1'
 	'xbyak>=7.07'
 	'xxhash>=0.8.2'
-	'zycore-c' # 'zydis>=4.1'
+	'zycore-c' # 'zydis>=5'
 )
 optdepends=(
 	'renderdoc: for graphics debugging'
@@ -44,14 +45,12 @@ conflicts=("$_pkgname")
 source=(
 	"$_pkgname::git+https://github.com/shadps4-emu/shadPS4.git"
 	"$_pkgname-boost::git+https://github.com/shadps4-emu/ext-boost.git"
-	"$_pkgname-discord-rpc::git+https://github.com/shadps4-emu/ext-discord-rpc.git"
 	"$_pkgname-sirit::git+https://github.com/shadps4-emu/sirit.git"
 	"$_pkgname-tracy::git+https://github.com/shadps4-emu/tracy.git"
 	"zydis::git+https://github.com/zyantific/zydis.git"
 	"$_pkgname.sh"
 )
 b2sums=(
-	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -67,13 +66,11 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	git config submodule.externals/discord-rpc.url ../$_pkgname-discord-rpc
 	git config submodule.externals/ext-boost.url ../$_pkgname-boost
 	git config submodule.externals/sirit.url ../$_pkgname-sirit
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
 	git config submodule.externals/zydis.url ../zydis
 	git -c protocol.file.allow=always submodule update
-	sed -ri '/find_package/s/\b[.0-9]+\b//' CMakeLists.txt
 	# https://github.com/shadps4-emu/shadPS4/issues/486
 	sed -i '/SDL_init/i #include <SDL3/SDL_events.h>' src/audio_core/sdl_audio.cpp
 }
@@ -105,5 +102,8 @@ package() {
 	)
 	# shellcheck disable=SC2154
 	install -D -t "$pkgdir"/usr/lib/$_pkgname build/shadps4
-	install -D $_pkgname.sh "$pkgdir"/usr/bin/$_pkgname
+	install -D $_pkgname.sh "$pkgdir"/usr/bin/shadps4
+	cd $_pkgname
+	install -Dm644 -t "$pkgdir"/usr/share/icons/hicolor/512x512/apps .github/shadps4.png
+	install -Dm644 -t "$pkgdir"/usr/share/applications .github/shadps4.desktop
 }
