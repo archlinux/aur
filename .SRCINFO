@@ -30,7 +30,7 @@ pkgname = gstreamer113
 	optdepends = bash-completion: for shell autocompletion
 	optdepends = gstreamer113-docs: HTML documentation
 	provides = gstreamer=1.13.91
-	provides = gstreamer-1.0=1.13.91
+	conflicts = gstreamer
 
 pkgname = gstreamer113-docs
 	pkgdesc = HTML documentation for gstreamer113

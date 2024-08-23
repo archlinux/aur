@@ -67,7 +67,8 @@ package_gstreamer113() {
   depends=('glibc' 'gcc-libs' 'glib2' 'libcap' 'libelf' 'libunwind')
   optdepends=('bash-completion: for shell autocompletion'
               "${pkgbase}-docs: HTML documentation")
-  provides=("${_name}=${pkgver}" "${_name}-1.0=${pkgver}")
+  provides=("${_name}=${pkgver}")
+  conflicts=("${_name}")
 
   cd "${srcdir}/${_pkgsrc}"
   make DESTDIR="${pkgdir}" install
