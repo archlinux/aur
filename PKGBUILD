@@ -39,7 +39,7 @@ package() {
     find . -type f -exec sed -i "s@$pkgdir@@g" {} \;
 
     # Rewrite localrc to use gcc-13 as default compiler
-    $pkgdir/opt/nvidia/hpc_sdk/Linux_x86_64/$pkgver/compilers/bin/makelocalrc -x -gcc gcc-13
+    "$pkgdir"/opt/nvidia/hpc_sdk/Linux_x86_64/$pkgver/compilers/bin/makelocalrc -x -gcc gcc-13
 
     # Install license
     cd "$srcdir/$_pkgname/install_components/Linux_$arch/$pkgver/compilers/license"
