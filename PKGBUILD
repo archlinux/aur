@@ -3,11 +3,11 @@
 
 pkgname=calibre-plugin-kobo-driver-git
 pkgver=3.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc='An extension of the existing KoboTouch driver provided with Calibre'
 arch=(any)
 url=https://github.com/jgoguen/calibre-kobo-driver/
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=('calibre')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
