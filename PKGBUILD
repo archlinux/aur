@@ -2,7 +2,7 @@
 # Maintainer: Christian Winther <scm-engine at jippi dot dev>
 
 pkgname='scm-engine-bin'
-pkgver=0.10.12
+pkgver=0.10.13
 pkgrel=1
 pkgdesc='Makes working with .env files easy'
 url='https://github.com/jippi/scm-engine'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('scm-engine')
 conflicts=('scm-engine')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jippi/scm-engine/releases/download/v0.10.12/scm-engine_Linux_arm64.tar.gz")
-sha256sums_aarch64=('5d9984c1a758ee7af002f7baa456662d4a8bbf6f42deb6154fee724e515ee7b8')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jippi/scm-engine/releases/download/v0.10.13/scm-engine_Linux_arm64.tar.gz")
+sha256sums_aarch64=('27d667f3640d4fcccc82384d8dd09860e6b5eeb130b0a619d7538e00332ad933')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jippi/scm-engine/releases/download/v0.10.12/scm-engine_Linux_armv7.tar.gz")
-sha256sums_armv7h=('60d160113400d17393525f9948bc56b24b4c8ea071ba6e57351abb2004000b54')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jippi/scm-engine/releases/download/v0.10.13/scm-engine_Linux_armv7.tar.gz")
+sha256sums_armv7h=('5bd3b52f600df167a99de7813a5ca36dcf4a297842f0b0f25e34b8e5f5af1d91')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jippi/scm-engine/releases/download/v0.10.12/scm-engine_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('74c35c583de38772882e104ad58fd0ef407ffe20c52c3d2afc1fa057fce29424')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jippi/scm-engine/releases/download/v0.10.13/scm-engine_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('d685fb4adbb147586cd2fb4bb6e93f8126c0efdecf3dbbd817c25e8a922f380d')
 
 package() {
   # bin
