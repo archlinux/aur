@@ -2,6 +2,7 @@ pkgbase = term-owo-git
 	pkgdesc = A simple C++ program that owofies text
 	pkgver = 1.0
 	pkgrel = 1
+	url = https://git.alfieking.dev/acetheking987/term-owo-cpp
 	arch = x86_64
 	arch = i686
 	arch = arm
