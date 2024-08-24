@@ -12,7 +12,7 @@ pkgrel=1
 pkgdesc="Advanced Linux Driver for Xbox One Wireless Gamepad"
 arch=('any')
 url='https://github.com/atar-axis/xpadneo'
-license=('GPL3')
+license=(GPL-3.0-only)
 depends=('dkms' 'bluez' 'bluez-utils')
 source=("${_pkgname}-${_pkgver}.tar.gz::${url}/archive/${_pkgver}.tar.gz"
         drop-etc-files.patch
