@@ -276,26 +276,25 @@ else # remove llvm-mingw paths from externally set PATH
   else
     _cross_path="${PATH}"
   fi
+
+  if [ "${_use_mingw}" = "clang" ]; then
+    makedepends+=(clang llvm-libs)
+
+    _cross64="/usr/bin/clang"
+    _crossxx64="/usr/bin/clang++"
+    _cross32="/usr/bin/clang"
+    _crossxx32="/usr/bin/clang++"
+
+    _lto_flags=""
+  else
+    makedepends+=(mingw-w64-binutils mingw-w64-gcc mingw-w64-crt mingw-w64-headers mingw-w64-winpthreads)
+
+    _cross64="x86_64-w64-mingw32-gcc"
+    _crossxx64="x86_64-w64-mingw32-g++"
+    _cross32="i686-w64-mingw32-gcc"
+    _crossxx32="i686-w64-mingw32-g++"
+  fi
 fi
-
-if [ "${_use_mingw}" = "clang" ]; then
-  makedepends+=(clang llvm-libs)
-
-  _cross64="/usr/bin/clang"
-  _crossxx64="/usr/bin/clang++"
-  _cross32="/usr/bin/clang"
-  _crossxx32="/usr/bin/clang++"
-
-  _lto_flags=""
-else
-  makedepends+=(mingw-w64-binutils mingw-w64-gcc mingw-w64-crt mingw-w64-headers mingw-w64-winpthreads)
-
-  _cross64="x86_64-w64-mingw32-gcc"
-  _crossxx64="x86_64-w64-mingw32-g++"
-  _cross32="i686-w64-mingw32-gcc"
-  _crossxx32="i686-w64-mingw32-g++"
-fi
-
 makedepends=("${makedepends[@]}" "${depends[@]}")
 
 # exported at the start of every function
