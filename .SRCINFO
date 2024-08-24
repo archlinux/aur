@@ -1,10 +1,10 @@
 pkgbase = insight-toolkit
 	pkgdesc = Cross-platform system that provides developers with an extensive suite of software tools for image analysis
-	pkgver = 5.3.0
-	pkgrel = 2
+	pkgver = 5.4.0
+	pkgrel = 1
 	url = https://itk.org/
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = cmake
 	makedepends = git
 	makedepends = eigen
@@ -19,9 +19,7 @@ pkgbase = insight-toolkit
 	depends = expat
 	depends = hdf5
 	options = !lto
-	source = https://github.com/InsightSoftwareConsortium/ITK/releases/download/v5.3.0/InsightToolkit-5.3.0.tar.gz
-	source = InsightToolkit-gcc13-fix.patch::https://github.com/InsightSoftwareConsortium/ITK/pull/4066/commits/93bd9fe07e250bdac948ae6f2c2cc749f165f0e9.patch
-	sha512sums = 29359839c0fb13acd430410e6adadbecb4d9d8cb4871a0aba0ac67b539c235354a591655dd654f43daa5f035a33721671d665eee8a4a129a9d0d3419e2356e97
-	sha512sums = 1435e87705a4bd53ae70c221b2541a8912b08f21e62de87c25520d3cc7e9784ae8deb8bcbd37ccd28b17e57d0069919ad103e93030b99417131e708abc9a0a38
+	source = insight-toolkit-5.4.0.tar.gz::https://github.com/InsightSoftwareConsortium/ITK/archive/refs/tags/v5.4.0.tar.gz
+	sha512sums = 3a98ececf258aac545f094dd3e97918c93cc82bc623ddf793c4bf0162ab06c83fbfd4d08130bdec6e617bda85dd17225488bc1394bc91b17f1232126a5d990db
 
 pkgname = insight-toolkit

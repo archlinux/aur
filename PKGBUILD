@@ -6,27 +6,21 @@
 # Contributor: joel schaerer <joel.schaerer@laposte.net>
 
 pkgname=insight-toolkit
-pkgver=5.3.0
-pkgrel=2
+pkgver=5.4.0
+pkgrel=1
 pkgdesc="Cross-platform system that provides developers with an extensive suite of software tools for image analysis"
 arch=(x86_64)
 url="https://itk.org/"
-license=(Apache)
+license=(Apache-2.0)
 depends=(glibc gcc-libs libjpeg-turbo libpng zlib libtiff gdcm expat hdf5)
 makedepends=(cmake git eigen gtest)
 options=(!lto)
-source=("https://github.com/InsightSoftwareConsortium/ITK/releases/download/v${pkgver}/InsightToolkit-${pkgver}.tar.gz"
-        "InsightToolkit-gcc13-fix.patch::https://github.com/InsightSoftwareConsortium/ITK/pull/4066/commits/93bd9fe07e250bdac948ae6f2c2cc749f165f0e9.patch")
-sha512sums=('29359839c0fb13acd430410e6adadbecb4d9d8cb4871a0aba0ac67b539c235354a591655dd654f43daa5f035a33721671d665eee8a4a129a9d0d3419e2356e97'
-            '1435e87705a4bd53ae70c221b2541a8912b08f21e62de87c25520d3cc7e9784ae8deb8bcbd37ccd28b17e57d0069919ad103e93030b99417131e708abc9a0a38')
-
-prepare() {
-  cd "InsightToolkit-${pkgver}"
-  patch -Np1 -i ../InsightToolkit-gcc13-fix.patch
-}
+source=(#"https://github.com/InsightSoftwareConsortium/ITK/releases/download/v${pkgver}/InsightToolkit-${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}.tar.gz::https://github.com/InsightSoftwareConsortium/ITK/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('3a98ececf258aac545f094dd3e97918c93cc82bc623ddf793c4bf0162ab06c83fbfd4d08130bdec6e617bda85dd17225488bc1394bc91b17f1232126a5d990db')
 
 build() {
-  cmake -B build -S "InsightToolkit-$pkgver" -Wno-dev \
+  cmake -B build -S "ITK-${pkgver}" -Wno-dev \
     -DCMAKE_BUILD_TYPE:STRING=Release \
     -DBUILD_TESTING:BOOL=OFF \
     -DBUILD_EXAMPLES:BOOL=OFF \
@@ -44,6 +38,7 @@ build() {
     -DITK_USE_SYSTEM_EXPAT:BOOL=ON \
     -DITK_USE_SYSTEM_FFTW:BOOL=ON \
     -DITK_USE_SYSTEM_HDF5:BOOL=ON \
+    -DITK_USE_SYSTEM_GOOGLETEST=OFF \
     -DModule_ITKIOMINC:BOOL=ON \
     -DModule_ITKIOTransformMINC:BOOL=ON \
     -DModule_SimpleITKFilters:BOOL=ON
