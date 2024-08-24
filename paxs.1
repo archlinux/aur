@@ -1,0 +1,97 @@
+.\" Manpage for paxs
+.TH PAXS 1 "August 2024" "0.1" "paxs manual"
+.SH NAME
+paxs \- search for a package, check for updates, install or remove packages in Yay, Flatpak, and Snap
+.SH SYNOPSIS
+.B paxs
+.I <search_term>
+.BR paxs " -c," ", paxs --check-update"
+.BR paxs " -u," ", paxs --upgrade-all"
+.BR paxs " -uy," ", paxs --upgrade-yay"
+.BR paxs " -uf," ", paxs --upgrade-flatpak"
+.BR paxs " -us," ", paxs --upgrade-snap"
+.BR paxs " -i " "<package-name>," ", paxs --install <package-name>"
+.BR paxs " -iy " "<package-name>," ", paxs --install-yay <package-name>"
+.BR paxs " -if " "<package-name>," ", paxs --install-flatpak <package-name>"
+.BR paxs " -is " "<package-name>," ", paxs --install-snap <package-name>"
+.BR paxs " -r " "<package-name>," ", paxs --remove <package-name>"
+.BR paxs " -ry " "<package-name>," ", paxs --remove-yay <package-name>"
+.BR paxs " -rf " "<package-name>," ", paxs --remove-flatpak <package-name>"
+.BR paxs " -rs " "<package-name>," ", paxs --remove-snap <package-name>"
+.BR paxs " -h," ", paxs --help"
+.SH DESCRIPTION
+The
+.B paxs
+command searches for the specified package across the following package managers:
+.IP
+\- Yay (Arch Repository and AUR)
+.IP
+\- Flatpak
+.IP
+\- Snap
+.PP
+The
+.B \-c
+or
+.BR \-\-check-update
+option checks for updates across the package managers.
+.PP
+The
+.B \-u
+or
+.BR \-\-upgrade-all
+option upgrades all packages across the package managers.
+.PP
+The
+.B \-i <package-name>
+or
+.BR \-\-install <package-name>
+option searches for the package and prompts the user to select a source for installation.
+.PP
+The
+.B \-iy <package-name>
+or
+.BR \-\-install-yay <package-name>
+option attempts to install the specified package using Yay.
+.PP
+The
+.B \-if <package-name>
+or
+.BR \-\-install-flatpak <package-name>
+option attempts to install the specified package using Flatpak.
+.PP
+The
+.B \-is <package-name>
+or
+.BR \-\-install-snap <package-name>
+option attempts to install the specified package using Snap.
+.PP
+The
+.B \-r <package-name>
+or
+.BR \-\-remove <package-name>
+option searches for the package on your system and prompts the user to select a source for removal.
+.PP
+The
+.B \-ry <package-name>
+or
+.BR \-\-remove-yay <package-name>
+option attempts to remove an Arch or AUR package using Yay.
+.PP
+The
+.B \-rf <package-name>
+or
+.BR \-\-remove-flatpak <package-name>
+option attempts to remove a Flatpak package.
+.PP
+The
+.B \-rs <package-name>
+or
+.BR \-\-remove-snap <package-name>
+option attempts to remove a Snap package.
+.PP
+The
+.B \-h
+or
+.BR \-\-help
+option displays this help manual.
