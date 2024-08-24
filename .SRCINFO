@@ -1,0 +1,15 @@
+pkgbase = memtester-hugepages
+	pkgdesc = fork of memtester adding -H to test 2M huge pages
+	pkgver = 4.6.0
+	pkgrel = 1
+	url = https://github.com/ticpu/memtester
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	provides = memtester
+	conflicts = memtester
+	source = git+https://github.com/ticpu/memtester?signed#commit=13f82231c93879d3c7e3031b371879ee1f2d5bdc
+	validpgpkeys = E5998E49DC9E1DCFDB9B46EC77EBA10790CFFCCD
+	sha256sums = 5d0a5d1d280fdd3094f9f7700637b1914b7a6dd2162ec210f1f31224a3f2212f
+
+pkgname = memtester-hugepages
