@@ -2,21 +2,21 @@
 # Contributor: Ersei <contact at ersei dot net>
 # Contributer: Paul <paul@mrarm.io>
 
-# In order to build mcpelauncher-client32, set MCPELAUNCHER_LINUX_32=ON as an environment variable
+# In order to build mcpelauncher-client32, set MCPELAUNCHER_LINUX_32=ON as an environment variable, and have the AUR Package lib32-libevdev installed
 if [[ -z "$MCPELAUNCHER_LINUX_32" ]]; then
 	MCPELAUNCHER_LINUX_32=OFF
 else
-	MCPELAUNCHER_LINUX_32=ON
+	MCPELAUNCHER_LINUX_32=$MCPELAUNCHER_LINUX_32
 fi
 pkgname=mcpelauncher-linux
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
 license=('GPL-3.0-only')
 makedepends=('git' 'cmake' 'clang' 'alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'libxkbcommon' 'ibus' 'fcitx5' 'libxss' 'jack' 'pipewire' 'sndio')
-depends=('curl' 'libx11' 'zlib' 'libpng' 'libevdev' 'libxi' 'libegl' 'qt6-base' 'qt6-declarative' 'qt6-webengine' 'libuv' 'systemd-libs' 'openssl' 'gcc-libs' 'glibc')
+depends=('libx11' 'zlib' 'libpng' 'libevdev' 'libegl' 'qt6-base' 'qt6-declarative' 'qt6-webengine' 'systemd-libs' 'openssl' 'gcc-libs' 'glibc')
 optdepends=('mcpelauncher-ui: GUI for Launcher'
 		'pipewire: Pipewire Sound Driver'
 		'libpulse: Pulseaudio Sound Driver'
@@ -175,6 +175,11 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 if [[ $MCPELAUNCHER_LINUX_32 == 'ON' ]]; then
     install -Dm755 "$srcdir/build32/mcpelauncher-client/mcpelauncher-client" "$pkgdir/usr/bin/mcpelauncher-client32"
+    optdepends+=('lib32-pipewire: Pipewire Sound Driver'
+		'lib32-libpulse: Pulseaudio Sound Driver'
+		'lib32-jack: JACK Sound Driver'
+		'lib32-alsa-lib: ALSA Sound Driver'
+	)
 fi
   install -Dm644 mcpelauncher-manifest/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 mcpelauncher-manifest/msa-daemon-client/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.MIT"
