@@ -3,12 +3,12 @@
 _basename=chicago95
 pkgname="${_basename}-plus"
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Windows Plus! Theme Conversion for XFCE/Chicago95 (stable version)"
 arch=('any')
 url="https://github.com/grassmunk/Chicago95"
 license=('GPL')
-depends=('python' 'python-svgwrite' 'python-fonttools' 'python-numpy' 'inkscape' 'noto-fonts' 'alsa-utils')
+depends=('python' 'python-svgwrite' 'python-fonttools' 'python-numpy' 'imagemagick' 'inkscape' 'noto-fonts' 'alsa-utils')
 optdepends=('chicago95-theme: Base theme')
 makedepends=('git')
 source=("chicago95::git+https://github.com/grassmunk/Chicago95.git#tag=v$pkgver")
