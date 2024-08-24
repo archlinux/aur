@@ -1,0 +1,6 @@
+# see https://github.com/microsoft/vscode/issues/129953#issuecomment-1323778127
+--- a/resources/app/package.json
++++ b/resources/app/package.json
+@@ -233,1 +233,1 @@
+-  "desktopName": "code-url-handler.desktop"
++  "desktopName": "code.desktop"

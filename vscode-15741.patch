@@ -1,0 +1,12 @@
+# see https://github.com/microsoft/vscode/issues/15741
+# see https://github.com/microsoft/vscode/issues/214741
+--- a/code.desktop
++++ b/code.desktop
+@@ -8,7 +8,7 @@ Type=Application
+ StartupNotify=false
+ StartupWMClass=Code
+ Categories=TextEditor;Development;IDE;
+-MimeType=application/x-code-workspace;
++MimeType=application/x-code-workspace;text/plain;inode/directory;
+ Actions=new-empty-window;
+ Keywords=vscode;
