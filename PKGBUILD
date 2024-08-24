@@ -13,9 +13,9 @@ _devenv=false
 _generic_release=false
 
 # hack taken from wine-tkg PKGBUILD, real pkgrel is the eval one
-pkgver=9.15.w233.s5eeb4b7
+pkgver=9.16.w1.s6c5cb54
 pkgrel=1
-eval pkgrel=4
+eval pkgrel=1
 
 ################################################################################################################################
 ################################################################################################################################
@@ -35,7 +35,7 @@ _enabled_staging=()
 _disabled_staging=()
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="08-24-2024-6e15604c-5eeb4b76"
+_patchbase_tag="08-24-2024-65124f15-6c5cb546"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the custompatches folder
@@ -43,12 +43,12 @@ _patchbase_tag="08-24-2024-6e15604c-5eeb4b76"
 ## also recommended to set _desired_wine_commit and _desired_staging_commit if this is used (see below)
 _custompatches=false
 
-## uses wine/staging master if empty, uses given commit or tag if set
-## only applies if _custompatches is true, otherwise overwritten by upstream commits from patchbase repo
-_desired_wine_commit=6e15604c48acd63dd8095a4ce2fd011cb3be96db
-_desired_staging_commit=5eeb4b76d6f460456238582d5e3fc200dcfae1f6
+## (with custompatches) uses wine/staging master if empty, uses given commit or tag if set
+## (without custompatches) ignored and overwritten by upstream commits from patchbase repo
+_desired_wine_commit=65124f15acc5705eb159d5d920877f0ac4835d27
+_desired_staging_commit=6c5cb54635aa0667bcfc27707d05f3c6eea96088
 
-## (with custompatches): ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
+## (with custompatches) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
 
 ## wine/staging upstream urls
@@ -64,11 +64,14 @@ _cleanbuildfolders=false
 ## removes unneeded symbols from binaries
 _strip_package=true
 
-_use_clang=true
+## for native compilation (non-true is gcc):
+_use_clang=false
 
+## for cross compilation
+## llvm=llvm-mingw, clang=clang in msvc-mode, anything else is mingw-gcc
 _use_mingw=llvm
 
-## (true: wow64) leave empty unless you want to manually change the type of build
+## leave empty unless you want to manually change the type of build (true: wow64)
 _wow64build=
 
 ## not functional yet
@@ -84,9 +87,9 @@ if [ "$_wow64build" = "true" ]; then _wowname="-wow64"; else _wowname=""; fi
 if [ "${_generic_release}" = "true" ]; then
   PKGEXT='.pkg.tar.xz'
   COMPRESSXZ=(xz -9 -c -z - --threads=0)
-  _CPU_TARGET="-march=x86-64 -mtune=generic"
+  _cpu_target="-march=x86-64 -mtune=generic"
 else
-  _CPU_TARGET="-march=native -mtune=native"
+  _cpu_target="-march=native -mtune=native"
 fi
 
 pkgname=wine-osu-spectator"${_wowname}"
@@ -236,12 +239,14 @@ if [ "${_use_clang}" = "true" ]; then
   _cc="/usr/bin/clang"
   _cxx="/usr/bin/clang++"
 
-  _LTO_FLAGS="-flto -Wl,--flto"
+  #_lto_flags="-flto -Wl,--flto"
+  _lto_flags="-ffat-lto-objects -fuse-linker-plugin -flto -Wl,--flto,--flto-partition=one"
 else
   _cc="/usr/bin/gcc"
   _cxx="/usr/bin/g++"
 
-  _LTO_FLAGS="-fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto -Wl,-flto"
+  _lto_flags="-fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto -Wl,-flto"
+  _extra_native_flags="-floop-nest-optimize -fgraphite-identity -floop-strip-mine" # graphite opts
 fi
 
 if [ "${_use_mingw}" = "llvm" ]; then
@@ -252,16 +257,28 @@ if [ "${_use_mingw}" = "llvm" ]; then
   _cross32="i686-w64-mingw32-clang"
   _crossxx32="i686-w64-mingw32-clang++"
 
-  if [ -f "/opt/llvm-mingw/bin/clang" ]; then
-    export _llvmcrtpath="/opt/llvm-mingw/bin"
+  _mingw_bin_dir="$(command -v i686-w64-mingw32-clang)"
+  if [ -n "${_mingw_bin_dir}" ]; then
+    _mingw_path="$(dirname "${_mingw_bin_dir}")"
+  elif [ -f "/opt/llvm-mingw/bin/clang" ]; then
+    _mingw_path="/opt/llvm-mingw/bin"
   elif [ -f "/opt/llvm-mingw/llvm-mingw-msvcrt/bin/clang" ]; then
-    export _llvmcrtpath="/opt/llvm-mingw/llvm-mingw-msvcrt/bin"
+    _mingw_path="/opt/llvm-mingw/llvm-mingw-msvcrt/bin"
   else
-    export _llvmcrtpath="/opt/llvm-mingw/llvm-mingw-ucrt/bin"
+    _mingw_path="/opt/llvm-mingw/llvm-mingw-ucrt/bin"
   fi
 
-  _CROSS_PATH="${_llvmcrtpath}":"${PATH}"
-elif [ "${_use_mingw}" = "clang" ]; then
+  _cross_path="${_mingw_path}":"${PATH}"
+else # remove llvm-mingw paths from externally set PATH
+  if [[ "${PATH}" =~ "llvm-mingw" ]]; then
+    _mingw_path="$(dirname "$(command -v i686-w64-mingw32-clang)")"
+    _cross_path="${PATH//"${_mingw_path}"/}"
+  else
+    _cross_path="${PATH}"
+  fi
+fi
+
+if [ "${_use_mingw}" = "clang" ]; then
   makedepends+=(clang llvm-libs)
 
   _cross64="/usr/bin/clang"
@@ -269,9 +286,7 @@ elif [ "${_use_mingw}" = "clang" ]; then
   _cross32="/usr/bin/clang"
   _crossxx32="/usr/bin/clang++"
 
-  _LTO_FLAGS=""
-
-  _CROSS_PATH="${PATH}"
+  _lto_flags=""
 else
   makedepends+=(mingw-w64-binutils mingw-w64-gcc mingw-w64-crt mingw-w64-headers mingw-w64-winpthreads)
 
@@ -279,8 +294,6 @@ else
   _crossxx64="x86_64-w64-mingw32-g++"
   _cross32="i686-w64-mingw32-gcc"
   _crossxx32="i686-w64-mingw32-g++"
-
-  _CROSS_PATH="${PATH}"
 fi
 
 makedepends=("${makedepends[@]}" "${depends[@]}")
@@ -290,13 +303,12 @@ _set_vars() {
   export build64dir="${_where}/src/${pkgname}-64-build"
   export build32dir="${_where}/src/${pkgname}-32-build"
   
-  export PATH="${_CROSS_PATH}"
+  export PATH="${_cross_path}"
 
-  #_GRAPHITE_FLAGS="-floop-nest-optimize -fgraphite-identity -floop-strip-mine"
   #_OPTIMIZE_HARDER_FLAGS="-fipa-pta -fgcse-sm -fgcse-las -fira-loop-pressure" # -fsched-pressure -fsched-spec-load
 
-  _common_cflags="${_common_64_cflags:-} ${_common_32_cflags:-} ${_CPU_TARGET} -O2 -pipe -fomit-frame-pointer -fno-strict-aliasing -fwrapv -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion -w"
-  _native_common_cflags="${_LTO_FLAGS}" # only for the non-mingw side
+  _common_cflags="${_common_64_cflags:-} ${_common_32_cflags:-} ${_cpu_target} -O2 -pipe -fwrapv -fno-strict-aliasing -fomit-frame-pointer -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion -w"
+  _native_common_cflags="${_lto_flags:-} ${_extra_native_flags:-}" # only for the non-mingw side
 
   export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
   _GCC_FLAGS="${_common_cflags} ${_native_common_cflags} ${CPPFLAGS}"
@@ -357,8 +369,7 @@ _set_vars32() {
 ### ccache configuration (taken from https://raw.githubusercontent.com/openglfreak/wine-tkg-userpatches/next/config/ccache.cfg)
 _prep_ccache() {
   export _compilerhash="$(md5sum "$(command -v "${_cc}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross64}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross32}")" | cut -d ' ' -f 1)"
-  export _confcachedir="${_where}"/.confcaches
-  
+
   export CCACHE_DIR="${XDG_CACHE_HOME:-${HOME}/.cache}/ccache/wine"
   mkdir -p "${CCACHE_DIR}"
   export CCACHE_COMPILERCHECK="string:${_compilerhash}" \
@@ -407,6 +418,7 @@ prepare() { _set_vars;
 
     if [ "${_custompatches}" = "true" ]; then
       _patchbase_staging_commit=$(git rev-parse HEAD)
+      _desired_staging_commit=$_patchbase_staging_commit
 
       if [ "${_use_staging}" = "true" ] && [ "${_use_staging_upstream}" = "true" ]; then
         _patchbase_wine_commit="$(cat "${srcdir}"/wine-staging/staging/upstream-commit)"
@@ -414,7 +426,7 @@ prepare() { _set_vars;
       fi
     fi
 
-    sed -i "s/^_desired_staging_commit=.*$/_desired_staging_commit=${_patchbase_staging_commit}/g" "${_where}/PKGBUILD"
+    sed -i "s/^_desired_staging_commit=.*$/_desired_staging_commit=${_desired_staging_commit}/g" "${_where}/PKGBUILD"
   fi
 
   msg2 "Wine staging at: $_patchbase_staging_commit"
@@ -427,9 +439,10 @@ prepare() { _set_vars;
 
     if [ "${_custompatches}" = "true" ]; then
       _patchbase_wine_commit=$(git rev-parse HEAD)
+      _desired_wine_commit=$_patchbase_wine_commit
     fi
 
-    sed -i "s/^_desired_wine_commit=.*$/_desired_wine_commit=${_patchbase_wine_commit}/g" "${_where}/PKGBUILD"
+    sed -i "s/^_desired_wine_commit=.*$/_desired_wine_commit=${_desired_wine_commit}/g" "${_where}/PKGBUILD"
   fi
 
   msg2 "Wine mainline at: $_patchbase_wine_commit"
@@ -506,9 +519,15 @@ prepare() { _set_vars;
   _prep_ccache
   autoreconf -fiv
 
-  if [ "${_devenv}" = "true" ] && ! [ -d "${_confcachedir}" ]; then
-    mkdir "${_confcachedir}" || \
-        _failure "Couldn't create an autoconf cache directory in ${_confcachedir}. This shouldn't have happened."
+  if [ "${_devenv}" = "true" ]; then
+    _compilerwithflagshash="$(md5sum - < <(printf '%s' "${CFLAGS}${LDFLAGS}${CROSSCFLAGS}${CROSSLDFLAGS}${_compilerhash}") | cut -d ' ' -f 1)"
+    _confcachedir="${_where}"/.confcaches
+
+    export _confcacheprefix="${_confcachedir}"/"${pkgver%.w*}-${pkgrel}-${_compilerwithflagshash}"
+    if [ ! -d "${_confcachedir}" ]; then
+      mkdir "${_confcachedir}" || \
+          _failure "Couldn't create an autoconf cache directory in ${_confcachedir}. This shouldn't have happened."
+    fi
   fi
 }
 
@@ -538,9 +557,9 @@ _tools64() { _set_vars64;
 
   shopt -s globstar
   # don't use lto to speed up tools compilation
-  export _TOOLS_FLAGS="${CPPFLAGS} ${_CPU_TARGET} -O1 -pipe -fno-lto -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -w"
+  export _tools_flags="${CPPFLAGS} ${_cpu_target} -O1 -pipe -fno-lto -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -w"
   for mkfile in tools/Makefile tools/**/Makefile; do
-    "$@" -C "${mkfile%/Makefile}" -j$(($(nproc) + 1)) CFLAGS="${_TOOLS_FLAGS}" LDFLAGS="${_TOOLS_FLAGS}"
+    "$@" -C "${mkfile%/Makefile}" -j$(($(nproc) + 1)) CFLAGS="${_tools_flags}" LDFLAGS="${_tools_flags}"
   done
   chmod -R +x "${build64dir}"/tools
 }
@@ -598,8 +617,8 @@ build() { _set_vars;
 
   if [ "${_devenv}" = "true" ]; then
     _sharedopts+=(--config-cache)
-    _wine64opts+=(--cache-file="${_confcachedir}"/"${pkgver%.w*}-${pkgrel}-${_compilerhash}-64".cache)
-    _wine32opts+=(--cache-file="${_confcachedir}"/"${pkgver%.w*}-${pkgrel}-${_compilerhash}-32".cache)
+    _wine64opts+=(--cache-file="${_confcacheprefix}"-64.cache)
+    _wine32opts+=(--cache-file="${_confcacheprefix}"-32.cache)
   fi
 
   local _old_SOURCE_DATE_EPOCH="$SOURCE_DATE_EPOCH"
@@ -645,9 +664,7 @@ package() { _set_vars;
   _set_vars64
   msg2 "Packaging Wine-64"
   cd "${build64dir}"|| _failure
-  # clang doesn't like static libs on lib64 for some reason, use gcc
   make -j$(($(nproc) + 1)) \
-    CC="ccache gcc" CXX="ccache g++" \
     prefix="${pkgdir}"/opt/"${pkgname}" \
     libdir="${pkgdir}"/opt/"${pkgname}"/lib64 \
     dlldir="${pkgdir}"/opt/"${pkgname}"/lib64/wine $_installtype || _failure "Wine-64 installation failed"
