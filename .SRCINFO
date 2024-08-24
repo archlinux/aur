@@ -1,7 +1,7 @@
 pkgbase = spotube
 	pkgdesc = Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!
 	pkgver = 3.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://spotube.krtirtho.dev/
 	arch = x86_64
 	arch = aarch64
@@ -31,7 +31,7 @@ pkgbase = spotube
 	optdepends = nss-mdns: required if using remote controlling
 	optdepends = mdns-scan: required if using remote controlling
 	source = spotube-3.8.0.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v3.8.0.tar.gz
-	source = flutter-3.22.3.tar.gz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.22.3-stable.tar.xz
+	source = flutter-3.22.3.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.22.3-stable.tar.xz
 	sha256sums = ddd529502397062060cd9f3624b4b29cc9b57a71fc02468d3cf9bc96dcade92a
 	sha256sums = 9c5f70ba118b9163552144901a2efd91d40b22a68a04e67271d6a5ad936e8368
 

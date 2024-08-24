@@ -2,17 +2,18 @@
 # to provide required infomation. See https://github.com/KRTirtho/spotube/blob/master/.env.example for more info
 
 # Get Spotify API secrets at https://developer.spotify.com/, set callback url to http://localhost:4304/auth/spotify/callback
+# See https://github.com/KRTirtho/spotube/discussions/49#discussioncomment-2506035 for more info
 # Get Last.fm API key and secret at https://www.last.fm/api/account/create
 
 # See https://github.com/flutter/flutter/issues/65400
-# for workarounds to `Insecure RPATH '<build path>' in opt/spotube/lib/lib*_plugin.so`
+# for workarounds to `Insecure RPATH '<build path>' in usr/lib/spotube/lib/lib*_plugin.so`
 
 _system_flutter=false # build_system part seems missing in aur/flutter
 _flutter_version=3.22.3
 
 pkgname=spotube
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!"
 arch=("x86_64" "aarch64")
 url="https://spotube.krtirtho.dev/"
@@ -42,7 +43,7 @@ then
         "flutter-target-linux=$_flutter_version"
     )
 else
-    source+=("flutter-$_flutter_version.tar.gz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_$_flutter_version-stable.tar.xz")
+    source+=("flutter-$_flutter_version.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_$_flutter_version-stable.tar.xz")
     makedepends+=(
         "curl" "git" "unzip" "xz" "zip" "libglvnd"
     )
@@ -109,14 +110,12 @@ package() {
             ;;
     esac
     cd "$srcdir/spotube-$pkgver"
-    mkdir -p "$pkgdir/usr/bin" "$pkgdir/opt"
-    cp -rdp --no-preserve=ownership "build/linux/$_arch/release/bundle" "$pkgdir/opt/spotube"
-    ln -s ../../opt/spotube/spotube "$pkgdir/usr/bin/spotube"
+    mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/lib"
+    cp -rdp --no-preserve=ownership "build/linux/$_arch/release/bundle" "$pkgdir/usr/lib/spotube"
+    ln -srfv "$pkgdir/usr/lib/spotube/spotube" "$pkgdir/usr/bin/spotube"
     install -Dm644 linux/spotube.desktop "$pkgdir/usr/share/applications/com.github.KRTirtho.Spotube.desktop"
-    sed -i '
-            s@Exec=/usr/bin/spotube@Exec=spotube@;
-            s@Icon=/usr/share/icons/spotube/spotube-logo.png@Icon=com.github.KRTirtho.Spotube@;
-           ' "$pkgdir/usr/share/applications/com.github.KRTirtho.Spotube.desktop"
+    sed -i 's@Icon=/usr/share/icons/spotube/spotube-logo.png@Icon=com.github.KRTirtho.Spotube@;' \
+        "$pkgdir/usr/share/applications/com.github.KRTirtho.Spotube.desktop"
     install -Dm644 linux/com.github.KRTirtho.Spotube.appdata.xml \
         "$pkgdir/usr/share/metainfo/com.github.KRTirtho.Spotube.appdata.xml"
     sed -i "s|%{{APPDATA_RELEASE}}%|<release version=\"$pkgver\" date=\"$_release_date\"/>|" \
