@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com
 pkgname=vtex2
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A VTF converter and editor"
 arch=('x86_64')
 url="https://github.com/StrataSource/vtex2"
@@ -9,9 +9,11 @@ license=('MIT')
 depends=('gcc-libs' 'glibc' 'qt6-base' 'hicolor-icon-theme')
 makedepends=('cmake' 'git' 'gendesk' 'qt6-svg')
 source=("git+$url.git#tag=v${pkgver}"
+	"null.patch::$url/commit/ffca4f90602bf3506c786c820137b3f91da0cbed.patch"
 	"vtflib::git+https://github.com/StrataSource/VTFLib.git"
 	"fmtlib::git+https://github.com/fmtlib/fmt.git")
 sha256sums=('81a6de30f5a17eb69c61c3504eb40ca724793030a8ed4510c6956bc9356e4237'
+            'd7c14f799764b7a6b6e4a7f2d1fdddbdf3e920e021f51eec82de40dcbd9b911f'
             'SKIP'
             'SKIP')
 
@@ -23,6 +25,8 @@ prepare() {
 		git config submodule.external/$submodule.url "$srcdir/$submodule"
 	done
 	git -c protocol.file.allow=always submodule update
+
+	patch -p1 < "$srcdir/null.patch"
 }
 
 build() {
