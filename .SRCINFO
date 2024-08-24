@@ -15,7 +15,11 @@ pkgbase = python-accesser
 	depends = python-tld
 	depends = python-tomli
 	depends = python-dnspython
-	optdepends = python-rich
+	optdepends = python-rich: DNS over https support
+	optdepends = python-httpcore: DNS over https support
+	optdepends = python-httpx: DNS over https support
+	optdepends = python-h2: DNS over https support
+	optdepends = python-aioquic: DNS over quic support
 	source = https://files.pythonhosted.org/packages/source/a/accesser/accesser-0.9.4.tar.gz
 	sha256sums = 4e164790f71b5794856fdc12a80284897a7afe8bef96a8735d115881a98585b2
 

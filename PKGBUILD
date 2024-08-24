@@ -22,7 +22,11 @@ makedepends=(
 	'python-wheel'
 )
 optdepends=(
-    'python-rich'
+    'python-rich: DNS over https support'
+    'python-httpcore: DNS over https support'
+    'python-httpx: DNS over https support'
+    'python-h2: DNS over https support'
+    'python-aioquic: DNS over quic support'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
 sha256sums=('4e164790f71b5794856fdc12a80284897a7afe8bef96a8735d115881a98585b2')
