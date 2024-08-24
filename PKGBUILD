@@ -1,14 +1,14 @@
 # Maintainer: XDR <xxdr@duck.com>
 pkgname="xfetch-bin"
-pkgver=2.1.3
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="A simple fetch written in Rust."
 arch=('x86_64')
 url="https://github.com/XDRwastaken/xFetch"
 license=('MIT')
 
 source=(
-	"https://github.com/XDRwastaken/xFetch/releases/download/2.1.3/xfetch_2.1.3.tar.gz"
+	"https://github.com/XDRwastaken/xFetch/releases/download/${pkgver}/xfetch_${pkgver}.tar.xz"
 	"https://raw.githubusercontent.com/XDRwastaken/xFetch/main/LICENSE"
 )
 sha256sums=(
