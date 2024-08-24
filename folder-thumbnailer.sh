@@ -9,25 +9,19 @@ SIZE="$1"
 INPUT_FILE_NAME="$2"
 OUTPUT_FILE_NAME="$3"
 INPUT_URI="$4"
-THUMBNAIL="$(echo -n "$INPUT_URI" | md5sum | cut -d " " -f1).png"
 
-convert_thumbnail() {
-	local filename="$1"
-	convert -background none -thumbnail "$SIZE" "$INPUT_FILE_NAME/$filename" "$OUTPUT_FILE_NAME" 1>/dev/null 2>&1
-}
-
-for directory in ".cache/thumbnails" ".thumbnails"; do
-	for subdirectory in "normal" "large"; do
-		rm -f "$HOME/$directory/$subdirectory/$THUMBNAIL"
-	done
+covers=("$INPUT_FILE_NAME"/{.,}{folder,cover}.{jpg,png,svg})
+for file in "${covers[@]}"; do
+	if [[ -f "$file" ]]; then
+		cover="$file"
+		break
+	fi
 done
 
-for name in "folder" "cover"; do
-	for extension in "jpg" "png" "svg"; do
-		if convert_thumbnail "${name}.${extension}" || convert_thumbnail ".${name}.${extension}"; then
-			exit 0
-		fi
-	done
-done
-
-exit 1
+if [[ -z "$cover" ]] || ! convert -background none -thumbnail "$SIZE" "$cover" "$OUTPUT_FILE_NAME"; then
+	gdbus call \
+		--session \
+		--dest org.freedesktop.thumbnails.Cache1 \
+		--object-path /org/freedesktop/thumbnails/Cache1 \
+		--method org.freedesktop.thumbnails.Cache1.Delete "['$INPUT_URI']" >/dev/null
+fi

@@ -22,7 +22,7 @@ if [[ $SIZE -lt 256 ]]; then
 	convert -thumbnail ${SIZE}x${SIZE} -define png:compression-level=3 \
 		"$TMPFILE" "$OUTPUT_FILE_NAME"
 else
-    cat "$TMPFILE" > "$OUTPUT_FILE_NAME"
+	cat "$TMPFILE" > "$OUTPUT_FILE_NAME"
 fi
 
 rm "$TMPFILE"
