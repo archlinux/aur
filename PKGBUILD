@@ -12,13 +12,11 @@ makedepends=('git' 'jdk-openjdk')
 source=('git+https://github.com/TeamPiped/Piped-Backend.git'
 		'piped-backend.sh'
 		'sysusers.conf'
-		'systemd.service'
-		'tmpfiles.conf')
+		'systemd.service')
 sha256sums=('SKIP'
             'e0afaf2c1ecde9b9d0c472654a1de625ed39ca14be69c41ec4ea5dba18bb4817'
             'f04ddc4d9bf5a114e302fec532e7874c7d3c9d58e81103f17649a0d0228bb096'
-            '0e00f0e054687cbc76356d7fb0e860075a27fcf8366ce2b46cb94e92f00a4645'
-            'faf3921692fe920956084de2dd5fb436a410083df3936a25ad54cffb54a5cc5e')
+            '4a61d57aa548db0f6cadc7d80c27374b7f66d60847f92842dfbb78b6cd8027f4')
 
 pkgver() {
 	cd Piped-Backend
@@ -48,7 +46,6 @@ package() {
 
 	install -Dm644 "${srcdir}/sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/piped-backend.conf"
 	install -Dm644 "${srcdir}/systemd.service" "${pkgdir}/usr/lib/systemd/system/piped-backend.service"
-	install -Dm644 "${srcdir}/tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/$pkgname.conf"
 
 	install -Dm644 "${srcdir}/Piped-Backend/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 "${srcdir}/Piped-Backend/config.properties" "${pkgdir}/usr/share/doc/piped/piped-backend.properties"

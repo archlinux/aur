@@ -5,6 +5,7 @@ After=network.target
 [Service]
 User=piped
 ExecStart=/usr/bin/piped-backend
+RuntimeDirectory=piped
 Restart=on-failure
 
 [Install]
