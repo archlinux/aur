@@ -3,17 +3,15 @@ _target='compass'
 _edition=''
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r17357.gd8f89bd3a'
+pkgver='r17437.gdbedce12f'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - git version'
-# If you're running on armv7h or aarch64, use the electron29-bin package from the AUR for the electron29 dependency
-# If you're running on armv7h, you have to add it to the arch and source arrays of the electron29-bin AUR dependency
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('SSPL-1.0')
-_electronpkg='electron29'
-depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release' 'nodejs>=18.19.1')
+_electronpkg='electron30'
+depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release' 'nodejs>=20.16.0')
 makedepends=('git' 'npm>=10.2.4' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 provides=("$_pkgname")
@@ -26,8 +24,8 @@ source=(
 	'mongodb-compass.conf'
 )
 b2sums=('SKIP'
-        '2a115fb3dc5376e1f48edf57b31902feda3d7042da5601b1ee8de51e75b251373ff14bcf348274fea4fcf1f2615407850a7c4c12705fdc411179dc66370be4fa'
-        'dfb2723ebea5a6f12d8a5dade5a98abb3645ad62f74c43dc05c7178b5257526a69c4a0353782c399a790d6d9c4d8438b0041863e8dbdf638f25bdf3fffbbb42f'
+        'd893c74227ddd8fcfce25829728f54fc705d5d390495893de97e69c957b09bb744c27a90191ca6afdbe77d336a4311811009c4b993394cb408ba6940e71857e0'
+        '2a07533bbd4697e8ad0e29402867662cc9d817dfbcfcde8bfa2e4e06f8df3c7d036822b8b33b49cb1d29a8b2c126c5a3381c6b2283e2732e4ca2943bd06bed68'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
 
 _sourcedirectory="$pkgname"
@@ -50,11 +48,8 @@ prepare() {
 	# Apply argv fixes
 	patch --forward -p1 < "$srcdir/fix-argv.diff"
 
-	# Run the first part of npm run bootstrap
-	npm install
-
-	# Run the second part of npm run bootstrap
-	NODE_OPTIONS='--openssl-legacy-provider' npx lerna run bootstrap --stream
+	# Run the bootstrap command
+	npm run bootstrap
 }
 
 pkgver() {
@@ -65,17 +60,20 @@ pkgver() {
 build() {
 	cd "$srcdir/$_sourcedirectory/"
 
+	local _version
+	_version="0.0.$(git rev-list --count HEAD)-dev.0"
+
 	# electron-packager does not support building against a local electron binary,
 	# the best we can do for now is to just set the electron version in package.json
 	# and let electron-packager use it for building
 	# https://github.com/electron/electron-packager/issues/187
-
-	local _version="0.0.$(git rev-list --count HEAD)-dev.0"
-	HADRON_DISTRIBUTION="$_target" HADRON_SKIP_INSTALLER='true' NODE_OPTIONS='--openssl-legacy-provider' DEV_VERSION_IDENTIFIER="$_version" npm run package-compass
+	HADRON_DISTRIBUTION="$_target" HADRON_SKIP_INSTALLER='true' DEV_VERSION_IDENTIFIER="$_version" npm run package-compass
 }
 
 package() {
-	local _distFolder="$srcdir/$_sourcedirectory/packages/compass/dist/MongoDB Compass$_edition Dev-linux"
+	local _distFolder
+	_distFolder="$srcdir/$_sourcedirectory/packages/compass/dist/MongoDB Compass$_edition Dev-linux"
+
 	case "$CARCH" in
 		armv7h)
 			_distFolder="$_distFolder-armv7l"
