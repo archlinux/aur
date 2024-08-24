@@ -1,7 +1,7 @@
 # Maintainer: Filip Markovic <f12markovic at gmail dot com>
 _pkgname="hyprprop"
 pkgname="$_pkgname-git"
-pkgver=16.46d12db
+pkgver=20.5e8da0b
 pkgrel=1
 pkgdesc="xprop for Hyprland"
 arch=(x86_64 aarch64)
