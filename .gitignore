@@ -1,4 +1,5 @@
 brewtarget/
+valijson/
 pkg/
 src/
 brewtarget-git-*.pkg.tar*
