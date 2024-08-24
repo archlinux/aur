@@ -1,7 +1,7 @@
 pkgbase = biome-bin
 	pkgdesc = A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.
 	pkgver = 1.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/biomejs/biome
 	changelog = biome-bin.changelog
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = biome-bin
 	source = LICENSE-APACHE::https://raw.githubusercontent.com/biomejs/biome/main/LICENSE-APACHE
 	source = LICENSE-MIT::https://raw.githubusercontent.com/biomejs/biome/main/LICENSE-MIT
 	sha256sums = e2746aba8799f7a3378259f36a83a079e811ca7926cbdd248a2eb7ca9cbbac5d
-	sha256sums = 4f6a0d776a00c0f46e1da1879321896071494229aa3219862a625e4560691a3a
+	sha256sums = 35365b6285e1f8cac61549f321befdbbe6139bf1e3d7ef6ccf1f1294ab015202
 	source_x86_64 = biome-bin-x86_64-1.8.3::https://github.com/biomejs/biome/releases/download/cli/v1.8.3/biome-linux-x64-musl
 	sha256sums_x86_64 = f3db16d376d77cdc28f8031d2e2db95f3620c6f1e463e555bb5f3c441b6b96e5
 	source_aarch64 = biome-bin-aarch64-1.8.3::https://github.com/biomejs/biome/releases/download/cli/v1.8.3/biome-linux-arm64-musl
