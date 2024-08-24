@@ -4,12 +4,14 @@ pkgname=schbench-git
 _pkgname=schbench
 pkgver=v1.0.r4.g48aed1d
 pkgrel=1
-arch=('any')
-license=('GPL2')
+arch=('x86_64')
+url="https://git.kernel.org/pub/scm/linux/kernel/git/mason/schbench.git"
+license=('GPL-2.0-or-later')
 pkgdesc='Simple Scheduler Benchmark'
 source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/mason/schbench.git")
 sha256sums=('SKIP')
 provides=(schbench)
+conflicts=(schbench)
 
 pkgver() {
     cd $srcdir/$_pkgname
