@@ -1,7 +1,7 @@
 # Maintainer: c0re100 <corehusky@gmail.com> - https://husky.dev
 
 pkgname=qbittorrent-enhanced-git
-pkgver=4.6.5.10.r0.gc9f1c9a57
+pkgver=4.6.6.10.r0.g64ad41127
 pkgrel=1
 pkgdesc="A bittorrent client powered by C++, Qt6 and the good libtorrent library (Enhanced Edition)"
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
