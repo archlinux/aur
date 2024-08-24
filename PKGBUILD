@@ -1,7 +1,7 @@
 # Maintainer: shulhan <ms@kilabit.info>
 
 pkgname=google-cloud-ops-agent-git
-pkgver=2.48.0.r5.g4b3b7496c
+pkgver=2.50.0.r4.g3c3db61cd
 pkgrel=1
 
 pkgdesc="Ops Agents that are part of the Google Cloud Operations product suite (specifically Cloud Logging and Cloud Monitoring)"
@@ -37,7 +37,6 @@ source=(
 	"opentelemetry-operations-collector::git+https://github.com/GoogleCloudPlatform/opentelemetry-operations-collector.git"
 	"opentelemetry-java-contrib::git+https://github.com/open-telemetry/opentelemetry-java-contrib.git"
 	"0001-build-sh.patch"
-	"fluent-bit-8901-fix-gcc-14.1.patch"
 )
 sha256sums=(
 	'SKIP'
@@ -45,7 +44,6 @@ sha256sums=(
 	'SKIP'
 	'SKIP'
 	'ba66d01b8058644597d9b406d3b8ce7ed40aed77c7358f2b97ff0e262a4cbb98'
-	'8f986cebd9e22b57445fd533389b56d73eb0006a6a292c69d8b52e9f2b6ed7d2'
 )
 
 pkgver() {
@@ -75,8 +73,6 @@ build() {
 	echo "--- Applying patches ..."
 	cd "${pkgname}"
 	git apply "${srcdir}/0001-build-sh.patch"
-	## See: https://github.com/fluent/fluent-bit/issues/8858
-	git apply --directory=submodules/fluent-bit "${srcdir}/fluent-bit-8901-fix-gcc-14.1.patch"
 
 	echo "--- Building otel ..."
 	CGO_ENABLED=1 ./builds/otel.sh "$_destdir"

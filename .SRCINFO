@@ -1,6 +1,6 @@
 pkgbase = google-cloud-ops-agent-git
 	pkgdesc = Ops Agents that are part of the Google Cloud Operations product suite (specifically Cloud Logging and Cloud Monitoring)
-	pkgver = 2.48.0.r5.g4b3b7496c
+	pkgver = 2.50.0.r4.g3c3db61cd
 	pkgrel = 1
 	url = https://github.com/GoogleCloudPlatform/ops-agent
 	arch = x86_64
@@ -23,12 +23,10 @@ pkgbase = google-cloud-ops-agent-git
 	source = opentelemetry-operations-collector::git+https://github.com/GoogleCloudPlatform/opentelemetry-operations-collector.git
 	source = opentelemetry-java-contrib::git+https://github.com/open-telemetry/opentelemetry-java-contrib.git
 	source = 0001-build-sh.patch
-	source = fluent-bit-8901-fix-gcc-14.1.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = ba66d01b8058644597d9b406d3b8ce7ed40aed77c7358f2b97ff0e262a4cbb98
-	sha256sums = 8f986cebd9e22b57445fd533389b56d73eb0006a6a292c69d8b52e9f2b6ed7d2
 
 pkgname = google-cloud-ops-agent-git
