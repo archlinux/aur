@@ -1,4 +1,4 @@
-# Maintainer: Adrián Romero <adriik.linux@proton.me>
+# Maintainer: Adrián Romero <adriik[dot]linux[at]proton[dot]me>
 pkgname=footy-git
 _pkgname=footy
 pkgver=r81.0608ed5
