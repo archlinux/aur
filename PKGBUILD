@@ -2,8 +2,8 @@
 # Contributor : Willy Micieli <micieli at vivaldi.net>
 
 pkgname=zuu
-pkgver=20.0.0
-pkgrel=2
+pkgver=20.0.1
+pkgrel=1
 pkgdesc="A program to check your code quality before all commit" 
 provides=('zuu')
 arch=('any')
@@ -12,7 +12,7 @@ license=('AGPL-3.0')
 makedepends=('cargo')
 depends=('rustup' 'cargo-outdated' 'cargo-spellcheck' 'cargo-watch' 'cargo-deny' 'cargo-audit' 'cargo-auditable')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('d5744350184de27e10cda0bf9bb160ef90684cd61f11a0220d2086b15b6242b7eaa3e4833b76b475abbd57125c6890317490b9bdcb8c4257b609ef9b6d219c58')
+sha512sums=('dd1ddd64ccaec5f3e901042ca7a94aa4f840d70d4635d50c17b80dd6d64282e18f36cc9a5407dce14ced240cef35bfa49323fa4817f7d23ab69f1dee573c4bcc')
 
 build() {
   cd $pkgname-$pkgver
