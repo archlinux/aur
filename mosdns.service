@@ -1,0 +1,19 @@
+[Unit]
+Description=Mosdns
+Documentation=https://irine-sistiana.gitbook.io/mosdns-wiki
+After=network.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+ExecStart=/usr/bin/mosdns start -d /etc/mosdns -c config.yaml
+TimeoutStopSec=5s
+PrivateTmp=true
+ProtectSystem=strict
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+Restart=always
+RestartSec=10s
+[Install]
+WantedBy=multi-user.target
