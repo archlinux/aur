@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.0.66.r0.ga63678c1
+pkgver=2.0.95.r0.g573c98b2
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -75,6 +75,7 @@ build() {
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DENABLE_VCPKG=OFF \
+		-DEXPERIMENTAL_VERSION="999999" \
 		-Wno-dev
 	cmake --build build
 }
@@ -104,6 +105,6 @@ package() {
 	mv bin/Cemu_release "$pkgdir"/usr/bin/Cemu
 	cp -dr --no-preserve=ownership -t "$pkgdir"/usr/share/Cemu bin/*
 	install -Dm644 -t "$pkgdir"/usr/share/applications dist/linux/info.cemu.Cemu.desktop
+	install -Dm644 -t "$pkgdir"/usr/share/icons/hicolor/128x128/apps dist/linux/info.cemu.Cemu.png
 	install -Dm644 -t "$pkgdir"/usr/share/metainfo dist/linux/info.cemu.Cemu.metainfo.xml
-	install -Dm644 src/resource/logo_icon.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/info.cemu.Cemu.png
 }
