@@ -2,7 +2,7 @@ pkgname="term-owo-git"
 pkgver=1.0
 pkgrel=1
 pkgdesc="A simple C++ program that owofies text"
-
+url="https://git.alfieking.dev/acetheking987/term-owo-cpp"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 makedepends=(cmake git gcc)
 license=('MIT')
