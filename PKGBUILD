@@ -1,30 +1,27 @@
-# Maintainer: sunflsks <sudhip@nashi.us>
+# Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
+# Contributor: sunflsks <sudhip@nashi.us>
 
 pkgname=libfragmentzip
-pkgver=60
+pkgver=76
 pkgrel=1
-pkgdesc="A library allowing to download single files from a remote zip archive"
-arch=(x86_64)
-url="https://github.com/tihmstar/libfragmentzip"
-license=('LGPL3')
-groups=()
-depends=('curl' 'libzip' 'zlib')
+pkgdesc='A library allowing to download single files from a remote zip archive'
+arch=('x86_64')
+url="https://github.com/tihmstar/$pkgname"
+license=('LGPL-3.0-only')
+depends=('curl' 'zlib')
 makedepends=('git' 'libgeneral')
-provides=(libfragmentzip)
-conflicts=(libfragmentzip)
-source=("https://github.com/tihmstar/libfragmentzip/archive/$pkgver.tar.gz")
-md5sums=('99d9d4dc22f424c99b4f7ac1de29672a')
+source=("git+$url.git#tag=$pkgver")
+sha256sums=('05b298c2e6d0f505dde8c411a1aa35ff6e9eef8d8cd74c00e1cbbd12000c9054')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
-  ./autogen.sh
-  ./configure --prefix=/usr
+  ./autogen.sh --prefix=/usr
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir/" install
 }
