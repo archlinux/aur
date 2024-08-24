@@ -6,10 +6,9 @@ arch=('x86_64')
 url="https://github.com/autc04/executor"
 license=('MIT')
 depends=('qt5-base' 'executor-data')
-makedepends=('git' 'cmake' 'ruby' 'sdl' 'sdl2' 'libxext' 'waylandpp' 'python'
+makedepends=('git' 'cmake' 'ruby' 'sdl2' 'libxext' 'python'
              'boost' 'perl')
 optdepends=('sdl2: for SDL 2 frontend'
-            'sdl: for SDL 1.2 frontend'
             'libxext: for X11 frontend'
             'waylandpp: for Wayland frontend')
 provides=("${pkgname%-git}")
