@@ -1,0 +1,16 @@
+pkgbase = paxs
+	pkgdesc = A script for managing packages across Yay, Flatpak, and Snap
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/zamhedonia/paxs
+	arch = any
+	license = GPL-3.0
+	depends = yay
+	depends = flatpak
+	depends = snapd
+	source = https://github.com/zamhedonia/paxs/archive/refs/tags/v0.1.tar.gz
+	source = paxs.1
+	sha256sums = 8005d31c8d3d8fdab0141dc53ad8a6b63059da07f2cf66d6369e3d49021f74a2
+	sha256sums = 088c3a3d21b3c053917c6160e4964c3c9554cb59223f6a025ee13f60fb8ab93b
+
+pkgname = paxs
