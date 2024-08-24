@@ -8,8 +8,6 @@ arch=('any')
 url="https://github.com/contour-terminal/boxed-cpp"
 license=('Apache-2.0')
 makedepends=('git' 'cmake')
-provides=('boxed-cpp')
-conflicts=('boxed-cpp')
 source=("git+https://github.com/contour-terminal/boxed-cpp.git#tag=v1.4.2")
 sha256sums=('1f5abdfe042743fe6206d9404ac0eb34f0e82ab55c9da41d303656c30bdd18f2')
 

@@ -1,0 +1,4 @@
+[boxed-cpp]
+source = "git"
+git = "https://github.com/contour-terminal/boxed-cpp.git"
+prefix = "v"
