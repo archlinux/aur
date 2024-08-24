@@ -15,7 +15,7 @@ source=("https://github.com/eglaysher/rlvm/archive/$_pkgver.tar.gz"
         "includes.patch"
         "warnings.patch"
         "gtk+3.patch")
-sha256sums=('3c5a84d4c2ccf1693c2d3a23b51d8642c798bdf8bc189e5e0ac28ede27ec7dad'
+sha256sums=('d4b26ed3680f93352bf851a8387d29ccf99ed76ec07b02e5ff8bcab98e1d272c'
             '56ba8679f806163e30962a0418ba462edca52050c6ac88edfadaead68a1b94a8'
             'dcbd9e0de8ccb91983d691f0b5fd6938fef45653ac20d244c1c19a3df01b7550'
             '6bf8a1d8cd64b05057859338132acef11db573c58adc3913679776b8d4a7b83a')
