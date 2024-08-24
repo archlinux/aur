@@ -4,8 +4,8 @@
 
 
 pkgname=plasma6-wallpapers-wallpaper-engine-git
-pkgver=0.5.4.r82.g1e60410
-pkgrel=2
+pkgver=0.5.4.r94.g641767d
+pkgrel=1
 pkgdesc="A simple kde wallpaper plugin integrating wallpaper engine"
 arch=('x86_64')
 url="https://github.com/catsout/wallpaper-engine-kde-plugin"
@@ -25,7 +25,7 @@ optdepends=(
 provides=("plasma6-wallpapers-wallpaper-engine")
 conflicts=("plasma6-wallpapers-wallpaper-engine")
 source=(
-    "${pkgname}::git+${url}.git#branch=qt6"
+    "${pkgname}::git+${url}.git#branch=main"
     "backend_scene::git+https://github.com/catsout/wallpaper-scene-renderer.git"
     "git+https://github.com/KhronosGroup/glslang.git"
     "nlohmann::git+https://github.com/nlohmann/json.git"
