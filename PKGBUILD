@@ -12,8 +12,15 @@ license=('BSD')
 makedepends=('git')
 depends=('gcc-libs')
 options=('staticlibs' '!strip')
-conflicts=('google-breakpad-git')
-provides=('google-breakpad')
+conflicts=(
+	'google-breakpad-git'
+	'google-breakpad'
+)
+
+provides=(
+	'google-breakpad-fixed'
+)
+
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://chromium.googlesource.com/breakpad/breakpad/+archive/refs/heads/main.tar.gz"
 	"lss-${_lssver}.tar.gz::https://chromium.googlesource.com/linux-syscall-support/+archive/refs/heads/main.tar.gz"
