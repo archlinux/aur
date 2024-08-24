@@ -6,7 +6,6 @@ pkgdesc="Cosmic workspaces"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-workspaces-epoch"
 license=('GPL-3.0-or-later')
-groups=('cosmic')
 depends=(
   'libinput'
   'libxkbcommon'
