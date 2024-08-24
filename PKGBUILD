@@ -12,12 +12,12 @@
 
 : ${_ver_clang=}
 : ${RUSTUP_TOOLCHAIN:=stable}
-: ${_commit=c28a9a452e7a3b7ccd9439c2322d98bd9a93f2b3} # 11.17.4
+: ${_commit=dc5f7eca8b4b572655e5c0a0d4dc0e65ef4744cf} # 11.17.7
 
 ## basic info
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=11.17.4
+pkgver=11.17.7
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -114,21 +114,6 @@ _source_floorp() {
     'SKIP'
     'SKIP'
     '07a63f189beaafe731237afed0aac3e1cfd489e432841bd2a61daa42977fb273'
-  )
-
-  _patch_commit_1=d2127a9424507a38cff13cce49403214a8190bed
-  _url_arch="https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/$_patch_commit_1"
-  source+=(
-    "0001-Bug-1898476-${_patch_commit_1::7}.patch"::"$_url_arch/0001-Bug-1898476-Wayland-Move-MozContainerSurfaceLock-fro.patch"
-    "0002-Bug-1898476-${_patch_commit_1::7}.patch"::"$_url_arch/0002-Bug-1898476-Wayland-Provide-surface-lock-by-GtkCompo.patch"
-    "0003-Bug-1898476-${_patch_commit_1::7}.patch"::"$_url_arch/0003-Bug-1898476-Wayland-Lock-Wayland-surface-before-Swap.patch"
-    "0004-Bug-1912663-${_patch_commit_1::7}.patch"::"$_url_arch/0004-Bug-1912663-Fix-some-build-issues-with-cbindgen-0.27.patch"
-  )
-  sha256sums+=(
-    'f4e1db05768325bce5f38b67263c47b3aa4038cfadbdbf8a9e0cbec061a58c57'
-    '588b0b94fe188c5f0a133a8bfd88d7d60123315e6f509b119728409ff164419f'
-    'cbe19f6c95d27d50e3b6664907f8d084784162ea35d5d98fadbb91dbb77ef700'
-    'dd2aba1c02c21b89ceed0713a6aa0241365fe79b1e3a4d21cdcd7231db6fab5e'
   )
 }
 
