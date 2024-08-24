@@ -5,7 +5,6 @@ pkgbase = cosmic-panel-git
 	url = https://github.com/pop-os/cosmic-panel
 	arch = x86_64
 	arch = aarch64
-	groups = cosmic
 	license = GPL-3.0-only
 	makedepends = cargo
 	makedepends = git

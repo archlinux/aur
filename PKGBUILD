@@ -6,7 +6,6 @@ pkgdesc="XDG Shell Wrapper Panel for COSMIC"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-panel"
 license=('GPL-3.0-only')
-groups=('cosmic')
 depends=(
   'libxkbcommon'
   'wayland'
