@@ -7,8 +7,25 @@ pkgdesc='Simple and flexbile QtQuick based desktop shell toolkit.'
 arch=(x86_64 aarch64)
 url='https://github.com/outfoxxed/quickshell'
 license=('GPL')
-depends=('qt6-declarative' 'qt6-base' 'jemalloc' 'qt6-svg' 'libpipewire' 'qt6-wayland' 'wayland-protocols' 'libxcb' 'wayland' 'cli11' 'google-breakpad-git')
-makedepends=('ninja' 'cmake' 'pkgconf')
+depends=(
+	qt6-declarative
+	qt6-base
+	jemalloc
+	qt6-svg
+	libpipewire
+	qt6-wayland
+	wayland-protocols
+	libxcb
+	wayland
+	cli11
+	google-breakpad-git
+)
+makedepends=(
+	ninja
+	cmake
+	pkgconf
+)
+
 source=("git+https://github.com/outfoxxed/quickshell.git")
 sha256sums=('SKIP')
 
