@@ -1,0 +1,4 @@
+[libunicode]
+source = "git"
+git = "https://github.com/contour-terminal/libunicode.git"
+prefix = "v"
