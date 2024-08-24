@@ -295,6 +295,7 @@ else # remove llvm-mingw paths from externally set PATH
     _crossxx32="i686-w64-mingw32-g++"
   fi
 fi
+
 makedepends=("${makedepends[@]}" "${depends[@]}")
 
 # exported at the start of every function
@@ -367,11 +368,12 @@ _set_vars32() {
 
 ### ccache configuration (taken from https://raw.githubusercontent.com/openglfreak/wine-tkg-userpatches/next/config/ccache.cfg)
 _prep_ccache() {
-  export _compilerhash="$(md5sum "$(command -v "${_cc}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross64}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross32}")" | cut -d ' ' -f 1)"
+  _compilerhash="$(md5sum "$(command -v "${_cc}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross64}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross32}")" | cut -d ' ' -f 1)"
+  export _compilerwithflagshash="$(sha512sum - < <(printf '%s' "${CFLAGS}${LDFLAGS}${CROSSCFLAGS}${CROSSLDFLAGS}${_compilerhash}") | cut -d ' ' -f 1)"
 
   export CCACHE_DIR="${XDG_CACHE_HOME:-${HOME}/.cache}/ccache/wine"
   mkdir -p "${CCACHE_DIR}"
-  export CCACHE_COMPILERCHECK="string:${_compilerhash}" \
+  export CCACHE_COMPILERCHECK="string:${_compilerwithflagshash}" \
          CCACHE_BASEDIR="${srcdir}"
   ccache --set-config=compression=true \
          --set-config=compression_level=1 \
@@ -519,7 +521,6 @@ prepare() { _set_vars;
   autoreconf -fiv
 
   if [ "${_devenv}" = "true" ]; then
-    _compilerwithflagshash="$(md5sum - < <(printf '%s' "${CFLAGS}${LDFLAGS}${CROSSCFLAGS}${CROSSLDFLAGS}${_compilerhash}") | cut -d ' ' -f 1)"
     _confcachedir="${_where}"/.confcaches
 
     export _confcacheprefix="${_confcachedir}"/"${pkgver%.w*}-${pkgrel}-${_compilerwithflagshash}"
