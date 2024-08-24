@@ -8,7 +8,6 @@ pkgdesc="An application launcher for the COSMIC desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-applibrary"
 license=('GPL-3.0-or-later')
-groups=('cosmic')
 depends=(
   'hicolor-icon-theme'
   'libxkbcommon')
