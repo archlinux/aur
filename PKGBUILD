@@ -31,7 +31,7 @@ depends=(gcc-libs
 makedepends=(extra-cmake-modules
              kdoctools5)
 groups=(kde-applications
-        kdesdk)
+        kde-sdk)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
 sha256sums=('aa63c6f874731a33b0fae82bdc8bafdb2982817818ed06b96ccb28f6b6d1d567'
             'SKIP')
