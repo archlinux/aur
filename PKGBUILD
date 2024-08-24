@@ -1,7 +1,7 @@
 # Maintainer: vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
 
 pkgname=lx-music-desktop-appimage
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="一个免费&开源的音乐查找工具"
 arch=("x86_64")
@@ -12,7 +12,7 @@ noextract=(${_pkgname})
 options=("!strip" "!debug")
 depends=("fuse2")
 source=("${_pkgname}::https://github.com/lyswhut/lx-music-desktop/releases/download/v${pkgver}/${_pkgname}")
-md5sums=("e11f1aa8719c8e2327393bf43e1974b0")
+md5sums=("7452b66d4eeafd322b5f6e972504e6db")
 
 _installdir=/opt/appimages
 
