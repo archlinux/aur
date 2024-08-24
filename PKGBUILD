@@ -8,13 +8,17 @@ _lssver=v2024.2.01
 pkgdesc="An open-source multi-platform crash reporting system"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://chromium.googlesource.com/breakpad/breakpad/"
+conflicts=(
+	'google-breakpad'
+	'google-breakpad-git'
+)
 license=('BSD')
 makedepends=('git')
 depends=('gcc-libs')
 options=('staticlibs' '!strip')
 
 provides=(
-	'breakpad-fixed'
+	'google-breakpad-fixed'
 )
 
 source=(
