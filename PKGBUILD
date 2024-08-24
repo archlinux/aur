@@ -1,4 +1,5 @@
-#Maintainer: HEx_404 <HEx_404x at proton dot me>
+#Maintainer:    HEx_404 < HEx_404x at proton dot me >
+#Contributor:  	ZorinArch < zorinarch at protonmail dot com >
 pkgname=abdownloadmanager-bin
 pkgver=1.0.7
 pkgrel=1
