@@ -1,4 +1,4 @@
-# Maintainer: Riedler <dev@riedler.wien>
+# Maintainer: Adriik <adriik[dot]linux[at]proton.me>
 
 pkgname=wlsplit
 pkgver=0.1.0
@@ -10,11 +10,12 @@ license=('MIT')
 depends=('freetype2' 'fontconfig')
 makedepends=('cargo' 'git')
 source=("git+https://github.com/junglerobba/wlsplit.git")
-md5sums=('SKIP')	#TODO: define
+md5sums=('SKIP')
 
 prepare() {
 	cd $pkgname
-	cargo fetch --target "$CARCH-unknown-linux-gnu"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -26,8 +27,7 @@ build() {
 
 package() {
 	cd $pkgname
-	install -Dm755 "target/release/$pkgname" \
-		-t "$pkgdir/usr/bin"
-	install -Dm644 LICENSE \
-		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+	install -Dm755 "target/release/wlsplitctl" -t "$pkgdir/usr/bin"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
