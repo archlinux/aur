@@ -6,12 +6,12 @@
 # Contributor: joel schaerer <joel.schaerer@laposte.net>
 
 pkgname=insight-toolkit-git
-pkgver=5.4rc01.r92.gc3ae51517e
-pkgrel=1
+pkgver=5.4.0.r229.g37fca1004f
+pkgrel=2
 pkgdesc="Cross-platform system that provides developers with an extensive suite of software tools for image analysis"
 arch=(x86_64)
 url="https://itk.org/"
-license=(Apache)
+license=(Apache-2.0)
 depends=(glibc gcc-libs libjpeg-turbo libpng zlib libtiff gdcm expat hdf5)
 makedepends=(cmake git eigen gtest)
 provides=(insight-toolkit)
@@ -44,6 +44,7 @@ build() {
     -DITK_USE_SYSTEM_EXPAT:BOOL=ON \
     -DITK_USE_SYSTEM_FFTW:BOOL=ON \
     -DITK_USE_SYSTEM_HDF5:BOOL=ON \
+    -DITK_USE_SYSTEM_GOOGLETEST=OFF \
     -DModule_ITKIOMINC:BOOL=ON \
     -DModule_ITKIOTransformMINC:BOOL=ON \
     -DModule_SimpleITKFilters:BOOL=ON
