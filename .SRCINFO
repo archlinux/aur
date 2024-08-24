@@ -15,6 +15,8 @@ pkgbase = rogue
 	license = custom
 	depends = ncurses
 	source = http://rogue.rogueforge.net/files/rogue5.4/rogue5.4.4-src.tar.gz
+	source = http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.guess
 	md5sums = 033288f46444b06814c81ea69d96e075
+	md5sums = 7656db1151b730dc6c51cbfa83136071
 
 pkgname = rogue
