@@ -1,8 +1,8 @@
-# Maintainer: Andrew Steinke <rkcf@rkcf.me>
+# Contributor: Andrew Steinke <rkcf@rkcf.me>
 
 pkgname=python-pyosf
 _pkgname=pyosf
-pkgrel=1
+pkgrel=2
 pkgver=1.0.5
 pkgdesc="A pure python library for simple sync with Open Science Framework"
 depends=('python' 'python-requests')
@@ -15,6 +15,7 @@ md5sums=('5afac9a27e869f274dba276fe00fdecc')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
+  sed -i "s/'pytest-runner', //" setup.py
   python setup.py build
 }
 
