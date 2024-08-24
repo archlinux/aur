@@ -10,6 +10,7 @@ pkgbase = chicago95-plus-git
 	depends = python-svgwrite
 	depends = python-fonttools
 	depends = python-numpy
+	depends = imagemagick
 	depends = inkscape
 	depends = noto-fonts
 	depends = alsa-utils
