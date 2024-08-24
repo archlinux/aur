@@ -15,7 +15,7 @@ unset _pkgtype
 _pkgname="duckstation"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=0.1.7294
-pkgrel=1
+pkgrel=2
 pkgdesc="Playstation emulator"
 url="https://github.com/stenzek/duckstation"
 arch=('x86_64')
@@ -54,7 +54,7 @@ _source_duckstation() {
   source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
   sha256sums=('SKIP')
 
-  _pkgver() {
+  pkgver() {
     cd "$_pkgsrc"
     git describe --tag | sed -E 's/^[^0-9]*//;s/-/./g'
   }
@@ -394,6 +394,7 @@ _build_duckstation() {
     -DLIBBACKTRACE_LIBRARY="$srcdir/deps/libbacktrace.a"
     -DSHADERC_INCLUDE_DIR="$srcdir/deps/usr/include"
     -DSHADERC_LIBRARY="$srcdir/deps/usr/lib/libshaderc_shared.so"
+    -DShaderc_DIR="$srcdir/deps/usr/lib/cmake/Shaderc" # git
     -DSoundTouch_DIR="$srcdir/deps/usr/lib/cmake/SoundTouch"
     -Dcpuinfo_DIR="$srcdir/deps/usr/share/cpuinfo"
     -Dspirv_cross_c_shared_DIR="$srcdir/deps/usr/share/spirv_cross_c_shared/cmake"
