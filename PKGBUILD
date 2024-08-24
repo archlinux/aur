@@ -1,20 +1,19 @@
 # Maintainer: XDR <xxdr@duck.com>
-
 pkgname="cazic-bin"
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Another music player created with Tauri!"
 arch=('x86_64')
-url="https://gitlab.com/XDRwastaken/Cazic"
+url="https://github.com/XDRwastaken/Cazic"
 license=('MIT')
 
 source=(
-	"https://gitlab.com/XDRwastaken/archived/-/raw/main/Cazic/${pkgver}/Cazic_Linux.tar.gz"
-	"https://gitlab.com/XDRwastaken/Cazic/-/raw/main/LICENSE"
+	"https://github.com/XDRwastaken/Cazic/releases/download/${pkgver}/Cazic_Linux.tar.gz"
+	"https://raw.githubusercontent.com/XDRwastaken/Cazic/main/LICENSE"
 	"cazic.desktop"
-	"https://gitlab.com/XDRwastaken/Cazic/-/raw/main/icons/32x32.png"
-	"https://gitlab.com/XDRwastaken/Cazic/-/raw/main/icons/128x128.png"
-	"https://gitlab.com/XDRwastaken/Cazic/-/raw/main/icons/256x256.png"
+	"https://raw.githubusercontent.com/XDRwastaken/Cazic/8129aae8f796c01abab3efa572cdd3e9f9efddde/icons/32x32.png"
+	"https://raw.githubusercontent.com/XDRwastaken/Cazic/8129aae8f796c01abab3efa572cdd3e9f9efddde/icons/128x128.png"
+	"https://raw.githubusercontent.com/XDRwastaken/Cazic/8129aae8f796c01abab3efa572cdd3e9f9efddde/icons/256x256.png"
 )
 
 sha256sums=(
