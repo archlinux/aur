@@ -7,7 +7,6 @@ pkgdesc="Layer Shell notifications daemon which integrates with COSMIC."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-notifications"
 license=('GPL-3.0-or-later')
-groups=('cosmic')
 depends=(
   'hicolor-icon-theme'
   'libxkbcommon'
