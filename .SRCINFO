@@ -1,12 +1,13 @@
 pkgbase = zuu
 	pkgdesc = A program to check your code quality before all commit
 	pkgver = 20.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/otechdo/zuu
 	arch = any
 	license = AGPL-3.0
 	makedepends = cargo
 	depends = rustup
+	depends = cargo-outdated
 	depends = cargo-spellcheck
 	depends = cargo-watch
 	depends = cargo-deny
