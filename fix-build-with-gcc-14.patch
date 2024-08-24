@@ -1,0 +1,2836 @@
+diff --git a/common/http/HTTPServer.cpp b/common/http/HTTPServer.cpp
+index c91ac769f..94f8370b6 100644
+--- a/common/http/HTTPServer.cpp
++++ b/common/http/HTTPServer.cpp
+@@ -57,7 +57,8 @@ class UnmanagedSocketDescriptor : public ola::io::UnmanagedFileDescriptor {
+     ioctlsocket(fd, FIONBIO, &mode);
+   }
+  private:
+-  DISALLOW_COPY_AND_ASSIGN(UnmanagedSocketDescriptor);
++  UnmanagedSocketDescriptor(const UnmanagedSocketDescriptor &) = delete;
++  const UnmanagedSocketDescriptor &operator=(const UnmanagedSocketDescriptor &) = delete;
+ };
+ #endif  // _WIN32
+ 
+diff --git a/common/io/EPoller.h b/common/io/EPoller.h
+index 1f6d2d05f..9dd736a96 100644
+--- a/common/io/EPoller.h
++++ b/common/io/EPoller.h
+@@ -102,7 +102,8 @@ class EPoller : public PollerInterface {
+   static const int READ_FLAGS;
+   static const unsigned int MAX_FREE_DESCRIPTORS;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(EPoller);
++  EPoller(const EPoller &) = delete;
++  const EPoller &operator=(const EPoller &) = delete;
+ };
+ }  // namespace io
+ }  // namespace ola
+diff --git a/common/io/KQueuePoller.h b/common/io/KQueuePoller.h
+index 8be3d50f6..bfd8ddb52 100644
+--- a/common/io/KQueuePoller.h
++++ b/common/io/KQueuePoller.h
+@@ -108,7 +108,8 @@ class KQueuePoller : public PollerInterface {
+   static const int MAX_EVENTS;
+   static const unsigned int MAX_FREE_DESCRIPTORS;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(KQueuePoller);
++  KQueuePoller(const KQueuePoller &) = delete;
++  const KQueuePoller &operator=(const KQueuePoller &) = delete;
+ };
+ }  // namespace io
+ }  // namespace ola
+diff --git a/common/io/SelectPoller.h b/common/io/SelectPoller.h
+index 390e243b9..b33380b9f 100644
+--- a/common/io/SelectPoller.h
++++ b/common/io/SelectPoller.h
+@@ -88,7 +88,8 @@ class SelectPoller : public PollerInterface {
+   void CheckDescriptors(fd_set *r_set, fd_set *w_set);
+   bool AddDescriptorsToSet(fd_set *r_set, fd_set *w_set, int *max_sd);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(SelectPoller);
++  SelectPoller(const SelectPoller &) = delete;
++  const SelectPoller &operator=(const SelectPoller &) = delete;
+ };
+ }  // namespace io
+ }  // namespace ola
+diff --git a/common/io/TimeoutManager.h b/common/io/TimeoutManager.h
+index 46ae15e3f..a1389dba0 100644
+--- a/common/io/TimeoutManager.h
++++ b/common/io/TimeoutManager.h
+@@ -193,7 +193,8 @@ class TimeoutManager {
+   event_queue_t m_events;
+   std::set<ola::thread::timeout_id> m_removed_timeouts;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(TimeoutManager);
++  TimeoutManager(const TimeoutManager &) = delete;
++  const TimeoutManager &operator=(const TimeoutManager &) = delete;
+ };
+ }  // namespace io
+ }  // namespace ola
+diff --git a/common/io/WindowsPoller.h b/common/io/WindowsPoller.h
+index 81fadf6b1..0370c0f6b 100644
+--- a/common/io/WindowsPoller.h
++++ b/common/io/WindowsPoller.h
+@@ -90,7 +90,8 @@ class WindowsPoller : public PollerInterface {
+   void HandleWakeup(class PollData* data);
+   void FinalCheckIOs(std::vector<class PollData*> data);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(WindowsPoller);
++  WindowsPoller(const WindowsPoller &) = delete;
++  const WindowsPoller &operator=(const WindowsPoller &) = delete;
+ };
+ }  // namespace io
+ }  // namespace ola
+diff --git a/common/rdm/PidStoreLoader.h b/common/rdm/PidStoreLoader.h
+index 504a285f6..0ba6cb276 100644
+--- a/common/rdm/PidStoreLoader.h
++++ b/common/rdm/PidStoreLoader.h
+@@ -123,7 +123,8 @@ class PidStoreLoader {
+   static const uint16_t MANUFACTURER_PID_MIN;
+   static const uint16_t MANUFACTURER_PID_MAX;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(PidStoreLoader);
++  PidStoreLoader(const PidStoreLoader &) = delete;
++  const PidStoreLoader &operator=(const PidStoreLoader &) = delete;
+ };
+ }  // namespace rdm
+ }  // namespace ola
+diff --git a/common/web/PointerTracker.h b/common/web/PointerTracker.h
+index 5480d2fe1..d4af19a4e 100644
+--- a/common/web/PointerTracker.h
++++ b/common/web/PointerTracker.h
+@@ -135,7 +135,8 @@ class PointerTracker {
+   JsonPointer *m_pointer;
+   std::vector<Token> m_tokens;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(PointerTracker);
++  PointerTracker(const PointerTracker &) = delete;
++  const PointerTracker &operator=(const PointerTracker &) = delete;
+ };
+ }  // namespace web
+ }  // namespace ola
+diff --git a/common/web/SchemaErrorLogger.h b/common/web/SchemaErrorLogger.h
+index 0ee5d211f..2dc2480e9 100644
+--- a/common/web/SchemaErrorLogger.h
++++ b/common/web/SchemaErrorLogger.h
+@@ -72,7 +72,8 @@ class SchemaErrorLogger {
+   std::ostringstream m_extra_errors;
+   JsonPointer *m_pointer;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(SchemaErrorLogger);
++  SchemaErrorLogger(const SchemaErrorLogger &) = delete;
++  const SchemaErrorLogger &operator=(const SchemaErrorLogger &) = delete;
+ };
+ }  // namespace web
+ }  // namespace ola
+diff --git a/common/web/SchemaParseContext.h b/common/web/SchemaParseContext.h
+index 0e3e6c566..2d61b7475 100644
+--- a/common/web/SchemaParseContext.h
++++ b/common/web/SchemaParseContext.h
+@@ -131,7 +131,8 @@ class StrictTypedParseContext : public ObjectParseContext {
+  private:
+   void ReportErrorForType(SchemaErrorLogger *logger, JsonType type);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(StrictTypedParseContext);
++  StrictTypedParseContext(const StrictTypedParseContext &) = delete;
++  const StrictTypedParseContext &operator=(const StrictTypedParseContext &) = delete;
+ };
+ 
+ /**
+@@ -161,7 +162,8 @@ class DefinitionsParseContext : public StrictTypedParseContext {
+   SchemaDefinitions *m_schema_defs;
+   std::auto_ptr<SchemaParseContext> m_current_schema;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(DefinitionsParseContext);
++  DefinitionsParseContext(const DefinitionsParseContext &) = delete;
++  const DefinitionsParseContext &operator=(const DefinitionsParseContext &) = delete;
+ };
+ 
+ /**
+@@ -297,7 +299,8 @@ class SchemaParseContext : public SchemaParseContextInterface {
+                               JsonType type, JsonType expected_type1,
+                               JsonType expected_type2);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(SchemaParseContext);
++  SchemaParseContext(const SchemaParseContext &) = delete;
++  const SchemaParseContext &operator=(const SchemaParseContext &) = delete;
+ };
+ 
+ 
+@@ -323,7 +326,8 @@ class PropertiesParseContext : public StrictTypedParseContext {
+   SchemaDefinitions *m_schema_defs;
+   SchemaMap m_property_contexts;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(PropertiesParseContext);
++  PropertiesParseContext(const PropertiesParseContext &) = delete;
++  const PropertiesParseContext &operator=(const PropertiesParseContext &) = delete;
+ };
+ 
+ 
+@@ -355,7 +359,8 @@ class ArrayOfSchemaContext : public StrictTypedParseContext {
+   SchemaDefinitions *m_schema_defs;
+   ItemSchemas m_item_schemas;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(ArrayOfSchemaContext);
++  ArrayOfSchemaContext(const ArrayOfSchemaContext &) = delete;
++  const ArrayOfSchemaContext &operator=(const ArrayOfSchemaContext &) = delete;
+ };
+ 
+ 
+@@ -380,7 +385,8 @@ class ArrayOfStringsContext : public StrictTypedParseContext {
+  private:
+   StringSet m_items;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(ArrayOfStringsContext);
++  ArrayOfStringsContext(const ArrayOfStringsContext &) = delete;
++  const ArrayOfStringsContext &operator=(const ArrayOfStringsContext &) = delete;
+ };
+ 
+ /**
+@@ -413,7 +419,8 @@ class JsonValueContext : public SchemaParseContextInterface {
+  private:
+   JsonParser m_parser;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JsonValueContext);
++  JsonValueContext(const JsonValueContext &) = delete;
++  const JsonValueContext &operator=(const JsonValueContext &) = delete;
+ };
+ 
+ /**
+@@ -451,7 +458,8 @@ class ArrayOfJsonValuesContext : public SchemaParseContextInterface {
+   void CheckForDuplicateAndAdd(SchemaErrorLogger *logger,
+                                const JsonValue *value);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(ArrayOfJsonValuesContext);
++  ArrayOfJsonValuesContext(const ArrayOfJsonValuesContext &) = delete;
++  const ArrayOfJsonValuesContext &operator=(const ArrayOfJsonValuesContext &) = delete;
+ };
+ 
+ 
+@@ -488,7 +496,8 @@ class DependencyParseContext : public StrictTypedParseContext {
+   PropertyDependencies m_property_dependencies;
+   SchemaDependencies m_schema_dependencies;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(DependencyParseContext);
++  DependencyParseContext(const DependencyParseContext &) = delete;
++  const DependencyParseContext &operator=(const DependencyParseContext &) = delete;
+ };
+ }  // namespace web
+ }  // namespace ola
+diff --git a/common/web/SchemaParser.h b/common/web/SchemaParser.h
+index dfbd34f44..a9e871e2c 100644
+--- a/common/web/SchemaParser.h
++++ b/common/web/SchemaParser.h
+@@ -116,7 +116,8 @@ class SchemaParser : public JsonParserInterface {
+   template <typename T>
+   void HandleNumber(T t);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(SchemaParser);
++  SchemaParser(const SchemaParser &) = delete;
++  const SchemaParser &operator=(const SchemaParser &) = delete;
+ };
+ }  // namespace web
+ }  // namespace ola
+diff --git a/include/ola/CallbackRunner.h b/include/ola/CallbackRunner.h
+index 9441f2987..91f33ee6e 100644
+--- a/include/ola/CallbackRunner.h
++++ b/include/ola/CallbackRunner.h
+@@ -99,7 +99,8 @@ class CallbackRunner {
+  private:
+     CallbackClass *m_callback;
+ 
+-    DISALLOW_COPY_AND_ASSIGN(CallbackRunner);
++    CallbackRunner(const CallbackRunner &) = delete;
++  const CallbackRunner &operator=(const CallbackRunner &) = delete;
+ };
+ 
+ /**
+diff --git a/include/ola/Clock.h b/include/ola/Clock.h
+index 7472e9b8c..585ecd3aa 100644
+--- a/include/ola/Clock.h
++++ b/include/ola/Clock.h
+@@ -272,7 +272,8 @@ class Clock {
+   virtual void CurrentTime(TimeStamp* timestamp) const;
+ 
+  private:
+-  DISALLOW_COPY_AND_ASSIGN(Clock);
++  Clock(const Clock &) = delete;
++  const Clock &operator=(const Clock &) = delete;
+ };
+ 
+ /**
+diff --git a/include/ola/ExportMap.h b/include/ola/ExportMap.h
+index 284eb9ae3..b76562dd3 100644
+--- a/include/ola/ExportMap.h
++++ b/include/ola/ExportMap.h
+@@ -397,7 +397,8 @@ class ExportMap {
+   std::map<std::string, IntMap*> m_int_map_variables;
+   std::map<std::string, UIntMap*> m_uint_map_variables;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(ExportMap);
++  ExportMap(const ExportMap &) = delete;
++  const ExportMap &operator=(const ExportMap &) = delete;
+ };
+ }  // namespace ola
+ #endif  // INCLUDE_OLA_EXPORTMAP_H_
+diff --git a/include/ola/base/FlagsPrivate.h b/include/ola/base/FlagsPrivate.h
+index 8ec198f18..b67253c84 100644
+--- a/include/ola/base/FlagsPrivate.h
++++ b/include/ola/base/FlagsPrivate.h
+@@ -181,7 +181,8 @@ class Flag : public BaseFlag {
+   T m_default;
+   T m_value;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(Flag);
++  Flag(const Flag &) = delete;
++  const Flag &operator=(const Flag &) = delete;
+ };
+ 
+ /**
+@@ -245,7 +246,8 @@ class Flag<bool> : public BaseFlag {
+ 
+   static const char NO_PREFIX[];
+ 
+-  DISALLOW_COPY_AND_ASSIGN(Flag);
++  Flag(const Flag &) = delete;
++  const Flag &operator=(const Flag &) = delete;
+ };
+ 
+ /**
+@@ -293,7 +295,8 @@ class Flag<std::string> : public BaseFlag {
+   std::string m_default;
+   std::string m_value;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(Flag);
++  Flag(const Flag &) = delete;
++  const Flag &operator=(const Flag &) = delete;
+ };
+ 
+ /**
+@@ -341,7 +344,8 @@ class FlagRegistry {
+   void PrintFlags(std::vector<std::string> *lines);
+   void PrintManPageFlags(std::vector<OptionPair> *lines);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(FlagRegistry);
++  FlagRegistry(const FlagRegistry &) = delete;
++  const FlagRegistry &operator=(const FlagRegistry &) = delete;
+ };
+ 
+ /**
+@@ -364,7 +368,8 @@ class FlagRegisterer {
+   }
+ 
+  private:
+-  DISALLOW_COPY_AND_ASSIGN(FlagRegisterer);
++  FlagRegisterer(const FlagRegisterer &) = delete;
++  const FlagRegisterer &operator=(const FlagRegisterer &) = delete;
+ };
+ 
+ /** @} */
+diff --git a/include/ola/base/Macro.h b/include/ola/base/Macro.h
+index 7c2c50438..83b35b1bd 100644
+--- a/include/ola/base/Macro.h
++++ b/include/ola/base/Macro.h
+@@ -37,7 +37,8 @@
+  *       Foo() { ... }
+  *
+  *     private:
+- *       DISALLOW_COPY_AND_ASSIGN(Foo);
++ *       Foo(const Foo &) = delete;
++  const Foo &operator=(const Foo &) = delete;
+  *     };
+  *   @endcode
+  */
+diff --git a/include/ola/base/Version.h.in b/include/ola/base/Version.h.in
+index 2a716bcb9..7107fbb32 100644
+--- a/include/ola/base/Version.h.in
++++ b/include/ola/base/Version.h.in
+@@ -75,7 +75,8 @@ class Version {
+                         unsigned int revision);
+ 
+  private:
+-  DISALLOW_COPY_AND_ASSIGN(Version);
++  Version(const Version &) = delete;
++  const Version &operator=(const Version &) = delete;
+ };
+ }  // namespace base
+ }  // namespace ola
+diff --git a/include/ola/client/OlaClient.h b/include/ola/client/OlaClient.h
+index 35e7801d1..97b393a63 100644
+--- a/include/ola/client/OlaClient.h
++++ b/include/ola/client/OlaClient.h
+@@ -319,7 +319,8 @@ class OlaClient {
+  private:
+   std::auto_ptr<class OlaClientCore> m_core;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(OlaClient);
++  OlaClient(const OlaClient &) = delete;
++  const OlaClient &operator=(const OlaClient &) = delete;
+ };
+ }  // namespace client
+ }  // namespace ola
+diff --git a/include/ola/client/Result.h b/include/ola/client/Result.h
+index e7b904564..1c614656f 100644
+--- a/include/ola/client/Result.h
++++ b/include/ola/client/Result.h
+@@ -75,7 +75,8 @@ class Result {
+  private:
+   const std::string m_error;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(Result);
++  Result(const Result &) = delete;
++  const Result &operator=(const Result &) = delete;
+ };
+ }  // namespace client
+ }  // namespace ola
+diff --git a/include/ola/client/StreamingClient.h b/include/ola/client/StreamingClient.h
+index 7972dc199..e150f924b 100644
+--- a/include/ola/client/StreamingClient.h
++++ b/include/ola/client/StreamingClient.h
+@@ -177,7 +177,8 @@ class StreamingClient : public StreamingClientInterface {
+ 
+   bool Send(unsigned int universe, uint8_t priority, const DmxBuffer &data);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(StreamingClient);
++  StreamingClient(const StreamingClient &) = delete;
++  const StreamingClient &operator=(const StreamingClient &) = delete;
+ };
+ }  // namespace client
+ }  // namespace ola
+diff --git a/include/ola/e133/DeviceManager.h b/include/ola/e133/DeviceManager.h
+index 9fada5260..2608cc936 100644
+--- a/include/ola/e133/DeviceManager.h
++++ b/include/ola/e133/DeviceManager.h
+@@ -78,7 +78,8 @@ class DeviceManager {
+  private:
+     class DeviceManagerImpl *m_impl;
+ 
+-    DISALLOW_COPY_AND_ASSIGN(DeviceManager);
++    DeviceManager(const DeviceManager &) = delete;
++  const DeviceManager &operator=(const DeviceManager &) = delete;
+ };
+ }  // namespace e133
+ }  // namespace ola
+diff --git a/include/ola/e133/E133Receiver.h b/include/ola/e133/E133Receiver.h
+index 2e9d17a88..8a1ca5f25 100644
+--- a/include/ola/e133/E133Receiver.h
++++ b/include/ola/e133/E133Receiver.h
+@@ -142,7 +142,8 @@ class E133Receiver {
+         const ola::acn::E133Header *e133_header,
+         const std::string &raw_response);
+ 
+-    DISALLOW_COPY_AND_ASSIGN(E133Receiver);
++    E133Receiver(const E133Receiver &) = delete;
++  const E133Receiver &operator=(const E133Receiver &) = delete;
+ };
+ }  // namespace e133
+ }  // namespace ola
+diff --git a/include/ola/e133/MessageBuilder.h b/include/ola/e133/MessageBuilder.h
+index 272a56339..7e65b509f 100644
+--- a/include/ola/e133/MessageBuilder.h
++++ b/include/ola/e133/MessageBuilder.h
+@@ -69,7 +69,8 @@ class MessageBuilder {
+     const string m_source_name;
+     ola::io::MemoryBlockPool m_memory_pool;
+ 
+-    DISALLOW_COPY_AND_ASSIGN(MessageBuilder);
++    MessageBuilder(const MessageBuilder &) = delete;
++  const MessageBuilder &operator=(const MessageBuilder &) = delete;
+ };
+ }  // namespace e133
+ }  // namespace ola
+diff --git a/include/ola/http/HTTPServer.h b/include/ola/http/HTTPServer.h
+index 560d30ca2..04c06fd44 100644
+--- a/include/ola/http/HTTPServer.h
++++ b/include/ola/http/HTTPServer.h
+@@ -99,7 +99,8 @@ class HTTPRequest {
+ 
+   static const unsigned int K_POST_BUFFER_SIZE = 1024;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(HTTPRequest);
++  HTTPRequest(const HTTPRequest &) = delete;
++  const HTTPRequest &operator=(const HTTPRequest &) = delete;
+ };
+ 
+ 
+@@ -127,7 +128,8 @@ class HTTPResponse {
+   HeadersMultiMap m_headers;
+   unsigned int m_status_code;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(HTTPResponse);
++  HTTPResponse(const HTTPResponse &) = delete;
++  const HTTPResponse &operator=(const HTTPResponse &) = delete;
+ };
+ 
+ 
+@@ -266,7 +268,8 @@ class HTTPServer: public ola::thread::Thread {
+   void InsertSocket(bool is_readable, bool is_writeable, int fd);
+   void FreeSocket(DescriptorState *state);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(HTTPServer);
++  HTTPServer(const HTTPServer &) = delete;
++  const HTTPServer &operator=(const HTTPServer &) = delete;
+ };
+ }  // namespace http
+ }  // namespace ola
+diff --git a/include/ola/http/OlaHTTPServer.h b/include/ola/http/OlaHTTPServer.h
+index 20fbdf794..5698c139f 100644
+--- a/include/ola/http/OlaHTTPServer.h
++++ b/include/ola/http/OlaHTTPServer.h
+@@ -79,7 +79,8 @@ class OlaHTTPServer {
+     int DisplayDebug(const HTTPRequest *request, HTTPResponse *response);
+     int DisplayHandlers(const HTTPRequest *request, HTTPResponse *response);
+ 
+-    DISALLOW_COPY_AND_ASSIGN(OlaHTTPServer);
++    OlaHTTPServer(const OlaHTTPServer &) = delete;
++  const OlaHTTPServer &operator=(const OlaHTTPServer &) = delete;
+ };
+ }  // namespace http
+ }  // namespace ola
+diff --git a/include/ola/io/Descriptor.h b/include/ola/io/Descriptor.h
+index 0ce7abfbe..8572268bd 100644
+--- a/include/ola/io/Descriptor.h
++++ b/include/ola/io/Descriptor.h
+@@ -260,7 +260,8 @@ class UnmanagedFileDescriptor: public BidirectionalFileDescriptor {
+   DescriptorHandle m_handle;
+ 
+  private:
+-  DISALLOW_COPY_AND_ASSIGN(UnmanagedFileDescriptor);
++  UnmanagedFileDescriptor(const UnmanagedFileDescriptor &) = delete;
++  const UnmanagedFileDescriptor &operator=(const UnmanagedFileDescriptor &) = delete;
+ };
+ 
+ 
+@@ -427,7 +428,8 @@ class LoopbackDescriptor: public ConnectedDescriptor {
+   DescriptorHandle m_handle_pair[2];
+ 
+ 
+-  DISALLOW_COPY_AND_ASSIGN(LoopbackDescriptor);
++  LoopbackDescriptor(const LoopbackDescriptor &) = delete;
++  const LoopbackDescriptor &operator=(const LoopbackDescriptor &) = delete;
+ };
+ 
+ 
+@@ -480,7 +482,8 @@ class PipeDescriptor: public ConnectedDescriptor {
+                  PipeDescriptor *other_end);
+ 
+ 
+-  DISALLOW_COPY_AND_ASSIGN(PipeDescriptor);
++  PipeDescriptor(const PipeDescriptor &) = delete;
++  const PipeDescriptor &operator=(const PipeDescriptor &) = delete;
+ };
+ 
+ /**
+@@ -529,7 +532,8 @@ class UnixSocket: public ConnectedDescriptor {
+   UnixSocket *m_other_end;
+   UnixSocket(int socket, UnixSocket *other_end);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(UnixSocket);
++  UnixSocket(const UnixSocket &) = delete;
++  const UnixSocket &operator=(const UnixSocket &) = delete;
+ };
+ 
+ /**
+@@ -558,7 +562,8 @@ class DeviceDescriptor: public ConnectedDescriptor {
+  private:
+   DescriptorHandle m_handle;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(DeviceDescriptor);
++  DeviceDescriptor(const DeviceDescriptor &) = delete;
++  const DeviceDescriptor &operator=(const DeviceDescriptor &) = delete;
+ };
+ 
+ /**@}*/
+diff --git a/include/ola/io/NonBlockingSender.h b/include/ola/io/NonBlockingSender.h
+index 3ee8aa4de..2f241babd 100644
+--- a/include/ola/io/NonBlockingSender.h
++++ b/include/ola/io/NonBlockingSender.h
+@@ -122,7 +122,8 @@ class NonBlockingSender {
+   void PerformWrite();
+   void AssociateIfRequired();
+ 
+-  DISALLOW_COPY_AND_ASSIGN(NonBlockingSender);
++  NonBlockingSender(const NonBlockingSender &) = delete;
++  const NonBlockingSender &operator=(const NonBlockingSender &) = delete;
+ };
+ }  // namespace io
+ }  // namespace ola
+diff --git a/include/ola/io/SelectServer.h b/include/ola/io/SelectServer.h
+index 1d07c7a04..678526431 100644
+--- a/include/ola/io/SelectServer.h
++++ b/include/ola/io/SelectServer.h
+@@ -222,7 +222,8 @@ class SelectServer: public SelectServerInterface {
+ 
+   friend class ::SelectServerTest;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(SelectServer);
++  SelectServer(const SelectServer &) = delete;
++  const SelectServer &operator=(const SelectServer &) = delete;
+ };
+ }  // namespace io
+ }  // namespace ola
+diff --git a/include/ola/network/AdvancedTCPConnector.h b/include/ola/network/AdvancedTCPConnector.h
+index fdc57c7b0..70e9f830b 100644
+--- a/include/ola/network/AdvancedTCPConnector.h
++++ b/include/ola/network/AdvancedTCPConnector.h
+@@ -145,7 +145,8 @@ class AdvancedTCPConnector {
+   void AttemptConnection(const IPPortPair &key, ConnectionInfo *state);
+   void AbortConnection(ConnectionInfo *state);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(AdvancedTCPConnector);
++  AdvancedTCPConnector(const AdvancedTCPConnector &) = delete;
++  const AdvancedTCPConnector &operator=(const AdvancedTCPConnector &) = delete;
+ };
+ }  // namespace network
+ }  // namespace ola
+diff --git a/include/ola/network/HealthCheckedConnection.h b/include/ola/network/HealthCheckedConnection.h
+index a4311f51e..04fbfab47 100644
+--- a/include/ola/network/HealthCheckedConnection.h
++++ b/include/ola/network/HealthCheckedConnection.h
+@@ -113,7 +113,8 @@ class HealthCheckedConnection {
+     void UpdateReceiveTimer();
+     void InternalHeartbeatTimeout();
+ 
+-    DISALLOW_COPY_AND_ASSIGN(HealthCheckedConnection);
++    HealthCheckedConnection(const HealthCheckedConnection &) = delete;
++  const HealthCheckedConnection &operator=(const HealthCheckedConnection &) = delete;
+ };
+ }  // namespace network
+ }  // namespace ola
+diff --git a/include/ola/network/Socket.h b/include/ola/network/Socket.h
+index 750c6bc7a..6947e9268 100644
+--- a/include/ola/network/Socket.h
++++ b/include/ola/network/Socket.h
+@@ -228,7 +228,8 @@ class UDPSocketInterface: public ola::io::BidirectionalFileDescriptor {
+   virtual bool SetTos(uint8_t tos) = 0;
+ 
+  private:
+-  DISALLOW_COPY_AND_ASSIGN(UDPSocketInterface);
++  UDPSocketInterface(const UDPSocketInterface &) = delete;
++  const UDPSocketInterface &operator=(const UDPSocketInterface &) = delete;
+ };
+ 
+ 
+@@ -290,7 +291,8 @@ class UDPSocket: public UDPSocketInterface {
+   ola::io::DescriptorHandle m_handle;
+   bool m_bound_to_port;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(UDPSocket);
++  UDPSocket(const UDPSocket &) = delete;
++  const UDPSocket &operator=(const UDPSocket &) = delete;
+ };
+ }  // namespace network
+ }  // namespace ola
+diff --git a/include/ola/network/SocketCloser.h b/include/ola/network/SocketCloser.h
+index ff307dc30..94712d8ce 100644
+--- a/include/ola/network/SocketCloser.h
++++ b/include/ola/network/SocketCloser.h
+@@ -78,7 +78,8 @@ class SocketCloser {
+  private:
+   int m_fd;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(SocketCloser);
++  SocketCloser(const SocketCloser &) = delete;
++  const SocketCloser &operator=(const SocketCloser &) = delete;
+ };
+ /**
+  * @}
+diff --git a/include/ola/network/TCPConnector.h b/include/ola/network/TCPConnector.h
+index 4b74c71f9..ce0ff5ba6 100644
+--- a/include/ola/network/TCPConnector.h
++++ b/include/ola/network/TCPConnector.h
+@@ -117,7 +117,8 @@ class TCPConnector {
+   void TimeoutEvent(class PendingTCPConnection *connection);
+   void CleanUpOrphans();
+ 
+-  DISALLOW_COPY_AND_ASSIGN(TCPConnector);
++  TCPConnector(const TCPConnector &) = delete;
++  const TCPConnector &operator=(const TCPConnector &) = delete;
+ };
+ }  // namespace network
+ }  // namespace ola
+diff --git a/include/ola/network/TCPSocket.h b/include/ola/network/TCPSocket.h
+index c5b5b3b48..e14c6506d 100644
+--- a/include/ola/network/TCPSocket.h
++++ b/include/ola/network/TCPSocket.h
+@@ -63,7 +63,8 @@ class TCPSocket: public ola::io::ConnectedDescriptor {
+  private:
+   ola::io::DescriptorHandle m_handle;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(TCPSocket);
++  TCPSocket(const TCPSocket &) = delete;
++  const TCPSocket &operator=(const TCPSocket &) = delete;
+ };
+ 
+ 
+@@ -89,7 +90,8 @@ class TCPAcceptingSocket: public ola::io::ReadFileDescriptor {
+   ola::io::DescriptorHandle m_handle;
+   class TCPSocketFactoryInterface *m_factory;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(TCPAcceptingSocket);
++  TCPAcceptingSocket(const TCPAcceptingSocket &) = delete;
++  const TCPAcceptingSocket &operator=(const TCPAcceptingSocket &) = delete;
+ };
+ }  // namespace network
+ }  // namespace ola
+diff --git a/include/ola/network/TCPSocketFactory.h b/include/ola/network/TCPSocketFactory.h
+index a68b8eec4..5a7f1620b 100644
+--- a/include/ola/network/TCPSocketFactory.h
++++ b/include/ola/network/TCPSocketFactory.h
+@@ -65,7 +65,8 @@ class GenericTCPSocketFactory: public TCPSocketFactoryInterface {
+  private:
+   NewSocketCallback *m_new_socket;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(GenericTCPSocketFactory);
++  GenericTCPSocketFactory(const GenericTCPSocketFactory &) = delete;
++  const GenericTCPSocketFactory &operator=(const GenericTCPSocketFactory &) = delete;
+ };
+ 
+ typedef GenericTCPSocketFactory<TCPSocket> TCPSocketFactory;
+diff --git a/include/ola/rdm/PidStore.h b/include/ola/rdm/PidStore.h
+index fbb361806..920bedb2a 100644
+--- a/include/ola/rdm/PidStore.h
++++ b/include/ola/rdm/PidStore.h
+@@ -176,7 +176,8 @@ class RootPidStore {
+   const PidDescriptor *InternalESTANameLookup(
+       const std::string &pid_name) const;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(RootPidStore);
++  RootPidStore(const RootPidStore &) = delete;
++  const RootPidStore &operator=(const RootPidStore &) = delete;
+ };
+ 
+ 
+@@ -235,7 +236,8 @@ class PidStore {
+   PidMap m_pid_by_value;
+   PidNameMap m_pid_by_name;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(PidStore);
++  PidStore(const PidStore &) = delete;
++  const PidStore &operator=(const PidStore &) = delete;
+ };
+ 
+ 
+@@ -300,7 +302,8 @@ class PidDescriptor {
+   bool RequestValid(uint16_t sub_device,
+                     const sub_device_validator &validator) const;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(PidDescriptor);
++  PidDescriptor(const PidDescriptor &) = delete;
++  const PidDescriptor &operator=(const PidDescriptor &) = delete;
+ };
+ }  // namespace rdm
+ }  // namespace ola
+diff --git a/include/ola/rdm/RDMCommand.h b/include/ola/rdm/RDMCommand.h
+index 81eddcd35..a0c8f414c 100644
+--- a/include/ola/rdm/RDMCommand.h
++++ b/include/ola/rdm/RDMCommand.h
+@@ -223,7 +223,8 @@ class RDMCommand {
+   static uint16_t CalculateChecksum(const uint8_t *data,
+                                     unsigned int packet_length);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(RDMCommand);
++  RDMCommand(const RDMCommand &) = delete;
++  const RDMCommand &operator=(const RDMCommand &) = delete;
+ };
+ 
+ 
+diff --git a/include/ola/rdm/RDMReply.h b/include/ola/rdm/RDMReply.h
+index 928794caf..2af2bd1e2 100644
+--- a/include/ola/rdm/RDMReply.h
++++ b/include/ola/rdm/RDMReply.h
+@@ -147,7 +147,8 @@ struct RDMReply {
+   std::auto_ptr<RDMResponse> m_response;
+   RDMFrames m_frames;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(RDMReply);
++  RDMReply(const RDMReply &) = delete;
++  const RDMReply &operator=(const RDMReply &) = delete;
+ };
+ }  // namespace rdm
+ }  // namespace ola
+diff --git a/include/ola/rdm/ResponderPersonality.h b/include/ola/rdm/ResponderPersonality.h
+index e3f441344..041cdd45a 100644
+--- a/include/ola/rdm/ResponderPersonality.h
++++ b/include/ola/rdm/ResponderPersonality.h
+@@ -80,7 +80,8 @@ class PersonalityCollection {
+  private:
+     const PersonalityList m_personalities;
+ 
+-    DISALLOW_COPY_AND_ASSIGN(PersonalityCollection);
++    PersonalityCollection(const PersonalityCollection &) = delete;
++  const PersonalityCollection &operator=(const PersonalityCollection &) = delete;
+ };
+ 
+ 
+@@ -104,7 +105,8 @@ class PersonalityManager {
+     const PersonalityCollection *m_personalities;
+     uint8_t m_active_personality;
+ 
+-    DISALLOW_COPY_AND_ASSIGN(PersonalityManager);
++    PersonalityManager(const PersonalityManager &) = delete;
++  const PersonalityManager &operator=(const PersonalityManager &) = delete;
+ };
+ }  // namespace rdm
+ }  // namespace ola
+diff --git a/include/ola/testing/MockUDPSocket.h b/include/ola/testing/MockUDPSocket.h
+index edd5ef176..5e9033760 100644
+--- a/include/ola/testing/MockUDPSocket.h
++++ b/include/ola/testing/MockUDPSocket.h
+@@ -160,7 +160,8 @@ class MockUDPSocket: public ola::network::UDPSocketInterface {
+   uint8_t* IOQueueToBuffer(ola::io::IOQueue *ioqueue,
+                            unsigned int *size) const;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(MockUDPSocket);
++  MockUDPSocket(const MockUDPSocket &) = delete;
++  const MockUDPSocket &operator=(const MockUDPSocket &) = delete;
+ };
+ 
+ 
+@@ -179,7 +180,8 @@ class SocketVerifier {
+  private:
+   MockUDPSocket *m_socket;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(SocketVerifier);
++  SocketVerifier(const SocketVerifier &) = delete;
++  const SocketVerifier &operator=(const SocketVerifier &) = delete;
+ };
+ }  // namespace testing
+ }  // namespace ola
+diff --git a/include/ola/thread/CallbackThread.h b/include/ola/thread/CallbackThread.h
+index 3e280d704..136be846c 100644
+--- a/include/ola/thread/CallbackThread.h
++++ b/include/ola/thread/CallbackThread.h
+@@ -59,7 +59,8 @@ class CallbackThread : public Thread {
+  private:
+     VoidThreadCallback *m_callback;
+ 
+-    DISALLOW_COPY_AND_ASSIGN(CallbackThread);
++    CallbackThread(const CallbackThread &) = delete;
++  const CallbackThread &operator=(const CallbackThread &) = delete;
+ };
+ }  // namespace thread
+ }  // namespace ola
+diff --git a/include/ola/thread/ConsumerThread.h b/include/ola/thread/ConsumerThread.h
+index ef88ddaf1..d4558eb8d 100644
+--- a/include/ola/thread/ConsumerThread.h
++++ b/include/ola/thread/ConsumerThread.h
+@@ -67,7 +67,8 @@ class ConsumerThread: public ola::thread::Thread {
+ 
+   void EmptyQueue();
+ 
+-  DISALLOW_COPY_AND_ASSIGN(ConsumerThread);
++  ConsumerThread(const ConsumerThread &) = delete;
++  const ConsumerThread &operator=(const ConsumerThread &) = delete;
+ };
+ }  // namespace thread
+ }  // namespace ola
+diff --git a/include/ola/thread/ExecutorThread.h b/include/ola/thread/ExecutorThread.h
+index 3875df420..04e9ba59d 100644
+--- a/include/ola/thread/ExecutorThread.h
++++ b/include/ola/thread/ExecutorThread.h
+@@ -106,7 +106,8 @@ class ExecutorThread : public ola::thread::ExecutorInterface {
+ 
+   void RunRemaining();
+ 
+-  DISALLOW_COPY_AND_ASSIGN(ExecutorThread);
++  ExecutorThread(const ExecutorThread &) = delete;
++  const ExecutorThread &operator=(const ExecutorThread &) = delete;
+ };
+ 
+ }  // namespace thread
+diff --git a/include/ola/thread/FuturePrivate.h b/include/ola/thread/FuturePrivate.h
+index e2f065fb9..be47ca4e7 100644
+--- a/include/ola/thread/FuturePrivate.h
++++ b/include/ola/thread/FuturePrivate.h
+@@ -89,7 +89,8 @@ class FutureImpl {
+   bool m_is_set;
+   T m_value;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(FutureImpl<T>);
++  FutureImpl(const FutureImpl &) = delete;
++  const FutureImpl &operator=(const FutureImpl &) = delete;
+ };
+ 
+ /**
+@@ -152,7 +153,8 @@ class FutureImpl<void> {
+   unsigned int m_ref_count;
+   bool m_is_set;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(FutureImpl<void>);
++  FutureImpl(const FutureImpl &) = delete;
++  const FutureImpl &operator=(const FutureImpl &) = delete;
+ };
+ 
+ }  // namespace thread
+diff --git a/include/ola/thread/Mutex.h b/include/ola/thread/Mutex.h
+index 9b0197e95..f482b3f43 100644
+--- a/include/ola/thread/Mutex.h
++++ b/include/ola/thread/Mutex.h
+@@ -52,7 +52,8 @@ class Mutex {
+  private:
+     pthread_mutex_t m_mutex;
+ 
+-    DISALLOW_COPY_AND_ASSIGN(Mutex);
++    Mutex(const Mutex &) = delete;
++  const Mutex &operator=(const Mutex &) = delete;
+ };
+ 
+ 
+@@ -71,7 +72,8 @@ class MutexLocker {
+     Mutex *m_mutex;
+     bool m_requires_unlock;
+ 
+-    DISALLOW_COPY_AND_ASSIGN(MutexLocker);
++    MutexLocker(const MutexLocker &) = delete;
++  const MutexLocker &operator=(const MutexLocker &) = delete;
+ };
+ 
+ 
+@@ -92,7 +94,8 @@ class ConditionVariable {
+  private:
+     pthread_cond_t m_condition;
+ 
+-    DISALLOW_COPY_AND_ASSIGN(ConditionVariable);
++    ConditionVariable(const ConditionVariable &) = delete;
++  const ConditionVariable &operator=(const ConditionVariable &) = delete;
+ };
+ }  // namespace thread
+ }  // namespace ola
+diff --git a/include/ola/thread/PeriodicThread.h b/include/ola/thread/PeriodicThread.h
+index a7f69cb4e..1a7d8c3e9 100644
+--- a/include/ola/thread/PeriodicThread.h
++++ b/include/ola/thread/PeriodicThread.h
+@@ -74,7 +74,8 @@ class PeriodicThread : private Thread {
+   ola::thread::Mutex m_mutex;
+   ola::thread::ConditionVariable m_condition;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(PeriodicThread);
++  PeriodicThread(const PeriodicThread &) = delete;
++  const PeriodicThread &operator=(const PeriodicThread &) = delete;
+ };
+ }  // namespace thread
+ }  // namespace ola
+diff --git a/include/ola/thread/SignalThread.h b/include/ola/thread/SignalThread.h
+index 8d81603c2..f16274dc6 100644
+--- a/include/ola/thread/SignalThread.h
++++ b/include/ola/thread/SignalThread.h
+@@ -67,7 +67,8 @@ class SignalThread : public ola::thread::Thread {
+     bool AddSignals(sigset_t *signals);
+     bool BlockSignal(int signal);
+ 
+-    DISALLOW_COPY_AND_ASSIGN(SignalThread);
++    SignalThread(const SignalThread &) = delete;
++  const SignalThread &operator=(const SignalThread &) = delete;
+ };
+ }  // namespace thread
+ }  // namespace ola
+diff --git a/include/ola/thread/Thread.h b/include/ola/thread/Thread.h
+index 5d1701811..5b35bf427 100644
+--- a/include/ola/thread/Thread.h
++++ b/include/ola/thread/Thread.h
+@@ -182,7 +182,8 @@ class Thread {
+   Mutex m_mutex;  // protects m_running
+   ConditionVariable m_condition;  // use to wait for the thread to start
+ 
+-  DISALLOW_COPY_AND_ASSIGN(Thread);
++  Thread(const Thread &) = delete;
++  const Thread &operator=(const Thread &) = delete;
+ };
+ }  // namespace thread
+ }  // namespace ola
+diff --git a/include/ola/thread/ThreadPool.h b/include/ola/thread/ThreadPool.h
+index 65f9bd3a5..69cf541ee 100644
+--- a/include/ola/thread/ThreadPool.h
++++ b/include/ola/thread/ThreadPool.h
+@@ -54,7 +54,8 @@ class ThreadPool {
+ 
+   void JoinAllThreads();
+ 
+-  DISALLOW_COPY_AND_ASSIGN(ThreadPool);
++  ThreadPool(const ThreadPool &) = delete;
++  const ThreadPool &operator=(const ThreadPool &) = delete;
+ };
+ }  // namespace thread
+ }  // namespace ola
+diff --git a/include/ola/web/Json.h b/include/ola/web/Json.h
+index 6de10993d..6557a891c 100644
+--- a/include/ola/web/Json.h
++++ b/include/ola/web/Json.h
+@@ -311,7 +311,8 @@ class JsonString: public JsonLeafValue {
+  private:
+   const std::string m_value;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JsonString);
++  JsonString(const JsonString &) = delete;
++  const JsonString &operator=(const JsonString &) = delete;
+ };
+ 
+ 
+@@ -435,7 +436,8 @@ class JsonUInt: public JsonNumber {
+  private:
+   const unsigned int m_value;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JsonUInt);
++  JsonUInt(const JsonUInt &) = delete;
++  const JsonUInt &operator=(const JsonUInt &) = delete;
+ };
+ 
+ 
+@@ -500,7 +502,8 @@ class JsonInt: public JsonNumber {
+  private:
+   const int m_value;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JsonInt);
++  JsonInt(const JsonInt &) = delete;
++  const JsonInt &operator=(const JsonInt &) = delete;
+ };
+ 
+ 
+@@ -567,7 +570,8 @@ class JsonUInt64: public JsonNumber {
+  private:
+   const uint64_t m_value;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JsonUInt64);
++  JsonUInt64(const JsonUInt64 &) = delete;
++  const JsonUInt64 &operator=(const JsonUInt64 &) = delete;
+ };
+ 
+ 
+@@ -634,7 +638,8 @@ class JsonInt64: public JsonNumber {
+  private:
+   const int64_t m_value;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JsonInt64);
++  JsonInt64(const JsonInt64 &) = delete;
++  const JsonInt64 &operator=(const JsonInt64 &) = delete;
+ };
+ 
+ 
+@@ -758,7 +763,8 @@ class JsonDouble: public JsonNumber {
+   double m_value;
+   std::string m_as_string;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JsonDouble);
++  JsonDouble(const JsonDouble &) = delete;
++  const JsonDouble &operator=(const JsonDouble &) = delete;
+ };
+ 
+ 
+@@ -801,7 +807,8 @@ class JsonBool: public JsonLeafValue {
+  private:
+   const bool m_value;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JsonBool);
++  JsonBool(const JsonBool &) = delete;
++  const JsonBool &operator=(const JsonBool &) = delete;
+ };
+ 
+ 
+@@ -832,7 +839,8 @@ class JsonNull: public JsonLeafValue {
+    * @endsection
+    */
+  private:
+-  DISALLOW_COPY_AND_ASSIGN(JsonNull);
++  JsonNull(const JsonNull &) = delete;
++  const JsonNull &operator=(const JsonNull &) = delete;
+ };
+ 
+ 
+@@ -874,7 +882,8 @@ class JsonRawValue: public JsonLeafValue {
+  private:
+   const std::string m_value;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JsonRawValue);
++  JsonRawValue(const JsonRawValue &) = delete;
++  const JsonRawValue &operator=(const JsonRawValue &) = delete;
+ };
+ 
+ 
+@@ -1022,7 +1031,8 @@ class JsonObject: public JsonValue {
+   typedef std::map<std::string, JsonValue*> MemberMap;
+   MemberMap m_members;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JsonObject);
++  JsonObject(const JsonObject &) = delete;
++  const JsonObject &operator=(const JsonObject &) = delete;
+ };
+ 
+ 
+@@ -1205,7 +1215,8 @@ class JsonArray: public JsonValue {
+   // true if this array contains a nested object or array
+   bool m_complex_type;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JsonArray);
++  JsonArray(const JsonArray &) = delete;
++  const JsonArray &operator=(const JsonArray &) = delete;
+ };
+ 
+ 
+diff --git a/include/ola/web/JsonParser.h b/include/ola/web/JsonParser.h
+index a7c0af139..9dd501482 100644
+--- a/include/ola/web/JsonParser.h
++++ b/include/ola/web/JsonParser.h
+@@ -120,7 +120,8 @@ class JsonParser : public JsonParserInterface {
+   std::stack<JsonObject*> m_object_stack;
+ 
+   void AddValue(JsonValue *value);
+-  DISALLOW_COPY_AND_ASSIGN(JsonParser);
++  JsonParser(const JsonParser &) = delete;
++  const JsonParser &operator=(const JsonParser &) = delete;
+ };
+ /**@}*/
+ }  // namespace web
+diff --git a/include/ola/web/JsonPatch.h b/include/ola/web/JsonPatch.h
+index 190859c1b..e603748a8 100644
+--- a/include/ola/web/JsonPatch.h
++++ b/include/ola/web/JsonPatch.h
+@@ -83,7 +83,8 @@ class JsonPatchAddOp : public JsonPatchOp {
+   JsonPointer m_pointer;
+   std::auto_ptr<const JsonValue> m_value;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JsonPatchAddOp);
++  JsonPatchAddOp(const JsonPatchAddOp &) = delete;
++  const JsonPatchAddOp &operator=(const JsonPatchAddOp &) = delete;
+ };
+ 
+ /**
+@@ -104,7 +105,8 @@ class JsonPatchRemoveOp : public JsonPatchOp {
+  private:
+   const JsonPointer m_pointer;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JsonPatchRemoveOp);
++  JsonPatchRemoveOp(const JsonPatchRemoveOp &) = delete;
++  const JsonPatchRemoveOp &operator=(const JsonPatchRemoveOp &) = delete;
+ };
+ 
+ /**
+@@ -128,7 +130,8 @@ class JsonPatchReplaceOp : public JsonPatchOp {
+   const JsonPointer m_pointer;
+   std::auto_ptr<const JsonValue> m_value;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JsonPatchReplaceOp);
++  JsonPatchReplaceOp(const JsonPatchReplaceOp &) = delete;
++  const JsonPatchReplaceOp &operator=(const JsonPatchReplaceOp &) = delete;
+ };
+ 
+ /**
+@@ -152,7 +155,8 @@ class JsonPatchMoveOp : public JsonPatchOp {
+   JsonPointer m_from;
+   JsonPointer m_to;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JsonPatchMoveOp);
++  JsonPatchMoveOp(const JsonPatchMoveOp &) = delete;
++  const JsonPatchMoveOp &operator=(const JsonPatchMoveOp &) = delete;
+ };
+ 
+ /**
+@@ -176,7 +180,8 @@ class JsonPatchCopyOp : public JsonPatchOp {
+   JsonPointer m_from;
+   JsonPointer m_to;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JsonPatchCopyOp);
++  JsonPatchCopyOp(const JsonPatchCopyOp &) = delete;
++  const JsonPatchCopyOp &operator=(const JsonPatchCopyOp &) = delete;
+ };
+ 
+ /**
+@@ -195,7 +200,8 @@ class JsonPatchTestOp : public JsonPatchOp {
+   JsonPointer m_pointer;
+   std::auto_ptr<const JsonValue> m_value;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JsonPatchTestOp);
++  JsonPatchTestOp(const JsonPatchTestOp &) = delete;
++  const JsonPatchTestOp &operator=(const JsonPatchTestOp &) = delete;
+ };
+ 
+ 
+diff --git a/include/ola/web/JsonPatchParser.h b/include/ola/web/JsonPatchParser.h
+index 60a720858..0f02218be 100644
+--- a/include/ola/web/JsonPatchParser.h
++++ b/include/ola/web/JsonPatchParser.h
+@@ -142,7 +142,8 @@ class JsonPatchParser : public JsonParserInterface {
+   static const char kCopyOp[];
+   static const char kTestOp[];
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JsonPatchParser);
++  JsonPatchParser(const JsonPatchParser &) = delete;
++  const JsonPatchParser &operator=(const JsonPatchParser &) = delete;
+ };
+ /**@}*/
+ }  // namespace web
+diff --git a/include/ola/web/JsonSchema.h b/include/ola/web/JsonSchema.h
+index bc009deee..fa2b8b6ba 100644
+--- a/include/ola/web/JsonSchema.h
++++ b/include/ola/web/JsonSchema.h
+@@ -318,7 +318,8 @@ class StringValidator : public BaseValidator {
+ 
+   void ExtendSchema(JsonObject *schema) const;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(StringValidator);
++  StringValidator(const StringValidator &) = delete;
++  const StringValidator &operator=(const StringValidator &) = delete;
+ };
+ 
+ /**
+@@ -331,7 +332,8 @@ class BoolValidator : public BaseValidator {
+   void Visit(const JsonBool &value) { m_is_valid = CheckEnums(value); }
+ 
+  private:
+-  DISALLOW_COPY_AND_ASSIGN(BoolValidator);
++  BoolValidator(const BoolValidator &) = delete;
++  const BoolValidator &operator=(const BoolValidator &) = delete;
+ };
+ 
+ /**
+@@ -344,7 +346,8 @@ class NullValidator : public BaseValidator {
+   void Visit(const JsonNull &value) { m_is_valid = CheckEnums(value); }
+ 
+  private:
+-  DISALLOW_COPY_AND_ASSIGN(NullValidator);
++  NullValidator(const NullValidator &) = delete;
++  const NullValidator &operator=(const NullValidator &) = delete;
+ };
+ 
+ /**
+@@ -497,7 +500,8 @@ class IntegerValidator : public BaseValidator {
+ 
+   void ExtendSchema(JsonObject *schema) const;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(IntegerValidator);
++  IntegerValidator(const IntegerValidator &) = delete;
++  const IntegerValidator &operator=(const IntegerValidator &) = delete;
+ };
+ 
+ 
+@@ -513,7 +517,8 @@ class NumberValidator : public IntegerValidator {
+   void Visit(const JsonDouble&);
+ 
+  private:
+-  DISALLOW_COPY_AND_ASSIGN(NumberValidator);
++  NumberValidator(const NumberValidator &) = delete;
++  const NumberValidator &operator=(const NumberValidator &) = delete;
+ };
+ 
+ /**
+@@ -614,7 +619,8 @@ class ObjectValidator : public BaseValidator, JsonObjectPropertyVisitor {
+ 
+   void ExtendSchema(JsonObject *schema) const;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(ObjectValidator);
++  ObjectValidator(const ObjectValidator &) = delete;
++  const ObjectValidator &operator=(const ObjectValidator &) = delete;
+ };
+ 
+ /**
+@@ -648,7 +654,8 @@ class ArrayValidator : public BaseValidator {
+     std::auto_ptr<ValidatorInterface> m_validator;
+     ValidatorList m_validator_list;
+ 
+-    DISALLOW_COPY_AND_ASSIGN(Items);
++    Items(const Items &) = delete;
++  const Items &operator=(const Items &) = delete;
+   };
+ 
+   /**
+@@ -673,7 +680,8 @@ class ArrayValidator : public BaseValidator {
+     bool m_allowed;
+     std::auto_ptr<ValidatorInterface> m_validator;
+ 
+-    DISALLOW_COPY_AND_ASSIGN(AdditionalItems);
++    AdditionalItems(const AdditionalItems &) = delete;
++  const AdditionalItems &operator=(const AdditionalItems &) = delete;
+   };
+ 
+   struct Options {
+@@ -736,13 +744,15 @@ class ArrayValidator : public BaseValidator {
+     template <typename T>
+     void ValidateItem(const T &item);
+ 
+-    DISALLOW_COPY_AND_ASSIGN(ArrayElementValidator);
++    ArrayElementValidator(const ArrayElementValidator &) = delete;
++  const ArrayElementValidator &operator=(const ArrayElementValidator &) = delete;
+   };
+ 
+   void ExtendSchema(JsonObject *schema) const;
+   ArrayElementValidator* ConstructElementValidator() const;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(ArrayValidator);
++  ArrayValidator(const ArrayValidator &) = delete;
++  const ArrayValidator &operator=(const ArrayValidator &) = delete;
+ };
+ 
+ 
+@@ -832,7 +842,8 @@ class AllOfValidator : public ConjunctionValidator {
+   void Validate(const JsonValue &value);
+ 
+  private:
+-  DISALLOW_COPY_AND_ASSIGN(AllOfValidator);
++  AllOfValidator(const AllOfValidator &) = delete;
++  const AllOfValidator &operator=(const AllOfValidator &) = delete;
+ };
+ 
+ /**
+@@ -854,7 +865,8 @@ class AnyOfValidator : public ConjunctionValidator {
+   void Validate(const JsonValue &value);
+ 
+  private:
+-  DISALLOW_COPY_AND_ASSIGN(AnyOfValidator);
++  AnyOfValidator(const AnyOfValidator &) = delete;
++  const AnyOfValidator &operator=(const AnyOfValidator &) = delete;
+ };
+ 
+ /**
+@@ -876,7 +888,8 @@ class OneOfValidator : public ConjunctionValidator {
+   void Validate(const JsonValue &value);
+ 
+  private:
+-  DISALLOW_COPY_AND_ASSIGN(OneOfValidator);
++  OneOfValidator(const OneOfValidator &) = delete;
++  const OneOfValidator &operator=(const OneOfValidator &) = delete;
+ };
+ 
+ /**
+@@ -940,7 +953,8 @@ class NotValidator : public BaseValidator {
+ 
+   void ExtendSchema(JsonObject *schema) const;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(NotValidator);
++  NotValidator(const NotValidator &) = delete;
++  const NotValidator &operator=(const NotValidator &) = delete;
+ };
+ 
+ class SchemaDefinitions {
+@@ -960,7 +974,8 @@ class SchemaDefinitions {
+ 
+   SchemaMap m_validators;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(SchemaDefinitions);
++  SchemaDefinitions(const SchemaDefinitions &) = delete;
++  const SchemaDefinitions &operator=(const SchemaDefinitions &) = delete;
+ };
+ 
+ 
+@@ -1002,7 +1017,8 @@ class JsonSchema {
+              ValidatorInterface *root_validator,
+              SchemaDefinitions *schema_defs);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JsonSchema);
++  JsonSchema(const JsonSchema &) = delete;
++  const JsonSchema &operator=(const JsonSchema &) = delete;
+ };
+ 
+ /**@}*/
+diff --git a/include/ola/web/OptionalItem.h b/include/ola/web/OptionalItem.h
+index 9495238f9..e30fda6ff 100644
+--- a/include/ola/web/OptionalItem.h
++++ b/include/ola/web/OptionalItem.h
+@@ -46,7 +46,8 @@ class OptionalItem {
+   bool m_is_set;
+   T m_value;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(OptionalItem);
++  OptionalItem(const OptionalItem &) = delete;
++  const OptionalItem &operator=(const OptionalItem &) = delete;
+ };
+ 
+ template <>
+diff --git a/include/olad/Device.h b/include/olad/Device.h
+index 9edc5b769..f3fc9a6cf 100644
+--- a/include/olad/Device.h
++++ b/include/olad/Device.h
+@@ -157,7 +157,8 @@ class Device: public AbstractDevice {
+   template <class PortClass>
+   void GenericDeletePort(PortClass *p);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(Device);
++  Device(const Device &) = delete;
++  const Device &operator=(const Device &) = delete;
+ };
+ }  // namespace ola
+ #endif  // INCLUDE_OLAD_DEVICE_H_
+diff --git a/include/olad/Plugin.h b/include/olad/Plugin.h
+index 623718a2c..c6d52ac35 100644
+--- a/include/olad/Plugin.h
++++ b/include/olad/Plugin.h
+@@ -165,7 +165,8 @@ class Plugin: public AbstractPlugin {
+  private:
+   bool m_enabled;  // are we running
+ 
+-  DISALLOW_COPY_AND_ASSIGN(Plugin);
++  Plugin(const Plugin &) = delete;
++  const Plugin &operator=(const Plugin &) = delete;
+ };
+ }  // namespace ola
+ 
+diff --git a/include/olad/PluginAdaptor.h b/include/olad/PluginAdaptor.h
+index 59afbab38..a4aaa4751 100644
+--- a/include/olad/PluginAdaptor.h
++++ b/include/olad/PluginAdaptor.h
+@@ -135,7 +135,8 @@ class PluginAdaptor: public ola::io::SelectServerInterface {
+   class PortBrokerInterface *m_port_broker;
+   const std::string *m_instance_name;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(PluginAdaptor);
++  PluginAdaptor(const PluginAdaptor &) = delete;
++  const PluginAdaptor &operator=(const PluginAdaptor &) = delete;
+ };
+ }  // namespace ola
+ #endif  // INCLUDE_OLAD_PLUGINADAPTOR_H_
+diff --git a/include/olad/Port.h b/include/olad/Port.h
+index f59751420..e6817bae4 100644
+--- a/include/olad/Port.h
++++ b/include/olad/Port.h
+@@ -272,7 +272,8 @@ class BasicInputPort: public InputPort {
+   const PluginAdaptor *m_plugin_adaptor;
+   bool m_supports_rdm;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(BasicInputPort);
++  BasicInputPort(const BasicInputPort &) = delete;
++  const BasicInputPort &operator=(const BasicInputPort &) = delete;
+ };
+ 
+ 
+@@ -359,7 +360,8 @@ class BasicOutputPort: public OutputPort {
+   AbstractDevice *m_device;
+   bool m_supports_rdm;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(BasicOutputPort);
++  BasicOutputPort(const BasicOutputPort &) = delete;
++  const BasicOutputPort &operator=(const BasicOutputPort &) = delete;
+ };
+ 
+ 
+diff --git a/include/olad/PortBroker.h b/include/olad/PortBroker.h
+index 0e260bf27..a516b8703 100644
+--- a/include/olad/PortBroker.h
++++ b/include/olad/PortBroker.h
+@@ -72,7 +72,8 @@ class PortBroker: public PortBrokerInterface {
+ 
+     std::set<port_key> m_ports;
+ 
+-    DISALLOW_COPY_AND_ASSIGN(PortBroker);
++    PortBroker(const PortBroker &) = delete;
++  const PortBroker &operator=(const PortBroker &) = delete;
+ };
+ }  // namespace ola
+ #endif  // INCLUDE_OLAD_PORTBROKER_H_
+diff --git a/include/olad/Preferences.h b/include/olad/Preferences.h
+index 9343a419a..a7266772f 100644
+--- a/include/olad/Preferences.h
++++ b/include/olad/Preferences.h
+@@ -137,7 +137,8 @@ class IPv4Validator: public Validator {
+  private:
+   bool m_empty_ok;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(IPv4Validator);
++  IPv4Validator(const IPv4Validator &) = delete;
++  const IPv4Validator &operator=(const IPv4Validator &) = delete;
+ };
+ 
+ 
+@@ -335,7 +336,8 @@ class Preferences {
+   std::string m_preference_name;
+ 
+  private:
+-  DISALLOW_COPY_AND_ASSIGN(Preferences);
++  Preferences(const Preferences &) = delete;
++  const Preferences &operator=(const Preferences &) = delete;
+ };
+ 
+ 
+diff --git a/include/olad/TokenBucket.h b/include/olad/TokenBucket.h
+index 10eed9dea..71fcff6a0 100644
+--- a/include/olad/TokenBucket.h
++++ b/include/olad/TokenBucket.h
+@@ -47,7 +47,8 @@ class TokenBucket {
+     unsigned int m_max;
+     TimeStamp m_last;
+ 
+-    DISALLOW_COPY_AND_ASSIGN(TokenBucket);
++    TokenBucket(const TokenBucket &) = delete;
++  const TokenBucket &operator=(const TokenBucket &) = delete;
+ };
+ }  // namespace ola
+ #endif  // INCLUDE_OLAD_TOKENBUCKET_H_
+diff --git a/include/olad/Universe.h b/include/olad/Universe.h
+index 27edba6ee..327483880 100644
+--- a/include/olad/Universe.h
++++ b/include/olad/Universe.h
+@@ -214,7 +214,8 @@ class Universe: public ola::rdm::RDMControllerInterface {
+     bool GenericContainsPort(PortClass *port,
+                              const std::vector<PortClass*> &ports) const;
+ 
+-    DISALLOW_COPY_AND_ASSIGN(Universe);
++    Universe(const Universe &) = delete;
++  const Universe &operator=(const Universe &) = delete;
+ };
+ }  // namespace ola
+ #endif  // INCLUDE_OLAD_UNIVERSE_H_
+diff --git a/libs/acn/E131Node.h b/libs/acn/E131Node.h
+index c8636f6c8..73c78a312 100644
+--- a/libs/acn/E131Node.h
++++ b/libs/acn/E131Node.h
+@@ -254,7 +254,8 @@ class E131Node {
+   static const uint16_t DISCOVERY_UNIVERSE_ID = 64214;
+   static const uint16_t DISCOVERY_PAGE_SIZE = 512;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(E131Node);
++  E131Node(const E131Node &) = delete;
++  const E131Node &operator=(const E131Node &) = delete;
+ };
+ }  // namespace acn
+ }  // namespace ola
+diff --git a/libs/acn/E131Sender.h b/libs/acn/E131Sender.h
+index 65d6fb24f..0381cb687 100644
+--- a/libs/acn/E131Sender.h
++++ b/libs/acn/E131Sender.h
+@@ -53,7 +53,8 @@ class E131Sender {
+   OutgoingUDPTransportImpl m_transport_impl;
+   class RootSender *m_root_sender;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(E131Sender);
++  E131Sender(const E131Sender &) = delete;
++  const E131Sender &operator=(const E131Sender &) = delete;
+ };
+ }  // namespace acn
+ }  // namespace ola
+diff --git a/libs/usb/HotplugAgent.h b/libs/usb/HotplugAgent.h
+index a3ff64715..9a035bf8e 100644
+--- a/libs/usb/HotplugAgent.h
++++ b/libs/usb/HotplugAgent.h
+@@ -153,7 +153,8 @@ class HotplugAgent {
+   bool HotplugSupported();
+   bool ScanUSBDevices();
+ 
+-  DISALLOW_COPY_AND_ASSIGN(HotplugAgent);
++  HotplugAgent(const HotplugAgent &) = delete;
++  const HotplugAgent &operator=(const HotplugAgent &) = delete;
+ };
+ }  // namespace usb
+ }  // namespace ola
+diff --git a/libs/usb/JaRulePortHandle.h b/libs/usb/JaRulePortHandle.h
+index bb59a175b..7023427b9 100644
+--- a/libs/usb/JaRulePortHandle.h
++++ b/libs/usb/JaRulePortHandle.h
+@@ -75,7 +75,8 @@ class JaRulePortHandle : public ola::rdm::DiscoverableRDMControllerInterface {
+ 
+   static const unsigned int RDM_QUEUE_SIZE = 50;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JaRulePortHandle);
++  JaRulePortHandle(const JaRulePortHandle &) = delete;
++  const JaRulePortHandle &operator=(const JaRulePortHandle &) = delete;
+ };
+ }  // namespace usb
+ }  // namespace ola
+diff --git a/libs/usb/JaRulePortHandleImpl.h b/libs/usb/JaRulePortHandleImpl.h
+index 09cb53518..261b5631d 100644
+--- a/libs/usb/JaRulePortHandleImpl.h
++++ b/libs/usb/JaRulePortHandleImpl.h
+@@ -145,7 +145,8 @@ class JaRulePortHandleImpl
+                          const ola::rdm::UIDSet &uids);
+   CommandClass GetCommandFromRequest(const ola::rdm::RDMRequest *request);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JaRulePortHandleImpl);
++  JaRulePortHandleImpl(const JaRulePortHandleImpl &) = delete;
++  const JaRulePortHandleImpl &operator=(const JaRulePortHandleImpl &) = delete;
+ };
+ }  // namespace usb
+ }  // namespace ola
+diff --git a/libs/usb/JaRuleWidget.h b/libs/usb/JaRuleWidget.h
+index cf5ba8648..634aec2ee 100644
+--- a/libs/usb/JaRuleWidget.h
++++ b/libs/usb/JaRuleWidget.h
+@@ -171,7 +171,8 @@ class JaRuleWidget {
+   static const uint8_t SUBCLASS_VALUE = 0xff;
+   static const uint8_t PROTOCOL_VALUE = 0xff;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JaRuleWidget);
++  JaRuleWidget(const JaRuleWidget &) = delete;
++  const JaRuleWidget &operator=(const JaRuleWidget &) = delete;
+ };
+ }  // namespace usb
+ }  // namespace ola
+diff --git a/libs/usb/JaRuleWidgetPort.h b/libs/usb/JaRuleWidgetPort.h
+index d86d2a5ff..12b80971c 100644
+--- a/libs/usb/JaRuleWidgetPort.h
++++ b/libs/usb/JaRuleWidgetPort.h
+@@ -192,7 +192,8 @@ class JaRuleWidgetPort {
+ 
+   static const unsigned int ENDPOINT_TIMEOUT_MS = 1000;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JaRuleWidgetPort);
++  JaRuleWidgetPort(const JaRuleWidgetPort &) = delete;
++  const JaRuleWidgetPort &operator=(const JaRuleWidgetPort &) = delete;
+ };
+ }  // namespace usb
+ }  // namespace ola
+diff --git a/libs/usb/LibUsbAdaptor.h b/libs/usb/LibUsbAdaptor.h
+index cf5cc000a..d3d355720 100644
+--- a/libs/usb/LibUsbAdaptor.h
++++ b/libs/usb/LibUsbAdaptor.h
+@@ -551,7 +551,8 @@ class SyncronousLibUsbAdaptor : public BaseLibUsbAdaptor {
+   void Close(libusb_device_handle *usb_handle);
+ 
+  private:
+-  DISALLOW_COPY_AND_ASSIGN(SyncronousLibUsbAdaptor);
++  SyncronousLibUsbAdaptor(const SyncronousLibUsbAdaptor &) = delete;
++  const SyncronousLibUsbAdaptor &operator=(const SyncronousLibUsbAdaptor &) = delete;
+ };
+ 
+ /**
+@@ -601,7 +602,8 @@ class AsyncronousLibUsbAdaptor : public BaseLibUsbAdaptor {
+  private:
+   class LibUsbThread *m_thread;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(AsyncronousLibUsbAdaptor);
++  AsyncronousLibUsbAdaptor(const AsyncronousLibUsbAdaptor &) = delete;
++  const AsyncronousLibUsbAdaptor &operator=(const AsyncronousLibUsbAdaptor &) = delete;
+ };
+ }  // namespace usb
+ }  // namespace ola
+diff --git a/libs/usb/LibUsbThread.h b/libs/usb/LibUsbThread.h
+index e6729a279..bc8f114ff 100644
+--- a/libs/usb/LibUsbThread.h
++++ b/libs/usb/LibUsbThread.h
+@@ -165,7 +165,8 @@ class LibUsbHotplugThread : public LibUsbThread {
+   libusb_hotplug_callback_fn m_callback_fn;
+   void *m_user_data;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(LibUsbHotplugThread);
++  LibUsbHotplugThread(const LibUsbHotplugThread &) = delete;
++  const LibUsbHotplugThread &operator=(const LibUsbHotplugThread &) = delete;
+ };
+ 
+ #endif  // HAVE_LIBUSB_HOTPLUG_API
+@@ -199,7 +200,8 @@ class LibUsbSimpleThread : public LibUsbThread {
+  private:
+   unsigned int m_device_count;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(LibUsbSimpleThread);
++  LibUsbSimpleThread(const LibUsbSimpleThread &) = delete;
++  const LibUsbSimpleThread &operator=(const LibUsbSimpleThread &) = delete;
+ };
+ }  // namespace usb
+ }  // namespace ola
+diff --git a/ola/OlaCallbackClient.h b/ola/OlaCallbackClient.h
+index 7bfa6854d..02c93d319 100644
+--- a/ola/OlaCallbackClient.h
++++ b/ola/OlaCallbackClient.h
+@@ -344,7 +344,8 @@ class OlaCallbackClient: public ola::rdm::RDMAPIImplInterface {
+         const ola::rdm::RDMResponse *response,
+         ola::rdm::ResponseStatus *new_status);
+ 
+-    DISALLOW_COPY_AND_ASSIGN(OlaCallbackClient);
++    OlaCallbackClient(const OlaCallbackClient &) = delete;
++  const OlaCallbackClient &operator=(const OlaCallbackClient &) = delete;
+ };
+ }  // namespace ola
+ #endif  // OLA_OLACALLBACKCLIENT_H_
+diff --git a/ola/OlaClientCore.h b/ola/OlaClientCore.h
+index 2e3d5d661..007203567 100644
+--- a/ola/OlaClientCore.h
++++ b/ola/OlaClientCore.h
+@@ -443,7 +443,8 @@ class OlaClientCore: public ola::proto::OlaClientService {
+ 
+   static const char NOT_CONNECTED_ERROR[];
+ 
+-  DISALLOW_COPY_AND_ASSIGN(OlaClientCore);
++  OlaClientCore(const OlaClientCore &) = delete;
++  const OlaClientCore &operator=(const OlaClientCore &) = delete;
+ };
+ 
+ }  // namespace client
+diff --git a/olad/AvahiDiscoveryAgent.h b/olad/AvahiDiscoveryAgent.h
+index 64e9bbad8..9f7528bdf 100644
+--- a/olad/AvahiDiscoveryAgent.h
++++ b/olad/AvahiDiscoveryAgent.h
+@@ -113,7 +113,8 @@ class AvahiDiscoveryAgent : public DiscoveryAgentInterface {
+   static std::string ClientStateToString(AvahiClientState state);
+   static std::string GroupStateToString(AvahiEntryGroupState state);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(AvahiDiscoveryAgent);
++  AvahiDiscoveryAgent(const AvahiDiscoveryAgent &) = delete;
++  const AvahiDiscoveryAgent &operator=(const AvahiDiscoveryAgent &) = delete;
+ };
+ }  // namespace ola
+ #endif  // OLAD_AVAHIDISCOVERYAGENT_H_
+diff --git a/olad/BonjourDiscoveryAgent.h b/olad/BonjourDiscoveryAgent.h
+index e31f6d090..986cfc889 100644
+--- a/olad/BonjourDiscoveryAgent.h
++++ b/olad/BonjourDiscoveryAgent.h
+@@ -80,7 +80,8 @@ class BonjourDiscoveryAgent : public DiscoveryAgentInterface {
+   void InternalRegisterService(RegisterArgs *args);
+   std::string BuildTxtRecord(const RegisterOptions::TxtData &txt_data);
+   void RunThread();
+-  DISALLOW_COPY_AND_ASSIGN(BonjourDiscoveryAgent);
++  BonjourDiscoveryAgent(const BonjourDiscoveryAgent &) = delete;
++  const BonjourDiscoveryAgent &operator=(const BonjourDiscoveryAgent &) = delete;
+ };
+ }  // namespace ola
+ #endif  // OLAD_BONJOURDISCOVERYAGENT_H_
+diff --git a/olad/ClientBroker.h b/olad/ClientBroker.h
+index a523ce24f..542043827 100644
+--- a/olad/ClientBroker.h
++++ b/olad/ClientBroker.h
+@@ -105,7 +105,8 @@ class ClientBroker {
+                          ola::rdm::RDMDiscoveryCallback *on_complete,
+                          const ola::rdm::UIDSet &uids);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(ClientBroker);
++  ClientBroker(const ClientBroker &) = delete;
++  const ClientBroker &operator=(const ClientBroker &) = delete;
+ };
+ }  // namespace ola
+ #endif  // OLAD_CLIENTBROKER_H_
+diff --git a/olad/DiscoveryAgent.h b/olad/DiscoveryAgent.h
+index d7510e43d..0647d617e 100644
+--- a/olad/DiscoveryAgent.h
++++ b/olad/DiscoveryAgent.h
+@@ -112,7 +112,8 @@ class DiscoveryAgentFactory {
+   DiscoveryAgentInterface* New();
+ 
+  private:
+-  DISALLOW_COPY_AND_ASSIGN(DiscoveryAgentFactory);
++  DiscoveryAgentFactory(const DiscoveryAgentFactory &) = delete;
++  const DiscoveryAgentFactory &operator=(const DiscoveryAgentFactory &) = delete;
+ };
+ }  // namespace ola
+ #endif  // OLAD_DISCOVERYAGENT_H_
+diff --git a/olad/DynamicPluginLoader.h b/olad/DynamicPluginLoader.h
+index a017e7ce1..71519b53b 100644
+--- a/olad/DynamicPluginLoader.h
++++ b/olad/DynamicPluginLoader.h
+@@ -44,7 +44,8 @@ class DynamicPluginLoader: public PluginLoader {
+ 
+   std::vector<class AbstractPlugin*> m_plugins;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(DynamicPluginLoader);
++  DynamicPluginLoader(const DynamicPluginLoader &) = delete;
++  const DynamicPluginLoader &operator=(const DynamicPluginLoader &) = delete;
+ };
+ }  // namespace ola
+ #endif  // OLAD_DYNAMICPLUGINLOADER_H_
+diff --git a/olad/HttpServerActions.h b/olad/HttpServerActions.h
+index 80c534c36..64a1fcbf7 100644
+--- a/olad/HttpServerActions.h
++++ b/olad/HttpServerActions.h
+@@ -56,7 +56,8 @@ class BaseHttpAction: public Action {
+     bool m_failed;
+     SingleUseCallback0<void> *m_on_done;
+ 
+-    DISALLOW_COPY_AND_ASSIGN(BaseHttpAction);
++    BaseHttpAction(const BaseHttpAction &) = delete;
++  const BaseHttpAction &operator=(const BaseHttpAction &) = delete;
+ };
+ 
+ 
+@@ -85,7 +86,8 @@ class SetNameAction: public BaseHttpAction {
+     std::string m_name;
+     bool m_is_fatal;
+ 
+-    DISALLOW_COPY_AND_ASSIGN(SetNameAction);
++    SetNameAction(const SetNameAction &) = delete;
++  const SetNameAction &operator=(const SetNameAction &) = delete;
+ };
+ 
+ 
+@@ -111,7 +113,8 @@ class SetMergeModeAction: public BaseHttpAction {
+     unsigned int m_universe;
+     client::OlaUniverse::merge_mode m_merge_mode;
+ 
+-    DISALLOW_COPY_AND_ASSIGN(SetMergeModeAction);
++    SetMergeModeAction(const SetMergeModeAction &) = delete;
++  const SetMergeModeAction &operator=(const SetMergeModeAction &) = delete;
+ };
+ 
+ 
+@@ -146,7 +149,8 @@ class PatchPortAction: public BaseHttpAction {
+     unsigned int m_universe;
+     client::PatchAction m_action;
+ 
+-    DISALLOW_COPY_AND_ASSIGN(PatchPortAction);
++    PatchPortAction(const PatchPortAction &) = delete;
++  const PatchPortAction &operator=(const PatchPortAction &) = delete;
+ };
+ 
+ 
+@@ -175,7 +179,8 @@ class PortPriorityInheritAction: public BaseHttpAction {
+     unsigned int m_port;
+     client::PortDirection m_direction;
+ 
+-    DISALLOW_COPY_AND_ASSIGN(PortPriorityInheritAction);
++    PortPriorityInheritAction(const PortPriorityInheritAction &) = delete;
++  const PortPriorityInheritAction &operator=(const PortPriorityInheritAction &) = delete;
+ };
+ 
+ 
+@@ -207,7 +212,8 @@ class PortPriorityStaticAction: public BaseHttpAction {
+     client::PortDirection m_direction;
+     uint8_t m_override_value;
+ 
+-    DISALLOW_COPY_AND_ASSIGN(PortPriorityStaticAction);
++    PortPriorityStaticAction(const PortPriorityStaticAction &) = delete;
++  const PortPriorityStaticAction &operator=(const PortPriorityStaticAction &) = delete;
+ };
+ }  // namespace ola
+ #endif  // OLAD_HTTPSERVERACTIONS_H_
+diff --git a/olad/OlaDaemon.h b/olad/OlaDaemon.h
+index 622d09fac..efa427486 100644
+--- a/olad/OlaDaemon.h
++++ b/olad/OlaDaemon.h
+@@ -106,7 +106,8 @@ class OlaDaemon {
+   static const char GID_KEY[];
+   static const char GROUP_NAME_KEY[];
+ 
+-  DISALLOW_COPY_AND_ASSIGN(OlaDaemon);
++  OlaDaemon(const OlaDaemon &) = delete;
++  const OlaDaemon &operator=(const OlaDaemon &) = delete;
+ };
+ }  // namespace ola
+ #endif  // OLAD_OLADAEMON_H_
+diff --git a/olad/OlaServer.h b/olad/OlaServer.h
+index 7858c437f..631d000ec 100644
+--- a/olad/OlaServer.h
++++ b/olad/OlaServer.h
+@@ -226,7 +226,8 @@ class OlaServer : public ola::rpc::RpcSessionHandlerInterface {
+   static const char UNIVERSE_PREFERENCES[];
+   static const unsigned int K_HOUSEKEEPING_TIMEOUT_MS;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(OlaServer);
++  OlaServer(const OlaServer &) = delete;
++  const OlaServer &operator=(const OlaServer &) = delete;
+ };
+ }  // namespace ola
+ #endif  // OLAD_OLASERVER_H_
+diff --git a/olad/OladHTTPServer.h b/olad/OladHTTPServer.h
+index 3a3266430..52ea05a97 100644
+--- a/olad/OladHTTPServer.h
++++ b/olad/OladHTTPServer.h
+@@ -201,7 +201,8 @@ class OladHTTPServer: public ola::http::OlaHTTPServer {
+   static const char K_PRIORITY_VALUE_SUFFIX[];
+   static const char K_PRIORITY_MODE_SUFFIX[];
+ 
+-  DISALLOW_COPY_AND_ASSIGN(OladHTTPServer);
++  OladHTTPServer(const OladHTTPServer &) = delete;
++  const OladHTTPServer &operator=(const OladHTTPServer &) = delete;
+ };
+ }  // namespace ola
+ #endif  // OLAD_OLADHTTPSERVER_H_
+diff --git a/olad/PluginLoader.h b/olad/PluginLoader.h
+index 8638f6451..b5c113556 100644
+--- a/olad/PluginLoader.h
++++ b/olad/PluginLoader.h
+@@ -62,7 +62,8 @@ class PluginLoader {
+   class PluginAdaptor *m_plugin_adaptor;
+ 
+  private:
+-  DISALLOW_COPY_AND_ASSIGN(PluginLoader);
++  PluginLoader(const PluginLoader &) = delete;
++  const PluginLoader &operator=(const PluginLoader &) = delete;
+ };
+ }  // namespace ola
+ #endif  // OLAD_PLUGINLOADER_H_
+diff --git a/olad/PluginManager.h b/olad/PluginManager.h
+index 876cb413a..10ab22be3 100644
+--- a/olad/PluginManager.h
++++ b/olad/PluginManager.h
+@@ -154,7 +154,8 @@ class PluginManager {
+   bool StartIfSafe(AbstractPlugin *plugin);
+   AbstractPlugin* CheckForRunningConflicts(const AbstractPlugin *plugin) const;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(PluginManager);
++  PluginManager(const PluginManager &) = delete;
++  const PluginManager &operator=(const PluginManager &) = delete;
+ };
+ }  // namespace ola
+ #endif  // OLAD_PLUGINMANAGER_H_
+diff --git a/olad/RDMHTTPModule.h b/olad/RDMHTTPModule.h
+index 6c139d37f..b59be89f9 100644
+--- a/olad/RDMHTTPModule.h
++++ b/olad/RDMHTTPModule.h
+@@ -696,7 +696,8 @@ class RDMHTTPModule {
+     static const char RESET_DEVICE_SECTION_NAME[];
+     static const char TILT_INVERT_SECTION_NAME[];
+ 
+-    DISALLOW_COPY_AND_ASSIGN(RDMHTTPModule);
++    RDMHTTPModule(const RDMHTTPModule &) = delete;
++  const RDMHTTPModule &operator=(const RDMHTTPModule &) = delete;
+ };
+ }  // namespace ola
+ #endif  // OLAD_RDMHTTPMODULE_H_
+diff --git a/olad/plugin_api/Client.h b/olad/plugin_api/Client.h
+index 5c1cddc52..a298deab7 100644
+--- a/olad/plugin_api/Client.h
++++ b/olad/plugin_api/Client.h
+@@ -103,7 +103,8 @@ class Client {
+   std::map<unsigned int, DmxSource> m_data_map;
+   ola::rdm::UID m_uid;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(Client);
++  Client(const Client &) = delete;
++  const Client &operator=(const Client &) = delete;
+ };
+ }  // namespace ola
+ #endif  // OLAD_PLUGIN_API_CLIENT_H_
+diff --git a/olad/plugin_api/DeviceManager.h b/olad/plugin_api/DeviceManager.h
+index 1252a4f45..4c51dd235 100644
+--- a/olad/plugin_api/DeviceManager.h
++++ b/olad/plugin_api/DeviceManager.h
+@@ -167,7 +167,8 @@ class DeviceManager {
+   static const char PRIORITY_VALUE_SUFFIX[];
+   static const char PRIORITY_MODE_SUFFIX[];
+ 
+-  DISALLOW_COPY_AND_ASSIGN(DeviceManager);
++  DeviceManager(const DeviceManager &) = delete;
++  const DeviceManager &operator=(const DeviceManager &) = delete;
+ };
+ }  // namespace ola
+ #endif  // OLAD_PLUGIN_API_DEVICEMANAGER_H_
+diff --git a/olad/plugin_api/PortManager.h b/olad/plugin_api/PortManager.h
+index 7eb81e4f8..ca4239558 100644
+--- a/olad/plugin_api/PortManager.h
++++ b/olad/plugin_api/PortManager.h
+@@ -136,7 +136,8 @@ class PortManager {
+   UniverseStore * const m_universe_store;
+   PortBroker *m_broker;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(PortManager);
++  PortManager(const PortManager &) = delete;
++  const PortManager &operator=(const PortManager &) = delete;
+ };
+ }  // namespace ola
+ #endif  // OLAD_PLUGIN_API_PORTMANAGER_H_
+diff --git a/olad/plugin_api/UniverseStore.h b/olad/plugin_api/UniverseStore.h
+index 553dcdfe8..56ff4c1ed 100644
+--- a/olad/plugin_api/UniverseStore.h
++++ b/olad/plugin_api/UniverseStore.h
+@@ -107,7 +107,8 @@ class UniverseStore {
+ 
+   static const unsigned int MINIMUM_RDM_DISCOVERY_INTERVAL;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(UniverseStore);
++  UniverseStore(const UniverseStore &) = delete;
++  const UniverseStore &operator=(const UniverseStore &) = delete;
+ };
+ }  // namespace ola
+ #endif  // OLAD_PLUGIN_API_UNIVERSESTORE_H_
+diff --git a/plugins/artnet/ArtNetNode.h b/plugins/artnet/ArtNetNode.h
+index ce5860a4f..6a9816c55 100644
+--- a/plugins/artnet/ArtNetNode.h
++++ b/plugins/artnet/ArtNetNode.h
+@@ -652,7 +652,8 @@ class ArtNetNodeImpl {
+   // How long to wait for a response to an RDM Request
+   static const unsigned int RDM_REQUEST_TIMEOUT_MS = 2000;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(ArtNetNodeImpl);
++  ArtNetNodeImpl(const ArtNetNodeImpl &) = delete;
++  const ArtNetNodeImpl &operator=(const ArtNetNodeImpl &) = delete;
+ };
+ 
+ 
+@@ -686,7 +687,8 @@ class ArtNetNodeImplRDMWrapper
+   ArtNetNodeImpl *m_impl;
+   uint8_t m_port_id;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(ArtNetNodeImplRDMWrapper);
++  ArtNetNodeImplRDMWrapper(const ArtNetNodeImplRDMWrapper &) = delete;
++  const ArtNetNodeImplRDMWrapper &operator=(const ArtNetNodeImplRDMWrapper &) = delete;
+ };
+ 
+ 
+@@ -854,7 +856,8 @@ class ArtNetNode {
+    */
+   bool CheckInputPortId(uint8_t port_id);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(ArtNetNode);
++  ArtNetNode(const ArtNetNode &) = delete;
++  const ArtNetNode &operator=(const ArtNetNode &) = delete;
+ };
+ }  // namespace artnet
+ }  // namespace plugin
+diff --git a/plugins/gpio/GPIODevice.h b/plugins/gpio/GPIODevice.h
+index 2358ff8da..1a729348b 100644
+--- a/plugins/gpio/GPIODevice.h
++++ b/plugins/gpio/GPIODevice.h
+@@ -53,7 +53,8 @@ class GPIODevice: public ola::Device {
+  private:
+   const GPIODriver::Options m_options;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(GPIODevice);
++  GPIODevice(const GPIODevice &) = delete;
++  const GPIODevice &operator=(const GPIODevice &) = delete;
+ };
+ }  // namespace gpio
+ }  // namespace plugin
+diff --git a/plugins/gpio/GPIODriver.h b/plugins/gpio/GPIODriver.h
+index 6906ad87a..566f4ab3a 100644
+--- a/plugins/gpio/GPIODriver.h
++++ b/plugins/gpio/GPIODriver.h
+@@ -127,7 +127,8 @@ class GPIODriver : private ola::thread::Thread {
+ 
+   static const char GPIO_BASE_DIR[];
+ 
+-  DISALLOW_COPY_AND_ASSIGN(GPIODriver);
++  GPIODriver(const GPIODriver &) = delete;
++  const GPIODriver &operator=(const GPIODriver &) = delete;
+ };
+ }  // namespace gpio
+ }  // namespace plugin
+diff --git a/plugins/gpio/GPIOPlugin.h b/plugins/gpio/GPIOPlugin.h
+index b66ea568e..fcc5ea1bc 100644
+--- a/plugins/gpio/GPIOPlugin.h
++++ b/plugins/gpio/GPIOPlugin.h
+@@ -61,7 +61,8 @@ class GPIOPlugin: public ola::Plugin {
+   static const char PLUGIN_NAME[];
+   static const char PLUGIN_PREFIX[];
+ 
+-  DISALLOW_COPY_AND_ASSIGN(GPIOPlugin);
++  GPIOPlugin(const GPIOPlugin &) = delete;
++  const GPIOPlugin &operator=(const GPIOPlugin &) = delete;
+ };
+ }  // namespace gpio
+ }  // namespace plugin
+diff --git a/plugins/gpio/GPIOPort.h b/plugins/gpio/GPIOPort.h
+index fc8e45dae..981f3e88a 100644
+--- a/plugins/gpio/GPIOPort.h
++++ b/plugins/gpio/GPIOPort.h
+@@ -62,7 +62,8 @@ class GPIOOutputPort: public BasicOutputPort {
+  private:
+   std::auto_ptr<GPIODriver> m_driver;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(GPIOOutputPort);
++  GPIOOutputPort(const GPIOOutputPort &) = delete;
++  const GPIOOutputPort &operator=(const GPIOOutputPort &) = delete;
+ };
+ }  // namespace gpio
+ }  // namespace plugin
+diff --git a/plugins/openpixelcontrol/OPCClient.h b/plugins/openpixelcontrol/OPCClient.h
+index 0d4dba8ce..e6d6cce5c 100644
+--- a/plugins/openpixelcontrol/OPCClient.h
++++ b/plugins/openpixelcontrol/OPCClient.h
+@@ -102,7 +102,8 @@ class OPCClient {
+   void NewData();
+   void SocketClosed();
+ 
+-  DISALLOW_COPY_AND_ASSIGN(OPCClient);
++  OPCClient(const OPCClient &) = delete;
++  const OPCClient &operator=(const OPCClient &) = delete;
+ };
+ }  // namespace openpixelcontrol
+ }  // namespace plugin
+diff --git a/plugins/openpixelcontrol/OPCDevice.h b/plugins/openpixelcontrol/OPCDevice.h
+index a1ff7509e..ba6cb25c0 100644
+--- a/plugins/openpixelcontrol/OPCDevice.h
++++ b/plugins/openpixelcontrol/OPCDevice.h
+@@ -63,7 +63,8 @@ class OPCServerDevice: public ola::Device {
+   const ola::network::IPV4SocketAddress m_listen_addr;
+   std::auto_ptr<class OPCServer> m_server;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(OPCServerDevice);
++  OPCServerDevice(const OPCServerDevice &) = delete;
++  const OPCServerDevice &operator=(const OPCServerDevice &) = delete;
+ };
+ 
+ class OPCClientDevice: public ola::Device {
+@@ -93,7 +94,8 @@ class OPCClientDevice: public ola::Device {
+   const ola::network::IPV4SocketAddress m_target;
+   std::auto_ptr<class OPCClient> m_client;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(OPCClientDevice);
++  OPCClientDevice(const OPCClientDevice &) = delete;
++  const OPCClientDevice &operator=(const OPCClientDevice &) = delete;
+ };
+ }  // namespace openpixelcontrol
+ }  // namespace plugin
+diff --git a/plugins/openpixelcontrol/OPCPort.h b/plugins/openpixelcontrol/OPCPort.h
+index 70156a1d4..9e89d37e6 100644
+--- a/plugins/openpixelcontrol/OPCPort.h
++++ b/plugins/openpixelcontrol/OPCPort.h
+@@ -62,7 +62,8 @@ class OPCInputPort: public BasicInputPort {
+ 
+   void NewData(uint8_t command, const uint8_t *data, unsigned int length);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(OPCInputPort);
++  OPCInputPort(const OPCInputPort &) = delete;
++  const OPCInputPort &operator=(const OPCInputPort &) = delete;
+ };
+ 
+ /**
+@@ -89,7 +90,8 @@ class OPCOutputPort: public BasicOutputPort {
+   class OPCClient* const m_client;
+   const uint8_t m_channel;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(OPCOutputPort);
++  OPCOutputPort(const OPCOutputPort &) = delete;
++  const OPCOutputPort &operator=(const OPCOutputPort &) = delete;
+ };
+ }  // namespace openpixelcontrol
+ }  // namespace plugin
+diff --git a/plugins/openpixelcontrol/OPCServer.h b/plugins/openpixelcontrol/OPCServer.h
+index 62984f04a..6db969128 100644
+--- a/plugins/openpixelcontrol/OPCServer.h
++++ b/plugins/openpixelcontrol/OPCServer.h
+@@ -120,7 +120,8 @@ class OPCServer {
+   void SocketReady(ola::network::TCPSocket *socket, RxState *rx_state);
+   void SocketClosed(ola::network::TCPSocket *socket);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(OPCServer);
++  OPCServer(const OPCServer &) = delete;
++  const OPCServer &operator=(const OPCServer &) = delete;
+ };
+ }  // namespace openpixelcontrol
+ }  // namespace plugin
+diff --git a/plugins/osc/OSCNode.cpp b/plugins/osc/OSCNode.cpp
+index d25d0d020..3fe1b32d2 100644
+--- a/plugins/osc/OSCNode.cpp
++++ b/plugins/osc/OSCNode.cpp
+@@ -49,7 +49,8 @@ class UnmanagedSocketDescriptor : public ola::io::UnmanagedFileDescriptor {
+     ioctlsocket(fd, FIONBIO, &mode);
+   }
+  private:
+-  DISALLOW_COPY_AND_ASSIGN(UnmanagedSocketDescriptor);
++  UnmanagedSocketDescriptor(const UnmanagedSocketDescriptor &) = delete;
++  const UnmanagedSocketDescriptor &operator=(const UnmanagedSocketDescriptor &) = delete;
+ };
+ #endif  // _WIN32
+ 
+diff --git a/plugins/shownet/ShowNetNode.h b/plugins/shownet/ShowNetNode.h
+index 17d33a7b4..36d7f0709 100644
+--- a/plugins/shownet/ShowNetNode.h
++++ b/plugins/shownet/ShowNetNode.h
+@@ -90,7 +90,8 @@ class ShowNetNode {
+     // off by 11.
+     static const uint16_t MAGIC_INDEX_OFFSET = 11;
+ 
+-    DISALLOW_COPY_AND_ASSIGN(ShowNetNode);
++    ShowNetNode(const ShowNetNode &) = delete;
++  const ShowNetNode &operator=(const ShowNetNode &) = delete;
+ };
+ }  // namespace shownet
+ }  // namespace plugin
+diff --git a/plugins/uartdmx/UartDmxDevice.h b/plugins/uartdmx/UartDmxDevice.h
+index b4efbb388..30ed3a11a 100644
+--- a/plugins/uartdmx/UartDmxDevice.h
++++ b/plugins/uartdmx/UartDmxDevice.h
+@@ -66,7 +66,8 @@ class UartDmxDevice : public Device {
+   static const unsigned int DEFAULT_BREAK;
+   static const char K_BREAK[];
+ 
+-  DISALLOW_COPY_AND_ASSIGN(UartDmxDevice);
++  UartDmxDevice(const UartDmxDevice &) = delete;
++  const UartDmxDevice &operator=(const UartDmxDevice &) = delete;
+ };
+ }  // namespace uartdmx
+ }  // namespace plugin
+diff --git a/plugins/uartdmx/UartDmxPlugin.h b/plugins/uartdmx/UartDmxPlugin.h
+index dedb3cc3a..9726f4571 100644
+--- a/plugins/uartdmx/UartDmxPlugin.h
++++ b/plugins/uartdmx/UartDmxPlugin.h
+@@ -65,7 +65,8 @@ class UartDmxPlugin : public Plugin {
+   static const char K_DEVICE[];
+   static const char DEFAULT_DEVICE[];
+ 
+-  DISALLOW_COPY_AND_ASSIGN(UartDmxPlugin);
++  UartDmxPlugin(const UartDmxPlugin &) = delete;
++  const UartDmxPlugin &operator=(const UartDmxPlugin &) = delete;
+ };
+ }  // namespace uartdmx
+ }  // namespace plugin
+diff --git a/plugins/uartdmx/UartDmxPort.h b/plugins/uartdmx/UartDmxPort.h
+index 0630f876b..c45ce1f4f 100644
+--- a/plugins/uartdmx/UartDmxPort.h
++++ b/plugins/uartdmx/UartDmxPort.h
+@@ -59,7 +59,8 @@ class UartDmxOutputPort : public ola::BasicOutputPort {
+   UartWidget *m_widget;
+   UartDmxThread m_thread;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(UartDmxOutputPort);
++  UartDmxOutputPort(const UartDmxOutputPort &) = delete;
++  const UartDmxOutputPort &operator=(const UartDmxOutputPort &) = delete;
+ };
+ }  // namespace uartdmx
+ }  // namespace plugin
+diff --git a/plugins/uartdmx/UartDmxThread.h b/plugins/uartdmx/UartDmxThread.h
+index cbd8d8f94..fcd53acab 100644
+--- a/plugins/uartdmx/UartDmxThread.h
++++ b/plugins/uartdmx/UartDmxThread.h
+@@ -54,7 +54,8 @@ class UartDmxThread : public ola::thread::Thread {
+ 
+   static const uint32_t DMX_MAB = 16;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(UartDmxThread);
++  UartDmxThread(const UartDmxThread &) = delete;
++  const UartDmxThread &operator=(const UartDmxThread &) = delete;
+ };
+ }  // namespace uartdmx
+ }  // namespace plugin
+diff --git a/plugins/uartdmx/UartWidget.h b/plugins/uartdmx/UartWidget.h
+index 81faf15fe..5d5a52f45 100644
+--- a/plugins/uartdmx/UartWidget.h
++++ b/plugins/uartdmx/UartWidget.h
+@@ -98,7 +98,8 @@ class UartWidget {
+    */
+   static const int FAILED_OPEN = -1;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(UartWidget);
++  UartWidget(const UartWidget &) = delete;
++  const UartWidget &operator=(const UartWidget &) = delete;
+ };
+ }  // namespace uartdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/AnymauDMX.cpp b/plugins/usbdmx/AnymauDMX.cpp
+index 240ce2f97..ccd164de5 100644
+--- a/plugins/usbdmx/AnymauDMX.cpp
++++ b/plugins/usbdmx/AnymauDMX.cpp
+@@ -155,7 +155,8 @@ class AnymaAsyncUsbSender : public AsyncUsbSender {
+  private:
+   uint8_t *m_control_setup_buffer;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(AnymaAsyncUsbSender);
++  AnymaAsyncUsbSender(const AnymaAsyncUsbSender &) = delete;
++  const AnymaAsyncUsbSender &operator=(const AnymaAsyncUsbSender &) = delete;
+ };
+ 
+ // AsynchronousAnymauDMX
+diff --git a/plugins/usbdmx/AnymauDMX.h b/plugins/usbdmx/AnymauDMX.h
+index 26bf8cc62..796f782cb 100644
+--- a/plugins/usbdmx/AnymauDMX.h
++++ b/plugins/usbdmx/AnymauDMX.h
+@@ -90,7 +90,8 @@ class SynchronousAnymauDMX: public AnymauDMX {
+  private:
+   std::auto_ptr<class AnymaThreadedSender> m_sender;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(SynchronousAnymauDMX);
++  SynchronousAnymauDMX(const SynchronousAnymauDMX &) = delete;
++  const SynchronousAnymauDMX &operator=(const SynchronousAnymauDMX &) = delete;
+ };
+ 
+ /**
+@@ -115,7 +116,8 @@ class AsynchronousAnymauDMX : public AnymauDMX {
+  private:
+   std::auto_ptr<class AnymaAsyncUsbSender> m_sender;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(AsynchronousAnymauDMX);
++  AsynchronousAnymauDMX(const AsynchronousAnymauDMX &) = delete;
++  const AsynchronousAnymauDMX &operator=(const AsynchronousAnymauDMX &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/AnymauDMXFactory.h b/plugins/usbdmx/AnymauDMXFactory.h
+index 86daea537..81fc3cc05 100644
+--- a/plugins/usbdmx/AnymauDMXFactory.h
++++ b/plugins/usbdmx/AnymauDMXFactory.h
+@@ -54,7 +54,8 @@ class AnymauDMXFactory : public BaseWidgetFactory<class AnymauDMX> {
+   static const uint16_t PRODUCT_ID;
+   static const uint16_t VENDOR_ID;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(AnymauDMXFactory);
++  AnymauDMXFactory(const AnymauDMXFactory &) = delete;
++  const AnymauDMXFactory &operator=(const AnymauDMXFactory &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/AsyncPluginImpl.h b/plugins/usbdmx/AsyncPluginImpl.h
+index 8c2ae0f4d..2389c0caa 100644
+--- a/plugins/usbdmx/AsyncPluginImpl.h
++++ b/plugins/usbdmx/AsyncPluginImpl.h
+@@ -110,7 +110,8 @@ class AsyncPluginImpl: public PluginImplInterface, public WidgetObserver {
+ 
+   void ShutdownDevice(Device *device, ola::thread::Future<void> *f);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(AsyncPluginImpl);
++  AsyncPluginImpl(const AsyncPluginImpl &) = delete;
++  const AsyncPluginImpl &operator=(const AsyncPluginImpl &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/AsyncUsbReceiver.h b/plugins/usbdmx/AsyncUsbReceiver.h
+index 18406dd08..fee1efe6f 100644
+--- a/plugins/usbdmx/AsyncUsbReceiver.h
++++ b/plugins/usbdmx/AsyncUsbReceiver.h
+@@ -129,7 +129,8 @@ class AsyncUsbReceiver: public AsyncUsbTransceiverBase {
+   DmxBuffer m_rx_buffer;  // GUARDED_BY(m_mutex);
+   std::auto_ptr<Callback0<void> > m_receive_callback;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(AsyncUsbReceiver);
++  AsyncUsbReceiver(const AsyncUsbReceiver &) = delete;
++  const AsyncUsbReceiver &operator=(const AsyncUsbReceiver &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/AsyncUsbSender.h b/plugins/usbdmx/AsyncUsbSender.h
+index 24a35b5ad..2f9ae6013 100644
+--- a/plugins/usbdmx/AsyncUsbSender.h
++++ b/plugins/usbdmx/AsyncUsbSender.h
+@@ -98,7 +98,8 @@ class AsyncUsbSender: public AsyncUsbTransceiverBase {
+   DmxBuffer m_tx_buffer;  // GUARDED_BY(m_mutex);
+   bool m_pending_tx;  // GUARDED_BY(m_mutex);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(AsyncUsbSender);
++  AsyncUsbSender(const AsyncUsbSender &) = delete;
++  const AsyncUsbSender &operator=(const AsyncUsbSender &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/AsyncUsbTransceiverBase.h b/plugins/usbdmx/AsyncUsbTransceiverBase.h
+index d1d943337..8e8c91157 100644
+--- a/plugins/usbdmx/AsyncUsbTransceiverBase.h
++++ b/plugins/usbdmx/AsyncUsbTransceiverBase.h
+@@ -140,7 +140,8 @@ class AsyncUsbTransceiverBase {
+   ola::thread::Mutex m_mutex;
+ 
+  private:
+-  DISALLOW_COPY_AND_ASSIGN(AsyncUsbTransceiverBase);
++  AsyncUsbTransceiverBase(const AsyncUsbTransceiverBase &) = delete;
++  const AsyncUsbTransceiverBase &operator=(const AsyncUsbTransceiverBase &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/DMXCProjectsNodleU1.cpp b/plugins/usbdmx/DMXCProjectsNodleU1.cpp
+index 15408668b..c68d21827 100644
+--- a/plugins/usbdmx/DMXCProjectsNodleU1.cpp
++++ b/plugins/usbdmx/DMXCProjectsNodleU1.cpp
+@@ -355,7 +355,8 @@ class DMXCProjectsNodleU1AsyncUsbReceiver : public AsyncUsbReceiver {
+   unsigned int m_mode;
+   uint8_t m_packet[DATABLOCK_SIZE];
+ 
+-  DISALLOW_COPY_AND_ASSIGN(DMXCProjectsNodleU1AsyncUsbReceiver);
++  DMXCProjectsNodleU1AsyncUsbReceiver(const DMXCProjectsNodleU1AsyncUsbReceiver &) = delete;
++  const DMXCProjectsNodleU1AsyncUsbReceiver &operator=(const DMXCProjectsNodleU1AsyncUsbReceiver &) = delete;
+ };
+ 
+ bool DMXCProjectsNodleU1AsyncUsbReceiver::PerformTransfer() {
+@@ -424,7 +425,8 @@ class DMXCProjectsNodleU1AsyncUsbSender : public AsyncUsbSender {
+     return (SubmitTransfer() == 0);
+   }
+ 
+-  DISALLOW_COPY_AND_ASSIGN(DMXCProjectsNodleU1AsyncUsbSender);
++  DMXCProjectsNodleU1AsyncUsbSender(const DMXCProjectsNodleU1AsyncUsbSender &) = delete;
++  const DMXCProjectsNodleU1AsyncUsbSender &operator=(const DMXCProjectsNodleU1AsyncUsbSender &) = delete;
+ };
+ 
+ bool DMXCProjectsNodleU1AsyncUsbSender::PerformTransfer(
+diff --git a/plugins/usbdmx/DMXCProjectsNodleU1.h b/plugins/usbdmx/DMXCProjectsNodleU1.h
+index dac59391f..ba4b09d5b 100644
+--- a/plugins/usbdmx/DMXCProjectsNodleU1.h
++++ b/plugins/usbdmx/DMXCProjectsNodleU1.h
+@@ -120,7 +120,8 @@ class SynchronousDMXCProjectsNodleU1: public DMXCProjectsNodleU1 {
+   std::auto_ptr<class DMXCProjectsNodleU1ThreadedSender> m_sender;
+   std::auto_ptr<class DMXCProjectsNodleU1ThreadedReceiver> m_receiver;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(SynchronousDMXCProjectsNodleU1);
++  SynchronousDMXCProjectsNodleU1(const SynchronousDMXCProjectsNodleU1 &) = delete;
++  const SynchronousDMXCProjectsNodleU1 &operator=(const SynchronousDMXCProjectsNodleU1 &) = delete;
+ };
+ 
+ /**
+@@ -154,7 +155,8 @@ class AsynchronousDMXCProjectsNodleU1 : public DMXCProjectsNodleU1 {
+   std::auto_ptr<class DMXCProjectsNodleU1AsyncUsbReceiver> m_receiver;
+   DmxBuffer m_buffer;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(AsynchronousDMXCProjectsNodleU1);
++  AsynchronousDMXCProjectsNodleU1(const AsynchronousDMXCProjectsNodleU1 &) = delete;
++  const AsynchronousDMXCProjectsNodleU1 &operator=(const AsynchronousDMXCProjectsNodleU1 &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/DMXCProjectsNodleU1Device.h b/plugins/usbdmx/DMXCProjectsNodleU1Device.h
+index 842644487..c188bc560 100644
+--- a/plugins/usbdmx/DMXCProjectsNodleU1Device.h
++++ b/plugins/usbdmx/DMXCProjectsNodleU1Device.h
+@@ -64,7 +64,8 @@ class DMXCProjectsNodleU1Device: public Device {
+   std::auto_ptr<class GenericOutputPort> m_out_port;
+   std::auto_ptr<class DMXCProjectsNodleU1InputPort> m_in_port;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(DMXCProjectsNodleU1Device);
++  DMXCProjectsNodleU1Device(const DMXCProjectsNodleU1Device &) = delete;
++  const DMXCProjectsNodleU1Device &operator=(const DMXCProjectsNodleU1Device &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/DMXCProjectsNodleU1Factory.h b/plugins/usbdmx/DMXCProjectsNodleU1Factory.h
+index 7df0b280a..1db9d32bd 100644
+--- a/plugins/usbdmx/DMXCProjectsNodleU1Factory.h
++++ b/plugins/usbdmx/DMXCProjectsNodleU1Factory.h
+@@ -60,7 +60,8 @@ class DMXCProjectsNodleU1Factory :
+   static const uint16_t VENDOR_ID;
+   static const uint16_t PRODUCT_ID;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(DMXCProjectsNodleU1Factory);
++  DMXCProjectsNodleU1Factory(const DMXCProjectsNodleU1Factory &) = delete;
++  const DMXCProjectsNodleU1Factory &operator=(const DMXCProjectsNodleU1Factory &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/DMXCProjectsNodleU1Port.h b/plugins/usbdmx/DMXCProjectsNodleU1Port.h
+index a370fe8f2..fa5922705 100644
+--- a/plugins/usbdmx/DMXCProjectsNodleU1Port.h
++++ b/plugins/usbdmx/DMXCProjectsNodleU1Port.h
+@@ -62,7 +62,8 @@ class DMXCProjectsNodleU1InputPort: public BasicInputPort {
+  private:
+   class DMXCProjectsNodleU1* const m_widget;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(DMXCProjectsNodleU1InputPort);
++  DMXCProjectsNodleU1InputPort(const DMXCProjectsNodleU1InputPort &) = delete;
++  const DMXCProjectsNodleU1InputPort &operator=(const DMXCProjectsNodleU1InputPort &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/EurolitePro.cpp b/plugins/usbdmx/EurolitePro.cpp
+index 31781ed1e..345e39527 100644
+--- a/plugins/usbdmx/EurolitePro.cpp
++++ b/plugins/usbdmx/EurolitePro.cpp
+@@ -223,7 +223,8 @@ class EuroliteProAsyncUsbSender : public AsyncUsbSender {
+  private:
+   uint8_t m_tx_frame[EUROLITE_PRO_FRAME_SIZE];
+ 
+-  DISALLOW_COPY_AND_ASSIGN(EuroliteProAsyncUsbSender);
++  EuroliteProAsyncUsbSender(const EuroliteProAsyncUsbSender &) = delete;
++  const EuroliteProAsyncUsbSender &operator=(const EuroliteProAsyncUsbSender &) = delete;
+ };
+ 
+ // AsynchronousEurolitePro
+diff --git a/plugins/usbdmx/EurolitePro.h b/plugins/usbdmx/EurolitePro.h
+index 8b8516cb9..79c4a32ea 100644
+--- a/plugins/usbdmx/EurolitePro.h
++++ b/plugins/usbdmx/EurolitePro.h
+@@ -90,7 +90,8 @@ class SynchronousEurolitePro: public EurolitePro {
+  private:
+   std::auto_ptr<class EuroliteProThreadedSender> m_sender;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(SynchronousEurolitePro);
++  SynchronousEurolitePro(const SynchronousEurolitePro &) = delete;
++  const SynchronousEurolitePro &operator=(const SynchronousEurolitePro &) = delete;
+ };
+ 
+ /**
+@@ -115,7 +116,8 @@ class AsynchronousEurolitePro: public EurolitePro {
+  private:
+   std::auto_ptr<class EuroliteProAsyncUsbSender> m_sender;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(AsynchronousEurolitePro);
++  AsynchronousEurolitePro(const AsynchronousEurolitePro &) = delete;
++  const AsynchronousEurolitePro &operator=(const AsynchronousEurolitePro &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/EuroliteProFactory.h b/plugins/usbdmx/EuroliteProFactory.h
+index 7817a01cf..3d71fe6ce 100644
+--- a/plugins/usbdmx/EuroliteProFactory.h
++++ b/plugins/usbdmx/EuroliteProFactory.h
+@@ -52,7 +52,8 @@ class EuroliteProFactory : public BaseWidgetFactory<class EurolitePro> {
+   static const char EXPECTED_PRODUCT[];
+ 
+ 
+-  DISALLOW_COPY_AND_ASSIGN(EuroliteProFactory);
++  EuroliteProFactory(const EuroliteProFactory &) = delete;
++  const EuroliteProFactory &operator=(const EuroliteProFactory &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/GenericDevice.h b/plugins/usbdmx/GenericDevice.h
+index 6a4ac11a0..912903074 100644
+--- a/plugins/usbdmx/GenericDevice.h
++++ b/plugins/usbdmx/GenericDevice.h
+@@ -60,7 +60,8 @@ class GenericDevice: public Device {
+   const std::string m_device_id;
+   std::auto_ptr<class GenericOutputPort> m_port;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(GenericDevice);
++  GenericDevice(const GenericDevice &) = delete;
++  const GenericDevice &operator=(const GenericDevice &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/GenericOutputPort.h b/plugins/usbdmx/GenericOutputPort.h
+index 8cdc03b42..dc9e7f6d9 100644
+--- a/plugins/usbdmx/GenericOutputPort.h
++++ b/plugins/usbdmx/GenericOutputPort.h
+@@ -56,7 +56,8 @@ class GenericOutputPort: public BasicOutputPort {
+  private:
+   class WidgetInterface* const m_widget;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(GenericOutputPort);
++  GenericOutputPort(const GenericOutputPort &) = delete;
++  const GenericOutputPort &operator=(const GenericOutputPort &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/JaRuleDevice.h b/plugins/usbdmx/JaRuleDevice.h
+index c2cc4af0d..d2d3b0bf6 100644
+--- a/plugins/usbdmx/JaRuleDevice.h
++++ b/plugins/usbdmx/JaRuleDevice.h
+@@ -60,7 +60,8 @@ class JaRuleDevice: public Device {
+   ola::usb::JaRuleWidget *m_widget;  // not owned
+   const std::string m_device_id;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JaRuleDevice);
++  JaRuleDevice(const JaRuleDevice &) = delete;
++  const JaRuleDevice &operator=(const JaRuleDevice &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/JaRuleFactory.h b/plugins/usbdmx/JaRuleFactory.h
+index feaa161f7..9755bb144 100644
+--- a/plugins/usbdmx/JaRuleFactory.h
++++ b/plugins/usbdmx/JaRuleFactory.h
+@@ -58,7 +58,8 @@ class JaRuleFactory : public BaseWidgetFactory<ola::usb::JaRuleWidget> {
+   static const uint16_t PRODUCT_ID;
+   static const uint16_t VENDOR_ID;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JaRuleFactory);
++  JaRuleFactory(const JaRuleFactory &) = delete;
++  const JaRuleFactory &operator=(const JaRuleFactory &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/JaRuleOutputPort.h b/plugins/usbdmx/JaRuleOutputPort.h
+index d0f1d2424..2c771b6bc 100644
+--- a/plugins/usbdmx/JaRuleOutputPort.h
++++ b/plugins/usbdmx/JaRuleOutputPort.h
+@@ -79,7 +79,8 @@ class JaRuleOutputPort: public BasicOutputPort {
+   ola::usb::JaRuleWidget *m_widget;  // not owned
+   ola::usb::JaRulePortHandle *m_port_handle;  // not owned
+ 
+-  DISALLOW_COPY_AND_ASSIGN(JaRuleOutputPort);
++  JaRuleOutputPort(const JaRuleOutputPort &) = delete;
++  const JaRuleOutputPort &operator=(const JaRuleOutputPort &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/ScanlimeFadecandy.cpp b/plugins/usbdmx/ScanlimeFadecandy.cpp
+index 375539cba..250bd4111 100644
+--- a/plugins/usbdmx/ScanlimeFadecandy.cpp
++++ b/plugins/usbdmx/ScanlimeFadecandy.cpp
+@@ -295,7 +295,8 @@ class FadecandyAsyncUsbSender : public AsyncUsbSender {
+  private:
+   fadecandy_packet m_data_packets[PACKETS_PER_UPDATE];
+ 
+-  DISALLOW_COPY_AND_ASSIGN(FadecandyAsyncUsbSender);
++  FadecandyAsyncUsbSender(const FadecandyAsyncUsbSender &) = delete;
++  const FadecandyAsyncUsbSender &operator=(const FadecandyAsyncUsbSender &) = delete;
+ };
+ 
+ libusb_device_handle* FadecandyAsyncUsbSender::SetupHandle() {
+diff --git a/plugins/usbdmx/ScanlimeFadecandy.h b/plugins/usbdmx/ScanlimeFadecandy.h
+index b88deada4..77ef9f465 100644
+--- a/plugins/usbdmx/ScanlimeFadecandy.h
++++ b/plugins/usbdmx/ScanlimeFadecandy.h
+@@ -91,7 +91,8 @@ class SynchronousScanlimeFadecandy: public ScanlimeFadecandy {
+  private:
+   std::auto_ptr<class FadecandyThreadedSender> m_sender;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(SynchronousScanlimeFadecandy);
++  SynchronousScanlimeFadecandy(const SynchronousScanlimeFadecandy &) = delete;
++  const SynchronousScanlimeFadecandy &operator=(const SynchronousScanlimeFadecandy &) = delete;
+ };
+ 
+ /**
+@@ -116,7 +117,8 @@ class AsynchronousScanlimeFadecandy : public ScanlimeFadecandy {
+  private:
+   std::auto_ptr<class FadecandyAsyncUsbSender> m_sender;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(AsynchronousScanlimeFadecandy);
++  AsynchronousScanlimeFadecandy(const AsynchronousScanlimeFadecandy &) = delete;
++  const AsynchronousScanlimeFadecandy &operator=(const AsynchronousScanlimeFadecandy &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/ScanlimeFadecandyFactory.h b/plugins/usbdmx/ScanlimeFadecandyFactory.h
+index 7217b0ee0..8189b9681 100644
+--- a/plugins/usbdmx/ScanlimeFadecandyFactory.h
++++ b/plugins/usbdmx/ScanlimeFadecandyFactory.h
+@@ -55,7 +55,8 @@ class ScanlimeFadecandyFactory
+   static const uint16_t PRODUCT_ID;
+   static const uint16_t VENDOR_ID;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(ScanlimeFadecandyFactory);
++  ScanlimeFadecandyFactory(const ScanlimeFadecandyFactory &) = delete;
++  const ScanlimeFadecandyFactory &operator=(const ScanlimeFadecandyFactory &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/Sunlite.cpp b/plugins/usbdmx/Sunlite.cpp
+index 621ef4462..7cd3a491a 100644
+--- a/plugins/usbdmx/Sunlite.cpp
++++ b/plugins/usbdmx/Sunlite.cpp
+@@ -192,7 +192,8 @@ class SunliteAsyncUsbSender : public AsyncUsbSender {
+  private:
+   uint8_t m_packet[SUNLITE_PACKET_SIZE];
+ 
+-  DISALLOW_COPY_AND_ASSIGN(SunliteAsyncUsbSender);
++  SunliteAsyncUsbSender(const SunliteAsyncUsbSender &) = delete;
++  const SunliteAsyncUsbSender &operator=(const SunliteAsyncUsbSender &) = delete;
+ };
+ 
+ // AsynchronousSunlite
+diff --git a/plugins/usbdmx/Sunlite.h b/plugins/usbdmx/Sunlite.h
+index 1db1461d6..74e8e80a7 100644
+--- a/plugins/usbdmx/Sunlite.h
++++ b/plugins/usbdmx/Sunlite.h
+@@ -68,7 +68,8 @@ class SynchronousSunlite: public Sunlite {
+  private:
+   std::auto_ptr<class SunliteThreadedSender> m_sender;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(SynchronousSunlite);
++  SynchronousSunlite(const SynchronousSunlite &) = delete;
++  const SynchronousSunlite &operator=(const SynchronousSunlite &) = delete;
+ };
+ 
+ /**
+@@ -91,7 +92,8 @@ class AsynchronousSunlite: public Sunlite {
+  private:
+   std::auto_ptr<class SunliteAsyncUsbSender> m_sender;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(AsynchronousSunlite);
++  AsynchronousSunlite(const AsynchronousSunlite &) = delete;
++  const AsynchronousSunlite &operator=(const AsynchronousSunlite &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/SunliteFactory.h b/plugins/usbdmx/SunliteFactory.h
+index a30b4b0a3..07f992ac5 100644
+--- a/plugins/usbdmx/SunliteFactory.h
++++ b/plugins/usbdmx/SunliteFactory.h
+@@ -53,7 +53,8 @@ class SunliteFactory : public BaseWidgetFactory<Sunlite> {
+   static const uint16_t FULL_PRODUCT_ID;
+   static const uint16_t VENDOR_ID;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(SunliteFactory);
++  SunliteFactory(const SunliteFactory &) = delete;
++  const SunliteFactory &operator=(const SunliteFactory &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/SunliteFirmwareLoader.h b/plugins/usbdmx/SunliteFirmwareLoader.h
+index c16f59181..1df7ea2d2 100644
+--- a/plugins/usbdmx/SunliteFirmwareLoader.h
++++ b/plugins/usbdmx/SunliteFirmwareLoader.h
+@@ -48,7 +48,8 @@ class SunliteFirmwareLoader: public FirmwareLoader {
+   static const uint8_t UPLOAD_REQUEST = 0xa0;
+   static const unsigned int UPLOAD_TIMEOUT = 300;  // ms
+ 
+-  DISALLOW_COPY_AND_ASSIGN(SunliteFirmwareLoader);
++  SunliteFirmwareLoader(const SunliteFirmwareLoader &) = delete;
++  const SunliteFirmwareLoader &operator=(const SunliteFirmwareLoader &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/SyncPluginImpl.h b/plugins/usbdmx/SyncPluginImpl.h
+index 7d53fb313..6b777c2d5 100644
+--- a/plugins/usbdmx/SyncPluginImpl.h
++++ b/plugins/usbdmx/SyncPluginImpl.h
+@@ -109,7 +109,8 @@ class SyncPluginImpl: public PluginImplInterface,  public WidgetObserver {
+ 
+   bool StartAndRegisterDevice(class WidgetInterface *widget, Device *device);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(SyncPluginImpl);
++  SyncPluginImpl(const SyncPluginImpl &) = delete;
++  const SyncPluginImpl &operator=(const SyncPluginImpl &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/SyncronizedWidgetObserver.h b/plugins/usbdmx/SyncronizedWidgetObserver.h
+index cc269c216..d4cd7e934 100644
+--- a/plugins/usbdmx/SyncronizedWidgetObserver.h
++++ b/plugins/usbdmx/SyncronizedWidgetObserver.h
+@@ -88,7 +88,8 @@ class SyncronizedWidgetObserver : public WidgetObserver {
+   template<typename WidgetClass>
+   void HandleNewWidget(WidgetClass *widget, AddFuture *f);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(SyncronizedWidgetObserver);
++  SyncronizedWidgetObserver(const SyncronizedWidgetObserver &) = delete;
++  const SyncronizedWidgetObserver &operator=(const SyncronizedWidgetObserver &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/ThreadedUsbReceiver.h b/plugins/usbdmx/ThreadedUsbReceiver.h
+index 3e18064ad..8d6bcb5d3 100644
+--- a/plugins/usbdmx/ThreadedUsbReceiver.h
++++ b/plugins/usbdmx/ThreadedUsbReceiver.h
+@@ -116,7 +116,8 @@ class ThreadedUsbReceiver: private ola::thread::Thread {
+   ola::thread::Mutex m_data_mutex;
+   ola::thread::Mutex m_term_mutex;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(ThreadedUsbReceiver);
++  ThreadedUsbReceiver(const ThreadedUsbReceiver &) = delete;
++  const ThreadedUsbReceiver &operator=(const ThreadedUsbReceiver &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/ThreadedUsbSender.h b/plugins/usbdmx/ThreadedUsbSender.h
+index 071bea920..0bdfb1c00 100644
+--- a/plugins/usbdmx/ThreadedUsbSender.h
++++ b/plugins/usbdmx/ThreadedUsbSender.h
+@@ -98,7 +98,8 @@ class ThreadedUsbSender: private ola::thread::Thread {
+   ola::thread::Mutex m_data_mutex;
+   ola::thread::Mutex m_term_mutex;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(ThreadedUsbSender);
++  ThreadedUsbSender(const ThreadedUsbSender &) = delete;
++  const ThreadedUsbSender &operator=(const ThreadedUsbSender &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/UsbDmxPlugin.h b/plugins/usbdmx/UsbDmxPlugin.h
+index 5360c9af1..10dc0048e 100644
+--- a/plugins/usbdmx/UsbDmxPlugin.h
++++ b/plugins/usbdmx/UsbDmxPlugin.h
+@@ -69,7 +69,8 @@ class UsbDmxPlugin: public ola::Plugin {
+   static int LIBUSB_DEFAULT_DEBUG_LEVEL;
+   static int LIBUSB_MAX_DEBUG_LEVEL;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(UsbDmxPlugin);
++  UsbDmxPlugin(const UsbDmxPlugin &) = delete;
++  const UsbDmxPlugin &operator=(const UsbDmxPlugin &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/VellemanK8062.cpp b/plugins/usbdmx/VellemanK8062.cpp
+index 72c8f4942..d92fad51a 100644
+--- a/plugins/usbdmx/VellemanK8062.cpp
++++ b/plugins/usbdmx/VellemanK8062.cpp
+@@ -376,7 +376,8 @@ class VellemanAsyncUsbSender : public AsyncUsbSender {
+     return (SubmitTransfer() == 0);
+   }
+ 
+-  DISALLOW_COPY_AND_ASSIGN(VellemanAsyncUsbSender);
++  VellemanAsyncUsbSender(const VellemanAsyncUsbSender &) = delete;
++  const VellemanAsyncUsbSender &operator=(const VellemanAsyncUsbSender &) = delete;
+ };
+ 
+ bool VellemanAsyncUsbSender::PerformTransfer(const DmxBuffer &buffer) {
+diff --git a/plugins/usbdmx/VellemanK8062.h b/plugins/usbdmx/VellemanK8062.h
+index c20be290c..851780e10 100644
+--- a/plugins/usbdmx/VellemanK8062.h
++++ b/plugins/usbdmx/VellemanK8062.h
+@@ -68,7 +68,8 @@ class SynchronousVellemanK8062: public VellemanK8062 {
+  private:
+   std::auto_ptr<class VellemanThreadedSender> m_sender;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(SynchronousVellemanK8062);
++  SynchronousVellemanK8062(const SynchronousVellemanK8062 &) = delete;
++  const SynchronousVellemanK8062 &operator=(const SynchronousVellemanK8062 &) = delete;
+ };
+ 
+ /**
+@@ -91,7 +92,8 @@ class AsynchronousVellemanK8062 : public VellemanK8062 {
+  private:
+   std::auto_ptr<class VellemanAsyncUsbSender> m_sender;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(AsynchronousVellemanK8062);
++  AsynchronousVellemanK8062(const AsynchronousVellemanK8062 &) = delete;
++  const AsynchronousVellemanK8062 &operator=(const AsynchronousVellemanK8062 &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/VellemanK8062Factory.h b/plugins/usbdmx/VellemanK8062Factory.h
+index d5b85b695..6c09d8ee9 100644
+--- a/plugins/usbdmx/VellemanK8062Factory.h
++++ b/plugins/usbdmx/VellemanK8062Factory.h
+@@ -50,7 +50,8 @@ class VellemanK8062Factory : public BaseWidgetFactory<class VellemanK8062> {
+   static const uint16_t VENDOR_ID;
+   static const uint16_t PRODUCT_ID;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(VellemanK8062Factory);
++  VellemanK8062Factory(const VellemanK8062Factory &) = delete;
++  const VellemanK8062Factory &operator=(const VellemanK8062Factory &) = delete;
+ };
+ }  // namespace usbdmx
+ }  // namespace plugin
+diff --git a/plugins/usbdmx/WidgetFactory.h b/plugins/usbdmx/WidgetFactory.h
+index fc65600f3..94c3ccdc7 100644
+--- a/plugins/usbdmx/WidgetFactory.h
++++ b/plugins/usbdmx/WidgetFactory.h
+@@ -172,7 +172,8 @@ class BaseWidgetFactory : public WidgetFactory {
+  private:
+   const std::string m_name;
+ 
+-  DISALLOW_COPY_AND_ASSIGN(BaseWidgetFactory<WidgetType>);
++  BaseWidgetFactory(const BaseWidgetFactory &) = delete;
++  const BaseWidgetFactory &operator=(const BaseWidgetFactory &) = delete;
+ };
+ 
+ template <typename WidgetType>
+diff --git a/tools/e133/basic-controller.cpp b/tools/e133/basic-controller.cpp
+index 4df2ddcfb..0ed09919c 100644
+--- a/tools/e133/basic-controller.cpp
++++ b/tools/e133/basic-controller.cpp
+@@ -92,7 +92,8 @@ class DeviceState {
+   auto_ptr<IncomingTCPTransport> in_transport;
+ 
+  private:
+-  DISALLOW_COPY_AND_ASSIGN(DeviceState);
++  DeviceState(const DeviceState &) = delete;
++  const DeviceState &operator=(const DeviceState &) = delete;
+ };
+ 
+ /**
+@@ -142,7 +143,8 @@ class SimpleE133Controller {
+ 
+   void SocketClosed(IPV4SocketAddress peer);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(SimpleE133Controller);
++  SimpleE133Controller(const SimpleE133Controller &) = delete;
++  const SimpleE133Controller &operator=(const SimpleE133Controller &) = delete;
+ };
+ 
+ SimpleE133Controller::SimpleE133Controller(const Options &options)
+diff --git a/tools/e133/basic-device.cpp b/tools/e133/basic-device.cpp
+index bdc87afc2..9b4a65e2a 100644
+--- a/tools/e133/basic-device.cpp
++++ b/tools/e133/basic-device.cpp
+@@ -106,7 +106,8 @@ class SimpleE133Device {
+   void SocketUnhealthy(IPV4Address ip_address);
+   void SocketClosed();
+ 
+-  DISALLOW_COPY_AND_ASSIGN(SimpleE133Device);
++  SimpleE133Device(const SimpleE133Device &) = delete;
++  const SimpleE133Device &operator=(const SimpleE133Device &) = delete;
+ };
+ 
+ 
+diff --git a/tools/ja-rule/USBDeviceManager.h b/tools/ja-rule/USBDeviceManager.h
+index b26613de8..e97e647ff 100644
+--- a/tools/ja-rule/USBDeviceManager.h
++++ b/tools/ja-rule/USBDeviceManager.h
+@@ -121,7 +121,8 @@ class USBDeviceManager {
+   void WidgetEvent(EventType event, ola::usb::JaRuleWidget* widget,
+                    ola::thread::Future<void>* f);
+ 
+-  DISALLOW_COPY_AND_ASSIGN(USBDeviceManager);
++  USBDeviceManager(const USBDeviceManager &) = delete;
++  const USBDeviceManager &operator=(const USBDeviceManager &) = delete;
+ };
+ 
+ #endif  // TOOLS_JA_RULE_USBDEVICEMANAGER_H_
+diff --git a/tools/ja-rule/ja-rule-controller.cpp b/tools/ja-rule/ja-rule-controller.cpp
+index 27b184b1b..26c31d23c 100644
+--- a/tools/ja-rule/ja-rule-controller.cpp
++++ b/tools/ja-rule/ja-rule-controller.cpp
+@@ -223,7 +223,8 @@ class Controller {
+     cout << "-------------------------" << endl;
+   }
+ 
+-  DISALLOW_COPY_AND_ASSIGN(Controller);
++  Controller(const Controller &) = delete;
++  const Controller &operator=(const Controller &) = delete;
+ };
+ 
+ /*
+diff --git a/tools/ja-rule/ja-rule.cpp b/tools/ja-rule/ja-rule.cpp
+index be24172ee..f6c68d50e 100644
+--- a/tools/ja-rule/ja-rule.cpp
++++ b/tools/ja-rule/ja-rule.cpp
+@@ -814,7 +814,8 @@ class Controller {
+     return str.str();
+   }
+ 
+-  DISALLOW_COPY_AND_ASSIGN(Controller);
++  Controller(const Controller &) = delete;
++  const Controller &operator=(const Controller &) = delete;
+ };
+ 
+ void ParseUID(const string &uid_str, UID *uid) {

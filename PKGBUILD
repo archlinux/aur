@@ -4,28 +4,31 @@
 pkgbase=ola
 pkgname=(ola ola-docs)
 pkgver=0.10.9
-pkgrel=7
+pkgrel=8
 pkgdesc='Open Lighting Architecture for controlling entertainment lighting equipment'
 arch=(x86_64 aarch64)
 url='https://www.openlighting.org'
-license=(LGPL2.1 GPL2)
+license=(GPL-2.0-or-later LGPL-2.1-or-later)
 depends=()
 makedepends=(avahi cppunit doxygen flake8 libftdi-compat liblo libmicrohttpd ncurses protobuf-21
   python-numpy python-protobuf util-linux-libs)
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/OpenLightingProject/$pkgbase/archive/refs/tags/$pkgver.tar.gz"
         "fix-protobuf-v20.patch::https://github.com/OpenLightingProject/$pkgbase/pull/1875.patch"
-        "fix-liblo.patch::https://github.com/OpenLightingProject/$pkgbase/pull/1954.patch")
+        "fix-liblo.patch::https://github.com/OpenLightingProject/$pkgbase/pull/1954.patch"
+        'fix-build-with-gcc-14.patch')
 sha256sums=('d2a80d907f5a0a5169583060bd32aa0fdbb2fdfe18d1194dd922595ab6d447b5'
             '6e57bb39c94981f62da6cd6b5c2744ace8ebe4b7b9fa8ee383800c1e3b8d6742'
-            '3a85761affce7e6c1ea5bdc29b6c1774e8d3a2cc4bb6fc52daac871cf72cf3ca')
+            '3a85761affce7e6c1ea5bdc29b6c1774e8d3a2cc4bb6fc52daac871cf72cf3ca'
+            '35915faad416d4b555132cc0348e39a921f5857475562a6742f46236491feef5')
 options=(!lto)
 
 prepare() {
   cd $pkgbase-$pkgver
   # https://github.com/OpenLightingProject/ola/pull/1875
-  patch -p1 -i ../fix-protobuf-v20.patch
+  patch -Np1 -i "$srcdir"/fix-protobuf-v20.patch
   # https://github.com/OpenLightingProject/ola/pull/1954
-  patch -Np1 -i ../fix-liblo.patch
+  patch -Np1 -i "$srcdir"/fix-liblo.patch
+  patch -Np1 -i "$srcdir"/fix-build-with-gcc-14.patch
 }
 
 build() {
