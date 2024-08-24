@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=turtle-git
 _app_id="de.philippun1.${pkgname%-git}"
-pkgver=0.9.r1.geeabb0e
+pkgver=0.9.r10.g007b494
 pkgrel=1
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
@@ -21,8 +21,7 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-checkdepends=('appstream')
-#checkdepends+=('python-pytest')
+checkdepends=('python-pytest')
 optdepends=(
   'python-nautilus: Nautilus plugin'
   'thunarx-python: Thunar plugin'
@@ -51,7 +50,7 @@ build() {
 
 check() {
   cd "${pkgname%-git}"
-#  PYTHONPATH=./ pytest
+  PYTHONPATH=./ pytest
 
   appstreamcli validate --no-net "data/${_app_id}.metainfo.xml"
   desktop-file-validate "data/${_app_id}.desktop"
