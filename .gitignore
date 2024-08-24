@@ -1,6 +1,4 @@
 *.tar.gz
 *.tar.xz
 *.tar.zst
-*.desktop
-*.xml
 *.in

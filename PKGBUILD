@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 
-pkgname=visual-studio-code-bin
 _pkgname=visual-studio-code
+pkgname=${_pkgname}-bin
 pkgver=1.92.2
 pkgrel=2
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (official binary version)"
@@ -10,7 +10,7 @@ url="https://code.visualstudio.com/"
 license=(LicenseRef-MicrosoftSoftwareLicentsTerms) # https://code.visualstudio.com/license
 provides=('code' 'vscode')
 conflicts=('code')
-install=$pkgname.install
+install=${pkgname}.install
 # lsof: needed for terminal splitting, see https://github.com/Microsoft/vscode/issues/62991
 # xdg-utils: needed for opening web links with xdg-open
 depends=(libxkbfile gnupg gtk3 libsecret nss gcc-libs libnotify libxss glibc lsof shared-mime-info xdg-utils alsa-lib)
@@ -31,7 +31,7 @@ source=(code.desktop.in::https://raw.githubusercontent.com/microsoft/vscode/${pk
 sha256sums=('dc64d1c6bb4a0cb2aae24dcd2d742178428f2849dab60074194e5603d32be745'
             'c361efa7e02fcad759ed80d2fbab67877f33219b981578af6fffaf18aeb12d9b'
             '3af748dd6578a1775e8eb7248ba397b7e11840df2ea6ee234ff76fee3dc306cf'
-            '8257a5ad82fa1f7dec11dfa064217b80df4cfec24f50cec7ca0ad62cf8295bfe')
+            'bbaeb9ad1f77e145ce5fe6c3c9d1cda2052b0989559fee0df40a1f35c08870e5')
 sha256sums_x86_64=('736eb24f77f47d4173c094e2314b04527bbc0ad73928c488341413a200b1d34d')
 sha256sums_aarch64=('f2132815e9f74cb829799c1c92478b9244dabdf01383e8bb38c9b1630ef5280b')
 sha256sums_armv7h=('92f7855f1ae13f7879e196845fe24e38e76cdf5869e2d1881f58ab2350044565')
@@ -46,22 +46,25 @@ _set_meta_info() {
     sed 's/@@URLPROTOCOL@@/vscode/g'
 }
 
-package() {
-  _pkg=VSCode-linux-x64
+_pkg() {
   if [ "${CARCH}" = "aarch64" ]; then
-    _pkg=VSCode-linux-arm64
+    echo 'VSCode-linux-arm64'
+  elif [ "${CARCH}" = "armv7h" ]; then
+    echo 'VSCode-linux-armhf'
+  elif [ "${CARCH}" = "i686" ]; then
+    echo 'VSCode-linux-ia32'
+  else
+    echo 'VSCode-linux-x64'
   fi
-  if [ "${CARCH}" = "armv7h" ]; then
-    _pkg=VSCode-linux-armhf
-  fi
-  if [ "${CARCH}" = "i686" ]; then
-    _pkg=VSCode-linux-ia32
-  fi
+}
 
+prepare() {
   _set_meta_info "${srcdir}/code.desktop.in" > "${srcdir}/code.desktop"
   _set_meta_info "${srcdir}/code-url-handler.desktop.in" > "${srcdir}/code-url-handler.desktop"
   _set_meta_info "${srcdir}/code-workspace.xml.in" > "${srcdir}/code-workspace.xml"
+}
 
+package() {
   install -d "${pkgdir}/usr/share/licenses/${_pkgname}"
   install -d "${pkgdir}/opt/${_pkgname}"
   install -d "${pkgdir}/usr/bin"
@@ -69,16 +72,16 @@ package() {
   install -d "${pkgdir}/usr/share/icons"
   install -d "${pkgdir}/usr/share/mime/packages"
 
-  install -m644 "${srcdir}/${_pkg}/resources/app/LICENSE.rtf" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.rtf"
-  install -m644 "${srcdir}/${_pkg}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
+  install -m644 "${srcdir}/$(_pkg)/resources/app/LICENSE.rtf" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.rtf"
+  install -m644 "${srcdir}/$(_pkg)/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
   install -m644 "${srcdir}/code.desktop" "${pkgdir}/usr/share/applications/code.desktop"
   install -m644 "${srcdir}/code-url-handler.desktop" "${pkgdir}/usr/share/applications/code-url-handler.desktop"
   install -m644 "${srcdir}/code-workspace.xml" "${pkgdir}/usr/share/mime/packages/code-workspace.xml"
-  install -Dm 644 "${srcdir}/${_pkg}/resources/completions/bash/code" "${pkgdir}/usr/share/bash-completion/completions/code"
-  install -Dm 644 "${srcdir}/${_pkg}/resources/completions/zsh/_code" "${pkgdir}/usr/share/zsh/site-functions/_code"
+  install -Dm 644 "${srcdir}/$(_pkg)/resources/completions/bash/code" "${pkgdir}/usr/share/bash-completion/completions/code"
+  install -Dm 644 "${srcdir}/$(_pkg)/resources/completions/zsh/_code" "${pkgdir}/usr/share/zsh/site-functions/_code"
 
-  cp -r "${srcdir}/${_pkg}/"* "${pkgdir}/opt/${_pkgname}"
+  cp -r "${srcdir}/$(_pkg)/"* "${pkgdir}/opt/${_pkgname}"
 
   # Launcher
-	install -m755 "${srcdir}/${_pkgname}-bin.sh" "${pkgdir}/usr/bin/code"
+  install -m755 "${srcdir}/${_pkgname}-bin.sh" "${pkgdir}/usr/bin/code"
 }
