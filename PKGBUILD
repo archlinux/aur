@@ -1,7 +1,7 @@
 # Maintainer: Colin Woodbury <colin@fosskers.ca>
 
 pkgname=aura
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="A package manager for Arch Linux and its AUR"
 url="https://github.com/fosskers/aura"
@@ -21,7 +21,7 @@ optdepends=(
 conflicts=("aura-bin" "aura-git" "aura3-bin")
 options=("strip")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6fe154ff9baf30344e3471ef7fa44d10a95bcdbfd3fc64c0cb21d839e4fea4dd')
+sha256sums=('4544f1216809d4468f1e5129f478859b9346512bcb6237b326ff65555c3bda81')
 
 prepare() {
   cd "${pkgname}-${pkgver}/rust"
