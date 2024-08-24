@@ -23,7 +23,7 @@ changelog=
 source=("spoof-dpi-conf.d"
         "spoof-dpi.service"
         "${url}/raw/main/LICENSE"
-        "${pkgname/-bin/}-${pkgver}-${pkgrel}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname/-bin/}-linux-amd64.tar.gz")
+        "${pkgname/-bin/}-${pkgver}-${pkgrel}.tar.gz::${url}/releases/download/${pkgver}/${pkgname/-bin/}-linux-amd64.tar.gz")
 noextract=()
 md5sums=('9910ed8f7bdfff59ccd66841520f9c3b'
          '981b9407762ef61fd33681c9d9872e52'
