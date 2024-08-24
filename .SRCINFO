@@ -1,7 +1,7 @@
 pkgbase = wine-osu-spectator
 	pkgdesc = A compatibility layer for running Windows programs, but with osu! specific patches
-	pkgver = 9.15
-	pkgrel = 3
+	pkgver = 9.15.w233.s5eeb4b7
+	pkgrel = 4
 	url = http://www.winehq.com
 	install = wine.install
 	arch = x86_64
@@ -59,6 +59,9 @@ pkgbase = wine-osu-spectator
 	makedepends = lib32-sdl2
 	makedepends = lib32-libcups
 	makedepends = lib32-llvm-libs
+	makedepends = clang
+	makedepends = llvm-libs
+	makedepends = llvm-mingw-w64-toolchain
 	makedepends = fontconfig
 	makedepends = lcms2
 	makedepends = libxml2
@@ -96,9 +99,6 @@ pkgbase = wine-osu-spectator
 	makedepends = lib32-libsm
 	makedepends = lib32-gcc-libs
 	makedepends = lib32-libpcap
-	makedepends = clang
-	makedepends = llvm-libs
-	makedepends = llvm-mingw-w64-toolchain
 	depends = fontconfig
 	depends = lcms2
 	depends = libxml2
@@ -190,9 +190,9 @@ pkgbase = wine-osu-spectator
 	source = lto-fixup.patch
 	source = mingw-gcc-float-precision-fix.patch
 	source = buildiswow64
-	source = git+https://gitlab.winehq.org/wine/wine.git#commit=3af5a02a83b5b63dae7070c259fcebf46761988d
-	source = git+https://github.com/wine-staging/wine-staging.git#commit=a90554bb0489659c0ab632bb6a263ab4198e9985
-	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=08-16-2024-3af5a02a-a90554bb
+	source = wine::git+https://gitlab.winehq.org/wine/wine.git#commit=6e15604c48acd63dd8095a4ce2fd011cb3be96db
+	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=5eeb4b76d6f460456238582d5e3fc200dcfae1f6
+	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=08-24-2024-6e15604c-5eeb4b76
 	sha512sums = dc115ccc8d64afc213d2860a2f3516c31aa2891cd1005498123d86e7e44e0fcf876fbc68c89b201ce5291a12127cb7ff478e9374dbd2512b5d094802780be160
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 	sha512sums = bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285
