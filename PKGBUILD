@@ -14,7 +14,7 @@ source=('git+https://github.com/TeamPiped/Piped-Backend.git'
 		'sysusers.conf'
 		'systemd.service')
 sha256sums=('SKIP'
-            '3cca04524dadf499abe1329a23ee846c5edc9ec67bd5e01dbceba8a8fe8f703e'
+            'e0afaf2c1ecde9b9d0c472654a1de625ed39ca14be69c41ec4ea5dba18bb4817'
             'f04ddc4d9bf5a114e302fec532e7874c7d3c9d58e81103f17649a0d0228bb096'
             '0e00f0e054687cbc76356d7fb0e860075a27fcf8366ce2b46cb94e92f00a4645')
 
@@ -27,6 +27,7 @@ prepare() {
 	cd Piped-Backend
 	sed -i 's|hibernate.connection.url:jdbc:postgresql://postgres:5432/piped|hibernate.connection.url:jdbc:postgresql:piped?socket=socketFactory=org.newsclub.net.unix.AFUNIXSocketFactory$FactoryArg\&socketFactoryArg=/var/run/postgresql/.s.PGSQL.5432|' config.properties
 	sed -i 's|config.properties|/etc/piped/backend.properties|' src/main/java/me/kavin/piped/consts/Constants.java
+	sed -i "s|dependencies {|dependencies {\n    implementation 'com.kohlschutter.junixsocket:junixsocket-core:2.10.0'|" build.gradle
 }
 
 build() {
