@@ -1,0 +1,14 @@
+[Unit]
+Description=A proxy for Piped written in Rust, meant to superseed http3-ytproxy
+After=network.target
+
+[Service]
+User=piped
+Environment=UDS=1
+Environment=BIND_UNIX=/var/run/piped/proxy.sock
+RuntimeDirectory=piped
+ExecStart=/usr/bin/piped-proxy
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
