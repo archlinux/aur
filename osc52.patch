@@ -2,10 +2,10 @@ diff --git a/src/Vt102Emulation.cpp b/src/Vt102Emulation.cpp
 index bebd5e399..a434ee4ab 100644
 --- a/src/Vt102Emulation.cpp
 +++ b/src/Vt102Emulation.cpp
-@@ -12,7 +12,9 @@
- #include <cstdio>
+@@ -13,7 +13,9 @@
  
  // Qt
+ #include <QAudioOutput>
 +#include <QApplication>
  #include <QBuffer>
 +#include <QClipboard>

@@ -1,6 +1,6 @@
 pkgbase = konsole-osc52
 	pkgdesc = KDE terminal emulator patched with OSC52 copy support
-	pkgver = 24.05.2
+	pkgver = 24.08.0
 	pkgrel = 1
 	url = https://apps.kde.org/konsole/
 	arch = x86_64
@@ -42,14 +42,14 @@ pkgbase = konsole-osc52
 	optdepends = keditbookmarks: to manage bookmarks
 	provides = konsole
 	conflicts = konsole
-	source = https://download.kde.org/stable/release-service/24.05.2/src/konsole-24.05.2.tar.xz
-	source = https://download.kde.org/stable/release-service/24.05.2/src/konsole-24.05.2.tar.xz.sig
+	source = https://download.kde.org/stable/release-service/24.08.0/src/konsole-24.08.0.tar.xz
+	source = https://download.kde.org/stable/release-service/24.08.0/src/konsole-24.08.0.tar.xz.sig
 	source = osc52.patch
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = 1d05ef1bfa531e41f9625acb95eeb18ef5409fa5160d4b976ce6997759518994
+	sha256sums = 0095f1afc4e4a4cd36a12a2927e090e62fb0d016d38914bc858af568b7416101
 	sha256sums = SKIP
-	sha256sums = a7f354e4764a3c841bfa43fd41182c7068053000185bceeaff30d5eb2159c4f8
+	sha256sums = a21d966b713072c016f899befe502802901edde2787d34301325ed50a1ceb06d
 
 pkgname = konsole-osc52
