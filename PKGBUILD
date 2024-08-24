@@ -2,10 +2,10 @@
 # Adopted from: Félix Saparelli <aur@passcod.name>
 pkgname=sirikali-git
 _pkgname=${pkgname%-git}
-pkgver=1.4.6.r9.d73a7ab
+pkgver=1.6.0.r52.fdf102e
 pkgrel=1
 pkgdesc="A Qt/C++ GUI front end to sshfs, ecryptfs-simple, cryfs, gocryptfs, securefs, fscrypt and encfs"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://mhogomchungu.github.io/sirikali/"
 license=('GPL')
 depends=('qt5-base' 'libpwquality' 'hicolor-icon-theme')
@@ -20,8 +20,8 @@ optdepends=('lxqt_wallet: use an external lxqt_wallet (must recompile)'
             'gocryptfs: for gocryptfs backend'
             'securefs: for securefs backend'
             'sshfs: for SSHFS backend')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=('sirikali::git+https://github.com/mhogomchungu/sirikali.git')
 sha256sums=('SKIP')
 
@@ -31,7 +31,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir/${_pkgname}"
+  cd ${_pkgname}
   mkdir -p build
 
   if pacman -Qs "lxqt_wallet" > /dev/null ; then
@@ -41,32 +41,31 @@ prepare() {
   fi
 
   if pacman -Qs "kwallet" > /dev/null ; then
-    kdeopt="false"
+    skipkde="false"
   else
-    kdeopt="true"
+    skipkde="true"
   fi
 
   if pacman -Qs "libsecret" > /dev/null ; then
-    gnomeopt="false"
+    skipsecret="false"
   else
-    gnomeopt="true"
+    skipsecret="true"
   fi
 }
 
 build() {
-  cd "$srcdir/${_pkgname}/build"
+  cd ${_pkgname}/build
   cmake \
     -DCMAKE_BUILD_TYPE=RELEASE \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DINTERNAL_LXQT_WALLET=$intwallet \
-    -DNOKDESUPPORT=$kdeopt \
-    -DNOSECRETSUPPORT=$gnomeopt \
-    -DQT5=true \
+    -DNOKDESUPPORT=$skipkde \
+    -DNOSECRETSUPPORT=$skipsecret \
     . ..
   make
 }
 
 package() {
-  cd "$srcdir/${_pkgname}/build"
+  cd ${_pkgname}/build
   make DESTDIR="$pkgdir/" install
 }
