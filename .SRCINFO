@@ -1,0 +1,18 @@
+pkgbase = gitlab-changeloggenerator-git
+	pkgdesc = ChangelogGenerator is a powerful and intuitive tool designed to streamline the process of generating changelogs for GitLab projects.
+	pkgver = r1.d149df0
+	pkgrel = 1
+	url = https://gitlab.com/nicolasloxol/changeloggenerator
+	arch = any
+	license = GPLv3
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	provides = ChangelogGenerator
+	conflicts = ChangelogGenerator
+	source = changeloggenerator::git+https://gitlab.com/nicolasloxol/changeloggenerator.git
+	md5sums = SKIP
+
+pkgname = gitlab-changeloggenerator-git
