@@ -9,7 +9,7 @@
 _basename=chicago95
 pkgname="${_basename}-theme"
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A rendition of everyone's favorite 1995 Microsoft operating system for Linux (complete theme, git version)"
 arch=('any')
 url="https://github.com/grassmunk/Chicago95"
@@ -19,7 +19,7 @@ optdepends=(
 	'libcanberra: Sound theme'
 	'qt5-styleplugins: QT theme'
 	'ttf-ms-fonts: MS fonts'
-	'lightdm-webkit-greeter: LightDM theme'
+	'lightdm-webkit2-greeter: LightDM theme'
 )
 provides=(
 	'chicago95-theme'
