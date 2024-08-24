@@ -3,14 +3,14 @@
 _name=partialZipBrowser
 _pkgname=${_name,,}
 pkgname=$_pkgname-git
-pkgver=1.0.r26.g7c43bde
-pkgrel=1
+pkgver=44.r0.g1a4bf6a
+pkgrel=2
 pkgdesc='Commandline tool for browsing and downloading files from zip files on remote webserver - git version'
 arch=('x86_64')
 url="https://github.com/tihmstar/$_name"
-license=('LGPL3')
-# libfragmentzip's .pc file causes this to link to its dependencies (curl, libzip and zlib)
-# depend on curl since it's actually needed but skip the others
+license=('LGPL-3.0-only')
+# libfragmentzip's .pc file causes this to link to its dependencies (curl and zlib)
+# depend on curl since it's actually needed but skip zlib
 depends=('curl' 'libfragmentzip')
 makedepends=('git')
 provides=("$_pkgname")
@@ -21,8 +21,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_name"
 
-  # 's/^v//' removes 'v' prefix
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
