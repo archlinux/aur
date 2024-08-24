@@ -1,6 +1,6 @@
 # Maintainer: Entailz <entail-wraps0r at icloud dot com>
 
-pkgname=quickshell-git
+pkgname=quickshell
 pkgver=r304.f95e7db
 pkgrel=1
 pkgdesc='Simple and flexbile QtQuick based desktop shell toolkit.'

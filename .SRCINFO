@@ -1,4 +1,4 @@
-pkgbase = quickshell-git
+pkgbase = quickshell
 	pkgdesc = Simple and flexbile QtQuick based desktop shell toolkit.
 	pkgver = r304.f95e7db
 	pkgrel = 1
@@ -23,4 +23,4 @@ pkgbase = quickshell-git
 	source = git+https://github.com/outfoxxed/quickshell.git
 	sha256sums = SKIP
 
-pkgname = quickshell-git
+pkgname = quickshell
