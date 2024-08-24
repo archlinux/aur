@@ -1,0 +1,5 @@
+[stratisd]
+source = "git"
+git = "https://github.com/stratis-storage/stratisd.git"
+prefix = "stratisd-v"
+exclude_regex = "^v.*"
