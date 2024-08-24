@@ -1,6 +1,6 @@
 pkgbase = mongodb70-bin
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
-	pkgver = 7.0.12
+	pkgver = 7.0.14
 	pkgrel = 1
 	url = https://www.mongodb.com/
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = mongodb70-bin
 	depends = curl
 	depends = openssl-1.1
 	optdepends = mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.
-	provides = mongodb=7.0.12
+	provides = mongodb=7.0.14
 	conflicts = mongodb
 	conflicts = mongodb-shell-bin
-	noextract = mongodb-org-server_7.0.12_x86_64.deb
-	noextract = mongodb-org-mongos_7.0.12_x86_64.deb
+	noextract = mongodb-org-server_7.0.14_x86_64.deb
+	noextract = mongodb-org-mongos_7.0.14_x86_64.deb
 	backup = etc/mongodb.conf
 	source = mongodb.sysusers
 	source = mongodb.tmpfiles
@@ -23,13 +23,13 @@ pkgbase = mongodb70-bin
 	sha256sums = 47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b
 	sha256sums = e5273bfee70fb114d7d17d03ef43cc6aae209c4224253abf4c9954cbcc087fc8
 	sha256sums = 09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27
-	source_x86_64 = mongodb-org-server_7.0.12_x86_64.deb::https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/7.0/multiverse/binary-amd64/mongodb-org-server_7.0.12_amd64.deb
-	source_x86_64 = mongodb-org-mongos_7.0.12_x86_64.deb::https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/7.0/multiverse/binary-amd64/mongodb-org-mongos_7.0.12_amd64.deb
-	sha256sums_x86_64 = 08eb19e2af172cd586742e8059407e91b060abcd2f587d50bc2921b308d37f5a
-	sha256sums_x86_64 = 8e9ff0abd168c37c1c573bee17540cff0e93ce90776a64085cbe9f3ea0639d5e
-	source_aarch64 = mongodb-org-server_7.0.12_aarch64.deb::https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/7.0/multiverse/binary-arm64/mongodb-org-server_7.0.12_arm64.deb
-	source_aarch64 = mongodb-org-mongos_7.0.12_aarch64.deb::https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/7.0/multiverse/binary-arm64/mongodb-org-mongos_7.0.12_arm64.deb
-	sha256sums_aarch64 = be43aa5446cf6edb0ff55d01f5780e09489e65911ceb2a78bdaabb212b4199a9
-	sha256sums_aarch64 = 5c7e69af9c73094dc90cb736ffb959e35de2eaed8ed5585582096e122a572362
+	source_x86_64 = mongodb-org-server_7.0.14_x86_64.deb::https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/7.0/multiverse/binary-amd64/mongodb-org-server_7.0.14_amd64.deb
+	source_x86_64 = mongodb-org-mongos_7.0.14_x86_64.deb::https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/7.0/multiverse/binary-amd64/mongodb-org-mongos_7.0.14_amd64.deb
+	sha256sums_x86_64 = aaa21612367f0358e6b616cfca8f073b0e095b4ea8862e8475e5d5cdeb10ed6e
+	sha256sums_x86_64 = 5134174d895cd1b73d4fafcd90600ed623dba161d64cb0be6ab85d29e6227338
+	source_aarch64 = mongodb-org-server_7.0.14_aarch64.deb::https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/7.0/multiverse/binary-arm64/mongodb-org-server_7.0.14_arm64.deb
+	source_aarch64 = mongodb-org-mongos_7.0.14_aarch64.deb::https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/7.0/multiverse/binary-arm64/mongodb-org-mongos_7.0.14_arm64.deb
+	sha256sums_aarch64 = 2e9f938574e800571c8e613c8c74d659c45886beb7baaa7f0fd4e08e8b7a31f6
+	sha256sums_aarch64 = 716e3a3a156888b80219f51c3b4860b8442f33d9ca8cbbbcf45c637b139a99e3
 
 pkgname = mongodb70-bin
