@@ -1,0 +1,20 @@
+pkgbase = chicago95-plus
+	pkgdesc = Windows Plus! Theme Conversion for XFCE/Chicago95 (stable version)
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/grassmunk/Chicago95
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-svgwrite
+	depends = python-fonttools
+	depends = python-numpy
+	depends = inkscape
+	depends = noto-fonts
+	depends = alsa-utils
+	optdepends = chicago95-theme: Base theme
+	source = chicago95::git+https://github.com/grassmunk/Chicago95.git#tag=v3.0.1
+	md5sums = SKIP
+
+pkgname = chicago95-plus
