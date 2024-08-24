@@ -6,7 +6,6 @@ pkgdesc="Utility for capturing screenshots via XDG Desktop Portal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-screenshot"
 license=('GPL-3.0-or-later')
-groups=('cosmic')
 depends=(
   'xdg-desktop-portal-cosmic-git'
 )

@@ -5,7 +5,6 @@ pkgbase = cosmic-screenshot-git
 	url = https://github.com/pop-os/cosmic-screenshot
 	arch = x86_64
 	arch = aarch64
-	groups = cosmic
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = git
