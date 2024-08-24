@@ -1,0 +1,14 @@
+pkgbase = partialzipbrowser
+	pkgdesc = Commandline tool for browsing and downloading files from zip files on remote webserver
+	pkgver = 44
+	pkgrel = 1
+	url = https://github.com/tihmstar/partialZipBrowser
+	arch = x86_64
+	license = LGPL-3.0-only
+	makedepends = git
+	depends = curl
+	depends = libfragmentzip
+	source = git+https://github.com/tihmstar/partialZipBrowser.git#tag=44
+	sha256sums = 8564fdcf22c9c3af23e7df086a0289eed4fbbc20ea84e0abd90fe9d94b90a27a
+
+pkgname = partialzipbrowser
