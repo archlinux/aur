@@ -11,7 +11,7 @@ fi
 _pkgname="thorium-browser"
 pkgname="$_pkgname-bin"
 pkgver=126.0.6478.231
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium fork focused on high performance and security"
 url="https://github.com/Alex313031/Thorium"
 license=('BSD')
@@ -150,6 +150,7 @@ _update_version() {
   local _blacklist _response _tags _tag _pkgver_new
 
   _blacklist=(
+    M126.0.6478.246
   )
   _response=$(curl -Ssf "$url/releases.atom")
   _tags=$(

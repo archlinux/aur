@@ -183,6 +183,7 @@ _update_version() {
   local _blacklist _response _tags _tag _pkgver_new
 
   _blacklist=(
+    M126.0.6478.246
     M126.0.6478.231
   )
   _response=$(curl -Ssf "$url/releases.atom")
