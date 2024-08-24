@@ -1,6 +1,6 @@
 pkgbase = aura-bin
 	pkgdesc = A package manager for Arch Linux and its AUR - Prebuild binary
-	pkgver = 4.0.3
+	pkgver = 4.0.4
 	pkgrel = 1
 	url = https://github.com/fosskers/aura
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = aura-bin
 	conflicts = aura-git
 	conflicts = aura3-bin
 	options = strip
-	source = aura-4.0.3-x86_64.tar.gz::https://github.com/fosskers/aura/releases/download/v4.0.3/aura-4.0.3-x86_64.tar.gz
-	sha256sums = 3b926b7a41cef2b310ef5da83f5a7ce454363cb8b8d4e2ceb504785385d9d554
+	source = aura-4.0.4-x86_64.tar.gz::https://github.com/fosskers/aura/releases/download/v4.0.4/aura-4.0.4-x86_64.tar.gz
+	sha256sums = 1a7a556ad8f0ee0eb9397cb59791e78693c848c95170d777df581d8f3c5e3a0d
 
 pkgname = aura-bin
