@@ -6,7 +6,6 @@ pkgdesc="A backend implementation for xdg-desktop-portal for the COSMIC desktop 
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/xdg-desktop-portal-cosmic"
 license=('GPL-3.0-or-later')
-groups=('cosmic')
 depends=(
   'hicolor-icon-theme'
   'libpipewire'
