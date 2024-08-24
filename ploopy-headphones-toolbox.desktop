@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=0.0.6
+Name=Ploopy Headphones Toolbox
+Comment=Configure the Ploopy Headphones DAC
+Exec=ploopy-headphones-toolbox
+Icon=ploopy-headphones-toolbox
+Terminal=false
+Categories=Settings

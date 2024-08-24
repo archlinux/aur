@@ -1,0 +1,18 @@
+BLUE='\033[01;34m'
+YELLOW='\033[01;33m'
+RESET='\033[0m'
+
+post_install() {
+	echo
+	echo -e "      ${BLUE}.${RESET}            oo"
+	echo -e "    ${YELLOW}.d6${BLUE}b.${RESET}    .d8b. 88 .d8b. .d8b. .d8b. 88 88"
+	echo -e "   ${BLUE}d8${YELLOW}986${BLUE}8o${RESET}   8p\"q8 88 8p\"q8 8p\"q8 8p\"q8 88 88"
+	echo -e "  ${BLUE}d888${YELLOW}988${BLUE}8b${RESET}  8b.dp 88 qb.dp qb.dp 8b.dp qb.d8"
+	echo -e " ${BLUE}o88888${YELLOW}886${BLUE}8.${RESET} 88\"'  88 \`q8p' \`q8p' 88\"'   \`\"88"
+	echo -e "${BLUE}.688888${YELLOW}689${BLUE}P'${RESET} 88    88             88       88"
+	echo
+	echo -e "${YELLOW}You may have to manually reload udev rules to allow access to the DAC's USB device.${RESET}"
+	echo -e "${YELLOW}If Headphones Toolbox can't find your DAC, try plugging it back in and/or running the following command as root:${RESET}"
+	echo -e "# udevadm control --reload-rules && udevadm trigger"
+	echo
+}
