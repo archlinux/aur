@@ -1,7 +1,7 @@
 # Maintainer: XDR <xxdr@duck.com>
 pkgname="xfetch-bin"
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple fetch written in Rust."
 arch=('x86_64')
 url="https://github.com/XDRwastaken/xFetch"
@@ -12,7 +12,7 @@ source=(
 	"https://raw.githubusercontent.com/XDRwastaken/xFetch/main/LICENSE"
 )
 sha256sums=(
-	'ddcbc869a5570fbd1160140e9a44f6c81061d2c009910064a98ee94814ca144f'
+	'4ca47aa8e0fd380262de49f31e05b28dccb5ec93e9c3dcd17ab163a546ca36d7'
 	'SKIP'
 )
 
