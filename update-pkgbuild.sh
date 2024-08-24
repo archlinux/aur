@@ -20,6 +20,6 @@ fi
 CHECKSUM=$(sha256sum "$DEB_FILE" | sed "s/$DEB_FILE//g" | sed 's/^ *//g' | sed 's/ *$//g')
 
 sed -ri "s/pkgver=[0-9.]+/pkgver=$VERSION/" PKGBUILD
-sed -ri "s/sha256sums_x86_64=\('[0-9A-Za-z]+'\)/sha256sums_x86_64=\('$CHECKSUM'\)/g" PKGBUILD
+sed -ri "s/(sha256sums_x86_64=\(\s*?)'[0-9A-Za-z]+'/\1'$CHECKSUM'/g" PKGBUILD
 
 rm "$DEB_FILE"
