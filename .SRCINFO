@@ -1,7 +1,7 @@
 pkgbase = scwrypts
 	pkgdesc = devops script runner for local and CI
 	pkgver = 4.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wrynegade/scwrypts.git
 	arch = any
 	license = GPL-3.0-or-later
@@ -12,6 +12,7 @@ pkgbase = scwrypts
 	depends = go-yq
 	depends = grep
 	depends = jq
+	depends = jo
 	depends = ripgrep
 	depends = git
 	depends = sed

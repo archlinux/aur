@@ -1,7 +1,7 @@
 # Maintainer: Wryn (yage) Wagner yage@yage.io
 pkgname='scwrypts'
 pkgver=4.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='devops script runner for local and CI'
 url='https://github.com/wrynegade/scwrypts.git'
 license=('GPL-3.0-or-later')
@@ -19,6 +19,7 @@ depends=(
 	go-yq
 	grep
 	jq
+	jo
 	ripgrep
 	git
 	sed
