@@ -1,12 +1,12 @@
 pkgbase = sway-overfocus
 	pkgdesc = "Better" focus navigation for sway and i3
-	pkgver = v0.2.3_fix
+	pkgver = v0.2.4
 	pkgrel = 1
 	url = https://github.com/korreman/sway-overfocus
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = sway-overfocus-v0.2.3-fix.tar.gz::https://github.com/korreman/sway-overfocus/archive/refs/tags/v0.2.3-fix.tar.gz
-	sha512sums = 4ce513a5d1402656b7f6bfbe5d041e7a147e8f7348755f790e9075a29d78e08d98a877ef715249dfb4fd49eafc1bc30ebd2a070776b65f44ea66f9323fc4061e
+	source = sway-overfocus-v0.2.4.tar.gz::https://github.com/korreman/sway-overfocus/archive/refs/tags/v0.2.4.tar.gz
+	sha512sums = 14e561fe6819f841492e6d86088f85155b2c80733784e79952cfc5ce2ce09f7433adc4b9b70115d97760ef1c78b77c2ea4eff6b53ffd683b7f374f9b37117895
 
 pkgname = sway-overfocus

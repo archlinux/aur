@@ -1,4 +1,4 @@
-# Maintainer: Leon Richardt <leon.richardt@gmail.com>
+# Maintainer: Leon Richardt <aur [at] leon [dot] dev>
 pkgname=sway-overfocus
 pkgver=v0.2.4
 pkgrel=1
