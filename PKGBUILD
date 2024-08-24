@@ -45,7 +45,7 @@ package() {
 	install -Dm644 sysusers.conf "${pkgdir}/usr/lib/sysusers.d/piped-backend.conf"
 	install -Dm644 systemd.service "${pkgdir}/usr/lib/systemd/system/piped-backend.service"
 	install -Dm644 "${srcdir}/Piped-Backend/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 "${srcdir}/Piped-Backend/config.properties" "${pkgdir}/usr/share/doc/piped/piped-backend.conf"
+	install -Dm644 "${srcdir}/Piped-Backend/config.properties" "${pkgdir}/usr/share/doc/piped/piped-backend.properties"
 	install -Dm755 "${srcdir}/Piped-Backend/build/libs/piped-1.0-all.jar" "${pkgdir}${dest}/piped-backend.jar"
 	install -Dm755 piped-backend.sh "${pkgdir}/usr/bin/piped-backend"
 #find "${pkgdir}${dest}" -type d -exec chmod u+x,g+x,o+x {} \;
