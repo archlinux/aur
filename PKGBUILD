@@ -9,7 +9,7 @@
 _basename=chicago95
 pkgname="${_basename}-theme"
 pkgver=3.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A rendition of everyone's favorite 1995 Microsoft operating system for Linux (complete theme, stable version)"
 arch=('any')
 url="https://github.com/grassmunk/Chicago95"
@@ -20,6 +20,7 @@ optdepends=(
 	'qt5-styleplugins: QT theme'
 	'ttf-ms-fonts: MS fonts'
 	'lightdm-webkit2-greeter: LightDM theme'
+	'chicago95-plus: Plus! theme generator'
 )
 provides=(
 	'chicago95-theme'
