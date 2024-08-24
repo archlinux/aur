@@ -4,10 +4,10 @@
 
 pkgname=makepkg-optimize-mold
 pkgver=30
-pkgrel=1
+pkgrel=2
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
-license=('GPL')
+license=('GPL-1.0-only')
 url='https://wiki.archlinux.org/index.php/Makepkg-optimize'
 depends=('pacman')
 optdepends=("upx: Compress executables"

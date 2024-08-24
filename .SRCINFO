@@ -1,10 +1,10 @@
 pkgbase = makepkg-optimize-mold
 	pkgdesc = Supplemental build and packaging optimizations for makepkg
 	pkgver = 30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/Makepkg-optimize
 	arch = any
-	license = GPL
+	license = GPL-1.0-only
 	depends = pacman
 	optdepends = upx: Compress executables
 	optdepends = optipng: Optimize PNG files
