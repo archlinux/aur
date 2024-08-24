@@ -6,7 +6,6 @@ pkgdesc="Cosmic App Store"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-store"
 license=('GPL-3.0-or-later')
-groups=('cosmic')
 depends=(
   'cosmic-icons-git'
   'flatpak'
