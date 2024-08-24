@@ -1,10 +1,11 @@
-# Maintainer: D. Can Celasun <can[at]dcc[dot]im>
+# Mantainer: marmis <tiagodepalves@gmail.com>
+# Contributor: D. Can Celasun <can[at]dcc[dot]im>
 
 _pkgname=visual-studio-code
-pkgname=${_pkgname}-bin
+pkgname=${_pkgname}-bin-patched
 pkgver=1.92.2
-pkgrel=2.1
-pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (official binary version)"
+pkgrel=1
+pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (binary version, with patches for XDG spec)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://code.visualstudio.com/"
 license=(LicenseRef-MicrosoftSoftwareLicentsTerms) # https://code.visualstudio.com/license

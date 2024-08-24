@@ -1,9 +1,9 @@
-pkgbase = visual-studio-code-bin
-	pkgdesc = Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (official binary version)
+pkgbase = visual-studio-code-bin-patched
+	pkgdesc = Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (binary version, with patches for XDG spec)
 	pkgver = 1.92.2
-	pkgrel = 2.1
+	pkgrel = 1
 	url = https://code.visualstudio.com/
-	install = visual-studio-code-bin.install
+	install = visual-studio-code-bin-patched.install
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
@@ -47,4 +47,4 @@ pkgbase = visual-studio-code-bin
 	source_armv7h = code_armhf_1.92.2.tar.gz::https://update.code.visualstudio.com/1.92.2/linux-armhf/stable
 	sha256sums_armv7h = 92f7855f1ae13f7879e196845fe24e38e76cdf5869e2d1881f58ab2350044565
 
-pkgname = visual-studio-code-bin
+pkgname = visual-studio-code-bin-patched
