@@ -24,6 +24,7 @@ depends=(discount
          kcoreaddons
          kcrash
          ki18n
+         kiconthemes
          kio
          kitemviews
          kparts
