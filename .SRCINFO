@@ -1,0 +1,11 @@
+pkgbase = dabadee
+	pkgdesc = DaBaDee is a simple deduplication tool/storage for files. It uses SHA256* to hash the files and store them in the storage, replacing the original path with a hardlink to the storage location.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/mirkobrombin/DaBaDee
+	arch = any
+	license = MIT
+	source = https://github.com/mirkobrombin/DaBaDee/releases/download/v0.6.0/dabadee
+	sha256sums = 9c702ebecbc06510fb28414db22b9cb71e646cad9b0472351606cf04471ae982
+
+pkgname = dabadee
