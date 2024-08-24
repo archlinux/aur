@@ -1,10 +1,10 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=resources
-pkgver=1.5.1
-_commit=b2bf9053822b50e20eb166d24793e9ec282fc6d8
+pkgver=1.6.0
+_commit=f254bcf43fd4d39fddf0169e0f98f59176dff3f9
 pkgrel=1
-pkgdesc="Monitor your system resources and processes"
+pkgdesc="Keep an eye on system resources"
 url="https://github.com/nokyan/resources"
 license=('GPL-3.0-or-later')
 arch=('x86_64' 'aarch64')
