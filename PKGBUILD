@@ -1,4 +1,5 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Rubin Simons <me@rubin55.org>
+# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 # Contributor: David Wu <xdavidwuph@gmail.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: M A <morealaz at gmail dot com>
