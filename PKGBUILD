@@ -3,7 +3,7 @@
 _basename=chicago95
 pkgname="${_basename}-plus-git"
 pkgver=r598.bdf5cf3
-pkgrel=2
+pkgrel=3
 pkgdesc="Windows Plus! Theme Conversion for XFCE/Chicago95 (git version)"
 arch=('any')
 url="https://github.com/grassmunk/Chicago95"
