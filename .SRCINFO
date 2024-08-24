@@ -1,6 +1,6 @@
 pkgbase = viddy-git
 	pkgdesc = A modern watch command
-	pkgver = 1.0.0.r2.g1871b3b
+	pkgver = 1.0.0.r4.g4782370
 	pkgrel = 1
 	url = https://github.com/sachaos/viddy
 	arch = any
