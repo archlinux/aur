@@ -1,0 +1,31 @@
+From da7ab5d687dd9816eede581ba5d379d5facdd077 Mon Sep 17 00:00:00 2001
+From: a821 <a821@mail.de>
+Date: Fri, 23 Aug 2024 09:27:03 +0200
+Subject: [PATCH] upnp: add compatibility for miniupnpc 2.2.8
+
+fix adapted from upstream [1]
+
+[1] https://github.com/bitcoin/bitcoin/commit/8acdf66540834b9f9cf28f16d389e8b6a48516d5
+---
+ src/net.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/net.cpp b/src/net.cpp
+index 1a0bee8c5..c9e6e5e54 100644
+--- a/src/net.cpp
++++ b/src/net.cpp
+@@ -1637,7 +1637,11 @@ static void ThreadMapPort()
+     struct IGDdatas data;
+     int r;
+ 
++#if MINIUPNPC_API_VERSION <= 17
+     r = UPNP_GetValidIGD(devlist, &urls, &data, lanaddr, sizeof(lanaddr));
++#else
++    r = UPNP_GetValidIGD(devlist, &urls, &data, lanaddr, sizeof(lanaddr), nullptr, 0);
++#endif
+     if (r == 1)
+     {
+         if (fDiscover) {
+-- 
+2.46.0
+
