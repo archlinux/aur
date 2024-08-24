@@ -43,7 +43,7 @@ diff -ru a/dom/base/Document.cpp b/dom/base/Document.cpp
 diff -ru a/modules/libpref/init/StaticPrefList.yaml b/modules/libpref/init/StaticPrefList.yaml
 --- a/modules/libpref/init/StaticPrefList.yaml
 +++ b/modules/libpref/init/StaticPrefList.yaml
-@@ -14148,6 +14148,12 @@
+@@ -14153,6 +14153,12 @@
    value: false
    mirror: always
 
