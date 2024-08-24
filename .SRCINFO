@@ -5,7 +5,6 @@ pkgbase = cosmic-files-git
 	url = https://github.com/pop-os/cosmic-files
 	arch = x86_64
 	arch = aarch64
-	groups = cosmic
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = git

@@ -6,7 +6,6 @@ pkgdesc="File manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-files"
 license=('GPL-3.0-or-later')
-groups=('cosmic')
 depends=(
   'glib2'
   'hicolor-icon-theme'
