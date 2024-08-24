@@ -6,7 +6,6 @@ pkgdesc="Session manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-session"
 license=('GPL-3.0-or-later')
-groups=('cosmic')
 depends=(
   'cosmic-applibrary-git'
   'cosmic-applets-git'
