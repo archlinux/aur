@@ -6,10 +6,11 @@ pkgbase=linux-firmware-amd-staging-um5606-git
 pkgname=(linux-firmware-whence-amd-staging-um5606-git linux-firmware-amd-staging-um5606-git amd-ucode-amd-staging-um5606-git
   linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-amd-staging-um5606-git
 )
-pkgver=20240824.a6d6b593
+epoch=1
+pkgver=20240823.2cdc11a7
 pkgrel=1
-pkgdesc="A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops, including the latest ipu (NPU) and isp (GPU) firmware."
-url="https://github.com/ThatOneCalculator/linux-firmware-amd-staging-um5606"
+pkgdesc="A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops, including the latest ipu (NPU) firmware."
+url="https://gitlab.com/kernel-firmware/linux-firmware"
 license=('GPL2' 'GPL3' 'custom')
 arch=('any')
 makedepends=('git' 'rdfind')
@@ -21,8 +22,11 @@ options=(!strip)
 # You can check signatures with the following commands:
 #git log --format=raw --show-signature main
 #git tag -v $(git tag)
-source=("${pkgbase}::git+${url}.git")
-sha256sums=('SKIP')
+source=(
+  "${pkgbase}::git+${url}.git"
+  "https://raw.githubusercontent.com/ThatOneCalculator/linux-firmware-amd-ipu-staging-patch/main/amd-ipu-staging.patch"
+)
+sha256sums=('SKIP' 'ced839307005064875067f477b0c6c71515685274dc0d1037a96d5c450d9b9a9')
 validpgpkeys=('4CDE8575E547BF835FE15807A31B6BD72486CFD6') # Josh Boyer <jwboyer@fedoraproject.org>
 
 pkgver() {
@@ -30,6 +34,13 @@ pkgver() {
 
   # Commit date + short rev
   echo $(TZ=UTC git show -s --pretty=%cd --date=format-local:%Y%m%d HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+	cd ${pkgbase}
+	echo "Applying patch..."
+	git apply -3 --whitespace=nowarn ${srcdir}/amd-ipu-staging.patch
+	echo "Patch applied!"
 }
 
 build() {
