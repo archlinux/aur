@@ -3,7 +3,7 @@
 pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=Tauon
-pkgver=7.8.0
+pkgver=7.8.1
 pkgrel=1
 _kissfftver=131.1.0
 _miniaudiocommit=4a5b74bef029b3592c54b6048650ee5f972c1a48
@@ -18,7 +18,7 @@ depends=('python-pillow'
          'python-send2trash'
          'python-musicbrainzngs'
          'python-mutagen'
-         'python-isounidecode' # AUR
+         'python-unidecode'
          'python-setproctitle'
          'python-gobject'
          'python-cairo'
@@ -43,6 +43,7 @@ depends=('python-pillow'
          'libsamplerate'
          'opencc'
          'libgme'
+         'libpipewire'
          )
 
 makedepends=('pkg-config')
@@ -74,6 +75,7 @@ build() {
     cd "$_gitname-$pkgver"
     python compile-translations.py
     bash compile-phazor.sh
+    bash compile-phazor-pipewire.sh
 }
 
 package() {
@@ -94,6 +96,6 @@ package() {
     install -Dm755 "extra/tauonmb.sh" "$pkgdir/usr/bin/tauon"
 }
 
-md5sums=('1e056ebbc649db767ff64e9275df60c1'
+md5sums=('511527dc508dca4e4d232a42edee9f6e'
          '981ad3e496fbd8edb99704fc0e2aa939'
          '01b821de48cdba3838239b6cbd5e13e5')
