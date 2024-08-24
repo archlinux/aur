@@ -6,7 +6,6 @@ pkgdesc="Cosmic settings daemon"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-settings-daemon"
 license=('GPL-3.0-or-later')
-groups=('cosmic')
 depends=(
   'acpid'
   'adw-gtk-theme'
