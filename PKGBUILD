@@ -6,7 +6,6 @@ pkgdesc="Library and utility for displaying and configuring Wayland outputs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-randr"
 license=('MPL-2.0')
-groups=('cosmic')
 depends=('wayland')
 makedepends=(
   'cargo'
