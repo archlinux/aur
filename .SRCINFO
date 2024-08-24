@@ -1,0 +1,12 @@
+pkgbase = wmswitch
+	pkgdesc = Switch between window managers seamlessly
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/chardoncs/wmswitch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+
+pkgname = wmswitch
