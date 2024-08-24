@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=resources-git
-pkgver=1.5.1.r43.ge27c6b9
+pkgver=1.6.0.r13.g3d7286a
 pkgrel=1
 pkgdesc="Monitor your system resources and processes"
 arch=('x86_64')
-url="https://github.com/nokyan/resources"
+url="https://apps.gnome.org/Resources"
 license=('GPL-3.0-or-later')
 depends=('dmidecode' 'libadwaita' 'polkit')
 makedepends=('cargo' 'git' 'meson')
