@@ -18,6 +18,10 @@ prepare() {
   # ncurses fix, FS#57731
   sed -i '262i TERMTYPE *tp = (TERMTYPE *) (cur_term);' mdport.c
   sed -i 's/cur_term->type.Strings/tp->Strings/' mdport.c
+
+  # Use wmove instead of trying to accesses fields of an opaque struct
+  sed -i '/curscr->_curx = ox;/d' main.c
+  sed -i 's/curscr->_cury = oy;/wmove(curscr, oy, ox);/' main.c
 }
 
 build() {
