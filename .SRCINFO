@@ -1,7 +1,7 @@
 pkgbase = chicago95-plus-git
 	pkgdesc = Windows Plus! Theme Conversion for XFCE/Chicago95 (git version)
 	pkgver = r598.bdf5cf3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/grassmunk/Chicago95
 	arch = any
 	license = GPL

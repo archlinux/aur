@@ -1,15 +1,9 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 
-# NOTE: This package installs all theme components that can be installed system-wide
-#       except Plus! Theme Conversion that's available in separate package `chicago95-plus-git`.
-#       Manual steps are required to enable theme components as described in manual:
-#       https://github.com/grassmunk/Chicago95/blob/master/INSTALL.md#config_theme
-#       The Extras components are included in this package and are installed under `/usr/share/chicago95`.
-
 _basename=chicago95
 pkgname="${_basename}-plus-git"
 pkgver=r598.bdf5cf3
-pkgrel=1
+pkgrel=2
 pkgdesc="Windows Plus! Theme Conversion for XFCE/Chicago95 (git version)"
 arch=('any')
 url="https://github.com/grassmunk/Chicago95"
