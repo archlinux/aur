@@ -8,7 +8,6 @@ pkgdesc="The settings application for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-settings"
 license=('GPL-3.0-or-later')
-groups=('cosmic')
 depends=(
   'accountsservice'
   'cosmic-icons-git'
