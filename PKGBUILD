@@ -9,7 +9,7 @@
 _basename=chicago95
 pkgname="${_basename}-theme-git"
 pkgver=r598.bdf5cf3
-pkgrel=1
+pkgrel=2
 pkgdesc="A rendition of everyone's favorite 1995 Microsoft operating system for Linux (complete theme, git version)"
 arch=('any')
 url="https://github.com/grassmunk/Chicago95"
@@ -79,8 +79,8 @@ package() {
 	# Extras
 	cp -r Extras/* "$pkgdir/usr/share/chicago95"
 	cp sounds/chicago95-startup.desktop "$pkgdir/usr/share/chicago95"
-	ln -s $pkgdir/usr/share/chicago95/Chicago95.theme "$pkgdir/usr/share/xfce4/terminal/colorschemes/Chicago95.theme"
-	ln -s $pkgdir/usr/share/chicago95/Backgrounds "$pkgdir/usr/share/backgrounds/chicago95"
+	mv "$pkgdir/usr/share/chicago95/Chicago95.theme" "$pkgdir/usr/share/xfce4/terminal/colorschemes/Chicago95.theme"
+	mv "$pkgdir/usr/share/chicago95/Backgrounds" "$pkgdir/usr/share/backgrounds/chicago95"
 
 	# LibreOffice theme
 	LIBREOFFICETHEME=Extras/libreoffice-chicago95-iconset/iconsets/c95/images_chicago95.zip
