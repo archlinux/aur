@@ -5,7 +5,7 @@
 # Contributor: David Scholl <djscholl at gmail dot com>
 
 pkgname=leo
-pkgver=6.7.3
+pkgver=6.8.1
 pkgrel=1
 pkgdesc="Outliner, Editor, and Personal Information Manager"
 arch=('any')
@@ -20,8 +20,8 @@ depends=(
 	'python-meta'
 	'python-pyflakes'
 	'python-pylint'
-	'python-pyqt5'
-	'python-pyqtwebengine'
+	'python-pyqt6'
+	'python-pyqt6-webengine'
 	'python-pyshortcuts'
 	'python-sphinx'
 	'shared-mime-info')
@@ -38,7 +38,7 @@ source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source
         'remove-tests.patch'
         'leo.desktop'
         'leo.xml')
-sha256sums=('a558a88c43c1459edad60e2ef786362c2e264b1d72b75537733ada4064ce9a9e'
+sha256sums=('c6175497c3da65ad7eb20d63f2c94f1dc11096d053d2f5203221d96c16e22abf'
             'cc351848ffa6ce740c8cbb74f60363b6f4b3f3fccd90a09512e76900006f37fa'
             '4633876eb91eff206660359ee7da459211e8f87fd73ebbc680fd437c70b63467'
             '630852279324b0d9acf656c4684f16777d64f49b4062bd101c5cddbfc33c82cb')
