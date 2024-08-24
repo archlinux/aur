@@ -1,5 +1,5 @@
 pkgname=gforth-git
-pkgver=20231204
+pkgver=20240821
 pkgrel=1
 pkgdesc="Gforth is the Forth implementation of the GNU project."
 arch=(i686 x86_64)
