@@ -1,19 +1,18 @@
 pkgbase = comcom32
-	pkgdesc = 64 bit command interpreter for fdpp and dosemu2 (comcom64)
-	pkgver = 0.0.alpha.3.r282.g2147a36
+	pkgdesc = 32 bit command interpreter for fdpp and dosemu2
+	pkgver = 0.0.alpha.3.r339.g4e5190c
 	pkgrel = 1
 	url = https://github.com/dosemu2/comcom64
 	arch = any
 	license = GPL-3.0-or-later
-	makedepends = dj64
-	makedepends = git
-	makedepends = thunk_gen
-	makedepends = djstub
+	makedepends = djgpp-gcc
+	makedepends = djgpp-djcrx
 	provides = comcom64=0.0.alpha.3
 	provides = comcom32=0.0.alpha.3
+	conflicts = djgpp-djcrx-bootstrap
 	conflicts = comcom64
 	conflicts = comcom32
-	source = git+https://github.com/dosemu2/comcom64.git#commit=2147a36f7136c17fdfdcdc37a15d2c3527abfb4b
+	source = git+https://github.com/dosemu2/comcom64.git#commit=4e5190ce8d846abee6ffd79ee61dc77cd8509ba1
 	md5sums = SKIP
 	sha256sums = SKIP
 	b2sums = SKIP
