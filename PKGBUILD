@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Unicode and UTF-8 C++ library"
 arch=('x86_64')
 url="https://github.com/contour-terminal/libunicode"
-license=('Apache')
+license=('Apache-2.0')
 depends=('gcc-libs')
 makedepends=('git' 'cmake' 'ninja' 'unicode-character-database')
 source=("git+https://github.com/contour-terminal/libunicode.git#tag=v$pkgver")
