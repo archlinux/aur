@@ -1,17 +1,34 @@
 # Maintainer: Madison Lynch <madi@mxdi.xyz>
-pkgname="rah"
+pkgname=rah
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple AUR helper written in Rust"
-arch=("x86_64")
-url="https://deadgirl.dev/projects/rah"
-license=("MIT")
-depends=("pacman" "git")
-source=("${pkgname}-${pkgver}-amd64.tar.gz::https://deadgirl.dev/projects/rah/releases/${pkgname}-${pkgver}-amd64.tar.gz")
-md5sums=("SKIP")
+
+arch=(any)
+url=https://deadgirl.dev/projects/rah
+license=(MIT)
+
+makedepends=(rust)
+depends=(
+    gcc-libs
+    glibc
+    git
+    pacman
+)
+
+source=("${pkgname}-v${pkgver}-amd64.tar.gz::https://gitlab.com/deadgirl/rah/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+options=(!lto)
+md5sums=(SKIP)
+
+build() {
+    cd "$srcdir/$pkgname-v$pkgver"
+
+    cargo build --release
+}
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    install -Dm755 "./rah" "$pkgdir/usr/bin/rah"
-    install -Dm644 "./rah.8" "$pkgdir/usr/man/man8/rah.8"
+    cd "$srcdir/$pkgname-v$pkgver"
+
+    install -Dm755 "target/release/rah" "$pkgdir/usr/bin/rah"
+    install -Dm644 "doc/rah.8" "$pkgdir/usr/man/man8/rah.8"
 }
