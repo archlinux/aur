@@ -6,7 +6,6 @@ pkgdesc="libcosmic greeter for greetd, which can be run inside cosmic-comp"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-greeter"
 license=('GPL-3.0-or-later')
-groups=('cosmic')
 depends=(
   'cosmic-comp-git'
   'greetd'
