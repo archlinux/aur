@@ -1,6 +1,6 @@
 pkgbase = python-solara
 	pkgdesc = A pure Python, React-style web framework
-	pkgver = 1.37.1
+	pkgver = 1.37.2
 	pkgrel = 1
 	url = https://solara.dev
 	arch = any
@@ -30,8 +30,8 @@ pkgbase = python-solara
 	depends = python-watchdog
 	depends = python-watchfiles
 	depends = python-websockets
-	noextract = solara-1.37.1-py2.py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py2.py3/s/solara/solara-1.37.1-py2.py3-none-any.whl
-	sha256sums = 3938330a468802e88ea604fd0df6313edc9c6f069029f3035c7675c2cfef8a2a
+	noextract = solara-1.37.2-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/s/solara/solara-1.37.2-py2.py3-none-any.whl
+	sha256sums = 3d77408b94ea6b0497b6e7cd08b3714c3aeb2efa0d016774b896c4e9ef7f10bd
 
 pkgname = python-solara
