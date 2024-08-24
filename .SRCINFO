@@ -1,2 +1,13 @@
-arch = i686
-arch = x86_64
+pkgbase = swengine
+	pkgdesc = Download and apply live wallpapers with swww
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://www.github.com/eugenenoble2005/swengine
+	arch = x86_64
+	makedepends = dotnet-sdk
+	makedepends = git
+	depends = vlc
+	depends = ffmpeg
+	depends = swww-git
+
+pkgname = swengine
