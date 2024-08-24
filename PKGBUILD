@@ -1,23 +1,26 @@
 pkgname=mujoco
-pkgver=3.1.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Multi-Joint dynamics with Contact. A general purpose physics simulator."
 arch=('x86_64')
 url="https://www.mujoco.org"
 license=('Apache')
-depends=('libccd' 'libgl' 'glfw' 'tinyxml2' 'tinyobjloader' 'qhull')
-makedepends=('abseil-cpp' 'gtest' 'benchmark' 'cmake' 'git' 'eigen' 'lodepng')
+depends=('libgl' 'glfw' 'tinyxml2' 'qhull')
+makedepends=('abseil-cpp' 'benchmark' 'cmake' 'git' 'eigen' 'lodepng')
 source=("https://github.com/deepmind/mujoco/archive/refs/tags/$pkgver.tar.gz"
     "${pkgname}.patch")
-sha256sums=('75aa81e51365cabe79f16b477ac5e11bdcb65f7eb0cc1cac93a279785df6fdda'
-            '3ceb20c5b0dc37cf9be4da68f728b11f3085fdcbd895eb2885910228c4d3805f')
+sha256sums=('507da24187cbaf126c5729c0af8afd804235f6ea671280cae0edab0bcd6c119e'
+            '3a81ba031f9766e9f55040e404762b35580bb65718814b8e59b643703a6b0ff0')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
 
-  # Use as many system libs as possible
-  # Patch to use system qhull comes from https://github.com/conda-forge/staged-recipes/pull/19049
-  patch -Np1 -i "${srcdir}/${pkgname}.patch"
+  # Use as many system libs as possible.
+  # Had to build and statically link some dependencies because the build was
+  # failing. Feel free to investigate and fix the build to use shared libraries.
+  # Patch to use system qhull comes from
+  # https://github.com/conda-forge/staged-recipes/pull/19049
+  patch -Np2 -i "${srcdir}/${pkgname}.patch"
 }
 
 build() {

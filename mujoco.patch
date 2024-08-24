@@ -1,8 +1,7 @@
-diff --git a/cmake/MujocoDependencies.cmake b/cmake/MujocoDependencies.cmake
-index 4c15a91..b5e5925 100644
---- a/cmake/MujocoDependencies.cmake
-+++ b/cmake/MujocoDependencies.cmake
-@@ -79,6 +79,7 @@ set(BUILD_SHARED_LIBS
+diff -Naur src.old/mujoco-3.2.2/cmake/MujocoDependencies.cmake src.new/mujoco-3.2.2/cmake/MujocoDependencies.cmake
+--- src.old/mujoco-3.2.2/cmake/MujocoDependencies.cmake	2024-08-24 11:08:40.096456726 +0200
++++ src.new/mujoco-3.2.2/cmake/MujocoDependencies.cmake	2024-08-24 11:44:17.035325068 +0200
+@@ -90,6 +90,7 @@
      CACHE INTERNAL "Build SHARED libraries"
  )
  
@@ -10,7 +9,7 @@ index 4c15a91..b5e5925 100644
  if(NOT TARGET lodepng)
    FetchContent_Declare(
      lodepng
-@@ -103,9 +104,9 @@ set(QHULL_ENABLE_TESTING OFF)
+@@ -128,9 +129,9 @@
  
  findorfetch(
    USE_SYSTEM_PACKAGE
@@ -22,7 +21,7 @@ index 4c15a91..b5e5925 100644
    LIBRARY_NAME
    qhull
    GIT_REPO
-@@ -116,18 +117,22 @@ findorfetch(
+@@ -141,18 +142,23 @@
    qhull
    EXCLUDE_FROM_ALL
  )
@@ -45,6 +44,7 @@ index 4c15a91..b5e5925 100644
 +  target_include_directories(qhullstatic_r INTERFACE )
 +endif()
  
++find_package(tinyxml2 REQUIRED)
  set(tinyxml2_BUILD_TESTING OFF)
  findorfetch(
    USE_SYSTEM_PACKAGE
@@ -53,7 +53,7 @@ index 4c15a91..b5e5925 100644
    PACKAGE_NAME
    tinyxml2
    LIBRARY_NAME
-@@ -140,12 +145,10 @@ findorfetch(
+@@ -165,8 +171,6 @@
    tinyxml2
    EXCLUDE_FROM_ALL
  )
@@ -62,41 +62,16 @@ index 4c15a91..b5e5925 100644
  
  findorfetch(
    USE_SYSTEM_PACKAGE
--  OFF
-+  ON
-   PACKAGE_NAME
-   tinyobjloader
-   LIBRARY_NAME
-@@ -163,7 +166,7 @@ set(ENABLE_DOUBLE_PRECISION ON)
- set(CCD_HIDE_ALL_SYMBOLS ON)
- findorfetch(
-   USE_SYSTEM_PACKAGE
--  OFF
-+  ON
-   PACKAGE_NAME
-   ccd
-   LIBRARY_NAME
-@@ -176,19 +179,6 @@ findorfetch(
-   ccd
+@@ -202,8 +206,6 @@
+   SdfLib
    EXCLUDE_FROM_ALL
  )
--target_compile_options(ccd PRIVATE ${MUJOCO_MACOS_COMPILE_OPTIONS})
--target_link_options(ccd PRIVATE ${MUJOCO_MACOS_LINK_OPTIONS})
--
--# libCCD has an unconditional `#define _CRT_SECURE_NO_WARNINGS` on Windows.
--# TODO(stunya): Remove this after https://github.com/danfis/libccd/pull/77 is merged.
--if(WIN32)
--  if(MSVC)
--    # C4005 is the MSVC equivalent of -Wmacro-redefined.
--    target_compile_options(ccd PRIVATE /wd4005)
--  else()
--    target_compile_options(ccd PRIVATE -Wno-macro-redefined)
--  endif()
--endif()
+-target_compile_options(SdfLib PRIVATE ${MUJOCO_MACOS_COMPILE_OPTIONS})
+-target_link_options(SdfLib PRIVATE ${MUJOCO_MACOS_LINK_OPTIONS})
  
- if(MUJOCO_BUILD_TESTS)
-   set(ABSL_PROPAGATE_CXX_STD ON)
-@@ -203,7 +193,7 @@ if(MUJOCO_BUILD_TESTS)
+ set(ENABLE_DOUBLE_PRECISION ON)
+ set(CCD_HIDE_ALL_SYMBOLS ON)
+@@ -249,7 +251,7 @@
    set(ABSL_BUILD_TESTING OFF)
    findorfetch(
      USE_SYSTEM_PACKAGE
@@ -105,16 +80,7 @@ index 4c15a91..b5e5925 100644
      PACKAGE_NAME
      absl
      LIBRARY_NAME
-@@ -230,7 +220,7 @@ if(MUJOCO_BUILD_TESTS)
- 
-   findorfetch(
-     USE_SYSTEM_PACKAGE
--    OFF
-+    ON
-     PACKAGE_NAME
-     GTest
-     LIBRARY_NAME
-@@ -264,7 +254,7 @@ if(MUJOCO_BUILD_TESTS)
+@@ -310,7 +312,7 @@
  
    findorfetch(
      USE_SYSTEM_PACKAGE
@@ -123,7 +89,7 @@ index 4c15a91..b5e5925 100644
      PACKAGE_NAME
      benchmark
      LIBRARY_NAME
-@@ -283,6 +273,9 @@ endif()
+@@ -329,6 +331,9 @@
  
  if(MUJOCO_TEST_PYTHON_UTIL)
    add_compile_definitions(EIGEN_MPL2_ONLY)
@@ -133,23 +99,15 @@ index 4c15a91..b5e5925 100644
    if(NOT TARGET eigen)
      # Support new IN_LIST if() operator.
      set(CMAKE_POLICY_DEFAULT_CMP0057 NEW)
-diff --git a/cmake/MujocoOptions.cmake b/cmake/MujocoOptions.cmake
-index 998b966..213f422 100644
---- a/cmake/MujocoOptions.cmake
-+++ b/cmake/MujocoOptions.cmake
-@@ -86,7 +86,6 @@ get_mujoco_extra_link_options(EXTRA_LINK_OPTIONS)
+diff -Naur src.old/mujoco-3.2.2/sample/cmake/SampleDependencies.cmake src.new/mujoco-3.2.2/sample/cmake/SampleDependencies.cmake
+--- src.old/mujoco-3.2.2/sample/cmake/SampleDependencies.cmake	2024-08-24 11:08:40.109789958 +0200
++++ src.new/mujoco-3.2.2/sample/cmake/SampleDependencies.cmake	2024-08-24 10:56:07.838915940 +0200
+@@ -22,12 +22,12 @@
+ endif()
  
- if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR (CMAKE_CXX_COMPILER_ID MATCHES "Clang" AND NOT MSVC))
-   set(EXTRA_COMPILE_OPTIONS
--      -Werror
-       -Wall
-       -Wimplicit-fallthrough
-       -Wunused
-diff --git a/sample/cmake/SampleDependencies.cmake b/sample/cmake/SampleDependencies.cmake
-index 5e98243..88a7838 100644
---- a/sample/cmake/SampleDependencies.cmake
-+++ b/sample/cmake/SampleDependencies.cmake
-@@ -26,8 +26,8 @@ option(MUJOCO_SAMPLES_USE_SYSTEM_MUJOCO "Use installed MuJoCo version."
+ option(MUJOCO_SAMPLES_USE_SYSTEM_MUJOCO "Use installed MuJoCo version."
+-       ${DEFAULT_USE_SYSTEM_MUJOCO}
++       ON
  )
  unset(DEFAULT_USE_SYSTEM_MUJOCO)
  
@@ -160,7 +118,7 @@ index 5e98243..88a7838 100644
  
  set(MUJOCO_DEP_VERSION_glfw3
      7482de6071d21db77a7236155da44c172a7f6c9e # 3.3.8
-@@ -59,7 +59,7 @@ findorfetch(
+@@ -59,7 +59,7 @@
  )
  
  option(MUJOCO_EXTRAS_STATIC_GLFW
@@ -169,23 +127,10 @@ index 5e98243..88a7838 100644
  )
  if(MUJOCO_EXTRAS_STATIC_GLFW)
    set(BUILD_SHARED_LIBS_OLD ${BUILD_SHARED_LIBS})
-diff --git a/simulate/CMakeLists.txt b/simulate/CMakeLists.txt
-index 2358ef7..25e50e3 100644
---- a/simulate/CMakeLists.txt
-+++ b/simulate/CMakeLists.txt
-@@ -80,6 +80,7 @@ if(MUJOCO_HARDEN)
- endif()
- 
- # Fetch lodepng dependency.
-+find_package(lodepng REQUIRED)
- if(NOT TARGET lodepng)
-   FetchContent_Declare(
-     lodepng
-diff --git a/simulate/cmake/SimulateDependencies.cmake b/simulate/cmake/SimulateDependencies.cmake
-index fa539c2..eb0b95a 100644
---- a/simulate/cmake/SimulateDependencies.cmake
-+++ b/simulate/cmake/SimulateDependencies.cmake
-@@ -22,12 +22,12 @@ else()
+diff -Naur src.old/mujoco-3.2.2/simulate/cmake/SimulateDependencies.cmake src.new/mujoco-3.2.2/simulate/cmake/SimulateDependencies.cmake
+--- src.old/mujoco-3.2.2/simulate/cmake/SimulateDependencies.cmake	2024-08-24 11:08:40.109789958 +0200
++++ src.new/mujoco-3.2.2/simulate/cmake/SimulateDependencies.cmake	2024-08-24 10:56:46.058614877 +0200
+@@ -22,12 +22,12 @@
  endif()
  
  option(MUJOCO_SIMULATE_USE_SYSTEM_MUJOCO "Use installed MuJoCo version."
@@ -201,7 +146,7 @@ index fa539c2..eb0b95a 100644
  
  set(MUJOCO_DEP_VERSION_glfw3
      7482de6071d21db77a7236155da44c172a7f6c9e # 3.3.8
-@@ -59,7 +59,7 @@ findorfetch(
+@@ -59,7 +59,7 @@
  )
  
  option(MUJOCO_EXTRAS_STATIC_GLFW
