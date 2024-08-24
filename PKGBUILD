@@ -1,10 +1,11 @@
 # Maintainer: Entailz <entail-wraps0r at icloud dot com>
 
-pkgname=quickshell
-pkgver=0.1.0
+pkgname=quickshell-git
+pkgver=r304.f95e7db
 pkgrel=1
 pkgdesc='Simple and flexbile QtQuick based desktop shell toolkit.'
-arch=(x86_64 aarch64)
+arch=('any')
+conflicts=("quickshell")
 url='https://github.com/outfoxxed/quickshell'
 license=('GPL')
 depends=(
@@ -20,14 +21,25 @@ depends=(
 	cli11
 	google-breakpad
 )
+
 makedepends=(
 	ninja
 	cmake
 	pkgconf
 )
 
-source=("git+https://github.com/outfoxxed/quickshell.git")
-sha256sums=('SKIP')
+source=(
+	"git+https://github.com/outfoxxed/quickshell.git"
+)
+
+sha256sums=(
+	'SKIP'
+)
+
+pkgver() {
+	cd "$srcdir/quickshell"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
 	cd "${pkgname}"
