@@ -1,6 +1,6 @@
 # Maintainer: Leon Richardt <leon.richardt@gmail.com>
 pkgname=sway-overfocus
-pkgver=v0.2.3_fix
+pkgver=v0.2.4
 pkgrel=1
 pkgdesc='"Better" focus navigation for sway and i3'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/korreman/sway-overfocus"
 license=('MIT')
 makedepends=('cargo')
 source=("$pkgname-${pkgver//_/-}.tar.gz::https://github.com/korreman/$pkgname/archive/refs/tags/${pkgver//_/-}.tar.gz")
-sha512sums=('4ce513a5d1402656b7f6bfbe5d041e7a147e8f7348755f790e9075a29d78e08d98a877ef715249dfb4fd49eafc1bc30ebd2a070776b65f44ea66f9323fc4061e')
+sha512sums=('14e561fe6819f841492e6d86088f85155b2c80733784e79952cfc5ce2ce09f7433adc4b9b70115d97760ef1c78b77c2ea4eff6b53ffd683b7f374f9b37117895')
 
 
 # Not sure why, but the source directory inside $srcdir loses the "v" tag prefix.
