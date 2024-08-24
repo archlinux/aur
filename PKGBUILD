@@ -2,7 +2,7 @@
 pkgname=arch-sign-modules
 _pkgname=Arch-SKM
 pkgver=0.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Signed (In Tree & Out of Tree) Kernel Modules for linux linux-lts linux-hardened linux-zen + AUR kernels"
 arch=(any)
 url="https://github.com/itoffshore/Arch-SKM"
@@ -23,7 +23,9 @@ package() {
   cp scripts/* $pkgdir/usr/bin/
   cp Arch-Linux-PKGBUILD-example $pkgdir/usr/share/$pkgname/PKGBUILD.example
   cp -rf patches $pkgdir/usr/share/$pkgname/patches
+  cp -rf urlwatch $pkgdir/usr/share/$pkgname/urlwatch
   cp README.scripts.md $pkgdir/usr/share/$pkgname/README.scripts.md
+
   # license
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
 }
