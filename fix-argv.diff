@@ -1,5 +1,5 @@
 diff --git a/packages/compass-preferences-model/src/global-config.ts b/packages/compass-preferences-model/src/global-config.ts
-index 94362d8a6..611a9b05f 100644
+index 179ccc2e3..09b82244b 100644
 --- a/packages/compass-preferences-model/src/global-config.ts
 +++ b/packages/compass-preferences-model/src/global-config.ts
 @@ -195,8 +195,6 @@ export interface ParsedGlobalPreferencesResult {
@@ -51,7 +51,7 @@ index 94362d8a6..611a9b05f 100644
    }
    text += '\nSee the MongoDB Compass documentation for more details.\n';
 diff --git a/packages/compass/src/main/protocol-handling.ts b/packages/compass/src/main/protocol-handling.ts
-index 812261c22..3df06fc8f 100644
+index 827c4f18d..615b32a62 100644
 --- a/packages/compass/src/main/protocol-handling.ts
 +++ b/packages/compass/src/main/protocol-handling.ts
 @@ -13,9 +13,15 @@ async function appProtocolsConfig(): Promise<ProtocolsList> {
