@@ -1,7 +1,7 @@
 pkgbase = chicago95-theme-git
 	pkgdesc = A rendition of everyone's favorite 1995 Microsoft operating system for Linux (complete theme, git version)
 	pkgver = r598.bdf5cf3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/grassmunk/Chicago95
 	arch = any
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = chicago95-theme-git
 	optdepends = libcanberra: Sound theme
 	optdepends = qt5-styleplugins: QT theme
 	optdepends = ttf-ms-fonts: MS fonts
-	optdepends = lightdm-webkit-greeter: LightDM theme
+	optdepends = lightdm-webkit2-greeter: LightDM theme
 	provides = chicago95-theme
 	provides = chicago95-gtk-theme
 	provides = chicago95-icon-theme

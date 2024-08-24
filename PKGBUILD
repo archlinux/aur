@@ -9,7 +9,7 @@
 _basename=chicago95
 pkgname="${_basename}-theme-git"
 pkgver=r598.bdf5cf3
-pkgrel=2
+pkgrel=3
 pkgdesc="A rendition of everyone's favorite 1995 Microsoft operating system for Linux (complete theme, git version)"
 arch=('any')
 url="https://github.com/grassmunk/Chicago95"
@@ -19,7 +19,7 @@ optdepends=(
 	'libcanberra: Sound theme'
 	'qt5-styleplugins: QT theme'
 	'ttf-ms-fonts: MS fonts'
-	'lightdm-webkit-greeter: LightDM theme'
+	'lightdm-webkit2-greeter: LightDM theme'
 )
 provides=(
 	'chicago95-theme'
@@ -52,9 +52,11 @@ pkgver() {
 }
 
 build() {
-	if [ -d "$_basename/Extras/libreoffice-chicago95-iconset/iconsets/c95" ]; then
-		cd "$_basename/Extras/libreoffice-chicago95-iconset/iconsets/c95"
+	cd "$_basename"
+	if [ -d Extras/libreoffice-chicago95-iconset/iconsets/c95 ]; then
+		cd Extras/libreoffice-chicago95-iconset/iconsets/c95
 		zip -r images_chicago95.zip *
+		cd -
 	else
 		echo '[W] LibreOffice theme not found, skipping'
 	fi
