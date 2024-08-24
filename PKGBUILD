@@ -2,22 +2,22 @@
 
 _pkgname=libgeneral
 pkgname=$_pkgname-git
-pkgver=r33.f571dc2
-pkgrel=2
-pkgdesc="General stuff for tihmstar's projects - git version"
+pkgver=83.r0.g2c3cce0
+pkgrel=1
+pkgdesc='Common library for tihmstar tools - git version'
 arch=('x86_64')
 url="https://github.com/tihmstar/$_pkgname"
-license=('LGPL')
+license=('LGPL-2.1-only')
 makedepends=('git')
-provides=('libgeneral')
-conflicts=('libgeneral')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
