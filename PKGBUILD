@@ -7,21 +7,19 @@
 
 _target=x86_64-elf
 pkgname=$_target-gcc
-pkgver=14.1.0
+pkgver=14.2.0
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for x86_64-elf target'
 arch=(x86_64)
 url='http://gcc.gnu.org/'
-license=('GPL' 'LGPL' 'FDL')
+license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
 depends=("$_target-binutils" 'zlib' 'libmpc')
 makedepends=('gmp' 'mpfr')
 options=(!emptydirs)
-conflicts=("$_target-gcc")
-changelog='.Changelog'
 source=("https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz.sig")
 
-sha256sums=('e283c654987afe3de9d8080bc0bd79534b5ca0d681a73a11ff2b5d3767426840'
+sha256sums=('a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9'
             'SKIP')
 
 _basedir=gcc-$pkgver
