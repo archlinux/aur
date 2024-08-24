@@ -1,7 +1,7 @@
 pkgbase = chicago95-theme
-	pkgdesc = A rendition of everyone's favorite 1995 Microsoft operating system for Linux (complete theme, git version)
+	pkgdesc = A rendition of everyone's favorite 1995 Microsoft operating system for Linux (complete theme, stable version)
 	pkgver = 3.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/grassmunk/Chicago95
 	arch = any
 	license = GPL
