@@ -33,9 +33,6 @@ build() {
 }
 
 package() {
-	generaldest="/usr/share/webapps/piped"
-	dest="${generaldest}/proxy"
-
 	install -Dm644 "${srcdir}/sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/piped-proxy.conf"
 	install -Dm644 "${srcdir}/systemd.service" "${pkgdir}/usr/lib/systemd/system/piped-proxy.service"
 
