@@ -14,11 +14,10 @@ depends=('gcc-libs')
 options=('staticlibs' '!strip')
 conflicts=(
 	'google-breakpad-git'
-	'google-breakpad'
 )
 
 provides=(
-	'google-breakpad-fixed'
+	'google-breakpad'
 )
 
 source=(
