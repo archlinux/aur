@@ -4,34 +4,31 @@ pkgname=quickshell
 pkgver=r304.f95e7db
 pkgrel=1
 pkgdesc='Simple and flexbile QtQuick based desktop shell toolkit.'
-arch=('any')
-conflicts=("quickshell")
+arch=(x86_64 aarch64)
 url='https://github.com/outfoxxed/quickshell'
 license=('GPL')
 depends=(
-	qt6-declarative
-	qt6-base
-	jemalloc
-	qt6-svg
-	libpipewire
-	qt6-wayland
-	wayland-protocols
-	libxcb
-	wayland
-	cli11
-	google-breakpad
+	'qt6-declarative'
+	'qt6-base'
+	'jemalloc'
+	'qt6-svg'
+	'libpipewire'
+	'qt6-wayland'
+	'wayland-protocols'
+	'libxcb'
+	'wayland'
+	'cli11'
+	'google-breakpad-fixed'
 )
-
 makedepends=(
-	ninja
-	cmake
-	pkgconf
+	'ninja'
+	'cmake'
+	'pkgconf'
 )
 
 source=(
 	"git+https://github.com/outfoxxed/quickshell.git"
 )
-
 sha256sums=(
 	'SKIP'
 )
@@ -43,7 +40,6 @@ pkgver() {
 
 build() {
 	cd "${pkgname}"
-
 	QTWAYLANDSCANNER="/usr/lib/qt6/qtwaylandscanner" cmake -GNinja -B build \
 		-DCMAKE_BUILD_TYPE="RelWithDebInfo"
 
