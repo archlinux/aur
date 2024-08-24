@@ -1,6 +1,6 @@
 # Maintainer: Madison Lynch <madi@mxdi.xyz>
 pkgname="rah"
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A simple AUR helper written in Rust"
 arch=("x86_64")
