@@ -7,6 +7,8 @@ pkgbase = exodus-bundler
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
+	optdepends = musl
+	optdepends = dietlibc
 	provides = exodus-bundler=2.0.4
 	conflicts = exodus
 	source = exodus-2.0.4.tar.gz::https://github.com/Intoli/exodus/archive/v2.0.4.tar.gz

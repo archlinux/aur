@@ -11,6 +11,7 @@ url="https://github.com/$_owner/$_pkgname"
 license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
+optdepends=('musl' 'dietlibc')
 provides=("$pkgname=$pkgver")
 conflicts=('exodus')
 source=($_pkgname-$pkgver.tar.gz::"https://github.com/$_owner/$_pkgname/archive/v$pkgver.tar.gz")
