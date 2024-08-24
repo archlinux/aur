@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-recurring-ical-events
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Python library for recurrence of ical events based on icalendar"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=(
   'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('49234566066e5ac6a2f4d8d940729a3b21078e382debfd004739c9897fab16b6')
+sha256sums=('a4382f69002afc514ba94be8bc6aa8a678bd4b951c0b1867f7af2da5f6b61731')
 
 build() {
   cd "$pkgname-$pkgver"
