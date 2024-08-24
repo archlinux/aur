@@ -1,7 +1,7 @@
 # Maintainer: Margret Riegert <margret at eowyn dot net>
 
 pkgname=crystal-nightly
-pkgver=20240823
+pkgver=20240824
 pkgrel=1
 
 pkgdesc="The Crystal Programming Language, nightly binaries"
@@ -22,7 +22,7 @@ provides=('crystal' 'shards')
 
 source=("$pkgname-$pkgver.tar.gz::https://artifacts.crystal-lang.org/dist/crystal-nightly-linux-$CARCH.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('ae1bfe66c4588f1b5963982b37418e219257a07a2f3a647b8ba9c2d9fc13cd40')
+sha256sums=('1f2b528e61d13e3e9120157fbe52e6cca83e673ce00900ffa8554d68bfd8233f')
 options=("!strip")
 PKGEXT='.pkg.tar'
 
