@@ -173,8 +173,6 @@ prepare() {
     ### Running make gconfig
 	[[ -z "$_makegconfig" ]] || make gconfig
 
-    ### Save configuration for later reuse
-	cat .config > "${startdir}/config.last"
 }
 
 build() {
