@@ -1,0 +1,11 @@
+[Unit]
+Description=The core component behind Piped, and other alternative frontends!
+After=network.target
+
+[Service]
+User=piped
+ExecStart=/usr/bin/piped-backend
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
