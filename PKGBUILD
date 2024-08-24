@@ -1,8 +1,10 @@
+# Maintainer: a821 at mail de
+
 pkgname=litecoin-bin
 pkgver=0.21.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
-url="http://www.litecoin.org/"
+url="https://www.litecoin.org/"
 license=('MIT')
 pkgdesc="Peer-to-peer digital currency, official binary release (includes litecoin-qt and litecoind)"
 source=(
@@ -37,7 +39,7 @@ depends=(
   zlib
 )
 provides=(${pkgname%-bin})
-conflicts=(${pkgname%-bin})
+conflicts=(${pkgname%-bin} 'litecoin-qt')
 
 package() {
   install -Dm755 litecoin-$pkgver/bin/*litecoin* -t "$pkgdir/usr/bin"
@@ -47,4 +49,3 @@ package() {
   install -Dm644 litecoin128.png "$pkgdir"/usr/share/pixmaps/litecoin128.png
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
