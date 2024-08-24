@@ -1,7 +1,7 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 
 # NOTE: This package installs all theme components that can be installed system-wide
-#       except Plus! Theme Conversion that's available in separate package `chicago95-plus-git`.
+#       except Plus! Theme Conversion that's available in separate package `chicago95-plus[-git]`.
 #       Manual steps are required to enable theme components as described in manual:
 #       https://github.com/grassmunk/Chicago95/blob/master/INSTALL.md#config_theme
 #       The Extras components are included in this package and are installed under `/usr/share/chicago95`.
@@ -9,7 +9,7 @@
 _basename=chicago95
 pkgname="${_basename}-theme-git"
 pkgver=r598.bdf5cf3
-pkgrel=3
+pkgrel=4
 pkgdesc="A rendition of everyone's favorite 1995 Microsoft operating system for Linux (complete theme, git version)"
 arch=('any')
 url="https://github.com/grassmunk/Chicago95"
@@ -20,6 +20,7 @@ optdepends=(
 	'qt5-styleplugins: QT theme'
 	'ttf-ms-fonts: MS fonts'
 	'lightdm-webkit2-greeter: LightDM theme'
+	'chicago95-plus: Plus! theme generator'
 )
 provides=(
 	'chicago95-theme'
