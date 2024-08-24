@@ -4,7 +4,6 @@ pkgbase = cosmic-bg-git
 	url = https://github.com/pop-os/cosmic-bg
 	arch = x86_64
 	arch = aarch64
-	groups = cosmic
 	license = MPL-2.0
 	makedepends = cargo
 	makedepends = clang

@@ -8,7 +8,6 @@ pkgdes="COSMIC session service which applies backgrounds to displays."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-bg"
 license=('MPL-2.0')
-groups=('cosmic')
 depends=(
   'hicolor-icon-theme'
   'libxkbcommon'
