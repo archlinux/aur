@@ -8,12 +8,14 @@
 #### Setup, don't touch :^)
 _where="${startdir:-$(pwd)}"
 
+_devenv=false
+
 _generic_release=false
 
 # hack taken from wine-tkg PKGBUILD, real pkgrel is the eval one
-pkgver=9.15
+pkgver=9.15.w233.s5eeb4b7
 pkgrel=1
-eval pkgrel=3
+eval pkgrel=4
 
 ################################################################################################################################
 ################################################################################################################################
@@ -24,12 +26,16 @@ eval pkgrel=3
 ## apply staging patches?
 _use_staging=true
 
-## if staging patches are to be applied, what patches to omit?
-## e.g. "-W Compiler_Warnings -W user32-. . ."
-_disabled_staging=""
+## if staging patches are to be applied, what (array of) patches to apply?
+## if unset, apply all
+_enabled_staging=()
+
+## if all staging patches are to be applied, what (array of) patches to omit?
+## e.g. "Compiler_Warnings user32-. . ."
+_disabled_staging=()
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="08-16-2024-3af5a02a-a90554bb"
+_patchbase_tag="08-24-2024-6e15604c-5eeb4b76"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the custompatches folder
@@ -39,8 +45,15 @@ _custompatches=false
 
 ## uses wine/staging master if empty, uses given commit or tag if set
 ## only applies if _custompatches is true, otherwise overwritten by upstream commits from patchbase repo
-_desired_wine_commit=3af5a02a83b5b63dae7070c259fcebf46761988d
-_desired_staging_commit=a90554bb0489659c0ab632bb6a263ab4198e9985
+_desired_wine_commit=6e15604c48acd63dd8095a4ce2fd011cb3be96db
+_desired_staging_commit=5eeb4b76d6f460456238582d5e3fc200dcfae1f6
+
+## (with custompatches): ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
+_use_staging_upstream=false
+
+## wine/staging upstream urls
+_wine_git="https://gitlab.winehq.org/wine/wine.git"
+_staging_git="https://github.com/wine-staging/wine-staging.git"
 
 ## .a libs which may be required for external programs such as winestreamproxy
 _install_static=true
@@ -53,7 +66,7 @@ _strip_package=true
 
 _use_clang=true
 
-_use_llvm_mingw=true
+_use_mingw=llvm
 
 ## (true: wow64) leave empty unless you want to manually change the type of build
 _wow64build=
@@ -81,8 +94,8 @@ pkgname=wine-osu-spectator"${_wowname}"
 pkgdesc="A compatibility layer for running Windows programs, but with osu! specific patches"
 if [ "$_wow64build" = "true" ]; then pkgdesc+=" (WoW64 version)"; fi
 
-provides=(wine-osu-spectator"${_wowname}")
-conflicts=(wine-osu-spectator"${_wowname}")
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 
 install=wine.install
 url="http://www.winehq.com"
@@ -99,8 +112,8 @@ source=(
   "lto-fixup.patch"
   "mingw-gcc-float-precision-fix.patch"
   "buildiswow64"
-  "git+https://gitlab.winehq.org/wine/wine.git#commit=${_desired_wine_commit:-master}"
-  "git+https://github.com/wine-staging/wine-staging.git#commit=${_desired_staging_commit:-master}"
+  "wine::git+${_wine_git}#commit=${_desired_wine_commit:-master}"
+  "wine-staging::git+${_staging_git}#commit=${_desired_staging_commit:-master}"
 )
 
 sha512sums=(
@@ -203,18 +216,19 @@ optdepends=(
 )
 
 pkgver() {
-  cd "${srcdir}/${pkgname}" || true
-  git describe --tags --abbrev=0 | cut -f2 -d'-'
+  _pkgver=$(git -C "${srcdir}"/"${pkgname}" describe --tags --abbrev=0 | cut -f2 -d'-')
+  _whash=$(git -C "${srcdir}"/"${pkgname}" rev-list --count --cherry-pick wine-"${_pkgver}"...HEAD)
+  _shash=${_desired_staging_commit:0:7}
+
+  printf '%s%s%s' "${_pkgver:?}" ".w${_whash:?}" "$(if [ "${_apply_staging}" != "false" ]; then echo -n ".s${_shash:?}"; fi)"
 }
 
 if [ "${_wow64build}" != "true" ]; then
   depends+=(lib32-libxkbcommon libvulkan.so=1-32 lib32-gnutls lib32-libxcomposite lib32-libpulse lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
   makedepends+=(lib32-wayland lib32-gtk3 lib32-attr lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-lib lib32-gst-plugins-base-libs lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2 lib32-libcups)
   optdepends+=(lib32-libxinerama lib32-giflib lib32-libpng lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
-  if [ "${_use_clang}" = "true" ]; then makedepends+=(lib32-llvm-libs); fi
+  if [ "${_use_clang}" = "true" ] || [ "${_use_mingw}" = "llvm" ]; then makedepends+=(lib32-llvm-libs); fi
 fi
-
-makedepends=("${makedepends[@]}" "${depends[@]}")
 
 if [ "${_use_clang}" = "true" ]; then
   makedepends+=(clang llvm-libs)
@@ -222,7 +236,7 @@ if [ "${_use_clang}" = "true" ]; then
   _cc="/usr/bin/clang"
   _cxx="/usr/bin/clang++"
 
-  _LTO_FLAGS="-flto=full -Wl,--flto=full"
+  _LTO_FLAGS="-flto -Wl,--flto"
 else
   _cc="/usr/bin/gcc"
   _cxx="/usr/bin/g++"
@@ -230,7 +244,7 @@ else
   _LTO_FLAGS="-fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto -Wl,-flto"
 fi
 
-if [ "${_use_llvm_mingw}" = "true" ]; then
+if [ "${_use_mingw}" = "llvm" ]; then
   makedepends+=(llvm-mingw-w64-toolchain)
 
   _cross64="x86_64-w64-mingw32-clang"
@@ -238,21 +252,38 @@ if [ "${_use_llvm_mingw}" = "true" ]; then
   _cross32="i686-w64-mingw32-clang"
   _crossxx32="i686-w64-mingw32-clang++"
 
-  _CROSS_PATH="/opt/llvm-mingw/bin":"${PATH}"
+  if [ -f "/opt/llvm-mingw/bin/clang" ]; then
+    export _llvmcrtpath="/opt/llvm-mingw/bin"
+  elif [ -f "/opt/llvm-mingw/llvm-mingw-msvcrt/bin/clang" ]; then
+    export _llvmcrtpath="/opt/llvm-mingw/llvm-mingw-msvcrt/bin"
+  else
+    export _llvmcrtpath="/opt/llvm-mingw/llvm-mingw-ucrt/bin"
+  fi
+
+  _CROSS_PATH="${_llvmcrtpath}":"${PATH}"
+elif [ "${_use_mingw}" = "clang" ]; then
+  makedepends+=(clang llvm-libs)
+
+  _cross64="/usr/bin/clang"
+  _crossxx64="/usr/bin/clang++"
+  _cross32="/usr/bin/clang"
+  _crossxx32="/usr/bin/clang++"
+
+  _LTO_FLAGS=""
+
+  _CROSS_PATH="${PATH}"
 else
-  makedepends+=(mingw-w64-gcc)
+  makedepends+=(mingw-w64-binutils mingw-w64-gcc mingw-w64-crt mingw-w64-headers mingw-w64-winpthreads)
 
   _cross64="x86_64-w64-mingw32-gcc"
   _crossxx64="x86_64-w64-mingw32-g++"
   _cross32="i686-w64-mingw32-gcc"
   _crossxx32="i686-w64-mingw32-g++"
 
-  if [[ "${PATH}" =~ "/opt/llvm-mingw/bin" ]]; then
-    _CROSS_PATH="$(echo "${PATH}" | sed 's/\/opt\/llvm-mingw\/bin//g')" || _failure
-  else
-    _CROSS_PATH="${PATH}"
-  fi
+  _CROSS_PATH="${PATH}"
 fi
+
+makedepends=("${makedepends[@]}" "${depends[@]}")
 
 # exported at the start of every function
 _set_vars() {
@@ -264,7 +295,7 @@ _set_vars() {
   #_GRAPHITE_FLAGS="-floop-nest-optimize -fgraphite-identity -floop-strip-mine"
   #_OPTIMIZE_HARDER_FLAGS="-fipa-pta -fgcse-sm -fgcse-las -fira-loop-pressure" # -fsched-pressure -fsched-spec-load
 
-  _common_cflags="${_CPU_TARGET} -O3 -pipe -fomit-frame-pointer -fwrapv -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion -w"
+  _common_cflags="${_common_64_cflags:-} ${_common_32_cflags:-} ${_CPU_TARGET} -O2 -pipe -fomit-frame-pointer -fno-strict-aliasing -fwrapv -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion -w"
   _native_common_cflags="${_LTO_FLAGS}" # only for the non-mingw side
 
   export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
@@ -293,24 +324,51 @@ _set_vars() {
 }
 
 _set_vars64() {
-  if [ "${_use_llvm_mingw}" = "true" ]; then
-    export PKG_CONFIG_LIBDIR=/opt/llvm-mingw/x86_64-w64-mingw32/lib/pkgconfig:/usr/lib/pkgconfig
-    export PKG_CONFIG_PATH=$PKG_CONFIG_LIBDIR:$PKG_CONFIG_PATH_CUSTOM
+  PKG_CONFIG_LIBDIR="/usr/lib/pkgconfig:/usr/share/pkgconfig"
+  if [ "${_use_mingw}" = "llvm" ]; then
+    PKG_CONFIG_LIBDIR="/opt/llvm-mingw/x86_64-w64-mingw32/lib/pkgconfig:$PKG_CONFIG_LIBDIR"
   fi
+  export PKG_CONFIG_PATH="$PKG_CONFIG_LIBDIR" PKG_CONFIG_LIBDIR
+
+  _common_64_cflags=""
+  _common_32_cflags=""
+  _set_vars
 
   export CROSSCC="${x86_64_CC}"
 }
 
 _set_vars32() {
-  if [ "${_use_llvm_mingw}" = "true" ]; then
-    export PKG_CONFIG_LIBDIR=/opt/llvm-mingw/i686-w64-mingw32/lib/pkgconfig:/usr/lib32/pkgconfig
-    export PKG_CONFIG_PATH=$PKG_CONFIG_LIBDIR:$PKG_CONFIG_PATH_CUSTOM
+  PKG_CONFIG_LIBDIR="/usr/lib32/pkgconfig:/usr/share/pkgconfig"
+  if [ "${_use_mingw}" = "llvm" ]; then
+    PKG_CONFIG_LIBDIR="/opt/llvm-mingw/i686-w64-mingw32/lib/pkgconfig:$PKG_CONFIG_LIBDIR"
   fi
+  export PKG_CONFIG_PATH="$PKG_CONFIG_LIBDIR" PKG_CONFIG_LIBDIR
 
   # lib32 fsync doesn't compile with clang due to undefined atomic ops otherwise (ntdll.so)
   if [ "${_use_clang}" = "true" ]; then export I386_LIBS="-latomic"; fi
 
+  _common_64_cflags=""
+  _common_32_cflags=""
+  _set_vars
+
   export CROSSCC="${i386_CC}"
+}
+
+### ccache configuration (taken from https://raw.githubusercontent.com/openglfreak/wine-tkg-userpatches/next/config/ccache.cfg)
+_prep_ccache() {
+  export _compilerhash="$(md5sum "$(command -v "${_cc}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross64}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross32}")" | cut -d ' ' -f 1)"
+  export _confcachedir="${_where}"/.confcaches
+  
+  export CCACHE_DIR="${XDG_CACHE_HOME:-${HOME}/.cache}/ccache/wine"
+  mkdir -p "${CCACHE_DIR}"
+  export CCACHE_COMPILERCHECK="string:${_compilerhash}" \
+         CCACHE_BASEDIR="${srcdir}"
+  ccache --set-config=compression=true \
+         --set-config=compression_level=1 \
+         --set-config=sloppiness=file_macro,time_macros \
+         --set-config=hash_dir=false \
+         --set-config=inode_cache=true \
+         --set-config=temporary_dir="${CCACHE_DIR}/tmp"
 }
 
 prepare() { _set_vars;
@@ -320,15 +378,19 @@ prepare() { _set_vars;
   ## Removes pkg dir if already existing
   rm -rf "${_where}"/pkg || true
 
-  ## Source base re-configuration
+  ## Rename our working copy of the wine source
+  mv "${srcdir}"/wine "${srcdir}"/"${pkgname}" || _failure
 
+  ## Source base re-configuration
   _desired_wine_commit=${_desired_wine_commit:-master}
   _desired_staging_commit=${_desired_staging_commit:-master}
 
   if [ "${_custompatches}" != "true" ]; then
     _patchbase_wine_commit=$(cat "${srcdir}"/wine-osu-patches/wine-commit)
     _patchbase_staging_commit=$(cat "${srcdir}"/wine-osu-patches/staging-commit)
-    _disabled_staging="$(cat "${srcdir}"/wine-osu-patches/staging-exclude)"
+    if [ -f "${srcdir}"/wine-osu-patches/staging-exclude ]; then
+      IFS=" " read -r -a _disabled_staging <<< "$(sed -E "s/-W\ //g" "${srcdir}"/wine-osu-patches/staging-exclude)"
+    fi
     if [ "${_autoupdate}" != "true" ]; then
       _desired_wine_commit=$_patchbase_wine_commit
       _desired_staging_commit=$_patchbase_staging_commit
@@ -337,10 +399,27 @@ prepare() { _set_vars;
     msg "Using custom patches"
   fi
 
-  ## Mainline setup
+  ## Staging setup
 
-  ## Rename our working copy of the wine source
-  mv "${srcdir}"/wine "${srcdir}"/"${pkgname}" || _failure
+  if [ "${_autoupdate}" != "true" ]; then
+    cd "${srcdir}"/wine-staging || _failure
+    git reset --hard "${_desired_staging_commit}" || _failure
+
+    if [ "${_custompatches}" = "true" ]; then
+      _patchbase_staging_commit=$(git rev-parse HEAD)
+
+      if [ "${_use_staging}" = "true" ] && [ "${_use_staging_upstream}" = "true" ]; then
+        _patchbase_wine_commit="$(cat "${srcdir}"/wine-staging/staging/upstream-commit)"
+        _desired_wine_commit=$_patchbase_wine_commit
+      fi
+    fi
+
+    sed -i "s/^_desired_staging_commit=.*$/_desired_staging_commit=${_patchbase_staging_commit}/g" "${_where}/PKGBUILD"
+  fi
+
+  msg2 "Wine staging at: $_patchbase_staging_commit"
+
+  ## Mainline setup
 
   if [ "${_autoupdate}" != "true" ]; then
     cd "${srcdir}"/"${pkgname}" || _failure
@@ -355,21 +434,6 @@ prepare() { _set_vars;
 
   msg2 "Wine mainline at: $_patchbase_wine_commit"
 
-  ## Staging setup
-
-  if [ "${_autoupdate}" != "true" ]; then
-    cd "${srcdir}"/wine-staging || _failure
-    git reset --hard "${_desired_staging_commit}" || _failure
-
-    if [ "${_custompatches}" = "true" ]; then
-      _patchbase_staging_commit=$(git rev-parse HEAD)
-    fi
-
-    sed -i "s/^_desired_staging_commit=.*$/_desired_staging_commit=${_patchbase_staging_commit}/g" "${_where}/PKGBUILD"
-  fi
-
-  msg2 "Wine staging at: $_patchbase_staging_commit"
-
   cd "${srcdir}" || _failure
 
   ## Patching setup
@@ -378,14 +442,20 @@ prepare() { _set_vars;
   printf "Wine commit: %s\nStaging commit: %s\n" "${_patchbase_wine_commit}" "${_patchbase_staging_commit}" > "${_where}"/patchlog.txt
 
   ## Apply wine-staging patchset
+  if [ -f "${srcdir}"/wine-staging/patches/patchinstall.sh ]; then
+		staging_patcher="${srcdir}"/wine-staging/patches/patchinstall.sh
+	else
+		staging_patcher="${srcdir}"/wine-staging/staging/patchinstall.py
+	fi
+
+  _enabled_staging=("${_enabled_staging[@]:-"--all"}")
+
   if [ "${_use_staging}" != "false" ]; then
     msg2 "Applying staging patches"
     printf "\nApplying staging patches\n\n" >> "${_where}"/patchlog.txt
-    pushd wine-staging/staging >/dev/null || _failure
-    # shellcheck disable=SC2086
-    ./patchinstall.py DESTDIR="${srcdir}"/"${pkgname}" --no-autoconf --all $_disabled_staging &>> "${_where}"/patchlog.txt || \
+    # shellcheck disable=SC2048,SC2086
+    "${staging_patcher[@]}" DESTDIR="${srcdir}"/"${pkgname}" --no-autoconf "${_enabled_staging[@]}" ${_disabled_staging[*]/#/-W } &>> "${_where}"/patchlog.txt || \
         _failure "Error applying staging patches, check patchlog.txt for info."
-    popd >/dev/null || _failure
   fi
 
   ## Apply patches
@@ -398,14 +468,14 @@ prepare() { _set_vars;
     patchdir="${_where}/custompatches"
     echo -n "${_desired_wine_commit}" > "${patchdir}/wine-commit"
     echo -n "${_desired_staging_commit}" > "${patchdir}/staging-commit"
-    echo -n " ${_disabled_staging}" > "${patchdir}/staging-exclude"
+    echo -n "${_disabled_staging[@]/#/-W }" > "${patchdir}/staging-exclude"
   else
     patchdir="${srcdir}/wine-osu-patches"
   fi
 
   patchlist=()
 
-  if [ "${_use_llvm_mingw}" != "true" ]; then patchlist+=("${srcdir}"/mingw-gcc-float-precision-fix.patch); fi
+  if [ "${_use_mingw}" != "llvm" ] && [ "${_use_mingw}" != "clang" ]; then patchlist+=("${srcdir}"/mingw-gcc-float-precision-fix.patch); fi
   if [ "${_use_clang}" != "true" ]; then patchlist+=("${srcdir}"/lto-fixup.patch); fi
 
   mapfile -t patchlist_tmp < <(find "${patchdir}" -type f -regex ".*\.patch" | LC_ALL=C sort -f)
@@ -432,10 +502,17 @@ prepare() { _set_vars;
   if [ -e tools/make_specfiles ]; then
     tools/make_specfiles
   fi
+
+  _prep_ccache
   autoreconf -fiv
+
+  if [ "${_devenv}" = "true" ] && ! [ -d "${_confcachedir}" ]; then
+    mkdir "${_confcachedir}" || \
+        _failure "Couldn't create an autoconf cache directory in ${_confcachedir}. This shouldn't have happened."
+  fi
 }
 
-_configure64() { _set_vars; _set_vars64;
+_configure64() { _set_vars64;
   cd "${build64dir}" || _failure
 
   msg2 "Configuring Wine-64"
@@ -444,7 +521,7 @@ _configure64() { _set_vars; _set_vars64;
     "${_wine64opts[@]}" || _failure "Wine-64 configure failed; check ${build64dir}/config.log for more information"
 }
 
-_configure32() { _set_vars; _set_vars32;
+_configure32() { _set_vars32;
   cd "${build32dir}" || _failure
 
   msg2 "Configuring Wine-32"
@@ -454,21 +531,21 @@ _configure32() { _set_vars; _set_vars32;
 }
 
 # Needed for _SINGLE_MAKE build
-_tools64() { _set_vars; _set_vars64;
+_tools64() { _set_vars64;
   cd "${build64dir}" || _failure
 
   msg2 "Building Wine-64 tools"
 
   shopt -s globstar
   # don't use lto to speed up tools compilation
-  export _TOOLS_FLAGS="${CPPFLAGS} ${_CPU_TARGET} -O1 -pipe -fno-lto -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=return-mismatch -Wno-error=int-conversion -w"
+  export _TOOLS_FLAGS="${CPPFLAGS} ${_CPU_TARGET} -O1 -pipe -fno-lto -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -w"
   for mkfile in tools/Makefile tools/**/Makefile; do
     "$@" -C "${mkfile%/Makefile}" -j$(($(nproc) + 1)) CFLAGS="${_TOOLS_FLAGS}" LDFLAGS="${_TOOLS_FLAGS}"
   done
   chmod -R +x "${build64dir}"/tools
 }
 
-_build64() { _set_vars; _set_vars64;
+_build64() { _set_vars64;
   cd "${build64dir}" || _failure
 
   msg2 "Building Wine-64"
@@ -476,7 +553,7 @@ _build64() { _set_vars; _set_vars64;
   make -j$(($(nproc) + 1)) || _failure "Compilation failed"
 }
 
-_build32() { _set_vars; _set_vars32;
+_build32() { _set_vars32;
   cd "${build32dir}" || _failure
 
   msg2 "Building Wine-32"
@@ -492,47 +569,56 @@ build() { _set_vars;
     --with-x
     --with-gstreamer
     --with-wayland
+    --silent
     --enable-silent-rules
     --without-oss
     --without-coreaudio
     --without-cups
     --without-sane
+    --without-gphoto
   )
 
   _wine64opts=(
     --libdir=/opt/"${pkgname}"/lib64
     --with-mingw="${x86_64_CC}"
   )
+  _wine32opts=()
 
   if [ "${_wow64build}" = "true" ]; then
     _wine64opts+=(--enable-archs="x86_64,i386")
   else
     _wine64opts+=(--enable-win64)
 
-    _wine32opts=(
+    _wine32opts+=(
       --libdir=/opt/"${pkgname}"/lib
       --with-wine64="${build64dir}"
       --with-mingw="${i386_CC}" 
     )
   fi
 
+  if [ "${_devenv}" = "true" ]; then
+    _sharedopts+=(--config-cache)
+    _wine64opts+=(--cache-file="${_confcachedir}"/"${pkgver%.w*}-${pkgrel}-${_compilerhash}-64".cache)
+    _wine32opts+=(--cache-file="${_confcachedir}"/"${pkgver%.w*}-${pkgrel}-${_compilerhash}-32".cache)
+  fi
+
   local _old_SOURCE_DATE_EPOCH="$SOURCE_DATE_EPOCH"
   export SOURCE_DATE_EPOCH=0
 
-  export _TMP_VARFILE="$(mktemp)"
-  trap 'rm -f -- "$_TMP_VARFILE"' EXIT
-  { ( unset MAKEFLAGS; unset MFLAGS; set ); echo; set +o; } >"$_TMP_VARFILE"
-
   rm -rf "${build64dir}" || true
-  mkdir "${build64dir}"
+  mkdir "${build64dir}" || true
 
   ## don't build lib32 for wow64 builds
   if [ "${_wow64build}" = "true" ]; then
     _configure64
     _build64
   else
+    export _TMP_VARFILE="$(mktemp)"
+    trap 'rm -f -- "$_TMP_VARFILE"' EXIT
+    { ( unset MAKEFLAGS; unset MFLAGS; set ); echo; set +o; } >"$_TMP_VARFILE"
+
     rm -rf "${build32dir}" || true
-    mkdir "${build32dir}"
+    mkdir "${build32dir}" || true
     make -f "$_where"/Makefile.single -j$(($(nproc) + 1))
   fi
 
@@ -547,7 +633,7 @@ package() { _set_vars;
   fi
 
   if [ "${_wow64build}" != "true" ]; then
-    export CROSSCC="${i386_CC}"
+    _set_vars32
     msg2 "Packaging Wine-32"
     cd "${build32dir}" || _failure
     make -j$(($(nproc) + 1)) \
@@ -556,7 +642,7 @@ package() { _set_vars;
       dlldir="${pkgdir}"/opt/"${pkgname}"/lib/wine $_installtype || _failure "Wine-32 installation failed"
   fi
 
-  export CROSSCC="${x86_64_CC}"
+  _set_vars64
   msg2 "Packaging Wine-64"
   cd "${build64dir}"|| _failure
   # clang doesn't like static libs on lib64 for some reason, use gcc
