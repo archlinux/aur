@@ -1,6 +1,6 @@
 pkgbase = fw-fanctrl-ui-git
 	pkgdesc = Framework Fan Control UI
-	pkgver = r1.120f20e
+	pkgver = r7.db8939a
 	pkgrel = 1
 	url = https://github.com/waicool20/fw-fanctrl-ui
 	arch = any
