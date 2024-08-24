@@ -1,6 +1,6 @@
 pkgbase = mihomo-party-bin
 	pkgdesc = Another Mihomo GUI.
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/pompurin404/mihomo-party
 	install = mihomo-party.install
@@ -25,9 +25,9 @@ pkgbase = mihomo-party-bin
 	conflicts = mihomo-party
 	source = mihomo-party.sh
 	sha256sums = f8049c1f26d5a92fbcebd7bebbdedbb3eab53422b21cf6127418251ccd061282
-	source_x86_64 = mihomo-party-1.0.3-x86_64.deb::https://github.com/pompurin404/mihomo-party/releases/download/v1.0.3/mihomo-party-linux-1.0.3-amd64.deb
-	sha256sums_x86_64 = 4185620aaf8524f80293bb79d262f1ecfee818c52c7757e3cef8246640796e03
-	source_aarch64 = mihomo-party-1.0.3-aarch64.deb::https://github.com/pompurin404/mihomo-party/releases/download/v1.0.3/mihomo-party-linux-1.0.3-arm64.deb
-	sha256sums_aarch64 = d8a1e36d5bc03c1b908c49a01bf12524bbdc6e7d12b4e50265a56714714d380c
+	source_x86_64 = mihomo-party-1.0.4-x86_64.deb::https://github.com/pompurin404/mihomo-party/releases/download/v1.0.4/mihomo-party-linux-1.0.4-amd64.deb
+	sha256sums_x86_64 = b51d6959b5f62df81e5e580f90d259f93f4432f3f77e74ac0c242e88ea1de275
+	source_aarch64 = mihomo-party-1.0.4-aarch64.deb::https://github.com/pompurin404/mihomo-party/releases/download/v1.0.4/mihomo-party-linux-1.0.4-arm64.deb
+	sha256sums_aarch64 = f34a2a36573f9b78c8bd0eda94a6662174eb940c4566568097b6db85577868af
 
 pkgname = mihomo-party-bin
