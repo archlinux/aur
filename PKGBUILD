@@ -12,12 +12,9 @@ license=('BSD')
 makedepends=('git')
 depends=('gcc-libs')
 options=('staticlibs' '!strip')
-conflicts=(
-	'google-breakpad-git'
-)
 
 provides=(
-	'google-breakpad'
+	'breakpad-fixed'
 )
 
 source=(
