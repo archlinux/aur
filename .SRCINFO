@@ -1,6 +1,6 @@
 pkgbase = steam-rom-manager-bin
 	pkgdesc = An app for managing ROMs in Steam (extracted from Debian package)
-	pkgver = 2.5.21
+	pkgver = 2.5.22
 	pkgrel = 1
 	url = https://github.com/SteamGridDB/steam-rom-manager
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = steam-rom-manager-bin
 	provides = steam-rom-manager
 	conflicts = steam-rom-manager-git
 	conflicts = steam-rom-manager-appimage
-	source = https://github.com/SteamGridDB/steam-rom-manager/releases/download/v2.5.21/steam-rom-manager_2.5.21_amd64.deb
-	md5sums = 374a6fb04d9a97c514e6172f732ec1c1
+	source = https://github.com/SteamGridDB/steam-rom-manager/releases/download/v2.5.22/steam-rom-manager_2.5.22_amd64.deb
+	md5sums = f15d0fece1005894fa2e800411c86718
 
 pkgname = steam-rom-manager-bin
