@@ -4,7 +4,7 @@ pkgver=r1261.01e2cf1
 pkgrel=1
 pkgdesc='An advanced open-source privacy friendly alternative to YouTube'
 arch=('x86_64')
-url="https://docs.piped.video/"
+url='https://github.com/TeamPiped/Piped-Backend'
 license=('AGPL-3.0')
 groups=('piped-git')
 depends=('java-runtime=22')
@@ -44,14 +44,14 @@ package() {
 
 	install -dm755 "${pkgdir}/etc/piped"
 
-	install -Dm644 sysusers.conf "${pkgdir}/usr/lib/sysusers.d/piped-backend.conf"
-	install -Dm644 systemd.service "${pkgdir}/usr/lib/systemd/system/piped-backend.service"
+	install -Dm644 "${srcdir}/sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/piped-backend.conf"
+	install -Dm644 "${srcdir}/systemd.service" "${pkgdir}/usr/lib/systemd/system/piped-backend.service"
 
 	install -Dm644 "${srcdir}/Piped-Backend/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 "${srcdir}/Piped-Backend/config.properties" "${pkgdir}/usr/share/doc/piped/piped-backend.properties"
 
 	install -Dm755 "${srcdir}/Piped-Backend/build/libs/piped-1.0-all.jar" "${pkgdir}${dest}/piped-backend.jar"
-	install -Dm755 piped-backend.sh "${pkgdir}/usr/bin/piped-backend"
+	install -Dm755 "${srcdir}/piped-backend.sh" "${pkgdir}/usr/bin/piped-backend"
 
 #find "${pkgdir}${dest}" -type d -exec chmod u+x,g+x,o+x {} \;
 #chown -R piped:piped "${pkgdir}/${generaldest}"
