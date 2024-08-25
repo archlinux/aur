@@ -1,14 +1,14 @@
 pkgbase = retroshare
-	pkgdesc = Serverless encrypted instant messenger with filesharing, chatgroups, e-mail.
+	pkgdesc = Serverless encrypted instant messenger with filesharing, chatgroups, e-mail
 	pkgver = 0.6.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/retroshare/retroshare
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = AGPL3
+	license = AGPL-3.0-or-later
 	makedepends = cmake
 	makedepends = git
 	makedepends = qt5-tools
@@ -21,7 +21,7 @@ pkgbase = retroshare
 	optdepends = tor: tor hidden node support
 	optdepends = i2p: i2p hidden node support
 	optdepends = i2pd: i2p hidden node support
-	source = retroshare::git+https://github.com/retroshare/retroshare.git#tag=v0.6.7.2
+	source = retroshare::git+https://github.com/retroshare/retroshare.git#commit=64f4d84e7407581808875ef93340ddadf976114e
 	source = retroshare.openpgp-sdk::git+https://github.com/RetroShare/OpenPGP-SDK.git
 	source = retroshare.bitdht::git+https://github.com/RetroShare/BitDHT.git
 	source = commonmark.cmark::git+https://github.com/commonmark/cmark.git

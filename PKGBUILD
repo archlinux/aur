@@ -1,9 +1,9 @@
 # Maintainer:
 # Contributor: sehraf
-# Contributor: stqn
-# Contributor: JHeaton <jheaton at archlinux dot us>
-# Contributor: Tristero <tristero at online dot de>
-# Contributor: funkyou
+
+## links
+# http://retroshare.cc/
+# https://github.com/retroshare/retroshare
 
 ## options
 # whether to build and install plugins
@@ -25,102 +25,65 @@
 # whether to compile with clang (experimental)
 : ${_clang:=false}
 
+# others
+: ${_commit:=64f4d84e7407581808875ef93340ddadf976114e} # 0.6.7.2r133
 
 ## basic info
 _pkgname="retroshare"
 pkgname="$_pkgname"
 pkgver=0.6.7.2
-pkgrel=1
-pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
-#url="http://retroshare.cc/"
+pkgrel=2
+pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail"
 url="https://github.com/retroshare/retroshare"
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 
-## main package
-_main_package() {
-  depends=(
-    'libxss'
-    'miniupnpc'
-    'qt5-multimedia'
-    'qt5-x11extras'
-    'sqlcipher'
-  )
-  makedepends=(
-    'cmake'
-    'git'
-    'qt5-tools'
-    'rapidjson'
-  )
-  optdepends=(
-    'tor: tor hidden node support'
-    'i2p: i2p hidden node support'
-    'i2pd: i2p hidden node support'
-  )
+depends=(
+  'libxss'
+  'miniupnpc'
+  'qt5-multimedia'
+  'qt5-x11extras'
+  'sqlcipher'
+)
+makedepends=(
+  'cmake'
+  'git'
+  'qt5-tools'
+  'rapidjson'
+)
+optdepends=(
+  'tor: tor hidden node support'
+  'i2p: i2p hidden node support'
+  'i2pd: i2p hidden node support'
+)
 
-  # Add extra dependencies
-  if [[ "${_plugin_voip::1}" =~ 't|y|1' ]] ; then
-    depends+=('ffmpeg' 'opencv3-opt')
-  fi
+# Add extra dependencies
+if [[ "${_plugin_voip::1}" =~ 't|y|1' ]]; then
+  depends+=('ffmpeg' 'opencv3-opt')
+fi
 
-  if [[ "${_plugin_feedreader::1}" =~ 't|y|1' ]] ; then
-    depends+=('curl' 'libxslt')
-  fi
+if [[ "${_plugin_feedreader::1}" =~ 't|y|1' ]]; then
+  depends+=('curl' 'libxslt')
+fi
 
-  if [[ "${_jsonapi::1}" =~ 't|y|1' ]] ; then
-    makedepends+=('doxygen')
-  fi
+if [[ "${_jsonapi::1}" =~ 't|y|1' ]]; then
+  makedepends+=('doxygen')
+fi
 
-  if [[ "${_clang::1}" =~ 't|y|1' ]] ; then
-    makedepends+=('clang')
-  fi
+if [[ "${_clang::1}" =~ 't|y|1' ]]; then
+  makedepends+=('clang')
+fi
 
-  if [[ "${_autologin::1}" =~ 't|y|1' ]] ; then
-    depends+=('libsecret')
-  fi
+if [[ "${_autologin::1}" =~ 't|y|1' ]]; then
+  depends+=('libsecret')
+fi
 
-  # package type
-  if [ x"$pkgname" == x"$_pkgname" ] ; then
-    _main_stable
-  else
-    _main_git
-  fi
-
-  _source_retroshare
-  _source_rapidjson
-  _source_restbed
-}
-
-## stable package
-_main_stable() {
-  _pkgtag="v$pkgver"
-
+_source_main() {
   _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git#tag=$_pkgtag")
+  source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
   sha256sums=('SKIP')
-
-  pkgver() {
-    cd "$_pkgsrc"
-    echo "${_pkgtag}" | sed -E 's/^v//;s/(.*[0-9])([a-z])/\1.\2/'
-  }
 }
 
-## git package
-_main_git() {
-  provides=("$_pkgname=${pkgver%%.r*}")
-  conflicts=("$_pkgname")
-
-  _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git")
-  sha256sums=('SKIP')
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --long --tags --exclude='*[a-z][a-z]*' --exclude='*[a-z]' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g ; s/\.RC/RC/'
-  }
-}
-
-## submodules
 _source_retroshare() {
   source+=(
     'retroshare.openpgp-sdk'::'git+https://github.com/RetroShare/OpenPGP-SDK.git'
@@ -150,25 +113,6 @@ _source_retroshare() {
     'SKIP'
     'SKIP'
   )
-
-  _prepare_retroshare() (
-    cd "${srcdir:?}/$_pkgsrc"
-    local -A _submodules=(
-      ['retroshare.openpgp-sdk']='openpgpsdk'
-      ['retroshare.bitdht']='libbitdht'
-
-      ['commonmark.cmark']='supportlibs/cmark'
-      ['corvusoft.restbed']='supportlibs/restbed'
-      ['i2p.libsam3']='supportlibs/libsam3'
-      ['retroshare.jni.hpp']='supportlibs/jni.hpp'
-      ['retroshare.libretroshare']='libretroshare'
-      ['retroshare.obs']='build_scripts/OBS'
-      ['retroshare.rsnewwebui']='retroshare-webui'
-      ['tencent.rapidjson']='supportlibs/rapidjson'
-      ['truvorskameikin.udp-discovery-cpp']='supportlibs/udp-discovery-cpp'
-    )
-    _submodule_update
-  )
 }
 
 _source_rapidjson() {
@@ -177,15 +121,6 @@ _source_rapidjson() {
   )
   sha256sums+=(
     'SKIP'
-  )
-
-  _prepare_rapidjson() (
-    cd "${srcdir:?}/$_pkgsrc"
-    cd "supportlibs/rapidjson"
-    local -A _submodules=(
-      ['google.googletest']='thirdparty/gtest'
-    )
-    _submodule_update
   )
 }
 
@@ -200,43 +135,79 @@ _source_restbed() {
     'SKIP'
     'SKIP'
   )
-
-  _prepare_restbed() (
-    cd "${srcdir:?}/$_pkgsrc"
-    cd "supportlibs/restbed"
-    local -A _submodules=(
-      ['corvusoft.asio-dependency']='dependency/asio'
-      ['corvusoft.catch-dependency']='dependency/catch'
-      ['corvusoft.openssl-dependency']='dependency/openssl'
-    )
-    _submodule_update
-  )
 }
 
-## common functions
+_prepare_retroshare() (
+  cd "${srcdir:?}/$_pkgsrc"
+  local _submodules=(
+    'retroshare.openpgp-sdk'::'openpgpsdk'
+    'retroshare.bitdht'::'libbitdht'
+
+    'commonmark.cmark'::'supportlibs/cmark'
+    'corvusoft.restbed'::'supportlibs/restbed'
+    'i2p.libsam3'::'supportlibs/libsam3'
+    'retroshare.jni.hpp'::'supportlibs/jni.hpp'
+    'retroshare.libretroshare'::'libretroshare'
+    'retroshare.obs'::'build_scripts/OBS'
+    'retroshare.rsnewwebui'::'retroshare-webui'
+    'tencent.rapidjson'::'supportlibs/rapidjson'
+    'truvorskameikin.udp-discovery-cpp'::'supportlibs/udp-discovery-cpp'
+  )
+  _submodule_update
+)
+
+_prepare_rapidjson() (
+  cd "${srcdir:?}/$_pkgsrc"
+  cd "supportlibs/rapidjson"
+  local _submodules=(
+    'google.googletest'::'thirdparty/gtest'
+  )
+  _submodule_update
+)
+
+_prepare_restbed() (
+  cd "${srcdir:?}/$_pkgsrc"
+  cd "supportlibs/restbed"
+  local _submodules=(
+    'corvusoft.asio-dependency'::'dependency/asio'
+    'corvusoft.catch-dependency'::'dependency/catch'
+    'corvusoft.openssl-dependency'::'dependency/openssl'
+  )
+  _submodule_update
+)
+
+_source_main
+
+_source_retroshare
+_source_rapidjson
+_source_restbed
+
 prepare() {
   _submodule_update() {
-    local key;
-    for key in ${!_submodules[@]} ; do
-      git submodule init "${_submodules[${key}]}"
-      git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-      git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+    local _module
+    for _module in "${_submodules[@]}"; do
+      git submodule init "${_module##*::}"
+      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
+      git -c protocol.file.allow=always submodule update "${_module##*::}"
     done
   }
 
   _prepare_retroshare
   _prepare_rapidjson
   _prepare_restbed
+
+  # fix miniupnpc
+  git -C "$_pkgsrc/libretroshare" checkout -f c54e0266e4483797c1d6bacee6f563979d683464
 }
 
 build() {
   cd "$_pkgsrc"
 
   # remove unwanted plugins
-  if [[ ! "${_plugin_voip::1}" =~ 't|y|!' ]] ; then
+  if [[ ! "${_plugin_voip::1}" =~ 't|y|!' ]]; then
     sed -i '/VOIP \\/d' plugins/plugins.pro
   fi
-  if [[ ! "$_plugin_feedreader" =~ 't|y|1' ]] ; then
+  if [[ ! "$_plugin_feedreader" =~ 't|y|1' ]]; then
     sed -i '/FeedReader/d' plugins/plugins.pro
   fi
 
@@ -245,38 +216,38 @@ build() {
     CONFIG+=release
   )
 
-  if [[ "${_jsonapi::1}" =~ 't|y|1' ]] ; then
+  if [[ "${_jsonapi::1}" =~ 't|y|1' ]]; then
     _qmake_options+=(
       CONFIG+=rs_jsonapi
     )
   fi
 
-  if [[ "${_clang::1}" =~ 't|y|1' ]] ; then
+  if [[ "${_clang::1}" =~ 't|y|1' ]]; then
     _qmake_options+=(
       -spec linux-clang
       CONFIG+=c++11
     )
   fi
 
-  if [[ "${_autologin::1}" =~ 't|y|1' ]] ; then
+  if [[ "${_autologin::1}" =~ 't|y|1' ]]; then
     _qmake_options+=(
       CONFIG+=rs_autologin
     )
   fi
 
-  if [[ "${_nativ_dialogs::1}" =~ 't|y|1' ]] ; then
+  if [[ "${_nativ_dialogs::1}" =~ 't|y|1' ]]; then
     _qmake_options+=(
       CONFIG+=rs_use_native_dialogs
     )
   fi
 
-  if [[ "${_plugin_voip::1}" =~ 't|y|1' ]] || [[ "${_plugin_feedreader::1}" =~ 't|y|1' ]] ; then
+  if [[ "${_plugin_voip::1}" =~ 't|y|1' ]] || [[ "${_plugin_feedreader::1}" =~ 't|y|1' ]]; then
     _qmake_options+=(
       CONFIG+=retroshare_plugins
     )
   fi
 
-  if [[ "${_wiki::1}" =~ 't|y|1' ]] ; then
+  if [[ "${_wiki::1}" =~ 't|y|1' ]]; then
     _qmake_options+=(
       CONFIG+=wikipoos
     )
@@ -299,8 +270,5 @@ build() {
 
 package() {
   cd "$_pkgsrc"
-  make INSTALL_ROOT="${pkgdir:?}" install
+  make INSTALL_ROOT="$pkgdir" install
 }
-
-## execute
-_main_package
