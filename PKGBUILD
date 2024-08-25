@@ -3,10 +3,10 @@
 
 pkgname=ziti-edge-tunnel
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The linux tunneller for your Ziti network."
 arch=('x86_64')
-depends=()
+depends=('polkit')
 options=()
 url="https://openziti.github.io/ziti/clients/linux.html"
 license=('Apache-2.0')
@@ -16,12 +16,14 @@ source=("https://github.com/openziti/ziti-tunnel-sdk-c/releases/download/v${pkgv
         "ziti-edge-tunnel.service"
         "ziti-edge-tunnel-enroll.sh"
         "sysusers.conf"
-        "tmpfiles.conf")
+        "tmpfiles.conf"
+        "polkit.conf")
 sha256sums=('7e42211943621647efd3d8680ad1280a638847f24c180cca97094a3e8a4d8b5a'
             '97881960e8763840782b936abbb94513ca929257738ad2bf96df45cc3a344628'
             '027be2beec25a3425ae8b2b79be294c5829c4715bd89b841e958a720c720aea7'
             '5efe7c102098705e0b1f4cfe7966a5b8c3cc88d0c0ee6427f5cc9c6126dc57a4'
-            '2d9870a798d2b26dd8c11b1b031dec6dbf4d8ca9f05643e721a5d3134ab59d74')
+            '2d9870a798d2b26dd8c11b1b031dec6dbf4d8ca9f05643e721a5d3134ab59d74'
+            '7d5d3f1995228e360917aa1adeca2432f19e995d4ba437ba8b5b22d8d0c15745')
 
 package() {
   install -D -m 0755 ziti-edge-tunnel ${pkgdir}/usr/bin/ziti-edge-tunnel
@@ -29,4 +31,5 @@ package() {
   install -D -m 0644 ziti-edge-tunnel.service ${pkgdir}/usr/lib/systemd/system/ziti-edge-tunnel.service
   install -D -m 0644 sysusers.conf ${pkgdir}/usr/lib/sysusers.d/ziti-edge-tunnel.conf
   install -D -m 0644 tmpfiles.conf ${pkgdir}/usr/lib/tmpfiles.d/ziti-edge-tunnel.conf
+  install -D -m 0644 polkit.conf ${pkgdir}/usr/share/polkit-1/rules.d/ziti-edge-tunnel.conf
 }
