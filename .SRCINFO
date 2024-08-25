@@ -1,6 +1,6 @@
 pkgbase = debhelper-git
 	pkgdesc = Programs to automate common tasks in debian/rules when building Debian packages
-	pkgver = 13.19.r0.g5e3d015
+	pkgver = 13.20.r0.gee766db
 	pkgrel = 1
 	url = https://salsa.debian.org/debian/debhelper
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = debhelper-git
 	depends = dpkg
 	depends = perl-pod-parser
 	optdepends = dh-make: convert source archives into Debian package source
-	provides = debhelper=13.19
+	provides = debhelper=13.20
 	conflicts = debhelper
 	conflicts = dh-strip-nondeterminism
 	source = debhelper::git+https://salsa.debian.org/debian/debhelper.git

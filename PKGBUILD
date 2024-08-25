@@ -2,7 +2,7 @@
 
 _pkgname="debhelper"
 pkgname="$_pkgname-git"
-pkgver=13.19.r0.g5e3d015
+pkgver=13.20.r0.gee766db
 pkgrel=1
 pkgdesc="Programs to automate common tasks in debian/rules when building Debian packages"
 url="https://salsa.debian.org/debian/debhelper"
@@ -40,13 +40,6 @@ _source_dh_strip_nd() {
 
 _source_main
 _source_dh_strip_nd
-
-prepare() {
-  cd "$_pkgsrc"
-
-  # prevent unicode error
-  rm "man/po4a/po"/*.po
-}
 
 pkgver() {
   cd "$_pkgsrc"
