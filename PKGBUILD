@@ -3,7 +3,7 @@
 
 _pkgname=fvm
 pkgname=${_pkgname}-sourcebuild
-pkgver=3.1.7
+pkgver=3.2.0
 pkgrel=1
 provides=(${_pkgname})
 conflicts=(${_pkgname})
@@ -17,8 +17,8 @@ options=('!strip')
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/leoafarias/fvm/archive/refs/tags/$pkgver.tar.gz"
 	"${pkgname}-wrapper")
-sha256sums=('a479b54c4ade1df99dee975adbf61b56c6dff224915e44d4914925e4dfce8b4c'
-            'c422a806ed809c4b95e539b26860e2df93a744a81447cc524cec22c43e797905')
+sha256sums=('50aed46957c4149f88682e9ac062c8aeb44a8da0b023a49aa8e3eb4cd570d72e'
+            '57aa3a2f5d32b8babf06cdabc0ccb79433bc63e302b86d52ae94104e6c38e1ba')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
