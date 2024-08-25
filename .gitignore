@@ -1,0 +1,4 @@
+/bionic-batch-renamer
+/src
+/pkg
+*.tar.zst
