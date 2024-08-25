@@ -2,8 +2,8 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=scx-scheds-git
-gitname=scx
-pkgver=0.1.10.r166.g769e6c4
+_gitname=scx
+pkgver=1.0.3.r72.g2f356bf
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -25,12 +25,12 @@ _reverts=(
 )
 
 pkgver() {
-  cd $gitname
+  cd $_gitname
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
- cd $gitname
+ cd $_gitname
 
  local _c _l
   for _c in "${_backports[@]}"; do
@@ -55,13 +55,13 @@ prepare() {
 }
 
 build() {
-  cd $gitname
-  arch-meson . build -D openrc=disabled
+  cd $_gitname
+  arch-meson . build -D openrc=disabled -D libbpf_a=disabled -D bpftool=disabled
   meson compile -C build
 }
 
 package() {
-  cd $gitname
+  cd $_gitname
   meson install -C build --destdir "${pkgdir}"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
