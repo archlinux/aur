@@ -1,0 +1,14 @@
+pkgbase = maim-vst3
+	pkgdesc = Audio plugin for custom MP3 distortion and digital glitches.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ArdenButterfield/Maim
+	arch = x86_64
+	groups = pro-audio
+	groups = vst3-plugins
+	license = GPL3
+	makedepends = unzip
+	source = https://github.com/ArdenButterfield/Maim/releases/download/v1.0.0/Maim-1.0.0-Linux.zip
+	md5sums = f6bd24dd5f51b7ca7f4742cee9ed1441
+
+pkgname = maim-vst3
