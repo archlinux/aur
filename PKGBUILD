@@ -15,8 +15,9 @@ depends=(
     git
     pacman
 )
+conflicts=(rah-bin)
 
-source=("${pkgname}-v${pkgver}-amd64.tar.gz::https://gitlab.com/deadgirl/rah/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+source=("${pkgname}-v${pkgver}.tar.gz::https://gitlab.com/deadgirl/rah/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 options=(!lto)
 md5sums=(SKIP)
 

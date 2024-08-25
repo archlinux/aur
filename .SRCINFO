@@ -10,8 +10,9 @@ pkgbase = rah
 	depends = glibc
 	depends = git
 	depends = pacman
+	conflicts = rah-bin
 	options = !lto
-	source = rah-v1.2.1-amd64.tar.gz::https://gitlab.com/deadgirl/rah/-/archive/v1.2.1/rah-v1.2.1.tar.gz
+	source = rah-v1.2.1.tar.gz::https://gitlab.com/deadgirl/rah/-/archive/v1.2.1/rah-v1.2.1.tar.gz
 	md5sums = SKIP
 
 pkgname = rah
