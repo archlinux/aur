@@ -1,21 +1,23 @@
 pkgbase = vapoursynth-plugin-vsakarin-git
 	pkgdesc = Plugin for Vapoursynth: vsakarin (GIT version)
-	pkgver = 0.96f.2.g8b7ff6d
+	pkgver = 0.96f.r128.6d7c733
 	pkgrel = 1
 	url = https://github.com/akarinVS/vapoursynth-plugin.git
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = meson
-	makedepends = llvm15
+	makedepends = llvm
 	depends = vapoursynth
 	depends = gcc-libs
 	depends = glibc
-	depends = llvm15-libs
+	depends = llvm-libs
 	provides = vapoursynth-plugin-vsakarin
 	conflicts = vapoursynth-plugin-vsakarin
 	options = debug
-	source = vsakarin::git+https://github.com/akarinVS/vapoursynth-plugin.git
+	source = vsakarin::git+https://github.com/Jaded-Encoding-Thaumaturgy/akarin-vapoursynth-plugin.git
+	source = https://github.com/AkarinVS/vapoursynth-plugin/pull/23.diff
 	sha256sums = SKIP
+	sha256sums = 60a93b109081d2d5e13375faa788a05db938f4769b7c995cc4130c94c79c37d3
 
 pkgname = vapoursynth-plugin-vsakarin-git
