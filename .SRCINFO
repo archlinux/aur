@@ -1,6 +1,6 @@
 pkgbase = python-gradio
 	pkgdesc = Build and share delightful machine learning apps, all in Python.
-	pkgver = 4.41.0
+	pkgver = 4.42.0
 	pkgrel = 1
 	url = https://github.com/gradio-app/gradio
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = python-gradio
 	depends = python-typer
 	depends = python-typing_extensions
 	depends = uvicorn
-	source = https://files.pythonhosted.org/packages/source/g/gradio/gradio-4.41.0.tar.gz
-	sha512sums = edeaf0856affba3fc8877f6d3af60986a33e83258ed1f1143a71a15d08d8000a1f586ae78aaf49530dce591176d22e8d9a5c0fab689d179e67d31052c32ac493
+	source = https://files.pythonhosted.org/packages/source/g/gradio/gradio-4.42.0.tar.gz
+	sha512sums = ec245d46bf80a160df0ae5977a176602559c51a4f24c5a001142f1466d891423b96cd1014b76c978b6f9a61740a0e88ab455aaa822a27986d6d88a3ce07f83b2
 
 pkgname = python-gradio
