@@ -9,17 +9,17 @@
 # It can be obtained from chromium -> Developer Tools -> Network -> XHR -> click latest-version and copy downloadId
 
 pkgname=davinci-resolve-studio
-major_version=18.6
-minor_version=6
+major_version=19
+minor_version=0
 pkgver=${major_version}.${minor_version}
-pkgrel=3
+pkgrel=1
 
 if [ "$pkgname" == "davinci-resolve" ]; then
   # Variables for FREE edition
   _product="DaVinci Resolve"
-  _referid='dfd43085ef224766b06b579ce8a6d097'
+  _referid='eeae77279b39447b85d0735c1e09ee39'
   _siteurl="https://www.blackmagicdesign.com/api/support/latest-stable-version/davinci-resolve/linux"
-  sha256sums=('06ba9d3e2f4e6ca813a394e0fe622992fdb6b29b9cd5f9a351103ad1040b6dac')
+  sha256sums=('17e5753adc8ee49d8f617a44d807993913fa5a2068535479eb2a1593c1ba7284')
   pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
   _archive_name=DaVinci_Resolve_${pkgver}_Linux
   _archive_run_name=DaVinci_Resolve_${pkgver}_Linux
@@ -27,9 +27,9 @@ if [ "$pkgname" == "davinci-resolve" ]; then
 elif [ "$pkgname" == "davinci-resolve-studio" ]; then
   # Variables for STUDIO edition
   _product="DaVinci Resolve Studio"
-  _referid='0978e9d6e191491da9f4e6eeeb722351'
+  _referid='83b6ec6ee61049fab84fe60670d23659'
   _siteurl="https://www.blackmagicdesign.com/api/support/latest-stable-version/davinci-resolve-studio/linux"
-  sha256sums=('27c33c942fec19533cf81fd5ebd19706e8c0fd92c6ad4da47402171b885d38e4')
+  sha256sums=('9e2a96672fc076152880b4099c3a56b87f00a62491baabbd53eb87255c26cb54')
   pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
   _archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
   _archive_run_name=DaVinci_Resolve_Studio_${pkgver}_Linux
@@ -45,10 +45,11 @@ _releaseinfo=$(curl -Ls "$_siteurl")
 _downloadId=$(printf "%s" $_releaseinfo | sed -n 's/.*"downloadId":"\([^"]*\).*/\1/p')
 _pkgver=$(printf "%s" $_releaseinfo | awk -F'[,:]' '{for(i=1;i<=NF;i++){if($i~/"major"/){print $(i+1)} if($i~/"minor"/){print $(i+1)} if($i~/"releaseNum"/){print $(i+1)}}}' | sed 'N;s/\n/./;N;s/\n/./')
 
-if [[ $pkgver != $_pkgver ]]; then
-  echo "Version mismatch"
-  exit
-fi
+#if [[ $pkgver != $_pkgver ]]; then
+#  echo "Version mismatch. ($pkgver ≠ $_pkgver)"
+#  echo "It is recommended to wait for the next release."
+#  exit
+#fi
 
 _reqjson="{ \
   \"firstname\": \"Arch\", \
@@ -181,16 +182,13 @@ prepare()
 
   ln -s "${srcdir}/squashfs-root/BlackmagicRAWPlayer/BlackmagicRawAPI" "${srcdir}/squashfs-root/bin/"
 
-  # Disable old libs
-  mkdir ${srcdir}/squashfs-root/libs/disabled-libraries
-  mv ${srcdir}/squashfs-root/libs/libglib* ${srcdir}/squashfs-root/libs/disabled-libraries
-  mv ${srcdir}/squashfs-root/libs/libgio* ${srcdir}/squashfs-root/libs/disabled-libraries
-  mv ${srcdir}/squashfs-root/libs/libgmodule* ${srcdir}/squashfs-root/libs/disabled-libraries
-
-  # Update libc++
   mv "${srcdir}/squashfs-root/libs/libc++.so.1" "${srcdir}/squashfs-root/libs/libc++.so.1.orig"
 
   ln -s /usr/lib/libc++.so.1.0 "${srcdir}/squashfs-root/libs/libc++.so.1"
+
+  mv "${srcdir}/squashfs-root/libs/libglib-2.0.so.0" "${srcdir}/squashfs-root/libs/libglib-2.0.so.0.orig"
+
+  ln -s /usr/lib/libglib-2.0.so.0 "${srcdir}/squashfs-root/libs/libglib-2.0.so.0"
 
   echo "StartupWMClass=resolve" >> "${srcdir}/squashfs-root/share/DaVinciResolve.desktop"
 
