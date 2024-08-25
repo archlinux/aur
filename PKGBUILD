@@ -40,8 +40,8 @@ build() {
 package() {
 	cd xmms-${pkgver}
 	make DESTDIR="${pkgdir}" install-strip
-    install -Dm644 $srcdir/$pkgname.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
-    install -Dm644 $srcdir/$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+        install -Dm644 $srcdir/$pkgname.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
+        install -Dm644 $srcdir/$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
     
 	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_AR.utf8
 	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_BO.utf8
