@@ -3,7 +3,7 @@
 
 _pkgname="zork++"
 pkgname="${_pkgname}-bin"
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="A project manager and build system for modern C++"
 arch=('x86_64')
@@ -15,8 +15,8 @@ conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source=("README-${pkgver}.md::${url}/raw/v${pkgver}/README.md")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/default.${_pkgname}.${_pkgname}.tar.gz")
-sha256sums=('61a7ea8a707347104dccfe9063e553b3976c60e187bbb68405705f1c9dd1ad98')
-sha256sums_x86_64=('97a0b3ade393b2932ba747a7ca3a86e4987a6af3c1c09e88669019826bf51c84')
+sha256sums=('ac1ffb36128eb9cd3bb4ec160dfe5df86a16d8ef5d4649f466bf79f2f4b17612')
+sha256sums_x86_64=('5cea67f2e5eb2f7f4945831e6d30e29d132c005e1c17e9e85fe063fbfa4df858')
 
 package() {
   cd "${srcdir}"
