@@ -2,17 +2,19 @@
 
 pkgname=xmms
 pkgver=1.2.11
-pkgrel=1
+pkgrel=2
 pkgdesc="X Multimedia System (XMMS) is an audio player for Unix-like systems released under a free software license."
 arch=('x86_64')
 url="https://www.xmms.org"
 license=('GPL')
 depends=('esound' 'gtk' 'libmikmod' 'libogg' 'libvorbis' 'mesa' 'zlib')
-optdepends=('xmms-skins: skins for XMMS' 
+options=('!lto')
+optdepends=('xmms-pulse: XMMS output plugin for the PulseAudio sound server'
+            'xmms-skins: skins for XMMS' 
             'xmmplayer: plugin for XMMS that allows you to play video files from within XMMS using MPlayer as a back-end')
 
 install="${pkgname}.install"
-source=(http://www.xmms.org/files/1.2.x/$pkgname-$pkgver.tar.bz2
+source=(https://mirrors.slackware.com/slackware/slackware-15.0/source/xap/xmms/$pkgname-$pkgver.tar.bz2
     $pkgname.png
     $pkgname.desktop
     gtkrc.utf8)
