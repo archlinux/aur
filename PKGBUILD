@@ -4,11 +4,11 @@ _mainapp='gnunet'
 _extname='groupchat'
 _appname="${_mainapp}-${_extname}"
 pkgname="${_appname}-git"
-pkgver='r25.811ca95'
+pkgver='r71.229b117'
 pkgrel=1
 pkgdesc="A simple client-server chat system, using GNUnet and CADET"
 arch=('any')
-url="http://gnunet.org"
+url="http://${_mainapp}.org"
 license=('GPL')
 provides=("${_appname}")
 conflicts=("${_appname}")
@@ -16,7 +16,7 @@ depends=("${_mainapp}")
 makedepends=('nim' 'nimble')
 install="${_appname}.install"
 
-source=("git+https://gnunet.org/git/${_extname}.git")
+source=("git+https://git.${_mainapp}.org/${_extname}.git")
 
 md5sums=('SKIP')
 
