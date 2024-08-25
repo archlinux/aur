@@ -6,6 +6,14 @@ Important changes are emphasized.
 Unreleased
 ^^^^^^^^^^
 
+22.0.0
+^^^^^^
+
+- Add support for Python 3.11 and 3.12
+- Drop support for EOL Python 3.7
+- Add ``__main__.py`` to enable ``python -m pypinfo``
+- Add ``ci`` field: show how many installs were from a CI
+
 21.0.0
 ^^^^^^
 
