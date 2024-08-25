@@ -1,0 +1,20 @@
+pkgbase = ccstheia
+	pkgdesc = Texas Instruments Code Composer Studio Theia
+	pkgver = 1.4.1.00001
+	pkgrel = 1
+	url = http://www.ti.com/
+	arch = x86_64
+	license = custom
+	makedepends = glibc
+	depends = gtk3
+	depends = python2
+	depends = ncurses5-compat-libs
+	depends = libxcrypt-compat
+	depends = libusb-compat
+	depends = gconf
+	optdepends = ttf-dejavu
+	options = !strip
+	source = https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-63JH5Zr6eq/1.4.1/CCSTheia1.4.1.00001_linux-x64.zip
+	md5sums = 486498dc96bc70d85316804995adf534
+
+pkgname = ccstheia
