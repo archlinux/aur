@@ -1,0 +1,56 @@
+.TH DAMASK_mesh 1
+.SH NAME
+DAMASK_mesh \- mesh solver for DAMASK
+
+.SH SYNOPSIS
+.B DAMASK_mesh
+\fB\-g\fR \fIGEOMFILE\fR
+\fB\-l\fR \fILOADFILE\fR
+\fB\-m\fR \fIMATERIALFILE\fR
+[\fB\-n\fR \fINUMERICSFILE\fR]
+[\fB\-j\fR \fIJOBNAME\fR]
+[\fB\-w\fR \fIWORKINGDIRECTORY\fR]
+[\fB\-h\fR]
+
+.SH DESCRIPTION
+DAMASK is the Duesseldorf Advanced Material Simulation Kit.
+DAMASK_mesh runs a DAMASK simulation on an unstructured mesh.
+MPI parallel runs are supported with mpiexec/mpirun.
+
+.SH OPTIONS
+.TP
+.BR \-g ", " \-\-geom ", " \-\-geometry=\fIGEOMFILE\fR
+Relative or absolute path to a Gmsh file (*.msh).
+.TP
+.BR \-l ", " \-\-load ", " \-\-loadcase=\fILOADFILE\fR
+Relative or absolute path to a load case definition.
+.TP
+.BR \-m ", " \-\-material ", " \-\-materialconfig=\fIMATERIALFILE\fR
+Relative or absolute path to a material configuration in YAML format.
+.TP
+.BR \-n ", " \-\-numerics ", " \-\-numericsconfig=\fINUMERICSFILE\fR
+Relative or absolute path to a numerics configuration in YAML format.
+.TP
+.BR \-j ", " \-\-job ", " \-\-jobname=\fIJOBNAME\fR
+Job name, defaults to GEOM_LOAD_MATERIAL[_NUMERICS].
+.TP
+.BR \-w ", " \-\-wd ", " \-\-workingdirectory=\fIWORKINGDIRECTORY\fR
+Working directory, defaults to current directory.
+.TP
+.BR \-h ", " \-\-help
+Display help and exit.
+
+
+.SH ENVIRONMENT VARIABLES
+.IP OMP_NUM_THREADS
+Number of openMP threads.
+
+
+.SH AUTHOR
+The DAMASK team
+
+.SH REPORTING BUGS
+DAMASK online documentation <https://damask.mpie.de/>
+
+.SH LICENSING
+GNU AGPL version 3 or later <https://gnu.org/licenses/agpl.html>.
