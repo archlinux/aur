@@ -1,4 +1,4 @@
-# Maintainer: Abdulkadir Furkan Şanlı <me@abdulocra.cy>
+# Maintainer: Hristo Voyvodov <hristo.voyvodov@hotmail.com>
 # Contributor: Carson Mullins <SeptemAUR@pm.me>
 _snapinfo=$(curl -sH 'Snap-Device-Series: 16' http://api.snapcraft.io/v2/snaps/info/nordpass)
 _snapdownloadurl=$(jq '."channel-map"[]."download"."url"' <<< "${_snapinfo}" | xargs)
