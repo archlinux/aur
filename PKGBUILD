@@ -3,7 +3,7 @@
 
 _pkgname=ArmCord
 pkgname=armcord-bin
-pkgver=3.2.8
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Discord client for lower end and ARM devices."
 arch=('x86_64' 'aarch64')
@@ -13,29 +13,29 @@ license=('OSL-3.0')
 options=(!strip)
 
 source_x86_64=(
-    "https://github.com/ArmCord/ArmCord/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"
+    "https://github.com/ArmCord/ArmCord/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x64.tar.gz"
     "armcord.desktop"
     "armcord.png"
 )
 source_aarch64=(
-    "https://github.com/ArmCord/ArmCord/releases/download/v$pkgver/$_pkgname-$pkgver-arm64.tar.gz"
+    "https://github.com/ArmCord/ArmCord/releases/download/v$pkgver/$_pkgname-$pkgver-linux-arm64.tar.gz"
     "armcord.desktop"
     "armcord.png"
 )
-sha256sums_x86_64=('db50964e733a16db5a83d74e24f9272e8e838a863d358c1a33a159a4517e028b'
+sha256sums_x86_64=('0e8d65f095059079c84286dcf778f45124b95c7fc9d30515b7aa5613f02692cb'
                    '815f0c12cc6c8df07a16e7b8769fd3cc6e80032574e2431d4c5a9487d76065a0'
                    '173d6ed02a16e9f02f5d4c4b34fe3a46ef29c46ff4ecbbad98747052fb5f954e')
-sha256sums_aarch64=('878085b1ac29fccef1453d5ce290166bfa6f64e9f0cfc59346eb028ddfbc85b2'
+sha256sums_aarch64=('35e6c0ae8f1591a7ed9b1f7434400e3fac251a571b65b73bd6b3caf3db5fb08d'
                     '815f0c12cc6c8df07a16e7b8769fd3cc6e80032574e2431d4c5a9487d76065a0'
                     '173d6ed02a16e9f02f5d4c4b34fe3a46ef29c46ff4ecbbad98747052fb5f954e')
 
 package() {
     # enter directory
     if [ $CARCH = "x86_64" ]; then
-        cd "$srcdir/$_pkgname-$pkgver"
+        cd "$srcdir/$_pkgname-$pkgver-linux-x64"
     fi
     if [ $CARCH = "aarch64" ]; then
-        cd "$srcdir/$_pkgname-$pkgver-arm64"
+        cd "$srcdir/$_pkgname-$pkgver-linux-arm64"
     fi
 
     # Move files to right directories
