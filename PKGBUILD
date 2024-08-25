@@ -21,7 +21,6 @@ noextract=("${_pkgsrc}-x86_64.tar.gz"
            "${_pkgsrc}-i686.tar.gz"
            "EXAMPLES.zip")
 sha256sums=('e53c1b505126e6f4ab9ddaedd5b807303b693b8d4997f13a502bc902569ab1f1'
-            '77fa806e1ef6c39c724bcf3746110a28cbc390c1c8014767885f634cbc2f518b'
             'd82865bf2f9eff6186862aed21e88dfa1b343e8529715c1e9da3609f45c1fb0c')
 sha256sums_x86_64=('0115dbc1d65d93d16aa140c903d3970dbb6892157451a8ad47bd0610e72ce5c9')
 sha256sums_i686=('a441985e59568da91c532eaf06f3cb93e3fccb872cbd2d7910c87825fd38bfa5')
