@@ -3,8 +3,8 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=astah-viewer
-pkgver=9.1.0.448a59_0
-_pkgver=9.1.0.448a59-0
+pkgver=9.2.0.0248cd_0
+_pkgver=9.2.0.0248cd-0
 pkgrel=1
 url='https://astah.net/products/astah-viewer'
 pkgdesc='Free tool to view .astah files'
@@ -13,7 +13,7 @@ license=('LicenseRef-Custom')
 depends=('java-runtime=8' 'hicolor-icon-theme' 'bash')
 options=('!emptydirs' '!strip')
 source=("http://cdn.change-vision.com/files/astah-viewer-${_pkgver}.noarch.rpm")
-md5sums=('c3cafd85cccdaeb1d58753c199912903')
+md5sums=('5add9d83c8721fe3edc94e7d36d1c43d')
 
 package() {
   cp -aR "${srcdir}/usr" "${pkgdir}"
