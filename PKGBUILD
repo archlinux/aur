@@ -4,48 +4,83 @@
 
 pkgname=forkgram
 _pkgname=frk
-pkgver=5.4.0
+pkgver=5.4.1
 pkgrel=1
 pkgdesc='Fork of Telegram Desktop messaging app.'
-arch=('x86_64' 'x86_64_v3')
+arch=('x86_64')
 url="https://github.com/Forkgram/tdesktop"
-license=('GPL3')
-depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
-         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash' 'ada'
-         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'abseil-cpp' 'libdispatch'
-         'openssl' 'protobuf' 'glib2' 'libsigc++-3.0' 'openh264'
-         'libxcomposite' 'libvpx' 'libxdamage' 'kcoreaddons')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
-             'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt'
-             'gobject-introspection' 'boost' 'fmt' 'mm-common' 'perl-xml-parser' 'glib2-devel' 'dos2unix')
+license=('GPL-3.0-or-later')
+depends=(
+  abseil-cpp
+  ada
+  ffmpeg
+  glib2
+  hicolor-icon-theme
+  hunspell
+  kcoreaddons
+  libdispatch
+  libsigc++-3.0
+  libvpx
+  libxcomposite
+  libxdamage
+  libxrandr
+  libxtst
+  lz4
+  minizip
+  openal
+  openh264
+  openssl
+  pipewire
+  protobuf
+  qt6-imageformats
+  qt6-svg
+  qt6-wayland
+  rnnoise
+  xxhash
+)
+makedepends=(
+  boost
+  cmake
+  dos2unix
+  extra-cmake-modules
+  fmt
+  git
+  glib2-devel
+  gobject-introspection
+  libtg_owt
+  meson
+  microsoft-gsl
+  mm-common
+  ninja
+  perl-xml-parser
+  plasma-wayland-protocols
+  python
+  range-v3
+  tl-expected
+  wayland-protocols
+)
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 provides=(forkgram-bin)
 conflicts=(forkgram-bin telegram-desktop)
-options=(!debug)
-source=(${_pkgname}::git+https://github.com/forkgram/tdesktop.git#tag=v${pkgver}
+source=("https://github.com/Forkgram/tdesktop/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-full.tar.gz"
         "${pkgname}.desktop")
-sha512sums=('b86e346c59228f874bcb25292da25f8292185c054df92be0138dc006ae3741e184bb8f3a0e96697270bec4f212a9c375ba97bed3509abed5f5b3c5437cefe402'
+sha512sums=('e2bfca658185be695efd1200657a5fe60dd05a4eee2cd8798c0d37290929c33d99bb9a107362ff37d76c470132ff64617ad867e4e52da34aeac792acf3fbccdb'
             'd6d54a5a396c0a84645ca5f38cd2d0c774d1a00f081cdf6151228b581ff1c05234550d4829aab4fe2221dec8e0477199da5a0cb1bc3a60fa1fbfe0336db365dd')
 
 prepare() {
-    cd ${_pkgname}
-    git submodule update --init --filter=tree:0 --recursive
-    find "${srcdir}"/ -type f -exec dos2unix {} \;
+    cd ${_pkgname}-v${pkgver}-full
 }
 
 build() {
     CXXFLAGS+=' -ffat-lto-objects'
 
-    cmake \
-        -B build \
-        -S $_pkgname \
-        -G Ninja \
+    cmake -B build $_pkgname-v$pkgver-full -G Ninja \
         -DCMAKE_VERBOSE_MAKEFILE=ON \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON \
-        -DTDESKTOP_API_TEST=ON
+        -DTDESKTOP_API_ID=611335 \
+        -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
     cmake --build build
 }
 
@@ -62,7 +97,7 @@ package() {
 
   # Main icons
   install -dm755 "${pkgdir}/usr/share/pixmaps/"
-  install -Dm644 "${srcdir}/${_pkgname}/Telegram/Resources/art/forkgram/logo_256.png" "${pkgdir}/usr/share/pixmaps/"
+  install -Dm644 "${srcdir}/${_pkgname}-v${pkgver}-full/Telegram/Resources/art/forkgram/logo_256.png" "${pkgdir}/usr/share/pixmaps/"
 
   # Desktop launcher
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
@@ -72,6 +107,6 @@ package() {
   for icon_size in 16 32 48 64 128 256 512; do
     icon_dir="${pkgdir}/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
     install -d "${icon_dir}"
-    install -m644 "${srcdir}/${_pkgname}/Telegram/Resources/art/icon${icon_size}.png" "${icon_dir}/${pkgname}.png"
+    install -m644 "${srcdir}/${_pkgname}-v${pkgver}-full/Telegram/Resources/art/icon${icon_size}.png" "${icon_dir}/${pkgname}.png"
   done
 }
