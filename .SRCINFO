@@ -1,0 +1,14 @@
+pkgbase = pacman-mandoc-update-hook
+	pkgdesc = hook to update the manual pages database after every transaction if using mandoc
+	pkgver = 1.0
+	pkgrel = 0
+	arch = any
+	depends = mandoc
+	source = makewhatis-update-database
+	source = makewhatis-on-install.hook
+	source = makewhatis-on-remove.hook
+	sha256sums = 6d0db57611ad4561d44581e5e71dd02fb32e47d7d07174f43bcfa2d1989a98fc
+	sha256sums = 756f0d9f73e28c371bba5b8f509ecee7fd63d666a80038df731a97aef5ad8d3f
+	sha256sums = b5b20cbf6279d5d4dcf82ee85658f39d9fc6c48ecf8a844217d0d14fae74909d
+
+pkgname = pacman-mandoc-update-hook

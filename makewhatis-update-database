@@ -1,0 +1,9 @@
+#!/bin/bash
+FILES=()
+while IFS=$'\n' read -r file; do
+	file="${PWD}${file}"
+	if [ -f "$file" ]; then
+		FILES+=("$file")
+	fi
+done
+makewhatis -T utf8 "$1" "${PWD}/usr/share/man" ${FILES[@]}

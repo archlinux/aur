@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Remove
+Type = Path
+Target = usr/share/man*/*
+
+[Action]
+Description = Updating manual pages database...
+When = PreTransaction
+Exec = /usr/share/libalpm/scripts/makewhatis-update-database -u
+Depends = mandoc
+NeedsTargets

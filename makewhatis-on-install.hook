@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/share/man*/*
+
+[Action]
+Description = Updating manual pages database...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/makewhatis-update-database -d
+Depends = mandoc
+NeedsTargets
