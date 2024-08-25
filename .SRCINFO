@@ -1,7 +1,7 @@
 pkgbase = mayland-git
 	pkgdesc = a bad wayland compositor
-	pkgver = r110.d6511fe
-	pkgrel = 2
+	pkgver = r111.7d72888
+	pkgrel = 1
 	url = https://github.com/m4rch3n1ng/mayland
 	arch = x86_64
 	license = GPL-3.0-or-later
