@@ -1,8 +1,9 @@
 pkgbase = blender-bin
 	pkgdesc = A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)
 	pkgver = 4.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://blender.org
+	install = blender-bin.install
 	arch = x86_64
 	license = Apache-2.0
 	license = BSD-2-Clause

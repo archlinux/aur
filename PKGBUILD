@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=blender-bin
 pkgver=4.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)"
 arch=('x86_64')
 url="https://blender.org"
@@ -45,6 +45,7 @@ optdepends=('cuda: Cycles renderer CUDA support'
 	    'rocm-hip-runtime: HIP renderer AMD support')
 provides=('blender')
 conflicts=('blender')
+install=$pkgname.install
 source=("https://download.blender.org/release/Blender${pkgver:0:3}/blender-${pkgver}-linux-x64.tar.xz")
 sha256sums=('4f4fd7646af01f6fee9d420408318381a6e52571268eb7cf9cd5033bd9e7a359')
 validpgpkeys=()
@@ -56,6 +57,7 @@ package() {
 	install -Dm644 blender-symbolic.svg "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/blender-symbolic.svg"
 	install -Dm644 blender.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/blender.svg"
 	install -Dm644 copyright.txt "${pkgdir}/usr/share/licenses/$pkgname/copyright.txt"
+	install -Dm644 readme.html "${pkgdir}/usr/share/doc/$pkgname/readme.html"
 	install -Dm644 blender.desktop "${pkgdir}/usr/share/applications/blender.desktop"
 	
 	rsync -a -r "${pkgver:0:3}" {lib,textures,usd} "${pkgdir}/usr/lib/${pkgname}"

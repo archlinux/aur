@@ -1,0 +1,18 @@
+post_install() {
+	 cat << EOF
+==================================================================
+I personally recommend using the package opencl-amd for ROCM, as
+arch's rocm (at the moment) seems to be perpetually a few versions
+behind.
+==================================================================
+EOF
+}
+post_upgrade() {
+	 cat << EOF
+==================================================================
+I personally recommend using the package opencl-amd for ROCM, as
+arch's rocm (at the moment) seems to be perpetually a few versions
+behind.
+==================================================================
+EOF
+}
