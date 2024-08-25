@@ -10,8 +10,22 @@ url='https://github.com/sched-ext/scx'
 arch=('x86_64' 'aarch64')
 backup=('etc/default/scx')
 license=('GPL-2.0-only')
-depends=('libelf' 'zlib' 'jq' 'bpf' 'libbpf')
-makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
+depends=(
+  bpf
+  jq
+  libbpf
+  libelf
+  zlib
+)
+makedepends=(
+  clang
+  git
+  llvm
+  llvm-libs
+  meson
+  python
+  rust
+)
 source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
 options=(!lto)
