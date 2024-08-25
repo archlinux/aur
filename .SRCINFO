@@ -1,7 +1,7 @@
 pkgbase = linux-mainline-um5606
 	pkgdesc = Linux Mainline with patches for the Asus UM5606(WA) laptop
-	pkgver = 6.11rc4
-	pkgrel = 2
+	pkgver = 6.11rc5
+	pkgrel = 1
 	url = https://kernel.org/
 	arch = x86_64
 	license = GPL-2.0-only
@@ -22,7 +22,7 @@ pkgbase = linux-mainline-um5606
 	makedepends = texlive-latexextra
 	options = !debug
 	options = !strip
-	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v6.11-rc4
+	source = linux-mainline::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#tag=v6.11-rc5
 	source = config
 	source = bluetooth.patch::https://patchwork.kernel.org/project/bluetooth/patch/20240804195319.3499920-1-bas@basnieuwenhuizen.nl/mbox/
 	source = npu.patch

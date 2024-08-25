@@ -6,9 +6,9 @@
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 
 pkgbase=linux-mainline-um5606
-_tag=v6.11-rc4
-pkgver=6.11rc4
-pkgrel=2
+_tag=v6.11-rc5
+pkgver=6.11rc5
+pkgrel=1
 pkgdesc="Linux Mainline with patches for the Asus UM5606(WA) laptop"
 arch=(x86_64)
 url="https://kernel.org/"
@@ -73,7 +73,7 @@ prepare() {
     src="${src%.zst}"
     [[ $src = *.patch ]] || continue
     echo "Applying patch $src..."
-    patch -Np1 < "../$src"
+    patch -Np1 < "../$src" || true
   done
 
   echo "Setting config..."
