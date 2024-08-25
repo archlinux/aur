@@ -11,8 +11,23 @@ url="https://lapce.dev"
 license=(Apache-2.0)
 provides=("lapce")
 conflicts=("lapce")
-depends=('gcc-libs' 'libxcb' 'expat' 'freetype2' 'libxkbcommon' 'fontconfig' 'gtk3' 'libxkbcommon-x11')
-makedepends=('rust' 'python' 'cmake' 'git' 'clang')
+depends=(
+  expat
+  fontconfig
+  freetype2
+  gcc-libs
+  gtk3
+  libxcb
+  libxkbcommon
+  libxkbcommon-x11
+)
+makedepends=(
+  clang
+  cmake
+  git
+  python
+  rust
+)
 options=('!lto')
 source=("$_pkgbase::git+https://github.com/lapce/lapce.git")
 sha512sums=('SKIP')
