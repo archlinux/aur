@@ -1,6 +1,6 @@
 pkgbase = radar-contact
 	pkgdesc = Radar Contact is a 2D game where you manage airspace, guiding planes to their destinations while avoiding collisions and storms.
-	pkgver = 3.2
+	pkgver = 3.3
 	pkgrel = 1
 	url = https://github.com/Bogdanctx/Radar-Contact
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = radar-contact
 	depends = freetype2
 	provides = radar-contact
 	conflicts = radar-contact
-	source = radar-contact-3.2.tar.gz::https://github.com/Bogdanctx/Radar-Contact/archive/refs/tags/v3.2.tar.gz
-	sha256sums = 8041dac0dacf19fd78546bf8aa213474dc1d35256bc9002c9ff5d1f2f71957c9
+	source = radar-contact-3.3.tar.gz::https://github.com/Bogdanctx/Radar-Contact/archive/refs/tags/v3.3.tar.gz
+	sha256sums = a183eede650a93f630e4e23348f7e5c580b69d9953eb4b643227325d053fc6a1
 
 pkgname = radar-contact
