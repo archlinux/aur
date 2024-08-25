@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=SimMusic
+Categories=Application;AudioVideo;Audio;
+Comment=A Simple, Pure & Fluent Music Player
+Encoding=UTF-8
+Type=Application
+Terminal=false
+Exec=sim-music
+Icon=/usr/share/icons/hicolor/512x512/apps/sim-music.png
+MimeType=audio/mpeg;audio/wav;audio/flac;
