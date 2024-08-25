@@ -1,0 +1,4 @@
+[virtme-ng]
+source = "git"
+git = "https://github.com/arighi/virtme-ng.git"
+prefix = "v"

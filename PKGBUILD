@@ -9,8 +9,23 @@ pkgdesc="A tool that allows to easily and quickly recompile and test a Linux ker
 arch=('x86_64')
 url="https://github.com/arighi/virtme-ng"
 license=('GPL-2.0-only')
-depends=('bash' 'busybox' 'coreutils' 'gcc-libs' 'glibc' 'python' 'python-requests' 'qemu' 'virtiofsd')
-makedepends=('python-setuptools' 'python-argcomplete' 'python-argparse-manpage' 'cargo' 'git')
+depends=(
+  busybox
+  coreutils
+  gcc-libs
+  glibc
+  python
+  python-requests
+  qemu
+  virtiofsd
+)
+makedepends=(
+  cargo
+  git
+  python-argcomplete
+  python-argparse-manpage
+  python-setuptools
+)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/arighi/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
        "virtme-init-ng-${_virtme_ng_init_commit}.zip::https://github.com/arighi/virtme-ng-init/archive/${_virtme_ng_init_commit}.zip")
 b2sums=('c5710259aedf8d4f10e0b98e81c9c8ebad9f25ec6d5ccda34ded5d7c3358d5eb4de61cc6873bcbaddb2ef7b47f2cc1b5f56a9afdf9add890f1dd719b035f774d'
