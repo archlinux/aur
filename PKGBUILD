@@ -3,7 +3,7 @@
 # shellcheck disable=all
 
 pkgname=proctl
-pkgver=2022.02.21
+pkgver=2024.08.25
 pkgrel=1
 pkgdesc="Github Project Manager"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('bash' 'coreutils')
 optdepends=('git: generating default config automatically' 'fzf: -pick-license, -pick-language, -new-template flags' 'ncurses: for the colors')
 makedepends=('git')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('013bdc6ce2a3c69da020d38de4e241a257a5fbb0bf0b1bb32bccacd2f0364ca9')
+sha256sums=('e8393f42e20cf0df411ad14962dd4c04ff3eab6884275548d3d46c78c97fdc31')
 
 package() {
   cd "$pkgname-$pkgver"
