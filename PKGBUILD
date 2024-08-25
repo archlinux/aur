@@ -2,7 +2,7 @@ pkgname=typora-with-plugin
 _pkgname=typora
 _pluginame=typora_plugin
 typora_ver=1.9.3
-typora_plugin_ver=1.10.20
+typora_plugin_ver=1.10.22
 pkgver=${typora_ver}_plugin_${typora_plugin_ver}
 pkgrel=1
 pkgdesc="一款 Markdown 编辑器和阅读器（with typora_plugin）"
@@ -28,7 +28,7 @@ source=(
     "https://gh.api.99988866.xyz/https://github.com/obgnail/typora_plugin/archive/refs/tags/${typora_plugin_ver}.tar.gz")
 
 typora_sum=da7714d8a2ef228d1df13bf2a6862f3be3fad51238657e8ee48350380267ecfed29b391e0c66653e3b4322e3dada02d2bea6e1041f5230988358645ea0cf4b28
-typora_plugin_sum=867c70e76d0265718035e1518a747f07ae134e246363f17e15e6ca3cf9ad1fff5eac54fb98ca2bf88d27d8333a94566f4e456427b574e7bac4389ee7842de8a8
+typora_plugin_sum=c6d7d788f3d283a64bf0235b49751a886ac546f855cf974885ee056fea34c602db6e878829d3805dcb07f51ef1c8f6356388c890e0856f9872164b714c909251
 sha512sums=(
     $typora_sum
     'de9c883c63f3ea35bd551c8761e605f8e1a3468943e000abcbf94bb0c5cbb5f0f6c7fa4d49ab39c177f167e0e3d0b061c861bf828627b4a34f7f1589119c3d04'
