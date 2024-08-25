@@ -1,0 +1,16 @@
+pkgbase = papersway
+	pkgdesc = PaperWM-like scrollable tiling window management for Sway/i3wm
+	pkgver = 1.001
+	pkgrel = 1
+	url = https://metacpan.org/dist/App-papersway
+	arch = any
+	license = GPL-3.0-only
+	depends = bash
+	depends = perl
+	depends = perl-anyevent
+	depends = perl-anyevent-i3>=0.19
+	depends = perl-json
+	source = https://cpan.metacpan.org/authors/id/S/SP/SPWHITTON/App-papersway-1.001.tar.gz
+	sha256sums = eb538c7ef12183015b3653858e6f69dd0c433a7df58d065d37c8b59c8b16967b
+
+pkgname = papersway
