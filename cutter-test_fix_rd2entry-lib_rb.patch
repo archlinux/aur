@@ -1,0 +1,28 @@
+--- a/misc/rd2refentry-lib.rb
++++ b/misc/rd2refentry-lib.rb
+@@ -330,19 +330,18 @@
+ 
+     def tag(name, attributes={}, *contents)
+       encoded_attributes = attributes.collect do |key, value|
+-        "#{key}=\'#{h(value)}\'"
++        "#{key}='#{h(value)}'"
+       end.join(" ")
+-      unless encoded_attributes.empty?
+-        encoded_attributes = " #{encoded_attributes}"
+-      end
+ 
+-      if contents.size == 1 and contents[0] !~ /</
++      encoded_attributes = " #{encoded_attributes}" unless encoded_attributes.empty?
++
++      if contents.size == 1 && contents[0].is_a?(String) && contents[0] !~ /</
+         indented_contents = contents[0]
+       else
+-        indented_contents = contents.collect do |content|
++        indented_contents = contents.flatten.collect do |content|
+           "  #{content}"
+         end.join("\n")
+-        indented_contents = "\n#{indented_contents}\n"
++        indented_contents = "\n#{indented_contents}\n" unless indented_contents.empty?
+       end
+ 
+       if indented_contents.empty?

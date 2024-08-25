@@ -1,0 +1,11 @@
+--- a/gst-plugins/gst-cutter-test.c
++++ b/gst-plugins/gst-cutter-test.c
+@@ -42,7 +42,7 @@
+ }
+ 
+ GST_PLUGIN_DEFINE (GST_VERSION_MAJOR, GST_VERSION_MINOR, 
+-                   cutter-test, "Cutter element",
++                   cutter_test, "Cutter element",
+                    plugin_init, VERSION, "LGPL",
+                    "GstCutterTest", "http://cutter.sf.net");
+ 

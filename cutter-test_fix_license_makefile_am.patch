@@ -1,0 +1,8 @@
+--- a/license/Makefile.am
++++ b/license/Makefile.am
+@@ -1,4 +1,4 @@
+-licensedir = $(pkgdatadir)/license
++licensedir = $(prefix)/share/licenses/cutter
+ dist_license_DATA =				\
+ 	gpl-3.txt				\
+ 	lgpl-3.txt				\
