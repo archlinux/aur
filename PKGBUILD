@@ -2,6 +2,9 @@
 # Contributor: marmis <tiagodepalves@gmail.com>
 pkgname=vscode-xdg-patch-hook
 pkgdesc="Patch VSCode files for improved XDG experience (#15741, #129953, #214741)"
+# https://github.com/microsoft/vscode/issues/15741
+# https://github.com/microsoft/vscode/issues/129953
+# https://github.com/microsoft/vscode/issues/214741
 url='https://aur.archlinux.org/packages/vscode-xdg-patch-hook'
 pkgver=1.0.0
 pkgrel=1
