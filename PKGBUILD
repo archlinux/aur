@@ -1,8 +1,9 @@
 # Maintainer: Kimiblock Moe
 # Contributor: Integral
+# Contributor: ZhangHua
 
 pkgname=qcm-git
-pkgver=1.0.3.r24.g588f96e3
+pkgver=1.0.5.r0.g06a01ba9
 pkgrel=1
 pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
@@ -43,42 +44,32 @@ makedepends=(
 	'extra-cmake-modules'
 	'ninja')
 provides=("qcm")
-source=('git+https://github.com/hypengw/Qcm.git')
+source=("git+https://github.com/hypengw/Qcm.git")
 sha256sums=('SKIP')
 conflicts=("qcm")
-
-function prepare() {
-	cd Qcm
-	git submodule update --init
-	#if [ -d "${srcdir}"/Qcm/build ]; then
-	#	rm -r "${srcdir}"/Qcm/build
-	#fi
-	if [ -d qml_material ]; then
-		rm -rf qml_material
-	fi
-	git clone https://github.com/hypengw/QmlMaterial.git qml_material
-}
 
 function pkgver(){
 	cd Qcm
 	git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+function prepare() {
+	cd "${srcdir}/Qcm"
+	git submodule update --init --recursive
+}
+
 function build(){
-	cd Qcm
-	mkdir build -p
-	cd build
-	cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_INSTALL_RPATH=YES
-	ninja
+	cd "${srcdir}/Qcm"
+	cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=Release
+	cmake --build build
 }
 
 function package(){
-	local appID=io.github.hypengw.Qcm
-	cd Qcm
-	install -Dm644 "${srcdir}/Qcm/app/assets/Qcm.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${appID}.svg"
-	install -Dm644 "${srcdir}/Qcm/app/assets/Qcm.desktop" "${pkgdir}/usr/share/applications/${appID}.desktop"
-	install -Dm755 "${srcdir}/Qcm/build/app/Qcm" "${pkgdir}/usr/bin/Qcm"
-	install -Dm755 "${srcdir}/Qcm/build/qcm_interface/libqcm_interface.so" "${pkgdir}/usr/lib/libqcm_interface.so"
-	install -Dm755 "${srcdir}/Qcm/build/asio_helper/libqcm_asio.so" "${pkgdir}/usr/lib/libqcm_asio.so"
-	#DESTDIR="$pkgdir" cmake --install build
+	cd "${srcdir}/Qcm"
+	DESTDIR="${pkgdir}" cmake --install build
+	mv "${pkgdir}/usr/local"/* "${pkgdir}/usr"
+	mkdir -p "${pkgdir}/usr/share/Qcm/"
+	cp -r "${srcdir}/Qcm/build/qml_modules" "${pkgdir}/usr/share/Qcm/"
+	sed -i 's|Exec=Qcm|Exec=env QML_IMPORT_PATH=/usr/share/Qcm/qml_modules Qcm|g' \
+		"${pkgdir}/usr/share/applications"/*.desktop
 }
