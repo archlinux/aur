@@ -1,0 +1,16 @@
+pkgbase = ontake-hayai-git
+	pkgdesc = An EEW system for Linux using JMA data provided by the Wolfx Project.
+	pkgver = r9.ga15715a
+	pkgrel = 1
+	url = https://github.com/make-42/hayai
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = go>=1.18
+	provides = ontake-hayai
+	conflicts = ontake-hayai
+	source = git+https://github.com/make-42/hayai
+	md5sums = SKIP
+
+pkgname = ontake-hayai-git
