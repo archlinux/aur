@@ -2,13 +2,13 @@
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
 _pkgname=libretro-database
 pkgname=$_pkgname-git
-pkgver=1.14.0.r8.g3e565a4a
+pkgver=1.19.0.r29.g48ebfeef9
 pkgrel=1
 epoch=1
 pkgdesc="RetroArch's cheatcode files, content data files, etc."
 arch=('any')
 url="https://github.com/libretro/libretro-database"
-license=('MIT')
+license=('CC-BY-SA-4.0')
 groups=('libretro')
 makedepends=('git')
 optdepends=('retroarch')
@@ -27,5 +27,4 @@ package() {
 	cd $_pkgname
 	# shellcheck disable=SC2154
 	make DESTDIR="$pkgdir" install
-	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname COPYING
 }
