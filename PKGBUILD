@@ -1,7 +1,7 @@
-_electron='electron31'
+_electron='electron32'
 
 pkgname=webcord
-pkgver=4.10.0
+pkgver=4.10.1
 pkgrel=1
 pkgdesc='A Discord and SpaceBar Electron-based client implemented without Discord API'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 options=('!strip' '!emptydirs')
 
 depends=("${_electron}")
-makedepends=('npm' 'esbuild>=0.19')
+makedepends=('npm' 'esbuild')
 
 _snapshot="${_repo}-${pkgver}"
 source=(
@@ -22,7 +22,7 @@ source=(
 )
 
 sha256sums=(
-    '1f4940f7824f9ce5db02e566114d5f27e2558cb178796c7fdf738cc778ac6eff'
+    '1eded03e61eb6f414309ecd1862e95c02586cb7ca5fcf9e5176fb42ae37198dd'
     'c803c7227982fad22390a8d6d11f3707171d5e9b1a394731a6a07773eab75b1f'
     '5923151d1cc05d7e2ab0cb2103921f5f3985e08e48c74e7aa12003b32c0e2bae'
     'c41c46200b0dacf7d2ae3983e66bb9aad8314fdfc821f3ed559245ca205c087c'
@@ -30,7 +30,7 @@ sha256sums=(
 
 prepare() {
     cd "${_snapshot}"
-    npm ci --omit=dev --ignore-scripts --prefix=.
+    npm ci --omit=dev --ignore-scripts --no-bin-links --prefix=.
     rm -r 'sources/code/build'
     rm 'sources/assets/icons/app.ic'*
 }
