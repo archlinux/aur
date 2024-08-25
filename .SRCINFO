@@ -1,0 +1,13 @@
+pkgbase = meow
+	pkgdesc = A simple python-based script that generates a random cat.
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = python
+	source = meow.sh
+	source = cats.txt
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = meow
