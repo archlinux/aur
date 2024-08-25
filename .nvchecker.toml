@@ -1,0 +1,4 @@
+[forkgram]
+source = "git"
+git = "https://github.com/Forkgram/tdesktop.git"
+prefix = "v"
