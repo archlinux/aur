@@ -1,0 +1,14 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/code*/package.json
+Target = opt/visual-studio-code*/resources/app/package.json
+Target = usr/share/applications/code*.desktop
+Target = !usr/share/applications/*-url-handler.desktop
+
+[Action]
+Description = Patching Desktop files for Visual Studio Code...
+When = PostTransaction
+Exec = /usr/lib/vscode-xdg-patch-hook/apply-xdg-patch.sh
+NeedsTargets
