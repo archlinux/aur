@@ -1,0 +1,4 @@
+/src/**
+/pkg/**
+/chimeraos-device-quirks/**
+*.tar.zst
