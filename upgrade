@@ -32,6 +32,6 @@ sed -i "s/b2sums=.*/b2sums=('${digest}')/" "${pkgbuild}"
 srcinfo="${own_dir}/.SRCINFO"
 
 old_version_re=$(echo "${old_version}" | sed "s/\./\\\./g")
-sed -i "s/${old_version_re}/${version}/" "${srcinfo}"
+sed -i "s/${old_version_re}/${version}/g" "${srcinfo}"
 
 sed -i "s/b2sums =.*/b2sums = ${digest}/" "${srcinfo}"
