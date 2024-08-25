@@ -18,7 +18,7 @@ pkgdesc="Open source Spotify client that doesn't require Premium nor uses Electr
 arch=("x86_64" "aarch64")
 url="https://spotube.krtirtho.dev/"
 license=("BSD-4-Clause")
-depends=("gcc-libs" "mpv" "libappindicator-gtk3" "libsecret" "libnotify" "webkit2gtk-4.1" "libsoup3")
+depends=("gcc-libs" "mpv" "libappindicator-gtk3" "libsecret" "libnotify" "webkit2gtk-4.1" "libsoup3" "libayatana-appindicator")
 makedepends=(
     "clang" "cmake" "ninja" "pkgconf" "gtk3" "rustup" "imagemagick" "jsoncpp"
 )
@@ -27,6 +27,7 @@ optdepends=(
     "nss-mdns: required if using remote controlling"
     "mdns-scan: required if using remote controlling"
 )
+options=("!lto")
 source=(
     "spotube-$pkgver.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v$pkgver.tar.gz"
 )
