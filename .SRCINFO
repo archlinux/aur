@@ -1,7 +1,7 @@
 pkgbase = brawlcrate-wine-bin
-	pkgdesc = BrawlCrate - An updated fork of BrawlBox (uses Wine)
+	pkgdesc = An updated fork of BrawlBox (uses Wine)
 	pkgver = 0.42h1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/soopercool101/BrawlCrate
 	arch = x86_64
 	license = lgpl3

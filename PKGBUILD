@@ -1,8 +1,8 @@
 # Maintainer: Furdox <furdox at furdox dot tk>
 pkgname=brawlcrate-wine-bin
 pkgver=0.42h1
-pkgrel=2
-pkgdesc="BrawlCrate - An updated fork of BrawlBox (uses Wine)"
+pkgrel=3
+pkgdesc="An updated fork of BrawlBox (uses Wine)"
 arch=('x86_64')
 url="https://github.com/soopercool101/BrawlCrate"
 license=('lgpl3')
