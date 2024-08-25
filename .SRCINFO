@@ -1,6 +1,6 @@
 pkgbase = tuxguitar-bin
 	pkgdesc = TuxGuitar is an Open Source multitrack tablature editor and player written in Java.
-	pkgver = 1.6.3
+	pkgver = 1.6.4
 	pkgrel = 1
 	url = https://github.com/helge17/tuxguitar
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = tuxguitar-bin
 	optdepends = fluidsynth
 	optdepends = soundfont-unison
 	options = !strip
-	source = https://github.com/helge17/tuxguitar/releases/download/1.6.3/tuxguitar-1.6.3-linux-swt-amd64.tar.gz
+	source = https://github.com/helge17/tuxguitar/releases/download/1.6.4/tuxguitar-1.6.4-linux-swt-amd64.tar.gz
 	source = tuxguitar-bin.sh
-	sha256sums = 78ed94e851533b3dac47f64dd809ae8b60ec58c19c7c59052772e1833cabe9a3
+	sha256sums = 143d7eee357af44f407d37338c3e833860fea4f96c720e28f00f400c150cf41e
 	sha256sums = 3161e7eae2d4bc03a7108f01b8773b6101762c34876cfc948dfb441bb3836b48
 
 pkgname = tuxguitar-bin
