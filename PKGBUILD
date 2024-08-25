@@ -11,7 +11,7 @@ url='https://github.com/sched-ext/scx'
 arch=('x86_64' 'aarch64')
 backup=('etc/default/scx')
 license=('GPL-2.0-only')
-depends=('libelf' 'zlib' 'jq' 'bpftool' 'libbpf')
+depends=('libelf' 'zlib' 'jq' 'bpf' 'libbpf')
 makedepends=('git' 'python' 'meson' 'clang' 'llvm' 'llvm-libs' 'rust')
 options=(!lto)
 source=("git+https://github.com/sched-ext/scx?signed#tag=v$pkgver")
