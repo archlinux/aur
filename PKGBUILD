@@ -2,7 +2,7 @@
 # Contributor: Nick Lay <layns(at)mail(dot)uc(dot)edu>
 
 ## options
-: ${_branch:=wip}
+: ${_branch=master}
 
 : ${_build_clang:=true}
 
@@ -16,12 +16,12 @@ unset _pkgtype
 # basic info
 _pkgname="dolphin-emu-primehack"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.1.3.r10.g5bb7dda
+pkgver=1.1.4.r10.g9650329
 pkgrel=1
 pkgdesc='A Gamecube and Wii emulator with mouselook controls'
 url="https://github.com/xiota/dolphin-primehack"
 license=('GPL-2.0-or-later')
-arch=(x86_64)
+arch=('x86_64')
 
 depends=(
   alsa-lib
@@ -244,7 +244,7 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 
   install -Dm644 "$srcdir/$_pkgsrc/Data/51-usb-device.rules" \
-    -t "$pkgdir/usr/lib/udev/rules.d/"
+    "$pkgdir/usr/lib/udev/rules.d/51-usb-device-primehack.rules"
 
   rm -rf "$pkgdir"/usr/{include,lib/libdiscord-rpc.a}
 }
