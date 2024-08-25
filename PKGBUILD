@@ -18,7 +18,8 @@ prepare() {
   ln -rTsf "$pkgname-$pkgver" "$gopkg"
   export GOPATH="$srcdir/gopath"
   cd "$gopkg"
-  go get -v -d
+  go mod init
+  go get -v
 }
 
 build() {
