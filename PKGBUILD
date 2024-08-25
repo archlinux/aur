@@ -1,7 +1,7 @@
 # Maintainer: Jorai Rijsdijk <aur@jrijsdijk.com>
 
 pkgname=mcrl2
-pkgver=202407.0
+pkgver=202407.1
 pkgrel=1
 pkgdesc="A formal specification language with an associated toolset."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('boost' 'cmake' 'gcc>=7.0')
 url=http://www.mcrl2.org
 license=('Boost')
 source=("http://mcrl2.org/download/release/$pkgname-$pkgver.tar.gz")
-sha256sums=('dda2155486519ae43ccaae823dfc0021b2b958662507f76ddb7717b30e9549e6')
+sha256sums=('5613fd0454ae8f160c71056ee8fea4eb2887d94521081dcff8f8fef48afbc7ab')
 install=mcrl2.install
 
 build() {

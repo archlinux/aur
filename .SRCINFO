@@ -1,6 +1,6 @@
 pkgbase = mcrl2
 	pkgdesc = A formal specification language with an associated toolset.
-	pkgver = 202407.0
+	pkgver = 202407.1
 	pkgrel = 1
 	url = http://www.mcrl2.org
 	install = mcrl2.install
@@ -16,7 +16,7 @@ pkgbase = mcrl2
 	optdepends = python: for easily running the included examples
 	provides = mcrl2
 	conflicts = mcrl2
-	source = http://mcrl2.org/download/release/mcrl2-202407.0.tar.gz
-	sha256sums = dda2155486519ae43ccaae823dfc0021b2b958662507f76ddb7717b30e9549e6
+	source = http://mcrl2.org/download/release/mcrl2-202407.1.tar.gz
+	sha256sums = 5613fd0454ae8f160c71056ee8fea4eb2887d94521081dcff8f8fef48afbc7ab
 
 pkgname = mcrl2
