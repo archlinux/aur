@@ -1,6 +1,6 @@
 # Maintainer: Andrew <aandrew.me@pm.me>
 pkgname="ytdownloader-gui"
-pkgver=3.18.0
+pkgver=3.18.2
 pkgrel=1
 pkgdesc="GUI video downloader supporting hundreds of sites"
 arch=('any')
@@ -47,7 +47,7 @@ package() {
   install -Dm 775 ${srcdir}/${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
 
  # desktop entry
-  install -Dm 644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop  
+  install -Dm 644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 
   # icons
   install -Dm 644 ${srcdir}/${pkgname}/resources/icon.png ${pkgdir}/usr/share/icons/${pkgname}.png
