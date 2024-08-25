@@ -1,61 +1,17 @@
---- abPOA-1.5.0/Makefile	2024-01-11 20:53:54.000000000 +0530
-+++ abPOA-1.5.0.new/Makefile	2024-01-13 20:48:42.551863612 +0530
-@@ -5,7 +5,7 @@
- OS          := $(shell uname)
- ARCH        := $(shell arch)
- EXTRA_FLAGS = -Wno-unused-function -Wno-misleading-indentation -DUSE_SIMDE -DSIMDE_ENABLE_NATIVE_ALIASES
--CFLAGS      = -Wall -O3 $(EXTRA_FLAGS)
-+CFLAGS      += $(CPPFLAGS) -Wall -O3 $(EXTRA_FLAGS) $(LDFLAGS)
+Description: inject standard debian build flags.
+Author: Étienne Mollier <emollier@debian.org>
+Forwarded: not-needed
+Last-Update: 2022-07-09
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- abpoa.orig/Makefile
++++ abpoa/Makefile
+@@ -23,7 +23,7 @@
+ 	OPT_FLAGS = -O3
+ endif
  
- # for debug
- ifneq ($(debug),)
-@@ -13,9 +13,9 @@
- endif
- # for gdb
- ifneq ($(gdb),)
--	CFLAGS   = -Wall -g ${DFLAGS} $(EXTRA_FLAGS)
-+	CFLAGS   += -Wall -g ${DFLAGS} $(EXTRA_FLAGS)
- else
--	CFLAGS   = -Wall -O3 ${DFLAGS} $(EXTRA_FLAGS)
-+	CFLAGS   += -Wall -O3 ${DFLAGS} $(EXTRA_FLAGS)
- endif
+-CFLAGS        = $(OPT_FLAGS) $(EXTRA_FLAGS)
++CFLAGS        = $(CPPFLAGS) $(OPT_FLAGS) $(EXTRA_FLAGS) $(LDFLAGS)
  
  # for gprof
-@@ -40,7 +40,7 @@
- OBJS = $(addprefix $(SRC_DIR)/, abpoa_align.o abpoa_graph.o abpoa_plot.o abpoa_seed.o abpoa_seq.o abpoa_output.o kalloc.o kstring.o simd_abpoa_align.o simd_check.o utils.o)
- 
- # Set default SIMD flags
--SIMD_FLAG   = -march=native
-+# SIMD_FLAG   = -march=native
- 
- # auto-detect some appropriate defaults -- this helps users in the common case of macOS with arm
- ifeq ($(ARCH), $(filter $(ARCH), aarch64 arm64))
-@@ -53,17 +53,17 @@
- endif
- 
- # override if user specified
--ifneq ($(armv7),) # for ARMv7
--	SIMD_FLAG   =  -march=armv7-a -mfpu=neon -D__AVX2__
--else
--ifneq ($(armv8),) # for ARMv8
--ifneq ($(aarch64),) # for Aarch64
--	SIMD_FLAG   =  -march=armv8-a+simd -D__AVX2__
--else # for Aarch32
--	SIMD_FLAG   =  -march=armv8-a+simd -mfpu=auto -D__AVX2__
--endif
--endif
--endif
-+#ifneq ($(armv7),) # for ARMv7
-+#	SIMD_FLAG   =  -march=armv7-a -mfpu=neon -D__AVX2__
-+##else
-+#ifneq ($(armv8),) # for ARMv8
-+#ifneq ($(aarch64),) # for Aarch64
-+#	SIMD_FLAG   =  -march=armv8-a+simd -D__AVX2__
-+#else # for Aarch32
-+#	SIMD_FLAG   =  -march=armv8-a+simd -mfpu=auto -D__AVX2__
-+#endif
-+#endif
-+#endif
- 
- # some more possible overrides
- FLAG_SSE2     = -msse2
+ ifneq ($(pg),)

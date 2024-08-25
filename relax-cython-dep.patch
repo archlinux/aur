@@ -1,0 +1,19 @@
+Description: relax cython dependency to tolerate version 3.
+ Older versions are no longer available in Debian.
+
+Author: Étienne Mollier <emollier@debian.org>
+Forwarded: not-needed
+Last-Update: 2024-07-20
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- abpoa.orig/setup.py
++++ abpoa/setup.py
+@@ -69,7 +69,7 @@
+     author_email = "gaoy1@chop.edu",
+     license = "MIT",
+     keywords = "multiple-sequence-alignment  partial-order-graph-alignment",
+-    setup_requires=["cython<3"], # see https://github.com/cython/cython/issues/5568
++    setup_requires=["cython"], # see https://github.com/cython/cython/issues/5568
+     # Build instructions
+     ext_modules = [
+         Extension(
