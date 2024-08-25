@@ -1,7 +1,7 @@
 pkgbase = wine-osu-spectator-wow64
 	pkgdesc = A compatibility layer for running Windows programs, but with osu! specific patches (WoW64 version)
 	pkgver = 9.15.w233.s5eeb4b7
-	pkgrel = 4
+	pkgrel = 1
 	url = http://www.winehq.com
 	install = wine.install
 	arch = x86_64
@@ -39,8 +39,6 @@ pkgbase = wine-osu-spectator-wow64
 	makedepends = attr
 	makedepends = gst-plugins-base-libs
 	makedepends = gtk3
-	makedepends = clang
-	makedepends = llvm-libs
 	makedepends = llvm-mingw-w64-toolchain
 	makedepends = fontconfig
 	makedepends = lcms2
