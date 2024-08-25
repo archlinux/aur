@@ -1,6 +1,6 @@
 pkgbase = hellocontest
 	pkgdesc = A simple HF contest logger for Linux.
-	pkgver = 0.20.0
+	pkgver = 0.20.2
 	pkgrel = 1
 	url = https://github.com/ftl/hellocontest
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = hellocontest
 	depends = cairo
 	depends = pango
 	provides = hellocontest
-	source = hellocontest-0.20.0.tar.gz::https://github.com/ftl/hellocontest/archive/refs/tags/v0.20.0.tar.gz
-	sha256sums = 11b914f2cfa78a45fe9517c59a6d7c072fe12c7cdbed618685c4882f49ed23e0
+	source = hellocontest-0.20.2.tar.gz::https://github.com/ftl/hellocontest/archive/refs/tags/v0.20.2.tar.gz
+	sha256sums = 35a2a729f1c47cf36b6cfd610ba143da42849c55e1e6a8b57905d15136936ec1
 
 pkgname = hellocontest
