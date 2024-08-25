@@ -1,7 +1,7 @@
 # Maintainer: Rodolphe Fouquet <vachicorne at pm dot me>
 pkgname=zoom-vmware-plugin
-pkgver=5.17.5
-_subver=24630
+pkgver=6.0.10
+_subver=25100
 pkgrel=1
 pkgdesc="Zoom VDI VMWare plugin "
 arch=('x86_64')
@@ -16,10 +16,12 @@ replaces=()
 
 source=("https://zoom.us/download/vdi/${pkgver}.${_subver}/zoomvdi-universal-plugin-centos_${pkgver}.rpm")
 
-sha512sums=('b43926739d1de5b487718ee3975e3dd915ce6aaefedce0969f5680eb8e792182a8613adb71e670d867cc43818ede50603f20bcd759ee130c22644d4edbc56f0a')
+sha512sums=('e91d059079c2203f0efaaa3b02c5e2b1430317eaf39644b5913af0a4339f7a95954caa6afe35dee5f9da8478c9b97ba4ee86ab58bbf16c87cbe7bd074bc76567')
 
 package() {
   find $srcdir/ -mindepth 1 -maxdepth 1 -type d | xargs cp -r -t "$pkgdir"
+
+  install -d "$pkgdir/usr/lib/vmware/view/vdpService"
+
+  ln -s /usr/lib/zoomvdi-universal-plugin/libZoomPlugin.so "$pkgdir/usr/lib/vmware/view/vdpService/libZoomMediaVmware.so"
 }
-
-

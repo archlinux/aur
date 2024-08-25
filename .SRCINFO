@@ -1,13 +1,13 @@
 pkgbase = zoom-vmware-plugin
 	pkgdesc = Zoom VDI VMWare plugin
-	pkgver = 5.17.5
+	pkgver = 6.0.10
 	pkgrel = 1
 	url = https://support.zoom.us/hc/en-us/articles/4415057249549-VDI-releases-and-downloads
 	arch = x86_64
 	license = custom
 	depends = vmware-horizon-client
 	depends = vmware-horizon-rtav
-	source = https://zoom.us/download/vdi/5.17.5.24630/zoomvdi-universal-plugin-centos_5.17.5.rpm
-	sha512sums = b43926739d1de5b487718ee3975e3dd915ce6aaefedce0969f5680eb8e792182a8613adb71e670d867cc43818ede50603f20bcd759ee130c22644d4edbc56f0a
+	source = https://zoom.us/download/vdi/6.0.10.25100/zoomvdi-universal-plugin-centos_6.0.10.rpm
+	sha512sums = e91d059079c2203f0efaaa3b02c5e2b1430317eaf39644b5913af0a4339f7a95954caa6afe35dee5f9da8478c9b97ba4ee86ab58bbf16c87cbe7bd074bc76567
 
 pkgname = zoom-vmware-plugin
