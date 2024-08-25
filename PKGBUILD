@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.2.0.r87.g9852f95c
+pkgver=0.2.0.r111.gc2ddfe51
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('x86_64')
@@ -25,6 +25,7 @@ makedepends=(
 	'git'
 	'magic_enum>=0.9.6'
 	'qt6-base'
+	'qt6-tools'
 	'rapidjson'
 	'renderdoc'
 	'robin-map>=1.3'
