@@ -45,11 +45,11 @@ _releaseinfo=$(curl -Ls "$_siteurl")
 _downloadId=$(printf "%s" $_releaseinfo | sed -n 's/.*"downloadId":"\([^"]*\).*/\1/p')
 _pkgver=$(printf "%s" $_releaseinfo | awk -F'[,:]' '{for(i=1;i<=NF;i++){if($i~/"major"/){print $(i+1)} if($i~/"minor"/){print $(i+1)} if($i~/"releaseNum"/){print $(i+1)}}}' | sed 'N;s/\n/./;N;s/\n/./')
 
-if [[ $pkgver != $_pkgver ]]; then
-  echo "Version mismatch. ($pkgver ≠ $_pkgver)"
-  echo "It is recommended to wait for the next release."
+#if [[ $pkgver != $_pkgver ]]; then
+#  echo "Version mismatch. ($pkgver ≠ $_pkgver)"
+#  echo "It is recommended to wait for the next release."
 #  exit
-fi
+#fi
 
 _reqjson="{ \
   \"firstname\": \"Arch\", \

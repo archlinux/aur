@@ -1,5 +1,3 @@
-Version mismatch. (19.0 ≠ 19.0.0)
-It is recommended to wait for the next release.
 pkgbase = davinci-resolve
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design
 	pkgver = 19.0
@@ -36,7 +34,7 @@ pkgbase = davinci-resolve
 	conflicts = davinci-resolve-beta
 	conflicts = davinci-resolve-studio-beta
 	options = !strip
-	source = DaVinci_Resolve_19.0_Linux.zip::https://swr.cloud.blackmagicdesign.com/DaVinciResolve/v19.0/DaVinci_Resolve_19.0_Linux.zip?verify=1724549552-qF%2Bfm5nIQBbYN45UdAP%2BzqIzNsH1IqTUIO6qgSciCIo%3D
+	source = DaVinci_Resolve_19.0_Linux.zip::https://swr.cloud.blackmagicdesign.com/DaVinciResolve/v19.0/DaVinci_Resolve_19.0_Linux.zip?verify=1724549739-qrvptJfQj%2B3ZCsyuV2tLfvPGzmQ%2BgKEvRyo6QxbvcxE%3D
 	sha256sums = 17e5753adc8ee49d8f617a44d807993913fa5a2068535479eb2a1593c1ba7284
 
 pkgname = davinci-resolve
