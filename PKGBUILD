@@ -9,7 +9,6 @@ pkgdesc='Free tool to view .astah files'
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('java-runtime=8' 'lib32-glibc' 'hicolor-icon-theme' 'bash')
-conflicts=('astah-community' 'astah-professional')
 options=('!emptydirs' '!strip')
 source=("http://cdn.change-vision.com/files/astah-viewer-${_pkgver}.noarch.rpm")
 md5sums=('c3cafd85cccdaeb1d58753c199912903')
