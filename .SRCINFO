@@ -1,7 +1,7 @@
 pkgbase = chibitracker-git
 	pkgdesc = A Classic Impulse Tracker Clone
 	pkgver = 1.4.2.r28.735cf51
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/reduz/chibitracker
 	install = chibitracker-git.install
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = chibitracker-git
 	makedepends = scons
 	makedepends = gcc
 	makedepends = git
+	makedepends = unzip
 	depends = sdl
 	depends = gcc-libs
 	depends = hicolor-icon-theme

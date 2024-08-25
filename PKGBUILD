@@ -2,7 +2,7 @@
 _pkgname=chibitracker
 pkgname=chibitracker-git
 pkgver=1.4.2.r28.735cf51
-pkgrel=6
+pkgrel=7
 install="${pkgname}.install"
 pkgdesc="A Classic Impulse Tracker Clone"
 arch=("x86_64" "i686")
@@ -11,7 +11,7 @@ license=('GPL-2.0-or-later')
 provides=("chibitracker")
 conflicts=("chibitracker")
 depends=("sdl" "gcc-libs" "hicolor-icon-theme")
-makedepends=("scons" "gcc" "git")
+makedepends=("scons" "gcc" "git" "unzip")
 source=("git+$url" 
 	"chibitracker.desktop")
 sha256sums=('SKIP'
