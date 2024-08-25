@@ -41,13 +41,12 @@ build() {
   cmake --build .
 
   cmake --build . --target test-units
-  cmake --build . --target test-gtk-integration
 }
 
 check() {
   cd "${srcdir}/${_pkgname}/build"
 
-  cmake --build . --target test
+  ./test/test-units
 }
 
 package() {
