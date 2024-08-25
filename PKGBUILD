@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-compression-util'
-pkgver='0.12'
+pkgver='0.13'
 pkgrel='1'
 pkgdesc="Compression::Util - implementation of various techniques used in data compression"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('perl>=5.36.0')
 makedepends=()
 url='https://metacpan.org/release/Compression-Util'
 source=("https://cpan.metacpan.org/authors/id/T/TR/TRIZEN/Compression-Util-${pkgver}.tar.gz")
-b2sums=('b7fd9013b50f1e59b528592f51db74ad6b5f2a229065b13b856402e993676d78307bdd34c11a262e439d6f58d2759a8c685627969a70f6d84db4a6b9276b6ff9')
+b2sums=('8915c2cbe3dd40c3bc269b3ee42263aa733bcebae80f54a11e666476a29a8162c68414e773871739f3ff8c3a690f4d5f5576489a1f8e14bf5e5f9e41d3f3163c')
 _distdir="Compression-Util-${pkgver}"
 
 build() {
