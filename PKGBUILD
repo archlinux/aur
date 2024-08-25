@@ -2,7 +2,7 @@
 
 _pkgname_=zwm
 pkgname=${_pkgname_}-git
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Minimal tiling window manager for X11"
 arch=('i686' 'x86_64')
