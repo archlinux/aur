@@ -1,7 +1,7 @@
 pkgbase = dolphin-emu-primehack-git
 	pkgdesc = A Gamecube and Wii emulator with mouselook controls
 	pkgver = 1.1.4.r10.g9650329
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xiota/dolphin-primehack
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -9,9 +9,6 @@ pkgbase = dolphin-emu-primehack-git
 	makedepends = git
 	makedepends = ninja
 	makedepends = python
-	makedepends = clang
-	makedepends = lld
-	makedepends = llvm
 	depends = alsa-lib
 	depends = bluez-libs
 	depends = curl
@@ -47,6 +44,7 @@ pkgbase = dolphin-emu-primehack-git
 	provides = dolphin-emu-primehack
 	conflicts = dolphin-emu-primehack
 	options = !emptydirs
+	options = !lto
 	source = xiota.primehack::git+https://github.com/xiota/dolphin-primehack.git#branch=master
 	source = cyan4973.xxhash::git+https://github.com/Cyan4973/xxHash.git
 	source = epezent.implot::git+https://github.com/epezent/implot.git

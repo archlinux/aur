@@ -4,7 +4,7 @@
 ## options
 : ${_branch=master}
 
-: ${_build_clang:=true}
+: ${_build_clang:=false}
 
 : ${_build_avx:=false}
 : ${_build_git:=true}
@@ -17,7 +17,7 @@ unset _pkgtype
 _pkgname="dolphin-emu-primehack"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=1.1.4.r10.g9650329
-pkgrel=1
+pkgrel=2
 pkgdesc='A Gamecube and Wii emulator with mouselook controls'
 url="https://github.com/xiota/dolphin-primehack"
 license=('GPL-2.0-or-later')
