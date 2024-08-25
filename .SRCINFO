@@ -1,10 +1,12 @@
 pkgbase = mathematica-light
 	pkgdesc = A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing with online documentation.
-	pkgver = 14.0.0
+	pkgver = 14.1.0
 	pkgrel = 1
 	url = http://www.wolfram.com/mathematica/
 	arch = x86_64
-	license = proprietary
+	license = LicenseRef-WolframMathematicaLicenseAgreement
+	makedepends = curl
+	makedepends = inetutils
 	depends = openmp
 	optdepends = alsa-lib
 	optdepends = atk
@@ -58,9 +60,10 @@ pkgbase = mathematica-light
 	provides = mathematica
 	conflicts = mathematica
 	options = !strip
-	source = Mathematica_14.0.0_LINUX.sh::https://account.wolfram.com/dl/Mathematica?version=14.0&platform=Linux&downloadManager=false&includesDocumentation=false&signature=09d7f5942c445782756030c9300d6386f8265c6910537efd11672b0a2b38d638bf4b845786832252bbd5eca6ef9bb82519db932fdaf2424f35302848
+	options = !debug
+	source = Wolfram_14.1.0_LIN.sh::https://account.wolfram.com/dl/WolframApp?version=14.1&platform=Linux&downloadManager=false&includesDocumentation=false&signature=09d7f5942c445782756030c9300d6386f8265c6910537efd11672b0a2b38d638bf4b845786832252bbd5eca6ef9bb8251bda9823d5f242487edd5941
 	source = remove-xdg-scripts.patch
-	md5sums = f0c5f9c44869d8fab8c3b1605b2ccb74
-	md5sums = 14df424ec93fad057604378c2b5c24c2
+	sha256sums = 3c2a63c2a03a342fa2c2f63175d601966179faf97beabf8ca086002fdd56167b
+	sha256sums = 20ba959296d418c8b00381da5abd87dc935633d44134a35e7961356bfef6a5f0
 
 pkgname = mathematica-light
