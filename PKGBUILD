@@ -1,6 +1,6 @@
 pkgname=brother-hll3240cdw-bin
 pkgver=3.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="LPR driver for Brother HL-L3240CDW printer"
 arch=("i686" "x86_64")
 url="https://support.brother.com/g/b/producttop.aspx?c=gb&lang=en&prod=hll3240cdw_us_eu_as"
@@ -21,8 +21,8 @@ package() {
   ln -s "/opt/brother/Printers/hll3240cdw/cupswrapper/brother_lpdwrapper_hll3240cdw" "$pkgdir/usr/lib/cups/filter/"
 
   # symlink for the PPD
-  install -d "$pkgdir/opt/cups/model/"
-  ln -s "/opt/brother/Printers/hll3240cdw/cupswrapper/brother_hll3240cdw_printer_en.ppd" "$pkgdir/opt/cups/model/"
+  install -d "$pkgdir/usr/share/cups/model/"
+  ln -s "/opt/brother/Printers/hll3240cdw/cupswrapper/brother_hll3240cdw_printer_en.ppd" "$pkgdir/usr/share/cups/model/"
 
   # architecture-specific symlinks
   ln -s "/opt/brother/Printers/hll3240cdw/lpd/$CARCH/brhll3240cdwfilter" "$pkgdir/opt/brother/Printers/hll3240cdw/lpd/"
