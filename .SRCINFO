@@ -8,6 +8,7 @@ pkgbase = python-ffmpy
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-poetry-core
 	depends = python
 	depends = ffmpeg
 	source = ffmpy-0.4.0.tar.gz::https://github.com/Ch00k/ffmpy/archive/refs/tags/0.4.0.tar.gz
