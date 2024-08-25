@@ -5,7 +5,7 @@
 
 _pkgname="debhelper"
 pkgname="$_pkgname"
-pkgver=13.19
+pkgver=13.20
 pkgrel=1
 pkgdesc="Programs to automate common tasks in debian/rules when building Debian packages"
 url="https://salsa.debian.org/debian/debhelper"
@@ -27,7 +27,7 @@ optdepends=(
 _source_main() {
   _pkgsrc="$_pkgname"
   source=("$_pkgsrc"::"git+$url.git#tag=debian/$pkgver")
-  sha256sums=('ab8889bc8dc098bad145d4d7e46f7b0a4b4570fc2ab3ecb1917e69fd3cb71b3a')
+  sha256sums=('1f3d05435f7242257e1ff319253db84a486710525bcd1cee729c710bbcf4a994')
 }
 
 _source_dh_strip_nd() {
@@ -40,13 +40,6 @@ _source_dh_strip_nd() {
 
 _source_main
 _source_dh_strip_nd
-
-prepare() {
-  cd "$_pkgsrc"
-
-  # prevent unicode error
-  rm "man/po4a/po"/*.po
-}
 
 build() {
   cd "$_pkgsrc"
