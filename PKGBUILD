@@ -7,10 +7,13 @@ pkgdesc="A collection of device specific configuration files"
 arch=('any')
 url="https://github.com/ChimeraOS/device-quirks"
 license=('MIT')
-depends=('acpica'
+depends=(
+  'acpica'
   'cpio'
   'systemd'
-  'swh-plugins')
+  'swh-plugins'
+  'ethtool'
+)
 makedepends=('git')
 source=("${_pkgbase}::git+https://github.com/ChimeraOS/device-quirks.git")
 md5sums=('SKIP')
