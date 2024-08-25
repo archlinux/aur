@@ -1,0 +1,17 @@
+pkgbase = rah-bin
+	pkgdesc = A simple AUR helper written in Rust
+	pkgver = 1.2.1
+	pkgrel = 2
+	url = https://deadgirl.dev/projects/rah
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = git
+	depends = pacman
+	conflicts = rah
+	options = !lto
+	source = rah-1.2.1-amd64.tar.gz::https://deadgirl.dev/projects/rah/releases/rah-1.2.1-amd64.tar.gz
+	md5sums = SKIP
+
+pkgname = rah-bin
