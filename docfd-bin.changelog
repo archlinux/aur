@@ -1,19 +1,18 @@
 
-## 7.1.0
+## 8.0.0
 
-- Added initial macOS support
+- Removed `--markdown-headings atx` from pandoc commandline
+  arguments
 
-    - Likely to have bugs, but will need macOS users to report back
+- Removed `Alt`+`U` undo key binding
 
-- Major speedup from letting `pdftotext` output everything in one pass and split
-  on Docfd side instead of asking `pdftotext` to output one page per invocation
+- Removed `Alt`+`E` redo key binding
 
-    - For very large PDFs the indexing used to take minutes but now only takes
-      seconds
+- Removed `Ctrl`+`Q` exit key binding
 
-    - Page count may be inaccurate if the PDF page contains form feed character
-      itself (not fully sure if `pdftotext` filters the form feed character from
-      content), but should be rare
+- Added documentation for undo redo key bindings
 
-- Significant reduction of index file size by adding GZIP
-  compression to the index JSON
+- Added clear mode and moved clear search field key binding
+  under this mode for multi-file view
+
+- Added file path filtering functionality to multi-file view
