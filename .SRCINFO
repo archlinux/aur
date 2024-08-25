@@ -1,0 +1,17 @@
+pkgbase = nginx-mainline-mod-zstd
+	pkgdesc = Nginx modules for the Zstandard compression
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/tokers/zstd-nginx-module
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = nginx-mainline-src
+	depends = zstd>=1.4.0
+	depends = glibc
+	provides = nginx-mainline-mod-zstd
+	conflicts = nginx-mainline-mod-zstd
+	source = https://github.com/tokers/zstd-nginx-module/archive/refs/tags/0.1.1.tar.gz
+	sha256sums = 707d534f8ca4263ff043066db15eac284632aea875f9fe98c96cea9529e15f41
+
+pkgname = nginx-mainline-mod-zstd
