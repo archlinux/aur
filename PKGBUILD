@@ -1,7 +1,7 @@
 # Maintainer: kd8bny <kd8bny at gmail dot com>
 
 pkgname=katalogue-git
-pkgver=r2.32ace70993582c26890e55b2447ef145ff878fb5
+pkgver=r2.adf67aa7ba5d52ad3632c892c2077df6fb165a4b
 pkgrel=1
 pkgdesc="Catalog to track maintenance events and to-dos for your home, car, and otherwise"
 arch=('x86_64')
