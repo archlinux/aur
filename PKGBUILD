@@ -1,6 +1,6 @@
 # Maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=radar-contact
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="Radar Contact is a 2D game where you manage airspace, guiding planes to their destinations while avoiding collisions and storms."
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=("radar-contact")
 depends=('curl' 'libxrandr' 'libxcursor' 'libsystemd' 'openal' 'flac' 'libvorbis' 'mesa' 'libegl' 'libdrm' 'freetype2')
 makedepends=('cmake' 'gcc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Bogdanctx/Radar-Contact/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1407854c489a0fa5b3a2f73cf5e1999212a7377cfbbd83de0e77043cc43e6983')
+sha256sums=('8041dac0dacf19fd78546bf8aa213474dc1d35256bc9002c9ff5d1f2f71957c9')
 
 build() {
     cd "${srcdir}/Radar-Contact-${pkgver}"
