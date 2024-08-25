@@ -7,7 +7,6 @@ pkgbase = amneziawg-go
 	license = MIT
 	makedepends = go
 	optdepends = amneziawg-tools: Tools for configuration amneziawg
-	options = !lto
 	source = amneziawg-go-0.2.12.tar.gz::https://github.com/amnezia-vpn/amneziawg-go/archive/refs/tags/v0.2.12.tar.gz
 	sha512sums = 3978e47678c3ab68d9fd8cabd3ba8f18f5d1bbf84074113c0cbaf46abc807e652cfb0433cfa07fd404116d16a16b81a5c6cf9642708568e26ffa5b467fafabe6
 

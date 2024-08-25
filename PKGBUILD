@@ -11,7 +11,6 @@ makedepends=('go')
 optdepends=('amneziawg-tools: Tools for configuration amneziawg')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/amnezia-vpn/amneziawg-go/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('3978e47678c3ab68d9fd8cabd3ba8f18f5d1bbf84074113c0cbaf46abc807e652cfb0433cfa07fd404116d16a16b81a5c6cf9642708568e26ffa5b467fafabe6')
-options=(!lto)
 
 build(){
 	cd ${pkgname}-${pkgver}/
