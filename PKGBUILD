@@ -24,12 +24,12 @@ pkgver() {
   cd "$srcdir/$_reponame"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-  
+
 package() {
   cd "$srcdir/$_reponame"
 
   find . -type f \( -name 'dkms.conf' -o -name '*.c' \) -exec sed -i "s/#VERSION#/$pkgver/" {} +
-  echo 'ccflags-y += -DDEBUG' >> "Kbuild"
+  #echo 'ccflags-y += -DDEBUG' >> "Kbuild"
 
   echo "* Copying module into /usr/src..."
   install -dm755 "${pkgdir}/usr/src/${_reponame}-${pkgver}"
