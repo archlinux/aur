@@ -1,16 +1,31 @@
 # Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
 
 pkgname=mold-git
-pkgver=2.31.0.r12.g5ec3d2dc
+pkgver=2.33.0.r56.ged4cae93
 pkgrel=1
 pkgdesc='A Modern Linker'
 arch=('x86_64')
 url='https://github.com/rui314/mold'
 license=('MIT')
 # xxhash is bundled
-depends=('glibc' 'gcc-libs' 'mimalloc' 'zlib' 'tbb' 'zstd')
-makedepends=('git' 'python' 'cmake' 'mold')
-checkdepends=('clang' 'libdwarf')
+depends=(
+  gcc-libs
+  glibc
+  mimalloc
+  tbb
+  zlib
+  zstd
+)
+makedepends=(
+  cmake
+  git
+  mold
+  python
+)
+checkdepends=(
+  clang
+  libdwarf
+)
 source=("mold::git+https://github.com/rui314/mold")
 b2sums=('SKIP')
 provides=("mold=$pkgver")
