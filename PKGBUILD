@@ -3,11 +3,11 @@
 pkgname=python-xlmhglite
 _module=${pkgname#python-}
 pkgver=1.1.1
-pkgrel=1
+pkgrel=3
 pkgdesc='A minimal fork of the original python-xlmhg package'
 arch=('x86_64')
 url="https://github.com/GuyTeichman/xlmhglite"
-license=(custom:BSD-3)
+license=('BSD-3-Clause')
 depends=(
          'python'
          'cython'

@@ -1,10 +1,10 @@
 pkgbase = python-xlmhglite
 	pkgdesc = A minimal fork of the original python-xlmhg package
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/GuyTeichman/xlmhglite
 	arch = x86_64
-	license = custom:BSD-3
+	license = BSD-3-Clause
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
