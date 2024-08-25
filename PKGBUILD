@@ -19,6 +19,7 @@ b2sums=('76f2c729db93346677d16abcb1ff43ee95ab76a6057f49af90d71bfe77c9b1a1f5e98c5
 
 build() {
   cd "${srcdir}"
+  chmod +x manpage
   ./manpage
 }
 
