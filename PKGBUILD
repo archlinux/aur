@@ -2,7 +2,7 @@
 # Contributor: June <june@eridan.me>
 
 pkgname=q-zandronum
-pkgver=1.4.13
+pkgver=1.4.14
 pkgrel=1
 _fmodex_ver=4.44.64
 pkgdesc="Zandronum 3.0 fork with improved netcode and Quake movement"
@@ -25,7 +25,7 @@ source=(
 	"${pkgname}.svg"
 )
 
-sha256sums_x86_64=('a1bcdd517c1f780d0bbdcdb2abe9168e2aa8a23d9b3dd259b10a7a09e6b24dd6')
+sha256sums_x86_64=('314f8a42ac7de1ae4ff7e6baeb8592b02faa7b4b79a8930e91cbc5a0d35fa5d1')
 
 sha256sums=(
 	'c9407f638950af1dc4ff0884aa73a41490390b79435a81805a8e9c8c0ec84adf'
