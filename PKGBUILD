@@ -11,7 +11,8 @@ source=("SimMusic.sh" "SimMusic.desktop" "git+https://github.com/Simsv-Software/
 sha256sums=("c06d69abca6e96eed88cd3288b000639804160877483d36a9b8a730123db3e85"
             "01f11abfe5c69c5131f78f2fec66862a4faedd9b44ce533ef2ffd5380586ba4d"
             "SKIP")
-makedepends=("electron" "jq")
+depends=("electron")
+makedepends=("nodejs" "npm" "jq")
 options=("!strip" "!debug")
 
 pkgver() {
