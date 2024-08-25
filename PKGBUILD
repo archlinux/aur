@@ -8,10 +8,32 @@ pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
 url="https://github.com/contour-terminal/contour"
 license=('Apache-2.0')
-depends=('harfbuzz' 'fontconfig' 'yaml-cpp' 'qt6-base' 'qt6-declarative' 'qt6-multimedia'
-         'qt6-shadertools' 'qt6-wayland' 'qt6-5compat' 'libutempter' 'libunicode')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'libxml2'
-             'python' 'range-v3' 'fmt' 'microsoft-gsl' 'catch2' 'boxed-cpp')
+depends=(
+  fontconfig
+  harfbuzz
+  libunicode
+  libutempter
+  qt6-5compat
+  qt6-base
+  qt6-declarative
+  qt6-multimedia
+  qt6-shadertools
+  qt6-wayland
+  yaml-cpp
+)
+makedepends=(
+  boxed-cpp
+  catch2
+  cmake
+  extra-cmake-modules
+  fmt
+  git
+  libxml2
+  microsoft-gsl
+  ninja
+  python
+  range-v3
+)
 optdepends=('ncurses: for contour terminfo database')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('f0a91fbd5abefbbac0f785bb8f454759568e3daadbad6ff1ade00fccf8b0af94f16747816598c706a698d65ce884a2e9499512942e6f22263ebc654ae6fb6879')
