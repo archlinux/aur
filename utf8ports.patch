@@ -1,0 +1,535 @@
+diff --git a/src/FTactiveBarGraph.cpp b/src/FTactiveBarGraph.cpp
+index ac994e6..e15e5bb 100644
+--- a/src/FTactiveBarGraph.cpp
++++ b/src/FTactiveBarGraph.cpp
+@@ -1375,28 +1375,28 @@ void FTactiveBarGraph::readExtra (FTspectrumModifier * specmod)
+ 	wxString strval;
+ 	
+ 	if ((prop = extra->property ("xscale"))) {
+-		strval = wxString::FromAscii (prop->value().c_str());
++		strval = wxString::FromUTF8 (prop->value().c_str());
+ 		if (strval.ToLong (&val)) {
+ 			setXscale ((XScaleType) val, false);
+ 		}
+ 	}	
+ 
+ 	if ((prop = extra->property ("grid"))) {
+-		strval = wxString::FromAscii (prop->value().c_str());
++		strval = wxString::FromUTF8 (prop->value().c_str());
+ 		if (strval.ToLong (&val)) {
+ 			setGridChoice ((unsigned int) val, false);
+ 		}
+ 	}	
+ 	
+ 	if ((prop = extra->property ("gridsnap"))) {
+-		strval = wxString::FromAscii (prop->value().c_str());
++		strval = wxString::FromUTF8 (prop->value().c_str());
+ 		if (strval.ToLong (&val)) {
+ 			setGridSnap ( val != 0 ? true : false, false);
+ 		}
+ 	}	
+ 
+ 	if ((prop = extra->property ("gridlines"))) {
+-	        strval = wxString::FromAscii (prop->value().c_str());
++	        strval = wxString::FromUTF8 (prop->value().c_str());
+ 		if (strval.ToLong (&val)) {
+ 			setGridLines ( val != 0 ? true : false, false);
+ 		}
+diff --git a/src/FTapp.cpp b/src/FTapp.cpp
+index 5ca638a..fe57407 100644
+--- a/src/FTapp.cpp
++++ b/src/FTapp.cpp
+@@ -223,7 +223,7 @@ bool FTapp::OnInit()
+ 	wxCmdLineParser parser(argc, argv);
+ 	parser.SetDesc(cmdLineDesc);
+ 	parser.SetLogo(wxT("FreqTweak ") +
+-		       wxString::FromAscii (freqtweak_version) +
++		       wxString::FromUTF8 (freqtweak_version) +
+ 		       wxT("\nCopyright 2002-2004 Jesse Chappell\n")
+ 		       wxT("FreqTweak comes with ABSOLUTELY NO WARRANTY\n")
+ 		       wxT("This is free software, and you are welcome to redistribute it\n")
+@@ -322,7 +322,7 @@ bool FTapp::OnInit()
+ 			// default output ports
+ 			for (int id=0; id < pcnt && ports[id]; ++id, ++ocnt) {
+ 				// FIXME: needs wchar_t->char conversion
+-				outputports[id] = wxString::FromAscii (ports[id]);
++				outputports[id] = wxString::FromUTF8 (ports[id]);
+ 			}
+ 			
+ 			free (ports);
+diff --git a/src/FTconfigManager.cpp b/src/FTconfigManager.cpp
+index 205e3ab..9920d83 100644
+--- a/src/FTconfigManager.cpp
++++ b/src/FTconfigManager.cpp
+@@ -59,7 +59,7 @@ FTconfigManager::FTconfigManager(const std::string & basedir)
+ 	// try to create basedir if it doesn't exist
+         //wxDir bdir(_basedir);
+ 	
+-	if ( ! wxDir::Exists(wxString::FromAscii (_basedir.c_str())) ) {
++	if ( ! wxDir::Exists(wxString::FromUTF8 (_basedir.c_str())) ) {
+ 		if (mkdir ( _basedir.c_str(), 0755 )) {
+ 			fprintf (stderr, "Error creating %s\n", _basedir.c_str()); 
+ 		}
+@@ -72,7 +72,7 @@ FTconfigManager::FTconfigManager(const std::string & basedir)
+ 	}
+ 
+ 	// make basedir/presets dir
+-        wxString predir (wxString::FromAscii (_basedir.c_str()) + wxFileName::GetPathSeparator() + wxT("presets"));
++        wxString predir (wxString::FromUTF8 (_basedir.c_str()) + wxFileName::GetPathSeparator() + wxT("presets"));
+ 	if ( ! wxDir::Exists(predir) ) {
+ 		if (mkdir (predir.fn_str(), 0755 )) {
+ 			fprintf (stderr, "Error creating %s\n", static_cast<const char *> (predir.mb_str())); 
+@@ -99,7 +99,7 @@ bool FTconfigManager::storeSettings (const std::string &name, bool uselast)
+ 		return false;
+ 	}
+ 
+-	wxString dirname (wxString::FromAscii (_basedir.c_str()) + wxFileName::GetPathSeparator());
++	wxString dirname (wxString::FromUTF8 (_basedir.c_str()) + wxFileName::GetPathSeparator());
+ 
+ 	// directory to store settings
+ 	if (uselast)
+@@ -110,7 +110,7 @@ bool FTconfigManager::storeSettings (const std::string &name, bool uselast)
+ 	{
+ 		dirname += (wxString (wxT("presets"))
+ 		                 + wxFileName::GetPathSeparator()
+-			         + wxString::FromAscii(name.c_str()));
++			         + wxString::FromUTF8(name.c_str()));
+ 	}
+ 
+ 	std::cout<< "storing setting '"
+@@ -220,14 +220,14 @@ bool FTconfigManager::storeSettings (const std::string &name, bool uselast)
+ 							 filts[m]->getBypassed() ? 1 : 0).mb_str()));
+ 
+ 				std::string filtfname ( (wxString::Format(wxT("%d_%d_"), i, n)
+-							 + wxString::FromAscii (filts[m]->getConfigName().c_str())
++							 + wxString::FromUTF8 (filts[m]->getConfigName().c_str())
+ 							 + wxT(".filter")).fn_str() );
+ 				filtNode->add_property ("file", filtfname);
+ 
+ 				// write out filter file
+ 				wxTextFile filtfile (dirname +
+ 						     wxFileName::GetPathSeparator() +
+-						     wxString::FromAscii (filtfname.c_str()));
++						     wxString::FromUTF8 (filtfname.c_str()));
+ 				if (filtfile.Exists()) {
+ 					// remove it
+ 					unlink (wxString (filtfile.GetName()).fn_str ());
+@@ -426,12 +426,12 @@ bool FTconfigManager::loadSettings (const std::string &name, bool restore_ports,
+ 		return false;
+ 	}
+ 
+-	wxString dirname (wxString::FromAscii (_basedir.c_str()) + wxFileName::GetPathSeparator());
++	wxString dirname (wxString::FromUTF8 (_basedir.c_str()) + wxFileName::GetPathSeparator());
+ 	if (uselast) {
+ 		dirname += wxT("last_setting");
+ 	}
+ 	else {
+-		dirname += (wxString (wxT("presets")) + wxFileName::GetPathSeparator() + wxString::FromAscii (name.c_str()));
++		dirname += (wxString (wxT("presets")) + wxFileName::GetPathSeparator() + wxString::FromUTF8 (name.c_str()));
+ 	}
+ 	
+ 	if ( ! wxDir::Exists(dirname) ) {
+@@ -511,7 +511,7 @@ bool FTconfigManager::loadSettings (const std::string &name, bool restore_ports,
+ 		for (propiter=proplist.begin(); propiter != proplist.end(); ++propiter)
+ 		{
+ 			string key = (*propiter)->name();
+-			wxString value (wxString::FromAscii ((*propiter)->value().c_str()));
++			wxString value (wxString::FromUTF8 ((*propiter)->value().c_str()));
+ 
+ 			if (key == "fft_size") {
+ 				value.ToULong(&fft_size);
+@@ -555,7 +555,7 @@ bool FTconfigManager::loadSettings (const std::string &name, bool restore_ports,
+ 		}
+ 		
+ 		unsigned long chan_pos;
+-		wxString tmpstr (wxString::FromAscii (prop->value().c_str()));
++		wxString tmpstr (wxString::FromUTF8 (prop->value().c_str()));
+ 		if (!tmpstr.ToULong (&chan_pos) || chan_pos >= FT_MAXPATHS) {
+ 			fprintf (stderr, "invalid pos in channel!\n"); 
+ 			continue;
+@@ -582,7 +582,7 @@ bool FTconfigManager::loadSettings (const std::string &name, bool restore_ports,
+ 			for (propiter=proplist.begin(); propiter != proplist.end(); ++propiter)
+ 			{
+ 				string key = (*propiter)->name();
+-				wxString value (wxString::FromAscii ((*propiter)->value().c_str()));
++				wxString value (wxString::FromUTF8 ((*propiter)->value().c_str()));
+ 
+ 				if (key == "input_gain") {
+ 					if (value.ToDouble(&fval)) {
+@@ -634,7 +634,7 @@ bool FTconfigManager::loadSettings (const std::string &name, bool restore_ports,
+ 				continue;
+ 			}
+ 			unsigned long ppos;
+-			tmpstr = wxString::FromAscii (prop->value().c_str());
++			tmpstr = wxString::FromUTF8 (prop->value().c_str());
+ 			if (!tmpstr.ToULong (&ppos)) {
+ 				fprintf (stderr, "invalid pos in procmod!\n"); 
+ 				continue;
+@@ -685,7 +685,7 @@ bool FTconfigManager::loadSettings (const std::string &name, bool restore_ports,
+ 					continue;
+ 				}
+ 				unsigned long fpos;
+-				tmpstr = wxString::FromAscii (prop->value().c_str());
++				tmpstr = wxString::FromUTF8 (prop->value().c_str());
+ 				if (!tmpstr.ToULong (&fpos)) {
+ 					fprintf (stderr, "invalid filter pos in channel!\n"); 
+ 					continue;
+@@ -708,7 +708,7 @@ bool FTconfigManager::loadSettings (const std::string &name, bool restore_ports,
+ 						     + wxFileName::GetPathSeparator()
+ 						     + wxString::Format (wxT("%d_"), (int) chan_pos)
+ 						     + wxString::Format (wxT("%d_"), (int) ppos)
+-						     + wxString::FromAscii (specmod->getConfigName().c_str())
++						     + wxString::FromUTF8 (specmod->getConfigName().c_str())
+ 						     + wxT(".filter"));
+ 				if (filtfile.Open()) {
+ 
+@@ -718,7 +718,7 @@ bool FTconfigManager::loadSettings (const std::string &name, bool restore_ports,
+ 
+ 				// set bypassed
+ 				if ((prop = filtNode->property ("bypassed"))) {
+-					wxString value (wxString::FromAscii (prop->value().c_str()));
++					wxString value (wxString::FromUTF8 (prop->value().c_str()));
+ 					if (value.ToULong(&uval)) {
+ 						specmod->setBypassed (uval==1 ? true: false);
+ 					}
+@@ -727,7 +727,7 @@ bool FTconfigManager::loadSettings (const std::string &name, bool restore_ports,
+ 				// actual linkage must wait for later
+ 				long linked = -1;
+ 				if ((prop = filtNode->property ("linked"))) {
+-					wxString value (wxString::FromAscii (prop->value().c_str()));
++					wxString value (wxString::FromUTF8 (prop->value().c_str()));
+ 					if (value.ToLong(&linked) && linked >= 0) {
+ 						
+ 						_linkCache.push_back (LinkCache(chan_pos, linked, ppos, fpos));
+@@ -944,7 +944,7 @@ void FTconfigManager::loadModulators (const XMLNode * modulatorsNode)
+ 		else {
+ 			unsigned long bypassi = 0;
+ 				
+-			tmpstr = wxString::FromAscii (prop->value().c_str());
++			tmpstr = wxString::FromUTF8 (prop->value().c_str());
+ 			if (!tmpstr.ToULong (&bypassi)) {
+ 				fprintf (stderr, "invalid bypass flag in modulator!\n"); 
+ 			}
+@@ -956,7 +956,7 @@ void FTconfigManager::loadModulators (const XMLNode * modulatorsNode)
+ 			fprintf (stderr, "channel missing in modulator!\n"); 
+ 		} else
+ 		{
+-			tmpstr = wxString::FromAscii (prop->value().c_str());
++			tmpstr = wxString::FromUTF8 (prop->value().c_str());
+ 			if (!tmpstr.ToLong (&channel)) {
+ 				fprintf (stderr, "invalid channel in modulator!\n"); 
+ 			}
+@@ -1011,7 +1011,7 @@ void FTconfigManager::loadModulators (const XMLNode * modulatorsNode)
+ 								fprintf (stderr, "int value missing in modulator control!\n"); 
+ 							} else
+ 							{
+-								tmpstr = wxString::FromAscii (prop->value().c_str());
++								tmpstr = wxString::FromUTF8 (prop->value().c_str());
+ 								if (!tmpstr.ToLong (&intval)) {
+ 									fprintf (stderr, "invalid value in modulator control!\n"); 
+ 								}
+@@ -1026,7 +1026,7 @@ void FTconfigManager::loadModulators (const XMLNode * modulatorsNode)
+ 								fprintf (stderr, "float value missing in modulator control!\n"); 
+ 							} else
+ 							{
+-								tmpstr = wxString::FromAscii (prop->value().c_str());
++								tmpstr = wxString::FromUTF8 (prop->value().c_str());
+ 								if (!tmpstr.ToDouble (&fval)) {
+ 									fprintf (stderr, "invalid value in modulator control!\n"); 
+ 								}
+@@ -1051,7 +1051,7 @@ void FTconfigManager::loadModulators (const XMLNode * modulatorsNode)
+ 								fprintf (stderr, "bool value missing in modulator control!\n"); 
+ 							} else
+ 							{
+-								tmpstr = wxString::FromAscii (prop->value().c_str());
++								tmpstr = wxString::FromUTF8 (prop->value().c_str());
+ 								if (!tmpstr.ToLong (&intval)) {
+ 									fprintf (stderr, "invalid value in modulator control!\n"); 
+ 								}
+@@ -1094,7 +1094,7 @@ void FTconfigManager::loadModulators (const XMLNode * modulatorsNode)
+ 					fprintf (stderr, "int value missing in modulator filter channel!\n"); 
+ 					continue;
+ 				} 
+-				tmpstr = wxString::FromAscii (prop->value().c_str());
++				tmpstr = wxString::FromUTF8 (prop->value().c_str());
+ 				if (!tmpstr.ToULong (&filtchan)) {
+ 					fprintf (stderr, "invalid channel value in modulator filter control!\n"); 
+ 					continue;
+@@ -1106,7 +1106,7 @@ void FTconfigManager::loadModulators (const XMLNode * modulatorsNode)
+ 					fprintf (stderr, "int value missing in modulator filter pos!\n"); 
+ 					continue;
+ 				} 
+-				tmpstr = wxString::FromAscii (prop->value().c_str());
++				tmpstr = wxString::FromUTF8 (prop->value().c_str());
+ 				if (!tmpstr.ToULong (&modpos)) {
+ 					fprintf (stderr, "invalid modpos value in modulator filter pos control!\n"); 
+ 					continue;
+@@ -1118,7 +1118,7 @@ void FTconfigManager::loadModulators (const XMLNode * modulatorsNode)
+ 					fprintf (stderr, "int value missing in modulator filter pos!\n"); 
+ 					continue;
+ 				} 
+-				tmpstr = wxString::FromAscii (prop->value().c_str());
++				tmpstr = wxString::FromUTF8 (prop->value().c_str());
+ 				if (!tmpstr.ToULong (&filtpos)) {
+ 					fprintf (stderr, "invalid channel value in modulator filter pos control!\n"); 
+ 					continue;
+@@ -1289,7 +1289,7 @@ void FTconfigManager::writeFilter (FTspectrumModifier *specmod, wxTextFile & tf)
+ 
+ list<string> FTconfigManager::getSettingsNames()
+ {
+-        wxString dirname (wxString::FromAscii(_basedir.c_str()) + wxFileName::GetPathSeparator() + wxT("presets"));
++        wxString dirname (wxString::FromUTF8(_basedir.c_str()) + wxFileName::GetPathSeparator() + wxT("presets"));
+ 
+ 	list<string> flist;
+ 	
+diff --git a/src/FTmainwin.cpp b/src/FTmainwin.cpp
+index 7cdeb7a..e1a7c74 100644
+--- a/src/FTmainwin.cpp
++++ b/src/FTmainwin.cpp
+@@ -899,20 +899,20 @@ void FTmainwin::pushProcRow(FTspectrumModifier *specmod)
+ 	string name = specmod->getName();
+ 
+ 	// main label button
+-	wxButton *labbutt = new FTtitleButton(this, false, rpanel, FT_LabelBase, wxString::FromAscii (name.c_str()),
++	wxButton *labbutt = new FTtitleButton(this, false, rpanel, FT_LabelBase, wxString::FromUTF8 (name.c_str()),
+ 					 wxDefaultPosition, wxSize(_labwidth,_bheight));
+ 	labbutt->SetFont(_titleFont);
+ 	labbutt->SetToolTip(wxString(wxT("Hide ")) + 
+-			    wxString::FromAscii (name.c_str()) +
++			    wxString::FromUTF8 (name.c_str()) +
+ 			    wxT("\nRight-click for menu"));
+ 	_labelButtons.push_back (labbutt);
+ 			
+ 	// alt label button
+-	wxButton * altlab  = new FTtitleButton(this, true, _rowPanel, FT_LabelBase, wxString::FromAscii (name.c_str()),
++	wxButton * altlab  = new FTtitleButton(this, true, _rowPanel, FT_LabelBase, wxString::FromUTF8 (name.c_str()),
+ 					  wxDefaultPosition, wxSize(_labwidth,_bheight));
+ 	altlab->SetFont(_titleAltFont);
+ 	altlab->SetToolTip(wxString(wxT("Show ")) +
+-			   wxString::FromAscii (name.c_str()) +
++			   wxString::FromUTF8 (name.c_str()) +
+ 			   wxT("\nRight-click for menu"));
+ 	altlab->Show(false);
+ 	wxLayoutConstraints * constr = new wxLayoutConstraints;
+@@ -1521,7 +1521,7 @@ void FTmainwin::updateDisplay()
+ 		// update port button labels
+ 		portnames = iosup->getConnectedInputPorts(i);
+ 		if (portnames) {
+-			_inputButton[i]->SetLabel (wxString::FromAscii (portnames[0]));
++			_inputButton[i]->SetLabel (wxString::FromUTF8 (portnames[0]));
+ 			free(portnames);
+ 		}
+ 		else {
+@@ -1530,7 +1530,7 @@ void FTmainwin::updateDisplay()
+ 		
+ 		portnames = iosup->getConnectedOutputPorts(i);
+ 		if (portnames) {
+-			_outputButton[i]->SetLabel (wxString::FromAscii (portnames[0]));
++			_outputButton[i]->SetLabel (wxString::FromUTF8 (portnames[0]));
+ 			free(portnames);
+ 		}
+ 		else {
+@@ -1694,7 +1694,7 @@ void FTmainwin::updateDisplay()
+ 		
+ 	}
+ 	
+-	_ioNameText->SetValue (wxString::FromAscii (iosup->getName()));
++	_ioNameText->SetValue (wxString::FromUTF8 (iosup->getName()));
+ 	
+ 	
+ 	// reset timer just in case
+@@ -2718,7 +2718,7 @@ void FTmainwin::handleIOButtons (wxCommandEvent &event)
+ 
+ 	if (event.GetId() == FT_IOreconnectButton)
+ 	{
+-		if (! iosup->isInited() || (_ioNameText->GetValue() != wxString::FromAscii (iosup->getName())))
++		if (! iosup->isInited() || (_ioNameText->GetValue() != wxString::FromUTF8 (iosup->getName())))
+ 		{
+ 			fprintf(stderr, "Reconnecting as %s...\n", static_cast<const char *>(_ioNameText->GetValue().mb_str()));
+ 			
+@@ -2793,12 +2793,12 @@ void FTmainwin::rebuildDisplay(bool dolink)
+ 				
+ 				// main label button
+ 				string name = filts[m]->getName();
+-				_labelButtons[rowcnt]->SetLabel (wxString::FromAscii (name.c_str()));
+-				_labelButtons[rowcnt]->SetToolTip(wxString(wxT("Hide ")) + wxString::FromAscii (name.c_str()));
++				_labelButtons[rowcnt]->SetLabel (wxString::FromUTF8 (name.c_str()));
++				_labelButtons[rowcnt]->SetToolTip(wxString(wxT("Hide ")) + wxString::FromUTF8 (name.c_str()));
+ 
+ 				// alt label button
+-				_altLabelButtons[rowcnt]->SetLabel (wxString::FromAscii (name.c_str()));
+-				_altLabelButtons[rowcnt]->SetToolTip(wxString(wxT("Hide ")) + wxString::FromAscii (name.c_str()));
++				_altLabelButtons[rowcnt]->SetLabel (wxString::FromUTF8 (name.c_str()));
++				_altLabelButtons[rowcnt]->SetToolTip(wxString(wxT("Hide ")) + wxString::FromUTF8 (name.c_str()));
+ 
+ 
+ 				lastsash = sash;
+@@ -2887,7 +2887,7 @@ void FTmainwin::rebuildDisplay(bool dolink)
+ 
+ 					// get stuff from extra node
+ 					if ((prop = extra->property ("height"))) {
+-						wxString val(wxString::FromAscii (prop->value().c_str()));
++						wxString val(wxString::FromUTF8 (prop->value().c_str()));
+ 						unsigned long newh;
+ 						if (val.ToULong (&newh)) {
+ 							wxLayoutConstraints *cnst = _rowSashes[rowcnt]->GetConstraints();
+@@ -2898,7 +2898,7 @@ void FTmainwin::rebuildDisplay(bool dolink)
+ 					}
+ 
+ 					if ((prop = extra->property ("minimized"))) {
+-						wxString val(wxString::FromAscii (prop->value().c_str()));
++						wxString val(wxString::FromUTF8 (prop->value().c_str()));
+ 						unsigned long newh;
+ 						if (val.ToULong (&newh)) {
+ 							if (newh) {
+@@ -3245,7 +3245,7 @@ void FTmainwin::OnAbout(wxCommandEvent& event)
+ 	if (event.GetId() == FT_AboutMenu)
+ 	{
+ 		wxString msg(wxString(wxT("FreqTweak ")) +
+-			     wxString::FromAscii (freqtweak_version) +
++			     wxString::FromUTF8 (freqtweak_version) +
+ 			     wxT(" brought to you by Jesse Chappell"));
+ 		
+ 		wxMessageBox(msg, wxT("About FreqTweak"), wxOK | wxICON_INFORMATION, this);
+@@ -3473,7 +3473,7 @@ void FTmainwin::rebuildPresetCombo()
+ 
+ 	for (list<string>::iterator name=namelist.begin(); name != namelist.end(); ++name)
+ 	{
+-		_presetCombo->Append(wxString::FromAscii (name->c_str()));
++		_presetCombo->Append(wxString::FromUTF8 (name->c_str()));
+ 	}
+ 
+ 	if ( _presetCombo->FindString(selected) >= 0) {
+diff --git a/src/FTmodulatorDialog.cpp b/src/FTmodulatorDialog.cpp
+index 62b8927..4c6df3d 100644
+--- a/src/FTmodulatorDialog.cpp
++++ b/src/FTmodulatorDialog.cpp
+@@ -166,7 +166,7 @@ void FTmodulatorDialog::init()
+ 	int modnum = 0;
+ 	for (FTmodulatorManager::ModuleList::iterator moditer = mlist.begin(); moditer != mlist.end(); ++moditer)
+ 	{
+-		item = new wxMenuItem(_popupMenu, itemid, wxString::FromAscii ((*moditer)->getName().c_str()));
++		item = new wxMenuItem(_popupMenu, itemid, wxString::FromUTF8 ((*moditer)->getName().c_str()));
+ 		_popupMenu->Append (item);
+ 		
+ 		Connect( itemid,  wxEVT_COMMAND_MENU_SELECTED,
+diff --git a/src/FTmodulatorGui.cpp b/src/FTmodulatorGui.cpp
+index 48b2bb5..76101e3 100644
+--- a/src/FTmodulatorGui.cpp
++++ b/src/FTmodulatorGui.cpp
+@@ -127,13 +127,13 @@ void FTmodulatorGui::init()
+ //	wxBoxSizer *tmpsizer, *tmpsizer2;
+ 	wxStaticText * stattext;
+ 
+-	stattext = new wxStaticText(this, -1, wxString::FromAscii(_modulator->getName().c_str()),
++	stattext = new wxStaticText(this, -1, wxString::FromUTF8(_modulator->getName().c_str()),
+ 				    wxDefaultPosition, wxSize(-1, -1));
+ 	stattext->SetFont(wxFont(stattext->GetFont().GetPointSize(), wxDEFAULT, wxNORMAL, wxBOLD));
+ 	topSizer->Add (stattext, 0, wxALL|wxALIGN_CENTRE_VERTICAL, 2);
+ 
+ 
+-	_nameText = new wxTextCtrl (this, ID_ModUserName, wxString::FromAscii(_modulator->getUserName().c_str()), wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER);
++	_nameText = new wxTextCtrl (this, ID_ModUserName, wxString::FromUTF8(_modulator->getUserName().c_str()), wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER);
+ 	topSizer->Add (_nameText, 1, wxALL|wxALIGN_CENTRE_VERTICAL, 2);
+ 
+ 	wxCheckBox * bypassCheck = new wxCheckBox(this, ID_BypassCheck, wxT("Bypass"));
+@@ -306,9 +306,9 @@ void FTmodulatorGui::init()
+ 
+ 			
+ 			for (list<string>::iterator citer = vallist.begin(); citer != vallist.end(); ++citer) {
+-				choice->Append (wxString::FromAscii((*citer).c_str()));
++				choice->Append (wxString::FromUTF8((*citer).c_str()));
+ 			}
+-			choice->SetStringSelection (wxString::FromAscii(currval.c_str()));
++			choice->SetStringSelection (wxString::FromUTF8(currval.c_str()));
+ 
+ 			
+ 			rowsizer->Add (choice, 0, wxALL|wxALIGN_CENTRE_VERTICAL, 2);
+@@ -384,7 +384,7 @@ void FTmodulatorGui::refreshMenu()
+ 				for (unsigned int m=0; m < filts.size(); ++m)
+ 				{
+ 					
+-					_popupMenu->AppendCheckItem (itemid, wxString::FromAscii (filts[m]->getName().c_str()));
++					_popupMenu->AppendCheckItem (itemid, wxString::FromUTF8 (filts[m]->getName().c_str()));
+ 					
+ 					if (_modulator->hasSpecMod (filts[m])) {
+ 						_popupMenu->Check (itemid, true);
+diff --git a/src/FTportSelectionDialog.cpp b/src/FTportSelectionDialog.cpp
+index e261c09..08038b9 100644
+--- a/src/FTportSelectionDialog.cpp
++++ b/src/FTportSelectionDialog.cpp
+@@ -109,8 +109,8 @@ void FTportSelectionDialog::update()
+ 	
+ 	if (availports) {
+ 		for (int i=0; availports[i]; i++) {
+-			if (noportname && wxString::FromAscii(availports[i]).Cmp(wxString::FromAscii (noportname)) != 0) {
+-				_listBox->Append (wxString::FromAscii(availports[i]), (void *) 0);
++			if (noportname && wxString::FromUTF8(availports[i]).Cmp(wxString::FromUTF8 (noportname)) != 0) {
++				_listBox->Append (wxString::FromUTF8(availports[i]), (void *) 0);
+ 			}
+ 		}
+ 		free (availports);
+@@ -120,7 +120,7 @@ void FTportSelectionDialog::update()
+ 		}
+ 		if (connports) {
+ 			for (int i=0; connports[i]; i++) {
+-				int n = _listBox->FindString(wxString::FromAscii (connports[i]));
++				int n = _listBox->FindString(wxString::FromUTF8 (connports[i]));
+ 				//printf ("connport = %s  find is %d\n", connports[i], n);
+ 				if (n >= 0)
+ 				   _listBox->SetSelection (n, TRUE);
+diff --git a/src/FTpresetBlendDialog.cpp b/src/FTpresetBlendDialog.cpp
+index 01d117b..fa28155 100644
+--- a/src/FTpresetBlendDialog.cpp
++++ b/src/FTpresetBlendDialog.cpp
+@@ -212,8 +212,8 @@ void FTpresetBlendDialog::refreshState(const wxString & defname, bool usefirst,
+ 
+ 	for (list<string>::iterator name=presetlist.begin(); name != presetlist.end(); ++name)
+ 	{
+-		_priPresetBox->Append(wxString::FromAscii ((*name).c_str()));
+-		_secPresetBox->Append(wxString::FromAscii ((*name).c_str()));
++		_priPresetBox->Append(wxString::FromUTF8 ((*name).c_str()));
++		_secPresetBox->Append(wxString::FromUTF8 ((*name).c_str()));
+ 	}
+ 
+ 	_priPresetBox->SetValue(defname.c_str());
+@@ -249,7 +249,7 @@ void FTpresetBlendDialog::refreshState(const wxString & defname, bool usefirst,
+ 				
+ 				wxStaticText * stattext = new wxStaticText(_procPanel,
+ 									   -1,
+-									   wxString::FromAscii (filts[m]->getName().c_str()),
++									   wxString::FromUTF8 (filts[m]->getName().c_str()),
+ 									   wxDefaultPosition,
+ 									   wxSize(_namewidth, -1));
+ 				//stattext->SetFont(titleFont);
+diff --git a/src/FTprocOrderDialog.cpp b/src/FTprocOrderDialog.cpp
+index 1bd3ee9..4f66e3b 100644
+--- a/src/FTprocOrderDialog.cpp
++++ b/src/FTprocOrderDialog.cpp
+@@ -209,7 +209,7 @@ void FTprocOrderDialog::refreshState()
+ 	
+ 	for (; mod != mlist.end(); ++mod)
+ 	{
+-		item.SetText (wxString::FromAscii ((*mod)->getName().c_str()));
++		item.SetText (wxString::FromUTF8 ((*mod)->getName().c_str()));
+ 		item.SetData (*mod);
+ 		item.SetId(pos++);
+ 		
+@@ -229,7 +229,7 @@ void FTprocOrderDialog::refreshState()
+ 		
+ 		for (unsigned int n=0; n < procmods.size(); ++n)
+ 		{
+-			item.SetText (wxString::FromAscii (procmods[n]->getName().c_str()));
++			item.SetText (wxString::FromUTF8 (procmods[n]->getName().c_str()));
+ 			item.SetData (procmods[n]);
+ 			item.SetId (n);
+ 			
+@@ -440,7 +440,7 @@ void FTprocOrderDialog::onAddButton(wxCommandEvent & ev)
+ 		FTprocI * proc = (FTprocI *) _sourceList->GetItemData(itemi); 
+ 
+ 		if (proc) {
+-			item.SetText (wxString::FromAscii (proc->getName().c_str()));
++			item.SetText (wxString::FromUTF8 (proc->getName().c_str()));
+ 			item.SetData (proc);
+ 			item.SetId (_targetList->GetItemCount());
+ 			
