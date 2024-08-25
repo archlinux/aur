@@ -3,8 +3,8 @@
 # Co-Maintainer: Sir-Photch <sir-photch at posteo dot me>
 
 pkgname=gmid
-pkgver=2.1
-pkgrel=2
+pkgver=2.1.1
+pkgrel=1
 pkgdesc='Fast Gemini server written with security in mind.'
 arch=('x86_64' 'aarch64')
 url='https://gmid.omarpolo.com'
@@ -20,7 +20,7 @@ source=(
 	"gmid.service"
 	"gmid.conf"
 )
-sha256sums=('d1f7e23bbbc708cb94ad62cecf6fad47433bbb78f9a86930f7d3eb377b1b344b'
+sha256sums=('9eb0fe4272616e71ef28adb1a10808adb58db01626acc39fddebf58e0a0ac4bf'
             'SKIP'
             'SKIP'
             '61450ba6fb7283b03f099e5172cf4e64bf40093ad2bd126b7915940d40922c9a'
