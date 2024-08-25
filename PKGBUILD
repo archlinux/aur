@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=manga-tui
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Terminal-based manga reader and downloader with image support"
 arch=('x86_64')
@@ -11,12 +11,12 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'sqlite')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('f33b704cde5d72ffd6c78a1d6633bcbd5ed8c88240906a97d04813c05363db2198f6bb801c591a2d113f8934f8c6f3d10d8ca8b4dbd46eaeedd5491ce935bea1')
+sha512sums=('135b39c17c58e7be3358277c0bab477540d3d29b61ef464ea9cbad7d141374a9e9e7b91d10cf5de09e4ea83bb15bafbd900c233aa01f3dc1222145f2d110dde9')
 options=('!lto')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')" # --locked
 }
 
 build() {
