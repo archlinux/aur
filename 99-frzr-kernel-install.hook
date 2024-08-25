@@ -1,0 +1,41 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = usr/lib/initcpio/*
+Target = usr/lib/firmware/*
+Target = usr/src/*/dkms.conf
+
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/modules/*/vmlinuz
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = mkinitcpio
+Target = mkinitcpio-git
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = dracut
+Target = dracut-git
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = frzr
+Target = frzr-git
+
+[Action]
+Description = Updating frzr bootloader entries...
+When = PostTransaction
+Exec = /usr/bin/frzr bootloader
+NeedsTargets

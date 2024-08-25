@@ -1,0 +1,20 @@
+pkgbase = frzr-git
+	pkgdesc = A deployment and update system for read-only btrfs subvolume based operating systems
+	pkgver = 0.15.4.r0.g5ac6bba
+	pkgrel = 1
+	url = https://github.com/gamer-os/frzr
+	arch = any
+	license = MIT
+	depends = btrfs-progs
+	depends = parted
+	depends = libnewt
+	depends = dosfstools
+	depends = jq
+	depends = util-linux
+	optdepends = dracut: generate initramfs for kernels installed via frzr kernel command
+	source = frzr-git::git+https://github.com/chimeraos/frzr.git
+	source = 99-frzr-kernel-install.hook
+	md5sums = SKIP
+	md5sums = 6bc04b77f135f2bf7d07c2f8c0ffaca0
+
+pkgname = frzr-git
