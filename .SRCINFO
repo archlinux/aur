@@ -1,7 +1,7 @@
 pkgbase = rest
 	pkgdesc = Library for accessing RESTful web services (legacy)
 	pkgver = 0.8.1+r4+ge5ee6ef
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/librest
 	arch = x86_64
 	license = LGPL2.1
@@ -13,8 +13,12 @@ pkgbase = rest
 	depends = libsoup
 	source = git+https://gitlab.gnome.org/GNOME/librest.git#commit=e5ee6ef751ee5a38d7b9fadcd631cf6ecec7b240
 	source = skip-test.diff
-	sha256sums = SKIP
+	source = glib-genmarshal
+	source = glib-mkenums
+	sha256sums = 00870a0cb489ecf0acf782e783d809674ffa50281a6c3385bee9d3409bee1947
 	sha256sums = de88fef81a5bc060eff45003f4fd755802097e70a782111a9fa18310d123e8e2
+	sha256sums = d893f00c8df3f02eb528eba6ffbf931e29030a39b07395d7125e3035e74ed525
+	sha256sums = 76baadc0f6bf1b8f4ea06457b3200524dcea1edeb9f62b727cb5291a7093eebf
 
 pkgname = rest
 	depends = glib2

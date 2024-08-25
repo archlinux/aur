@@ -2,7 +2,7 @@
 
 pkgname=rest
 pkgver=0.8.1+r4+ge5ee6ef
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for accessing RESTful web services (legacy)"
 url="https://gitlab.gnome.org/GNOME/librest"
 arch=(x86_64)
@@ -11,9 +11,13 @@ depends=(glib2 libxml2 libsoup)
 makedepends=(gobject-introspection gtk-doc git)
 _commit=e5ee6ef751ee5a38d7b9fadcd631cf6ecec7b240  # librest-0-7
 source=("git+https://gitlab.gnome.org/GNOME/librest.git#commit=$_commit"
-        skip-test.diff)
-sha256sums=('SKIP'
-            'de88fef81a5bc060eff45003f4fd755802097e70a782111a9fa18310d123e8e2')
+        skip-test.diff
+        glib-genmarshal
+        glib-mkenums)
+sha256sums=('00870a0cb489ecf0acf782e783d809674ffa50281a6c3385bee9d3409bee1947'
+            'de88fef81a5bc060eff45003f4fd755802097e70a782111a9fa18310d123e8e2'
+            'd893f00c8df3f02eb528eba6ffbf931e29030a39b07395d7125e3035e74ed525'
+            '76baadc0f6bf1b8f4ea06457b3200524dcea1edeb9f62b727cb5291a7093eebf')
 
 pkgver() {
   cd librest
@@ -25,6 +29,10 @@ prepare() {
 
   # Skip tests trying to connect to oauthbin.com
   git apply -3 ../skip-test.diff
+
+  # glib decides to drop some helper tools
+  sed -i "s|glib-genmarshal|${srcdir}/glib-genmarshal|g" rest/Makefile.am
+  sed -i "s|\$(GLIB_MKENUMS)|${srcdir}/glib-mkenums|g" rest/Makefile.am
 
   NOCONFIGURE=1 ./autogen.sh
 }
