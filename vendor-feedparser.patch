@@ -1,0 +1,26 @@
+diff --git a/src/reader/_parser/feedparser.py b/src/reader/_parser/feedparser.py
+index fbb61e0..6bd70d2 100644
+--- a/src/reader/_parser/feedparser.py
++++ b/src/reader/_parser/feedparser.py
+@@ -12,7 +12,7 @@ from typing import TYPE_CHECKING
+ 
+ from .._types import EntryData
+ from .._types import FeedData
+-from .._vendor import feedparser
++import feedparser
+ from ..exceptions import ParseError
+ from ..types import Content
+ from ..types import Enclosure
+diff --git a/tests/test_parser.py b/tests/test_parser.py
+index b554a63..339d4c1 100644
+--- a/tests/test_parser.py
++++ b/tests/test_parser.py
+@@ -17,7 +17,7 @@ from reader._parser.file import FileRetriever
+ from reader._parser.jsonfeed import JSONFeedParser
+ from reader._parser.requests import SessionWrapper
+ from reader._types import FeedData
+-from reader._vendor import feedparser
++import feedparser
+ from reader.exceptions import ParseError
+ from utils import make_url_base
+ 
