@@ -1,7 +1,7 @@
 # Maintainer: bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=adapterremoval
-pkgver=2.3.3
+pkgver=2.3.4
 pkgrel=2
 pkgdesc='Remove remnant adapter sequences from High-Throughput Sequencing (HTS) data and trim low quality bases from the 3 prime end'
 arch=('x86_64')
@@ -10,19 +10,16 @@ license=('GPL3')
 depends=('glibc' 'gcc-libs' 'bzip2' 'zlib')
 makedepends=('python-sphinx' 'libdeflate' 'isa-l')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/MikkelSchubert/adapterremoval/archive/refs/tags/v${pkgver}.tar.gz
-        'arch-destdir.patch'
         )
-sha256sums=('a1bdc054319ede085fc8a4e9867c23ffed7df5e97b99d52221b7c587d19418fc'
-            '24f46744805fb8d4a506c05de47d1a2ab77897950057e72db682165ae412a8b3')
+sha256sums=('a4433a45b73ead907aede22ed0c7ea6fbc080f6de6ed7bc00f52173dfb309aa1')
 prepare() {
-  cp *.patch ${pkgname}-${pkgver}
   cd "${pkgname}-${pkgver}"
-  # patch Makefile to be inline with archlinux build guidelines
-  patch -p1 < arch-destdir.patch
+  sed -i '6s/:/?/' Makefile
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
+  export PREFIX="/usr"
   make everything
 }
 
