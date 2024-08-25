@@ -1,16 +1,21 @@
 # Maintainer: Furdox <furdox at furdox dot tk>
 pkgname=brawlcrate-wine-bin
 pkgver=0.42h1
-pkgrel=3
+pkgrel=4
 pkgdesc="An updated fork of BrawlBox (uses Wine)"
 arch=('x86_64')
 url="https://github.com/soopercool101/BrawlCrate"
 license=('lgpl3')
 depends=('wine' 'winetricks' 'xorg-server' 'lib32-gnutls')
 source=("https://github.com/soopercool101/BrawlCrate/releases/download/v${pkgver}/BrawlCrate.v${pkgver}.x86.exe"
-        "https://github.com/soopercool101/BrawlCrate/raw/master/LICENSE")
+        "https://github.com/soopercool101/BrawlCrate/raw/master/LICENSE" "BrawlCrate256.png" "BrawlCrate128.png" "BrawlCrate64.png" "BrawlCrate48.png" "BrawlCrate32.png")
 sha256sums=('49196339e461a87008cdf10ff55b264e98980cf2736b41bacf7c154a07d594d5'
-            'dbcd19ea5a26de8ad07b566291bab225318cc218e0f1f0d522ce47baa1f3c319')
+            'dbcd19ea5a26de8ad07b566291bab225318cc218e0f1f0d522ce47baa1f3c319'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 # Custom Wine prefix path
 _wineprefix="${HOME}/.wine-prefixes/brawlcrate"
@@ -120,12 +125,18 @@ EOF
 </mime-info>
 EOF
 
-    # Create desktop entry
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/brawlcrate.desktop" <<EOF
+# Create desktop entry
+install -Dm644 "${srcdir}/BrawlCrate256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/brawlcrate.png"
+install -Dm644 "${srcdir}/BrawlCrate128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/brawlcrate.png"
+install -Dm644 "${srcdir}/BrawlCrate64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/brawlcrate.png"
+install -Dm644 "${srcdir}/BrawlCrate48.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/brawlcrate.png"
+install -Dm644 "${srcdir}/BrawlCrate32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/brawlcrate.png"
+install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/brawlcrate.desktop" <<EOF
 [Desktop Entry]
 Name=BrawlCrate
+Comment=BrawlBox fork with a variety of features aiming to improve the ease of modding Super Smash Bros. Brawl and other games.
 Exec=brawlcrate
-Icon=wine
+Icon=brawlcrate
 Type=Application
 Categories=Game;Utility;
 MimeType=application/x-brawlcrate;
@@ -144,11 +155,10 @@ build() {
 clean() {
     echo "Running cleanup..."
     rm -rf "${srcdir}/*"
-    rm -rf "${pkgdir}/*"
     
     # Currently doesn't work.
-    rm -f "${pkgdir}/../BrawlCrate.v${pkgver}.x86.exe"
-    # rm -f "${pkgdir}/../brawlcrate-wine-bin-${pkgver}-${pkgrel}-x86_64.pkg.tar"
+    rm -f "${srcdir}/../BrawlCrate.v${pkgver}.x86.exe"
+    rm -f "${srcdir}/../brawlcrate-wine-bin-${pkgver}-${pkgrel}-x86_64.pkg.tar"
     
     echo "Cleanup done."
 }

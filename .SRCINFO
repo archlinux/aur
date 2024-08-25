@@ -1,7 +1,7 @@
 pkgbase = brawlcrate-wine-bin
 	pkgdesc = An updated fork of BrawlBox (uses Wine)
 	pkgver = 0.42h1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/soopercool101/BrawlCrate
 	arch = x86_64
 	license = lgpl3
@@ -11,7 +11,17 @@ pkgbase = brawlcrate-wine-bin
 	depends = lib32-gnutls
 	source = https://github.com/soopercool101/BrawlCrate/releases/download/v0.42h1/BrawlCrate.v0.42h1.x86.exe
 	source = https://github.com/soopercool101/BrawlCrate/raw/master/LICENSE
+	source = BrawlCrate256.png
+	source = BrawlCrate128.png
+	source = BrawlCrate64.png
+	source = BrawlCrate48.png
+	source = BrawlCrate32.png
 	sha256sums = 49196339e461a87008cdf10ff55b264e98980cf2736b41bacf7c154a07d594d5
 	sha256sums = dbcd19ea5a26de8ad07b566291bab225318cc218e0f1f0d522ce47baa1f3c319
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = brawlcrate-wine-bin
