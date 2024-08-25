@@ -1,0 +1,18 @@
+pkgbase = python-pyvhdlmodel
+	pkgdesc = An abstract VHDL language model
+	pkgver = 0.28.0
+	pkgrel = 1
+	url = https://github.com/VHDL/pyVHDLModel
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pytooling
+	source = pyVHDLModel-0.28.0.tar.gz::https://github.com/VHDL/pyVHDLModel/archive/refs/tags/v0.28.0.tar.gz
+	sha256sums = 261846640e113a6dee241e5888a74951e0c6c074c1aafd7132aa676db17dc195
+
+pkgname = python-pyvhdlmodel
