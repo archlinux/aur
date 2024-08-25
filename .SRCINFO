@@ -1,6 +1,6 @@
 pkgbase = obs-advanced-scene-switcher
 	pkgdesc = An automated scene switcher for OBS Studio
-	pkgver = 1.27.1
+	pkgver = 1.27.2
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/advanced-scene-switcher.395/
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = obs-advanced-scene-switcher
 	optdepends = libxtst: X key press related features
 	optdepends = openssl: Needed for Twitch features
 	options = debug
-	source = obs-advanced-scene-switcher::git+https://github.com/WarmUpTill/SceneSwitcher.git#tag=1.27.1
+	source = obs-advanced-scene-switcher::git+https://github.com/WarmUpTill/SceneSwitcher.git#tag=1.27.2
 	source = libremidi::git+https://github.com/jcelerier/libremidi.git
 	source = DetectLibraryType.cmake
 	source = FindLeptonica.cmake
