@@ -1,7 +1,7 @@
 # Maintainer: Steffen Hansen <steffengrundsoe@gmail.com>
 _pkgname=quickgui
 pkgname=$_pkgname-bin
-pkgver=1.2.8
+pkgver=1.2.10
 pkgrel=1
 pkgdesc="A Flutter frontend for quickget and quickemu"
 arch=('x86_64')
@@ -11,10 +11,11 @@ depends=('quickemu' 'zenity')
 options=('!strip' '!emptydirs')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("${_pkgname}_$pkgver-1_kinetic1.0_amd64.deb"::"https://github.com/quickemu-project/$_pkgname/releases/download/v$pkgver/${_pkgname}_$pkgver-1_kinetic1.0_amd64.deb")
-sha256sums=('7855e8f21c0ddc30650464584124fad6aee1f9a47f88661ba13723e0925b4809')
+source=("https://github.com/quickemu-project/quickgui/releases/download/1.2.10/quickgui-1.2.10+1-linux.deb")
+sha256sums=('506313e580e069b7c2daf8594fcaf00a44bc49e5785102f6ac359eaa20c3c193')
 
 package() {
   tar -xf data.tar.zst -C "$pkgdir"
-  install -D -m644 "${pkgdir}/usr/share/doc/quickgui/copyright" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -d "${pkgdir}/usr/bin/"
+  ln -s "/usr/share/quickgui/quickgui" "${pkgdir}/usr/bin/quickgui"
 }
