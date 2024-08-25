@@ -1,9 +1,9 @@
 #!/bin/sh
 
 add_mime_type() {
-  if ! grep -qE "MimeType=\b.*${1};" "$2"
+  if ! grep -q -E "^MimeType=.*\b${1};" "$2"
   then
-    sed -i -E "s#(MimeType=.*;)\$#\1${1};#" "$2"
+    sed -i -E "s#^(MimeType=.*;)\$#\1${1};#" "$2"
   fi
 }
 
