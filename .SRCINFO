@@ -1,0 +1,12 @@
+pkgbase = gokrazy-gok-git
+	pkgdesc = turn your Go program(s) into an appliance running on the Raspberry Pi 3, Pi 4, Pi 5, Pi Zero 2 W, or amd64 PCs
+	pkgver = r302.f7db22d
+	pkgrel = 1
+	url = https://github.com/gokrazy/tools/
+	arch = x86_64
+	license = BSD-3
+	depends = go
+	source = gokrazy-gok-git::git+https://github.com/gokrazy/tools/
+	md5sums = SKIP
+
+pkgname = gokrazy-gok-git
