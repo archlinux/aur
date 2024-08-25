@@ -1,14 +1,14 @@
 # Maintainer: not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=perl-tk-fontdialog
-pkgver=0.17
-pkgrel=2
+pkgver=0.19
+pkgrel=1
 pkgdesc="Font Dialog Widget"
 _dist=Tk-FontDialog
 arch=('any')
 url="https://metacpan.org/release/$_dist"
-license=('GPL' 'PerlArtistic')
-depends=('perl>=5.10.0' 'tk')
+license=('GPL-2.0-or-later' 'Artistic-1.0-Perl')
+depends=('perl>=5.10.0' 'tk' 'perl-tk')
 options=('!emptydirs' purge)
 source=(http://search.cpan.org/CPAN/authors/id/S/SR/SREZIC/$_dist-$pkgver.tar.gz)
 
@@ -32,5 +32,5 @@ package() (
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 )
-md5sums=('cf3cbf1d2b8311e066279ebafd953a44')
-sha256sums=('898b41e2d041b6724b08a04ca72ac69984d408ae7c0aa11989f7428d616e6f1f')
+md5sums=('75ceff81dda037979c41e3b78d6dd233')
+sha256sums=('7ddce970642f087c40edeb29128e1c59c92815d3a47761c063e6f1086a6141b4')
