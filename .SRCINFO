@@ -8,6 +8,7 @@ pkgbase = gnunet-groupchat-git
 	license = GPL
 	makedepends = nim
 	makedepends = nimble
+	makedepends = git
 	depends = gnunet
 	provides = gnunet-groupchat
 	conflicts = gnunet-groupchat

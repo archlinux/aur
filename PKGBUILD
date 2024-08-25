@@ -13,7 +13,7 @@ license=('GPL')
 provides=("${_appname}")
 conflicts=("${_appname}")
 depends=("${_mainapp}")
-makedepends=('nim' 'nimble')
+makedepends=('nim' 'nimble' 'git')
 install="${_appname}.install"
 
 source=("git+https://git.${_mainapp}.org/${_extname}.git")
