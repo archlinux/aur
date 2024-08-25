@@ -3,9 +3,9 @@
 # Contributor/Base PKGBUILD: Doug Newgard <scimmia at archlinux dot info>
 
 pkgname=vivaldi-widevine
-pkgdesc="A browser plugin designed for the viewing of premium video content, standalone for vivaldi"
-pkgver=4.10.2710.0
-_chrome_ver=117.0.5938.92
+pkgdesc="A browser plugin designed for the viewing of premium video content, standalone for Vivaldi."
+pkgver=4.10.2830.0
+_chrome_ver=128.0.6613.84
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=("!strip")
 license=('custom')
 depends=('gcc-libs' 'glib2' 'glibc' 'nspr' 'nss')
 conflicts=('google-chrome')
-sha256sums=('1840218d6187ea6c53d4a159ece958682e66f9a6a03099bf37074cc4883ffc10')
+sha256sums=('e21001b470eaffc9483fa61ba54d5525d9a064d98b376a9bd1530f630dddb018')
 
 prepare() {
   bsdtar -x --strip-components 4 -f data.tar.xz opt/google/chrome/WidevineCdm
