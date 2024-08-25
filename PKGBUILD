@@ -13,24 +13,49 @@ arch=('x86_64')
 url="https://libvirt.org/"
 license=('LGPL-2.1-or-later'
          'GPL-3.0-or-later') # libvirt_parthelper links to libparted
-depends=('libpciaccess' 'yajl' 'fuse3' 'gnutls' 'parted' 'libssh' 'libxml2'
-'numactl' 'polkit' 'libnbd' 'libnl')
-makedepends=('meson' 'libxslt' 'python-docutils' 'lvm2' 'open-iscsi' 'libiscsi' 'glusterfs'
-             'bash-completion' 'dnsmasq' 'iproute2' 'qemu-base' 'systemd')
-optdepends=('libvirt-storage-gluster: Gluster storage backend'
-            'libvirt-storage-iscsi-direct: iSCSI-direct storage backend'
-            'gettext: required for libvirt-guests.service'
-            'openbsd-netcat: for remote management over ssh'
-            'dmidecode: DMI system info support'
-            'dnsmasq: required for default NAT/DHCP for guests'
-            'radvd: IPv6 RAD support'
-            'iptables-nft: required for default NAT networking'
-            'qemu-base: QEMU/KVM support'
-            'qemu-desktop: QEMU/KVM desktop support'
-            'qemu-emulators-full: Support of additional QEMU architectures'
-            'lvm2: Logical Volume Manager support'
-            'open-iscsi: iSCSI support via iscsiadm'
-            'swtpm: TPM emulator support')
+depends=(
+  'fuse3'
+  'gnutls'
+  'libnbd'
+  'libnl'
+  'libpciaccess'
+  'libssh'
+  'libxml2'
+  'numactl'
+  'parted'
+  'polkit'
+  'yajl'
+)
+makedepends=(
+  'bash-completion'
+  'dnsmasq'
+  'glusterfs'
+  'iproute2'
+  'libiscsi'
+  'libxslt'
+  'lvm2'
+  'meson'
+  'open-iscsi'
+  'python-docutils'
+  'qemu-base'
+  'systemd'
+)
+optdepends=(
+  'dmidecode: DMI system info support'
+  'dnsmasq: required for default NAT/DHCP for guests'
+  'gettext: required for libvirt-guests.service'
+  'iptables-nft: required for default NAT networking'
+  'libvirt-storage-gluster: Gluster storage backend'
+  'libvirt-storage-iscsi-direct: iSCSI-direct storage backend'
+  'lvm2: Logical Volume Manager support'
+  'openbsd-netcat: for remote management over ssh'
+  'open-iscsi: iSCSI support via iscsiadm'
+  'qemu-base: QEMU/KVM support'
+  'qemu-desktop: QEMU/KVM desktop support'
+  'qemu-emulators-full: Support of additional QEMU architectures'
+  'radvd: IPv6 RAD support'
+  'swtpm: TPM emulator support'
+)
 
 backup=(
   'etc/libvirt/libvirt-admin.conf'
