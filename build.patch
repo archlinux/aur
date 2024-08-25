@@ -1,0 +1,22 @@
+diff --git a/ext/gitsh/src/line_editor.c b/ext/gitsh/src/line_editor.c
+index 90942b9..905d01a 100644
+--- a/ext/gitsh/src/line_editor.c
++++ b/ext/gitsh/src/line_editor.c
+@@ -1164,7 +1164,7 @@ readline_s_set_completer_word_break_characters(VALUE self, VALUE str)
+  * Raises NotImplementedError if the using readline library does not support.
+  */
+ static VALUE
+-readline_s_get_completer_word_break_characters(VALUE self, VALUE str)
++readline_s_get_completer_word_break_characters(VALUE str)
+ {
+     if (rl_completer_word_break_characters == NULL)
+         return Qnil;
+@@ -1282,7 +1282,7 @@ readline_s_set_completer_quote_characters(VALUE self, VALUE str)
+  * Raises NotImplementedError if the using readline library does not support.
+  */
+ static VALUE
+-readline_s_get_completer_quote_characters(VALUE self, VALUE str)
++readline_s_get_completer_quote_characters(VALUE str)
+ {
+     if (rl_completer_quote_characters == NULL)
+         return Qnil;
