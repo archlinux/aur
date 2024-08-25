@@ -13,21 +13,21 @@ _flutter_version=3.22.3
 
 pkgname=spotube
 pkgver=3.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!"
 arch=("x86_64" "aarch64")
 url="https://spotube.krtirtho.dev/"
 license=("BSD-4-Clause")
 depends=("gcc-libs" "mpv" "libappindicator-gtk3" "libsecret" "libnotify" "webkit2gtk-4.1" "libsoup3" "libayatana-appindicator")
 makedepends=(
-    "clang" "cmake" "ninja" "pkgconf" "gtk3" "rustup" "imagemagick" "jsoncpp"
+    "clang" "cmake" "ninja" "pkgconf" "gtk3" "rustup" "imagemagick" "jsoncpp" "patchelf"
 )
 optdepends=(
     "avahi: required if using remote controlling"
     "nss-mdns: required if using remote controlling"
     "mdns-scan: required if using remote controlling"
 )
-options=("!lto")
+options=("!lto") # undefined symbol: Dart_NewPersistentHandle_DL
 source=(
     "spotube-$pkgver.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v$pkgver.tar.gz"
 )
@@ -110,18 +110,19 @@ package() {
             declare -r _arch=$CARCH
             ;;
     esac
+    local appid="com.github.KRTirtho.Spotube"
     cd "$srcdir/spotube-$pkgver"
     mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/lib"
     cp -rdp --no-preserve=ownership "build/linux/$_arch/release/bundle" "$pkgdir/usr/lib/spotube"
     ln -srfv "$pkgdir/usr/lib/spotube/spotube" "$pkgdir/usr/bin/spotube"
-    install -Dm644 linux/spotube.desktop "$pkgdir/usr/share/applications/com.github.KRTirtho.Spotube.desktop"
-    sed -i 's@Icon=/usr/share/icons/spotube/spotube-logo.png@Icon=com.github.KRTirtho.Spotube@;' \
-        "$pkgdir/usr/share/applications/com.github.KRTirtho.Spotube.desktop"
-    install -Dm644 linux/com.github.KRTirtho.Spotube.appdata.xml \
-        "$pkgdir/usr/share/metainfo/com.github.KRTirtho.Spotube.appdata.xml"
-    sed -i "s|%{{APPDATA_RELEASE}}%|<release version=\"$pkgver\" date=\"$_release_date\"/>|" \
-        "$pkgdir/usr/share/metainfo/com.github.KRTirtho.Spotube.appdata.xml"
-    install -Dm644 assets/spotube-logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.github.KRTirtho.Spotube.svg"
-    install -Dm644 spotube-logo.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/com.github.KRTirtho.Spotube.png"
+    sed "s@Icon=/usr/share/icons/spotube/spotube-logo.png@Icon=$appid@;s@/usr/bin/spotube@/usr/bin/spotube %u@" \
+        linux/spotube.desktop | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$appid.desktop"
+    sed "s|%{{APPDATA_RELEASE}}%|<release version=\"$pkgver\" date=\"$_release_date\"/>|" \
+        linux/$appid.appdata.xml | install -Dm644 /dev/stdin "$pkgdir/usr/share/metainfo/$appid.appdata.xml"
+    install -Dm644 assets/spotube-logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$appid.svg"
+    install -Dm644 spotube-logo.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$appid.png"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/spotube/LICENSE"
+
+    echo "Removing RPATH for usr/lib/spotube/lib/lib*_plugin.so..."
+    patchelf --remove-rpath "$pkgdir"/usr/lib/spotube/lib/lib*_plugin.so
 }
