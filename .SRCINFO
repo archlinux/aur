@@ -1,7 +1,7 @@
 pkgbase = mcrl2-bin
 	pkgdesc = A formal specification language with an associated toolset installed from the 'deb' GitHub release package.
-	pkgver = 202407.0
-	pkgrel = 2
+	pkgver = 202407.1
+	pkgrel = 1
 	url = https://www.mcrl2.org
 	install = mcrl2.install
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mcrl2-bin
 	optdepends = python: for easily running the included examples
 	provides = mcrl2
 	conflicts = mcrl2
-	source = https://github.com/mCRL2org/mCRL2/releases/download/mcrl2-202407.0/mcrl2-202407.0_x86_64.deb
-	sha256sums = 959cb43a603cb6adf7acf84c21c55a0c1016cb14aaeb065a22c2ae6125515a71
+	source = https://github.com/mCRL2org/mCRL2/releases/download/mcrl2-202407.1/mcrl2-202407.1_x86_64.deb
+	sha256sums = 3d48bbbe3beee59a05f6eee7bc3588b5ce1ec45fcbecb171c7fe736a44d3db55
 
 pkgname = mcrl2-bin
