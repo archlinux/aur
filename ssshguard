@@ -1,0 +1,30 @@
+#!/bin/perl -W
+# Simplified version of SSHGuard with just Perl and ipset
+# Elmar Klausmeier, 20-Aug-2024
+
+use strict;
+my ($ip, %B);
+my %whiteList = ( '192.168.0' => 1 );
+
+open(F,'-|','/usr/bin/journalctl -afb -p info -n1 -t sshd -t sshd-session -o cat') || die("Cannot read from journalctl");
+
+while (<F>) {
+	if (/Failed password for (|invalid user )(\s*\w*) from (\d+\.\d+\.\d+\.\d+)/) { $ip = $3; }
+	elsif (/authentication failure; .+rhost=(\d+\.\d+\.\d+\.\d+)/) { $ip = $1; }
+	elsif (/Disconnected from (\d+\.\d+\.\d+\.\d+) port \d+ \[preauth\]/) { $ip = $1; }
+	elsif (/Unable to negotiate with (\d+\.\d+\.\d+\.\d+)/) { $ip = $1; }
+	elsif (/(Connection closed by|Disconnected from) (\d+\.\d+\.\d+\.\d+) port \d+ \[preauth\]/) { $ip = $2; }
+	elsif (/Unable to negotiate with (\d+\.\d+\.\d+\.\d+) port \d+/) { $ip = $1; }
+	else { next; }
+
+	#print "Blocking $ip\n";
+	next if (defined($B{$ip}));	# already blocked
+	next if (defined($whiteList{ substr($ip,0,rindex($ip,'.')) }));	# in white-list
+
+	$B{$ip} = 1;
+	`ipset -quiet add -exist reisbauerHigh $ip/32 `;
+}
+
+close(F) || die("Cannot close pipe to journalctl");
+
+

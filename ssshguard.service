@@ -1,0 +1,14 @@
+[Unit]
+Description=Simplified SSHGuard - blocks brute-force login attempts
+After=iptables.service
+After=ip6tables.service
+After=libvirtd.service
+After=firewalld.service
+After=nftables.service
+
+[Service]
+ExecStart=/usr/sbin/ssshguard
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
