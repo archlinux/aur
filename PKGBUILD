@@ -46,16 +46,8 @@ provides=('python-spotdl')
 replaces=('python-spotdl')
 conflicts=('python-spotdl')
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "$pkgname-2120.patch::$url/pull/2120.patch")
-b2sums=('81f5e9be6e78309376e8104464bc02f11d2ea89e7eb45c815464a8050873f48d94b6764bf068d4b92ce390fc34ae3fc2ea41a2a4b261000ebfa14af7b249b56e'
-        '2ea10536e919bb94f2ca743d2b893698e7635d19cb18786d5af98d6762c36405275df8a15e090e8394d5e2bf0b3f2aee4444d75383b5fb926f2557ecc217243b')
-
-prepare() {
-	cd "spotify-downloader-$pkgver"
-	# fix python-syncedlyrics 1.0.0 compatibility
-	patch -Np1 -i "../$pkgname-2120.patch"
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+b2sums=('81f5e9be6e78309376e8104464bc02f11d2ea89e7eb45c815464a8050873f48d94b6764bf068d4b92ce390fc34ae3fc2ea41a2a4b261000ebfa14af7b249b56e')
 
 # Document: https://wiki.archlinux.org/title/Python_package_guidelines
 build() {
