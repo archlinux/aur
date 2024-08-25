@@ -35,5 +35,5 @@ package() {
   rm "${pkgdir}/opt/astah-viewer"/astah_viewer.desktop
   rm "${pkgdir}/opt/astah-viewer"/astah_viewer-doc.png
   sed -i '/#!\/bin\/sh/a export PATH="\$JAVA_HOME\/bin:\$PATH"' "${pkgdir}/opt/astah-viewer/astah-vwr"
-  sed -i '/#!\/bin\/sh/a export JAVA_HOME=\/usr\/lib\/jvm\/java-8-openjdk\/jre' "${pkgdir}/opt/astah-viewer/astah-vwr"
+  sed -i '/#!\/bin\/sh/a export JAVA_HOME=\/usr\/lib\/jvm\/java-8-jre\/jre' "${pkgdir}/opt/astah-viewer/astah-vwr"
 }
