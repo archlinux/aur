@@ -7,7 +7,7 @@ url="https://www.amuletmc.com/"
 license=(LicenseRef-none MIT)
 
 arch=(any)
-pkgver=0.10.33
+pkgver=0.10.35
 pkgrel=1
 makedepends=(python-build python-installer python-wheel python-cython-lint python-versioneer git python-packaging)
 
@@ -27,6 +27,7 @@ sha256sums=(
 
 function prepare() {
 	sed -i 's/versioneer-518/versioneer/g' "${srcdir}/Amulet-Map-Editor/pyproject.toml"
+	sed -i 's|numpy ~= 1.17|numpy|g' "${srcdir}/Amulet-Map-Editor/pyproject.toml"
 }
 
 function build() {
