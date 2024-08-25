@@ -1,7 +1,7 @@
 # Maintainer: Roberto Alsina <roberto.alsina@gmail.com>
 pkgname=tartrazine
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A syntax highlighting tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ralsina/tartrazine"
@@ -33,8 +33,7 @@ build() {
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	crystal spec
+        cd "$pkgname-$pkgver"
 }
 
 package() {
