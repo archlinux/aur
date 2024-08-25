@@ -2,14 +2,14 @@
 pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
 url='https://damask-multiphysics.org'
 license=('AGPL-3.0-or-later')
 makedepends=('cmake' 'python-setuptools'
              'petsc<3.22' 'hdf5-openmpi' 'fftw-openmpi' 'zlib' 'libfyaml'
-             'python-matplotlib' 'python-scipy' 'python-pandas' 'python-h5py' 'python-pyaml')
+             'python-pandas' 'python-numpy' 'python-scipy' 'python-h5py' 'vtk' 'python-matplotlib' 'python-pyaml')
 optdepends=('paraview: post-processing')
 source=(https://damask-multiphysics.org/download/damask-${pkgver}.tar.xz)
 
@@ -86,7 +86,7 @@ package_damask-mesh() {
 
 package_python-damask() {
   pkgdesc='Pre- and post-processing tools for DAMASK'
-  depends=('python-matplotlib' 'python-scipy' 'python-pandas' 'python-h5py' 'python-pyaml')
+  depends=('python-pandas' 'python-numpy' 'python-scipy' 'python-h5py' 'vtk' 'python-matplotlib' 'python-pyaml')
   optdepends=('python-seaborn: post-processing'
               'jupyterlab: comfortable shell'
               'ipython: comfortable shell')
