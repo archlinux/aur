@@ -1,17 +1,17 @@
 # Maintainer: Steffen Hansen <steffengrundsoe@gmail.com>
 pkgname=quickgui
-pkgver=1.2.8
+pkgver=1.2.10
 pkgrel=1
 pkgdesc="A Flutter frontend for quickget and quickemu"
 arch=('x86_64')
 url="https://github.com/quickgui/quickgui"
 license=('unknown')
 depends=('quickemu' 'zenity')
-makedepends=('flutter' 'cmake' 'ninja' 'clang')
+makedepends=('flutter-target-linux' 'cmake' 'ninja' 'clang')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("$pkgname-$pkgver.tar.xz"::"https://github.com/quickgui/quickgui/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2d55a7f065547d52a243008bbf14543b1bd8d12aeba40bbaded32a1a7c369c6c')
+source=("$pkgname-$pkgver.tar.xz"::"https://github.com/quickemu-project/quickgui/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('0acdf2af4f5ad463683679247dd79d25150efa7619a8d4a7c0a5baaec12f0555')
 
 build() {
   cd "$pkgname-$pkgver"
