@@ -1,0 +1,15 @@
+pkgbase = hilex-git
+	pkgdesc = syntax highlighter
+	pkgver = r2462.c8f0df1
+	pkgrel = 1
+	url = https://causal.agency/bin/hilex.html
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = gcc
+	makedepends = git
+	makedepends = flex
+	depends = glibc
+	source = hilex-git::git+https://git.causal.agency/src#branch=master
+	sha256sums = SKIP
+
+pkgname = hilex-git
