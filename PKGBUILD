@@ -6,10 +6,11 @@ pkgdesc="Pacman hooks that patch VSCode files for improved XDG experience (#1574
 # https://github.com/microsoft/vscode/issues/129953
 # https://github.com/microsoft/vscode/issues/214741
 url='https://aur.archlinux.org/packages/vscode-xdg-patch-hook'
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 arch=('any')
 license=(LicenseRef-None)
+install=${pkgname}.install
 depends=(sed grep pacman)
 optdepends=('code' 'vscode')
 options=(!strip !debug)

@@ -1,0 +1,19 @@
+_updatable_files() {
+  ls \
+    /usr/lib/code*/package.json \
+    /opt/visual-studio-code*/resources/app/package.json \
+    /opt/vscodium*/resources/app/package.json \
+    /usr/share/applications/code*.desktop \
+    /usr/share/applications/vscode*.desktop \
+    /usr/share/applications/vscodium*.desktop \
+      2>/dev/null \
+    | grep -v -E '\-url-handler.desktop$'
+}
+
+post_install() {
+  _updatable_files | /usr/lib/vscode-xdg-patch-hook/apply-xdg-patch.sh
+}
+
+post_upgrade() {
+  post_install
+}
