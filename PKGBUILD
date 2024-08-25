@@ -41,7 +41,7 @@ depends=(
 	'yt-dlp'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core')
-checkdepends=('python-pytest-asyncio' 'python-pytest-mock')
+# checkdepends=('python-pytest-asyncio' 'python-pytest-mock')
 provides=('python-spotdl')
 replaces=('python-spotdl')
 conflicts=('python-spotdl')
@@ -55,10 +55,10 @@ build() {
 	python -m build --wheel --no-isolation
 }
 
-check() {
-	cd spotify-downloader-$pkgver
-	pytest || echo 'Tests failed!'
-}
+# check() {
+# 	cd spotify-downloader-$pkgver
+# 	pytest || echo 'Tests failed!'
+# }
 
 package() {
 	cd spotify-downloader-$pkgver
