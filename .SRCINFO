@@ -18,6 +18,7 @@ pkgbase = libvirt
 	makedepends = dnsmasq
 	makedepends = iproute2
 	makedepends = qemu-base
+	makedepends = systemd
 	depends = libpciaccess
 	depends = yajl
 	depends = fuse3
