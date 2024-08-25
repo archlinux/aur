@@ -1,0 +1,13 @@
+pkgbase = gocheat
+	pkgdesc = A tool to create beautiful cheatsheets for your keybinds and aliases
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Achno/gocheat
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.22
+	depends = glibc
+	source = gocheat-0.1.0.tar.gz::https://github.com/Achno/gocheat/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = gocheat
