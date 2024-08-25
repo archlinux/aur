@@ -16,6 +16,8 @@ pkgbase = scx-scheds-git
 	depends = libelf
 	depends = zlib
 	depends = jq
+	depends = bpf
+	depends = libbpf
 	provides = scx-scheds=1.0.3.r72.g2f356bf
 	conflicts = scx-scheds
 	options = !lto
