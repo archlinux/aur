@@ -1,7 +1,7 @@
 pkgbase = tartrazine
 	pkgdesc = A syntax highlighting tool
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ralsina/tartrazine
 	install = install
 	arch = x86_64
