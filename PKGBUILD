@@ -1,7 +1,7 @@
 # Maintainer:
 # Contributor: Kerrick Staley <kerrick@kerrickstaley.com>
 
-## useful links
+## links
 # https://dolphin-emu.org
 # https://github.com/dolphin-emu/dolphin
 
@@ -23,101 +23,84 @@ unset _pkgtype
 # basic info
 _pkgname="dolphin-emu"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2407.r68.gcc3ff34
+pkgver=2407.r258.g27c7101
 pkgrel=1
 pkgdesc='A Gamecube and Wii emulator'
 url="https://github.com/dolphin-emu/dolphin"
 license=('GPL-2.0-or-later')
-arch=(x86_64)
+arch=('x86_64')
 
-# main package
-_main_package() {
-  depends=(
-    alsa-lib
-    bluez-libs
-    curl
-    ffmpeg
-    gcc-libs
-    glibc
-    libevdev
-    libgl
-    libpulse
-    libudev.so
-    libx11
-    libxi
-    libxrandr
-    qt6-base
-    qt6-svg
+depends=(
+  alsa-lib
+  bluez-libs
+  curl
+  ffmpeg
+  gcc-libs
+  glibc
+  libevdev
+  libgl
+  libpulse
+  libudev.so
+  libx11
+  libxi
+  libxrandr
+  qt6-base
+  qt6-svg
 
-    ## optional
-    bzip2
-    cubeb
-    curl
-    fmt
-    hidapi
-    libiconv
-    liblzma.so
-    libspng
-    libusb
-    lz4
-    lzo
-    mbedtls2
-    miniupnpc
-    pugixml
-    sdl2
-    sfml
-    zstd
+  ## optional
+  bzip2
+  cubeb
+  curl
+  fmt
+  hidapi
+  libiconv
+  liblzma.so
+  libspng
+  libusb
+  lz4
+  lzo
+  mbedtls2
+  miniupnpc
+  pugixml
+  sdl2
+  sfml
+  zstd
 
-    ## broken
-    #enet
-    #libmgba
-    #minizip-ng
-    #xxhash
-    #zlib-ng
-  )
+  ## broken
+  #enet
+  #libmgba
+  #minizip-ng
+  #xxhash
+  #zlib-ng
+)
+makedepends+=(
+  cmake
+  git
+  ninja
+  python
+)
+
+if [[ "${_build_unittests::1}" == "t" ]]; then
+  checkdepends=('gtest')
+
+  check() {
+    ninja -C build unittests
+  }
+fi
+
+options=(!emptydirs)
+
+if [[ "${_build_clang::1}" == "t" ]]; then
   makedepends+=(
-    cmake
-    git
-    ninja
-    python
+    clang
+    lld
+    llvm
   )
+else
+  options+=(!lto)
+fi
 
-  if [[ "${_build_unittests::1}" == "t" ]]; then
-    checkdepends=('gtest')
-
-    check() {
-      ninja -C build unittests
-    }
-  fi
-
-  options=(!emptydirs)
-
-  if [[ "${_build_clang::1}" == "t" ]]; then
-    makedepends+=(
-      clang
-      lld
-      llvm
-    )
-  else
-    options+=(!lto)
-  fi
-
-  if [[ "${_build_git::1}" != "t" ]]; then
-    _main_stable
-  else
-    _main_git
-  fi
-
-  _source_dolphin_emu
-}
-
-# stable package
-_main_stable() {
-  :
-}
-
-# git package
-_main_git() {
+_source_main() {
   provides=(
     'dolphin-emu'
     'dolphin-emu-nogui'
@@ -139,7 +122,6 @@ _main_git() {
   }
 }
 
-# submodules
 _source_dolphin_emu() {
   source+=(
     #'bylaws.libadrenotools'::'git+https://github.com/bylaws/libadrenotools.git'
@@ -178,39 +160,41 @@ _source_dolphin_emu() {
     'SKIP'
     'SKIP'
   )
-
-  _prepare_dolphin_emu() (
-    cd "$_pkgsrc"
-    local _submodules=(
-      #'bylaws.libadrenotools'::'Externals/libadrenotools'
-      #'curl'::'Externals/curl/curl'
-      'cyan4973.xxhash'::'Externals/xxhash/xxHash'
-      #'dolphin-emu.ext-win-ffmpeg'::'Externals/FFmpeg-bin'
-      #'dolphin-emu.ext-win-qt'::'Externals/Qt'
-      'epezent.implot'::'Externals/implot/implot'
-      #'fmtlib.fmt'::'Externals/fmt/fmt'
-      #'google.googletest'::'Externals/gtest'
-      'gpuopen-librariesandsdks.vulkanmemoryallocator'::'Externals/VulkanMemoryAllocator'
-      #'khronosgroup.spirv-cross'::'Externals/spirv_cross/SPIRV-Cross'
-      'khronosgroup.vulkan-headers'::'Externals/Vulkan-Headers'
-      #'libsdl-org.sdl'::'Externals/SDL/SDL'
-      #'libusb'::'Externals/libusb/libusb'
-      #'libusb.hidapi'::'Externals/hidapi/hidapi-src'
-      'lsalzman.enet'::'Externals/enet/enet'
-      #'lz4'::'Externals/lz4/lz4'
-      'mgba-emu.mgba'::'Externals/mGBA/mgba'
-      #'mozilla.cubeb'::'Externals/cubeb/cubeb'
-      #'randy408.libspng'::'Externals/libspng/libspng'
-      'retroachievements.rcheevos'::'Externals/rcheevos/rcheevos'
-      'syoyo.tinygltf'::'Externals/tinygltf/tinygltf'
-      'zlib-ng'::'Externals/zlib-ng/zlib-ng'
-      'zlib-ng.minizip-ng'::'Externals/minizip-ng/minizip-ng'
-    )
-    _submodule_update
-  )
 }
 
-# common functions
+_prepare_dolphin_emu() (
+  cd "$_pkgsrc"
+  local _submodules=(
+    #'bylaws.libadrenotools'::'Externals/libadrenotools'
+    #'curl'::'Externals/curl/curl'
+    'cyan4973.xxhash'::'Externals/xxhash/xxHash'
+    #'dolphin-emu.ext-win-ffmpeg'::'Externals/FFmpeg-bin'
+    #'dolphin-emu.ext-win-qt'::'Externals/Qt'
+    'epezent.implot'::'Externals/implot/implot'
+    #'fmtlib.fmt'::'Externals/fmt/fmt'
+    #'google.googletest'::'Externals/gtest'
+    'gpuopen-librariesandsdks.vulkanmemoryallocator'::'Externals/VulkanMemoryAllocator'
+    #'khronosgroup.spirv-cross'::'Externals/spirv_cross/SPIRV-Cross'
+    'khronosgroup.vulkan-headers'::'Externals/Vulkan-Headers'
+    #'libsdl-org.sdl'::'Externals/SDL/SDL'
+    #'libusb'::'Externals/libusb/libusb'
+    #'libusb.hidapi'::'Externals/hidapi/hidapi-src'
+    'lsalzman.enet'::'Externals/enet/enet'
+    #'lz4'::'Externals/lz4/lz4'
+    'mgba-emu.mgba'::'Externals/mGBA/mgba'
+    #'mozilla.cubeb'::'Externals/cubeb/cubeb'
+    #'randy408.libspng'::'Externals/libspng/libspng'
+    'retroachievements.rcheevos'::'Externals/rcheevos/rcheevos'
+    'syoyo.tinygltf'::'Externals/tinygltf/tinygltf'
+    'zlib-ng'::'Externals/zlib-ng/zlib-ng'
+    'zlib-ng.minizip-ng'::'Externals/minizip-ng/minizip-ng'
+  )
+  _submodule_update
+)
+
+_source_main
+_source_dolphin_emu
+
 prepare() {
   _submodule_update() {
     local _module
@@ -292,10 +276,7 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 
   install -Dm644 "$srcdir/$_pkgsrc/Data/51-usb-device.rules" \
-    -t "$pkgdir/usr/lib/udev/rules.d/"
+    "$pkgdir/usr/lib/udev/rules.d/51-usb-device-dolphin.rules"
 
   rm -rf "$pkgdir"/usr/{include,lib/libdiscord-rpc.a}
 }
-
-# execute
-_main_package
