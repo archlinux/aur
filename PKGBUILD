@@ -3,7 +3,7 @@
 
 pkgname=python-folium
 _pkgname=folium
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Python Data. Leaflet.js maps"
 arch=('any')
@@ -13,8 +13,8 @@ license=('MIT')
 depends=('python' 'python-jinja' 'python-branca' 'python-requests' 'python-selenium' 'python-jenkspy' 'python-xyzservices')
 makedepends=('python-setuptools')
 options=(!emptydirs)
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/fc/18/\
-8b215f4c4a6f6c90837a3eface280f883b788c1515e6d61b19e9dfaf6e45/folium-0.16.0.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/73/25/\
+a11f642a63d1c9653e12b4bac27a147bb91bf97609881161723fa803bb01/folium-0.17.0.tar.gz")
 
 build() {
 	cd $srcdir/$_pkgname-$pkgver
@@ -31,5 +31,5 @@ package() {
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/$pkgname/LICENSE.txt"
 }
-md5sums=('159ecefddadbe92e144dfd583c51a4d8')
-sha256sums=('2585ee9253dc758d3a365534caa6fb5fa0c244646db4dc5819afc67bbd4daabb')
+md5sums=('11b72e4c6588cdb790a15505fad2e59e')
+sha256sums=('48385df9a3f6ceca23647c2e8d87850c8a6e05b40db63266e7b8c6d2d734d4c6')
