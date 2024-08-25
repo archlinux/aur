@@ -22,7 +22,7 @@ source=("prog8c-$pkgver.jar::https://github.com/irmen/prog8/releases/download/v$
 	"https://raw.githubusercontent.com/irmen/prog8/master/syntax-files/Vim/prog8_builtins.vim"
 	"prog8c_var_init")
 noextract=("prog8c-$pkgver.jar")
-sha256sums=("6598d473d37b87b6277aaba09eccbf21592a997e2d82421197e07156293e1ea7"
+sha256sums=("0cdb962aea419fc4d6c6b81795a5d3ab869041e45e1b53cefa61c5cfb67d9e56"
 	    "c5b390a611ce778d8e22b6a2f626d273d424889c1ee7ce5454c66bce35aa888c"
 	    "SKIP"
 	    "SKIP"
