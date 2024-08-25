@@ -1,0 +1,57 @@
+# enable DT_HASH
+export LDFLAGS+=" -Wl,--hash-style=both"
+
+# disable check
+unset checkdepends
+unset -f check
+
+# disable debug
+options=('!debug')
+
+# modify package
+_suffix="-eac"
+pkgbase="glibc${_suffix:-}"
+
+for i in "${pkgname[@]}"; do
+  _old_pkgname+=("$i")
+done
+
+unset pkgname
+
+for i in "${_old_pkgname[@]}"; do
+  if grep -q 'locale' <<< "${i:?}"; then
+    unset -f "package_${i}"
+    continue
+  fi
+
+  j=$(sed -E "s&glibc&glibc${_suffix:-}&" <<< "${i:?}")
+  pkgname+=("${j:?}")
+
+  eval "package_${j} () {
+    $(declare -f package_${i} | sed -E 's& \(32-bit\)&&')
+    package_${i}
+
+    pkgdesc+=' with DT_HASH enabled'
+
+    [ '${i%%-*}' == 'lib32' ] && pkgdesc+=' (32-bit)'
+
+    provides=(${i}=${pkgver})
+    conflicts=(${i})
+
+    rm -f \"\$pkgdir/etc/locale.gen\"
+  }"
+
+  unset -f "package_${i}"
+done
+
+_bump_pkgrel() {
+  local _pkgver_old="${1%-*}"
+  local _pkgrel_old="${1##*-}"
+  local _bump="${2}"
+
+  if [[ "$pkgver" == "$_pkgver_old" ]] && [[ "$pkgrel" == "$_pkgrel_old" ]]; then
+    pkgrel+=".$_bump"
+  fi
+}
+
+_bump_pkgrel 2.40+r16+gaa533d58ff-2 1

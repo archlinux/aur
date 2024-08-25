@@ -1,0 +1,68 @@
+# enable DT_HASH
+export LDFLAGS+=" -Wl,--hash-style=both"
+
+# disable check
+unset checkdepends
+unset -f check
+
+# disable debug
+options=('!debug')
+
+# modify package
+_rogue_company_reverts_patch="rogue_company_reverts-$pkgver.patch"
+source+=("$_rogue_company_reverts_patch"::"https://github.com/Frogging-Family/glibc-eac/raw/main/rogue_company_reverts.patch")
+b2sums+=('SKIP')
+
+eval _orig_"$(declare -f prepare)"
+
+prepare() {
+  (_orig_prepare)
+
+  # fix patch
+  sed -Ee 's&^(\+  tst-libc_dlvsym-static)$&\1 \\&' -i "$srcdir/$_rogue_company_reverts_patch"
+
+  cd glibc
+
+  # Reverts for Rogue Company to work again
+  # 7a5db2e82fbb6c3a6e3fdae02b7166c5d0e8c7a8
+  # 8208be389bce84be0e1c35a3daa0c3467418f921
+  # 6bf789d69e6be48419094ca98f064e00297a27d5
+  # b89d5de2508215ef3131db7bed76ac50b3f4c205
+  # 86f0179bc003ffc34ffaa8d528a7a90153ac06c6
+  patch -Np1 -F100 -i "$srcdir/$_rogue_company_reverts_patch"
+}
+
+_suffix="-eac-roco"
+pkgbase="glibc${_suffix:-}"
+
+for i in "${pkgname[@]}"; do
+  _old_pkgname+=("$i")
+done
+
+unset pkgname
+
+for i in "${_old_pkgname[@]}"; do
+  if grep -q 'locale' <<< "${i:?}"; then
+    unset -f "package_${i}"
+    continue
+  fi
+
+  j=$(sed -E "s&glibc&glibc${_suffix:-}&" <<< "${i:?}")
+  pkgname+=("${j:?}")
+
+  eval "package_${j} () {
+    $(declare -f package_${i} | sed -E 's& \(32-bit\)&&')
+    package_${i}
+
+    pkgdesc+=' with DT_HASH enabled and Rogue Company patch'
+
+    [ '${i%%-*}' == 'lib32' ] && pkgdesc+=' (32-bit)'
+
+    provides=(${i}=${pkgver})
+    conflicts=(${i})
+
+    rm -f \"\$pkgdir/etc/locale.gen\"
+  }"
+
+  unset -f "package_${i}"
+done
