@@ -1,0 +1,16 @@
+pkgbase = xva-img
+	pkgdesc = Citrix XenServer .xva disk extraction tool
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/eriklax/xva-img
+	arch = x86_64
+	license = GPL-2.0-with-OpenSSL-exception
+	makedepends = cmake
+	makedepends = openssl
+	makedepends = xxhash-git
+	source = https://github.com/eriklax/xva-img/archive/refs/tags/1.5.tar.gz
+	source = Fix-CMakeLists.txt.patch
+	sha256sums = 89667ea86a5ec8cbf670966eea9d758f4571a92004c798d8df3e1aa0eaea9235
+	sha256sums = 483200046bff345712b7247b7f90758397839eb4833635fd48bfb714e191352b
+
+pkgname = xva-img
