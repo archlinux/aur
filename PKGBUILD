@@ -2,11 +2,11 @@
 
 pkgname=cells-sync-bin
 pkgver=0.9.4
-pkgrel=2
+pkgrel=3
 conflicts=('cells-sync')
 provides=('cells-sync')
 arch=('x86_64')
-depends=('libwebkit2gtk-4.0.so=37')
+depends=('libwebkit2gtk-4.0.so=37', 'libayatana-appindicator3.so=1')
 license=('GPL3')
 pkgdesc="Cells Sync is a desktop synchronization client for Pydio Cells server"
 url="https://pyd.io"
