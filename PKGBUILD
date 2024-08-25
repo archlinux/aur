@@ -18,10 +18,10 @@ source=("https://github.com/openziti/ziti-tunnel-sdk-c/releases/download/v${pkgv
         "sysusers.conf"
         "tmpfiles.conf")
 sha256sums=('7e42211943621647efd3d8680ad1280a638847f24c180cca97094a3e8a4d8b5a'
-            '7038f09f3f363324425482097ae92f36d27d8046b14b29933bb1be7c6367ea2d'
+            '97881960e8763840782b936abbb94513ca929257738ad2bf96df45cc3a344628'
             '027be2beec25a3425ae8b2b79be294c5829c4715bd89b841e958a720c720aea7'
             '5efe7c102098705e0b1f4cfe7966a5b8c3cc88d0c0ee6427f5cc9c6126dc57a4'
-            '429b1eabb68a0d152fdfce62dcc6ed5b28f2406636586faec148eb04c2ea0713')
+            '2d9870a798d2b26dd8c11b1b031dec6dbf4d8ca9f05643e721a5d3134ab59d74')
 
 package() {
   install -D -m 0755 ziti-edge-tunnel ${pkgdir}/usr/bin/ziti-edge-tunnel
