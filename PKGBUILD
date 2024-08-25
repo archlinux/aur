@@ -36,3 +36,4 @@ package() {
   ln -s "/usr/lib/mimejs/main.js" "${pkgdir}/usr/bin/xdg-open"
   install -m 644 "mime.json" "${pkgdir}/etc/mime.json"
 }
+
