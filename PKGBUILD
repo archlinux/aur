@@ -1,5 +1,4 @@
 # Maintainer: Mattia Moffa <mattia [at] moffa [dot] xyz>
-# Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
 
 pkgname=eclipse-dsl-bin
 _pkgname=${pkgname%-bin}
