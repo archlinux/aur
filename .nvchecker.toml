@@ -1,0 +1,4 @@
+[libpfm]
+source = "git"
+git = "https://git.code.sf.net/p/perfmon2/libpfm4"
+prefix = "v"
