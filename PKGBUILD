@@ -1,7 +1,7 @@
 # Maintainer: Roberto Alsina <roberto.alsina@gmail.com>
 pkgname=tartrazine
 pkgver=0.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A syntax highlighting tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ralsina/tartrazine"
@@ -15,7 +15,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=("!strip")
 install=install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ralsina/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
@@ -30,6 +30,7 @@ build() {
 	cd "$pkgname-$pkgver"
 	shards install
 	shards build --release
+        strip bin/tartrazine
 }
 
 check() {
