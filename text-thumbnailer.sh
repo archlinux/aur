@@ -5,25 +5,28 @@ if [[ $# -lt 3 ]]; then
 	exit 255
 fi
 
-TMPFILE=$(mktemp /tmp/large.XXXXXX.png)
 SIZE="$1"
 INPUT_FILE_NAME="$2"
 OUTPUT_FILE_NAME="$3"
 CHOPPED_FILE_CONTENT="$(head --lines=36 "$INPUT_FILE_NAME")"
 
-convert -size 210x254 \
-	-background "#fffaed" \
-	-fill black \
-	-border 1x1 -bordercolor "#00aaff" \
-	-font "Liberation-Mono" -pointsize 5 \
-	label:"$CHOPPED_FILE_CONTENT" "$TMPFILE"
+if TMP_FILE="$(mktemp --tmpdir tumbler-text-XXXXXX)"; then
+	convert -size 210x254 \
+		-background "#fffaed" \
+		-fill black \
+		-border 1x1 -bordercolor "#00aaff" \
+		-font "Liberation-Mono" -pointsize 5 \
+		label:"$CHOPPED_FILE_CONTENT" "$TMP_FILE"
 
-if [[ $SIZE -lt 256 ]]; then
-	convert -thumbnail ${SIZE}x${SIZE} -define png:compression-level=3 \
-		"$TMPFILE" "$OUTPUT_FILE_NAME"
+	if [[ $SIZE -lt 256 ]]; then
+		convert -thumbnail "${SIZE}x${SIZE}" -define png:compression-level=3 \
+			"$TMP_FILE" "$OUTPUT_FILE_NAME"
+	else
+		cat "$TMP_FILE" > "$OUTPUT_FILE_NAME"
+	fi
+
+	rm "$TMP_FILE"
+	exit 0
 else
-	cat "$TMPFILE" > "$OUTPUT_FILE_NAME"
+	exit 1
 fi
-
-rm "$TMPFILE"
-exit 0
