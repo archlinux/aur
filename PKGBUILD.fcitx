@@ -9,7 +9,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=17c8da1a6ce8de1e54364532eb592e30a0957bc1
+_mozc_commit=a9175c22ca675dc963cbb1cc7288abb700b85a51
 _mozcdict_ext_commit=de931271344ebb2d1349a7ae0a8ec883457ed930
 _branch=fcitx
 # Sudachi Dictionary
@@ -18,7 +18,7 @@ _sudachidict_date=20240716
 pkgbase=mozc-with-jp-dict
 pkgname=("fcitx-$pkgbase")
 pkgver=2.30.5544.102
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003')
@@ -26,6 +26,7 @@ makedepends=('qt6-base' 'fcitx' 'fcitx-qt6' 'bazel' 'git' 'python' 'python-six' 
 options=(!lto)
 source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
         https://github.com/fcitx/mozc/pull/61.patch
+        https://github.com/fcitx/mozc/pull/63.patch
         git+https://github.com/phoepsilonix/mozcdict-ext.git#commit=${_mozcdict_ext_commit}
         #"https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
         #"https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip"
@@ -38,8 +39,9 @@ source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
 
-sha512sums=('b5cbd7a952779892d78be59bdbb012188264a5b663919adac354a4b2e250f8a94988ea4a0751107ecf51e44e89fbe2780536928b137dbc10696c12b10254573d'
+sha512sums=('574a23bb73ee5f5341156f4ce9f2dd92bb9a9e8a02ed3ce592b5def073ed6751a758d21ae30886fa1a3ca9208bc20014338c0187f2ffd9813ff82ab0fe71b5e9'
             '9f88e7926a8db772856049c3e8d8066ca5e663d46817f432b042d212aa4ab20ed660ab9da9fed181c80116f6900602f753f7c55e9894b69964b0a2fb7518b830'
+            'a8fc531f4d530e4e89093c7ab9ab83e8e1cf09256cdefbfa0ae1866556eae128f2bc169d09d9d694690316c96e4bb9074fc3bc8d3aeb27ac4f25c9db4092d3dd'
             'fcde4a3c0200969ebb21fa927f1ff59581386a39d83ea7ec5c0092e1566c38638129b71b286434e11fb4c6b76b48d6b36eb64b053306c2bbb8a7900e2c641558'
             '9428d55d2d9603c8bfcd12cc0184415f23af1d09a2d0ebdf0cce694a09638e7cfe0c1241bf1c943427b2fccfea619ca8b2e22db3452d837b416eb31aa224e766'
             'f0a3544dcc99bf8c4cea8ebfd31af827e209f0678997ab55f6eda54f34cad5e148d1bd156417a621665c2068e7371801dc9cf1baa34f2270a99da7055f46d95d'
