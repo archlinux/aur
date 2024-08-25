@@ -1,14 +1,16 @@
 # Maintainer: Diego Cirilo <dvcirilo at gmail dot com>
+# Contributor: Willem Albeda <willem at albeda dot net>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=astah-viewer
-pkgver=9.1.0.448a59.0
+pkgver=9.1.0.448a59_0
 _pkgver=9.1.0.448a59-0
 pkgrel=1
 url='https://astah.net/products/astah-viewer'
 pkgdesc='Free tool to view .astah files'
-arch=('i686' 'x86_64')
-license=('custom')
-depends=('jre8' 'lib32-glibc' 'hicolor-icon-theme' 'bash')
+arch=(any)
+license=('LicenseRef-Custom')
+depends=('java-runtime=8' 'hicolor-icon-theme' 'bash')
 options=('!emptydirs' '!strip')
 source=("http://cdn.change-vision.com/files/astah-viewer-${_pkgver}.noarch.rpm")
 md5sums=('c3cafd85cccdaeb1d58753c199912903')
@@ -22,7 +24,7 @@ package() {
   mkdir -p "${pkgdir}/usr/share/licenses/astah-viewer"
   mv "${pkgdir}/opt/astah-viewer"/AstahLicenseAgreement-e.txt "${pkgdir}/usr/share/licenses/astah-viewer/LICENSE"
   rm "${pkgdir}/usr/bin/astah-vwr"
-  ln -s /opt/astah-viewer/astah-vwr "${pkgdir}/usr/bin"
+  ln -s /opt/astah-viewer/astah-vwr "${pkgdir}/usr/bin/astah-viewer"
   install -Dm644 "${pkgdir}/opt/astah-viewer"/mime-astah_viewer.xml "${pkgdir}/usr/share/mime/packages/astah_viewer.xml"
   install -Dm644 "${pkgdir}/opt/astah-viewer"/astah_viewer.desktop -t \
    "${pkgdir}/usr/share/applications"
@@ -34,5 +36,5 @@ package() {
   rm "${pkgdir}/opt/astah-viewer"/astah_viewer.desktop
   rm "${pkgdir}/opt/astah-viewer"/astah_viewer-doc.png
   sed -i '/#!\/bin\/sh/a export PATH="\$JAVA_HOME\/bin:\$PATH"' "${pkgdir}/opt/astah-viewer/astah-vwr"
-  sed -i '/#!\/bin\/sh/a export JAVA_HOME=\/usr\/lib\/jvm\/java-8-jre\/jre' "${pkgdir}/opt/astah-viewer/astah-vwr"
+  sed -i '/#!\/bin\/sh/a export JAVA_HOME=\/usr\/lib\/jvm\/java-8-openjdk\/jre' "${pkgdir}/opt/astah-viewer/astah-vwr"
 }

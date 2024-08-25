@@ -1,0 +1,16 @@
+pkgbase = astah-viewer
+	pkgdesc = Free tool to view .astah files
+	pkgver = 9.1.0.448a59_0
+	pkgrel = 1
+	url = https://astah.net/products/astah-viewer
+	arch = any
+	license = LicenseRef-Custom
+	depends = java-runtime=8
+	depends = hicolor-icon-theme
+	depends = bash
+	options = !emptydirs
+	options = !strip
+	source = http://cdn.change-vision.com/files/astah-viewer-9.1.0.448a59-0.noarch.rpm
+	md5sums = c3cafd85cccdaeb1d58753c199912903
+
+pkgname = astah-viewer
