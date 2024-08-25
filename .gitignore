@@ -1,0 +1,5 @@
+cocotb-bus/
+src/
+pkg/
+python-cocotb-bus-*.pkg*
+*.log

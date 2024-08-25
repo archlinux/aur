@@ -1,18 +1,18 @@
 pkgbase = python-cocotb-bus
 	pkgdesc = Pre-packaged testbenching tools and reusable bus interfaces for cocotb
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/cocotb/cocotb-bus/
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
-	makedepends = python-setuptools-scm
-	depends = python
-	optdepends = iverilog: for simulating verilog designs
-	optdepends = ghdl: for simulating VHDL designs
-	optdepends = gtkwave: for visualizing waveforms
-	options = !emptydirs
-	source = git+https://github.com/cocotb/cocotb-bus#tag=v0.2.0
-	md5sums = SKIP
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-cocotb
+	depends = python-scapy
+	source = git+https://github.com/cocotb/cocotb-bus#tag=v0.2.1
+	sha256sums = b627b536aaa2150a682869c22d8ea29588191856812adaad00e617a67f3c23cd
 
 pkgname = python-cocotb-bus
