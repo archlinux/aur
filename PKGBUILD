@@ -108,6 +108,16 @@ _source_discord_rpc() {
   )
 }
 
+_source_lunasvg() {
+  _pkgsrc_lunasvg="stenzek.lunasvg"
+  source+=(
+    "$_pkgsrc_lunasvg"::"git+https://github.com/stenzek/lunasvg.git"
+  )
+  sha256sums+=(
+    'SKIP'
+  )
+}
+
 _source_shaderc() {
   depends+=(
     'glslang'
@@ -161,6 +171,12 @@ _prepare_discord_rpc() (
   local _version_discord_rpc=$(grep -E -m1 'DISCORD_RPC=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*DISCORD_RPC=(\S+)$&\1&')
   echo "discord-rpc = $_version_discord_rpc"
   git -c advice.detachedHead=false -C "$srcdir/$_pkgsrc_discord_rpc" checkout -f "$_version_discord_rpc"
+)
+
+_prepare_lunasvg() (
+  local _version_lunasvg=$(grep -E -m1 'LUNASVG=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*LUNASVG=(\S+)$&\1&')
+  echo "lunasvg = $_version_lunasvg"
+  git -c advice.detachedHead=false -C "$srcdir/$_pkgsrc_lunasvg" checkout -f "$_version_lunasvg"
 )
 
 _prepare_shaderc() (
@@ -247,17 +263,6 @@ EOF
 END
 }
 
-prepare() {
-  _prepare_backtrace
-  _prepare_cpuinfo
-  _prepare_discord_rpc
-  _prepare_shaderc
-  _prepare_soundtouch
-  _prepare_spirv_cross
-
-  _prepare_duckstation
-}
-
 _build_backtrace() (
   echo "Building libbacktrace..."
   cd "ianlancetaylor.libbacktrace"
@@ -310,6 +315,23 @@ _build_discord_rpc() {
   cmake "${_cmake_discord_rpc[@]}"
   cmake --build build_discord_rpc
   DESTDIR="$srcdir/deps" cmake --install build_discord_rpc
+}
+
+_build_lunasvg() {
+  echo "Building lunasvg..."
+  local _cmake_lunasvg=(
+    -B build_lunasvg
+    -S "$_pkgsrc_lunasvg"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DBUILD_SHARED_LIBS=ON
+    -Wno-dev
+  )
+
+  cmake "${_cmake_lunasvg[@]}"
+  cmake --build build_lunasvg
+  DESTDIR="$srcdir/deps" cmake --install build_lunasvg
 }
 
 _build_shaderc() {
@@ -401,6 +423,10 @@ _build_duckstation() {
     -Wno-dev
   )
 
+  if [[ "${_build_git::1}" == "t" ]]; then
+    _cmake_options+=(-Dlunasvg_DIR="$srcdir/deps/usr/lib/cmake/lunasvg")
+  fi
+
   cmake "${_cmake_options[@]}"
   cmake --build build
 }
@@ -418,6 +444,21 @@ _build_env() {
   fi
 }
 
+prepare() {
+  _prepare_backtrace
+  _prepare_cpuinfo
+  _prepare_discord_rpc
+  _prepare_shaderc
+  _prepare_soundtouch
+  _prepare_spirv_cross
+
+  if [[ "${_build_git::1}" == "t" ]]; then
+    _prepare_lunasvg
+  fi
+
+  _prepare_duckstation
+}
+
 build() {
   _build_env
 
@@ -427,6 +468,10 @@ build() {
   _build_shaderc
   _build_soundtouch
   _build_spirv_cross
+
+  if [[ "${_build_git::1}" == "t" ]]; then
+    _build_lunasvg
+  fi
 
   _build_duckstation
 }
@@ -471,6 +516,7 @@ END
 
 if [[ "${_build_git::1}" == "t" ]]; then
   _source_duckstation_git
+  _source_lunasvg
 else
   _source_duckstation
 fi
