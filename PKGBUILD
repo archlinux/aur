@@ -7,8 +7,8 @@
 _module="machine68k"
 _pkgname="python-$_module"
 pkgname="$_pkgname"
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Cython binding for a m68k system emulator"
 url="https://github.com/cnvogelg/machine68k"
 license=('GPL-2.0-only')
@@ -28,12 +28,8 @@ makedepends=(
 
 _pkgsrc="$_module-$pkgver"
 _pkgext="tar.gz"
-source+=(
-  "$_pkgsrc.$_pkgext"::"https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.$_pkgext"
-)
-sha256sums+=(
-  'c9fabeb17dbb8a7970b7b137bbc6674b8d4824e77f2df176a127acf8e87ee5a6'
-)
+source=("$_pkgsrc.$_pkgext"::"https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.$_pkgext")
+sha256sums=('40bf621b208ae402317c3bd0abb7b6ae36124a2fc416d33599f35ee337028deb')
 
 build() {
   cd "$_pkgsrc"
