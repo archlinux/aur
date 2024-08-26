@@ -1,27 +1,22 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wf-config
-pkgver=0.8.0
-pkgrel=6
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="A library for managing configuration files, written for wayfire"
 arch=(x86_64 aarch64)
 url=https://wayfire.org
 license=(MIT)
 depends=(libevdev libxml2)
 makedepends=(meson ninja pkg-config wayland-protocols glm doctest cmake)
-source=("https://github.com/WayfireWM/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz"
-        gcc-14-build-fix.patch)
-b2sums=('d56cd04c18c2cd8c0bac86493ad662244bde0e9cce1caf81d0fff34d9f2df2470c1aa8c95fead9e91dd5793d570b01dc6ef99b1986b8658b06ef93156a1526f8'
-        '1c54b8b1eabcd97dbb95857912b1352de10f6f1b90349989c746d441efacf09ead40e409bcdc8912279d7dd828a8c3c52964d6813289ea0388288c6fe540c00f')
-
-prepare () {
-	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/gcc-14-build-fix.patch"
-}
+source=("https://github.com/WayfireWM/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('f681fe028aa9026e0c6894d7b94c544230b8285078f176076a3d964fd1dfc37b')
+b2sums=('5f3b529f829f6fc6bdfe974633467707bba501eddca1a9d32f62c1d4ea6398e74ae9bc6f970de821e81fe7fbc4a26b77611587c637ab1961898084571b073ead')
 
 build() {
 	rm -rf build
 	arch-meson "${pkgname}-${pkgver}" build \
-		--auto-features=disabled
+		--auto-features=disabled \
+		-Dtests=disabled
 	ninja -C build
 }
 
