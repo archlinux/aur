@@ -1,6 +1,6 @@
 pkgbase = messenger-gtk-git
 	pkgdesc = A graphical user interface for GNUnet Messenger
-	pkgver = r262.6ae55ea
+	pkgver = r406.6c09034
 	pkgrel = 1
 	url = https://gnunet.org
 	arch = i686
@@ -23,6 +23,7 @@ pkgbase = messenger-gtk-git
 	depends = gst-plugins-bad
 	depends = gst-plugins-base
 	depends = gst-plugins-good
+	depends = gst-libav
 	provides = messenger-gtk
 	conflicts = messenger-gtk
 	conflicts = messenger-gtk-bin

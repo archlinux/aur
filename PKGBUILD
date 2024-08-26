@@ -4,7 +4,7 @@
 _framework='gnunet'
 _appname='messenger-gtk'
 pkgname="${_appname}-git"
-pkgver='r262.6ae55ea'
+pkgver='r406.6c09034'
 pkgrel=1
 pkgdesc='A graphical user interface for GNUnet Messenger'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('meson')
 depends=('gnunet-git' 'libgnunetchat-git' 'gtk3' 'libhandy' 'libnotify' 'qrencode'
          'zbar' 'gstreamer' 'libportal' 'libportal-gtk3' 'pipewire'
          'gst-plugin-pipewire' 'gst-plugin-gtk' 'gst-plugins-bad'
-         'gst-plugins-base' 'gst-plugins-good')
+         'gst-plugins-base' 'gst-plugins-good' 'gst-libav')
 provides=("${_appname}")
 conflicts=("${_appname}" "${_appname}-bin")
 source=("git+https://git.${_framework}.org/${_appname}.git")
