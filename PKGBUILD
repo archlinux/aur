@@ -3,19 +3,28 @@
 
 pkgname=debmake
 pkgver=4.4.0
-pkgrel=3
-_pkgrel=1
-pkgdesc="Program to make the Debian source package"
+pkgrel=4
+_pkgrel=4
+pkgdesc="Helper script to make the Debian source package"
 arch=('any')
-url="http://packages.debian.org/sid/debmake"
-license=('MIT')
-makedepends=('git' 'python')
-depends=('devscripts' 'dpkg' 'python' 'rsync' 'python-debian')
+url="https://salsa.debian.org/debian/debmake"
+license=('LicenseRef-debmake')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+depends=('devscripts' 'dpkg' 'python' 'python-debian' 'rsync')
 optdepends=('strace' 'wget' 'curl')
 source=("$pkgname-$pkgver::git+https://salsa.debian.org/debian/debmake.git#tag=debian/$pkgver-$_pkgrel")
 md5sums=('SKIP')
 
+build() {
+	cd "$pkgname-$pkgver"
+
+	python -m build --wheel --skip-dependency-check --no-isolation
+}
+
 package() {
 	cd "$pkgname-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1
+
+	python -m installer --destdir="$pkgdir" dist/*.whl
+
+	install -Dm644 debian/copyright "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
