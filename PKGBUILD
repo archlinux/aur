@@ -4,7 +4,7 @@ _pkgname=ArmCord
 pkgver=3.3.0
 _electronversion=32
 _nodeversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="A custom client designed to enhance your Discord experience while keeping everything lightweight."
 arch=('any')
 url="https://armcord.app/"
@@ -70,5 +70,5 @@ package() {
     install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname}.git/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}.git/licernse.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/license.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
