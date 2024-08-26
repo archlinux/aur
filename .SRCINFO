@@ -1,6 +1,6 @@
 pkgbase = catapult
 	pkgdesc = App launcher for Linux, similar to ulauncher(wayland support)
-	pkgver = 0.9
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://otsaloma.io/catapult
 	arch = any
@@ -8,13 +8,13 @@ pkgbase = catapult
 	makedepends = python-setuptools
 	depends = python
 	depends = glib2
-	depends = gtk3
+	depends = gtk4
 	depends = python-gobject
 	depends = libkeybinder3
 	depends = gettext
 	depends = libqalculate
 	depends = pango
-	source = https://github.com/otsaloma/catapult/archive/refs/tags/0.9.tar.gz
-	sha256sums = 94c7c2864683109591883fbf775f4ff445d101eb4dcd0334d097f75b46df27a1
+	source = https://github.com/otsaloma/catapult/archive/refs/tags/1.0.1.tar.gz
+	sha256sums = SKIP
 
 pkgname = catapult
