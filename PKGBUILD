@@ -4,14 +4,14 @@
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=kolourpaint-git
-pkgver=24.04.70_r2667.g24e7731b
+pkgver=24.11.70_r2759.g02e26e32
 pkgrel=1
 pkgdesc='Paint Program'
 url='https://apps.kde.org/kolourpaint/'
 arch=($CARCH)
 license=(GPL-2.0-or-later LGPL-2.0-or-later)
-depends=(gcc-libs glibc kconfig5 kconfigwidgets5 kcoreaddons5 kguiaddons5 ki18n5 kio5 kjobwidgets5 ktextwidgets5 kwidgetsaddons5 kxmlgui5 libksane-git qt5-base)
-makedepends=(git extra-cmake-modules-git kdoctools5)
+depends=(gcc-libs glibc kconfig-git kconfigwidgets-git kcoreaddons-git kguiaddons-git ki18n-git kio-git ktextwidgets-git kwidgetsaddons-git kxmlgui-git libksane-git qt6-base)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
