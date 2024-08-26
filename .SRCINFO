@@ -1,5 +1,5 @@
 pkgbase = ume-git
-	pkgdesc = VTE based terminal emulator forked from sakura
+	pkgdesc = VTE based terminal emulator forked from sakura, with patches refused by original maintainer
 	pkgver = r65.17e096b
 	pkgrel = 3
 	url = https://github.com/SgtWiggles/ume
