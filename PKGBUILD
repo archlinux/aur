@@ -2,7 +2,7 @@
 pkgname=('harmonist' 'harmonist-tiles')
 pkgbase=harmonist
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A stealth coffee-break roguelike game."
 arch=('x86_64')
 url='https://harmonist.tuxfamily.org/index.html'
@@ -19,12 +19,11 @@ prepare() {
 }
 
 build() {
-    export GO_EXTLINK_ENABLED=1
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-extldflags=$LDFLAGS -mod=readonly -modcacherw"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     export GOPATH="$srcdir"
 
     cd "$srcdir/${pkgbase}-$pkgver"
