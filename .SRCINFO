@@ -1,6 +1,6 @@
 pkgbase = deeplx-git
 	pkgdesc = DeepL Free API (No TOKEN required)
-	pkgver = 0.9.4.r6.g93a3204
+	pkgver = 0.9.5.r2.g0d73552
 	pkgrel = 1
 	url = https://github.com/OwO-Network/DeepLX
 	install = deeplx-git.install

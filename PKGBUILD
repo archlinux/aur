@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=deeplx-git
-pkgver=0.9.4.r6.g93a3204
+pkgver=0.9.5.r2.g0d73552
 pkgrel=1
 pkgdesc="DeepL Free API (No TOKEN required)"
 arch=(x86_64
