@@ -1,7 +1,7 @@
 pkgbase = fsearch
-	pkgdesc = A fast graphical file search utility.
+	pkgdesc = A fast graphical file search utility
 	pkgver = 0.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cboxdoerfer/fsearch
 	arch = i686
 	arch = x86_64
