@@ -1,2 +1,6 @@
 *
 *.*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!rustdesk-bin.install
