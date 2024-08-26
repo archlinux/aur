@@ -5,7 +5,7 @@
 
 pkgname="moltengamepad-git"
 _pkgroot="moltengamepad"
-pkgver=v1.2.3.r2.g41202e1
+pkgver=1.2.3.r0.g41202e1
 pkgrel=1
 pkgdesc="Flexible Linux input device translator, geared for gamepads"
 url="https://gitlab.com/AllMeatball/moltengamepad"
@@ -20,10 +20,11 @@ md5sums=('SKIP'
 depends=('scraw' 'scrawpp')
 makedepends=('go-md2man' 'git' 'make' 'sed')
 provides=("moltengamepad")
+conflicts=("moltengamepad")
 
 pkgver() {
   cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
