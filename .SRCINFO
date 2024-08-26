@@ -22,6 +22,7 @@ pkgbase = ambertools
 	depends = readline
 	depends = tk
 	depends = zlib
+	depends = gcc13-libs
 	optdepends = cuda: GPU acceleration support
 	optdepends = openmpi: MPI support
 	options = !buildflags

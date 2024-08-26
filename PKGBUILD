@@ -13,7 +13,7 @@ url="http://ambermd.org/"
 license=(GPL LGPL)
 arch=(x86_64)
 depends=(blas boost bzip2 fftw lapack netcdf python-mpi4py
-         python-scipy readline tk zlib)
+         python-scipy readline tk zlib gcc13-libs)
 makedepends=(cmake cuda openmpi cython gcc13-fortran)
 optdepends=('cuda: GPU acceleration support'
             'openmpi: MPI support')
