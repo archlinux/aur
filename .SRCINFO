@@ -1,16 +1,16 @@
 pkgbase = dopamine-bin
 	pkgdesc = The audio player that keeps it simple.Use system-wide electron.
-	pkgver = 3.0.0_preview.31
+	pkgver = 3.0.0_preview.32
 	pkgrel = 1
 	url = https://github.com/digimezzo/dopamine
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = electron26
-	provides = dopamine=3.0.0_preview.31
+	provides = dopamine=3.0.0_preview.32
 	conflicts = dopamine
-	source = dopamine-3.0.0_preview.31.pacman::https://github.com/digimezzo/dopamine/releases/download/v3.0.0-preview.31/Dopamine-3.0.0-preview.31.pacman
+	source = dopamine-3.0.0_preview.32.pacman::https://github.com/digimezzo/dopamine/releases/download/v3.0.0-preview.32/Dopamine-3.0.0-preview.32.pacman
 	source = dopamine.sh
-	sha256sums = 008dbd6e156c28cd4761cfe704893337d2e6a1e676098008b664371d684416c6
+	sha256sums = ea5e370ac578212405d84217711d98f005b3cdf3b0a5e22c566cb1bad0569243
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = dopamine-bin
