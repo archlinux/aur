@@ -1,11 +1,12 @@
 pkgbase = safu
 	pkgdesc = C to library to reduce boiler plate code when use standard c-libs
 	pkgver = 0.57.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Elektrobit/safu
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = git
 	depends = glibc
 	depends = json-c
 	source = safu-0.57.1.tar.gz::https://github.com/Elektrobit/safu/archive/refs/tags/safu-0.57.1.tar.gz
