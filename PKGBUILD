@@ -2,7 +2,7 @@
 
 pkgname=iamb-git
 _pkg=iamb
-pkgver=latest.r24.g6532874
+pkgver=r188.3355eb2
 pkgrel=1
 pkgdesc='A Matrix client for Vim addicts'
 url='https://github.com/ulyssa/iamb'
@@ -18,7 +18,8 @@ options=('!lto')
 # https://wiki.archlinux.org/title/VCS_package_guidelines
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  git describe --long --tags --abbrev=7 | sed 's/-/.r/;s/-/./'
+#  git describe --long --tags --abbrev=7 | sed 's/-/.r/;s/-/./'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = iamb-git
 	pkgdesc = A Matrix client for Vim addicts
-	pkgver = latest.r24.g6532874
+	pkgver = r188.3355eb2
 	pkgrel = 1
 	url = https://github.com/ulyssa/iamb
 	arch = x86_64
