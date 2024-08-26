@@ -1,3 +1,6 @@
+v1.14.6
+- Preliminary support for 6.11 kernel
+
 v1.14.5
 - Fixed compilation on kernel 6.10
 - Add script to run kunit tests on evdi module

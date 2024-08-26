@@ -4,7 +4,7 @@
 # Contributor: PlusMinus
 
 pkgname=evdi
-pkgver=1.14.5
+pkgver=1.14.6
 pkgrel=0
 pkgdesc="A Linux® kernel module that enables management of multiple screens."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL')
 depends=(glibc dkms libdrm base-devel)
 changelog=$pkgname.Changelog
 source=(https://github.com/DisplayLink/evdi/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('ad7d8e3c75f3c978b4f48cef3263a1d0c051317cc2875c1ff71250d03e159c54')
+sha256sums=('eba7f36a2fdbf87716751931710fae87b12470df2d81fcf52e681481d33f1de2')
 
 build() {
   # We only need to build the library in this step, dkms will build the module
