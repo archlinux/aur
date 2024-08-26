@@ -2,41 +2,40 @@
 # Maintainer: Dennis Rijsdijk, dennisrijsdijk <hello@dennis.gg>
 _mainver=5
 pkgname=firebot
-pkgver="${_mainver}.62.1"
-pkgrel=3
+pkgver="${_mainver}.63.0"
+pkgrel=1
 pkgdesc="A powerful all-in-one bot for Twitch streamers"
 arch=('x86_64')
 url="https://github.com/crowbartools/Firebot"
 license=('GPL3')
 source=("${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}-linux-x64.tar.gz"
         "${pkgname}.sh"
-        "https://raw.githubusercontent.com/crowbartools/Firebot/v${pkgver}/src/gui/images/macTrayIcon%403x.png"
+        "https://raw.githubusercontent.com/crowbartools/Firebot/v${pkgver}/src/gui/images/logo_transparent.png"
         "${pkgname}.desktop")
-sha256sums=('bc57885e9ab54c38d925eb4f42fefa696b69106b8c77bc387d2b8153fe8b64eb'
+sha256sums=('e70d2e9db5fa841fac8fc17a99e7e9a6a87685ca6f85fdd546877615ca3aaf95'
             '7694f96ec45d7b729c01bc9d50a12805a8a040b4e3f8c5fbdccbed57fe10fef6'
-            '99bcae97bdfe4ab742664ddbc70fa3ead6d6c26cc468f1b0f86e6d1f0ca68703'
+            'fb725b5eb6107ae23496f6b6550eba834809bbb38879a1cf5b94bcbf1674f480'
             '45a0b16253788a33df8b1687a2b488ad3146b8afdca81c96704b2ba00c98d437')
 
-prepare() {
-  cd $srcdir
-  mkdir -p $pkgname
-  tar -xf ${pkgname}-v${pkgver}-linux-x64.tar.gz -C ${pkgname}
-}
-
 package() {
+  rm ${pkgname}-v${pkgver}-linux-x64.tar.gz
+
   install -dm755 "${pkgdir}/opt/"
-  cp -r --no-preserve=mode,ownership "${srcdir}/${pkgname}" "${pkgdir}/opt/${pkgname}"
+  cp -r --no-preserve=mode,ownership "${srcdir}/" "${pkgdir}/opt/${pkgname}"
 	chmod +x "${pkgdir}/opt/${pkgname}/Firebot v${_mainver}"
 
   install -dm755 "${pkgdir}/usr/bin/"
   cp --no-preserve=mode,ownership "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 	chmod +x "${pkgdir}/usr/bin/${pkgname}"
+  rm "${pkgdir}/opt/${pkgname}/${pkgname}.sh"
 
   install -dm755 "${pkgdir}/usr/share/pixmaps"
-  cp --no-preserve=mode,ownership "${srcdir}/macTrayIcon%403x.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  cp --no-preserve=mode,ownership "${srcdir}/logo_transparent.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  rm "${pkgdir}/opt/${pkgname}/logo_transparent.png"
 
   install -dm755 "${pkgdir}/usr/share/applications"
   desktop-file-edit --set-name="Firebot v${pkgver}" ${srcdir}/${pkgname}.desktop
   cp --no-preserve=mode,ownership "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   chmod +x "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  rm "${pkgdir}/opt/${pkgname}/${pkgname}.desktop"
 }
