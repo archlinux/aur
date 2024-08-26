@@ -1,6 +1,6 @@
 pkgbase = crab-fetch
 	pkgdesc = Extremely fast, featureful and customizable command-line fetcher.
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/LivacoNew/CrabFetch
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = crab-fetch
 	optdepends = dbus: Required for the music module
 	provides = crabfetch
 	conflicts = crabfetch
-	source = https://github.com/LivacoNew/CrabFetch/archive/refs/tags/v0.4.2.tar.gz
-	sha512sums = 1974b06c5faef71252953b4de8521b0dd4e65640026ccd43035359bfca371174189e60b5d0b4eea4aafc01dd2874ed1fbc463d910dff16bd9fc0a0e7e80fb012
+	source = https://github.com/LivacoNew/CrabFetch/archive/refs/tags/v0.5.0.tar.gz
+	sha512sums = 3504046e04fd7ba06288d78ddf4e81586ea92c2add38feb0f249f19a954c450d7706d374a38b8ce5100a6aa0d26b19110ddd39b344e7fa3090e2842f25f1a94e
 
 pkgname = crab-fetch
