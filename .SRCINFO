@@ -1,20 +1,22 @@
 pkgbase = hostapd-wpe
 	pkgdesc = Modified hostapd to facilitate AP impersonation attacks
-	pkgver = 2.10.0
+	pkgver = 2.11
 	pkgrel = 1
-	url = https://w1.fi/hostapd
-	install = install
+	url = https://w1.fi/hostapd/
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
-	depends = openssl-1.0
+	depends = glibc
 	depends = libnl
+	depends = openssl-1.0
 	depends = sqlite
-	provides = hostapd-wpe
-	source = hostapd-2.10.tar.gz::https://w1.fi/releases/hostapd-2.10.tar.gz
-	source = hostapd-2.10-wpe.patch::https://raw.githubusercontent.com/aircrack-ng/aircrack-ng/master/patches/wpe/hostapd-wpe/hostapd-2.10-wpe.patch
-	md5sums = 0be43e9e09ab94a7ebf82de0d1c57761
-	md5sums = SKIP
+	source = git+https://w1.fi/hostap.git?signed#tag=hostap_2_11
+	source = 0001_adj-wpe.patch
+	source = https://raw.githubusercontent.com/aircrack-ng/aircrack-ng/master/patches/wpe/hostapd-wpe/hostapd-2.11-wpe.patch
+	validpgpkeys = EC4AA0A991A5F2464582D52D2B6EF432EFC895FA
+	b2sums = 163d2e6644902f36b3b5f25e328221fa34495d745801e8d3dce874b05366c81370ef75c8f7e0198e206a3d04c5ea4bb501bf97693fa481e15cf5067d80ab0c1e
+	b2sums = e65bd54e927522a70974d7bb6391ccdd24a79f00cde0e0b292e81830c0a89b2a12ab642b8c0a21361a8e19052b82bdcaa63acb4fb0bf1b62058866b4c12504a7
+	b2sums = 5bd6fb7f7383d68f1f42340ecc15a25c5fd963c7328b837b7efa19f05c4bd5c364eb33c0a5d7a5d33efffe8f13734f51ef827b0d1e7e6c7caec7ca0a4ced7aa5
 
 pkgname = hostapd-wpe
