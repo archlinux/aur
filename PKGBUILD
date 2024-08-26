@@ -6,24 +6,27 @@ pkgbase=lib32-libsoup3
 pkgname=(
   lib32-libsoup3
 )
-pkgver=3.4.4
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="HTTP client/server library for GNOME (32-bit)"
 url="https://wiki.gnome.org/Projects/libsoup"
 arch=(x86_64)
-license=(LGPL)
+license=(LGPL-2.0-or-later)
 depends=(
   lib32-brotli
   lib32-glib-networking
   lib32-glib2
+  lib32-glibc
   lib32-krb5
   lib32-libnghttp2
   lib32-libpsl
   lib32-sqlite
+  lib32-zlib
   libsoup3
 )
 makedepends=(
   git
+  glib2-devel
   meson
   python-quart
   samba
@@ -32,14 +35,8 @@ checkdepends=(
   apache
   php-apache
 )
-_commit=d6133a8e116953dac824b835d4f788e21a3e6565  # tags/3.4.4^0
-source=("git+https://gitlab.gnome.org/GNOME/libsoup.git#commit=$_commit")
-b2sums=('SKIP')
-
-pkgver() {
-  cd libsoup
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
-}
+source=("git+https://gitlab.gnome.org/GNOME/libsoup.git#tag=$pkgver")
+b2sums=('1e2caa4a7caae83ff9ed75c4056532d9883d71ad645ac8941e1312c9209a516774bb7df89503d494bc8320aa598cfba56c254c2682ccf0df50d584593b51ea5b')
 
 prepare() {
   cd libsoup

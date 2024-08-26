@@ -1,35 +1,40 @@
 pkgbase = lib32-libsoup3
 	pkgdesc = HTTP client/server library for GNOME (32-bit)
-	pkgver = 3.4.4
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/libsoup
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.0-or-later
 	checkdepends = apache
 	checkdepends = php-apache
 	makedepends = git
+	makedepends = glib2-devel
 	makedepends = meson
 	makedepends = python-quart
 	makedepends = samba
 	depends = lib32-brotli
 	depends = lib32-glib-networking
 	depends = lib32-glib2
+	depends = lib32-glibc
 	depends = lib32-krb5
 	depends = lib32-libnghttp2
 	depends = lib32-libpsl
 	depends = lib32-sqlite
+	depends = lib32-zlib
 	depends = libsoup3
-	source = git+https://gitlab.gnome.org/GNOME/libsoup.git#commit=d6133a8e116953dac824b835d4f788e21a3e6565
-	b2sums = SKIP
+	source = git+https://gitlab.gnome.org/GNOME/libsoup.git#tag=3.6.0
+	b2sums = 1e2caa4a7caae83ff9ed75c4056532d9883d71ad645ac8941e1312c9209a516774bb7df89503d494bc8320aa598cfba56c254c2682ccf0df50d584593b51ea5b
 
 pkgname = lib32-libsoup3
 	depends = lib32-brotli
 	depends = lib32-glib-networking
 	depends = lib32-glib2
+	depends = lib32-glibc
 	depends = lib32-krb5
 	depends = lib32-libnghttp2
 	depends = lib32-libpsl
 	depends = lib32-sqlite
+	depends = lib32-zlib
 	depends = libsoup3
 	depends = libbrotlidec.so
 	depends = libgssapi_krb5.so
