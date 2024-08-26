@@ -2,7 +2,7 @@
 pkgname=conduit-bin
 _pkgname=${pkgname/-bin/}
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="stable, binary, static versions of the Conduit server (Matrix protocol)"
 arch=('x86_64' 'aarch64')
 url="https://conduit.rs"
@@ -32,5 +32,5 @@ sha256sums=('59289b3d3b4b20684acb86033477ffab18a82947cb6559b37772da02507ec1d9'
             '1c5f53cc49bae88b80281ab6edcf08e18430e5db668eaa186b8be4928f850594'
             '4316952810a2295b81d7faf3e28c371dd63629671c4b7e3c39bfbae5ab9e2db6'
             '0f454a2a5af857fe978e2276798fb357b4578c6ee705664a794426c8b7576a4c')
-sha256sums_x86_64=('eb085e2a43e9225da1fafe01956b361a48b48a1dce9370c3e09bbc120ff6998d')
-sha256sums_aarch64=('371a6572c370f82810e41666fe71bdacfd7b611b245310d6465392e9da7c3130')
+sha256sums_x86_64=('ae67b0fa1b74571de0363cb1a0c47930e615c340290215cbbbff6f8a60bbca0d')
+sha256sums_aarch64=('3402d0d54a1dd3401aa7fe84538089f385d4b752ad5d6d32523de35e22f92a07')
