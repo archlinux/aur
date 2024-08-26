@@ -7,8 +7,8 @@
 
 _pkgname="pyinfra"
 pkgname="$_pkgname"
-pkgver=3.0.2
-pkgrel=2
+pkgver=3.1
+pkgrel=1
 pkgdesc="automate infrastructure super fast at massive scale"
 url="https://github.com/pyinfra-dev/pyinfra"
 license=('MIT')
@@ -25,7 +25,6 @@ depends=(
   'python-paramiko'
   'python-typeguard'
   'python-typing_extensions'
-  'python-yaml'
 )
 makedepends=(
   'python-build'
@@ -37,7 +36,7 @@ makedepends=(
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"https://github.com/pyinfra-dev/pyinfra/archive/v$pkgver.$_pkgext")
-sha256sums=('f004c5e13b751fc90d2df81bd2fb5f10b14f869b0ca488ed7bc8c355ecb9ef70')
+sha256sums=('b797acbd0c978d69d0e24d18fa1b1cbfdc1ad67691890c12f4784c223aeca1db')
 
 prepare() {
   cd "$_pkgsrc"
