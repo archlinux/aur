@@ -2,7 +2,7 @@
 # https://github.com/brokenpip3/my-pkgbuilds
 
 pkgname=driverkit
-pkgver=0.20.0
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="Kit for building Falco drivers: kernel modules or eBPF probes"
 arch=('any')
@@ -11,7 +11,7 @@ license=('APACHE')
 makedepends=('go' 'git')
 # Git tag source since the upstream makefile use git info to build
 source=("$pkgname-$pkgver::git+$url#tag=v$pkgver")
-sha256sums=('68edc75d822de0f38e92a6826ff39593430d29e7faacc19bdecb3b25ad503925')
+sha256sums=('cd9b237f0382bc5224911d3cc83f246466f2cd4157df8996e043ea1bb7599bd0')
 
 build() {
   cd "$pkgname-$pkgver"
