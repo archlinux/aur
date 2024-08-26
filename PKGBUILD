@@ -5,8 +5,8 @@
 
 pkgname=jpilot
 pkgver=2.0.1
-pkgrel=4
-pkgGitHubCommit=fc94e49
+pkgrel=5
+pkgGitHubCommit=f153203
 pkgdesc="A desktop organizer application for the Palm Pilot"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/juddmon/jpilot/"
@@ -14,12 +14,14 @@ license=('GPL2')
 depends=('openssl' 'gtk3' 'pilot-link' 'slang')
 makedepends=('intltool')
 source=("https://codeload.github.com/juddmon/jpilot/legacy.tar.gz/$pkgGitHubCommit")
-sha256sums=('2b89f5d1b14d8ca6e6ae2457c8209aa304658cd605f3f86e2f7a060d63352b4a')
+sha256sums=('a094c65587d5a97dc35d700e21372e129c4f6214000c7976b619a6a8d1a58b89')
 
 build() {
 	cd "${srcdir}"/juddmon-$pkgname-$pkgGitHubCommit
 
 	./autogen.sh --prefix=/usr --disable-pl-test --disable-gtktest
+	sed 's/return Contact_add_blob(c, blob);/return Contact_add_blob(c, (void*)blob);/' jp-contact.c > /tmp/jp-contact.c
+	mv /tmp/jp-contact.c .
 	make
 }
 
