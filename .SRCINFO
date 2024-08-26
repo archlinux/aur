@@ -1,7 +1,7 @@
 pkgbase = python-xingque
 	pkgdesc = Yet another Python binding to starlark-rust, exposing the Starlark language to your Python projects.
 	pkgver = 0.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/xen0n/xingque
 	arch = aarch64
 	arch = armv7h

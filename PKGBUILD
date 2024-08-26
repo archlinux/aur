@@ -3,7 +3,7 @@
 _pkgname=xingque
 pkgname=python-xingque
 pkgver=0.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Yet another Python binding to starlark-rust, exposing the Starlark language to your Python projects."
 arch=('aarch64' 'armv7h' 'loong64' 'riscv64' 'x86_64')
 url="https://github.com/xen0n/xingque"
@@ -34,5 +34,5 @@ package() {
   python -m installer --destdir="$pkgdir" target/wheels/*.whl
 
   install -Dm644 {CHANGELOG,README}.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
-  install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
