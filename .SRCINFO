@@ -1,12 +1,12 @@
 pkgbase = helm-docs
 	pkgdesc = A tool for automatically generating markdown documentation for helm charts
-	pkgver = 1.13.1
+	pkgver = 1.14.2
 	pkgrel = 1
 	url = https://github.com/norwoodj/helm-docs
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = helm
-	source = https://github.com/norwoodj/helm-docs/releases/download/v1.13.1/helm-docs_1.13.1_Linux_x86_64.tar.gz
-	sha256sums = df8d803506933ceb92bc2996d8a432059a35fc19a308ac37a141971ffdf7aa33
+	source = https://github.com/norwoodj/helm-docs/releases/download/v1.14.2/helm-docs_1.14.2_Linux_x86_64.tar.gz
+	sha256sums = a8cf72ada34fad93285ba2a452b38bdc5bd52cc9a571236244ec31022928d6cc
 
 pkgname = helm-docs
