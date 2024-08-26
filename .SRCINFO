@@ -1,6 +1,6 @@
 pkgbase = unifi
 	pkgdesc = Centralized management system for Ubiquiti UniFi AP
-	pkgver = 8.3.32
+	pkgver = 8.4.59
 	pkgrel = 1
 	url = https://unifi-network.ui.com
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = unifi
 	depends = java-runtime-headless=17
 	depends = mongodb
 	conflicts = tomcat-native
-	source = UniFi-8.3.32.zip::https://dl.ubnt.com/unifi/8.3.32/UniFi.unix.zip
+	source = UniFi-8.4.59.zip::https://dl.ubnt.com/unifi/8.4.59/UniFi.unix.zip
 	source = mongod
 	source = unifi.service
 	source = unifi.sysusers
 	source = unifi.tmpfiles
 	source = LICENSE
-	b2sums = 337d095e4ea434d22af78c93de1a14ac8ad6800286505242498ad513d424230208cf0e38c5df5185ad6480ff83d695837e8915067aa6026dc3faea49d245571e
+	b2sums = c13ced0011b151b5eb059bb4bbc4f429e80ba5d42e416cf0b4f7e99ec9afc4f6539df5bf45b2dbc44ec3ed32a571d7dfa9346e93fa045d795309472d4d4473ab
 	b2sums = 2c8d535aabe8e738a9ba375fc4ab7aaa1713c9aefffc3e652fd49bc6288d0b7d24cae64d04ded5d5052486a377edca190818874a80bafb33cf2ac94742540106
 	b2sums = 753d4f24793ca65c9f554bedfbc22d6507474d835986cdba435538ec6518bd14769a64485a5f4bab1fc879378ff4c4b64ec323fa362dac32f739ed119cb2647c
 	b2sums = 5474a726a8a222f463f47cdca44988889406e2bee7b3c7875d45b20dc283d1d9737772d8cb63cd35c75517f3606feaadcf02c00b73e5bbab40f459d78d066c3e
