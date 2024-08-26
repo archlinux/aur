@@ -1,18 +1,20 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wf-shell
-pkgver=0.8.1
-pkgrel=6
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='GTK3-based panel for the Wayfire compositor'
 url=https://wayfire.org
 arch=(x86_64 aarch6)
 license=(MIT)
 depends=('gtk-layer-shell>=0.5' "wayfire>=${pkgver}" libpulse gtkmm3 alsa-lib libdbusmenu-gtk3)
-makedepends=(wayland wayland-protocols meson ninja gobject-introspection glm)
+makedepends=(wayland wayland-protocols meson ninja gobject-introspection glm glib2-devel)
 source=("https://github.com/WayfireWM/wf-shell/releases/download/v${pkgver}/wf-shell-${pkgver}.tar.xz")
-b2sums=('d778b2ed214dbb1b072400a85021d3ef4e590bc707417cf2de486c9211fdf3d1fa1c14d786363bc7dd4daeeb39406d6aa2e2c3c0b607cb9b6c87151d330a3983')
+sha256sums=('c8ac529b9fa6a4f65bd430140394b6b6a486c7b2def6c22b811396612ba94bb4')
+b2sums=('ea68e110381fa76590f193e6d9035e2ce1ce1a998a4c476785912d5666f42f9976b89ef78511b6d17e36f3dfb7022ed460b8b29a379445c5d41392ec7bb3ad3f')
 
 build () {
 	rm -rf build
+	PKG_CONFIG_PATH=/usr/lib/wlroots0.17/pkgconfig \
 	arch-meson "${pkgname}-${pkgver}" build \
 		--auto-features=disabled \
 		-Dpulse=enabled \
