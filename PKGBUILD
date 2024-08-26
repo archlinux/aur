@@ -3,8 +3,9 @@ _mainver=5
 pkgname=firebot-beta-bin
 _appname=firebot
 pkgver="${_mainver}.63.0"
-_appver="${pkgver}-beta3"
-pkgrel=1
+#_appver="${pkgver}-beta1"
+_appver="${pkgver}"
+pkgrel=2
 pkgdesc="A powerful all-in-one bot for Twitch streamers. Updates to Stable and Beta releases"
 arch=('x86_64')
 url="https://github.com/crowbartools/Firebot"
@@ -13,12 +14,12 @@ conflicts=("firebot")
 license=('GPL3')
 source=("${url}/releases/download/v${_appver}/${_appname}-v${_appver}-linux-x64.tar.gz"
         "${_appname}.sh"
-        "https://raw.githubusercontent.com/crowbartools/Firebot/v${_appver}/src/gui/images/logo.svg"
+        "https://raw.githubusercontent.com/crowbartools/Firebot/v${_appver}/src/gui/images/logo_transparent.png"
         "${_appname}.desktop")
-sha256sums=('b4d8a9fbec8179c849cccab2213f4d07d76409cdaca3a275b785dbc0978c2cc5'
+sha256sums=('e70d2e9db5fa841fac8fc17a99e7e9a6a87685ca6f85fdd546877615ca3aaf95'
             '7694f96ec45d7b729c01bc9d50a12805a8a040b4e3f8c5fbdccbed57fe10fef6'
-            '6d734f9ea57fcb04ebbc458fc0b222521d209ac587dffd6127f449a7bb73817e'
-            'dc9398428560854f246ffa6656259a966bbbacd67cc7dbbd1e862f2766bbf0c6')
+            'fb725b5eb6107ae23496f6b6550eba834809bbb38879a1cf5b94bcbf1674f480'
+            '45a0b16253788a33df8b1687a2b488ad3146b8afdca81c96704b2ba00c98d437')
 
 package() {
   rm ${_appname}-v${_appver}-linux-x64.tar.gz
@@ -33,8 +34,8 @@ package() {
   rm "${pkgdir}/opt/${_appname}/${_appname}.sh"
 
   install -dm755 "${pkgdir}/usr/share/pixmaps"
-  cp --no-preserve=mode,ownership "${srcdir}/logo.svg" "${pkgdir}/usr/share/pixmaps/${_appname}.svg"
-  rm "${pkgdir}/opt/${_appname}/logo.svg"
+  cp --no-preserve=mode,ownership "${srcdir}/logo_transparent.png" "${pkgdir}/usr/share/pixmaps/${_appname}.png"
+  rm "${pkgdir}/opt/${_appname}/logo_transparent.png"
 
   install -dm755 "${pkgdir}/usr/share/applications"
   desktop-file-edit --set-name="Firebot v${_appver}" ${srcdir}/${_appname}.desktop

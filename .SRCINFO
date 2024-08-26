@@ -1,19 +1,19 @@
 pkgbase = firebot-beta-bin
 	pkgdesc = A powerful all-in-one bot for Twitch streamers. Updates to Stable and Beta releases
 	pkgver = 5.63.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crowbartools/Firebot
 	arch = x86_64
 	license = GPL3
 	provides = firebot
 	conflicts = firebot
-	source = https://github.com/crowbartools/Firebot/releases/download/v5.63.0-beta3/firebot-v5.63.0-beta3-linux-x64.tar.gz
+	source = https://github.com/crowbartools/Firebot/releases/download/v5.63.0/firebot-v5.63.0-linux-x64.tar.gz
 	source = firebot.sh
-	source = https://raw.githubusercontent.com/crowbartools/Firebot/v5.63.0-beta3/src/gui/images/logo.svg
+	source = https://raw.githubusercontent.com/crowbartools/Firebot/v5.63.0/src/gui/images/logo_transparent.png
 	source = firebot.desktop
-	sha256sums = b4d8a9fbec8179c849cccab2213f4d07d76409cdaca3a275b785dbc0978c2cc5
+	sha256sums = e70d2e9db5fa841fac8fc17a99e7e9a6a87685ca6f85fdd546877615ca3aaf95
 	sha256sums = 7694f96ec45d7b729c01bc9d50a12805a8a040b4e3f8c5fbdccbed57fe10fef6
-	sha256sums = 6d734f9ea57fcb04ebbc458fc0b222521d209ac587dffd6127f449a7bb73817e
-	sha256sums = dc9398428560854f246ffa6656259a966bbbacd67cc7dbbd1e862f2766bbf0c6
+	sha256sums = fb725b5eb6107ae23496f6b6550eba834809bbb38879a1cf5b94bcbf1674f480
+	sha256sums = 45a0b16253788a33df8b1687a2b488ad3146b8afdca81c96704b2ba00c98d437
 
 pkgname = firebot-beta-bin
