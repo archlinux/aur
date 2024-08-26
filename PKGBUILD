@@ -2,7 +2,7 @@
 pkgname=drawio-desktop-appimage
 _pkgname=drawio
 pkgver=24.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Diagram drawing application built on web technology"
 arch=('x86_64' 'aarch64')
 url="https://www.diagrams.net/"
