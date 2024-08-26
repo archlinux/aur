@@ -17,7 +17,7 @@ _opt_bits=32 # 32 or 64
 
 set -u
 pkgname='comcom32'
-pkgname+='-git'
+#pkgname+='-git'
 _pkgver='alpha-3'
 _opt_commit='#commit=4e5190ce8d846abee6ffd79ee61dc77cd8509ba1' # only applies to non git
 # pkgver="0.0.${_pkgver//-/_}" # copy this line and add commit

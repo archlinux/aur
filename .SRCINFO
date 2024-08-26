@@ -1,4 +1,4 @@
-pkgbase = comcom32-git
+pkgbase = comcom32
 	pkgdesc = 32 bit command interpreter for fdpp and dosemu2
 	pkgver = 0.0.alpha.3.r339.g4e5190c
 	pkgrel = 1
@@ -13,9 +13,9 @@ pkgbase = comcom32-git
 	conflicts = djgpp-djcrx-bootstrap
 	conflicts = comcom64
 	conflicts = comcom32
-	source = git+https://github.com/dosemu2/comcom64.git
+	source = git+https://github.com/dosemu2/comcom64.git#commit=4e5190ce8d846abee6ffd79ee61dc77cd8509ba1
 	md5sums = SKIP
 	sha256sums = SKIP
 	b2sums = SKIP
 
-pkgname = comcom32-git
+pkgname = comcom32
