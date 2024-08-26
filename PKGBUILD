@@ -5,7 +5,7 @@
 
 pkgname="moltengamepad-git"
 _pkgroot="moltengamepad"
-pkgver=v1.2.3.r0.g41202e1
+pkgver=v1.2.3.r2.g41202e1
 pkgrel=1
 pkgdesc="Flexible Linux input device translator, geared for gamepads"
 url="https://gitlab.com/AllMeatball/moltengamepad"
@@ -18,7 +18,7 @@ md5sums=('SKIP'
          'b298ff92e4d833ce2866c8dd9fb131ca'
          '1bb392d4b419d2d13bff837c6c7ce138')
 depends=('scraw' 'scrawpp')
-makedepends=('go-md2man')
+makedepends=('go-md2man' 'git' 'make' 'sed')
 provides=("moltengamepad")
 
 pkgver() {
@@ -28,6 +28,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
+  make eventlists
 }
 
 build() {
@@ -35,7 +36,6 @@ build() {
   sed -i '3 s/^#//' Makefile
   sed -i '5 s/^#//' Makefile
   sed -i '11 s|/usr/local/bin/|/usr/bin/|' installation/systemuser/systemd.service
-  make eventlists
   make
 }
 
