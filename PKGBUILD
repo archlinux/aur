@@ -1,50 +1,86 @@
-# Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Maintainer:
+# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
+## links
+# https://desmume.org
+# https://github.com/TASVideos/desmume
+
+## options
+: ${_build_avx:=false}
+: ${_build_git:=true}
+
+unset _pkgtype
+[[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
+[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+
+## basic info
 _pkgname='desmume'
-pkgname="$_pkgname-git"
-_pkgver='0.9.11'
-_lastrelease='ccbf85ed42e4350af415d56b1465e83614c85ef8'
-pkgver=0.9.11.r1463.eab1fb95
+pkgname="$_pkgname${_pkgtype:--git}"
+pkgver=0.9.14.r233.g60714f6
 pkgrel=1
 pkgdesc="Nintendo DS emulator"
-arch=('x86_64')
-url="https://desmume.org/"
-license=('GPL2')
-provides=('desmume')
-conflicts=('desmume')
-depends=('glib2' 'sdl2' 'zlib' 'libgl' 'openal' 'gtk3' 'libpcap' 'libpng')
-makedepends=('meson' 'pkg-config' 'desktop-file-utils' 'git')
-source=("$_pkgname::git+https://github.com/TASVideos/desmume.git")
-sha512sums=('SKIP')
+url="https://github.com/TASVideos/desmume"
+license=('GPL-2.0-or-later')
+arch=('x86_64' 'aarch64')
 
-optdepends=('agg: to enable the HUD, requires --enable-hud at build time')
+depends=(
+  'gtk3'
+  'libopenal.so'
+  'libpcap'
+  'sdl2'
+  'soundtouch'
+  'zlib'
+)
+makedepends=(
+  'git'
+  'intltool'
+  'mesa'
+  'meson'
+)
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  echo "$_pkgver.r$(git rev-list --count $_lastrelease..HEAD).$(git rev-parse --short HEAD)"
-}
+  cd "$_pkgsrc"
+  local _file _hash _ver _rev
+  _file="desmume/src/version.cpp"
+  read -r _hash _ver < <(
+    NL=$(awk '/^#define DESMUME_VERSION_STRING /{n=NR}END{print n}' "$_file")
 
-prepare(){
-  cd $_pkgname
+    git blame -L "$NL,+1" -- "$_file" \
+      | awk '{print $1" "$(NF-5) }' \
+      | sed -E -e 's&"&&g'
+  )
+  _rev=$(git rev-list --count --cherry-pick "$_hash"...HEAD)
 
-  meson setup build \
-        $_pkgname/src/frontend/posix \
-        --prefix=/usr \
-        --buildtype=release \
-        --optimization=2 \
-        --strip \
-        -Dc_args='-minline-all-stringops -D_FORTIFY_SOURCE=2' \
-        -Db_pie=true \
-        -Dopenal=true \
-        -Dwifi=true
+  printf "%s.r%s.g%s" "${_ver:?}" "${_rev:?}" "${_hash::7}"
 }
 
 build() {
-  cd $_pkgname
-  ninja -C build
+  export CFLAGS CXXFLAGS
+  if [[ "${_build_avx::1}" == "t" ]] ; then
+    CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+    CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+  fi
+
+  local _pkgsrc="$_pkgsrc/desmume/src/frontend/posix"
+
+  local _meson_args=(
+    -Dopengl=true
+    -Dglx=true
+    -Dopenal=true
+    -Dwifi=true
+  )
+
+  arch-meson "${_meson_args[@]}" "$_pkgsrc" build
+  meson compile -C build
 }
 
 package() {
-  cd $_pkgname/build
-  DESTDIR="$pkgdir" meson install
+  meson install -C build --destdir "$pkgdir"
 }
