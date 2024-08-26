@@ -28,7 +28,6 @@ sha256sums=('be72278c3f2e80439446f04319106dab95d572fd3ccb51b3fd7e64a3cc23d7a8'
 
 package() {
   install -d ${pkgdir}/opt/lzc-client-desktop/
-
   tar --no-same-owner -xf lzc-client-desktop_${_pkgver}.tar.zst -C ${pkgdir}/opt/lzc-client-desktop
 
   # fix desktop file
@@ -37,9 +36,6 @@ package() {
   install -Dm644 ${pkgdir}/opt/lzc-client-desktop/icon.png ${pkgdir}/usr/share/icons/lzc-client-desktop.png
   sed -i 's|Exec=.*|Exec=lzc-client-desktop|' ${pkgdir}/usr/share/applications/lzc-client-desktop.desktop
   sed -i 's|Icon=.*|Icon=lzc-client-desktop|' ${pkgdir}/usr/share/applications/lzc-client-desktop.desktop
-
-  # fix permission
-  chmod +x ${pkgdir}/opt/lzc-client-desktop/core/lzc-core
 
   # remove rclone
   rm ${pkgdir}/opt/lzc-client-desktop/rclone
