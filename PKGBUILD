@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat
 _pkgname=GhostChat
-pkgver=3.2.3
-_electronversion=31
+pkgver=3.2.4
+_electronversion=32
 _nodeversion=20
 pkgrel=1
 pkgdesc="A standalone, multiplatform Twitch.tv chat as overlay on windowed/windowed fullscreen applications."
@@ -25,7 +25,7 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('4e27759e2e5dc300d6971195316c616c0013908572bd89911a976ee3c9bc7847'
+sha256sums=('638b7233c0fffa2d2e5c73562b0d3e6ed349c689e75e038d17cb7065d1f4fdc9'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
