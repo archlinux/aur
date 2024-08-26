@@ -1,7 +1,7 @@
-# Maintainer: Lobo Torres <lobo@praderi.es>
+# Maintainer: Lobo Torres <lobo@quiltro.org>
 
 pkgname=loko-git
-pkgver=0.12.1.r0.8be825b
+pkgver=0.12.1.r11.60ba632
 pkgrel=1
 pkgdesc="An optimizing R6RS Scheme compiler"
 arch=('x86_64')

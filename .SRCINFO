@@ -1,6 +1,6 @@
 pkgbase = loko-git
 	pkgdesc = An optimizing R6RS Scheme compiler
-	pkgver = 0.12.1.r0.8be825b
+	pkgver = 0.12.1.r11.60ba632
 	pkgrel = 1
 	url = https://scheme.fail
 	arch = x86_64
