@@ -1,3 +1,5 @@
+# Maintainer: Marcus Ben Spencer <marcus at marcusspencer dot xyz>
+# Maintainer: runningpie <levi at levispencer dot com>
 # Contributor: Hwkiller
 
 pkgname="moltengamepad-git"
@@ -10,7 +12,7 @@ url="https://github.com/jgeumlek/MoltenGamepad"
 arch=('x86_64')
 license=('MIT')
 source=("moltengamepad-git::git+https://github.com/jgeumlek/MoltenGamepad.git"
-	"moltengamepad-sysusers.conf"
+        "moltengamepad-sysusers.conf"
         "70-moltengamepad-uaccess.rules")
 md5sums=('SKIP'
          'b298ff92e4d833ce2866c8dd9fb131ca'
@@ -44,7 +46,7 @@ package() {
   # Systemd
   install -Dm644 installation/systemuser/systemd.service $pkgdir/usr/lib/systemd/system/moltengamepad.service
 
-  # Udev rules and SDL2 profile (Note: These are not actually installed for use; they are just provided) 
+  # Udev rules and SDL2 profile (Note: These are not actually installed for use; they are just provided)
   install -Dm644 ${srcdir}/70-moltengamepad-uaccess.rules "$pkgdir"/usr/lib/moltengamepad/udev/rules.d/70-moltengamepad-uaccess.rules
   install -Dm644 installation/systemuser/udev.rules "$pkgdir"/usr/lib/moltengamepad/udev/rules.d/72-moltengamepad-systemuser.rules
   install -Dm644 installation/singleuser/udev.rules.template "$pkgdir"/usr/lib/moltengamepad/udev/rules.d/90-moltengamepad-singleuser.rules
