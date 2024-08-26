@@ -5,7 +5,7 @@ After=network-online.target
 
 [Service]
 EnvironmentFile=/etc/conf.d/spoof-dpi
-ExecStart=/usr/bin/spoof-dpi -no-banner -addr $LISTEN_ADDR -port $PORT -window-size $WINDOW_SIZE
+ExecStart=/usr/bin/spoof-dpi -banner="false" -addr $LISTEN_ADDR -port $PORT -window-size $WINDOW_SIZE
 
 [Install]
 WantedBy=default.target

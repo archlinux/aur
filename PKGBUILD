@@ -2,7 +2,7 @@
 # Contributor: Alif Zakiansyah As Syauqi <alifzakiansyah10@gmail.com>
 pkgname="spoof-dpi-bin"
 pkgver=0.10.11
-pkgrel=1
+pkgrel=2
 # epoch=
 pkgdesc="A simple and fast software designed to bypass Deep Packet Inspection"
 arch=(x86_64)
@@ -26,9 +26,10 @@ source=("spoof-dpi-conf.d"
         "${pkgname/-bin/}-${pkgver}-${pkgrel}.tar.gz::${url}/releases/download/${pkgver}/${pkgname/-bin/}-linux-amd64.tar.gz")
 noextract=()
 md5sums=('9910ed8f7bdfff59ccd66841520f9c3b'
-         '981b9407762ef61fd33681c9d9872e52'
+         '03a66fa5985b9717679c842e48966f5f'
          'e1f6858d174b262382b078db452046fa'
          'c0241685a006177ee1160d5030fffbf8')
+
 
 package() {
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
