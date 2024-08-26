@@ -16,7 +16,7 @@
 # Thanks.
 #                                            
 pkgname=anytype-electron-bin
-pkgver=0.41.49
+pkgver=0.42.11
 pkgrel=1
 pkgdesc="Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users."
 arch=('x86_64')
@@ -28,9 +28,9 @@ provides=('anytype')
 conflicts=('anytype'
            'anytype-legacy')
 source=(
-	"https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}-beta/anytype_${pkgver}-beta_amd64.deb"
+	"https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}-alpha/anytype_${pkgver}-alpha_amd64.deb"
 )
-sha256sums=('ed4826f625d5860e98e465f6317e7520d9d5032d86db51941c44f0ef1e56cbf9')
+sha256sums=('bfc8fb5016026f7f9eb8049ddfbb3cae10ef91bc66c29c714b051e114837f137')
 
 package() {
   	bsdtar -xf data.tar.* -C $pkgdir
