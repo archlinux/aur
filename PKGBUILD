@@ -2,6 +2,7 @@
 pkgname=apostrophe
 pkgver=3.1
 pkgrel=1
+_reveal_ver=5.1.0
 pkgdesc="A distraction free Markdown editor"
 arch=(x86_64)
 url="https://gitlab.gnome.org/World/apostrophe"
@@ -30,7 +31,7 @@ depends=(
 )
 makedepends=(meson git)
 optdepends=(
-    texlive
+    texlive-bin
     texlive-latex
     pandoc
     python-pyenchant
@@ -40,9 +41,10 @@ provides=()
 conflicts=()
 source=(
     "git+https://gitlab.gnome.org/World/$pkgname.git#tag=v$pkgver"
-    #"reveal.js.tar.gz::https://api.github.com/repos/hakimel/reveal.js/tarball/5.1.0"
+    "https://github.com/hakimel/reveal.js/archive/${_reveal_ver}/reveal.js-${_reveal_ver}.tar.gz"
 )
-sha256sums=('02a5d8832ab3d426dfb6f87f32d5f99ddfdd8ac5c428ff747c51e056b58e5dc8')
+sha256sums=('02a5d8832ab3d426dfb6f87f32d5f99ddfdd8ac5c428ff747c51e056b58e5dc8'
+            'ddc83539ec50583eac9a972e88f892971b37c44e70dd0c08be069e2688684b71')
 
 prepare() {
     cd "$pkgname"
@@ -60,5 +62,7 @@ check() {
 
 package() {
     meson install -C build --destdir "$pkgdir"
-    #cp -r reveal.js "$pkgdir/usr/share/$pkgname/libs"
+
+    install -d "$pkgdir/usr/share/$pkgname/libs/reveal.js"
+    cp -r "reveal.js-${_reveal_ver}"/* "$pkgdir/usr/share/$pkgname/libs/reveal.js"
 }
