@@ -1,14 +1,13 @@
 pkgbase = dedupe
 	pkgdesc = Earn back file space by hardlinking unchanging duplicate files
 	pkgver = 20240825
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8
 	install = .INSTALL
 	arch = any
 	license = GPL3
 	checkdepends = curl
 	checkdepends = unzip
-	depends = curl
 	depends = zsh>=5.9
 	optdepends = b3sum: Faster hashing function
 	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/423dab0cd255bbb18b1ff83d7f54cea3390e2623/dedupe
