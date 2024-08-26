@@ -1,29 +1,43 @@
-# Maintainer: Christian Boxdörfer <christian.boxdoerfer@posteo.de>
-pkgname=fsearch
-_gitname=fsearch
+# Maintainer:
+# Contributor: Christian Boxdörfer <christian.boxdoerfer@posteo.de>
+
+## links
+# https://cboxdoerfer.github.io/fsearch
+# https://github.com/cboxdoerfer/fsearch
+
+_pkgname="fsearch"
+pkgname="$_pkgname"
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast graphical file search utility."
+url="https://github.com/cboxdoerfer/fsearch"
+license=('GPL-2.0-or-later')
 arch=('i686' 'x86_64')
-url="https://cboxdoerfer.github.io/fsearch"
-license=('GPL2')
-depends=('gtk3' 'icu' 'pcre2')
-makedepends=('git' 'meson')
-conflicts=('fsearch-git')
-source=("$pkgname-$pkgver.tar.gz"::"https://github.com/cboxdoerfer/fsearch/archive/$pkgver.tar.gz")
+
+depends=(
+  'gtk3'
+  'libicuuc.so'
+  'pcre2'
+)
+makedepends=(
+  'git'
+  'meson'
+)
+
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/archive/$pkgver.$_pkgext")
 sha256sums=('b3c576bf1230da7c374d00bb32d72686b940b4dee80d941495acfdd5437bf117')
 
 build() {
-    arch-meson $pkgname-$pkgver build \
-        --buildtype release \
-        -Dchannel=AUR-stable
-    meson compile -C build
+  arch-meson "$_pkgsrc" build
+  meson compile -C build
 }
 
 check() {
-    meson test -C build
+  meson test -C build
 }
 
 package() {
-    DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
