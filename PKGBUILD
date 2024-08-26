@@ -2,7 +2,7 @@
 
 pkgname="flashprog"
 pkgdesc="Flashprog is a utility which can be used to detect, read, erase, or write BIOS chips (DIP, PLCC, SPI)."
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 url="https://flashprog.org/"
 license=('GPL')
