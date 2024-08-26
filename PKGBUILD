@@ -31,9 +31,11 @@ prepare() {
 }
 
 build() {
+        export CFLAGS+=' -std=gnu89'
+        export CFLAGS+=' -fno-tree-slp-vectorize'
 	cd xmms-${pkgver}
-  	./configure --prefix=/usr --mandir=/usr/share/man \
-	--disable-static
+  	./configure --prefix=/usr --mandir=/usr/share/man  \
+        --disable-static
   	make
 }
 
