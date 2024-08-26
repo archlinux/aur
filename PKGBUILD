@@ -1,22 +1,19 @@
-
-# Maintainer: Andrea Feletto <andrea@andreafeletto.com>
+# Contributor: Andrea Feletto <andrea@andreafeletto.com>
 
 pkgname=telescope
-pkgver=0.8.1
+pkgver=0.10.1
 pkgrel=1
-pkgdesc='w3m-like browser for Gemini.'
+pkgdesc='w3m-like browser for Gemini'
 arch=('x86_64')
-url='https://telescope.omarpolo.com'
+url='https://www.telescope-browser.org/'
 license=('ISC')
-provides=('telescope')
-conflicts=('telescope-git' 'telescope-bin')
-depends=('libretls')
-source=("https://github.com/omar-polo/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('ea860a8868fcba303d6db2ad3340a3e2584048b2c5001624ab12b626eba874b9')
+depends=('libbsd' 'libgrapheme' 'libretls' 'ncurses') #'imsg-compat'
+source=("https://github.com/$pkgname-browser/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('01446a1129741c6a201c4b5446390e9331487af844cef6bfd35419989168e618')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	./configure --prefix='/usr'
+	./configure --prefix='/usr' --with-libbsd #--with-libimsg
 	make
 }
 
