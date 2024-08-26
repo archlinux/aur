@@ -243,7 +243,7 @@ diff -ru thunar-4.18.4.orig/thunar/thunar-standard-view.c thunar-4.18.4/thunar/t
 +  GtkTreeIter iter;
 +
 +  ThunarFile *file;
-+  gchar *mime_type;
++  const gchar *mime_type;
 +  GList *preview_timer_list = NULL;
 +
 +  preferences = thunar_preferences_get();
@@ -384,7 +384,7 @@ diff -ru thunar-4.18.4.orig/thunar/thunar-standard-view.c thunar-4.18.4/thunar/t
 +
 +              if (call_number == 1)
 +                {
-+                  pixbuf = gdk_pixbuf_new_from_xpm_data (music_note);
++                  pixbuf = gdk_pixbuf_new_from_xpm_data ((const char**) music_note);
 +                  cursor = gdk_cursor_new_from_pixbuf (gdk_display_get_default (), pixbuf, 8, 8);
 +                  gdk_window_set_cursor (gtk_widget_get_window (GTK_WIDGET (standard_view)), cursor);
 +

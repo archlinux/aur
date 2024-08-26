@@ -1,7 +1,7 @@
 # Contributor: Connor Behan <connor.behan@gmail.com>
 
 pkgname=thunar-extended
-pkgver=4.18.10
+pkgver=4.18.11
 pkgrel=1
 pkgdesc="Thunar with cursor audio preview and extra options for trash"
 arch=(i686 x86_64)
@@ -46,6 +46,6 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('e8308a1f139602d8c125f594bfcebb063b7dac1fbb6e14293bab4cdb3ecf1d08'
+sha256sums=('7d0bdae2076a568c137d403ab5600e06a7a4f7a02514d486da7b8414aa75d612'
             '1d2bb30a12076c2882585bfca6d6722e3d995e730afc604a4f01229220097452'
-            'a9aec6e90ea6012fc7c24f9c4b368264e778998c1c761428f1a862be5187eff8')
+            '6bab6749d04e386b445870a782e9394b6476714f7edd6f2d7e89da2013a77c59')
