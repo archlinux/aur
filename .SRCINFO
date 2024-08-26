@@ -1,11 +1,12 @@
 pkgbase = samconf
 	pkgdesc = A c library to manage confiugrations form differnt verified sources
 	pkgver = 0.57.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Elektrobit/samconf
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = git
 	depends = glibc
 	depends = bash
 	depends = json-c
