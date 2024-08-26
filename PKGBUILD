@@ -1,7 +1,7 @@
 # Maintainer: KUHTOXO https://aur.archlinux.org/account/kuhtoxo
 
 pkgname=vk-messenger-bin
-pkgver=6.0.43.254
+pkgver=6.0.47.289
 pkgrel=1
 pkgdesc="VK Messenger for Linux from rpm package"
 arch=('x86_64')
@@ -12,7 +12,7 @@ replaces=(
     'vk-messenger-appimage'
 )
 depends=(
-    'pulseaudio'
+    'pipewire-pulse'
 )
 optdepends=(
     'libappindicator-gtk3'
@@ -26,7 +26,7 @@ source=(
     https://upload.object2.vk-apps.com/vk-me-desktop-dev-5837a06d-5f28-484a-ac22-045903cb1b1a/latest/${_app_bin_name}
 )
 sha256sums=(
-    '162cc8a5dffc0ad755665a70fe5316dbbefa28b43f170e8dfb114347256e7fe0'
+    'da4c6a78067410a80b23fbead4135ba99a153872f553fc70d4bc0d21406e7049'
 )
 
 package() {
