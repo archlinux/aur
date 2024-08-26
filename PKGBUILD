@@ -2,7 +2,7 @@
 
 pkgname=kjots
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A note taking application using Akonadi'
 url='https://www.kde.org/applications/utilities/kjots/'
 arch=(x86_64)
