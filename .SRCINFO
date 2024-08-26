@@ -1,7 +1,7 @@
 pkgbase = uqmi-git
 	pkgdesc = OpenWrt QMI modem utility
-	pkgver = r151.e7207be
-	pkgrel = 2
+	pkgver = r154.28b48a1
+	pkgrel = 1
 	url = https://git.openwrt.org/project/uqmi.git
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = uqmi-git
 	depends = glibc
 	depends = json-c
 	depends = libubox
-	provides = uqmi=r151.e7207be
+	provides = uqmi=r154.28b48a1
 	conflicts = uqmi
 	source = uqmi::git+git://git.openwrt.org/project/uqmi.git
 	source = 001-sbin-fix.patch
