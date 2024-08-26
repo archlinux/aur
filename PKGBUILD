@@ -5,7 +5,7 @@
 # Contributor: Ilkka Laukkanen <ilkka.s.laukkanen@gmail.com>
 
 pkgname=stgit
-pkgver=2.4.9
+pkgver=2.4.10
 pkgrel=1
 pkgdesc="Stack-based patch management for Git"
 url="https://stacked-git.github.io/"
@@ -16,7 +16,7 @@ makedepends=('cargo' 'asciidoc' 'xmlto')
 source=(
 	"https://github.com/stacked-git/stgit/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
 )
-sha256sums=('39e82063981eaec55fb225e891dc1a8125b08cbff4105b67aa3fe0e4f66f8d75')
+sha256sums=('eaa01a1bbbba92fd0cec24d66ab85656924337af619b00379c6512804b9887ce')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
