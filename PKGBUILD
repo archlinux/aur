@@ -1,19 +1,18 @@
+# Maintainer: Heddxh <g311571057 at gmail dot com>
 # Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
-pkgbase=gtksourceview5
-pkgname=(
-  gtksourceview5
-  gtksourceview5-docs
-)
+pkgname=gtksourceview5-apostrophe
 pkgver=5.12.1
 pkgrel=1
-pkgdesc="A text widget adding syntax highlighting and more to GNOME"
+pkgdesc="A text widget adding syntax highlighting and more to GNOME, patched for Apostrophe"
 url="https://wiki.gnome.org/Projects/GtkSourceView"
 arch=(x86_64)
 license=(LGPL-2.1-or-later)
+provides=(gtksourceview5=$pkgver)
+conflicts=(gtksourceview5)
 depends=(
   cairo
   fontconfig
@@ -36,11 +35,15 @@ makedepends=(
   vala
 )
 checkdepends=(xorg-server-xvfb)
-source=("git+https://gitlab.gnome.org/GNOME/gtksourceview.git#tag=$pkgver")
-b2sums=('490bd11ed98ec9e11b6db05ca073970d104e99e16dc8f7655abdd5b1055b23ee330e67959db90c615d735b9cb506a26aefc65fd419d667b6a8e393d89a20599c')
+source=(
+  "git+https://gitlab.gnome.org/GNOME/gtksourceview.git#tag=$pkgver"
+  "https://gitlab.gnome.org/World/apostrophe/-/raw/main/build-aux/flatpak/sourceview_text_commits.patch"
+)
+b2sums=('490bd11ed98ec9e11b6db05ca073970d104e99e16dc8f7655abdd5b1055b23ee330e67959db90c615d735b9cb506a26aefc65fd419d667b6a8e393d89a20599c'
+  '1e33c2f8f6dcd404bba1022d6e294fb8dd6a8670b05c7d3f50fc6ea6b2e6eab17179dfd8191957d8f49b8f346f246f26b06d148817fc259661d454451fc034ef')
 
 prepare() {
-  cd gtksourceview
+  patch -d gtksourceview -p1 <sourceview_text_commits.patch
 }
 
 build() {
@@ -53,7 +56,7 @@ check() {
     meson test -C build --print-errorlogs
 }
 
-package_gtksourceview5() {
+package() {
   provides=(libgtksourceview-${pkgver%%.*}.so)
 
   meson install -C build --destdir "$pkgdir"
@@ -61,12 +64,4 @@ package_gtksourceview5() {
   mkdir -p doc/usr/share
   mv {"$pkgdir",doc}/usr/share/doc
 }
-
-package_gtksourceview5-docs() {
-  pkgdesc+=" (documentation)"
-  depends=()
-
-  mv doc/* "$pkgdir"
-}
-
 # vim:set sw=2 sts=-1 et:
