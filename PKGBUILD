@@ -1,8 +1,8 @@
 # Maintainer: lilikoi <jamilbio20@gmail.com>
 pkgname='chatgpt.sh'
-pkgver=0.72.3
+pkgver=0.72.4
 pkgrel=1
-_commit=42025b57096b1c186cecfeeaaea93f20f2b504c2
+_commit=c8c2d799967f5877f0e17405402eefa5026d13aa
 pkgdesc="Wrapper for ChatGPT, DALL-E, Whisper, and TTS. Features LocalAI, Ollama, and more."
 url='https://gitlab.com/fenixdragao/shellchatgpt'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
 	'imagemagick: edit input images (fbida)'
 	'xdg-utils: open images (xdg-open, open)'
 	'sox: audio recorder (arecod, ffmpeg)'
-	'mpv: audio player (sox, vlc, ffmpeg, afplay)'
+	'mpv: audio player (sox, vlc, ffplay, afplay)'
 	'xsel: copy output to clipboard (xclip)'
 	'python: modules (tiktoken, markdown, bs4)'
 	'bat: render markdown (pygmentize, glow, mdcat, mdless)'

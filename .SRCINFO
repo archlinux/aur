@@ -1,6 +1,6 @@
 pkgbase = chatgpt.sh
 	pkgdesc = Wrapper for ChatGPT, DALL-E, Whisper, and TTS. Features LocalAI, Ollama, and more.
-	pkgver = 0.72.3
+	pkgver = 0.72.4
 	pkgrel = 1
 	url = https://gitlab.com/fenixdragao/shellchatgpt
 	arch = any
@@ -12,14 +12,14 @@ pkgbase = chatgpt.sh
 	optdepends = imagemagick: edit input images (fbida)
 	optdepends = xdg-utils: open images (xdg-open, open)
 	optdepends = sox: audio recorder (arecod, ffmpeg)
-	optdepends = mpv: audio player (sox, vlc, ffmpeg, afplay)
+	optdepends = mpv: audio player (sox, vlc, ffplay, afplay)
 	optdepends = xsel: copy output to clipboard (xclip)
 	optdepends = python: modules (tiktoken, markdown, bs4)
 	optdepends = bat: render markdown (pygmentize, glow, mdcat, mdless)
 	optdepends = w3m: dump URL text (lynx, elinks, links)
 	optdepends = poppler: dump PDF as text (gs, abiword, ebook-convert)
 	optdepends = dialog: file picker (kdialog, zenity, vifm, ranger, nnn)
-	source = chatgpt.sh-0.72.3::git+https://gitlab.com/fenixdragao/shellchatgpt.git#commit=42025b57096b1c186cecfeeaaea93f20f2b504c2
+	source = chatgpt.sh-0.72.4::git+https://gitlab.com/fenixdragao/shellchatgpt.git#commit=c8c2d799967f5877f0e17405402eefa5026d13aa
 	sha256sums = SKIP
 
 pkgname = chatgpt.sh
