@@ -1,23 +1,25 @@
-# Maintainer: weilinfox <weilinfox at inuyasha dot love>
+# Maintainer: weilinfox <caiweilin at iscas.ac.cn>
+
 pkgname=debspawn
-pkgver=0.6.0
-pkgrel=2
-epoch=
+pkgver=0.6.4
+pkgrel=1
 pkgdesc='Debspawn is a tool to build Debian packages in an isolated environment, using systemd-nspawn containers'
 arch=('any')
 url="https://github.com/lkhq/debspawn"
 license=('LGPL3')
-depends=('libxslt' 'docbook-xsl' 'python' 'zstd' 'debootstrap' 'python-tomlkit')
-makedepends=('python-setuptools' 'python-pkgconfig')
+depends=('debootstrap' 'python' 'python-tomlkit>=0.8.0' 'zstd')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://github.com/lkhq/debspawn/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('2c9a055791d128bfa0aa14e155054e42')
+sha512sums=(''a60a8c98f89342368209ffdb07bd40efbe83ceedb3896972bee8984f24a792885431d127de68c05bb4e2abfaf43f764943a096e47fcf29a01bffdde7a70ce14f)
 
-prepare() {
+build() {
 	cd "$pkgname-$pkgver"
+	python -m build --wheel --skip-dependency-check --no-isolation
+	# All of the tests need superuser permissions
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	python setup.py install --root=$pkgdir
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
