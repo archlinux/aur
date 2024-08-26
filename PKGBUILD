@@ -1,14 +1,16 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
 
 pkgname=globalplatformpro-git
-pkgver=19.06.16.r4.g1f6b677
+pkgver=21.12.31.r55.g52c3581
 pkgrel=1
 pkgdesc="A powerful tool for managing applets and keys on JavaCards based on the GlobalPlatform specifications"
 arch=('any')
 url="https://javacard.pro/globalplatform/"
-license=('LGPL3')
-depends=('java-runtime-headless>=8' 'pcsclite')
-makedepends=('apache-ant' 'git' 'java-environment=8' 'maven')
+license=('LGPL-3.0-only')
+depends=('java-runtime-headless>=11' 'pcsclite')
+makedepends=('git' 'java-environment' 'maven')
+provides=('globalplatformpro')
+conflicts=('globalplatformpro')
 source=(
   "$pkgname::git+https://github.com/martinpaljak/GlobalPlatformPro.git"
   'gp-pro'
@@ -30,23 +32,11 @@ prepare() {
 
 build() {
   cd $pkgname
-
-  # Build only works on Java 8, so set JAVA_HOME to OpenJDK 8.
-  if [ -d /usr/lib/jvm/java-8-openjdk ]; then
-    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
-  else
-    echo "WARNING: OpenJDK 8 not found. If the build fails, select a version 8 JDK using \"archlinux-java\"."
-  fi
-
   mvn package
-  ant
 }
 
 package() {
   # Install the executables
-  install -d "$pkgdir"/usr/bin/
-  install -m 755 gp-pro "$pkgdir"/usr/bin/
-  cd $pkgname
-  install -d "$pkgdir"/usr/share/java/globalplatformpro/
-  install -m 644 gp.jar "$pkgdir"/usr/share/java/globalplatformpro/
+  install -Dm755 gp-pro "${pkgdir}/usr/bin/gp-pro"
+  install -Dm644 "${pkgname}/tool/target/gp.jar" "${pkgdir}/usr/share/java/globalplatformpro/gp.jar"
 }
