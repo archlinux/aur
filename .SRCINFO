@@ -1,6 +1,6 @@
 pkgbase = dokku
 	pkgdesc = Docker-powered PaaS that helps build and manage the lifecycle of applications
-	pkgver = 0.34.8
+	pkgver = 0.34.9
 	pkgrel = 1
 	url = https://github.com/dokku/dokku
 	install = dokku.install
@@ -34,10 +34,10 @@ pkgbase = dokku
 	depends = sudo
 	depends = sshcommand
 	depends = unzip
-	source = https://github.com/dokku/dokku/archive/v0.34.8.zip
+	source = https://github.com/dokku/dokku/archive/v0.34.9.zip
 	source = dokku.install
 	source = scheduler-docker-local.patch
-	sha256sums = 472bb3251dd5dc2f44c850eaa37fe9c817e0196b6c8fa475a4cb6fd504211b49
+	sha256sums = 802da9e87ddb3331a61e6f39cc676e0b42ef45c97554faa5dc296f8bbf757605
 	sha256sums = dfd52e45a859b59282e1524fe31958747d903561f0cf0d8c6f8aba2588887009
 	sha256sums = fd979a3d612396316603f7677cdcdb7d25c7fecf99c97a8d1458262684913fdd
 
