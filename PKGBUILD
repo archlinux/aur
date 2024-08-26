@@ -2,7 +2,7 @@
 
 pkgname=xmms
 pkgver=1.2.11
-pkgrel=2
+pkgrel=3
 pkgdesc="X Multimedia System (XMMS) is an audio player for Unix-like systems released under a free software license."
 arch=('x86_64')
 url="https://www.xmms.org"
