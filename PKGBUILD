@@ -1,29 +1,25 @@
-# Maintainer: Henry Tung <compgamer89@gmail.com>
-pkgname=python-async-upnp-client
+# Maintainer: devome <evinedeng@hotmail.com>
+# Contributor: Henry Tung <compgamer89@gmail.com>
+
 _pkgname=async_upnp_client
-pkgver=0.29.0
+pkgname="python-${_pkgname//_/-}"
+pkgver=0.40.0
 pkgrel=1
 pkgdesc="Asyncio UPnP Client library for Python/asyncio"
-license=('Apache')
+license=('Apache-2.0')
 arch=('any')
-url="https://pypi.org/project/${pkgname}"
-makedepends=(python-build python-installer python-wheel python-setuptools)
-depends=(python
-         'python-voluptuous>=0.12.1'
-         'python-aiohttp>=3.7.4'
-         'python-async-timeout>=3.0.0'
-         'python-async-timeout<5.0.0'
-         python-didl-lite
-         'python-defusedxml>=0.6.0')
-source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('54ac8a7ce4b15eb3ae3c3f4c5b42a964c58414a187f280c19f67b4cc01771908')
+url="https://github.com/StevenLooman/${_pkgname}"
+depends=("python" "python-aiohttp" "python-async-timeout" "python-defusedxml" "python-didl-lite" "python-voluptuous")
+makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
+source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('179790fee5555dbcaa0523f26ae812bc46790ad36fa11ed295cda5be3d704f1f')
 
 build() {
-    cd ${srcdir}/${_pkgname}-${pkgver}
+    cd "${_pkgname}-${pkgver}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd ${srcdir}/${_pkgname}-${pkgver}
+    cd "${_pkgname}-${pkgver}"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
