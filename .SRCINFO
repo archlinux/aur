@@ -1,7 +1,7 @@
 pkgbase = keybase-zsh-completion-git
 	pkgdesc = ZSH completion for keybase
 	pkgver = r7.8e37ebf
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/fnoris/keybase-zsh-completion
 	arch = any
 	license = MIT
