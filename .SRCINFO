@@ -1,15 +1,14 @@
 pkgbase = ruby-mdless
 	pkgdesc = A pager like less, but for Markdown files
-	pkgver = 1.0.14
+	pkgver = 1.0.37
 	pkgrel = 1
 	url = http://brettterpstra.com/project/mdless/
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = mdless-1.0.14.gem
+	noextract = mdless-1.0.37.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/mdless-1.0.14.gem
-	sha1sums = addf4bb7aa2b863c510e3dac37c373740b660bba
+	source = https://rubygems.org/downloads/mdless-1.0.37.gem
+	sha1sums = 15567a72247757384ff4f1bcbabe5612b8854a9a
 
 pkgname = ruby-mdless
-
