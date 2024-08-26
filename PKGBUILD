@@ -2,12 +2,12 @@
 
 pkgname=kcat-cli
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A generic non-JVM producer and consumer for Apache Kafka, think of it as a netcat for Kafka'
 url="https://github.com/edenhill/kcat"
 license=('BSD')
 arch=(x86_64)
-depends=(avro-c glibc librdkafka yajl zlib)
+depends=(avro-c glibc librdkafka yajl which zlib)
 provides=('kcat')
 conflicts=('kcat' 'kafkacat')
 replaces=('kafkacat')
