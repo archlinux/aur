@@ -3,7 +3,7 @@
 _pkgname=swiftly
 pkgname=swiftly-bin
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A Swift toolchain installer and manager, written in Swift."
 arch=('x86_64' 'aarch64')
 url="https://swiftlang.github.io/swiftly/"
@@ -17,7 +17,6 @@ source_x86_64=("https://github.com/swift-server/${_pkgname}/releases/download/${
 source_aarch64=("https://github.com/swift-server/${_pkgname}/releases/download/${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu")
 sha256sums_x86_64=('1820d3096092f7cd9b907722746bd340ede9184fba6d34e9e244675c704694be')
 sha256sums_aarch64=('b0fc7373e4aefc2548fb2af35189cd869a7077503eb5a330485326481288fd3c')
-install='swiftly-bin.install'
 
 package() {
   mkdir -p ~/.local/share/${_pkgname}/toolchains
@@ -35,4 +34,5 @@ package() {
 
   echo "Config and toolchains can be found in ~/.local/share/${_pkgname}. Toolchains are installed to ~/.local/bin."
   echo "If you encounter an error stating that config.json cannot be found, please do a clean build of this package."
+  echo "This package does not automatically uninstall all toolchains when the package is deleted. That can be done with 'swiftly uninstall all -y'"
 }
