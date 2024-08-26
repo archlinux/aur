@@ -4,8 +4,8 @@
 pkgname="mongodb-tools-bin"
 pkgver="100.10.0"
 _basever="7.0"
-_basedist="focal"
-pkgrel="1"
+_basedist="jammy"
+pkgrel="2"
 pkgdesc="The MongoDB tools provide import, export, and diagnostic capabilities."
 arch=("x86_64" "aarch64")
 url="https://github.com/mongodb/mongo-tools"
@@ -15,8 +15,9 @@ conflicts=("mongodb-tools")
 depends=("openssl-1.1" "krb5")
 source_x86_64=(mongodb-org-tools_${pkgver}_x86_64.deb::"https://repo.mongodb.org/apt/ubuntu/dists/${_basedist}/mongodb-org/${_basever}/multiverse/binary-amd64/mongodb-database-tools_${pkgver}_amd64.deb")
 source_aarch64=(mongodb-org-tools_${pkgver}_aarch64.deb::"https://repo.mongodb.org/apt/ubuntu/dists/${_basedist}/mongodb-org/${_basever}/multiverse/binary-arm64/mongodb-database-tools_${pkgver}_arm64.deb")
-sha256sums_x86_64=('c6fe2ed12637bb6a5b2ff6893a6403578155f78d75c847074baf4130b9b60205')
-sha256sums_aarch64=('341b3e8cafc4728953e12bfdf42049a67d80b6c4e8170e275f29110481b3752d')
+
+sha256sums_x86_64=('59ba7715eff51602321cfebd8bb774fbae9bcf320b19424ee571ac642ab17377')
+sha256sums_aarch64=('f3b007c76f991428039002167fcfa63fa8e692e2da9a905171646e29704fb7a5')
 
 prepare() {
   mkdir -p output
