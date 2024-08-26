@@ -1,13 +1,13 @@
 pkgbase = attu
 	pkgdesc = Attu is an all-in-one milvus administration tool.
-	pkgver = 2.4.6
+	pkgver = 2.4.7
 	pkgrel = 1
 	url = https://github.com/zilliztech/attu
 	arch = x86_64
 	license = Apache 2.0
 	options = !strip
 	options = !debug
-	source = https://github.com/zilliztech/attu/releases/download/v2.4.6/attu_2.4.6_amd64.deb
-	sha256sums = 01593274a046a2755c87328cfc27d4835e6b9fa94db9d0deff2461c8a8bb767f
+	source = https://github.com/zilliztech/attu/releases/download/v2.4.7/attu_2.4.7_amd64.deb
+	sha256sums = 4535b6c025dbdeea2e55c19145943d2d318e2daea8f2dee151b46a884e5747dd
 
 pkgname = attu
