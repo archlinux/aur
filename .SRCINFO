@@ -10,6 +10,7 @@ pkgbase = mingw-w64-mesa
 	makedepends = mingw-w64-directx-headers
 	makedepends = python-mako
 	makedepends = python-packaging
+	makedepends = python-yaml
 	depends = mingw-w64-llvm
 	depends = mingw-w64-vulkan-icd-loader
 	depends = mingw-w64-dlfcn
