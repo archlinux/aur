@@ -39,7 +39,7 @@ pkgver() {
 }
 
 build() {
-  cd ${srcdir}/amber22_src/AmberTools/src/pytraj
+  cd ${srcdir}/amber${_majorver}_src/AmberTools/src/pytraj
 
   python setup.py --cythonize
   patch -p1 -i ${srcdir}/0001-Include-internal-pycore-frame.patch
