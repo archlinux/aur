@@ -1,0 +1,15 @@
+pkgbase = paralload-git
+	pkgdesc = A download tool that uses multiple HTTP(S) connections and byte ranges
+	pkgver = 1.1.2.r8.gc40afe2
+	pkgrel = 0
+	url = https://github.com/ErrorNoInternet/Paralload
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = go
+	provides = paralload
+	conflicts = paralload
+	source = paralload::git+https://github.com/ErrorNoInternet/Paralload
+	sha256sums = SKIP
+
+pkgname = paralload-git
