@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nudge
 _pkgname=Nudge
-pkgver=0.5.0
+pkgver=0.6.0
 _electronversion=31
 _nodeversion=18
 pkgrel=1
@@ -27,7 +27,7 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('7de219e23ffeca42252581cda3934394ac9fc3b2bc5ee79b6d29626f6857c57a'
+sha256sums=('095f3b38e730ad2b44ca4edf12c3aae0a1409fa6af9f9a8da0cb5ec9cb22295b'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -47,10 +47,10 @@ build() {
     cd "${srcdir}/${pkgname}.git"
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
@@ -60,9 +60,10 @@ build() {
     else
         echo "Your network is OK."
     fi
+    #sed "/\"electron\":/d;31i\    \"electron\": \"${SYSTEM_ELECTRON_VERSION}\"," -i package.json
     sed "/- AppImage/d;/- snap/d;s|- deb|- dir|g" -i electron-builder.yml
-    NODE_ENV=development npm install
-    NODE_ENV=production npm run build:linux
+    NODE_ENV=development    npm install
+    NODE_ENV=production     npm run build:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname-bin}.sh" "${pkgdir}/usr/bin/${pkgname}"
