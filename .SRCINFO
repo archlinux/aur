@@ -1,6 +1,6 @@
 pkgbase = r-ecp
 	pkgdesc = Non-Parametric Multiple Change-Point Analysis of Multivariate Data
-	pkgver = 3.1.5
+	pkgver = 3.1.6
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ecp
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = r-ecp
 	optdepends = r-mass
 	optdepends = r-mvtnorm
 	optdepends = r-r.rsp
-	source = https://cran.r-project.org/src/contrib/ecp_3.1.5.tar.gz
-	sha256sums = 9e2389632447a80a5e9937f15a98c092c33f5460e6ceb904971fcff3eda8a29e
+	source = https://cran.r-project.org/src/contrib/ecp_3.1.6.tar.gz
+	sha256sums = e5c3ea82afd11452c6069ac27744f3de81e7e633189e1e5a5941dae1d786aac6
 
 pkgname = r-ecp
