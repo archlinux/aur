@@ -1,0 +1,19 @@
+pkgbase = vim-coc-ltex-git
+	pkgdesc = LTEX language server extension for coc.nvim
+	pkgver = nightly.r0.g74484ff
+	pkgrel = 1
+	url = https://github.com/valentjn/vscode-ltex
+	arch = any
+	license = MIT
+	makedepends = yarn
+	makedepends = npm
+	makedepends = git
+	makedepends = python
+	depends = vim-coc
+	depends = languagetool
+	provides = vim-coc-ltex
+	conflicts = vim-coc-ltex
+	source = coc-ltex::git+https://github.com/valentjn/vscode-ltex.git
+	sha256sums = SKIP
+
+pkgname = vim-coc-ltex-git
