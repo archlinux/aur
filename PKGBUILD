@@ -11,7 +11,7 @@ pkgdesc="A text widget adding syntax highlighting and more to GNOME, patched for
 url="https://wiki.gnome.org/Projects/GtkSourceView"
 arch=(x86_64)
 license=(LGPL-2.1-or-later)
-provides=(gtksourceview5=$pkgver)
+provides=(gtksourceview5=$pkgver libgtksourceview-${pkgver%%.*}.so)
 conflicts=(gtksourceview5)
 depends=(
   cairo
@@ -57,8 +57,6 @@ check() {
 }
 
 package() {
-  provides=(libgtksourceview-${pkgver%%.*}.so)
-
   meson install -C build --destdir "$pkgdir"
 
   mkdir -p doc/usr/share
