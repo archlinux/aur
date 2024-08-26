@@ -1,19 +1,20 @@
 pkgbase = fsearch-git
-	pkgdesc = A fast graphical file search utility. Development version.
-	pkgver = 0.2alpha.r63.g54ab19c
+	pkgdesc = A fast graphical file search utility
+	pkgver = 0.2.3.r185.gd4ff61a
 	pkgrel = 1
-	url = https://cboxdoerfer.github.io/fsearch
+	url = https://github.com/cboxdoerfer/fsearch
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
-	makedepends = meson
 	makedepends = itstool
+	makedepends = meson
 	depends = gtk3
-	depends = icu
+	depends = libicuuc.so
 	depends = pcre2
+	provides = fsearch=0.2.3.r185.gd4ff61a
 	conflicts = fsearch
-	source = git+https://github.com/cboxdoerfer/fsearch.git
-	md5sums = SKIP
+	source = fsearch::git+https://github.com/cboxdoerfer/fsearch.git
+	sha256sums = SKIP
 
 pkgname = fsearch-git
