@@ -2,11 +2,13 @@
 _name=accesser
 pkgname=python-${_name}
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="A tool for solving SNI RST"
 url="https://github.com/URenko/Accesser"
 license=('GPL-3.0-or-later')
+conflicts=('python-accesser-git')
+provides=('python-accesser')
 depends=(
 	'python'
 	'python-packaging'
