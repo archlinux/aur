@@ -1,6 +1,6 @@
 pkgbase = sourcegit
 	pkgdesc = GUI client for GIT users
-	pkgver = 8.26
+	pkgver = 8.27
 	pkgrel = 1
 	url = https://github.com/sourcegit-scm/sourcegit
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = sourcegit
 	depends = git
 	depends = git-credential-manager
 	depends = xdg-utils
-	source = sourcegit-8.26.tar.gz::https://github.com/sourcegit-scm/sourcegit/archive/refs/tags/v8.26.tar.gz
+	source = sourcegit-8.27.tar.gz::https://github.com/sourcegit-scm/sourcegit/archive/refs/tags/v8.27.tar.gz
 	source = disable-aot.patch
-	sha256sums = 67e00669b5163b9b89e28a7ab78f1e4f403c00cd81a6d1d4d9a86333d0d7286b
+	sha256sums = 5b7fff88d4cdddc3dbacf964afa8a2a1b022cfd2ce1079706e39ecfd9bc6464e
 	sha256sums = faae03efb782ad7af4f18f70df6359634f5c5f22e28176beb0a3c53467cd74ae
 
 pkgname = sourcegit
