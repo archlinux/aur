@@ -1,7 +1,7 @@
 # Maintainer: Nikola Tasić <nik at 7aske dot com>
 pkgname="rgs-bin"
 pkgver="1.14.5"
-pkgrel=2
+pkgrel=3
 pkgdesc="Batch git repository analysis tool"
 arch=('x86_64')
 url="https://github.com/7aske/rgs"
@@ -16,4 +16,4 @@ package() {
 	install -Dm 755 rgs-${pkgver}-linux-$CARCH -T ${pkgdir}/usr/bin/cgs
 }
 
-sha256sums=('cece997f8f30ff3f8a8ceb604f3993a266a676734490893e29a61925d85a9bf3')
+sha256sums=('b6411e1c25a33553b44c52b979c481ed5b4c4e9607f9917c6b3d41ced444c89b')
