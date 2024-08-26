@@ -47,7 +47,7 @@ prepare() {
 }
 
 build() {
-  arch-meson gtksourceview build -D documentation=true
+  arch-meson gtksourceview build -D documentation=false
   meson compile -C build
 }
 
@@ -58,8 +58,5 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-
-  mkdir -p doc/usr/share
-  mv {"$pkgdir",doc}/usr/share/doc
 }
 # vim:set sw=2 sts=-1 et:
