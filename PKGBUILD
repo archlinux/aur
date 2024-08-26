@@ -1,15 +1,15 @@
 # Maintainer: KNOSSOS team <knossosteam ät gmail.com>
 
 pkgname='pythonqt-knossos-git'
-pkgver=3.2+151.g5bd6f18
+pkgver=3.4.1+19.gf227400
 pkgrel=1
 arch=(x86_64)
 pkgdesc='PythonQt fork with additional features for plugin support in KNOSSOS'
 license=(LGPL)
 url='https://github.com/knossos-project/PythonQt'
-makedepends=(cmake git mesa ninja)
+makedepends=(cmake git mesa ninja python-semver)
 checkdepends=(xorg-server-xvfb)
-depends=(python3 qt5-{declarative,multimedia,svg,tools,xmlpatterns})
+depends=("python>3.11" qt5-{declarative,multimedia,svg,tools,xmlpatterns})
 replaces=(qt5-python27{,-git}) # taking the liberty to clean up
 source=('git+https://github.com/knossos-project/PythonQt.git')
 md5sums=('SKIP')
@@ -27,6 +27,6 @@ check() {
   xvfb-run ninja -C "$srcdir/build-$CHOST-$pkgname" tests
 }
 package() {
-  depends+=("python<$(semver -i minor $(pacman -Q python | cut -d' ' -f2))")
+  depends+=("python<$(pysemver nextver $(pacman -Q python | cut -d' ' -f2) minor)")
   env DESTDIR="$pkgdir" cmake --install "$srcdir/build-$CHOST-$pkgname"
 }
