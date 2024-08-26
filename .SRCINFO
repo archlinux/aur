@@ -1,13 +1,13 @@
 pkgbase = fuse-ufs
 	pkgdesc = FUSE implementation of FreeBSD's UFSv2
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/realchonk/fuse-ufs
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = cargo
 	depends = fuse3
-	source = fuse-ufs-0.2.1.tar.gz::https://github.com/realchonk/fuse-ufs/archive/refs/tags/0.2.1.tar.gz
-	sha256sums = 8442d01c56c8f272797caab2d6f1a9864a2391742a3928bf03338dea8e8fc731
+	source = fuse-ufs-0.3.0.tar.gz::https://github.com/realchonk/fuse-ufs/archive/refs/tags/0.3.0.tar.gz
+	sha256sums = 3646983348c848e8270acadcf606e239265829e2904984a4ecfe84d4db90a71e
 
 pkgname = fuse-ufs
