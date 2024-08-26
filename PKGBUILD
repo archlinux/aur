@@ -5,7 +5,7 @@
 # Contributor: Philipp Überbacher <hollunder at gmx dot at>
 
 pkgname=qtractor-git
-pkgver=0.9.39.r0.g3f5f0495
+pkgver=1.1.1.r30.gf7219c20b
 pkgrel=1
 pkgdesc="Audio/MIDI multitrack sequencer"
 arch=('x86_64')
@@ -41,8 +41,8 @@ prepare() {
 
 pkgver() {
   cd "${srcdir}/${pkgname%-*}"
-  # cutting off the "qtractor_" prefix present in the git tag + remaining underscores (ugly but gets the job done).
-  git describe --long | sed 's/^qtractor_//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/\_/./g'
+  # cutting off the "v" prefix present in the git tag + remaining underscores (ugly but gets the job done).
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -62,5 +62,5 @@ package() {
 
   make DESTDIR="${pkgdir}" install -C build
   # docs
-  install -vDm 644 "qtractor/"{README,README.VST} -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm 644 "qtractor/"{README,README.VST2} -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
