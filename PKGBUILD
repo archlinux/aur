@@ -7,8 +7,8 @@
 _pkgbase='logisim-evolution'
 pkgbase="${_pkgbase}-git"
 pkgname="${_pkgbase}-git"
-pkgver=3.9.0+7.r4998.20240816.cd3a765af
-pkgrel=2
+pkgver=3.9.0+14.r5005.20240821.1cb1aec0d
+pkgrel=1
 provides=("${_pkgbase}=${pkgver}")
 conflicts=("${_pkgbase}")
 pkgdesc='An educational tool for designing and simulating digital logic circuits.'
@@ -23,8 +23,8 @@ depends=(
 makedepends=(
   'git'
   'gradle>=8.5'
-  # 'java-environment>=22'
-  'jdk-openjdk>=22'
+  # 'java-environment>=21'  # Versioned dependency seems not to be honoured here; `yay` wants to install jdk-openjdk version 17 which gives 'gradle' error.
+  'jdk-openjdk>=21'
   'optipng'
 )
 
