@@ -1,0 +1,13 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=SMAPI
+Version=4.0.8
+Comment=The modding API for Stardew Valley.
+Comment[ru_RU]=API для загрузки модов в Stardew Valley.
+Exec=smapi
+Icon=smapi
+Type=Application
+Terminal=true
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8
