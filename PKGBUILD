@@ -1,7 +1,7 @@
 # Maintainer: Roberto Alsina <roberto.alsina@gmail.com>
 pkgname=tartrazine
-pkgver=0.6.1
-pkgrel=4
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="A syntax highlighting tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ralsina/tartrazine"
