@@ -2,7 +2,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-neutron-lib
-pkgver=3.14.1
+pkgver=3.15.0
 pkgrel=1
 pkgdesc="Neutron shared routines and utilities"
 arch=(any)
@@ -53,7 +53,7 @@ checkdepends=('bandit'
               'python-testresources'
               'python-testscenarios')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('1bea4a343fc6902bac4692e3e6bc7d53705abc91bbbb6e28ab41a78ba0e85599e4ab6d672e5092ca9d64620de01e6e7a09ff88790329fcaad43895b36a9e07cc')
+b2sums=('75f11bff95b6b135d5521c039f41e3583b8394a1d3efa741347524743d08d84eb1e70f275b09f11b9ac402e84ce4fcdc09dd52b2849f466d6501cb7e74660bc5')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
