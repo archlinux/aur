@@ -5,7 +5,7 @@ _name=tabulate
 pkgdesc='Pretty-print tabular data in Python, a library and a command-line utility.'
 url="https://github.com/astanin/python-${_name}"
 pkgname="python-${_name}-git"
-pkgver=0.8.11.r556.3f0757e
+pkgver=0.9.0.r29.95ae5eb
 pkgrel=1
 arch=('any')
 makedepends=('python-setuptools')
@@ -17,16 +17,20 @@ sha1sums=('SKIP')
 
 pkgver() {
 	cd "${_name}"
-	_version=$(python setup.py -V)
 	( set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "%s.r%s.%s" "${_version}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+		git describe --long --tags 2>/dev/null | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
+}
+
+build() {
+	cd "${_name}"
+	python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
 	cd "${srcdir}/${_name}"
-	python setup.py install --root="${pkgdir}" --optimize=1
+	PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"LICENSE
 }
 
