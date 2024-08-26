@@ -1,0 +1,15 @@
+pkgbase = python-simple-websocket-server-git
+	pkgdesc = A python based websocket server that is simple and easy to use.
+	pkgver = r102.7a9b037
+	pkgrel = 1
+	url = https://github.com/dpallot/simple-websocket-server
+	arch = any
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-simple-websocket-server
+	conflicts = python-simple-websocket-server
+	source = python-simple-websocket-server::git+https://github.com/dpallot/simple-websocket-server.git
+	md5sums = SKIP
+
+pkgname = python-simple-websocket-server-git
