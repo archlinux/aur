@@ -7,7 +7,7 @@
 
 pkgname=wineasio
 pkgver=1.2.0
-pkgrel=7
+pkgrel=8
 
 pkgdesc="ASIO driver implementation for Wine"
 url="https://github.com/wineasio/wineasio"
