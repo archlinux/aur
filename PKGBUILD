@@ -5,13 +5,14 @@
 pkgname='moc-pulse'
 _pkgname='moc'
 pkgver=2.5.2
-pkgrel=13
+pkgrel=14
 pkgdesc='An ncurses console audio player with support for pulseaudio'
 arch=('x86_64')
 url="https://moc.daper.net/"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('libmad' 'libid3tag' 'jack' 'curl' 'libltdl' 'file' 'sndio')
-makedepends=('speex' 'ffmpeg4.4' 'taglib' 'libmpcdec' 'wavpack' 'libmodplug' 'faad2'
+makedepends=('speex' 'ffmpeg4.4' 'taglib' 'libmpcdec' 'wavpack'
+             'libmodplug' 'faad2' 'libsamplerate'
            # 'sidplay2-libs' # uncomment to compile libsidplay2/SID file support
            # 'pulse-native-provider' # uncomment to compile pulseaudio support
             )
@@ -22,6 +23,7 @@ optdepends=('speex: for using the speex plugin'
             'wavpack: for using the wavpack plugin'
             'faad2: for using the aac plugin'
 	          'libmodplug: for using the modplug plugin'
+            'libsamplerate: for resampling audio'
             'sidplay2-libs: for use the SID plugin'
             'pulse-native-provider: for using the pulseaudio plugin')
 provides=('moc')
