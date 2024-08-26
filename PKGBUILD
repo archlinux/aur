@@ -2,8 +2,8 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 pkgname=zulip-desktop-git
 _pkgname="Zulip Desktop"
-pkgver=5.11.0.r1.g92260b0
-_electronversion=29
+pkgver=5.11.1.r0.g38c7695
+_electronversion=32
 _nodeversion=20
 pkgrel=1
 pkgdesc='Real-time team chat based on the email threading model (git,use system-wide electron)'
@@ -51,9 +51,9 @@ build() {
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export npm_config_registry=https://registry.npmmirror.com
@@ -63,13 +63,13 @@ build() {
     else
         echo "Your network is OK."
     fi
-    NODE_ENV=development npm install
-    NODE_ENV=production npm run pack
+    sed "/\"electron\":/d;170i\    \"electron\": \"${SYSTEM_ELECTRON_VERSION}\"," -i package.json
+    NODE_ENV=development    npm install
+    NODE_ENV=production     npm run pack
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
     for _icons in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024;do
         install -Dm644 "${srcdir}/${pkgname%-git}.git/build/icons/${_icons}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
