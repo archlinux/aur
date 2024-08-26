@@ -1,19 +1,19 @@
-# Maintainer: Guilhem Saurel <gsaurel@laas.fr>
+# Maintainer: Guilhem Saurel <guilhem.saurel@laas.fr>
 
-pkgorg='stack-of-tasks'
+_org='stack-of-tasks'
 _pkgname='tsid'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Efficient Task Space Inverse Dynamics (TSID) based on Pinocchio"
 arch=('i686' 'x86_64')
-url="https://github.com/$pkgorg/$pkgname"
+url="https://github.com/$_org/$_pkgname"
 license=('BSD')
 depends=('pinocchio' 'eiquadprog')
 optdepends=('doxygen')
 makedepends=('cmake' 'eigen')
 source=($url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('c85ce5887ced432b14c790638f3e16371c8fd245d425409f3d5951d0a564e904'
+sha256sums=('142ebd28e6235c5811da6ac07ab30ff504a9572e225ba605dca475e4745a585d'
             'SKIP')
 validpgpkeys=(
     '9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28'
@@ -23,8 +23,9 @@ validpgpkeys=(
 
 build() {
     cmake -B "build-$pkgver" -S "$_pkgname-$pkgver" \
+        -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib
+        -Wno-dev
     cmake --build "build-$pkgver"
 }
 
