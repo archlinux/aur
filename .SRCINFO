@@ -1,6 +1,6 @@
 pkgbase = python-replicate-git
 	pkgdesc = A library to run machine learning models in the cloud from your own code, without having to set up any servers.
-	pkgver = 0.31.0.r242.20240731.d7ac942
+	pkgver = 0.32.0.r245.20240822.d4df7f6
 	pkgrel = 1
 	url = https://replicate.com/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-replicate-git
 	depends = python-packaging
 	depends = python-pydantic
 	depends = python-requests
-	provides = python-replicate=0.31.0.r242.20240731.d7ac942
+	provides = python-replicate=0.32.0.r245.20240822.d4df7f6
 	conflicts = python-replicate
 	source = python-replicate::git+https://github.com/replicate/replicate-python.git
 	sha256sums = SKIP
