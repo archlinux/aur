@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=webgal-terre-bin
 _appname=WebGAL_Terre
-pkgver=4.5.4
+pkgver=4.5.5
 pkgrel=1
 pkgdesc="Galgame Editing. Redefined | 视觉小说编辑，再进化"
 arch=(
@@ -35,8 +35,8 @@ source=(
 )
 sha256sums=('1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5'
             '227985f39b13b807400acaeaeff077939e3cd3583ddb4e25eefd35d6a615b62a')
-sha256sums_aarch64=('709b7bd8e5179adc0604420e512f7571f8e61d7cb3e356cb8e7ff6d8aea9b169')
-sha256sums_x86_64=('b13b2e7069b01c3e21a396db41dfda630640e8ac8e6bbbbd915032c8b92b7bb6')
+sha256sums_aarch64=('79bd617601db784c44cf42db390091d3e644f51f87178ec8f6a20ac1bc7c1c3b')
+sha256sums_x86_64=('09cdf514d68c895c71830e1ebfce00713b73743f917f73f642576bde0b3e74cb')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_appname}|g" \
@@ -45,10 +45,10 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -r "${srcdir}/release/"* "${pkgdir}/opt/${pkgname%-bin}"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/assets/templates/WebGAL_Android_Template/app/src/main/ic_launcher-playstore.png" \
+    install -Dm644 "${pkgdir}/usr/lib/${pkgname%-bin}/assets/templates/WebGAL_Android_Template/app/src/main/ic_launcher-playstore.png" \
         "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"    
 }
