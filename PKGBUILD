@@ -1,7 +1,7 @@
 # Maintainer: Luke Taylor <luket1@proton.me>
 
 pkgname=fooyin-git
-pkgver=r2737.aa56b2d6
+pkgver=r2991.da67b3bb
 pkgrel=1
 pkgdesc="A customisable music player"
 url="https://github.com/fooyin/fooyin"
@@ -28,6 +28,7 @@ makedepends=(
     'qt6-tools'
     'libopenmpt'
     'libgme'
+    'libsndfile'
     'libarchive'
 )
 optdepends=(
@@ -35,6 +36,7 @@ optdepends=(
     'libpipewire: For the PipeWire audio output plugin'
     'libopenmpt: For the OpenMPT audio input plugin'
     'libgme: For the GME audio input plugin'
+    'libsndfile: For the GME audio input plugin'
     'libarchive: For the libarchive archive plugin'
 )
 provides=('fooyin')
@@ -63,7 +65,8 @@ build() {
   cmake -S . -B build -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None \
-    -DBUILD_PCH=ON
+    -DBUILD_PCH=ON \
+    -DINSTALL_HEADERS=ON
   cmake --build build
 }
 
