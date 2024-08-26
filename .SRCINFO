@@ -1,6 +1,6 @@
 pkgbase = wayprompt
 	pkgdesc = Multi-purpose prompt tool for Wayland (pinentry)
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://git.sr.ht/~leon_plickat/wayprompt
 	arch = x86_64
@@ -12,15 +12,7 @@ pkgbase = wayprompt
 	depends = libxkbcommon
 	depends = pixman
 	depends = wayland
-	source = git+https://git.sr.ht/~leon_plickat/wayprompt#tag=v0.1.0
-	source = git+https://git.sr.ht/~novakane/zig-fcft
-	source = git+https://github.com/ifreund/zig-pixman.git
-	source = git+https://github.com/ifreund/zig-xkbcommon.git
-	source = git+https://github.com/ifreund/zig-wayland.git
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
+	source = git+https://git.sr.ht/~leon_plickat/wayprompt#tag=v0.1.2
+	b2sums = 5c279a375d23cd700ec81f3eb1a9ad3ed35c982ff9ef4b2b247deb1d6e11493c9c52bf6f2f81aa4b932c683c7155c85a085f55d2736c3a6020cd2c9b056dcbb6
 
 pkgname = wayprompt
