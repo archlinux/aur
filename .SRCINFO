@@ -1,0 +1,14 @@
+pkgbase = typespec
+	pkgdesc = Compiler CLI for TypeSpec
+	pkgver = 0.59.1
+	pkgrel = 1
+	url = https://npmjs.com/package/@typespec/compiler
+	arch = any
+	license = MIT
+	makedepends = jq
+	depends = npm
+	noextract = compiler-0.59.1.tgz
+	source = https://registry.npmjs.org/@typespec/compiler/-/compiler-0.59.1.tgz
+	sha256sums = ad71672732e7ee5cc87b46322dcf1cc43a4a168619f2df08091ee3222e5709f8
+
+pkgname = typespec
