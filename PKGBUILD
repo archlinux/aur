@@ -9,6 +9,8 @@ url="https://github.com/${_name}/${_repo}"
 license=('MIT')
 options=('!strip')
 
+depends=('bash')
+
 _snapshot="${_repo}-${pkgver}"
 
 source=(

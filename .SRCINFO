@@ -5,6 +5,7 @@ pkgbase = arkenfox-user.js
 	url = https://github.com/arkenfox/user.js
 	arch = any
 	license = MIT
+	depends = bash
 	options = !strip
 	source = https://github.com/arkenfox/user.js/archive/128.0/arkenfox-user.js-128.0.tar.gz
 	source = 01-updater.patch
