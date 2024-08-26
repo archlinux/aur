@@ -7,8 +7,7 @@ license=("Apache-2.0")
 arch=("x86_64" "aarch64")
 pkgver=0.4.5
 pkgrel=1
-makedepends=("rust" "cargo" "git" "clang")
-depends=("gcc-libs" "glibc" "liburing")
+depends=("rocksdb")
 source_x86_64=("$pkgname-$pkgver-x86_64::https://github.com/girlbossceo/conduwuit/releases/download/v${pkgver}/static-x86_64-unknown-linux-musl"
 		"https://raw.githubusercontent.com/girlbossceo/conduwuit/main/LICENSE"
 		"conduwuit.service"
