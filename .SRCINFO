@@ -1,7 +1,7 @@
 pkgbase = wcm
 	pkgdesc = Wayfire Configuration Manager
-	pkgver = 0.8.0
-	pkgrel = 6
+	pkgver = 0.9.0
+	pkgrel = 1
 	url = https://wayfire.org
 	arch = x86_64
 	arch = aarch64
@@ -10,13 +10,15 @@ pkgbase = wcm
 	makedepends = meson
 	makedepends = ninja
 	makedepends = glm
-	depends = wayfire>=0.8
-	depends = wayfire<0.9
-	depends = wf-shell>=0.8
-	depends = wf-shell<0.9
+	depends = wayfire>=0.9
+	depends = wayfire<0.10
+	depends = wf-shell>=0.9
+	depends = wf-shell<0.10
 	depends = gtkmm3
 	depends = wdisplays
-	source = https://github.com/WayfireWM/wcm/releases/download/v0.8.0/wcm-0.8.0.tar.xz
-	b2sums = 4d845edc631bda6b3fbee181d64897b366f4e73af7fef0e912f0a5dc9c7db4dc731319b6c25ce3e2206cc05c908ee402e01ed914cba4ccc63b0d52b9980b7414
+	optdepends = wdisplays: display configuration tool
+	source = https://github.com/WayfireWM/wcm/releases/download/v0.9.0/wcm-0.9.0.tar.xz
+	sha256sums = 8c8605ccb720fb24e58f16c2e2727cd07b6754bd441c9a3f0e715548b4e7c4ae
+	b2sums = 7f068dda1c256d930db57d8cd299652416c5a2357742e1cc3adddab98b143ff33219dcde7c94f951d456d8a4047ce606fd95ddf1a9b4b33f8e1de8997b67aeb5
 
 pkgname = wcm

@@ -1,15 +1,20 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='Wayfire Configuration Manager'
 pkgname=wcm
-pkgver=0.8.0
-pkgrel=6
+pkgver=0.9.0
+_version=(${pkgver//./ })
+_minver="${_version[0]}.${_version[1]}"
+_maxver="${_version[0]}.$((_version[1] + 1))"
+pkgrel=1
 arch=(x86_64 aarch64)
 url=https://wayfire.org
 license=(MIT)
-depends=("wayfire>=${pkgver%.*}" "wayfire<0.9" "wf-shell>=${pkgver%.*}" "wf-shell<0.9" gtkmm3 wdisplays)
+depends=("wayfire>=${_minver}" "wayfire<${_maxver}" "wf-shell>=${_minver}" "wf-shell<${_maxver}" gtkmm3 wdisplays)
+optdepends=('wdisplays: display configuration tool')
 makedepends=(wayland-protocols meson ninja glm)
 source=("https://github.com/WayfireWM/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-b2sums=('4d845edc631bda6b3fbee181d64897b366f4e73af7fef0e912f0a5dc9c7db4dc731319b6c25ce3e2206cc05c908ee402e01ed914cba4ccc63b0d52b9980b7414')
+sha256sums=('8c8605ccb720fb24e58f16c2e2727cd07b6754bd441c9a3f0e715548b4e7c4ae')
+b2sums=('7f068dda1c256d930db57d8cd299652416c5a2357742e1cc3adddab98b143ff33219dcde7c94f951d456d8a4047ce606fd95ddf1a9b4b33f8e1de8997b67aeb5')
 
 build ()
 {
