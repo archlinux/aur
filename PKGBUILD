@@ -1,7 +1,7 @@
 # Maintainer:WildboarG <mm62633482@gmail.com>
 pkgname=aithinkerwb2
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ai-Thinker AU-WB2 Wireless modules Development Frameswork"
 arch=('x86_64')
 url="https://github.com/Ai-Thinker-Open/Ai-Thinker-WB2"
@@ -17,15 +17,15 @@ prepare(){
     cd "$srcdir/Ai-Thinker-WB2"
     git submodule update --init --remote "toolchain/riscv/Linux"
     git submodule update --init --remote "tools/flash_tool"
-    echo "/usr/bin/Ai-Thinker-WB2/toolchain/riscv/Linux/bin/riscv64-unknown-elf-" > $srcdir/Ai-Thinker-WB2/make_scripts_riscv/toolchain.mk
+    echo "CONFIG_TOOLPREFIX ?= /usr/bin/Ai-Thinker-WB2/toolchain/riscv/Linux/bin/riscv64-unknown-elf-" > $srcdir/Ai-Thinker-WB2/make_scripts_riscv/toolchain.mk
 }
 
 package(){
     mkdir -p "$pkgdir/usr/share/Ai-Thinker-WB2"
     mkdir -p "$pkgdir/usr/bin/Ai-Thinker-WB2/toolchain/riscv"
 
-    install -d "$srcdir/Ai-Thinker-WB2/version.mk $pkgdir/usr/share/Ai-Thinker-WB2/"
-    install -d "$srcdir/Ai-Thinker-WB2/clean $pkgdir/usr/share/Ai-Thinker-WB2/"
+    cp  "$srcdir/Ai-Thinker-WB2/version.mk $pkgdir/usr/share/Ai-Thinker-WB2/"
+    cp  "$srcdir/Ai-Thinker-WB2/clean $pkgdir/usr/share/Ai-Thinker-WB2/"
     cp -r $srcdir/Ai-Thinker-WB2/applications/ $pkgdir/usr/share/Ai-Thinker-WB2/
     cp -r $srcdir/Ai-Thinker-WB2/components/ $pkgdir/usr/share/Ai-Thinker-WB2/
     cp -r $srcdir/Ai-Thinker-WB2/make_scripts_riscv/ $pkgdir/usr/share/Ai-Thinker-WB2/
