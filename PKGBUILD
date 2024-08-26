@@ -7,22 +7,24 @@ _pkgname=config-parser
 pkgbase=dfl-config-parser
 pkgname=('dfl-colorschemeparser' 'dfl-colorschemeparser-qt6' 'dfl-hjsonparser' 'dfl-hjsonparser-qt6' 'dfl-wayfireparser' 'dfl-wayfireparser-qt6')
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Collection of Config Parsers for DFL"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/desktop-frameworks/$_pkgname"
 license=('GPL3')
-makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base' 'dfl-color-utils' 'dfl-color-utils-qt6' 'wayfire>=0.8.0' 'glm' 'wlroots')
+makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base' 'dfl-color-utils' 'dfl-color-utils-qt6' 'wayfire>=0.9.0' 'glm' 'wlroots')
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
 md5sums=('1eda121f76171f7ad798b4038938bb9b')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
   echo "Building QT5 version..."
+  PKG_CONFIG_PATH=/usr/lib/wlroots0.17/pkgconfig \
   meson .build --prefix=/usr --buildtype=release
   ninja -C .build
   
   echo "Building QT6 version..."
+  PKG_CONFIG_PATH=/usr/lib/wlroots0.17/pkgconfig \
   meson .build-qt6 --prefix=/usr -Duse_qt_version=qt6 --buildtype=release
   ninja -C .build-qt6
 }
