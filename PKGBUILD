@@ -1,17 +1,17 @@
 # Maintainer: Bart De Vries <bart at mogwai dot be>
 
 pkgname=snapcast
-pkgver=0.28.0
-pkgrel=2
+pkgver=0.29.0
+pkgrel=1
 _pkgname_snapweb=snapweb
-_snapweb_version=0.7.0
+_snapweb_version=0.8.0
 pkgdesc="Synchronous multi-room audio player"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/badaix/snapcast"
 license=('GPL')
 depends=(alsa-lib avahi libvorbis flac opus expat libsoxr libpulse)
 optdepends=("python-websocket-client: stream plugin script"
-            "python-websocket-client: stream plugin script"
+            "python-mpd2: stream plugin script"
             "python-musicbrainzngs: stream plugin script")
 makedepends=(cmake alsa-utils boost)
 install="snapcast.install"
@@ -22,8 +22,8 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/badaix/snapcast/archive
         "snapcast.tmpfiles"
         "snapcast.install")
 noextract=("${_pkgname_snapweb}-${_snapweb_version}.zip")
-sha256sums=('7911037dd4b06fe98166db1d49a7cd83ccf131210d5aaad47507bfa0cfc31407'
-            '2acfc3538e4f4daefb0a2eac9126925f5a455dfd68b14ba5500fac5f1f82cb8f'
+sha256sums=('ecfb2c96a4920adc4121b1180b37bb86566c359914c14831c0abea4e65d23f92'
+            '71078f94d87e44881c7bf6491456d528420a69ae09f1ae115dd6c48c03c2a65c'
             '9fe6e9e07adb77f555a617b772e6d01e098e1dfaad1e8075e03a7d7ba76141de'
             'e8c3441c4ca646a9b66d61355e90862fd3481562ae3b4e0a4bc1c978464ae2c7'
             '23a0390774279f8c5d02d3307cfb67f2e9360f42704bb4f13d8c43e091fe997f')
