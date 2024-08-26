@@ -34,7 +34,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5'
-            '227985f39b13b807400acaeaeff077939e3cd3583ddb4e25eefd35d6a615b62a')
+            '094ca959b338028cd133d08bd43f416f1e0f8a11e1f86c89e7664cbdbd9c3f91')
 sha256sums_aarch64=('79bd617601db784c44cf42db390091d3e644f51f87178ec8f6a20ac1bc7c1c3b')
 sha256sums_x86_64=('09cdf514d68c895c71830e1ebfce00713b73743f917f73f642576bde0b3e74cb')
 build() {
@@ -46,7 +46,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/release/"* "${pkgdir}/opt/${pkgname%-bin}"
+    cp -r "${srcdir}/release/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${pkgdir}/usr/lib/${pkgname%-bin}/assets/templates/WebGAL_Android_Template/app/src/main/ic_launcher-playstore.png" \
         "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
