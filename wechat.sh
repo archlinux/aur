@@ -302,6 +302,7 @@ function execApp() {
 		--dir "${XDG_DOCUMENTS_DIR}" \
 		--bind "${XDG_DATA_HOME}/WeChat_Data" \
 			"${XDG_DATA_HOME}/WeChat_Data" \
+		${bwBindPar} \
 		${bwCamPar} \
 		--setenv XDG_DOCUMENTS_DIR "${XDG_DOCUMENTS_DIR}" \
 		--setenv XDG_DATA_HOME "${XDG_DATA_HOME}" \
@@ -498,7 +499,21 @@ function launch() {
 }
 
 function stopApp() {
-	systemctl --user stop wechat-dbus-proxy.service wechat-uos-qt.service
+	stopCmd="systemctl --user stop wechat-dbus-proxy wechat-uos-qt"
+	timeSpent=$( { time ${stopCmd}; } 2>&1 \
+		| grep real \
+		| awk \
+		'/real/ {split($2, a, "m"); split(a[2], b, "s"); print a[1] * 60 + b[1]}')
+	if (( $(echo "${timeSpent} > 2" | bc -l) )); then
+		echo "[Warn] WeChat took ${timeSpent}s to stop! Is the system too slow or WeChat screwed?"
+		if (( $(echo "${timeSpent} > 90" | bc -l) )); then
+			notify-send \
+			-i wechat-uos-qt \
+			-u normal \
+			-t 5 \
+			"WeChat" "WeChat is forcibly stopped"
+		fi
+	fi
 }
 
 if [[ $@ = "--actions quit" ]]; then
