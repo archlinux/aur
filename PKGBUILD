@@ -1,5 +1,5 @@
 # Maintainer:WildboarG <mm62633482@gmail.com>
-pkgname=AiThinkerWB2
+pkgname=aithinkerwb2
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Ai-Thinker AU-WB2 Wireless modules Development Frameswork"
