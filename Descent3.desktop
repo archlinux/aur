@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Descent 3 (Open Source)
+GenericName=Descent 3 (Open Source)
+Comment=Space shooter
+#Icon=Descent3
+Categories=Games;
+Exec=descent3
+Terminal=false
