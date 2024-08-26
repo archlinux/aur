@@ -1,10 +1,12 @@
 [Unit]
 Description=octez-node
+After=network-online.target
 
 [Service]
 Type=simple
 User=octez-node
 ExecStart=/usr/bin/octez-node run --data-dir /var/lib/octez-node/%i
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
