@@ -2,7 +2,7 @@
 
 pkgname=paperde
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An awesome Desktop Environment built on top of Qt/Wayland and Wayfire."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/paper/${pkgname}"
