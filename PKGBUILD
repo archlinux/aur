@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=far2l-git
-pkgver=r3850.fe3da218
+pkgver=r4941.f077d2f6
 pkgrel=1
 pkgdesc='Linux port of FAR v2'
 url='https://github.com/elfmz/far2l'
@@ -10,7 +10,7 @@ license=('GPL2')
 source=('git+https://github.com/elfmz/far2l')
 sha256sums=('SKIP')
 makedepends=('git' 'cmake')
-depends=('xerces-c' 'fmt' 'uchardet' 'wxwidgets-gtk3')
+depends=('libxml2' 'fmt' 'uchardet' 'wxwidgets-gtk3')
 optdepends=(
   'libxi: TTY X11 backend'
   'openssl: FTPS support in NetRocks'

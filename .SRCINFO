@@ -1,6 +1,6 @@
 pkgbase = far2l-git
 	pkgdesc = Linux port of FAR v2
-	pkgver = r3850.fe3da218
+	pkgver = r4941.f077d2f6
 	pkgrel = 1
 	url = https://github.com/elfmz/far2l
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = far2l-git
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
-	depends = xerces-c
+	depends = libxml2
 	depends = fmt
 	depends = uchardet
 	depends = wxwidgets-gtk3
