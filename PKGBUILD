@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onlook-git
 _pkgname=Onlook
-pkgver=r114.f46acfd
-_electronversion=31
+pkgver=r128.b0ea7d2
+_electronversion=32
 _nodeversion=20
 pkgrel=1
 pkgdesc="The open source, local-first Webflow alternative. Design directly in your live React site and publish your changes to code."
@@ -66,7 +66,7 @@ build() {
     else
         echo "Your network is OK."
     fi
-    sed "/\"electron\":/d;90i\        \"electron\": \"${SYSTEM_ELECTRON_VERSION}\"," -i package.json
+    sed "/\"electron\":/d;93i\        \"electron\": \"${SYSTEM_ELECTRON_VERSION}\"," -i package.json
     sed "s|\/\${version}||g;s|'AppImage', 'deb', 'rpm'|'dir'|g" -i electron-builder.json5
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run build
