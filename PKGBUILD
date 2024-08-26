@@ -2,7 +2,7 @@
 # Contributor: Jason Stryker <public at jasonstryker dot com>
 pkgname=protontricks-git
 pkgver=1.11.1.r8.g3d019ca
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple wrapper that does winetricks things for Proton enabled games."
 arch=('any')
 url="https://github.com/Matoking/protontricks"
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=(
   'python-pillow'
   'python-setuptools'
-  'python-vdf-solstice'
+  'python-vdf'
   'winetricks'
 )
 makedepends=(
