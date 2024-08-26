@@ -1,5 +1,6 @@
 # Maintainer: Lennart Martens <monkeynator78@gmail.com>
 pkgname=shuffle-ascii
+pkgbase=shuffle-ascii
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A CLI command to print ASCII art with shuffle effect and color"
