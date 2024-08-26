@@ -19,7 +19,7 @@ optdepends=('youtube-dl: default downloader'
 	'vlc: compatible video player')
 install="ytfe.install"
 package() {
-	install -Dm755 ${pkgname}_linux_${arch} $pkgdir/usr/bin/$pkgname
+	install -Dm755 ${pkgname}_${arch}_${pkgver} $pkgdir/usr/bin/$pkgname
 	install -Dm644 ${pkgname}.png $pkgdir/usr/share/icons/hicolor/16x16/apps/$pkgname.png
 	install -Dm644 ${pkgname}.desktop $pkgdir/usr/share/applications/${pkgname}.desktop
 	install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
