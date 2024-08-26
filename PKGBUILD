@@ -2,11 +2,12 @@
 pkgname=ham-v2.71-linux
 _pkgname='ham-v2.71-linux'
 pkgver=2.71
-pkgrel=2
+pkgrel=3
 pkgdesc='Legacy Game Boy Advance development kit based on GCC 3.2.2'
 url='http://ngine.de'
 arch=(x86_64 i686)
 makedepends=(p7zip unrar sed)
+depends=(lib32-ncurses5-compat-libs)
 source=(https://web.archive.org/web/20070708215529/http://www.ngine.de/download/ham-271-linux-full.rar 10-ham-sdk.conf)
 noextract=(ham-271-linux-full.rar)
 md5sums=('1e2e105a2a71a77036fbd8cafb041dd3'
