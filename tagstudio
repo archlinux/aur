@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec python3 /usr/lib/python3.12/site-packages/tagstudio/tag_studio.py

@@ -1,0 +1,15 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index d60908d..468c254 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,3 +1,10 @@
++[project]
++name = "tagstudio"
++version = "9.3.2"
++requires-python = ">=3.12"
++description = "A User-Focused Photo & File Management System"
++readme = "README.md"
++
+ [tool.ruff]
+ exclude = ["main_window.py", "home_ui.py", "resources.py", "resources_rc.py"]
+ 

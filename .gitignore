@@ -1,0 +1,9 @@
+*
+
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/MANIFEST.in
+!/pyproject.toml.patch
+!/tagstudio.desktop
+!/tagstudio

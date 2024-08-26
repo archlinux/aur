@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=TagStudio
+Comment=A User-Focused Photo & File Management System
+Exec=/usr/bin/tagstudio
+Icon=tagstudio
+Terminal=false
+StartupNotify=false

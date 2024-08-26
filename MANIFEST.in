@@ -1,0 +1,4 @@
+graft tagstudio/resources
+include tagstudio/src/qt/ui/home.ui
+include tagstudio/src/qt/resources.json
+include tagstudio/src/qt/resources.qrc
