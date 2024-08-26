@@ -15,7 +15,7 @@ pkgbase = libspelling-apostrophe
 	depends = glib2
 	depends = glibc
 	depends = gtk4
-	depends = gtksourceview5
+	depends = gtksourceview5-apostrophe
 	depends = icu
 	depends = pango
 	provides = libspelling=0.2.1

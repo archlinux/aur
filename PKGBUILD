@@ -17,7 +17,7 @@ depends=(
   glib2
   glibc
   gtk4
-  gtksourceview5
+  gtksourceview5-apostrophe
   icu
   pango
 )
@@ -36,11 +36,11 @@ b2sums=('dc5652e327307165231869321010c9d98e0b4521c4ee090aa326ed2c25d17070a8217cc
   '32d9ddcaf56c5f660da0d518ade97446f8bfa0a87309bd6729fe3b6d596712ae5390f2fbb5197fb0b3714ab9b57c47c2e38bf4e3d12cba605a55e5f4dfa940a9')
 
 prepare() {
-  patch -d $pkgname -p1 <libspelling_text_commits.patch
+  patch -d libspelling -p1 <libspelling_text_commits.patch
 }
 
 build() {
-  arch-meson $pkgname build
+  arch-meson libspelling build -D docs=false -D vapi=false
   meson compile -C build
 }
 
@@ -50,9 +50,6 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-
-  mkdir -p doc/usr/share
-  mv {"$pkgdir",doc}/usr/share/doc
 }
 
 # vim:set sw=2 sts=-1 et:
