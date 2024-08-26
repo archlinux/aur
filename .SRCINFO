@@ -1,4 +1,4 @@
-pkgbase = AiThinkerWB2
+pkgbase = aithinkerwb2
 	pkgdesc = Ai-Thinker AU-WB2 Wireless modules Development Frameswork
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = AiThinkerWB2
 	source = git+https://github.com/Ai-Thinker-Open/Ai-Thinker-WB2.git
 	sha256sums = SKIP
 
-pkgname = AiThinkerWB2
+pkgname = aithinkerwb2
