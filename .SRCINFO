@@ -1,0 +1,17 @@
+pkgbase = shuffle
+	pkgdesc = A CLI command to print ASCII art with shuffle effect and color
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/lennart1978/shuffle
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	depends = meson
+	depends = ninja
+	depends = gcc
+	depends = glibc
+	source = shuffle-1.0.0.tar.gz::https://github.com/lennart1978/shuffle/archive/refs/tags/V1.0.0.tar.gz
+	sha256sums = 615b31fd06e395eba7f26b9c8849874ed71ed7f36c0124c2179e78b8c4064669
+
+pkgname = shuffle
