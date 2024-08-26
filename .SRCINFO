@@ -1,0 +1,21 @@
+pkgbase = vim-ghost-git
+	pkgdesc = Vim client for GhostText - Edit browser text areas in Vim
+	pkgver = r98.115e260
+	pkgrel = 1
+	url = https://github.com/raghur/vim-ghost
+	arch = any
+	makedepends = git
+	depends = vim
+	depends = xdotool
+	depends = python
+	depends = python-pynvim
+	depends = nvim-yarp-git
+	depends = python-slugify
+	depends = vim-hug-neovim-rpc-git
+	depends = python-simple-websocket-server-git
+	provides = vim-ghost
+	conflicts = vim-ghost
+	source = vim-ghost::git+https://github.com/raghur/vim-ghost.git
+	md5sums = SKIP
+
+pkgname = vim-ghost-git
