@@ -1,6 +1,6 @@
 pkgbase = simplex-desktop-bin
 	pkgdesc = SimpleX Chat, the first messaging network operating without user identifiers of any kind (pre-compiled)
-	pkgver = 6.0.1
+	pkgver = 6.0.3
 	pkgrel = 2
 	url = https://simplex.chat/
 	arch = x86_64
