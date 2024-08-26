@@ -1,0 +1,12 @@
+diff -ura package.orig/obs-ios-camera-source/src/ffmpeg-decode.c package.new/obs-ios-camera-source/src/ffmpeg-decode.c
+--- package.orig/obs-ios-camera-source/src/ffmpeg-decode.c	2024-08-26 22:05:56.364720248 +0200
++++ package.new/obs-ios-camera-source/src/ffmpeg-decode.c	2024-08-26 22:06:29.488422279 +0200
+@@ -205,8 +205,6 @@
+ 
+     audio->samples_per_sec = decode->frame->sample_rate;
+     audio->format = convert_sample_format(decode->frame->format);
+-    audio->speakers =
+-    convert_speaker_layout((uint8_t)decode->decoder->channels);
+ 
+     audio->frames = decode->frame->nb_samples;
+ 
