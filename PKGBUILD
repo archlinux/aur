@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jammer-appimage
 _pkgname="Jammer"
-pkgver=2.13.5.5
+pkgver=2.14.6.6
 pkgrel=1
 pkgdesc="Play songs in cli with youtube and soundcloud support."
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/jooapa/jammer/${pkgver}/LICENSE"
 )
-sha256sums=('8ef6a2273d8b634ab67ca62b19764016773f474c9b1151004750e723a25ed69f'
+sha256sums=('577f220cd969cc193e65866f7c967d50ac9634c546dfcc69ff464a2048d1934c'
             '4d5d7e1b9673212e762b79a2f85a5ac9c7f454bdbcfb56f6c0e4f407039e1d94')
 build() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
