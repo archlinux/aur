@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=git-next
-pkgver=0.13.6
+pkgver=0.13.7
 pkgrel=1
 pkgdesc='Trunk-based development manager for a solo developer'
 url="https://git.kemitix.net/kemitix/$pkgname"
@@ -16,7 +16,7 @@ checkdepends=(git)
 options=(!lto)
 _archive="$pkgname-$pkgver"
 source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f1aabeefc87fe1b192290ec13d13bcec8e8d417be93bc31294953f7beaf63d4e')
+sha256sums=('9c48c902bd63b40677fa4411e743d6e2840efcd5439b6ddf414561207da76e26')
 
 prepare() {
 	cd "$pkgname"
