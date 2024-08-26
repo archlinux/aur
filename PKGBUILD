@@ -3,7 +3,7 @@
 
 _pkgname="okteto"
 pkgname="${_pkgname}-bin"
-pkgver=2.30.1
+pkgver=2.30.2
 pkgrel=1
 pkgdesc="Build better applications by developing and testing your code directly in Kubernetes"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source_x86_64=("${_pkgsrc}-x86_64::${url}/releases/download/${pkgver}/${_pkgname
 source_aarch64=("${_pkgsrc}-aarch64::${url}/releases/download/${pkgver}/${_pkgname}-Linux-arm64")
 sha256sums=('5dcc00c6e480f2d20da2a7a4e5a7083c882e5296e0671909e3d144c8357798f8'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('761b83083f701bcf0efdb75fe065b739a0ab1378ac97cc96b1b09bd9c40b8d95')
-sha256sums_aarch64=('341e52e0fc9277fac00e80545f6738ffe5f26981fc97bae1f9153b611b26407a')
+sha256sums_x86_64=('1ab0dd1360f818b6fb0bb34fcd67ddf7a05f6388936daa6d47b1c5ba57a6a04a')
+sha256sums_aarch64=('eb218a07ce6eac44fcf5806c3e2a61a77b0c245250974745574aff4afb73eba1')
 
 package() {
   cd "${srcdir}"
