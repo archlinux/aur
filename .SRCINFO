@@ -1,17 +1,17 @@
 pkgbase = torrentinfo
 	pkgdesc = Bittorrent .torrent file parser and summariser
-	pkgver = 1.8.7
-	pkgrel = 3
-	url = https://github.com/Fuuzetsu/torrentinfo
+	pkgver = r264.0e85bcd
+	pkgrel = 1
+	url = https://fuuzetsu.co.uk/torrentinfo/
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = git+https://github.com/Fuuzetsu/torrentinfo#commit=3c9b3ba80c867ba28e8ce0982fec8ea5369df8ef
+	source = git+https://github.com/Fuuzetsu/torrentinfo
 	b2sums = SKIP
 
 pkgname = torrentinfo
