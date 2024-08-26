@@ -2,7 +2,7 @@
 
 pkgname=kcat-cli
 pkgver=1.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A generic non-JVM producer and consumer for Apache Kafka, think of it as a netcat for Kafka'
 url="https://github.com/edenhill/kcat"
 license=('BSD')

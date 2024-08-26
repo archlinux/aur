@@ -1,7 +1,7 @@
 pkgbase = kcat-cli
 	pkgdesc = A generic non-JVM producer and consumer for Apache Kafka, think of it as a netcat for Kafka
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/edenhill/kcat
 	arch = x86_64
 	license = BSD
@@ -9,6 +9,7 @@ pkgbase = kcat-cli
 	depends = glibc
 	depends = librdkafka
 	depends = yajl
+	depends = which
 	depends = zlib
 	provides = kcat
 	conflicts = kcat
