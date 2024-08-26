@@ -8,7 +8,7 @@ arch=('x86_64' 'aarch64' 'loong64')
 url="https://weixin.qq.com/"
 license=('LicenseRef-proprietary')
 groups=()
-options=(!debug !strip)
+options=(!debug !strip lto)
 
 makedepends+=(
 		"ninja"
@@ -104,7 +104,7 @@ source_loong64=(
 	wechat-loong64-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_arm64.deb"
 )
 
-md5sums=('4406155701b4ebe584179fcd9a680c52'
+md5sums=('f82bb3f4eed6eef98d6756730ef45a39'
          '860ea16819270285e22ef0dee6abd217'
          '468e0367346707c026e577e7bf3e3a82'
          '7a2c5273e7f2ff118ce904861e3cbed1'

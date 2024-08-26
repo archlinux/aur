@@ -239,6 +239,7 @@ function execApp() {
 	-p ProtectHome=no \
 	-p PrivateUsers=yes \
 	-p UMask=077 \
+	-p TimeoutStopSec=20s \
 	-p RestrictAddressFamilies=~AF_PACKET \
 	-p PrivateTmp=yes \
 	-p BindReadOnlyPaths=/usr/bin/true:/usr/bin/lsblk \
@@ -506,7 +507,7 @@ function stopApp() {
 		'/real/ {split($2, a, "m"); split(a[2], b, "s"); print a[1] * 60 + b[1]}')
 	if (( $(echo "${timeSpent} > 2" | bc -l) )); then
 		echo "[Warn] WeChat took ${timeSpent}s to stop! Is the system too slow or WeChat screwed?"
-		if (( $(echo "${timeSpent} > 90" | bc -l) )); then
+		if (( $(echo "${timeSpent} > 20" | bc -l) )); then
 			notify-send \
 			-i wechat-uos-qt \
 			-u normal \
