@@ -8,10 +8,10 @@
 -    qputenv("QTSCRCPY_SERVER_PATH", "../../../QtScrcpy/QtScrcpyCore/src/third_party/scrcpy-server");
 -    qputenv("QTSCRCPY_KEYMAP_PATH", "../../../keymap");
 -    qputenv("QTSCRCPY_CONFIG_PATH", "../../../config");
-+    qputenv("QTSCRCPY_ADB_PATH", "/usr/bin/adb");
-+    qputenv("QTSCRCPY_SERVER_PATH", "/opt/qtscrcpy/scrcpy-server");
-+    qputenv("QTSCRCPY_KEYMAP_PATH", "/opt/qtscrcpy/keymap");
-+    qputenv("QTSCRCPY_CONFIG_PATH", "/etc/qtscrcpy");
++    if (!qEnvironmentVariableIsSet("QTSCRCPY_ADB_PATH")) { qputenv("QTSCRCPY_ADB_PATH", "/usr/bin/adb"); }
++    if (!qEnvironmentVariableIsSet("QTSCRCPY_SERVER_PATH")) { qputenv("QTSCRCPY_SERVER_PATH", "/opt/qtscrcpy/scrcpy-server"); }
++    if (!qEnvironmentVariableIsSet("QTSCRCPY_KEYMAP_PATH")) { qputenv("QTSCRCPY_KEYMAP_PATH", "/opt/qtscrcpy/keymap"); }
++    if (!qEnvironmentVariableIsSet("QTSCRCPY_CONFIG_PATH")) { qputenv("QTSCRCPY_CONFIG_PATH", "/etc/qtscrcpy"); }
  #endif
  
      g_msgType = covertLogLevel(Config::getInstance().getLogLevel());

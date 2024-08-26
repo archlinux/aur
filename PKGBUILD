@@ -1,18 +1,19 @@
 # Maintainer:
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
-## useful links
+## links
 # https://github.com/barry-ran/QtScrcpy
 # https://github.com/barry-ran/QtScrcpyCore
 
 ## options
 : ${_install_path:=opt}
+: ${_commit=8abdc5c389169ee060d55aacbb4a7c03b946d939} # 2.2.1
 
 # basic info
 _pkgname=qtscrcpy
 pkgname="$_pkgname"
 pkgver=2.2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Android real-time screencast control tool"
 url="https://github.com/barry-ran/QtScrcpy"
 license=('Apache-2.0')
@@ -37,14 +38,14 @@ backup=("etc/$_pkgname/config.ini")
 _pkgsrc="$_pkgname"
 _pkgsrc_core="qtscrcpycore"
 source=(
-  "$_pkgname"::"git+$url.git#tag=v$pkgver"
+  "$_pkgname"::"git+$url.git#commit=$_commit"
   "$_pkgsrc_core"::"git+https://github.com/barry-ran/QtScrcpyCore.git"
   "path-fix.patch"
 )
 sha256sums=(
   'SKIP'
   'SKIP'
-  '863e9179ef63914cd1bdcb35b1c27ba4cde05bbaa33fbbde7460841c880debb8'
+  '16c9470136d4ab84af22b9689e5767b38e7be4eaa41b069546480a44a2776c36'
 )
 
 prepare() {
@@ -101,8 +102,6 @@ package() {
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/usr/bin/env sh
-
-export QTSCRCPY_CONFIG_PATH="/etc/qtscrcpy"
 exec /$_install_path/qtscrcpy/QtScrcpy "\$@"
 END
 
