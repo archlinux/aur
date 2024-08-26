@@ -10,7 +10,7 @@
 # basic info
 _pkgname="dolphin"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=24.05.2
+pkgver=24.08.0
 pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
 url="https://invent.kde.org/xiota/dolphin/-/merge_requests/1"
