@@ -1,6 +1,6 @@
 pkgbase = amdgpu-test-scripts-git
 	pkgdesc = Test scripts for open source AMD graphics driver.
-	pkgver = r213.20240710.449cf64
+	pkgver = r214.20240821.dfb7650
 	pkgrel = 1
 	epoch = 0
 	url = https://gitlab.freedesktop.org/drm/amd
