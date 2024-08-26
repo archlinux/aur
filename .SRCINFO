@@ -1,16 +1,16 @@
 pkgbase = moq-bin
 	pkgdesc = Interface mocking tool for go generate
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = http://bit.ly/meetmoq
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	provides = moq=0.4.0
+	provides = moq=0.5.0
 	conflicts = moq
-	source_aarch64 = moq-0.4.0-aarch64.tar.gz::https://github.com/matryer/moq/releases/download/v0.4.0/moq_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 145a434af9de5cdfe56fb438fd63d9fbeafe8cdf2d3995668a5466dc0943cdd9
-	source_x86_64 = moq-0.4.0-x86_64.tar.gz::https://github.com/matryer/moq/releases/download/v0.4.0/moq_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 6537aba94e667e03d755d2ccaf1677bd92d39af10783c7db68a32740a6676dfe
+	source_aarch64 = moq-0.5.0-aarch64.tar.gz::https://github.com/matryer/moq/releases/download/v0.5.0/moq_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 657721bc25f52c062710d5b08b02cc64a6276a58f3ad3299f95df65f783488b0
+	source_x86_64 = moq-0.5.0-x86_64.tar.gz::https://github.com/matryer/moq/releases/download/v0.5.0/moq_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = ad371f921929426fa41a57aa75c444b270a2b162d2341b00c1e7c3e5e0fc3312
 
 pkgname = moq-bin
