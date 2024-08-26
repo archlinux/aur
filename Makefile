@@ -4,7 +4,7 @@ SHELL := /bin/bash
 
 MAKEFILE_DIR := $(dir $(lastword $(MAKEFILE_LIST)))
 
-TARGET_REPO := "fujiwara/ecsta"
+TARGET_REPO := fujiwara/ecsta
 
 .PHONY: default
 default: help
@@ -17,7 +17,7 @@ help-common:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m %-30s\033[0m %s\n", $$1, $$2}'
 
 
-.PHONY: renew install package clean update_tag test
+.PHONY: renew install packaging packaging_with_latest_version clean update_tag test
 renew: update_tag install ## get newer version and renew package, install that
 
 install: ## install package
@@ -28,13 +28,11 @@ update_checksum: ## upgrade pkg checksum
 	@# https://wiki.archlinux.org/title/PKGBUILD#Integrity
 	updpkgsums
 
-package: update_checksum ## packaging for manual operation
+packaging: update_checksum ## packaging
 	makepkg -s
-	mksrcinfo
+	makepkg --printsrcinfo > .SRCINFO
 
-package_auto: update_tag ## Auto packaging 
-	makepkg -s
-	mksrcinfo
+packaging_with_latest_version: update_tag packaging test ## Update latest version and packaging for release [Recommended]
 
 clean: ## remove tar.gz
 	rm -vf *.tar.xz *.tar.gz
