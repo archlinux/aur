@@ -1,10 +1,12 @@
 [Unit]
 Description=octez-smart-rollup-node
+After=network-online.target
 
 [Service]
 Type=simple
 User=octez-node
 ExecStart=/usr/bin/octez-smart-rollup-node --endpoint $ENDPOINT run --data-dir /var/lib/octez-node/%i
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
