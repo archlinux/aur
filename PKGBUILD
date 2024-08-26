@@ -2,10 +2,10 @@
 _mainver=5
 pkgname=firebot-beta-bin
 _appname=firebot
-pkgver="${_mainver}.63.0"
+pkgver="${_mainver}.63.1"
 #_appver="${pkgver}-beta1"
 _appver="${pkgver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="A powerful all-in-one bot for Twitch streamers. Updates to Stable and Beta releases"
 arch=('x86_64')
 url="https://github.com/crowbartools/Firebot"
@@ -16,7 +16,7 @@ source=("${url}/releases/download/v${_appver}/${_appname}-v${_appver}-linux-x64.
         "${_appname}.sh"
         "https://raw.githubusercontent.com/crowbartools/Firebot/v${_appver}/src/gui/images/logo_transparent.png"
         "${_appname}.desktop")
-sha256sums=('e70d2e9db5fa841fac8fc17a99e7e9a6a87685ca6f85fdd546877615ca3aaf95'
+sha256sums=('af86641309598c905894ff64a632fa58fe9b6fc59052e734244898f51a9d06c9'
             '7694f96ec45d7b729c01bc9d50a12805a8a040b4e3f8c5fbdccbed57fe10fef6'
             'fb725b5eb6107ae23496f6b6550eba834809bbb38879a1cf5b94bcbf1674f480'
             '45a0b16253788a33df8b1687a2b488ad3146b8afdca81c96704b2ba00c98d437')
