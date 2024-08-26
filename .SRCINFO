@@ -1,6 +1,6 @@
 pkgbase = manga-tui
 	pkgdesc = Terminal-based manga reader and downloader with image support
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/josueBarretogit/manga-tui
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = manga-tui
 	depends = gcc-libs
 	depends = openssl
 	options = !lto
-	source = manga-tui-0.3.0.tar.gz::https://github.com/josueBarretogit/manga-tui/archive/v0.3.0.tar.gz
-	sha512sums = 135b39c17c58e7be3358277c0bab477540d3d29b61ef464ea9cbad7d141374a9e9e7b91d10cf5de09e4ea83bb15bafbd900c233aa01f3dc1222145f2d110dde9
+	source = manga-tui-0.3.1.tar.gz::https://github.com/josueBarretogit/manga-tui/archive/v0.3.1.tar.gz
+	sha512sums = 204b89f4690a2f46f8e321fb65d9b654a739461ebecdc1952e325e9f0426754375198bcd5e518cd78fe7e9f68be96244c60168f4d3b7b60be7549b089fb8fbc0
 
 pkgname = manga-tui

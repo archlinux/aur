@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=manga-tui
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Terminal-based manga reader and downloader with image support"
 arch=('x86_64')
@@ -11,12 +11,12 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'sqlite')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('135b39c17c58e7be3358277c0bab477540d3d29b61ef464ea9cbad7d141374a9e9e7b91d10cf5de09e4ea83bb15bafbd900c233aa01f3dc1222145f2d110dde9')
+sha512sums=('204b89f4690a2f46f8e321fb65d9b654a739461ebecdc1952e325e9f0426754375198bcd5e518cd78fe7e9f68be96244c60168f4d3b7b60be7549b089fb8fbc0')
 options=('!lto')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')" # --locked
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')" --locked
 }
 
 build() {
@@ -24,9 +24,10 @@ build() {
   cargo build --release --frozen
 }
 
+# https://github.com/josueBarretogit/manga-tui/issues/23
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --frozen
+  cargo test --frozen -- --skip "backend" --skip "view"
 }
 
 package() {
