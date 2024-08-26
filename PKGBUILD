@@ -9,7 +9,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=a9175c22ca675dc963cbb1cc7288abb700b85a51
+_mozc_commit=1e83e6e9e88b9237a97b7893b6832a0d9e8b6276
 _mozcdict_ext_commit=de931271344ebb2d1349a7ae0a8ec883457ed930
 _branch=fcitx
 # Sudachi Dictionary
@@ -18,7 +18,7 @@ _sudachidict_date=20240716
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.30.5544.102
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003')
@@ -39,8 +39,8 @@ source=("git+$url.git#commit=${_mozc_commit}"
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
 
-sha512sums=('574a23bb73ee5f5341156f4ce9f2dd92bb9a9e8a02ed3ce592b5def073ed6751a758d21ae30886fa1a3ca9208bc20014338c0187f2ffd9813ff82ab0fe71b5e9'
-            '9f88e7926a8db772856049c3e8d8066ca5e663d46817f432b042d212aa4ab20ed660ab9da9fed181c80116f6900602f753f7c55e9894b69964b0a2fb7518b830'
+sha512sums=('7abdf8a8feff4e63fd8e7ba0cb41a4cf5f99263f7551e66a3c01da3ea1fda6b06dbd96571d6466679cb61c4c05b3c28e14b3e9ecebdf0699c2c36ae7dbe8de5b'
+            '74ea29e340ef7fc87d31a67dfc9de670458a585f7feb64820f6f49f0f100d03d41dbd189fba676f3133207bdc2532e00dd1ca4c7394611b1d56941cae7d027a5'
             'a8fc531f4d530e4e89093c7ab9ab83e8e1cf09256cdefbfa0ae1866556eae128f2bc169d09d9d694690316c96e4bb9074fc3bc8d3aeb27ac4f25c9db4092d3dd'
             'fcde4a3c0200969ebb21fa927f1ff59581386a39d83ea7ec5c0092e1566c38638129b71b286434e11fb4c6b76b48d6b36eb64b053306c2bbb8a7900e2c641558'
             '9428d55d2d9603c8bfcd12cc0184415f23af1d09a2d0ebdf0cce694a09638e7cfe0c1241bf1c943427b2fccfea619ca8b2e22db3452d837b416eb31aa224e766'
@@ -115,7 +115,7 @@ build() {
   #BAZEL_CXXOPTS=$(echo $CXXFLAGS | xargs -n1 echo "--cxxopt")
   
   # The bazel rules have changed, so the cache will be deleted.
-  bazel clean
+  # bazel clean
 
   if [[ $CC =~ gcc ]];then
     bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized
@@ -129,18 +129,18 @@ build() {
   # mozc fcitx5 version
   #git fetch origin master:remotes/origin/master
   #source bazel-bin/base/mozc_version.txt && export pkgver="$(printf "%s.%s.%s.%s" "${MAJOR}" "${MINOR}" "${BUILD_OSS}" "${REVISION}")" && sed -e "/2.26.4220.106.1/d" -e "/2.25.4150.102.1/d"  -e "s/release version=\".*\"/release version=\"$pkgver.1\" date=\"$(git log -1 --pretty=format:'%as' -b origin/master)\"/" -i unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in
-
-  # Extract license part of mozc
-  head -n 29 server/mozc_server.cc > LICENSE
-  head -n 50 data/unicode/JIS0201.TXT > LICENSE.JIS0201
-  head -n 73 data/unicode/JIS0208.TXT > LICENSE.JIS0208
-  head -n 22 data/unicode/jisx0213-2004-std.txt > LICENSE.jisx0213-2004-std
 }
 
 install_mozc-with-jp-dict-common() {
   export PREFIX="$pkgdir/usr"
   export _bldtype
   cd mozc/src || exit
+
+# Extract license part of mozc
+  head -n 29 server/mozc_server.cc > LICENSE
+  head -n 50 data/unicode/JIS0201.TXT > LICENSE.JIS0201
+  head -n 73 data/unicode/JIS0208.TXT > LICENSE.JIS0208
+  head -n 22 data/unicode/jisx0213-2004-std.txt > LICENSE.jisx0213-2004-std
 
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
   install -m 644 LICENSE LICENSE.* data/installer/*.html "$pkgdir/usr/share/licenses/$pkgname/"

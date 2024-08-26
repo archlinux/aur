@@ -9,7 +9,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=a9175c22ca675dc963cbb1cc7288abb700b85a51
+_mozc_commit=1e83e6e9e88b9237a97b7893b6832a0d9e8b6276
 _mozcdict_ext_commit=de931271344ebb2d1349a7ae0a8ec883457ed930
 _branch=fcitx
 # Sudachi Dictionary
@@ -18,7 +18,7 @@ _sudachidict_date=20240716
 pkgbase=mozc-with-jp-dict
 pkgname=("fcitx-$pkgbase")
 pkgver=2.30.5544.102
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003')
@@ -39,8 +39,8 @@ source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
 
-sha512sums=('574a23bb73ee5f5341156f4ce9f2dd92bb9a9e8a02ed3ce592b5def073ed6751a758d21ae30886fa1a3ca9208bc20014338c0187f2ffd9813ff82ab0fe71b5e9'
-            '9f88e7926a8db772856049c3e8d8066ca5e663d46817f432b042d212aa4ab20ed660ab9da9fed181c80116f6900602f753f7c55e9894b69964b0a2fb7518b830'
+sha512sums=('7abdf8a8feff4e63fd8e7ba0cb41a4cf5f99263f7551e66a3c01da3ea1fda6b06dbd96571d6466679cb61c4c05b3c28e14b3e9ecebdf0699c2c36ae7dbe8de5b'
+            '74ea29e340ef7fc87d31a67dfc9de670458a585f7feb64820f6f49f0f100d03d41dbd189fba676f3133207bdc2532e00dd1ca4c7394611b1d56941cae7d027a5'
             'a8fc531f4d530e4e89093c7ab9ab83e8e1cf09256cdefbfa0ae1866556eae128f2bc169d09d9d694690316c96e4bb9074fc3bc8d3aeb27ac4f25c9db4092d3dd'
             'fcde4a3c0200969ebb21fa927f1ff59581386a39d83ea7ec5c0092e1566c38638129b71b286434e11fb4c6b76b48d6b36eb64b053306c2bbb8a7900e2c641558'
             '9428d55d2d9603c8bfcd12cc0184415f23af1d09a2d0ebdf0cce694a09638e7cfe0c1241bf1c943427b2fccfea619ca8b2e22db3452d837b416eb31aa224e766'
@@ -60,6 +60,7 @@ prepare() {
 
   # pr
   patch -p1 -i ${srcdir}/61.patch
+  patch -p1 -i ${srcdir}/63.patch
 
   cd src || exit
 
@@ -82,9 +83,28 @@ build() {
   CXXFLAGS="${CXXFLAGS} -fvisibility=hidden"
 
   # fcitx
-  GYP_DEFINES="use_fcitx=YES use_fcitx5=0 use_libibus=0" ../scripts/configure
-  TARGETS="unix/fcitx/fcitx.gyp:fcitx-mozc"
-  python build_mozc.py build ${TARGETS} -c ${_bldtype}
+  #GYP_DEFINES="use_fcitx=YES use_fcitx5=0 use_libibus=0" ../scripts/configure
+  #TARGETS="unix/fcitx/fcitx.gyp:fcitx-mozc"
+  #python build_mozc.py build ${TARGETS} -c ${_bldtype}
+  
+  BAZEL_COPTS=""
+  BAZEL_CXXOPTS=""
+  for f in $CFLAGS;do ([[ ! $f =~ _FORTIFY_SOURCE ]]) && BAZEL_COPTS+=" --copt $f";done
+  for f in $CXXFLAGS;do ([[ ! $f =~ _FORTIFY_SOURCE ]]) && BAZEL_CXXOPTS+=" --cxxopt $f";done
+  BAZEL_LDOPTS=$(echo $LDFLAGS | xargs -n1 echo "--linkopt")
+  #BAZEL_COPTS=$(echo $CFLAGS | xargs -n1 echo "--copt")
+  #BAZEL_CXXOPTS=$(echo $CXXFLAGS | xargs -n1 echo "--cxxopt")
+  
+  # The bazel rules have changed, so the cache will be deleted.
+  # bazel clean
+
+  if [[ $CC =~ gcc ]];then
+    bazel build --config oss_linux --compilation_mode opt unix/fcitx:fcitx-mozc.so --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized
+  else
+    bazel build --config oss_linux --compilation_mode opt unix/fcitx:fcitx-mozc.so $BAZEL_LDOPTS $BAZEL_COPTS $BAZEL_CXXOPTS
+  fi
+  bazel shutdown
+
   #bazel build -c opt --copt=-fPIC  --config oss_linux unix/fcitx:fcitx-mozc.so
   #bazel shutdown
 }
@@ -93,6 +113,12 @@ install_mozc-with-jp-dict-common() {
   export PREFIX="$pkgdir/usr"
   export _bldtype
   cd mozc/src || exit
+
+  # Extract license part of mozc
+  head -n 29 server/mozc_server.cc > LICENSE
+  head -n 50 data/unicode/JIS0201.TXT > LICENSE.JIS0201
+  head -n 73 data/unicode/JIS0208.TXT > LICENSE.JIS0208
+  head -n 22 data/unicode/jisx0213-2004-std.txt > LICENSE.jisx0213-2004-std
 
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
   install -m 644 LICENSE LICENSE.* data/installer/*.html "$pkgdir/usr/share/licenses/$pkgname/"
@@ -124,8 +150,33 @@ package_fcitx-mozc-with-jp-dict() {
   export _bldtype
   cd ${srcdir}/mozc/src || exit
 
-  head -n 29 server/mozc_server.cc > LICENSE
-  ../scripts/install_fcitx
+  for pofile in unix/fcitx/po/*.po
+  do
+    filename=`basename $pofile`
+    lang=${filename/.po/}
+    mofile=${pofile/.po/.mo}
+    msgfmt $pofile -o $mofile
+    install -D -m 644 "$mofile" "${PREFIX}/share/locale/$lang/LC_MESSAGES/fcitx-mozc.mo"
+    rm -f $mofile
+  done
+
+  #install -D -m 755 "out_linux/${_bldtype}/fcitx-mozc.so" "${PREFIX}/lib/fcitx/fcitx-mozc.so"
+  install -D -m 755 "bazel-bin/unix/fcitx/fcitx-mozc.so" "${PREFIX}/lib/fcitx/fcitx-mozc.so"
+  install -D -m 644 unix/fcitx/fcitx-mozc.conf "${PREFIX}/share/fcitx/addon/fcitx-mozc.conf"
+  install -D -m 644 unix/fcitx/mozc.conf "${PREFIX}/share/fcitx/inputmethod/mozc.conf"
+
+  install -d "${PREFIX}/share/fcitx/mozc/icon"
+  install -D -m 644 data/images/product_icon_32bpp-128.png "${PREFIX}/share/fcitx/mozc/icon/mozc.png"
+  install -D -m 644 ../scripts/icons/ui-alpha_full.png "${PREFIX}/share/fcitx/mozc/icon/mozc-alpha_full.png"
+  install -D -m 644 ../scripts/icons/ui-alpha_half.png "${PREFIX}/share/fcitx/mozc/icon/mozc-alpha_half.png"
+  install -D -m 644 ../scripts/icons/ui-direct.png "${PREFIX}/share/fcitx/mozc/icon/mozc-direct.png"
+  install -D -m 644 ../scripts/icons/ui-hiragana.png "${PREFIX}/share/fcitx/mozc/icon/mozc-hiragana.png"
+  install -D -m 644 ../scripts/icons/ui-katakana_full.png "${PREFIX}/share/fcitx/mozc/icon/mozc-katakana_full.png"
+  install -D -m 644 ../scripts/icons/ui-katakana_half.png "${PREFIX}/share/fcitx/mozc/icon/mozc-katakana_half.png"
+  install -D -m 644 ../scripts/icons/ui-dictionary.png "${PREFIX}/share/fcitx/mozc/icon/mozc-dictionary.png"
+  install -D -m 644 ../scripts/icons/ui-properties.png "${PREFIX}/share/fcitx/mozc/icon/mozc-properties.png"
+  install -D -m 644 ../scripts/icons/ui-tool.png "${PREFIX}/share/fcitx/mozc/icon/mozc-tool.png"
+
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
   install -m 644 LICENSE data/installer/*.html "$pkgdir/usr/share/licenses/$pkgname/"
   install -D -m 755 bazel-bin/renderer/qt/mozc_renderer      "${pkgdir}/usr/lib/mozc/mozc_renderer"
