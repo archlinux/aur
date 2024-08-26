@@ -1,6 +1,6 @@
 pkgbase = widelands-debug-git
 	pkgdesc = An elaborate realtime multiplayer strategy game with emphasis on economy and transport - development version. In the spirit of BlueByte's 'Siedler II/ Settlers 2'. Debug build, with in-game debug console, debugging symbols, and source code documentation.
-	pkgver = 1.3.r26707.20240814.6898b8d
+	pkgver = 1.3.r26724.20240825.a6c5a51
 	pkgrel = 1
 	epoch = 0
 	url = http://widelands.org/
@@ -28,11 +28,11 @@ pkgbase = widelands-debug-git
 	depends = zlib
 	optdepends = widelands-maps-rttr: To play the maps from the game 'Return to the Roots' in Widelands.
 	optdepends = widelands-maps-siedler2: To play the maps from the game 'Settlers II' in Widelands.
-	provides = widelands=1.3.r26707.20240814.6898b8d
-	provides = widelands-debug=1.3.r26707.20240814.6898b8d
-	provides = widelands-debugconsole=1.3.r26707.20240814.6898b8d
-	provides = widelands-git=1.3.r26707.20240814.6898b8d
-	provides = widelands-data=1.3.r26707.20240814.6898b8d
+	provides = widelands=1.3.r26724.20240825.a6c5a51
+	provides = widelands-debug=1.3.r26724.20240825.a6c5a51
+	provides = widelands-debugconsole=1.3.r26724.20240825.a6c5a51
+	provides = widelands-git=1.3.r26724.20240825.a6c5a51
+	provides = widelands-data=1.3.r26724.20240825.a6c5a51
 	conflicts = widelands
 	conflicts = widelands-bzr
 	conflicts = widelands-data
