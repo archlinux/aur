@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=monolith-code-bin
-pkgver=2.2.8
-_electronversion=26
-pkgrel=2
+pkgver=2.2.9
+_electronversion=31
+pkgrel=1
 pkgdesc="Minimalistic but powerful code editor"
 arch=("x86_64")
 url="https://haeri.github.io/monolith-code"
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Haeri/monolith-code/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('10bcafceb5641bf881475051e5ef6124cb724550c47ddba4344754ca33c5d270'
+sha256sums=('8972d0b96908c756ded03b8406bb6ee194d1641af24fb32f3adb4d5dd1d2e405'
             '08712c74fe995972923ce4a30fa74bad068779afdf9d3b877c525e86c617adcc'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
@@ -29,7 +29,7 @@ build() {
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
