@@ -1,7 +1,7 @@
 pkgbase = manga-tui
 	pkgdesc = Terminal-based manga reader and downloader with image support
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/josueBarretogit/manga-tui
 	arch = x86_64
 	license = MIT

@@ -3,7 +3,7 @@
 
 pkgname=manga-tui
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal-based manga reader and downloader with image support"
 arch=('x86_64')
 url="https://github.com/josueBarretogit/manga-tui"
@@ -24,10 +24,9 @@ build() {
   cargo build --release --frozen
 }
 
-# https://github.com/josueBarretogit/manga-tui/issues/23
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --frozen -- --skip "backend" --skip "view"
+  cargo test --frozen -- --test-threads=1
 }
 
 package() {
