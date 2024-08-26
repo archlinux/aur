@@ -4,5 +4,6 @@
 !.SRCINFO
 !.INSTALL
 !.gitignore
+!.gitattributes
 #/src/
 #/pkg/

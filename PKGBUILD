@@ -7,10 +7,10 @@ srccount=$(seq 0 $((${#_file_ids[@]} - 1)))
 pkgname='dedupe'
 pkgdesc='Earn back file space by hardlinking unchanging duplicate files'
 pkgver='20240825'
-pkgrel=1
+pkgrel=2
 arch=(any)
 license=('GPL3')
-depends=('curl' 'zsh>=5.9')
+depends=('zsh>=5.9')
 optdepends=('b3sum: Faster hashing function') # faulting to b2sum since it's part of coreutils
 # throwing in test script to dedupe GnuWin32's files just because
 checkdepends=('curl' 'unzip')
