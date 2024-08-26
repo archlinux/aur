@@ -1,12 +1,12 @@
 # Maintainer: LoaD Accumulator <lda@ari.lt>
 pkgname=cytoplasm-git
-pkgver=0.4.1
+pkgver=0.4.1.r51.gf5ce4f5
 pkgrel=2
 pkgdesc="The Telodendria core library"
-arch=('i686' 'x86_64' 'aarch64')
+arch=('any')
 url="https://git.telodendria.io/Telodendria/Cytoplasm"
 license=('Telodendria')
-depends=('openssl' 'lmdb') # The dependency onto LMDB is to prepare the transition
+depends=('openssl' 'lmdb')
 makedepends=('git')
 provides=('cytoplasm')
 source=($pkgname::git+https://git.telodendria.io/Telodendria/Cytoplasm.git)
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
         cd "$pkgname"
-        ./configure --prefix=$pkgdir/usr # --with-lmdb when lmdbwerk gets merged
+        ./configure --prefix=$pkgdir/usr --with-lmdb
         make
 }
 
