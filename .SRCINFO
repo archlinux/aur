@@ -1,9 +1,8 @@
 pkgbase = rpcs3-udev
 	pkgdesc = udev rules to allow RPCS3 to communicate with DualShock 3, 4 and DualSense controllers.
-	pkgver = 2022.12.26
+	pkgver = 2024.07.15
 	pkgrel = 1
 	url = https://wiki.rpcs3.net/index.php?title=Help:Controller_Configuration
-	install = reload-udev-daemon.install
 	arch = any
 	license = CCPL:by-sa-4.0
 	source = 99-ds3-controllers.rules

@@ -1,6 +1,7 @@
 # Maintainer: Sematre <sematre at gmx dot de>
+# Contributor: Max Gautier <mg@max.gautier.name>
 pkgname=rpcs3-udev
-pkgver=2022.12.26
+pkgver=2024.07.15
 pkgrel=1
 pkgdesc="udev rules to allow RPCS3 to communicate with DualShock 3, 4 and DualSense controllers."
 arch=('any')
