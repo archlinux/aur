@@ -42,8 +42,8 @@ package() {
 
     cd "${_repo}"
 
-    sed -e "s|@@USERJSDIR@@|${shr}|" -i 'updater.sh'
-    install -Dm755 'updater.sh' "${pkg_bin}/${_name}-updater"
+    sed -e "s|@@USERJSDIR@@|${shr}|" 'updater.sh' |
+        install -Dm755 '/dev/stdin' "${pkg_bin}/${_name}-updater"
     install -Dm755 'prefsCleaner.sh' "${pkg_bin}/${_name}-cleaner"
 
     install -Dm644 -t "${pkgdir}${shr}" 'user.js'
