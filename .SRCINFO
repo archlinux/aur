@@ -1,6 +1,6 @@
 pkgbase = rainfrog
 	pkgdesc = A database management TUI for Postgres
-	pkgver = 0.1.13
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://github.com/achristmascarl/rainfrog
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rainfrog
 	makedepends = cargo
 	depends = gcc-libs
 	options = !lto
-	source = rainfrog-0.1.13.tar.gz::https://github.com/achristmascarl/rainfrog/archive/v0.1.13.tar.gz
-	sha512sums = c5b0a8b812a762c4a6be834bdeb961a2ad65fd757f9c2cff78172f33eea5ddb2fcb174d9f53d2db82d369509d29ca9f047dfedf29757928c3d2c473cc473927c
+	source = rainfrog-0.1.14.tar.gz::https://github.com/achristmascarl/rainfrog/archive/v0.1.14.tar.gz
+	sha512sums = b539cb26b12c6e96460f0fb1c6dbedb1aaafd3ef5702cfc03dcabc803f8a1aadfe04d91cd89b280b31c82ab761696e891b25ca5cd605b95d29f9ba6633b340f2
 
 pkgname = rainfrog
