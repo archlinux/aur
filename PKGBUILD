@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=h7toolpc-wine
-pkgver=2.26
+pkgver=2.2.6
 pkgrel=1
 pkgdesc="Wine H7-TOOL 的 PC 上位机，支持串口、CAN、示波器、CMSIS-DAP、DS18B20、RTT Viewer、脱机烧录等"
 arch=('x86_64')
@@ -23,7 +23,7 @@ install=${pkgname}.install
 source=("${pkgname/pc-wine/PC_release}-${pkgver}.7z::https://img.anfulai.cn/bbs/95468/${pkgname/pc-wine/PC_release}(V${pkgver}).7z"
         "icons.tar.gz"
         "${pkgname}.install")
-sha256sums=('88bf766061684c5f52f3aa4e9cd5661080cf0064825fe9698f145369d74bf2b0'
+sha256sums=('5d59bfcdba39f4abe9bd3abac269291419dde6cb571f804f7341541f97b9c658'
             '6823224b5699dc17c41efdcbc8465554f007cb62cadea0aad9b67c08c5698142'
             'b7ed44498e84bae5f174fd0a4a56aea0298ce93bc9a5de8b1dfb41c067705d27')
 noextract=("icons.tar.gz")
