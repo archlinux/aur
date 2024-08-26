@@ -1,0 +1,24 @@
+pkgbase = dedupe
+	pkgdesc = Earn back file space by hardlinking unchanging duplicate files
+	pkgver = 20240825
+	pkgrel = 1
+	url = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8
+	install = .INSTALL
+	arch = any
+	license = GPL3
+	checkdepends = curl
+	checkdepends = unzip
+	depends = curl
+	depends = zsh>=5.9
+	optdepends = b3sum: Faster hashing function
+	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/423dab0cd255bbb18b1ff83d7f54cea3390e2623/dedupe
+	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/423dab0cd255bbb18b1ff83d7f54cea3390e2623/dedupe.1
+	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/423dab0cd255bbb18b1ff83d7f54cea3390e2623/dedupe.conf.example
+	source = https://gist.githubusercontent.com/donnaken15/2e1345bdb44cae19fa395f188fc3bef3/raw/92b620197a5415c36b89515bedbc95426a48d365/dotload
+	validpgpkeys = 73311CF24AE4FF33
+	b2sums = 6b30ff0ee6e8db27794d8dedb8426c3b3e4e4a616cb1a4d5739c0bcf2d7e96399c14fdce708f10791ee31a754806f665efeffb149336a38ff338735c5a15de46
+	b2sums = 236093f50585e4e6480c348b09aec8e9efaa9b8be589cf9a145962c685d2a80f635b8b91d93d72ed11455dc01056860b82b5414e8dac833271149a9130209980
+	b2sums = 22706e9a06839539b4099f13771136bce895080f714a1848e9183f57d7f5c6db09c550632192886854372ccd73afbd1669d3a375a82bda22afa952f235bdce7d
+	b2sums = 76b17824ff9a7be66e31583fd7f918654b538a7f758dd561411e2840f385975bb88b8cc263f9976d035bea5c5b3a3cb1a5880f067ea5594ba9bccd704f7badb1
+
+pkgname = dedupe

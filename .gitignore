@@ -1,0 +1,8 @@
+*
+!*/
+!PKGBUILD
+!.SRCINFO
+!.INSTALL
+!.gitignore
+#/src/
+#/pkg/

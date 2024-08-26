@@ -1,0 +1,5 @@
+post_install() {
+	echo '[1mTo create a configuration file for yourself, execute:[0m'
+	echo '[93mmkdir -p ~/.config/dk15/'
+	echo 'cp ${_inst_paths[2]}/${_file_ids[$i]} ~/.config/dk15/dedupe[0m'
+}
