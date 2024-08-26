@@ -1,2 +1,4 @@
-*.log
-qtile
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
