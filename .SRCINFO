@@ -24,6 +24,7 @@ pkgbase = gtksourceview5-apostrophe
 	depends = pango
 	depends = pcre2
 	provides = gtksourceview5=5.12.1
+	provides = libgtksourceview-5.so
 	conflicts = gtksourceview5
 	source = git+https://gitlab.gnome.org/GNOME/gtksourceview.git#tag=5.12.1
 	source = https://gitlab.gnome.org/World/apostrophe/-/raw/main/build-aux/flatpak/sourceview_text_commits.patch
@@ -31,4 +32,3 @@ pkgbase = gtksourceview5-apostrophe
 	b2sums = 1e33c2f8f6dcd404bba1022d6e294fb8dd6a8670b05c7d3f50fc6ea6b2e6eab17179dfd8191957d8f49b8f346f246f26b06d148817fc259661d454451fc034ef
 
 pkgname = gtksourceview5-apostrophe
-	provides = libgtksourceview-5.so
