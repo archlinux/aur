@@ -2,7 +2,7 @@
 pkgname=protonup-qt
 _app_id=net.davidotek.pupgui2
 pkgver=2.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Install and manage Proton-GE and Luxtorpeda for Steam and Wine-GE for Lutris"
 arch=('any')
 url="https://davidotek.github.io/protonup-qt"
@@ -14,8 +14,8 @@ depends=(
   'python-pyaml'
   'python-pyxdg'
   'python-requests'
-  'python-steam-solstice'
-  'python-vdf-solstice'
+  'python-steam'
+  'python-vdf'
   'python-zstandard'
   'qt6-tools'
 )
