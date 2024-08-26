@@ -1,15 +1,15 @@
 pkgbase = dockit-bin
 	pkgdesc = GUI clients for elasticsearch, opensearch and etc
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://dockit.geekfun.club/
 	arch = x86_64
 	license = Apache-2.0
 	depends = gtk3
 	depends = webkit2gtk
-	provides = dockit=0.4.3
+	provides = dockit=0.4.4
 	conflicts = dockit
-	source = dockit-0.4.3.deb::https://github.com/geek-fun/dockit/releases/download/v0.4.3/DocKit_0.4.3_amd64.deb
-	sha256sums = c219d4c8eb5970866293a5c0dff33cfa32392aa262cb3627c723604299afb554
+	source = dockit-0.4.4.deb::https://github.com/geek-fun/dockit/releases/download/v0.4.4/DocKit_0.4.4_amd64.deb
+	sha256sums = 8abd642c034e1496df99c01b9b3b84b808f4dbb5a1831804bdb1a141990cd7f8
 
 pkgname = dockit-bin
