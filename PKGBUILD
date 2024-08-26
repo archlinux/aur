@@ -1,22 +1,25 @@
 # Maintainer: Marcus Ben Spencer <marcus at marcusspencer dot xyz>
 # Maintainer: runningpie <levi at levispencer dot com>
 # Contributor: Hwkiller
+# Contributor: Elijah Gregg <lovetocode999 at tilde dot team>
 
 pkgname="moltengamepad-git"
 _pkgroot="moltengamepad"
 pkgver=v1.1.0.r36.g95b0d47
 # pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Flexible Linux input device translator, geared for gamepads"
 url="https://github.com/jgeumlek/MoltenGamepad"
 arch=('x86_64')
 license=('MIT')
 source=("moltengamepad-git::git+https://github.com/jgeumlek/MoltenGamepad.git"
         "moltengamepad-sysusers.conf"
-        "70-moltengamepad-uaccess.rules")
+        "70-moltengamepad-uaccess.rules"
+        "https://patch-diff.githubusercontent.com/raw/jgeumlek/MoltenGamepad/pull/99.patch")
 md5sums=('SKIP'
          'b298ff92e4d833ce2866c8dd9fb131ca'
-         '1bb392d4b419d2d13bff837c6c7ce138')
+         '1bb392d4b419d2d13bff837c6c7ce138'
+         'b293d1a0f5df9d2274fd126bab1c91eb')
 depends=('scraw' 'scrawpp')
 makedepends=('go-md2man')
 provides=("moltengamepad")
@@ -24,6 +27,11 @@ provides=("moltengamepad")
 pkgver() {
   cd "$pkgname"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  patch -p1 "source/core/uinput.h" "${srcdir}/99.patch"
 }
 
 build() {
