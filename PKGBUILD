@@ -2,7 +2,7 @@
 pkgname=edgetx-buddy-bin
 pkgver=0.1.0
 _electronversion=29
-pkgrel=13
+pkgrel=14
 pkgdesc="The next generation tool for EdgeTX. A cross platform app, with browser compatibility."
 arch=('x86_64')
 url="https://buddy.edgetx.org/"
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/EdgeTX/buddy/latest/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('89b9036ca79098cd9e1447d5aee0b10018603f4ab5c48891b555d60e4179a5a5'
+sha256sums=('29b9d55cae745cb2613889dc9059654607132e64afd85b76cc6637cf5f94f93b'
             'b439e9847dce86ac976ddeb9949eb190c53322569f05f43d1cb4278ef1d90167'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
