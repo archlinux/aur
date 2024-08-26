@@ -8,11 +8,11 @@ pkgbase = udpreplay-bin
 	provides = udpreplay
 	conflicts = udpreplay
 	options = !strip
-	source = https://github.com/rigtorp/udpreplay/raw/v1.0.0/README.md
-	source = https://github.com/rigtorp/udpreplay/raw/v1.0.0/LICENSE
+	source = README-1.0.0.md::https://github.com/rigtorp/udpreplay/raw/v1.0.0/README.md
+	source = LICENSE-1.0.0::https://github.com/rigtorp/udpreplay/raw/v1.0.0/LICENSE
 	sha256sums = 37973b78cd556b92eee1f2050e1ebebe49324575b4c41602527a56c7daef8fc5
 	sha256sums = df0e31127f0e68b94da98960cbfafdbfbb3b79638cf483bf833256b216921dd3
-	source_x86_64 = udpreplay-1.0.0::https://github.com/rigtorp/udpreplay/releases/download/v1.0.0/udpreplay-x64-linux-static
+	source_x86_64 = udpreplay-1.0.0-x86_64::https://github.com/rigtorp/udpreplay/releases/download/v1.0.0/udpreplay-x64-linux-static
 	sha256sums_x86_64 = 21d759bc1baee2d23ec7116c274b7f31b819f1d6f16e048f1dc75bb1c3b2f06f
 
 pkgname = udpreplay-bin
