@@ -1,8 +1,8 @@
 # Maintainer: lilikoi <jamilbio20@gmail.com>
 pkgname='chatgpt.sh'
 pkgver=0.72.4
-pkgrel=1
-_commit=c8c2d799967f5877f0e17405402eefa5026d13aa
+pkgrel=2
+_commit=c1396c3e9d14aafff107181beac0dcaf14ea82b0
 pkgdesc="Wrapper for ChatGPT, DALL-E, Whisper, and TTS. Features LocalAI, Ollama, and more."
 url='https://gitlab.com/fenixdragao/shellchatgpt'
 arch=('any')
@@ -19,6 +19,7 @@ optdepends=(
 	'bat: render markdown (pygmentize, glow, mdcat, mdless)'
 	'w3m: dump URL text (lynx, elinks, links)'
 	'poppler: dump PDF as text (gs, abiword, ebook-convert)'
+	'libreoffice: dump doc files as text'
 	'dialog: file picker (kdialog, zenity, vifm, ranger, nnn)'
 )
 source=("${pkgname}-${pkgver}::git+${url}.git#commit=${_commit}")
