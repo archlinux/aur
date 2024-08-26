@@ -1,7 +1,7 @@
 pkgbase = xpipe-ptb
 	pkgdesc = XPipe (Public Test Build) releases
 	pkgver = 11.0
-	pkgrel = 19
+	pkgrel = 20
 	epoch = 1
 	url = https://github.com/xpipe-io/xpipe-ptb
 	changelog = xpipe-ptb.changelog
@@ -29,9 +29,9 @@ pkgbase = xpipe-ptb
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	source_x86_64 = xpipe-ptb-11.0-19-x86_64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/11.0-19/xpipe-portable-linux-x86_64.tar.gz
+	source_x86_64 = xpipe-ptb-11.0-20-x86_64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/11.0-20/xpipe-portable-linux-x86_64.tar.gz
 	sha512sums_x86_64 = SKIP
-	source_aarch64 = xpipe-ptb-11.0-19-arm64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/11.0-19/xpipe-portable-linux-arm64.tar.gz
+	source_aarch64 = xpipe-ptb-11.0-20-arm64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/11.0-20/xpipe-portable-linux-arm64.tar.gz
 	sha512sums_aarch64 = SKIP
 
 pkgname = xpipe-ptb
