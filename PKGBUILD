@@ -4,7 +4,7 @@
 
 _pkgname=cambalache
 pkgname=cambalache-git
-pkgver=0.91.1.r19.g3f77956
+pkgver=0.91.3.r0.g4915f19
 pkgrel=1
 pkgdesc="A new RAD tool for Gtk 4 and 3 (Git version)"
 url="https://gitlab.gnome.org/jpu/cambalache"
@@ -19,6 +19,12 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
 source=("git+${url}.git")
 sha512sums=('SKIP')
+
+prepare() {
+  # Use project's Casilda dependency
+  # (This is likely the best solution until other programs start to use it)
+  meson subprojects download casilda --source="${_pkgname}"
+}
 
 pkgver() {
   cd "${_pkgname}"
