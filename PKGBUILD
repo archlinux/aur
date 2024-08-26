@@ -11,7 +11,7 @@ pkgname=(
   'vte4-notification'
   'vte-notification-docs'
 )
-pkgver=0.76.3
+pkgver=0.76.4
 pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget'
 url='https://wiki.gnome.org/Apps/Terminal/VTE'

@@ -1,6 +1,6 @@
 pkgbase = vte3-notification
 	pkgdesc = Virtual Terminal Emulator widget
-	pkgver = 0.76.3
+	pkgver = 0.76.4
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal/VTE
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = vte3-notification
 	depends = systemd-libs
 	options = !emptydirs
 	options = !lto
-	source = git+https://gitlab.gnome.org/GNOME/vte#tag=0.76.3
+	source = git+https://gitlab.gnome.org/GNOME/vte#tag=0.76.4
 	source = 0001-a11y-implement-GtkAccessibleText.patch-2ca928e0ae789378d65ed7b6e8609345764a4ca3::https://src.fedoraproject.org/rpms/vte291/raw/2ca928e0ae789378d65ed7b6e8609345764a4ca3/f/0001-a11y-implement-GtkAccessibleText.patch
 	source = 0001-add-notification-and-shell-precmd-preexec.patch-2ca928e0ae789378d65ed7b6e8609345764a4ca3::https://src.fedoraproject.org/rpms/vte291/raw/2ca928e0ae789378d65ed7b6e8609345764a4ca3/f/0001-add-notification-and-shell-precmd-preexec.patch
 	sha256sums = SKIP
@@ -40,7 +40,7 @@ pkgname = vte-notification-common
 	pkgdesc = Common files used by vte and vte3/vte4
 	depends = glibc
 	depends = sh
-	provides = vte-common=0.76.3
+	provides = vte-common=0.76.4
 	conflicts = vte-common
 
 pkgname = vte3-notification
@@ -61,7 +61,7 @@ pkgname = vte3-notification
 	depends = at-spi2-core
 	depends = gtk3
 	depends = vte-notification-common
-	provides = vte3=0.76.3
+	provides = vte3=0.76.4
 	provides = libvte-2.91.so
 	conflicts = vte3
 
@@ -82,12 +82,12 @@ pkgname = vte4-notification
 	depends = systemd-libs
 	depends = gtk4
 	depends = vte-notification-common
-	provides = vte4=0.76.3
+	provides = vte4=0.76.4
 	provides = libvte-2.91-gtk4.so
 	conflicts = vte4
 
 pkgname = vte-notification-docs
 	pkgdesc = Virtual Terminal Emulator widget documentation
 	depends = 
-	provides = vte-docs=0.76.3
+	provides = vte-docs=0.76.4
 	conflicts = vte-docs
