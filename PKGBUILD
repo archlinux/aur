@@ -1,32 +1,37 @@
-# Maintainer: Mikael Blomstrand <gmail: chawlindel>
+# Maintainer: João Figueiredo <islandc0der@chaotic.cx>
+# Contributor: dreieck
+# Contributor: Mikael Blomstrand <gmail: chawlindel>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributor: Ng Oon-Ee <ngoonee.talk@gmail.com>
 
 pkgname=adbfs-rootless-git
-pkgver=r101.c1a2c9b
+pkgver=r112.fd56381
 pkgrel=1
 pkgdesc='fuse filesystem over adb tool for android devices, no device root required'
-arch=(i686 x86_64)
+arch=($CARCH)
 url='https://github.com/spion/adbfs-rootless'
-license=(BSD)
-depends=('fuse' 'android-tools')
-conflicts=('adbfs-git')
-makedepends=('git')
-source=(git+https://github.com/spion/adbfs-rootless)
-sha1sums=('SKIP')
+license=(BSD-3-Clause)
+depends=(fuse android-tools)
+makedepends=(git)
+conflicts=(${pkgname%-git} ${pkgname%%-*})
+provides=(${pkgname%-git} ${pkgname%%-*})
+source=(git+$url
+        adbfs-devspecific.sh)
+sha256sums=('SKIP'
+            'ca5f6d3c41bcff2f4476169a9933f67bf43cd7263e8182a294e509b0b61ba3dd')
 
 pkgver() {
-  cd adbfs-rootless
+  cd ${pkgname%-git}
   echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-  cd adbfs-rootless
+  cd ${pkgname%-git}
   make
 }
 
 package() {
-  cd adbfs-rootless
-  install -Dm755 adbfs "${pkgdir}/usr/bin/adbfs"
-  install -Dm644 license "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd ${pkgname%-git}
+  install -Dm755 ../adbfs-devspecific.sh adbfs -t "$pkgdir/usr/bin/"
+  install -Dm644 license "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
