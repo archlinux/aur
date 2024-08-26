@@ -3,7 +3,7 @@
 _pkgname="keybase-zsh-completion"
 pkgname="${_pkgname}-git"
 pkgver=r7.8e37ebf5fc2c
-pkgrel=2
+pkgrel=3
 pkgdesc="ZSH completion for keybase"
 arch=('any')
 url="https://github.com/fnoris/keybase-zsh-completion"
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=12 HEAD)"
 }
 
 package() {
