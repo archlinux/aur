@@ -2,7 +2,7 @@
 _appname=proxy-pin
 pkgname="${_appname//-/}-bin"
 _pkgname=ProxyPin
-pkgver=1.0.8
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Open source free packet capture tool"
 arch=('x86_64')
@@ -16,11 +16,11 @@ depends=(
     'gtk3'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${_pkgname}-Linux.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/V${pkgver}/${_pkgname}-Linux.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5d21847abfe42a715deda47b54efe7accb931d2af5ce1ac22644f1115768231d'
-            '0e524661634f5860c5cd6e25f610ecc2dbe918435b59998c8de536627487b82b')
+sha256sums=('9f9cbecbcd36cd31646cfe8e0a48f63076bd89aeac4abf7c0ed0ace90ede5046'
+            '60f4e2b273d7bd3824b2809a5bff457eead0938496f9e62f72ef3a9026d78377')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
@@ -31,8 +31,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 "${srcdir}/opt/${pkgname%-bin}/${_pkgname}" -t "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r  "${srcdir}/opt/${pkgname%-bin}/"{data,lib} "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/opt/${pkgname%-bin}/${_pkgname}" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r  "${srcdir}/opt/${pkgname%-bin}/"{data,lib} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/data/flutter_assets/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }
