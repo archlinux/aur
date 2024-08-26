@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat-git
 _pkgname=GhostChat
-pkgver=3.2.0.r13.g3c72a42
-_electronversion=31
+pkgver=3.2.4.r3.gfad8bcd
+_electronversion=32
 _nodeversion=20
 pkgrel=1
 pkgdesc="A standalone, multiplatform Twitch.tv chat as overlay on windowed/windowed fullscreen applications."
@@ -15,9 +15,9 @@ depends=(
     "electron${_electronversion}"
 )
 makedepends=(
-    'pnpm>=9'
+    'pnpm'
     'gendesk'
-    'npm>9'
+    'npm'
     'nvm'
     'curl'
     'git'
@@ -65,10 +65,10 @@ build() {
     else
         echo "Your network is OK."
     fi
-    sed "s|out\/release\/\${version}|release|g;s|\/\/ ||g;s|AppImage|dir|g;s|\"linux\"|linux|g" -i electron-builder.config.js
+    sed "s|out\/release\/\${version}|release|g;s|\/\/ ||g;s|AppImage|dir|g;s|\"linux\"|linux|g" -i electron-builder.config.cjs
     cp public/icons/icon-512x125.png public/icons/icon-512x512.png
-    NODE_ENV=development pnpm install --no-lockfile
-    NODE_ENV=production pnpm run release
+    NODE_ENV=development    pnpm install --no-lockfile
+    NODE_ENV=production     pnpm run release
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
