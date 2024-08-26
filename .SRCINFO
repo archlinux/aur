@@ -23,11 +23,13 @@ pkgbase = apostrophe
 	depends = gdk-pixbuf2
 	depends = graphene
 	depends = hicolor-icon-theme
-	optdepends = texlive
+	optdepends = texlive-bin
 	optdepends = texlive-latex
 	optdepends = pandoc
 	optdepends = python-pyenchant
 	source = git+https://gitlab.gnome.org/World/apostrophe.git#tag=v3.1
+	source = https://github.com/hakimel/reveal.js/archive/5.1.0/reveal.js-5.1.0.tar.gz
 	sha256sums = 02a5d8832ab3d426dfb6f87f32d5f99ddfdd8ac5c428ff747c51e056b58e5dc8
+	sha256sums = ddc83539ec50583eac9a972e88f892971b37c44e70dd0c08be069e2688684b71
 
 pkgname = apostrophe
