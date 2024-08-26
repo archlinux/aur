@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=quicknote-git
-pkgver=2.0.2.r0.gf7ab028
+pkgver=2.0.3.r2.gf407f17
 _electronversion=22
 _nodeversion=18
 pkgrel=1
@@ -50,9 +50,9 @@ build() {
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
+    export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
@@ -64,6 +64,7 @@ build() {
     else
         echo "Your network is OK."
     fi
+    sed "s|22.0.2|${SYSTEM_ELECTRON_VERSION}|g" -i package.json
     sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname}\"|g" -i src/electron/constants/constants.ts
     NODE_ENV=development yarn install --no-lockfile --cache-folder "${srcdir}/.yarn_cache"
     NODE_ENV=production yarn run package
