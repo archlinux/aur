@@ -1,18 +1,18 @@
-
-# Maintainer: Andrea Feletto <andrea@andreafeletto.com>
+# Contributor: Andrea Feletto <andrea@andreafeletto.com>
 
 pkgname=telescope-git
 _pkgname=${pkgname%-*}
-pkgver=0.8.1.r1.g0faaffc
+pkgver=0.10.1.r1.gd9051b6
 pkgrel=1
-pkgdesc='w3m-like browser for Gemini.'
+pkgdesc='w3m-like browser for Gemini'
 arch=('x86_64')
-url='https://telescope.omarpolo.com/'
+url='https://www.telescope-browser.org/'
 license=('ISC')
+depends=('libbsd' 'libgrapheme' 'libretls' 'ncurses') #'imsg-compat'
+makedepends=('git')
 provides=('telescope')
 conflicts=('telescope')
-depends=('libretls')
-source=("git+https://github.com/omar-polo/telescope")
+source=("git+https://github.com/$_pkgname-browser/$_pkgname")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -20,10 +20,14 @@ pkgver() {
 	git describe --long | sed 's/-/.r/;s/-/./'
 }
 
-build() {
+prepare() {
 	cd "$srcdir/$_pkgname"
 	./autogen.sh
-	./configure --prefix='/usr'
+}
+
+build() {
+	cd "$srcdir/$_pkgname"
+	./configure --prefix='/usr' --with-libbsd #--with-libimsg
 	make
 }
 

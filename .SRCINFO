@@ -1,14 +1,18 @@
 pkgbase = telescope-git
-	pkgdesc = w3m-like browser for Gemini.
-	pkgver = 0.8.1.r1.g0faaffc
+	pkgdesc = w3m-like browser for Gemini
+	pkgver = 0.10.1.r1.gd9051b6
 	pkgrel = 1
-	url = https://telescope.omarpolo.com/
+	url = https://www.telescope-browser.org/
 	arch = x86_64
 	license = ISC
+	makedepends = git
+	depends = libbsd
+	depends = libgrapheme
 	depends = libretls
+	depends = ncurses
 	provides = telescope
 	conflicts = telescope
-	source = git+https://github.com/omar-polo/telescope
+	source = git+https://github.com/telescope-browser/telescope
 	sha256sums = SKIP
 
 pkgname = telescope-git
