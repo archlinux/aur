@@ -2,7 +2,7 @@
 # Contributor: Max Gautier <mg@max.gautier.name>
 pkgname=rpcs3-udev
 pkgver=2024.07.15
-pkgrel=1
+pkgrel=2
 pkgdesc="udev rules to allow RPCS3 to communicate with DualShock 3, 4 and DualSense controllers."
 arch=('any')
 url="https://wiki.rpcs3.net/index.php?title=Help:Controller_Configuration"
@@ -10,7 +10,7 @@ license=('CCPL:by-sa-4.0')
 source=("99-ds3-controllers.rules"
         "99-ds4-controllers.rules"
         "99-dualsense-controllers.rules")
-sha256sums=('f79b90f75ff0937472c1dc8fbb306e113fdc5ef97b804df9e5fb4f6e2a217a83'
+sha256sums=('107951a1af5a85832e5eb85f1255c6d3a466544fa1a14a1db788c418b9a108df'
             'a4b2774e83206878e115761853f1742847a640ed6ea245995ed2fcd6756836b6'
             '586e7aa693b2c5a87cf41bf2b98fec7113985e36d3b360ad415ee9e9dfff7525')
 
