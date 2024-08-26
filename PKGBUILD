@@ -2,13 +2,13 @@
 
 pkgname=elos
 pkgver=0.61.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An event logging system"
 arch=('x86_64')
 url="https://github.com/Elektrobit/elos"
 license=('MIT')
 depends=('glibc' 'safu' 'samconf' 'libmnl' 'sqlite' 'json-c')
-makedepends=('cmake' 'jq')
+makedepends=('cmake' 'jq' 'git')
 install='elos.install'
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgname-$pkgver.tar.gz")
@@ -19,6 +19,7 @@ build() {
   cmake -B build \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE=Release \
+	-DENABLE_GIT_VERSION=on \
 	-DELOS_BUILD_DEFAULTS=off \
 	-DINSTALL_UNIT_TESTS=off \
 	-DELOS_DAEMON=on \

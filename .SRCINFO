@@ -1,13 +1,14 @@
 pkgbase = elos
 	pkgdesc = An event logging system
 	pkgver = 0.61.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Elektrobit/elos
 	install = elos.install
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = jq
+	makedepends = git
 	depends = glibc
 	depends = safu
 	depends = samconf
