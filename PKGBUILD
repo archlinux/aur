@@ -1,5 +1,5 @@
 pkgname=mingw-w64-pcre2
-pkgver=10.42
+pkgver=10.44
 pkgrel=1
 pkgdesc='A library that implements Perl 5-style regular expressions. 2nd version (mingw-w64)'
 arch=('any')
@@ -10,7 +10,7 @@ depends=(mingw-w64-crt)
 options=(staticlibs !strip !buildflags)
 optdepends=(mingw-w64-readline mingw-w64-bzip2 mingw-w64-zlib)
 source=("https://github.com/PhilipHazel/${pkgname##mingw-w64-}/releases/download/${pkgname##mingw-w64-}-$pkgver/${pkgname##mingw-w64-}-$pkgver.tar.bz2"{,.sig})
-sha512sums=('72fbde87fecec3aa4b47225dd919ea1d55e97f2cbcf02aba26e5a0d3b1ffb58c25a80a9ef069eb99f9cf4e41ba9604ad06a7ec159870e1e875d86820e12256d3'
+sha512sums=('ee91cc10a2962bc7818b03d368df3dd31f42ea9a7260ae51483ea8cd331b7431e36e63256b0adc213cc6d6741e7c90414fd420622308c0ae3fcb5dd878591be2'
             'SKIP')
 validpgpkeys=('45F68D54BBE23FB3039B46E59766E084FB0F43D8')  # Philip Hazel
 
