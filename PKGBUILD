@@ -1,4 +1,4 @@
-# Maintainer: Mckol <mckol363@gmail.com>
+# Maintainer: LunarEclipse <luna@lunareclipse.zone>
 # Contributor: Songtronix <contact@songtronix.com>
 pkgname=airshipper
 pkgver=0.11.0
