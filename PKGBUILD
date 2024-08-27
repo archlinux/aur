@@ -1,6 +1,6 @@
 # Maintainer: hellopoisonx <x1665341912@gmail.com>
 pkgname='clash-flutter-git'
-pkgver=0.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='A Flutter based GUI for Clash.Meta kernel'
 arch=('x86_64' 'i386' 'aarch64' 'armv7h' 'riscv64' 'loong64')
@@ -33,6 +33,7 @@ function package() {
   install -Dm755 "${srcdir}/clash-flutter/clash-flutter-launcher" "${pkgdir}/usr/bin/clash-flutter-launcher"
   install -Dm644 "${srcdir}/clash-flutter/clash-flutter.desktop" "${pkgdir}/usr/share/applications/clash-flutter.desktop"
   install -Dm644 "${srcdir}/clash-flutter/LICENSE" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  chmod 664 "${pkgdir}/etc/clash-flutter"
 }
 sha256sums=('SKIP'
   'c17e6a0592307461733a5938d920ecf13e10843a2f109eadc328215ff2518236')
