@@ -3,7 +3,7 @@
 
 pkgname=ldapvi
 pkgver=1.7.r15.gf1d42ba
-pkgrel=1
+pkgrel=2
 _commit=f1d42bad66cc4623d1ff21fbd5dddbf5009d3e40
 pkgdesc="Interactive LDAP client for Unix terminals"
 url="http://www.lichteblau.com/ldapvi/"

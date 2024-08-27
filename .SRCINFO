@@ -1,7 +1,7 @@
 pkgbase = ldapvi
 	pkgdesc = Interactive LDAP client for Unix terminals
 	pkgver = 1.7.r15.gf1d42ba
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.lichteblau.com/ldapvi/
 	arch = x86_64
 	license = GPL-2.0-only
