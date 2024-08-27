@@ -89,7 +89,7 @@ def save_and_delete_images(url, pdf_name, id=None, class_name=None, exclude_clas
             # Use the 'convert' command to create a PDF from images in the folder
             image_files_str = " ".join(image_filenames)
             convert_command = f"magick {image_files_str} {pdf_name}.pdf"
-            
+            print(image_files_str)
             # Run the convert command using os.system
             os.system(convert_command)
 
