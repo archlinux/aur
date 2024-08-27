@@ -1,6 +1,6 @@
 pkgbase = python-splinepy
 	pkgdesc = Python N-Dimensional Bezier, RationalBezier, BSpline and NURBS library with C++ Backend
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://tataratat.github.io/splinepy
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-splinepy
 	makedepends = python-scikit-build-core
 	makedepends = python-wheel
 	depends = python-gustaf
-	source = https://pypi.org/packages/source/s/splinepy/splinepy-0.1.2.tar.gz
-	sha512sums = 04e9e1648bea60d7b1432da79e9372368e7acd6d6a7ba8eb6a47894594adacdfc49dd5d640f70ecdb1619b2b39b14a77af945d2989b575f01ee536d76a88bef8
+	source = https://pypi.org/packages/source/s/splinepy/splinepy-0.1.3.tar.gz
+	sha512sums = 6007cfa233db2314f5760fec493e17b949956a5ca9802bd56074ad51a462517605def5a7f6b1f5163781ec04eb730f019db64700fd91a03277de6f1e4a43b02c
 
 pkgname = python-splinepy
