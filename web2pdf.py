@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import weasyprint
 import os
+import shlex  # Add this import at the top of your script
 
 def save_content_as_pdf(url, pdf_name, id=None, class_name=None, exclude_classes=None):
     headers = {
@@ -87,8 +88,8 @@ def save_and_delete_images(url, pdf_name, id=None, class_name=None, exclude_clas
             # After saving all images, create a PDF using the 'convert' command in Linux
 
             # Use the 'convert' command to create a PDF from images in the folder
-            image_files_str = " ".join(image_filenames)
-            convert_command = f"magick {image_files_str} {pdf_name}.pdf"
+			image_files_str = " ".join(shlex.quote(img_filename) for img_filename in image_filenames)
+			convert_command = f"magick {image_files_str} {shlex.quote(pdf_name)}.pdf"
             
             # Run the convert command using os.system
             os.system(convert_command)

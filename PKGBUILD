@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your_email@example.com>
 pkgname=web2pdf
-pkgver=6.0
+pkgver=7.0
 pkgrel=1
 pkgdesc="A CLI tool to extract a part of a website, create a PDF"
 arch=('any')
