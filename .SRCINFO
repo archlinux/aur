@@ -1,16 +1,16 @@
 pkgbase = powerpc64-linux-gnu-linux-api-headers
 	pkgdesc = Kernel headers sanitized for use in userspace (powerpc64-linux-gnu)
-	pkgver = 6.8
+	pkgver = 6.10
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = any
 	license = GPL2
 	makedepends = rsync
-	source = https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.8.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.8.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.10.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.10.tar.sign
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = c969dea4e8bb6be991bbf7c010ba0e0a5643a3a8d8fb0a2aaa053406f1e965f3
+	sha256sums = 774698422ee54c5f1e704456f37c65c06b51b4e9a8b0866f34580d86fef8e226
 	sha256sums = SKIP
 
 pkgname = powerpc64-linux-gnu-linux-api-headers
