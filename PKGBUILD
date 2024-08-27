@@ -5,7 +5,7 @@
 pkgname=ume-git
 _pkgname=ume
 pkgver=r67.242a9f5
-pkgrel=6
+pkgrel=7
 pkgdesc="VTE based terminal emulator forked from sakura"
 arch=('i686' 'x86_64')
 url="https://github.com/SgtWiggles/ume"
@@ -16,20 +16,20 @@ source=("${_pkgname}::git+https://github.com/SgtWiggles/ume.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $startdir/${_pkgname}
+  cd "${_pkgname}"
 
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/${_pkgname}"
+  cd "${_pkgname}"
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
 
 package() {
-  cd "$srcdir/${_pkgname}"
+  cd "${_pkgname}"
 
   make DESTDIR="${pkgdir}" install
   # extract the keybindings from the installed documentation, rest is only relevant during build time
