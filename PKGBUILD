@@ -4,12 +4,12 @@
 
 pkgname=jfreechart
 _pkgname=JFreeChart
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="Charting program for java"
 arch=('any')
 url="https://www.jfree.org/jfreechart/"
-license=('LGPL')
+license=('LGPL-2.1-only')
 depends=('java-runtime' )
 makedepends=('maven' 'java-runtime-common')
 source=("https://github.com/jfree/jfreechart/archive/refs/tags/v$pkgver.tar.gz")
@@ -24,5 +24,5 @@ package() {
 	install -d $pkgdir/usr/share/java/
 	install -m644 target/*.jar $pkgdir/usr/share/java/
 }
-md5sums=('f797d94595bafbd358b278d16b960ec5')
-sha256sums=('02370e037950fee2e15f61d163b9b5c641e2438a4b110ff112f948ceff57d36a')
+md5sums=('d4565bc690771da8ea56abe50ed2ab51')
+sha256sums=('b8e9fd007abd91d9e73c9fa3a59d4af3b4d551f864dafc711a1ac99f58bedccb')
