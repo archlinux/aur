@@ -1,7 +1,7 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu-git
-pkgver=136.r6.g71302c093
+pkgver=140.r0.g5ff5df0e2
 pkgrel=1
 pkgdesc="Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation. (git version)"
 arch=(x86_64 i686)
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   # If you want to build with gcc, edit to use g++ instead of clang++
-  make -C "${srcdir}/ares/desktop-ui" hiro=gtk3 compiler=clang++
+  make -C "${srcdir}/ares/desktop-ui" hiro=gtk3 compiler=clang++ prefix="/usr"
 }
 
 package() {
