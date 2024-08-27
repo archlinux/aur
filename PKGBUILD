@@ -51,7 +51,7 @@ After=xdg-desktop-autostart.target
 ExecStart=/usr/lib/pentablet/PenTablet.sh /mini
 
 [Install]
-WantedBy=graphical-session.target
+WantedBy=xdg-desktop-autostart.target
 EOF
 
         #Licence information
