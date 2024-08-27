@@ -4,5 +4,5 @@
 -  visit_URL((void *)("http://www.w1hkj.com/kcat-help/index.html"));
 +  visit_URL((void *)("file:///usr/share/doc/kcat/index.html"));
 @@ -94 +94 @@
-- {"On-line help", 0,  (Fl_Callback*)cb_mnuOnLineHelp, 0, 128, FL_NORMAL_LABEL, 0, 14, 0},
-+ {"Off-line help", 0,  (Fl_Callback*)cb_mnuOnLineHelp, 0, 128, FL_NORMAL_LABEL, 0, 14, 0},
+- {"On-line help", 0,  (Fl_Callback*)cb_mnuOnLineHelp, 0, 128, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
++ {"Off-line help", 0,  (Fl_Callback*)cb_mnuOnLineHelp, 0, 128, (uchar)FL_NORMAL_LABEL, 0, 14, 0},

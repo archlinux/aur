@@ -1,25 +1,24 @@
 pkgbase = kcat
 	pkgdesc = Kachina 505DSP - Ham Radio Transceiver Control Program
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = http://www.w1hkj.com
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-only
 	makedepends = automake
 	makedepends = autoconf
 	makedepends = pkg-config
 	depends = fltk
 	depends = flxmlrpc
-	optdepends = hamradio-menus: XDG compliant menuing
-	optdepends = kcat-docs: help files
+	depends = hamradio-menus
+	depends = kcat-docs
 	optdepends = fldigi: for digital mode interface
-	source = kcat::git://git.code.sf.net/p/fldigi/kcat#branch=pu/df
+	source = http://www.w1hkj.com/files/kcat/kcat-1.2.5.tar.gz
 	source = diff.kcat.panel.cxx
-	md5sums = SKIP
-	md5sums = 775102f21953289fdbb55a0164c091f1
-	sha256sums = SKIP
-	sha256sums = ad3a0fdce8a83dfb0be1e67b025e3b4946091784bd3d2c01be78f8f91253c761
+	md5sums = f065ea188ca436011949f75c2a2d8b54
+	md5sums = 2ed1248585a03fc69e6925befef3f64b
+	sha256sums = abc83128d4fc92ee95f930ca721f1386b7b7592b9554fc2b9f14de8887beac84
+	sha256sums = 4ef7df2659f2d23b0d9a83a189e9c57bd4494e3a3486c9615fb1cfcaa813630e
 
 pkgname = kcat
-

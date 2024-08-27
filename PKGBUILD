@@ -1,18 +1,17 @@
 # Maintainer: not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=kcat
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="Kachina 505DSP - Ham Radio Transceiver Control Program"
 arch=('i686' 'x86_64')
 url="http://www.w1hkj.com"
-license=('GPL')
-depends=('fltk' 'flxmlrpc')
-optdepends=('hamradio-menus: XDG compliant menuing'
-	    'kcat-docs: help files'
-	    'fldigi: for digital mode interface')
+license=('GPL-3.0-only')
+depends=('fltk' 'flxmlrpc' 'hamradio-menus' 'kcat-docs')
+optdepends=('fldigi: for digital mode interface')
 makedepends=('automake' 'autoconf' 'pkg-config')
-source=("$pkgname::git://git.code.sf.net/p/fldigi/$pkgname#branch=pu/df"
+source=("http://www.w1hkj.com/files/kcat/$pkgname-$pkgver.tar.gz"
+#	"$pkgname::git://git.code.sf.net/p/fldigi/$pkgname#branch=pu/df"
 #	"$pkgname::git://git.code.sf.net/p/fldigi/$pkgname#branch=master")
 #	"http://downloads.sourceforge.net/project/fldigi/$pkgname/$pkgname-$pkgver.tar.gz")
 	diff.kcat.panel.cxx
@@ -25,15 +24,16 @@ source=("$pkgname::git://git.code.sf.net/p/fldigi/$pkgname#branch=pu/df"
 #}
 
 prepare() {
-	cd $srcdir/$pkgname/src/UI
+#	cd $srcdir/$pkgname/src/UI
 #	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/$pkgname-$pkgver/src/UI
 
 	patch -p0 < ../../../diff.kcat.panel.cxx
 }
 
 build() {
-	cd $srcdir/$pkgname
-#	cd $srcdir/$pkgname-$pkgver
+#	cd $srcdir/$pkgname
+	cd $srcdir/$pkgname-$pkgver
 
 	autoreconf --install
 	automake --add-missing
@@ -42,12 +42,12 @@ build() {
 }
 
 package() {
-	cd $srcdir/$pkgname
-#	cd $srcdir/$pkgname-$pkgver
+#	cd $srcdir/$pkgname
+	cd $srcdir/$pkgname-$pkgver
 
 	make DESTDIR="$pkgdir" install
 }
-md5sums=('SKIP'
-         '775102f21953289fdbb55a0164c091f1')
-sha256sums=('SKIP'
-            'ad3a0fdce8a83dfb0be1e67b025e3b4946091784bd3d2c01be78f8f91253c761')
+md5sums=('f065ea188ca436011949f75c2a2d8b54'
+         '2ed1248585a03fc69e6925befef3f64b')
+sha256sums=('abc83128d4fc92ee95f930ca721f1386b7b7592b9554fc2b9f14de8887beac84'
+            '4ef7df2659f2d23b0d9a83a189e9c57bd4494e3a3486c9615fb1cfcaa813630e')
