@@ -1,14 +1,14 @@
 pkgbase = armv5-eabi-musl-bleeding-edge-toolchain
 	pkgdesc = Ready-to-use cross-compilation toolchain provided by bootlin.com
-	pkgver = 2024.02
+	pkgver = 2024.05
 	pkgrel = 1
 	url = https://toolchains.bootlin.com/
 	install = hooks.install-armv5-eabi-musl-bleeding-edge-toolchain
 	arch = x86_64
 	license = GPL
-	source = https://toolchains.bootlin.com/downloads/releases/toolchains/armv5-eabi/tarballs/armv5-eabi--musl--bleeding-edge-2024.02-1.tar.bz2
+	source = https://toolchains.bootlin.com/downloads/releases/toolchains/armv5-eabi/tarballs/armv5-eabi--musl--bleeding-edge-2024.05-1.tar.xz
 	source = profile.sh-armv5-eabi-musl-bleeding-edge-toolchain
-	sha256sums = 8dac4ea5697a42a88bd1d7d91c3d57a20a7db6239857def3d7518c8e2330b5a4
+	sha256sums = 5261ae65d4e454cb9d16a25a6f93f615742a10c64fb7ce08b7ce776c388abbdd
 	sha256sums = 4f46ed61713bc0435387da7b07bcfdc59e66c59d6050319515908f843d9702bc
 
 pkgname = armv5-eabi-musl-bleeding-edge-toolchain
