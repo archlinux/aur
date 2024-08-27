@@ -1,5 +1,5 @@
 #
-# Maintainer: Bastian Rieck <bastian@rieck.ru>
+# Maintainer: Bastian Rieck <bastian@rieck.me>
 #
 
 pkgname=aleph-git # '-bzr', '-git', '-hg' or '-svn'
@@ -7,7 +7,7 @@ pkgver=r1578.2822abb
 pkgrel=1
 pkgdesc='A library for exploring persistent homology'
 arch=('x86_64')
-url="http://submanifold.github.io/Aleph"
+url="http://pseudomanifold.github.io/Aleph"
 license=('MIT')
 groups=()
 depends=('boost')
@@ -20,7 +20,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('aleph::git+https://github.com/Submanifold/Aleph.git')
+source=('aleph::git+https://github.com/Pseudomanifold/Aleph.git')
 noextract=()
 md5sums=('SKIP')
 
