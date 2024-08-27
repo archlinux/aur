@@ -1,0 +1,13 @@
+pkgbase = inori
+	pkgdesc = terminal mpd client with effective searching
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/eshrh/inori
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = rust
+	depends = mpd
+	source = inori-0.1.0.tar.gz::https://github.com/eshrh/inori/archive/v0.1.0.tar.gz
+	sha256sums = 5d7c3595b3bce35298c28bfb6acd8d6dd2999201485faa3b50bf09b55bf9cb95
+
+pkgname = inori
