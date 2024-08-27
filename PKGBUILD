@@ -2,12 +2,12 @@
 
 pkgname=hdiffpatch-bin
 pkgver=4.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='a C\C++ library and command-line tools for Diff & Patch between binary files or directories(folder)'
 arch=('x86_64') # TODO: x86 arm32 arm64 loong64 riscv32 riscv64
 url='https://github.com/sisong/HDiffPatch/'
 license=('MIT')
-depends=()
+provides=('hdiffpatch')
 source=(
     "https://github.com/sisong/HDiffPatch/releases/download/v${pkgver}/hdiffpatch_v${pkgver}_bin_linux64.zip"
     "https://raw.githubusercontent.com/sisong/HDiffPatch/v${pkgver}/LICENSE"
