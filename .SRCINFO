@@ -1,6 +1,6 @@
 pkgbase = r-mcmcpack
 	pkgdesc = Markov Chain Monte Carlo (MCMC) Package
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=MCMCpack
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = r-mcmcpack
 	depends = r-coda
 	depends = r-mcmc
 	depends = r-quantreg
-	source = https://cran.r-project.org/src/contrib/MCMCpack_1.7-0.tar.gz
-	sha256sums = 846073d710017ec1dc9a2b4616cb6aeb60ce04e3500a37214522818d34045def
+	source = https://cran.r-project.org/src/contrib/MCMCpack_1.7-1.tar.gz
+	sha256sums = 3b0b46746324197c38826cde06729f031311c3520d9d42815b7b356d29b58529
 
 pkgname = r-mcmcpack
