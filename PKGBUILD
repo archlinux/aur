@@ -1,12 +1,8 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
 
 # Maintainer: James Williams <jowilliams12000 at gmail dot com>
 pkgname=wallust-git
 _pkgname=wallust
-pkgver=3.0.0.beta.r49.ga60ebe1
+pkgver=3.0.0.r0.g2fe6f57
 pkgrel=1
 pkgdesc="generate colors from an image"
 arch=('any')
@@ -16,7 +12,8 @@ makedepends=('cargo' 'git' 'make')
 optdepends=('imagemagick')
 provides=('wallust=$pkgver')
 conflicts=('wallust')
-source=("$_pkgname::git+$url#branch=dev")
+source=("$_pkgname::git+$url#branch=master")
+options=('!lto')
 sha256sums=('SKIP')
 
 pkgver() {
