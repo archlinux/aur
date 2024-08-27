@@ -1,9 +1,9 @@
-# Maintainer: Mckol <mckol363@gmail.com>
+# Maintainer: LunarEclipse <luna@lunareclipse.zone>
 # Contributor: Songtronix <contact@songtronix.com>
 
 export GIT_LFS_SKIP_SMUDGE=1 # This is to prevent Git LFS errors
 pkgname=airshipper-git
-pkgver=0.10.0.r6.0fa7c6d
+pkgver=0.11.0.r11.abd7c79
 pkgrel=1
 pkgdesc="The official launcher for Veloren - an open-world, open-source multiplayer voxel RPG"
 arch=('x86_64' 'i686')
