@@ -1,4 +1,5 @@
 # Maintainer: Louis Dalibard <ontake@ontake.dev>
+# Contributor: Louis Dalibard <ontake@ontake.dev>
 _pkgbase="ontake-hayai"
 pkgname="$_pkgbase-git"
 pkgver=r9.ga15715a
