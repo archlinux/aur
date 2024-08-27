@@ -1,4 +1,4 @@
-# Maintainer: <Your Name> <Your Email>
+# Maintainer: <Dima Marhitych> <uzhdimka@gmail.com>
 pkgname=netflix-electron31
 _pkgname=Netflix
 pkgver=1.0.8
