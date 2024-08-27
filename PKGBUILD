@@ -1,17 +1,18 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 # Contributor: peanut2 <riseup-vpn-git>
 # Contributor: rany <rany at i2pmail dot org>
-# Contributor: Akuma (https://0xacab.org/leap/bitmask-vpn/-/issues/94#note_173017)
+# Contributor: Akuma <https://0xacab.org/leap/bitmask-vpn/-/issues/94#note_173017>
 
 pkgname=riseup-vpn
 pkgver=0.24.8
 _commit=8b3ac473f64b6de0262fbf945ff25af8029134f1
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy, fast, and secure VPN service from riseup.net"
 url="https://0xacab.org/leap/bitmask-vpn"
 license=('GPL-3.0-only')
 arch=('x86_64')
-depends=('lxsession' 'openvpn' 'python' 'qt6-base' 'qt6-quickcontrols2' 'qt6-svg' 'qt6-tools')
+depends=('gcc-libs' 'hicolor-icon-theme' 'libglvnd' 'lxsession' 'openvpn' 'python' 'qt6-base'
+         'qt6-declarative' 'qt6-quickcontrols2' 'qt6-svg' 'qt6-tools')
 makedepends=('cmake' 'go' 'git')
 source=("git+$url.git#commit=$_commit"
         "$pkgname.png"
