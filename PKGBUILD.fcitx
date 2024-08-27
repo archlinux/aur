@@ -139,7 +139,7 @@ install_mozc-with-jp-dict-common() {
 }
 
 package_fcitx-mozc-with-jp-dict() {
-  pkgdesc="Fcitx module for Mozc with UT dictionary"
+  pkgdesc="Fcitx module for Mozc with SudachiDict dictionary"
   depends=('fcitx' fcitx-qt6 gcc-libs glibc qt6-base)
   provides=('fcitx-mozc')
   replaces=('fcitx-mozc' "${pkgbase}-common")

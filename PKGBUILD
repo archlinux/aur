@@ -161,7 +161,7 @@ install_mozc-with-jp-dict-common() {
 }
 
 package_fcitx5-mozc-with-jp-dict() {
-  pkgdesc="Fcitx5 module for Mozc with UT dictionary"
+  pkgdesc="Fcitx5 module for Mozc with SudachiDict dictionary"
   depends=('fcitx5' 'fcitx5-qt' 'hicolor-icon-theme' gcc-libs glibc qt6-base)
   provides=('fcitx5-mozc')
   replaces=('fcitx5-mozc' "${pkgbase}-common")
@@ -179,7 +179,7 @@ package_fcitx5-mozc-with-jp-dict() {
 }
 
 package_ibus-mozc-with-jp-dict() {
-  pkgdesc="IBus engine module for Mozc with UT dictionary"
+  pkgdesc="IBus engine module for Mozc with SudachiDict dictionary"
   depends=('ibus>=1.4.1' "qt6-base" 'libibus')
   replaces=('ibus-mozc' "${pkgbase}-common")
   conflicts=('ibus-mozc' "$pkgbase-common" 'fcitx' 'fcitx-configtool' 'fcitx-qt5' 'fcitx-qt6' 'fcitx-mozc' 'fcitx5' 'fcitx5-configtool' 'fcitx5-qt' 'fcitx5-mozc' fcitx5-mozc-with-jp-dict fcitx-mozc-with-jp-dict)
@@ -203,7 +203,7 @@ package_ibus-mozc-with-jp-dict() {
 }
 
 package_emacs-mozc-with-jp-dict() {
-  pkgdesc="Emacs engine module for Mozc with UT dictionary"
+  pkgdesc="Emacs engine module for Mozc with SudachiDict dictionary"
   license=('BSD-3-Clause')
   depends=(gcc-libs "emacs")
   replaces=('emacs-mozc')

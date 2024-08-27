@@ -36,7 +36,7 @@ pkgbase = mozc-with-jp-dict
 	sha512sums = 1a5b62c83a08781b44bd73f978a4024d93667df47b1a3f4c179096cbc32f28e803c50dca6b5b7ad20fb788d46797551c36ec1efb7782f4361b695e2e0a6060ca
 
 pkgname = ibus-mozc-with-jp-dict
-	pkgdesc = IBus engine module for Mozc with UT dictionary
+	pkgdesc = IBus engine module for Mozc with SudachiDict dictionary
 	depends = ibus>=1.4.1
 	depends = qt6-base
 	depends = libibus
@@ -57,7 +57,7 @@ pkgname = ibus-mozc-with-jp-dict
 	replaces = mozc-with-jp-dict-common
 
 pkgname = fcitx5-mozc-with-jp-dict
-	pkgdesc = Fcitx5 module for Mozc with UT dictionary
+	pkgdesc = Fcitx5 module for Mozc with SudachiDict dictionary
 	depends = fcitx5
 	depends = fcitx5-qt
 	depends = hicolor-icon-theme
@@ -78,7 +78,7 @@ pkgname = fcitx5-mozc-with-jp-dict
 	replaces = mozc-with-jp-dict-common
 
 pkgname = emacs-mozc-with-jp-dict
-	pkgdesc = Emacs engine module for Mozc with UT dictionary
+	pkgdesc = Emacs engine module for Mozc with SudachiDict dictionary
 	license = BSD-3-Clause
 	depends = gcc-libs
 	depends = emacs
