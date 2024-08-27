@@ -1,0 +1,15 @@
+pkgbase = spogo
+	pkgdesc = A command-line tool with Spotify integration
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dionvu/spogo
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = go
+	source = spogo-0.1.0.tar.gz::https://github.com/dionvu/spogo/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = spogo
