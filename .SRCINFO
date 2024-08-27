@@ -1,13 +1,13 @@
 pkgbase = filebrowser-git
 	pkgdesc = Standalone web file manager
-	pkgver = 2.28.0.r4.gae0af1f9
-	pkgrel = 1
+	pkgver = 2.30.0.r16.g8e67a12f
+	pkgrel = 2
 	url = https://filebrowser.org/
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
 	makedepends = go
-	makedepends = nodejs-lts-iron
+	makedepends = nodejs
 	makedepends = npm
 	makedepends = go.rice
 	depends = glibc

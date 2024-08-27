@@ -2,14 +2,14 @@
 # Contributor: Dct Mei <dctxmei@gmail.com>
 
 pkgname=filebrowser-git
-pkgver=2.28.0.r4.gae0af1f9
-pkgrel=1
+pkgver=2.30.0.r16.g8e67a12f
+pkgrel=2
 pkgdesc="Standalone web file manager"
 arch=(x86_64)
 url="https://filebrowser.org/"
-license=(Apache)
+license=(Apache-2.0)
 depends=(glibc)
-makedepends=(git go nodejs-lts-iron npm go.rice)
+makedepends=(git go nodejs npm go.rice)
 provides=(filebrowser)
 conflicts=(filebrowser)
 source=("git+https://github.com/filebrowser/filebrowser.git"
@@ -19,28 +19,36 @@ sha512sums=('SKIP'
 options=(emptydirs !lto)
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "filebrowser"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${pkgname%-git}/frontend"
-
+  cd "filebrowser/frontend"
   npm install
-  npm update
+  echo "DONE NPM INSTALL"
+
+  #npm update --legacy-peer-deps
+  npm update --force
+  echo "DONE NPM UPDATE"
+
   npm run build
+  echo "DONE NPM RUN BUILD"
 
-  cd "${srcdir}/${pkgname%-git}/http"
+  cd "${srcdir}/filebrowser/http"
   rice embed-go
+  echo "DONE rice embed-go"
 
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${srcdir}/filebrowser"
   export GOPATH="$SRCDEST/go-modules"
 
   go build \
-    -gcflags "all=-trimpath=${PWD}" \
-    -asmflags "all=-trimpath=${PWD}" \
-    -ldflags "-extldflags ${LDFLAGS}" \
-    -buildmode=pie
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+    .
 }
 
 package() {
