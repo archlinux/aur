@@ -1,20 +1,20 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
 pkgname=armv5-eabi-glibc-bleeding-edge-toolchain
-pkgver=2024.02
+pkgver=2024.05
 pkgrel=1
 pkgdesc="Ready-to-use cross-compilation toolchain provided by bootlin.com"
 arch=("x86_64")
 url="https://toolchains.bootlin.com/"
 license=("GPL")
-source=("https://toolchains.bootlin.com/downloads/releases/toolchains/armv5-eabi/tarballs/armv5-eabi--glibc--bleeding-edge-2024.02-1.tar.bz2"
+source=("https://toolchains.bootlin.com/downloads/releases/toolchains/armv5-eabi/tarballs/armv5-eabi--glibc--bleeding-edge-2024.05-1.tar.xz"
         "profile.sh-armv5-eabi-glibc-bleeding-edge-toolchain")
 install="hooks.install-armv5-eabi-glibc-bleeding-edge-toolchain"
-sha256sums=('8f6c0bd14479ced3814917a12cc8c0809fa5161c87da39b362a1ec8bc348e95c'
+sha256sums=('1466a2c312a340d5314583c4ef3fbf955eaa0c16627712374e1f1d74d9a38505'
             '0393a397690b72ed670dcd34aa3fd2b5f85f2edac4dd08b7837377b7ff8110ef')
 
 build() {
-	cd "armv5-eabi--glibc--bleeding-edge-2024.02-1"
+	cd "armv5-eabi--glibc--bleeding-edge-2024.05-1"
 
 	sh relocate-sdk.sh "/opt/armv5-eabi-glibc-bleeding-edge"
 }
@@ -22,7 +22,7 @@ build() {
 package() {
 	options=(!strip)
 
-	cd "armv5-eabi--glibc--bleeding-edge-2024.02-1"
+	cd "armv5-eabi--glibc--bleeding-edge-2024.05-1"
 
 	mkdir -p "$pkgdir/opt/armv5-eabi-glibc-bleeding-edge/"
 	cp -a * "$pkgdir/opt/armv5-eabi-glibc-bleeding-edge/"
