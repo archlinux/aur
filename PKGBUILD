@@ -18,7 +18,7 @@ depends=(
 	'libxcb'
 	'wayland'
 	'cli11'
-	'google-breakpad-fixed'
+	'google-breakpad-git'
 )
 makedepends=(
 	'ninja'
