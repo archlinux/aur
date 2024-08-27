@@ -34,6 +34,7 @@ pkgbase = gamescope-nvidia
 	depends = sdl2
 	depends = vulkan-icd-loader
 	depends = xorg-xwayland
+	optdepends = mangohud: for option "--mangoapp"
 	provides = gamescope
 	conflicts = gamescope
 	source = gamescope::git+https://github.com/ValveSoftware/gamescope.git#tag=3.15.1

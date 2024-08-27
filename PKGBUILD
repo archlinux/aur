@@ -35,6 +35,9 @@ depends=(
   'sdl2'
   'vulkan-icd-loader'
   'xorg-xwayland')
+optdepends=(
+  'mangohud: for option "--mangoapp"'
+)
 makedepends=(
   'git'
   'glm' # tested work version v1.0.1
