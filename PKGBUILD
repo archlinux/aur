@@ -1,3 +1,5 @@
+# Maintainer: Satakun Utama <linesofcodes[at]dailitation[dot]xyz>
+
 _name=tkextrafont
 pkgname=python-tkextrafont
 pkgver=0.6.3
@@ -5,7 +7,7 @@ pkgrel=1
 pkgdesc='Fonts loader for Tkinter'
 arch=('x86_64')
 url=https://pypi.org/project/tkextrafont/
-license=(MIT AND GPL-3.0 AND LicenseRef-extrafont-license)
+license=('MIT AND GPL-3.0 AND LicenseRef-tkextrafont-license')
 depends=(
   python
   fontconfig
