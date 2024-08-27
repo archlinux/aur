@@ -8,6 +8,9 @@ pkgbase = ontake-hayai-git
 	arch = aarch64
 	license = GPL3
 	makedepends = go>=1.18
+	makedepends = git
+	depends = gtk3
+	depends = alsa-lib
 	provides = ontake-hayai
 	conflicts = ontake-hayai
 	source = git+https://github.com/make-42/hayai
