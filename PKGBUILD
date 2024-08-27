@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=blender-bin
-pkgver=4.2.0
-pkgrel=4
+pkgver=4.2.1
+pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)"
 arch=('x86_64')
 url="https://blender.org"
@@ -47,7 +47,7 @@ provides=('blender')
 conflicts=('blender')
 install=$pkgname.install
 source=("https://download.blender.org/release/Blender${pkgver:0:3}/blender-${pkgver}-linux-x64.tar.xz")
-sha256sums=('4f4fd7646af01f6fee9d420408318381a6e52571268eb7cf9cd5033bd9e7a359')
+sha256sums=('be0fbaa0c1e52d4552023220b4c67351efbb707cac49bb381fcbee2182447005')
 validpgpkeys=()
 
 package() {
