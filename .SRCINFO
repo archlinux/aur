@@ -1,0 +1,24 @@
+pkgbase = python-tkextrafont
+	pkgdesc = Fonts loader for Tkinter
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://pypi.org/project/tkextrafont/
+	arch = x86_64
+	license = MIT
+	license = AND
+	license = GPL-3.0
+	license = AND
+	license = LicenseRef-extrafont-license
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-scikit-build
+	depends = python
+	depends = fontconfig
+	depends = tcl
+	depends = tk
+	source = python-tkextrafont-0.6.3.tar.gz::https://github.com/TkinterEP/python-tkextrafont/archive/refs/tags/v0.6.3.tar.gz
+	b2sums = 2db41fd56f4c19ce429bf06904e8a7275ee9e196881f01b6dfcccfb039c5a7e70400b46b4bac5fb48c402c837a14e2e133790bc4e66fb57e22a0007759366e7b
+
+pkgname = python-tkextrafont
