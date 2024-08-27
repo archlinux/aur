@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=dfidx
-_pkgver=0.0-5
+_pkgver=0.1-0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Indexed Data Frames"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -12,17 +12,19 @@ license=('GPL-2.0-or-later')
 depends=(
   r-dplyr
   r-formula
+  r-glue
+  r-pillar
+  r-rdpack
+  r-tidyselect
+  r-vctrs
 )
 optdepends=(
-  r-aer
   r-knitr
-  r-mlogit
-  r-plm
-  r-rmarkdown
+  r-quarto
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('26d1468f30c4c3d98a1251f427937c63')
-b2sums=('487ebffcdc74f6eba40d3101abdc36dc0a9c9593a0ab409a6503eebfbda55e11a052d2566ccc77f75f0a37683da1d62b4b0d266ce7c71b95e840389bc26a47d7')
+md5sums=('3b183bbab14576a438979f1772845f74')
+b2sums=('098e8480aa670e10d9fdc037978075e46b5a36598eb32f984dd1bb1581cc93e790983622ef294ac516e01a3cf4dcd4d7922df850b11cf67f9cac2517a1e025fb')
 
 build() {
   mkdir build
