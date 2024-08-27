@@ -10,7 +10,7 @@ arch=('x86_64')
 url='https://www.xp-pen.com/download/index.html'
 license=('custom')
 conflicts=('xp-pen-tablet' 'xppenlinux-v3')
-source=("XPPenLinux${pkgver}-${pkgrel}.tar.gz::https://www.xp-pen.com/download/file.html?id=3184&pid=660&ext=gz")
+source=("XPPenLinux${pkgver}-${pkgrel}.tar.gz::https://download01.xp-pen.com/file/2024/06/XPPenLinux3.4.9-240607.tar.gz")
 install=${pkgname}.install
 sha512sums=('40598c05d5ada0bd7a874b943e7819d6ffd0ef79d77e7433f814cfdc885846cc49276e1162e082bfe03f76b17f095323abfb8d5108f444cd30a685a0e0826ca4')
 
