@@ -39,6 +39,7 @@ ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", RUN+="/usr/bi
 # implemented using: /usr/bin/udev-usb-sync
 # see configuration: /etc/udev-usb-sync/udev-usb-sync.conf
 # Works since Linux 6.2
+ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", RUN+="/usr/bin/udev-usb-sync %k"
 ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", ATTRS{speed}=="12",    RUN+="/usr/bin/udev-usb-sync %k 12"
 ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", ATTRS{speed}=="480",   RUN+="/usr/bin/udev-usb-sync %k 480"
 ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", ATTRS{speed}=="5000",  RUN+="/usr/bin/udev-usb-sync %k 5000"
