@@ -1,0 +1,14 @@
+pkgbase = nodejs-minyami
+	pkgdesc = A lovely video downloader for HLS videos
+	pkgver = 5.3.1
+	pkgrel = 1
+	url = https://github.com/Last-Order/Minyami
+	arch = any
+	license = GPL-3.0
+	depends = nodejs
+	depends = npm
+	noextract = minyami-5.3.1.tgz
+	source = https://registry.npmjs.org/minyami/-/minyami-5.3.1.tgz
+	sha256sums = 6442b5b86afe963f308c77f2cf327e638b380c067dc35668174d8ef9b7c3a2c1
+
+pkgname = nodejs-minyami
