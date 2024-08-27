@@ -1,7 +1,8 @@
 # Mantainer: sgar < swhaat at github >
 
 pkgname=python-aioesphomeapi
-pkgver=24.3.0
+pkgbasename=aioesphomeapi
+pkgver=24.6.2
 pkgrel=1
 pkgdesc="Python Client for ESPHome native API. Used by Home Assistant."
 url="https://github.com/esphome/aioesphomeapi"
@@ -14,22 +15,23 @@ depends=('python-setuptools'
     'python-cryptography'
     'python-noiseprotocol-git'
 )
+makedepends=('python-build' 'python-installer' 'python-wheel' 'cython')
 license=('MIT')
 arch=('any')
 source=("https://github.com/esphome/aioesphomeapi/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9d4f81ce8628770201549165544a96b0e0740276023a2fe48fa49a4f1033e79a')
+sha256sums=('ff503c69c92d8f928541b53eededebc6ea0e908caec6c5783cde3940d7029908')
 
 prepare() {
-    cd "$srcdir/aioesphomeapi-${pkgver}"
+    cd "$srcdir/${pkgbasename}-${pkgver}"
     sed -i 's/==.*//' requirements.txt
 }
 
 build() {
-    cd "$srcdir/aioesphomeapi-${pkgver}"
-    python setup.py build
+    cd "$srcdir/${pkgbasename}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/aioesphomeapi-${pkgver}"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    cd "$srcdir/${pkgbasename}-${pkgver}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
