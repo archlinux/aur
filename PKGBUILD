@@ -1,4 +1,3 @@
-
 # Maintainer: Dion Vu
 pkgname=spogo
 pkgver=0.1.1
