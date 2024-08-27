@@ -5,11 +5,11 @@
 pkgname=ume-git
 _pkgname=ume
 pkgver=r67.242a9f5
-pkgrel=7
+pkgrel=8
 pkgdesc="VTE based terminal emulator forked from sakura"
 arch=('i686' 'x86_64')
 url="https://github.com/SgtWiggles/ume"
-license=('GPL')
+license=('GPL-2.0-only')
 depends=('vte3' 'libxft')
 makedepends=('cmake' 'git')
 source=("${_pkgname}::git+https://github.com/SgtWiggles/ume.git")
