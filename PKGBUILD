@@ -1,6 +1,6 @@
 # Maintainer: Marcus Ben Spencer <marcus at marcusspencer dot xyz>
 # Maintainer: runningpie <levi at levispencer dot com>
-# Maintainer: Elijah Gregg <lovetocode999 at tilde dot team>
+# Contributor: Elijah Gregg <lovetocode999 at tilde dot team>
 # Contributor: chrisl echo archlinux@c2h0r1i2s4t5o6p7h8e9r-l3u4n1a.com|sed 's/[0-9]//g'
 
 pkgname="moltengamepad"
