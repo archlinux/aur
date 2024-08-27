@@ -1,14 +1,14 @@
 pkgbase = armv7-eabihf-musl-bleeding-edge-toolchain
 	pkgdesc = Ready-to-use cross-compilation toolchain provided by bootlin.com
-	pkgver = 2024.02
+	pkgver = 2024.05
 	pkgrel = 1
 	url = https://toolchains.bootlin.com/
 	install = hooks.install-armv7-eabihf-musl-bleeding-edge-toolchain
 	arch = x86_64
 	license = GPL
-	source = https://toolchains.bootlin.com/downloads/releases/toolchains/armv7-eabihf/tarballs/armv7-eabihf--musl--bleeding-edge-2024.02-1.tar.bz2
+	source = https://toolchains.bootlin.com/downloads/releases/toolchains/armv7-eabihf/tarballs/armv7-eabihf--musl--bleeding-edge-2024.05-1.tar.xz
 	source = profile.sh-armv7-eabihf-musl-bleeding-edge-toolchain
-	sha256sums = 9c1cd34a2f488c01315ce4943a4b1ba59f92608cf902dfe3606eb1d1b2503e45
+	sha256sums = 2a8274d28abd4779010dda6b54bfe0d259559181f99908440d39974f2619567a
 	sha256sums = 43ff31a90e056fa5714640b59348e2b08427cdc481695edf4d4f0c0a496a6ff5
 
 pkgname = armv7-eabihf-musl-bleeding-edge-toolchain
