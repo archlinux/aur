@@ -3,7 +3,7 @@
 # Co-Maintainer: stefanwimmer128 <info at stefanwimmer128 dot xyz>
 
 _pkgname=firedragon
-_pkgver=11.17.7-2
+_pkgver=11.17.8-1
 
 pkgname=${_pkgname}-bin
 pkgver=${_pkgver//-/_}
@@ -47,7 +47,7 @@ backup=("usr/lib/${_pkgname}/${_pkgname}.cfg"
 source=(https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v${_pkgver}/downloads/firedragon-v${_pkgver}.linux-x86_64.tar.bz2
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.psd
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.desktop)
-sha256sums=('9c14662a9647f84b9e6363fd7418f6d2c32f696d9620e0fc60daadcb35a65dad'
+sha256sums=('21b10dde5f1eda7a020c31b51e5e371a5ce41145f748628f63d93d4f60b9587b'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
 
