@@ -10,6 +10,7 @@ pkgbase = shairport-sync-mpris-git
 	arch = armv7h
 	arch = aarch64
 	license = custom
+	makedepends = git
 	makedepends = autoconf
 	makedepends = automake
 	makedepends = libtool
