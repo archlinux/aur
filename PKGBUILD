@@ -1,28 +1,47 @@
-# Maintainer:  Alex Avance <aravance at gmail dot com>
+# -*- sh -*-
+
+#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: Alex Avance <aravance at gmail dot com>
 
 _pkgname=sparklines
-pkgname=python-${_pkgname}
-pkgver=0.4.2
-pkgrel=2
-pkgdesc="Text-based sparkline command line mimicking those of Edward Tuft."
+pkgname="python-$_pkgname"
+pkgver=0.5.0
+pkgrel=1
+pkgdesc='Text-based sparkline command line mimicking those of Edward Tuft'
 arch=('any')
-url="https://github.com/deeplook/${_pkgname}"
-license=('GPL3')
-depends=('python-future')
-makedepends=('python-setuptools')
-source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('7c33fd6dc8b277b1fd729b31428df58a785c68be58202f439128e815f1dcae88')
+url="https://github.com/deeplook/$_pkgname"
+license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
+depends=(
+  'python'
+  'python-termcolor'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+)
+source=(
+  "https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
+)
+sha256sums=(
+  '069e48633fc1af354e9bbdfd0a644c1279d6632a572446aa9d741105f1177000'
+)
+provides=("$pkgname" "$_pkgname")
+conflicts=("$_pkgname")
 
 build() {
-	cd "${_pkgname}-$pkgver"
-	python setup.py build
+  cd "${_pkgname}-$pkgver"
+
+  python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "${_pkgname}-$pkgver"
-	export PYTHONHASHSEED=0
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "${_pkgname}-$pkgver"
 
-	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-	rm -rf "$pkgdir$site_packages/test"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  rm -vrf "$pkgdir$_site_packages/tests"
 }
+
+# eof
