@@ -1,7 +1,7 @@
 pkgbase = desq-utils-powermanager
 	pkgdesc = Power manager for DesQ
 	pkgver = 0.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/DesQ/DesQUtils/PowerManager
 	arch = x86_64
 	arch = aarch64
@@ -15,6 +15,7 @@ pkgbase = desq-utils-powermanager
 	depends = dfl-login1
 	depends = dfl-power
 	depends = dfl-utils
+	depends = dfl-xdg
 	depends = dfl-applications
 	source = https://gitlab.com/DesQ/DesQUtils/PowerManager/-/archive/v0.0.8/PowerManager-v0.0.8.tar.gz
 	md5sums = 635e46b9d30582be52ad2d5a07bdc597
