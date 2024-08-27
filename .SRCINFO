@@ -1,6 +1,6 @@
 pkgbase = wine-osu-spectator
 	pkgdesc = A compatibility layer for running Windows programs, but with osu! specific patches
-	pkgver = 9.16.w1.s6c5cb54
+	pkgver = 9.16.w31.s8999a04
 	pkgrel = 1
 	url = http://www.winehq.com
 	install = wine.install
@@ -59,6 +59,8 @@ pkgbase = wine-osu-spectator
 	makedepends = lib32-sdl2
 	makedepends = lib32-libcups
 	makedepends = lib32-llvm-libs
+	makedepends = clang
+	makedepends = llvm-libs
 	makedepends = llvm-mingw-w64-toolchain
 	makedepends = fontconfig
 	makedepends = lcms2
@@ -188,9 +190,9 @@ pkgbase = wine-osu-spectator
 	source = lto-fixup.patch
 	source = mingw-gcc-float-precision-fix.patch
 	source = buildiswow64
-	source = wine::git+https://gitlab.winehq.org/wine/wine.git#commit=65124f15acc5705eb159d5d920877f0ac4835d27
-	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=6c5cb54635aa0667bcfc27707d05f3c6eea96088
-	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=08-24-2024-65124f15-6c5cb546
+	source = wine::git+https://gitlab.winehq.org/wine/wine.git#commit=b01131ce82ad8306d719f9919e6249af2db5322d
+	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=8999a04fd671df12d7e3c9447d45d681a5f9b35f
+	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=08-27-2024-b01131ce-8999a04f
 	sha512sums = dc115ccc8d64afc213d2860a2f3516c31aa2891cd1005498123d86e7e44e0fcf876fbc68c89b201ce5291a12127cb7ff478e9374dbd2512b5d094802780be160
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 	sha512sums = bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285

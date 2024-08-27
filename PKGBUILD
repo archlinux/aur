@@ -13,7 +13,7 @@ _devenv=false
 _generic_release=false
 
 # hack taken from wine-tkg PKGBUILD, real pkgrel is the eval one
-pkgver=9.16.w1.s6c5cb54
+pkgver=9.16.w31.s8999a04
 pkgrel=1
 eval pkgrel=1
 
@@ -35,7 +35,7 @@ _enabled_staging=()
 _disabled_staging=()
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="08-24-2024-65124f15-6c5cb546"
+_patchbase_tag="08-27-2024-b01131ce-8999a04f"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the custompatches folder
@@ -45,8 +45,8 @@ _custompatches=false
 
 ## (with custompatches) uses wine/staging master if empty, uses given commit or tag if set
 ## (without custompatches) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=65124f15acc5705eb159d5d920877f0ac4835d27
-_desired_staging_commit=6c5cb54635aa0667bcfc27707d05f3c6eea96088
+_desired_wine_commit=b01131ce82ad8306d719f9919e6249af2db5322d
+_desired_staging_commit=8999a04fd671df12d7e3c9447d45d681a5f9b35f
 
 ## (with custompatches) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -55,8 +55,8 @@ _use_staging_upstream=false
 _wine_git="https://gitlab.winehq.org/wine/wine.git"
 _staging_git="https://github.com/wine-staging/wine-staging.git"
 
-## .a libs which may be required for external programs such as winestreamproxy
-_install_static=true
+## install static .a libraries (recommend using standard wine for this instead)
+_install_static=false
 
 ## removes src, pkg folders on exit (both failure and success)
 _cleanbuildfolders=false
@@ -65,7 +65,7 @@ _cleanbuildfolders=false
 _strip_package=true
 
 ## for native compilation (non-true is gcc):
-_use_clang=false
+_use_clang=true
 
 ## for cross compilation
 ## llvm=llvm-mingw, clang=clang in msvc-mode, anything else is mingw-gcc
@@ -307,7 +307,7 @@ _set_vars() {
 
   #_OPTIMIZE_HARDER_FLAGS="-fipa-pta -fgcse-sm -fgcse-las -fira-loop-pressure" # -fsched-pressure -fsched-spec-load
 
-  _common_cflags="${_common_64_cflags:-} ${_common_32_cflags:-} ${_cpu_target} -O2 -pipe -fwrapv -fno-strict-aliasing -fomit-frame-pointer -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion -w"
+  _common_cflags="${_common_64_cflags:-} ${_common_32_cflags:-} ${_cpu_target} -O3 -pipe -fno-semantic-interposition -fomit-frame-pointer -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion -w"
   _native_common_cflags="${_lto_flags:-} ${_extra_native_flags:-}" # only for the non-mingw side
 
   export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
