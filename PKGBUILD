@@ -2,17 +2,34 @@
 
 pkgname=python-argopy
 pkgdesc='Retrieve and analyse data from the Argo network of ocean profilers'
-pkgver=0.1.13
+pkgver=0.1.16
 pkgrel=1
 arch=('any')
 url='https://argopy.readthedocs.io/'
-license=('Apache')
+license=('EUPL-1.2')
+
 depends=(
-  'python-aiohttp' 'python-erddapy' 'python-fsspec' 'python-requests'
-  'python-scipy' 'python-toolz' 'python-xarray'
+  'python-aiohttp'
+  'python-decorator'
+  'python-erddapy'
+  'python-fsspec'
+  'python-netcdf4'
+  'python-packaging'
+  'python-scipy'
+  'python-toolz'
+  'python-xarray'
+  'python-requests'
 )
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-localftpserver')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+checkdepends=(
+  'python-pytest'
+  'python-pytest-localftpserver'
+)
 optdepends=(
   'jupyterlab: interactive visualization of available data'
   'python-arrow: im-memory big data analytics'
@@ -26,10 +43,10 @@ optdepends=(
 
 _pypi=argopy
 source=(
-  "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
+  "argopy-$pkgver.tar.gz::https://github.com/euroargodev/argopy/archive/refs/tags/v$pkgver.tar.gz"
 )
 sha256sums=(
-  '41baa3dd92b298562ec51a52bacc37956e6b286b8d1e77fb2b39e3c170a3c1f5'
+  '6cca63136113ea6a02d4c1f0ceca4b8669a2baaca1b7bd84881c3920e313ce92'
 )
 
 build() {
@@ -39,10 +56,52 @@ build() {
 
 check() {
   cd "$_pypi-$pkgver"
-  pytest -v -k "not test_chunks_region and not test_open_mfdataset"
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/"argopy-$pkgver"*.whl
+  cd argopy/tests
+
+  # Skip various tests which don't work with the system version of xarray
+  # (whic has incomplete NumPy 2.0 support). If you have problems in use, I
+  # would suggest using a virtual environment with xarray < 2024.3 (to avoid
+  # another bug, see https://github.com/euroargodev/argopy/issues/373) and
+  # numpy < 2.0.0.
+  local skip_tests=(
+    'test_to_xarray'
+    'test_to_dataframe'
+    'test_load'
+    'test_domain'
+    'test_fetching'
+    'Test_ArgoNVSReferenceTables'
+    'test_open_dataset'
+    'test_open_mfdataset'
+    'test_open_json'
+    'test_open_mfjson'
+    'test_read_csv'
+    'test_cache_a_file'
+    'test_clear_cache'
+    'test_lscache'
+  )
+  local skipstr=""
+  for testname in "${skip_tests[@]}"; do
+    skipstr="$skipstr and not $testname"
+  done
+  skipstr="${skipstr:5}"  # Trim the leading ' and '.
+
+  # We also skip some files where all tests fail, see above comment.
+  ../../test-env/bin/python -m pytest -c pytest.ini \
+    --ignore=test_fetchers_data_erddap.py \
+    --ignore=test_fetchers_data_erddap_bgc.py \
+    --ignore=test_fetchers_data_gdac.py \
+    --ignore=test_xarray_engine.py \
+    -k "$skipstr"
 }
 
 package() {
   cd "$_pypi-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/"argopy-$pkgver"*.whl
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+
+  # Remove the tests from the final package.
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  rm -r "$pkgdir/$site_packages/argopy/tests"
 }
