@@ -15,7 +15,7 @@ pkgbase = ldapvi
 	depends = openssl
 	depends = popt
 	depends = readline
-	source = git+http://www.lichteblau.com/git/ldapvi.git
+	source = git+http://www.lichteblau.com/git/ldapvi.git#commit=f1d42bad66cc4623d1ff21fbd5dddbf5009d3e40
 	source = 0001-fix-non-void-function-copy_sasl_output-should-return.patch
 	b2sums = SKIP
 	b2sums = a045f50d64d73ed21ad8213af9029f1209e3e368a0b10458e230ef2cca162d2ae89cf033fcb3cca0a23ddba1ce6a2b90eeb65a730247c9bc0696b50057cae124

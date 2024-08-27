@@ -4,6 +4,7 @@
 pkgname=ldapvi
 pkgver=1.7.r15.gf1d42ba
 pkgrel=1
+_commit=f1d42bad66cc4623d1ff21fbd5dddbf5009d3e40
 pkgdesc="Interactive LDAP client for Unix terminals"
 url="http://www.lichteblau.com/ldapvi/"
 license=(GPL-2.0-only)
@@ -18,7 +19,7 @@ depends=('glib2'
          'readline')
 makedepends=('make'
              'git')
-source=("git+http://www.lichteblau.com/git/$pkgname.git"
+source=("git+http://www.lichteblau.com/git/$pkgname.git#commit=$_commit"
         "0001-fix-non-void-function-copy_sasl_output-should-return.patch")
 b2sums=('SKIP'
         'a045f50d64d73ed21ad8213af9029f1209e3e368a0b10458e230ef2cca162d2ae89cf033fcb3cca0a23ddba1ce6a2b90eeb65a730247c9bc0696b50057cae124')
