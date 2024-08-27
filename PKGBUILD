@@ -1,6 +1,6 @@
 # Maintainer: Dmitry Oshurkov <os.d.m át ya d၀t ru>
  pkgname=video-collector-client
- pkgver=24.4
+ pkgver=24.5
  pkgrel=1
  pkgdesc="Клиент для сервиса загрузки видео с видеохостингов в локальное хранилище для дальнейшего автономного просмотра"
  arch=('x86_64')

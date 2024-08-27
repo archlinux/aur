@@ -1,12 +1,12 @@
 pkgbase = video-collector-client
 	pkgdesc = Клиент для сервиса загрузки видео с видеохостингов в локальное хранилище для дальнейшего автономного просмотра
-	pkgver = 24.4
+	pkgver = 24.5
 	pkgrel = 1
 	url = https://gitflic.ru/project/skylab/video-collector
 	arch = x86_64
 	license = MIT
 	depends = ffmpeg
-	source = https://registry.gitflic.ru/project/skylab/video-collector/package/-/generic/video-collector-client/24.4/video-collector-client-24.4-1-x86_64.pkg.tar.zst
+	source = https://registry.gitflic.ru/project/skylab/video-collector/package/-/generic/video-collector-client/24.5/video-collector-client-24.5-1-x86_64.pkg.tar.zst
 	sha256sums = 0e8cf0b9a729f715172d542fbd5bf44bb7c9e0c3943ca3313ceefa941595119a
 
 pkgname = video-collector-client
