@@ -1,7 +1,7 @@
 # Maintainer: Valeri Ochinski <v19930312@gmail.com>
 
 pkgname=nxdumpclient-git
-pkgver=1.1.0.r0.g2c5bc25
+pkgver=1.1.2.r7.gd3b24f7
 pkgrel=1
 pkgdesc="Client program for dumping over USB with nxdumptool"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 build() {
-	arch-meson -Denforce_build_order=true -Dlibportal=disabled "$srcdir/${pkgname%-git}" build
+	arch-meson -Dlibportal=disabled "$srcdir/${pkgname%-git}" build
 	meson compile -C build
 }
 
