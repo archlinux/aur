@@ -1,4 +1,4 @@
-pkgbase = google-breakpad
+pkgbase = google-breakpad-unbroken
 	pkgdesc = An open-source multi-platform crash reporting system
 	pkgver = v2024.08.08
 	pkgrel = 1
@@ -9,15 +9,15 @@ pkgbase = google-breakpad
 	license = BSD
 	makedepends = git
 	depends = gcc-libs
-	provides = google-breakpad
-	provides = google-breakpad-git
+	provides = google-breakpad-unbroken
 	conflicts = google-breakpad-git
+	conflicts = google-breakpad
 	noextract = lss-v2024.08.08.tar.gz
 	options = staticlibs
 	options = !strip
-	source = google-breakpad-v2024.08.08.tar.gz::https://chromium.googlesource.com/breakpad/breakpad/+archive/refs/heads/main.tar.gz
+	source = google-breakpad-unbroken-v2024.08.08.tar.gz::https://chromium.googlesource.com/breakpad/breakpad/+archive/refs/heads/main.tar.gz
 	source = lss-v2024.08.08.tar.gz::https://chromium.googlesource.com/linux-syscall-support/+archive/refs/heads/main.tar.gz
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = google-breakpad
+pkgname = google-breakpad-unbroken

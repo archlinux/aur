@@ -1,7 +1,7 @@
 #!i/hint/bash
 # Maintainer: Entailz <entail-wraps0r at icloud dot com>
 
-pkgname=google-breakpad
+pkgname=google-breakpad-unbroken
 pkgver=v2024.08.08
 pkgrel=1
 _lssver=v2024.08.08
