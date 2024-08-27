@@ -2,7 +2,7 @@
 
 pkgbase=vosk-api-git
 pkgname=('vosk-api-git' 'python-vosk-git')
-pkgver=0.3.50.r1.g7358c79
+pkgver=0.3.50.r5.g1b308a3
 pkgrel=1
 _model_small_ver=0.15
 _model_spk_ver=0.4
@@ -20,8 +20,7 @@ source=('git+https://github.com/alphacep/vosk-api.git'
         'git+https://github.com/alphacep/openfst.git'
         'git+https://github.com/alphacep/kaldi.git#branch=vosk'
         "https://alphacephei.com/kaldi/models/vosk-model-small-en-us-${_model_small_ver}.zip"
-        "https://alphacephei.com/vosk/models/vosk-model-spk-${_model_spk_ver}.zip"
-        '010-vosk-api-openfst-gcc14-fix.patch')
+        "https://alphacephei.com/vosk/models/vosk-model-spk-${_model_spk_ver}.zip")
 noextract=("vosk-model-small-en-us-${_model_small_ver}.zip")
 sha256sums=('SKIP'
             'SKIP'
@@ -29,8 +28,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '30f26242c4eb449f948e42cb302dd7a686cb29a3423a8367f99ff41780942498'
-            'a74d8f51144484813e16af689bb0f916b7a111e2347f467c4933c1166097b5a7'
-            '30908c76206fdf88b5606234665f12fc6effd61cd09c64ec6dfd379c383dda15')
+            'a74d8f51144484813e16af689bb0f916b7a111e2347f467c4933c1166097b5a7')
 
 prepare() {
     local _curl='curl -sqgb "" -fLC - --retry 3 --retry-delay 3'
@@ -47,8 +45,6 @@ prepare() {
     ln -sf ../../OpenBLAS kaldi/tools/OpenBLAS
     ln -sf ../../clapack kaldi/tools/clapack
     ln -sf ../../openfst kaldi/tools/openfst
-    
-    patch -d openfst -Np1 -i "${srcdir}/010-vosk-api-openfst-gcc14-fix.patch"
     
     autoreconf -fi openfst
 }
