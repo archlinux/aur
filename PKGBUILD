@@ -4,12 +4,12 @@
 # vim:set ts=2 sw=2 et:
 
 pkgname=latex-template-springer
-pkgver=20240108
+pkgver=20240827
 pkgrel=1
 pkgdesc="Springer templates for LNCS proceedings (llncs), other proceedings (svproc), journal articles (sn-jnl), monographs (svmono), and multiauthor volumes (svmult)"
 arch=('any')
 url="https://www.springernature.com/gp/authors/campaigns/latex-author-support"
-license=('')
+license=('LPPL-1.3c')
 groups=()
 depends=('texlive-latex')
 makedepends=('unzip')
@@ -21,11 +21,11 @@ backup=()
 options=()
 install=texlive.install
 
-source=('llncs.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/19238648/data/v7'
+source=('llncs.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/26361882/data/v2'
   'svproc.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/19338728/data/v1'
-  'svjour.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/18782940/data/v8'
-  'svmono.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/25980412/data/v2'
-  'svmult.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/25980414/data/v2')
+  'svjour.zip::https://resource-cms.springernature.com/springer-cms/rest/v1/content/18782940/data/v11'
+  'svmono.zip::https://dam.springernature.com/file/B9DCMjesqTi9--5PvAbAip/*/svmono.zip?authcred=Q29weVVSTDpDMHB5X1VSTA=='
+  'svmult.zip::https://dam.springernature.com/file/59jjnY1zKdxAzjFSy9LvfE/*/svmult.zip?authcred=Q29weVVSTDpDMHB5X1VSTA==')
 
 noextract=("${source[@]%%::*}")
 
