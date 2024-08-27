@@ -1,0 +1,16 @@
+pkgbase = perl-callback-frame
+	pkgdesc = Preserve error handlers and "local" variables across callbacks
+	pkgver = 1.102
+	pkgrel = 1
+	url = https://metacpan.org/release/Callback-Frame
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-guard
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/F/FR/FRACTAL/Callback-Frame-1.102.tar.gz
+	sha256sums = e8a47c7cf04cea2fee5802deec79d6abc548cf4a199a66a251c8bf5d08dfe9c0
+
+pkgname = perl-callback-frame
