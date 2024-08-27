@@ -1,6 +1,7 @@
+
 # Maintainer: Dion Vu
 pkgname=spogo
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A command-line tool with Spotify integration"
 arch=('aarch64' 'x86_64')
@@ -12,11 +13,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/dionvu/spogo/archive/refs/t
 sha256sums=('SKIP')
 
 build() {
-    cd "spogo-$pkgver"
+    cd "spogo-$pkgver/cmd/spogo"
     go build -o spogo main.go
 }
 
 package() {
-    cd "spogo-$pkgver"
+    cd "spogo-$pkgver/cmd/spogo"
     install -Dm755 spogo "$pkgdir/usr/bin/spogo"
 }
