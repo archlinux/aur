@@ -1,20 +1,20 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
 pkgname=aarch64be-glibc-bleeding-edge-toolchain
-pkgver=2024.02
+pkgver=2024.05
 pkgrel=1
 pkgdesc="Ready-to-use cross-compilation toolchain provided by bootlin.com"
 arch=("x86_64")
 url="https://toolchains.bootlin.com/"
 license=("GPL")
-source=("https://toolchains.bootlin.com/downloads/releases/toolchains/aarch64be/tarballs/aarch64be--glibc--bleeding-edge-2024.02-1.tar.bz2"
+source=("https://toolchains.bootlin.com/downloads/releases/toolchains/aarch64be/tarballs/aarch64be--glibc--bleeding-edge-2024.05-1.tar.xz"
         "profile.sh-aarch64be-glibc-bleeding-edge-toolchain")
 install="hooks.install-aarch64be-glibc-bleeding-edge-toolchain"
-sha256sums=('80cb37b022aa74c7329cef44336024fc5ca18c6193fdabfef01241153aba7f9d'
+sha256sums=('02f588c6900d33286b89db5a92e60fdf611a47da5d05c1ee644ba14e2630ffca'
             '0902c283c2f25fe24bae25e284b0a9e4e31b0153839862ac8b0dc9bb2d59e55d')
 
 build() {
-	cd "aarch64be--glibc--bleeding-edge-2024.02-1"
+	cd "aarch64be--glibc--bleeding-edge-2024.05-1"
 
 	sh relocate-sdk.sh "/opt/aarch64be-glibc-bleeding-edge"
 }
@@ -22,7 +22,7 @@ build() {
 package() {
 	options=(!strip)
 
-	cd "aarch64be--glibc--bleeding-edge-2024.02-1"
+	cd "aarch64be--glibc--bleeding-edge-2024.05-1"
 
 	mkdir -p "$pkgdir/opt/aarch64be-glibc-bleeding-edge/"
 	cp -a * "$pkgdir/opt/aarch64be-glibc-bleeding-edge/"
