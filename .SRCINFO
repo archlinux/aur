@@ -1,0 +1,14 @@
+pkgbase = textern-native-messaging-host
+	pkgdesc = Native Messaging Host for the Textern firefox addon.
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/jlebon/textern
+	install = textern.install
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-inotify-simple
+	source = textern::git+https://github.com/jlebon/textern.git#tag=v0.8
+	b2sums = SKIP
+
+pkgname = textern-native-messaging-host

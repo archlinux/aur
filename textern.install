@@ -1,0 +1,3 @@
+post_install() {
+    printf "\nYou can install the addon from: https://addons.mozilla.org/addon/textern/\n\n"
+}
