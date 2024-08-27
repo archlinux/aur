@@ -1,0 +1,12 @@
+--- src/common/module.cc
++++ src/common/module.cc
+
+@@ -42,6 +42,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ 
++#include <algorithm>
+ #include <functional>
+ #include <iostream>
+ #include <memory>
+
