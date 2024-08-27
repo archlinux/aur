@@ -8,7 +8,7 @@
 
 _target="powerpc64-linux-gnu"
 pkgname=${_target}-glibc-headers
-pkgver=2.39
+pkgver=2.40
 pkgrel=1
 pkgdesc="GNU C Library headers (${_target})"
 arch=('any')
@@ -21,7 +21,7 @@ conflicts=(${_target}-glibc)
 options=(!buildflags !strip staticlibs)
 source=(https://ftp.gnu.org/gnu/libc/glibc-$pkgver.tar.xz{,.sig}
         PATCH-nscd-Do-not-rebuild-getaddrinfo-bug-30709.patch)
-sha256sums=('f77bd47cf8170c57365ae7bf86696c118adb3b120d3259c64c502d3dc1e2d926'
+sha256sums=('19a890175e9263d748f627993de6f4b1af9cd21e03f080e4bfb3a1fac10205a2'
             'SKIP'
             'e749a59ef980a77cf6433c87ed7b5020d65c7a3e2900c577b8a7880386ec670f')
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8  # "Carlos O'Donell <carlos@systemhalted.org>"
