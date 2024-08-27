@@ -5,7 +5,7 @@ post_install() {
 post_upgrade() {
   local new_package_version="$1"
   local old_package_version="$2"
-  if [ $(vercmp "${old_package_version}" "1.0rc9") -le 0 ]; then
+  if [ $(vercmp "${old_package_version}" "1.0rc10") -le 0 ]; then
 cat <<EOF
 The webapp now needs to be run as its own user/group: flyspray/flyspray.
 EOF
