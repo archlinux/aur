@@ -1,6 +1,6 @@
 pkgbase = nudoku
 	pkgdesc = ncurses based sudoku game
-	pkgver = 4.0.1
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://jubalh.github.io/nudoku
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = nudoku
 	makedepends = autoconf
 	depends = ncurses
 	depends = cairo
-	source = nudoku-4.0.1-1.tar.gz::https://github.com/jubalh/nudoku/archive/4.0.1.tar.gz
-	b2sums = d13a9fbb5b4501352991f37ffacba09bbf707cee032736fa0b2482e9c1a485a35b7b0a94eabba5f8cbe328ddca3ee653b883939037a42f83388a7bf0513fae46
+	source = nudoku-5.0.0-1.tar.gz::https://github.com/jubalh/nudoku/archive/5.0.0.tar.gz
+	b2sums = 3bf0385e685a76e07d3110a566cfd7544655f5b1f6423659956220c81cb1c5d114bd5521c7853a365ec65a373725c7ba8b465b3da1452cd820201e95a033192d
 
 pkgname = nudoku
