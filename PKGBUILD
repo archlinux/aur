@@ -1,0 +1,49 @@
+# Maintainer: Librewish <librewish@gmail.com>
+
+pkgname=wayfire-plugins-extra-track-wlroots-0.18-git
+pkgver=r261.960535e
+pkgrel=1
+pkgdesc="3D wayland compositor extra plugins"
+arch=('any')
+url="https://github.com/WayfireWM/wayfire-plugins-extra"
+license=('MIT')
+depends=('wayfire-hidpi-xprop-track-wlroots-git' 'glibmm' 'iio-sensor-proxy' 'wayland-protocols' 'glm' 'librsvg')
+makedepends=('git' 'meson' 'ninja' 'libdisplay-info' 'nlohmann-json' 'glm')
+optdepends=('wcm: GTK3-based configuration tool for the Wayfire compositor')
+provides=("${pkgname}" "wayfire-plugins-extra")
+conflicts=("wayfire-plugins-extra")
+replaces=()
+options=()
+source=('git+https://github.com/WayfireWM/wayfire-plugins-extra#branch=track-wlroots-0.18'
+        'wayfire-shadows-remove-dep.patch')
+sha256sums=('SKIP'
+            'dd2930855813fc5f0c605c081661151d5336118c3ce0b74ff0d1e7581aaf5657')
+install=wayfire-plugins-extra.install
+prepare() {
+  cd "$srcdir/wayfire-plugins-extra"
+  git submodule update --init --recursive
+  cd "$srcdir/wayfire-plugins-extra/subprojects/wayfire-shadows"
+  patch -Np1 -i "$srcdir/wayfire-shadows-remove-dep.patch"
+}
+pkgver() {
+        cd "$srcdir/wayfire-plugins-extra"
+
+# Git, no tags available
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+}
+
+build() {
+  arch-meson wayfire-plugins-extra build \
+    -Denable_windecor=true \
+    -Denable_wayfire_shadows=true \
+    -Denable_focus_request=true \
+    -Denable_pixdecor=true \
+    -Denable_filters=true
+  ninja -C build
+}
+
+
+package() {
+        DESTDIR="$pkgdir/" ninja -C build install
+}

@@ -1,0 +1,30 @@
+pkgbase = wayfire-plugins-extra-track-wlroots-0.18-git
+	pkgdesc = 3D wayland compositor extra plugins
+	pkgver = r261.960535e
+	pkgrel = 1
+	url = https://github.com/WayfireWM/wayfire-plugins-extra
+	install = wayfire-plugins-extra.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = libdisplay-info
+	makedepends = nlohmann-json
+	makedepends = glm
+	depends = wayfire-hidpi-xprop-track-wlroots-git
+	depends = glibmm
+	depends = iio-sensor-proxy
+	depends = wayland-protocols
+	depends = glm
+	depends = librsvg
+	optdepends = wcm: GTK3-based configuration tool for the Wayfire compositor
+	provides = wayfire-plugins-extra-track-wlroots-0.18-git
+	provides = wayfire-plugins-extra
+	conflicts = wayfire-plugins-extra
+	source = git+https://github.com/WayfireWM/wayfire-plugins-extra#branch=track-wlroots-0.18
+	source = wayfire-shadows-remove-dep.patch
+	sha256sums = SKIP
+	sha256sums = dd2930855813fc5f0c605c081661151d5336118c3ce0b74ff0d1e7581aaf5657
+
+pkgname = wayfire-plugins-extra-track-wlroots-0.18-git

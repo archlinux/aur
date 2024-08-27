@@ -1,0 +1,20 @@
+diff --git a/meson.build b/meson.build
+index 762d93a..f0241a6 100644
+--- a/meson.build
++++ b/meson.build
+@@ -14,7 +14,6 @@ project(
+ )
+ 
+ wayfire  = dependency('wayfire')
+-wlroots  = dependency('wlroots')
+ wfconfig = dependency('wf-config')
+ 
+ add_project_arguments(['-DWLR_USE_UNSTABLE'], language: ['cpp', 'c'])
+@@ -30,7 +29,6 @@ shadows = shared_module(
+     ],
+ 
+     dependencies: [
+-        wlroots,
+         wfconfig,
+         wayfire
+     ],
