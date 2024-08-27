@@ -1,4 +1,4 @@
-# Maintainer: Mckol <mckol363@gmail.com>
+# Maintainer: LunarEclipse <luna@lunareclipse.zone>
 # Contributor: Jean Lucas <jean@4ray.co>
 
 export GIT_LFS_SKIP_SMUDGE=1 # This is to prevent Git LFS errors
