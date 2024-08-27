@@ -1,4 +1,4 @@
-# Maintainer: Mckol <mckol363@gmail.com>
+# Maintainer: LunarEclipse <luna@lunareclipse.zone>
 
 pkgname=smart-notifier
 pkgver=0.28_8
