@@ -1,22 +1,15 @@
-# Maintainer: Mazen Omar <wildlifemain1@gmail.com>
-
 pkgname='mostaqem'
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.4.0
+pkgrel=2
 pkgdesc="An Islamic app"
 arch=("x86_64")
 url="https://github.com/Mostaqem/mostaqem_desktop"
 license=('GNU-V3')
 depends=("mpv")
-source=("https://github.com/Mostaqem/mostaqem_desktop/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('44b928d87011f628a0555b7d94bdafa6449efe6a0f633662c303e5b5661d1448')
+source=("https://github.com/Mostaqem/mostaqem_desktop/releases/latest/download/mostaqem-linux-x86_64.tar.gz")
+sha256sums=('455cc9825c2dfc95f8bca249dc75076a1404af88a0b2e5073610bdfa3da04fa9')
 
-build() {
-	cd "$srcdir/mostaqem_desktop-$pkgver"
-	flutter build linux --release
-}
 
 package() {
-	cd "$srcdir/mostaqem_desktop-$pkgver"
-  	install -Dm755 "build/linux/x64/release/bundle/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	cp -dr "$srcdir"/usr "$pkgdir"/usr
 }
