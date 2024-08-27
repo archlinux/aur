@@ -1,10 +1,10 @@
 # Maintainer:WildboarG <mm62633482@gmail.com>
 pkgname=aithinkerwb2
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Ai-Thinker AU-WB2 Wireless modules Development Frameswork"
 arch=('x86_64')
-url="https://gitee.com/Ai-Thinker-Open/Ai-Thinker-WB2"
+url="https://github.com/Ai-Thinker-Open/Ai-Thinker-WB2"
 license=('Apache2.0')
 makedepends=('git')
 source=(
