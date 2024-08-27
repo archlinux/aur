@@ -1,7 +1,7 @@
 # Maintainer: Kacper Zybała <zyperpl at gmail dot com>
 
 pkgname=cppfront
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Experimental C++ Syntax 2->Syntax 1 compiler"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/hsutter/cppfront"
 license=('CC-BY-NC-ND-4.0')
 makedepends=('gcc' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hsutter/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('026cc4562afbc47b8cb25e9444b8eb81e0300a6ecc0cc7cbb59d6eeb2cd07429')
+sha256sums=('028f44cc0cad26b51829e4abf7c5aedf8a31f852ab5dfbad54bb232f0a1d7447')
 conflicts=('cppfront-git')
 
 build() {
