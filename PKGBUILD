@@ -2,7 +2,7 @@
 
 pkgbase=esphomeyaml
 pkgname=esphome
-pkgver=2024.7.3
+pkgver=2024.8.0
 pkgrel=1
 pkgdesc="Solution for your ESP8266/ESP32 projects with Home Assistant"
 url="https://github.com/esphome/ESPHome"
@@ -35,13 +35,14 @@ license=('MIT')
 arch=('any')
 replaces=('esphomeyaml')
 source=("https://github.com/esphome/ESPHome/archive/${pkgver}.tar.gz")
-sha256sums=('423f261c1f07e8d5f5cfc9bb201653c0ec31e6cae180eba53e0036fba8502fea')
+sha256sums=('b7509d8ffee33d121acdc7618b318d0556e768b0481965ae8a3125790c73d366')
 
 prepare() {
 	cd "$srcdir/${pkgname}-${pkgver}"
 	## Relax requirements / also optional requiremets
 	sed -i 's/==.*//' requirements.txt
 	sed -i 's/setuptools==[0-9.]\+/setuptools/' pyproject.toml
+	sed -i 's/wheel~=[0-9.]\+/wheel/' pyproject.toml
 	pillowVersion=$(pacman -Qi python-pillow | grep Version | awk '{print $3}' | awk -F- '{print $1}')
 	sed -i "s/10.2.0/$pillowVersion/" esphome/components/font/__init__.py
 }
