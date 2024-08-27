@@ -8,8 +8,8 @@
 
 pkgname=google-breakpad
 pkgver=v2023.06.01
-pkgrel=1
-_lssver=v2022.10.12
+pkgrel=2
+_lssver=v2024.02.01
 pkgdesc="An open-source multi-platform crash reporting system"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://chromium.googlesource.com/breakpad/breakpad/"
@@ -28,6 +28,7 @@ sha256sums=('SKIP'
 prepare() {
 mkdir -p src/third_party/lss
 bsdtar -xf lss-${_lssver}.tar.gz -C src/third_party/lss
+patch -Np0 -i ../find_if.patch
 }
 
 build() {
