@@ -9,7 +9,7 @@ url="https://git.ontake.dev/go/leech"
 license=('GPL3')
 groups=()
 depends=()
-makedepends=('go>=1.18')
+makedepends=('go>=1.18' 'git')
 optdepends=()
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")

@@ -8,6 +8,7 @@ pkgbase = ontake-leech-git
 	arch = aarch64
 	license = GPL3
 	makedepends = go>=1.18
+	makedepends = git
 	provides = ontake-leech
 	conflicts = ontake-leech
 	source = git+https://git.ontake.dev/go/leech
