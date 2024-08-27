@@ -1,4 +1,4 @@
-# Maintainer: Mckol <mckol363@gmail.com>
+# Maintainer: LunarEclipse <luna@lunareclipse.zone>
 
 pkgname=veloren-bin
 pkgver=0.16.0
