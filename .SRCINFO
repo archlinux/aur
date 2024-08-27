@@ -1,7 +1,7 @@
 pkgbase = hace
 	pkgdesc = A task-launching app (think make)
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ralsina/hace
 	install = install
 	arch = x86_64
