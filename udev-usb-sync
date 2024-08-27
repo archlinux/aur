@@ -1,18 +1,53 @@
 #!/usr/bin/bash
 #
-# script to tweak USB storage device filesystem sync
+# The script is part of udev-usb-sync package
 #
-# sources /etc/usb-dev-sync/usb-dev-sync.conf
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the Affero GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#
+#    @linux-aarhus - root.nix.dk
+#
+# configuration : /etc/usb-dev-sync/usb-dev-sync.conf
+# triggered by  : /usr/lib/udev/rules.d/99-usb-sync.rules
+#
+# contributors: @megavolt (Manjaro Forum)
+#             : @linux-aarhus (Manjaro Forum)
+# inspired by : @kwg (EndeavourOS Forum)
+#
+# Arguments provided by udev rule
+#     $1: usb block device
+#     $2: usb bandwidth reported by device
+#
+# default values (override in configuration file)
 #
 
+# block device is passed in $1
+# speed is passed as $2
+
+# defaults
 use_tweaks=1
-max_bytes=16777216
+use_bandwith=1
 max_ratio=50
 strict_limit=1
+max_bytes=16777216
+# speed defined values
+max_bytes_12=10485
+max_bytes_480=629145
+max_bytes_5000=655369
+max_bytes_10000=13107200
 
-# read user config
+# source configuratoin to override default values
 source /etc/udev-usb-sync/udev-usb-sync.conf
-
 if [[ "$use_tweaks" = 0 ]]; then
 	exit 0
 fi
@@ -21,6 +56,18 @@ if [[ -z "$1" ]]; then
 	exit 1
 fi
 
-echo "$max_bytes" > "/sys/block/$1/bdi/max_bytes"
+# if speed value is not present use default max_bytes
+[[ -z $2 ]] && use_bandwith=0
+
+# apply max_ratio
 echo "$max_ratio" > "/sys/block/$1/bdi/max_ratio"
+# apply strict limit
 echo "$strict_limit" > "/sys/block/$1/bdi/strict_limit"
+# apply max_bytes depending on speed value
+if [[ use_bandwith == 0 ]]; then
+	# apply default value
+	echo "$max_bytes" > "/sys/block/$1/bdi/max_bytes"
+else
+	# apply bandwidth defined value
+	echo "$max_bytes_$2" > "/sys/block/%1/bdi/max_bytes"
+fi

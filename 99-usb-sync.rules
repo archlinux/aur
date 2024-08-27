@@ -1,12 +1,45 @@
+# This rules file is part of udev-usb-sync package
+#
+# MIT License
+#
+# Copyright (c) 2023 Frede Hundewadt (@linux-aarhus)
+#
+# Permission is hereby granted, free of charge,to any person obtaining a copy
+# of this software and associated documentation files (the "Software"),
+# to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense,
+# and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+#
+#    @linux-aarhus - root.nix.dk
+#
+# configuration : /etc/usb-dev-sync/usb-dev-sync.conf
+# triggered by  : /usr/lib/udev/rules.d/99-usb-sync.rules
+#
+# contributors: @megavolt (Manjaro Forum)
+#             : @linux-aarhus (Manjaro Forum)
+# inspired by : @kwg (EndeavourOS Forum)
+
 # rule to disable write cache for usb storage
 # requires hdparm to be installed
 ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", RUN+="/usr/bin/hdparm -W 0 /dev/%k"
-#
+
 # rules to impose buffer limits on USB devices
-# requires kernel > 6.1
-# https://docs.kernel.org/admin-guide/abi-testing.html#abi-sys-class-bdi-bdi-strict-limit
-# https://docs.kernel.org/admin-guide/abi-testing.html#abi-sys-class-bdi-bdi-max-ratio
-# https://docs.kernel.org/admin-guide/abi-testing.html#abi-sys-class-bdi-bdi-max-bytes
-# implemented using  /usr/bin/udev-usb-tweak.sh 
-# optional configuration in /etc/udev-usb-tweak/udev-usb-tweak.sh
-ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", RUN+="/usr/bin/udev-usb-sync %k"
+# implemented using: /usr/bin/udev-usb-sync
+# see configuration: /etc/udev-usb-sync/udev-usb-sync.conf
+# Works since Linux 6.2
+ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", ATTRS{speed}=="12",    RUN+="/usr/bin/udev-usb-sync %k 12"
+ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", ATTRS{speed}=="480",   RUN+="/usr/bin/udev-usb-sync %k 480"
+ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", ATTRS{speed}=="5000",  RUN+="/usr/bin/udev-usb-sync %k 5000"
+ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", ATTRS{speed}=="10000", RUN+="/usr/bin/udev-usb-sync %k 10000"
