@@ -1,6 +1,6 @@
 # Contributor: Mark Gallagher <mark@fts.scot>
 pkgname=perl-test2-plugin-nowarnings
-pkgver=0.09
+pkgver=0.10
 pkgrel=1
 pkgdesc='A Test2 event for warnings (via MetaCPAN distribution)'
 _dist=Test2-Plugin-NoWarnings
@@ -10,7 +10,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl' 'perl-test-simple')
 options=('!emptydirs' 'purge')
 source=("https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/$_dist-$pkgver.tar.gz")
-sha256sums=(be3dd800042eef362bf17d2056cf9e934dee91ccce98e4f178b8fb5772f2fb74)
+sha256sums=(c97cb1122cc6e3e4a079059da71e12f65760bfb0671d19d25a7ec7c5f1f240fb)
 
 build() {
   cd $_dist-$pkgver

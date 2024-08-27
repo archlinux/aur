@@ -1,6 +1,6 @@
 pkgbase = perl-test2-plugin-nowarnings
 	pkgdesc = A Test2 event for warnings (via MetaCPAN distribution)
-	pkgver = 0.09
+	pkgver = 0.10
 	pkgrel = 1
 	url = https://metacpan.org/release/Test2-Plugin-NoWarnings
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = perl-test2-plugin-nowarnings
 	depends = perl-test-simple
 	options = !emptydirs
 	options = purge
-	source = https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Test2-Plugin-NoWarnings-0.09.tar.gz
-	sha256sums = be3dd800042eef362bf17d2056cf9e934dee91ccce98e4f178b8fb5772f2fb74
+	source = https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Test2-Plugin-NoWarnings-0.10.tar.gz
+	sha256sums = c97cb1122cc6e3e4a079059da71e12f65760bfb0671d19d25a7ec7c5f1f240fb
 
 pkgname = perl-test2-plugin-nowarnings
