@@ -1,7 +1,7 @@
 pkgbase = desq-shell
 	pkgdesc = The Desktop Shell for Desq
 	pkgver = 0.0.8
-	pkgrel = 4
+	pkgrel = 6
 	url = https://gitlab.com/DesQ/Shell
 	arch = x86_64
 	arch = aarch64
@@ -13,6 +13,7 @@ pkgbase = desq-shell
 	depends = libdbusmenu-qt5
 	depends = libxcomposite
 	depends = libdesqui
+	depends = libcanberra
 	depends = pam
 	depends = qt5-svg
 	depends = wayland-protocols
