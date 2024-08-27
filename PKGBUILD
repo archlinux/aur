@@ -1,21 +1,15 @@
 # Maintainer: PancakeTAS <pancake@mgnet.work> 
 
 pkgname=obs-ios-camera-source
-pkgver=r288.060a713
+pkgver=r290.c67e577
 pkgrel=1
 pkgdesc="Use your iPhone camera as a video source in OBS Studio and stream high quality video from your iPhone's camera over USB (dougg3's fork)"
 arch=('x86_64')
 license=('GPL2')
 depends=('obs-studio' 'usbmuxd')
 makedepends=('cmake')
-source=(
-  "git+https://github.com/dougg3/$pkgname"
-  'temporary_fix.patch'
-)
-md5sums=(
-  'SKIP'
-  'c60beeda259fc5b6dd1c897da52f3963'
-)
+source=("git+https://github.com/dougg3/$pkgname")
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -24,7 +18,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir"
-  patch -Np1 -i "../temporary_fix.patch"
 }
 
 build() {
