@@ -3,13 +3,13 @@
 
 pkgname=flcluster
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Amateur (Ham) Radio program for accessing dxcluster nodes."
 arch=('x86_64' 'i686')
 url="http://www.w1hkj.com/flcluster-help/"
 license=('GPL-2.0-or-later')
 depends=('hamlib' 'fltk' 'libjpeg' 'portaudio' 'flxmlrpc' 'libsamplerate'
-	 'libsndfile' 'pulseaudio' 'xmlrpc-c' 'hamradio-menus')
+	 'libsndfile' 'pulse-native-provider' 'xmlrpc-c' 'hamradio-menus')
 optdepends=('fldigi: Intergrate with fldigi')
 source=("http://www.w1hkj.com/files/flcluster/flcluster-${pkgver}.tar.gz")
 

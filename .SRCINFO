@@ -1,7 +1,7 @@
 pkgbase = flcluster
 	pkgdesc = Amateur (Ham) Radio program for accessing dxcluster nodes.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.w1hkj.com/flcluster-help/
 	arch = x86_64
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = flcluster
 	depends = flxmlrpc
 	depends = libsamplerate
 	depends = libsndfile
-	depends = pulseaudio
+	depends = pulse-native-provider
 	depends = xmlrpc-c
 	depends = hamradio-menus
 	optdepends = fldigi: Intergrate with fldigi
