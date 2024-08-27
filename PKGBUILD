@@ -1,7 +1,7 @@
 # Maintainer: Katzper Michno <katzper.michno@gmail.com>
 pkgname="overleaf-sync"
 binaryname="olsync"
-pkgver="0.2.0"
+pkgver="0.3.0"
 pkgrel="1"
 pkgdesc="CLI for synchronizing LaTeX projects between Overleaf and your local machine"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("gcc-libs" "glibc" "openssl" "bzip2" "python" "python-pipx")
 makedepends=("cargo-nightly")
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('0e60a363a90f8ce2fd9f53cf868449aab762d5570dc9f8c9f3aa0ea21fb8c0c01a9acc1ef765179db12029bfab36476824118cb6eb002d738dc227f1c8b1aa85')
+sha512sums=('e34eefcd3b6288e3579246f1577a53bc11c6ec2423f9995c22e17ba2b9047f37e8674809696286adebf76dcfcc1b4f519ecaf878f0190b5f219e4ec509699fb2')
 
 build() {
     cd "$srcdir/$pkgname-rs-$pkgver/olsync"
