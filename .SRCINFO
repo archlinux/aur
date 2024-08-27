@@ -5,6 +5,7 @@ pkgbase = pacman-mirrors-helper-git
 	url = https://codeberg.org/Application-Maker/pacman-mirrors-helper
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = coreutils
 	makedepends = git
 	depends = bash
 	depends = coreutils
