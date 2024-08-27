@@ -4,7 +4,7 @@
 _pkgbase='worm'
 pkgname='worm-git'
 pkgdesc="A floating, tag-based window manager written in Nim"
-pkgver=0.1.0.149.g03d5dec
+pkgver=0.2.5.257.gbe59f19
 pkgrel=1
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/codic12/worm"
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
     cd "$_pkgbase"
-    nimble -y build -d:release --gc:arc
+    nimble -y build -d:release --gc:arc --passC:"-Wno-error=incompatible-pointer-types"
 }
 
 package() {
