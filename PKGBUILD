@@ -3,12 +3,12 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=unixcw
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="CW tutor & generator - program suite - Ham Radio"
 arch=('i686' 'x86_64')
 url="http://unixcw.sourceforge.net"
-license=('GPL3')
+license=('GPL-2.0-only')
 depends=('qt5-base')
 optdepends=('hamradio-menus')
 provides=('unixcw')
@@ -38,11 +38,11 @@ package() {
 	install -D -m644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 	install -D -m644 $pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
 }                                                  
-md5sums=('3bdb7552b3b81337ce779ba5f3226803'
+md5sums=('0608c229685efc0f8142d30a3d771024'
          '3f6168a6c81c550dc78006202f959db3'
          'b07f06b4fc940ba1b853e2b23f686490'
          'f7f81dcf7a1bba55bf8cde70d59d8ed5')
-sha256sums=('b52f851f58a997e3ca96df7989c9ab9fb2db46557fc9e86b9d039590368f9997'
+sha256sums=('0af83855214bf90b4c0d149221884ab4458f3857c38972d428daebf3badd6e32'
             'f23fdc2c7346abd26b8acc8961eff599f08e6905a6cef2b0e402d86c6a9a1714'
             '69d3905c87200ddfda66275b72e73b8fda0636a0a600f5a6e7d8324caab0eee7'
             'be1d10724873ae84fec6f580792e5ce9fe2dbfc3e75e2bde14f6893391a63ff1')
