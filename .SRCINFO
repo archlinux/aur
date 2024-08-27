@@ -1,0 +1,13 @@
+pkgbase = krabby-gotchi
+	pkgdesc = Krab tamagotchi in your terminal
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/DrCheeseFace/Krabby-gotchi
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = krabby-gotchi-1.1.tar.gz::https://github.com/DrCheeseFace/Krabby-gotchi/archive/v1.1.tar.gz
+	sha512sums = 89948c9d4b0aedea0e17fc34eec0a54ded46c393f18101f446c889fc601176de3839aa16c3f7fb9cecbfa14368e074cf251a1597531736a0d6c3d90a05ffc2ca
+
+pkgname = krabby-gotchi
