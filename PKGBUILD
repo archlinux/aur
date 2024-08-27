@@ -2,7 +2,7 @@
 # Ex-Maintainer: Nixuge
 
 pkgname=modrinth-app-git
-pkgver=r1430.9ed1dd7
+pkgver=r1453.4a43b45
 pkgrel=1
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
@@ -57,12 +57,12 @@ build() {
     export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
     #cargo build --frozen --release --all-features
-    pnpm tauri build --bundles none
+    pnpm tauri build --no-bundle
 }
 
 package() {
     install -Dm755 "$srcdir"/modrinth-app "$pkgdir"/usr/bin/modrinth-app
-    install -Dm755 "$srcdir"/code/apps/app/target/release/modrinth-app "$pkgdir"/opt/modrinth-app/modrinth-app
+    install -Dm755 "$srcdir"/code/apps/app/target/release/theseus_gui "$pkgdir"/opt/modrinth-app/modrinth-app
     
     install -Dm644 "$srcdir"/code/apps/app/icons/128x128.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/modrinth-app.png
     install -Dm644 "$srcdir"/code/apps/app/icons/icon.png "$pkgdir"/usr/share/icons/hicolor/256x256@2/apps/modrinth-app.png
