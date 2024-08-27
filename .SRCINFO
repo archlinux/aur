@@ -1,6 +1,6 @@
 pkgbase = aaaaxy-bin
 	pkgdesc = A nonlinear puzzle platformer taking place in impossible spaces
-	pkgver = 1.5.183
+	pkgver = 1.5.190
 	pkgrel = 1
 	url = https://github.com/divVerent/aaaaxy
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = aaaaxy-bin
 	depends = libx11
 	provides = aaaaxy
 	conflicts = aaaaxy
-	source_x86_64 = aaaaxy-1.5.183-x86_64.zip::https://github.com/divVerent/aaaaxy/releases/download/v1.5.183/aaaaxy-linux-amd64-v1.5.183.zip
-	sha256sums_x86_64 = 3d7ff4a58f1788940a183c60c6cd3eec278b09666b29444c93b9815f333bdfc7
+	source_x86_64 = aaaaxy-1.5.190-x86_64.zip::https://github.com/divVerent/aaaaxy/releases/download/v1.5.190/aaaaxy-linux-amd64-v1.5.190.zip
+	sha256sums_x86_64 = 3a06d0de1007c5a47f8cca8f3ed01bf1429b535edb051fb405b72da37137686c
 
 pkgname = aaaaxy-bin
