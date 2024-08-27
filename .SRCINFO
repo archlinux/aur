@@ -1,7 +1,7 @@
 pkgbase = desq-utils-runner
 	pkgdesc = A simple app launcher for DesQ
 	pkgver = 0.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/DesQ/DesQUtils/Runner
 	arch = x86_64
 	arch = aarch64
@@ -10,8 +10,12 @@ pkgbase = desq-utils-runner
 	makedepends = ninja
 	depends = qt5-base
 	depends = libdesq
+	depends = dfl-applications
+	depends = dfl-ipc
 	depends = dfl-settings
+	depends = dfl-utils
 	depends = dfl-wayqt
+	depends = dfl-xdg
 	source = https://gitlab.com/DesQ/DesQUtils/Runner/-/archive/v0.0.8/Runner-v0.0.8.tar.gz
 	md5sums = 30bbb2ab8ed39cd626fffbf86b9c787d
 

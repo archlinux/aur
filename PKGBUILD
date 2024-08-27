@@ -3,13 +3,21 @@
 _pkgname=Runner
 pkgname=desq-utils-runner
 pkgver=0.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple app launcher for DesQ"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/DesQ/DesQUtils/${_pkgname}"
 license=('GPL3')
-depends=('qt5-base' 'libdesq' 'dfl-settings' 'dfl-wayqt')
-makedepends=('meson' 'ninja')
+depends=('qt5-base'
+        'libdesq'
+        'dfl-applications'
+        'dfl-ipc'
+        'dfl-settings'
+        'dfl-utils'
+        'dfl-wayqt'
+        'dfl-xdg')
+makedepends=('meson'
+            'ninja')
 source=("https://gitlab.com/DesQ/DesQUtils/${_pkgname}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
 md5sums=('30bbb2ab8ed39cd626fffbf86b9c787d')
 
