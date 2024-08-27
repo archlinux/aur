@@ -1,6 +1,6 @@
 pkgbase = shuffle-ascii
 	pkgdesc = A CLI command to print ASCII art with shuffle effect and color
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/lennart1978/shuffle
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = shuffle-ascii
 	depends = ninja
 	depends = gcc
 	depends = glibc
-	source = shuffle-1.0.1.tar.gz::https://github.com/lennart1978/shuffle/archive/refs/tags/V1.0.1.tar.gz
-	sha256sums = 85d3019be2329578f7c28205bf6a889d49bfa84fce492d506beba0259d857ee0
+	source = shuffle-1.0.2.tar.gz::https://github.com/lennart1978/shuffle/archive/refs/tags/V1.0.2.tar.gz
+	sha256sums = d29462487ab600ea4db49b8d89926c5c81cb2149d0938d82de35c29b429b94c6
 
 pkgname = shuffle-ascii
