@@ -2,7 +2,7 @@
 # Contributor: Alif Zakiansyah As Syauqi <alifzakiansyah10@gmail.com>
 pkgname="spoof-dpi-bin"
 pkgver=0.10.11
-pkgrel=2
+pkgrel=3
 # epoch=
 pkgdesc="A simple and fast software designed to bypass Deep Packet Inspection"
 arch=(x86_64)
@@ -16,7 +16,7 @@ optdepends=()
 provides=(spoof-dpi)
 conflicts=(spoof-dpi)
 replaces=()
-backup=()
+backup=(etc/conf.d/spoof-dpi)
 options=()
 install=
 changelog=
