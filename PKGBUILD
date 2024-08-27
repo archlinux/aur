@@ -3,7 +3,7 @@
 pkgname=python-minerva-git
 _gitpkgname=minerva
 pkgver=r128.5bac31a
-pkgrel=1
+pkgrel=2
 pkgdesc='32-bit RISC-V soft processor'
 arch=('any')
 url='https://github.com/minerva-cpu/minerva'
@@ -34,7 +34,7 @@ source=(
 
 sha512sums=(
   'SKIP'
-  '5a6c9f6e1e543b1bbdb2dca8479b948b6bc1e9139c7767e7dfd9d894b388cb3507604b58d08e91b1e82296729ee924b98cc9579440c06b02f474f27ea9b4c11a'
+  'SKIP'
 )
 
 pkgver() {
