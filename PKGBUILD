@@ -1,5 +1,5 @@
 # Maintainer:    Lukas1818 aur at lukas1818 dot de
-# Co-Maintainer: Mckol <mckol363@gmail.com>
+# Co-Maintainer: LunarEclipse <luna@lunareclipse.zone>
 
 pkgname=veloren-nightly
 pkgver=0.16.0.r410.5ec99290f
