@@ -1,0 +1,100 @@
+#!/bin/sh
+for cmd in pdfgrep magick pdftocairo; do
+	command -v "$cmd" >/dev/null 2>&1 || missing="$missing $cmd"
+done
+[ -n "$missing" ] && { echo "Missing packages:$missing"; exit 1; }
+
+show_result_numbers=true
+scale_to=256
+
+# Parse arguments
+while [ "$#" -gt 0 ]; do
+	case "$1" in
+		--no-result-numbers)
+			show_result_numbers=false
+			shift
+			;;
+		--scale-to)
+			shift
+			scale_to="$1"
+			shift
+			;;
+		*)
+			break
+			;;
+	esac
+done
+
+[ -z "$1" ] && { echo "Usage: ./pdfgrepSIXEL [--no-result-numbers] [--scale-to <px>] 'String'"; exit 1; }
+
+IFS=" " # delimiter
+# results in syntax: pdfname.pdf:pagenumber:searchstring
+resultslist=$(pdfgrep -n -H -o "$1" *.pdf)
+resultscount=$(echo "$resultslist" | cut -d ':' -f 1 | uniq -c | awk '{print $1}' | tr '\n' ' ') # results per pdf
+deduplicatedlist=$(echo "$resultslist" | awk '!a[$0]++') # deduplicate
+pageslist=$(echo "$deduplicatedlist" | cut -d ':' -f 2) # page numbers
+resultpages=$(echo "$deduplicatedlist" | cut -d ':' -f 1 | uniq -c | awk '{print $1}' | tr '\n' ' ') # result pages per pdf
+
+# determine individual pdf files:
+uniquepdfnames=$(echo "$deduplicatedlist" | cut -d ':' -f 1 | sort -u | tr '\n' ' ')
+unset IFS
+uniquepdfcount=$(echo "$uniquepdfnames" | wc -w)
+echo "Found $(echo "$resultslist" | wc -w) results inside $uniquepdfcount pdf files"
+echo "(Results per pdf: $resultscount)"
+
+i=1 # number of file
+field=1 # position in pagelist
+while [ "$i" -le "$uniquepdfcount" ]; do # less or equals
+	# different pdf files:
+	resultsthispdf=$(echo $resultpages | awk -v N="$i" '{print $N}') # better than loop with ${resultpages:2:1}
+
+	currentpages=$(echo $pageslist | cut -d " " -f "$field"-$(($field + $resultsthispdf - 1)))
+	field=$(($field + $resultsthispdf))
+
+	pdfsites="$pdfsites$currentpages"
+	[ "$i" -ne "$uniquepdfcount" ] && pdfsites="$pdfsites; "
+
+	# different pdf files end
+	i=$((i + 1))
+done
+
+echo "$uniquepdfnames"
+pagecount=$(echo "$pageslist" | wc -w)
+echo "Pages: $pagecount ($pdfsites)"
+echo "[Pages per pdf: $resultpages]"
+
+i=1
+c=1
+current_pdf="$(echo $uniquepdfnames | cut -d " " -f"$c")"
+magick -background red -fill black -pointsize 16 label:"$current_pdf" sixel:-
+while [ "$i" -le "$pagecount" ]; do
+	current_page="$(echo "$pdfsites" | cut -d " " -f"$i" | tr -d ";")"
+
+	# Draw orange rectangle per page including corresponding text search result number unless --no-result-numbers is passed
+	[ "$show_result_numbers" = true ] && TEXT_ORANGE=$(echo "$resultslist" | grep "^$current_pdf:$current_page:" | wc -l) || TEXT_ORANGE=" "
+
+	POINTSIZE=16
+	TEXT_GREEN="$current_page"
+	TEXT_GREEN_DIMENSIONS=$(magick -pointsize $POINTSIZE label:"$TEXT_GREEN" -format "%wx%h" info:)
+	TEXT_ORANGE_DIMENSIONS=$(magick -pointsize $POINTSIZE label:"$TEXT_ORANGE" -format "%wx%h" info:)
+	TEXT_GREEN_WIDTH=$(echo $TEXT_GREEN_DIMENSIONS | cut -d'x' -f1)
+	TEXT_ORANGE_WIDTH=$(echo $TEXT_ORANGE_DIMENSIONS | cut -d'x' -f1)
+	TEXT_HEIGHT=$(echo $TEXT_GREEN_DIMENSIONS | cut -d'x' -f2)
+
+	pdftocairo -png -scale-to $scale_to -f "$current_page" -l "$current_page" "$current_pdf" -singlefile - \
+	| magick - -size "$scale_to"x$((POINTSIZE + 16)) \
+		\( xc:gray \
+			-fill green -draw "rectangle 0,0 $((TEXT_GREEN_WIDTH + 16)),$((TEXT_HEIGHT + 8))" \
+			-fill orange -draw "rectangle $((TEXT_GREEN_WIDTH + 16)),0 $((TEXT_GREEN_WIDTH + 16 + TEXT_ORANGE_WIDTH + 16)),$((TEXT_HEIGHT + 8))" \
+			-fill white -pointsize $POINTSIZE -draw "text 8,$TEXT_HEIGHT '$TEXT_GREEN'" \
+			-fill black -pointsize $POINTSIZE -draw "text $((TEXT_GREEN_WIDTH + 16 + 8)),$TEXT_HEIGHT '$TEXT_ORANGE'" \
+		\) \
+		-append sixel:- 2>/dev/null
+
+	[ "$(echo "$pdfsites" | cut -d " " -f"$i")" != "$current_page" ] && {
+		c=$((c + 1))
+		current_pdf="$(echo $uniquepdfnames | cut -d " " -f"$c")"
+		magick -background red -fill black -pointsize $POINTSIZE label:"$current_pdf" sixel:-
+	}
+	i=$((i + 1))
+done
