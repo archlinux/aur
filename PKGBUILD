@@ -1,7 +1,7 @@
 # Maintainer: hellopoisonx <x1665341912@gmail.com>
 pkgname='clash-flutter-git'
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Flutter based GUI for Clash.Meta kernel'
 arch=('x86_64' 'i386' 'aarch64' 'armv7h' 'riscv64' 'loong64')
 url='https://github.com/hellopoisonx/clash-flutter'
@@ -12,16 +12,17 @@ depends=(
   'polkit'
   'zenity'
 )
-makedepends=('flutter' 'git')
+makedepends=('fvm' 'git')
 provides=('clash-flutter')
 
 source=("clash-flutter::git+https://github.com/hellopoisonx/clash-flutter" "Country.mmdb::https://github.com/Dreamacro/maxmind-geoip/releases/download/20240812/Country.mmdb")
 
 function build() {
   cd "${srcdir}/clash-flutter" || exit
-  flutter pub get
-  dart run build_runner build
-  flutter build linux --release
+  fvm install
+  fvm flutter pub get
+  fvm dart run build_runner build
+  fvm flutter build linux --release
 }
 
 function package() {
