@@ -8,6 +8,7 @@ pkgbase = ontake-himitsu-git
 	arch = aarch64
 	license = GPL3
 	makedepends = go>=1.18
+	makedepends = git
 	provides = ontake-himitsu
 	conflicts = ontake-himitsu
 	source = git+https://git.ontake.dev/go/himitsu
