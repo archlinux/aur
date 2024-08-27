@@ -1,16 +1,16 @@
 pkgbase = ddupes
-	pkgdesc = Extends fdupes action to directories. Includes ffdupes (fast fdupes).
+	pkgdesc = Extends fdupes action to directories, includes ffdupes (fast fdupes)
 	pkgver = 2.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pietrobattiston.it/ddupes
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
 	source = ddupes-2.3.tar.gz::https://pietrobattiston.it/_media/ddupes:ddupes-2.3.tar.gz
-	sha1sums = 2e5667da75a12e27634a6d4ca6133775bf1d7c0d
+	sha256sums = 5afe03c441c975c5e7b479a456746bb79699cc7cccd929747edd245895ee4a67
 
 pkgname = ddupes
