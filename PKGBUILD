@@ -1,4 +1,4 @@
-# Maintainer: Mckol <mckol363@gmail.com>
+# Maintainer: LunarEclipse <luna@lunareclipse.zone>
 
 pkgname=queercat-git
 pkgver=r24.551c199
