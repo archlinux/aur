@@ -3,10 +3,10 @@
 # Maintainer: Lawrence Stalder <lawrence.stalder@pm.me>
 
 pkgname=nym-vpnd
-pkgver=0.1.12
+pkgver=0.1.16
 # upstream version
-_pkgver=0.1.12
-_release_tag=nym-vpn-core-v0.1.12
+_pkgver=0.1.16
+_release_tag=nym-vpn-core-v0.1.16
 pkgrel=1
 pkgdesc='NymVPN daemon as a systemd service'
 arch=('x86_64')
@@ -20,7 +20,7 @@ options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_release_tag.tar.gz"
     'nym-vpnd.service')
 sha256sums=(
-    '76d8e6726652bd98c96ad8dd9b2393337ce63ed4b85e20a0f876b8f3cc2e9a32' 
+    'e5af369692aa6e3ffd521e6c8d04f7f8d49c4fe959351f5265e020d3dd5354ca' 
     'e8e234098c198ba3d0692543922fc53434f9a4355338d01c5a8dd5abfb97d255')
 _srcdir="nym-vpn-client-$_release_tag"
 
@@ -44,7 +44,7 @@ build() {
   wg_go=$srcdir/$_srcdir/build/lib/$CARCH-unknown-linux-gnu
 
   # build nym-vpnd
-  pushd nym-vpn-core/nym-vpnd/
+  pushd nym-vpn-core/crates/nym-vpnd/
 
   # sqlx does not support LTO build flag, which is enabled by default in Arch
   # set the C flag -ffat-lto-objects to solve the issue
