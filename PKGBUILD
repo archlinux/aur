@@ -1,8 +1,8 @@
 # Maintainer : Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=7.0.1
-pkgrel=3
+pkgver=7.0.2
+pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
 arch=('any')
@@ -17,6 +17,7 @@ depends=(
   'mingw-w64-fontconfig'
   'mingw-w64-fribidi'
   'mingw-w64-gmp'
+  'mingw-w64-gnutls'
   'mingw-w64-gsm'
   'mingw-w64-harfbuzz'
   'mingw-w64-lame'
@@ -37,7 +38,6 @@ depends=(
   'mingw-w64-libvpx'
   'mingw-w64-libwebp'
   'mingw-w64-libxml2'
-  'mingw-w64-mbedtls2'
   'mingw-w64-vid.stab'
   'mingw-w64-vmaf'
   'mingw-w64-opencore-amr'
@@ -59,15 +59,15 @@ depends=(
 # 'mingw-w64-vapoursynth'
 # 'mingw-w64-opencl-icd'
 #'mingw-w64-svt-av1' (only 64 bit support)
-options=(!strip !buildflags staticlibs)
+options=(!strip !buildflags staticlibs !debug)
 makedepends=('mingw-w64-amf-headers' 'mingw-w64-avisynthplus' 'mingw-w64-frei0r-plugins' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-vulkan-headers' 'git' 'yasm')
 # 'mingw-w64-opencl-headers'
-_tag=47f70eda3e2ff003a787e512afd07b0c266f7a70
+_tag=a18b979d17fa169a6f93c5be8732533c8e06337d
 #source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
 source=(git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
         add-av_stream_get_first_dts-for-chromium.patch
         configure.patch)
-b2sums=('d2d6a645509e697932dc8f7a57719e069299e53eb37cda7bf01fd94c9e9956e5532dc5c923fa86d72d0e3a051a7f405e768c73c66ca8aea29271923a17222e03'
+b2sums=('bcc0fb367d2822665f0918292a0cf581e0119d6ba6d2e3d0b6e794b6f74d30c118b5c47e26b5687473f01b346f8ec7e885f80729ce6115e18003b2371ff4553f'
         '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de'
         '7171cf5055c4356f9aeb42a5bb550b3380cad20fff8dc4e9114d4fbb17e95bfe40c1057c3b7188641a1d7b9d026105e3eb0175789d7af30c5999793dfddf97fb')
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
@@ -95,6 +95,9 @@ build() {
     # avoid multiple definitions error
     export LDFLAGS="$LDFLAGS -Wl,--allow-multiple-definition"
 
+    # Fix for GCC 14
+    export CFLAGS="$CFLAGS -Wno-error=int-conversion"
+
     export PKG_CONFIG_PATH_CUSTOM="/usr/${_arch}/lib/mbedtls2/pkgconfig"
 
     "${srcdir}"/ffmpeg/configure \
@@ -109,6 +112,7 @@ build() {
       --enable-amf \
       --enable-fontconfig \
       --enable-gmp \
+      --enable-gnutls \
       --enable-gpl \
       --enable-avisynth \
       --enable-lto \
@@ -151,7 +155,6 @@ build() {
       --enable-libxml2 \
       --enable-libxvid \
       --enable-libzimg \
-      --enable-mbedtls \
       --enable-opengl \
       --enable-zlib \
       --enable-shared \

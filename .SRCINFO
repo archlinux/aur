@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (mingw-w64)
-	pkgver = 7.0.1
-	pkgrel = 3
+	pkgver = 7.0.2
+	pkgrel = 1
 	epoch = 1
 	url = https://ffmpeg.org
 	arch = any
@@ -22,6 +22,7 @@ pkgbase = mingw-w64-ffmpeg
 	depends = mingw-w64-fontconfig
 	depends = mingw-w64-fribidi
 	depends = mingw-w64-gmp
+	depends = mingw-w64-gnutls
 	depends = mingw-w64-gsm
 	depends = mingw-w64-harfbuzz
 	depends = mingw-w64-lame
@@ -42,7 +43,6 @@ pkgbase = mingw-w64-ffmpeg
 	depends = mingw-w64-libvpx
 	depends = mingw-w64-libwebp
 	depends = mingw-w64-libxml2
-	depends = mingw-w64-mbedtls2
 	depends = mingw-w64-vid.stab
 	depends = mingw-w64-vmaf
 	depends = mingw-w64-opencore-amr
@@ -62,11 +62,12 @@ pkgbase = mingw-w64-ffmpeg
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=47f70eda3e2ff003a787e512afd07b0c266f7a70
+	options = !debug
+	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=a18b979d17fa169a6f93c5be8732533c8e06337d
 	source = add-av_stream_get_first_dts-for-chromium.patch
 	source = configure.patch
 	validpgpkeys = DD1EC9E8DE085C629B3E1846B18E8928B3948D64
-	b2sums = d2d6a645509e697932dc8f7a57719e069299e53eb37cda7bf01fd94c9e9956e5532dc5c923fa86d72d0e3a051a7f405e768c73c66ca8aea29271923a17222e03
+	b2sums = bcc0fb367d2822665f0918292a0cf581e0119d6ba6d2e3d0b6e794b6f74d30c118b5c47e26b5687473f01b346f8ec7e885f80729ce6115e18003b2371ff4553f
 	b2sums = 555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de
 	b2sums = 7171cf5055c4356f9aeb42a5bb550b3380cad20fff8dc4e9114d4fbb17e95bfe40c1057c3b7188641a1d7b9d026105e3eb0175789d7af30c5999793dfddf97fb
 
