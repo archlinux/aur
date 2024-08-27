@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=cubble
-_pkgver=0.3.2
+_pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -53,9 +53,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-tests.patch")
-md5sums=('b1a93ce76428df673674ac8a3ff853cb'
+md5sums=('b6b1f3439d3570f98bfc120ed4ca22bf'
          '17ad8728b51d3c54b73045a92dfeed49')
-b2sums=('7cbd7dc0a859dc1ea7e9acb54a8ba7845922cbe77972c24f1d828f5bc1a92ae3f07da6304a94e6600f0026e67199d63dbac277ad57e289227e8822d2e3396b24'
+b2sums=('f4556bd131201df60b182483d603b9d9151d4237e3478b72dc3742eb5a7f4ae4fc7d1ec834b06c0636ed85811ca00b0a9f608928455b3f4c2b809da0307efa6d'
         '9a0b54584f836fcaf883e071dddbca63c0bc17eb85ce9f9b62d4ce2c8db42fe3aac3549ed9f87627f5fd1a2daa3ade2408e79cee258a3066b86500787af26f14')
 
 prepare() {
