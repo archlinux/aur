@@ -1,4 +1,4 @@
-# Maintainer: Mckol <mckol363@gmail.com>
+# Maintainer: LunarEclipse <luna@lunareclipse.zone>
 
 export GIT_LFS_SKIP_SMUDGE=1
 pkgname=veloren-git
