@@ -2,7 +2,7 @@
 # Submitter:  not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=fdserver
-pkgver=24.2.19
+pkgver=24.6.26
 pkgrel=1
 pkgdesc="Ham Radio - ARRL Field Day - Multi-user Server for clients using the fdlogger package"
 license=('GPL-3.0-only')
@@ -32,7 +32,7 @@ package() {
 	install -Dm755 $pkgname/data/k6gte-$pkgname.desktop $pkgdir/usr/share/applications/k6gte-$pkgname.desktop
 	install -Dm755 $pkgname/data/k6gte.$pkgname.svg $pkgdir/usr/share/pixmaps/k6gte-$pkgname.svg
 }
-md5sums=('61b08b90e3a77164ea3f60346d50c29a'
+md5sums=('9f56a7a067ca3e91078a2f6aa5cd305e'
          '22feefc9c03eeddd86785a77b4a5bc4e')
-sha256sums=('cd9a9131fb9f0d1190c9018b95a5a6ef6b0999e0ea6eca73f677ddd29c498f4a'
+sha256sums=('15eac1d668ef67f69eacd0470098b0fcbb921f2e028e195c179d85bdb0e395ac'
             '88bc2d01839d6d3d5aaf98aec4ddad69824e1976ca0aab48ba3341da89dacd57')
