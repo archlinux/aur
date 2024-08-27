@@ -1,18 +1,19 @@
 # Maintainer: Matteo Giordano <mail at matteogiordano dot me>
 # Contributor: <agustinballesteros04@gmail.com>
 pkgname=kew
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="A command-line music player"
 arch=('x86_64')
 url="https://github.com/ravachol/kew"
 license=('GPL2')
-depends=('ffmpeg' 'fftw' 'chafa' 'freeimage' 'glib2' 'opus' 'opusfile' 'libvorbis' 'libnotify')
+depends=('ffmpeg' 'fftw' 'chafa' 'freeimage' 'glib2' 'opus' 'opusfile' 'libvorbis')
+optdepends=('libnotify: Native notification support')
 replaces=('cue-music-command')
 conflicts=('kew-git')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('160f83d026b4908c67869d332728e47b05cc96ca611e19064b64fa992946f05abb45081d8030c71c217e01ae70d784c13f11509506b593c77bc8fcfb3a51e719')
+sha512sums=('664f96bc0418168f870971e10b3bfed0a439f77ad941c2057a52b2ca0c788f46de29a086c41c1c71013f835c57afa72d46d4a498367cd29b94609c02e7ace321')
 
 build() {
     cd "$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = kew
 	pkgdesc = A command-line music player
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/ravachol/kew
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = kew
 	depends = opus
 	depends = opusfile
 	depends = libvorbis
-	depends = libnotify
+	optdepends = libnotify: Native notification support
 	conflicts = kew-git
 	replaces = cue-music-command
-	source = kew-2.7.0.tar.gz::https://github.com/ravachol/kew/archive/v2.7.0.tar.gz
-	sha512sums = 160f83d026b4908c67869d332728e47b05cc96ca611e19064b64fa992946f05abb45081d8030c71c217e01ae70d784c13f11509506b593c77bc8fcfb3a51e719
+	source = kew-2.7.1.tar.gz::https://github.com/ravachol/kew/archive/v2.7.1.tar.gz
+	sha512sums = 664f96bc0418168f870971e10b3bfed0a439f77ad941c2057a52b2ca0c788f46de29a086c41c1c71013f835c57afa72d46d4a498367cd29b94609c02e7ace321
 
 pkgname = kew
