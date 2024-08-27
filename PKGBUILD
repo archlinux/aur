@@ -3,7 +3,7 @@
 pkgname=wayfire-plugins-extra-track-wlroots-0.18-git
 pkgver=r261.960535e
 pkgrel=1
-pkgdesc="3D wayland compositor extra plugins"
+pkgdesc="3D wayland compositor extra plugins, tracking wlroots 0.18 branch of Wayfire"
 arch=('any')
 url="https://github.com/WayfireWM/wayfire-plugins-extra"
 license=('MIT')
