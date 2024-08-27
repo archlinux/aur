@@ -1,0 +1,16 @@
+pkgbase = perl-system-info
+	pkgdesc = Perl module to get basic information about the system
+	pkgver = 0.065
+	pkgrel = 1
+	url = https://metacpan.org/release/System-Info
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-test-warnings
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/System-Info-0.065.tgz
+	sha256sums = 61f9b0c805daf4ed3b7965f4a7a321e448442d1b4fa465222338e93884e0ceb7
+
+pkgname = perl-system-info
