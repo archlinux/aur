@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (Android x86-64)
 	pkgver = 7.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ffmpeg.org/
 	arch = any
 	groups = android-ffmpeg
@@ -27,7 +27,6 @@ pkgbase = android-x86-64-ffmpeg
 	depends = android-x86-64-lame
 	depends = android-x86-64-libass
 	depends = android-x86-64-libavc1394
-	depends = android-x86-64-libbluray
 	depends = android-x86-64-libbs2b
 	depends = android-x86-64-libdrm
 	depends = android-x86-64-libiec61883
