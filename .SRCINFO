@@ -1,6 +1,6 @@
 pkgbase = linkserver
 	pkgdesc = LinkServer is a utility for launching and managing GDB servers for NXP debug probes, which also provides a command-line target flash programming capabilities.
-	pkgver = 1.6.121
+	pkgver = 1.6.133
 	pkgrel = 1
 	url = https://www.nxp.com/design/design-center/software/development-software/mcuxpresso-software-and-tools-/linkserver-for-microcontrollers:LINKERSERVER
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = linkserver
 	depends = systemd-libs
 	depends = zlib
 	depends = xz
-	noextract = LINKSERVER-LIN-1.6.121.deb.bin
+	noextract = LinkServer_1.6.133.x86_64.deb.bin
 	options = !strip
-	source = file://LINKSERVER-LIN-1.6.121.deb.bin
-	sha256sums = 3e69264a0f0ab02b3ebcc8d7900be70303654b072bfa8b5371620c7566035c36
+	source = file://LinkServer_1.6.133.x86_64.deb.bin
+	sha256sums = e398fa28ff059a04625672a0cb4d12f8c8c86322b08b07a898e75855315990f9
 
 pkgname = linkserver

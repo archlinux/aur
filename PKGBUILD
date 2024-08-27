@@ -10,22 +10,23 @@
 # 6. Build
 
 pkgname=linkserver
-pkgver=1.6.121
+pkgver=1.6.133
 pkgrel=1
 pkgdesc="LinkServer is a utility for launching and managing GDB servers for NXP debug probes, which also provides a command-line target flash programming capabilities."
 arch=('x86_64')
 url="https://www.nxp.com/design/design-center/software/development-software/mcuxpresso-software-and-tools-/linkserver-for-microcontrollers:LINKERSERVER"
 license=('custom:LA_OPT_NXP_Software_License')
 depends=('bash' 'bzip2' 'expat' 'gcc-libs' 'glibc' 'libusb' 'openssl-1.1' 'systemd-libs' 'zlib' 'xz' )
-source=("file://LINKSERVER-LIN-${pkgver}.deb.bin")
-noextract=("LINKSERVER-LIN-${pkgver}.deb.bin")
-sha256sums=('3e69264a0f0ab02b3ebcc8d7900be70303654b072bfa8b5371620c7566035c36')
+_source="LinkServer_${pkgver}.${arch}.deb.bin"
+source=("file://${_source}")
+noextract=("${_source}")
+sha256sums=('e398fa28ff059a04625672a0cb4d12f8c8c86322b08b07a898e75855315990f9')
 options=('!strip')
 
 prepare() {
-    chmod +x LINKSERVER-LIN-${pkgver}.deb.bin
-    ./LINKSERVER-LIN-${pkgver}.deb.bin --noexec --keep --target ${srcdir}
-    rm LINKSERVER-LIN-${pkgver}.deb.bin
+    chmod +x ${_source}
+    ./${_source} --noexec --keep --target ${srcdir}
+    rm ${_source}
     cd ${srcdir}
     mkdir linkserver
     bsdtar -x -f LinkServer_${pkgver}.${arch}.deb -C linkserver/
