@@ -4,7 +4,7 @@ _name="QCElemental"
 _pkgname="qcelemental"
 pkgname="python-${_pkgname}"
 pkgver=0.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Periodic table, physical constants, and molecule parsing for quantum chemistry"
 arch=("any")
 url="https://docs.qcarchive.molssi.org/projects/qcelemental/en/latest/"
@@ -27,8 +27,7 @@ package() {
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
 
-# importlib.metadata.PackageNotFoundError: No package metadata was found for qcelemental
-# check() {
-#   cd "${srcdir}/${_name}-${pkgver}"
-#   python -m pytest -v
-# }
+check() {
+  cd "${srcdir}/${_name}-${pkgver}"
+  python -m pytest -v
+}

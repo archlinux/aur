@@ -1,7 +1,7 @@
 pkgbase = python-qcelemental
 	pkgdesc = Periodic table, physical constants, and molecule parsing for quantum chemistry
 	pkgver = 0.28.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.qcarchive.molssi.org/projects/qcelemental/en/latest/
 	arch = any
 	license = MIT
