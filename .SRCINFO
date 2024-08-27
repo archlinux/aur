@@ -1,0 +1,17 @@
+pkgbase = netflix-electron31
+	pkgdesc = Unofficial Netflix desktop application using Electron 31
+	pkgver = 1.0.8
+	pkgrel = 2
+	url = https://gitlab.com/linuxbombay/netflix-desktop
+	arch = x86_64
+	license = GPL
+	makedepends = pnpm
+	depends = electron31
+	conflicts = netflix
+	replaces = netflix
+	source = netflix-electron31.tar.bz2
+	source = netflix-electron31.sh
+	sha256sums = adaa179d21129ae5eacac8e175c7839cef041cb87c9e40c26698724e1424d2cf
+	sha256sums = 6770271e8632517b087141c7b264ca6307af9884743619cd97c45bdfa9a97e2c
+
+pkgname = netflix-electron31
