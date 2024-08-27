@@ -3,7 +3,7 @@
 # Contributor: Sebastien Duthil
 
 pkgname=thrive-bin
-pkgver=0.6.7.0
+pkgver=0.6.7.1
 pkgrel=1
 pkgdesc="Game about evolution, in which the player guides a species from their origin as a microbe to the space age and beyond."
 arch=(x86_64)
@@ -15,7 +15,7 @@ conflicts=(thrive)
 source=(thrive.sh)
 source_x86_64=("https://github.com/Revolutionary-Games/Thrive/releases/download/v${pkgver%.0}/Thrive_${pkgver}_linux_x11.7z")
 sha256sums=('6ec074bbee0ac3f21e51e41247f376e2684ab1215ac2e0346af632d5b94f688d')
-sha256sums_x86_64=('341f7897568fd6460936790a7268dfb38af2e5e62a0ff469b0960ee7bd3619b1')
+sha256sums_x86_64=('c0b6033acb206ffa02c4aaf0e0d1e7f639aa234e3b159995af5ea9f61879a0ef')
 options=(!strip)
 
 prepare() {
