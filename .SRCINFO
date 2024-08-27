@@ -19,7 +19,7 @@ pkgbase = quickshell
 	depends = libxcb
 	depends = wayland
 	depends = cli11
-	depends = google-breakpad-fixed
+	depends = google-breakpad-git
 	source = git+https://github.com/outfoxxed/quickshell.git
 	sha256sums = SKIP
 
