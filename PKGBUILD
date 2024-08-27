@@ -6,7 +6,7 @@
 _pkgname=sparklines
 pkgname="python-$_pkgname"
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Text-based sparkline command line mimicking those of Edward Tuft'
 arch=('any')
 url="https://github.com/deeplook/$_pkgname"
@@ -28,6 +28,7 @@ sha256sums=(
 )
 provides=("$pkgname" "$_pkgname")
 conflicts=("$_pkgname")
+changelog="$pkgname.changelog"
 
 build() {
   cd "${_pkgname}-$pkgver"
@@ -42,6 +43,9 @@ package() {
 
   _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   rm -vrf "$pkgdir$_site_packages/tests"
+
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    CONTRIBUTORS.txt README.rst
 }
 
 # eof
