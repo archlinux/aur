@@ -1,0 +1,16 @@
+pkgbase = obs-wlroots-screencopy-git
+	pkgdesc = OBS Studio plugin for efficient screen capture on wlroots-based wayland compositors
+	pkgver = r26.a3f88c1
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = gcc
+	makedepends = wayland
+	makedepends = wayland-protocols
+	makedepends = wlr-protocols
+	depends = obs-studio
+	source = git+https://github.com/PancakeTAS/obs-wlroots-screencopy
+	md5sums = SKIP
+
+pkgname = obs-wlroots-screencopy-git
