@@ -7,10 +7,10 @@
 
 _target="powerpc64-linux-gnu"
 pkgname=${_target}-gcc-stage2
-pkgver=14.1.0
+pkgver=14.2.0
 _majorver=${pkgver}
 _islver=0.26
-pkgrel=2
+pkgrel=1
 pkgdesc="The GNU Compiler Collection. Stage 2 for toolchain building (${_target})"
 arch=(i686 x86_64)
 license=(GPL LGPL FDL custom)
@@ -23,7 +23,7 @@ replaces=("${_target}-gcc-stage1")
 provides=("${_target}-gcc-stage1=${pkgver}" $_target-gcc)
 source=(https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
         https://libisl.sourceforge.io/isl-$_islver.tar.xz)
-sha256sums=('99ddc87d06832f80444970e63b9e7072dcd7e6c5e7cc45926d9aac912378a800'
+sha256sums=('a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9'
             'SKIP'
             'a0b5cb06d24f9fa9e77b55fabbe9a3c94a336190345c2555f9915bb38e976504')
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
