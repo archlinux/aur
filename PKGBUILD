@@ -4,7 +4,7 @@ pkgver=1.0.0
 pkgrel=2
 pkgdesc="Ai-Thinker AU-WB2 Wireless modules Development Frameswork"
 arch=('x86_64')
-url="https://github.com/Ai-Thinker-Open/Ai-Thinker-WB2"
+url="https://gitee.com/Ai-Thinker-Open/Ai-Thinker-WB2"
 license=('Apache2.0')
 makedepends=('git')
 source=(
@@ -24,8 +24,8 @@ package(){
     mkdir -p "$pkgdir/usr/share/Ai-Thinker-WB2"
     mkdir -p "$pkgdir/usr/bin/Ai-Thinker-WB2/toolchain/riscv"
 
-    cp  "$srcdir/Ai-Thinker-WB2/version.mk $pkgdir/usr/share/Ai-Thinker-WB2/"
-    cp  "$srcdir/Ai-Thinker-WB2/clean $pkgdir/usr/share/Ai-Thinker-WB2/"
+    cp  $srcdir/Ai-Thinker-WB2/version.mk $pkgdir/usr/share/Ai-Thinker-WB2/
+    cp  $srcdir/Ai-Thinker-WB2/clean $pkgdir/usr/share/Ai-Thinker-WB2/
     cp -r $srcdir/Ai-Thinker-WB2/applications/ $pkgdir/usr/share/Ai-Thinker-WB2/
     cp -r $srcdir/Ai-Thinker-WB2/components/ $pkgdir/usr/share/Ai-Thinker-WB2/
     cp -r $srcdir/Ai-Thinker-WB2/make_scripts_riscv/ $pkgdir/usr/share/Ai-Thinker-WB2/

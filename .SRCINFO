@@ -2,12 +2,12 @@ pkgbase = aithinkerwb2
 	pkgdesc = Ai-Thinker AU-WB2 Wireless modules Development Frameswork
 	pkgver = 1.0.0
 	pkgrel = 2
-	url = https://github.com/Ai-Thinker-Open/Ai-Thinker-WB2
+	url = https://gitee.com/Ai-Thinker-Open/Ai-Thinker-WB2
 	arch = x86_64
 	license = Apache2.0
 	makedepends = git
 	options = !strip
-	source = git+https://github.com/Ai-Thinker-Open/Ai-Thinker-WB2.git
+	source = git+https://gitee.com/Ai-Thinker-Open/Ai-Thinker-WB2.git
 	sha256sums = SKIP
 
 pkgname = aithinkerwb2
