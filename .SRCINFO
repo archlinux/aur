@@ -1,0 +1,14 @@
+pkgbase = tty-record
+	pkgdesc = Simple tool to record a terminal session
+	pkgver = 0.1.0.r7.g2a020f5
+	pkgrel = 1
+	url = https://github.com/elisescu/tty-record
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = go-bindata
+	source = git+https://github.com/elisescu/tty-record.git
+	sha256sums = SKIP
+
+pkgname = tty-record
