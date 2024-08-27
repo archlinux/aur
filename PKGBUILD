@@ -2,7 +2,7 @@
 # Submitter:  not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=fdlogger
-pkgver=24.3.2
+pkgver=24.6.26
 pkgrel=1
 pkgdesc="Ham Radio - ARRL Field Day logger GUI"
 license=('GPL-3.0-only')
@@ -32,7 +32,7 @@ package() {
 	install -Dm755 $pkgname/data/k6gte-fieldday.desktop $pkgdir/usr/share/applications/k6gte-fieldday.desktop
 	install -Dm755 build/lib/fdlogger/icon/k6gte-fdlogger.png $pkgdir/usr/share/pixmaps/k6gte-fdlogger.png
 }
-md5sums=('8dc0c97b5f2af216e1ec42499796123d'
+md5sums=('11f38e5b6b14252a4da354b74d972152'
          '4d29a2367a568ed7c5d5c2857d4f7fb7')
-sha256sums=('2b183955c8fa401a94172bb82de08aba4b11e308e7d7ff26672551c4ea2c29c4'
+sha256sums=('5bb3069f87852458338abe64c1d5b7454da369c0ee775b01c73bb0d296256a5f'
             'ab08f8f9578f9e96b40bb0a22c82c6dac53e75764bb0912e60c95a6cd1f8b8a5')
