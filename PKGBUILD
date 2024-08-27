@@ -1,7 +1,7 @@
 # Maintainer:WildboarG <mm62633482@gmail.com>
 pkgname=aithinkerwb2
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Ai-Thinker AU-WB2 Wireless modules Development Frameswork"
 arch=('x86_64')
 url="https://gitee.com/Ai-Thinker-Open/Ai-Thinker-WB2"
