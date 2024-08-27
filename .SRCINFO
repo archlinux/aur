@@ -1,13 +1,15 @@
-pkgbase = obs-ios-camera-source
+pkgbase = obs-ios-camera-source-git
 	pkgdesc = Use your iPhone camera as a video source in OBS Studio and stream high quality video from your iPhone's camera over USB (dougg3's fork)
 	pkgver = r290.c67e577
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
 	depends = obs-studio
 	depends = usbmuxd
+	conflicts = obs-plugin-ios-camera-source-git
+	conflicts = obs-ios-camera-source
 	source = git+https://github.com/dougg3/obs-ios-camera-source
 	md5sums = SKIP
 
-pkgname = obs-ios-camera-source
+pkgname = obs-ios-camera-source-git
