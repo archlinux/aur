@@ -8,4 +8,4 @@
  license=('MIT')
  depends=('ffmpeg')
  source=("https://registry.gitflic.ru/project/skylab/video-collector/package/-/generic/video-collector-client/${pkgver}/video-collector-client-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
- sha256sums=('0e8cf0b9a729f715172d542fbd5bf44bb7c9e0c3943ca3313ceefa941595119a')
+ sha256sums=('11a604d8163dd97008d70d4ed1356cc21e5d2f8fd6f41df9ef5c031308feadfb')
