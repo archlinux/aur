@@ -1,6 +1,6 @@
 pkgbase = python-cdsapi
 	pkgdesc = Copernicus Common Data Store API (was Climate Data Store)
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/ecmwf/cdsapi
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-cdsapi
 	makedepends = python-setuptools
 	depends = python-tqdm
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/c/cdsapi/cdsapi-0.7.0.tar.gz
-	b2sums = 2a954e36114120236185739b66351fc2a4108d34b1dda0d86b4fda0281810ff09fb601221d7d4a5a3cadf1ddb799b51789b8ae1a7fcaeec9e897f831c1106857
+	source = https://files.pythonhosted.org/packages/source/c/cdsapi/cdsapi-0.7.1.tar.gz
+	b2sums = 21df9c20869d07153452c6355db73051a956006d52e1961db520e04066ffdadeab3098174a847f5af06267f7708e1349ab2b1f7c8051ee39408790ede2c9c518
 
 pkgname = python-cdsapi
