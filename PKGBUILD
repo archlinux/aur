@@ -1,7 +1,7 @@
 # Maintainer:
 # Contributor: éclairevoyant
 
-## useful links:
+## links
 # https://astian.org/midori-browser/download/
 # https://github.com/goastian/midori-desktop
 
@@ -10,10 +10,13 @@
 : ${_build_pgo_reuse:=try}
 : ${_build_pgo_xvfb:=false}
 
+: ${_ver_clang=17}
+: ${RUSTUP_TOOLCHAIN:=1.77}
+
 ## basic info
 _pkgname="midori"
 pkgname="$_pkgname-git"
-pkgver=11.3.3.r2.gc9f1cc5
+pkgver=11.3.4.r135.g9d7e6d1
 pkgrel=1
 pkgdesc="Web browser based on Floorp"
 url="https://github.com/goastian/midori-desktop"
@@ -39,16 +42,19 @@ depends=(
   zlib
 )
 makedepends=(
+  "${RUSTUP_TOOLCHAIN:+rustup}"
+  "clang${_ver_clang:-}"
+  "lld${_ver_clang:-}"
+  "llvm${_ver_clang:-}"
+  "wasi-compiler-rt${_ver_clang:-}"
+  cargo
   cbindgen
-  clang
   diffutils
   dump_syms
   git
   imake
   inetutils
   jack
-  lld
-  llvm
   mercurial
   mesa
   mold
@@ -58,7 +64,6 @@ makedepends=(
   python-setuptools
   rustup
   unzip
-  wasi-compiler-rt
   wasi-libc
   wasi-libc++
   wasi-libc++abi
@@ -98,46 +103,103 @@ options=(
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
-: ${_lssver:=v2022.10.12}
-noextract=("lss-${_lssver}.tar.gz")
+_source_main() {
+  : ${_lssver:=v2022.10.12}
+  noextract=("lss-${_lssver}.tar.gz")
 
-_patch_commit="24a6ea8"
+  _pkgsrc="midori-tensei"
+  source=(
+    "$_pkgsrc"::"git+https://github.com/goastian/midori-desktop.git"
+    "lss-${_lssver}.tar.gz"::"https://chromium.googlesource.com/linux-syscall-support/+archive/refs/tags/${_lssver}.tar.gz"
+    "$_pkgname.desktop"
+  )
+  sha256sums=(
+    'SKIP'
+    'SKIP'
+    '7ef0f85f2b111caa08a3e855cb4b6595b6d0f62b3de13ce59eea94a580eec470'
+  )
+}
 
-_pkgsrc="midori-tensei"
-source=(
-  "$_pkgsrc"::"git+https://github.com/goastian/midori-desktop.git"
-  "goastian.l10n-central"::"git+https://github.com/goastian/l10n-central.git"
-  "lss-${_lssver}.tar.gz"::"https://chromium.googlesource.com/linux-syscall-support/+archive/refs/tags/${_lssver}.tar.gz"
-  "$_pkgname.desktop"
+_source_patch() {
+  local _patch_commit_1="24a6ea8ac216b6e63c6d8dfbfed967236bbf75a2"
+  source+=(
+    "18d19413472f-${_patch_commit_1::7}.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/18d19413472f.patch?h=firefox-esr&id=$_patch_commit_1"
+    "6af7194e2778-${_patch_commit_1::7}.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/6af7194e2778.patch?h=firefox-esr&id=$_patch_commit_1"
+    "b1cc62489fae-${_patch_commit_1::7}.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/b1cc62489fae.patch?h=firefox-esr&id=$_patch_commit_1"
+  )
+  sha256sums+=(
+    '3cc55401ed5e027f1b9e667b0b52296af11f3c5c62b4a80b7e55cda0e117ed18'
+    '6952f93889acb514e3b06e251ea901df88c39b429da9677cd5547d90a8b6c73e'
+    'f66a944fa8804c16b1f7bd9b42b18bfc2552a891adc148085f4b91685e8db117'
+  )
 
-  "18d19413472f-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/18d19413472f.patch?h=firefox-esr&id=$_patch_commit"
-  "6af7194e2778-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/6af7194e2778.patch?h=firefox-esr&id=$_patch_commit"
-  "b1cc62489fae-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/b1cc62489fae.patch?h=firefox-esr&id=$_patch_commit"
+  local _patch_commit_2="d2127a9424507a38cff13cce49403214a8190bed"
+  local _url_arch="https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/$_patch_commit_2"
+  source+=(
+    "0004-Bug-1912663-${_patch_commit_2::7}.patch"::"$_url_arch/0004-Bug-1912663-Fix-some-build-issues-with-cbindgen-0.27.patch"
+  )
+  sha256sums+=(
+    'dd2aba1c02c21b89ceed0713a6aa0241365fe79b1e3a4d21cdcd7231db6fab5e'
+  )
+}
+
+_source_midori_tensei() {
+  source+=(
+    'goastian.l10n-central'::'git+https://github.com/goastian/l10n-central.git'
+  )
+  sha256sums+=(
+    'SKIP'
+  )
+}
+
+_prepare_midori_tensei() (
+  cd "$srcdir/$_pkgsrc"
+  local _submodules=(
+    'goastian.l10n-central'::'floorp/browser/locales/l10n-central'
+  )
+  _submodule_update
 )
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  '7ef0f85f2b111caa08a3e855cb4b6595b6d0f62b3de13ce59eea94a580eec470'
 
-  '3cc55401ed5e027f1b9e667b0b52296af11f3c5c62b4a80b7e55cda0e117ed18'
-  '6952f93889acb514e3b06e251ea901df88c39b429da9677cd5547d90a8b6c73e'
-  'f66a944fa8804c16b1f7bd9b42b18bfc2552a891adc148085f4b91685e8db117'
-)
+_source_main
+_source_midori_tensei
+_source_patch
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+  local _file _hash _ver _rev
+  _file="browser/config/version_display.txt"
+  read -r _hash _ver < <(
+    NL=$(awk '/^[[:digit:]]+/{n=NR}END{print n}' "$_file")
+
+    git blame -L "$NL,+1" -- "$_file" \
+      | awk '{print $1" "$NF }' \
+      | sed -E -e 's& v([[:digit:]]+)& \1&'
+  )
+  _rev=$(git rev-list --count --cherry-pick "$_hash"...HEAD)
+
+  printf "%s.r%s.g%s" "${_ver:?}" "${_rev:?}" "${_hash::7}"
 }
 
 prepare() {
+  _submodule_update() {
+    local _module
+    for _module in "${_submodules[@]}"; do
+      git submodule init "${_module##*::}"
+      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
+      git -c protocol.file.allow=always submodule update "${_module##*::}"
+    done
+  }
+
   mkdir -p mozbuild
   cd "$_pkgsrc"
 
   # l10n
   local _l10n_path="floorp/browser/locales/l10n-central"
-  [ ! -e "$_l10n_path" ] && ln -sf "$srcdir/goastian.l10n-central" "$_l10n_path"
+  if [ ! -e "$_l10n_path" ]; then
+    ln -sf "$srcdir/goastian.l10n-central" "$_l10n_path"
+  else
+    _prepare_midori_tensei
+  fi
 
   # prepare google breakpad
   local _lss_path="toolkit/crashreporter/google-breakpad/src/third_party/lss"
@@ -235,22 +297,32 @@ ac_add_options OPT_LEVEL="3"
 ac_add_options RUSTC_OPT_LEVEL="3"
 
 # Other
-export AR=llvm-ar
-export CC='clang'
-export CXX='clang++'
-export NM=llvm-nm
-export RANLIB=llvm-ranlib
+export AR=llvm-ar${_ver_clang:+-$_ver_clang}
+export CC=clang${_ver_clang:+-$_ver_clang}
+export CXX=clang++${_ver_clang:+-$_ver_clang}
+export NM=llvm-nm${_ver_clang:+-$_ver_clang}
+export RANLIB=llvm-ranlib${_ver_clang:+-$_ver_clang}
 END
 
-  patch -Np1 -F100 -i "$srcdir/18d19413472f-$_patch_commit.patch"
-  patch -Np1 -F100 -i "$srcdir/6af7194e2778-$_patch_commit.patch"
-  patch -Np1 -F100 -i "$srcdir/b1cc62489fae-$_patch_commit.patch"
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.zst}"
+    if [[ $src == *.patch ]]; then
+      printf '\nApplying patch: %s\n' "$src"
+      patch -Np1 -F100 -i "${srcdir:?}/$src"
+    fi
+  done
 }
 
 build() {
   cd "$_pkgsrc"
 
-  export RUSTUP_TOOLCHAIN=1.77
+  export PATH="/usr/lib/llvm${_ver_clang:-}/bin:$PATH"
+  export LD_LIBRARY_PATH=/usr/lib/llvm${_ver_clang:-}/lib
+
+  export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:?}
 
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
   [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"

@@ -1,20 +1,23 @@
 pkgbase = midori-git
 	pkgdesc = Web browser based on Floorp
-	pkgver = 11.3.3.r2.gc9f1cc5
+	pkgver = 11.3.4.r135.g9d7e6d1
 	pkgrel = 1
 	url = https://github.com/goastian/midori-desktop
 	arch = x86_64
 	license = MPL-2.0
+	makedepends = rustup
+	makedepends = clang17
+	makedepends = lld17
+	makedepends = llvm17
+	makedepends = wasi-compiler-rt17
+	makedepends = cargo
 	makedepends = cbindgen
-	makedepends = clang
 	makedepends = diffutils
 	makedepends = dump_syms
 	makedepends = git
 	makedepends = imake
 	makedepends = inetutils
 	makedepends = jack
-	makedepends = lld
-	makedepends = llvm
 	makedepends = mercurial
 	makedepends = mesa
 	makedepends = mold
@@ -24,7 +27,6 @@ pkgbase = midori-git
 	makedepends = python-setuptools
 	makedepends = rustup
 	makedepends = unzip
-	makedepends = wasi-compiler-rt
 	makedepends = wasi-libc
 	makedepends = wasi-libc++
 	makedepends = wasi-libc++abi
@@ -54,7 +56,7 @@ pkgbase = midori-git
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = midori=11.3.3
+	provides = midori=11.3.4
 	conflicts = midori
 	noextract = lss-v2022.10.12.tar.gz
 	options = !debug
@@ -63,18 +65,20 @@ pkgbase = midori-git
 	options = !makeflags
 	options = !strip
 	source = midori-tensei::git+https://github.com/goastian/midori-desktop.git
-	source = goastian.l10n-central::git+https://github.com/goastian/l10n-central.git
 	source = lss-v2022.10.12.tar.gz::https://chromium.googlesource.com/linux-syscall-support/+archive/refs/tags/v2022.10.12.tar.gz
 	source = midori.desktop
-	source = 18d19413472f-24a6ea8.patch::https://aur.archlinux.org/cgit/aur.git/plain/18d19413472f.patch?h=firefox-esr&id=24a6ea8
-	source = 6af7194e2778-24a6ea8.patch::https://aur.archlinux.org/cgit/aur.git/plain/6af7194e2778.patch?h=firefox-esr&id=24a6ea8
-	source = b1cc62489fae-24a6ea8.patch::https://aur.archlinux.org/cgit/aur.git/plain/b1cc62489fae.patch?h=firefox-esr&id=24a6ea8
-	sha256sums = SKIP
+	source = goastian.l10n-central::git+https://github.com/goastian/l10n-central.git
+	source = 18d19413472f-24a6ea8.patch::https://aur.archlinux.org/cgit/aur.git/plain/18d19413472f.patch?h=firefox-esr&id=24a6ea8ac216b6e63c6d8dfbfed967236bbf75a2
+	source = 6af7194e2778-24a6ea8.patch::https://aur.archlinux.org/cgit/aur.git/plain/6af7194e2778.patch?h=firefox-esr&id=24a6ea8ac216b6e63c6d8dfbfed967236bbf75a2
+	source = b1cc62489fae-24a6ea8.patch::https://aur.archlinux.org/cgit/aur.git/plain/b1cc62489fae.patch?h=firefox-esr&id=24a6ea8ac216b6e63c6d8dfbfed967236bbf75a2
+	source = 0004-Bug-1912663-d2127a9.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/d2127a9424507a38cff13cce49403214a8190bed/0004-Bug-1912663-Fix-some-build-issues-with-cbindgen-0.27.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 7ef0f85f2b111caa08a3e855cb4b6595b6d0f62b3de13ce59eea94a580eec470
+	sha256sums = SKIP
 	sha256sums = 3cc55401ed5e027f1b9e667b0b52296af11f3c5c62b4a80b7e55cda0e117ed18
 	sha256sums = 6952f93889acb514e3b06e251ea901df88c39b429da9677cd5547d90a8b6c73e
 	sha256sums = f66a944fa8804c16b1f7bd9b42b18bfc2552a891adc148085f4b91685e8db117
+	sha256sums = dd2aba1c02c21b89ceed0713a6aa0241365fe79b1e3a4d21cdcd7231db6fab5e
 
 pkgname = midori-git
