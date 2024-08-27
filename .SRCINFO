@@ -9,6 +9,7 @@ pkgbase = pacman-mirrors-helper-git
 	depends = bash
 	depends = coreutils
 	depends = curl
+	depends = gawk
 	depends = ncurses
 	depends = pacman
 	depends = sed
