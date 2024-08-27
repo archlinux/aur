@@ -3,7 +3,7 @@
 _pkgbase="ontake-hayai"
 pkgname="$_pkgbase-git"
 pkgver=r9.ga15715a
-pkgrel=1
+pkgrel=2
 pkgdesc="An EEW system for Linux using JMA data provided by the Wolfx Project."
 arch=("x86_64" "armv7h" "aarch64")
 url="https://github.com/make-42/hayai"
