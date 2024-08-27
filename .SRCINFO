@@ -19,6 +19,7 @@ pkgbase = shairport-sync-mpris-git
 	makedepends = mosquitto
 	makedepends = ffmpeg4.4
 	makedepends = glib2-devel
+	makedepends = libpipewire
 	depends = openssl
 	depends = avahi
 	depends = popt

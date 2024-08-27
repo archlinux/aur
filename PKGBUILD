@@ -8,7 +8,7 @@ pkgdesc="AirPlay 2 audio player with multi-room playback (with mpris support)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mikebrady/shairport-sync"
 license=('custom')
-makedepends=('git' 'autoconf' 'automake' 'libtool' 'xxd' 'libalac' 'mosquitto' 'ffmpeg4.4' 'glib2-devel')
+makedepends=('git' 'autoconf' 'automake' 'libtool' 'xxd' 'libalac' 'mosquitto' 'ffmpeg4.4' 'glib2-devel' 'libpipewire')
 depends=('openssl' 'avahi' 'popt' 'libconfig' 'nqptp' 'ffmpeg4.4' 'libsodium' 'libplist' 'mosquitto' 'alac')
 optdepends=('pulseaudio: PulseAudio support'
             'pipewire: PipeWire support'
