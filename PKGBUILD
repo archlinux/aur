@@ -1,12 +1,12 @@
 pkgname=arch-os-manager
-pkgver=r65.261ec95
+pkgver=r66.aa59ada
 pkgrel=1
 pkgdesc="Arch OS System Manager"
 arch=('any')
 url="https://github.com/murkl/arch-os-manager"
 license=('GPL2')
 depends=('kitty' 'gum' 'libnotify' 'pacman-contrib')
-optdepends=('paru: Add support for AUR packages' 'flatpak: Add support for flatpak' 'downgrade: Add support for downgrading packages' 'reflector: Add support for refresh mirrorlist' 'meld: Add support for merging pacdiff configs')
+optdepends=('paru: Add support for AUR packages' 'flatpak: Add support for Flatpak packages' 'reflector: Add support for refresh mirrorlist' 'downgrade: Add support for donwgrade system packages' 'meld: Add support for merge pacdiff configurations')
 makedepends=('git')
 source=(arch-os.desktop $pkgname::git+$url.git)
 sha256sums=('SKIP' 'SKIP')
