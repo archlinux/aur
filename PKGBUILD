@@ -2,7 +2,7 @@
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
 
 pkgname=ldapvi
-pkgver=1.7.r16.g5cc6c75
+pkgver=1.7.r15.gf1d42ba
 pkgrel=1
 pkgdesc="Interactive LDAP client for Unix terminals"
 url="http://www.lichteblau.com/ldapvi/"
@@ -30,7 +30,7 @@ pkgver() {
 
 prepare() {
     cd "$pkgname/$pkgname"
-    patch --normal --forward --strip 2 --input=../../0001-fix-non-void-function-copy_sasl_output-should-return.patch || return 1
+    patch --forward --strip 2 --input ../../0001-fix-non-void-function-copy_sasl_output-should-return.patch || return 1
     ./autogen.sh
 }
 
