@@ -3,14 +3,14 @@
 _pkgname=godot-mono
 pkgname=godot-mono
 pkgver=4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 arch=('x86_64')
 url="https://godotengine.org/"
 license=('MIT')
 depends=(brotli ca-certificates embree freetype2 graphite harfbuzz harfbuzz-icu libglvnd
    libspeechd libsquish libtheora libvorbis libwebp libwslay libxcursor libxi libxinerama 
-   libxrandr mbedtls2 openxr miniupnpc pcre2 dotnet-sdk hicolor-icon-theme
+   libxrandr openxr miniupnpc pcre2 dotnet-sdk hicolor-icon-theme
    libogg libpng zlib glibc zstd)
 makedepends=(alsa-lib gcc pulse-native-provider scons yasm nuget python git rsync python)
 optdepends=('pipewire-alsa: for audio support'
@@ -33,11 +33,12 @@ build() {
 
     #Build temporary binaries to generate needed files for mono support
     # Miniupnpc disabled since 4.3 due to compiler error
+    # mbedtls disabled due to `godot` issue #3
     export BUILD_NAME=arch_linux
   scons -j$(nproc) \
-    cflags="$CFLAGS -fPIC -Wl,-z,relro,-z,now -w -I/usr/include/mbedtls2" \
-    cxxflags="$CXXFLAGS -fPIC -Wl,-z,relro,-z,now -w -I/usr/include/mbedtls2" \
-    linkflags="$LDFLAGS -L/usr/lib/mbedtls2" \
+    cflags="$CFLAGS -fPIC -Wl,-z,relro,-z,now -w" \
+    cxxflags="$CXXFLAGS -fPIC -Wl,-z,relro,-z,now -w" \
+    linkflags="$LDFLAGS" \
     arch=$CARCH \
     builtin_brotli=no \
     builtin_certs=no \
@@ -56,7 +57,7 @@ build() {
     builtin_libvorbis=no \
     builtin_libwebp=no \
     builtin_wslay=yes \
-    builtin_mbedtls=no \
+    builtin_mbedtls=yes \
     builtin_miniupnpc=no \
     builtin_openxr=no \
     builtin_pcre2=no \
