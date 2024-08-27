@@ -5,24 +5,24 @@ pkgname="ayatana-settings"
 pkgver="23.11.14"
 pkgrel=1
 pkgdesc="Configuration tool for tweaking all Ayatana system indicators"
-arch=("any")
+arch=("i686" "x86_64" "pentium4")
 url="https://github.com/AyatanaIndicators/ayatana-settings"
 license=("GPL-3.0-or-later")
-depends=("gtk3" "python-psutil" "python-gobject" "python" "hicolor-icon-theme" "glib2")
-makedepends=("python-setuptools" "python-polib")
+depends=("gtk4" "glib2" "glibc" "hicolor-icon-theme")
+makedepends=("cmake-extras" "intltool")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("234caec1854c6ece424f1ef61f46178b")
-options=("!emptydirs")
 
 build()
 {
-    cd ${srcdir}/${pkgname}-${pkgver}
-    python setup.py build
+    cd ${pkgname}-${pkgver}
+    cmake -S . -B build
+    cmake --build build
 }
 
 package()
 {
-    cd ${srcdir}/${pkgname}-${pkgver}
-    python setup.py install --root="${pkgdir}" --optimize=1
+    cd ${pkgname}-${pkgver}
+    DESTDIR="${pkgdir}" cmake --install build
 }
 
