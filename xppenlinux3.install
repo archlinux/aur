@@ -1,0 +1,86 @@
+#!/bin/bash
+kill_process() {
+    appname=PenTablet
+    pid=`ps -e|grep $appname`
+    apprunscript=$appname".sh"
+    if [ -n "$pid" ]; then
+        echo $pid
+        arr=()
+        while read -r line; do
+            arr+=("$line")
+        done <<< "$pid"
+        for val in "${arr[@]}";
+        do
+            appid=`echo $val | awk '{print $1}'`
+            name=`echo $val | awk '{print $4}'`
+            echo "id:"$appid
+            echo "name:"$name
+            if [ "$name" = "$apprunscript" ]; then
+                echo "close $apprunscript"
+                kill -15 $appid
+            elif [ "$name" = "$appname" ]; then
+                echo "close $appname"
+                kill -15 $appid
+            fi
+        done
+    fi
+}
+
+remove_service() {
+    systemctl --global disable xppenlinux3.service
+}
+
+add_lock() {
+    lockfile="/tmp/qtsingleapp-pentab-9c9b-lockfile"
+    touch $lockfile
+    chmod +0666 $lockfile
+}
+
+remove_lock() {
+    lockfile="/tmp/qtsingleapp-pentab-9c9b-lockfile"
+    rm $lockfile
+}
+
+pre_install() {
+    kill_process
+}
+
+post_install() {
+    add_lock
+
+    cat <<EOF
+
+********************"
+installation successful!
+
+to restart the xp-pen driver, please run:
+systemctl --user restart xppenlinux3.service
+
+if you want the driver to autostart, please run:
+systemctl --user enable xppenlinux3.service
+
+********************"
+
+EOF
+
+}
+
+pre_remove() {
+    kill_process
+    remove_service
+    remove_lock
+}
+
+post_remove() {
+    echo "uninstall succeeded."
+}
+
+pre_upgrade() {
+    kill_process
+    remove_lock
+}
+
+post_upgrade() {
+    post_install
+}
+
