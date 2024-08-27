@@ -1,14 +1,14 @@
 pkgbase = aarch64be-musl-bleeding-edge-toolchain
 	pkgdesc = Ready-to-use cross-compilation toolchain provided by bootlin.com
-	pkgver = 2024.02
+	pkgver = 2024.05
 	pkgrel = 1
 	url = https://toolchains.bootlin.com/
 	install = hooks.install-aarch64be-musl-bleeding-edge-toolchain
 	arch = x86_64
 	license = GPL
-	source = https://toolchains.bootlin.com/downloads/releases/toolchains/aarch64be/tarballs/aarch64be--musl--bleeding-edge-2024.02-1.tar.bz2
+	source = https://toolchains.bootlin.com/downloads/releases/toolchains/aarch64be/tarballs/aarch64be--musl--bleeding-edge-2024.05-1.tar.xz
 	source = profile.sh-aarch64be-musl-bleeding-edge-toolchain
-	sha256sums = c3ac7754efd3bf2968021ca7321edc8ea361ee3e071ed50b2d2d72c68d0a0de9
+	sha256sums = af4ca347a5b1e725b0e0c7a4bccc9813005a3fbeb7d1127b4e5c4b07cc22eb5e
 	sha256sums = 942b6ff12b13c64748ce3d2b00829cc8649260b259c1efa06e4d6c6862a6661e
 
 pkgname = aarch64be-musl-bleeding-edge-toolchain
