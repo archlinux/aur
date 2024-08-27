@@ -2,7 +2,7 @@
 # Contributer: Donn <me@donn.website>
 
 pkgname=cemu-bin
-pkgver=2.0.94
+pkgver=2.1
 pkgrel=1
 pkgdesc="Nintendo Wii U Emulator"
 arch=('x86_64')
@@ -13,18 +13,17 @@ depends=('at-spi2-core' 'cairo' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'glu' '
 provides=('cemu')
 conflicts=('cemu')
 options=('!debug')
-_srcver=${pkgver%.*}-${pkgver##*.}
-source=("https://github.com/cemu-project/Cemu/releases/download/v$_srcver/cemu-$_srcver-ubuntu-22.04-x64.zip"
+source=("https://github.com/cemu-project/Cemu/releases/download/v$pkgver/cemu-$pkgver-ubuntu-22.04-x64.zip"
         "https://raw.githubusercontent.com/cemu-project/Cemu/main/dist/linux/info.cemu.Cemu.desktop"
         "https://github.com/cemu-project/Cemu/raw/main/dist/linux/info.cemu.Cemu.png"
         "https://raw.githubusercontent.com/cemu-project/Cemu/main/dist/linux/info.cemu.Cemu.metainfo.xml")
-b2sums=('b85da6f7cb2ef714685306fe6e9dba9925bcafa9dea5fd6051cccc3c71789f8ef0bfa4d7a1bf4b2c67262df071fbe80e82a78ec787162aea46cef9ba1e83dc35'
+b2sums=('ddb36e233f91d31d9d6578b8aedadd6a27719e88b9b129cb94322a2817022c00520ba9f27b298ad996c44bda46983c7f5fcc101b41382bb034bb73ff1890b7f7'
         '66d0790e8d0b1220b73e4120c65a4e91fb7303f9171e7dfa14c38683b52089b59455e016616b4a23e52f0f74999f65a51cfd157de70a62557c808c7ef6454efe'
         'a4f65a6c849adb4a75b911ba2ad47a20f06e277274b5764fe192066336d169b13fde75dba8ca67ad59d6f0dafba5805c7fcb969e859e5bf819405efce1fa02c6'
         'fde11181d1ad4b6d28417d6842cef3a436e856acf312b4066c071a0f933bba676d99a041c5b1bf695a09833d92bc2cf47f0ce5ae179e80f6ba587bc79991a2d3')
             
 package() {
-  cd $srcdir/Cemu_$_srcver
+  cd $srcdir/Cemu_$pkgver
   
   install -Dm 755 ./Cemu $pkgdir/usr/bin/cemu
 
