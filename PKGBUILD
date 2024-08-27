@@ -1,8 +1,9 @@
-# Maintainer: Alexey Stukalov <astukalov@gmail.com>
-# Contributor: Muflone http://www.muflone.com/contacts/english/
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
+# Contributor: Alexey Stukalov <astukalov@gmail.com>
 
 pkgname=smartgit
-pkgver=23.1.3
+pkgver=23.1.4.1
+_pkgver=$(echo "${pkgver//./_}" | cut -d_ -f -3)
 pkgrel=1
 pkgdesc='Git client with Hg and SVN support.'
 arch=('any')
@@ -11,25 +12,20 @@ license=('LicenseRef-custom')
 depends=('desktop-file-utils' 'git' 'gtk3' 'which')
 optdepends=('mercurial: hg repositories support')
 replaces=('smartgithg')
-
-# package version as it appears in the name of tar.gz archive file
-_pkgver=${pkgver//\./_}
-# folder within tar.gz archive
-_pkgfolder=${pkgname}
 source=("https://www.syntevo.com/downloads/${pkgname}/${pkgname}-linux-${_pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('52f747af52f9318c25ede4f50554bf33c61db70f158c31be42ea8c5b44392dae'
+sha256sums=('91b21cb04eb3f8648e724622fa1fee754b66339501423675599e2572463a2443'
             'bb5665e9c93640b311dbe8b633da65e3c72a712a3dc9655c3274a3542a688a32')
 
 package() {
     # Install licenses
     install -d -m 755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    mv "${_pkgfolder}/licenses"/* "${pkgdir}/usr/share/licenses/${pkgname}"
-    mv "${_pkgfolder}/license.html" "${pkgdir}/usr/share/licenses/${pkgname}"
-    rmdir "${_pkgfolder}/licenses"
+    mv "${pkgname}/licenses"/* "${pkgdir}/usr/share/licenses/${pkgname}"
+    mv "${pkgname}/license.html" "${pkgdir}/usr/share/licenses/${pkgname}"
+    rmdir "${pkgname}/licenses"
     # Install application files
     install -d -m 755 "${pkgdir}/opt"
-    mv "${_pkgfolder}" "${pkgdir}/opt/${pkgname}"
+    mv "${pkgname}" "${pkgdir}/opt/${pkgname}"
     # Install desktop file
     install -D -m 644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     # Install icon files
