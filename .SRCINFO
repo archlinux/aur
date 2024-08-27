@@ -1,13 +1,14 @@
 pkgbase = wallust
 	pkgdesc = generate colors from an image
-	pkgver = 2.10.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://codeberg.org/explosion-mental/wallust
 	arch = any
 	license = custom:MIT
 	makedepends = cargo
 	optdepends = imagemagick
-	source = wallust-2.10.0.tar.gz::https://static.crates.io/crates/wallust/wallust-2.10.0.crate
-	sha256sums = 1575f74615eb36ed5bb9070be7d3ee6dc841f272abf8b19e65953833ca1eae55
+	options = !lto
+	source = wallust-3.0.0.tar.gz::https://static.crates.io/crates/wallust/wallust-3.0.0.crate
+	sha256sums = 145ca5f09aa4905484541f7b68777097aa277b9ba6565f0ff17699c2a9e19767
 
 pkgname = wallust
