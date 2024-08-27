@@ -1,6 +1,6 @@
 pkgbase = web2pdf
 	pkgdesc = A CLI tool to extract a part of a website, create a PDF
-	pkgver = 3.0
+	pkgver = 6.0
 	pkgrel = 1
 	url = https://github.com/simit22/web2pdf
 	arch = any
