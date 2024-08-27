@@ -1,6 +1,6 @@
 # Maintainer: Hans Müller <schreibemirhalt@gmail.com>
 pkgname=pdfgrep_sixel
-pkgdesc="pdfgrepSIXEL quickly searches text in PDF document files and displays pages containing results as images in terminals supporting SIXEL graphics. (Uses magick, pdfgrep & pdftocairo from poppler) 🔎📄→🖼🖥👀"
+pkgdesc="pdfgrepSIXEL quickly searches text in PDF document files and displays pages containing results as images in terminals supporting SIXEL graphics. (Uses magick, pdfgrep & pdftocairo from poppler) 🔎📄→🖼🖥👀 ^[P0q"1##0CBCFDBDBDFCBC$#2BCB?ACACA?BCB-^[\"
 pkgver=0.3.0
 pkgrel=1
 arch=('any')
