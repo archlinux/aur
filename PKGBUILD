@@ -2,12 +2,12 @@
 # Contributor: linzeen
 pkgname=lze-web
 makedepends=('tar')
-pkgver=2.2
+pkgver=3.0
 pkgrel=1
 pkgdesc="lze-web"
 arch=('x86_64')
 license=('PGP')
-depends=('apache' 'php-apache' 'python-pip' 'python-paramiko' 'python-tornado')
+depends=('apache' 'php-apache' 'libnotify' 'wmctrl' 'libpulse' 'brightnessctl' 'playerctl')
 provides=('lze-web')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
