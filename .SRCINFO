@@ -1,13 +1,13 @@
 pkgbase = python-async_interrupt
 	pkgdesc = Python library that provides interrupt context manager for asyncio
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/bdraco/async_interrupt
 	arch = any
 	license = Apache
 	makedepends = python-poetry
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/a/async_interrupt/async_interrupt-1.1.2.tar.gz
-	sha256sums = 7a67c229d3d337e8db852cfe3c7e3012930a39eb4a4b30c036452a6f278d08f1
+	source = https://files.pythonhosted.org/packages/source/a/async_interrupt/async_interrupt-1.2.0.tar.gz
+	sha256sums = d147559e2478501ad45ea43f52df23b246456715a7cb96e1aebdb4b71aed43d5
 
 pkgname = python-async_interrupt
