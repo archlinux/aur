@@ -1,2 +1,2 @@
 #!/bin/sh
-electron --asar /opt/µPad/resources/app.asar "$@"
+electron31 --asar /opt/µPad/resources/app.asar "$@"
