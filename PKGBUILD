@@ -9,7 +9,7 @@
 _target="powerpc64-linux-gnu"
 pkgname=${_target}-glibc-headers
 pkgver=2.40
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU C Library headers (${_target})"
 arch=('any')
 url="http://www.gnu.org/software/libc/"
@@ -19,18 +19,15 @@ makedepends=("${_target}-gcc-stage1>=8.1.0-1")
 provides=(${_target}-glibc)
 conflicts=(${_target}-glibc)
 options=(!buildflags !strip staticlibs)
-source=(https://ftp.gnu.org/gnu/libc/glibc-$pkgver.tar.xz{,.sig}
-        PATCH-nscd-Do-not-rebuild-getaddrinfo-bug-30709.patch)
+source=(https://ftp.gnu.org/gnu/libc/glibc-$pkgver.tar.xz{,.sig})
 sha256sums=('19a890175e9263d748f627993de6f4b1af9cd21e03f080e4bfb3a1fac10205a2'
-            'SKIP'
-            'e749a59ef980a77cf6433c87ed7b5020d65c7a3e2900c577b8a7880386ec670f')
+            'SKIP')
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8  # "Carlos O'Donell <carlos@systemhalted.org>"
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
 
 prepare() {
   mkdir -p glibc-build
   cd glibc-$pkgver
-  patch -Np1 < ../PATCH-nscd-Do-not-rebuild-getaddrinfo-bug-30709.patch
 }
 
 build() {
