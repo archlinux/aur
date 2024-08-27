@@ -1,7 +1,7 @@
 pkgbase = tacentview-bin
 	pkgdesc = Image viewer/editor for tga, png, apng, exr, dds, pvr, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files (binary release)
 	pkgver = 1.0.45
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bluescan/tacentview
 	arch = x86_64
 	license = ISC

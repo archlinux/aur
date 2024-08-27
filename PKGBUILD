@@ -3,7 +3,7 @@
 pkgname=tacentview-bin
 pkgver=1.0.45
 _pkgver=${pkgver%.*}-${pkgver##*.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Image viewer/editor for tga, png, apng, exr, dds, pvr, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files (binary release)"
 url="https://github.com/bluescan/tacentview"
 license=('ISC')
@@ -18,6 +18,5 @@ sha256sums=('070ba295ae1dab0f69b530b46905bb39062b8c8e821545b570f78f4500f5de0e'
 
 package() {
   tar --use-compress-program=unzstd -xf data.tar.zst -C "$pkgdir"
-  rm "$pkgdir/usr/bin/.gitignore" "$pkgdir/usr/share/tacentview/Data/.gitignore"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/tacentview"
 }
