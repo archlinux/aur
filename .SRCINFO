@@ -1,14 +1,14 @@
 pkgbase = mips32el-musl-bleeding-edge-toolchain
 	pkgdesc = Ready-to-use cross-compilation toolchain provided by bootlin.com
-	pkgver = 2024.02
+	pkgver = 2024.05
 	pkgrel = 1
 	url = https://toolchains.bootlin.com/
 	install = hooks.install-mips32el-musl-bleeding-edge-toolchain
 	arch = x86_64
 	license = GPL
-	source = https://toolchains.bootlin.com/downloads/releases/toolchains/mips32el/tarballs/mips32el--musl--bleeding-edge-2024.02-1.tar.bz2
+	source = https://toolchains.bootlin.com/downloads/releases/toolchains/mips32el/tarballs/mips32el--musl--bleeding-edge-2024.05-1.tar.xz
 	source = profile.sh-mips32el-musl-bleeding-edge-toolchain
-	sha256sums = e315f917711fb99783572485b8adbabd4f19cc035356cd30a0d628823ed6fd32
+	sha256sums = bceda5815e975ff09530e5ba18d673ce4eccbfe42a2bb23c10dfd1a0ab54deb8
 	sha256sums = b1be15136b35ace1fdc7712628e3b2e89470fc04b5897f971c2ca6fcd6405e50
 
 pkgname = mips32el-musl-bleeding-edge-toolchain
