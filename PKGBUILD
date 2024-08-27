@@ -6,8 +6,8 @@
 _pkgname=sparklines
 pkgname="python-$_pkgname"
 pkgver=0.5.0
-pkgrel=2
-pkgdesc='Text-based sparkline command line mimicking those of Edward Tuft'
+pkgrel=3
+pkgdesc='Text-based sparkline command line mimicking those of Edward Tufte'
 arch=('any')
 url="https://github.com/deeplook/$_pkgname"
 license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
