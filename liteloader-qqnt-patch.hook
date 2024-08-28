@@ -4,6 +4,8 @@ Operation=Install
 Operation=Upgrade
 Target=liteloader-qqnt-git
 Target=liteloader-qqnt-bin
+Target=linuxqq
+Target=linuxqq-nt-bwrap
 
 [Trigger]
 Type=Path
@@ -14,4 +16,4 @@ Target=/opt/QQ/resources/app/app_launcher/index.js
 [Action]
 Description=Patch QQ for LiteLoaderQQNT
 When=PostTransaction
-Exec=/bin/sh -c 'grep -q /opt/LiteLoaderQQNT /opt/QQ/resources/app/app_launcher/index.js || sed -i "1 i require(\"/opt/LiteLoaderQQNT\");" /opt/QQ/resources/app/app_launcher/index.js'
+Exec=/bin/sh -c 'grep -q /opt/LiteLoaderQQNT /opt/QQ/resources/app/app_launcher/index.js || sed -i "1 i require(\"/opt/LiteLoaderQQNT\");" /opt/QQ/resources/app/app_launcher/index.js; /bin/bash /opt/LiteLoaderQQNT/patching/patch_liteloader_bwarp.sh'
