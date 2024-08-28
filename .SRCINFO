@@ -1,0 +1,19 @@
+pkgbase = python-markdown_strings-git
+	pkgdesc = Create markdown formatted text
+	pkgver = 3.4.0.r1.6c87ffb
+	pkgrel = 1
+	url = https://github.com/awesmubarak/markdown_strings
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-markdown_strings=3.4.0
+	conflicts = python-markdown_strings
+	source = markdown_strings::git+https://github.com/awesmubarak/markdown_strings.git
+	sha256sums = SKIP
+
+pkgname = python-markdown_strings-git
