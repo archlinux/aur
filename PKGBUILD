@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=131.0a1+20240823.1+h1883fd8e3792
+pkgver=131.0a1+20240828.1+h6c3e656ff5d2
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (Nightly version)"
 url="https://www.mozilla.org/firefox/channel/desktop/#nightly"
@@ -259,6 +259,10 @@ pref("extensions.autoDisableScopes", 11);
 
 // Enable GNOME Shell search provider
 pref("browser.gnome-search-provider.enabled", true);
+
+// Use our own captive portal detection
+pref("captivedetect.canonicalURL", "http://ping.archlinux.org/nm-check.txt");
+pref("captivedetect.canonicalContent", "NetworkManager is online\\n");
 END
 
   local distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
