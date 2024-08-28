@@ -1,10 +1,10 @@
 # Maintainer: Vladislav Grechannik <vgrechannik@gmail.com>
 pkgname=naga-cli
 pkgver=22.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Shader translation command line tool"
 arch=('x86_64' 'i686')
-url=https://github.com/gfx-rs/wgpu/tree/trunk/naga-cli
+url='https://github.com/gfx-rs/wgpu/tree/trunk/naga-cli'
 license=('MIT OR Apache-2.0')
 makedepends=('cargo')
 provides=('naga')
