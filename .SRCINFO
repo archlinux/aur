@@ -1,16 +1,15 @@
 pkgbase = nlohmann-json-git
-	pkgdesc = Header-only JSON library for Modern C++
-	pkgver = 3.7.3
+	pkgdesc = JSON for Modern C++
+	pkgver = 3.11.3.r14.g960b763ec
 	pkgrel = 1
 	url = https://github.com/nlohmann/json
-	arch = x86_64
+	arch = any
 	license = MIT
-	makedepends = cmake
 	makedepends = git
-	provides = nlohmann-json=3.7.3
+	makedepends = cmake
+	provides = nlohmann-json=3.11.3.r14.g960b763ec
 	conflicts = nlohmann-json
-	source = git+https://github.com/nlohmann/json
+	source = git+https://github.com/nlohmann/json.git
 	sha256sums = SKIP
 
 pkgname = nlohmann-json-git
-
