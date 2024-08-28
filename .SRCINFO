@@ -1,15 +1,15 @@
 pkgbase = libsql-server-bin
 	pkgdesc = libSQL is a fork of SQLite for modern applications
-	pkgver = 0.24.14
+	pkgver = 0.24.21
 	pkgrel = 1
 	url = https://turso.tech/libsql
 	arch = x86_64
 	license = MIT
 	provides = libsql-server
 	conflicts = libsql-server
-	source = libsql-0.24.14.tar.xz::https://github.com/tursodatabase/libsql/releases/download/libsql-server-v0.24.14/libsql-server-x86_64-unknown-linux-gnu.tar.xz
-	source = libsql-0.24.14.tar.xz.sha256::https://github.com/tursodatabase/libsql/releases/download/libsql-server-v0.24.14/libsql-server-x86_64-unknown-linux-gnu.tar.xz.sha256
-	b2sums = 56e77a7e7cf65efbf20a82a16c79aaa1e3b55ce2b1ede15a0a26f064ffebb22485f4b7c85d4dc644de37aac5ba9ac5839163a6938fcb0120ed3582d1af3210de
-	b2sums = 2de5cf46d9a52adfac79f40a36c3698a219f108dbe2acd7b5abab1db192bd3cfb89cbfb26ea8f6964830cbbcf8cbbc290ba612c9da1e234d780b102cadcc1e91
+	source = libsql-0.24.21.tar.xz::https://github.com/tursodatabase/libsql/releases/download/libsql-server-v0.24.21/libsql-server-x86_64-unknown-linux-gnu.tar.xz
+	source = libsql-0.24.21.tar.xz.sha256::https://github.com/tursodatabase/libsql/releases/download/libsql-server-v0.24.21/libsql-server-x86_64-unknown-linux-gnu.tar.xz.sha256
+	b2sums = d4ad2570209431c629155a15e6b11f0cf42c1b6bd2f6f56e1a0819f9f6afb14ed41db8c07cac524d5a637b7674dacbc74099ac9fa22fd60b992e73dbb6f64afb
+	b2sums = 50f0deeeab2bbb44020ab60091701c50677edf1ddbd8ec396f9cdb172ac82baf92c7650eb589627ce441d0022bdea344118d38dc0a1957356bae639af70d1b10
 
 pkgname = libsql-server-bin
