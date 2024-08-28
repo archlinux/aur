@@ -8,7 +8,7 @@
 
 pkgname=gtypist-git
 pkgver=2.9.5
-pkgrel=2
+pkgrel=3
 pkgdesc="universal typing tutor"
 arch=('x86_64')
 url="http://www.gnu.org/software/gtypist/gtypist.html"
