@@ -3,18 +3,21 @@
 # Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: Kevin Piche <kevin@archlinux.org>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
+# Maintainer: Radu Potop <radu@wooptoo.com>
 
-_pkgname=zim
-pkgname=${_pkgname}-git
-pkgver=0.75.2.r75.ga0e992f
+projname=zim-desktop-wiki
+pkgname=zim-git
+pkgver=0.75.2.79.ga637
 pkgrel=1
-pkgdesc="A WYSIWYG text editor that aims at bringing the concept of a wiki to the desktop. Git Version"
+pkgdesc="Zim desktop wiki. Git version"
 arch=(any)
-license=('GPL-2.0' 'Artistic-1.0-Perl')
+license=('GPL-2.0-or-later')
 url="https://zim-wiki.org/"
+conflicts=('zim')
+provides=('zim')
 depends=('python' 'python-gobject' 'ttf-font' 'gtk3' 'python-xdg')
-makedepends=('git' 'python-setuptools')
 checkdepends=('xorg-server-xvfb' 'python-setuptools')
+makedepends=('git' 'python-setuptools')
 optdepends=('breezy: Version Control plugin'
             'bzr: Version Control plugin'
             'git: Version Control plugin'
@@ -28,32 +31,23 @@ optdepends=('breezy: Version Control plugin'
             'scrot: Insert Screenshot plugin'
             'lilypond: Insert Score plugin'
             'gtksourceview3: Source View plugin'
-            'texlive-bin: Insert Equation plugin'
-            'xdg-utils: recommended on linux'
-            'zeitgeist: Log events with Zeitgeist plugin')
-conflicts=('zim')
-replaces=('zim')
-source=("${_pkgname}::git+https://github.com/zim-desktop-wiki/zim-desktop-wiki.git")
+            'texlive-bin: Insert Equation plugin')
+source=("git+https://github.com/$projname/$projname.git#branch=develop")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd ${srcdir}/${_pkgname}
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	cd ${srcdir}/${_pkgname}
-	sed -i 's|\t\tinstall_class.run(self)|&\n\t\treturn None|' setup.py
+    cd "$projname"
+    git describe --abbrev=4 --always --tags | sed 's/-/./g'
 }
 
 check() {
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${projname}"
 
-	xvfb-run -w0 ./test.py
+    xvfb-run -w0 ./test.py --ff
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${projname}"
 
 	python setup.py install --root="${pkgdir}" --optimize=1
 

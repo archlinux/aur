@@ -1,11 +1,10 @@
 pkgbase = zim-git
-	pkgdesc = A WYSIWYG text editor that aims at bringing the concept of a wiki to the desktop. Git Version
-	pkgver = 0.75.2.r75.ga0e992f
+	pkgdesc = Zim desktop wiki. Git version
+	pkgver = 0.75.2.79.ga637
 	pkgrel = 1
 	url = https://zim-wiki.org/
 	arch = any
-	license = GPL-2.0
-	license = Artistic-1.0-Perl
+	license = GPL-2.0-or-later
 	checkdepends = xorg-server-xvfb
 	checkdepends = python-setuptools
 	makedepends = git
@@ -29,11 +28,9 @@ pkgbase = zim-git
 	optdepends = lilypond: Insert Score plugin
 	optdepends = gtksourceview3: Source View plugin
 	optdepends = texlive-bin: Insert Equation plugin
-	optdepends = xdg-utils: recommended on linux
-	optdepends = zeitgeist: Log events with Zeitgeist plugin
+	provides = zim
 	conflicts = zim
-	replaces = zim
-	source = zim::git+https://github.com/zim-desktop-wiki/zim-desktop-wiki.git
+	source = git+https://github.com/zim-desktop-wiki/zim-desktop-wiki.git#branch=develop
 	sha256sums = SKIP
 
 pkgname = zim-git
