@@ -1,3 +1,4 @@
+# LM 2024
 pkgbase = shuffle-ascii
 	pkgdesc = A CLI command to print ASCII art with shuffle effect and color
 	pkgver = 1.0.3
@@ -13,3 +14,4 @@ pkgbase = shuffle-ascii
 	sha256sums = 3e4193edfe1feea9d47d0fd895119aff73267f412d2a280aad17f96ca576dd21
 
 pkgname = shuffle-ascii
+
