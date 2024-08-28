@@ -1,6 +1,6 @@
 pkgbase = fakeroot-tcp
 	pkgdesc = Tool for simulating superuser privileges,with tcp ipc
-	pkgver = 1.35.1
+	pkgver = 1.36
 	pkgrel = 1
 	url = https://tracker.debian.org/pkg/fakeroot
 	install = fakeroot.install
@@ -17,9 +17,9 @@ pkgbase = fakeroot-tcp
 	depends = sed
 	depends = util-linux
 	depends = sh
-	provides = fakeroot=1.35.1-1
+	provides = fakeroot=1.36-1
 	conflicts = fakeroot
-	source = http://ftp.debian.org/debian/pool/main/f/fakeroot/fakeroot_1.35.1.orig.tar.gz
-	sha256sums = 6a0de53b2de05277d4e6d4a884eb0de7a8ad467b82c07a6f8f2f6a629e655fdc
+	source = http://ftp.debian.org/debian/pool/main/f/fakeroot/fakeroot_1.36.orig.tar.gz
+	sha256sums = 7fe3cf3daf95ee93b47e568e85f4d341a1f9ae91766b4f9a9cdc29737dea4988
 
 pkgname = fakeroot-tcp
