@@ -1,4 +1,5 @@
 pkgbase = hyperfluent-grub-theme-arch
+	pkgdesc = Arch hyperfluent grub theme.
 	pkgver = 1
 	pkgrel = 1
 	url = https://github.com/Coopydood/HyperFluent-GRUB-Theme
