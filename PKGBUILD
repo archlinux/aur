@@ -2,24 +2,21 @@
 
 _binname="gsa"
 pkgname="go-size-analyzer"
-pkgver=1.6.3
+pkgver=1.7.0
 pkgrel=1
-pkgdesc="A tool for analyzing the size of compiled Go binaries"
-arch=('any')
+pkgdesc="A tool for analyzing the dependencies in compiled Golang binaries"
+arch=('x86_64')
 url="https://${_binname}.zxilly.dev"
 _url="https://github.com/Zxilly/${pkgname}"
-license=('AGPL-3.0-or-later')
+license=('AGPL-3.0-only')
 makedepends=('go')
-provides=("${pkgname}" "${_binname}")
-conflicts=("${pkgname}" "${_binname}")
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3b9ab52baf3239414a793428bfafa029eb5af38206dd021b14ed63329b1e59d0')
+sha256sums=('0ecd0f4ca84101374e3847b5e5e9e9c2a2ea53f857172b9641fe183519076eb3')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   mkdir -p "build"
-  go mod download
 }
 
 build() {
@@ -29,7 +26,10 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -v -o "build/${pkgname}" .
+  go build -o "build/${_binname}" -ldflags "\
+    -X ${_url#https://}.version=${pkgver} \
+    -X ${_url#https://}.buildDate$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
+    .
 }
 
 # check() {
@@ -39,8 +39,8 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 "build/${_binname}" "${pkgdir}/usr/bin/${_binname}"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   # install -Dm644 "README_zh_CN.md" "${pkgdir}/usr/share/doc/${_pkgname}/README_zh_CN.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
