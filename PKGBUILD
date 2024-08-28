@@ -3,7 +3,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano dot torromeo at gmail dot com>
 _rhelver=9.0
 pkgname=mssql-tools
-pkgver=18.2.1.1
+pkgver=18.4.1.1
 pkgrel=1
 pkgdesc="Microsoft SQL Server Tools for Linux"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ optdepends=('mssql-server: Enter T-SQL statements to an SQL Server database')
 options=('!strip')
 install="${pkgname}.install"
 source=("https://packages.microsoft.com/rhel/${_rhelver}/prod/Packages/m/${pkgname}18-${pkgver}-${pkgrel}.${arch}.rpm")
-sha256sums=('98758f29f1b1aad13c5ce32a5cf1e849d35a97054d030ee5dccdab6aefd2aef9')
-sha512sums=('c33936e0e1e2c74d72e02682fafa39d821352ae2783c8c580bdd96261628bacc7c90a12335ce09e65ce924024347e458189e3146a460575df9e8355b406227a5')
+sha256sums=('1e1d77a80e9abb7d98cf9e8b25cdf052302ec5163ae94ab9cd586dbfefb78194')
+sha512sums=('5663b0b360941fdcfba50972ac2e01f629a0acaf32343de5ab468d06a2a3c11e3c44194454608f2240d698585cdb12300b932115a29942ad5d42d7932b260736')
 
 package() {
     cd "$srcdir"
