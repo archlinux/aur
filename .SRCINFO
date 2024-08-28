@@ -1,0 +1,12 @@
+pkgbase = mpv-thumbfast-osc-git
+	pkgdesc = thumbfasts fork of the default osc for MPV
+	pkgver = r226.5fefc9b
+	pkgrel = 1
+	url = https://github.com/po5/thumbfast
+	arch = any
+	makedepends = mpv
+	makedepends = git
+	source = git+https://github.com/po5/thumbfast.git#branch=vanilla-osc
+	b2sums = SKIP
+
+pkgname = mpv-thumbfast-osc-git
