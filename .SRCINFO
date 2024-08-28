@@ -1,6 +1,6 @@
 pkgbase = pypy3-dill
 	pkgdesc = serialize all of python
-	pkgver = 0.3.4
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/uqfoundation/dill
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = pypy3-dill
 	makedepends = pypy3-setuptools
 	depends = pypy3
 	optdepends = python-objgraph: graph support
-	source = pypy3-dill-0.3.4.tar.gz::https://github.com/uqfoundation/dill/archive/dill-0.3.4.tar.gz
-	sha512sums = 1b1991909a9782382ecdb2ada13249c8b446d3558de69501280c816f7cd6c6728f9d3303c826461245ab9e42c43c02e4605142f25e09244bb7ccc9ca68a4b565
+	source = https://github.com/uqfoundation/dill/archive/0.3.8/dill-0.3.8.tar.gz
+	sha512sums = 7c42657bbf7ad49ddbee3d1a55d60e2e53b455f5c60a32c3addcc6457fd2574053155ffed16df6cb56fb30eeed75a4c138b1d34f4fb4c5e95fa93bd567edf2a9
 
 pkgname = pypy3-dill

@@ -1,0 +1,4 @@
+[pypy3-dill]
+source = "github"
+github = "uqfoundation/dill"
+use_latest_release = "true"
