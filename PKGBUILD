@@ -19,5 +19,5 @@ build() {
 
 package() {
     cd "$srcdir/shuffle-1.0.3"
-    make DESTDIR="$pkgdir" install
+    sudo make DESTDIR="$pkgdir" install
 }
