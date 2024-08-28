@@ -4,9 +4,9 @@
 _pkgname="katawa-shoujo"
 pkgname="$_pkgname-bin"
 pkgver=1.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A bishoujo-style visual novel by Four Leaf Studios"
-url="http://www.katawa-shoujo.com"
+url="https://www.katawa-shoujo.com"
 license=("CC-BY-NC-ND-3.0")
 arch=("x86_64")
 
