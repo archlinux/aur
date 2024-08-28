@@ -1,0 +1,12 @@
+pkgbase = fb2-thumbnailer
+	pkgdesc = Thumbnailer for FB2 books
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://zenway.ru/page/fb2info
+	arch = any
+	license = GPLv2
+	depends = python-pillow
+	source = fb2info.py
+	sha256sums = 47c22cac1e2af25e92525347d38c066441cba134f6cb8fef6fe2251cf1e006ee
+
+pkgname = fb2-thumbnailer
