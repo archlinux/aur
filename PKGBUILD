@@ -3,7 +3,7 @@
 pkgname=nani
 pkgver=0.2.0
 pkgrel=1
-pkgdesc="Now you can speak Japanese. Like sl but for mistypers of nano. Jojo references. Might actually help you to learn Japanese in the future."
+pkgdesc="Now you can speak Japanese. Like sl but for mistypers of nano. Jojo references. Includes optional Katakana and Hiragana quiz mode for starting with Japanese learning.."
 arch=('any')
 url="https://github.com/schrmh/nani"
 license=('unknown')
@@ -21,6 +21,6 @@ package() {
   install "$srcdir/hiragana.nani" "$HOME/.config/nani/learning/hiragana.nani"
   install "$srcdir/katakana.nani" "$HOME/.config/nani/learning/katakana.nani"
 
-  printf "\033[0;35m Thanks for installing this package. Further manual setup steps: \n"
-  printf "\033[0;35m Edit files in .config/nani to change settings (e.g. activate learning mode) \n"
+  printf "\033[0;35m Thanks for installing this package. Further (optional) manual setup steps: \n"
+  printf "\033[0;35m Edit files in $HOME/.config/nani/ to change settings (e.g. activate learning mode) \n"
 }

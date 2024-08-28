@@ -1,5 +1,5 @@
 pkgbase = nani
-	pkgdesc = Now you can speak Japanese. Like sl but for mistypers of nano. Jojo references. Might actually help you to learn Japanese in the future.
+	pkgdesc = Now you can speak Japanese. Like sl but for mistypers of nano. Jojo references. Includes optional Katakana and Hiragana quiz mode for starting with Japanese learning..
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/schrmh/nani
