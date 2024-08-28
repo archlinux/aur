@@ -3,7 +3,7 @@
 # Contributor: Bernard Baeyens (berbae) <berbae52 at sfr dot fr>
 
 pkgname=pan
-pkgver=0.159
+pkgver=0.160
 pkgrel=1
 pkgdesc='A powerful Newsgroup Article reader'
 arch=(x86_64)
@@ -26,7 +26,7 @@ depends=(
 )
 makedepends=(cmake)
 source=("https://gitlab.gnome.org/GNOME/pan/-/archive/v$pkgver/pan-v$pkgver.tar.gz")
-sha256sums=('988af7491a05c87d761f354b9fda397fa51b69a11200a5175a82725a743e23c5')
+sha256sums=('6c17f346cbf6d72e0640eb0bc63f9a78a1ca5345eea24d5760a8695e5b3575db')
 
 build() {
   cmake -B build -S pan-v$pkgver \

@@ -1,6 +1,6 @@
 pkgbase = pan
 	pkgdesc = A powerful Newsgroup Article reader
-	pkgver = 0.159
+	pkgver = 0.160
 	pkgrel = 1
 	url = http://pan.rebelbase.com/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = pan
 	depends = hicolor-icon-theme
 	depends = pango
 	depends = zlib
-	source = https://gitlab.gnome.org/GNOME/pan/-/archive/v0.159/pan-v0.159.tar.gz
-	sha256sums = 988af7491a05c87d761f354b9fda397fa51b69a11200a5175a82725a743e23c5
+	source = https://gitlab.gnome.org/GNOME/pan/-/archive/v0.160/pan-v0.160.tar.gz
+	sha256sums = 6c17f346cbf6d72e0640eb0bc63f9a78a1ca5345eea24d5760a8695e5b3575db
 
 pkgname = pan
