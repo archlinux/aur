@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 
-let injected_preloads = (() => {
+const get_injected_preloads = () => {
     let injected_preloads = {};
 
     const liteloader_preload_content = fs.readFileSync(process.env["LITELOADERQQNT_PRELOAD"], "utf-8");
@@ -21,14 +21,21 @@ let injected_preloads = (() => {
     }
 
     return injected_preloads;
-
-})();
-
-fs.mkdirSync(process.env["QQNT_PRELOADS"], { recursive: true })
-
-for (let filename in injected_preloads) {
-    fs.writeFileSync(path.join(process.env["QQNT_PRELOADS"], filename), injected_preloads[filename], { encoding: "utf-8" })
 }
-console.log("[gen_preload] finished.")
 
-process.exit(0)
+try {
+    const injected_preloads = get_injected_preloads();
+
+    fs.mkdirSync(process.env["QQNT_PRELOADS"], { recursive: true })
+
+    for (let filename in injected_preloads) {
+        fs.writeFileSync(path.join(process.env["QQNT_PRELOADS"], filename), injected_preloads[filename], { encoding: "utf-8" })
+    }
+    console.log("[gen_preload] finished.")
+
+    process.exit(0)
+} catch (err) {
+    console.warn(err);
+    console.log("[gen_preload] failed.")
+    process.exit(126)
+}

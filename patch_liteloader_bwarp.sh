@@ -1,4 +1,15 @@
 #!/bin/bash
+if [ -f "/opt/QQ/electron" ]; then
+    QQPath="/opt/QQ/electron"
+elif [ -f "/opt/QQ/qq" ]; then 
+    QQPath="/opt/QQ/qq"
+else
+    echo "Unable to find QQ Path, skipping gen_preload...."
+    exit 0 
+fi
+
+echo "Find QQ Path at $QQPath, start to gen_preload"
+
 mkdir -p /opt/QQ/resources/app/application/
 bwrap --new-session --cap-drop ALL --unshare-user-try --unshare-pid --unshare-cgroup-try \
     --symlink usr/lib /lib \
@@ -6,10 +17,6 @@ bwrap --new-session --cap-drop ALL --unshare-user-try --unshare-pid --unshare-cg
     --symlink usr/bin /bin \
     --ro-bind /usr /usr \
     --ro-bind /opt /opt \
-    --ro-bind /opt/QQ/workarounds/xdg-open.sh /usr/bin/xdg-open \
-    --ro-bind /usr/lib/snapd-xdg-open/xdg-open /snapd-xdg-open \
-    --ro-bind /usr/lib/flatpak-xdg-utils/xdg-open /flatpak-xdg-open \
-    --ro-bind /etc/machine-id /etc/machine-id \
     --dev-bind /dev /dev \
     --ro-bind /sys /sys \
     --ro-bind /etc/passwd /etc/passwd \
@@ -27,4 +34,4 @@ bwrap --new-session --cap-drop ALL --unshare-user-try --unshare-pid --unshare-cg
     --setenv LITELOADERQQNT_PRELOAD "/opt/LiteLoaderQQNT/src/preload.js" \
     --setenv QQNT_PRELOADS "/opt/QQ/resources/app/application/" \
     --setenv IBUS_USE_PORTAL 1 \
-    /opt/QQ/electron --no-sandbox /opt/QQ/resources/app
+    "$QQPath" --no-sandbox /opt/QQ/resources/app
