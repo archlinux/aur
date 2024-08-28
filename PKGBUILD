@@ -1,25 +1,52 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: wcyat <wcyat at wcyat dot me>
 pkgname=electronmail
-pkgver=5.2.2
-pkgrel=2
-_electronversion=27
+pkgver=5.2.3
+pkgrel=1
+_nodeversion=20
+_electronversion=32
 pkgdesc="Unofficial ProtonMail Desktop App"
 arch=('x86_64')
 url="https://github.com/vladimiry/ElectronMail"
 license=('GPL-3.0-or-later')
-depends=("electron${_electronversion}" 'libsecret')
-makedepends=('git' 'libxcrypt-compat' 'npm' 'pnpm' 'python-setuptools' 'yarn')
-optdepends=('org.freedesktop.secrets: password storage backend')
+depends=(
+  "electron${_electronversion}"
+  'libsecret'
+)
+makedepends=(
+  'git'
+  'libxcrypt-compat'
+  'nvm'
+  'pnpm'
+  'python-setuptools'
+  'yarn'
+)
+optdepends=(
+  'org.freedesktop.secrets: password storage backend'
+)
 source=("git+https://github.com/vladimiry/ElectronMail.git#tag=v$pkgver"
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('558ffcbfc83bd16d0abff2788c7447f7eaf82d3a8f45dd890632b2999fb3ee98'
+sha256sums=('9aff4aeb9b0b23b7d15b611754210c01deeec48165d822c6cd89fc3a66e7ba51'
             'c95c69f1d0db27180236ff063d9563da8750ecce81883adfb217b73ac3bb974e'
             'e7e9dd6e065118ae5d9624c7c81328086719fab198d30a92b08979c29757a3b2')
 
+_ensure_local_nvm() {
+  # let's be sure we are starting clean
+  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+  export NVM_DIR="$srcdir/.nvm"
+
+  # The init script returns 3 if version specified
+  # in ./.nvrc is not (yet) installed in $NVM_DIR
+  # but nvm itself still gets loaded ok
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
 prepare() {
   cd ElectronMail
+  _ensure_local_nvm
+  nvm install "${_nodeversion}"
+
   sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/$pkgname.sh"
 }
 
@@ -29,8 +56,10 @@ build() {
   export npm_config_cache="$srcdir/npm_cache"
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
+  _ensure_local_nvm
   pnpm install --frozen-lockfile
   pnpm app:dist
   npm exec --package=electron-builder -- electron-builder --linux pacman \
