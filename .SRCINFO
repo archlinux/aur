@@ -1,16 +1,15 @@
 pkgbase = go-size-analyzer-git
-	pkgdesc = A tool for analyzing the size of compiled Go binaries
-	pkgver = 1.5.3.r10.g12532b0
+	pkgdesc = A tool for analyzing the dependencies in compiled Golang binaries
+	pkgver = 1.7.0.r0.g58ac937
 	pkgrel = 1
 	url = https://gsa.zxilly.dev
-	arch = any
-	license = AGPL-3.0-or-later
+	arch = x86_64
+	license = AGPL-3.0-only
 	makedepends = git
 	makedepends = go
-	provides = go-size-analyzer=1.5.3
-	provides = gsa=1.5.3
+	depends = glibc
+	provides = go-size-analyzer=1.7.0
 	conflicts = go-size-analyzer
-	conflicts = gsa
 	source = go-size-analyzer::git+https://github.com/Zxilly/go-size-analyzer.git
 	sha256sums = SKIP
 
