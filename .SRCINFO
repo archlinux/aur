@@ -1,6 +1,6 @@
 pkgbase = yarc-launcher-bin
 	pkgdesc = The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)
-	pkgver = 0.3.2
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/YARC-Official/YARC-Launcher
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = yarc-launcher-bin
 	provides = yarc-launcher
 	conflicts = yarc-launcher
 	options = !debug
-	source = https://github.com/YARC-Official/YARC-Launcher/releases/download/v0.3.2/yarc-launcher_0.3.2_amd64.AppImage.tar.gz
+	source = https://github.com/YARC-Official/YARC-Launcher/releases/download/v1.0.0/yarc-launcher_1.0.0_amd64.AppImage.tar.gz
 	source = https://raw.githubusercontent.com/YARC-Official/YARC-Launcher/master/LICENSE
-	sha256sums = 72ef729aba9f3896855fb23b0ebad225cb5a4418c3b73e5101c3d7125f86bdcd
+	sha256sums = 663439bc5ec3d56456d522de135e0e6dce76f9bcf7e6b4001663a076fe4d6ab4
 	sha256sums = c4660da2255accdcdee8346b065fc7e4e6b354c5e61d05f3c1c19ff62acd0c01
 
 pkgname = yarc-launcher-bin

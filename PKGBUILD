@@ -1,7 +1,7 @@
 # Maintainer: GANPI <some.kind@of.mail>
 pkgname=yarc-launcher-bin
 _binname=${pkgname%-bin}
-pkgver=0.3.2
+pkgver=1.0.0
 _appimage=$_binname\_$pkgver\_amd64.AppImage
 pkgrel=1
 pkgdesc='The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)'
@@ -32,7 +32,7 @@ source=(
 	https://raw.githubusercontent.com/YARC-Official/YARC-Launcher/master/LICENSE
 )
 sha256sums=(
-	72ef729aba9f3896855fb23b0ebad225cb5a4418c3b73e5101c3d7125f86bdcd
+	663439bc5ec3d56456d522de135e0e6dce76f9bcf7e6b4001663a076fe4d6ab4
 	c4660da2255accdcdee8346b065fc7e4e6b354c5e61d05f3c1c19ff62acd0c01
 )
 
@@ -42,7 +42,7 @@ prepare() {
 	cd squashfs-root/
 
 	# Add game category and delete comment
-	sed -i '2s/$/Game;/; 3d; 9d' $_binname.desktop
+	sed -i '2s/$/Game;/; 3d;' $_binname.desktop
 }
 
 package() {
