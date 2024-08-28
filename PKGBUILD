@@ -30,7 +30,7 @@ conflicts=('anytype'
 source=(
 	"https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}-alpha/anytype_${pkgver}-alpha_amd64.deb"
 )
-sha256sums=('bfc8fb5016026f7f9eb8049ddfbb3cae10ef91bc66c29c714b051e114837f137')
+sha256sums=('85b2dd5f0c3cf65bc5a5a1835c5408ff1ebce966fd5ded140a139f6945fc7699')
 
 package() {
   	bsdtar -xf data.tar.* -C $pkgdir
