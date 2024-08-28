@@ -3,7 +3,7 @@
 pkgname=bruno-git
 _pkgname=bruno
 pkgdesc="Opensource API Client for Exploring and Testing APIs"
-pkgver=1.22.0.r0.g073c1aae
+pkgver=1.27.0.r0.g091b02c2
 pkgrel=1
 arch=('x86_64')
 url="https://www.usebruno.com/"
@@ -65,9 +65,10 @@ build() {
 
     cd "${_pkgname}"
 
+    npm run build:graphql-docs
     npm run build:bruno-query
     npm run build:bruno-common
-    npm run build:graphql-docs
+    npm run sandbox:bundle-libraries --workspace=packages/bruno-js
     npm run build:web
 
     electronDist="/usr/lib/${_electron}"
