@@ -3,13 +3,14 @@
 _binname="gsa"
 pkgname="go-size-analyzer"
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for analyzing the dependencies in compiled Golang binaries"
 arch=('x86_64')
 url="https://${_binname}.zxilly.dev"
 _url="https://github.com/Zxilly/${pkgname}"
 license=('AGPL-3.0-only')
 makedepends=('go')
+depends=('glibc')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('0ecd0f4ca84101374e3847b5e5e9e9c2a2ea53f857172b9641fe183519076eb3')
@@ -20,6 +21,8 @@ prepare() {
 }
 
 build() {
+  local build_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
   cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -28,8 +31,8 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go build -o "build/${_binname}" -ldflags "\
     -X ${_url#https://}.version=${pkgver} \
-    -X ${_url#https://}.buildDate$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
-    .
+    -X ${_url#https://}.buildDate=${build_date}" \
+    ./"cmd/${_binname}"
 }
 
 # check() {
