@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=another-redis-desktop-manager-bin
 _pkgname=Another-Redis-Desktop-Manager
-pkgver=1.6.6
+pkgver=1.6.7
 _electronversion=12
 pkgrel=1
 pkgdesc="A faster, better and more stable Redis desktop manager [GUI client]"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/qishibo/AnotherRedisDesktopManager/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ffee69211454c43fa23ee51aabf67da543b7f363e0020821849ea77443ea8e5e'
+sha256sums=('2d9839f3cfc6e807d713d35638f1094dfbd11c67a45d637b4005a42b2f4e22e9'
             'c0bca7c1b149b2d86d21b24413a7fd05eaf0b4a8ae9ab361da095c9b287e6ae0'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
