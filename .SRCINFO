@@ -17,6 +17,7 @@ pkgbase = openmodelica
 	depends = qt5-xmlpatterns
 	depends = qt5-svg
 	depends = qt5-tools
+	options = !lto
 	source = openmodelica::git+https://github.com/OpenModelica/OpenModelica.git#tag=v1.23.1
 	sha256sums = 4b6c911b04c2c52d3121bb9fc61d9f8202d003aa308daffcdcfa9eaafa85aacf
 
