@@ -1,7 +1,7 @@
 # Maintainer: KUHTOXO https://aur.archlinux.org/account/kuhtoxo
 
 pkgname=vk-messenger-appimage
-pkgver=6.0.43.254
+pkgver=6.0.47.289
 pkgrel=1
 pkgdesc="VK Messenger for Linux in the appimage package format"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
 )
 noextract=("${_appimage_name}")
 sha256sums=(
-    '7e3553cf1b62394cdd756e0315fdeaf8269b6e78778f6146b07129bc46ab9f11'
+    '0e83a4bec568760780c10240dca055e55542881b9f811e54422ecbf263515739'
 )
 
 prepare() {
