@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=blacken-docs
 pkgdesc="Run black on python code blocks in documentation files"
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 arch=(any)
 url="https://github.com/asottile/${pkgname}"
@@ -10,7 +10,7 @@ depends=(python-black)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('78414689fc46386341e0b3246f24fda84b0093c3d9312b1b7ad3a1e263a7e9b97b077d35d6a3c47586c7f354811be349ab40c3a4e03201d9f532dab27b5537cf')
+sha512sums=('22ac5fde812e88aa081f29feb20d6c9d21d4cd8dac53c4751d940ec7b84cb44efa16add9776134b8e6064f9cf9d566ed7f8bb0b16c0fe349d3e76abb87aa833c')
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -21,7 +21,7 @@ check() {
   cd ${pkgname}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest -k 'not integration_preview'
+  test-env/bin/python -m pytest
 }
 
 package() {

@@ -1,0 +1,4 @@
+[blacken-docs]
+source = "github"
+github = "asottile/blacken-docs"
+use_max_tag = "true"
