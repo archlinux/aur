@@ -5,26 +5,22 @@
 pkgname=openlp-git
 _pkgbase=openlp
 pkgver=r17869.ed7561bde
-pkgrel=3
+pkgrel=4
 pkgdesc="Church presentation software."
 arch=('any')
 url='http://openlp.org/'
 license=('GPL3')
 provides=('openlp')
 conflicts=('openlp')
-makedepends=('qt5-tools' 'git' 'python-pip')
-depends=('python>=3.10' 'python<3.13' 'python-pyqt5' 'phonon-qt5'
-         'python-pyqt5-webengine' 'python-flask' 'python-flask-cors'
-         'python-pymediainfo' 'python-qrcode' 'python-platformdirs'
-         'python-chardet' 'python-lxml' 'python-six' 'python-sqlalchemy'
-         'python-beautifulsoup4' 'python-pyenchant' 'python-dbus'
-         'python-alembic' 'mediainfo' 'qt5-multimedia' 'python-zeroconf'
-         'qt5-webkit' 'qt5-svg' 'python-webob' 'python-requests' 'vlc'
-         'python-waitress' 'python-websockets' 'python-qtawesome' 'python-vlc'
-         'python-pyicu'
-        )
+makedepends=('git' 'python-pip')
+depends=('python>=3.10' 'python<3.13' 'python-flask' 'python-flask-cors' 'python-qrcode' 'python-platformdirs' 'python-chardet' 'python-lxml'
+ 'python-mako' 'python-packaging' 'python-six' 'python-sqlalchemy' 'python-beautifulsoup4' 'python-pyenchant' 'python-dbus' 'python-alembic'
+  'python-zeroconf' 'python-webob' 'python-requests' 'python-waitress' 'python-websockets' 'python-qtawesome' 'python-pyicu' 'PySide6>=6.7'
+  )
 optdepends=('libreoffice-fresh: display impress presentations'
+            'python-qdarkstyle'
             'python-pymupdf: display pdfs'
+            'python-pysword: import SWORD bibles'
             'python-mysql-connector: Use a mysql/mariadb database'
             'python-psycopg2: Use a postgresql database'
             'aspell: for aspell based spell checking support'
