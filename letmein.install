@@ -1,0 +1,18 @@
+# systemd sysusers get created after post_install is executed, and we need to
+# assign the config owner, so let's create the user manually
+post_install() {
+  useradd \
+    --system \
+    --no-create-home \
+    --home /nonexistent \
+    --shell /usr/bin/nologin \
+    --user-group \
+    letmeind
+
+  chown :letmeind /etc/letmeind.conf
+}
+
+post_remove() {
+  userdel letmeind || :
+  groupdel letmeind || :
+}

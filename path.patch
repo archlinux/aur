@@ -1,0 +1,13 @@
+diff --git a/letmein-conf/src/lib.rs b/letmein-conf/src/lib.rs
+index ab24e28..87f4846 100644
+--- a/letmein-conf/src/lib.rs
++++ b/letmein-conf/src/lib.rs
+@@ -23,7 +23,7 @@ use std::{collections::HashMap, path::Path, time::Duration};
+ 
+ /// The default install prefix.
+ #[cfg(not(target_os = "windows"))]
+-pub const INSTALL_PREFIX: &str = "/opt/letmein";
++pub const INSTALL_PREFIX: &str = "/";
+ #[cfg(target_os = "windows")]
+ pub const INSTALL_PREFIX: &str = "";
+ 
