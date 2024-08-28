@@ -12,7 +12,7 @@ source=(
   "${pkgname}.desktop"
   "${pkgname}.png")
 sha256sums=('fb2d5a1913e4f6e359d324b739ea1b77ea13995d49436728d4e00d37935bfdab'
-            '1e2d60584bec00079891b8b55d142bbfa8a6fac36da037bcb383c5b950e9ae5e'
+            'bba2a0ba094fb922adb791b224fe32554588ab78f72f3d9630011cc4eb5fea27'
             '53239505b912d9cb80a1f3e22ead56edb56a4a0d8b6b99536a6ab46a1ae8e9a1')
 options=(!strip)
 
