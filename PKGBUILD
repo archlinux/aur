@@ -41,16 +41,16 @@ pkgver() {
 }
 
 check() {
-	cd "${srcdir}/${projname}"
+    cd "${srcdir}/${projname}"
 
     xvfb-run -w0 ./test.py --ff
 }
 
 package() {
-	cd "${srcdir}/${projname}"
+    cd "${srcdir}/${projname}"
 
-	python setup.py install --root="${pkgdir}" --optimize=1
+    python setup.py install --root="${pkgdir}" --optimize=1
 
-	install -dm755 "$pkgdir/usr/share/icons/"
-	cp -r xdg/hicolor/ "$pkgdir/usr/share/icons/"
+    install -dm755 "$pkgdir/usr/share/icons/"
+    cp -r xdg/hicolor/ "$pkgdir/usr/share/icons/"
 }
