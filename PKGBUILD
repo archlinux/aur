@@ -1,6 +1,6 @@
 # Maintainer: GANPI <some.kind@of.mail>
 pkgname=yarc-launcher
-pkgver=0.3.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='The official launcher for YARG (a.k.a. Yet Another Launcher or YAL)'
 arch=(x86_64)
@@ -30,7 +30,7 @@ source=(
 	$pkgname.desktop
 )
 sha256sums=(
-	f9f4f3efaa5b6adc4aeefeb2711649d6617dc91b3a465e1145c6b9f4a19c5ace
+	236e7e6652b6fffe3f11376e6ee2581d3a2fd40ed33440b63db8da7ca63cad8e
 	d6cff5551389bbd5744179f169336c165ce1e9de65b34897c4ab5d40527a780e
 )
 
@@ -38,7 +38,7 @@ prepare() {
 	cd YARC-Launcher-$pkgver/
 
 	# Disable bundle
-	sed -i '44s/true/false/' src-tauri/tauri.conf.json
+	sed -i '56s/true/false/' src-tauri/tauri.conf.json5
 }
 
 build() {
