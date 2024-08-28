@@ -1,0 +1,8 @@
+pkgbase = hyperfluent-grub-theme-arch
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Coopydood/HyperFluent-GRUB-Theme
+	arch = any
+	source = git+https://www.github.com/eugenenoble2005/hyperfluent-grub-theme
+
+pkgname = hyperfluent-grub-theme-arch
