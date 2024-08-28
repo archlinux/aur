@@ -3,7 +3,7 @@
 # # NOTE: Please fill out the license field for your package! If it is unknown,
 # # then please put 'unknown'.
 #
-# #Maintainer:'Roughinnt'<krpdtmnt@gmail.com>
+# #Maintainer:'rughinnit'<krpdtmnt@gmail.com>
 # pkgname=journal-helper-qt
 # pkgver='r1.cca7f25'
 # pkgrel=1
@@ -65,7 +65,7 @@
 
 # Maintainer: 'Roughinnt' <krpdtmnt@gmail.com>
 pkgname=journal-helper-qt
-pkgver=r5.ac837f9
+pkgver=r6.60f8e57
 pkgrel=1
 pkgdesc="Journal in GUI"
 arch=(x86_64)
@@ -92,4 +92,6 @@ build() {
 package() {
   cd "$pkgname/build"
   install -Dm755 journal-helper-qt "$pkgdir/usr/bin/journal-helper-qt"
+  cd ..
+  install -Dm644 journal-helper-qt.desktop -t "$pkgdir/usr/share/applications"
 }

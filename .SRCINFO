@@ -1,0 +1,16 @@
+pkgbase = journal-helper-qt
+	pkgdesc = Journal in GUI
+	pkgver = r6.60f8e57
+	pkgrel = 1
+	url = https://github.com/rughinnit/journal-helper-qt
+	arch = x86_64
+	license = GPL
+	makedepends = base-devel
+	makedepends = make
+	makedepends = qt6-tools
+	makedepends = git
+	depends = qt6-base
+	source = journal-helper-qt::git+https://github.com/rughinnit/journal-helper-qt.git
+	sha256sums = SKIP
+
+pkgname = journal-helper-qt
