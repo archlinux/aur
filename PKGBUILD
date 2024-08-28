@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=harmony
-_pkgver=1.2.0
+_pkgver=1.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Fast, Sensitive, and Accurate Integration of Single Cell Data"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -41,8 +41,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4c40181d0401b1e3e6350d40806b08ed')
-b2sums=('76e995259caee2c193719909078db536cab8114480bc8591c3da49f8ef20f615729f26af0384a9c93137d449dfe95a67c7f9d1d440f0b174f2db0dccec168fd2')
+md5sums=('ee99f87a217fe3919840477df01fce22')
+b2sums=('378aca91dafd95134c3836e5f78b6bb1d64df093f37ea1fb044edc3814901c5019a62e20c37db9b0f23bcd3b6df4c55de200e855717ba3311bf6c5fc4b44b56d')
 
 build() {
   mkdir build
