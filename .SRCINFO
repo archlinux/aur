@@ -1,6 +1,6 @@
 pkgbase = ddcutil-git
 	pkgdesc = Query and change Linux monitor settings using DDC/CI and USB.
-	pkgver = 2.1.4.r94.g1ce8d58
+	pkgver = 2.1.4.r273.g5b1fb8e
 	pkgrel = 1
 	url = https://github.com/rockowitz/ddcutil
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ddcutil-git
 	depends = libdrm
 	depends = libusb
 	depends = libxrandr
-	provides = ddcutil=2.1.4
+	provides = ddcutil=2.1.4.r273.g5b1fb8e
 	conflicts = ddcutil
 	source = ddcutil::git+https://github.com/rockowitz/ddcutil.git
 	sha256sums = SKIP
