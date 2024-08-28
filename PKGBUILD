@@ -2,14 +2,14 @@
 
 _pkgname=ukmm
 pkgname=${_pkgname}-git
-pkgver=0.6.0.r11.gaacbabe
+pkgver=0.13.0.r29.g29ced2a
 pkgrel=0
 pkgdesc="U-King Mod Manager is a tool for managing and merging mods for The Legend of Zelda: Breath of the Wild."
 arch=('any')
 url="https://github.com/NiceneNerd/${_pkgname}"
 license=('GPL3')
 depends=('gtk3')
-makedepends=('rust-nightly-bin' 'git' 'coreutils' 'sed' 'cmake')
+makedepends=('rust-nightly' 'git' 'coreutils' 'sed' 'cmake')
 optdepends=()
 source=(
     "git+${url}"
