@@ -1,7 +1,7 @@
 # Maintainer: Pierre Chapuis <arch@catwell.info>
 
 pkgname="minijinja-cli-bin"
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Command-line utility for the MiniJinja template engine"
 arch=(x86_64)
@@ -15,7 +15,7 @@ source=(
     "$url/releases/download/$pkgver/$_archive.tar.xz"
 )
 sha256sums=(
-    "ea9bffa1ecada7215fe376aafe0e58ac924384628fd2789b7aad4f6279f0a800"
+    "43a6c5abf9e7022d8830a1c22b74c5a1cdd9312a7fce9036acec7b4e3ce4548e"
 )
 
 package () {
