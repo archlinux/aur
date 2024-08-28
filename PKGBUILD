@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fooyin
 _pkgname=Fooyin
-pkgver=0.5.3
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A customisable music player"
 arch=('x86_64')
@@ -15,6 +15,8 @@ depends=(
     'taglib'
     'ffmpeg'
     'kdsingleapplication'
+    'libgme'
+    'libarchive'
 )
 makedepends=(
     'gcc'
@@ -22,17 +24,21 @@ makedepends=(
     'pkgconf'
     'cmake'
     'libpipewire'
+    'icu'
+    'libopenmpt'
+    'libsndfile'
+    'libvgm-player-git'
 )
 optdepends=(
     'sdl2: For the SDL2 audio output plugin'
     'pipewire: For the PipeWire audio output plugin'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}.git::git+${url}#tag=v${pkgver}"
 )
-sha256sums=('c96ce99bb8f98d657eeacca58fac0369abc12ec16e75191aed97746afe30a40b')
+sha256sums=('ffd9fa11c7aff065894e9b0136c12dbd6d5086f4b2081e384ea7a2dfcbf72124')
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}.git"
     cmake -S . -B build -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_PCH=ON \
@@ -42,7 +48,7 @@ build() {
     cmake --build build -j$(nproc)
 }
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}.git"
     DESTDIR="${pkgdir}" cmake --install build
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/fooyin/LICENSE"
+    install -Dm644 "${srcdir}/${pkgname}.git/COPYING" "${pkgdir}/usr/share/licenses/fooyin/LICENSE"
 }
