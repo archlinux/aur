@@ -1,14 +1,15 @@
 pkgbase = plater
 	pkgdesc = 3D-printer parts placer and plate generator
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Rhoban/Plater
 	arch = x86_64
 	license = custom:CC BY-NC
 	makedepends = cmake
 	depends = libffi
 	source = https://github.com/Rhoban/Plater/archive/v1.0.0.tar.gz
+	source = add-cstdint-header.patch
 	sha256sums = 4baafed6fe779dc0711dbcb0385dbe96f2212f343f419fe98e4e5f394ad3bfc9
+	sha256sums = a1122c11eb11e6338c9b72b0a53e398d748b317019407db7668768759a1ff871
 
 pkgname = plater
-
