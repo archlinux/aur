@@ -1,6 +1,6 @@
 pkgbase = jellything-git
 	pkgdesc = Jellything media streaming server
-	pkgver = r628.34300db
+	pkgver = r633.5ccadd8
 	pkgrel = 1
 	url = https://codeberg.org/metamuffin/jellything
 	install = jellything.install

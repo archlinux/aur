@@ -1,7 +1,7 @@
 # Maintainer: metamuffin <metamuffin@disroot.org>
 
 pkgname=jellything-git
-pkgver=r628.34300db
+pkgver=r633.5ccadd8
 pkgrel=1
 pkgdesc="Jellything media streaming server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
