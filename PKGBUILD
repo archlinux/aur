@@ -7,7 +7,7 @@
 
 pkgname=lantern-bin
 pkgver=7.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A censorship circumvention tool that delivers fast, reliable, and secure access to the open internet"
 arch=('x86_64')
 url="https://lantern.io"
@@ -16,10 +16,10 @@ depends=('bash' 'gcc-libs' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libayata
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 options=('!docs')
-_commit=9911ca51534c2f3db233db8499525cc2d31aa422
+_commit=f8a5da386afbaccf70503545f36163102553a7bc
 source=("${pkgname}-${pkgver}.deb::https://github.com/getlantern/lantern-binaries/raw/${_commit}/lantern-installer-64-bit.deb"
         "${pkgname%-bin}.service")
-sha256sums=('71838161314ff08efadc31c3ed10afc70cc074af689f0f8ed81c7dfaebcc189f'
+sha256sums=('c1079fbba3268a743223bded179a91ade28873ebe1edd23d79c0ab7c2dade3a1'
             'fdece37945be10c00210bbde7b4058c356ef1df0554bd963fcddd12990ff930b')
 
 package() {
