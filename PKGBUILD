@@ -9,7 +9,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=99ff94492d63da472734e9fc2922adfc1e8b8962
+_mozc_commit=b15160eb233bfb00467e19b98fa22025bdec66b3
 _mozcdict_ext_commit=de931271344ebb2d1349a7ae0a8ec883457ed930
 _branch=fcitx
 # Sudachi Dictionary
@@ -18,7 +18,7 @@ _sudachidict_date=20240716
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.30.5544.102
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003')
@@ -38,7 +38,7 @@ source=("git+$url.git#commit=${_mozc_commit}"
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
 
-sha512sums=('032269497ddf2391a7143b1f267222d60218bcb9b0b73d012307a35ac7154ac5ec2a8425e9c9c37e81d6e2b70492d1e8fbc26519b224f919c6410d7cd66f43ea'
+sha512sums=('50a8f64ef88b05da1b3dd126acd7bdffe2d1aa2440fe7ac1c2360e2ce05bb7a0bdf8df3bf4661c6a0e82722f5fa33acfcc2664fb7c09a23ccc27318467a8a615'
             'a0aeb2856d62c71d0c137a687d901098eaa3371b896dbe39e54c36951cbd7d3cfba666ee96d055dba7e8c8384ed17e13597a697707cd960fac320e11f9b7b76c'
             'fcde4a3c0200969ebb21fa927f1ff59581386a39d83ea7ec5c0092e1566c38638129b71b286434e11fb4c6b76b48d6b36eb64b053306c2bbb8a7900e2c641558'
             '9428d55d2d9603c8bfcd12cc0184415f23af1d09a2d0ebdf0cce694a09638e7cfe0c1241bf1c943427b2fccfea619ca8b2e22db3452d837b416eb31aa224e766'
@@ -112,14 +112,17 @@ build() {
   #BAZEL_CXXOPTS=$(echo $CXXFLAGS | xargs -n1 echo "--cxxopt")
   
   # The bazel rules have changed, so the cache will be deleted.
-  # bazel clean
+  #bazel clean
 
   if [[ $CC =~ gcc ]];then
-    bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized
-    #bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --linkopt "$LDFLAGS" $BAZEL_COPTS $BAZEL_CXXOPTS
+    #bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized
+    bazel build --config oss_linux --config release_build package unix/fcitx5:fcitx5-mozc.so --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized
+    #bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --linkopt "$LDFLAGS" $BAZEL_COPTS $BAZEL_CXXOPTS \
+    #--copt=-DABSL_MIN_LOG_LEVEL=100 --cxxopt=-DABSL_MIN_LOG_LEVEL=100
   else
     #bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --linkopt "$LDFLAGS" $BAZEL_COPTS $BAZEL_CXXOPTS
-    bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so $BAZEL_LDOPTS $BAZEL_COPTS $BAZEL_CXXOPTS
+    #bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so $BAZEL_LDOPTS $BAZEL_COPTS $BAZEL_CXXOPTS
+    bazel build --config oss_linux --config release_build package unix/fcitx5:fcitx5-mozc.so $BAZEL_LDOPTS $BAZEL_COPTS $BAZEL_CXXOPTS
   fi
   bazel shutdown
 
