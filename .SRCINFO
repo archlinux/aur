@@ -1,7 +1,7 @@
 pkgbase = python-streaming-form-data
 	pkgdesc = Streaming multipart/form-data parser
 	pkgver = 1.16.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/siddhantgoel/streaming-form-data
 	arch = x86_64
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = python-streaming-form-data
 	license = custom:MIT
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-smart_open
 	source = https://files.pythonhosted.org/packages/source/s/streaming-form-data/streaming-form-data-1.16.0.tar.gz
