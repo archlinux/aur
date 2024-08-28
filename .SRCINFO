@@ -1,13 +1,26 @@
 pkgbase = wonderdraft
-	pkgdesc = An intuitive yet powerful fantasy mapmaking tool.
-	pkgver = 1.1.7.3
+	pkgdesc = An intuitive yet powerful fantasy mapmaking tool for 64-bit Windows 10, Linux and MacOSX.
+	pkgver = 1.1.8.2
 	pkgrel = 1
 	url = https://www.wonderdraft.net
 	arch = x86_64
 	license = custom
 	options = !strip
 	options = !emptydirs
-	source = file://Wonderdraft-1.1.7.3-Linux64.zip
-	md5sums = 0286f55568c803ef415152eb37e3c6ca
+	source = https://cdn.humble.com/humblebundle/tailwindgamesllc_ChunI/Wonderdraft-1.1.8.2-b-Linux64.zip
+	md5sums = SKIP
+
+pkgname = wonderdraft
+pkgbase = wonderdraft
+	pkgdesc = An intuitive yet powerful fantasy mapmaking tool for 64-bit Windows 10, Linux and MacOSX.
+	pkgver = 1.1.8.2
+	pkgrel = 1
+	url = https://www.wonderdraft.net
+	arch = x86_64
+	license = custom
+	options = !strip
+	options = !emptydirs
+	source = https://cdn.humble.com/humblebundle/tailwindgamesllc_ChunI/Wonderdraft-1.1.8.2-b-Linux64.zip
+	md5sums = SKIP
 
 pkgname = wonderdraft
