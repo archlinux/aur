@@ -1,6 +1,6 @@
 pkgbase = gpxviewer-stable
 	pkgdesc = Application for viewing and analyzing GPX and KML files
-	pkgver = 3.0
+	pkgver = 3.1
 	pkgrel = 1
 	url = https://github.com/salsergey/gpxviewer
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = gpxviewer-stable
 	makedepends = python-wheel
 	depends = python-qcustomplot-pyqt6
 	depends = python-lxml
-	source = https://github.com/salsergey/gpxviewer/releases/download/3.0/gpxviewer-3.0.tar.xz
-	sha256sums = 1108e03deb7127d3c7529366bee3569fe22fcfb5d00dcdb130a825e62e520f8f
+	source = https://github.com/salsergey/gpxviewer/releases/download/3.1/gpxviewer-3.1.tar.xz
+	sha256sums = d78e81cff92f8f9622994776f05c6ed07f18d44a707411c8ada3b2d30a72c5b1
 
 pkgname = gpxviewer-stable

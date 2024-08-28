@@ -1,6 +1,6 @@
 # Maintainer: Sergey Salnikov <salsergey at gmail dot com>
 pkgname=gpxviewer-stable
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 pkgdesc="Application for viewing and analyzing GPX and KML files"
 arch=('any')
@@ -10,7 +10,7 @@ groups=()
 depends=('python-qcustomplot-pyqt6' 'python-lxml')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=(https://github.com/salsergey/gpxviewer/releases/download/${pkgver}/gpxviewer-${pkgver}.tar.xz)
-sha256sums=('1108e03deb7127d3c7529366bee3569fe22fcfb5d00dcdb130a825e62e520f8f')
+sha256sums=('d78e81cff92f8f9622994776f05c6ed07f18d44a707411c8ada3b2d30a72c5b1')
 
 build() {
   echo "Building gpxviewer ..."
