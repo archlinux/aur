@@ -6,8 +6,8 @@
 
 _gitname=tinyMediaManager
 pkgname=tiny-media-manager
-pkgver=5.0.9
-pkgrel=2
+pkgver=5.0.10
+pkgrel=1
 pkgdesc="A multi-OS media managment tool"
 arch=('any')
 url="https://www.tinymediamanager.org/"
@@ -22,7 +22,7 @@ source=("tmm_${pkgver}_linux.tar.xz::https://archive.tinymediamanager.org/v${pkg
         "tinymediamanager"
         "tinymediamanager-cli")
 
-sha256sums=('229937b80c5ad7ddd10df9e22ea7ab123e41b2a11aabcc303343c56b10b271da'
+sha256sums=('ecaf1fe1b6e3f273fab2268e5dc7c7e5dfc99ed5d9605228e019343dbc729c07'
             '24e9538f8fcb6fcb7db954efca66354177d09bdc58bc28a91e481475c2044c36'
             'd97b2206915a882c034149f3fa097445bb8bb350441bf8fdf331245e11be4f6c'
             'd6cc87cf9166f0c47940ffa6c279a9c2bc237533ebf38afb2a387532019f5675')
