@@ -1,22 +1,47 @@
-#/bin/sh
-#Like sl but with nani (and it can open nano)!
-#TODO:
-#Sound & ASCII art (use mpv?), SIXEL detection, imagemagick popup for manga panels?, config files (open nano, no sound, only text, custom files, priorities, easter eggs like "you are already dead" in japanese and other jojo lines, count how often nani was used, special season/holiday variants, random amount of ！, soundboard functionality, turn it into an actual japanese learnig  tool: Display lessions before nano start: quick remimbers; tasks users has to acomplish; gui stuff; voice input.).
-#Rewrite in C or Rust when I feel like it cause this sucks:
-number=$(awk -v min=0 -v max=2 'BEGIN{srand(); print int(min+rand()*(max-min+1))}')
-case $number in
-	0) 
-		echo "NANI!?"
+#!/bin/sh
+nani_dir="$HOME/.config/nani"
+[ -f "$nani_dir/nani.conf" ] && . "$nani_dir/nani.conf"
 
-	;;
-	1)
-		echo "なに"
-	;;
-	2)
-		echo "なにイーツ！！"
-	;;
-	*)
-		echo "Somebody was too dumb to count. Report it to @derberg:matrix.org"
-esac
+quiz() {
+	file="$1"
+	[ -f "$file" ] && {
+		total_lines=$(wc -l < "$file")
+    
+		while true; do
+			random_line=$(awk -v n="$total_lines" 'BEGIN{srand(); print int(1+rand()*n)}')
+			line=$(sed -n "${random_line}p" "$file")
+	      
+			question=$(echo "$line" | awk '{print $1}')
+			answer=$(echo "$line" | awk '{print $2}')
+	      
+			echo "Solve one $learning_mode question to proceed with nano"
+			echo "Sensei: $question"
+			printf "You: "
+			read -r user_input
+			[ "$user_input" = "$answer" ] && { 
+				echo "㊗"
+				break 
+			} || echo "Incorrect. The answer to $question is $answer"
+		done
+	}
+}
+
+[ ! -z "$learning_path" ] && [ ! -z "$learning_mode" ] && {
+	[ "$learning_mode" = "NANI?!" ] && { 
+	    learning_mode=$(basename $(ls -1 *.nani |  shuf | head -1) .nani)
+	} || { 
+	    learning_mode=$(echo "$learning_mode" | awk 'BEGIN { srand() } { print $(1 + int(rand() * NF)) }')
+	}
+	quiz "$learning_path/$learning_mode.nani"
+} || {
+	number=$(awk -v min=0 -v max=2 'BEGIN{srand(); print int(min+rand()*(max-min+1))}')
+		case $number in
+			0) echo "NANI!?" ;;
+			1) echo "なに" ;;
+			2) echo "なにイーツ！！" ;;
+    			*) echo "Somebody was too dumb to count. Report it to @derberg:matrix.org" ;;
+		esac
+}
+
 sleep 3
 nano "$@"

@@ -1,15 +1,26 @@
 # Maintainer: Hans Müller <schreibemirhalt@gmail.com>
+
 pkgname=nani
-pkgdesc="Now you can speak japanese. Like sl but for mistypers of nano. Jojo references. Might actually help you to learn japanese in the future."
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
+pkgdesc="Now you can speak Japanese. Like sl but for mistypers of nano. Jojo references. Might actually help you to learn Japanese in the future."
 arch=('any')
-url=https://github.com/schrmh/nani
+url="https://github.com/schrmh/nani"
 license=('unknown')
 depends=('nano')
-source=(nani)
-md5sums=(01032a0fb5c38e5c72b5714c77f1bbcb)
+source=('nani' 'nani.conf' 'hiragana.nani' 'katakana.nani')
+md5sums=('997c1ddc78558fef83aa9c92e61d5118' '9fd9972f6fcc1805ac751d6be296320d' '7d139d867f963a47c16135fbc9b6bb03' '5418e936a323fd6558d9b25702b80203')
 
 package() {
   install -D -t "$pkgdir/usr/bin" "$srcdir/nani"
+  
+  install -d  "$HOME/.config/nani"
+  install "$srcdir/nani.conf" "$HOME/.config/nani/nani.conf"
+
+  install -d "$HOME/.config/nani/learning"
+  install "$srcdir/hiragana.nani" "$HOME/.config/nani/learning/hiragana.nani"
+  install "$srcdir/katakana.nani" "$HOME/.config/nani/learning/katakana.nani"
+
+  printf "\033[0;35m Thanks for installing this package. Further manual setup steps: \n"
+  printf "\033[0;35m Edit files in .config/nani to change settings (e.g. activate learning mode) \n"
 }
