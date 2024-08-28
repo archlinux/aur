@@ -10,6 +10,7 @@ groups=(openmodelica)
 conflicts=(openmodelica)
 depends=('lapack' 'java-environment')
 makedepends=('gcc-fortran' 'cmake' 'git' 'boost')
+options=('!lto')
 source=("git+${_giturl}#tag=v${pkgver}")
 sha1sums=('de1685033f6f0614cf9a6ab3744fb63ff7a601ee')
 

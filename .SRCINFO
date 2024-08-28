@@ -13,6 +13,7 @@ pkgbase = openmodelica-omc
 	depends = lapack
 	depends = java-environment
 	conflicts = openmodelica
+	options = !lto
 	source = git+https://github.com/OpenModelica/OpenModelica.git#tag=v1.23.1
 	sha1sums = de1685033f6f0614cf9a6ab3744fb63ff7a601ee
 
