@@ -8,12 +8,12 @@
 
 pkgname=gtypist-git
 pkgver=2.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="universal typing tutor"
 arch=('x86_64')
 url="http://www.gnu.org/software/gtypist/gtypist.html"
 license=("GPL3")
-depends=('ncurses' 'perl')
+depends=('ncurses' 'perl' 'help2man')
 makedepends=('git')
 provides=(gtypist)
 conflicts=(gtypist)
