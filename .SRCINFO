@@ -1,0 +1,12 @@
+pkgbase = orchard-bin
+	pkgdesc = Orchestrator for running Tart Virtual Machines on a cluster of Apple Silicon devices.
+	pkgver = 0.22.1
+	pkgrel = 1
+	url = https://github.com/cirruslabs/orchard
+	arch = x86_64
+	license = LicenseRef-fair-source-0.9
+	provides = orchard
+	source = orchard-bin-0.22.1-amd64.tar.gz::https://github.com/cirruslabs/orchard/releases/download/0.22.1/orchard-linux-amd64.tar.gz
+	sha256sums = 2648d1f40351643691daeb169811deb45d8a646afee106cff127729bbe625e36
+
+pkgname = orchard-bin
