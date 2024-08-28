@@ -1,0 +1,20 @@
+pkgbase = renpy6-bin
+	pkgdesc = A visual novel engine, legacy version
+	pkgver = 6.99.14.3
+	pkgrel = 1
+	url = https://www.renpy.org/release/6.99.14
+	arch = x86_64
+	license = MIT
+	provides = renpy6=6.99.14.3
+	conflicts = renpy6
+	options = !debug
+	options = !strip
+	source = renpy-6.99.14.3-sdk.tar.bz2::https://www.renpy.org/dl/6.99.14.3/renpy-6.99.14.3-sdk.tar.bz2
+	source = https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz
+	sha256sums = 5cbeea134a1907e8a14458248013e37f39f0c2d023c7b68f6ee2bee574f7a381
+	sha256sums = b62c0e7937551d0cc02b8fd5cb0f544f9405bafc9a54d3808ed4594812edef43
+
+pkgname = renpy6-bin
+	depends = glu
+	depends = libxi
+	depends = libxmu
