@@ -1,0 +1,15 @@
+pkgbase = sql-studio-bin
+	pkgdesc = SQL Database Explorer [SQLite, libSQL, PostgreSQL, MySQL/MariaDB, DuckDB, ClickHouse]
+	pkgver = 0.1.26
+	pkgrel = 1
+	url = https://sql-studio.onrender.com
+	arch = x86_64
+	license = MIT
+	provides = sql-studio
+	conflicts = sql-studio
+	source = sql-studio-bin-0.1.26.tar.xz::https://github.com/frectonz/sql-studio/releases/download/0.1.26/sql-studio-x86_64-unknown-linux-gnu.tar.xz
+	source = sql-studio-bin-0.1.26.tar.xz.sha256::https://github.com/frectonz/sql-studio/releases/download/0.1.26/sql-studio-x86_64-unknown-linux-gnu.tar.xz.sha256
+	b2sums = 85d2ff8db15082ec589494cb94a262014a6c038d072720a584b075178cc2932fa6cdad93408fabab59f211127f4db65c96ecfc5bef5ce81d043b01f0f7cf194b
+	b2sums = 889a46c0afcf4d5370e65ac4d0b2ac134f935e6df21cd770e31ca085257465b1d20575e96045e6443a7086ae39e383215446d002d8803b21edac46b234220f51
+
+pkgname = sql-studio-bin
