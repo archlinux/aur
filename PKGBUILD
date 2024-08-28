@@ -1,13 +1,13 @@
 # Maintainer: Mark Blakeney <mark dot blakeney at bullet-systems dot net>
 pkgname=jimtcl
-pkgver=0.82
+pkgver=0.83
 pkgrel=1
 pkgdesc="Jim Tcl - A small footprint implementation of Tcl"
 arch=("any")
 url="https://github.com/msteveb/$pkgname"
 license=("custom")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-md5sums=('7d6be6bff1079778bf27d50ba9185388')
+md5sums=('d71bbf22ce74b5e8d90962990be3af43')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
