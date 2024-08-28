@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=miteiru
 _pkgname=Miteiru
-pkgver=5.0.0
+pkgver=5.0.1
 _electronversion=31
 _nodeversion=20
 pkgrel=1
@@ -33,7 +33,7 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('edcc8d2bed100bb21f47815d7fd8e8b5e3c9251672a4fd2d9ec51845298f5fe4'
+sha256sums=('89c608b64c4b8d6b254c477835d88376b2e39d64f0690da58860b0b3c26b92e5'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -68,8 +68,8 @@ build() {
     fi
     icotool -i 1 -x resources/icon.ico -o resources/icon.png
     sed "s|icon.icns|icon.png|g;s|\"deb\", \"AppImage\"|\"dir\"|g" -i buildConfig/linux22.config.json
-    NODE_ENV=development npm install
-    NODE_ENV=production npm run build:linux22
+    NODE_ENV=development    npm install
+    NODE_ENV=production     npm run build:linux22
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
