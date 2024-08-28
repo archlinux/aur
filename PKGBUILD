@@ -3,7 +3,7 @@
 # Contributor: nine
 
 pkgname='nctl-bin'
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc='A CLI tool to interact with Nine API resources.'
 url='https://github.com/ninech/nctl'
@@ -12,11 +12,11 @@ license=('Apache 2.0')
 provides=('nctl')
 conflicts=('nctl')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ninech/nctl/releases/download/v1.7.1/nctl_1.7.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('36b017ed340494f139e2822d56e7948b803f620ae9cf69d6999fd529ef337417')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ninech/nctl/releases/download/v1.7.2/nctl_1.7.2_linux_arm64.tar.gz")
+sha256sums_aarch64=('b80e9b389122d9f337ac1cf3f7544415089a8cdb0d8b652d6f0ffb244dec2eb3')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ninech/nctl/releases/download/v1.7.1/nctl_1.7.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('fb8016f0926c7d98cadf658b25642f3963f84a2e213fe2a1ca7b148690b9f89f')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ninech/nctl/releases/download/v1.7.2/nctl_1.7.2_linux_amd64.tar.gz")
+sha256sums_x86_64=('9a1bff1922a0c639444f7b2a3efef91d68b10cda91881083ab86f007188f57c5')
 
 package() {
   install -Dm 0755 "${srcdir}"/nctl "${pkgdir}"/usr/bin/nctl
