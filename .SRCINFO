@@ -1,6 +1,6 @@
 pkgbase = aws-session-manager-plugin
 	pkgdesc = AWS Session Manager Plugin for aws-cli.
-	pkgver = 1.2.553.0
+	pkgver = 1.2.650.0
 	pkgrel = 1
 	url = https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = aws-session-manager-plugin
 	backup = usr/sessionmanagerplugin/LICENSE
 	backup = usr/sessionmanagerplugin/seelog.xml
 	backup = usr/sessionmanagerplugin/VERSION
-	source_x86_64 = aws-session-manager-plugin-1.2.553.0.deb::https://s3.amazonaws.com/session-manager-downloads/plugin/1.2.553.0/ubuntu_64bit/session-manager-plugin.deb
-	sha512sums_x86_64 = 32a85493193764c300841ae9c5dbf5705e49aa2f3a46bd9ba1a80487081b2c722a501a30fe9515293c9665d8885faae022a2a8a6e55f5d24927ae2c3b58be955
-	source_aarch64 = aws-session-manager-plugin-1.2.553.0-aarch64.deb::https://s3.amazonaws.com/session-manager-downloads/plugin/1.2.553.0/ubuntu_arm64/session-manager-plugin.deb
-	sha512sums_aarch64 = a9d9b679e7c544b8d739c0114d168fa9f8620c7caab07b5ed9d5f4f398c5f02cd73d2e195b715522605d69506e5a72f13a022cc233a209bafff8c222e5da1e75
+	source_x86_64 = aws-session-manager-plugin-1.2.650.0.deb::https://s3.amazonaws.com/session-manager-downloads/plugin/1.2.650.0/ubuntu_64bit/session-manager-plugin.deb
+	sha512sums_x86_64 = 1353c5b1fdb32b1837148769fc9e70e72623fb67012a1710265e778264d926b66924a787f90b4d1f056f06f61a922f7a6528971d97516b49aecc3494f5189e92
+	source_aarch64 = aws-session-manager-plugin-1.2.650.0-aarch64.deb::https://s3.amazonaws.com/session-manager-downloads/plugin/1.2.650.0/ubuntu_arm64/session-manager-plugin.deb
+	sha512sums_aarch64 = df96725f1a51ce389b4eda6e1f609cc5a48af3af11c3f3e70a1cb7608069f43f32540b1a86814d73971cccab982db1544fd66671603a639d773615ccd170cf56
 
 pkgname = aws-session-manager-plugin
