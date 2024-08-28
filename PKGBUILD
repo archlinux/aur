@@ -4,13 +4,13 @@
 _pkgname="katawa-shoujo"
 pkgname="$_pkgname"
 pkgver=1.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A bishoujo-style visual novel by Four Leaf Studios"
-url="http://www.katawa-shoujo.com"
+url="https://www.katawa-shoujo.com"
 license=("CC-BY-NC-ND-3.0")
 arch=('any')
 
-depends=('renpy6')
+options=('!debug' '!strip')
 
 _pkgsrc="Katawa Shoujo-$pkgver-linux"
 source=(
@@ -23,18 +23,23 @@ sha256sums=(
 )
 
 package() {
-  cd "$_pkgsrc"
+  depends=('renpy6-bin')
 
   # main files
   install -dm755 "$pkgdir/usr/share/$_pkgname"
-  cp --reflink=auto -a game "$pkgdir/usr/share/$_pkgname/"
+  cp --reflink=auto -a "$_pkgsrc/game" "$_pkgsrc/Katawa Shoujo.py" "$pkgdir/usr/share/$_pkgname/"
 
   # script
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/usr/bin/env sh
-exec renpy /usr/share/katawa-shoujo/
+RENPY="/usr/bin/renpy6"
+if [ ! -e "\$RENPY" ]; then
+  RENPY="/usr/bin/renpy"
+fi
+exec "\$RENPY" "/usr/share/katawa-shoujo"
 END
 
+  # .desktop
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]
 Name=Katawa Shoujo
@@ -49,8 +54,11 @@ END
   install -Dm644 "$srcdir/$_pkgname.png" -t "$pkgdir/usr/share/pixmaps/"
 
   # license
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$_pkgsrc/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # manual
-  install -Dm644 'Game Manual.pdf' "$pkgdir/usr/share/doc/$pkgname/gamemanual.pdf"
+  install -Dm644 "$_pkgsrc/Game Manual.pdf" "$pkgdir/usr/share/doc/$pkgname/gamemanual.pdf"
+
+  # permissions
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
