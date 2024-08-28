@@ -30,14 +30,11 @@ if((!DISABLE_AUTOCONFIG)); then
   #DISABLE_ZOLTAN
   #Open cascade needs VTK
   DISABLE_OCC=1
-  # Compilation using VTK is currently broken if MATC is enabled.
-  # https://github.com/ElmerCSC/elmerfem/issues/532
-  DISABLE_VTK=1
+  DISABLE_VTK=0
   # VTK also needs MPI.
   DISABLE_MPI=0
   DISABLE_MUMPS=1
   DISABLE_HYPRE=1
-  #Use external (suitesparse package) or internal UMFPack implementation
   DISABLE_INTERNAL_UMFPACK=1
 fi
 
@@ -118,7 +115,7 @@ _CMAKE_FLAGS+=(
 
 pkgname=elmerfem-git
 _pkgname=elmerfem
-pkgver=9.0.r3015.g39dcbd08b
+pkgver=9.0.r3061.gfe5423b11
 pkgrel=1
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
@@ -160,19 +157,16 @@ conflicts=('elmerfem' 'arpack')
 options=(!emptydirs !staticlibs)
 
 source=("git+https://github.com/ElmerCSC/elmerfem.git${_fragment}"
-        "$_pkgname.desktop"
-        "vtk9.1.patch")
+        "$_pkgname.desktop")
 
 sha256sums=('SKIP'
-            'f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca'
-            'd13ade4a1f20b61ed675af4a894154030a1b2d2baf39da24d9614954f744c159')
+            'f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca')
 
 pkgver() {
   git -C "${srcdir}/${_pkgname}" describe --long --tag| sed -r 's/^release-//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  patch -d "$srcdir/$_pkgname" -Np1 -i ../vtk9.1.patch
   cd "$srcdir"
   if((!DISABLE_VTK)); then
      sed -i \
@@ -199,7 +193,7 @@ check() {
 if ((!DISABLE_CHECK)); then
   cd "$srcdir/build"
   export PATH=$PATH:$PWD/fem/src
-  jobs=$(grep -oP -- "-j\s*\K[0-9]+" <<< "${MAKEFLAGS}")
+  jobs=$(nproc)
   ((!DISABLE_MP)) && export OMP_NUM_THREADS=$jobs
   ctest -j "$((DISABLE_MPI?jobs:jobs/2))" -LE slow || ((DISABLE_CHECK)) && true # -LE slow: exclude test with label 'slow'
 fi
