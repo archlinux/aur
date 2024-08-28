@@ -31,7 +31,7 @@ pkgbase = openlp-git
 	depends = python-websockets
 	depends = python-qtawesome
 	depends = python-pyicu
-	depends = PySide6>=6.7
+	depends = pyside6>=6.7
 	optdepends = libreoffice-fresh: display impress presentations
 	optdepends = python-qdarkstyle
 	optdepends = python-pymupdf: display pdfs

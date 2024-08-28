@@ -15,7 +15,7 @@ conflicts=('openlp')
 makedepends=('git' 'python-pip')
 depends=('python>=3.10' 'python<3.13' 'python-flask' 'python-flask-cors' 'python-qrcode' 'python-platformdirs' 'python-chardet' 'python-lxml'
  'python-mako' 'python-packaging' 'python-six' 'python-sqlalchemy' 'python-beautifulsoup4' 'python-pyenchant' 'python-dbus' 'python-alembic'
-  'python-zeroconf' 'python-webob' 'python-requests' 'python-waitress' 'python-websockets' 'python-qtawesome' 'python-pyicu' 'PySide6>=6.7'
+  'python-zeroconf' 'python-webob' 'python-requests' 'python-waitress' 'python-websockets' 'python-qtawesome' 'python-pyicu' 'pyside6>=6.7'
   )
 optdepends=('libreoffice-fresh: display impress presentations'
             'python-qdarkstyle'
