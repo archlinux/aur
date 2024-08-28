@@ -11,7 +11,7 @@ license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
     'java-runtime'
 )
 makedepends=(
