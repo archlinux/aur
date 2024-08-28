@@ -2,7 +2,7 @@
 
 _name=pytrimal
 pkgname=python-${_name}
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Cython bindings and Python interface to trimAl, a tool for automated alignment trimming."
 url="https://github.com/althonos/pytrimal"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'cython' 'python-build' 'python-installer')
 depends=('python' 'python-archspec')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=(e80df938e83a95bf81d620f5909580f3f07b661f25b8613e67037134785b91b4)
+sha256sums=(2331e67a74f3144d82373b6a79f42198f6632bd1b5025ab01cdd3eb527ef88cf)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
