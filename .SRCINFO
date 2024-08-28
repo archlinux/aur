@@ -1,19 +1,19 @@
 pkgbase = stapxs-qq-lite-bin
 	pkgdesc = 一个兼容 oicq-http 的非官方网页版 QQ 客户端, 使用 Vue 重制的全新版本.
-	pkgver = 2.8.2
+	pkgver = 2.8.5
 	pkgrel = 1
 	url = https://stapxs.github.io/Stapxs-QQ-Lite-2.0/
 	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
 	depends = electron27
-	provides = stapxs-qq-lite=2.8.2
+	provides = stapxs-qq-lite=2.8.5
 	conflicts = stapxs-qq-lite
 	source = stapxs-qq-lite.sh
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
-	source_aarch64 = stapxs-qq-lite-2.8.2-aarch64.deb::https://github.com/Stapxs/Stapxs-QQ-Lite-2.0/releases/download/v2.8.2/stapxs-qq-lite_2.8.2_arm64.deb
-	sha256sums_aarch64 = 29ce8b787c3730b9e2bae48993f5ab629c66b5d784a0fd3aa3e7e0d5832a399f
-	source_x86_64 = stapxs-qq-lite-2.8.2-x86_64.deb::https://github.com/Stapxs/Stapxs-QQ-Lite-2.0/releases/download/v2.8.2/stapxs-qq-lite_2.8.2_amd64.deb
-	sha256sums_x86_64 = f3a5cde0eb4fd7852b3195ef6d349ce7d64bf2fbc12c858429090e9f3b235482
+	source_aarch64 = stapxs-qq-lite-2.8.5-aarch64.deb::https://github.com/Stapxs/Stapxs-QQ-Lite-2.0/releases/download/v2.8.5/stapxs-qq-lite_2.8.5_arm64.deb
+	sha256sums_aarch64 = fd8fd48068eacdf3e6484f1ab60c2984a18b4ccd2c0e7f6a4c0afec49de80806
+	source_x86_64 = stapxs-qq-lite-2.8.5-x86_64.deb::https://github.com/Stapxs/Stapxs-QQ-Lite-2.0/releases/download/v2.8.5/stapxs-qq-lite_2.8.5_amd64.deb
+	sha256sums_x86_64 = 841e835d4e44344eedadd5ac7a3ecc73dfcc20790f0f865d75b04b5765287b0b
 
 pkgname = stapxs-qq-lite-bin
