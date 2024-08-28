@@ -8,29 +8,19 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Flamelab <panosfilip@gmail.com
 
+
 ### PACKAGE OPTIONS
 ## MERGE REQUESTS SELECTION
 # Merge Requests List: ('3252')
 _merge_requests_to_use=('3252')
 
-## Disable building the DOCS package (Enabled if not set)
-# Remember to unset this variable when producing .SRCINFO
-: "${_disable_docs:=""}"
-
-## Enable the `check()` operation (Disabled if not set)
-: "${_enable_check:=""}"
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _pkgname=gnome-shell
-pkgbase=gnome-shell-performance
-if [ -n "$_disable_docs" ]; then
-  pkgname=gnome-shell-performance
-else
-  pkgname=(gnome-shell-performance gnome-shell-performance-docs)
-fi
+pkgname=gnome-shell-performance
 pkgver=46.4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -188,7 +178,7 @@ prepare() {
 build() {
   local meson_options=(
     -D gtk_doc=true
-    -D tests=$(if [ -n "$_enable_check" ]; then echo "true"; else echo "false"; fi)
+    -D tests=false
   )
 
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
@@ -201,24 +191,7 @@ build() {
   meson compile -C build
 }
 
-_check() (
-  export NO_AT_BRIDGE=1 GTK_A11Y=none
-  export XDG_RUNTIME_DIR="$PWD/rdir"
-  mkdir -p -m 700 "$XDG_RUNTIME_DIR"
-
-  meson test -C build --no-rebuild --print-errorlogs -t 2
-)
-
-# Tests FAIL and or TIMEOUT at random
-# gnome-shell:shell / fittsy; / headlessStart; / basic; / closeWithActiveWindows
-if [ -n "$_enable_check" ]; then
-  check() {
-    dbus-run-session -- xvfb-run -s '-nolisten local +iglx -noreset' \
-      bash -c "$(declare -f _check); _check" || :
-  }
-fi
-
-package_gnome-shell-performance() {
+package() {
   depends+=(libmutter-14.so)
   optdepends=(
     'evolution-data-server: Evolution calendar integration'
@@ -237,18 +210,5 @@ package_gnome-shell-performance() {
   groups=(gnome)
 
   meson install -C build --destdir "$pkgdir"
-
-  mkdir -p doc/usr/share
-  mv {"$pkgdir",doc}/usr/share/doc
 }
 
-if ! [ -n "$_disable_docs" ]; then
-  package_gnome-shell-performance-docs() {
-    pkgdesc+=" (API documentation)"
-    provides=(gnome-shell-docs)
-    conflicts=(gnome-shell-docs)
-    depends=()
-
-    mv doc/* "$pkgdir"
-  }
-fi

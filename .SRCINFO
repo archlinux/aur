@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
 	pkgver = 46.4
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
 	arch = x86_64
@@ -85,9 +85,3 @@ pkgname = gnome-shell-performance
 	provides = gnome-shell=46.4
 	provides = gnome-shell=1:46.4
 	conflicts = gnome-shell
-
-pkgname = gnome-shell-performance-docs
-	pkgdesc = Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync (API documentation)
-	depends = 
-	provides = gnome-shell-docs
-	conflicts = gnome-shell-docs
