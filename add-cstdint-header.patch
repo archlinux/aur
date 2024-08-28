@@ -1,0 +1,12 @@
+Only in src/Plater-1.0.0-patched/plater: build
+diff -ura src/Plater-1.0.0/plater/stl/StlFactory.cpp src/Plater-1.0.0-patched/plater/stl/StlFactory.cpp
+--- src/Plater-1.0.0/plater/stl/StlFactory.cpp	2019-12-04 02:09:22.000000000 -0600
++++ src/Plater-1.0.0-patched/plater/stl/StlFactory.cpp	2024-08-26 12:59:20.979256352 -0500
+@@ -7,6 +7,7 @@
+ #include <string.h>
+ #include <stdio.h>
+ #include <iostream>
++#include <cstdint>
+ 
+ #if defined(_WIN32) || defined(_WIN64)
+   #define snprintf _snprintf

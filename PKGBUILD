@@ -1,7 +1,7 @@
 # Maintainer: John Downey <jdowney@gmail.com>
 pkgname=plater
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="3D-printer parts placer and plate generator"
 arch=("x86_64")
@@ -19,10 +19,16 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/Rhoban/Plater/archive/v$pkgver.tar.gz")
+source=("https://github.com/Rhoban/Plater/archive/v$pkgver.tar.gz"
+        "add-cstdint-header.patch")
 noextract=()
-sha256sums=("4baafed6fe779dc0711dbcb0385dbe96f2212f343f419fe98e4e5f394ad3bfc9")
+sha256sums=('4baafed6fe779dc0711dbcb0385dbe96f2212f343f419fe98e4e5f394ad3bfc9'
+            'a1122c11eb11e6338c9b72b0a53e398d748b317019407db7668768759a1ff871')
 validpgpkeys=()
+
+prepare() {
+  patch -Np1 -i ../add-cstdint-header.patch
+}
 
 build() {
   cd "Plater-$pkgver/plater"
