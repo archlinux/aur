@@ -20,7 +20,7 @@ _merge_requests_to_use=('3252')
 _pkgname=gnome-shell
 pkgname=gnome-shell-performance
 pkgver=46.4
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -177,7 +177,7 @@ prepare() {
 
 build() {
   local meson_options=(
-    -D gtk_doc=true
+    -D gtk_doc=false
     -D tests=false
   )
 
