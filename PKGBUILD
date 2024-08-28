@@ -1,40 +1,22 @@
-# $Id$
-# Maintainer: Daniel Milde <daniel@milde.cz>
-
-pkgbase=pypy-packaging
-pkgname=(pypy-packaging pypy3-packaging)
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Daniel Milde <daniel@milde.cz>
+_base=packaging
+pkgbase=pypy-${_base}
+pkgname=pypy3-packaging
 pkgver=21.3
 pkgrel=1
 pkgdesc="Core utilities for Python packages"
-arch=('any')
-url="https://github.com/pypa/packaging"
-license=('Apache')
-makedepends=('pypy-setuptools' 'pypy3-setuptools' 'pypy-pyparsing' 'pypy3-pyparsing' 'git')
-source=("git+https://github.com/pypa/packaging.git#tag=$pkgver")
-md5sums=('SKIP')
-
-prepare() {
-  cp -a packaging{,-py2}
-}
-
-build() {
-  cd "$srcdir"/packaging
-  pypy3 setup.py build
-
-  cd "$srcdir"/packaging-py2
-  pypy setup.py build
-}
+arch=(any)
+url="https://github.com/pypa/${_base}"
+license=(Apache-2.0 BSD-2-Clause)
+makedepends=(pypy3-setuptools pypy3-pyparsing)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('2e3aa276a4229ac7dc0654d586799473ced9761a83aa4159660d37ae1a2a8f30e987248dd0e260e2834106b589f259a57ce9936eef0dcc3c430a99ac6b663e05')
 
 package_pypy3-packaging() {
-  depends=('pypy3-pyparsing' 'pypy3-six')
+  depends=(pypy3-pyparsing pypy3-six)
 
-  cd "$srcdir"/packaging
-  pypy3 setup.py install --prefix=/opt/pypy3 --root "$pkgdir"
-}
-
-package_pypy-packaging() {
-  depends=('pypy-pyparsing' 'pypy-six')
-
-  cd "$srcdir"/packaging-py2
-  pypy setup.py install --prefix=/opt/pypy --root "$pkgdir"
+  cd ${_base}-${pkgver}
+  pypy3 setup.py install --prefix=/opt/pypy3 --root="${pkgdir}" --optimize=1
+  install -Dm 644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
