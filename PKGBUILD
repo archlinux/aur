@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ueli-bin
 _pkgname=Ueli
-pkgver=9.3.2
-_electronversion=31
+pkgver=9.3.3
+_electronversion=32
 pkgrel=1
 pkgdesc="Keystroke launcher for Windows, macOS and Linux"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/oliverschwendener/ueli/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c8da1c6e65de118fde0fe2a8e334d2427a18f5e71244a3b743d4574a15e55db4'
+sha256sums=('d8947894f8e9855eea2cd675c43b9404b56aef5f35f18e8d5ca0a3a89c51f9ce'
             '8da6c1a79d367a41aadf313019833f4bb3f2ff55f0da5b522fd058183d2f9106'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
