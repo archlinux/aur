@@ -1,0 +1,4 @@
+[xwidgets]
+source = "github"
+github = "jupyter-xeus/xwidgets"
+use_max_tag = "true"
