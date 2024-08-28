@@ -1,46 +1,28 @@
-# $Id$
-# Maintainer: Daniel Milde <daniel@milde.cz>
-
-pkgname=pypy-pyparsing
-pkgname=('pypy-pyparsing' 'pypy3-pyparsing')
-pkgver=2.3.1
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Daniel Milde <daniel@milde.cz>
+_base=pyparsing
+pkgbase=pypy-${_base}
+pkgname=pypy3-${_base}
+pkgver=3.0.7
 pkgrel=1
-pkgdesc='General parsing module for Python'
-arch=('any')
-url='http://pyparsing.wikispaces.com/'
-makedepends=('pypy-setuptools' 'pypy3-setuptools' 'subversion')
-license=('MIT')
-source=("https://github.com/pyparsing/pyparsing/archive/pyparsing_$pkgver.tar.gz")
-sha512sums=('8c0e2c7a7dc7ec12f3e7c260bde25a33f325af89d9bc2329b7882ebd8a3f506fb06a36fdaba0fd8ed48040d5b7fc5288c41b01f2df84459a9980a035cb213dd0')
+pkgdesc="General parsing module for Python"
+arch=(any)
+url="https://github.com/${_base}/${_base}"
+makedepends=(pypy3-setuptools)
+license=(MIT)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('1e692f4cdaa6b6e8ca2729d0a3e2ba16d978f1957c538b6de3a4220ec7d996bdbe87c41c43abab851fffa3b0498a05841373e435602917b8c095042e273badb5')
 
-build() {
-  cd pyparsing-pyparsing_$pkgver
-  pypy setup.py build
-  pypy3 setup.py build
-}
-
-check() {
-  cd pyparsing-pyparsing_$pkgver
-  pypy unitTests.py
+# Rename the following function to check() to enable checking
+_check_pypy3-setuptools() {
+  cd ${_base}-${pkgver}
   pypy3 unitTests.py
 }
 
 package_pypy3-pyparsing() {
-  depends=('pypy3')
+  depends=(pypy3)
 
-  cd pyparsing-pyparsing_$pkgver
-
-  pypy3 setup.py install --prefix=/opt/pypy3 --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  cd ${_base}-${pkgver}
+  pypy3 setup.py install --prefix=/opt/pypy3 --root="${pkgdir}" --optimize=1
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-package_pypy-pyparsing() {
-  depends=('pypy')
-
-  cd pyparsing-pyparsing_$pkgver
-
-  pypy setup.py install --prefix=/opt/pypy --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-}
-
-# vim:set ts=2 sw=2 et:
