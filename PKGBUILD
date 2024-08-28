@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-posthog
 _name=posthog-python
-pkgver=3.5.2
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Integrate PostHog into any python application."
 arch=('any')
@@ -26,14 +26,15 @@ checkdepends=(
   'python-pytest-timeout'
 )
 source=("$_name-$pkgver.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ee3ec69e01028afcbf56830ffffb6b9f2386bacc8ae7671abf94059bc1de6d52')
+sha256sums=('859289fa672f3f33a40a4af812a6766044a2d59478df67f77cfeecde2e498cfa')
 
 prepare() {
   cd "$_name-$pkgver"
 
   # Drop python-mock checkdepends
   # https://archlinux.org/todo/drop-python-mock-checkdepends/
-  sed -i 's/import mock/from unittest import mock/g' posthog/test/test_{client,consumer,feature_flags}.py
+  sed -i 's/import mock/from unittest import mock/g' \
+    posthog/test/test_{client,consumer,feature_flags}.py
 }
 
 build() {
@@ -45,7 +46,7 @@ check() {
   cd "$_name-$pkgver"
 
   # Disable tests requiring network access
-  pytest -k 'not test_request'
+  PYTHONPATH=. pytest -k 'not test_request'
 }
 
 package() {
