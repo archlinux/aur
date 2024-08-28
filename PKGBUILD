@@ -5,7 +5,7 @@ _pkgname=Typora
 pkgver=1.10.23
 _typoraver=0.11.18
 _electronversion=13
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal markdown editor and reader(free version). with obgnail/typora_plugin plugin."
 arch=(
     "aarch64"
@@ -15,7 +15,7 @@ url="https://typora.io/"
 _dlurl="https://github.com/wyf9661/typora-free"
 _pluginurl="https://github.com/obgnail/typora_plugin"
 license=('LicenseRef-custom')
-provides=("${_appname}-free=${pkgver}")
+provides=("${_appname}=${pkgver}")
 conflicts=(
     "${pkgname%-bin}"
     "${_appname}"

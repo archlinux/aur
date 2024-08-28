@@ -1,7 +1,7 @@
 pkgbase = typora-free-with-plugin
 	pkgdesc = A minimal markdown editor and reader(free version). with obgnail/typora_plugin plugin.
 	pkgver = 1.10.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://typora.io/
 	arch = aarch64
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = typora-free-with-plugin
 	depends = nspr
 	depends = nss
 	depends = alsa-lib
-	provides = typora-free=1.10.23
+	provides = typora=1.10.23
 	conflicts = typora-free-with-plugin
 	conflicts = typora
 	conflicts = typora-free
