@@ -17,7 +17,7 @@ noextract=("$pkgname-$pkgver.zip")
 depends=(
 	libnotify
 	gtk2
-	gconf
+	# gconf
 	gcc
 	electron25-bin
 )
