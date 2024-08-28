@@ -1,20 +1,22 @@
 pkgbase = czkawka-git
-	pkgdesc = Multi-functional app to find duplicates, similar images, and empty folders.
+	pkgdesc = Multi-functional app to find duplicates, similar images, and empty folders
 	pkgver = 7.0.0.r4.g2a32a52
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qarmin/czkawka
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = rust
 	makedepends = cargo
 	depends = gtk4
+	depends = libheif
 	provides = czkawka=7.0.0
 	provides = czkawka-cli=7.0.0
 	provides = czkawka-gui=7.0.0
+	provides = krokiet=7.0.0
 	conflicts = czkawka
 	conflicts = czkawka-cli
 	conflicts = czkawka-gui
+	conflicts = krokiet
 	source = czkawka::git+https://github.com/qarmin/czkawka.git
 	sha256sums = SKIP
 
