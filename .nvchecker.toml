@@ -1,0 +1,4 @@
+[pypy3-cython]
+source = "github"
+github = "cython/cython"
+use_latest_release = "true"
