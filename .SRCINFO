@@ -1,15 +1,15 @@
 pkgbase = phizclip-studio
-	pkgdesc = PhizClip-Studio
+	pkgdesc = Developer tools for PhizClip
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://open.phiz.chat/
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = phizclip-studio-v1.2.0-1.AppImage::https://i.ouzero.com:811/api/public/dl/aK6V_ejL
+	source = phizclip-studio-1.2.0-2.AppImage::https://pan-dev.xyue.zip:8443/s/TtN7ozqAmAk2smA/download/PhizClip%20Studio-1.2.0.AppImage
 	source = phizclip-studio.desktop
 	source = phizclip-studio.png
-	sha256sums = fb2d5a1913e4f6e359d324b739ea1b77ea13995d49436728d4e00d37935bfdab
+	sha256sums = 01f7b7e312abe19d763315f79c46e91346e54f77e062a0a3efe0eecfa6991eea
 	sha256sums = 1e2d60584bec00079891b8b55d142bbfa8a6fac36da037bcb383c5b950e9ae5e
 	sha256sums = 53239505b912d9cb80a1f3e22ead56edb56a4a0d8b6b99536a6ab46a1ae8e9a1
 

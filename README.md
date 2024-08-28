@@ -9,5 +9,5 @@ namcap PKGBUILD
 ## Generate SRCINFO
 
 ```sh
-makepkg --printscrinfo > .SRCINFO
+makepkg --printsrcinfo > .SRCINFO
 ```
