@@ -1,5 +1,6 @@
-mepo/
-src/
-pkg/
-*.tar.gz
-*.zst
+/mepo-git/
+/pkg/
+/src/
+/*.log
+/*.pkg.tar.zst
+/*.tar.gz
