@@ -12,7 +12,7 @@ pkgname=davinci-resolve-studio
 major_version=19
 minor_version=0
 pkgver=${major_version}.${minor_version}
-pkgrel=1
+pkgrel=2
 
 if [ "$pkgname" == "davinci-resolve" ]; then
   # Variables for FREE edition
@@ -189,6 +189,10 @@ prepare()
   mv "${srcdir}/squashfs-root/libs/libglib-2.0.so.0" "${srcdir}/squashfs-root/libs/libglib-2.0.so.0.orig"
 
   ln -s /usr/lib/libglib-2.0.so.0 "${srcdir}/squashfs-root/libs/libglib-2.0.so.0"
+
+  ln -s /usr/lib/libgio-2.0.so "${srcdir}/squashfs-root/libs/libgio-2.0.so"
+
+  ln -s /usr/lib/libgmodule-2.0.so "${srcdir}/squashfs-root/libs/libgmodule-2.0.so"
 
   echo "StartupWMClass=resolve" >> "${srcdir}/squashfs-root/share/DaVinciResolve.desktop"
 
