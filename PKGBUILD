@@ -3,18 +3,18 @@
 # Thank you inversechi and eschwartz
 
 pkgname=lando
-pkgver=3.21.0
+pkgver=3.21.2
 _target_version=${pkgver//_/-}
-pkgrel=1
+pkgrel=3
 pkgdesc="A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology"
 arch=('x86_64')
 url="https://docs.lando.dev"
 license=('GPL')
 depends=('docker' 'docker-compose')
 optdepends=('gcc-libs')
-makedepends=('npm' 'git' 'nodejs-lts-hydrogen')
+makedepends=('npm' 'git' 'nodejs-lts-iron')
 source=("${pkgname}::git+https://github.com/lando/cli.git#tag=v${_target_version}")
-sha256sums=('6277f55042703804510ce8d3d913d1e8014e06404ae572e5309c6d6f91edb81a')
+sha256sums=('15570ce4ffec23cf21559f998facc217bc3c78e65870be8232083f3727c68b44')
 conflicts=("lando-git")
 provides=("lando")
 
@@ -27,7 +27,7 @@ build() {
   npm clean-install --prefer-offline --frozen-lockfile --omit="dev"
   scripts/fatcore-install.sh
 
-  npm run pkg
+  npx @yao-pkg/pkg --config package.json -C Brotli --targets latest --options dns-result-order=ipv4first bin/lando
 }
 
 package() {

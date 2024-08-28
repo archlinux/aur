@@ -1,20 +1,20 @@
 pkgbase = lando
 	pkgdesc = A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology
-	pkgver = 3.21.0
-	pkgrel = 1
+	pkgver = 3.21.2
+	pkgrel = 3
 	url = https://docs.lando.dev
 	arch = x86_64
 	license = GPL
 	makedepends = npm
 	makedepends = git
-	makedepends = nodejs-lts-hydrogen
+	makedepends = nodejs-lts-iron
 	depends = docker
 	depends = docker-compose
 	optdepends = gcc-libs
 	provides = lando
 	conflicts = lando-git
 	options = !strip
-	source = lando::git+https://github.com/lando/cli.git#tag=v3.21.0
-	sha256sums = 6277f55042703804510ce8d3d913d1e8014e06404ae572e5309c6d6f91edb81a
+	source = lando::git+https://github.com/lando/cli.git#tag=v3.21.2
+	sha256sums = 15570ce4ffec23cf21559f998facc217bc3c78e65870be8232083f3727c68b44
 
 pkgname = lando
