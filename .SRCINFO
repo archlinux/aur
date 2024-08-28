@@ -11,16 +11,3 @@ pkgbase = wonderdraft
 	md5sums = SKIP
 
 pkgname = wonderdraft
-pkgbase = wonderdraft
-	pkgdesc = An intuitive yet powerful fantasy mapmaking tool for 64-bit Windows 10, Linux and MacOSX.
-	pkgver = 1.1.8.2
-	pkgrel = 1
-	url = https://www.wonderdraft.net
-	arch = x86_64
-	license = custom
-	options = !strip
-	options = !emptydirs
-	source = https://cdn.humble.com/humblebundle/tailwindgamesllc_ChunI/Wonderdraft-1.1.8.2-b-Linux64.zip
-	md5sums = SKIP
-
-pkgname = wonderdraft
