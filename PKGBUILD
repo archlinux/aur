@@ -1,8 +1,8 @@
 # Maintainer: Marek <mail@marek.onl>
 
 pkgname=zebrad
-pkgver=1.8.0
-pkgrel=5
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="Permissionless financial system employing zero-knowledge security"
 url='https://github.com/ZcashFoundation/zebra'
 source=("zebra-${pkgver//_/-}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
@@ -12,7 +12,7 @@ makedepends=('rust' 'clang' 'pkgconf')
 sha256sums=(SKIP)
 options=(!debug !lto)
 
-build () {
+build() {
   cd "zebra-$pkgver" || exit
 
   # Build Zebra.
@@ -26,11 +26,11 @@ package() {
   install -Dm 755 target/release/zebrad "${pkgdir}/usr/bin/${pkgname}"
 
   # Install documentation.
-  install -Dm 644 CHANGELOG.md       -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 CHANGELOG.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 CODE_OF_CONDUCT.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm 644 CONTRIBUTING.md    -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm 644 README.md          -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm 644 SECURITY.md        -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 CONTRIBUTING.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 SECURITY.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 
   # Install licenses.
   install -Dm 644 LICENSE-{APACHE,MIT} -t "${pkgdir}/usr/share/licenses/${pkgname}"

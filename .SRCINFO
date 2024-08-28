@@ -1,7 +1,7 @@
 pkgbase = zebrad
 	pkgdesc = Permissionless financial system employing zero-knowledge security
-	pkgver = 1.8.0
-	pkgrel = 5
+	pkgver = 1.9.0
+	pkgrel = 1
 	url = https://github.com/ZcashFoundation/zebra
 	arch = aarch64
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = zebrad
 	makedepends = pkgconf
 	options = !debug
 	options = !lto
-	source = zebra-1.8.0.tar.gz::https://github.com/ZcashFoundation/zebra/archive/refs/tags/v1.8.0.tar.gz
+	source = zebra-1.9.0.tar.gz::https://github.com/ZcashFoundation/zebra/archive/refs/tags/v1.9.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = zebrad
