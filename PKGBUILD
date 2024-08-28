@@ -29,6 +29,7 @@
 # modify package name
 : ${_build_hg:=true}
 
+unset _pkgtype
 [[ "${_build_nightly::1}" == "t" ]] && _pkgtype+="-nightly"
 [[ "${_build_wayland::1}" == "t" ]] && _pkgtype+="-wayland"
 [[ "${_build_hg::1}" == "t" ]] && _pkgtype+="-hg"
@@ -36,7 +37,7 @@
 ## basic info
 pkgname="firefox${_pkgtype:-}"
 _pkgname=firefox-nightly
-pkgver=128.0a1+20240608.1+hf8b2b22126e3
+pkgver=131.0a1+20240828.1+hc9eea28a07a6
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 url="https://www.mozilla.org/firefox/channel/#nightly"
@@ -319,13 +320,11 @@ END
   fi
 }
 
-build() {
+build() (
   cd "${_repo##*/}"
 
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
   [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
-
-  export LIBGL_ALWAYS_SOFTWARE=true
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -347,8 +346,8 @@ build() {
 
   # Do 3-tier PGO
   if [[ "${_build_pgo::1}" == "t" ]]; then
-    local _old_profdata="${SRCDEST:-$startdir}/merged.profdata"
-    local _old_jarlog="${SRCDEST:-$startdir}/jarlog"
+    local _old_profdata="$SRCDEST/merged.profdata"
+    local _old_jarlog="$SRCDEST/jarlog"
 
     # Restore old profile
     if [[ "${_build_pgo_reuse::1}" == "t" ]]; then
@@ -373,6 +372,22 @@ build() {
       echo "Profiling instrumented browser..."
       ./mach package
 
+      local _headless_env=(
+        LLVM_PROFDATA=llvm-profdata
+        JARLOG_FILE="${PWD@Q}/jarlog"
+        LIBGL_ALWAYS_SOFTWARE=true
+        MOZ_DISABLE_CONTENT_SANDBOX=1
+        MOZ_DISABLE_GMP_SANDBOX=1
+        MOZ_DISABLE_GPU_SANDBOX=1
+        MOZ_DISABLE_RDD_SANDBOX=1
+        MOZ_DISABLE_SOCKET_PROCESS_SANDBOX=1
+        MOZ_DISABLE_UTILITY_SANDBOX=1
+        MOZ_DISABLE_VR_SANDBOX=1
+        GTK_A11Y=none
+        NO_AT_BRIDGE=1
+        dbus-run-session
+      )
+
       if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
         local _headless_run=(
           xvfb-run
@@ -385,8 +400,7 @@ build() {
         )
       fi
 
-      LLVM_PROFDATA=llvm-profdata JARLOG_FILE=${PWD@Q}/jarlog \
-        "${_headless_run[@]}" -- ./mach python build/pgo/profileserver.py
+      env "${_headless_env[@]}" "${_headless_run[@]}" -- ./mach python build/pgo/profileserver.py
 
       echo "Removing instrumented browser..."
       ./mach clobber objdir
@@ -425,7 +439,7 @@ build() {
 
   echo "Building symbol archive..."
   ./mach buildsymbols
-}
+)
 
 package() {
   cd "${_repo##*/}"
