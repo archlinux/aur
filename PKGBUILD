@@ -1,9 +1,9 @@
-# Maintainer: Nathan Doyle <natetronn <at> Gmail-DOT-Com>
+# Maintainer: Vitalit VVS <vitaliy <dot> star <at> Gmail-DOT-Com>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: Zach Hoffman <zach@zrhoffman.net>
 
 pkgname=docksal
-pkgver=1.16.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc='Docker powered environments for web development on macOS, Windows and Linux'
 arch=('any')
@@ -11,7 +11,7 @@ url='https://docksal.io/'
 license=('MIT')
 depends=('docker' 'docker-compose' )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/docksal/docksal/archive/v$pkgver.tar.gz")
-sha256sums=('0d24ea4653af5e898ce50bd97b02c3a4ac90df833b8dc95567c9045d286e056d')
+sha256sums=('7881d5e9e47e126948944165d8c4a8775b166f94d0ea519e5982003d9a7f4a3a')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}/bin/fin" "$pkgdir/usr/bin/fin"
