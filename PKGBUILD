@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Arch hyperfluent grub theme."
 arch=(any)
 url="https://github.com/Coopydood/HyperFluent-GRUB-Theme"
-source=("git+https://www.github.com/eugenenoble2005/hyperfluent-grub-theme")
+source=("git+https://github.com/eugenenoble2005/hyperfluent-grub-theme")
 
 package(){
   cd $srcdir/hyperfluent-grub-theme
