@@ -1,6 +1,6 @@
 pkgbase = python-pyfamsa
 	pkgdesc = Cython bindings and Python interface to FAMSA, an algorithm for ultra-scale multiple sequence alignments
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/althonos/pyfamsa
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = python-pyfamsa
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = python-setuptools
 	makedepends = cython
 	makedepends = python-build
@@ -18,7 +18,7 @@ pkgbase = python-pyfamsa
 	makedepends = python-semantic-version
 	depends = python
 	depends = python-scoring-matrices
-	source = https://files.pythonhosted.org/packages/source/p/pyfamsa/pyfamsa-0.4.0.tar.gz
-	sha256sums = 9a09e04079b5d6401b62fed2b80886ffdd5626c30686697ff8c2b38e018e6e87
+	source = https://files.pythonhosted.org/packages/source/p/pyfamsa/pyfamsa-0.5.0.tar.gz
+	sha256sums = 1cf3ba3a0a0a93bc987fd0c10027470fb1d98b310a9c79d4546e6d43dbbe6b4d
 
 pkgname = python-pyfamsa
