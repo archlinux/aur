@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Xiaozhu1337 <nihaoaheheda@gmail.com>
 pkgname=siyuan
-pkgver=3.1.3
+pkgver=3.1.4
 _electronversion=30
 _nodeversion=18
 pkgrel=1
@@ -27,14 +27,14 @@ makedepends=(
     'nvm'
     'npm'
     'go>=1.22'
-    'pnpm>=9.1.1'
+    'pnpm'
     'git'
 )
 source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('fdcbf9b3f009448812b1d9d78ba21d4d000f06fb1ea99ea6b66de10f2e0ec3e5'
+sha256sums=('4a4d1b10019c5c8b4ed10c8343fa006bfac8968cf9b93c7126e41f28152ca358'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -55,9 +55,8 @@ build() {
     cd "${srcdir}/${pkgname}.git/app"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
