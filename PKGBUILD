@@ -14,7 +14,7 @@ sha256sums=('3e4193edfe1feea9d47d0fd895119aff73267f412d2a280aad17f96ca576dd21')
 
 build() {
     cd "$srcdir/shuffle-1.0.3"
-    meson setup build
+    meson setup --prefix=/usr/bin --buildtype=release build
     meson compile -C build
 }
 
