@@ -1,0 +1,21 @@
+pkgbase = demoiccmax-git
+	pkgdesc = Demonstration Implementation for iccMAX color profiles
+	pkgver = r344.gdc78afc
+	pkgrel = 1
+	url = https://www.color.org/iccmax.xalter
+	arch = i686
+	arch = x86_64
+	license = LicenseRef-demoiccmax
+	makedepends = git
+	makedepends = cmake
+	makedepends = nlohmann-json
+	depends = gcc-libs
+	depends = libtiff
+	depends = libxml2
+	provides = demoiccmax=r344.gdc78afc
+	conflicts = demoiccmax
+	options = staticlibs
+	source = git+https://github.com/InternationalColorConsortium/DemoIccMAX.git
+	sha256sums = SKIP
+
+pkgname = demoiccmax-git
