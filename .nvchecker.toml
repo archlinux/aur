@@ -1,0 +1,4 @@
+[pypy3-yaml]
+source = "github"
+github = "yaml/pyyaml"
+use_latest_release = "true"

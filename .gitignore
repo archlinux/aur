@@ -1,5 +1,1 @@
-src
-pkg
-*.gz
-*.xz
-*.bak
+*
