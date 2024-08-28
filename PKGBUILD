@@ -9,7 +9,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=1e83e6e9e88b9237a97b7893b6832a0d9e8b6276
+_mozc_commit=71795e0fa1dcfae2f53e5287ee4872fb229d51b3
 _mozcdict_ext_commit=de931271344ebb2d1349a7ae0a8ec883457ed930
 _branch=fcitx
 # Sudachi Dictionary
@@ -26,7 +26,6 @@ makedepends=('qt6-base' 'fcitx5' 'fcitx5-qt' 'bazel' 'git' 'python' 'python-six'
 options=(!lto)
 source=("git+$url.git#commit=${_mozc_commit}"
         https://github.com/fcitx/mozc/pull/61.patch
-        https://github.com/fcitx/mozc/pull/63.patch
         git+https://github.com/phoepsilonix/mozcdict-ext.git#commit=${_mozcdict_ext_commit}
         #"https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
         #"https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip"
@@ -39,9 +38,8 @@ source=("git+$url.git#commit=${_mozc_commit}"
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
 
-sha512sums=('7abdf8a8feff4e63fd8e7ba0cb41a4cf5f99263f7551e66a3c01da3ea1fda6b06dbd96571d6466679cb61c4c05b3c28e14b3e9ecebdf0699c2c36ae7dbe8de5b'
+sha512sums=('7850dce5a1e734ef99234dc74d24de731b05bd1d71b40d2fa886d81e2b7d041eddaf986c450fa83fd34a55e2397de0925cda392064cd3cc2762302a9de7ada14'
             '74ea29e340ef7fc87d31a67dfc9de670458a585f7feb64820f6f49f0f100d03d41dbd189fba676f3133207bdc2532e00dd1ca4c7394611b1d56941cae7d027a5'
-            'a8fc531f4d530e4e89093c7ab9ab83e8e1cf09256cdefbfa0ae1866556eae128f2bc169d09d9d694690316c96e4bb9074fc3bc8d3aeb27ac4f25c9db4092d3dd'
             'fcde4a3c0200969ebb21fa927f1ff59581386a39d83ea7ec5c0092e1566c38638129b71b286434e11fb4c6b76b48d6b36eb64b053306c2bbb8a7900e2c641558'
             '9428d55d2d9603c8bfcd12cc0184415f23af1d09a2d0ebdf0cce694a09638e7cfe0c1241bf1c943427b2fccfea619ca8b2e22db3452d837b416eb31aa224e766'
             'f0a3544dcc99bf8c4cea8ebfd31af827e209f0678997ab55f6eda54f34cad5e148d1bd156417a621665c2068e7371801dc9cf1baa34f2270a99da7055f46d95d'
@@ -58,9 +56,8 @@ prepare() {
   cd "$srcdir/mozc" || exit
   git submodule update --init --recursive
 
-  # pr
+  # PR(pull request)
   patch -p1 -i ${srcdir}/61.patch
-  patch -p1 -i ${srcdir}/63.patch
 
   cd src || exit
 
