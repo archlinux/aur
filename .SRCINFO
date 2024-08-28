@@ -5,7 +5,10 @@ pkgbase = shuffle-ascii
 	url = https://github.com/lennart1978/shuffle
 	arch = x86_64
 	license = MIT
+	makedepends = meson
+	makedepends = ninja
 	makedepends = gcc
+	depends = glibc
 	source = shuffle-1.0.3.tar.gz::https://github.com/lennart1978/shuffle/archive/refs/tags/V1.0.3.tar.gz
 	sha256sums = 3e4193edfe1feea9d47d0fd895119aff73267f412d2a280aad17f96ca576dd21
 
