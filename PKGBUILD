@@ -7,7 +7,7 @@ pkgdesc="Arch hyperfluent grub theme."
 arch=(any)
 url="https://github.com/Coopydood/HyperFluent-GRUB-Theme"
 source=("git+https://github.com/eugenenoble2005/hyperfluent-grub-theme")
-
+sha256sums=("SKIP")
 package(){
   cd $srcdir/hyperfluent-grub-theme
   install -d -m 755 "$pkgdir/usr/share/grub/themes/$pkgname" && cp -r arch/* "$pkgdir/usr/share/grub/themes/$pkgname"
