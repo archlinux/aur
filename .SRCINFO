@@ -1,7 +1,7 @@
 pkgbase = mpz
 	pkgdesc = Music player for the large local collections
-	pkgver = 1.0.24
-	pkgrel = 0
+	pkgver = 1.0.25
+	pkgrel = 2
 	url = https://github.com/olegantonyan/mpz
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = mpz
   depends = yaml-cpp
   depends = taglib
   provides = mpz
-	source = mpz-1.0.24-0.zip::https://github.com/olegantonyan/mpz/archive/8553675f4415d756361c7737ff659ddd5b1cea05.zip
-	sha256sums = f67f1cfdcf29390e03b57985a55e865d5ccdadcb0a37d9985add7211ac79099b
+	source = mpz-1.0.25-2.zip::https://github.com/olegantonyan/mpz/archive/7ab927da89604075e331c457dcdd180df070d42c.zip
+	sha256sums = 36cd0363ee58679b33acc88bca54215674da4d9bffa0d1f1327d3774949fd656
 
 pkgname = mpz
