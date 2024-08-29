@@ -4,7 +4,7 @@
 pkgname=authpass-bin
 pkgver=1.9.11
 _subver=2007
-pkgrel=2
+pkgrel=3
 pkgdesc='Password Manager based on Flutter for all platforms. Keepass 2.x (kdbx 3.x) compatible.'
 arch=('x86_64')
 url="https://authpass.app/"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('f464b6d5610de4c9d17cbbb5906625c272e8c5ac0ebf8e45b2a3007bbc9c246b'
-            '984792e5e81a0f8f076fdfd20bdc72c152664346b099312114ecb1e4fe2fcb83')
+            '2ce176a5c3aec15df075bb898c0c82f8a10c51fee35c24a5c0c795775a4b05f9')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
@@ -33,7 +33,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -r "${srcdir}/opt" "${pkgdir}"
+    install -Dm755 -d "${pkgdir}/usr/lib"
+    cp -r "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm0644 "${srcdir}/opt/${pkgname%-bin}/icon.svg" "${pkgdir}/usr/share/hicolor/scalable/apps/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${pkgname%-bin}/icon.svg" "${pkgdir}/usr/share/hicolor/scalable/apps/${pkgname%-bin}"
 }
