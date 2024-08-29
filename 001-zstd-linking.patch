@@ -1,0 +1,12 @@
+diff --git a/userspace/ksud/build.rs b/userspace/ksud/build.rs
+index 021418ac..8a16bff8 100644
+--- a/userspace/ksud/build.rs
++++ b/userspace/ksud/build.rs
+@@ -34,6 +34,7 @@ fn get_git_version() -> Result<(u32, String), std::io::Error> {
+ }
+ 
+ fn main() {
++    println!("cargo:rustc-link-lib=zstd"); 
+     let (code, name) = match get_git_version() {
+         Ok((code, name)) => (code, name),
+         Err(_) => {
