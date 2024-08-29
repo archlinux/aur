@@ -11,7 +11,7 @@ depends=(
   'evolution-data-server'
   'granite7'
   'gtksourceview5'
-  'gxml'  # only compatible with >=0.20.0 / <=0.20.3
+  'gxml'
   'libadwaita'
   'libportal-gtk4'
   'webkitgtk-6.0'
