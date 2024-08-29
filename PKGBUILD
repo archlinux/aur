@@ -15,7 +15,7 @@ _filename="Quiet-$pkgver.AppImage"
 
 source=(
 	"https://github.com/TryQuiet/quiet/releases/download/@quiet/desktop@$pkgver/$_filename"
-	"https://raw.githubusercontent.com/TryQuiet/quiet/develop/LICENSE.md"
+	"https://raw.githubusercontent.com/TryQuiet/quiet/$pkgver/LICENSE.md"
 )
 
 sha512sums=(
