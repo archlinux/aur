@@ -5,7 +5,7 @@ _pkgname=paperlib
 _Pkgname=Paperlib
 
 pkgname="${_pkgname}"-appimage
-pkgver=3.1.8
+pkgver=3.1.9
 pkgrel=1
 pkgdesc="An open-source and simple academic paper management tool."
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::${url}/releases/download/release-electron-${pkgver}/${_Pkgname}_${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('fdd88c516df2c2c2877cfd161b691023bbfea62884e5a258a614af8fca8ef4fe')
+sha256sums_x86_64=('0457f6ca8f2bb5fcb9765ee2d6111185d6dbff86ff1915c49d378f81c1cb12b2')
 prepare() {
   chmod +x "${_appimage}"
   ./"${_appimage}" --appimage-extract

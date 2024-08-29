@@ -1,14 +1,14 @@
 pkgbase = paperlib-appimage
 	pkgdesc = An open-source and simple academic paper management tool.
-	pkgver = 3.1.8
+	pkgver = 3.1.9
 	pkgrel = 1
 	url = https://github.com/Future-Scholars/paperlib
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = libsecret
-	noextract = paperlib-appimage-3.1.8.AppImage
+	noextract = paperlib-appimage-3.1.9.AppImage
 	options = !strip
-	source_x86_64 = paperlib-appimage-3.1.8.AppImage::https://github.com/Future-Scholars/paperlib/releases/download/release-electron-3.1.8/Paperlib_3.1.8.AppImage
-	sha256sums_x86_64 = fdd88c516df2c2c2877cfd161b691023bbfea62884e5a258a614af8fca8ef4fe
+	source_x86_64 = paperlib-appimage-3.1.9.AppImage::https://github.com/Future-Scholars/paperlib/releases/download/release-electron-3.1.9/Paperlib_3.1.9.AppImage
+	sha256sums_x86_64 = 0457f6ca8f2bb5fcb9765ee2d6111185d6dbff86ff1915c49d378f81c1cb12b2
 
 pkgname = paperlib-appimage
