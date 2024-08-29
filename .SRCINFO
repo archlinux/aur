@@ -1,6 +1,6 @@
 pkgbase = python-picotui
 	pkgdesc = Lightweight, pure-Python Text User Interface (TUI) widget toolkit
-	pkgver = 1.1
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/pfalcon/picotui
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-picotui
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = picotui-1.1.tar.gz::https://github.com/pfalcon/picotui/archive/v1.1.tar.gz
-	sha256sums = fe2b879f5c00bcdaf8bda49638df3cc198ef4670d3d5aa0b79b71bbd4a0f1122
+	source = picotui-eea5113fcf95f4340cd6139bf63697baefc7b17b.tar.gz::https://github.com/pfalcon/picotui/archive/eea5113fcf95f4340cd6139bf63697baefc7b17b.tar.gz
+	sha256sums = 00fc2fe6e9bc46589777596649e6c8510bbbc76a3aaadae12bf78c1df5e35b95
 
 pkgname = python-picotui

@@ -2,7 +2,8 @@
 
 _name="picotui"
 pkgname="python-${_name}"
-pkgver=1.1
+pkgver=1.2.1
+_commit="eea5113fcf95f4340cd6139bf63697baefc7b17b"
 pkgrel=1
 pkgdesc="Lightweight, pure-Python Text User Interface (TUI) widget toolkit"
 arch=('any')
@@ -12,9 +13,9 @@ makedepends=('python-build' 'python-installer' 'python-wheel'
              'python-setuptools')
 # checkdepends=('python-pytest')
 depends=('python')
-_pkgsrc="${_name}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('fe2b879f5c00bcdaf8bda49638df3cc198ef4670d3d5aa0b79b71bbd4a0f1122')
+_pkgsrc="${_name}-${_commit}"
+source=("${_pkgsrc}.tar.gz::${url}/archive/${_commit}.tar.gz")
+sha256sums=('00fc2fe6e9bc46589777596649e6c8510bbbc76a3aaadae12bf78c1df5e35b95')
 
 build () {
   cd "${srcdir}/${_pkgsrc}"
@@ -34,6 +35,6 @@ package () {
 
   install -Dm644 "README.rst" "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "${pkgdir}${site_packages}/${_pkgsrc}.dist-info/LICENSE" \
+  ln -s "${pkgdir}${site_packages}/${_name}-${pkgver}.dist-info/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
