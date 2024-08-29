@@ -1,7 +1,7 @@
 pkgbase = tfiletransfer-bin
 	pkgdesc = File transfer tools built with Compose for Desktop. It could send/receive files to/from other devices via LocalNetwork.
 	pkgver = 2.2.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/Tans5/tFileTransfer_desktop
 	arch = x86_64
 	license = Apache-2.0
@@ -14,6 +14,6 @@ pkgbase = tfiletransfer-bin
 	source = tfiletransfer-2.2.1.deb::https://github.com/Tans5/tFileTransfer_desktop/releases/download/v2.2.1/tfiletransfer_2.2.1_amd64.deb
 	source = tfiletransfer.sh
 	sha256sums = 949d4f774f79f03ed44bdca7cf3d6a8bee3d8c1a096e367f2dfc4161dca8d3cd
-	sha256sums = 386f823e2cb5e962ca22010f63a0681cc059c6d77b236fb2650f0694010c0867
+	sha256sums = 8412755a233bf7404a723fd6458c6a5c32a4456addfeb5c9a96600e6556aeda8
 
 pkgname = tfiletransfer-bin

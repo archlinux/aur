@@ -2,7 +2,7 @@
 pkgname=tfiletransfer-bin
 _pkgname=tFileTransfer
 pkgver=2.2.1
-pkgrel=6
+pkgrel=7
 pkgdesc="File transfer tools built with Compose for Desktop. It could send/receive files to/from other devices via LocalNetwork."
 arch=('x86_64')
 url="https://github.com/Tans5/tFileTransfer_desktop"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('949d4f774f79f03ed44bdca7cf3d6a8bee3d8c1a096e367f2dfc4161dca8d3cd'
-            '386f823e2cb5e962ca22010f63a0681cc059c6d77b236fb2650f0694010c0867')
+            '8412755a233bf7404a723fd6458c6a5c32a4456addfeb5c9a96600e6556aeda8')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
@@ -32,7 +32,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -r "${srcdir}/opt" "${pkgdir}"
+    install -Dm755 -d "${pkgdir}/usr/lib"
+    cp -r "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/lib/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
