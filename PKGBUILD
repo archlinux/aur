@@ -1,6 +1,6 @@
 _pkgname=ericw-tools
 pkgname=${_pkgname}-git
-pkgver=2.0.0.alpha8.r9.g04604b18
+pkgver=2.0.0.alpha8.r22.g6c9b681b
 pkgrel=1
 pkgdesc="Quake/Hexen 2 Map compiling tools"
 arch=('x86_64')
@@ -45,7 +45,7 @@ build() {
 }
 
 package() {
-    _files=(qbsp vis light bspinfo bsputil lightpreview)
+    _files=(qbsp vis light bspinfo bsputil maputil lightpreview)
     for _i in "${_files[@]}"
     do
       install -Dm755 build/${_i}/${_i} "$pkgdir"/usr/bin/${_i}
