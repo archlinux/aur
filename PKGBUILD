@@ -7,9 +7,9 @@
 
 pkgname=virtualbox-kvm
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (KVM backend)'
-pkgver=20240617
+pkgver=20240828
 _pkgver=dev-${pkgver}
-_vboxver='7.0.18'
+_vboxver='7.0.20'
 pkgrel=1
 conflicts=('virtualbox' 'virtualbox-ose')
 depends=('curl' 'gcc-libs' 'glibc' 'liblzf' 'libpng' 'libtpms' 'libvpx' 'libx11' 'libxcursor'
@@ -53,8 +53,8 @@ source=("https://download.virtualbox.org/virtualbox/${_vboxver}/VirtualBox-${_vb
         '013-support-building-from-dkms.patch'
         '018-upate-xclient-script.patch'
         '019-libxml-2-12.patch')
-sha256sums=('d999513533631674a024762668de999411d8197060c51e68c5faf0a2c0eea1a5'
-            '9e2bf2b7c47aa5a974fa07bd5e17431fa58d2f7eba53491c1201d39d87d29ef7'
+sha256sums=('5cf5979bef66ebab3fcd495796b215a940e8a07c469d4bc56d064de44222dd02'
+            'f414851b39067b8be6ced44ebf1d727236c1df4418fe66ba2ad0c1edfd0bb0aa'
             '76d98ea062fcad9e5e3fa981d046a6eb12a3e718a296544a68b66f4b65cb56db'
             '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
             'da4c49f6ca94e047e196cdbcba2c321199f4760056ea66e0fbc659353e128c9e'
