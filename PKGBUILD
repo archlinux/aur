@@ -2,7 +2,7 @@
 pkgname=fooyin
 _pkgname=Fooyin
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A customisable music player"
 arch=('x86_64')
 url="https://github.com/ludouzi/fooyin"
@@ -17,6 +17,7 @@ depends=(
     'kdsingleapplication'
     'libgme'
     'libarchive'
+    'libvgm-player-git'
 )
 makedepends=(
     'gcc'
@@ -27,18 +28,18 @@ makedepends=(
     'icu'
     'libopenmpt'
     'libsndfile'
-    'libvgm-player-git'
+    'git'
 )
 optdepends=(
     'sdl2: For the SDL2 audio output plugin'
     'pipewire: For the PipeWire audio output plugin'
 )
 source=(
-    "${pkgname}.git::git+${url}#tag=v${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('ffd9fa11c7aff065894e9b0136c12dbd6d5086f4b2081e384ea7a2dfcbf72124')
+sha256sums=('b1885ac100d19ca49d4676ae9bfe7e5bdef191dee89eae77bd5682086e049231')
 build() {
-    cd "${srcdir}/${pkgname}.git"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     cmake -S . -B build -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_PCH=ON \
@@ -48,7 +49,7 @@ build() {
     cmake --build build -j$(nproc)
 }
 package() {
-    cd "${srcdir}/${pkgname}.git"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     DESTDIR="${pkgdir}" cmake --install build
-    install -Dm644 "${srcdir}/${pkgname}.git/COPYING" "${pkgdir}/usr/share/licenses/fooyin/LICENSE"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/fooyin/LICENSE"
 }
