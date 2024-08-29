@@ -4,7 +4,7 @@ pkgver=0.8.9.2
 pkgrel=1
 pkgdesc="Crystallographic Object-Oriented Toolkit for model building, completion and validation"
 arch=('i686' 'x86_64')
-url="http://lmb.bioch.ox.ac.uk/coot/"
+url="https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/"
 license=('GPL')
 replaces=('coot-data')
 depends=('guile1.8' 'guile1.8-lib' 'guile1.8-gtk' 'guile1.8-gui' 'gtkglext' 'libccp4>=6.5.1-2' 'libclipper>=2.1.20170202-3' 'goocanvas1' 'gsl' 'libgnomecanvas' 'imlib' 'swig'
