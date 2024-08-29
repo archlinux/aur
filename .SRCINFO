@@ -1,0 +1,28 @@
+pkgbase = python-img2unicode-git
+	pkgdesc = A tool to display images as Unicode in your terminal
+	pkgver = 0.1a11.r2.6a94265
+	pkgrel = 1
+	url = https://github.com/matrach/img2unicode
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.7
+	depends = python-numpy1>=1.19
+	depends = python-scikit-image>=0.19
+	depends = python-pillow
+	depends = python-scikit-learn
+	depends = python-click
+	depends = python-six
+	depends = python-matplotlib
+	optdepends = python-n2: for FastGammaRenderer
+	optdepends = cython: for FastGammaRenderer
+	optdepends = python-urwid: for termview
+	provides = python-img2unicode=0.1a11
+	conflicts = python-img2unicode
+	source = img2unicode::git+https://github.com/matrach/img2unicode.git
+	sha256sums = SKIP
+
+pkgname = python-img2unicode-git
