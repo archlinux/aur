@@ -1,6 +1,6 @@
 pkgbase = cmake
 	pkgdesc = A cross-platform open-source make system
-	pkgver = 3.30.2
+	pkgver = 3.30.3
 	pkgrel = 1
 	url = https://www.cmake.org/
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = cmake
 	optdepends = make: for unix Makefile generator
 	optdepends = ninja: for ninja generator
 	optdepends = qt6-base: cmake-gui
-	source = git+https://gitlab.kitware.com/cmake/cmake#tag=v3.30.2?signed
+	source = git+https://gitlab.kitware.com/cmake/cmake#tag=v3.30.3?signed
 	validpgpkeys = CBA23971357C2E6590D9EFD3EC8FEF3A7BFB4EDA
-	sha512sums = f9d65bb348b48ec24eae1a42437aff60c875f0235906663dbf9c1d74363529b9ddd9745c337f8c2fa947e0ab60a7c1ef4beb884962552ea79af8d6f12b7d93a8
+	sha512sums = f32c5b835c25c6b5eec5a533be7ba33c8d16319ca8a3889b2cfb665ccdc05cc6a50fc81546da9c732e74d5e8a7222b74e523a23e5510e5c67e7d40c8df38e5b4
 
 pkgname = cmake
