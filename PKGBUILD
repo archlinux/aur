@@ -4,7 +4,7 @@
 
 pkgname=gtk-engine-rezlooks
 pkgver=0.6
-pkgrel=13
+pkgrel=14
 pkgdesc="Clean looking gtk theme engine based on the cairo-enabled CVS clearlooks engine code."
 arch=('i686' 'x86_64')
 url="https://www.gnome-look.org/p/1080201/"
@@ -22,6 +22,7 @@ prepare() {
 	cd "${srcdir}/rezlooks-${pkgver}"
 	./configure --prefix=/usr --enable-animation
 	sed 's/glib\/gtimer/glib/g' -i src/animation.c
+	patch -p1 < ../../declare-draw-menubar-button.patch
 }
 
 build() {

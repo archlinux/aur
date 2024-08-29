@@ -1,0 +1,15 @@
+diff --git rezlooks-0.6/src/rezlooks_draw.h rezlooks-0.6/src/rezlooks_draw.h
+index 7b265c6..8760d08 100644
+--- rezlooks-0.6/src/rezlooks_draw.h
++++ rezlooks-0.6/src/rezlooks_draw.h
+@@ -149,5 +149,10 @@ void rezlooks_draw_resize_grip      (cairo_t *cr,
+                                        const ResizeGripParameters      *grip,
+                                        int x, int y, int width, int height);
+ 
++void
++rezlooks_draw_menubar_button (cairo_t *cr,
++                        const RezlooksColors *colors,
++                        const WidgetParameters *params,
++                        int x, int y, int width, int height);
+ 
+ #endif /* REZLOOKS_DRAW_H */
