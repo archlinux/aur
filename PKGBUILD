@@ -1,8 +1,8 @@
-# Maintainer: Jonas Wunderlich <aur[at]03j[dot]de>
-# 
-# Based on PKGBUILD from aur package `fatrace`, maintainers/contributors were:
-# Maintiner: Markus Weimar <mail[at]markusweimar[dot]de>
+# Maintainer: Dracomage <dracomage at disroot dot org>
+# Contributor: Jonas Wunderlich <aur[at]03j[dot]de>
+# Contributor: Markus Weimar <mail[at]markusweimar[dot]de>
 # Contributor: Frank Phillips <frankalso[at]gmail[dot]com>
+
 _pkgname=fatrace
 pkgname=${_pkgname}-minimal
 pkgver=0.17.0
@@ -22,6 +22,7 @@ sha256sums=('38f23014be5c2d5f7d40560931ae8bf24161db311d1795631bfaba02845eed90'
 prepare() {
     patch --directory="$_pkgname-$pkgver" --forward --strip=2 --input="${srcdir}/Makefile.patch"
 }
+
 build() {
     cd "$_pkgname-$pkgver"
     make
