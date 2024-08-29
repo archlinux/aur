@@ -1,7 +1,8 @@
 #Maintainer:    HEx_404 < HEx_404x at proton dot me >
 #Contributor:  	ZorinArch < zorinarch at protonmail dot com >
+
 pkgname=abdownloadmanager-bin
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="A Download Manager that speeds up your downloads"
 arch=('x86_64')
@@ -25,7 +26,7 @@ provides=('abdownloadmanager')
 conflicts=('abdownloadmanager')
 options=(!debug)
 source=("https://github.com/amir1376/${pkgname%-bin}/releases/download/v${pkgver}/ABDownloadManager_${pkgver}_linux.deb")
-md5sums=('0cf557606a12656a253e6600ec71cc2d')
+sha256sums=('bbf0989b990f61d5344e11fafe7bfc9f445ec645cbbd32e8c845e0dce98f3d9a')
 
 package() {
     cd "${srcdir}"
