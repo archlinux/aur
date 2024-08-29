@@ -1,7 +1,7 @@
 # Maintainer: Bart Libert <aur@bart.libert.email>
 pkgname=barracudavpn-bin
-pkgver=5.2.2
-pkgrel=2
+pkgver=5.3.5
+pkgrel=1
 pkgdesc="Barracuda VPN Client for Linux - needs original download from Barracuda"
 arch=("i386" "x86_64")
 conflicts=('barracudavpn')
@@ -29,14 +29,14 @@ if [ ! -f ${PWD}/${_pkg_file_name} ]; then
 fi
 
 source=("local://${_pkg_file_name}")
-sha256sums=('91459886ec634eca30321dc975de3208591084b2103801365442ef9c4e38e4ae')
+sha256sums=('24cb39aa0a967c8e079945a718974588e7a34bc6820db679c27fe9acb3e1c098')
 
 options=(debug !strip)
 
 prepare() {
     cd "${srcdir}"
-    ar x barracudavpn_${pkgver}_amd64.deb data.tar.xz
-    tar -xf data.tar.xz
+    ar x barracudavpn_${pkgver}_amd64.deb data.tar.zst
+    tar -xf data.tar.zst
 }
 
 package() {
