@@ -1,0 +1,19 @@
+pkgbase = python-sixelcrop-git
+	pkgdesc = Crop sixel images in sixel-space
+	pkgver = 0.1.7.r1.g011f1c5
+	pkgrel = 1
+	url = https://github.com/joouha/sixelcrop
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python>=3.7
+	provides = python-sixelcrop=0.1.7
+	conflicts = python-sixelcrop
+	source = sixelcrop::git+https://github.com/joouha/sixelcrop.git
+	sha256sums = SKIP
+
+pkgname = python-sixelcrop-git
