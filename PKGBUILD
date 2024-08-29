@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=autocut-git
-pkgver=r86.9c9fdf2
+pkgver=r102.0046fc7
 pkgrel=1
 pkgdesc="Cut videos using a text editor.用文本编辑器剪视频."
 arch=('any')
@@ -13,12 +13,12 @@ provides=(
     "${pkgname%-git}"
 )
 depends=(
-    'python>=3'
     'ffmpeg'
     'python-importlib-metadata'
     'python-setuptools'
     'opencc'
     'python-tqdm'
+    'python-numpy'
 )
 makedepends=(
     'git'
@@ -30,7 +30,8 @@ source=(
 sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    #git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
