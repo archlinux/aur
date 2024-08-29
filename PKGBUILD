@@ -23,10 +23,8 @@ source=(
 	"https://raw.githubusercontent.com/RubyMetric/chsrc/v$pkgver/LICENSE-MIT.txt"
 )
 noextract=()
-sha256sums=(
-	"551a84f3bf267d2ceb039fcd097990a1f862c4a7dbc1fc7910e829b61ae2f571"
-	"cde8b285b49b2552f5fcd0509c89aac9c862ac74df7e6c91d89a0fd49dc686a4"
-)
+sha256sums=('551a84f3bf267d2ceb039fcd097990a1f862c4a7dbc1fc7910e829b61ae2f571'
+            'cde8b285b49b2552f5fcd0509c89aac9c862ac74df7e6c91d89a0fd49dc686a4')
 validpgpkeys=()
 
 package() {
