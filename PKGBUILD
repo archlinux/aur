@@ -3,7 +3,7 @@ pkgname=winghexexplorer-bin
 _pkgname=WingHexExplorer
 _appname="com.wingsummer.${pkgname%-bin}"
 pkgver=1.5.5
-pkgrel=6
+pkgrel=7
 pkgdesc="基于 QT 编写的十六进制编辑器，采用 C++ 进行开发，目的是让 Deepin 上具有强大而免费的十六进制编辑器。"
 arch=('x86_64')
 url="https://github.com/Wing-summer/WingHexExplorer"
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('6d4d3ec3f90e91d3590758597c01eddc1eb1e1dba5e310bbd485f588ffbe9625'
-            'fc77069579e35870d0532f750fbbd1a59244fd3f56ba3dd0e959d09b19317acf')
+            'bce7a3708a81615c6f5f43d0b74166db00ad4e95b847f0d411ff4140fe1319bc')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
@@ -39,8 +39,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     for _icons in 32 64 128 256; do
         install -Dm644 "${srcdir}/opt/${_pkgname}/images/winghexpro${_icons}.png" \
