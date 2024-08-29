@@ -1,0 +1,4 @@
+[pypy3-six]
+source = "github"
+github = "benjaminp/six"
+use_max_tag = "true"
