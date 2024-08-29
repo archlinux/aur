@@ -1,8 +1,8 @@
 # Maintainer: Sebastian Krebs <sebastian[at]krebs[dot]one>
 
 pkgname=phive
-pkgver=0.15.2
-pkgrel=2
+pkgver=0.15.3
+pkgrel=1
 pkgdesc="The Phar Installation and Verification Environment (PHIVE)"
 arch=('any')
 url="https://phar.io/"
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('php')
 source=("https://github.com/phar-io/phive/releases/download/${pkgver}/phive-${pkgver}.phar"
         "https://raw.githubusercontent.com/phar-io/phive/${pkgver}/LICENSE")
-sha256sums=('2bb076753ec5d672f5e2f96a97a0fe7e8e9ec24a439eed00fd29ef942c7905f9'
+sha256sums=('3f4ab8130e83bb62c2a51359e7004df95b60ad07bbd319f4b39d35a48a051e27'
             '0f82a7f0e108b2619484f62ef2e4d4d198edbee328be61c0def642c4b42be9a6')
 
 
