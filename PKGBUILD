@@ -29,7 +29,7 @@ _install_path="/opt/$_install_name"
 package() {
     # extract AppImage
     chmod +x "$_filename"
-    ./$_filename --appimage-extract
+    ./$_filename --appimage-extract &>/dev/null
 
     # copy files to pkgdir
     mkdir -p "$pkgdir$_install_path"
