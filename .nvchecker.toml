@@ -1,0 +1,4 @@
+[pypy3-flit-core]
+source = "github"
+github = "pypa/flit"
+use_max_tag = "true"
