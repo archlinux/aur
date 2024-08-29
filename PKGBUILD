@@ -2,7 +2,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fmedia-bin
 pkgver=1.31
-pkgrel=6
+pkgrel=7
 pkgdesc='Fast media player/recorder/converter'
 arch=('x86_64')
 url='https://stsaz.github.io/fmedia'
@@ -27,7 +27,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('9f2347b0316275b081e98feaaed8b17c4750c2855f85606b79b26f6e62ba8ab0'
-            'ce359b7d74019b4879be96313613f94889d7b8e73e5b6e8bce3bf377dabf9567')
+            '4ad80d04a627a356631a15a9c409ecc75e8a70ba18bc2345d499c4fe400653b9')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
@@ -38,8 +38,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/${pkgname%-bin}-1/"* "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/${pkgname%-bin}-1/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-bin}-0.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${pkgname%-bin}-1/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-bin}-1/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
