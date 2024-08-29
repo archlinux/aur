@@ -1,0 +1,22 @@
+pkgbase = python-teimpy-git
+	pkgdesc = Python library for displaying image on terminal
+	pkgver = 0.1.1.r4.gb91e7a3
+	pkgrel = 1
+	url = https://github.com/ar90n/teimpy
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry>=0.12
+	depends = python>=3.7
+	depends = python-numpy>=1.16
+	depends = python-pillow>=6.0
+	depends = libsixel
+	depends = python-setuptools
+	provides = python-teimpy=0.1.1
+	conflicts = python-teimpy
+	source = teimpy::git+https://github.com/ar90n/teimpy.git
+	sha256sums = SKIP
+
+pkgname = python-teimpy-git
