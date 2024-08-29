@@ -1,6 +1,6 @@
 pkgbase=5db5-channel
 pkgname=('5db5-channel-lv2-bin' '5db5-channel-vst3-bin')
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 arch=('x86_64')
 url="https://audioassault.mx/plugin/Channel551"
