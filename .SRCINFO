@@ -1,6 +1,6 @@
 pkgbase = single-file-cli
 	pkgdesc = CLI tool for saving a faithful copy of a complete web page in a single HTML file
-	pkgver = 2.0.56
+	pkgver = 2.0.57
 	pkgrel = 1
 	url = https://github.com/gildas-lormeau/single-file-cli
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = single-file-cli
 	depends = nodejs
 	optdepends = chromium: for webdriver-chromium backend
 	optdepends = playwright: for playwright-{firefox,chromium} backend
-	source = single-file-cli-2.0.56.tar.gz::https://github.com/gildas-lormeau/single-file-cli/archive/v2.0.56.tar.gz
-	sha256sums = bbf79fe5c03d960f74016122c149907656f0db3a224abf6489d254913caf9eff
+	source = single-file-cli-2.0.57.tar.gz::https://github.com/gildas-lormeau/single-file-cli/archive/v2.0.57.tar.gz
+	sha256sums = 1d1f622b188f0ef36806784b60cced828b093e9b1c7738028d8526bc397dfcc4
 
 pkgname = single-file-cli
