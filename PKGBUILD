@@ -5,7 +5,7 @@ pkgver=2.11.5
 pkgrel=2
 pkgdesc="Free and Open Source AI Image Upscaler (binary release, system Electron)"
 url="https://github.com/upscayl/upscayl"
-license=('AGPL-3.0-or-only')
+license=('AGPL-3.0-only')
 arch=('x86_64')
 depends=('at-spi2-core' 'electron' 'gtk3' 'libnotify' 'libsecret' 'libxss' 'libxtst'
          'nss' 'util-linux-libs' 'vulkan-icd-loader' 'xdg-utils')
