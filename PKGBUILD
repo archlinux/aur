@@ -3,7 +3,6 @@
 # Contributor: Chris Severance <aur.severach aATt spamgourmet dott com>
 # Contributor: Joan Figueras <ffigue at gmail dot com>
 # Contributor: megadriver <megadriver at gmx dot com>
-# Based on hplip from [extra]
 
 pkgname='hplip-minimal'
 pkgver=3.24.4
