@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=imfile
 _pkgname=imFile
-pkgver=1.1.0
-_electronversion=30
+pkgver=1.1.2
+_electronversion=31
 _nodeversion=20
-pkgrel=2
+pkgrel=1
 pkgdesc="A full-featured download manager.Forked from motrix."
 arch=(
     'aarch64'
@@ -34,7 +34,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('5ec9fb0a02b92ad48a5c2cc2be798842d547bb640d00d813744d84b44b3ff7d4'
+sha256sums=('fb6d4e43083a27fca46acf69bb61f1c54ee4620031f9e5b1a76822e2a99783e5'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -65,6 +65,7 @@ build() {
         export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+        export SASS_BINARY_SITE=https://registry.npmmirror.com/mirrors/node-sass
     else
         echo "Your network is OK."
     fi
