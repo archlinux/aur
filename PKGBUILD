@@ -1,7 +1,7 @@
 pkgbase=echoverb
 pkgname=('echoverb-data-bin' 'echoverb-lv2-bin' 'echoverb-vst3-bin')
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 arch=('x86_64')
 url="https://audioassault.mx/plugin/EchoVerb"
 license=('EULA')
