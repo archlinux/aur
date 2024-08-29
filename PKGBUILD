@@ -1,13 +1,14 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=valveresourceformat-git
-pkgver=10.0.r32.g57db363
+pkgver=10.1.r107.g9acf01d
 pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'zlib' 'bash' 'hicolor-icon-theme' 'wine')
-makedepends=('dotnet-sdk' 'git' 'gendesk')
+makedepends=('dotnet-sdk>=8.0.8.sdk401' #dotnet-sdk-bin
+		'git' 'gendesk')
 options=(!strip !debug)
 provides=("${pkgname::-4}")
 conflicts=("${pkgname::-4}")
@@ -25,7 +26,7 @@ build() {
 	dotnet publish -r linux-x64
 
 	cd "$srcdir/$pkgname/GUI"
-	dotnet publish -r win-x64 --sc true -p:EnableWindowsTargeting=true
+	dotnet publish -r win-x64 -p:EnableWindowsTargeting=true
 
 	cd "$srcdir"
 	gendesk -f --pkgname=source2viewer \
