@@ -40,6 +40,6 @@ package() {
 
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -d "${pkgdir}/usr/share/licenses/${_pkgname}"
-  ln -s "${pkgdir}${site_packages}/${_pkgsrc}.dist-info/licenses/LICENSE.txt" \
+  ln -s "${pkgdir}${site_packages}/${_name}-${pkgver%%.r*}.dist-info/licenses/LICENSE.txt" \
     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
