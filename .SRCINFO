@@ -1,0 +1,24 @@
+pkgbase = pikatorrent-git
+	pkgdesc = A modern, open source and electric BitTorrent app for mobile, desktop & server.
+	pkgver = 0.9.0.r143.g4f66e77
+	pkgrel = 1
+	url = https://www.pikatorrent.com/
+	arch = any
+	license = GPL-3.0-only
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = curl
+	depends = electron31
+	depends = nodejs
+	provides = pikatorrent=0.9.0
+	conflicts = pikatorrent
+	options = !emptydirs
+	source = pikatorrent.git::git+https://github.com/G-Ray/pikatorrent.git
+	source = pikatorrent.sh
+	sha256sums = SKIP
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+
+pkgname = pikatorrent-git
