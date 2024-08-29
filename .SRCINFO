@@ -1,9 +1,11 @@
 pkgbase = steamdepotdownloader
 	pkgdesc = Steam depot downloader utilizing the SteamKit2 library.
 	pkgver = 2.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SteamRE/DepotDownloader
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = GPL-2.0-only
 	makedepends = dotnet-sdk>=8.0.0
 	depends = glibc
