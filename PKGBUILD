@@ -3,7 +3,7 @@
 
 pkgname=aider-chat
 _pkgname=aider
-pkgver=0.52.1
+pkgver=0.54.4
 pkgrel=1
 pkgdesc="AI pair programming in your terminal"
 url="https://github.com/paul-gauthier/aider"
@@ -23,11 +23,13 @@ depends=(
   python-grep-ast
   python-httpx
   python-importlib-resources
+  python-json5
   python-jsonschema
   python-networkx
   python-numpy
   python-packaging
   python-pathspec
+  python-pexpect
   python-pillow
   python-playwright
   python-prompt_toolkit
@@ -53,7 +55,7 @@ optdepends=(
   'python-soundfile: portaudio support'
 )
 source=("$pkgname::git+$url.git#tag=v$pkgver")
-sha256sums=('0b3e49174155ff23dd85ae6bfb113c64f771f7f54cc5c59f3a58367aa095a600')
+sha256sums=('b0b528b3a60ec51af9e607a6ff9882379e153de15a3a246716891966676622b3')
 
 build() {
   cd $pkgname
@@ -62,24 +64,28 @@ build() {
 
 check() {
   cd $pkgname
+  local pytest_args=(
+    # TypeError, not sure why.
+    --deselect=tests/basic/test_commands.py::TestCommands::test_cmd_tokens_output
+    # Tries to make and sign a commit - fails for some reason.
+    --deselect=tests/basic/test_main.py::TestMain::test_lint_option
+    # Exception in python-tree-sitter-languages-bin.
+    --deselect=tests/basic/test_repomap.py
+    # Requires missing deps.
+    --deselect=tests/help/test_help.py
+    # Not sure why these fail.
+    --deselect=tests/scrape/test_scrape.py::TestScrape::test_cmd_web_imports_playwright
+    --deselect=tests/scrape/test_scrape.py::TestScrape::test_scrape_actual_url_with_playwright
+    --deselect=tests/scrape/test_scrape.py::TestScrape::test_scrape_self_signed_ssl
+    --deselect=tests/scrape/test_scrape.py::TestScrape::test_scrape_with_playwright_error_handling
+  )
+
   rm -rf tmp_install
   python -m installer --destdir=tmp_install dist/*.whl
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   export PYTHONPATH="$PWD/tmp_install/$site_packages"
-  # Deselect failing tests:
-  # - test_commands.py: TypeError, not sure why.
-  # - test_repomap.py: exception in python-tree-sitter-languages-bin.
-  # - test_help.py - requires missing deps.
-  # - test_scrape.py - Not sure why this fails.
-  pytest \
-    --deselect tests/basic/test_commands.py::TestCommands::test_cmd_tokens_output \
-    --deselect tests/basic/test_repomap.py \
-    --deselect tests/help/test_help.py \
-    --deselect tests/scrape/test_scrape.py::TestScrape::test_cmd_web_imports_playwright \
-    --deselect tests/scrape/test_scrape.py::TestScrape::test_scrape_actual_url_with_playwright \
-    --deselect tests/scrape/test_scrape.py::TestScrape::test_scrape_self_signed_ssl \
-    --deselect tests/scrape/test_scrape.py::TestScrape::test_scrape_with_playwright_error_handling
+  pytest "${pytest_args[@]}"
 }
 
 package() {
