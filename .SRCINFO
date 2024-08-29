@@ -1,7 +1,7 @@
 pkgbase = lidm
 	pkgdesc = A fully colorful cutomizable TUI display manager made in C. (build latest tag)
-	pkgver = 0.0.1
-	pkgrel = 5
+	pkgver = 0.0.2
+	pkgrel = 1
 	url = https://github.com/javalsai/lidm
 	arch = any
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = lidm
 	makedepends = make
 	makedepends = gcc
 	depends = pam
-	source = lidm::git+https://github.com/javalsai/lidm
-	sha256sums = SKIP
+	source = tarball.tar.gz::https://github.com/javalsai/lidm/archive/refs/tags/0.0.2.tar.gz
+	sha256sums = adf2d196969f6a2df8ceeb3564e1d51cc377f0deaeca31fee0bace58a3d2df2d
 
 pkgname = lidm
