@@ -4,7 +4,7 @@
 # Contributor: fordprefect <fordprefect@dukun.de>
 
 _pkgname=distr
-_pkgver=2.9.3
+_pkgver=2.9.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-svunit
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('516d41cdd753fb0a200d0122332ed9b8')
-b2sums=('f505a8da163f8bf76a9b42614911e132e94f21caf3a9359d87e008fe7ad5f5e9934ceb70b114dd85fa3149322e9824b9c891c7aa2b8d0c6b102c5641595f86e6')
+md5sums=('bc9e8b5f0f19f62f47dcf2cd1236729d')
+b2sums=('eb1b830ebc4a5d0aa80201c6ba9c36bd5d148f3d3262f413a094feda65b89d8485d8f25db6efc90a59f3e6a0096dfe67467e935b046c74b03c52ed132c10f809')
 
 build() {
   mkdir build
