@@ -10,7 +10,7 @@ pkgdesc="A tool to display images as Unicode in your terminal"
 arch=('any')
 url="https://github.com/matrach/${_name}"
 license=('MIT')
-makedepends=('python-build' 'python-installer' 'python-wheel'
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel'
              'python-setuptools')
 depends=('python>=3.7' 'python-numpy1>=1.19' 'python-scikit-image>=0.19'
          'python-pillow' 'python-scikit-learn' 'python-click' 'python-six'
