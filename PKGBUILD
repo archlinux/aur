@@ -4,12 +4,12 @@
 _gemname=evil-winrm
 pkgname=ruby-$_gemname
 pkgver=3.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Evil-WinRM'
 arch=(any)
 url='https://github.com/Hackplayers/evil-winrm'
 license=(LGPL-3.0)
-depends=(ruby ruby-winrm ruby-winrm-fs ruby-stringio)
+depends=(ruby ruby-winrm ruby-winrm-fs ruby-stringio ruby-nori)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)

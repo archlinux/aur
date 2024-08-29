@@ -1,7 +1,7 @@
 pkgbase = ruby-evil-winrm
 	pkgdesc = Evil-WinRM
 	pkgver = 3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Hackplayers/evil-winrm
 	arch = any
 	license = LGPL-3.0
@@ -9,6 +9,7 @@ pkgbase = ruby-evil-winrm
 	depends = ruby-winrm
 	depends = ruby-winrm-fs
 	depends = ruby-stringio
+	depends = ruby-nori
 	noextract = evil-winrm-3.5.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/evil-winrm-3.5.gem
