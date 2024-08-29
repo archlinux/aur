@@ -1,6 +1,6 @@
 pkgbase = r-rsweep
 	pkgdesc = Functions to creation of low dimensional comparative matrices of Amino Acid Sequence occurrences
-	pkgver = 1.16.0
+	pkgver = 1.16.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rSWeeP
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = r-rsweep
 	optdepends = r-biostrings
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rSWeeP_1.16.0.tar.gz
-	md5sums = dfe965b29c7e198551077a112a2c5d82
-	b2sums = 0ff589e6114fca75c3dbe197c237d9f86e66cd73807206f5ebea23662a5e9ae2c594a888ac157e04f2b66cbac1304c3beece81c44b1dc543634e3edcb97af1bc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rSWeeP_1.16.2.tar.gz
+	md5sums = 18cf9743d6a6e6deeb529ba896bf6790
+	b2sums = d39d7c5ec6197379d5e5cf0b3b181c4301677c28a7037d729e9602966218e63408841247fa54ae1852be191376d7bc56705c5885377339785a9b8f798b7eea8c
 
 pkgname = r-rsweep

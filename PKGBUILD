@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rSWeeP
-_pkgver=1.16.0
+_pkgver=1.16.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dfe965b29c7e198551077a112a2c5d82')
-b2sums=('0ff589e6114fca75c3dbe197c237d9f86e66cd73807206f5ebea23662a5e9ae2c594a888ac157e04f2b66cbac1304c3beece81c44b1dc543634e3edcb97af1bc')
+md5sums=('18cf9743d6a6e6deeb529ba896bf6790')
+b2sums=('d39d7c5ec6197379d5e5cf0b3b181c4301677c28a7037d729e9602966218e63408841247fa54ae1852be191376d7bc56705c5885377339785a9b8f798b7eea8c')
 
 build() {
   mkdir build
