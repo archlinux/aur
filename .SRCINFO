@@ -1,0 +1,23 @@
+pkgbase = steamdepotdownloader-bin
+	pkgdesc = Steam depot downloader utilizing the SteamKit2 library.
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = https://github.com/SteamRE/DepotDownloader
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL-2.0-only
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	provides = steamdepotdownloader
+	conflicts = steamdepotdownloader
+	options = !strip
+	source_x86_64 = https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownloader_2.7.1/DepotDownloader-linux-x64.zip
+	sha256sums_x86_64 = 6b19fe7b18c98b9ffe5ec5f6c5a1c3721d2f8515fdf64e67ba5905244edc1f2e
+	source_armv7h = https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownloader_2.7.1/DepotDownloader-linux-arm.zip
+	sha256sums_armv7h = bd0a632a84d53f9a09d3e950d7f1d5952b1b8dd8a6c28873eb5c1b570a662ba8
+	source_aarch64 = https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownloader_2.7.1/DepotDownloader-linux-arm64.zip
+	sha256sums_aarch64 = b6f66f81a1954b7e3cc3ecfdfed771d7132f0cb498e884736a21cbdf12f68447
+
+pkgname = steamdepotdownloader-bin
