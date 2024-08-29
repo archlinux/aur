@@ -33,17 +33,17 @@ source=(
 )
 sha256sums=('505769645eed49ed19d6fd39dd5a1c8fd5b9bef8f262b34a45fbb03d7265e66d'
             '7514140772df5ff1a5cff21685af45c7b50f320fee680e134553d053e40e6ccb'
-            'e76ef1cda2fe52d55bc4194292fd8df688bfba37c379e66ad6fa7502f40bbc19')
+            'f31faceaca7820e34aa0a349fe19c18b135ce3b93be39555fe884527edc7759a')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --exec="${pkgname%-bin}" --categories="Utility" --name="${_pkgname}"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --exec="${pkgname%-bin}" --categories="Utility" --name="${_pkgname}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt"
-    cp -r "${srcdir}/${pkgname%-bin}" "${pkgdir}/opt"
+    install -Dm755 -d "${pkgdir}/usr/lib"
+    cp -r "${srcdir}/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-bin}/res/dict.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

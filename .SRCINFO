@@ -27,6 +27,6 @@ pkgbase = mydict-bin
 	source = mydict.sh
 	sha256sums = 505769645eed49ed19d6fd39dd5a1c8fd5b9bef8f262b34a45fbb03d7265e66d
 	sha256sums = 7514140772df5ff1a5cff21685af45c7b50f320fee680e134553d053e40e6ccb
-	sha256sums = e76ef1cda2fe52d55bc4194292fd8df688bfba37c379e66ad6fa7502f40bbc19
+	sha256sums = f31faceaca7820e34aa0a349fe19c18b135ce3b93be39555fe884527edc7759a
 
 pkgname = mydict-bin
