@@ -7,8 +7,8 @@ arch=('i686' 'x86_64')
 url="https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/"
 license=('GPL')
 replaces=('coot-data')
-depends=('guile1.8' 'guile1.8-lib' 'guile1.8-gtk' 'guile1.8-gui' 'gtkglext' 'libccp4>=6.5.1-2' 'libclipper>=2.1.20170202-3' 'goocanvas1' 'gsl' 'libgnomecanvas' 'imlib' 'swig'
-         'freeglut' 'libgl' 'gtk2' 'cairo' 'libssm>=1.4.0-2' 'zlib' 'curl' 'python2' 'pygtk' 'gtkglarea' 'which' 'bc' 'sqlite' 'rdkit-python2<=2017_09_3-2' 'mmdb2>=2.0.12-4')
+depends=('guile' 'gtkglext' 'libccp4>=6.5.1-2' 'libclipper>=2.1.20170202-3' 'gsl' 'imlib' 'swig'
+         'freeglut' 'libgl' 'gtk4' 'cairo' 'libssm>=1.4.0-2' 'zlib' 'curl' 'python' 'gtkglarea' 'which' 'bc' 'sqlite' 'rdkit' 'mmdb2>=2.0.12-4')
 source=($pkgname-$pkgver.tar.gz::https://github.com/pemsley/$pkgname/archive/Release-$pkgver-fix.tar.gz
         https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/dependencies/refmac-monomer-library.tar.gz
         https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/dependencies/reference-structures.tar.gz
@@ -25,7 +25,7 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/pemsley/$pkgname/archive/Rel
         coot.in
         )
 
-sha256sums=('d8dcf9184ab91de225eb3cb91ef83e057b241e27a6d21f585f2c25b35da54e4f'
+sha256sums=('3cc3ba08dd0221e655669ff3ef6858713d11959478a48278afb055337b8846d2'
             '03562eec612103a48bd114cfe0d171943e88f94b84610d16d542cda138e5f36b'
             '44db38506f0f90c097d4855ad81a82a36b49cd1e3ffe7d6ee4728b15109e281a'
             '2babfbc3cb798868d9e22f19ee49d12981fac35e3dfba2d8f7318716f59f673c'
