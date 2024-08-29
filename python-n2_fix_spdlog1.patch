@@ -1,0 +1,22 @@
+--- a/include/n2/hnsw_build.h
++++ b/include/n2/hnsw_build.h
+@@ -17,6 +17,7 @@
+ #include <queue>
+ 
+ #include "spdlog/spdlog.h"
++#include "spdlog/sinks/stdout_color_sinks.h"
+ 
+ #include "common.h"
+ #include "distance.h"
+
+--- a/src/hnsw_build.cc
++++ b/src/hnsw_build.cc
+@@ -235,7 +235,7 @@
+ HnswBuildImpl<DistFuncType>::HnswBuildImpl(int dim, DistanceKind metric) : HnswBuild(dim, metric) {
+     logger_ = spdlog::get("n2");
+     if (logger_ == nullptr) {
+-        logger_ = spdlog::stdout_logger_mt("n2");
++        logger_ = spdlog::stdout_color_mt("n2");
+     }
+ }
+ 

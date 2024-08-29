@@ -1,0 +1,31 @@
+--- a/setup.py
++++ b/setup.py
+@@ -68,8 +68,8 @@
+         set_binary_mac()
+ 
+     libraries = []
+-    extra_link_args = []
+-    extra_compile_args = ['-std=c++14', '-O3', '-fPIC', '-march=native', '-DNDEBUG', '-DBOOST_DISABLE_ASSERTS']
++    extra_link_args = ['-lboost_system', '-lspdlog', '-lfmt']
++    extra_compile_args = ['-std=c++14', '-DNDEBUG', '-DBOOST_DISABLE_ASSERTS']
+     extra_link_args.append('-fopenmp')
+     extra_compile_args.append('-fopenmp')
+ 
+@@ -79,8 +79,15 @@
+ 
+     boost_dirs = ['assert', 'bind', 'concept_check', 'config', 'core', 'detail', 'heap', 'iterator', 'mp11', 'mpl',
+                   'parameter', 'preprocessor', 'static_assert', 'throw_exception', 'type_traits', 'utility']
+-    include_dirs = ['./include/', './third_party/spdlog/include/', './third_party/eigen']
+-    include_dirs.extend(['third_party/boost/' + b + '/include/' for b in boost_dirs])
++    include_dirs = [
++            './include/',
++            '/usr/include/',
++            '/usr/include/boost/',
++            '/usr/include/eigen3',
++            '/usr/include/spdlog',
++            '/usr/include/fmt',            
++        ]
++    include_dirs.extend(['/usr/include/boost/' + b for b in boost_dirs])
+ 
+     return Extension(name='n2',
+                      sources=sources,
