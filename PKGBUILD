@@ -2,9 +2,9 @@
 pkgname=quicknote-bin
 pkgver=2.0.3
 _electronversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="Helps to paste some random text or take some notes right from your taskbar!"
-arch=('any')
+arch=('x86_64')
 url="https://srilakshmikanthanp.github.io/quicknote/"
 _ghurl="https://github.com/srilakshmikanthanp/quicknote"
 license=('MIT')
