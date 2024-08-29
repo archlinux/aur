@@ -2,7 +2,7 @@
 _pkgname=sshuttle_gui
 pkgname="${_pkgname//_/-}-bin"
 pkgver=0.2
-pkgrel=6
+pkgrel=7
 pkgdesc="GUI for SShuttle - Transparent proxy server that works as a poor man's VPN. Forwards over ssh."
 arch=('x86_64')
 url="https://github.com/AKotov-dev/SShuttle-GUI"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('9fccc06d6a60b369371fd4a204dca0cd4efc05e060682773815a3e48cc786bb5'
-            '55b0c886747be51fb73201b63809f4d9849d3e7f8f7e1c4c2276755c44b70145')
+            '62866488605fd131f9714133216855110030a52d66b54c06445e09e30825f5ef')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
@@ -29,8 +29,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt"
-    cp -r "${srcdir}/usr/share/${pkgname%-bin}" "${pkgdir}/opt"
+    install -Dm755 -d "${pkgdir}/usr/lib"
+    cp -r "${srcdir}/usr/share/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/icons/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/usr/share/polkit-1/actions/${pkgname%-bin}.policy" -t "${pkgdir}/usr/share/polkit-1/actions"
