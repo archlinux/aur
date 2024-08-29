@@ -23,6 +23,10 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  git -C "${srcdir}/${_pkgsrc}" clean -dfx
+}
+
 build() {
   cd "${srcdir}/${_pkgsrc}"
   python -m build --wheel --no-isolation
