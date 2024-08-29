@@ -1,0 +1,19 @@
+pkgbase = python-picotui-git
+	pkgdesc = Lightweight, pure-Python Text User Interface (TUI) widget toolkit
+	pkgver = 1.2.1.r2.64a58be
+	pkgrel = 1
+	url = https://github.com/pfalcon/picotui
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-picotui=1.2.1
+	conflicts = python-picotui
+	source = picotui::git+https://github.com/pfalcon/picotui.git
+	sha256sums = SKIP
+
+pkgname = python-picotui-git
