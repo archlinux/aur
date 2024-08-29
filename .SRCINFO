@@ -1,6 +1,6 @@
 pkgbase = woterm-bin
 	pkgdesc = 支持常见的主流通迅协议SSH1/SSH2/SFTP/TELNET/RLOGIN/RDP/VNC/SHELL/SERIALPORT/TCP/UDP的一个跨平台工具.
-	pkgver = 9.30.4
+	pkgver = 10.1.1
 	pkgrel = 1
 	url = http://woterm.com/
 	arch = x86_64
@@ -16,12 +16,12 @@ pkgbase = woterm-bin
 	depends = qt5-remoteobjects
 	depends = qt6-charts
 	depends = qt6-declarative
-	provides = woterm=9.30.4
+	provides = woterm=10.1.1
 	conflicts = woterm
 	options = !strip
-	source = woterm-9.30.4.tar.gz::https://down.woterm.com/linux/woterm-linux-x86_64-v9.30.4-202403031942.tar.gz
+	source = woterm-10.1.1.tar.gz::https://down.woterm.com/linux/woterm-linux-x86_64-v10.1.1-202407202117.tar.gz
 	source = woterm.sh
-	sha256sums = 7448cf1be61436cba1fcd2e4213d4ef2e7545b0279c595bec86155eceddb618b
-	sha256sums = 4147d53c8a3b51d7f1acab9fc8b9a94ca377c54c7fabf18d81dfe2b1884f6fe3
+	sha256sums = 74061e28c9aba459f214856284223cb16f542db868d21beb7d73a246b37c7a42
+	sha256sums = 2ffd75f3b13e9ea201de646ecd8d807cd9dec00459b8a8f1591d1fbb9423bbd8
 
 pkgname = woterm-bin
