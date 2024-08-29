@@ -1,17 +1,17 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgName="localDimFinder"
-_pkgname="${_pkgName,,}"
+_binname="localDimFinder"
+_pkgname="${_binname,,}"
 pkgname="${_pkgname}-bin"
 pkgver=1.0
 pkgrel=3
 pkgdesc="A Bertini module for computing local dimensions of algebraic sets"
 arch=('x86_64' 'i686')
-url="https://bertini.nd.edu/${_pkgName}/index.html"
+url="https://bertini.nd.edu/LocalDimFinder/index.html"
 _url="https://bertini.nd.edu/LocalDimFinder"
 license=('custom:Bertini license')
-provides=("${_pkgname}" "${_pkgName}")
-conflicts=("${_pkgname}" "${_pkgName}")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source=("https://bertini.nd.edu/Bertini_License"
         "EXAMPLES.zip::${_url}/MechanismMobilityExamples.zip")
@@ -39,15 +39,15 @@ prepare() {
 
 package() {
   cd "${srcdir}"
-  install -Dm644 "Bertini_License" "${pkgdir}/usr/share/licenses/${_pkgName}/Bertini_License"
+  install -Dm644 "Bertini_License" "${pkgdir}/usr/share/licenses/${_binname}/Bertini_License"
 
-  find "examples" -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/${_pkgName}/{}" \;
+  find "examples" -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/${_binname}/{}" \;
 
   cd "${_pkgsrc}-${CARCH}"
-  install -Dm755 "${_pkgName}"        "${pkgdir}/usr/bin/${_pkgName}"
-  install -Dm644 "README"             "${pkgdir}/usr/share/doc/${_pkgName}/README"
-  install -Dm644 "LocalDimFinder.pdf" "${pkgdir}/usr/share/doc/${_pkgName}/MANUAL.pdf"
+  install -Dm755 "${_binname}"        "${pkgdir}/usr/bin/${_binname}"
+  install -Dm644 "README"             "${pkgdir}/usr/share/doc/${_binname}/README"
+  install -Dm644 "LocalDimFinder.pdf" "${pkgdir}/usr/share/doc/${_binname}/MANUAL.pdf"
 
-  install -Dm644 "inputCircleLine"        "${pkgdir}/usr/share/doc/${_pkgName}/examples/inputCircleLine"
-  install -Dm644 "test_points_CircleLine" "${pkgdir}/usr/share/doc/${_pkgName}/examples/test_pointsCircleLine"
+  install -Dm644 "inputCircleLine"        "${pkgdir}/usr/share/doc/${_binname}/examples/inputCircleLine"
+  install -Dm644 "test_points_CircleLine" "${pkgdir}/usr/share/doc/${_binname}/examples/test_pointsCircleLine"
 }
