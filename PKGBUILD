@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.2.0.r111.gc2ddfe51
+pkgver=0.2.0.r204.gcf706f8c
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
 	'glibc'
 	'glslang>=14.2'
 	'hicolor-icon-theme'
-	'sdl3' # 'sdl3>=3.0.0.r5769'
+	'sdl3>=1:3.0.0.r5890'
 	'zlib-ng>=2.1.7'
 )
 makedepends=(
@@ -72,8 +72,6 @@ prepare() {
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
 	git config submodule.externals/zydis.url ../zydis
 	git -c protocol.file.allow=always submodule update
-	# https://github.com/shadps4-emu/shadPS4/issues/486
-	sed -i '/SDL_init/i #include <SDL3/SDL_events.h>' src/audio_core/sdl_audio.cpp
 }
 
 build() {
