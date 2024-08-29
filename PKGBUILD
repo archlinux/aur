@@ -2,19 +2,19 @@
 # Maintainer: tippfehlr <tippfehlr at tippfehlr dot eu>
 
 pkgname=autorestic
-pkgver=1.8.2
-pkgrel=2
+pkgver=1.8.3
+pkgrel=1
 pkgdesc='Config driven, easy backup cli for restic'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/cupcakearmy/$pkgname"
 license=('Apache-2.0')
 depends=('restic')
-makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('847a661bcf8bfdf282eca0dfd677293ad932726d357899c15a85b9238c4ea3da')
+makedepends=('go' 'git')
+source=("git+$url#tag=v$pkgver")
+sha512sums=('fe3d21c522d39b0b98698e8868acfef061ea84668c3c5e5a97d4f377644441318b53d1e1d2d1e90c6ea8ccc6bf181060605619d0f6ed31bf6513abd20d001ca4')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   mkdir -p build/
 
   # download go modules so build() works offline
@@ -22,7 +22,7 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   install -Dm755 "build/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   install -Dm644 "build/bash_completion" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
