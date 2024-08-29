@@ -1,0 +1,10 @@
+pkgbase = hyperfluent-grub-theme-nixos
+	pkgdesc = NixOS hyperfluent grub theme.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Coopydood/HyperFluent-GRUB-Theme
+	arch = any
+	source = git+https://github.com/eugenenoble2005/hyperfluent-grub-theme
+	sha256sums = SKIP
+
+pkgname = hyperfluent-grub-theme-nixos
