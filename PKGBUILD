@@ -5,21 +5,19 @@
 
 _target=riscv64-linux-uclibc
 pkgname=$_target-binutils
-pkgver=2.39
+pkgver=2.43
 pkgrel=1
 pkgdesc='Assemble and manipulate binary and object files for 32-bit and 64-bit RISC-V'
 arch=(x86_64)
 url='https://gnu.org/software/binutils/'
-license=(GPL)
+license=(GPL-2.0-or-later GPL-3.0-or-later LGPL-2.0-or-later LGPL-3.0-or-later GFDL-1.3 FSFAP)
 groups=(risc-v)
 depends=(libelf)
 makedepends=(setconf)
 source=("https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz"
-        "https://ftp.gnu.org/gnu/binutils/binutils-2.33.1.tar.xz"
-        "git+https://github.com/floatious/elf2flt.git#commit=a8c9f650b82109abf7aa730f298ea5182ed62613")
-sha512sums=("68e038f339a8c21faa19a57bbc447a51c817f47c2e06d740847c6e9cc3396c025d35d5369fa8c3f8b70414757c89f0e577939ddc0d70f283182504920f53b0a3"
-            "b7a6767c6c7ca6b5cafa7080e6820b7bb3a53b7148348c438d99905defbdf0d30c9744a484ee01c9441a8153901808513366b15ba9533e20c9673c262ade36ac"
-            "SKIP")
+        "git+https://github.com/uclinux-dev/elf2flt.git#commit=13dbbb85982c18f0a1f356a97eb315a14361f389")
+sha512sums=('93e063163e54d6a6ee2bd48dc754270bf757a3635b49a702ed6b310e929e94063958512d191e66beaf44275f7ea60865dbde138b624626739679fcc306b133bb'
+            'ec483264b5b9dbd7e9b46b9cf2af77cc5e5d85000e21fbd36209ceaba29316b47e0f3688f6b163d2907394c0b2e767e419d812ef0c8d4410d7a41ab17b276636')
 
 prepare() {
   setconf binutils-$pkgver/libiberty/configure ac_cpp "'\$CPP \$CPPFLAGS -O2'"
@@ -31,33 +29,30 @@ build() {
   unset CPPFLAGS
   ./configure \
     --disable-nls \
-    --enable-deterministic-archives \
+	--disable-gprofng \
+	--enable-deterministic-archives \
+    --enable-colored-disassembly \
+    --enable-default-execstack=no \
     --enable-gold \
     --enable-ld=default \
+    --enable-new-dtags \
     --enable-multilib \
     --enable-plugins \
     --prefix=/usr \
+	--sysconfdir="${pkgdir}"/etc \
     --target=$_target \
     --with-gnu-as \
     --with-gnu-ld \
     --with-sysroot=/usr/$_target \
     --with-system-zlib
   make -O
-  binutilsdir="binutils-2.33.1"
-  cd ../"$binutilsdir"
-  ./configure \
-		--disable-werror \
-		--disable-nls \
-		--without-zlib \
-		--disable-shared \
-		--enable-static \
-		--disable-plugins \
-    --target=$_target
   make all-{libiberty,bfd}
   cd ../
+  # in case elf2flat doesn't support the new binutils, check how the first version did it
+  binutilsdir="binutils-2.43"
   e2futils="binutils-elf2flt"
   mkdir -p "${e2futils}"/{bfd,include/elf,libiberty}
-  cp "${binutilsdir}"/bfd/{bfd,bfd_stdint}.h "${binutilsdir}/bfd/libbfd.a" "${e2futils}"/bfd/
+  cp "${binutilsdir}"/bfd/bfd.h "${binutilsdir}/bfd/.libs/libbfd.a" "${e2futils}"/bfd/
   cp "${binutilsdir}/libiberty/libiberty.a" "${e2futils}"/libiberty/
   cp "${binutilsdir}"/include/{ansidecl,filenames,hashtab,libiberty,symcat}.h "${e2futils}"/include/
   cp "${binutilsdir}"/include/diagnostics.h "${e2futils}"/include/
@@ -80,7 +75,6 @@ package() {
 
   # Remove info documents that conflict with host version
   rm -r "$pkgdir/usr/share/info"
-
   rm "$pkgdir"/usr/lib/bfd-plugins/libdep.so
 
   # Install elf2flt
