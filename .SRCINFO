@@ -1,27 +1,23 @@
 pkgbase = paper-soccer-git
 	pkgdesc = A networked version of paper soccer game in modern console
 	pkgver = 1.0.1.r0.gdcaeb4e
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/MateuszJanda/paper-soccer
-	arch = any
+	arch = x86_64
 	license = MIT
-	makedepends = git
-	makedepends = cmake
-	makedepends = make
-	makedepends = gcc
-	makedepends = protobuf
+	checkdepends = gtest
+	checkdepends = gmock
 	makedepends = boost
-	makedepends = ncurses
-	depends = glibc
-	depends = gcc-libs
-	depends = protobuf
+	makedepends = cmake>=3.18
+	makedepends = git
 	depends = boost-libs
+	depends = gcc-libs
+	depends = glibc
 	depends = ncurses
+	depends = protobuf
 	provides = paper-soccer=1.0.1
 	conflicts = paper-soccer
 	source = paper-soccer::git+https://github.com/MateuszJanda/paper-soccer.git
-	source = googletest::git+https://github.com/google/googletest.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = paper-soccer-git
