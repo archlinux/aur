@@ -3,7 +3,7 @@
 _pkgname=hplip
 pkgname="${_pkgname}-lite"
 pkgver=3.24.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Only Print drivers for HP DeskJet, OfficeJet, Photosmart, Business Inkjet and some LaserJet"
 arch=('x86_64')
 url="https://hplipopensource.com"
