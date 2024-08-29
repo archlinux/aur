@@ -1,9 +1,9 @@
 pkgbase = envman
 	pkgdesc = Manage Environment Variable collections
 	pkgver = 2.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bitrise-io/envman
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc

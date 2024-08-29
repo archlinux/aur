@@ -1,22 +1,22 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 # Contributor: Jni <jni.viens at protonmail dot com>
 
 pkgname="envman"
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage Environment Variable collections"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/bitrise-io/${pkgname}"
 license=('MIT')
-depends=('glibc')
 makedepends=('go')
+depends=('glibc')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('842e54bebfcfc64b01888915365f67d8a3202653048d25d1b52fdb71d168c3cf')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  [ -d "build" ] || mkdir "build"
+  mkdir -p "build"
 }
 
 build() {
@@ -29,9 +29,14 @@ build() {
   go build -o "build/${pkgname}" .
 }
 
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  go test ./... 
+}
+
 package() {
   cd "${srcdir}/${_pkgsrc}"
   install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
