@@ -3,7 +3,7 @@ pkgname=lunarcalendar-bin
 _pkgname=LunarCalendar
 _appname="org.Rabbit.${_pkgname}"
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Chinese Lunar Date Control Written in Qt.用Qt写的中国农历日期控件"
 arch=("x86_64")
 url="https://github.com/KangLin/LunarCalendar"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('77900672587d8e49d83f95505f9f0c22473ed3b0136e8229b891d6086a5a785b'
-            '983170eeaecf2593890015b2d727efa56031118220f1935640a0c7a265fcfbb0')
+            '3ac77a047f07978fd855651f1beaab0711514d215f76b7b06fe35a71e0759812')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}App-v${pkgver}|g" \
@@ -31,9 +31,9 @@ build() {
         -i "${srcdir}/opt/${_pkgname}/share/applications/${_appname}.desktop"
 }
 package() {
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/opt/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/opt/${_pkgname}/share/pixmaps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }
