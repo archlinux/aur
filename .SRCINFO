@@ -1,13 +1,13 @@
 pkgbase = cloudflare-dynamic-dns
 	pkgdesc = Updates AAAA records at Cloudflare according to the current IPv6 address
-	pkgver = 4.3.0
+	pkgver = 4.3.2
 	pkgrel = 1
 	url = https://github.com/zebradil/cloudflare-dynamic-dns
 	arch = any
 	license = MIT
 	makedepends = go
 	provides = cloudflare-dynamic-dns
-	source = cloudflare-dynamic-dns-4.3.0::https://github.com/zebradil/cloudflare-dynamic-dns/archive/4.3.0.tar.gz
-	sha256sums = caa9f909923f30c5063bbfa476e27bbb70540fcc4e08eb3c8b347e32b1fe66bc
+	source = cloudflare-dynamic-dns-4.3.2::https://github.com/zebradil/cloudflare-dynamic-dns/archive/4.3.2.tar.gz
+	sha256sums = 1a490303d65011e294fa74545b386358027eaae3ab46404138ec522fde5067e4
 
 pkgname = cloudflare-dynamic-dns
