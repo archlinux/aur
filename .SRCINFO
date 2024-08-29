@@ -1,0 +1,21 @@
+pkgbase = python-mtable-git
+	pkgdesc = Format data to reStructedText and Markup Table
+	pkgver = 0.1.22.r1.b893750
+	pkgrel = 1
+	url = https://github.com/liuyug/mtable
+	arch = any
+	license = custom:BSD-?-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-wcwidth
+	depends = python-beautifulsoup4
+	depends = python-pandas
+	provides = python-mtable=0.1.22
+	conflicts = python-mtable
+	source = mtable::git+https://github.com/liuyug/mtable.git
+	sha256sums = SKIP
+
+pkgname = python-mtable-git
