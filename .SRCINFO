@@ -1,7 +1,7 @@
 pkgbase = fcitx5-hazkey-bin
 	pkgdesc = Japanese input method for fcitx5, powered by azooKey engine
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/7ka-Hiira/fcitx5-hazkey
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,6 @@ pkgbase = fcitx5-hazkey-bin
 	provides = fcitx5-hazkey
 	conflicts = fcitx5-hazkey
 	conflicts = fcitx5-hazkey-git
-	options = !strip
 	source = https://github.com/7ka-Hiira/fcitx5-hazkey/releases/download/0.0.6/fcitx5-hazkey-0.0.6-x86_64.tar.gz
 	source = LICENSE
 	sha256sums = 3c980555d570b63584cf09383436753e7dc87c7b87c7a770761d633ca1cab49b
