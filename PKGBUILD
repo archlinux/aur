@@ -3,7 +3,7 @@
 
 pkgname=i3lock-color
 pkgver=2.13.c.5
-pkgrel=2
+pkgrel=3
 pkgdesc="The world's most popular non-default computer lockscreen."
 arch=('i686' 'x86_64')
 url="https://github.com/Raymo111/i3lock-color"
@@ -12,6 +12,7 @@ depends=('xcb-util-image' 'pam' 'libev' 'cairo' 'libxkbcommon-x11'
          'libjpeg-turbo' 'xcb-util-xrm' 'pkgconf')
 provides=('i3lock' 'i3lock-color')
 conflicts=('i3lock' 'i3lock-color-git')
+backup=('etc/pam.d/i3lock')
 source=("${url}/archive/$pkgver.tar.gz")
 sha256sums=('46f15cbbf339873266e014f70b5e1ec02177f0295302b615a7bd85bef40d8ad2')
 
