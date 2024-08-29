@@ -1,15 +1,15 @@
 pkgbase = gsshvnc
 	pkgdesc = A simple VNC client with built-in SSH tunneling
-	pkgver = 0.95
+	pkgver = 0.96
 	pkgrel = 1
 	url = https://github.com/zrax/gsshvnc
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = meson
 	depends = gtkmm3
 	depends = gtk-vnc
 	depends = libssh
-	source = https://github.com/zrax/gsshvnc/archive/v0.95.tar.gz
-	sha256sums = 5de4c3f3f771fab96d29063f8b0418271e7294ff093ababee8d88c81087dfa35
+	source = https://github.com/zrax/gsshvnc/archive/v0.96.tar.gz
+	sha256sums = fcccd9200d21be73ef9d3de3dac061cde3c740d1e43359603e9e45679f029084
 
 pkgname = gsshvnc
