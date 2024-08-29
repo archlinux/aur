@@ -1,14 +1,15 @@
-# Maintainer: Lindsay Zhou <i@lin.moe>
+# Maintainer:
+# Contributor: Lindasy Zhou <i@lin.moe>
 
 _pkgname="memos"
 pkgname="${_pkgname}-git"
-pkgver=0.16.0.r65.g1b105db9
+pkgver=0.22.4.r62.gbb86482b
 pkgrel=1
 pkgdesc="A privacy-first, lightweight note-taking service. Easily capture and share your great thoughts."
 url="https://github.com/usememos/${_pkgname}"
 arch=("any")
 license=('MIT')
-makedepends=("go" "git" "nodejs")
+makedepends=("go" "git" "npm")
 provides=("$pkgname")
 backup=('etc/memos.conf')
 source=(
@@ -34,15 +35,11 @@ pkgver(){
 build(){
     # build frontend
     cd "$srcdir/$_pkgname/web"
-    mkdir -p "$srcdir/bin"
-    corepack enable --install-directory "$srcdir/bin"
+    npm install --frozen-lockfile
+    npm run build
+    rm -fr "$srcdir/$_pkgname/server/router/frontend/dist"
+    cp -r "dist" "$srcdir/$_pkgname/server/router/frontend/dist"
     
-    export PATH="$PATH:$srcdir/bin"
-    pnpm install --store-dir=$srcdir/pnpm-store --frozen-lockfile
-    pnpm type-gen
-    pnpm build
-    cp -r "dist" "$srcdir/$_pkgname/server/"
-
     # build backend
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
@@ -51,7 +48,7 @@ build(){
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     
     cd "$srcdir/$_pkgname"
-    CGO_ENABLED=0 go build -o memos ./main.go
+    go build -o memos ./bin/memos/main.go
 }
 
 check(){
