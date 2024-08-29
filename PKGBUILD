@@ -3,7 +3,7 @@
 
 pkgname=zed-git
 _pkgname=${pkgname%-git}
-pkgver=0.150.4.r172.g1d868e1
+pkgver=0.151.0.r65.g3d175f6
 pkgrel=1
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
