@@ -1,21 +1,21 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Ex-Maintainer: Nikita Puzyryov <PuzyryovN@gmail.com>
 #
-# PRs are welcome here: https://github.com/yurikoles-aur/zchunk
+# Pull requests are welcome here: https://github.com/yurikoles-aur/zchunk
 #
 
 pkgname=zchunk
-pkgver=1.3.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='A file format designed for highly efficient deltas while maintaining good compression'
 arch=(x86_64)
 url=https://github.com/zchunk/zchunk
 license=(BSD)
 depends=(libcurl.so zstd)
-provides=(libzck.so)
 makedepends=(meson)
+provides=(libzck.so)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('5563baa254b256e30e1fea87f94f53a5cf63a074898644f3f7ae5b58f446db03')
+sha256sums=('2c187055e2206e62cef4559845e7c2ec6ec5a07ce1e0a6044e4342e0c5d7771d')
 
 build() {
   arch-meson "${pkgname}-${pkgver}" build
