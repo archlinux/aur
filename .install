@@ -1,0 +1,13 @@
+post_install() {
+  setcap cap_net_bind_service,cap_net_admin=ep /usr/share/clash-flutter/clash-flutter
+  ldconfig
+}
+
+post_upgrade() {
+  setcap cap_net_bind_service,cap_net_admin=ep /usr/share/clash-flutter/clash-flutter
+  ldconfig
+}
+
+post_remove() {
+  ldconfig
+}
