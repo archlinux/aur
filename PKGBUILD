@@ -1,7 +1,7 @@
 pkgname=ubertooth
 pkgver=2020.12.R1
 _pkgver=2020-12-R1
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source wireless development platform suitable for Bluetooth experimentation"
 url="https://github.com/greatscottgadgets/ubertooth/"
 arch=('x86_64' 'i686')
@@ -19,6 +19,7 @@ build() {
   cmake -DENABLE_PYTHON=FALSE -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr -DUDEV_RULES_PATH=${pkgdir}/etc/udev/rules.d -DINSTALL_UDEV_RULES=TRUE -DUDEV_RULES_GROUP=uucp ..
   make
   cd ../python/specan_ui
+  sed -i '/version/d' setup.py
   python setup.py build
 }
 
