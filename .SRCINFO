@@ -1,6 +1,6 @@
 pkgbase = chromedriver-beta
 	pkgdesc = Standalone server that implements the W3C WebDriver standard (for google-chrome-beta)
-	pkgver = 129.0.6668.12
+	pkgver = 129.0.6668.22
 	pkgrel = 1
 	url = https://chromedriver.chromium.org/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = chromedriver-beta
 	optdepends = google-chrome-beta
 	provides = chromedriver
 	conflicts = chromium
-	source = chromedriver_129.0.6668.12_linux64.zip::https://storage.googleapis.com/chrome-for-testing-public/129.0.6668.12/linux64/chromedriver-linux64.zip
-	sha512sums = c4e4d8148cfce9ef8d7e82d902ae2c2e4416b066dcb5c964ac0cef9a7696e10eab450c3ff86080b65e8276ad67705e96ca83c7abf687cba08c3ddd14b4657d6f
+	source = chromedriver_129.0.6668.22_linux64.zip::https://storage.googleapis.com/chrome-for-testing-public/129.0.6668.22/linux64/chromedriver-linux64.zip
+	sha512sums = de17c995232bbea2d464e17340b081bd386e33db046ccbfb1f6189bc42107a6142fa8f778c395f2d003370b2aaf6e167b765efb756ce1d767549cbf14b6b2a26
 
 pkgname = chromedriver-beta
