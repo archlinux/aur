@@ -5,7 +5,7 @@
 pkgbase=mcpelauncher-linux
 pkgname=('mcpelauncher-linux' 'lib32-mcpelauncher-linux')
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
@@ -13,6 +13,7 @@ license=('GPL-3.0-only')
 makedepends=('git' 'cmake' 'clang' 'alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'libxkbcommon' 'ibus' 'fcitx5' 'libxss' 'jack' 'pipewire' 'sndio'
 		'lib32-alsa-lib' 'lib32-mesa' 'lib32-libpulse' 'lib32-libxrandr' 'lib32-libxinerama' 'lib32-libxkbcommon' 'lib32-libxss' 'lib32-jack' 'lib32-pipewire')
 depends=('libx11' 'zlib' 'libpng' 'libevdev' 'libegl' 'qt6-base' 'qt6-declarative' 'qt6-webengine' 'systemd-libs' 'openssl' 'gcc-libs' 'glibc' 'lib32-systemd' 'lib32-libx11' 'lib32-zlib' 'lib32-glibc' 'lib32-gcc-libs' 'lib32-libpng' 'lib32-openssl' 'lib32-libevdev' 'lib32-libglvnd')
+makedepends=(${makedepends[@]} ${depends[@]})
 
 source=(
   "git+https://github.com/minecraft-linux/mcpelauncher-manifest.git#tag=v${pkgver}-qt6"
