@@ -1,7 +1,7 @@
 pkgbase = game-box-bin
 	pkgdesc = An Old-gen console games emulator. This project only relies on the Qt framework.一款游戏家用机模拟器,仅依赖Qt框架
 	pkgver = 0.1.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/QQxiaoming/game_box
 	arch = x86_64
 	license = GPL-3.0-only
@@ -20,6 +20,6 @@ pkgbase = game-box-bin
 	source = game-box.sh
 	sha256sums = f031db78f85ea318b17fd617823fa512990cf29879ed01a7989a88094130933e
 	sha256sums = 8410145a23e7c9bd51ada0ac251783079903ab8c3de44c500cf05f91b9745fac
-	sha256sums = 4155bf7d56e6c3386b6ff4a1557ca14e54a695fa04fc65e36d2853fc67853efb
+	sha256sums = 1ec36d4ede07ca07c85e1d27b5c69107444747190abebd76ba97c64fdb68b4c7
 
 pkgname = game-box-bin
