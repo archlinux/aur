@@ -1,6 +1,6 @@
 pkgbase = ergochat
 	pkgdesc = A modern IRC server written in Go
-	pkgver = 2.13.1
+	pkgver = 2.14.0
 	pkgrel = 1
 	url = https://github.com/ergochat/ergo
 	install = install
@@ -15,13 +15,14 @@ pkgbase = ergochat
 	makedepends = go
 	makedepends = git
 	depends = glibc
+	optdepends = ergochat-ldap: LDAP authentication support
 	provides = oragono
 	conflicts = oragono
 	replaces = oragono
 	backup = etc/oragono.conf
 	backup = etc/ergochat.conf
 	backup = etc/ergochat/ircd.yaml
-	source = git+https://github.com/ergochat/ergo#tag=v2.13.1
+	source = git+https://github.com/ergochat/ergo#tag=v2.14.0
 	source = config.patch
 	source = systemd-service-unit.patch
 	source = ergochat.sysusers

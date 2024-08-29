@@ -1,9 +1,10 @@
-# Maintainer: Jason Papakostas <vithos@gmail.com>
+# Maintainer: Christian Pfeiffer <cpfeiffer@live.de>
+# Contributor: Jason Papakostas <vithos@gmail.com>
 # Contributor: Sean Enck <enckse@gmail.com>
 
 pkgname=ergochat
 _upstream_pkgname=ergo
-pkgver=2.13.1
+pkgver=2.14.0
 pkgrel=1
 pkgdesc="A modern IRC server written in Go"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -11,6 +12,7 @@ url="https://github.com/ergochat/ergo"
 license=('MIT')
 install=install
 depends=('glibc')
+optdepends=('ergochat-ldap: LDAP authentication support')
 makedepends=('go' 'git')
 source=("git+$url#tag=v$pkgver"
     "config.patch"
@@ -47,10 +49,15 @@ build() {
     #   ergo W: ELF file ('usr/bin/ergo') lacks FULL RELRO, check LDFLAGS.
     #   ergo W: ELF file ('usr/bin/ergo') lacks PIE.
     # related: https://bugs.archlinux.org/task/60928
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
     go build \
         -trimpath \
         -buildmode=pie \
-        -ldflags "-X main.commit=${GIT_COMMIT} -linkmode external -extldflags \"${LDFLAGS}\"" \
+        -mod=vendor \
+        -modcacherw \
+        -ldflags "-X main.commit=${GIT_COMMIT} -compressdwarf=false -linkmode external -extldflags \"${LDFLAGS}\"" \
         -v \
         .
 
