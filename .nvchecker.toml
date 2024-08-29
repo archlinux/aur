@@ -1,0 +1,5 @@
+[pypy3-pybind11]
+source = "github"
+github = "pybind/pybind11"
+use_latest_release = "true"
+prefix = "v"
