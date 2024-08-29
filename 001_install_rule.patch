@@ -1,0 +1,17 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index e0fadd7..cca2950 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -230,4 +230,10 @@ if(MSVC)
+ endif()
+ 
+ set_target_properties("${PROGRAM_PREFIX}setup" PROPERTIES
+-                      INTERPROCEDURAL_OPTIMIZATION ${ENABLE_LTO})
+\ No newline at end of file
++                      INTERPROCEDURAL_OPTIMIZATION ${ENABLE_LTO})
++
++include(GNUInstallDirs)
++
++install(TARGETS "${PROGRAM_PREFIX}doom" "${PROGRAM_PREFIX}setup" RUNTIME
++    DESTINATION $<IF:$<BOOL:${WIN32}>,.,${CMAKE_INSTALL_BINDIR}>
++    PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_WRITE GROUP_EXECUTE WORLD_READ WORLD_WRITE WORLD_EXECUTE)
