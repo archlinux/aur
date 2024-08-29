@@ -3,7 +3,7 @@
 # Contributor: Joshua Leahy <jleahy@gmail.com>
 _base=freetype-py
 pkgname=python-${_base}
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="FreeType Python bindings"
 arch=(any)
@@ -13,7 +13,7 @@ depends=(python freetype2)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('10c00fb87ef8541fdfa3a30e8ad2ebebb7d35129bee3fa32807541baa6bf305f12e1965b6f4d75b3f8b0940ce9972c5e7b77ad263aa614fb3c5103d955239fc5')
+sha512sums=('4b85c8e38dfcddd180d87520c13a8e8bf366bd809cab2f5a044be33232ad7f1a1793f5a7059f9d82f659b821e9459e646c2b8c1a803ca9b8c7ffd13faf3e0b90')
 
 build() {
   cd ${_base}-${pkgver}

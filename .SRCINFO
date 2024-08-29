@@ -1,6 +1,6 @@
 pkgbase = python-freetype-py
 	pkgdesc = FreeType Python bindings
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://github.com/rougier/freetype-py
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-freetype-py
 	makedepends = python-wheel
 	depends = python
 	depends = freetype2
-	source = freetype-py-2.5.0.tar.gz::https://github.com/rougier/freetype-py/archive/v2.5.0.tar.gz
-	sha512sums = 10c00fb87ef8541fdfa3a30e8ad2ebebb7d35129bee3fa32807541baa6bf305f12e1965b6f4d75b3f8b0940ce9972c5e7b77ad263aa614fb3c5103d955239fc5
+	source = freetype-py-2.5.1.tar.gz::https://github.com/rougier/freetype-py/archive/v2.5.1.tar.gz
+	sha512sums = 4b85c8e38dfcddd180d87520c13a8e8bf366bd809cab2f5a044be33232ad7f1a1793f5a7059f9d82f659b821e9459e646c2b8c1a803ca9b8c7ffd13faf3e0b90
 
 pkgname = python-freetype-py
