@@ -5,7 +5,7 @@ pkgname=easyconnect
 _pkgname=EasyConnect
 pkgver=7.6.7.3
 _electronversion=1
-pkgrel=10
+pkgrel=11
 _pangover=1.42.4
 pkgdesc="Support access to ssl vpn. With easyconect,you can secure and speed up connection to cooperate network at ease!"
 arch=('x86_64')
@@ -43,7 +43,7 @@ source=(
 sha256sums=('ae623c6dc0354ff87afefbb770de5013bfd943051c9a653b93db708253b2f0d3'
             '1d2b74cd63e8bd41961f2f8d952355aa0f9be6002b52c8aa7699d9f5da597c9d'
             'b4b0db5e577c1b565a7f065ce8f9a4f9622b673fbcffa27ccbaf68f061a67a68'
-            '3e7bc24bf8590a5d428bc2bdd54938fb80f4d4be23631ceafd492495a327a248')
+            'a199da9f4f1579865094a2fbc768631e04fabcf84415882859eeba47ae1708d2')
 build() {
     sed -e "s|@appname@|sangfor|g" \
         -e "s|@runpath@|${_pkgname}|g" \

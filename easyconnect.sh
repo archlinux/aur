@@ -1,5 +1,5 @@
-#!/bin/sh
-set -e
+#!/bin/bash
+set -o pipefail
 _APPDIR=/usr/share/@appname@/@runpath@
 _RUNNAME="${_APPDIR}/@runname@"
 export PATH="${_APPDIR}:${PATH}"
