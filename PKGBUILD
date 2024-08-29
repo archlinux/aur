@@ -2,7 +2,7 @@
 
 pkgname=mayland-git
 _pkgname=mayland
-pkgver=r120.ae174a3
+pkgver=r140.110e85f
 pkgrel=1
 pkgdesc="a bad wayland compositor"
 arch=('x86_64')
@@ -42,4 +42,5 @@ package() {
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	install -Dm644 "resources/mayland.desktop" "${pkgdir}/usr/share/wayland-sessions/mayland.desktop"
+	install -Dm644 "resources/mayland.mf" "${pkgdir}/usr/share/mayland/mayland.mf"
 }
