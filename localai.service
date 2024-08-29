@@ -15,33 +15,52 @@ WorkingDirectory=%S/%N
 Restart=on-failure
 # PrivateTmp=yes
 
-# default environment and local env
+# python_backends, default environment and local env
+EnvironmentFile=-%E/%N/python_backends.conf
 EnvironmentFile=%E/%N/%N.conf
 EnvironmentFile=-%S/%N/.env
 
 # start server
-ExecStart=/usr/bin/localai run \
-  --audio-path="%T/%N/audio" \
-  --backend-assets-path="%S/%N" \
-  --config-path="%S/%N" \
-  --external-grpc-backends=bark:%S/%N/backend-assets/grpc/python/bark/run.sh,coqui:%S/%N/backend-assets/grpc/python/coqui/run.sh,diffusers:%S/%N/backend-assets/grpc/python/diffusers/run.sh,parler-tts:%S/%N/backend-assets/grpc/python/parler-tts/run.sh,rerankers:%S/%N/backend-assets/grpc/python/rerankers/run.sh,sentencetransformers:%S/%N/backend-assets/grpc/python/sentencetransformers/run.sh,transformers:%S/%N/backend-assets/grpc/python/transformers/run.sh,transformers-musicgen:%S/%N/backend-assets/grpc/python/transformers-musicgen/run.sh \
-  --image-path="%T/%N/images" \
-  --localai-config-dir="%S/%N/config" \
-  --models-path="%S/%N/models" \
-  --upload-path="%T/%N/upload"
+ExecStart==bash -c '\
+  python_backends=""; \
+  if test -n "$ARCH_LOCALAI_PYTHON_BACKENDS"; then \
+    python_backends=(${(f)"$(echo $ARCH_LOCALAI_PYTHON_BACKENDS)"}); \
+    for line in "${python_backends[@]}"; do \
+      entry="${line%% *}:%S/%N/backend-assets/grpc/python/${line%% *}/run.sh"; \
+      if test -z "python_backends"; then \
+        python_backends="--external-grpc-backends=$entry"; \
+      else \
+        python_backends="$python_backends,$entry"; \
+      fi; \
+    done; \
+  fi; \
+  /usr/bin/localai run \
+    --audio-path="%T/%N/audio" \
+    --backend-assets-path="%S/%N" \
+    --config-path="%S/%N" \
+    $python_backends \
+    --image-path="%T/%N/images" \
+    --localai-config-dir="%S/%N/config" \
+    --models-path="%S/%N/models" \
+    --upload-path="%T/%N/upload" \
+'
 
 # create virtualenvs for python backends, recreate if localai is newer than venv
-# disabled python backends: autogptq exllama exllama2 mamba openvoice petals vall-e-x vllm
 ExecStartPost=bash -c 'sleep 3;\
-for i in bark coqui diffusers parler-tts rerankers \
-    sentencetransformers transformers transformers-musicgen; do \
-  bedir="%S/%N/backend-assets/grpc/python/$i"; \
-  if test /usr/bin/localai -nt $bedir/venv; then rm -r $bedir/venv; fi; \
-  if test ! -d $bedir/venv; then \
-    echo "re/creating $bedir"; \
-    %S/%N/backend-assets/grpc/python/$i/install.sh; \
-  fi; \
-done'
+if test -n "$ARCH_LOCALAI_PYTHON_BACKENDS"; then \
+  python_backends=(${(f)"$(echo $ARCH_LOCALAI_PYTHON_BACKENDS)"}); \
+  for line in "${python_backends[@]}"; do \
+    backend="${line%% *}"; dependencies=""; \
+    if test "$backend" != "$line"; then dependencies="${line#* }"; fi; \
+    bedir="%S/%N/backend-assets/grpc/python/$backend"; \
+    if test /usr/bin/localai -nt $bedir/venv; then rm -r $bedir/venv; fi; \
+    if test ! -d $bedir/venv; then \
+      echo "re/creating $bedir"; \
+      uv venv --system-site-packages $bedir/venv; \
+      if test -n "$dependencies"; then uv pip install $dependencies; fi \
+    fi; \
+  done; \
+fi'
 
 # make some time for virtualenvs to be installed
 TimeoutStartSec=180

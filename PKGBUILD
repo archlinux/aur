@@ -8,12 +8,16 @@ _ENABLE_ROCM=${_ENABLE_ROCM:-1}
 
 # if set to 1 make is called with -j <physical cores> for paralell building, set to 0 for debug
 _ENABLE_PARALLEL=${_ENABLE_PARALLEL:-1}
-# additional piper backend
+
+# additional backends
+# piper (text2speech) backend
 _ENABLE_PIPER=${_ENABLE_PIPER:-1}
-# additional whisper backend
+# whisper (speech2text) backend
 _ENABLE_WHISPER=${_ENABLE_WHISPER:-1}
-# additional python backends if set to 1
+# python backends, enables "-python" package flavors
 _ENABLE_PYTHON=${_ENABLE_PYTHON:-1}
+# will be automatically set on "-python" package flavors
+_IS_PYTHON_FLAVOR=0
 
 # if GPU_TARGETS and AMDGPU_TARGETS are not set, mirror architecture list from arch:python-pytorch@2.3.0-2
 _AMDGPU_TARGETS="gfx906;gfx908;gfx90a;gfx940;gfx941;gfx942;gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1102"
@@ -27,7 +31,7 @@ _OPTIONAL_MAKE_ARGS="${_OPTIONAL_MAKE_ARGS:-}"
 
 # limit pulling external sources
 _EXTERNAL_SOURCES="backend/cpp/llama/llama.cpp"
-# disabled_sources=go-llama.cpp gpt4all go-rwkv.cpp go-stable-diffusion go-tiny-dream go-bert go-piper whisper
+# disabled: go-llama.cpp gpt4all go-rwkv.cpp go-stable-diffusion go-tiny-dream go-bert go-piper whisper
 _DISABLED_MOD_EDIT="nomic-ai/gpt4all/gpt4all mudler/go-stable-diffusion \
   go-skynet/go-llama.cpp go-skynet/go-bert.cpp donomii/go-rwkv.cpp M0Rf30/go-tiny-dream"
 
@@ -47,7 +51,8 @@ else
   _GO_TAGS=""
 fi
 
-# disabled backends: backend-assets/util/llama-cpp-rpc-server llama-cpp-grpc llama-ggml gpt4all rwkv tinydream bert-embeddings huggingface stablediffusion
+# disabled backends: backend-assets/util/llama-cpp-rpc-server llama-cpp-grpc
+#    llama-ggml gpt4all rwkv tinydream bert-embeddings huggingface stablediffusion
 # enabled backends
 _GRPC_BACKENDS="backend-assets/grpc/local-store \
 $_OPTIONAL_GRPC"
@@ -55,7 +60,7 @@ $_OPTIONAL_GRPC"
 _pkgbase="localai"
 pkgbase="${_pkgbase}-git"
 pkgname=()
-pkgver=2.20.0
+pkgver=2.20.1.37.gae6d3276
 pkgrel=1
 pkgdesc="Self-hosted OpenAI API alternative - Open Source, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
@@ -67,8 +72,6 @@ backup=("etc/${_pkgbase}/${_pkgbase}.conf")
 
 source=(
   "${_pkgbase}"::"git+https://github.com/mudler/LocalAI"
-  "libbackend.patch"
-  "backend-req.patch"
   "README.md"
   "${_pkgbase}.conf"
   "${_pkgbase}.service"
@@ -83,13 +86,42 @@ sha256sums=(
   'SKIP'
   'SKIP'
   'SKIP'
-  'SKIP'
-  'SKIP'
 )
 
 depends=(
   'protobuf'
   'grpc'
+)
+
+# system wide dependencies for python backends
+_python_depends=(
+    'python-protobuf'
+    'python-grpcio'
+    'python-certifi'
+    'python-pillow'
+    'python-opencv'
+    'python-numpy'
+    'python-pytorch'
+    'python-torchaudio'
+    'python-torchvision'
+    'python-transformers'
+    'python-sentencepiece'
+    'python-peft'
+    'python-accelerate'
+  )
+
+# python backends and their local dependencies
+_python_backends=(
+  "autogptq auto-gptq"
+  "bark bark"
+  "coqui coqui-tts"
+  "diffusers diffusers compel optimum-quanto"
+  "parler-tts llvmlite"
+  "rerankers rerankers[transformers]"
+  "transformers"
+  "transformers-musicgen"
+  "vall-e-x"
+  "vllm vllm"
 )
 
 makedepends=(
@@ -101,28 +133,18 @@ makedepends=(
   'blas-openblas'
   'sdl2'
   'ffmpeg'
+  'upx'
   'protoc-gen-go'
   'protoc-gen-go-grpc'
-  'upx'
+  'python-protobuf'
+  'python-grpcio'
+  'python-grpcio-tools'
 )
 
-if [[ $_ENABLE_PYTHON = 1 ]]; then
+if [[ $_ENABLE_PIPER = 1 ]]; then
   depends+=(
     'espeak-ng'
-    'python-protobuf'
-    'python-grpcio'
-    'python-grpcio-tools'
-    'python-numpy'
-    'python-opencv'
-    'python-pillow'
-    'python-pytorch'
-    'python-torchaudio'
-    'python-torchvision'
-    'python-accelerate'
   )
-fi
-
-if [[ $_ENABLE_PIPER = 1 ]]; then
   makedepends+=(
     'onnxruntime'
     'libucd-git'
@@ -131,10 +153,16 @@ fi
 
 if [[ $_ENABLE_CPU = 1 ]]; then
   pkgname+=("${pkgbase}")
+  if [[ $_ENABLE_PYTHON = 1 ]]; then
+    pkgname+=("${pkgbase}-python")
+  fi
 fi
 
 if [[ $_ENABLE_CUDA = 1 ]]; then
   pkgname+=("${pkgbase}-cuda")
+  if [[ $_ENABLE_PYTHON = 1 ]]; then
+    pkgname+=("${pkgbase}-cuda-python")
+  fi
   makedepends+=(
     'cuda'
     'cudnn'
@@ -145,6 +173,9 @@ fi
 
 if [[ $_ENABLE_ROCM = 1 ]]; then
   pkgname+=("${pkgbase}-rocm")
+  if [[ $_ENABLE_PYTHON = 1 ]]; then
+    pkgname+=("${pkgbase}-rocm-python")
+  fi
   makedepends+=(
     'rocm-hip-sdk'
     'miopen-hip'
@@ -172,10 +203,11 @@ Build Options:
 _ENABLE_CPU=$_ENABLE_CPU
 _ENABLE_CUDA=$_ENABLE_CUDA
 _ENABLE_ROCM=$_ENABLE_ROCM
+_ENABLE_PYTHON=$_ENABLE_PYTHON
+
 _ENABLE_PARALLEL=$_ENABLE_PARALLEL
 _ENABLE_PIPER=$_ENABLE_PIPER
 _ENABLE_WHISPER=$_ENABLE_WHISPER
-_ENABLE_PYTHON=$_ENABLE_PYTHON
 
 _OPTIONAL_MAKE_ARGS=$_OPTIONAL_MAKE_ARGS
 _EXTERNAL_SOURCES=$_EXTERNAL_SOURCES
@@ -198,11 +230,7 @@ EOF
   mkdir -p "sources"
   make $_OPTIONAL_MAKE_ARGS $_EXTERNAL_SOURCES
 
-  # modify python backend build library to use --system-site-packages, and dont reinstall torch*
-  patch -N -i "${srcdir}/libbackend.patch" -p1
-
-  # modify python backend requirements
-  patch -N -i "${srcdir}/backend-req.patch" -p1
+  # patch -N -i "${srcdir}/libbackend.patch" -p1
 
   if [[ $_ENABLE_PIPER = 1 ]]; then
     # fix piper build
@@ -230,12 +258,11 @@ EOF
 }
 
 _build() {
-  if [[ $_ENABLE_PYTHON = 1 ]]; then
-    # generate grpc protobuf files for python and copy to backend-assets
-    make BUILD_TYPE="$1" protogen-python
-    mkdir -p backend-assets/grpc
-    cp -a backend/python backend-assets/grpc/python
-  fi
+  # generate grpc protobuf files for python and copy to backend-assets
+  make BUILD_TYPE="$1" protogen-python
+  mkdir -p backend-assets/grpc
+  cp -a backend/python backend-assets/grpc/python
+
   if test "$1" = "cublas"; then
     _LLAMA_CPP_BACKEND="backend-assets/grpc/llama-cpp-cuda"
   elif test "$1" = "hipblas"; then
@@ -243,23 +270,24 @@ _build() {
   else
     _LLAMA_CPP_BACKEND="backend-assets/grpc/llama-cpp-avx2"
   fi
+
   cat - << EOF
 
 
 _build($1):
-
 GO_TAGS=$_GO_TAGS
 OPTIONAL_MAKE_ARGS=$_OPTIONAL_MAKE_ARGS
 LLAMA_BACKEND=$_LLAMA_CPP_BACKEND
 OTHER_GRPC_BACKENDS=$_GRPC_BACKENDS
 
-
 EOF
+
   _nproc=1
   if [[ $_ENABLE_PARALLEL = 1 ]]; then
     # use number of physical cores for parallel build
     _nproc=$(grep  "^core id" /proc/cpuinfo | sort -n | uniq | wc -l)
   fi
+
   make -j"$_nproc" \
     BUILD_TYPE="$1" \
     GRPC_BACKENDS="$_LLAMA_CPP_BACKEND $_GRPC_BACKENDS" \
@@ -297,10 +325,16 @@ build() {
 _package_install() {
   install -Dm755 "local-ai" "${pkgdir}/usr/bin/localai"
   ln -s "/usr/bin/localai" "${pkgdir}/usr/bin/local-ai"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgbase}"
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgbase}"
   install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${_pkgbase}/README-build.md"
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgbase}"
   install -Dm644 ${srcdir}/${_pkgbase}.conf -t "${pkgdir}/etc/${_pkgbase}"
+  _python_backends_str=""
+  if [[ $_IS_PYTHON_FLAVOR = 1 ]]; then
+    _python_backends_str=$(printf "%s\n" "${_python_backends[@]}")
+  fi
+  echo "ARCH_LOCALAI_PYTHON_BACKENDS=\"${_python_backends_str}\"" \
+      > "${pkgdir}/etc/${_pkgbase}/python_backends.conf"
   install -Dm644 ${srcdir}/${_pkgbase}.service -t "${pkgdir}/usr/lib/systemd/system"
   install -Dm644 ${srcdir}/${_pkgbase}.sysusers "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
   install -Dm644 ${srcdir}/${_pkgbase}.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
@@ -310,6 +344,7 @@ package_localai-git() {
   cd "${srcdir}/${_pkgbase}-cpu"
   depends+=('openblas')
   if [[ $_ENABLE_PIPER = 1 ]]; then depends+=('onnxruntime'); fi
+  if [[ $_IS_PYTHON_FLAVOR = 1 ]]; then depends+=("${_python_depends[@]}"); fi
   _package_install
 }
 
@@ -318,7 +353,7 @@ package_localai-git-cuda() {
   pkgdesc+=' (with CUDA support)'
   depends+=('cuda')
   if [[ $_ENABLE_PIPER = 1 ]]; then depends+=('onnxruntime'); fi
-  if [[ $_ENABLE_PYTHON = 1 ]]; then depends+=('python-pytorch-cuda'); fi
+  if [[ $_IS_PYTHON_FLAVOR = 1 ]]; then depends+=("${_python_depends[@]}"); depends+=('python-pytorch-cuda'); fi
   _package_install
 }
 
@@ -327,6 +362,21 @@ package_localai-git-rocm() {
   pkgdesc+=' (with ROCM support)'
   depends+=('rocm-hip-runtime' 'hipblas' 'rocblas')
   if [[ $_ENABLE_PIPER = 1 ]]; then depends+=('onnxruntime'); fi
-  if [[ $_ENABLE_PYTHON = 1 ]]; then depends+=('python-pytorch-rocm'); fi
+  if [[ $_IS_PYTHON_FLAVOR = 1 ]]; then depends+=("${_python_depends[@]}"); depends+=('python-pytorch-rocm'); fi
   _package_install
+}
+
+package_localai-git-python() {
+  _IS_PYTHON_FLAVOR=1
+  package_localai-git "$@"
+}
+
+package_localai-git-cuda-python() {
+  _IS_PYTHON_FLAVOR=1
+  package_localai-git-cuda "$@"
+}
+
+package_localai-git-rocm-python() {
+  _IS_PYTHON_FLAVOR=1
+  package_localai-git-rocm "$@"
 }
