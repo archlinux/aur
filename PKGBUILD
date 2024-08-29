@@ -1,0 +1,66 @@
+# Maintainer: Maki <maki@hotmilk.space>
+
+pkgname=pony-house-bin
+pkgver=1.4.8
+pkgrel=1
+pkgdesc="A Matrix client, focused on being a completely customizable open source superapp"
+arch=("x86_64")
+url="https://github.com/Pony-House/Client"
+license=("AGPL-3.0-only")
+
+depends=("electron")
+options=(!strip)
+
+_filename="Pony.House-$pkgver.AppImage"
+
+source=(
+	"https://github.com/Pony-House/Client/releases/download/$pkgver/$_filename"
+	"https://raw.githubusercontent.com/Pony-House/Client/$pkgver/LICENSE"
+)
+
+sha256sums=(
+	"2971e7dd721b199e3d58ccbe047c3a4abfc58add270bc8b0fcb984f382cc6d81"
+	"4df3c306dddaaf4baffdff5ca820cc679ac8cd6dc263c6a74517783e42fa7a3b"
+)
+
+_install_name="pony-house"
+
+# tried to do this similar to
+# https://archlinux.org/packages/extra/x86_64/element-desktop
+
+package() {
+    # extract AppImage
+    chmod +x "$_filename"
+    ./$_filename --appimage-extract
+
+    # install app.asar
+    install -Dm644 squashfs-root/resources/app.asar \
+        "$pkgdir/usr/lib/$_install_name/app.asar"
+
+    # create executable
+    mkdir -p "$pkgdir/usr/bin/"
+    cat << EOF > "$pkgdir/usr/bin/$_install_name"
+#!/bin/sh
+exec electron /usr/lib/$_install_name/app.asar "\$@"
+EOF
+    chmod +x "$pkgdir/usr/bin/$_install_name"
+
+    # install icon
+    install -Dm644 squashfs-root/usr/share/icons/hicolor/0x0/apps/pony-house-matrix.png \
+        "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_install_name.png"
+    
+    # install desktop file
+    install -Dm644 squashfs-root/pony-house-matrix.desktop \
+        "$pkgdir/usr/share/applications/$_install_name.desktop"
+
+    # fix desktop file
+
+    sed -i -E "s/Icon=pony-house-matrix/Icon="$_install_name"/i" \
+        "$pkgdir/usr/share/applications/$_install_name.desktop"
+
+    sed -i -E "s/Exec=.+$/Exec=\/usr\/bin\/"$_install_name" %U/i" \
+        "$pkgdir/usr/share/applications/$_install_name.desktop"
+
+    # install license
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_install_name/LICENSE"
+}
