@@ -4,7 +4,7 @@
 # Contributor: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=slack-electron
-pkgver=4.39.95
+pkgver=4.40.120
 pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux, using the system Electron package"
 arch=(x86_64)
@@ -27,7 +27,7 @@ source=(
 )
 noextract=("$pkgname-$pkgver.deb")
 sha256sums=(
-  'd6ac62065e06af008fd8cccf80b7248b839320b508b8e7153d45ba31b7ada419'
+  '8bc9e8906c0beb2a3c682bd7d23c9d56748d2fe8ba7c8af899cfd79b7bb02ab4'
   '1b2229fa419ede9858fb0af5351add8f65ddc573abb043d44b4ef979a8bbd996'
 )
 
