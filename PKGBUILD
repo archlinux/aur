@@ -1,4 +1,5 @@
 # Maintainer: Evangelos Foutras <foutrelis@archlinux.org>
+# Maintainer: Christian Heusel <gromit@archlinux.org>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Marius Knaust <marius.knaust@gmail.com>
