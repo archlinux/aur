@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=startupmsg
-_pkgver=0.9.6.1
+_pkgver=0.9.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a3323b47b5dd36fd9db3197c400a1d84')
-b2sums=('02d8aa60a35dcd9875c75b1a76a06def9a51909fdc7121945be4d5edaa65f6362cf7c08821ede7a65fc87a6f40c1acefdc4693f8f85835b68a2db8bd1366117a')
+md5sums=('fc060141694340354365f082bcb2de35')
+b2sums=('cd0690675c25c0272777a767f8fef97fbc0d158208bcc7a395f2453da22229228d1278084b577a8c0aead04438830312b85dae4de009faf8d2b032d18bc3baf3')
 
 build() {
   mkdir build
