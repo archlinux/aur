@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=htbrowser-bin
 pkgver=5.0.2.21
-pkgrel=3
+pkgrel=4
 pkgdesc="红莲花国密浏览器是政企专用浏览器，支持国产密码算法，全面适配信创环境，可以提供国产密码改造服务，既满足安全可靠又保障自主可控的浏览器使用需求。"
 arch=(
     'aarch64'
@@ -34,7 +34,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c74e69c2dd5cd4543f078bce866947b1f6fdf9eea2de843810f0a6b89ee76f3f'
-            '297a74c44e8bc82adaacc463fed4a12089f5ab28f83cc198844c0d409dd55bb2')
+            '24fad8d9962cde14538848876bea3cd245d82efe77332ea97ed99fe61c0687a6')
 sha256sums_aarch64=('65037262aa27d692c964155919f969286fb706d5cb77eed04883e74bdd50c06f')
 sha256sums_x86_64=('a09f7741801e0231eaa83ed569cb9e9a789be9fc0c22e12e9a8a4e882c9d125f')
 build() {
@@ -50,8 +50,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt"
-    cp -r "${srcdir}/opt/apps/${pkgname%-bin}" "${pkgdir}/opt"
+    install -Dm755 -d "${pkgdir}/usr/lib"
+    cp -r "${srcdir}/opt/apps/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml" -t "${pkgdir}/usr/share/appdata"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     for _icons in 24x24 48x48 64x64 128x128 256x256;do

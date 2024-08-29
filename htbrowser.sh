@@ -1,6 +1,6 @@
 #!/bin/bash
-set -e
-_APPDIR=/opt/@appname@
+set -o pipefail
+_APPDIR=/usr/lib/@appname@
 _RUNNAME="${_APPDIR}/@runname@"
 export CHROME_WRAPPER="${_APPDIR}"
 export PATH="${_APPDIR}:${PATH}"
