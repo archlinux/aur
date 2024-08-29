@@ -10,7 +10,7 @@ pkgdesc="Format data to reStructedText and Markup Table"
 arch=('any')
 url="https://github.com/liuyug/${_name}"
 license=('custom:BSD-?-Clause')
-makedepends=('python-build' 'python-installer' 'python-wheel'
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel'
              'python-setuptools')
 # testdepends=('python-chardet')
 depends=('python' 'python-wcwidth' 'python-beautifulsoup4' 'python-pandas')

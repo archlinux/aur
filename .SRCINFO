@@ -5,6 +5,7 @@ pkgbase = python-mtable-git
 	url = https://github.com/liuyug/mtable
 	arch = any
 	license = custom:BSD-?-Clause
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
