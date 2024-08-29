@@ -1,0 +1,25 @@
+pkgbase = python-chafapy-git
+	pkgdesc = Python bindings for Chafa. Visualize images with text in Python.
+	pkgver = 1.1.2.r49.gcc1c505
+	pkgrel = 1
+	url = https://github.com/guardkenzie/chafa.py
+	arch = any
+	license = GPL-3.0-or-later
+	license = LGPL-3.0-or-later
+	checkdepends = python-pytest
+	checkdepends = python-pillow
+	checkdepends = python-numpy
+	checkdepends = python-wand
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python>=3.8
+	depends = chafa
+	provides = python-chafapy=1.1.2
+	conflicts = python-chafapy
+	source = chafa.py::git+https://github.com/guardkenzie/chafa.py.git
+	sha256sums = SKIP
+
+pkgname = python-chafapy-git
