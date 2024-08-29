@@ -1,0 +1,19 @@
+pkgbase = csvedepli
+	pkgdesc = produce a JSON representation of pacman "-S" and/or "-Q" databases
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://sr.ht/~minshall/csvedepli/
+	arch = any
+	license = MIT
+	checkdepends = cram
+	makedepends = emacs
+	makedepends = gawk
+	makedepends = gengetopt
+	makedepends = git
+	makedepends = sed
+	depends = glibc
+	source = git+https://git.sr.ht/~minshall/csvedepli#tag=64f48212490d1297252f35efdf837ac4a1f314c0?signed
+	validpgpkeys = BB68C8D3A3D23B9B398FB50AC397C74C54A9EC4F
+	sha256sums = SKIP
+
+pkgname = csvedepli
