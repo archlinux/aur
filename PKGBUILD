@@ -16,7 +16,7 @@ _alias=alarm-clock
 url="https://alarm-clock-applet.github.io/"
 license=('GPL2')
 depends=('gettext' 'gstreamer>=1.0' 'gst-plugins-base' 'gst-plugins-good' 'libnotify>=0.4.1' 'glib2' 'gtk3' 'libayatana-appindicator')
-makedepends=('cmake' 'pkgconfig' 'perl' 'gzip' 'python')
+makedepends=('cmake' 'pkgconfig' 'perl' 'gzip' 'glib2-devel')
 optdepends=('gnome-control-center' 'playerctl' 'gconf>=2.0')
 install=$pkgname.install
 source=($_alias-$pkgver.tar.gz::https://github.com/alarm-clock-applet/alarm-clock/archive/refs/tags/$pkgver.tar.gz)
