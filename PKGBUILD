@@ -4,7 +4,7 @@
 # Contributor: Mikhail Burdin <xdshot9000@gmail.com>
 
 pkgname=darkplaces-xonotic
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="An advanced Quake 1 game engine (Xonotic fork)"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ provides=('darkplaces')
 install=$pkgname.install
 source=(https://github.com/xonotic/darkplaces/archive/xonotic-v$pkgver.tar.gz
         $pkgname.desktop)
-sha256sums=('c35dfc3e0c2500b6fe7f5cb651d9c9bb359f86ad9202f2877ed6d4eb761e3f18'
+sha256sums=('2bcb24e5bd6fe22506dcdf8dc916187b579c2cbd01de3884ce36587d75f8d005'
             '476f513f85da873ce93c89f2078bf9c2ea244e3e13a19c6ab02e818ddf221c37')
 
 build() {
