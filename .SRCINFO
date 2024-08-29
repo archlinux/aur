@@ -1,0 +1,23 @@
+pkgbase = weron
+	pkgdesc = Overlay networks based on WebRTC
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/pojntfx/weron
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = AGPL-3.0-only
+	makedepends = go
+	depends = glibc
+	optdepends = postgresql: for local PostgreSQL database
+	optdepends = redis: for local Redis instance
+	backup = etc/default/weron-signaler
+	source = weron-0.2.6.tar.gz::https://github.com/pojntfx/weron/archive/refs/tags/v0.2.6.tar.gz
+	source = weron-signaler.default
+	source = weron-signaler.service
+	sha256sums = 56a8cacf7417edecbbe15c4b24b58a304cdd1e81d82c0c9276af9c55960b5aae
+	sha256sums = 6d46ec44d73f16be9ea8d9a3529512fe54f4b5afe02f9edeeef5c91a55f79048
+	sha256sums = 58d8d8930274dd7eb75c1719a44b447700fad3dd6398cfb0c48e03031030c356
+
+pkgname = weron

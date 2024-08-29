@@ -1,0 +1,17 @@
+# vim: ft=systemd
+
+[Unit]
+Description=weron signaling server
+After=postgresql.service redis.service
+
+[Service]
+ExecStart=/usr/bin/weron signaler --verbose=7
+EnvironmentFile=/etc/default/weron-signaler
+User=weron
+DynamicUser=yes
+
+# Create a systemd override with this line if you'd like to bind to a lower port:
+# AmbientCapabilities=CAP_NET_ADMIN
+
+[Install]
+WantedBy=multi-user.target

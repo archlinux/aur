@@ -1,0 +1,7 @@
+*
+!/PKGBUILD
+!/.SRCINFO
+!/.gitignore
+!/weron-signaler.default
+!/weron-signaler.service
+
