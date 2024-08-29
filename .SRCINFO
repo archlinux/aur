@@ -1,6 +1,6 @@
 pkgbase = python-timg
 	pkgdesc = Display an image in terminal
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://github.com/adzierzanowski/timg
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-timg
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pillow
-	source = timg-1.1.5.tar.gz::https://github.com/adzierzanowski/timg/archive/1.1.5.tar.gz
-	sha256sums = 1f1ac80e206b212be026d9584754559bf0a1df7069355f6ea7b7e2fe9f9646dc
+	source = timg-9486c7510df7c8de7c99226e62f60909ab5131c9.tar.gz::https://github.com/adzierzanowski/timg/archive/9486c7510df7c8de7c99226e62f60909ab5131c9.tar.gz
+	sha256sums = b18055144a49db4e6d3b96c7e7101c36feda581b4bca64150d818bedd77b52aa
 
 pkgname = python-timg

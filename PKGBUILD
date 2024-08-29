@@ -2,7 +2,8 @@
 
 _name="timg"
 pkgname="python-${_name}"
-pkgver=1.1.5
+pkgver=1.1.6
+_commit="9486c7510df7c8de7c99226e62f60909ab5131c9"
 pkgrel=1
 pkgdesc="Display an image in terminal"
 arch=('any')
@@ -11,9 +12,9 @@ license=('MIT')
 makedepends=('python-build' 'python-installer' 'python-wheel'
              'python-setuptools')
 depends=('python' 'python-pillow')
-_pkgsrc="${_name}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('1f1ac80e206b212be026d9584754559bf0a1df7069355f6ea7b7e2fe9f9646dc')
+_pkgsrc="${_name}-${_commit}"
+source=("${_pkgsrc}.tar.gz::${url}/archive/${_commit}.tar.gz")
+sha256sums=('b18055144a49db4e6d3b96c7e7101c36feda581b4bca64150d818bedd77b52aa')
 
 build () {
   cd "${srcdir}/${_pkgsrc}"
@@ -28,6 +29,6 @@ package () {
 
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "${pkgdir}${site_packages}/${_pkgsrc}.dist-info/LICENSE" \
+  ln -s "${pkgdir}${site_packages}/${_name}-${pkgver}.dist-info/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
