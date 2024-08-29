@@ -1,6 +1,6 @@
 pkgbase = python-litestar
 	pkgdesc = Production-ready, Light, Flexible and Extensible ASGI API framework
-	pkgver = 2.10.0
+	pkgver = 2.11.0
 	pkgrel = 1
 	url = https://github.com/litestar-org/litestar
 	arch = any
@@ -54,6 +54,7 @@ pkgbase = python-litestar
 	depends = python-multidict
 	depends = python-polyfactory
 	depends = python-psycopg
+	depends = python-pyjwt
 	depends = python-rich
 	depends = python-rich-click
 	depends = python-sniffio
@@ -77,7 +78,7 @@ pkgbase = python-litestar
 	optdepends = python-opentelemetry-sdk: OpenTelemetry instrumentation
 	optdepends = python-redis: Redis store
 	optdepends = python-sqlalchemy: SQLAlchemy integration
-	source = python-litestar-2.10.0.tar.gz::https://github.com/litestar-org/litestar/archive/v2.10.0.tar.gz
-	sha256sums = c4ef6f3ccdbba289348f59c750887946297cde01fd18eb06c414b02ebc320255
+	source = python-litestar-2.11.0.tar.gz::https://github.com/litestar-org/litestar/archive/v2.11.0.tar.gz
+	sha256sums = 7b9817fdc91a7f39da70b6da2ff6ba54bc79d03dd5e55b36d520f87e85850c37
 
 pkgname = python-litestar
