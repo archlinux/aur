@@ -13,7 +13,7 @@ md5sums=(SKIP)
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	nimble build -d:release
+	nimble build -d:release -y
 }
 
 package() {
