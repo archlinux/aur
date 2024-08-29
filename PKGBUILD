@@ -16,7 +16,6 @@ depends=('python>=3.7' 'python-numpy1>=1.19' 'python-scikit-image>=0.19'
          'python-pillow' 'python-scikit-learn' 'python-click' 'python-six'
          'python-matplotlib')
 optdepends=('python-n2: for FastGammaRenderer'
-            'cython: for FastGammaRenderer'
             'python-urwid: for termview')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")

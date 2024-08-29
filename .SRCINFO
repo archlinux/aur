@@ -19,7 +19,6 @@ pkgbase = python-img2unicode-git
 	depends = python-six
 	depends = python-matplotlib
 	optdepends = python-n2: for FastGammaRenderer
-	optdepends = cython: for FastGammaRenderer
 	optdepends = python-urwid: for termview
 	provides = python-img2unicode=0.1a11
 	conflicts = python-img2unicode
