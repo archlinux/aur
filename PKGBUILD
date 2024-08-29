@@ -11,8 +11,8 @@ license=(BSD-3-Clause)
 depends=(pypy3)
 makedepends=(cmake boost eigen pypy3-setuptools)
 optdepends=('pypy3-setuptools: for python bindings')
-source=("https://github.com/${_base}/${_base}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('6bd528c4dbe2276635dc787b6b1f2e5316cf6b49ee3e150264e455a0d68d19c1')
+source=(https://github.com/${_base::6}/${_base}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
+sha512sums=('bf9ebfbd8e694fbb421d8bdb5362a207a3782685d48988e77aed98363b2fa302e7384b570b02b117d45d5509b1633b096d4fc1ef16f65e6cc8c888b863c1e2cb')
 
 build() {
   cd ${_base}-${pkgver}
