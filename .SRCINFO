@@ -1,7 +1,7 @@
 pkgbase = wlmaker
 	pkgdesc = Wayland compositor inspired by WindowMaker
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/phkaeser/wlmaker
 	arch = x86_64
 	license = Apache-2.0

@@ -2,7 +2,7 @@
 
 pkgname=wlmaker
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Wayland compositor inspired by WindowMaker'
 _libbase_commit=df7ce2ae1a041023b55f67eb4e7ce1576bd87645
 url=https://github.com/phkaeser/wlmaker
@@ -48,4 +48,6 @@ check() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
+	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" \
+		"$pkgname-$pkgver/etc"/*.plist
 }
