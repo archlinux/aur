@@ -19,7 +19,7 @@ if ! git diff --quiet HEAD PKGBUILD; then
 
   makepkg -si
 
-  git add PKGBUILD .SRCINFO
+  git add .
 
   git commit -m "Updated version to ${pkgver}-${pkgrel}"
 
