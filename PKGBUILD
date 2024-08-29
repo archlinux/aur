@@ -1,36 +1,40 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-
-## GitHub tarball does not build due to requiring itself for setup
-
-pkgname=python-m2r2
-_pkg="${pkgname#python-}"
-pkgver=0.3.3
-pkgrel=2
-pkgdesc="Markdown to reStructuredText converter, forked from m2r"
-arch=('any')
-url="https://github.com/crossnox/m2r2"
-license=('MIT')
-depends=('python-mistune1' 'python-docutils' 'python-setuptools')
-makedepends=('python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-six' 'python-sphinx')
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+_base=m2r2
+pkgname=python-${_base}
+pkgver=0.3.3.post2
+pkgrel=1
+pkgdesc="Markdown and reStructuredText in a single file"
+arch=(any)
+url="https://github.com/crossnox/${_base}"
+license=(MIT)
+depends=(python-mistune1 python-docutils)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+checkdepends=(python-pytest python-six python-sphinx)
 changelog=CHANGES.md
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/m/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('f9b6e9efbc2b6987dbd43d2fd15a6d115ba837d8158ae73295542635b4086e75')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
+  setuptools_compatibility.patch::${url}/pull/22.patch)
+sha512sums=('066dcbd63fcf3b1ca2319e11fe3af59010b8937f9b4a17e451212b6c7a43488ef20d1f8944b49295cdddaed57c8a27fe08b0159f26a345ae457cd87af8526c21'
+  '3686b8b8bf21f9e7c905e215766ded8aa66b14c7e20a4844ef21c926efabae0b56cc27e946ae626799c060c7d5323c9915198601a81d818a62ae57ce5be8cc95')
+
+prepare() {
+  cd ${_base}-${pkgver}
+  # https://github.com/CrossNox/m2r2/issues/38
+  patch -p1 -i ../setuptools_compatibility.patch
+}
 
 build() {
-	cd "$_pkg-$pkgver"
-	PYTHONPATH="$PWD" python -m build --wheel --no-isolation
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
-	cd "$_pkg-$pkgver"
-	pytest -x --disable-warnings
+  cd ${_base}-${pkgver}
+  pytest -x --disable-warnings
 }
 
 package() {
-	cd "$_pkg-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

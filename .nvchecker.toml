@@ -1,0 +1,5 @@
+[python-m2r2]
+source = "github"
+github = "crossnox/m2r2"
+use_max_tag = "true"
+prefix = "v"
