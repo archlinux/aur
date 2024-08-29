@@ -1,9 +1,19 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xterminal-bin
 _pkgname=XTerminal
-pkgver=1.25.1
+_pkgver_aarch64=1.25.1
+_pkgver_x86_64=1.32.5
+case "${CARCH}" in
+    aarch64)
+        pkgver="${_pkgver_aarch64}"
+        _electronversion=30
+    ;;
+    x86_64)
+        pkgver="${_pkgver_x86_64}"
+        _electronversion=31
+    ;;
+esac
 #update:https://txc.qq.com/products/598955/change-log
-_electronversion=30
 pkgrel=1
 pkgdesc="不仅是强大的SSH工具，更提供本地控制台，以及更多即将推出的开发相关功能，让您专注于创造卓越的代码"
 arch=(
@@ -25,12 +35,12 @@ source=(
     "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::https://cdn-cn.xterminal.cn/xterminal/${_pkgname}-${pkgver}-linux-arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::https://cdn-cn.xterminal.cn/xterminal/${_pkgname}-${pkgver}-linux-amd64.deb")
+source_aarch64=("${pkgname%-bin}-${_pkgver_aarch64}-aarch64.deb::https://cdn-cn.xterminal.cn/downloads/${_pkgname}-${_pkgver_aarch64}-linux-arm64.deb")
+source_x86_64=("${pkgname%-bin}-${_pkgver_x86_64}-x86_64.deb::https://cdn-cn.xterminal.cn/downloads/${_pkgname}-${_pkgver_x86_64}-linux-amd64.deb")
 sha256sums=('8d08a959e0086a206ef3454cc0fc323454c73609cd764f102d8d2d076dafa0af'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 sha256sums_aarch64=('921222e7b58b89575da8f44f3b372732e719f909174d5410f1fad89bf8d62861')
-sha256sums_x86_64=('db1f38fbee2fce7dab84323b445e73d22eb206fe75c8222bdaae50de39cb0136')
+sha256sums_x86_64=('cc2a03228a7acd504c9b4ef16892c35aada464b5f82c6f1fc5c83e49509aea5d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
