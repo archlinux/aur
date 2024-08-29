@@ -4,7 +4,7 @@
 
 pkgname=('teleport' 'teleport-client')
 _pkgname=teleport
-pkgver=16.1.8
+pkgver=16.2.0
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
@@ -106,9 +106,9 @@ package_teleport-client() {
     install -Dm755 build/tbot "${pkgdir}/usr/bin/tbot"
     install -Dm755 build/fdpass-teleport "${pkgdir}/usr/lib/teleport/fdpass-teleport"
 }
-sha512sums=('298f037c684cc16ea8a03def635fc09eab9f1c99d6961bbee3eb6d1af8922de8f671766f3c92e2e9be962d6b6072265f66e2e0f3d86865f3ec72a5afebb2863e'
+sha512sums=('a441ca763d828ce8f9fbc163fb3d25be85aa2aeacaa92f6e8806bc40fe3cf665c362dfd631ce2981c28964a96e1215ad10719f5439c184557a82dfffba1fb4cc'
             'bf13a77d1cdaa0c3e09034ede9acdf6834a7e21dbb18b0f9d8f46917be9772416edba7f0001cd38f6124564c0c31549f8d7048dd7a9f5ad76ff8e02f4451f044'
             '409116e201c40b7e0a379b316123500ab7691cbf441ecee048811885f97cd1185671676bb61bf36cb288399e8c0355a0a9f963ce7f94e44ba49e061187c9249e'
             '469249bebaa974e5e205c66c0459ed071b06a35aa9b94a3f34d3cbc5e75aa0f290d70ba8e5c63b49a6319a0f524a846ded459e07e3dde4c260e7668959821b96'
             '8e7092082e0ba074c1f055d895229d8554a3b0f308447ddef9355b18502425ce28392420d22479c1b7d1001a9d0673645a1b4a66ac57c8d1d60df1c2b59bb73d'
-            '4d6068da4cb14dc42f41a8a0b8d9ea84671e8237df0dbb00c2204e578c05c60cf152c0c596d3f2a6550d1b995cf1cbe6debb8eb7a7f8e38e99b0cc7d10ba246a')
+            '9e3b98d028c81b64a32c52c266d624fa88127b3dcdb57b8c94757f1a199a10cc863973869a172b744070c2572d047be0a7b1518dd53e6b68461372ddbfa93c0d')
