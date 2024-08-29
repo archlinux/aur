@@ -1,22 +1,21 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="nak"
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="A command line tool for doing all things nostr"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/fiatjaf/${pkgname}"
 license=("Unlicense")
 makedepends=('go')
 depends=('glibc')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0a9022173c22a3a04cc8756c244b2f38263a62082348f7de985d868ff713891e')
+sha256sums=('046c2cd8dbac4b6907a8c059ff2facaa93eb72b0640c59fd673a3e64b0b0b329')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   mkdir -p "build"
-  go mod download
 }
 
 build() {
