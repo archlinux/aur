@@ -1,6 +1,6 @@
 pkgbase = webs-tray-git
 	pkgdesc = 📌Inspired by WebStay. WebsTray allows you to pin any web apps to system tray.
-	pkgver = 1.0.0.alpha.r1.gbe5566b
+	pkgver = 1.0.0.r0.gc5ab380
 	pkgrel = 1
 	url = https://github.com/symant233/WebsTray
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = webs-tray-git
 	makedepends = curl
 	makedepends = git
 	depends = electron31
-	provides = webs-tray=1.0.0.alpha
+	provides = webs-tray=1.0.0
 	conflicts = webs-tray
 	source = webs-tray.git::git+https://github.com/symant233/WebsTray.git
 	source = webs-tray.sh
