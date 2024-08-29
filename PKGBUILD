@@ -1,7 +1,7 @@
 # Maintainer: XIAYM <xiaym123@qq.com>
 
 pkgname=simmusic-git
-pkgver=0.1.2+69f1f81
+pkgver=0.1.3+f03b02f
 pkgrel=1
 pkgdesc="A Simple, Pure & Fluent Music Player based on Electron"
 arch=("i686" "x86_64" "aarch64")
