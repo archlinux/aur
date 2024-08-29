@@ -1,0 +1,4 @@
+[pypy3-installer]
+source = "github"
+github = "pypa/installer"
+use_max_tag = "true"
