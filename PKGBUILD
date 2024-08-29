@@ -1,7 +1,7 @@
 pkgbase=rhapsody-bin
 pkgname=("rhapsody-sampler-standalone-bin" "rhapsody-sampler-vst3-bin")
-pkgver=2.3.3
-pkgrel=3
+pkgver=2.5.1
+pkgrel=1
 arch=('x86_64')
 license=('EULA')
 url="https://librewave.com/rhapsody/"
