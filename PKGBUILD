@@ -2,7 +2,7 @@
 _pkg='clash-flutter'
 pkgname="${_pkg}-git"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Flutter based GUI for Clash.Meta kernel'
 arch=('x86_64' 'aarch64')
 url='https://github.com/hellopoisonx/clash-flutter'
@@ -42,6 +42,7 @@ function package() {
 "/usr/share/${_pkg}/lib"
 END
   setcap cap_net_bind_service,cap_net_admin+ep "$pkgdir/usr/share/$_pkg/$_pkg"
+  ldconfig -p
 }
 sha256sums=('SKIP'
   'c17e6a0592307461733a5938d920ecf13e10843a2f109eadc328215ff2518236')

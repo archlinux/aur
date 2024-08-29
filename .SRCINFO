@@ -1,7 +1,7 @@
 pkgbase = clash-flutter-git
 	pkgdesc = A Flutter based GUI for Clash.Meta kernel
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hellopoisonx/clash-flutter
 	arch = x86_64
 	arch = aarch64
