@@ -1,0 +1,5 @@
+[python-freetype-py]
+source = "github"
+github = "rougier/freetype-py"
+use_latest_release = "true"
+prefix = "v"
