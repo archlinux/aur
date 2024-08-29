@@ -1,32 +1,34 @@
 pkgbase = inter-doom-git
-	pkgver = r4735.2bdf44a4
+	pkgver = 7.x.x.r675
 	pkgrel = 1
-	url = https://github.com/JNechaevsky/inter-doom
+	url = https://github.com/JNechaevsky/international-doom
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = cmake
-	makedepends = python3
 	depends = sdl2>=2.0.18
 	depends = sdl2_mixer>=2.0.2
 	depends = sdl2_net>=2.0.0
 	depends = libsamplerate
-	source = git+https://github.com/JNechaevsky/inter-doom.git
+	depends = fluidsynth>=2.2.0
+	source = git+https://github.com/JNechaevsky/international-doom.git
+	source = 001_install_rule.patch
 	b2sums = SKIP
+	b2sums = 653663f4e6ea5c26b85553bb9a50fce166973471ced0a7cd874bdb6dcad99a21b0d0c3084cb36ca34218c784c8f9611bcbba75ffbc53aeb59a7ecbbe8090f080
 
 pkgname = inter-doom-git
-	pkgdesc = A limit-removing source port of Doom with enhancements and translation to the Russian language (git version)
+	pkgdesc = Small, functional and simple Doom source port, created with help, efforts and bits of code from people around the world (git version)
 	optdepends = doom1-wad: Doom shareware game data
 	conflicts = inter-doom
 
 pkgname = inter-heretic-git
-	pkgdesc = A limit-removing source port of Heretic with enhancements and translation to the Russian language (git version)
+	pkgdesc = Small, functional and simple Heretic source port, created with help, efforts and bits of code from people around the world (git version)
 	optdepends = heretic1-wad: Heretic shareware game data
 	conflicts = inter-heretic
 
 pkgname = inter-hexen-git
-	pkgdesc = A limit-removing source port of Hexen with enhancements and translation to the Russian language (git version)
+	pkgdesc = Small, functional and simple Hexen source port, created with help, efforts and bits of code from people around the world (git version)
 	optdepends = hexen1-wad: Hexen demo game data
 	conflicts = inter-hexen
