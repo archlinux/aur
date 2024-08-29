@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-cpan-distnameinfo'
-pkgver='0.12'
+pkgver='0.12_01'
 pkgrel='1'
 pkgdesc="Extract distribution name and version from a distribution filename"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl>=0')
 makedepends=()
-url='http://search.cpan.org/dist/CPAN-DistnameInfo'
-source=('http://search.cpan.org/CPAN/authors/id/G/GB/GBARR/CPAN-DistnameInfo-0.12.tar.gz')
-md5sums=('06bc803c0e4fb7735ddc7282163f1cc3')
-sha512sums=('f52eb88b87ab732d13c2ee4e4770cf27c249d2b2446b51e75abe31f2a70b8dc7d8370f4c4426fa68cc8fa7a905668dfdcd1387cd98e239393bde90d1965929f1')
-_distdir="CPAN-DistnameInfo-0.12"
+url='https://metacpan.org/release/CPAN-DistnameInfo'
+source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/CPAN-DistnameInfo-0.12_01.tar.gz')
+md5sums=('e90b6b9f418d6b7b16174e683104351e')
+sha512sums=('b2cc9a201e41721a4abe6e117ef2bff4835397855ecff5f86bbbc703816cebc2114010c909b16cd3659d07b7db6b5efbde6f5f3627c4e8c776ff07b37ead1b3b')
+_distdir="CPAN-DistnameInfo-0.12_01"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
