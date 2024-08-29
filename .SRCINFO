@@ -1,22 +1,24 @@
 pkgbase = inter-heretic
-	pkgdesc = A limit-removing source port of Heretic with enhancements and translation to the Russian language
-	pkgver = 6.1.1
+	pkgdesc = Small, functional and simple Heretic source port, created with help, efforts and bits of code from people around the world
+	pkgver = 7.1
 	pkgrel = 1
-	url = https://github.com/JNechaevsky/inter-doom
+	url = https://github.com/JNechaevsky/international-doom
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = cmake
-	makedepends = python3
 	depends = sdl2>=2.0.18
 	depends = sdl2_mixer>=2.0.2
 	depends = sdl2_net>=2.0.0
 	depends = libsamplerate
+	depends = fluidsynth>=2.2.0
 	optdepends = heretic1-wad: Heretic shareware game data
 	conflicts = inter-heretic-git
-	source = inter-heretic-6.1.1.tar.gz::https://github.com/JNechaevsky/inter-doom/archive/refs/tags/heretic-6.1.1.tar.gz
-	b2sums = 2675dbb1c3e47cdbcfaa5329b4e8772adee16b32a7c43110a07f38de0c503e9fdbbbe7d59555585df556cd002428c6f990014795d94ab45ca6d4784d377554e4
+	source = inter-heretic-7.1.tar.gz::https://github.com/JNechaevsky/inter-doom/archive/refs/tags/7.5.tar.gz
+	source = 001_install_rule.patch
+	b2sums = 1bee87ea72cd367872808b632ddded5c58fc9b10aa8723751cf28f8f22b5388f3797ba117e914678a6060c4f68dee0ab69e9ed5b671ddfda62cc0f74fefbd000
+	b2sums = 192d399a83f8e5428909f8100eaab6df52da4e22ef1f0fcb171b38b7287a700c891b3f8bab83ba57691b7ab0af74c86973c67eb22831ab566f1ce4a7bbec7591
 
 pkgname = inter-heretic
