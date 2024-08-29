@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=btlescan
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="BTLE/Bluetooth Scanner"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'dbus')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('3b58aabc3cedd391aaca504e46b383926995a100acee386e034d7229ab4825cc4469210bfdc874a7859a398e85306299d09391b4f56ae82ce0d0eacccd16fcd0')
+sha512sums=('cb6384919050a61adf553c17df8c71433f03e424863fd3d8605ac17802584ce2a43be04dcdffd5825bdffa8f97da9be4231ba1ca92331d92184936a43e986e2c')
 
 prepare() {
   cd "$pkgname-$pkgver"
