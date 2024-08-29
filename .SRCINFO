@@ -16,6 +16,7 @@ pkgbase = hplip-minimal
 	optdepends = cups: for printing support
 	provides = hplip
 	conflicts = hplip
+	conflicts = hplip-lite
 	conflicts = hplip-plugin
 	backup = etc/hp/hplip.conf
 	source = https://downloads.sourceforge.net/hplip/hplip-3.24.4.tar.gz
