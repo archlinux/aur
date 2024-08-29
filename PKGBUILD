@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=imfile-git
 _pkgname=imFile
-pkgver=1.1.0.r10.g9db5d5a
-_electronversion=30
+pkgver=1.1.2.r0.gb58a683
+_electronversion=31
 _nodeversion=20
 pkgrel=1
 pkgdesc="A full-featured download manager.Forked from motrix."
@@ -71,6 +71,7 @@ build() {
         export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+        export SASS_BINARY_SITE=https://registry.npmmirror.com/mirrors/node-sass
     else
         echo "Your network is OK."
     fi
