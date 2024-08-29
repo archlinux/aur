@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Winbox Beta
+Comment=Configuration tool for MikroTik RouterOS (native beta version)
+Exec=/usr/bin/winbox-beta
+Icon=winbox-beta
+Terminal=false
+Categories=Utility
