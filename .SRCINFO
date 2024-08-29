@@ -1,7 +1,7 @@
 pkgbase = adbmanager-bin
 	pkgdesc = ADB manager for Android devices
 	pkgver = 3.1
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/AKotov-dev/adbmanager
 	arch = x86_64
 	license = GPL-3.0-only
@@ -14,6 +14,6 @@ pkgbase = adbmanager-bin
 	source = adbmanager-3.1.deb::https://github.com/AKotov-dev/adbmanager/releases/download/v3.1/adbmanager_3.1-0.mrx8_amd64.deb
 	source = adbmanager.sh
 	sha256sums = 9f72d0df060a7877088bee9cb81761fefa59ab8f11f01c7ab4d11855749d8725
-	sha256sums = 11873edcbca4ba6ad3ff5950c5849bd0a387f4f0a6ccbca9208491ec8c95fc32
+	sha256sums = c8d1d758c9a697beed2ad2289a879dd22d302717264c1a99bf27471a4b2bfbb0
 
 pkgname = adbmanager-bin
