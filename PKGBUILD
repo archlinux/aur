@@ -36,4 +36,5 @@ package() {
     mkdir -p "${pkgdir}/opt/modrinth-app"
     mv "${pkgdir}/usr/bin/theseus_gui" "${pkgdir}/opt/modrinth-app/"
     install -Dm755 "${srcdir}/modrinth-app" "${pkgdir}/usr/bin/"
+    install -Dm755 "${srcdir}/modrinth-app" "${pkgdir}/usr/bin/theseus_gui"
 }
