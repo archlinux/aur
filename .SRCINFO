@@ -1,27 +1,27 @@
 pkgbase = bookman-cockpit
 	pkgdesc = Bookman Cockpit
-	pkgver = 1.15.0
-	pkgrel = 4
+	pkgver = 1.16.0
+	pkgrel = 1
 	url = https://www.bookman.de/
 	arch = any
 	license = custom
 	makedepends = jdk17-openjdk
 	makedepends = unzip
-	depends = java-environment=17
-	depends = java17-openjfx
+	depends = java-environment=21
+	depends = java21-openjfx
 	depends = ttf-liberation
 	options = !strip
-	source = installer-1.15.0.exe::https://bit.ly/3smjJRP
+	source = installer-1.16.0.exe::https://cockpit.bookman-gmbh.de/api/java/update/newest/WINDOWS/file
 	source = https://maven.ej-technologies.com/repository/com/install4j/install4j-runtime/9.0.7/install4j-runtime-9.0.7.jar
 	source = OperatingSystemUtil.java
 	source = logback.xml
 	source = bookman-cockpit.desktop
 	source = bookman-cockpit.sh
-	sha256sums = 81553ad3f07740bad70ede14819ef053fe0f3bd4352748a78072eb6ebf47676c
+	sha256sums = 8d12ece9d226bd5b9525ca6cba4a6b61fef8f792e5e77fc055331c2c5c433c50
 	sha256sums = 5a0bd9ca7d0632eec36d9f3b4980741f70e47511ee070c1da6c7c778ed058106
 	sha256sums = f2a742dabb4f1ac32867c3ba152355695220e4bd4a7ba032de98e3c5d2ed3309
 	sha256sums = ef6cf40ff0a46853f2d5308c884e17328a6a36009f5697d5914bfbb720cac261
 	sha256sums = 32db57235ad25fadb8b2a4a02f7618c7a51df33b50df780613f06cb33fb977e3
-	sha256sums = a7a35a78978803e1109c3511a8fc1666162dcc754a84aee392e4c233bce31c45
+	sha256sums = ea33865658911fcafb54d9898f4823d854bddc9877ba14f59b7534c7eed93970
 
 pkgname = bookman-cockpit

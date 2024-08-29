@@ -2,9 +2,9 @@
 
 set -eu
 
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 home="${XDG_CONFIG_HOME:-"$HOME/.config"}/bookman-cockpit"
-if ! jfx_libs="$(readlink -f /usr/lib/jvm/java-17*-openjfx/lib)"
+if ! jfx_libs="$(readlink -f /usr/lib/jvm/java-21*-openjfx/lib)"
 then
     jfx_libs="$JAVA_HOME/lib"
 fi
