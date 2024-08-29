@@ -1,0 +1,31 @@
+pkgbase = python-n2-git
+	pkgdesc = A lightweight approximate Nearest Neighbor library
+	pkgver = 0.1.7.r27.g20b02de
+	pkgrel = 1
+	url = https://github.com/kakao/n2
+	arch = x86_64
+	license = Apache-2.0
+	checkdepends = python-nose
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools>=18
+	makedepends = boost
+	makedepends = cython
+	makedepends = eigen
+	makedepends = spdlog
+	depends = gcc-libs
+	depends = fmt
+	depends = glibc
+	depends = python
+	provides = python-n2=0.1.7
+	conflicts = python-n2
+	source = n2::git+https://github.com/kakao/n2.git
+	source = python-n2_fix_libfmt_linking.patch
+	source = python-n2_fix_spdlog1.patch
+	sha256sums = SKIP
+	sha256sums = 7d91e614d0375942c645d4a4bd0c8a23de5f2db3f69066d12d538f6f470f87db
+	sha256sums = 4ac4fd901ccfa9c3219adba6a7373fc3fa25f9494c372e4fd989b9fdb6d03696
+
+pkgname = python-n2-git
