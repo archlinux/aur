@@ -1,13 +1,13 @@
 pkgbase = polytope-cli-bin
 	pkgdesc = Polytope is a programmable software development platform. This package installs CLI for managing polytope-managed services
-	pkgver = 0.1.28
+	pkgver = 0.1.30
 	pkgrel = 1
 	url = https://github.com/polytopelabs/homebrew-tap
 	arch = x86_64
 	license = Unknown
 	options = !strip
 	options = !debug
-	source = pt-0.1.28-linux-amd64.gz::https://polytope.com/releases/polytope-cli-0.1.28-linux-amd64.gz
+	source = pt-0.1.30-linux-amd64.gz::https://polytope.com/releases/polytope-cli-0.1.30-linux-amd64.gz
 	sha256sums = 716bf2e7e97af4c7a8c9b31f517f3e72ef678fa912fe51e36582f5cf43338aca
 
 pkgname = polytope-cli-bin

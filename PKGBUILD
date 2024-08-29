@@ -1,5 +1,5 @@
 pkgname=polytope-cli-bin
-pkgver=0.1.28
+pkgver=0.1.30
 pkgrel=1
 pkgdesc="Polytope is a programmable software development platform. This package installs CLI for managing polytope-managed services"
 arch=('x86_64')
