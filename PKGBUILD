@@ -2,7 +2,7 @@
 
 pkgname=java21-openjfx-bin
 pkgver=21.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Java OpenJFX ${pkgver} client application platform (Gluon build)."
 arch=('x86_64')
 url='https://openjfx.io/'
@@ -18,7 +18,7 @@ sha256sums=('110259a41bbc3c6d9d477b753d3ff7337ee78bc40b06405c40ddb6a68da748d4'
             '2412d689c724f60c39ea878d8a3bd4c6abfb5d9856cafc1cc8a49e28dc12d221'
             'c1c3c754ccc3bd1eaf8edb6f7004f9afa69f4d66d417234682a4074aa6558683')
 
-_jvmdir=usr/lib/jvm/java-21-openjfx
+_jvmdir=usr/lib/jvm/java-21-openjdk
 
 package() {
     # Install
