@@ -61,7 +61,7 @@ _pkgbase="localai"
 pkgbase="${_pkgbase}-git"
 pkgname=()
 pkgver=2.20.1.37.gae6d3276
-pkgrel=1
+pkgrel=2
 pkgdesc="Self-hosted OpenAI API alternative - Open Source, community-driven and local-first."
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
@@ -112,7 +112,6 @@ _python_depends=(
 
 # python backends and their local dependencies
 _python_backends=(
-  "autogptq auto-gptq"
   "bark bark"
   "coqui coqui-tts"
   "diffusers diffusers compel optimum-quanto"
@@ -121,7 +120,6 @@ _python_backends=(
   "transformers"
   "transformers-musicgen"
   "vall-e-x"
-  "vllm vllm"
 )
 
 makedepends=(

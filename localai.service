@@ -21,46 +21,58 @@ EnvironmentFile=%E/%N/%N.conf
 EnvironmentFile=-%S/%N/.env
 
 # start server
-ExecStart==bash -c '\
-  python_backends=""; \
+ExecStart=bash -c '\
+  grpc_backends=""; \
   if test -n "$ARCH_LOCALAI_PYTHON_BACKENDS"; then \
-    python_backends=(${(f)"$(echo $ARCH_LOCALAI_PYTHON_BACKENDS)"}); \
-    for line in "${python_backends[@]}"; do \
-      entry="${line%% *}:%S/%N/backend-assets/grpc/python/${line%% *}/run.sh"; \
-      if test -z "python_backends"; then \
-        python_backends="--external-grpc-backends=$entry"; \
-      else \
-        python_backends="$python_backends,$entry"; \
+    while IFS= read -r line; do \
+      if test -n "$line"; then \
+        name=$(echo "$line" | sed -r "s/([^ ]+) .*/\\1/g"); \
+        entry="$name:%S/%N/backend-assets/grpc/python/$name/run.sh"; \
+        if test -z "$grpc_backends"; then \
+          grpc_backends="--external-grpc-backends=$entry"; \
+        else \
+          grpc_backends="$grpc_backends,$entry"; \
+        fi; \
       fi; \
-    done; \
+    done <<< "$ARCH_LOCALAI_PYTHON_BACKENDS"; \
+    echo "grpc_backends: $grpc_backends"; \
   fi; \
   /usr/bin/localai run \
     --audio-path="%T/%N/audio" \
     --backend-assets-path="%S/%N" \
     --config-path="%S/%N" \
-    $python_backends \
     --image-path="%T/%N/images" \
     --localai-config-dir="%S/%N/config" \
     --models-path="%S/%N/models" \
     --upload-path="%T/%N/upload" \
+    $grpc_backends \
 '
 
 # create virtualenvs for python backends, recreate if localai is newer than venv
 ExecStartPost=bash -c 'sleep 3;\
-if test -n "$ARCH_LOCALAI_PYTHON_BACKENDS"; then \
-  python_backends=(${(f)"$(echo $ARCH_LOCALAI_PYTHON_BACKENDS)"}); \
-  for line in "${python_backends[@]}"; do \
-    backend="${line%% *}"; dependencies=""; \
-    if test "$backend" != "$line"; then dependencies="${line#* }"; fi; \
-    bedir="%S/%N/backend-assets/grpc/python/$backend"; \
-    if test /usr/bin/localai -nt $bedir/venv; then rm -r $bedir/venv; fi; \
-    if test ! -d $bedir/venv; then \
-      echo "re/creating $bedir"; \
-      uv venv --system-site-packages $bedir/venv; \
-      if test -n "$dependencies"; then uv pip install $dependencies; fi \
-    fi; \
-  done; \
-fi'
+  if test -n "$ARCH_LOCALAI_PYTHON_BACKENDS"; then \
+    while IFS= read -r line; do \
+      if test -n "$line"; then \
+        backend=$(echo "$line" | sed -r "s/([^ ]+) .+/\\1/g"); \
+        deps=""; \
+        if test "$backend" != "$line"; then \
+          deps=$(echo "$line" | sed -r "s/[^ ]+ (.+)/\\1/g"); \
+        fi; \
+        bedir="%S/%N/backend-assets/grpc/python/$backend"; \
+        if test /usr/bin/localai -nt $bedir/venv; then \
+          if test -e $bedir/venv; then rm -r $bedir/venv; fi; \
+        fi; \
+        if test ! -d $bedir/venv; then \
+          echo "re/creating venv: $backend with packages: $deps, in dir: $bedir"; \
+          uv venv --system-site-packages $bedir/venv; \
+          if test -n "$deps"; then \
+            echo "venv $backend: installing deps: $deps"; \
+            VIRTUAL_ENV=$bedir/venv uv pip install $deps; \
+          fi \
+        fi; \
+      fi; \
+    done <<< "$ARCH_LOCALAI_PYTHON_BACKENDS"; \
+  fi'
 
 # make some time for virtualenvs to be installed
 TimeoutStartSec=180
