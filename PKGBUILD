@@ -7,13 +7,13 @@
 
 pkgname=libgaminggear
 pkgver=0.15.1
-pkgrel=8
+pkgrel=9
 pkgdesc="Provides functionality for gaming input devices"
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('GPL-2.0-or-later')
 url="http://sourceforge.net/projects/libgaminggear/"
 depends=('libnotify' 'libcanberra' 'gtk2' 'sqlite3>=3.7' 'python')
-makedepends=('cmake>=3.0' 'doxygen' 'harfbuzz')
+makedepends=('cmake>=3.0' 'doxygen' 'harfbuzz' 'glib2-devel')
 source=(http://downloads.sourceforge.net/project/libgaminggear/${pkgname}-${pkgver}.tar.bz2
         harfbuzz-headers.patch)
 sha512sums=('a6635a74557f276ab65eda4610ba8a053fedf10f9d898a1dc875082a36b2822544f61fc7a274691673670b12d4de968aa4921d102a588f3d0777397730082990'
@@ -36,5 +36,5 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
-    make DESTDIR=${pkgdir} install
+    make DESTDIR="${pkgdir}" install
 }

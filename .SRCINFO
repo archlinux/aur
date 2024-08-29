@@ -1,14 +1,15 @@
 pkgbase = libgaminggear
 	pkgdesc = Provides functionality for gaming input devices
 	pkgver = 0.15.1
-	pkgrel = 8
+	pkgrel = 9
 	url = http://sourceforge.net/projects/libgaminggear/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = cmake>=3.0
 	makedepends = doxygen
 	makedepends = harfbuzz
+	makedepends = glib2-devel
 	depends = libnotify
 	depends = libcanberra
 	depends = gtk2
@@ -20,4 +21,3 @@ pkgbase = libgaminggear
 	sha512sums = be38e9b5ee04e2425548e532b219c27f12345c5ed0c7b7e3082d2f5e5990ecf12e84daef8fa71289826f841fd57901898957f05d7da92de9b389ab2c4d2acdc0
 
 pkgname = libgaminggear
-
