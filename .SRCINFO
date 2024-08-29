@@ -1,0 +1,14 @@
+pkgbase = meow-git
+	pkgdesc = A better AUR helper, powered by nim
+	pkgver = 1.0.0.r0.gabc1234
+	pkgrel = 1
+	url = https://gitlab.com/Maxb0tbeep/meow
+	arch = x86_64
+	license = GPLv3
+	makedepends = nim
+	makedepends = git
+	provides = meow
+	source = git+https://gitlab.com/Maxb0tbeep/meow.git#branch=main
+	md5sums = SKIP
+
+pkgname = meow-git
