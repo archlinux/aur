@@ -1,22 +1,38 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=python-findpeaks
-pkgver=2.6.4
+pkgver=2.6.5
 pkgrel=1
 pkgdesc="Detection of peaks and valleys in vectors and images"
 url='https://erdogant.github.io/findpeaks/'
 arch=('any')
 license=('MIT')
+
 depends=(
-  'python-caerus' 'python-joblib' 'python-matplotlib' 'python-numpy' 'python-pandas'
-  'python-peakdetect' 'python-requests' 'python-scipy' 'python-tqdm' 'python-xarray'
+  'python-caerus'
+  'python-joblib'
+  'python-matplotlib'
+  'python-numpy'
+  'python-pandas'
+  'python-requests'
+  'python-scipy'
+  'python-tqdm'
+  'python-xarray'
 )
 optdepends=(
-  'python-opencv: for loading example images'
+  'python-opencv: for working with images and loading examples'
   'python-tabulate: to run example scripts'
 )
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=('python-opencv' 'python-pytest')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+checkdepends=(
+  'python-opencv'
+  'python-pytest'
+)
 
 _pypi=findpeaks
 source=(
@@ -27,7 +43,7 @@ source=(
   'include_example_datasets.patch'
 )
 sha256sums=(
-  'caf1ae76e7ecc5bb1816474d111d272d7d7e931732769880162fec9fec4b1070'
+  '2a83a7b9753c59347c2290474f977684abd4df82f465917de12ef053d82b3e54'
   'cde41d4a434c2c8d0f7273283796e9d5ed621f6877556cc2504b271e6fe6b329'
   'ea0f10f39f73363fe5e41b6bac51b33b13213fc1770d510ac29d3dbac661e474'
   'a1a2c8894ce3d4246c37f6582278d5fe9bacc621e862795e8e171b5c40cc2d55'
@@ -55,12 +71,12 @@ build() {
 
 check() {
   cd "$_pypi-$pkgver"
-  pytest -v -k "not test_fit"  # Fails locally and on upstream CI.
+  pytest -v -k "not test_fit"
 }
 
 package() {
   cd "$_pypi-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/"findpeaks-$pkgver"*.whl
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "LICENSE"
 
   # Move the example script to /usr/share
