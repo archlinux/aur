@@ -6,16 +6,16 @@
 
 _target=riscv64-linux-uclibc
 pkgname=$_target-gcc
-pkgver=12.2.0
+pkgver=14.2.0
 pkgrel=1
 pkgdesc='Cross compiler for 32-bit and 64-bit RISC-V'
 arch=('x86_64')
 url='https://gcc.gnu.org/'
-license=('GPL' 'LGPL' 'FDL')
+license=(GPL3-3.0-with-GCC-exception GFDL-1.3-or-later)
 depends=("$_target-binutils" "$_target-uclibcng" 'libmpc' 'libisl' 'zstd')
 options=('!emptydirs' '!strip' '!lto')
 source=("https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz")
-sha512sums=('e9e857bd81bf7a370307d6848c81b2f5403db8c7b5207f54bce3f3faac3bde63445684092c2bc1a2427cddb6f7746496d9fbbef05fbbd77f2810b2998f1f9173')
+sha512sums=('SKIP')
 
 if [[ -n "$_snapshot" ]]; then
   _basedir=gcc-$_snapshot
@@ -72,6 +72,7 @@ build() {
       --disable-libatomic \
       --disable-libgomp \
       --disable-libsanitizer \
+      --disable-libitm \
       --enable-languages=c,c++ \
       --enable-__cxa_atexit \
       --enable-clocale=gnu \
