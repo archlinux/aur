@@ -1,27 +1,27 @@
 pkgbase = imfile-bin
 	pkgdesc = A full-featured download manager.Forked from motrix.
-	pkgver = 1.1.0
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://imfile.io/
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
-	depends = electron30
+	depends = electron31
 	provides = motrix
-	provides = imfile=1.1.0
+	provides = imfile=1.1.2
 	conflicts = imfile
 	conflicts = imfile-electron
 	conflicts = motrix
-	source = LICENSE-1.1.0::https://raw.githubusercontent.com/imfile-io/imfile-desktop/v1.1.0/LICENSE
+	source = LICENSE-1.1.2::https://raw.githubusercontent.com/imfile-io/imfile-desktop/v1.1.2/LICENSE
 	source = imfile.sh
 	sha256sums = f60775e705e2c7418665ac2c7f386d28cc2927df98a440ced1703a7ed3ca86b7
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
-	source_aarch64 = imfile-1.1.0-aarch64.deb::https://github.com/imfile-io/imfile-desktop/releases/download/v1.1.0/imfile_1.1.0_arm64.deb
-	sha256sums_aarch64 = ee6be26cb754af361957bafc7efd33c0a247b3ad6793eea55b51981442ddc155
-	source_armv7h = imfile-1.1.0-armv7h.deb::https://github.com/imfile-io/imfile-desktop/releases/download/v1.1.0/imfile_1.1.0_armv7l.deb
-	sha256sums_armv7h = bd8534901216709e327d97fb07885c078dff7ce6ce806bdae51ac73b71919f2a
-	source_x86_64 = imfile-1.1.0-x86_64.deb::https://github.com/imfile-io/imfile-desktop/releases/download/v1.1.0/imfile_1.1.0_amd64.deb
-	sha256sums_x86_64 = 64d6f0d1fa1bcd8fc07e6c4322d4aca1c3a8432f62d1943c8e331caca3143ef4
+	source_aarch64 = imfile-1.1.2-aarch64.deb::https://github.com/imfile-io/imfile-desktop/releases/download/v1.1.2/imfile_1.1.2_arm64.deb
+	sha256sums_aarch64 = c3b5b9a31be780faeb81acd3fa1fcb891aee2127c27d15008bdea08496fba720
+	source_armv7h = imfile-1.1.2-armv7h.deb::https://github.com/imfile-io/imfile-desktop/releases/download/v1.1.2/imfile_1.1.2_armv7l.deb
+	sha256sums_armv7h = 6e4009f8a2dc104bb7911d71e939706555c055e2f7733a2c0d0a336ad895bd26
+	source_x86_64 = imfile-1.1.2-x86_64.deb::https://github.com/imfile-io/imfile-desktop/releases/download/v1.1.2/imfile_1.1.2_amd64.deb
+	sha256sums_x86_64 = 730f00ad9112e2b3c6bb9ed449f129500908cf26ed0a39ae8c72e43c460db67f
 
 pkgname = imfile-bin
