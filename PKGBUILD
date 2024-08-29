@@ -2,8 +2,8 @@
 
 _binname="gsa"
 pkgname="go-size-analyzer"
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.7.1
+pkgrel=1
 pkgdesc="A tool for analyzing the dependencies in compiled Golang binaries"
 arch=('x86_64')
 url="https://${_binname}.zxilly.dev"
@@ -13,7 +13,7 @@ makedepends=('go')
 depends=('glibc')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0ecd0f4ca84101374e3847b5e5e9e9c2a2ea53f857172b9641fe183519076eb3')
+sha256sums=('165730adb9f6b5e0369b17d99eb1659adb0ec130e59006086e5e12b14bf79cd4')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
