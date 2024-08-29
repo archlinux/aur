@@ -6,8 +6,8 @@
 
 _pkgname=john
 pkgname=john-git
-pkgver=1.9.0.Jumbo.1.r1012.g9a55a3744
-pkgrel=2
+pkgver=1.9.0.Jumbo.1.r1346.gef6cbe47f
+pkgrel=1
 pkgdesc="fast password cracker (using the git repository of the jumbo patch)"
 arch=('i686' 'x86_64' "aarch64")
 url="http://www.openwall.com/$_pkgname/"
@@ -96,10 +96,10 @@ package() {
   install -d "${pkgdir}/usr/share/john/opencl"
   cp -r run/opencl/* "${pkgdir}/usr/share/john/opencl"
   chmod -R o+r "${pkgdir}/usr/share/john/opencl"
-  
+
   # docs
   install -d "${pkgdir}/usr/share/doc/john"
-  cp -r doc/* "${pkgdir}/usr/share/doc/john"
+  cp -rL doc/* "${pkgdir}/usr/share/doc/john"
   rm "${pkgdir}/usr/share/doc/john/README"
   install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 doc/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
