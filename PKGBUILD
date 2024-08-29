@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile
-pkgver=0.13.4
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -35,6 +35,7 @@ depends=(bc
          moreutils
          nodejs
          pandoc-sile-git
+         parallel
          pcre
          pdftk
          perl
@@ -43,6 +44,7 @@ depends=(bc
          povray
          procps-ng
          python
+         ripgrep
          sassc
          sile
          sqlite
@@ -78,7 +80,7 @@ makedepends=(cargo
              yarn)
 _archive="$pkgname-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.zst"{,.asc})
-sha256sums=('ed8046e353433a04597b62cf7d6a5b853bcf92762ebd01ecb58a892b484482e1'
+sha256sums=('5c463357a6d2903b41d48d4ce8b241e3e2e49c1d8b788f5a0a94eaa36e73b787'
             'SKIP')
 validpgpkeys=('9F377DDB6D3153A48EB3EB1E63CC496475267693') # Caleb Maclennan <caleb@alerque.com> (@alerque)
 
@@ -87,6 +89,7 @@ prepare() {
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 	export YARN_CACHE_FOLDER="$srcdir/node_modules"
 	yarn install --production --frozen-lockfile
+	autoreconf -fi
 }
 
 _srcenv() {
