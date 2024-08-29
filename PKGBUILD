@@ -6,9 +6,9 @@
 pkgname='offpunk-git'
 _pkgname='offpunk'
 epoch=5
-pkgver=2.3.r0.gd499656
-pkgrel=2
-pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities (built from latest commit)'
+pkgver=2.3.r23.gfee3445
+pkgrel=1
+pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities (latest git commit)'
 arch=('any')
 url='https://git.sr.ht/~lioploum/offpunk'
 license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
@@ -66,6 +66,8 @@ package() {
 
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     CHANGELOG CONTRIBUTORS README.md
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/tutorial" \
+    tutorial/*.{gmi,html,py}
   install -vDm0644 -t "$pkgdir/usr/share/man/man1" \
     man/*.1
 }
