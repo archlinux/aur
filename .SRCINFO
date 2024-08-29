@@ -1,7 +1,7 @@
 pkgbase = flexo
 	pkgdesc = A central pacman cache
 	pkgver = 1.6.9
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/nroi/flexo
 	arch = x86_64
 	arch = armv6h
