@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('e5e15c046381827d6558e4cd351b73934c3812546fc85204259ea2a20e2febd9'
-            'a9783526d93e6c72c7e1551cc5cc513fd6056dcc4593abe8fac815721d32dd5a')
+            '00399409a7b7e894126c3f16e3b04c8b1ad8d00d57a757407527022909ed9490')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
@@ -31,8 +31,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/apps/${_uosname}/files/"* "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/apps/${_uosname}/files/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/apps/${_uosname}/entries/applications/${_uosname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/opt/apps/${_uosname}/entries/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }
