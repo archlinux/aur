@@ -8,15 +8,15 @@
 # Contributor: Felix Saparelli <me@passcod.name>
 
 pkgname=mongoose
-pkgver=7.14
+pkgver=7.15
 pkgrel=1
 pkgdesc="Easy to use, powerful, embeddable web server"
 arch=(any)
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('openssl')
 url="https://github.com/cesanta/mongoose"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/cesanta/mongoose/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('7c4aecf92f7f27f1cbb2cbda3c185c385f2b7af84f6bd7c0ce31b84742b15691')
+b2sums=('9d7edd3b3e7fb74769cffcaf52f12cd81a83510904d581effec962a7a935603cd3a9270fe589ff1ae5c7874a5707edb756baf5afd2459b5dc93f9f6e5d89b027')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
