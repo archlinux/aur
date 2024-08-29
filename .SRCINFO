@@ -1,7 +1,7 @@
 pkgbase = hunspell-sk
 	pkgdesc = Slovak dictionary for Hunspell
 	pkgver = 2.4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sk-spell/hunspell-sk
 	arch = any
 	license = GPL2
