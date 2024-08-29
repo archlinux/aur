@@ -1,0 +1,27 @@
+# Maintainer: Rafael Baboni Dominiquini <rafaeldominiquini AT gmail DOT com>
+pkgname=python-multiplex
+_name=multiplex
+pkgver=0.6.1
+pkgrel=1
+pkgdesc="View output of multiple processes, in parallel, in the console, with an interactive TUI."
+arch=('any')
+url="https://github.com/dankilman/multiplex"
+license=('MIT')
+depends=('python-aiofiles' 'python-aiostream' 'python-click' 'python-easyansi' 'python-wcwidth' 'python-pyte')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-poetry-core')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('4fe4a89eaeae6b33d199e772dda211ac1c3de10438c4534b790860a291c722dc')
+
+prepare() {
+	cd "$_name-$pkgver"
+}
+
+build() {
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation
+}
+
+package() {
+	cd "$_name-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+}

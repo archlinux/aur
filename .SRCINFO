@@ -1,0 +1,22 @@
+pkgbase = python-multiplex
+	pkgdesc = View output of multiple processes, in parallel, in the console, with an interactive TUI.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/dankilman/multiplex
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python-aiofiles
+	depends = python-aiostream
+	depends = python-click
+	depends = python-easyansi
+	depends = python-wcwidth
+	depends = python-pyte
+	source = https://files.pythonhosted.org/packages/source/m/multiplex/multiplex-0.6.1.tar.gz
+	sha256sums = 4fe4a89eaeae6b33d199e772dda211ac1c3de10438c4534b790860a291c722dc
+
+pkgname = python-multiplex
