@@ -1,6 +1,6 @@
 pkgbase = anki-git
 	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) efficiently
-	pkgver = r10935.eb597475c
+	pkgver = r11208.b7cb0c0d0
 	pkgrel = 1
 	url = hhttps://apps.ankiweb.net/
 	arch = any
@@ -21,7 +21,6 @@ pkgbase = anki-git
 	depends = python-protobuf
 	depends = python-orjson
 	depends = python-distro
-	depends = python-stringcase
 	depends = python-pip-system-certs
 	depends = python-send2trash
 	depends = python-markdown
