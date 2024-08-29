@@ -3,7 +3,7 @@
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 
 pkgname=hunspell-sk
-pkgver=2.4.7
+pkgver=2.4.8
 pkgrel=1
 pkgdesc="Slovak dictionary for Hunspell"
 arch=('any')
