@@ -1,6 +1,6 @@
-#!/bin/sh
-set -e
-_APPDIR=/opt/@appname@
+#!/bin/bash
+set -o pipefail
+_APPDIR=/usr/lib/@appname@
 _RUNNAME="${_APPDIR}/@runname@"
 if [ ! -f "${_APPDIR}/appdata.tar.gz" ];then
   echo "not found"
