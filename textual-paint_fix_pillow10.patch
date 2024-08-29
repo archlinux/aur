@@ -1,0 +1,13 @@
+--- a/src/textual_paint/rasterize_ansi_art.py
++++ b/src/textual_paint/rasterize_ansi_art.py
+@@ -77,7 +77,9 @@
+ 
+ ch_width: int
+ ch_height: int
+-ch_width, ch_height = font.getsize('A')  # type: ignore
++bbox = font.getbbox('A')
++ch_width = bbox[2] - bbox[0] # right - left
++ch_height = bbox[3] - bbox[1] # bottom - top
+ assert isinstance(ch_width, int), "ch_width is not an int, but a " + str(type(ch_width))  # type: ignore
+ assert isinstance(ch_height, int), "ch_height is not an int, but a " + str(type(ch_height))  # type: ignore
+ 
