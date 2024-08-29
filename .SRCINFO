@@ -10,13 +10,15 @@ pkgbase = python-img2unicode
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python>=3.7
-	depends = python-numpy
+	depends = python-numpy1>=1.19
+	depends = python-scikit-image>=0.19
 	depends = python-pillow
 	depends = python-scikit-learn
 	depends = python-click
 	depends = python-six
 	depends = python-matplotlib
 	optdepends = python-n2: for FastGammaRenderer
+	optdepends = cython: for FastGammaRenderer
 	optdepends = python-urwid: for termview
 	source = img2unicode-3356b0cd46ddaa55e9ee1854d056f817d89b99f3.tar.gz::https://github.com/matrach/img2unicode/archive/3356b0cd46ddaa55e9ee1854d056f817d89b99f3.tar.gz
 	sha256sums = 5d8ff1a1846a9c16088565c64e47c303ded8c133410b115dabc4fe8293c3224e

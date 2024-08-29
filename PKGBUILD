@@ -11,9 +11,11 @@ url="https://github.com/matrach/${_name}"
 license=('MIT')
 makedepends=('python-build' 'python-installer' 'python-wheel'
              'python-setuptools')
-depends=('python>=3.7' 'python-numpy' 'python-scikit-image' 'python-pillow'
-         'python-scikit-learn' 'python-click' 'python-six' 'python-matplotlib')
+depends=('python>=3.7' 'python-numpy1>=1.19' 'python-scikit-image>=0.19'
+         'python-pillow' 'python-scikit-learn' 'python-click' 'python-six'
+         'python-matplotlib')
 optdepends=('python-n2: for FastGammaRenderer'
+            'cython: for FastGammaRenderer'
             'python-urwid: for termview')
 _pkgsrc="${_name}-${_commit}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/${_commit}.tar.gz")
