@@ -5,3 +5,7 @@ src/
 *.pkg.tar.xz
 *.tar.gz
 *.zst
+
+*.tar
+
+*.log

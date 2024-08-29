@@ -1,7 +1,7 @@
 pkgbase = embedded-studio
 	pkgdesc = Segger Embedded Studio
-	pkgver = 8.10d
-	pkgrel = 3
+	pkgver = 8.16a
+	pkgrel = 1
 	url = https://www.segger.com/products/development-tools/embedded-studio/
 	arch = x86_64
 	arch = aarch64
@@ -9,9 +9,9 @@ pkgbase = embedded-studio
 	makedepends = libx11
 	depends = jlink-software-and-documentation
 	options = !strip
-	source_x86_64 = Setup_EmbeddedStudio_v810d_linux_x64.tar.gz::https://dl.a.segger.com/embedded-studio/Setup_EmbeddedStudio_v810d_linux_x64.tar.gz
-	md5sums_x86_64 = 96a145c508ce702c6b5b6ebb666534da
-	source_aarch64 = Setup_EmbeddedStudio_v810d_linux_arm64.tar.gz::https://dl.a.segger.com/embedded-studio/Setup_EmbeddedStudio_v810d_linux_arm64.tar.gz
-	md5sums_aarch64 = 87997d531bdcb542d3e6d8f0b6d32496
+	source_x86_64 = Setup_EmbeddedStudio_v816a_linux_x64.tar.gz::https://dl.a.segger.com/embedded-studio/Setup_EmbeddedStudio_v816a_linux_x64.tar.gz
+	md5sums_x86_64 = 34a4536142f992d7ad9fda460f861beb
+	source_aarch64 = Setup_EmbeddedStudio_v816a_linux_arm64.tar.gz::https://dl.a.segger.com/embedded-studio/Setup_EmbeddedStudio_v816a_linux_arm64.tar.gz
+	md5sums_aarch64 = 448aa35e13549353cc2994e99bf17711
 
 pkgname = embedded-studio
