@@ -50,9 +50,9 @@ build() {
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
@@ -65,9 +65,10 @@ build() {
     else
         echo "Your network is OK."
     fi
-    sed "s|- deb|- dir|g;/- AppImage/d;/- snap/d" -i package.json
-    NODE_ENV=development pnpm install
-    NODE_ENV=production pnpm run build:linux
+    sed "s|\"electron\": \"\^24.6.5\",|\"electron\": \"${SYSTEM_ELECTRON_VERSION}\",|g" -i package.json
+    sed "/- AppImage/d;/- snap/d;s|- deb|- dir|g" -i electron-builder.yml
+    NODE_ENV=development    pnpm install
+    NODE_ENV=production     pnpm run build:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
