@@ -8,17 +8,15 @@
 # Contributor: Maxim Mikityanskiy <maxtram95@gmail.com>
 
 pkgname=mathematica
-pkgver=14.0.0
+pkgver=14.1.0
 _pkgver=${pkgver%.[0-9]}
 pkgrel=1
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing with offline documentation."
 arch=('x86_64')
 url="http://www.wolfram.com/mathematica/"
-license=('proprietary')
-depends=(
-    'openmp'
-)
-makedepends=('rsync')
+license=(LicenseRef-WolframMathematicaLicenseAgreement) # https://www.wolfram.com/legal/agreements/wolfram-mathematica/
+depends=('openmp')
+makedepends=('curl' 'rsync' 'inetutils')
 optdepends=(
     ## The following list of dependencies was inferred from namcap's output.  If
     ## you believe there is an error, please let me know.  Also feel free to
@@ -74,131 +72,135 @@ optdepends=(
     'zlib'
 )
 _source_url=$(
-    curl -q "https://www.wolfram.com/download-center/mathematica/" \
-    | grep "account.wolfram.com/dl/Mathematica" \
+    curl -s 'https://www.wolfram.com/download-center/' \
+    | grep 'account.wolfram.com/dl/WolframApp' \
     | grep "version=${_pkgver}" \
-    | grep "platform=Linux" \
-    | grep -v "includesDocumentation" \
-    | sed -E 's/.*href="([^"]+)".*/\1/'
+    | grep 'platform=Linux' \
+    | grep -v 'includesDocumentation=false' \
+    | sed -E 's/.*href="([^"]+)".*/\1/' \
+    | uniq
 )
 source=(
-    "Mathematica_${pkgver}_BNDL_LINUX.sh::${_source_url}"
+    "Wolfram_${pkgver}_LIN_Bndl.sh::${_source_url}"
     "remove-xdg-scripts.patch"
 )
-md5sums=('2e9479b7622ea8d09d465ffc53a753c4'
-         '14df424ec93fad057604378c2b5c24c2')
-options=("!strip")
+sha256sums=('a67bbad0fbf7c68dfe3009032e2537c933d56db434d1d895e39bd254bf01df5d'
+            '20ba959296d418c8b00381da5abd87dc935633d44134a35e7961356bfef6a5f0')
+options=(!strip !debug)
 
-## To build this package you need to place the mathematica-installer into your
-## startdir If you don't own the installer you can download a trial version at
-## http://www.wolfram.com/mathematica/trial
+## To build this package you might need to place the mathematica-installer into
+## your startdir If you don't own the installer you can download a trial version
+## at http://www.wolfram.com/mathematica/trial
 
 ## The documentation takes up the majority of the disk space.  If you do not wish
-## to keep it, uncomment the relevant lines at the bottom of this PKGBUILD.
+## to keep it, uncomment the relevant lines at the bottom of this PKGBUILD, or
+## install https://aur.archlinux.org/packages/mathematica-light.
 
 ## The final package can be very large (especially if documentation is kept) and
 ## compression can be quite slow.  In most cases, the package is installed
 ## straight away and the package need not be kept, so compression is disabled.
 # PKGEXT='.pkg.tar'
 
-prepare() {
-    warning "Building Mathematica takes more than 24GiB of space for 'makepkg'."
-    warning "Building in a tmpfs (e.g. /tmp when mounted into RAM) may not work."
+## Here you can change the installation directory. The default is '/opt/Mathematica'.
+_installdir='/opt/Mathematica'
 
-    if [ $(echo "${srcdir}" | wc -w) -ne 1 ]; then
+prepare() {
+    warning "Building Mathematica takes around 24GiB of space for 'makepkg'."
+    warning 'Building in a tmpfs (e.g. /tmp when mounted into RAM) may not work.'
+
+    if [ "$(echo "${srcdir}" | wc -w)" -ne 1 ]; then
         msg2 "ERROR: The Mathematica installer doesn't support directory names with spaces."
         msg2 "Current build directory: ${srcdir}"
         exit 1
     fi
 
-    msg2 "Extracting Mathematica installer..."
-    sh "${srcdir}/Mathematica_${pkgver}_BNDL_LINUX.sh" \
+    msg2 'Extracting Mathematica installer...'
+    bash "${srcdir}/Wolfram_${pkgver}_LIN_Bndl.sh" \
       --keep \
       --target "${srcdir}/bundle" \
       -- \
       -help >/dev/null
 
-    patch -p1 -d "${srcdir}/bundle" < "${srcdir}/remove-xdg-scripts.patch"
+    patch -p1 -d "${srcdir}"/bundle < "${srcdir}"/remove-xdg-scripts.patch
 }
 
 package() {
-    msg2 "Running Mathematica installer"
-    # https://reference.wolfram.com/language/tutorial/InstallingMathematica.html#650929293
-    sh "${srcdir}/bundle/Unix/Installer/MathInstaller" \
+    installdir="$(realpath -m "${pkgdir}/${_installdir}")"
+
+    msg2 'Running Mathematica installer'
+    # https://reference.wolfram.com/language/tutorial/InstallingWolfram.html#650929293
+    bash "${srcdir}/bundle/Unix/Installer/WolframInstaller" \
         -execdir="${pkgdir}/usr/bin" \
-        -targetdir="${pkgdir}/opt/Mathematica" \
+        -targetdir="${installdir}" \
         -auto
 
     # Install documentation
-    sh "${srcdir}/bundle/Unix/.bundle/Unix/Installer/MathInstaller" \
+    bash "${srcdir}"/bundle/Unix/.bundle/Unix/Installer/MathInstaller \
         -targetdir="${pkgdir}/tmp" \
         -auto
-    rsync -a --remove-source-files "${pkgdir}/tmp/Documentation/English" "${pkgdir}/opt/Mathematica/Documentation"
-    rm -rf "${pkgdir}/tmp"
+    rsync -a --remove-source-files "${pkgdir}"/tmp/Documentation/English "${installdir}"/Documentation/
+    rm -rf "${pkgdir}"/tmp
 
-    if [ -s "${pkgdir}/opt/Mathematica/InstallErrors" ]; then
+    if [ -s "${installdir}"/InstallErrors ]; then
         msg2 "Review installation errors:"
-        cat "${pkgdir}/opt/Mathematica/InstallErrors"
+        cat "${installdir}"/InstallErrors
     fi
-    rm -f "${pkgdir}/opt/Mathematica/InstallErrors"
+    rm -f "${installdir}"/InstallErrors
 
-    msg2 "Fixing symbolic links"
-    cd ${pkgdir}/opt/Mathematica/Executables
-    rm wolframscript
-    ln -s /opt/Mathematica/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript
-    cd ${pkgdir}/usr/bin
-    rm *
-    ln -s /opt/Mathematica/Executables/math
-    ln -s /opt/Mathematica/Executables/mathematica
-    ln -s /opt/Mathematica/Executables/Mathematica
-    ln -s /opt/Mathematica/Executables/MathKernel
-    ln -s /opt/Mathematica/Executables/mcc
-    ln -s /opt/Mathematica/Executables/wolfram
-    ln -s /opt/Mathematica/Executables/WolframKernel
-    ln -s /opt/Mathematica/SystemFiles/Kernel/Binaries/Linux-x86-64/ELProver
-    ln -s /opt/Mathematica/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript
+    msg2 'Fixing symbolic links'
+    rm "${pkgdir}"/usr/bin/*
+    ln -sf '../SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript' "${installdir}/Executables/"
+    relative_installdir="$(realpath --relative-to="${pkgdir}/usr/bin" "${installdir}")"
+    ln -s "${relative_installdir}"/Executables/math "${pkgdir}"/usr/bin/
+    ln -s "${relative_installdir}"/Executables/MathKernel "${pkgdir}"/usr/bin/
+    ln -s "${relative_installdir}"/Executables/mcc "${pkgdir}"/usr/bin/
+    ln -s "${relative_installdir}"/Executables/wolfram "${pkgdir}"/usr/bin/
+    ln -s "${relative_installdir}"/Executables/wolframnb "${pkgdir}"/usr/bin/
+    ln -s "${relative_installdir}"/Executables/WolframKernel "${pkgdir}"/usr/bin/
+    ln -s "${relative_installdir}"/Executables/WolframNB "${pkgdir}"/usr/bin/
+    ln -s "${relative_installdir}"/SystemFiles/Kernel/Binaries/Linux-x86-64/ELProver "${pkgdir}"/usr/bin/
+    ln -s "${relative_installdir}"/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript "${pkgdir}"/usr/bin/
 
-    msg2 "Setting up WolframScript"
-    mkdir -p ${srcdir}/WolframScript
-    mkdir -p ${pkgdir}/usr/share/
-    cd ${srcdir}/WolframScript
-    bsdtar -xf ${pkgdir}/opt/Mathematica/SystemFiles/Installation/wolframscript_*_amd64.deb data.tar.xz
-    tar -xf data.tar.xz -C ${pkgdir}/usr/share/ --strip=3 ./usr/share/
+    msg2 'Setting up WolframScript'
+    mkdir -p "${srcdir}"/WolframScript
+    mkdir -p "${pkgdir}"/usr/share
+    mkdir -p "${pkgdir}"/tmp/WolframScript
+    bsdtar -xf "${installdir}"/SystemFiles/Installation/wolframscript_*_amd64.deb -C "${pkgdir}"/tmp/WolframScript data.tar.xz
+    tar -xf "${pkgdir}"/tmp/WolframScript/data.tar.xz -C "${pkgdir}" ./usr/share/
+    rm -rf "${pkgdir}"/tmp
 
-
-    msg2 "Copying menu and mimetype information"
+    msg2 'Copying menu and mimetype information'
     mkdir -p \
-          ${pkgdir}/usr/share/applications \
-          ${pkgdir}/usr/share/desktop-directories \
-          ${pkgdir}/usr/share/mime/packages
-    cd ${pkgdir}/opt/Mathematica/SystemFiles/Installation
-    desktopFile="com.wolfram.Mathematica.${_pkgver}.desktop"
-    sed -Ei "s|^(\s*TryExec=).*|\1/usr/bin/Mathematica|g" $desktopFile
-    sed -Ei "s|^(\s*Exec=).*|\1/usr/bin/Mathematica --name com.wolfram.mathematica.${_pkgver} %F|g" $desktopFile
-    printf 'Categories=Science;Education;Languages;ArtificialIntelligence;Astronomy;Biology;Chemistry;ComputerScience;DataVisualization;Geography;ImageProcessing;Math;NumericalAnalysis;MedicalSoftware;Physics;ParallelComputer;\n' >> $desktopFile
-    cp $desktopFile ${pkgdir}/usr/share/applications/
-    cp *.directory ${pkgdir}/usr/share/desktop-directories/
-    cp *.xml ${pkgdir}/usr/share/mime/packages/
+          "${pkgdir}"/usr/share/applications \
+          "${pkgdir}"/usr/share/desktop-directories \
+          "${pkgdir}"/usr/share/mime/packages
+    desktopFile="com.wolfram.Wolfram.${_pkgver}.desktop"
+    sed -Ei 's|^(\s*TryExec=).*$|\1/usr/bin/WolframNB|g' "${installdir}/SystemFiles/Installation/$desktopFile"
+    sed -Ei "s|^(\s*Exec=).*$|\1/usr/bin/WolframNB --name com.wolfram.Wolfram.${_pkgver} %F|g" "${installdir}/SystemFiles/Installation/$desktopFile"
+    echo 'Categories=Science;Education;Languages;ArtificialIntelligence;Astronomy;Biology;Chemistry;ComputerScience;DataVisualization;Geography;ImageProcessing;Math;NumericalAnalysis;MedicalSoftware;Physics;ParallelComputer;' >> "${installdir}/SystemFiles/Installation/$desktopFile"
+    cp "${installdir}/SystemFiles/Installation/$desktopFile" "${pkgdir}"/usr/share/applications/
+    cp "${installdir}"/SystemFiles/Installation/*.directory "${pkgdir}"/usr/share/desktop-directories/
+    cp "${installdir}"/SystemFiles/Installation/*.xml "${pkgdir}"/usr/share/mime/packages/
 
-    msg2 "Copying icons"
-    mkdir -p ${pkgdir}/usr/share/icons/hicolor/{32x32,64x64,128x128}/{apps,mimetypes}
-    cd ${pkgdir}/opt/Mathematica/SystemFiles/FrontEnd/SystemResources/X
+    msg2 'Copying icons'
+    mkdir -p "${pkgdir}"/usr/share/icons/hicolor/{32x32,64x64,128x128}/{apps,mimetypes}
+    cd "${installdir}"/SystemFiles/FrontEnd/SystemResources/X || exit 1
     for i in 32 64 128; do
-        cp App-${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-mathematica.png
-        for mimetype in $(ls vnd.* | cut -d '-' -f1 | uniq); do
-            cp ${mimetype}-${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/application-${mimetype}.png
+        cp App-${i}.png "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-wolfram.png
+        for mimetype in $(find . -name 'vnd.*' | cut -d '-' -f1 | uniq); do
+            mimetype="$(basename "$mimetype")"
+            cp "${mimetype}-${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/application-${mimetype}.png"
         done
     done
 
-    msg2 "Copying man pages"
-    mkdir -p ${pkgdir}/usr/share/man/man1
-    cd ${pkgdir}/opt/Mathematica/SystemFiles/SystemDocumentation/Unix
-    cp *.1 ${pkgdir}/usr/share/man/man1
+    msg2 'Copying man pages'
+    mkdir -p "${pkgdir}"/usr/share/man/man1
+    cp "${installdir}"/SystemFiles/SystemDocumentation/Unix/*.1 "${pkgdir}"/usr/share/man/man1
 
-    msg2 "Copying license"
-    mkdir -p ${pkgdir}/usr/share/licenses/Mathematica/
-    cp ${pkgdir}/opt/Mathematica/LICENSE.txt ${pkgdir}/usr/share/licenses/Mathematica/license.txt
+    msg2 'Copying license'
+    mkdir -p "${pkgdir}"/usr/share/licenses/Mathematica
+    cp "${installdir}"/LICENSE.txt "${pkgdir}"/usr/share/licenses/Mathematica/LICENSE.txt
 
-    msg2 "Fixing file permissions"
-    chmod go-w -R ${pkgdir}/*
+    msg2 'Fixing file permissions'
+    chmod go-w -R "${pkgdir}"/*
 }

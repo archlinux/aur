@@ -1,5 +1,5 @@
---- a/Unix/Installer/MathInstaller
-+++ b/Unix/Installer/MathInstaller
+--- a/Unix/Installer/WolframInstaller
++++ b/Unix/Installer/WolframInstaller
 @@ -1985,6 +1985,8 @@
  			xdgScripts="${FullTargetDirectory}/SystemFiles/Installation"
  		fi
