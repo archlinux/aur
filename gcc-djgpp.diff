@@ -1,65 +1,5 @@
-diff --git a/Makefile.in b/Makefile.in
-index 06a9398e172..c5f04e56422 100644
---- a/Makefile.in
-+++ b/Makefile.in
-@@ -1472,7 +1472,6 @@ dvi-host: maybe-dvi-itcl
- dvi-host: maybe-dvi-ld
- dvi-host: maybe-dvi-libbacktrace
- dvi-host: maybe-dvi-libcpp
--dvi-host: maybe-dvi-libcody
- dvi-host: maybe-dvi-libdecnumber
- dvi-host: maybe-dvi-libgui
- dvi-host: maybe-dvi-libiberty
-@@ -1562,7 +1561,6 @@ pdf-host: maybe-pdf-itcl
- pdf-host: maybe-pdf-ld
- pdf-host: maybe-pdf-libbacktrace
- pdf-host: maybe-pdf-libcpp
--pdf-host: maybe-pdf-libcody
- pdf-host: maybe-pdf-libdecnumber
- pdf-host: maybe-pdf-libgui
- pdf-host: maybe-pdf-libiberty
-@@ -1652,7 +1650,6 @@ html-host: maybe-html-itcl
- html-host: maybe-html-ld
- html-host: maybe-html-libbacktrace
- html-host: maybe-html-libcpp
--html-host: maybe-html-libcody
- html-host: maybe-html-libdecnumber
- html-host: maybe-html-libgui
- html-host: maybe-html-libiberty
-@@ -1742,7 +1739,6 @@ TAGS-host: maybe-TAGS-itcl
- TAGS-host: maybe-TAGS-ld
- TAGS-host: maybe-TAGS-libbacktrace
- TAGS-host: maybe-TAGS-libcpp
--TAGS-host: maybe-TAGS-libcody
- TAGS-host: maybe-TAGS-libdecnumber
- TAGS-host: maybe-TAGS-libgui
- TAGS-host: maybe-TAGS-libiberty
-@@ -1832,7 +1828,6 @@ install-info-host: maybe-install-info-itcl
- install-info-host: maybe-install-info-ld
- install-info-host: maybe-install-info-libbacktrace
- install-info-host: maybe-install-info-libcpp
--install-info-host: maybe-install-info-libcody
- install-info-host: maybe-install-info-libdecnumber
- install-info-host: maybe-install-info-libgui
- install-info-host: maybe-install-info-libiberty
-@@ -2012,7 +2007,6 @@ install-pdf-host: maybe-install-pdf-itcl
- install-pdf-host: maybe-install-pdf-ld
- install-pdf-host: maybe-install-pdf-libbacktrace
- install-pdf-host: maybe-install-pdf-libcpp
--install-pdf-host: maybe-install-pdf-libcody
- install-pdf-host: maybe-install-pdf-libdecnumber
- install-pdf-host: maybe-install-pdf-libgui
- install-pdf-host: maybe-install-pdf-libiberty
-@@ -2102,7 +2096,6 @@ install-html-host: maybe-install-html-itcl
- install-html-host: maybe-install-html-ld
- install-html-host: maybe-install-html-libbacktrace
- install-html-host: maybe-install-html-libcpp
--install-html-host: maybe-install-html-libcody
- install-html-host: maybe-install-html-libdecnumber
- install-html-host: maybe-install-html-libgui
- install-html-host: maybe-install-html-libiberty
 diff --git a/c++tools/resolver.cc b/c++tools/resolver.cc
-index d1f009cab64..ce1e29da817 100644
+index 1cd583c750c..534cb35037e 100644
 --- a/c++tools/resolver.cc
 +++ b/c++tools/resolver.cc
 @@ -33,13 +33,13 @@ along with GCC; see the file COPYING3.  If not see
@@ -79,10 +19,10 @@ index d1f009cab64..ce1e29da817 100644
  #define MAPPED_READING 1
  #else
 diff --git a/gcc/ada/adaint.c b/gcc/ada/adaint.c
-index 2a193efc002..0930c9671f8 100644
+index 74aa3c4128e..5bc56e89b37 100644
 --- a/gcc/ada/adaint.c
 +++ b/gcc/ada/adaint.c
-@@ -298,6 +298,12 @@ char __gnat_dir_separator = DIR_SEPARATOR;
+@@ -302,6 +302,12 @@ char __gnat_dir_separator = DIR_SEPARATOR;
  
  char __gnat_path_separator = PATH_SEPARATOR;
  
@@ -95,7 +35,7 @@ index 2a193efc002..0930c9671f8 100644
  /* The GNAT_LIBRARY_TEMPLATE contains a list of expressions that define
     the base filenames that libraries specified with -lsomelib options
     may have. This is used by GNATMAKE to check whether an executable
-@@ -592,7 +598,11 @@ __gnat_try_lock (char *dir, char *file)
+@@ -596,7 +602,11 @@ __gnat_try_lock (char *dir, char *file)
  int
  __gnat_get_maximum_file_name_length (void)
  {
@@ -108,10 +48,10 @@ index 2a193efc002..0930c9671f8 100644
  
  /* Return nonzero if file names are case sensitive.  */
 diff --git a/gcc/ada/gcc-interface/Make-lang.in b/gcc/ada/gcc-interface/Make-lang.in
-index 9507f2f0920..f6ca2911534 100644
+index f6404c0b1eb1..b7a161d1eae5 100644
 --- a/gcc/ada/gcc-interface/Make-lang.in
 +++ b/gcc/ada/gcc-interface/Make-lang.in
-@@ -1166,7 +1166,7 @@ ada/generated/gnatvsn.ads: ada/gnatvsn.ads BASE-VER ada/GNAT_DATE
+@@ -1200,7 +1200,7 @@ ada/generated/gnatvsn.ads: ada/gnatvsn.ads BASE-VER ada/GNAT_DATE
  	s=`cat $(srcdir)/BASE-VER | sed -e "s/\([0-9]*\)\.\([0-9]*\)\..*/-\1\2/g"`; \
  	d=`if test -f $(srcdir)/ada/GNAT_DATE; then \
             cat $(srcdir)/ada/GNAT_DATE; else date +%Y%m%d; fi`; \
@@ -121,7 +61,7 @@ index 9507f2f0920..f6ca2911534 100644
  ada/gnatvsn.o : ada/gnatvsn.adb ada/generated/gnatvsn.ads
  	$(CC) -c $(ALL_ADAFLAGS) $(ADA_INCLUDES) $< $(ADA_OUTPUT_OPTION)
 diff --git a/gcc/ada/libgnarl/s-taprop__dummy.adb b/gcc/ada/libgnarl/s-taprop__dummy.adb
-index ced2a0c6f3c..34af507e275 100644
+index 90c4cd4cf72f..fac564646408 100644
 --- a/gcc/ada/libgnarl/s-taprop__dummy.adb
 +++ b/gcc/ada/libgnarl/s-taprop__dummy.adb
 @@ -37,7 +37,7 @@
@@ -134,7 +74,7 @@ index ced2a0c6f3c..34af507e275 100644
     pragma Warnings (Off);
     --  Turn off warnings since so many unreferenced parameters
 diff --git a/gcc/ada/libgnat/s-os_lib.adb b/gcc/ada/libgnat/s-os_lib.adb
-index 2647b981b18..0d31b3f1b39 100644
+index 20e109aaa0ba..dbc5c9a8647f 100644
 --- a/gcc/ada/libgnat/s-os_lib.adb
 +++ b/gcc/ada/libgnat/s-os_lib.adb
 @@ -73,7 +73,7 @@ package body System.OS_Lib is
@@ -160,7 +100,7 @@ index 2647b981b18..0d31b3f1b39 100644
              if Path_Buffer (Index) = '/' then
                 Path_Buffer (Index) := Directory_Separator;
 diff --git a/gcc/ada/libgnat/s-os_lib.ads b/gcc/ada/libgnat/s-os_lib.ads
-index 9be09b39bf6..340fe0b9e42 100644
+index 46e11f708a20..49453581ff82 100644
 --- a/gcc/ada/libgnat/s-os_lib.ads
 +++ b/gcc/ada/libgnat/s-os_lib.ads
 @@ -1100,9 +1100,12 @@ package System.OS_Lib is
@@ -177,7 +117,7 @@ index 9be09b39bf6..340fe0b9e42 100644
     pragma Import (C, Current_Process_Id, "__gnat_current_process_id");
  
 diff --git a/gcc/ada/s-oscons-tmplt.c b/gcc/ada/s-oscons-tmplt.c
-index 5480e55a5bb..010f8204aad 100644
+index 4e512b96031..d17aec7b85e 100644
 --- a/gcc/ada/s-oscons-tmplt.c
 +++ b/gcc/ada/s-oscons-tmplt.c
 @@ -121,7 +121,7 @@ pragma Style_Checks ("M32766");
@@ -190,10 +130,10 @@ index 5480e55a5bb..010f8204aad 100644
  #endif
  
 diff --git a/gcc/collect2.cc b/gcc/collect2.cc
-index 63b9a0c233a..795bd01ca3b 100644
+index 902014a9cc1..cfe1a503532 100644
 --- a/gcc/collect2.cc
 +++ b/gcc/collect2.cc
-@@ -1159,18 +1159,27 @@ main (int argc, char **argv)
+@@ -1162,18 +1162,27 @@ main (int argc, char **argv)
    *ld1++ = *ld2++ = ld_file_name;
  
    /* Make temp file names.  */
@@ -226,7 +166,7 @@ index 63b9a0c233a..795bd01ca3b 100644
        export_file = make_temp_file (".x");
  #endif
 diff --git a/gcc/config/i386/djgpp.cc b/gcc/config/i386/djgpp.cc
-index 0b83451fda5..897079e6c68 100644
+index a553c771d4f..0519294a624 100644
 --- a/gcc/config/i386/djgpp.cc
 +++ b/gcc/config/i386/djgpp.cc
 @@ -36,6 +36,8 @@ i386_djgpp_asm_named_section(const char *name, unsigned int flags,
@@ -239,7 +179,7 @@ index 0b83451fda5..897079e6c68 100644
    /* LTO sections need 1-byte alignment to avoid confusing the
       zlib decompression algorithm with trailing zero pad bytes.  */
 diff --git a/gcc/config/i386/xm-djgpp.h b/gcc/config/i386/xm-djgpp.h
-index de2c1795dbc..4063ba28632 100644
+index ee9e400be14..6b34b8c3981 100644
 --- a/gcc/config/i386/xm-djgpp.h
 +++ b/gcc/config/i386/xm-djgpp.h
 @@ -30,6 +30,8 @@ along with GCC; see the file COPYING3.  If not see
@@ -264,7 +204,7 @@ index de2c1795dbc..4063ba28632 100644
  #define MAX_OFILE_ALIGNMENT 128
  
 diff --git a/gcc/cp/mapper-client.cc b/gcc/cp/mapper-client.cc
-index 39e80df2d25..641849f1c01 100644
+index f76fc03b76f..f4494be34e4 100644
 --- a/gcc/cp/mapper-client.cc
 +++ b/gcc/cp/mapper-client.cc
 @@ -19,7 +19,7 @@ along with GCC; see the file COPYING3.  If not see
@@ -277,10 +217,10 @@ index 39e80df2d25..641849f1c01 100644
  // will include it later under the above check
  #include <sys/socket.h>
 diff --git a/gcc/diagnostic-show-locus.cc b/gcc/diagnostic-show-locus.cc
-index 0514815b51f..6b5285b5330 100644
+index ceccc0b793d..047eab85ef8 100644
 --- a/gcc/diagnostic-show-locus.cc
 +++ b/gcc/diagnostic-show-locus.cc
-@@ -5721,7 +5721,9 @@ diagnostic_show_locus_cc_tests ()
+@@ -5796,7 +5796,9 @@ diagnostic_show_locus_cc_tests ()
    for_each_line_table_case (test_fixit_replace_containing_newline);
    for_each_line_table_case (test_fixit_deletion_affecting_newline);
    for_each_line_table_case (test_tab_expansion);
@@ -291,7 +231,7 @@ index 0514815b51f..6b5285b5330 100644
  
    test_line_numbers_multiline_range ();
 diff --git a/gcc/gcov-tool.cc b/gcc/gcov-tool.cc
-index 76173fdaef7..6fd0066ef20 100644
+index 100f7357bcf..5955592bb92 100644
 --- a/gcc/gcov-tool.cc
 +++ b/gcc/gcov-tool.cc
 @@ -58,11 +58,18 @@ static bool verbose;
@@ -326,7 +266,7 @@ index 76173fdaef7..6fd0066ef20 100644
      return -1;
  #endif
 diff --git a/gcc/ggc-common.cc b/gcc/ggc-common.cc
-index db317f49993..8d1de076010 100644
+index caf456f7244..b0d385116d5 100644
 --- a/gcc/ggc-common.cc
 +++ b/gcc/ggc-common.cc
 @@ -31,6 +31,12 @@ along with GCC; see the file COPYING3.  If not see
@@ -343,7 +283,7 @@ index db317f49993..8d1de076010 100644
  bool ggc_protect_identifiers = true;
  
 diff --git a/gcc/ginclude/float.h b/gcc/ginclude/float.h
-index 45021e48b8f..1f7f051e54b 100644
+index 47f41f90fedc..685cad344bff 100644
 --- a/gcc/ginclude/float.h
 +++ b/gcc/ginclude/float.h
 @@ -25,6 +25,10 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
@@ -358,7 +298,7 @@ index 45021e48b8f..1f7f051e54b 100644
  #define _FLOAT_H___
  
 diff --git a/include/libiberty.h b/include/libiberty.h
-index 1d5c779fcff..787507dfe93 100644
+index 32385911690..b22dbc7ea26 100644
 --- a/include/libiberty.h
 +++ b/include/libiberty.h
 @@ -108,6 +108,7 @@ extern int countargv (char * const *);
@@ -387,10 +327,10 @@ index 789ce9e70b7..8794e4dd8e6 100644
  #include <memory>
  #include <string>
 diff --git a/libcpp/files.cc b/libcpp/files.cc
-index 3f8a8106ec8..343965d84bd 100644
+index c61df339e20..42a6888451d 100644
 --- a/libcpp/files.cc
 +++ b/libcpp/files.cc
-@@ -747,6 +747,10 @@ read_file_guts (cpp_reader *pfile, _cpp_file *file, location_t loc,
+@@ -763,6 +763,10 @@ read_file_guts (cpp_reader *pfile, _cpp_file *file, location_t loc,
      cpp_error_at (pfile, CPP_DL_WARNING, loc,
  	       "%s is shorter than expected", file->path);
  
@@ -402,7 +342,7 @@ index 3f8a8106ec8..343965d84bd 100644
  				     input_charset,
  				     buf, size + 16, total,
 diff --git a/libcpp/lex.cc b/libcpp/lex.cc
-index 45ea16a91bc..b0e7a219d10 100644
+index c9e44e6cccc..4933e81dfbc 100644
 --- a/libcpp/lex.cc
 +++ b/libcpp/lex.cc
 @@ -505,6 +505,13 @@ init_vectorized_lexer (void)
@@ -429,7 +369,7 @@ index 45ea16a91bc..b0e7a219d10 100644
  }
  
 diff --git a/libffi/src/x86/sysv.S b/libffi/src/x86/sysv.S
-index c7a0fb51b48..5c724e24d8b 100644
+index c7a0fb51b48c..5c724e24d8ba 100644
 --- a/libffi/src/x86/sysv.S
 +++ b/libffi/src/x86/sysv.S
 @@ -968,7 +968,7 @@ ENDF(C(__x86.get_pc_thunk.dx))
@@ -442,7 +382,7 @@ index c7a0fb51b48..5c724e24d8b 100644
  #elif defined(HAVE_AS_X86_64_UNWIND_SECTION_TYPE)
  .section .eh_frame,EH_FRAME_FLAGS,@unwind
 diff --git a/libgcc/libgcov-util.c b/libgcc/libgcov-util.c
-index d547c103cab..d939b1e1cbb 100644
+index ba4b90a480d..e5652169bb2 100644
 --- a/libgcc/libgcov-util.c
 +++ b/libgcc/libgcov-util.c
 @@ -381,7 +381,11 @@ read_gcda_file (const char *filename)
@@ -458,10 +398,10 @@ index d547c103cab..d939b1e1cbb 100644
  {
    size_t filename_len;
 diff --git a/libgcc/libgcov.h b/libgcc/libgcov.h
-index 92df440d401..7df201fe40a 100644
+index 9d83a27ed90..10d638a5055 100644
 --- a/libgcc/libgcov.h
 +++ b/libgcc/libgcov.h
-@@ -163,6 +163,11 @@ extern struct gcov_info *gcov_list;
+@@ -159,6 +159,11 @@ extern struct gcov_info *gcov_list;
  
  #endif /* !IN_GCOV_TOOL */
  
@@ -474,7 +414,7 @@ index 92df440d401..7df201fe40a 100644
  #define IN_LIBGCOV (-1)
  #else
 diff --git a/libgfortran/intrinsics/chmod.c b/libgfortran/intrinsics/chmod.c
-index 850c2ccebbf..ee17e421c29 100644
+index 47502a7e9ec3..a9297ccb9de9 100644
 --- a/libgfortran/intrinsics/chmod.c
 +++ b/libgfortran/intrinsics/chmod.c
 @@ -445,7 +445,7 @@ clause_done:
@@ -505,7 +445,7 @@ index 850c2ccebbf..ee17e421c29 100644
  	  file_mode |= S_ISVTX;
  	else if (!is_dir)
 diff --git a/libgfortran/intrinsics/execute_command_line.c b/libgfortran/intrinsics/execute_command_line.c
-index c2bcaf05f0b..889bd637f18 100644
+index 9bf009e0f620..0a5c6fbdd3f4 100644
 --- a/libgfortran/intrinsics/execute_command_line.c
 +++ b/libgfortran/intrinsics/execute_command_line.c
 @@ -98,7 +98,7 @@ execute_command_line (const char *command, bool wait, int *exitstat,
@@ -518,7 +458,7 @@ index c2bcaf05f0b..889bd637f18 100644
        bool sig_init = __atomic_load_n (&sig_init_saved, __ATOMIC_RELAXED);
        if (!sig_init)
 diff --git a/libgfortran/io/unix.c b/libgfortran/io/unix.c
-index ba12be08252..7ac07f3f4a8 100644
+index 16600c855f2c..8ab0585ac74e 100644
 --- a/libgfortran/io/unix.c
 +++ b/libgfortran/io/unix.c
 @@ -221,6 +221,9 @@ typedef struct
@@ -531,7 +471,7 @@ index ba12be08252..7ac07f3f4a8 100644
  
  /* fix_fd()-- Given a file descriptor, make sure it is not one of the
     standard descriptors, returning a non-standard descriptor.  If the
-@@ -1222,8 +1225,13 @@ tempfile_open (const char *tempdir, char **fname)
+@@ -1221,8 +1224,13 @@ tempfile_open (const char *tempdir, char **fname)
    char *template = xmalloc (tempdirlen + 23);
  
  #ifdef HAVE_MKSTEMP
@@ -545,7 +485,7 @@ index ba12be08252..7ac07f3f4a8 100644
  
  #ifdef HAVE_UMASK
    /* Temporarily set the umask such that the file has 0600 permissions.  */
-@@ -1589,6 +1597,13 @@ open_external (st_parameter_open *opp, unit_flags *flags)
+@@ -1588,6 +1596,13 @@ open_external (st_parameter_open *opp, unit_flags *flags)
      return NULL;
    fd = fix_fd (fd);
  
@@ -560,7 +500,7 @@ index ba12be08252..7ac07f3f4a8 100644
      return NULL;
  
 diff --git a/libiberty/make-relative-prefix.c b/libiberty/make-relative-prefix.c
-index 1b970e7a773..0eb30c02a60 100644
+index 23920a8b282..9be3222a06c 100644
 --- a/libiberty/make-relative-prefix.c
 +++ b/libiberty/make-relative-prefix.c
 @@ -65,6 +65,7 @@ relative prefix can be found, return @code{NULL}.
@@ -590,7 +530,7 @@ index 1b970e7a773..0eb30c02a60 100644
      }
  
 diff --git a/libiberty/make-temp-file.c b/libiberty/make-temp-file.c
-index 1d2f21d6c5c..885d29c9c72 100644
+index 23b467035d5..15e03693c1b 100644
 --- a/libiberty/make-temp-file.c
 +++ b/libiberty/make-temp-file.c
 @@ -52,6 +52,7 @@ Boston, MA 02110-1301, USA.  */
@@ -612,7 +552,7 @@ index 1d2f21d6c5c..885d29c9c72 100644
        memoized_tmpdir = tmpdir;
  #else /* defined(_WIN32) && !defined(__CYGWIN__) */
 diff --git a/libiberty/simple-object-elf.c b/libiberty/simple-object-elf.c
-index eee07039984..2997ae21655 100644
+index c09c216656c..fdd826a1aba 100644
 --- a/libiberty/simple-object-elf.c
 +++ b/libiberty/simple-object-elf.c
 @@ -1293,7 +1293,9 @@ simple_object_elf_copy_lto_debug_sections (simple_object_read *sobj,
@@ -626,7 +566,7 @@ index eee07039984..2997ae21655 100644
      }
    eow->shdrs = XNEWVEC (unsigned char, shdr_size * (new_i - 1));
 diff --git a/libquadmath/printf/quadmath-printf.h b/libquadmath/printf/quadmath-printf.h
-index 32ebcec928c..96498b7c408 100644
+index 32ebcec928cb..96498b7c4083 100644
 --- a/libquadmath/printf/quadmath-printf.h
 +++ b/libquadmath/printf/quadmath-printf.h
 @@ -29,7 +29,8 @@ Boston, MA 02110-1301, USA.  */
@@ -649,7 +589,7 @@ index 32ebcec928c..96498b7c408 100644
  #else
  #define L_(x) x
 diff --git a/libstdc++-v3/config/os/djgpp/ctype_configure_char.cc b/libstdc++-v3/config/os/djgpp/ctype_configure_char.cc
-index 55cbcaf92c4..f3603555909 100644
+index fc4fed3546c6..8dcc81460791 100644
 --- a/libstdc++-v3/config/os/djgpp/ctype_configure_char.cc
 +++ b/libstdc++-v3/config/os/djgpp/ctype_configure_char.cc
 @@ -45,7 +45,7 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
@@ -671,7 +611,7 @@ index 55cbcaf92c4..f3603555909 100644
    {
      memset(_M_widen, 0, sizeof(_M_widen));
 diff --git a/libstdc++-v3/config/os/djgpp/error_constants.h b/libstdc++-v3/config/os/djgpp/error_constants.h
-index 834f2e04b43..f2ae54a6c76 100644
+index 758507fb126d..fa5c753e7b4c 100644
 --- a/libstdc++-v3/config/os/djgpp/error_constants.h
 +++ b/libstdc++-v3/config/os/djgpp/error_constants.h
 @@ -33,16 +33,42 @@
@@ -896,7 +836,7 @@ index 834f2e04b43..f2ae54a6c76 100644
  
  _GLIBCXX_END_NAMESPACE_VERSION
 diff --git a/libstdc++-v3/include/experimental/bits/fs_path.h b/libstdc++-v3/include/experimental/bits/fs_path.h
-index e0e47188bb9..488c3043815 100644
+index 5008e26af8d..3591d6764be 100644
 --- a/libstdc++-v3/include/experimental/bits/fs_path.h
 +++ b/libstdc++-v3/include/experimental/bits/fs_path.h
 @@ -53,6 +53,11 @@
@@ -940,7 +880,7 @@ index e0e47188bb9..488c3043815 100644
  #else
      return has_root_directory();
 diff --git a/libstdc++-v3/src/filesystem/path.cc b/libstdc++-v3/src/filesystem/path.cc
-index 4c218bdae49..6c345d2e51b 100644
+index 7dbbd4402004..5a87bfe13dbc 100644
 --- a/libstdc++-v3/src/filesystem/path.cc
 +++ b/libstdc++-v3/src/filesystem/path.cc
 @@ -411,8 +411,13 @@ path::_M_split_cmpts()
