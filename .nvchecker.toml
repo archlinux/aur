@@ -1,0 +1,5 @@
+[pypy3-build]
+source = "github"
+github = "pypa/build"
+use_max_tag = "true"
+prefix = "v"
