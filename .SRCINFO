@@ -12,7 +12,7 @@ pkgbase = alarm-clock-applet
 	makedepends = pkgconfig
 	makedepends = perl
 	makedepends = gzip
-	makedepends = python
+	makedepends = glib2-devel
 	depends = gettext
 	depends = gstreamer>=1.0
 	depends = gst-plugins-base
@@ -29,4 +29,3 @@ pkgbase = alarm-clock-applet
 	sha512sums = 9c7e6cb068e042f1dbb425d3d8dee61dcf3ef34b931099e7c301945234cf15196ed10da0f3de134f62ea92ef0edee6c54fbd5e95c89a8e38f99e6ff3a32bea94
 
 pkgname = alarm-clock-applet
-
