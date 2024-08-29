@@ -1,7 +1,7 @@
 pkgbase = freac-bin
 	pkgdesc = Audio converter and CD ripper with support for various popular formats and encoders.
 	pkgver = 1.1.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.freac.org/
 	arch = aarch64
 	arch = armv7h
@@ -17,7 +17,7 @@ pkgbase = freac-bin
 	provides = freac=1.1.7
 	conflicts = freac
 	source = freac.sh
-	sha256sums = 25be804514c89c0fbf6bba90fafd7095b2a9fae69498cc397dcaf10ca8b12521
+	sha256sums = 6f2aa9496c98706ee92d0c96ab4944e9bd3ed8141a31d5f4525ec7c0f932a746
 	source_aarch64 = freac-1.1.7-aarch64.AppImage::https://github.com/enzo1982/freac/releases/download/v1.1.7/freac-1.1.7-linux-aarch64.AppImage
 	sha256sums_aarch64 = 027a53acf9c083edaada7d9225d6b75b69020a8beec0b99e65e950a19716e37e
 	source_armv7h = freac-1.1.7-armv7h.AppImage::https://github.com/enzo1982/freac/releases/download/v1.1.7/freac-1.1.7-linux-armhf.AppImage
