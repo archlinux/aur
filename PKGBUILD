@@ -2,8 +2,8 @@
 
 pkgname="radicle-httpd-bin"
 epoch=2
-pkgver="0.16.0"
-pkgrel=2
+pkgver="0.17.0"
+pkgrel=1
 pkgdesc="open source, peer-to-peer code collaboration stack built on Git - web explorer"
 arch=("x86_64" "aarch64")
 license=("Apache-2.0 OR MIT")
@@ -15,10 +15,10 @@ _source=(
 )
 source_x86_64=(${_source[@]})
 source_aarch64=(${_source[@]})
-sha256sums_x86_64=('8ffb5190ee95365cda393ea12873a5d79effd57fbc568c4fa53b198ffc343c28'
+sha256sums_x86_64=('ab42184de3267c55c8d9d39ff5629715a4bd81142847a4a573aedc347a24ebad'
                    'fff889db903497b59500b5171806c511b3c83df1100532c2f7aa8f96af46cc4d'
                    '1da5107935e110e8d65178cd0b21d7b2a21649f25c85c7019ee4061fc2169baf')
-sha256sums_aarch64=('8ffb5190ee95365cda393ea12873a5d79effd57fbc568c4fa53b198ffc343c28'
+sha256sums_aarch64=('ab42184de3267c55c8d9d39ff5629715a4bd81142847a4a573aedc347a24ebad'
                     'fff889db903497b59500b5171806c511b3c83df1100532c2f7aa8f96af46cc4d'
                     '1da5107935e110e8d65178cd0b21d7b2a21649f25c85c7019ee4061fc2169baf')
 provides=("radicle-httpd")
