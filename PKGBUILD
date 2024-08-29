@@ -14,7 +14,7 @@ unset _pkgtype
 # basic info
 _pkgname=flycast
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.3.2.r167.g6b3e866
+pkgver=2.3.2.r185.gb468c9b
 pkgrel=1
 pkgdesc='Sega Dreamcast, Naomi, and Atomiswave emulator'
 url="https://github.com/flyinghead/flycast"
@@ -29,6 +29,7 @@ depends=(
 makedepends=(
   'cmake'
   'git'
+  'ninja'
   'python'
 )
 
@@ -40,20 +41,16 @@ if [[ "${_build_clang::1}" == "t" ]]; then
   )
 fi
 
-_source_flycast() {
-  provides+=("$_pkgname=${pkgver%%.r*}")
+_source_main() {
+  provides+=("$_pkgname=$pkgver")
   conflicts+=("$_pkgname")
 
   _pkgsrc="$_pkgname"
-  source=(
-    "$_pkgsrc"::"git+$url.git"
-    'breakpad-disable.patch'
-  )
-  sha256sums=(
-    'SKIP'
-    '0a6a9c7bc3ba1fc3ca9bdd3134e722f6db73f2a222990e49cabae8fb687c0beb'
-  )
+  source=("$_pkgsrc"::"git+$url.git")
+  sha256sums=('SKIP')
+}
 
+_source_flycast() {
   source+=(
     'bylaws.libadrenotools'::'git+https://github.com/bylaws/libadrenotools.git'
     'flyinghead.mingw-breakpad'::'git+https://github.com/flyinghead/mingw-breakpad.git'
@@ -109,6 +106,9 @@ _prepare_flycast() (
   _submodule_update
 )
 
+_source_main
+_source_flycast
+
 prepare() {
   _submodule_update() {
     local _module
@@ -129,9 +129,6 @@ prepare() {
   }
 
   _prepare_flycast
-
-  cd "$_pkgsrc"
-  apply-patch "$srcdir/breakpad-disable.patch"
 }
 
 pkgver() {
@@ -141,14 +138,6 @@ pkgver() {
 }
 
 build() {
-  local _cmake_options=(
-    -B build
-    -S "$_pkgsrc"
-    -DCMAKE_INSTALL_PREFIX='/usr'
-    -DCMAKE_BUILD_TYPE=Release
-    -Wno-dev
-  )
-
   if [[ "${_build_clang::1}" == "t" ]]; then
     export CC=clang
     export CXX=clang++
@@ -159,6 +148,16 @@ build() {
     export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
     export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
   fi
+
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DUSE_BREAKPAD=OFF
+    -Wno-dev
+  )
 
   cmake "${_cmake_options[@]}"
   cmake --build build
@@ -171,5 +170,3 @@ package() {
 
   DESTDIR="$pkgdir" cmake --install build
 }
-
-_source_flycast

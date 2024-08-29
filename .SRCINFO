@@ -1,6 +1,6 @@
 pkgbase = flycast-git
 	pkgdesc = Sega Dreamcast, Naomi, and Atomiswave emulator
-	pkgver = 2.3.2.r167.g6b3e866
+	pkgver = 2.3.2.r185.gb468c9b
 	pkgrel = 1
 	url = https://github.com/flyinghead/flycast
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = flycast-git
 	license = GPL-2.0-only
 	makedepends = cmake
 	makedepends = git
+	makedepends = ninja
 	makedepends = python
 	makedepends = clang
 	makedepends = lld
@@ -15,10 +16,9 @@ pkgbase = flycast-git
 	depends = alsa-lib
 	depends = libgl
 	depends = libzip
-	provides = flycast=2.3.2
+	provides = flycast=2.3.2.r185.gb468c9b
 	conflicts = flycast
 	source = flycast::git+https://github.com/flyinghead/flycast.git
-	source = breakpad-disable.patch
 	source = bylaws.libadrenotools::git+https://github.com/bylaws/libadrenotools.git
 	source = flyinghead.mingw-breakpad::git+https://github.com/flyinghead/mingw-breakpad.git
 	source = google.googletest::git+https://github.com/google/googletest.git
@@ -34,7 +34,6 @@ pkgbase = flycast-git
 	source = vkedwardli.spout2::git+https://github.com/vkedwardli/Spout2.git
 	source = vkedwardli.syphon-framework::git+https://github.com/vkedwardli/Syphon-Framework.git
 	sha256sums = SKIP
-	sha256sums = 0a6a9c7bc3ba1fc3ca9bdd3134e722f6db73f2a222990e49cabae8fb687c0beb
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
