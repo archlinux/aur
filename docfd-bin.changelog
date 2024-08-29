@@ -1,18 +1,7 @@
 
-## 8.0.0
+## 8.0.1
 
-- Removed `--markdown-headings atx` from pandoc commandline
-  arguments
+- Fixed missing file path filter field update when undoing or redoing document
+  store updates
 
-- Removed `Alt`+`U` undo key binding
-
-- Removed `Alt`+`E` redo key binding
-
-- Removed `Ctrl`+`Q` exit key binding
-
-- Added documentation for undo redo key bindings
-
-- Added clear mode and moved clear search field key binding
-  under this mode for multi-file view
-
-- Added file path filtering functionality to multi-file view
+- Fixed case insensitive marker handling in glob command line arguments
