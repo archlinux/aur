@@ -1,7 +1,7 @@
 pkgbase = clash-flutter-git
 	pkgdesc = A Flutter based GUI for Clash.Meta kernel
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hellopoisonx/clash-flutter
 	arch = x86_64
 	arch = aarch64
@@ -17,7 +17,7 @@ pkgbase = clash-flutter-git
 	conflicts = clash-flutter-git-alpha-bin
 	conflicts = clash-flutter-git-alpha-git
 	conflicts = clash-flutter
-	source = clash-flutter::git+https://github.com/hellopoisonx/
+	source = clash-flutter::git+https://github.com/hellopoisonx/clash-flutter
 	source = Country.mmdb::https://github.com/Dreamacro/maxmind-geoip/releases/download/20240812/Country.mmdb
 	sha256sums = SKIP
 	sha256sums = c17e6a0592307461733a5938d920ecf13e10843a2f109eadc328215ff2518236
