@@ -1,6 +1,6 @@
 # Maintainer: Matteo Bonora <bonora.matteo@gmail.com>
 pkgname=kmonad-git
-pkgver=0.4.2.r1.g8440eaf
+pkgver=0.4.2.r87.g4c324f1
 pkgrel=1
 pkgdesc="An advanced keyboard manager"
 arch=('any')
@@ -21,22 +21,25 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	stack build
+  export STACK_ROOT="${srcdir}/.stack"
+  cd "$srcdir/${pkgname%-git}"
+  stack --compiler ghc-9.6.5 build
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	stack install --local-bin-path="$pkgdir/usr/bin"
-	install -Dm644 "startup/${pkgname%-git}@.service" -t "$pkgdir/usr/lib/systemd/system"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  export STACK_ROOT="${srcdir}/.stack"
 
-	install -Dm644 "doc/faq.md" "$pkgdir/usr/share/doc/$pkgname/faq.md"
-
-	install -Dm755 "keymap/tutorial.kbd" "$pkgdir/usr/share/doc/$pkgname/keymap/tutorial.kbd"
-
-	for file in "keymap/template/"*.kbd; do
-	  install -Dm755 "$file" -t "$pkgdir/usr/share/doc/$pkgname/keymap/template"
-	done
+  cd "$srcdir/${pkgname%-git}"
+  stack --compiler ghc-9.6.5 install --local-bin-path="$pkgdir/usr/bin"
+  install -Dm644 "startup/${pkgname%-git}@.service" -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  
+  install -Dm644 "doc/faq.md" "$pkgdir/usr/share/doc/$pkgname/faq.md"
+  
+  install -Dm755 "keymap/tutorial.kbd" "$pkgdir/usr/share/doc/$pkgname/keymap/tutorial.kbd"
+  
+  for file in "keymap/template/"*.kbd; do
+    install -Dm755 "$file" -t "$pkgdir/usr/share/doc/$pkgname/keymap/template"
+  done
 }
 

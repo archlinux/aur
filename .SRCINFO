@@ -1,6 +1,6 @@
 pkgbase = kmonad-git
 	pkgdesc = An advanced keyboard manager
-	pkgver = 0.4.2.r1.g8440eaf
+	pkgver = 0.4.2.r87.g4c324f1
 	pkgrel = 1
 	url = https://github.com/kmonad/kmonad
 	arch = any
