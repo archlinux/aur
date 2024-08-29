@@ -145,15 +145,15 @@ _build_nvidia_open=${_build_nvidia_open-}
 _build_debug=${_build_debug-}
 
 if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] && [ "$_use_lto_suffix" = "y"  ]; then
-    pkgsuffix=cachyos-${_cpusched}-lto
-    pkgbase=linux-$pkgsuffix
+    _pkgsuffix="cachyos-${_cpusched}-lto"
+    pkgbase="linux-$_pkgsuffix"
 
 elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
-    pkgsuffix=cachyos-${_cpusched}
-    pkgbase=linux-$pkgsuffix
+    _pkgsuffix="cachyos-${_cpusched}"
+    pkgbase="linux-$_pkgsuffix"
 fi
 _major=6.10
-_minor=6
+_minor=7
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -163,9 +163,9 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BORE scheduler and hardened Kernel by CachyOS with other patches and improvements'
-pkgrel=2
-_kernver=$pkgver-$pkgrel
-_kernuname="${pkgver}-${pkgsuffix}"
+pkgrel=1
+_kernver="$pkgver-$pkgrel"
+_kernuname="${pkgver}-${_pkgsuffix}"
 arch=('x86_64')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL-2.0-only')
@@ -255,14 +255,13 @@ case "$_cpusched" in
 esac
 
 export KBUILD_BUILD_HOST=cachyos
-export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_USER="$pkgbase"
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 _die() { error "$@" ; exit; }
 
 prepare() {
-
-    cd ${srcdir}/$_srcname
+    cd "$_srcname"
 
     echo "Setting version..."
     echo "-$pkgrel" > localversion.10-pkgrel
@@ -296,7 +295,7 @@ prepare() {
         fi
 
         scripts/config -k -d CONFIG_GENERIC_CPU
-        scripts/config -k -e CONFIG_${MARCH2}
+        scripts/config -k -e "CONFIG_${MARCH2}"
     fi
 
     ### Use autooptimization
@@ -346,7 +345,7 @@ prepare() {
     echo "Selecting '$_use_llvm_lto' LLVM level..."
 
     ### Select tick rate
-    [ -z $_HZ_ticks ] && _die "The value is empty. Choose the correct one again."
+    [ -z "$_HZ_ticks" ] && _die "The value is empty. Choose the correct one again."
 
     case "$_HZ_ticks" in
         100|250|500|600|625|750|1000)
@@ -492,19 +491,18 @@ prepare() {
     ### Optionally load needed modules for the make localmodconfig
     # See https://aur.archlinux.org/packages/modprobed-db
     if [ -n "$_localmodcfg" ]; then
-        if [ -e $HOME/.config/modprobed.db ]; then
+        if [ -e "$HOME/.config/modprobed.db" ]; then
             echo "Running Steven Rostedt's make localmodconfig now"
-            make ${BUILD_FLAGS[*]} LSMOD=$HOME/.config/modprobed.db localmodconfig
+            make "${BUILD_FLAGS[@]}" LSMOD="$HOME/.config/modprobed.db" localmodconfig
         else
-            echo "No modprobed.db data found"
-            exit
+            _die "No modprobed.db data found"
         fi
     fi
 
     ### Rewrite configuration
     echo "Rewrite configuration..."
-    make ${BUILD_FLAGS[*]} prepare
-    yes "" | make ${BUILD_FLAGS[*]} config >/dev/null
+    make "${BUILD_FLAGS[@]}" prepare
+    yes "" | make "${BUILD_FLAGS[@]}" config >/dev/null
     diff -u ../config .config || :
 
     ### Prepared version
@@ -512,20 +510,21 @@ prepare() {
     echo "Prepared $pkgbase version $(<version)"
 
     ### Running make nconfig
-    [[ -z "$_makenconfig" ]] ||  make ${BUILD_FLAGS[*]} nconfig
+    [[ -z "$_makenconfig" ]] ||  make "${BUILD_FLAGS[@]}" nconfig
 
     ### Running make menuconfig
-    [[ -z "$_makemenuconfig" ]] ||  make ${BUILD_FLAGS[*]} menuconfig
+    [[ -z "$_makemenuconfig" ]] ||  make "${BUILD_FLAGS[@]}" menuconfig
 
     ### Running make xconfig
-    [[ -z "$_makexconfig" ]] ||  make ${BUILD_FLAGS[*]} xconfig
+    [[ -z "$_makexconfig" ]] ||  make "${BUILD_FLAGS[@]}" xconfig
 
     ### Running make gconfig
-    [[ -z "$_makegconfig" ]] ||  make ${BUILD_FLAGS[*]} gconfig
+    [[ -z "$_makegconfig" ]] ||  make "${BUILD_FLAGS[@]}" gconfig
 
     ### Save configuration for later reuse
     echo "Save configuration for later reuse..."
-    cat .config > "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
+    local basedir="$(dirname "$(readlink "${srcdir}/config")")"
+    cat .config > "${basedir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
 
     if [ -n "$_build_nvidia" ]; then
         cd "${srcdir}"
@@ -558,7 +557,7 @@ build() {
         )
 
         cd "${srcdir}/${_nv_pkg}/kernel"
-        make ${BUILD_FLAGS[*]} ${MODULE_FLAGS[*]} -j$(nproc) modules
+        make "${BUILD_FLAGS[@]}" "${MODULE_FLAGS[@]}" -j"$(nproc)" modules
 
     fi
 
@@ -571,7 +570,7 @@ build() {
            SYSSRC="${srcdir}/${_srcname}"
            SYSOUT="${srcdir}/${_srcname}"
         )
-        CFLAGS= CXXFLAGS= LDFLAGS= make ${BUILD_FLAGS[*]} ${MODULE_FLAGS[*]} -j$(nproc) modules
+        CFLAGS= CXXFLAGS= LDFLAGS= make "${BUILD_FLAGS[@]}" "${MODULE_FLAGS[@]}" -j"$(nproc)" modules
     fi
 
     if [ -n "$_build_zfs" ]; then
@@ -582,11 +581,11 @@ build() {
 
         ./autogen.sh
         sed -i "s|\$(uname -r)|${_kernuname}|g" configure
-        ./configure ${CONFIGURE_FLAGS[*]} --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin \
+        ./configure "${CONFIGURE_FLAGS[@]}" --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin \
             --libdir=/usr/lib --datadir=/usr/share --includedir=/usr/include \
             --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs --with-config=kernel \
-            --with-linux=${srcdir}/$_srcname
-        make ${BUILD_FLAGS[*]}
+            --with-linux="${srcdir}/$_srcname"
+        make "${BUILD_FLAGS[@]}"
     fi
 
 }
@@ -600,7 +599,7 @@ _package() {
                 'uksmd: Userspace KSM helper daemon')
     provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE UKSMD-BUILTIN)
 
-    cd ${srcdir}/$_srcname
+    cd "$_srcname"
 
     local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
@@ -622,9 +621,9 @@ _package() {
 
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-    depends=('pahole' ${pkgbase} )
+    depends=('pahole' "${pkgbase}")
 
-    cd ${srcdir}/${_srcname}
+    cd "${_srcname}"
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
     echo "Installing build files..."
@@ -706,23 +705,23 @@ _package-headers() {
 
 _package-dbg(){
     pkgdesc="Non-stripped vmlinux file for the $pkgdesc kernel"
-    depends=(${pkgbase}-headers)
+    depends=("${pkgbase}-headers")
 
-    cd "${srcdir}/${_srcname}"
+    cd "${_srcname}"
     mkdir -p "$pkgdir/usr/src/debug/${pkgbase}"
     install -Dt "$pkgdir/usr/src/debug/${pkgbase}" -m644 vmlinux
 }
 
 _package-zfs(){
     pkgdesc="zfs module for the $pkgdesc kernel"
-    depends=('pahole' $pkgbase=$_kernver)
+    depends=('pahole' "${pkgbase}=${_kernver}")
     provides=('ZFS-MODULE')
     license=('CDDL')
 
-    cd ${srcdir}/$_srcname
+    cd "$_srcname"
     local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
-    cd ${srcdir}/"zfs"
+    cd "${srcdir}/zfs"
     install -dm755 "${modulesdir}"
     install -m644 module/*.ko "${modulesdir}"
     find "$pkgdir" -name '*.ko' -exec zstd --rm -19 {} +
@@ -736,10 +735,10 @@ _package-nvidia(){
     conflicts=("$pkgbase-nvidia-open")
     license=('custom')
 
-    cd ${srcdir}/$_srcname
+    cd "$_srcname"
     local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
-    cd "${srcdir}/${_nv_pkg}/"
+    cd "${srcdir}/${_nv_pkg}"
     install -dm755 "${modulesdir}"
     install -m644 kernel/*.ko "${modulesdir}"
     install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 LICENSE
@@ -753,7 +752,7 @@ _package-nvidia-open(){
     conflicts=("$pkgbase-nvidia")
     license=('MIT AND GPL-2.0-only')
 
-    cd ${srcdir}/$_srcname
+    cd "$_srcname"
     local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
     cd "${srcdir}/${_nv_open_pkg}"
@@ -777,9 +776,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('e0e2c2419b6da1a6c5caaf9df669a362bdef3d6fb19742da6c5300a6f6d0994259ea2acde7f6a4a20d1e2b71528bbed0e7fd51cbca33ddbf78f2d832a291148f'
+b2sums=('a177df46c43bef6a529e50af64103a40eabc9d7301f93c8e1a4ed3e6b0e03bec195838c6085f3df798b7d941c0943ba31b23b1717150785ef52cfa8bd2dc028d'
         '29c281f402f9f608fa8c2ed1434e83b1a6aff45f6725a5844987a907c781daf306b6a9b5bae8b7fd8a2eb2f249120b567486683fadcd3013fe00802186be62b2'
         'b1e964389424d43c398a76e7cee16a643ac027722b91fe59022afacb19956db5856b2808ca0dd484f6d0dfc170482982678d7a9a00779d98cd62d5105200a667'
-        '078169cd2449a144a7e4a3892865c5b0a527df9ae6121b9f7b70af88d93e09dcc83794bf2ad837faf73d58c378705e802e79b83d122e3e0cdfb6438657298dcc'
+        '61d2e4e49e05af401e846fd4e5a524ce2c8728e22a3e33e8e1876673250ae3e7c4c6aa01e966f88dc6a7cdf36e3a1f75094b066b9a342c933635c37341e7f103'
         'bade8bcf441a868b5ac1dc18c0cccf0a7a2b663124dcf3b5d2b51e7ccbeb84458b0e49fe7bbd8e107bf84afd388308b3551297a7ebcf90d96a8149b7765eddcf'
         'beb04f2ba25ba3f1ef4e98b5b622aa31d5cc9868b5c5dae60db1a99cbdcf49c7493d57be02ddd4d30ecc30a10b69c83bf10ec62833d57ec8b2ba6ad9452c698e')
