@@ -1,5 +1,6 @@
 #!/bin/bash
-_APPDIR=/opt/@appname@
+set -o pipefail
+_APPDIR=/usr/lib/@appname@
 _RUNNAM="${_APPDIR}/@runname@"
 export PATH="${_APPDIR}:${PATH}"
 export LD_LIBRARY_PATH="${_APPDIR}/lib:${LD_LIBRARY_PATH}"
