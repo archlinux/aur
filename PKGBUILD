@@ -19,18 +19,23 @@ optdepends=('sdl2_image: for tiles'
             'freetype2: for tiles'
             'sdl2_mixer: for tiles')
 options=('!strip')
-#source=("$pkgname"::'git+https://github.com/CleverRaven/Cataclysm-DDA.git#branch=master')
+_gitbranch=master
+#source=("$pkgname::git+https://github.com/CleverRaven/Cataclysm-DDA.git#branch=$_gitbranch")
 # The git repo is more than a GB
-# so download a snapshot while waiting for shallow clone support in makepkg
-# (you may uncomment the alternate source/pkgver() if you would prefer to use that)
-source=("$pkgname::https://github.com/CleverRaven/Cataclysm-DDA/archive/master.zip")
+# so uncomment to download a zip snapshot
+source=("src_archive.zip::https://github.com/CleverRaven/Cataclysm-DDA/archive/$_gitbranch.zip")
 sha512sums=('SKIP')
+
+prepare() {
+  # Handle both zip archive and git sources
+  [ ! -f src_archive.zip ] || mv "Cataclysm-DDA-$_gitbranch" "$pkgname"
+}
 
 pkgver() {
   cd "$pkgname"
-  #git describe --tags --long | sed 's/-/./g'
-  # no git metadata in the snapshot, so fake it
-  echo "cdda.experimental.$(date +%Y.%m.%d)"
+
+  # no git metadata in archives, so fake it if git describe fails
+  (set -o pipefail; git describe --tags --long | sed 's/-/./g') || echo "experimental.$(date +%Y.%m.%d)"
 }
 
 build() {

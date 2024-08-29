@@ -1,6 +1,6 @@
 pkgbase = cataclysm-dda-git
 	pkgdesc = A post-apocalyptic roguelike.
-	pkgver = 0.G.2024.01.09
+	pkgver = cdda.experimental.2024.08.29
 	pkgrel = 1
 	url = https://cataclysmdda.org/
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = cataclysm-dda-git
 	conflicts = cataclysm-dda-ncurses
 	conflicts = cataclysm-dda-tiles
 	options = !strip
-	source = https://github.com/CleverRaven/Cataclysm-DDA/archive/master.zip
+	source = src_archive.zip::https://github.com/CleverRaven/Cataclysm-DDA/archive/master.zip
 	sha512sums = SKIP
 
 pkgname = cataclysm-dda-git
