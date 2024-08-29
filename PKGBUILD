@@ -4,12 +4,12 @@ pkgname=pdfannots-git
 pkgdesc='Extracts and formats text annotations from a PDF file'
 url='https://github.com/0xabu/pdfannots'
 license=('MIT')
-pkgver=0.3.r20.g43b574d
+pkgver=0.4.r22.g09b9867
 pkgrel=1
 arch=('any')
 source=("git+https://github.com/0xabu/pdfannots")
 sha256sums=('SKIP')
-makedepends=('python-setuptools' 'git')
+makedepends=('python-hatchling' 'git')
 depends=('python-pdfminer')
 
 pkgver() {
@@ -19,10 +19,10 @@ pkgver() {
 
 build() {
     cd "pdfannots"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "pdfannots"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
