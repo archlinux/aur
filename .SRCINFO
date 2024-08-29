@@ -1,7 +1,7 @@
 pkgbase = air-controller-desktop-bin
 	pkgdesc = A new handy and powerful Android phone assistant,powered by Flutter.
 	pkgver = 0.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://ac.yhdm360.cn/
 	arch = x86_64
 	license = MIT
@@ -15,6 +15,6 @@ pkgbase = air-controller-desktop-bin
 	source = air-controller-desktop.sh
 	sha256sums = 9c81fa659acffa74b7576e5dfbc62486d8131157b9d4bfc2a34bdc567bc080c8
 	sha256sums = 72bf32e1daa153b870aff8200c06521b4d15d7aedba46d4c37570c49cacc1ace
-	sha256sums = 1e338ff128b2be2b0d484ea2d00814db6709a5e2cc455a373428d21f8ed690d5
+	sha256sums = 2ce176a5c3aec15df075bb898c0c82f8a10c51fee35c24a5c0c795775a4b05f9
 
 pkgname = air-controller-desktop-bin
