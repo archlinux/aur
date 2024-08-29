@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Kampmann <ben@acter.global>
 pkgname=acter-bin
-pkgver=1.24.8291
+pkgver=1.24.8292
 pkgrel=2
 epoch=
 pkgdesc="Casual Community Organizing"
@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://acter.global"
 license=('custom:Acter Public Source License 1.0')
 groups=()
-depends=('mpv' 'libsecret' 'jsoncpp' 'xdg-user-dirs' 'libayatana-appindicator3-1')
+depends=('mpv' 'libsecret' 'jsoncpp' 'xdg-user-dirs' 'libayatana-appindicator')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/acterglobal/a3/releases/download/v${pkgver}/acter-linux-x64-${pkgver}.tar.bz2")
 noextract=()
-md5sums=("622e1527e4fc364de13b59cbb62d0cd0")
+md5sums=("4c8d4b6ff96f2687a86a7df59d8d2c3d")
 validpgpkeys=()
 
 package() {
