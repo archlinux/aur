@@ -58,7 +58,7 @@ package() {
     asar_patches
 
     asar pack app app.asar
-    # rm -rf app
+    rm -rf app
     cd "$srcdir"
 
     # create executable
