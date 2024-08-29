@@ -8,7 +8,7 @@
 
 pkgname=alarm-clock-applet
 pkgver=0.4.1
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="A fully-featured alarm clock for use with an AppIndicator implementation."
 arch=('x86_64' 'i686')
