@@ -2,14 +2,16 @@
 
 pkgname=pony-house-bin
 pkgver=1.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A Matrix client, focused on being a completely customizable open source superapp"
 arch=("x86_64")
 url="https://github.com/Pony-House/Client"
 license=("AGPL-3.0-only")
 
 depends=("electron")
-options=(!strip)
+makedepends=("asar")
+
+options=("!strip")
 
 _filename="Pony.House-$pkgver.AppImage"
 
@@ -28,14 +30,36 @@ _install_name="pony-house"
 # tried to do this similar to
 # https://archlinux.org/packages/extra/x86_64/element-desktop
 
+asar_patches() {
+    sed -i -E 's/ \+ appName/ \+ "'$_install_name'"/g' \
+        app/node_modules/auto-launch/dist/AutoLaunchLinux.js
+    
+    sed -i -E 's/ \+ appPath/ \+ "\/usr\/bin\/'$_install_name'"/g' \
+        app/node_modules/auto-launch/dist/AutoLaunchLinux.js
+}
+
 package() {
     # extract AppImage
     chmod +x "$_filename"
-    ./$_filename --appimage-extract
+    ./$_filename --appimage-extract &>/dev/null
 
     # install app.asar
     install -Dm644 squashfs-root/resources/app.asar \
         "$pkgdir/usr/lib/$_install_name/app.asar"
+
+    # no other resources need to be installed
+
+    # patch app.asar
+
+    cd "$pkgdir/usr/lib/$_install_name"
+    asar extract app.asar app
+    rm -f app.asar
+
+    asar_patches
+
+    asar pack app app.asar
+    # rm -rf app
+    cd "$srcdir"
 
     # create executable
     mkdir -p "$pkgdir/usr/bin/"
