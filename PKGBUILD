@@ -6,11 +6,11 @@
 
 pkgname=zchunk
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A file format designed for highly efficient deltas while maintaining good compression'
 arch=(x86_64)
 url=https://github.com/zchunk/zchunk
-license=(BSD)
+license=(BSD-2-Clause)
 depends=(libcurl.so zstd)
 makedepends=(meson)
 provides=(libzck.so)

@@ -1,10 +1,10 @@
 pkgbase = zchunk
 	pkgdesc = A file format designed for highly efficient deltas while maintaining good compression
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zchunk/zchunk
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = meson
 	depends = libcurl.so
 	depends = zstd
