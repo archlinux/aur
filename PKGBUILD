@@ -1,3 +1,4 @@
+# Maintainer: z3n <z3nlabs at proton dot me>
 pkgname=mixbus10
 pkgver=10.1.0
 pkgrel=1
