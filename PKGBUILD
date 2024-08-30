@@ -1,28 +1,26 @@
 # Maintainer: Kimiblock Moe
 pkgname=clash-nyanpasu-git
 _pkgname=clash-nyanpasu
-pkgver=pre.release.r14.g521324da
-pkgrel=2
+pkgver=pre.release.r0.gfcb68ac5
+pkgrel=1
 pkgdesc="A Clash GUI based on tauri."
-arch=('any')
-url="https://github.com/LibNyanpasu/clash-nyanpasu"
+arch=('x86_64' 'aarch64')
+url="https://github.com/keiko233/clash-nyanpasu"
 license=('GPL-3.0-or-later')
 depends=('webkit2gtk' 'clash-geoip' 'libayatana-appindicator' "clash-meta-is-mihomo")
-makedepends=('yarn' 'cargo-tauri' 'jq' 'moreutils' 'rust' 'git' 'pnpm' 'clang')
+makedepends=('yarn' 'cargo-tauri' 'jq' 'moreutils' 'rust-nightly' 'cargo-nightly' 'git' 'pnpm' 'clang' 'nodejs')
 optdepends=('clash' 'clash-rs')
-source=("git+https://github.com/LibNyanpasu/clash-nyanpasu.git"
+source=("git+https://github.com/keiko233/clash-nyanpasu.git"
 	"${_pkgname}.desktop"
 )
-provides=(clash-nyanpasu-git clash-nyanpasu)
+provides=(clash-nyanpasu)
 conflicts=(clash-nyanpasu)
 
-sha512sums=('SKIP' 'SKIP')
-options=(!lto)
+md5sums=(
+    'SKIP'
+    'SKIP')
+options=(strip !debug !lto !debug)
 
-function pkgver() {
-	cd "${srcdir}/clash-nyanpasu"
-	git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 function prepare(){
 	cd "${srcdir}/clash-nyanpasu"
 	ln -sf backend/tauri/ src-tauri
@@ -43,21 +41,20 @@ function prepare(){
 	# only build the excutable
 	jq '.tauri.bundle.active = false' tauri.conf.json|sponge tauri.conf.json
 	# disable updater
-	jq '.tauri.updater.active = false' tauri.conf.json|sponge tauri.conf.json
+	# jq '.tauri.updater.active = false' tauri.conf.json|sponge tauri.conf.json
+	pnpm i
+	pnpm check
+	cd "${srcdir}/clash-nyanpasu/backend/tauri"
+	cargo update
+	cd "${srcdir}/clash-nyanpasu"
+	pnpm -r build
 }
 
 function build(){
 	cd "${srcdir}/clash-nyanpasu"
-	#export RUSTFLAGS="-L /usr/lib/quickjs"
-	#yarn install
-	#yarn run check
-	#cargo-tauri build
-	pnpm i
-	pnpm check
-	#pnpm dev
 	pnpm build
 }
-function package() {
+package(){
 	cd "${srcdir}/clash-nyanpasu"
 	install -Dm755 "${srcdir}/clash-nyanpasu/backend/target/release/${_pkgname}" -t "${pkgdir}/usr/bin"
 
@@ -72,4 +69,9 @@ function package() {
 
 	install -Dm644 "${srcdir}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 	install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+function pkgver() {
+	cd "${srcdir}/clash-nyanpasu"
+	git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
