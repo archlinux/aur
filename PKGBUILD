@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=draw.io
 pkgname="${_pkgname//./}-desktop-git"
-pkgver=24.6.4.r3.g1f37396
-_electronversion=31
+pkgver=24.7.5.r9.g3ac88c4
+_electronversion=32
 _nodeversion=20
 pkgrel=1
 pkgdesc="A diagramming and whiteboarding desktop app based on Electron that wraps the core draw.io editor."
@@ -10,6 +10,8 @@ arch=('any')
 url="https://www.diagrams.net/"
 _ghurl="https://github.com/jgraph/drawio-desktop"
 license=('Apache-2.0')
+provides=("${pkgname%-git}=${pkgver}")
+conflicts=("${pkgname%-git}")
 depends=(
     "electron${_electronversion}"
 )
@@ -23,8 +25,6 @@ makedepends=(
     'imagemagick'
     'curl'
 )
-provides=("${pkgname%-git}=${pkgver}")
-conflicts=("${pkgname%-git}")
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
     "${pkgname%-git}.sh"
@@ -53,9 +53,8 @@ build() {
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
@@ -68,12 +67,12 @@ build() {
     else
         echo "Your network is OK."
     fi
-    sed "s|--publish always|--publish never|g" -i package.json
+    sed "s|--publish always|--publish never|g;s|\"electron\": \"32.0.1\",|\"electron\": \"${SYSTEM_ELECTRON_VERSION}\",|g" -i package.json
     sed "48,60d;s|\"target\": \"AppImage\", \"arch\": \[|\"target\": \"dir\"|g" -i electron-builder-linux-mac.json
     git submodule update --depth=1 --init --recursive
-    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
-    NODE_ENV=development yarn run sync
-    NODE_ENV=production yarn run release-linux
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=development    yarn run sync
+    NODE_ENV=production     yarn run release-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
