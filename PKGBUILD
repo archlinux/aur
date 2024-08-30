@@ -2,8 +2,8 @@
 # Maintainer: Ben Cooper
 
 pkgname=ziti-edge-tunnel
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="The linux tunneller for your Ziti network."
 arch=('x86_64')
 depends=('polkit')
@@ -18,7 +18,7 @@ source=("https://github.com/openziti/ziti-tunnel-sdk-c/releases/download/v${pkgv
         "sysusers.conf"
         "tmpfiles.conf"
         "polkit.rules")
-sha256sums=('7e42211943621647efd3d8680ad1280a638847f24c180cca97094a3e8a4d8b5a'
+sha256sums=('63ec186e297f5ec018c7314ea77ab1f4d26a671f9c7562b6febbf54a259fc936'
             '97881960e8763840782b936abbb94513ca929257738ad2bf96df45cc3a344628'
             '027be2beec25a3425ae8b2b79be294c5829c4715bd89b841e958a720c720aea7'
             '5efe7c102098705e0b1f4cfe7966a5b8c3cc88d0c0ee6427f5cc9c6126dc57a4'
