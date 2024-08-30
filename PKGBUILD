@@ -1,9 +1,9 @@
 # Maintainer: Syhlx <syhlx@live.com>
 
 pkgname=cromite-bin
-pkgver=128.0.6613.88
+pkgver=128.0.6613.114
 pkgrel=1
-_cromite_commit='389b5eaa491becda466f20909e19fbc38ebeb3e7'
+_cromite_commit='38b33957e856350381acf1d3d66af866683a1fba'
 _launcher_ver=8
 pkgdesc='Cromite a Bromite fork with ad blocking and privacy enhancements (binary release)'
 arch=(x86_64)
@@ -36,7 +36,7 @@ sha256sums=('3ddf5b02a7eb51047770c608e23a51d7f70baf7920146c61dfc8c9c653d4e89a'
             'd4a1391331e7a3757f11e65ada488cb8729b612ba2a073b95dafee2f8f76dfa5'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a')
-sha256sums_x86_64=('b84e2102d2018352b54a82c2cb1a0f3d69925a8480ac9fc501f62aba7856e465')
+sha256sums_x86_64=('602de93b6b7cb1f970b311d61c3e8411a80b0d3858c549670992a8dec0819dbc')
 
 build() {
 	make CHROMIUM_NAME=cromite -C chromium-launcher-$_launcher_ver
