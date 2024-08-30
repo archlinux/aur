@@ -1,7 +1,7 @@
 pkgbase = yaak-app-beta
 	pkgdesc = Yaak is a cross-platform desktop app for interacting with REST, GraphQL, gRPC and OpenAPI.
 	pkgver = 2024.8.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://yaak.app/
 	arch = x86_64
 	license = unknown
@@ -12,7 +12,7 @@ pkgbase = yaak-app-beta
 	provides = yaak-app
 	conflicts = yaak-app
 	options = !strip
-	source = yaak-app-beta-2024.8.0-beta.4.deb::https://releases.yaak.app/releases/2024.8.0-beta.4/yaak_2024.8.0-beta.4_amd64.deb
-	sha256sums = ee288669178b49a5cba9b5839ba5fbbe4be32742dc767a7547c5a9d6f58c756e
+	source = yaak-app-beta-2024.8.0-beta.5.deb::https://releases.yaak.app/releases/2024.8.0-beta.5/yaak_2024.8.0-beta.5_amd64.deb
+	sha256sums = 8204a3e828482a2eef8e97020e4b664b57890a118153f123eb48d7e82cf2198a
 
 pkgname = yaak-app-beta
