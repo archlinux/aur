@@ -59,6 +59,10 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   patch -Np1 -F100 -i "$srcdir/path-fix.patch"
+
+  sed -E -e 's&\bQt6 Qt5\b&Qt5&g' \
+    -i QtScrcpy/res/i18n/CMakeLists.txt \
+    QtScrcpy/CMakeLists.txt
 }
 
 build() {
@@ -67,6 +71,7 @@ build() {
     -S "$_pkgsrc"
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
+    -DQT_VERSION_MAJOR=5
     -Wno-dev
   )
 
@@ -97,9 +102,6 @@ package() {
   install -dm755 "$pkgdir/usr/share/doc/$_pkgname"
   cp -r docs/* "$pkgdir/usr/share/doc/$_pkgname/"
 
-  # fix permissions
-  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
-
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/usr/bin/env sh
 exec /$_install_path/qtscrcpy/QtScrcpy "\$@"
@@ -117,4 +119,7 @@ StartupNotify=true
 Categories=Development;Utility;
 MimeType=application/epub+zip;
 END
+
+  # fix permissions
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
