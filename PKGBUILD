@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=encryptednotepad2-git
 _pkgname="Encrypted Notepad 2"
-pkgver=r47.29bd200
+pkgver=r56.99e8197
 pkgrel=1
 pkgdesc="A Notepad-like simple text editor where files are saved (and later loaded) encrypted with AES-256."
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=(
     'go>=1.22'
     'gendesk'
     'gcc'
-    'base-devel'
+    'cmake'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
@@ -31,8 +31,8 @@ source=(
 sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    #git describe --long --tags --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    #git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 build() {
     gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
@@ -44,6 +44,8 @@ build() {
     export GOMODCACHE="${srcdir}/.go/pkg/mod"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
         export GOPROXY=https://goproxy.cn
+        echo '[url "https://github.moeyy.xyz/https://github.com/"]' >> .gitconfig
+        echo '    insteadof = https://github.com/' >> .gitconfig
     else
         echo "Your network is OK."
     fi

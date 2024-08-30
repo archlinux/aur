@@ -1,6 +1,6 @@
 pkgbase = encryptednotepad2-git
 	pkgdesc = A Notepad-like simple text editor where files are saved (and later loaded) encrypted with AES-256.
-	pkgver = r47.29bd200
+	pkgver = r56.99e8197
 	pkgrel = 1
 	url = https://github.com/ivoras/EncryptedNotepad2
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = encryptednotepad2-git
 	makedepends = go>=1.22
 	makedepends = gendesk
 	makedepends = gcc
-	makedepends = base-devel
+	makedepends = cmake
 	depends = libxi
 	depends = libx11
 	depends = libxcursor
@@ -17,7 +17,7 @@ pkgbase = encryptednotepad2-git
 	depends = libxinerama
 	depends = libglvnd
 	depends = libxrandr
-	provides = encryptednotepad2=r47.29bd200
+	provides = encryptednotepad2=r56.99e8197
 	conflicts = encryptednotepad2
 	source = encryptednotepad2.git::git+https://github.com/ivoras/EncryptedNotepad2.git
 	sha256sums = SKIP
