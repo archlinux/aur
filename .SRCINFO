@@ -1,7 +1,7 @@
 pkgbase = llvm-bolt
 	pkgdesc = a post-link optimizer developed to speed up large applications
 	pkgver = 18.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/llvm/llvm-project/tree/main/bolt
 	arch = x86_64
 	license = Apache-2.0 WITH LLVM-exception

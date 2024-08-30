@@ -2,7 +2,7 @@
 
 pkgname=llvm-bolt
 pkgver=18.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc='a post-link optimizer developed to speed up large applications'
 url="https://github.com/llvm/llvm-project/tree/main/bolt"
 license=('Apache-2.0 WITH LLVM-exception')
@@ -35,7 +35,7 @@ build() {
   cd build
   cmake \
     -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLLVM_INSTALL_UTILS=ON \
     -DBUILD_SHARED_LIBS=OFF \
