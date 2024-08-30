@@ -2,7 +2,7 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=pkgKitten
-_pkgver=0.2.3
+_pkgver=0.2.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-whoami
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7b58fad3ab4be2ad5ca3853c34c29f8b')
-b2sums=('510f33455c03b3292142f7454f673740e914357e3f6cc23cad829c7f4555a363adf1cae276803390a6903381a3d64ff04803b7e7a49ec3629d6f5bc93b46814f')
+md5sums=('1c7c4a381191143f9047c7b25a9aac77')
+b2sums=('19d62bdab2df3c76b21dc55d3b7a443a6e78fa4bec4e80bf2ced1d14c29ce299e70cc12eee892cf0ddfc333837017be8b475182271cc4879350fc675d42ec5d3')
 
 build() {
   mkdir build
