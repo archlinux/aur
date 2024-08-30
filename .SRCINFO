@@ -1,7 +1,7 @@
 pkgbase = ygo-omega
 	pkgdesc = The Ultimate Yu-Gi-Oh! Simulator.
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/duelists-unite
 	install = ygo-omega.install
 	arch = x86_64
@@ -14,6 +14,6 @@ pkgbase = ygo-omega
 	source = ygo-omega.in
 	sha256sums = 9fe0457e3202fc079c555adc5a8083a5f0b88a33f3051f202544d4264ba69536
 	sha256sums = d159c3910d3b68675a4a098c3384e376e1a02e593e94289a686cb183690cdc87
-	sha256sums = ad7d825c3e50fec121ff7594ea7cf5c15fd49dedc9de7c5d5fdb6d22096693e5
+	sha256sums = beebb00c7d92ebe23fec2b2a907ab6addd5f7a77cc486e442bed8f6623a02ce3
 
 pkgname = ygo-omega

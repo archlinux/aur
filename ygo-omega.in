@@ -96,7 +96,7 @@ _refresh_local_() {
 
 	bsdtar -xf "/opt/ygo-omega/linux-x64.zip" -C "${_TB_APP_DIR_}" >> \
 		"${_TB_LOG_FILE_}" 2>&1 && _notify_ 'YGO Omega' \
-		'A new version of YGO Omega has been installed' || \
+		'A new version of YGO Omega has been installed. You may need to run the app, close it, and run it again for it to work.' || \
 		_inform_ 'Error' \
 		"The YGO Omega archive could not be extracted to your home directory. \
 		\nCheck the permissions of ${_TB_APP_DIR_}. \
@@ -107,9 +107,8 @@ _refresh_local_() {
 		mv "${KEPT_DIR}" "${KEEP_DIR}"
 	fi
 
-	[[ ! -f "${_TB_APP_DIR_}/ygo-omega" ]] || \
+	[[ ! -d "${_TB_APP_DIR_}" ]] || \
 		echo "${_TB_VERSION_}" > "${_TB_VER_FILE_}"
-
 }
 
 
