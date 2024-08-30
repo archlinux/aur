@@ -1,10 +1,11 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: Andreas Baumann <mail at andreasbaumann dot com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: eric <eric@archlinux.org>
 # Contributor: Manolis Tzanidakis
 
 pkgname=ucspi-unix
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="UNIX-domain socket client-server command-line tools"
 arch=('i686' 'x86_64')
 url="http://untroubled.org/ucspi-unix"
