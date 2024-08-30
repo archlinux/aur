@@ -300,12 +300,12 @@ function execApp() {
 			"${XDG_CONFIG_HOME}"/kdeglobals \
 		--ro-bind-try "/run/systemd/resolve/stub-resolv.conf" \
 			"/run/systemd/resolve/stub-resolv.conf" \
-		--dir "${XDG_DOCUMENTS_DIR}" \
+		--dir "${XDG_DATA_HOME}/WeChat_Data/Documents" \
 		--bind "${XDG_DATA_HOME}/WeChat_Data" \
 			"${XDG_DATA_HOME}/WeChat_Data" \
 		${bwBindPar} \
 		${bwCamPar} \
-		--setenv XDG_DOCUMENTS_DIR "${XDG_DOCUMENTS_DIR}" \
+		--setenv XDG_DOCUMENTS_DIR "$HOME/Documents" \
 		--setenv XDG_DATA_HOME "${XDG_DATA_HOME}" \
 		--unshare-all \
 		--share-net \

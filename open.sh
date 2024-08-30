@@ -6,11 +6,14 @@ if [[ $@ =~ "https://" ]] || [[ $@ =~ "http://" ]]; then
 	exit $?
 fi
 
-fakeDirBase="${XDG_DOCUMENTS_DIR}/xwechat_files"
-realDirBase="${XDG_DATA_HOME}/WeChat_Data/Documents/xwechat_files"
-
-link=$(echo "$2" | sed "s|${fakeDirBase}|${reakDirBase}|g")
-#link=$(echo "$2" | awk -v oldPath="${fakeDirBase}" -v newPath=${reakDirBase} '{gsub(oldPath, newPath)} 1')
+if [ ${trashAppUnsafe} ]; then
+	link="$2"
+else
+	fakeDirBase="${XDG_DOCUMENTS_DIR}/xwechat_files"
+	realDirBase="${XDG_DATA_HOME}/WeChat_Data/Documents/xwechat_files"
+	link=$(echo "$2" | sed "s|${fakeDirBase}|${reakDirBase}|g")
+	#link=$(echo "$2" | awk -v oldPath="${fakeDirBase}" -v newPath=${reakDirBase} '{gsub(oldPath, newPath)} 1')
+fi
 
 link="${realDirBase}${link}"
 
