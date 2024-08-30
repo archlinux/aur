@@ -1,7 +1,7 @@
 pkgbase = quaternion-bin
 	pkgdesc = A Qt5-based IM client for Matrix
 	pkgver = 0.0.95.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://matrix.org/docs/projects/client/quaternion.html
 	arch = x86_64
 	license = GPL-3.0-only
@@ -15,6 +15,6 @@ pkgbase = quaternion-bin
 	source = quaternion-0.0.95.1.AppImage::https://github.com/quotient-im/Quaternion/releases/download/0.0.95.1/quaternion-0.0.95.1.AppImage
 	source = quaternion.sh
 	sha256sums = 43936b9bf37539051e438ef28b111261410ab5ae59d2a2fb84f130a76ef6336b
-	sha256sums = 832c78866f9859fe607dd16711090d442803716cb68ee907b54d8e1c1bdbadb0
+	sha256sums = 9976e64889638ec6e7888deb0598298c465e697c0f370a83abd0e4da976fb931
 
 pkgname = quaternion-bin

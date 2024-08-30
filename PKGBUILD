@@ -2,7 +2,7 @@
 pkgname=quaternion-bin
 _appname="com.github.${pkgname%-bin}"
 pkgver=0.0.95.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A Qt5-based IM client for Matrix"
 arch=('x86_64')
 url="https://matrix.org/docs/projects/client/quaternion.html"
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('43936b9bf37539051e438ef28b111261410ab5ae59d2a2fb84f130a76ef6336b'
-            '832c78866f9859fe607dd16711090d442803716cb68ee907b54d8e1c1bdbadb0')
+            '9976e64889638ec6e7888deb0598298c465e697c0f370a83abd0e4da976fb931')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
@@ -35,8 +35,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/usr/"* "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/squashfs-root/usr/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     for _icons in 16x16 22x22 32x32 48x48 64x64 128x128 scalable;do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}."* \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"

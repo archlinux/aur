@@ -1,6 +1,6 @@
 #!/bin/bash
-set -e
-_APPDIR="/opt/@appname@"
+set -o pipefail
+_APPDIR="/usr/lib/@appname@"
 _RUNNAME="${_APPDIR}/bin/@runname@"
 case "${XDG_CURRENT_DESKTOP}" in
     *GNOME*|*gnome*|*XFCE*)
