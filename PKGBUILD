@@ -3,7 +3,7 @@
 
 pkgname=otf2
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Scalable, memory efficient event trace data format and support library."
 arch=('i686' 'x86_64')
 url="http://www.vi-hps.org/projects/score-p/"
@@ -20,6 +20,10 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # imp -> importlib
+  sed -i "s/import sys, os, py_compile, imp/import sys, os, py_compile, importlib as imp/" "build-config/py-compile"
+
   make DESTDIR="${pkgdir}/" install
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
