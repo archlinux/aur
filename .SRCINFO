@@ -1,0 +1,17 @@
+pkgbase = n2-docs
+	pkgdesc = HTML documentation for N2
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/kakao/n2
+	arch = any
+	license = Apache-2.0
+	makedepends = doxygen
+	makedepends = python-sphinx
+	makedepends = python-breathe
+	makedepends = python-exhale
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-n2
+	source = n2-0.1.7.tar.gz::https://github.com/kakao/n2/archive/0.1.7.tar.gz
+	sha256sums = 387282837c6330d6fd8243ae9133c6ca1cd345d19ec3a5795fbe6219ce972fc7
+
+pkgname = n2-docs
