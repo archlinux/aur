@@ -2,6 +2,7 @@
 pkgname=mixbus10
 pkgver=10.1.0
 pkgrel=1
+pkgbase=mixbus10
 pkgdesc="Harrison Consoles Mixbus DAW (Version 10)"
 arch=('x86_64')
 url="https://store.harrisonaudio.com/all-products/mixbus"
