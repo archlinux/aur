@@ -7,13 +7,13 @@
 
 pkgname=polkit-consolekit
 pkgver=124
-pkgrel=1
+pkgrel=2
 pkgdesc="PolicyKit with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
 license=('LGPL')
 url="https://gitlab.freedesktop.org/polkit/polkit"
 depends=('glib2' 'pam' 'expat' 'duktape')
-makedepends=('meson' 'gtk-doc' 'gobject-introspection')
+makedepends=('meson' 'gtk-doc' 'gobject-introspection' 'glib2-devel')
 provides=(
     polkit=$pkgver
     libpolkit-{agent,gobject}-1.so

@@ -1,7 +1,7 @@
 pkgbase = polkit-consolekit
 	pkgdesc = PolicyKit with ConsoleKit support for non-systemd systems
 	pkgver = 124
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/polkit/polkit
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = polkit-consolekit
 	makedepends = meson
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
+	makedepends = glib2-devel
 	depends = glib2
 	depends = pam
 	depends = expat
