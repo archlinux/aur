@@ -1,0 +1,18 @@
+pkgbase = python-sphinx_issues
+	pkgdesc = A Sphinx extension for linking to your project's issue tracker
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/sloria/sphinx-issues
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-flit-core
+	depends = python>=3.8
+	depends = python-sphinx
+	depends = python-docutils
+	source = sphinx-issues-4.1.0.tar.gz::https://github.com/sloria/sphinx-issues/archive/4.1.0.tar.gz
+	sha256sums = c68af6156d1071bfd12398243cb72808d05a1cc812aa5d3f12df8ebe5a70e0ee
+
+pkgname = python-sphinx_issues
