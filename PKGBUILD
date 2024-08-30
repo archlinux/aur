@@ -3,7 +3,7 @@
 _target_alias="ppu"
 _pkgname="ffmpeg"
 pkgname="ps3-${_pkgname}-libs"
-pkgver="6.1"
+pkgver="7.0.1"
 pkgrel=1
 pkgdesc="Complete solution to record, convert and stream audio and video"
 arch=(x86_64 aarch64 powerpc64le powerpc64 powerpc riscv64)
@@ -15,7 +15,7 @@ source=(
 	"https://www.ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz"
 )
 sha256sums=(
-	'488c76e57dd9b3bee901f71d5c95eaf1db4a5a31fe46a28654e837144207c270'
+	'bce9eeb0f17ef8982390b1f37711a61b4290dc8c2a0c1a37b5857e85bfb0e4ff'
 )
 
 source /opt/ps3dev/ps3toolchain.sh
@@ -37,6 +37,7 @@ build() {
 		-L${PSL1GHT}/ppu/lib
 		-I${PS3DEV}/ppu/include
 		#-include ${TOPDIR}/support/nostrictansi.h
+		-Dstatic_assert=_Static_assert
 	)
 	export CFLAGS="${_cflags[@]}"
 
