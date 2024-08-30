@@ -1,7 +1,7 @@
 pkgbase = winbox
 	pkgdesc = Mikrotik RouterOS GUI Configurator
 	pkgver = 4.0beta3
-	pkgrel = 0
+	pkgrel = 1
 	url = https://mikrotik.com/download
 	install = winbox.install
 	arch = x86_64
