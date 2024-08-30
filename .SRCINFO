@@ -1,7 +1,7 @@
 pkgbase = avaloniatftpclient-bin
 	pkgdesc = Cross platform TFTP client desktop application, uses Avalonia as the UI framework
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jpmikkers/Avalonia-TFTPClient
 	arch = x86_64
 	license = MIT
@@ -18,6 +18,6 @@ pkgbase = avaloniatftpclient-bin
 	sha256sums = 8fb1bc6af493f0aec4cd6f9bacd5efa40a9e427daa63e114ab9a18df7d561607
 	sha256sums = 7e08e464b65f43ec00cb613655de03bee0e9a9ab93d8cc350d97f774608e1cdb
 	sha256sums = df9262e2176d830bfbef5b5e1dfa12f91c89e8ecb764eee366c3352df371d665
-	sha256sums = df596922ca5162c3dfa99808eab0754760336d10cdbf10880c6189b82e25c16a
+	sha256sums = 06ee6a208701a87e47206d96f32b91dda076da74f657bf4015c89348a8be90d5
 
 pkgname = avaloniatftpclient-bin

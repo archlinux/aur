@@ -3,7 +3,7 @@ pkgname=avaloniatftpclient-bin
 _appname=TFTPClient
 _pkgname="Avalonia-${_appname}"
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform TFTP client desktop application, uses Avalonia as the UI framework"
 arch=("x86_64")
 url="https://github.com/jpmikkers/Avalonia-TFTPClient"
@@ -27,21 +27,21 @@ source=(
 sha256sums=('8fb1bc6af493f0aec4cd6f9bacd5efa40a9e427daa63e114ab9a18df7d561607'
             '7e08e464b65f43ec00cb613655de03bee0e9a9ab93d8cc350d97f774608e1cdb'
             'df9262e2176d830bfbef5b5e1dfa12f91c89e8ecb764eee366c3352df371d665'
-            'df596922ca5162c3dfa99808eab0754760336d10cdbf10880c6189b82e25c16a')
+            '06ee6a208701a87e47206d96f32b91dda076da74f657bf4015c89348a8be90d5')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_appname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    install -Dm755 -d "${srcdir}/opt/${pkgname%-bin}"
-    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/opt/${pkgname%-bin}"
-    chmod a+x "${srcdir}/opt/${pkgname%-bin}/${_appname}"
-    gendesk -q -f -n --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin}"
+    install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}"
+    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/usr/lib/${pkgname%-bin}"
+    chmod a+x "${srcdir}/usr/lib/${pkgname%-bin}/${_appname}"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin}"
     icotool -i 7 -x "${srcdir}/${pkgname%-bin}.ico" -o "${srcdir}/${pkgname%-bin}.png"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -r "${srcdir}/opt" "${pkgdir}"
+    cp -r "${srcdir}/usr" "${pkgdir}"
     install -Dm644 "${srcdir}/${pkgname%-bin}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
