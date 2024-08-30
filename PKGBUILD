@@ -1,6 +1,6 @@
 _pkgname=Arjun
 pkgname=arjun
-pkgver=2.2.2
+pkgver=2.2.6
 pkgrel=1
 pkgdesc="HTTP parameter discovery suite."
 arch=("x86_64")
