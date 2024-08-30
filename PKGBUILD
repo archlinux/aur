@@ -3,8 +3,8 @@ pkgname=winggifeditor-bin
 _pkgname=WingGifEditor
 _appname="com.wingsummer.${pkgname%-bin}"
 pkgver=1.1.2
-pkgrel=7
-pkgdesc="基于 QT 编写的 GIF 编辑器，采用 C++ 进行开发"
+pkgrel=8
+pkgdesc="A GIF editor written based on QT and developed using C++ editor written based on QT and developed using C++.基于 QT 编写的 GIF 编辑器，采用 C++ 进行开发"
 arch=('x86_64')
 url="https://github.com/Wing-summer/WingGifEditor"
 license=('AGPL-3.0-only')
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c2e56a4478a7540afa7d52819d37e9d6b30d7afb577002dd3825b928d83125b2'
-            '6e4ce8626e9821a55a253bb68db316536b43cc2b4ed0d154d1495a928fb2603f')
+            '463a6423f1107da6397bca9851047e08229cbe42028804dfce146359d541846e')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
@@ -36,9 +36,9 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 "${srcdir}/opt/${_pkgname}/${_pkgname}" -t "${pkgdir}/opt/${pkgname%-bin}"    
-    install -Dm644 "${srcdir}/opt/${_pkgname}/lang/default.qm" -t "${pkgdir}/opt/${pkgname%-bin}/lang"
-    install -Dm644 "${srcdir}/opt/${_pkgname}/images/icon.png" -t "${pkgdir}/opt/${pkgname%-bin}/images"
+    install -Dm755 "${srcdir}/opt/${_pkgname}/${_pkgname}" -t "${pkgdir}/usr/lib/${pkgname%-bin}"    
+    install -Dm644 "${srcdir}/opt/${_pkgname}/lang/default.qm" -t "${pkgdir}/usr/lib/${pkgname%-bin}/lang"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/images/icon.png" -t "${pkgdir}/usr/lib/${pkgname%-bin}/images"
     install -Dm644 "${srcdir}/opt/${_pkgname}/images/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/opt/${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
