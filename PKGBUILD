@@ -3,12 +3,12 @@
 
 pkgname=winbox
 pkgver=3.41
-pkgrel=2
+pkgrel=3
 pkgdesc="Mikrotik RouterOS GUI Configurator (wine)"
 url="https://mikrotik.com/download"
 arch=('x86_64')
 license=('custom')
-depends=('wine' 'xdg-utils')
+depends=('desktop-file-utils' 'wine' 'xdg-utils')
 optdepends=(
   'ttf-ms-fonts: for better fonts'
 )
