@@ -13,11 +13,14 @@ fi
   mkdir -p /$cu_user/Monitor
   chmod 777  -R /$cu_user
   chmod 777  -R /opt/lze-web
+  chmod 766 -R /etc/lze-web
   ln -sf /$cu_user /opt/lze-web/file
   mv /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.back
   mv /etc/httpd/conf/httpd.conf.lze /etc/httpd/conf/httpd.conf
   sed -i "202i User $cu_user" /etc/httpd/conf/httpd.conf
   sed -i "203i Group $cu_user" /etc/httpd/conf/httpd.conf
+  touch /etc/sudoers/brightness
+ echo "$cu_user ALL = (root) NOPASSWD: /usr/bin/brightnessctl" > /etc/sudoers/brightness
   mv /etc/php/php.ini /etc/php/php.ini.bck
   mv /etc/php/php.ini.lze /etc/php/php.ini
   systemctl enable httpd.service
