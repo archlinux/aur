@@ -2,7 +2,7 @@
 pkgname=shuffle-ascii
 pkgbase=shuffle-ascii
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI command to print ASCII art with shuffle effect and color"
 arch=('x86_64')
 url="https://github.com/lennart1978/shuffle"
