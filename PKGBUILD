@@ -1,8 +1,8 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=codechecker
-pkgver=6.23.1
-pkgrel=3
+pkgver=6.24.0
+pkgrel=1
 pkgdesc="Analyzer tooling, defect database and viewer extension for the Clang Static Analyzer and Clang Tidy"
 arch=(x86_64)
 url="https://github.com/Ericsson/codechecker"
@@ -22,25 +22,21 @@ optdepends=(
 )
 
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   "fix-ldflags.patch"
 )
 sha256sums=(
-  '1936df9cf0fd3481f6aaa695e97fe3db8958c07e06c50d770565d0689ced9c4e'
+  'ace06dae55bb3c292d522cddc90f630532e9d4bee93a5d58865ce41f2d451795'
   'e59cb4d96642ccea7c3536e020b3961c1717bc65983424ced48b0ae1b1a3871a'
 )
 
-_archive="$pkgname-$pkgver"
-
 prepare() {
-  cd "$_archive"
-
-  patch --forward --strip=1 --input="$srcdir/fix-ldflags.patch"
+  cd $pkgname-$pkgver
+  patch -Np1 -i "$srcdir/fix-ldflags.patch"
 }
 
 build() {
-  cd "$_archive"
-
+  cd $pkgname-$pkgver
   make venv
   # shellcheck disable=SC1091
   source "$PWD/venv/bin/activate"
@@ -56,17 +52,16 @@ build() {
 }
 
 package() {
-  cd "$_archive"
-
-  install -dm755 "$pkgdir/opt"
-  cp -r build/CodeChecker "$pkgdir/opt"
+  cd $pkgname-$pkgver
+  install -vdm755 "$pkgdir/opt"
+  cp -a build/CodeChecker "$pkgdir/opt"
   rm -r "$pkgdir/opt/CodeChecker/lib/python3/codechecker"
 
   cp -r venv/lib/python*/site-packages/* "$pkgdir/opt/CodeChecker/lib/python3/"
 
-  cp -r codechecker_api-*/codechecker_api/ "$pkgdir/opt/CodeChecker/lib/python3/"
-  cp -r codechecker_api_shared-*/codechecker_api_shared/ "$pkgdir/opt/CodeChecker/lib/python3/"
+  cp -a codechecker_api-*/codechecker_api/ "$pkgdir/opt/CodeChecker/lib/python3/"
+  cp -a codechecker_api_shared-*/codechecker_api_shared/ "$pkgdir/opt/CodeChecker/lib/python3/"
 
-  install -dm755 "$pkgdir/usr/bin"
+  install -vdm755 "$pkgdir/usr/bin"
   ln -s /opt/CodeChecker/bin/CodeChecker "$pkgdir/usr/bin/CodeChecker"
 }
