@@ -2,8 +2,8 @@
 pkgname=xresconv-gui-bin
 pkgver=2.4.1
 _electronversion=25
-pkgrel=6
-pkgdesc="批量转表工具的GUI版本，依赖electron"
+pkgrel=7
+pkgdesc="批量转表工具的GUI版本,依赖electron"
 arch=(
     'aarch64'
     'armv7h'
@@ -14,7 +14,7 @@ license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'gendesk'
@@ -29,7 +29,7 @@ source=(
 )
 sha256sums=('3383900bc8b96fe4f9fcd7c851f925bc995aa3db9c054e5838c1e2703bf57898'
             '7e00e3bdc3fa297143a39b09ad56a7be6b60ca29591156dc4eaf55e8c76f8e07'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 sha256sums_aarch64=('6faa1b3ffdd26df957ff6b88a44031dff85a41609918c753e5f7461673490643')
 sha256sums_armv7h=('764344ac701ef894e19c1598b15c83a7b54c799022b2a6fd4f45526bce54586d')
 sha256sums_x86_64=('cab293d47e071684823f8567246cf8423439ca7908c35b95e4611961aa0062eb')
@@ -37,9 +37,10 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
