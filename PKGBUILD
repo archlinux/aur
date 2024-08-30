@@ -1,9 +1,10 @@
 pkgname='lcov-cobertura'
+pkgdesc='lcov to cobertura XML converter'
 pkgver='2.0.2'
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://pypi.org/project/lcov-cobertura/'
-license=('GPL')
+license=('Apache-2.0')
 depends=('python>=3.6')
 makedepends=('python-setuptools')
 source=('https://files.pythonhosted.org/packages/56/51/c6aef321778fbdf3d11653dd2cce3af6cba6ba6037295634425f502aafca/lcov_cobertura-2.0.2.tar.gz')
