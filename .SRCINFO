@@ -1,6 +1,6 @@
 pkgbase = ghdl-gcc-git
 	pkgdesc = VHDL simulator - GCC back-end
-	pkgver = 5.0.0dev.r9326.gec7cd5909
+	pkgver = 5.0.0dev.r9531.gc49b2038b
 	pkgrel = 1
 	url = https://github.com/ghdl/ghdl
 	install = ghdl.install
@@ -14,8 +14,8 @@ pkgbase = ghdl-gcc-git
 	license = GPL2
 	makedepends = git
 	depends = gcc-ada
-	provides = ghdl=5.0.0dev.r9326.gec7cd5909
-	provides = ghdl-git=5.0.0dev.r9326.gec7cd5909
+	provides = ghdl=5.0.0dev.r9531.gc49b2038b
+	provides = ghdl-git=5.0.0dev.r9531.gc49b2038b
 	conflicts = ghdl
 	conflicts = ghdl-llvm-git
 	conflicts = ghdl-mcode-git
@@ -23,10 +23,10 @@ pkgbase = ghdl-gcc-git
 	options = staticlibs
 	options = !lto
 	source = ghdl::git+https://github.com/ghdl/ghdl.git
-	source = https://gcc.gnu.org/pub/gcc/releases/gcc-11.2.0/gcc-11.2.0.tar.xz
+	source = https://gcc.gnu.org/pub/gcc/releases/gcc-12.4.0/gcc-12.4.0.tar.xz
 	source = https://gcc.gnu.org/pub/gcc/infrastructure/isl-0.24.tar.bz2
 	sha256sums = SKIP
-	sha256sums = d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b
+	sha256sums = 704f652604ccbccb14bdabf3478c9511c89788b12cb3bbffded37341916a9175
 	sha256sums = fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0
 
 pkgname = ghdl-gcc-git

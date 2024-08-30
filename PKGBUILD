@@ -1,7 +1,7 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-gcc-git
-pkgver=5.0.0dev.r9326.gec7cd5909
+pkgver=5.0.0dev.r9531.gc49b2038b
 pkgrel=1
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='VHDL simulator - GCC back-end'
@@ -15,7 +15,7 @@ depends=('gcc-ada')
 install=ghdl.install
 options=(!emptydirs staticlibs !lto)
 
-_gccver=11.2.0
+_gccver=12.4.0
 _islver=0.24
 
 source=(
@@ -24,7 +24,7 @@ source=(
 	"https://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
 )
 sha256sums=('SKIP'
-            'd08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
+            '704f652604ccbccb14bdabf3478c9511c89788b12cb3bbffded37341916a9175'
             'fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0')
 
 pkgver() {
