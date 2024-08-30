@@ -4,11 +4,11 @@ _pkgname=clash-nyanpasu
 pkgver=1.6.0
 pkgrel=1
 pkgdesc="A Clash GUI based on tauri."
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://github.com/keiko233/clash-nyanpasu"
 license=('GPL-3.0-or-later')
 depends=('webkit2gtk' 'clash-geoip' 'libayatana-appindicator' "clash-meta-is-mihomo")
-makedepends=('yarn' 'cargo-tauri' 'jq' 'moreutils' 'rust' 'git' 'pnpm' 'clang')
+makedepends=('yarn' 'cargo-tauri' 'jq' 'moreutils' 'rust-nightly' 'cargo-nightly' 'git' 'pnpm' 'clang' 'nodejs')
 optdepends=('clash' 'clash-rs')
 source=("git+https://github.com/keiko233/clash-nyanpasu.git#tag=v${pkgver}"
 	"${_pkgname}.desktop"
@@ -16,7 +16,7 @@ source=("git+https://github.com/keiko233/clash-nyanpasu.git#tag=v${pkgver}"
 provides=(clash-nyanpasu)
 conflicts=()
 
-sha512sums=('66c7eff3b4fe10340e875aa362d3f272ef6761d2b80fbd9c0c693ccc3b97350566e48b674971385fda6963cf750120c55eb515254d8a8dac6e5ce95eca77cf4a'
+sha512sums=('c4e6c188342199dacfd4854e894e4eb3676e2772ad6fed38bb00b51d2b2dcb236439518445c86973c4857791e1951426d062b861ea3c661cfcdba59f55c60efd'
             '085ba585e531f430050cb5fba6221228091c5c59d7c73004eba6c305a794a270e067ce971b92afa23c7d3b6024e4ad208061a2048b219ff42175a28c9d41ee82')
 options=(strip !debug !lto !debug)
 
@@ -40,7 +40,7 @@ function prepare(){
 	# only build the excutable
 	jq '.tauri.bundle.active = false' tauri.conf.json|sponge tauri.conf.json
 	# disable updater
-	jq '.tauri.updater.active = false' tauri.conf.json|sponge tauri.conf.json
+	# jq '.tauri.updater.active = false' tauri.conf.json|sponge tauri.conf.json
 	pnpm i
 	pnpm check
 	cd "${srcdir}/clash-nyanpasu/backend/tauri"
