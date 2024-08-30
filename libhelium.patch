@@ -1,6 +1,7 @@
---- libhelium-1.8.14/meson.build	2024-07-30 19:07:54.000000000 +0200
-+++ altered/meson.build	2024-07-31 17:21:30.353411400 +0200
-@@ -99,16 +99,3 @@
+diff --unified --recursive --text libhelium-1.8.17/meson.build altered/meson.build
+--- libhelium-1.8.17/meson.build	2024-08-30 22:00:20.000000000 +0200
++++ altered/meson.build	2024-08-30 23:08:41.925272728 +0200
+@@ -100,16 +100,3 @@
  if get_option('gidoc') or get_option('valadoc')
      subdir('doc')
  endif
@@ -17,3 +18,4 @@
 -install_data(settings_schemas, install_dir: schemas_dir)
 -
 -meson.add_install_script('glib-compile-schemas', schemas_dir)
+\ No newline at end of file
