@@ -1,10 +1,12 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 # Contributor: Filip Graliński <filipg@amu.edu.pl>
 
-: ${CARGO_HOME=$SRCDEST/cargo-home}
+: ${CARGO_HOME:=$SRCDEST/cargo-home}
+: ${CARGO_TARGET_DIR:=target}
+: ${RUSTUP_TOOLCHAIN:=stable}
 
-_gitname="tokenizers"
-_pkgname="python-$_gitname"
+_module="tokenizers"
+_pkgname="python-$_module"
 pkgname="$_pkgname"
 pkgver=0.20.0
 pkgrel=1
@@ -20,7 +22,6 @@ depends=(
 makedepends=(
   'clang'
   'rust-bindgen'
-  'git'
   'python-build'
   'python-installer'
   'python-maturin'
@@ -30,20 +31,18 @@ makedepends=(
 
 options=('!lto')
 
-_pkgsrc="$_gitname"
-source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
-sha256sums=('SKIP')
+_pkgsrc="$_module-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
+sha256sums=('ea027dbebbca61b28e1a4512eb447e513af3004bd268bcf139b51a384c073cb5')
 
 _rust_env() {
-  export CARGO_HOME
+  export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
   export GIT_DIR='.'
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
 }
 
-prepare() {
+prepare() (
   _rust_env
-
   cd "$_pkgsrc/bindings/python"
 
   # fix typo
@@ -51,15 +50,14 @@ prepare() {
 
   cargo update
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-}
+)
 
-build() {
+build() (
   _rust_env
-
   cd "$_pkgsrc/bindings/python"
   cargo build --frozen --release
   python -m build --no-isolation --wheel
-}
+)
 
 package() {
   cd "$_pkgsrc/bindings/python"
