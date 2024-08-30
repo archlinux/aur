@@ -1,6 +1,6 @@
 pkgbase = lze-web
 	pkgdesc = lze-web
-	pkgver = 3.1
+	pkgver = 3.2
 	pkgrel = 1
 	install = lze-web.install
 	arch = x86_64
