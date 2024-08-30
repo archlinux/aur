@@ -1,6 +1,6 @@
 pkgbase = aider-chat
 	pkgdesc = AI pair programming in your terminal
-	pkgver = 0.54.4
+	pkgver = 0.54.7
 	pkgrel = 1
 	url = https://github.com/paul-gauthier/aider
 	arch = any
@@ -44,7 +44,7 @@ pkgbase = aider-chat
 	optdepends = python-sounddevice: portaudio support
 	optdepends = python-soundfile: portaudio support
 	provides = aider
-	source = aider-chat::git+https://github.com/paul-gauthier/aider.git#tag=v0.54.4
-	sha256sums = b0b528b3a60ec51af9e607a6ff9882379e153de15a3a246716891966676622b3
+	source = aider-chat::git+https://github.com/paul-gauthier/aider.git#tag=v0.54.7
+	sha256sums = 440c9581c4438ca143d0be028c389a45cac082cf34384272fe2d2e66b3c415dc
 
 pkgname = aider-chat
