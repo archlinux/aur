@@ -1,9 +1,9 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgbase=rubymine-eap
 pkgname=(rubymine-eap rubymine-eap-jre)
-pkgver=242.21829.57
+pkgver=242.21829.150
 _pkgname=RubyMine
-_pkgver=2024.2.0.1
+_pkgver=2024.2.1
 pkgrel=1
 pkgdesc="Ruby and Rails IDE with the full stack of essential developer tools (EAP)."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ install=rubymine.install
 source=(https://download.jetbrains.com/ruby/${_pkgname}-${_pkgver}.tar.gz
         rubymine-eap.desktop
         rubymine.install)
-sha256sums=('9e3ca43d2cd0c22b254033c9fea4c54707310a39a2b4b1ff270a480b53fd3518'
+sha256sums=('246640c171b9e89c135360ae52b6720f1d18e591f9c16023b14b6597131833be'
             '02b32d973da26ef7d61e4c291fff71229729b203661dc75cc947c8098cb8e660'
             'fe42e281cdcaca5008d3f254a16974504c9271407800d0234ce06476ea9e3bdd')
 
