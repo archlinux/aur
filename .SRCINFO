@@ -1,6 +1,6 @@
 pkgbase = streamcontroller
 	pkgdesc = An elegant Linux app for the Elgato Stream Deck with support for plugins
-	pkgver = r1571.488a38c
+	pkgver = r1594.50b1ca6
 	pkgrel = 1
 	url = https://github.com/StreamController/StreamController
 	arch = any

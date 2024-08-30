@@ -2,7 +2,7 @@
 pkgname=streamcontroller
 _pkgname=${pkgname%-git}
 _reponame=StreamController
-pkgver=r1571.488a38c
+pkgver=r1594.50b1ca6
 pkgrel=1
 pkgdesc="An elegant Linux app for the Elgato Stream Deck with support for plugins"
 arch=('any')
@@ -38,7 +38,7 @@ package() {
     mkdir -p "$pkgdir/usr/bin"
     echo "#!/bin/bash" > "$pkgdir/usr/bin/$pkgname"
     echo "cd /usr/lib/$pkgname" >> "$pkgdir/usr/bin/$pkgname"
-    echo "python3 main.py " >> "$pkgdir/usr/bin/$pkgname"
+    echo "python3 main.py \$@" >> "$pkgdir/usr/bin/$pkgname"
     chmod +x "$pkgdir/usr/bin/$pkgname"
 
     # Install application entry
