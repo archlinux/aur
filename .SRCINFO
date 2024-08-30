@@ -1,6 +1,6 @@
 pkgbase = python-tradingeconomics
 	pkgdesc = A library providing an API allowing access to Trading Economics data.
-	pkgver = 4.3.7
+	pkgver = 4.3.8
 	pkgrel = 1
 	url = https://github.com/tradingeconomics/tradingeconomics-python
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-tradingeconomics
 	depends = python
 	depends = python-pandas
 	depends = python-websocket-client
-	source = python-tradingeconomics-4.3.7.tar.gz::https://files.pythonhosted.org/packages/source/t/tradingeconomics/tradingeconomics-4.3.7.tar.gz
-	sha256sums = 869a73935b07372e23d14b18414a9537443a710976cf44c7e24171c33330a9d0
+	source = python-tradingeconomics-4.3.8.tar.gz::https://files.pythonhosted.org/packages/source/t/tradingeconomics/tradingeconomics-4.3.8.tar.gz
+	sha256sums = 6a104d7816d4d8d86632dcb6a3178f3e9c0286f91d6ad1bac5133f94dd91d848
 
 pkgname = python-tradingeconomics
