@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=Winbox
+Name=Winbox 3.x
 Comment=GUI administration for Mikrotik RouterOS (3.x)
 Exec=/usr/bin/winbox3
 Icon=winbox3
