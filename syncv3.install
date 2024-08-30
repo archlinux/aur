@@ -1,0 +1,10 @@
+#!/bin/bash
+
+function post_upgrade() {
+	if [ -f /etc/matrix-sliding-sync.conf ]; then
+		echo "[Warning] Environment variable file has changed to /etc/default/sliding-sync"
+		echo "Socket is available under /run/sliding-sync"
+		sleep 5s
+		mv /etc/matrix-sliding-sync.conf /etc/default/sliding-sync
+	fi
+}

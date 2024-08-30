@@ -1,35 +1,36 @@
-# Maintainer: Luca Weiss <luca@z3ntu.xyz>
+# Maintainer: Kimiblock Moe
+# Contributor: Luca Weiss <luca@z3ntu.xyz>
 # Contributor: user20159 <https://aur.archlinux.org/account/user20159>
 pkgname=matrix-sliding-sync
-_basename=sliding-sync
-pkgver=0.99.19
+arch=('x86_64' 'aarch64')
+backup=("etc/default/sliding-sync")
+pkgver=0.99.15
 pkgrel=1
-pkgdesc="Sliding sync proxy for matrix protocol, required for modern clients like Element X."
-arch=('x86_64')
-url="https://github.com/matrix-org/sliding-sync"
-license=('Apache-2.0')
-depends=('glibc')
-makedepends=('go>=1.19')
-source=("${_basename}-${pkgver}.tar.gz::https://github.com/matrix-org/${_basename}/archive/v${pkgver}.tar.gz"
-        "matrix-sliding-sync.service"
-        "matrix-sliding-sync.conf")
-sha256sums=('910fe4889769fc9871b1aaf98d848b97ab8edce590c0493e58ab85bc0986080f'
-            'ba2f85f9f66dc701ab48797906f7eb21c9a82d7ab956ad0383db6cb80b5e73ad'
-            'f8b74879166b1fc857fcc66155bd7bfe74da717160b8e72971f90506669d822d')
-backup=("etc/matrix-sliding-sync.conf")
+pkgdesc="Run a sliding sync proxy. An implementation of MSC3575."
+url=https://github.com/matrix-org/sliding-sync
+license=("Apache")
+depends=("postgresql>13")
+source=("git+https://github.com/matrix-org/sliding-sync.git#tag=v${pkgver}" "sliding-sync-git.service")
+makedepends=("go" "git")
+sha256sums=('10b64b86758a1c30d44c4f730977124c730c4309bf746738d1b4d0685953fb12'
+            '7f456f0c130fc46e79964ae8587d8fb4eb74ce78106523978aeb60f024d291de')
+provides=("sliding-sync" "matrix-sliding-sync")
+conflicts=("sliding-sync" "matrix-sliding-sync")
+install="syncv3.install"
 
-build() {
-  cd "$srcdir/${_basename}-$pkgver"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build ./cmd/syncv3/
+function build(){
+	cd "${srcdir}/sliding-sync"
+	go build -trimpath -buildmode=pie -mod=readonly -modcacherw -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" ./cmd/syncv3
 }
 
-package() {
-  install -Dm755 "$srcdir/${_basename}-$pkgver/syncv3" "$pkgdir"/usr/bin/syncv3
-  install -Dm644 matrix-sliding-sync.service "$pkgdir"/usr/lib/systemd/system/matrix-sliding-sync.service
-  install -Dm600 matrix-sliding-sync.conf "$pkgdir"/etc/matrix-sliding-sync.conf
+function package(){
+	cd sliding-sync
+	install -Dm755 "${srcdir}/sliding-sync/syncv3" "${pkgdir}/usr/bin/syncv3"
+	install -Dm644 "${srcdir}/sliding-sync-git.service" "${pkgdir}/usr/lib/systemd/system/sliding-sync.service"
+	mkdir -p "${pkgdir}/etc/default"
+	touch "${pkgdir}/etc/default/sliding-sync"
+	chmod 0600 -R "${pkgdir}/etc/default/sliding-sync"
+	mkdir -p "${pkgdir}/usr/lib/tmpfiles.d"
+	echo 'f	/etc/default/sliding-sync	0600	root	root' >"${pkgdir}/usr/lib/tmpfiles.d/sliding-sync.conf"
 }
+
