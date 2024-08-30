@@ -1,7 +1,7 @@
 pkgbase = gotify-tray-bin
 	pkgdesc = Cross-platform desktop client for receiving messages from a Gotify server
 	pkgver = 0.5.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/seird/gotify-tray
 	arch = x86_64
 	license = GPL-3.0-only
@@ -10,12 +10,15 @@ pkgbase = gotify-tray-bin
 	depends = qt6-svg
 	depends = qt6-wayland
 	depends = python-pyqt6
+	depends = qt6-websockets
+	depends = libbsd
+	depends = libmd
 	depends = gtk3
 	provides = gotify-tray=0.5.2
 	conflicts = gotify-tray
 	source = gotify-tray-0.5.2.deb::https://github.com/seird/gotify-tray/releases/download/0.5.2/gotify-tray_0.5.2_amd64_bookworm.deb
 	source = gotify-tray.sh
 	sha256sums = 1c98ee2d33ea2102f983ebeed64674007c661560e9bf46dd1aa6a6ec09f43187
-	sha256sums = ee22d6e0d56653714cc6a752e02bbac52864908f64267407145f47464e576bde
+	sha256sums = 2d573d6aa37cc5922106ebd3adf2a463d4ebddff442099c08144cae62cb3eb15
 
 pkgname = gotify-tray-bin

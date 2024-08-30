@@ -2,7 +2,7 @@
 _pkgname=gotify_tray
 pkgname="${_pkgname//_/-}-bin"
 pkgver=0.5.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Cross-platform desktop client for receiving messages from a Gotify server"
 arch=('x86_64')
 url="https://github.com/seird/gotify-tray"
@@ -14,7 +14,10 @@ depends=(
     'qt6-base'
     'qt6-svg'
     'qt6-wayland'
-    'python-pyqt6'    
+    'python-pyqt6'
+    'qt6-websockets'
+    'libbsd'
+    'libmd'
     'gtk3'    
 )
 source=(
@@ -22,7 +25,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1c98ee2d33ea2102f983ebeed64674007c661560e9bf46dd1aa6a6ec09f43187'
-            'ee22d6e0d56653714cc6a752e02bbac52864908f64267407145f47464e576bde')
+            '2d573d6aa37cc5922106ebd3adf2a463d4ebddff442099c08144cae62cb3eb15')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
@@ -33,7 +36,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" -t "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -r "${srcdir}/opt" "${pkgdir}"
+    install -Dm755 -d "${pkgdir}/usr/lib"
+    cp -r "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname//_/}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/${_pkgname}/gui/images/tray.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/opt/${pkgname%-bin}/${_pkgname}/gui/images/tray.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }
