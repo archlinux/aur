@@ -6,13 +6,13 @@
 
 pkgname='hplip-minimal'
 pkgver=3.24.4
-pkgrel=4
+pkgrel=5
 pkgdesc='Only printer drivers from HPLIP with proprietary binary plugin'
 arch=('x86_64')
 url='https://developers.hp.com/hp-linux-imaging-and-printing/'
-license=('GPL-2.0-only' 'MIT' 'BSD-3-Clause' 'GPL-3.0-or-later' 'LicenseRef-HPLIP')
+license=('GPL-2.0-only' 'MIT' 'BSD-3-Clause' 'GPL-3.0-only' 'LicenseRef-HPLIP')
 depends=(libjpeg-turbo libcups)
-makedepends=(python libusb)
+makedepends=(python libusb cups)
 conflicts=('hplip' 'hplip-lite' 'hplip-plugin')
 provides=('hplip')
 backup=('etc/hp/hplip.conf')
