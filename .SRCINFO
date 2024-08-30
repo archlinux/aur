@@ -1,8 +1,8 @@
 pkgbase = grafana-bin
 	pkgdesc = Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB - binary version
-	pkgver = 11.0.0
+	pkgver = 11.2.0
 	pkgrel = 1
-	url = https://grafana.com/
+	url = https://grafana.com/grafana/download
 	install = grafana.install
 	arch = x86_64
 	arch = aarch64
@@ -17,9 +17,9 @@ pkgbase = grafana-bin
 	sha256sums = fa1aefe885f2d94bb6a9f6e98eb793b8145f1a980357c809036dc00c9d25594f
 	sha256sums = 9cbd46f771dae5e2308b991a00d07a25cc1765f9bdd4082726108e3476403b56
 	sha256sums = 3cd6026ba009e05f49ec265d049d590d4f35330c1f14cd90a468c8d588501675
-	source_x86_64 = https://dl.grafana.com/oss/release/grafana-11.0.0.linux-amd64.tar.gz
-	sha256sums_x86_64 = 97c70aa4fd11aa75bbb575d7d48764cb3a6c3356b53f34c7750c0dd7e006204d
-	source_aarch64 = https://dl.grafana.com/oss/release/grafana-11.0.0.linux-arm64.tar.gz
-	sha256sums_aarch64 = 24c05394013da1b35039102dd3950ae515b871920655d815d26c78c1f0f559bf
+	source_x86_64 = https://dl.grafana.com/oss/release/grafana-11.2.0.linux-amd64.tar.gz
+	sha256sums_x86_64 = a7e717b78c11e37b147994fc04655da5f434280e1f01ceb84e8f38ca7fdef050
+	source_aarch64 = https://dl.grafana.com/oss/release/grafana-11.2.0.linux-arm64.tar.gz
+	sha256sums_aarch64 = a0bd569fd4b9130ad1e2507605c11d285de43758bb33cf22114f42bae0fe76ac
 
 pkgname = grafana-bin
