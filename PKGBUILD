@@ -4,7 +4,7 @@
 
 _name=gaphas
 pkgname=python-${_name}
-pkgver=4.0.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Diagramming widget library for Python"
 arch=('any')
@@ -19,34 +19,34 @@ depends=(
 makedepends=(
 	'python-build'
 	'python-installer'
+	'python-poetry'
 	'python-poetry-core'
 )
 checkdepends=(
-	'python-pytest'
-	'python-sphinx'
-	'python-pytest-archon'
-	'python-pytest-xvfb'
 	'xorg-server-xvfb'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('1d46584e72e265bb3499b530945a43b81a4dbab3a46493573a727321d22b67ba')
+sha256sums=('9f1f72ae3bd9912acb22a42f785b8b390bc41db1b4b06a7bdc975713e869120d')
+
+prepare() {
+	cd "${srcdir}/${_name}-${pkgver}"
+	poetry config virtualenvs.in-project true --local
+	poetry install
+}
 
 build() {
-	cd "${_name}-${pkgver}"
+	cd "${srcdir}/${_name}-${pkgver}"
+	poetry build
 	# Note: set `GIT_CEILING_DIRECTORIES` to prevent poetry
 	# from incorrectly using a parent git checkout info.
 	# https://github.com/pypa/build/issues/384#issuecomment-947675975
-	GIT_CEILING_DIRECTORIES="${PWD}/.." python -m build --wheel --no-isolation
+#	GIT_CEILING_DIRECTORIES="${PWD}/.." python -m build --wheel --no-isolation
 }
 
 check() {
 	cd "${srcdir}/${_name}-${pkgver}"
 	export TEST_GTK_VERSION='4.0'
-	local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-	echo "$python_version"
-	# NOTE: this command will segfault because test_guide.py can't run headless
-#	python -m pytest -s tests
-	xvfb-run --auto-servernum python -m pytest -s tests
+	xvfb-run --auto-servernum poetry run pytest -s tests
 }
 
 package() {

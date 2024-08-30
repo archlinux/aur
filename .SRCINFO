@@ -1,23 +1,20 @@
 pkgbase = python-gaphas
 	pkgdesc = Diagramming widget library for Python
-	pkgver = 4.0.0
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://github.com/gaphor/gaphas
 	arch = any
 	license = Apache
-	checkdepends = python-pytest
-	checkdepends = python-sphinx
-	checkdepends = python-pytest-archon
-	checkdepends = python-pytest-xvfb
 	checkdepends = xorg-server-xvfb
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-poetry
 	makedepends = python-poetry-core
 	depends = gtk4
 	depends = python-gobject
 	depends = python-cairo
 	depends = python-importlib-metadata
-	source = python-gaphas-4.0.0.tar.gz::https://github.com/gaphor/gaphas/archive/4.0.0.tar.gz
-	sha256sums = 1d46584e72e265bb3499b530945a43b81a4dbab3a46493573a727321d22b67ba
+	source = python-gaphas-4.1.1.tar.gz::https://github.com/gaphor/gaphas/archive/4.1.1.tar.gz
+	sha256sums = 9f1f72ae3bd9912acb22a42f785b8b390bc41db1b4b06a7bdc975713e869120d
 
 pkgname = python-gaphas
