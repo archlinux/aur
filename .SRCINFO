@@ -10,6 +10,7 @@ pkgbase = sysbar
 	depends = gtk4-layer-shell
 	depends = jsoncpp
 	depends = upower
+	depends = playerctl
 	source = git+https://github.com/System64fumo/sysbar
 	sha256sums = SKIP
 
