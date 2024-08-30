@@ -1,17 +1,13 @@
 pkgbase = emsdk
 	pkgdesc = The Emscripten SDK
-	pkgver = 3.1.59
+	pkgver = 3.1.65
 	pkgrel = 1
 	url = https://github.com/emscripten-core/emsdk
-	arch = x86_64
+	arch = any
 	license = MIT
 	depends = python
 	depends = cmake
-	source = emsdk-3.1.59.tar.gz::https://github.com/emscripten-core/emsdk/archive/3.1.59.tar.gz
-	source = emsdk
-	source = emsdk_env.sh
-	sha256sums = 47515d522229a103b7d9f34eacc1d88ac355b22fd754d13417a2191fd9d77d5f
-	sha256sums = d58940585324e582621a8ac5e28e913beee14a0b8e307f5413a6b0dcd6d2a139
-	sha256sums = cd14a9107ca2cd92ec7ab2e44b8ca86ae71e81e744d700b49e75fbcb9717b5ce
+	source = emsdk-3.1.65.tar.gz::https://github.com/emscripten-core/emsdk/archive/3.1.65.tar.gz
+	sha256sums = 6000c66fc5ca81117cbf9f0fd72e288992915bc16df9e6d77c607fab05b472eb
 
 pkgname = emsdk
