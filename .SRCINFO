@@ -1,17 +1,19 @@
 pkgbase = apk-editor-studio-bin
 	pkgdesc = A powerful yet easy to use APK reverse-engineering tool
 	pkgver = 1.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://qwertycube.com/apk-editor-studio/
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = fuse2
-	depends = qt5-base
-	depends = java-runtime>=8
 	depends = android-sdk-build-tools
 	depends = android-sdk-platform-tools
 	depends = libusb
-	depends = android-apktool
+	depends = libglvnd
+	depends = libxcb
+	depends = libice
+	depends = libsm
+	depends = libx11
 	optdepends = libsecret: Enable password manager backend
 	provides = apk-editor-studio=1.7.1
 	conflicts = apk-editor-studio
@@ -20,6 +22,6 @@ pkgbase = apk-editor-studio-bin
 	source = apk-editor-studio-1.7.1.AppImage::https://github.com/kefir500/apk-editor-studio/releases/download/v1.7.1/apk-editor-studio_linux_1.7.1.AppImage
 	source = apk-editor-studio.sh
 	sha256sums = 548cdee09e9951b577c0f2b9818ba90dbedef13ca4d57a7e20eab488c5ab1892
-	sha256sums = 7b0831f35c90ccd21f71c30ba84a5f91371a12302afe6262df6ad7af66bd1e70
+	sha256sums = b3e9c2ea2115387e381b4f66d286e59c0ad4a16b94eed5313b03ce05fadc8863
 
 pkgname = apk-editor-studio-bin
