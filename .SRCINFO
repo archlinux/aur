@@ -1,7 +1,7 @@
 pkgbase = warpgui-bin
 	pkgdesc = GUI for Cloudflare ™ WARP
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AKotov-dev/warpgui
 	arch = x86_64
 	license = GPL-3.0-only
@@ -12,6 +12,6 @@ pkgbase = warpgui-bin
 	source = warpgui-2.1.rpm::https://github.com/AKotov-dev/warpgui/releases/download/v2.1/warpgui-2.1-0.mrx9.x86_64.rpm
 	source = warpgui.sh
 	sha256sums = d45bb4dd0e6aa66d3373ab69d7705e4a1a6c5e122a50156eb51d77c752eaea2f
-	sha256sums = 11873edcbca4ba6ad3ff5950c5849bd0a387f4f0a6ccbca9208491ec8c95fc32
+	sha256sums = 92c8d0c4692fad0fb6ba2394dbc39d857fd794a09d028e21200425634f538c15
 
 pkgname = warpgui-bin

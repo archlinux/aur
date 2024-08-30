@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=warpgui-bin
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for Cloudflare ™ WARP"
 arch=('x86_64')
 url="https://github.com/AKotov-dev/warpgui"
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('d45bb4dd0e6aa66d3373ab69d7705e4a1a6c5e122a50156eb51d77c752eaea2f'
-            '11873edcbca4ba6ad3ff5950c5849bd0a387f4f0a6ccbca9208491ec8c95fc32')
+            '92c8d0c4692fad0fb6ba2394dbc39d857fd794a09d028e21200425634f538c15')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -28,8 +28,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt"
-    cp -r "${srcdir}/usr/share/${pkgname%-bin}" "${pkgdir}/opt"
+    install -Dm755 -d "${pkgdir}/usr/lib"
+    cp -r "${srcdir}/usr/share/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/icons/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 }
