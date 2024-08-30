@@ -1,6 +1,6 @@
 pkgbase = wine-wow64-git
 	pkgdesc = A compatibility layer for running Windows programs
-	pkgver = 9.9.r137.g5f7b9a5b
+	pkgver = 9.16.r80.gc1a0fb66
 	pkgrel = 1
 	url = https://gitlab.winehq.org/wine/wine
 	arch = x86_64
@@ -24,28 +24,31 @@ pkgbase = wine-wow64-git
 	depends = fontconfig
 	depends = freetype2
 	depends = gettext
+	depends = gnutls
 	depends = gst-plugins-base-libs
+	depends = libpcap
 	depends = libpulse
 	depends = libxcomposite
 	depends = libxcursor
 	depends = libxi
 	depends = libxinerama
+	depends = libxkbcommon
 	depends = libxrandr
 	depends = opencl-icd-loader
 	depends = pcsclite
 	depends = sdl2
+	depends = unixodbc
 	depends = v4l-utils
+	depends = wayland
 	depends = desktop-file-utils
 	depends = libgphoto2
-	depends = libxkbcommon
-	depends = wayland
 	optdepends = alsa-plugins
 	optdepends = dosbox
 	optdepends = cups
 	optdepends = samba
 	optdepends = sane
-	provides = wine-wow64=9.9
-	provides = wine=9.9
+	provides = wine-wow64=9.16
+	provides = wine=9.16
 	conflicts = wine-wow64
 	conflicts = wine
 	options = staticlibs
