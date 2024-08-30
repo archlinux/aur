@@ -1,0 +1,11 @@
+pkgbase = nithya-ranjana-otf-bin
+	pkgdesc = A typeface based on the calligraphic Ranjana script, based on the Devanagari (DU) and Newa (NU) Unicodes, used to write Sanskrit and Nepal Bhasa
+	pkgver = 1.000
+	pkgrel = 1
+	url = https://github.com/EkType/Nithya-Ranjana
+	arch = any
+	license = OFL
+	source = https://github.com/EkType/Nithya-Ranjana/releases/download/1.000/NithyaRanjana-Regular.zip
+	sha256sums = c6abe96d281103e815d64d266091d13a1300abf7cdb37aa88e88d72967ae0cbf
+
+pkgname = nithya-ranjana-otf-bin
