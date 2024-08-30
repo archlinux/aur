@@ -5,6 +5,7 @@ pkgbase = tencent-docs-bin
 	url = https://docs.qq.com/home/
 	arch = x86_64
 	arch = aarch64
+	depends = electron
 	source = tencent-docs.desktop
 	sha256sums = 7dd7432ece74ddd5d5fd6de07e6b521a4b84206a8fa099b754f2a994641404d7
 	source_x86_64 = tencent-docs-bin-3.8.1-1-x86_64.deb::https://docs.qq.com/api/package/get?channel_id=30001&version_id=3.8.1&package_name=TencentDocs-x64.deb
