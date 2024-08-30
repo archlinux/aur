@@ -8,6 +8,8 @@ pkgbase = streamcontroller
 	makedepends = git
 	makedepends = python-pip
 	depends = python
+	depends = xdg-desktop-portal
+	depends = libportal
 	source = git+https://github.com/StreamController/StreamController.git
 	sha256sums = SKIP
 
