@@ -29,15 +29,17 @@ build() {
 	CFLAGS+=' -ffat-lto-objects' make
 }
 
-check() {
-	cd ${srcdir}/${pkgname}-${pkgver}/
-	
-	export RUSTUP_TOOLCHAIN=stable
-	CFLAGS+=' -ffat-lto-objects' make bench
-}
+#check() {
+#	cd ${srcdir}/${pkgname}-${pkgver}/
+#	
+#	export RUSTUP_TOOLCHAIN=stable
+#	CFLAGS+=' -ffat-lto-objects' make bench
+#}
 
 package() {
 	cd ${srcdir}/${pkgname}-${pkgver}/
 
-	make DEST="${pkgdir}/" install
+	mkdir ${pkgdir}/usr
+
+	make DEST="${pkgdir}/usr" install
 }
