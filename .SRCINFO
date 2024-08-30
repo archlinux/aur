@@ -1,7 +1,7 @@
 pkgbase = spotiflyer-bin
 	pkgdesc = Kotlin Multiplatform Music Downloader, Supports Spotify / Gaana / Youtube Music / Jio Saavn / SoundCloud.
 	pkgver = 3.6.3
-	pkgrel = 8
+	pkgrel = 9
 	url = https://soundbound.shabinder.in/install
 	arch = x86_64
 	license = GPL-3.0-only
@@ -19,6 +19,6 @@ pkgbase = spotiflyer-bin
 	source = spotiflyer-3.6.3.deb::https://github.com/Shabinder/SpotiFlyer/releases/download/v3.6.3/spotiflyer_3.6.3-1_amd64.deb
 	source = spotiflyer.sh
 	sha256sums = 9038e09d4e4d0eff02bbb10fc02728f11e73e46973e23297d0ff189dfdce0aae
-	sha256sums = cd091431c99c2b54d820b854b96b6986831eba021ae2cc20b6526f58dfcc7e34
+	sha256sums = 147b3d7a5ec61959d628a844cd300764adf01e4e784cdf68b7445c111ad64a33
 
 pkgname = spotiflyer-bin

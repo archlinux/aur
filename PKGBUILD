@@ -4,7 +4,7 @@
 pkgname=spotiflyer-bin
 _pkgname=SpotiFlyer
 pkgver=3.6.3
-pkgrel=8
+pkgrel=9
 pkgdesc="Kotlin Multiplatform Music Downloader, Supports Spotify / Gaana / Youtube Music / Jio Saavn / SoundCloud."
 arch=('x86_64')
 url="https://soundbound.shabinder.in/install"
@@ -28,7 +28,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('9038e09d4e4d0eff02bbb10fc02728f11e73e46973e23297d0ff189dfdce0aae'
-            'cd091431c99c2b54d820b854b96b6986831eba021ae2cc20b6526f58dfcc7e34')
+            '147b3d7a5ec61959d628a844cd300764adf01e4e784cdf68b7445c111ad64a33')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
@@ -39,7 +39,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -r "${srcdir}/opt" "${pkgdir}"
+    install -Dm755 -d "${pkgdir}/usr/lib"
+    cp -r "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/lib/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/opt/${pkgname%-bin}/lib/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }
