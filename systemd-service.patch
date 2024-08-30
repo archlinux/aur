@@ -1,0 +1,19 @@
+diff -ura a/system/betterlockscreen@.service b/system/betterlockscreen@.service
+--- a/system/betterlockscreen@.service	2024-06-29 01:19:15.000000000 +0200
++++ b/system/betterlockscreen@.service	2024-08-30 09:27:47.227687875 +0200
+@@ -1,5 +1,5 @@
+ [Unit]
+-Description = Lock screen when going to sleep/suspend
++Description=Lock screen when going to sleep/suspend
+ Before=sleep.target
+ Before=suspend.target
+ 
+@@ -7,7 +7,7 @@
+ User=%I
+ Type=simple
+ Environment=DISPLAY=:0
+-ExecStart=/usr/local/bin/betterlockscreen --lock
++ExecStart=/usr/bin/betterlockscreen --lock
+ TimeoutSec=infinity
+ ExecStartPost=/usr/bin/sleep 1
+ 

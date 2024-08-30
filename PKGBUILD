@@ -1,25 +1,43 @@
-# Maintainer: Dct Mei <dctxmei@yandex.com>
-# Contributor: AUTplayed <fips.hem@gmail.com>
-# Contributor: pavanjadhaw <pavanjadhaw96@gmail.com>
+# Maintainer: allddd <allddd (at) proton (dot) me>
 
 pkgname=betterlockscreen
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
-pkgdesc="A simple, minimal lockscreen"
+pkgdesc='A simple, minimal lockscreen'
 arch=('any')
-url="https://github.com/betterlockscreen/${pkgname}"
+url='https://github.com/betterlockscreen/betterlockscreen'
 license=('MIT')
-depends=('bc' 'feh' 'i3lock-color' 'imagemagick' 'xorg-xdpyinfo' 'xorg-xrandr')
-conflicts=('betterlockscreen-git')
+depends=(
+    'bash'
+    'bc'
+    'imagemagick' 
+    'xorg-xrdb'
+    'xorg-xset'
+    'xorg-xrandr'
+    'xorg-xdpyinfo'
+    'i3lock-color>=2.13.c.3'
+)
+optdepends=(
+    'feh: for wallpaper-functionality'
+)
+provides=('betterlockscreen')
+conflicts=('betterlockscreen')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-        "betterlockscreen@.service")
-sha256sums=('9d1ecbd39d31626e902633cdbaffd296eb804ba13a08cee254f068b87c89df54'
-            '342c92fcbc685349d843811ea336983307205f680f43362bef7dc3cfaed31d4d')
+        'systemd-service.patch')
+sha256sums=('fdcf58725f0ab56e98ce9b83bd1dad6e1f08c7f9f230c3abaf4191f10ebd5dfd'
+            '08aa35af71cabd2e821ebb5e8bdf6e56ff4b0b3f70fe7af74d6a51aced7c35f1')
+
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    patch -p1 -i ../systemd-service.patch
+}
 
 package() {
-    cd "${pkgname}-${pkgver}"/
-    install -Dm 755 "${pkgname}" -t "${pkgdir}"/usr/bin/
-    install -Dm 644 "${srcdir}"/${pkgname}@.service -t "${pkgdir}"/usr/lib/systemd/system/
-    install -Dm 644 examples/"${pkgname}rc" -t "${pkgdir}"/usr/share/doc/betterlockscreen/examples/
-    install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    install -Dm755 betterlockscreen -t "${pkgdir}/usr/bin/"
+    install -Dm644 system/betterlockscreen@.service -t "${pkgdir}/usr/lib/systemd/system/"
+    install -Dm644 examples/betterlockscreenrc -t "${pkgdir}/usr/share/doc/${pkgname}/examples/"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
+
+# vim: ts=4 sw=4 et:
