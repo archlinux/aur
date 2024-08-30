@@ -367,7 +367,9 @@ function dbusProxy() {
 		echo "[Warning] Existing D-Bus proxy detected! Terminating..."
 		systemctl --user kill wechat-dbus-proxy.service
 	fi
-	rm "${busDir}" -r
+	if [ -d "${busDir}" ]; then
+		rm "${busDir}" -r
+	fi
 	mkdir "${busDir}" -p
 	echo "Starting D-Bus Proxy @ ${busDir}..."
 	systemd-run \
