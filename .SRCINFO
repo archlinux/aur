@@ -1,7 +1,7 @@
 pkgbase = words-picker-bin
 	pkgdesc = Hope to become a good word retrieval application.希望成为一款好的取词应用
 	pkgver = 53.8.1
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/ziqiangxu/words-picker
 	arch = x86_64
 	license = MIT
@@ -17,6 +17,6 @@ pkgbase = words-picker-bin
 	source = words-picker.sh
 	sha256sums = be666577f86f12afde1ec40a4283ca6e0b5d724e813faa9769261f9b05870596
 	sha256sums = 15c866670d9927e3c1dfe818f42be61b5e479ce7d63edb75471bf4a464be17e0
-	sha256sums = 6c6b87b5416a785adc4f4998d35629ae7304222f754c9bfdd717fa9f8d94ed8a
+	sha256sums = 094ca959b338028cd133d08bd43f416f1e0f8a11e1f86c89e7664cbdbd9c3f91
 
 pkgname = words-picker-bin
