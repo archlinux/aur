@@ -2,7 +2,7 @@
 # Contributor: linzeen
 pkgname=lze-web
 makedepends=('tar')
-pkgver=3.2
+pkgver=3.3
 pkgrel=1
 pkgdesc="lze-web"
 arch=('x86_64')

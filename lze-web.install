@@ -20,8 +20,8 @@ fi
   mv /etc/httpd/conf/httpd.conf.lze /etc/httpd/conf/httpd.conf
   sed -i "202i User $cu_user" /etc/httpd/conf/httpd.conf
   sed -i "203i Group $cu_user" /etc/httpd/conf/httpd.conf
-  touch /etc/sudoers/brightness
- echo "$cu_user ALL = (root) NOPASSWD: /usr/bin/brightnessctl" > /etc/sudoers/brightness
+  touch /etc/sudoers.d/brightness
+ echo "$cu_user ALL = (root) NOPASSWD: /usr/bin/brightnessctl" > /etc/sudoers.d/brightness
   mv /etc/php/php.ini /etc/php/php.ini.bck
   mv /etc/php/php.ini.lze /etc/php/php.ini
   systemctl enable httpd.service
