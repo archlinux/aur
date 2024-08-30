@@ -1,24 +1,21 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="crc"
-pkgver=2.40.0
+pkgver=2.41.0
 pkgrel=1
-pkgdesc="A tool that manages local OpenShift 4.x cluster, optimized for testing and development purposes"
-arch=('any')
+pkgdesc="Manage local OpenShift 4.x cluster, optimized for testing and development purposes"
+arch=('x86_64')
 url="https://github.com/crc-org/${pkgname}"
 license=('Apache-2.0')
 makedepends=('git' 'go')
 depends=('glibc' 'gpgme' 'firewalld' 'libvirt' 'networkmanager' 'qemu-base')
-optdepends=('bash-completion: for shell auto-completion'
-            'zsh-completions: for shell auto-completion')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}::git+${url}#tag=v${pkgver}")
-sha256sums=('94ff3d8c344e273e003ae1af7390cc683ade0ab782580ea31e5ce1589cc6ef35')
+sha256sums=('3464b8e4318eb8875c5acc5b6bdff98c7cf927514a26b764fda4104b5d4cd85a')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   mkdir -p "build" "completions"
-  go mod download
 }
 
 build() {
