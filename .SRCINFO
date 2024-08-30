@@ -1,6 +1,6 @@
 pkgbase = yazi-git
-	pkgdesc = Blazing fast terminal file manager written in Rust, based on async I/O.
-	pkgver = shipped.r0.g4112bf4
+	pkgdesc = Blazing fast terminal file manager written in Rust, based on async I/O
+	pkgver = 0.3.2.r3.g69e7c8f
 	pkgrel = 1
 	url = https://github.com/sxyazi/yazi
 	arch = x86_64
@@ -11,19 +11,20 @@ pkgbase = yazi-git
 	makedepends = imagemagick
 	depends = gcc-libs
 	depends = ttf-nerd-fonts-symbols
-	optdepends = jq: for JSON preview
-	optdepends = p7zip: for archive extraction and preview
-	optdepends = ffmpegthumbnailer: for video thumbnails
+	optdepends = chafa: for previewing images
 	optdepends = fd: for file searching
-	optdepends = ripgrep: for file content searching
+	optdepends = ffmpegthumbnailer: for video thumbnails
 	optdepends = fzf: for directory jumping
+	optdepends = imagemagick: for previewing fonts
+	optdepends = jq: for JSON preview
+	optdepends = p7zip: for archive preview
 	optdepends = poppler: for PDF preview
+	optdepends = ripgrep: for file content searching
 	optdepends = zoxide: for directory jumping
-	optdepends = imagemagick: for SVG, Font, HEIC, and JPEG XL preview
-	provides = yazi
+	provides = yazi=0.3.2.r3.g69e7c8f
 	conflicts = yazi
 	options = !lto
-	source = git+https://github.com/sxyazi/yazi.git
+	source = yazi::git+https://github.com/sxyazi/yazi.git
 	sha256sums = SKIP
 
 pkgname = yazi-git
