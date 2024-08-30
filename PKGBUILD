@@ -1,7 +1,7 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 
 pkgname=yaak-app
-pkgver=2024.7.0
+pkgver=2024.8.2
 pkgrel=1
 pkgdesc="Yaak is a cross-platform desktop app for interacting with REST, GraphQL, gRPC and OpenAPI."
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=(${pkgname})
 options=(!strip)
 
 source=("${pkgname}-${pkgver}.deb::https://releases.yaak.app/releases/${pkgver}/yaak_${pkgver}_amd64.deb")
-sha256sums=('233888128fc2bfe1db638e371f812a9fccd273151b7fc2bd8bc97f5d1bc54059')
+sha256sums=('d9e6b5be775255b406ba6d7d1a18b3ab177c334c0769226803be077195dbbfbd')
 
 prepare() {
     bsdtar -xf data.tar.gz
