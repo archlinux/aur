@@ -3,7 +3,7 @@ pkgname=yuview-bin
 _pkgname=YUView
 _appname="de.rwth_aachen.ient.${_pkgname}"
 pkgver=2.13
-pkgrel=3
+pkgrel=4
 pkgdesc="The Free and Open Source Cross Platform YUV Viewer with an advanced analytics toolset"
 arch=('x86_64')
 url="http://ient.github.io/YUView"
@@ -30,7 +30,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('91b521f1b55fb396e5b873c633d464d4fd33fb1ca95eeaedff3a7b8a06cf774f'
-            '784ca9d77a7a1f88e5f544e244ca5b724ac4adb6fcf881c524a78d75494e07c0')
+            '2831906d4074aefa0c7d752f86e749cc12bb039e6f243b189ed49e4fa9e660c0')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
@@ -43,8 +43,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/local/"{bin,lib,plugins} "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/squashfs-root/local/"{bin,lib,plugins} "${pkgdir}/usr/lib/${pkgname%-bin}"
     for _icons in 64x64 128x128 256x256 512x512;do
         install -Dm644 "${srcdir}/squashfs-root/local/share/icons/hicolor/${_icons}/apps/${_appname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
