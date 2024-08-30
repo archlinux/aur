@@ -1,12 +1,12 @@
 pkgbase = python-tornet
 	pkgdesc = TorNet is a Python package that automates IP address changes using Tor. It is a top tool for securing your networks by frequently changing your IP address, making it difficult for trackers to pinpoint your location.
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/ayadseghairi/tornet
 	arch = any
 	license = MIT
 	depends = python
-	source = https://github.com/ayadseghairi/tornet/releases/download/2.0.1/tornet-2.1.0.tar.gz
+	source = https://github.com/ayadseghairi/tornet/releases/download/2.1.1/tornet-2.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = python-tornet
