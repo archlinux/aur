@@ -1,6 +1,6 @@
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=sql-studio-bin
-pkgver=0.1.26
+pkgver=0.1.27
 pkgrel=1
 pkgdesc="SQL Database Explorer [SQLite, libSQL, PostgreSQL, MySQL/MariaDB, DuckDB, ClickHouse]"
 arch=(x86_64)
@@ -10,8 +10,8 @@ provides=('sql-studio')
 conflicts=('sql-studio')
 source=("$pkgname-$pkgver.tar.xz::https://github.com/frectonz/sql-studio/releases/download/$pkgver/sql-studio-x86_64-unknown-linux-gnu.tar.xz"
 		"$pkgname-$pkgver.tar.xz.sha256::https://github.com/frectonz/sql-studio/releases/download/$pkgver/sql-studio-x86_64-unknown-linux-gnu.tar.xz.sha256")
-b2sums=('85d2ff8db15082ec589494cb94a262014a6c038d072720a584b075178cc2932fa6cdad93408fabab59f211127f4db65c96ecfc5bef5ce81d043b01f0f7cf194b'
-        '889a46c0afcf4d5370e65ac4d0b2ac134f935e6df21cd770e31ca085257465b1d20575e96045e6443a7086ae39e383215446d002d8803b21edac46b234220f51')
+b2sums=('255cf00a370a4b32702c1a84d61df44e41e6b829ddd6309fd6d9091867d0eb0717dd0ec93d6965ae9306d1d7232fa2a1a08f3e3fd450c0be6baa67cb40b70165'
+        '5f0d27946f1680aa646e068e5309500bbc14e2974131011907594457a0a944c1a037b15ea91d07307f95e12f225911c4e8b7449c5e3d7400c6f7a120e996e244')
 
 package() {
 	cd "$srcdir/${pkgname%-*}-$arch-unknown-linux-gnu"
