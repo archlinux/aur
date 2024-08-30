@@ -2,7 +2,7 @@
 _appname=woniu_ali
 pkgname="${_appname//_/-}-bin"
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="蜗牛云盘PC版"
 arch=("x86_64")
 url="https://snail8.cn/app"
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('9279d0419eddf8b083e8952dab9d88f773446e047d622c74c5e2a7675919c0cc'
-            '251f65f733d0fee607980dea3de42119be67693c32cbeeb1ba6d502e64fe4b63')
+            '019043cb49dbe1b45db9a551a1e70a07d3098c585a94e4b1284d6d3a4554f2dc')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_appname}_linux_x64|g" \
@@ -37,9 +37,9 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}/mpv"
-    cp -r "${srcdir}/opt/${_appname}_linux_x64/"* "${pkgdir}/opt/${pkgname%-bin}"
-    ln -sf "/usr/bin/mpv" "${pkgdir}/opt/${pkgname%-bin}/mpv/mpv"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}/mpv"
+    cp -r "${srcdir}/opt/${_appname}_linux_x64/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    ln -sf "/usr/bin/mpv" "${pkgdir}/usr/lib/${pkgname%-bin}/mpv/mpv"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}_linux_x64.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/opt/${_appname}_linux_x64/${_appname}_linux_x64.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }

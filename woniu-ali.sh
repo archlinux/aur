@@ -1,6 +1,6 @@
 #!/bin/bash
-set -e
-_APPDIR="/opt/@appname@"
+set -o pipefail
+_APPDIR="/usr/lib/@appname@"
 _RUNNAME="${_APPDIR}/@runname@"
 _OPTIONS="@options@"
 export JAVA_HOME="${_APPDIR}/jre"
