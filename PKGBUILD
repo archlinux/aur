@@ -17,8 +17,10 @@ conflicts=('hplip' 'hplip-lite' 'hplip-plugin')
 provides=('hplip')
 backup=('etc/hp/hplip.conf')
 optdepends=('cups: for printing support')
-source=("https://downloads.sourceforge.net/hplip/hplip-${pkgver}.tar.gz{,.asc}"
-        "https://developers.hp.com/sites/default/files/hplip-${pkgver}-plugin.run{,.asc}")
+source=("https://downloads.sourceforge.net/hplip/hplip-${pkgver}.tar.gz"
+        "https://downloads.sourceforge.net/hplip/hplip-${pkgver}.tar.gz.asc"
+        "https://developers.hp.com/sites/default/files/hplip-${pkgver}-plugin.run"
+        "https://developers.hp.com/sites/default/files/hplip-${pkgver}-plugin.run.asc)
 sha256sums=('5d7643831893a5e2addf9d42d581a5dbfe5aaf023626886b8762c5645da0f1fb'
             'SKIP'
             '1f3c6bdd25661a8a2e18153655d6f06f028c1d9c308d69c8ecfd7767a2d0c5aa'
