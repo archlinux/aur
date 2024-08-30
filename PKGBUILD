@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('meson' 'ninja' 'gcc')
 source=("shuffle-1.1.2.tar.gz::$url/archive/refs/tags/V$pkgver.tar.gz")
-sha256sums=('358dd00bb30158e2e350b19d95e55f601817ab3fcf26fae0c2d9800137692ae7')
+sha256sums=('b1a09c68f76fde6a3f85c6675678d0ca5913a7505fe1207e0ce4f282792ff498')
 
 build() {
     cd "$srcdir/shuffle-1.1.2"
