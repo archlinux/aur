@@ -1,9 +1,10 @@
+# Maintainer: Andreas Baumann <mail at andreasbamann dot com>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.28
 
 pkgname='perl-http-server-simple-psgi'
 pkgver='0.16'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="PSGI handler for HTTP::Server::Simple"
 arch=('any')
 license=('PerlArtistic' 'GPL')
