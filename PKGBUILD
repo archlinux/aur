@@ -2,29 +2,34 @@
 # Maintainer: Daniel Milde <daniel / milde.cz>
 
 pkgname=winbox
-pkgver=3.41
-pkgrel=3
-pkgdesc="Mikrotik RouterOS GUI Configurator (wine)"
+pkgver=4.0beta3
+pkgrel=0
+pkgdesc="Mikrotik RouterOS GUI Configurator"
 url="https://mikrotik.com/download"
 arch=('x86_64')
 license=('custom')
-depends=('desktop-file-utils' 'wine' 'xdg-utils')
-optdepends=(
-  'ttf-ms-fonts: for better fonts'
-)
+depends=('desktop-file-utils'
+         'fontconfig'
+         'freetype2'
+         'glibc'
+         'libglvnd'
+         'libxcb'
+         'libxkbcommon'
+         'libxkbcommon-x11'
+         'xcb-util-image'
+         'xcb-util-keysyms'
+         'xcb-util-renderutil'
+         'xcb-util-wm'
+         'xdg-utils'
+         'zlib')
+source=("https://download.mikrotik.com/routeros/winbox/${pkgver}/WinBox_Linux.zip"
+        "${pkgname}.desktop")
 install=${pkgname}.install
-source=("${pkgname}-${pkgver}.exe::https://download.mikrotik.com/routeros/winbox/${pkgver}/${pkgname}64.exe"
-        "${pkgname}.desktop"
-        "${pkgname}.png"
-        "${pkgname}")
-sha256sums=('8bc3ecf1f35952600ecb1a380c38c88e9d63c081a32204fd094d588230070bf6'
-            '5b206007771bc84b5291180ca24c2538f0cd03f1e6738edddf58e57d66a13f8d'
-            '603eaed8dfb5b6146712c5cee801e6d77f1f45d6bd5c4b545f9f84193834d380'
-            'e7d6a2ffc0eda07ac40db88d92629bf8b1e2fa9433f3b74b1eef3437c1d0f6c6')
+sha256sums=('181c4ce8d284d39c750d940a7a0258edce5ac2f49e9df59582baf82a3f5eb198'
+            'c11b68ce68627c15e92ae298209d1e519cf57e7ea626160674f374929b7a2f88')
 
 package() {
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}.exe" "${pkgdir}/usr/share/${pkgname}/${pkgname}.exe"
-  install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm655 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm655 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -D -m0755 "${srcdir}/WinBox" "${pkgdir}/usr/bin/WinBox"
+  install -D -m0644 "${srcdir}/assets/img/winbox.png" "${pkgdir}/usr/share/pixmaps/winbox.png"
+  install -D -m0644 "${srcdir}/winbox.desktop" "${pkgdir}/usr/share/applications/winbox.desktop"
 }
