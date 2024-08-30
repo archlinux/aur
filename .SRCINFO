@@ -1,14 +1,14 @@
 pkgbase = hplip-minimal
 	pkgdesc = Only printer drivers from HPLIP with proprietary binary plugin
 	pkgver = 3.24.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developers.hp.com/hp-linux-imaging-and-printing/
 	arch = x86_64
-	license = GPL-2.0
+	license = GPL-2.0-only
 	license = MIT
-	license = BSD
-	license = GPL-3.0
-	license = custom:HPLIP
+	license = BSD-3-Clause
+	license = GPL-3.0-or-later
+	license = LicenseRef-HPLIP
 	makedepends = python
 	makedepends = libusb
 	depends = libjpeg-turbo
@@ -23,7 +23,9 @@ pkgbase = hplip-minimal
 	source = https://developers.hp.com/sites/default/files/hplip-3.24.4-plugin.run
 	validpgpkeys = 4ABA2F66DBD5A95894910E0673D770CDA59047B9
 	sha256sums = 5d7643831893a5e2addf9d42d581a5dbfe5aaf023626886b8762c5645da0f1fb
+	sha256sums = SKIP
 	sha256sums = 1f3c6bdd25661a8a2e18153655d6f06f028c1d9c308d69c8ecfd7767a2d0c5aa
+	sha256sums = SKIP
 
 pkgname = hplip-minimal
 
