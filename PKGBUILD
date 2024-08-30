@@ -5,7 +5,7 @@ pkgname=easyconnect
 _pkgname=EasyConnect
 pkgver=7.6.7.3
 _electronversion=1
-pkgrel=11
+pkgrel=12
 _pangover=1.42.4
 pkgdesc="Support access to ssl vpn. With easyconect,you can secure and speed up connection to cooperate network at ease!"
 arch=('x86_64')
@@ -28,6 +28,7 @@ depends=(
 )
 makedepends=(
     'gobject-introspection'
+    'glib2-devel'
 )
 install="${pkgname}.install"
 options=(
