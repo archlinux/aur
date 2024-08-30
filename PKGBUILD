@@ -5,7 +5,7 @@ _pkgname="python-${_name}"
 pkgname="${_pkgname}-git"
 pkgver=3.4.0.r1.6c87ffb
 _commit="4267a6c3ecec53705fb2ae091113a409b73a13b8"
-pkgrel=1
+pkgrel=2
 pkgdesc="Create markdown formatted text"
 arch=('any')
 url="https://github.com/awesmubarak/${_name}"
@@ -53,6 +53,6 @@ package() {
 
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -d "${pkgdir}/usr/share/licenses/${_pkgname}"
-  ln -s "${pkgdir}${site_packages}/${_name}-${pkgver%%.r*}.dist-info/LICENSE.txt" \
+  ln -s "${site_packages}/${_name}-${pkgver%%.r*}.dist-info/LICENSE.txt" \
     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
