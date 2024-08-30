@@ -1,7 +1,7 @@
 # Maintainer: weipeng <weipeng1999@qq.com>
 _name=nclcmaps
 pkgname="python-${_name}-git" # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r3.b0e2b7fpy3.12
+pkgver=r3.b0e2b7fpy
 pkgrel=1
 pkgdesc="NCL colormaps in Python"
 arch=("any")
@@ -27,7 +27,7 @@ version="${python_version#Python }"
 
 pkgver() {
 	cd "${_name}"
-	printf "r%s.%spy%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" "${version%.*}"
+	printf "r%s.%spy%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {

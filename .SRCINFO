@@ -1,6 +1,6 @@
 pkgbase = python-nclcmaps-git
 	pkgdesc = NCL colormaps in Python
-	pkgver = r3.b0e2b7fpy3.12
+	pkgver = r3.b0e2b7fpy
 	pkgrel = 1
 	url = https://github.com/samwisehawkins/nclcmaps
 	arch = any
