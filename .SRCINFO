@@ -1,0 +1,26 @@
+pkgbase = textidote
+	pkgdesc = Spelling, grammar and style checking on LaTeX documents
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://sylvainhalle.github.io/textidote/
+	arch = any
+	license = GPL
+	makedepends = ant
+	makedepends = java-environment
+	depends = java-runtime
+	provides = textidote
+	conflicts = textidote-bin
+	conflicts = textidote-git
+	replaces = textidote
+	source = textidote-0.8.3.tar.gz::https://github.com/sylvainhalle/textidote/archive/refs/tags/v0.8.3.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/sylvainhalle/textidote/v0.8.3/LICENSE
+	source = build-for-java-8.patch
+	source = textidote.1
+	source = textidote
+	sha256sums = 8c55d6f6f35d51fb5b84e7dcc86a4041e06b3f92d6a919023dc332ba2effd584
+	sha256sums = d62f065830aa3739cc031156b9690805c7b2e811b4a178c8b4acd8725d561c94
+	sha256sums = 6acb739ecbf7cbdc8678e50922ccc9a7521703b6d959607d8c6722d386772b7c
+	sha256sums = bf381c7a8004f2d0de8dbe777ce74850d46c0aeb70358c147efdeb424491adf1
+	sha256sums = 15de4eb7413e838c6c99b2317e7856ab3496a0a9fdf52858dcc047a937d0459c
+
+pkgname = textidote

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+CP=""
+for name in /usr/share/java/textidote/*.jar; do
+    CP="$CP:$name"
+done
+
+exec java -cp "$CP" "ca.uqac.lif.textidote.Main" --name textidote "$@"

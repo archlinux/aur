@@ -1,0 +1,249 @@
+diff --git a/build.xml b/build.xml
+index 1cf2fb1..0643cde 100755
+--- a/build.xml
++++ b/build.xml
+@@ -38,10 +38,10 @@
+   <property name="build.name" value="AntRun"/>
+   
+   <!-- The project's version number -->
+-  <property name="build.version" value="1.0"/>
++  <property name="build.version" value="0.8.3"/>
+   
+   <!-- The target JDK version for the build -->
+-  <property name="build.targetjdk" value="1.6"/>
++  <property name="build.targetjdk" value="8"/>
+   
+   <!-- The folder where libraries (ant-contrib, etc.) will be downloaded
+        if necessary -->
+@@ -49,6 +49,8 @@
+ 
+   <!-- The folder with the project's source files -->
+   <property name="build.srcdir" value="Source/Core/src"/>
++
++  <property name="build.distdir" value="dist"/>
+   
+   <!-- The folder where the compiled files should go -->
+   <property name="build.bindir" value="Source/Core/bin"/>
+@@ -97,13 +99,8 @@
+   <!-- The filename pattern to recognize test files -->
+   <property name="build.test.filenamepattern" value="**/*.java"/>
+   
+-  <!-- Location of the Java boot classpath. If this is not set, the compiler
+-       will resort to the default boot classpath. -->
+-  <property environment="env"/>
+-  <property name="java6.boot.classpath" value="${env.JAVA6_BOOTCLASSES}"/>
+-  
+-  <!-- The location of rt.jar, if it is there -->
+-  <property name="build.rtlocation">rt.jar</property>
++  <!-- The filename pattern to recognize test binary files -->
++  <property name="build.test.filenamepattern.bin" value="**/*Test.class"/>
+   
+   <!-- Target: initialization
+        All other targets should ultimately
+@@ -152,24 +149,6 @@
+     <mkdir dir="${build.docdir}"/>
+     <mkdir dir="${build.docdir}/doc-files"/>
+   </target>
+-
+-  <!-- Check if a local rt.jar is present. If so, it will override the
+-       default rt.jar present in the system. The "compile" task should
+-       depend on this. -->
+-  <target name="check-rt" depends="init">
+-    <available file="${build.rtlocation}" property="localrt.present"/>
+-    <if>
+-      <available file="${build.rtlocation}"/>
+-      <then>
+-        <echo message="Local bootstrap JAR is present"/>
+-      </then>
+-      <else>
+-        <echo message="Local bootstrap JAR is not present"/>
+-      </else>
+-    </if>
+-    <var name="java6.boot.classpath" unset="true"/>
+-    <property name="java6.boot.classpath" value="${build.rtlocation}"/>
+-  </target>
+   
+   <!-- Target: zip
+        Zips the jar
+@@ -189,11 +168,10 @@
+   <!-- Target: compile
+        Compiles the main project
+   -->
+-  <target name="compile" depends="init,junit,check-rt,download-deps" description="Compile the sources">
++  <target name="compile" depends="init,junit,download-deps" description="Compile the sources">
+     <mkdir dir="${build.bindir}"/>
+     <javac
+-      target="${build.targetjdk}" source="${build.targetjdk}"
+-      bootclasspath="${java6.boot.classpath}"
++      release="${build.targetjdk}"
+       srcdir="${build.srcdir}"
+       destdir="${build.bindir}"
+       debug="${build.debug}"
+@@ -216,8 +194,7 @@
+   <target name="compile-tests" depends="init,compile,junit" description="Compile the test sources">
+     <mkdir dir="${build.test.bindir}"/>
+     <javac
+-      target="1.6" source="1.6"
+-      bootclasspath="${java6.boot.classpath}"
++      release="${build.targetjdk}"
+       srcdir="${build.test.srcdir}"
+       destdir="${build.test.bindir}"
+       includeantruntime="false">
+@@ -249,7 +226,7 @@
+              windowtitle="${build.name} Documentation">
+       <doctitle><![CDATA[<h1>]]>${build.name}<![CDATA[ Documentation</h1>]]></doctitle>
+       <bottom><![CDATA[<i>Copyright&nbsp;&#169; ]]>${build.author}<![CDATA[. All Rights Reserved.</i>]]></bottom>
+-      <link href="http://docs.oracle.com/javase/6/docs/api/"/>
++      <link href="http://docs.oracle.com/javase/8/docs/api/"/>
+       <classpath refid="build.classpath"/>
+     </javadoc>
+     <if>
+@@ -265,11 +242,13 @@
+   <!-- Target: jar
+        Generates a JAR file with the compiled files and javadoc
+   -->
+-  <target name="jar" depends="compile" description="Create the runnable JAR">
+-      <tstamp>
+-         <format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
+-      </tstamp>
+-      <jar destfile="${build.jar.filename}" filesetmanifest="skip">
++  <target name="jar" depends="compile,javadoc" description="Create the runnable JAR">
++    <mkdir dir="${build.distdir}"/>
++    <mkdir dir="${build.distdir}/lib"/>
++    <tstamp>
++      <format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
++    </tstamp>
++    <jar destfile="${build.distdir}/${build.jar.basename}-${build.version}.jar" filesetmanifest="skip">
+ 	  <manifest>
+ 	      <attribute name="Main-Class" value="${build.mainclass}"/>
+ 	      <attribute name="Class-Path" value="."/>
+@@ -277,17 +256,55 @@
+ 	      <attribute name="Built-Date" value="${TODAY}"/>
+           <attribute name="Implementation-Version" value="${build.version}"/>
+ 	  </manifest>
+-	  <fileset dir="${build.bindir}"/>
++	  <fileset dir="${build.bindir}">
++	    <filename name="**/*"/>
++	    <not>
++	      <filename name="${build.test.filenamepattern.bin}"/>
++	    </not>
++	  </fileset>
++    </jar>
++    <copy todir="${build.distdir}/lib">
++	  <fileset dir="${build.depdir}">
++	    <include name="**/*.jar"/>
++	  </fileset>
++    </copy>
++    <jar destfile="${build.distdir}/${build.jar.filename}-${build.version}-sources.jar" filesetmanifest="skip">
++      <fileset dir="${build.srcdir}">
++        <include name="**/*"/>
++      </fileset>
++    </jar>
++    <jar destfile="${build.distdir}/${build.jar.filename}-${build.version}-javadoc.jar" filesetmanifest="skip">
++      <fileset dir="${build.docdir}">
++        <include name="**/*"/>
++      </fileset>
++    </jar>
++  </target>
++  
++  <!-- Target: fatjar
++       Generates a JAR file with the compiled files and javadoc
++  -->
++  <target name="fatjar" depends="compile,javadoc" description="Create the runnable JAR">
++   <tstamp>
++       <format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
++   </tstamp>
++    <jar destfile="${build.distdir}/${build.jar.basename}-${build.version}-full.jar" filesetmanifest="skip">
++	  <manifest>
++	      <attribute name="Main-Class" value="${build.mainclass}"/>
++	      <attribute name="Class-Path" value="."/>
++	      <attribute name="Built-By" value="${user.name}"/>
++	      <attribute name="Built-Date" value="${TODAY}"/>
++          <attribute name="Implementation-Version" value="${build.version}"/>
++	  </manifest>
++	  <fileset dir="${build.bindir}">
++	    <filename name="**/*"/>
++	    <not>
++	      <filename name="${build.test.filenamepattern.bin}"/>
++	    </not>
++	  </fileset>
+ 	  <zipgroupfileset dir="${build.depdir}">
+ 	    <include name="**/*.jar" if="${build.jar.withdeps}"/>
+ 	  </zipgroupfileset>
+-	  <fileset dir="${build.srcdir}">
+-	     <include name="**/*" if="${build.jar.withsrc}"/>
+-	  </fileset>
+-	  <fileset dir="${build.docdir}">
+-	    <include name="**/*" if="${build.jar.withdoc}"/>
+-	  </fileset>
+-      </jar>
++    </jar>
+   </target>
+   
+   <!-- Target: test
+@@ -360,7 +377,7 @@
+   <!-- Target: wipe
+        Wipes any temporary files or directories
+   -->
+-  <target name="wipe" description="Wipes the project: deletes everything but sources">
++  <target name="wipe" depends="clean" description="Wipes the project: deletes everything but sources">
+     <delete>
+       <fileset dir="." includes="**/*~"/>
+     </delete>
+@@ -371,6 +388,7 @@
+     <delete dir="${test.reportdir}"/>
+     <delete dir="${coverage.reportdir}"/>
+     <delete file="jacoco.exec"/>
++    <delete dir="${test.distdir}"/>
+   </target>
+   
+   <!-- Target: clean
+@@ -384,6 +402,7 @@
+     <delete dir="${test.reportdir}"/>
+     <delete dir="${coverage.reportdir}"/>
+     <delete file="jacoco.exec"/>
++    <delete dir="${test.distdir}"/>
+   </target>
+   
+   <!-- Target: show-properties
+@@ -450,13 +469,6 @@
+     <mkdir dir="${build.libdir}"/>
+     <get src="http://sylvainhalle.github.io/AntRun/dependencies/xmltask.jar" dest="${build.libdir}/${xmltask.jarname}"/>
+   </target>
+-
+-  <!-- Target: download-rt6
+-       Download boot classpath for Java 1.6 and put it in the root folder
+-  -->
+-  <target name="download-rt6">
+-    <get src="http://sylvainhalle.github.io/AntRun/dependencies/1.6.0_45/rt.jar" dest="${build.rtlocation}"/>
+-  </target>
+   
+   <!-- Target: junit
+        Download jUnit JARs if not present, and puts them in the lib folder
+diff --git a/config.xml b/config.xml
+index 716f3e2..16c5c9e 100644
+--- a/config.xml
++++ b/config.xml
+@@ -30,7 +30,12 @@
+   <author>Sylvain Hall&#233;</author>
+   
+   <!-- The project's version number -->
+-  <version>0.8.1</version>
++  <version>0.8.3</version>
++  
++  <!-- The JDK to compile for. Note that the current Language Tool bundle
++       contains binary files that are compiled for Java 9, but it it safer
++       to keep TeXtidote's code compliant with version 8. -->
++  <targetjdk>8</targetjdk>
+   
+   <!-- The project's main class -->
+   <mainclass>ca.uqac.lif.textidote.Main</mainclass>
+@@ -47,7 +52,7 @@
+   
+   <!-- Output jar -->
+   <jar>
+-    <filename>textidote.jar</filename>
++    <filename>textidote</filename>
+     <withdoc>false</withdoc>
+     <withdeps>true</withdeps>
+   </jar>
