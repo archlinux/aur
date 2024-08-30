@@ -1,7 +1,7 @@
 pkgbase = n2-docs-git
 	pkgdesc = HTML documentation for N2
 	pkgver = 0.1.7.r27.g20b02de
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kakao/n2
 	arch = any
 	license = Apache-2.0
@@ -11,6 +11,7 @@ pkgbase = n2-docs-git
 	makedepends = python-breathe
 	makedepends = python-exhale
 	makedepends = python-sphinx_rtd_theme
+	makedepends = python-sphinxcontrib-napoleon
 	makedepends = python-n2
 	provides = n2-docs=0.1.7
 	conflicts = n2-docs
