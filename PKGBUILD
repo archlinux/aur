@@ -1,7 +1,7 @@
 #Maintainer: fl4co <fl4co at fl4co dot net>
 
 pkgname=winbox-beta-bin
-pkgver=4.0beta1
+pkgver=4.0beta3
 pkgrel=1
 pkgdesc="Configuration tool for MikroTik RouterOS (native beta version)"
 url="https://forum.mikrotik.com/viewtopic.php?t=210505"
@@ -10,7 +10,7 @@ license=('custom')
 options=(!debug)
 source=("https://download.mikrotik.com/routeros/winbox/${pkgver}/WinBox_Linux.zip"
         "winbox-beta.desktop")
-sha256sums=('7be43fd331fc60b30d54ebb7fd0be89dab793c7e1be15d9ae43361b7d6418092'
+sha256sums=('181c4ce8d284d39c750d940a7a0258edce5ac2f49e9df59582baf82a3f5eb198'
             '9416467272ef32b5f2b15292ef4752933034173b6a9a0ac00ff10730fd4e949a')
 
 package() {
