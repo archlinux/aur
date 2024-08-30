@@ -3,8 +3,8 @@
 
 pkgname=ruby-css_parser
 _pkgname=${pkgname#ruby-}
-pkgver=1.17.1
-pkgrel=2
+pkgver=1.19.0
+pkgrel=1
 pkgdesc="Ruby CSS parser"
 arch=(any)
 url="https://github.com/premailer/css_parser"
@@ -13,7 +13,10 @@ depends=(
   ruby
   ruby-addressable
 )
-makedepends=(ruby-rdoc)
+makedepends=(
+  git
+  ruby-rdoc
+)
 checkdepends=(
   ruby-maxitest
   ruby-rake
@@ -21,29 +24,24 @@ checkdepends=(
 )
 options=(!emptydirs)
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz"
+  "git+$url.git#tag=v$pkgver"
   "remove-unnecessary-dev-dependencies.patch"
 )
 sha256sums=(
-  '069e419f2fdf2c500979f113348d459f7963c19ff72918a92b9b26a2fb0ee662'
-  '84214093e40180a2929c7e0dfd9fc28b8e539c95c9e11a0e610987f8fc7251fe'
+  '4568dfade0883f602afb21d17a72ff80017018d18bede85036531506825fe849'
+  'cb3ba58c225472c0aabd487136ed7430d0af93e92d1ca448318e112562c1e1a0'
 )
 
-_archive="$_pkgname-$pkgver"
-
 prepare() {
-  cd "$_archive"
-
-  # Remove lockfile & unnecessary dev dependencies
+  cd "$_pkgname"
   rm Gemfile.lock
-  patch --strip=1 --input="$srcdir/remove-unnecessary-dev-dependencies.patch"
-
+  patch -Np1 -i "$srcdir/remove-unnecessary-dev-dependencies.patch"
   # Update gemspec/Gemfile to allow newer version of the dependencies
   sed -i -E 's|~>|>=|g' "$_pkgname.gemspec"
 }
 
 build() {
-  cd "$_archive"
+  cd "$_pkgname"
 
   local gemdir="$(gem env gemdir)"
 
@@ -86,16 +84,13 @@ build() {
 }
 
 check() {
-  cd "$_archive"
-
+  cd "$_pkgname"
   GEM_HOME="tmp_install/$(gem env gemdir)" rake test
 }
 
 package() {
-  cd "$_archive"
-
+  cd "$_pkgname"
   cp -a -t "$pkgdir" tmp_install/*
-
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" MIT-LICENSE
+  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" MIT-LICENSE
 }

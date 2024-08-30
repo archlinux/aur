@@ -1,23 +1,24 @@
-diff --unified --recursive --text --new-file css_parser-1.17.1.orig/css_parser.gemspec css_parser-1.17.1/css_parser.gemspec
---- css_parser-1.17.1.orig/css_parser.gemspec	2024-05-09 20:58:11.670986182 +0200
-+++ css_parser-1.17.1/css_parser.gemspec	2024-05-09 20:58:34.134399487 +0200
-@@ -20,12 +20,7 @@
-
-   s.add_runtime_dependency 'addressable'
-
--  s.add_development_dependency 'benchmark-ips'
--  s.add_development_dependency 'bump'
-   s.add_development_dependency 'maxitest'
--  s.add_development_dependency 'memory_profiler'
-   s.add_development_dependency 'rake'
--  s.add_development_dependency 'rubocop', '~> 1.8'
--  s.add_development_dependency 'rubocop-rake'
-   s.add_development_dependency 'webrick'
- end
-diff --unified --recursive --text css_parser-1.16.0.orig/Rakefile css_parser-1.16.0/Rakefile
---- css_parser-1.16.0.orig/Rakefile	2023-09-02 09:48:15.362711792 +0200
-+++ css_parser-1.16.0/Rakefile	2023-09-02 09:49:20.419626516 +0200
-@@ -1,41 +1,8 @@
+diff --git a/Gemfile b/Gemfile
+index 1ca5eff..98d72c5 100644
+--- a/Gemfile
++++ b/Gemfile
+@@ -6,11 +6,6 @@ source 'https://rubygems.org'
+ 
+ gemspec
+ 
+-gem 'benchmark-ips'
+-gem 'bump'
+ gem 'maxitest'
+-gem 'memory_profiler'
+ gem 'rake'
+-gem 'rubocop'
+-gem 'rubocop-rake'
+ gem 'webrick'
+diff --git a/Rakefile b/Rakefile
+index 4ae5610..a0c47b0 100644
+--- a/Rakefile
++++ b/Rakefile
+@@ -1,10 +1,6 @@
  # frozen_string_literal: true
  
 -require 'bundler/setup'
@@ -25,37 +26,30 @@ diff --unified --recursive --text css_parser-1.16.0.orig/Rakefile css_parser-1.1
  require 'rake/testtask'
 -require 'rubocop/rake_task'
 -require 'bump/tasks'
--
--task default: [:rubocop, :test]
  
- Rake::TestTask.new do |test|
-   test.pattern = 'test/**/test*.rb'
+ task default: [:rubocop, :test]
+ 
+@@ -13,12 +9,6 @@ Rake::TestTask.new do |test|
    test.verbose = true
  end
--
--RuboCop::RakeTask.new
--
--desc 'Run a performance evaluation.'
--task :benchmark do
--  require 'css_parser'
--
--  require 'benchmark/ips'
--  require 'memory_profiler'
--
--  fixtures_dir = Pathname.new(__dir__).join('test/fixtures')
--  import_css_path = fixtures_dir.join('import1.css').to_s.freeze
--  complex_css_path = fixtures_dir.join('complex.css').to_s.freeze
--
--  Benchmark.ips do |x|
--    x.report('import1.css loading') { CssParser::Parser.new.load_file!(import_css_path) }
--    x.report('complex.css loading') { CssParser::Parser.new.load_file!(complex_css_path) }
--  end
--
--  puts
--
--  report = MemoryProfiler.report { CssParser::Parser.new.load_file!(import_css_path) }
--  puts "Loading `import1.css` allocated #{report.total_allocated} objects, #{report.total_allocated_memsize / 1024} KiB"
--
--  report = MemoryProfiler.report { CssParser::Parser.new.load_file!(complex_css_path) }
--  puts "Loading `complex.css` allocated #{report.total_allocated} objects, #{report.total_allocated_memsize / 1024} KiB"
+ 
+-RuboCop::RakeTask.new do |t|
+-  # allow you to run "$ rake rubocop -a" to autofix
+-  t.options << '-a' if ARGV.include?('-a')
+-  t.options << '-A' if ARGV.include?('-A')
 -end
+-
+ desc 'Run a performance evaluation.'
+ task :benchmark do
+   require 'css_parser'
+diff --git a/test/test_helper.rb b/test/test_helper.rb
+index 7dd2989..7d4632c 100644
+--- a/test/test_helper.rb
++++ b/test/test_helper.rb
+@@ -1,6 +1,5 @@
+ # frozen_string_literal: true
+ 
+-require 'bundler/setup'
+ require 'maxitest/autorun'
+ require 'net/http'
+ require 'webrick'
