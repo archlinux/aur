@@ -3,7 +3,7 @@ pkgname=vookiimageviewer-bin
 _pkgname=VookiImageViewer
 pkgver=2024.05.12
 _exiv2version=0.27.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform lightweight image viewer for a fast image preview."
 arch=('x86_64')
 url="https://vookiimageviewer.cz/"
@@ -23,7 +23,7 @@ source=(
 )
 sha256sums=('8508398251c18fe9baa890c4fab503c324cd66e163a56f32fd1a146ec50d0bac'
             'caafad455c88f4d9cf8ab338204e8ffafac2110e7b8a332d296c274963abf460'
-            '1e338ff128b2be2b0d484ea2d00814db6709a5e2cc455a373428d21f8ed690d5')
+            '346cd32afa9661092ead7c6b2fbc954ae402343306cd0b8e74f5d723e3dc5f20')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
@@ -34,9 +34,9 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 "${srcdir}/usr/bin/${_pkgname}" -t "${pkgdir}/opt/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/imageformats/"*.so -t "${pkgdir}/opt/${pkgname%-bin}/lib"
-    install -Dm644 "${srcdir}/exiv2-${_exiv2version}-Linux64/lib/libexiv2.so"* -t "${pkgdir}/opt/${pkgname%-bin}/lib"
+    install -Dm755 "${srcdir}/usr/bin/${_pkgname}" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/imageformats/"*.so -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
+    install -Dm644 "${srcdir}/exiv2-${_exiv2version}-Linux64/lib/libexiv2.so"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }

@@ -1,7 +1,7 @@
 pkgbase = vookiimageviewer-bin
 	pkgdesc = A cross-platform lightweight image viewer for a fast image preview.
 	pkgver = 2024.05.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vookiimageviewer.cz/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -14,6 +14,6 @@ pkgbase = vookiimageviewer-bin
 	source = vookiimageviewer.sh
 	sha256sums = 8508398251c18fe9baa890c4fab503c324cd66e163a56f32fd1a146ec50d0bac
 	sha256sums = caafad455c88f4d9cf8ab338204e8ffafac2110e7b8a332d296c274963abf460
-	sha256sums = 1e338ff128b2be2b0d484ea2d00814db6709a5e2cc455a373428d21f8ed690d5
+	sha256sums = 346cd32afa9661092ead7c6b2fbc954ae402343306cd0b8e74f5d723e3dc5f20
 
 pkgname = vookiimageviewer-bin
