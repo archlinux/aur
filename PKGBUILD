@@ -3,9 +3,9 @@
 # Contributor: haha662 <haha662 at outlook dot com>
 
 _pkgname=servr
-_pkgver=0.30
+_pkgver=0.31
 pkgname=r-${_pkgname,,}
-pkgver=0.30
+pkgver=0.31
 pkgrel=1
 pkgdesc='A Simple HTTP Server to Serve Static Files or Dynamic Documents'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-tools
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('43f920161408871a042462b7c3353149a608941253541a19a9ce3408f9882d40')
+sha256sums=('eb4e26036a1f769b4d88ec991b6b2751bb648b7e410b46b58ca4e0b7c497376b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
