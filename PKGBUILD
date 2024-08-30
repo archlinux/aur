@@ -1,7 +1,7 @@
 # Maintainer: Walter - "Y29udGFjdG9Ad2FsdGVyY2FzYW5vdmEudGVjaAo="
 
 pkgname=tetrs
-pkgver=0.1.7
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Tetromino Game Engine + Terminal"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('826b909d173a5c8b7b0e83c97c7bc1519e932c222ef197a904f1a0fc7a135727a339e998d833b192d5e9509facb60c3efdcb447e6ca9fb8f4a1b891262db5c68')
+sha512sums=('2517ee6ee3ef8e51ce6942c96136bde3cfebb3c559f6a439f47c523e1e511d08c0e9ee5a996222e01e44aff8ba97edba8e7225f977e09a936d39e55e59629eff')
 
 prepare() {
 	cd "$pkgname-$pkgver"
