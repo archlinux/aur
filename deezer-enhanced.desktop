@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Deezer Enhanced
-Exec=deezer-enhanced
+Exec=deezer-enhanced.js
 Terminal=false
 Type=Application
 Icon=deezer-enhanced

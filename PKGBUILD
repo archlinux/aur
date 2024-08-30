@@ -1,9 +1,9 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 # Maintainer: duzda <duzda@disroot.org>
 
-_electron=electron
+_electron=electron29
 pkgname=deezer-enhanced
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='An unofficial application for Deezer with enhanced features'
 arch=(any)
@@ -15,9 +15,9 @@ options=('!debug')
 source=("$url/archive/v$pkgver.tar.gz"
         "$pkgname.js"
 		"$pkgname.desktop")
-sha512sums=('6e170a966c2df3df7477f1b3fd887783b54980faa2ab419b0e644902194128fd7cea2d39dd3e45bff178e58827c76d2f422a78719d142300e410dc33ed5bd401'
+sha512sums=('517cec87cb6308a59548849d7d240a0475fc1c6988903593292bb4893db46100aba3f1f5af700bafad08c66a870b8ade5ffb4904ab8d53abb58c6ca7d204d9ab'
             'e359569fbd9767a7276cb754010d8bf4dcd35fd958bbc3c50baa042bceebc132a10e302810821e77d730873efa5511bccbcf89d18f146a29e1e94a5a96a1ba0f'
-			'85d840ce42be46fadc24652f9fcafd11e2ef2fbaf5ce1f831bc10570d70839582000f4c0394362d6464534f18ed1b0705de574eaf30db3da419906546c18ee62')
+			'29a213a0c1e70861afb1ca6771b716803edc97334ac1f002ceda01db1dd11fdf22a33720c74ee1cd77ffb5e6c20dd2465269a00fabc71ae26f1f5e79398b122b')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -36,7 +36,7 @@ package() {
 
 	install -Dm644 build/icon.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
-	install -Dm755 "$srcdir/$pkgname.js" "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 "$srcdir/$pkgname.js" "$pkgdir/usr/bin/$pkgname.js"
 	install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
 
 	install -d "$pkgdir/usr/share/licenses/$pkgname"
