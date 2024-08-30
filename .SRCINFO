@@ -1,15 +1,20 @@
 pkgbase = perl-xml-xpathengine
 	pkgdesc = a re-usable XPath engine for DOM-like trees
-	pkgver = 0.14
-	pkgrel = 2
-	url = http://search.cpan.org/dist/XML-XPathEngine
+	pkgver = 0.14.20161119
+	pkgrel = 1
+	url = https://metacpan.org/release/XML-XPathEngine
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	makedepends = perl
+	license = Artistic-1.0-Perl
+	checkdepends = perl-pod-coverage
+	checkdepends = perl-test-pod
+	checkdepends = perl-test-pod-coverage
+	depends = perl>=0
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIROD/XML-XPathEngine-0.14.tar.gz
-	md5sums = d840cbefa57c23041f0bed14940a6b22
+	source = perl-xml-xpathengine-73b8c1cceaa98b373ed9dfd0040e9fa577eba0bf.tar.gz::https://github.com/mirod/XML--XPathEngine/archive/73b8c1cceaa98b373ed9dfd0040e9fa577eba0bf.tar.gz
+	source = fix-bareword-Step-constants.patch
+	md5sums = 9947ee80912a89b920e6f78ee29ecd6e
+	md5sums = 0feb9bb13f12befffd3842cf3570f94b
+	sha512sums = 44b27e67514eaf69b25b768f9b30c38c7bce3983bea63db1e4c5f97bb83249bffe9549ed3bf0b1a5d2ffe6eacbb874e91352df8c5fe9b6cb56e3e889a8c094b1
+	sha512sums = 378735a9743e1f0e20bbca8032eadb120d0a679516f2077a84ab9ed1b0048bf5f9e33b073d3097acad489aca2338dbb18d28bbccf00657457e9dcf9c3656244f
 
 pkgname = perl-xml-xpathengine
-

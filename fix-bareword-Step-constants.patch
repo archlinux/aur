@@ -1,0 +1,190 @@
+Description: perl -wc lib/XML/XPathEngine fails
+ All constants like XML::XPathEngine::Step::test_nt_node() need the '()'.
+ Otherwise perl -Ilib -c lib/XML/XPathEngine.pm fails with
+    Bareword "XML::XPathEngine::Step::test_nt_node" not allowed while "strict
+    subs" in use
+Author: Damyan Ivanov <dmn@debian.org>
+
+--- a/lib/XML/XPathEngine.pm
++++ b/lib/XML/XPathEngine.pm
+@@ -706,7 +706,7 @@ sub _location_path {
+         my $optimised = _optimise_descendant_or_self($self, $tokens);
+         if (!$optimised) {
+             push @$loc_path, XML::XPathEngine::Step->new($self, 'descendant-or-self',
+-                                XML::XPathEngine::Step::test_nt_node);
++                                XML::XPathEngine::Step::test_nt_node());
+             push @$loc_path, _relative_location_path($self, $tokens);
+         }
+         else {
+@@ -765,7 +765,7 @@ sub _relative_location_path {
+             my $optimised = _optimise_descendant_or_self($self, $tokens);
+             if (!$optimised) {
+                 push @steps, XML::XPathEngine::Step->new($self, 'descendant-or-self',
+-                                        XML::XPathEngine::Step::test_nt_node);
++                                        XML::XPathEngine::Step::test_nt_node());
+             }
+             else {
+                 push @steps, $optimised;
+@@ -774,7 +774,7 @@ sub _relative_location_path {
+         push @steps, _step($self, $tokens);
+         if (@steps > 1 && 
+                 $steps[-1]->{axis} eq 'self' && 
+-                $steps[-1]->{test} == XML::XPathEngine::Step::test_nt_node) {
++                $steps[-1]->{test} == XML::XPathEngine::Step::test_nt_node()) {
+             pop @steps;
+         }
+     }
+@@ -789,11 +789,11 @@ sub _step {
+     
+     if (_match($self, $tokens, '\\.')) {
+         # self::node()
+-        return XML::XPathEngine::Step->new($self, 'self', XML::XPathEngine::Step::test_nt_node);
++        return XML::XPathEngine::Step->new($self, 'self', XML::XPathEngine::Step::test_nt_node());
+     }
+     elsif (_match($self, $tokens, '\\.\\.')) {
+         # parent::node()
+-        return XML::XPathEngine::Step->new($self, 'parent', XML::XPathEngine::Step::test_nt_node);
++        return XML::XPathEngine::Step->new($self, 'parent', XML::XPathEngine::Step::test_nt_node());
+     }
+     else {
+         # AxisSpecifier NodeTest Predicate(s?)
+@@ -808,7 +808,7 @@ sub _step {
+             _match($self, $tokens, $LITERAL);
+             $self->{_curr_match} =~ /^["'](.*)["']$/;
+             $step = XML::XPathEngine::Step->new($self, 'child',
+-                                    XML::XPathEngine::Step::test_nt_pi,
++                                    XML::XPathEngine::Step::test_nt_pi(),
+                         XML::XPathEngine::Literal->new($1));
+             _match($self, $tokens, '\\)', 1);
+         }
+@@ -817,59 +817,59 @@ sub _step {
+                         if ($token eq '@*') {
+                             $step = XML::XPathEngine::Step->new($self,
+                                     'attribute',
+-                                    XML::XPathEngine::Step::test_attr_any,
++                                    XML::XPathEngine::Step::test_attr_any(),
+                                     '*');
+                         }
+                         elsif ($token =~ /^\@($NCName):\*$/o) {
+                             $step = XML::XPathEngine::Step->new($self,
+                                     'attribute',
+-                                    XML::XPathEngine::Step::test_attr_ncwild,
++                                    XML::XPathEngine::Step::test_attr_ncwild(),
+                                     $1);
+                         }
+                         elsif ($token =~ /^\@($QName)$/o) {
+                             $step = XML::XPathEngine::Step->new($self,
+                                     'attribute',
+-                                    XML::XPathEngine::Step::test_attr_qname,
++                                    XML::XPathEngine::Step::test_attr_qname(),
+                                     $1);
+                         }
+         }
+         elsif ($token =~ /^($NCName):\*$/o) { # ns:*
+             $self->{_tokpos}++;
+             $step = XML::XPathEngine::Step->new($self, 'child', 
+-                                XML::XPathEngine::Step::test_ncwild,
++                                XML::XPathEngine::Step::test_ncwild(),
+                                 $1);
+         }
+         elsif ($token =~ /^$QNWild$/o) { # *
+             $self->{_tokpos}++;
+             $step = XML::XPathEngine::Step->new($self, 'child', 
+-                                XML::XPathEngine::Step::test_any,
++                                XML::XPathEngine::Step::test_any(),
+                                 $token);
+         }
+         elsif ($token =~ /^$QName$/o) { # name:name
+             $self->{_tokpos}++;
+             $step = XML::XPathEngine::Step->new($self, 'child', 
+-                                XML::XPathEngine::Step::test_qname,
++                                XML::XPathEngine::Step::test_qname(),
+                                 $token);
+         }
+         elsif ($token eq 'comment()') {
+                     $self->{_tokpos}++;
+             $step = XML::XPathEngine::Step->new($self, 'child',
+-                            XML::XPathEngine::Step::test_nt_comment);
++                            XML::XPathEngine::Step::test_nt_comment());
+         }
+         elsif ($token eq 'text()') {
+             $self->{_tokpos}++;
+             $step = XML::XPathEngine::Step->new($self, 'child',
+-                    XML::XPathEngine::Step::test_nt_text);
++                    XML::XPathEngine::Step::test_nt_text());
+         }
+         elsif ($token eq 'node()') {
+             $self->{_tokpos}++;
+             $step = XML::XPathEngine::Step->new($self, 'child',
+-                    XML::XPathEngine::Step::test_nt_node);
++                    XML::XPathEngine::Step::test_nt_node());
+         }
+         elsif ($token eq 'processing-instruction()') {
+             $self->{_tokpos}++;
+             $step = XML::XPathEngine::Step->new($self, 'child',
+-                    XML::XPathEngine::Step::test_nt_pi);
++                    XML::XPathEngine::Step::test_nt_pi());
+         }
+         elsif ($token =~ /^$AXIS_NAME($NCWild|$QName|$QNWild|$NODE_TYPE)$/o) {
+                     my $axis = $1;
+@@ -880,49 +880,49 @@ sub _step {
+                 _match($self, $tokens, $LITERAL);
+                 $self->{_curr_match} =~ /^["'](.*)["']$/;
+                 $step = XML::XPathEngine::Step->new($self, $axis,
+-                                        XML::XPathEngine::Step::test_nt_pi,
++                                        XML::XPathEngine::Step::test_nt_pi(),
+                             XML::XPathEngine::Literal->new($1));
+                 _match($self, $tokens, '\\)', 1);
+             }
+             elsif ($token =~ /^($NCName):\*$/o) { # ns:*
+                 $step = XML::XPathEngine::Step->new($self, $axis, 
+                                     (($axis eq 'attribute') ? 
+-                                    XML::XPathEngine::Step::test_attr_ncwild
++                                    XML::XPathEngine::Step::test_attr_ncwild()
+                                         :
+-                                    XML::XPathEngine::Step::test_ncwild),
++                                    XML::XPathEngine::Step::test_ncwild()),
+                                     $1);
+             }
+             elsif ($token =~ /^$QNWild$/o) { # *
+                 $step = XML::XPathEngine::Step->new($self, $axis, 
+                                     (($axis eq 'attribute') ?
+-                                    XML::XPathEngine::Step::test_attr_any
++                                    XML::XPathEngine::Step::test_attr_any()
+                                         :
+-                                    XML::XPathEngine::Step::test_any),
++                                    XML::XPathEngine::Step::test_any()),
+                                     $token);
+             }
+             elsif ($token =~ /^$QName$/o) { # name:name
+                 $step = XML::XPathEngine::Step->new($self, $axis, 
+                                     (($axis eq 'attribute') ?
+-                                    XML::XPathEngine::Step::test_attr_qname
++                                    XML::XPathEngine::Step::test_attr_qname()
+                                         :
+-                                    XML::XPathEngine::Step::test_qname),
++                                    XML::XPathEngine::Step::test_qname()),
+                                     $token);
+             }
+             elsif ($token eq 'comment()') {
+                 $step = XML::XPathEngine::Step->new($self, $axis,
+-                                XML::XPathEngine::Step::test_nt_comment);
++                                XML::XPathEngine::Step::test_nt_comment());
+             }
+             elsif ($token eq 'text()') {
+                 $step = XML::XPathEngine::Step->new($self, $axis,
+-                        XML::XPathEngine::Step::test_nt_text);
++                        XML::XPathEngine::Step::test_nt_text());
+             }
+             elsif ($token eq 'node()') {
+                 $step = XML::XPathEngine::Step->new($self, $axis,
+-                        XML::XPathEngine::Step::test_nt_node);
++                        XML::XPathEngine::Step::test_nt_node());
+             }
+             elsif ($token eq 'processing-instruction()') {
+                 $step = XML::XPathEngine::Step->new($self, $axis,
+-                        XML::XPathEngine::Step::test_nt_pi);
++                        XML::XPathEngine::Step::test_nt_pi());
+             }
+             else {
+                 die "Shouldn't get here";

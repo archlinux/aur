@@ -1,30 +1,60 @@
-# Maintainer: Patryk Kowalczyk < patryk at kowalczyk dot ws>
-# Contributor: Caleb Cushing <xenoterracide@gmail.com>
-# Generator  : CPANPLUS::Dist::Arch 0.16
+# Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
+
 pkgname='perl-xml-xpathengine'
-pkgver='0.14'
-pkgrel=2
+pkgver='0.14.20161119'
+_commit=73b8c1cceaa98b373ed9dfd0040e9fa577eba0bf
+pkgrel='1'
 pkgdesc="a re-usable XPath engine for DOM-like trees"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl')
 options=('!emptydirs')
-makedepends=('perl')
-url='http://search.cpan.org/dist/XML-XPathEngine'
-source=("http://search.cpan.org/CPAN/authors/id/M/MI/MIROD/XML-XPathEngine-$pkgver.tar.gz")
+depends=('perl>=0')
+makedepends=()
+checkdepends=('perl-pod-coverage'
+              'perl-test-pod'
+              'perl-test-pod-coverage')
+url='https://metacpan.org/release/XML-XPathEngine'
+source=("${pkgname}-${_commit}.tar.gz::https://github.com/mirod/XML--XPathEngine/archive/${_commit}.tar.gz"
+        fix-bareword-Step-constants.patch)
+md5sums=('9947ee80912a89b920e6f78ee29ecd6e'
+         '0feb9bb13f12befffd3842cf3570f94b')
+sha512sums=('44b27e67514eaf69b25b768f9b30c38c7bce3983bea63db1e4c5f97bb83249bffe9549ed3bf0b1a5d2ffe6eacbb874e91352df8c5fe9b6cb56e3e889a8c094b1'
+            '378735a9743e1f0e20bbca8032eadb120d0a679516f2077a84ab9ed1b0048bf5f9e33b073d3097acad489aca2338dbb18d28bbccf00657457e9dcf9c3656244f')
+_distdir="XML--XPathEngine-${_commit}"
+
+prepare() {
+  patch -d "$srcdir/$_distdir" -Np1 -i ../fix-bareword-Step-constants.patch
+}
+
+build() {
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
+
+    cd "$srcdir/$_distdir"
+    /usr/bin/perl Makefile.PL
+    make
+  )
+}
+
+check() {
+  cd "$srcdir/$_distdir"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    make test
+  )
+}
 
 package() {
-  _DISTDIR="${srcdir}/XML-XPathEngine-$pkgver"
-  export PERL_MM_USE_DEFAULT=1
-  { cd "$_DISTDIR" &&
-    perl Makefile.PL INSTALLDIRS=vendor &&
-    make &&
-    make test &&
-    make DESTDIR="${pkgdir}/" install;
-  } || return 1;
-
+  cd "$srcdir/$_distdir"
+  make install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
-
-
-md5sums=('d840cbefa57c23041f0bed14940a6b22')
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
