@@ -4,7 +4,7 @@
 _pkgbase=winbox
 pkgname=${_pkgbase}3
 pkgver=3.41
-pkgrel=0
+pkgrel=1
 pkgdesc="Mikrotik RouterOS GUI Configurator (3.x with wine)"
 url="https://mikrotik.com/download"
 arch=('x86_64')

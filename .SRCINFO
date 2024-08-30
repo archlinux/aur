@@ -1,7 +1,7 @@
 pkgbase = winbox3
 	pkgdesc = Mikrotik RouterOS GUI Configurator (3.x with wine)
 	pkgver = 3.41
-	pkgrel = 0
+	pkgrel = 1
 	url = https://mikrotik.com/download
 	install = winbox3.install
 	arch = x86_64
