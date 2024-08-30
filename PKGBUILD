@@ -1,16 +1,16 @@
 # Maintainer: Mindia Edisherashvili <mindia.e@aol.com>
 pkgname=ourbible
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=0
 epoch=
-pkgdesc="bible viewer app with GUI and web interface uses MyBible android app's modules"
+pkgdesc="bible viewer app with GUI and web interface which uses MyBible android app's modules"
 arch=('x86_64')
 url="https://github.com/mindiae/ourbible"
 license=('LGPL' 'GPL')
 depends=('sqlite' 'go')
 makedepends=('git')
-source=("https://github.com/mindiae/ourbible/archive/refs/tags/0.10.0.tar.gz")
-sha256sums=("423fe32cdcd8705c35bfc3bc0094d4534fc20e989b68bb4a86b11024f236521b")
+source=("https://github.com/mindiae/ourbible/archive/refs/tags/0.10.1.tar.gz")
+sha256sums=("6088e63f9f021cfb8db9bc60d659151d6cb77798a37c8236e47210ca28ef0cc0")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
