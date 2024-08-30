@@ -1,12 +1,15 @@
 pkgbase = planes-bin
 	pkgdesc = Variant of battleships game
 	pkgver = 0.4.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/xxxcucus/planes
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
-	depends = glibc
+	depends = libx11
+	depends = libxcb
+	depends = qt6-base
+	depends = qt6-declarative
 	provides = planes=0.4.1.1
 	conflicts = planes
 	options = !strip
@@ -15,6 +18,6 @@ pkgbase = planes-bin
 	source = planes.sh
 	sha256sums = 18876b9db94cbe854f6a39cd8856b067581fd9c6ed0ba533de18dd84d86acf41
 	sha256sums = 1e81694af5e5793ffbe17076d953c0b585cc9a3baf9b7c2d9c21e1297e9caf23
-	sha256sums = 3bf16c5e31b896ddb63b63fd4c0f3392b1c85944a605c9968dd1138033c40194
+	sha256sums = 9455868287a41a00eda12e8b75ff3880ed81eae87dcfb18ba7d0eb525bd36ffa
 
 pkgname = planes-bin
