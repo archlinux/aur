@@ -4,7 +4,7 @@
 _pkgname=dsp-guitar
 pkgname="go-${_pkgname}-bin"
 pkgver=1.8.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A cross-platform multichannel multi-effects processor for electric guitars and other instruments"
 arch=(
 	'aarch64'
@@ -28,7 +28,7 @@ source=(
 	"${pkgname%-bin}.sh"
 )
 sha256sums=('a39993ba8ad40ce74234e908db276841df1fd517c19385d01436d160986c77b1'
-            '8141e31e6fa242eb005924977a7786a2741e2f00cdb7bf13686d97b35d6e3527')
+            'ca6ed049825cbab7462d34716d8f70d39aa151728b83bbe2af8ea8e149dcab58')
 build() {
 	sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
@@ -46,11 +46,11 @@ build() {
 			mv dsp-linux-aarch64-debug "${pkgname%-bin}-debug"
         ;;
     esac
-	rm -rf *.exe
+	find ./ -type f -name "*.exe" -exec rm -rf {} \;
 	chmod a+r keys/*
 }
 package() {
 	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-	install -Dm755 -d "${pkgdir}/opt"
-	cp -r "${srcdir}/${pkgname%-bin}" "${pkgdir}/opt"
+	install -Dm755 -d "${pkgdir}/usr/lib"
+	cp -r "${srcdir}/${pkgname%-bin}" "${pkgdir}/usr/lib"
 }
