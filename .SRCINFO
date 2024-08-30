@@ -1,7 +1,7 @@
 pkgbase = mkfont
 	pkgdesc = A free (libre) tool to create & export fonts from existing assets. Component-based workflow, with advanced features to nit-pick & tweak metrics in a non-destructive way!
 	pkgver = 1.2.2
-	pkgrel = 7
+	pkgrel = 8
 	url = https://nebukam.github.io/mkfont/
 	arch = any
 	license = MIT
@@ -10,13 +10,13 @@ pkgbase = mkfont
 	makedepends = npm
 	makedepends = nodejs
 	makedepends = git
-	makedepends = base-devel
+	makedepends = cmake
 	makedepends = gcc
-	depends = electron24-bin
+	depends = electron24
 	conflicts = mkfont
 	source = mkfont.git::git+https://github.com/Nebukam/mkfont.git#tag=v1.2.2
 	source = mkfont.sh
-	sha256sums = SKIP
-	sha256sums = dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8
+	sha256sums = 98b83ebac816bb6bdb8258e2ed14067a4b0869d1d86ba71aa5cbdda26be9b0f1
+	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = mkfont
