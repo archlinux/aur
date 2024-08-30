@@ -6,7 +6,7 @@
 
 pkgname='hplip-minimal'
 pkgver=3.24.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Only printer drivers from HPLIP with proprietary binary plugin'
 arch=('x86_64')
 url='https://developers.hp.com/hp-linux-imaging-and-printing/'

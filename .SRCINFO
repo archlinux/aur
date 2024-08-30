@@ -1,7 +1,7 @@
 pkgbase = hplip-minimal
 	pkgdesc = Only printer drivers from HPLIP with proprietary binary plugin
 	pkgver = 3.24.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://developers.hp.com/hp-linux-imaging-and-printing/
 	arch = x86_64
 	license = GPL-2.0-only
