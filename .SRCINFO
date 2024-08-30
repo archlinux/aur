@@ -1,6 +1,6 @@
 pkgbase = dynisland-git
 	pkgdesc = A Dynamic Island bar written in Rust
-	pkgver = 0.1.2.r0.ga3f0cd1
+	pkgver = 0.1.2.r2.gfb03410
 	pkgrel = 1
 	url = https://github.com/cr3eperall/dynisland
 	arch = x86_64

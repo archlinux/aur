@@ -2,7 +2,7 @@
 
 _pkgname=dynisland
 pkgname=$_pkgname-git
-pkgver=0.1.2.r0.ga3f0cd1
+pkgver=0.1.2.r2.gfb03410
 pkgrel=1
 pkgdesc="A Dynamic Island bar written in Rust"
 arch=('x86_64')
@@ -21,6 +21,8 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
+    git submodule init
+    git submodule update
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
