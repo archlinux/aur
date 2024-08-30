@@ -6,7 +6,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 _name=pint-xarray
 pkgname=python-${_name}
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 epoch=
 pkgdesc="A convenience wrapper for using pint with xarray."
@@ -30,7 +30,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xarray-contrib/pint-xarray/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('15a2170a0bf5c7b43325db542da65ab9e418060f1531dc1225ce8e97bb311419')
+sha256sums=('6a7b7f6721e052938bd7e4ab3acdacd6ee81aff7401052a35f04073afaa84a0c')
 validpgpkeys=()
 
 prepare() {
