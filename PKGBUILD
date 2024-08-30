@@ -3,7 +3,7 @@
 
 pkgname=contour
 pkgver=0.4.3.6442
-pkgrel=4
+pkgrel=5
 pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
 url="https://github.com/contour-terminal/contour"
@@ -39,14 +39,10 @@ source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('f0a91fbd5abefbbac0f785bb8f454759568e3daadbad6ff1ade00fccf8b0af94f16747816598c706a698d65ce884a2e9499512942e6f22263ebc654ae6fb6879')
 
 build() {
-  export XDG_STATE_HOME="$PWD"
-
-  CFLAGS=${CFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
-  CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 
   cmake -S"${pkgname}-${pkgver}" -Bbuild \
         -GNinja \
-        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCONTOUR_QT_VERSION=6 \
         -DCONTOUR_TESTING=ON
