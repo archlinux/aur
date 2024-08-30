@@ -2,7 +2,7 @@
 
 pkgname=caddy-custom
 pkgver=2.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Caddy web server with plugins'
 url='https://github.com/caddyserver/caddy'
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,9 @@ sha256sums=('SKIP'
             '48dd0f59e33993a00e1262d0ebe9c06093f4c7cedb6a60c5799cb87eac06f5bf')
 
 build() {
-    mapfile -t < "${srcdir}/plugin-list" PLUGIN_LIST
+    PLUGIN_LIST_PATH="${PLUGIN_LIST_PATH:-${srcdir}/plugin-list}"
+
+    mapfile -t < "${PLUGIN_LIST_PATH}" PLUGIN_LIST
 
     for line in "${PLUGIN_LIST[@]}"
     do

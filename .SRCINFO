@@ -1,7 +1,7 @@
 pkgbase = caddy-custom
 	pkgdesc = Caddy web server with plugins
 	pkgver = 2.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/caddyserver/caddy
 	arch = x86_64
 	arch = aarch64
