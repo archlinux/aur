@@ -1,6 +1,6 @@
-pkgbase = mixbus9
-	pkgdesc = Harrison Consoles Mixbus DAW (Version 9)
-	pkgver = 9.2.172
+pkgbase = mixbus10
+	pkgdesc = Harrison Consoles Mixbus DAW (Version 10)
+	pkgver = 10.1.0
 	pkgrel = 1
 	url = https://store.harrisonaudio.com/all-products/mixbus
 	arch = x86_64
@@ -13,7 +13,8 @@ pkgbase = mixbus9
 	optdepends = gmsynth.lv2: General MIDI LV2 Synth
 	optdepends = setbfree-lv2: Tonewheel organ
 	optdepends = x42-plugins-lv2: Set of plugins and utilities from the X42 Project
-	source = https://s3.eu-west-1.amazonaws.com/eu1.download.solidstatelogic.com/Harrison/Mixbus-9.2.172-x86_64.run
-	sha256sums = cb6255b757f876477d60269ca3198097a36dfbac537f0e47b9c8f3c76c2acd78
+	options = !strip
+	source = https://s3.eu-west-1.amazonaws.com/eu1.download.solidstatelogic.com/Harrison/Mixbus-10.1.0-x86_64.tar
+	sha256sums = 69023fdc10e153b721b62bd82729365dbf331e123d56af6481fd6f7ea21f220c
 
-pkgname = mixbus9
+pkgname = mixbus10
