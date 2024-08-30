@@ -1,6 +1,6 @@
 # Maintainer:
 
-## useful links:
+## links
 # https://gitlab.winehq.org/wine/wine
 # https://gitlab.winehq.org/wine/wine-staging
 
@@ -17,86 +17,96 @@ unset _pkgtype
 # basic info
 _pkgname="wine"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=9.9.r137.g5f7b9a5b
+pkgver=9.16.r72.g1bd21c3a
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs"
 url="https://gitlab.winehq.org/wine/wine"
 license=('LGPL-2.1-or-later')
 arch=('x86_64')
 
-# main package
-_main_package() {
-  depends=(
-    alsa-lib              #lib32-alsa-lib
-    fontconfig            #lib32-fontconfig
-    freetype2             #lib32-freetype2
-    gettext               #lib32-gettext
-    gst-plugins-base-libs #lib32-gst-plugins-base-libs
-    libpulse              #lib32-libpulse
-    libxcomposite         #lib32-libxcomposite
-    libxcursor            #lib32-libxcursor
-    libxi                 #lib32-libxi
-    libxinerama           #lib32-libxinerama
-    libxrandr             #lib32-libxrandr
-    opencl-icd-loader     #lib32-opencl-icd-loader
-    pcsclite              #lib32-pcsclite
-    sdl2                  #lib32-sdl2
-    v4l-utils             #lib32-v4l-utils
-    desktop-file-utils
-    libgphoto2
+depends=(
+  alsa-lib              #lib32-alsa-lib
+  fontconfig            #lib32-fontconfig
+  freetype2             #lib32-freetype2
+  gettext               #lib32-gettext
+  gnutls                #lib32-gnutls
+  gst-plugins-base-libs #lib32-gst-plugins-base-libs
+  libpcap               #lib32-libpcap
+  libpulse              #lib32-libpulse
+  libxcomposite         #lib32-libxcomposite
+  libxcursor            #lib32-libxcursor
+  libxi                 #lib32-libxi
+  libxinerama           #lib32-libxinerama
+  libxkbcommon          #lib32-libkbcommon
+  libxrandr             #lib32-libxrandr
+  opencl-icd-loader     #lib32-opencl-icd-loader
+  pcsclite              #lib32-pcsclite
+  sdl2                  #lib32-sdl2
+  unixodbc              #lib32-unixodbc
+  v4l-utils             #lib32-v4l-utils
+  wayland               #lib32-wayland
+  desktop-file-utils
+  libgphoto2
+)
+makedepends=(
+  libxxf86vm        #lib32-libxxf86vm
+  mesa              #lib32-mesa
+  mesa-libgl        #lib32-mesa-libgl
+  vulkan-icd-loader #lib32-vulkan-icd-loader
+  autoconf
+  bison
+  flex
+  git
+  mingw-w64-gcc
+  opencl-headers
+  perl
+  vulkan-headers
+)
+local _makeoptdeps=(
+  ::alsa-plugins #lib32-alsa-plugins
+  ::dosbox
+  libcups::cups #lib32-libcups
+  samba::samba
+  sane::sane
+)
+for i in "${_makeoptdeps[@]}"; do
+  [ -n "${i%%::*}" ] && makedepends+=("${i%%::*}")
+  [ -n "${i##*::}" ] && optdepends+=("${i##*::}")
+done
 
-    # with-wayland
-    libxkbcommon
-    wayland
-  )
-  makedepends=(
-    libxxf86vm        #lib32-libxxf86vm
-    mesa              #lib32-mesa
-    mesa-libgl        #lib32-mesa-libgl
-    vulkan-icd-loader #lib32-vulkan-icd-loader
-    autoconf
-    bison
-    flex
-    git
-    mingw-w64-gcc
-    opencl-headers
-    perl
-    vulkan-headers
-  )
-  local _makeoptdeps=(
-    ::alsa-plugins #lib32-alsa-plugins
-    ::dosbox
-    libcups::cups #lib32-libcups
-    samba::samba
-    sane::sane
-  )
-  for i in "${_makeoptdeps[@]}"; do
-    [ -n "${i%%::*}" ] && makedepends+=("${i%%::*}")
-    [ -n "${i##*::}" ] && optdepends+=("${i##*::}")
-  done
+options=(staticlibs !lto)
+backup=("usr/lib/binfmt.d/wine.conf")
 
-  options=(staticlibs !lto)
-  backup=("usr/lib/binfmt.d/wine.conf")
+# provides/depends
+_pkgdep="$pkgname"
+if [[ "$_pkgdep" =~ .*staging-wow64.* ]]; then
+  provides+=("wine-wow64=${pkgver%%.r*}")
+  conflicts+=("wine-wow64")
+fi
+while [[ "$_pkgdep" =~ .*-.* ]]; do
+  _pkgdep="${_pkgdep%-*}"
+  provides+=("${_pkgdep}=${pkgver%%.r*}")
+  conflicts+=("${_pkgdep}")
+done
 
-  # provides/depends
-  _pkgdep="$pkgname"
-  if [[ "$_pkgdep" =~ .*staging-wow64.* ]]; then
-    provides+=("wine-wow64=${pkgver%%.r*}")
-    conflicts+=("wine-wow64")
-  fi
-  while [[ "$_pkgdep" =~ .*-.* ]]; do
-    _pkgdep="${_pkgdep%-*}"
-    provides+=("${_pkgdep}=${pkgver%%.r*}")
-    conflicts+=("${_pkgdep}")
-  done
-
-  # sources
+_sources_wine() {
   if [[ "${_build_git::1}" != "t" ]]; then
-    _main_stable
+    _sources_stable
   else
-    _main_git
+    _sources_git
   fi
 
+  source+=(
+    30-win32-aliases.conf
+    wine-binfmt.conf
+  )
+  sha256sums+=(
+    'SKIP'
+    'SKIP'
+  )
+}
+
+_sources_staging() {
   if [[ "${_build_staging::1}" == "t" ]]; then
     source+=("git+https://gitlab.winehq.org/wine/wine-staging.git")
     sha256sums+=('SKIP')
@@ -114,19 +124,9 @@ _main_package() {
       :
     }
   fi
-
-  source+=(
-    30-win32-aliases.conf
-    wine-binfmt.conf
-  )
-  sha256sums+=(
-    'SKIP'
-    'SKIP'
-  )
 }
 
-# stable package
-_main_stable() {
+_sources_stable() {
   _pkgsrc="$_pkgname"
   source+=("$_pkgsrc"::"git+$url.git#tag=wine-${pkgver%%.r*}")
   sha256sums+=('SKIP')
@@ -158,8 +158,7 @@ _main_stable() {
   }
 }
 
-# git package
-_main_git() {
+_sources_git() {
   _pkgsrc="$_pkgname"
   source+=("$_pkgsrc"::"git+$url.git")
   sha256sums+=('SKIP')
@@ -184,7 +183,9 @@ _main_git() {
   }
 }
 
-# common functions
+_sources_wine
+_sources_staging
+
 prepare() {
   _prepare_main
   _prepare_staging
@@ -228,6 +229,3 @@ package() {
   # binfmt config
   install -Dm644 "$srcdir/wine-binfmt.conf" "$pkgdir/usr/lib/binfmt.d/wine.conf"
 }
-
-# execute
-_main_package
