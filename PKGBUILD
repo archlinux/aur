@@ -1,7 +1,7 @@
 # Maintainer: Matthias Mailänder <matthias@mailaender.name>
 
 pkgname=theia-bin
-pkgver=1.51.0
+pkgver=1.52.0
 pkgrel=1
 pkgdesc="Cloud and Desktop IDE Platform"
 arch=('x86_64')
@@ -9,21 +9,11 @@ url='https://www.theia-ide.org/'
 license=('EPL2')
 provides=('theia')
 conflicts=('theia')
-makedepends=('grep' 'awk' 'util-linux' 'coreutils')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
 optdepends=('libappindicator-gtk3: Systray indicator')
-source=("TheiaIDE_x64_${pkgver}.deb::https://www.eclipse.org/downloads/download.php?file=/theia/ide/${pkgver}/linux/TheiaIDE.deb&r=1"
-        "${pkgname}-${pkgver}-${pkgrel}.yml::https://download.eclipse.org/theia/ide/1.51.0/linux/latest-linux.yml")
-sha256sums=('SKIP' # use the upstream checksums instead
-            'SKIP')
+source=("TheiaIDE_x64_${pkgver}.deb::https://www.eclipse.org/downloads/download.php?file=/theia/ide/${pkgver}/linux/TheiaIDE.deb&r=1")
+sha256sums=('99ffeee23a18b69aafddc3ee6a6b8ffb360c0254cd0cf6c79c996a0b8ed67841')
 options=('!strip')
-
-prepare() {
-  sha512_base64=$(grep -A 2 'url: TheiaIDE.deb' "${pkgname}-${pkgver}-${pkgrel}.yml" | grep 'sha512' | awk '{print $2}')
-  sha512_hex=$(echo "${sha512_base64}" | base64 -d | hexdump -v -e '1/1 "%02x"')
-  echo "${sha512_hex}  TheiaIDE_x64_${pkgver}.deb" > "TheiaIDE_x64_${pkgver}.deb.sha512"
-  sha512sum -c "TheiaIDE_x64_${pkgver}.deb.sha512"
-}
 
 package() {
   tar -xJf data.tar.xz --no-same-owner -C "${pkgdir}"
