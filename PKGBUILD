@@ -26,7 +26,7 @@ package() {
     install -Dm755  ../run.sh "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 ../cn.i4Tools.desktop "$pkgdir"/usr/share/applications/cn.i4Tools.desktop 
     cp -r "${srcdir}/opt/apps/cn.i4Tools" "${pkgdir}/opt/"
-    install -Dm644 ../LICENSE.html "$pkgdir/usr/share/licenses/$pkgname/LICENSE.html"
+    install -Dm644 ../LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     cd "${srcdir}/opt/apps/cn.i4Tools/resources"
     cp logo.png "$pkgdir"/usr/share/pixmaps/i4tools.png
     cp logo.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/i4tools.svg       
