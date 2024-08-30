@@ -2,7 +2,7 @@
 # Contributor: Antony Ho <ntonyworkshop@gmail.com>
 
 pkgname=session-desktop
-pkgver=1.13.0
+pkgver=1.13.2
 pkgrel=1
 pkgdesc="Onion routing based messenger"
 arch=(x86_64)
@@ -14,7 +14,7 @@ makedepends=('cmake' 'git' 'libxcrypt-compat' 'nvm' 'python-setuptools' 'yarn')
 source=("git+https://github.com/oxen-io/session-desktop.git#tag=v${pkgver}"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('304a8d2860d3c7cbab4b16371af4769b352202e340dc667b0951c37e5d8f7fdd'
+sha256sums=('1a46d1ef414eeb348636887bd4bae5ff9017df191447dffc61627777a5171e91'
             '267d772a94ba49b19e799e7ecee25c0077ded4dd9c853c073ec386a8ab6a7e5c'
             'a5279447d005060aa77536dcabe0ab66226f9cffa668dc0b6e07a2f1e52ab5ce')
 
