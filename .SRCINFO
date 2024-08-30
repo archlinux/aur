@@ -1,0 +1,17 @@
+pkgbase = extism
+	pkgdesc = Runtime library for the extism framework
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/extism/extism
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cargo
+	makedepends = gcc
+	makedepends = make
+	makedepends = nasm
+	depends = glibc
+	depends = gcc-libs
+	source = extism-1.5.0.tar.gz::https://github.com/extism/extism/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = c6718b0e1011224c0d18d1ee74f0b3708bb3e66c314daeb666a00d9913eb2751
+
+pkgname = extism
