@@ -1,0 +1,24 @@
+pkgbase = nzbget-bin
+	pkgdesc = Download from Usenet using .nzb files (nzbget.com fork)
+	pkgver = 24.2
+	pkgrel = 1
+	url = https://github.com/nzbgetcom/nzbget
+	install = nzbget.install
+	arch = x86_64
+	license = GPL
+	depends = libxml2
+	depends = openssl
+	optdepends = python: run scripts
+	optdepends = unrar: unpacking archives
+	optdepends = p7zip: unpacking archives
+	optdepends = par2cmdline: verificate and repair PAR 2.0 files
+	provides = nzbget
+	provides = nzbget-systemd
+	conflicts = nzbget
+	conflicts = nzbget-systemd
+	source = nzbget-24.2-amd64.deb::https://github.com/nzbgetcom/nzbget/releases/download/v24.2/nzbget-24.2-amd64.deb
+	source = nzbget.service
+	sha256sums = 830cede689b78f91286798beddd2d24cbf2b183e4ba614591ddb2df3576d07e9
+	sha256sums = e92d2d09e56930475c9f28641a3326a17aa187834e1bd6328a65b6ed7cc25e99
+
+pkgname = nzbget-bin

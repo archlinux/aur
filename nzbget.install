@@ -1,0 +1,15 @@
+post_install() {
+    getent group nzbget &>/dev/null || groupadd -r nzbget >/dev/null
+    getent passwd nzbget &>/dev/null || useradd -r -g nzbget -d /var/lib/nzbget -s /bin/false -c nzbget nzbget >/dev/null
+    chown -R nzbget:nzbget /var/lib/nzbget
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    getent passwd nzbget &>/dev/null && userdel nzbget >/dev/null
+    getent group nzbget &>/dev/null && groupdel nzbget >/dev/null
+    true
+}
