@@ -1,5 +1,7 @@
-pkgname=spacecadetpinball
-_pkgname=SpaceCadetPinball
+pkgname=spacecadetpinball-bin
+_pkgname=SpaceCadetPinball-bin
+rpkgname=spacecadetpinball
+_rpkgname=SpaceCadetPinball
 pkgver=2.1.0
 pkgrel=1
 scriptver=1.0.0
@@ -29,30 +31,30 @@ source_aarch64=("$url/spacecadetpinball/-/archive/$scriptver/spacecadetpinball-$
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
-    install -dm775 "$pkgdir/usr/share/games/$_pkgname"
+    install -dm775 "$pkgdir/usr/share/games/$_rpkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"
 
     # Packaging files
-    for dir in $pkgname-$scriptver/ ; do mv "${dir}" "$pkgname" ;done
+    for dir in $rpkgname-$scriptver/ ; do mv "${dir}" "$rpkgname" ;done
     # Check if SpaceCadetPinball Assets zip exists so it doesn't redownload the file when it doesn't need to.
-    FILE="/usr/share/games/$_pkgname/3DPinball.zip"
+    FILE="/usr/share/games/$_rpkgname/3DPinball.zip"
      if test -f "$FILE"
     then
         echo "$FILE exists skipping download."
-        cp -r /usr/share/games/SpaceCadetPinball/3DPinball.zip $pkgdir/usr/share/games/$_pkgname
+        cp -r /usr/share/games/SpaceCadetPinball/3DPinball.zip $pkgdir/usr/share/games/$_rpkgname
     else
         echo "$FILE does not exist, Starting download.."
-        cd $srcdir/$pkgname
+        cd $srcdir/$rpkgname
         wget "https://archive.org/download/3DPinball/3DPinball.zip"
     fi
-    install -Dm755 "$srcdir/SpaceCadetPinball" "$pkgdir/usr/bin"
-    cd $srcdir/$pkgname
-    cp "$srcdir/$pkgname/$pkgname" "$pkgdir/usr/bin"
-    cp -r ./ "$pkgdir/usr/share/games/$_pkgname"
-    cp $pkgname.png "$pkgdir/usr/share/pixmaps"
+    install -Dm755 "$srcdir/$_rpkgname" "$pkgdir/usr/bin"
+    cd $srcdir/$rpkgname
+    cp "$srcdir/$rpkgname/$rpkgname" "$pkgdir/usr/bin"
+    cp -r ./ "$pkgdir/usr/share/games/$_rpkgname"
+    cp $rpkgname.png "$pkgdir/usr/share/pixmaps"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/$pkgname/$pkgname.desktop" \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
-    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm644 "$srcdir/$rpkgname/$rpkgname.desktop" \
+    "$pkgdir/usr/share/applications/$rpkgname.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$rpkgname.desktop"
 }

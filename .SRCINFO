@@ -1,4 +1,4 @@
-pkgbase = spacecadetpinball
+pkgbase = spacecadetpinball-bin
 	pkgdesc = Reverse engineered port of "3D Pinball for Windows – Space Cadet" to Linux
 	pkgver = 2.1.0
 	pkgrel = 1
@@ -30,4 +30,4 @@ pkgbase = spacecadetpinball
 	sha256sums_aarch64 = 22691f50626242e88f2a7c7165774271b3fa96cdfa39bc9edaa1cd615eb3b411
 	sha256sums_aarch64 = 127ea73d8ac6651792ba6707efb65b2204e9f4b55fa59ca5f61ee80568cb071e
 
-pkgname = spacecadetpinball
+pkgname = spacecadetpinball-bin
