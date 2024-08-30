@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# uClibc-ng 1.0.41 C Library Configuration
+# uClibc-ng 1.0.50 C Library Configuration
 #
 # TARGET_aarch64 is not set
 # TARGET_alpha is not set
@@ -27,12 +27,15 @@
 # TARGET_or1k is not set
 # TARGET_powerpc is not set
 TARGET_riscv64=y
+# TARGET_riscv32 is not set
 # TARGET_sh is not set
 # TARGET_sparc is not set
 # TARGET_sparc64 is not set
 # TARGET_tile is not set
 # TARGET_x86_64 is not set
 # TARGET_xtensa is not set
+TARGET_LDSO_NAME="ld-uClibc"
+TARGET_ARCH_BITS=64
 
 #
 # Target Architecture Features and Options
@@ -40,9 +43,9 @@ TARGET_riscv64=y
 TARGET_ARCH="riscv64"
 FORCE_OPTIONS_FOR_ARCH=y
 TARGET_SUBARCH=""
+# UCLIBC_FORMAT_ELF is not set
 UCLIBC_FORMAT_FLAT=y
 # UCLIBC_FORMAT_FLAT_SEP_DATA is not set
-# UCLIBC_FORMAT_SHARED_FLAT is not set
 ARCH_LITTLE_ENDIAN=y
 
 #
@@ -62,9 +65,13 @@ HAVE_DOT_CONFIG=y
 # General Library Settings
 #
 DOPIC=y
+# STATIC_PIE is not set
 ARCH_HAS_NO_SHARED=y
 ARCH_HAS_NO_LDSO=y
+UCLIBC_CTOR_DTOR=y
 HAS_NO_THREADS=y
+# UCLIBC_HAS_LINUXTHREADS is not set
+PTHREADS_STACK_DEFAULT_SIZE=2097152
 UCLIBC_HAS_SYSLOG=y
 UCLIBC_HAS_LFS=y
 MALLOC=y

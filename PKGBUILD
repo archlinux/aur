@@ -2,7 +2,7 @@
 # Contributor: Sean Anderson <seanga2@gmail.com>
 _target=riscv64-linux-uclibc
 pkgname=$_target-uclibcng
-pkgver=1.0.41
+pkgver=1.0.50
 pkgrel=1
 epoch=
 pkgdesc="A C library for embedded Linux"
@@ -26,9 +26,8 @@ source=(
 	"file://config"
 )
 noextract=()
-sha512sums=('15a5d617b6571bdd77e6d66d850ace76f6f4d82ce566b7d1b969e7f83f240c51a1593fb437740be52503273c429280625703806bd8e7028dd7c280af76d36070'
-			'27cfa23791b7eb2e658ca8952309e76a49ec8d162eea93da40d55affbea71f3639fb99d180397e7e2d576af3b0754813d6419e76d67859adad47cc0ad2dce449')
-
+sha512sums=('a478cbef1160f12a5ff7453f7b6f9c9d8df49c1421b660cb8e9e2a3b792a662ad0793dc9cec7c00490628f46eaadbe9ec578dd8ea86fc27b0069d1f075422612'
+            'e48bfefa1a722c4f435d5f2ef0d899450d059ecd06cfe7e5400029f3b5a79f7c7f7ff5bbe8f46f4fc42f5c4831d0a742e427922254ee30abcbfe807f5a3117ef')
 
 # prepare() {
 # 	cd "uClibc-ng-$pkgver"
