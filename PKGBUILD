@@ -4,7 +4,7 @@ pkgname="${_officalname}-bin"
 _pkgname=SuwellReader
 _appname="cn.${_officalname//-/.}"
 pkgver=3.0.22.0916
-pkgrel=7
+pkgrel=8
 pkgdesc="OFD Reader Professional 3.0 From Suwell .LTD"
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
@@ -14,7 +14,6 @@ _downurl="https://com-store-packages.uniontech.com"
 license=('LicenseRef-Proprietary')
 depends=(
     'gtk2'
-    'hicolor-icon-theme'
     'libpng12'
     'glu'
     'libjpeg6-turbo'
@@ -32,7 +31,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('69e56165f999ca8a168d64d0e22180755c67091b700fca1e339910580b127d1f'
-            '16b64104ddc9ca7662cc212d99d567aec8c973f082a29e7fe67928b2fe546acf')
+            '60ac90aadd05a48336e83bc030eca8fd4cb1c4b0458d062587b8dc23c61a5677')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
@@ -47,8 +46,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/apps/${_appname}/files/bin/suwell/"* "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/apps/${_appname}/files/bin/suwell/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/fonts/cesi_font/"*.ttf -t "${pkgdir}/usr/share/fonts/cesi-font"
     install -Dm644 "${srcdir}/usr/share/mime/packages/"*.xml -t "${pkgdir}/usr/share/mime/packages"
