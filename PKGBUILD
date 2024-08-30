@@ -2,7 +2,7 @@
 pkgname=avogadro2-bin
 _pkgname=Avogadro2
 pkgver=1.99.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas."
 arch=("x86_64")
 url="https://two.avogadro.cc/"
@@ -20,7 +20,9 @@ depends=(
     'openssl-1.1'
     'qt5-base'
     'libgpg-error'
-    'python>3'
+    'python-numpy'
+    'python-requests'
+    'glew'
 )
 makedepends=(
     'fuse2'
@@ -33,7 +35,7 @@ source=(
 )
 sha256sums=('1657fe24e35df38fa3da39c6abab81aa0cbdc02142bcea0927834657d95baf53'
             '3e6a55dc0da9bb56a7f232b1766da524c9d9c1dad61dfeea8424f1df7fb6f2f4'
-            'c97cea90cbddf8489d4cb30984e96c33e1df957ccab58f017b103be8eff59f40')
+            '6fbd133d746550a922dfeb351db679b1a18cf193774530bcab12ea6f0600938d')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
@@ -43,8 +45,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/usr/"* "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/squashfs-root/usr/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/metainfo/${pkgname%-bin}.appdata.xml" -t "${pkgdir}/usr/share/metainfo"
