@@ -1,6 +1,6 @@
 pkgbase = lunacy-bin
 	pkgdesc = Free design software that keeps your flow with AI tools and built-in graphics
-	pkgver = 9.6.2
+	pkgver = 10.0.1
 	pkgrel = 1
 	url = https://icons8.com/lunacy
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = lunacy-bin
 	depends = zlib
 	depends = fontconfig
 	provides = lunacy
-	source_x86_64 = lunacy_x86_64_9.6.2.deb::https://lcdn.icons8.com/setup/Lunacy_9.6.2.deb
-	sha256sums_x86_64 = 8939defaf527bfe3bff9050a81252bf8009d6695ebbd1424666aa08491f57c3c
+	source = lunacy-mimetype.xml
+	sha256sums = 0c6ff2c10a75e19f3051c22b6002a78033a7508ad4bb5d234e85cdad22b0f4d0
+	source_x86_64 = lunacy_x86_64_10.0.1.deb::https://lcdn.icons8.com/setup/Lunacy_10.0.1.deb
+	sha256sums_x86_64 = ae80ff6cabf5376b2bbbfb59e999752760326359a08f6b2c0766b8da4c013473
 
 pkgname = lunacy-bin
