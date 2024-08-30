@@ -21,6 +21,7 @@ makedepends=(
     'git'
     'cmake'
     'gcc'
+    'nvm'
 )
 source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"

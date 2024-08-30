@@ -12,6 +12,7 @@ pkgbase = mkfont
 	makedepends = git
 	makedepends = cmake
 	makedepends = gcc
+	makedepends = nvm
 	depends = electron24
 	conflicts = mkfont
 	source = mkfont.git::git+https://github.com/Nebukam/mkfont.git#tag=v1.2.2
