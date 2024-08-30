@@ -1,11 +1,13 @@
 pkgbase = coppwr-bin
 	pkgdesc = Low level PipeWire control GUI
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dimtpap.ovh/coppwr
 	arch = x86_64
 	license = GPL3
 	depends = pipewire
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
 	optdepends = xdg-desktop-portal: Camera and Screencast XDP support
 	provides = coppwr
 	conflicts = coppwr
