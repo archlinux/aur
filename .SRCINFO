@@ -1,0 +1,19 @@
+pkgbase = emilua-beast
+	pkgdesc = Boost.Beast (WebSocket) bindings for Emilua
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/emilua/beast
+	arch = i686
+	arch = x86_64
+	license = boost
+	makedepends = git
+	makedepends = meson
+	makedepends = boost
+	makedepends = gawk
+	makedepends = gperf
+	makedepends = asciidoctor
+	depends = emilua
+	source = emilua-beast::git+https://gitlab.com/emilua/beast.git#tag=v1.0.0
+	md5sums = SKIP
+
+pkgname = emilua-beast
