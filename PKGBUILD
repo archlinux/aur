@@ -20,7 +20,7 @@ depends=(
 source_i686=("${pkgname%-bin}-${pkgver}-i686.tgz::https://download.xnview.com/XnSketch-linux.tgz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tgz::https://download.xnview.com/XnSketch-linux-x64.tgz")
 source=("${pkgname%-bin}.sh")
-sha256sums=('13aa2bb01a14ac223189f3f9ae58ba03e85631925240b0a22cc5e6bbe460f23c')
+sha256sums=('590eec41dae81c3a4298b768c791117c438b7455b9bf000c51a3bbcc17e483a6')
 sha256sums_i686=('bfc35afc4e333db3cc298bffda1f35beca45e8b1b693bc9a45c5bceb161ceae2')
 sha256sums_x86_64=('15273b7e38bcac2b4a34034e383547243b3d086ac57259629e49afabe4adace5')
 build() {
@@ -34,11 +34,11 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/${_pkgname}/"* "${pkgdir}/opt/${pkgname%-bin}"
-    ln -sf "/usr/lib/libicui18n.so" "${pkgdir}/opt/${pkgname%-bin}/lib/libicui18n.so.54"
-    ln -sf "/usr/lib/libicuuc.so" "${pkgdir}/opt/${pkgname%-bin}/lib/libicuuc.so.54"
-    ln -sf "/usr/lib/libicudata.so" "${pkgdir}/opt/${pkgname%-bin}/lib/libicudata.so.54"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    ln -sf "/usr/lib/libicui18n.so" "${pkgdir}/usr/lib/${pkgname%-bin}/lib/libicui18n.so.54"
+    ln -sf "/usr/lib/libicuuc.so" "${pkgdir}/usr/lib/${pkgname%-bin}/lib/libicuuc.so.54"
+    ln -sf "/usr/lib/libicudata.so" "${pkgdir}/usr/lib/${pkgname%-bin}/lib/libicudata.so.54"
     install -Dm644 "${srcdir}/${_pkgname}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/${_pkgname}/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${_pkgname}/license.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
