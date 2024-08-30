@@ -2,9 +2,9 @@
 Type=Application
 Version=1.0
 Name=Winbox
-Comment=GUI administration for Mikrotik RouterOS
-Exec=/usr/bin/winbox
-Icon=winbox
+Comment=GUI administration for Mikrotik RouterOS (3.x)
+Exec=/usr/bin/winbox3
+Icon=winbox3
 Terminal=false
 Categories=Utility
 StartupWMClass=winbox.exe

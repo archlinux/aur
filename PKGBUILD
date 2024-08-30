@@ -1,10 +1,11 @@
 # Maintainer: Tom Hetmer <tom.hetmer / outlook.cz>
 # Maintainer: Daniel Milde <daniel / milde.cz>
 
-pkgname=winbox
+_pkgbase=winbox
+pkgname=${_pkgbase}3
 pkgver=3.41
-pkgrel=3
-pkgdesc="Mikrotik RouterOS GUI Configurator (wine)"
+pkgrel=0
+pkgdesc="Mikrotik RouterOS GUI Configurator (3.x with wine)"
 url="https://mikrotik.com/download"
 arch=('x86_64')
 license=('custom')
@@ -13,17 +14,17 @@ optdepends=(
   'ttf-ms-fonts: for better fonts'
 )
 install=${pkgname}.install
-source=("${pkgname}-${pkgver}.exe::https://download.mikrotik.com/routeros/winbox/${pkgver}/${pkgname}64.exe"
+source=("${_pkgbase}-${pkgver}.exe::https://download.mikrotik.com/routeros/winbox/${pkgver}/${_pkgbase}64.exe"
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}")
 sha256sums=('8bc3ecf1f35952600ecb1a380c38c88e9d63c081a32204fd094d588230070bf6'
-            '5b206007771bc84b5291180ca24c2538f0cd03f1e6738edddf58e57d66a13f8d'
+            '4b316a0521432da0596bb7cd1fdd1376a343f8c414b4f46d72a4a58878626bba'
             '603eaed8dfb5b6146712c5cee801e6d77f1f45d6bd5c4b545f9f84193834d380'
-            'e7d6a2ffc0eda07ac40db88d92629bf8b1e2fa9433f3b74b1eef3437c1d0f6c6')
+            'ed63820aafb59d9b8eab860030d96e468e667849b9bde79fdd7bbf871cb71d3a')
 
 package() {
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}.exe" "${pkgdir}/usr/share/${pkgname}/${pkgname}.exe"
+  install -Dm755 "${srcdir}/${_pkgbase}-${pkgver}.exe" "${pkgdir}/usr/share/${pkgname}/${_pkgbase}.exe"
   install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm655 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm655 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"

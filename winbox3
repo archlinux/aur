@@ -8,4 +8,4 @@ if [ ! -d "$HOME"/.winbox ] ; then
    wineboot -u
 fi
 
-wine /usr/share/winbox/winbox.exe "$@"
+wine /usr/share/winbox3/winbox.exe "$@"
