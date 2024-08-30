@@ -2,7 +2,7 @@
 pkgname=ttfviewer-bin
 _pkgname=TTFviewer
 pkgver=0.2.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A small tool for developers to view and preview various ttf font/icon image formats. It is based on Qt and opencv frameworks and supports windows/linux/macos."
 arch=("x86_64")
 url="https://github.com/QQxiaoming/TTFviewer"
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('00499788373ff93088bdccd67e26f3f1acb9bdc8e24e011421e54657a90838f7'
-            'f82cab67994e75e630adf378cb10212657b5c1623c0c2a7ecd31e37a2170bb41')
+            '3d8053b94a958cd265875f371678edf2d298b992a2eccadf093cd6b97d1cbf21')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
@@ -35,8 +35,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop"  "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/opt/${_pkgname}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }
