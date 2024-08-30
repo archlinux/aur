@@ -3,7 +3,7 @@
 _name="markdown_strings"
 pkgname="python-${_name}"
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Create markdown formatted text"
 arch=('any')
 url="https://github.com/awesmubarak/${_name}"
@@ -33,6 +33,6 @@ package () {
 
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "${pkgdir}${site_packages}/${_pkgsrc}.dist-info/LICENSE.txt" \
+  ln -s "${site_packages}/${_pkgsrc}.dist-info/LICENSE.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

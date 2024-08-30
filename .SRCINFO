@@ -1,7 +1,7 @@
 pkgbase = python-markdown_strings
 	pkgdesc = Create markdown formatted text
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/awesmubarak/markdown_strings
 	arch = any
 	license = MIT
