@@ -3,7 +3,7 @@ pkgname=calendar-bin
 _pkgname=Calendar
 _appname="org.Rabbit.${_pkgname}"
 pkgver=1.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Task, calendar, Vision protection."
 arch=("x86_64")
 url="https://github.com/KangLin/Calendar"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('949407460d27bb8f45c6ac182814d803a51cd4ccb936d2387a4fbee4252a1258'
-            '30e6f9d281a111688269d9a6ba313c741359a38c82916acedb0a4daf00961a80')
+            'c789c7882bc41c71e1a4e3a6da5a374a3a150d1776ae77d5d4e1d3adf91a2c8c')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}App-v${pkgver}|g" \
@@ -35,8 +35,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/opt/${_pkgname}/share/pixmaps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }

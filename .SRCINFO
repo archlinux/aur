@@ -1,7 +1,7 @@
 pkgbase = calendar-bin
 	pkgdesc = Task, calendar, Vision protection.
 	pkgver = 1.0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KangLin/Calendar
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -15,6 +15,6 @@ pkgbase = calendar-bin
 	source = calendar-1.0.20.deb::https://github.com/KangLin/Calendar/releases/download/v1.0.20/rabbitcalendar_1.0.20_ubuntu_amd64.deb
 	source = calendar.sh
 	sha256sums = 949407460d27bb8f45c6ac182814d803a51cd4ccb936d2387a4fbee4252a1258
-	sha256sums = 30e6f9d281a111688269d9a6ba313c741359a38c82916acedb0a4daf00961a80
+	sha256sums = c789c7882bc41c71e1a4e3a6da5a374a3a150d1776ae77d5d4e1d3adf91a2c8c
 
 pkgname = calendar-bin
