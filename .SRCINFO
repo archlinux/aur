@@ -14,10 +14,11 @@ pkgbase = lagrange-bin
 	provides = lagrange=1.17.6
 	conflicts = lagrange
 	options = !strip
+	options = !emptydirs
 	source = LICENSE-1.17.6.md::https://raw.githubusercontent.com/skyjake/lagrange/v1.17.6/LICENSE.md
 	source = lagrange.sh
 	sha256sums = d8dd2acc4ba121ca7da3c899c8c443484ab54526ed5933e34fffae2cedb28fbe
-	sha256sums = b6ecb830280091f98d2466ac7f8eea900a40f0cae942738849aeae278216fc95
+	sha256sums = b4f8131b6f1e324043ae56a154990dfa8ebbc7a63e85af7d0a98a88f1b308379
 	source_armv7h = lagrange-1.17.6-armv7h.AppImage::https://github.com/skyjake/lagrange/releases/download/v1.17.6/Lagrange-1.17.6-armhf.AppImage
 	sha256sums_armv7h = bff1fb177512cc2fb167495c5986d6208f18d2d7a99fdd7bf37c20c947d92cb2
 	source_x86_64 = lagrange-1.17.6-x86_64.AppImage::https://github.com/skyjake/lagrange/releases/download/v1.17.6/Lagrange-1.17.6-x86_64.AppImage
