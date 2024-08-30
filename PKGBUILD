@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=repath-studio-bin
-pkgver=0.2.13
-_electronversion=31
+pkgver=0.3.0
+_electronversion=32
 pkgrel=1
 pkgdesc="Scalable Vector Graphics Manipulation"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2e59632d6f94657894d6b2c3b0729c4d875760c8306c0066a19eac453d836201'
+sha256sums=('16bee13e81ca1b45e6ee6edea2506861afd294f8529186ad9e5c1470f7da1a95'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
