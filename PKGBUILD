@@ -3,7 +3,7 @@ pkgname=chinesechesscontrol-bin
 _pkgname=ChineseChessControl
 _appname="org.Rabbit.${_pkgname%Control}"
 pkgver=2.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="中国象棋控件,包括中国象棋 MFC 扩展库，中国象棋 activex 控件,中国象棋Qt插件,人工智能引擎等"
 arch=("x86_64")
 url="https://github.com/KangLin/ChineseChessControl"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('16009e75c9ff725c200a34f967132ab585584f315983358bcbf6fe9a8425ad57'
-            '96c37f05372089426509db8433a256ca8ab2fc18a27625b7db9063beb79ab4aa')
+            '804ba9105633f8b743c8888edbac0b5894da0deaf5397713528fedc93de1ec6d')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|ChineseChessApp-v${pkgver}|g" \
@@ -33,8 +33,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/share/pixmaps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/opt/${_pkgname}/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
