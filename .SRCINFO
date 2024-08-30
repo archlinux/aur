@@ -19,6 +19,7 @@ pkgbase = hplip-minimal
 	conflicts = hplip-lite
 	conflicts = hplip-plugin
 	backup = etc/hp/hplip.conf
+	options = !makeflags
 	source = https://downloads.sourceforge.net/hplip/hplip-3.24.4.tar.gz
 	source = https://developers.hp.com/sites/default/files/hplip-3.24.4-plugin.run
 	validpgpkeys = 4ABA2F66DBD5A95894910E0673D770CDA59047B9
