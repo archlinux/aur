@@ -4,11 +4,11 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook-git
 _pkgname=Notesnook
-pkgver=3.0.4.r0.g58845e5
+pkgver=3.0.16.r1.g19ed753
 _electronversion=29
 _nodeversion=20
 pkgrel=1
-pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote"
+pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.Use system-wide electron."
 arch=(
     'aarch64'
     'x86_64'
@@ -27,9 +27,10 @@ makedepends=(
     'npm'
     'git'
     'zip'
-    'base-devel'
+    'cmake'
     'gcc'
     'curl'
+    'yarn'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -38,7 +39,7 @@ source=(
 )
 sha256sums=('SKIP'
             'efc8a6cea79ed0203dcbadf17632b5341952a49704f99e3ea0ddc573b06748f4'
-            '41b6d61dffef064762b3eec3dfeca7a3e1f57cbcb6dce9a6940c06797a0eae9d')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g;s/.android//g'
@@ -61,7 +62,6 @@ build() {
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
@@ -69,26 +69,29 @@ build() {
         export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+        echo '[url "https://github.moeyy.xyz/https://github.com/"]' >> .gitconfig
+        echo '    insteadof = https://github.com/' >> .gitconfig
     else
         echo "Your network is OK."
     fi
     cd "${srcdir}/${pkgname//-/.}"
+    sed "s|npm \${|NODE_ENV=development npm \${|g" -i scripts/bootstrap.mjs
     # Install packages
-    npm ci --ignore-scripts --prefer-offline --no-audit
-    npm run bootstrap -- --scope=web
+    NODE_ENV=development    npm install --ignore-scripts --prefer-offline --no-audit
+    NODE_ENV=production     npm run bootstrap -- --scope=web
     # Generate desktop build
-    npx nx build:desktop @notesnook/web
-    npm run bootstrap -- --scope=desktop
+    NODE_ENV=production     npx nx build:desktop @notesnook/web
+    NODE_ENV=production     npm run bootstrap -- --scope=desktop
     # Build Electron wrapper
     cd "${srcdir}/${pkgname//-/.}/apps/desktop"
-    sed 's|"asar": false,|"asar": true,|' -i package.json
-    npx nx run release --project @notesnook/desktop
-    npx electron-builder --dir
+    sed "s|\"asar\": false,|\"asar\": true,|g;s|\"electron\": \"^29.3.1\",|\"electron\": \"${SYSTEM_ELECTRON_VERSION}\",|g" -i package.json
+    NODE_ENV=production     npx nx run release --project @notesnook/desktop
+    NODE_ENV=production     npx electron-builder -l --dir
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname//-/.}/apps/desktop/output/linux-"*/resources/{app,assets} "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm644  "${srcdir}/${pkgname//-/.}/apps/desktop/output/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -r "${srcdir}/${pkgname//-/.}/apps/desktop/output/linux-"*/resources/assets "${pkgdir}/usr/lib/${pkgname%-git}"
     for _icons in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
         install -Dm644 "${srcdir}/${pkgname//-/.}/apps/desktop/assets/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
