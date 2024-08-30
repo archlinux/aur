@@ -1,16 +1,15 @@
-# Maintainer: Vitaliy Berdinskikh <radio_rogal@keemaill.me>
-# Maintainer: Oscar Morante <spacepluk@gmail.com>
+# Maintainer: Alessandro Biasi <al.biasi@gmail.com>
 
 pkgname=jbake
-pkgver=2.6.4
+pkgver=2.6.7
 pkgrel=1
 pkgdesc="JBake is a Java based, open source, static site/blog generator for developers & designers"
 arch=('any')
 url="http://jbake.org"
 license=('MIT')
 depends=('bash' 'java-environment')
-source=("jbake-${pkgver}-bin.zip::https://dl.bintray.com/jbake/binary/jbake-2.6.4-bin.zip")
-sha256sums=('831149752f72005e3ebf6e7f554b0bf880a8df74faf4bfcf0ec746185316faf0')
+source=("jbake-${pkgver}-bin.zip::https://github.com/jbake-org/jbake/releases/download/v${pkgver}/jbake-${pkgver}-bin.zip")
+sha256sums=('8d9c2b70fbf26415c5b3e530088b8b7fd1d236d3ce2c98a9c03fff4734bced39')
 
 package() {
   cd "${srcdir}"/jbake-${pkgver}-bin
@@ -21,6 +20,7 @@ package() {
   install -m 644 lib/logging/* "${pkgdir}"/opt/jbake/lib/logging
   install -m 755 bin/jbake "${pkgdir}"/opt/jbake/bin
   #install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+  install -m 644 example_project_*.zip "${pkgdir}"/opt/jbake
 
   install -d "${pkgdir}"/usr/bin
   ln -s /opt/jbake/bin/jbake "${pkgdir}"/usr/bin/jbake
