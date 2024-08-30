@@ -1,19 +1,19 @@
 # Maintainer: Pierre Dommerc <dommerc.pierre@gmail.com>
 
 pkgname=baru
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='A simple system monitor for WM statusbar'
 arch=('x86_64')
 url='https://github.com/doums/baru'
-license=('MPL2')
-depends=('libpulse')
+license=('MPL-2.0')
+depends=('libnl' 'libpulse')
 makedepends=('rust' 'cargo')
 provides=('baru')
 conflicts=('baru')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('025c484fdbc226244da1ea6e0cd1bde5907c18e5f081a5b62acc5e85120f7338')
+sha256sums=('1e4bf37b819e979f3b2782dc08e091a9159eedfefb2b2880eb8c6c1e4066f3e5')
 
 build() {
   cd "$pkgname-$pkgver"
