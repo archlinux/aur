@@ -1,0 +1,50 @@
+# Maintainer: Antonio Curavalea <one.kyonblack@gmail.com>
+
+_appname='ygo-omega'
+pkgname=ygo-omega
+pkgver=latest
+pkgrel=1
+pkgdesc="The Ultimate Yu-Gi-Oh! Simulator."
+arch=('x86_64')
+url='https://github.com/duelists-unite'
+license=('AGPL3')
+provides=("${_appname}")
+conflicts=("${_appname}")
+install="${_appname}.install"
+source=(
+	"linux-x64.zip::https://github.com/duelists-unite/omega-releases/releases/$pkgver/download/linux-x64.zip"
+	"${_appname}.desktop.in"
+	"${_appname}.in"
+)
+sha256sums=('9fe0457e3202fc079c555adc5a8083a5f0b88a33f3051f202544d4264ba69536'
+            'd159c3910d3b68675a4a098c3384e376e1a02e593e94289a686cb183690cdc87'
+            'ad7d825c3e50fec121ff7594ea7cf5c15fd49dedc9de7c5d5fdb6d22096693e5')
+options=('emptydirs')
+
+# Make a string suitable for `sed`, by escaping `[]/&$.*^\` - syntax: `_sed_escape STRING`
+_sed_escape() {
+	echo "${1}" | sed 's/[]\/&.*$^[]/\\&/g'
+}
+
+package() {
+	local _sed_subst="
+		s/@PACKAGE_NAME@/$(_sed_escape "${_appname}")/g
+		s/@PACKAGE_VERSION@/$(_sed_escape "${pkgver}")/g
+		s/@PACKAGE_RELEASE@/$(_sed_escape "${pkgrel}")/g
+		s/@PACKAGE_ARCH@/$(_sed_escape "${_archstr}")/g
+	"
+
+	install -dm755 "${pkgdir}/usr/share/applications"
+	sed "${_sed_subst}" "${_appname}.desktop.in" > \
+		"${pkgdir}/usr/share/applications/${_appname}.desktop"
+	install -Dm444 "linux-x64.zip" \
+		"${pkgdir}/opt/ygo-omega/linux-x64.zip"
+
+	install -dm755 "${pkgdir}/usr/bin"
+	sed "${_sed_subst}" "${_appname}.in" > "${pkgdir}/usr/bin/${_appname}"
+	chmod +x "${pkgdir}/usr/bin/${_appname}"
+
+	install -d -m 755 "$pkgdir/opt/ygo-omega/"
+	cp -a --no-preserve='ownership' * "$pkgdir/opt/ygo-omega/"
+}
+

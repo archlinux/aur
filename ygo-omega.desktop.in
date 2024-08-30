@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=YGO Omega
+Exec=ygo-omega %u
+Icon=/opt/ygo-omega/YGO Omega_Data/Resources/UnityPlayer.png
+Terminal=false
+Categories=Game;CardGame;
+StartupWMClass=YGOOmega
+Comment=The Ultimate Yu-Gi-Oh! Simulator

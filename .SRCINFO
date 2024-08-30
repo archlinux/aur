@@ -1,0 +1,19 @@
+pkgbase = ygo-omega
+	pkgdesc = The Ultimate Yu-Gi-Oh! Simulator.
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/duelists-unite
+	install = ygo-omega.install
+	arch = x86_64
+	license = AGPL3
+	provides = ygo-omega
+	conflicts = ygo-omega
+	options = emptydirs
+	source = linux-x64.zip::https://github.com/duelists-unite/omega-releases/releases/latest/download/linux-x64.zip
+	source = ygo-omega.desktop.in
+	source = ygo-omega.in
+	sha256sums = 9fe0457e3202fc079c555adc5a8083a5f0b88a33f3051f202544d4264ba69536
+	sha256sums = d159c3910d3b68675a4a098c3384e376e1a02e593e94289a686cb183690cdc87
+	sha256sums = ad7d825c3e50fec121ff7594ea7cf5c15fd49dedc9de7c5d5fdb6d22096693e5
+
+pkgname = ygo-omega
