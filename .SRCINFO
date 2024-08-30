@@ -1,6 +1,6 @@
 pkgbase = r-biocmanager
 	pkgdesc = A convenient tool to install and update Bioconductor packages.
-	pkgver = 1.30.24
+	pkgver = 1.30.25
 	pkgrel = 1
 	url = https://CRAN.R-project.org/package=BiocManager
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = r-biocmanager
 	optdepends = r-remotes
 	optdepends = r-rmarkdown
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/BiocManager_1.30.24.tar.gz
-	b2sums = 9813f4bf8e354343f792d162b4d10cd4e89c80016eac2ba729de785683ba577b87da3a212111b809d2244be167048788dacaf3882cc81bce8ee548b17ece83eb
+	source = https://cran.r-project.org/src/contrib/BiocManager_1.30.25.tar.gz
+	b2sums = 7b052b2ec2b31424982c39da6bace866f07296a53c3a42f7e89e899d107ccfe1618df0e9cc5edc875493e0ce19343c586e2f5c548eb068d6f318c9ea3f4488a2
 
 pkgname = r-biocmanager
