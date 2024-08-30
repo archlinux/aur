@@ -2,7 +2,7 @@
 pkgname=popcorn-fx-bin
 _pkgname=popcorn-time
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform torrent streaming client that includes an integrated media player with support for embedded devices such as the Raspberry PI."
 arch=("x86_64")
 url="https://github.com/yoep/popcorn-fx"
@@ -14,13 +14,14 @@ depends=(
     'openssl'
     'libxtst'
     'libxrender'
+    'dbus'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('06c3c895ac5c4e914a0e4a74c8f631e38edd45100aee39bdd660a70ce8c4defc'
-            '7d44bc96e87326b5ec5cb07e9fffe9494d155ab63aa1a24e79266177c89f250f')
+            'af5fdb44fbb692da78a402bfa7bdf6ff45d853082b5ef461e9c9524365310abe')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
@@ -31,8 +32,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}/"
-    cp -r "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/opt/${pkgname%-bin}/"
-    install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    cp -r "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
