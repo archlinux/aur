@@ -6,14 +6,14 @@ _pkgname=ConsoleKit2
 
 pkgname=consolekit
 pkgver=1.2.6
-pkgrel=4
+pkgrel=5
 pkgdesc="A framework for defining and tracking users, login sessions, and seats"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/ConsoleKit2/ConsoleKit2"
 license=('GPL')
 provides=('elogind')
 depends=('dbus' 'glib2' 'libx11' 'polkit-consolekit' 'udev' 'zlib' 'python3')
-makedepends=('acl' 'xmlto' 'docbook-xsl')
+makedepends=('acl' 'xmlto' 'docbook-xsl' 'python-setuptools' 'glib2-devel')
 options=('libtool')
 install=consolekit.install
 source=("$url/archive/refs/tags/$pkgver.tar.gz"
