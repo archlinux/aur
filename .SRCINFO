@@ -1,6 +1,6 @@
 pkgbase = mawk
 	pkgdesc = An interpreter for the AWK Programming Language
-	pkgver = 1.3.4_20240819
+	pkgver = 1.3.4_20240827
 	pkgrel = 1
 	url = http://invisible-island.net/mawk/
 	changelog = changelog.txt
@@ -8,7 +8,7 @@ pkgbase = mawk
 	arch = x86_64
 	license = GPL
 	depends = glibc
-	source = https://invisible-island.net/archives/mawk/mawk-1.3.4-20240819.tgz
-	b2sums = cc80703428d50d3eb1ba681aedadc3c0136ecbf73505a2982b5be5a34d3dd49e52b70c05af0a30819ede8f5a6edb01d48df58f1b2554c9c17f116258ad45ffad
+	source = https://invisible-island.net/archives/mawk/mawk-1.3.4-20240827.tgz
+	b2sums = 3844a0240e55b5287397763634ed16fb292919a60228fbb9e7d73e347b9ddef7a206d4207f45d1042fad87d5af62c2bb339dfa5bafc788c2aa854034fccc47f6
 
 pkgname = mawk

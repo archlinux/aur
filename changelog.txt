@@ -1,4 +1,18 @@
--- $MawkId: CHANGES,v 1.382 2024/08/19 08:12:22 tom Exp $
+-- $MawkId: CHANGES,v 1.391 2024/08/27 23:54:59 tom Exp $
+
+20240827
+	+ amend fix for Original Mawk #48, providing for deep function
+	  recursion, but disallowing more than 255 parameters for printf, etc.
+	+ add test-cases to test/mawkerrs
+	+ update config.guess and config.sub
+
+20240825
+	+ modify struct declarations to simplify further changes to reduce use
+	  of typeless pointers.
+	+ reduce memory requirements for test/longlines.sh (discussion with
+	  Boyuan Yang).
+	+ fix compiler warning about out-of-bounds reference to eval_stack[]
+	+ fix regression in ".*$" regex (Debian #1079389).
 
 20240819
 	+ several changes to improve results with lcov, increasing coverage
