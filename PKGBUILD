@@ -3,7 +3,7 @@
 # Contributor: Sergey Kostyaev <feo.me@ya.ru>
 
 pkgname=freelib-git
-pkgver=6.1.0.r0.g185afe6
+pkgver=6.1.0.r20.g9bcfdb6
 pkgrel=1
 pkgdesc="Freelib is book library manager"
 arch=(x86_64)
@@ -14,7 +14,7 @@ optdepends=('kindlegen: convert to MOBI, AZW3'
             'djvulibre: djvu covers')
 makedepends=(git cmake)
 provides=(freelib)
-conflicts=(freelib)
+conflicts=(freelib freelib-dev-git)
 source=("git+https://github.com/petrovvlad/freeLib.git"
         "freelib-SmtpClient-for-Qt::git+https://github.com/petrovvlad/SmtpClient-for-Qt.git")
 sha256sums=('SKIP'
