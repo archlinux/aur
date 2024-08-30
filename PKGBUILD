@@ -1,4 +1,4 @@
-pkgname='colcon-mixin'
+pkgname='python3-colcon-mixin'
 pkgver='0.2.3'
 pkgrel=1
 arch=('any')
