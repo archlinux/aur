@@ -3,7 +3,7 @@
 pkgname=cosmonium-bin
 _pkgname=Cosmonium
 pkgver=0.3.0.dev876
-pkgrel=1
+pkgrel=2
 pkgdesc="3D astronomy and space exploration program."
 arch=("x86_64")
 url='https://github.com/cosmonium/cosmonium'
@@ -29,16 +29,17 @@ source=(
 	"${pkgname%-bin}.sh"
 )
 sha256sums=('e0b6ed545a381171d97492ee113aebcc375bef44303915d2c3026e740cfcf4d6'
-            '6a94dd1542c9f172f61db12717e70d89895d1b81665a4201bbf3456823d38b06')
+            '3fa20f85c87576bc9daa1db5d163def5aa239d040b7e308d747cc46bdd1b1713')
 build() {
 	sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-	gendesk -q -f -n --categories="Science" --name="${_pkgname}" --exec="${pkgname%-bin}"
+	gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Science" --name="${_pkgname}" --exec="${pkgname%-bin}"
 }
 package() {
-	install -Dm755 -d "${pkgdir}/opt"
-	cp -r "${srcdir}/${pkgname%-bin}" "${pkgdir}/opt"
+	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+	install -Dm755 -d "${pkgdir}/usr/lib"
+	cp -r "${srcdir}/${pkgname%-bin}" "${pkgdir}/usr/lib"
 	install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 	for _icons in 16 32 48 64 128 256 512;do
 		install -Dm644 "${srcdir}/${pkgname%-bin}/textures/${pkgname%-bin}-${_icons}.png" \
