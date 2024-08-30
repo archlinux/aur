@@ -1,19 +1,19 @@
 pkgbase = scm-engine-bin
 	pkgdesc = Makes working with .env files easy
-	pkgver = 0.14.5
+	pkgver = 0.14.6
 	pkgrel = 1
 	url = https://github.com/jippi/scm-engine
 	license = MIT
 	conflicts = scm-engine
 	provides = scm-engine
 	arch = aarch64
-	source_aarch64 = https://github.com/jippi/scm-engine/releases/download/v0.14.5/scm-engine_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 57596eac1dfca4b36b67a5597cdd5fd05a403f87b274a6322a2d68665b0059fe
+	source_aarch64 = https://github.com/jippi/scm-engine/releases/download/v0.14.6/scm-engine_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 41ad552f0a6042919aa62ed1d4a5979c909cd01c8f23835788a2c9224424f31d
 	arch = armv7h
-	source_armv7h = https://github.com/jippi/scm-engine/releases/download/v0.14.5/scm-engine_Linux_armv7.tar.gz
-	sha256sums_armv7h = 7b0f7019d44d673aae59255a9ee7a04478dc68c683becd974c627b0dfe8ea1df
+	source_armv7h = https://github.com/jippi/scm-engine/releases/download/v0.14.6/scm-engine_Linux_armv7.tar.gz
+	sha256sums_armv7h = 87bdff0371fd8ca685f77ced22b3c3cd32d8b01af32df42f0461658fce967910
 	arch = x86_64
-	source_x86_64 = https://github.com/jippi/scm-engine/releases/download/v0.14.5/scm-engine_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 166417b78dd06cc2133fb625293a8c72ff08b6cb36242d53b01177392e15022a
+	source_x86_64 = https://github.com/jippi/scm-engine/releases/download/v0.14.6/scm-engine_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = ca8d16df50eb7302dd8842b1b8ae09455c1fe78e6dcb39bdd62c884355f0163a
 	
 pkgname = scm-engine-bin
