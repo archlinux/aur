@@ -4,14 +4,14 @@
 
 _pkgname=squeekboard
 pkgname=squeekboard-git
-pkgver=1.38.0.r17.g74c099d
+pkgver=1.41.0.r8.gbb315d6
 pkgrel=1
 pkgdesc='Virtual keyboard supporting Wayland, built primarily for the Librem 5 phone'
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 url='https://gitlab.gnome.org/World/Phosh/squeekboard'
-license=(GPL3)
+license=(GPL-3-only)
 depends=(feedbackd gnome-desktop python)
-makedepends=(git meson libbsd intltool rust gtk-doc wayland-protocols python-packaging)
+makedepends=(git meson glib2-devel libbsd intltool rust gtk-doc wayland-protocols python-packaging)
 provides=(squeekboard)
 conflicts=(squeekboard)
 source=("git+https://gitlab.gnome.org/World/Phosh/squeekboard.git")
