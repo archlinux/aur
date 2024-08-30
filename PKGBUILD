@@ -1,6 +1,6 @@
 # Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
 
-_opt_bits=32 # 32 or 64
+_opt_bits=64 # 32 or 64
 
 #djgpp for 32 bit:
 #djgpp-djcrx-bootstrap
@@ -21,7 +21,7 @@ pkgname='comcom32'
 _pkgver='alpha-3'
 _opt_commit='#commit=4e5190ce8d846abee6ffd79ee61dc77cd8509ba1' # only applies to non git
 # pkgver="0.0.${_pkgver//-/_}" # copy this line and add commit
-pkgver=0.0.alpha.3.r339.g4e5190c # copy this line and add commit
+pkgver=0.0.alpha.3.r343.g248d344 # copy this line and add commit
 pkgrel=1
 pkgdesc="${_opt_bits} bit command interpreter for fdpp and dosemu2"
 arch=('any')
