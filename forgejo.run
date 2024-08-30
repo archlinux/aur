@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd /var/lib/forgejo
+
+HOME=/var/lib/forgejo exec chpst -u forgejo forgejo

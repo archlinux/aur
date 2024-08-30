@@ -1,0 +1,13 @@
+pkgbase = forgejo-runit
+	pkgdesc = Runit service script for forgejo
+	pkgver = 20240830
+	pkgrel = 1
+	url = https://forgejo.org
+	arch = any
+	license = MIT
+	depends = forgejo
+	depends = runit
+	source = forgejo.run
+	sha256sums = c237f8d9a84ce0e6f23caf2fbedb20e4c5af63578995079953b5d81edc33330b
+
+pkgname = forgejo-runit
