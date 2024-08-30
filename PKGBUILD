@@ -1,27 +1,23 @@
 # Maintainer: Michael Yeatts <mwyeatts at gmail dot com>
 
 pkgname=python-mnemonic
-pkgver=0.20
-pkgrel=2
+pkgver=0.21
+pkgrel=1
 pkgdesc="Implementation of Bitcoin BIP-0039"
 arch=('any')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-poetry')
 url="https://github.com/trezor/python-mnemonic"
 license=('MIT')
-source=("https://files.pythonhosted.org/packages/f8/8d/d4dc2b2bddfeb57cab4404a41749b577f578f71140ab754da9afa8f5c599/mnemonic-0.20.tar.gz")
-sha256sums=('7c6fb5639d779388027a77944680aee4870f0fcd09b1e42a5525ee2ce4c625f6')
+source=("https://files.pythonhosted.org/packages/ff/77/e6232ed59fbd7b90208bb8d4f89ed5aabcf30a524bc2fb8f0dafbe8e7df9/mnemonic-0.21.tar.gz")
+sha256sums=('1fe496356820984f45559b1540c80ff10de448368929b9c60a2b55744cc88acf')
 
 build() {
-    cd "$srcdir/${pkgname#python-}-$pkgver"
-
-    msg2 'Building...'
-    python setup.py build
+    cd "${pkgname#python-}-$pkgver"
+    poetry build
 }
 
 package() {
-    cd "$srcdir/${pkgname#python-}-$pkgver"
-
-    msg2 'Installing...'
-    python setup.py install --root="$pkgdir" --optimize=1
+    cd "${pkgname#python-}-$pkgver"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
