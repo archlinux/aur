@@ -1,12 +1,13 @@
-# Maintainer: Sashanoraa <sasha@noraa.gay>
+# Maintainer: Daringcuteseal <daringcuteseal at gmail dot com>
+# Contributor: Sashanoraa <sasha@noraa.gay>
 # Contributor: Felix Yan <felixonmars@archlinux.org
 # Contributor: Maxim Baz <$pkgname at maximbaz dot com>
 # Contributor: Pablo Arias <pabloariasal@gmail.com>
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=nnn-icons
-pkgver=4.9
-pkgrel=2
+pkgver=5.0
+pkgrel=1
 pkgdesc="The fastest terminal file manager ever written. (with icon support)"
 arch=('x86_64')
 depends=('icons-in-terminal' 'hicolor-icon-theme')
@@ -26,7 +27,7 @@ license=('BSD')
 provides=(nnn)
 conflicts=(nnn)
 source=("nnn-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('9e25465a856d3ba626d6163046669c0d4010d520f2fb848b0d611e1ec6af1b22')
+sha256sums=('31e8fd85f3dd7ab2bf0525c3c0926269a1e6d35a5343a6714315642370d8605a')
 
 prepare() {
     sed -i 's/install: all/install:/' "nnn-${pkgver}/Makefile"
