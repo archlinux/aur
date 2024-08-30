@@ -1,12 +1,13 @@
 pkgbase = winbox
 	pkgdesc = Mikrotik RouterOS GUI Configurator (wine)
 	pkgver = 3.41
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mikrotik.com/download
 	install = winbox.install
 	arch = x86_64
 	license = custom
 	depends = wine
+	depends = xdg-utils
 	optdepends = ttf-ms-fonts: for better fonts
 	source = winbox-3.41.exe::https://download.mikrotik.com/routeros/winbox/3.41/winbox64.exe
 	source = winbox.desktop
