@@ -4,7 +4,7 @@
 
 _pkgname=gsa
 pkgname=greenbone-security-assistant
-pkgver=23.2.1
+pkgver=23.3.0
 pkgrel=2
 pkgdesc='Greenbone Security Assistant (gsa) - OpenVAS web frontend'
 url="https://github.com/greenbone/gsa"
@@ -19,7 +19,7 @@ groups=('greenbone-vulnerability-manager')
 noextract=("${_pkgname}-${pkgver}.tar.gz")
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/greenbone/gsa/archive/v${pkgver}.tar.gz"
         "https://github.com/greenbone/gsa/releases/download/v${pkgver}/gsa-${pkgver}.tar.gz.asc")
-sha512sums=('3f21abff885f42048d563740378366c1272dfc8b1e0f6b5cfd74447fa776deae58e96ca50fe1de4e42ab0f8f57d7c9f97cbbbdcff4bf2f24a2ffb0aa24742a20'
+sha512sums=('d9eaa282ba4babf3f42939f4918b5726fa539e4c4fe64e89ae77cf1887b2f10d5a97f085b168264e7b23c468f194e0c58c565ee86458812065947a4d96c43788'
             'SKIP')
 validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # GVM Transfer Integrity
 
