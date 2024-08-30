@@ -13,12 +13,12 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=24.3.0_devel.192698.0acc31a0013
-pkgrel=1
+pkgver=24.3.0_devel.194282.3f6b5ea27a2
+pkgrel=2
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
-                            wayland-protocols glslang-minimal-git llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git
-                            rust rust-bindgen spirv-tools-git spirv-llvm-translator-minimal-git libvdpau systemd-libs clang-opencl-headers-minimal-git
+                            wayland-protocols glslang llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git
+                            rust rust-bindgen spirv-tools spirv-llvm-translator-minimal-git libvdpau systemd-libs clang-opencl-headers-minimal-git
                             python-ply libunwind libxdamage vulkan-icd-loader xcb-util-keysyms python-pyaml)
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
@@ -29,18 +29,25 @@ url="https://www.mesa3d.org"
 license=('custom')
 source=("mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git"
                 LICENSE
+                llvm20-change-in-GetResourcesPath.patch #adjustment needed because of https://github.com/llvm/llvm-project/commit/924a7d83b4287b3b85dd1ca29d2d3e1f0a10ea68
 )
 
 md5sums=('SKIP'
-         '5c65a0fe315dd347e09b1f2826a1df5a')
+         '5c65a0fe315dd347e09b1f2826a1df5a'
+         '56d38c1a761737627c9faaaa063dd616')
 sha512sums=('SKIP'
-            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
+            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
+            'e368e876955000273372c782e593501a865d40d1acf952d94e8b8e5ff8d3cc68c29d9cb190f20f4adbc4a9bb95e9dd77047d8d90f0aabcae565a70e49dac3bcf')
 options=(!emptydirs !lto !debug)
 
 # ninja grabs all available cores and leaves almost nothing for other processes.
 # this package uses the environment variable NINJAFLAGS to allow the user to change this behaviour
 # The responsibility to validate the value of NINJAFLAGS lies with the user.
 # If unsure, use NINJAFLAGS=""
+
+prepare() {
+    patch --directory mesa --strip=1 --forward --input="$srcdir"/llvm20-change-in-GetResourcesPath.patch
+}
 
 pkgver() {
     cd mesa
@@ -63,7 +70,6 @@ build() {
        -D platforms=x11,wayland \
        -D gallium-drivers=radeonsi,llvmpipe,zink,virgl,iris \
        -D vulkan-drivers=amd,swrast,intel \
-       -D legacy-x11=dri2 \
        -D dri3=enabled \
        -D egl=enabled \
        -D gallium-extra-hud=true \
@@ -127,7 +133,7 @@ package_opencl-rusticl-mesa-minimal-git() {
     pkgdesc="OpenCL support in rust for mesa drivers (git version)"
     conflicts=(opencl-clover-mesa opencl-rusticl-mesa)
     provides=(opencl-rusticl-mesa opencl-driver)
-    depends=(libdrm spirv-llvm-translator-minimal-git libclc-minimal-git spirv-tools-git
+    depends=(libdrm spirv-llvm-translator-minimal-git libclc-minimal-git spirv-tools
                     mesa-minimal-git=$pkgver-$pkgrel llvm-libs-minimal-git clang-libs-minimal-git
                     expat libelf zstd lm_sensors zlib gcc-libs glibc clang-opencl-headers-minimal-git
     )

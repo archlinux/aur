@@ -1,0 +1,12 @@
+diff --unified --text --recursive mesa/src/compiler/clc/clc_helpers.cpp mesa.new/src/compiler/clc/clc_helpers.cpp
+--- mesa/src/compiler/clc/clc_helpers.cpp	2024-08-31 00:22:17.993198912 +0200
++++ mesa.new/src/compiler/clc/clc_helpers.cpp	2024-08-31 00:27:47.475802414 +0200
+@@ -889,7 +889,7 @@
+    // GetResourcePath is a way to retrive the actual libclang resource dir based on a given binary
+    // or library.
+    auto clang_res_path =
+-      fs::path(Driver::GetResourcesPath(std::string(clang_path), CLANG_RESOURCE_DIR)) / "include";
++      fs::path(Driver::GetResourcesPath(std::string(clang_path))) / "include";
+    free(clang_path);
+ 
+    c->getHeaderSearchOpts().UseBuiltinIncludes = true;
