@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.10.6.arch1
+pkgver=6.10.7.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -32,9 +32,6 @@ source=(
   config         # the main kernel config file
 #  modprobed.db
 
-  # Experimental patch for AMDGPU issues - mesa 21.1.5-2 should make this one unnecessary
-  #9999-possible_amdgpu_fix.patch
-  
   "choose-gcc-optimization.sh"
 
   "sys-kernel_arch-sources-g14-6.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-6.8-rc4%2B.patch"
@@ -54,7 +51,7 @@ source=(
   0027-mt76_-mt7921_-Disable-powersave-features-by-default.patch
   
   0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
-  0035-Add_quirk_for_polling_the_KBD_port.patch
+#  0035-Add_quirk_for_polling_the_KBD_port.patch
   
   0001-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0002-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
@@ -76,11 +73,11 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('e0d50d5b74f8599375660e79f187af7493864dba5ff6671b14983376a070b3d1'
+sha256sums=('900d567ff01824708ce24c3b37faaef03e6f6145411dd447a6ff2edc8c5db3a9'
             'SKIP'
-            '744bb671da084dd2c45652340d672379c8e29ce50c4d460d4f3bd589a2ac72a7'
+            '7d5dd316ef5b87b9159872452c76dfa0ca31486f96a722133beec9e22dd7e65c'
             'SKIP'
-            '191ef33bcf70e182c1217be3d1c0449bd24109d29ea027764fefe9c5056ab9fd'
+            'b9561e722d44c9f2a53865a02afacd861a7e646c2c8b927e0ee0139eec8e8db6'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'f4e7fcd011f2691840d2c8c2361dca850a78ea33cc5c24d2e27c3e0294fd1dc5'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
@@ -95,13 +92,12 @@ sha256sums=('e0d50d5b74f8599375660e79f187af7493864dba5ff6671b14983376a070b3d1'
             'bf4a555719354bdcc8b0f3665f58b6915494924488b48736cc04d0a11b0fa96c'
             'ed242f4be3f8eaade2a1d42157c5c6c86281917a08ae43221b088fafdc775ee7'
             'a8e1e11a4ab1995cc4975c9b134a43ddfe7054ef0c965e52a7d8f9223e15c3e0'
-            '315d1839630b37894a626bbc2aea012618b2e1ccb6f9d8aa27c0a3ce5e90e99c'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
             'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
             'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04'
-            '33798db2cfb51240d1c18b110f03e5a2bbe8623074da5d9bfa987a8400d5ec07'
+            '40b2a00c2f6e0f99c7709198efe67eb92600bdee7768eb70eca96692b747a6fa'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
             '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85')
 
