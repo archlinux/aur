@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Simple interface to Artifactory, Bintray and Mission Control"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/jfrog/jfrog-cli"
-license=(Apache)
+license=("Apache-2.0")
 conflicts=(jfrog-cli)
 provides=(jfrog-cli)
 
