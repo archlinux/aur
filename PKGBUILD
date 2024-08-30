@@ -3,7 +3,7 @@ pkgname=lepton-bin
 _pkgname=Lepton
 pkgver=1.10.0
 _electronversion=13
-pkgrel=3
+pkgrel=4
 pkgdesc="A lean code snippet manager"
 arch=('x86_64')
 url="https://hackjutsu.com/Lepton"
@@ -12,7 +12,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    "electron${_electronversion}-bin"
+    "electron${_electronversion}"
 )
 makedepends=(
     'fuse2'
@@ -24,11 +24,12 @@ source=(
 )
 sha256sums=('ace652c720110c09fe46c9f37dffe9f2e476f6d072e0c7a23fa5d9ebbf085a1e'
             'bbee9578431a6a08cd42a86b84e8b4c65ba132357fd6615996445bdc4a534224'
-            'dc0c5ca385ad81a08315a91655c7c064b5bf110eada55e61265633ae198b39f8')
+            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@||g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
