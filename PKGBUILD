@@ -2,12 +2,12 @@
 pkgname=serial-studio-bin
 _pkgname=SerialStudio
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=('x86_64')
 url="https://serial-studio.github.io/"
 _ghurl="https://github.com/Serial-Studio/Serial-Studio"
-license=('custom')
+license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -29,7 +29,7 @@ source=(
 )
 sha256sums=('b6291c283caa460ce7ef50a5b127665455be19a101353c57b5a01643f85708d3'
             '2bd1d916e395ee261da269285a9cb803e6f594b0cb97b50e01b43e0911004d17'
-            '9b0fc0eb27805a22012ca316cc9d2b04168067b89802a2818ff5f5fd241159e4')
+            'd9e86db13e3b69cde31e0458132bf50532c45ab12f03935f2fe9abc257f228ed')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
@@ -39,8 +39,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/usr/"{bin,lib,plugins,qml,translations} "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/squashfs-root/usr/"{bin,lib,plugins,qml,translations} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
