@@ -1,7 +1,7 @@
 pkgbase = boxed-cpp
 	pkgdesc = Small header-only library for easing primitive type boxing in C++
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/contour-terminal/boxed-cpp
 	arch = any
 	license = Apache-2.0
