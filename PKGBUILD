@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xunscore-bin
 _pkgname=Xunscore
-pkgver=1.3.13.02
-pkgrel=5
+pkgver=1.3.13.03
+pkgrel=1
 pkgdesc='A music notation software, let you easily create and share sheet music. The editor is called "xūn", is hoping it will be a better balance between the Chinese national music'
 arch=('x86_64')
-url="https://www.xunscore.cn/"
+url="https://www.xunscore.cn"
 _giteeurl="https://gitee.com/xunscore/xunapp"
 license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
@@ -32,28 +32,26 @@ makedepends=(
 )
 noextract=("${pkgname%-bin}-${pkgver}.zip")
 source=(
-    "${pkgname%-bin}-${pkgver}.zip::${_giteeurl}/releases/download/${pkgver%.02}/${pkgname%-bin}-ubt-${pkgver}.zip"
-    "LICENSE-${pkgver}::${_giteeurl}/blob/${pkgver}/README.md"
-    "${pkgname%-bin}-${pkgver}.png::https://foruda.gitee.com/avatar/1677181395504012245/9611953_xunscore_1629422881.png"
+    "${pkgname%-bin}-${pkgver}.zip::${url}/${pkgname%-bin}-ubt-${pkgver}.zip"
+    "LICENSE::${_giteeurl}/blob/master/README.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('53027cd57be24ed6b41c870830a3a10b5a8558c0064f3f20caff5fc03d5b2d2d'
-            '58218adbfdf61f32c1648f4d587df6a871f8102f6e3964805acac2048b719365'
-            '025373ba75679076a9a681b69057b632b17195cc9c3ece1192104efabbcae324'
-            '6861d547ea70d70e42432abfacf3e5003683532271322e0a6e2985521bec9e3c')
+sha256sums=('54adaace209ec36dcdf739a6e5710c002df47c3bab180aa2025721c72d2c1803'
+            '0ad40f17100d4b295b26f82a558eec8cb1e8b7ff64cb55806fd671d8ef190ec1'
+            '956aa0a14e61e4903d7a2c4f71c9b9cb6ed4e45d6527671fb4e6e4409c95fc60')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${pkgname%-bin}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
-    install -Dm755 -d "${srcdir}/opt"
-    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/opt"
-    chmod 644 "${srcdir}/opt/${pkgname%-bin}/soundfonts/metronome.sf2"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    install -Dm755 -d "${srcdir}/usr/lib"
+    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/usr/lib"
+    chmod 644 "${srcdir}/usr/lib/${pkgname%-bin}/soundfonts/metronome.sf2"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -r "${srcdir}/opt" "${pkgdir}"
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cp -r "${srcdir}/usr" "${pkgdir}"
+    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    #install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }
