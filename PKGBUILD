@@ -4,7 +4,7 @@ _name="pybertini"
 pkgname="${_name}-docs"
 pkgver=1.0.alpha5
 _commit="436c6ec507594b13edf67212256f90d2b83fa121"
-pkgrel=1
+pkgrel=2
 pkgdesc="HTML documentation for Pybertini"
 arch=('any')
 url="https://github.com/bertiniteam/b2"
@@ -32,8 +32,8 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}/python"
-  find "examples" -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/${name}/{}" \;
+  find "examples" -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/${_name}/{}" \;
   
   cd "docs/build"
-  find "html" -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/${name}/{}" \;
+  find "html" -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/${_name}/{}" \;
 }
