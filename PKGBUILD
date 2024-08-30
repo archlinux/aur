@@ -3,7 +3,7 @@
 _name="chafapy"
 pkgname="python-${_name}"
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Python bindings for Chafa. Visualize images with text in Python."
 arch=('any')
 url="https://github.com/guardkenzie/chafa.py"
@@ -44,8 +44,8 @@ package () {
 
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "${pkgdir}${site_packages}/chafa.py-${pkgver}.dist-info/licenses/COPYING" \
+  ln -s "${site_packages}/chafa.py-${pkgver}.dist-info/licenses/COPYING" \
     "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-  ln -s "${pkgdir}${site_packages}/chafa.py-${pkgver}.dist-info/licenses/COPYING.LESSER" \
+  ln -s "${site_packages}/chafa.py-${pkgver}.dist-info/licenses/COPYING.LESSER" \
     "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.LESSER"
 }
