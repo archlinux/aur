@@ -8,7 +8,6 @@ pkgbase = extism
 	makedepends = cargo
 	makedepends = gcc
 	makedepends = make
-	makedepends = nasm
 	depends = glibc
 	depends = gcc-libs
 	source = extism-1.5.0.tar.gz::https://github.com/extism/extism/archive/refs/tags/v1.5.0.tar.gz
