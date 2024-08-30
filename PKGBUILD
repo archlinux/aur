@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=clash-nyanpasu
 _pkgname=clash-nyanpasu
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A Clash GUI based on tauri."
 arch=('any')
@@ -45,6 +45,8 @@ function prepare(){
 	pnpm check
 	cd "${srcdir}/clash-nyanpasu/backend/tauri"
 	cargo update
+	cd "${srcdir}/clash-nyanpasu"
+	pnpm -r build
 }
 
 function build(){
