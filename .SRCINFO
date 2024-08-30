@@ -1,0 +1,26 @@
+pkgbase = python-exhale-git
+	pkgdesc = A sphinx extension which integrates breathe to enable parsing of doxygen documentation
+	pkgver = 0.3.8.dev.r0.c995925
+	pkgrel = 1
+	url = https://github.com/svenevs/exhale
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools>=42
+	depends = python>=3.8
+	depends = python-breathe>=4.33.1
+	depends = python-sphinx>=4.3.2
+	depends = python-beautifulsoup4
+	depends = python-lxml
+	depends = python-six
+	depends = python-pygments
+	optdepends = python-exhale-docs: HTML documentation
+	provides = python-exhale=0.3.8.dev
+	conflicts = python-exhale
+	source = exhale::git+https://github.com/svenevs/exhale.git
+	sha256sums = SKIP
+
+pkgname = python-exhale-git
