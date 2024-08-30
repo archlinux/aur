@@ -5,7 +5,7 @@
 
 pkgname=pan-git
 _gitname=pan
-pkgver=v0.155.r5.g5c2da7a
+pkgver=v0.160.r13.g7830f38
 pkgrel=1
 epoch=1
 pkgdesc="Pan is a Usenet newsreader that's good at both text and binaries. Development version."
@@ -13,7 +13,7 @@ url="http://pan.rebelbase.com/"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gmime3' 'gtkspell3')
-makedepends=('git' 'intltool')
+makedepends=('git' 'intltool' 'cmake')
 conflicts=('pan')
 provides=('pan')
 source=("git+https://gitlab.gnome.org/GNOME/$_gitname.git")
@@ -27,17 +27,12 @@ pkgver() {
 build() {
     cd "$srcdir/$_gitname"
 
-    ./autogen.sh \
-        --prefix=/usr \
-        --disable-dependency-tracking \
-        --with-gmime-crypto \
-        --with-gnutls \
-        --with-gtkspell \
-        --with-gtk3
-    make
+    mkdir build
+    cmake -B build
+    cmake --build build
 }
 
 package() {
     cd "$srcdir/$_gitname"
-    make DESTDIR="$pkgdir" install
+    cmake --install build $DESTDIR --prefix "$pkgdir/usr"
 }
