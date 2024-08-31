@@ -3,7 +3,7 @@
 pkgname=python-pyfmodex
 _pyname=pyfmodex
 pkgver=0.7.2
-pkgrel=5
+pkgrel=1
 pkgdesc="Python bindings for the FMOD Ex sound library"
 arch=('x86_64')
 url="https://github.com/tyrylu/pyfmodex"
