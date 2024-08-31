@@ -1,0 +1,26 @@
+post_install() {
+  cat <<EOF
+
+This package ships three systemd units, which you can use depending on the
+function this system will serve:
+
+1. To run a signaling server, update configuration in /etc/weron/signal and
+start the daemon. If you will be using it from other machines, don't forget to
+set a strong API_PASSWORD, or leave it empty to disable remote management.
+
+	# systemctl enable --now weron-signaler
+
+2. To connect to an Ethernet (layer 2) network, create a new configuration file
+by copying /etc/weron/examples/ethernet into something like /etc/weron/office,
+update that file with appropriate configuration, and start the client:
+
+	# systemctl enable --now weron-ethernet@office
+
+3. To create an IP (layer 3) network, repeat the previous step, replacing
+'ethernet' with 'ip'. Use /etc/weron/examples/ip as reference, and then:
+
+	# systemctl enable --now weron-ip@home
+
+EOF
+}
+

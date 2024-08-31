@@ -1,7 +1,3 @@
-*
-!/PKGBUILD
-!/.SRCINFO
-!/.gitignore
-!/weron-signaler.default
-!/weron-signaler.service
-
+/*.tar.*
+/pkg/
+/src/

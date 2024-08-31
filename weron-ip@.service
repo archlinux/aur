@@ -1,0 +1,15 @@
+# vim: ft=systemd
+
+[Unit]
+Description=weron IP (layer 3) client
+Documentation=file:///usr/share/doc/weron/README.md
+
+[Service]
+ExecStart=/usr/bin/weron vpn ip
+EnvironmentFile=/etc/weron/%i
+User=weron
+DynamicUser=yes
+AmbientCapabilities=CAP_NET_ADMIN
+
+[Install]
+WantedBy=multi-user.target

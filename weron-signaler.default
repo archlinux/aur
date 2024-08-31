@@ -1,4 +1,0 @@
-DATABASE_URL=postgres://postgres@localhost:5432/weron_communities?sslmode=disable
-REDIS_URL=redis://localhost:6379/1
-API_PASSWORD=
-

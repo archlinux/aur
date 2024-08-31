@@ -2,11 +2,12 @@
 
 [Unit]
 Description=weron signaling server
+Documentation=file:///usr/share/doc/weron/README.md
 After=postgresql.service redis.service
 
 [Service]
-ExecStart=/usr/bin/weron signaler --verbose=7
-EnvironmentFile=/etc/default/weron-signaler
+ExecStart=/usr/bin/weron signaler
+EnvironmentFile=/etc/weron/signaler
 User=weron
 DynamicUser=yes
 

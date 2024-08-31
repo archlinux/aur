@@ -1,0 +1,15 @@
+# vim: ft=systemd
+
+[Unit]
+Description=weron Ethernet (layer 2) client
+Documentation=file:///usr/share/doc/weron/README.md
+
+[Service]
+ExecStart=/usr/bin/weron vpn ethernet
+EnvironmentFile=/etc/weron/%i
+User=weron
+DynamicUser=yes
+AmbientCapabilities=CAP_NET_ADMIN
+
+[Install]
+WantedBy=multi-user.target
