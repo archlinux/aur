@@ -1,0 +1,13 @@
+diff --git a/xhistogram/core.py b/xhistogram/core.py
+index 181325f..3bd08bf 100644
+--- a/xhistogram/core.py
++++ b/xhistogram/core.py
+@@ -451,7 +451,7 @@ def histogram(
+             bin_areas = np.outer(*bin_widths)
+         else:
+             # Slower, but N-dimensional logic
+-            bin_areas = np.prod(np.ix_(*bin_widths))
++            bin_areas = np.prod(np.meshgrid(*bin_widths, indexing='ij'), axis=0)
+ 
+         # Sum over the last n_inputs axes, which correspond to the bins. All other axes
+         # are "bystander" axes. Sums must be done independently for each bystander axes

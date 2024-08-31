@@ -1,0 +1,13 @@
+diff --git a/xhistogram/core.py b/xhistogram/core.py
+index 3bd08bf..ff71ec4 100644
+--- a/xhistogram/core.py
++++ b/xhistogram/core.py
+@@ -210,7 +210,7 @@ def _bincount(
+ 
+     def reshape_input(a):
+         if do_full_array:
+-            d = a.ravel()[None, :]
++            d = reshape(a.ravel(), (1, -1))
+         else:
+             # reshape the array to 2D
+             # axis 0: preserved axis after histogram
