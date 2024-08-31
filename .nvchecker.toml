@@ -1,0 +1,6 @@
+[riscv64-linux-gnu-gcc]
+source = "archpkg"
+archpkg = "gcc"
+strip_release = true
+from_pattern = "\\+.*"
+to_pattern = ""
