@@ -12,7 +12,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/yvs2014/$pkgname"
 license=('GPL-2.0')
 depends=('ncurses' 'libidn2' 'libcap')
-makedepends=('git' 'gcc' 'make' 'automake' 'autoconf' 'pkgconf' 'libcap')
+makedepends=('git' 'gcc' 'make' 'automake' 'autoconf' 'pkgconf')
 options=(strip !debug)
 
 conflicts=('mtr' 'mtr-gtk')
