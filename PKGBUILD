@@ -1,6 +1,6 @@
 # Maintainer: Pete Alexandrou <pete@ozmartians.com>
 pkgname=vidcutter-git
-pkgver=6.0.5.2
+pkgver=6.0.5.3
 pkgrel=1
 pkgdesc='A modern and fast media cutter and joiner'
 arch=('x86_64')
