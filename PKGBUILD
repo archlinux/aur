@@ -2,12 +2,12 @@
 
 pkgname=modoboa
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Mail hosting made simple"
 arch=(any)
 url="https://modoboa.org/"
 license=('MIT')
-makedepends=('python>=3.8' 'rrdtool' 'python-lxml' 'python-setuptools' 'zlib' 'python-wheel'
+makedepends=('python>=3.8' 'rrdtool' 'python-lxml' 'python-setuptools-scm' 'zlib' 'python-wheel'
          'python-dj-database-url' 'python-pip' 'python-requests' 'python-pycryptodome' 'python-bcrypt' 'python-asgiref'
          'python-chardet' 'python-django-reversion>=5.0' 'python-django-rest-framework>=3.13' 'python-dnspython' 'python-redis'
          'python-passlib' 'python-uritemplate' 'python-feedparser' 'python-django-jsonfield' 'python-django-rq'
