@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=1.39.46.r3.g333d55f
+pkgver=1.39.119.r0.g9e1a53e
 _electronversion=26
 _nodeversion=20
 pkgrel=1
@@ -13,7 +13,6 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
-    'python>=3'
     'java-runtime'
 )
 makedepends=(
@@ -31,7 +30,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --abbrev=7 | sed 's|\([^-]*-g\)|r\1|;s|-|.|g;s|v||g'
@@ -53,14 +52,13 @@ build() {
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="System" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
-    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export npm_config_registry=https://registry.npmmirror.com
         export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
@@ -69,9 +67,10 @@ build() {
         echo "Your network is OK."
     fi
     export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
-    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
-    NODE_ENV=production yarn run prepare-build
-    NODE_ENV=production npx electron-builder -l --dir
+    sed "/\"electron\": /d;70i\    \"electron\": \"${SYSTEM_ELECTRON_VERSION}\"," -i package.json
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production     yarn run prepare-build
+    NODE_ENV=production     npx electron-builder -l --dir
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
