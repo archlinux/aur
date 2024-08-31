@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=webs-tray-git
 _pkgname=WebsTray
-pkgver=1.0.0.r0.gc5ab380
+pkgver=1.0.2.r0.g0bdd445
 _electronversion=31
 _nodeversion=22
 pkgrel=1
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
@@ -62,8 +62,8 @@ build() {
     else
         echo "Your network is OK."
     fi
-    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-git}\"|g" -i src/main-process/helper.ts
-    sed "s|\"electron\": \"31.3.1\",|\"electron\": \"${SYSTEM_ELECTRON_VERSION}\",|g" -i package.json
+    find src -type f -exec sed -i "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-git}\"|g" {} \;
+    sed "/\"electron\": /d;45i\    \"electron\": \"${SYSTEM_ELECTRON_VERSION}\"," -i package.json
     NODE_ENV=development    npm install --package-lock=false
     NODE_ENV=production     npm run package
 }
