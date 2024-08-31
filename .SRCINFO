@@ -1,0 +1,23 @@
+pkgbase = nvm-desktop-bin
+	pkgdesc = A version management desktop client for the Nodejs.
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://github.com/1111mp/nvm-desktop
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = fuse2
+	makedepends = asar
+	depends = electron31
+	provides = nvm-desktop=3.4.0
+	conflicts = nvm-desktop
+	source = LICENSE-3.4.0::https://raw.githubusercontent.com/1111mp/nvm-desktop/3.4.0/LICENSE
+	source = nvm-desktop.sh
+	sha256sums = 569c63fcd9eccc38f8c0402b33980d4e1e64f483d5ebc5338e6e4af83ae98d9f
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	source_aarch64 = nvm-desktop-3.4.0-aarch64.AppImage::https://github.com/1111mp/nvm-desktop/releases/download/3.4.0/nvm-desktop_Setup_linux_arm64_3.4.0.AppImage
+	sha256sums_aarch64 = bd09f2613cacc71aab0e4e6da0b60c6c3c1c9a52c786bff8a64e687c24c0cd68
+	source_x86_64 = nvm-desktop-3.4.0-x86_64.AppImage::https://github.com/1111mp/nvm-desktop/releases/download/3.4.0/nvm-desktop_Setup_linux_x86_64_3.4.0.AppImage
+	sha256sums_x86_64 = 66aab6818ba326d85ff0ab13953b22eaa6b83e5dcc8ea1e17f52280f9bcee33c
+
+pkgname = nvm-desktop-bin
