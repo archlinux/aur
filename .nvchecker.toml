@@ -1,0 +1,4 @@
+[pdfcpu-bin]
+source = "git"
+git = "https://github.com/pdfcpu/pdfcpu.git"
+prefix = "v"

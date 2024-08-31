@@ -4,7 +4,7 @@
 
 _pkgname=pdfcpu
 pkgname=pdfcpu-bin
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A PDF processor written in Go."
 arch=(x86_64 aarch64 i686)
@@ -16,9 +16,9 @@ conflicts=(pdfcpu)
 source_x86_64=("pdfcpu-x86_64-${pkgver}-${pkgrel}.tar.xz::https://github.com/pdfcpu/pdfcpu/releases/download/v${pkgver}/pdfcpu_${pkgver}_Linux_x86_64.tar.xz")
 source_aarch64=("pdfcpu-aarch64-${pkgver}-${pkgrel}.tar.xz::https://github.com/pdfcpu/pdfcpu/releases/download/v${pkgver}/pdfcpu_${pkgver}_Linux_arm64.tar.xz")
 source_i686=("pdfcpu-i686-${pkgver}-${pkgrel}.tar.xz::https://github.com/pdfcpu/pdfcpu/releases/download/v${pkgver}/pdfcpu_${pkgver}_Linux_i386.tar.xz")
-sha256sums_x86_64=('6b9bd65b17e6b380d55b06b0095e8f0795340034fb919bfaf2ddf891853025ab')
-sha256sums_aarch64=('6db2e1138c1292bc6fc834112871e00b1e41ac9e710f598964a135eb2ce56479')
-sha256sums_i686=('384579fa19df75aac17aacaa76266664a08e4c0bef3de1d9440528efadcf4e8e')
+sha256sums_x86_64=('c2ea4e80fee62650082ab793bf743d8846fbf9e8c6305be7fc4249a871aaca88')
+sha256sums_aarch64=('3e64b8dfd3cd32fd3a25b2e79b18ae8a0efbbaa632440f8fdcb475a18aafb8c7')
+sha256sums_i686=('480176de05ad9c512226e26004578619d872ca9c8c7c84ee9d67ebf5dba555e0')
 
 package() {
     cd "${_pkgname}_${pkgver}_Linux_${CARCH/aarch/arm}"
