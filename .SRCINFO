@@ -1,0 +1,15 @@
+pkgbase = templedriver
+	pkgdesc = A driving game dedicated to King Terry A. Davis
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/mrbid/TempleDriver
+	arch = x86_64
+	license = Unlicense
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = sdl2
+	source = TempleDriver-f300481b04bff205ad5cbe92a1997cba2d3e59ef.tar.gz::https://github.com/mrbid/TempleDriver/archive/f300481b04bff205ad5cbe92a1997cba2d3e59ef.tar.gz
+	sha256sums = 309087c9df20b3edb03724c06a38c82de016d5b5c1fbab0a9031446dd99aa639
+
+pkgname = templedriver
