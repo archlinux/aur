@@ -1,7 +1,7 @@
 pkgbase = imagej2
 	pkgdesc = Open scientific N-dimensional image processing https://doi.org/10.1186/s12859-017-1934-z
 	pkgver = 2.15.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://imagej.net
 	arch = x86_64
 	license = BSD-2-Clause

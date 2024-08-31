@@ -8,7 +8,7 @@
 pkgname=imagej2
 pkgver=2.15.0
 # _pkgver=${pkgver//_/-}
-pkgrel=2
+pkgrel=3
 pkgdesc='Open scientific N-dimensional image processing
          https://doi.org/10.1186/s12859-017-1934-z'
 arch=('x86_64')
@@ -35,17 +35,15 @@ prepare() {
   echo 'Creating desktop file'
   gendesk -f -n --pkgname ${pkgname} \
     --pkgdesc "${pkgdesc}" \
-    --categories 'Graphics;Science;Biology;' \
+    --categories=Science \
     --icon "${pkgname}" \
     --exec "${pkgname} %f"
 
   echo 'Creating launcher file'
   cat > "${pkgname}.sh" << EOF
 #!/usr/bin/env sh
-if [ -d /usr/lib/jvm/java-8-jdk/bin ]; then
-  PATH=/usr/lib/jvm/java-8-jdk/bin:${PATH} /usr/share/${pkgname}/ImageJ-linux64
-elif [ -d /usr/lib/jvm/java-8-openjdk/bin ]; then
-  PATH=/usr/lib/jvm/java-8-openjdk/bin:${PATH} /usr/share/${pkgname}/ImageJ-linux64
+if [ -d /usr/lib/jvm/java-8-openjdk/jre/bin/ ]; then
+  PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:\${PATH} /usr/share/${pkgname}/ImageJ-linux64
 else
   echo "Error, no compatiable java found! ${pkgname} depends on java 8"
 fi
