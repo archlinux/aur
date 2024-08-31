@@ -1,0 +1,5 @@
+[python-textual-dev]
+source = "github"
+github = "Textualize/textual-dev"
+use_latest_release = "true"
+prefix = "v"
