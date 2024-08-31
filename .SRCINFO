@@ -1,6 +1,6 @@
 pkgbase = wora-git
 	pkgdesc = 🎧 A beautiful player for audiophiles.
-	pkgver = 0.3.1.r0.g2fdcdaf
+	pkgver = 0.4.0.beta0.r0.g87fbc9e
 	pkgrel = 1
 	url = https://github.com/hiaaryan/wora
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = wora-git
 	makedepends = cmake
 	makedepends = curl
 	makedepends = yarn
-	depends = electron30
-	provides = wora=0.3.1
+	depends = electron32
+	provides = wora=0.4.0.beta0
 	conflicts = wora
 	source = wora.git::git+https://github.com/hiaaryan/wora.git
 	source = wora.sh

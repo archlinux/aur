@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wora-git
 _pkgname=Wora
-pkgver=0.3.1.r0.g2fdcdaf
-_electronversion=30
-_nodeversion=20
+pkgver=0.4.0.beta0.r0.g87fbc9e
+_electronversion=32
+_nodeversion=22
 pkgrel=1
 pkgdesc="🎧 A beautiful player for audiophiles."
 arch=('any')
@@ -26,7 +26,8 @@ makedepends=(
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
-    "${pkgname%-git}.sh")
+    "${pkgname%-git}.sh"
+) 
 sha256sums=('SKIP'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
@@ -51,9 +52,8 @@ build() {
     cd "${srcdir}/${pkgname//-/.}"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
@@ -65,12 +65,14 @@ build() {
     else
         echo "Your network is OK."
     fi
+    sed "s|\"electron\": \"\^32.0.1\",|\"electron\": \"${SYSTEM_ELECTRON_VERSION}\",|g" -i package.json
     sed "s|icon\.icns|icon\.png|g" -i main/background.ts
     sed "s|- AppImage|- dir|g" -i electron-builder.yml
+    corepack enable yarn
+    corepack yarn set version 4.3.1
     # .yarnrc.yml existed
-    NODE_ENV=development yarn install #--cache-folder "${srcdir}/.yarn_cache"
-    # NODE_ENV=development yarn run postinstall
-    NODE_ENV=production yarn run build:linux
+    NODE_ENV=development    yarn install #--cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production     yarn run build:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
