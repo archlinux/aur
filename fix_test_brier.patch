@@ -1,0 +1,19 @@
+diff --git a/properscoring/tests/test_brier.py b/properscoring/tests/test_brier.py
+index 02cb62b..3feb972 100644
+--- a/properscoring/tests/test_brier.py
++++ b/properscoring/tests/test_brier.py
+@@ -67,11 +67,11 @@ class TestThresholdBrierScore(unittest.TestCase):
+         assert_allclose(actual, desired, atol=1e-10)
+ 
+     def test_errors(self):
+-        with self.assertRaisesRegexp(ValueError, 'must be scalar or 1-dim'):
++        with self.assertRaisesRegex(ValueError, 'must be scalar or 1-dim'):
+             threshold_brier_score(1, [0, 1, 2], [[1]])
+-        with self.assertRaisesRegexp(ValueError, 'must be sorted'):
++        with self.assertRaisesRegex(ValueError, 'must be sorted'):
+             threshold_brier_score(1, [0, 1, 2], [1, 0.5])
+-        with self.assertRaisesRegexp(ValueError, 'must have matching shapes'):
++        with self.assertRaisesRegex(ValueError, 'must have matching shapes'):
+             threshold_brier_score([1, 2], [0, 1, 2], [0.5])
+ 
+     def test_numba_is_used(self):
