@@ -1,0 +1,6 @@
+[micromamba-bin]
+source = "regex"
+url = "https://anaconda.org/conda-forge/micromamba/files"
+regex = "linux-64/micromamba-([\\d.-]+).tar.bz2"
+from_pattern = "-"
+to_pattern = "."
