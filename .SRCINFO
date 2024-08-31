@@ -1,0 +1,23 @@
+pkgbase = alvr-launcher-bin
+	pkgdesc = Launcher for ALVR. Stream VR games from your PC to your headset via Wi-Fi.
+	pkgver = 20.10.0
+	pkgrel = 1
+	url = https://github.com/alvr-org/ALVR
+	arch = x86_64
+	license = MIT
+	makedepends = tar
+	makedepends = imagemagick
+	depends = vulkan-icd-loader
+	depends = bash
+	depends = hicolor-icon-theme
+	depends = libpipewire
+	provides = alvr-launcher
+	conflicts = alvr-launcher
+	source = https://github.com/alvr-org/ALVR/releases/download/v20.10.0/alvr_launcher_linux.tar.gz
+	source = alvr.png
+	source = alvr.desktop
+	md5sums = 98552bfb9c3f32f0a133e8536ffa0ffe
+	md5sums = cd2c37fd286efad87b679d50631ca3d7
+	md5sums = 40ca0cecd6acc0bdd93da89eefb7e137
+
+pkgname = alvr-launcher-bin
