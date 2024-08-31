@@ -3,9 +3,9 @@
 _pkgname=koboldcpp
 _cudaversion=1210
 pkgname=koboldcpp-cuda-bin
-pkgver=1.73.1
+pkgver=1.74
 pkgrel=1
-pkgdesc="A simple one-file way to run various GGML and GGUF models with KoboldAI's UI, CUDA version. (Requires AVX2 support)"
+pkgdesc="A simple one-file way to run various GGML and GGUF models with KoboldAI's UI, CUDA Version. (Requires AVX2 support)"
 arch=('x86_64')
 url="https://github.com/LostRuins/${_pkgname}"
 license=('AGPL3')
@@ -18,7 +18,7 @@ source=(
   "koboldcpp.png"
 )
 sha256sums=(
-  '8c3c0bb947a240eed9f509f17bac2c39bfa9ca432434469a3c0edea5035aa99a'
+  '79e715d0959ec0cdc0ed3cb70962144c928b94f8d0e22dbc982cda0fa1ed59be'
   'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
   'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
