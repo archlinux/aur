@@ -1,21 +1,22 @@
-# Maintainer: Huang-Huang Bao <eh5@sokka.cn>
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Nicola Revelant <nicolarevelant@outlook.com>
+# Contributor: Huang-Huang Bao <eh5@sokka.cn>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Cedric Girard <girard.cedric@gmail.com>
 
 _pkgname=proxychains-ng
 pkgname=$_pkgname-git
-pkgver=4.13.r10.g1198857
+pkgver=4.17.r3.g1760c93
 pkgrel=1
-pkgdesc="A hook preloader that allows to redirect TCP traffic of existing dynamically linked programs through one or more SOCKS or HTTP proxies"
+pkgdesc='A hook preloader that allows to redirect TCP traffic of existing dynamically linked programs through one or more SOCKS or HTTP proxies'
 arch=('x86_64')
-url="https://github.com/rofl0r/proxychains"
-license=('GPL')
+url='https://github.com/rofl0r/proxychains-ng'
+license=('GPL-2.0-only')
 provides=('proxychains' 'proxychains-ng')
 replaces=('proxychains')
 conflicts=('proxychains')
-depends=('glibc')
+depends=('git' 'glibc')
 backup=('etc/proxychains.conf')
-source=("git+https://github.com/rofl0r/$_pkgname.git")
+source=("git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {
