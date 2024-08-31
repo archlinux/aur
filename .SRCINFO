@@ -1,0 +1,18 @@
+pkgbase = templedriver-git
+	pkgdesc = A driving game dedicated to King Terry A. Davis
+	pkgver = 1.1.1.r7.9ba8f69
+	pkgrel = 1
+	url = https://github.com/mrbid/TempleDriver
+	arch = x86_64
+	license = Unlicense
+	makedepends = git
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = sdl2
+	provides = templedriver=1.1.1
+	conflicts = templedriver
+	source = TempleDriver::git+https://github.com/mrbid/TempleDriver.git
+	sha256sums = SKIP
+
+pkgname = templedriver-git
