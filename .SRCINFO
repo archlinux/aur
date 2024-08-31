@@ -1,6 +1,6 @@
 pkgbase = sile-markdown
 	pkgdesc = Native Markdown and Djot support for the SILE typesetting system
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/Omikhleia/markdown.sile
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = sile-markdown
 	depends = sile-smartquotes
 	depends = sile-textsubsuper
 	optdepends = sile-silex: use with resiliant classes
-	source = https://github.com/Omikhleia/markdown.sile/archive/v2.0.0/markdown.sile-2.0.0.tar.gz
-	sha256sums = f2cff13cc7c72f51eaad3e0b304a2bc5b489402cc1f852ca3d6518d6a0fe65b6
+	source = https://github.com/Omikhleia/markdown.sile/archive/v2.1.0/markdown.sile-2.1.0.tar.gz
+	sha256sums = eaf9a0ca00bd92db1dc2723d53c27408eb185c27bb570e848c3ff704dfba9fad
 
 pkgname = sile-markdown
