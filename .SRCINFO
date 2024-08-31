@@ -6,6 +6,7 @@ pkgbase = hnswlib
 	arch = any
 	license = Apache-2.0
 	makedepends = cmake
+	optdepends = python-hnswlib: Python bindings support
 	source = hnswlib-0.8.0.tar.gz::https://github.com/nmslib/hnswlib/archive/v0.8.0.tar.gz
 	sha256sums = cf61d7dd8dc9bfba7f4abe0ed26698e90ac9f49a0badb2e1b0f3ba89b72cf3bb
 

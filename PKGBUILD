@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/nmslib/${pkgname}"
 license=('Apache-2.0')
 makedepends=('cmake')
+optdepends=("python-${pkgname}: Python bindings support")
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('cf61d7dd8dc9bfba7f4abe0ed26698e90ac9f49a0badb2e1b0f3ba89b72cf3bb')
