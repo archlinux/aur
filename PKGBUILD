@@ -14,13 +14,6 @@ sha256sums=('d33637276c9a8f7c99e23ed4e4a3864400c76e6323b04403e8ba903759c06641')
 prepare() {
     cd "$srcdir/AdguardBrowserExtension-$pkgver"
     yarn install --ignore-scripts --ignore-engines
-    if [[ -z "$OPENAI_API_KEY" ]]
-    then
-        # This needs an OPENAI_API_KEY
-        sed -i 's|await findDangerousRules();|//await findDangerousRules();|' \
-            ./tools/resources.ts
-    fi
-    yarn resources
 }
 build() {
     cd "$srcdir/AdguardBrowserExtension-$pkgver"
