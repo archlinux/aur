@@ -2,9 +2,9 @@
 #
 # mantainer: Muflone http://www.muflone.com/contacts/english/
 # contributor: Piero Proietti <piero.proietti_at_gmail.com>
-_commit=c5915f5f4840dce40518a0eff59f6f7d17750a34
+_commit=ea882a14d4d86d8c0139309ad37c9af3e692dba6
 pkgname=penguins-eggs
-pkgver=10.0.33
+pkgver=10.0.34
 pkgrel=1
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
@@ -111,5 +111,4 @@ package() {
 
 	# Symlink to adapt
 	ln -s /usr/lib/"$pkgname/"addons/eggs/adapt/bin/adapt "$pkgdir/"usr/bin/adapt
-
 }
