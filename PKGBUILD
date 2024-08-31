@@ -3,11 +3,11 @@
 pkgname=modrinth-app-appimage
 _pkgname=${pkgname%-appimage}
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
 arch=('x86_64')
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=(
     'fuse2'
 )
