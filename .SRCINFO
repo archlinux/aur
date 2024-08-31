@@ -1,6 +1,6 @@
 pkgbase = udeler
 	pkgdesc = An unofficail desktop application for downloading Udemy Courses.
-	pkgver = 1.13.1
+	pkgver = 1.13.2
 	pkgrel = 1
 	url = https://github.com/heliomarpm/udemy-downloader-gui
 	arch = any
@@ -15,9 +15,9 @@ pkgbase = udeler
 	depends = electron11
 	provides = udeler
 	conflicts = udeler
-	source = udeler.git::git+https://github.com/heliomarpm/udemy-downloader-gui.git#tag=v1.13.1
+	source = udeler.git::git+https://github.com/heliomarpm/udemy-downloader-gui.git#tag=v1.13.2
 	source = udeler.sh
-	sha256sums = b26bfeb3085d25e60e34938a02996903acb4ddb5a98763c65cfc5e6396a98b51
+	sha256sums = f9dd17b229ca2208656441bc23c99912ae05babcd47011a58df5cc93311dc78d
 	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
 
 pkgname = udeler
