@@ -1,0 +1,24 @@
+pkgbase = python-xhistogram
+	pkgdesc = fast, flexible, label-aware histograms for numpy and xarray
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/xgcm/xhistogram
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-numpy
+	depends = python-xarray
+	depends = python-dask
+	source = python-xhistogram-0.3.2.tar.gz::https://github.com/xgcm/xhistogram/archive/refs/tags/v0.3.2.tar.gz
+	source = versioneer.patch
+	source = fix_prod_arg.patch
+	source = fix_reshape.patch
+	sha256sums = f46ea6af5ef3fbafb999f5ca3a99332f8296cb8f1f09dfffa2c599bfcaf7c5d2
+	sha256sums = 7e7da17ed7a0a2d0e25180600bdd5e4e0da191d72bb4af6c69702e5179c39adb
+	sha256sums = f841ab6b0d148ea0f6e7b1eaef1cd8d4665992f39155c7d99a6d90e0de9dbd1c
+	sha256sums = 799a4a5e2de2fd8302e120ffd2bc1e80432e50fcb39b5029e904705f711ea619
+
+pkgname = python-xhistogram
