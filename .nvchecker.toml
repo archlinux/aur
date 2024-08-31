@@ -1,0 +1,5 @@
+[python-openant]
+source = "github"
+github = "Tigge/openant"
+use_latest_release = "True"
+prefix = "v"
