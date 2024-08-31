@@ -6,18 +6,25 @@
 # Maintainer: Your Name <youremail@domain.com>
 _name=cf-xarray
 pkgname=python-${_name}
-pkgver=0.8.1
+pkgver=0.9.4
 pkgrel=1
 epoch=
 pkgdesc="A lightweight convenience wrapper for using CF attributes on xarray objects."
 arch=('any')
 url="https://github.com/xarray-contrib/cf-xarray"
-license=('Apache')
+license=('Apache-2.0')
 groups=()
-depends=("python-dask" "python-matplotlib" "python-netcdf4" "python-pandas" "python-pooch" "python-xarray")
+depends=("python" "python-xarray")
 makedepends=("python-build" "python-installer" "python-setuptools")
-checkdepends=("python-pytest" "python-pytest-cov" "python-pytest-xdist")
-optdepends=()
+checkdepends=("python-pytest")
+optdepends=(
+    "python-matplotlib: to enable pint's built-in matplotlib support"
+    "python-pint: to provide unit support via approximating UDUNITS/CF"
+    "python-pooch: to install cf standard name table from raw.githubusercontent.com" 
+    "python-shapely: for conversion between shapely geometry objects and CF-compliant dataset"
+    "python-regex: to instead of python official re module"
+    "python-rich: for better console output"
+)
 provides=()
 conflicts=()
 replaces=()
@@ -27,7 +34,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('4a079a9015f7a46c11792f07bb73610eb0e337daf21b63dc03201ae92ab0996a')
+sha256sums=('f2e80edfb83435f00e909ffe8212ccea9331bf7670a92ee44d1346b56d99e48c')
 validpgpkeys=()
 
 prepare() {
@@ -41,7 +48,7 @@ build() {
 
 check() {
 	cd "${srcdir}/${_name}-${pkgver}"
-    # pytest # can not test due to network requirement
+    pytest # can not test due to network requirement
 }
 
 package() {
