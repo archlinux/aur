@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dash-player-git
 _pkgname=DashPlayer
-pkgver=4.2.4.r0.gbe9904f
+pkgver=4.3.0.r0.gd9b8e84
 _electronversion=29
 _nodeversion=18
 pkgrel=1
@@ -32,7 +32,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
@@ -54,13 +54,12 @@ build() {
     cd "${srcdir}/${pkgname%-git}.git"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export npm_config_registry=https://registry.npmmirror.com
         export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
@@ -69,12 +68,13 @@ build() {
         echo "Your network is OK."
     fi
     sed "s|err.code !==|err.code ==|g" -i scripts/download.mjs
+    sed "/\"electron\": /d;50i\        \"electron\": \"${SYSTEM_ELECTRON_VERSION}\"," -i package.json
     rm -rf lib
     mkdir lib
     ln -sf "/usr/bin/ffmpeg" lib/ffmpeg
     ln -sf "/usr/bin/ffprobe" lib/ffprobe
     ln -sf "/usr/bin/yt-dlp" lib/yt-dlp
-    sed "s|\${process.resourcesPath}|\/usr\/lib\/${pkgname%-git}|g" -i src/backend/{db/migrate.ts,services/LocationService.ts}
+    find src -type f | xargs sed -i "s|\${process.resourcesPath}|\/usr\/lib\/${pkgname%-git}|g"
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
     NODE_ENV=production     yarn run package
 }
