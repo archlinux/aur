@@ -3,7 +3,7 @@
 # Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mingw-w64-aom
-pkgver=3.9.1
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="Alliance for Open Media video codec (mingw-w64)"
 url="https://aomedia.org/"
@@ -16,6 +16,7 @@ options=(
   !strip
   !buildflags
   staticlibs
+  !debug
 )
 makedepends=(
   mingw-w64-gcc
@@ -27,7 +28,7 @@ source=(
   https://storage.googleapis.com/aom-releases/libaom-$pkgver.tar.gz{,.asc}
   "cmake.patch"
 )
-b2sums=('2f983a4a563e16120aa8937e059f4cd267fb60b6d4148f952f1e664a50b84bc0d8ba7629231b60e4263963d97559a819752a4fa0dcf2427c9f94036716221324'
+b2sums=('c4ee6980d5223413f09d163782133a5b7e041f646bfae26a0f386672a964e7f5ab1ec38fc19cc332b38f0bff4b4b96405104f87ca162395ce036d18dd86ef9dc'
         'SKIP'
         '627c000cc5b152e78714898156ebebb2524749bd1d701bbbdca0b431301426c2f821403299a6fd4420be80133d4e7178dea8b2f4aae2ab34e9e81e584ebda345')
 validpgpkeys=(
@@ -78,6 +79,8 @@ package() {
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
   done
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 {LICENSE,PATENTS}
 }
 
 # vim:set sw=2 sts=-1 et:

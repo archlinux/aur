@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-aom
 	pkgdesc = Alliance for Open Media video codec (mingw-w64)
-	pkgver = 3.9.1
+	pkgver = 3.10.0
 	pkgrel = 1
 	url = https://aomedia.org/
 	arch = any
@@ -13,11 +13,12 @@ pkgbase = mingw-w64-aom
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://storage.googleapis.com/aom-releases/libaom-3.9.1.tar.gz
-	source = https://storage.googleapis.com/aom-releases/libaom-3.9.1.tar.gz.asc
+	options = !debug
+	source = https://storage.googleapis.com/aom-releases/libaom-3.10.0.tar.gz
+	source = https://storage.googleapis.com/aom-releases/libaom-3.10.0.tar.gz.asc
 	source = cmake.patch
 	validpgpkeys = B002F08B74A148DAA01F7123A48E86DB0B830498
-	b2sums = 2f983a4a563e16120aa8937e059f4cd267fb60b6d4148f952f1e664a50b84bc0d8ba7629231b60e4263963d97559a819752a4fa0dcf2427c9f94036716221324
+	b2sums = c4ee6980d5223413f09d163782133a5b7e041f646bfae26a0f386672a964e7f5ab1ec38fc19cc332b38f0bff4b4b96405104f87ca162395ce036d18dd86ef9dc
 	b2sums = SKIP
 	b2sums = 627c000cc5b152e78714898156ebebb2524749bd1d701bbbdca0b431301426c2f821403299a6fd4420be80133d4e7178dea8b2f4aae2ab34e9e81e584ebda345
 
