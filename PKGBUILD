@@ -26,5 +26,6 @@ package(){
 	# ln -s "/opt/${pkgname}/starfield-mod-loader" "${pkgdir}/usr/bin/${pkgname}"
 	cp "starfield-mod-loader.sh" "${pkgdir}/usr/bin/${pkgname}"
 	chmod +x "${pkgdir}/usr/bin/${pkgname}"
+	chmod 755 "${pkgdir}/opt/${pkgname}/"
 
 }
