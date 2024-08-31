@@ -1,6 +1,6 @@
 pkgbase = qogir-cursor-theme-git
 	pkgdesc = An x-cursor theme inspired by Qogir theme and based on capitaine-cursors
-	pkgver = r268.4f227b75
+	pkgver = r290.6f0e9603
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Qogir-icon-theme
 	arch = any
