@@ -2,7 +2,7 @@
 
 pkgname=python-pyfmodex
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings to the Fmod Ex library."
 arch=(any)
 url="https://www.github.com/tyrylu/pyfmodex"
