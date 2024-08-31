@@ -1,10 +1,10 @@
 # Maintainer: solopasha <daron439 at gmail dot com>
 pkgname=picocrypt-git
-pkgver=1.34.r0.40f8111
+pkgver=1.41.r0.21ab207
 pkgrel=1
 pkgdesc="A very small, very simple, yet very secure encryption tool."
 arch=('x86_64')
-url="https://github.com/HACKERALERT/Picocrypt"
+url="https://github.com/Picocrypt/Picocrypt"
 license=("GPL3")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
