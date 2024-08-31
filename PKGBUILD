@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=compasscad-bin
 _pkgname=CompassCAD
-pkgver=1.2.0
-_electronversion=31
-pkgrel=2
+pkgver=1.3.0
+_electronversion=32
+pkgrel=1
 pkgdesc="very good CAD software. plan out buildings, and show it off to your boss."
 arch=("x86_64")
 url="https://github.com/zeankundev/CompassCAD"
@@ -21,9 +21,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/zeankundev/CompassCAD/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1f58fc611ef27598a5fc97057dc8380bf4883bd90016ec7548eeb29571c03160'
+sha256sums=('9d3081c18c7f9beb3b9bd792fdd1485ec1ae6655d7300b75a0abd86b7623147e'
             '2d59799d08c811b91b35bc6d0615c7b8b3e27f3e2dc676daa9abc1de4bc97c40'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
