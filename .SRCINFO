@@ -1,11 +1,15 @@
-pkgbase = python-pyfmodex
-	pkgdesc = Python bindings to the Fmod Ex library.
+pkgbase = pyfmodex
+	pkgdesc = Python bindings for the FMOD Ex sound library
 	pkgver = 0.7.2
-	pkgrel = 1
-	url = https://www.github.com/tyrylu/pyfmodex
-	arch = any
+	pkgrel = 3
+	url = https://github.com/tyrylu/pyfmodex
+	arch = x86_64
 	license = MIT
-	makedepends = python
-	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = pyfmodex-0.7.2.tar.gz::https://github.com/tyrylu/pyfmodex/archive/refs/tags/v0.7.2.tar.gz
+	sha256sums = ac87a6816545e5c5ba5f21b37779f16395c4b93efe5514d72a7e50f5e9ccc548
 
-pkgname = python-pyfmodex
+pkgname = pyfmodex
