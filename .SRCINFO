@@ -1,15 +1,15 @@
 pkgbase = ldraw-parts-library
 	pkgdesc = A collection of LDraw-format CAD files representing many of LEGO bricks produced
-	pkgver = 20240601
+	pkgver = 20240701
 	pkgrel = 1
 	url = https://library.ldraw.org/updates
 	arch = any
 	license = CCPL: cc-by-2.0
 	options = !strip
-	source = ldraw-parts-library-20240601.zip::https://library.ldraw.org/library/updates/complete.zip
+	source = ldraw-parts-library-20240701.zip::https://library.ldraw.org/library/updates/complete.zip
 	source = ldraw-parts-library.sh
 	source = license
-	sha256sums = 03a5de6e6eee1121bb2fcb55d7a5fb7ff3359af0e70582dfe92d31d5ad740efc
+	sha256sums = d320918996ce203570befb51acc13c7f56cdd9a2b4c1e7fcbd02961af6c12d28
 	sha256sums = 7cbd598861cc678e86ce07da220e97d0f9d27f2b8d0d03b794400b999fd6fc42
 	sha256sums = 783990d0de8daf6b0e18b1c06578438f7d70e106a1a351686872d8d6eeeba7ac
 
