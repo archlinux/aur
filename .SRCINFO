@@ -1,18 +1,18 @@
 pkgbase = ttf-lxgw-zhisong
 	pkgdesc = 霞鶩緻宋。一款衍生於「IPAex 明朝」的舊字形寫法中文字型。A Chinese font derived from IPAex Mincho.
-	pkgver = 0.329
+	pkgver = 0.331
 	pkgrel = 1
 	url = https://github.com/lxgw/LxgwZhiSong
 	changelog = changelog.txt
 	arch = any
 	license = custom:IPA
 	conflicts = ttf-lxgw-zhisong
-	source = ttf-lxgw-zhisong-0.329-CL-1.ttf::https://github.com/lxgw/LxgwZhiSong/releases/download/v0.329/LXGWZhiSongCL.ttf
-	source = ttf-lxgw-zhisong-0.329-MN-1.ttf::https://github.com/lxgw/LxgwZhiSong/releases/download/v0.329/LXGWZhiSongMN.ttf
+	source = ttf-lxgw-zhisong-0.331-CL-1.ttf::https://github.com/lxgw/LxgwZhiSong/releases/download/v0.331/LXGWZhiSongCL.ttf
+	source = ttf-lxgw-zhisong-0.331-MN-1.ttf::https://github.com/lxgw/LxgwZhiSong/releases/download/v0.331/LXGWZhiSongMN.ttf
 	source = LICENSE_CHT.md
 	source = LICENSE.md
-	sha256sums = cfe576698376715804e7ceb4cdf16c6ea0f493702e8d0d0246f6d731e7d03cef
-	sha256sums = c30625c8bbea9e83ce3ec476cbc57cf8b401f294ec75273e123a5fbd6ee86dd6
+	sha256sums = 03ac743926e570d178a0a0907ec9271efaf8dba3187370080e9484973db8f6ce
+	sha256sums = 8efbcf9db4c601b6953201e7907d9ae5819b9e195f7112e2f13fb599aa35611e
 	sha256sums = e33bc6a5f48e8fef08f7ab74b24b199c2d6b1495d7a6fc5cc285c1e44d768877
 	sha256sums = 18e639e1d5d575cb92694c79b2aed1781a234eb5be4200c1479a6c27e11fddcc
 
