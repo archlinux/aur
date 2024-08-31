@@ -1,4 +1,4 @@
-# Maintainer: Werenter <abelokopytov149@gmail.com>
+# Maintainer: Werenter <werenter@cock.li>
 
 pkgname=gcli
 pkgver=2.5.0
