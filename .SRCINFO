@@ -1,6 +1,6 @@
 pkgbase = python-accesser-git
 	pkgdesc = A tool for solving SNI RST
-	pkgver = 0.9.4.r14.gfba9ef9
+	pkgver = 0.9.5.r0.g6b9a557
 	pkgrel = 1
 	url = https://github.com/URenko/Accesser
 	arch = any
