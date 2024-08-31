@@ -1,0 +1,15 @@
+pkgbase = hnswlib-git
+	pkgdesc = Header-only C++ library for fast approximate nearest neighbors
+	pkgver = 0.8.0.r1.gc1b9b79
+	pkgrel = 1
+	url = https://github.com/nmslib/hnswlib
+	arch = any
+	license = Apache-2.0
+	makedepends = cmake
+	optdepends = python-hnswlib: Python bindings support
+	provides = hnswlib=0.8.0
+	conflicts = hnswlib
+	source = hnswlib::git+https://github.com/nmslib/hnswlib.git
+	sha256sums = SKIP
+
+pkgname = hnswlib-git
