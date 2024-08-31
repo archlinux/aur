@@ -3,7 +3,7 @@
 pkgbase="awatcher"
 pkgname=('awatcher-bundle' 'aw-awatcher')
 pkgdesc="Activity and idle watchers"
-pkgver=0.2.7
+pkgver=0.3.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/2e3s/${pkgbase}"
@@ -14,7 +14,7 @@ source=(
     "${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-    'a81605ef90b2d68789b0f10b94b2d403fe3ed9b872110f27d0eac307db8bcc91'
+    '95a761d220c8769941c449869e3ba3467a4942bd272c57fbf2d3c23ebfe56024'
 )
 # LTO seems to break libsqlite3-sys compilation
 options=('!lto')
@@ -26,7 +26,7 @@ prepare() {
 
     test -d aw-webui || git clone https://github.com/ActivityWatch/aw-webui.git
     cd aw-webui
-    git checkout 839366e66f859faadd7f9128de3bea14b25ce4ae
+    git checkout 2f3d1e8390c3d5314a69bfd1a8d388d90b74280f
     git submodule update --init
 }
 
