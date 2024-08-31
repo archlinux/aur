@@ -1,7 +1,7 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname=jackal
-pkgver=0.62.0
+pkgver=0.64.0
 pkgrel=1
 pkgdesc='An XMPP/Jabber server'
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ortuman/jackal/archive/
         jackal.sysusers
         jackal.tmpfiles
         config.yaml)
-sha256sums=('21ff695045b51c237e88718fd4eda0337b98d3b4683ba67e9f4456758c68468f'
+sha256sums=('1b6f83a4108228784b4b25586dd70e5f2c9f2fdee2ad54b1be9b65e934bc4d8d'
             '0a9a9065957e5b0576e5443b29bf0cae81281194664376569a91c51f85e7d7ff'
             '5fec4f4053ac15cd597bb32ba03c35d85f52438204fd801edf333403ec2c4bf3'
             '20b7e5a5fee727e72fdbac54182b594a838340c0625036ca9d117e2a9d710045'
@@ -30,12 +30,12 @@ build() {
   go build -tags netgo \
            -trimpath \
            -buildmode=pie \
-           -ldflags  "-extldflags ${LDFLAGS}" \
+           -ldflags  "-linkmode external" \
            "github.com/ortuman/jackal/cmd/jackalctl"
   go build -tags netgo \
            -trimpath \
            -buildmode=pie \
-           -ldflags  "-extldflags ${LDFLAGS}" \
+           -ldflags  "-linkmode external" \
            "github.com/ortuman/jackal/cmd/jackal"
 }
 
