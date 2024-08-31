@@ -1,7 +1,7 @@
 # Maintainer: omansh-krishn <omanshkrishn@duck.com>
 
 pkgname=saturn-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Your go-to ToS Compliant Custom Deezer Client - Freezer Reborn"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('saturnmusic' 'saturnmusic-bin')
 source=( https://github.com/SaturnMusic/PC/releases/download/v${pkgver}/saturn_${pkgver}_amd64.deb )
 # tar.xz doesn't contain icons
 
-sha256sums=('05f303fc8f2f979f308a43882b6ed3f961996ab330efd88bcaca3b3fcdb89f07')
+sha256sums=('0b58bce227f0f05b96abb6f7532fc315dfffb53342d0ff0fade7b54107d99888')
 
 package() {
 	cd "${srcdir}"
