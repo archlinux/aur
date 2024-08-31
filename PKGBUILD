@@ -11,10 +11,9 @@ url="https://www.bertinireal.com"
 _url="https://github.com/ofloveandhate/${_name}"
 license=('custom:Bertini license')
 makedepends=('python-build' 'python-installer' 'python-wheel')
-depends=('bertini_real' 'python' 'python-numpy' 'python-scipy' 'python-sympy'
-         'python-matplotlib' 'python-algopy' 'python-trimesh' 'python-dill'
-         'python-setuptools' 'python-opengl' 'python-glumpy' 'python-glfw'
-         'python-triangle')
+depends=('bertini_real' 'python' 'python-algopy' 'python-dill' 'python-glumpy'
+         'python-matplotlib' 'python-numpy' 'python-scipy' 'python-setuptools'
+         'python-sympy' 'python-trimesh') # 'python-glfw' 'python-triangle' 'python-opengl'
 _pkgsrc="${_name}-${_commit}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/${_commit}.tar.gz")
 sha256sums=('3836db7d354fb979e9214a6ab131ed5cc6940d198c27bacb27ac7b654aba9fa0')
