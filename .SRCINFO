@@ -1,0 +1,14 @@
+pkgbase = concessio
+	pkgdesc = Understand File Permissions
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/ronniedroid/concessio
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = meson
+	depends = gjs
+	depends = libadwaita
+	source = concessio-0.1.2.tar.gz::https://github.com/ronniedroid/concessio/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = e764a7a7ce140cb14b45c14928d6ce015ced2cc3146dd4bbf612e0c00441991e
+
+pkgname = concessio
