@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=udeler-git
 _pkgname=Udeler
-pkgver=1.13.0.r1.g3ab1c06
+pkgver=1.13.2.r0.g15a03f3
 _electronversion=11
 _nodeversion=18
 pkgrel=1
@@ -27,7 +27,7 @@ source=(
     "${pkgname//-/.}::git+${url}.git"
     "${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
@@ -51,11 +51,10 @@ build() {
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export npm_config_registry=https://registry.npmmirror.com
         export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
@@ -64,9 +63,9 @@ build() {
         echo "Your network is OK."
     fi
     cp .env.example .env
-    sed '/"AppImage",/d;/"deb",/d;/"freebsd",/d;s|"rpm"|"dir"|g' -i package.json
-    NODE_ENV=development npm install
-    NODE_ENV=production npm run build
+    sed "/\"electron\": /d;48i\    \"electron\": \"${SYSTEM_ELECTRON_VERSION}\"," -i package.json
+    NODE_ENV=development    npm install
+    NODE_ENV=production     npx electron-builder -l --dir
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
