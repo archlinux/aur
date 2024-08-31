@@ -1,9 +1,9 @@
 _godot_repo=https://github.com/godotengine/godot/releases/download
-_godot=4.2.2
+_godot=4.3
 
 pkgname=thrive
 pkgver=0.6.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="the evolution game Thrive."
 arch=("x86_64")
 url="https://revolutionarygamesstudio.com/"
@@ -12,8 +12,7 @@ depends=(
     "libxrender" "libxi" "libx11" "libglvnd" "libxinerama" "zlib" "libxrandr"
     "libxext" "glibc" "libxcursor" "fontconfig"
 )
-makedepends=("git" "git-lfs" "dotnet-sdk-8.0" "p7zip" "cmake" "clang" "llvm" "lld" "godot-mono")
-checkdepends=("dotnet-runtime-6.0")
+makedepends=("git" "git-lfs" "dotnet-sdk-8.0" "p7zip" "cmake" "clang" "llvm" "lld" "godot-mono=$_godot")
 source=(
     "git+https://github.com/Revolutionary-Games/Thrive.git#tag=v$pkgver"
     "git+https://github.com/Revolutionary-Games/RevolutionaryGamesCommon.git"
@@ -25,12 +24,12 @@ sha256sums=('21259ee2a6f30801f12656be82d597f5acb919ec3e2471b8f0dc1527abbfec21'
             'SKIP'
             'SKIP'
             'SKIP'
-            '81a00143da2f8f89e2538843522202e2232be7e3de75fe45524daf919ab16a8b')
-
+            'a640d97e4247883b58d394c6111c13343112f3c49bb857d95586f98659fa3be5')
 
 prepare(){
     declare _godot
-    _godot="$(godot-mono --version | cut -d . -f 1-3)"
+    _godot="$(godot-mono --version)"
+    _godot=${_godot%%.stable*}
     target_dirs=(
         "$srcdir/Thrive"
     )
@@ -79,14 +78,16 @@ check(){
 }
 
 package(){
-    depends+=("hicolor-icon-theme" "lttng-ust2.12")
+    depends+=("hicolor-icon-theme")
     cd "$srcdir/Thrive"
-    mkdir -p "$pkgdir/opt" "$pkgdir/usr/bin" "$pkgdir/usr/share/licenses/thrive"
-    cp -a builds/Thrive_*_linux_x11 "$pkgdir/opt/thrive"
-    ln -s /opt/thrive/Thrive "$pkgdir/usr/bin/Thrive"
-    ln -s /opt/thrive/{ThriveAssetsLICENSE,GodotLicense,LICENSE}.txt "$pkgdir/usr/share/licenses/thrive/"
-    ln -s /opt/thrive/lib/libthrive_native{,_without_avx}.so "$pkgdir/opt/thrive/data_Thrive_linuxbsd_$CARCH/"
-    # /opt/thrive/Thrive.png is 1000x1000 and seems to be broken...
+    mkdir -p "$pkgdir/usr/lib" "$pkgdir/usr/bin" "$pkgdir/usr/share/licenses/$pkgname"
+    cp -a builds/Thrive_*_linux_x11 "$pkgdir/usr/lib/$pkgname"
+    ln -sr "$pkgdir/usr/lib/thrive/Thrive" "$pkgdir/usr/bin/Thrive"
+    ln -sr "$pkgdir/usr/lib/thrive"/{ThriveAssetsLICENSE,GodotLicense,LICENSE}.txt "$pkgdir/usr/share/licenses/thrive/"
+    ln -sr "/$pkgdir/usr/lib/thrive/lib"/libthrive_native{,_without_avx}.so "$pkgdir/usr/lib/thrive/data_Thrive_linuxbsd_$CARCH/"
+    # /usr/lib/thrive/Thrive.png is 1000x1000 and seems to be broken...
     install -Dm644 assets/misc/icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/Thrive.png"
-    install -Dm644 "$pkgdir/opt/thrive/Thrive.desktop" "$pkgdir/usr/share/applications/Thrive.desktop"
+    install -Dm644 "$pkgdir/usr/lib/thrive/Thrive.desktop" "$pkgdir/usr/share/applications/Thrive.desktop"
+    # Hack to fix permission
+    find "$pkgdir/usr/lib/thrive" -type f -perm 666 -exec chmod 644 {} \;
 }
