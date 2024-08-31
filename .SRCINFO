@@ -9,8 +9,4 @@ pkgbase = suse-font
 	source = https://github.com/SUSE/suse-font/releases/download/v1.000/suse-font-v1.000.zip
 	sha256sums = 656fa00c433048acd284e2e165444ff1f5663dfac888bd0887682cec00c9d107
 
-pkgname = ttf-suse
-
-pkgname = otf-suse
-
-pkgname = woff2-suse
+pkgname = suse-font

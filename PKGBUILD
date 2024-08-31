@@ -1,7 +1,8 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgbase=suse-font
-pkgname=(ttf-suse otf-suse woff2-suse)
+#pkgname=(ttf-suse otf-suse woff2-suse)
+pkgname=suse-font
 pkgver=1.000
 pkgrel=1
 pkgdesc="sans serif typeface designed by René Bieder, supports over 200 Latin-based languages"
