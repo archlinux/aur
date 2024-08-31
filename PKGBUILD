@@ -1,8 +1,8 @@
-# Maintainer: Allison Smith <alyway@protonmail.com>
-# Contributor:
+# Maintainer: Tim Lawrence <alkaliV02@gmail.com>
+# Contributor: Allison Smith <alyway@protonmail.com>
 
 pkgname=starfield-mod-loader-bin
-pkgver=0.6.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A simple mod manager for Starfield that supports both Steam and Game Pass versions of the game."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('nodejs' 'p7zip')
 source=("https://github.com/lVlyke/starfield-mod-loader/releases/download/v${pkgver}/starfield-mod-loader-linux-x64_${pkgver}.7z"
 				'starfield-mod-loader.sh')
-sha256sums=('97b421e09678b12123e1471c2f5468100180eb2f78bada7cfcec8e5d934b8045'
+sha256sums=('d4089f22b050baafdcfdbffe1f054705146c6865d737c652bf73af99b3573ad0'
 				'b7c938153b5fa38f3c382b72920ab0092327b1e3106df9b7224d7f55e9886e90')
 
 package(){
