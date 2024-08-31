@@ -1,12 +1,12 @@
 pkgbase = sfxr-qt
 	pkgdesc = Qt port of SFXR, a sound effect generator, to generate retro-gaming like sound effects
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/agateau/sfxr-qt
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = extra-cmake-module
+	makedepends = extra-cmake-modules
 	makedepends = git
 	depends = hicolor-icon-theme
 	depends = python-jinja
