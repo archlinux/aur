@@ -2,7 +2,7 @@
 
 _pkgname=simplematrixbotlib
 pkgname="python-$_pkgname"
-pkgver=2.11.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc="An easy to use bot library for the Matrix ecosystem written in Python"
 arch=(any)
@@ -13,8 +13,15 @@ makedepends=('python-build' 'python-installer' 'python-poetry')
 depends=('python' 'python-matrix-nio' 'python-cryptography-fernet-wrapper' 'python-pillow' 'python-markdown'
          'python-toml')
 checkdepends=('python-pytest')
-source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9b9aa901f53b532ddcc2991e6e014023f3be43f52806ae97e8ded0235f102f9d')
+source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz" "fix-unit-tests.patch")
+sha256sums=('923c92e7bd02cc917997faae0fc727f7b8dc007003d928d70cdb4b2f2c809497'
+            'e87fb74680bda00389c0260ffd8977d0530484e2cdb6a7a6937548ecf2d39ca2')
+
+prepare() {
+	cd "$_pkgname"
+
+	patch -p1 < "$srcdir/fix-unit-tests.patch"
+}
 
 build() {
 	cd "$_pkgname"
