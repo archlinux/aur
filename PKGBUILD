@@ -1,18 +1,25 @@
-# Maintainer: Neko_Rikka <address at domain dot tld>
+# Maintainer: Your Name <your.email@example.com>
 
-pkgname=python-pyfmodex
+pkgname=pyfmodex
 pkgver=0.7.2
-pkgrel=2
-pkgdesc="Python bindings to the Fmod Ex library."
-arch=(any)
-url="https://www.github.com/tyrylu/pyfmodex"
-license=(MIT)
-makedepends=("python" "python-pip")
+pkgrel=3
+pkgdesc="Python bindings for the FMOD Ex sound library"
+arch=('x86_64')
+url="https://github.com/tyrylu/pyfmodex"
+license=('MIT')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/tyrylu/pyfmodex/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('ac87a6816545e5c5ba5f21b37779f16395c4b93efe5514d72a7e50f5e9ccc548')
+
 build() {
-  pip install --no-deps --target="pyfmodex" pyfmodex==$pkgver
+  cd "${pkgname}-${pkgver}"
+  python -m build --wheel --no-isolation
 }
+
 package() {
-  sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
-  mkdir -p $pkgdir/"$sitepackages"
-  cp -r $srcdir/pyfmodex/* $pkgdir/"$sitepackages"
+  cd "${pkgname}-${pkgver}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 readme.md "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
