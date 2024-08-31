@@ -1,7 +1,7 @@
 # Maintainer: Antti <antti@antti.codes>
 
 pkgname=modrinth-app
-pkgver=0.8.2
+pkgver=0.8.5
 pkgrel=1
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
@@ -10,14 +10,14 @@ license=('GPL3')
 makedepends=('rust' 'pnpm')
 depends=(
     # tauri deps
-    'openssl-1.1' 'dbus' 'freetype2' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libsoup' 'webkit2gtk'
+    'openssl-1.1' 'dbus' 'freetype2' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libsoup' 'webkit2gtk-4.1'
     # minecraft deps
     'libgl' 'libpulse' 'libx11' 'libxcursor' 'libxext' 'libxxf86vm'
 )
 optdepends=(
     'xorg-xrandr: for older minecraft versions'
 )
-_release_hash="a0bd011b808cdc998ef27960f610a8d99550c914"
+_release_hash="bd61f5d5915f8a899f2075037358b0f3bcd23fe8"
 source=(
     # WHY DO THEY NOT TAG THE RELEASES?!?!?!
     #"$pkgname-$pkgver.tar.gz::https://github.com/modrinth/code/archive/refs/tags/v${pkgver}.tar.gz"
@@ -25,7 +25,7 @@ source=(
     "modrinth-app.desktop"
     "modrinth-app"
 )
-sha256sums=('5cf7dd55e30edbd326cc41d33f6a6efcca3b27f25793fe9d586afffb37799970'
+sha256sums=('0802c6c80834cde4f63c7ddfe3d36ac165205385f8c0e5317fa199f192616314'
             '7f6673916e0cf1cef2f2e3d1e5865d722abcbd8fba879688f8102816773a9d44'
             '5404b4e7b25903afe43ab2f2451be4b27f4823c6785327b166f2faa519fa38a9')
 options=('!lto')
@@ -55,12 +55,12 @@ build() {
     export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
     #cargo build --frozen --release --all-features
-    pnpm tauri build --bundles none
+    pnpm tauri build --no-bundle
 }
 
 package() {
     install -Dm755 "$srcdir"/modrinth-app "$pkgdir"/usr/bin/modrinth-app
-    install -Dm755 "$srcdir"/code-"$pkgver"/apps/app/target/release/modrinth-app "$pkgdir"/opt/modrinth-app/modrinth-app
+    install -Dm755 "$srcdir"/code-"$pkgver"/apps/app/target/release/theseus_gui "$pkgdir"/opt/modrinth-app/modrinth-app
     
     install -Dm644 "$srcdir"/code-"$pkgver"/apps/app/icons/128x128.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/modrinth-app.png
     install -Dm644 "$srcdir"/code-"$pkgver"/apps/app/icons/icon.png "$pkgdir"/usr/share/icons/hicolor/256x256@2/apps/modrinth-app.png
