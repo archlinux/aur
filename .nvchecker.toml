@@ -1,0 +1,4 @@
+[lib32-libpcap]
+source = "git"
+git = "https://github.com/the-tcpdump-group/libpcap"
+prefix = "libpcap-"
