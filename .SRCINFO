@@ -1,6 +1,6 @@
 pkgbase = x48ng-git
 	pkgdesc = A reboot of the x48 HP 48 emulator
-	pkgver = 0.37.0.r11.195b098
+	pkgver = 0.37.0.r13.6d36927
 	pkgrel = 1
 	url = https://github.com/gwenhael-le-moine/x48ng
 	install = x48ng-git.install
@@ -19,7 +19,7 @@ pkgbase = x48ng-git
 	depends = xorg-fonts-misc
 	provides = x48ng
 	conflicts = x48ng
-	source = git+https://github.com/gwenhael-le-moine/x48ng.git#commit=195b0983dcca93839c7d6f803ce29973c08fbdfd
+	source = git+https://github.com/gwenhael-le-moine/x48ng.git#commit=6d369278493e796af16416a42ba8464c0ef26110
 	sha256sums = SKIP
 
 pkgname = x48ng-git
