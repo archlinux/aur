@@ -2,7 +2,7 @@
 
 _rockname=resilient.sile
 pkgname=("sile-${_rockname%.sile}")
-pkgver=2.3.0
+pkgver=2.4.0
 _rockrel=1
 pkgrel=1
 pkgdesc='Advanced book classes and packages for the SILE typesetting system'
@@ -15,6 +15,7 @@ _siledeps=(barcodes
            fancytoc
            labelrefs
            markdown
+           piecharts
            printoptions
            ptable
            qrcode
@@ -25,11 +26,11 @@ depends=(sile
 makedepends=(luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('6afb5815938e133c71502867f2c77be5cbb11f46aca306576d8dd99ad1f2e972')
+sha256sums=('7286bf9b8a58b0284e102eef496ebb8ea7ce69b0a0f6e824c3779b9bb762c912')
 
 package() {
 	cd "$_archive"
-	luarocks --lua-version=5.1 --tree="$pkgdir/usr/" \
-		make --deps-mode=none --no-manifest "rockspecs/$_rockname-$pkgver-$_rockrel.rockspec"
+	luarocks --lua-version "5.1" --tree="$pkgdir/usr/" \
+		make --deps-mode=none --no-manifest "rockspecs/$_archive-$_rockrel.rockspec"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
