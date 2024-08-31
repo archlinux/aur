@@ -1,7 +1,7 @@
 pkgbase = python-accesser-git
 	pkgdesc = A tool for solving SNI RST
 	pkgver = 0.9.5.r0.g6b9a557
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/URenko/Accesser
 	arch = any
 	license = GPL-3.0-or-later
@@ -22,7 +22,11 @@ pkgbase = python-accesser-git
 	optdepends = python-aioquic: DNS over quic support
 	provides = python-accesser
 	conflicts = python-accesser
+	backup = etc/accesser/pac
+	backup = etc/accesser/config.toml
 	source = accesser::git+https://github.com/URenko/Accesser.git
+	source = accesser.service
 	sha256sums = SKIP
+	sha256sums = 867bf31096eff1f35b4e7c2b60ad15f6fbe7df1264bcc9c8162d07d185cf22e7
 
 pkgname = python-accesser-git

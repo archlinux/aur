@@ -2,7 +2,7 @@
 _name=accesser
 pkgname=python-${_name}-git
 pkgver=0.9.5.r0.g6b9a557
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="A tool for solving SNI RST"
 url="https://github.com/URenko/Accesser"
@@ -30,21 +30,35 @@ optdepends=(
     'python-h2: DNS over https support'
     'python-aioquic: DNS over quic support'
 )
-source=("${_name}::git+https://github.com/URenko/Accesser.git")
-sha256sums=('SKIP')
+source=(
+    "${_name}::git+https://github.com/URenko/Accesser.git"
+    "accesser.service"
+)
+sha256sums=(
+    'SKIP'
+    '867bf31096eff1f35b4e7c2b60ad15f6fbe7df1264bcc9c8162d07d185cf22e7'
+)
+backup=(
+    'etc/accesser/pac'
+    'etc/accesser/config.toml'
+)
 
 pkgver() {
-  cd "${_name}"
+    cd ${srcdir}/${_name}
   # cutting off 'foo-' prefix that presents in the git tag
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd $_name
+    cd ${srcdir}/${_name}
     python -m build --wheel --no-isolation
 }
 
 package() {
     cd $_name
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 "accesser/pac" "${pkgdir}/etc/accesser/pac"
+    install -Dm644 "accesser/config.toml" "${pkgdir}/etc/accesser/config.toml"
+    cd ..
+    install -Dm644 "accesser.service" "${pkgdir}/usr/lib/systemd/system/accesser.service"
 }
