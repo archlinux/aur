@@ -1,7 +1,7 @@
 pkgbase = python-django-q
 	pkgdesc = A multiprocessing distributed task queue for Django
 	pkgver = 1.3.9
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/Koed00/django-q
 	arch = any
 	license = MIT

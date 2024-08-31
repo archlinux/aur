@@ -2,7 +2,7 @@
 
 pkgname=python-django-q
 pkgver=1.3.9
-pkgrel=9
+pkgrel=10
 pkgdesc='A multiprocessing distributed task queue for Django'
 arch=(any)
 url=https://github.com/Koed00/django-q
