@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=m3u8downloader-bin
 _pkgname="M3U8 Downloader"
-pkgver=0.6.4
+pkgver=0.6.5
 _electronversion=28
 pkgrel=1
 pkgdesc="Yet another m3u8 downloader"
@@ -25,9 +25,9 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/gonwan/m3u8-downloader/v${pkgver}/icons/icon256x256.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('70c7076912bc1e9e5851500b738a1ec0256c62e538e8fb790ebc80ba41c17d3f'
+sha256sums=('8346e8b1591cad3e41918c930a6ff955fe5bcc0d6853f05116477ddefe013033'
             'c42b28b97e0485bf0298aac09ef9f9be169682b5467d8e3eb6334bd2b31129b3'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -41,6 +41,6 @@ package() {
    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
    install -Dm644 "${srcdir}/${pkgname%-bin}-v${pkgver}-linux-x64/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
    cp -r "${srcdir}/${pkgname%-bin}-v${pkgver}-linux-x64/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
-   install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" -t "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+   install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" -t "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
