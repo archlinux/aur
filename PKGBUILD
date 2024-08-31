@@ -1,12 +1,12 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=ifcopenshell
-pkgver=0.7.11_alpha240829
+pkgver=0.7.11_alpha240830
 _vername=bonsai
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
 arch=('x86_64' 'i686')
 url="http://ifcopenshell.org/"
-license=('LGPL3')
+license=('LGPL-3.0-or-later' 'GPL-3.0-or-later')
 depends=(
   'boost-libs'
   'hdf5'
@@ -30,7 +30,6 @@ makedepends=(
   'git'
   'ninja'
   'nlohmann-json'
-  'opencollada'
   'python-babel'
   'python-build'
   'python-installer'
@@ -42,19 +41,27 @@ source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/refs/tags/${_verna
   "git+https://github.com/svgpp/svgpp.git"
   "git+https://github.com/IfcOpenShell/svgfill.git"
   "git+https://github.com/IfcOpenShell/ifc-to-cityjson.git"
-  "001-shared.patch::https://github.com/sukanka/IfcOpenShell/commit/011088e.patch"
-  "002-libsvgfill.patch::https://github.com/sukanka/svgfill/commit/af69c5c.patch"
-  "003-skip-python-ifcopenshell.patch::https://github.com/sukanka/IfcOpenShell/commit/b7e6f1c.patch"
-  "005-install-cityjson.patch::https://github.com/sukanka/IfcOpenShell/commit/56766cc.patch"
+
+  "001-libsvgfill.patch::https://github.com/sukanka/svgfill/commit/af69c5c.patch"
+  "002-add-shared-libs.patch::https://github.com/sukanka/IfcOpenShell/commit/011088e.patch"
+  "003-install-cityjson-files.patch::https://github.com/sukanka/IfcOpenShell/commit/56766cc.patch"
+  "004-skip-install-python-package-only-install-wrapper.patch::https://github.com/sukanka/IfcOpenShell/commit/b7e6f1c.patch"
+  "005-only-install-headers-for-serializer.patch::https://github.com/sukanka/IfcOpenShell/commit/91667b6.patch"
+  "006-fix-rpath.patch::https://github.com/sukanka/IfcOpenShell/commit/54a4cce.patch"
+  "007-install-missing-libs.patch::https://github.com/sukanka/IfcOpenShell/commit/7558599.patch"
+
 )
-sha256sums=('21e55af58f9832b163860be832a85e656df79ebb174f009137756797223adb45'
+sha256sums=('6b3d434e3de70d58703a0a50849de31fd70601b569c2777caceb372c34f3e608'
             'SKIP'
             'SKIP'
             'SKIP'
-            '44fd888bd2e41820771aab12a431577396036057520ab53989d69e6a62666415'
             'c673bc7a6e6cdb7288577c9a98fa864ebf5d5800ae948b5fd41165004e29d992'
+            '44fd888bd2e41820771aab12a431577396036057520ab53989d69e6a62666415'
+            '0d82930b081ffeef87cdad4b4392119029de447b9f76cb99398b44d5b4d4c536'
             '75976c985b8d8a04f5a44ef3c22b9b9bb594809670baef8e7e00d67e86d1fd19'
-            '0d82930b081ffeef87cdad4b4392119029de447b9f76cb99398b44d5b4d4c536')
+            'f92c138eaa20bb787ec3bcaffaa4f74abe797cb11fd0627b78cca18b29bec072'
+            'c6b372278b4e4c5d34c03acf81524aa89b10cabe3bcf4d3c0be7d22bef28f2b7'
+            'bab3a4a7b58160d70dee9c4598ed0ed7c795ab2bf5aedcbf2e86493119836bf4')
 
 _iosdir="IfcOpenShell-${_vername}-${pkgver//_/-}"
 
@@ -63,11 +70,14 @@ prepare() {
   cp -ar svgfill/* ${_iosdir}/src/svgfill
   cp -ar ifc-to-cityjson/* ${_iosdir}/src/ifcconvert/cityjson
   cd ${_iosdir}
-  patch --strip=1 <../001-shared.patch
-  patch --strip=1 <../003-skip-python-ifcopenshell.patch
-  patch --strip=1 <../005-install-cityjson.patch
+  patch --strip=1 --ignore-whitespace <../002-add-shared-libs.patch
+  patch --strip=1 --ignore-whitespace <../003-install-cityjson-files.patch
+  patch --strip=1 --ignore-whitespace <../004-skip-install-python-package-only-install-wrapper.patch
+  patch --strip=1 --ignore-whitespace <../005-only-install-headers-for-serializer.patch
+  patch --strip=1 --ignore-whitespace <../006-fix-rpath.patch
+  patch --strip=1 --ignore-whitespace <../007-install-missing-libs.patch
   pushd src/svgfill
-  patch --strip=1 <${srcdir}/002-libsvgfill.patch
+  patch --strip=1 --ignore-whitespace <${srcdir}/001-libsvgfill.patch
   popd
   sed -i src/ifcwrap/CMakeLists.txt -e 's|libsvgfill|svgfill|g'
 }
@@ -115,7 +125,7 @@ build() {
   )
   cmake "${CMAKE_ARGS[@]}"
 
-  ninja -C build -j10
+  ninja -C build
 }
 
 package() {
@@ -126,7 +136,8 @@ package() {
 
   # Install license file
   cd "${srcdir}/${_iosdir}"
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 COPYING.LESSER -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # Install python modules
   find src -name '*.whl' -print0 | xargs -0 -I {} python -m installer --destdir="$pkgdir" {}
