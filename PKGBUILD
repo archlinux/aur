@@ -1,8 +1,8 @@
 # Maintainer: Sving1024 <piano5432@outlook.com>
 _name=accesser
 pkgname=python-${_name}
-pkgver=0.9.4
-pkgrel=2
+pkgver=0.9.5
+pkgrel=1
 arch=('any')
 pkgdesc="A tool for solving SNI RST"
 url="https://github.com/URenko/Accesser"
@@ -31,7 +31,7 @@ optdepends=(
     'python-aioquic: DNS over quic support'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('4e164790f71b5794856fdc12a80284897a7afe8bef96a8735d115881a98585b2')
+sha256sums=('51cab930eac102abe0de50029d5f8fa121a814d051b67272cd50562dfdab46ed')
 
 build() {
     cd $_name-$pkgver
