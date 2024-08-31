@@ -1,14 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop-git
-pkgver=3.3.0.r0.g24166e2
-_electronversion=30
+pkgver=3.4.0.r1.g0668f64
+_electronversion=31
 _nodeversion=20
 pkgrel=1
 pkgdesc="A version management desktop client for the Nodejs."
-arch=(
-    'aarch64'
-    'x86_64'
-)
+arch=('any')
 url="https://github.com/1111mp/nvm-desktop"
 _nvmdurl="https://github.com/1111mp/nvmd-command"
 license=('MIT')
@@ -33,7 +30,7 @@ source=(
 )
 sha256sums=('SKIP'
             'SKIP'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
@@ -55,6 +52,10 @@ build() {
     # build nvmd
     cd "${srcdir}/nvmd.git"
     export CARGO_HOME="${srcdir}/.cargo"
+    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+        export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+        export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+    fi
     cargo build --release
     cd "${srcdir}/${pkgname%-git}.git"
     # build nvm-desktop
@@ -62,9 +63,8 @@ build() {
     install -Dm755 "${srcdir}/nvmd.git/target/release/nvmd" -t "${srcdir}/${pkgname%-git}.git/assets/sources"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
@@ -77,12 +77,10 @@ build() {
     else
         echo "Your network is OK."
     fi
-    sed "s|--linux|-l --dir|g" -i package.json
-    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-git}\"|g" -i src/main/main.ts
-    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-git}\"|g" -i src/main/utils/migration.ts
-    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-git}\"|g" -i src/main/locale.ts
-    NODE_ENV=development pnpm install
-    NODE_ENV=production pnpm run package:linux
+    sed "s|\"electron\": \"\^31.3.0\",|\"electron\": \"${SYSTEM_ELECTRON_VERSION}\",|g;s|--linux|-l --dir|g" -i package.json
+    find src -type f | xargs sed -i "s|process.resourcesPath|\"\/usr\/lib\/${pkgname}\"|g"
+    NODE_ENV=development    pnpm install
+    NODE_ENV=production     pnpm run package:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
