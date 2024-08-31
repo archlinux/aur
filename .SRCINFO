@@ -1,6 +1,6 @@
 pkgbase = ruby-rails
 	pkgdesc = Full-stack web application framework.
-	pkgver = 7.0.2.4
+	pkgver = 7.2.1
 	pkgrel = 1
 	url = http://www.rubyonrails.org
 	arch = any
@@ -16,9 +16,9 @@ pkgbase = ruby-rails
 	depends = ruby-bundler
 	depends = ruby-sprockets-rails
 	depends = ruby-actioncable
-	noextract = rails-7.0.2.4.gem
+	noextract = rails-7.2.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/rails-7.0.2.4.gem
-	sha256sums = 5eee151313cdb86365bdeb65f61ad012c2fa2e86df03b0cf4484a2e5eee5a601
+	source = https://rubygems.org/downloads/rails-7.2.1.gem
+	sha256sums = fd5684e5d007220960666a3a8b31a57cd1c8cd7f60d88cb40e28e95f1911b705
 
 pkgname = ruby-rails
