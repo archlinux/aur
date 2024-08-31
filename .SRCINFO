@@ -22,7 +22,6 @@ pkgbase = python-bertini_real
 	depends = python-glumpy
 	depends = python-glfw
 	depends = python-triangle
-	optdepends = python-bertini_real-docs: HTML documentation
 	source = bertini_real-bdd3757964b8b6d03615a0d7ca045886dbe962e8.tar.gz::https://github.com/ofloveandhate/bertini_real/archive/bdd3757964b8b6d03615a0d7ca045886dbe962e8.tar.gz
 	sha256sums = 3836db7d354fb979e9214a6ab131ed5cc6940d198c27bacb27ac7b654aba9fa0
 

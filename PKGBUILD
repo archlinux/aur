@@ -15,7 +15,6 @@ depends=('bertini_real' 'python' 'python-numpy' 'python-scipy' 'python-sympy'
          'python-matplotlib' 'python-algopy' 'python-trimesh' 'python-dill'
          'python-setuptools' 'python-opengl' 'python-glumpy' 'python-glfw'
          'python-triangle')
-optdepends=('python-bertini_real-docs: HTML documentation')
 _pkgsrc="${_name}-${_commit}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/${_commit}.tar.gz")
 sha256sums=('3836db7d354fb979e9214a6ab131ed5cc6940d198c27bacb27ac7b654aba9fa0')
