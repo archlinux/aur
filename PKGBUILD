@@ -2,7 +2,7 @@
 # Contributor: Nick Lay <layns(at)mail(dot)uc(dot)edu>
 
 ## options
-: ${_branch=master}
+: ${_branch=primehack-aur}
 
 : ${_build_clang:=false}
 
@@ -16,8 +16,8 @@ unset _pkgtype
 # basic info
 _pkgname="dolphin-emu-primehack"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.1.4.r10.g9650329
-pkgrel=2
+pkgver=1.1.5.r10.g6074f6c
+pkgrel=1
 pkgdesc='A Gamecube and Wii emulator with mouselook controls'
 url="https://github.com/xiota/dolphin-primehack"
 license=('GPL-2.0-or-later')

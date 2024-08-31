@@ -1,7 +1,7 @@
 pkgbase = dolphin-emu-primehack-git
 	pkgdesc = A Gamecube and Wii emulator with mouselook controls
-	pkgver = 1.1.4.r10.g9650329
-	pkgrel = 2
+	pkgver = 1.1.5.r10.g6074f6c
+	pkgrel = 1
 	url = https://github.com/xiota/dolphin-primehack
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -45,7 +45,7 @@ pkgbase = dolphin-emu-primehack-git
 	conflicts = dolphin-emu-primehack
 	options = !emptydirs
 	options = !lto
-	source = xiota.primehack::git+https://github.com/xiota/dolphin-primehack.git#branch=master
+	source = xiota.primehack::git+https://github.com/xiota/dolphin-primehack.git#branch=primehack-aur
 	source = cyan4973.xxhash::git+https://github.com/Cyan4973/xxHash.git
 	source = epezent.implot::git+https://github.com/epezent/implot.git
 	source = gpuopen-librariesandsdks.vulkanmemoryallocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
