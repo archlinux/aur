@@ -35,7 +35,7 @@ build() {
   cd build
   cmake \
     -G Ninja \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLLVM_INSTALL_UTILS=ON \
     -DBUILD_SHARED_LIBS=OFF \
