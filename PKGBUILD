@@ -3,8 +3,8 @@
 # Maintainer: Neko_Rikka <address at domain dot tld>
 
 pkgname=python-unitypy-git
-pkgver=r442.1a6d5dc
-pkgrel=3
+pkgver=r443.df73acb
+pkgrel=1
 pkgdesc="A unity asset extractor based on unitypack and AssetStudio."
 arch=('x86_64')
 url="https://github.com/K0lb3/UnityPy"
