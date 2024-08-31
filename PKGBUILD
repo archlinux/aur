@@ -5,7 +5,7 @@ _pkgname="${_binname,,}"
 pkgname="${_pkgname}-snap"
 pkgver=1.1.1
 _commit="f300481b04bff205ad5cbe92a1997cba2d3e59ef"
-pkgrel=1
+pkgrel=2
 pkgdesc="A driving game dedicated to King Terry A. Davis"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/mrbid/${_binname}"
@@ -32,6 +32,9 @@ sha384sums_armv7h=('a319a57070f2c9bf2f38dd93850b67236812d701e43ded70f6b71b33e880
 prepare() {
   cd "${srcdir}"
   unsquashfs -f -d "${srcdir}/${_pkgsrc}-${CARCH}" "${_pkgsrc}-${CARCH}.snap"
+
+  cd "${_pkgsrc}-${CARCH}/meta/gui"
+  sed -i 's|Icon=${SNAP}/meta/gui/templedriver\.png|Icon=templedriver|' "${_pkgname}.desktop"
 }
 
 package() {
