@@ -2,7 +2,7 @@
 
 _rockname=qrcode.sile
 pkgname=("sile-${_rockname%.sile}")
-pkgver=1.0.0
+pkgver=1.1.0
 _rockrel=1
 pkgrel=1
 pkgdesc='QR code package for the SILE typesetting system'
@@ -13,11 +13,11 @@ depends=(sile)
 makedepends=(luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('ffb49d1be5c5a58887093d0848a73bf642011cb55def99353d3a4b876167c0d6')
+sha256sums=('c654290e60f0403b73d0330fb19e902b56e371e8e199306fbcbdd9d388987ccd')
 
 package() {
 	cd "$_archive"
-	luarocks --lua-version="5.1" --tree="$pkgdir/usr/" \
-		make --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
+	luarocks --lua-version "5.1" --tree="$pkgdir/usr/" \
+		make --deps-mode=none --no-manifest "rockspecs/$_archive-$_rockrel.rockspec"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
