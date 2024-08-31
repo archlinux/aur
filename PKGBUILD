@@ -1,17 +1,17 @@
-# (maybe new) Maintainer: Antti <antti@antti.codes>
+# Maintainer: Antti <antti@antti.codes>
 # Ex-Maintainer: Nixuge
 
 pkgname=modrinth-app-git
-pkgver=r1453.4a43b45
+pkgver=0.8.5.r1464.bd61f5d
 pkgrel=1
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
 arch=('x86_64')
-license=('GPL3')
-makedepends=('rust' 'pnpm' 'git')
+license=('GPL-3.0-only')
+makedepends=('rust' 'pnpm' 'git' 'jq')
 depends=(
     # tauri deps
-    'openssl-1.1' 'dbus' 'freetype2' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libsoup' 'webkit2gtk'
+    'openssl-1.1' 'dbus' 'freetype2' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libsoup' 'webkit2gtk-4.1'
     # minecraft deps
     'libgl' 'libpulse' 'libx11' 'libxcursor' 'libxext' 'libxxf86vm'
 )
@@ -32,7 +32,7 @@ options=('!lto')
 
 pkgver() {
 	cd "$srcdir/code"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	printf "%s.r%s.%s" "$(cat apps/app/tauri.conf.json | jq -r .version)" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
