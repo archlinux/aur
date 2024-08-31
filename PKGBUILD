@@ -2,7 +2,7 @@
 
 _rockname=printoptions.sile
 pkgname=("sile-${_rockname%.sile}")
-pkgver=1.0.0
+pkgver=1.1.0
 _rockrel=1
 pkgrel=1
 pkgdesc='Image tools for professional printers with the SILE typesetting system'
@@ -13,11 +13,11 @@ depends=(sile)
 makedepends=(luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('011a5acf89e36d06a7d7fff67774b08154bf0719f5bf2dc7aaeb3e67c911e47d')
+sha256sums=('66961fc63b3d441a78d25767f263a0bddeb62691a6700b808dc81392d48c64f0')
 
 package() {
 	cd "$_archive"
-	luarocks --lua-version="5.1" --tree="$pkgdir/usr/" \
-		make --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
+	luarocks --lua-version "5.1" --tree="$pkgdir/usr/" \
+		make --deps-mode=none --no-manifest "rockspecs/$_archive-$_rockrel.rockspec"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
