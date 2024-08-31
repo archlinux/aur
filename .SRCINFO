@@ -1,16 +1,15 @@
 pkgbase = bdf-baekmuk-git
 	pkgdesc = free hangul bitmap fonts for X11
 	pkgver = 0.7.4020ae7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/chocolatemelt/baekmuk
 	install = bdf-baekmuk-git.install
 	arch = any
 	makedepends = git
 	makedepends = make
 	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
+	depends = xorg-bdftopcf
 	source = git+https://github.com/chocolatemelt/baekmuk.git
 	sha256sums = SKIP
 
 pkgname = bdf-baekmuk-git
-
