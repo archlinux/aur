@@ -12,6 +12,8 @@ depends=(
   'git'
   'util-linux'
   'bash'
+)
+makedepends=(
   'nasm'
 )
 provides=("i915ovmfpkg")
