@@ -1,0 +1,12 @@
+[Unit]
+Description=A tool for solving SNI RST
+Documentation=https://github.com/URenko/Accesser
+
+[Service]
+Type=simple
+WorkingDirectory=/etc/accesser/
+ExecStart=accesser
+ExecStop=kill $MAINPID
+
+[Install]
+WantedBy=default.target
