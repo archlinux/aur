@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Kampmann <ben@acter.global>
 pkgname=acter-nightly-bin
-pkgver=1.24.8293
+pkgver=1.24.8310
 pkgrel=1
 epoch=
 pkgdesc="Casual Community Organizing"
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/acterglobal/a3/releases/download/nightly-v1.24.8293/acter-nightly-linux-x64-1.24.8293.tar.bz2")
+source=("https://github.com/acterglobal/a3/releases/download/v${pkgver}/acter-linux-x64-${pkgver}.tar.bz2")
 noextract=()
-md5sums=("7b7d0ca166249541034fab3b60bc21f8")
+md5sums=("c2f1d6e6b3c8ec6d9c5316427c70b033")
 validpgpkeys=()
 
 package() {
@@ -33,7 +33,7 @@ package() {
   install -dm644 "${pkgdir}/usr/share/licenses/${pkgname}"
 
   mv ./global.acter.a3.desktop "${pkgdir}/usr/share/applications"
-  mv ./logo.png "${pkgdir}/usr/share/icons/acter/"
+  mv ./acter-logo.png "${pkgdir}/usr/share/icons/acter/"
   mv ./LICENSE* "${pkgdir}/usr/share/licenses/${pkgname}/"
   # mv ./global.acter.a3.appdata.xml "${pkgdir}/usr/share/appdata/acter.appdata.xml"
   cp -ra ./data ./lib ./acter "${pkgdir}/usr/share/${pkgname}"
