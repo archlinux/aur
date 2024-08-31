@@ -1,7 +1,7 @@
 # Maintainer: Eduard Tolosa <edu4rdshl@protonmail.com>
 
 pkgname=weakauras-companion-bin
-pkgver=5.2.4
+pkgver=5.2.6
 pkgrel=1
 pkgdesc='A cross-platform application built to provide the missing link between Wago.io and World of Warcraft.'
 url='https://github.com/WeakAuras/WeakAuras-Companion'
@@ -9,7 +9,7 @@ license=("GPL2")
 arch=("x86_64")
 depends=('libxshmfence' 'nss' 'at-spi2-atk' 'atk' 'libdrm' 'gdk-pixbuf2' 'gtk3')
 source=("https://github.com/WeakAuras/WeakAuras-Companion/releases/download/v$pkgver/weakauras-companion_${pkgver}_amd64.deb")
-sha512sums=('d2be155ff43de766b11477e1d8352ef9a17c92d8b54868bd97d9a0c7b6845ba917da3193735fa60612c78805c7709f466da62d8a6e5f52f4f2b343b8c2b29bd8')
+sha512sums=('8301e82323de28f233f92a03f245c8a5c470b1f529447bcbfea7dd2b7fcac0d82a9f357e4d2f21a9f237dc11284225cac695352e119b5dd679a9119b273b406f')
 
 
 package() {
