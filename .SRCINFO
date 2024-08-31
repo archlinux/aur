@@ -9,6 +9,7 @@ pkgbase = i915ovmf
 	depends = git
 	depends = util-linux
 	depends = bash
+	depends = nasm
 	optdepends = qemu-system-x86
 	provides = i915ovmfpkg
 	conflicts = i915ovmfpkg

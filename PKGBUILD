@@ -12,6 +12,7 @@ depends=(
   'git'
   'util-linux'
   'bash'
+  'nasm'
 )
 provides=("i915ovmfpkg")
 conflicts=("i915ovmfpkg")
