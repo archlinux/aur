@@ -1,9 +1,9 @@
-# Maintainer: Yukina <yukinohana3230 at gmail dot com>
+# Maintainer: Yukina <thienphuc3230 at gmail dot com>
 
 _pkgname="qogir-cursor-theme"
 pkgname="${_pkgname}-git"
 gitname="Qogir-icon-theme"
-pkgver=r268.4f227b75
+pkgver=r290.6f0e9603
 pkgrel=1
 pkgdesc="An x-cursor theme inspired by Qogir theme and based on capitaine-cursors"
 arch=("any")
