@@ -3,7 +3,7 @@
 pkgname=modrinth-app-appimage
 _pkgname=${pkgname%-appimage}
 pkgver=0.8.5
-pkgrel=2
+pkgrel=3
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
 arch=('x86_64')
@@ -26,13 +26,14 @@ package() {
     cd "$srcdir"
 
     chmod +x "$_pkgname-$pkgver.AppImage"
-    "./$_pkgname-$pkgver.AppImage" --appimage-extract "usr/share/applications/modrinth-app.desktop"
-    "./$_pkgname-$pkgver.AppImage" --appimage-extract "usr/share/icons/hicolor/128x128/apps/modrinth-app.png"
-    "./$_pkgname-$pkgver.AppImage" --appimage-extract "usr/share/icons/hicolor/256x256@2/apps/modrinth-app.png"
+    "./$_pkgname-$pkgver.AppImage" --appimage-extract "usr/share/applications/theseus_gui.desktop"
+    "./$_pkgname-$pkgver.AppImage" --appimage-extract "usr/share/icons/hicolor/128x128/apps/theseus_gui.png"
+    "./$_pkgname-$pkgver.AppImage" --appimage-extract "usr/share/icons/hicolor/256x256@2/apps/theseus_gui.png"
 
     cp -r "squashfs-root/usr/" "${pkgdir}"
 
-    install -Dm644 "squashfs-root/usr/share/applications/modrinth-app.desktop" "$pkgdir/usr/share/applications/modrinth-app.desktop"
+    install -Dm644 "squashfs-root/usr/share/applications/theseus_gui.desktop" "$pkgdir/usr/share/applications/theseus_gui.desktop"
     install -Dm755 "$_pkgname-$pkgver.AppImage" "$pkgdir/opt/modrinth-app/modrinth-app.AppImage"
     install -Dm755 "modrinth-app" "$pkgdir/usr/bin/modrinth-app"
+    install -Dm755 "modrinth-app" "$pkgdir/usr/bin/theseus_gui"
 }
