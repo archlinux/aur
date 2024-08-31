@@ -2,7 +2,7 @@
 
 _rockname=ptable.sile
 pkgname=("sile-${_rockname%.sile}")
-pkgver=3.0.0
+pkgver=3.1.0
 _rockrel=1
 pkgrel=1
 pkgdesc='Paragraph boxes, framed boxes and table packages for the SILE typesetting system'
@@ -13,7 +13,7 @@ depends=(sile)
 makedepends=(luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('e387f48e271dec95d114804b7161c77245e84563963905d55d218690b99bc1a4')
+sha256sums=('39dd8ceff2ba743dfc907c22aa78c6031e9694ef38fce4469d41ac1d7f39e33d')
 
 package() {
 	cd "$_archive"
