@@ -8,8 +8,8 @@ pkgdesc='Qt port of SFXR, a sound effect generator, to generate retro-gaming lik
 arch=('x86_64')
 url='https://github.com/agateau/sfxr-qt'
 license=('MIT')
-depends=('hicolor-icon-theme' 'python-jinja' 'python-pyaml' 'qt5-base' 'qt5-declarative' 'sdl' 'catch2')
-makedepends=('cmake' 'git')
+depends=('hicolor-icon-theme' 'python-jinja' 'python-pyaml' 'qt5-base' 'qt5-declarative' 'sdl' 'catch2-v2')
+makedepends=('cmake' 'extra-cmake-module' 'git')
 source=("git+${url}.git#tag=${pkgver}"
         "git+${url%/*}/qpropgen.git"
         "https://patch-diff.githubusercontent.com/raw/agateau/sfxr-qt/pull/14.patch"

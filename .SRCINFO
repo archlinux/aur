@@ -6,6 +6,7 @@ pkgbase = sfxr-qt
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = extra-cmake-module
 	makedepends = git
 	depends = hicolor-icon-theme
 	depends = python-jinja
@@ -13,7 +14,7 @@ pkgbase = sfxr-qt
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = sdl
-	depends = catch2
+	depends = catch2-v2
 	source = git+https://github.com/agateau/sfxr-qt.git#tag=1.5.0
 	source = git+https://github.com/agateau/qpropgen.git
 	source = https://patch-diff.githubusercontent.com/raw/agateau/sfxr-qt/pull/14.patch
