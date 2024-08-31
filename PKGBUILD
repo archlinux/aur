@@ -11,7 +11,7 @@ pkgrel=1
 pkgdesc="A system-independent interface for user-level packet capture (32-bit)"
 arch=(x86_64)
 url="http://www.tcpdump.org/"
-license=(BSD)
+license=(BSD-3-Clause)
 depends=(
   lib32-glibc
   lib32-libnl
