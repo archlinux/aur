@@ -7,18 +7,18 @@
 # Contributor: Alexey Pavlov <alexpux@gmail.com>
 
 pkgname=mingw-w64-libssh
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Library for accessing ssh client services through C libraries (mingw-w64)"
 url="https://www.libssh.org/"
-license=('LGPL')
+license=('LGPL-2.1-or-later')
 arch=('any')
 depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-openssl')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-pkg-config' 'mingw-w64-wine' 'mingw-w64-cmocka' 'doxygen' 'python')
-options=(!strip !buildflags staticlibs)
+options=(!strip !buildflags staticlibs !debug)
 #cmocka
-source=(https://www.libssh.org/files/${pkgver%.*}/libssh-$pkgver.tar.xz{,.asc})
-sha256sums=('860e814579e7606f3fc3db98c5807bef2ab60f793ec871d81bcd23acdcdd3e91'
+source=("https://www.libssh.org/files/${pkgver%.*}/libssh-${pkgver}.tar.xz"{,.asc})
+sha256sums=('14b7dcc72e91e08151c58b981a7b570ab2663f630e7d2837645d5a9c612c1b79'
             'SKIP')
 validpgpkeys=('8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D'  # Andreas Schneider <asn@cryptomilk.org>
               '88A228D89B07C2C77D0C780903D5DF8CFDD3E8E7') # libssh release key (release key) <libssh@libssh.org>
