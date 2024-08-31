@@ -1,6 +1,6 @@
 pkgbase = steam-rom-manager-appimage
 	pkgdesc = An app for managing ROMs in Steam (extracted from AppImage package)
-	pkgver = 2.5.21
+	pkgver = 2.5.22
 	pkgrel = 1
 	url = https://github.com/SteamGridDB/steam-rom-manager
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = steam-rom-manager-appimage
 	conflicts = steam-rom-manager
 	conflicts = steam-rom-manager-git
 	options = !strip
-	source = Steam-ROM-Manager-2.5.21.AppImage::https://github.com/SteamGridDB/steam-rom-manager/releases/download/v2.5.21/Steam-ROM-Manager-2.5.21.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/SteamGridDB/steam-rom-manager/v2.5.21/LICENSE
-	sha512sums = ff5187d56c2c5b4406446891ca3c090f32df95c57462c1e8dec09da981e7feef9f72c851ae82dcf8900f16967d992cfe123959eb0300b7a99ff8e4ea24cfd86d
+	source = Steam-ROM-Manager-2.5.22.AppImage::https://github.com/SteamGridDB/steam-rom-manager/releases/download/v2.5.22/Steam-ROM-Manager-2.5.22.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/SteamGridDB/steam-rom-manager/v2.5.22/LICENSE
+	sha512sums = a881f4b45bda95dd2a5c0aeace48bed587b5fb9da4929df2d9e6314e6d5f2551edca92a3434876d884400e0a21225f050ec43cd5cc4074c1a426e6eb6ae76086
 	sha512sums = 552aec8d120c9d931769f6a6b794716fce978d0055715de21746dc0f064f4a0f72b6be42d4828b98a56715b23fa427c1f66fd20aca0ef1751cc384c420db1605
 
 pkgname = steam-rom-manager-appimage
