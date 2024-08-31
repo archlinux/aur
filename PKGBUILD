@@ -12,7 +12,8 @@ pkgname='cnrdrvcups-lb'
 # https://gdlp01.c-wss.com/gds/8/0100007658/35/linux-UFRII-drv-v570-m17n-18.tar.gz
 # https://gdlp01.c-wss.com/gds/8/0100007658/38/linux-UFRII-drv-v580-m17n-04.tar.gz
 #https://gdlp01.c-wss.com/gds/8/0100007658/40/linux-UFRII-drv-v590-m17n-03.tar.gz
-_pkgver='5.90';  _dl='8/0100007658/40';_suffix1='m17n';_suffix2='03'
+#https://gdlp01.c-wss.com/gds/8/0100007658/41/linux-UFRII-drv-v600-m17n-00.tar.gz
+_pkgver='6.00';  _dl='8/0100007658/41';_suffix1='m17n';_suffix2='00'
 
 pkgver="${_pkgver}.1.${_suffix2}"
 
@@ -20,7 +21,7 @@ pkgrel=4
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
 arch=('x86_64' 'aarch64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
-url='https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.aspx'
+url='https://www.canon-europe.com/support/consumer/products/printers/i-sensys/mf-series/i-sensys-mf657cdw.html?type=drivers&language=EN&os=Linux%20(64-bit)'
 license=('GPL-2.0-only' 'MIT' 'custom')
 # parts of the code are GPL or MIT licensed, some parts have a custom license
 makedepends=(jbigkit gzip gtk3)
@@ -42,9 +43,9 @@ options=(emptydirs !strip !libtool !debug)
 source=(  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-${_suffix1}-${_suffix2}.tar.gz"
                 replace_incorrect_int_with_char.patch
 )
-md5sums=('072004c6f1a296070b1baeb4416fbd9c'
+md5sums=('282da3c236363cf0d3fb1aef74711e3c'
          '8bc26ff46bf5877b5800b77685d5d917')
-sha512sums=('85a2fc25da6f641e9d51168df97c148d2b6a5085ebc8504f67da6fbc08ec04b1b46128fce1921b91c4d7fa60e40aeecadfc2ca099fed0a5f735116da2aee93e3'
+sha512sums=('5d5de3ad519403ae051ea800bfdb256f8aa366d711dd668c5c44829ac0c2d5dee6f03ed65fda2d4bf5fa88f81e5225de9324b8ddda990fa52e557ecc6f998894'
             '1d118eeee1ce069b59db00cba5b534986ccbd1da3a9c4a4ba6892be4a478c2dac4bd83dae1b2dd28f0e58a145609c60940cd661fee87d025a12f856e161b1f65')
 
 
@@ -220,14 +221,14 @@ package() {
     # documentation
     pushd "$srcdir/linux-UFRII-drv-v${_pkgver//\./}-m17n/Documents"
     
-    install -Dpm644 deutsch/"README-ufr2-5.9xDE.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.9xDE.html"
-    install -Dpm644 espanol/"README-ufr2-5.9xSP.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.9xSP.html"
-    install -Dpm644 francais/"README-ufr2-5.9xFR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.9xFR.html"
-    install -Dpm644 italiano/"README-ufr2-5.9xIT.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.9xIT.html"
-    install -Dpm644 korean/"README-ufr2-5.9xKR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.9xKR.html"
-    install -Dpm644 simplified_chinese/"README-ufr2-5.9xSC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.9xSC.html"
-    install -Dpm644 traditional_chinese/"README-ufr2-5.9xTC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.9xTC.html"
-    install -Dpm644 uk_eng/"README-ufr2-5.9xUK.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.9xUK.html"
+    install -Dpm644 deutsch/"README-ufr2-6.0xDE.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.0xDE.html"
+    install -Dpm644 espanol/"README-ufr2-6.0xSP.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.0xSP.html"
+    install -Dpm644 francais/"README-ufr2-6.0xFR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.0xFR.html"
+    install -Dpm644 italiano/"README-ufr2-6.0xIT.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.0xIT.html"
+    install -Dpm644 korean/"README-ufr2-6.0xKR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.0xKR.html"
+    install -Dpm644 simplified_chinese/"README-ufr2-6.0xSC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.0xSC.html"
+    install -Dpm644 traditional_chinese/"README-ufr2-6.0xTC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.0xTC.html"
+    install -Dpm644 uk_eng/"README-ufr2-6.0xUK.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.0xUK.html"
     
     install -Dpm644 deutsch/"UsersGuide-ufr2-DE.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-DE.html"
     install -Dpm644 espanol/"UsersGuide-ufr2-SP.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-SP.html"
