@@ -4,8 +4,8 @@
 pkgname=python-sievelib
 _pkg="${pkgname#python-}"
 pkgdesc="Client-side Sieve and Managesieve library written in Python"
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 arch=('any')
 url="https://github.com/tonioo/sievelib"
 license=('MIT')
@@ -13,7 +13,7 @@ depends=('python-setuptools')
 makedepends=('python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/s/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('edcb9b416a985a3cc5b7d7f4d7ec013e372ebf90e64c9d9e00e2031299af38fd')
+sha256sums=('cf471407315532cf71dbf6f662b000cead2b477a70cff5c4b21bc5d4324ba53e')
 
 prepare() {
 	cd "$_pkg-$pkgver"
