@@ -1,6 +1,6 @@
 pkgbase = sile-fancytoc
 	pkgdesc = Some fancy table of contents for the SILE typesetting system
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Omikhleia/fancytoc.sile
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = sile-fancytoc
 	makedepends = luarocks
 	depends = sile
 	depends = sile-silex
-	source = https://github.com/Omikhleia/fancytoc.sile/archive/v1.0.1/fancytoc.sile-1.0.1.tar.gz
-	sha256sums = c843c32f1968531fb3d7c14c181e2bbccf5deb05d870055abf89e524273816a6
+	source = https://github.com/Omikhleia/fancytoc.sile/archive/v1.1.0/fancytoc.sile-1.1.0.tar.gz
+	sha256sums = 312f21bd4d75ed093ad481e08343943fbc5a9204aebafdb5feb150b24aedfdfa
 
 pkgname = sile-fancytoc

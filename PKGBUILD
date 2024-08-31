@@ -2,7 +2,7 @@
 
 _rockname=fancytoc.sile
 pkgname=("sile-${_rockname%.sile}")
-pkgver=1.0.1
+pkgver=1.1.0
 _rockrel=1
 pkgrel=1
 pkgdesc='Some fancy table of contents for the SILE typesetting system'
@@ -15,11 +15,11 @@ depends=(sile
 makedepends=(luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('c843c32f1968531fb3d7c14c181e2bbccf5deb05d870055abf89e524273816a6')
+sha256sums=('312f21bd4d75ed093ad481e08343943fbc5a9204aebafdb5feb150b24aedfdfa')
 
 package() {
 	cd "$_archive"
-	luarocks --lua-version="5.1" --tree="$pkgdir/usr/" \
-		make --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
+	luarocks --lua-version "5.1" --tree="$pkgdir/usr/" \
+		make --deps-mode=none --no-manifest "rockspecs/$_archive-$_rockrel.rockspec"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
