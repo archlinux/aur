@@ -1,10 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop
-pkgver=3.3.0
+_pkgname=NVM-Desktop
+pkgver=3.4.0
 _nvmdver="${pkgver}"
-_electronversion=30
+_electronversion=31
 _nodeversion=20
-pkgrel=2
+pkgrel=1
 pkgdesc="A version management desktop client for the Nodejs."
 arch=(
     'aarch64'
@@ -25,16 +26,16 @@ makedepends=(
     'pnpm'
     'curl'
 )
-source_aarch64=("nvmd-${_nvmdver}-aarch64.zip::${_nvmdurl}/releases/download/v${_nvmdver}/Linux-arm64.zip")
-source_x86_64=("nvmd-${_nvmdver}-x86_64.zip::${_nvmdurl}/releases/download/v${_nvmdver}/Linux-x64.zip")
+source_aarch64=("nvmd-${_nvmdver}-aarch64.zip::${_nvmdurl}/releases/download/${_nvmdver}/Linux-arm64.zip")
+source_x86_64=("nvmd-${_nvmdver}-x86_64.zip::${_nvmdurl}/releases/download/${_nvmdver}/Linux-x64.zip")
 source=(
-    "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
+    "${pkgname}.git::git+${url}.git#tag=${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('c4980b8ef01d890ca85ee3d3462b241752b19ec7bdacf37c1b6aeb56fadd350c'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('425aea3c4194c2c3a297e459563491b8fa8d5e4331f93cbc784d5e44b84bf8c4')
-sha256sums_x86_64=('7f24745cf7a9785206dcbf59a9ad969bd8cdc0b38be3d20782062fbe599e9732')
+sha256sums=('2c56d7a6682cc6600b3f08b3b6ff9b96c0bdf2500a8107818539d1ddbd40f434'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_aarch64=('86c478d22cb3dabd54be43722a3fbe2422d885c649378aa702ae042c1a0109e2')
+sha256sums_x86_64=('db3568252601ba44637a6b39ffffc84cad4211fadbf239146881bdf22a7bed84')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -45,7 +46,7 @@ build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname}|g" \
         -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname}|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
@@ -55,9 +56,8 @@ build() {
     install -Dm755 "${srcdir}/Linux-"*/nvmd -t "${srcdir}/${pkgname}.git/assets/sources"
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
@@ -70,12 +70,10 @@ build() {
     else
         echo "Your network is OK."
     fi
-    sed "s|AppImage|dir|g" -i package.json
-    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname}\"|g" -i src/main/main.ts
-    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname}\"|g" -i src/main/utils/migration.ts
-    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname}\"|g" -i src/main/locale.ts
-    NODE_ENV=development pnpm install
-    NODE_ENV=production pnpm run package:linux
+    sed "s|\"electron\": \"\^31.3.0\",|\"electron\": \"${SYSTEM_ELECTRON_VERSION}\",|g;s|--linux|-l --dir|g" -i package.json
+    find src -type f | xargs sed -i "s|process.resourcesPath|\"\/usr\/lib\/${pkgname}\"|g"
+    NODE_ENV=development    pnpm install
+    NODE_ENV=production     pnpm run package:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
