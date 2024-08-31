@@ -2,11 +2,11 @@
 
 pkgname=modrinth-app
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
 arch=('x86_64')
-license=('GPL3')
+license=('GPL-3.0-only')
 makedepends=('rust' 'pnpm')
 depends=(
     # tauri deps
@@ -31,26 +31,23 @@ sha256sums=('0802c6c80834cde4f63c7ddfe3d36ac165205385f8c0e5317fa199f192616314'
 options=('!lto')
 
 prepare() {
-    # temporary
-    mv "$srcdir/code-${_release_hash}" "$srcdir/code-${pkgver}"
-
-    cd "$srcdir/code-$pkgver/apps/app"
+    cd "$srcdir/code-${_release_hash}/apps/app"
     export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 
-    cd "$srcdir/code-$pkgver/apps/app-frontend"
+    cd "$srcdir/code-${_release_hash}/apps/app-frontend"
     export COREPACK_ENABLE_STRICT=0
     pnpm install
 }
 
 build() {
-    cd "$srcdir/code-$pkgver/apps/app-frontend"
+    cd "$srcdir/code-${_release_hash}/apps/app-frontend"
 
     export COREPACK_ENABLE_STRICT=0
     pnpm build
 
-    cd "$srcdir/code-$pkgver/apps/app"
+    cd "$srcdir/code-${_release_hash}/apps/app"
 
     export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
@@ -60,9 +57,9 @@ build() {
 
 package() {
     install -Dm755 "$srcdir"/modrinth-app "$pkgdir"/usr/bin/modrinth-app
-    install -Dm755 "$srcdir"/code-"$pkgver"/apps/app/target/release/theseus_gui "$pkgdir"/opt/modrinth-app/modrinth-app
+    install -Dm755 "$srcdir"/code-"${_release_hash}"/apps/app/target/release/theseus_gui "$pkgdir"/opt/modrinth-app/modrinth-app
     
-    install -Dm644 "$srcdir"/code-"$pkgver"/apps/app/icons/128x128.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/modrinth-app.png
-    install -Dm644 "$srcdir"/code-"$pkgver"/apps/app/icons/icon.png "$pkgdir"/usr/share/icons/hicolor/256x256@2/apps/modrinth-app.png
+    install -Dm644 "$srcdir"/code-"${_release_hash}"/apps/app/icons/128x128.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/modrinth-app.png
+    install -Dm644 "$srcdir"/code-"${_release_hash}"/apps/app/icons/icon.png "$pkgdir"/usr/share/icons/hicolor/256x256@2/apps/modrinth-app.png
     install -Dm644 modrinth-app.desktop "$pkgdir"/usr/share/applications/modrinth-app.desktop
 }
