@@ -4,7 +4,7 @@
 
 pkgname=python-unitypy-git
 pkgver=r443.df73acb
-pkgrel=1
+pkgrel=2
 pkgdesc="A unity asset extractor based on unitypack and AssetStudio."
 arch=('x86_64')
 url="https://github.com/K0lb3/UnityPy"
@@ -15,7 +15,8 @@ depends=(
   'python-lz4'
   'python-brotli'
   'python-pillow'
-  'python-fsb5-git'
+  'python-pyfmodex'
+  'python-fsspec'
   'python-texture2ddecoder'
   'python-etcpak-git'
   'python-tabulate'
