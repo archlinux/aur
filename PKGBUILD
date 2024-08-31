@@ -4,12 +4,12 @@ _name="stransi"
 _pkgname="python-${_name}"
 pkgname="${_pkgname}-git"
 pkgver=0.3.0.r71.gdee78ed
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight Python parser library for ANSI escape code sequences"
 arch=('any')
 url="https://github.com/getcuia/${_name}"
 license=('MIT')
-makedepends=('git' 'python-build' 'python-installer' 'python-poetry-core>=1.0')
+makedepends=('git' 'python-build' 'python-installer' 'python-poetry-core>=1')
 checkdepends=('python-pytest>=7.1' 'python-hypothesis>=6.49.1')
 depends=('python>=3.8' 'python-ochre>=0.4')
 provides=("${_pkgname}=${pkgver%%.r*}")
@@ -34,7 +34,7 @@ build() {
 
 check() {
   cd "${srcdir}/${_pkgsrc}"
-  PYTHONPATH=src pytest
+  PYTHONPATH="${PWD}/src" pytest
 }
 
 package() {
@@ -46,6 +46,6 @@ package() {
   install -Dm644 "README.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 "FEATURES.md" "${pkgdir}/usr/share/doc/${_pkgname}/FEATURES.md"
   install -d "${pkgdir}/usr/share/licenses/${_pkgname}"
-  ln -s "${pkgdir}${site_packages}/${_name}-${pkgver%%.r*}.dist-info/LICENSE" \
+  ln -s "${site_packages}/${_name}-${pkgver%%.r*}.dist-info/LICENSE" \
     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
