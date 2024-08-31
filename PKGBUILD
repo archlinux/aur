@@ -1,7 +1,7 @@
 # Contributor: Tim Schumacher <timschumi@gmx.de>
 # Contributor: David Vilar <davvil@gmail.com>
 pkgname=vassal
-pkgver=3.7.13
+pkgver=3.7.14
 pkgrel=1
 pkgdesc="Game engine for building and playing online adaptations of board games and card games."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ source=(https://github.com/vassalengine/vassal/releases/download/${pkgver}/VASSA
     vassal.sh
     vassal.desktop)
 noextract=()
-md5sums=('f40e338c843b7a63e55a1c064b2c835a'
+md5sums=('2f54b8036c9c60dd4c5e94b013c548b0'
          '4a4ec11bdbd7dbbf56e6f1d533f69a7e'
          '0dd91b887bb07f350381d3bcbbe47530'
          '8f3d525cd698789c17c6ac9428ef0378')
