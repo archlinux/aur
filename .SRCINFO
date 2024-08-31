@@ -1,0 +1,33 @@
+pkgbase = python-xskillscore
+	pkgdesc = metrics for verifying forecasts
+	pkgver = 0.0.26
+	pkgrel = 1
+	url = https://github.com/xarray-contrib/xskillscore
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-xdist
+	checkdepends = python-bottleneck
+	checkdepends = python-scikit-learn
+	checkdepends = python-cftime
+	checkdepends = python-numba>=0.52
+	checkdepends = pre-commit
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-dask
+	depends = python-numpy
+	depends = python-properscoring
+	depends = python-scipy
+	depends = python-statsmodels
+	depends = python-xarray>=0.16.1
+	depends = python-xhistogram>=0.3.0
+	optdepends = python-bottleneck: acceleration some numpy functions by rewritten them in C
+	source = python-xskillscore-0.0.26.tar.gz::https://github.com/xarray-contrib/xskillscore/archive/refs/tags/v0.0.26.tar.gz
+	source = change_tests_to_testing.patch
+	sha256sums = 879646d69eb15ec37e15cbd20b28b11a078bfa4abfac4f281fccfbecb0cb4510
+	sha256sums = 2c740be0e33c1732cca631fdfcf6c6c4d959c7fb58a5ab90544fd998d411653c
+
+pkgname = python-xskillscore
