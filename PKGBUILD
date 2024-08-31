@@ -3,20 +3,18 @@
 _name="bertini_real"
 _pkgname="python-${_name}"
 pkgname="${_pkgname}-git"
-pkgver=1.7.1.r113.58a8faa
+pkgver=1.7.1.r115.6bd1ddf
 _commit="bdd3757964b8b6d03615a0d7ca045886dbe962e8"
-pkgrel=2
+pkgrel=1
 pkgdesc="Python interface for Bertini_real"
 arch=('any')
 url="https://www.bertinireal.com"
 _url="https://github.com/ofloveandhate/${_name}"
 license=('custom:Bertini license')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
-depends=('bertini_real' 'python' 'python-numpy' 'python-scipy' 'python-sympy'
-         'python-matplotlib' 'python-algopy' 'python-trimesh' 'python-dill'
-         'python-setuptools')
-optdepends=('python-glumpy: for OpenGL-accelerated rendering of surfaces'
-            'python-bertini_real-docs: HTML documentation')
+depends=('bertini_real' 'python' 'python-algopy' 'python-dill' 'python-glumpy'
+         'python-matplotlib' 'python-numpy' 'python-scipy' 'python-setuptools'
+         'python-sympy' 'python-trimesh') # 'python-glfw' 'python-triangle' 'python-opengl'
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_name}"
