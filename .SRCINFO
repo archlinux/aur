@@ -1,6 +1,6 @@
 pkgbase = python-pypalettes
 	pkgdesc = A large collection of color maps for Python
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/JosephBARBIERDARNAL/pypalettes
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = python-pypalettes
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-matplotlib
-	depends = python-pandas
-	source = https://pypi.org/packages/source/p/pypalettes/pypalettes-0.1.2.tar.gz
-	sha512sums = 191584c4fee83b75438252fc859a5d4a5f57524b7d7f4e70b2809dedd29c8f328e4cf9a3c5eb350295977eeef29e7f55e1b9015584fd10a67df2ee2c5c6e59e1
+	source = https://pypi.org/packages/source/p/pypalettes/pypalettes-0.1.3.tar.gz
+	sha512sums = 4fcfcf1659d42a3b4252346c1b1a78f1a6f83bc5e5cd9f5229dcddd7296e984cf4cd5f6beb922681713d67da361c61b9e6ad24cdf1488ef8d7f68dfad747d9fd
 
 pkgname = python-pypalettes

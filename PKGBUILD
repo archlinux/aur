@@ -2,16 +2,16 @@
 _base=pypalettes
 pkgname=python-${_base}
 pkgdesc="A large collection of color maps for Python"
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 arch=(any)
 url="https://github.com/JosephBARBIERDARNAL/${_base}"
 license=(GPL-3.0-only)
-depends=(python-matplotlib python-pandas)
+depends=(python-matplotlib)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-# checkdepends=(python-pytest python-beautifulsoup4)
+# checkdepends=(python-pytest python-beautifulsoup4 python-pandas python-seaborn)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('191584c4fee83b75438252fc859a5d4a5f57524b7d7f4e70b2809dedd29c8f328e4cf9a3c5eb350295977eeef29e7f55e1b9015584fd10a67df2ee2c5c6e59e1')
+sha512sums=('4fcfcf1659d42a3b4252346c1b1a78f1a6f83bc5e5cd9f5229dcddd7296e984cf4cd5f6beb922681713d67da361c61b9e6ad24cdf1488ef8d7f68dfad747d9fd')
 
 build() {
   cd ${_base}-${pkgver}
