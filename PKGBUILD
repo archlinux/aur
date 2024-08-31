@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=mcu-jlink-pack
-pkgname=({airmcu,mcu,hkmicrochip,holtek}-jlink-pack)
-pkgver=r4.417ca8e
+pkgname=({airmcu,mcu,hkmicrochip,holtek,nationstech}-jlink-pack)
+pkgver=r7.bee8bef
 pkgrel=1
 epoch=
 arch=('any')
@@ -19,18 +19,20 @@ backup=()
 options=()
 changelog=
 source=("${pkgbase}::git+${url}.git"
-    "AirMCU-Jlink::git+https://gitee.com/openLuat/AirMCU-Jlink.git"
+    "AirMCU-Jlink::git+https://github.com/Air-duino/AirMCU-Jlink.git"
     "airmcu-jlink-pack.install"
     "hkmicrochip-jlink-pack.install"
-    "holtek-jlink-pack.install")
+    "holtek-jlink-pack.install"
+    "nationstech-jlink-pack.install")
 noextract=()
 sha256sums=('SKIP'
             'SKIP'
             '42a0931b0b5f6c84655fe6aace1902abde56b7fee42b2147ee3364789d6389d2'
             'a526e928d9c5f57a05e7f938818c66504409809b9614c5450bc7c15c8b12871a'
-            '5453ba72d95c28241b5e8af002ce601ee6cf7749023256598457df219659326a')
+            '5453ba72d95c28241b5e8af002ce601ee6cf7749023256598457df219659326a'
+            '2281486bc2005550ff062e9788aff466d6b7d438551d97202c15579b7f344630')
 
-prepare(){
+prepare() {
     git -C "${srcdir}/${pkgbase}" clean -dfx
     cd "${srcdir}/${pkgbase}"
     git submodule init
@@ -40,9 +42,10 @@ prepare(){
 
 pkgver() {
     cd "${srcdir}/${pkgbase}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
@@ -52,7 +55,8 @@ package_mcu-jlink-pack() {
     depends=(
         airmcu-jlink-pack
         hkmicrochip-jlink-pack
-        holtek-jlink-pack)
+        holtek-jlink-pack
+        nationstech-jlink-pack)
 }
 
 package_airmcu-jlink-pack() {
@@ -66,24 +70,24 @@ package_airmcu-jlink-pack() {
 
     install -dm0755 "${pkgdir}/opt/$_path/"
 
-    cp -rv  "${srcdir}"/${pkgbase}/AirMCU-Jlink/$_aname/* "${pkgdir}/opt/$_path/"
+    cp -rv "${srcdir}"/${pkgbase}/AirMCU-Jlink/$_aname/* "${pkgdir}/opt/$_path/"
 
     find "${pkgdir}/opt/$_path/" -type f -exec chmod 644 "{}" \;
     find "${pkgdir}/opt/$_path/" -type d -exec chmod 755 "{}" \;
 
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" << EOF
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/bin/bash
 
-if [ ! -d "$HOME"/.config/SEGGER/JLinkDevices ] ; then
-    mkdir -p $HOME/.config/SEGGER/JLinkDevices || exit 1
+if [ ! -d "\$HOME"/.config/SEGGER/JLinkDevices ] ; then
+    mkdir -p \$HOME/.config/SEGGER/JLinkDevices || exit 1
 fi
 
-if [ -d "$HOME"/.config/SEGGER/JLinkDevices/$_aname ] ; then
-    rm -rf $HOME/.config/SEGGER/JLinkDevices/$_aname || exit 1
+if [ -d "\$HOME"/.config/SEGGER/JLinkDevices/$_aname ] ; then
+    rm -rf \$HOME/.config/SEGGER/JLinkDevices/$_aname || exit 1
 fi
 
-if [ ! -d "$HOME"/.config/SEGGER/JLinkDevices/$_aname ] ; then
-    cp -r /opt/$_path $HOME/.config/SEGGER/JLinkDevices/ || exit 1
+if [ ! -d "\$HOME"/.config/SEGGER/JLinkDevices/$_aname ] ; then
+    cp -r /opt/$_path \$HOME/.config/SEGGER/JLinkDevices/ || exit 1
 fi
 EOF
 }
@@ -100,27 +104,27 @@ package_hkmicrochip-jlink-pack() {
     install -dm0755 "${pkgdir}/opt/$_path/"
 
     cp -rv "${srcdir}"/${pkgbase}/HKMicroChip/* "${pkgdir}/opt/$_path/"
-#     mv "${pkgdir}"/opt/$_path/Devices/HKMicrochip "${pkgdir}"/opt/$_path/HKMicrochip
-#     rm -rf "${pkgdir}"/opt/$_path/Devices
-#
-#     sed "s|Devices/||g" -i "${pkgdir}/opt/$_path/$_aname.xml"
+    #     mv "${pkgdir}"/opt/$_path/Devices/HKMicrochip "${pkgdir}"/opt/$_path/HKMicrochip
+    #     rm -rf "${pkgdir}"/opt/$_path/Devices
+    #
+    #     sed "s|Devices/||g" -i "${pkgdir}/opt/$_path/$_aname.xml"
 
     find "${pkgdir}/opt/$_path/" -type f -exec chmod 644 "{}" \;
     find "${pkgdir}/opt/$_path/" -type d -exec chmod 755 "{}" \;
 
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" << EOF
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/bin/bash
 
-if [ ! -d "$HOME"/.config/SEGGER/JLinkDevices ] ; then
-    mkdir -p $HOME/.config/SEGGER/JLinkDevices || exit 1
+if [ ! -d "\$HOME"/.config/SEGGER/JLinkDevices ] ; then
+    mkdir -p \$HOME/.config/SEGGER/JLinkDevices || exit 1
 fi
 
-if [ -d "$HOME"/.config/SEGGER/JLinkDevices/$_aname ] ; then
-    rm -rf $HOME/.config/SEGGER/JLinkDevices/$_aname || exit 1
+if [ -d "\$HOME"/.config/SEGGER/JLinkDevices/$_aname ] ; then
+    rm -rf \$HOME/.config/SEGGER/JLinkDevices/$_aname || exit 1
 fi
 
-if [ ! -d "$HOME"/.config/SEGGER/JLinkDevices/$_aname ] ; then
-    cp -r /opt/$_path $HOME/.config/SEGGER/JLinkDevices/ || exit 1
+if [ ! -d "\$HOME"/.config/SEGGER/JLinkDevices/$_aname ] ; then
+    cp -r /opt/$_path \$HOME/.config/SEGGER/JLinkDevices/ || exit 1
 fi
 EOF
 
@@ -140,24 +144,59 @@ package_holtek-jlink-pack() {
     cp -rv "${srcdir}"/${pkgbase}/Holtek/* "${pkgdir}/opt/$_path/"
 
     sed "1i<DataBase>" -i "${pkgdir}/opt/$_path/$_aname.xml"
-    echo "</DataBase>" >> "${pkgdir}/opt/$_path/$_aname.xml"
+    echo "</DataBase>" >>"${pkgdir}/opt/$_path/$_aname.xml"
 
     find "${pkgdir}/opt/$_path/" -type f -exec chmod 644 "{}" \;
     find "${pkgdir}/opt/$_path/" -type d -exec chmod 755 "{}" \;
 
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" << EOF
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/bin/bash
 
-if [ ! -d "$HOME"/.config/SEGGER/JLinkDevices ] ; then
-    mkdir -p $HOME/.config/SEGGER/JLinkDevices || exit 1
+if [ ! -d "\$HOME"/.config/SEGGER/JLinkDevices ] ; then
+    mkdir -p \$HOME/.config/SEGGER/JLinkDevices || exit 1
 fi
 
-if [ -d "$HOME"/.config/SEGGER/JLinkDevices/$_aname ] ; then
-    rm -rf $HOME/.config/SEGGER/JLinkDevices/$_aname || exit 1
+if [ -d "\$HOME"/.config/SEGGER/JLinkDevices/$_aname ] ; then
+    rm -rf \$HOME/.config/SEGGER/JLinkDevices/$_aname || exit 1
 fi
 
-if [ ! -d "$HOME"/.config/SEGGER/JLinkDevices/$_aname ] ; then
-    cp -r /opt/$_path $HOME/.config/SEGGER/JLinkDevices/ || exit 1
+if [ ! -d "\$HOME"/.config/SEGGER/JLinkDevices/$_aname ] ; then
+    cp -r /opt/$_path \$HOME/.config/SEGGER/JLinkDevices/ || exit 1
+fi
+EOF
+}
+
+package_nationstech-jlink-pack() {
+    pkgdesc="JLINK Pack 支持包支持 Nationstech (国民技术) 全系列芯片，在 SEGGER JLink 7.62 及以上版本下的安装。"
+    provides=('Nationstech_JLINK_pack')
+    install=${pkgname}.install
+
+    _name=nationstech
+    _aname=n32
+    _path=$_name/$_aname
+
+    install -dm0755 "${pkgdir}/opt/$_path/"
+
+    cp -rv "${srcdir}"/${pkgbase}/Nationstech/* "${pkgdir}/opt/$_path/"
+
+    rm -rf "${pkgdir}/opt/$_path/JLink*"
+
+    find "${pkgdir}/opt/$_path/" -type f -exec chmod 644 "{}" \;
+    find "${pkgdir}/opt/$_path/" -type d -exec chmod 755 "{}" \;
+
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<EOF
+#!/bin/bash
+
+if [ ! -d "\$HOME"/.config/SEGGER/JLinkDevices ] ; then
+    mkdir -p \$HOME/.config/SEGGER/JLinkDevices || exit 1
+fi
+
+if [ -d "\$HOME"/.config/SEGGER/JLinkDevices/$_aname ] ; then
+    rm -rf \$HOME/.config/SEGGER/JLinkDevices/$_aname || exit 1
+fi
+
+if [ ! -d "\$HOME"/.config/SEGGER/JLinkDevices/$_aname ] ; then
+    cp -r /opt/$_path \$HOME/.config/SEGGER/JLinkDevices/ || exit 1
 fi
 EOF
 }
