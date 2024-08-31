@@ -1,6 +1,6 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=ima-evm-utils
-pkgver=1.6
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='Produce and verify digital signatures which are used by Linux kernel integrity subsystem'
 arch=('x86_64')
