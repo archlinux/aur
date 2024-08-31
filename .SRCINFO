@@ -1,6 +1,6 @@
 pkgbase = buildbox
 	pkgdesc = A set of tools for remote worker build execution
-	pkgver = 1.2.14
+	pkgver = 1.2.15
 	pkgrel = 1
 	url = https://buildgrid.build
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = buildbox
 	conflicts = buildbox-casd
 	conflicts = buildbox-fuse
 	conflicts = buildbox-run-bubblewrap
-	source = git+https://gitlab.com/BuildGrid/buildbox/buildbox.git#tag=1.2.14
+	source = git+https://gitlab.com/BuildGrid/buildbox/buildbox.git#tag=1.2.15
 	sha256sums = SKIP
 
 pkgname = buildbox
