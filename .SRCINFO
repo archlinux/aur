@@ -1,0 +1,27 @@
+pkgbase = mtr085
+	pkgdesc = Full screen ncurses traceroute tool
+	pkgver = 0.85.r155.0c18525
+	pkgrel = 1
+	url = https://github.com/yvs2014/mtr085
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = pkgconf
+	makedepends = libcap
+	depends = ncurses
+	depends = libidn2
+	depends = libcap
+	provides = mtr
+	conflicts = mtr
+	conflicts = mtr-gtk
+	options = strip
+	options = !debug
+	source = mtr085::git+https://github.com/yvs2014/mtr085
+	sha256sums = SKIP
+
+pkgname = mtr085
