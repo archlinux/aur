@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=repath-studio-bin
-pkgver=0.3.0
+pkgver=0.4.1
 _electronversion=32
 pkgrel=1
 pkgdesc="Scalable Vector Graphics Manipulation"
@@ -19,12 +19,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('16bee13e81ca1b45e6ee6edea2506861afd294f8529186ad9e5c1470f7da1a95'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums=('792649cd20e04a66fe663cdfbdc845649889acf56806f8d2020800d3d3304dff'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
