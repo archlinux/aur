@@ -26,7 +26,7 @@ depends=(
 )
 makedepends=(
     "python-build" "python-installer"  "python-wheel"
-    # "python-setuptools" "python-setuptools-scm"
+    "python-setuptools" "python-setuptools-scm"
 )
 checkdepends=(
     "python-pytest"
@@ -51,17 +51,20 @@ changelog=
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "change_tests_to_testing.patch"
+    "fix_pyproject.patch"
 )
 noextract=()
 sha256sums=(
     '879646d69eb15ec37e15cbd20b28b11a078bfa4abfac4f281fccfbecb0cb4510'
     '2c740be0e33c1732cca631fdfcf6c6c4d959c7fb58a5ab90544fd998d411653c'
+    'ea539251d43b8788f28e8a675d09ca215537d13c9d44cc0fb82f0103b86ce323'
 )
 validpgpkeys=()
 
 prepare() {
 	cd "${srcdir}/${_name}-${pkgver}"
     patch -Np1 -i ../change_tests_to_testing.patch
+    patch -Np1 -i ../fix_pyproject.patch
 }
 
 build() {

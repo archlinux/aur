@@ -1,0 +1,13 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 2ae2e11..9594ccb 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -72,7 +72,7 @@ repository = "https://github.com/xarray-contrib/xskillscore"
+ documentation = "https://xskillscore.readthedocs.io/en/stable/"
+ 
+ [tool.setuptools]
+-packages = ["xskillscore"]
++packages = ["xskillscore", "xskillscore.core", "xskillscore.versioning"]
+ 
+ [tool.setuptools_scm]
+ fallback_version = "9999"
