@@ -2,7 +2,7 @@
     "policies": {
       "DisableAppUpdate": true,
       "Homepage": {
-        "URL": "https://get-zen.vercel.app/",
+        "URL": "https://zen-browser.app/",
         "Locked": false
       },
       "SearchEngines": {

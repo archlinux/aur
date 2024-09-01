@@ -33,7 +33,7 @@ source=("zen-browser-$_realpkgver.tar.bz2::https://github.com/zen-browser/deskto
 sha256sums=('d247254cb0953fbe43f3d7c90e97b16bbbac04b2e85f3fe6d41e56e9842f17d7'
             'b32396cfb4272398d68c59b48c548b86f99ca4ea70bce8e6bed434819b165e53'
             'cbf160c917bfa4f342a3de018fe70089e4a80767c5bc73dcd2a083993880654c'
-            'ccf5105135118acb7d05a7f81383307e959a3b757eb7b645600b47bb7915b504')
+            'f93eb77db526147a8a20744905923a6eda79e2fbcc9f282e2f9228a7a995c798')
 
 #pkgver() {
 #  echo "$_realpkgver" | tr '-' '.'
