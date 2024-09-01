@@ -1,0 +1,22 @@
+pkgbase = python-inquirer3
+	pkgdesc = A collection of common interactive command line user interfaces, based on Inquirer.js (fork of magmax/python-inquirer)
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/guysalt/python-inquirer3
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-setuptools
+	checkdepends = python-pexpect
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-blessed
+	depends = python-readchar
+	depends = python-editor
+	source = python-inquirer3-0.6.1.tar.gz::https://github.com/guysalt/python-inquirer3/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = faa70dd164a0a0befc60ef4c07b231e4a925fcac565ce9a14f5cec3deb368b9b
+
+pkgname = python-inquirer3
