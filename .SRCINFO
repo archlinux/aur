@@ -1,7 +1,7 @@
 pkgbase = perl-io-bufferedselect
 	pkgdesc = Line-buffered select interface
 	pkgver = 1.0
-	pkgrel = 13
+	pkgrel = 14
 	url = https://metacpan.org/release/IO-BufferedSelect
 	arch = any
 	license = PerlArtistic

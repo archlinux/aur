@@ -2,7 +2,7 @@
 
 pkgname=perl-io-bufferedselect
 pkgver=1.0
-pkgrel=13
+pkgrel=14
 pkgdesc='Line-buffered select interface'
 arch=(any)
 license=(PerlArtistic GPL)
