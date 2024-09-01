@@ -1,13 +1,22 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=libhighscore-git
-pkgver=r65.7afa2cf
+pkgver=r74.f6a347b
 pkgrel=1
 pkgdesc="A shared library for Highscore cores"
 arch=('x86_64')
 url="https://gitlab.gnome.org/alicem/libhighscore"
 license=('LGPL-2.1-or-later')
-depends=('glib2')
-makedepends=('gi-docgen' 'git' 'gobject-introspection' 'meson' 'vala')
+depends=(
+  'glib2'
+)
+makedepends=(
+  'gi-docgen'
+  'git'
+  'glib2-devel'
+  'gobject-introspection'
+  'meson'
+  'vala'
+)
 provides=("${pkgname%-git}" 'libhighscore-1.so')
 conflicts=("${pkgname%-git}")
 source=('git+https://gitlab.gnome.org/alicem/libhighscore.git')
