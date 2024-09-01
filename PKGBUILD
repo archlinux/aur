@@ -12,6 +12,7 @@ arch=(x86_64)
 url="https://github.com/Jeffser/${_pkgname%-git}"
 license=(GPL-3.0-only)
 depends=(
+ ollama
  python-pypdf
  python-pytube
  python-html2text
