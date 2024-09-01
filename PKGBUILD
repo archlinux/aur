@@ -1,26 +1,27 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Fabien Dubosson <fabien.dubosson@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=percol
 pkgver=0.2.1
-pkgrel=3
+_commit=4b28037e328da3d0fe8165c11b800cbaddcb525e
+pkgrel=4
 pkgdesc="Adds flavor of interactive filtering to the traditional pipe concept of UNIX shell"
 arch=('any')
-depends=('python2-six')
-makedepends=('python2-setuptools')
-optdepends=('python2-cmigemo: for migemo support')
+depends=('python-six')
+makedepends=('python-setuptools')
+optdepends=('python-cmigemo: for migemo support')
 url="https://github.com/mooz/percol"
 license=('MIT')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mooz/${pkgname}/archive/v$pkgver.tar.gz")
-sha256sums=('75056ba1fe190ae4c728e68df963c0e7d19bfe5a85649e51ae4193d4011042f9')
+source=("https://github.com/mooz/percol/archive/$_commit.zip")
+sha256sums=('38c2bec72fb863181578768d9cd3f3ed3dd98156af2b0095afa2371b65c0dc8c')
 
 build() {
-  cd $pkgname-$pkgver
-  python2 setup.py build
+  cd $pkgname-$_commit
+  python setup.py build
 }
 
 package() {
-  cd $pkgname-$pkgver
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  cd $pkgname-$_commit
+  python setup.py install --root="$pkgdir" --optimize=1
 }
