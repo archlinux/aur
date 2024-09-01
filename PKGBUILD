@@ -7,7 +7,7 @@
 _name=xskillscore
 pkgname=python-${_name}
 pkgver=0.0.26
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="metrics for verifying forecasts"
 arch=("any")
