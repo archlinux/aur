@@ -1,7 +1,7 @@
 pkgbase = perl-statistics-descriptive
 	pkgdesc = Module of basic descriptive statistical functions.
 	pkgver = 3.0801
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Statistics-Descriptive
 	arch = any
 	license = PerlArtistic
