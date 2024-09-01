@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=stylelint
-pkgver=16.8.2
+pkgver=16.9.0
 pkgrel=1
 pkgdesc='Mighty, modern CSS linter'
 arch=(any)
@@ -16,7 +16,7 @@ makedepends=(
 optdepends=('stylelint-config-standard: for the standard shareable config')
 options=(!emptydirs)
 source=("git+https://github.com/stylelint/stylelint.git#tag=$pkgver")
-b2sums=('01da54aa22c9611046832682a7bf5b3e5933b47fc3614ea793fd87e1192dbbaf764d54965736a0315e1bbb012e5eeecca5dcaaa6efc802ab06793993cd336594')
+b2sums=('6b5d7a9adbd027b33d74cd2045b17d39ff3fa465fc00dd76796744b1c55d5411674ac9e5b725ad441e41e31b785cdbb9d698e7247ef20c4d442e451ca85287ba')
 
 prepare() {
   cd $pkgname
@@ -30,6 +30,7 @@ check() {
 
 package() {
   local mod_dir=/usr/lib/node_modules/$pkgname
+
   install -d "$pkgdir"/{usr/bin,usr/share/doc/$pkgname,$mod_dir}
   ln -s $mod_dir/bin/$pkgname.mjs "$pkgdir"/usr/bin/$pkgname
 
