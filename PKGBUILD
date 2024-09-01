@@ -1,14 +1,14 @@
-# Maintainer: xiota / aur.chaotic.cx
+# Maintainer:
 # Contributor: Olaf Bauer <hydro@freenet.de>
 
 _pkgname='dtv-scan-tables'
 pkgname="$_pkgname-git"
-pkgver=r1297.833d4cc1
+pkgver=r1303.7098bdd
 pkgrel=1
 pkgdesc="Digital TV scan tables"
-arch=('any')
 url="https://git.linuxtv.org/dtv-scan-tables.git"
-license=('GPL2' 'LGPL2')
+license=('GPL-2.0-only' 'LGPL-2.0-only')
+arch=('any')
 
 makedepends=(
   'git'
@@ -26,7 +26,7 @@ pkgver() {
   cd "$_pkgsrc"
   printf "r%s.%s" \
     "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
+    "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
@@ -36,6 +36,6 @@ build() {
 
 package() {
   cd "$_pkgsrc"
-  make PREFIX="${pkgdir:?}/usr" DVBV5DIR=dvb install
-  make PREFIX="${pkgdir:?}/usr" install_v3
+  make PREFIX="$pkgdir/usr" DVBV5DIR=dvb install
+  make PREFIX="$pkgdir/usr" install_v3
 }
