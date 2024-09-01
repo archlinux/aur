@@ -1,0 +1,14 @@
+pkgbase = chapar-bin
+	pkgdesc = Chapar is a simple and easy to use api testing tools aims to help developers to test their api endpoints. it support http and grpc protocols.
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/chapar-rest/chapar
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = curl
+	makedepends = jq
+	conflicts = chapar
+	source = https://github.com/chapar-rest/chapar/releases/download/v0.2.6/chapar-linux-v0.2.6-amd64.tar.xz
+	sha256sums = SKIP
+
+pkgname = chapar-bin
