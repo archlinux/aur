@@ -3,8 +3,8 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Tom Richards <tom@tomrichards.net>
 pkgname=highscore-git
-pkgver=r435.fd3c2851
-pkgrel=3
+pkgver=r869.b1d9f20
+pkgrel=1
 pkgdesc="A rewrite of Highscore, formerly gnome-games"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/World/highscore"
@@ -31,8 +31,8 @@ optdepends=(
   'mednafen-highscore-git'
   'mgba-highscore-git'
   'mupen64plus-highscore-git'
-#  'nestopia-highscore-git'  ## WIP
-#  'prosystem-highscore-git'  ## WIP
+  'nestopia-highscore-git'
+  'prosystem-highscore-git'
 #  'stella-highscore-git'  ## WIP
 )
 provides=("${pkgname%-git}")
@@ -42,7 +42,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
