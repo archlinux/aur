@@ -13,6 +13,7 @@ pkgbase = thrive
 	makedepends = cmake
 	makedepends = clang
 	makedepends = lld
+	makedepends = ninja
 	makedepends = brotli
 	makedepends = ca-certificates
 	makedepends = embree
@@ -44,6 +45,7 @@ pkgbase = thrive
 	depends = libxcursor
 	depends = fontconfig
 	depends = gcc-libs
+	options = !lto
 	source = git+https://github.com/Revolutionary-Games/Thrive.git#tag=v0.7.0
 	source = git+https://github.com/Revolutionary-Games/RevolutionaryGamesCommon.git
 	source = git+https://github.com/jrouwe/JoltPhysics.git
