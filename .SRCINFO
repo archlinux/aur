@@ -1,0 +1,18 @@
+pkgbase = python-developer_disk_image
+	pkgdesc = Home for both DeveloperDiskImage files (iOS < 17.0) and Personalized files (iOS >= 17.0)
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/doronz88/DeveloperDiskImage
+	arch = any
+	license = GPL3
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	source = python-developer_disk_image-0.0.2.tar.gz::https://github.com/doronz88/DeveloperDiskImage/archive/refs/tags/v0.0.2.tar.gz
+	sha256sums = 1ed1d921916f9f86a3cbe939017c1ca3f858554a0d8f156f87fbc617fa086505
+
+pkgname = python-developer_disk_image
