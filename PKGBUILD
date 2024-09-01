@@ -6,8 +6,8 @@ _use_poppler=OFF  # ON or OFF
 _qt_version_major=6  # 5 or 6
 
 pkgname=beamerpresenter
-pkgver=0.2.4
-pkgrel=3
+pkgver=0.2.5
+pkgrel=1
 pkgdesc="Modular multi-screen pdf presenter"
 arch=('x86_64')
 url="https://github.com/stiglers-eponym/BeamerPresenter"
@@ -36,7 +36,7 @@ fi
 
 backup=('etc/xdg/beamerpresenter/beamerpresenter.conf' 'etc/xdg/beamerpresenter/gui.json')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('4ccdd747b2c829411de3f33548a125f8e7f16a768e03f56f71bd6b3f27f5bca1')
+sha256sums=('87d5ba4b369636862638edf9e67d162d94d43b0335101ff975b188c55316e40e')
 conflicts=('beamerpresenter')
 provides=("beamerpresenter=${pkgver}")
 
