@@ -1,14 +1,14 @@
 pkgbase = mudslide
 	pkgdesc = Firefox Reader Mode in your terminal! - CLI tool for Mozilla's Readability library
-	pkgver = 0.26.0
+	pkgver = 0.29.0
 	pkgrel = 1
 	url = https://www.npmjs.com/package/mudslide
 	arch = any
 	license = GPL3
 	makedepends = npm
 	depends = nodejs
-	noextract = mudslide-0.26.0.tgz
-	source = https://registry.npmjs.org/mudslide/-/mudslide-0.26.0.tgz
-	sha256sums = 2d02a1e94fe3d197ce9314f9e7bb220cc46301c5bf705db54831404d1b628693
+	noextract = mudslide-0.29.0.tgz
+	source = https://registry.npmjs.org/mudslide/-/mudslide-0.29.0.tgz
+	sha256sums = 15163c2086588a256bc0536ace6622b1aedfdb7e445a648515ed0eb28720e1a0
 
 pkgname = mudslide
