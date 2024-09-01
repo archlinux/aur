@@ -1,0 +1,19 @@
+pkgbase = fyi
+	pkgdesc = A command line utility and notify-send alternative to send desktop notifications
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://codeberg.org/dnkl/fyi
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = scdoc
+	depends = dbus
+	provides = fyi
+	conflicts = fyi
+	source = fyi-1.0.3::git+https://codeberg.org/dnkl/fyi.git?signed#commit=86ebae882f05aa0412c7377f13807032e0f36182
+	validpgpkeys = B19964FBBA09664CC81027ED5BBD4992C116573F
+	b2sums = SKIP
+
+pkgname = fyi
