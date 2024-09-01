@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Perforce Helix Merge
+Type=Application
+Exec=/opt/p4merge/bin/p4merge
+Categories=Development

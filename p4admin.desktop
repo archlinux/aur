@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Perforce Helix Admin
+Type=Application
+Exec=/opt/p4merge/bin/p4admin
+Categories=Development
