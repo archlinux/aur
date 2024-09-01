@@ -28,5 +28,5 @@ package() {
   cd "$pkgname"
   sudo make install
 }
-
-sha256sums=('9ceceecc8e648b5ff7eaa928226756405667d0a901d7a527a26082037adc305e')
+sha256sums=('9ceceecc8e648b5ff7eaa928226756405667d0a901d7a527a26082037adc305e'
+            'SKIP')

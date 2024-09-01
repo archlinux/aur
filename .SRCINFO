@@ -12,5 +12,6 @@ pkgbase = lu5
 	source = git+https://github.com/matiasvlevi/lu5.git#tag=v0.1.6
 	source = git+https://github.com/matiasvlevi/lua.git
 	sha256sums = 9ceceecc8e648b5ff7eaa928226756405667d0a901d7a527a26082037adc305e
+	sha256sums = SKIP
 
 pkgname = lu5
