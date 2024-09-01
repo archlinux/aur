@@ -1,7 +1,7 @@
 pkgbase = perl-function-parameters
 	pkgdesc = define functions and methods with parameter lists ("subroutine signatures")
 	pkgver = 2.002004
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Function-Parameters
 	arch = x86_64
 	license = PerlArtistic
