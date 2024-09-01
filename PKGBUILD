@@ -7,7 +7,7 @@ arch=("x86_64")
 license=("GPL")
 makedepends=("cargo" "rust>=1.78")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NotBalds/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=(25ae72c776a545d54a34693b7956ad7f7dafa7d9551b5ef301a5095e1ab5ae6f)  
+sha256sums=(02216b4648d336ec44a65fd865a535b9b1a687ea4d34cf7d532d557f445dabeb)  
 
 build() {
 	cd "$pkgname-$pkgver"
