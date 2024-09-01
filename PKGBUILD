@@ -2,11 +2,11 @@
 _pkgname=torzu
 _branch=main
 pkgname=torzu-git
-pkgver=r27158.1b51d49e1
+pkgver=r27167.6e6167395
 pkgrel=1
 pkgdesc="Torzu is a fork of yuzu, the world's most popular, open-source, Nintendo Switch emulator. It is written in C++ with portability in mind."
 arch=(x86_64)
-url=https://codeberg.org/litucks/torzu.git
+url=https://notabug.org/litucks/torzu
 license=(GPL-3.0-or-later)
 provides=('torzu')
 depends=('alsa-lib' 'brotli' 'catch2' 'enet' 'llvm-libs' 'freetype2' 'gcc-libs' 'glibc' 'glu' 'hicolor-icon-theme' 'gamemode' 'libass' 'libpulse' 'libtool' 'libvdpau' 'lz4' 'qt5-base' 'qt5-multimedia' 'qt5-webengine' 'sdl2' 'zlib')
@@ -14,7 +14,7 @@ makedepends=('curl' 'autoconf' 'cmake' 'gcc13' 'git' 'glslang' 'alsa-lib' 'glu' 
 conflicts=('torzu')
 options=(!debug lto strip)
 source=(
-  git+https://codeberg.org/litucks/torzu.git
+  git+https://notabug.org/litucks/torzu
   git+https://github.com/lsalzman/enet.git
   cubeb::git+http://github.com/mozilla/cubeb.git
   git+https://github.com/libusb/libusb.git
