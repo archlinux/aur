@@ -1,7 +1,7 @@
 pkgbase = mist-icon-theme
 	pkgdesc = Mist icon theme
 	pkgver = 3.0.0+20+gaaba3bb
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.gnome.org/Design
 	arch = any
 	license = GPL
@@ -9,10 +9,8 @@ pkgbase = mist-icon-theme
 	makedepends = gtk-engines
 	makedepends = icon-naming-utils
 	makedepends = gnome-common
-	depends = gtk-update-icon-cache
 	depends = gnome-icon-theme
 	source = git+https://gitlab.gnome.org/Archive/gnome-themes.git#commit=aaba3bb83add369a480f393a8d0907f6ea72b285
 	sha256sums = SKIP
 
 pkgname = mist-icon-theme
-
