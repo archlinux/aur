@@ -1,0 +1,19 @@
+pkgbase = rusty-psn-bin
+	pkgdesc = Update PS3 games
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = https://github.com/RainbowCookie32/rusty-psn
+	arch = x86_64
+	license = Apache
+	provides = rustypsn
+	options = !strip
+	source = https://github.com/RainbowCookie32/rusty-psn/releases/download/v0.4.6/rusty-psn-cli-linux.zip
+	source = https://github.com/RainbowCookie32/rusty-psn/releases/download/v0.4.6/rusty-psn-egui-linux.zip
+	source = rusty-psn.desktop
+	source = playstation-store.svg
+	sha256sums = 96f90fe66c0781776bfb8563f0ee4f3f1aa1c4fb7b558d5f3d1ee946f2e7b89d
+	sha256sums = 9a8d6bfad8d92df0fca2027750a1beb5d9e67a524c0a3b71c02fdb6cb37d69f0
+	sha256sums = 2cb6715bb0cf3646091369385e285c92a2573f1602580f60a51d5c0ea8e638a5
+	sha256sums = 4c6f59e5d15a93b76fc1a90ca4f8283193a870627a958eff62cda952474d089b
+
+pkgname = rusty-psn-bin
