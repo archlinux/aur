@@ -2,10 +2,10 @@
 # Maintainer: Lili1228 <aur at lili dot lgbt>
 
 _pkgname=86Box
-_build=b6000
+_build=b6130
 
 pkgname=86box-appimage
-pkgver=4.2
+pkgver=4.2.1
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'armv7h' 'aarch64')
@@ -22,10 +22,10 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64.appimage::${_source}-Linux-x86_64-$
 source_armv7h=("${_pkgname}-${pkgver}-arm7h.appimage::${_source}-NDR-Linux-arm32-${_build}.AppImage")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.appimage::${_source}-NDR-Linux-arm64-${_build}.AppImage")
 
-sha512sums_pentium4=('64b59c5b2538ed214f7a211965f86bb61aa5b61a764b6fb59e6cab6fcfc1ceabd5e708444e10b6c157e3a3fd0b659088410252f727371703263f486a7157fd01')
-sha512sums_x86_64=('e21c55c8299df3f86b1364df282fedf0074c93b9ca4f4193005d20e2e8ad96d8178b60c9627f8e8355e94936153bd369fc017f775b28d642a7897a94742aa02d')
-sha512sums_armv7h=('8867e3d17b968addbb73d9dfcebf4c41feb4ad5790309d0016758b8c5c32e34a6eb3269c0ea6a5544d93c6c8cb4c8d331f9ddd09a73a5048910feb7680375299')
-sha512sums_aarch64=('9b42fa8e3189e27a9dd8f2e0805b8da8e39f180db41f8dcb1651e90d249046a2ce4f1042cdf3d0934869f4da1a498f09a8f6369ff68d0dbd29d70999e2724265')
+sha512sums_pentium4=('1a69f53a1223d522bf9c56df4526d5cc1060a66219267fa48becc5465d1b7934209624f7f129f7c93f7bb9cf1723ac28bb1850a095251cccb4ea8357c01a283b')
+sha512sums_x86_64=('0c00e44aff9c00581a88de3a61572a0f4cd5ba310b1c07905b7c4abf6c89e717d1fa93deb6e3846a33b2cac7cff8a022f91b7a1c4f2afeb7f1fdfa83abd14da6')
+sha512sums_armv7h=('c6350d07b30323399a6e361748a14230f52b44f9c9a54a036563e40fc03ace8a2892687f411c0c93f975f43b45bd62da36864260e14dea30da10ee3222efa8ad')
+sha512sums_aarch64=('71db79d1449f3b5d36cff2c2fc3fb3a76ff06275cc84cf70524dd3867cc288e5030faddb3b377135a302ee87bb4569f277ff8494b2d5e017fabfb81f9a735b45')
 
 
 prepare() {
