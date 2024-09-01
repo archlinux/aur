@@ -1,7 +1,7 @@
 pkgbase = ack
 	pkgdesc = A Perl-based grep replacement, aimed at programmers with large trees of heterogeneous source code
 	pkgver = 3.7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://betterthangrep.com/
 	arch = any
 	license = GPL
