@@ -1,3 +1,11 @@
+2024-08-26 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.0.6.4-1:
+    Added OnlinePreferences bot config property, which right now allows you to enable Steam Deck presence (@JustArchi #3261).
+    UserInterfaceMode bot config property got refactored and received some new properties, the existing configs are entirely compatible with it, but the underlying enum has changed (@JustArchi).
+    Core internal ASF mechanisms related with our SteamKit2 library were heavily improved/refactored for new functionalities or enhancements. It should be especially visible for people running higher amount of bots, as the resources utilization should drop significantly in those cases (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2024-07-30 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.0.5.2-1:
     Fixed ASF always trying to create www folder if it doesn't exist (@JustArchi).
