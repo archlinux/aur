@@ -1,6 +1,6 @@
 pkgbase = audiobookshelf
 	pkgdesc = Self-hosted audiobook server for managing and playing audiobooks
-	pkgver = v2.12.3
+	pkgver = v2.13.0
 	pkgrel = 1
 	url = https://github.com/advplyr/audiobookshelf
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = audiobookshelf
 	options = !debug
 	options = !strip
 	backup = etc/conf.d/audiobookshelf
-	source = git+https://github.com/advplyr/audiobookshelf#tag=v2.12.3
+	source = git+https://github.com/advplyr/audiobookshelf#tag=v2.13.0
 	source = audiobookshelf.conf.d
 	source = audiobookshelf.hook
 	source = audiobookshelf.service
 	source = audiobookshelf.sysusers
 	source = audiobookshelf.tmpfiles
-	md5sums = c192e17fae0f2a0b4614ea0ab90dbc36
+	md5sums = dc38117de9f8d03fe960f4292ee42f7d
 	md5sums = 4832a71a50f33831b6b4be53555e05f5
 	md5sums = 3c4d1ab715f9221cb625b8248e3023df
 	md5sums = ed4711d3ce7d76fc173fb0e10915b80c
