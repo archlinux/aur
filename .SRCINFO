@@ -1,6 +1,6 @@
 pkgbase = pbfetch-git
 	pkgdesc = An unbelievably customizable hardware/software fetch
-	pkgver = r129.7b912c9
+	pkgver = r216.a959519
 	pkgrel = 1
 	url = https://github.com/pennybelle/pbfetch
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = pbfetch-git
 	depends = python-psutil
 	provides = pbfetch-git
 	conflicts = pbfetch-git
-	source = git+https://github.com/pennybelle/pbfetch.git
+	source = git+https://github.com/pennybelle/pbfetch.git#branch=main
 	sha256sums = SKIP
 
 pkgname = pbfetch-git

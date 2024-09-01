@@ -1,6 +1,6 @@
-# Maintainer: Penelope Belle <penny belle 98 at gmail dot com>
+# Maintainer: Penelope Belle <contact at pennybelle dot dev>
 pkgname=pbfetch-git
-pkgver=r129.7b912c9
+pkgver=r216.a959519
 pkgrel=1
 pkgdesc="An unbelievably customizable hardware/software fetch"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=("python-psutil")
 makedepends=(python-build python-installer python-wheel python-hatchling git)
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("git+https://github.com/pennybelle/pbfetch.git")
+source=("git+https://github.com/pennybelle/pbfetch.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
