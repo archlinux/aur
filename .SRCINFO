@@ -1,11 +1,11 @@
 pkgbase = ttf-iosevka-comfy
 	pkgdesc = Custom build of Iosevka with different style and metrics than the default.
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://git.sr.ht/~protesilaos/iosevka-comfy
 	arch = any
 	license = OFL
-	source = ttf-iosevka-comfy-1.4.0.tar.gz::https://github.com/protesilaos/iosevka-comfy/archive/refs/tags/1.4.0.tar.gz
-	b2sums = abf174a9fab83201088cd07aca7660685b37ce865fabb8a5929449dff7df423c86fe13e1d00ea074e9e9f8724e444221486bc01c2f3d2fa0a6d8488690e47540
+	source = ttf-iosevka-comfy-2.0.0.tar.gz::https://github.com/protesilaos/iosevka-comfy/archive/refs/tags/2.0.0.tar.gz
+	b2sums = 87b74f5bc6a92d506cc295c460636ae438335be7d81b172fcd1fe1389f281c0f387694af1d06279eb6234e7ba0f1b4b2c15e029949e3a1961818b568a3370b2d
 
 pkgname = ttf-iosevka-comfy
