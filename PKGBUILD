@@ -2,7 +2,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="lampswitch"
-pkgver="24.8.1"
+pkgver="24.9.1"
 pkgrel=1
 pkgdesc="Indicator and control applet for Web services"
 arch=("i686" "x86_64" "pentium4")
@@ -11,7 +11,7 @@ license=("GPL-3.0-or-later")
 depends=("gtk3" "libayatana-appindicator" "hicolor-icon-theme" "glib2" "bash" "glibc")
 makedepends=("cmake" "cmake-extras" "intltool")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("a066c04755d8eabf347c9299bf9e5cfd")
+md5sums=("054ec3a0e80a54f1f9014949dddc9b9c")
 
 build()
 {

@@ -1,6 +1,6 @@
 pkgbase = lampswitch
 	pkgdesc = Indicator and control applet for Web services
-	pkgver = 24.8.1
+	pkgver = 24.9.1
 	pkgrel = 1
 	url = https://tari.in/www/software/lampswitch
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = lampswitch
 	depends = glib2
 	depends = bash
 	depends = glibc
-	source = lampswitch-24.8.1.tar.gz::https://github.com/tari01/lampswitch/archive/24.8.1.tar.gz
-	md5sums = a066c04755d8eabf347c9299bf9e5cfd
+	source = lampswitch-24.9.1.tar.gz::https://github.com/tari01/lampswitch/archive/24.9.1.tar.gz
+	md5sums = 054ec3a0e80a54f1f9014949dddc9b9c
 
 pkgname = lampswitch
