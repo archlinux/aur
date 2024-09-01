@@ -1,0 +1,14 @@
+pkgbase = pypy3-tomli
+	pkgdesc = A lil' TOML parser
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/hukkin/tomli
+	arch = any
+	license = MIT
+	makedepends = pypy3-setuptools
+	makedepends = python-dephell
+	depends = pypy3
+	source = tomli-1.0.4.tar.gz::https://github.com/hukkin/tomli/archive/1.0.4.tar.gz
+	sha512sums = e30e06ea805c94359596c3d6db82464ccafcdde0172cae12d62c889c70986159b3198cf465183854bef1b048c21e487c2b0dad2825e2477d363885e749b238ee
+
+pkgname = pypy3-tomli

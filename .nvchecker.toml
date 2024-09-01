@@ -1,0 +1,4 @@
+[pypy3-tomli]
+source = "github"
+github = "hukkin/tomli"
+use_max_tag = "true"
