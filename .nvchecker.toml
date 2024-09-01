@@ -2,3 +2,4 @@
 source = "github"
 github = "nat-n/poethepoet"
 use_latest_release = "true"
+prefix = "v"
