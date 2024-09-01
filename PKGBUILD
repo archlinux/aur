@@ -4,7 +4,7 @@ _system_godot=false
 
 pkgname=thrive
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="the evolution game Thrive."
 arch=("x86_64" "aarch64")
 url="https://revolutionarygamesstudio.com/"
@@ -13,7 +13,7 @@ depends=(
     "libxrender" "libxi" "libx11" "libglvnd" "libxinerama" "zlib" "libxrandr"
     "libxext" "glibc" "libxcursor" "fontconfig" "gcc-libs"
 )
-makedepends=("git" "git-lfs" "dotnet-sdk-8.0" "p7zip" "cmake" "clang" "lld" "ninja")
+makedepends=("git" "git-lfs" "dotnet-sdk-8.0" "cmake" "clang" "lld" "ninja")
 source=(
     "git+https://github.com/Revolutionary-Games/Thrive.git#tag=v$pkgver"
     "git+https://github.com/Revolutionary-Games/RevolutionaryGamesCommon.git"
@@ -25,12 +25,6 @@ if "$_system_godot"
 then
     makedepends+=("godot-mono=$_godot")
 else
-    # godot-mono's runtime dependencies
-    makedepends+=(
-        "brotli" "ca-certificates" "embree" "freetype2" "graphite" "harfbuzz" "harfbuzz-icu"
-        "libspeechd" "libsquish" "libtheora" "libvorbis" "libwebp" "libwslay" "openxr"
-        "miniupnpc" "pcre2" "libogg" "libpng" "zstd"
-    )
     source_x86_64+=("godot-$_godot-x86_64.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_linux_x86_64.zip")
     source_aarch64+=("godot-$_godot-aarch64.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_linux_arm64.zip")
 fi
