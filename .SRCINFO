@@ -1,10 +1,11 @@
 pkgbase = kf6-servicemenus-reimage
 	pkgdesc = Manipulate images e their metadata
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/irfanhakim-as/kde-service-menu-reimage
 	arch = any
 	license = GPL-3.0+
+	makedepends = qt5-tools
 	depends = dolphin
 	depends = imagemagick
 	depends = kdialog
