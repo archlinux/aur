@@ -1,7 +1,7 @@
 pkgbase = perl-software-license
 	pkgdesc = packages that provide templated software licenses
 	pkgver = 0.104006
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Software-License
 	arch = any
 	license = PerlArtistic
