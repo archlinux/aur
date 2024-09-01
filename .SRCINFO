@@ -1,7 +1,7 @@
 pkgbase = beamerpresenter-git
 	pkgdesc = Modular multi-screen pdf presenter (git)
-	pkgver = 0.2.4_931.e27aa92
-	pkgrel = 2
+	pkgver = 0.2.5_983.c30fca1
+	pkgrel = 1
 	url = https://github.com/stiglers-eponym/BeamerPresenter
 	arch = x86_64
 	license = AGPL3
@@ -15,7 +15,7 @@ pkgbase = beamerpresenter-git
 	depends = openjpeg2
 	depends = gumbo-parser
 	depends = libmupdf
-	provides = beamerpresenter=0.2.4_931.e27aa92
+	provides = beamerpresenter=0.2.5_983.c30fca1
 	conflicts = beamerpresenter
 	backup = etc/xdg/beamerpresenter/beamerpresenter.conf
 	backup = etc/xdg/beamerpresenter/gui.json
