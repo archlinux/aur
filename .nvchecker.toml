@@ -1,0 +1,5 @@
+[pypy3-pep517]
+source = "github"
+github = "pypa/pep517"
+use_max_tag = "true"
+prefix = "v"
