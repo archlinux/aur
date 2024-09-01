@@ -2,7 +2,7 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.32.r16618.bceaf46e2f
+pkgver=0.0.33.r16885.e56164f1e3
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
@@ -37,6 +37,9 @@ depends=(
   pugixml
 # newer system flatbuffers is incompatible with the version RPCS3 depends on
 # flatbuffers
+)
+optdepends=(
+  rpcs3-udev
 )
 makedepends=(
   cmake
