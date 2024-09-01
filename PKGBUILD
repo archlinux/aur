@@ -1,5 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-# Co-Maintainer: Corax <cor dot ax26 at gmail dot com>
+# Maintainer: Corax <cor dot ax26 at gmail dot com>
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-mediainfodll
 pkgver=17.10
 pkgrel=1
