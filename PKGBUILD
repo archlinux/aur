@@ -25,7 +25,7 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    install -Dm755 "$srcdir/${pkgname%-git}/src/${pkgname%-git}/config/config.txt" "$pkgdir/usr/share/pbfetch/config/config.txt"
+    # install -Dm755 "$srcdir/${pkgname%-git}/src/${pkgname%-git}/config/config.txt" "$pkgdir/usr/share/pbfetch/config/config.txt"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm755 pbfetch "$pkgdir/usr/bin/pbfetch"
 }
