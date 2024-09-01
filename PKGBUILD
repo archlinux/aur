@@ -1,24 +1,32 @@
 # Maintainer Matias Vazquez-Levi <matiasvlevi@gmail.com>
 
 pkgname=lu5
-pkgver=0.0.6
-pkgrel=3
+pkgver=0.1.6
+pkgrel=4
 pkgdesc="Lua interpreter for Creative Coding"
 arch=('x86_64')
 url="https://github.com/matiasvlevi/lu5"
 license=('MIT')
-depends=('lua' 'glfw' 'glew' 'freetype2')
+depends=('lua' 'glfw' 'glu' 'freetype2')
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/matiasvlevi/lu5/archive/refs/tags/v$pkgver.tar.gz")
+source=("git+https://github.com/matiasvlevi/lu5.git#tag=v$pkgver"
+        "git+https://github.com/matiasvlevi/lua.git")
+
+prepare() {
+  cd "$pkgname"
+  git submodule init
+  git config submodule.lua.url "$srcdir/lua"
+  git -c protocol.file.allow=always submodule update
+}
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   sudo make install
 }
 
-sha256sums=('a2c8305ea284e1a9f0cba1bbe6c212ce8d9fe56c7948892f2d97ff0d3619ce1d')
+sha256sums=('9ceceecc8e648b5ff7eaa928226756405667d0a901d7a527a26082037adc305e')
