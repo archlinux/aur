@@ -1,0 +1,24 @@
+pkgbase = no-risk-client-bin
+	pkgdesc = NoRiskClient Launcher to install and launch Minecraft with several new features
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = norisk.gg
+	arch = x86_64
+	groups = NoRiskClient
+	license = GPL
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = openssl
+	depends = pango
+	depends = webkit2gtk
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/NoRiskClient/noriskclient-launcher/releases/download/v0.5.6/NoRiskClient-Linux.deb
+	sha512sums_x86_64 = 67d021b7cc7e943da36d444b05ff3b5b62a632256a81cb0632417264727f58d9c42b3c41ba7bd3267961e8e38fca53f2fc3acb4bcd85cb99ec7615e2320b39f5
+
+pkgname = no-risk-client-bin
