@@ -1,7 +1,7 @@
 pkgbase = catppuccin-fcitx5-git
 	pkgdesc = Soothing pastel theme for Fcitx5
-	pkgver = r15.ce244cf
-	pkgrel = 2
+	pkgver = r18.3471b91
+	pkgrel = 1
 	url = https://github.com/catppuccin/fcitx5
 	arch = any
 	license = MIT
