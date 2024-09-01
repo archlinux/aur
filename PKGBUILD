@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-daemon-git
 pkgver=1.0.0.alpha.1.r4.gadd1cb3
-pkgrel=1
+pkgrel=2
 pkgdesc="Cosmic settings daemon"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-settings-daemon"
@@ -34,8 +34,6 @@ prepare() {
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
-  sed -i 's|libexec|lib|g' Makefile src/main.rs
-
   # Use wheel instead of sudo group
   # https://github.com/pop-os/cosmic-settings-daemon/issues/42
   sed -i 's|sudo|wheel|g' "data/polkit-1/rules.d/${pkgname%-git}.rules"
@@ -44,6 +42,7 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
+  export GEOCLUE_AGENT="/usr/lib/geoclue-2.0/demos/agent"
 
   # use mold instead of lld to speed up build
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
