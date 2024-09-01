@@ -5,7 +5,7 @@ _target=mips64-elf
 pkgname=${_target}-gcc
 pkgver=14.2.0
 _islver=0.26
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
@@ -81,7 +81,6 @@ build() {
     --disable-libvtv \
     --disable-nls \
     --disable-shared \
-    --disable-threads \
     --disable-werror
 
   make
