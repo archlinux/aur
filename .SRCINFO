@@ -1,11 +1,11 @@
 pkgbase = cnijfilter2-mg7700
 	pkgdesc = Canon InkJet Printer Driver (PIXMA MG3640, MG3650, MG5740, MG5750, MG6840, MG6850, MG7740, MG7750)
 	pkgver = 5.20
-	pkgrel = 2
+	pkgrel = 3
 	url = https://th.canon/en/support/0100690202
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = LicenseRef-Canon
 	depends = cups
 	depends = ghostscript
 	depends = libxml2

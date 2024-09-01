@@ -5,11 +5,11 @@ _pkgname="cnijfilter2-mg7700"
 pkgname="$_pkgname"
 pkgver=5.20
 _deb_pkgrel=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Canon InkJet Printer Driver (PIXMA MG3640, MG3650, MG5740, MG5750, MG6840, MG6850, MG7740, MG7750)'
 url='https://th.canon/en/support/0100690202'
 arch=('i686' 'x86_64')
-license=('custom')
+license=('LicenseRef-Canon')
 
 depends=(
   'cups'
