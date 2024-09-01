@@ -1,8 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Erik Wallström <erik.wallstrom@live.com>
 pkgname=pop-icon-theme-git
-pkgver=3.5.0.r2504.3126c6a
+pkgver=3.5.0.r0.g3126c6a
 pkgrel=1
+epoch=1
 pkgdesc="System76 Pop icon theme"
 arch=('any')
 url="https://github.com/pop-os/icon-theme"
@@ -17,8 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd icon-theme
-  printf "%s.r%s.%s" "$(head -n 1 debian/changelog | cut -d'(' -f 2 | cut -d')' -f 1 | \
-    sed 's/-/./')" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
