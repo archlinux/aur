@@ -1,14 +1,14 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=quickmedia-git
-pkgver=r1433.7d3a13e
-pkgrel=1
+pkgver=r1434.144b510
+pkgrel=2
 pkgdesc='A rofi inspired native client for web services. Supports youtube, peertube, lbry, soundcloud, nyaa.si, 4chan, matrix, saucenao, hotexamples, anilist, dramacool and several manga sites.'
 arch=('x86_64')
 url="https://git.dec05eba.com/QuickMedia"
 license=('GPL-3.0-only')
 makedepends=('sibs-git')
-depends=('libglvnd' 'libx11' 'curl' 'mpv' 'libxrandr' 'noto-fonts')
+depends=('libglvnd' 'libx11' 'curl' 'mpv' 'libxrandr' 'libxrender' 'noto-fonts')
 optdepends=(
     'libnotify: For showing notifications'
     'automedia: For automatically downloading new chapters of tracked manga'
@@ -27,7 +27,7 @@ source=(
 )
 noextract=("twemoji-2.tar.gz")
 sha512sums=(
-    '6b214e0635910943688ffbacf8587076e10c7e07ae3beac1aa5f4ff888696639d96fc9dcdd3cf1607c4f2a0acaab67acbf20ee8c48fc60255d8e6af225d94a75'
+    'da9c65206193013efed8501b921ed7a36d49125f3fd37c03a38c016e55abdaa9a552b862fe9f218f285d7b280eaa0ab778646ade4c2806788a5daca5381b32a2'
     'a3c7a268bd48bd79b6bfc771affd56d71ffd78ba4df8e2a9e1783162a78c1f053c408e02f4d49ca96eee6a0a19b8cfc85197ad40d497cd89934b8311dcfebe2b'
 )
 
