@@ -1,0 +1,21 @@
+pkgbase = python-la_panic
+	pkgdesc = A tool for working with iPhone crash reports
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://gitlab.com/yanivhasbanidev/la_panic
+	arch = any
+	license = GPL3
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	depends = python
+	depends = python-setuptools
+	depends = python-click
+	depends = python-coloredlogs
+	depends = python-cached-property
+	source = python-la_panic-0.5.0::git+https://gitlab.com/yanivhasbanidev/la_panic.git#tag=0.5.0
+	sha256sums = 745798422e4541171cd20220d2afbd5443408a2f9699003fec717f1157c3cd21
+
+pkgname = python-la_panic
