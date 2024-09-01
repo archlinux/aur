@@ -2,67 +2,80 @@
 
 pkgname=snmpb
 pkgver=1.0
-pkgrel=8
-pkgdesc="SnmpB is a desktop SNMP browser and MIB editor written in Qt."
+pkgrel=9
+pkgdesc='SNMP browser and MIB editor written in Qt.'
 arch=('x86_64')
-url="https://sourceforge.net/projects/snmpb/"
+url='https://sourceforge.net/projects/snmpb/'
 license=('GPL-2.0-only')
-depends=('qwt' 'qt5-base' 'qt5-svg')
+depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libglvnd' 'qwt' 'qt5-base')
 makedepends=('bison' 'flex' 'qt5-tools' 'git')
+_smi=0.5.0
+_tomcrypt=1.18.2
+_qwt=6.3.0
 source=("$pkgname-code::git+https://git.code.sf.net/p/snmpb/code"
-	"https://www.ibr.cs.tu-bs.de/projects/libsmi/download/libsmi-0.5.0.tar.gz"
-	"https://github.com/libtom/libtomcrypt/releases/download/v1.18.2/crypt-1.18.2.tar.xz"
-	"https://sourceforge.net/projects/qwt/files/qwt/6.2.0/qwt-6.2.0.tar.bz2")
+        "https://www.ibr.cs.tu-bs.de/projects/libsmi/download/libsmi-${_smi}.tar.gz"
+        "https://github.com/libtom/libtomcrypt/releases/download/v${_tomcrypt}/crypt-${_tomcrypt}.tar.xz"
+        "https://sourceforge.net/projects/qwt/files/qwt/${_qwt}/qwt-${_qwt}.tar.bz2")
 sha256sums=('SKIP'
             'f21accdadb1bb328ea3f8a13fc34d715baac6e2db66065898346322c725754d3'
             '96ad4c3b8336050993c5bc2cf6c057484f2b0f9f763448151567fbab5e767b84'
-            '9194f6513955d0fd7300f67158175064460197abab1a92fa127a67a4b0b71530')
+            'dcb085896c28aaec5518cbc08c0ee2b4e60ada7ac929d82639f6189851a6129a')
 
 prepare() {
-	mkdir -p "$pkgname-$pkgver"
-	cp -r $pkgname-code/{app,snmp++,license.txt,Makefile} "$pkgname-$pkgver"
-	# Copy needed Libs
-	cp -r "libsmi-0.5.0" "$pkgname-$pkgver/libsmi"
-	cp -r "libtomcrypt-1.18.2" "$pkgname-$pkgver/libtomcrypt"
-	cp -r "qwt-6.2.0" "$pkgname-$pkgver/qwt"
-	# Include QwtScaleWidget
-	sed "30i#include <qwt_scale_widget.h>" -i "$pkgname-$pkgver/app/graph.cpp"
-	sed "31i#include <qwt_scale_widget.h>" -i "$pkgname-$pkgver/app/graph.h"
+  mkdir -p "${pkgname}-${pkgver}"
+  cp -r ${pkgname}-code/{app,snmp++,license.txt,Makefile} "${pkgname}-${pkgver}"
+  # Copy needed Libs
+  cp -r libsmi-${_smi} "${pkgname}-${pkgver}/libsmi"
+  cp -r libtomcrypt-${_tomcrypt} "${pkgname}-${pkgver}/libtomcrypt"
+  cp -r qwt-${_qwt} "${pkgname}-${pkgver}/qwt"
+  # Include QwtScaleWidget
+  sed '30i#include <qwt_scale_widget.h>' -i "${pkgname}-${pkgver}/app/graph.cpp"
+  sed '31i#include <qwt_scale_widget.h>' -i "${pkgname}-${pkgver}/app/graph.h"
+  # Patch qwt
+  sed -e '/^\s*QWT_INSTALL_PREFIX/ s|=.*|= /usr|' \
+      -e '/^QWT_INSTALL_DOCS/ s|/doc|/share/doc/qwt|' \
+      -e '/^QWT_INSTALL_HEADERS/ s|include|&/qwt|' \
+      -e '/^QWT_INSTALL_PLUGINS/ s|plugins/designer|lib/qt/&|' \
+      -e '/^QWT_INSTALL_FEATURES/ s|features|lib/qt/mkspecs/&|' \
+      -i "${pkgname}-${pkgver}/qwt/qwtconfig.pri"
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-	# Fix for gcc-14 issues
-	CFLAGS+=' -Wno-error=implicit-function-declaration'
-	# Libsmi
-	cd libsmi
-	autoreconf -i
-	./configure --disable-shared --disable-yang \
-		--with-pathseparator=";" --with-dirseparator="/" \
-		--with-smipath="/usr/share/apps/snmpb/mibs;/usr/share/apps/snmpb/pibs"
-	make V=0
-	# Libtomcrypt
-	cd ../libtomcrypt
-	make library
-	# Qwt
-	cd ../qwt
-	qmake-qt5 qwt.pro
-	make
-	# Build snmpb Qt App
-	cd ../app
-	qmake-qt5 -o makefile.snmpb snmpb.pro
-	make -f makefile.snmpb
+  cd "${pkgname}-${pkgver}"
+  # Fix for gcc-14 issues
+  CFLAGS+=' -Wno-error=implicit-function-declaration'
+  # Libsmi
+  cd libsmi
+  autoreconf -i
+  ./configure --disable-shared --disable-yang \
+    --with-pathseparator=";" --with-dirseparator="/" \
+    --with-smipath="/usr/share/apps/snmpb/mibs;/usr/share/apps/snmpb/pibs"
+  make V=0
+  # Libtomcrypt
+  cd ../libtomcrypt
+  make library
+  # Qwt
+  cd ../qwt
+  qmake-qt5 qwt.pro
+  make
+  # Build snmpb Qt App
+  cd ../app
+  qmake-qt5 -o makefile.snmpb snmpb.pro
+  make -f makefile.snmpb
 }
 
 package() {
-	# Install package
-	cd "$pkgname-$pkgver"
-	make INSTALL_PREFIX="$pkgdir/usr" install
+  # Install package
+  cd "${pkgname}-${pkgver}"
+  make INSTALL_PREFIX="${pkgdir}/usr" install
 
-	# User config files stored in
-	# $HOME/.config/snmpb.sourceforge.net
+  # User config files stored in
+  # $HOME/.config/snmpb.sourceforge.net
 
-	# Default dirs for MIBs/PIBs:
-	# /usr/share/apps/snmpb/mibs
-	# /usr/share/apps/snmpb/pibs
+  # Default dirs for MIBs/PIBs:
+  # /usr/share/apps/snmpb/mibs
+  # /usr/share/apps/snmpb/pibs
 }
+
+# vim: ts=2 sw=2 et:
+
