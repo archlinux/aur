@@ -2,7 +2,7 @@
 
 pkgname=moondeckbuddy-appimage
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A server-side part of the MoonDeck plugin for the SteamDeck."
 arch=('x86_64')
 license=('LGPL-3.0')
@@ -18,8 +18,8 @@ sha512sums=(
 )
 
 _filename="MoonDeckBuddy-${pkgver}-${arch}.AppImage"
-_exec_steam="moondeckstream"
-_exec_buddy="moondeckbuddy"
+_exec_steam="MoonDeckStream"
+_exec_buddy="MoonDeckBuddy"
 _install_path="/opt/${pkgname}/"
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = moondeckbuddy-appimage
     pkgdesc = A server-side part of the MoonDeck plugin for the SteamDeck.
     pkgver = v1.6.1
-    pkgrel = 1
+    pkgrel = 2
     url = https://github.com/FrogTheFrog/moondeck-buddy
     arch = x86_64
     license = LGPL-3.0
