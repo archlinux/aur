@@ -1,0 +1,70 @@
+diff --color -ruN 1/include/gpass/attribute-list.h 2/include/gpass/attribute-list.h
+--- 1/include/gpass/attribute-list.h	2006-02-19 13:20:01.000000000 +0100
++++ 2/include/gpass/attribute-list.h	2024-09-01 01:26:45.054672618 +0200
+@@ -105,7 +105,7 @@
+ GError *gpass_attribute_list_dump(GPassAttributeList *self, GString **buffer);
+ GError *gpass_attribute_list_load(GPassAttributeList *self,
+                                   const guchar *buffer, gint len,
+-                                  gint *read_len);
++                                  gsize *read_len);
+ 
+ G_END_DECLS
+ 
+diff --color -ruN 1/include/gpass/pack.h 2/include/gpass/pack.h
+--- 1/include/gpass/pack.h	2006-02-19 13:20:01.000000000 +0100
++++ 2/include/gpass/pack.h	2024-09-01 01:14:30.048869445 +0200
+@@ -25,10 +25,10 @@
+ 
+ void gpass_pack_number(gint number, GString **buffer);
+ GError *gpass_unpack_number(const guchar *buffer, gint len, gint *result,
+-                            gint *read_len);
++                            gsize *read_len);
+ void gpass_pack_string(const gchar *str, GString **buffer);
+ GError *gpass_unpack_string(const guchar *buffer, gint len,
+-                            GString **str, gint *read_len);
++                            GString **str, gsize *read_len);
+ 
+ G_END_DECLS
+ 
+diff --color -ruN 1/lib/attribute-list.c 2/lib/attribute-list.c
+--- 1/lib/attribute-list.c	2024-09-01 01:25:26.233737207 +0200
++++ 2/lib/attribute-list.c	2024-09-01 01:26:04.840706494 +0200
+@@ -312,7 +312,7 @@
+ 
+ GError *
+ gpass_attribute_list_load(GPassAttributeList *self, const guchar *buffer,
+-                          gint buffer_len, gint *read_len)
++                          gint buffer_len, gsize *read_len)
+ {
+     GPassAttributeListCursor *cursor =
+         gpass_attribute_list_create_cursor(self);
+@@ -321,7 +321,7 @@
+     
+     while (!gpass_attribute_list_cursor_is_done(cursor)) {
+         GPassAttribute *attr;
+-        gint len;
++        gsize len;
+ 
+         if (ptr >= ptr_end) {
+             g_set_error(&error, 0, 0, _("buffer is too short"));
+diff --color -ruN 1/lib/pack.c 2/lib/pack.c
+--- 1/lib/pack.c	2006-02-19 13:20:01.000000000 +0100
++++ 2/lib/pack.c	2024-09-01 01:14:06.526909270 +0200
+@@ -51,7 +51,7 @@
+ 
+ GError *
+ gpass_unpack_number(const guchar *buffer, gint len, gint *result,
+-                    gint *read_len)
++                    gsize *read_len)
+ {
+     gint val = 0, base = 1, i = 0;
+     const guchar *ptr = buffer, *ptr_end = buffer + len;
+@@ -97,7 +97,7 @@
+ 
+ GError *
+ gpass_unpack_string(const guchar *buffer, gint len,
+-                    GString **str, gint *read_len)
++                    GString **str, gsize *read_len)
+ {
+     gint str_len;
+     GError *error;

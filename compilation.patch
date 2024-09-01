@@ -1,0 +1,198 @@
+diff --color -ruN 1/lib/attribute.c 2/lib/attribute.c
+--- 1/lib/attribute.c	2006-02-19 13:20:01.000000000 +0100
++++ 2/lib/attribute.c	2023-11-24 19:16:37.375243591 +0100
+@@ -265,7 +265,7 @@
+     if (error_message != NULL) {
+         GError *error = NULL;
+         
+-        g_set_error(&error, 0, 0, error_message);
++        g_set_error(&error, 0, 0, "%s", error_message);
+         g_free(error_message);
+         return error;
+     }
+@@ -293,7 +293,7 @@
+     if (error_message != NULL) {
+         GError *error = NULL;
+         
+-        g_set_error(&error, 0, 0, error_message);
++        g_set_error(&error, 0, 0, "%s", error_message);
+         g_free(error_message);
+         return error;
+     }
+diff --color -ruN 1/lib/crypt-stream.c 2/lib/crypt-stream.c
+--- 1/lib/crypt-stream.c	2006-02-19 13:20:01.000000000 +0100
++++ 2/lib/crypt-stream.c	2023-11-24 19:20:36.193518452 +0100
+@@ -479,7 +479,7 @@
+     }
+     rc = fwrite(self->buffer, crypt->block_size, 1, crypt->file);
+     if (rc == 0 && ferror(crypt->file)) {
+-        g_set_error(&error, 0, errno, g_strerror(errno));
++        g_set_error(&error, 0, errno, "%s", g_strerror(errno));
+         return error;
+     }
+     return NULL;
+diff --color -ruN 1/lib/error.c 2/lib/error.c
+--- 1/lib/error.c	2006-02-19 13:20:01.000000000 +0100
++++ 2/lib/error.c	2023-11-24 19:28:36.294102639 +0100
+@@ -52,7 +52,7 @@
+     if (error != NULL) {
+         gpass_error_show_and_exit(error);
+     }
+-    printf(locale_str);
++    printf("%s", locale_str);
+     g_free(utf8_str);
+     g_free(locale_str);
+ }
+diff --color -ruN 1/lib/file04.c 2/lib/file04.c
+--- 1/lib/file04.c	2006-02-19 13:20:01.000000000 +0100
++++ 2/lib/file04.c	2023-11-24 19:26:40.323428620 +0100
+@@ -165,7 +165,7 @@
+     GError *error = NULL;
+ 
+     if ((fp = fopen(path, "r")) == NULL) {
+-        g_set_error(&error, 0, errno, g_strerror(errno));
++        g_set_error(&error, 0, errno, "%s", g_strerror(errno));
+         return error;
+     }
+     error = gpass_decrypt_stream_open(&result, fp, master_password);
+@@ -206,12 +206,12 @@
+     GError *error = NULL;
+ 
+     if ((fp = fopen(path, "w")) == NULL) {
+-        g_set_error(&error, 0, errno, g_strerror(errno));
++        g_set_error(&error, 0, errno, "%s", g_strerror(errno));
+         return error;
+     }
+     fd = fileno(fp);
+     if (fchmod(fd, 0600)) {
+-        g_set_error(&error, 0, errno, g_strerror(errno));
++        g_set_error(&error, 0, errno, "%s", g_strerror(errno));
+         fclose(fp);
+         return error;
+     }
+@@ -244,7 +244,7 @@
+     dirname = g_path_get_dirname(path);
+     if (!g_file_test(dirname, G_FILE_TEST_IS_DIR)) {
+         if (mkdir(dirname, 0700)) {
+-            g_set_error(&error, 0, errno, g_strerror(errno));
++            g_set_error(&error, 0, errno, "%s", g_strerror(errno));
+             goto end;
+         }
+     }
+@@ -308,12 +308,12 @@
+     
+     if (g_file_test(backup_path, G_FILE_TEST_EXISTS)) {
+         if (unlink(backup_path) < 0) {
+-            g_set_error(&error, 0, errno, g_strerror(errno));
++            g_set_error(&error, 0, errno, "%s", g_strerror(errno));
+             return error;
+         }
+     }
+     if (rename(self->path, backup_path) == -1) {
+-        g_set_error(&error, 0, errno, g_strerror(errno));
++        g_set_error(&error, 0, errno, "%s", g_strerror(errno));
+     }
+     return error;
+ }
+@@ -325,7 +325,7 @@
+     
+     if (g_file_test(backup_path, G_FILE_TEST_EXISTS)) {
+         if (rename(backup_path, self->path) == -1) {
+-            g_set_error(&error, 0, errno, g_strerror(errno));
++            g_set_error(&error, 0, errno, "%s", g_strerror(errno));
+         }
+     }
+     return error;
+diff --color -ruN 1/lib/file.c 2/lib/file.c
+--- 1/lib/file.c	2006-02-19 13:20:01.000000000 +0100
++++ 2/lib/file.c	2023-11-24 19:24:30.561803588 +0100
+@@ -170,7 +170,7 @@
+     GError *error = NULL;
+ 
+     if ((fp = fopen(path, "r")) == NULL) {
+-        g_set_error(&error, 0, errno, g_strerror(errno));
++        g_set_error(&error, 0, errno, "%s", g_strerror(errno));
+         return error;
+     }
+     error = gpass_decrypt_stream_open(&result, fp, master_password);
+@@ -222,12 +222,12 @@
+     GError *error = NULL;
+ 
+     if ((fp = fopen(path, "w")) == NULL) {
+-        g_set_error(&error, 0, errno, g_strerror(errno));
++        g_set_error(&error, 0, errno, "%s", g_strerror(errno));
+         return error;
+     }
+     fd = fileno(fp);
+     if (fchmod(fd, 0600)) {
+-        g_set_error(&error, 0, errno, g_strerror(errno));
++        g_set_error(&error, 0, errno, "%s", g_strerror(errno));
+         fclose(fp);
+         return error;
+     }
+@@ -265,7 +265,7 @@
+     dirname = g_path_get_dirname(path);
+     if (!g_file_test(dirname, G_FILE_TEST_IS_DIR)) {
+         if (mkdir(dirname, 0700)) {
+-            g_set_error(&error, 0, errno, g_strerror(errno));
++            g_set_error(&error, 0, errno, "%s", g_strerror(errno));
+             goto end;
+         }
+     }
+@@ -348,12 +348,12 @@
+     
+     if (g_file_test(backup_path, G_FILE_TEST_EXISTS)) {
+         if (unlink(backup_path) < 0) {
+-            g_set_error(&error, 0, errno, g_strerror(errno));
++            g_set_error(&error, 0, errno, "%s", g_strerror(errno));
+             return error;
+         }
+     }
+     if (rename(self->path, backup_path) == -1) {
+-        g_set_error(&error, 0, errno, g_strerror(errno));
++        g_set_error(&error, 0, errno, "%s", g_strerror(errno));
+     }
+     return error;
+ }
+@@ -365,7 +365,7 @@
+     
+     if (g_file_test(backup_path, G_FILE_TEST_EXISTS)) {
+         if (rename(backup_path, self->path) == -1) {
+-            g_set_error(&error, 0, errno, g_strerror(errno));
++            g_set_error(&error, 0, errno, "%s", g_strerror(errno));
+         }
+     }
+     return error;
+diff --color -ruN 1/src/attribute-widgets.c 2/src/attribute-widgets.c
+--- 1/src/attribute-widgets.c	2006-02-19 13:20:01.000000000 +0100
++++ 2/src/attribute-widgets.c	2023-11-24 19:30:09.199846471 +0100
+@@ -206,7 +206,7 @@
+     if (error_message != NULL) {
+         GError *error = NULL;
+         
+-        g_set_error(&error, 0, 0, error_message);
++        g_set_error(&error, 0, 0, "%s", error_message);
+         g_free(error_message);
+         return error;
+     }
+@@ -236,7 +236,7 @@
+     if (error_message != NULL) {
+         GError *error = NULL;
+         
+-        g_set_error(&error, 0, 0, error_message);
++        g_set_error(&error, 0, 0, "%s", error_message);
+         g_free(error_message);
+         return error;
+     }
+diff --color -ruN 1/src/helper.c 2/src/helper.c
+--- 1/src/helper.c	2006-02-19 13:20:01.000000000 +0100
++++ 2/src/helper.c	2023-11-24 19:33:36.797286286 +0100
+@@ -38,7 +38,7 @@
+     str = g_strdup_vprintf(fmt, va);
+     va_end(va);
+     dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_DESTROY_WITH_PARENT,
+-                                    type, GTK_BUTTONS_CLOSE, str);
++                                    type, GTK_BUTTONS_CLOSE, "%s", str);
+     gtk_dialog_run(GTK_DIALOG(dialog));
+     gtk_widget_destroy(dialog);
+     g_free(str);
