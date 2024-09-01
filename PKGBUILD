@@ -22,7 +22,7 @@ makedepends=(
 options=('!emptydirs')
 
 _pkgsrc="X11-GUITest-$pkgver"
-source=("http://search.cpan.org/CPAN/authors/id/C/CT/CTRONDLP/$_pkgsrc.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/C/CT/CTRONDLP/$_pkgsrc.tar.gz")
 sha256sums=('dceede53700610fff142dc9d5c4e4cd0370c88a4f2b1371f9cbf4d8d8ce6f64b')
 
 build() {

@@ -11,7 +11,7 @@ pkgbase = perl-x11-guitest
 	depends = libx11
 	depends = libxtst
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/C/CT/CTRONDLP/X11-GUITest-0.28.tar.gz
+	source = https://cpan.metacpan.org/authors/id/C/CT/CTRONDLP/X11-GUITest-0.28.tar.gz
 	sha256sums = dceede53700610fff142dc9d5c4e4cd0370c88a4f2b1371f9cbf4d8d8ce6f64b
 
 pkgname = perl-x11-guitest

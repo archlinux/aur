@@ -1,0 +1,4 @@
+[perl-x11-guitest]
+source = "regex"
+url = "https://cpan.metacpan.org/authors/id/C/CT/CTRONDLP/"
+regex = 'X11-GUITest-([0-9\.]+)\.'
