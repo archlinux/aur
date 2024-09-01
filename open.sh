@@ -19,25 +19,35 @@ link="${realDirBase}${link}"
 
 echo "[Info] received a request: $@, translated to ${link}"
 
+if [[ ${wechatUsePortal} = 1 ]]; then
+	/usr/lib/flatpak-xdg-utils/xdg-open $(dirname "${link}")
+	if [[ $? = 0 ]]; then
+		exit 0
+	fi
+fi
+echo "[Info] Initiating D-Bus call..."
+dbus-send --print-reply --dest=org.freedesktop.FileManager1 \
+	/org/freedesktop/FileManager1 \
+	org.freedesktop.FileManager1.ShowItems \
+	array:string:"file://${link}" \
+	string:fake-dde-show-items
+
+if [[ $? = 0 ]]; then
+	exit 0
+fi
+
 /usr/lib/flatpak-xdg-utils/xdg-open $(dirname "${link}")
 
 if [[ $? = 0 ]]; then
 	exit 0
 fi
 
-if [ -f /usr/bin/dbus-send ]; then
-	echo "[Info] Initiating D-Bus call..."
-	dbus-send --print-reply --dest=org.freedesktop.FileManager1 \
-		/org/freedesktop/FileManager1 \
-		org.freedesktop.FileManager1.ShowItems \
-		array:string:"file://${link}" \
-		string:fake-dde-show-items
+
+if [ -f /usr/bin/dolphin ] && [ ${XDG_CURRENT_DESKTOP} = KDE ]; then
+	/usr/bin/dolphin --select "${link}"
+elif [ -f /usr/bin/nautilus ] && [ ${XDG_CURRENT_DESKTOP} = GNOME ]; then
+	/usr/bin/nautilus $(dirname "${link}")
 else
-	if [ -f /usr/bin/dolphin ] && [ ${XDG_CURRENT_DESKTOP} = KDE ]; then
-		/usr/bin/dolphin --select "${link}"
-	elif [ -f /usr/bin/nautilus ] && [ ${XDG_CURRENT_DESKTOP} = GNOME ]; then
-		/usr/bin/nautilus $(dirname "${link}")
-	else
-		xdg-open $(dirname "${link}")
-	fi
+	xdg-open $(dirname "${link}")
+fi
 fi
