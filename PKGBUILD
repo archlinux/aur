@@ -1,5 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-# Co-Maintainer: Corax <cor dot ax26 at gmail dot com>
+# Maintainer: Corax <cor dot ax26 at gmail dot com>
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=nautilus-mediainfo
 pkgver=1.0.4
 pkgrel=3
