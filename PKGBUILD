@@ -2,7 +2,7 @@
 # Maintainer: atomicfs <https://aur.archlinux.org/account/atomicfs>
 
 pkgname="paperless-ngx"
-pkgver=2.11.4
+pkgver=2.11.6
 pkgrel=1
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents"
 url="https://docs.paperless-ngx.com/"
@@ -137,7 +137,7 @@ source=("https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgnam
         "paperless-scheduler.service"
         "paperless-task-queue.service"
         "paperless-webserver.service")
-b2sums=('19ceca1c88eff8106fac7632c0ef3936cae2b1ba62f3014ffe49dc3d7ddf04baeee3462794dc1b91ca4936b04d6c5605c541a89c467dc232b477c19cd7fe5181'
+b2sums=('0fe9908a9ee6d2233b1c47d8e24d811cdaca0b38ab75dc4b346253beb9b8857d57ea531030414c6addba4bae24951a320a51285a6d10853a87fd293dda7d4cc7'
         '66073b686ac143f5b6a2c581705ca77a90b48e5ad03208c61976e0421e54c08bb5ce8168a42cd1f11d9f34e270a27ee91102c5fbf5477fdb5a596ad7b38e5750'
         '586ad775e26aef216716c33d8951e00044a7f6866167d27dceab39d51b4fd46527693dfe4e085dc20d2e9193679122ad2b9ac8a1c03a98df747af15ecca24ca2'
         '4a59f0a0c6a4abad23cba01e216909f45a7064e93911b8ba3e3b394f52379e41898b8c9e1246ba034bc8d2fe6dc83f5cad926e265a17da7c7093d997cfe8b4f3'
