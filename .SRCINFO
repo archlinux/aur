@@ -1,7 +1,7 @@
 pkgbase = highscore-git
 	pkgdesc = A rewrite of Highscore, formerly gnome-games
 	pkgver = r869.b1d9f20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/highscore
 	arch = x86_64
 	arch = aarch64
@@ -10,10 +10,11 @@ pkgbase = highscore-git
 	makedepends = meson
 	makedepends = vala
 	depends = hicolor-icon-theme
-	depends = libadwaita
+	depends = libadwaita>=1.6
 	depends = libgee
 	depends = libhighscore-git
 	depends = libmanette
+	depends = libmirage
 	depends = libpulse
 	depends = sdl2
 	optdepends = blastem-highscore-git: BlastEm core

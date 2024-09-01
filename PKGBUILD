@@ -4,17 +4,18 @@
 # Contributor: Tom Richards <tom@tomrichards.net>
 pkgname=highscore-git
 pkgver=r869.b1d9f20
-pkgrel=1
+pkgrel=2
 pkgdesc="A rewrite of Highscore, formerly gnome-games"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/World/highscore"
 license=('GPL-3.0-or-later')
 depends=(
   'hicolor-icon-theme'
-  'libadwaita'
+  'libadwaita>=1.6'
   'libgee'
   'libhighscore-git'
   'libmanette'
+  'libmirage'
   'libpulse'
   'sdl2'
 )
