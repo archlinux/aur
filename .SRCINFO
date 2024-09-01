@@ -1,0 +1,18 @@
+pkgbase = python-apple-compress
+	pkgdesc = Python bindings for Apple's libcompression
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/m1stadev/apple-compress
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-click
+	depends = python-loguru
+	source = python-apple-compress-0.2.3.tar.gz::https://github.com/m1stadev/apple-compress/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = a0d19395ed65c2861679336e007910844c99b9ece23f10fb2ae7fbebabbfd00d
+
+pkgname = python-apple-compress
