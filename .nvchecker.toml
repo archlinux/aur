@@ -1,0 +1,5 @@
+[f2c]
+source = "github"
+github = "barak/f2c"
+use_max_tag = "true"
+prefix = "upstream/"
