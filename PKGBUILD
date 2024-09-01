@@ -1,19 +1,17 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="wo"
-pkgver=0.0.7
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A workspace shell manager"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/antham/${pkgname}"
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
-optdepends=('bash-completion: for shell auto-completion'
-            'zsh-completions: for shell auto-completion')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('35ceace6157ac7688c8e12073afd8af59fe6634732a7d48827d82ea82d784211')
+sha256sums=('4c44371ad3bfe892ac06782a29c960bd93535d89fee6244e3dd61048d6bee3d8')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
