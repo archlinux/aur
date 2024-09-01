@@ -1,6 +1,6 @@
 pkgbase = mgba-highscore-git
 	pkgdesc = Highscore port of mGBA
-	pkgver = r8363.5af72a19e
+	pkgver = r8541.6d96510
 	pkgrel = 1
 	url = https://github.com/alice-mkh/mgba
 	arch = x86_64

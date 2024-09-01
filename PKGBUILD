@@ -1,6 +1,6 @@
 # # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mgba-highscore-git
-pkgver=r8363.5af72a19e
+pkgver=r8541.6d96510
 pkgrel=1
 pkgdesc="Highscore port of mGBA"
 arch=('x86_64')
@@ -15,16 +15,16 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd mgba
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
   cmake -B build -S mgba \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DUSE_DEBUGGERS='OFF' \
+    -DENABLE_DEBUGGERS='OFF' \
     -DUSE_EDITLINE='OFF' \
-    -DUSE_GDB_STUB='OFF' \
+    -DENABLE_GDB_STUB='OFF' \
     -DUSE_ZLIB='OFF' \
     -DUSE_MINIZIP='OFF' \
     -DUSE_PNG='OFF' \
