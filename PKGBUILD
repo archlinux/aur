@@ -5,7 +5,7 @@
 
 _basename=panon
 pkgname=plasma6-applets-$_basename
-pkgver=6.0.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="An Audio Visualizer Widget for KDE Plasma"
 arch=('any')
@@ -23,7 +23,7 @@ depends=(
 ) 
 makedepends=('kpackage' 'cmake')
 source=("git+https://github.com/flafflar/${_basename}.git#tag=v${pkgver}")
-sha256sums=('54a1dc395a642cbb23d0675ebe3d65dc490c3f2c065010ace758e81f714a55c4')
+sha256sums=('8694a4c2b3c5283eea73b28df0a2ffef0b2ce0cde69bccfcb1fd47076c53a3a6')
 
 prepare() {
 	cd "$srcdir/$_basename"
