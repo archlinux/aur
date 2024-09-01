@@ -1,0 +1,16 @@
+pkgbase = python-pylzss
+	pkgdesc = A collection of common interactive command line user interfaces, based on Inquirer.js (fork of magmax/python-inquirer)
+	pkgver = 0.3.8
+	pkgrel = 1
+	url = https://github.com/m1stadev/pylzss
+	arch = any
+	license = LGPL3
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	source = python-pylzss-0.3.8.tar.gz::https://github.com/m1stadev/pylzss/archive/refs/tags/v0.3.8.tar.gz
+	sha256sums = 5be1221710ddf3174550881b66f25e90637f00256633c9cdba83e025e4e6ca8c
+
+pkgname = python-pylzss
