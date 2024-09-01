@@ -1,13 +1,13 @@
 pkgbase = led_matrix_daemon
 	pkgdesc = A daemon that renders images on a LED matrix connected to a Framework 16 Laptop
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/night-crawler/led_matrix_daemon
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = clang
-	source = led_matrix_daemon-0.1.0.tar.gz::https://github.com/night-crawler/led_matrix_daemon/archive/0.1.0.tar.gz
+	source = led_matrix_daemon-0.2.0.tar.gz::https://github.com/night-crawler/led_matrix_daemon/archive/0.2.0.tar.gz
 	sha512sums = SKIP
 
 pkgname = led_matrix_daemon
