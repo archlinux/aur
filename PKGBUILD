@@ -2,23 +2,24 @@
 pkgname=folder-color-caja
 _pkgname=${pkgname%-caja}
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Change your folder color in Caja"
 arch=('any')
 url="https://github.com/costales/folder-color"
 license=('GPL-3.0-or-later')
 depends=('python-caja')
-makedepends=('git' 'dpkg' 'python-build' 'python-distutils-extra' 'python-installer'
-             'python-setuptools' 'python-wheel')
-conflicts=("$_pkgname-bzr" 'folder-color-common')
+makedepends=(
+  'git'
+  'python-build'
+  'python-distutils-extra'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+conflicts=('folder-color-bzr' 'folder-color-common')
 _commit=67428606aa802e624b5b783f9f06f8bd724ae56c  # 0.4.1
-source=("git+https://github.com/costales/folder-color.git#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "$_pkgname"
-  dpkg-parsechangelog --show-field Version
-}
+source=("git+https://github.com/costales/folder-color.git#commit=${_commit}")
+sha256sums=('f1d36bbef81a356f9d84324b39d5201256204a23754d79ceeb441798c755bd03')
 
 build() {
   cd "$_pkgname"
