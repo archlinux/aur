@@ -1,0 +1,22 @@
+pkgbase = plasma6-applets-panon
+	pkgdesc = An Audio Visualizer Widget for KDE Plasma
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://github.com/flafflar/panon
+	arch = any
+	license = GPL-3.0-or-later
+	license = WTFPL
+	makedepends = kpackage
+	makedepends = cmake
+	depends = plasma-workspace
+	depends = python-docopt
+	depends = python-numpy
+	depends = python-pyaudio
+	depends = python-soundcard>=0.4.2
+	depends = python-websockets
+	depends = qt6-websockets
+	depends = qt6-shadertools
+	source = git+https://github.com/flafflar/panon.git#tag=v6.0.0
+	sha256sums = 54a1dc395a642cbb23d0675ebe3d65dc490c3f2c065010ace758e81f714a55c4
+
+pkgname = plasma6-applets-panon
