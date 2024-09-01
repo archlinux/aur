@@ -2,7 +2,7 @@
 
 pkgname=otf-noto-full
 _pkgname=noto-fonts-otf
-pkgver=24.8
+pkgver=24.9.1
 pkgrel=1
 pkgdesc='Noto Fonts for all languages'
 arch=('any')

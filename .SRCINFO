@@ -1,6 +1,6 @@
 pkgbase = otf-noto-full
 	pkgdesc = Noto Fonts for all languages
-	pkgver = 24.8
+	pkgver = 24.9.1
 	pkgrel = 1
 	url = https://fonts.google.com/noto
 	arch = any
