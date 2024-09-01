@@ -30,7 +30,6 @@ function package() {
 	cp "${srcdir}/moeOS-pinyin/rime-data" -r "${pkgdir}/usr/share"
 	install -Dm644 "${srcdir}/moeOS-pinyin/default.yaml" "${pkgdir}/usr/share/moeOS-Docs/ibus-rime.conf.d/default.yaml"
 	rm -r "${pkgdir}/usr/share/rime-data/others/rime-ice/others"
-	rm -r "${pkgdir}/usr/share/rime-data/others/rime-setting/fonts"
 	for dir in $(ls "${pkgdir}/usr/share/rime-data/others"); do
 		rm -rf "${pkgdir}/usr/share/rime-data/others/${dir}/.git"
 	done
