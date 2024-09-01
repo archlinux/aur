@@ -2,7 +2,7 @@
 
 pkgname=perl-perl4-corelibs
 pkgver=0.005
-pkgrel=1
+pkgrel=2
 pkgdesc="Libraries historically supplied with Perl 4"
 arch=('any')
 url="https://metacpan.org/release/Perl4-CoreLibs"

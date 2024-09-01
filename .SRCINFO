@@ -1,7 +1,7 @@
 pkgbase = perl-perl4-corelibs
 	pkgdesc = Libraries historically supplied with Perl 4
 	pkgver = 0.005
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Perl4-CoreLibs
 	arch = any
 	license = PerlArtistic
