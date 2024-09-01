@@ -1,61 +1,43 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
-# -*- sh -*-
+# Maintainer: haxibami <contact at haxibami dot net>
+# Contributor: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 
-pkgname='python-qh3'
-_pkgname="${pkgname}"
-_srcname="${_pkgname/python-/}"
-pkgver=1.0.4
-pkgrel=2
+pkgname=python-qh3
+_pkgname="${pkgname/python-/}"
+pkgver=1.0.9
+pkgrel=1
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python'
 arch=('aarch64' 'x86_64')
 url='https://github.com/jawah/qh3'
-license=('BSD-3-Clause')  # SPDX-License-Identifier: BSD-3-Clause
-depends=(
-  'gcc-libs'
-  'glibc'
-  'python'
-)
+license=('BSD-3-Clause')
+depends=('gcc-libs' 'glibc' 'python>3.7')
 makedepends=(
-  'clang'
-  'cmake'
-  'python-build'
-  'python-installer'
-  'python-maturin'
-  'python-setuptools'
-  'python-wheel'
+  'clang' 'mold' 'cmake' 'python-build' 'python-installer'
+  'python-maturin' 'python-wheel'
 )
-replaces=("$_pkgname-bin")
-source=(
-  "https://files.pythonhosted.org/packages/source/${_srcname::1}/$_srcname/$_srcname-$pkgver.tar.gz"
-)
-sha256sums=(
-  '93f9d5db7690f3c7dfb9b42ab78dce6d3c2a6b57fa7dc8b1be9bd14b933b6bf5'
-)
-options=('lto')
+checkdepends=('python-cryptography')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('7e28cab4cf72a0fde41b8d60228d9145ffb3b9ecbf3e64f15424e0fd9c2c9448')
 
 build() {
-  cd "$_srcname-$pkgver"
-
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
-
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  # Note: (GCC +) mold or (Clang +) lld is required to build with LTO
+  export RUSTFLAGS="${RUSTFLAGS} -Clink-arg=-fuse-ld=mold"
+  # export CC=clang CXX=clang++ RUSTFLAGS="${RUSTFLAGS} -Clink-arg=-fuse-ld=lld"
   python -m build --wheel --no-isolation
 }
 
-package() {
-  cd "$_srcname-$pkgver"
-
-  python -m installer --destdir="$pkgdir" dist/*.whl
-
-  install -Dm0644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+check() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python -m installer -d tmp_install dist/*.whl
+  local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+  export PYTHONPATH="${PWD}/tmp_install/usr/lib/python${python_version}/site-packages"
+  # See: https://github.com/jawah/qh3/blob/7145f484d49ca1f7625b7de5ecb49b03525b54b2/.github/workflows/CI.yml#L102
+  rm -fR qh3
+  python -m unittest discover -v
 }
 
-# eof
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
+}
