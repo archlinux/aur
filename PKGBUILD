@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-jaxtyping
 _pkgname=${pkgname#python-}
-pkgver=0.2.33
+pkgver=0.2.34
 pkgrel=1
 pkgdesc='Type annotations and runtime checking for shape and dtype of JAX arrays, and PyTrees.'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-wheel'
 optdepends=('python-jax: Original JAX type system support.'
             'python-pytest: Extension for pytest with jaxtyping plugin.')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/google/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fe889e9bd86f1f79cc14a4690d834f8afd3fc4beb39a232d3bab93950727fb7f')
+sha256sums=('b52cc7be41dadf362311bae985e0ff735b2069550ba6d0531d42f9d8907a65f6')
 
 build() {
     python -m build -nw $_pkgname-$pkgver
