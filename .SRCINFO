@@ -1,7 +1,7 @@
 pkgbase = perl-version-compare
 	pkgdesc = Compare version strings
 	pkgver = 0.14
-	pkgrel = 8
+	pkgrel = 9
 	url = https://metacpan.org/release/Version-Compare
 	arch = any
 	license = PerlArtistic
