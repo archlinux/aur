@@ -1,7 +1,7 @@
 pkgbase = perl-log-any-adapter-tap
 	pkgdesc = Logger suitable for use with TAP test files
 	pkgver = 0.003003
-	pkgrel = 7
+	pkgrel = 8
 	url = https://metacpan.org/release/Log-Any-Adapter-TAP
 	arch = any
 	license = PerlArtistic
