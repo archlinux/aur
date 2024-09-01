@@ -1,7 +1,7 @@
 pkgbase = zen-browser-avx2-bin
 	pkgdesc = Standalone web browser - Static binaries from upstream
 	pkgver = 1.0.0.a.34
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zen-browser/desktop
 	arch = x86_64
 	arch = i686
@@ -28,7 +28,7 @@ pkgbase = zen-browser-avx2-bin
 	source = policies.json
 	sha256sums = d247254cb0953fbe43f3d7c90e97b16bbbac04b2e85f3fe6d41e56e9842f17d7
 	sha256sums = b32396cfb4272398d68c59b48c548b86f99ca4ea70bce8e6bed434819b165e53
-	sha256sums = 96ec33d2ed17f6d98bb623b990c393cbca8c345528d639462ea024ca218c53dd
+	sha256sums = cbf160c917bfa4f342a3de018fe70089e4a80767c5bc73dcd2a083993880654c
 	sha256sums = ccf5105135118acb7d05a7f81383307e959a3b757eb7b645600b47bb7915b504
 
 pkgname = zen-browser-avx2-bin

@@ -10,7 +10,7 @@ pkgname=zen-browser-avx2-bin
 _pkgname=zen-browser
 _realpkgver=1.0.0-a.34
 pkgver=1.0.0.a.34
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser - Static binaries from upstream"
 arch=('x86_64' 'i686')
 url="https://github.com/zen-browser/desktop"
@@ -32,7 +32,7 @@ source=("zen-browser-$_realpkgver.tar.bz2::https://github.com/zen-browser/deskto
         "policies.json")
 sha256sums=('d247254cb0953fbe43f3d7c90e97b16bbbac04b2e85f3fe6d41e56e9842f17d7'
             'b32396cfb4272398d68c59b48c548b86f99ca4ea70bce8e6bed434819b165e53'
-            '96ec33d2ed17f6d98bb623b990c393cbca8c345528d639462ea024ca218c53dd'
+            'cbf160c917bfa4f342a3de018fe70089e4a80767c5bc73dcd2a083993880654c'
             'ccf5105135118acb7d05a7f81383307e959a3b757eb7b645600b47bb7915b504')
 
 #pkgver() {
