@@ -3,60 +3,77 @@
 # Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 # Contributor: Martchus <martchus@gmx.net>
+
 pkgname=mingw-w64-glib2
-pkgver=2.80.3
+pkgver=2.82.0
 pkgrel=1
 arch=(any)
-pkgdesc="Low level core library (mingw-w64)"
+pkgdesc="Low level core library"
+url="https://gitlab.gnome.org/GNOME/glib"
+license=(LGPL-2.1-or-later)
 depends=(mingw-w64-libffi mingw-w64-pcre2 mingw-w64-gettext mingw-w64-zlib)
-makedepends=(mingw-w64-meson python-packaging)
-license=("LGPL2.1")
+makedepends=(mingw-w64-meson python-packaging git)
 options=(!strip !buildflags staticlibs !emptydirs)
-url="https://wiki.gnome.org/Projects/GLib"
-source=("https://download.gnome.org/sources/glib/${pkgver%.*}/glib-${pkgver}.tar.xz"
-  "0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch")
-sha256sums=('3947a0eaddd0f3613d0230bb246d0c69e46142c19022f5c4b1b2e3cba236d417'
-            '56d41de64a30099c42ecd47ed576fcd169548912619c10deb4a712b583548d30')
+source=(
+  "git+https://gitlab.gnome.org/GNOME/glib.git?signed#tag=$pkgver"
+  "git+https://gitlab.gnome.org/GNOME/gvdb.git"
+  0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch
+)
+b2sums=('9dee8619918d1bf85d853ddc661c4702046b5361bd3fde105d0b3c550f5dbdbaa6578557107588053bb4e980a21e83b95c2c9e9c7868fb89ca852bc950ac3dba'
+        'SKIP'
+        '8d6cc5d4d321bb861b6acb86d796a4646f2c5b0a4b4fa54ddda750cbf523de8521edaa7da2595addbe8a3c8ba66020cf4c7c9cbf8ad263515b36808e5b354f57')
+validpgpkeys=(
+  53EF3DC3B63E2899271BD26322E8091EEA11BBB7 # Emmanuele Bassi <ebassi@gnome.org>
+  923B7025EE03C1C59F42684CF0942E894B2EAFA0 # Philip Withnall <pwithnall@gnome.org>
+)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  cd glib-${pkgver}
+  cd glib
   # https://gitlab.gnome.org/GNOME/glib/issues/539
   patch -Np1 -i ../0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch
+
+  git submodule init
+  git submodule set-url subprojects/gvdb "$srcdir/gvdb"
+  git -c protocol.file.allow=always submodule update
 }
 
 
 build() {
   for _arch in ${_architectures}; do
-    mkdir -p "${srcdir}/glib-${pkgver}/build-${_arch}-static"
-    mkdir -p "${srcdir}/glib-${pkgver}/build-${_arch}-shared"
+    mkdir -p "${srcdir}/glib/build-${_arch}-static"
+    mkdir -p "${srcdir}/glib/build-${_arch}-shared"
 
-    cd "${srcdir}/glib-${pkgver}/build-${_arch}-static"
+    cd "${srcdir}/glib/build-${_arch}-static"
     ${_arch}-meson \
       -D strip=true \
+      -D man=false \
+      -D gtk_doc=false \
       --default-library static ..
-    ninja
+    meson compile
 
-    cd "${srcdir}/glib-${pkgver}/build-${_arch}-shared"
+    cd "${srcdir}/glib/build-${_arch}-shared"
     ${_arch}-meson \
       -D strip=true \
+      -D man=false \
+      -D gtk_doc=false \
       --default-library shared ..
-    ninja
+    meson compile
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
     # fix pkg-config files (see https://github.com/mesonbuild/meson/pull/3939)
-    for pc_file in ${srcdir}/glib-${pkgver}/build-${_arch}-shared/meson-private/*.pc; do
+    for pc_file in ${srcdir}/glib/build-${_arch}-shared/meson-private/*.pc; do
       sed -i 's/-lgnulib//g' "$pc_file"
       sed -i 's/-lcharset//g' "$pc_file"
       sed -i 's/-lgiowin32//g' "$pc_file"
     done
     
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}/glib-${pkgver}/build-${_arch}-static" install
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}/glib-${pkgver}/build-${_arch}-shared" install
+    DESTDIR="${pkgdir}" meson install -C "${srcdir}/glib/build-${_arch}-static"
+    DESTDIR="${pkgdir}" meson install -C "${srcdir}/glib/build-${_arch}-shared"
     if [[ $NO_EXECUTABLES ]]; then
       find "${pkgdir}/usr/${_arch}" -name '*.exe' -delete
     fi

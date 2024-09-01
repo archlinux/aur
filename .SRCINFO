@@ -1,12 +1,13 @@
 pkgbase = mingw-w64-glib2
-	pkgdesc = Low level core library (mingw-w64)
-	pkgver = 2.80.3
+	pkgdesc = Low level core library
+	pkgver = 2.82.0
 	pkgrel = 1
-	url = https://wiki.gnome.org/Projects/GLib
+	url = https://gitlab.gnome.org/GNOME/glib
 	arch = any
-	license = LGPL2.1
+	license = LGPL-2.1-or-later
 	makedepends = mingw-w64-meson
 	makedepends = python-packaging
+	makedepends = git
 	depends = mingw-w64-libffi
 	depends = mingw-w64-pcre2
 	depends = mingw-w64-gettext
@@ -15,9 +16,13 @@ pkgbase = mingw-w64-glib2
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.gnome.org/sources/glib/2.80/glib-2.80.3.tar.xz
+	source = git+https://gitlab.gnome.org/GNOME/glib.git?signed#tag=2.82.0
+	source = git+https://gitlab.gnome.org/GNOME/gvdb.git
 	source = 0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch
-	sha256sums = 3947a0eaddd0f3613d0230bb246d0c69e46142c19022f5c4b1b2e3cba236d417
-	sha256sums = 56d41de64a30099c42ecd47ed576fcd169548912619c10deb4a712b583548d30
+	validpgpkeys = 53EF3DC3B63E2899271BD26322E8091EEA11BBB7
+	validpgpkeys = 923B7025EE03C1C59F42684CF0942E894B2EAFA0
+	b2sums = 9dee8619918d1bf85d853ddc661c4702046b5361bd3fde105d0b3c550f5dbdbaa6578557107588053bb4e980a21e83b95c2c9e9c7868fb89ca852bc950ac3dba
+	b2sums = SKIP
+	b2sums = 8d6cc5d4d321bb861b6acb86d796a4646f2c5b0a4b4fa54ddda750cbf523de8521edaa7da2595addbe8a3c8ba66020cf4c7c9cbf8ad263515b36808e5b354f57
 
 pkgname = mingw-w64-glib2
