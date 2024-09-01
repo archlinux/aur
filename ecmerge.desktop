@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=ECMerge
+Type=Application
+Exec=/opt/elliecomputing/ecmerge/guimerge
+Icon=/opt/elliecomputing/ecmerge/ecmerge-icon.png
+Categories=Development

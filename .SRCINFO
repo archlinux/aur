@@ -1,0 +1,15 @@
+pkgbase = ecmerge-bin
+	pkgdesc = Compares and merges text files, images, binaries and folders visually
+	pkgver = 2.5.205
+	pkgrel = 1
+	url = https://www.elliecomputing.com/en/Products/merge_overview.asp
+	arch = x86_64
+	license = custom
+	provides = ecmerge=2.5.205
+	conflicts = ecmerge
+	source = http://www.soft.elliecomputing.com/soft/ecmerge-2.5.205.linux.x86.tbz
+	source = local://ecmerge.desktop
+	sha256sums = 173ee0733bc50fbcf1c6743903629882984560d051420c3ff0217d74b7a37077
+	sha256sums = SKIP
+
+pkgname = ecmerge-bin
