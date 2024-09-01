@@ -3,7 +3,7 @@
 
 _pkgname="gummy"
 pkgname="$_pkgname"
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Screen brightness/temperature manager for Linux"
 url="https://codeberg.org/fusco/gummy"
@@ -22,16 +22,16 @@ depends=(
 makedepends=(
   'cli11'
   'cmake'
-  'git'
   'ninja'
   'nlohmann-json'
 )
 
 install="$_pkgname.install"
 
-_pkgsrc="fusco.gummy"
-source=("$_pkgsrc"::"git+$url.git#tag=$pkgver")
-sha256sums=('113d6511dc121e8f216c74ace8318976a27e4111177ea9b6f7270dece0a54f1d')
+_pkgsrc="gummy"
+_pkgext="tar.gz"
+source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/$pkgver.$_pkgext")
+sha256sums=('845bc5a99e6b2cfb0d465112f17d3f04d2c04e4c28d9e4071de5b5f8ddb3a0bf')
 
 build() {
   local _cmake_options=(
