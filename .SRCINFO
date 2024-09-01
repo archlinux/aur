@@ -1,0 +1,13 @@
+pkgbase = olvid
+	pkgdesc = French instant, private and secure messenger
+	pkgver = 2.0.0
+	pkgrel = 1
+	epoch = 1
+	url = https://www.olvid.io/
+	arch = x86_64
+	license = custom
+	provides = olvid
+	source = https://static.olvid.io/linux/olvid-2.0.0.tar.gz
+	sha256sums = e4c47c89c8a19ab2ad89582e75f4909d9569666a1387a574ecaf42aafc151ba3
+
+pkgname = olvid
