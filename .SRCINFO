@@ -1,7 +1,7 @@
 pkgbase = perl-log-any
 	pkgdesc = Bringing loggers and listeners together
 	pkgver = 1.717
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Log-Any
 	arch = any
 	license = PerlArtistic
