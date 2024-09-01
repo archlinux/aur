@@ -1,12 +1,13 @@
 # Maintainer: Irfan Hakim <irfanhakim.as@yahoo.com>
 pkgname='kf6-servicemenus-reimage'
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Manipulate images e their metadata"
 arch=('any')
 url="https://github.com/irfanhakim-as/kde-service-menu-reimage"
 license=('GPL-3.0+')
 depends=('dolphin' 'imagemagick' 'kdialog')
+makedepends=('qt5-tools')
 optdepends=('jhead: required for extracting exif data')
 provides=()
 conflicts=('kde-service-menu-reimage' 'kde-service-menu-reimage-mod')
