@@ -2,7 +2,7 @@ pkgbase = torzu
 	pkgdesc = Torzu is a fork of yuzu, the world's most popular, open-source, Nintendo Switch emulator. It is written in C++ with portability in mind.
 	pkgver = 2024.08.10
 	pkgrel = 1
-	url = https://codeberg.org/litucks/torzu.git
+	url = https://notabug.org/litucks/torzu
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = curl
@@ -94,7 +94,7 @@ pkgbase = torzu
 	options = !debug
 	options = lto
 	options = strip
-	source = git+https://codeberg.org/litucks/torzu.git#tag=2024-08-10
+	source = git+https://notabug.org/litucks/torzu#tag=2024-08-10
 	source = git+https://github.com/lsalzman/enet.git
 	source = cubeb::git+http://github.com/mozilla/cubeb.git
 	source = git+https://github.com/libusb/libusb.git
