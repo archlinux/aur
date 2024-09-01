@@ -1,7 +1,7 @@
 pkgbase = cwe-client-cli
 	pkgdesc = Simple console client for CWE
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = GPL
 	makedepends = cargo

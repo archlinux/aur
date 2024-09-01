@@ -1,7 +1,7 @@
 # Maintainer: Ice Layer <ice1ay3r@gmail.com>
 pkgname="cwe-client-cli"
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple console client for CWE"
 arch=("x86_64")
 license=("GPL")
