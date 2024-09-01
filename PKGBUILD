@@ -1,7 +1,7 @@
 # Maintainer: Goldy <goldy@devgoldy.xyz>
 # Maintainer: Ananas <ananas@ananas.moe>
 pkgname=mov-cli
-pkgver="4.4.8"
+pkgver="4.4.12"
 pkgrel=1
 pkgdesc="Watch everything from your terminal."
 arch=("x86_64" "i686")

@@ -1,6 +1,6 @@
 pkgbase = mov-cli
 	pkgdesc = Watch everything from your terminal.
-	pkgver = 4.4.8
+	pkgver = 4.4.12
 	pkgrel = 1
 	url = https://github.com/mov-cli/mov-cli
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = mov-cli
 	optdepends = yt-dlp
 	provides = mov-cli
 	conflicts = mov-cli-git
-	source = https://github.com/mov-cli/mov-cli/archive/refs/tags/4.4.8.zip
+	source = https://github.com/mov-cli/mov-cli/archive/refs/tags/4.4.12.zip
 	md5sums = SKIP
 
 pkgname = mov-cli
