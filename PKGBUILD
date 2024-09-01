@@ -1,29 +1,32 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=stig-viewer-bin
-pkgver=2.17
+pkgver=3.4
 pkgrel=1
 pkgdesc="Graphical user interface for XCCDF STIG files"
 arch=('x86_64')
-url="https://public.cyber.mil/stigs/stig-viewing-tools/"
+url="https://public.cyber.mil/stigs/srg-stig-tools/"
 license=('custom')
+makedepends=('asar')
 provides=("stig-viewer=${pkgver}")
 conflicts=('stig-viewer')
-source=("https://web.archive.org/web/20230416002444/https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_STIGViewer_2-17_Linux.zip"
-        "https://upload.wikimedia.org/wikipedia/commons/0/05/US-DefenseInformationSystemsAgency-Seal.svg"
-        "local://LICENSE"
+source=("https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_STIGViewer-linux_x64-3-4-0.zip"
         "local://stig-viewer.desktop")
-sha256sums=('06b350cb758e9177140cf92a5ad95f2e6bc2c658fede46feff6a9701e9d185a6'
-            'a1cdc9c6390b0af407c909bc9f02f2ed500103bac51ed6ce23ddbebf3fd7b9d8'
-            'SKIP'
+sha256sums=('39debcb9c75fd9e7da2bf4e2bb38fc65a64cb6a43b58dac20d46f9c9726e4a22'
             'SKIP')
 
 package() {
+	cd "$srcdir"
+
 	mkdir -p "$pkgdir/opt/stig-viewer"
-	cp -r bin conf legal lib release STIGViewer SWIDTAG "$pkgdir/opt/stig-viewer"
-	mkdir -p "$pkgdir/usr/share/licenses/stig-viewer"
-	cp -rL LICENSE legal/* "$pkgdir/usr/share/licenses/stig-viewer"
-	mkdir -p "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-	cp US-DefenseInformationSystemsAgency-Seal.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/stig-viewer.svg"
+	cp -r stig_viewer_3-linux-x64/* "$pkgdir/opt/stig-viewer"
+
+	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+	cp stig_viewer_3-linux-x64/LICENSE* "$pkgdir/usr/share/licenses/$pkgname"
+
+	mkdir -p "$pkgdir/usr/share/icons/hicolor/256x256/apps"
+	asar extract-file stig_viewer_3-linux-x64/resources/app.asar src/assets/ag_icon.ico
+	mv ag_icon.ico "$pkgdir/usr/share/icons/hicolor/256x256/apps/stig-viewer.ico"
+
 	mkdir -p "$pkgdir/usr/share/applications"
 	cp stig-viewer.desktop "$pkgdir/usr/share/applications"
 }

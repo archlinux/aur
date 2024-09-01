@@ -1,19 +1,16 @@
 pkgbase = stig-viewer-bin
 	pkgdesc = Graphical user interface for XCCDF STIG files
-	pkgver = 2.17
+	pkgver = 3.4
 	pkgrel = 1
-	url = https://public.cyber.mil/stigs/stig-viewing-tools/
+	url = https://public.cyber.mil/stigs/srg-stig-tools/
 	arch = x86_64
 	license = custom
-	provides = stig-viewer=2.17
+	makedepends = asar
+	provides = stig-viewer=3.4
 	conflicts = stig-viewer
-	source = https://web.archive.org/web/20230416002444/https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_STIGViewer_2-17_Linux.zip
-	source = https://upload.wikimedia.org/wikipedia/commons/0/05/US-DefenseInformationSystemsAgency-Seal.svg
-	source = local://LICENSE
+	source = https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_STIGViewer-linux_x64-3-4-0.zip
 	source = local://stig-viewer.desktop
-	sha256sums = 06b350cb758e9177140cf92a5ad95f2e6bc2c658fede46feff6a9701e9d185a6
-	sha256sums = a1cdc9c6390b0af407c909bc9f02f2ed500103bac51ed6ce23ddbebf3fd7b9d8
-	sha256sums = SKIP
+	sha256sums = 39debcb9c75fd9e7da2bf4e2bb38fc65a64cb6a43b58dac20d46f9c9726e4a22
 	sha256sums = SKIP
 
 pkgname = stig-viewer-bin
