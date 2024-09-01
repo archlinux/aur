@@ -96,6 +96,6 @@ package() {
     install -Dm755 "extra/tauonmb.sh" "$pkgdir/usr/bin/tauon"
 }
 
-md5sums=('12d263ce2c740c93a9dfd5dfff6105d2'
+md5sums=('90334579623a0a1a433ff3871ae514c3'
          '981ad3e496fbd8edb99704fc0e2aa939'
          '01b821de48cdba3838239b6cbd5e13e5')
