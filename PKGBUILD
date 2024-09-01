@@ -1,8 +1,8 @@
-# Maintainer: ELmoussaoui Bilal <bil.elmoussaoui@gmail.com>
+# Maintainer: Mike Pento <mpento@darkforge.net>
 
 pkgname=arc-icon-theme-git
 _gitname=arc-icon-theme
-pkgver=20160605
+pkgver=20161122
 pkgrel=1
 pkgdesc='Arc icon theme. Latest commit from the master branch on Github.'
 arch=(any)
@@ -12,7 +12,7 @@ depends=('gtk-update-icon-cache')
 makedepends=('git' 'automake')
 optdepends=('moka-icon-theme-git: Arc icon theme was built to be used 
 on top of Moka icon theme')
-source=("git://github.com/horst3180/${_gitname}.git")
+source=("git+https://github.com/horst3180/${_gitname}.git")
 md5sums=('SKIP')
 conflicts=('arc-icon-theme')
 
