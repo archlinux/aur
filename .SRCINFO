@@ -1,0 +1,15 @@
+pkgbase = picocrypt-bin
+	pkgdesc = A very small, very simple, yet very secure encryption tool.
+	pkgver = 1.41
+	pkgrel = 1
+	url = https://github.com/Picocrypt/Picocrypt
+	arch = x86_64
+	license = GPL3
+	makedepends = tar
+	depends = gtk3
+	provides = picocrypt
+	conflicts = picocrypt
+	source = https://github.com/Picocrypt/Picocrypt/releases/download/1.41/Picocrypt.deb
+	sha256sums = 7bacdf322705e1ba63079485e05988c27a8e995beb546c70e35d2d96367efab3
+
+pkgname = picocrypt-bin
