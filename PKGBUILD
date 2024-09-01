@@ -2,28 +2,31 @@
 # Contributor: Atterratio <atterratio@gmail.com>
 
 pkgname=q4wine-git
-pkgver=1.3.13.2.g9735939
+pkgver=1.3.13.4.g82ced8e
 pkgrel=1
 pkgdesc="A Qt GUI for Wine. (GIT Version)"
 arch=('x86_64')
-url='http://sourceforge.net/projects/q4wine'
+url='https://github.com/brezerk/q4wine'
 license=('GPL3')
-depends=('qt-solutions-git'
-         'icoutils'
-         'wine'
-         'which'
-         'desktop-file-utils'
-         'hicolor-icon-theme'
-         )
-makedepends=('cmake'
-             'git'
-             'qt5-tools'
-             'qt5-svg'
-             'fuseiso'
-             )
-optdepends=('winetricks: Tweak wine'
-            'fuseiso: Mount ISO files'
-            )
+depends=(
+  'qt-solutions-git'
+  'icoutils'
+  'wine'
+  'which'
+  'desktop-file-utils'
+  'hicolor-icon-theme'
+)
+makedepends=(
+  'cmake'
+  'git'
+  'qt5-tools'
+  'qt5-svg'
+  'fuseiso'
+)
+optdepends=(
+  'winetricks: Tweak wine'
+  'fuseiso: Mount ISO files'
+)
 conflicts=('q4wine')
 provides=('q4wine')
 source=('git+https://github.com/brezerk/q4wine.git')
