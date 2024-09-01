@@ -1,0 +1,19 @@
+pkgbase = python-sslpsk-pmd3
+	pkgdesc = Fork of sslpsk with support for latest python versions
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/doronz88/sslpsk-pmd3
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = openssl
+	depends = openssl-1.1
+	source = python-sslpsk-pmd3-1.0.3.tar.gz::https://github.com/doronz88/sslpsk-pmd3/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 62a5764870053c55e7aba00bab5de2533ba2dc79a575f3f2693a9df320045d82
+
+pkgname = python-sslpsk-pmd3
