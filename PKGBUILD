@@ -7,6 +7,7 @@ pkgdesc="A simple, correct PEP 517 build frontend"
 arch=(any)
 url="https://${_base}.pypa.io"
 license=(MIT)
+depends=(pypy3-packaging pypy3-pep517 pypy3-tomli)
 makedepends=(pypy3-setuptools)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/pypa/${_base}/archive/${pkgver}.tar.gz)
 sha512sums=('d6ef229c8f3b348cc939af6bd9a0a521a25c3a5702a95da8ee36d7a1ad3f3e22e10b5c96495ff08a1328ab73f03feebc64e89ce165862cb295eff4360c79d642')
