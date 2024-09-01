@@ -9,9 +9,9 @@ pkgbase = lu5
 	depends = glfw
 	depends = glu
 	depends = freetype2
-	source = git+https://github.com/matiasvlevi/lu5.git#tag=v0.1.6
-	source = git+https://github.com/matiasvlevi/lua.git
-	sha256sums = 9ceceecc8e648b5ff7eaa928226756405667d0a901d7a527a26082037adc305e
-	sha256sums = SKIP
+	source = lu5-0.1.6.tar.gz::https://github.com/matiasvlevi/lu5/archive/refs/tags/v0.1.6.tar.gz
+	source = lua.tar.gz::https://github.com/matiasvlevi/lua/archive/refs/tags/v5.4.0-b.tar.gz
+	sha256sums = a30ab3cad85e8aba41648aa5ccc47d82b3c2fd1cfab75850e992edc5983652ee
+	sha256sums = 897eb0281bfd9aa30a77a76ebc9acfc6f0cea39b529ead244a472999af98e3be
 
 pkgname = lu5
