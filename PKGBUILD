@@ -2,7 +2,7 @@
 
 pkgname=perl-app-borgrestore
 pkgver=3.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Restore paths from borg backups'
 arch=(any)
 license=(PerlArtistic GPL)

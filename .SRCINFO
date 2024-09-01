@@ -1,7 +1,7 @@
 pkgbase = perl-app-borgrestore
 	pkgdesc = Restore paths from borg backups
 	pkgver = 3.4.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/App-BorgRestore
 	arch = any
 	license = PerlArtistic
