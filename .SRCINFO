@@ -9,4 +9,8 @@ pkgbase = ibm-plex-fonts-git
 	source = ibm-plex::git+https://github.com/IBM/plex.git
 	sha256sums = SKIP
 
+pkgname = otf-ibm-plex-git
+
+pkgname = ttf-ibm-plex-git
+
 pkgname = woff2-ibm-plex-git

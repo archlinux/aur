@@ -1,8 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgbase=ibm-plex-fonts-git
-pkgname=(#otf-ibm-plex-git ttf-ibm-plex-git 
-          woff2-ibm-plex-git) #eot-ibm-plex-git woff-ibm-plex-git
+pkgname=(otf-ibm-plex-git ttf-ibm-plex-git woff2-ibm-plex-git) #eot-ibm-plex-git woff-ibm-plex-git
 pkgver=r335.3ddca8c9e
 pkgrel=1
 pkgdesc="IBM Plex fonts"
