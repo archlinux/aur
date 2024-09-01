@@ -1,6 +1,6 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=ifcopenshell
-pkgver=0.7.11_alpha240830
+pkgver=0.8.0
 _vername=bonsai
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
@@ -47,11 +47,12 @@ source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/refs/tags/${_verna
   "003-install-cityjson-files.patch::https://github.com/sukanka/IfcOpenShell/commit/56766cc.patch"
   "004-skip-install-python-package-only-install-wrapper.patch::https://github.com/sukanka/IfcOpenShell/commit/b7e6f1c.patch"
   "005-only-install-headers-for-serializer.patch::https://github.com/sukanka/IfcOpenShell/commit/91667b6.patch"
-  "006-fix-rpath.patch::https://github.com/sukanka/IfcOpenShell/commit/54a4cce.patch"
-  "007-install-missing-libs.patch::https://github.com/sukanka/IfcOpenShell/commit/7558599.patch"
+  "006-fix-rpath.patch::https://github.com/sukanka/IfcOpenShell/commit/7f2c949c7.patch"
+  "007-install-missing-libs.patch::https://github.com/sukanka/IfcOpenShell/commit/b151ab52.patch"
+  "008-fix-py-syntax-warning.patch::https://github.com/sukanka/IfcOpenShell/commit/a5207e5.patch"
 
 )
-sha256sums=('6b3d434e3de70d58703a0a50849de31fd70601b569c2777caceb372c34f3e608'
+sha256sums=('0967886cc1a9ff1e8f97a320f01bf37c44167ec2a01133595853b67aeace8f66'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -60,8 +61,9 @@ sha256sums=('6b3d434e3de70d58703a0a50849de31fd70601b569c2777caceb372c34f3e608'
             '0d82930b081ffeef87cdad4b4392119029de447b9f76cb99398b44d5b4d4c536'
             '75976c985b8d8a04f5a44ef3c22b9b9bb594809670baef8e7e00d67e86d1fd19'
             'f92c138eaa20bb787ec3bcaffaa4f74abe797cb11fd0627b78cca18b29bec072'
-            'c6b372278b4e4c5d34c03acf81524aa89b10cabe3bcf4d3c0be7d22bef28f2b7'
-            'bab3a4a7b58160d70dee9c4598ed0ed7c795ab2bf5aedcbf2e86493119836bf4')
+            '3b82184721a3c2b4d29a9f3382ff1757d6b5d9ac04b08534111bd9b3647b9334'
+            'c61696d393f52c2b20accb24620d8b09b63fe3c347926398454261edb0698796'
+            'ee66efb3df25d569e780968ed9d149a265cac3ad622965bbeac21c66044a6ebe')
 
 _iosdir="IfcOpenShell-${_vername}-${pkgver//_/-}"
 
@@ -76,6 +78,7 @@ prepare() {
   patch --strip=1 --ignore-whitespace <../005-only-install-headers-for-serializer.patch
   patch --strip=1 --ignore-whitespace <../006-fix-rpath.patch
   patch --strip=1 --ignore-whitespace <../007-install-missing-libs.patch
+  patch --strip=1 --ignore-whitespace <../008-fix-py-syntax-warning.patch
   pushd src/svgfill
   patch --strip=1 --ignore-whitespace <${srcdir}/001-libsvgfill.patch
   popd
