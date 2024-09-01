@@ -2,7 +2,7 @@
 
 pkgname=katalogue-git
 pkgver=r2.adf67aa7ba5d52ad3632c892c2077df6fb165a4b
-pkgrel=1
+pkgrel=2
 pkgdesc="Catalog to track maintenance events and to-dos for your home, car, and otherwise"
 arch=('x86_64')
 license=('AGPLv3')
