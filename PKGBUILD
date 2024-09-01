@@ -4,7 +4,7 @@
 _target=mips64-elf
 pkgname=${_target}-newlib
 pkgver=4.4.0.20231231
-pkgrel=3
+pkgrel=4
 pkgdesc="A C library intended for use on embedded systems (${_target})"
 arch=('any')
 url='http://sourceware.org/newlib/'
@@ -23,17 +23,18 @@ build()
 {
   cd build
 
-  export CFLAGS_FOR_TARGET='-O2 -fpermissive -ffunction-sections -fdata-sections -fomit-frame-pointer -DHAVE_ASSERT_FUNC'
+  export CFLAGS_FOR_TARGET='-O2 -fpermissive -DHAVE_ASSERT_FUNC'
 
   ../newlib-${pkgver}/configure \
     --prefix=/usr \
     --target=${_target} \
     --enable-lto \
     --enable-multilib \
+    --enable-newlib-multithread \
+    --enable-newlib-retargetable-locking \
     --disable-libssp \
     --disable-nls \
     --disable-shared \
-    --disable-threads \
     --disable-werror
 
   make
