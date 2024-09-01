@@ -22,7 +22,7 @@ source=("git+https://github.com/costales/folder-color.git#commit=${_commit}")
 sha256sums=('f1d36bbef81a356f9d84324b39d5201256204a23754d79ceeb441798c755bd03')
 
 build() {
-  cd "$_pkgname"
+  cd "${_pkgname}"
 
   pushd install-scripts
   ./caja.sh GTK3
@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-  cd "$_pkgname"
+  cd "${_pkgname}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
