@@ -1,14 +1,20 @@
 pkgbase = ftxui
 	pkgdesc = A C++ Functional Terminal User Interface
 	pkgver = 5.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ArthurSonzogni/ftxui
 	arch = any
 	license = MIT
-	makedepends = cmake>=3.12
-	makedepends = gtest>=1.10.0
 	makedepends = benchmark>=1.8.2
+	makedepends = cmake>=3.12
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = gtest>=1.10
 	source = FTXUI-5.0.0.tar.gz::https://github.com/ArthurSonzogni/ftxui/archive/v5.0.0.tar.gz
 	sha256sums = a2991cb222c944aee14397965d9f6b050245da849d8c5da7c72d112de2786b5b
 
 pkgname = ftxui
+	arch = x86_64
+
+pkgname = ftxui-docs
+	pkgdesc = HTML documentation for ftxui
