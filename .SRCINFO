@@ -1,0 +1,20 @@
+pkgbase = musescore-bin
+	pkgdesc = Create, play and print beautiful sheet music / AppImage version
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = https://musescore.org/
+	arch = x86_64
+	groups = pro-audio
+	license = GPL
+	depends = zlib
+	depends = fuse2
+	optdepends = lame: MP3 export
+	provides = musescore
+	conflicts = musescore
+	noextract = MuseScore-Studio-4.4.0.242390800-x86_64.AppImage
+	options = !strip
+	options = !debug
+	source = MuseScore-Studio-4.4.0.242390800-x86_64.AppImage::https://github.com/musescore/MuseScore/releases/download/v4.4.0/MuseScore-Studio-4.4.0.242390800-x86_64.AppImage
+	sha256sums = 55c3bebd48b357572be83d2151b110d3113b338202d891ba0b48ec16e5dedcb2
+
+pkgname = musescore-bin
