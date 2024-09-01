@@ -1,0 +1,16 @@
+pkgbase = prosystem-highscore-git
+	pkgdesc = Highscore port of ProSystem JG
+	pkgver = 1.5.2.r50.g56ec994
+	pkgrel = 1
+	url = https://gitlab.com/alice-m/prosystem
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = meson
+	depends = libhighscore-git
+	provides = prosystem-highscore
+	conflicts = prosystem-highscore
+	source = git+https://gitlab.com/alice-m/prosystem.git
+	sha256sums = SKIP
+
+pkgname = prosystem-highscore-git
