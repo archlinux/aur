@@ -1,0 +1,18 @@
+pkgbase = holyc-lang-git
+	pkgdesc = A HolyC compiler built from scratch in C
+	pkgver = 0.0.3beta.r12.b7c7de2
+	pkgrel = 1
+	url = https://github.com/Jamesbarford/holyc-lang
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = cmake>=3.10
+	depends = glibc
+	provides = holyc-lang=0.0.3beta
+	conflicts = holyc-lang
+	source = holyc-lang::git+https://github.com/Jamesbarford/holyc-lang.git
+	source = holyc-lang_fix_math_linking.patch
+	sha256sums = SKIP
+	sha256sums = eb4f018417b4f6181e7361d9b887e535c0aee5e9899c56d088acae4515ad045a
+
+pkgname = holyc-lang-git

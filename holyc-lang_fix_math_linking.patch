@@ -1,0 +1,11 @@
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -67,6 +67,8 @@
+ 
+ add_executable(hcc ${SOURCES} ${HEADERS})
+ 
++target_link_libraries(hcc m)
++
+ # Command for unit tests
+ add_custom_target(unit-test
+     COMMAND ${CMAKE_COMMAND} -E echo "Running unit tests..."
