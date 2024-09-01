@@ -7,7 +7,7 @@
 ### PKGBUILD METADATA ###
 
 pkgname=webcord-git
-pkgver=4.2.0.r845.66c71e5
+pkgver=4.10.1.r970.daadd04
 pkgrel=2
 pkgdesc="A Discord and Fosscord client made with the Electron (master branch)."
 arch=("any")
@@ -141,10 +141,10 @@ package() {
 
   # Documentation
 
-  install -dm755 "${pkgdir}/usr/share/docs"
-  cp -R "${pkgname%-git}/docs/" "${pkgdir}/usr/share/docs/${pkgname%-git}/"
-  chmod 0644 "${pkgdir}/usr/share/docs/${pkgname%-git}/"
-  _changelog md > "${pkgdir}/usr/share/docs/${pkgname%-git}/Changelog.md"
+  install -dm755 "${pkgdir}/usr/share/doc"
+  cp -R "${pkgname%-git}/docs/" "${pkgdir}/usr/share/doc/${pkgname%-git}/"
+  chmod 0644 "${pkgdir}/usr/share/doc/${pkgname%-git}"{/,*/}*.md
+  _changelog md > "${pkgdir}/usr/share/doc/${pkgname%-git}/Changelog.md"
 
   # Get supported electron version and add it to the dependencies.
   #  (`-n "$pkgdir"` check also prevents adding it to .SRCINFO)
@@ -289,7 +289,7 @@ _genico(){
       _outln="${_outdir}/${_repo}.${_ext}"
       mkdir -p "$(dirname "$_out")"
       if [[ "${_ext}" == "png" ]]; then
-        convert "$_file" -size "${_size}x${_size}" "$_out" &
+        magick "$_file" -size "${_size}x${_size}" "$_out" &
         ln -sr "${_out}" "${_outln}" &
       else
         echo -e "\nERROR: Unknown image type! (${_ext})"
