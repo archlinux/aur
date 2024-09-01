@@ -2,7 +2,7 @@
 _pkg=qsv
 pkgname=qsv-bin
 pkgver=0.132.0
-pkgrel=2
+pkgrel=3
 pkgdesc='CSVs sliced, diced & analyzed. Quicksilver (qsv) is a fork of the popular xsv utility'
 arch=(x86_64)
 url='https://github.com/jqnatividad/qsv'
@@ -19,7 +19,7 @@ sha256sums=('08579b91a9557dcf2ec5085c2f4e01766c489e18f65128f854427796ad31acb4'
             'b75aa51b48d42462c56fffaa043b6a6927bbaea305f03d54e73b5b83e1ea3eaf'
             'b19ab1d0e8a78d59a86e2b66fed26620d5f0f00408ca8667bd555a3099a4cd00'
             '5e33ab7239594da8670abeec89ef06391788544bc72caec6734021dc4a9721ec')
-sha256sums_x86_64=('60e82e09d68475cf7a6de9b5cd9b716f8c1331378b80815f04aefb6930182086')
+sha256sums_x86_64=('570fe4348abcbdb7b0addea802985fd0aac7a0769beaf2932f85f70878ebd6dc')
 
 package() {
     install -Dm0755 "qsv" -t "$pkgdir/usr/bin/"
