@@ -1,0 +1,11 @@
+pkgbase = otf-lulu-monospace
+	pkgdesc = A free monospace font inspired by the digital age and neo-grotesque typography
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.steliosyps.com/lulu-monospace/
+	arch = any
+	license = LicenseRef-None
+	source = http://www.steliosyps.com/s/LuluMonospace-Regular-a7lc.zip
+	sha256sums = 8c12e257682c64d8dd046a140a155412a8749bcb5e76ff9c418b6b1bd465dbe1
+
+pkgname = otf-lulu-monospace
