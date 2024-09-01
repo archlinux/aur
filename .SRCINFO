@@ -1,7 +1,7 @@
 pkgbase = perl-carp-assert
 	pkgdesc = executable comments
 	pkgver = 0.22
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/release/Carp-Assert
 	arch = any
 	license = PerlArtistic
