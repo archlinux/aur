@@ -2,16 +2,14 @@
 
 _pkgname="wo"
 pkgname="${_pkgname}-git"
-pkgver=0.0.4.r0.g9ee6601
+pkgver=1.0.0.r0.g41c129a
 pkgrel=1
 pkgdesc="A workspace shell manager"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/antham/${_pkgname}"
 license=('MIT')
-depends=('glibc')
 makedepends=('git' 'go')
-optdepends=('bash-completion: for shell auto-completion'
-            'zsh-completions: for shell auto-completion')
+depends=('glibc')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
@@ -50,8 +48,8 @@ check() {
 package() {
   cd "${srcdir}/${_pkgsrc}"
   install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "README.md"        "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE"          "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 "README.md"         "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dm644 "LICENSE"           "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
   cd "completions"
   install -Dm644 "${_pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
