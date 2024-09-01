@@ -1,15 +1,16 @@
-# Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
+# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
+# Previous maintainer: MartJosip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=python-iso639
 _libname=iso639
 pkgver=0.4.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Python library for ISO 639 standard"
 arch=('any')
 url="https://github.com/noumar/iso639"
-license=('AGPL3')
-depends=('python')
-makedepends=('python-setuptools')
+license=('AGPL-3.0-only')
+depends=('python' 'python-setuptools')
+#makedepends=()
 source=("$_libname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('e68347887a438a0c49e6fe053206bf5d40348c4624f5ccffadc8bed2fa5e8ac9')
 

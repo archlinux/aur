@@ -1,12 +1,12 @@
 pkgbase = python-iso639
 	pkgdesc = Python library for ISO 639 standard
 	pkgver = 0.4.5
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/noumar/iso639
 	arch = any
-	license = AGPL3
-	makedepends = python-setuptools
+	license = AGPL-3.0-only
 	depends = python
+	depends = python-setuptools
 	source = iso639-0.4.5.tar.gz::https://github.com/noumar/iso639/archive/0.4.5.tar.gz
 	sha256sums = e68347887a438a0c49e6fe053206bf5d40348c4624f5ccffadc8bed2fa5e8ac9
 
