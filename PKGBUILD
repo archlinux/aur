@@ -1,11 +1,11 @@
-# Maintainer: Martin Rys <rys.rs/contact>
+# Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 # Previous maintainers:
 #  Chris Morgan <me@chrismorgan.info>
 #  Carsten Feuls <archlinux dot carstenfeuls dot de>
 #  Nils Czernia <nils at czserver dot de>
 
 pkgname=matomo
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="A real-time web analytics platform"
 arch=("any")
@@ -20,7 +20,7 @@ install="$pkgname.install"
 source=("https://builds.matomo.org/${pkgname}-${pkgver}.tar.gz"
         "https://builds.matomo.org/${pkgname}-${pkgver}.tar.gz.asc")
 backup=("usr/share/webapps/${pkgname}/piwik.js" "usr/share/webapps/${pkgname}/matomo.js")
-sha256sums=('0157eea9576c1052f6ba9ffc142c403e57e639797e2921b0cc236b90fb2ca21a'
+sha256sums=('c62e91f4efe93b106081aebec30ab38b00ca2bb43522ca6576fc60fb49a975e4'
             'SKIP')
 
 validpgpkeys=("F529A27008477483777FC23D63BB30D0E5D2C749")
