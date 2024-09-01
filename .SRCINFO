@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-beta-performance
 	pkgdesc = Next generation desktop shell
-	pkgver = 47.beta.r24.g36e42ba
+	pkgver = 47.rc.r0.g092fd63
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-shell
@@ -59,9 +59,9 @@ pkgbase = gnome-shell-beta-performance
 	depends = unzip
 	depends = upower
 	depends = webkitgtk-6.0
-	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=36e42badd099e6096c36e64928d195e76a0358f1
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=092fd6334d255cce58d9c742e7b0d32a154d4259
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=5f9768a2eac29c1ed56f1fbb449a77a3523683b6
-	b2sums = d8d02aa2f7e69fc94afc0535b65690d7e43536f7d504e9d347b74c34c16c36237e9b21c7c918ca4b84f95032e40e365226b462540aabe028040b36f71622d59c
+	b2sums = ef0557305ae52d7877363f335cb52e040db492f21d4af49e0965590ff73c038f5a0eb38914ad7753d05750dfd8590e7c2ea25de5d2c3587832316254dfc72721
 	b2sums = e31ae379039dfc345e8032f7b9803a59ded075fc52457ba1553276d3031e7025d9304a7f2167a01be2d54c5e121bae00a2824a9c5ccbf926865d0b24520bb053
 
 pkgname = gnome-shell-beta-performance
@@ -121,6 +121,6 @@ pkgname = gnome-shell-beta-performance
 	optdepends = python-simplejson: gnome-shell-test-tool performance tester
 	optdepends = switcheroo-control: Multi-GPU support
 	provides = gnome-shell
-	provides = gnome-shell=47.beta.r24.g36e42ba
-	provides = gnome-shell=1:47.beta.r24.g36e42ba
+	provides = gnome-shell=47.rc.r0.g092fd63
+	provides = gnome-shell=1:47.rc.r0.g092fd63
 	conflicts = gnome-shell
