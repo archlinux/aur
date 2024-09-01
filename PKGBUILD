@@ -24,16 +24,16 @@ makedepends=(
   'vala'
 )
 optdepends=(
-  'blastem-highscore-git'
-  'bsnes-highscore-git'
-  'desmume-highscore-git'
-  'gearsystem-highscore-git'
-  'mednafen-highscore-git'
-  'mgba-highscore-git'
-  'mupen64plus-highscore-git'
-  'nestopia-highscore-git'
-  'prosystem-highscore-git'
-#  'stella-highscore-git'  ## WIP
+  'blastem-highscore-git: BlastEm core'
+  'bsnes-highscore-git: BSNES core'
+  'desmume-highscore-git: DeSmuME core'
+  'gearsystem-highscore-git: Gearsystem core'
+  'mednafen-highscore-git: Mednafen core'
+  'mgba-highscore-git: mGBA core'
+  'mupen64plus-highscore-git: Mupen64Plus core'
+  'nestopia-highscore-git: Nestopia JG core'
+  'prosystem-highscore-git: ProSystem JG core'
+#  'stella-highscore-git: Stella core'  ## WIP
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
