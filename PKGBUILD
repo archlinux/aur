@@ -3,17 +3,18 @@
 _pkgname="holyc-lang"
 pkgname="${_pkgname}-git"
 pkgver=0.0.3beta.r12.b7c7de2
-pkgrel=1
+pkgrel=2
 pkgdesc="A HolyC compiler built from scratch in C"
 arch=('x86_64')
-url="https://github.com/Jamesbarford/${_pkgname}"
+url="https://holyc-lang.com"
+_url="https://github.com/Jamesbarford/${_pkgname}"
 license=('BSD-2-Clause')
 makedepends=('git' 'cmake>=3.10')
 depends=('glibc')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
-source=("${_pkgsrc}::git+${url}.git"
+source=("${_pkgsrc}::git+${_url}.git"
         "${_pkgname}_fix_math_linking.patch")
 sha256sums=('SKIP'
             'eb4f018417b4f6181e7361d9b887e535c0aee5e9899c56d088acae4515ad045a')

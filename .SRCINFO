@@ -1,8 +1,8 @@
 pkgbase = holyc-lang-git
 	pkgdesc = A HolyC compiler built from scratch in C
 	pkgver = 0.0.3beta.r12.b7c7de2
-	pkgrel = 1
-	url = https://github.com/Jamesbarford/holyc-lang
+	pkgrel = 2
+	url = https://holyc-lang.com
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = git
