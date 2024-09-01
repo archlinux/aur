@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=DeltaWalker
+Type=Application
+Exec=/opt/delta-walker/DeltaWalker
+Icon=/opt/delta-walker/icon.xpm
+Categories=Development
