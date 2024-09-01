@@ -1,6 +1,6 @@
 pkgbase = efibooteditor
 	pkgdesc = Boot Editor for (U)EFI based systems.
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/Neverous/efibooteditor
 	arch = x86_64
@@ -10,8 +10,9 @@ pkgbase = efibooteditor
 	makedepends = qt5-base
 	makedepends = qt5-tools
 	depends = efivar
-	source = efibooteditor-1.4.0.tar.gz::https://github.com/Neverous/efibooteditor/archive/refs/tags/v1.4.0.tar.gz
-	md5sums = 0529220a611bf841ed47492697c864fc
+	depends = zlib
+	source = efibooteditor-1.5.0.tar.gz::https://github.com/Neverous/efibooteditor/archive/refs/tags/v1.5.0.tar.gz
+	md5sums = 7d2e8d8731463bdc6ea069308a39f9b8
 
 pkgname = efibooteditor
 	pkgdesc = Boot Editor for (U)EFI based systems.
