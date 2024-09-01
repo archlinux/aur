@@ -1,6 +1,6 @@
-# Maintainer: Álvaro Jesús Baena Rosino <alvarojsino8 at gmail dot com>
+# Maintainer: Álvaro Jesús Baena Rosino <alvarojsino8@gmail.com>
 pkgname='mecano'
-pkgver='0.1.2'
+pkgver='0.2.0'
 pkgrel='1'
 pkgdesc='Minimalistic typing train'
 arch=('x86_64')
@@ -18,8 +18,8 @@ build() {
 
 package() { 
    install -d "$pkgdir/usr/share/$pkgname/dictionaries"
-   install -Dm755 "$srcdir/$pkgname-$pkgver/config.toml" "$pkgdir/usr/share/$pkgname/mecano.toml"
    cp -r "$srcdir/$pkgname-$pkgver/dictionaries/" "$pkgdir/usr/share/$pkgname/"
+   install -Dm755 "$srcdir/$pkgname-$pkgver/config.toml" "$pkgdir/usr/share/$pkgname/config.toml"
    install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/mecano" "$pkgdir/usr/bin/$pkgname"
 }
-sha256sums=('127f7ef027c3250c2578b8f6de9533689cd9e282237cb381ba5300f335b616eb')
+sha256sums=('e3d0a0c16f27f719b6f2e36e287f2b5acc0e7f1b44df049f913466478f334cf6')
