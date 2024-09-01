@@ -1,0 +1,12 @@
+[Unit]
+Description=Stargazer Gemini Server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/stargazer /etc/stargazer.ini
+Restart=on-failure
+User=stargazer
+
+[Install]
+WantedBy=multi-user.target
