@@ -1,0 +1,18 @@
+pkgbase = perl-log-any-adapter-log4perl
+	pkgdesc = Log::Any adapter for Log::Log4perl
+	pkgver = 0.09
+	pkgrel = 7
+	url = https://metacpan.org/release/Log-Any-Adapter-Log4perl
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-log-any
+	depends = perl>=5.6
+	depends = perl-log-any
+	depends = perl-log-log4perl>=1.32
+	options = !emptydirs
+	source = https://search.cpan.org/CPAN/authors/id/P/PR/PREACTION/Log-Any-Adapter-Log4perl-0.09.tar.gz
+	md5sums = 33f58745a229cfbe5558fd75aeddf6b4
+	sha512sums = 7b7e0d20e8280be7e741676216e37ef9d480c82e874f22495055b29a365951f3f20d76a27a5a1ab9ee22e93a31bead0b2e09063375284c5342fa0694ccc83114
+
+pkgname = perl-log-any-adapter-log4perl
