@@ -2,14 +2,14 @@
 _pkgname=ki-shell
 _srcdir=kotlin-interactive-shell
 pkgname=ki-shell-git
-pkgver=0.3.3.r14.g0cc592d.kotlin1.5.21
+pkgver=0.5.0.r12.g5b1ff4d.kotlin2.0.20
 pkgrel=1
 pkgdesc="Kotlin Language Interactive Shell"
 arch=('any')
 url='https://github.com/Kotlin/kotlin-interactive-shell'
 license=('Apache')
 depends=('sh' 'java-runtime>=8')
-makedepends=('maven' 'awk' 'kotlin>=1.4.32')
+makedepends=('maven' 'awk' 'kotlin' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_srcdir}::git+https://github.com/Kotlin/kotlin-interactive-shell.git")
