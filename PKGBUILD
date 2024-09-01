@@ -10,7 +10,7 @@
 
 _pkgbase=openocd
 pkgname=openocd-raspberrypi-git
-pkgver=v0.12.0.r25.g3e301b3
+pkgver=v0.12.0.r26.gebec950
 pkgrel=1
 pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (git version, raspberrypi fork)"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
@@ -23,7 +23,7 @@ provides=('openocd=${pkgver}')
 conflicts=('openocd' 'openocd-git')
 
 source=(
-  "${pkgname}::git+https://github.com/raspberrypi/openocd.git#branch=rp2040-v0.12.0"
+  "${pkgname}::git+https://github.com/raspberrypi/openocd.git#branch=sdk-2.0.0"
   "git+https://github.com/msteveb/jimtcl.git"
   "git+https://gitlab.zapb.de/libjaylink/libjaylink.git"
   "git+https://git.savannah.nongnu.org/git/git2cl.git"
@@ -81,6 +81,7 @@ _features=(
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
+  git tag -f v0.12.0 9ea7f3d647c8ecf6b0f1424002dfc3f4504a162c
   git describe --long --tags --abbrev=7 | sed 's/^rp2040-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
