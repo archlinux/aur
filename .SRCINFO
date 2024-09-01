@@ -1,6 +1,6 @@
 pkgbase = forgit
 	pkgdesc = Utility tool powered by fzf for using git interactively
-	pkgver = 24.06.0
+	pkgver = 24.09.0
 	pkgrel = 1
 	url = https://github.com/wfxr/forgit
 	install = forgit.install
@@ -19,7 +19,7 @@ pkgbase = forgit
 	optdepends = emoji-cli: emoji support for git log
 	provides = forgit
 	conflicts = forgit-git
-	source = forgit-24.06.0.tar.gz::https://github.com/wfxr/forgit/archive/24.06.0.tar.gz
-	sha256sums = 622280c46a23761a6e0b4ced1b772e4e30b7d385879afa93466005579d546398
+	source = forgit-24.09.0.tar.gz::https://github.com/wfxr/forgit/archive/24.09.0.tar.gz
+	sha256sums = 7139e5e4220be960d2c5d8fbceb8744380e40952e5568f9049f1c8a9b051071f
 
 pkgname = forgit
