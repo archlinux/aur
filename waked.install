@@ -1,0 +1,17 @@
+post_install()
+{
+    echo "Running waked post-install script..."
+    systemctl enable waked --now
+}
+
+post_upgrade()
+{
+    echo "Running waked post-upgrade script..."
+    systemctl enable waked --now
+}
+
+pre_remove()
+{
+    echo "Running waked pre_remove script..."
+    systemctl disable waked
+}
