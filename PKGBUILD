@@ -10,13 +10,13 @@
 
 _pkgbase=openocd
 pkgname=openocd-raspberrypi-git
-pkgver=v0.12.0.r24.g4d87f6d
+pkgver=v0.12.0.r25.g3e301b3
 pkgrel=1
 pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (git version, raspberrypi fork)"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://github.com/raspberrypi/openocd"
 license=('GPL')
-depends=('libftdi-compat' 'libusb-compat' 'hidapi' 'libudev.so' 'capstone')
+depends=('libftdi-compat' 'libusb-compat' 'hidapi' 'libudev.so' 'capstone' 'libjaylink')
 makedepends=('git' 'automake>=1.11' 'autoconf' 'libtool' 'tcl')
 options=(!strip)
 provides=('openocd=${pkgver}')
@@ -89,7 +89,7 @@ prepare() {
   sed -i 's|GROUP="plugdev", ||g' contrib/60-openocd.rules
   git submodule init
   git config submodule.jimtcl.url "$srcdir/jimtcl"
-  git config submodule."src/jtag.drivers/libjaylink".url "$srcdir/libjaylink"
+  git config submodule."src/jtag/drivers/libjaylink".url "$srcdir/libjaylink"
   git config submodule."tools/git2cl".url "$srcdir/git2cl"
   git -c protocol.file.allow=always submodule update
 }
