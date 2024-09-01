@@ -1,16 +1,17 @@
 pkgbase = zeldamm
-	pkgdesc = The Legend of Zelda: Majora's Mask game powered by the soh.
-	pkgver = 1.0.0
+	pkgdesc = The Legend of Zelda: Majora's Mask game powered by the 2s2h.
+	pkgver = 1.0.1
 	pkgrel = 1
 	arch = x86_64
 	arch = aarch64
+	arch = 1686
 	license = GPL
 	makedepends = unzip
-	depends = soh-bin
+	depends = 2s2h-bin
 	depends = wget
 	depends = unzip
 	depends = yad
-	source = https://gitlab.com/linuxbombay/zeldamm/-/archive/1.0.0/zeldamm-1.0.0.tar.bz2
-	sha256sums = 8bd9797a6dc6456998bc13d286a4a661f50fb6eb75a4e4ef4a4af6dfe6fb29e3
+	source = https://gitlab.com/linuxbombay/zeldamm/-/archive/1.0.1/zeldamm-1.0.1.tar.bz2
+	sha256sums = 4f95fda696a795d22165dbcad807f8edae23dc2a326a7a615f28cc9f072c8394
 
 pkgname = zeldamm
