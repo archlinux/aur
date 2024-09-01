@@ -9,24 +9,24 @@ url="https://github.com/matiasvlevi/lu5"
 license=('MIT')
 depends=('lua' 'glfw' 'glu' 'freetype2')
 
-source=("git+https://github.com/matiasvlevi/lu5.git#tag=v$pkgver"
-        "git+https://github.com/matiasvlevi/lua.git")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/matiasvlevi/lu5/archive/refs/tags/v$pkgver.tar.gz"
+         lua.tar.gz::https://github.com/matiasvlevi/lua/archive/refs/tags/v5.4.0-b.tar.gz)
 
 prepare() {
-  cd "$pkgname"
-  git submodule init
-  git config submodule.lua.url "$srcdir/lua"
-  git -c protocol.file.allow=always submodule update
+  rm -rf $pkgname-$pkgver/include/lua
+  mv lua-5.4.0-b $pkgname-$pkgver/include/lua
 }
 
+
 build() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   make
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   sudo make install
 }
-sha256sums=('9ceceecc8e648b5ff7eaa928226756405667d0a901d7a527a26082037adc305e'
-            'SKIP')
+
+sha256sums=('a30ab3cad85e8aba41648aa5ccc47d82b3c2fd1cfab75850e992edc5983652ee'
+            '897eb0281bfd9aa30a77a76ebc9acfc6f0cea39b529ead244a472999af98e3be')
