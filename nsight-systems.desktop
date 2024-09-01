@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.1
+Name=NVIDIA Nsight Systems
+Exec=nsys-ui
+Type=Application
+StartupNotify=true
+Icon=nsight-systems
+Terminal=false
+Comment=A system-wide performance analysis tool for CPUs and GPUs
+Keywords=graphics;nvidia;profiling;
+Categories=Development;
