@@ -1,6 +1,6 @@
 # Maintainer: Penelope Belle <contact at pennybelle dot dev>
 pkgname=pbfetch-git
-pkgver=r216.a959519
+pkgver=r314.74ad06c
 pkgrel=1
 pkgdesc="An unbelievably customizable hardware/software fetch"
 arch=('x86_64' 'aarch64')
