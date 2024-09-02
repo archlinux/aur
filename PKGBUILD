@@ -10,5 +10,5 @@ license=("0BSD")
 makedepends=("go")
 
 package() {
-	GOPATH="$srcdir"/gopath GOBIN="$pkgdir/usr/bin" go install "github.com/ypsu/$pkgname@v$pkgver"
+	GOBIN="$pkgdir/usr/bin" go install "github.com/ypsu/$pkgname@v$pkgver"
 }
