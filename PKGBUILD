@@ -67,8 +67,10 @@ source=(
   git+https://github.com/KhronosGroup/SPIRV-Headers.git
   git+https://github.com/Joshua-Ashton/vkroots.git
   git+https://github.com/Joshua-Ashton/wlroots.git
+  https://raw.githubusercontent.com/hhd-dev/handheld-gamescope/master/v3-0001-always-send-ctrl-1-2-to-steam-s-wayland-session.patch
 )
 b2sums=('4a28e153f5ef63b73695b83cc5dea8352fc2b910dca2efc135f1542d89e229e9c397881d245cb9ab91cdd990085d8d385488af44616d49c3b2c0be8c63e669a3'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -87,6 +89,8 @@ prepare() {
     git config submodule.${submodule}.url ../${submodule##*/}
   done
   git -c protocol.file.allow=always submodule update
+
+  patch -Np1 -i ../v3-0001-always-send-ctrl-1-2-to-steam-s-wayland-session.patch
 }
 
 pkgver() {
