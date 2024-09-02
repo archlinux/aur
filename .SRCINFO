@@ -1,0 +1,23 @@
+pkgbase = my-ocr-bin
+	pkgdesc = Offline ocr, support high camera shooting.离线ocr,支持高拍仪拍摄.Use system-wide electron.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/liumingye/my-ocr
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = electron32
+	provides = my-ocr=1.0.3
+	conflicts = my-ocr
+	options = !strip
+	options = !emptydirs
+	source = LICENSE-1.0.3::https://raw.githubusercontent.com/liumingye/my-ocr/v1.0.3/LICENSE
+	source = my-ocr.sh
+	sha256sums = f2a9112d3827a83020875972322ed144422c647bd6e09d5194e560b9817a32c0
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	source_aarch64 = my-ocr-1.0.3-aarch64.deb::https://github.com/liumingye/my-ocr/releases/download/v1.0.3/MY-OCR_1.0.4_arm64.deb
+	sha256sums_aarch64 = 9eea1965d2a3cac9b40e3063b5c0711c96c16250eaa54a12d9e9f5d15133beef
+	source_x86_64 = my-ocr-1.0.3-x86_64.deb::https://github.com/liumingye/my-ocr/releases/download/v1.0.3/MY-OCR_1.0.3_amd64.deb
+	sha256sums_x86_64 = 49307d34662d867fd89f835ede344c5b85161b5b44a823413d64fd01f81343a3
+
+pkgname = my-ocr-bin
