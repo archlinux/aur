@@ -36,6 +36,7 @@ if((!DISABLE_AUTOCONFIG)); then
   DISABLE_MUMPS=1
   DISABLE_HYPRE=1
   DISABLE_INTERNAL_UMFPACK=1
+  DISABLE_INTERNAL_ARPACK=1
 fi
 
 # Use FRAGMENT=#{commit,tag,brach}=xxx for bisect build
@@ -72,6 +73,7 @@ _fragment=${FRAGMENT:-#branch=devel}
 ((DISABLE_HYPRE))    && _use_hypre=OFF    || _use_hypre=ON     # Disable Hypre - multigrid LAS solver
 
 ((DISABLE_INTERNAL_UMFPACK)) && _use_external_umfpack=ON || _use_external_umfpack=OFF
+((DISABLE_INTERNAL_ARPACK)) && _use_external_arpack=ON || _use_external_arpack=OFF
 
 # Disable check
 ((DISABLE_CHECK))    && _disable_check=OFF || _disable_check=ON # Disable CTEST Routines
@@ -108,6 +110,7 @@ _CMAKE_FLAGS+=(
         -DWITH_Trilinos=${_use_trilinos}
 
         -DEXTERNAL_UMFPACK=${_use_external_umfpack}
+        -DEXTERNAL_ARPACK=${_use_external_arpack}
 
         -GNinja
         -Wno-dev
@@ -115,7 +118,7 @@ _CMAKE_FLAGS+=(
 
 pkgname=elmerfem-git
 _pkgname=elmerfem
-pkgver=9.0.r3061.gfe5423b11
+pkgver=9.0.r3103.g0747a2bd6
 pkgrel=1
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
@@ -130,13 +133,13 @@ makedepends=('git' 'gcc-fortran' 'cmake' 'ninja')
 depends+=('blas-openblas')
 
 #conflicted deps
-conflicts=('elmerfem' 'arpack')
+conflicts=('elmerfem')
 
 # Main repos
-((ENABLE_EXTERNAL_UMFPACK)) && depends+=('suitesparse')
+((DISABLE_INTERNAL_UMFPACK)) && depends+=('suitesparse')
+((DISABLE_INTERNAL_ARPACK)) && depends+=('arpack') || conflicts+=('arpack')
 ((!DISABLE_GUI))      && depends+=('qt5-base' 'qt5-script' 'qt5-svg' 'glew')
 ((!DISABLE_QWT))      && depends+=('qwt')
-# If VTK is enabled this line is redundant
 ((!DISABLE_MPI))      && depends+=('openmpi')
 ((!DISABLE_MPI))      && depends+=('netcdf-fortran-openmpi') || depends+=('netcdf-fortran')
 ((!DISABLE_MP))       && depends+=('openmp')
@@ -181,10 +184,10 @@ build() {
         "${_CMAKE_FLAGS[@]}"
   # If not defined, ninja will use all the available CPUs
   if ((NJOBS)); then
-    echo "$NJOBS CPUs used for compilation"
+    msg2 "$NJOBS CPUs used for compilation"
     ninja -j$NJOBS -C build all
   else
-    echo "All CPUs used for compilation"
+    msg2 "All CPUs used for compilation"
     ninja -C build all
   fi
 }
@@ -195,7 +198,7 @@ if ((!DISABLE_CHECK)); then
   export PATH=$PATH:$PWD/fem/src
   jobs=$(nproc)
   ((!DISABLE_MP)) && export OMP_NUM_THREADS=$jobs
-  ctest -j "$((DISABLE_MPI?jobs:jobs/2))" -LE slow || ((DISABLE_CHECK)) && true # -LE slow: exclude test with label 'slow'
+  ctest -j "$((DISABLE_MPI?jobs:jobs/2))" -L quick || ((DISABLE_CHECK)) && true # -LE slow: exclude test with label 'slow'
 fi
 }
 
