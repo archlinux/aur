@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jimud-bin
 _pkgname=jiMUD
-pkgver=1.4.0
-_electronversion=30
+pkgver=1.5.0
+_electronversion=32
 pkgrel=1
 pkgdesc="MUD client for ShadowMUD.com, based on webclient"
 arch=("x86_64")
@@ -18,8 +18,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e33dd527e4b6cf1f90ac9ea8a9f3907b6a72f6e18bcb575495f70f5ad51a6c07'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums=('b1e7de1db17e3286dd3ce248931e4ccc9b2119f3ac6d33876d6f970c45fc057b'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
