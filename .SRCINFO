@@ -1,10 +1,10 @@
 pkgbase = broadcom-bt-firmware-git
-	pkgdesc = Broadcom bluetooth firmware.
-	pkgver = 12.0.1.1105_p4.r0.ga0eb480
-	pkgrel = 1
+	pkgdesc = Broadcom bluetooth firmware
+	pkgver = 12.0.1.1105_p4.r1.g3b7cff9
+	pkgrel = 2
 	url = https://github.com/winterheart/broadcom-bt-firmware
 	arch = any
-	license = custom
+	license = LicenseRef-Broadcom
 	makedepends = git
 	provides = broadcom-bt-firmware
 	provides = bcm20702a1-firmware
@@ -22,7 +22,7 @@ pkgbase = broadcom-bt-firmware-git
 	conflicts = bcm4335c0-firmware
 	conflicts = bcm4350c5-firmware
 	conflicts = bcm4356a2-firmware
-	source = broadcom-bt-firmware::git+https://github.com/winterheart/broadcom-bt-firmware
+	source = broadcom-bt-firmware::git+https://github.com/winterheart/broadcom-bt-firmware.git
 	sha256sums = SKIP
 
 pkgname = broadcom-bt-firmware-git

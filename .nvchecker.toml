@@ -1,0 +1,4 @@
+[broadcom-bt-firmware-git]
+source = "git"
+git = "https://github.com/winterheart/broadcom-bt-firmware.git"
+prefix = "v"

@@ -1,13 +1,16 @@
-# Maintainer: Edward Pacman <edward at edward-p.xyz>
+# Maintainer:
+# Contributor: Edward Pacman <edward at edward-p.xyz>
 
 _pkgname='broadcom-bt-firmware'
 pkgname="$_pkgname-git"
-pkgdesc="Broadcom bluetooth firmware."
-pkgver=12.0.1.1105_p4.r0.ga0eb480
-pkgrel=1
-arch=('any')
-license=('custom')
+pkgver=12.0.1.1105_p4.r1.g3b7cff9
+pkgrel=2
+pkgdesc="Broadcom bluetooth firmware"
 url="https://github.com/winterheart/broadcom-bt-firmware"
+license=('LicenseRef-Broadcom')
+arch=('any')
+
+makedepends=('git')
 
 provides=(
   "$_pkgname"
@@ -21,30 +24,23 @@ provides=(
 )
 conflicts=(${provides[@]})
 
-depends=()
-makedepends=('git')
-
-source=(
-  "$_pkgname"::"git+$url"
-)
-sha256sums=(
-  'SKIP'
-)
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 \
+    | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgsrc"
 
-  #Install firmwares
   for i in brcm/*.hcd; do
     install -Dm644 "$i" "$pkgdir/usr/lib/firmware/$i"
   done
 
-  #Install LICENSE
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "LICENSE.MIT.txt"
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "LICENSE.broadcom_bcm20702"
+  install -Dm644 "LICENSE.MIT.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.MIT"
+  install -Dm644 "LICENSE.broadcom_bcm20702" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.broadcom_bcm20702"
 }
