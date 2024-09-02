@@ -1,7 +1,7 @@
 pkgbase = slimjet
 	pkgdesc = Fast, smart and powerful browser based on Blink
 	pkgver = 43.0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.slimjet.com
 	install = slimjet.install
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = slimjet
 	options = !emptydirs
 	options = !strip
 	source = slimjet-43.0.9.0_amd64.deb::https://www.slimjetbrowser.com/release/slimjet_amd64.deb
-	source = libffmpeg-0.91.0.zip::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/0.91.0/0.91.0-linux-x64.zip
+	source = libffmpeg-0.87.0.zip::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/0.87.0/0.87.0-linux-x64.zip
 	sha256sums = 302ad0409cf071727edb978b1098f560dae3560349a9709e4077ab66b04f4ba5
-	sha256sums = 0ba64e63ea05c9662a2efa5898cf4a9d0dc1ef2d09017a7849b78d058bdc51ed
+	sha256sums = e0d604a319b74c864ad48d632ad320a95f9b3b5b50f9d18431f18307f1208a2a
 
 pkgname = slimjet
