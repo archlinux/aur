@@ -1,18 +1,29 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgsubn=vimium
-pkgname=chromium-vimium
-pkgver=2.1.2
+# Maintainer: Kshitij Aucharmal <kshitijaucharmal21@gmail.com>
+
+pkgname=geminishell
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Browser extension that provides keyboard-based navigation (unpacked)"
+pkgdesc="A shell program written in Python"
 arch=('any')
-url="https://github.com/philc/vimium"
-license=('MIT')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+url="https://github.com/kshitijaucharmal/geminishell"  # Replace with your project's URL
+license=('Apache')
+depends=('python')  # Add other dependencies if needed
+source=("git+https://github.com/kshitijaucharmal/$pkgname.git#branch=main")  # Replace 'main' with your branch if needed
+sha256sums=('SKIP')  # not required when using git
+
+build() {
+  cd "$srcdir/$pkgname"
+  # Optional: Add commands to prepare the build environment if needed
+}
 
 package() {
-    mkdir -p "$pkgdir/usr/share/"
+  cd "$srcdir/$pkgname"
+  
+  # Run the install.sh script
+  chmod +x install.sh
+  ./install.sh
 
-    cd "$pkgsubn-$pkgver"
-    cp -r --no-preserve=ownership . "$pkgdir/usr/share/$pkgname-$pkgver"
+  # Install additional files if needed
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
