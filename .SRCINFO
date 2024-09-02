@@ -1,8 +1,8 @@
 pkgbase = k9s-capi
 	pkgdesc = A k9s plugin which provides basic flux commands.
 	pkgver = 1.0.0
-	pkgrel = 2
-	arch = x86_64
+	pkgrel = 3
+	arch = any
 	license = APACHE
 	depends = k9s
 	depends = clusterctl
