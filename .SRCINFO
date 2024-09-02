@@ -1,7 +1,7 @@
 pkgbase = ffbox
 	pkgdesc = An user-friendly ffmpeg GUI.一个多媒体转码百宝箱/一个 FFmpeg 的套壳
 	pkgver = 4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ttqftech/FFBox
 	arch = x86_64
 	license = LicenseRef-custom

@@ -4,7 +4,7 @@ _pkgname=FFBox
 pkgver=4.2
 _electronversion=24
 _nodeversion=16
-pkgrel=1
+pkgrel=2
 pkgdesc="An user-friendly ffmpeg GUI.一个多媒体转码百宝箱/一个 FFmpeg 的套壳"
 arch=('x86_64')
 url="https://github.com/ttqftech/FFBox"
@@ -61,7 +61,7 @@ build() {
     rm -rf app release pnpm-lock.yaml
     sed "s|\^24|${SYSTEM_ELECTRON_VERSION}|g" -i package.json
     sed "s|AppImage|dir|g;s|deb|dir|g" -i electron-builder.json5
-    sed "s|process.execPath, '../FFBoxService'|\"\/usr\/lib\/${pkgname%-bin}\",'FFBoxService'|g;s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g" \
+    sed "s|process.execPath, '../FFBoxService'|\"\/usr\/lib\/${pkgname}\",'FFBoxService'|g;s|process.resourcesPath|\"\/usr\/lib\/${pkgname}\"|g" \
         -i src/main/index.ts
     NODE_ENV=development    npm install
     NODE_ENV=development    npm add -D pkg
