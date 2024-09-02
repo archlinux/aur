@@ -1,0 +1,144 @@
+# Maintainer: Lone_Wolf <Lone_Wolf@klaas-de-kat.nl>
+# Contributorr: Evangelos Foutras <foutrelis@archlinux.org>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Marius Knaust <marius.knaust@gmail.com>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Stéphane Gaudreault <stephane@archlinux.org>
+# Contributor: kevin <kevin@archlinux.org>
+# Contributor: Giovanni Scafora <giovanni@archlinux.org>
+# Contributor: Kritoke <kritoke@gamebox.net>
+# Contributor: Luca Roccia <little_rock@users.sourceforge.net>
+
+pkgname=('boost183' 'boost183-libs')
+pkgver=1.83.0
+pkgrel=1
+_srcname=boost_${pkgver//./_}
+pkgdesc="Free peer-reviewed portable C++ source libraries"
+arch=('x86_64')
+url="https://www.boost.org/"
+license=('BSL-1.0')
+makedepends=('icu' 'python' 'python-numpy' 'bzip2' 'zlib' 'openmpi' 'zstd')
+source=(https://boostorg.jfrog.io/artifactory/main/release/$pkgver/source/$_srcname.tar.bz2
+        boost-1.81.0-phoenix-multiple-definitions.patch
+        $pkgname-support-fn.contains-f-where-f-is-a-function.patch::https://github.com/boostorg/function/commit/7ca2310b15e3.patch
+        $pkgname-numpy-2.0.patch::https://github.com/boostorg/python/commit/0474de0f6cc9.patch
+        $pkgname-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch)
+sha256sums=('6478edfe2f3305127cffe8caf73ea0176c53769f4bf1585be237eb30798c3b8e'
+            '3ebf428ef6be090a7b56a233330375539ac429333b83708e28fe5db049cfecdb'
+            '1b5998ee8fb389dd6df55a3684d29ffa37246bc007e8e6712bf2be6c7f745036'
+            'ccda8ef8126c93f4c8d29ba43b5f301952e5eacdc7fecb2ae3d01115a2222c53'
+            'aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee')
+
+prepare() {
+  cd $_srcname
+
+  # https://github.com/boostorg/phoenix/issues/111
+  patch -Np1 -i ../boost-1.81.0-phoenix-multiple-definitions.patch
+
+  # https://github.com/boostorg/signals2/issues/68
+  # https://github.com/boostorg/function/issues/46
+  patch -Np2 -i <(sed 's#test/#asd/libs/function/test/#' \
+    ../$pkgname-support-fn.contains-f-where-f-is-a-function.patch)
+
+  # support building against NumPy 2.0
+  patch -Np1 -d libs/python <../$pkgname-numpy-2.0.patch
+
+  # https://github.com/boostorg/ublas/pull/97
+  patch -Np2 -i ../$pkgname-ublas-c++20-iterator.patch
+}
+
+build() {
+  local JOBS="$(sed 's/.*\(-j *[0-9]\+\).*/\1/' <<<$MAKEFLAGS)"
+  local python_version=$(
+    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+
+  pushd $_srcname/tools/build
+  ./bootstrap.sh --cxxflags="$CXXFLAGS $LDFLAGS"
+  ./b2 install --prefix="$srcdir"/fakeinstall
+  ln -s b2 "$srcdir"/fakeinstall/bin/bjam
+  popd
+
+  cd $_srcname
+  ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=python3
+
+  # support for OpenMPI
+  echo "using mpi ;" >>project-config.jam
+
+  # boostbook is needed by quickbook
+  install -dm755 "$srcdir"/fakeinstall/share/boostbook
+  cp -a tools/boostbook/{xsl,dtd} "$srcdir"/fakeinstall/share/boostbook/
+
+  # install to $srcdir/fakeinstall in preparation for split packaging
+  ./b2 install \
+    variant=release \
+    debug-symbols=off \
+    threading=multi \
+    runtime-link=shared \
+    link=shared,static \
+    toolset=gcc \
+    python=$python_version \
+    cflags="$CPPFLAGS $CFLAGS -fPIC -O3 -ffat-lto-objects" \
+    cxxflags="$CPPFLAGS $CXXFLAGS -fPIC -O3 -ffat-lto-objects" \
+    linkflags="$LDFLAGS" \
+    --layout=system \
+    $JOBS \
+    \
+    --prefix="$srcdir"/fakeinstall
+}
+
+package_boost183() {
+  local python_version=$(
+    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+
+  pkgdesc+=' (development headers)'
+  depends=("boost183-libs=$pkgver")
+  optdepends=('python: for python bindings')
+  options=('staticlibs')
+
+  install -d "$pkgdir"/usr/lib
+  cp -a fakeinstall/lib/*.{a,so} "$pkgdir"/usr/lib/
+  cp -a fakeinstall/lib/cmake "$pkgdir"/usr/lib/
+  cp -a fakeinstall/{bin,include,share} "$pkgdir"/usr/
+
+  # https://github.com/boostorg/python/issues/203#issuecomment-391477685
+  for _lib in python numpy; do
+    ln -srL "$pkgdir"/usr/lib/libboost_${_lib}{${python_version/.},${python_version%.*}}.so
+  done
+}
+
+package_boost183-libs() {
+  local python_version=$(
+    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+
+  pkgdesc+=' (runtime libraries)'
+  depends=('bzip2' 'zlib' 'icu' 'zstd')
+  optdepends=('openmpi: for mpi support')
+  provides=(libboost_atomic.so libboost_chrono.so libboost_container.so
+    libboost_context.so libboost_contract.so libboost_coroutine.so
+    libboost_date_time.so libboost_fiber.so libboost_filesystem.so
+    libboost_graph.so libboost_graph_parallel.so libboost_iostreams.so
+    libboost_json.so libboost_locale.so libboost_log.so libboost_log_setup.so
+    libboost_math_c99.so libboost_math_c99f.so libboost_math_c99l.so
+    libboost_math_tr1.so libboost_math_tr1f.so libboost_math_tr1l.so
+    libboost_mpi{,_python${python_version/.}}.so libboost_nowide.so
+    libboost_numpy${python_version/.}.so libboost_prg_exec_monitor.so
+    libboost_program_options.so libboost_python${python_version/.}.so
+    libboost_random.so libboost_regex.so libboost_serialization.so
+    libboost_stacktrace_addr2line.so libboost_stacktrace_basic.so
+    libboost_stacktrace_noop.so libboost_system.so libboost_thread.so
+    libboost_timer.so libboost_type_erasure.so libboost_unit_test_framework.so
+    libboost_url.so libboost_wave.so libboost_wserialization.so)
+
+  install -dm755 "$pkgdir"/usr/lib
+  cp -a fakeinstall/lib/*.so.* "$pkgdir"/usr/lib/
+
+  # https://github.com/boostorg/mpi/issues/112
+  local site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
+  install -d "$pkgdir"$site_packages/boost183
+  touch "$pkgdir"$site_packages/boost183/__init__.py
+  python -m compileall -o 0 -o 1 -o 2 "$pkgdir"$site_packages/boost183
+  cp fakeinstall/lib/boost-python*/mpi.so "$pkgdir"$site_packages/boost183/mpi.so
+}
+
+# vim:set ts=2 sw=2 et:
