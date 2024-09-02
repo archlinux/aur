@@ -9,7 +9,7 @@ pkgrel=1
 arch=('any')
 source=("git+https://github.com/0xabu/pdfannots")
 sha256sums=('SKIP')
-makedepends=('python-hatchling' 'git')
+makedepends=('python-hatchling' 'python-installer' 'python-build' 'git')
 depends=('python-pdfminer')
 
 pkgver() {
