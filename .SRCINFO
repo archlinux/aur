@@ -1,7 +1,7 @@
 pkgbase = vosk-api
 	pkgdesc = Offline speech recognition toolkit
 	pkgver = 0.3.50
-	pkgrel = 2
+	pkgrel = 3
 	url = https://alphacephei.com/vosk/
 	arch = x86_64
 	license = Apache-2.0
@@ -24,7 +24,7 @@ pkgbase = vosk-api
 	noextract = vosk-model-small-en-us-0.15.zip
 	source = https://github.com/alphacep/vosk-api/archive/v0.3.50/vosk-api-0.3.50.tar.gz
 	source = https://github.com/xianyi/OpenBLAS/archive/v0.3.20/openblas-0.3.20.tar.gz
-	source = https://github.com/alphacep/clapack/archive/v3.2.1/clapack-3.2.1.tar.gz
+	source = git+https://github.com/alphacep/clapack.git#commit=c13f1973ac5282c28dad9330e46d940ec2eee291
 	source = git+https://github.com/alphacep/openfst.git#commit=7dfd808194105162f20084bb4d8e4ee4b65266d5
 	source = kaldi-vosk-g2b69aed.tar.gz::https://github.com/alphacep/kaldi/archive/2b69aed630e26fb2c700bba8c45f3bd012371c5c.tar.gz
 	source = https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip
@@ -32,7 +32,7 @@ pkgbase = vosk-api
 	source = 010-vosk-api-openfst-gcc14-fix.patch
 	sha256sums = cc1067bcc599c9a2f5f38d4257caf2ac636ba244f7c965cee20293a41024f70f
 	sha256sums = 8495c9affc536253648e942908e88e097f2ec7753ede55aca52e5dead3029e3c
-	sha256sums = 8d8ff8259454cae392bb58bc4971fef1db632c9fb5cdf61255cd495bd6d6ac4d
+	sha256sums = 4a4e4e100cb5535457c1c310ce8bad57e0d56e369fc71f49170ed8b609a29995
 	sha256sums = cfab49539f89e7e0ceba228300c08343a6857c28d1afcfecaaa6656bc6ab675e
 	sha256sums = fc025cae7246b780ba7ba85deeff0386ec272d901185058c0b5e614543d5676c
 	sha256sums = 30f26242c4eb449f948e42cb302dd7a686cb29a3423a8367f99ff41780942498

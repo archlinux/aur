@@ -3,9 +3,9 @@
 pkgbase=vosk-api
 pkgname=('vosk-api' 'python-vosk')
 pkgver=0.3.50
-pkgrel=2
+pkgrel=3
 _openblas_ver=0.3.20
-_clapack_ver=3.2.1
+_clapack_commit=c13f1973ac5282c28dad9330e46d940ec2eee291
 _openfst_commit=7dfd808194105162f20084bb4d8e4ee4b65266d5
 _kaldi_commit=2b69aed630e26fb2c700bba8c45f3bd012371c5c
 _model_small_ver=0.15
@@ -20,7 +20,7 @@ makedepends=('git' 'cmake' 'gradle' 'python' 'python-build' 'python-cffi' 'pytho
 checkdepends=('ffmpeg' 'python-numpy')
 source=("https://github.com/alphacep/vosk-api/archive/v${pkgver}/${pkgbase}-${pkgver}.tar.gz"
         "https://github.com/xianyi/OpenBLAS/archive/v${_openblas_ver}/openblas-${_openblas_ver}.tar.gz"
-        "https://github.com/alphacep/clapack/archive/v${_clapack_ver}/clapack-${_clapack_ver}.tar.gz"
+        "git+https://github.com/alphacep/clapack.git#commit=${_clapack_commit}"
         "git+https://github.com/alphacep/openfst.git#commit=${_openfst_commit}"
         "kaldi-vosk-g${_kaldi_commit:0:7}.tar.gz"::"https://github.com/alphacep/kaldi/archive/${_kaldi_commit}.tar.gz"
         "https://alphacephei.com/vosk/models/vosk-model-small-en-us-${_model_small_ver}.zip"
@@ -29,7 +29,7 @@ source=("https://github.com/alphacep/vosk-api/archive/v${pkgver}/${pkgbase}-${pk
 noextract=("vosk-model-small-en-us-${_model_small_ver}.zip")
 sha256sums=('cc1067bcc599c9a2f5f38d4257caf2ac636ba244f7c965cee20293a41024f70f'
             '8495c9affc536253648e942908e88e097f2ec7753ede55aca52e5dead3029e3c'
-            '8d8ff8259454cae392bb58bc4971fef1db632c9fb5cdf61255cd495bd6d6ac4d'
+            '4a4e4e100cb5535457c1c310ce8bad57e0d56e369fc71f49170ed8b609a29995'
             'cfab49539f89e7e0ceba228300c08343a6857c28d1afcfecaaa6656bc6ab675e'
             'fc025cae7246b780ba7ba85deeff0386ec272d901185058c0b5e614543d5676c'
             '30f26242c4eb449f948e42cb302dd7a686cb29a3423a8367f99ff41780942498'
@@ -42,7 +42,7 @@ prepare() {
     
     ln -sf "../../../vosk-model-spk-${_model_spk_ver}" "${pkgbase}-${pkgver}/python/example/model-spk"
     ln -sf "../../OpenBLAS-${_openblas_ver}" "kaldi-${_kaldi_commit}/tools/OpenBLAS"
-    ln -sf "../../clapack-${_clapack_ver}" "kaldi-${_kaldi_commit}/tools/clapack"
+    ln -sf ../../clapack "kaldi-${_kaldi_commit}/tools/clapack"
     ln -sf ../../openfst "kaldi-${_kaldi_commit}/tools/openfst"
     
     patch -d openfst -Np1 -i "${srcdir}/010-vosk-api-openfst-gcc14-fix.patch"
@@ -62,12 +62,12 @@ build() {
     
     # clapack
     CFLAGS+=' -Wno-error=format-security -fcommon -Wno-implicit-function-declaration' \
-    cmake -B "build-clapack-${_clapack_ver}" -S "clapack-${_clapack_ver}" -Wno-dev
-    cmake --build "build-clapack-${_clapack_ver}"
+    cmake -B build-clapack -S clapack -Wno-dev
+    cmake --build build-clapack
     while read -r -d '' _file
     do
         cp -af "$_file" "${srcdir}/OpenBLAS-${_openblas_ver}/install/lib"
-    done < <(find "build-clapack-${_clapack_ver}" -type f -name 'lib*.a' -print0)
+    done < <(find build-clapack -type f -name 'lib*.a' -print0)
     
     # openfst
     cd openfst
