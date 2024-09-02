@@ -2,7 +2,7 @@
 
 # shellcheck disable=SC2034 disable=SC2164
 pkgname=maa-assistant-arknights
-_pkgver=v5.6.0-beta.1
+_pkgver=v5.6.0-beta.2
 pkgver=${_pkgver//-/}
 pkgver=${pkgver#v}
 pkgrel=1
@@ -16,7 +16,7 @@ _fastdeploy_ref=2896b6d3641c18218209c496ea149a773373fa8b
 source=("$url/archive/refs/tags/$_pkgver.tar.gz"
         "https://github.com/MaaAssistantArknights/FastDeploy/archive/$_fastdeploy_ref.tar.gz")
 install="${pkgname}.install"
-md5sums=('71303aebd8364507eb20ac8ce9e71b00'
+md5sums=('1900ff0954579c65e5e08fa45aa43c05'
          '795116aab12a8c2eda2a9c7498595ae7')
 
 if ((WITH_CUDA)); then
