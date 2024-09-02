@@ -2,7 +2,7 @@
 pkgname=read-cat-insiders
 _pkgname=ReadCat
 pkgver=1.0.0
-_pkgsubver=dev.240707
+_pkgsubver=dev.240902
 pkgrel=1
 epoch=
 pkgdesc="一款免费、开源、简洁、纯净、无广告的小说阅读器"
@@ -23,11 +23,11 @@ install=
 changelog=
 
 source=("https://github.com/UnicomStudio/Repositories/raw/main/read-cat-insiders/ReadCat.desktop" "https://raw.githubusercontent.com/read-cat/read-cat/main/public/icons/512x512.png")
-source_x86_64=('https://github.com/read-cat/read-cat/releases/download/v1.0.0-dev.240707/ReadCat-linux-x64-1.0.0-dev.f6f397a3.tar.gz')
+source_x86_64=('https://github.com/read-cat/read-cat/releases/download/v1.0.0-dev.240902/ReadCat-linux-x64-1.0.0-dev.9c53702b.tar.gz')
 noextract=()
 sha256sums=('a9d3e4af9511ff2544594a20e1665aa7a6369729d727f8881e3555ba1ec10612'
             'df9b2d497a9ae1a0741689d9e5aa72e3a1ce94f57ceafc5e681b2dbcf82f43fe')
-sha256sums_x86_64=('08259b53a11adc78f5b3cdbb55efb3282bcad3182d59c76e673832fa27c087fa')
+sha256sums_x86_64=('5786d9dd79b46f28ee8a16bc481b6bc10b00a8906e0e8030607c34b941b14b69')
 validpgpkeys=()
 
 shopt -s extglob
