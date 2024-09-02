@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=skmeans
-_pkgver=0.2-16
+_pkgver=0.2-17
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Spherical k-Means Clustering"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -14,8 +14,8 @@ depends=(
   r-slam
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('872d5851fd972dde7671b3fe099dbbaf')
-b2sums=('b0adf08f148962651234ad86fe4de53df9d383f6b129e50503c6960a121d6e35fd70650eaea7e1b66aea5494ff5011bf42d91527f94489439e3dca02ce4ae52f')
+md5sums=('10b13319154ed7a2c396a52b66e5b343')
+b2sums=('b07f6929a3b94a47b71a5a31046e0cca8da717f6e65d09a1b4f7e662aef2246449225cdf8ad4a6fabbba50cbd15dcef7c56cb6c1acce9f3119d0c729af090811')
 
 build() {
   mkdir build
