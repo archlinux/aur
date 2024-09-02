@@ -14,7 +14,7 @@ options=(!debug !strip)
 
 source=(
 	"git+${url}#tag=${pkgver}"
-	'audiobookshelf.conf.d'
+	'audiobookshelf.conf'
 	'audiobookshelf.hook'
 	'audiobookshelf.service'
 	'audiobookshelf.sysusers'
@@ -42,14 +42,14 @@ build() {
 	cd client
 	rm -rf node_modules
 	npm ci --unsafe-perm=true --allow-root
-	NODE_OPTIONS=--openssl-legacy-provider	npm run generate
+	NODE_OPTIONS=--openssl-legacy-provider npm run generate
 	cd ..
 
 	echo ">>> Building Server"
 	echo "--------------------"
 
 	rm -rf node_modules
-	npm ci --unsafe-perm=true --allow-root
+	npm ci --unsafe-perm=true --allow-root --only=production
 }
 
 package() {
@@ -57,7 +57,7 @@ package() {
 
 	"${srcdir}/${pkgname}"/node_modules/.bin/pkg -t node20-linux-x64 -o "${pkgdir}/usr/bin/audiobookshelf" .
 	install -D -m 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -m 644 "${srcdir}/audiobookshelf.conf.d" "${pkgdir}/etc/conf.d/audiobookshelf"
+	install -D -m 644 "${srcdir}/audiobookshelf.conf" "${pkgdir}/etc/conf.d/audiobookshelf"
 	install -D -m 644 "${srcdir}/audiobookshelf.service" "${pkgdir}/usr/lib/systemd/system/audiobookshelf.service"
 	install -D -m 644 "${srcdir}/audiobookshelf.sysusers" "${pkgdir}/usr/lib/sysusers.d/audiobookshelf.conf"
 	install -D -m 644 "${srcdir}/audiobookshelf.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/audiobookshelf.conf"
