@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="ipsw"
-pkgver=3.1.537
+pkgver=3.1.538
 pkgrel=1
 pkgdesc="iOS/macOS Research Swiss Army Knife"
 arch=('any')
@@ -9,17 +9,14 @@ url="https://github.com/blacktop/${pkgname}"
 license=('MIT')
 makedepends=('git' 'go')
 depends=('glibc')
-optdepends=('bash-completion: for shell auto-completion'
-            'zsh-completions: for shell auto-completion')
 backup=("etc/${pkgname}.conf")
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}::git+${url}#tag=v${pkgver}")
-sha256sums=('db2cfd57cf6655af45b4a5280c561624e2758d61563980ccd76613a3da4fb726')
+sha256sums=('bbb77c65c069697b99a20f89fd39f79cabf873338c5bc90e524cc8d5f3ef6f84')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   mkdir -p "build" "completions" "manpages"
-  go mod download
 }
 
 build() {
