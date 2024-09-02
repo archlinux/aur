@@ -1,0 +1,19 @@
+pkgbase = aiwnios-git
+	pkgdesc = A HolyC Compiler/Runtime for 64bit ARM/x86
+	pkgver = r600.11374be
+	pkgrel = 1
+	url = https://github.com/nrootconauto/Aiwnios
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	depends = sdl2
+	provides = aiwnios
+	conflicts = aiwnios
+	source = Aiwnios::git+https://github.com/nrootconauto/Aiwnios.git
+	sha256sums = SKIP
+
+pkgname = aiwnios-git
