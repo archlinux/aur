@@ -1,0 +1,11 @@
+[Unit]
+Description=JIT enabler for iOS 17
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/SideJITServer
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
