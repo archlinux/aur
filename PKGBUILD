@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.2.0.r204.gcf706f8c
+pkgver=0.2.0.r264.gb7e0df34
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
 	'zlib-ng>=2.1.7'
 )
 makedepends=(
-	# 'boost>=1.84'
+	'boost>=1.84'
 	'cmake>=3.16.3'
 	'ffmpeg'
 	'fmt>=10.2'
@@ -45,14 +45,12 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=(
 	"$_pkgname::git+https://github.com/shadps4-emu/shadPS4.git"
-	"$_pkgname-boost::git+https://github.com/shadps4-emu/ext-boost.git"
 	"$_pkgname-sirit::git+https://github.com/shadps4-emu/sirit.git"
 	"$_pkgname-tracy::git+https://github.com/shadps4-emu/tracy.git"
 	"zydis::git+https://github.com/zyantific/zydis.git"
 	"$_pkgname.sh"
 )
 b2sums=(
-	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -67,7 +65,6 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	git config submodule.externals/ext-boost.url ../$_pkgname-boost
 	git config submodule.externals/sirit.url ../$_pkgname-sirit
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
 	git config submodule.externals/zydis.url ../zydis
@@ -79,7 +76,6 @@ build() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_DISABLE_FIND_PACKAGE_Boost=ON \
 		-DCMAKE_DISABLE_FIND_PACKAGE_Zydis=ON \
 		-DENABLE_QT_GUI=ON \
 		-DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \

@@ -1,10 +1,11 @@
 pkgbase = shadps4-git
 	pkgdesc = Sony PlayStation 4 emulator
-	pkgver = 0.2.0.r204.gcf706f8c
+	pkgver = 0.2.0.r264.gb7e0df34
 	pkgrel = 1
 	url = https://shadps4.net/
 	arch = x86_64
 	license = GPL-2.0-or-later
+	makedepends = boost>=1.84
 	makedepends = cmake>=3.16.3
 	makedepends = ffmpeg
 	makedepends = fmt>=10.2
@@ -32,15 +33,13 @@ pkgbase = shadps4-git
 	depends = zlib-ng>=2.1.7
 	optdepends = renderdoc: for graphics debugging
 	optdepends = vulkan-validation-layers: for vulkan debugging
-	provides = shadps4=0.2.0.r204.gcf706f8c
+	provides = shadps4=0.2.0.r264.gb7e0df34
 	conflicts = shadps4
 	source = shadps4::git+https://github.com/shadps4-emu/shadPS4.git
-	source = shadps4-boost::git+https://github.com/shadps4-emu/ext-boost.git
 	source = shadps4-sirit::git+https://github.com/shadps4-emu/sirit.git
 	source = shadps4-tracy::git+https://github.com/shadps4-emu/tracy.git
 	source = zydis::git+https://github.com/zyantific/zydis.git
 	source = shadps4.sh
-	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
