@@ -1,0 +1,15 @@
+pkgbase = guiffy-bin
+	pkgdesc = Visual file compare diff tool, merge tool, and folder compare tool
+	pkgver = 12.3
+	pkgrel = 1
+	url = https://www.guiffy.com/
+	arch = x86_64
+	license = custom
+	depends = java-runtime
+	provides = guiffy=12.3
+	conflicts = guiffy
+	options = !strip
+	source = https://www.guiffy.com/download/Linux/NoVM/Guiffy-12.3-linux-x64-installer.run
+	sha256sums = 1930a64791514a8962909b2b6b065c8cf41e0f90ad34f56999b2bd0d6635eb62
+
+pkgname = guiffy-bin
