@@ -17,6 +17,7 @@ depends=(
     'nodejs'
 )
 makedepends=(
+    'fuse2'
     'asar'
 )
 options=('!strip')
