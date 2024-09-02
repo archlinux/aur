@@ -1,0 +1,3 @@
+[lollypop-git]
+source = "git"
+git = "https://gitlab.gnome.org/World/lollypop.git"
