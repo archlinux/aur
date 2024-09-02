@@ -1,16 +1,15 @@
 pkgbase = ruby-excon
 	pkgdesc = EXtended http(s) CONnections
-	pkgver = 0.110.0
+	pkgver = 0.111.0
 	pkgrel = 1
 	url = https://github.com/excon/excon
 	arch = any
 	license = MIT
-	makedepends = git
 	makedepends = rubygems
-	makedepends = ruby-rdoc
 	depends = ruby
+	noextract = excon-0.111.0.gem
 	options = !emptydirs
-	source = ruby-excon::git+https://github.com/excon/excon#commit=1970dee29bd3045962dbc7278a822bfca754e9e
-	b2sums = SKIP
+	source = https://rubygems.org/downloads/excon-0.111.0.gem
+	sha256sums = 90e017194a5e87946b706273677ffe8b418241f41111ad8b499b8d3644308a2a
 
 pkgname = ruby-excon
