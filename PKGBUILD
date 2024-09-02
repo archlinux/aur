@@ -1,69 +1,78 @@
-# Maintainer: Zaoqi
-# Mostly based on hyper PKGBUILD
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Zaoqi
 pkgname=electerm
-pkgver=1.25.50
+pkgver=1.39.119
+_electronversion=26
+_nodeversion=20
 pkgrel=1
-pkgdesc="An electron-based SSH/SFTP Connection manager and terminal"
-arch=('x86_64' 'aarch64')
-url="https://electerm.html5beta.com"
+pkgdesc="Terminal/ssh/telnet/serialport/sftp client(linux, mac, win)"
+arch=('any')
+url="https://electerm.html5beta.com/"
+_ghurl="https://github.com/electerm/electerm"
 license=('MIT')
-depends=('nodejs-lts-gallium' 'nss') # Use Node.JS 16 due to https://github.com/nodejs/node-gyp/issues/2673
-makedepends=('electron' 'yarn' 'npm')
-
-source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/electerm/electerm/archive/refs/tags/v$pkgver.tar.gz"
-    "$pkgname.desktop"
-    "https://raw.githubusercontent.com/electerm/electerm/master/LICENSE"
+conflicts=("${pkgname}")
+depends=(
+    "electron${_electronversion}"
+    'java-runtime'
 )
-
-sha256sums=('788590af775834126a24a3cc48ef8b38b80ee3d321c159c4e73d750012e78bbc'
-            '0e932e10da6153c37a30eefd211a4af76586fa30b0675da8926e2239dc1eff7b'
-            'b6d96207cff171127c04f59f9eb545b575b71cd93ebc355247cad63e23ca500d')
-
-_src_dir="$pkgname-$pkgver"
-
-prepare() {
-    cd "$_src_dir"
-
-    npm install
+makedepends=(
+    'npm'
+    'yarn'
+    'git'
+    'nvm'
+    'gendesk'
+    'python-setuptools'
+    'gcc'
+    'curl'
+)
+source=(
+    "${pkgname}.git::git+${_ghurl}.git"
+    "${pkgname}.sh"
+)
+sha256sums=('SKIP'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+_ensure_local_nvm() {
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
-
 build() {
-    cd "$_src_dir"
-
-    # add node_modules binaries to PATH
-    oldpath="$PATH"
-    PATH="$(pwd)/node_modules/.bin:$PATH"
-
-    #export NODE_OPTIONS=--openssl-legacy-provider # Node.JS 17
-
-    npm run pre-test &&
-    electron-builder --linux --dir
-
-    PATH="$oldpath"
+    sed -e "s|@electronversion@|${_electronversion}|" \
+        -e "s|@appname@|${pkgname}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${pkgname}|g" \
+        -e "s|@options@||g" \
+        -i "${srcdir}/${pkgname}.sh"
+    _ensure_local_nvm
+    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="System" --name="${pkgname}" --exec="${pkgname} %U"
+    cd "${srcdir}/${pkgname}.git"
+    export npm_config_build_from_source=true
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
+    HOME="${srcdir}/.electron-gyp"
+    mkdir -p "${srcdir}/.electron-gyp"
+    touch "${srcdir}/.electron-gyp/.yarnrc"
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        export npm_config_registry=https://registry.npmmirror.com
+        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
+        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+    else
+        echo "Your network is OK."
+    fi
+    export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+    sed "s|\"electron\": \"26.2.4\",|\"electron\": \"${SYSTEM_ELECTRON_VERSION}\",|g" -i package.json
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production     yarn run prepare-build
+    NODE_ENV=production     npx electron-builder -l --dir
 }
-
 package() {
-    cd "$_src_dir"
-
-    _appdir="/usr/lib/$pkgname"
-    _libinstall="${pkgdir}${_appdir}"
-
-    mkdir -p "$pkgdir/usr/bin" "$_libinstall"
-    cp -R dist/linux-*unpacked/* "$_libinstall" # dist/linux-arm64-unpacked on aarch64, dist/linux-unpacked on amd64
-
-    # link the binary to /usr/bin
-    cd "$pkgdir/usr/bin"
-    ln -s "../lib/$pkgname/electerm" electerm
-
-    # # TODO: remove included electron libs and use the system ones by symlink
-    # cd "$_libinstall"
-    # rm libnode.so libffmpeg.so
-    # ln -s /usr/share/electron/lib{node,ffmpeg}.so .
-
-    install -Dm644 -t "$pkgdir/usr/share/applications/"      "$srcdir/$pkgname.desktop"
-    install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-
-    install -Dm644 "$srcdir/$_src_dir/node_modules/@electerm/electerm-resource/res/imgs/electerm-round-128x128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}.git/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.git/work/app/assets/images/${pkgname}-tray@3x.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
