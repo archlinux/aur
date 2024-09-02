@@ -1,0 +1,13 @@
+shortCut: r
+description: Restart
+confirm: true
+scopes:
+  - machinedeployment
+  - kubeadmcontrolplane
+background: true
+command: bash
+args:
+  - -ec
+  - |
+    resource="$RESOURCE_NAME"
+    clusterctl alpha rollout restart -n $NAMESPACE ${resource/s}/$NAME
