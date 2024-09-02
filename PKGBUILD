@@ -1,34 +1,43 @@
-# Maintainer: Ariel Abreu <facekapow@outlook.com>
-
-pkgname='gitify-bin'
-pkgver='5.6.0'
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Ariel Abreu <facekapow@outlook.com>
+pkgname=gitify-bin
+_pkgname=Gitify
+pkgver=5.13.0
+_electronversion=31
 pkgrel=1
-pkgdesc='GitHub notifications on your menu bar'
+pkgdesc="GitHub notifications on your menu bar"
 arch=('x86_64')
-url='https://www.gitify.io/'
+url="https://www.gitify.io/"
+_ghurl="https://github.com/gitify-app/gitify"
 license=('MIT')
-depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'libutil-linux' 'libappindicator-gtk3' 'libsecret')
+depends=(
+	"electron${_electronversion}"
+)
 source=(
-	"$pkgname-$pkgver.deb::https://github.com/gitify-app/gitify/releases/download/v$pkgver/gitify_${pkgver}_amd64.deb"
-	"LICENSE::https://raw.githubusercontent.com/gitify-app/gitify/v$pkgver/LICENSE"
+	"${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+	"LICENSE-${pkgver}::https://raw.githubusercontent.com/gitify-app/gitify/v$pkgver/LICENSE"
+	"${pkgname%-bin}.sh"
 )
-sha512sums=(
-	'2de73d015a6ef104b9e279438a25cba7e3ee1d1bbee00ffcd3de5b564f59e92166e5c9d6e99bea8ad47f687b2968dd7dad9a81abf78a47d8309bc8e4355652eb'
-	'ae194a5181f67d44dacb880e611e952f6b24943425ebccfba870f5c0367cbfbab3bf5549332344a298a580536ac1c65e6bfa77a0787102e3c10be00f9d4c7626'
-)
-noextract=("$pkgname-$pkgver.deb")
-options=('!strip')
-
+sha256sums=('c8c935f07cb54e3735d3aac341ac873bb62f2ce6a15c7674c030aa06daa32723'
+            'e3583a920d79b28287ca8bf4b021c6cbeba746a75073c0c68b0aa64ff0b38961'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+build() {
+    sed -e "s|@electronversion@|${_electronversion}|g" \
+        -e "s|@appname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|app.asar|g" \
+        -e "s|@cfgdirname@|${_pkgname}|g" \
+        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
+        -i "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
+	sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+}
 package() {
-	cd "$pkgdir"
-
-	ar p "$srcdir/$pkgname-$pkgver.deb" data.tar.xz | tar xJ
-
-	chmod u+s "${pkgdir}/opt/Gitify/chrome-sandbox"
-
-	install -d -m755 "${pkgdir}/usr/bin"
-	ln -s /opt/Gitify/gitify "${pkgdir}/usr/bin"
-
-	install -d -m755 "${pkgdir}/usr/share/licenses/gitify-bin"
-	install -m644 "$srcdir/LICENSE" "${pkgdir}/usr/share/licenses/gitify-bin/LICENSE"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+	for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
+    	install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+			-t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+	done
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
