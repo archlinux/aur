@@ -3,12 +3,13 @@
 
 pkgname=televize-git
 pkgdesc="CLI aplication to watch Czech television streams"
-pkgver=r46.06637c4
+pkgver=r98.7b90d33
 pkgrel=1
 arch=('any')
 url="https://github.com/ziima/televize"
 license=('apache')
 depends=('python' 'python-requests' 'python-m3u8' 'python-lxml' 'python-docopt' 'python-iso8601')
+makedepends=('git')
 conflicts=('televize')
 optdepends=('mplayer: for MPlayer backend'
 'mpv: for MPV backend'
