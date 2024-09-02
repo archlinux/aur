@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='WireGuard-based mesh network'
 url='https://netbird.io'
 arch=(i686 x86_64 aarch64 armv6h)
-license=(BSD)
+license=(BSD-3-Clause)
 
 provides=(netbird wiretrustee)
 conflicts=(netbird)
