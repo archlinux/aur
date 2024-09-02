@@ -1,4 +1,4 @@
-pkgbase = gamescope
+pkgbase = gamescope-shortcuts
 	pkgdesc = SteamOS session compositing window manager
 	pkgver = 3.14.29
 	pkgrel = 1
@@ -48,6 +48,8 @@ pkgbase = gamescope
 	depends = xcb-util-errors
 	depends = xcb-util-wm
 	depends = xorg-server-xwayland
+	provides = gamescope
+	conflicts = gamescope
 	source = git+https://github.com/ValveSoftware/gamescope.git#tag=db245f3963e5ee27ed41acdf4a50c65d6ed38932
 	source = git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git
 	source = git+https://gitlab.freedesktop.org/emersion/libliftoff.git
