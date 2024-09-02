@@ -1,7 +1,7 @@
 # Maintainer: Sir-Photch <sir-photch at posteo dot me>
 
 pkgname=gmlgcd
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc='The gemlog comment daemon'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/Sir-Photch/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 	"sysusers-gmlgcd.conf"
 )
-sha256sums=('3d2217a6d9166f1f6884d14f8bf6df3e5b461256a6495d70f12e21a4e1723976'
+sha256sums=('996e33564021219b29925ab1fe852c2c989bd395eb453774032bfeb2ed3d05a9'
             'e071442fbd90cf80ce528344d4849f6372c8e75d236f3dca9a56c03f3586d92d')
 
 prepare() {
