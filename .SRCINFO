@@ -1,6 +1,6 @@
 pkgbase = linux-wallpaperengine-git
 	pkgdesc = use steam's wallpaperengine on linux
-	pkgver = r478.d4687f0
+	pkgver = r479.5a45c9a
 	pkgrel = 1
 	url = https://github.com/Almamu/linux-wallpaperengine
 	arch = x86_64
