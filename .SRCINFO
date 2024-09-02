@@ -1,5 +1,5 @@
 pkgbase = freenginx-mainline
-	pkgver = 1.27.2
+	pkgver = 1.27.3
 	pkgrel = 1
 	url = https://freenginx.org
 	arch = x86_64
@@ -26,8 +26,8 @@ pkgbase = freenginx-mainline
 	backup = etc/nginx/uwsgi_params
 	backup = etc/nginx/win-utf
 	backup = etc/logrotate.d/nginx
-	source = https://freenginx.org/download/freenginx-1.27.2.tar.gz
-	source = https://freenginx.org/download/freenginx-1.27.2.tar.gz.asc
+	source = https://freenginx.org/download/freenginx-1.27.3.tar.gz
+	source = https://freenginx.org/download/freenginx-1.27.3.tar.gz.asc
 	source = nginx.service
 	source = logrotate
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
@@ -50,5 +50,5 @@ pkgname = freenginx-mainline
 	conflicts = nginx
 
 pkgname = freenginx-mainline-src
-	pkgdesc = Source code of freenginx-mainline 1.27.2, useful for building modules
+	pkgdesc = Source code of freenginx-mainline 1.27.3, useful for building modules
 	conflicts = nginx-src
