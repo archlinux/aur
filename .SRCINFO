@@ -1,6 +1,6 @@
 pkgbase = topgrade-git
 	pkgdesc = Upgrade all the things
-	pkgver = 15.0.0.r15.g5af0c6a
+	pkgver = 15.0.0.r28.g1958fe1
 	pkgrel = 1
 	url = https://topgrade-rs.github.io
 	arch = x86_64
