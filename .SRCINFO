@@ -1,0 +1,13 @@
+pkgbase = banana-cursor-bin
+	pkgdesc = The banana mouse cursor
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/ful1e5/banana-cursor/releases/tag/v2.0.0
+	arch = any
+	license = GPL-3.0
+	provides = banana-cursor
+	conflicts = banana-cursor
+	source = https://github.com/ful1e5/banana-cursor/releases/download/v2.0.0/banana-all.tar.xz
+	sha256sums = 9ad7afa7d005da895393565241acde9064c65f185b2b49692d2ed13fe29de734
+
+pkgname = banana-cursor-bin
