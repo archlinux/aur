@@ -9,7 +9,7 @@ url="https://github.com/Toni500github/customfetch"
 license=('GPL3')
 #depends=() # some of them are in the "base" meta-package anyway so basically no extra depends
 makedepends=('base-devel')
-conflicts=('customfetch-gui-git')
+conflicts=('customfetch-gui-git' 'customfetch-gui' 'customfetch-git' 'customfetch-gui-bin')
 source=("git+${url}.git")
 sha256sums=("SKIP")
 

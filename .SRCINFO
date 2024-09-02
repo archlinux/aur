@@ -8,6 +8,9 @@ pkgbase = customfetch
 	license = GPL3
 	makedepends = base-devel
 	conflicts = customfetch-gui-git
+	conflicts = customfetch-gui
+	conflicts = customfetch-git
+	conflicts = customfetch-gui-bin
 	source = git+https://github.com/Toni500github/customfetch.git
 	sha256sums = SKIP
 
