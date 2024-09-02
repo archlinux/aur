@@ -1,16 +1,35 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=oryx-kb-leds
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Control your Oryx Pro's Keyboard LEDs"
 arch=('x86_64')
 url="https://github.com/davemcphee/oryx-kb-leds"
 license=('GPL-3.0-or-later')
-depends=('python-colour' 'python-psutil' 'python-pyaml' 'system76-dkms')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+depends=(
+  'python-colour'
+  'python-psutil'
+  'python-pyaml'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+optdepends=(
+  'system76-dkms: only needed for <5.16 kernels'
+)
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('d1ebeaf7464147beb3dba36e629b0e0afe5e31c6243cef298998eb2afe240a16')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  # pytest-runner not required
+  sed -i '/setup_requires/d' setup.py
+}
 
 build() {
   cd "$pkgname-$pkgver"
