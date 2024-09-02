@@ -2,11 +2,11 @@
 # Maintainer: Federico Giuliani <federico.giuliani86 at gmail dot com>
 
 pkgname=airsonic-advanced-git
-pkgver=11.0.0.SNAPSHOT.20220209222511.r0.g4be8b7a7
+pkgver=11.1.4.SNAPSHOT.20240829225404.r0.g6f631a30
 pkgrel=1
 pkgdesc="A free, web-based media streamer and jukebox. (fork of Airsonic)"
 arch=('any')
-url="https://github.com/airsonic-advanced/airsonic-advanced/"
+url="https://github.com/kagemomiji/airsonic-advanced/"
 license=('GPL3')
 depends=('java-runtime-headless')
 optdepends=('ffmpeg: transcode support')
@@ -14,7 +14,7 @@ makedepends=('java-environment' 'maven')
 backup=('etc/airsonic/airsonic.conf')
 provides=(airsonic)
 conflicts=(airsonic)
-source=(git+https://github.com/airsonic-advanced/airsonic-advanced.git
+source=(git+https://github.com/kagemomiji/airsonic-advanced.git
         airsonic.sysusers
         airsonic.tmpfiles)
 
@@ -38,7 +38,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/airsonic-advanced"
-  mvn --settings=./.mvn/settings.xml clean compile package verify -e -DskipTests -Dcheckstyle.skip=true
+  mvn --settings=./.mvn/settings.xml clean compile package verify -e -Dmdep.analyze.skip -DskipTests -Dcheckstyle.skip=true
 }
 
 check() {
