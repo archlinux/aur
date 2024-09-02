@@ -10,7 +10,7 @@ pkgrel=1
 makedepends=("rust" "cargo" "git" "clang")
 depends=("gcc-libs" "glibc" "liburing")
 source=("git+https://github.com/girlbossceo/conduwuit#tag=v${pkgver}")
-md5sums=('bfaf42a864f88965b59da25abf9b6762')
+md5sums=('4fe26c4b143b6789a4615d8c67913da9')
 provides=("conduwuit")
 conflicts=()
 options=(!lto)
