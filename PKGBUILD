@@ -3,7 +3,7 @@
 # Contributor: Roey Darwish Dror <roey.ghost@gmail.com>
 pkgname=topgrade
 pkgver=15.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Upgrade all the things"
 arch=('x86_64' 'aarch64')
 url="https://topgrade-rs.github.io"
@@ -16,7 +16,7 @@ sha256sums=('53c6521041a6ffddf1ccb13f404f131919a2ef48deb3974fc71dc3be08db6cd0')
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -24,7 +24,7 @@ build() {
   CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --release --all-features
+  cargo build --frozen --release
 
   # Generate completions
   for shell in bash fish zsh; do
@@ -38,7 +38,7 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --all-features
+  cargo test --frozen
 }
 
 package() {
