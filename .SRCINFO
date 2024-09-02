@@ -1,11 +1,11 @@
 pkgbase = mecano
 	pkgdesc = Minimalistic typing train
-	pkgver = 0.2.1
-	pkgrel = 1
+	pkgver = 0.2.0
+	pkgrel = 2
 	arch = x86_64
 	license = unlicense
 	makedepends = cargo
-	source = https://github.com/alvarojsino813/mecano/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = 6ffd897f64dbffaab917d82bb2a80f543f0de94e3a17563b6c69b94d8266a0e3
+	source = https://github.com/alvarojsino813/mecano/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = a509c19adb35b49a6abd7868d0bcd21d489b0de3687be3a984b564c2ca8b927e
 
 pkgname = mecano

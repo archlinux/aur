@@ -1,7 +1,7 @@
 # Maintainer: Álvaro Jesús Baena Rosino <alvarojsino8@gmail.com>
 pkgname='mecano'
-pkgver='0.2.1'
-pkgrel='1'
+pkgver='0.2.0'
+pkgrel='2'
 pkgdesc='Minimalistic typing train'
 arch=('x86_64')
 makedepends=('cargo')
@@ -22,5 +22,6 @@ package() {
    install -Dm755 "$srcdir/$pkgname-$pkgver/config.toml" "$pkgdir/usr/share/$pkgname/config.toml"
    install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/mecano" "$pkgdir/usr/bin/$pkgname"
 }
-sha256sums=('e3d0a0c16f27f719b6f2e36e287f2b5acc0e7f1b44df049f913466478f334cf6')
-sha256sums=('6ffd897f64dbffaab917d82bb2a80f543f0de94e3a17563b6c69b94d8266a0e3')
+
+sha256sums=('a509c19adb35b49a6abd7868d0bcd21d489b0de3687be3a984b564c2ca8b927e')
+sha256sums=('a509c19adb35b49a6abd7868d0bcd21d489b0de3687be3a984b564c2ca8b927e')
