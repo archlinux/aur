@@ -1,7 +1,7 @@
 # Maintainer: Christopher Kaster <me@atomicptr.de>
 # Contributor: Hanna Rose <imhxnna@gmail.com>
 
-pkgver=2024_08
+pkgver=2024_09
 
 _srcname=odin
 pkgname=odin-bin
@@ -11,8 +11,8 @@ pkgdesc="A fast, concise, readable, pragmatic and open sourced programming langu
 arch=("x86_64")
 url="https://odin-lang.org/"
 license=("BSD-2-Clause")
-depends=("clang" "libedit")
-makedepends=("unzip" "patchelf" "make")
+depends=("clang" "libedit" "llvm-libs")
+makedepends=("unzip" "make")
 provides=("odin")
 conflicts=("odin" "odin-git")
 options=("staticlibs")
@@ -21,16 +21,20 @@ source=(
   "https://github.com/odin-lang/Odin/releases/download/dev-$pkgver_fixed/odin-ubuntu-amd64-dev-$pkgver_fixed.zip"
 )
 sha256sums=(
-  "542af04240c5702a1b42e0c43fda1ca44c2d73e93b599f9d924b1d28d44eb81a"
+  "a2e29c1232400d831ef2568c4072c9e9bbaddf85f7f925e0bd777f41d70d1f66"
 )
 
 build() {
+  # the man can't decide whetever or not to package the dist dir in a zip file so we just check for it now ffs
+  if [[ -f "${srcdir}/dist.zip" ]]; then
+    unzip "${srcdir}/dist.zip"
+  fi
+  
   cd "${srcdir}/dist"
-  patchelf --replace-needed libedit.so.2 libedit.so.0 libLLVM-18.so.1
   chmod +x odin
 
-  # Eventually they will publish a version without a minor mistake
-  mv libLLVM-18.so.1 libLLVM-18.so.18.1
+  # this time odin forgot to add the SO (maybe intentional?)
+  cp /usr/lib/libLLVM-18.so "${srcdir}/dist/libLLVM-18.so.18.1"
 
   # build libs
   cd "${srcdir}/dist/vendor/cgltf/src" && make
