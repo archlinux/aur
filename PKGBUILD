@@ -4,14 +4,14 @@
 
 _pkgname=android-sdk-cmdline-tools-latest
 pkgname="${_pkgname}-dummy"
-pkgver=6.0
+pkgver=13.0
 pkgrel=1
 _pkgdesc='Android SDK Command-line Tools (latest)'
 pkgdesc="${_pkgdesc}, dummy package"
 arch=('x86_64' 'i686')
 url='https://developer.android.com/studio'
 license=('custom')
-depends=('glibc' 'java-environment')
+depends=('glibc' 'java-runtime')
 optdepends=('android-sdk-platform-tools: adb, aapt, aidl, dexdump and dx'
             'android-udev: udev rules for Android devices')
 provides=('android-sdk' "${_pkgname}")
