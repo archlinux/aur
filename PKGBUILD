@@ -2,13 +2,14 @@
 
 pkgbase=xwayland-run
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgname=($pkgbase $pkgbase-cage $pkgbase-gnome-kiosk $pkgbase-kwin $pkgbase-mutter)
 arch=(any)
 url="https://gitlab.freedesktop.org/ofourdan/$pkgbase"
 license=(GPL-2.0-or-later)
 depends=(
   python
+  xorg-xauth
 )
 makedepends=(
   meson

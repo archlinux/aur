@@ -1,11 +1,12 @@
 pkgbase = xwayland-run
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/ofourdan/xwayland-run
 	arch = any
 	license = GPL-2.0-or-later
 	makedepends = meson
 	depends = python
+	depends = xorg-xauth
 	optdepends = xorg-xwayland: X11 server
 	options = !debug
 	source = https://gitlab.freedesktop.org/ofourdan/xwayland-run/-/archive/0.0.3/xwayland-run-0.0.3.tar.gz
