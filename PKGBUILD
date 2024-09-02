@@ -2,13 +2,14 @@
 # Co-Maintainer: Kevin Morris <kevr at 0cost dot org>
 pkgname=system76-kbd-led-git
 pkgver=0.1.r14.gba5bbd7
-pkgrel=1
+pkgrel=2
 pkgdesc="System76 keyboard backlight LED controller."
 arch=('x86_64')
 url="https://github.com/kevr/system76-kbd-led"
 license=('MIT')
-depends=('boost-libs' 'system76-dkms')
+depends=('boost-libs')
 makedepends=('git' 'boost' 'cmake')
+optdepends=('system76-dkms: Control hotkeys and fan on certain System76 laptops')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install="${pkgname%-git}.install"
