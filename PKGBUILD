@@ -4,7 +4,7 @@
 
 pkgname=calligra-git
 pkgdesc="A set of applications for productivity and creative usage"
-pkgver=v4.0.0.r40.g2d9fdad
+pkgver=4.0.1.r0.g00c463f
 pkgrel=1
 arch=($CARCH)
 url='https://www.calligra-suite.org/'
@@ -29,7 +29,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
