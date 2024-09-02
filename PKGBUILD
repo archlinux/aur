@@ -1,13 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=sys76-kb
 pkgver=0.3.1
-pkgrel=6
-pkgdesc="RGB keyboardcontroller for System76 laptops"
+pkgrel=7
+pkgdesc="RGB keyboard controller for System76 laptops"
 arch=('x86_64')
 url="https://github.com/bambash/sys76-kb"
-license=('unknown')
-depends=('glibc' 'system76-dkms')
+license=('LicenseRef-unknown')
+depends=('glibc')
 makedepends=('go')
+optdepends=('system76-dkms: only needed for <5.16 kernels')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('95d18be01c83bc529ad4311a5c59507d0e1568160638d9823b6c02aa6261c7e8')
 
