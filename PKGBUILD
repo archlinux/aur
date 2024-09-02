@@ -3,8 +3,8 @@
 
 _id=browserpass@maximbaz.com
 pkgname=browserpass-cachy-browser
-pkgver=3.7.2
-pkgrel=2
+pkgver=3.8.0
+pkgrel=1
 pkgdesc="Cachy Browser extension for Browserpass, browser extension for zx2c4's pass (password manager)"
 arch=('any')
 url="https://github.com/browserpass/browserpass-extension"
