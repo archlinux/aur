@@ -4,7 +4,7 @@
 
 pkgname=openresty_luarocks
 _pkgname=luarocks
-pkgver=3.3.1
+pkgver=3.11.1
 pkgrel=3
 pkgdesc="Deployment and management system for Openresty Luajit 2.1 modules"
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=('cvs: for fetching sources from CVS repositories'
             'cmake: for building rocks that use the cmake build system'
             'lua-sec: HTTPS support')
 source=("https://luarocks.org/releases/$_pkgname-$pkgver.tar.gz"{,.asc})
-b2sums=('fd34d7a233bbf1c5f224bd04886a7f1382d63ffc014c8b78ae7924fb799d66a32e048298deed103686771263885c85c9173c013d1bbb3bad6a48e9fd99fdaac0'
+b2sums=('9470b0cd01329e223769b53a5aea743916c2ffedd6171a0b06e105131e2475ec4919fc1e6347162d1049ae5b2d9b32bea705e35577e58edaa29dddb910d343e7'
          'SKIP')
 
 validpgpkeys=('8460980B2B79786DE0C7FCC83FD8F43C2BB3C478')
