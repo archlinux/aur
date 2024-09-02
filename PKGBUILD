@@ -3,12 +3,12 @@ pkgbase=libastal-git
 pkgname=("libastal-git"
          "lua-libastal-git" "lua51-${pkgbase}" "lua53-${pkgbase}")
 _pkgname=libastal
-pkgver=r81.a0680e3
+pkgver=r250.2927230
 pkgrel=1
 pkgdesc="Building blocks for building desktop shells."
 arch=("x86_64")
 license=(LGPL-2.1-only)
-url="https://github.com/astal-sh/libastal"
+url="https://github.com/Aylur/astal"
 makedepends=(
   "git"
   "gobject-introspection" "meson" "vala"
@@ -20,26 +20,26 @@ sha256sums=("SKIP")
 _rockname=astal-dev-1.rockspec
 
 pkgver(){
-  cd $srcdir/$_pkgname
+  cd astal
   # git describe --long --tags --abbrev=7 | sed "s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  cd $srcdir/$_pkgname
+  cd astal/core
   arch-meson build
   meson compile -C build
 }
 
 package_libastal-git() {
   provides=(libastal libastal.so=0-64)
-  cd $srcdir/$_pkgname
+  cd astal/core
   meson install -C build --destdir "$pkgdir"
 }
 
 
 _package_lua() {
-  cd $srcdir/$_pkgname/lua
+  cd astal/core/lua
 	luarocks --lua-version $1 --tree "$pkgdir/usr/" \
 		make --deps-mode none --no-manifest -- "$_rockname"
 }
