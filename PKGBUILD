@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ffbox
 _pkgname=FFBox
-pkgver=4.1
+pkgver=4.2
 _electronversion=24
 _nodeversion=16
 pkgrel=1
@@ -13,6 +13,7 @@ conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
     'ffmpeg'
+    'nodejs'
 )
 makedepends=(
     'gendesk'
@@ -25,8 +26,8 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('65a6b2c99d0a1e6712463ebc9656207595d10b0e0e1e82b941eea9e7d0df58e8'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums=('260ee465e30394e1fd9d42bab63994b99efc39ca342e96307a4ac7a844aecec1'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -46,11 +47,10 @@ build() {
     export npm_config_build_from_source=true
     export npm_config_cache="${srcdir}/.npm_cache"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export npm_config_registry=https://registry.npmmirror.com
         export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
@@ -59,11 +59,13 @@ build() {
         echo "Your network is OK."
     fi
     rm -rf app release pnpm-lock.yaml
-    sed 's|"electron-builder",|"electron-builder -l dir",|g' -i package.json
-    sed "s|process.execPath, '../FFBoxService'|\"\/usr\/lib\/${pkgname%-bin}\",'./FFBoxService'|g" -i src/main/index.ts
-    NODE_ENV=development npm install
-    NODE_ENV=development npm add -D pkg
-    NODE_ENV=production npm run build:everything
+    sed "s|\^24|${SYSTEM_ELECTRON_VERSION}|g" -i package.json
+    sed "s|AppImage|dir|g;s|deb|dir|g" -i electron-builder.json5
+    sed "s|process.execPath, '../FFBoxService'|\"\/usr\/lib\/${pkgname%-bin}\",'FFBoxService'|g;s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g" \
+        -i src/main/index.ts
+    NODE_ENV=development    npm install
+    NODE_ENV=development    npm add -D pkg
+    NODE_ENV=production     npm run build:everything
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
