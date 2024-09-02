@@ -65,4 +65,4 @@ pkgbase = gamescope
 	b2sums = SKIP
 	b2sums = SKIP
 
-pkgname = gamescope
+pkgname = gamescope-shortcuts

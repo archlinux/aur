@@ -1,12 +1,10 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
-# Maintainer: Giancarlo Razzolini <grazzolini@archlinux.org>
-# Contributor: Samuel "scrufulufugus" Monson <smonson@irbash.net>
-# Contributor: PedroHLC <root@pedrohlc.com>
+# PKGBUILD based on the official Arch gamescope PKGBUILD
+# Maintainer - Laurentiu Trofosila <trofosila@gmail.com>
 
-pkgname=gamescope
+pkgname=gamescope-shortcuts
 pkgver=3.14.29
 pkgrel=1
-pkgdesc='SteamOS session compositing window manager'
+pkgdesc='SteamOS session compositing window manager patched to forward shortcuts'
 arch=(x86_64)
 url=https://github.com/ValveSoftware/gamescope
 license=(
