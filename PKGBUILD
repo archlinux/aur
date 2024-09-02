@@ -1,12 +1,12 @@
 # Maintainer : Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=irpf2022
-pkgver=2022.1.9
+pkgver=2022.2.0
 pkgrel=1
 pkgdesc='Brazilian physical person income tax (IRPF) program (2022 version)'
 arch=('any')
 url='https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda'
-license=('custom')
+license=('LicenseRef-Custom')
 depends=('sh' 'java-runtime=11' 'hicolor-icon-theme')
 makedepends=('imagemagick' 'librsvg')
 source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/irpf/arquivos/IRPF${pkgver%%.*}-${pkgver#*.}.zip"
@@ -14,7 +14,7 @@ source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/irpf/arq
         'irpf.desktop'
         'irpf.sh'
         'LICENSE')
-sha256sums=('be419e51a833112eca3b3c67cacdeaa3cc18e0026a18596a1dc197b00e9c8ede'
+sha256sums=('c9759a40310d4541ba365aa6d9066cfb26eb51cb6b8e136d6d758c9d59746209'
             '60c46521699aa3aeaadcb6a51b2727f3e9eb0c23a99334903c01f858c16f8f73'
             '1ecd7bda136768becefc2dbb7da7a1de3471f193b0242a2acf6413a3f5d04e8b'
             '02ddb198b6fae53f437af2a13a1de8088d7990aa3b94cac368ac95de2b4796fe'
