@@ -8,22 +8,16 @@ pkgdesc="open source, peer-to-peer code collaboration stack built on Git - web e
 arch=("x86_64" "aarch64")
 license=("Apache-2.0 OR MIT")
 url="https://app.radicle.xyz/nodes/seed.radicle.xyz/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5"
-source_x86_64=(
-    "https://files.radicle.xyz/releases/radicle-httpd/$pkgver/radicle-httpd-$pkgver-x86_64-unknown-linux-musl.tar.xz"
+source=(
     "$pkgname-$pkgver-LICENSE-MIT::https://seed.radicle.xyz/raw/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5/081af03362b5bd3d637ee22011a4e5b51a1f1498/LICENSE-MIT"
     "radicle-httpd.service"
 )
-source_aarch64=(
-    "https://files.radicle.xyz/releases/radicle-httpd/$pkgver/radicle-httpd-$pkgver-aarch64-unknown-linux-musl.tar.xz"
-    "$pkgname-$pkgver-LICENSE-MIT::https://seed.radicle.xyz/raw/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5/081af03362b5bd3d637ee22011a4e5b51a1f1498/LICENSE-MIT"
-    "radicle-httpd.service"
-)
-sha256sums_x86_64=('496fe18071b303a14b9991cdce4228a267b670c6997294064c7c84737ddc0ae6'
-                   'fff889db903497b59500b5171806c511b3c83df1100532c2f7aa8f96af46cc4d'
-                   '1da5107935e110e8d65178cd0b21d7b2a21649f25c85c7019ee4061fc2169baf')
-sha256sums_aarch64=('e5c2140f82ffd4fd3bf71c4d7cba54509f27919f4b5242a9e07d27a31bf99c33'
-                    'fff889db903497b59500b5171806c511b3c83df1100532c2f7aa8f96af46cc4d'
-                    '1da5107935e110e8d65178cd0b21d7b2a21649f25c85c7019ee4061fc2169baf')
+source_x86_64=("https://files.radicle.xyz/releases/radicle-httpd/$pkgver/radicle-httpd-$pkgver-x86_64-unknown-linux-musl.tar.xz")
+source_aarch64=("https://files.radicle.xyz/releases/radicle-httpd/$pkgver/radicle-httpd-$pkgver-aarch64-unknown-linux-musl.tar.xz")
+sha512sums=('76235a3247342b8531cb259a1a51c9789be81e5332f210949063e4444edc2659eebe0afb0c2aae9e9c6989599d29beca0ca57a7839156c92b195bdb54c7ca448'
+            '2596b230b1a2cd097c2596bbc9baea7ba4a18e44364acb098da6e41fee622d4439c7ee397626bb7c377e2f8d7a71aa9c9a22fdea04e217250cccdc3041b76315')
+sha512sums_x86_64=('9738911de49798aa7edd2321427098303eaa630738c7acfb3dbf81754c19b04e847785673ad0d75e18737947ee0b5131fb4a3c305194b6b022e527a430b73e9d')
+sha512sums_aarch64=('d286eb95dfa0f7a4866c7f092eeeb77a1366495353a420dc50ec7a82e3d8375d185bd6c5dbe5cadc5ba0061c26ba3b567322d788abe53f975e6d5e41e3fe5e2b')
 provides=("radicle-httpd")
 conflicts=("radicle-httpd")
 
