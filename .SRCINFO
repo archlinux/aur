@@ -1,7 +1,7 @@
 pkgbase = perl-xml-xpathengine
 	pkgdesc = a re-usable XPath engine for DOM-like trees
 	pkgver = 0.14.20161119
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/XML-XPathEngine
 	arch = any
 	license = Artistic-1.0-Perl
@@ -12,9 +12,12 @@ pkgbase = perl-xml-xpathengine
 	options = !emptydirs
 	source = perl-xml-xpathengine-73b8c1cceaa98b373ed9dfd0040e9fa577eba0bf.tar.gz::https://github.com/mirod/XML--XPathEngine/archive/73b8c1cceaa98b373ed9dfd0040e9fa577eba0bf.tar.gz
 	source = fix-bareword-Step-constants.patch
+	source = fix-findnodes-as-string-test.patch
 	md5sums = 9947ee80912a89b920e6f78ee29ecd6e
 	md5sums = 0feb9bb13f12befffd3842cf3570f94b
+	md5sums = 3aae107d59a6316b6f2feed8ad88cca9
 	sha512sums = 44b27e67514eaf69b25b768f9b30c38c7bce3983bea63db1e4c5f97bb83249bffe9549ed3bf0b1a5d2ffe6eacbb874e91352df8c5fe9b6cb56e3e889a8c094b1
 	sha512sums = 378735a9743e1f0e20bbca8032eadb120d0a679516f2077a84ab9ed1b0048bf5f9e33b073d3097acad489aca2338dbb18d28bbccf00657457e9dcf9c3656244f
+	sha512sums = a3d6f5ced8db0362324e7c6c4367ab161ea5e30c635e97241f61142459f1be6a5a1c0af3e9c5569aaee0efac24ea8a883fe8b3b012e8c3371bbbf6b7b53208b6
 
 pkgname = perl-xml-xpathengine

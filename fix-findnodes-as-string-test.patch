@@ -1,0 +1,19 @@
+diff -ura XML--XPathEngine-73b8c1cceaa98b373ed9dfd0040e9fa577eba0bf.orig/lib/XML/XPathEngine.pm XML--XPathEngine-73b8c1cceaa98b373ed9dfd0040e9fa577eba0bf.new/lib/XML/XPathEngine.pm
+--- XML--XPathEngine-73b8c1cceaa98b373ed9dfd0040e9fa577eba0bf.orig/lib/XML/XPathEngine.pm	2024-09-02 20:49:26.527360909 +1200
++++ XML--XPathEngine-73b8c1cceaa98b373ed9dfd0040e9fa577eba0bf.new/lib/XML/XPathEngine.pm	2024-09-02 20:53:38.524791747 +1200
+@@ -122,13 +122,13 @@
+     
+ 
+     if ($results->isa('XML::XPathEngine::NodeSet')) {
+-        return join '', map { $_->getValue } $results->get_nodelist;
++        return join '', map { $_->toString } $results->get_nodelist;
+     }
+     elsif ($results->isa('XML::XPathEngine::Boolean')) {
+         return ''; # to behave like XML::LibXML
+     }
+     elsif ($results->isa('XML::XPathEngine::Node')) {
+-        return $results->getValue;
++        return $results->toString;
+     }
+     else {
+         return _xml_escape_text($results->value);
