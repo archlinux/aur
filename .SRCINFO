@@ -1,17 +1,17 @@
 pkgbase = cppadcodegen
 	pkgdesc = Source Code Generation for Automatic Differentiation using Operator Overloading
-	pkgver = 2.4.3
-	pkgrel = 7
+	pkgver = 2.5.0
+	pkgrel = 1
 	url = https://github.com/joaoleal/CppADCodeGen
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = cmake
 	depends = cppad
 	optdepends = eigen: required when DAE differentiation index reduction is used,
 	optdepends = valgrind: memcheck test
 	optdepends = clang: only required for JIT compilation
 	optdepends = llvm: only required for JIT compilation
-	source = cppadcodegen-2.4.3.tar.gz::https://github.com/joaoleal/CppADCodeGen/archive/v2.4.3.tar.gz
-	sha256sums = 3d3fee920f67b70566fa09ba62203323d4a8100d1ab210c6e7b34f7cb23349fb
+	source = cppadcodegen-2.5.0.tar.gz::https://github.com/joaoleal/CppADCodeGen/archive/v2.5.0.tar.gz
+	sha256sums = a53d3e91cfa17381f31819d549de71767b90d05e671fa848043694b0f53d6c18
 
 pkgname = cppadcodegen
