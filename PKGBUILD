@@ -10,13 +10,13 @@ pkgver=5.6.2
 pkgrel=1
 pkgdesc="Library and command line tools for XZ and LZMA compressed files (mingw-w64)"
 arch=('any')
-url="https://xz.tukaani.org/xz-utils/"
+url="https://tukaani.org/xz/"
 license=('custom' 'GPL' 'LGPL')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure' 'git' 'po4a' 'doxygen')
 options=('!strip' 'staticlibs' '!buildflags')
 validpgpkeys=('3690C240CE51B4670D30AD1C38EE757D69184620') # Lasse Collin <lasse.collin@tukaani.org>
-source=("git+https://git.tukaani.org/xz.git#tag=v${pkgver}")
+source=("git+https://github.com/tukaani-project/xz#tag=v${pkgver}")
 sha256sums=('a71fcf56faa1f7d9e9708ca8d6a97906b929307d6a98d220018852eef37853c8')
 
 prepare() {
