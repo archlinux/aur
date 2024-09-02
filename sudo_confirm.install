@@ -1,0 +1,7 @@
+post_install() {
+	echo 'Plugin sudo_confirm /usr/lib/sudo/sudo_confirm.so' >> etc/sudo.conf
+}
+
+pre_remove() {
+	sed -Ei 's/^\s*(Plugin\s+sudo_confirm\s+.*$)/#\1/g' etc/sudo.conf
+}
