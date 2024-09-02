@@ -1,7 +1,7 @@
 pkgbase = rgbepp
 	pkgdesc = Reference Genome based Exon Phylogeny Pipeline
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/starsareintherose/RGBEPP
 	arch = x86_64
 	license = GPL-2.0-only
