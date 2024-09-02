@@ -2,10 +2,10 @@
 _appname=saturn
 pkgname="${_appname}-desktop-bin"
 _pkgname=Saturn
-pkgver=1.1.0
+pkgver=1.1.1
 _electronversion=19
 pkgrel=1
-pkgdesc="Electron-based Deezer Client with FLAC & more! [UPDATED FREEZER]"
+pkgdesc="Electron-based Deezer Client with FLAC & more!"
 arch=("x86_64")
 url="https://saturn.kim/"
 _ghurl="https://github.com/SaturnMusic/PC"
@@ -23,8 +23,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('05f303fc8f2f979f308a43882b6ed3f961996ab330efd88bcaca3b3fcdb89f07'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums=('0b58bce227f0f05b96abb6f7532fc315dfffb53342d0ff0fade7b54107d99888'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
