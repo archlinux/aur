@@ -1,8 +1,8 @@
 pkgbase = libastal-apps-git
 	pkgdesc = Library and cli tool for querying applications.
-	pkgver = r9.f0d902d
+	pkgver = r250.2927230
 	pkgrel = 1
-	url = https://github.com/astal-sh/apps
+	url = https://github.com/Aylur/astal
 	arch = x86_64
 	groups = libastal
 	license = LGPL-2.1-only
@@ -16,7 +16,7 @@ pkgbase = libastal-apps-git
 	provides = astal-apps
 	provides = libastal-apps
 	provides = libastal-apps.so=0-64
-	source = git+https://github.com/astal-sh/apps.git
+	source = git+https://github.com/Aylur/astal.git
 	sha256sums = SKIP
 
 pkgname = libastal-apps-git

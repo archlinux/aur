@@ -2,13 +2,13 @@
 
 pkgname=libastal-apps-git
 _pkgname=apps
-pkgver=r9.f0d902d
+pkgver=r250.2927230
 pkgrel=1
 provides=(astal-apps libastal-apps libastal-apps.so=0-64)
 pkgdesc="Library and cli tool for querying applications."
 arch=(x86_64)
 license=(LGPL-2.1-only)
-url="https://github.com/astal-sh/apps"
+url="https://github.com/Aylur/astal"
 depends=(
   glib2
   glibc
@@ -25,19 +25,19 @@ source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd astal
   #git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  cd $_pkgname
+  cd astal/lib/$_pkgname
   arch-meson build
   meson compile -C build
 }
 
 package() {
-  cd $_pkgname
+  cd astal/lib/$_pkgname
   meson install -C build --destdir "$pkgdir"
 }
 
