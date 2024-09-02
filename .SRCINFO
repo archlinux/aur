@@ -1,0 +1,19 @@
+pkgbase = emilua-zeroized-bytespan
+	pkgdesc = Securely clears secrets from memory in Emilua
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/emilua/zeroized-bytespan
+	arch = i686
+	arch = x86_64
+	license = boost
+	makedepends = git
+	makedepends = meson
+	makedepends = boost
+	makedepends = gawk
+	makedepends = gperf
+	makedepends = asciidoctor
+	depends = emilua
+	source = emilua-zeroized-bytespan::git+https://gitlab.com/emilua/zeroized-bytespan.git#tag=v1.0.0
+	md5sums = SKIP
+
+pkgname = emilua-zeroized-bytespan
