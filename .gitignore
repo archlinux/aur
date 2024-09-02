@@ -1,4 +1,4 @@
-yj-*
-
-pkg
-src
+*
+!PKGBUILD
+!.gitignore
+!.SRCINFO
