@@ -69,7 +69,7 @@ package_mkdocstrings() {
     depends=('python>=3.8'
              'python-click>=7.0'
              'python-jinja>=2.11.1'
-             'python-markdown6=3.6'
+             'python-markdown=3.6'
              'python-markupsafe>=1.1'
              'python-platformdirs>=2.2'
              'python-typing_extensions>=4.1'

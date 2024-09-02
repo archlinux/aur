@@ -15,7 +15,7 @@ pkgname = mkdocstrings
 	depends = python>=3.8
 	depends = python-click>=7.0
 	depends = python-jinja>=2.11.1
-	depends = python-markdown6=3.6
+	depends = python-markdown=3.6
 	depends = python-markupsafe>=1.1
 	depends = python-platformdirs>=2.2
 	depends = python-typing_extensions>=4.1
