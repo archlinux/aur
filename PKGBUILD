@@ -2,7 +2,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=browser360-bin
 _pkgname=com.360.browser-stable
-pkgver=13.3.1015.24
+pkgver=13.3.1016.4
 pkgrel=1
 pkgdesc="360 Browser stable version"
 arch=(
@@ -27,8 +27,8 @@ depends=(
 install="${pkgname%-bin}.install"
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::https://gedown.360safe.com/gc/signed_${_pkgname}_${pkgver}-1_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::https://gedown.360safe.com/gc/signed_${_pkgname}_${pkgver}-1_amd64.deb")
-sha256sums_aarch64=('052f5f46f09dda4e9ffacbfb6edf3eb4522a19032471cc9ee809749e8ac87a75')
-sha256sums_x86_64=('3f34c8af404fa965759aee005d78f07db21482f600df7d34980b3c9b3afbae4b')
+sha256sums_aarch64=('2bb1bb26d7836af73a857f8823d74b520c130b73f4d7928276c1af1b1de07968')
+sha256sums_x86_64=('5b82d586a7cf0deae943620bf8cb296a417db815cf6db92622f9d719815570b8')
 build() {
     bsdtar -xf "${srcdir}/data."*
     rm -rf "${srcdir}/opt/apps/${_pkgname}/info" \
