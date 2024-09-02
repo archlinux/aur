@@ -5,10 +5,9 @@ pkgbase = simple-icons
 	url = https://simpleicons.org/
 	arch = any
 	license = CC0-1.0
-	makedepends = git
 	conflicts = simple-icons
 	options = !strip
-	source = simple-icons.git::git+https://github.com/simple-icons/simple-icons.git#tag=13.7.0
-	sha256sums = 13835ab258ad542821e4bd16960c89682390aa46c00ffcc1051323ce5d33412c
+	source = simple-icons-13.7.0.tar.gz::https://github.com/simple-icons/simple-icons/archive/refs/tags/13.7.0.tar.gz
+	sha256sums = 7ec0942d668469888f0e96b698cf1f297b776c3ad58a8368372a2c5e13f405ba
 
 pkgname = simple-icons

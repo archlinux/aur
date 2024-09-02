@@ -8,17 +8,14 @@ url="https://simpleicons.org/"
 _ghurl="https://github.com/simple-icons/simple-icons"
 license=('CC0-1.0')
 conflicts=("${pkgname}")
-makedepends=(
-    'git'
-)
 options=(
     '!strip'
 )
 source=(
-    "${pkgname}.git::git+${_ghurl}.git#tag=${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('13835ab258ad542821e4bd16960c89682390aa46c00ffcc1051323ce5d33412c')
+sha256sums=('7ec0942d668469888f0e96b698cf1f297b776c3ad58a8368372a2c5e13f405ba')
 package() {
-    install -Dm644 "${srcdir}/${pkgname}.git/icons/"*.svg -t "${pkgdir}/usr/share/icons/${pkgname}/scalable"
-    install -Dm644 "${srcdir}/${pkgname}.git/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/icons/"*.svg -t "${pkgdir}/usr/share/icons/${pkgname}/scalable"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
