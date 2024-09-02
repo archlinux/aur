@@ -1,7 +1,7 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 
 pkgname=findimports
-pkgver=2.2.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Python module import analysis tool"
 url="https://github.com/mgedmin/findimports"
@@ -10,14 +10,19 @@ makedepends=('python-setuptools')
 license=('GPL')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d47a1303e35095017c5e1da15305ae799510e72a1094101afed0c6f31a4e57cd')
+sha256sums=('c2d0705dc75fed68af32180225c95277d4f3d299d901e8f68873c28a6f073c33')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./testsuite.py
 }
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
