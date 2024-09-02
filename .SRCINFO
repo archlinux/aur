@@ -1,6 +1,6 @@
 pkgbase = gmlgcd
 	pkgdesc = The gemlog comment daemon
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/Sir-Photch/gmlgcd
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = gmlgcd
 	depends = libbsd
 	depends = confuse
 	backup = etc/gmlgcd.conf
-	source = gmlgcd-1.2.tar.gz::https://github.com/Sir-Photch/gmlgcd/archive/refs/tags/v1.2.tar.gz
+	source = gmlgcd-1.3.tar.gz::https://github.com/Sir-Photch/gmlgcd/archive/refs/tags/v1.3.tar.gz
 	source = sysusers-gmlgcd.conf
-	sha256sums = ede7dd9d93b60897013cc5b1ab5d9baeb8deed0e10913a6c063b7281bd99ab14
+	sha256sums = 3d2217a6d9166f1f6884d14f8bf6df3e5b461256a6495d70f12e21a4e1723976
 	sha256sums = e071442fbd90cf80ce528344d4849f6372c8e75d236f3dca9a56c03f3586d92d
 
 pkgname = gmlgcd

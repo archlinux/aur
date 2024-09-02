@@ -16,7 +16,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/Sir-Photch/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 	"sysusers-gmlgcd.conf"
 )
-sha256sums=('ede7dd9d93b60897013cc5b1ab5d9baeb8deed0e10913a6c063b7281bd99ab14'
+sha256sums=('3d2217a6d9166f1f6884d14f8bf6df3e5b461256a6495d70f12e21a4e1723976'
             'e071442fbd90cf80ce528344d4849f6372c8e75d236f3dca9a56c03f3586d92d')
 
 prepare() {
