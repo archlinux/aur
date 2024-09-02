@@ -2,7 +2,7 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=slam
-_pkgver=0.1-52
+_pkgver=0.1-53
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -15,8 +15,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d8fd98c8181af28f72d39e46f369960d')
-b2sums=('fca615351721295cee940cca07445ed5d6e585c280da7a5af26f4ba17f87751a66c496b43c76a4f21dcec3f9a4883ca8c8cbbe86d213ca5dfe54a18bca74d821')
+md5sums=('26b3fef040c6c189bee78f44bff02eda')
+b2sums=('925deb60beab64de7fe08737d86ee3803f20ee94dcf1694e2a28a8ab9e075f74820b1f1ab401f79c41ed34357c5c94e13ebc250f3703f7577057ec4d6bf492e7')
 
 build() {
   mkdir build
