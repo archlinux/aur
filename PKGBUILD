@@ -1,6 +1,6 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=ifcopenshell
-pkgver=0.8.0
+pkgver=0.8.1_alpha240902
 _vername=bonsai
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
@@ -18,6 +18,24 @@ depends=(
   'python-ordered-set'
   'python-typing_extensions'
   'python-requests'
+
+)
+optdepends=(
+  'python-xsdata: blender bim addon'
+  'python-shapely: blender bim addon space generation support'
+  'python-svgwrite'
+  'python-isodate: blender bim addon'
+  'python-pystache: blender bim addon'
+  'python-socketio'
+  'python-natsort'
+  'python-openpyxl'
+  'python-odfpy: blender bim addon and ifccobie support'
+  'python-xmlschema: blender bim addon, bcf support'
+  'python-deepdiff: ifcdiff'
+  ##  The following not in AUR
+  # 'python-tzfpy'
+  # 'python-orderly-set'
+  # 'python-pyradiance'
 
 )
 
@@ -41,33 +59,34 @@ source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/refs/tags/${_verna
   "git+https://github.com/svgpp/svgpp.git"
   "git+https://github.com/IfcOpenShell/svgfill.git"
   "git+https://github.com/IfcOpenShell/ifc-to-cityjson.git"
+  "bpypolyskel-1.1.2.tar.gz::https://github.com/prochitecture/bpypolyskel/archive/refs/tags/v1.1.2.tar.gz"
 
   "001-libsvgfill.patch::https://github.com/sukanka/svgfill/commit/af69c5c.patch"
   "002-add-shared-libs.patch::https://github.com/sukanka/IfcOpenShell/commit/011088e.patch"
   "003-install-cityjson-files.patch::https://github.com/sukanka/IfcOpenShell/commit/56766cc.patch"
   "004-skip-install-python-package-only-install-wrapper.patch::https://github.com/sukanka/IfcOpenShell/commit/b7e6f1c.patch"
-  "005-only-install-headers-for-serializer.patch::https://github.com/sukanka/IfcOpenShell/commit/91667b6.patch"
-  "006-fix-rpath.patch::https://github.com/sukanka/IfcOpenShell/commit/7f2c949c7.patch"
-  "007-install-missing-libs.patch::https://github.com/sukanka/IfcOpenShell/commit/b151ab52.patch"
-  "008-fix-py-syntax-warning.patch::https://github.com/sukanka/IfcOpenShell/commit/a5207e5.patch"
+  "005-only-install-headers-for-serializer.patch::https://github.com/sukanka/IfcOpenShell/commit/208ab42.patch"
+  "006-fix-rpath.patch::https://github.com/sukanka/IfcOpenShell/commit/614b511.patch"
+  "007-install-missing-libs.patch::https://github.com/sukanka/IfcOpenShell/commit/f48c261.patch"
 
 )
-sha256sums=('0967886cc1a9ff1e8f97a320f01bf37c44167ec2a01133595853b67aeace8f66'
+sha256sums=('8761f240ef3e304b09914b0d509e3af1802b19cb020e57608704438c4dcc9bcf'
             'SKIP'
             'SKIP'
             'SKIP'
+            'f000262395449808c32e10664468ec2acd2a22e04b202037f15e03611506cfc5'
             'c673bc7a6e6cdb7288577c9a98fa864ebf5d5800ae948b5fd41165004e29d992'
             '44fd888bd2e41820771aab12a431577396036057520ab53989d69e6a62666415'
             '0d82930b081ffeef87cdad4b4392119029de447b9f76cb99398b44d5b4d4c536'
             '75976c985b8d8a04f5a44ef3c22b9b9bb594809670baef8e7e00d67e86d1fd19'
-            'f92c138eaa20bb787ec3bcaffaa4f74abe797cb11fd0627b78cca18b29bec072'
-            '3b82184721a3c2b4d29a9f3382ff1757d6b5d9ac04b08534111bd9b3647b9334'
-            'c61696d393f52c2b20accb24620d8b09b63fe3c347926398454261edb0698796'
-            'ee66efb3df25d569e780968ed9d149a265cac3ad622965bbeac21c66044a6ebe')
+            '5196b4fcc96e277640f46a37afb2989c96afd211e6624d6d798a1fef59c7e778'
+            '8aa5b33acef30fc024e4cbbd965bf0cb367ec597b2ade1090fa39e9c69c74926'
+            '571efebfa39ed08495deaed18c0198cbaf62f2d4bfcf678a7443bbf2ad7d1f10')
 
 _iosdir="IfcOpenShell-${_vername}-${pkgver//_/-}"
 
 prepare() {
+  mv bpypolyskel-1.1.2 bpypolyskel
   cp -ar svgpp/* svgfill/3rdparty/svgpp
   cp -ar svgfill/* ${_iosdir}/src/svgfill
   cp -ar ifc-to-cityjson/* ${_iosdir}/src/ifcconvert/cityjson
@@ -78,7 +97,6 @@ prepare() {
   patch --strip=1 --ignore-whitespace <../005-only-install-headers-for-serializer.patch
   patch --strip=1 --ignore-whitespace <../006-fix-rpath.patch
   patch --strip=1 --ignore-whitespace <../007-install-missing-libs.patch
-  patch --strip=1 --ignore-whitespace <../008-fix-py-syntax-warning.patch
   pushd src/svgfill
   patch --strip=1 --ignore-whitespace <${srcdir}/001-libsvgfill.patch
   popd
@@ -149,8 +167,20 @@ package() {
   cp -rf src/{ifc2ca,ifcsverchok} ${pkgdir}/usr/lib/python${_python_ver}/site-packages
   cp -rf build/ifcwrap/{ifcopenshell_wrapper.py,*.so} ${pkgdir}/usr/lib/python${_python_ver}/site-packages/ifcopenshell
 
-  # provides blender plugin
-  install -d "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons"
-  ln -s /usr/lib/python${_python_ver}/site-packages/${_vername} "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons/${__vername}"
+  # provides blender extension
+  install -d "${pkgdir}/usr/share/blender/${_blender_ver}/extensions/system"
+  ln -s /usr/lib/python${_python_ver}/site-packages/${_vername} "${pkgdir}/usr/share/blender/${_blender_ver}/extensions/system/${__vername}"
 
+  # install desktop and wrappers
+  cd "${srcdir}/${_iosdir}/src/${_vername}/${_vername}/libs/desktop"
+  install -Dm755 ${_vername} -t ${pkgdir}/usr/bin
+  install -Dm644 ${_vername}.png -t ${pkgdir}/usr/share/icons/hicolor/128x128/apps
+  install -Dm644 ${_vername}.desktop -t ${pkgdir}/usr/share/applications
+  install -Dm644 ${_vername}.xml -t ${pkgdir}/usr/share/mime/packages/
+  install -Dm644 x-ifc_128x128.png ${pkgdir}/usr/share/icons/hicolor/128x128/mimetypes/x-ifc.png
+  install -Dm644 x-ifc_512x512.png ${pkgdir}/usr/share/icons/hicolor/512x512/mimetypes/x-ifc.png
+
+  # bpypolyskel blender extension
+  cp -rf ${srcdir}/bpypolyskel ${pkgdir}/usr/lib/python${_python_ver}/site-packages
+  ln -s /usr/lib/python${_python_ver}/site-packages/bpypolyskel "${pkgdir}/usr/share/blender/${_blender_ver}/extensions/system/bpypolyskel"
 }
