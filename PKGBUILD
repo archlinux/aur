@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=certbox-bin
-pkgver=1.8.2
-_electronversion=31
+pkgver=1.9.0
+_electronversion=32
 pkgrel=1
 pkgdesc="A X.509 certificate toolbox on your desktop or in your browser. It allows you to easily generate entire certificate chains, issue certificates from existing roots, clone certificates, and more."
 arch=(
@@ -22,9 +22,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tls-inspector/certbox/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh")
 sha256sums=('6b2fa2b36ced9533ff04ff21bd9c7d22b4fd1747bcdc8a840f009943a51b628e'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('55dc884c402205531c9449c23e6f18652aa604246bea487b4a83d224b1301f93')
-sha256sums_x86_64=('2971d052e2419a668b3cf7c99aaf638ee89334bb909088f97fec987ef4b84307')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_aarch64=('bb957a0d6e34324b7fc96bacb65acd353fc52bfcb364a73ebd6987917e553ad0')
+sha256sums_x86_64=('c0bffafba5f1b6fc65f90deb95d30d7532d076f40a4f79abe80927c203b1832f')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
