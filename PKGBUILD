@@ -3,7 +3,7 @@
 
 pkgname=k380-function-keys-conf
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Make function keys on Logitech K380 bluetooth keyboard default"
 arch=(x86_64)
 url=https://github.com/jergusg/k380-function-keys-conf
@@ -12,7 +12,7 @@ depends=(glibc)
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz" 80-k380.rules)
 b2sums=('57acbbaff08efc765e125406e7a628cbac9b82dd168714b3d360aafb5390e71bddbeded4fe07c496fbde6ee8e5e57d1e7aad9530b1e747847457ad58021b38b0'
-        'e1b664ce07f53b8b7aca7a46c3d791f5e956f5d83d3f5c2910b1d4afcab13b7a9a88eab95dbf647242cd544486c2e18e1aaab1e3f516104bdd5fc58f0226514f')
+        'de6bf002983ea3f447055999ef9f5028fe34049ed0cf7b95a61304adf300ae1eed6ce9cf188f85f0622418b98753a2497918ef0a3accf9ca3657d506b072aa8b')
 
 build() {
   cd "$pkgname-$pkgver"
