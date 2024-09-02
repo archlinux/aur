@@ -4,7 +4,7 @@
 pkgname=fluffychat
 _name=${pkgname}
 _appid=chat.fluffy.fluffychat
-pkgver=1.21.1
+pkgver=1.22.1
 pkgrel=1
 pkgdesc="Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decentralized."
 # Flutter officially supports amd64 and AArch64
@@ -39,7 +39,7 @@ conflicts=("$_name")
 source=(
   "fluffychat-v${pkgver}.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('4e7238d0e49e257b6034aba93a64589e043e8355d871fffa824228902c871bfe')
+sha256sums=('4bf259f798f52c66eefd1a1ddca17b42f27a6e3144468eda291b558f3775d045')
 
 # ensure we have the proper Dart architecture name for the current CARCH
 case "${CARCH}" in
