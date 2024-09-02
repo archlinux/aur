@@ -1,8 +1,9 @@
-# Maintainer: Matteo Giordano <mail@matteogiordano.me>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+
 pkgname=tmlshock
 _pkgname=tmlshock
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A terminal ttl clock and stopwatch build by golang'
 arch=('x86_64')
 url="https://github.com/yorukot/tmlshock"
