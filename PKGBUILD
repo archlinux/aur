@@ -75,7 +75,6 @@ prepare(){
         mkdir -p "$HOME/.local/bin"
         ln -srfv "$srcdir/Godot_v$_godot-stable_mono_linux_$_godot_arch/Godot_v$_godot-stable_mono_linux.$_godot_arch" \
             "$HOME/.local/bin/godot-mono"
-        export PATH="$PATH:$HOME/.local/bin"
     fi
 }
 
