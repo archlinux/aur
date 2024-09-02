@@ -1,8 +1,8 @@
 pkgbase = libastal-hyprland-git
 	pkgdesc = Library and cli tool for Hyprland IPC sockets
-	pkgver = r8.1487240
+	pkgver = r250.2927230
 	pkgrel = 1
-	url = https://github.com/astal-sh/hyprland
+	url = https://github.com/Aylur/astal
 	arch = x86_64
 	groups = libastal
 	license = LGPL-2.1-only
@@ -16,7 +16,7 @@ pkgbase = libastal-hyprland-git
 	provides = astal-hyprland
 	provides = libastal-hyprland
 	provides = libastal-hyprland.so=0-64
-	source = git+https://github.com/astal-sh/hyprland.git
+	source = git+https://github.com/Aylur/astal.git
 	sha256sums = SKIP
 
 pkgname = libastal-hyprland-git
