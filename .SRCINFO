@@ -1,8 +1,8 @@
 pkgbase = libastal-network-git
 	pkgdesc = NetworkManager wrapper library.
-	pkgver = r1.7662145
+	pkgver = r250.2927230
 	pkgrel = 1
-	url = https://github.com/astal-sh/network
+	url = https://github.com/Aylur/astal
 	arch = x86_64
 	groups = libastal
 	license = LGPL-2.1-only
@@ -16,7 +16,7 @@ pkgbase = libastal-network-git
 	provides = astal-network
 	provides = libastal-network
 	provides = libastal-network.so=0-64
-	source = git+https://github.com/astal-sh/network.git
+	source = git+https://github.com/Aylur/astal.git
 	sha256sums = SKIP
 
 pkgname = libastal-network-git
