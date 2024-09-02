@@ -1,0 +1,12 @@
+pkgbase = land
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/CodeEditorLand/Mountain
+	install = land.install
+	arch = x86_64
+	arch = aarch64
+	license = mit
+	source_x86_64 = https://github.com/CodeEditorLand/Mountain/releases/download/v0.0.1/appname_0.0.1_amd64.deb
+	source_aarch64 = https://github.com/CodeEditorLand/Mountain/releases/download/v0.0.1/appname_0.0.1_arm64.deb
+
+pkgname = land
