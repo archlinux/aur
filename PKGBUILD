@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="cli-of-life"
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Play Conway's Game of Life in your terminal"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('go')
 depends=('glibc')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ab0bdde09d345f9218870f7b48e7efc88a7ff11c726100999eea41896fe8f896')
+sha256sums=('817986372f2cf52653337cf9872d3a3eceb9aa8582dc674e1d18472d997ff207')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
