@@ -1,7 +1,7 @@
 pkgbase = vinagre
 	pkgdesc = A VNC Client for the GNOME desktop
 	pkgver = 3.22.0+r160+gc86e114
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://wiki.gnome.org/Apps/Vinagre
 	arch = x86_64
@@ -30,11 +30,23 @@ pkgbase = vinagre
 	depends = hicolor-icon-theme
 	depends = libsecret
 	depends = libxml2
-	depends = spice-gtk3
+	depends = spice-gtk
 	depends = telepathy-glib
 	depends = vte3
 	optdepends = openssh: SSH plugin
 	source = git+https://gitlab.gnome.org/GNOME/vinagre.git#commit=c86e114efe31381bff3cad008e9f2cd84a83a803
-	b2sums = SKIP
+	source = vinagre-gcc10.patch
+	source = vinagre-c99.patch
+	source = vinagre-incompatible-pointer.patch
+	source = vinagre-infinite-loop.patch
+	source = vinagre-revert-icon.patch
+	source = vinagre-appdata-fixes.patch
+	b2sums = eb334fd752b160ada248ba166615709749ec45b5e7619e9dd35999b961a89b7278c45fddd49a7180570fccf7f8bbc226738372984d9fe22b467e1ced139cfed3
+	b2sums = c1727c209dbc556c665272097976342608a419a68f4f5e1462c4734349a4a3c2a601fba35aa294b9ff70532c617b5c3934966e4338606e2f26513672bcefab1b
+	b2sums = 57a7e7a4dacfcc6ccc53aeeee6423422ec031cdd6af8ed1f52b465dfb2f39a60d8c494ef036a182a328dc5b3b99b1f3cf5f85ebdf325b7f312f6f751690a0a7a
+	b2sums = 558517e99cf9301b2600a181bb1b2b0901e6bacf13d3d91a97681d5fe6ee5074c8187495f78aec3644551dfd5687c399c67c094f96a020843b6b87231d102914
+	b2sums = 93bdecb1fb6d9a6dac163ae0360c48d8393d919d6412a96723b8fb1d7e1aab7c9e3678bdf9982ba38e91b8f7d1057802d5a69fc6e2b35d961da8677dc3a56d44
+	b2sums = 9683dc8249af4a8a2e5ce7b81dcad5bf458e0595c4e9f72605f140a852b582591372c5bc71692913d79fc4ad375d86d518b406171063ce01dc107c649b7574ea
+	b2sums = 89f9ddb3d0e0dd5c1b40384b96da16fda7d5db595151a6dc48dd12db2862c105b3a571b2aba5a3957c4ad2eb7db93dfbbacf919501591834285d2796a446c73c
 
 pkgname = vinagre

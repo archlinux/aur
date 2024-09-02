@@ -1,0 +1,32 @@
+From 0f10cacfc57024dc847a94e879680d5b61f66e3a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Mon, 2 Sep 2024 17:35:20 +0200
+Subject: [PATCH] rdp: Fix infinite loop
+
+Break the loop on any errors.
+---
+ plugins/rdp/vinagre-rdp-tab.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/plugins/rdp/vinagre-rdp-tab.c b/plugins/rdp/vinagre-rdp-tab.c
+index bbb8adf..1e2a7b5 100644
+--- a/plugins/rdp/vinagre-rdp-tab.c
++++ b/plugins/rdp/vinagre-rdp-tab.c
+@@ -1127,10 +1127,10 @@ open_freerdp (VinagreRdpTab *rdp_tab)
+       success = freerdp_connect (priv->freerdp_session);
+       if (!success)
+         {
+-          authentication_errors += freerdp_get_last_error (priv->freerdp_session->context) == 0x20009 ||
+-                                   freerdp_get_last_error (priv->freerdp_session->context) == 0x2000c;
+-
+-          cancelled = freerdp_get_last_error (priv->freerdp_session->context) == 0x2000b;
++          if (freerdp_get_last_error (priv->freerdp_session->context) == FREERDP_ERROR_CONNECT_CANCELLED)
++            cancelled = TRUE;
++          else
++            authentication_errors += 1;
+ 
+           freerdp_free (priv->freerdp_session);
+           init_freerdp (rdp_tab);
+-- 
+2.46.0
+

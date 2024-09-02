@@ -1,0 +1,25 @@
+From 3f204d68a7401a533902c7ac7636c9b748b236f7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Mon, 2 Sep 2024 16:41:42 +0200
+Subject: [PATCH] Fix incompatible pointer types
+
+---
+ vinagre/vinagre-tube-handler.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/vinagre/vinagre-tube-handler.c b/vinagre/vinagre-tube-handler.c
+index 291d4d6..72fa9c8 100644
+--- a/vinagre/vinagre-tube-handler.c
++++ b/vinagre/vinagre-tube-handler.c
+@@ -112,7 +112,7 @@ vinagre_tube_handler_set_channel (VinagreTubeHandler *self,
+   g_return_if_fail (VINAGRE_IS_TUBE_HANDLER (self));
+ 
+   VinagreTubeHandlerPrivate *priv = VINAGRE_TUBE_HANDLER_GET_PRIVATE (self);
+-  priv->channel = g_object_ref (channel);
++  priv->channel = TP_CHANNEL (g_object_ref (channel));
+ }
+ 
+ static void
+-- 
+2.46.0
+

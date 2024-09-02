@@ -1,0 +1,41 @@
+From 2fab741dd1b9443f453aba880e55beffa364f453 Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Thu, 13 Feb 2020 15:20:34 +0100
+Subject: [PATCH] Fix compilation with GCC 10 / `-fno-common`
+
+* GCC 10 will not merge duplicate symbols anymore. Hence
+  we need to separate the declaration from the definition.
+---
+ plugins/vnc/vinagre-vnc-connection.c | 2 ++
+ plugins/vnc/vinagre-vnc-connection.h | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/plugins/vnc/vinagre-vnc-connection.c b/plugins/vnc/vinagre-vnc-connection.c
+index ac8bbb3..0a3334e 100644
+--- a/plugins/vnc/vinagre-vnc-connection.c
++++ b/plugins/vnc/vinagre-vnc-connection.c
+@@ -27,6 +27,8 @@
+ #include "vinagre-vnc-connection.h"
+ #include "vinagre-vala.h"
+ 
++gboolean scaling_command_line;
++
+ struct _VinagreVncConnectionPrivate
+ {
+   gchar    *desktop_name;
+diff --git a/plugins/vnc/vinagre-vnc-connection.h b/plugins/vnc/vinagre-vnc-connection.h
+index 4788ae2..f37642c 100644
+--- a/plugins/vnc/vinagre-vnc-connection.h
++++ b/plugins/vnc/vinagre-vnc-connection.h
+@@ -26,7 +26,7 @@
+ 
+ G_BEGIN_DECLS
+ 
+-gboolean scaling_command_line;
++extern gboolean scaling_command_line;
+ 
+ #define VINAGRE_TYPE_VNC_CONNECTION             (vinagre_vnc_connection_get_type ())
+ #define VINAGRE_VNC_CONNECTION(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), VINAGRE_TYPE_VNC_CONNECTION, VinagreVncConnection))
+-- 
+GitLab
+

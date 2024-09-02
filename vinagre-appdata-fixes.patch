@@ -1,0 +1,33 @@
+From d4d268f60cafd7f686a0a7c64a1fe077b8254f15 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Mon, 2 Sep 2024 16:56:24 +0200
+Subject: [PATCH] appdata: Update URLs
+
+---
+ data/vinagre.appdata.xml.in | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/data/vinagre.appdata.xml.in b/data/vinagre.appdata.xml.in
+index 1516a83..41fbc1f 100644
+--- a/data/vinagre.appdata.xml.in
++++ b/data/vinagre.appdata.xml.in
+@@ -14,12 +14,13 @@
+         connect to SSH servers.</_p>
+   </description>
+   <url type="homepage">https://wiki.gnome.org/Apps/Vinagre</url>
+-  <url type="bugtracker">https://bugzilla.gnome.org/enter_bug.cgi?product=vinagre</url>
+-  <url type="donation">http://www.gnome.org/friends/</url>
++  <url type="bugtracker">https://gitlab.gnome.org/GNOME/vinagre/-/issues</url>
++  <url type="donation">https://www.gnome.org/donate/</url>
+   <url type="help">https://help.gnome.org/users/vinagre/stable/</url>
++  <url type="vcs-browser">https://gitlab.gnome.org/GNOME/vinagre</url>
+   <screenshots>
+     <screenshot type="default">
+-      <image>http://amigadave.com/temp/vinagre-default.png</image>
++      <image>https://gitlab.gnome.org/GNOME/vinagre/-/raw/master/help/C/figures/vinagre-connected-3-16.png</image>
+       <_caption><!-- Describe this screenshot in less than ~10 words --></_caption>
+     </screenshot>
+   </screenshots>
+-- 
+2.46.0
+

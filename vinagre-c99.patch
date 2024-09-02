@@ -1,0 +1,54 @@
+Add missing GType types, to avoid defaulting to int.  For C99 compatibility.
+
+diff --git a/plugins/rdp/vinagre-rdp-plugin.c b/plugins/rdp/vinagre-rdp-plugin.c
+index 475110242a3c9b8b..30531098ea5451c2 100644
+--- a/plugins/rdp/vinagre-rdp-plugin.c
++++ b/plugins/rdp/vinagre-rdp-plugin.c
+@@ -234,7 +234,7 @@ __attribute__((constructor)) void
+ rdp_register_types (void)
+ {
+   g_type_init ();
+-  volatile dontoptimiseaway = vinagre_rdp_plugin_get_type ();
++  volatile GType dontoptimiseaway = vinagre_rdp_plugin_get_type ();
+ }
+ 
+ /* vim: set ts=8: */
+diff --git a/plugins/spice/vinagre-spice-plugin.c b/plugins/spice/vinagre-spice-plugin.c
+index 87377eff75c6c625..6c2c951beb28e65f 100644
+--- a/plugins/spice/vinagre-spice-plugin.c
++++ b/plugins/spice/vinagre-spice-plugin.c
+@@ -368,7 +368,7 @@ __attribute__((constructor)) void
+ spice_register_types (void)
+ {
+   g_type_init ();
+-  volatile dontoptimiseaway = vinagre_spice_plugin_get_type ();
++  volatile GType dontoptimiseaway = vinagre_spice_plugin_get_type ();
+ }
+ 
+ /* vim: set ts=8: */
+diff --git a/plugins/ssh/vinagre-ssh-plugin.c b/plugins/ssh/vinagre-ssh-plugin.c
+index 38306d51815c8fb1..1563720ff88b129a 100644
+--- a/plugins/ssh/vinagre-ssh-plugin.c
++++ b/plugins/ssh/vinagre-ssh-plugin.c
+@@ -199,7 +199,7 @@ __attribute__((constructor)) void
+ ssh_register_types (void)
+ {
+   g_type_init ();
+-  volatile dontoptimiseaway = vinagre_ssh_plugin_get_type ();
++  volatile GType dontoptimiseaway = vinagre_ssh_plugin_get_type ();
+ }
+ 
+ /* vim: set ts=8: */
+diff --git a/plugins/vnc/vinagre-vnc-plugin.c b/plugins/vnc/vinagre-vnc-plugin.c
+index d77140f806407ef6..b0100d77aca3b121 100644
+--- a/plugins/vnc/vinagre-vnc-plugin.c
++++ b/plugins/vnc/vinagre-vnc-plugin.c
+@@ -431,7 +431,7 @@ __attribute__((constructor)) void
+ vnc_register_types (void)
+ {
+   g_type_init ();
+-  volatile dontoptimiseaway = vinagre_vnc_plugin_get_type ();
++  volatile GType dontoptimiseaway = vinagre_vnc_plugin_get_type ();
+ }
+ 
+ /* vim: set ts=8: */

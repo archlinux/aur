@@ -1,0 +1,96 @@
+From a6fb5b70f212622ca014baec0eb13af876fa24bf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Mon, 2 Sep 2024 15:57:37 +0200
+Subject: [PATCH] Revert "Use icon from icon theme instead of custom one"
+
+This reverts commit 9f4ffdfab3d126a4c9e19d2e9d766aaeeb45dbb5.
+---
+ Makefile.am                     | 16 ++++++++++++++++
+ data/vinagre-file.desktop.in.in |  2 +-
+ data/vinagre.desktop.in.in      |  2 +-
+ vinagre/vinagre-utils.vala      |  2 +-
+ 4 files changed, 19 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 6c1ba2d..54f9d6a 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -197,6 +197,12 @@ vinagre/vinagre-vala.h $(vinagre_vala_sources:.vala=.c): $(srcdir)/vinagre_vala.
+ 	fi
+ 
+ iconthemedir = $(datadir)/icons/hicolor
++appicon16dir = $(iconthemedir)/16x16/apps
++appicon22dir = $(iconthemedir)/22x22/apps
++appicon24dir = $(iconthemedir)/24x24/apps
++appicon32dir = $(iconthemedir)/32x32/apps
++appicon48dir = $(iconthemedir)/48x48/apps
++appiconscalabledir = $(iconthemedir)/scalable/apps
+ mimeicon16dir = $(iconthemedir)/16x16/mimetypes
+ mimeicon22dir = $(iconthemedir)/22x22/mimetypes
+ mimeicon24dir = $(iconthemedir)/24x24/mimetypes
+@@ -208,6 +214,12 @@ statusicon22dir = $(iconthemedir)/22x22/status
+ statusicon32dir = $(iconthemedir)/32x32/status
+ statusicon48dir = $(iconthemedir)/48x48/status
+ 
++dist_appicon16_DATA = data/icons/16x16/apps/vinagre.png
++dist_appicon22_DATA = data/icons/22x22/apps/vinagre.png
++dist_appicon24_DATA = data/icons/24x24/apps/vinagre.png
++dist_appicon32_DATA = data/icons/32x32/apps/vinagre.png
++dist_appicon48_DATA = data/icons/48x48/apps/vinagre.png
++dist_appiconscalable_DATA = data/icons/scalable/apps/vinagre.svg
+ dist_mimeicon16_DATA = \
+ 	data/icons/16x16/mimetypes/application-x-remote-connection.png \
+ 	data/icons/16x16/mimetypes/application-x-vnc.png
+@@ -305,6 +317,10 @@ dist_noinst_DATA = \
+ 	vinagre_vala.stamp \
+ 	$(noinst_plugin_headers) \
+ 	ChangeLog.pre-git \
++	data/icons/hicolor_apps_16x16_vinagre.svg \
++	data/icons/hicolor_apps_16x16_vinagre.xcf \
++	data/icons/hicolor_apps_22x22_vinagre.svg \
++	data/icons/hicolor_apps_32x32_vinagre.svg \
+ 	data/vinagre-mime.xml.in \
+ 	$(desktop_in_files) \
+ 	$(gsettings_SCHEMAS) \
+diff --git a/data/vinagre-file.desktop.in.in b/data/vinagre-file.desktop.in.in
+index 46d2655..be5b37e 100644
+--- a/data/vinagre-file.desktop.in.in
++++ b/data/vinagre-file.desktop.in.in
+@@ -2,7 +2,7 @@
+ _Name=Remote Desktop Viewer
+ _Comment=Access remote desktops
+ Exec=vinagre -F %U
+-Icon=preferences-desktop-remote-desktop
++Icon=vinagre
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+diff --git a/data/vinagre.desktop.in.in b/data/vinagre.desktop.in.in
+index bd0b4b2..d92cc2b 100644
+--- a/data/vinagre.desktop.in.in
++++ b/data/vinagre.desktop.in.in
+@@ -3,7 +3,7 @@ _Name=Remote Desktop Viewer
+ _Comment=Access remote desktops
+ _Keywords=VNC;RDP;SSH;
+ Exec=vinagre %U
+-Icon=preferences-desktop-remote-desktop
++Icon=vinagre
+ Terminal=false
+ MimeType=application/x-remote-connection;x-scheme-handler/vnc;
+ Type=Application
+diff --git a/vinagre/vinagre-utils.vala b/vinagre/vinagre-utils.vala
+index 2d90cb4..6b1ba7f 100644
+--- a/vinagre/vinagre-utils.vala
++++ b/vinagre/vinagre-utils.vala
+@@ -232,7 +232,7 @@ namespace Vinagre.Utils {
+         var builder = get_builder ();
+         var dialog = builder.get_object ("about_dialog") as Gtk.AboutDialog;
+ 
+-        dialog.logo_icon_name = "preferences-desktop-remote-desktop";
++        dialog.logo_icon_name = Vinagre.Config.PACKAGE_TARNAME;
+         dialog.version = Vinagre.Config.PACKAGE_VERSION;
+         dialog.website = Vinagre.Config.PACKAGE_URL;
+         dialog.set_transient_for (parent);
+-- 
+2.46.0
+
