@@ -8,11 +8,11 @@ pkgrel=1
 pkgdesc="Versatile ncurses-based hex editor."
 arch=('i686' 'x86_64')
 url="https://github.com/LonnyGomes/hexcurse"
-license=('GPL')
+license=('GPL-2.0-only')
 depends=('ncurses')
 options=('!makeflags')
 source=("${pkgname}-${pkgver}.tgz::https://github.com/LonnyGomes/hexcurse/archive/v${pkgver}.tar.gz")
-md5sums=('cb24b564bea21a615a5c6a2ee30d6cad')
+sha256sums=('f6919e4a824ee354f003f0c42e4c4cef98a93aa7e3aa449caedd13f9a2db5530')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
