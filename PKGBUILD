@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altarik-launcher-bin
 _pkgname=Altarik-Launcher
-pkgver=2.1.8
-_electronversion=31
+pkgver=2.2.0
+_electronversion=32
 pkgrel=1
 pkgdesc="A Minecraft custom launcher developped to launch the game with our own modpack."
 arch=('x86_64')
@@ -24,10 +24,10 @@ source=(
     "${pkgname%-bin}-${pkgver}.ico::https://raw.githubusercontent.com/AltarikMC/Launcher/${pkgver}/icon.ico"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3bc71a719c31be9ae6926cd7de15c19650f3f16d77c13a918673287c5854bbc1'
+sha256sums=('330203511359eea4a5bb13d86f21f0f70413c5893827bdbc1782228eb2ac61cf'
             '3a3a7d8474ca58bf2620f0a95275445faf654df7d4061afc209458b5fc8f8a2c'
             '5dbc783060b213ca39548ace82bbc9a2ffa35031b70728027a7a8e14dad2260a'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
