@@ -1,7 +1,7 @@
 pkgbase = huekeys
 	pkgdesc = Control the keyboard backlight on System76 laptops
 	pkgver = 0.5.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/BitPonyLLC/huekeys
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = huekeys
 	makedepends = go
 	depends = gtk3
 	depends = libayatana-appindicator
-	optdepends = system76-dkms: only needed for <5.16 kernels
+	optdepends = system76-dkms: Control hotkeys and fan on certain System76 laptops
 	source = git+https://github.com/BitPonyLLC/huekeys.git#commit=e75c681f54ee7cfc0fc1839b6fdf48a7963f8ac4?signed
 	source = huekeys.desktop
 	source = huekeys.png
