@@ -1,13 +1,13 @@
 pkgbase = pfetch
 	pkgdesc = A pretty system information tool written in POSIX sh.
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/Un1q32/pfetch
 	arch = any
 	license = MIT
 	provides = pfetch
 	conflicts = pfetch-git
-	source = pfetch-1.3.0.tar.gz::https://github.com/Un1q32/pfetch/archive/1.3.0.tar.gz
-	sha256sums = 52f35c20c178e41ec8bd24003e426fe37d34a2080db772d87ab08775690daa6f
+	source = pfetch-1.4.0.tar.gz::https://github.com/Un1q32/pfetch/archive/1.4.0.tar.gz
+	sha256sums = 9e46ead16beee9059807a9e576a9e48d1df7c2e21fd99ca351ffab498081e7af
 
 pkgname = pfetch
