@@ -1,14 +1,14 @@
 pkgbase = android-sdk-cmdline-tools-latest
 	pkgdesc = Android SDK Command-line Tools (latest)
 	pkgver = 13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developer.android.com/studio
 	install = android-sdk-cmdline-tools-latest.install
 	arch = x86_64
 	arch = i686
 	license = custom
 	depends = glibc
-	depends = java-environment
+	depends = java-runtime
 	optdepends = android-sdk-platform-tools: adb, aapt, aidl, dexdump and dx
 	optdepends = android-udev: udev rules for Android devices
 	provides = android-sdk

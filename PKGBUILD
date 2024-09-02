@@ -2,12 +2,12 @@
 
 pkgname=android-sdk-cmdline-tools-latest
 pkgver=13.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Android SDK Command-line Tools (latest)'
 arch=('x86_64' 'i686')
 url='https://developer.android.com/studio'
 license=('custom')
-depends=('glibc' 'java-environment')
+depends=('glibc' 'java-runtime')
 optdepends=('android-sdk-platform-tools: adb, aapt, aidl, dexdump and dx'
             'android-udev: udev rules for Android devices')
 provides=('android-sdk')
