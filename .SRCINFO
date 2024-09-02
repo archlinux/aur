@@ -1,11 +1,14 @@
 pkgbase = pyannotate
 	pkgdesc = Auto-generate PEP-484 annotations
 	pkgver = 1.2.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/dropbox/pyannotate
 	arch = any
 	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-mypy_extensions
 	depends = python-six
 	source = pyannotate-1.2.0.tar.gz::https://github.com/dropbox/pyannotate/archive/v1.2.0.tar.gz
