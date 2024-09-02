@@ -1,5 +1,5 @@
 # Maintainer: Andrey Rodionov <roand at inbox dot ru>
-# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hotshots-git
 pkgver=r19.e3712ae
 pkgrel=4
