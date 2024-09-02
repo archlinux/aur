@@ -1,5 +1,5 @@
 pkgbase = gamescope-shortcuts
-	pkgdesc = SteamOS session compositing window manager
+	pkgdesc = SteamOS session compositing window manager patched to forward shortcuts
 	pkgver = 3.14.29
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/gamescope
