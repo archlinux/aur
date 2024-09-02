@@ -11,7 +11,7 @@ license=('APACHE')
 depends=('glibc')
 makedepends=('go' )
 source=("https://github.com/cooperspencer/${pkgname}/archive/v${_pkgver}/${pkgname}-v${_pkgver}.tar.gz")
-sha256sums=('1e809f3e9373e247977625fc5f246ed3e0ea8a93644d8f01805e60637a26d93f')
+sha256sums=('dcf397c4c253858cb279acd991e53093e28e30ab1557b770bc2102599312c502')
 
 prepare() {
   cd "${pkgname}-${_pkgver}"
