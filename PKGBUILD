@@ -7,18 +7,24 @@
 # curl -s https://flavio.tordini.org/finetune-ws/release.xml | tr -dc 0-9.
 
 pkgname=finetune
-pkgver=2.2.1
-pkgrel=3
+pkgver=3.0
+pkgrel=1
 pkgdesc="Automatic music tagger"
 arch=('x86_64')
 url="https://flavio.tordini.org/finetune"
-license=('unknown')
-depends=('chromaprint' 'hicolor-icon-theme' 'qt5-declarative' 'taglib')
+license=('LicenseRef-unknown')
+depends=(
+  'chromaprint'
+  'hicolor-icon-theme'
+  'qt6-base'
+  'qt6-declarative'
+  'taglib1'
+)
 source=("$pkgname-$pkgver.deb::https://flavio.tordini.org/files/$pkgname/$pkgname.deb")
-sha256sums=('253c5ab3db74f0c0e9286f4d05c271e9995f1cdd6f28132b015318f893de20c9')
+sha256sums=('3e35c8ed0741b142fedd579515af681957cce0425611712b255259e734f5afd5')
 
 package() {
-  bsdtar -xvf data.tar.xz -C "$pkgdir"
+  bsdtar -xvf data.tar.zst -C "$pkgdir"
 
   # Remove deprecated app menu
   rm -rf "$pkgdir/usr/share/menu"

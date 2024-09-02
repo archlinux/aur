@@ -1,15 +1,16 @@
 pkgbase = finetune
 	pkgdesc = Automatic music tagger
-	pkgver = 2.2.1
-	pkgrel = 3
+	pkgver = 3.0
+	pkgrel = 1
 	url = https://flavio.tordini.org/finetune
 	arch = x86_64
-	license = unknown
+	license = LicenseRef-unknown
 	depends = chromaprint
 	depends = hicolor-icon-theme
-	depends = qt5-declarative
-	depends = taglib
-	source = finetune-2.2.1.deb::https://flavio.tordini.org/files/finetune/finetune.deb
-	sha256sums = 253c5ab3db74f0c0e9286f4d05c271e9995f1cdd6f28132b015318f893de20c9
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = taglib1
+	source = finetune-3.0.deb::https://flavio.tordini.org/files/finetune/finetune.deb
+	sha256sums = 3e35c8ed0741b142fedd579515af681957cce0425611712b255259e734f5afd5
 
 pkgname = finetune
