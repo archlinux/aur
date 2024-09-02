@@ -7,11 +7,11 @@ arch=('x86_64')
 pkgdesc="DiscImageCreator, official release with supplemental binaries and text files for full functionality."
 provides=('discimagecreator')
 conflicts=('discimagecreator')
-pkgver=20240601
+pkgver=20240901
 pkgrel=1
 license=('Apache')
-source=("https://github.com/user-attachments/files/15521941/DiscImageCreator_20240601.tar.gz")
-sha256sums=('863d481040544fb9584068cfa1dcc1a552667fc3af2b78f33421ab756c2bf803')
+source=("https://github.com/user-attachments/files/16829198/DiscImageCreator_20240901.tar.gz")
+sha256sums=('f2faf22e1eac837385ba1057906947f4e9aaaecc5a46d4d5a2a0a91720c9cc2f')
 
 package() {
 
@@ -35,6 +35,7 @@ package() {
 	install -Dm 644 ${srcdir}/${_pkgname}/C2ErrorProtect.txt ${pkgdir}/usr/local/share/${_pkgname}/C2ErrorProtect.txt
 	install -Dm 644 ${srcdir}/${_pkgname}/default.dat ${pkgdir}/usr/local/share/${_pkgname}/default.dat
 	install -Dm 644 ${srcdir}/${_pkgname}/driveOffset.txt ${pkgdir}/usr/local/share/${_pkgname}/driveOffset.txt
+	install -Dm 644 ${srcdir}/${_pkgname}/'DVDRawBruteforce - Drive Sheet - Sheet1.tsv' ${pkgdir}/usr/local/share/${_pkgname}/'DVDRawBruteforce - Drive Sheet - Sheet1.tsv'
 	install -Dm 644 ${srcdir}/${_pkgname}/ReadErrorProtect.txt ${pkgdir}/usr/local/share/${_pkgname}/ReadErrorProtect.txt
 
 	# install documentation

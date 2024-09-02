@@ -1,13 +1,13 @@
 pkgbase = discimagecreator-bin
 	pkgdesc = DiscImageCreator, official release with supplemental binaries and text files for full functionality.
-	pkgver = 20240601
+	pkgver = 20240901
 	pkgrel = 1
 	url = https://github.com/saramibreak/DiscImageCreator
 	arch = x86_64
 	license = Apache
 	provides = discimagecreator
 	conflicts = discimagecreator
-	source = https://github.com/user-attachments/files/15521941/DiscImageCreator_20240601.tar.gz
-	sha256sums = 863d481040544fb9584068cfa1dcc1a552667fc3af2b78f33421ab756c2bf803
+	source = https://github.com/user-attachments/files/16829198/DiscImageCreator_20240901.tar.gz
+	sha256sums = f2faf22e1eac837385ba1057906947f4e9aaaecc5a46d4d5a2a0a91720c9cc2f
 
 pkgname = discimagecreator-bin
