@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-math7
-pkgver=7.5.0
+pkgver=7.5.1
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -24,7 +24,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('b323b6082902c7970938f81e7bf515ab035f5bcb9f1b08ea1a5acf03ab247000')
+sha256sums=('9506f0940045f12d6dee5eef0df36737a580451e3577c003fe347aab09d8702b')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
