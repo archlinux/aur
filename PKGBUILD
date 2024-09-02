@@ -1,11 +1,12 @@
-# Maintainer: Greg Brown <greg.brown.00 at outlook dot com>
+# Maintainer: Jan-Niklas Tomski <jan-niklas at tomski dot me>
+# Contributor: Greg Brown <greg.brown.00 at outlook dot com>
 pkgname=dracut-sshd-git
-pkgver=r62.2dbc272
+pkgver=r115.4dc958d
 pkgrel=1
 pkgdesc="Provide SSH access to initramfs."
 arch=(any)
 url="https://github.com/gsauthof/dracut-sshd"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 groups=()
 depends=(dracut openssh)
 makedepends=(git)

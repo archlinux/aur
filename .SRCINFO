@@ -1,10 +1,10 @@
 pkgbase = dracut-sshd-git
 	pkgdesc = Provide SSH access to initramfs.
-	pkgver = r62.2dbc272
+	pkgver = r115.4dc958d
 	pkgrel = 1
 	url = https://github.com/gsauthof/dracut-sshd
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = dracut
 	depends = openssh
