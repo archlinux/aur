@@ -1,8 +1,8 @@
 pkgbase = libastal-meta
 	pkgdesc = libastal meta package, including all libastal services
 	pkgver = 1
-	pkgrel = 1
-	url = https://github.com/astal-sh/libastal
+	pkgrel = 2
+	url = https://github.com/Aylur/astal
 	arch = any
 	license = LicenseRef-None
 	depends = libastal
