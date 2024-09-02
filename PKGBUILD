@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.13.4.r62.g9c6ad26
+pkgver=0.14.1.r3.gb7e6d07
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -65,16 +65,16 @@ _luadeps=(colors-git
           yaml)
 _perldeps=(yaml
            yaml-merge-simple)
-_pythondeps=(isbnlib
-             deepl
-             pandocfilters
-             pantable
-             ruamel-yaml
-             usfm2osis-cw-git)
+_pydeps=(isbnlib
+         deepl
+         pandocfilters
+         pantable
+         ruamel-yaml
+         usfm2osis-cw-git)
 depends+=("${_luadeps[@]/#/lua-}"
           "${_luadeps[@]/#/lua51-}"
           "${_perldeps[@]/#/perl-}"
-          "${_pythondeps[@]/#/python-}")
+          "${_pydeps[@]/#/python-}")
 makedepends=(cargo
              node-prune
              yarn)
