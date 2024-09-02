@@ -3,7 +3,7 @@
 pkgname=tmlshock-bin
 _pkgname=${pkgname%-bin}
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal ttl clock and stopwatch build by golang"
 arch=('x86_64')
 url="https://github.com/yorukot/tmlshock"
