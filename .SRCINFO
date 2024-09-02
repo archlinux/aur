@@ -1,0 +1,11 @@
+pkgbase = pkgtrim
+	pkgdesc = A package trimmer tool for Arch Linux and Ubuntu
+	pkgver = 0.240828.3
+	pkgrel = 1
+	url = https://ypsu.github.io/pkgtrim
+	arch = aarch64
+	arch = x86_64
+	license = 0BSD
+	makedepends = go
+
+pkgname = pkgtrim
