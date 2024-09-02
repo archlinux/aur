@@ -1,7 +1,7 @@
 pkgbase = gz-sim7
 	pkgdesc = Open source robotics simulator
-	pkgver = 7.8.0
-	pkgrel = 2
+	pkgver = 7.9.0
+	pkgrel = 1
 	url = https://github.com/gazebosim/gz-sim
 	arch = any
 	license = Apache
@@ -28,7 +28,7 @@ pkgbase = gz-sim7
 	depends = sdformat=13
 	depends = tinyxml2
 	provides = gz-sim=7
-	source = https://github.com/gazebosim/gz-sim/archive/gz-sim7_7.8.0.tar.gz
-	sha256sums = 49a9630bcd243e7100e48f4a49bde851df950124d431e77de0505a2107a5e880
+	source = https://github.com/gazebosim/gz-sim/archive/gz-sim7_7.9.0.tar.gz
+	sha256sums = e3577d9dba2a711f41362fee67c9320e702a5a055b7d0172fe9245c5ecf4f83f
 
 pkgname = gz-sim7
