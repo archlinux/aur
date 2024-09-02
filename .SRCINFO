@@ -1,0 +1,14 @@
+pkgbase = hexcurse-ng
+	pkgdesc = Versatile ncurses-based hex editor.
+	pkgver = 1.70.0
+	pkgrel = 1
+	url = https://github.com/prso/hexcurse-ng/
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = ncurses
+	options = !makeflags
+	source = hexcurse-ng-1.70.0.tgz::https://github.com/prso/hexcurse-ng/archive/v1.70.0.tar.gz
+	sha256sums = 54d93391bc769173b7e584406e58aee1d01b56298a8acdd8abd9c90ccc1a7b5b
+
+pkgname = hexcurse-ng
