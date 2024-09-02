@@ -111,5 +111,5 @@ package() {
 	unset GLOBIGNORE
 
 	install -Dm644 dist/linux/info.cemu.Xapfish.png -T "$pkgdir/usr/share/icons/hicolor/128x128/apps/xapfish.png"
-	install -Dm644 dist/linux/info.xapfish.Xapfish.desktop -T "$pkgdir/usr/share/applications/Xapfish.desktop"
+	install -Dm644 dist/linux/info.cemu.Xapfish.desktop -T "$pkgdir/usr/share/applications/Xapfish.desktop"
 }
