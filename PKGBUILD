@@ -40,7 +40,7 @@ package() {
   for _arch in ${_architectures}; do
     cd "$srcdir"/build-${_arch}
     install -d "$pkgdir"/usr/${_arch}/{lib,include/nauty}
-    install -m644 nauty.a "$pkgdir"/usr/${_arch}/lib
+    install -m644 nauty*.a "$pkgdir"/usr/${_arch}/lib
     install -m644 *.h "$pkgdir"/usr/${_arch}/include/nauty
   done
 }
