@@ -6,7 +6,7 @@ pkgdesc="Free peer-reviewed portable C++ source libraries (mingw-w64)"
 arch=('any')
 url="http://www.boost.org/"
 license=('custom')
-depends=('mingw-w64-zstd' 'mingw-w64-bzip2')
+depends=('mingw-w64-zstd' 'mingw-w64-bzip2' 'mingw-w64-dlfcn')
 makedepends=('mingw-w64-gcc' 'mingw-w64-wine' 'mingw-w64-environment')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://boostorg.jfrog.io/artifactory/main/release/${pkgver}/source/boost_${_boostver}.tar.bz2")
@@ -20,7 +20,8 @@ prepare() {
   sed -i -e "46ilib ws2_32 ;" -e "57i<target-os>windows:<library>ws2_32" "${srcdir}"/boost_${_boostver}/libs/process/build/Jamfile
 
   # from_exception.cpp:333:23: error: 'current_exception' is not a member of 'std'
-  sed -i "s|_MSC_VER|_WIN32|g" "${srcdir}"/boost_${_boostver}/libs/stacktrace/src/from_exception.cpp
+  sed -i "160i#include <exception>" "${srcdir}"/boost_${_boostver}/libs/stacktrace/src/from_exception.cpp
+  sed -i "160i\ \ \ \ <target-os>windows:<library>dl" "${srcdir}"/boost_${_boostver}/libs/stacktrace/build/Jamfile.v2
 
   for _arch in ${_architectures}; do
     source mingw-env "${_arch:3}"

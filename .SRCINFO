@@ -10,6 +10,7 @@ pkgbase = mingw-w64-boost
 	makedepends = mingw-w64-environment
 	depends = mingw-w64-zstd
 	depends = mingw-w64-bzip2
+	depends = mingw-w64-dlfcn
 	options = !strip
 	options = !buildflags
 	options = staticlibs
