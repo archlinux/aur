@@ -1,0 +1,37 @@
+pkgbase = linux-librem5
+	pkgdesc = The Linux kernel for Purism Librem 5
+	pkgver = 6.6.40
+	pkgrel = 1
+	url = https://source.puri.sm/Librem5/linux
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = bc
+	makedepends = cpio
+	makedepends = gettext
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = perl
+	makedepends = python
+	makedepends = tar
+	makedepends = xz
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = python-sphinx
+	makedepends = python-yaml
+	makedepends = texlive-latexextra
+	makedepends = aarch64-linux-gnu-gcc
+	options = !debug
+	options = !strip
+	source = https://source.puri.sm/Librem5/linux/-/archive/pureos/6.6.40pureos2/linux-pureos-6.6.40pureos2.tar.gz
+	sha256sums = 197f61667610c8bb426b1792fc97f21305e2eaf3328595a3dff61e19753f7b17
+	b2sums = a6de14451e88cabd62ce1a90f3aaa217b11c3b8cdfa6bb155f2cbededf3a20c7d0a2ad89b67dcb4acb396624f351642d426ec0924c24ab52dbedc6642b7aa7f5
+
+pkgname = linux-librem5
+	depends = coreutils
+	depends = initramfs
+	depends = kmod
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+
+pkgname = linux-librem5-docs
+	pkgdesc = The Linux kernel for Purism Librem 5 (documentation)
