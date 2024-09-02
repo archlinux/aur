@@ -1,0 +1,16 @@
+pkgbase = melodify-bin
+	pkgdesc = A simple webview cross-platform music player desktop app for https://melodify.app/.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/abedio/melodify-webview-app
+	arch = x86_64
+	license = MIT
+	depends = electron32
+	provides = melodify=1.0.0
+	conflicts = melodify
+	source = melodify-1.0.0.deb::https://github.com/abedio/melodify-webview-app/releases/download/v1.0.0/melodify_1.0.0_amd64.deb
+	source = melodify.sh
+	sha256sums = a8390ebb1adc4db629bdee03c750ac599ffd54f188b628d9b233663500028528
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = melodify-bin
