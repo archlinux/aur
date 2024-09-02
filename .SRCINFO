@@ -1,0 +1,15 @@
+pkgbase = linuxcnc-ethercat
+	pkgdesc = LinuxCNC EtherCAT HAL driver
+	pkgver = 0.9.1.938387ded
+	pkgrel = 1
+	url = https://github.com/sittner/linuxcnc-ethercat/
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = git
+	makedepends = make
+	depends = linuxcnc
+	depends = etherlab-ethercat
+	source = git+https://github.com/sittner/linuxcnc-ethercat/#commit=938387ded
+	sha256sums = SKIP
+
+pkgname = linuxcnc-ethercat
