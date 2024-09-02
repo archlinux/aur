@@ -4,7 +4,7 @@ pkgname="${_appname}-gui-bin"
 _pkgname="Real-ESRGAN GUI"
 pkgver=0.2.5.0
 _pkgver=autobuild_20240602_060617
-pkgrel=1
+pkgrel=2
 pkgdesc="实用、美观的 Real-ESRGAN 图形界面，同时支持 Windows、Ubuntu 和 macOS 平台。现在也支持 Real-CUGAN 了！(Cross-platform GUI for image upscaler Real-ESRGAN with additional features. Now with Real-CUGAN support!)"
 arch=("x86_64")
 url="http://akarin.dev/realesrgan-gui/"
@@ -37,7 +37,6 @@ package() {
    install -Dm755 -d "${pkgdir}/usr/"{bin,lib}
    cp -r "${srcdir}/${pkgname%-bin}"  "${pkgdir}/usr/lib/"
    ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-   ln -sf "/usr/lib/${pkgname%-bin}/${_appname}-ncnn-vulkan" "${pkgdir}/usr/bin/${_appname}-ncnn-vulkan"
    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
    chmod 666 "${pkgdir}/usr/lib/${pkgname%-bin}/config.ini"

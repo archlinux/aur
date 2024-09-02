@@ -1,7 +1,7 @@
 pkgbase = realesrgan-gui-bin
 	pkgdesc = 实用、美观的 Real-ESRGAN 图形界面，同时支持 Windows、Ubuntu 和 macOS 平台。现在也支持 Real-CUGAN 了！(Cross-platform GUI for image upscaler Real-ESRGAN with additional features. Now with Real-CUGAN support!)
 	pkgver = 0.2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://akarin.dev/realesrgan-gui/
 	arch = x86_64
 	license = AGPL-3.0-only
