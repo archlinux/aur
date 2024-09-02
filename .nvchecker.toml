@@ -1,0 +1,4 @@
+[shlink]
+source = "git"
+git = "https://github.com/shlinkio/shlink.git"
+prefix = "v"
