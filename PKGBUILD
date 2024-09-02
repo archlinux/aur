@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ulogviewer-bin
 _pkgname=ULogViewer
-pkgver=4.0.10.811
+pkgver=4.0.11.901
 pkgrel=1
 pkgdesc="Cross-Platform Universal Log Viewer."
 arch=(
@@ -35,23 +35,23 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea'
-            '976e2ca469e5c1924df36ea0ef4475d529b2bd876d367384815c0941d6e05496')
-sha256sums_aarch64=('fd6d8dbf66ad9eaf02a75681a4f43611dba68376749bd6e8fb6886d26b2c2da4')
-sha256sums_x86_64=('50079c3d85d8c98ee8f659783865b543dc7a82f452bc8659063424208219d681')
+            '08c0a423317a93a254a6d6fbcb0575e8dde202ce46f5126dbf03eb58e02c8851')
+sha256sums_aarch64=('89e37db9c2b29c53dc94352b9f4723ad7c8c04a446d0c5724a38c3991e517f62')
+sha256sums_x86_64=('29dde51b5f919dfe615f74350800734ab4cce6644a824506e50df2e407190839')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    install -Dm755 -d "${srcdir}/opt/${pkgname%-bin}"
-    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.zip" -C "${srcdir}/opt/${pkgname%-bin}"
+    install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}"
+    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.zip" -C "${srcdir}/usr/lib/${pkgname%-bin}"
     gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
-    chmod 755 "${srcdir}/opt/${pkgname%-bin}/${_pkgname}"
-    rm -rf "${srcdir}/opt/${pkgname%-bin}/__MACOSX"
+    chmod 755 "${srcdir}/usr/lib/${pkgname%-bin}/${_pkgname}"
+    rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/__MACOSX"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -r "${srcdir}/opt" "${pkgdir}"
-    install -Dm644 "${srcdir}/opt/${pkgname%-bin}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    cp -r "${srcdir}/usr" "${pkgdir}"
+    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
