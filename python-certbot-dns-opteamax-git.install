@@ -18,4 +18,5 @@ MSG
 }
 
 post_remove() {
+	echo -e "\e[34mDon't forget to remove credentials if no longer needed!\e[0m"
 }
