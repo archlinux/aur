@@ -3,17 +3,17 @@
 # Maintainer: Zorin Arch (ZorinArch)
 
 pkgname=pamac-tray-icon-plasma
-pkgver=0.1.3
-pkgrel=3
-_commit='e39571330664045a145ab3a15c0a1a925527cd4d'
-sha256sums=('637e061f4c78e54951dc575fc55e9e2c2fd0e53b9ca6eb65b23bd0f6cf1654c6')
+pkgver=0.1.4
+pkgrel=1
+_commit='58353a1b0fc4d1ba0957883da27c63aa04d0cdf2'
+sha256sums=('61a697f3792fcf51ad52d82ab7ad5b79083f5f0cbba5e13aa48534932b698e74')
 
 url="https://gitlab.com/LordTermor/$pkgname"
 
 pkgdesc="Pamac tray icon for plasma users"
 arch=('x86_64')
 license=('GPL3')
-depends=('pamac>=10.0.2' 'qt5-base>=5.15.0' 'knotifications5')
+depends=('libpamac>=11.0.0' 'qt6-base>=6.2.0' 'knotifications' 'kstatusnotifieritem')
 makedepends=('cmake')
 conflicts=('pamac-tray-appindicator')
 options=(!emptydirs)
@@ -36,4 +36,4 @@ package() {
   cd build
   make DESTDIR="${pkgdir}" install
 }
- 
+
