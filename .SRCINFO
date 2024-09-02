@@ -1,0 +1,19 @@
+pkgbase = bicep-langserver-bin
+	pkgdesc = Provides Language Server Protocol (LSP) for Bicep.
+	pkgver = 0.29.47
+	pkgrel = 1
+	url = https://github.com/Azure/bicep
+	arch = any
+	license = MIT
+	makedepends = unzip
+	depends = dotnet-runtime>=8.0.0
+	provides = bicep-langserver=0.29.47
+	conflicts = bicep-langserver
+	noextract = bicep-langserver.zip
+	options = !strip
+	source = https://github.com/Azure/bicep/releases/download/v0.29.47/bicep-langserver.zip
+	source = LICENSE-0.29.47::https://raw.githubusercontent.com/Azure/bicep/v0.29.47/LICENSE
+	sha256sums = c219e18a6ea116ecdaf55ddd7e311bba2f55fc358ef7139070b9ef839656523d
+	sha256sums = c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383
+
+pkgname = bicep-langserver-bin
