@@ -1,7 +1,7 @@
 # Maintainer: Sir-Photch <sir-photch at posteo dot me>
 
 pkgname=gmlgcd
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='The gemlog comment daemon'
 arch=('x86_64' 'aarch64')
