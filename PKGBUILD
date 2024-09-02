@@ -1,29 +1,24 @@
-# Maintainer: pancho horrillo <pancho at pancho dot name>
+# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: pancho horrillo <pancho at pancho dot name>
 
-_pkgname='ansible-aur'
-pkgname="${_pkgname}-git"
-pkgver=0.9.0.r0.g7821c33
+pkgname=ansible-aur-git
+pkgver=0.11.1.r0.gfe05001
 pkgrel=1
-pkgdesc='ansible module to install packages from AUR'
-arch=('any')
-url='https://github.com/kewlfft/ansible-aur'
-license=('GPL3')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("git+https://github.com/kewlfft/${_pkgname}.git")
+pkgdesc='Ansible module to manage packages from the AUR'
+arch=(any)
+url=https://github.com/kewlfft/ansible-aur
+license=(GPL-3.0-or-later)
+depends=(ansible-core)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${_pkgname}"
-	git describe --tags --long | sed '
-	    s/^v//
-	    s/\([^-]*-g\)/r\1/
-	    y/-/./
-	'
+  git -C $pkgname describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-	cd "${_pkgname}"
-	install -Dm644 README.md		"$pkgdir/usr/share/doc/${_pkgname}/README.md"
-	install -Dm644 plugins/modules/aur.py	"$pkgdir/usr/share/ansible/plugins/modules/aur.py"
+  install -Dm644 $pkgname/README.md "$pkgdir/usr/share/doc/${pkgname%-git}/README.md"
+  install -Dm644 $pkgname/plugins/modules/aur.py -t "$pkgdir/usr/share/ansible/plugins/modules"
 }

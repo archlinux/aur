@@ -1,0 +1,6 @@
+/ansible-aur-git//
+/pkg/
+/src/
+/*.log
+/*.pkg.tar.zst
+/*.tar.gz
