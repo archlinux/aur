@@ -1,9 +1,9 @@
-# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-# Contributor: Zachary Siedlecki <zacharysiedlecki01@gmail.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+
 pkgname=tmlshock-bin
 _pkgname=${pkgname%-bin}
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A terminal ttl clock and stopwatch build by golang"
 arch=('x86_64')
 url="https://github.com/yorukot/tmlshock"
