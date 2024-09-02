@@ -1,5 +1,9 @@
 # redumper-bin .Changelog
 
+## 2024-09-01, redumper-bin build_403-1
+
+* Bump to build_403 release.
+
 ## 2024-07-31, redumper-bin build_396-1
 
 * Bump to build_396 release.
@@ -90,4 +94,4 @@ PKGBUILD.
 ## Why consume the release binary rather than compile from source?
 
 I wasn't able to unravel the build dependencies.  If you're better at this  
-stuff than I am, feel free to take a crack at it.
+stuff than I am please feel free to take a crack at it.
