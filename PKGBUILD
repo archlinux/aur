@@ -1,6 +1,6 @@
 # PKGBUILD based on the official Arch gamescope PKGBUILD
-# Maintainer - Laurentiu Trofosila <trofosila@gmail.com>
-# Contributor - Antheas Kapenekakis <https://github.com/antheas>
+# Maintainer - Laurentiu Trofosila <trofosila at gmail dot com>
+# Contributor - Antheas Kapenekakis <github dot com slash antheas>
 
 pkgname=gamescope-shortcuts
 pkgver=3.14.29
