@@ -3,7 +3,7 @@
 
 pkgname=raptoreum-bin
 _pkgname=raptoreum
-pkgver=1.3.17.06
+pkgver=2.0.3.01
 pkgrel=1
 pkgdesc="The Raptoreum Wallet"
 arch=("any")
@@ -15,7 +15,7 @@ source=(
     "https://github.com/Raptor3um/raptoreum/releases/download/$pkgver-mainnet/$_filename.tar.gz"
 )
 sha256sums=(
-    "09f35431cb821cfe054781394ce5c8bf959eb1b776f69f48e68f7a5b9e27c99a"
+    "1dfb7b127485b668eb9cbeecd585028075580aaa302d96dad89f9790741aeb60"
 )
 
 package() {
