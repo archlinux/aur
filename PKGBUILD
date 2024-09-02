@@ -4,6 +4,7 @@ pkgbase=vosk-api-git
 pkgname=('vosk-api-git' 'python-vosk-git')
 pkgver=0.3.50.r5.g1b308a3
 pkgrel=1
+_clapack_branch=v3.2.1
 _model_small_ver=0.15
 _model_spk_ver=0.4
 pkgdesc='Offline speech recognition toolkit (git version)'
@@ -16,7 +17,7 @@ makedepends=('git' 'cmake' 'gradle' 'python' 'python-build' 'python-cffi' 'pytho
 checkdepends=('ffmpeg' 'python-numpy')
 source=('git+https://github.com/alphacep/vosk-api.git'
         'git+https://github.com/xianyi/OpenBLAS.git'
-        'git+https://github.com/alphacep/clapack.git'
+        "git+https://github.com/alphacep/clapack.git#branch=${_clapack_branch}"
         'git+https://github.com/alphacep/openfst.git'
         'git+https://github.com/alphacep/kaldi.git#branch=vosk'
         "https://alphacephei.com/kaldi/models/vosk-model-small-en-us-${_model_small_ver}.zip"
