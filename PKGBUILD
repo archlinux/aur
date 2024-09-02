@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=simple64
-pkgver=2024.08.1
+pkgver=2024.09.1
 pkgrel=1
 _cheat_parser_commit='92c86fcae60b3160f32dea69c674899fd83e1fc1'
 pkgdesc='Nintendo64 emulator based on Mupen64Plus'
@@ -22,7 +22,7 @@ source=("git+https://github.com/simple64/simple64.git#tag=v${pkgver}"
         '010-simple64-remove-bundled-discord-and-vosk.patch'
         '020-simple64-fix-paths.patch'
         'simple64.desktop')
-sha256sums=('b61a72e03ce43e7d707ae9c37abb1de7de3fc77b2ddf1133a224a6cf0b6c48c4'
+sha256sums=('27bdc055c85b6dbbbd930a19a62302985f0e78dfa52397a9e853411f70501245'
             '53f2c211dfabddbe7fc11c8f161882973495c2921ad1d47553b5b45b1687b3a4'
             '6bc5bc2123ea4a69acebe18d2d33676f35b850d2011fc3f9e83078567ef2d9c9'
             '99436fff936a1b6994fec0c9dcf938625af7eaea80b20e44040577edc0996f26'
