@@ -1,7 +1,7 @@
 # Maintainer: Balazs Kezes <fp65fmwc@anonaddy.me>
 
 pkgname=pkgtrim
-pkgver=0.240902.1
+pkgver=0.240902.2
 pkgrel=1
 pkgdesc="A package trimmer tool for Arch Linux and Ubuntu"
 arch=("i686" "pentium4" "x86_64" "arm" "armv7h" "armv6h" "aarch64" "riscv64")
