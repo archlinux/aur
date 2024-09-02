@@ -4,11 +4,11 @@ function post_install {
   printf '\n'
   printf '%s\n' "In order to automatically preload 'libgtk3-nocsd.so' at X session startup, copy"
   printf '%s\n' "'/usr/share/doc/gtk3-nocsd/etc/xinit/xinitrc.d/30-gtk3-nocsd.sh' to '/etc/X11/xinit/xinitrc.d/30-gtk3-nocsd.sh'."
-  printf '%s\n' "Otherwise, individual programmes can be run with GTK3 client side decoration disabled by running them"
+  printf '%s\n' "Otherwise, individual programs can be run with GTK3 client side decoration disabled by running them"
   printf '%s\n' "as 'gtk3-nocsd <command> [<command arguments>]'. See 'man 1 gtk3-nocsd'."
   printf '\n'
   printf '%s\n' "Note that even when '/etc/X11/xinit/xinitrc.d/30-gtk3-nocsd.sh' is copied, in gnome sessions, or when"
-  printf '%s\n' "the files in '/etc/X11/xinit/xinitrc.d/' do not get executed, gtk3-nocsd is no automatically activarted"
+  printf '%s\n' "the files in '/etc/X11/xinit/xinitrc.d/' do not get executed, gtk3-nocsd is not automatically activated"
   printf '%s\n' "and must also be used per application via 'gtk3-nocsd <command> [<command arguments>]'."
   printf '\n'
 }
