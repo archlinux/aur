@@ -4,7 +4,7 @@ latestversion=$(curl -sq https://api.github.com/repos/kubernetes-sigs/aws-iam-au
 echo "Latest aws-iam-authenticator version: ${latestversion}"
 
 echo "==> Updating PKGBUILD version to ${latestversion/v/}-1"
-sed -i "s|^pkgver=.*$|pkgver=${latestversion/v/}|; s|^pkgvrel=.*$|pkgrel=1|" PKGBUILD
+sed -i "s|^pkgver=.*$|pkgver=${latestversion/v/}|; s|^pkgrel=.*$|pkgrel=1|" PKGBUILD
 updpkgsums
 
 echo "==> Generating .SRCINFO"
