@@ -15,7 +15,7 @@ post_install() {
 	echo ""
 	echo "> You need to add your user to the lp group."
 	echo ""
-	echo "> Please refer to the table at http://foo2zjs.rkkda.com"
+	echo "> Please refer to the table at https://foo2zjs.linkevich.net/"
 	echo "> to choose the appropriate driver for your printer."
 }
 
