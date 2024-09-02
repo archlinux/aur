@@ -4,11 +4,11 @@ pkgname=pkgtrim
 pkgver=0.240828.3
 pkgrel=1
 pkgdesc="A package trimmer tool for Arch Linux and Ubuntu"
-arch=("aarch64" "x86_64")
+arch=("i686" "pentium4" "x86_64" "arm" "armv7h" "armv6h" "aarch64" "riscv64")
 url="https://ypsu.github.io/pkgtrim"
 license=("0BSD")
 makedepends=("go")
 
 package() {
-	GOBIN="$pkgdir/usr/bin" go install "github.com/ypsu/$pkgname@v$pkgver"
+	GOPATH="$srcdir"/gopath GOBIN="$pkgdir/usr/bin" go install "github.com/ypsu/$pkgname@v$pkgver"
 }
