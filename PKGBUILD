@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=oryx-kb-leds
 pkgver=1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Control your Oryx Pro's Keyboard LEDs"
 arch=('x86_64')
 url="https://github.com/davemcphee/oryx-kb-leds"
@@ -18,7 +18,7 @@ makedepends=(
   'python-wheel'
 )
 optdepends=(
-  'system76-dkms: only needed for <5.16 kernels'
+  'system76-dkms: Control hotkeys and fan on certain System76 laptops'
 )
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
