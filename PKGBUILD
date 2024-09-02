@@ -1,8 +1,8 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
 
 pkgname=kissat
-pkgver=3.1.1
-pkgrel=4
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="A keep it simple and clean bare metal SAT solver written in C"
 arch=('x86_64')
 url="https://fmv.jku.at/kissat"
@@ -10,16 +10,15 @@ license=('MIT')
 depends=('glibc')
 _srcname="${pkgname}-rel-${pkgver}"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/arminbiere/kissat/archive/refs/tags/rel-${pkgver}.tar.gz")
-b2sums=('ce98105f2701e9dfab8dc555ace2d6891015e25bd23f09c1b2706ddb757f7580a555bdc20340d6880f2c4a0c786a71fd16466ab06a9c7499c81e4832665ce6c3')
+b2sums=('5cd8bec051ec231e381022247d9b7b5aee722b1b7a96ea71139fd391e28d4f05956aa4fe645f6c4318815ac57aa95679478d19c2b6459d03e9bd6bb0977dcdaa')
 
 build() {
     cd "${srcdir}/${_srcname}"
 
     # -O3 is upstream default and well tested
     # -shared with _one_ dash is on purpose
-    # --no-options and --kitten with _two dashes too
-    ./configure --no-options \
-		-shared \
+    # --kitten with _two_ dashes too
+    ./configure -shared \
 		--kitten
     make
 }
