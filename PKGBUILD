@@ -12,7 +12,7 @@
 ## pkginfo
 pkgdesc='A fancy custom distribution of Valves Proton with various patches'
 pkgname=proton-ge-custom-rtsp-bin
-pkgver=GE_Proton9_10_rtsp14
+pkgver=GE_Proton9_11_rtsp15
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -78,7 +78,7 @@ source=("${_pkgver}_${pkgrel}.tar.gz::${url}/releases/download/${_pkgver}/${_pkg
   'user_settings.py'
   'launcher.sh'
   'pam_limits.conf')
-sha512sums=('b7733448ae61397b671373431290c4c4c081ea473b992402484d3d6486c87ff5754e838f70b500ff4fea51f1bb26e6600090d4c00ee4d9e7cdb763aa5644a91e'
+sha512sums=('dd58143da30d39474f9efae1e5dc0d807e37bd923cdb1ccf568ba8970e0e57479a328fd6a6adfb0dc20e42034f090ef2d5d91bc724fe1899fc42e56a6d67e1da'
             'babe2a461118bef6a777656a10bb89abeee2c8c3ed4285eb1b99f5ba517b779f18372d1d93ed2cce63b0d8111cf0b08e14a0c92435680239f6936783c3e4cbc5'
             '78ede6d50f9c43407da511c8b37dcf60aae2ddbd461c0081f0d0ce3de08ace3a84dee86e9253acbac829b47c5818ef4e1a354ccb05feaa9853ce279dc3f903fd'
             'c64898bd41801470925fb0efdcf7d247e5cb476fb4745f83ceeccf12041474e5c309fb1c2ac1483b419d12b4ade7668c046bebded4e3bf4708737ee505b080a1')
