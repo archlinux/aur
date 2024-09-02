@@ -1,0 +1,16 @@
+pkgbase = hexcurse-ng-git
+	pkgdesc = Versatile ncurses-based console hexeditor written in C
+	pkgver = v1.70.0.r1.g6c89ada
+	pkgrel = 1
+	url = https://github.com/prso/hexcurse-ng
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = ncurses
+	provides = hexcurse
+	conflicts = hexcurse
+	options = !makeflags
+	source = git+https://github.com/prso/hexcurse-ng
+	md5sums = SKIP
+
+pkgname = hexcurse-ng-git
