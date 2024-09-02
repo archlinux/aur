@@ -11,7 +11,7 @@ depends=('gtk3' 'gtkmm3')
 optdepends=(
         "ttf-liberation: Font to be used for GUI (recommended)"
 )
-conflicts=('customfetch' 'customfetch-gui-git' "customfetch-git")
+conflicts=('customfetch-gui-git' 'customfetch' 'customfetch-git' 'customfetch-bin')
 makedepends=('base-devel')
 source=("git+${url}.git")
 sha256sums=("SKIP")
