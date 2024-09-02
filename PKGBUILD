@@ -1,21 +1,30 @@
 # Maintainer:
 # Contributor: spikecodes <19519553+spikecodes@users.noreply.github.com>
 
+: ${CARGO_HOME:=$SRCDEST/cargo-home}
+: ${CARGO_TARGET_DIR:=target}
+: ${RUSTUP_TOOLCHAIN:=stable}
+export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
+
 _pkgname="xcp"
 pkgname="$_pkgname-git"
-pkgver=0.20.4.r4.g6356af3
-pkgrel=2
+pkgver=0.21.3.r0.g2c8c3f0
+pkgrel=1
 pkgdesc="An extended 'cp'"
 url="https://github.com/tarka/xcp"
 license=("GPL-3.0-only")
 arch=('x86_64')
 
+depends=(
+  'gcc-libs'
+  'glibc'
+)
 makedepends=(
   'git'
   'cargo'
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
+provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
@@ -28,36 +37,26 @@ pkgver() {
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-_cargo_env() {
-  export CARGO_HOME="${CARGO_HOME:-$SRCDEST/cargo-home}"
-  export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
-  export CARGO_TARGET_DIR=target
-}
-
 prepare() {
-  _cargo_env
-
   cd "$_pkgsrc"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  _cargo_env
-
   cd "$_pkgsrc"
   cargo build --frozen --release --all-features
 }
 
 check() {
-  _cargo_env
-
   cd "$_pkgsrc"
-  ./tests/scripts/test-linux.sh
+  if grep --quiet '^mail:' /etc/passwd; then
+    ./tests/scripts/test-linux.sh
+  else
+    ./tests/scripts/test-linux.sh test_no_acl
+  fi
 }
 
 package() {
-  _cargo_env
-
   cd "$_pkgsrc"
   install -Dm755 "$CARGO_TARGET_DIR/release/$_pkgname" -t "$pkgdir/usr/bin/"
   install -Dm644 "completions/$_pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
