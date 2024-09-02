@@ -20,3 +20,6 @@ sed -i "s/sha256sums_x86_64=.*/sha256sums_x86_64=('${chksum}')/g" PKGBUILD
 
 makepkg -f || exit -10
 makepkg --printsrcinfo > .SRCINFO || exit -11
+
+git commit -am "updated to ${pkgver}" || exit -12
+git push || exit -13
