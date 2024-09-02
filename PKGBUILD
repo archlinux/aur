@@ -14,7 +14,7 @@ provides=()
 conflicts=()
 install="airshipper.install"
 source=(
-    "$pkgname-$pkgver"::"https://github.com/veloren/Airshipper/releases/download/v$pkgver/airshipper-linux-x86_64.tar.gz"
+    "$pkgname-$pkgver"::"https://github.com/veloren/Airshipper/releases/download/v$pkgver/airshipper-linux.tar.gz"
     'airshipper.desktop'
     'airshipper.install'
     'veloren.png'
