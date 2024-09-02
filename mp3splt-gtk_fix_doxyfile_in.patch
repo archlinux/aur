@@ -1,0 +1,38 @@
+--- a/doc/Doxyfile_all.in
++++ b/doc/Doxyfile_all.in
+@@ -31,7 +31,7 @@
+ # This could be handy for archiving the generated documentation or
+ # if some version control system is used.
+ 
+-PROJECT_NUMBER         =
++PROJECT_NUMBER         = @VERSION@
+ 
+ # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute)
+ # base path where the generated documentation will be put.
+@@ -105,7 +105,7 @@
+ # path before files name in the file list and in the header files. If set
+ # to NO the shortest path that makes the file name unique will be used.
+ 
+-FULL_PATH_NAMES        = NO
++FULL_PATH_NAMES        = YES
+ 
+ # If the FULL_PATH_NAMES tag is set to YES then the STRIP_FROM_PATH tag
+ # can be used to strip a user-defined part of the path. Stripping is
+@@ -1087,7 +1087,7 @@
+ # typically be disabled. For large projects the javascript based search engine
+ # can be slow, then enabling SERVER_BASED_SEARCH may provide a better solution.
+ 
+-SEARCHENGINE           = NO
++SEARCHENGINE           = YES
+ 
+ # When the SERVER_BASED_SEARCH tag is enabled the search engine will be
+ # implemented using a PHP enabled web server instead of at the web client
+@@ -1492,7 +1492,7 @@
+ # DOTFONTPATH environment variable or by setting DOT_FONTPATH to the directory
+ # containing the font.
+ 
+-DOT_FONTNAME           = FreeSans.ttf
++DOT_FONTNAME           = 
+ 
+ # The DOT_FONTSIZE tag can be used to set the size of the font of dot graphs.
+ # The default size is 10pt.

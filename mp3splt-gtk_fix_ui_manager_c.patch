@@ -1,0 +1,11 @@
+--- a/src/ui_manager.c
++++ b/src/ui_manager.c
+@@ -182,7 +182,7 @@
+     g_vsnprintf(formatted_message, 1024, message, ap);
+     va_end(ap);
+ 
+-    fprintf(stderr, formatted_message);
++    fprintf(stderr, "%s", formatted_message);
+     fflush(stderr);
+   }
+ 
