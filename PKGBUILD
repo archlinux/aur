@@ -3,7 +3,7 @@
 pkgbase=mkdocstrings
 pkgname=("${pkgbase}")
 #"${pkgbase}-doc")
-pkgver=0.25.2
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="Automatic documentation from sources, for MkDocs"
 url="https://mkdocstrings.github.io"
@@ -35,7 +35,7 @@ source=("https://files.pythonhosted.org/packages/source/${pkgbase:0:1}/${pkgbase
 ##        "${pkgver}-main.html::https://github.com/mkdocstrings/mkdocstrings/raw/${pkgver}/docs/.overrides/main.html"
 ##        "${pkgver}-gen_redirects.py::https://github.com/mkdocstrings/mkdocstrings/raw/${pkgver}/scripts/gen_redirects.py"
 #        "${pkgver}-gen_ref_nav.py::https://github.com/mkdocstrings/mkdocstrings/raw/${pkgver}/scripts/gen_ref_nav.py")
-sha256sums=('5cf57ad7f61e8be3111a2458b4e49c2029c9cb35525393b179f9c916ca8042dc')
+sha256sums=('ff9d0de28c8fa877ed9b29a42fe407cfe6736d70a1c48177aa84fcc3dc8518cd')
 
 #prepare() {
 #    cd "${pkgbase}-${pkgver}"
@@ -69,12 +69,12 @@ package_mkdocstrings() {
     depends=('python>=3.8'
              'python-click>=7.0'
              'python-jinja>=2.11.1'
-             'python-markdown>=3.3'
+             'python-markdown6=3.6'
              'python-markupsafe>=1.1'
-             'python-platformdirs>=2.2.0'
+             'python-platformdirs>=2.2'
              'python-typing_extensions>=4.1'
              'mkdocs>=1.4'
-             'mkdocs-autorefs>=0.3.1'
+             'mkdocs-autorefs>=1.2'
              'pymdown-extensions>=6.3')
     cd "${pkgbase}-${pkgver}"
 
