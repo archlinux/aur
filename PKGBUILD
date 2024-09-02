@@ -3,7 +3,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=xv
-pkgver=6.0.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc='A nice image viewer'
 arch=(i686 x86_64 armv7h aarch64)
@@ -14,7 +14,7 @@ makedepends=(cmake git)
 options=(!emptydirs)
 source=(git+$url.git#tag=v$pkgver
         license.txt)
-sha256sums=('3072287ad6117d6b6c91a7e3927154dbc4645c1ad17937e7e3afaed0ed101fda'
+sha256sums=('c1b21b4f83f71e7f28f79391b59b85d62b9aa49d1ca91dbf3e5a1e465fd1297f'
             '6bcd7861188e1e8fb90b68b6d660e519488b7bae02ac1cb46c9bc48aa235e451')
 
 prepare() {
