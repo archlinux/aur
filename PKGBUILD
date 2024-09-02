@@ -8,5 +8,3 @@ license=('mit')
 depends=()
 options=()
 install=${pkgname}.install
-source_x86_64=("https://github.com/CodeEditorLand/Mountain/releases/download/v$pkgver/appname_"$pkgver"_amd64.deb")
-source_aarch64=("https://github.com/CodeEditorLand/Mountain/releases/download/v$pkgver/appname_"$pkgver"_arm64.deb")
