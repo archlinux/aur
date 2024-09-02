@@ -112,6 +112,10 @@ build(){
     cmake --install cmake-build.thrive_native.avx
 
     echo "Running godot-mono to export game..."
+    if ! "$_system_godot" && ! command -v godot-mono > /dev/null
+    then
+        export PATH="$PATH:$HOME/.local/bin"
+    fi
     mkdir -p dist
     godot-mono --headless --export-release Linux/X11 dist/Thrive
 }
