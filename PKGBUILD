@@ -1,24 +1,25 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=huekeys
 pkgver=0.5.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Control the keyboard backlight on System76 laptops"
 arch=('x86_64')
 url="https://github.com/BitPonyLLC/huekeys"
 license=('MIT')
-depends=('gtk3' 'libayatana-appindicator' 'system76-dkms')
+depends=('gtk3' 'libayatana-appindicator')
 makedepends=('git' 'go')
+optdepends=('system76-dkms: only needed for <5.16 kernels')
 _commit=e75c681f54ee7cfc0fc1839b6fdf48a7963f8ac4  # tags/v0.5.10^0
 source=("git+https://github.com/BitPonyLLC/huekeys.git#commit=${_commit}?signed"
         "$pkgname.desktop"
         "$pkgname.png")
-sha256sums=('SKIP'
+sha256sums=('fe4669da6521f7fb2d186e64d9f5cb09a74ef116d35a80882949d01c1aa1df3f'
             'dec3af63f1e48d4b77798b80b2941c0a70b26a5f9f832c793d9f28f665744a14'
             'c81d55e46f5c4fb7e02837d4625875ef4b413664972ae8316841319b8458b90e')
 validpgpkeys=('CBAEF8F32E3F32BFA9B5161487A9206416E3D33B') # bradrf <brad@bitpony.com>
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
