@@ -1,7 +1,7 @@
 pkgbase = python-pystencils
 	pkgdesc = Speeding up stencil computations on CPUs and GPUs
 	pkgver = 1.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://i10git.cs.fau.de/pycodegen/pystencils
 	arch = any
 	license = AGPL-3.0-or-later
@@ -33,6 +33,8 @@ pkgbase = python-pystencils
 	optdepends = python-rich: for interactive support
 	optdepends = python-graphviz: for interactive support
 	source = https://i10git.cs.fau.de/pycodegen/pystencils/-/archive/release/1.3.5/pystencils-release-1.3.5.tar.gz
+	source = sve.patch::https://i10git.cs.fau.de/pycodegen/pystencils/-/commit/e77df63f672ea28cc389c1fadd695338f2985c7d.patch
 	sha512sums = b66b32cbbf949edf8eca70fe599ce69138d8e057a76185ae37885fa9bc1ed768f91a7c7cec4f54579cc3e662b799e2e36a938cd7953ab71531a2bdb15e9ae7e3
+	sha512sums = 197267789bbea5cf0d7acfda032ebbb351ad6658e7050e03e877194d605a02b22255d79cc578a5037fdc04c8168f6861acdeebe4d2364ed4ca8dcdd214d136b9
 
 pkgname = python-pystencils
