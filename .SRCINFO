@@ -4,7 +4,7 @@ pkgbase = decibels
 	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/Incubator/decibels
 	arch = any
-	license = GPL-3.0
+	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
 	makedepends = git
 	makedepends = gobject-introspection
@@ -17,7 +17,7 @@ pkgbase = decibels
 	depends = gst-plugins-good
 	depends = gtk4
 	depends = libadwaita
-	source = git+https://gitlab.gnome.org/GNOME/Incubator/decibels#commit=d3d85a7d6fac2af348789a05ece4ddea5e828150
+	source = git+https://gitlab.gnome.org/GNOME/Incubator/decibels#tag=46.0
 	source = git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions.git
 	sha256sums = 136e9e604f4c2c8438cc4c9a0ae2a40c9986c772b7c9f2e908de2082f2b5e87e
 	sha256sums = SKIP
