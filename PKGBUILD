@@ -5,7 +5,7 @@ _pkgname=Gitify
 pkgver=5.13.1
 _electronversion=31
 _nodeversion=20
-pkgrel=1
+pkgrel=2
 pkgdesc="GitHub notifications on your menu bar.Use system-wide electron."
 arch=('any')
 url='https://www.gitify.io/'
@@ -28,7 +28,7 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('f362d896c17f9843eaeb0244b2d715177bc131e2d0288c36c38c34b8dcf0d793'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -47,14 +47,13 @@ build() {
     _ensure_local_nvm
     export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     pnpm config set store-dir "${srcdir}/.pnpm_store"
     pnpm config set cache-dir "${srcdir}/.pnpm_cache"
     pnpm config set link-workspace-packages true
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export npm_config_registry=https://registry.npmmirror.com
         export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
@@ -62,11 +61,12 @@ build() {
     else
         echo "Your network is OK."
     fi
-    sed 's|"AppImage", "deb", "rpm"|"dir"|g;/packageManager/d' -i package.json
+    sed "s|\"AppImage\", \"deb\", \"rpm\"|\"dir\"|g;s|\"electron\": \"31.4.0\",|\"electron\": \"${SYSTEM_ELECTRON_VERSION}\",|g" \
+        -i package.json
     icotool -x assets/images/app-icon.ico -o assets/images/app-icon.png
-    NODE_ENV=development pnpm install
-    NODE_ENV=production pnpm run build
-    NODE_ENV=production pnpm run make:linux --publish=never
+    NODE_ENV=development    pnpm install
+    NODE_ENV=production     pnpm run build
+    NODE_ENV=production     pnpm run make:linux --publish=never
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
