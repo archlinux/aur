@@ -1,12 +1,12 @@
 # Maintainer : Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=irpf2023
-pkgver=2023.1.5
-pkgrel=2
+pkgver=2023.1.6
+pkgrel=1
 pkgdesc='Brazilian physical person income tax (IRPF) program (2023 version)'
 arch=('any')
 url='https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda'
-license=('LicenseRef-custom')
+license=('LicenseRef-Custom')
 depends=('sh' 'java-runtime=11' 'hicolor-icon-theme')
 optdepends=('gvfs: for importing pre-filled data from a gov.br account')
 makedepends=('icoutils')
@@ -14,7 +14,7 @@ source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/irpf/arq
         'irpf.desktop'
         'irpf.sh'
         'LICENSE')
-sha256sums=('88956b8ff78c20e1d9d9ef9aa4f9d1fc7d12422610f739f90419b61fc0db6da4'
+sha256sums=('a3161d8727c455156555fba72745ecc277fe392a536ff7b26a69f52a15f909a6'
             '463fc0234a23d7125783e24e995785b6d2430d709a87b96db76c655226ea401c'
             '959f49db6ab954d74e25d2537b009750e44a5fdd6f70cf40fed2b3123c8d2771'
             'a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67')
