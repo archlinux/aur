@@ -11,7 +11,7 @@ pkgver=0.28.9
 pkgrel=1
 url='https://netbird.io'
 arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
-license=(BSD)
+license=(BSD-3-Clause)
 makedepends=('go')
 
 source=(
