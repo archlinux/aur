@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=grpreg
-_pkgver=3.4.0
+_pkgver=3.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Regularization Paths for Regression Models with Grouped Covariates"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('bc7e8148a92adc041f15a05bf243e700')
-b2sums=('2a5171970fc2faa62e84114ca567e2eeca54ac2388155370192d38cf28c121e51bb3df4cd04143d12b88e0f2eb4e921c46211cca12fb7ce48eb793f76e6b4127')
+md5sums=('09e2b34ff9e966557cd73ffa2bcfaab2')
+b2sums=('33247af5784d3dc2c85096f3af45e80fef5990e9ddb66e2b0426c112e16a3f92e71ee76a67055675c8b313a3e8f61faf62d8e66de57dd198cd96e6d10a6654d0')
 
 build() {
   mkdir build
