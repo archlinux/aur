@@ -1,0 +1,54 @@
+pkgbase = wps-office-2023-bin
+	pkgdesc = Kingsoft Office (WPS Office) CN version - an office productivity suite
+	pkgver = 12.1.0.17881
+	pkgrel = 1
+	url = https://linux.wps.cn
+	arch = x86_64
+	license = LicenseRef-WPS-EULA
+	options = !emptydirs
+	source = fix-wps-python-parse.patch
+	sha1sums = f3713481edf04ffb08be8d24dce66554dd5a4f13
+	source_x86_64 = wps-office_12.1.0.17881_amd64.deb::https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/17881/wps-office_12.1.0.17881_amd64.deb?t=1725330413&k=1c16c2ad83d38f6621c88a6ab8912f96
+	sha1sums_x86_64 = ef71d43eaa06a6ffbad4f6307499b80f25478d42
+
+pkgname = wps-office-cn
+	install = wps-office-cn.install
+	depends = fontconfig
+	depends = xorg-mkfontscale
+	depends = libxrender
+	depends = desktop-file-utils
+	depends = shared-mime-info
+	depends = xdg-utils
+	depends = glu
+	depends = sdl2
+	depends = libpulse
+	depends = hicolor-icon-theme
+	depends = libxss
+	depends = sqlite
+	depends = libtool
+	depends = libxslt
+	depends = libjpeg-turbo
+	optdepends = libtiff5: Provide libtiff.so.5 for wpspdf working
+	optdepends = cups: for printing support
+	optdepends = libjpeg-turbo: JPEG image codec support
+	optdepends = pango: for complex (right-to-left) text support
+	optdepends = curl: An URL retrieval utility and library
+	optdepends = ttf-wps-fonts: Symbol fonts required by wps-office
+	optdepends = ttf-ms-fonts: Microsft Fonts recommended for wps-office
+	optdepends = wps-office-fonts: FZ TTF fonts provided by wps community
+	optdepends = wps-office-mime-cn: Use mime files provided by Kingsoft
+	optdepends = wps-office-mui-zh-cn: zh_CN support for WPS Office
+	provides = wps-office
+	conflicts = kingsoft-office
+	conflicts = wps-office
+
+pkgname = wps-office-mime-cn
+	pkgdesc = Mime files provided by Kingsoft Office (WPS Office) cn version
+	arch = any
+	depends = shared-mime-info
+	provides = wps-office-mime
+	conflicts = wps-office-mime
+
+pkgname = wps-office-mui-zh-cn
+	pkgdesc = Chinese (Simplified) mui package for WPS Office
+	arch = any
