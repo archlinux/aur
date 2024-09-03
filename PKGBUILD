@@ -1,16 +1,16 @@
 pkgname=buddhasay
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Like Cowsay, but with a Buddha."
 url="https://codeberg.org/0x6f/buddhasay"
 makedepends=('cargo')
-arch=('i686' 'x86_64')
-license=('APACHE')
-source=("https://codeberg.org/0x6f/buddhasay/archive/$pkgver.tar.gz")
+arch=('x86_64')
+license=('GPL-3.0-only')
+source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/0x6f/buddhasay/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd $srcdir/buddhasay-$pkgver
+  cd "$srcdir/$pkgname-$pkgver"
   cargo build --release
 }
 
