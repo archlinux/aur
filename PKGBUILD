@@ -3,7 +3,7 @@ pkgname=3fa-bin
 _pkgname=3FA
 pkgver=1.0.1
 _electronversion=26
-pkgrel=4
+pkgrel=5
 pkgdesc="A secure and scalable multi-factor authentication system including a client application, admin dashboard, and backend server"
 arch=('x86_64')
 url="https://3fa.netlify.app/"
@@ -14,12 +14,15 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
 )
+options=(
+    '!emptydirs'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c28eb31e5fd5f8f16d212be35b98888f7424005d59f7743b1c074057f9e709b6'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \

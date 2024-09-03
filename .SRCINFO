@@ -1,16 +1,17 @@
 pkgbase = 3fa-bin
 	pkgdesc = A secure and scalable multi-factor authentication system including a client application, admin dashboard, and backend server
 	pkgver = 1.0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://3fa.netlify.app/
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = electron26
 	provides = 3fa=1.0.1
 	conflicts = 3fa
+	options = !emptydirs
 	source = 3fa-1.0.1.deb::https://github.com/Computing-Collective/3FA/releases/download/v1.0.1/3fa_1.0.1_amd64.deb
 	source = 3fa.sh
 	sha256sums = c28eb31e5fd5f8f16d212be35b98888f7424005d59f7743b1c074057f9e709b6
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = 3fa-bin
