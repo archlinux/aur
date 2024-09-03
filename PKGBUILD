@@ -1,6 +1,6 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
-_base=pep517
-pkgname=pypy3-${_base}
+_base=pyproject-hooks
+pkgname=pypy3-pep517
 pkgver=0.13.1
 pkgrel=1
 pkgdesc="Wrappers to build Python packages using PEP 517 hooks"
