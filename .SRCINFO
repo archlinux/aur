@@ -1,7 +1,7 @@
 pkgbase = rstudio-desktop
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
 	pkgver = 2024.04.2.764
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rstudio/rstudio
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -43,10 +43,12 @@ pkgbase = rstudio-desktop
 	source = https://github.com/SOCI/soci/archive/refs/tags/v4.0.3.tar.gz
 	source = qt.conf
 	source = 0002-allow_system_node.patch
+	source = 0003-fix_boost_186.patch
 	sha256sums = 89b0d6741b6bd4dac52fd8bd9372d4f1919c97dd41056a03c975d0570eaf439e
 	sha256sums = SKIP
 	sha256sums = 4b1ff9c8545c5d802fbe06ee6cd2886630e5c03bf740e269bb625b45cf934928
 	sha256sums = 723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921
 	sha256sums = ad4bd3076ff2bff7d075e3928a7e55c618fa744e3bf5d3d387bf70e01ff96c2f
+	sha256sums = 7b3384fc7349a69e866ef0db21f196a2cafa3a9e2fb7f1edaead773b991dac72
 
 pkgname = rstudio-desktop

@@ -13,7 +13,7 @@ _pandocver="current"
 _sociver="4.0.3"
 _quarto="FALSE"
 
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('x86_64')
 url="https://github.com/rstudio/rstudio"
@@ -29,13 +29,15 @@ source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs
         "git+https://github.com/quarto-dev/quarto.git#branch=release/rstudio-cherry-blossom"
         "https://github.com/SOCI/soci/archive/refs/tags/v${_sociver}.tar.gz"
         "qt.conf"
-        "0002-allow_system_node.patch")
+        "0002-allow_system_node.patch"
+        "0003-fix_boost_186.patch")
 
 sha256sums=('89b0d6741b6bd4dac52fd8bd9372d4f1919c97dd41056a03c975d0570eaf439e'
             'SKIP'
             '4b1ff9c8545c5d802fbe06ee6cd2886630e5c03bf740e269bb625b45cf934928'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
-            'ad4bd3076ff2bff7d075e3928a7e55c618fa744e3bf5d3d387bf70e01ff96c2f')
+            'ad4bd3076ff2bff7d075e3928a7e55c618fa744e3bf5d3d387bf70e01ff96c2f'
+            '7b3384fc7349a69e866ef0db21f196a2cafa3a9e2fb7f1edaead773b991dac72')
 
 options=('!emptydirs' '!debug')
 
@@ -49,6 +51,8 @@ prepare() {
 
     # Add option to use system node
     patch -p3 < ${srcdir}/0002-allow_system_node.patch
+    # fix boost 1.86 incompatibility
+    patch -p1 < ${srcdir}/0003-fix_boost_186.patch
 
     cd "${srcdir}/${_srcname}/dependencies/common"
     install -d pandoc/${_pandocver}
@@ -117,7 +121,15 @@ build() {
     export R_LIBS_USER="${srcdir}/${_srcname}/dependencies/R"
     _JOBS="$(grep -oP -- "-j\s*\K[0-9]+" <<< "${MAKEFLAGS}")" || _JOBS="1"
     mkdir -p "${R_LIBS_USER}"
-    for RPKG in rmarkdown renv testthat xml2 yaml; do
+    local RPACKAGES=(
+      digest
+      purrr
+      rmarkdown
+      testthat
+      xml2
+      yaml
+    )
+    for RPKG in ${RPACKAGES[*]}; do
         RINSTALLCMD="if("'!'"require($RPKG, quietly = TRUE)) { options(Ncpus = ${_JOBS} ); install.packages('$RPKG', lib='$R_LIBS_USER', repos='https://cran.rstudio.com/') }"
         echo "> $RINSTALLCMD"
         Rscript -e "$RINSTALLCMD"
