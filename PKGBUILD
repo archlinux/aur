@@ -47,7 +47,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/dosemu2/dosemu2'
 license=('GPL-2.0-only')
 depends=('glibc' 'alsa-lib' 'libsearpc')
-depends+=('gcc-libs' 'glib2' 'bash' 'sdl2_ttf' 'libb64' 'libieee1284' 'libslirp' 'fontconfig' 'acl' 'json-c' 'libx11' 'jansson' 'readline' 'libcap' 'libxext' 'dj64-git')
+depends+=('gcc-libs' 'glib2' 'bash' 'sdl2_ttf' 'libb64' 'libieee1284' 'libslirp' 'fontconfig' 'acl' 'json-c' 'libx11' 'jansson' 'readline' 'libcap' 'libxext' 'dj64')
 if [ "${_opt_Debug}" -ne 0 ]; then
   depends+=('gdb' 'binutils' 'sudo')
 fi
