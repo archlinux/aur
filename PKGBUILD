@@ -2,12 +2,12 @@
 # Contributor: Alexander Paetzelt <techge+arch [ät] posteo [do] net>
 
 pkgname=kismet-git
-pkgver=r11487.59f51a2da
-pkgrel=2
+pkgver=r11696.815be33a3
+pkgrel=3
 pkgdesc="802.11 layer2 wireless network detector, sniffer, and intrusion detection system"
 url="https://www.kismetwireless.net/"
 arch=('x86_64' 'armv7h' 'aarch64')
-license=('GPL')
+license=('GPL-2.0-only')
 depends=('bluez-libs'
         'gcc-libs'
         'glibc'
@@ -30,6 +30,7 @@ depends=('bluez-libs'
         'python-pyserial'
         'python-numpy'
         'python-websockets'
+        'rtl-sdr'
         'sqlite'
         'systemd'
         'zlib')
@@ -51,7 +52,7 @@ backup=(etc/kismet/kismet.conf
         etc/kismet/kismet_memory.conf
         etc/kismet/kismet_uav.conf)
 conflicts=('kismet')
-install=${pkgname}.install
+install="${pkgname}.install"
 source=("git+https://github.com/kismetwireless/kismet"
         "${pkgname}-sysusers.conf")
 sha256sums=('SKIP'
@@ -70,16 +71,18 @@ prepare() {
 
 build() {
     cd "$srcdir/kismet"
-    ./configure --prefix=/usr \
+        ./configure --prefix=/usr \
         --localstatedir=/var \
         --sysconfdir=/etc/kismet \
         --with-suidgroup=315
-    make all plugins
+        make all plugins
 }
 
 package() {
     cd "$srcdir/kismet"
     make DESTDIR="$pkgdir/" install
+    # install systemd service
+    install -vDm 644 "packaging/systemd/kismet.service" "${pkgdir}/usr/lib/system/systemd/kismet.service"
 
     # Makepkg strip bug #43600
     chmod u+w "${pkgdir}"/usr/bin/kismet*
@@ -88,5 +91,7 @@ package() {
 
     # create group kismet via sysusers
     cd "$srcdir"
-    install -vDm 644 "${pkgname}-sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    install -vDm 644 "${pkgname}-sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/kismet.conf"
 }
+
+# vim: set ts=4 sw=4 et:
