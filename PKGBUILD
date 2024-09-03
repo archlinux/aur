@@ -3,7 +3,7 @@
 
 pkgname=qt5-purchasing
 _basever=5.15.15
-pkgver=5.15.14
+pkgver=5.15.15
 pkgrel=1
 _commit=6922c0e403e94ac9c2336706bc3df1e2da217a1f
 arch=('x86_64')
