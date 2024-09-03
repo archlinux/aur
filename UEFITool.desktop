@@ -1,0 +1,13 @@
+[Desktop Entry]
+Comment=
+Exec=uefitool
+Icon=uefitool
+Name=UEFITool
+NoDisplay=false
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=

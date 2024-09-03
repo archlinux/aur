@@ -9,16 +9,46 @@ url="https://github.com/LongSoft/UEFITool"
 license=('BSD')
 provides=("uefitool=${pkgver}" "uefipatch=${pkgver}" "uefireplace=${pkgver}")
 depends=('qt6-base')
-source=("UEFIExtract-${pkgver}.zip::${url}/releases/download/${pkgver}/UEFIExtract_NE_${pkgver}_x64_linux.zip"
-    "UEFIFind-${pkgver}.zip::${url}/releases/download/${pkgver}/UEFIFind_NE_${pkgver}_x64_linux.zip"
-    "UEFITool-${pkgver}.zip::${url}/releases/download/${pkgver}/UEFITool_NE_${pkgver}_x64_linux.zip")
-sha256sums=('67d0f93d9c5e764edd8e9d9afb04b4296ca7c3a89d1c2aab4c78fb8896d7e100'
-            'f11ac277b01674c95f34082224d94a9234eae546b7c1d8efa786de583ef8f653'
-            '28e36550711d242bc5f129bf075f6ddd9dbb12bd474f287578fc519be0eeff72')
+source=(
+  "UEFIExtract-${pkgver}.zip::${url}/releases/download/${pkgver}/UEFIExtract_NE_${pkgver}_x64_linux.zip"
+  "UEFIFind-${pkgver}.zip::${url}/releases/download/${pkgver}/UEFIFind_NE_${pkgver}_x64_linux.zip"
+  "UEFITool-${pkgver}.zip::${url}/releases/download/${pkgver}/UEFITool_NE_${pkgver}_x64_linux.zip"
+  "UEFITool.desktop"
+  "uefitool_32x32.png"
+  "uefitool_48x48.png"
+  "uefitool_64x64.png"
+  "uefitool_128x128.png"
+  "uefitool_256x256.png"
+  "uefitool_512x512.png"
+)
+sha256sums=(
+  '67d0f93d9c5e764edd8e9d9afb04b4296ca7c3a89d1c2aab4c78fb8896d7e100'
+  'f11ac277b01674c95f34082224d94a9234eae546b7c1d8efa786de583ef8f653'
+  '28e36550711d242bc5f129bf075f6ddd9dbb12bd474f287578fc519be0eeff72'
+  '45f2d57e1697d836da6d399e6f1db0bde2d9926ff00b83563208dc6853bde912'
+  '9b6bce56fcccea4104642c6c8d393e6043671a8fd45b1c7bf8495407b4ad206a'
+  'ed001d549f96e142fd609e9a89d3482702d9d37abfa3f6a39cfa0fd2a9b36335'
+  '6b82394411bdc2a2b62f18056f07f6f29a651c6f542cfd132db0ba255e05242e'
+  '20e1cf7fe9e7b429a2daa0b75e17f4d0f362d1312401c6178658fd9fdb69dc14'
+  'c75715b87263f3663bdc60bd0ee1dcbb374a688931018f04d767ea3cfc965bf7'
+  '33ace8f0eb8f7c4f6918e9a3033d676293b4decd0fa5ca28987818a63e0ecf1b'
+)
 
 package() {
+  # Binaries
   install -Dm755 "${srcdir}"/uefiextract "${pkgdir}/usr/bin/uefiextract"
   install -Dm755 "${srcdir}"/uefifind "${pkgdir}/usr/bin/uefifind"
   install -Dm755 "${srcdir}"/uefitool "${pkgdir}/usr/bin/uefitool"
+  
+  # Desktops
+  mkdir -p "$pkgdir"/usr/share/applications
+  install -m644 *.desktop "$pkgdir"/usr/share/applications/
+
+  # Icons
+  for i in 32x32 48x48 64x64 128x128 256x256 512x512; do
+    install -d "$pkgdir"/usr/share/icons/hicolor/$i/apps/
+    cp uefitool_${i}.png \
+      "$pkgdir"/usr/share/icons/hicolor/$i/apps/uefitool.png
+  done
 }
 # vim:set ts=2 sw=2 et:
