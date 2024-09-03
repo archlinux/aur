@@ -5,7 +5,7 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-beta-performance
-pkgver=47.rc.r6.g5445b70
+pkgver=47.rc.r9.g3159172
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
@@ -69,13 +69,13 @@ makedepends=(
   meson
   sassc
 )
-_shell_commit=5445b705f1c7accf1e7a949b614faade0fa5b1a1
+_shell_commit=31591727c45d755de650dddb56a75385fa7519e6
 _libgnome_volume_control_commit=5f9768a2eac29c1ed56f1fbb449a77a3523683b6
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_shell_commit"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=$_libgnome_volume_control_commit"
 )
-b2sums=('dbad3e61bcfc86d3d7f242c55aa46ea74dbac4df3b45e18f405485b5f1b8157a26f8953c35b611ff888c2d4154a433e4920e75db1bcd9480cbaf5ecda7c87832'
+b2sums=('0b668bc6d9fe0697005fce98c0f161bb71009eb83d2139b44f61b3df1872cc02197b5b66aedf87fff4f3916db4d1b9135e508f011e154595b815120397f1d4be'
         'e31ae379039dfc345e8032f7b9803a59ded075fc52457ba1553276d3031e7025d9304a7f2167a01be2d54c5e121bae00a2824a9c5ccbf926865d0b24520bb053')
 
 pkgver() {
