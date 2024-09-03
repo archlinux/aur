@@ -1,0 +1,4 @@
+[python-glean-parser]
+source = "git"
+git = "https://github.com/mozilla/glean_parser.git"
+prefix = "v"
