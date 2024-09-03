@@ -5,7 +5,7 @@
 pkgname=gamescope-shortcuts
 pkgver=3.14.29
 pkgrel=1
-pkgdesc='SteamOS session compositing window manager patched to forward shortcuts'
+pkgdesc='SteamOS session compositing window manager patched to allow accessing Performance Overlay from within games'
 arch=(x86_64)
 url=https://github.com/ValveSoftware/gamescope
 license=(
