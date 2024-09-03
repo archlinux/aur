@@ -4,7 +4,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ssl
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="OCaml SSL Library"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="https://github.com/savonet/ocaml-ssl"
 license=('custom')
 depends=('ocaml' 'openssl')
 makedepends=('bubblewrap' 'dune' 'ocaml-findlib')
-source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 options=(!libtool !strip zipman !makeflags staticlibs)
 
 build() {
@@ -30,4 +30,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('ae0523dfabf919b060925980aad2bf33043f5000aa4fc4dd2dca4f21721395a9')
+sha256sums=('efc12652cee0dc3e5abf1cba7c87cb5e55dc919c8f4093882a7a6a53ad1efaad')
