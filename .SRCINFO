@@ -1,10 +1,10 @@
 pkgbase = linphone-desktop
 	pkgdesc = A free VoIP and video softphone based on the SIP protocol
-	pkgver = 5.2.4
+	pkgver = 5.2.6
 	pkgrel = 1
 	url = http://linphone.org
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-only
 	makedepends = meson
 	makedepends = coreutils
 	makedepends = git
@@ -32,10 +32,116 @@ pkgbase = linphone-desktop
 	depends = libxcrypt-compat
 	depends = v4l-utils
 	depends = glew
-	provides = linphone=5.2.4
-	source = git+https://github.com/BelledonneCommunications/linphone-desktop.git#commit=d69e033508265f756fb47b39b76b7d589be159c0
+	provides = linphone=5.2.6
+	source = git+https://github.com/BelledonneCommunications/linphone-desktop.git#commit=ea583b001a87dd18384ec7bb524ffbdadacd96c8
 	source = linphone.png::https://gitlab.linphone.org/BC/public/linphone-desktop/-/raw/8dfd384e3df08b200c8eb382b740da6839961bf0/linphone-app/assets/icons/hicolor/128x128/apps/icon.png
+	source = git+https://gitlab.linphone.org/BC/public/linphone-sdk.git#commit=865f9ecb1edeae93730c7d7a415812c4b1b7df51
+	source = git+https://gitlab.linphone.org/BC/public/belle-sip.git#commit=73bbda596f9a5795b9e97627ec0dbcc7cddaea80
+	source = git+https://gitlab.linphone.org/BC/public/liblinphone.git#commit=7dc8804d6c98d1d1fc956efa16538b5b6fa07b5c
+	source = git+https://gitlab.linphone.org/BC/public/bcg729.git#commit=8bec1e5fc072f3669e435edd137eb3da6da2eef7
+	source = git+https://gitlab.linphone.org/BC/public/bzrtp.git#commit=352cd640edad006c5c6ed8e6afb8e22de5a9b9b6
+	source = git+https://gitlab.linphone.org/BC/public/msamr.git#commit=129fc98c04a5cd412d5393427d43b0b445263ead
+	source = git+https://gitlab.linphone.org/BC/public/msopenh264.git#commit=041b07a81f88f1dde2ebb7a1ea0b0e2ec281ab20
+	source = git+https://gitlab.linphone.org/BC/public/mssilk.git#commit=0c6893fb74ecca34cb2707f7fffd0d7487b24925
+	source = git+https://gitlab.linphone.org/BC/public/mswebrtc.git#commit=9615e3eb8e3b2717b71a082b4e751f98c34d3f07
+	source = git+https://gitlab.linphone.org/BC/public/external/webrtc.git#commit=583acd27665cfadef8ab03eb85a768d308bd29dd
+	source = git+https://gitlab.linphone.org/BC/public/belcard.git#commit=135e55d092cae59e7c8c1dc93227a175cde4b44b
+	source = git+https://gitlab.linphone.org/BC/public/belr.git#commit=9cbc933472b93a795e9fb0424e365823363bb72b
+	source = git+https://gitlab.linphone.org/BC/public/bctoolbox.git#commit=1e96e288ca0aca082e1aef3d6798ddf4a3bdc8c0
+	source = git+https://gitlab.linphone.org/BC/public/bcunit.git#commit=8c33f788e9b13c379d3a6ae66c7971bb952f773b
+	source = git+https://gitlab.linphone.org/BC/public/ortp.git#commit=71f18a1753b4fae0d02c37a1ecb68f812d94c769
+	source = git+https://gitlab.linphone.org/BC/public/mediastreamer2.git#commit=08ab6ddbb85d66079b4b81cd61def78a58e90f3e
+	source = git+https://gitlab.linphone.org/BC/public/mswasapi.git#commit=f584ef3ecf5b837de6db04f7eb4e50eb47d475d6
+	source = git+https://gitlab.linphone.org/BC/public/bcmatroska2.git#commit=40b2b14993b92980af1339145de3203432f036e5
+	source = git+https://gitlab.linphone.org/BC/public/external/mbedtls.git
+	source = git+https://gitlab.linphone.org/BC/public/external/bv16-floatingpoint.git
+	source = git+https://gitlab.linphone.org/BC/public/external/speex.git
+	source = git+https://gitlab.linphone.org/BC/public/external/ffmpeg.git
+	source = git+https://gitlab.linphone.org/BC/public/external/libvpx.git
+	source = git+https://gitlab.linphone.org/BC/public/external/opus.git
+	source = git+https://gitlab.linphone.org/BC/public/external/gsm.git
+	source = git+https://gitlab.linphone.org/BC/public/external/srtp.git
+	source = git+https://gitlab.linphone.org/BC/public/external/libxml2.git
+	source = git+https://gitlab.linphone.org/BC/public/external/zlib.git
+	source = git+https://gitlab.linphone.org/BC/public/external/openh264.git
+	source = git+https://gitlab.linphone.org/BC/public/external/libjpeg-turbo.git
+	source = git+https://gitlab.linphone.org/BC/public/external/xerces-c.git
+	source = git+https://gitlab.linphone.org/BC/public/external/soci.git
+	source = git+https://gitlab.linphone.org/BC/public/external/sqlite3.git
+	source = git+https://gitlab.linphone.org/BC/public/external/codec2.git
+	source = git+https://gitlab.linphone.org/BC/public/mscodec2.git#commit=4a0298386c50d59b86c64277e7d5bf53dc9f0bd3
+	source = git+https://gitlab.linphone.org/BC/public/external/decaf.git
+	source = git+https://gitlab.linphone.org/BC/public/external/zxing-cpp.git
+	source = git+https://gitlab.linphone.org/BC/public/external/vo-amrwbenc.git
+	source = git+https://gitlab.linphone.org/BC/public/external/opencore-amr.git
+	source = git+https://gitlab.linphone.org/BC/public/lime.git#commit=c1a310c8776183a853b9a0eb8f2bd08535447694
+	source = git+https://gitlab.linphone.org/BC/public/msaaudio.git#commit=b11b661b4138aecb06585bb276acf59fbed73458
+	source = git+https://gitlab.linphone.org/BC/public/msandroidcamera2.git#commit=465e15fd814dc16111fe5c603b56460a5426acbc
+	source = git+https://gitlab.linphone.org/BC/public/external/openldap.git
+	source = git+https://gitlab.linphone.org/BC/public/external/jsoncpp.git
+	source = git+https://gitlab.linphone.org/BC/public/msoboe.git#commit=4d5b66202a8a7a734e75446d0ce44bf342835736
+	source = git+https://github.com/google/oboe#commit=5975ab04b02861dc126f3c8fd687321520cd8ae4
+	source = git+https://gitlab.linphone.org/BC/public/external/libyuv.git
+	source = git+https://gitlab.linphone.org/BC/public/external/liboqs.git
+	source = git+https://gitlab.linphone.org/BC/public/postquantumcryptoengine.git#commit=e441d9ac0290b35f2ba816d9e85bf176cbcf96a8
+	source = git+https://gitlab.linphone.org/BC/public/external/dav1d.git
+	source = git+https://gitlab.linphone.org/BC/public/external/aom.git
+	source = git+https://gitlab.linphone.org/BC/public/external/qtkeychain.git
+	source = git+https://gitlab.linphone.org/BC/public/external/ispell.git
 	sha512sums = SKIP
 	sha512sums = d6495cdc022b1e4c92b3641cb70347e7e6b6ef47599004de729e908b4876a12540713ab54b588611c99c8025fb9b33e3392573c85c13f72cdaee8bcf7a73d65d
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = linphone-desktop
