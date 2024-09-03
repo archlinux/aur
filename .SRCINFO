@@ -1,0 +1,20 @@
+pkgbase = phcc-git
+	pkgdesc = A Portable HolyC Compiler
+	pkgver = r29.578b4ea
+	pkgrel = 1
+	url = https://github.com/mrunix00/PHCC
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = unity-test
+	depends = flex
+	depends = glibc
+	provides = phcc
+	conflicts = phcc
+	source = PHCC::git+https://github.com/mrunix00/PHCC.git
+	source = phcc_fix_meson_build.patch
+	sha256sums = SKIP
+	sha256sums = 1300ffc1b4179343beba906f72d5de67375487afb387af07bede93c13165fe3b
+
+pkgname = phcc-git
