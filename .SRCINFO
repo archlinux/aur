@@ -1,7 +1,7 @@
 pkgbase = ruby-docker-api
 	pkgdesc = A simple REST client for the Docker Remote API.
 	pkgver = 2.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/upserve/docker-api
 	arch = any
 	license = MIT
@@ -9,9 +9,8 @@ pkgbase = ruby-docker-api
 	depends = ruby
 	depends = ruby-excon
 	depends = ruby-multi_json
-	noextract = docker-api-2.3.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/docker-api-2.3.0.gem
-	sha256sums = 228b53b88e4811fe182c158100730409b468a27ec220ebd0d61e18b218a07e75
+	source = https://github.com/upserve/docker-api/archive/refs/tags/v2.3.0.tar.gz
+	sha256sums = 639e2253edb405f9a94b40b4aa10d4c80b6780d02502ec92196c689e36118a41
 
 pkgname = ruby-docker-api
