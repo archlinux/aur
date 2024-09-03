@@ -7,6 +7,8 @@ pkgdesc="Compression library implementing the deflate compression method found i
 arch=('x86_64')
 license=('Zlib')
 depends=(mingw-w64-gcc)
+provides=("mingw-w64-$arch-zlib=$pkgver")
+conflicts=('mingw-w64-zlib')
 url="https://zlib.net/"
 source=("https://zlib.net/zlib-$pkgver.tar.gz")
 options=(!strip !buildflags staticlibs)
