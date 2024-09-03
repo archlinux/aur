@@ -1,0 +1,4 @@
+[floorp-bin]
+source = "git"
+git = "https://github.com/Floorp-Projects/Floorp"
+prefix = "v"
