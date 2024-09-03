@@ -3,10 +3,10 @@
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn-beta
 _pkgver=2024.5
-_channel=beta
+_channel=stable
 _rel=1
-pkgver=${_pkgver}.${_channel}${_rel}  # beta
-#pkgver=${_pkgver}.${_channel}  # stable
+#pkgver=${_pkgver}.${_channel}${_rel}  # beta
+pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
@@ -19,21 +19,21 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
 _ab_commit=b0c37cecd9b671d2480a7dc9636da93d76e2b14c
-_wg_commit=f4bc3aefeb6c6ae50567a4bfc177593337eb9cba
+_wg_commit=de174ac6de2934dc82d9b8301c17de87cbd575f3
 _mn_commit=b06094e81701782d28cd2312f58e0654109d04ce
 source=(
-  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
-#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}"  # stable
+#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
+  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}"  # stable
   "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_ab_commit}?signed"
-  "git+https://github.com/mullvad/wireguard-go.git#commit=${_wg_commit}"
+  "git+https://github.com/mullvad/wireguard-go.git#commit=${_wg_commit}?signed"
   "git+https://github.com/mullvad/maybenot.git#commit=#commit=${_mn_commit}"
   'no-rpm.diff'
   'no-publish.diff'
   "${pkgname%-beta}.sh"
 )
-sha256sums=('ad3e215144c59ba9210f8d33ca1ae23f94a2787588f8d1aed3f6f3ba5419cddc'
+sha256sums=('ff4e411afde87d3f156de5085a2b17dff04fa109a015db2347a7632f3f652d1a'
             '3e4b6d2f867809a02b286a5614f17a42d037a41a6c6247dbf51051a305242291'
-            '6273c817e7312eac192be50ad5b00d7053b12cd36afc18b65123969160101454'
+            '754e618ff2dbe9dfcb36f5492bcef9ffd180a45b5fde12969e433e42eb72b37a'
             '905d2c0b697cb594babdf4e84066f3bdf666ab5d889642b002a1390f52fc7cf8'
             'ea35edffea2cbbb05586abce19581fdd9f133801ed47e6af30fa64a29c5cf116'
             '968967efff8e9588f15c382825b609cf89d54c47e0632e92e9ef2354aa46f31b'
