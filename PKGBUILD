@@ -2,7 +2,7 @@
 
 pkgname=infnoise-openssl-git
 pkgver=r22.d161bfd
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenSSL Engine for random number generation using the Infnoise hardware TRNG"
 arch=('x86_64')
 url="https://github.com/tinskip/infnoise-openssl"
@@ -19,8 +19,8 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    make CFLAGS="-fPIC -Wall -Wextra -O2 -I/usr/include/libftdi1 -I/usr/include" \
-         LDFLAGS="-shared -lcrypto -linfnoise -L/usr/lib" 
+    make CFLAGS="${CFLAGS} -fPIC -Wall -Wextra -O2 -I/usr/include/libftdi1 -I/usr/include" \
+         LDFLAGS="${LDFLAGS} -shared -lcrypto -linfnoise -L/usr/lib" 
 }
 
 package() {
