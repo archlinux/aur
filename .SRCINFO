@@ -1,6 +1,6 @@
 pkgbase = pbfetch-git
 	pkgdesc = An unbelievably customizable hardware/software fetch
-	pkgver = r216.a959519
+	pkgver = r314.74ad06c
 	pkgrel = 1
 	url = https://github.com/pennybelle/pbfetch
 	arch = x86_64
