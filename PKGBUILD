@@ -12,8 +12,8 @@
 _pkgname="libadwaita"
 pkgbase=libadwaita-git
 pkgname=(libadwaita-git libadwaita-docs-git libadwaita-demos-git)
-pkgver=1.6.beta.r21.g6e4a4af
-pkgrel=1
+pkgver=1.6.rc.r16.g6e98d61
+pkgrel=2
 pkgdesc="Building blocks for modern adaptive GNOME applications"
 url="https://gnome.pages.gitlab.gnome.org/libadwaita"
 arch=(x86_64 i686 pentium4 aarch64 armv7h)
@@ -80,6 +80,8 @@ _pick() {
 
 package_libadwaita-git() {
   depends+=(libgtk-4.so)
+  provides=(libadwaita)
+  conflicts=(libadwaita)
   provides+=(libadwaita-1.so)
 
   meson install -C build --destdir "$pkgdir"

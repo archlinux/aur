@@ -1,7 +1,7 @@
 pkgbase = libadwaita-git
 	pkgdesc = Building blocks for modern adaptive GNOME applications
-	pkgver = 1.6.beta.r21.g6e4a4af
-	pkgrel = 1
+	pkgver = 1.6.rc.r16.g6e98d61
+	pkgrel = 2
 	url = https://gnome.pages.gitlab.gnome.org/libadwaita
 	arch = x86_64
 	arch = i686
@@ -36,7 +36,9 @@ pkgname = libadwaita-git
 	depends = gtk4-git
 	depends = pango
 	depends = libgtk-4.so
+	provides = libadwaita
 	provides = libadwaita-1.so
+	conflicts = libadwaita
 
 pkgname = libadwaita-docs-git
 	pkgdesc = Building blocks for modern adaptive GNOME applications (documentation)
