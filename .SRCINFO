@@ -8,7 +8,7 @@ pkgbase = burpsuite
 	license = custom
 	depends = java-runtime>=21
 	noextract = burpsuite-2024.8.jar
-	source = burpsuite-2024.8.jar::https://portswigger.net/burp/releases/download?product=community&version=2024.8&type=Jar
+	source = burpsuite-2024.8.jar::https://portswigger-cdn.net/burp/releases/download?product=community&version=2024.8&type=Jar
 	source = LICENSE
 	source = burpsuite.desktop
 	source = icon64.png

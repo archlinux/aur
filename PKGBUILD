@@ -15,7 +15,10 @@ depends=('java-runtime>=21')
 arch=('any')
 license=('custom')
 noextract=("${pkgname}-${pkgver}.jar")
-source=("${pkgname}-${pkgver}.jar::https://portswigger.net/burp/releases/download?product=community&version=${pkgver}&type=Jar"
+# Alternative faster source from CDN, 
+# From line 422 (might change), view-source:https://portswigger.net/burp/releases <input id="CdnBaseUrl" name="CdnBaseUrl" type="hidden" value="https://portswigger-cdn.net">
+# Fixes #1 on aur-burpsuite
+source=("${pkgname}-${pkgver}.jar::https://portswigger-cdn.net/burp/releases/download?product=community&version=${pkgver}&type=Jar"
         LICENSE
         burpsuite.desktop
         icon64.png)
