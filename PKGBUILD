@@ -8,7 +8,7 @@ pkgname=(
   "${pkgbase}"
 )
 pkgver=3.2.1.r418.20240818.1e47148
-pkgrel=1
+pkgrel=2
 pkgdesc="Browser based user interface for 'hhd' (\"Handheld Daemon\"). Latest git checkout."
 arch=(
   'any'
@@ -36,6 +36,7 @@ prepare() {
   export npm_config_cache="${srcdir}/.npm"
   export NODE_ENV="production"
 
+  printf '%s\n' '  > Downloading npm dependencies ...'
   npm ci
 
   git log > git.log
@@ -84,5 +85,5 @@ package_hhd-ui-git() {
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgbase}" git.log README.md
 
   install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgbase}" LICENSE
-  ln -svr "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE" "${pkgdir}/usr/share/doc/${_pkgname}/LICENSE"
+  ln -svr "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE" "${pkgdir}/usr/share/doc/${_pkgbase}/LICENSE"
 }
