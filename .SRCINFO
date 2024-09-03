@@ -1,6 +1,6 @@
 pkgbase = openfireapp
 	pkgdesc = Configuration utility for the OpenFIRE lightgun system.
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/TeamOpenFIRE/OpenFIRE-App
 	install = openfireapp.install
@@ -12,7 +12,7 @@ pkgbase = openfireapp
 	depends = qt5-serialport
 	depends = qt5-svg
 	depends = icu
-	source = https://github.com/TeamOpenFIRE/OpenFIRE-App/archive/refs/tags/v2.1.tar.gz
-	md5sums = b2c0a2ccb15a59823b1540943ee0226e
+	source = https://github.com/TeamOpenFIRE/OpenFIRE-App/archive/refs/tags/v2.2.tar.gz
+	md5sums = a98940df20aee352443b8616d5501a81
 
 pkgname = openfireapp
