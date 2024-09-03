@@ -4,9 +4,9 @@
 
 pkgname=ruby-excon
 _gemname="${pkgname#ruby-}"
-pkgver=0.110.0
-_commit='1970dee29bd3045962dbc7278a822bfca754e9e'
-pkgrel=1
+pkgver=0.111.0
+_commit='5d0fad8c0dc1e670235410706dcd9a30ba56e76a'
+pkgrel=2
 pkgdesc='EXtended http(s) CONnections'
 arch=('any')
 url='https://github.com/excon/excon'
