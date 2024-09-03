@@ -2,12 +2,12 @@
 # Contributor: sukanka <su975853527 at gmail dot com>
 pkgname=baidu-translate-client-bin
 _zhsname="百度翻译"
-pkgver=1.7.0
+pkgver=1.8.0
 _electronversion=11
 pkgrel=1
 pkgdesc="Baidu translate.${_zhsname}"
 arch=(
-    'aarch64'
+    'i686'
     'x86_64'
 )
 url="https://fanyi.baidu.com/"
@@ -31,10 +31,10 @@ source=(
     "LICENSE-${pkgver}.html::https://fanyi.baidu.com/static/webpage/agreement.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('77b54aa77b98df4d2c4d9746520ba3b2fef23e13aae918ee4fbdbdc5bd6ea388'
-            '2229396e7ba87154026501bcd4bff88ee565b5b72c933e48f8707b6065f1f770'
-            'ffa785eb66c6abf12217bc9dbf447c56bb15e2a1ff038da7c8c1b8e5f57ce2fb'
-            '05762c556c85a4423b28600ccbbe7b7dcdd3d1be526ef4a588a510671fa6c62a')
+sha256sums=('8945fc7c6bac6d69d7208c21afed377ad46c4051f284b6b9fe10db8d268a6970'
+            '883caab57df8960f025758fa321da15cdac180dfc3688d7ec975c142ccd0d3ad'
+            'ef6eb077ee83490ded38457163af72b73171b99d9e5540605cd6c4bc7d1ac661'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build(){
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
