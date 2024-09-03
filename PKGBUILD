@@ -19,6 +19,7 @@ _platform="x86_64-w64-mingw32"
 
 build() {
     cd "$srcdir/$_basename-$pkgver"
+    sed -ie "s,dllwrap,${_arch}-dllwrap," win32/Makefile.gcc
     ./configure --prefix=/usr/$_platform -shared -static
     make -f win32/Makefile.gcc \
         CC=${_platform}-gcc \
@@ -31,9 +32,14 @@ build() {
 
 package () {
     cd    "$srcdir/$_basename-$pkgver"
-    make  DESTDIR="$pkgdir" install
-    find  "$pkgdir/usr/$_platform" -name '*.exe' | xargs -rtL1 rm
-    find  "$pkgdir/usr/$_platform" -name '*.dll' | xargs -rtL1 $_platform-strip -x
-    find  "$pkgdir/usr/$_platform" -name '*.a' -o -name '*.dll' | xargs -rtL1 $_platform-strip -g    
-    rm -r "$pkgdir/usr/$_platform/share"  
+    install -d "$pkgdir/usr/$_platform/"{bin,include,lib}
+    install -m644 -t "$pkgdir/usr/$_platform/include" zlib.h zconf.h
+    install -m644 -t "$pkgdir/usr/$_platform/lib" libz.a libz.dll.a
+    install -m755 -t "$pkgdir/usr/$_platform/bin" zlib1.dll
+
+    install -d "$pkgdir/usr/$_platform/lib/pkgconfig"
+    sed "s,@prefix@,/usr/$_platform,;s,@exec_prefix@,\${prefix},;s,@libdir@,\${exec_prefix}/lib,;s,@sharedlibdir@,\${libdir},;s,@includedir@,\${prefix}/include,;s,@VERSION@,$pkgver," < zlib.pc.in > "$pkgdir/usr/$_platform/lib/pkgconfig/zlib.pc"
+    
+    $_platform-strip -x -g "$pkgdir/usr/$_platform/bin/"*.dll
+    $_platform-strip -g    "$pkgdir/usr/$_platform/lib/"*.a    
 }
