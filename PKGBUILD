@@ -7,11 +7,11 @@
 
 pkgname=libmodsecurity2
 _name=modsecurity
-pkgver=2.9.7
-pkgrel=4
+pkgver=2.9.8
+pkgrel=1
 pkgdesc='A cross platform web application firewall engine for Apache, IIS and Nginx, v2 branch'
 arch=('x86_64')
-url='https://github.com/SpiderLabs/ModSecurity/tree/v2/master'
+url='https://github.com/owasp-modsecurity/ModSecurity/tree/v2/master'
 license=('Apache-2.0')
 depends=(
   'apache'
@@ -29,20 +29,23 @@ depends=(
   'glibc'
   'gdbm'
 )
-makedepends=('gcc13')
+makedepends=('gcc')
 provides=('libmodsecurity' 'modsecurity')
 conflicts=("libmodsecurity")
-source=("https://github.com/SpiderLabs/ModSecurity/releases/download/v${pkgver}/${_name}-${pkgver}.tar.gz")
-sha256sums=('2a28fcfccfef21581486f98d8d5fe0397499749b8380f60ec7bb1c08478e1839')
+source=("${url}/releases/download/v${pkgver}/${_name}-v${pkgver}.tar.gz")
+sha256sums=('cd57bd37f6062dca39dc8fba8d3e8db7351c5095de1e9ce7c3aa3890bc95855f')
 
 prepare() {
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd "${srcdir}/${_name}-v${pkgver}"
   ./autogen.sh
 }
 
 build() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  export CC="gcc-13" CXX="g++-13"
+  cd "${srcdir}/${_name}-v${pkgver}"
+  # Consider errors from -Wformat-security -Wincompatible-pointer-types as warnings
+  # see https://github.com/owasp-modsecurity/ModSecurity/issues/3173
+  export CFLAGS="$CFLAGS -Wno-error=format-security -Wno-error=incompatible-pointer-types"
+  export CXXFLAGS="$CXXFLAGS -Wno-error=format-security -Wno-error=incompatible-pointer-types"
   ./configure \
     --prefix=/usr \
     --enable-standalone-module \
@@ -60,8 +63,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  export CC="gcc-13" CXX="g++-13"
+  cd "${srcdir}/${_name}-v${pkgver}"
   make DESTDIR="${pkgdir}" install
   mkdir -p "${pkgdir}/usr/lib/httpd/modules"
   cp "${pkgdir}/usr/lib/mod_security2.so" "${pkgdir}/usr/lib/httpd/modules/mod_security2.so"
