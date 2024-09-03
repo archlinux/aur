@@ -14,13 +14,13 @@
 : ${_sccache:=}
 
 pkgname=niri-git
-pkgver=0.1.7.r46.ge98d1ec
+pkgver=0.1.8.r60.g268591f
 pkgrel=1
 pkgdesc="Scrollable-tiling Wayland compositor"
 arch=(x86_64 aarch64)
 url="https://github.com/YaLTeR/${pkgname%-git}"
 license=(GPL-3.0-or-later)
-depends=(cairo glib2 libinput libpipewire libxkbcommon mesa pango pixman seatd)
+depends=(cairo glib2 libdisplay-info libinput libpipewire libxkbcommon mesa pango pixman seatd)
 makedepends=(clang rust git makepkg-git-lfs-proto)
 [[ -n ${_sccache} ]] && makedepends+=(sccache)
 optdepends=('fuzzel: application launcher similar to rofi drun mode'
