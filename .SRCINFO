@@ -1,12 +1,12 @@
 pkgbase = buddhasay
 	pkgdesc = Like Cowsay, but with a Buddha.
 	pkgver = 0.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/0x6f/buddhasay
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cargo
-	source = buddhasay-0.7.1::git+https://codeberg.org/0x6f/buddhasay/src/commit/48d9ba2af908e70a9a36149332acc3e23975a19c
+	source = buddhasay-0.7.1::git+https://codeberg.org/0x6f/buddhasay.git#tag=v{pkgver}
 	sha256sums = SKIP
 
 pkgname = buddhasay
