@@ -2,7 +2,7 @@
 
 pkgname=pororoca-bin
 _app_name=Pororoca
-pkgver=3.4.2
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Pororoca is a HTTP testing tool, inspired by Postman, but with many improvements."
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('pororoca')
 conflicts=('pororoca')
 options=(!strip)
 source=("${pkgname}-${pkgver}.deb::https://github.com/alexandrehtrb/Pororoca/releases/download/${pkgver}/${_app_name}_${pkgver}_amd64.deb")
-sha256sums=('16991046d44036e98e8c09e1667df7dc03239f680f7ceed8481cfbfaeefebd46')
+sha256sums=('63df3e0d442df6a7b80297da60040bc9a539d3ba7a12f63e7c648130e4412156')
 
 package() {
     bsdtar -O -xf *.deb data.tar.zst | bsdtar -C "${pkgdir}" -xJf -
