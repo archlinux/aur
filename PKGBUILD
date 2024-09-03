@@ -1,6 +1,6 @@
 # Maintainer: Eve Kolb <evekolb2204@gmail.com>
 pkgname=grizzly-bin
-pkgver=0.4.3
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="A utility for managing Jsonnet dashboards against the Grafana API"
 arch=('x86_64')
