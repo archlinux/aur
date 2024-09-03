@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ytdesk-git
 _pkgname="YT Desk"
-pkgver=1.2.1.r8.ga17d176
+pkgver=1.2.5.r2.g448eed1
 _electronversion=32
 _nodeversion=20
 pkgrel=1
@@ -51,18 +51,24 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
-    export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
-    touch "${srcdir}/.electron-gyp/.yarnrc"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        export npm_config_registry=https://registry.npmmirror.com
-        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+        echo 'registry "https://registry.npmmirror.com"' > "${srcdir}/.electron-gyp/.yarnrc"
+        echo 'disturl "https://registry.npmmirror.com/-/binary/node/"' >> "${srcdir}/.electron-gyp/.yarnrc"
+        echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"' >> "${srcdir}/.electron-gyp/.yarnrc"
+        echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> "${srcdir}/.electron-gyp/.yarnrc"
+        echo "cacheFolder "${srcdir}/.yarn/cache"" >> "${srcdir}/.electron-gyp/.yarnrc"
+        echo "pluginsFolder "${srcdir}/.yarn/plugins"" >> "${srcdir}/.electron-gyp/.yarnrc"
+        echo "globalFolder "${srcdir}/.yarn/global"" >> "${srcdir}/.electron-gyp/.yarnrc"
+        echo 'useHardlinks true' >> "${srcdir}/.electron-gyp/.yarnrc"
+        echo 'buildFromSource true' >> "${srcdir}/.electron-gyp/.yarnrc"
+        echo 'linkWorkspacePackages true' >> "${srcdir}/.electron-gyp/.yarnrc"
+        echo 'fetchRetries 3' >> "${srcdir}/.electron-gyp/.yarnrc"
+        echo 'fetchRetryTimeout 10000' >> "${srcdir}/.electron-gyp/.yarnrc"
     else
         echo "Your network is OK."
     fi
