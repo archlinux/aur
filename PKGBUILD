@@ -1,23 +1,23 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=dune-curvedgeometry
-_tarver=2.8
+_tarver=2.9
 _tar="${_tarver}/${pkgname}-releases-${_tarver}.tar.gz"
 pkgver=${_tarver}
 pkgrel=1
 pkgdesc="Implementation of curved dune geometries by lagrange parametrization"
-arch=('x86_64')
+arch=(x86_64)
 url="https://dune-project.org/modules/${pkgname}"
 license=('LGPL3' 'custom:GPL2 with runtime exception')
-groups=('dune-iwr')
-depends=('dune-geometry>=2.8.0')
-makedepends=('doxygen' 'graphviz')
+groups=(dune-iwr)
+depends=('dune-geometry>=2.9.0')
+makedepends=(doxygen graphviz)
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software'
   'dune-localfunctions: for Lagrange local finite elements'
   'dune-grid: for create YaspGrid mesh'
   'dune-vtk: for write VTK files')
 source=(https://gitlab.com/iwr/${pkgname}/-/archive/releases/${_tar})
-sha512sums=('ea3aff59674d90bba0240eafe8a099b16bbcd35113821aced3d7ddd2d9343a2c3dd74e2567da7af497c6fed61ada8407b00dde2c65078f23d40e76c239a58ff1')
+sha512sums=('0702b2d5665c207cacb56c0b1f538e945e4ceccf4f270603eea5c296192f04b37a4ec1d4c14668a07977c5bf34c93c2b56cc34781a6a2c2a1db4b155f7802d74')
 
 build() {
   cmake \
