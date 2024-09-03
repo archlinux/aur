@@ -5,7 +5,7 @@
 
 
 pkgname=minetest-game-cdb
-pkgver=20240815
+pkgver=20240901
 pkgrel=1
 pkgdesc='Latest version of “Minetest Game” from the Minetest Content Database, but installed system-wide as a regular Arch package.'
 
