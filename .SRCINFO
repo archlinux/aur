@@ -1,7 +1,7 @@
 pkgbase = ollama-nogpu-git
 	pkgdesc = Create, run and share large language models (LLMs). Package(s) without dedicated GPU offloading (no CUDA, no ROCm, no SYCL).
 	pkgver = 0.3.9+5.r3417.20240902.ad3eb00b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jmorganca/ollama
 	arch = armv7h
 	arch = aarch64

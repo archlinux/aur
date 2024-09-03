@@ -42,7 +42,7 @@ if "${_build_vulkan}"; then
 fi
 pkgdesc='Create, run and share large language models (LLMs). Package(s) without dedicated GPU offloading (no CUDA, no ROCm, no SYCL).'
 pkgver=0.3.9+5.r3417.20240902.ad3eb00b
-pkgrel=1
+pkgrel=2
 arch=(
   'armv7h'
   'aarch64'
@@ -165,7 +165,7 @@ prepare() {
   sed -i "s|could not connect to ollama server, run 'ollama serve' to start it|ollama is not running, try 'systemctl start ollama' or 'ollama serve'|g" cmd/cmd.go
 
   printf '%s\n' "   > Downloading go dependencies ..."
-  go get
+  go mod download
 
   for _variant in "${pkgname[@]}"; do
     _variant="${_variant%-git}"
