@@ -44,13 +44,18 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  stack config set resolver lts-22.22 # ghc-9.6.5
+  stack config set resolver lts-23.1 # ghc-9.8.4
 
-  _bumpVer aeson 2.2.2.0
-  _bumpVer character-ps 0.1
-  _bumpVer parsec 3.1.17.0
-  _bumpVer text 2.1.1
-  _bumpVer text-iso8601 0.1.1
+  _bumpVer directory 1.3.9.0
+  _bumpVer filepath  1.5.4.0
+  _bumpVer process   1.6.25.0
+  _bumpVer unix      2.8.6.0
+
+  yq -i --yaml-output \
+      '(.flags |
+        (.unix, .directory, ."file-io") |
+        ."os-string")
+        = true' stack.yaml
 
   # enable tests
   yq -i --yaml-output \
