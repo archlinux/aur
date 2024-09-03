@@ -2,7 +2,7 @@
 # Contributor: Tim Schumacher <timschumi@gmx.de>
 
 pkgname=epk2extract-git
-pkgver=r672
+pkgver=r674
 pkgrel=1
 pkgdesc="Extraction tool for LG, Hisense, Sharp, Philips/TPV, Thompson and similar TVs/Embedded Devices."
 url='https://github.com/openlgtv/epk2extract'
