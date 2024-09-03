@@ -1,7 +1,7 @@
 pkgbase = audiobookshelf
 	pkgdesc = Self-hosted audiobook server for managing and playing audiobooks
 	pkgver = v2.13.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/advplyr/audiobookshelf
 	arch = x86_64
 	license = GPL-3.0-only
@@ -18,11 +18,11 @@ pkgbase = audiobookshelf
 	source = audiobookshelf.service
 	source = audiobookshelf.sysusers
 	source = audiobookshelf.tmpfiles
-	md5sums = 5d3442133959384888d7fc7b28773876
-	md5sums = d02fc1fc9aa5ba5f744a84180a1ed527
-	md5sums = 3c4d1ab715f9221cb625b8248e3023df
-	md5sums = 7331c1ddab80eb373ee92d2c1284d0ef
-	md5sums = f8a4833710760dd16a89906052dff322
-	md5sums = b741beeaf0fc232734c9d20ee5b988aa
+	sha256sums = 0cda40f3bb6b1bab536d4e06bee811e7dae078b8a7e9786e923fd4951528a98f
+	sha256sums = 839c778b8ae951d82a602d370452d702ad9b1d8ab6844984c934a3d2af0b710a
+	sha256sums = 91d00bbc9800f80cde439fd9b5343cf031b6a09557f03172c92d40f2f0775c2b
+	sha256sums = 4f37d8e407eda555231dc23d1cd35d329075ae6686acbb89d0b4612a824d594d
+	sha256sums = cd5db44865de6f7401093b60869f937703213f196220e8c3325fa7f1b02db1fa
+	sha256sums = ec04988b13dd049fbd021a51275c92120179f74f1e71fd9141bd720633e5f99f
 
 pkgname = audiobookshelf

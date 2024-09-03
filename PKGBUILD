@@ -2,7 +2,7 @@
 # Based on PKGBUILD by Kevin S <aur@eldenring.mozmail.com>
 pkgname=audiobookshelf
 pkgver=v2.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Self-hosted audiobook server for managing and playing audiobooks"
 arch=('x86_64')
 url="https://github.com/advplyr/audiobookshelf"
@@ -21,14 +21,14 @@ source=(
 	'audiobookshelf.tmpfiles'
 )
 
-md5sums=('5d3442133959384888d7fc7b28773876'
-         'd02fc1fc9aa5ba5f744a84180a1ed527'
-         '3c4d1ab715f9221cb625b8248e3023df'
-         '7331c1ddab80eb373ee92d2c1284d0ef'
-         'f8a4833710760dd16a89906052dff322'
-         'b741beeaf0fc232734c9d20ee5b988aa')
+sha256sums=('0cda40f3bb6b1bab536d4e06bee811e7dae078b8a7e9786e923fd4951528a98f'
+            '839c778b8ae951d82a602d370452d702ad9b1d8ab6844984c934a3d2af0b710a'
+            '91d00bbc9800f80cde439fd9b5343cf031b6a09557f03172c92d40f2f0775c2b'
+            '4f37d8e407eda555231dc23d1cd35d329075ae6686acbb89d0b4612a824d594d'
+            'cd5db44865de6f7401093b60869f937703213f196220e8c3325fa7f1b02db1fa'
+            'ec04988b13dd049fbd021a51275c92120179f74f1e71fd9141bd720633e5f99f')
 
-prepare() {    
+prepare() {
 	cd "${srcdir}/${pkgname}"
 	# install build dependencies
 	npm install @yao-pkg/pkg
