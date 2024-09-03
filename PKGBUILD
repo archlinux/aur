@@ -33,9 +33,7 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S ${pkgname%-git} \
-    -DQT_MAJOR_VERSION=6 \
-    -DBUILD_TESTING=OFF
+  cmake -B build -S ${pkgname%-git}
   cmake --build build
 }
 
