@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-websockets
-_basever=5.15.14
+_basever=5.15.15
 pkgver=5.15.14+kde+r2
 pkgrel=1
-_commit=dbbdc64b804f7c4d0ed92198aaab49b07fa15e7f
+_commit=0231c7c3a17c0320601e7766e7e701db5b9eb0dc
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -16,7 +16,7 @@ optdepends=('qt5-declarative: QML bindings')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('b288e89bb745b7fb56749c5cff9036fdb6c24deceebffe912a1887d1a2035251')
+sha256sums=('76aaa9a65c145f38bd009051b81936f82b08f30c2af4f95654bbf12100136a4b')
 
 pkgver() {
   cd kde-$_pkgfqn
