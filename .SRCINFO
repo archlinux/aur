@@ -1,4 +1,4 @@
-pkgbase = wps-office-2023-bin
+pkgbase = wps-office-2023
 	pkgdesc = Kingsoft Office (WPS Office) CN version - an office productivity suite
 	pkgver = 12.1.0.17881
 	pkgrel = 1
@@ -8,11 +8,11 @@ pkgbase = wps-office-2023-bin
 	options = !emptydirs
 	source = fix-wps-python-parse.patch
 	sha1sums = f3713481edf04ffb08be8d24dce66554dd5a4f13
-	source_x86_64 = wps-office_12.1.0.17881_amd64.deb::https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/17881/wps-office_12.1.0.17881_amd64.deb?t=1725330413&k=1c16c2ad83d38f6621c88a6ab8912f96
+	source_x86_64 = wps-office_12.1.0.17881_amd64.deb::https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/17881/wps-office_12.1.0.17881_amd64.deb?t=1725332013&k=d08a804344613832341523ed541b3732
 	sha1sums_x86_64 = ef71d43eaa06a6ffbad4f6307499b80f25478d42
 
-pkgname = wps-office-cn
-	install = wps-office-cn.install
+pkgname = wps-office-2023
+	install = wps-office-2023.install
 	depends = fontconfig
 	depends = xorg-mkfontscale
 	depends = libxrender
@@ -42,13 +42,13 @@ pkgname = wps-office-cn
 	conflicts = kingsoft-office
 	conflicts = wps-office
 
-pkgname = wps-office-mime-cn
+pkgname = wps-office-2023-mime
 	pkgdesc = Mime files provided by Kingsoft Office (WPS Office) cn version
 	arch = any
 	depends = shared-mime-info
 	provides = wps-office-mime
 	conflicts = wps-office-mime
 
-pkgname = wps-office-mui-zh-cn
+pkgname = wps-office-2023-mui
 	pkgdesc = Chinese (Simplified) mui package for WPS Office
 	arch = any

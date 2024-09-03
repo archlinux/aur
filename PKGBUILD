@@ -1,4 +1,4 @@
-# Maintainer: Maoyaotang1 <my at qq @ com>
+# Maintainer: Mytang1 <my at qq @ com>
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Ouyang Jun <ouyangjun1999@gmail.com>
@@ -6,8 +6,8 @@
 # Contributor: Ariel AxionL <axionl at aosc dot io>
 # Contributor: v71
 
-pkgbase=wps-office-2023-bin
-pkgname=('wps-office-cn' 'wps-office-mime-cn' 'wps-office-mui-zh-cn')
+pkgbase=wps-office-2023
+pkgname=('wps-office-2023' 'wps-office-2023-mime' 'wps-office-2023-mui')
 pkgver=12.1.0.17881
 _pkgver=17881
 pkgrel=1
@@ -57,7 +57,7 @@ prepare() {
     patch -Np1 -i "${srcdir}/fix-wps-python-parse.patch"
 }
 
-package_wps-office-cn() {
+package_wps-office-2023() {
     depends=('fontconfig' 'xorg-mkfontscale' 'libxrender' 'desktop-file-utils' 'shared-mime-info' 'xdg-utils' 'glu' 'sdl2' 'libpulse' 'hicolor-icon-theme' 'libxss' 'sqlite' 'libtool' 'libxslt' 'libjpeg-turbo')
     optdepends=('libtiff5: Provide libtiff.so.5 for wpspdf working'
                 'cups: for printing support'
@@ -105,7 +105,7 @@ package_wps-office-cn() {
     install -Dm644 -t "${pkgdir}/etc/xdg/menus/applications-merged" "${srcdir}/etc/xdg/menus/applications-merged/wps-office.menu"
 }
 
-package_wps-office-mui-zh-cn() {
+package_wps-office-2023-mui() {
     pkgdesc="Chinese (Simplified) mui package for WPS Office"
     arch=('any')
     cd "${srcdir}/opt/kingsoft/wps-office/office6/mui"
@@ -118,7 +118,7 @@ package_wps-office-mui-zh-cn() {
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" office6/mui/default/*.html
 }
 
-package_wps-office-mime-cn() {
+package_wps-office-2023-mime() {
     pkgdesc="Mime files provided by Kingsoft Office (WPS Office) cn version"
     arch=('any')
     depends=('shared-mime-info')
