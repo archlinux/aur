@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='vrf-decompiler'
 _reponame='ValveResourceFormat'
-pkgver='10.1'
+pkgver='10.2'
 pkgrel='1'
 pkgdesc="File data viewer and decompiler for Valve's Source 2 resource file format"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('dotnet-runtime>=8.0.0' 'skia-sharp')
 makedepends=('dotnet-sdk>=8.0.0' 'git')
 options=('!strip')
 source=("$pkgname-$pkgver::git+$url#tag=$pkgver?signed")
-sha512sums=('6446400e6f1a751a93851f602baf762a2ac7a92b87cabe46d0accbc6bfe3e32bdb920d94e57d5a85430fe6d9d031195b1939a980becf55ada6b6b379bf87062a')
+sha512sums=('337a9ebaf04029a9eb65760bf0feded3d3abe8402f45d42ae0b385de0253382b7bbfb19ebb780a13bae393a29a3983faad22b5b28c8b6ce3eb8fcc201e01b4c9')
 validpgpkeys=('E58081FB804DF24DF217AB772B6E7BF31D171C61') # Pavel Djundik <github@xpaw.me> (https://github.com/xPaw.gpg)
 
 _sourcedirectory="$pkgname-$pkgver"
@@ -54,7 +54,7 @@ check() {
 	# Verify that the basic functionality works
 	_checkoutput="$("./Decompiler/bin/Release/$_dotnetarch/publish/Decompiler" -i 'Tests/Files/small_map_with_material.vpk' -l)"
 	printf '%s\n' "$_checkoutput"
-	printf '%s\n' "$_checkoutput" | grep -q 'maps/ui/nametag/world.vwrld_c$'
+	printf '%s\n' "$_checkoutput" | grep -q '^maps/ui/nametag/world.vwrld_c'
 }
 
 package() {
