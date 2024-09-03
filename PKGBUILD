@@ -1,7 +1,7 @@
 # Maintainer: Álvaro Jesús Baena Rosino <alvarojsino8@gmail.com>
 pkgname='mecano'
 pkgver='0.2.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Minimalist typing train'
 arch=('x86_64')
 makedepends=('cargo')
@@ -19,4 +19,4 @@ build() {
 package() { 
    install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/mecano" "$pkgdir/usr/bin/$pkgname"
 }
-sha256sums=('6703fbc7b52acac64633f1b9aa2d52f748039c60177877f4e52af56289f4de62')
+sha256sums=('1ac28406fe45782baf46c5710250022c9ab3b319f4887a6eef1ba375eaf209ff')
