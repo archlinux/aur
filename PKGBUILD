@@ -1,13 +1,13 @@
 # Maintainer: Kimiblock Moe
 pkgname=rime-moe-pinyin-git
-pkgver=3.2.r0.gaf817b1c
+pkgver=3.4.r23.g3bcdb4ec
 pkgrel=1
 epoch=1
 pkgdesc="moeOS RIME 拼音方案"
 arch=('any')
 url="https://github.com/Kimiblock/moeOS-pinyin"
 license=('GPL-3.0-or-later')
-depends=()
+depends=("fcitx5-pinyin-moegirl-rime" "rime-pinyin-zhwiki")
 makedepends=("git")
 provides=('rime-moe-pinyin')
 conflicts=('rime-moe-pinyin')
