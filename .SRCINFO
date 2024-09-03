@@ -1,20 +1,21 @@
 pkgbase = guitar-pro
 	pkgdesc = A popular tablature editor software for guitar, bass, and many other instruments.
 	pkgver = 11686
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.guitar-pro.com
 	arch = i686
 	arch = x86_64
 	license = Proprietary
 	makedepends = binutils
 	makedepends = tar
-	depends = pulseaudio
+	depends = gksu
+	depends = pulse-native-provider
 	source = https://downloads.guitar-pro.com/gp6/gp6-full-linux-r11686.deb
 	source = https://github.com/M0Rf30/openssl098-lib32/raw/master/libcrypto.so.0.9.8
 	source = https://github.com/M0Rf30/openssl098-lib32/raw/master/libssl.so.0.9.8
-	md5sums = 3de3b59151b33965a92cd4f51162aeee
-	md5sums = 3336a9a1296e78cc5645f99dfa42f1e4
-	md5sums = fa66495bce4ec55def25c49fb188065e
+	sha256sums = 7bd3cbb256063eab979b2f12ada94aa139154cde093c08ced704d0652138140c
+	sha256sums = d70aad518d437c12fee4d7d3087e9404f4eabad3dd8f170bfdb63e1c34c4c927
+	sha256sums = 49d9767408ea777ae3d9814c01d3906049ac5ca5d828828ad3add6e1a49f5515
 	depends_i686 = freetype2
 	depends_i686 = glib2
 	depends_i686 = libgl
@@ -38,4 +39,3 @@ pkgbase = guitar-pro
 	depends_x86_64 = lib32-zlib
 
 pkgname = guitar-pro
-

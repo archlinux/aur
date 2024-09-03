@@ -6,19 +6,19 @@
 
 pkgname=guitar-pro
 pkgver=11686
-pkgrel=6
+pkgrel=7
 pkgdesc="A popular tablature editor software for guitar, bass, and many other instruments."
 url="http://www.guitar-pro.com"
 arch=('i686' 'x86_64')
 license=('Proprietary')
-depends=('pulseaudio')
+depends=('gksu' 'pulse-native-provider')
 depends_x86_64=('lib32-freetype2' 'lib32-fontconfig' 'lib32-glib2' 'lib32-libgl' 'lib32-libpng12' 'lib32-libpulse' 'lib32-libxml2' 'lib32-libxrender' 'lib32-libxslt' 'lib32-portaudio' 'lib32-zlib')
 depends_i686=('freetype2' 'glib2' 'libgl' 'libpng12' 'libpulse' 'libxml2' 'libxrender' 'libxslt' 'portaudio' 'zlib')
 makedepends=('binutils' 'tar')
 
 source=("https://downloads.guitar-pro.com/gp6/gp6-full-linux-r$pkgver.deb"
 	"https://github.com/M0Rf30/openssl098-lib32/raw/master/libcrypto.so.0.9.8"
-"https://github.com/M0Rf30/openssl098-lib32/raw/master/libssl.so.0.9.8")
+	"https://github.com/M0Rf30/openssl098-lib32/raw/master/libssl.so.0.9.8")
 
 build() {
 	cd "$srcdir"
@@ -35,9 +35,9 @@ package() {
 	install -m755 -D libssl.so.0.9.8 $pkgdir/opt/GuitarPro6
 	sed -i 's|Icon=guitarpro6.png|Icon=GP6-icon|g' $pkgdir/usr/share/applications/GuitarPro6.desktop
 	mv $pkgdir/usr/share/pixmaps/guitarpro6.png $pkgdir/usr/share/pixmaps/GP6-icon.png
-	echo "StartupWMClass=GuitarPro" >> $pkgdir/usr/share/applications/GuitarPro6.desktop
+	echo "StartupWMClass=GuitarPro" >>$pkgdir/usr/share/applications/GuitarPro6.desktop
 }
 
-md5sums=('3de3b59151b33965a92cd4f51162aeee'
-	'3336a9a1296e78cc5645f99dfa42f1e4'
-'fa66495bce4ec55def25c49fb188065e')
+sha256sums=('7bd3cbb256063eab979b2f12ada94aa139154cde093c08ced704d0652138140c'
+	'd70aad518d437c12fee4d7d3087e9404f4eabad3dd8f170bfdb63e1c34c4c927'
+	'49d9767408ea777ae3d9814c01d3906049ac5ca5d828828ad3add6e1a49f5515')
