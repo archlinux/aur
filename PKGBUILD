@@ -12,8 +12,8 @@ _devenv=false
 
 _generic_release=false
 
-# hack taken from wine-tkg PKGBUILD, real pkgrel is the eval one
-pkgver=9.16.w31.s8999a04
+## hack taken from wine-tkg PKGBUILD, real pkgrel is the eval one
+pkgver=9.16.w153.sdeb7042
 pkgrel=1
 eval pkgrel=1
 
@@ -35,7 +35,7 @@ _enabled_staging=()
 _disabled_staging=()
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="08-27-2024-b01131ce-8999a04f"
+_patchbase_tag="09-03-6a939654-deb70423"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the custompatches folder
@@ -45,8 +45,8 @@ _custompatches=false
 
 ## (with custompatches) uses wine/staging master if empty, uses given commit or tag if set
 ## (without custompatches) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=b01131ce82ad8306d719f9919e6249af2db5322d
-_desired_staging_commit=8999a04fd671df12d7e3c9447d45d681a5f9b35f
+_desired_wine_commit=6a9396549e946cdd924cb1211ccb3d8330267c7e
+_desired_staging_commit=deb7042324ec6b4fcf7e6c4cef9e39baf3a28216
 
 ## (with custompatches) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -55,7 +55,7 @@ _use_staging_upstream=false
 _wine_git="https://gitlab.winehq.org/wine/wine.git"
 _staging_git="https://github.com/wine-staging/wine-staging.git"
 
-## install static .a libraries (recommend using standard wine for this instead)
+## install static .a libraries (recommend using standard wine for these instead)
 _install_static=false
 
 ## removes src, pkg folders on exit (both failure and success)
@@ -100,7 +100,7 @@ if [ "$_wow64build" = "true" ]; then pkgdesc+=" (WoW64 version)"; fi
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 
-install=wine.install
+install=wine"${_wowname}".install
 url="http://www.winehq.com"
 arch=(x86_64)
 license=(LGPL)
@@ -120,7 +120,7 @@ source=(
 )
 
 sha512sums=(
-  'dc115ccc8d64afc213d2860a2f3516c31aa2891cd1005498123d86e7e44e0fcf876fbc68c89b201ce5291a12127cb7ff478e9374dbd2512b5d094802780be160'
+  '3d69a588ef32376fe720faca540977ffa4659ef69d6c2321f1f50885cd44da85b0cd4676f5ddcc0af821724597d766bed8b7d280c0edb757eb4b3f939af906d3'
   '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
   'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
   '59920a54e9bd8d1f73c15675f7df29829680b59f4d1c4fc74fe710e4b596fd6a96f3b43994eb5da0fd1e50299b0ada933c6f3796e1d0698febb7870995f7f266'
@@ -135,7 +135,7 @@ noextract=()
 ## don't needlessly add the wine-osu-patches repo if we explicitly specify custom ones
 if ! { [ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ] ; }; then
   source+=("git+https://github.com/whrvt/wine-osu-patches.git#tag=${_patchbase_tag}")
-  sha512sums+=('SKIP')
+  sha512sums+=('f31437d0a49f81ecfd4c06cfd16b0c3acf6057c17b4c437061e5ba5baddc8ea13087c951d2fb33a0f6779039ae50d42307d4f8aa56c8462529c3b4327aab01bb')
 
   ## didn't have a custompatches dir
   _custompatches=
@@ -180,9 +180,6 @@ makedepends=(autoconf bison ccache perl fontforge flex
   opencl-icd-loader
   libxslt
   sdl2
-  libcups
-  libgphoto2
-  sane
   gsm
   vulkan-headers
   samba
@@ -211,24 +208,13 @@ optdepends=(
   libxslt
   vkd3d
   sdl2
-  libgphoto2
-  sane
   gsm
-  cups
   samba dosbox
 )
 
-pkgver() {
-  _pkgver=$(git -C "${srcdir}"/"${pkgname}" describe --tags --abbrev=0 | cut -f2 -d'-')
-  _whash=$(git -C "${srcdir}"/"${pkgname}" rev-list --count --cherry-pick wine-"${_pkgver}"...HEAD)
-  _shash=${_desired_staging_commit:0:7}
-
-  printf '%s%s%s' "${_pkgver:?}" ".w${_whash:?}" "$(if [ "${_apply_staging}" != "false" ]; then echo -n ".s${_shash:?}"; fi)"
-}
-
 if [ "${_wow64build}" != "true" ]; then
   depends+=(lib32-libxkbcommon libvulkan.so=1-32 lib32-gnutls lib32-libxcomposite lib32-libpulse lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
-  makedepends+=(lib32-wayland lib32-gtk3 lib32-attr lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-lib lib32-gst-plugins-base-libs lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2 lib32-libcups)
+  makedepends+=(lib32-wayland lib32-gtk3 lib32-attr lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-lib lib32-gst-plugins-base-libs lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2)
   optdepends+=(lib32-libxinerama lib32-giflib lib32-libpng lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
   if [ "${_use_clang}" = "true" ] || [ "${_use_mingw}" = "llvm" ]; then makedepends+=(lib32-llvm-libs); fi
 fi
@@ -298,11 +284,19 @@ fi
 
 makedepends=("${makedepends[@]}" "${depends[@]}")
 
-# exported at the start of every function
+pkgver() {
+  _pkgver=$(git -C "${srcdir}"/"${pkgname}" describe --tags --abbrev=0 | cut -f2 -d'-')
+  _whash=$(git -C "${srcdir}"/"${pkgname}" rev-list --count --cherry-pick wine-"${_pkgver}"...HEAD)
+  _shash=${_desired_staging_commit:0:7}
+
+  printf '%s%s%s' "${_pkgver:?}" ".w${_whash:?}" "$(if [ "${_apply_staging}" != "false" ]; then echo -n ".s${_shash:?}"; fi)"
+}
+
+## exported at the start of every function
 _set_vars() {
   export build64dir="${_where}/src/${pkgname}-64-build"
   export build32dir="${_where}/src/${pkgname}-32-build"
-  
+
   export PATH="${_cross_path}"
 
   #_OPTIMIZE_HARDER_FLAGS="-fipa-pta -fgcse-sm -fgcse-las -fira-loop-pressure" # -fsched-pressure -fsched-spec-load
@@ -356,7 +350,7 @@ _set_vars32() {
   fi
   export PKG_CONFIG_PATH="$PKG_CONFIG_LIBDIR" PKG_CONFIG_LIBDIR
 
-  # lib32 fsync doesn't compile with clang due to undefined atomic ops otherwise (ntdll.so)
+  ## lib32 fsync doesn't compile with clang due to undefined atomic ops otherwise (ntdll.so)
   if [ "${_use_clang}" = "true" ]; then export I386_LIBS="-latomic"; fi
 
   _common_64_cflags=""
@@ -366,14 +360,13 @@ _set_vars32() {
   export CROSSCC="${i386_CC}"
 }
 
-### ccache configuration (taken from https://raw.githubusercontent.com/openglfreak/wine-tkg-userpatches/next/config/ccache.cfg)
+## ccache configuration (taken from https://raw.githubusercontent.com/openglfreak/wine-tkg-userpatches/next/config/ccache.cfg)
 _prep_ccache() {
-  _compilerhash="$(md5sum "$(command -v "${_cc}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross64}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross32}")" | cut -d ' ' -f 1)"
-  export _compilerwithflagshash="$(sha512sum - < <(printf '%s' "${CFLAGS}${LDFLAGS}${CROSSCFLAGS}${CROSSLDFLAGS}${_compilerhash}") | cut -d ' ' -f 1)"
+  export _compilerhash="$(md5sum "$(command -v "${_cc}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross64}")" | cut -d ' ' -f 1),$(md5sum "$(command -v "${_cross32}")" | cut -d ' ' -f 1)"
 
   export CCACHE_DIR="${XDG_CACHE_HOME:-${HOME}/.cache}/ccache/wine"
   mkdir -p "${CCACHE_DIR}"
-  export CCACHE_COMPILERCHECK="string:${_compilerwithflagshash}" \
+  export CCACHE_COMPILERCHECK="string:${_compilerhash}" \
          CCACHE_BASEDIR="${srcdir}"
   ccache --set-config=compression=true \
          --set-config=compression_level=1 \
@@ -455,12 +448,11 @@ prepare() { _set_vars;
   touch "${_where}"/patchlog.txt || _failure
   printf "Wine commit: %s\nStaging commit: %s\n" "${_patchbase_wine_commit}" "${_patchbase_staging_commit}" > "${_where}"/patchlog.txt
 
-  ## Apply wine-staging patchset
   if [ -f "${srcdir}"/wine-staging/patches/patchinstall.sh ]; then
-		staging_patcher="${srcdir}"/wine-staging/patches/patchinstall.sh
-	else
-		staging_patcher="${srcdir}"/wine-staging/staging/patchinstall.py
-	fi
+    staging_patcher="${srcdir}"/wine-staging/patches/patchinstall.sh
+  else
+    staging_patcher="${srcdir}"/wine-staging/staging/patchinstall.py
+  fi
 
   _enabled_staging=("${_enabled_staging[@]:-"--all"}")
 
@@ -522,8 +514,9 @@ prepare() { _set_vars;
 
   if [ "${_devenv}" = "true" ]; then
     _confcachedir="${_where}"/.confcaches
-
+    _compilerwithflagshash="$(sha512sum - < <(printf '%s' "${CFLAGS}${LDFLAGS}${CROSSCFLAGS}${CROSSLDFLAGS}${_compilerhash}") | cut -d ' ' -f 1)"
     export _confcacheprefix="${_confcachedir}"/"${pkgver%.w*}-${pkgrel}-${_compilerwithflagshash}"
+
     if [ ! -d "${_confcachedir}" ]; then
       mkdir "${_confcachedir}" || \
           _failure "Couldn't create an autoconf cache directory in ${_confcachedir}. This shouldn't have happened."
@@ -549,7 +542,7 @@ _configure32() { _set_vars32;
     "${_wine32opts[@]}" || _failure "Wine-32 configure failed; check ${build32dir}/config.log for more information"
 }
 
-# Needed for _SINGLE_MAKE build
+## Used for single-make build
 _tools64() { _set_vars64;
   cd "${build64dir}" || _failure
 
@@ -559,7 +552,7 @@ _tools64() { _set_vars64;
   # don't use lto to speed up tools compilation
   export _tools_flags="${CPPFLAGS} ${_cpu_target} -O1 -pipe -fno-lto -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -w"
   for mkfile in tools/Makefile tools/**/Makefile; do
-    "$@" -C "${mkfile%/Makefile}" -j$(($(nproc) + 1)) CFLAGS="${_tools_flags}" LDFLAGS="${_tools_flags}"
+    "$@" -C "${mkfile%/Makefile}" -j$(($(nproc) + 1)) CFLAGS="${_tools_flags}" LDFLAGS="${_tools_flags}" CROSSCFLAGS="${_tools_flags}" CROSSLDFLAGS="${_tools_flags}"
   done
   chmod -R +x "${build64dir}"/tools
 }
@@ -707,7 +700,6 @@ package() { _set_vars;
 
 _exit_cleanup() {
   if [ "$_cleanbuildfolders" = "true" ]; then
-    # Remove temporarily copied patches & other potential fluff
     msg2 "_cleanbuildfolders=true, removing src and package folders."
     rm -rf "${_where}"/{src,pkg}
   fi
