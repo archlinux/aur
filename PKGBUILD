@@ -29,10 +29,10 @@ package() {
   install -Dm755 jf-$CARCH "$pkgdir/usr/bin/jf"
   ln -rs "$pkgdir/usr/bin/jf" "$pkgdir/usr/bin/jfrog"
 
-  install -Dm644 <(jf completion bash) "$pkgdir/usr/share/bash-completion/completions/jfrog"
-  install -Dm644 <(jf completion fish) "$pkgdir/usr/share/fish/vendor_completions.d/jfrog.fish"
-  install -Dm644 <(jf completion zsh) "$pkgdir/usr/share/zsh/site-functions/_jfrog"
-  install -Dm644 <(jf completion bash) "$pkgdir/usr/share/bash-completion/completions/jf"
-  install -Dm644 <(jf completion fish) "$pkgdir/usr/share/fish/vendor_completions.d/jf.fish"
-  install -Dm644 <(jf completion zsh) "$pkgdir/usr/share/zsh/site-functions/_jf"
+  install -Dm644 <($pkgdir/usr/bin/jf completion bash) "$pkgdir/usr/share/bash-completion/completions/jfrog"
+  install -Dm644 <($pkgdir/usr/bin/jf completion fish) "$pkgdir/usr/share/fish/vendor_completions.d/jfrog.fish"
+  install -Dm644 <($pkgdir/usr/bin/jf completion zsh) "$pkgdir/usr/share/zsh/site-functions/_jfrog"
+  install -Dm644 <($pkgdir/usr/bin/jf completion bash) "$pkgdir/usr/share/bash-completion/completions/jf"
+  install -Dm644 <($pkgdir/usr/bin/jf completion fish) "$pkgdir/usr/share/fish/vendor_completions.d/jf.fish"
+  install -Dm644 <($pkgdir/usr/bin/jf completion zsh) "$pkgdir/usr/share/zsh/site-functions/_jf"
 }
