@@ -3,7 +3,7 @@
 pkgbase=ch343ser-git
 pkgname=(ch343ser-dkms-git libch343ser-git)
 pkgver=r42.05b4e1f
-pkgrel=8
+pkgrel=9
 pkgdesc="USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc."
 arch=('any')
 url="https://github.com/WCHSoftGroup/ch343ser_linux"
@@ -55,7 +55,10 @@ clean:
 install:
 	\$(MAKE) -C \$(KDIR) M=\$(CURDIR) modules_install
 
-load: -/sbin/rmmod ch343
+unload:
+	/sbin/rmmod ch343
+
+load: unload
 	/sbin/insmod ch343.ko
 
 dkms.conf: dkms.conf.in
@@ -91,7 +94,7 @@ PACKAGE_NAME="ch343ser"
 PACKAGE_VERSION="#MODULE_VERSION#"
 AUTOINSTALL="yes"
 
-MAKE[0]="make"
+MAKE="make KVER=\$kernelver"
 CLEAN="make clean"
 
 BUILT_MODULE_NAME[0]="ch343"
