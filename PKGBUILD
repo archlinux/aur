@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-webchannel
-_basever=5.15.14
+_basever=5.15.15
 pkgver=5.15.14+kde+r3
 pkgrel=1
-_commit=fca83088ef430f96257d2014e77d08bd350259af
+_commit=ad85920e02049bf7ba06366046498e8366a98e8e
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -15,7 +15,7 @@ makedepends=('git')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('2052682b73993c9a13e228eeb35c91487c549198f4687aa34e902f8eb98fae93')
+sha256sums=('f6035080afc9ca7efe5c64794f6d18ee6e5d298c4603cfecda9a652770eab265')
 
 pkgver() {
   cd kde-$_pkgfqn
