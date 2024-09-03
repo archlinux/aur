@@ -7,7 +7,7 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
 _pkgname=Notesnook
-pkgver=3.0.16
+pkgver=3.0.17
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -23,7 +23,6 @@ provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'nodejs'
 )
 makedepends=(
     'nvm'
@@ -40,9 +39,9 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}.sh"
 )
-sha256sums=('bb67c1e4be25ff8d70b7422704bdf4919aa8b78db65241719c4af2dd40e74f49'
+sha256sums=('b7328210057a83298887ef34fb5401e0d23e3d02e0c31a51ef27680de497ea18'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -57,23 +56,21 @@ build() {
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    export npm_config_build_from_source=true
-    export npm_config_cache="${srcdir}/.npm_cache"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export ELECTRONVERSION="${_electronversion}"
+    #export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        export npm_config_registry=https://registry.npmmirror.com
-        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
-        echo '[url "https://github.moeyy.xyz/https://github.com/"]' >> .gitconfig
-        echo '    insteadof = https://github.com/' >> .gitconfig
+    echo 'build_from_source=true'  >> .npmrc
+    echo "cache="${srcdir}"/.npm_cache"  >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        echo 'registry=https://registry.npmmirror.com' >> .npmrc
+        echo 'disturl=https://registry.npmmirror.com/-/binary/node/' >> .npmrc
+        echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/' >> .npmrc
+        echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/' >> .npmrc
     else
         echo "Your network is OK."
     fi
-    cd "${srcdir}/${pkgname}-${pkgver}"
     sed "s|npm \${|NODE_ENV=development npm \${|g" -i scripts/bootstrap.mjs
     # Install packages
     NODE_ENV=development    npm install --ignore-scripts --prefer-offline --no-audit
@@ -83,7 +80,7 @@ build() {
     NODE_ENV=production     npm run bootstrap -- --scope=desktop
     # Build Electron wrapper
     cd "${srcdir}/${pkgname}-${pkgver}/apps/desktop"
-    sed "s|\"asar\": false,|\"asar\": true,|g;s|\"electron\": \"^29.3.1\",|\"electron\": \"${SYSTEM_ELECTRON_VERSION}\",|g" -i package.json
+    sed "s|\"asar\": false,|\"asar\": true,|g;s|\"electron\": \"\([^\"]*\)\"|\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"|g" -i package.json
     NODE_ENV=production     npx nx run release --project @notesnook/desktop
     NODE_ENV=production     npx electron-builder -l --dir
 }
