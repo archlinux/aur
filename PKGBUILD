@@ -4,7 +4,7 @@ pkgname=xrefactory
 pkgdesc="Professional refactoring tool for C/Java and Emacs"
 url="http://xrefactory.com"
 pkgver=1.6.10
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 license=(custom)
 depends=('glibc' 'gcc')
@@ -77,8 +77,8 @@ md5sums=('63e10baa9a5dfce9165570e7c3897701'
          'ff4ac43651958f8e5f61f19858a87aa7'
          'c84a7d60425c8210c7767c3df99e6d52'
          '602734cd3b425e3fbec646eab6804aed'
-		 'e92ad6217bfa847f1ebc2aabe88bacf8'
-		 '8e5a1b177d5c74541facbfa98ff09e19')
+         'e92ad6217bfa847f1ebc2aabe88bacf8'
+         '8e5a1b177d5c74541facbfa98ff09e19')
 
 prepare() {
     cd "$srcdir/xref-any"
