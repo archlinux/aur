@@ -1,6 +1,6 @@
 pkgbase = mpv-uosc
 	pkgdesc = Feature-rich minimalist proximity-based UI for MPV player.
-	pkgver = 5.3.1
+	pkgver = 5.4.0
 	pkgrel = 1
 	url = https://github.com/tomasklaen/uosc
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = mpv-uosc
 	makedepends = upx
 	optdepends = mpv-thumbfast: for showing thumbnails on-the-fly on seek
 	options = !strip
-	source = mpv-uosc-5.3.1.tar.gz::https://github.com/tomasklaen/uosc/archive/refs/tags/5.3.1.tar.gz
-	sha256sums = 55f81f2418217813e8a740d9921efbbf7972e29271eb5a5d4909249d172d2ea0
+	source = mpv-uosc-5.4.0.tar.gz::https://github.com/tomasklaen/uosc/archive/refs/tags/5.4.0.tar.gz
+	sha256sums = 038383344705824756e83d6a9cbbf631ca4d7c184f05b6be4d7fa154215ee776
 
 pkgname = mpv-uosc
 	depends = mpv

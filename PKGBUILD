@@ -1,5 +1,5 @@
 pkgname=mpv-uosc
-pkgver=5.3.1
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="Feature-rich minimalist proximity-based UI for MPV player."
 arch=("x86_64")
@@ -12,7 +12,7 @@ makedepends=("go" "upx")
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/tomasklaen/uosc/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('55f81f2418217813e8a740d9921efbbf7972e29271eb5a5d4909249d172d2ea0')
+sha256sums=('038383344705824756e83d6a9cbbf631ca4d7c184f05b6be4d7fa154215ee776')
 options=('!strip') # UPX will break this. So we strip manually before upx the binary.
 
 build(){
