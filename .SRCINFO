@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-x86_64-libiconv
+	pkgdesc = Provides GNU libiconv.so and libcharset.so for amd64 (mingw-w64)
+	pkgver = 1.17
+	pkgrel = 1
+	url = http://www.gnu.org/software/libiconv/
+	arch = x86_64
+	license = LGPL
+	depends = mingw-w64-gcc
+	provides = mingw-w64-x86_64-libiconv=1.17
+	conflicts = mingw-w64-libiconv
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.17.tar.gz
+	sha256sums = 8f74213b56238c85a50a5329f77e06198771e70dd9a739779f4c02f65d971313
+
+pkgname = mingw-w64-x86_64-libiconv
