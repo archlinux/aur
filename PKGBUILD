@@ -2,7 +2,7 @@
 
 pkgname=infnoise-openssl-git
 pkgver=r22.d161bfd
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenSSL Engine for random number generation using the Infnoise hardware TRNG"
 arch=('x86_64')
 url="https://github.com/tinskip/infnoise-openssl"
