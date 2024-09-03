@@ -1,0 +1,5 @@
+[gql]
+source = "github"
+github = "AmrDeveloper/GQL"
+prefix = "v"
+use_latest_release = true
