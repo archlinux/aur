@@ -1,0 +1,32 @@
+[Unit]
+Description=SIP3 Captain
+Documentation=https://www.sip3.io/docs
+After=network-online.target
+
+[Service]
+User=sip3
+Group=sip3
+EnvironmentFile=-/etc/sip3-captain/environment.conf
+WorkingDirectory=/opt/sip3-captain
+RuntimeDirectory=sip3-captain
+LogsDirectory=sip3-captain
+CapabilityBoundingSet=CAP_NET_RAW CAP_NET_ADMIN
+AmbientCapabilities=CAP_NET_RAW CAP_NET_ADMIN
+PermissionsStartOnly=true
+PIDFile=/run/sip3-captain/sip3-captain-%I.pid
+ExecStart=/bin/sh -c '\
+$JAVA_HOME/bin/java \
+  $JAVA_XMS $JAVA_XMX $JAVA_GC $JAVA_OTHER \
+ -Dlogback.configurationFile=/etc/sip3-captain/logback-%I.xml \
+ -jar /opt/sip3-captain/sip3-captain.jar \
+ -Dconfig.location=/etc/sip3-captain/application-%I.yml \
+ -Dvertx.cacheDirBase=/tmp/sip3-captain-%I \
+ $VERTX_OPTS \
+ & echo $! > /run/sip3-captain/sip3-captain-%I.pid'
+SuccessExitStatus=143
+Type=forking
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,34 @@
+[Unit]
+Description=SIP3 Salto
+Documentation=https://www.sip3.io/docs
+After=network-online.target
+
+[Service]
+User=sip3
+Group=sip3
+EnvironmentFile=-/etc/sip3-salto/environment.conf
+WorkingDirectory=/opt/sip3-salto
+RuntimeDirectory=sip3-salto
+LogsDirectory=sip3-salto
+PermissionsStartOnly=true
+PIDFile=/run/sip3-salto/sip3-salto.pid
+ExecStart=/bin/sh -c '\
+$JAVA_HOME/bin/java \
+  $JAVA_XMS $JAVA_XMX $JAVA_GC $JAVA_OTHER \
+ -Dlogback.configurationFile=/etc/sip3-salto/logback.xml \
+ -jar /opt/sip3-salto/sip3-salto.jar \
+ -Dconfig.location=/etc/sip3-salto/application.yml \
+ -Dcodecs.location=/etc/sip3-salto/codecs.yml \
+  $UDF_OPTS \
+ -Dvertx.cacheDirBase=/tmp/sip3-salto \
+ $APP_OPTS \
+ $VERTX_OPTS \
+ & echo $! > /run/sip3-salto/sip3-salto.pid'
+SuccessExitStatus=143
+Type=forking
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+Alias=sip3-salto.service

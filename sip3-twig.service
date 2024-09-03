@@ -1,0 +1,30 @@
+[Unit]
+Description=SIP3 Twig
+Documentation=https://www.sip3.io/docs
+After=network-online.target
+
+[Service]
+User=sip3
+Group=sip3
+EnvironmentFile=-/etc/sip3-twig/environment.conf
+WorkingDirectory=/opt/sip3-twig
+RuntimeDirectory=sip3-twig
+LogsDirectory=sip3-twig
+PermissionsStartOnly=true
+PIDFile=/run/sip3-twig/sip3-twig.pid
+ExecStart=/bin/sh -c '\
+$JAVA_HOME/bin/java \
+  $JAVA_XMS $JAVA_XMX $JAVA_GC $JAVA_OTHER \
+ -jar /opt/sip3-twig/sip3-twig.jar \
+ --spring.config.location=/etc/sip3-twig/application.yml \
+ --logging.config=/etc/sip3-twig/logback.xml \
+ $APP_OPTS \
+ & echo $! > /run/sip3-twig/sip3-twig.pid'
+SuccessExitStatus=143
+Type=forking
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+Alias=sip3-twig.service

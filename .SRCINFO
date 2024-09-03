@@ -1,0 +1,84 @@
+pkgbase = sip3
+	pkgdesc = SIP3 monitoring system
+	pkgver = 2024.2.1
+	pkgrel = 1
+	url = https://sip3.io
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = curl
+	makedepends = jdk-openjdk
+	makedepends = maven
+	makedepends = libpcap
+	optdepends = nginx: Lightweight HTTP server and IMAP/POP3 proxy server
+	optdepends = mongodb: A high-performance, open source, schema-free document-oriented database
+	optdepends = influxdb: Scalable datastore for metrics, events, and real-time analytics
+	options = !lto
+	source = sip3-hoof-ce.tgz::https://repo.sip3.io/jar/releases-ce/sip3-hoof/2024.2.1/sip3-hoof-latest.tgz
+	source = sip3-twig-ce::git+https://github.com/sip3io/sip3-twig-ce.git#branch=release/2024.2.1
+	source = sip3-salto-ce::git+https://github.com/sip3io/sip3-salto-ce.git#branch=release/2024.2.1
+	source = sip3-captain-ce::git+https://github.com/sip3io/sip3-captain-ce.git#branch=release/2024.2.1
+	source = logback-webhook-appender::git+https://github.com/sip3io/logback-webhook-appender.git#branch=release/1.0.6
+	source = sip3-parent::git+https://github.com/sip3io/sip3-parent.git#branch=release/2024.2.1
+	source = sip3-commons::git+https://github.com/sip3io/sip3-commons.git#branch=release/2024.2.1
+	source = sip3-captain.conf
+	source = captain-environment.conf
+	source = sip3-captain@.service
+	source = sip3-salto.conf
+	source = salto-environment.conf
+	source = sip3-salto.service
+	source = sip3-twig.conf
+	source = twig-environment.conf
+	source = sip3-twig.service
+	source = sysusers.conf
+	source = sip3-hoof.conf
+	source = settings.xml
+	b2sums = e4190beec73b1d0bc5e53325231d9aab2ed617382e50657a60db2f2e117676d9813d69aad85a71336af8374f5a03a430b116904d10a6f617d0145e97ce6e0b40
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = cceb9cd3b10e08b482931c130ec4893e489f33a99a0b310ea2cfed63284641e7323bbb97c5b498010eccf6ecbf6173aba73aebabca14393cb9b7789e126e4272
+	b2sums = 8f1916a34f5498d4cb1400ebe3ab2688d5606c0524f42caea300ab486d45d223ab7391ac0a527129b258281467c463c4a66ae9b1cea7b57d0594e2c8d6c75dbf
+	b2sums = 37ddd2ae8789e50c75e86edcf930de44f663350390c1ec548f8430567cde099c77d642cc42c266a6a5deae681c852e075d5aeb9d54e24dd4de38898a803acde9
+	b2sums = 441281e2c7a48c7bc4edd6cd2bbd4557d6b30833cc5de3937cd0f51344f60967d357cfcd74f92a1623d731c377ddd70c452cc6346bd23eba59540367f85d63df
+	b2sums = 11b99697f673c8c9e3ced5f8e44b0fd7ce4544f384e44157606d11cf3b2da19008f420e393220a18dd07fe1efa41847e1416317fdbecfb43bf0802bc5c702618
+	b2sums = 57fed3c49e5c97dcd879fb527d551bda8867bbeabac890f92f65d35c3ac591186932aba637216154e160690209cea4dcbb167373e223850379432c9c47277bf1
+	b2sums = 3fab6c3748adb07953dbb8f41bb210a57ee46820dfed28d50ffcd203f078f88c6d71200f6013491708470434d17542ef3fb8cf945b747ab829ea121ed1034857
+	b2sums = a56f5e2d63bb3300b58d50108dd7fd68c80e25a9ae7c4bc4eeaa5340ecbcd19d6e4e6afc22d8e5f6f32eb992b747803f4ac903cbe98ce07a1af34253ea4f37d7
+	b2sums = 6af722085f8da2ba758542e20ba7ab61058bda0e417c1a6c0be86d282f060d5e7f79a093ea9f8f3cc81d66cec391f112dd0ce500387517da9f3b153c49906252
+	b2sums = 8275260f3123979a1e087e994732f9bf0c422ef2cdb8bd17e5a3e16100ae90f69582b5e687ab0666677cf1afda84e642b6e996f0d18def6533259bf153b29b55
+	b2sums = ae5832060f90257f5e39e7e525fc66bd596652da0c6eaa93ceb3cae52bc5976e2c2ef645c85d31367e94cc4493cdc21189055d5adde9cd97ab22862938ffa518
+	b2sums = 40b0cc1035d1c283789631c6ebca3c9fef7df15c1f247e7a0141619888398d3367bebaeb3b9938d2f37e89e7af25d5d71ecb71aff805390aa93caec9479bfb8b
+
+pkgname = sip3-captain-ce
+	pkgdesc = SIP3 monitoring system(packets dumper)
+	depends = jdk-openjdk
+	depends = libpcap
+	backup = etc/sip3-captain/application.yml
+	backup = etc/sip3-captain/logback.xml
+	backup = etc/sip3-captain/vertx-options.json
+	backup = etc/sip3-captain/environment.conf
+
+pkgname = sip3-salto-ce
+	pkgdesc = SIP3 monitoring system(packets processor)
+	depends = jdk-openjdk
+	backup = etc/sip3-salto/application.yml
+	backup = etc/sip3-salto/codecs.yml
+	backup = etc/sip3-salto/logback.xml
+	backup = etc/sip3-salto/vertx-options.json
+	backup = etc/sip3-salto/environment.conf
+
+pkgname = sip3-twig-ce
+	pkgdesc = SIP3 monitoring system(API backend)
+	depends = jdk-openjdk
+	backup = etc/sip3-twig/application.yml
+	backup = etc/sip3-twig/logback.xml
+	backup = etc/sip3-twig/vertx-options.json
+	backup = etc/sip3-twig/environment.conf
+
+pkgname = sip3-hoof-ce
+	pkgdesc = SIP3 monitoring system(frontned)
+	optdepends = nginx
