@@ -2,10 +2,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-datavis3d
-_basever=5.15.14
+_basever=5.15.15
 pkgver=5.15.14
 pkgrel=1
-_commit=79cd0fb6cafcd42e4037ae1363fda3bc2cec934a
+_commit=e5c03e4431eed6c4654c20fb2d2a20485cff522d
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3')
@@ -16,7 +16,7 @@ optdepends=('qt5-declarative: QML bindings')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('26b3c03b662febb9ceee112fc1c8fd1de236ef85a7db74492f78395988757217')
+sha256sums=('0d20f7a07b9f8c8c8e68a1bef82dd82146a04a6856108446a0d9a4b11a953978')
 
 pkgver() {
   cd kde-$_pkgfqn
