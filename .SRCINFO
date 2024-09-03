@@ -7,15 +7,14 @@ pkgbase = mingw-w64-x86_64-xz
 	license = custom
 	license = GPL
 	license = LGPL
-	makedepends = git
 	makedepends = po4a
 	depends = mingw-w64-gcc
-	provides = mingw-w64-xz-amd64=5.6.2
+	provides = mingw-w64-x86_64-xz=5.6.2
 	conflicts = mingw-w64-xz
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = https://github.com/tukaani-project/xz/releases/download/v5.6.2/xz-5.6.2.tar.xz
+	source = xz-5.6.2.tar.xz::https://github.com/tukaani-project/xz/releases/download/v5.6.2/xz-5.6.2.tar.xz
 	validpgpkeys = 3690C240CE51B4670D30AD1C38EE757D69184620
 	sha256sums = a9db3bb3d64e248a0fae963f8fb6ba851a26ba1822e504dc0efd18a80c626caf
 
