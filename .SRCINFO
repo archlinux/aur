@@ -1,6 +1,6 @@
 pkgbase = qt5-scxml
 	pkgdesc = Static and runtime integration of SCXML models into Qt code
-	pkgver = 5.15.14
+	pkgver = 5.15.15
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = qt5-scxml
 	license = custom
 	makedepends = git
 	depends = qt5-declarative
-	source = kde-qtscxml::git+https://invent.kde.org/qt/qt/qtscxml#commit=6834b183966d08d9f061642ee7ea2d482cbbf073
-	sha256sums = f211a328372039fddd28537688fad1ebcd406c48fc11a02b59bc050ec6847e3d
+	source = kde-qtscxml::git+https://invent.kde.org/qt/qt/qtscxml#commit=02e1e963ec9492bb1620b3ac3fc6ffc2ff280778
+	sha256sums = 3c02a6b446d9712159049943c85123377c8f50ba2c02f1a2aedb811d74f57ffc
 
 pkgname = qt5-scxml
