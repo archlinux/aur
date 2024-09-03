@@ -38,7 +38,7 @@ _opt_altcommand=0
 
 _pkgname='dosemu2'
 pkgname="${_pkgname}-git"
-pkgver=2.2.0pre9.2.r66.g99900648e
+pkgver=2.2.0pre9.2.r511.gc694047e7
 pkgrel=1
 _pkgver="${pkgver%%[a-z]*}"
 pkgdesc='Virtual machine that allows you to run DOS programs under Linux'
@@ -46,7 +46,8 @@ arch=('i686' 'x86_64')
 #url='https://stsp.github.io/dosemu2/'
 url='https://github.com/dosemu2/dosemu2'
 license=('GPL-2.0-only')
-depends=('glibc' 'alsa-lib')
+depends=('glibc' 'alsa-lib' 'libsearpc')
+depends+=('gcc-libs' 'glib2' 'bash' 'sdl2_ttf' 'libb64' 'libieee1284' 'libslirp' 'fontconfig' 'acl' 'json-c' 'libx11' 'jansson' 'readline' 'libcap' 'libxext' 'dj64-git')
 if [ "${_opt_Debug}" -ne 0 ]; then
   depends+=('gdb' 'binutils' 'sudo')
 fi
