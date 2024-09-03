@@ -1,31 +1,34 @@
 #!/bin/hint/bash
-# Maintainer: Fredrick R. Brennan <copypaste@kittens.ph>
+# Contributor: Fredrick R. Brennan <copypaste@kittens.ph>
 # Contributor: nyorain <nyorain at gmail dot com>
 
-pkgbase=skia-git
-pkgname=('skia-git' 'skia-examples-git')
-pkgver=r69268.77aeee3b81
+pkgname=('skia-git')
+pkgver=r73056.c7fa1752c3
 pkgrel=1
-pkgdesc="Chromiums high-performance rendering library (static)"
-arch=('any')
+pkgdesc="Chromiums high-performance rendering library"
+arch=('x86_64')
 url="https://github.com/google/skia"
 license=('BSD')
-depends=('mesa' 'libgl')
-makedepends=('git' 'ninja' 'python2' 'gcc' 'gn')
-makedepends+=('rsync')
-optdepends=('depot-tools-git: for building with system-wide depot-tools, requires patching the PKGBUILD')
-
+depends=('zlib' 'libglvnd' 'freetype2' 'expat' 'libpng' 'libjpeg-turbo' 'fontconfig' 'harfbuzz' 'gcc-libs' 'libwebp' 'glibc')
+makedepends=('git' 'rsync' 'python' 'procps-ng' 'ninja')
 pkgver() {
     cd "$srcdir/skia"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
+#TODO:
+# skia-git W: ELF file ('usr/lib/libskia.so') lacks FULL RELRO, check LDFLAGS.
+# use system depot tools
+# use system gn
 
 prepare() {
     # to make sure depot tools are in path
     cd "$srcdir"
     SRC_DIR="$(readlink -f "$srcdir")"
     [ ! -d "/opt/depot_tools/.git" ] && {
-        warning $'depot_tools not found, cloning just for this AUR build of Skia!!!\nSee https://aur.archlinux.org/packages/depot-tools-git#comment-941904'
+        tput bold
+        echo $'depot_tools not found, cloning just for this AUR build of Skia!!!\nSee https://aur.archlinux.org/packages/depot-tools-git#comment-941904'
+        tput sgr0
         [ -d ./depot_tools ] && {
             pushd depot_tools
             git switch main
@@ -51,7 +54,7 @@ prepare() {
     # generate the ninja build files using gn
     cd skia
     tools/git-sync-deps
-    gn gen out/Debug
+    gn gen out/Debug --args='is_official_build=true is_component_build=true'
 }
 
 build() {
@@ -60,39 +63,18 @@ build() {
     ninja -C ./out/Debug
 }
 
-package_skia-git() {
+package() {
     local cxxfindheaders='-type f -and -( -name "*.h" -or -name "*.hh" -or -name "*.hpp" -or -name "*.hxx" -or -name "*.inc" -)'
     cd "$srcdir/skia"
-    
+
     # License
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    # Static library
-    install -D -m644 out/Debug/libskia.a "$pkgdir/usr/lib/libskia.a"
+    # Library
+    install -D -m644 out/Debug/libskia.so "$pkgdir/usr/lib/libskia.so"
 
     # Headers
     find include $cxxfindheaders \
         -exec install -v -D -m644 {} "$pkgdir/usr/include/skia/"{} \; -print
-
-    # Headers (generated)
-    pushd out/Debug
-    pushd gen
-    find . $cxxfindheaders \
-        -exec install -v -D -m644 {} "$pkgdir/usr/include/skia/"{} \; -print
 }
 
-build_skia-examples-git() {
-    makedepends+=('parallel' 'upx')
-}
-
-package_skia-examples-git() {
-    pkgdesc="${pkgdesc%% (static)} (examples)"
-    depends+=(glu libx11 libxrandr libxinerama libxcursor libxi libxcomposite libxdamage libxext libxfixes libxrender libxkbcommon-x11)
-    cd "$srcdir/skia"
-    pushd out/Debug
-    find . -executable -type f -exec install -v -D -m755 {} "$pkgdir/usr/bin/skia/{}" \; -print
-    pushd "$pkgdir/usr/bin/skia"
-    parallel --bar upx -7 {} ::: *
-}
-
-# vim:set ts=4 sw=4 et syntax=bash:
