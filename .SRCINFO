@@ -1,6 +1,6 @@
 pkgbase = python-posthog
 	pkgdesc = Integrate PostHog into any python application.
-	pkgver = 3.6.0
+	pkgver = 3.6.3
 	pkgrel = 1
 	url = https://posthog.com/docs/libraries/python
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-posthog
 	depends = python-monotonic
 	depends = python-requests
 	depends = python-six
-	source = posthog-python-3.6.0.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v3.6.0.tar.gz
-	sha256sums = 859289fa672f3f33a40a4af812a6766044a2d59478df67f77cfeecde2e498cfa
+	source = posthog-python-3.6.3.tar.gz::https://github.com/PostHog/posthog-python/archive/refs/tags/v3.6.3.tar.gz
+	sha256sums = ce0ccba7eef092861e87848bec51b5641d56715daf8fd510db86e103b24dfd75
 
 pkgname = python-posthog
