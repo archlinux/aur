@@ -2,10 +2,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-purchasing
-_basever=5.15.14
+_basever=5.15.15
 pkgver=5.15.14
 pkgrel=1
-_commit=d4903bf08c576a6c085278c1960a2676cd83dca7
+_commit=6922c0e403e94ac9c2336706bc3df1e2da217a1f
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -16,7 +16,7 @@ optdepends=('qt5-declarative: QML bindings')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('3bd59962fe3e6ad7898214398da1fa2ba54e1c80bd319e67e0c5f00d2878a945')
+sha256sums=('8d1f8bd9d357844262d3a6b5b13a114955409646374a2313d5e243a62a8d50eb')
 
 pkgver() {
   cd kde-$_pkgfqn
