@@ -25,7 +25,6 @@ pkgbase = vkdoom-bin-nightly
 	depends = sdl2
 	depends = zmusic>=1.1.8
 	optdepends = blasphemer-wad: Blasphemer (free Heretic) game data
-	optdepends = clang: Clang build option support
 	optdepends = chexquest3-wad: Chex Quest 3 game data
 	optdepends = doom1-wad: Doom shareware game data
 	optdepends = freedm: FreeDM game data
@@ -36,7 +35,6 @@ pkgbase = vkdoom-bin-nightly
 	optdepends = heretic1-wad: Heretic shareware game data
 	optdepends = hexen1-wad: Hexen demo game data
 	optdepends = kdialog: crash dialog (KDE)
-	optdepends = lld: Clang build option dependency
 	optdepends = strife0-wad: Strife shareware game data
 	optdepends = square1-wad: The Adventures of Square, Episode 1 game data
 	optdepends = urbanbrawl-wad: Urban Brawl: Action Doom 2 game data

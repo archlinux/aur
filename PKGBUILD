@@ -27,7 +27,6 @@ depends=(alsa-lib
 		'zmusic>=1.1.8')
 makedepends=('desktop-file-utils')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
-            'clang: Clang build option support'
             'chexquest3-wad: Chex Quest 3 game data'
             'doom1-wad: Doom shareware game data'
             'freedm: FreeDM game data'
@@ -38,7 +37,6 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'heretic1-wad: Heretic shareware game data'
             'hexen1-wad: Hexen demo game data'
             'kdialog: crash dialog (KDE)'
-            'lld: Clang build option dependency'
             'strife0-wad: Strife shareware game data'
             'square1-wad: The Adventures of Square, Episode 1 game data'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
