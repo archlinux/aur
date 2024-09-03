@@ -1,6 +1,6 @@
 pkgname=mihomo-party-electron-bin
 _pkgname=mihomo-party
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ sha256sums=(
     "96a6250f67517493f839f964c024434dbcf784b25a73f074bb505f1521f52844"
     "560733f0e5bd9b47ff50c849301c8a22ae17a5df26830d8c97033dfcbd392382"
 )
-sha256sums_x86_64=("95cab8ce9515d9a1926daa4f7f42c0bb763d2a2c8e4e420d559de7806ba561e9")
-sha256sums_aarch64=("4eb672f7f799043a44b21d2d5e718d35ffebcf4b3e2c69a6732c602510ae7337")
+sha256sums_x86_64=("28e71b8cefe882dbbab1529fcb2de6299901692ee62441580a2f637df365444e")
+sha256sums_aarch64=("fda0cd61f632ab55168be09e59d251b9bf989f98f3839a28b2933146d827ef7d")
 options=('!lto')
 
 package() {
