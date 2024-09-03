@@ -2,10 +2,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-webview
-_basever=5.15.14
+_basever=5.15.15
 pkgver=5.15.14
 pkgrel=1
-_commit=bbb1891595aba23ff3c6d137aa74442f9e54479b
+_commit=70030514bdaf993517556209503075db15bd1c61
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -15,7 +15,7 @@ makedepends=('git')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('80606f7e444eb9d09c2bb3a35fbf2511cfcb68980b7d03def6cdc4b6201d3043')
+sha256sums=('1b9834379c263087c72275881cceedb7865d8da80600768f71e90c738259873c')
 
 pkgver() {
   cd kde-$_pkgfqn
