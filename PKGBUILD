@@ -2,8 +2,8 @@
 # Contributor: John Andrews <theunderdog09 at gmail dot com>
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 pkgname=mullvad-vpn-cli
-pkgver=2024.4
-pkgrel=2
+pkgver=2024.5
+pkgrel=1
 pkgdesc="The Mullvad VPN CLI client"
 arch=('x86_64')
 url="https://www.mullvad.net"
@@ -13,26 +13,40 @@ makedepends=('cargo' 'git' 'go' 'protobuf')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 install="${pkgname%-*}.install"
-_commit=e9043f890c56b4d0db50851e3fa4db10f230118e
+_ab_commit=b0c37cecd9b671d2480a7dc9636da93d76e2b14c
+_wg_commit=de174ac6de2934dc82d9b8301c17de87cbd575f3
+_mn_commit=b06094e81701782d28cd2312f58e0654109d04ce
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver"
-        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed")
-sha256sums=('6186c0023698431e75aa2fd1720b083abc560a13f02e364ca0b2daa7c67e9084'
-            'f097255f0d415597cce88ae7a8de24440a533620a932d492fbe4e84c76f7c8d1')
+        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_ab_commit}?signed"
+        "git+https://github.com/mullvad/wireguard-go.git#commit=${_wg_commit}?signed"
+        "git+https://github.com/mullvad/maybenot.git#commit=#commit=${_mn_commit}")
+sha256sums=('ff4e411afde87d3f156de5085a2b17dff04fa109a015db2347a7632f3f652d1a'
+            '3e4b6d2f867809a02b286a5614f17a42d037a41a6c6247dbf51051a305242291'
+            '754e618ff2dbe9dfcb36f5492bcef9ffd180a45b5fde12969e433e42eb72b37a'
+            '905d2c0b697cb594babdf4e84066f3bdf666ab5d889642b002a1390f52fc7cf8')
 validpgpkeys=('225E40C8F1C8DEB7977ABF59F293063FECE2E8ED' # Linus Färnstrand <linus@mullvad.net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net>
-              '4B986EF5222BA1B810230C602F391DE6B00D619C' # Oskar Nyberg (code signing) <oskar@mullvad.net>
+              '1D0026CBD1F1858DF8DB54DFCB87E2B919A6454C' # Oskar Nyberg <oskar@mullvad.net>
               )
 
 prepare() {
   cd mullvadvpn-app
   git submodule init
   git config submodule.dist-assets/binaries.url "$srcdir/mullvadvpn-app-binaries"
+  git config submodule.wireguard-go-rs/libwg/wireguard-go.url "$srcdir/wireguard-go"
+#  git config submodule.wireguard-go-rs/libwg/wireguard-go/maybenot.url "$srcdir/maybenot"
   git -c protocol.file.allow=always submodule update
+
+  # It might help to add a .gitmodules for the submodule...
+  cp -rf "$srcdir/maybenot" wireguard-go-rs/libwg/wireguard-go/
+
+  # Create shell-completions output directory
+  mkdir -p build/shell-completions
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
-  pushd wireguard/libwg
+  pushd wireguard-go-rs/libwg
   export GOPATH="$srcdir/gopath"
   mkdir -p "../../build/lib/$CARCH-unknown-linux-gnu"
   go mod download -x
@@ -50,7 +64,7 @@ build() {
   echo "Building Mullvad VPN ${PRODUCT_VERSION}..."
 
   echo "Building wireguard-go..."
-  pushd wireguard/libwg
+  pushd wireguard-go-rs/libwg
   export GOPATH="$srcdir/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -76,7 +90,6 @@ build() {
   cargo build --frozen --release "${cargo_crates_to_build[@]}"
 
   echo "Preparing for packaging Mullvad VPN ${PRODUCT_VERSION}..."
-  mkdir -p build/shell-completions
   for sh in bash zsh fish; do
     echo "Generating shell completion script for ${sh}..."
     cargo run --bin mullvad --frozen --release -- shell-completions ${sh} \
