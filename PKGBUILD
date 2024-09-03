@@ -1,10 +1,11 @@
-# Maintainer: drakkan <nicola.murino at gmail dot com>
+# Maintainer: Maks Verver <maks@verver.ch>
+# Contributor: drakkan <nicola.murino at gmail dot com>
 # Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: ant32 <antreimer at gmail dot com>
 
 pkgname=mingw-w64-curl
-pkgver=8.8.0
-pkgrel=2
+pkgver=8.9.1
+pkgrel=1
 pkgdesc="An URL retrival utility and library (mingw-w64)"
 arch=('any')
 url="https://curl.haxx.se"
@@ -22,10 +23,10 @@ makedepends=('mingw-w64-configure')
 options=('staticlibs' '!strip' '!buildflags')
 source=("${url}/download/curl-${pkgver}.tar.xz"
         "0002-nghttp2-static.patch"
-	"0004-more-static-fixes.patch")
-sha256sums=('0f58bb95fc330c8a46eeb3df5701b0d90c9d9bfcc42bd1cd08791d12551d4400'
-            '3ee9c75a3046f86f91290c143170179230c9adc6eabfbb79eb26f708a165b719'
-            '590eb65e90e756eaad993d52a101f29091ada2c742c5a607684e88fc5c560d54')
+        "0004-more-static-fixes.patch")
+sha256sums=('f292f6cc051d5bbabf725ef85d432dfeacc8711dd717ea97612ae590643801e5'
+            '9da305e320ea306d0ca634edd73092b404b96d91f5cac681304bb6a9ae49e5ef'
+            '22dcdfd89a1d847ab6bbe1078c6a8ac198cc6c11eb86b00580583492848fd1b1')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
