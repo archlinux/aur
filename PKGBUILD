@@ -1,7 +1,7 @@
 # Maintainer: Mike Pento <mpento darkforge net>
 
 pkgname=uefitool-bin
-pkgver=A66
+pkgver=A68
 pkgrel=1
 pkgdesc='UEFI firmware image viewer and editor'
 arch=('x86_64')
@@ -12,9 +12,9 @@ depends=('qt6-base')
 source=("UEFIExtract-${pkgver}.zip::${url}/releases/download/${pkgver}/UEFIExtract_NE_${pkgver}_x64_linux.zip"
     "UEFIFind-${pkgver}.zip::${url}/releases/download/${pkgver}/UEFIFind_NE_${pkgver}_x64_linux.zip"
     "UEFITool-${pkgver}.zip::${url}/releases/download/${pkgver}/UEFITool_NE_${pkgver}_x64_linux.zip")
-sha256sums=('a8effffa85411a0b6318285511af2e71d572b6374d4ee15320b6a78727428651'
-            '3297c90bdbf2b8c2fa6f2ed65c7938832e45826a60c02cd816a154d0abe2dd9b'
-            'dada149eb2f263b70b67ac76ac57edd406c08d6a4115c25338f22948f2587166')
+sha256sums=('67d0f93d9c5e764edd8e9d9afb04b4296ca7c3a89d1c2aab4c78fb8896d7e100'
+            'f11ac277b01674c95f34082224d94a9234eae546b7c1d8efa786de583ef8f653'
+            '28e36550711d242bc5f129bf075f6ddd9dbb12bd474f287578fc519be0eeff72')
 
 package() {
   install -Dm755 "${srcdir}"/uefiextract "${pkgdir}/usr/bin/uefiextract"
