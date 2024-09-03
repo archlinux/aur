@@ -1,18 +1,32 @@
 pkgbase = polkit-qt6-git
 	pkgdesc = A library that allows developers to access PolicyKit API with a nice Qt-style API
-	pkgver = v0.200.0.r0.gaa1c6c4
+	pkgver = 0.200.0.r1.ge01dc18
 	pkgrel = 1
 	url = https://invent.kde.org/libraries/polkit-qt-1
-	arch = i686
 	arch = x86_64
-	license = LGPL
-	makedepends = git
+	license = BSD-3-Clause
+	license = GPL-2.0-or-later
+	license = LGPL-2.0-or-later
 	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = qt5-base
+	makedepends = qt6-base
+	depends = glib2
 	depends = polkit
-	depends = qt6-base
-	provides = polkit-qt6=v0.200.0
-	conflicts = polkit-qt6
-	source = polkit-qt6::git+https://invent.kde.org/libraries/polkit-qt-1.git
+	source = polkit-qt::git+https://invent.kde.org/libraries/polkit-qt-1.git
 	sha256sums = SKIP
 
+pkgname = polkit-qt5-git
+	depends = glib2
+	depends = polkit
+	depends = qt5-base
+	provides = polkit-qt5=0.200.0
+	conflicts = polkit-qt5
+
 pkgname = polkit-qt6-git
+	depends = glib2
+	depends = polkit
+	depends = qt6-base
+	provides = polkit-qt6=0.200.0
+	conflicts = polkit-qt6

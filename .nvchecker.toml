@@ -1,0 +1,4 @@
+[polkit-qt6-git]
+source = 'git'
+git = 'https://invent.kde.org/libraries/polkit-qt-1.git'
+prefix = 'v'
