@@ -2,9 +2,9 @@
 
 _app_name=yaak-app
 pkgname=${_app_name}-beta
-pkgver=2024.8.0
-_betaver=beta.5
-pkgrel=5
+pkgver=2024.9.0
+_betaver=beta.1
+pkgrel=1
 pkgdesc="Yaak is a cross-platform desktop app for interacting with REST, GraphQL, gRPC and OpenAPI."
 arch=('x86_64')
 url="https://yaak.app/"
@@ -15,7 +15,7 @@ conflicts=(${_app_name})
 options=(!strip)
 
 source=("${pkgname}-${pkgver}-${_betaver}.deb::https://releases.yaak.app/releases/${pkgver}-${_betaver}/yaak_${pkgver}-${_betaver}_amd64.deb")
-sha256sums=('8204a3e828482a2eef8e97020e4b664b57890a118153f123eb48d7e82cf2198a')
+sha256sums=('435a1e265bdd38331ab901a7658ec7129fccc1068924b26e2a8803fcf4df672f')
 
 prepare() {
     bsdtar -xf data.tar.gz
