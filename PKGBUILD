@@ -1,4 +1,4 @@
-# Maintainer: Mike Pento <mpento darkforge net>
+# Maintainer: Mateus Honorato
 
 pkgname=uefitool-bin
 pkgver=A68
