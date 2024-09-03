@@ -1,0 +1,22 @@
+pkgbase = mitos
+	pkgdesc = Improved de novo metazoan mitochondrial genome annotation https://doi.org/10.1016/j.ympev.2012.08.023
+	pkgver = 2.1.9
+	pkgrel = 0
+	url = https://gitlab.com/Bernt/MITOS
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-setuptools
+	depends = r-ggplot
+	depends = r-reshape2
+	depends = viennarna
+	depends = blast+
+	depends = hmmer
+	depends = python-reportlab
+	depends = pyton-pillow
+	depends = libtiff
+	depends = java-environment
+	depends = python-biopython
+	source = mitos-2.1.9.tar.gz::https://gitlab.com/Bernt/MITOS/-/archive/2.1.9/MITOS-2.1.9.tar.gz
+	sha256sums = cf8e14766de43967182be839de20c9d1709b60fae38a0b3d175742dfad7a5d44
+
+pkgname = mitos
