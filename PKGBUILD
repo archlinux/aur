@@ -3,7 +3,7 @@
 
 pkgname=qt5-webview
 _basever=5.15.15
-pkgver=5.15.14
+pkgver=5.15.15
 pkgrel=1
 _commit=70030514bdaf993517556209503075db15bd1c61
 arch=('x86_64')
