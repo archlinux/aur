@@ -3,7 +3,7 @@
 
 pkgname=qt5-webglplugin
 _basever=5.15.15
-pkgver=5.15.14
+pkgver=5.15.15
 pkgrel=1
 _commit=0d29f1cd46331caf1b5169eb037d573680454348
 arch=(x86_64)
