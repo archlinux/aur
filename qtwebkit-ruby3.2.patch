@@ -1,0 +1,13 @@
+--- a/Source/JavaScriptCore/offlineasm/parser.rb
++++ b/Source/JavaScriptCore/offlineasm/parser.rb
+@@ -145,6 +145,10 @@
+         @type = type
+         @string = string
+     end
++
++    def =~(other)
++        false
++    end
+ end
+ 
+ #
