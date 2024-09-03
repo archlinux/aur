@@ -1,5 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-# Maintainer: JakobDev<jakobdev at gmx dot de>
+# Co-Maintainer: JakobDev<jakobdev at gmx dot de>
 
 pkgname=jddesktopentryedit
 _app_id=page.codeberg.JakobDev.jdDesktopEntryEdit
@@ -9,15 +9,28 @@ pkgdesc="A graphical program to create and edit desktop entries"
 arch=('any')
 url="https://codeberg.org/JakobDev/jdDesktopEntryEdit"
 license=('GPL-3.0-or-later')
-depends=('python-desktop-entry-lib' 'python-pyqt6' 'python-requests')
-makedepends=('python-build' 'python-installer' 'python-setuptools'
-             'python-wheel' 'qt5-tools')
-checkdepends=('appstream')
+depends=(
+  'python-desktop-entry-lib'
+  'python-pyqt6'
+  'python-requests'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+  'qt5-tools'
+)
+checkdepends=(
+  'appstream'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+noextract=("$pkgname-$pkgver.tar.gz")
 sha256sums=('34f9fdb00df9dc54e2edfab308ebb3e1fc1d0cca5e7156fe821d80c624fd5639')
 
 prepare() {
-  mv -f "$pkgname" "$pkgname-$pkgver"
+  mkdir -p "$pkgname-$pkgver"
+  bsdtar xf "$pkgname-$pkgver.tar.gz" --strip-components 1 -C "$pkgname-$pkgver"
 }
 
 build() {
