@@ -1,4 +1,4 @@
-pkgbase = wps-office-2023
+pkgbase = wps-office-2023-bin
 	pkgdesc = Kingsoft Office (WPS Office) CN version - an office productivity suite
 	pkgver = 12.1.0.17881
 	pkgrel = 1
@@ -8,7 +8,7 @@ pkgbase = wps-office-2023
 	options = !emptydirs
 	source = fix-wps-python-parse.patch
 	sha1sums = f3713481edf04ffb08be8d24dce66554dd5a4f13
-	source_x86_64 = wps-office_12.1.0.17881_amd64.deb::https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/17881/wps-office_12.1.0.17881_amd64.deb?t=1725332013&k=d08a804344613832341523ed541b3732
+	source_x86_64 = wps-office_12.1.0.17881_amd64.deb::https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/17881/wps-office_12.1.0.17881_amd64.deb?t=1725333274&k=84fb94bd6c4f82f8003d2f01d75123e3
 	sha1sums_x86_64 = ef71d43eaa06a6ffbad4f6307499b80f25478d42
 
 pkgname = wps-office-2023

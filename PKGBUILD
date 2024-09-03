@@ -6,7 +6,7 @@
 # Contributor: Ariel AxionL <axionl at aosc dot io>
 # Contributor: v71
 
-pkgbase=wps-office-2023
+pkgbase=wps-office-2023-bin
 pkgname=('wps-office-2023' 'wps-office-2023-mime' 'wps-office-2023-mui')
 pkgver=12.1.0.17881
 _pkgver=17881
