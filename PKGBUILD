@@ -1,28 +1,24 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Maintainer: Josh Hoffer < hoffer dot joshua at gmail dot com >
 pkgname=dune-multidomaingrid
-_tarver=v2.8.0
-_tar="${_tarver}/${pkgname}-${_tarver}.tar.gz"
-pkgver=${_tarver/v/}
+_tarver=2.9
+_tar="${_tarver}/${pkgname}-releases-${_tarver}.tar.gz"
+pkgver=${_tarver}
 pkgrel=1
 pkgdesc="Meta grid that allows creating multiple subdomains that span only part of the host grid"
-arch=('x86_64')
+arch=(x86_64)
 url="https://dune-project.org/modules/${pkgname}"
-license=('LGPL3' 'custom:GPL2 with runtime exception')
-depends=('dune-grid>=2.8.0')
-makedepends=('doxygen' 'graphviz')
+license=(LGPL3 'custom:GPL2 with runtime exception')
+depends=('dune-grid>=2.9.0')
+makedepends=(doxygen graphviz)
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software')
-source=(https://gitlab.dune-project.org/extensions/${pkgname}/-/archive/${_tar})
-sha512sums=('5fcc17678cd7851f3ba477370945ce30117912420aabbe3ea081805b471eca0ce7d0f7d1b314c4f5b44ccb58d68e238e9056c2e8d01813737592f16e31f003bf')
-
-prepare() {
-  sed -i 's/^Version: '"${pkgver%.0}"'/Version: '"${pkgver}"'/' ${pkgname}-${_tarver}/dune.module
-}
+source=(https://gitlab.dune-project.org/extensions/${pkgname}/-/archive/releases/${_tar})
+sha512sums=('fb76b54d37529c5a138a84af6f63fab34e43ae34accd33406ddfe7522be556f976af8ec4403169e0c5e77db2297090a582b443d40a5061bd233c94dbfd62d95c')
 
 build() {
   cmake \
-    -S ${pkgname}-${_tarver} \
+    -S ${pkgname}-releases-${_tarver} \
     -B build-cmake \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -39,6 +35,6 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --build build-cmake --target install
-  install -Dm644 ${pkgname}-${_tarver}/COPYING.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 ${pkgname}-releases-${_tarver}/COPYING.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   find "${pkgdir}" -type d -empty -delete
 }
