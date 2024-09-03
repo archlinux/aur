@@ -23,7 +23,7 @@ CYAN="${BOLD}$(tput setaf 6)"
 WHITE="${BOLD}$(tput setaf 7)"
 
 post_install() {
-  if /usr/lib/ld-linux-x86-64.so.2 --help | grep -qsE '^\s+x86-64-v3.*supported.*$' ; then
+  if grep -qsE '\bpni\b' /proc/cpuinfo ; then
     note1 "Custom flags should be put directly in: ~/.config/thorium-flags.conf"
     note2 "The launcher is called: 'thorium-browser'"
   else

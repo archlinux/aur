@@ -2,16 +2,10 @@
 # Contributor: JPratama7 <josepratama080@gmail.com>
 # Contributor: Dominik Adrian Grzywak <starterx4 at gmail dot com>
 
-# options
-if [ -z "$_srcinfo" ] && [ -z "$_pkgver" ]; then
-  : ${_autoupdate:=true}
-fi
-
-# basic info
 _pkgname="thorium-browser"
 pkgname="$_pkgname-bin"
 pkgver=126.0.6478.231
-pkgrel=2
+pkgrel=3
 pkgdesc="Chromium fork focused on high performance and security"
 url="https://github.com/Alex313031/Thorium"
 license=('BSD')
@@ -21,16 +15,12 @@ options=('!emptydirs' '!strip' '!debug')
 install="$_pkgname.install"
 
 _source_main() {
-  _dl_url="$url/releases/download/M${_pkgver:?}"
-  _dl_filename="${_pkgname}_${_pkgver:?}_SSE3.deb"
+  _dl_url="$url/releases/download/M${pkgver}"
+  _dl_filename="${_pkgname}_${pkgver}_SSE3.deb"
   noextract+=("$_dl_filename")
 
   source=("$_dl_url/$_dl_filename")
-  sha256sums=('SKIP')
-
-  pkgver() {
-    echo "${_pkgver:?}"
-  }
+  sha256sums=('5dcea3c3508b9fe6b4990d8663254f6a333a5a4fe0644a9f86ceca5a57444a27')
 }
 
 prepare() {
@@ -38,7 +28,7 @@ prepare() {
 #!/usr/bin/env bash
 
 # check microprocessor architecture level
-if grep -qE '\bpni\b' /proc/cpuinfo ; then
+if grep -qsE '\bpni\b' /proc/cpuinfo ; then
   _message=''
   _message+=\$'The fastest browser on Earth.'
 else
@@ -141,35 +131,4 @@ package() {
     "$pkgdir/usr/share/menu/"
 }
 
-_update_version() {
-  : ${_pkgver:=${pkgver%%.r*}}
-
-  if [[ "${_autoupdate::1}" != "t" ]]; then
-    return
-  fi
-  local _blacklist _response _tags _tag _pkgver_new
-
-  _blacklist=(
-    M126.0.6478.246
-  )
-  _response=$(curl -Ssf "$url/releases.atom")
-  _tags=$(
-    printf '%s' "$_response" \
-      | grep '/releases/tag/' \
-      | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
-      | grep -Ev '[a-z]{2}'
-  )
-  for i in "${_blacklist[@]}"; do
-    _tags=${_tags/$i/}
-  done
-  _tag=$(printf '%s' "$_tags" | sort -rV | head -1)
-  _pkgver_new="${_tag#M}"
-
-  # update _pkgver
-  if [ "$_pkgver" != "${_pkgver_new:?}" ]; then
-    _pkgver="${_pkgver_new:?}"
-  fi
-}
-
-_update_version
 _source_main

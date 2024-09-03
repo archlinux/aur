@@ -1,11 +1,5 @@
 # Maintainer:
 
-# options
-if [ -z "$_srcinfo" ] && [ -z "$_pkgver" ]; then
-  : ${_autoupdate:=true}
-fi
-
-# basic info
 _pkgname="thorium-browser-avx2"
 pkgname="$_pkgname-bin"
 pkgver=124.0.6367.218
@@ -18,16 +12,12 @@ arch=('x86_64')
 options=('!emptydirs' '!strip' '!debug')
 
 _source_main() {
-  _dl_url="$url/releases/download/M${_pkgver:?}"
-  _dl_filename="${_pkgname%-avx2}_${_pkgver:?}_AVX2.deb"
+  _dl_url="$url/releases/download/M${pkgver}"
+  _dl_filename="${_pkgname%-avx2}_${pkgver}_AVX2.deb"
   noextract+=("$_dl_filename")
 
   source=("$_dl_url/$_dl_filename")
   sha256sums=('SKIP')
-
-  pkgver() {
-    echo "${_pkgver%M}"
-  }
 }
 
 prepare() {
@@ -35,7 +25,7 @@ prepare() {
 #!/usr/bin/env bash
 
 # check microprocessor architecture level
-if grep -qE '\bavx2\b' /proc/cpuinfo ; then
+if grep -qsE '\bavx2\b' /proc/cpuinfo ; then
   _message=''
   _message+=\$'The fastest browser on Earth.'
 else
@@ -174,36 +164,4 @@ package() {
     "$pkgdir/usr/share/menu/"
 }
 
-_update_version() {
-  : ${_pkgver:=${pkgver%%.r*}}
-
-  if [[ "${_autoupdate::1}" != "t" ]]; then
-    return
-  fi
-  local _blacklist _response _tags _tag _pkgver_new
-
-  _blacklist=(
-    M126.0.6478.246
-    M126.0.6478.231
-  )
-  _response=$(curl -Ssf "$url/releases.atom")
-  _tags=$(
-    printf '%s' "$_response" \
-      | grep '/releases/tag/' \
-      | sed -E 's@^.*/releases/tag/(.*)".*$@\1@' \
-      | grep -Ev '[a-z]{2}'
-  )
-  for i in "${_blacklist[@]}"; do
-    _tags=${_tags/$i/}
-  done
-  _tag=$(printf '%s' "$_tags" | sort -rV | head -1)
-  _pkgver_new="${_tag#M}"
-
-  # update _pkgver
-  if [ "$_pkgver" != "${_pkgver_new:?}" ]; then
-    _pkgver="${_pkgver_new:?}"
-  fi
-}
-
-_update_version
 _source_main
