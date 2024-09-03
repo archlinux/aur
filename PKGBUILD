@@ -1,7 +1,7 @@
 # Maintainer: Lucas Schwiderski <lucas@lschwiderski.de>
 pkgname=kdegraphics-thumbnailer-dds-git
 pkgver=r31.4e791fa
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="DDS texture thumbnailer for KDE"
 arch=("x86_64")
@@ -9,7 +9,7 @@ url="https://github.com/xmaciek/kdegraphics-thumbnailer-dds"
 license=('MIT')
 groups=()
 depends=('qt6-base' 'kio' 'kcoreaddons')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'extra-cmake-modules')
 provides=('kdegraphics-thumbnailer-dds')
 conflicts=('kdegraphics-thumbnailer-dds')
 replaces=()
@@ -22,10 +22,8 @@ source=(
     "isValid_undefined.patch"
 )
 noextract=()
-sha256sums=(
-    'SKIP'
-    'b93847aaef92eb605ae25e7aa13094f3879eeeabc2d3b1d75b76c4923926586c'
-)
+sha256sums=('SKIP'
+            'b93847aaef92eb605ae25e7aa13094f3879eeeabc2d3b1d75b76c4923926586c')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
