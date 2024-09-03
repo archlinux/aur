@@ -1,0 +1,15 @@
+pkgbase = infnoise-openssl-git
+	pkgdesc = OpenSSL Engine for random number generation using the Infnoise hardware TRNG
+	pkgver = r22.d161bfd
+	pkgrel = 1
+	url = https://github.com/tinskip/infnoise-openssl
+	arch = x86_64
+	license = LGPL-3.0-only
+	makedepends = git
+	depends = openssl
+	depends = libftdi
+	depends = libinfnoise
+	source = git+https://github.com/tinskip/infnoise-openssl.git
+	sha256sums = SKIP
+
+pkgname = infnoise-openssl-git
