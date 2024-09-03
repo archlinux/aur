@@ -1,20 +1,21 @@
 post_install() {
 	echo
-	echo "You MUST edit /etc/conf.d/rpcbind"
-	echo "Change the line which reads:"
-	echo
-	echo "RPCBIND_ARGS=\"\""
-	echo
-	echo "to:"
-	echo
-	echo "RPCBIND_ARGS=\"-i\""
-	echo
-	echo "This is probably insecure."
 	echo "To start dtlogin, first use systemctl to start rpcbind.service, and then start dtlogin.service"
+	echo
+	echo "Security Note copied from https://sourceforge.net/p/cdesktopenv/wiki/Home/"
+	echo
+	echo "CDE has had quite a few known security vulnerabilities in it, and it is likely that several more unknown ones still exist."
+	echo "Don't expose it to the Internet. In fact, never expose any desktop to the Internet."
+	echo
+	echo "You should think strongly about enabling the dtspcd and rpc.ttdbserver daemons."
+	echo "Unless you know what they do, you almost certainly don't need them."
+	echo
+	echo "The following advisories have no traced resolution in this release;"
+	echo "xxxxxx - 1999-11-xx - http://www.cert.org/advisories/CA-1999-11.html"
+	echo "179804 - 2004-03-23 - http://www.kb.cert.org/vuls/id/179804"
+	echo
 }
 
 post_upgrade() {
 	post_install
 }
-
-# vim:set ts=2 sw=2 et:

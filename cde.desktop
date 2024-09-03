@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Name=CDE
 Comment=Use this session to boot into the Common Desktop Environment
-Exec=/usr/bin/startxsession.sh
+Exec=/usr/bin/startcdesession.sh
 Icon=
 Type=Application
 

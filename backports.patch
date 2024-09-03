@@ -1,0 +1,2072 @@
+--- cde-2.5.2/programs/dtksh/ksh93/src/lib/libast/aso/aso.c
++++ cde-2.5.2/programs/dtksh/ksh93/src/lib/libast/aso/aso.c
+@@ -835,7 +835,7 @@
+ 
+ #if defined(_aso_casptr)
+ 	if (!state.lockf)
+-		return _aso_cas64((void**)p, o, n);
++		return _aso_casptr((void**)p, o, n);
+ #endif
+ 	k = lock(state.data, 0, p);
+ 	if (*(void* volatile*)p == o)
+
+--- cde-2.5.2/programs/dtksh/ksh93/src/lib/libast/features/aso
++++ cde-2.5.2/programs/dtksh/ksh93/src/lib/libast/features/aso
+@@ -24,9 +24,9 @@
+ 		#define _aso_inc64(p)		__sync_fetch_and_add(p,1)
+ 		#define _aso_dec64(p)		__sync_fetch_and_sub(p,1)
+ 		#if _ast_sizeof_pointer == 8
+-		#define _aso_casptr(p,o,n)	((void*)__sync_val_compare_and_swap(p,(uint64_t)o,(uint64_t)n))
+-		#else
+-		#define _aso_casptr(p,o,n)	((void*)__sync_val_compare_and_swap(p,(uint32_t)o,(uint32_t)n))
++		#define _aso_casptr(p,o,n)	((void*)__sync_val_compare_and_swap(p,o,n))
++		#else
++		#define _aso_casptr(p,o,n)	((void*)__sync_val_compare_and_swap(p,o,n))
+ 		#endif
+ 	}
+ elif	aso note{ gcc 4.1+ 32 bit memory atomic operations model }end link{
+@@ -48,7 +48,7 @@
+ 		#define _aso_cas32(p,o,n)	__sync_val_compare_and_swap(p,o,n)
+ 		#define _aso_inc32(p)		__sync_fetch_and_add(p,1)
+ 		#define _aso_dec32(p)		__sync_fetch_and_sub(p,1)
+-		#define _aso_casptr(p,o,n)	((void*)__sync_val_compare_and_swap(p,(uint32_t)o,(uint32_t)n))
++		#define _aso_casptr(p,o,n)	((void*)__sync_val_compare_and_swap(p,o,n))
+ 	}
+ elif	aso note{ <atomic.h> atomic_cas_64 }end link{
+ 		#include "FEATURE/common"
+@@ -74,9 +74,9 @@
+ 		#define _aso_inc64(p)		(atomic_add_64_nv(p,1)-1)
+ 		#define _aso_dec64(p)		(atomic_add_64_nv(p,-1)+1)
+ 		#if _ast_sizeof_pointer == 8
+-		#define _aso_casptr(p,o,n)	((void*)atomic_cas_64((uint64_t*)p,(uint64_t)o,(uint64_t)n))
+-		#else
+-		#define _aso_casptr(p,o,n)	((void*)atomic_cas_32((uint32_t*)p,(uint32_t)o,(uint32_t)n))
++		#define _aso_casptr(p,o,n)	((void*)atomic_cas_64((uint64_t*)p,o,n))
++		#else
++		#define _aso_casptr(p,o,n)	((void*)atomic_cas_32((uint32_t*)p,o,n))
+ 		#endif
+ 	}
+ elif	aso note{ <atomic.h> atomic_cas_32 }end link{
+@@ -98,7 +98,7 @@
+ 		#define _aso_cas32(p,o,n)	atomic_cas_32(p,o,n)
+ 		#define _aso_inc32(p)		(atomic_add_32_nv(p,1)-1)
+ 		#define _aso_dec32(p)		(atomic_add_32_nv(p,-1)+1)
+-		#define _aso_casptr(p,o,n)	((void*)atomic_cas_32((uint32_t*)p,(uint32_t)o,(uint32_t)n))
++		#define _aso_casptr(p,o,n)	((void*)atomic_cas_32((uint32_t*)p,o,n))
+ 	}
+ elif	aso -latomic note{ <atomic.h> atomic_cas_64 with -latomic }end link{
+ 		#include "FEATURE/common"
+@@ -125,9 +125,9 @@
+ 		#define _aso_inc64(p)		(atomic_add_64_nv(p,1)-1)
+ 		#define _aso_dec64(p)		(atomic_add_64_nv(p,-1)+1)
+ 		#if _ast_sizeof_pointer == 8
+-		#define _aso_casptr(p,o,n)	((void*)atomic_cas_64((uint64_t*)p,(uint64_t)o,(uint64_t)n))
+-		#else
+-		#define _aso_casptr(p,o,n)	((void*)atomic_cas_32((uint32_t*)p,(uint32_t)o,(uint32_t)n))
++		#define _aso_casptr(p,o,n)	((void*)atomic_cas_64((uint64_t*)p,o,n))
++		#else
++		#define _aso_casptr(p,o,n)	((void*)atomic_cas_32((uint32_t*)p,o,n))
+ 		#endif
+ 	}
+ elif	aso note{ <atomic.h> atomic_cas_32 with -latomic }end link{
+@@ -150,7 +150,7 @@
+ 		#define _aso_cas32(p,o,n)	atomic_cas_32(p,o,n)
+ 		#define _aso_inc32(p)		(atomic_add_32_nv(p,1)-1)
+ 		#define _aso_dec32(p)		(atomic_add_32_nv(p,-1)+1)
+-		#define _aso_casptr(p,o,n)	((void*)atomic_cas_32((uint32_t*)p,(uint32_t)o,(uint32_t)n))
++		#define _aso_casptr(p,o,n)	((void*)atomic_cas_32((uint32_t*)p,o,n))
+ 	}
+ elif	aso note{ <atomic.h> cas64 }end link{
+ 		#include "FEATURE/common"
+@@ -176,9 +176,9 @@
+ 		#define _aso_inc64(p)		(atomic_add_64_nv(p,1)-1)
+ 		#define _aso_dec64(p)		(atomic_add_64_nv(p,-1)+1)
+ 		#if _ast_sizeof_pointer == 8
+-		#define _aso_casptr(p,o,n)	((void*)cas64((uint64_t*)p,(uint64_t)o,(uint64_t)n))
+-		#else
+-		#define _aso_casptr(p,o,n)	((void*)cas32((uint32_t*)p,(uint32_t)o,(uint32_t)n))
++		#define _aso_casptr(p,o,n)	((void*)cas64((uint64_t*)p,o,n))
++		#else
++		#define _aso_casptr(p,o,n)	((void*)cas32((uint32_t*)p,o,n))
+ 		#endif
+ 	}
+ elif	aso note{ <atomic.h> just cas64 }end link{
+@@ -199,9 +199,9 @@
+ 		#define _aso_cas32(p,o,n)	cas32(p,o,n)
+ 		#define _aso_cas64(p,o,n)	cas64(p,o,n)
+ 		#if _ast_sizeof_pointer == 8
+-		#define _aso_casptr(p,o,n)	((void*)cas64((uint64_t*)p,(uint64_t)o,(uint64_t)n))
+-		#else
+-		#define _aso_casptr(p,o,n)	((void*)cas32((uint32_t*)p,(uint32_t)o,(uint32_t)n))
++		#define _aso_casptr(p,o,n)	((void*)cas64((uint64_t*)p,o,n))
++		#else
++		#define _aso_casptr(p,o,n)	((void*)cas32((uint32_t*)p,o,n))
+ 		#endif
+ 	}
+ elif	aso note{ <atomic.h> cas32 }end link{
+@@ -223,7 +223,7 @@
+ 		#define _aso_cas32(p,o,n)	cas32(p,o,n)
+ 		#define _aso_inc32(p)		(atomic_add_32_nv(p,1)-1)
+ 		#define _aso_dec32(p)		(atomic_add_32_nv(p,-1)+1)
+-		#define _aso_casptr(p,o,n)	((void*)cas32((uint32_t*)p,(uint32_t)o,(uint32_t)n))
++		#define _aso_casptr(p,o,n)	((void*)cas32((uint32_t*)p,o,n))
+ 	}
+ elif	aso note{ <atomic.h> just cas32 }end link{
+ 		#include "FEATURE/common"
+@@ -240,7 +240,7 @@
+ 		#define _aso_cas8(p,o,n)	cas8(p,o,n)
+ 		#define _aso_cas16(p,o,n)	cas16(p,o,n)
+ 		#define _aso_cas32(p,o,n)	cas32(p,o,n)
+-		#define _aso_casptr(p,o,n)	((void*)cas32((uint32_t*)p,(uint32_t)o,(uint32_t)n))
++		#define _aso_casptr(p,o,n)	((void*)cas32((uint32_t*)p,o,n))
+ 	}
+ elif	aso note{ winix Interlocked }end link{
+ 		#include <windows.h>
+@@ -261,7 +261,7 @@
+ 		#define _aso_cas64(p,o,n)	InterlockedCompareExchange64((LONGLONG volatile*)p,n,o)
+ 		#define _aso_inc64(p)		(InterlockedIncrement64((LONGLONG volatile*)p)-1)
+ 		#define _aso_dec64(p)		(InterlockedDecrement64((LONGLONG volatile*)p)+1)
+-		#define _aso_casptr(p,o,n)	((void*)InterlockedCompareExchange64((LONGLONG volatile*)p,(LONGLONG)n,(LONGLONG)o))
++		#define _aso_casptr(p,o,n)	((void*)InterlockedCompareExchange64((LONGLONG volatile*)p,n,o))
+ 		#else
+ 		#if _BLD_posix
+ 		#include "dl.h"
+@@ -345,7 +345,7 @@
+ 			return _aso_InterlockedDecrement64(p);
+ 		}
+ 		#endif
+-		#define _aso_casptr(p,o,n)	((void*)InterlockedCompareExchange((LONG volatile*)p,(LONG)n,(LONG)o))
++		#define _aso_casptr(p,o,n)	((void*)InterlockedCompareExchange((LONG volatile*)p,n,o))
+ 		#endif
+ 	}
+ elif	aso note{ AIX fetch and add }end link{
+@@ -361,9 +361,9 @@
+ 		#define _aso_decint(p)		fetch_and_add((atomic_p)p,-1)
+ 		#define _aso_casint(p,o,n)	(compare_and_swap((atomic_p)p,(int*)&o,(int)n) ? o : *p)
+ 		#if _ast_sizeof_pointer == 8
+-		#define _aso_casptr(p,o,n)	(compare_and_swaplp((atomic_l)p,(long*)&o,(long)n) ? o : *(void**)p)
+-		#else
+-		#define _aso_casptr(p,o,n)	(compare_and_swap((atomic_p)p,(int*)&o,(int)n) ? o : *(void**)p)
++		#define _aso_casptr(p,o,n)	(compare_and_swaplp((atomic_l)p,(long*)&o,n) ? o : *(void**)p)
++		#else
++		#define _aso_casptr(p,o,n)	(compare_and_swap((atomic_p)p,(int*)&o,n) ? o : *(void**)p)
+ 		#endif
+ 	}
+ elif	aso note{ MIPS compare and swap }end link{
+@@ -374,7 +374,7 @@
+ 		}
+ 	}end && {
+ 		#define _aso_cas32(p,o,n)	(__compare_and_swap(p,o,n) ? o : *p)
+-		#define _aso_casptr(p,o,n)	(__compare_and_swap((long*)p,(long)o,(long)n) ? o : *(void**)p)
++		#define _aso_casptr(p,o,n)	(__compare_and_swap((long*)p,o,n) ? o : *(void**)p)
+ 	}
+ elif	aso note{ i386|i386-64 asm compare and swap }end link{
+ 		#include "FEATURE/common"
+@@ -457,9 +457,9 @@
+ 		#define _aso_cas32(p,o,n)	cas32(p,o,n)
+ 		#if _ast_sizeof_pointer == 8
+ 		#define _aso_cas64(p,o,n)	cas64(p,o,n)
+-		#define _aso_casptr(p,o,n)	((void*)cas64((uint64_t*)p,(uint64_t)o,(uint64_t)n))
+-		#else
+-		#define _aso_casptr(p,o,n)	((void*)cas32((uint32_t*)p,(uint32_t)o,(uint32_t)n))
++		#define _aso_casptr(p,o,n)	((void*)cas64((uint64_t*)p,o,n))
++		#else
++		#define _aso_casptr(p,o,n)	((void*)cas32((uint32_t*)p,o,n))
+ 		#endif
+ 	}
+ elif	aso note{ ia64 asm compare and swap }end link{
+@@ -527,9 +527,9 @@
+ 		#define _aso_cas32(p,o,n)	cas32(p,o,n)
+ 		#define _aso_cas64(p,o,n)	cas64(p,o,n)
+ 		#if _ast_sizeof_pointer == 8
+-		#define _aso_casptr(p,o,n)	((void*)cas64((uint64_t*)p,(uint64_t)o,(uint64_t)n))
+-		#else
+-		#define _aso_casptr(p,o,n)	((void*)cas32((uint32_t*)p,(uint32_t)o,(uint32_t)n))
++		#define _aso_casptr(p,o,n)	((void*)cas64((uint64_t*)p,o,n))
++		#else
++		#define _aso_casptr(p,o,n)	((void*)cas32((uint32_t*)p,o,n))
+ 		#endif
+ 	}
+ elif	aso note{ ppc asm compare and swap }end link{
+@@ -625,9 +625,9 @@
+ 		#define _aso_cas32(p,o,n)	cas32(p,o,n)
+ 		#define _aso_cas64(p,o,n)	cas64(p,o,n)
+ 		#if _ast_sizeof_pointer == 8
+-		#define _aso_casptr(p,o,n)	((void*)cas64((uint64_t*)p,(uint64_t)o,(uint64_t)n))
+-		#else
+-		#define _aso_casptr(p,o,n)	((void*)cas32((uint32_t*)p,(uint32_t)o,(uint32_t)n))
++		#define _aso_casptr(p,o,n)	((void*)cas64((uint64_t*)p,o,n))
++		#else
++		#define _aso_casptr(p,o,n)	((void*)cas32((uint32_t*)p,o,n))
+ 		#endif
+ 	}
+ endif
+
+--- cde-2.5.2/lib/DtTerm/TermPrim/TermPrimUtil.c
++++ cde-2.5.2/lib/DtTerm/TermPrim/TermPrimUtil.c
+@@ -404,10 +404,10 @@
+     if ( tw->term.log_on || tw->term.logInhibit ) { return; }
+ 
+     if (!tw->term.logFile || !*tw->term.logFile) {
+-	tw->term.logFile = "DttermLogXXXXX";
+-    }
+-
+-    if (!strcmp(tw->term.logFile + strlen(tw->term.logFile) - 5, "XXXXX")) {
++	tw->term.logFile = "DttermLogXXXXXX";
++    }
++
++    if (!strcmp(tw->term.logFile + strlen(tw->term.logFile) - 6, "XXXXXX")) {
+ 	/* make a local copy in case we are going to change it... */
+ 	cp = XtMalloc(strlen(tw->term.logFile) + 1);
+ 	(void) strcpy(cp, tw->term.logFile);
+
+--- cde-2.5.2/lib/DtTerm/TermPrim/TermPrimUtil.c
++++ cde-2.5.2/lib/DtTerm/TermPrim/TermPrimUtil.c
+@@ -412,8 +412,9 @@
+ 	cp = XtMalloc(strlen(tw->term.logFile) + 1);
+ 	(void) strcpy(cp, tw->term.logFile);
+ 
+-        (void) mktemp(cp);
+-	if (cp && *cp) {
++        int logStream = mkstemp(cp);
++	if (logStream != -1) {
++	    tpd->logStream = fdopen(logStream, "w+");
+ 	    tw->term.logFile = cp;
+ 	} else {
+ 	    (void) XtFree(cp);
+@@ -421,7 +422,7 @@
+ 	}
+     }
+ 
+-    if ('|' == *tw->term.logFile ) {
++    else if ('|' == *tw->term.logFile ) {
+         /*
+         ** pipe logfile into command
+         */
+
+--- cde-2.5.2/lib/DtTerm/Term/TermParse.c
++++ cde-2.5.2/lib/DtTerm/Term/TermParse.c
+@@ -2196,8 +2196,8 @@
+     case 21:
+       XtVaGetValues(sw,XmNtitle, &title, NULL);
+       fmt = "\033]l%s\033\\";
+-      if (strlen(icon) + strlen(fmt) + 1 >= sizeof(buf))
+-	s = XtMalloc(strlen(icon) + strlen(fmt) + 1);
++      if (strlen(title) + strlen(fmt) + 1 >= sizeof(buf))
++	s = XtMalloc(strlen(title) + strlen(fmt) + 1);
+       else 
+ 	s = buf;
+       sprintf(s, "%s", fmt);
+
+--- cde-2.5.2/lib/DtTerm/Term/Term.c
++++ cde-2.5.2/lib/DtTerm/Term/Term.c
+@@ -699,7 +699,6 @@
+ Resize(Widget w)
+ {
+     DtTermWidget tw = (DtTermWidget) w;
+-    DtTermData td = tw->vt.td;
+ 
+     /* let our superclass (the Term Widget) perform the resize... */
+     tw->core.widget_class->core_class.superclass->core_class.resize(w);
+@@ -880,7 +879,6 @@
+ Destroy(Widget w)
+ {
+     DtTermWidget tw = (DtTermWidget) w;
+-    DtTermData td = tw->vt.td;
+ 
+     /* remove the DtTermData structure contents, followed by the structure...
+      */
+
+--- cde-2.5.2/lib/DtTerm/Term/TermAction.c
++++ cde-2.5.2/lib/DtTerm/Term/TermAction.c
+@@ -572,7 +572,6 @@
+     long keyNumber;
+     char *ret;
+     int i;
+-    DtTermData      td = tw->vt.td;
+ 
+     if (*num_params < 1) {
+         return;
+
+--- cde-2.5.2/lib/DtTerm/Term/TermBuffer.c
++++ cde-2.5.2/lib/DtTerm/Term/TermBuffer.c
+@@ -624,12 +624,7 @@
+     }
+ 
+     /* 
+-    ** get a copy of the current enhancement
+-    */
+-    fillEnh = enh[col];
+-
+-    /* 
+-    ** move all of the enhancement blocks between col + width and and the
++    ** move all of the enhancement blocks between col + width and the
+     ** end of the line to col
+     */
+     copyCount = WIDTH(line) - (col + width);
+@@ -736,19 +731,19 @@
+     switch (id)
+     {
+       case enhVideo:
+-        enhState->video   = (value &= VIDEO_MASK);
++        enhState->video   = value & VIDEO_MASK;
+         break;
+       case enhField:
+-        enhState->field   = (value &= FIELD_MASK);
++        enhState->field   = value & FIELD_MASK;
+         break;
+       case enhFgColor:
+-        enhState->fgColor = (value &= COLOR_MASK);
++        enhState->fgColor = value & COLOR_MASK;
+         break;
+       case enhBgColor:
+-        enhState->bgColor = (value &= COLOR_MASK);
++        enhState->bgColor = value & COLOR_MASK;
+         break;
+       case enhFont:
+-        enhState->font    = (value &= FONT_MASK);
++        enhState->font    = value & FONT_MASK;
+         break;
+       default:
+         return(-1);
+
+--- cde-2.5.2/lib/DtTerm/Term/TermFunction.c
++++ cde-2.5.2/lib/DtTerm/Term/TermFunction.c
+@@ -90,7 +90,6 @@
+ _DtTermFuncScroll(Widget w, int count, FunctionSource functionSource)
+ {
+     DtTermPrimitiveWidget tw = (DtTermPrimitiveWidget) w;
+-    struct termData *tpd = tw->term.tpd;
+ 
+     /* make sure the cursor is off... */
+     (void) _DtTermPrimCursorOff(w);
+@@ -120,7 +119,6 @@
+ _DtTermFuncEndOfBuffer(Widget w, int count, FunctionSource functionSource)
+ {
+     DtTermPrimitiveWidget tw = (DtTermPrimitiveWidget) w;
+-    struct termData *tpd = tw->term.tpd;
+ 
+     EXIT_IF_MARGINS_SET(tw)
+     (void) _DtTermPrimCursorOff(w);
+@@ -220,13 +218,9 @@
+ {
+     DtTermPrimitiveWidget tw  = (DtTermPrimitiveWidget) w;
+     DtTermPrimData        tpd = tw->term.tpd;
+-    TermBuffer            tb  = tpd->termBuffer;
+     short row;
+     short col;
+ 
+-    row = tpd->cursorRow + tpd->topRow;
+-    col = tpd->cursorColumn;
+-    
+     switch(eraseSwitch)
+     {
+       case eraseToEOL:
+@@ -339,8 +333,6 @@
+ _DtTermFuncClearToEndOfBuffer(Widget w, int count, FunctionSource functionSource)
+ {
+     DtTermPrimitiveWidget      tw        = (DtTermPrimitiveWidget) w;
+-    DtTermPrimData        tpd        = tw->term.tpd;
+-    short trow ;
+ 
+     /* turn the cursor off... */
+     (void) _DtTermPrimCursorOff(w);
+@@ -855,7 +847,6 @@
+ 	    }
+ 
+ 	    /* update screen info and counts... */
+-	    count -= moveCount;
+ 	    insertedRows += moveCount;
+ 	}
+     }
+@@ -954,7 +945,6 @@
+     DtTermPrimData        tpd        = tw->term.tpd;
+     DtTermWidget      vtw        = (DtTermWidget) w;
+     DtTermData        td        = vtw->vt.td;
+-    ParserContext   context   = GetParserContext(w);
+ 
+       switch(value) {
+         case 0:
+@@ -1075,8 +1065,6 @@
+     DtTermPrimitiveWidget      tw        = (DtTermPrimitiveWidget) w;
+     DtTermPrimData        tpd        = tw->term.tpd;
+     DtTermWidget      vtw        = (DtTermWidget) w;
+-    DtTermData        td        = vtw->vt.td;
+-    ParserContext   context   = GetParserContext(w);
+ 
+     (void)_DtTermPrimBufferSetEnhancement(tpd->termBuffer,
+               tpd->topRow + tpd->cursorRow, tpd->cursorColumn, enhFont, value);
+
+--- cde-2.5.2/lib/DtTerm/Term/TermFunctionKey.c
++++ cde-2.5.2/lib/DtTerm/Term/TermFunctionKey.c
+@@ -54,7 +54,6 @@
+ )
+ {
+     DtTermWidget tw = (DtTermWidget) w;
+-    DtTermData td = tw->vt.td;
+ 
+     if (!shift || tw->vt.sunFunctionKeys == True ) {
+       if ( tw->vt.sunFunctionKeys == True ) {  
+
+--- cde-2.5.2/lib/DtTerm/Term/TermParse.c
++++ cde-2.5.2/lib/DtTerm/Term/TermParse.c
+@@ -536,11 +536,10 @@
+ {
+   ParserContext context ;
+   DtTermWidget vtw = (DtTermWidget) w;
+-  int row,col,cnt ;
++  int col,cnt ;
+   Debug('P', fprintf(stderr,">>In func _DtTermEraseChars\n")) ;
+   KILLWRAP(vtw) ;
+   context = GetParserContext(w) ;
+-  row = vtw->term.tpd->cursorRow ;
+   col = vtw->term.tpd->cursorColumn ;
+   STORELASTARG(context) ;
+   cnt = context->parms[1] ;
+@@ -596,12 +595,11 @@
+ {
+   ParserContext context ;
+   DtTermWidget vtw = (DtTermWidget) w;
+-  int trow, row, tmargin, cnt;
++  int row, tmargin, cnt;
+   Debug('P', fprintf(stderr,">>In func _DtTermCursorUp\n")) ;
+   context = GetParserContext(w) ;
+   KILLWRAP(vtw) ;
+   tmargin = TOPMARGIN(vtw) ;
+-  trow = TOPROW(vtw) ;
+   STORELASTARG(context) ;
+   cnt = context->parms[1] ;
+   if (!(cnt))cnt=1;
+@@ -659,13 +657,12 @@
+ {
+   ParserContext context ;
+   DtTermWidget vtw = (DtTermWidget) w;
+-  int i,k,j,row,col,fcol,cnt ;
++  int i,k,j,row,col,cnt ;
+   Debug('P', fprintf(stderr,">>In func _DtTermCursorBack\n")) ;
+   KILLWRAP(vtw) ;
+   context = GetParserContext(w) ;
+   STORELASTARG(context) ;
+   cnt = context->parms[1] ;
+-  fcol = FIRSTCOLUMN(vtw) ;
+   row = vtw->term.tpd->cursorRow;
+   col = vtw->term.tpd->cursorColumn;
+   if (!cnt) cnt=1;
+@@ -693,10 +690,8 @@
+ _DtTermCursorToLineUp(Widget w)   /* CPL  CSIpF */
+ {
+   DtTermWidget vtw = (DtTermWidget) w;
+-  ParserContext context ;
+   Debug('P', fprintf(stderr,">>In func _DtTermCursorToLineUp\n")) ;
+   KILLWRAP(vtw) ; 
+-  context = GetParserContext(w) ;
+   vtw->term.tpd->cursorColumn = FIRSTCOLUMN(vtw) ;
+   _DtTermCursorUp(w) ;
+ }
+@@ -887,7 +882,6 @@
+   Debug('P', fprintf(stderr,">>In func _DtTermCharAttributes\n")) ;
+   context = GetParserContext(w) ;
+   STORELASTARG(context) ;
+-  cnt = PCOUNT(context) ;
+   if(PCOUNT(context)) {
+     for (cnt=1; cnt <= PCOUNT(context); cnt++)
+        _DtTermVideoEnhancement(w,context->parms[cnt]) ;
+@@ -936,7 +930,6 @@
+ {
+   ParserContext context ;
+   DtTermWidget tw = (DtTermWidget) w;
+-  DtTermData vtd = tw->vt.td;
+   Widget sw;
+   int i ;
+   Arg arg[5];
+@@ -1033,7 +1026,6 @@
+ {
+   DtTermWidget vtw = (DtTermWidget) w;
+   DtTermPrimitiveWidget tw = (DtTermPrimitiveWidget) w;
+-  DtTermBuffer tb = (DtTermBuffer)tw->term.tpd->termBuffer ;
+   DtTermData vtd = vtw->vt.td;
+ 
+   Debug('P', fprintf(stderr,">>In func _DtTermSaveCursor\n")) ;
+@@ -1168,19 +1160,13 @@
+ void 
+ _DtTermInvokeG3(Widget w)  /* LS3R  ESC| */
+ {
+-  ParserContext context ;
+-  int cnt ;
+   Debug('P', fprintf(stderr,">>In func _DtTermInvokeG3\n")) ;
+-  context = GetParserContext(w) ;
+ }
+ 
+ void 
+ _DtTermInvokeG2(Widget w)  /* LS3R  ESC} */
+ {
+-  ParserContext context ;
+-  int cnt ;
+   Debug('P', fprintf(stderr,">>In func _DtTermInvokeG2\n")) ;
+-  context = GetParserContext(w) ;
+ }
+ 
+ void 
+@@ -1441,10 +1427,7 @@
+ void 
+ _DtTermInvokeG1(Widget w)     /* ESC~ESC */
+ {
+-  ParserContext context ;
+-  int cnt ;
+   Debug('P', fprintf(stderr,">>In func _DtTermInvokeG1\n")) ;
+-  context = GetParserContext(w) ;
+ }
+ 
+ void 
+@@ -1538,7 +1521,6 @@
+ {
+   DtTermWidget vtw = (DtTermWidget) w;
+   DtTermPrimitiveWidget tw = (DtTermPrimitiveWidget) w;
+-  TermBuffer tb = tw->term.tpd->termBuffer ;
+   ParserContext context ;
+   enhValues evalues;
+   int r,col1,col2,row1,row2,col,row ;
+@@ -1689,10 +1671,7 @@
+ void 
+ _DtTermReset(Widget w) /* RIS  ESCc */
+ {
+-  ParserContext context ;
+-  int cnt ;
+   Debug('P', fprintf(stderr,">>In func _DtTermReset\n")) ;
+-  context = GetParserContext(w) ;
+   _DtTermFuncHardReset(w,0 ,fromParser) ;
+ }
+ 
+@@ -1766,28 +1745,19 @@
+ void 
+ _DtTermSingleWide(Widget w) /* DECSWL ESC#5 */
+ {
+-  ParserContext context ;
+-  int cnt ;
+   Debug('P', fprintf(stderr,">>In func _DtTermSingleWide\n")) ;
+-  context = GetParserContext(w) ;
+ }
+ 
+ void 
+ _DtTermDoubleWide(Widget w) /* DECDWL ESC#6  */
+ {
+-  ParserContext context ;
+-  int cnt ;
+   Debug('P', fprintf(stderr,">>In func _DtTermDoubleWide\n")) ;
+-  context = GetParserContext(w) ;
+ }
+ 
+ void 
+ _DtTermDoubleHigh(Widget w) /* DECWHL ESC#4 */
+ {
+-  ParserContext context ;
+-  int cnt ;
+   Debug('P', fprintf(stderr,">>In func _DtTermDoubleHigh\n")) ;
+-  context = GetParserContext(w) ;
+ }
+ 
+ void
+@@ -1990,11 +1960,9 @@
+     Widget w
+ )
+ {
+-  ParserContext context ;
+   DtTermWidget vtw = (DtTermWidget) w;
+   int row,col,fcol,cnt ;
+   Debug('P', fprintf(stderr,">>In func  _DtTermParseBackspace\n")) ;
+-  context = GetParserContext(w) ;
+   fcol = FIRSTCOLUMN(vtw) ;
+   row = vtw->term.tpd->cursorRow;
+   col = vtw->term.tpd->cursorColumn;
+@@ -2098,7 +2066,6 @@
+   DtTermWidget vtw = (DtTermWidget) w;
+   Display *display = XtDisplay(w);
+   int i, scr_num = XScreenNumberOfScreen(XtScreen(w));
+-  Window win = XtWindow(w);
+   Window sh_win;
+   Widget sw;
+   XWindowChanges values;
+@@ -2233,8 +2200,6 @@
+ void
+ _DtTermParserSunIconFile(Widget w)   /* Sun set icon to pixmap in file */
+ {
+-  DtTermBuffer tb =
+-            (DtTermBuffer)((DtTermPrimitiveWidget)w)->term.tpd->termBuffer ;
+   ParserContext context ;
+   int fg, bg;
+   Widget sw;
+
+--- cde-2.5.2/lib/DtTerm/TermPrim/TermPrim.c
++++ cde-2.5.2/lib/DtTerm/TermPrim/TermPrim.c
+@@ -2355,7 +2355,6 @@
+ Realize(Widget w, XtValueMask *p_valueMask, XSetWindowAttributes *attributes)
+ {
+     DtTermPrimitiveWidget tw = (DtTermPrimitiveWidget) w;
+-    DtTermPrimData tpd = tw->term.tpd;
+     Mask valueMask = *p_valueMask;
+     sigset_t sigNew;
+     char buffer[BUFSIZ];
+
+--- cde-2.5.2/lib/DtTerm/TermPrim/TermPrimAction.c
++++ cde-2.5.2/lib/DtTerm/TermPrim/TermPrimAction.c
+@@ -157,7 +157,6 @@
+ 	String *params, Cardinal *num_params)
+ {
+     DtTermPrimitiveWidget tw = (DtTermPrimitiveWidget) w;
+-    struct termData *tpd = tw->term.tpd;
+     Boolean shiftedTab = False;
+     Boolean numericTab = False;
+     int i;
+
+--- cde-2.5.2/lib/DtTerm/TermPrim/TermPrimDebug.c
++++ cde-2.5.2/lib/DtTerm/TermPrim/TermPrimDebug.c
+@@ -68,13 +68,6 @@
+ void
+ catchExit(void)
+ {
+-    int a;
+-    int b;
+-
+-    a = 1;
+-    b = a;
+-    a = b;
+-    return;
+ }
+ 
+ typedef struct _argArray {
+
+--- cde-2.5.2/lib/DtTerm/TermPrim/TermPrimFunction.c
++++ cde-2.5.2/lib/DtTerm/TermPrim/TermPrimFunction.c
+@@ -389,7 +389,6 @@
+ _DtTermPrimFuncRedrawDisplay(Widget w, int count, FunctionSource functionSource)
+ {
+     DtTermPrimitiveWidget tw = (DtTermPrimitiveWidget) w;
+-    struct termData *tpd = tw->term.tpd;
+ 
+     (void) XClearArea(XtDisplay(w), XtWindow(w), 0, 0, 0, 0, True);
+     return;
+
+--- cde-2.5.2/lib/DtTerm/TermPrim/TermPrimLineDraw.c
++++ cde-2.5.2/lib/DtTerm/TermPrim/TermPrimLineDraw.c
+@@ -263,6 +263,7 @@
+ #endif	/* USE_PIXMAPS */
+     }
+ 
++#ifdef	USE_PIXMAPS
+     /* stipple in the rectangle...
+      */
+     for (j = 0; j < glyph->numStipples; j++) {
+@@ -272,10 +273,8 @@
+ 	int y1;
+ 	int y2;
+ 	int stippleSize;
+-#ifdef	USE_PIXMAPS
+ 	int xIndex;
+ 	int yIndex;
+-#endif	/* USE_PIXMAPS */
+ 
+ 	/* scale x1 and x2 to our width... */
+ 	x1 = ((width - 1) * glyph->stipples[j].x1) / 100;
+@@ -293,7 +292,6 @@
+ 	y1 += glyph->stipples[j].y1Offset;
+ 	y2 += glyph->stipples[j].y2Offset;
+ 
+-#ifdef	USE_PIXMAPS
+ 	/* fill in the area... */
+ 	for (yIndex = y1; yIndex < y2; yIndex += stippleSize) {
+ 	    for (xIndex = x1; xIndex < x2; xIndex += stippleSize) {
+@@ -321,8 +319,8 @@
+ 		}
+ 	    }
+ 	}
+-#endif	/* USE_PIXMAPS */
+-    }
++    }
++#endif	/* USE_PIXMAPS */
+ 
+     /* mark this character as completed... */
+ #ifdef	USE_PIXMAPS
+@@ -374,7 +372,6 @@
+ 	int width, int ascent, int descent)
+ {
+     DtTermPrimitiveWidget tw = (DtTermPrimitiveWidget) w;
+-    struct termData *tpd = tw->term.tpd;
+     int fontNumber;
+     LineDrawFont lineDrawFont;
+     int i;
+
+--- cde-2.5.2/lib/DtTerm/TermPrim/TermPrimRender.c
++++ cde-2.5.2/lib/DtTerm/TermPrim/TermPrimRender.c
+@@ -795,7 +795,6 @@
+ 			/* the lines are now freed, adjust the used count... */
+ 			tpd->lastUsedHistoryRow -= historyLinesNeeded;
+ 			if (tpd->lastUsedHistoryRow < 0) {
+-			    historyLinesNeeded += tpd->lastUsedHistoryRow;
+ 			    tpd->lastUsedHistoryRow = 0;
+ 			}
+ 		    }
+@@ -824,9 +823,6 @@
+ 			    enhValue *eValues = (enhValue *)NULL;
+ 
+ 			    overflowChars = (termChar *) XtMalloc(BUFSIZ * sizeof (termChar));
+-			    c1 = _DtTermPrimBufferGetCharacterPointer(
+-				    tBuffer, i1, 0);
+-
+ 			    /* Perpetuate the enhancements. */
+ 			    for (eCol = 0; eCol < length; eCol += eCount)
+ 			    {
+@@ -1095,7 +1091,6 @@
+ 	 * character count...
+ 	 */
+         pmb         = (char *)buffer;
+-        pwc         = wcBuffer;
+         wcBufferLen = i;
+ 	i           = 0;
+         while (i < wcBufferLen)
+@@ -1270,7 +1265,6 @@
+ 	newWidth = DoInsert(w, &buffer[insertStartX],
+ 		insertCharCount, &wrapped);
+ 	tpd->cursorColumn += insertCharCount;
+-	insertCharCount = 0;
+ 	if (tpd->insertCharMode != DtTERM_INSERT_CHAR_OFF) {
+ 	    renderEndX = newWidth;
+ 	} else {
+@@ -1289,8 +1283,6 @@
+ 	    (void) _DtTermPrimRefreshText(w, 0, tpd->cursorRow + 1,
+ 		    renderEndX, tpd->cursorRow + 1);
+ 	}
+-	wrapped = False;
+-	needToRender = False;
+     }
+ 
+     return(i);
+@@ -1336,7 +1328,6 @@
+     struct termData *tpd = tw->term.tpd;
+     DtTermPrimitiveClassPart	 *termClassPart = &(((DtTermPrimitiveClassRec *)
+ 	    (tw->core.widget_class))->term_primitive_class);
+-    TermBuffer tBuffer = tpd->termBuffer;
+     int i;
+     short insertStart;
+     short insertByteCount;
+
+--- cde-2.5.2/lib/DtTerm/TermPrim/TermPrimRenderMb.c
++++ cde-2.5.2/lib/DtTerm/TermPrim/TermPrimRenderMb.c
+@@ -880,7 +880,6 @@
+ 	newWidth  = DoInsertWc(w, &wcBuffer[insertStartX],
+ 		               insertCharCount, &wrapped);
+         tpd->cursorColumn += insertCharWidth;
+-	insertCharCount = 0;
+ 	if (tpd->insertCharMode == DtTERM_INSERT_CHAR_OFF) {
+ 	    renderEndX = MAX(renderEndX, tpd->cursorColumn);
+ 	} else {
+@@ -899,8 +898,6 @@
+ 	    (void) _DtTermPrimRefreshTextWc(w, 0, tpd->cursorRow + 1,
+ 		    renderEndX + 1, tpd->cursorRow + 1);
+ 	}
+-	wrapped = False;
+-	needToRender = False;
+     }
+     return(i);
+ }
+
+--- cde-2.5.2/lib/DtTerm/TermPrim/TermPrimScroll.c
++++ cde-2.5.2/lib/DtTerm/TermPrim/TermPrimScroll.c
+@@ -105,7 +105,6 @@
+     int i;
+     int exposeY;
+     int exposeHeight;
+-    int scrolledLines;
+ 
+     Debug('s', fprintf(stderr, ">>_DtTermPrimScrollWait() starting\n"));
+     Debug('s', fprintf(stderr,
+@@ -232,7 +231,6 @@
+ 		exposeHeight));
+ 
+ 	/* set scrollLines == 0, or renderText will not render them... */
+-	scrolledLines = tpd->scroll.jump.scrollLines;
+ 	tpd->scroll.jump.scrollLines = 0;
+ 	/* clear the scrolled flag... */
+ 	tpd->scroll.jump.scrolled = False;
+
+--- cde-2.5.2/lib/DtTerm/TermPrim/TermPrimSelect.c
++++ cde-2.5.2/lib/DtTerm/TermPrim/TermPrimSelect.c
+@@ -372,7 +372,6 @@
+ )
+ {
+     DtTermPrimData   tpd        = tw->term.tpd;
+-    TermSelectInfo   selectInfo = tpd->selectInfo;
+     short lrow, lcol;
+     XmTextPosition pos;
+ 
+@@ -1369,7 +1368,7 @@
+             if (position == scan (tw, begin, selectInfo->scanType, scanRight, 1,
+                                   FALSE))
+             {
+-                begin = cursorPos = position;
++                begin = position;
+             }
+         }
+     }
+@@ -1505,8 +1504,6 @@
+ {
+     _TermSelectPrimaryRec  *primSelect = (_TermSelectPrimaryRec *) closure;
+     DtTermPrimitiveWidget   tw         = (DtTermPrimitiveWidget)w;
+-    DtTermPrimData          tpd        = tw->term.tpd;
+-    TermSelectInfo          selectInfo = tpd->selectInfo;
+     XTextProperty           tmpProp;
+     XmTextBlockRec          block;
+     int                     i, status;
+@@ -2240,9 +2237,8 @@
+ 	return;
+     }
+ 
+-    /* figure out what the begin and end lines are... */
++    /* figure out what the begin line is... */
+     selectLineBegin = selectInfo->begin / (selectInfo->columns + 1);
+-    selectLineEnd = (selectInfo->end - 1) / (selectInfo->columns + 1);
+ 
+     /* if the beginning of the selection is after the source, we need to
+      * move the selection up...
+@@ -2274,9 +2270,8 @@
+ 	return;
+     }
+ 
+-    /* figure out what the begin and end lines are... */
++    /* figure out what the begin line is... */
+     selectLineBegin = selectInfo->begin / (selectInfo->columns + 1);
+-    selectLineEnd = (selectInfo->end - 1) / (selectInfo->columns + 1);
+ 
+     /* if the beginning of the selection is at or after the source, we need to
+      * move the selection up...
+@@ -2328,8 +2323,6 @@
+ )
+ {
+     DtTermPrimitiveWidget   tw       = (DtTermPrimitiveWidget)w;
+-    DtTermPrimData          tpd      = tw->term.tpd;
+-    TermSelectInfo          selectInfo = tpd->selectInfo;
+     XButtonEvent           *btnEvent = (XButtonEvent *) event;
+     XmTextPosition begin, end;
+     short lastRow, width;
+@@ -2365,8 +2358,6 @@
+ {
+     _DtTermDropTransferRec *transfer_rec = (_DtTermDropTransferRec *) closure;
+     DtTermPrimitiveWidget   tw   = (DtTermPrimitiveWidget)transfer_rec->widget;
+-    DtTermPrimData          tpd         = tw->term.tpd;
+-    TermSelectInfo          selectInfo  = tpd->selectInfo;
+ 
+      /* When type = NULL, we are assuming a DELETE request has been requested */
+     if (*type == 0) {
+@@ -2384,7 +2375,6 @@
+        transferEntries[0].client_data = (XtPointer) transfer_rec;
+        transferEntries[0].target = XmInternAtom(XtDisplay(w),"DELETE",
+                                                 False);
+-       transferList = transferEntries;
+        XmDropTransferAdd(w, transferEntries, 1);
+     }
+ }
+@@ -2444,8 +2434,6 @@
+     Widget drag_cont, initiator;
+     /* XmTextWidget tw = (XmTextWidget) w;  */
+     DtTermPrimitiveWidget   tw          = (DtTermPrimitiveWidget)w;
+-    DtTermPrimData          tpd         = tw->term.tpd;
+-    TermSelectInfo          selectInfo  = tpd->selectInfo;
+     Cardinal numExportTargets, n;
+     Atom *exportTargets;
+     Arg args[10];
+
+--- cde-2.5.2/lib/DtTerm/TermPrim/TermPrimSetUtmp.c
++++ cde-2.5.2/lib/DtTerm/TermPrim/TermPrimSetUtmp.c
+@@ -324,7 +324,6 @@
+ {
+ #if !defined(CSRG_BASED) /* XXX */
+     DtTermPrimitiveWidget tw = (DtTermPrimitiveWidget) w;
+-    struct termData *tpd = tw->term.tpd;
+     struct utmp ut;
+     struct utmp *utPtr;
+     char *c;
+
+--- cde-2.5.2/lib/DtTerm/TermView/TermView.c
++++ cde-2.5.2/lib/DtTerm/TermView/TermView.c
+@@ -898,7 +898,7 @@
+ 	    if (geometry && *geometry) {
+ 		hints.flags = 0;
+ 
+-		flags = XWMGeometry(XtDisplay(w),
++		(void) XWMGeometry(XtDisplay(w),
+ 			XScreenNumberOfScreen(XtScreen(w)),
+ 			geometry,
+ 			"80x24",
+@@ -1183,7 +1183,6 @@
+     /* create the function key form...
+      */
+ 
+-    i = 0;
+     /* Add an event handler for enter and leave events to allow us to
+      * modify the "CAPS LOCK" indicator...
+      */
+
+--- cde-2.5.2/lib/DtTerm/TermView/TermViewMenu.c
++++ cde-2.5.2/lib/DtTerm/TermView/TermViewMenu.c
+@@ -545,7 +545,6 @@
+ 
+     /* clear out mnemonics string... */
+     *mnemonics = '\0';
+-    c1 = mnemonics;
+ 
+     /* create the font buttons... */
+     fontSizeToggles = (Widget *) XtMalloc((fontArrayCount + 1) * sizeof(Widget));
+@@ -626,9 +625,9 @@
+ 		    i);
+ 	}
+ 	menu = popupMenu;
+-	button = _DtTermViewCreateLabel(menu,
++	(void) _DtTermViewCreateLabel(menu,
+ 	          (GETMESSAGE(NL_SETN_ViewMenu,83, "Terminal")));
+-	button = _DtTermViewCreateSeparator(menu, "Separator");
++	(void) _DtTermViewCreateSeparator(menu, "Separator");
+     }
+     (void) XtFree((char *) newArglist);
+ 
+@@ -659,7 +658,7 @@
+ 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,19, "C"));
+ 	accelerator = mallocGETMESSAGE(NL_SETN_ViewMenu,62, "Alt F4");
+ 	acceleratorText = mallocGETMESSAGE(NL_SETN_ViewMenu,62, "Alt+F4");
+-	button = _DtTermViewCreatePushButton(pulldown[pc], 
++	(void) _DtTermViewCreatePushButton(pulldown[pc], 
+ 	        (GETMESSAGE(NL_SETN_ViewMenu,18, "Close")),
+ 		ks,
+ 		accelerator,
+@@ -671,12 +670,12 @@
+     if (menuBar || (!menuBar && firstPopup))
+ #ifdef	PULLDOWN_ACCELERATORS
+ 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,21, "W"));
+-	cascade = _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
++	(void) _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
+ 	          (GETMESSAGE(NL_SETN_ViewMenu,20, "Window")),
+ 		  ks,
+ 		  NULL, NULL, NULL, NULL);
+ #else	/* PULLDOWN_ACCELERATORS */
+-	cascade = _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
++	(void) _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
+ 	        (GETMESSAGE(NL_SETN_ViewMenu,20, "Window")),
+ 		NoSymbol, NULL, NULL, NULL, NULL);
+ #endif	/* PULLDOWN_ACCELERATORS */
+@@ -689,7 +688,7 @@
+ 		"Ctrl <Key>osfInsert");
+ 	acceleratorText = mallocGETMESSAGE(NL_SETN_ViewMenu,25, "Ctrl+Insert");
+ 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,23, "C"));
+-	button = _DtTermViewCreatePushButton(pulldown[pc],
++	(void) _DtTermViewCreatePushButton(pulldown[pc],
+ 		  (GETMESSAGE(NL_SETN_ViewMenu,22, "Copy")),
+ 		  ks,
+ 		  accelerator,
+@@ -702,7 +701,7 @@
+         accelerator = mallocGETMESSAGE(NL_SETN_ViewMenu,28,
+ 		"Shift <Key>osfInsert");
+         acceleratorText = mallocGETMESSAGE(NL_SETN_ViewMenu,29, "Shift+Insert");
+-	button = _DtTermViewCreatePushButton(pulldown[pc], 
++	(void) _DtTermViewCreatePushButton(pulldown[pc], 
+ 	          (GETMESSAGE(NL_SETN_ViewMenu,26, "Paste")),
+ 		  ks,
+ 		  accelerator,
+@@ -714,12 +713,12 @@
+     if (menuBar || (!menuBar && firstPopup))
+ #ifdef	PULLDOWN_ACCELERATORS
+ 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,31, "E"));
+-	cascade = _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
++	(void) _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
+ 	          (GETMESSAGE(NL_SETN_ViewMenu,30, "Edit")),
+ 		  ks,
+ 		  NULL, NULL, NULL, NULL);
+ #else	/* PULLDOWN_ACCELERATORS */
+-	cascade = _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
++	(void) _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
+ 	        (GETMESSAGE(NL_SETN_ViewMenu,30, "Edit")),
+ 		NoSymbol, NULL, NULL, NULL, NULL);
+ #endif	/* PULLDOWN_ACCELERATORS */
+@@ -742,13 +741,13 @@
+ 			  NULL, NULL, scrollBarToggleCallback, NULL);
+ 
+ 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,37, "G"));
+-	button = _DtTermViewCreatePushButton(pulldown[pc], 
++	(void) _DtTermViewCreatePushButton(pulldown[pc], 
+ 	         (GETMESSAGE(NL_SETN_ViewMenu,36, "Global...")),
+ 		  ks,
+ 		  NULL, NULL, globalOptionsCallback, NULL);
+ 
+ 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,39, "T"));
+-	button = _DtTermViewCreatePushButton(pulldown[pc], 
++	(void) _DtTermViewCreatePushButton(pulldown[pc], 
+ 	          (GETMESSAGE(NL_SETN_ViewMenu,38, "Terminal...")),
+ 		  ks,
+ 		  NULL, NULL, terminalOptionsCallback, NULL);
+@@ -761,13 +760,13 @@
+ 	submenu = createPulldown(pulldown[pc], "Reset", arglist, i);
+ 
+ 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,41, "S"));
+-	button = _DtTermViewCreatePushButton(submenu, 
++	(void)_DtTermViewCreatePushButton(submenu, 
+ 	         (GETMESSAGE(NL_SETN_ViewMenu,40, "Soft Reset")),
+ 		 ks,
+ 		NULL, NULL, softResetCallback, NULL);
+ 
+ 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,43, "H"));
+-	button = _DtTermViewCreatePushButton(submenu, 
++	(void)_DtTermViewCreatePushButton(submenu, 
+ 	         (GETMESSAGE(NL_SETN_ViewMenu,42, "Hard Reset")),
+ 		  ks,
+ 		  NULL, NULL, hardResetCallback, NULL);
+@@ -781,12 +780,12 @@
+     if (menuBar || (!menuBar && firstPopup))
+ #ifdef	PULLDOWN_ACCELERATORS
+         ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,47, "O"));
+-	cascade = _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
++	(void) _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
+ 	          (GETMESSAGE(NL_SETN_ViewMenu,46, "Options")),
+ 		   ks,
+ 		   NULL, NULL, NULL, NULL);
+ #else	/* PULLDOWN_ACCELERATORS */
+-	cascade = _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
++	(void) _DtTermViewCreateCascadeButton(menu, pulldown[pc], 
+ 	          (GETMESSAGE(NL_SETN_ViewMenu,46, "Options")),
+ 		NoSymbol, NULL, NULL, NULL, NULL);
+ #endif	/* PULLDOWN_ACCELERATORS */
+@@ -858,49 +857,49 @@
+ 
+ #else	/* HPVUE */
+ 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,65, "v"));
+-	button = _DtTermViewCreatePushButton(pulldown[pc], 
++	(void)_DtTermViewCreatePushButton(pulldown[pc], 
+ 	         (GETMESSAGE(NL_SETN_ViewMenu,64, "Overview")),
+ 		 ks,
+ 		 NULL, NULL, helpOverviewCallback, NULL);
+ 
+-	button = _DtTermViewCreateSeparator(pulldown[pc], "Separator");
++	(void)_DtTermViewCreateSeparator(pulldown[pc], "Separator");
+ 
+ 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,69,"C"));
+-	button = _DtTermViewCreatePushButton(pulldown[pc], 
++	(void)_DtTermViewCreatePushButton(pulldown[pc], 
+ 	         (GETMESSAGE(NL_SETN_ViewMenu,68, "Table Of Contents")),
+ 		 ks,
+ 		 NULL, NULL, helpTableOfContentsCallback, NULL);
+ 
+ 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,71,"T"));
+-	button = _DtTermViewCreatePushButton(pulldown[pc], 
++	(void)_DtTermViewCreatePushButton(pulldown[pc], 
+ 	         (GETMESSAGE(NL_SETN_ViewMenu,70, "Tasks")),
+ 		 ks,
+ 		 NULL, NULL, helpTasksCallback, NULL);
+ 
+ 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,73,"R"));
+-	button = _DtTermViewCreatePushButton(pulldown[pc], 
++	(void)_DtTermViewCreatePushButton(pulldown[pc], 
+ 	         (GETMESSAGE(NL_SETN_ViewMenu,72, "Reference")),
+ 		 ks,
+ 		 NULL, NULL, helpReferenceCallback, NULL) ;
+ 
+ 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,75,"K"));
+-	button = _DtTermViewCreatePushButton(pulldown[pc], 
++	(void)_DtTermViewCreatePushButton(pulldown[pc], 
+ 	         (GETMESSAGE(NL_SETN_ViewMenu,74, "Keyboard")),
+ 		 ks,
+ 		 NULL, NULL, helpKeyboardCallback, NULL) ;
+ 
+-	button = _DtTermViewCreateSeparator(pulldown[pc], "Separator");
++	(void)_DtTermViewCreateSeparator(pulldown[pc], "Separator");
+ 
+ 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,77,"U"));
+-	button = _DtTermViewCreatePushButton(pulldown[pc], 
++	(void)_DtTermViewCreatePushButton(pulldown[pc], 
+ 	         (GETMESSAGE(NL_SETN_ViewMenu,76, "Using Help")),
+ 		ks,
+ 		NULL, NULL, helpUsingHelpCallback, NULL);
+ 
+-	button = _DtTermViewCreateSeparator(pulldown[pc], "Separator");
++	(void)_DtTermViewCreateSeparator(pulldown[pc], "Separator");
+ 
+ 	ks = XStringToKeysym(GETMESSAGE(NL_SETN_ViewMenu,79,"A"));
+-	button = _DtTermViewCreatePushButton(pulldown[pc], 
++	(void)_DtTermViewCreatePushButton(pulldown[pc], 
+ 	        (GETMESSAGE(NL_SETN_ViewMenu,83, "About Terminal")),
+ 		ks,
+ 		NULL, NULL, helpAboutDttermCallback, NULL);
+
+--- cde-2.5.2/lib/DtTerm/util/lineToData.c
++++ cde-2.5.2/lib/DtTerm/util/lineToData.c
+@@ -280,10 +280,6 @@
+ 	(void) DumpChar(stdout, charCount++, charList, charListMax,
+ 		 rectList, rectListMax, lineList, lineListMax,
+ 		 stippleList, stippleListMax);
+-	lineListMax = 0;
+-	rectListMax = 0;
+-	stippleListMax = 0;
+-	charListMax = 0;
+     }
+ 
+     /* build the final structure... */
+
+--- cde-2.5.2/lib/DtTerm/TermPrim/TermPrim.c
++++ cde-2.5.2/lib/DtTerm/TermPrim/TermPrim.c
+@@ -3890,7 +3890,7 @@
+     TermSelectInfo  selectInfo = tw->term.tpd->selectInfo;
+ 
+     /* check for null feedback */
+-    if (call_data->text->feedback) {
++    if (call_data && call_data->text && call_data->text->feedback) {
+ 	switch (*call_data->text->feedback) {
+ 	  case XIMReverse:
+ 	  case XIMUnderline:
+
+--- cde-2.5.2/lib/DtTerm/Term/TermParse.c
++++ cde-2.5.2/lib/DtTerm/Term/TermParse.c
+@@ -2156,7 +2156,7 @@
+ 	s = XtMalloc(strlen(icon) + strlen(fmt) + 1);
+       else 
+ 	s = buf;
+-      sprintf(s, "%s", fmt);
++      sprintf(s, fmt, icon);
+       sendEscSequence(w,s) ;
+       if (s != buf) XtFree(s);
+       break ;
+@@ -2167,7 +2167,7 @@
+ 	s = XtMalloc(strlen(title) + strlen(fmt) + 1);
+       else 
+ 	s = buf;
+-      sprintf(s, "%s", fmt);
++      sprintf(s, fmt, title);
+       sendEscSequence(w,s) ;
+       if (s != buf) XtFree(s);
+       break ;
+
+--- cde-2.5.2/programs/dtdocbook/doc_utils/Makefile.am
++++ cde-2.5.2/programs/dtdocbook/doc_utils/Makefile.am
+@@ -19,7 +19,7 @@
+ noinst_SCRIPTS = dtdocbook2man dtdocbook2sdl
+ 
+ AM_CXXFLAGS = -DCDE_NEXT -I$(top_builddir)/lib/DtMmdb
+-AM_LDFLAGS = $(DTCLIENTLIBS) $(XTOOLLIB) 
++AM_LDFLAGS = $(DTCLIENTLIBS) $(XTOOLLIB)
+ 
+ dtdcbk_datarootdir = $(abs_top_srcdir)/programs/dtdocbook
+ 
+@@ -28,7 +28,7 @@
+ 	      -DINFOLIB_LIBEXECDIR=\"$(PWD)\"
+ 
+ validator_SOURCES = validator.C
+-validator_LDFLAGS = $(LIBMMDB)
++validator_LDFLAGS = $(LIBMMDB) $(LMDBLIB)
+ 
+ CLEANFILES = $(noinst_SCRIPTS) $(validator_SOURCES) dtdocbook2infolib.c
+ 
+
+--- cde-2.5.2/programs/dtdocbook/infolib/Makefile.am
++++ cde-2.5.2/programs/dtdocbook/infolib/Makefile.am
+@@ -28,7 +28,7 @@
+ 	      -DEXPAND_TEMPLATES \
+ 	      -I$(top_builddir)/lib/DtMmdb
+ 
+-AM_LDFLAGS = $(XTOOLLIB) $(LIBMMDB) $(DTCLIENTLIBS)
++AM_LDFLAGS = $(XTOOLLIB) $(LIBMMDB) $(DTCLIENTLIBS) $(LMDBLIB)
+ 
+ MixedGen_SOURCES = \
+ 		   MixedGen.C \
+
+--- cde-2.5.2/include/Dt/dproto.h
++++ cde-2.5.2/include/Dt/dproto.h
+@@ -189,10 +189,10 @@
+ int d_connect(int, int);			/* connect.c */
+ int d_cotype(int, int *, int); 	/* cotype.c */
+ int d_crget(DB_ADDR *, int);		/* crget.c */
+-int d_crread(long, char *, int); 	/* crread.c */
++int d_crread(long, void *, int); 	/* crread.c */
+ int d_crset(DB_ADDR *, int);		/* crset.c */
+ int d_crtype(int *, int);		/* crtype.c */
+-int d_crwrite(long, char *, int); 	/* crwrite.c */
++int d_crwrite(long, void *, int); 	/* crwrite.c */
+ int d_csmget(int, DB_ADDR *, int); 	/* csmget.c */
+ int d_csmread(int, long, char *, int); 
+ 								/* csmread.c */
+@@ -217,7 +217,7 @@
+ int d_recprev(int);				/* recprev.c */
+ int d_destroy(const char *);		/* destroy.c */
+ int d_discon(int, int);			/* discon.c */
+-int d_fillnew(int, const char *, int); /* fillnew.c */
++int d_fillnew(int, const void *, int); /* fillnew.c */
+ int d_findco(int, int);			/* findco.c */
+ int d_findfm(int, int);			/* findfm.c */
+ int d_findlm(int, int);			/* findlm.c */
+@@ -258,9 +258,9 @@
+ int d_reclock(int, char *, int); 	/* dblfcns.c */
+ int d_reclstat(int, char *, int); 	/* dblfcns.c */
+ int d_recover(const char *);		/* recover.c */
+-int d_recread(char *, int);		/* recread.c */
++int d_recread(void *, int);		/* recread.c */
+ int d_recset(int, int);   			/* recset.c */
+-int d_recwrite(const char *, int); 	/* recwrite.c */
++int d_recwrite(const void *, int); 	/* recwrite.c */
+ int d_renfile(const char *dbn, FILE_NO fno, const char *fnm); 		/* renfile.c */
+ int d_retries(int);				/* dblfcns.c */
+ int d_rlbclr(void);				/* dblfcns.c */
+
+--- cde-2.5.2/lib/DtSearch/boolyac.y
++++ cde-2.5.2/lib/DtSearch/boolyac.y
+@@ -41,6 +41,9 @@
+  */
+ #include <stddef.h>
+ #include "boolpars.h"
++
++void yyerror(char *);
++int yylex(void);
+ %}
+ 
+ %union {
+
+--- cde-2.5.2/lib/DtSearch/raima/crread.c
++++ cde-2.5.2/lib/DtSearch/raima/crread.c
+@@ -53,7 +53,7 @@
+ int
+ d_crread(
+ long field, /* Field constant */
+-char *data, /* Data area to contain field contents */
++void *data, /* Data area to contain field contents */
+ int dbn     /* database number */
+ )
+ {
+
+--- cde-2.5.2/lib/DtSearch/raima/crwrite.c
++++ cde-2.5.2/lib/DtSearch/raima/crwrite.c
+@@ -53,7 +53,7 @@
+ int
+ d_crwrite(
+ long field, /* field constant */
+-char *data, /* data area to contain field contents */
++void *data, /* data area to contain field contents */
+ int dbn     /* database number */
+ )
+ {
+
+--- cde-2.5.2/lib/DtSearch/raima/fillnew.c
++++ cde-2.5.2/lib/DtSearch/raima/fillnew.c
+@@ -57,7 +57,7 @@
+ int
+ d_fillnew(
+ int nrec,       /* record number */
+-const char *recval, /* record value */
++const void *recval, /* record value */
+ int dbn       /* database number */
+ )
+ {
+
+--- cde-2.5.2/lib/DtSearch/raima/recread.c
++++ cde-2.5.2/lib/DtSearch/raima/recread.c
+@@ -53,7 +53,7 @@
+ */
+ int
+ d_recread(
+-char *rec, /* ptr to record area */
++void *rec, /* ptr to record area */
+ int dbn
+ )
+ {
+
+--- cde-2.5.2/lib/DtSearch/raima/recwrite.c
++++ cde-2.5.2/lib/DtSearch/raima/recwrite.c
+@@ -53,7 +53,7 @@
+ */
+ int
+ d_recwrite(
+-const char *rec, /* ptr to record area */
++const void *rec, /* ptr to record area */
+ int dbn
+ )
+ {
+
+--- cde-2.5.2/lib/DtTerm/TermPrim/TermPrim.c
++++ cde-2.5.2/lib/DtTerm/TermPrim/TermPrim.c
+@@ -1344,7 +1344,7 @@
+ 
+     tw->term.log_on = False ;
+     if (tw->term.logging) {
+-       _DtTermPrimStartLog(tw) ;
++       _DtTermPrimStartLog((Widget) tw);
+      }
+ 
+     Debug('T', timeStamp("TermPrim Initialize() finished"));
+@@ -2675,7 +2675,7 @@
+ 
+     /* flush the log file */
+     if (tw->term.logging ) {
+-      _DtTermPrimCloseLog(tw) ;
++      _DtTermPrimCloseLog((Widget) tw);
+      }
+ 
+     if (tw->term.boldFont) {
+
+--- cde-2.5.2/lib/DtTerm/TermPrim/TermPrimRenderMb.c
++++ cde-2.5.2/lib/DtTerm/TermPrim/TermPrimRenderMb.c
+@@ -621,7 +621,7 @@
+ 	    wcBuffer,	                	        /* newChars	    */
+ 	    wcBufferLen,			        /* numChars         */
+ 	    tpd->insertCharMode != DtTERM_INSERT_CHAR_OFF,  /* insert flag	    */
+-	    &returnChars,			        /* return char ptr  */
++	    (termChar **) (&returnChars),	        /* return char ptr  */
+ 	    &returnCount);			        /* return count ptr */
+ 
+     if ((tpd->insertCharMode != DtTERM_INSERT_CHAR_ON_WRAP) || (returnCount <= 0)) {
+@@ -659,7 +659,7 @@
+ 	    wcBuffer,                 	                /* newChars	    */
+ 	    wcBufferLen,		                /* numChars	    */
+ 	    tpd->insertCharMode != DtTERM_INSERT_CHAR_OFF,  /* insert flag	    */
+-	    &returnChars,		                /* return char ptr  */
++	    (termChar **) (&returnChars),                /* return char ptr  */
+ 	    &returnCount);		                /* return count ptr */
+     (void) XtFree((char *) wcBuffer);
+     (void) XtFree((char *) returnChars);
+
+--- cde-2.5.2/programs/dtappbuilder/src/ab/appfw_stubs.c
++++ cde-2.5.2/programs/dtappbuilder/src/ab/appfw_stubs.c
+@@ -166,7 +166,7 @@
+ )
+ {
+     Widget                      item[10];
+-    int                         item_val[10];
++    XtArgVal                    item_val[10];
+     int			   	n;
+ 
+     /*
+
+--- cde-2.5.2/programs/dtappbuilder/src/ab/dnd_ed_stubs.c
++++ cde-2.5.2/programs/dtappbuilder/src/ab/dnd_ed_stubs.c
+@@ -210,7 +210,7 @@
+ {
+     DndEditorSettings	dds = &dndEdInfo;
+     Widget		item[10];
+-    int			item_val[10];
++    XtArgVal	item_val[10];
+     int			n = 0;
+ 
+     /*
+
+--- cde-2.5.2/programs/dtappbuilder/src/ab/message_ed_stubs.c
++++ cde-2.5.2/programs/dtappbuilder/src/ab/message_ed_stubs.c
+@@ -360,7 +360,7 @@
+ {
+     MsgEditorSettingsRec	*mes = &msg_editor_settings_rec;
+     Widget                      item[6];
+-    int                         item_val[6];
++    XtArgVal                    item_val[6];
+     int                         i, n;
+  
+     /*
+
+--- cde-2.5.2/programs/dtappbuilder/src/ab/pal_panedwin.c
++++ cde-2.5.2/programs/dtappbuilder/src/ab/pal_panedwin.c
+@@ -218,7 +218,7 @@
+     DtbRevolvPropDialogInfo     rpd = &(dtb_revolv_prop_dialog);
+     PropPanedWinSettingsRec   	*pws = &(prop_pw_settings_rec[type]);
+     Widget                      item[2];
+-    int                         item_val[2];
++    XtArgVal                    item_val[2];
+     int				n = 0;
+ 
+     if (type == AB_PROP_REVOLVING)
+
+--- cde-2.5.2/programs/dtappbuilder/src/libABil/bil_parse.y
++++ cde-2.5.2/programs/dtappbuilder/src/libABil/bil_parse.y
+@@ -25,6 +25,8 @@
+ 
+ #define TOK (bilP_load_get_token())
+ 
++void yyerror(char *);
++int yylex(void);
+ %}
+ /*
+  * We assume that yacc spits out the symbols in the order they are 
+
+--- cde-2.5.2/programs/dtcalc/calctool.c
++++ cde-2.5.2/programs/dtcalc/calctool.c
+@@ -46,7 +46,6 @@
+ #include "patchlevel.h"
+ #include "calctool.h"
+ #include "ds_common.h"
+-#include "calctool.h"
+ #include "text.h"
+ 
+ static double max_fix[4] = {
+@@ -1203,8 +1202,8 @@
+ 
+ /*ARGSUSED*/
+ /* Default math library exception handling routine. */
+-int
+-matherr(struct exception *exc)
++void
++math_err(void)
+ {
+ #if 0
+   char msg[100];
+@@ -1232,7 +1231,6 @@
+ #endif
+ 
+   doerr(vstrs[(int) V_ERROR]) ;
+-  return(1) ;                     /* Value ignored. */
+ }
+ 
+ /* Convert string into an MP number. */
+
+--- cde-2.5.2/programs/dtcalc/calctool.h
++++ cde-2.5.2/programs/dtcalc/calctool.h
+@@ -636,6 +636,7 @@
+ void make_modewin(void);
+ void make_fin_registers(void);
+ void make_registers(int);
++void math_err(void);
+ void MPstr_to_num(char *, enum base_type, int *);
+ void paren_disp(char);
+ void process_event(int);
+
+--- cde-2.5.2/programs/dtcalc/functions.c
++++ cde-2.5.2/programs/dtcalc/functions.c
+@@ -677,7 +677,7 @@
+         }
+       mpcim(&i, MPa) ;
+       mpcmi(MP1, &i) ;
+-      if (!i) matherr((struct exception *) NULL) ;
++      if (!i) math_err() ;
+       else
+         while (i > 0)
+           {
+@@ -687,7 +687,7 @@
+             i-- ;
+           }
+     }
+-  else matherr((struct exception *) NULL) ;
++  else math_err() ;
+   mpstr(MPa, MPres) ;
+ }
+ 
+
+--- cde-2.5.2/programs/dtcm/dtcm/browser.c
++++ cde-2.5.2/programs/dtcm/dtcm/browser.c
+@@ -1323,7 +1323,7 @@
+         if (geditor_showing(e))
+                	remove_from_gaccess_list(name, e);
+ 	mb_deregister_names(name, c);
+-        mb_refresh_canvas(c->browser, c);
++        mb_refresh_canvas(b, c);
+ }
+ 
+ extern void
+
+--- cde-2.5.2/programs/dtcm/dtcm/rfp.c
++++ cde-2.5.2/programs/dtcm/dtcm/rfp.c
+@@ -942,7 +942,7 @@
+                                 memset(a->repeat_type, 0, sizeof(CSA_attribute));
+ 
+                                 _DtCm_set_sint32_attrval(rfp->repeat_type,
+-							 &a->repeat_type->value);
++							 (cms_attribute_value **) &a->repeat_type->value);
+                         }
+                         else a->repeat_type->value->item.sint32_value = rfp->repeat_type;
+                 }
+@@ -958,7 +958,7 @@
+ 
+                         memset(a->repeat_type, 0, sizeof(CSA_attribute));
+ 
+-                        _DtCm_set_sint32_attrval(rfp->repeat_type,&a->repeat_type->value);
++                        _DtCm_set_sint32_attrval(rfp->repeat_type, (cms_attribute_value **) &a->repeat_type->value);
+                 }
+                 else a->repeat_type->value->item.sint32_value = rfp->repeat_type;
+ 	}
+
+--- cde-2.5.2/programs/dtcm/dtcm/x_graphics.c
++++ cde-2.5.2/programs/dtcm/dtcm/x_graphics.c
+@@ -1351,7 +1351,7 @@
+   unsigned long _len;
+ 
+   _len = strlen(str);
+-  _converter_( str, _len, &to, &to_len );
++  _converter_( str, _len, (void **) &to, &to_len );
+   if ( ( to != NULL ) && ( to_len != 0 ) )
+     str = to;
+ 
+@@ -1578,7 +1578,7 @@
+     unsigned long _len;
+ 
+     _len = strlen(str1);
+-    _converter_( str1, _len, &to, &to_len );
++    _converter_( str1, _len, (void **) &to, &to_len );
+     if ( ( to != NULL ) && ( to_len != 0 ) )
+       str1 = to;
+   }
+@@ -2009,7 +2009,7 @@
+ 		   dayCatIndex[dayNum], defaultDays[dayNum]);
+ 
+   _len = strlen( source );
+-  _converter_( source, _len, &to, &to_len );
++  _converter_( source, _len, (void **) &to, &to_len );
+   if ( ( to != NULL ) && ( to_len != 0 ) ) {
+     str = euc_to_octal(to);
+   } else {
+@@ -2041,7 +2041,7 @@
+ 		   dayCatIndex[dayNum], defaultDays[dayNum]);
+ 
+   _len = strlen( source );
+-  _converter_( source, _len, &to, &to_len );
++  _converter_( source, _len, (void **) &to, &to_len );
+   if ( ( to != NULL ) && ( to_len != 0 ) ) {
+     str = euc_to_octal(to);
+   } else {
+@@ -2089,7 +2089,7 @@
+ 		  defaultStrs[reportType]);
+ 
+     _len = strlen( str );
+-    _converter_( str, _len, &to, &to_len );
++    _converter_( str, _len, (void **) &to, &to_len );
+     if ( ( to != NULL ) && ( to_len != 0 ) ) {
+       str = to;
+     }
+@@ -2367,7 +2367,7 @@
+     unsigned long _len;
+ 
+     _len = strlen( gInfo->timestamp );
+-    _converter_( gInfo->timestamp, _len, &to, &to_len );
++    _converter_( gInfo->timestamp, _len, (void **) &to, &to_len );
+     if ( ( to != NULL ) && ( to_len != 0 ) )
+       strncpy( gInfo->timestamp, to,
+ 	      ( BUFFERSIZE > to_len ) ? to_len : BUFFERSIZE - 1 );
+@@ -2610,7 +2610,7 @@
+       unsigned long _len;
+ 
+       _len = strlen( buf );
+-      _converter_( buf, _len, &to, &to_len );
++      _converter_( buf, _len, (void **) &to, &to_len );
+       if ( ( to != NULL ) && ( to_len != 0 ) ) {
+ 	str = euc_to_octal(to);
+       } else {
+@@ -2639,7 +2639,7 @@
+     unsigned long _len;
+ 
+     _len = strlen( str2 );
+-    _converter_( str2, _len, &to, &to_len );
++    _converter_( str2, _len, (void **) &to, &to_len );
+     if ( ( to != NULL ) && ( to_len != 0 ) ) {
+       strncpy( str2, to,
+ 	      ( BUFFERSIZE > to_len ) ? to_len : BUFFERSIZE );
+@@ -2654,7 +2654,7 @@
+     unsigned long _len;
+ 
+     _len = strlen( str );
+-    _converter_( str, _len, &to, &to_len );
++    _converter_( str, _len, (void **) &to, &to_len );
+     if ( ( to != NULL ) && ( to_len != 0 ) ) {
+       str = to;
+     }
+@@ -2717,7 +2717,7 @@
+     unsigned long _len;
+ 
+     _len = strlen( str );
+-    _converter_( str, _len, &to, &to_len );
++    _converter_( str, _len, (void **) &to, &to_len );
+     if ( ( to != NULL ) && ( to_len != 0 ) ) {
+       str = to;
+     }
+@@ -2737,7 +2737,7 @@
+     unsigned long _len;
+ 
+     _len = strlen( str );
+-    _converter_( str, _len, &to, &to_len );
++    _converter_( str, _len, (void **) &to, &to_len );
+     if ( ( to != NULL ) && ( to_len != 0 ) ) {
+       str = to;
+     }
+@@ -3249,7 +3249,7 @@
+     unsigned long _len;
+ 
+     _len = strlen(str);
+-    _converter_( str, _len, &to, &to_len );
++    _converter_( str, _len, (void **) &to, &to_len );
+     if ( ( to != NULL ) && ( to_len != 0 ) ) {
+       cm_strcpy(str, to);
+     }
+@@ -3574,7 +3574,7 @@
+     unsigned long _len;
+ 
+     _len = strlen(dayName);
+-    _converter_( dayName, _len, &to, &to_len );
++    _converter_( dayName, _len, (void **) &to, &to_len );
+     if ( ( to != NULL ) && ( to_len != 0 ) ) {
+       dayName = to;
+     }
+
+--- cde-2.5.2/programs/dthelp/parser/canon1/helptag/help.c
++++ cde-2.5.2/programs/dthelp/parser/canon1/helptag/help.c
+@@ -28,8 +28,6 @@
+ 
+ #include "userinc.h"
+ #include "globdec.h"
+-
+-void m_mberr1(char *text, const char *arg);
+ 
+ void assert_hometopic_exists(void)
+ {
+
+--- cde-2.5.2/programs/dthelp/parser/canon1/helptag/help.if
++++ cde-2.5.2/programs/dthelp/parser/canon1/helptag/help.if
+@@ -165,8 +165,8 @@
+   m_free(wc_2,"wide character string");
+   }
+ #else
+-  m_piaction("UNDEFINED MACHINE",
+-	     "m-machine",
++  m_piaction((M_WCHAR *) "UNDEFINED MACHINE",
++	     (M_WCHAR *) "m-machine",
+ 	     M_SDATA) ;
+ #endif
+   </CODE>
+
+--- cde-2.5.2/programs/dthelp/parser/canon1/helptag/option.c
++++ cde-2.5.2/programs/dthelp/parser/canon1/helptag/option.c
+@@ -37,8 +37,6 @@
+ #define TAGDOTOPT "helptag.opt"
+ #define DOTOPT ".opt"
+ 
+-void m_mberr1(char *text, const char *arg);
+-
+ void options(LOGICAL filelenonly)
+ {
+ int i;
+
+--- cde-2.5.2/programs/dthelp/parser/canon1/parser/proto.h
++++ cde-2.5.2/programs/dthelp/parser/canon1/parser/proto.h
+@@ -21,6 +21,8 @@
+  * Floor, Boston, MA 02110-1301 USA
+  */
+ /* $XConsortium: proto.h /main/3 1995/11/08 09:42:21 rswiston $ */
++void chksnb(void);
++
+ int m_actgetc(void);
+ 
+ void m_adjuststate(void);
+@@ -30,6 +32,8 @@
+ void m_attval(M_WCHAR *string);
+ 
+ LOGICAL m_attvonly(M_WCHAR *string);
++
++void m_mberr1(const char *text, const char *arg);
+ 
+ int m_checkstart(M_ELEMENT val);
+ 
+
+--- cde-2.5.2/programs/dthelp/parser/canon1/parser/scan.c
++++ cde-2.5.2/programs/dthelp/parser/canon1/parser/scan.c
+@@ -46,8 +46,6 @@
+ #define M_ENTDEF
+ #include "entity2.h"
+ #include "sref.h"
+-
+-void m_mberr1(char *text, const char *arg);
+ 
+ /* Actually read a character from an input stream */
+ int m_actgetc(void)
+
+--- cde-2.5.2/programs/dthelp/parser/pass1/helptag/help.c
++++ cde-2.5.2/programs/dthelp/parser/pass1/helptag/help.c
+@@ -29,8 +29,6 @@
+ #include "userinc.h"
+ #include "globdec.h"
+ #include "proto.h"
+-
+-void m_mberr1(char *text, const char *arg);
+ 
+ void assert_hometopic_exists(void)
+ {
+
+--- cde-2.5.2/programs/dthelp/parser/pass1/helptag/help.if
++++ cde-2.5.2/programs/dthelp/parser/pass1/helptag/help.if
+@@ -154,8 +154,8 @@
+   m_free(wc_2,"wide character string");
+   }
+ #else
+-  m_piaction("UNDEFINED MACHINE",
+-	     "m-machine",
++  m_piaction((M_WCHAR *) "UNDEFINED MACHINE",
++	     (M_WCHAR *) "m-machine",
+ 	     M_SDATA) ;
+ #endif
+   <\CODE>
+
+--- cde-2.5.2/programs/dthelp/parser/pass1/helptag/option.c
++++ cde-2.5.2/programs/dthelp/parser/pass1/helptag/option.c
+@@ -26,8 +26,6 @@
+ #include "userinc.h"
+ #include "globdec.h"
+ 
+-void m_mberr1(char *text, const char *arg);
+-
+ #if defined(_AIX) || defined(sun)
+ /* get definition of getenv(3c) for getting of environment variables */
+ #include <stdlib.h>
+
+--- cde-2.5.2/programs/dthelp/parser/pass1/parser/proto.h
++++ cde-2.5.2/programs/dthelp/parser/pass1/parser/proto.h
+@@ -21,6 +21,8 @@
+  * Floor, Boston, MA 02110-1301 USA
+  */
+ /* $XConsortium: proto.h /main/3 1995/11/08 10:24:42 rswiston $ */
++void chksnb(void);
++
+ int m_actgetc(void);
+ 
+ void m_adjuststate(void);
+@@ -172,6 +174,8 @@
+ 
+ void *m_malloc(int size, char *msg);
+ 
++void m_mberr1(const char *text, const char *arg);
++
+ void m_missingtagc(int c, M_HOLDTYPE dchar, LOGICAL start);
+ 
+ LOGICAL m_nextand(M_OPENFSA *thisfsa, M_ELEMENT label);
+
+--- cde-2.5.2/programs/dthelp/parser/pass1/parser/scan.c
++++ cde-2.5.2/programs/dthelp/parser/pass1/parser/scan.c
+@@ -46,8 +46,6 @@
+ #define M_ENTDEF
+ #include "entity2.h"
+ #include "sref.h"
+-
+-void m_mberr1(char *text, const char *arg);
+ 
+ /* Actually read a character from an input stream */
+ int m_actgetc(void)
+
+--- cde-2.5.2/programs/dthelp/parser/pass2/htag2/fproto.h
++++ cde-2.5.2/programs/dthelp/parser/pass2/htag2/fproto.h
+@@ -54,7 +54,7 @@
+ 
+ void CloseTag(LOGICAL newlineOK);
+ 
+-void ImpliedlAttribute(char    *name,
++void ImpliedAttribute(char    *name,
+   M_WCHAR *value);
+ 
+ void RequiredAttribute(char    *name,
+
+--- cde-2.5.2/programs/dthelp/parser/pass2/htag2/option.c
++++ cde-2.5.2/programs/dthelp/parser/pass2/htag2/option.c
+@@ -30,9 +30,6 @@
+ /* get definition of getenv(3c) for getting of environment variables */
+ #include <stdlib.h>
+ #endif
+-
+-void m_mberr1(char *text, const char *arg);
+-
+ 
+ /* Interpret options from command line and specified files */
+ #define OPTLEN 512 /* If OPTLEN changes, change fscanf call below */
+
+--- cde-2.5.2/programs/dthelp/parser/pass2/parser/parser.c
++++ cde-2.5.2/programs/dthelp/parser/pass2/parser/parser.c
+@@ -72,8 +72,8 @@
+       if (! m_curcon) {
+         if (m_token != M_ENDFILE) {
+           m_error("Parsing table error") ;
+-          sprintf(buffer, parserr, m_token, m_prevcon, m_scanval) ;
+-          m_errline(buffer) ;
++          sprintf((char *) buffer, parserr, m_token, m_prevcon, m_scanval) ;
++          m_errline((char *) buffer) ;
+           }
+         else {
+           m_error("Unexpected end of document") ;
+@@ -92,17 +92,17 @@
+         m_aftereod = TRUE ;
+         }
+       if (m_scantrace) {
+-        sprintf(buffer, sopt,
++        sprintf((char *) buffer, sopt,
+           m_prevcon, m_token, m_curcon, m_scanval ? m_scanval : ' ',
+           m_scanval, m_line[m_sysecnt], m_netlevel) ;
+-        m_trace(buffer) ;
++        m_trace((char *) buffer) ;
+         if (m_token == M_NAME) {
+-          sprintf(buffer, name, m_name) ;
+-          m_trace(buffer) ;
++          sprintf((char *) buffer, name, m_name) ;
++          m_trace((char *) buffer) ;
+           }
+         if (m_token == M_LITERAL) {
+-          sprintf(buffer, literal, m_literal) ;
+-          m_trace(buffer) ;
++          sprintf((char *) buffer, literal, m_literal) ;
++          m_trace((char *) buffer) ;
+           }
+         }
+ #include "case.c"
+
+--- cde-2.5.2/programs/dthelp/parser/pass2/parser/proto.h
++++ cde-2.5.2/programs/dthelp/parser/pass2/parser/proto.h
+@@ -172,6 +172,8 @@
+ 
+ void *m_malloc(int size, char *msg);
+ 
++void m_mberr1(const char *text, const char *arg);
++
+ void m_missingtagc(int c, M_HOLDTYPE dchar, LOGICAL start);
+ 
+ LOGICAL m_nextand(M_OPENFSA *thisfsa, M_ELEMENT label);
+
+--- cde-2.5.2/programs/dthelp/parser/pass2/parser/scan.c
++++ cde-2.5.2/programs/dthelp/parser/pass2/parser/scan.c
+@@ -46,8 +46,6 @@
+ #define M_ENTDEF
+ #include "entity2.h"
+ #include "sref.h"
+-
+-void m_mberr1(char *text, const char *arg);
+ 
+ /* Actually read a character from an input stream */
+ int m_actgetc(void)
+
+--- cde-2.5.2/programs/dtlogin/access.c
++++ cde-2.5.2/programs/dtlogin/access.c
+@@ -147,7 +147,7 @@
+ #else
+                         CARD16 connectionType,
+ #endif /* NeedWidePrototypes */
+-                        int (*function)(),
++                        void (*function)(CARD16, struct _ARRAY8 *, char *),
+                         char *closure,
+                         int depth,
+                         int broadcast) ;
+@@ -162,7 +162,7 @@
+ #else
+                         CARD16 connectionType,
+ #endif /* NeedWidePrototypes */
+-                        int (*function)(),
++                        void (*function)(CARD16, struct _ARRAY8 *, char *),
+                         char *closure,
+                         int depth,
+                         int broadcast) ;
+@@ -625,7 +625,7 @@
+ #else
+         CARD16 connectionType,
+ #endif /* NeedWidePrototypes */
+-        int (*function)(),
++        void (*function)(CARD16, struct _ARRAY8 *, char *),
+         char *closure,
+         int depth,
+         int broadcast )
+@@ -675,7 +675,7 @@
+ #else
+         CARD16 connectionType,
+ #endif /* NeedWidePrototypes */
+-        int (*function)(),
++        void (*function)(CARD16, struct _ARRAY8 *, char *),
+         char *closure,
+         int depth,
+         int broadcast )
+@@ -709,7 +709,7 @@
+ #else
+         CARD16 connectionType,
+ #endif /* NeedWidePrototypes */
+-        int (*function)(CARD16,  struct _ARRAY8 *, char *),
++        void (*function)(CARD16,  struct _ARRAY8 *, char *),
+         char *closure )
+ {
+     int		    haveLocalhost = 0;
+@@ -828,7 +828,7 @@
+ #else
+         CARD16 connectionType,
+ #endif /* NeedWidePrototypes */
+-        int (*function)(),
++        void (*function)(CARD16, struct _ARRAY8 *, char *),
+         char *closure )
+ {
+     int		    haveLocalhost = 0;
+
+--- cde-2.5.2/programs/dtlogin/auth.c
++++ cde-2.5.2/programs/dtlogin/auth.c
+@@ -152,7 +152,7 @@
+     unsigned short  name_length;
+     char	    *name;
+ 
+-    int		    (*InitAuth)(
++    void	    (*InitAuth)(
+ #if NeedWidePrototypes
+ 			unsigned int name_len,
+ #else
+@@ -168,7 +168,10 @@
+ #endif /* NeedWidePrototypes */
+ 			char *name) ;
+ 
+-    void	    (*GetXdmcpAuth)();
++    void	    (*GetXdmcpAuth)(
++			struct protoDisplay *pdpy,
++			unsigned short	authorizationNameLen,
++			char		*authorizationName);
+     int		    inited;
+ };
+ 
+
+--- cde-2.5.2/programs/dtlogin/choose.c
++++ cde-2.5.2/programs/dtlogin/choose.c
+@@ -428,7 +428,7 @@
+     args = parseArgs (args, buf);
+     ForEachChooserHost (&d->clientAddr,
+ 			d->connectionType,
+-			(int (*)()) AddChooserHost,
++			AddChooserHost,
+ 			(char *) &args);
+     env = systemEnv (d, (char *) 0, (char *) 0);
+     if (d->authFile)
+
+cde/programs/dtlogin/dm.h
+--- cde-2.5.2/programs/dtlogin/dm.h
++++ cde-2.5.2/programs/dtlogin/dm.h
+@@ -314,7 +314,7 @@
+ 
+ 	/* XDMCP state */
+ 	CARD32		sessionID;	/* ID of active session */
+-	struct sockaddr	*peer;		/* sockaddr of display peer */
++	XdmcpNetaddr		peer;		/* sockaddr of display peer */
+ 	int		peerlen;	/* length of peer name */
+ 	struct sockaddr	*from;		/* XDMCP port of display */
+ 	int		fromlen;
+@@ -519,7 +519,7 @@
+ #else
+                         CARD16 connectionType,
+ #endif /* NeedWidePrototypes */
+-                        int (*function)(),
++                        void (*function)(CARD16, struct _ARRAY8 *, char *),
+                         char *closure) ;
+ extern int  ForEachMatchingIndirectHost( 
+                         ARRAY8Ptr clientAddress,
+@@ -528,7 +528,7 @@
+ #else
+                         CARD16 connectionType,
+ #endif /* NeedWidePrototypes */
+-                        int (*function)(CARD16,  struct _ARRAY8 *, char *),
++                        void (*function)(CARD16,  struct _ARRAY8 *, char *),
+                         char *closure) ;
+ extern int  ScanAccessDatabase( void ) ;
+ extern int  UseChooser( 
+@@ -703,7 +703,7 @@
+ #endif /* NeedWidePrototypes */
+                         char *name) ;
+ 
+-extern int MitInitAuth( 
++extern void MitInitAuth(
+ #if NeedWidePrototypes
+                         unsigned int name_len,
+ #else
+
+--- cde-2.5.2/programs/dtlogin/mitauth.c
++++ cde-2.5.2/programs/dtlogin/mitauth.c
+@@ -95,16 +95,15 @@
+ void GenerateAuthData (char *auth, int len); // genauth.c
+ 
+ #if NeedWidePrototypes
+-int MitInitAuth (unsigned int name_len, char *name)
++void MitInitAuth (unsigned int name_len, char *name)
+ #else
+-int MitInitAuth (unsigned short name_len, char *name)
++void MitInitAuth (unsigned short name_len, char *name)
+ #endif /* NeedWidePrototypes */
+ {
+     if (name_len > 256)
+ 	name_len = 256;
+     auth_name_len = name_len;
+     memmove( auth_name, name, name_len);
+-    return(0);
+ }
+ 
+ #if NeedWidePrototypes
+
+--- cde-2.5.2/programs/dtlogin/server.c
++++ cde-2.5.2/programs/dtlogin/server.c
+@@ -333,7 +333,7 @@
+     d->peerlen = 0;
+     if (len)
+     {
+-	d->peer = (struct sockaddr *) malloc (len);
++	d->peer = malloc (len);
+ 	if (d->peer)
+ 	{
+ 	    bcopy (buf, (char *) d->peer, len);
+
+--- cde-2.5.2/programs/dtlogin/xdmauth.c
++++ cde-2.5.2/programs/dtlogin/xdmauth.c
+@@ -239,7 +239,8 @@
+     XdmPrintDataHex ("Accept packet auth", xdmcpauth->data, xdmcpauth->data_length);
+     XdmPrintDataHex ("Auth file auth", fileauth->data, fileauth->data_length);
+     /* encrypt the session key for its trip back to the server */
+-    XdmcpWrap (xdmcpauth->data, &pdpy->key, xdmcpauth->data, 8);
++    XdmcpWrap ((unsigned char *)xdmcpauth->data, (unsigned char *)&pdpy->key,
++				 (unsigned char *)xdmcpauth->data, 8);
+     pdpy->fileAuthorization = fileauth;
+     pdpy->xdmcpAuthorization = xdmcpauth;
+ }
+@@ -326,14 +327,14 @@
+ 	return FALSE;
+     if (authenticationData->length != 8)
+ 	return FALSE;
+-    XdmcpUnwrap (authenticationData->data, &pdpy->key,
++    XdmcpUnwrap (authenticationData->data, (unsigned char *)&pdpy->key,
+ 		  authenticationData->data, 8);
+     XdmPrintArray8Hex ("Request packet auth", authenticationData);
+     if (!XdmcpCopyARRAY8(authenticationData, &pdpy->authenticationData))
+ 	return FALSE;
+     incoming = (XdmAuthKeyPtr) authenticationData->data;
+     XdmcpIncrementKey (incoming);
+-    XdmcpWrap (authenticationData->data, &pdpy->key,
++    XdmcpWrap (authenticationData->data, (unsigned char *)&pdpy->key,
+ 		  authenticationData->data, 8);
+     return TRUE;
+ }
+
+--- cde-2.5.2/programs/dtlogin/xdmcp.c
++++ cde-2.5.2/programs/dtlogin/xdmcp.c
+@@ -175,7 +175,7 @@
+ static XdmcpBuffer	buffer;
+ 
+ /*ARGSUSED*/
+-static int
++static void
+ sendForward (CARD16 connectionType, ARRAY8Ptr address, char *closure)
+ {
+ #ifdef AF_INET
+@@ -198,7 +198,7 @@
+ 	in_addr.sin_family = AF_INET;
+ 	in_addr.sin_port = htons ((short) XDM_UDP_PORT);
+ 	if (address->length != 4)
+-	    return 0;
++	    return;
+ 	memmove( (char *) &in_addr.sin_addr, address->data, address->length);
+ 	addrlen = sizeof (struct sockaddr_in);
+ 	break;
+@@ -207,10 +207,10 @@
+     case FamilyDECnet:
+ #endif
+     default:
+-	return 0;
++	return;
+     }
+     XdmcpFlush (xdmcpFd, &buffer, (XdmcpNetaddr)addr, addrlen);
+-    return 0;
++    return;
+ }
+ 
+ extern char *NetaddrAddress();
+
+--- cde-2.5.2/programs/ttsnoop/Makefile.am
++++ cde-2.5.2/programs/ttsnoop/Makefile.am
+@@ -167,7 +167,7 @@
+ 	$(SED) \
+ 	-e 's/\(MoreButton;\)/\1Boolean _DtCanHelp( const char * );/' \
+ 	-e 's/\(XtManageChild(Quick_help\)/XtSetSensitive(MoreButton,_DtCanHelp(help_data->help_text));\1/' \
+-	-e 's/\(buffer, vol, loc;\)/\1Boolean _DtHelped( Widget );/' \
++	-e 's/\(buffer, vol = NULL, loc = NULL;\)/\1Boolean _DtHelped( Widget );/' \
+ 	-e 's/\(if( (cp=strrchr\)/if (_DtHelped( help_dialog)) return;\1/' \
+ 	dtb_utils.c > dtb_utils.c.patched
+ 	mv dtb_utils.c.patched dtb_utils.c
