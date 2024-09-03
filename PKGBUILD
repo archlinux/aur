@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=3.1.3.r0.gf7920fa
+pkgver=3.1.5.r0.g260a477
 _electronversion=30
 _nodeversion=18
 pkgrel=1
@@ -24,7 +24,7 @@ makedepends=(
     'git'
     'nvm'
     'npm'
-    'go>=1.22'
+    'go'
     'curl'
     'pnpm'
 )
@@ -33,7 +33,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
@@ -55,37 +55,38 @@ build() {
     gendesk -q -f -n --categories="Office" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     sed "2i\Name[zh_CN]=思源笔记" -i "${srcdir}/${pkgname%-git}.desktop"
     cd "${srcdir}/${pkgname//-/.}/app"
-    export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
     export ELECTRONVERSION="${_electronversion}"
-    HOME="${srcdir}/.electron-gyp"
-    pnpm config set store-dir "${srcdir}/.pnpm_store"
-    pnpm config set cache-dir "${srcdir}/.pnpm_cache"
-    pnpm config set link-workspace-packages true
     export CGO_ENABLED=1
     export GO111MODULE=on
     export GOOS=linux
     export GOCACHE="${srcdir}/go-build"
     export GOMODCACHE="${srcdir}/go/pkg/mod"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        export npm_config_registry=https://registry.npmmirror.com
-        export npm_config_disturl=https://electronjs.org/headers
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
-        export GOPROXY=https://goproxy.cn
+    HOME="${srcdir}/.electron-gyp"
+    echo 'build_from_source=true'  >> .npmrc
+    echo 'link-workspace-packages=true'  >> .npmrc
+    echo 'fetch-retry-maxtimeout=10000'  >> .npmrc
+    echo "cache-dir="${srcdir}"/.pnpm_cache"  >> .npmrc
+    echo "store-dir="${srcdir}"/.pnpm_store"  >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        echo 'registry=https://registry.npmmirror.com' >> .npmrc
+        echo 'disturl=https://registry.npmmirror.com/-/binary/node/' >> .npmrc
+        echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/' >> .npmrc
+        echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/' >> .npmrc
+        go env -w GOPROXY=https://goproxy.cn,direct
+ 
     else
         echo "Your network is OK."
     fi
-    sed "/\"electron\":/d;60i\    \"electron\": \"${SYSTEM_ELECTRON_VERSION}\"," -i package.json
+    sed "s/\"electron\": \"\([^\"]*\)\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" -i package.json
     sed "/tar.gz/d;s|AppImage|dir|g" -i electron-builder-linux.yml
-    NODE_ENV=development pnpm install --no-frozen-lockfile
-    NODE_ENV=production pnpm run build
+    NODE_ENV=development    pnpm install --no-frozen-lockfile
+    NODE_ENV=production     pnpm run build
     cd "${srcdir}/${pkgname//-/.}/kernel"
     go build --tags fts5 -o "../app/kernel-linux/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
     cd "${srcdir}/${pkgname//-/.}/app"
-    NODE_ENV=production pnpm run dist-linux
+    NODE_ENV=production     pnpm run dist-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
