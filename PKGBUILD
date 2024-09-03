@@ -1,4 +1,3 @@
-
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=antares
 pkgname="${_pkgname}-sql-git"
