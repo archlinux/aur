@@ -1,7 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: witt <1989161762 at qq dot com>
+
 pkgname="wolai-appimage"
-pkgver=1.2.7
-pkgrel=3
+pkgver=1.2.10
+pkgrel=1
 pkgdesc="wolai是一种新形态的文档/笔记/信息系统,它与你过去使用的所有传统文档、在线文档都有很多不同,学会使用wolai就等于拥有了一个强大的个人与团队生产力工具。"
 arch=("aarch64" "armv7h" "x86_64")
 url="https://www.wolai.com"
@@ -9,16 +11,16 @@ license=('freeware')
 depends=('hicolor-icon-theme' 'zlib' 'glibc')
 options=(!strip)
 provides=("${pkgname%-appimage}")
-conflicts=("${pkgname%-appimage}")
-_install_path="/opt/appimages"
+conflicts=("${pkgname%-appimage}" "${pkgname%-appimage}-bin")
+_install_path="/opt/wolai"
 source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.AppImage::https://cdn.wostatic.cn/dist/installers/${pkgname%-appimage}-${pkgver}-arm64.AppImage")
 source_armv7h=("${pkgname%-appimage}-${pkgver}-armv7h.AppImage::https://cdn.wostatic.cn/dist/installers/${pkgname%-appimage}-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.AppImage::https://cdn.wostatic.cn/dist/installers/${pkgname%-appimage}-${pkgver}.AppImage")
 source=("LICENSE::${url}/${pkgname%-appimage}/q5eyV15yEQPxBhjnFXyWtL")
-sha256sums=('b0fbfbf99f5c160ad9d4f18a7ea8257c405dc631e11e3e8f77e17bc983e53f5a')
-sha256sums_aarch64=('e45825e1f2442752d85ce5dd442a2f19cdb2f1e2bc017cd43f1609719d091a47')
-sha256sums_armv7h=('e45825e1f2442752d85ce5dd442a2f19cdb2f1e2bc017cd43f1609719d091a47')
-sha256sums_x86_64=('e4e931a23f379c3be7ab70902636f74c6446c6091e0287d6bb3967ce55129340')
+sha256sums=('b69ed040a2fc03e49beaf3650aad3bd28362f11005ff4296054d44ee7d50b647')
+sha256sums_aarch64=('c89b008b71dbceaf8fb5d475ad5fba57b82619dc536317160eab3e42baed64ab')
+sha256sums_armv7h=('c89b008b71dbceaf8fb5d475ad5fba57b82619dc536317160eab3e42baed64ab')
+sha256sums_x86_64=('5577a38b800ff637284de4cb1e767a4f8d26256d008166516152c6bc1b231334')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
