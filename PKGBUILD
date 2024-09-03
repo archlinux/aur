@@ -3,7 +3,7 @@
 
 pkgname=qt5-location
 _basever=5.15.15
-pkgver=5.15.14+kde+r7
+pkgver=5.15.15+kde+r7
 pkgrel=1
 _commit=e0a477d04f35495ba6eeda8578d1311dba623270
 arch=('x86_64')
