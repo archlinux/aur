@@ -12,12 +12,12 @@
 
 : ${_ver_clang=}
 : ${RUSTUP_TOOLCHAIN:=stable}
-: ${_commit=dc5f7eca8b4b572655e5c0a0d4dc0e65ef4744cf} # 11.17.7
+: ${_commit=970dfc1fb48cb0f6280d18034e86e14c610b5215} # 11.18.0
 
 ## basic info
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=11.17.7
+pkgver=11.18.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -85,7 +85,7 @@ if [[ "${_build_pgo::1}" == "t" ]]; then
     makedepends+=(
       weston
       xorg-xwayland
-      xwayland-run # AUR
+      wlheadless-run # aur/xwayland-run-git
     )
   fi
 fi
