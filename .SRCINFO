@@ -1,6 +1,6 @@
 pkgbase = python-etcpak-git
 	pkgdesc = A python wrapper for wolfpld/etcpak
-	pkgver = r40.c3b2dcb
+	pkgver = r52.cf5093e
 	pkgrel = 1
 	url = https://github.com/K0lb3/etcpak
 	arch = x86_64
