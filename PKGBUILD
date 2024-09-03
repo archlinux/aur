@@ -4,21 +4,21 @@
 # Contributor: Hussam Al-Tayeb <hussam at visp dot net dot lb>
 
 pkgname=htpdate
-pkgver=1.3.7
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="HTTP Time protocol"
 arch=('i686' 'x86_64')
 url="https://github.com/twekkel/htpdate"
-license=(GPL2)
-depends=('glibc')
+license=('GPL-2.0-or-later')
+depends=('glibc' 'openssl')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
   "htpdate.service")
-sha256sums=('88c52fe475308ee95f560fd7cf68c75bc6e9a6abf56be7fed203a7f762fe7ab2'
-  '2f12bdf0745fbf7c52f465e78b47635fbdc6fa372e63fb94a6063a5f67ff8c8b')
+sha256sums=('52f25811f00dfe714e0bcf122358ee0ad74e25db3ad230d5a4196e7a62633f27'
+            '2f12bdf0745fbf7c52f465e78b47635fbdc6fa372e63fb94a6063a5f67ff8c8b')
 
 build() {
   cd ${pkgname}-${pkgver}
-  make
+  make https
 }
 
 package() {

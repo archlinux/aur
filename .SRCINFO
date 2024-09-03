@@ -1,15 +1,16 @@
 pkgbase = htpdate
 	pkgdesc = HTTP Time protocol
-	pkgver = 1.3.7
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/twekkel/htpdate
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	depends = glibc
-	source = htpdate-1.3.7.tar.gz::https://github.com/twekkel/htpdate/archive/v1.3.7.tar.gz
+	depends = openssl
+	source = htpdate-2.0.0.tar.gz::https://github.com/twekkel/htpdate/archive/v2.0.0.tar.gz
 	source = htpdate.service
-	sha256sums = 88c52fe475308ee95f560fd7cf68c75bc6e9a6abf56be7fed203a7f762fe7ab2
+	sha256sums = 52f25811f00dfe714e0bcf122358ee0ad74e25db3ad230d5a4196e7a62633f27
 	sha256sums = 2f12bdf0745fbf7c52f465e78b47635fbdc6fa372e63fb94a6063a5f67ff8c8b
 
 pkgname = htpdate
