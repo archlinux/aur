@@ -6,9 +6,9 @@ pkgbase = uefitool-bin
 	arch = x86_64
 	license = BSD
 	depends = qt6-base
+	provides = uefiextract=A68
+	provides = uefifind=A68
 	provides = uefitool=A68
-	provides = uefipatch=A68
-	provides = uefireplace=A68
 	source = UEFIExtract-A68.zip::https://github.com/LongSoft/UEFITool/releases/download/A68/UEFIExtract_NE_A68_x64_linux.zip
 	source = UEFIFind-A68.zip::https://github.com/LongSoft/UEFITool/releases/download/A68/UEFIFind_NE_A68_x64_linux.zip
 	source = UEFITool-A68.zip::https://github.com/LongSoft/UEFITool/releases/download/A68/UEFITool_NE_A68_x64_linux.zip

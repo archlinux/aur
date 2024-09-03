@@ -7,7 +7,7 @@ pkgdesc='UEFI firmware image viewer and editor'
 arch=('x86_64')
 url="https://github.com/LongSoft/UEFITool"
 license=('BSD')
-provides=("uefitool=${pkgver}" "uefipatch=${pkgver}" "uefireplace=${pkgver}")
+provides=("uefiextract=${pkgver}" "uefifind=${pkgver}" "uefitool=${pkgver}")
 depends=('qt6-base')
 source=(
   "UEFIExtract-${pkgver}.zip::${url}/releases/download/${pkgver}/UEFIExtract_NE_${pkgver}_x64_linux.zip"
@@ -39,7 +39,7 @@ package() {
   install -Dm755 "${srcdir}"/uefiextract "${pkgdir}/usr/bin/uefiextract"
   install -Dm755 "${srcdir}"/uefifind "${pkgdir}/usr/bin/uefifind"
   install -Dm755 "${srcdir}"/uefitool "${pkgdir}/usr/bin/uefitool"
-  
+
   # Desktops
   mkdir -p "$pkgdir"/usr/share/applications
   install -m644 *.desktop "$pkgdir"/usr/share/applications/
