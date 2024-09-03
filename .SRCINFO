@@ -1,6 +1,6 @@
 pkgbase = qt5-lottie
 	pkgdesc = A family of player software for a certain json-based file format for describing 2d vector graphics animations
-	pkgver = 5.15.14
+	pkgver = 5.15.15
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = qt5-lottie
 	makedepends = git
 	depends = qt5-base
 	optdepends = qt5-declarative: QML bindings
-	source = kde-qtlottie::git+https://invent.kde.org/qt/qt/qtlottie#commit=b8c1fa109dce6f8bff9f55738d2f1e21ff677796
-	sha256sums = 84b26e8dc186ea4f39cbc5d3f1caf1e0054946556cc1c364bf85980af64b002a
+	source = kde-qtlottie::git+https://invent.kde.org/qt/qt/qtlottie#commit=bdbd77ef5529b894699fe8d01642e75230e59f24
+	sha256sums = 44be8983e5205eb8411e38eaccdd20adc90db418797ab8bb81f81fe331b3618a
 
 pkgname = qt5-lottie
