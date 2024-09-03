@@ -1,0 +1,16 @@
+pkgbase = youtube-pake
+	pkgdesc = YouTube desktop app packaged by Pake
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = https://www.youtube.com
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk
+	options = !debug
+	source = YouTube-2.5.1.deb::https://github.com/tw93/Pake/releases/download/V2.5.1/YouTube_x86_64.deb
+	source = LICENSE-2.5.1::https://raw.githubusercontent.com/tw93/Pake/V2.5.1/LICENSE
+	sha256sums = b7846e042250e64d7e2a3eeff418bc8fdbf4900b3cedcc37d68da8748e895607
+	sha256sums = 462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758
+
+pkgname = youtube-pake
