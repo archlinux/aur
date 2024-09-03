@@ -1,8 +1,8 @@
 # Maintainer: Maki <maki@hotmilk.space>
 
 pkgname=pony-house-bin
-pkgver=1.4.8
-pkgrel=2
+pkgver=1.4.9
+pkgrel=1
 pkgdesc="A Matrix client, focused on being a completely customizable open source superapp"
 arch=("x86_64")
 url="https://github.com/Pony-House/Client"
@@ -21,7 +21,7 @@ source=(
 )
 
 sha256sums=(
-	"2971e7dd721b199e3d58ccbe047c3a4abfc58add270bc8b0fcb984f382cc6d81"
+	"5e53564b5b39968603043fcec302e6becf7d439b7274a07d93cecbf5ba3c014d"
 	"4df3c306dddaaf4baffdff5ca820cc679ac8cd6dc263c6a74517783e42fa7a3b"
 )
 
