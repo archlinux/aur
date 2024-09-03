@@ -1,6 +1,6 @@
 pkgbase = qt5-connectivity
 	pkgdesc = Provides access to Bluetooth hardware
-	pkgver = 5.15.14+kde+r3
+	pkgver = 5.15.15+kde+r3
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = qt5-connectivity
 	depends = qt5-base
 	depends = bluez-libs
 	optdepends = qt5-declarative: QML bindings
-	source = kde-qtconnectivity::git+https://invent.kde.org/qt/qt/qtconnectivity#commit=99f30db37c63447c59d5fac15bc8feb832a7fd04
-	sha256sums = 3775e6f5600d43713a0d7337e297aa608d2bb0e7b8c2cbb76ccdf0bfdb656132
+	source = kde-qtconnectivity::git+https://invent.kde.org/qt/qt/qtconnectivity#commit=f2a9c5d1235d88cc26f2cfa348a037b65e31a5ae
+	sha256sums = 37c90538f6c9bf560af6029314b58b53a7782d00015be3e4aef058f2fcd67c09
 
 pkgname = qt5-connectivity
