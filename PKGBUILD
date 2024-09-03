@@ -2,8 +2,8 @@
 pkgname=joindesktop-git
 _app_id=com.joaomgcd.join
 pkgver=1.1.3.r0.geac2304
-pkgrel=1
-_electronversion=31
+pkgrel=2
+_electronversion=32
 pkgdesc="An official desktop app for Join by Joaoapps built in Electron."
 arch=('x86_64')
 url="https://joaoapps.com/join/desktop"
