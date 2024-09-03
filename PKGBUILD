@@ -13,7 +13,7 @@ provides=(jfrog-cli)
 
 _source_base="https://releases.jfrog.io/artifactory/$_pkgname/v2-jf/$pkgver"
 
-source_x86_64=("jf-x86_64::$_source_base/$_pkgname-linux-amd64/jf")
+source_x86_64=("jf-x64::$_source_base/$_pkgname-linux-amd64/jf")
 source_i686=("jf-i686::$_source_base/$_pkgname-linux-386/jf")
 source_armv7h=("jf-armv7h::$_source_base/$_pkgname-linux-arm/jf")
 source_aarch64=("jf-aarch64::$_source_base/$_pkgname-linux-arm64/jf")
@@ -26,7 +26,7 @@ sha256sums_aarch64=('e79029dcc26be5ce8fd32409a24e63d8ed5442e7fe0d375e5e5c8f17d44
 noextract=("${source[@]%%::*}")
 
 package() {
-  install -Dm755 jf-$CARCH "$pkgdir/usr/bin/jf"
+  install -Dm755 jf-* "$pkgdir/usr/bin/jf"
   ln -rs "$pkgdir/usr/bin/jf" "$pkgdir/usr/bin/jfrog"
 
   install -Dm644 <($pkgdir/usr/bin/jf completion bash) "$pkgdir/usr/share/bash-completion/completions/jfrog"
