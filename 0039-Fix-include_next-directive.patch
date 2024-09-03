@@ -1,0 +1,59 @@
+From 6b0dd4941f7bfab1e9207f0416158063da067449 Mon Sep 17 00:00:00 2001
+From: Sergei Litvin <litvindev@gmail.com>
+Date: Tue, 3 Sep 2024 01:05:52 +0200
+Subject: [PATCH] Fix "#include_next" directive
+
+---
+ src/cxref.c |  2 +-
+ src/yylex.c | 12 +++++++++---
+ 2 files changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/src/cxref.c b/src/cxref.c
+index 950f9d1..8f4ab1c 100644
+--- a/src/cxref.c
++++ b/src/cxref.c
+@@ -672,7 +672,7 @@ static void olGetAvailableRefactorings() {
+ }
+ 
+ 
+-static int olcxOnlyParseNoPushing(opt) {
++static int olcxOnlyParseNoPushing(int opt) {
+ 	return(
+ 		opt==OLO_GLOBAL_UNUSED
+ 		|| opt==OLO_LOCAL_UNUSED
+diff --git a/src/yylex.c b/src/yylex.c
+index c5b346b..1e7b369 100644
+--- a/src/yylex.c
++++ b/src/yylex.c
+@@ -481,11 +481,12 @@ FILE *openInclude(char pchar, char *name, int nextFlag) {
+ 	char 			nn[MAX_FILE_NAME_SIZE];
+ 	char 			rdir[MAX_FILE_NAME_SIZE];
+ 	char 			*nnn;
+-	int 			nnlen,dlen,fdlen,nmlen,i;
++	int 			nnlen,dlen,fdlen,nmlen,i,foundFlag;
+ 	er = NULL; r = NULL;
++	foundFlag = 0;
+ 	nmlen = strlen(name);
+ 	copyDir(rdir, cFile.fileName, &fdlen);
+-	if (pchar!='<') {
++	if (! nextFlag && pchar!='<') {
+ /*&fprintf(dumpOut, "dlen == %d\n",dlen);&*/
+ 		strcpy(nn,normalizeFileName(name, rdir));
+ /*&fprintf(dumpOut, "try to open %s\n",nn);&*/
+@@ -506,7 +507,12 @@ FILE *openInclude(char pchar, char *name, int nextFlag) {
+ 			nnlen = dlen+nmlen;
+ 			nn[nnlen]=0;
+ 			nnn = normalizeFileName(nn, s_cwd);
+-			if (! nextFlag || strcmp(nnn, cFile.fileName) != 0) {
++			if (nextFlag
++				&& dlen>0 && strncmp(nn, rdir, dlen-1) == 0) {
++				foundFlag = 1;
++			}
++			if (! nextFlag
++				|| (foundFlag && dlen>0 && strncmp(nn, rdir, dlen-1) != 0)) {
+ //&fprintf(dumpOut, "try to open <%s>\n",nn);
+ 				er = editorFindFile(nn);
+ 				if (er==NULL) r = fopen(nn,"r");
+-- 
+2.46.0
+

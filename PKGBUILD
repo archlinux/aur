@@ -42,7 +42,8 @@ source=(
     0035-Fix-clash-with-library-names.patch
     0036-Fix-Elisp-obsolete-functions-2.patch
     0037-Fix-include-after-macro-expansion.patch
-    0038-Update-bootstrap-macro.patch)
+    0038-Update-bootstrap-macro.patch
+    0039-Fix-include_next-directive.patch)
 md5sums=('63e10baa9a5dfce9165570e7c3897701'
          '4791f8a42e53a141ded3bd36e39b3a6d'
          'a00b17df920380afd6689369845acbc8'
@@ -76,7 +77,8 @@ md5sums=('63e10baa9a5dfce9165570e7c3897701'
          'ff4ac43651958f8e5f61f19858a87aa7'
          'c84a7d60425c8210c7767c3df99e6d52'
          '602734cd3b425e3fbec646eab6804aed'
-		 'e92ad6217bfa847f1ebc2aabe88bacf8')
+		 'e92ad6217bfa847f1ebc2aabe88bacf8'
+		 'be7f2df03515d5c13b878f517b8ee986')
 
 prepare() {
     cd "$srcdir/xref-any"
@@ -113,6 +115,7 @@ prepare() {
     patch --verbose -p1 -i "$srcdir/0036-Fix-Elisp-obsolete-functions-2.patch"
     patch --verbose -p1 -i "$srcdir/0037-Fix-include-after-macro-expansion.patch"
     patch --verbose -p1 -i "$srcdir/0038-Update-bootstrap-macro.patch"
+	patch --verbose -p1 -i "$srcdir/0039-Fix-include_next-directive.patch"
     cd "$srcdir/xref-any/doc"
     cat "INSTALL" "readme" "readme2" > README
 }
