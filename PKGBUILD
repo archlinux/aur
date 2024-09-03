@@ -1,12 +1,12 @@
 pkgname=buddhasay
 pkgver=0.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Like Cowsay, but with a Buddha."
 url="https://codeberg.org/0x6f/buddhasay"
 makedepends=('cargo')
 arch=('x86_64')
 license=('GPL-3.0-only')
-source=("${pkgname}-${pkgver}::git+https://codeberg.org/0x6f/buddhasay.git#tag=v{pkgver}")
+source=("${pkgname}-${pkgver}::git+https://codeberg.org/0x6f/buddhasay.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
