@@ -1,10 +1,15 @@
 #!/bin/bash
 
-# https://github.com/Frogging-Family/wine-tkg-git/blob/master/wine-tkg-git/wine-tkg-scripts/wine-tkg
+# some stuff taken from https://github.com/Frogging-Family/wine-tkg-git/blob/master/wine-tkg-git/wine-tkg-scripts/wine-tkg
 
 winebindir="$(dirname "$(readlink -f "$0")")"
 
 export PATH="$winebindir:$PATH"
 export LD_LIBRARY_PATH="$winebindir/../lib64/wine/x86_64-unix:$winebindir/../lib64/wine/x86_64-windows:$winebindir/../lib64/wine/i386-windows:$winebindir/../lib/wine/i386-unix:$winebindir/../lib/wine/i386-windows:$LD_LIBRARY_PATH"
+
+# set realtime priority on wineserver (but don't override user's choice)
+if [ "${STAGING_RT_PRIORITY_SERVER}" != "0" ]; then
+    export STAGING_RT_PRIORITY_SERVER=${STAGING_RT_PRIORITY_SERVER:-55}
+fi
 
 wine "${@:1}"
