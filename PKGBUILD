@@ -1,15 +1,15 @@
 #  Maintainer: Vincent Lequertier <vincent at vl8r dot eu>
 pkgname=python-tensordict
 pkgdesc="A dictionary-like class that inherits properties from PyTorch tensors"
-pkgver=0.2.1
-pkgrel=3
+pkgver=0.5.0
+pkgrel=1
 url="https://github.com/pytorch/tensordict"
 arch=(x86_64)
 license=('MIT')
-depends=('python' 'python-cloudpickle')
+depends=('python' 'python-cloudpickle' 'python-orjson')
 makedepends=(python-wheel)
-source=('https://github.com/pytorch/tensordict/releases/download/v0.2.1/tensordict-0.2.1-cp311-cp311-manylinux1_x86_64.whl')
-sha256sums=('516c0cf63418235f829490c93fc5f8ce579ca2c1f67653c8e0e77e6aa6f6117d')
+source=('https://github.com/pytorch/tensordict/releases/download/v0.5.0/tensordict-0.5.0-cp312-cp312-manylinux1_x86_64.whl')
+sha256sums=('c804d9c58fb9af09d8298c2c2214b393f380621ce72f44cb6bd89462768a1621')
 
 
 package() {
