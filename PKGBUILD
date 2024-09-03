@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Strykar <strykar@hotmail.com>
 
 pkgname=infnoise-openssl-git
 pkgver=r22.d161bfd
