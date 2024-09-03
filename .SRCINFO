@@ -1,0 +1,14 @@
+pkgbase = libkeychain
+	pkgdesc = Thin cross-platform wrapper to access the operating system's credential storage in C++.
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/hrantzsch/keychain
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = libsecret
+	source = libkeychain::git+https://github.com/hrantzsch/keychain.git
+	sha256sums = SKIP
+
+pkgname = libkeychain
