@@ -1,6 +1,6 @@
 pkgbase = photivo-git
 	pkgdesc = Free and open source photo processor
-	pkgver = 20240607_86880ad
+	pkgver = 20240904_517cc62
 	pkgrel = 1
 	epoch = 1
 	url = https://photivo.org/
