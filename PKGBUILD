@@ -3,11 +3,11 @@
 
 pkgname=mdbook-epub
 pkgver=0.4.37
-pkgrel=2
+pkgrel=3
 pkgdesc="MDBook EPUB Backend"
 url="https://github.com/Michael-F-Bryan/mdbook-epub"
 arch=(x86_64)
-license=(MIT)
+license=(MPL-2.0)
 depends=(gcc-libs glibc)
 makedepends=(rust cargo)
 options=(!lto)
