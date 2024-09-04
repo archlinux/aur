@@ -3,7 +3,7 @@
 # The pkgbuild is based on the original pkgbuild for citra.
 
 pkgname=lime3ds-git
-pkgver=r10450.b8fb57e
+pkgver=r10485.9129491
 pkgrel=1
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
@@ -169,7 +169,6 @@ build() {
         -DUSE_DISCORD_PRESENCE=ON \
         -DCMAKE_CXX_FLAGS="$CFLAGS" \
         -DCMAKE_C_FLAGS="$CXXFLAGS" \
-        -DUSE_SYSTEM_BOOST=ON \
         -DUSE_SYSTEM_CATCH2=ON \
         -DUSE_SYSTEM_FMT=ON \
         -DUSE_SYSTEM_GLSLANG=ON \
