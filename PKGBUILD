@@ -2,7 +2,7 @@
 
 _pkgname=notmuch-mailmover
 pkgname=${_pkgname}-git
-pkgver=v0.2.0.r52.g460cf44
+pkgver=v0.3.0
 pkgrel=1
 pkgdesc='notmuch-mailmover is a tool to move notmuch tagged mails into Maildir folders'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -43,12 +43,11 @@ package() {
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${_pkgname}"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 
-  # completions
+  # man page
+  install -Dm644 share/notmuch-mailmover.1.gz "$pkgdir/usr/share/man/man1/notmuch-mailmover.1.gz"
+
+  # shell completions
   install -Dm644 share/notmuch-mailmover.bash "$pkgdir/usr/share/bash-completion/completions/notmuch-mailmover"
   install -Dm644 share/_notmuch-mailmover "$pkgdir/usr/share/zsh/site-functions/_notmuch-mailmover"
   install -Dm644 share/notmuch-mailmover.fish "$pkgdir/usr/share/fish/vendor_completions.d/notmuch-mailmover.fish"
-
-  # man page
-  mkdir -p "$pkgdir/usr/share/man/man1"
-  gzip --best --stdout <share/notmuch-mailmover.1 >"$pkgdir/usr/share/man/man1/notmuch-mailmover.1.gz"
 }
