@@ -1,6 +1,6 @@
 # Maintainer: Terrasse <terrasse@qq.com>
 pkgname=chsrc-git
-pkgver=20240904.r775.3c07b29
+pkgver=20240905.r776.7008794
 pkgrel=1
 pkgdesc="A cli tool to change source for every software on every platform"
 arch=('x86_64') # TODO: add more archs
