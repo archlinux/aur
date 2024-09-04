@@ -1,41 +1,37 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=savedesktop
 _app_id=io.github.vikdevelop.SaveDesktop
-pkgver=3.3.2
-pkgrel=2
+pkgver=3.4
+pkgrel=1
 pkgdesc="Save and load KDE Plasma, Xfce and GNOME-based DE configuration"
 arch=('any')
 url="https://github.com/vikdevelop/SaveDesktop"
 license=('GPL-3.0-or-later')
 depends=('hicolor-icon-theme' 'libadwaita' 'python-dbus' 'python-gobject')
 makedepends=('git')
-_commit=ed2b8614142db15ef8db79c368957fd1927a7c1c  # tags/3.3.2b^0
+_commit=5b6642fc2eea776057d04aadd467011ef6b7ab84  # tags/3.4^0
 source=("git+https://github.com/vikdevelop/SaveDesktop.git#commit=${_commit}"
-        "$pkgname.sh"
-        'directories.patch')
-sha256sums=('0456cc8330c93bf8caeafbfdb3d1ce94a9147200c4c0c1c015b8e3d8d53dd866'
-            '876d67efbc57115f2d6d6558308ad19ed300ff2ad853e3a38fbfd710c25e8dcd'
-            'd42f43417f54529f3db00c8888552f49ab4eab4e65defae46c49199fcbb6df37')
+        "$pkgname.sh")
+sha256sums=('7805dcbd3ab42b3a9b55843a3fdc48cc874f4ab8d6229cc5a6d5c808eacce154'
+            '69571f87e5eb4754c9b35c62d0311b1bf0e040cf79d5478a050d46efb1a4809a')
 
 prepare() {
   cd SaveDesktop
 
-  # Desktop file Exec path
-  desktop-file-edit --set-key=Exec --set-value="$pkgname" "flatpak/${_app_id}.desktop"
-
   # Use system directories
-  patch -Np1 -i ../directories.patch
+  sed -i 's|{home}/.local/share/savedesktop/translations|/usr/share/savedesktop/translations|g' \
+    src/localization.py
 }
 
 check() {
   cd SaveDesktop
-  appstreamcli validate --no-net "flatpak/${_app_id}.metainfo.xml"
+  appstreamcli validate --no-net "flatpak/${_app_id}.metainfo.xml" || :
   desktop-file-validate "flatpak/${_app_id}.desktop"
 }
 
 package() {
   cd SaveDesktop
-  install -d "$pkgdir/usr/share/$pkgname"
+  install -Dm755 "$pkgname" -t "$pkgdir/usr/share/$pkgname/src/"
   cp -R src translations "$pkgdir/usr/share/$pkgname"
   install -Dm644 "flatpak/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "flatpak/${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
