@@ -1,10 +1,10 @@
 pkgbase = netgen-git
 	pkgdesc = An automatic 3d tetrahedral mesh generator.
-	pkgver = 6.2.2008.r82.gf97601bc
+	pkgver = 6.2.2404.r71.gbb3c3ff
 	pkgrel = 2
 	url = https://sourceforge.net/projects/netgen-mesher/
-	arch = i686
 	arch = x86_64
+	arch = i686
 	license = LGPL2.1
 	makedepends = git
 	makedepends = cmake
@@ -13,12 +13,11 @@ pkgbase = netgen-git
 	depends = libxmu
 	depends = glu
 	depends = opencascade
-	depends = ffmpeg
 	provides = netgen
-	conflicts = netgen-nogui
-	options = !buildflags
-	source = netgen::git+https://github.com/ngsolve/netgen.git#branch=master
+	conflicts = netgen
+	source = git+https://github.com/ngsolve/netgen.git
+	source = netgen-pybind11::git+https://github.com/ngsolve/pybind11.git
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = netgen-git
-
