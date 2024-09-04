@@ -1,6 +1,6 @@
 pkgbase = pcsx2-latest-bin
 	pkgdesc = Sony PlayStation 2 emulator
-	pkgver = 2.0.3
+	pkgver = 2.1.126
 	pkgrel = 1
 	url = https://github.com/PCSX2/pcsx2
 	install = pcsx2.install
@@ -12,7 +12,7 @@ pkgbase = pcsx2-latest-bin
 	conflicts = pcsx2
 	options = !strip
 	options = !debug
-	source = https://github.com/PCSX2/pcsx2/releases/download/v2.0.3/pcsx2-v2.0.3-linux-appimage-x64-Qt.AppImage
+	source = https://github.com/PCSX2/pcsx2/releases/download/v2.1.126/pcsx2-v2.1.126-linux-appimage-x64-Qt.AppImage
 	sha256sums = SKIP
 
 pkgname = pcsx2-latest-bin

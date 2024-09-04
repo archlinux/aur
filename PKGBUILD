@@ -1,41 +1,36 @@
 # Maintainer:
 
-# options
-if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ]; then
-  : ${_autoupdate:=false}
-else
+## options
+if [ -z "$_srcinfo" ] && [ -z "$_pkgver" ]; then
   : ${_autoupdate:=true}
 fi
 
 # basic info
 _pkgname='pcsx2'
 pkgname="$_pkgname-latest-bin"
-pkgver=2.0.3
+pkgver=2.1.126
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
 license=('GPL-3.0-only' 'LGPL-3.0-only')
 arch=('x86_64')
 
-# main package
-_main_package() {
-  makedepends=(
-    'patchelf'
-  )
+makedepends=(
+  'patchelf'
+)
 
-  provides=("$_pkgname")
-  conflicts=("$_pkgname")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
-  options=('!strip' '!debug')
+options=('!strip' '!debug')
+install="$_pkgname.install"
 
-  install="$_pkgname.install"
-
+_source_main() {
   _appimage="pcsx2-v$_pkgver-linux-appimage-x64-Qt.AppImage"
   source+=("$url/releases/download/v$_pkgver/$_appimage")
   sha256sums+=('SKIP')
 }
 
-# common functions
 build() {
   # extract appimage
   chmod +x "$_appimage"
@@ -79,7 +74,6 @@ package() {
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
 
-# update version
 _update_version() {
   : ${_pkgver:=${pkgver%%.r*}}
 
@@ -106,6 +100,5 @@ _update_version() {
   }
 }
 
-# execute
 _update_version
-_main_package
+_source_main
