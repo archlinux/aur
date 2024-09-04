@@ -1,6 +1,6 @@
 # Maintainer: Luc <luc@dougy147.com>
 pkgname=scitopdf
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Script to quickly fetch scientific papers from Sci-Hub or Libgen."
 arch=(x86_64 i686)
