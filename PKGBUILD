@@ -5,7 +5,7 @@
 
 pkgname='fake-hwclock-git'
 pkgver=0.1b.r21.g5b8105b
-pkgrel=2
+pkgrel=3
 pkgdesc="Save/restore system clock on machines without working RTC hardware"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/xanmanning/alarm-${pkgname%-git}"
@@ -20,6 +20,12 @@ b2sums=('SKIP')
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${pkgname%-git}"
+  # shellcheck disable=SC2016
+  sed -i 's/ $(LDFLAGS)/ $(CPPFLAGS) $(CFLAGS) $(LDFLAGS)/' Makefile
 }
 
 build() {

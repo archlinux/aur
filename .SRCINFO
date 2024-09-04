@@ -1,7 +1,7 @@
 pkgbase = fake-hwclock-git
 	pkgdesc = Save/restore system clock on machines without working RTC hardware
 	pkgver = 0.1b.r21.g5b8105b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xanmanning/alarm-fake-hwclock
 	arch = i686
 	arch = x86_64
