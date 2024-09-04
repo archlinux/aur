@@ -1,29 +1,32 @@
+# Maintainer: Adrien Smith <adrien@panissupraomnia.dev>
+# Contributor: a821 <a821 at mail de>
 # Contributor: graysky <graysky AT archlinux DOT us>
 # Contributor: David Manouchehri <manouchehri@riseup.net>
 
 pkgname='fake-hwclock-git'
 pkgver=0.1b.r21.g5b8105b
-pkgrel=1
-pkgdesc="Save/restore system clock on machines without working RTC hardware."
-arch=('x86_64')
-url="https://github.com/xanmanning/alarm-fake-hwclock"
+pkgrel=2
+pkgdesc="Save/restore system clock on machines without working RTC hardware"
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/xanmanning/alarm-${pkgname%-git}"
 license=('LicenseRef-Coffeeware')
 depends=('glibc')
 makedepends=('git')
-conflicts=('fake-hwclock')
-source=("$pkgname::git+${url}.git")
-sha512sums=('SKIP')
+provides=("${pkgname%-git}=$pkgver")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git+${url}.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${pkgname%-git}"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  make -C "$pkgname"
+  make -C "${pkgname%-git}"
 }
 
 package() {
-  make -C "$pkgname" DESTDIR="${pkgdir}" install
-  install -Dm644 "$pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+  make -C "${pkgname%-git}" DESTDIR="${pkgdir}" install
+  install -Dm644 "${pkgname%-git}/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
