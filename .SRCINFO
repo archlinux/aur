@@ -1,6 +1,6 @@
 pkgbase = valveresourceformat-bin
 	pkgdesc = Valve's Source 2 resource file format parser, decompiler, and exporter.
-	pkgver = 10.1
+	pkgver = 10.2
 	pkgrel = 1
 	url = https://github.com/ValveResourceFormat/ValveResourceFormat
 	install = valveresourceformat-bin.install
@@ -18,11 +18,11 @@ pkgbase = valveresourceformat-bin
 	conflicts = valveresourceformat
 	options = !strip
 	options = !debug
-	source = https://github.com/ValveResourceFormat/ValveResourceFormat/releases/download/10.1/Decompiler-linux-x64.zip
-	source = https://github.com/ValveResourceFormat/ValveResourceFormat/releases/download/10.1/Source2Viewer.exe
-	source = https://github.com/ValveResourceFormat/ValveResourceFormat/archive/refs/tags/10.1.tar.gz
-	sha256sums = 069207a9fbb0675ee2344cd36f7f660d937bc2fda6eebf77e1c3191bd8ddecb9
-	sha256sums = 5c281602974d377ecd1637c3d511ce0509ff950448f166ef3fff13f3e29d48db
-	sha256sums = 804760437d37546fe64673259d4ece34f08543893df56cc3701e9c6e46f32dfa
+	source = https://github.com/ValveResourceFormat/ValveResourceFormat/releases/download/10.2/Decompiler-linux-x64.zip
+	source = https://github.com/ValveResourceFormat/ValveResourceFormat/releases/download/10.2/Source2Viewer.exe
+	source = https://github.com/ValveResourceFormat/ValveResourceFormat/archive/refs/tags/10.2.tar.gz
+	sha256sums = f6782347c994783f7f8608cdf5db7d18f75c46adae0cf102bfdace58b1831186
+	sha256sums = 2df456c6e370bcc92d88e9e95c5ff31a1c49048c7abcff81e6638997107d99ff
+	sha256sums = 61fa22f19141f15ac3fb533b75db10bb93b55622af038d82cd7e8949b28e2ee0
 
 pkgname = valveresourceformat-bin
