@@ -1,8 +1,8 @@
 # Maintainer: Guillaume Donval <(firstname)(lastname)(at)firemail(dot)cc>
 # Contributor: Quentin Vallin <(firstname)(lastname)(at)XXX(dot)tld>
 pkgname="vpn-minute"
-pkgver="0.4.1"
-pkgrel=3
+pkgver="0.5.0"
+pkgrel=4
 pkgdesc="Create an on-demand/disposable VPN in a minute"
 arch=("any")
 url="https://gitlab.com/gui-don/vpn-minute/-/wikis/home"
@@ -11,7 +11,7 @@ depends=("terraform>=1.5.0" "ldns>=1.7" "wireguard-tools>=1" "jq>=1" "sudo")
 optdepends=("openssh: to SSH to the VPN")
 provides=("vpnm")
 source=("https://gitlab.com/gui-don/$pkgname/-/archive/$pkgver/vpn-minute-$pkgver.tar.gz")
-b2sums=("b485cafb70ea22133ec3264cafa457bef2b4015fad821bd8f7e786fbf8adaba7777a56c800733db9ec8dd23af0e6f5e4af396bedec20994e1e80116db555db4b")
+b2sums=("9810fafd9b26a5388f92ddc4131d0ecd0a93ea71338c24e8c16fa95220c2695fdc1f8f6f9cec31203befee3ee82f341b0c5f255c09d414d66701e23a2118506b")
 
 package() {
   cd "$pkgname-$pkgver"
