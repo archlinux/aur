@@ -1,17 +1,16 @@
 #!/bin/sh
 
+MODULES=$(find /var/lib/dkms -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)
+
 post_install() {
-	local x= module_list="zfs nvidia lkrg"
-	local dkms_dir=/etc/dkms dkms_link=
+	local dkms_dir=/etc/dkms dkms_link= x=
 	local kernel_sign=${dkms_dir}/kernel-sign.conf
 
-	for x in $module_list; do
-		if modinfo $x &>/dev/null; then
-			dkms_link="$dkms_dir/$x.conf"
-			if [ ! -L $dkms_link ]; then
-				echo "Creating DKMS symlink: $kernel_sign => $dkms_link"
-				ln -sf $kernel_sign $dkms_link
-			fi
+	for x in $MODULES; do
+		dkms_link="$dkms_dir/$x.conf"
+		if [ ! -L $dkms_link ]; then
+			echo "Creating DKMS symlink: $kernel_sign => $dkms_link"
+			ln -sf $kernel_sign $dkms_link
 		fi
 	done
 }
@@ -21,10 +20,9 @@ post_upgrade() {
 }
 
 post_remove() {
-	local x= module_list="zfs nvidia lkrg"
-	local dkms_dir=/etc/dkms dkms_link=
+	local dkms_dir=/etc/dkms dkms_link= x=
 
-	for x in $module_list; do
+	for x in $MODULES; do
 		dkms_link="$dkms_dir/$x.conf"
 		if [ -L $dkms_link ]; then
 			echo "Removing DKMS symlink: $dkms_link"
