@@ -9,7 +9,7 @@ license=('MIT')
 groups=("openchami")
 provides=('magellan')
 conflicts=('magellan')
-source_x86_64=("${url}/releases/download/${pkgver}/${pkgname}_Linux_x86_64.tar.gz")
+source_x86_64=("${url}/releases/download/${pkgver}/magellan_Linux_x86_64.tar.gz")
 sha256sums_x86_64=('1bb028d592d5389b519362e6aa7021f27443f0b36471e09ee7f47ab5cb6d4d7f')
 
 package() {
