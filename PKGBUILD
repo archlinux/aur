@@ -2,12 +2,13 @@
 
 pkgname=iptvorg-epg
 pkgver=2023.12.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Utilities for downloading the EPG (Electronic Program Guide) for thousands of TV channels from hundreds of sources'
 arch=('any')
-url=https://github.com/iptv-org/epg
+url='https://github.com/iptv-org/epg'
 license=('Unlicense')
-depends=('python' 'libxml2' 'nodejs-lts-iron' 'npm')
+depends=('bash' 'libxml2' 'nodejs')
+makedepends=('npm' 'nodejs-lts-iron')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/iptv-org/epg/archive/refs/tags/${pkgver}.tar.gz"
         'iptvorg-epg.sh'
         'my.channels.xml')
@@ -30,4 +31,4 @@ package() {
   install -Dm644 my.channels.xml "$pkgdir/usr/share/$pkgname/my.channels.xml"
 }
 
-# vim: ts=2 sw=2 et:
+# vim:set sw=2 sts=-1 et:
