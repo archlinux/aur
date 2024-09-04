@@ -1,7 +1,7 @@
 pkgname=sm64ex-bin
 _pkgname=Sm64ex-bin
 pkgver=951389c
-pkgrel=1
+pkgrel=2
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
 _pkgrel_i386=1

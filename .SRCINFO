@@ -1,7 +1,7 @@
 pkgbase = sm64ex-bin
 	pkgdesc = A reverse engineered implementation engine for Super Mario 64.
 	pkgver = 951389c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/sm64ex
 	arch = pentium4
 	arch = i386
