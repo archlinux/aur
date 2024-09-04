@@ -1,10 +1,14 @@
 pkgbase = python-m3u8
 	pkgdesc = Python m3u8 parser
 	pkgver = 6.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/globocom/m3u8
 	arch = any
 	license = MIT
+	checkdepends = python-bottle
+	checkdepends = procps-ng
+	checkdepends = python-pip
+	checkdepends = python-pytest-cov
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
