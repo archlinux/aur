@@ -13,10 +13,8 @@ provides=("mingw-w64-$arch-xz=$pkgver")
 conflicts=('mingw-w64-xz')
 options=('!strip' 'staticlibs' '!buildflags')
 validpgpkeys=('3690C240CE51B4670D30AD1C38EE757D69184620') # Lasse Collin <lasse.collin@tukaani.org>
-source=("xz-$pkgver.tar.xz::https://github.com/tukaani-project/xz/releases/download/v5.6.2/xz-$pkgver.tar.xz"
-		"license::https://git.tukaani.org/?p=xz.git;a=blob_plain;f=COPYING.0BSD")
-sha256sums=('a9db3bb3d64e248a0fae963f8fb6ba851a26ba1822e504dc0efd18a80c626caf'
-			'SKIP')
+source=("xz-$pkgver.tar.xz::https://github.com/tukaani-project/xz/releases/download/v5.6.2/xz-$pkgver.tar.xz")
+sha256sums=('a9db3bb3d64e248a0fae963f8fb6ba851a26ba1822e504dc0efd18a80c626caf')
 
 _basename=xz
 _platform=x86_64-w64-mingw32
@@ -41,6 +39,7 @@ package() {
 	find  "$pkgdir/usr/$_platform" -name '*.a' -o -name '*.dll' | xargs -rtL1 chmod 644
 	rm    "$pkgdir/usr/$_platform/bin/"{lz{cmp,diff,egrep,fgrep,grep,less,more},xz{cmp,diff,egrep,fgrep,grep,less,more}}
 	rm -r "$pkgdir/usr/$_platform/share" 
-	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-	cp    "$srcdir/license" "$pkgdir/usr/share/licenses/$pkgname"
+
+	install -d "$pkgdir/usr/share/licenses/$pkgname"
+	find  "$pkgdir/usr/$_platform" -name 'COPYING*' | xargs -rtL1 install -m644 -t "$pkgdir/usr/share/licenses/$pkgname" 
 }
