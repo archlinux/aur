@@ -3,21 +3,20 @@
 # Contributor: alium
 
 pkgname=televize
-pkgver=39
+pkgver=40
 pkgrel=1
 pkgdesc="CLI aplication to watch mainly Czech television streams"
 arch=('any')
 url="http://xpisar.wz.cz"
-license=('GPL')
+license=('GPL-1.0-only')
 depends=('bash' 'wget' 'grep' 'sed' 'ctstream')
 makedepends=('gendesk')
 optdepends=('mplayer: for MPlayer backend' 'mpv: for MPV backend'
             'rofi: for channel selection using rofi'
             'fzf: for channel selection in console using fzf')
-install=${pkgname}.install
 source=(http://xpisar.wz.cz/${pkgname}/${pkgname}-${pkgver}
         televize-menu)
-sha256sums=('99e8a682a745a8ed3af6a7cb9df65342854a65332a04c28dbd3f1ab42ec46b33'
+sha256sums=('a97bed73f738d62afb18e609aca827f8a9fdc29524f58456d9822c7d13748c0d'
             'f5366f74ee174cf6fd049ab5e43c70f14d93cad41ef66847059105c568973003')
 
 prepare() {
