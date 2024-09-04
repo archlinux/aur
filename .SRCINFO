@@ -1,6 +1,6 @@
 pkgbase = lazysql
 	pkgdesc = A cross-platform TUI database management tool written in Go
-	pkgver = 0.2.3
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/jorgerojas26/lazysql
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = lazysql
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = https://github.com/jorgerojas26/lazysql/archive/refs/tags/v0.2.3.tar.gz
-	sha256sums = b9d375a04882fe1458b089faf8ffbadc1b1099a89b04fae5f1fd4587737c8f4c
+	source = https://github.com/jorgerojas26/lazysql/archive/refs/tags/v0.2.9.tar.gz
+	sha256sums = 3af2fbdc9174677d9a4828447a17b24b8713b475e359bedc80d2de556597f866
 
 pkgname = lazysql
