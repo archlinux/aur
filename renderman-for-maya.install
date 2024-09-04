@@ -1,6 +1,6 @@
 post_install() {
     printf "$(tput setaf 4)Copy the following file to a directory in your Maya module path:$(tput sgr0)\n\n"
-    printf "$(tput setaf 2)/opt/pixar/RenderManForMaya-26.1/etc/RenderMan_for_Maya_26.1.module$(tput sgr0)\n\n"
+    printf "$(tput setaf 2)/opt/pixar/RenderManForMaya-26.2/etc/RenderMan_for_Maya_26.2.module$(tput sgr0)\n\n"
     printf "$(tput setaf 4)For example, one of these directories could be viable in the default Maya 2024 module path:$(tput sgr0)\n\n"
     printf "$(tput setaf 2)/usr/autodesk/maya2024/modules$(tput sgr0)\n"
     printf "$(tput setaf 2)~/maya/2024/modules$(tput sgr0)\n\n"
