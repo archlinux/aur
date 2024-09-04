@@ -1,0 +1,78 @@
+From 7ad77e63143a1dc4c45260000b59ee7a3e1dabae Mon Sep 17 00:00:00 2001
+From: Adrian Perez de Castro <aperez@igalia.com>
+Date: Wed, 4 Sep 2024 10:16:13 +0300
+Subject: [PATCH] Allow setting a default library_path at build time
+
+Support passing -DASM_LIBRARY_PATH="/some/path" at build time to set a
+default library_path value. This is handy for packaging the program,
+to allow installing the provided assembler sources under e.g.
+/use/share/cvbasic and save the user from having to specify the path
+on every invocation.
+
+If the preprocessor symbol is not defined, use an empty string to keep
+the "use current directory" behaviour. Using the current directory can
+still be achieved by passing "." as the library_path command line
+argument, regardless of the value set for ASM_LIBRARY_PATH.
+---
+ cvbasic.c | 21 +++++++++++++++------
+ 1 file changed, 15 insertions(+), 6 deletions(-)
+
+diff --git a/cvbasic.c b/cvbasic.c
+index 1b2cfac..c8bf3b6 100644
+--- a/cvbasic.c
++++ b/cvbasic.c
+@@ -25,6 +25,12 @@
+ #include "cpu6502.h"
+ #include "cpu9900.h"
+ 
++#ifdef ASM_LIBRARY_PATH
++#define DEFAULT_ASM_LIBRARY_PATH ASM_LIBRARY_PATH
++#else
++#define DEFAULT_ASM_LIBRARY_PATH ""
++#endif
++
+ #define VERSION "v0.7.0 Sep/03/2024"
+ 
+ #define TEMPORARY_ASSEMBLER "cvbasic_temporary.asm"
+@@ -110,7 +116,7 @@ static struct console {
+ 
+ static int err_code;
+ 
+-static char library_path[4096];
++static char library_path[4096] = DEFAULT_ASM_LIBRARY_PATH;
+ static char path[4096];
+ 
+ static int last_is_return;
+@@ -5436,6 +5442,9 @@ int main(int argc, char *argv[])
+         fprintf(stderr, "    By default, it will generate assembler files for Colecovision.\n");
+         fprintf(stderr, "    The library_path argument is optional so you can provide a\n");
+         fprintf(stderr, "    path where the prologue and epilogue files are available.\n");
++#ifdef ASM_LIBRARY_PATH
++        fprintf(stderr, "    Default: '" DEFAULT_ASM_LIBRARY_PATH "'\n");
++#endif
+         fprintf(stderr, "\n");
+         fprintf(stderr, "    It will return a zero error code if compilation was\n");
+         fprintf(stderr, "    successful, or non-zero otherwise.\n\n");
+@@ -5566,14 +5575,14 @@ int main(int argc, char *argv[])
+     if (c < argc) {
+         strcpy(library_path, argv[c]);
+         c++;
++	}
+ #ifdef _WIN32
+-        if (strlen(library_path) > 0 && library_path[strlen(library_path) - 1] != '\\')
+-            strcat(library_path, "\\");
++	if (strlen(library_path) > 0 && library_path[strlen(library_path) - 1] != '\\')
++		strcat(library_path, "\\");
+ #else
+-        if (strlen(library_path) > 0 && library_path[strlen(library_path) - 1] != '/')
+-            strcat(library_path, "/");
++	if (strlen(library_path) > 0 && library_path[strlen(library_path) - 1] != '/')
++		strcat(library_path, "/");
+ #endif
+-    }
+     
+     hex = '$';
+     if (target == CPU_9900) {
+-- 
+2.46.0
+
