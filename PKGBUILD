@@ -3,7 +3,7 @@
 
 pkgname=perl-text-qrcode
 pkgver=0.05
-pkgrel=4
+pkgrel=5
 pkgdesc='Text-QRCode for Perl'
 arch=('i686' 'x86_64')
 url='https://metacpan.org/release/Text-QRCode'
@@ -20,7 +20,6 @@ build() {
 	export PERL_AUTOINSTALL="--skipdeps" PERL_MM_USE_DEFAULT="1"
 
 	perl Makefile.PL INSTALLDIRS="vendor"
-	sed -i '/^LD/s/,--as-needed//' Makefile
 	make
 }
 
