@@ -230,7 +230,7 @@ if [ "${CARCH}" = "i486" -o  "${CARCH}" = "i686" -o "${CARCH}" = "pentium4" ]; t
     if [ "${sha256sums[${i}]}" = '3e88a1f7cd9d8cb5adcd7de8f3659db7e16e04cced03bae3aafcbf8312554663' ]; then
       sha256sums_pentium4=('76a816c2a85673a8fab41d16e149dcc6366f0e7e1b6f3894b34935460f1040dd')
       sha256sums_i686=('85f276cdce078728e98d68c875887b595244dc574368d48aebc3befe23cec49b')
-      sha256sums_i486=('407eb08be53c37ef76c540e29caab9cd216ccc68c226181f')
+      sha256sums_i486=('07bc1845251291c5407eb08be53c37ef76c540e29caab9cd216ccc68c226181f')
     fi
   done
 
