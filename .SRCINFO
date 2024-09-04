@@ -1,7 +1,7 @@
 pkgbase = perl-text-vcard
 	pkgdesc = Text-vCard for Perl
 	pkgver = 3.09
-	pkgrel = 4
+	pkgrel = 5
 	url = https://metacpan.org/release/Text-vCard/
 	arch = any
 	license = PerlArtistic
