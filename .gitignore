@@ -1,0 +1,4 @@
+pkg/
+src/
+pikaur-static-*.tar.gz
+pikaur-static-*.pkg.*
