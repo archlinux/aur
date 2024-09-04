@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=itchcraft
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Tech demo for interfacing with heat-based USB insect bite healers'
 arch=('any')
@@ -25,7 +25,7 @@ makedepends=(
 checkdepends=('python-pytest' 'python-pytest-mock')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/claui/itchcraft/archive/v${pkgver}.tar.gz")
-sha512sums=('0c0afe495faf0df6acd33395e7e07995ea7f1b368d177e3f2a6236a933ed65d3f1a2b823890c9a82e33b164d9684ca45c68efad07a92b538db7581ddb9d5e152')
+sha512sums=('5cbb90510ffd61b589e7d7f585e675508cea96dd438f36192f41d98b2cd3777c5b7b9c49d97d0552185acaaa4c9f562eb7acdc63cc22df69d9f396d97580bc9a')
 
 build() {
   cd "${pkgname}-${pkgver}"
