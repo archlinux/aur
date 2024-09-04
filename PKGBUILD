@@ -6,7 +6,7 @@ _appname_=zoiper
 pkgname=${_appname_}-classic
 pkgver=3.3
 _filever_=3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An IAX and SIP VoIP softphone (classic version)"
 arch=("x86_64")
 url="http://www.zoiper.com/"
@@ -14,21 +14,16 @@ license=("custom")
 makedepends=('bitrock-unpacker')
 depends=("gtk2" "alsa-lib" "libxdamage")
 
-source=("LICENSE" "${pkgname}.desktop" "${pkgname}.png")
+source=("LICENSE"
+        "${pkgname}.desktop"
+        "${pkgname}.png"
+        "Zoiper_${_filever_}_Linux_Free_32Bit_64Bit.tar.gz"::https://web.archive.org/web/20220818061911if_/https://www.zoiper.com/en/voip-softphone/download/zoiper3/for/linux
+      )
 
 prepare() {
   cd "${srcdir}"
-  archive="${startdir}/Zoiper_${_filever_}_Linux_Free_32Bit_64Bit.tar.gz"
+  archive="Zoiper_${_filever_}_Linux_Free_32Bit_64Bit.tar.gz"
 
-  # Tests
-  if ! test -e "${archive}"; then
-  # Messages
-    warning "There is no longer a direct download link for the Zoiper tarball.  Get it manually from: https://www.zoiper.com/en/voip-softphone/download/classic"
-    return 1
-  fi
-
-  # Extractions
-  cp "${archive}" ./
   tar -zxf "${archive}"
 
   # Unpack files from installer
@@ -67,4 +62,5 @@ package() {
 
 sha1sums=('74e9f2d5dc6ec7174923e824b3db64b47b6d3b3c'
           '7458a11bac24aa7ecc454f374b43e5c3cb83faff'
-          '1b68b4fc56baff2de6661b654053ce6b60fe174f')
+          '1b68b4fc56baff2de6661b654053ce6b60fe174f'
+          'ecd378c3ad135c67b797d20e7e7356ae9c01812b')

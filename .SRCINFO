@@ -1,7 +1,7 @@
 pkgbase = zoiper-classic
 	pkgdesc = An IAX and SIP VoIP softphone (classic version)
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zoiper.com/
 	arch = x86_64
 	license = custom
@@ -12,9 +12,10 @@ pkgbase = zoiper-classic
 	source = LICENSE
 	source = zoiper-classic.desktop
 	source = zoiper-classic.png
+	source = Zoiper_3.3_Linux_Free_32Bit_64Bit.tar.gz::https://web.archive.org/web/20220818061911if_/https://www.zoiper.com/en/voip-softphone/download/zoiper3/for/linux
 	sha1sums = 74e9f2d5dc6ec7174923e824b3db64b47b6d3b3c
 	sha1sums = 7458a11bac24aa7ecc454f374b43e5c3cb83faff
 	sha1sums = 1b68b4fc56baff2de6661b654053ce6b60fe174f
+	sha1sums = ecd378c3ad135c67b797d20e7e7356ae9c01812b
 
 pkgname = zoiper-classic
-
