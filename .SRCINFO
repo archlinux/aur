@@ -1,6 +1,6 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox ESR browser
-	pkgver = 115.14.0
+	pkgver = 115.15.0
 	pkgrel = 1
 	url = https://git.savannah.gnu.org/cgit/gnuzilla.git
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = icecat
 	makedepends = lld17
 	makedepends = llvm17
 	makedepends = wasi-compiler-rt17
+	makedepends = cargo
 	makedepends = cbindgen
 	makedepends = diffutils
 	makedepends = dump_syms
@@ -56,24 +57,32 @@ pkgbase = icecat
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	noextract = firefox-115.14.0esr.source.tar.xz
+	noextract = firefox-115.15.0esr.source.tar.xz
 	options = !debug
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
 	options = !strip
-	source = https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-4bd4d4948f2db495872ee11a8a7b0dd30549656c.tar.gz
-	source = https://archive.mozilla.org/pub/firefox/releases/115.14.0esr/source/firefox-115.14.0esr.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/115.14.0esr/source/firefox-115.14.0esr.source.tar.xz.asc
+	source = https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-53ca891e1aac86153b65a12af97eef9752503313.tar.gz
+	source = https://archive.mozilla.org/pub/firefox/releases/115.15.0esr/source/firefox-115.15.0esr.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/115.15.0esr/source/firefox-115.15.0esr.source.tar.xz.asc
 	source = 18d19413472f-24a6ea8.patch::https://aur.archlinux.org/cgit/aur.git/plain/18d19413472f.patch?h=firefox-esr&id=24a6ea8
-	source = 6af7194e2778-24a6ea8.patch::https://aur.archlinux.org/cgit/aur.git/plain/6af7194e2778.patch?h=firefox-esr&id=24a6ea8
 	source = b1cc62489fae-24a6ea8.patch::https://aur.archlinux.org/cgit/aur.git/plain/b1cc62489fae.patch?h=firefox-esr&id=24a6ea8
+	source = patch-python3.12-bug1831512-3d03cbf.patch::https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1831512.patch?h=firedragon&id=3d03cbfb37298c494be59bb34e3da365f10c00a3
+	source = patch-python3.12-bug1860051-3d03cbf.patch::https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1860051.patch?h=firedragon&id=3d03cbfb37298c494be59bb34e3da365f10c00a3
+	source = patch-python3.12-bug1866829-3d03cbf.patch::https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1866829.patch?h=firedragon&id=3d03cbfb37298c494be59bb34e3da365f10c00a3
+	source = patch-python3.12-bug1874280-3d03cbf.patch::https://aur.archlinux.org/cgit/aur.git/plain/patch-python3.12-bug1874280.patch?h=firedragon&id=3d03cbfb37298c494be59bb34e3da365f10c00a3
+	source = 0004-Bug-1912663-d2127a9.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/d2127a9424507a38cff13cce49403214a8190bed/0004-Bug-1912663-Fix-some-build-issues-with-cbindgen-0.27.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = a2162ad7e10e43782396181178994ab6e0bd2f25665aa50e95107212afc7e888
-	sha256sums = 8955e1b5db83200a70c6dea4b614e19328d92b406ec9a1bde2ea86333a74dab4
+	sha256sums = b02d9dab31d9a12d50bc4e5393fcc6f93292c8754da460491398ef92b365a05f
+	sha256sums = effed92aa0d961871614c611259dfe3eab72e5ebfe8f2405f9bc92c5e7feae81
 	sha256sums = SKIP
 	sha256sums = 3cc55401ed5e027f1b9e667b0b52296af11f3c5c62b4a80b7e55cda0e117ed18
-	sha256sums = 6952f93889acb514e3b06e251ea901df88c39b429da9677cd5547d90a8b6c73e
 	sha256sums = f66a944fa8804c16b1f7bd9b42b18bfc2552a891adc148085f4b91685e8db117
+	sha256sums = 9516c36c145d365c3b65153d83a5b3b0dd8a319b5c30d47a390070892bd431b3
+	sha256sums = 168d16a027a81c311c58f9302858244dfa5517f0a95a8d3df1abbf9b93b9d455
+	sha256sums = df27ed1e0da5b192224978dc2a593a97e18e6e22062c611fc32b277500324e62
+	sha256sums = cf1c69fd3338fd8f5e482f55b669160b08dfb021f2348b620f0a85dd9dee8150
+	sha256sums = dd2aba1c02c21b89ceed0713a6aa0241365fe79b1e3a4d21cdcd7231db6fab5e
 
 pkgname = icecat

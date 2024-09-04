@@ -24,10 +24,10 @@
 : ${_lang:=}
 
 ## update
-_icver="115.14.0"
-_commit="4bd4d4948f2db495872ee11a8a7b0dd30549656c"
-_icsum="a2162ad7e10e43782396181178994ab6e0bd2f25665aa50e95107212afc7e888"
-_ffsum="8955e1b5db83200a70c6dea4b614e19328d92b406ec9a1bde2ea86333a74dab4"
+_icver="115.15.0"
+_commit="53ca891e1aac86153b65a12af97eef9752503313"
+_icsum="b02d9dab31d9a12d50bc4e5393fcc6f93292c8754da460491398ef92b365a05f"
+_ffsum="effed92aa0d961871614c611259dfe3eab72e5ebfe8f2405f9bc92c5e7feae81"
 
 if [ -n "$_srcinfo" ]; then
   : ${_lang:=en-US}
@@ -66,6 +66,7 @@ makedepends=(
   "lld${_ver_clang:-}"
   "llvm${_ver_clang:-}"
   "wasi-compiler-rt${_ver_clang:-}"
+  cargo
   cbindgen
   diffutils
   dump_syms
@@ -111,7 +112,7 @@ if [[ "${_build_pgo::1}" == "t" ]]; then
     makedepends+=(
       weston
       xorg-xwayland
-      xwayland-run # AUR
+      wlheadless-run # AUR
     )
   fi
 fi
@@ -141,18 +142,6 @@ _source_icecat() {
     'SKIP'
   )
 
-  _patch_commit="24a6ea8"
-  source+=(
-    "18d19413472f-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/18d19413472f.patch?h=firefox-esr&id=$_patch_commit"
-    "6af7194e2778-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/6af7194e2778.patch?h=firefox-esr&id=$_patch_commit"
-    "b1cc62489fae-$_patch_commit.patch"::"https://aur.archlinux.org/cgit/aur.git/plain/b1cc62489fae.patch?h=firefox-esr&id=$_patch_commit"
-  )
-  sha256sums+=(
-    '3cc55401ed5e027f1b9e667b0b52296af11f3c5c62b4a80b7e55cda0e117ed18'
-    '6952f93889acb514e3b06e251ea901df88c39b429da9677cd5547d90a8b6c73e'
-    'f66a944fa8804c16b1f7bd9b42b18bfc2552a891adc148085f4b91685e8db117'
-  )
-
   validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
   _languages=(
@@ -173,6 +162,46 @@ _source_icecat() {
     noextract+=("l10n-central-$pkgver-$pkgrel-$_locale.zip")
   done
 }
+
+_source_patches() {
+  local _url_aur="https://aur.archlinux.org/cgit/aur.git/plain"
+  local _url_arch="https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw"
+
+  local _patch_commit_1="24a6ea8"
+  source+=(
+    "18d19413472f-$_patch_commit_1.patch"::"$_url_aur/18d19413472f.patch?h=firefox-esr&id=$_patch_commit_1"
+    "b1cc62489fae-$_patch_commit_1.patch"::"$_url_aur/b1cc62489fae.patch?h=firefox-esr&id=$_patch_commit_1"
+  )
+  sha256sums+=(
+    '3cc55401ed5e027f1b9e667b0b52296af11f3c5c62b4a80b7e55cda0e117ed18'
+    'f66a944fa8804c16b1f7bd9b42b18bfc2552a891adc148085f4b91685e8db117'
+  )
+
+  local _patch_commit_2="3d03cbfb37298c494be59bb34e3da365f10c00a3"
+  source+=(
+    "patch-python3.12-bug1831512-${_patch_commit_2::7}.patch"::"$_url_aur/patch-python3.12-bug1831512.patch?h=firedragon&id=$_patch_commit_2"
+    "patch-python3.12-bug1860051-${_patch_commit_2::7}.patch"::"$_url_aur/patch-python3.12-bug1860051.patch?h=firedragon&id=$_patch_commit_2"
+    "patch-python3.12-bug1866829-${_patch_commit_2::7}.patch"::"$_url_aur/patch-python3.12-bug1866829.patch?h=firedragon&id=$_patch_commit_2"
+    "patch-python3.12-bug1874280-${_patch_commit_2::7}.patch"::"$_url_aur/patch-python3.12-bug1874280.patch?h=firedragon&id=$_patch_commit_2"
+  )
+  sha256sums+=(
+    '9516c36c145d365c3b65153d83a5b3b0dd8a319b5c30d47a390070892bd431b3'
+    '168d16a027a81c311c58f9302858244dfa5517f0a95a8d3df1abbf9b93b9d455'
+    'df27ed1e0da5b192224978dc2a593a97e18e6e22062c611fc32b277500324e62'
+    'cf1c69fd3338fd8f5e482f55b669160b08dfb021f2348b620f0a85dd9dee8150'
+  )
+
+  local _patch_commit_3=d2127a9424507a38cff13cce49403214a8190bed
+  source+=(
+    "0004-Bug-1912663-${_patch_commit_3::7}.patch"::"$_url_arch/$_patch_commit_3/0004-Bug-1912663-Fix-some-build-issues-with-cbindgen-0.27.patch"
+  )
+  sha256sums+=(
+    'dd2aba1c02c21b89ceed0713a6aa0241365fe79b1e3a4d21cdcd7231db6fab5e'
+  )
+}
+
+_source_icecat
+_source_patches
 
 _make_icecat() {
   if [ "${_build_repatch::1}" != "t" ] && [ -e "$SRCDEST/$_pkgsrc.tar.zst" ]; then
@@ -376,14 +405,17 @@ export NM=llvm-nm${_ver_clang:+-$_ver_clang}
 export RANLIB=llvm-ranlib${_ver_clang:+-$_ver_clang}
 END
 
-  local src
-  for src in "${source[@]}"; do
+  local src _patches
+  _patches=(
+    ${source[@]}
+  )
+  for src in "${_patches[@]}"; do
     src="${src%%::*}"
-    src="${src##*/}"
     src="${src%.zst}"
     if [[ $src == *.patch ]]; then
       printf '\nApplying patch: %s\n' "$src"
       patch -Np1 -F100 -i "${srcdir:?}/$src"
+      echo
     fi
   done
 }
@@ -393,13 +425,10 @@ build() (
 
   export PATH="/usr/lib/llvm${_ver_clang:-}/bin:$PATH"
   export LD_LIBRARY_PATH=/usr/lib/llvm${_ver_clang:-}/lib
-
-  export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:?}
+  export RUSTUP_TOOLCHAIN
 
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
   [ ! -d "$XDG_RUNTIME_DIR" ] && install -dm700 "${XDG_RUNTIME_DIR:?}"
-
-  export LIBGL_ALWAYS_SOFTWARE=true
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -466,6 +495,13 @@ END
       echo "Profiling instrumented browser..."
       ./mach package
 
+      local _headless_env=(
+        LLVM_PROFDATA=llvm-profdata
+        JARLOG_FILE="${PWD@Q}/jarlog"
+        LIBGL_ALWAYS_SOFTWARE=true
+        dbus-run-session
+      )
+
       if [[ "${_build_pgo_xvfb::1}" == "t" ]]; then
         local _headless_run=(
           xvfb-run
@@ -478,8 +514,7 @@ END
         )
       fi
 
-      LLVM_PROFDATA=llvm-profdata JARLOG_FILE=${PWD@Q}/jarlog \
-        "${_headless_run[@]}" -- ./mach python build/pgo/profileserver.py
+      env "${_headless_env[@]}" "${_headless_run[@]}" -- ./mach python build/pgo/profileserver.py
 
       echo "Removing instrumented browser..."
       ./mach clobber
@@ -601,5 +636,3 @@ END
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
 }
-
-_source_icecat

@@ -1,0 +1,4 @@
+[icecat]
+source = "regex"
+url = "https://git.savannah.gnu.org/cgit/gnuzilla.git"
+regex = '([0-9]+\.[0-9]+\.[0-9]+)'
