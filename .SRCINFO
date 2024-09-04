@@ -1,0 +1,17 @@
+pkgbase = voosweeper-bin
+	pkgdesc = Just a minesweeper game
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/M4rti21/voosweeper
+	arch = x86_64
+	license = LicenseRef-unknown
+	makedepends = fuse2
+	depends = electron23
+	provides = voosweeper=1.3
+	conflicts = voosweeper
+	source = voosweeper-1.3.AppImage::https://github.com/M4rti21/voosweeper/releases/download/1.3/voosweeper-linux.AppImage
+	source = voosweeper.sh
+	sha256sums = e5f3c7c9acdfefbc3e58cb69da175fd58fe58d230b5737c07d9cf11dca06a658
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = voosweeper-bin
