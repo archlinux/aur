@@ -6,7 +6,7 @@ _date=20240821
 _pkgname=unified-source-$_date-$_pkgver
 pkgname=citra
 pkgver=r10102.5115f64
-pkgrel=2
+pkgrel=3
 epoch=1
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
@@ -35,7 +35,6 @@ build() {
 	-DUSE_DISCORD_PRESENCE=ON \
 	-DCMAKE_CXX_FLAGS="$CFLAGS" \
 	-DCMAKE_C_FLAGS="$CXXFLAGS" \
-	-DUSE_SYSTEM_BOOST=ON \
 	-DUSE_SYSTEM_CATCH2=ON \
 	-DUSE_SYSTEM_FMT=ON \
 	-DUSE_SYSTEM_GLSLANG=ON \
