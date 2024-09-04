@@ -1,5 +1,5 @@
+# Maintainer: Adityarup Laha <me@adityaruplaha.me>
 # Maintainer: Chris Vittal <chris@vittal.dev>
-# Contributor: Adityarup Laha <me@adityaruplaha.me>
 _pkgname='plink1.9'
 pkgname="$_pkgname-git"
 _pkgver=1.9
