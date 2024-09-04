@@ -1,13 +1,13 @@
 pkgbase = renderman-pro-server
 	pkgdesc = Foundation for the RenderMan rendering pipeline
-	pkgver = 26.1.2324948
+	pkgver = 26.2.2336968
 	pkgrel = 1
 	url = https://renderman.pixar.com/
 	arch = x86_64
 	license = custom
 	optdepends = renderman: Downloader for the RPM package
 	options = !strip
-	source = manual://RenderManProServer-26.1_2324948-linuxRHEL7_gcc93icx232.x86_64.rpm
-	b2sums = bcdcf0d1ec89e7238e6f6d6b149e28161d4175167e0d00b40643c2e9ba6be8c7512c1dd2a4591bb55b103e44e29b53f6ce45252beacc53cda89d7d26ab2391ae
+	source = manual://RenderManProServer-26.2_2336968-linuxRHEL9_gcc11icx232.x86_64.rpm
+	b2sums = 1c7cdbcdcd9a4dafb1d57de3fddefb4ad0aebc60d3b83523ef0e4f19d861d79cd1c2b207b29fc5140a083085b7d233066f03ff8cf2b15d7ea2d01083e8deb97b
 
 pkgname = renderman-pro-server
