@@ -2,6 +2,7 @@ post_install() {
 	cat << EOF
 ====================================================
 All binaries are prefixed with valveresourceformat-*
+valveresourceformat-wine included for wine wrapping
 ====================================================
 EOF
 }
@@ -10,6 +11,7 @@ post_upgrade() {
 	cat << EOF
 ====================================================
 All binaries are prefixed with valveresourceformat-*
+valveresourceformat-wine included for wine wrapping
 ====================================================
 EOF
 }

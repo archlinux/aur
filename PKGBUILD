@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=valveresourceformat-git
-pkgver=10.1.r107.g9acf01d
+pkgver=10.2.r1.g1d1c12e
 pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
@@ -27,6 +27,9 @@ build() {
 
 	cd "$srcdir/$pkgname/GUI"
 	dotnet publish -r win-x64 -p:EnableWindowsTargeting=true
+
+	#Stop dotnet build server
+	dotnet build-server shutdown
 
 	cd "$srcdir"
 	gendesk -f --pkgname=source2viewer \
@@ -56,7 +59,7 @@ package() {
 	install -Dm644 "$srcdir/$pkgname/GUI/bin/Release/win-x64/publish/Source2Viewer.exe" "$pkgdir/usr/lib/$pkgname/Source2Viewer.exe"
 
 	cat >> "$pkgdir/usr/bin/${pkgname::-4}-source2viewer" <<-EOF
-#!/bin/bash
+#!/usr/bin/env bash
 export WINEPREFIX="\$HOME/.${pkgname::-4}/wine"
 if [ ! -d "\$HOME"/.${pkgname::-4} ];
 then
@@ -66,7 +69,12 @@ fi
 cd "\$HOME/.${pkgname::-4}"
 DOTNET_BUNDLE_EXTRACT_BASE_DIR=./ wine /usr/lib/$pkgname/Source2Viewer.exe "\$@"
 EOF
-	chmod 755 "$pkgdir/usr/bin/${pkgname::-4}-source2viewer"
+	cat >> "$pkgdir/usr/bin/${pkgname::-4}-wine" <<-EOF
+#!/usr/bin/env bash
+export WINEPREFIX="\$HOME/.${pkgname::-4}/wine"
+wine "\$@"
+EOF
+	chmod 755 "$pkgdir/usr/bin/${pkgname::-4}-source2viewer" "$pkgdir/usr/bin/${pkgname::-4}-wine"
 
 	install -Dm644 "$srcdir/$pkgname/Misc/Icons/source2viewer.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/${pkgname::-4}-source2viewer.png"
 	install -Dm644 "$srcdir/source2viewer.desktop" "$pkgdir/usr/share/applications/source2viewer.desktop"
