@@ -1,0 +1,22 @@
+pkgbase = nbteditor-git
+	pkgdesc = Editor for Minecraft NBT and schematic files
+	pkgver = 1.3.r3.g714ac6e4
+	pkgrel = 1
+	url = https://github.com/Howaner/NBTEditor
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = qt5-base
+	depends = qt5-wayland
+	depends = zlib
+	provides = nbteditor
+	conflicts = nbteditor
+	conflicts = nbteditor-bin
+	source = git+https://github.com/Howaner/NBTEditor.git
+	source = NBTEditor.desktop
+	sha256sums = SKIP
+	sha256sums = f490dbcc7e4d6f32d5bf15e50acc35d8ccbed20d159379a469e9b30f0dcd3480
+
+pkgname = nbteditor-git

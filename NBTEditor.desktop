@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=NBTEditor
+Comment=Editor for Minecraft NBT and schematic files
+Exec=/usr/bin/nbteditor %f
+Icon=nbteditor
+Terminal=false
+Type=Application
+Categories=Game;Editor;Utilities;
+MimeType=application/x-nbt
