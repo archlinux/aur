@@ -6,15 +6,16 @@
 # The following guidelines are specific to BZR, GIT, HG and SVN packages.
 # Other VCS sources are not natively supported by makepkg yet.
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Max Raab <max.raab@gmail.com>
+# Contributor: Michael Siadak <mike.siadak@gmail.com>
 pkgname=xeventbind-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r4.a0b00ed
+pkgver=r12.9f67cb7
 pkgrel=1
 pkgdesc="A small utillity that runs your executable/script when interesting X11 events are fired"
 arch=($CARCH)
 url="https://github.com/ritave/xeventbind"
 license=('MIT')
-depends=('libx11')
+depends=('libx11' 'glibc')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -32,6 +33,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
+	sed -i 's/$(CFLAGS)/$(CFLAGS) $(LDFLAGS)/g' Makefile
 	make
 }
 
