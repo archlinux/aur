@@ -3,12 +3,12 @@
 
 pkgname=injeqt
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Dependency injection framework for Qt'
 arch=('i686' 'x86_64')
 url='https://github.com/vogel/injeqt'
-license=('LGPL2.1')
-depends=('qt5-base')
+license=('LGPL-2.0-or-later')
+depends=('gcc-libs' 'glibc' 'qt5-base')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/${pkgver}.tar.gz"
         "gcc7-fix.patch")
