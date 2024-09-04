@@ -4,7 +4,7 @@ pkgname="vs${_appname}-bin"
 _pkgname=VSCodius
 pkgver=1.92.2
 _electronversion=30
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary releases of Visual Studio Code without MS branding/telemetry/licensing and various personal workflow improvements."
 arch=('x86_64')
 url="https://github.com/RubisetCie/vscodius"
@@ -17,34 +17,42 @@ conflicts=(
     "${pkgname%-bin}"
 )
 depends=(
-    "electron${_electronversion}"
+    #"electron${_electronversion}"
     'libxkbfile'
+    'gtk3'
+    'nspr'
+    'alsa-lib'
+    'nss'
 )
 makedepends=(
     'gendesk'
 )
 options=('!strip')
+noextract=("${pkgname%-bin}-${pkgver}.zip")
 source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgname}-Linux-x64-${pkgver}.zip"
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/RubisetCie/vscodius/v${pkgver}/LICENSE.txt"
-    "${pkgname%-bin}.sh"
+    #"${pkgname%-bin}.sh"
 )
 sha256sums=('9dc5ab5e350d38a777f0851b82ec056dce69bb16169fa8ef2b61ffcfc0362fa4'
-            '9480271317925265e806a9a196aaa33410a962fa9d4d1e248a4a5187bc8c9df9'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '9480271317925265e806a9a196aaa33410a962fa9d4d1e248a4a5187bc8c9df9')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    #sed -e "s|@electronversion@|${_electronversion}|g" \
+    #    -e "s|@appname@|${pkgname%-bin}|g" \
+    #    -e "s|@runname@|app|g" \
+    #    -e "s|@cfgdirname@|${_pkgname}|g" \
+    #    -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
+    #    -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -f -n -q --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin}"
+    install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}"
+    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/usr/lib/${pkgname%-bin}"
+    chmod +x "${srcdir}/usr/lib/${pkgname%-bin}/${_appname}"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    #install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/bin"
+    cp -r "${srcdir}/usr/lib" "${pkgdir}/usr"
+    ln -sf "/usr/lib/${pkgname%-bin}/${_appname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/resources/completions/bash/${_appname}" "${pkgdir}/usr/share/bash-completion/completions/${pkgname%-bin}"
     install -Dm644 "${srcdir}/resources/completions/zsh/_${_appname}" -t "${pkgdir}/usr/share/zsh/functions/Completion/Zsh/_${pkgname%-bin}"
     install -Dm644 "${srcdir}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
