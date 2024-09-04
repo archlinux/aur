@@ -3,7 +3,7 @@
 # Contributor: rawkode <rawkode@pm.me>
 
 pkgname=openfaas-cli
-pkgver=0.16.34
+pkgver=0.16.35
 pkgrel=1
 pkgdesc="Official CLI for OpenFaaS"
 arch=('i686' 'x86_64' 'arm64')
@@ -13,7 +13,7 @@ provides=('faas-cli')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('3b19c635be5ea76249d85eac0e362271080808716585823d91681904b98d970b')
+sha256sums=('89e099e86e46e3fe39f2d22c1a8a0fe512dfb66a782d47481ce2f4058e983dde')
 
 prepare() {
   cd "${srcdir}/faas-cli-${pkgver}"
