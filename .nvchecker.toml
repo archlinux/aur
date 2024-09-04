@@ -1,0 +1,4 @@
+[doctoc-git]
+source = "git"
+git = "https://github.com/technote-space/doctoc.git"
+prefix = "v"

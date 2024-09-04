@@ -1,35 +1,46 @@
-# Maintainer: Michael DeGuzis <mdeguzis@gmail.com>
+# Maintainer:
+# Contributor: Michael DeGuzis <mdeguzis@gmail.com>
 
-pkgname=doctoc-git
-pkgver=1.3.1.r0.g30d6569
-pkgrel=2
-pkgdesc="Generates table of contents for markdown files inside local git repository., installed through npm (git-latest)"
+_pkgname="doctoc"
+pkgname="$_pkgname-git"
+pkgver=2.6.4.r0.ga973f88
+pkgrel=1
+pkgdesc="Generates table of contents for markdown files inside local git repository"
 arch=('any')
-url="https://www.npmjs.com/package/doctoc"
-license=('GPLv3')
-depends=('git' 'nodejs')
-conflicts=('doctoc')
-provides=('doctoc')
-makedepends=('npm')
-options=(!emptydirs)
-source=('doctoc-git::git+https://github.com/thlorenz/doctoc')
+url="https://github.com/technote-space/doctoc"
+license=('MIT')
+
+depends=(
+  'nodejs'
+)
+makedepends=(
+  'git'
+  'npm'
+)
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+options=('!emptydirs')
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-
-  cd "$srcdir/$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
-
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
+  cd "$_pkgsrc"
 
-  cd "$pkgname"
-  mkdir -p $pkgdir/usr
+  install -dm755 "$pkgdir/usr"
   npm pack .
   npm install --user root -g --prefix="$pkgdir/usr" *.tgz
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  find "${pkgdir}" -name "package.json" -exec sed -e "s|${pkgdir}||" -i {} \;
-  find "${pkgdir}" -name "package.json" -exec sed -e "s|${srcdir}||" -i {} \;
 
+  find "$pkgdir" -name "package.json" -exec sed -e "s&(${pkgdir}|${srcdir})&&" -i {} \;
+
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
