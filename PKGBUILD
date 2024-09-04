@@ -2,64 +2,93 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # This repository is a fork of musicpod-git.
 # Before executing makepkg, you can set FVM_CACHE_PATH to $HOME/fvm or the path specified by the cachePath field in the $HOME/.config/fvm/.fvmrc file.
-pkgname=musicpod
-_app_id=org.feichtmeier.Musicpod
+
+## options
+: ${_install_path:=opt}
+
+_pkgname="musicpod"
+pkgname="$_pkgname"
 pkgver=1.10.1
-pkgrel=1
-_flutterver=3.24.0
+pkgrel=2
+_flutterver=3.24.1
 pkgdesc="Music, radio, television and podcast player"
-arch=('x86_64' 'aarch64')
 url="https://github.com/ubuntu-flutter-community/musicpod"
 license=('GPL-3.0-or-later')
+arch=('x86_64')
 depends=(glibc glib2 mpv cairo gdk-pixbuf2 pango libepoxy fontconfig at-spi2-core gtk3 gcc-libs)
-makedepends=('clang' 'cmake' 'fvm' 'ninja')
-provides=("${pkgname}")
-conflicts=('musicpod-git' 'musicpod-bin')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ubuntu-flutter-community/musicpod/archive/refs/tags/v$pkgver.tar.gz")
+makedepends=(
+  'clang'
+  'cmake'
+  'fvm' #AUR
+  'git'
+  'lld'
+  'llvm'
+  'ninja'
+  'patchelf'
+)
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
+provides=("${_pkgname}")
 sha256sums=('3e41e0debd8092d244de64f3082985b7987cec0662f2a09e6c1f045405390494')
 
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  export FVM_CACHE_PATH="$srcdir/.fvm"
-  fvm install "${_flutterver}"
-  fvm global "${_flutterver}"
-
-  # Disable analytics
-  fvm flutter --disable-analytics
-
-  # Download dependencies
-  fvm flutter pub get
-
-  desktop-file-edit  --set-icon="${pkgname}" "snap/gui/$pkgname.desktop"
-}
-
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  export FVM_CACHE_PATH="$srcdir/.fvm"
+  export FVM_CACHE_PATH="$SRCDEST/fvm-cache"
+
+  cd "$_pkgsrc"
+  fvm install "${_flutterver}"
+
+  fvm flutter --disable-analytics
+  #fvm flutter pub upgrade --major-versions
+  fvm flutter --no-version-check pub get
   fvm flutter build linux --release
 }
 
-check() {
-  cd "$srcdir/$pkgname-$pkgver"
-  desktop-file-validate "snap/gui/$pkgname.desktop"
-}
-
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
   if [ $CARCH == "aarch64" ]; then
     FLUTTER_ARCH=arm64
   else
     FLUTTER_ARCH=x64
   fi
 
-  install -Dm755 "build/linux/${FLUTTER_ARCH}/release/bundle/$pkgname" -t \
-    "$pkgdir/opt/$pkgname/"
-  cp -r build/linux/${FLUTTER_ARCH}/release/bundle/{data,lib} "$pkgdir/opt/$pkgname"
+  cd "$_pkgsrc/build/linux/$FLUTTER_ARCH/release/bundle"
 
-  install -Dm644 "snap/gui/$pkgname.png" -t "$pkgdir/usr/share/pixmaps/"
-  install -Dm644 "snap/gui/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm755 "musicpod" "$pkgdir/$_install_path/$_pkgname/$_pkgname"
+  cp --reflink=auto -r lib/ "$pkgdir/$_install_path/$_pkgname/"
+  cp --reflink=auto -r data/ "$pkgdir/$_install_path/$_pkgname/"
 
-  install -d "$pkgdir/usr/bin"
-  ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/"
+  # runpath
+  patchelf --set-rpath '$ORIGIN/lib' "$pkgdir/$_install_path/$_pkgname/$_pkgname"
+  for i in "$pkgdir/$_install_path/$_pkgname/lib"/*.so; do
+    [ -z "$(patchelf --print-rpath "$i")" ] && continue
+    patchelf --set-rpath '$ORIGIN' "$i"
+  done
+
+  # symlink
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -sfr "$pkgdir/$_install_path/$_pkgname/$_pkgname" "$pkgdir/usr/bin/${_pkgname}"
+   # icon
+  install -Dm644 "$srcdir/$_pkgsrc/snap/gui/$pkgname.png" \
+    "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  
+  # .desktop file
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
+[Desktop Entry]
+Type=Application
+Name=MusicPod
+Comment=$pkgdesc
+Keywords=Music;Podcast;Radio;
+Exec=$_pkgname %U
+MimeType=application/claps;application/mpeg4-iod;application/mpeg4-muxcodetable;application/mxf;application/ogg;application/ram;application/sdp;application/streamingmedia;application/vnd.apple.mpegurl;application/vnd.ms-asf;application/vnd.rn-realmedia;application/vnd.rn-realmedia-vbr;application/x-extension-m4a;application/x-extension-mp4;application/x-flac;application/x-flash-video;application/x-matroska;application/x-ogg;application/x-streamingmedia;audio/3gpp;audio/3gpp2;audio/aac;audio/ac3;audio/amr;audio/amr-wb;audio/basic;audio/dv;audio/eac3;audio/flac;audio/m4a;audio/midi;audio/mp1;audio/mp2;audio/mp3;audio/mp4;audio/mpeg;audio/mpegurl;audio/mpg;audio/ogg;audio/opus;audio/scpls;audio/vnd.dolby.heaac.1;audio/vnd.dolby.heaac.2;audio/vnd.dolby.mlp;audio/vnd.dts;audio/vnd.dts.hd;audio/vnd.rn-realaudio;audio/wav;audio/webm;audio/x-aac;audio/x-aiff;audio/x-ape;audio/x-flac;audio/x-gsm;audio/x-it;audio/x-m4a;audio/x-matroska;audio/x-mod;audio/x-mp1;audio/x-mp2;audio/x-mp3;audio/x-mpeg;audio/x-mpegurl;audio/x-mpg;audio/x-ms-asf;audio/x-ms-wma;audio/x-musepack;audio/x-pn-aiff;audio/x-pn-au;audio/x-pn-realaudio;audio/x-pn-wav;audio/x-real-audio;audio/x-realaudio;audio/x-s3m;audio/x-scpls;audio/x-shorten;audio/x-speex;audio/x-tta;audio/x-vorbis;audio/x-vorbis+ogg;audio/x-wav;audio/x-wavpack;audio/x-xm;video/3gp;video/3gpp;video/3gpp2;video/divx;video/dv;video/fli;video/flv;video/mp2t;video/mp4;video/mp4v-es;video/mpeg;video/mpeg-system;video/msvideo;video/ogg;video/quicktime;video/vnd.mpegurl;video/vnd.rn-realvideo;video/webm;video/x-avi;video/x-flc;video/x-fli;video/x-flv;video/x-m4v;video/x-matroska;video/x-mpeg;video/x-mpeg-system;video/x-mpeg2;video/x-ms-asf;video/x-ms-wm;video/x-ms-wmv;video/x-ms-wmx;video/x-msvideo;video/x-nsv;video/x-ogm+ogg;video/x-theora;video/x-theora+ogg;x-content/audio-cdda;x-content/audio-player;x-content/video-dvd;x-scheme-handler/mms;x-scheme-handler/mmsh;x-scheme-handler/rtmp;x-scheme-handler/rtp;x-scheme-handler/rtsp;
+Icon=$_pkgname
+Terminal=false
+Categories=AudioVideo;Audio;
+StartupWMClass=musicpod
+END
+
+  # license
+  install -Dm644 "$srcdir/$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+  # permissions
+  chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
