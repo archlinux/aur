@@ -1,10 +1,10 @@
 _godot_repo=https://github.com/godotengine/godot/releases/download
-_godot=4.2.2
-_system_godot=false
+_godot=4.3
+_system_godot=true
 
 pkgname=thrive
 pkgver=0.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="the evolution game Thrive."
 arch=("x86_64" "aarch64")
 url="https://revolutionarygamesstudio.com/"
@@ -33,9 +33,7 @@ sha256sums=('daecbb2c5f3c4cc5fa56d79dc7c61eaf01e6f71de7e2478395c2939e45060fba'
             'SKIP'
             'SKIP'
             'SKIP'
-            '81a00143da2f8f89e2538843522202e2232be7e3de75fe45524daf919ab16a8b')
-sha256sums_x86_64=('4fe073fd99dbcdba4a8bea786b76b25a4dfee2efa6f2aa0d4f40f443d09de3f4')
-sha256sums_aarch64=('32beab62973194f9da950d6800a7dd083b0f83547526338bcd0ba6210ee5fe68')
+            'a640d97e4247883b58d394c6111c13343112f3c49bb857d95586f98659fa3be5')
 
 options=("!lto") # -flto=thin is added in CMakeLists.txt
 
@@ -116,7 +114,9 @@ build(){
         export PATH="$PATH:$HOME/.local/bin"
     fi
     mkdir -p dist
-    godot-mono --headless --export-release Linux/X11 dist/Thrive
+    godot-mono --headless --build-solutions --quit
+    godot-mono --headless --import
+    godot-mono --headless --export-release "Linux/X11" dist/Thrive
 }
 
 check(){
