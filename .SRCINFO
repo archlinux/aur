@@ -1,7 +1,7 @@
 pkgbase = wps-2023
 	pkgdesc = WPS Office, is an office productivity suite.
 	pkgver = 12.1.0.17881
-	pkgrel = 2
+	pkgrel = 3
 	url = https://linux.wps.cn
 	arch = x86_64
 	license = LicenseRef-WPS-EULA
@@ -28,7 +28,7 @@ pkgbase = wps-2023
 	options = !strip
 	options = !zipman
 	options = !debug
-	source_x86_64 = wps-office_12.1.0.17881_amd64.deb::https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/17881/wps-office_12.1.0.17881_amd64.deb?t=1725420394&k=f5bc4adec4c5adb4bdf71a0e83686b49
+	source_x86_64 = wps-office_12.1.0.17881_amd64.deb::https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/17881/wps-office_12.1.0.17881_amd64.deb?t=1725421410&k=920cf0388a7309413bed46dcf6e97a5b
 	sha1sums_x86_64 = ef71d43eaa06a6ffbad4f6307499b80f25478d42
 
 pkgname = wps-2023

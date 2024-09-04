@@ -2,7 +2,7 @@
 pkgbase=wps-2023
 pkgname=('wps-2023')
 pkgver=12.1.0.17881
-pkgrel=2
+pkgrel=3
 pkgdesc="WPS Office, is an office productivity suite."
 arch=('x86_64')
 url="https://linux.wps.cn"
@@ -40,7 +40,6 @@ source_x86_64=("wps-office_${pkgver}_amd64.deb::$(_get_source_url amd64)")
 sha1sums_x86_64=('ef71d43eaa06a6ffbad4f6307499b80f25478d42')
 
 package(){
-
   xz -df data.tar.xz
   tar --no-same-owner -C "${pkgdir}" -xf data.tar --exclude './usr/share/fonts'\
   --exclude './usr/share/desktop-directories' ./opt/kingsoft ./usr
@@ -48,7 +47,6 @@ package(){
   cd "${pkgdir}"
   # use system lib
   rm opt/kingsoft/wps-office/office6/lib{jpeg,stdc++}.so*
-  [[ "$CARCH" = "aarch64" ]] && rm opt/kingsoft/wps-office/office6/addons/cef/libm.so*
 
   # fix python2 call
   sed -i "s/python -c 'import sys, urllib; print urllib\.unquote(sys\.argv\[1\])'/\
