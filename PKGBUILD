@@ -1,10 +1,10 @@
-# Maintainer: Dino Morelli <dino@ui3.info>
-# Based on brother-mfc-j6510dw package from AUR
+# Maintainer: Arne Ludwig <arne.ludwig@posteo.de>
+# Based on brother-mfc-9465cdn package from AUR
 
 _model="9460cdn"
 pkgname="brother-mfc-$_model"
 pkgver="1.1.1"
-pkgrel=3
+pkgrel=1
 pkgdesc="LPR and CUPS driver for the Brother MFC-9460CDN"
 arch=('i686' 'x86_64')
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
