@@ -1,0 +1,12 @@
+pkgbase = intel-sof-bin
+	pkgdesc = SOF Project - Firmware and topology binaries
+	pkgver = 2024.06
+	pkgrel = 1
+	url = https://github.com/thesofproject/sof-bin
+	arch = any
+	license = GPL
+	depends = linux-firmware
+	source = sof-bin-2024.06.tar.gz::https://github.com/thesofproject/sof-bin/releases/download/v2024.06/sof-bin-2024.06.tar.gz
+	md5sums = 18e49a2222b1c81c1b6b12c937b0f67d
+
+pkgname = intel-sof-bin
