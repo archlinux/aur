@@ -2,11 +2,11 @@
 
 _pkgname="sui"
 pkgname="${_pkgname}-bin"
-pkgver=1.31.1
+pkgver=1.32.2
 pkgrel=1
 pkgdesc="A next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model"
 arch=('x86_64')
-url="https://${_pkgname}.io"
+url="https://sui.io"
 _url="https://github.com/MystenLabs/${_pkgname}"
 license=('Apache-2.0')
 depends=('glibc' 'gcc-libs' 'rust' 'openssl' 'libldap' 'krb5' 'e2fsprogs'
@@ -19,7 +19,7 @@ source=("README-${pkgver}.md::${_url}/raw/mainnet-v${pkgver}/README.md"
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/mainnet-v${pkgver}/${_pkgname}-mainnet-v${pkgver}-ubuntu-x86_64.tgz")
 sha256sums=('3ededb5b006bf86ea26c03f2073944998e2c8854f1ae150c35c8a418a16c9622'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('357152aaec8b7e1c0bf8022c0c74f3cb4a9e99ec4881461126a7455724c057fa')
+sha256sums_x86_64=('d5784d7e8b15d31dd1d96df45e8ec75daad2e0ef3360af75de5616d528eb68d7')
 
 package() {
   cd "${srcdir}"
