@@ -1,22 +1,18 @@
 pkgbase = helib-git
 	pkgdesc = A software library that implements homomorphic encryption (HE) through the BGV scheme
-	pkgver = 1.0.0.beta1.Aug2019.r52.072ffc8
+	pkgver = 1.0.0.beta1.Aug2019.r296.3e337a66
 	pkgrel = 1
 	url = https://homenc.github.io/HElib/
 	arch = i686
 	arch = x86_64
 	license = Apache
-	makedepends = cmake>=3.5.1
-	makedepends = make
-	makedepends = gcc>=5.4.0
-	makedepends = libpthread-stubs
+	makedepends = cmake>=3.16.0
 	makedepends = git
-	depends = gmp>=6.0.0
-	depends = ntl>=11.0.0
+	depends = gmp>=6.2.0
+	depends = ntl>=11.4.3
 	provides = helib
 	conflicts = helib
 	source = helib::git+https://github.com/homenc/HElib.git
 	md5sums = SKIP
 
 pkgname = helib-git
-

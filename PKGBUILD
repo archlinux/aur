@@ -6,17 +6,17 @@
 # The following guidelines are specific to BZR, GIT, HG and SVN packages.
 # Other VCS sources are not natively supported by makepkg yet.
 
-# Maintainer: Yoep Kortekaas <yoep dot kortekaas at gmail dot com>
+# Contributor: Yoep Kortekaas <yoep dot kortekaas at gmail dot com>
 pkgname=helib-git
-pkgver=1.0.0.beta1.Aug2019.r52.072ffc8
+pkgver=1.0.0.beta1.Aug2019.r296.3e337a66
 pkgrel=1
 pkgdesc="A software library that implements homomorphic encryption (HE) through the BGV scheme"
 arch=('i686' 'x86_64')
 url="https://homenc.github.io/HElib/"
 license=('Apache')
 groups=()
-depends=('gmp>=6.0.0' 'ntl>=11.0.0')
-makedepends=('cmake>=3.5.1' 'make' 'gcc>=5.4.0' 'libpthread-stubs' 'git')
+depends=('gmp>=6.2.0' 'ntl>=11.4.3')
+makedepends=('cmake>=3.16.0' 'git')
 provides=("helib")
 conflicts=("${pkgname%-git}")
 replaces=()
