@@ -1,6 +1,6 @@
 pkgbase = dyalog-bin
 	pkgdesc = Dyalog APL interpreter
-	pkgver = 19.0.48958
+	pkgver = 19.0.50027
 	pkgrel = 3
 	url = https://www.dyalog.com/download-zone.htm
 	arch = x86_64
@@ -16,12 +16,11 @@ pkgbase = dyalog-bin
 	depends = nodejs
 	depends = unixodbc
 	depends = at-spi2-atk
-	depends = ncurses5-compat-libs
 	optdepends = dotnet-runtime-3.1-bin
 	options = !strip
-	source = dyalog-bin-19.0.48958.deb::https://www.dyalog.com/uploads/php/download.dyalog.com/download.php?file=19.0/linux_64_19.0.48958_unicode.x86_64.deb
+	source = dyalog-bin-19.0.50027.deb::https://www.dyalog.com/uploads/php/download.dyalog.com/download.php?file=19.0/linux_64_19.0.50027_unicode.x86_64.deb
 	source = LICENSE.pdf::https://www.dyalog.com/uploads/documents/Developer_Software_Licence.pdf
-	sha256sums = f8bf5723b2a7b7dd6c1bfd04dc61527aa8c3f59b3ed67ef63037efb179ebefb3
+	sha256sums = dee075d361ebd1d9aa0198f67b32e1b00741a2d636e0f5897c4ee0e704a628c0
 	sha256sums = 94eea122f15d1e43443a6bbb10f375be23cf8ba8aacc6b0381bc89a7791c3172
 
 pkgname = dyalog-bin
