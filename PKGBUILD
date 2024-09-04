@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altus-bin
 _pkgname=Altus
-pkgver=5.2.0
+pkgver=5.3.0
 _electronversion=28
 pkgrel=1
 pkgdesc="Desktop client for WhatsApp Web with themes, notifications and multiple account support"
@@ -26,8 +26,8 @@ source=(
     "${pkgname%-bin}.sh"
 )
 options=('!strip')
-sha256sums=('472322bb3e1eb10a775f92c69ea21ec52aee6b9d2733c6fd50454a51868b779a'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums=('42b8ec10655672bbac5e6fb17cb4fe58152ce0806c6bfcf2132ce46b8509c4a7'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -40,6 +40,7 @@ build() {
     sed -e "s|AppRun --no-sandbox|${pkgname%-bin}|g" \
         -e "s|Utility|Network|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    rm -rf "${srcdir}/squashfs-root/resources/app/"{.github,.vite,.vscode}
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
 package() {
