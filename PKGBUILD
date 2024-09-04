@@ -2,11 +2,11 @@
 
 pkgname=mingw-w64-x86_64-zlib
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Compression library implementing the deflate compression method found in gzip and PKZIP for amd64 (mingw-w64)"
 arch=('x86_64')
 license=('Zlib')
-depends=(mingw-w64-gcc)
+makedepends=(mingw-w64-gcc)
 provides=("mingw-w64-$arch-zlib=$pkgver")
 conflicts=('mingw-w64-zlib')
 url="https://zlib.net/"
@@ -40,6 +40,9 @@ package () {
     install -d "$pkgdir/usr/$_platform/lib/pkgconfig"
     sed "s,@prefix@,/usr/$_platform,;s,@exec_prefix@,\${prefix},;s,@libdir@,\${exec_prefix}/lib,;s,@sharedlibdir@,\${libdir},;s,@includedir@,\${prefix}/include,;s,@VERSION@,$pkgver," < zlib.pc.in > "$pkgdir/usr/$_platform/lib/pkgconfig/zlib.pc"
     
+    install -d "$pkgdir/usr/share/licenses/$pkgname"
+    install -m644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+
     $_platform-strip -x -g "$pkgdir/usr/$_platform/bin/"*.dll
     $_platform-strip -g    "$pkgdir/usr/$_platform/lib/"*.a    
 }
