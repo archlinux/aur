@@ -2,7 +2,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname='mandarine'
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 pkgdesc='3ds emulator - citra fork with tweaks/enhancements'
 url='https://github.com/mandarine3ds/mandarine'
@@ -124,7 +124,6 @@ build() {
     	-DUSE_DISCORD_PRESENCE=ON \
 	-DCMAKE_CXX_FLAGS="$CXXFLAGS" \
 	-DCMAKE_C_FLAGS="$CFLAGS" \
-	-DUSE_SYSTEM_BOOST=ON \
 	-DUSE_SYSTEM_CATCH2=ON \
 	-DUSE_SYSTEM_FMT=ON \
 	-DUSE_SYSTEM_GLSLANG=ON \
