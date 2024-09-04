@@ -1,0 +1,4 @@
+[archmage]
+source = "git"
+git = "https://github.com/dottedmag/archmage.git"
+prefix = "v"
