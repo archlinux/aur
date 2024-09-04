@@ -1,12 +1,10 @@
 # Maintainer: yifwon <wyf9661 [at] gmail.com>
-pkgbase=wps-office-2019
-pkgname=('wps-office-2019')
-_main_ver=11.1.0
-_sub_ver=11723
-pkgver=${_main_ver}.${_sub_ver}
+pkgbase=wps-2023
+pkgname=('wps-2023')
+pkgver=12.1.0.17881
 pkgrel=1
 pkgdesc="WPS Office, is an office productivity suite."
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://linux.wps.cn"
 license=('LicenseRef-WPS-EULA')
 makedepends=(
@@ -29,7 +27,7 @@ options=(!strip !zipman !debug)
 # https://gitlab.com/cwittlut/wps-tsk/-/blob/main/tsk.sh?ref_type=heads by Ryan Tsien
 # https://pastebin.com/29TeRUMj by Asuka Minato
 _get_source_url() {
-    url="https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2019/$3/wps-office_$2.$3_$1.deb"
+    url="https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/${pkgver##*.}/wps-office_${pkgver}_$1.deb"
     uri="${url#https://wps-linux-personal.wpscdn.cn}"
     secrityKey='7f8faaaa468174dc1c9cd62e5f218a5b'
     timestamp10=$(date '+%s')
@@ -38,10 +36,8 @@ _get_source_url() {
     echo "$url"
 }
 
-source_x86_64=("wps-office_${pkgver}_amd64.deb::$(_get_source_url amd64 ${_main_ver} ${_sub_ver} )")
-source_aarch64=("wps-office_${pkgver}_arm64.deb::$(_get_source_url arm64 ${_main_ver} 11720)")
-sha1sums_x86_64=('7ef522d02341ad2904e6d97024c19dff6fb92d2c')
-sha1sums_aarch64=('ca96c97ed2721b7329eb3a7a8c9058c8007f1ec6')
+source_x86_64=("wps-office_${pkgver}_amd64.deb::$(_get_source_url amd64)")
+sha1sums_x86_64=('ef71d43eaa06a6ffbad4f6307499b80f25478d42')
 
 package(){
 
