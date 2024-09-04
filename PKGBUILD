@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-pyttsx3
-pkgver=2.90
+pkgver=2.91
 pkgrel=1
 pkgdesc="Offline text-to-speech synthesis"
 arch=('any')
