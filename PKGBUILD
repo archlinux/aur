@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="ipsw"
-pkgver=3.1.539
+pkgver=3.1.540
 pkgrel=1
 pkgdesc="iOS/macOS Research Swiss Army Knife"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 backup=("etc/${pkgname}.conf")
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}::git+${url}#tag=v${pkgver}")
-sha256sums=('72b715e1c691daf9f10205f15052ba7a6ce6fab8e0a903c3712f5a94353ebe3b')
+sha256sums=('82334a3ac00cece0a1346b0d246d12c6c70525b75210a83c450f94516394095b')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
