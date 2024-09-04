@@ -4,7 +4,7 @@
 
 _pkgname=lammps
 pkgname=${_pkgname}-git
-pkgver=38442.b620c52
+pkgver=patch_29Aug2024+46.r40382.20240903.9243959ca4
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
@@ -18,26 +18,20 @@ source=('git+https://github.com/lammps/lammps.git')
 sha512sums=('SKIP')
 optdepends=('clang' 'python' 'python-mpi4py')
 
+pkgver() {
+    cd $srcdir/${_pkgname}
+    _tag="$(git describe --tags)"
+    _ver="$(sed -E -e 's|^[vV]||' -e 's|^([a-zA-Z]*)-|\1_|' -e 's|\-g[0-9a-f]*$||' -e 's|-|+|g' <<<${_tag})"
+    _rev="$(git rev-list --count HEAD)"
+    _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+    _hash="$(git rev-parse --short HEAD)"
+
+    printf "${_ver}.r${_rev}.${_date}.${_hash}"
+    # printf "r%s.%s" "$(git rev-list HEAD --count)" "$(git rev-parse --short HEAD)"
+}
+
 prepare() {
   cd ${_pkgname}
-  filepath=$(echo $(cd ../../ && pwd))/my_pair
-
-  if [ -d "$filepath"  ] && [ "`ls -A $filepath`" != "" ];then
-    msg2 ""
-    msg2 "*******  Custom potential energy has been copied  *******"
-    msg2 "*******  自定义势能已经复制  *******"
-    cp "$filepath"/* ./src/
-  else
-    mkdir -p "$filepath"
-    msg2 "Before installation, you can add custom potential energy in $filepath"
-    msg2 "安装前，可以在 $filepath 添加自定义势能"
-  fi
-  msg2 "3"
-  sleep 1
-  msg2 "2"
-  sleep 1
-  msg2 "1"
-  sleep 1
 
   rm -rf build
   mkdir -p build
@@ -59,19 +53,19 @@ build() {
   # 用 -D PKG_包名=on 添加到 ../cmake \ 前面即可，例如：
 
   cmake \
+      -D PKG_MOLECULE=on \
+      -D PKG_PYTHON=on \
       -D PKG_PHONON=on \
       -D PKG_KSPACE=on \
-      -D PKG_MANYBODY=yes \
-      -D PKG_PYTHON=yes \
-    ../cmake \
-    -DPKG_MOLECULE=yes \
-    -DLAMMPS_EXCEPTIONS=yes \
-    -DBUILD_LIB=yes \
-    -DBUILD_SHARED_LIBS=yes \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DCMAKE_INSTALL_LIBDIR="lib" \
-    -DCMAKE_INSTALL_LIBEXECDIR="/usr/lib"
+      -D PKG_MANYBODY=on \
+      -D LAMMPS_EXCEPTIONS=on \
+      -D BUILD_LIB=on \
+      -D BUILD_SHARED_LIBS=on \
+      -D CMAKE_BUILD_TYPE=Release \
+      -D CMAKE_INSTALL_PREFIX="/usr" \
+      -D CMAKE_INSTALL_LIBDIR="lib" \
+      -D CMAKE_INSTALL_LIBEXECDIR="/usr/lib" \
+    ../cmake
 
   cmake --build . -j $(($(nproc) - 1))
 
