@@ -1,14 +1,14 @@
-# Maintainer: GI_Jack <GI_Jack@hackermail.com>
+# Contributor: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=cobaltstrike_brute-git
 _pkgname=cobaltstrike_brute
 pkgver=r8.f26eeea
-pkgrel=1
+pkgrel=2
 pkgdesc="Cobalt Strike Team Server Password Brute Forcer"
 arch=('any')
 url="https://github.com/isafe/cobaltstrike_brute"
 license=('Apache')
-depends=('python' 'python-pyopenssl')
+depends=('python')
 makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
