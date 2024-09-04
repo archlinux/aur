@@ -1,0 +1,17 @@
+diff -pNaru5 a/driver/2.6.27/dgrp_tty.c b/driver/2.6.27/dgrp_tty.c
+--- a/driver/2.6.27/dgrp_tty.c	2024-09-04 15:44:03.106089489 -0400
++++ b/driver/2.6.27/dgrp_tty.c	2024-09-04 15:44:29.759496811 -0400
+@@ -2214,11 +2214,12 @@ static ssize_t dgrp_tty_write(struct tty
+ 		dbg_tty_trace(WRITE, ("dgrp_tty_write(%x) - wrote 0\n",
+ 			      MINOR(tty_devnum(tty))));
+ 		return 0;
+ 	}
+ 
+-	count = min(count, space);
++	/* count = min(count, space); */
++	if (count>space) count=space;
+ 
+ 	/*
+ 	 * If data is coming from user space, copy it into a temporary
+ 	 * buffer so we don't get swapped out while doing the copy to
+ 	 * the board.

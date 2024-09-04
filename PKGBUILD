@@ -108,7 +108,7 @@ pkgname='dgrp'
 #_pkgver='1.9-40'; _dl='40002086_AA.tgz'
 _pkgver='1.9-41'; _dl='40002086_AB.tgz'
 pkgver="${_pkgver//-/.}"
-pkgrel='2'
+pkgrel='3'
 pkgdesc="tty driver for Digi ${_opt_RealPort} ConnectPort EtherLite Flex One CM PortServer TS IBM RAN serial console terminal servers"
 #_pkgdescshort="Digi ${_opt_RealPort} driver for Ethernet serial servers" # For when we used to generate the autorebuild from here
 arch=('i686' 'x86_64')
@@ -208,6 +208,9 @@ source=(
   '0014-kernel-6.6-struct-tty_operations-size_t.patch'
   '0015-kernel-6.4-class_create-1arg.patch'
   '0016-0006-kernel-5.10-dropped-tty_check_change.patch'
+  '0017-gcc-14-strict-function-definition-configure.patch'
+  '0018-kernel-6.6-strict-sign-enforcement-for-minmax-__cmp_once.patch'
+  '0019-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch'
 )
 unset _mibsrc
 #source_i686=('http://ftp1.digi.com/support/utilities/40002890_A.tgz')
@@ -263,7 +266,10 @@ md5sums=('df7d7093759350208fbe5abf5ceb27de'
          '26d60834e4804c1c8af826e4f2a45503'
          'dc163d401cf3db6e07ff66793d3ec7ca'
          '762d49459368bb78da084e57ffc25d7c'
-         '8aeeb382e88b712c163e149bea6c5e1a')
+         '8aeeb382e88b712c163e149bea6c5e1a'
+         'c177b666a0f9a7da04c16b3b974debfa'
+         'f0ece6ca3aed462f7c11ff82bb3cc32f'
+         'a7b0e6bfebc82bf30ab6ed846bd64bf2')
 sha256sums=('9ab56e0c841a1eab13e9ced8f1ff6943be6643773dbbbb7b189462950b9f2113'
             '42898b9d24262de27e9b1f3067d51d01373810b7c9e4991403a7f0a5dd7a26cf'
             '66f8b106a052b4807513ace92978e5e6347cef08eee39e4b4ae31c60284cc0a3'
@@ -314,7 +320,10 @@ sha256sums=('9ab56e0c841a1eab13e9ced8f1ff6943be6643773dbbbb7b189462950b9f2113'
             '3afe6487f26f7393aa1a05b1cd307b3bd29d164a49596e199a681b4432f6e23e'
             '5787763cac47a3ba5df203f75d57c9d7d8d4364c7cd32db426b268f77f17247a'
             'df2c6cf5943ca26f282b96f22cf7301cffa6521a273c8301199840b5dca57e8a'
-            '26022e04543aa8ccebe1b9c698c452e2dccc98d5bf1fd8c4f0dba000067e899a')
+            '26022e04543aa8ccebe1b9c698c452e2dccc98d5bf1fd8c4f0dba000067e899a'
+            '4ead538f59c7a9f3a643b5530e251eec4c1363ec2cfa7539da6a67650e2836c2'
+            '3ae84041ed1d5b9b3fffb95c58bb52763aae0b6a73ca85ee3f4fde27472258a9'
+            'eb57a8de226ed5c030c263f2247bfb0e60256366960255fcfa5166ada39edc30')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -484,6 +493,18 @@ prepare() {
     #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
     # diff -pNaru5 'a' 'b' > '0016-0006-kernel-5.10-dropped-tty_check_change.patch'
     patch -Nup1 -i "${srcdir}/0016-0006-kernel-5.10-dropped-tty_check_change.patch"
+
+    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+    # diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
+    patch -Nup1 -i "${srcdir}/0017-gcc-14-strict-function-definition-configure.patch"
+
+    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+    # diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
+    patch -Nup1 -i "${srcdir}/0018-kernel-6.6-strict-sign-enforcement-for-minmax-__cmp_once.patch"
+
+    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+    # diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
+    patch -Nup1 -i "${srcdir}/0019-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch"
   fi
 
   # Standardize name of RealPort
