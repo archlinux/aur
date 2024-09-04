@@ -1,0 +1,24 @@
+diff -Naur SDL-2.548.ori/t/00-load.t SDL-2.548/t/00-load.t
+--- SDL-2.548.ori/t/00-load.t	2018-05-19 12:55:52.000000000 +0200
++++ SDL-2.548/t/00-load.t	2024-09-04 22:44:00.377218084 +0200
+@@ -1,7 +1,7 @@
+ use strict;
+ use warnings;
+ use Test::Most 'bail';
+-use File::Spec 'catfile';
++use File::Spec;
+ 
+ BEGIN {
+ 	my @modules = qw /
+diff -Naur SDL-2.548.ori/t/sdlx_music.t SDL-2.548/t/sdlx_music.t
+--- SDL-2.548.ori/t/sdlx_music.t	2018-05-19 12:55:52.000000000 +0200
++++ SDL-2.548/t/sdlx_music.t	2024-09-04 22:43:30.267218809 +0200
+@@ -30,7 +30,7 @@
+     }
+ }
+ 
+-use_ok( 'SDLx::Music', "Can load SDLx::Music" );
++use_ok( 'SDLx::Music' );
+ 
+ # Object Creation
+ 
