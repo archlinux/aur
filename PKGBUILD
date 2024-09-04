@@ -2,7 +2,7 @@
 
 pkgname=intel-sof-bin
 pkgver=2024.06
-pkgrel=1
+pkgrel=2
 pkgdesc="SOF Project - Firmware and topology binaries"
 arch=('any')
 license=('GPL')
@@ -14,10 +14,6 @@ md5sums=('18e49a2222b1c81c1b6b12c937b0f67d')
 package() {
     cd "${srcdir}/sof-bin-$pkgver"
 
-    for i in sof/*.*; do
-		install -Dm 644 $i "$pkgdir/lib/firmware/intel/$i"
-    done
-    for i in tools/*; do
-		install -Dm 755 $i "$pkgdir/usr/bin/$i"
-    done
+    install -Dm 644 sof/*.* -t "$pkgdir/usr/lib/firmware/intel/"
+    install -Dm 755 tools/* -t "$pkgdir/usr/bin/"
 }

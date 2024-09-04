@@ -1,7 +1,7 @@
 pkgbase = intel-sof-bin
 	pkgdesc = SOF Project - Firmware and topology binaries
 	pkgver = 2024.06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thesofproject/sof-bin
 	arch = any
 	license = GPL
