@@ -1,0 +1,17 @@
+pkgbase = python-elasticsearch7
+	pkgdesc = Python client for Elasticsearch 7
+	pkgver = 7.17.11
+	pkgrel = 1
+	url = https://github.com/elastic/elasticsearch-py
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-dateparser
+	conflicts = elasticsearch
+	source = elasticsearch-py-7.17.11.tar.gz::https://github.com/elastic/elasticsearch-py/archive/refs/tags/v7.17.11.tar.gz
+	sha512sums = 8bb25bcd2f1aa6b0b9bac2efc1da5d3ae189eac517d5106391d4c1a0160c98811c8fbd5b00c98e34eca454e02038db095614176dbc028b20bbad78d02df68725
+
+pkgname = python-elasticsearch7
