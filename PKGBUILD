@@ -2,7 +2,7 @@
 # Maintainer: Robert Zhou <meep.aur@meepzh.com>
 
 pkgname=renderman
-pkgver=26.1.2324948
+pkgver=26.2.2336968
 pkgrel=1
 pkgdesc="Proprietary photorealistic 3D rendering software produced by Pixar Animation Studios"
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('libidn' 'libicu50')
 install="${pkgname}.install"
 
 DLAGENTS+=("manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website")
-source=("manual://RenderMan-InstallerNCR-26.1.0_2324948-linuxRHEL7_gcc93icx232.x86_64.rpm")
-b2sums=('a6405b857bfc40a108d95c33861ed5d2e12ae3a3e5fb02a5d8b148fa10b3b165620cee346940143a673561c8b3339ad070ec396ff3dbeb1162f7a876c688b721')
+source=("manual://RenderMan-InstallerNCR-26.2.0_2336968-linuxRHEL9_gcc11icx232.x86_64.rpm")
+b2sums=('bbe2d8288404ee99f88d9f981ab5486549a42a4c8e98300c5aabb9a71ab8895439e17b73fe4cd1781f7029c7d5597f1bfe8eaee4505198b5abc6a5c75156bd4b')
 
 package() {
     mv opt "$pkgdir/"
