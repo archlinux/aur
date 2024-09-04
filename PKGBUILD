@@ -1,15 +1,16 @@
-# Maintainer: Yauheni Kirylau <actionless DOT loveless PLUS aur AT gmail DOT com>
-# shellcheck disable=SC2034,SC2154
+# Maintainer: Yauheni Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
+# shellcheck disable=SC2001,SC2034,SC2154 shell=bash
 
-pkgname=pikaur-git
-pkgver=1.26.1
+_pkgname=pikaur
+pkgname="${_pkgname}-git"
+pkgver=1.27
 pkgrel=1
 pkgdesc="AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay."
 arch=('any')
 url="https://github.com/actionless/pikaur"
-license=('GPL3')
+license=('GPL-3.0-only')
 source=(
-	"$pkgname::git+https://github.com/actionless/pikaur.git#branch=master"
+	"$pkgname::git+${url}.git#branch=master"
 )
 b2sums=(
 	"SKIP"
@@ -32,8 +33,8 @@ optdepends=(
 	'python-defusedxml: securely wrap Arch news replies'
 	'pacman-contrib: to use in pacman hook/systemd timer for cleaning up pikaur cache'
 )
-conflicts=('pikaur')
-provides=('pikaur')
+conflicts=("$_pkgname")
+provides=("$_pkgname")
 changelog="CHANGELOG"
 
 pkgver() {
@@ -44,7 +45,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${pkgname}" || exit 2
-	sed -i -e "s/^VERSION.*=.*/VERSION = '${pkgver}'/g" pikaur/config.py
+	sed -i -e "s/^VERSION[: ].*=.*/VERSION = '${pkgver}'/g" pikaur/config.py
 	if test -d ./dist ; then
 		rm -r ./dist
 	fi
@@ -59,7 +60,7 @@ package() {
 		lang=$(sed -e 's/.mo$//' <<< "${langmo}")
 		install -Dm644 "locale/${langmo}" "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES/pikaur.mo"
 	done
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 pikaur.1 "$pkgdir/usr/share/man/man1/pikaur.1"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 pikaur.1 "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
 	cp -r ./packaging/* "${pkgdir}"
 }
