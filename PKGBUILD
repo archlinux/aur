@@ -1,4 +1,4 @@
-# Maintainer: Chih-Hsuan Yan <base64_decode("eXUzYWN0eHQydHR0ZmlteEBjaHllbi5jYwo=")>
+# Maintainer: Chih-Hsuan Yen <base64_decode("eXUzYWN0eHQydHR0ZmlteEBjaHllbi5jYwo=")>
 # Co-Maintainer: Peter Mattern <pmattern at arcor dot de>
 # Contributor: Marcin Mikołajczak <me@m4sk.in>
 # Contributor: Jerome Leclanche <jerome@leclan.ch>
