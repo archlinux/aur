@@ -1,0 +1,4 @@
+pkg/
+src/
+pikaur-static-git/
+pikaur-static-*.pkg.*

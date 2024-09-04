@@ -1,0 +1,30 @@
+pkgbase = pikaur-static-git
+	pkgdesc = AUR helper without dependencies which asks all questions before installing/building. Static build for recovery situations, similar to `pacman-static`
+	pkgver = 1.27
+	pkgrel = 1
+	url = https://github.com/actionless/pikaur
+	changelog = CHANGELOG
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = nuitka
+	makedepends = ccache
+	makedepends = fish
+	makedepends = python-markdown-it-py
+	makedepends = python-pysocks
+	makedepends = python-defusedxml
+	depends = git
+	optdepends = devtools: for Arch Pkgs support in -G/--getpkgbuild operation
+	optdepends = pacman-contrib: to use in pacman hook/systemd timer for cleaning up pikaur cache
+	provides = pikaur-static
+	conflicts = pikaur-static
+	options = !buildflags
+	options = !strip
+	source = pikaur-static-git::git+https://github.com/actionless/pikaur.git#branch=master
+	b2sums = SKIP
+
+pkgname = pikaur-static-git
