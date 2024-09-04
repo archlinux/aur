@@ -2,8 +2,8 @@
 # Contributor: pureboys <yuyuud@yuyuud@gmail.com>
 
 pkgname='kikoplay'
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="linux danmaku player"
 arch=('x86_64')
 license=('GPL3' 'MIT')
@@ -19,7 +19,7 @@ source=(
     "git+https://github.com/KikoPlayProject/KikoPlayApp"
 )
 sha256sums=(
-    "2bb06fe88ba4af98597f626f57256776425c6a3fb6d4b7881452f37f4926a93a"
+    "41b0a705aa664e4140e639f41b605aba586a4a17100aa783a48bc892e02d7856"
     SKIP
     SKIP
 )
@@ -29,6 +29,12 @@ prepare() {
     # otherwise qmake could not find the KikoPlay.pro file.
     [ -d "KikoPlay" ] && rm -rf "KikoPlay"
     mv "${srcdir}/KikoPlay-${pkgver}" "KikoPlay"
+
+    # patch
+    # only for version 1.0.3
+    # https://github.com/KikoPlayProject/KikoPlay/commit/0cf7d66cd4ec860f0ab4438507b11f93047fe4d2
+    # fix the error caused by -Werror=format-security
+    sed -i '223d' "${srcdir}/KikoPlay/Play/Playlist/webdav/qwebdavdirparser.cpp"
 
     # adjust user manual location in usage tip
     sed -i 's|file:///{AppPath}\\KikoPlay使用说明.pdf|file:///usr/share/doc/kikoplay|g' "${srcdir}/KikoPlay/res/tip"
@@ -60,7 +66,7 @@ build() {
     mkdir -p "${srcdir}/build"
     cd "${srcdir}/build"
     qmake "${srcdir}/KikoPlay"
-    make -j$JOBNUMBER
+    make release -j$JOBNUMBER
 }
 
 package() {
