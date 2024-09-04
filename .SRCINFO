@@ -1,0 +1,18 @@
+pkgbase = gdpm-git
+	pkgdesc = CLI tool to automate managing Godot game engine assets from the command-line. This includes a pre-built, static binary.
+	pkgver = r99.13487a1
+	pkgrel = 1
+	url = https://github.com/davidallendj/gdpm
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = clang
+	makedepends = gcc
+	depends = glibc
+	optdepends = meson
+	optdepends = make
+	source = gdpm-git-r99.13487a1::git+https://github.com/davidallendj/gdpm
+	sha256sums = SKIP
+
+pkgname = gdpm-git
