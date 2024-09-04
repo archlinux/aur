@@ -1,8 +1,8 @@
 # Maintainer: Luc <luc@dougy147.com>
 pkgname=scitopdf
-pkgver=0.6.6
+pkgver=0.7.0
 pkgrel=1
-pkgdesc="bash script to quickly fetch, download and open scientific papers from Sci-Hub's database."
+pkgdesc="Script to quickly fetch scientific papers from Sci-Hub or Libgen."
 arch=(x86_64 i686)
 url="https://github.com/dougy147/scitopdf.git"
 license=('GPL3')
@@ -17,16 +17,8 @@ source=("${pkgname}::git+${url}#tag=v${pkgver}")
 noextract=()
 md5sums=('SKIP')
 
-#build() {
-#        #cd "$srcdir/$pkgname-$pkgver"
-#        cd "$srcdir/$pkgname"
-#        ./configure --prefix=/usr
-#        make
-#}
-
 pkgver() {
   cd "$srcdir/$pkgname"
-  #git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   git describe --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
