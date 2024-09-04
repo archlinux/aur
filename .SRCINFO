@@ -1,6 +1,6 @@
 pkgbase = citra-git
 	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger
-	pkgver = r10094.e55e619
+	pkgver = r10106.3e5bbac
 	pkgrel = 1
 	url = https://github.com/PabloMK7/citra
 	arch = x86_64
