@@ -49,7 +49,9 @@ post_install() {
     fi
   done
 
-  msg1 "Flutter requires write permission to its install directory."
+  note 'Warning:' "'/opt/flutter' will be wiped on upgrade and uninstall."
+  echo
+  msg2 "Flutter requires write permission to the install directory."
   echo
   msg2 "This package redirects writes to '~/.cache/flutter_*'."
   msg2 "Users should unmount and clear the cache after upgrades."
@@ -57,11 +59,10 @@ post_install() {
   msg2 "        fusermount -uq ~/.cache/flutter_sdk"
   msg2 "        rm -rf ~/.cache/{flutter_sdk,flutter_local}"
   echo
-  msg2 "Optionally, users may be added to the 'flutter' group:"
+  msg2 "Optionally, adding users to the 'flutter' group would"
+  msg2 "give them direct access to '/opt/flutter':"
   echo
   msg2 "        sudo usermod -a -G flutter [username]"
-  echo
-  note 'Warning:' "'/opt/flutter' will be wiped on upgrade and uninstall."
 }
 
 post_upgrade() {

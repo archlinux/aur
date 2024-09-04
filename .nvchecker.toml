@@ -1,0 +1,3 @@
+[flutter-bin]
+source = "git"
+git = "https://github.com/flutter/flutter.git"

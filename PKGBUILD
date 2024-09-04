@@ -2,7 +2,7 @@
 
 _pkgname="flutter"
 pkgname="$_pkgname-bin"
-pkgver=3.24.1
+pkgver=3.24.2
 pkgrel=1
 pkgdesc="Cross platform widget toolkit for Dart (monolithic)"
 arch=("x86_64")
@@ -61,7 +61,7 @@ source=(
 )
 
 sha256sums=(
-  '32daf9d5a8e430f57fb139921400c7ecf34e4e7e404818ac55658a5a0eaa28f0'
+  '143f77340401e7f147a380ba18112445ed017c1d187fb4d20e40bb6ea1f13aa5'
 )
 
 prepare() {
@@ -81,17 +81,30 @@ package() {
     unionfs-fuse
   )
 
+  # main files
   install -dm755 "$pkgdir/opt"
   bsdtar -xf "$srcdir/$_pkgsrc.$_pkgext" -C "$pkgdir/opt"
 
-  install -Dm755 "flutter.sh" "$pkgdir/usr/bin/flutter"
-  install -Dm755 "flutter_dart.sh" "$pkgdir/usr/bin/dart"
-  install -Dm644 "flutter_init.sh" "$pkgdir/opt/flutter/flutter_init.sh"
+  # scripts
+  install -Dm755 "flutter.sh" "$pkgdir/opt/flutter/bin/aur_flutter"
+  install -Dm755 "flutter_dart.sh" "$pkgdir/opt/flutter/bin/aur_dart"
+  install -Dm644 "flutter_init.sh" "$pkgdir/opt/flutter/bin/aur_init.sh"
+
+  # symlinks
+  install -dm755 "$pkgdir/usr/bin"
+  ln -sf "/opt/flutter/bin/aur_flutter" "$pkgdir/usr/bin/flutter"
+  ln -sf "/opt/flutter/bin/aur_dart" "$pkgdir/usr/bin/dart"
+
+  # gitignore
+  echo "dart_aur" >> "$pkgdir/opt/flutter/.git/info/exclude"
+  echo "flutter_aur" >> "$pkgdir/opt/flutter/.git/info/exclude"
   echo "flutter_init.sh" >> "$pkgdir/opt/flutter/.git/info/exclude"
 
+  # license
   install -Dm644 "$pkgdir/opt/flutter/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 "$pkgdir/opt/flutter/PATENT_GRANT" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
+  # permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir"
 }
 
@@ -99,7 +112,7 @@ _gen_scripts() {
   cat > flutter_dart.sh << 'END'
 #!/usr/bin/env bash
 
-source /opt/flutter/flutter_init.sh
+source /opt/flutter/bin/aur_init.sh
 
 if ! grep -q '/usr/bin' <<< "$(which dart)"; then
   exec dart "$@"
@@ -109,7 +122,7 @@ END
   cat > flutter.sh << 'END'
 #!/usr/bin/env bash
 
-source /opt/flutter/flutter_init.sh
+source /opt/flutter/bin/aur_init.sh
 
 if ! grep -q '/usr/bin' <<< "$(which flutter)"; then
   exec flutter "$@"
@@ -117,18 +130,18 @@ fi
 END
 
   cat > flutter_init.sh << 'END'
-# do not execute this script directly
+#!/usr/bin/env -S bash -c "echo 'Do no run this script directly.'"
+
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+  echo "$0 should not be executed directly."
+  exit 1
+fi
 
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 
 APP_DIR="/opt/flutter"
 SAVE_DIR="$XDG_CACHE_HOME/flutter_local"
 MOUNT_DIR="$XDG_CACHE_HOME/flutter_sdk"
-
-if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
-  echo "$0 should not be executed directly."
-  exit 1
-fi
 
 if [ ! -e "$APP_DIR" ]; then
   echo "/opt/flutter not found."
