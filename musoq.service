@@ -1,0 +1,13 @@
+[Unit]
+Description=Masoq agent: The server part that allows loading the Musoq runtime and running your queries.
+
+[Service]
+Type=simple
+#User=
+#Group=
+ExecStart=/usr/bin/musoq serve --wait-until-exit
+Restart=on-failure
+StandardOutput=file:%h/.cache/musoq.log
+
+[Install]
+WantedBy=default.target
