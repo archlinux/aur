@@ -4,7 +4,7 @@ _system_godot=true
 
 pkgname=thrive
 pkgver=0.7.0
-pkgrel=4
+pkgrel=5
 pkgdesc="the evolution game Thrive."
 arch=("x86_64" "aarch64")
 url="https://revolutionarygamesstudio.com/"
@@ -13,7 +13,7 @@ depends=(
     "libxrender" "libxi" "libx11" "libglvnd" "libxinerama" "zlib" "libxrandr"
     "libxext" "glibc" "libxcursor" "fontconfig" "gcc-libs"
 )
-makedepends=("git" "git-lfs" "dotnet-sdk-8.0" "cmake" "clang" "lld" "ninja")
+makedepends=("git" "git-lfs" "dotnet-sdk-8.0" "cmake" "clang" "lld" "ninja" "jq")
 source=(
     "git+https://github.com/Revolutionary-Games/Thrive.git#tag=v$pkgver"
     "git+https://github.com/Revolutionary-Games/RevolutionaryGamesCommon.git"
@@ -74,6 +74,20 @@ prepare(){
         ln -srfv "$srcdir/Godot_v$_godot-stable_mono_linux_$_godot_arch/Godot_v$_godot-stable_mono_linux.$_godot_arch" \
             "$HOME/.local/bin/godot-mono"
     fi
+    local _build_info_path="$srcdir/Thrive/simulation_parameters/revision.json"
+    local _commit _branch _built_at _dev_build
+    _commit=$(git rev-parse --verify HEAD)
+    _branch=master
+    _built_at="$(date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%FT%T.%NZ)"
+    _dev_build=false
+    jq -n \
+        --arg commit "$_commit" \
+        --arg branch $_branch \
+        --arg builtat "$_built_at" \
+        --argjson devbuild $_dev_build \
+       --raw-output \
+        '{"Commit": $commit, "Branch": $branch, "BuiltAt": $builtat, "DevBuild": $devbuild}' | sed '1s/^/\xef\xbb\xbf/' | install -Dm644 /dev/stdin \
+            "$_build_info_path"
 }
 
 build(){
@@ -114,8 +128,7 @@ build(){
         export PATH="$PATH:$HOME/.local/bin"
     fi
     mkdir -p dist
-    godot-mono --headless --build-solutions --quit
-    godot-mono --headless --import
+    godot-mono --headless --build-solutions --quit-after 2
     godot-mono --headless --export-release "Linux/X11" dist/Thrive
 }
 

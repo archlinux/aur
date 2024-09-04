@@ -1,7 +1,7 @@
 pkgbase = thrive
 	pkgdesc = the evolution game Thrive.
 	pkgver = 0.7.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://revolutionarygamesstudio.com/
 	arch = x86_64
 	arch = aarch64
@@ -13,6 +13,7 @@ pkgbase = thrive
 	makedepends = clang
 	makedepends = lld
 	makedepends = ninja
+	makedepends = jq
 	makedepends = godot-mono=4.3
 	depends = libxrender
 	depends = libxi
