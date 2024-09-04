@@ -1,6 +1,6 @@
 pkgbase = elan-bin
 	pkgdesc = A video and audio annotation tool
-	pkgver = 6.7
+	pkgver = 6.8
 	pkgrel = 1
 	url = https://tla.mpi.nl/tools/tla-tools/elan/
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = elan-bin
 	depends = zlib
 	provides = elan
 	conflicts = elan
-	source = https://www.mpi.nl/tools/elan/ELAN_6-7_linux.tar.gz
+	source = https://www.mpi.nl/tools/elan/ELAN_6-8_linux.tar.gz
 	source = elan.desktop
-	sha256sums = 97fe0ddd3385eb500b84e9b9e44d73b95d6dbe22495cc608b176fd088917eb73
-	sha256sums = d60561182a9f9a032cf4b7cb59de3af5edf70e6a168e3b19a80ec9288b272bb7
+	sha256sums = 5855c9f7efcf8550914691012dc7c98caf86ce6bacf71e0803e612d41291286a
+	sha256sums = 918720769c986b0183b563596da1a8a9da039eb1196132b224b3b110d8233394
 
 pkgname = elan-bin
