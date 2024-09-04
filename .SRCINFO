@@ -1,14 +1,15 @@
 pkgbase = ruby-httparty
 	pkgdesc = Makes http fun! Also, makes consuming restful web services dead easy.
-	pkgver = 0.21.0
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://rubygems.org/gems/httparty
 	arch = any
 	license = MIT
 	depends = ruby>=2.0.0
 	depends = ruby-multi_xml>=0.5.2
-	noextract = httparty-0.21.0.gem
-	source = https://rubygems.org/downloads/httparty-0.21.0.gem
-	sha256sums = 00ef7bf9a71f30a3bff88edeb5b16a34bea883ab67c246b3f0db2d6794fe1214
+	depends = ruby-mini_mime>=1.0.0
+	noextract = httparty-0.22.0.gem
+	source = https://rubygems.org/downloads/httparty-0.22.0.gem
+	sha256sums = 78652a5c9471cf0093d3b2083c2295c9c8f12b44c65112f1846af2b71430fa6c
 
 pkgname = ruby-httparty

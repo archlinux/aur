@@ -3,16 +3,18 @@
 
 _gemname=httparty
 pkgname=ruby-$_gemname
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="Makes http fun! Also, makes consuming restful web services dead easy."
 arch=('any')
 url="https://rubygems.org/gems/httparty"
 license=('MIT')
 depends=('ruby>=2.0.0'
-         'ruby-multi_xml>=0.5.2')
+         'ruby-multi_xml>=0.5.2'
+         'ruby-mini_mime>=1.0.0'
+)
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
-sha256sums=('00ef7bf9a71f30a3bff88edeb5b16a34bea883ab67c246b3f0db2d6794fe1214')
+sha256sums=('78652a5c9471cf0093d3b2083c2295c9c8f12b44c65112f1846af2b71430fa6c')
 noextract=($_gemname-${pkgver}.gem)
 
 package() {
