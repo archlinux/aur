@@ -1,4 +1,4 @@
-# Maintainer: Carter Jamison <axertheaxe@proton.me>
+# Maintainer: Katherine Jamison <axertheaxe@proton.me>
 
 pkgname=desk-exec-git
 _pkgname=desk-exec
