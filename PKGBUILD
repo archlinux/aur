@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=TENxIO
-_pkgver=1.6.0
+_pkgver=1.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -43,8 +43,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c057806cbd49aa1ef13d84a3650e2d1d')
-b2sums=('aeb6ffc5bf986440aa0b9b5456b0c44fd4d80ba5a02d27816cdc5ab2a5afdead9e6934d31a972d4fb8a8afb112bd6db9c49f2d55495dd3391b61d43563a43318')
+md5sums=('fe8c1b7086ea979f3cc31c8940c92cbc')
+b2sums=('14f00e54b0429a3b8fb9139b49a2fcae939c08fb9b2fec980b03f74e4bf8215a85de54c23b9e821329d1e369c8ffa373fbc2d704ffb91cb3e431ddc3f8c464e7')
 
 build() {
   mkdir build

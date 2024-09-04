@@ -1,6 +1,6 @@
 pkgbase = r-tenxio
 	pkgdesc = Import methods for 10X Genomics files
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TENxIO
 	arch = any
@@ -32,8 +32,8 @@ pkgbase = r-tenxio
 	optdepends = r-rmarkdown
 	optdepends = r-rsamtools
 	optdepends = r-tinytest
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TENxIO_1.6.0.tar.gz
-	md5sums = c057806cbd49aa1ef13d84a3650e2d1d
-	b2sums = aeb6ffc5bf986440aa0b9b5456b0c44fd4d80ba5a02d27816cdc5ab2a5afdead9e6934d31a972d4fb8a8afb112bd6db9c49f2d55495dd3391b61d43563a43318
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TENxIO_1.6.1.tar.gz
+	md5sums = fe8c1b7086ea979f3cc31c8940c92cbc
+	b2sums = 14f00e54b0429a3b8fb9139b49a2fcae939c08fb9b2fec980b03f74e4bf8215a85de54c23b9e821329d1e369c8ffa373fbc2d704ffb91cb3e431ddc3f8c464e7
 
 pkgname = r-tenxio
