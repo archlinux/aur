@@ -12,14 +12,14 @@
 
 pkgname=('boost183' 'boost183-libs')
 pkgver=1.83.0
-pkgrel=1
+pkgrel=2
 _srcname=boost_${pkgver//./_}
 pkgdesc="Free peer-reviewed portable C++ source libraries"
 arch=('x86_64')
 url="https://www.boost.org/"
 license=('BSL-1.0')
-makedepends=('icu' 'python' 'python-numpy' 'bzip2' 'zlib' 'openmpi' 'zstd')
-source=(https://boostorg.jfrog.io/artifactory/main/release/$pkgver/source/$_srcname.tar.bz2
+makedepends=(icu python python-numpy bzip2 zlib openmpi zstd)
+source=(https://archives.boost.io/release/$pkgver/source/$_srcname.tar.bz2
         boost-1.81.0-phoenix-multiple-definitions.patch
         $pkgname-support-fn.contains-f-where-f-is-a-function.patch::https://github.com/boostorg/function/commit/7ca2310b15e3.patch
         $pkgname-numpy-2.0.patch::https://github.com/boostorg/python/commit/0474de0f6cc9.patch
@@ -112,9 +112,8 @@ package_boost183-libs() {
     python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
 
   pkgdesc+=' (runtime libraries)'
-  depends=('bzip2' 'zlib' 'icu' 'zstd')
-  optdepends=('openmpi: for mpi support')
-  provides=(libboost_atomic.so libboost_chrono.so libboost_container.so
+  depends=(bzip2 zlib icu zstd openmpi)
+    provides=(libboost_atomic.so libboost_chrono.so libboost_container.so
     libboost_context.so libboost_contract.so libboost_coroutine.so
     libboost_date_time.so libboost_fiber.so libboost_filesystem.so
     libboost_graph.so libboost_graph_parallel.so libboost_iostreams.so
