@@ -1,10 +1,10 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=libinput-gestures
-pkgver=2.76
+pkgver=2.77
 pkgrel=1
 pkgdesc="Actions gestures on your touchpad using libinput"
 url="https://github.com/bulletmark/$pkgname"
-license=("GPL3")
+license=("GPL-3.0-or-later")
 arch=("any")
 depends=("python>=3.5" "libinput" "hicolor-icon-theme")
 optdepends=("wmctrl: required for _internal command, as per default configuration"
@@ -12,8 +12,8 @@ optdepends=("wmctrl: required for _internal command, as per default configuratio
 conflicts=("$pkgname-git")
 backup=("etc/$pkgname.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-install=install.sh
-md5sums=('f3362177ea41e4b93f802592055d64f0')
+install="install.sh"
+md5sums=('c0556033252216eaa842fb6d6a3695ea')
 
 package() {
   cd "$pkgname-$pkgver"
