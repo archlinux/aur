@@ -4,7 +4,7 @@
 # Contributor: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl3
-pkgver=3.0.0.r5890.gd6ad28a
+pkgver=3.0.0.r5985.gc9387bc
 epoch=1
 pkgrel=1
 pkgdesc="Simple Directmedia Layer (Version 3 Pre-Release, Updated weekly)"
@@ -22,9 +22,9 @@ optdepends=('alsa-lib: ALSA audio driver'
 	    'sndio: MIDI audio driver'
 	    'libdecor: Wayland client decorations')
 # Weekly manual updates since prerelease commits removed
-_commit=d6ad28a4cb87b8bb00893f049f7e6e72063fc3b6
+_commit=c9387bcca5eb10d4fee3eab21b033b5e08b430c0
 source=("git+https://github.com/libsdl-org/SDL.git#commit=${_commit}")
-sha256sums=('18513fb31ce6a7ac37ef723d5020894bc53241beb87cd1bf921c8989e1fbdf59')
+sha256sums=('67c23a193e3dfc1f6c0b014acd2b89c881c7d7ec155dc770f6d2e85a3285eef8')
 
 pkgver(){
 	cd "$srcdir/SDL"
