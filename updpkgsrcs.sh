@@ -5,7 +5,7 @@ function echoGitCMDForSubModule {
     gitCMDName="git "
     subModuleGitCMD+="$gitCMDName"
     for subName in "${!subCommit[@]}"; do
-        configUrl="-c submodule.${subName}.url=\"\$srcdir/${subName/\//|}\" \\"
+        configUrl="-c submodule.${subName}.url=\"\$srcdir/${subName//\//|}\" \\"
         subModuleGitCMD+="$configUrl"$'\n'$(printf %"${#gitCMDName}"s)
         ((count++))
     done
@@ -25,7 +25,7 @@ function echoSourceTextForSubModule {
             echo 'TODO: fix submodule that name as src,pkg,PKGBUILD or .SRCINFO.' && exit 1
         fi
         subUrl=$(echo "$gitModulesFile" | git config -f "/dev/stdin" --get "submodule.${subName}.url")
-        subModule="${subName/\//|}::git+${subUrl}#commit=${subCommit[$subName]}"
+        subModule="${subName//\//|}::git+${subUrl}#commit=${subCommit[$subName]}"
         if [ "${#subCommit[@]}" == "$count" ]; then
             subModuleSourceText+="'$subModule'"
         else

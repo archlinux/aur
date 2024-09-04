@@ -10,6 +10,6 @@ pkgbase = updpkgsrcs
 	depends = sed
 	depends = git
 	source = updpkgsrcs.sh
-	sha256sums = 2b76b09058337df1d7ba3fd0f918599fe9d9bacbae6343d66168b91681e83786
+	sha256sums = 1f182fdd25c3625d2147de91c9697f144335bc69d674086d5f6d343c53f82f09
 
 pkgname = updpkgsrcs
