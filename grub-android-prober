@@ -1,0 +1,378 @@
+#!/bin/bash
+
+[ "$EUID" = 0 ] ||
+	{ echo "ERROR: Please run as root" && exit 1; }
+
+. "/usr/share/grub/grub-mkconfig_lib"
+
+# Android x86 supported file systems
+# Note that by default, mostly Android initrds don't support btrfs and some other
+# filesystems
+# For higher versions, btrfs and some other filesystems are supported
+: "${GRUB_ANDROID_SUPPORTED_FS:="ext2 ext3 ext4 vfat exfat"}"
+
+# Excluded paths
+# Start with a slash, separated by ',', ending slashes are not needed
+: "${GRUB_ANDROID_EXCLUDE:="/bin,/boot/efi,/efi,/EFI,/dev,/etc,/lib,/lib64,/lib32,/proc,/run,/sbin,/sys,/usr,/tmp,/Program Files,/Program Files (x86),/ProgramData,/Windows,/Volumes,/System,/Library,/cores"}"
+
+# Search image names
+: "${GRUB_ANDROID_INCLUDE:="system system.img system.sfs system.efs system_a system_a.img system_a.sfs system_a.efs system_b system_b.img system_b.sfs system_b.efs"}"
+
+# Search recursiveness depth
+: "${GRUB_ANDROID_SEARCH_DEPTH:=3}"
+
+# Default parameters
+: "${GRUB_CMDLINE_ANDROID:=""}"
+
+. /etc/default/grub
+
+mapdevfs() { readlink -f "$1"; }
+blkol() { blkid "$2" | grep -ioE "$1=\"[a-z0-9-]+\"" | awk -F'"' '{print $2}'; }
+gfind() { grep "$2" <<<"${1}"; }
+gprop() { gfind "${1}" "ro.$2=" | awk -F"=" '{print $2}'; }
+gver() { gprop "${1}" "$2.version${3:+.$3}"; }
+
+on_sataraid() {
+	type dmraid >/dev/null 2>&1 || return 1
+	local parent="${1%/*}"
+	local device="/dev/${parent##*/}"
+	if dmraid -r -c | grep -q "$device"; then
+		return 0
+	fi
+	return 1
+}
+
+parse_proc_mdstat() {
+	if type udevadm >/dev/null 2>&1; then
+		udevinfo() {
+			udevadm info "$@"
+		}
+	fi
+	# shellcheck disable=SC2162
+	while read line; do
+		for word in $line; do
+			dev="${word%%\[*}"
+			# TODO: factor this out to something in di-utils if
+			# it's needed elsewhere
+			if [ -d /sys/block ] && type udevinfo >/dev/null 2>&1; then
+				if ! udevinfo -q path -n "/dev/$dev" 2>/dev/null |
+					grep -q '/.*/.*/'; then
+					continue
+				fi
+			elif ! echo "$dev" | grep -q "/part"; then
+				continue
+			fi
+			raidpart="/dev/$dev"
+			echo "$(mapdevfs "$raidpart")"
+		done
+	done
+}
+
+parse_proc_swaps() {
+	while read line; do
+		set -f
+		set -- $line
+		set +f
+		echo "$(mapdevfs $1) swap"
+	done
+}
+
+partitions() {
+	# Exclude partitions that have whole_disk sysfs attribute set.
+	if [ -d /sys/block ]; then
+		# Exclude partitions on physical disks that are part of a
+		# Serial ATA RAID disk.
+		for part in /sys/block/*/*[0-9]; do
+			if [ -f "$part/start" ] &&
+				[ ! -f "$part/whole_disk" ] && ! on_sataraid $part; then
+				name="$(echo "${part##*/}" | sed 's,[!.],/,g')"
+				if [ -e "/dev/$name" ]; then
+					echo "/dev/$name"
+				fi
+			fi
+		done
+
+		# Add Serial ATA RAID devices
+		if type dmraid >/dev/null 2>&1 &&
+			dmraid -s -c >/dev/null 2>&1; then
+			for raidset in $(dmraid -sa -c); do
+				for part in /dev/mapper/"$raidset"*[0-9]; do
+					echo "$part"
+				done
+			done
+		fi
+	elif [ "$(uname -s)" = Linux ]; then
+		echo "Cannot find list of partitions!  (Try mounting /sys.)" >&2
+		exit 1
+	else
+		# We don't know how to probe OSes on non-Linux kernels.  For
+		# now, just don't get in the way.
+		exit 0
+	fi
+
+	# Also detect OSes on LVM volumes (assumes LVM is active)
+	if type lvs >/dev/null 2>&1; then
+		echo "$(
+			LVM_SUPPRESS_FD_WARNINGS=1 lvs --noheadings --separator : -o vg_name,lv_name 2>&1 |
+				sed "s|-|--|g;s|^[[:space:]]*\(.*\):\(.*\)$|/dev/mapper/\1-\2|" |
+				grep -v "No volume groups found"
+		)"
+	fi
+}
+
+parse_path() {
+	[ "${1}" ] || return 1
+	local path \
+		path_sysimg=$1 \
+		device=$2 \
+		buildprop \
+		abi \
+		buildver \
+		os \
+		vendor \
+		src \
+		microcode
+
+	path=$(dirname "$1")
+
+	shift 2
+
+	# Getting build.prop contents
+	buildprop="$(find_buildprop "$path_sysimg")" || return 1
+
+	# Get abi
+	abi=$(gprop "$buildprop" "product.cpu.abi")
+	case "$abi" in *64*) [ "$LM" ] || return 1 ;;
+	esac
+	case "$abi" in
+	x86*) : x86 ;;
+	arm*) : arm ;;
+	*) : ;;
+	esac
+	[ "$_" = "$GENKERNEL_ARCH" ] || return 1
+
+	# Parse version
+	buildver="$(grep -E "ro.([a-z]*).version" <<<"$(grep -v build <<<"${buildprop}")")"
+	for version in $buildver; do
+		case $version in
+		ro.bliss.version*)
+			os="Bliss OS $(gver "$buildver" "bliss")"
+			break
+			;;
+		ro.phoenix.version*)
+			os="Phoenix OS $(gver "$buildver" "phoenix" "code")"
+			break
+			;;
+		ro.primeos.version*)
+			os="Prime OS $(gver "$buildver" "primeos" "name")"
+			break
+			;;
+		ro.lineage.version*)
+			os="Lineage OS $(gver "$buildver" "lineage")"
+			;;
+		*)
+			os="AOSP $(gver "$buildver" "build" "release") $(gprop "$buildprop" "build.flavor")"
+			;;
+		esac
+	done
+
+	src=$(make_system_path_relative_to_its_root "$path")
+
+	# Checking for cpu id/manufacturer and microcode file
+	case "$(grep vendor_id /proc/cpuinfo | head -1 | awk '{print $3}')" in
+	"GenuineIntel") : "intel" ;;
+	"AuthenticAMD") : "amd" ;;
+	esac
+	vendor=$_
+
+	local kernels initrds ucodes system data
+
+	# shellcheck disable=SC2144
+	if [ -d "$path"/gearlock ] || [ -e "$path"/gearlock.??? ]; then
+		[ -d "$path"/gearlock ] &&
+			kernels=gearlock ||
+			kernels=$(ls -d "$path"/gearlock.??? || head -1) &&
+			kernels=$(basename "$kernels")
+
+		list=
+		for i in "$path"/boot/kernel-*; do
+			grub_file_is_not_garbage "$i" || continue
+			version="${i#*-}"
+			[ -e "$path/boot/initrd-${version}.img" ] && list="$version,$list"
+		done
+		initrds=${list%,}
+
+		system=$(basename "$path_sysimg")
+		data=$(ls -d "$path"/data* || head -1)
+		data=$(basename "$data")
+
+		for microcode in "$path"/boot/${vendor}-ucode.img "$path"/boot/${vendor}-microcode.img; do
+			[ -f "$microcode" ] &&
+				ucodes="$ucodes,$(basename "$microcode")"
+		done
+	elif [ -e "$path"/misc.img ]; then
+		kernels=ab
+		for microcode in "$path"/${vendor}-ucode.img "$path"/${vendor}-microcode.img; do
+			[ -f "$microcode" ] &&
+				ucodes="$ucodes,$(basename "$microcode")"
+		done
+	else
+		for kernel in "$path"/vmlinu[xz]* "$path"/kernel*; do
+			grub_file_is_not_garbage "$kernel" &&
+				kernels="$(basename "$kernel"),$kernels"
+		done
+
+		for initrd in "$path"/initrd*.img "$path"/initramfs*.img; do
+			grub_file_is_not_garbage "$initrd" &&
+				initrds="$(basename "$initrd"),$initrds"
+		done
+
+		for microcode in "$path"/${vendor}-ucode.img "$path"/${vendor}-microcode.img; do
+			[ -f "$microcode" ] &&
+				ucodes="$ucodes,$(basename "$microcode")"
+		done
+	fi
+
+	printf '%s\0%s\0%s\0%s\0%s\0%s\0%s\0%s\n' \
+		"${device}" \
+		"${src}" \
+		"${os}" \
+		"${kernels%,}" \
+		"${initrds%,}" \
+		"${ucodes#,}" \
+		"${system}" \
+		"${data}"
+}
+
+find_os() {
+	local mountpoint=$1 device=$2 foundpaths EXCLUDE=""
+
+	IFS=,
+	for dir in ${GRUB_ANDROID_EXCLUDE}; do
+		EXCLUDE="$EXCLUDE -not \( -path \"${mountpoint}${dir/ /\\ }/*\" -prune \)"
+	done
+	unset IFS
+
+	foundpaths="$(eval 'timeout 30 find "'"$mountpoint"'" -maxdepth '"$DEPTH"' \(' "$INCLUDE" '\)' "$EXCLUDE")" || return 1
+
+	while read -r path; do
+		parse_path "$path" "$device" || continue
+	done <<<"$foundpaths"
+}
+
+find_buildprop() {
+	if [ -d "$1" ]; then
+		local buildprop_file=$1/system/build.prop
+		[ -f "$buildprop_file" ] || buildprop_file=$1/build.prop
+		[ -f "$buildprop_file" ] || return 1
+		cat "$buildprop_file"
+	elif [ -f "$1" ]; then
+		case "$(basename "$1")" in
+		system*.img)
+			imgdir="$(tmpmount "$1" loop)" || return 1
+			find_buildprop "$imgdir"
+			umount -lf "$imgdir"
+			rm -rf "$imgdir"
+			;;
+		system*.?fs)
+			sfsdir="$(tmpmount "$1" loop)" || return 1
+			find_buildprop "$sfsdir/system.img"
+			umount -lf "$sfsdir"
+			rm -rf "$sfsdir"
+			;;
+		esac
+	fi
+	return $?
+}
+
+tmpmount() {
+	local disktmp opts=${2:+,$2} fs=${3:-auto}
+	disktmp="$(mktemp)"
+	rm -f "$disktmp"
+	mkdir -p "$disktmp" || true
+	if ! { type grub-mount && grub-mount "$1" "$disktmp"; } >/dev/null; then
+		[ "$(blkol TYPE "$1")" = "ntfs" ] && fs=$NTFS
+		# try with no `force` flag first
+		mount -o ro$opts -t "$fs" "$1" "$disktmp" 2>/dev/null ||
+			mount -o ro,force$opts -t "$fs" "$1" "$disktmp" 2>/dev/null
+	fi
+	echo "$disktmp"
+}
+
+mount_find() {
+	# check if mount-able, else search from highest top level
+
+	local part_mnt mnt_pt fs
+
+	fs=$(blkol TYPE "$1")
+	[ "$fs" ] && gfind "$GRUB_ANDROID_SUPPORTED_FS" "$fs" >/dev/null || return
+
+	part_mnt=$(tmpmount "$1")
+	[ "$part_mnt" ] &&
+		mnt_pt=$part_mnt ||
+		mnt_pt="$(grep "$1" /proc/mounts | head -1)" ||
+		return 1
+
+	find_os "$mnt_pt" "$1"
+
+	if [ "$part_mnt" ]; then
+		umount -lf "$part_mnt"
+		rm -rf "$part_mnt"
+	fi
+}
+
+DEPTH=$GRUB_ANDROID_SEARCH_DEPTH
+
+po=
+for f in ${GRUB_ANDROID_INCLUDE}; do
+	INCLUDE="$INCLUDE $po -name \"$f\""
+	po="-o"
+done
+
+# check cpu architecure
+machine=$(uname -m)
+case "$machine" in
+i?86 | x86_*) : x86 ;;
+arm*) : arm ;;
+*)
+	echo "ERROR: Unsupported processor architecture!" >&2
+	exit 1
+	;;
+esac
+GENKERNEL_ARCH=$_
+
+# check if cpu is 64 bit capable
+LM=
+grep -oqw 'lm' /proc/cpuinfo && LM=1
+
+# check if kernel supports ntfs3
+modinfo ntfs3 >/dev/null && NTFS=ntfs3 || NTFS=ntfs-3g
+
+mkdir -p /tmp/aprob
+: >"/tmp/aprob/swaps-map"
+if [ -f /proc/swaps ]; then
+	grep "^/dev/" /proc/swaps | parse_proc_swaps >"/tmp/aprob/swaps-map" || true
+fi
+: >"/tmp/aprob/raided-map"
+if [ -f /proc/mdstat ]; then
+	grep "^md" /proc/mdstat | parse_proc_mdstat >"/tmp/aprob/raided-map" || true
+fi
+
+for partition in $(partitions); do
+	if ! mapped="$(mapdevfs "$partition")"; then
+		continue
+	fi
+
+	# Skip partitions used in software RAID arrays
+	if grep -q "^$mapped" "/tmp/aprob//raided-map"; then
+		continue
+	fi
+
+	# Skip partitions used as active swap
+	if grep -q "^$mapped " "/tmp/aprob//swaps-map"; then
+		continue
+	fi
+
+	mount_find "$partition"
+done |
+	sed 's/\xFF/\xFF\xFF/g; s/\x00/\xFF0/g'

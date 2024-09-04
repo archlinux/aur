@@ -1,0 +1,207 @@
+#!/bin/bash
+set -e
+
+# grub-mkconfig helper script.
+# Copyright (C) 2006,2007,2008,2009  Free Software Foundation, Inc.
+#
+# GRUB is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# GRUB is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+
+. "$pkgdatadir/grub-mkconfig_lib"
+. /etc/default/grub
+
+export TEXTDOMAIN=grub
+export TEXTDOMAINDIR="${datarootdir}/locale"
+
+CLASS="--class android --class os"
+OS="Android"
+
+sub_indent() { echo "$submenu_indentation$*"; }
+
+android_entry() {
+	title="$1"
+	src="$2"
+	kernel="$3"
+	initrd="$4"
+	disk="$5"
+	device_id="$6"
+	type="$7"
+
+	[ "$type" != "default" ] &&
+		case "$kernels" in
+		gearlock*) title="$title, with ${kernel##*/} - $system" ;;
+		ab) title="$title - Slot $(case "${kernel}" in *_a) echo A ;; *) echo B ;; esac)" ;;
+		*) title="$title, with ${kernel##*/}, and ${initrd##*/}" ;;
+		esac
+
+	sub_indent "menuentry '$(echo "$title" | grub_quote)' ${CLASS} \$menuentry_id_option '$OS-${src##*/}-${kernel##*/}-${initrd##*/}-$type-$device_id' {"
+
+	save_default_entry | grub_add_tab
+
+	# Use ELILO's generic "efifb" when it's known to be available.
+	# FIXME: We need an interface to select vesafb in case efifb can't be used.
+	if [ ! "$GRUB_GFXPAYLOAD_LINUX" ]; then
+		sub_indent "	load_video"
+		grep -qx "CONFIG_FB_EFI=y" "${config}" 2>/dev/null &&
+			grep -qx "CONFIG_VT_HW_CONSOLE_BINDING=y" "${config}" 2>/dev/null &&
+			sub_indent "	set gfxpayload=keep"
+
+	else
+		[ "$GRUB_GFXPAYLOAD_LINUX" = text ] ||
+			sub_indent "	load_video"
+		sub_indent "	set gfxpayload=$GRUB_GFXPAYLOAD_LINUX"
+	fi
+
+	sub_indent "	insmod gzio"
+	echo "$disk" | sed "s/^/$submenu_indentation	/gm"
+	sub_indent "	linux $kernel $GRUB_CMDLINE_ANDROID root=/dev/ram0 SRC=$src"
+	sub_indent "	initrd $initrd"
+
+	sub_indent "}
+"
+}
+
+gen_entry() {
+	detect=$1
+	shift
+
+	i=1
+	while read -rd $'\0' arg; do
+		case $i in
+		1) device=$arg ;;
+		2) src=$arg ;;
+		3) os=$arg ;;
+		4) kernels=$arg ;;
+		5) initrds=$arg ;;
+		6) ucodes=$arg ;;
+		7) system=$arg ;;
+		8) data=$arg ;;
+		*) break ;;
+		esac
+		i=$((i + 1))
+	done < <(sed 's/\xFF0/\xFF\x00/g; s/\xFF\(.\)/\1/g' <<<"$detect")
+
+	ucode_list=""
+	ucode=""
+	disk="$(prepare_grub_to_access_device "$device")"
+	boot_device_id="$(grub_get_device_id "$device")"
+
+	unset IFS
+
+	echo "Found $os on $device" >&2
+
+	type=default
+	MAIN_ENTRY=""
+	EXTENDED_ENTRIES=""
+
+	# Extra indentation to add to menu entries in a submenu. We're not in a submenu
+	# yet, so it's empty. In a submenu it will be equal to '\t' (one tab).
+	submenu_indentation=""
+
+	entry() {
+		android_entry \
+			"$os" \
+			"$src" \
+			"${src}/${2}" \
+			"${ucode_list# } ${src}/${3}" \
+			"$disk" \
+			"$boot_device_id" \
+			"$1"
+	}
+
+	parse_to_entry() {
+		if [ "$type" = "default" ]; then
+			MAIN_ENTRY="$(entry default "$1" "$2")"
+			type=extended
+			submenu_indentation=$grub_tab
+		fi
+		EXTENDED_ENTRIES="$EXTENDED_ENTRIES
+$(entry extended "$1" "$2")"
+	}
+
+	IFS=","
+	case "$kernels" in
+	gearlock*)
+		for ucode in $ucodes; do
+			ucode_list="$ucode_list $src/boot/$ucode"
+		done
+
+		if [ "$GRUB_DISABLE_LINUX_UUID" != "true" ]; then
+			ROOT_DEVICE=$device
+			ROOT_UUID=$(${grub_probe} --device "$device" --target=fs_uuid 2>/dev/null)
+
+			[ "$ROOT_UUID" ] &&
+				ROOT_DEVICE="UUID=$ROOT_UUID"
+		fi
+
+		old_cmdline=$GRUB_CMDLINE_ANDROID
+		GRUB_CMDLINE_ANDROID="$GRUB_CMDLINE_ANDROID ROOT=$ROOT_DEVICE SYSTEM=$system DATA=$data GEARLOCK=$kernels"
+
+		for kver in $initrds; do
+			parse_to_entry "boot/kernel-$kver" "boot/initrd-$kver.img"
+		done
+
+		GRUB_CMDLINE_ANDROID=$old_cmdline
+		;;
+	ab)
+		for ucode in $ucodes; do
+			ucode_list="$ucode_list $src/$ucode"
+		done
+
+		if [ "$GRUB_DISABLE_LINUX_UUID" != "true" ] &&
+			[ "$GRUB_ENABLE_ANDROID_UUID" = "true" ]; then
+			ROOT_DEVICE=$device
+			ROOT_UUID=$(${grub_probe} --device "$device" --target=fs_uuid 2>/dev/null)
+
+			[ "$ROOT_UUID" ] &&
+				ROOT_DEVICE="UUID=$ROOT_UUID"
+		fi
+
+		old_cmdline=$GRUB_CMDLINE_ANDROID
+		GRUB_CMDLINE_ANDROID="$GRUB_CMDLINE_ANDROID ROOT=$ROOT_DEVICE"
+
+		for mode in a b; do
+			parse_to_entry "kernel_$mode" "initrd_$mode.img"
+		done
+
+		GRUB_CMDLINE_ANDROID=$old_cmdline
+		;;
+	*)
+		for ucode in $ucodes; do
+			ucode_list="$ucode_list $src/$ucode"
+		done
+
+		for kernel in $kernels; do
+			for initrd in $initrds; do
+				parse_to_entry "$kernel" "$initrd"
+			done
+		done
+		;;
+	esac
+
+	unset IFS
+
+	cat <<EOF
+
+$MAIN_ENTRY
+
+submenu '$(echo "Advanced options for $os" | grub_quote)' \$menuentry_id_option '$OS-${src##*/}-$type-$boot_device_id' { 
+$EXTENDED_ENTRIES
+}
+
+EOF
+}
+
+while read -r detect; do
+	gen_entry "$detect"
+done < <(grub-android-prober)
