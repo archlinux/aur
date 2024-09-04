@@ -1,6 +1,6 @@
 pkgbase = imgpkg
 	pkgdesc = Store application configuration files in Docker/OCI registries
-	pkgver = 0.43.0
+	pkgver = 0.43.1
 	pkgrel = 1
 	url = https://carvel.dev/imgpkg
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = imgpkg
 	makedepends = bash
 	makedepends = go
 	provides = imgpkg
-	source = imgpkg-0.43.0::https://github.com/carvel-dev/imgpkg/archive/v0.43.0.tar.gz
-	sha256sums = 215fa8217b1c312f48300743e22f592a345a58e398bb46e12c793fab582b8aa2
+	source = imgpkg-0.43.1::https://github.com/carvel-dev/imgpkg/archive/v0.43.1.tar.gz
+	sha256sums = 0b137a2efba7a8fd453cfd3dabe2c15861c62bbd5439143191a0202ec5af1bb3
 
 pkgname = imgpkg
