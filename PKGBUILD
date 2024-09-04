@@ -57,7 +57,7 @@ _opt_RealPort='RealPort' # Can also be Realport
 
 _opt_DKMS=1           # This can be toggled between installs
 
-#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/5.10.*/modules.alias))"
+#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/5.10.*/vmlinuz))"
 
 # Since the kernel module isn't loaded until you have a device
 # configured, these services are automatically enabled and started
@@ -106,9 +106,9 @@ pkgname='dgrp'
 #_pkgver='1.9-38'; _dl='81000137_Y.tgz'
 #_pkgver='1.9-39'; _dl='40002086_Z.tgz'
 #_pkgver='1.9-40'; _dl='40002086_AA.tgz'
-_pkgver='1.9-41'; _dl='40002086_AB.tgz'
+_pkgver='1.9-42'; _dl='40002086_AC.tgz'
 pkgver="${_pkgver//-/.}"
-pkgrel='3'
+pkgrel='1'
 pkgdesc="tty driver for Digi ${_opt_RealPort} ConnectPort EtherLite Flex One CM PortServer TS IBM RAN serial console terminal servers"
 #_pkgdescshort="Digi ${_opt_RealPort} driver for Ethernet serial servers" # For when we used to generate the autorebuild from here
 arch=('i686' 'x86_64')
@@ -211,12 +211,14 @@ source=(
   '0017-gcc-14-strict-function-definition-configure.patch'
   '0018-kernel-6.6-strict-sign-enforcement-for-minmax-__cmp_once.patch'
   '0019-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch'
+  '0019a-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch'
+  '0020-revert-POPULATED_KERNEL_HEADERS-for-DKMS.patch'
 )
 unset _mibsrc
 #source_i686=('http://ftp1.digi.com/support/utilities/40002890_A.tgz')
 #source_x86_64=('http://ftp1.digi.com/support/utilities/40002889_A.tgz') # compiled i686 therefore worthless
 # addp and sddp are incomplete. I replaced them with addp.pl
-md5sums=('df7d7093759350208fbe5abf5ceb27de'
+md5sums=('b78ad8db7920566a199d7ba191daff3d'
          'b4af5022ba96fcc2429263cfbbe85bae'
          '9feebec170552c9186e713e7f5852e14'
          'e9ae823e597f2b63d95e6d6a8e25cde3'
@@ -269,8 +271,10 @@ md5sums=('df7d7093759350208fbe5abf5ceb27de'
          '8aeeb382e88b712c163e149bea6c5e1a'
          'c177b666a0f9a7da04c16b3b974debfa'
          'f0ece6ca3aed462f7c11ff82bb3cc32f'
-         'a7b0e6bfebc82bf30ab6ed846bd64bf2')
-sha256sums=('9ab56e0c841a1eab13e9ced8f1ff6943be6643773dbbbb7b189462950b9f2113'
+         'a7b0e6bfebc82bf30ab6ed846bd64bf2'
+         'df025331e29fe36ed7d97b2ee661c990'
+         '4726b79fbe2c94db647be809c34ddff1')
+sha256sums=('f9fb258e85d70b7e89e8a4452401df01df3e23e8e423fb04f7bed3a0ea81e9b8'
             '42898b9d24262de27e9b1f3067d51d01373810b7c9e4991403a7f0a5dd7a26cf'
             '66f8b106a052b4807513ace92978e5e6347cef08eee39e4b4ae31c60284cc0a3'
             '9d79df8617e2bb1042a4b7d34311e73dc4afcdfe4dfa66703455ff54512427f5'
@@ -323,7 +327,9 @@ sha256sums=('9ab56e0c841a1eab13e9ced8f1ff6943be6643773dbbbb7b189462950b9f2113'
             '26022e04543aa8ccebe1b9c698c452e2dccc98d5bf1fd8c4f0dba000067e899a'
             '4ead538f59c7a9f3a643b5530e251eec4c1363ec2cfa7539da6a67650e2836c2'
             '3ae84041ed1d5b9b3fffb95c58bb52763aae0b6a73ca85ee3f4fde27472258a9'
-            'eb57a8de226ed5c030c263f2247bfb0e60256366960255fcfa5166ada39edc30')
+            'eb57a8de226ed5c030c263f2247bfb0e60256366960255fcfa5166ada39edc30'
+            '4a9b4141a7ac9ce1ec3f3bc509008350c647919c0af4bc1bc6210a506d365d74'
+            '098dfc644c744a5127934a495fd309005469f3fda9a118c9fd246732856e1596')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -466,46 +472,62 @@ prepare() {
     patch -Nup1 -i "${startdir}/0010-kernel-5.17-change-PDE_DATA.patch"
   fi
 
-  if :; then
+  # no need to fix early patches that we won't use any more
+  local _patches=()
+  if [ "$(vercmp "${pkgver}" '1.9.41')" -le 0 ]; then
     # https://lore.kernel.org/lkml/723478a270a3858f27843cbec621df4d5d44efcc.1663288066.git.nabijaczleweli@nabijaczleweli.xyz/T/
-    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-    # diff -pNaru5 'a' 'b' > '0011-kernel-6.1-remove-TTY_MAGIC.patch'
-    patch -Nup1 -i "${startdir}/0011-kernel-6.1-remove-TTY_MAGIC.patch"
+    _patches+=("0011-kernel-6.1-remove-TTY_MAGIC.patch")
 
     # https://www.uwsg.indiana.edu/hypermail/linux/kernel/1809.1/00449.html
-    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-    # diff -pNaru5 'a' 'b' > '0012-kernel-6.1-INIT_C_CC-termios_internal.patch'
-    patch -Nup1 -i "${startdir}/0012-kernel-6.1-INIT_C_CC-termios_internal.patch"
+    _patches+=("0012-kernel-6.1-INIT_C_CC-termios_internal.patch")
 
     # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
-    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-    # diff -pNaru5 'a' 'b' > '0013-kernel-6.0-set_termios-const-ktermios.patch'
-    patch -Nup1 -i "${startdir}/0013-kernel-6.0-set_termios-const-ktermios.patch"
-
-    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-    # diff -pNaru5 'a' 'b' > '0014-kernel-6.6-struct-tty_operations-size_t.patch'
-    patch -Nup1 -i "${startdir}/0014-kernel-6.6-struct-tty_operations-size_t.patch"
-
-    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-    # diff -pNaru5 'a' 'b' > '0015-kernel-6.4-class_create-1arg.patch'
-    patch -Nup1 -i "${startdir}/0015-kernel-6.4-class_create-1arg.patch"
-
-    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-    # diff -pNaru5 'a' 'b' > '0016-0006-kernel-5.10-dropped-tty_check_change.patch'
-    patch -Nup1 -i "${srcdir}/0016-0006-kernel-5.10-dropped-tty_check_change.patch"
-
-    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-    # diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
-    patch -Nup1 -i "${srcdir}/0017-gcc-14-strict-function-definition-configure.patch"
-
-    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-    # diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
-    patch -Nup1 -i "${srcdir}/0018-kernel-6.6-strict-sign-enforcement-for-minmax-__cmp_once.patch"
-
-    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-    # diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
-    patch -Nup1 -i "${srcdir}/0019-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch"
+    _patches+=("0013-kernel-6.0-set_termios-const-ktermios.patch")
   fi
+
+  if [ "$(vercmp "${pkgver}" '1.9.42')" -le 0 ]; then
+    _patches+=("0014-kernel-6.6-struct-tty_operations-size_t.patch")
+  fi
+
+  if [ "$(vercmp "${pkgver}" '1.9.41')" -le 0 ]; then
+    _patches+=("0015-kernel-6.4-class_create-1arg.patch")
+    _patches+=("0016-0006-kernel-5.10-dropped-tty_check_change.patch")
+  fi
+
+  if [ "$(vercmp "${pkgver}" '1.9.42')" -le 0 ]; then
+    _patches+=("0017-gcc-14-strict-function-definition-configure.patch")
+    _patches+=("0018-kernel-6.6-strict-sign-enforcement-for-minmax-__cmp_once.patch")
+  fi
+
+  if [ "$(vercmp "${pkgver}" '1.9.41')" -le 0 ]; then
+    _patches+=("0019-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch")
+  fi
+
+  if [ "$(vercmp "${pkgver}" '1.9.42')" -ge 0 ]; then
+    _patches+=("0019a-kernel-6.8-tty_driver.h-send_xchar-to-u8.patch")
+    _patches+=("0020-revert-POPULATED_KERNEL_HEADERS-for-DKMS.patch")
+  fi
+
+  local _pt _ptf=() _pts=()
+  for _pt in "${_patches[@]}"; do
+    set +u; msg2 "Patch ${_pt}"; set -u
+    if patch -Nup1 -i "${srcdir}/${_pt}"; then
+      _pts+=("${_pt}")
+    else
+      _ptf+=("${_pt}")
+    fi
+  done
+  if [ "${#_ptf[@]}" -gt 0 ]; then
+     if [ "${#_pts[@]}" -gt 0 ]; then
+       printf 'Patch success %s\n' "${_pts[@]}"
+       printf 'Warning: Some old patches may need to be removed even if they are successful\n'
+     fi
+     printf 'Patch failed %s\n' "${_ptf[@]}"
+     set +x
+     false
+  fi
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
 
   # Standardize name of RealPort
   sed -e "s/RealPort/${_opt_RealPort}/gI" -i $(grep -lrF $'RealPort\nRealport' .)
@@ -640,7 +662,10 @@ package() {
 
   make -s -j1 RPM_BUILD_ROOT="${pkgdir}" install
   install -m644 'dinc/dinc.1' -t "${pkgdir}/usr/share/man/man1/" # They bypass the Makefile that does this
-  chmod 644 "${pkgdir}/usr/bin/dgrp/config"/{dgrp.gif,file_locations}
+  if [ "$(vercmp "${pkgver}" '1.9.41')" -le 0 ]; then
+    chmod 644 "${pkgdir}/usr/bin/dgrp/config/dgrp.gif"
+  fi
+  chmod 644 "${pkgdir}/usr/bin/dgrp/config/file_locations"
   chmod 744 "${pkgdir}/usr/bin/"{dgelreset,dgipserv}
 
   # Postinstall

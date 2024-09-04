@@ -1,0 +1,23 @@
+diff -pNaru5 a/driver/2.6.27/Makefile50 b/driver/2.6.27/Makefile50
+--- a/driver/2.6.27/Makefile50	2024-04-19 12:16:29.000000000 -0400
++++ b/driver/2.6.27/Makefile50	2024-09-04 17:33:06.950728253 -0400
+@@ -58,17 +58,17 @@ EXTRA_CFLAGS += -I${MYPWD} -I${MYPWD}/in
+ 	-DDIGI_VERSION=\"$(TRUE_VERSION)\" -DDGRP_TRACER
+ 
+ # the change from PDE_DATA -> pde_data is properly a kernel rev detection,
+ # but RHEL defeated us by backporting it.  So; we flail and have to grep to
+ # relevant include file to see if this is that, and make our own define flag
+-ifneq ($(shell grep '^static inline void \*pde_data' @POPULATED_KERNEL_HEADERS@/include/linux/proc_fs.h),)
++ifneq ($(shell grep '^static inline void \*pde_data' @KERNEL_HEADERS@/include/linux/proc_fs.h),)
+ EXTRA_CFLAGS += -DLOW_PDE_DATA
+ endif
+ 
+ # Debian 11 backported the v5.13 change that privatizes the tty_check_change
+ # declaration.  Check for it here.
+-ifeq ($(shell grep 'tty_check_change' @POPULATED_KERNEL_HEADERS@/include/linux/tty.h),)
++ifeq ($(shell grep 'tty_check_change' @KERNEL_HEADERS@/include/linux/tty.h),)
+ EXTRA_CFLAGS += -DMISSING_TTY_CHECK_CHANGE
+ endif
+ 
+ 
+ # Conform to correct kbuild conventions...

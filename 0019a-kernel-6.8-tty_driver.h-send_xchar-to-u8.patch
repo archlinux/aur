@@ -1,0 +1,35 @@
+diff -pNaru5 a/driver/2.6.27/dgrp_tty.c b/driver/2.6.27/dgrp_tty.c
+--- a/driver/2.6.27/dgrp_tty.c	2024-04-19 12:16:29.000000000 -0400
++++ b/driver/2.6.27/dgrp_tty.c	2024-09-04 16:34:32.389539577 -0400
+@@ -139,11 +139,15 @@ static int dgrp_tty_tiocmset(struct tty_
+ #else
+ static int dgrp_tty_tiocmget(struct tty_struct *);
+ static int dgrp_tty_tiocmset(struct tty_struct *, unsigned int, unsigned int);
+ #endif
+ static int dgrp_tty_send_break(struct tty_struct *, int);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,8,0)
+ static void dgrp_tty_send_xchar(struct tty_struct *, char);
++#else
++static void dgrp_tty_send_xchar(struct tty_struct *, u8);
++#endif
+ 
+ #ifdef MISSING_TTY_CHECK_CHANGE
+ /* they decided that tty_check_change was internal to tty subsystem and
+  * no longer export it; now it is down in kernel/driver/tty/.  So far
+  * the symbol is still visible though, so can get away with a local decl.
+@@ -4052,11 +4056,15 @@ static void dgrp_tty_input_stop(struct t
+ 		wake_up_interruptible(&(ch->ch_nd)->nd_tx_waitq);
+ 
+ }
+ 
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,8,0)
+ static void dgrp_tty_send_xchar(struct tty_struct *tty, char c)
++#else
++static void dgrp_tty_send_xchar(struct tty_struct *tty, u8 c)
++#endif
+ {
+ 	struct un_struct *un;
+ 	struct ch_struct *ch;
+ 
+ 	if (!tty)
