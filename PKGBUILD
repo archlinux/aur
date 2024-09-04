@@ -1,4 +1,4 @@
-# Maintainer: Carter Jamison <axertheaxe@proton.me>
+# Maintainer: Kathrine Jamison <axertheaxe@proton.me>
 
 pkgname=desk-exec
 pkgver=0.1.5
