@@ -1,30 +1,64 @@
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
+# Maintainer:  Andreas Baumann <mail () andreasbaumann () cc>
+# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
-pkgname=libmp3splt
+pkgbase="libmp3splt"
+pkgname=("${pkgbase}" "${pkgbase}-docs")
 pkgver=0.9.2
-pkgrel=4
-pkgdesc="Library for splitting mp3 and ogg files without decoding"
-arch=('x86_64')
-url="http://mp3splt.sourceforge.net"
-license=('GPL')
-depends=('flac' 'libmad' 'libvorbis' 'libid3tag' 'pcre' 'libltdl')
-makedepends=('libtool')
-source=("https://downloads.sourceforge.net/sourceforge/mp3splt/$pkgname-$pkgver.tar.gz")
-sha512sums=('e5c98e8b173bc86302ccee4ca5eb0c8a8d93f225357eb7b14dea8d0700ed62ed6316506c182f6b295130f7924ff0b38e865d5e49fa9cd7882c648360d68872ed')
+pkgrel=5
+pkgdesc="Split mp3, ogg, and flac files without decoding - Library"
+arch=('any')
+url="https://mp3splt.sourceforge.net"
+license=('GPL-2.0-or-later')
+makedepends=('doxygen' 'flac>=1.2.1' 'graphviz' 'libid3tag' 'libmad' 'libogg'
+             'libvorbis' 'pcre')
+#checkdepends=('cutter-test')
+_pkgsrc="${pkgname}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::https://downloads.sourceforge.net/sourceforge/mp3splt/${_pkgsrc}.tar.gz")
+sha256sums=('30eed64fce58cb379b7cc6a0d8e545579cb99d0f0f31eb00b9acc8aaa1b035dc')
 
 prepare() {
-  cd $pkgname-$pkgver
-  libtoolize --copy --force
-  ./autogen.sh
+  cd "${srcdir}/${_pkgsrc}"
+  sed -i 's/FreeSans\.ttf//g' "doc/Doxyfile_api.in"
+  sed -i 's/FreeSans\.ttf//g' "doc/Doxyfile_all.in"
 }
 
 build() {
-   cd $pkgname-$pkgver
-  ./configure --prefix=/usr
+  cd "${srcdir}/${_pkgsrc}"
+  ./autogen.sh
+  ./configure \
+    --prefix='/usr'
   make
 }
 
-package() { 
-  cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir/" install
+# check() {
+#   cd "${srcdir}/${_pkgsrc}/test"
+#   ./run-tests.sh
+# }
+
+package_libmp3splt() { 
+  arch=('x86_64')
+  depends=('flac>=1.2.1' 'glibc' 'libid3tag' 'libmad' 'libogg' 'libltdl'
+           'libvorbis' 'pcre')
+
+  cd "${srcdir}/${_pkgsrc}"
+  make DESTDIR="${pkgdir}" install
+
+  libtool --finish "${pkgdir}/usr/lib"
+  libtool --finish "${pkgdir}/usr/lib/libmp3splt0"
+
+  rm -rf "${pkgdir}/usr/share/doc"
+
+  install -Dm644 "README"    "${pkgdir}/usr/share/doc/${pkgbase}/README"
+  # install -Dm644 "NEWS"      "${pkgdir}/usr/share/doc/${pkgbase}/NEWS"
+  install -Dm644 "ChangeLog" "${pkgdir}/usr/share/doc/${pkgbase}/CHANGELOG"
+  install -Dm644 "COPYING"   "${pkgdir}/usr/share/licenses/${pkgbase}/COPYING"
+  install -Dm644 "AUTHORS"   "${pkgdir}/usr/share/licenses/${pkgbase}/AUTHORS"
+}
+
+package_libmp3splt-docs() {
+  pkgdesc="HTML documentation for ${pkgbase}"
+
+  cd "${srcdir}/${_pkgsrc}/doc"
+  make DESTDIR="${pkgdir}" install
 }
