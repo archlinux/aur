@@ -1,8 +1,8 @@
 pkgbase = yj-bin
 	pkgdesc = CLI to convert between YAML, TOML, JSON, and HCL
 	pkgver = 5.1.0
-	pkgrel = 2
-	url = https://github.com/sclevine/yj/releases
+	pkgrel = 3
+	url = https://github.com/sclevine/yj
 	arch = x86_64
 	license = Apache
 	provides = yj
