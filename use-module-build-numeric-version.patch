@@ -1,0 +1,12 @@
+diff -Naur Games-FrozenBubble-2.212.ori/inc/My/Builder.pm Games-FrozenBubble-2.212/inc/My/Builder.pm
+--- Games-FrozenBubble-2.212.ori/inc/My/Builder.pm	2024-09-04 22:56:26.137199945 +0200
++++ Games-FrozenBubble-2.212/inc/My/Builder.pm	2024-09-04 22:56:47.220532774 +0200
+@@ -8,7 +8,7 @@
+ use File::Slurp qw(read_file write_file);
+ use File::Spec::Functions qw(catdir catfile rootdir);
+ use IO::File qw();
+-use Module::Build '0.36' => qw();
++use Module::Build 0.36 qw();
+ use autodie qw(:all move read_file write_file);
+ use parent 'Module::Build';
+ use Locale::Maketext::Extract;

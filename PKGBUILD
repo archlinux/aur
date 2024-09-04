@@ -4,7 +4,7 @@
 
 pkgname=frozen-bubble
 pkgver=2.212
-pkgrel=1
+pkgrel=2
 pkgdesc="A game in which you throw colorful bubbles and build groups to destroy the bubbles"
 arch=(x86_64)
 url="http://www.frozen-bubble.org"
@@ -14,16 +14,20 @@ makedepends=(perl-file-slurp perl-locale-maketext-lexicon perl-module-build)
 options=('!emptydirs')
 source=(http://archive.ubuntu.com/ubuntu/pool/universe/f/frozen-bubble/frozen-bubble_${pkgver}.orig.tar.gz
         fix-buffer-size-when-formatting-current-date.patch
-        frozen-bubble.desktop)
+        frozen-bubble.desktop
+        use-module-build-numeric-version.patch)
 md5sums=('fe65c8b4742fcad19bd1a5ea243255c7'
          '8b189952734ca0c6e94b0959994e54d1'
-         '01b10b77ba6ad856f5c199121c582272')
+         '01b10b77ba6ad856f5c199121c582272'
+         '3208d2ac5338ca834fa15bc1ce3f4658')
 
 prepare() {
   cd "$srcdir/Games-FrozenBubble-$pkgver"
 
   # https://bugzilla.redhat.com/show_bug.cgi?id=1541359
   patch -Np1 -i ../fix-buffer-size-when-formatting-current-date.patch
+
+  patch -Np1 -i ../use-module-build-numeric-version.patch
 
   sed -e 's|-Werror||' -i inc/My/Builder.pm
 }
