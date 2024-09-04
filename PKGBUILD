@@ -3,7 +3,7 @@
 _pkgname=hplip
 pkgname="${_pkgname}-lite"
 pkgver=3.24.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Only Print drivers for HP DeskJet, OfficeJet, Photosmart, Business Inkjet and some LaserJet"
 arch=('x86_64')
 url="https://hplipopensource.com"
@@ -14,12 +14,18 @@ provides=('hplip')
 backup=('etc/hp/hplip.conf')
 conflicts=('hplip')
 optdepends=('cups: for printing support' 'system-config-printer')
-source=(https://downloads.sourceforge.net/${_pkgname}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('5d7643831893a5e2addf9d42d581a5dbfe5aaf023626886b8762c5645da0f1fb')
+source=(
+  "https://downloads.sourceforge.net/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
+  "hplip-pserror-gcc14.patch"
+)
+sha256sums=(
+  "5d7643831893a5e2addf9d42d581a5dbfe5aaf023626886b8762c5645da0f1fb"
+  "SKIP"
+)
 
 prepare() {
  cd "${_pkgname}-${pkgver}"
- patch -Np1 -i ../../hplip-pserror-gcc14.patch
+ patch -Np1 -i "${srcdir}/hplip-pserror-gcc14.patch"
 }
 
 build() {
