@@ -1,10 +1,11 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=evcxr_jupyter
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Jupyter Kernel for the Rust programming language.'
 url="https://github.com/google/evcxr/tree/main/$pkgname"
 arch=('x86_64')
+options=(!lto)
 license=('Apache')
 depends=('rust' 'jupyter-notebook')
 makedepends=('cargo' 'cmake')
