@@ -3,46 +3,48 @@
 # Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 
 pkgname=kamailio
-pkgver=5.8.2
-pkgrel=4
+pkgver=5.8.3
+pkgrel=1
 pkgdesc='SIP Server for large VoIP and real-time communication platforms'
 arch=('x86_64')
 url='https://www.kamailio.org'
 license=('GPL-2.0-or-later')
-depends=('gcc-libs' 'openssl')
+depends=('bash' 'glibc' 'python')
 backup=(
   'etc/kamailio/kamailio.cfg'
   'etc/kamailio/kamctlrc'
 )
 makedepends=(
   'bison'
-  'flex'
   'dos2unix'
   'erlang'
-  'pcre2'
-  'libical'
-  'mariadb'
-  'radcli'
-  'postgresql-libs'
   'expat'
-  'libiodbc'
-  'lksctp-tools'
-  'redis'
-  'openldap'
-  'sqlite'
-  'net-snmp'
-  'libxml2'
+  'flex'
   'jansson'
   'json-c'
-  'lua'
-  'libmaxminddb'
   'libev'
+  'libical'
+  'libiodbc'
+  'libmaxminddb'
+  'libxml2'
+  'lksctp-tools'
+  'lua'
+  'mariadb'
+  'net-snmp'
+  'openldap'
+  'openssl'
+  'pcre2'
+  'postgresql-libs'
+  'radcli'
+  'readline'
+  'redis'
+  'sqlite'
 )
 optdepends=('rtpengine: the sipwise media proxy for kamailio')
 options=('!emptydirs')
 source=("https://www.kamailio.org/pub/kamailio/${pkgver}/src/kamailio-${pkgver}_src.tar.gz"
         'kamailio.sysusers')
-sha256sums=('8ca813d9dd338e8e83ae9b1ad8f316b9908fb432af9da1ea55ed3a9744df3faa'
+sha256sums=('b99ed2b8a1f26b0a4f6afa048c8fc52fbd3b3685362965f0459dadf794e2df5c'
             'e2ad5c2f3213f2ce7de9524da378d062525ce99e2b401590ec0394c521a3d0c8')
 
 package() {
@@ -110,4 +112,4 @@ package() {
   install -Dm644 pkg/kamailio/obs/kamailio.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/kamailio.conf"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set sw=2 sts=-1 et:
