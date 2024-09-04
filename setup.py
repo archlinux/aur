@@ -11,7 +11,6 @@ setup(
         ]
     },
     install_requires=[
-        "manimpango",
         "setproctitle",
         "dbus-python",
     ],

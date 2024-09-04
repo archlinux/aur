@@ -1,0 +1,13 @@
+--- a/emote/picker.py	2024-09-05 08:50:43.153230000 +1000
++++ b/emote/picker.py	2024-09-04 21:50:33.970769271 +1000
+@@ -648,7 +648,9 @@
+ 
+         self.destroy()
+ 
+-        if not config.is_wayland:
++        if config.is_wayland:
++            os.system('bash -c "sleep 0.15; ydotool key 29:1 47:1 47:0 29:0" &')
++        else:
+             time.sleep(0.15)
+             os.system("xdotool key ctrl+v")
+ 
