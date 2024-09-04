@@ -3,7 +3,7 @@
 # Maintainer: Neko_Rikka <address at domain dot tld>
 
 pkgname=python-unitypy-git
-pkgver=r443.df73acb
+pkgver=r445.4bbd9aa
 pkgrel=1
 pkgdesc="A unity asset extractor based on unitypack and AssetStudio."
 arch=('x86_64')
@@ -21,6 +21,7 @@ depends=(
   'python-etcpak-git'
   'python-tabulate'
   'python-fsspec'
+  'systemd'
 )
 checkdepends=('python-pytest' 'python-pytest-cov')
 makedepends=('git')
