@@ -3,7 +3,7 @@
 pkgname=miru-app-git
 _gitname=${pkgname%-git}
 pkgver=20240416.8599d0d
-pkgrel=2
+pkgrel=3
 pkgdesc="🎉 A versatile application that is free, open-source, and supports extension sources for videos, comics, and novels, available on Android, Windows, and Web platforms. "
 url=https://github.com/miru-project/miru-app.git
 arch=("x86_64")
@@ -17,37 +17,36 @@ optdepends=(
 makedepends=(
     "git"
     "clang"
-    "ninja"
-    "flutter"
     "cmake"
 )
 provides=("${pkgname%-git}")
 license=("GPLv3")
 source=(
+    "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.16.8-stable.tar.xz"
     "git+https://github.com/miru-project/miru-app#branch=dev"
     "modify-data-directory.patch"
-    "fix-deps-version.patch"
     "miru.png::https://github.com/miru-project/miru-app/blob/dev/assets/icon/logo.png?raw=true"
 )
 sha256sums=(
-    "SKIP"
-    "890b1615cf114dd829c3f0a38c170239dcf0a19ac99462d5d3e0512f98461967"
-    "52131f7df13bf963fbbbf57a5477b621b8a059b9a19183dea7ebe8ae781922f4"
-    "df41ad6c2e544cfb066162b8ba1ea1d6b3fdc5a058233a7c0300d87f092d5f08"
+    '7cb12032cf615a92a7bc9042100f3f2af62df7df3ca3bee27f4b153fe218b239'
+    'SKIP'
+    '890b1615cf114dd829c3f0a38c170239dcf0a19ac99462d5d3e0512f98461967'
+    'df41ad6c2e544cfb066162b8ba1ea1d6b3fdc5a058233a7c0300d87f092d5f08'
 )
-
 pkgver() {
     cd "$_gitname"
     printf "%s.%s" "$(git show -s --format=%cs | tr -d -)" "$(git rev-parse --short HEAD)"
 }
+
 prepare() {
     cd "$_gitname"
     git submodule update --init --recursive
     git apply ../modify-data-directory.patch
-    git apply ../fix-deps-version.patch
 }
 
 build() {
+    local FLUTTER_PATH=$(realpath flutter)
+    export PATH="$FLUTTER_PATH/bin:$PATH"
     cd "$_gitname"
     flutter pub get
     flutter build linux --release
