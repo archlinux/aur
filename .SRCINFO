@@ -1,0 +1,15 @@
+pkgbase = jxl-oxide
+	pkgdesc = Pure Rust implementation of JPEG XL decoder
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/tirr-c/jxl-oxide
+	arch = x86_64
+	license = Apache-2.0 AND MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = lcms2
+	source = https://github.com/tirr-c/jxl-oxide/archive/refs/tags/0.8.1.tar.gz
+	sha256sums = 7f412ffa507492cafd1f861150037b3e31decdcf4a6b53b4d37353defee1ded8
+
+pkgname = jxl-oxide
