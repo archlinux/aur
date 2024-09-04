@@ -1,5 +1,5 @@
 pkgname=libelectron
-pkgver=1.0.25
+pkgver=1.0.26
 pkgrel=1
 arch=("x86_64" "aarch64")
 url="https://gitlab.com/linuxbombay/libelectron/libelectron"
@@ -8,7 +8,7 @@ depends=('npm' 'git' 'icu')
 pkgdesc="A collection of npm dependencies for electron packages."
 makedepends=('unzip')
 source=("$url/-/archive/$pkgver/libelectron-$pkgver.tar.bz2")
-sha256sums=('4ea8a5c261476dab1551ed896fce114aec071dc80b13b48f1165bcf1f008ce26')
+sha256sums=('1559a349c5aa193187e3128457d1961087a60869ae141572f78b8eba525a3a7a')
 
 package() {
     for dir in $pkgname-$pkgver ; do mv "${dir}" "$pkgname" ;done
