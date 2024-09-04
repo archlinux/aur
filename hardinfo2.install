@@ -1,0 +1,13 @@
+post_install() {
+  echo ""
+  echo "Enable and start the service for root access:"
+  echo "systemctl enable --now hardinfo2"
+  echo ""
+}
+
+post_upgrade() {
+  echo ""
+  echo "Restart the service:"
+  echo "systemctl restart hardinfo2"
+  echo ""
+}
