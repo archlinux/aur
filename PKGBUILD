@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=glmx
-_pkgver=0.2-0
+_pkgver=0.2-1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Generalized Linear Models Extended"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -21,8 +21,8 @@ optdepends=(
   r-pscl
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('809eac8845e282100ce327852a725682')
-b2sums=('6888d018faf6bcae905986e462a586536b81f32a63c0f57d8c712dfef50dc424af24bd213c2865effb8bcacbd992eba46166b07900357a32277a3d1abdfc8589')
+md5sums=('ca1a5f86199bc61ac304dd873196d4ef')
+b2sums=('f446dc601c095a621e936f804b816ad07a61f5cc169c9564ae15d1e8066842b2e3488d04240c4502cf7a679257d718882219b3701aa7857d6c0a2964b96f3be0')
 
 build() {
   mkdir build
