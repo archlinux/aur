@@ -1,11 +1,11 @@
 # Based off of: https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
-# Maintainer: Mike Cuche <cuche@mailbox.org>
+# Maintainer: Mike Cuche <mike@cuche.cc>
 
 _pkgname=altus
 _Pkgname=Altus
 
 pkgname="${_pkgname}"-appimage
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="WhatsApp client with themes and multiple account support"
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=(!strip)
 _appimage="${_Pkgname}-${pkgver}.AppImage"
 source=("https://github.com/amanharwara/altus/releases/download/${pkgver}/$_appimage")
 noextract=("${_appimage}")
-sha256sums=('472322bb3e1eb10a775f92c69ea21ec52aee6b9d2733c6fd50454a51868b779a')
+sha256sums=('42b8ec10655672bbac5e6fb17cb4fe58152ce0806c6bfcf2132ce46b8509c4a7')
 
 prepare() {
     chmod +x "${_appimage}"
