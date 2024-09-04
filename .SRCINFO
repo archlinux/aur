@@ -5,6 +5,7 @@ pkgbase = renderman-pro-server
 	url = https://renderman.pixar.com/
 	arch = x86_64
 	license = custom
+	depends = numactl
 	optdepends = renderman: Downloader for the RPM package
 	options = !strip
 	source = manual://RenderManProServer-26.2_2336968-linuxRHEL9_gcc11icx232.x86_64.rpm
