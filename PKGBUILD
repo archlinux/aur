@@ -3,7 +3,7 @@ _target='compass-readonly'
 _edition=' Readonly'
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r17437.gdbedce12f'
+pkgver='r17480.ga1f8f058f'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - git version'
@@ -11,7 +11,7 @@ arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('SSPL-1.0')
 _electronpkg='electron30'
-depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release' 'nodejs>=20.16.0')
+depends=("$_electronpkg" 'krb5' 'libmongocrypt' 'libsecret' 'lsb-release' 'nodejs>=20.16.0')
 makedepends=('git' 'npm>=10.2.4' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 provides=("$_pkgname")
@@ -19,11 +19,13 @@ conflicts=("$_pkgname")
 backup=('etc/mongodb-compass.conf')
 source=(
 	"$pkgname::git+https://github.com/mongodb-js/compass"
+	'update-dependencies.diff'
 	'hadron-build-ffmpeg.diff'
 	'fix-argv.diff'
 	'mongodb-compass.conf'
 )
 b2sums=('SKIP'
+        '3edfbd465754292688d8f91a22c33443389a070f1718810a4ad7ee3ad7973e8f5234ff7c3b17ae62c62925aa06a7fc898d2f4fb66690d3e073297653900caa12'
         'd893c74227ddd8fcfce25829728f54fc705d5d390495893de97e69c957b09bb744c27a90191ca6afdbe77d336a4311811009c4b993394cb408ba6940e71857e0'
         '2a07533bbd4697e8ad0e29402867662cc9d817dfbcfcde8bfa2e4e06f8df3c7d036822b8b33b49cb1d29a8b2c126c5a3381c6b2283e2732e4ca2943bd06bed68'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
@@ -36,11 +38,19 @@ prepare() {
 	# Disable husky command
 	sed -i '/husky install/d' 'package.json'
 
-	# Set system Electron version for ABI compatibility
-	sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/$_electronpkg/version")"'"|' {'configs','packages'}'/'*'/package.json'
+	# Set npm overrides for various dependencies
+	patch --forward -p1 < "$srcdir/update-dependencies.diff"
 
-	# Force the newest version of electron-to-chromium
-	sed -E -i 's|(.*)("electron": ")|\1"electron-to-chromium": "'"$(npm view 'electron-to-chromium@latest' version)"'",\n\1\2|' 'packages/compass/package.json'
+	# Set system Electron version for ABI compatibility
+	sed -i "s|%%ELECTRON_VERSION%%|$(cat "/usr/lib/$_electronpkg/version")|g" 'package.json'
+	npm update electron --package-lock-only
+
+	# Force the newest version of electron-to-chromium to make sure we support the Electron version set above
+	npm update electron-to-chromium --package-lock-only
+
+	# Fix build of ssh2 and its optdeps
+	npm update cpu-features --package-lock-only
+	npm update nan --package-lock-only
 
 	# Don't use the bundled ffmpeg
 	patch --forward -p1 < "$srcdir/hadron-build-ffmpeg.diff"
