@@ -3,9 +3,9 @@
 # Based on https://aur.archlinux.org/packages/monero-feather-git/
 
 pkgname='feather-wallet'
-pkgver=2.6.7
+pkgver=2.6.8
 _pkgname=feather-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='A free Monero desktop wallet'
 license=('BSD-3-Clause')
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=('monero-feather' 'monero-feather-git' 'featherwallet-bin' 'featherwal
 
 source=(https://featherwallet.org/files/releases/source/feather-${pkgver}.tar.gz)
 
-sha256sums=('597e020d642df72e11862549e1ee8de5ac67d9cf97310b2a3e2634b4b5526124')
+sha256sums=('601f14d30f465629e1551dd593abc12587da77d2ccb5b048e9a5f9482073c200')
 
 prepare() {
 	cd ${_pkgname}
