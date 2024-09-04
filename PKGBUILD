@@ -9,6 +9,7 @@ arch=(any)
 url=https://github.com/kewlfft/ansible-aur
 license=(GPL-3.0-or-later)
 depends=(ansible-core)
+makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")

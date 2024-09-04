@@ -5,6 +5,7 @@ pkgbase = ansible-aur-git
 	url = https://github.com/kewlfft/ansible-aur
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = git
 	depends = ansible-core
 	provides = ansible-aur
 	conflicts = ansible-aur
