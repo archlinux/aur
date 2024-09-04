@@ -25,7 +25,7 @@ pkgbase = unl0kr
 	source = unl0kr-install
 	md5sums = 068bde08ef30bda43154a8ec6c43aea5
 	md5sums = c895eaee573f41ed2d8f406ce789a31b
-	md5sums = 4853784993e8965e35e163e610d10bbf
-	md5sums = 79bb712c36c48179ab3eaab9d9d902db
+	md5sums = bfb3b7489f6ad4eff1a934ee469dc101
+	md5sums = 77f434f1626524b8853f6241fdf160ab
 
 pkgname = unl0kr
