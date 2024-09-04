@@ -3,7 +3,7 @@
 # Maintainer: Abdulkadir Furkan Şanlı <me@abdulocra.cy>
 
 pkgname='speedtest-go'
-pkgver='1.7.8'
+pkgver='1.7.9'
 pkgrel='1'
 pkgdesc='CLI and Go API to Test Internet Speed using speedtest.net'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('go')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('29e8186818305fb1eb183504347f4ef77c0700efcb87b0fba173b0d62c26e7f6')
+sha256sums=('1273ad19dc8ecc4ff40204c62c372bb90c81c73c1cf3a9b208bab7f1035dfa67')
 
 build ()
 {
