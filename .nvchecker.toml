@@ -1,0 +1,4 @@
+[linux-vfio-lts]
+source = "regex"
+url = "https://www.kernel.org/feeds/kdist.xml"
+regex = '([0-9]+\.[0-9]+\.[0-9]+): longterm'
