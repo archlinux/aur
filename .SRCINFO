@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-x86_64-xz
 	pkgdesc = Library and command line tools for XZ and LZMA compressed files for amd64 platform (mingw-w64)
 	pkgver = 5.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tukaani.org/xz/
 	arch = x86_64
 	license = 0BSD

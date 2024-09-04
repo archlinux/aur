@@ -2,7 +2,7 @@
 
 pkgname="mingw-w64-x86_64-xz"
 pkgver=5.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Library and command line tools for XZ and LZMA compressed files for amd64 platform (mingw-w64)"
 arch=('x86_64')
 url="https://tukaani.org/xz/"
@@ -41,5 +41,5 @@ package() {
 	rm -r "$pkgdir/usr/$_platform/share" 
 
 	install -d "$pkgdir/usr/share/licenses/$pkgname"
-	find  "$pkgdir/usr/$_platform" -name 'COPYING*' | xargs -rtL1 install -m644 -t "$pkgdir/usr/share/licenses/$pkgname" 
+	find  "$srcdir/$_basename-$pkgver" -name 'COPYING*' | xargs -rtL1 install -m644 -t "$pkgdir/usr/share/licenses/$pkgname" 
 }
