@@ -1,6 +1,6 @@
 pkgbase = vendir-bin
 	pkgdesc = Easy way to vendor portions of git repos, github releases, helm charts, docker image contents, etc. declaratively
-	pkgver = 0.41.0
+	pkgver = 0.41.1
 	pkgrel = 1
 	url = https://carvel.dev/vendir
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = vendir-bin
 	license = apache-2.0
 	provides = vendir
 	conflicts = vendir
-	source_x86_64 = vendir-v0.41.0::https://github.com/carvel-dev/vendir/releases/download/v0.41.0/vendir-linux-amd64
-	sha256sums_x86_64 = 3b1094bf45a9ff5c2915a986f4d7cee8480c3cab31c060445f851c48f397ee31
-	source_aarch64 = vendir-v0.41.0::https://github.com/carvel-dev/vendir/releases/download/v0.41.0/vendir-linux-arm64
-	sha256sums_aarch64 = f1456d6cbf11299eece2e87563caabe24309302c327c5e42a357ebeaba057a05
+	source_x86_64 = vendir-v0.41.1::https://github.com/carvel-dev/vendir/releases/download/v0.41.1/vendir-linux-amd64
+	sha256sums_x86_64 = f878f3e16b702c47e42b2215a670d65028bc0158643ed28a2dfaa6f37b1344ac
+	source_aarch64 = vendir-v0.41.1::https://github.com/carvel-dev/vendir/releases/download/v0.41.1/vendir-linux-arm64
+	sha256sums_aarch64 = 58facd06bae6ffc858b348da9dcc0b032d030a6a31767fea6f9166658d7a61e2
 
 pkgname = vendir-bin
