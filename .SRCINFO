@@ -1,6 +1,6 @@
 pkgbase = r-aer
 	pkgdesc = Applied Econometrics with R
-	pkgver = 1.2.12
+	pkgver = 1.2.13
 	pkgrel = 1
 	url = https://cran.r-project.org/package=AER
 	arch = any
@@ -32,8 +32,8 @@ pkgbase = r-aer
 	optdepends = r-tseries
 	optdepends = r-urca
 	optdepends = r-vars
-	source = https://cran.r-project.org/src/contrib/AER_1.2-12.tar.gz
-	md5sums = 89bb4ea783447c20c9b2c37ed2ed9cdb
-	b2sums = d80077cbb7ac17c4d1c8d6f639956811c717bb5711111783f831d65879bcae3b7b855ce18b6935a1776178b0dc8dcd76a6727dec411c177e83b3bd940db39642
+	source = https://cran.r-project.org/src/contrib/AER_1.2-13.tar.gz
+	md5sums = 4a13da4bbfc87934bef11bc60c9c5f61
+	b2sums = 7837038307e2418182f81f32773f752195b2fb905e5ca6a0cb59ef1c84ac85cee3b43b006c2500718dfe9ba0e7561227debc56ca9162a04c5a60a5a31ffc02b2
 
 pkgname = r-aer
