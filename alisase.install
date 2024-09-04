@@ -1,0 +1,12 @@
+post_install() {
+	/usr/local/bin/alisase-bin/3.4.2/alisasesvc --install
+	/usr/local/bin/alisase-bin/3.4.2/alisasesvc --daemon
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	/usr/local/bin/alisase-bin/3.4.2/alisasesvc --uninstall
+}

@@ -1,0 +1,7 @@
+*.deb
+*.part
+!PKGBUILD
+!.SRCINFO
+*.pkg.tar.zst
+pkg/
+src/

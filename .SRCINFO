@@ -1,0 +1,17 @@
+pkgbase = alisase
+	pkgdesc = Aliyun sase client.
+	pkgver = 3.4.2
+	pkgrel = 1
+	url = https://www.aliyun.com/product/security/csas
+	install = alisase.install
+	arch = x86_64
+	license = custom
+	provides = alisase-bin
+	provides = alisase
+	conflicts = alisase
+	conflicts = alisase-bin
+	options = !strip
+	source = alisase.deb::https://sase-app.oss-cn-hangzhou.aliyuncs.com/linux/sase-app-latest.deb
+	sha256sums = 34032a08479ca6f41e5e0574bad5a0740245a3d4a28706c7b9b3c0e659d0e53d
+
+pkgname = alisase
