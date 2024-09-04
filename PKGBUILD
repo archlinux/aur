@@ -1,6 +1,6 @@
 # Maintainer: Mark Collins <tera_1225 hatt hotmail.com>
 pkgname=borgwarehouse
-pkgver=2.3.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="WebUI for a BorgBackup central repository server"
 arch=("x86_64")
@@ -24,7 +24,11 @@ makedepends=(
   'fd'
   'npm'
 )
-backup=("etc/webapps/$pkgname")
+backup=(
+  "etc/webapps/${pkgname}/${pkgname}.env"
+  "etc/webapps/${pkgname}/config/repo.json"
+  "etc/webapps/${pkgname}/config/users.json"
+)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}-cron.service"
@@ -32,13 +36,13 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "sysusers-${pkgname}.conf"
         "${pkgname}.tmpfiles"
         "fix-env-nodocker.patch")
-sha256sums=('5b02e741ed433c78e9acc63900206c257f2fcbfa6d5810caf75acba9649d91dc'
+sha256sums=('752919780293bd34b0e1dc09c61d9a1de51a4c693947719fbb1118749da88426'
             '4e5b300b524cd43fb6ad823168375c0d1893e993d5e60a6724dac70272d3e308'
             '682c914d59473fdf7bcee65b0ace23a3cb43a5f73464f76a9a677093d29d27b2'
             '5668cbdd26b701514a89ff17175bcc058bfdb0ac0b5c665cf2d8b555179c5446'
             '3f22c300895bff34b8da9719d378e5d11b232bd0143fee8ed6132186652f3dcd'
             'd4f56d93028a838ebc60aa7a763d63ef1d4efeb4260fcc93216548541159b2e9'
-            '3b616075156e4b996d13a5243969f0ff5db1777870a58cb35c447a1014dc01cd')
+            '4b4178d54516a5f727ab2afc534e2a7f5fd5270a50ba378a11a12674b9e80f9e')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"

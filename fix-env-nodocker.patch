@@ -1,6 +1,6 @@
-diff --unified --recursive --text borgwarehouse-2.3.0.orig/.env.sample borgwarehouse-2.3.0/.env.sample
---- borgwarehouse-2.3.0.orig/.env.sample	2024-05-12 18:10:12.000000000 +0200
-+++ borgwarehouse-2.3.0/.env.sample	2024-07-08 18:17:25.388630176 +0200
+diff -ura borgwarehouse-2.4.1/.env.sample borgwarehouse-2.4.1.new/.env.sample
+--- borgwarehouse-2.4.1/.env.sample	2024-09-01 14:58:57.000000000 +0200
++++ borgwarehouse-2.4.1.new/.env.sample	2024-09-04 16:31:49.528155738 +0200
 @@ -2,6 +2,7 @@
  
  # Host port mappings
@@ -35,10 +35,11 @@ diff --unified --recursive --text borgwarehouse-2.3.0.orig/.env.sample borgwareh
  
  ## Optional variables section ##
  
-@@ -38,4 +34,4 @@
- MAIL_SMTP_PORT=
- MAIL_SMTP_LOGIN=
- MAIL_SMTP_PWD=
--MAIL_REJECT_SELFSIGNED_TLS=
+@@ -50,4 +46,4 @@
+ MAIL_REJECT_SELFSIGNED_TLS=
+ 
+ # Force app to start on IPv6
+-#HOSTNAME=::
 \ No newline at end of file
-+MAIL_REJECT_SELFSIGNED_TLS=
++#HOSTNAME=::
+Only in borgwarehouse-2.4.1.new/: .env.sample.orig
