@@ -1,33 +1,48 @@
-#Maintainer: Gerrit G. <gerrit at grosskopfgames dot de>
+# Maintainer: realroot <scorpion2185@protonmail.com>
+# Previously made by Gerrit G. <gerrit at grosskopfgames dot de>
+
 pkgname=unl0kr
-pkgver=2.0.2
+pkgver=3.2.0
 pkgdesc="On-screen Keyboard for FDE"
-pkgrel=2
-arch=(x86_64)
-url="https://github.com/Grosskopf/arch_unl0kr"
-license=('GPL3')
-depends=(device-mapper cryptsetup libinih libinput udev libxkbcommon)
-makedepends=(meson git cmake scdoc pkgconf)
-_commit="2e5707cbd5d8d9ab1b382f663e57804e1fb063ef"
-source=(
-    git+https://gitlab.com/cherrypicker/unl0kr.git#commit=${_commit}
+pkgrel=1
+arch=(x86_64 aarch64)
+url="https://gitlab.com/postmarketOS/buffybox"
+license=('GPL-3.0-or-later')
+depends=(device-mapper cryptsetup libxkbcommon libdrm libinih libinput)
+makedepends=(meson scdoc git pkgconf cmake linux-headers)
+_commit_lvgl=ceadda8a468b7d5fa6ba973bd82cf610166278d8
+source=(https://gitlab.com/postmarketOS/buffybox/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz
+	lvgl-$_commit_lvgl.tar.gz::https://github.com/lvgl/lvgl/archive/$_commit_lvgl.tar.gz
     unl0kr-hooks
     unl0kr-install
 )
 backup=(etc/unl0kr.conf)
-build() {
-    cd unl0kr
-    git submodule init
-    git submodule update
-    cd ..
-    arch-meson "$pkgname" _build
-    meson compile -C _build
+
+prepare() {
+	cd buffybox*/unl0kr
+	mv "$srcdir/lvgl-$_commit_lvgl"/* ../lvgl
 }
+
+build() {
+    cd buffybox*/unl0kr
+	arch-meson build
+	meson compile -C build
+}
+
 package() {
-    DESTDIR="$pkgdir" meson install --no-rebuild -C _build
+	cd buffybox*/unl0kr
+    DESTDIR="$pkgdir" meson install --no-rebuild -C build
     install -Dm644 ${srcdir}/unl0kr-hooks ${pkgdir}/usr/lib/initcpio/hooks/unl0kr
     install -Dm644 ${srcdir}/unl0kr-install ${pkgdir}/usr/lib/initcpio/install/unl0kr
+
+	# Make the dark theme default
+    sed -i 's/default=breezy-light/default=breezy-dark/' ${pkgdir}/etc/unl0kr.conf
+    sed -i 's/alternate=breezy-dark/alternate=breezy-light/' ${pkgdir}/etc/unl0kr.conf
+
+    # Enable all checked modules if you cannot find the right ones for your touchscreen
+    #sed -i 's/#add_checked_modules/add_checked_modules/' ${pkgdir}/usr/lib/initcpio/hooks/unl0kr
 }
-md5sums=('SKIP'
-         'bfb3b7489f6ad4eff1a934ee469dc101'
+md5sums=('068bde08ef30bda43154a8ec6c43aea5'
+         'c895eaee573f41ed2d8f406ce789a31b'
+         '4853784993e8965e35e163e610d10bbf'
          '79bb712c36c48179ab3eaab9d9d902db')
