@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _appname=tomato
 pkgname="${_appname}-radio-automation-bin"
-_pkgname=Joystick
+_pkgname="Tomato Radio Automation"
 pkgver=0.10.12
 _electronversion=32
 pkgrel=1
