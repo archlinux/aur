@@ -1,0 +1,22 @@
+diff --git a/src/GNUmakefile.orig b/src/GNUmakefile.orig
+index c7fb382f..02603f6e 100644
+--- a/src/GNUmakefile.orig
++++ b/src/GNUmakefile.orig
+@@ -113,7 +113,7 @@ endif
+ 	@echo
+ 	# Use the following line for aggressive linting
+ 	# $(GNATMAKE) -j4 -c -i -O1 $(CPU_FLAG)=$(CPU) -we -gnat12 -gnatfaoN -gnatVaep -gnatw.eDHM.Y -gnateEeEeF -gnatybdh -fstack-protector -c $(INCLUDE) spar
+-	$(GNATMAKE) -j$(GMAKEJOBS) -c -i -O1 $(CPU_FLAG)=$(CPU) -we -gnat12 -gnatfaoN -gnatVaep -gnateEeEeF -fstack-protector -c $(INCLUDE) spar
++	$(GNATMAKE) -j$(GMAKEJOBS) -c -i -O1 $(CPU_FLAG)=$(CPU) -we -gnat12 -gnatfaoN -gnatVaep -gnateEeEeF -gnatd.E -fstack-protector -c $(INCLUDE) spar
+ 	gnatbind -x $(INCLUDE_BIND) spar.ali
+ 	gnatlink spar.ali $(GSTREAMERLIBS) $(GSTREAMEROBJ) $(PCREOBJ) c_os.o c_scanner.o $(LIBS)
+ 	@echo
+@@ -307,7 +307,7 @@ endif
+ 	-rm -f *.gcda *.gcov coverage.info
+ 	# Always build without optimization to ensure correct coverage results
+ 	# -pg required for gprof performance profiling
+-	$(GNATMAKE) -j$(GMAKEJOBS) -c -i -O0 $(CPU_FLAG)=$(CPU) -we -gnat12 -gnatfaoN -gnatVaep -gnateEeEeF -gnatybdh -fstack-protector -fprofile-arcs -ftest-coverage -pg -g -c $(INCLUDE) spar
++	$(GNATMAKE) -j$(GMAKEJOBS) -c -i -O0 $(CPU_FLAG)=$(CPU) -we -gnat12 -gnatfaoN -gnatVaep -gnateEeEeF -gnatybdh -gnatd.E -fstack-protector -fprofile-arcs -ftest-coverage -pg -g -c $(INCLUDE) spar
+ 	gnatbind -x $(INCLUDE_BIND) spar.ali
+ 	gnatlink spar.ali $(GSTREAMERLIBS) $(GSTREAMEROBJ) $(PCREOBJ) c_os.o c_scanner.o $(LIBS) -lgcov -pg
+ 	@echo
