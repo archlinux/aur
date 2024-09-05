@@ -49,7 +49,7 @@ makedepends=(
     vulkan-headers
     wayland-protocols
 )
-_tag=3.15.0-sk-1
+_tag=3.15.4-sk-1
 source=("git+https://github.com/3003n/gamescope.git#tag=${_tag}"
     "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
     "git+https://github.com/Joshua-Ashton/wlroots.git"
