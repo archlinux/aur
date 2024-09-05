@@ -2,7 +2,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-keystonemiddleware
-pkgver=10.7.0
+pkgver=10.7.1
 pkgrel=1
 pkgdesc="Middleware for the OpenStack Identity API (Keystone)"
 arch=(any)
@@ -56,7 +56,7 @@ checkdepends=('python-hacking'
               'python-pyjwt'
               'bandit')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('4c4e195682920cfc41afffff9caf72b3f373d0cd4abd0fae2418efc57ca2b8bbaa7448972d330db25f8e4bbbd9f995d7fc07809a349babcfb43a01248f5a992c')
+b2sums=('670be2e67b5f850709db1535a323c68ca950beb7bb776cc1977bd9abc0c034b56b4dde864a60e8443244fdc43201b127979d11abdd778c52b05f765d484de2c3')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
