@@ -3,7 +3,7 @@
 
 _pkgname=viddy
 pkgname=${_pkgname}-bin
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='A modern watch command, binary version'
 url="https://github.com/sachaos/viddy"
@@ -18,10 +18,10 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-i686.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.tar.gz")
 sha256sums=('e6eea22d4e9e0aa6a78d0f9126009ec041ea047f94b320c003c34a631821f953'
-            '0af90d708d0743dbd58ec07db904a0a526be55c104c33ee4211cd2eb99ff8b19')
-sha256sums_x86_64=('66d3af06b1e4b5169cd16c0436f49bb9cf36269dc911fc0f1dda748138556f87')
-sha256sums_i686=('4090ebd32c321ea0c474447268e10e9948e8c11d8044f4b38865c61d840b6c2a')
-sha256sums_aarch64=('13a055bdcece77ad355e43648c378d0d811b6257ca6091a9a569f98849d98a70')
+            '17341d78f1cd1a5bcd9df47f81f6f6eabd44a3a3226376261d2395c2880eebcd')
+sha256sums_x86_64=('4c8d0d255ed598109bc0a51e13eaa0c2dcbd6167b9ad9cec8282c075324ee82d')
+sha256sums_i686=('7fab30d67057715a08348e1e5b559b5b83c6dab25390fbdc7c0759bf329cf9d3')
+sha256sums_aarch64=('db06823fdadd78df6c3219524cbdff5f7844d0d1752e7f0d7c1c87f16e1e40de')
 
 package() {
   cd "$srcdir/"
