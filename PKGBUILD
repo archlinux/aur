@@ -1,8 +1,8 @@
 # Maintainer: Cyril <cyrwae[at]hotmail[dot]com>
 pkgname=python-olca-ipc
 _name=${pkgname#python-}
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="API for communicating with an openLCA IPC server"
 arch=('x86_64')
 url="https://github.com/GreenDelta/olca-ipc.py"
@@ -18,16 +18,16 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz)
 noextract=()
-md5sums=('b3d7142c99c7ae843902a9fd7a860a3f')
+md5sums=('5b179d75dfd015c18b5dfba9063cb95f')
 
 build() {
-    cd ${_name}-${pkgver}
+    cd ${_name//-/_}-${pkgver}
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd ${_name}-${pkgver}
+    cd ${_name//-/_}-${pkgver}
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
