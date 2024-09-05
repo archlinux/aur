@@ -2,7 +2,7 @@
 pkgname=osabie-git
 _pkgname=osabie
 pkgver=r871.1d532f3
-pkgrel=1
+pkgrel=2
 pkgdesc="An esoteric code golfing language"
 arch=('any')
 url="https://github.com/Adriandmen/05AB1E"
@@ -10,6 +10,7 @@ license=('MIT')
 makedepends=(elixir git)
 depends=('erlang-nox')
 provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git#branch=master"
 		"ssl_verify_fun_bump.patch")
 noextract=()
