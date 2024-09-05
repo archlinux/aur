@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-x86_64-libiconv
 pkgver=1.17
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc="Provides GNU libiconv.so and libcharset.so for amd64 (mingw-w64)"
 depends=()
@@ -18,11 +18,15 @@ sha256sums=('8f74213b56238c85a50a5329f77e06198771e70dd9a739779f4c02f65d971313')
 _basename=libiconv
 _platform="x86_64-w64-mingw32"
 
-build() {
+prepare() {
     cd "$srcdir/$_basename-$pkgver"
     ./configure --host=$_platform --prefix=/usr/$_platform \
         --disable-nls \
         --enable-static
+}
+
+build() {
+    cd "$srcdir/$_basename-$pkgver"
     make
 }
 
