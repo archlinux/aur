@@ -1,5 +1,5 @@
 pkgbase = i4tools-bin
-	pkgdesc = 简单好用的多功能苹果设备管理助手。
+	pkgdesc = 爱思助手是一款集“高效管理 iOS 设备数据”，“智能刷机”和“免费下载海量应用游戏、铃声壁纸”等为一体的 iOS 设备管理工具。
 	pkgver = v3.06.006
 	pkgrel = 1
 	url = https://www.i4.cn/pro_pc.html
