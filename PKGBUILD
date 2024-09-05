@@ -3,7 +3,7 @@
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
 pkgname=obs-studio-git
-pkgver=30.1.2.r205.g72924ac
+pkgver=30.2.3.r187.ga1db1e8
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
@@ -86,7 +86,7 @@ build() {
   cmake -B build -S $pkgname \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DBUILD_BROWSER=ON \
+    -DENABLE_BROWSER=ON \
     -DENABLE_JACK=ON \
     -DCEF_ROOT_DIR="/opt/cef-obs" \
     -DENABLE_LIBFDK=ON \
