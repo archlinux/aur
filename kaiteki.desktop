@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Kaiteki
+Comment=A comfy Fediverse client for microblogging instances, made with Flutter and Dart. Currently with simple Mastodon, Pleroma, Misskey and Calckey support
+Exec=kaiteki %U
+Icon=kaiteki
+Terminal=false
+StartupNotify=false
+Categories=Network;
