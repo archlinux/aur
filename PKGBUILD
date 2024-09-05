@@ -1,14 +1,14 @@
 # Maintainer:  Ilya Chelyadin <ilya77105@gmail.com>
 
 pkgname=kokovp
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='A modern mpv-based videoplayer'
 arch=('x86_64')
 url="https://github.com/brainrom/kokovp"
 license=('GPL-2.0')
 depends=('mpv' 'qt6-base')
-makedepends=('git' 'cmake' 'qt6-tools' 'base-devel' 'clang')
+makedepends=('git' 'cmake' 'qt6-tools' 'qt6-declarative' 'base-devel' 'clang')
 source=("$pkgname-$pkgver::git+https://github.com/brainrom/kokovp.git#tag=v$pkgver")
 sha256sums=('SKIP')
 

@@ -1,18 +1,19 @@
 pkgbase = kokovp
 	pkgdesc = A modern mpv-based videoplayer
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/brainrom/kokovp
 	arch = x86_64
 	license = GPL-2.0
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt6-tools
+	makedepends = qt6-declarative
 	makedepends = base-devel
 	makedepends = clang
 	depends = mpv
 	depends = qt6-base
-	source = kokovp-1.0.0::git+https://github.com/brainrom/kokovp.git#tag=v1.0.0
+	source = kokovp-1.1.0::git+https://github.com/brainrom/kokovp.git#tag=v1.1.0
 	sha256sums = SKIP
 
 pkgname = kokovp
