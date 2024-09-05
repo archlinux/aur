@@ -1,6 +1,6 @@
 pkgbase = ognibuild
 	pkgdesc = Detect and invoke build systems
-	pkgver = 0.0.23
+	pkgver = 0.0.41
 	pkgrel = 1
 	url = https://github.com/jelmer/ognibuild
 	arch = x86_64
@@ -20,7 +20,8 @@ pkgbase = ognibuild
 	optdepends = python-debian
 	optdepends = python-debmutate
 	optdepends = python-lz4
-	source = ognibuild-0.0.23.tar.gz::https://github.com/jelmer/ognibuild/archive/refs/tags/v0.0.23.tar.gz
-	sha256sums = 961696774d2925ecf0fc5e3a3d7b08071e74d6462c7c5cd86c139775eb0a8aa9
+	options = !lto
+	source = ognibuild-0.0.41.tar.gz::https://github.com/jelmer/ognibuild/archive/refs/tags/v0.0.41.tar.gz
+	sha256sums = f38d1e240b5d3b783aec59444e73ddd5880008208f7116f2628053d1ea94b108
 
 pkgname = ognibuild

@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ognibuild
-pkgver=0.0.23
+pkgver=0.0.41
 pkgrel=1
 pkgdesc="Detect and invoke build systems"
 arch=('x86_64')
@@ -28,8 +28,9 @@ optdepends=(
   'python-debmutate'
   'python-lz4'
 )
+options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('961696774d2925ecf0fc5e3a3d7b08071e74d6462c7c5cd86c139775eb0a8aa9')
+sha256sums=('f38d1e240b5d3b783aec59444e73ddd5880008208f7116f2628053d1ea94b108')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -39,9 +40,15 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
+#  export LIBSSH2_SYS_USE_PKG_CONFIG
   export RUSTUP_TOOLCHAIN=stable
   python -m build --wheel --no-isolation
 }
+
+#check() {
+#  cd "$pkgname-$pkgver"
+#  PYTHONPATH=./py python -m unittest tests.test_suite
+#}
 
 package() {
   cd "$pkgname-$pkgver"
