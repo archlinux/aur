@@ -4,9 +4,9 @@
 pkgname=edrawmax-cn
 _pkgname=EdrawMax-14
 pkgver=14.0.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
-options=(!strip)
+options=(!strip !debug)
 conflicts=("edrawmax")
 pkgdesc="强大的办公绘图、工程绘图、图文编辑、彩页设计软件"
 depends=(
@@ -30,6 +30,4 @@ sha256sums_x86_64=('4f6a3842a4c1393f442abebe22823f5e97d9f1d5198e3194f4972112cbf9
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz" --numeric-owner -C ${pkgdir}
     chown -R root:root ${pkgdir}
-    install -dm755 "${pkgdir}/usr/bin/"
-    ln -sf "/opt/${_pkgname}/EdrawMax" "${pkgdir}/usr/bin/edrawmax"
 }
