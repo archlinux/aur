@@ -3,7 +3,7 @@
 
 pkgname=neocities-zig-bin
 _pkgname=${pkgname%-zig-bin}
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A command-line client for Neocities written in Zig."
 arch=('x86_64' 'aarch64')
