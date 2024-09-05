@@ -1,7 +1,7 @@
 pkgbase = perl-uuid
 	pkgdesc = Universally Unique Identifier library for Perl
 	pkgver = 0.36
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/UUID
 	arch = i686
 	arch = x86_64
