@@ -4,7 +4,7 @@
 pkgname=perl-opengl-glut
 _dist=OpenGL-GLUT
 pkgver=0.72
-pkgrel=4
+pkgrel=5
 pkgdesc='Perl bindings to GLUT/FreeGLUT GUI toolkit'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
