@@ -1,7 +1,7 @@
 # Maintainer: Terrasse <terrasse@qq.com>
 pkgname=chsrc-git
 pkgver=20240905.r778.f869b6e
-pkgrel=1
+pkgrel=2
 pkgdesc="A cli tool to change source for every software on every platform"
 arch=('x86_64') # TODO: add more archs
 url="https://github.com/RubyMetric/chsrc"
@@ -34,7 +34,7 @@ build() {
 
 check() {
     cd "$srcdir"/"$pkgname"
-	#make test # too slow, skip. TODO: fix this
+    make fastcheck
 }
 
 package() {
