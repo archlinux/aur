@@ -5,9 +5,9 @@
 _pkg=whois
 _name="py${_pkg}"
 _pkgname="python_${_pkg}"
-pkgbase="${_pkgname}"
 pkgname=(
   "python-${_pkg}")
+pkgbase="${pkgname}"
 pkgver=0.9.4
 pkgrel=1
 pkgdesc="Whois querying and parsing of domain registration information"

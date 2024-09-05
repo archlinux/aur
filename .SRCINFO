@@ -1,4 +1,4 @@
-pkgbase = python_whois
+pkgbase = python-whois
 	pkgdesc = Whois querying and parsing of domain registration information
 	pkgver = 0.9.4
 	pkgrel = 1
