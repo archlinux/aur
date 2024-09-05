@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=clarabel
-_pkgver=0.9.0
+_pkgver=0.9.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,10 +25,9 @@ optdepends=(
   r-rmarkdown
   r-tinytest
 )
-options=(!debug) # debug info generation results in an internal compiler error
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6faf835bdac2c047732b8455e09f31be')
-b2sums=('d5cc2fdd8162f07c76a9d310944902cbaa49ef2d11902079738b211be5b3c4fa74e0d77134b13cc2a491a1880d4f701b41bcb125bbc4fe9af9bff6ee30324523')
+md5sums=('8060d34194c3c2a320d59fa5c4133c6e')
+b2sums=('55148adb22d425e2b8b8eafba684291a30abc60d1b57fb5aaeb6fb70ea0685fae63cc1a4b0871cdbd36028c9574e665385273fa15c5e9a29be7b414195cf44c8')
 
 build() {
   mkdir build
