@@ -1,0 +1,20 @@
+diff --git a/bitmask.pro b/bitmask.pro
+index f377bb4291e5e01f9e1fea43b0144b8fd2d16deb..8a7f289e45741225a005e12026aca599fd022a3a 100644
+--- a/bitmask.pro
++++ b/bitmask.pro
+@@ -4,11 +4,11 @@ QT += quickcontrols2 svg
+ CONFIG += qt staticlib
+ CONFIG += c++17 strict_c++
+ CONFIG += qtquickcompiler
+-CONFIG+=force_debug_info
+-CONFIG+=debug_and_release
+-#CONFIG+=release
++#CONFIG+=force_debug_info
++#CONFIG+=debug_and_release
++CONFIG+=release
+ windows:CONFIG -= console
+-unix:DEBUG:CONFIG += debug
++#unix:DEBUG:CONFIG += debug
+ lessThan(QT_MAJOR_VERSION, 5): error("requires Qt 5")
+ QMAKE_MACOSX_DEPLOYMENT_TARGET = 12
+ QMAKE_TARGET_BUNDLE_PREFIX = se.leap
