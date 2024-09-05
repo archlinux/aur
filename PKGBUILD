@@ -9,9 +9,8 @@
 _pkgbase=wireshark
 pkgbase="${_pkgbase}-libsmi"
 pkgname=("${pkgbase}-cli" "${pkgbase}-qt")
-pkgver=4.2.4
-pkgver=4.2.5
-pkgrel=2
+pkgver=4.4.0
+pkgrel=1
 pkgdesc='Network traffic and protocol analyzer/sniffer with SNMP OID resolution'
 url='https://www.wireshark.org/'
 arch=('x86_64')
@@ -25,9 +24,9 @@ makedepends=('glibc' 'cmake' 'ninja' 'c-ares' 'libmaxminddb' 'qt6-tools' 'qt6-sv
 options=('!emptydirs')
 source=(https://www.wireshark.org/download/src/${_pkgbase}-${pkgver}.tar.xz
         wireshark.sysusers)
-sha512sums=('92a8fb08af5a1da30ca469fa45bd982638069907d289fa716068ac71141b7d9726ca0b01adc2910da4c928db23760da75a1c6a7c2eb795ac66ba003a90abb87b'
+sha512sums=('a00275ffcc7c5bdf546e3e1c95a2fa77b86232d008f77b1b2f3de8e63f1862321d7a439cba2d136be4407131e07e20071d972a4efb7db2bc55388a347f47ce9e'
             '3956c1226e64f0ce4df463f80b55b15eed06ecd9b8703b3e8309d4236a6e1ca84e43007336f3987bc862d8a5e7cfcaaf6653125d2a34999a0f1357c52e7c4990')
-b2sums=('536743a7e402f7a511d7612454d9770f0e67a0f2ebc1ab49912b12965e605f2082eff37f41f7642b89859257926ce13d88728194b79cbe5dcf6b15d72516c5fc'
+b2sums=('679b774e780201d1d188f5ce2ec1eb21d98250d2dd45b37b741a3cd5d6dc59d983e473a3f87e3ae1b8eef0b0f9b0c02227eecee644697ec19b6c3b2a21a5ad31'
         '3cebcc993f51eaf0e09673c77e0436598593ef5eff306d880415ccc8eecb32fee93c9a6986f1a7bb0835ab7f9732369d7c5a07e6c053d6293e73a1ea84c58a5c')
 
 build() {
@@ -91,8 +90,8 @@ package_wireshark-libsmi-qt() {
   DESTDIR="${srcdir}/staging" ninja -C build install
 
   install -Dm 755 build/run/wireshark -t "${pkgdir}"/usr/bin
-  install -Dm 644 build/doc/wireshark.1 -t "${pkgdir}"/usr/share/man/man1
-  install -Dm 644 build/doc/wireshark.html -t "${pkgdir}"/usr/share/doc/wireshark
+  install -Dm 644 build/doc/man_pages/wireshark.1 -t "${pkgdir}"/usr/share/man/man1
+  install -Dm 644 build/doc/man_pages/wireshark.html -t "${pkgdir}"/usr/share/doc/wireshark
 
   cd "${srcdir}"/staging/usr/share
   install -Dm 644 applications/org.wireshark.Wireshark.desktop -t "${pkgdir}"/usr/share/applications
