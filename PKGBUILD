@@ -2,7 +2,7 @@
 # Contributor: Julian Sanin <sanin89julian at gmail dot com>
 
 pkgname=liberasurecode
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="Erasure Code API library written in C with pluggable Erasure Code backends"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ depends=('zlib')
 makedepends=('doxygen')
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/${pkgver}.tar.gz"
         "disable-doc-full-path-names.patch")
-sha256sums=('8c1afa0a4d5f4909ae864a5d00381b963b4a179364ba591611ceb634c3c9eb99'
+sha256sums=('0e2e19e83846bc972329987b9b3144ed3fe1333d12f7b06027c1fe66bc0d9256'
             'c64e3fd34c17ad929feaba016bb3284151fc0ab8c1fc2a5554a8fb617a491112')
 
 prepare() {
