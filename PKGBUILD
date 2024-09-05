@@ -9,13 +9,23 @@ pkgdesc="A set of libraries, tools and utilities suitable for the Heartbeat/Pace
 arch=('i686' 'x86_64')
 url="https://github.com/ClusterLabs/cluster-glue"
 license=('GPL')
-	'python' 
-	'libxml2' 
-	'libtool' 
-	'util-linux' 
-	'curl' 
+depends=(
+	'python'
+	'libxml2'
+	'libtool'
+	'util-linux'
+	'curl'
 	'glib2'
-	'asciidoc')
+)
+makedepends=(
+    'openipmi'
+    'net-snmp'
+    'asciidoc'
+)
+optdepends=(
+    'openipmi: for stonith plugin ipmilan'
+    'net-snmp: for stonith plugins rackpdu, apcmastersnmp, wti_mpc'
+)
 source=("git+https://github.com/ClusterLabs/cluster-glue#commit=4017c21066663960687f30cb8a7dddd24c364767")
 sha256sums=(SKIP)
 options=('!libtool' 'docs')
