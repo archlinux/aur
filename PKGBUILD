@@ -2,7 +2,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-tooz
-pkgver=6.2.0
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="Coordinate distributed systems"
 arch=(any)
@@ -35,7 +35,7 @@ makedepends=('python-build'
              'python-setuptools'
              'tar')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('f90d0fd1bb051b0630514d7af916962005a0f8df3dba9e01f80e79caaabd627338cd62862ad57d8447f2b6450c6e80755650ed0478da0b3b5dc13772ec356c8c')
+b2sums=('dc8e235ef59470d114c92e099ef28fc318a85632fe378edc4c1acf9ff3fba2c259acd260c9da89855f2e5596b203034199cbd6c611e8bbe776da9f787e065660')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
