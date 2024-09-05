@@ -1,6 +1,6 @@
 pkgbase = python-brickschema
 	pkgdesc = A library for working with the Brick ontology for buildings (brickschema.org)
-	pkgver = 0.7.2
+	pkgver = 0.7.5
 	pkgrel = 1
 	url = https://brickschema.org/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-brickschema
 	depends = python-owlrl
 	depends = python-pyshacl
 	provides = python-brickschema
-	source = https://files.pythonhosted.org/packages/source/b/brickschema/brickschema-0.7.2.tar.gz
-	md5sums = 7d3cc366039dd74f936c56622e5bbaa1
+	source = https://files.pythonhosted.org/packages/source/b/brickschema/brickschema-0.7.5.tar.gz
+	md5sums = f074a71f39ad1cd9002a24c31c58b9cd
 
 pkgname = python-brickschema

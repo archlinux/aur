@@ -1,7 +1,7 @@
 # Maintainer: Cyril <cyrwae[at]hotmail[dot]com>
 pkgname=python-brickschema
 _name=${pkgname#python-}
-pkgver=0.7.2
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="A library for working with the Brick ontology for buildings (brickschema.org)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ install=
 changelog=
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
 noextract=()
-md5sums=('7d3cc366039dd74f936c56622e5bbaa1')
+md5sums=('f074a71f39ad1cd9002a24c31c58b9cd')
 
 build() {
     cd "${_name}-${pkgver}"
