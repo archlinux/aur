@@ -1,7 +1,7 @@
 pkgbase = librdkafka-git
 	pkgdesc = The Apache Kafka C/C++ library
 	pkgver = 2.5.3.r0.9416dd8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/confluentinc/librdkafka
 	changelog = CHANGELOG.md
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = librdkafka-git
 	depends = zstd
 	provides = librdkafka=2.5.3.r0.9416dd8
 	conflicts = librdkafka
-	source = librdkafka::git+https://github.com/confluentinc/librdkafka
+	source = librdkafka::git+https://github.com/confluentinc/librdkafka.git
 	b2sums = SKIP
 
 pkgname = librdkafka-git
