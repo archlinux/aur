@@ -10,7 +10,7 @@ pkgname='python-pynotify'
 pkgdesc='Python Inotify Class'
 _gitname='pynotify'
 
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 url="https://github.com/gene-git/pynotify"
 
@@ -19,7 +19,7 @@ license=(MIT)
 
 # To build docs uncommont sphinx/texlive
 depends=('python>3.10')
-makedepends=('git' 'python-build' 'python-wheel' 'python-hatch' 'rsync' 
+makedepends=('git' 'python-build' 'python-wheel' 'python-hatch' 'python-installer' 'rsync' 
              #'python-sphinx' 'python-myst-parser' 'texlive-latexextra'
             )
 
