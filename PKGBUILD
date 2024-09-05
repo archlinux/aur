@@ -10,7 +10,7 @@
 
 pkgname=pcl
 pkgver=1.14.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A standalone, large scale, open project for 2D/3D image and point cloud processing"
 arch=('x86_64' 'i686')
 url='https://www.pointclouds.org'
@@ -27,7 +27,7 @@ sha256sums=('5dc5e09509644f703de9a3fb76d99ab2cc67ef53eaf5637db2c6c8b933b28af6'
 
 prepare() {
   cd "${srcdir}/pcl-pcl-${pkgver}"
-  patch -p1 < "${srcdir}/../6053.patch"
+  patch -Np1 < ${srcdir}/6053.patch
 }
 
 build() {
