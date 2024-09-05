@@ -10,7 +10,7 @@ def main [] {
     # clone the repo and remove previous build
     cd $pkgbuild_dir
     rm --recursive --force --permanent pkgrepo
-    cp --recursive repo pkgrepo
+    xcp --recursive repo pkgrepo
     cd pkgrepo
     rm --recursive --force --permanent build .deps .git
 
