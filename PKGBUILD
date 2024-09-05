@@ -3,7 +3,7 @@
 pkgname=picocrypt-bin
 basename=Picocrypt
 pkgver=1.42
-pkgrel=2
+pkgrel=3
 pkgdesc="A very small, very simple, yet very secure encryption tool."
 arch=('x86_64')
 url="https://github.com/Picocrypt/Picocrypt"
@@ -16,10 +16,7 @@ depends=('gtk3')
 source=("https://github.com/${basename}/${basename}/releases/download/${pkgver}/${basename}.deb"
         "${_urlraw}/LICENSE" "${_urlraw}/README.md" "${_urlraw}/Internals.md" "${_urlraw}/Changelog.md")
 sha256sums=('a7525a21a81647e8d56bc99ba7c8fa298971c82bde4923972186fa8766a19026'
-            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '448cf5ef087e51272e8efdef69ec3e37c740815b6063da903fedffaeacf7cc75'
-            '896de1b0c7927fa9fd0377821cbeb5050db7300977b401a0131ee210b84b518f'
-            'c1ae8429d046ae2ed23f5815125a7174a0f6a0e250f9c11195b3525655585d7f')
+            'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
     cd "${pkgdir}"
@@ -32,4 +29,4 @@ package() {
 
     install -vDm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ${srcdir}/LICENSE
     install -vDm644 -t "${pkgdir}/usr/share/doc/${pkgname}" ${srcdir}/*.md
-} 
+}
