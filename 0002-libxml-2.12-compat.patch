@@ -1,0 +1,26 @@
+In libxml 2.12, the second argument to a xmlStructuredErrorFunc was
+changed from `xmlErrorPtr` to `const xmlError *`.
+
+diff -Naur a/lasso/lasso.c b/lasso/lasso.c
+--- a/lasso/lasso.c	2024-09-05 10:49:16.237856325 -0400
++++ b/lasso/lasso.c	2024-09-05 10:53:09.058625032 -0400
+@@ -138,7 +138,7 @@
+ #include "types.c"
+ 
+ static void
+-lasso_xml_structured_error_func(G_GNUC_UNUSED void *user_data, xmlErrorPtr error)
++lasso_xml_structured_error_func(G_GNUC_UNUSED void *user_data, const xmlError *error)
+ {
+ 	g_log("libxml2", G_LOG_LEVEL_DEBUG, "libxml2: %s", error->message);
+ }
+@@ -324,10 +324,6 @@
+ 	/* Disallocate default registry */
+ 	lasso_registry_default_shutdown();
+ 
+-	if (lasso_flag_memory_debug == TRUE) {
+-	/* this is to debug memory for regression tests */
+-		xmlMemoryDump();
+-	}
+ 	return 0;
+ }
+ 
