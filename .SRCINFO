@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-x86_64-ncurses
+	pkgdesc = System V Release 4.0 curses emulation library for amd64 platform (mingw-w64)
+	pkgver = 6.5
+	pkgrel = 1
+	url = https://www.gnu.org/software/ncurses/
+	arch = x86_64
+	license = MIT
+	makedepends = mingw-w64-gcc
+	provides = mingw-w64-x86_64-ncurses=6.5
+	conflicts = mingw-w64-ncurses
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = ncurses-6.5.tar.gz::https://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.5.tar.gz
+	sha256sums = 136d91bc269a9a5785e5f9e980bc76ab57428f604ce3e5a5a90cebc767971cc6
+
+pkgname = mingw-w64-x86_64-ncurses
