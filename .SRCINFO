@@ -1,10 +1,12 @@
 pkgbase = vulkan-nouveau-git
 	pkgdesc = Nouveau Vulkan (NVK) Mesa driver with some additions (Git version)
-	pkgver = 24.2.branchpoint.r1576.g2a20cdf
+	pkgver = 24.2.branchpoint.r2164.g6378107
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/mesa/mesa
 	install = vulkan-nouveau-git.install
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = MIT AND BSD-3-Clause AND SGI-B-2.0
 	makedepends = cbindgen
 	makedepends = elfutils
@@ -30,11 +32,11 @@ pkgbase = vulkan-nouveau-git
 	depends = vulkan-icd-loader
 	depends = wayland
 	optdepends = vulkan-mesa-layers: Additional Vulkan layers
-	optdepends = linux>=6.6.arch1: Minimum required kernel for new uAPI support
-	optdepends = lib32-vulkan-nouveau-git: 32-bit application support
 	provides = vulkan-driver
 	conflicts = vulkan-nouveau
 	source = git+https://gitlab.freedesktop.org/mesa/mesa.git
 	sha512sums = SKIP
+	optdepends_x86_64 = linux>=6.6.arch1: Minimum required kernel for new uAPI support
+	optdepends_x86_64 = lib32-vulkan-nouveau-git: 32-bit application support
 
 pkgname = vulkan-nouveau-git

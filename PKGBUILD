@@ -3,16 +3,16 @@
 
 pkgname=vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) Mesa driver with some additions (Git version)"
-pkgver=24.2.branchpoint.r1576.g2a20cdf
+pkgver=24.2.branchpoint.r2164.g6378107
 pkgrel=1
-arch=('x86_64')
+arch=('x86_64' 'aarch64' 'armv7h')
 depends=('libdrm' 'libxshmfence' 'libx11' 'systemd-libs' 'vulkan-icd-loader' 'wayland')
 makedepends=('cbindgen' 'elfutils' 'git' 'glslang' 'libunwind' 'libxrandr' 'meson>=1.3.0rc2' 'python-mako'
              'python-packaging' 'python-yaml' 'rust' 'rust-bindgen' 'systemd' 'valgrind' 'wayland-protocols'
              'xorgproto' 'zstd') # Meson 1.3.0-rc1 has weird crate issues
-optdepends=('vulkan-mesa-layers: Additional Vulkan layers'
-            'linux>=6.6.arch1: Minimum required kernel for new uAPI support'
-            'lib32-vulkan-nouveau-git: 32-bit application support')
+optdepends=('vulkan-mesa-layers: Additional Vulkan layers')
+optdepends_x86_64=('linux>=6.6.arch1: Minimum required kernel for new uAPI support'
+                   'lib32-vulkan-nouveau-git: 32-bit application support')
 provides=('vulkan-driver')
 conflicts=('vulkan-nouveau')
 url="https://gitlab.freedesktop.org/mesa/mesa"
@@ -72,7 +72,6 @@ build() {
     -D gallium-drivers= \
     -D vulkan-drivers=nouveau \
     -D vulkan-layers= \
-    -D dri3=enabled \
     -D egl=disabled \
     -D gallium-extra-hud=false \
     -D gallium-nine=false \
