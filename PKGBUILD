@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-x86_64-zlib
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Compression library implementing the deflate compression method found in gzip and PKZIP for amd64 (mingw-w64)"
 arch=('x86_64')
 license=('Zlib')
@@ -17,10 +17,14 @@ sha256sums=('9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23')
 _basename=zlib
 _platform="x86_64-w64-mingw32"
 
-build() {
+prepare() {
     cd "$srcdir/$_basename-$pkgver"
     sed -ie "s,dllwrap,${_arch}-dllwrap," win32/Makefile.gcc
     ./configure --prefix=/usr/$_platform -shared -static
+}
+
+build() {    
+    cd "$srcdir/$_basename-$pkgver"
     make -f win32/Makefile.gcc \
         CC=${_platform}-gcc \
         AR=${_platform}-ar \
