@@ -2,7 +2,7 @@
 
 _pkgname=alpaca
 pkgname="${_pkgname}-proxy"
-pkgver=2.0.8
+pkgver=2.0.9
 pkgrel=1
 pkgdesc="A local HTTP proxy for command-line tools."
 license=('apache')
@@ -13,7 +13,7 @@ source=("${_pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.
 	"${_pkgname}.install"
 	"${_pkgname}.service")
 install="${_pkgname}.install"
-sha512sums=('2ea7a6ba82eaa6be70271f828e4975bcf2fb961b6831a0b2b6a366443e8a23fe4daf5830350503e7c9bbbc77b5d4fce1308c3991aec4969cd1b373371f87a377'
+sha512sums=('baea743a4fc565b4f3622783aab5680d9b98afd07d84ae8af6bacb52acc59af908fefc38b55e380fcbff80de8e31819de762f3caa73428fb8532206f99b404a4'
 	'0fa82689d3722237be1d3b0ae22e7477834656b12b36a15ef2ac7839d04b524013d8e963e412b3be17590dcf2d878905bc9b17c2751c4ad84d57f86e5c76777b'
 	'39ecc8b4627298ee515d9274ee1436a175a11d4c1450365de5770d6933ced9bc43d4f1acee7b0557ceee533729edf019732815b4599e26bafb1d2348bb6e0d75')
 
