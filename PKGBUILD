@@ -26,6 +26,7 @@ prepare() {
 
 	export RUSTUP_TOOLCHAIN=stable
 
+	cargo update
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
