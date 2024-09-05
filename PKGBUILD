@@ -3,7 +3,7 @@
 pkgname=perl-alien-proj
 _dist=Alien-proj
 pkgver=1.27
-pkgrel=3
+pkgrel=4
 pkgdesc='Compile the Proj library'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 

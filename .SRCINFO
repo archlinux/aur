@@ -1,7 +1,7 @@
 pkgbase = perl-alien-proj
 	pkgdesc = Compile the Proj library
 	pkgver = 1.27
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/release/Alien-proj
 	arch = any
 	license = GPL-1.0-or-later OR Artistic-1.0-Perl
