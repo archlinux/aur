@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiocSklearn
-_pkgver=1.26.0
+_pkgver=1.26.1
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.26.1
 pkgrel=1
 pkgdesc='interface to python sklearn via Rstudio reticulate'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7c28335eac263ac81e100f67361f45a88fc265a0273c7f3dce8be9f6ee4743a7')
+sha256sums=('dd95bdea878f094319192027391d3ae8ad993a02a2dffbd3c6c51f1e651ef769')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
