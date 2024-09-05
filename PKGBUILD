@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="posting"
-pkgver=1.12.1
+pkgver=1.12.3
 pkgrel=1
 pkgdesc="The modern API client that lives in your terminal"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('python>=3.11' 'python-click' 'python-xdg-base-dirs' 'python-httpx'
          'python-textual' 'python-typing_extensions' 'python-textual-autocomplete')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('e7bc1810f6b3ee64d34e61b0ebf8dcd4e36105dab21e9fe60c0256ad1207567f')
+sha256sums=('7b32265eb1aad1f5098616dcd3cffb89ec1f9e6af8f2fd645e1029a01420a827')
 
 # prepare() {
 #   cd "${srcdir}/${_pkgsrc}/src/${pkgname}"
@@ -42,8 +42,8 @@ package() {
 
   install -Dm644 "README.md"   "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "${pkgdir}${site_packages}/${_pkgsrc}.dist-info/licenses/LICENSE" \
+  ln -s "${site_packages}/${_pkgsrc}.dist-info/licenses/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  ln -s "${pkgdir}${site_packages}/${_pkgsrc}.dist-info/licenses/NOTICE" \
+  ln -s "${site_packages}/${_pkgsrc}.dist-info/licenses/NOTICE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 }
