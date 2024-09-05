@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=artery-isp-console-bin
-pkgver=3.0.10
-pkgrel=0
+pkgver=3.0.12
+pkgrel=1
 # epoch=1
 pkgdesc="Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。"
 arch=('x86_64')
@@ -17,15 +17,15 @@ depends=(
     gcc-libs
     glibc
     libusb
-    )
+)
 makedepends=('unzip')
 backup=()
-options=()
+options=('!strip' '!debug' '!lto')
 install=${pkgname}.install
 _pkg_file_name=Artery_ISP_Console_Linux-${arch}_V${pkgver}.zip
 source=("${_pkg_file_name}::https://www.arterytek.com/download/TOOL/Artery_ISP_Console_Linux-${arch}_V${pkgver}.zip"
     ${pkgname}.install)
-sha256sums=('f8ba929f65974da0b03b9d2019327f3f958e26e5371683e968845c7f63f90afe'
+sha256sums=('001644b285f5c0789545b104b3f7caae5e8b8a51559ee554e92700a3fce4a800'
             'a5c4d923298e09eef75b9481ea4fd83998d01c1d3605f118edd42f89ee17e619')
 noextract=()
 
@@ -34,20 +34,20 @@ package() {
 
     cd "${srcdir}/"
     install -dm0755 "${pkgdir}/opt/artery32/${pkgname%-bin}/" \
-                    "${pkgdir}/usr/lib/"
+        "${pkgdir}/usr/lib/"
 
-    cp -rv Document  "${pkgdir}/opt/artery32/${pkgname%-bin}/Document"
+    cp -rv Document "${pkgdir}/opt/artery32/${pkgname%-bin}/Document"
 
     cd ${_pkg_file_name%.zip}
-    cp -rv Map  "${pkgdir}/opt/artery32/${pkgname%-bin}/Map"
-    install -Dm0755 AT32_ISP_Console  "${pkgdir}/opt/artery32/${pkgname%-bin}/AT32_ISP_Console"
-    install -Dm0644 libATBLLIB.so.1.0.0  "${pkgdir}/usr/lib/libATBLLIB.so.1.0.0"
-    install -Dm0644 libATDFULIB.so.1.0.0  "${pkgdir}/usr/lib/libATDFULIB.so.1.0.0"
-    install -Dm0644 libATUARTBLLIB.so.1.0.0  "${pkgdir}/usr/lib/libATUARTBLLIB.so.1.0.0"
-    install -Dm0644 libFiles.so.1.0.0  "${pkgdir}/usr/lib/libFiles.so.1.0.0"
-    install -Dm0644 AT32_ISP_Console.sh  "${pkgdir}/opt/artery32/${pkgname%-bin}/AT32_ISP_Console.sh.template"
-    install -Dm0644 DFU_download.sh  "${pkgdir}/opt/artery32/${pkgname%-bin}/DFU_download.sh.template"
-    install -Dm0644 USART_download.sh  "${pkgdir}/opt/artery32/${pkgname%-bin}/USART_download.sh.template"
+    cp -rv Map "${pkgdir}/opt/artery32/${pkgname%-bin}/Map"
+    install -Dm0755 AT32_ISP_Console "${pkgdir}/opt/artery32/${pkgname%-bin}/AT32_ISP_Console"
+    install -Dm0644 libATBLLIB.so.1.0.0 "${pkgdir}/usr/lib/libATBLLIB.so.1.0.0"
+    install -Dm0644 libATDFULIB.so.1.0.0 "${pkgdir}/usr/lib/libATDFULIB.so.1.0.0"
+    install -Dm0644 libATUARTBLLIB.so.1.0.0 "${pkgdir}/usr/lib/libATUARTBLLIB.so.1.0.0"
+    install -Dm0644 libFiles.so.1.0.0 "${pkgdir}/usr/lib/libFiles.so.1.0.0"
+    install -Dm0644 AT32_ISP_Console.sh "${pkgdir}/opt/artery32/${pkgname%-bin}/AT32_ISP_Console.sh.template"
+    install -Dm0644 DFU_download.sh "${pkgdir}/opt/artery32/${pkgname%-bin}/DFU_download.sh.template"
+    install -Dm0644 USART_download.sh "${pkgdir}/opt/artery32/${pkgname%-bin}/USART_download.sh.template"
 
     cd "${pkgdir}/usr/lib/"
     for lib in lib*; do
@@ -55,7 +55,7 @@ package() {
         ln -sf /usr/lib/"$lib" "${pkgdir}/usr/lib/${lib%.1.0.0}"
     done
 
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/49-artery32-udev.rules" << EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/49-artery32-udev.rules" <<EOF
 # Copy this file to /etc/udev/rules.d/
 # If rules fail to reload automatically, you can refresh udev rules
 # with the command "udevadm control --reload"
@@ -78,7 +78,7 @@ ATTRS{idVendor}=="2e3c", ATTRS{idProduct}=="df11", MODE="660",  TAG+="uaccess"
 LABEL="artery32_udev_rules_end"
 EOF
 
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-bin}" << EOF
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-bin}" <<EOF
 #!/bin/bash
 /opt/artery32/${pkgname%-bin}/AT32_ISP_Console "\$@"
 EOF
