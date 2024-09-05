@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=xrock
-pkgver=1.0.5
+pkgver=1.0.8
 pkgrel=1
 epoch=
 pkgdesc="The low level tools for rockchip SOC with maskrom and loader mode support."
@@ -11,12 +11,14 @@ arch=(x86_64
 url="https://github.com/xboot/xrock"
 license=('MIT')
 groups=()
-depends=('libusb')
+depends=(
+    'glibc'
+    'libusb')
 makedepends=("gcc")
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=(xrock-git)
+conflicts=(xrock)
 replaces=()
 backup=()
 options=()
@@ -24,7 +26,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('b197994514e1bf899c106c3c70fa26409033a7000d773cbdde917fb69a42d262')
+sha256sums=('4e68c48fc1c2c79fd6efc86ce504d9afbdcff500ffa8a18c1036b2d3a3374efb')
 #validpgpkeys=()
 
 build() {
