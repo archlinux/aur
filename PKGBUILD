@@ -4,7 +4,7 @@
 pkgname=perl-pod2-base
 _dist=POD2-Base
 pkgver=0.043
-pkgrel=4
+pkgrel=5
 pkgdesc='Base module for translations of Perl documentation'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
