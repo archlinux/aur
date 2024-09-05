@@ -1,6 +1,6 @@
 pkgname=mingw-w64-x86_64-libxml2
 pkgver=2.13.3
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc="XML parsing library, version 2 for amd64 (mingw-w64)"
 makedepends=('mingw-w64-gcc')
@@ -21,11 +21,11 @@ prepare () {
 	# disable doc & examples
 	sed -i "s| doc example | |g" Makefile.am
 	autoreconf -vfi
+	./configure --host=$_platform --prefix=/usr/$_platform --without-python
 }
 
 build() {
 	cd "$srcdir/$_basename-$pkgver"
-	./configure --host=$_platform --prefix=/usr/$_platform --without-python
 	make
 }
 
