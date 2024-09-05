@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Kampmann <ben@acter.global>
 pkgname=acter-bin
-pkgver=1.24.8293
-pkgrel=2
+pkgver=1.24.9052
+pkgrel=1
 epoch=
 pkgdesc="Casual Community Organizing"
 arch=(x86_64)
@@ -19,13 +19,14 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/acterglobal/a3/releases/download/v${pkgver}/acter-linux-x64-${pkgver}.tar.bz2")
+source=("https://github.com/acterglobal/a3/releases/download/v1.24.9052/acter-linux-x64-1.24.9052.tar.bz2")
 noextract=()
-md5sums=("7b7d0ca166249541034fab3b60bc21f8")
+md5sums=("29258d9531ea45251590e28b7f0fdc68")
 validpgpkeys=()
 
 package() {
-  install -dm755 "${pkgdir}/usr/share/icons/acter"
+  install -dm755 "${pkgdir}/share/icons/hicolor/48x48/apps"
+  install -dm755 "${pkgdir}//share/icons/hicolor/scalable/apps"
   install -dm755 "${pkgdir}/usr/share/applications"
   install -dm755 "${pkgdir}/usr/share/appdata"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
@@ -33,7 +34,8 @@ package() {
   install -dm644 "${pkgdir}/usr/share/licenses/${pkgname}"
 
   mv ./global.acter.a3.desktop "${pkgdir}/usr/share/applications"
-  mv ./acter-logo.png "${pkgdir}/usr/share/icons/acter/"
+  mv ./acter.png "${pkgdir}/share/icons/hicolor/48x48/apps/"
+  mv ./acter.svg "${pkgdir}//share/icons/hicolor/scalable/apps"
   mv ./LICENSE* "${pkgdir}/usr/share/licenses/${pkgname}/"
   # mv ./global.acter.a3.appdata.xml "${pkgdir}/usr/share/appdata/acter.appdata.xml"
   cp -ra ./data ./lib ./acter "${pkgdir}/usr/share/${pkgname}"
