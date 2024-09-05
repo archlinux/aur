@@ -1,7 +1,7 @@
 pkgbase = sdrsharp
 	pkgdesc = The most popular SDR program
 	pkgver = 1.0.0.1457
-	pkgrel = 4
+	pkgrel = 5
 	url = https://airspy.com
 	install = sdrsharp.install
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = sdrsharp
 	source = astrospy.desktop
 	source = spectrumspy.desktop
 	sha256sums = bdf853040110dbd72720cb63b7696d574e3b00d739b17839e8d93cab3e1df400
-	sha256sums = 73dc175933eff0d50494fb6c912519ac85a5a499f93b75ff7b80e77ef9de7f31
+	sha256sums = d8e93aeec307a66d1c61f4b54385a85de2f239f6cfc7f38e9b92d85e5a8a40cb
 	sha256sums = 38e7208e368cb27df6bb639e650726d057739bf88638a2536a32f540721a588f
 	sha256sums = 1501543afc7475bed9f790398aa9a8c3bb70da3750a6de02a946a9b744e2a668
 	sha256sums = cfb7f32fcba96f47e770c6388819d4d88c7565afae5734cbb16e85f0742843d3

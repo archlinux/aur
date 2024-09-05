@@ -6,7 +6,7 @@ _PROGRAM=$(basename "$0")
 [ "${_PROGRAM}" = "${_PROGRAM,,}" ] && _PROGRAM=$(readlink "$0")
 [ "${_PROGRAM}" = "sdrsharp_wrapper" ] && (echo "This can't be executed directly"; exit 1)
 
-[ -z "$XDG_CONFIG_HOME" ] && XDG_CONFIG_HOME="$HOME/.config"
+[ "${XDG_CONFIG_HOME-default}" == "default" ] && XDG_CONFIG_HOME="$HOME/.config"
 SDR_CONFIG_HOME="$XDG_CONFIG_HOME/sdrsharp"
 [ ! -d "$SDR_CONFIG_HOME" ] && mkdir -p "$SDR_CONFIG_HOME"
 

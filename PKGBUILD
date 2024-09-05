@@ -4,7 +4,7 @@
 
 pkgname=sdrsharp
 pkgver=1.0.0.1457
-pkgrel=4
+pkgrel=5
 pkgdesc="The most popular SDR program"
 arch=(i686 x86_64)
 url="https://airspy.com"
@@ -21,7 +21,7 @@ source=("${_sdrsharp}.zip::https://www.iz3mez.it/software/SDRSharp/SDRSharp_v${p
         "spectrumspy.desktop")
 noextract=("${_sdrsharp}.zip")
 sha256sums=('bdf853040110dbd72720cb63b7696d574e3b00d739b17839e8d93cab3e1df400'
-            '73dc175933eff0d50494fb6c912519ac85a5a499f93b75ff7b80e77ef9de7f31'
+            'd8e93aeec307a66d1c61f4b54385a85de2f239f6cfc7f38e9b92d85e5a8a40cb'
             '38e7208e368cb27df6bb639e650726d057739bf88638a2536a32f540721a588f'
             '1501543afc7475bed9f790398aa9a8c3bb70da3750a6de02a946a9b744e2a668'
             'cfb7f32fcba96f47e770c6388819d4d88c7565afae5734cbb16e85f0742843d3'
