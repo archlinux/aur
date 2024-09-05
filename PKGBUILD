@@ -1,8 +1,8 @@
 # Maintainer: username227 <gfrank227 at gmail dot com>
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname='mandarine'
-pkgver=1.0
-pkgrel=6
+pkgver=1.1
+pkgrel=1
 arch=('x86_64')
 pkgdesc='3ds emulator - citra fork with tweaks/enhancements'
 url='https://github.com/mandarine3ds/mandarine'
@@ -46,7 +46,7 @@ source=("git+https://github.com/mandarine3ds/mandarine#tag=r$pkgver"
 	"git+https://github.com/arsenm/sanitizers-cmake" # cubeb
 	"git+https://github.com/KhronosGroup/SPIRV-Headers" # sirit
 	"git+https://github.com/bylaws/liblinkernsbypass") # libadrenotools
-sha256sums=('5447f1ac1e9f934328898f41366b1f4dd30504d9523c830669e7f809bc0489f1'
+sha256sums=('af1bf5301035f85a248f99663f81121b3d03f6950bce04bfaa1a587c0f5cca0f'
             'SKIP'
             'SKIP'
             'SKIP'

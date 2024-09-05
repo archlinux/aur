@@ -1,7 +1,7 @@
 pkgbase = mandarine
 	pkgdesc = 3ds emulator - citra fork with tweaks/enhancements
-	pkgver = 1.0
-	pkgrel = 6
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://github.com/mandarine3ds/mandarine
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -38,7 +38,7 @@ pkgbase = mandarine
 	depends = openal
 	depends = enet
 	depends = boost-libs
-	source = git+https://github.com/mandarine3ds/mandarine#tag=r1.0
+	source = git+https://github.com/mandarine3ds/mandarine#tag=r1.1
 	source = boost::git+https://github.com/PabloMK7/ext-boost.git
 	source = git+https://github.com/neobrain/nihstro.git
 	source = git+https://codeberg.org/soundtouch/soundtouch.git
@@ -75,7 +75,7 @@ pkgbase = mandarine
 	source = git+https://github.com/arsenm/sanitizers-cmake
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers
 	source = git+https://github.com/bylaws/liblinkernsbypass
-	sha256sums = 5447f1ac1e9f934328898f41366b1f4dd30504d9523c830669e7f809bc0489f1
+	sha256sums = af1bf5301035f85a248f99663f81121b3d03f6950bce04bfaa1a587c0f5cca0f
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
