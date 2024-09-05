@@ -1,6 +1,6 @@
 pkgbase = sparforte-git
 	pkgdesc = shell and scripting language formally known as bush
-	pkgver = 2.1.r181.g8feee7e
+	pkgver = 2.6.3.r0.gafe5cfcb
 	pkgrel = 1
 	url = http://www.sparforte.com
 	arch = i686
@@ -8,16 +8,16 @@ pkgbase = sparforte-git
 	license = GPL
 	makedepends = git
 	makedepends = gcc-ada
-	depends = sdl_image
-	depends = glu
 	depends = readline
 	depends = postgresql-libs
+	depends = pcre
 	provides = sparforte
 	conflicts = sparforte
 	source = git+https://github.com/kburtch/SparForte
+	source = add-gnatdE-flag.patch
 	source = config.linux
 	sha256sums = SKIP
-	sha256sums = 6c7539230e5b0542154e5943ae3be2b244477b4929ad20f75a2e052517bae656
+	sha256sums = d9beec2bd909b89d42d3ee64c531be6b77640c6d5565b1bd67f787299d6fc05f
+	sha256sums = 2f81bc743387d672cb1278fbd027568210ad51d8653a34ac1765dcb5756ca12e
 
 pkgname = sparforte-git
-
