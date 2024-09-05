@@ -14,6 +14,7 @@
 # Use DISABLE_AUTOCONFIG=1 to build using all the available options (This can cause compilation problems)
 #  or use the syntax mentioned earlier to enable the desired options
 if((!DISABLE_AUTOCONFIG)); then
+  ENABLE_DEBUG=0
   DISABLE_CHECK=1
   DISABLE_TRILINOS=1
   DISABLE_MMG=1
@@ -44,6 +45,8 @@ _fragment=${FRAGMENT:-#branch=devel}
 
 # Use CMAKE_FLAGS=xxx:yyy:zzz to define extra CMake flags
 ((CMAKE_FLAGS))      && mapfile -t -d: _CMAKE_FLAGS < <(echo -n "$CMAKE_FLAGS")
+
+((ENABLE_DEBUG))    && _build_type=Debug  || _build_type=Relase
 
 ((DISABLE_ALL)) && eval DISABLE_{TRILINOS,MMG,ELMERICE,CONTRIB,LUA,GUI,MPI}=1
 ((DISABLE_TRILINOS)) && _use_trilinos=OFF || _use_trilinos=ON  # Disable Trilinos - linear system solver (Experimental)
@@ -79,7 +82,7 @@ _fragment=${FRAGMENT:-#branch=devel}
 ((DISABLE_CHECK))    && _disable_check=OFF || _disable_check=ON # Disable CTEST Routines
 
 _CMAKE_FLAGS+=(
-        -DCMAKE_BUILD_TYPE=Release
+        -DCMAKE_BUILD_TYPE=${_build_type}
         -DCMAKE_INSTALL_PREFIX=/usr
         -DELMER_INSTALL_LIB_DIR=/usr/lib
 
@@ -118,7 +121,7 @@ _CMAKE_FLAGS+=(
 
 pkgname=elmerfem-git
 _pkgname=elmerfem
-pkgver=9.0.r3103.g0747a2bd6
+pkgver=9.0.r3120.g38aa1727a
 pkgrel=1
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
@@ -147,7 +150,7 @@ conflicts=('elmerfem')
 ((!DISABLE_OCC))      && depends+=('opencascade')  # opencascade
 
 #VTK deps
-((!DISABLE_VTK))      && depends+=('vtk' 'tbb' 'openmpi' 'freetype2' 'qt5-base' 'fmt' 'glew' 'pugixml' 'libxcursor' 'mariadb-libs' 'jdk11-openjdk')
+((!DISABLE_VTK))      && depends+=('vtk' 'tbb' 'openmpi' 'freetype2' 'qt5-base' 'fmt' 'glew' 'pugixml' 'libxcursor' 'mariadb-libs' 'postgresql-libs' 'jdk11-openjdk')
 ((!DISABLE_VTK))      && makedepends+=('cli11' 'ospray' 'openxr' 'openvr' 'python-mpi4py' 'boost' 'pdal' 'opencascade' \
                                         'liblas' 'adios2' 'libharu' 'cgns' 'eigen' 'utf8cpp' 'fast_float')
 
@@ -158,6 +161,7 @@ conflicts=('elmerfem')
 ((!DISABLE_HYPRE))    && depends+=('hypre')
 
 options=(!emptydirs !staticlibs)
+((ENABLE_DEBUG))      && options+=(debug !strip)
 
 source=("git+https://github.com/ElmerCSC/elmerfem.git${_fragment}"
         "$_pkgname.desktop")
@@ -179,7 +183,7 @@ prepare() {
 }
 
 build() {
-  export FFLAGS+=" -fallow-argument-mismatch"
+  CFLAGS+=" -Wno-error=incompatible-pointer-types"
   cmake -S "${srcdir}"/$_pkgname -B build \
         "${_CMAKE_FLAGS[@]}"
   # If not defined, ninja will use all the available CPUs
