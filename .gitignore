@@ -1,0 +1,7 @@
+.directory
+pkg/
+src/
+keyboard-center*/
+
+*.pkg.*
+
