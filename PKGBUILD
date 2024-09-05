@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dopamine-bin
 _pkgname=Dopamine
-pkgver=3.0.0_preview.32
+pkgver=3.0.0_preview.33
 _electronversion=26
 pkgrel=1
 pkgdesc="The audio player that keeps it simple.Use system-wide electron."
@@ -17,8 +17,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ea5e370ac578212405d84217711d98f005b3cdf3b0a5e22c566cb1bad0569243'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums=('8a0cd8b9690ced09d026866e458d85229ff3141d8d10a3b9b1754d4f111b29ff'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
