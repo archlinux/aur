@@ -1,22 +1,25 @@
 pkgbase = ha-glue
 	pkgdesc = A set of libraries, tools and utilities suitable for the Heartbeat/Pacemaker cluster stack.
-	pkgver = 1.0.12
-	pkgrel = 8
+	pkgver = 1.0.13
+	pkgrel = 1
 	url = https://github.com/ClusterLabs/cluster-glue
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = net-snmp
-	depends = python2
+	makedepends = openipmi
+	makedepends = net-snmp
+	makedepends = asciidoc
+	depends = python
 	depends = libxml2
 	depends = libtool
 	depends = util-linux
 	depends = curl
 	depends = glib2
-	depends = asciidoc
+	optdepends = openipmi: for stonith plugin ipmilan
+	optdepends = net-snmp: for stonith plugins rackpdu, apcmastersnmp, wti_mpc
 	options = !libtool
 	options = docs
-	source = https://github.com/ClusterLabs/cluster-glue/archive/refs/tags/glue-1.0.12.tar.gz
-	md5sums = 2164cfd6a491e749eaa722f70a25b749
+	source = git+https://github.com/ClusterLabs/cluster-glue#commit=4017c21066663960687f30cb8a7dddd24c364767
+	sha256sums = SKIP
 
 pkgname = ha-glue
