@@ -1,0 +1,323 @@
+diff -ruN pokerth-1.1.2-rc/src/core/common/avatarmanager.cpp pokerth-1.1.2-rc.new/src/core/common/avatarmanager.cpp
+--- pokerth-1.1.2-rc/src/core/common/avatarmanager.cpp	2017-08-16 14:24:03.000000000 +0200
++++ pokerth-1.1.2-rc.new/src/core/common/avatarmanager.cpp	2024-08-23 21:01:07.000000000 +0200
+@@ -87,20 +87,36 @@
+ 	path tmpDataPath(dataDir);
+ 	{
+ 		boost::mutex::scoped_lock lock(m_cacheDirMutex);
++#if BOOST_VERSION < 108500
+ 		m_cacheDir = tmpCachePath.directory_string();
++#else
++		m_cacheDir = tmpCachePath.string();
++#endif
+ 	}
+ 	{
+ 		boost::mutex::scoped_lock lock(m_avatarsMutex);
++#if BOOST_VERSION < 108500
+ 		tmpRet = InternalReadDirectory((tmpDataPath / "gfx/avatars/default/people/").directory_string(), m_avatars);
++#else
++		tmpRet = InternalReadDirectory((tmpDataPath / "gfx/avatars/default/people/").string(), m_avatars);
++#endif
+ 		retVal = retVal && tmpRet;
++#if BOOST_VERSION < 108500
+ 		tmpRet = InternalReadDirectory((tmpDataPath / "gfx/avatars/default/misc/").directory_string(), m_avatars);
++#else
++		tmpRet = InternalReadDirectory((tmpDataPath / "gfx/avatars/default/misc/").string(), m_avatars);
++#endif
+ 		retVal = retVal && tmpRet;
+ 	}
+ 	if (cacheDir.empty() || tmpCachePath.empty())
+ 		LOG_ERROR("Cache directory was not set!");
+ 	else {
+ 		boost::mutex::scoped_lock lock(m_cachedAvatarsMutex);
++#if BOOST_VERSION < 108500
+ 		tmpRet = InternalReadDirectory(tmpCachePath.directory_string(), m_cachedAvatars);
++#else
++		tmpRet = InternalReadDirectory(tmpCachePath.string(), m_cachedAvatars);
++#endif
+ 		retVal = retVal && tmpRet;
+ 	}
+ 
+@@ -113,7 +129,11 @@
+ {
+ 	bool retVal = false;
+ 	path filePath(fileName);
++#if BOOST_VERSION < 108500
+ 	string tmpFileName(filePath.file_string());
++#else
++	string tmpFileName(filePath.string());
++#endif
+ 
+ 	if (!fileName.empty() && !tmpFileName.empty()) {
+ 		unsigned outFileSize = 0;
+@@ -240,7 +260,11 @@
+ 	AvatarFileType fileType;
+ 
+ 	path filePath(fileName);
++#if BOOST_VERSION < 108500
+ 	string ext(extension(filePath));
++#else
++	string ext(filePath.extension().string());
++#endif
+ 	if (boost::algorithm::iequals(ext, ".png"))
+ 		fileType = AVATAR_FILE_TYPE_PNG;
+ 	else if (boost::algorithm::iequals(ext, ".jpg") || boost::algorithm::iequals(ext, ".jpeg"))
+@@ -362,7 +386,11 @@
+ 			if (IsValidAvatarFileType(avatarFileType, data, size)) {
+ 				path tmpPath(cacheDir);
+ 				tmpPath /= (md5buf.ToString() + ext);
++#if BOOST_VERSION < 108500
+ 				string fileName(tmpPath.file_string());
++#else
++				string fileName(tmpPath.string());
++#endif
+ 				std::ofstream o(fileName.c_str(), ios_base::out | ios_base::binary | ios_base::trunc);
+ 				if (!o.fail()) {
+ 					o.write((const char *)data, size);
+@@ -426,7 +454,11 @@
+ 	}
+ 	try {
+ 		path cachePath(cacheDir);
++#if BOOST_VERSION < 108500
+ 		cacheDir = cachePath.directory_string();
++#else
++		cacheDir = cachePath.string();
++#endif
+ 		// Never delete anything if we do not have a special cache dir set.
+ 		if (!cacheDir.empty()) {
+ 			boost::mutex::scoped_lock lock(m_cachedAvatarsMutex);
+@@ -441,12 +473,20 @@
+ 				while (i != end) {
+ 					bool keepFile = false;
+ 					path filePath(i->second);
++#if BOOST_VERSION < 108500
+ 					string fileString(filePath.file_string());
++#else
++					string fileString(filePath.string());
++#endif
+ 					// Only consider files which are definitely in the cache dir.
+ 					if (fileString.size() > cacheDir.size() && fileString.substr(0, cacheDir.size()) == cacheDir) {
+ 						// Only consider files with MD5 as file name.
+ 						MD5Buf tmpBuf;
++#if BOOST_VERSION < 108500
+ 						if (exists(filePath) && tmpBuf.FromString(basename(filePath))) {
++#else
++						if (exists(filePath) && tmpBuf.FromString(filePath.stem().string())) {
++#endif
+ 							timeMap.insert(TimeAvatarMap::value_type(last_write_time(filePath), i->first));
+ 							keepFile = true;
+ 						}
+@@ -520,10 +560,19 @@
+ 			directory_iterator end;
+ 
+ 			while (i != end) {
++#if BOOST_VERSION < 108500
+ 				if (is_regular(i->status())) {
+ 					string md5sum(basename(i->path()));
++#else
++				if (is_regular_file(i->status())) {
++					string md5sum(i->path().stem().string());
++#endif
+ 					MD5Buf md5buf;
++#if BOOST_VERSION < 108500
+ 					string fileName(i->path().file_string());
++#else
++					string fileName(i->path().string());
++#endif
+ 					if (md5buf.FromString(md5sum)) {
+ 						// Only consider files with md5sum as name.
+ 						avatars.insert(AvatarMap::value_type(md5buf, fileName));
+diff -ruN pokerth-1.1.2-rc/src/core/common/loghelper_server.cpp pokerth-1.1.2-rc.new/src/core/common/loghelper_server.cpp
+--- pokerth-1.1.2-rc/src/core/common/loghelper_server.cpp	2017-08-16 14:24:03.000000000 +0200
++++ pokerth-1.1.2-rc.new/src/core/common/loghelper_server.cpp	2024-08-23 21:01:07.000000000 +0200
+@@ -59,7 +59,11 @@
+ 	path tmpLogFile(logDir);
+ 	tmpLogFile /= SERVER_MSG_LOG_FILE_NAME;
+ 
++#if BOOST_VERSION < 108500
+ 	g_logFile = tmpLogFile.directory_string();
++#else
++	g_logFile = tmpLogFile.string();
++#endif
+ 	g_logLevel = logLevel;
+ }
+ 
+diff -ruN pokerth-1.1.2-rc/src/engine/log.cpp pokerth-1.1.2-rc.new/src/engine/log.cpp
+--- pokerth-1.1.2-rc/src/engine/log.cpp	2017-08-16 14:24:03.000000000 +0200
++++ pokerth-1.1.2-rc.new/src/engine/log.cpp	2024-08-23 21:01:07.000000000 +0200
+@@ -84,7 +84,11 @@
+ 				mySqliteLogFileName /= string("pokerth-log-") + curDateTime + ".pdb";
+ 
+ 				// open sqlite-db
++#if BOOST_VERSION < 108500
+ 				sqlite3_open(mySqliteLogFileName.directory_string().c_str(), &mySqliteLogDb);
++#else
++				sqlite3_open(mySqliteLogFileName.string().c_str(), &mySqliteLogDb);
++#endif
+ 				if( mySqliteLogDb != 0 ) {
+ 
+ 					int i;
+diff -ruN pokerth-1.1.2-rc/src/engine/log.h pokerth-1.1.2-rc.new/src/engine/log.h
+--- pokerth-1.1.2-rc/src/engine/log.h	2017-08-16 14:24:03.000000000 +0200
++++ pokerth-1.1.2-rc.new/src/engine/log.h	2024-08-23 21:01:07.000000000 +0200
+@@ -73,7 +73,11 @@
+ 
+ 	std::string getMySqliteLogFileName()
+ 	{
++#if BOOST_VERSION < 108500
+ 		return mySqliteLogFileName.directory_string();
++#else
++		return mySqliteLogFileName.string();
++#endif
+ 	}
+ 
+ private:
+diff -ruN pokerth-1.1.2-rc/src/net/common/clientstate.cpp pokerth-1.1.2-rc.new/src/net/common/clientstate.cpp
+--- pokerth-1.1.2-rc/src/net/common/clientstate.cpp	2017-08-16 14:24:03.000000000 +0200
++++ pokerth-1.1.2-rc.new/src/net/common/clientstate.cpp	2024-08-23 21:01:07.000000000 +0200
+@@ -211,7 +211,11 @@
+ 	} else {
+ 		// Download the server list.
+ 		boost::shared_ptr<DownloadHelper> downloader(new DownloadHelper);
++#if BOOST_VERSION < 108500
+ 		downloader->Init(client->GetContext().GetServerListUrl(), tmpServerListPath.directory_string());
++#else
++		downloader->Init(client->GetContext().GetServerListUrl(), tmpServerListPath.string());
++#endif
+ 		ClientStateDownloadingServerList::Instance().SetDownloadHelper(downloader);
+ 		client->SetState(ClientStateDownloadingServerList::Instance());
+ 	}
+@@ -303,13 +307,24 @@
+ 	path zippedServerListPath(context.GetCacheDir());
+ 	zippedServerListPath /= context.GetServerListUrl().substr(context.GetServerListUrl().find_last_of('/') + 1);
+ 	path xmlServerListPath;
++#if BOOST_VERSION < 108500
+ 	if (extension(zippedServerListPath) == ".z") {
+ 		xmlServerListPath = change_extension(zippedServerListPath, "");
++#else
++	if (zippedServerListPath.extension().string() == ".z") {
++		xmlServerListPath = zippedServerListPath;
++		xmlServerListPath.replace_extension("");
++#endif
+ 
+ 		// Unzip the file using zlib.
+ 		try {
++#if BOOST_VERSION < 108500
+ 			std::ifstream inFile(zippedServerListPath.directory_string().c_str(), ios_base::in | ios_base::binary);
+ 			std::ofstream outFile(xmlServerListPath.directory_string().c_str(), ios_base::out | ios_base::trunc);
++#else
++			std::ifstream inFile(zippedServerListPath.string().c_str(), ios_base::in | ios_base::binary);
++			std::ofstream outFile(xmlServerListPath.string().c_str(), ios_base::out | ios_base::trunc);
++#endif
+ 			boost::iostreams::filtering_streambuf<boost::iostreams::input> in;
+ 			in.push(boost::iostreams::zlib_decompressor());
+ 			in.push(inFile);
+@@ -321,7 +336,11 @@
+ 		xmlServerListPath = zippedServerListPath;
+ 
+ 	// Parse the server address.
++#if BOOST_VERSION < 108500
+ 	TiXmlDocument doc(xmlServerListPath.directory_string());
++#else
++	TiXmlDocument doc(xmlServerListPath.string());
++#endif
+ 
+ 	if (doc.LoadFile()) {
+ 		client->ClearServerInfoMap();
+diff -ruN pokerth-1.1.2-rc/src/net/common/clientthread.cpp pokerth-1.1.2-rc.new/src/net/common/clientthread.cpp
+--- pokerth-1.1.2-rc/src/net/common/clientthread.cpp	2024-09-05 15:27:05.953626726 +0200
++++ pokerth-1.1.2-rc.new/src/net/common/clientthread.cpp	2024-08-23 21:01:07.000000000 +0200
+@@ -977,7 +977,11 @@
+ 	size_t pos = serverListUrl.find_last_of('/');
+ 	if (!GetContext().GetCacheDir().empty() && !serverListUrl.empty() && pos != string::npos && ++pos < serverListUrl.length()) {
+ 		tmpServerListPath /= serverListUrl.substr(pos);
++#if BOOST_VERSION < 108500
+ 		fileName = tmpServerListPath.directory_string();
++#else
++		fileName = tmpServerListPath.string();
++#endif
+ 	}
+ 	return fileName;
+ }
+@@ -993,6 +997,10 @@
+ 			newSock.reset(new boost::asio::ip::tcp::socket(*m_ioService, tcp::v6()));
+ 		else
+ 			newSock.reset(new boost::asio::ip::tcp::socket(*m_ioService, tcp::v4()));
++
++		// Deprecated  non_blocking_io command
++		/*boost::asio::socket_base::non_blocking_io command(true);
++		newSock->io_control(command);*/
+ 		newSock->non_blocking(true);
+ 		newSock->set_option(tcp::no_delay(true));
+ 		newSock->set_option(boost::asio::socket_base::keep_alive(true));
+diff -ruN pokerth-1.1.2-rc/src/net/common/downloaderthread.cpp pokerth-1.1.2-rc.new/src/net/common/downloaderthread.cpp
+--- pokerth-1.1.2-rc/src/net/common/downloaderthread.cpp	2017-08-16 14:24:03.000000000 +0200
++++ pokerth-1.1.2-rc.new/src/net/common/downloaderthread.cpp	2024-08-23 21:01:07.000000000 +0200
+@@ -96,7 +96,11 @@
+ 				// Previous download was finished.
+ 				if (m_curDownloadData) {
+ 					path filepath(m_curDownloadData->filename);
++#if BOOST_VERSION < 108500
+ 					std::ifstream instream(filepath.file_string().c_str(), ios_base::in | ios_base::binary);
++#else
++					std::ifstream instream(filepath.string().c_str(), ios_base::in | ios_base::binary);
++#endif
+ 					// Find out file size.
+ 					// Not fully portable, but works on win/linux/mac.
+ 					instream.seekg(0, ios_base::beg);
+@@ -132,7 +136,11 @@
+ 				}
+ 				if (m_curDownloadData && !m_curDownloadData->filename.empty()) {
+ 					path filepath(m_curDownloadData->filename);
++#if BOOST_VERSION < 108500
+ 					m_downloadHelper->Init(m_curDownloadData->address, filepath.file_string());
++#else
++					m_downloadHelper->Init(m_curDownloadData->address, filepath.string());
++#endif
+ 					m_downloadInProgress = true;
+ 				}
+ 			}
+diff -ruN pokerth-1.1.2-rc/src/net/common/serverlobbythread.cpp pokerth-1.1.2-rc.new/src/net/common/serverlobbythread.cpp
+--- pokerth-1.1.2-rc/src/net/common/serverlobbythread.cpp	2017-08-16 14:24:03.000000000 +0200
++++ pokerth-1.1.2-rc.new/src/net/common/serverlobbythread.cpp	2024-09-05 15:40:49.913578395 +0200
+@@ -275,7 +275,11 @@
+ 		boost::filesystem::path logPath(logDir);
+ 		if (!logDir.empty()) {
+ 			logPath /= SERVER_STATISTICS_FILE_NAME;
+-			m_statisticsFileName = logPath.directory_string();
++#if BOOST_VERSION < 108500
++                        m_statisticsFileName = logPath.directory_string();
++#else
++                        m_statisticsFileName = logPath.string();
++#endif
+ 			ReadStatisticsFile();
+ 		}
+ 	}
+@@ -1261,7 +1265,11 @@
+ 				// Init finished - start session.
+ 				EstablishSession(session);
+ 				LOG_MSG("Client \"" << session->GetClientAddr() << "\" uploaded avatar \""
+-						<< boost::filesystem::path(avatarFileName).file_string() << "\".");
++#if BOOST_VERSION < 108500
++                                                << boost::filesystem::path(avatarFileName).file_string() << "\".");
++#else
++                                                << boost::filesystem::path(avatarFileName).string() << "\".");
++#endif
+ 			} else
+ 				SessionError(session, ERR_NET_WRONG_AVATAR_SIZE);
+ 		}
+diff -ruN pokerth-1.1.2-rc/src/net/common/uploaderthread.cpp pokerth-1.1.2-rc.new/src/net/common/uploaderthread.cpp
+--- pokerth-1.1.2-rc/src/net/common/uploaderthread.cpp	2017-08-16 14:24:03.000000000 +0200
++++ pokerth-1.1.2-rc.new/src/net/common/uploaderthread.cpp	2024-08-23 21:01:07.000000000 +0200
+@@ -94,7 +94,11 @@
+ 						url += filepath.filename().string();
+ #endif
+ 					}
++#if BOOST_VERSION < 108500
+ 					m_uploadHelper->Init(url, filepath.file_string(), data.user, data.pwd, data.filesize, data.httpPost);
++#else
++					m_uploadHelper->Init(url, filepath.string(), data.user, data.pwd, data.filesize, data.httpPost);
++#endif
+ 					m_uploadInProgress = true;
+ 				}
+ 			}

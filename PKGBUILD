@@ -4,7 +4,7 @@
 
 pkgname=pokerth
 pkgver=1.1.2
-pkgrel=40
+pkgrel=42
 
 pkgdesc="Client to online Poker game written in C++/Qt"
 arch=('i686' 'x86_64')
@@ -20,23 +20,26 @@ source=(https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgnam
         ${pkgname}-${pkgver}.patch.2019
         ${pkgname}-${pkgver}.patch.2020
         ${pkgname}-${pkgver}.patch.2023
-        ${pkgname}-${pkgver}.patch.xdg.2023)
+        ${pkgname}-${pkgver}.patch.2023.xdg
+        ${pkgname}-${pkgver}.patch.2024.boost_deps)
 md5sums=('8fd7d7fc7ece17315e58aa3240dd4586'
          '0ef5541fc6008dfb2521dcab47afb659'
          '50d427bd8afc57fb61e186de6c4e5601'
          '5bdcc1f2240c20f4b766b183d93836b3'
          '64e1b4b08353c11370ea32dfc381ca97'
-         'e61eae14e6394f4745245e2ef42d812c')
+         'e61eae14e6394f4745245e2ef42d812c'
+         '5a563f6b3b144b0e6c2eb4bacd4ca3d4')
 
 # -------------------------------------------------------------------------
 # Possible build speed-ups
 # These changes are better made in /etc/makepkg.conf
-# This is trade-off between size (+12%) & speed (-2%)
+#
+# 1. This is trade-off between size (+12%) & speed (-2%)
 # The optimum is reckoned to be COMPRESSZST=(zstd -c -T0 -18 -)
 #COMPRESSZST=(zstd -c -T0 -)
-# the debug option incurs a large penalty (-15% speed-up)
+# 2. the debug option incurs a large penalty (-15% speed-up)
 #OPTIONS=(strip docs !libtool !staticlibs emptydirs zipman purge !debug !lto)
-# use all your cores (-35% speed-up possible)
+# 3. use all your cores (-35% speed-up possible)
 #MAKEFLAGS="--jobs=$(nproc)"
 # -------------------------------------------------------------------------
 
@@ -62,6 +65,11 @@ prepare() {
   # change to use XDG_CONFIG_HOME if available
   # changes suggested by @viktoracoric
   # patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.xdg.2023"
+  # ----------------------------------------------------------------------------
+  # change to adapt to boost deprecation removals in 1.85
+  # corrections taken from upstream
+  # adapts to BOOST_VERSION: should work with either 1.83 or 1.86
+  patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.2024.boost_deps"
   # ----------------------------------------------------------------------------
 
   # good idea to do this at all times
