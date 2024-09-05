@@ -1,21 +1,21 @@
 # Maintainer: hr567 <hr567@hr567.me>
 # Maintainer: HaroldLoui <Riven970309@gmail.com>
+# Contributor: witt <1989161762 at qq dot com>
 pkgname=apifox
 pkgver=2.6.12
-pkgrel=1
+pkgrel=2
 pkgdesc="API 文档、API 调试、API Mock、API 自动化测试"
 arch=("x86_64")
 url="https://www.apifox.cn/"
 license=('custom')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2' 'snappy' 'fuse2')
 source=(
-	"${pkgname}-v${pkgver}-${pkgrel}.zip"::"https://cdn.apifox.cn/download/Apifox-linux-latest.zip"
+	"${pkgname}-v${pkgver}-${pkgrel}.zip"::"https://file-assets.apifox.com/download/Apifox-linux-latest.zip"
 	"apifox.desktop"
 	"apifox.svg")
-sha256sums=(
-	'SKIP'
-	'e89d2d53ce221c59436b7f1f9e4e9c0f2ccf6f55597df2fd16c419c8de5360a9'
-	'48dbd5c9727e568c3f19b45d36851eed15fa875a0ca40e83ec35d4e30ecd350d')
+sha256sums=('51be0f11a69481d876dd07ddd044f3d101ed9fa68c7ca9a3675d64b8a1001b4d'
+            'e89d2d53ce221c59436b7f1f9e4e9c0f2ccf6f55597df2fd16c419c8de5360a9'
+            '48dbd5c9727e568c3f19b45d36851eed15fa875a0ca40e83ec35d4e30ecd350d')
 options=(!strip)
 
 package() {
