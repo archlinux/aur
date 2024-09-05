@@ -4,7 +4,7 @@
 pkgname=virtme-ng
 _virtme_ng_init_commit=6e2b515c5c178ba2ae3206933024ad24f658f368
 pkgver=1.28
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool that allows to easily and quickly recompile and test a Linux kernel, starting from the source code."
 arch=('x86_64')
 url="https://github.com/arighi/virtme-ng"
@@ -18,12 +18,12 @@ depends=(
   python-requests
   qemu
   virtiofsd
+  python-argparse-manpage
 )
 makedepends=(
   cargo
   git
   python-argcomplete
-  python-argparse-manpage
   python-setuptools
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/arighi/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
