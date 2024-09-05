@@ -5,8 +5,8 @@
 # Contributor: Nick <nick@screamingfist.org>
 
 pkgname=doomrl
-pkgver=0.9.9.7
-pkgrel=11
+pkgver=0.9.9.8a
+pkgrel=1
 pkgdesc="A roguelike game based on the FPS Doom."
 arch=('i686' 'x86_64')
 url="http://drl.chaosforge.org/"
@@ -14,45 +14,31 @@ license=('GPL' 'CCPL:cc-by-nc-sa-4.0')
 depends=('glu' 'lua' 'sdl_image' 'sdl_mixer' 'timidity++' 'zlib')
 makedepends=('ffmpeg')
 
-source=("cc-by-nc-sa-4.0.txt" "doomrl.sh")
-source_i686=("https://drl.chaosforge.org/file_download/33/$pkgname-linux-i386-${pkgver//./}.tar.gz")
-source_x86_64=("https://drl.chaosforge.org/file_download/32/$pkgname-linux-x64-${pkgver//./}.tar.gz")
+source=(
+    'cc-by-nc-sa-4.0.txt'
+    'drl.sh'
+    "https://github.com/chaosforgeorg/doomrl/releases/download/${pkgver//./_}/drl-linux-0998.tar.gz"
+)
 
 sha256sums=('bae5ccc863235f984a52c07d011e48a86c0c12f923be2dedd8624c7abdc22c6c'
-            '6a2b8ec043da2a49f43777537dfccae16b2d1d17fa4bcff03e2bf02e2e5aa913')
-sha256sums_i686=('6d217d697e94f5f2ce3fe8ebbedaf03fa68a5ed1140cb889921f18d8604a389f')
-sha256sums_x86_64=('d9d19e4a8794efb3c23963b3e11987ebadbb7bee7350b00ce6b64eaff501e488')
-
-case $CARCH in
-  'i686')
-    __arch='i386' ;;
-  'x86_64')
-    __arch='x64' ;;
-esac
-
-prepare() {
-    cd "$srcdir/doomrl-linux-$__arch-${pkgver//./}"
-
-    # See https://forum.chaosforge.org/index.php/topic,5254.msg42649/topicseen.html#msg42649
-    # SDL does not support MP3. Convert and use OGG
-    [ -d ogg ] || mkdir ogg
-    sed -i 's/mp3/ogg/g' musichq.lua soundhq.lua
-    rm -f ogg/*
-    for f in mp3/*
-    do
-      ffmpeg -loglevel error -i $f -c:a libvorbis ${f//mp3/ogg}
-    done
-}
+            '14b954f05f5f7144b0bbce62622d9e5dd713b127c50ef045e1a75f0df44cfcfb'
+            '100815a99af9a5991eb0e7ca160d4f652dcefc6cf54bddc9689c24d595852ddb')
+sha512sums=('17d175621ac081cd1e5fee3ae720ba8d638588f3f0b505561308f4ab3eebefe2630049917abf6963fb3d28c35a175fffc40dfe74a5da8a6859e8fd5753e65d95'
+            'c1ae2073383e814b5e83dc91bddd49796cf3ecc8dbba89e704ee340be15fcf7f4c5d8677e114de014f99762ff6d22521d23ec8db9b7c2d6058796de2658c434d'
+            '1e8ed08fc8e6c50f61eadd3a28986635e406858a5ab7c8120841dcede6379416fc73b72b386fde71d902c60387a544f84e23ee74b9b66d3b5eecbf7297ebbc1c')
+b2sums=('22d19b6fb9b5542757297b6c5a61b32aff35ba11033d32a43fc52828ba1f17fce714772c9e1df864e7646729122b2f5eb136aa323552a0867c795cff4400b39a'
+        'cffc7de54e501c449914a2d5530587b47c33ab058bc0b2eeaf74b8043fabd5a857bc900d4ed9f422dc660fe88630360c9ea2dce7dd145e5d95bedbc44606df90'
+        'c2350f79d572c4b6f0f086d59a81e893dfd956c4d5ce90a592ef4bc423e61040c9da8aba8d10e24457051ffa91e9479fd16d2df625a249205b477942826b590e')
 
 package() {
-    cd "$srcdir/doomrl-linux-$__arch-${pkgver//./}"
+    cd "$srcdir/drl-linux-0998"
 
     # Copy program and required files
-    install -d "$pkgdir/usr/share/doomrl"
-    cp -a * "$pkgdir/usr/share/doomrl"
+    install -d "$pkgdir/usr/share/drl"
+    cp -a * "$pkgdir/usr/share/drl"
 
     # Copy script used to run program
-    install -D -m755 "$srcdir/doomrl.sh" "$pkgdir/usr/bin/doomrl"
+    install -D -m755 "$srcdir/drl.sh" "$pkgdir/usr/bin/drl"
 
     # Copy the license file
     install -D -m644 "$srcdir/cc-by-nc-sa-4.0.txt" \
