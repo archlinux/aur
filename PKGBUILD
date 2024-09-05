@@ -2,7 +2,7 @@
 # Contributor: Anthony Wang <ta180m@pm.me>
 _base=jupyterlab-latex
 pkgname=python-${_base}
-pkgver=4.1.0
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="JupyterLab extension for running LaTeX"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(jupyter-server)
 makedepends=(python-build python-installer python-hatch-nodejs-version
   python-hatch-jupyter-builder jupyterlab python-wheel npm)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('3bbbad1182c45d46221f6eff3274886fde17bd4ba4e2334ab968d7efa1d5c714c455c4820fde2439b69039c1420e82efa59f51bd26d138a36cf3b233ed7fbd73')
+sha512sums=('b9fbdbe743567f1dd4376ef19fb25da3440d23b54f82e41cfc042f676c94866e1e0b7ff2cb8fbceae0f8a4968df89929d2640eb045c693766f95d8c39f09a1a6')
 
 build() {
   cd ${_base}-${pkgver}
