@@ -1,6 +1,6 @@
 pkgbase = edrawmax-cn
 	pkgdesc = 强大的办公绘图、工程绘图、图文编辑、彩页设计软件
-	pkgver = 13.5.0
+	pkgver = 14.0.0
 	pkgrel = 1
 	url = https://www.edrawsoft.cn/edrawmax/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = edrawmax-cn
 	depends = zlib
 	conflicts = edrawmax
 	options = !strip
-	source_x86_64 = edrawmax-cn-13.5.0.deb::https://cc-download.edrawsoft.cn/archives/edrawmax_cn_full5374.deb
-	sha256sums_x86_64 = e1c7e2eff3b72db4ac712e9d3750b37b3ee255b86f1ed30c6e57f7438bdd5d06
+	source_x86_64 = edrawmax-cn-14.0.0.deb::https://cc-download.wondershare.cc/prd/edrawmax_full5374.deb
+	sha256sums_x86_64 = 4f6a3842a4c1393f442abebe22823f5e97d9f1d5198e3194f4972112cbf95692
 
 pkgname = edrawmax-cn
