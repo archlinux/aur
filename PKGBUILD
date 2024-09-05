@@ -2,7 +2,7 @@
 # Contributor: frousties
 _pkgname=tacentview
 pkgname=${_pkgname}-git
-pkgver=1.0.44.56.g8326ebf
+pkgver=1.0.45.7.ga863c4b
 pkgrel=1
 pkgdesc="An image and texture viewer for tga, png, apng, exr, dds, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files. Uses Dear ImGui, OpenGL and Tacent."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/bluescan/${_pkgname}"
 license=('ISC')
 provides=("${_pkgname}=${pkgver}")
 provides=(${_pkgname})
-depends=('gcc-libs' 'hicolor-icon-theme' 'libx11' 'libxcb')
+depends=('clang' 'hicolor-icon-theme' 'libx11' 'libxcb')
 makedepends=('cmake' 'git' 'ninja')
 source=("git+${url}.git")
 sha512sums=('SKIP')
@@ -21,6 +21,9 @@ pkgver() {
 }
 
 prepare() {
+	export CC=/usr/bin/clang
+	export CXX=/usr/bin/clang++
+	
 	# `cmake` call in `prepare()` since it will download stuff.
 	cmake -S "${_pkgname}" -B build \
 		-DCMAKE_BUILD_TYPE=Release \
@@ -40,7 +43,7 @@ package() {
 	install -D -m755 build/ViewerInstall/${_pkgname} -t "${pkgdir}/usr/bin/"
 	
 	# Installing the program's data
-	install -D -m644 build/ViewerInstall/Data/* -t "${pkgdir}/usr/share/${_pkgname}/Data/"
+	install -D -m644 build/ViewerInstall/Assets/* -t "${pkgdir}/usr/share/${_pkgname}/Assets/"
     
 	# Installing the desktop file
     install -D -m644 ${DEB_TEMPLATE}/share/applications/* -t "${pkgdir}/usr/share/applications/"
