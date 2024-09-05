@@ -1,17 +1,14 @@
-# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
-# Maintainer: brent s. <bts[at]square-r00t[dot]net>
-# Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
-# News updates for packages can be followed at https://devblog.square-r00t.net
-
-_py=python2
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: brent s. <bts[at]square-r00t[dot]net>
+#TODO: clean up this shit
 _pkg=whois
 _name="py${_pkg}"
-_pkgname="python-${_pkg}"
+_pkgname="python_${_pkg}"
 pkgbase="${_pkgname}"
 pkgname=(
-  "${_py}-${_pkg}"
   "python-${_pkg}")
-pkgver=0.8.0
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="Whois querying and parsing of domain registration information"
 arch=(
@@ -24,13 +21,11 @@ arch=(
 url="https://bitbucket.org/richardpenman/${_name}"
 license=( 'CUSTOM' )
 depends=(
-  "${_py}"
   "python"
 )
 makedepends=(
   "python"
   "python-setuptools"
-  "${_py}-setuptools"
 )
 install=
 changelog=
@@ -41,10 +36,8 @@ source=(
   "${_pypi_repo}/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
   "LICENSE"
 )
-sha512sums=(
-  '17c7d5aae8f4a3b460222137c944bda60d42692a01983e70edf316ea16e7210922cb8baf6cc94d912716582a880df80a4c9d2a83aa88db73a9011b2b3117273c'
-  '8cf4065e880c751354fffe41f513b95c6bad6bd28033d7a660bd52636cae0c313f9b60f4c53234320699fc0b44d9e4b42bb06f543733b41e0de07a68068099d1'
-)
+sha512sums=('a96a68e6ab8f1de181fd401895e6c46cdce8185a0b1815df5fb96ac0f68e12d04d7050aecc64a63b114e6b836a6adc824ee2f5c645da48c26e06af1bdea0e97b'
+            '8cf4065e880c751354fffe41f513b95c6bad6bd28033d7a660bd52636cae0c313f9b60f4c53234320699fc0b44d9e4b42bb06f543733b41e0de07a68068099d1')
 
 package_python-whois() {
   depends=(
@@ -56,19 +49,4 @@ package_python-whois() {
                           --optimize=1
   install -Dm 0644 ${srcdir}/LICENSE \
           "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-}
-
-package_python2-whois() {
-  local _site_packages
-  _site_packages="$(python2 -c 'import site; print site.getsitepackages()[0]')"
-  depends=(
-    "${_py}"
-    "${_py}-futures"
-  )
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  PYTHONPATH="${_site_packages}" \
-    "${_py}" setup.py install --root="${pkgdir}" \
-                              --optimize=1
-  install -Dm 0644 ${srcdir}/LICENSE \
-          "${pkgdir}/usr/share/licenses/${_py}-${_pkg}/LICENSE"
 }
