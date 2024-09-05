@@ -1,0 +1,31 @@
+pkgbase = posting-git
+	pkgdesc = The modern API client that lives in your terminal
+	pkgver = 1.12.3.r1.g09c842f
+	pkgrel = 1
+	url = https://github.com/darrenburns/posting
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python>=3.11
+	depends = python-click
+	depends = python-xdg-base-dirs
+	depends = python-httpx
+	depends = python-click-default-group
+	depends = python-pyperclip
+	depends = python-pydantic
+	depends = python-yaml
+	depends = python-pydantic-settings
+	depends = python-dotenv
+	depends = python-rich
+	depends = python-textual
+	depends = python-typing_extensions
+	depends = python-textual-autocomplete
+	provides = posting=1.12.3
+	conflicts = posting
+	source = posting::git+https://github.com/darrenburns/posting.git
+	sha256sums = SKIP
+
+pkgname = posting-git
