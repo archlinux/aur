@@ -1,6 +1,6 @@
 pkgbase = pulseaudio-dlna-cygn-git
 	pkgdesc = Small DLNA server which brings DLNA/UPnP support to PulseAudio, Cygn edition. Latest git checkout.
-	pkgver = pulseaudio+dlna+0.6.6+1+4.r839.20221229.8fa3215
+	pkgver = 0.6.6+1+4.r839.20221229.8fa3215
 	pkgrel = 1
 	url = https://github.com/Cygn/pulseaudio-dlna
 	arch = any
@@ -37,9 +37,9 @@ pkgbase = pulseaudio-dlna-cygn-git
 	optdepends = pulseaudio: To be used by a local pulseaudio implementation
 	optdepends = sox: wav transcoding support
 	optdepends = vorbis-tools: ogg transcoding support
-	provides = pulseaudio-dlna=pulseaudio+dlna+0.6.6+1+4.r839.20221229.8fa3215
-	provides = pulseaudio-dlna-git=pulseaudio+dlna+0.6.6+1+4.r839.20221229.8fa3215
-	provides = pulseaudio-dlna-cygn=pulseaudio+dlna+0.6.6+1+4.r839.20221229.8fa3215
+	provides = pulseaudio-dlna=0.6.6+1+4.r839.20221229.8fa3215
+	provides = pulseaudio-dlna-git=0.6.6+1+4.r839.20221229.8fa3215
+	provides = pulseaudio-dlna-cygn=0.6.6+1+4.r839.20221229.8fa3215
 	conflicts = pulseaudio-dlna
 	conflicts = pulseaudio-dlna-git
 	conflicts = pulseaudio-dlna-cygn

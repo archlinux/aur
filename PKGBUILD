@@ -5,7 +5,7 @@
 
 _pkgname=pulseaudio-dlna-cygn
 pkgname="${_pkgname}-git"
-pkgver=pulseaudio+dlna+0.6.6+1+4.r839.20221229.8fa3215
+pkgver=0.6.6+1+4.r839.20221229.8fa3215
 pkgrel=1
 pkgdesc='Small DLNA server which brings DLNA/UPnP support to PulseAudio, Cygn edition. Latest git checkout.'
 arch=(
@@ -77,7 +77,7 @@ prepare() {
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  _ver="$(git describe  --tags | sed 's|^[vV]||' | sed 's|-g[0-9a-fA-F]*$||' | tr '-' '+')"
+  _ver="$(git describe  --tags | sed -E -e 's|^pulseaudio-dlna-||' -e 's|^[vV]||' | sed 's|-g[0-9a-fA-F]*$||' | tr '-' '+')"
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
