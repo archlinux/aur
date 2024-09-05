@@ -3,7 +3,7 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
 pkgver=4.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/cheat/cheat"
@@ -16,10 +16,10 @@ backup=("etc/$pkgname/conf.yml")
 _commit=36bdb99dcfadde210503d8c2dcf94b34ee950e1d
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         'conf.yml'
-        "git+https://github.com/cheat/cheatsheets.git#commit=$_commit")
+        "git+https://github.com/cheat/cheatsheets.git#commit=${_commit}")
 sha256sums=('6968ffdebb7c2a8390dea45f97884af3c623cda6c2d36c4c04443ed2454da431'
             '7eddb96f22a29b0d4dc1d953cdb047342495230ea3c0cb16f78a1d888e79fa8e'
-            'SKIP')
+            'daed9ee395975c898ea392885960ac5c01d5695bafcdee220b153911b8c10318')
 
 prepare() {
   cd "$pkgname-$pkgver"
