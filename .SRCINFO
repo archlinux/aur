@@ -1,0 +1,49 @@
+pkgbase = pulseaudio-dlna-cygn-git
+	pkgdesc = Small DLNA server which brings DLNA/UPnP support to PulseAudio, Cygn edition. Latest git checkout.
+	pkgver = pulseaudio+dlna+0.6.6+1+4.r839.20221229.8fa3215
+	pkgrel = 1
+	url = https://github.com/Cygn/pulseaudio-dlna
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = help2man
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = glib2
+	depends = gtk3
+	depends = librsvg
+	depends = python>=3
+	depends = python-cairo
+	depends = python-chardet
+	depends = python-dbus
+	depends = python-docopt
+	depends = python-gobject
+	depends = python-lxml
+	depends = python-netaddr
+	depends = python-netifaces
+	depends = python-notify2
+	depends = python-psutil
+	depends = python-pychromecast>=10
+	depends = python-pyroute2
+	depends = python-requests
+	depends = python-setproctitle
+	optdepends = faac: AAC transcoding support
+	optdepends = ffmpeg: multiple formats support
+	optdepends = flac: flac transcoding support
+	optdepends = lame: mp3 transcoding support
+	optdepends = opus-tools: opus transcoding support
+	optdepends = pulseaudio: To be used by a local pulseaudio implementation
+	optdepends = sox: wav transcoding support
+	optdepends = vorbis-tools: ogg transcoding support
+	provides = pulseaudio-dlna=pulseaudio+dlna+0.6.6+1+4.r839.20221229.8fa3215
+	provides = pulseaudio-dlna-git=pulseaudio+dlna+0.6.6+1+4.r839.20221229.8fa3215
+	provides = pulseaudio-dlna-cygn=pulseaudio+dlna+0.6.6+1+4.r839.20221229.8fa3215
+	conflicts = pulseaudio-dlna
+	conflicts = pulseaudio-dlna-git
+	conflicts = pulseaudio-dlna-cygn
+	source = pulseaudio-dlna-cygn::git+https://github.com/Cygn/pulseaudio-dlna.git
+	sha256sums = SKIP
+
+pkgname = pulseaudio-dlna-cygn-git
