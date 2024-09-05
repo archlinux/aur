@@ -1,12 +1,12 @@
 pkgbase = i4tools-bin
 	pkgdesc = 简单好用的多功能苹果设备管理助手。
-	pkgver = v3.06.006
+	pkgver = 3.06.006
 	pkgrel = 1
 	url = https://www.i4.cn/pro_pc.html
 	arch = x86_64
 	license = custom
 	depends = git
-	source = i4tools_v3.06.006.rpm::https://d-updater.i4.cn/i4linux/deb/i4tools_v3.06.006.rpm
+	source = i4tools_v3.06.006.rpm::https://d-updater.i4.cn/i4linux/deb/i4tools_3.06.006.rpm
 	source = i4tools.desktop
 	source = run.sh
 	source = LICENSE.txt::https://www.i4.cn/copyright.html

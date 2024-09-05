@@ -3,7 +3,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 pkgname=i4tools-bin
 _pkgname=i4tools
-pkgver=v3.06.006
+pkgver=3.06.006
 pkgrel=1
 pkgdesc='简单好用的多功能苹果设备管理助手。'
 arch=('x86_64')
