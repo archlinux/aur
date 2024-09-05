@@ -4,7 +4,7 @@
 pkgname=perl-proc-pid-file
 _dist=Proc-PID-File
 pkgver=1.29
-pkgrel=3
+pkgrel=4
 pkgdesc='Manage process id files'
 license=(GPL-2.0-only)
 
