@@ -1,13 +1,13 @@
 pkgbase = hyprscratch
 	pkgdesc = Scratchpad functiontality for Hyprland
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/sashetophizika/hyprscratch
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = hyprland
-	source = https://github.com/sashetophizika/hyprscratch/archive/refs/tags/v0.4.2.tar.gz
-	sha256sums = 6350430bbd71dc9e5051b1682c8470c2e9028d33f2d5592348cccb59fb3a536a
+	source = https://github.com/sashetophizika/hyprscratch/archive/refs/tags/v0.4.3.tar.gz
+	sha256sums = 49d873b6d6b813cb4726802068e0d2b8a7a7fd5236ecb53ef3d895df22352f0b
 
 pkgname = hyprscratch

@@ -1,7 +1,7 @@
 # Maintainer: Sashetophizika
 
 pkgname=hyprscratch
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Scratchpad functiontality for Hyprland"
 url="https://github.com/sashetophizika/hyprscratch"
@@ -10,7 +10,7 @@ depends=('hyprland')
 arch=('x86_64')
 license=('MIT')
 source=("https://github.com/sashetophizika/hyprscratch/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6350430bbd71dc9e5051b1682c8470c2e9028d33f2d5592348cccb59fb3a536a')
+sha256sums=('49d873b6d6b813cb4726802068e0d2b8a7a7fd5236ecb53ef3d895df22352f0b')
 
 build() {
   cd "$pkgname-$pkgver"
