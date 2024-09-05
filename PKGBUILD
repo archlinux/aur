@@ -1,62 +1,35 @@
+# Maintainer: MYT1 <MYT1 @ QQ .com>
 # Maintainer: i4 <admin@i4.cn>
 # Maintainer: taotieren <admin@taotieren.com>
-
 pkgname=i4tools-bin
-pkgver=1.0.055
-pkgrel=5
-epoch=
-pkgdesc="爱思助手是一款集“高效管理 iOS 设备数据”，“智能刷机”和“免费下载海量应用游戏、铃声壁纸”等为一体的 iOS 设备管理工具。"
-arch=(x86_64)
+_pkgname=i4tools
+pkgver=v3.06.006
+pkgrel=1
+pkgdesc='简单好用的多功能苹果设备管理助手。'
+arch=('x86_64')
 url="https://www.i4.cn/pro_pc.html"
-license=('Custom')
-groups=()
-depends=(bash
-    ffmpeg
-    libwebp
-    libsodium
-    sdl2
-    libcdio-paranoia
-    numactl
-    rtmpdump
-    twolame
-    mpg123
-    libldap24
-    wavpack)
-makedepends=(libarchive)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=('!strip')
-install=
-changelog=
-source=("https://d-updater.i4.cn/i4linux/deb/${pkgname%-bin}_v${pkgver}.deb")
-noextract=()
-sha256sums=('0f3b65cd3ae69bf98e8443d29f2f27497d81f8f6bacd25a8ca16e96846d75b26')
-#validpgpkeys=()
-
-
-
+license=('custom')
+depends=('git')
+source=(
+    "${_pkgname}_v3.06.006.rpm::https://d-updater.i4.cn/i4linux/deb/${_pkgname}_${pkgver}.rpm"
+    "$_pkgname.desktop"
+    "run.sh"
+    "LICENSE.txt::https://www.i4.cn/copyright.html"
+)
+sha256sums=('298c9dc6543b837edbaa8ed7856b743d8cba179e3c1724d9ca7d7505d9e8fe98'
+            'c39f1408107cd69076a37d14326609fb8773717914b5ee335cb039e0bd66e1ed'
+            'b7fc9c90852ce99769fb31352e33d387cb8fe8ea3ec4c6a745c73cfd719020b7'
+            'f3cc70ece76bae973291aa37ced5a48da64360ec4860e8549240a5f6cd3babd4')
 package() {
-    bsdtar xf "${srcdir}/data.tar.xz" --no-same-owner -C "${pkgdir}"
-
-    chmod -R 0755 "${pkgdir}"
-
-    install -dm0755 "${pkgdir}/usr/bin" \
-                    "${pkgdir}/usr/lib"
-
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-bin}" << EOF
-#!/bin/env bash
-cd /usr/share/i4tools
-exec ./i4toolslinux.sh "\$@"
-EOF
-
-# 将 libwebp.so.7 软链接成 libwebp.so.6
-# 建议如下处理： https://wiki.archlinux.org/title/Frequently_asked_questions#If_I_need_an_older_version_of_an_installed_library,_can_I_just_symlink_to_the_newer_version?
-    ln -sf "/usr/lib/libwebp.so" "${pkgdir}/usr/lib/libwebp.so.6"
-    ln -sf "/usr/lib/libsodium.so" "${pkgdir}/usr/lib/libsodium.so.23"
-
-    sed -i '/QT_IM/d' ${pkgdir}/usr/share/i4tools/i4toolslinux.sh
+    install -m755 -d "${pkgdir}/opt/cn.i4Tools"
+    install -m755 -d "${pkgdir}/usr/share/pixmaps"
+    install -m755 -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+    install -m755 -d "${pkgdir}/usr/bin"
+    install -Dm755  ../run.sh "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm644 ../$_pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop 
+    cp -r "${srcdir}/opt/apps/cn.i4Tools" "${pkgdir}/opt/"
+    install -Dm644 ../LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "${srcdir}/opt/apps/cn.i4Tools/resources"
+    cp logo.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
+    cp logo.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg       
 }
