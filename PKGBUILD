@@ -9,8 +9,7 @@ pkgdesc="A set of libraries, tools and utilities suitable for the Heartbeat/Pace
 arch=('i686' 'x86_64')
 url="https://github.com/ClusterLabs/cluster-glue"
 license=('GPL')
-depends=('net-snmp' 
-	'python2' 
+	'python' 
 	'libxml2' 
 	'libtool' 
 	'util-linux' 
@@ -48,14 +47,6 @@ package() {
 	# conflicts with pacemaker (which has a better version)
 	rm -f "$pkgdir/usr/bin/cibsecret"
 
-	#python path correction
-	for py in `grep -r -l "\#\!\/usr\/bin\/python" ${pkgdir}`;do
-		sed -i 's:/usr/bin/python$:/usr/bin/python2:g' ${py}
-	done 
-	for py in `grep -r -l "\#\!\/usr\/bin\/env python" ${pkgdir}`;do
-		sed -i 's:/usr/bin/env python$:/usr/bin/env python2:g' ${py}
-	done
-	#end python path correction
 	install -Dm644 /dev/null "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 	cat>"$pkgdir/usr/lib/sysusers.d/$pkgname.conf"<<-EOF
 		g haclient 189
