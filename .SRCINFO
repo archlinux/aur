@@ -1,6 +1,6 @@
 pkgbase = input-leap-git
 	pkgdesc = Open-source KVM software
-	pkgver = 2.4.0+871+g53d2a329
+	pkgver = 2.4.0+888+g3a95e113
 	pkgrel = 1
 	url = https://github.com/input-leap/input-leap
 	arch = x86_64
@@ -16,7 +16,6 @@ pkgbase = input-leap-git
 	makedepends = libxi
 	makedepends = openssl
 	makedepends = libei
-	makedepends = xdg-desktop-portal
 	makedepends = libportal-inputcapture
 	makedepends = glibc
 	makedepends = gcc-libs
@@ -24,14 +23,19 @@ pkgbase = input-leap-git
 	makedepends = openssl
 	makedepends = avahi
 	makedepends = qt6-base
-	makedepends = qt6-tools
+	makedepends = xdg-desktop-portal
 	makedepends = curl
 	makedepends = libsm
 	makedepends = libice
+	makedepends = qt6-tools
 	makedepends = git
 	makedepends = cmake
 	makedepends = gmock
 	makedepends = gtest
+	optdepends = libportal-inputcapture-gtk3
+	optdepends = libportal-inputcapture-gtk4
+	optdepends = libportal-inputcapture-qt5
+	optdepends = libportal-inputcapture-qt6
 	source = input-leap::git+https://github.com/input-leap/input-leap.git
 	source = gulrak-filesystem::git+https://github.com/gulrak/filesystem.git
 	sha512sums = SKIP
@@ -50,10 +54,9 @@ pkgname = input-leap-headless-git
 	depends = libxi
 	depends = openssl
 	depends = libei
-	depends = xdg-desktop-portal
 	depends = libportal-inputcapture
-	provides = input-leap-headless=2.4.0+871+g53d2a329
-	provides = barrier-headless=2.4.0+871+g53d2a329
+	provides = input-leap-headless=2.4.0+888+g3a95e113
+	provides = barrier-headless=2.4.0+888+g3a95e113
 	conflicts = input-leap-headless
 	conflicts = barrier-headless
 
@@ -66,8 +69,8 @@ pkgname = input-leap-git
 	depends = openssl
 	depends = avahi
 	depends = qt6-base
-	depends = qt6-tools
-	provides = input-leap=2.4.0+871+g53d2a329
-	provides = barrier=2.4.0+871+g53d2a329
+	depends = xdg-desktop-portal
+	provides = input-leap=2.4.0+888+g3a95e113
+	provides = barrier=2.4.0+888+g3a95e113
 	conflicts = input-leap
 	conflicts = barrier

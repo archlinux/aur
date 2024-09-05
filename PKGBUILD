@@ -7,7 +7,7 @@
 _pkgname=input-leap
 pkgbase=$_pkgname-git
 pkgname=($_pkgname-headless-git $_pkgname-git)
-pkgver=2.4.0+871+g53d2a329
+pkgver=2.4.0+888+g3a95e113
 pkgrel=1
 pkgdesc="Open-source KVM software"
 arch=(x86_64)
@@ -17,12 +17,14 @@ source=("${_pkgname}::git+${url}.git"
         "gulrak-filesystem::git+https://github.com/gulrak/filesystem.git")
 sha512sums=('SKIP'
             'SKIP')
-_core_deps=(glibc gcc-libs libx11 libxrandr libxext libxinerama xorgproto libxtst libxi openssl libei xdg-desktop-portal libportal-inputcapture)
-_gui_deps=(glibc gcc-libs libx11 openssl avahi qt6-base qt6-tools)
+_core_deps=(glibc gcc-libs libx11 libxrandr libxext libxinerama xorgproto libxtst libxi openssl libei libportal-inputcapture)
+_gui_deps=(glibc gcc-libs libx11 openssl avahi qt6-base xdg-desktop-portal)
 makedepends=(${_core_deps[@]} ${_gui_deps[@]}
              # referenced in CMakeLists.txt but does not seem to be actually used
-             curl libsm libice
+             curl libsm libice qt6-tools
              git cmake gmock gtest)
+
+optdepends=(libportal-inputcapture-gtk3 libportal-inputcapture-gtk4 libportal-inputcapture-qt5 libportal-inputcapture-qt6)
 
 pkgver() {
   cd $_pkgname
