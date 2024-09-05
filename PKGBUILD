@@ -1,11 +1,11 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ggkegg
-_pkgver=1.2.2
+_pkgver=1.2.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="KEGG pathway visualization by ggplot2"
+pkgdesc="Analyzing and visualizing KEGG information using the grammar of graphics"
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
@@ -40,8 +40,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3367db1821eb7830561a44da9487f0d4')
-b2sums=('70f5f534d50566b26c0d3ff93afbb51fd50edfc9228a3ce7a58f2fa824eaddec3c970ab4dc3348f797f4c757d856670715a2e93e6c98865e8cb994249019b9ec')
+md5sums=('65a2654d46a4d68f2576ddd95ae6c0e5')
+b2sums=('3426a2761550cf8bd96cb7e90db703273df6b2f1458c7ef37556a197ba59c3d7fe1285b2a0559266c0cff264e895a8c122437695611c28522e5349b77e09241b')
 
 build() {
   mkdir build
