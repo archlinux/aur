@@ -9,7 +9,7 @@
 pkgname=perl-pdl
 _dist=PDL
 pkgver=2.089
-pkgrel=6
+pkgrel=7
 pkgdesc='The Perl Data Language'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
