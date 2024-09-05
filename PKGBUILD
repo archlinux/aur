@@ -3,8 +3,8 @@
 # Contributor: gls < ghostlovescorebg at gmail dot com >
 
 pkgname=ha-glue
-pkgver=1.0.12
-pkgrel=8
+pkgver=1.0.13
+pkgrel=1
 pkgdesc="A set of libraries, tools and utilities suitable for the Heartbeat/Pacemaker cluster stack."
 arch=('i686' 'x86_64')
 url="https://github.com/ClusterLabs/cluster-glue"
@@ -17,15 +17,15 @@ depends=('net-snmp'
 	'curl' 
 	'glib2'
 	'asciidoc')
-source=("https://github.com/ClusterLabs/cluster-glue/archive/refs/tags/glue-${pkgver}.tar.gz")
-md5sums=('2164cfd6a491e749eaa722f70a25b749')
+source=("git+https://github.com/ClusterLabs/cluster-glue#commit=4017c21066663960687f30cb8a7dddd24c364767")
+sha256sums=(SKIP)
 options=('!libtool' 'docs')
 
 build() {
 	_CLUSTER_USER=hacluster
 	_CLUSTER_GROUP=haclient
 
-	cd "${srcdir}/cluster-glue-glue-${pkgver}"
+	cd "${srcdir}/cluster-glue"
 	sed -i 's/<glib\/gtypes\.h>/<glib\.h>/g' include/clplumbing/cl_uuid.h
 	./autogen.sh
 	./configure  --prefix=/usr \
@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/cluster-glue-glue-${pkgver}"
+	cd "${srcdir}/cluster-glue"
 	make DESTDIR="${pkgdir}" install
 
 	# conflicts with pacemaker (which has a better version)
