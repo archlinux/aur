@@ -2,24 +2,22 @@
 
 _binname="flow"
 pkgname="${_binname}-cli"
-pkgver=1.20.5
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A command-line interface that provides useful utilities for building Flow applications"
-arch=('any')
-url="https://docs.onflow.org/${pkgname}"
+arch=('x86_64')
+url="https://docs.onflow.org/flow-cli"
 _url="https://github.com/onflow/${pkgname}"
 license=('Apache-2.0')
+makedepends=('go')
 depends=('glibc')
-makedepends=('make' 'go')
-provides=("${_binname}")
-conflicts=("${_binname}")
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('654c29527bfefcbaf9ffb11d39629383a54abf2a6efe9b34d84889644b5dc975')
+sha256sums=('5767f8e2a1ff8ec4fbd4b04ddcdc0509fcc9e7cb24cfc02d7ec87f847ed9c222')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  [ -d "build" ] || mkdir "build"
+  mkdir -p "build"
 }
 
 build() {
@@ -29,13 +27,16 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  # go build -o "build/${_binname}" "./cmd/${_binname}"
-  make
+  go build -o "build/${_binname}" -ldflags "\
+    -X ${_url#https://}/build.semver=${pkgver} \
+    -X ${_url#https://}/internal/command.mixpanelToken=$(grep -E '^MIXPANEL_PROJECT_TOKEN :=' Makefile | sed 's/.*= //') \
+    -X ${_url#https://}/internal/accounts.accountToken=$(grep -E '^ACCOUNT_TOKEN :=' Makefile | sed 's/.*= //')" \
+    ./"cmd/${_binname}"
 }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "cmd/${_binname}/${_binname}" "${pkgdir}/usr/bin/${_binname}"
+  install -Dm755 "build/${_binname}" "${pkgdir}/usr/bin/${_binname}"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_binname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_binname}/LICENSE"
+  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${_binname}/LICENSE"
 }
