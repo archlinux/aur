@@ -1,5 +1,5 @@
 pkgname=sparforte-git
-pkgver=2.1.r181.g8feee7e
+pkgver=2.6.3.r0.gafe5cfcb
 pkgrel=1
 
 pkgdesc='shell and scripting language formally known as bush'
@@ -7,17 +7,19 @@ url='http://www.sparforte.com'
 arch=('i686' 'x86_64')
 license=('GPL')
 
-depends=('sdl_image' 'glu' 'readline' 'postgresql-libs')
+depends=('readline' 'postgresql-libs' 'pcre')
 makedepends=('git' 'gcc-ada')
 
 provides=('sparforte')
 conflicts=('sparforte')
 
 source=('git+https://github.com/kburtch/SparForte'
+        'add-gnatdE-flag.patch'
         'config.linux')
 
 sha256sums=('SKIP'
-            '6c7539230e5b0542154e5943ae3be2b244477b4929ad20f75a2e052517bae656')
+            'd9beec2bd909b89d42d3ee64c531be6b77640c6d5565b1bd67f787299d6fc05f'
+            '2f81bc743387d672cb1278fbd027568210ad51d8653a34ac1765dcb5756ca12e')
 
 pkgver() {
     cd SparForte
@@ -25,7 +27,9 @@ pkgver() {
 }
 
 prepare() {
-    cp -f config.linux SparForte/config.linux
+    cd SparForte
+    cp -f -- "$srcdir"/config.linux config.linux
+    patch -Np1 -i "$srcdir"/add-gnatdE-flag.patch
 }
 
 build() {

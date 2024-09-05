@@ -1,65 +1,50 @@
 #!/bin/sh --
 # config.linux - linux specific configuration for sparforte
+# requires gnatprep pkg-config pcre-config
 
-# enables opengl sdl1 postgresql readline
+# enables opengl sdl1 postgresql readline pcre
 
 # NOTE
 #   Essentially by creating this I can limit the amount of dependencies needed
 #   and other damage sparforte's configure script can do such as calling sudo.
 
-readonly startdir=$PWD
+startdir=$PWD
+srcdir=$startdir/src
 SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH:-$(date +%s)}
 
 CC=gcc
-CPU_FLAG=-march
+CPUTYPE=${CARCH:-$(uname -m)}
+CPUFLAG=-march
 PREFIX=/usr
 MANPREFIX=/usr/share/man
 GMAKETYPE=make
 
-case $(uname -m) in
-    i686)   CPU=i686 ;;
-    x86_64) CPU=x86-64
+# gnatmake -j0 uses the maximum available cores.
+GMAKEJOBS=0
+
+case $CPUTYPE in
+x86_64) CPUTYPE=x86-64
 esac
 
-prepare() {
-    local ext=${1##*.}
-    printf -- '%s: updating...\n' "$1"
-    cp -- "$1".orig temp."$ext"
-    if gnatprep -DconfigbuildDate="\"$(date -d @"$SOURCE_DATE_EPOCH" +%y%m%d)\"" \
-                -Dconfigreleased=false \
-                -DPOSTGRES=true \
-                -DMYSQL=false \
-                -DOPENGL=true \
-                -DREADLINE=true \
-                -DSOUND=false \
-                -DGCGI=false \
-                -DBDB=false \
-                -DAPQ=true temp."$ext" "$1" 2> /dev/null; then
-        chmod 0444 "$1"
-        rm -- temp."$ext" 2> /dev/null
-    fi
-}
+cp -v -- "$srcdir"/os_bindings/spar_linux.ads "$srcdir"/spar_os.ads
+cp -v -- "$srcdir"/scanner-calendar-latest.ads "$srcdir"/scanner-calendar.ads
+cp -v -- "$srcdir"/scanner-calendar-latest.adb "$srcdir"/scanner-calendar.adb
 
-cd "$startdir"
-cp -v src/os_bindings/spar_linux.ads src/spar_os.ads
-cp -v src/scanner-calendar-latest.ads src/scanner-calendar.ads
-cp -v src/scanner-calendar-latest.adb src/scanner-calendar.adb
+# # sdl1
+# SDLLIBS=$(pkg-config --libs sdl)
+# SDLINCL=$(pkg-config --cflags sdl)
 
-# sdl1
-SDLLIBS=$(pkg-config --libs sdl)
-SDLINCL=$(pkg-config --cflags sdl)
+# SDLLIBSTYPE="$SDLLIBS -lSDL_image"
+# SDLINCLTYPE=$SDLINCL
 
-SDLLIBSTYPE="$SDLLIBS -lSDL_image"
-SDLINCLTYPE=$SDLINCL
+# case $CPUTYPE in
+# i686) cp -v -- "$srcdir"/spar_os-sdl-32bit.ads "$srcdir"/spar_os-sdl.ads ;;
+# x86-64) cp -v -- "$srcdir"/spar_os-sdl-64bit.ads "$srcdir"/spar_os-sdl.ads
+# esac
 
-case $CPU in
-    i686)   cp -v src/spar_os-sdl-32bit.ads src/spar_os-sdl.ads ;;
-    x86-64) cp -v src/spar_os-sdl-64bit.ads src/spar_os-sdl.ads
-esac
-
-# opengl
-MESALIBSTYPE=$(pkg-config --libs gl glu)
-MESAINCLTYPE=$(pkg-config --cflags gl glu)
+# # opengl
+# MESALIBSTYPE=$(pkg-config --libs gl glu)
+# MESAINCLTYPE=$(pkg-config --cflags gl glu)
 
 # gstreamer
 # Disabling gstreamer for now:
@@ -72,82 +57,102 @@ MESAINCLTYPE=$(pkg-config --cflags gl glu)
 #   gnatlink: error when calling /usr/bin/gcc
 # GSTREAMERFLAG=-DGSTREAMER
 # GSTREAMERLIBS=$(pkg-config --cflags --libs gstreamer-1.0)
-GSTREAMERFLAG=
 GSTREAMERLIBS=
+GSTREAMEROBJ=
+GSTREAMERFLAG=
 
 # postgresql
-PGLIBSSUB=$(pkg-config --cflags --libs libpq)
+# PGLIBSSUB=$(pkg-config --cflags --libs libpq)
 
-APQMAKESUB='$(MAKE) -C apq-2.1'
-APQLIBSSUB='-L./apq-2.1'
-APQINCLSSUB='-I./apq-2.1'
+# APQMAKESUB='$(MAKE) -C apq-2.1'
+# APQLIBSSUB='-L./apq-2.1'
+# APQINCLSSUB='-I./apq-2.1'
+PGLIBSSUB=
+APQMAKESUB=
+APQLIBSSUB=
+APQINCLSSUB=
 
-# readline
-RLINCL='-I./areadline'
-RLLIBS='-lreadline -lhistory'
-
-# disable mysql support since it seems to include nonsense code:
+# (2019-01-01) disable mysql support (HAVE_MY=0) since it seems to include
+# nonsense code:
 #   apq-mysql.ads:38:24: identifier expected
 #   apq-mysql.ads:40:23: aggregate may not have single positional component
 #   apq-mysql.ads:40:24: missing operand
-cd "$startdir"/src/apq-2.1
-HAVE_MY=0 ./configure
+# env -C "$srcdir"/apq-2.1 HAVE_MY=0 ./configure
 
-touch c_gstreamer.c
+# XXX Can't remember purpose of touching this file, probably for make.
+#     Not sure why this file even exists under apq.
+# touch "$srcdir"/apq-2.1/c_gstreamer.c
 
-cd "$startdir"/src
-prepare world.ads
-prepare user_io-getline.adb
-prepare scanner_res.adb
-prepare scanner_res.ads
-prepare builtins.adb
-prepare parser_db.adb
-prepare parser_dbm.adb
-prepare parser_mysql.adb
-prepare parser_mysqlm.adb
-prepare parser_sound.adb
-prepare parser_pen.adb
-prepare parser_gnat_cgi.adb
-prepare parser_bdb.adb
-prepare parser_btree_io.adb
-prepare parser_hash_io.adb
+# readline
+RLLIBS='-lreadline -lhistory'
+RLFLAG=
 
-sed "s!CPUFLAG!$CPU_FLAG!g
-     s!CCTYPE!$CC!g
-     s!^CPU=!&$CPU!g
-     s!CPUTYPE!$ARCH!g
-     s!MANPREFIXSUB!$MANPREFIX!g
-     s!PREFIXSUB!$PREFIX!g
-     s!GMAKETYPE!$GMAKETYPE!g
-     s!SDLLIBSTYPE!$SDLLIBSTYPE!g
-     s!SDLINCLTYPE!$SDLINCLTYPE!g
-     s!CFLAGSTYPE!$CFLAGSTYPE!g
-     s!PGLIBSSUB!$PGLIBSSUB!g
-     s!MYSQLLIBSSUB!$MYSQLLIBSSUB!g
-     s!APQLIBSSUB!$APQLIBSSUB!g
-     s!APQINCLSSUB!$APQINCLSSUB!g
-     s!SDLINCLSSUB!$SDLINCLSSUB!g
-     s!APQMAKESUB!$APQMAKESUB!g
-     s!FASTCGISUB!$FASTCGISUB!g
-     s!GSTREAMERLIBSSUB!$GSTREAMERLIBS!g
-     s!GSTREAMERFLAGSUB!$GSTREAMERFLAG!g
-     s!GSTREAMEROUTSUB!$GSTREAMEROUT!g
-     s!MESAINCLSUB!$MESAINCLTYPE!g
-     s!MESALIBSSUB!$MESALIBSTYPE!g
-     s!BDBSUB!$BDBLIBS!g
-     s!BDBINCLSUB!$BDBINCL!g
-     s!RLINCLSUB!$RLINCL!g
-     s!RLLIBSSUB!$RLLIBS!g" < GNUmakefile.orig > GNUmakefile
+# pcre
+PCRELIBS=$(pcre-config --libs)
+PCREOBJ=c_pcre.o
 
-cd "$startdir"/src/areadline
-sed "s!RLINCLSUB!$RLINCL!g
-     s!RLLIBSSUB!$RLLIBS!g" < GNUmakefile.orig > GNUmakefile
+# l10n
+L10NLIBS=
+L10NLFLAG=
 
-cd "$startdir"
-sed "s!CPUFLAG!$CPU_FLAG!g
-     s!CCTYPE!$CC!g
-     s!CPUTYPE!$ARCH!g
-     s!GMAKETYPE!$GMAKETYPE!g
-     s!CFLAGSTYPE!$CFLAGSTYPE!g
-     s!MANPREFIXSUB!$MANPREFIX!g
-     s!PREFIXSUB!$PREFIX!g" < GNUmakefile.orig > GNUmakefile
+sed "s!=GMAKETYPE!=$GMAKETYPE!
+     s!=MANPREFIXSUB!=$MANPREFIX!
+     s!=PREFIXSUB!=$PREFIX!" < "$startdir"/GNUmakefile.orig > "$startdir"/GNUmakefile
+
+sed "s!=CCTYPE!=$CC!
+     s!=CPUTYPE!=$CPUTYPE!
+     s!=CPUFLAG!=$CPUFLAG!
+     s!=MANPREFIXSUB!=$MANPREFIX!
+     s!=PREFIXSUB!=$PREFIX!
+     s!=GMAKETYPE!=$GMAKETYPE!
+     s!=GMAKEJOBSSUB!=$GMAKEJOBS!
+     s!=SDLLIBSTYPE!=$SDLLIBSTYPE!
+     s!=SDLINCLTYPE!=$SDLINCLTYPE!
+     s!=CFLAGSTYPE!=$CFLAGSTYPE!
+     s!=PGLIBSSUB!=$PGLIBSSUB!
+     s!=L10NLIBSSUB!=$L10NLIBS!
+     s!=L10NFLAGSUB!=$L10NLFLAG!
+     s!=MYSQLLIBSSUB!=$MYSQLLIBSSUB!
+     s!=APQLIBSSUB!=$APQLIBSSUB!
+     s!=APQINCLSSUB!=$APQINCLSSUB!
+     s!=SDLINCLSSUB!=$SDLINCLSSUB!
+     s!=APQMAKESUB!=$APQMAKESUB!
+     s!=FASTCGISUB!=$FASTCGISUB!
+     s!=GSTREAMERLIBSSUB!=$GSTREAMERLIBS!
+     s!=GSTREAMEROBJSUB!=$GSTREAMEROBJ!
+     s!=GSTREAMERFLAGSUB!=$GSTREAMERFLAG!
+     s!=GSTREAMEROUTSUB!=$GSTREAMEROUT!
+     s!=MESAINCLSUB!=$MESAINCLTYPE!
+     s!=MESALIBSSUB!=$MESALIBSTYPE!
+     s!=PCRELIBSSUB!=$PCRELIBS!
+     s!=PCREOBJSUB!=$PCREOBJ!
+     s!=BDBSUB!=$BDBLIBS!
+     s!=BDBINCLSUB!=$BDBINCL!
+     s!=RLINCLSUB!=$RLINCL!
+     s!=RLFLAGSUB!=$RLFLAG!
+     s!=RLLIBSSUB!=$RLLIBS!" < "$srcdir"/GNUmakefile.orig > "$srcdir"/GNUmakefile
+
+
+cat <<! > "$startdir"/gnatprep.def
+configbuildDate := "$(date -d @"$SOURCE_DATE_EPOCH" +%y%m%d)"
+configreleased := true
+READLINE := true
+PCRE := true
+APQ := false
+POSTGRES := false
+L10N := false
+OPENGL := false
+SDL := false
+MYSQL := false
+SOUND := false
+GCGI := false
+BDB := false
+!
+
+for orig in "$srcdir"/*.ad[bs].orig; do
+    if [ -f "$orig" ]; then
+        adafile=${orig%.orig}
+        printf '%s: preparing...\n' "${adafile#"$startdir"/}"
+        gnatprep "$orig" "$adafile" "$startdir"/gnatprep.def
+    fi
+done
