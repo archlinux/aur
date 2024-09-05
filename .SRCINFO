@@ -1,0 +1,18 @@
+pkgbase = minif-browser-bin
+	pkgdesc = Mini Fluent Browser
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/Klubuntu/minif-browser
+	arch = x86_64
+	license = LicenseRef-unknown
+	depends = electron32
+	provides = minif-browser=1.3.0
+	conflicts = minif-browser
+	options = !strip
+	options = !emptydirs
+	source = minif-browser-1.3.0.deb::https://github.com/Klubuntu/minif-browser/releases/download/f-1.3.0/minif-browser_1.3.0_amd64.deb
+	source = minif-browser.sh
+	sha256sums = a44a6d5d34c5e756cf840083f6ff2c47f9be6210decbef074aae8e63e970208c
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = minif-browser-bin
