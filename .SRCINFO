@@ -1,6 +1,6 @@
 pkgbase = teleport-client-bin
 	pkgdesc = Client-only (tsh, tctl) binary package for teleport
-	pkgver = 16.1.4
+	pkgver = 16.1.7
 	pkgrel = 1
 	url = https://github.com/gravitational/teleport
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = teleport-client-bin
 	conflicts = teleport-client
 	conflicts = tctl
 	conflicts = tsh
-	source_x86_64 = teleport-bin-16.1.4-x86_64.tar.gz::https://cdn.teleport.dev/teleport-v16.1.4-linux-amd64-bin.tar.gz
-	sha256sums_x86_64 = f6749425e8df219837d18b68a597b48e1213b4ac00f3522fabc4b19a1604b598
-	source_armv7h = teleport-bin-16.1.4-armv7h.tar.gz::https://cdn.teleport.dev/teleport-v16.1.4-linux-arm-bin.tar.gz
-	sha256sums_armv7h = c1738453476bb78921a1dfe5a70bdc267cac50e044c4b7c1f2746a27fe236b98
-	source_aarch64 = teleport-bin-16.1.4-aarch64.tar.gz::https://cdn.teleport.dev/teleport-v16.1.4-linux-arm64-bin.tar.gz
-	sha256sums_aarch64 = 8426688104082ff3d41679720c4c954226ab327509451ff9c5da909195ce1d47
+	source_x86_64 = teleport-bin-16.1.7-x86_64.tar.gz::https://cdn.teleport.dev/teleport-v16.1.7-linux-amd64-bin.tar.gz
+	sha256sums_x86_64 = e73984313cbf5ae01b957429c9d633a7dca4ca62395769ecf8e3ca5751683b7d
+	source_armv7h = teleport-bin-16.1.7-armv7h.tar.gz::https://cdn.teleport.dev/teleport-v16.1.7-linux-arm-bin.tar.gz
+	sha256sums_armv7h = cd190e957562bde162e9c571773461aa6525df2b73f919d28b7c3a7517a3b736
+	source_aarch64 = teleport-bin-16.1.7-aarch64.tar.gz::https://cdn.teleport.dev/teleport-v16.1.7-linux-arm64-bin.tar.gz
+	sha256sums_aarch64 = a9c11d207871ab94cf26d56a1cb9c203cde4c06d5ca8f47a94e5f6fb7a290fa8
 
 pkgname = teleport-client-bin
