@@ -3,7 +3,7 @@
 
 pkgname=lib32-vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) Mesa driver with some additions (32-bit Git version)"
-pkgver=24.2.branchpoint.r1576.g2a20cdf
+pkgver=24.2.branchpoint.r2164.g6378107
 pkgrel=1
 arch=('x86_64')
 depends=('lib32-libdrm' 'lib32-libxshmfence' 'lib32-libx11' 'lib32-systemd' 'lib32-vulkan-icd-loader' 'lib32-wayland')
@@ -76,7 +76,6 @@ build() {
     -D gallium-drivers= \
     -D vulkan-drivers=nouveau \
     -D vulkan-layers= \
-    -D dri3=enabled \
     -D egl=disabled \
     -D gallium-extra-hud=false \
     -D gallium-nine=false \
