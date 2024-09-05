@@ -5,14 +5,14 @@ pkgname=i4tools-bin
 _pkgname=i4tools
 pkgver=v3.06.006
 pkgrel=1
-pkgdesc='爱思助手是一款集“高效管理 iOS 设备数据”，“智能刷机”和“免费下载海量应用游戏、铃声壁纸”等为一体的 iOS 设备管理工具。'
+pkgdesc='简单好用的多功能苹果设备管理助手。'
 arch=('x86_64')
 url="https://www.i4.cn/pro_pc.html"
 license=('custom')
 depends=('git')
 source=(
     "${_pkgname}_v3.06.006.rpm::https://d-updater.i4.cn/i4linux/deb/${_pkgname}_${pkgver}.rpm"
-    "i4tools.desktop"
+    "$_pkgname.desktop"
     "run.sh"
     "LICENSE.txt::https://www.i4.cn/copyright.html"
 )
