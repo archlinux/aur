@@ -31,7 +31,7 @@ if((!DISABLE_AUTOCONFIG)); then
   #DISABLE_ZOLTAN
   #Open cascade needs VTK
   DISABLE_OCC=1
-  DISABLE_VTK=0
+  DISABLE_VTK=1
   # VTK also needs MPI.
   DISABLE_MPI=0
   DISABLE_MUMPS=1
