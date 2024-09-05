@@ -4,6 +4,7 @@
 pkgname=i4tools-bin
 _pkgname=i4tools
 pkgver=3.06.006
+_pkgver=v3.06.006
 pkgrel=1
 pkgdesc='简单好用的多功能苹果设备管理助手。'
 arch=('x86_64')
@@ -11,7 +12,7 @@ url="https://www.i4.cn/pro_pc.html"
 license=('custom')
 depends=('git')
 source=(
-    "${_pkgname}_v3.06.006.rpm::https://d-updater.i4.cn/i4linux/deb/${_pkgname}_${pkgver}.rpm"
+    "${_pkgname}_v3.06.006.rpm::https://d-updater.i4.cn/i4linux/deb/${_pkgname}_${_pkgver}.rpm"
     "$_pkgname.desktop"
     "run.sh"
     "LICENSE.txt::https://www.i4.cn/copyright.html"
