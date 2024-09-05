@@ -34,6 +34,11 @@ build() {
     ./"cmd/${_binname}"
 }
 
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  go test ./...
+}
+
 package() {
   cd "${srcdir}/${_pkgsrc}"
   install -Dm755 "build/${_binname}" "${pkgdir}/usr/bin/${_binname}"
