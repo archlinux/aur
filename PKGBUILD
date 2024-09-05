@@ -4,7 +4,7 @@
 # Contributor: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=transifex-client
-pkgver=1.6.16
+pkgver=1.6.17
 pkgrel=1
 pkgdesc="The Transifex command-line tool to download and upload translations from Transifex"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=()
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/transifex/cli/archive/refs/tags/v${pkgver}.tar.gz")
 install=transifex-client.install
-sha256sums=('005d2f2cb26063a2f586fd661b3dfd29269fa0f37edaeee4fab10de6da137bb1')
+sha256sums=('759320acd621991046533089bb77320202853cc97b860ab7783040d0e4d5e34f')
 
 prepare() {
   cd "cli-${pkgver}"
