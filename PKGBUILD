@@ -1,18 +1,18 @@
-# Maintainer: Mike Pento <mpento darkforge net>
+# Maintainer: Mike Pento <mpento@darkforge.net>
 
 _pkgname=econnman
 pkgname=$_pkgname-git
 pkgver=1.1.0.r27.g463913a
-pkgrel=1
+pkgrel=2
 pkgdesc="Enlightenment ConnMan user interface - Development version"
 arch=('any')
-url="https://phab.enlightenment.org/w/projects/econnman/"
+url="https://git.enlightenment.org/enlightenment/econnman"
 license=('LGPL3')
 depends=('python-efl' 'connman')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git+https://git.enlightenment.org/apps/$_pkgname.git")
+source=("git+https://git.enlightenment.org/enlightenment/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
