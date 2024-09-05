@@ -7,7 +7,7 @@ pkgname=mingw-w64-x86_64-$_name
 pkgver=2.5.1
 pkgrel=1
 arch=(x86_64)
-pkgdesc="regex functionality from glibc for amd64 platform (mingw-w64)"
+pkgdesc="Regex functionality from glibc for amd64 platform (mingw-w64)"
 makedepends=(mingw-w64-gcc)
 provides=($pkgname=$pkgver)
 conflicts=('mingw-w64-regex' 'mingw-w64-libgnurx')
