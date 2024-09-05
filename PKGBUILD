@@ -2,7 +2,7 @@
 # Co-Maintainer: Robert Zhou <meep (dot) aur (at) meepzh (dot) com>
 
 pkgname=maya-arnold
-pkgver=5.4.2
+pkgver=5.4.4
 pkgrel=1
 pkgdesc='Autodesk Maya Arnold Renderer Plugin'
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('maya-usd: Universal scene description support'
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from Autodesk.com')
 source=("manual://MtoA-${pkgver}-linux-2024.run")
-b2sums=('3d440679e56c701c03cc16c5c4b2f73dc2bea4e82661cce46fd0fc9f56aed91b8c0c7ea6fe48ef8a856c5306612a88778c4caad8367ffe50180f107655aa7237')
+b2sums=('c6d4c275071c1467557df97accf4fc342f4f9fe8672122151b199db5b4356bdd15ca61ca81e85ffbf64a4286df5e4254c559e3fa96469092e50abb5f6d064719')
 
 options=(!strip)
 
