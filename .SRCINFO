@@ -1,6 +1,6 @@
 pkgbase = crab-hole
-	pkgdesc = Pi-Hole clone written in rust using trust-dns
-	pkgver = 0.1.8
+	pkgdesc = Pi-Hole clone written in rust using hickory-dns/trust-dns
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://crates.io/crates/crab-hole
 	arch = aarch64
@@ -9,9 +9,7 @@ pkgbase = crab-hole
 	license = AGPL-3.0-or-later
 	makedepends = cargo
 	depends = gcc-libs
-	source = crab-hole-0.1.8.tar.gz::https://crates.io/api/v1/crates/crab-hole/0.1.8/download
-	source = crab-hole.service
-	sha512sums = 413effc60b31bb9f914d6a5062817747448539bedc795e7e589fa825a5d553ea38830425a4063c67252e57a161fc4edc45ab4f7ec46975349225317e136f78f9
-	sha512sums = 0cb8a1137c3adab1553db7bae431b69fdd653f2025a106b04122100279bac6c7b27f038af436203fa7726ec0e744a46795c7f0baf32a53e03f363eb2e604c327
+	source = crab-hole-0.1.9.tar.gz::https://crates.io/api/v1/crates/crab-hole/0.1.9/download
+	sha512sums = c5d9d8da420255712c48775981726ea13c535efaaa162ebd7c1d92dfe8538f82a4726ced2e171b2f78460be3823a5825513c5cdd40c0b094b7a73325b1738831
 
 pkgname = crab-hole
