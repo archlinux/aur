@@ -1,0 +1,18 @@
+pkgbase = holy-fetch-git
+	pkgdesc = A fetch program written in HolyC
+	pkgver = r13.2f32b2a
+	pkgrel = 1
+	url = https://github.com/Tuhkis/holy-fetch
+	arch = x86_64
+	license = custom:None
+	makedepends = git
+	makedepends = hc2c
+	depends = glibc
+	provides = holy-fetch
+	conflicts = holy-fetch
+	source = holy-fetch::git+https://github.com/Tuhkis/holy-fetch.git
+	source = holy-fetch_fix_build_flags.patch
+	sha256sums = SKIP
+	sha256sums = 7953c47ada821e7bbc1679f55f5f98be23d68fd0433d83a00f8502dd2055fa5b
+
+pkgname = holy-fetch-git
