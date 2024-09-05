@@ -1,15 +1,17 @@
 pkgbase = python-fake-bpy-module-latest
 	pkgdesc = Collection of the fake Blender Python API module for the code completion.
-	pkgver = 20240101
+	pkgver = 20240904
 	pkgrel = 1
 	url = https://github.com/nutti/fake-bpy-module
 	arch = x86_64
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	provides = python-fake-bpy-module-latest
-	source = https://files.pythonhosted.org/packages/source/f/fake-bpy-module-latest/fake-bpy-module-latest-20240101.tar.gz
+	source = https://files.pythonhosted.org/packages/source/f/fake_bpy_module_latest/fake_bpy_module_latest-20240904.tar.gz
 	source = LICENSE
-	md5sums = 1f31dabfb4ce42d01ee1ff08856bec6b
-	md5sums = 32ba1ec9dcc25969e1de127a63005836
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = python-fake-bpy-module-latest
