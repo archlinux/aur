@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=scoringRules
-_pkgver=1.1.1
+_pkgver=1.1.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Scoring Rules for Parametric and Simulated Distribution Forecasts"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -32,8 +32,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('be9a9c10613e5ff981b72b32b8da30d9')
-b2sums=('b087771cf7c26e0623fdf40f60288daf020e284898a5ed45663f2933248ce9708f929e936f74127fd97d85a56466103008c231f21e137234aec8de9a9dd3cde8')
+md5sums=('76d4fb931969d263f3542907bcca51af')
+b2sums=('8aa1f38da55f5529da65d1ff0d6409d8498c710f0fcc5285ab5fe4cb606960b5e9c65c0cc2efce55d578bc525c2810a12400cf175b89036c63155d756772e030')
 
 build() {
   mkdir build
