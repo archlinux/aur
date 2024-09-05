@@ -3,7 +3,7 @@
 pkgname=cmd-wrapped
 pkgver=0.4.1
 pkgrel=1
-pkgdesc="Rust-Based Shell History Analyzer"
+pkgdesc="A CLI to view your shell history stats, with support for zsh, bash, fish, and atuin."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/YiNNx/${pkgname}"
 license=('MIT')

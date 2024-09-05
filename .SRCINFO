@@ -1,5 +1,5 @@
 pkgbase = cmd-wrapped
-	pkgdesc = Rust-Based Shell History Analyzer
+	pkgdesc = A CLI to view your shell history stats, with support for zsh, bash, fish, and atuin.
 	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/YiNNx/cmd-wrapped
