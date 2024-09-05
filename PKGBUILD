@@ -2,7 +2,7 @@
 pkgname=python-jaraco.vcs
 _name=${pkgname#python-}
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Facilities for working with VCS repositories"
 arch=('any')
 url="https://github.com/jaraco/jaraco.vcs"
@@ -10,6 +10,7 @@ license=('MIT')
 depends=(
   'python-dateutil'
   'python-jaraco.classes'
+  'python-jaraco.path'
   'python-jaraco.versioning'
   'python-more-itertools'
   'python-packaging'
@@ -22,7 +23,6 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=(
-  'python-jaraco.path'
   'python-pygments'
   'python-pytest'
   'python-pytest-cov'
