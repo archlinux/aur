@@ -1,12 +1,12 @@
 # Maintainer: Yanus Poluektovich <ypoluektovich at gmail dot com>
 pkgname=estuary
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A registry for Rust crates"
 arch=('x86_64')
 url="https://github.com/onelson/estuary"
 license=('Apache' 'MIT') # as stated in Cargo.toml, though I don't see a license file in the repo
-depends=('git')
+depends=('git' 'libgit2')
 makedepends=('cargo')
 backup=('etc/estuary/estuary.env')
 install="estuary.install"
