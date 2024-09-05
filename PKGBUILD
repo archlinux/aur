@@ -24,6 +24,7 @@ checkdepends=(
   python-pandas
   python-pytest
   python-pytest-mypy
+  python-typeguard
 )
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz
         $pkgname-numpy-2.patch::https://patch-diff.githubusercontent.com/raw/ramonhagenaars/nptyping/pull/114.patch
