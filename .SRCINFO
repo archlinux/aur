@@ -1,6 +1,6 @@
 pkgbase = envision-xr-git
 	pkgdesc = GUI for Monado
-	pkgver = r558.03e3b10
+	pkgver = r620.b63b63e
 	pkgrel = 1
 	url = https://gitlab.com/gabmus/envision
 	arch = x86_64
@@ -26,6 +26,8 @@ pkgbase = envision-xr-git
 	depends = polkit
 	depends = base-devel
 	depends = jq
+	depends = libx11
+	depends = libxcb
 	optdepends = libudev0-shim: steamvr_lh lighthouse driver support
 	optdepends = monado-vulkan-layers-git: Vulkan layers for NVIDIA users
 	provides = envision

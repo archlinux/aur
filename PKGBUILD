@@ -1,7 +1,7 @@
 # Maintainer: Gabriele Musco <gabmus@disroot.org>
 
 pkgname=envision-xr-git
-pkgver=r558.03e3b10
+pkgver=r620.b63b63e
 pkgrel=1
 pkgdesc='GUI for Monado'
 arch=(x86_64 aarch64)
@@ -26,6 +26,8 @@ depends=(
     polkit
     base-devel
     jq
+    libx11
+    libxcb
 )
 makedepends=(
     meson
