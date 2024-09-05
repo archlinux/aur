@@ -5,7 +5,7 @@ _platform=x86_64-w64-mingw32
 
 pkgname=mingw-w64-x86_64-$_name
 pkgver=2.5.1
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 pkgdesc="Regex functionality from glibc for amd64 platform (mingw-w64)"
 makedepends=(mingw-w64-gcc)
@@ -22,13 +22,13 @@ md5sums=('35c8fed3101ca1f253e9b6b1966661f6'
 prepare() {
 	cd "$srcdir/mingw-$_name-$pkgver"
 	patch -Np0 -i ../mingw-w64-libgnurx-honor-destdir.patch
+	./configure --host=$_platform --prefix=/usr/$_platform \
+		--enable-shared \
+		--enable-static	
 }
 
 build() {
 	cd "$srcdir/mingw-$_name-$pkgver"
-	./configure --host=$_platform --prefix=/usr/$_platform \
-		--enable-shared \
-		--enable-static
 	make
 }
 

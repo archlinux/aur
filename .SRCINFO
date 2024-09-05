@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-x86_64-libgnurx
 	pkgdesc = Regex functionality from glibc for amd64 platform (mingw-w64)
 	pkgver = 2.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/mingw/
 	arch = x86_64
 	license = LGPL-2.1-only
