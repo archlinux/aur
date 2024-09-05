@@ -3,7 +3,7 @@
 
 pkgname=virtme-ng
 _virtme_ng_init_commit=6e2b515c5c178ba2ae3206933024ad24f658f368
-pkgver=1.27
+pkgver=1.28
 pkgrel=1
 pkgdesc="A tool that allows to easily and quickly recompile and test a Linux kernel, starting from the source code."
 arch=('x86_64')
@@ -28,7 +28,7 @@ makedepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/arighi/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
        "virtme-init-ng-${_virtme_ng_init_commit}.zip::https://github.com/arighi/virtme-ng-init/archive/${_virtme_ng_init_commit}.zip")
-b2sums=('c5710259aedf8d4f10e0b98e81c9c8ebad9f25ec6d5ccda34ded5d7c3358d5eb4de61cc6873bcbaddb2ef7b47f2cc1b5f56a9afdf9add890f1dd719b035f774d'
+b2sums=('ead3881418135f0aece994193efa30529863329a50acc2414c0672450da38d84b010528b88167a53d26a2113822795a4e01757730647d063174fac9af639009f'
         '6ca1d1288a07286bf8a240ec9e0ae955b5126936d51d902276050735df474e3be01d8f5238d08cfa3822a1c9310dcccc84bd69837c8bde1ac49d249f8c6e1d61')
 conflicts=('virtme')
 
