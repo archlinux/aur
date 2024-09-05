@@ -1,9 +1,8 @@
-# Maintainer: Brian BIdulock <bidulock@openss7.org>
-# Contributor: Eric Bélanger <eric@archlinux.org>
+# Maintainer: Mike Pento <mpento@darkforge.net>
 
 pkgname=enlightenment16
-pkgver=1.0.23
-_themever=1.0.2
+pkgver=1.0.30
+_themever=1.0.3
 pkgrel=1
 pkgdesc="A fast, flexible, and very extensible Window Manager"
 arch=('x86_64' 'i686')
@@ -13,8 +12,8 @@ depends=('libxinerama' 'imlib2' 'perl' 'pango' 'libxcomposite'
          'libxrandr' 'libpulse' 'libxdamage')
 source=(http://downloads.sourceforge.net/sourceforge/enlightenment/e16-${pkgver}.tar.gz
         http://downloads.sourceforge.net/enlightenment/e16-themes-${_themever}.tar.gz)
-sha1sums=('07822d711d0c73620f255ac4b15845307ab0fb7c'
-          '14f5d180599c22356d96abbfaa03c76083a93bdf')
+sha1sums=('ba54f7026d8ccdea97a63779d05eaac1c56e5e79'
+          'a03dfcf2736d4b8c6428bb763aa33ebfdda21697')
 
 build() {
   pushd e16-${pkgver}
