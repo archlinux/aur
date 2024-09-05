@@ -2,8 +2,8 @@
 
 pkgbase=at32-work-bench-bin
 pkgname=at32-work-bench
-pkgver=1.0.09
-pkgrel=2
+pkgver=1.1.01
+pkgrel=1
 # epoch=1
 pkgdesc="AT32 MCU 图形化配置软件，生成初始化 C 代码(目前仅支持 AT32F421 系列)"
 arch=('x86_64')
@@ -14,7 +14,10 @@ conflicts=()
 replaces=()
 depends=(
     bash
-    glibc)
+    gcc-libs
+    glib2
+    glibc
+    zlib)
 makedepends=(
     desktop-file-utils
     libarchive
@@ -28,24 +31,24 @@ MCU。'
     'at32-work-bench: AT32 MCU 图形化配置软件，生成初始化 C 代码(目前仅支持 AT32F421 系列)'
     'jlink-software-and-documentation: Segger JLink software & documentation pack for Linux')
 backup=()
-options=(!strip)
+options=('!strip' '!debug' '!lto')
 install=
 _pkg_file_name=AT32_Work_Bench_Linux-${arch}_V${pkgver}
 source=("${_pkg_file_name}.zip::https://www.arterytek.com/download/TOOL/${_pkg_file_name}.zip")
-sha256sums=('ebb64cdc0b2e21c2ea6e70c6715bf1eb828bac64d576573f5ea6a56f1540cf76')
+sha256sums=('8fe3d39454d32fdf649dedf8196191a46c309204c64c9b64c2a3faad826c456a')
 noextract=()
 
 package() {
     install -dm0755 "${pkgdir}/opt/artery32/"
 
-    bsdtar -xf  ${srcdir}/${_pkg_file_name}.deb -C ${srcdir}
+    bsdtar -xf ${srcdir}/${_pkg_file_name}.deb -C ${srcdir}
     bsdtar -xf ${srcdir}/data.tar.xz -C "${pkgdir}"
 
-    mv "${pkgdir}/usr/local"  "${pkgdir}/opt/artery32/${pkgname}"
+    mv "${pkgdir}/usr/local" "${pkgdir}/opt/artery32/${pkgname}"
 
     sed -i "s|/usr/local|/opt/artery32/${pkgname}|g" "${pkgdir}"/usr/share/applications/AT32_Work_Bench.desktop
 
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" << EOF
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/bin/bash
 cd /opt/artery32/${pkgname}/AT32_Work_Bench/
 bash AT32_Work_Bench.sh "\$@"
