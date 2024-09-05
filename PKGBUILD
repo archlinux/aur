@@ -1,7 +1,7 @@
 # Maintainer: Terrasse <terrasse@qq.com>
 pkgname=chsrc-git
-pkgver=20240905.r778.f869b6e
-pkgrel=3
+pkgver=20240905.r780.bf666fa
+pkgrel=1
 pkgdesc="A cli tool to change source for every software on every platform"
 arch=('x86_64') # TODO: add more archs
 url="https://github.com/RubyMetric/chsrc"
