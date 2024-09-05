@@ -1,0 +1,16 @@
+pkgbase = libhashsum
+	pkgdesc = Library for calculating the cryptographic hashes
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://codeberg.org/maandree/libhashsum
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	depends = libsha1
+	depends = libsha2
+	depends = libkeccak>=1.3
+	depends = libblake>=3.0
+	source = libhashsum-1.0.tar.gz::https://codeberg.org/maandree/libhashsum/archive/1.0.tar.gz
+	sha256sums = 3461a56113f9a56662243f5b92a22cad4b17c20f8e2b6395711806115b29ddfb
+
+pkgname = libhashsum
