@@ -2,7 +2,7 @@
 
 _pkgname=oscavmgr
 pkgname=$_pkgname-git
-pkgver=v0.4.0.r0.g158e64c
+pkgver=0.4.0.r0.158e64c
 pkgrel=1
 pkgdesc="VRChat OSC avatar tools with built-in VRCFaceTracking relay"
 url="https://github.com/galister/oscavmgr"
@@ -18,26 +18,26 @@ sha256sums=('SKIP')
 export CARGO_PROFILE_RELEASE_DEBUG=2
 
 pkgver() {
-	cd "$_pkgname"
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "$_pkgname"
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cd "$_pkgname"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "$_pkgname"
-	cargo build --frozen --release --all-features
+  cd "$_pkgname"
+  cargo build --frozen --release --all-features
 }
 
 check() {
-	cd "$_pkgname"
-	cargo test --frozen --all-features
+  cd "$_pkgname"
+  cargo test --frozen --all-features
 }
 
 package() {
-	cd "$_pkgname"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
+  cd "$_pkgname"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
 }

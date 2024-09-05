@@ -1,6 +1,6 @@
 pkgbase = oscavmgr-git
 	pkgdesc = VRChat OSC avatar tools with built-in VRCFaceTracking relay
-	pkgver = v0.4.0.r0.g158e64c
+	pkgver = 0.4.0.r0.158e64c
 	pkgrel = 1
 	url = https://github.com/galister/oscavmgr
 	arch = x86_64
