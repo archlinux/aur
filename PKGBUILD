@@ -12,7 +12,7 @@ license=('custom')
 depends=('git')
 source=(
     "${_pkgname}_v3.06.006.rpm::https://d-updater.i4.cn/i4linux/deb/${_pkgname}_${pkgver}.rpm"
-    "$_pkgname.desktop"
+    "$i4tools.desktop"
     "run.sh"
     "LICENSE.txt::https://www.i4.cn/copyright.html"
 )
