@@ -1,6 +1,6 @@
 pkgbase = dbgate-bin
 	pkgdesc = Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Runs under Windows, Linux, Mac or as web application
-	pkgver = 5.4.0
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = https://dbgate.org/
 	arch = aarch64
@@ -9,17 +9,17 @@ pkgbase = dbgate-bin
 	license = MIT
 	makedepends = fuse2
 	depends = electron30
-	provides = dbgate=5.4.0
+	provides = dbgate=5.4.1
 	conflicts = dbgate
-	source = LICENSE-5.4.0::https://raw.githubusercontent.com/dbgate/dbgate/v5.4.0/LICENSE
+	source = LICENSE-5.4.1::https://raw.githubusercontent.com/dbgate/dbgate/v5.4.1/LICENSE
 	source = dbgate.sh
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = dbgate-5.4.0-aarch64.AppImage::https://github.com/dbgate/dbgate/releases/download/v5.4.0/dbgate-5.4.0-linux_arm64.AppImage
-	sha256sums_aarch64 = 910f4f86287ea487976dbbc0a58fa3ef516960f9a6699bbb5a5a22e5428721f0
-	source_armv7h = dbgate-5.4.0-armv7h.AppImage::https://github.com/dbgate/dbgate/releases/download/v5.4.0/dbgate-5.4.0-linux_armv7l.AppImage
-	sha256sums_armv7h = 7a297e7bca6cd9013adb7254ef0c006ff3b65b2fec59b20272a5b21f280c289d
-	source_x86_64 = dbgate-5.4.0-x86_64.AppImage::https://github.com/dbgate/dbgate/releases/download/v5.4.0/dbgate-5.4.0-linux_x86_64.AppImage
-	sha256sums_x86_64 = 5803e47200c2027608f720f3fbcb0b5e44c875393a28d677417562ba3a3f05f3
+	source_aarch64 = dbgate-5.4.1-aarch64.AppImage::https://github.com/dbgate/dbgate/releases/download/v5.4.1/dbgate-5.4.1-linux_arm64.AppImage
+	sha256sums_aarch64 = b158de4c0a816bac27ae9e84fb5de449612dcb8f24653f6daca152dca420e0bf
+	source_armv7h = dbgate-5.4.1-armv7h.AppImage::https://github.com/dbgate/dbgate/releases/download/v5.4.1/dbgate-5.4.1-linux_armv7l.AppImage
+	sha256sums_armv7h = 57ef3cce2210455393f23d97bda7aabe9d4804ad41955f1de77cc4b020e48447
+	source_x86_64 = dbgate-5.4.1-x86_64.AppImage::https://github.com/dbgate/dbgate/releases/download/v5.4.1/dbgate-5.4.1-linux_x86_64.AppImage
+	sha256sums_x86_64 = 02e536255ba2d6d98a1bafc3e16fe46d6bf95a5e7bd58bc4d49a3a374c69a30c
 
 pkgname = dbgate-bin
