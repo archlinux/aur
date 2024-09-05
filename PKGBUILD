@@ -5,7 +5,7 @@
 pkgname=perl-net-sftp-foreign
 _dist=Net-SFTP-Foreign
 pkgver=1.93
-pkgrel=2
+pkgrel=3
 pkgdesc='SSH File Transfer Protocol client using the native SSH client'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
