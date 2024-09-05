@@ -1,15 +1,15 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=cmd-wrapped
-pkgver=0.2.0
+pkgver=0.4.1
 pkgrel=1
-pkgdesc="Find out what the past year looks like in command line!"
+pkgdesc="Rust-Based Shell History Analyzer"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/YiNNx/${pkgname}"
 license=('MIT')
 makedepends=("cargo")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('06f21be755a0a0b362472bbe565391c26056d27aeed6ca81457a9b7977f553e6')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('f40fd675c5a3d962cdb5773f070e27c2886189076ce08779da93a5a39ce32566')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -30,6 +30,6 @@ check() {
 package() {
     cd "${pkgname}-${pkgver}"
     install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 License "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" *.md
+    install -Dm644 LICNESE                     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 *.md                     -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
