@@ -1,7 +1,7 @@
 # Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
 
 pkgname=python-masakariclient
-pkgver=8.4.0
+pkgver=8.5.0
 pkgrel=1
 pkgdesc="Python client for Masakari REST API"
 arch=(any)
@@ -29,7 +29,7 @@ checkdepends=('python-hacking'
               'python-testscenarios'
               'python-testtools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('62d0f5a6ceadd6769433485d5da3715a22f036fb1817740aa43f0ce89989a1574e6f9dca49ec9f5929f5c4a5dd2b850306811da67889899717708b0e285151f4')
+b2sums=('57f3172344fc34fcf55887820da5ec6192ed3487d3ee00877407b7f1e80516c7cec3385498178cfc623dfdfc621df1bb258cfedefb5d71bb96b564d3ad69c2b4')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
