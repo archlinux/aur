@@ -1,33 +1,33 @@
+# Maintainer: Jax Young <jaxvanyang@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
 
 _pkgname=python-jenkins
 pkgname=python-$_pkgname
-pkgver=1.8.0
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="A python wrapper for the Jenkins REST API which aims to provide a more conventionally pythonic way of controlling a Jenkins server"
 url='https://opendev.org/jjb/python-jenkins/'
 license=('BSD')
 arch=('any')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 depends=(
-  'python'
   'python-six>=1.3.0'
   'python-pbr>=0.8.2'
   'python-multi_key_dict'
   'python-requests'
 )
-source=("https://pypi.io/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('b08ab34af3cd37ab997577573e4e22bf1d2c4d14e2ec203d34df9b7c66f105bf98b570832a4b020cd0d42918ee35549ea03fc84aeb99ae1df5f3a9e86396a8e5')
+source=("$_pkgname-$pkgver.tar.gz::https://opendev.org/jjb/$_pkgname/archive/$pkgver.tar.gz")
+sha512sums=('da0da245b7df2a08d1f9d715682abc95d3e5baa514223ad6a39b8e6cd93c9c58b819d01c8a040c989e073bcd2e9815cf6cab5d3999a4a71b24316486b701afc8')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py build
+  cd "$_pkgname"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd "$_pkgname"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -D COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
