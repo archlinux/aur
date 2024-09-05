@@ -1,7 +1,7 @@
 pkgbase = python-pymobiledevice3
 	pkgdesc = Pure python3 implementation for working with iDevices
 	pkgver = 4.13.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/doronz88/pymobiledevice3
 	arch = any
 	license = GPL3
@@ -20,7 +20,7 @@ pkgbase = python-pymobiledevice3
 	depends = python-click
 	depends = python-coloredlogs
 	depends = ipython
-	depends = python-bpylist2
+	depends = python-bpylist2-git
 	depends = python-pygments
 	depends = python-hexdump
 	depends = python-arrow

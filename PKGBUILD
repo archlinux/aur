@@ -3,14 +3,14 @@
 pkgname=python-pymobiledevice3
 _pkgname=pymobiledevice3
 pkgver=4.13.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Pure python3 implementation for working with iDevices'
 arch=('any')
 url='https://github.com/doronz88/pymobiledevice3'
 license=('GPL3')
 depends=(
   'openssl' 'libusb' 'python' 'python-construct' 'python-asn1'
-  'python-click' 'python-coloredlogs' 'ipython' 'python-bpylist2' 'python-pygments'
+  'python-click' 'python-coloredlogs' 'ipython' 'python-bpylist2-git' 'python-pygments'
   'python-hexdump' 'python-arrow' 'python-daemonize' 'python-gpxpy' 'python-pykdebugparser'
   'python-pyusb' 'python-tqdm' 'python-requests' 'xonsh' 'python-parameter-decorators'
   'python-packaging' 'python-pygnuutils' 'python-cryptography' 'python-pycrashreport' 'python-fastapi'
