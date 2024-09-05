@@ -2,7 +2,7 @@
 
 pkgname=blazefetch-git
 _pkgname=blazefetch
-pkgver=2.9.0.106bb3f.git
+pkgver=2.9.3.25a7897.git
 pkgrel=1
 pkgdesc='A lite & blazing fast system info fetch utility'
 arch=('any')
