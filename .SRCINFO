@@ -1,23 +1,25 @@
 pkgbase = librdkafka-git
-	pkgdesc = Apache Kafka C driver library
-	pkgver = 1.2.2.RC1.r0.gda83c934
+	pkgdesc = The Apache Kafka C/C++ library
+	pkgver = 2.5.3.r0.9416dd8
 	pkgrel = 1
-	url = https://github.com/edenhill/librdkafka
-	arch = i686
+	url = https://github.com/confluentinc/librdkafka
+	changelog = CHANGELOG.md
 	arch = x86_64
-	arch = armv7h
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = git
 	makedepends = python
+	makedepends = rapidjson
+	depends = curl
+	depends = gcc-libs
 	depends = glibc
+	depends = libsasl
+	depends = lz4
+	depends = openssl
 	depends = zlib
-	optdepends = openssl
-	optdepends = libsasl
-	optdepends = lz4
-	provides = librdkafka
+	depends = zstd
+	provides = librdkafka=2.5.3.r0.9416dd8
 	conflicts = librdkafka
-	source = git+https://github.com/edenhill/librdkafka
-	sha256sums = SKIP
+	source = librdkafka::git+https://github.com/confluentinc/librdkafka
+	b2sums = SKIP
 
 pkgname = librdkafka-git
-

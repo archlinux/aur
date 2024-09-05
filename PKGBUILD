@@ -1,36 +1,56 @@
-# Maintainer: Alim Gokkaya <alimgokkaya@gmail.com>
+# Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+# Contributor: Alim Gokkaya <alimgokkaya@gmail.com>
 # Contributor: Seth Girvan <snth@snthhacks.com>
 
 pkgname=librdkafka-git
-pkgver=1.2.2.RC1.r0.gda83c934
+pkgver=2.5.3.r0.9416dd8
 pkgrel=1
-pkgdesc='Apache Kafka C driver library'
-url="https://github.com/edenhill/librdkafka"
-license=('BSD')
-source=(git+https://github.com/edenhill/librdkafka)
-arch=(i686 x86_64 armv7h)
-provides=(librdkafka)
-conflicts=(librdkafka)
-depends=(glibc zlib)
-optdepends=(openssl libsasl lz4)
-makedepends=(git python)
-sha256sums=('SKIP')
+pkgdesc='The Apache Kafka C/C++ library'
+arch=(x86_64)
+url='https://github.com/confluentinc/librdkafka'
+license=('BSD-2-Clause')
+depends=('curl'
+         'gcc-libs'
+         'glibc'
+         'libsasl'
+         'lz4'
+         'openssl'
+         'zlib'
+         'zstd')
+makedepends=('git'
+             'python'
+             'rapidjson')
+conflicts=('librdkafka')
+provides=("${pkgname%-git}=${pkgver}")
+source=("${pkgname%-git}::git+$url")
+changelog="CHANGELOG.md"
+b2sums=('SKIP')
 
 pkgver() {
-  cd librdkafka
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${pkgname%-git}"
+    printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-  cd librdkafka
-  # Use this line to compile with debugging symbols
-  # ./configure --prefix=/usr --debug
-  ./configure --prefix=/usr
-  make
+    cd "${pkgname%-git}"
+    ./configure --prefix=/usr
+    make
+}
+
+check() {
+    cd "${pkgname%-git}"
+    make -k check
 }
 
 package() {
-  cd librdkafka
-  make install DESTDIR="$pkgdir"
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "${pkgname%-git}"
+    make DESTDIR="$pkgdir" install
+    install -vDm644 README.md -t "$pkgdir/usr/share/${pkgname%-git}/"
+    install -vDm644 CONFIGURATION.md -t "$pkgdir/usr/share/${pkgname%-git}/"
+    install -vDm644 CONTRIBUTING.md -t "$pkgdir/usr/share/${pkgname%-git}/"
+    install -vDm644 CODE_OF_CONDUCT.md -t "$pkgdir/usr/share/${pkgname%-git}/"
+    for license in $(ls ./LICENSE*);
+    do
+        install -vDm644 "$license" -t "$pkgdir/usr/share/licenses/${pkgname%-git}/"
+    done 
 }
