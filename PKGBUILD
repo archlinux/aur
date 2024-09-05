@@ -4,7 +4,7 @@
 pkgname=perl-pgplot
 _dist=PGPLOT
 pkgver=2.32
-pkgrel=1
+pkgrel=2
 pkgdesc='PGPLOT module for Perl'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
