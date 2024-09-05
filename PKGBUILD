@@ -3,7 +3,7 @@
 pkgname=perl-net-amazon-signature-v4
 _dist=Net-Amazon-Signature-V4
 pkgver=0.21
-pkgrel=4
+pkgrel=5
 pkgdesc='Implements the Amazon Web Services signature version 4, AWS4-HMAC-SHA256'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
