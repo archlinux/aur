@@ -5,11 +5,11 @@ function echoGitCMDForSubModule {
     gitCMDName="git "
     subModuleGitCMD+="$gitCMDName"
     for subName in "${!subCommit[@]}"; do
-        configUrl="-c submodule.${subName}.url=\"\$srcdir/${subName//\//|}\" \\"
+        configUrl="-c submodule.${subName}.url=\"\${srcdir}/${subName//\//|}\" \\"
         subModuleGitCMD+="$configUrl"$'\n'$(printf %"${#gitCMDName}"s)
         ((count++))
     done
-    subModuleGitCMD+="-c protocol.file.allow=always submodule update --init --progress"
+    subModuleGitCMD+='-c protocol.file.allow=always submodule update'
     echo "$subModuleGitCMD"
 }
 
@@ -93,7 +93,7 @@ if ! type git > /dev/null 2>&1; then
 fi
 
 gitRepo=${_repo:-$PWD}
-gitModulesStatus=$(git -C "$gitRepo" submodule status --recursive)
+gitModulesStatus=$(git submodule status --recursive --cached -- "$gitRepo")
 if [[ -z $gitModulesStatus ]]; then
     printUsage
     echo "No submodule in '$gitRepo', aborting..." && exit 1
@@ -104,9 +104,8 @@ fi
 # Submodule's Commit Array
 declare -A subCommit
 IFS=$'\n' && for line in $gitModulesStatus; do
-    name=${line#* }
-    commit=${line% *}
-    subCommit+=(["$name"]="${commit:1}")
+    line=${line:1}; line=${line% (*)}
+    subCommit+=(["${line#* }"]="${line% *}")
 done && unset IFS
 
 case "$1" in
