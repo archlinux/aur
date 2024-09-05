@@ -1,6 +1,6 @@
 # Maintainer: pkg_maintainer <archlinuxpackagemaintainer@gmail.com>
 pkgname=websurfx-edge-git
-pkgver=v1.16.10.r0.g408858a
+pkgver=v1.17.21.r0.g948d20d
 pkgrel=1
 epoch=
 pkgdesc="An open-source alternative to Searx that provides clean, ad-free, and organic results with incredible speed while keeping privacy and security in mind."
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/neon-mmd/websurfx"
 license=('AGPL3')
 groups=()
-depends=(rustup cargo luajit)
+depends=(rustup cargo mold)
 makedepends=(git)
 checkdepends=()
 optdepends=('redis: A redis cache server for distributed caching')
@@ -31,7 +31,7 @@ pkgver() {
 
 build() {
     export PKG_ENV="prod"
-    export RUSTFLAGS="-C target-cpu=native"
+    export RUSTFLAGS="-C target-cpu=native -C link-arg=-fuse-ld=mold"
 	cd websurfx
 	cargo build -r --features "cec-cache-results, experimental-io-uring, use-non-static-synonyms-search"
 }
