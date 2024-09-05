@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur@engestrom.ch>
 
 pkgname=fex-emu
-pkgver=2408
+pkgver=2409
 pkgrel=1
 pkgdesc='Fast usermode x86 and x86-64 emulator for Arm64'
 url=https://fex-emu.com
@@ -20,16 +20,12 @@ source=("git+https://github.com/FEX-Emu/FEX#tag=FEX-$pkgver"
         "git+https://github.com/fmtlib/fmt"
         "git+https://github.com/Sonicadvance1/imgui"
         "git+https://github.com/FEX-Emu/jemalloc"
-        "git+https://github.com/Sonicadvance1/json-maker"
         "git+https://github.com/FEX-Emu/robin-map"
-        "git+https://github.com/Sonicadvance1/tiny-json"
         "git+https://github.com/FEX-Emu/vixl"
         "git+https://github.com/herumi/xbyak"
         "git+https://github.com/Cyan4973/xxhash"
         )
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -58,9 +54,7 @@ prepare() {
     fmt \
     imgui \
     jemalloc \
-    json-maker \
     robin-map \
-    tiny-json \
     vixl \
     xbyak \
     xxhash \
@@ -88,10 +82,10 @@ build() {
 
   if command -V ld.mold &>/dev/null
   then
-    FEX_OPTIONS+=(-D ENABLE_MOLD=True)
+    FEX_OPTIONS+=(-D USE_LINKER=True)
   elif command -V ld.lld &>/dev/null
   then
-    FEX_OPTIONS+=(-D ENABLE_LLD=True)
+    FEX_OPTIONS+=(-D USE_LINKER=lld)
   fi
 
   CC=clang \
