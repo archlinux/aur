@@ -1,7 +1,7 @@
 pkgbase = estuary
 	pkgdesc = A registry for Rust crates
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/onelson/estuary
 	install = estuary.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = estuary
 	license = MIT
 	makedepends = cargo
 	depends = git
+	depends = libgit2
 	backup = etc/estuary/estuary.env
 	source = estuary-0.1.1.tar.gz::https://github.com/onelson/estuary/archive/refs/tags/v0.1.1.tar.gz
 	source = estuary.service
