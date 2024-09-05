@@ -1,6 +1,6 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-sk
-pkgver=3.15.0.sk.1
+pkgver=3.15.4.sk.1
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
