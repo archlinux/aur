@@ -3,12 +3,13 @@
 pkgname=python-bpylist2-git
 _pkgname=bpylist2
 pkgver=3.0.3.r3.gddb89e0
-pkgrel=1
+pkgrel=2
 pkgdesc='Parse and Generate binary plists and NSKeyedArchiver archives'
 arch=('any')
 url='https://github.com/parabolala/bpylist2'
 license=('MIT')
 provides=('python-bpylist2')
+conflicts=('python-bpylist2')
 depends=('python')
 makedepends=('git' 'python-build' 'python-wheel' 'python-installer' 'python-poetry-core')
 checkdepends=('python-pytest')
