@@ -1,7 +1,7 @@
 pkgbase = perl-alien-build-plugin-pkgconfig-ppwrapper
 	pkgdesc = Alien::Build plugin to ensure the pure perl PkgConfig is not run by the MSYS perl
 	pkgver = 0.03
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/release/Alien-Build-Plugin-PkgConfig-PPWrapper
 	arch = any
 	license = GPL-1.0-or-later OR Artistic-1.0-Perl
