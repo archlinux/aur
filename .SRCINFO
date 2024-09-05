@@ -15,7 +15,7 @@ pkgbase = flowtime
 	depends = libgee
 	depends = libportal-gtk4
 	depends = libxml2
-	source = git+https://github.com/Diego-Ivan/Flowtime.git#commit=e6bc082a30e2e135086ad91435451b7da3751465
+	source = git+https://github.com/Diego-Ivan/Flowtime.git#tag=v6.5
 	sha256sums = c00589598d5ede19365f1d3eb4107df230b4b43951ce4c5d42e19b6ba734d0c0
 
 pkgname = flowtime

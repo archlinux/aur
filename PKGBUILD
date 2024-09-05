@@ -10,14 +10,8 @@ license=('GPL-3.0-or-later')
 depends=('libadwaita' 'libgee' 'libportal-gtk4' 'libxml2')
 makedepends=('blueprint-compiler' 'git' 'meson' 'vala')
 checkdepends=('appstream-glib')
-_commit=e6bc082a30e2e135086ad91435451b7da3751465  # tags/6.5^0
-source=("git+https://github.com/Diego-Ivan/Flowtime.git#commit=${_commit}")
+source=("git+https://github.com/Diego-Ivan/Flowtime.git#tag=v$pkgver")
 sha256sums=('c00589598d5ede19365f1d3eb4107df230b4b43951ce4c5d42e19b6ba734d0c0')
-
-pkgver() {
-  cd Flowtime
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
 
 build() {
   arch-meson Flowtime build
