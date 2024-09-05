@@ -1,13 +1,14 @@
 pkgbase = ccstheia
-	pkgdesc = Texas Instruments Code Composer Studio Theia
+	pkgdesc = Texas Instruments Code Composer Studio Theia including SDKs and libraries
 	pkgver = 1.4.1.00001
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ti.com/
 	arch = x86_64
 	license = custom
 	makedepends = glibc
 	depends = gtk3
 	depends = python2
+	depends = mono
 	depends = ncurses5-compat-libs
 	depends = libxcrypt-compat
 	depends = libusb-compat
@@ -15,6 +16,10 @@ pkgbase = ccstheia
 	optdepends = ttf-dejavu
 	options = !strip
 	source = https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-63JH5Zr6eq/1.4.1/CCSTheia1.4.1.00001_linux-x64.zip
+	source = https://dr-download.ti.com/software-development/software-development-kit-sdk/MD-PIrUeCYr3X/03.06.02.00-LTS/mmwave_sdk_03_06_02_00-LTS-Linux-x86-Install.bin
+	source = https://dr-download.ti.com/software-development/driver-or-library/MD-j4KPuQRRxY/3.4.0.0/dsplib_c64Px_3_4_0_0_Linux.bin
 	md5sums = 486498dc96bc70d85316804995adf534
+	md5sums = 1220a008af85c1cc97a2a8648c7f6c7c
+	md5sums = 680a83b923237913b744c6dca9104d30
 
 pkgname = ccstheia
