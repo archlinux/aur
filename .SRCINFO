@@ -1,0 +1,16 @@
+pkgbase = yolx-bin
+	pkgdesc = A modern download tool developed with Flutter, powered by 'Aria 2' at its core.
+	pkgver = 0.3.9+1
+	pkgrel = 1
+	url = https://github.com/uiYzzi/Yolx
+	arch = x86_64
+	license = GPL
+	depends = fuse2fs
+	depends = libayatana-appindicator
+	depends = libayatana-indicator
+	provides = yolx-bin
+	options = !strip
+	source = https://github.com/uiYzzi/Yolx/releases/download/0.3.9+1/yolx-linux-0.3.9+1.deb
+	sha512sums = 563b28d6d7c3273e6d2f9ce5ebb60e261f4832efccc4d89dfa75007803e3fb639f7210bd52c80ab8dccb0748346a7e3dd5d82df0e6c9c9a5883dddf13c24f6f7
+
+pkgname = yolx-bin
