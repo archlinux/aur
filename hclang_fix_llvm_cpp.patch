@@ -1,0 +1,11 @@
+--- a/src/parser/llvm.cpp	2024-09-05 17:58:13.472887611 +0300
++++ b/src/parser/llvm.cpp	2024-09-05 17:59:32.430725268 +0300
+@@ -1349,7 +1349,7 @@
+                                            "fptoi64cast");
+             break;
+         case hct::Pointer: {
+-            auto ftou = pc.builder.CreateFPToUI(exprLLVM, llvm::Type::getInt64PtrTy(pc.context),
++            auto ftou = pc.builder.CreateFPToUI(exprLLVM, llvm::Type::getInt64Ty(pc.context)->getPointerTo(),
+                                                 "f64tou64cast");
+             return pc.builder.CreateIntToPtr(ftou, llvmTypeFrom(mExpr->getType(), pc),
+                                              "f64topcast");

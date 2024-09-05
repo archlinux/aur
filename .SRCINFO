@@ -1,0 +1,24 @@
+pkgbase = hclang-git
+	pkgdesc = A Holy C compiler. Targets LLVM.
+	pkgver = r82.4b54855
+	pkgrel = 1
+	url = https://github.com/Ma11ock/holyc
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = cmake>=3.20
+	makedepends = git
+	makedepends = llvm>=14
+	depends = fmt
+	depends = gcc-libs
+	depends = glibc
+	depends = llvm-libs
+	provides = hclang
+	conflicts = hclang
+	source = holyc::git+https://github.com/Ma11ock/holyc.git
+	source = hclang_use_system_deps.patch
+	source = hclang_fix_llvm_cpp.patch
+	sha256sums = SKIP
+	sha256sums = 9902113e41800e5b968251fe96bb4a53d5a96f02037fd45b070cd157d94e5abd
+	sha256sums = eaf4582a7731c9684044c21541777a30ca6e1353898ce8e671c6a2a15b5b80a8
+
+pkgname = hclang-git

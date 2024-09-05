@@ -1,0 +1,98 @@
+--- b/CMakeLists.txt	2024-09-05 17:29:57.480485508 +0300
++++ a/CMakeLists.txt	2024-09-05 17:38:23.304635276 +0300
+@@ -14,9 +14,7 @@
+ 
+ project(hclang)
+ 
+-# Fmtlib
+-add_subdirectory(external/fmt)
+-set(HCLANG_FMT_PATH external/fmt/include)
++find_package(fmt REQUIRED)
+ 
+ # Hclang source directory.
+ add_subdirectory(src)
+
+--- a/src/CMakeLists.txt 2024-09-05 17:43:33.494455139 +0300
++++ b/src/CMakeLists.txt        2024-09-05 17:45:32.976384120 +0300
+@@ -63,26 +63,14 @@
+   endif()
+ endif()
+ 
+-# Dependencies
+-# LLVM
+-find_package(LLVM REQUIRED CONFIG)
+-# Link everything else to main.cpp
+-
++# Linking the main executable with the library.
+ target_link_libraries(${BINARY_FINAL} PUBLIC ${BINARY})
+-message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
+-message(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
+-
+-# Linking
+ 
++# LLVM
++find_package(LLVM REQUIRED CONFIG)
+ llvm_map_components_to_libnames(llvm_libs support core irreader)
+ 
+-if(CMAKE_BUILD_TYPE STREQUAL "debug")
+-target_compile_options(${BINARY} PRIVATE
+-    $<$<OR:$<C_COMPILER_ID:Clang>,$<C_COMPILER_ID:AppleClang>,$<C_COMPILER_ID:GNU>>:
+-         -Wall -Wextra -Wconversion -Wsign-conversion>
+-         )
+-endif()
+-
++# Linking the library with LLVM and fmt.
+ target_link_libraries(
+   ${BINARY}
+   PUBLIC
+@@ -92,23 +80,30 @@
+   LLVM)
+ 
+ # Include directories.
+-target_include_directories(${BINARY} PUBLIC ${HCLANG_FMT_PATH})
+ target_include_directories(${BINARY} PUBLIC ${LLVM_INCLUDE_DIRS})
+ 
+-#set_target_properties(${BINARY} PROPERTIES LINK_FLAGS_RELEASE -s)
++# Compile features.
+ target_compile_features(${BINARY} PUBLIC cxx_std_17)
+ target_compile_features(${BINARY} PUBLIC c_std_99)
+ 
+-# Definitions
+-target_compile_definitions(${BINARY} PUBLIC ${LLVM_DEFINITIONS})
+-
+-
+-add_custom_target(run
+-  COMMAND ${BINARY_FINAL}
+-  DEPENDS ${BINARY_FINAL}
+-  WORKING_DIRECTORY ../)
++# Compile options for debug build.
++if(CMAKE_BUILD_TYPE STREQUAL "debug")
++  target_compile_options(${BINARY} PRIVATE
++    $<$<OR:$<C_COMPILER_ID:Clang>,$<C_COMPILER_ID:AppleClang>,$<C_COMPILER_ID:GNU>>:
++      -Wall -Wextra -Wconversion -Wsign-conversion>
++  )
++endif()
+ 
++# Install the library to lib/ and the executable to bin/.
+ install(TARGETS ${BINARY}
++  DESTINATION lib/
++  PERMISSIONS
++  OWNER_READ
++  GROUP_READ
++  WORLD_READ
++  )
++
++install(TARGETS ${BINARY_FINAL}
+   DESTINATION bin/
+   PERMISSIONS
+   OWNER_READ
+@@ -120,4 +115,9 @@
+   WORLD_EXECUTE
+   )
+ 
++add_custom_target(run
++  COMMAND ${BINARY_FINAL}
++  DEPENDS ${BINARY_FINAL}
++  WORKING_DIRECTORY ../)
++
+ # For the install script
