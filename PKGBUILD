@@ -5,7 +5,7 @@ _platform=x86_64-w64-mingw32
 
 pkgname=mingw-w64-x86_64-$_name
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 pkgdesc="Regex functionality from glibc for amd64 platform (mingw-w64)"
 makedepends=(mingw-w64-gcc)
@@ -33,7 +33,8 @@ build() {
 }
 
 package() {
-	cd    "$srcdir/mingw-$_name-$pkgver"
+	cd "$srcdir/mingw-$_name-$pkgver"
+	install -d "$pkgdir/usr/$_platform/include"
 	make  DESTDIR="$pkgdir" install
     find  "$pkgdir/usr/$_platform" -name '*.exe' | xargs -rtL1 rm
     find  "$pkgdir/usr/$_platform" -name '*.dll' | xargs -rtL1 $_platform-strip -x
