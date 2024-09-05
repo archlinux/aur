@@ -3,7 +3,7 @@
 pkgname=perl-alien-build-plugin-cleanse-builddir
 _dist=Alien-Build-Plugin-Cleanse-BuildDir
 pkgver=0.06
-pkgrel=3
+pkgrel=4
 pkgdesc='Alien::Build plugin to cleanse the build dir after the build phase'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 
