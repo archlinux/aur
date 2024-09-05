@@ -1,0 +1,30 @@
+pkgbase = mp3splt-gtk-bin
+	pkgdesc = Split mp3, ogg, and flac files without decoding - GTK3 GUI
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://mp3splt.sourceforge.net
+	arch = x86_64
+	arch = i686
+	license = GPL-2.0-or-later
+	depends = at-spi2-core
+	depends = cairo
+	depends = dbus
+	depends = dbus-glib
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gstreamer>=1.0
+	depends = gtk3>=3.4.2
+	depends = libaudclient>=3.0
+	depends = libmp3splt=0.9.2
+	depends = pango
+	provides = mp3splt-gtk
+	conflicts = mp3splt-gtk
+	noextract = mp3splt-gtk-0.9.2-x86_64.deb
+	noextract = mp3splt-gtk-0.9.2-i686.deb
+	source_x86_64 = mp3splt-gtk-0.9.2-x86_64.deb::https://downloads.sourceforge.net/sourceforge/mp3splt/mp3splt-gtk_0.9.2.wheezy_amd64.deb
+	sha256sums_x86_64 = 2401a8fbd08cff585317ba4a036bbb8007fbbe72e3ef8ba94a72a58e5cc0ba2b
+	source_i686 = mp3splt-gtk-0.9.2-i686.deb::https://downloads.sourceforge.net/sourceforge/mp3splt/mp3splt-gtk_0.9.2.wheezy_i386.deb
+	sha256sums_i686 = f823d03ce7428ea8dbf0d741afdbb38f226e2c1f9e48fd19aa9966f2c254d9b7
+
+pkgname = mp3splt-gtk-bin
