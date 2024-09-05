@@ -6,7 +6,7 @@
 
 pkgname='perl-graph'
 _dist='Graph'
-pkgver='0.9729'
+pkgver='0.9732'
 pkgrel='1'
 pkgdesc='graph data structures and algorithms'
 url='https://metacpan.org/release/Graph'
@@ -20,7 +20,7 @@ depends=(
 )
 
 source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz")
-b2sums=('f102a035f975efdd07af98a8323ee83be1f41e5170475fe14bd2d7e966d5b4fa2ff7730c69fe912d9884a3d89b4443e5976702e7cfd86098a9935ef2a2a84acd')
+b2sums=('8c5bffe218d252e4e32796876ce43b7aa9e03b95cb70614af391325c82d44492649929fecf1dd556653fbfbacd8bac041a61cf9c21e993086e7fd5fe7d7d2acb')
 
 build() {
   cd "$srcdir/$_dist-$pkgver" || exit
