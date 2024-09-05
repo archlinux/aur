@@ -1,0 +1,19 @@
+pkgbase = python-bpylist2-git
+	pkgdesc = Parse and Generate binary plists and NSKeyedArchiver archives
+	pkgver = 3.0.3.r3.gddb89e0
+	pkgrel = 1
+	url = https://github.com/parabolala/bpylist2
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	provides = python-bpylist2
+	source = python-bpylist2-git-latest::git+https://github.com/parabolala/bpylist2.git#commit=HEAD
+	sha256sums = SKIP
+
+pkgname = python-bpylist2-git
