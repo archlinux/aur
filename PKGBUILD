@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=devtoolbox
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Development tools at your fingertips"
 arch=('any')
 url="https://github.com/aleiepure/devtoolbox"
@@ -36,16 +36,16 @@ depends=(
   'python-uuid6'
   'webkitgtk-6.0'
 )
-makedepends=('blueprint-compiler' 'git' 'meson')
-checkdepends=('appstream-glib')
-_commit=26c22455e6fb31658978d438acc2ea1b9aed740d  # tags/v1.1.1^0
-source=("git+https://github.com/aleiepure/devtoolbox#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
+makedepends=(
+  'blueprint-compiler'
+  'git'
+  'meson'
+)
+checkdepends=(
+  'appstream-glib'
+)
+source=("git+https://github.com/aleiepure/devtoolbox#tag=v$pkgver")
+sha256sums=('987aa3d16fbd02f5b5ac3b249673f3f5b6806be076a782be04078dea1e9fb30b')
 
 build() {
   arch-meson "$pkgname" build

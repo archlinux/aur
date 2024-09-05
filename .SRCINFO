@@ -1,7 +1,7 @@
 pkgbase = devtoolbox
 	pkgdesc = Development tools at your fingertips
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aleiepure/devtoolbox
 	arch = any
 	license = CC0-1.0 AND GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT AND Unlicense
@@ -37,7 +37,7 @@ pkgbase = devtoolbox
 	depends = python-tzlocal
 	depends = python-uuid6
 	depends = webkitgtk-6.0
-	source = git+https://github.com/aleiepure/devtoolbox#commit=26c22455e6fb31658978d438acc2ea1b9aed740d
-	sha256sums = SKIP
+	source = git+https://github.com/aleiepure/devtoolbox#tag=v1.1.1
+	sha256sums = 987aa3d16fbd02f5b5ac3b249673f3f5b6806be076a782be04078dea1e9fb30b
 
 pkgname = devtoolbox
