@@ -5,4 +5,4 @@ export LIBGL_ALWAYS_SOFTWARE=1
 export GDK_BACKEND=x11
 
 # Launch the modrinth app
-exec /opt/modrinth-app/modrinth-app "$@"
+exec /opt/modrinth-app/theseus_gui "$@"

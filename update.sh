@@ -22,8 +22,6 @@ if ! git diff --quiet HEAD PKGBUILD; then
   git add PKGBUILD .SRCINFO
 
   git commit -m "Updated version to ${pkgver}-${pkgrel}"
-
-  git push origin master
 else
   echo "No updates found!"
 fi
