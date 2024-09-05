@@ -1,6 +1,6 @@
 pkgbase = cargo-duplicates
 	pkgdesc = Cargo subcommand for displaying when different versions of a same dependency ...
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://crates.io/crates/cargo-duplicates
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = cargo-duplicates
 	makedepends = cargo
 	depends = gcc-libs
 	depends = curl
-	source = cargo-duplicates-0.6.0.tar.gz::https://crates.io/api/v1/crates/cargo-duplicates/0.6.0/download
-	sha512sums = f3f5ebde062f9acad355f3e1922383d705312cfe1382b11a2194c948364472dc3be0fde6eb919248924c3865dcc9d4138673d737ea06dc582f206770cd092a40
+	source = cargo-duplicates-0.7.0.tar.gz::https://crates.io/api/v1/crates/cargo-duplicates/0.7.0/download
+	sha512sums = 0d25a04413aab445c108bda6b9b7c8279ea3c80140c06a37f351c64933ea311cd57e660141c448185212372eb7e9e187a6440829e49e2c074434f7307e5b1486
 
 pkgname = cargo-duplicates
