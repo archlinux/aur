@@ -1,7 +1,7 @@
 pkgbase = python-docx
 	pkgdesc = A Python library for creating and updating Microsoft Word (.docx) files
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python-openxml/python-docx
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = python-docx
 	makedepends = python-wheel
 	depends = python
 	depends = python-lxml
+	depends = python-typing_extensions
 	options = !emptydirs
 	source = https://github.com/python-openxml/python-docx/archive/v1.1.2.tar.gz
 	md5sums = b86345b5a408a651434c3dd89e368dec
