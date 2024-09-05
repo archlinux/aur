@@ -9,22 +9,19 @@ pkgname=(
   "python-${_pkg}")
 pkgbase="${pkgname}"
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Whois querying and parsing of domain registration information"
 arch=(
-  x86_64
-  i686
-  pentium4
-  aarch64
-  armv7h
+  any
 )
 url="https://bitbucket.org/richardpenman/${_name}"
-license=( 'CUSTOM' )
+license=('MIT')
 depends=(
   "python"
+  "python-dateutil"
+  "python-pysocks"
 )
 makedepends=(
-  "python"
   "python-setuptools"
 )
 install=
@@ -40,13 +37,9 @@ sha512sums=('a96a68e6ab8f1de181fd401895e6c46cdce8185a0b1815df5fb96ac0f68e12d04d7
             '8cf4065e880c751354fffe41f513b95c6bad6bd28033d7a660bd52636cae0c313f9b60f4c53234320699fc0b44d9e4b42bb06f543733b41e0de07a68068099d1')
 
 package_python-whois() {
-  depends=(
-    'python'
-    'python-future'
-)
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" \
                           --optimize=1
   install -Dm 0644 ${srcdir}/LICENSE \
-          "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+          "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
