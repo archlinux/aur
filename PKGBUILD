@@ -3,7 +3,7 @@
 pkgname=perl-pdl-graphics-colorspace
 _dist=PDL-Graphics-ColorSpace
 pkgver=0.203
-pkgrel=3
+pkgrel=4
 pkgdesc='Image color space conversions'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 

@@ -1,7 +1,7 @@
 pkgbase = perl-pdl-graphics-colorspace
 	pkgdesc = Image color space conversions
 	pkgver = 0.203
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/release/PDL-Graphics-ColorSpace
 	arch = i686
 	arch = x86_64
