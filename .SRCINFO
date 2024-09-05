@@ -1,0 +1,20 @@
+pkgbase = mp3splt-bin
+	pkgdesc = Split mp3, ogg, and flac files without decoding - CLI
+	pkgver = 2.6.2
+	pkgrel = 1
+	url = https://mp3splt.sourceforge.net
+	arch = x86_64
+	arch = i686
+	license = GPL-2.0-or-later
+	depends = glibc
+	depends = libmp3splt>=0.9.2
+	provides = mp3splt
+	conflicts = mp3splt
+	noextract = mp3splt-2.6.2-x86_64.deb
+	noextract = mp3splt-2.6.2-i686.deb
+	source_x86_64 = mp3splt-2.6.2-x86_64.deb::https://downloads.sourceforge.net/sourceforge/mp3splt/mp3splt_2.6.2.wheezy_amd64.deb
+	sha256sums_x86_64 = 28520203c23d9cc00346779b731ce753f44e3f8503400d2bd46ceb9257b667ad
+	source_i686 = mp3splt-2.6.2-i686.deb::https://downloads.sourceforge.net/sourceforge/mp3splt/mp3splt_2.6.2.wheezy_i386.deb
+	sha256sums_i686 = a59ef6da1dc5265076f14c92de126c180f29cde85d7af6ffd275c824dfd329cf
+
+pkgname = mp3splt-bin
