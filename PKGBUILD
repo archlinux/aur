@@ -1,7 +1,7 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=(python-specklepy)
-pkgver=2.17.17
-pkgrel=2
+pkgver=2.19.6
+pkgrel=1
 pkgdesc="The Python SDK for Speckle 2.0"
 arch=('x86_64' 'i686')
 url="https://github.com/specklesystems/speckle-py"
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 _name=${pkgname#python-}
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-md5sums=('8b932e2f7b1b57dcc43c6718bcef6e40')
+md5sums=('d7d32a3532195007c3f23fc70ad169a5makepkg')
 
 build() {
   cd "$_name-$pkgver"

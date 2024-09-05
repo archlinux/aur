@@ -1,7 +1,7 @@
 pkgbase = python-specklepy
 	pkgdesc = The Python SDK for Speckle 2.0
-	pkgver = 2.17.17
-	pkgrel = 2
+	pkgver = 2.19.6
+	pkgrel = 1
 	url = https://github.com/specklesystems/speckle-py
 	arch = x86_64
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = python-specklepy
 	depends = python-requests
 	depends = python-websockets
 	provides = python-specklepy
-	source = https://files.pythonhosted.org/packages/source/s/specklepy/specklepy-2.17.17.tar.gz
-	md5sums = 8b932e2f7b1b57dcc43c6718bcef6e40
+	source = https://files.pythonhosted.org/packages/source/s/specklepy/specklepy-2.19.6.tar.gz
+	md5sums = d7d32a3532195007c3f23fc70ad169a5makepkg
 
 pkgname = python-specklepy
