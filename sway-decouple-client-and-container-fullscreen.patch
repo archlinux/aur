@@ -1,0 +1,90 @@
+From f28ac118a8f8f4b58953756dbd9c34fa30e3f8cb Mon Sep 17 00:00:00 2001
+From: Tobias S <tobias.seifert97@gmail.com>
+Date: Sun, 13 Mar 2022 21:30:50 +0100
+Subject: [PATCH] decouple client  and container fullscreen restore i3
+ fullscreen behaviour for wayland windows
+
+---
+ include/sway/tree/container.h | 2 ++
+ sway/desktop/xdg_shell.c      | 1 +
+ sway/desktop/xwayland.c       | 1 +
+ sway/tree/container.c         | 5 +----
+ 4 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/include/sway/tree/container.h b/include/sway/tree/container.h
+index 05761150..32751153 100644
+--- a/include/sway/tree/container.h
++++ b/include/sway/tree/container.h
+@@ -257,6 +257,8 @@ void container_end_mouse_operation(struct sway_container *container);
+ void container_set_fullscreen(struct sway_container *con,
+ 		enum sway_fullscreen_mode mode);
+ 
++void client_set_fullscreen(struct sway_container *con, bool enable);
++
+ /**
+  * Convenience function.
+  */
+diff --git a/sway/desktop/xdg_shell.c b/sway/desktop/xdg_shell.c
+index 5fae8296..aba2a0b7 100644
+--- a/sway/desktop/xdg_shell.c
++++ b/sway/desktop/xdg_shell.c
+@@ -366,6 +366,7 @@ static void handle_request_fullscreen(struct wl_listener *listener, void *data)
+ 	}
+ 
+ 	container_set_fullscreen(container, req->fullscreen);
++	client_set_fullscreen(container, req->fullscreen);
+ 
+ 	arrange_root();
+ 	transaction_commit_dirty();
+diff --git a/sway/desktop/xwayland.c b/sway/desktop/xwayland.c
+index 40288f97..57179616 100644
+--- a/sway/desktop/xwayland.c
++++ b/sway/desktop/xwayland.c
+@@ -549,6 +549,7 @@ static void handle_request_fullscreen(struct wl_listener *listener, void *data)
+ 		return;
+ 	}
+ 	container_set_fullscreen(view->container, xsurface->fullscreen);
++	client_set_fullscreen(view->container, xsurface->fullscreen);
+ 
+ 	arrange_root();
+ 	transaction_commit_dirty();
+diff --git a/sway/tree/container.c b/sway/tree/container.c
+index 79e04ec0..95e78b6b 100644
+--- a/sway/tree/container.c
++++ b/sway/tree/container.c
+@@ -1070,7 +1070,7 @@ static bool devid_from_fd(int fd, dev_t *devid) {
+ 	return true;
+ }
+ 
+-static void set_fullscreen(struct sway_container *con, bool enable) {
++void client_set_fullscreen(struct sway_container *con, bool enable) {
+ 	if (!con->view) {
+ 		return;
+ 	}
+@@ -1157,7 +1157,6 @@ static void container_fullscreen_workspace(struct sway_container *con) {
+ 				"Expected a non-fullscreen container")) {
+ 		return;
+ 	}
+-	set_fullscreen(con, true);
+ 	con->pending.fullscreen_mode = FULLSCREEN_WORKSPACE;
+ 
+ 	con->saved_x = con->pending.x;
+@@ -1191,7 +1190,6 @@ static void container_fullscreen_global(struct sway_container *con) {
+ 				"Expected a non-fullscreen container")) {
+ 		return;
+ 	}
+-	set_fullscreen(con, true);
+ 
+ 	root->fullscreen_global = con;
+ 	con->saved_x = con->pending.x;
+@@ -1217,7 +1215,6 @@ void container_fullscreen_disable(struct sway_container *con) {
+ 				"Expected a fullscreen container")) {
+ 		return;
+ 	}
+-	set_fullscreen(con, false);
+ 
+ 	if (container_is_floating(con)) {
+ 		con->pending.x = con->saved_x;
+-- 
+2.35.1
+
