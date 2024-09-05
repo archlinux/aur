@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
-pkgver=4.8.1
+pkgver=4.8.2
 pkgrel=1
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
   'tk: to use the built-in ssh-askpass handler'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/git-cola/git-cola/archive/v$pkgver.tar.gz")
-sha256sums=('a9c175e64bdf86cce4160365dc9365d6ecab9a76e005baa747712b4de9f57867')
+sha256sums=('6df2da22d603a506c8b4c8dee11c995a88c36fc8524f93260b67499d69e5f5de')
 
 prepare() {
   cd "$pkgname-$pkgver"
