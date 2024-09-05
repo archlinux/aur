@@ -2,7 +2,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-etcd3gw
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="An etcd3 grpc-gateway v3 API Python client"
 arch=(any)
@@ -29,7 +29,7 @@ checkdepends=('python-hacking'
               'python-nose'
               'python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('601e83e37910762ec4a434a0ca62743dcaab356796da912b745de9c4ae84da2f509148975562dcf6354709f20818d22b7f015dfc5fae3e8bff7ece6226cb7dc9')
+b2sums=('f608190a952b0485f96a0508eed2ae735365453aadabaae190822bb2dc4b2992d42fe99c9707d5d42d6859eb105376c5f11f04fe69741a4e267d46733972cbb9')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level

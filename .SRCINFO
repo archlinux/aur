@@ -1,6 +1,6 @@
 pkgbase = python-etcd3gw
 	pkgdesc = An etcd3 grpc-gateway v3 API Python client
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://opendev.org/openstack/etcd3gw
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = python-etcd3gw
 	depends = python-testtools
 	depends = python-oslotest
 	depends = python-urllib3
-	source = python-etcd3gw-2.4.1.tar.gz::https://opendev.org/openstack/etcd3gw/archive/2.4.1.tar.gz
-	b2sums = e7347c576a44003f0208b18ab7fa5874486cfc82ff2efb09512f06d7b3ade9eaca2bf5390b9a16b622de338ddcb7e75d7c01e692e00c9e26efd376cc358de19f
+	source = python-etcd3gw-2.4.2.tar.gz::https://opendev.org/openstack/etcd3gw/archive/2.4.2.tar.gz
+	b2sums = f608190a952b0485f96a0508eed2ae735365453aadabaae190822bb2dc4b2992d42fe99c9707d5d42d6859eb105376c5f11f04fe69741a4e267d46733972cbb9
 
 pkgname = python-etcd3gw
