@@ -2,10 +2,10 @@
 # Based on "citra-appimage" pkg made by AlphaJack as a base
 
 pkgname="mandarine-appimage"
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
-_date='20240806'
-_hash='a22d894'
+_date='20240904'
+_hash='d59f2f7'
 pkgdesc='3ds emulator - citra fork with tweaks/enhancements'
 url='https://github.com/mandarine3ds/mandarine'
 license=("GPL-2.0")
@@ -15,9 +15,9 @@ conflicts=('mandarine' 'mandarine-git')
 replaces=()
 depends=("ffmpeg"
          "sdl2")
-source=("https://github.com/mandarine3ds/mandarine/releases/download/r1.0/mandarine-linux-appimage-20240806-a22d894.tar.gz"
+source=("https://github.com/mandarine3ds/mandarine/releases/download/r$pkgver/mandarine-linux-appimage-$_date-$_hash.tar.gz"
         "https://raw.githubusercontent.com/mandarine3ds/mandarine/master/dist/mandarine-qt.desktop")
-b2sums=('ce3157363c0a103b7a6180c928b95ccbeceb0df67a87a68b2898eabcc88b6306cb476040b74b952910d2fa9b75c01869b9693a65338fc62a8e9302b84bc5b966'
+b2sums=('d591e17668e468de945388bc1b446e324d9a88fb10c9dab1b9dfa284a416b204855fbf1ba2891f1fff05f1e21e73a9f59fb6e89f1bd6f97d74fbed5bd733caa5'
         '40f02263d45ab7e78be042e6b7d2fa05bedd12563853f57250089e0e0001f6192e5e7e7a9bac174c4c81581a92d8951be10388c4b219f8f27c0b91f4e35fd5bb')
 options=("!strip")
 
