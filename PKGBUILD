@@ -3,6 +3,7 @@
 # shellcheck disable=SC2154
 # The PKGBUILD for SOCI.
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
+# Contributor: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Guillaume Horel <guillaume.horel@gmail.com>
 # Contributor: Marcin (CTRL) Wieczorek <marcin@marcin.co>
 # Contributor: Daniel Nagy <danielnagy at gmx de>
