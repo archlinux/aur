@@ -1,50 +1,66 @@
-# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
-# Contributor:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
+#!/usr/bin/env bash
+# shellcheck disable=SC2034
+# shellcheck disable=SC2154
+# The PKGBUILD for SOCI.
+# Maintainer: Matheus <matheusgwdl@protonmail.com>
+# Contributor: Guillaume Horel <guillaume.horel@gmail.com>
+# Contributor: Marcin (CTRL) Wieczorek <marcin@marcin.co>
 # Contributor: Daniel Nagy <danielnagy at gmx de>
 # Contributor: Mika Fischer <mika.fischer@zoopnet.de>
 
-pkgname=soci-git
-pkgname_=soci
-pkgver=4.0.2.r0.g99e2d567
-pkgrel=1
-pkgdesc="Database access library for C++"
-arch=('x86_64')
-url="http://soci.sf.net"
-license=('custom:boost')
-depends=('postgresql-libs' 'sqlite3' 'unixodbc')
-makedepends=('cmake')
-optdepends=('instantclient-basic: support for oracle databases'
-            'libmysqlclient: support for mysql databases'
-            'postgresql-libs: support for postgresql databases'
-            'sqlite3: support for sqlite databases'
-            'unixodbc: support for ODBC databases')
-provides=("soci=$pkgver")
-conflicts=('soci')
-source=("git+https://github.com/SOCI/soci.git#branch=release/4.0")
-sha1sums=('SKIP')
+readonly _pkgname="soci"
 
-pkgver() {
-    cd "${srcdir}/${pkgname_}"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/; s/-/./g'
-}
+pkgname="soci-git"
+pkgver="v4.0.1_559_g4440c789"
+pkgrel="1"
+pkgdesc="C++ database access library."
+arch=("x86_64")
+url="https://github.com/SOCI/${_pkgname}"
+license=("BSL-1.0")
+depends=("gcc-libs" "glibc" "mariadb-libs" "postgresql-libs" "sqlite3" "unixodbc")
+makedepends=("cmake" "git")
+provides=("${_pkgname}")
+conflicts=("soci")
+source=("${_pkgname}::git+https://github.com/Krzmbrzl/soci.git#branch=revamp-cmake")
+sha1sums=("SKIP")
 
-build() {
-    cmake -B build "${pkgname_}" \
-        -DSOCI_TESTS=OFF \
-        -DCMAKE_INSTALL_PREFIX="/usr" \
-        -DCMAKE_CXX_FLAGS="-Wno-format-overflow" \
-        -DSOCI_CXX11=ON \
+_compile()
+{
+    cmake -B "${srcdir}"/"${_pkgname}"/build/ \
+        -D CMAKE_BUILD_TYPE=None \
+        -D CMAKE_INSTALL_PREFIX=/usr/ \
+        -D SOCI_ASAN=OFF \
+        -D SOCI_SHARED=ON \
+        -D SOCI_TESTS="$1" \
+        -D SOCI_VISIBILITY=ON \
+        -S "${srcdir}"/"${_pkgname}"/ \
         -Wno-dev
-    make -C build
+    cmake --build "${srcdir}"/"${_pkgname}"/build/
 }
 
-package() {
-    make DESTDIR="${pkgdir}" -C build install
+pkgver()
+{
+    cd "${srcdir}"/"${_pkgname}"/ || exit 1
+    git describe --long --tags | sed "s/-/_/g" || true
+}
 
-    # For some reason -DLIBDIR=lib causes libsoci_empty.so to disappear
-    if [ -e "${pkgdir}/usr/lib64" ]; then
-        mv "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"
-    fi
-    install -Dm0644 "${srcdir}/${pkgname_}/LICENSE_1_0.txt" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+build()
+{
+    _compile OFF
+}
+
+package()
+{
+    # Assure that the directories exist.
+    mkdir -p "${pkgdir}"/usr/share/doc/"${pkgname}"/
+
+    # Install the software.
+    DESTDIR="${pkgdir}"/ cmake --install "${srcdir}"/"${_pkgname}"/build/
+
+    # Install the documentation.
+    install -Dm644 "${srcdir}"/"${_pkgname}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    cp -r "${srcdir}"/"${_pkgname}"/docs/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
+
+    find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -type d -exec chmod 755 {} +
+    find "${pkgdir}"/usr/share/doc/"${pkgname}"/ -type f -exec chmod 644 {} +
 }

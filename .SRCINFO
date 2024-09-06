@@ -1,22 +1,21 @@
 pkgbase = soci-git
-	pkgdesc = Database access library for C++
-	pkgver = 4.0.2.r0.g99e2d567
+	pkgdesc = C++ database access library.
+	pkgver = v4.0.1_559_g4440c789
 	pkgrel = 1
-	url = http://soci.sf.net
+	url = https://github.com/SOCI/soci
 	arch = x86_64
-	license = custom:boost
+	license = BSL-1.0
 	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = mariadb-libs
 	depends = postgresql-libs
 	depends = sqlite3
 	depends = unixodbc
-	optdepends = instantclient-basic: support for oracle databases
-	optdepends = libmysqlclient: support for mysql databases
-	optdepends = postgresql-libs: support for postgresql databases
-	optdepends = sqlite3: support for sqlite databases
-	optdepends = unixodbc: support for ODBC databases
-	provides = soci=4.0.2.r0.g99e2d567
+	provides = soci
 	conflicts = soci
-	source = git+https://github.com/SOCI/soci.git#branch=release/4.0
+	source = soci::git+https://github.com/Krzmbrzl/soci.git#branch=revamp-cmake
 	sha1sums = SKIP
 
 pkgname = soci-git
