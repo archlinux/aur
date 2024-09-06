@@ -2,8 +2,8 @@
 
 pkgbase=pirate
 pkgname=("${pkgbase}-qt-bin" "${pkgbase}-cli-bin")
-pkgver=5.8.2
-pkgrel=2
+pkgver=5.9.0
+pkgrel=1
 pkgdesc="Pirate Chain (ARRR) - Untraceable, Anonymous, Private Cryptocurrency"
 arch=('x86_64')
 url='https://github.com/PirateNetwork/pirate'
@@ -23,8 +23,8 @@ source=("${pkgbase}-qt-v${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkg
         "${pkgbase}.xpm"
         "COPYING")
 
-sha256sums=('b75d18990a06e0619eb3c01569e113236fefc98c6769c464e5ffccdfefe9faf2'
-            '6af7ff76d2338f4284626bcd16980eca8e46419437c8679e94161e14644dab0c'
+sha256sums=('bc3f708989f406869073a0fca208da765d270f61aed82ac900b1aa53c33a5da2'
+            '2358e992a6649517f6a72f790105468a22c5ae22302076b06f9c528b7c7c4788'
             'db1875d7ef83e3b4d69a83a39acbb0e6c5092f1a0919b3c8c94cabdf62232191'
             'ae5d7ccbb18a07c794091a4294cca3b260f9b49ecf70a53279da2c0a3c654e18'
             '011f6e7fa0238cff93eb3ea12b6b2743cdc7b3ee638570b6143a1f7bdfe1ba3e')
