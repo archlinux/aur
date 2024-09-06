@@ -108,7 +108,7 @@ commit_job:
     - git commit -m "$commit_msg"
     - git push origin main
   dependencies:
-    - release
+    - release_job
   artifacts:
     reports:
       dotenv: build.env
