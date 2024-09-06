@@ -3,7 +3,7 @@
 
 _pkgname="skanlite"
 pkgname="$_pkgname-git"
-pkgver=24.02.1.r9.g5e21882
+pkgver=24.08.0.r6.g43d795f
 pkgrel=1
 pkgdesc='Image Scanning Application'
 url='https://invent.kde.org/graphics/skanlite'

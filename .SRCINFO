@@ -1,6 +1,6 @@
 pkgbase = skanlite-git
 	pkgdesc = Image Scanning Application
-	pkgver = 24.02.1.r9.g5e21882
+	pkgver = 24.08.0.r6.g43d795f
 	pkgrel = 1
 	url = https://invent.kde.org/graphics/skanlite
 	arch = x86_64

@@ -1,0 +1,4 @@
+[skanlite-git]
+source = "git"
+git = "https://invent.kde.org/graphics/skanlite.git"
+prefix = "v"
