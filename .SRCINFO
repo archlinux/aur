@@ -1,6 +1,6 @@
 pkgbase = proxsuite
 	pkgdesc = The Advanced Proximal Optimization Toolbox
-	pkgver = 0.6.6
+	pkgver = 0.6.7
 	pkgrel = 1
 	url = https://github.com/Simple-Robotics/proxsuite
 	arch = any
@@ -9,13 +9,15 @@ pkgbase = proxsuite
 	makedepends = cmake
 	depends = eigen
 	depends = simde
-	source = https://github.com/Simple-Robotics/proxsuite/releases/download/v0.6.6/proxsuite-0.6.6.tar.gz
-	source = https://github.com/Simple-Robotics/proxsuite/releases/download/v0.6.6/proxsuite-0.6.6.tar.gz.sig
+	source = https://github.com/Simple-Robotics/proxsuite/releases/download/v0.6.7/proxsuite-0.6.7.tar.gz
+	source = https://github.com/Simple-Robotics/proxsuite/releases/download/v0.6.7/proxsuite-0.6.7.tar.gz.sig
+	source = proxsuite-352.patch::https://github.com/Simple-Robotics/proxsuite/pull/352.patch
 	validpgpkeys = A031AD35058955293D54DECEC45D22EF408328AD
 	validpgpkeys = F534E75540B2E7D24F99746987CFFF3D0D73CC93
 	validpgpkeys = 1462AF00C9CF3C9E7AFC905E63380359F089A579
-	sha256sums = 29058f833b702231751f4ad16746861de262ce638e5392dd968f2004e1de5ff3
+	sha256sums = 3a397ba96ddcfe5ade150951f70f867a3741206a694e50588f954a94c4cf3f27
 	sha256sums = SKIP
+	sha256sums = 41727e1ea584902dd1f57e9287cb9ec0bffa7a51c9dd1591a1ccb9d79094bc42
 
 pkgname = proxsuite
 
