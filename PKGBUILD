@@ -20,7 +20,7 @@ sha256sums=('b465056a4b751cd3c2d6c5076de8540d83fbe3dc15eb6f419b64b70f72c2cab8')
 
 build() {
     cd "$srcdir/$_cpanname-$pkgver"
-    PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+    PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
     make
 }
 
