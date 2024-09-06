@@ -1,10 +1,14 @@
 pkgbase = python-python-jenkins
 	pkgdesc = A python wrapper for the Jenkins REST API which aims to provide a more conventionally pythonic way of controlling a Jenkins server
 	pkgver = 1.8.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://opendev.org/jjb/python-jenkins/
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
+	checkdepends = python-mock
+	checkdepends = python-testscenarios
+	checkdepends = python-multiprocess
+	checkdepends = python-requests-mock
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -13,6 +17,7 @@ pkgbase = python-python-jenkins
 	depends = python-pbr>=0.8.2
 	depends = python-multi_key_dict
 	depends = python-requests
+	optdepends = python-requests-kerberos: Kerberos authentication support
 	source = python-jenkins-1.8.2.tar.gz::https://opendev.org/jjb/python-jenkins/archive/1.8.2.tar.gz
 	sha512sums = da0da245b7df2a08d1f9d715682abc95d3e5baa514223ad6a39b8e6cd93c9c58b819d01c8a040c989e073bcd2e9815cf6cab5d3999a4a71b24316486b701afc8
 

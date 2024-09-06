@@ -5,7 +5,7 @@
 _pkgname=python-jenkins
 pkgname=python-$_pkgname
 pkgver=1.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A python wrapper for the Jenkins REST API which aims to provide a more conventionally pythonic way of controlling a Jenkins server"
 url='https://opendev.org/jjb/python-jenkins/'
 license=('BSD-3-Clause')
