@@ -6,7 +6,7 @@
 
 pkgname=firefox-vaapi
 _pkgname=firefox
-pkgver=129.0.2
+pkgver=130.0
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
@@ -85,10 +85,6 @@ source=(
   $_pkgname-symbolic.svg
   $_pkgname.desktop
   org.mozilla.$_pkgname.metainfo.xml
-  0001-Bug-1898476-Wayland-Move-MozContainerSurfaceLock-fro.patch
-  0002-Bug-1898476-Wayland-Provide-surface-lock-by-GtkCompo.patch
-  0003-Bug-1898476-Wayland-Lock-Wayland-surface-before-Swap.patch
-  0004-Bug-1912663-Fix-some-build-issues-with-cbindgen-0.27.patch
   0003-enable-vaapi.patch
   0004-remove-nvidia-blocklist.patch
 )
@@ -97,26 +93,18 @@ validpgpkeys=(
   # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('35a1da121af474833d013ecbc1f77aa55bb35678fe06d438842d320dfab3f344'
+sha256sums=('0c12852a502c9ceefc11003416057917466d8788dd8780931ea387b0b137b567'
             'SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
-            '1f241fdc619f92a914c75aece7c7c717401d7467c9a306458e106b05f34e5044'
+            'a0a236be070594f576b670a0988449b7bc1eaf5b94ba2ca15807e484c794d4dc'
             '58d78ce57b3ee936bc966458d6b20ab142d02a897bbe924b3f26717af0c5bee1'
-            '463943fc5262a1550d669d5327453f494f4840b7b9797111d5d52a85f5f489c7'
-            '2ac9084cf14bbb06651265423b3297d64270cdf60d6721ce44d43c6f01d02ce0'
-            'ac36c482abb090847e138e0833bd93674432c1a81574357067e344a076c86bcf'
-            'dd2aba1c02c21b89ceed0713a6aa0241365fe79b1e3a4d21cdcd7231db6fab5e'
             '00c449422246283cd7e0bdc65d216fce4a42f755ad881106a08fb7d97eab1679'
             '05261d95a506ae238f4f3ec897017dfc2e8113eb112a43172422c0e40a59c72e')
-b2sums=('f0c79de337b5c55f9345b21714dd1707e8ca20f66f7ae383026c3737a7a1eeafa5048c188b91cc2ca6089aff944802cf04fcaeed81af7a42218925981c0e5550'
+b2sums=('9c7dfc43145e442d60f6971806848e4ecd0145713e31105da6bd13a82a50655f5c4095beff4d61505e26e188b60f49b16dc17fb42dc03a9fb9ef509a7010b0ab'
         'SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
-        'd07557840097dd48a60c51cc5111950781e1c6ce255557693bd11306c7a9258b2a82548329762148f117b2295145f9e66e0483a18e2fe09c5afcffed2e4b8628'
+        '6b7638446d4c262363af460382204e6d82138a5a22009969b198b7c4f58f9d9951330869a37e393885293733746d8790cd71e42f4e81004d533beed9e97816a7'
         '2ce33432f8a73a4f1a412b7a065d3c124e1ca9f6bdf3fad0407e897efc0840f8ef43eeeb1b9bef4a102d9fac0b2c4a2ef205726b817f83fe9c3742d076778b14'
-        '95c7d0ed0846750d94d85a1422768f87ec2ad031faac2aeb43712ed28f6ad1e6e177cb6fdefb81c89cb646dd696302bf2ea7f553d17178481f00f12aac8abbb2'
-        '751adecb5fbfae46f72567f2e39b31b5aa60d9d0cdb411905ed204a75c8698a400370a52ce80b67d1b39536edbda3f56587e53787acdac61a8832cefc0c9157a'
-        'a380777eb759edd8dd4902886893e39d1f7f88e6f31d0db3f98553c158707b937c7ebb42d79683f7872b589af9dfc7c56125b94fa8dfc09ea8214b31b1814cf9'
-        'eb84ee67ce049351e07cfd02f7bd024fb31e041f839c105e3bc15a904632b6c668bca494aa721f0c092172dc45ad2d576c9f6d45f15877f7189e15ab403a45c5'
         'f84752e04c7e69b69158b9514a5227a2b71b60ccbbe5acb437d9830bfa2e725fe6784e1603890722a114abda424f9cafc007e9934310f21483b6540bc19da905'
         'c95ecc0a9813e17b9ab4c05ad6e77fcd6e829d582dd636accd83ed7f47d9bfc0638bf64e66bd6701d99d8f14e9ffe271952f4320502aef5117d39e0b6f9bc30c')
 
@@ -129,17 +117,6 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
-
-  # Backport fixes for NVIDIA crashes
-  # https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/issues/7
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1898476
-  patch -Np1 -i ../0001-Bug-1898476-Wayland-Move-MozContainerSurfaceLock-fro.patch
-  patch -Np1 -i ../0002-Bug-1898476-Wayland-Provide-surface-lock-by-GtkCompo.patch
-  patch -Np1 -i ../0003-Bug-1898476-Wayland-Lock-Wayland-surface-before-Swap.patch
-
-  # Fix build with cinbdgen 0.27.0
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1912663
-  patch -Np1 -i ../0004-Bug-1912663-Fix-some-build-issues-with-cbindgen-0.27.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1809068
   # https://bbs.archlinux.org/viewtopic.php?id=281398
@@ -222,8 +199,8 @@ END
 
   echo "Profiling instrumented browser..."
   ./mach package
-  LLVM_PROFDATA=llvm-profdata \
-    JARLOG_FILE="$PWD/jarlog" \
+  LLVM_PROFDATA=llvm-profdata JARLOG_FILE="$PWD/jarlog" \
+  dbus-run-session \
     xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
     ./mach python build/pgo/profileserver.py
 
