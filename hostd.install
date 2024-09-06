@@ -1,4 +1,4 @@
 post_install() {
-  echo Before starting the hostd.service, make sure to fill the configuration file /etc/hostd.yml
-  echo You can do it interactively with the following command : `pushd /etc && sudo -u hostd hostd -dir /var/lib/hostd config; popd`
+  echo "Before starting the hostd.service, make sure to fill the configuration file /etc/hostd.yml"
+  echo "You can do it interactively with the following command : \`pushd /etc && sudo -u hostd hostd -dir /var/lib/hostd config; popd\`"
 }
