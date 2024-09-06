@@ -2,18 +2,15 @@
 _target='compass-isolated'
 _edition=' Isolated Edition'
 pkgname="mongodb-$_target"
-_pkgver='1.44.0'
+_pkgver='1.44.3'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='2'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('SSPL-1.0')
 _electronpkg='electron30'
-depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release' 'nodejs>=18.19.1')
-if [[ "$_target" =~ -beta$ ]]; then
-	depends+=('libmongocrypt')
-fi
+depends=("$_electronpkg" 'krb5' 'libmongocrypt' 'libsecret' 'lsb-release' 'nodejs>=18.19.1')
 makedepends=('git' 'npm>=10.2.4' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 backup=('etc/mongodb-compass.conf')
@@ -24,7 +21,7 @@ source=(
 	'fix-argv.diff'
 	'mongodb-compass.conf'
 )
-b2sums=('a138afa44854e0bca0662ce260e5f045e889ca3fba376806e6661c794cb7084202b2c3415904b53d42ec717d57888dc7b3172b98327fc4b36f9678303dc3c981'
+b2sums=('26d668acbb49f85d1e21abf1d7ce446e8f3030b224a718aa9846d38b55ff94f529ca9b0e627a5a60bd74cd5ac49917b81c4b480c885917df6d4c38957034a41b'
         '3edfbd465754292688d8f91a22c33443389a070f1718810a4ad7ee3ad7973e8f5234ff7c3b17ae62c62925aa06a7fc898d2f4fb66690d3e073297653900caa12'
         'd893c74227ddd8fcfce25829728f54fc705d5d390495893de97e69c957b09bb744c27a90191ca6afdbe77d336a4311811009c4b993394cb408ba6940e71857e0'
         '2a07533bbd4697e8ad0e29402867662cc9d817dfbcfcde8bfa2e4e06f8df3c7d036822b8b33b49cb1d29a8b2c126c5a3381c6b2283e2732e4ca2943bd06bed68'
