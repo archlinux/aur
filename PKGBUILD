@@ -1,7 +1,7 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=tuxedo-touchpad-switch
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="A Linux userspace driver to enable and disable the touchpads on TongFang/Uniwill laptops"
 url="https://github.com/tuxedocomputers/tuxedo-touchpad-switch"
@@ -14,12 +14,12 @@ makedepends=("git" "cmake" "ninja")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
-_commit="9c7982fb2732561db3540a8fe96431cd55b9b707" # tag v1.0.8
 #https://github.com/tuxedocomputers/tuxedo-touchpad-switch/archive/v$pkgver/${pkgname}-${pkgver}.tar.gz
+#_commit="6f3ee2f9d7e30c575d7e1f4df355856af5289027" # tag v1.0.9
 source=(
-  git+https://github.com/tuxedocomputers/tuxedo-touchpad-switch.git#commit=$_commit
+  git+https://github.com/tuxedocomputers/tuxedo-touchpad-switch.git#tag=v${pkgver}
 )
-sha256sums=('b02f66567ad2e913c54cc062eac3abcda65986893b53c43d37aed4e7bdd3022b')
+sha256sums=('3d4f77f189cc1b1a40ea937db81f99cdc296ccae386e54bcda5bf86944eecf66')
 
 #prepare() {
 #  cd "${pkgname}"
