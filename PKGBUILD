@@ -3,17 +3,18 @@
 # Contributor: Bruno Pagani <archange@archlinux.org>
 
 pkgname=cppo
-pkgver=1.6.9
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="C-style preprocessor for OCaml"
 arch=('x86_64')
 url="https://github.com/ocaml-community/cppo"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('glibc')
 optdepends=('ocamlbuild: ocamlbuild plugin')
 makedepends=('dune' 'ocamlbuild')
+options=('!strip')
 source=("https://github.com/ocaml-community/cppo/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('16036d85c11d330a7c8b56f4e071d6bbe86d8937c89d3d79f6eef0e38bdda26a')
+sha256sums=('7df72f6f240ec6d4d5bc6bcb2e8cfc825ade11594dc93243f1b821b5766548e1')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -30,8 +31,7 @@ check() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   # hmmm, --libdir behaviour changed in dune 3.2.0, it must now be an absolute path?!
-  DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "/usr/lib/ocaml"
+  DESTDIR="${pkgdir}" dune install --prefix "/usr" --libdir "/usr/lib/ocaml" --docdir "/usr/share/doc"
 
   install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
-  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
