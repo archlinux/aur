@@ -2,7 +2,7 @@
 pkgname=quick-webapps
 pkgver=0.4.6
 pkgrel=2
-pkgdesc="Web App Manager for Cosmic desktop written with love and libcosmic."
+pkgdesc="Web App Manager for the COSMIC™ desktop written with love and libcosmic."
 arch=('x86_64')
 url="https://github.com/cosmic-utils/web-apps"
 license=('GPL-3.0-or-later')
