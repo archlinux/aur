@@ -1,0 +1,17 @@
+pkgbase = libgpredict-git
+	pkgdesc = An attempt to take the prediction code out of Gpredict and make it a standalone dynamic library
+	pkgver = r21.c8d0d28
+	pkgrel = 1
+	url = https://github.com/cubehub/libgpredict
+	arch = x86_64
+	arch = i686
+	license = NONE
+	makedepends = cmake
+	makedepends = git
+	depends = glib2
+	provides = libgpredict
+	conflicts = libgpredict
+	source = libgpredict::git+https://github.com/cubehub/libgpredict.git
+	sha256sums = SKIP
+
+pkgname = libgpredict-git
