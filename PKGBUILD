@@ -3,7 +3,7 @@
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 pkgname=mullvad-vpn-cli
 pkgver=2024.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN CLI client"
 arch=('x86_64')
 url="https://www.mullvad.net"
@@ -16,7 +16,7 @@ install="${pkgname%-*}.install"
 _ab_commit=b0c37cecd9b671d2480a7dc9636da93d76e2b14c
 _wg_commit=de174ac6de2934dc82d9b8301c17de87cbd575f3
 _mn_commit=b06094e81701782d28cd2312f58e0654109d04ce
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver"
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_ab_commit}?signed"
         "git+https://github.com/mullvad/wireguard-go.git#commit=${_wg_commit}?signed"
         "git+https://github.com/mullvad/maybenot.git#commit=#commit=${_mn_commit}")
