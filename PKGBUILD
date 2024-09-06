@@ -1,7 +1,7 @@
 # Maintainer: xeonds <xeonds@stu.xidian.edu.cn>
 
 pkgname=python-etcpak-git
-pkgver=r52.cf5093e
+pkgver=r40.3def800
 pkgrel=1
 pkgdesc="A python wrapper for wolfpld/etcpak"
 arch=('x86_64')
