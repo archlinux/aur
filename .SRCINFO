@@ -1,7 +1,7 @@
 pkgbase = perl-crypt-generatepassword
 	pkgdesc = generate secure random pronounceable passwords
 	pkgver = 0.05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Crypt-GeneratePassword
 	arch = any
 	license = GPL

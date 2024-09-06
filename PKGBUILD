@@ -4,7 +4,7 @@ pkgname=perl-crypt-generatepassword
 _cpanname=Crypt-GeneratePassword
 _module=Crypt::GeneratePassword
 pkgver=0.05
-pkgrel=1
+pkgrel=2
 pkgdesc="generate secure random pronounceable passwords"
 arch=('any')
 url="https://metacpan.org/release/$_cpanname"
@@ -16,7 +16,7 @@ sha1sums=('99d12d56eae45a335b01c127480dfade41db34c5')
 
 build() {
     cd "$srcdir/$_cpanname-$pkgver"
-    PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+    PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
     make
 }
 
