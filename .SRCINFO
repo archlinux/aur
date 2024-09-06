@@ -1,9 +1,9 @@
 pkgbase = fyi-git
 	pkgdesc = A command line utility and notify-send alternative to send desktop notifications
-	pkgver = 1.0.3.r7.905ec0b
+	pkgver = 1.0.4.r1.7fccc96
 	pkgrel = 1
 	url = https://codeberg.org/dnkl/fyi
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = meson
