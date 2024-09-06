@@ -1,0 +1,16 @@
+pkgbase = pipet-git
+	pkgdesc = a swiss-army tool for scraping and extracting data from online assets, made for hackers
+	pkgver = r16.060b068
+	pkgrel = 1
+	url = https://github.com/bjesus/pipet
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = git
+	depends = go
+	source = pipet-git::git+https://github.com/bjesus/pipet.git
+	sha256sums = SKIP
+
+pkgname = pipet-git
