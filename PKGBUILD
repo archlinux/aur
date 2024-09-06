@@ -37,7 +37,7 @@ pkgname="${_pkgname}-latest"
 epoch=0
 _pkgver="$(_pkgver)" # This should be set _before_ sources get downloaded.
 pkgver="${_pkgver}"
-pkgrel=6
+pkgrel=7
 pkgdesc="Font with train timetable symbols, used by the offline timetable by CHAPS (IDOS, Timetable-Browser) or INPROP (CP, ELIS) (also retailed by České Dráhy or ŽSR)."
 arch=('any')
 license=('custom')
@@ -74,7 +74,7 @@ source=(
 )
 
 sha256sums=(
-  "930e43563335292abefc231e55ca7152572ac1175d4c3bd5247d648a397e1721"  # TTFONT.ZIP
+  "3cc7ad3458a0382106871ef7872641154043c94c4040e7a4691f1ba65012d29e"  # TTFONT.ZIP
   "SKIP"                                                              # IDOS-Licence.pdf
   "c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4"  # license-dummy.txt
   "4c021678394399056573ae7f85779a7fde86f0c70fec6e64f6e1a379195ef4da"  # info.url
