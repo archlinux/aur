@@ -21,6 +21,7 @@ prepare() {
   sed -i "s|Werror=uninitialized|Wno-error=uninitialized|g" OMSimulator/src/OMSimulatorLib/CMakeLists.txt
   sed -i "s|CMAKE_CXX_STANDARD 14|CMAKE_CXX_STANDARD 17|g" OMSimulator/3rdParty/xerces/CMakeLists.txt
   sed -i "58i#include <QScreen>" OMEdit/OMEditLIB/Modeling/LibraryTreeWidget.cpp
+  curl -L https://github.com/OpenModelica/OpenModelica/pull/12792.patch | patch -p1
 }
 
 build() {
