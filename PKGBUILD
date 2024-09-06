@@ -4,10 +4,11 @@
 
 pkgname='perl-web-scraper'
 pkgver='0.38'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Web Scraping Toolkit using HTML and CSS Selectors or XPath expressions"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl'
+         'GPL-1.0-only')
 options=('!emptydirs')
 depends=('perl-html-parser>=0' 'perl-html-selector-xpath>=0.03' 'perl-html-tagset>=0' 'perl-html-tree>=0' 'perl-html-treebuilder-xpath>=0.08' 'perl-universal-require>=0' 'perl-uri>=0' 'perl-xml-xpathengine>=0.08' 'perl-yaml>=0' 'perl-libwww>=0' 'perl>=5.8.1')
 makedepends=('perl-module-build-tiny')
