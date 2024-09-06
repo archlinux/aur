@@ -2,7 +2,7 @@
 
 pkgname=libyang-cpp-git
 _gitname=libyang-cpp
-pkgver=r391.d29365c
+pkgver=r395.38e3399
 pkgrel=1
 pkgdesc='C++ bindings for the libyang library'
 url='https://github.com/CESNET/libyang-cpp/'
@@ -12,7 +12,7 @@ depends=('libyang' 'glibc' 'gcc-libs')
 makedepends=('git' 'cmake' 'pkg-config' 'doctest')
 conflicts=('libyang-cpp' 'libyang-cpp-git')
 provides=('libyang-cpp')
-source=('git+https://github.com/CESNET/libyang-cpp.git#commit=d29365c99b55270159f1a56c0b9d2295131b6fee')
+source=('git+https://github.com/CESNET/libyang-cpp.git')
 md5sums=('SKIP')
 
 pkgver() {
