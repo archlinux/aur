@@ -1,7 +1,7 @@
 pkgbase = perl-date-range
 	pkgdesc = work with a range of dates
 	pkgver = 1.41
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Date-Range
 	arch = any
 	license = PerlArtistic
