@@ -22,10 +22,8 @@ depends=("gcc-libs" "glibc" "mariadb-libs" "postgresql-libs" "sqlite3" "unixodbc
 makedepends=("cmake" "git")
 provides=("${_pkgname}")
 conflicts=("soci")
-source=("${_pkgname}::git+https://github.com/Krzmbrzl/soci.git#branch=revamp-cmake"
-    "1.patch::https://github.com/Krzmbrzl/soci/commit/489556bde8d07d0ad912fbdabfdeb18f5b3eda69.patch")
-sha512sums=("SKIP"
-    "de7bfbac44dcae50ce14e4218e4b397546aa418dd3802ebda03fba9fef7e8c4843f1fc4cbb9d04ba39a9bb89de03915938e4e4fddcf5334606a1c8dd5dd7ca47")
+source=("${_pkgname}::git+https://github.com/Krzmbrzl/soci.git#branch=revamp-cmake")
+sha512sums=("SKIP")
 
 _compile()
 {
@@ -45,11 +43,6 @@ pkgver()
 {
     cd "${srcdir}"/"${_pkgname}"/ || exit 1
     git describe --long --tags | sed "s/-/_/g" || true
-}
-
-prepare()
-{
-    patch -d "${srcdir}"/"${_pkgname}"/ -i "${srcdir}"/1.patch -Np1
 }
 
 build()

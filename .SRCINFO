@@ -16,8 +16,6 @@ pkgbase = soci-git
 	provides = soci
 	conflicts = soci
 	source = soci::git+https://github.com/Krzmbrzl/soci.git#branch=revamp-cmake
-	source = 1.patch::https://github.com/Krzmbrzl/soci/commit/489556bde8d07d0ad912fbdabfdeb18f5b3eda69.patch
 	sha512sums = SKIP
-	sha512sums = de7bfbac44dcae50ce14e4218e4b397546aa418dd3802ebda03fba9fef7e8c4843f1fc4cbb9d04ba39a9bb89de03915938e4e4fddcf5334606a1c8dd5dd7ca47
 
 pkgname = soci-git
