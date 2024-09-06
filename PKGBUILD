@@ -5,10 +5,10 @@
 
 pkgname='perl-file-find-object'
 pkgver='0.3.8'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="An object oriented File::Find replacement"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-2.0')
 options=('!emptydirs')
 depends=('perl-class-xsaccessor>=0' 'perl-file-treecreate>=0' 'perl-module-build>=0.28' 'perl>=5.008')
 checkdepends=('perl-test-file>=1.993')
