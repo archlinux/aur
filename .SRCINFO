@@ -1,7 +1,7 @@
 pkgbase = iptvorg-epg
 	pkgdesc = Utilities for downloading the EPG (Electronic Program Guide) for thousands of TV channels from hundreds of sources
 	pkgver = 2023.12.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/iptv-org/epg
 	arch = any
 	license = Unlicense
