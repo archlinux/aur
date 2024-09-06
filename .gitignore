@@ -1,4 +1,5 @@
 src
 pkg
+*.gz\?*
 *.pkg.tar.xz
 socketcan.zip?sfvrsn=c486dcd6_22

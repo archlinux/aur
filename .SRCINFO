@@ -1,28 +1,15 @@
 pkgbase = ixxat-socketcan
 	pkgdesc = SocketCAN driver for IXXAT USB-to-CAN v2
-	pkgver = 1.1.148.0
-	pkgrel = 7
-	url = https://www.ixxat.com/products/products-industrial/pc-interfaces/pc-can-interfaces/socketcan
+	pkgver = 2.0.520
+	pkgrel = 1
+	url = https://www.hms-networks.com/support/general-downloads
 	install = ixxat-socketcan.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = linux-headers
 	optdepends = can-utils: Linux-CAN / SocketCAN user space applications
-	source = https://cdn.hms-networks.com/docs/librariesprovider8/ixxat-english-new/pc-can-interfaces/linux-drivers/socketcan-linux.zip?sfvrsn=3eb48d7_8
-	source = 0.patch
-	source = 1.patch
-	source = 2.patch
-	source = 3.patch
-	source = 4.patch
-	source = 5.patch
-	sha256sums = 801558b4ef182548dfaa10a1cc65696f5c84caf6c8df98be8fa812c392b491a2
-	sha256sums = 30993ecc5f97187f92ffaa1606a9cd588e1d0b7ab636bca8ba5ced3eb70b41d5
-	sha256sums = 3389d2301e159e2c99452cd4a68a0050d30c74831edf51afedee7e46b3d005b6
-	sha256sums = a8828fa152b80120ec529f4a862936747697a94ad6a2009aabb2951b0784a579
-	sha256sums = 8eb368650f1b0e4340da7bd25dbd5b03843841cfb39bb7ec677eb11634fdabf1
-	sha256sums = 61ed6b5afdbb057318bd415c2d9b9ea4719d1ced8b1d3f0dfb9a80930f4c741d
-	sha256sums = e1cb2108dde3ed8c6498a1b501b46a93f1189fb715be2f0ac71a6b5080fdf64b
+	source = https://hmsnetworks.blob.core.windows.net/nlw/docs/default-source/products/ixxat/monitored/pc-interface-cards/socketcan-linux.gz?sfvrsn=3eb48d7_89&download=true
+	sha256sums = dd34dfb4e1c988693c2b6799c467ba7689758c9757fa8e8e4890fa7715b818b6
 
 pkgname = ixxat-socketcan
-
