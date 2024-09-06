@@ -5,7 +5,7 @@
 
 pkgname='perl-finance-quote'
 pkgver='1.62'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Get stock and mutual fund quotes from various exchanges"
 arch=('any')
 license=('Artistic-1.0-Perl'
