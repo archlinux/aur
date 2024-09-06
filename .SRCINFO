@@ -1,0 +1,23 @@
+pkgbase = iwmenu-git
+	pkgdesc = A menu-driven interface for managing Wi-Fi on Linux.
+	pkgver = 0.1.0.r58.g7a6967f
+	pkgrel = 1
+	url = https://github.com/e-tho/iwmenu
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = iwd
+	depends = openssl
+	depends = pkg-config
+	provides = iwmenu=0.1.0.r58.g7a6967f
+	conflicts = iwmenu-bin
+	conflicts = iwmenu
+	options = !debug
+	options = !lto
+	options = !strip
+	source = iwmenu::git+https://github.com/e-tho/iwmenu.git
+	sha256sums = SKIP
+
+pkgname = iwmenu-git
