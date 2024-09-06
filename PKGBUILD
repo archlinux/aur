@@ -4,7 +4,7 @@
 pkgname=i4tools-bin
 _pkgname=i4tools
 pkgver=3.06.006
-_pkgver=v3.06.006
+_pkgver=v${pkgver}
 pkgrel=2
 pkgdesc='简单好用的多功能苹果设备管理助手。'
 arch=('x86_64')
@@ -18,7 +18,6 @@ depends=(
     'gcc-libs'
     'glib2'
     'glibc'
-    'git'
     'hicolor-icon-theme'
     'libffi'
     'libp11-kit'
@@ -27,7 +26,7 @@ depends=(
     'util-linux-libs'
     'zlib')
 source=(
-    "${_pkgname}_v3.06.006.rpm::https://d-updater.i4.cn/i4linux/deb/${_pkgname}_${_pkgver}.rpm"
+    "${_pkgname}_${_pkgver}.rpm::https://d-updater.i4.cn/i4linux/deb/${_pkgname}_${_pkgver}.rpm"
     "$_pkgname.desktop"
     "run.sh"
     "LICENSE.txt::https://www.i4.cn/copyright.html"
@@ -41,10 +40,10 @@ package() {
     install -m755 -d "${pkgdir}/usr/share/pixmaps"
     install -m755 -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
     install -m755 -d "${pkgdir}/usr/bin"
-    install -Dm755  ../run.sh "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 ../$_pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop 
+    install -Dm755 ${srcdir}/run.sh "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm644 ${srcdir}/$_pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop 
     cp -r "${srcdir}/opt/apps/cn.i4Tools" "${pkgdir}/opt/"
-    install -Dm644 ../LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 ${srcdir}/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     cd "${srcdir}/opt/apps/cn.i4Tools/resources"
     cp logo.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
     cp logo.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg       
