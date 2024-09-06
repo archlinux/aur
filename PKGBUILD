@@ -1,11 +1,11 @@
 # Maintainer:  Andreas Baumann <mail () andreasbaumann () cc>
-# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgbase="libmp3splt"
 pkgname=("${pkgbase}" "${pkgbase}-docs")
 pkgver=0.9.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Split mp3, ogg, and flac files without decoding - Library"
 arch=('any')
 url="https://mp3splt.sourceforge.net"
@@ -14,11 +14,20 @@ makedepends=('doxygen' 'flac>=1.2.1' 'graphviz' 'libid3tag' 'libmad' 'libogg'
              'libvorbis' 'pcre')
 #checkdepends=('cutter-test')
 _pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::https://downloads.sourceforge.net/sourceforge/mp3splt/${_pkgsrc}.tar.gz")
-sha256sums=('30eed64fce58cb379b7cc6a0d8e545579cb99d0f0f31eb00b9acc8aaa1b035dc')
+source=("${_pkgsrc}.tar.gz::https://downloads.sourceforge.net/sourceforge/mp3splt/${_pkgsrc}.tar.gz"
+        "${pkgbase}_fix_informations_spelling.patch::https://sources.debian.org/data/main/${pkgbase::4}/${pkgbase}/${pkgver}-0.1/debian/patches/fix-informations-spelling"
+        # https://sources.debian.org/patches/mp3splt/2.6.2%2B20170630-3.2/10_Properly-zero-initialise-the-ogg-and-vorbis-state-st.patch
+        "${pkgbase}_fix_ogg_and_vorbis_state_structs_init.patch")
+sha256sums=('30eed64fce58cb379b7cc6a0d8e545579cb99d0f0f31eb00b9acc8aaa1b035dc'
+            'f6f730a6fc1231571368a3b984b24273bddbe1d9cc902111909ddd1221cca517'
+            '3fedbcf86e7b93fa548bdc0ac6874a98d6045082e51ed90ec570a06efca37422')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
+  for _patch in "${srcdir}/${_pkgname}"*".patch"; do
+    patch -p1 -i "${_patch}"
+  done
+
   sed -i 's/FreeSans\.ttf//g' "doc/Doxyfile_api.in"
   sed -i 's/FreeSans\.ttf//g' "doc/Doxyfile_all.in"
 }
