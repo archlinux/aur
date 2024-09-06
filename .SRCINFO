@@ -1,7 +1,7 @@
 pkgbase = kate-root
 	pkgdesc = Advanced Text Editor from the KDE project, patched to be able to run as root.
 	pkgver = 24.08.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.kde.org/kate/
 	arch = x86_64
 	arch = i686
@@ -55,6 +55,7 @@ pkgbase = kate-root
 	depends = kwidgetsaddons>=6
 	depends = kwindowsystem>=6
 	depends = qt6-base>=6.5.0
+	depends = qtkeychain-qt6
 	depends = syntax-highlighting>=6
 	optdepends = bash: For migration script from kate session applet to kde plasma addon.
 	optdepends = clang: C and C++ LSP support.

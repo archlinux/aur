@@ -11,7 +11,7 @@
 _pkgname=kate
 pkgname="${_pkgname}-root"
 pkgver=24.08.0
-pkgrel=1
+pkgrel=2
 arch=(
   'x86_64'
   'i686'
@@ -64,6 +64,7 @@ depends=(
   'kwindowsystem>=6'
   # 'libx11'
   'qt6-base>=6.5.0'
+  'qtkeychain-qt6'
   'syntax-highlighting>=6'
 )
 optdepends=(
