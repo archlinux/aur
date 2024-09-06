@@ -2,7 +2,7 @@
 # Maintainer: SeriousM4x <maxi at quoss dot org>
 
 pkgname='upsnap-bin'
-pkgver=4.2.12
+pkgver=4.3.0
 pkgrel=1
 pkgdesc='A simple wake on lan web app written with SvelteKit, Go and PocketBase.'
 url='https://github.com/seriousm4x/UpSnap'
@@ -12,14 +12,14 @@ provides=('UpSnap')
 conflicts=('UpSnap')
 optdepends=('nmap: to scan for network devices')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.zip::https://github.com/seriousm4x/UpSnap/releases/download/4.2.12/UpSnap_4.2.12_linux_arm64.zip")
-sha256sums_aarch64=('7705d43d9e70fbe5f618ca8ffa59223b8c62d9aba525897eb4c38b07ed5d7c69')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.zip::https://github.com/seriousm4x/UpSnap/releases/download/4.3.0/UpSnap_4.3.0_linux_arm64.zip")
+sha256sums_aarch64=('87cec2d7969af488fbbad8d7a36d3e9963b38c7a7cdaedcfdf24ca6e6ae2a5e3')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.zip::https://github.com/seriousm4x/UpSnap/releases/download/4.2.12/UpSnap_4.2.12_linux_armv7.zip")
-sha256sums_armv7h=('67119961ecc677f78a089e0514cd07604d8fcb02c80a6b17902a77c84b648bdd')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.zip::https://github.com/seriousm4x/UpSnap/releases/download/4.3.0/UpSnap_4.3.0_linux_armv7.zip")
+sha256sums_armv7h=('959c6d99aae5476174b6cce9c7b2bd699acd56158ba7fcb9f45870af6286e655')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.zip::https://github.com/seriousm4x/UpSnap/releases/download/4.2.12/UpSnap_4.2.12_linux_amd64.zip")
-sha256sums_x86_64=('ff9b3840c04eca6c578958c15ab23632d7cb6b169d4e969ae4ac0755f6fce2fc')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.zip::https://github.com/seriousm4x/UpSnap/releases/download/4.3.0/UpSnap_4.3.0_linux_amd64.zip")
+sha256sums_x86_64=('cb511fd83adbb8c590bbda460bcbab9fd9252d504ec1f189fb44cfa44b04c5d2')
 
 package() {
   install -Dm755 "./upsnap" "${pkgdir}/usr/bin/upsnap"
