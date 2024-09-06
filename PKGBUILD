@@ -1,7 +1,7 @@
 # Maintainer: Presence <dan465 at mail dot com>
 
 pkgname=pyobd
-pkgver=1.17
+pkgver=1.19
 pkgrel=1
 pkgdesc="An OBD-II compliant car diagnostic tool"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('pyinstaller' 'pyside6-tools' 'icoutils'
 	'gendesk')
 depends=('glibc' 'hicolor-icon-theme' 'zlib')
 source=(https://github.com/barracuda-fsh/pyobd/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('0bd0dd2bdb9d64f6c097f372f946e14c6ccf3bf97cd40ef6cc7742d92bf75fd0')
+sha256sums=('94ce6f7574cff7ed3a8412002c06a6bea2251fed0bb1f890db33ad080154d10f')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"

@@ -1,6 +1,6 @@
 pkgbase = pyobd
 	pkgdesc = An OBD-II compliant car diagnostic tool
-	pkgver = 1.17
+	pkgver = 1.19
 	pkgrel = 1
 	url = https://github.com/barracuda-fsh/pyobd
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = pyobd
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = zlib
-	source = https://github.com/barracuda-fsh/pyobd/archive/refs/tags/v1.17.tar.gz
-	sha256sums = 0bd0dd2bdb9d64f6c097f372f946e14c6ccf3bf97cd40ef6cc7742d92bf75fd0
+	source = https://github.com/barracuda-fsh/pyobd/archive/refs/tags/v1.19.tar.gz
+	sha256sums = 94ce6f7574cff7ed3a8412002c06a6bea2251fed0bb1f890db33ad080154d10f
 
 pkgname = pyobd
