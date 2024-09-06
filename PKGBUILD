@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=llocal-bin
 _pkgname=LLocal
-pkgver=1.0.0_beta.5
+pkgver=1.0.0_beta.6
 _electronversion=28
 pkgrel=1
 pkgdesc="Aiming to provide a seamless and privacy driven chatting experience with open-sourced technologies(Ollama), particularly open sourced LLM's(eg. Llama3, Phi-3, Mistral). Focused on ease of use."
@@ -20,9 +20,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/kartikm7/llocal/v${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e8a389018e933a63f46b4b5d3e9d9bfa09b436efba4f7528428526b8c4e4ef3a'
+sha256sums=('dc57ae23a245f8f04854f57594d4a25b3f43f6b3e67534ec3ea64f3de7751663'
             '4b67dc8b6237614c0a113c4436ffe6c972dbdfae6ba0de0d9149c7dc5a887869'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
