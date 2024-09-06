@@ -3,7 +3,7 @@
 pkgbase="mp3splt-gtk"
 pkgname=("${pkgbase}" "${pkgbase}-docs")
 pkgver=0.9.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Split mp3, ogg, and flac files without decoding - GTK3 GUI"
 arch=('any')
 url="https://mp3splt.sourceforge.net"
@@ -13,12 +13,13 @@ makedepends=('doxygen' 'graphviz' 'gstreamer>=1.0' 'gtk3>=3.4.2'
 # checkdepends=('cutter-test')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::https://downloads.sourceforge.net/sourceforge/mp3splt/${_pkgsrc}.tar.gz"
+        # https://sources.debian.org/patches/mp3splt/2.6.2%2B20170630-3.2/20_mp3splt-gtk-0.9.2-fno-common.patch
+        "${pkgname}_fix_gcc10_-fno-common.patch"
         "${pkgname}_fix_ui_manager_c.patch"
-        "${pkgname}_fix_splitpoints_window_h.patch"
         "${pkgname}_fix_doxyfile_in.patch")
 sha256sums=('2084cc942b5d1aa6ff74848a41d05cb37876cbc74dfdc341ceb424c763887650'
+            '06e7641d255c35bbb665cca9b29acb47010cfb390b3f3814952ac7de85ea4c46'
             '402d261ac26dacede3a19742197e9ed15186a759007536b70b1f05827775ea0e'
-            'ec328ba914d7321e6738180deba607fbc158371a8a8b590c3be3c2a3ee28713b'
             'a34f46d6a52fedd23004466fcafdf45ced74569cc787e7823055ebc8fd9e5bbb')
 
 prepare() {
@@ -39,6 +40,7 @@ build() {
     --prefix='/usr' \
     --enable-gstreamer \
     --enable-audacious \
+    --disable-cutter \
     --disable-gnome # https://aur.archlinux.org/packages/gnome-doc-utils#comment-964738
   make
 }
