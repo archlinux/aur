@@ -1,12 +1,12 @@
-# Maintainer: bbx0 <39773919+bbx0@users.noreply.github.com>
-# Contributor: Richard Kettlewell <rjk@greenend.org.uk>
+# Maintainer: Philipp Micheel <bbx0+aur at bitdevs dot de>
+# Contributor: Richard Kettlewell <rjk at greenend dot org dot uk>
 
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgbase=rsbackup
 pkgname=('rsbackup' 'rsbackup-graph')
 pkgver=10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="rsync-based backup utility"
 arch=('x86_64' 'aarch64')
 url="https://www.greenend.org.uk/rjk/rsbackup"
