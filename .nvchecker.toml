@@ -1,0 +1,4 @@
+[kaccounts-providers-git]
+source = "git"
+git = "https://invent.kde.org/network/kaccounts-providers.git"
+prefix = "v"

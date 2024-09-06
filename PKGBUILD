@@ -1,24 +1,26 @@
 # Maintainer:
 # Contributor: Zanny <lordzanny@gmail.com>
 # Contributor: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 _pkgname="kaccounts-providers"
 pkgname="$_pkgname-git"
-pkgver=23.08.3.r30.gc1472cd
+pkgver=24.08.0.r12.gd81fe4e
 pkgrel=1
 pkgdesc='Online account providers for the KAccounts system'
 url='https://invent.kde.org/network/kaccounts-providers'
-license=('GPL')
-arch=(x86_64)
+license=('GPL-2.0-or-later')
+arch=('x86_64')
 
 depends=(
   'kaccounts-integration'
+  'kpackage'
 )
 makedepends=(
   'extra-cmake-modules'
   'git'
   'intltool'
+  'ninja'
+  'qcoro-qt6'
 )
 
 provides=("$_pkgname=${pkgver%%.r*}")
@@ -30,21 +32,17 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-
-  local _tag=$(git tag | grep -Ev '\.[0-9][0-9]$' | sort -V | tail -1)
-  local _revision=$(git rev-list --count $_tag..HEAD)
-  local _hash=$(git rev-parse --short HEAD)
-
-  printf '%s.r%s.g%s' \
-    "${_tag#v}" \
-    "$_revision" \
-    "$_hash"
+  local _tag=$(git tag | grep -Ev '\.[0-9][0-9]$' | sort -rV | head -1)
+  local _revision=$(git rev-list --count --cherry-pick "$_tag"...HEAD)
+  local _hash=$(git rev-parse --short=7 HEAD)
+  printf '%s.r%s.g%s' "${_tag#v}" "$_revision" "$_hash"
 }
 
 build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
+    -G Ninja
     -DBUILD_TESTING=OFF
     -Wno-dev
   )
@@ -54,5 +52,5 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir:?}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }

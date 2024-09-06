@@ -1,15 +1,18 @@
 pkgbase = kaccounts-providers-git
 	pkgdesc = Online account providers for the KAccounts system
-	pkgver = 23.08.3.r30.gc1472cd
+	pkgver = 24.08.0.r12.gd81fe4e
 	pkgrel = 1
 	url = https://invent.kde.org/network/kaccounts-providers
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = extra-cmake-modules
 	makedepends = git
 	makedepends = intltool
+	makedepends = ninja
+	makedepends = qcoro-qt6
 	depends = kaccounts-integration
-	provides = kaccounts-providers=23.08.3
+	depends = kpackage
+	provides = kaccounts-providers=24.08.0
 	conflicts = kaccounts-providers
 	source = kaccounts-providers::git+https://invent.kde.org/network/kaccounts-providers.git
 	sha256sums = SKIP
