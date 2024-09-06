@@ -30,7 +30,7 @@ makedepends=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download/${pkgver}/${_pkgname}_Linux_arm64.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/${pkgver}/${_pkgname}_Linux_x64.zip")
 source=("${pkgname%-bin}.sh")
-sha256sums=('95870ae800c53720523170c532a9307ad792db48c654cbb2ffac9f23c5f7e849')
+sha256sums=('6aca7dfd3abf71dd91e7b5d6a6d78084c8d52cf5df2564d3889b07e6621940c4')
 sha256sums_aarch64=('3b236fa8e8a49c17a6fb02f633a96a91e7221aece76dadcf249a01e298e53b66')
 sha256sums_x86_64=('81c5bf1b735c078c42b06877a5a519f8a3c607279cab880e204225835c1ddb8b')
 build() {
