@@ -1,6 +1,6 @@
 pkgbase = terraform-bin
 	pkgdesc = HashiCorp tool for building and updating infrastructure as code idempotently
-	pkgver = 1.9.3
+	pkgver = 1.9.5
 	pkgrel = 1.0
 	url = https://www.terraform.io
 	arch = x86_64
