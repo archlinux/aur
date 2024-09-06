@@ -1,20 +1,19 @@
 # Maintainer: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
-
 _srcname=SPIRV-LLVM-Translator
 pkgname=spirv-llvm-translator-minimal-git
 pkgdesc="Tool and a library for bi-directional translation between SPIR-V and LLVM IR, trunk version"
 epoch=1
-pkgver=r2107.2b5f15d
-pkgrel=1
+pkgver=r2108.7dacb7c
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
 license=('custom:Apache 2.0 with LLVM Exception')
-makedepends=(llvm-minimal-git git cmake spirv-headers spirv-tools)
+makedepends=(llvm-minimal-git git cmake spirv-headers-git spirv-tools)
 checkdepends=(python python-setuptools clang-minimal-git clang-opencl-headers-minimal-git)
 depends=(llvm-libs-minimal-git spirv-tools gcc-libs glibc)
 provides=(spirv-llvm-translator)
 conflicts=(spirv-llvm-translator)
-source=("git+$url.git"
+source=("git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git"
 )
 md5sums=('SKIP'
 )
