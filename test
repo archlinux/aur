@@ -1,7 +1,7 @@
 #! /usr/bin/bash
 
 makepkg --printsrcinfo > .SRCINFO
-makepkg --check
+makepkg --check > /dev/null 2>&1
 
 #makepkg -fg
 echo "Updating Checksum" 
