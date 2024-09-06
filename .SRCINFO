@@ -1,0 +1,15 @@
+pkgbase = regect-git
+	pkgdesc = regex 101 like cli tool.
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/kloki/regect
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = regect
+	conflicts = regect
+	source = regect-git::git+https://github.com/kloki/regect#branch=master
+	sha256sums = SKIP
+
+pkgname = regect-git
