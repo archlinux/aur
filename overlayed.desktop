@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Utility;Network;Game;InstantMessaging
+Comment=Voice chat overlay for Discord
+Exec=overlayed
+Icon=overlayed
+Name=Overlayed
+Terminal=false
+Type=Application

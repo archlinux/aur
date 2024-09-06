@@ -1,0 +1,18 @@
+pkgbase = overlayed
+	pkgdesc = A modern, open-source, and free voice chat overlay for Discord (git version)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://overlayed.dev
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = git
+	makedepends = pnpm
+	makedepends = nvm
+	makedepends = cargo
+	optdepends = discord: Needed for overlay to work
+	source = overlayed::git+https://github.com/overlayeddev/overlayed.git#tag=v0.5.0
+	source = overlayed.desktop
+	sha256sums = SKIP
+	sha256sums = 30ad415ebf2124f6fe4697ba915194c0aa76002aa70b17ecfeac966b158a5f33
+
+pkgname = overlayed
