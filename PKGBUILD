@@ -4,7 +4,7 @@
 
 pkgname=perl-www-curl
 pkgver=4.17
-pkgrel=17
+pkgrel=18
 pkgdesc="Perl/CPAN Module WWW::Curl"
 arch=('x86_64')
 url="https://search.cpan.org/dist/WWW-Curl/"
@@ -14,7 +14,7 @@ options=('!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://search.cpan.org/CPAN/authors/id/S/SZ/SZBALINT/WWW-Curl-${pkgver}.tar.gz"
         'makefile.patch')
 sha256sums=('52ffab110e32348d775f241c973eb56f96b08eedbc110d77d257cdb0a24ab7ba'
-            'f0965b7b820c7d16722dad75f00007ff0b17adacce172efd3a81f736ecb9ec0e')
+            'fd9136144955c8a14d0413f3b78ddc3ad9914e45936691686c6bbf3e1eadc013')
 
 prepare() {
   cd WWW-Curl-${pkgver}
