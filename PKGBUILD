@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=turtle
 _app_id="de.philippun1.$pkgname"
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
@@ -20,8 +20,7 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-checkdepends=('appstream')
-#checkdepends+=('python-pytest')
+checkdepends=('python-pytest')
 optdepends=(
   'python-nautilus: Nautilus plugin'
   'thunarx-python: Thunar plugin'
@@ -30,16 +29,11 @@ optdepends=(
   'seahorse: sign commits'
 )
 conflicts=('turtlegit')
-source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
-        'https://gitlab.gnome.org/philippun1/turtle/-/commit/eeabb0e3e2f70296009d679f7a14311f547b74f5.patch')
-sha256sums=('d0090c59f9b88cae8ac73b38c005edce0d19d81b865c99db3097819868a46082'
-            '6b6610e5162b21d583f5bb709e29401caaca67e059b6193a870038704ddff8f1')
+source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('a4398d95dd4d91965d7c8a703189cee9df3eb6ab9c61c977993229d4abbc3afd')
 
 prepare() {
   cd "$pkgname-$pkgver"
-
-  # https://gitlab.gnome.org/philippun1/turtle/-/issues/43
-  patch -Np1 -i ../eeabb0e3e2f70296009d679f7a14311f547b74f5.patch
 }
 
 build() {
@@ -48,8 +42,8 @@ build() {
 }
 
 check() {
-   cd "$pkgname-$pkgver"
-#  PYTHONPATH=./ pytest
+  cd "${pkgname%-git}"
+  PYTHONPATH=./ pytest
 
   appstreamcli validate --no-net "data/${_app_id}.metainfo.xml"
   desktop-file-validate "data/${_app_id}.desktop"

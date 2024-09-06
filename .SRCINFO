@@ -1,11 +1,11 @@
 pkgbase = turtle
 	pkgdesc = Manage your git repositories with easy-to-use dialogs in Nautilus.
-	pkgver = 0.9
+	pkgver = 0.10
 	pkgrel = 1
 	url = https://gitlab.gnome.org/philippun1/turtle
 	arch = any
 	license = GPL-3.0-or-later
-	checkdepends = appstream
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -21,9 +21,7 @@ pkgbase = turtle
 	optdepends = python-caja: Caja plugin
 	optdepends = seahorse: sign commits
 	conflicts = turtlegit
-	source = https://gitlab.gnome.org/philippun1/turtle/-/archive/0.9/turtle-0.9.tar.gz
-	source = https://gitlab.gnome.org/philippun1/turtle/-/commit/eeabb0e3e2f70296009d679f7a14311f547b74f5.patch
-	sha256sums = d0090c59f9b88cae8ac73b38c005edce0d19d81b865c99db3097819868a46082
-	sha256sums = 6b6610e5162b21d583f5bb709e29401caaca67e059b6193a870038704ddff8f1
+	source = https://gitlab.gnome.org/philippun1/turtle/-/archive/0.10/turtle-0.10.tar.gz
+	sha256sums = a4398d95dd4d91965d7c8a703189cee9df3eb6ab9c61c977993229d4abbc3afd
 
 pkgname = turtle
