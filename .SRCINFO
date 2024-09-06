@@ -1,12 +1,13 @@
 pkgbase = imibrowser
 	pkgdesc = iReasoning Freeware MIB browser tool for SNMP API
 	pkgver = 15.0.5010
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ireasoning.com/mibbrowser.shtml
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
 	license = GPL-2.0-or-later
 	makedepends = imagemagick
+	depends = bash
 	depends = java-runtime
 	depends = hicolor-icon-theme
 	source = imibrowser-15.0.5010.zip::https://www.ireasoning.com/download/mibfree/mibbrowser.zip
@@ -14,6 +15,6 @@ pkgbase = imibrowser
 	source = SLA
 	sha256sums = 996adcf0a547fa65a2bdc322223530bcadc9557207084487ea0b024f45187d26
 	sha256sums = ecfc557a66cb3e11f50c0034019fff55960d4b9551ba0639754ed14647cb6446
-	sha256sums = 13bc58030db2e471743fd920b327cb1711915220605f577c0db2588b1e2a15cf
+	sha256sums = f15a61ab9c02cdab41460763608bfd5b5f0624826724e0f80120ecef3285acfa
 
 pkgname = imibrowser
