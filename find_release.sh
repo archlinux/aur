@@ -16,8 +16,6 @@ rm taskade.html
 if [ "$current_version" != "$version" ]; then
     echo "Build the thing"
     echo "pkgver=$version" > build.env
-    # replace with the actual new version
-    sed -i "s/^pkgver=.*/pkgver=${version}/" PKGBUILD
 else 
     echo "No new version"
 fi
