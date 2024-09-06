@@ -1,0 +1,24 @@
+pkgbase = localjson-git
+	pkgdesc = A lightweight cross-platform toolset based on Wails
+	pkgver = 2024.5.13.a0bc346.r43.gd6911ae
+	pkgrel = 1
+	url = https://localjson.vercel.app/
+	arch = any
+	license = GPL-3.0-only
+	makedepends = npm
+	makedepends = pnpm
+	makedepends = git
+	makedepends = go
+	makedepends = gendesk
+	makedepends = curl
+	makedepends = wails
+	makedepends = gcc
+	depends = networkmanager
+	depends = glib2
+	depends = webkit2gtk
+	provides = localjson=2024.5.13.a0bc346
+	conflicts = localjson
+	source = localjson.git::git+https://github.com/inRemark/localjson.git
+	sha256sums = SKIP
+
+pkgname = localjson-git
