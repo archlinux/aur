@@ -3,7 +3,7 @@
 
 pkgname='perl-cpan-distnameinfo'
 pkgver='0.12_01'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Extract distribution name and version from a distribution filename"
 arch=('any')
 license=('Artistic-1.0-Perl')
