@@ -1,13 +1,9 @@
 # Maintainer:
 # Contributor: Sándor Nagy <sanya868 at gmail dot com>
 
-## options
-: ${_branch:=kf6}
-
-# basic info
 _pkgname="libkomparediff2"
 pkgname="$_pkgname-git"
-pkgver=24.02.2.r89.gcc7b704
+pkgver=24.08.0.r7.g62d8f88
 pkgrel=1
 pkgdesc="Library to compare files and strings"
 url='https://invent.kde.org/sdk/libkomparediff2'
@@ -17,13 +13,6 @@ arch=('x86_64')
 depends=(
   'kio'
   'kxmlgui'
-
-  ## implicit
-  #'kconfig'
-  #'kconfigwidgets'
-  #'kcoreaddons'
-  #'ki18n'
-  #'qt6-base'
 )
 makedepends=(
   'cmake'
@@ -42,7 +31,6 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-
   local _tag=$(git tag | grep -Ev '\.[0-9][0-9]$' | sort -rV | head -1)
   local _revision=$(git rev-list --count --cherry-pick "$_tag"...HEAD)
   local _hash=$(git rev-parse --short=7 HEAD)

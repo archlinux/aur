@@ -1,0 +1,4 @@
+[libkomparediff2-git]
+source = "git"
+git = "https://invent.kde.org/sdk/libkomparediff2.git"
+prefix = "v"
