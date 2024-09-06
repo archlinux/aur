@@ -1,0 +1,4 @@
+[konsole-git]
+source = "git"
+git = "https://invent.kde.org/utilities/konsole.git"
+prefix = "v"

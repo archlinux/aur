@@ -1,21 +1,14 @@
 # Maintainer:
 # Contributor: katt <magunasu.b97@gmail.com>
-# Contributor: Felix Yan <felixonmars@archlinux.org>
-# Contributor: Antonio Rojas <arojas@archlinux.org>
-# Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-# options
-: ${_pkgtype:=git}
-
-# basic info
 _pkgname="konsole"
-pkgname="$_pkgname${_pkgtype:+-$_pkgtype}"
-pkgver=23.08.4.r8.gaed2dd76d
+pkgname="$_pkgname-git"
+pkgver=24.08.0.r28.gd416723
 pkgrel=1
 pkgdesc='KDE terminal emulator'
 url="https://invent.kde.org/utilities/konsole"
-license=(GPL LGPL FDL)
-arch=(x86_64)
+license=('GPL-2.0-or-later' 'LGPL-2.0-or-later')
+arch=('x86_64')
 
 depends=(
   'knewstuff'
@@ -29,6 +22,7 @@ makedepends=(
   'extra-cmake-modules>=5.240.0'
   'git'
   'kdoctools'
+  'ninja'
 )
 optdepends=(
   'keditbookmarks: to manage bookmarks'
@@ -57,7 +51,7 @@ pkgver() {
       | sed 's@\ .*$@@'
   )
   _revision=$(git rev-list --count $_commit..HEAD)
-  _hash=$(git rev-parse --short HEAD)
+  _hash=$(git rev-parse --short=7 HEAD)
 
   printf '%s.r%s.g%s' \
     "$_version" \
@@ -69,11 +63,10 @@ build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
-
+    -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_INSTALL_LIBDIR='lib'
-
     -DBUILD_TESTING=OFF
     -Wno-dev
   )
@@ -83,5 +76,5 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir:?}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }

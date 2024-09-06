@@ -1,15 +1,15 @@
 pkgbase = konsole-git
 	pkgdesc = KDE terminal emulator
-	pkgver = 23.08.4.r8.gaed2dd76d
+	pkgver = 24.08.0.r28.gd416723
 	pkgrel = 1
 	url = https://invent.kde.org/utilities/konsole
 	arch = x86_64
-	license = GPL
-	license = LGPL
-	license = FDL
+	license = GPL-2.0-or-later
+	license = LGPL-2.0-or-later
 	makedepends = extra-cmake-modules>=5.240.0
 	makedepends = git
 	makedepends = kdoctools
+	makedepends = ninja
 	depends = knewstuff
 	depends = knotifyconfig
 	depends = kparts
@@ -17,7 +17,7 @@ pkgbase = konsole-git
 	depends = ktextwidgets
 	depends = qt6-multimedia
 	optdepends = keditbookmarks: to manage bookmarks
-	provides = konsole=23.08.4
+	provides = konsole=24.08.0
 	conflicts = konsole
 	source = konsole::git+https://invent.kde.org/utilities/konsole.git
 	sha256sums = SKIP
