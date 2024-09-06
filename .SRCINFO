@@ -1,0 +1,16 @@
+pkgbase = tbsp-git
+	pkgdesc = tree-based source-processing language
+	pkgver = r10.1702f95
+	pkgrel = 1
+	url = https://git.peppe.rs/languages/tbsp
+	arch = x86_64
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	provides = tbsp
+	conflicts = tbsp
+	source = tbsp-git::git+https://git.peppe.rs/languages/tbsp
+	sha256sums = SKIP
+
+pkgname = tbsp-git
