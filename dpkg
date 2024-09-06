@@ -21,6 +21,8 @@ usage() {
 
 if [ -z "$1" ] || [ "$1" != "-s" ] || [ -z "$2" ]; then usage; fi
 
+PATH=/usr/bin:$PATH
+
 out=$(pacman -Qi $2 2>&1)
 
 if [ $? -ne 0 ]; then
