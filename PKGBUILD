@@ -3,7 +3,7 @@ pkgname=coinstac-desktop-app-bin
 _pkgname=COINSTAC
 pkgver=6.8.13
 _electronversion=18
-pkgrel=1
+pkgrel=2
 pkgdesc="Collaborative Informatics and Neuroimaging Suite Toolkit for Anonymous Computation"
 arch=('x86_64')
 url="https://github.com/trendscenter/coinstac"
@@ -21,9 +21,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/trendscenter/coinstac/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('066eccc9bac973cf6283ddd051b079435b875b736cddcc71fb46c0b6d5d389c5'
+sha256sums=('02894c103b62af9d3ea272acfc999e0a5ea4a7a3778140d7fd15b9b956b8167f'
             'fcf8a012e25e06508e76c87a9607116d8cf2a195c8e12f960ff01e64b493f882'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
