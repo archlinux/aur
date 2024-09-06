@@ -1,9 +1,11 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
+: ${_install_path:=opt}
+
 _pkgname=flet
 pkgname=python-${_pkgname}
 pkgver=0.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
 license=('Apache')
@@ -27,41 +29,36 @@ makedepends=(
 	'python-installer'
 	'python-wheel'
 	'go'
-	'flutter-engine'
+	'fvm'
 	'git'
 	'patchelf')
 arch=('x86_64')
 source=(
 	"${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}-dev/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
-	"flutter::git+https://github.com/flutter/flutter.git"
-	"flutter-engine::git+https://github.com/flutter/engine.git"
-	'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git'
 	'flet-linux.patch')
 sha256sums=('8e007f71953fae93f8c808e07b527406f1784f10885879523c6a92fa08114c01'
-            'SKIP'
-            'SKIP'
-            'SKIP'
             'af9718b926a07ac8e8689a2c623fe6921d88d0bcd52263f63848d11175e3b828')
 
 _srcdir="${_pkgname}-${pkgver}"
-_engine_version=3.24.0
+_engine_version=3.24.2
 
 prepare() {
 	cd "${_srcdir}"
-	source '/opt/flutter-engine/pkgbuild-prepare.sh'
 
 	patch -p1 -i "${srcdir}/flet-linux.patch"
 }
 
 build() {
 	cd "${_srcdir}"
-	source '/opt/flutter-engine/pkgbuild-build.sh'
 
 	pushd 'client'
-		flutter clean
-		flutter pub get
-		flutter build linux --release
-		#flutter build web --release
+		fvm install "$_engine_version"
+		fvm use -f "$_engine_version"
+
+		fvm flutter --disable-analytics
+
+		fvm flutter --no-version-check pub get
+		fvm flutter build linux --release
 	popd
 
 	pushd 'server'
@@ -86,14 +83,14 @@ package() {
 		popd
 	done
 
-	local _client_installdir="opt/$pkgname"
+	local _client_installdir="${_install_path}/$pkgname"
 	install -dm0755 "${pkgdir}/${_client_installdir}"
 	cp -r "client/build/linux/x64/release/bundle/"* "$pkgdir/${_client_installdir}"
 	ln -s "/${_client_installdir}/flet" "$pkgdir/usr/bin/flet_view"
 
 	# Fix runpath
-	patchelf --set-rpath '$ORIGIN/lib' "$pkgdir/opt/$pkgname/$_pkgname"
-	for i in "$pkgdir/opt/$pkgname/lib"/*.so; do
+	patchelf --set-rpath '$ORIGIN/lib' "$pkgdir/${_install_path}/$pkgname/$_pkgname"
+	for i in "$pkgdir/${_install_path}/$pkgname/lib"/*.so; do
 		[ -z "$(patchelf --print-rpath "$i")" ] && continue
 		patchelf --set-rpath '$ORIGIN' "$i"
 	done
