@@ -1,0 +1,18 @@
+pkgbase = gnome-system-log
+	pkgdesc = View your system logs
+	pkgver = 3.9.90+160+g4b07190
+	pkgrel = 2
+	url = https://git.gnome.org/browse/gnome-system-log
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = docbook-xsl
+	makedepends = git
+	makedepends = gnome-common
+	depends = dconf
+	depends = gtk3
+	source = git+https://git.gnome.org/browse/gnome-system-log#commit=4b071909a0ca38a73a9cc5b287ffc2b0a744566b
+	sha256sums = SKIP
+
+pkgname = gnome-system-log
