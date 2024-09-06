@@ -66,11 +66,12 @@ release_job:
     - git add PKGBUILD .SRCINFO
     - git commit -m "$commit_msg"
     - git push aur master
-
+  
   dependencies:
-    - find_release_job
+    - test_job
   artifacts:
     paths:
       - PKGBUILD
       - .SRCINFO
-      - build.env
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "schedule"'
