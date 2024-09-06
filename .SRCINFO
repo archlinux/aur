@@ -1,0 +1,15 @@
+pkgbase = pypy3-setuptools70
+	pkgdesc = Easily download, build, install, upgrade, and uninstall Python packages
+	pkgver = 70.3.0
+	pkgrel = 1
+	epoch = 1
+	url = https://setuptools.pypa.io
+	arch = any
+	license = MIT
+	depends = pypy3
+	provides = pypy3-=70.3.0
+	conflicts = pypy3-
+	source = https://pypi.org/packages/source/s/setuptools/setuptools-70.3.0.tar.gz
+	sha512sums = 9f330bd9867631da69ee0886551033a6e8ef3cf52cfe38aad9fcd359cbfc2e0d7ee8c85382b29f8d52568c674893dc07f2b2a896afe5154e6140bb3209ee50a0
+
+pkgname = pypy3-setuptools70
