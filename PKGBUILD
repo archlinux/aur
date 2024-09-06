@@ -3,12 +3,12 @@
 pkgname=gesftpserver
 _pkgname=sftpserver
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Green End SFTP Server - experimental free SFTP server"
 arch=('i686' 'x86_64')
 url="http://www.greenend.org.uk/rjk/sftpserver/"
 license=('GPL2')
-depends=('glibc')
+depends=('glibc' 'python2')
 source=(http://www.greenend.org.uk/rjk/${_pkgname}/${_pkgname}-${pkgver}.tar.gz)
 md5sums=('0f5c4bda37ea16c6f075646e460cf060')
 
