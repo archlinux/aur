@@ -1,0 +1,14 @@
+pkgbase = fcsolid-backgrounds
+	pkgdesc = Boring background images and data for GNOME shell
+	pkgver = 1
+	pkgrel = 1
+	url = https://codeberg.org/fabiscafe/fcsolid
+	arch = any
+	license = CC-BY-4.0
+	makedepends = git
+	makedepends = meson
+	depends = libjxl
+	source = fcsolid-backgrounds::git+https://codeberg.org/fabiscafe/fcsolid.git#tag=1
+	b2sums = 08a0df262ea4c3ea4460a58e73b9e7aabf3ce654e36d03da5983795db76c37bf319f02514a9c96c6c5a1064933a238f47d84ab5df65506c5f9c5f520f6685029
+
+pkgname = fcsolid-backgrounds

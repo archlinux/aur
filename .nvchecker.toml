@@ -1,0 +1,3 @@
+[fcsolid-backgrounds]
+source = "git"
+git = "https://codeberg.org/fabiscafe/fcsolid.git"
