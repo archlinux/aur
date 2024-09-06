@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-x86_64-libunistring
+	pkgdesc = Library for manipulating Unicode strings and C strings for amd64 platform (mingw-w64)
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://www.gnu.org/software/libunistring/
+	arch = x86_64
+	license = LGPL-3.0-only
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-x86_64-libiconv
+	provides = mingw-w64-x86_64-libunistring=1.2
+	conflicts = mingw-w64-libunistring
+	options = !strip
+	options = staticlibs
+	options = !buildflags
+	source = https://ftp.gnu.org/gnu/libunistring/libunistring-1.2.tar.xz
+	source = https://ftp.gnu.org/gnu/libunistring/libunistring-1.2.tar.xz.sig
+	validpgpkeys = 9001B85AF9E1B83DF1BDA942F5BE8B267C6A406D
+	sha256sums = 632bd65ed74a881ca8a0309a1001c428bd1cbd5cd7ddbf8cedcd2e65f4dcdc44
+	sha256sums = SKIP
+
+pkgname = mingw-w64-x86_64-libunistring
