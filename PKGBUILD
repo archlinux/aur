@@ -7,18 +7,18 @@
 pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
 epoch=1
-pkgver=A26.r1492.gf05183bf1e
+pkgver=a26.r825.g09f55a1afc
 pkgrel=1
 pkgdesc="Cross-platform, 3D and historically-based real-time strategy game - built from git development version."
 arch=('i686' 'x86_64')
 url="http://play0ad.com/"
 license=('GPL-2.0-or-later' 'LicenseRef-CCPL')
-makedepends=('boost' 'cmake' 'mesa' 'zip' 'libsm' 'rust' 'python311' 'python' 'git'
+makedepends=('boost' 'cmake' 'mesa' 'zip' 'libsm' 'rust' 'python311' 'python3' 'git' 'git-lfs'
              'enet' 'fmt' 'gloox' 'libminiupnpc.so'
              'libpng' 'libsodium' 'libvorbis' 'miniupnpc' 'openal'
-             'sdl2' 'wxwidgets-gtk3' 'which')
+             'sdl2' 'wxwidgets-gtk3' 'which' 'subversion')
 options=('!lto' '!debug') # lto breaks spidermonkey linking (https://bugs.gentoo.org/746947)
-source=("git+https://github.com/0ad/0ad.git" "patch.patch")
+source=("git+https://gitea.wildfiregames.com/0ad/0ad" "patch.patch")
 md5sums=('SKIP' '0c789b7aa65258125a488c857e3fb74b')
 
 pkgver() {
@@ -28,19 +28,24 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${_pkgname}"
+  git lfs install --local
+  git remote add network-origin https://gitea.wildfiregames.com/0ad/0ad
+  git lfs fetch network-origin
+  git lfs checkout
+
   patch -p1 -i ../patch.patch # Fix build with GCC 14
 
 }
 
 build() {
-  cd "$srcdir/${_pkgname}/build/workspaces"
-
   # this uses malloc_usable_size, which is incompatible with fortification level 3
   export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
   export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
   # remove once this is fixed https://trac.wildfiregames.com/ticket/6895
   export PYTHON3=python3.11
-
+  cd "$srcdir/${_pkgname}/libraries"
+  ./build-source-libs.sh
+  cd "$srcdir/${_pkgname}/build/workspaces"
   ./update-workspaces.sh \
       --without-pch \
       --bindir=/usr/bin \
