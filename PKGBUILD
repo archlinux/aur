@@ -1,11 +1,11 @@
 # Maintainer:  Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
 
 _pkgbase=nginx
-_commit=cf73b65983c2
+_commit=dbf76fdd109f
 _libressl_ver=3.9.2
 pkgbase=freenginx-libressl
 pkgname=($pkgbase $pkgbase-src)
-pkgver=1.27.3
+pkgver=1.27.4
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server'
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ source=("hg+https://freenginx.org/hg/nginx#revision=$_commit"
         "https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${_libressl_ver}.tar.gz"
         "service"
         "logrotate")
-sha256sums=('250948232ac2dee686ad6a65d124d51e0e5be72547684bbc9c7cace9f55a79ba'
+sha256sums=('67fce9093b5b9573fd1eb8d26b273c91087fc97854cfefe65357cc894a0c6aa5'
             '7b031dac64a59eb6ee3304f7ffb75dad33ab8c9d279c847f92c89fb846068f97'
             'adb4a2b5176be3a3bf39666584f7a0a7f10b1b1aca927c189c1910c789d6d13c'
             'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e')
