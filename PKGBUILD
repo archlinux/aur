@@ -16,7 +16,7 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=mesa-amdonly-gaming-git
-pkgver=24.3.0_devel.192705.aa9745427b9.d41d8cd
+pkgver=24.3.0_devel.194455.5fd3be6f1b7.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 pkgname=(
   'amdonly-gaming-vulkan-mesa-layers-git'
@@ -130,7 +130,6 @@ build() {
     -D android-libbacktrace=disabled
     -D b_ndebug=true
     -D b_lto=false
-    -D dri3=enabled
     -D egl=enabled
     -D gallium-drivers=radeonsi,llvmpipe,softpipe,zink
     -D gallium-extra-hud=true
