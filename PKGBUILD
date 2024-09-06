@@ -2,7 +2,7 @@
 
 pkgname=lib32-sdl12-compat
 pkgver=1.2.68
-pkgrel=1
+pkgrel=2
 pkgdesc='SDL 1.2 runtime compatibility library using SDL 2.0'
 arch=(x86_64)
 url=https://www.libsdl.org
