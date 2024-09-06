@@ -46,6 +46,7 @@ test_job:
     paths:
       - PKGBUILD
       - .SRCINFO
+      - build.env
   rules:
     - if: '$CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "schedule"'
 
@@ -77,5 +78,6 @@ release_job:
     paths:
       - PKGBUILD
       - .SRCINFO
+      - build.env
   rules:
     - if: '$CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "schedule"'
