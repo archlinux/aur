@@ -1,4 +1,5 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Marcus Ben Spencer <marcus@marcusspencer.xyz>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=llhttp
 pkgver=9.2.1
