@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=armcord
 _pkgname=ArmCord
-pkgver=3.3.0
+pkgver=3.3.1
 _electronversion=32
 _nodeversion=22
-pkgrel=2
+pkgrel=1
 pkgdesc="A custom client designed to enhance your Discord experience while keeping everything lightweight."
 arch=('any')
 url="https://armcord.app/"
@@ -26,8 +26,8 @@ source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('30f1791320bd12698be1f072658f41740dc46b6cb9c4ab326c9d00f841e81b25'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums=('958b66fa2104e37252f1cea37d7d53e124f6cd389e867b880aabbc650b190f3a'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -44,24 +44,23 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
-    export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
-    pnpm config set store-dir "${srcdir}/.pnpm_store"
-    pnpm config set cache-dir "${srcdir}/.pnpm_cache"
-    pnpm config set link-workspace-packages true
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        export npm_config_registry=https://registry.npmmirror.com
-        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+    echo 'build_from_source=true'  >> .npmrc
+    echo 'link-workspace-packages=true'  >> .npmrc
+    echo 'fetch-retry-maxtimeout=10000'  >> .npmrc
+    echo "cache-dir="${srcdir}"/.pnpm_cache"  >> .npmrc
+    echo "store-dir="${srcdir}"/.pnpm_store"  >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        echo 'registry=https://registry.npmmirror.com' >> .npmrc
+        echo 'disturl=https://registry.npmmirror.com/-/binary/node/' >> .npmrc
+        echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/' >> .npmrc
+        echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/' >> .npmrc
     else
         echo "Your network is OK."
     fi
-    sed "/\"electron\":/d;45i\        \"electron\": \"${SYSTEM_ELECTRON_VERSION}\"," -i package.json
+    sed "s|\"electron\": \"\([^\"]*\)\"|\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"|g" -i package.json
     NODE_ENV=development    pnpm install
     NODE_ENV=production     pnpm run packageQuick
 }
