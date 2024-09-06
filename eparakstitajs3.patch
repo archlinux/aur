@@ -6,7 +6,7 @@ diff --color --unified --recursive --text --color usr/share/applications/eparaks
  Type=Application
  Categories=Application;Viewer;
 -Exec=/usr/bin/eparakstitajs3 %F
-+Exec=env "PATH=/usr/lib/eparakstitajs3/bin:$PATH" /usr/bin/eparakstitajs3 %F
++Exec=env "PATH=$PATH:/usr/bin:/usr/lib/eparakstitajs3/bin" /usr/bin/eparakstitajs3 %F
  MimeType=application/pdf;application/lv.eme.edoc;application/vnd.etsi.asic-e+zip;
  StartupWMClass=lv.euso.signanywhere.SignAnywhere
  
