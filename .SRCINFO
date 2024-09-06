@@ -1,0 +1,20 @@
+pkgbase = audiowrapper-bin
+	pkgdesc = A GUI for mp3splt and mp3wrap. The open source alternative to AlbumWrapper.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://audiowrapper.sourceforge.net
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = gendesk
+	depends = java-runtime
+	depends = mp3splt
+	depends = sh
+	provides = audiowrapper
+	conflicts = audiowrapper
+	noextract = audiowrapper-0.1.1.jar
+	source = audiowrapper-0.1.1.jar::https://downloads.sourceforge.net/sourceforge/audiowrapper/AudioWrapper-0.1.1.jar
+	source = audiowrapper.sh
+	sha256sums = a713ad10ef16ce38cb6a198190976a43cea3f3809b63f240703429932423cc32
+	sha256sums = a9f1f64f5e5d5c150242ff0dcb4d98ea7051c68ed09057b22ece5d1be8b5d16c
+
+pkgname = audiowrapper-bin
