@@ -1,6 +1,6 @@
 pkgbase = perl-authen-webauthn
 	pkgdesc = A library to add Web Authentication support to server applications
-	pkgver = 0.001
+	pkgver = 0.004
 	pkgrel = 1
 	url = https://metacpan.org/release/Authen-WebAuthn
 	arch = any
@@ -15,9 +15,7 @@ pkgbase = perl-authen-webauthn
 	depends = perl-mouse
 	depends = perl-uri
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/M/MB/MBESSON/Authen-WebAuthn-0.001.tar.gz
-	source = https://github.com/LemonLDAPNG/Authen-WebAuthn/archive/df5ea2aafd7cc252f432281350565a17d97676f4.tar.gz
-	sha256sums = 8107e98171a216670501bfb6adce75d09508e3411767b0acdf03787c86e70fd8
-	sha256sums = 7bf8182514c730d842abd53e9cb37d1706e6711697dd5e30c840952658a9f8b6
+	source = https://cpan.metacpan.org/authors/id/M/MB/MBESSON/Authen-WebAuthn-0.004.tar.gz
+	sha256sums = b465056a4b751cd3c2d6c5076de8540d83fbe3dc15eb6f419b64b70f72c2cab8
 
 pkgname = perl-authen-webauthn
