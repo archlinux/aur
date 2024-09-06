@@ -1,0 +1,19 @@
+pkgbase = devkitty
+	pkgdesc = Swiss army knife for developers
+	pkgver = 2.11.1
+	pkgrel = 1
+	url = https://devkitty.app/
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	depends = electron31
+	conflicts = devkitty
+	source = devkitty.git::git+https://github.com/egor-xyz/devkitty.git#tag=v2.11.1
+	source = devkitty.sh
+	sha256sums = c45ce04e3b7ffb1fe5b883874b401cec47d95661cd0da3d80f31bf1402f539c4
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = devkitty
