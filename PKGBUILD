@@ -108,6 +108,8 @@ package_penpot-frontend() {
 }
 
 package_penpot() {
+  backup=("etc/conf.d/penpot")
+
   install -Dm644 "${srcdir}/${_pkgbase}-${pkgver}/backend/target/dist/penpot.jar" \
     "${pkgdir}/usr/share/java/penpot/backend.jar"
   install -Dm755 "${srcdir}/${_pkgbase}-${pkgver}/backend/target/dist/run.sh" \

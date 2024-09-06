@@ -51,6 +51,7 @@ pkgbase = penpot
 	sha256sums = 29f5cde4d5ba6d73b14d6fd88a0be930c6bcf5eff3512332cba50a30316c6621
 
 pkgname = penpot
+	backup = etc/conf.d/penpot
 
 pkgname = penpot-exporter
 
