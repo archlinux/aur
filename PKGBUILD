@@ -2,7 +2,7 @@
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-acpi-dkms
 pkgver=1.0.2+12+g03a5804
-pkgrel=1
+pkgrel=2
 pkgdesc="This provides the system76_acpi in-tree driver for systems missing it."
 arch=('x86_64')
 url="https://github.com/pop-os/system76-acpi-dkms"
@@ -12,12 +12,12 @@ makedepends=('git')
 _commit=03a5804847a64fd977989316ea25082e2766723e  # branch/master
 source=("git+https://github.com/pop-os/system76-acpi-dkms.git#commit=${_commit}"
         "$pkgname.conf")
-sha256sums=('SKIP'
+sha256sums=('2dd87c0d941fe2ad090eaed084b587365024c57d467e404f99581503f4c05935'
             'ae5fe704761f5ff7d7a4e161044a27c6346854f17e3bd5476e863ad4e1ec8d6b')
 
 pkgver() {
   cd "$pkgname"
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags --abbrev=7 | sed 's/-/+/g'
 }
 
 package() {
