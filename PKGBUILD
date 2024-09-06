@@ -1,7 +1,7 @@
 # Maintainer: Rhys Perry <rhysperry111@gmail.com>
 
 pkgname=cli-pride-flags
-pkgver=1.5.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Displays pride flags in your terminal~'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs-chalk' 'nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('56195ee05e3fc7a4a1b14157bc18dc39f3171c3d65060f8c0687403a4832a805')
+sha256sums=('1dc9f56cd4a0966569b338126899687e788a1003d29fb77b36eb097a41476794')
 
 package() {
     npm install -g --production --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
