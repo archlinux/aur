@@ -1,0 +1,19 @@
+pkgbase = cosmic-ext-calculator-git
+	pkgdesc = Calculator for the COSMIC desktop.
+	pkgver = r21.27830c9
+	pkgrel = 1
+	url = https://github.com/cosmic-utils/calculator
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	provides = cosmic-ext-calculator
+	conflicts = cosmic-ext-calculator
+	source = git+https://github.com/cosmic-utils/calculator.git
+	sha256sums = SKIP
+
+pkgname = cosmic-ext-calculator-git
