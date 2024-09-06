@@ -1,0 +1,19 @@
+pkgbase = mouse-automator-bin
+	pkgdesc = A lightweight, user-friendly desktop application designed to automate mouse clicks with ease.
+	pkgver = 1.0.16
+	pkgrel = 1
+	url = https://github.com/cch01/mouse-automator
+	arch = x86_64
+	license = MIT
+	makedepends = fuse2
+	depends = electron30
+	provides = mouse-automator=1.0.16
+	conflicts = mouse-automator
+	source = mouse-automator-1.0.16.AppImage::https://github.com/cch01/mouse-automator/releases/download/v1.0.16/Mouse-Automator-Linux-1.0.16.AppImage
+	source = LICENSE-1.0.16::https://raw.githubusercontent.com/cch01/mouse-automator/v1.0.16/LICENSE.md
+	source = mouse-automator.sh
+	sha256sums = eb2d915b32888b596bc4e82758bb536865b9f6596c5ca1e0a565c030059e9679
+	sha256sums = 63e4d77e325791ba1068e915954837010fcbf719df67822ff4a1e20efcdca8a8
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = mouse-automator-bin
