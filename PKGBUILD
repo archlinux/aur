@@ -10,7 +10,7 @@ pkgname=('systemd-git'
          'systemd-tests-git'
          'systemd-ukify-git')
 pkgdesc='systemd (git version)'
-pkgver=257.devel.r75997.144e53b333
+pkgver=257.devel.r76068.195bb6f97e
 pkgrel=1
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
@@ -281,7 +281,9 @@ package_systemd-libs-git() {
     'GPL-2.0-or-later WITH Linux-syscall-note' # src/basic/linux/*
   )
   provides=('libsystemd' 'libsystemd.so' 'libudev.so')
+  provides+=("systemd-libs=${pkgver}")
   conflicts=('libsystemd')
+  conflicts+=('systemd-libs')
   replaces=('libsystemd')
 
   install -d -m0755 "$pkgdir"/usr/share/man
