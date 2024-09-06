@@ -1,20 +1,22 @@
-# Maintainer: Michael Dorst <m@mdorst.net>
+# Maintainer: Bastien "neitsab" Traverse <neitsab@archlinux.org>
+# Contributor: Michael Dorst <m@mdorst.net>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Konstantin Stepanov <me@kstep.me>
 
 pkgname=cargo-pkgbuild
-pkgver=0.1.1
-_sha=e5fea7fa4f083a2a78e5347c0ec33c17f931c187
-pkgrel=2
-pkgdesc='ArchLinux PKGBULD generator from Cargo.toml manifest'
+pkgver=0.2.0
+# target commit hash
+_sha=0fc6d2767ca7fe59dd760b9d4203c78662bc1b7c
+pkgrel=1
+pkgdesc='ArchLinux PKGBUILD generator from Cargo.toml manifest'
 arch=(x86_64 i686 armv6h armv7h)
 url='https://github.com/kstep/cargo-pkgbuild'
-license=(MIT Apache)
+license=('Apache-2.0 OR MIT')
 makedepends=(cargo)
 depends=(gcc-libs)
 _archive="$pkgname-$_sha"
 source=("$_archive.tar.gz::$url/archive/$_sha.tar.gz")
-sha256sums=('0d67691b9674614dc64229891316297a6272ba9a6ffe3d48215292dfc44ff8aa')
+sha256sums=('a295df0a83493004158a04f5a5756128d50a400a758ead5afb8df3eeed056028')
 
 pkgver() {
 	cd "$_archive"
@@ -23,9 +25,8 @@ pkgver() {
 
 prepare() {
 	cd "$_archive"
-	# Upstream lockfile is buggered in v0.1.1
-	cargo update
-	cargo fetch --locked --target $CARCH-unknown-linux-gnu
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -38,10 +39,11 @@ build() {
 check() {
 	cd "$_archive"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen
+	cargo test --frozen --all-features
 }
 
 package() {
 	cd "$_archive"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${pkgname%-git}"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+	install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

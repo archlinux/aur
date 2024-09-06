@@ -1,17 +1,16 @@
 pkgbase = cargo-pkgbuild
-	pkgdesc = ArchLinux PKGBULD generator from Cargo.toml manifest
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgdesc = ArchLinux PKGBUILD generator from Cargo.toml manifest
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/kstep/cargo-pkgbuild
 	arch = x86_64
 	arch = i686
 	arch = armv6h
 	arch = armv7h
-	license = MIT
-	license = Apache
+	license = Apache-2.0 OR MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = cargo-pkgbuild-e5fea7fa4f083a2a78e5347c0ec33c17f931c187.tar.gz::https://github.com/kstep/cargo-pkgbuild/archive/e5fea7fa4f083a2a78e5347c0ec33c17f931c187.tar.gz
-	sha256sums = 0d67691b9674614dc64229891316297a6272ba9a6ffe3d48215292dfc44ff8aa
+	source = cargo-pkgbuild-0fc6d2767ca7fe59dd760b9d4203c78662bc1b7c.tar.gz::https://github.com/kstep/cargo-pkgbuild/archive/0fc6d2767ca7fe59dd760b9d4203c78662bc1b7c.tar.gz
+	sha256sums = a295df0a83493004158a04f5a5756128d50a400a758ead5afb8df3eeed056028
 
 pkgname = cargo-pkgbuild
