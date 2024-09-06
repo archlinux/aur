@@ -1,7 +1,7 @@
 pkgbase = overlayed-bin
-	pkgdesc = A modern, open-source, and free voice chat overlay for Discord (git version)
+	pkgdesc = A modern, open-source, and free voice chat overlay for Discord (bin version)
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://overlayed.dev
 	arch = x86_64
 	license = AGPL-3.0

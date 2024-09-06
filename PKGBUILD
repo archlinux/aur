@@ -3,8 +3,8 @@
 _basename=overlayed
 pkgname=${_basename}-bin
 pkgver=0.5.0
-pkgrel=1
-pkgdesc="A modern, open-source, and free voice chat overlay for Discord (git version)"
+pkgrel=2
+pkgdesc="A modern, open-source, and free voice chat overlay for Discord (bin version)"
 arch=('x86_64')
 url="https://overlayed.dev"
 license=('AGPL-3.0')
