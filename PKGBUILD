@@ -9,20 +9,19 @@
 _pkgname=godot
 pkgname=godot3
 pkgver=3.5.3
-pkgrel=6
+pkgrel=7
 pkgdesc='Advanced cross-platform 2D and 3D game engine (3.x Branch)'
 url='https://godotengine.org'
 license=(MIT)
 arch=(x86_64)
 makedepends=(gcc scons yasm alsa-lib pulse-native-provider)
 depends=(embree3 freetype2 libglvnd libtheora libvorbis libvpx libwebp libwslay
-         libsquish libxcursor libxi libxinerama libxrandr opusfile miniupnpc)
+         libsquish libxcursor libxi libxinerama libxrandr opusfile miniupnpc
+	 zstd zlib glibc libxrender pcre2 libx11 opus libogg libxext)
 optdepends=(pipewire-alsa pipewire-pulse)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/godotengine/godot/archive/$pkgver-stable.tar.gz"
-	"https://gitlab.archlinux.org/archlinux/packaging/packages/godot/-/raw/main/miniupnpc-2.2.8.patch"
         "godot3.patch")
 b2sums=('07ee037803e103f863e56a00c6106d00834870881ec75ecc43f947ea3d6e04a560763aa183661fa6437c4c8307f9231b250f2d51462057add1720d71d2ada827'
-        'ad308b3ed7fdd0ee305151c584e1a37c753dc5856b0afc631342c03f386a45723d2193d5a6937598a1b883d847dc3ac9c5f7db3d66ec3f9283f636e301235e50'
         '5ed41b79e0121e66614cce997d8c05b3efafefb45d93a426fe4f63bc9917a8dad8519d3f11021a62d6b3a8f7210f2cc86d03361a51dcf79007b0eb71289c1370')
 
 prepare() {
@@ -32,7 +31,7 @@ prepare() {
   # Make godot build a binary compatible with Godot 4
   cd "$srcdir/$_pkgname-$pkgver-stable"
   patch -p1 < "$srcdir/godot3.patch"
-  patch -p1 < "$srcdir/miniupnpc-2.2.8.patch"
+  sed -i 's/addr, 16/addr, 16, nullptr, 0/g' "$srcdir/$_pkgname-$pkgver-stable/modules/upnp/upnp.cpp"
 }
 
 build() {
