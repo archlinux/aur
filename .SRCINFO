@@ -15,7 +15,7 @@ pkgbase = soci-git
 	depends = unixodbc
 	provides = soci
 	conflicts = soci
-	source = soci::git+https://github.com/Krzmbrzl/soci.git#branch=revamp-cmake
+	source = soci::git+https://github.com/SOCI/soci.git#tag=4fc87365c0e812d6d4e6984a8be7798341966205
 	sha512sums = SKIP
 
 pkgname = soci-git

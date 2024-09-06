@@ -10,10 +10,11 @@
 # Contributor: Mika Fischer <mika.fischer@zoopnet.de>
 
 readonly _pkgname="soci"
+declare -r _tag="4fc87365c0e812d6d4e6984a8be7798341966205"
 
 pkgname="soci-git"
 pkgver="v4.0.1_559_g4440c789"
-pkgrel="1"
+pkgrel=1
 pkgdesc="C++ database access library."
 arch=("x86_64")
 url="https://github.com/SOCI/${_pkgname}"
@@ -22,7 +23,7 @@ depends=("gcc-libs" "glibc" "mariadb-libs" "postgresql-libs" "sqlite3" "unixodbc
 makedepends=("cmake" "git")
 provides=("${_pkgname}")
 conflicts=("soci")
-source=("${_pkgname}::git+https://github.com/Krzmbrzl/soci.git#branch=revamp-cmake")
+source=("${_pkgname}::git+${url}.git#tag=${_tag}")
 sha512sums=("SKIP")
 
 _compile()
