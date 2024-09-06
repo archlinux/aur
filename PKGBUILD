@@ -34,7 +34,7 @@ build() {
       --with-cgl-incdir="/usr/${_arch}/include/coin/" \
       --with-coinutils-lib="$(${_arch}-pkg-config --libs coinutils)" \
       --with-coinutils-incdir="/usr/${_arch}/include/coin/" \
-      --with-nauty-lib="-l:nauty.a" --with-nauty-incdir=/usr/${_arch}/include/nauty \
+      --with-nauty-lib="-l:nautyS.a" --with-nauty-incdir=/usr/${_arch}/include/nauty \
       --disable-nauty-libcheck \
       lt_cv_deplibs_check_method=pass_all ..
     make
