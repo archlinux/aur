@@ -4,7 +4,7 @@
 
 pkgname='perl-html-tokeparser-simple'
 pkgver='3.16'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Easy to use HTML::TokeParser interface"
 arch=('any')
 license=('Artistic-1.0-Perl')

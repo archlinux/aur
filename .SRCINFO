@@ -1,7 +1,7 @@
 pkgbase = perl-html-tokeparser-simple
 	pkgdesc = Easy to use HTML::TokeParser interface
 	pkgver = 3.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/HTML-TokeParser-Simple
 	arch = any
 	license = Artistic-1.0-Perl
