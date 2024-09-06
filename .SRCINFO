@@ -1,7 +1,7 @@
 pkgbase = rustrover
 	pkgdesc = JetBrains IDE for Rust Developers
 	pkgver = 2024.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/rust/
 	arch = any
 	license = custom:jetbrains

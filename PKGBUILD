@@ -3,7 +3,7 @@
 pkgbase=rustrover
 pkgname=(rustrover rustrover-jre)
 pkgver=2024.2
-pkgrel=1
+pkgrel=2
 pkgdesc='JetBrains IDE for Rust Developers'
 arch=('any')
 url='https://www.jetbrains.com/rust/'
