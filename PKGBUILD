@@ -2,7 +2,7 @@
 
 pkgname=cmd-wrapped
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI to view your shell history stats, with support for zsh, bash, fish, and atuin."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/YiNNx/${pkgname}"
@@ -30,6 +30,6 @@ check() {
 package() {
     cd "${pkgname}-${pkgver}"
     install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 LICNESE                     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 LICENSE                     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 *.md                     -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
