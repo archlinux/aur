@@ -1,14 +1,14 @@
 pkgbase = perl-ole-storage-lite
-	pkgdesc = Simple class for the OLE document interface
+	pkgdesc = Simple Class for OLE document interface.
 	pkgver = 0.22
-	pkgrel = 1
-	url = https://search.cpan.org/dist/OLE-Storage_Lite/
+	pkgrel = 2
+	url = https://metacpan.org/release/OLE-Storage_Lite
 	arch = any
-	license = GPL
-	license = PerlArtistic
-	depends = perl
+	license = Artistic-1.0-Perl
+	depends = perl>=0
 	options = !emptydirs
-	source = https://search.cpan.org/CPAN/authors/id/J/JM/JMCNAMARA/OLE-Storage_Lite-0.22.tar.gz
-	sha256sums = d0566d6c29d397ea736379dc515c36849f6b97107cf700ba8250505c984cf965
+	source = http://search.cpan.org/CPAN/authors/id/J/JM/JMCNAMARA/OLE-Storage_Lite-0.22.tar.gz
+	md5sums = b36bb2b7c624862882f3f06988ce3499
+	sha512sums = 672b44f033a8c13fcf6258c2ff08627bd6ed8fe3c105b2c20e9627e361df217511fdb2c7be117634883c5ec050894a64a4d06b21fac252602c0ac1b828bf1dd5
 
 pkgname = perl-ole-storage-lite
