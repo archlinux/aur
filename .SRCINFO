@@ -1,0 +1,20 @@
+pkgbase = cosmic-ext-forecast-git
+	pkgdesc = Weather app written in rust and libcosmic
+	pkgver = r73.75e6cf9
+	pkgrel = 1
+	url = https://github.com/cosmic-utils/forecast
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = just
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	depends = openssl
+	provides = cosmic-ext-forecast
+	conflicts = cosmic-ext-forecast
+	source = git+https://github.com/cosmic-utils/forecast.git
+	sha256sums = SKIP
+
+pkgname = cosmic-ext-forecast-git
