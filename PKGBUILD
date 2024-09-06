@@ -24,7 +24,7 @@ sha256sums=('30eed64fce58cb379b7cc6a0d8e545579cb99d0f0f31eb00b9acc8aaa1b035dc'
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  for _patch in "${srcdir}/${_pkgname}"*".patch"; do
+  for _patch in "${srcdir}/${pkgbase}"*".patch"; do
     patch -p1 -i "${_patch}"
   done
 
