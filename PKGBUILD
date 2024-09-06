@@ -1,7 +1,7 @@
 # Maintainer: hossbeast <todd DOT freed AT gmail DOT com>
 
 pkgname=bam-build
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="build optimally"
 options=(!strip debug)
@@ -24,6 +24,9 @@ build() {
 }
 
 package() {
+  install -m755 -d "$pkgdir/usr/share/licenses/bam"
+  install -m644 -t "$pkgdir/usr/share/licenses/bam" "$srcdir/bam/LICENSE"
+
   install -m755 -d "$pkgdir/usr/bin"
   install -m755 -t "$pkgdir/usr/bin" "$srcdir/build/bam/bam"
   install -m755 -t "$pkgdir/usr/bin" "$srcdir/build/bamd/bamd"
@@ -47,6 +50,9 @@ package() {
   rm -rf  "$pkgdir/usr/share/bam/modules/*"
   cp -dR "$srcdir/bam/builtin-modules" "$pkgdir/usr/share/bam/modules"
 
-  install -m755 -d "$pkgdir/usr/share/licenses/bam"
-  install -m644 -t "$pkgdir/usr/share/licenses/bam" "$srcdir/bam/LICENSE"
+  # builtin plugins
+  install -m755 -d "$pkgdir/usr/share/bam/plugins"
+  rm -rf  "$pkgdir/usr/share/bam/plugins/*"
+  cp -dR "$srcdir/bam/builtin-plugins" "$pkgdir/usr/share/bam/plugins"
+  chmod 0755 $pkgdir/usr/share/bam/plugins/*
 }
