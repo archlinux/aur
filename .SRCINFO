@@ -1,6 +1,6 @@
 pkgbase = kompare-git
 	pkgdesc = Graphical file differences tool
-	pkgver = 24.02.2.r81.g848439e
+	pkgver = 24.08.0.r16.g11aa247
 	pkgrel = 1
 	url = https://invent.kde.org/sdk/kompare
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = kompare-git
 	makedepends = ninja
 	depends = libkomparediff2-git
 	depends = ktexteditor
-	provides = kompare=24.02.2
+	provides = kompare=24.08.0
 	conflicts = kompare
-	source = kompare::git+https://invent.kde.org/sdk/kompare.git#branch=kf6
+	source = kompare::git+https://invent.kde.org/sdk/kompare.git#branch=master
 	sha256sums = SKIP
 
 pkgname = kompare-git

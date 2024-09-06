@@ -1,13 +1,9 @@
 # Maintainer:
 # Contributor: Sándor Nagy <sanya868 at gmail dot com>
 
-## options
-: ${_branch:=kf6}
-
-# basic info
 _pkgname="kompare"
 pkgname="$_pkgname-git"
-pkgver=24.02.2.r81.g848439e
+pkgver=24.08.0.r16.g11aa247
 pkgrel=1
 pkgdesc="Graphical file differences tool"
 url="https://invent.kde.org/sdk/kompare"
@@ -17,20 +13,6 @@ arch=('x86_64')
 depends=(
   'libkomparediff2-git'
   'ktexteditor'
-
-  ## implicit
-  #hicolor-icon-theme
-  #kcodecs
-  #kcompletion
-  #kconfig
-  #kconfigwidgets
-  #kcoreaddons
-  #ki18n
-  #kio
-  #kparts
-  #kwidgetsaddons
-  #kxmlgui
-  #qt6-base
 )
 makedepends=(
   'cmake'

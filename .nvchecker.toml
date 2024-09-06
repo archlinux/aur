@@ -1,0 +1,4 @@
+[kompare-git]
+source = "git"
+git = "https://invent.kde.org/sdk/kompare.git"
+prefix = "v"
