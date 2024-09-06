@@ -3,7 +3,7 @@ pkgname=altus-bin
 _pkgname=Altus
 pkgver=5.3.0
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for WhatsApp Web with themes, notifications and multiple account support"
 arch=('x86_64')
 url="https://github.com/amanharwara/altus"
@@ -40,7 +40,6 @@ build() {
     sed -e "s|AppRun --no-sandbox|${pkgname%-bin}|g" \
         -e "s|Utility|Network|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
         -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
-    rm -rf "${srcdir}/squashfs-root/resources/app/"{.github,.vite,.vscode}
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
 package() {
