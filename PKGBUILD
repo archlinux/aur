@@ -3,7 +3,7 @@
 
 pkgname=xwaylandvideobridge-git
 _pkgname=xwaylandvideobridge
-pkgver=0.4.0_r233.g80ec77b
+pkgver=0.4.0_r243.g1a8d5af
 pkgrel=1
 pkgdesc="A tool to make it easy to stream wayland windows and screens to Xwayland applicatons that don't have native pipewire support."
 arch=(x86_64)
@@ -15,6 +15,7 @@ depends=(
   gcc-libs
   qt6-base
   qt6-declarative
+  kcrash
   kcoreaddons
   ki18n
   kwindowsystem
