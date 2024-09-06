@@ -1,0 +1,15 @@
+pkgbase = perl-bencode
+	pkgdesc = BitTorrent serialisation format
+	pkgver = 1.502
+	pkgrel = 1
+	url = https://search.cpan.org/dist/Bencode
+	arch = any
+	license = Artistic-1.0-Perl
+	license = GPL-1.0-or-later
+	checkdepends = perl-test-differences
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/A/AR/ARISTOTLE/Bencode-1.502.tar.gz
+	sha512sums = 076ef6dabc8453488cd733f5ae82bd102690c4591784abd955c37cc8f0515ab513423a486d25022cdea2b52919894ac26e4b2580dd67a3c977fd96fc4eebe5b7
+
+pkgname = perl-bencode
