@@ -36,7 +36,7 @@ test_job:
   stage: test
   script:
     - if [ -z "$pkgver" ]; then echo "version variable does not exist, skipping job"; exit 0; fi
-    - sed -i "s/^pkgver=.*/pkgver=${version}/" PKGBUILD
+    - sed -i "s/^pkgver=.*/pkgver=${pkgver}/" PKGBUILD
     - su -c "cd ${CI_PROJECT_DIR} && ./test" - builduser
   dependencies:
     - find_release_job
