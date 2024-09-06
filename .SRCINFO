@@ -1,7 +1,7 @@
 pkgbase = proot-termux
 	pkgdesc = A copy of the PRoot project with patches applied to work better under Termux.
 	pkgver = r187.5c462a6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/termux/proot
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -11,6 +11,6 @@ pkgbase = proot-termux
 	provides = proot
 	conflicts = proot
 	source = git+https://github.com/termux/proot.git#commit=5c462a6ecfddd629b1439f38fbb61216d6fcb359
-	sha256sums = SKIP
+	sha256sums = 5c7d6407ad68e219d8038e8dd472ba82a50b570df995b6bd6ebdb6ef4a63aa93
 
 pkgname = proot-termux

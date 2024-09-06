@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=proot-termux
 pkgver=r187.5c462a6
-pkgrel=1
+pkgrel=2
 pkgdesc="A copy of the PRoot project with patches applied to work better under Termux."
 arch=('x86_64')
 url="https://github.com/termux/proot"
@@ -13,7 +13,7 @@ provides=('proot')
 conflicts=('proot')
 _commit=5c462a6ecfddd629b1439f38fbb61216d6fcb359
 source=("git+https://github.com/termux/proot.git#commit=${_commit}")
-sha256sums=('SKIP')
+sha256sums=('5c7d6407ad68e219d8038e8dd472ba82a50b570df995b6bd6ebdb6ef4a63aa93')
 
 pkgver() {
   cd proot
