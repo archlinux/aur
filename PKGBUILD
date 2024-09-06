@@ -5,7 +5,7 @@
 pkgname='perl-html-treebuilder-xpath'
 _distdir="HTML-TreeBuilder-XPath-0.14"
 pkgver='0.14'
-pkgrel='4'
+pkgrel='5'
 pkgdesc="add XPath support to HTML::TreeBuilder"
 arch=('any')
 license=('Artistic-1.0-Perl')
