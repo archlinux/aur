@@ -11,10 +11,10 @@ install=$pkgname.install
 # source from rpm not deb, because (a) makepkg auto-expands rpms and (b) permissions in rpm are already correct for mlink
 # alternatively source=("https://dl.makeblock.com/mblock5/linux/mLink-1.2.0-amd64.deb")
 source=("https://dl.makeblock.com/mblock5/linux/mLink-1.2.0-1.el7.x86_64.rpm")
-sha256sums=('1625de43bd7639ce87c3d0b05bac82336df8860351b35f113f93d0140b830c3b')
+sha256sums=('bf0233a2dbe996413c82341edb96c4a9317fdcddd62bbc1ea8699b2bf1c0c950')
 
 prepare() {
-  mkdir usr/bin
+  mkdir -p usr/bin
   ln -s /usr/local/makeblock/mLink/mlink usr/bin/mblock-mlink
 }
 
