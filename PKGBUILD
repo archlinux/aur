@@ -1,4 +1,5 @@
-# Maintainer: Pablo Arteaga <pablo at pabloarteaga (dot) com>
+# Maintainer: nezu <nezu@nezu.cc>
+# Contributor: Pablo Arteaga <pablo at pabloarteaga (dot) com>
 #
 # This is a modified version of the libfprint-git PKGBUILD file on the AUR
 
