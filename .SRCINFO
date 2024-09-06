@@ -1,0 +1,18 @@
+pkgbase = inner-ink-bin
+	pkgdesc = A Diary app made with Tauri & React for desktop
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/knownasnaffy/inner-ink
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk
+	provides = inner-ink=2.2.0
+	conflicts = inner-ink
+	source = inner-ink-2.2.0.deb::https://github.com/knownasnaffy/inner-ink/releases/download/v2.2.0/inner-ink_2.2.0_amd64.deb
+	source = LICENSE-2.2.0::https://raw.githubusercontent.com/knownasnaffy/inner-ink/v2.2.0/LICENSE
+	sha256sums = 2260cfab433bbedce5ecedfd3a0ea5e62a9c833af6c8212a47ad1acbc2f02d84
+	sha256sums = 35e25d7ed25ecd3a68185e9ab59b4229c3c4e5957d14bb7737c3fc18af55b766
+
+pkgname = inner-ink-bin
