@@ -1,0 +1,14 @@
+pkgbase = perl-exporter-tidy
+	pkgdesc = Another way of exporting symbols
+	pkgver = 0.08
+	pkgrel = 1
+	url = https://search.cpan.org/dist/Exporter-Tidy
+	arch = any
+	license = Artistic-1.0-Perl
+	license = GPL-1.0-or-later
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/J/JU/JUERD/Exporter-Tidy-0.08.tar.gz
+	sha512sums = 3d218c845d95267baacc227b5c864e8cefeabb1d92ac39f86129495c6d9bb971ca1f924ca91f3998c51c95a535e1f0c39774174cb12c75771a23e3f16ed02816
+
+pkgname = perl-exporter-tidy

@@ -1,0 +1,3 @@
+[perl-array-compare]
+source = "cpan"
+cpan = "Exporter-Tidy"
