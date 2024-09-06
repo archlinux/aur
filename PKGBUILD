@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=tasks-git
-pkgver=r105.27672ff
+pkgver=0.1.0.r23.g584d4b0
 pkgrel=1
 pkgdesc="A simple task management application for the COSMIC desktop."
 arch=('x86_64' 'aarch64')
@@ -10,12 +10,12 @@ depends=('hicolor-icon-theme' 'libxkbcommon')
 makedepends=('cargo' 'git' 'just')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'cosmic-tasks-git' 'orderly-git')
-source=('git+https://github.com/edfloreshz/tasks.git')
+source=('git+https://github.com/cosmic-utils/tasks.git')
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
