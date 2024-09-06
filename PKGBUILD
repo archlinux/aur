@@ -4,14 +4,14 @@
 
 pkgname=libfprint-tod-git
 _pkgdirname=libfprint
-pkgver=1.94.6+tod1
+pkgver=1.94.7+tod1
 pkgrel=1
 pkgdesc="Library for fingerprint readers - TOD version"
 arch=(x86_64)
 url="https://fprint.freedesktop.org/"
 license=(LGPL)
 depends=('libgusb>=0.3.0' nss pixman libgudev)
-makedepends=(git gobject-introspection gtk-doc 'meson>=0.49.0')
+makedepends=(git glib2-devel gobject-introspection gtk-doc 'meson>=0.49.0')
 checkdepends=(python python-cairo python-gobject 'umockdev>=0.13.2')
 optdepends=()
 # Provide libfprint for compatibility with fprintd and also provide libfprint-tod for tod-style-only drivers
