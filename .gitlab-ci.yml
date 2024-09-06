@@ -21,6 +21,7 @@ stages:
 find_release_job:
   stage: find_release
   script: 
+    - rm -f build.env > /dev/null 2>&1 # clean build.env
     - current_version=$(grep -Po "^pkgver=\K.*" PKGBUILD)
     - version=$(curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | jq -r '.tag_name')
     - version=${version#v} # remove the v from the version
@@ -33,6 +34,8 @@ find_release_job:
   artifacts:
     reports:
       dotenv: build.env
+    paths:
+      - build.env
   rules:
     - if: '$CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "schedule"'
 
@@ -45,9 +48,12 @@ test_job:
   dependencies:
     - find_release_job
   artifacts:
+    reports:
+      dotenv: build.env
     paths:
       - PKGBUILD
       - .SRCINFO
+      - build.env
   rules:
     - if: '$CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "schedule"'
 
@@ -75,9 +81,12 @@ release_job:
   dependencies:
     - test_job
   artifacts:
+    reports:
+      dotenv: build.env
     paths:
       - PKGBUILD
       - .SRCINFO
+      - build.env
   rules:
     - if: '$CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "schedule"'
 
