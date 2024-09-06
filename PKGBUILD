@@ -7,7 +7,7 @@ _channel=stable
 _rel=1
 #pkgver=${_pkgver}.${_channel}${_rel}  # beta
 pkgver=${_pkgver}.${_channel}  # stable
-pkgrel=1
+pkgrel=2
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ _wg_commit=de174ac6de2934dc82d9b8301c17de87cbd575f3
 _mn_commit=b06094e81701782d28cd2312f58e0654109d04ce
 source=(
 #  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
-  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}"  # stable
+  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
   "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_ab_commit}?signed"
   "git+https://github.com/mullvad/wireguard-go.git#commit=${_wg_commit}?signed"
   "git+https://github.com/mullvad/maybenot.git#commit=#commit=${_mn_commit}"
