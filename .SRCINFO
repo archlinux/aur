@@ -1,0 +1,22 @@
+pkgbase = d-feet
+	pkgdesc = D-Bus debugger for GNOME
+	pkgver = 0.3.16
+	pkgrel = 3
+	url = https://wiki.gnome.org/Apps/DFeet
+	arch = any
+	license = GPL2
+	checkdepends = xorg-server-xvfb
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = python-pycodestyle
+	makedepends = yelp-tools
+	depends = gtk3
+	depends = python-gobject
+	source = https://download.gnome.org/sources/d-feet/0.3/d-feet-0.3.16.tar.xz
+	source = meson-drop-unused-argument.patch
+	source = python-del-fix.patch
+	sha512sums = ff4db968cbd679e2065c614d538187fe3c56118b44638771ec9f7472bdba4a798dc682565f520a8680a8001ea39ce88555b07cda172e60f88eb6bdf1e00b5a6d
+	sha512sums = 019dbeff67c22eccab4e34ed3c3aa292a86c6113f0f9575ecbec948aa5e2fc06f0f862d8e07d8ce566045e6aeb985cebddbc3c70ce6cffc8a074c1e08c80e27c
+	sha512sums = 082938045dda067c1fca4d3954fffbaf6d3fe39e5a69ce4e6d629aa62c148009e7f228f01b76863d2b78d6fac663a93eb06988b1239901bfb41b2f65d62f249e
+
+pkgname = d-feet
