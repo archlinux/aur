@@ -1,0 +1,23 @@
+pkgbase = zen-adblocker-git
+	pkgdesc = An open-source system-wide ad-blocker and privacy guard
+	pkgver = 0.5.0.r27.gfb5464c
+	pkgrel = 1
+	url = https://zenprivacy.net/
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = go
+	makedepends = gendesk
+	makedepends = curl
+	makedepends = wails
+	makedepends = gcc
+	depends = networkmanager
+	depends = glib2
+	depends = webkit2gtk
+	provides = zen-adblocker=0.5.0
+	conflicts = zen-adblocker
+	source = zen-adblocker.git::git+https://github.com/anfragment/zen.git
+	sha256sums = SKIP
+
+pkgname = zen-adblocker-git
