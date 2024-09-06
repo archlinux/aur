@@ -5,19 +5,18 @@
 
 pkgname='perl-spreadsheet-parseexcel'
 pkgver='0.66'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Read information from an Excel file."
-_realname='Spreadsheet-ParseExcel'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl')
 options=('!emptydirs')
-depends=('perl-crypt-rc4>=0' 'perl-digest-perl-md5>=0' 'perl-io-stringy>=0' 'perl-ole-storage-lite>=0.19')
+depends=('perl-crypt-rc4>=0' 'perl-digest-perl-md5>=0' 'perl-io-stringy>=0' 'perl-ole-storage-lite>=0.19' 'perl-spreadsheet-writeexcel')
 makedepends=()
 url='https://metacpan.org/release/Spreadsheet-ParseExcel'
-source=("https://cpan.metacpan.org/authors/id/J/JM/JMCNAMARA/${_realname}-${pkgver}.tar.gz")
+source=('http://search.cpan.org/CPAN/authors/id/J/JM/JMCNAMARA/Spreadsheet-ParseExcel-0.66.tar.gz')
 md5sums=('091aa6a1be43a60f4c81b43f5afafd06')
 sha512sums=('d63070eadcd32bef19a756a39b960fdd067c18848d30110cd2c055110eac4737db3cbf856ee6cb40860bd4e2abe12069aecc110b90f805c8e1fb5ac991b9c8e3')
-_distdir="${_realname}-${pkgver}"
+_distdir="Spreadsheet-ParseExcel-0.66"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
