@@ -3,10 +3,11 @@
 
 pkgname='perl-test-kwalitee'
 pkgver='1.28'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Test the Kwalitee of a distribution before you release it"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl'
+         'GPL-1.0-only')
 options=('!emptydirs')
 depends=('perl-cpan-meta-check>=0.011' 'perl-module-cpants-analyse>=0.92' 'perl-test-deep>=0' 'perl-test-warnings>=0.009' 'perl>=5.006')
 checkdepends=('perl-parse-distname>=0.05' 'perl-algorithm-diff>=1:1.201' 'perl-class-xsaccessor>=1.19')
