@@ -2,7 +2,7 @@
 _appname=music-player
 pkgname="moebits-${_appname}-bin"
 _pkgname="Moebits Music Player"
-pkgver=0.2.8
+pkgver=0.2.9
 _electronversion=28
 pkgrel=1
 pkgdesc="A music player with real-time pitch shifting, time stretching, and reversing effects."
@@ -24,9 +24,9 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Moebits/Music-Player/v${pkgver}/license.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9a090bb65ef41e3c715c82a817d3bff2feff885a97472109d4dce004806a9b47'
+sha256sums=('08051272f8838f5ef2e80011fd54a930982838fcc8591fdba836c21073899aaa'
             '8946c49d9a63a62f5621f114027b2842ee914bd237590f2a5496d4b044c95af9'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
