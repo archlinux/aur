@@ -4,7 +4,7 @@ pkgname="${_appname}-desktop-bin"
 _pkgname=Anything-LLM-Desktop
 pkgver=1.2.1
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="The all-in-one AI application, tool suite, and API for RAG & Agents for Docker & Desktop."
 arch=('x86_64')
 url="https://useanything.com/"
@@ -18,6 +18,7 @@ conflicts=(
 depends=(
     "electron${_electronversion}"
     'nodejs'
+    'ollama'
 )
 makedepends=(
     'fuse2'
@@ -33,7 +34,7 @@ source=(
 )
 sha256sums=('70f643c574a8b51b6aa0de6b2ddc1685b07bc525cdc28e72f320c632fefa72f7'
             '782d2dc18a1ed9028ca992520f42b2e0b6187807da0d14455b8ae608e2e5692e'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -46,7 +47,7 @@ build() {
     sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g" -i "${srcdir}/app.asar.unpacked/dist-electron/main/index.js"
+    find "${srcdir}/app.asar.unpacked/dist-electron" -type f -exec sed -i "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g" {} \;
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
