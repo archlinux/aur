@@ -1,7 +1,7 @@
 # Maintainer: Librewish <librewish@gmail.com>
 
 pkgname=wayfire-plugins-extra-track-wlroots-0.18-git
-pkgver=r261.960535e
+pkgver=r262.df42bc7
 pkgrel=1
 pkgdesc="3D wayland compositor extra plugins, tracking wlroots 0.18 branch of Wayfire"
 arch=('any')
@@ -14,16 +14,12 @@ provides=("${pkgname}" "wayfire-plugins-extra")
 conflicts=("wayfire-plugins-extra")
 replaces=()
 options=()
-source=('git+https://github.com/WayfireWM/wayfire-plugins-extra#branch=track-wlroots-0.18'
-        'wayfire-shadows-remove-dep.patch')
-sha256sums=('SKIP'
-            'dd2930855813fc5f0c605c081661151d5336118c3ce0b74ff0d1e7581aaf5657')
+source=('git+https://github.com/WayfireWM/wayfire-plugins-extra#branch=track-wlroots-0.18')
+sha256sums=('SKIP')
 install=wayfire-plugins-extra.install
 prepare() {
   cd "$srcdir/wayfire-plugins-extra"
   git submodule update --init --recursive
-  cd "$srcdir/wayfire-plugins-extra/subprojects/wayfire-shadows"
-  patch -Np1 -i "$srcdir/wayfire-shadows-remove-dep.patch"
 }
 pkgver() {
         cd "$srcdir/wayfire-plugins-extra"
