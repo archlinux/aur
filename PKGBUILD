@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
 
 pkgname=rtpengine-kernel-dkms
-pkgver=12.5.1.4
+pkgver=12.5.1.5
 pkgrel=1
 pkgdesc='Kernel module for rtpengine media proxy'
 url="https://github.com/sipwise/rtpengine"
@@ -13,7 +13,7 @@ optdepends=('linux-headers: build modules against the Arch kernel'
             'linux-zen-headers: build modules against the ZEN kernel'
             'linux-hardened-headers: build modules against the HARDENED kernel')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sipwise/rtpengine/archive/refs/tags/mr${pkgver}.tar.gz")
-sha256sums=('f051bd6558357f8499b5afd6289240345faeb73862e1cbec47723d9fab4cd987')
+sha256sums=('b25c98268f39209b95f1cb699760191e165051750c9c3e5d1f51be381213852f')
 
 prepare() {
   cd rtpengine-mr${pkgver}
@@ -31,4 +31,4 @@ package() {
   install -Dm644 kernel-module/xt_RTPENGINE.modules.load.d "${pkgdir}/etc/modules-load.d/${pkgname}.conf"
 }
 
-# vim: ts=2 sw=2 et:
+# vim:set ts=2 sw=2 et:
