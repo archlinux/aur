@@ -57,12 +57,13 @@ prepare() {
         #export LDFLAGS="$LDFLAGS $LTOFLAGS -Wl,-rpath,/usr/lib/libressl"
         export LDFLAGS="$LDFLAGS $LTOFLAGS"
 
-#cmake -DOPENSSL_ROOT_DIR=/opt/openssl-1.1.1 -H/h2o -B.
         cmake \
                 -DCMAKE_BUILD_TYPE=Release \
                 -DCMAKE_INSTALL_PREFIX=/usr \
                 -DCMAKE_INSTALL_LIBDIR=/usr/lib \
                 -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+                -DCMAKE_C_FLAGS="$CPPFLAGS $CFLAGS" \
+                -DCMAKE_CXX_FLAGS="$CPPFLAGS $CXXFLAGS" \
                 -DCMAKE_LINKER="$LD" \
                 -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
                 -DCMAKE_MODULE_LINKER_FLAGS="$LDFLAGS" \
@@ -73,8 +74,6 @@ prepare() {
                 -DBUILD_SHARED_LIBS=on \
                 .
 
-#                -DCMAKE_C_FLAGS="$CPPFLAGS $CFLAGS" \
-#                -DCMAKE_CXX_FLAGS="$CPPFLAGS $CXXFLAGS" \
 #                -DOPENSSL_ROOT_DIR=/usr/lib/libressl \
 #                -DOPENSSL_INCLUDE_DIR=/usr/include/libressl \
 #                -DOPENSSL_LIBRARIES=/usr/lib/libressl \
@@ -83,10 +82,13 @@ prepare() {
 build() {
 	cd "$srcdir/h2o"
 
-        #if [[ "$CC" == "clang" ]] ;then
-        #    export LD="clang"
-        #fi
-        [[ "$GEM_HOME"=="" ]] && GEM_HOME="/usr/lib/ruby/gems/3.0.0/"
+    #if [[ "$CC" == "clang" ]] ;then
+    #    export LD="clang"
+    #fi
+    if [[ "$GEM_HOME"=="" ]] ;then
+        export GEM_HOME="$(gem env user_gemhome)"
+        export PATH="$PATH:$GEM_HOME/bin"
+    fi
 	make DESTDIR="$pkgdir" -j
 }
 
