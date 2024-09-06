@@ -1,7 +1,7 @@
 pkgbase = opencl-caps-viewer
 	pkgdesc = OpenCL Hardware Capability Viewer
 	pkgver = 1.20
-	pkgrel = 3
+	pkgrel = 4
 	url = https://opencl.gpuinfo.org/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -9,9 +9,9 @@ pkgbase = opencl-caps-viewer
 	makedepends = opencl-icd-loader
 	makedepends = qt5-wayland
 	makedepends = qt5-x11extras
-	source = git+https://github.com/SaschaWillems/OpenCLCapsViewer.git#commit=fd813b28108521d6d6f530d9b65fb38a89926984
+	source = git+https://github.com/SaschaWillems/OpenCLCapsViewer.git#tag=1.20
 	source = git+https://github.com/KhronosGroup/OpenCL-Headers.git
-	sha256sums = SKIP
+	sha256sums = 510e3f05f1ce2cda5fc4812f2693e15a672de393b984ad2df5ab8f29f74f2594
 	sha256sums = SKIP
 
 pkgname = opencl-caps-viewer-x11

@@ -3,22 +3,16 @@
 pkgname=('opencl-caps-viewer-x11' 'opencl-caps-viewer-wayland')
 pkgbase=opencl-caps-viewer
 pkgver=1.20
-pkgrel=3
+pkgrel=4
 pkgdesc="OpenCL Hardware Capability Viewer"
 arch=('x86_64')
 url="https://opencl.gpuinfo.org/"
 license=('GPL-2.0-or-later')
 makedepends=('git' 'opencl-icd-loader' 'qt5-wayland' 'qt5-x11extras')
-_commit=fd813b28108521d6d6f530d9b65fb38a89926984  # tags/1.20^0
-source=("git+https://github.com/SaschaWillems/OpenCLCapsViewer.git#commit=${_commit}"
+source=("git+https://github.com/SaschaWillems/OpenCLCapsViewer.git#tag=$pkgver"
         'git+https://github.com/KhronosGroup/OpenCL-Headers.git')
-sha256sums=('SKIP'
+sha256sums=('510e3f05f1ce2cda5fc4812f2693e15a672de393b984ad2df5ab8f29f74f2594'
             'SKIP')
-
-pkgver() {
-  cd OpenCLCapsViewer
-  git describe --tags | sed 's/_fixed//;s/-/+/g'
-}
 
 prepare() {
   cd OpenCLCapsViewer
