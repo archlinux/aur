@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=thiefmd
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The markdown editor worth stealing. Inspired by Ulysses, based on code from Quilter"
 arch=('x86_64' 'aarch64')
 url="https://thiefmd.com"
@@ -17,9 +17,12 @@ depends=(
   'libhandy'
   'webkit2gtk-4.1'
 )
-makedepends=('git' 'meson' 'vala')
-_commit=e654b302ce3d0945455bc923caac55967a9fda4e  # tags/0.2.7^0
-source=("git+https://github.com/kmwallio/ThiefMD.git#commit=${_commit}"
+makedepends=(
+  'git'
+  'meson'
+  'vala'
+)
+source=("git+https://github.com/kmwallio/ThiefMD.git#tag=v$pkgver"
         'git+https://github.com/flathub/shared-modules.git'
         'git+https://github.com/ThiefMD/libwritegood-vala.git'
         'git+https://github.com/TwiRp/ultheme-vala.git'
@@ -31,7 +34,7 @@ source=("git+https://github.com/kmwallio/ThiefMD.git#commit=${_commit}"
         'git+https://github.com/ThiefMD/medium-vala.git'
         'git+https://github.com/ThiefMD/forem-vala.git'
         'git+https://github.com/TwiRp/hashnode-vala.git')
-sha256sums=('SKIP'
+sha256sums=('59e0c234788e9001b372049e143f9a75a39a95a906fe241d014af9428b48c3c4'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -43,11 +46,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
-
-pkgver() {
-  cd ThiefMD
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
 
 prepare() {
   cd ThiefMD
