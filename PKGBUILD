@@ -6,12 +6,12 @@
 # Contributor: Drew DeVault
 
 _pkgbase=nginx
-_commit=9273d346e6fe
+_commit=dd4a8a4620ca
 _libressl_ver=3.9.2
 pkgbase=nginx-quic-libressl
 pkgname=($pkgbase $pkgbase-src)
 pkgver=1.26.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -34,7 +34,7 @@ source=("hg+https://hg.nginx.org/nginx#revision=$_commit"
         "https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${_libressl_ver}.tar.gz"
         "service"
         "logrotate")
-sha256sums=('c31726ac7fb13ee6765e30670a9e08f68edd1409769f3fd037b30e41153c1c70'
+sha256sums=('c2628c0eb081d21ae562cfd6a319bfbcc63d6511842b126f25d3e235fbd8871f'
             '7b031dac64a59eb6ee3304f7ffb75dad33ab8c9d279c847f92c89fb846068f97'
             'adb4a2b5176be3a3bf39666584f7a0a7f10b1b1aca927c189c1910c789d6d13c'
             'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e')
@@ -160,7 +160,7 @@ package_nginx-quic-libressl() {
 
   install -Dm644 ../logrotate "$pkgdir"/etc/logrotate.d/nginx
   install -Dm644 ../service "$pkgdir"/usr/lib/systemd/system/nginx.service
-  install -Dm644 docs/text/LICENSE "$pkgdir"/usr/share/licenses/$provides/LICENSE
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$provides/LICENSE
   install -d "$pkgdir"/usr/share/licenses/$pkgname
   ln -s /usr/share/licenses/$provides/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
@@ -188,12 +188,13 @@ package_nginx-quic-libressl-src() {
   test -d "$pkgdir/usr/src/nginx" && rm -r "$pkgdir/usr/src/nginx"
   cp -r ${srcdir}/nginx-src "$pkgdir/usr/src/nginx"
   # Delete the .hg directory, it is huge and not needed
-  rm -r ${pkgdir}/usr/src/nginx/{.hg,.hgtags}
+  #rm -r ${pkgdir}/usr/src/nginx/{.hg,.hgtags}
+  rm -r ${pkgdir}/usr/src/nginx/.hg
   # Link the 'configure' script to its location in release tarballs,
   # as this is where modules expect it
   ln -s /usr/src/nginx/auto/configure "$pkgdir/usr/src/nginx"
   cd nginx-src
-  install -Dm644 docs/text/LICENSE "$pkgdir"/usr/share/licenses/$provides/LICENSE
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$provides/LICENSE
   install -d "$pkgdir"/usr/share/licenses/$pkgname
   ln -s /usr/share/licenses/$provides/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -Dm644 "$srcdir"/libressl-${_libressl_ver}/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-LIBRESSL
