@@ -1,6 +1,6 @@
 pkgbase = neocities-zig-bin
 	pkgdesc = A command-line client for Neocities written in Zig.
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/ratakor/neocities-zig
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = neocities-zig-bin
 	provides = neocities-zig
 	conflicts = neocities
 	conflicts = neocities-zig
-	source = https://github.com/ratakor/neocities-zig/releases/download/0.1.1/x86_64-linux-neocities
+	source = https://github.com/ratakor/neocities-zig/releases/download/0.1.2/x86_64-linux-neocities
+	source = https://github.com/ratakor/neocities-zig/raw/master/_neocities
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = neocities-zig-bin
