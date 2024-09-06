@@ -2,7 +2,7 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 pkgname=linux-steam-integration
 pkgver=0.7.3
-pkgrel=8
+pkgrel=9
 pkgdesc="Helper for enabling better Steam integration on Linux"
 url="https://github.com/getsolus/linux-steam-integration"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("git+https://github.com/getsolus/linux-steam-integration.git#commit=$_co
         'git+https://github.com/intel/libnica.git'
         'partially-revert-2877813.patch'
         'use-steam-runtime.patch')
-sha256sums=('SKIP'
+sha256sums=('2e4d32acda3c20a6613732508e57a1473a0db776878e559dc4d3340fd11816f7'
             'SKIP'
             '77d459a53f30f1ae4aae408d49e70bc6caa3dc895e6c1ee8239a90b3661ebd0b'
             '31fa5343372a98e294278daf913dc2d02c47f0fece482f759793372e4195efb2')
