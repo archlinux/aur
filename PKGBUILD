@@ -4,7 +4,7 @@ pkgname=perl-data-password-zxcvbn
 _cpanname=Data-Password-zxcvbn
 _module=Data::Password::zxcvbn
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Check password strength"
 arch=('any')
 url="https://metacpan.org/release/$_cpanname"
@@ -17,7 +17,7 @@ sha256sums=('9b55a2b2264f7ecd43f5bda80d96f9374a4bf55a81aaca2acfe903e0a9b77b77')
 
 build() {
     cd "$srcdir/$_cpanname-$pkgver"
-    PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+    PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
     make
 }
 
