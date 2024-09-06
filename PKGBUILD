@@ -1,7 +1,8 @@
 # Maintainer: javalsai <javalsai@proton.me>
 pkgname=paralload-git
 pkgver=1.1.2.r8.gc40afe2
-pkgrel=0
+pkgrel=1
+depends=('libxcursor' 'libxrandr' 'libxinerama' 'libxi' 'libglvnd')
 makedepends=('git' 'go')
 pkgdesc="A download tool that uses multiple HTTP(S) connections and byte ranges"
 arch=('any')
