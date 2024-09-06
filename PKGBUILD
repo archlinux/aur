@@ -3,7 +3,7 @@
 _pkgname=maa-assistant-arknights
 _pkgdirname=maa
 pkgname="${_pkgname}"-bin
-_pkgver=v5.5.11452
+_pkgver=v5.6.0
 pkgver="$(echo ${_pkgver//-/} | sed -e 's/^v//')"
 pkgrel=1
 pkgdesc="A one-click tool for the daily tasks of Arknights, supporting all clients."
@@ -30,8 +30,8 @@ sha256sums=('92e21c4a6b3b254329ae43c600c74654752cd818a948492e15c5cdd9507818d0'
             'a0e767edc532186de42d3f8235fd76c96d2991ee73ad495baa34638e8379dac5'
             'f404ffe0af05122c8b3097fe89c30bbd9cd94d6228036dd902f26a79ed373592'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef')
-sha256sums_x86_64=('f72f67ac1729da227850d58889d59399a110c69baccdacaef166b121ec3cd726')
-sha256sums_aarch64=('634a44739e9dd71cfba53a16ccf2ad1f19b46fac43ad7df130ca5e4d1651ed0a')
+sha256sums_x86_64=('bf8c54b96bf4409cdbe625614055827ce7ae8b986c14ad43b602159888f235e0')
+sha256sums_aarch64=('3d39fb0b076fcf9bd698038f5ab6496ab2c501e76b9ed3278c4e6fccaa2102de')
 
 source_x86_64=("${url}/releases/download/${_pkgver}/MAA-${_pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("${url}/releases/download/${_pkgver}/MAA-${_pkgver}-linux-aarch64.tar.gz")
