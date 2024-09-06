@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=map-download-git
 _pkgname=MapDownload
-pkgver=24.7.22.541.r0.g9237eaa
+pkgver=24.9.5.418.r0.gabe25e2
 _electronversion=16
 _nodeversion=18
 pkgrel=1
@@ -31,7 +31,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
@@ -52,25 +52,30 @@ build() {
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
-    export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
-    touch "${srcdir}/.electron-gyp/.yarnrc"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        export npm_config_registry=https://registry.npmmirror.com
-        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        echo 'registry "https://registry.npmmirror.com"' > "${srcdir}/.electron-gyp/.yarnrc"
+        echo 'disturl "https://registry.npmmirror.com/-/binary/node/"' >> "${srcdir}/.electron-gyp/.yarnrc"
+        echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"' >> "${srcdir}/.electron-gyp/.yarnrc"
+        echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> "${srcdir}/.electron-gyp/.yarnrc"
+        echo "cacheFolder "${srcdir}"/.yarn/cache" >> "${srcdir}/.electron-gyp/.yarnrc"
+        echo "pluginsFolder "${srcdir}"/.yarn/plugins" >> "${srcdir}/.electron-gyp/.yarnrc"
+        echo "globalFolder "${srcdir}"/.yarn/global" >> "${srcdir}/.electron-gyp/.yarnrc"
+        echo 'useHardlinks true' >> "${srcdir}/.electron-gyp/.yarnrc"
+        echo 'buildFromSource true' >> "${srcdir}/.electron-gyp/.yarnrc"
+        echo 'linkWorkspacePackages true' >> "${srcdir}/.electron-gyp/.yarnrc"
+        echo 'fetchRetries 3' >> "${srcdir}/.electron-gyp/.yarnrc"
+        echo 'fetchRetryTimeout 10000' >> "${srcdir}/.electron-gyp/.yarnrc"
     else
         echo "Your network is OK."
     fi
-    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
-    NODE_ENV=production yarn run precompile
-    NODE_ENV=production yarn run compile
+    sed "s|\"electron\": \"\([^\"]*\)\"|\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"|g" -i package.json
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production     yarn run precompile
+    NODE_ENV=production     yarn run compile
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
