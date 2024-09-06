@@ -13,4 +13,3 @@ pkgbase = perl-crypt-generatepassword
 	sha1sums = 99d12d56eae45a335b01c127480dfade41db34c5
 
 pkgname = perl-crypt-generatepassword
-
