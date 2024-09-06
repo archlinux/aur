@@ -1,6 +1,6 @@
 pkgbase = libretro-panda3ds-git
 	pkgdesc = Nintendo 3DS core
-	pkgver = 0.8.r419.g5babeaf6
+	pkgver = 0.8.r440.gf1b78309
 	pkgrel = 1
 	url = https://panda3ds.com/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = libretro-panda3ds-git
 	depends = gcc-libs
 	depends = glibc
 	depends = libretro-core-info>=1.19.0.r8
-	provides = libretro-panda3ds=0.8.r419.g5babeaf6
+	provides = libretro-panda3ds=0.8.r440.gf1b78309
 	conflicts = libretro-panda3ds
 	options = !lto
 	source = Panda3DS::git+https://github.com/wheremyfoodat/Panda3DS.git
@@ -24,11 +24,13 @@ pkgbase = libretro-panda3ds-git
 	source = mio::git+https://github.com/vimpunk/mio.git
 	source = panda3ds-boost::git+https://github.com/Panda3DS-emu/ext-boost.git
 	source = panda3ds-dynarmic::git+https://github.com/Panda3DS-emu/dynarmic.git
+	source = panda3ds-fdk-aac::git+https://github.com/Panda3DS-emu/fdk-aac.git
 	source = SDL::git+https://github.com/libsdl-org/SDL.git
 	source = stb::git+https://github.com/nothings/stb.git
 	source = teakra::git+https://github.com/wwylele/teakra.git
 	source = toml11::git+https://github.com/ToruNiina/toml11.git
 	source = xbyak::git+https://github.com/herumi/xbyak.git
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
