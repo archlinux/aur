@@ -44,6 +44,6 @@ pkgbase = project-plus-netplay
 	source = sd.tar.gz::https://github.com/jlambert360/FPM-AppImage/releases/download/v3.0.2/sd.tar.gz
 	sha256sums = 644755e1e27fe8842724e1bda34d390b1ecac61d7eb13b59975f40c5a1efd836
 	sha256sums = 1b9dce2fb0eac3ad8cc809826b3b6bfd4ce30dbfc394eaa586e35dcd356fd189
-	sha256sums = 5cb140ba93dd9f19bcdf44157f965446484aa5f4737c182adeeac719f7c7e63c
+	sha256sums = f3774b46f1b2c52feca49549d2081e7aed6c1398ebcbc442155367b90257ee16
 
 pkgname = project-plus-netplay
