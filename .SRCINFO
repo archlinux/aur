@@ -1,7 +1,7 @@
 pkgbase = mullvad-vpn
 	pkgdesc = The Mullvad VPN client app for desktop
 	pkgver = 2024.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mullvad.net
 	install = mullvad-vpn.install
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = mullvad-vpn
 	depends = libnftnl
 	depends = libnotify
 	depends = nss
-	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2024.5
+	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2024.5?signed
 	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=b0c37cecd9b671d2480a7dc9636da93d76e2b14c?signed
 	source = git+https://github.com/mullvad/wireguard-go.git#commit=de174ac6de2934dc82d9b8301c17de87cbd575f3?signed
 	source = git+https://github.com/mullvad/maybenot.git#commit=#commit=b06094e81701782d28cd2312f58e0654109d04ce
