@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ente-cli
-pkgver=0.1.16
+pkgver=0.1.18
 pkgrel=1
 pkgdesc="A Command Line Utility for exporting data from Ente."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ente-io/ente/archive/refs/tags/cli-v$pkgver.tar.gz")
-sha256sums=('c358fd6c2a9ad2394de17bd50bfeaeb3c9153a5cd8af215d902ac09856700e9a')
+sha256sums=('438c5478346b9a6ef8f7e073d0061be15dc3831348b6823ca82f784aadcd3bfb')
 
 prepare(){
   cd "$pkgname-v$pkgver/cli"
