@@ -17,6 +17,12 @@ depends=(
   'python-requests'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+checkdepends=(
+  'python-mock'
+  'python-testscenarios'
+  'python-multiprocess'
+  'python-requests-mock'
+)
 source=("$_pkgname-$pkgver.tar.gz::https://opendev.org/jjb/$_pkgname/archive/$pkgver.tar.gz")
 sha512sums=('da0da245b7df2a08d1f9d715682abc95d3e5baa514223ad6a39b8e6cd93c9c58b819d01c8a040c989e073bcd2e9815cf6cab5d3999a4a71b24316486b701afc8')
 
@@ -25,6 +31,11 @@ build() {
 
   cd "$_pkgname"
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$_pkgname"
+  python -m unittest
 }
 
 package() {
