@@ -7,7 +7,7 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.14.29.plus1
+pkgver=3.15.5.plus1
 pkgrel=2
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
@@ -64,7 +64,7 @@ makedepends=(
   wayland-protocols
 )
 
-_tag=b2d22a03c80d7f76093ae1e46c232e9df746674d
+_tag=f4b76a9c5971454c595b2996a9a85db48f963b88
 source=("git+https://github.com/ChimeraOS/gamescope.git#commit=${_tag}"
         "git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git"
         "git+https://github.com/Joshua-Ashton/reshade.git"
