@@ -12,7 +12,6 @@ pkgbase = i4tools-bin
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
-	depends = git
 	depends = hicolor-icon-theme
 	depends = libffi
 	depends = libp11-kit
