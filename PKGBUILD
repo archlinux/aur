@@ -2,7 +2,7 @@
 
 pkgname=moment
 pkgver=0.7.5
-pkgrel=2
+pkgrel=3
 pkgdesc='A customizable, keyboard-operable Matrix client. Fork of Mirage'
 arch=('x86_64' 'i686' 'aarch64')
 url='https://mx-moment.xyz/'
@@ -31,6 +31,7 @@ depends=(
 	'python-filetype'
 	'python-html-sanitizer'
 	'python-lxml'
+	'python-lxml-html-clean'
 	'python-mistune>=2'
 	'python-matrix-nio'
 	'libxss'
