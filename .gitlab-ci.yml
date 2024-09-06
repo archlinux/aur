@@ -41,6 +41,8 @@ test_job:
   dependencies:
     - find_release_job
   artifacts:
+    reports:
+      dotenv: build.env
     paths:
       - PKGBUILD
       - .SRCINFO
@@ -70,6 +72,8 @@ release_job:
   dependencies:
     - test_job
   artifacts:
+    reports:
+      dotenv: build.env
     paths:
       - PKGBUILD
       - .SRCINFO
