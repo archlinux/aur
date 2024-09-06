@@ -1,7 +1,7 @@
 pkgbase = perl-spreadsheet-xlsx
 	pkgdesc = Perl extension for reading MS Excel 2007 files;
 	pkgver = 0.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Spreadsheet-XLSX
 	arch = any
 	license = Artistic-1.0-Perl

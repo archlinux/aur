@@ -4,7 +4,7 @@
 
 pkgname='perl-spreadsheet-xlsx'
 pkgver='0.18'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl extension for reading MS Excel 2007 files;"
 arch=('any')
 license=('Artistic-1.0-Perl'
