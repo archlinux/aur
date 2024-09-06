@@ -3,13 +3,13 @@
 _basename=overlayed
 pkgname=${_basename}
 pkgver=0.5.0
-pkgrel=1
-pkgdesc="A modern, open-source, and free voice chat overlay for Discord (git version)"
+pkgrel=2
+pkgdesc="A modern, open-source, and free voice chat overlay for Discord"
 arch=('x86_64')
 url="https://overlayed.dev"
 license=('AGPL-3.0')
-depends=()
-makedepends=('git' 'pnpm' 'nvm' cargo)
+depends=('webkit2gtk' 'libayatana-appindicator')
+makedepends=('git' 'pnpm' 'nvm' 'cargo')
 optdepends=('discord: Needed for overlay to work')
 source=(
 	"$_basename::git+https://github.com/overlayeddev/overlayed.git#tag=v$pkgver"
