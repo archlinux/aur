@@ -3,10 +3,11 @@
 
 pkgname='perl-extutils-makemaker-cpanfile'
 pkgver='0.09'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="cpanfile support for EUMM"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=(' Artistic-1.0-Perl'
+         ' GPL-1.0-only')
 options=('!emptydirs')
 depends=('perl-module-cpanfile>=0')
 url='https://metacpan.org/release/ExtUtils-MakeMaker-CPANfile'
