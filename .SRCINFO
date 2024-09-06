@@ -1,7 +1,7 @@
 pkgbase = perl-text-mediawikiformat
 	pkgdesc = Translate Wiki markup into other text formats
 	pkgver = 1.04
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Text-MediawikiFormat
 	arch = any
 	license = GPL
