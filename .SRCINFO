@@ -1,0 +1,11 @@
+pkgbase = zen-browser-private-window-launcher
+	pkgdesc = Creates a zen browser private window desktop launcher for your desktop environment.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Eugenenoble2005/zen-browser-private-window-launcher
+	arch = any
+	depends = zen-browser-bin
+	source = git+https://github.com/Eugenenoble2005/zen-browser-private-window-launcher/
+	sha256sums = SKIP
+
+pkgname = zen-browser-private-window-launcher
