@@ -21,7 +21,7 @@ stages:
 find_release_job:
   stage: find_release
   script: 
-    - rm build.env > /dev/null 2>&1 # clean build.env
+    - rm -f build.env > /dev/null 2>&1 # clean build.env
     - su -c "cd ${CI_PROJECT_DIR} && ./find_release.sh" - builduser
   artifacts:
     reports:
