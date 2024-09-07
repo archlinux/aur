@@ -5,7 +5,7 @@
 
 pkgname=lib32-libgcrypt15
 pkgver=1.5.6
-pkgrel=7
+pkgrel=8
 pkgdesc='General purpose cryptographic library based on the code from GnuPG'
 arch=(x86_64)
 url=https://gnupg.org/
@@ -17,8 +17,10 @@ depends=(
 makedepends=(git)
 replaces=(lib32-libgcrypt11)
 _tag=6e481d6bf0a69f8c9bd2866eb491e1e4e9b0717f
-source=(git+https://github.com/gpg/libgcrypt.git#tag=${_tag})
-b2sums=(SKIP)
+source=(git+https://github.com/gpg/libgcrypt.git#tag=${_tag}
+        gpg-error.m4)
+b2sums=('3767f32abf380de87e1ae3f4f220741ff4298d4d07608fbf7c104e405ba3f1ddd22f1d1677768a5ec5b069b44b2e9d6bb26a780d00a112965681969f98136de7'
+        '7c9283145f6cc7cd2ee4f2d46e81a9b299dcacb2b9ba2300baedfbdca3732ddef16bff92f5014a3943388380995cdc3218220c539e62aa7f768075bde2167926')
 
 prepare() {
   cd libgcrypt
@@ -29,6 +31,8 @@ prepare() {
   sed 's/src doc tests/src tests/g' -i Makefile.am
   # fix arch
   sed 's/path="amd64"/path="i586 i386"/' -i mpi/config.links
+  # fix build with recent libgpg-error
+  cp "$srcdir"/gpg-error.m4 m4
   autoreconf -fiv
 }
 
