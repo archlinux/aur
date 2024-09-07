@@ -27,17 +27,14 @@ optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=(lib32-mesa lib32-vulkan-radeon lib32-libva-mesa-driver lib32-mesa-vulkan lib32-vulkan-mesa-layers lib32-mesa-vdpau lib32-opengl-driver lib32-vulkan-driver)
 conflicts=(lib32-mesa lib32-vulkan-intel lib32-vulkan-radeon lib32-libva-mesa-driver lib32-mesa-vulkan lib32-vulkan-mesa-layers lib32-mesa-vdpau lib32-vulkan-nouveau)
 url="https://www.mesa3d.org"
-license=('custom')
+license=('MIT AND BSD-3-Clause AND SGI-B-2.0')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
-                LICENSE
                 llvm32.native
 )
 
 md5sums=('SKIP'
-         '5c65a0fe315dd347e09b1f2826a1df5a'
          '6b4a19068a323d7f90a3d3cd315ed1f9')
 sha512sums=('SKIP'
-            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
             'c7dbb390ebde291c517a854fcbe5166c24e95206f768cc9458ca896b2253aabd6df12a7becf831998721b2d622d0c02afdd8d519e77dea8e1d6807b35f0166fe')
 options=(!lto !debug)
 
@@ -116,5 +113,5 @@ package() {
 
     # indirect rendering
     ln -s /usr/lib32/libGLX_mesa.so.0 "${pkgdir}/usr/lib32/libGLX_indirect.so.0"
-    install -m644 -Dt  "$pkgdir"/usr/share/licenses/$pkgbase/ "$srcdir"/LICENSE 
+    install -m644 -Dt  "$pkgdir"/usr/share/licenses/$pkgname/ mesa/docs/license.rst
 }
