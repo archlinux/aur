@@ -1,0 +1,27 @@
+pkgbase = cogl
+	pkgdesc = An object oriented GL/GLES Abstraction/Utility Layer
+	pkgver = 1.22.8
+	pkgrel = 3
+	url = https://blogs.gnome.org/clutter/
+	arch = x86_64
+	license = GPL2
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = gtk-doc
+	makedepends = glib2-devel
+	depends = mesa
+	depends = libdrm
+	depends = libxext
+	depends = libxdamage
+	depends = libxcomposite
+	depends = gdk-pixbuf2
+	depends = pango
+	depends = libxrandr
+	provides = libcogl.so
+	provides = libcogl-gles2.so
+	provides = libcogl-pango.so
+	provides = libcogl-path.so
+	source = git+https://gitlab.gnome.org/GNOME/cogl.git#commit=c2e25cef6bd7b3f12c8625f82956388e419cd046
+	sha256sums = SKIP
+
+pkgname = cogl
