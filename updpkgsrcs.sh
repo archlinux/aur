@@ -2,7 +2,8 @@
 
 # Return Submodule's Git Command
 #
-# $1="init" or not
+# $_extraArgs: extra args for git submodule update commandline
+# $1: "init" or none
 function echoGitCMDForSubModule {
     local -A subParent
     local gitCMDName='git '
@@ -19,10 +20,10 @@ function echoGitCMDForSubModule {
         done
     done
     for parent in "${!subParent[@]}"; do
-        echo -e "${gitCMDName}${subParent[$parent]}-c protocol.file.allow=always -C '$parent' submodule update"
         if [[ $1 == init ]]; then
             echo -e "${gitCMDName}-C '$parent' submodule init"
         fi
+        echo -e "${gitCMDName}${subParent[$parent]}-c protocol.file.allow=always -C '$parent' submodule update ${_extraArgs}"
     done
 }
 
@@ -51,7 +52,7 @@ function echoSourceTextForSubModule {
 
 # Update source array in PKGBUILD
 #
-# $1=[Path to PKGBUILD]
+# $1: [Path to PKGBUILD]
 function updateBuildScriptForSubModule {
     if buildScriptFile=$(readlink -se "$1"); then
         buildScript=$(cat "$buildScriptFile" 2> /dev/null)
@@ -104,7 +105,10 @@ declare -A subUrl
 declare -A subName
 declare -A subPath
 declare -A subCommit
-# $1=[ Path to Git Repository ]
+
+# Update arrays about Submodule
+#
+# $1: [ Path to Git Repository ]
 function readGitModules {
     gitModulesFile=$(readlink -se "$1/.gitmodules") || return 1
     gitModules=$(git config -f "$gitModulesFile" -l) || return 2
@@ -152,18 +156,25 @@ if ! readGitModules "$gitRepo"; then
 fi
 
 case "$1" in
+    ForSource)
+        ;;
     echoGitCMDForSubModule)
-        case "$2" in
-            '')
-                echoGitCMDForSubModule
-            ;;
-            init)
-                echoGitCMDForSubModule init
-            ;;
-            *)
-                printUsage && exit 1
-            ;;
-        esac
+        for arg in "${@:2}"; do
+            case "$arg" in
+                '')
+                    ;;
+                force)
+                    _force=1
+                    ;;
+                init)
+                    _init=1
+                    ;;
+                *)
+                    printUsage && exit 1
+                    ;;
+            esac
+        done
+        _extraArgs="$([[ $_force == 1 ]] && echo '--force 1>/dev/null' )"; echoGitCMDForSubModule "$([[ $_init == 1 ]] && echo init)"
         ;;
     echoSourceTextForSubModule)
         echoSourceTextForSubModule
