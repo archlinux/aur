@@ -82,3 +82,30 @@ release_job:
       - build.env
   rules:
     - if: '$CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "schedule"'
+
+commit_job:
+  stage: commit
+  script:
+    - if [ -z "$pkgver" ]; then echo "version variable does not exist, skipping job"; exit 0; fi
+    - git config --global user.email "zomundo@gmail.com"
+    - git config --global user.name "Mundo"
+    - git remote add glab "https://oauth2:${CI_JOB_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git"
+    - git fetch glab
+    - git checkout -b main
+    - pk_name=$(grep -Po "^pkgname=\K.*" PKGBUILD)
+    - pk_ver=$(grep -Po "^pkgver=\K.*" PKGBUILD)
+    - pk_rel=$(grep -Po "^pkgrel=\K.*" PKGBUILD)
+    - commit_msg="update to $pk_name ver $pk_ver, rel version $pk_rel"
+    - git add PKGBUILD .SRCINFO
+    - git commit -m "$commit_msg"
+    - git push glab main
+  dependencies:
+    - release_job
+  artifacts:
+    reports:
+      dotenv: build.env
+    paths:
+      - PKGBUILD
+      - .SRCINFO
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "schedule"'
