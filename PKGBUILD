@@ -3,7 +3,7 @@
 
 pkgname=lib32-duktape
 pkgver=2.7.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Embeddable Javascript engine (32-bit)'
 url='https://duktape.org/'
 arch=(x86_64)
