@@ -1,0 +1,15 @@
+pkgbase = brother-mfc-l2820dw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-L2820DW
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-mfc-l2820dw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	source = http://download.brother.com/welcome/dlf106061/mfcl2820dwpdrv-4.1.0-1.i386.rpm
+	md5sums = 075368620c187ccf03a4767d0916b9a4
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-l2820dw
