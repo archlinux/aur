@@ -1,0 +1,36 @@
+pkgname=python-g4f
+_name=g4f
+pkgver=0.3.2.5
+pkgrel=1
+pkgdesc='The official gpt4free repository | various collection of powerful language models'
+arch=('any')
+url=https://github.com/xtekky/gpt4free
+license=('GPL3')
+depends=('python-requests' 'python-pycryptodome' 'python-curl-cffi>=0.6.2'
+         'python-aiohttp' 'python-certifi' 'python-browser-cookie3' 'python-pyexecjs' 'python-duckduckgo-search>=5.0'
+         'python-nest-asyncio' 'python-werkzeug' 'python-loguru' 'python-pillow' 'python-platformdirs'
+         'python-fastapi' 'uvicorn' 'python-flask' 'python-brotli' 'python-beautifulsoup4'
+         'python-aiohttp-socks' 'python-pywebview' 'python-plyer' 'python-cryptography' 'python-nodriver')
+makedepends=('python-build' 'python-installer' 'python-wheel')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('4538839a565bdeae8f05d2ffe5ea7cf4a007bc37aab104c4a0776dce3ac7e5b1')
+
+build() {
+    cd $_name-$pkgver
+    python -m build --wheel --skip-dependency-check --no-isolation
+}
+
+check() {
+    cd $_name-$pkgver
+}
+
+package() {
+    cd $_name-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
+
+    # Symlink license file
+    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    install -d "$pkgdir"/usr/share/licenses/$pkgname
+    ln -s "$site_packages"/$_name-$pkgver.dist-info/LICENSE \
+       "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}

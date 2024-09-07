@@ -1,0 +1,37 @@
+pkgbase = python-g4f
+	pkgdesc = The official gpt4free repository | various collection of powerful language models
+	pkgver = 0.3.2.5
+	pkgrel = 1
+	url = https://github.com/xtekky/gpt4free
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-requests
+	depends = python-pycryptodome
+	depends = python-curl-cffi>=0.6.2
+	depends = python-aiohttp
+	depends = python-certifi
+	depends = python-browser-cookie3
+	depends = python-pyexecjs
+	depends = python-duckduckgo-search>=5.0
+	depends = python-nest-asyncio
+	depends = python-werkzeug
+	depends = python-loguru
+	depends = python-pillow
+	depends = python-platformdirs
+	depends = python-fastapi
+	depends = uvicorn
+	depends = python-flask
+	depends = python-brotli
+	depends = python-beautifulsoup4
+	depends = python-aiohttp-socks
+	depends = python-pywebview
+	depends = python-plyer
+	depends = python-cryptography
+	depends = python-nodriver
+	source = https://files.pythonhosted.org/packages/source/g/g4f/g4f-0.3.2.5.tar.gz
+	sha256sums = 4538839a565bdeae8f05d2ffe5ea7cf4a007bc37aab104c4a0776dce3ac7e5b1
+
+pkgname = python-g4f
