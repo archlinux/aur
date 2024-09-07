@@ -1,0 +1,15 @@
+pkgbase = adjust-pci-latency-git
+	pkgdesc = Adjust PCI bus latency for gaming or pro-audio production
+	pkgver = .r1.e9cf58d
+	pkgrel = 1
+	url = https://github.com/pyamsoft/adjust-pci-latency.git
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = pciutils
+	provides = adjust-pci-latency
+	conflicts = adjust-pci-latency
+	source = adjust-pci-latency::git+https://github.com/pyamsoft/adjust-pci-latency.git#branch=main
+	sha256sums = SKIP
+
+pkgname = adjust-pci-latency-git
