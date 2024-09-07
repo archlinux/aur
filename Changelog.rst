@@ -1,6 +1,12 @@
 Changelog
 =========
 
+**[5.9.2] ----- 2024-09-07** ::
+
+	    More rst tidy ups
+	    update Docs/Changelog.rst Docs/wg-client.pdf
+
+
 **[5.9.1] ----- 2024-09-07** ::
 
 	    Tidy restructured text formatting in readme
