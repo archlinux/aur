@@ -2,6 +2,7 @@
 # Maintainer: Maik93 <michael.mugnai@gmail.com>
 # Maintainer: taotieren <admin@taotieren.com>
 # Maintainer: GPereira <goncalo_pereira@outlook.pt>
+# Maintainer: CloverGit <clovergit@hotmail.com>
 
 # fork from https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=stm32cubeide
 
@@ -9,7 +10,7 @@ pkgname=stm32cubeprog
 _pkgname="STM32CubeProgrammer"
 pkgver=2.17.0
 _pkg_file_name=en.stm32cubeprg-lin-v${pkgver//./-}.zip
-pkgrel=1
+pkgrel=2
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubeprog.html"
@@ -38,47 +39,52 @@ options=('!strip'
 
 # Big thanks to user "yjun" for direct download link advice.
 # cURL inspiration from davinci-resolve package maintained by "Alex S".
-_curl_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
-                        AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/124.0.0.0 \
-                        Safari/537.36"
+_curl_useragent="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:129.0) Gecko/20100101 Firefox/129.0"
+_curl_accept_language="Accept-Language: en-US,en;q=0.9"
 _curl_useragent="$(printf '%s' "$_curl_useragent" | sed 's/[[:space:]]\+/ /g')"
 _useragent_escaped="${_curl_useragent// /\\ }"
-_curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stm32cubeprog/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
+_accept_language_escaped="${_curl_accept_language// /\\ }"
+_curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stm32cubeprog/_jcr_content/get-software/getsw-table-nli.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
 
 # _curl_req="$(curl -s --compressed -H "$_curl_useragent" "$_curl_req_url")"
 # _curl_req="$(grep -m 1 "${_pkg_file_name}" <<< "$_curl_req")"
 # _download_path="https://www.st.com""$(awk -F'"' '{print $4}' <<< "$_curl_req")"
 
-_curl_req="$(curl -s --compressed -H "$_curl_useragent" "$_curl_req_url")"
-_pkg_url="$(grep -m 1 "${_pkg_file_name}" <<<"$_curl_req")"
-_pkg_url="$(awk -F'"' '{print $4}' <<<"$_pkg_url")"
-_download_path="https://www.st.com""$_pkg_url"
-
+_curl_req="$(curl -s --compressed -H "${_curl_useragent}" -H "${_curl_accept_language}" "${_curl_req_url}")"
+_pkg_url="$(grep -m 1 "${_pkg_file_name}" <<<"${_curl_req}")"
+_pkg_url="$(awk -F'"' '{print $4}' <<<"${_pkg_url}")"
+_download_path="https://www.st.com""${_pkg_url}"
 DLAGENTS=("https::/usr/bin/curl \
               -gqb '' --retry 3 --retry-delay 3 \
               -H ${_useragent_escaped} \
+              -H ${_accept_language_escaped} \
               -o %o --compressed %u")
 
 _pkg_main_name="${pkgname//prog/prg}-lin-v${pkgver//./-}"
 source=("en.${_pkg_main_name}.zip::$_download_path"
   "AnalyticsPanelsConsoleHelper.java"
+  "CheckedHelloPorgrammerPanelConsoleHelper.java"
+  "FinishProgrammerPanelConsoleHelper.java"
+  "TargetProgrammerPanelConsoleHelper.java"
   "SLA0048_STM32CubeProg.pdf")
-sha256sums=('SKIP'
+sha256sums=(
+  '44956b76aa2fcff0d899c5c43e353a83a9ea36afc6ad2f6e7b89c5141ccbfde4'
   '12f3f8a3301d6f50c00195f9c852e25f8d841246768bf3bbfd4e91fd2052ce6e'
+  '8775375cfd21848eafb92bc11712b2d797bbec4f0109e728c175c4abb014131c'
+  'd67e0fe0e16cb6f8e1f01f324a348484f38805fdbb48780788607f53b2e46901'
+  '95a6ee378bb3d2b6bea9284d930a58af43db825ec22c89e5617af9b9ec959890'
   'c6d92c00dee63e0f4a54d8ea62f82a646243c3e1480142ae3e7f4ca5d77d5702')
 
 prepare() {
   chmod u+x Setup${_pkgname}-${pkgver}.linux
-  javac -cp "Setup${_pkgname}-${pkgver}.exe" -d . AnalyticsPanelsConsoleHelper.java
-  7z a Setup${_pkgname}-${pkgver}.exe com/st/CustomPanels/AnalyticsPanelsConsoleHelper.class
+  javac --release 8 -cp "Setup${_pkgname}-${pkgver}.exe" -d . AnalyticsPanelsConsoleHelper.java CheckedHelloPorgrammerPanelConsoleHelper.java TargetProgrammerPanelConsoleHelper.java FinishProgrammerPanelConsoleHelper.java
+  7z a Setup${_pkgname}-${pkgver}.exe com/st/CustomPanels/AnalyticsPanelsConsoleHelper.class com/st/CustomPanels/CheckedHelloPorgrammerPanelConsoleHelper.class com/st/CustomPanels/TargetProgrammerPanelConsoleHelper.class com/st/CustomPanels/FinishProgrammerPanelConsoleHelper.class
 }
 
 build() {
   mkdir -p build
 
-  echo "INSTALL_PATH=${srcdir}/build" >install.options
-  ./Setup${_pkgname}-${pkgver}.linux -options-auto install.options
+  java -DINSTALL_PATH=${srcdir}/build -jar ./SetupSTM32CubeProgrammer-2.17.0.exe -options-system
 
   # convert ico to icon
   mkdir -p icon
