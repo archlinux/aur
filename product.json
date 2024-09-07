@@ -50,8 +50,8 @@
 		},
 		{
 			"name": "ms-vscode.js-debug",
-			"version": "1.92.0",
-			"sha256": "e5d0a74728292423631f79d076ecb2bc129f9637bcbc2529e48a0fd53baa69cc",
+			"version": "1.93.0",
+			"sha256": "9339cb8e6b77f554df54d79e71f533279cb76b0f9b04c207f633bfd507442b6a",
 			"repo": "https://github.com/microsoft/vscode-js-debug",
 			"metadata": {
 				"id": "25629058-ddac-4e17-abba-74678e126c5d",
@@ -1721,7 +1721,6 @@
 	"privacyStatementUrl": "https://go.microsoft.com/fwlink/?LinkId=521839",
 	"showTelemetryOptOut": true,
 	"npsSurveyUrl": "https://aka.ms/vscode-nps",
-	"cesSurveyUrl": "https://aka.ms/new-to-vscode-feedback",
 	"checksumFailMoreInfoUrl": "https://go.microsoft.com/fwlink/?LinkId=828886",
 	"settingsSearchUrl": "https://bingsettingssearch.trafficmanager.net/api/Search",
 	"surveys": [
@@ -1805,7 +1804,7 @@
 			"terminalDataWriteEvent",
 			"terminalExecuteCommandEvent",
 			"contribIssueReporter",
-			"terminalShellIntegration"
+			"notebookReplDocument"
 		],
 		"ms-dotnettools.dotnet-interactive-vscode": [
 			"notebookMessaging"
@@ -1918,7 +1917,6 @@
 			"treeViewMarkdownMessage"
 		],
 		"GitHub.copilot": [
-			"authGetSessions",
 			"inlineCompletionsAdditions"
 		],
 		"GitHub.copilot-nightly": [
@@ -1949,13 +1947,13 @@
 			"newSymbolNamesProvider",
 			"findFiles2",
 			"extensionsAny",
-			"authGetSessions",
 			"authLearnMore",
 			"testObserver",
 			"aiTextSearchProvider",
 			"documentFiltersExclusive",
 			"chatParticipantPrivate",
-			"lmTools"
+			"lmTools",
+			"contribDebugCreateConfiguration"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -2001,7 +1999,8 @@
 			"quickPickItemTooltip",
 			"notebookExecution",
 			"notebookCellExecution",
-			"notebookVariableProvider"
+			"notebookVariableProvider",
+			"notebookReplDocument"
 		],
 		"dbaeumer.vscode-eslint": [
 			"notebookCellExecutionState"
@@ -2012,23 +2011,21 @@
 		"ms-azuretools.vscode-azureappservice": [
 			"terminalDataWriteEvent"
 		],
-		"ms-azuretools.vscode-azureresourcegroups": [
-			"authGetSessions"
-		],
 		"ms-azuretools.vscode-azure-github-copilot": [
-			"chatParticipantAdditions",
-			"embeddings",
-			"languageModelSystem",
 			"lmTools"
 		],
 		"ms-vscode.anycode": [
 			"extensionsAny"
 		],
 		"ms-vscode.cpptools": [
-			"terminalDataWriteEvent"
+			"terminalDataWriteEvent",
+			"lmTools"
 		],
 		"redhat.java": [
 			"documentPaste"
+		],
+		"vscjava.vscode-java-pack": [
+			"lmTools"
 		],
 		"ms-dotnettools.csdevkit": [
 			"inlineCompletionsAdditions"
@@ -2273,14 +2270,18 @@
 			"ms-vscode.remote-server",
 			"ms-vsliveshare.vsliveshare",
 			"ms-azuretools.vscode-azureresourcegroups",
-			"ms-edu.vscode-learning"
+			"ms-edu.vscode-learning",
+			"ms-toolsai.vscode-ai",
+			"ms-toolsai.vscode-ai-remote"
 		],
 		"microsoft-sovereign-cloud": [
 			"ms-vscode.azure-repos",
 			"ms-vscode.remote-server",
 			"ms-vsliveshare.vsliveshare",
 			"ms-azuretools.vscode-azureresourcegroups",
-			"ms-edu.vscode-learning"
+			"ms-edu.vscode-learning",
+			"ms-toolsai.vscode-ai",
+			"ms-toolsai.vscode-ai-remote"
 		]
 	},
 	"trustedExtensionProtocolHandlers": [
