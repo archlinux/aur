@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 # Contributor: Julien Savard <juju@juju2143.ca>
 pkgname=x16-rom
-pkgver=r47
+pkgver=r48
 pkgrel=1
 pkgdesc="ROM files for The 8-Bit Guy's Commander X16"
 arch=('any')
@@ -18,10 +18,8 @@ source=(
     "https://raw.githubusercontent.com/X16Community/x16-emulator/$pkgver/github-pandoc.css"
 )
 
-md5sums=(
-    'ad2dc9f7bc47e5209728dff2eef74e29'
-    '3accdbadaf70264c743b1f655f5dc146'
-)
+md5sums=('3c6a1d1b9daf50ab3bcbb5fe8245c591'
+         '3accdbadaf70264c743b1f655f5dc146')
 
 build() {
     cd "$pkgname-$pkgver"
