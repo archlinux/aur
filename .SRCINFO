@@ -1,4 +1,4 @@
-pkgbase = xjump-sdl
+pkgbase = xjump
 	pkgdesc = XJump reimplemented in SDL
 	pkgver = 3.0.4
 	pkgrel = 1
