@@ -11,6 +11,7 @@ pkgbase = icestorm-nightly
 	makedepends = gcc
 	depends = python
 	depends = libftdi-compat
+	provides = icestorm
 	conflicts = icestorm-git
 	options = !strip
 	source = icestorm::git+https://github.com/YosysHQ/icestorm.git#commit=738af82

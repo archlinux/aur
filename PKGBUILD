@@ -13,6 +13,7 @@ options=("!strip")
 depends=("python" "libftdi-compat")
 optdepends=()
 makedepends=("git" "make" "gcc")
+provides=("icestorm")
 conflicts=("icestorm-git")
 replaces=()
 source=(
