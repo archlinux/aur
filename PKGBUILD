@@ -1,7 +1,7 @@
 # Maintainer: Maxr1998 <aur@maxr1998.de>
 _pkgname=finamp
 pkgname=finamp-bin
-pkgver=0.9.8_beta
+pkgver=0.9.9_beta
 pkgrel=1
 pkgdesc="An open source Jellyfin music player"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=('gtk3' 'pango')
 provides=('finamp')
 conflicts=('finamp')
 source=("$url/releases/download/${pkgver//_/-}/finamp-${pkgver//_/-}-linux-release.tar.gz")
-sha256sums=('3f344bf166ffeb8520a29364a89c0af15690e09cd369d9e408ed94148c13112d')
+sha256sums=('30086cb41632fa55daadb2fc211b8b6325e8ac98e23ae50e9e22182c7bc4986e')
 
 package() {
     cd "$srcdir"
