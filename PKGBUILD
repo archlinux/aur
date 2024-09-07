@@ -11,7 +11,7 @@ pkgdesc='Lite build of HPLIP with proprietary binary plugin'
 arch=('x86_64')
 url='https://developers.hp.com/hp-linux-imaging-and-printing/'
 license=('GPL-2.0-only' 'MIT' 'BSD-3-Clause' 'GPL-3.0-only' 'LicenseRef-HPLIP')
-depends=(libjpeg-turbo libcups net-snmp rpcbind sane)
+depends=(python-dbus libjpeg-turbo libcups net-snmp rpcbind sane dbus avahi)
 makedepends=(python libusb cups rpcbind sane)
 conflicts=('hplip' 'hplip-lite' 'hplip-plugin')
 provides=('hplip')
@@ -57,6 +57,9 @@ prepare() {
  patch -Np1 -i ../0073-Fix-upstream-CFLAGS-override.patch
  patch -Np1 -i ../hplip-hpaio-gcc14.patch
  patch -Np1 -i ../hplip-pserror-gcc14.patch
+
+ export AUTOMAKE='automake --foreign'
+ autoreconf --force --install
 }
 
 build() {
