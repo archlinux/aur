@@ -1,7 +1,7 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgbase=gowin-eda
-pkgver=1.9.10.01
+pkgver=1.9.10.02
 pkgrel=1
 _desc="Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification."
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("http://cdn.gowinsemi.com.cn/Gowin_V${pkgver/_/-}_linux.tar.gz"
         "${pkgbase}-ide-project.xml"
         "${pkgbase}-ide.desktop"
         "${pkgbase}-programmer.desktop")
-sha256sums=('0df94afa4303dbae6ccf36755879374eb01069c790ecb1327ff9b6c0b29920b7'
+sha256sums=('7448a48af1311dd08512b2d3af02671b8fe7c86c26ec241451825608b88e0f1f'
             '346991b57db67aa4a8373ad09fd221e310c87ac7a6c90313cad7b48f7e6934ab'
             'a95d18239e9ecb6b3f712fa569601e964624ef4ccb39ca85e56dfafa74b573d2'
             '796ff224841083d8c354dc5c3c2966fe31f6576870b3508bb012e5a467943008'
@@ -49,6 +49,8 @@ _package-ide() {
   _install 644 ipcore/
   _install 644 plugins/
   _install 644 bin/vhdl_packages
+  _install 644 bin/prim_syns
+  _install 644 bin/serdes_toml_to_csr.dist
   _install 755 bin/ -maxdepth 1
 
   chmod 644 ${pkgdir}/opt/${pkgname}/bin/prim{itive.xml,_syn.vhd,_syn.v}
