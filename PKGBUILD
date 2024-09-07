@@ -37,6 +37,11 @@ package() {
   install -m644 -t "$pkgdir/usr/share/bam/config" "$srcdir/bam/etc/config.bam"
   install -m644 -t "$pkgdir/usr/share/bam/config" "$srcdir/bam/etc/bam/client_config"
 
+  install -m755 -d "$pkgdir/etc"
+  install -m644 -t "$pkgdir/etc" "$srcdir/bam/etc/config.bam"
+  install -m755 -d "$pkgdir/etc/bam"
+  install -m644 -t "$pkgdir/etc/bam" "$srcdir/bam/etc/bam/client_config"
+
   install -m755 -d "$pkgdir/usr/share/bam/modules"
   rm -rf  "$pkgdir/usr/share/bam/modules/*"
   cp -dR "$srcdir/bam/builtin-modules" "$pkgdir/usr/share/bam/modules"
