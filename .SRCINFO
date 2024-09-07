@@ -1,6 +1,6 @@
 pkgbase = mealie
 	pkgdesc = A self hosted recipe manager
-	pkgver = 1.11.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://github.com/mealie-recipes/mealie
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mealie
 	makedepends = yarn
 	makedepends = nodejs-lts-hydrogen
 	depends = python-fastapi
-	depends = python-sqlalchemy-git
+	depends = python-sqlalchemy
 	depends = python-pyjwt
 	depends = python-text-unidecode
 	depends = python-slugify
@@ -52,7 +52,7 @@ pkgbase = mealie
 	depends = sqlite
 	optdepends = postgresql: for postgresql support
 	optdepends = python-psycopg2: for postgresql support
-	source = https://github.com/mealie-recipes/mealie/archive/refs/tags/v1.11.0.tar.gz
-	sha256sums = b7773bf730932351cd49139afc634d5a8fe884d614d7d6caa88eea0a892e87cb
+	source = https://github.com/mealie-recipes/mealie/archive/refs/tags/v1.12.0.tar.gz
+	sha256sums = 3966006034f0796b86c5dad015576cb4e83ae220510d9656c26591a87653d96f
 
 pkgname = mealie
