@@ -1,0 +1,14 @@
+pkgbase = lib32-libmodplug
+	pkgdesc = A MOD playing library
+	pkgver = 0.8.9.0
+	pkgrel = 5
+	url = http://modplug-xmms.sourceforge.net/
+	arch = x86_64
+	license = custom
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = libmodplug
+	source = https://downloads.sourceforge.net/project/modplug-xmms/libmodplug/0.8.9.0/libmodplug-0.8.9.0.tar.gz
+	sha256sums = 457ca5a6c179656d66c01505c0d95fafaead4329b9dbaa0f997d00a3508ad9de
+
+pkgname = lib32-libmodplug
