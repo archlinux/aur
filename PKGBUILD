@@ -4,22 +4,37 @@ pkgbase=python-pytkdocs
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.16.1
+pkgver=0.16.2
 pkgrel=1
 pkgdesc="Load Python objects documentation"
 arch=('any')
 url="https://mkdocstrings.github.io/pytkdocs"
 license=('ISC')
-makedepends=('python-pdm-pep517'
+makedepends=('python-pdm-backend'
              'python-build'
              'python-installer')
+#             'mkdocs-material'
+#             'mkdocs-gen-files'
+#             'mkdocs-literate-nav'
+#             'mkdocs-coverage'
+#             'mkdocstrings-python'
+#             'python-markdown-callouts'
+#             'python-markdown-exec'
+#             )
 checkdepends=('python-pytest'
               'python-docstring-parser'
               'python-django'
-              'python-marshmallow')
+              'python-marshmallow'
+              'python-pydantic')
 #source=("https://github.com/oprypin/markdown-callouts/archive/refs/tags/v${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('414d74015a74a9023dc551a0d6919084')
+md5sums=('f0ad3bdb44c8ab7b153874f604efc61c')
+
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    sed -i -e '$a use_directory_urls: false' mkdocs.yml
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -36,11 +51,11 @@ check() {
 
     mkdir -p dist/lib
     bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest -vv --color=yes #|| warning "Tests failed" # -vv --color=yes
+    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-pytkdocs() {
-    depends=('python>=3.7'
+    depends=('python>=3.8'
              'python-astunparse>=1.6'
              'python-cached-property>=1.5'
              'python-typing_extensions>=3.7')
