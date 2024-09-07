@@ -7,7 +7,7 @@
 _pkgbase=popt
 pkgname=lib32-${_pkgbase}
 pkgver=1.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Commandline option parser (32 bit)"
 arch=('x86_64')
 url="http://rpm5.org"
