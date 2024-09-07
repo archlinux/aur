@@ -1,0 +1,15 @@
+[Unit]
+Description=Dyamic dynamic update daemon
+After=network-online.target
+Wants=network-online.target
+
+
+[Service]
+SyslogIdentifier=ddns-updater
+WorkingDirectory=/var/lib/ddns-updater
+User=ddns-updater
+Environment=DATADIR=/var/lib/ddns-updater/data
+ExecStart=/usr/bin/ddns-updater 
+
+[Install]
+WantedBy=multi-user.target

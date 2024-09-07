@@ -1,0 +1,2 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/ddns-updater 0700 ddns-updater ddns-updater
