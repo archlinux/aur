@@ -67,8 +67,13 @@ prepare() {
   cd $_pkgname
 
   msg2 'Retrieving git build dependencies...'
-  updpkgsrcs updateBuildScriptForSubModule || exit $?
-  eval "$(updpkgsrcs echoGitCMDForSubModule)" || exit $?
+  local outmsg='first'; until [[ -z $outmsg ]]; do
+    if outmsg=$(eval "$(updpkgsrcs echoGitCMDForSubModule force)" 2>&1); then
+      echo "$outmsg"
+    else
+      echo "$outmsg"; updpkgsrcs updateBuildScriptForSubModule || exit $?
+    fi
+  done; unset outmsg
 
   msg2 'Retrieving meson build dependencies...'
   sed -i "s#^url =.*#url = file://$srcdir/subprojects|stb#" subprojects/stb.wrap
