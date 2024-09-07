@@ -2,13 +2,13 @@
 # Upstream: Immersed Inc. <info at immersed dot com>
 
 pkgname=immersed
-pkgver=10.3.2
+pkgver=10.5.0
 pkgrel=1
 
 source_x86_64=( "https://static.immersed.com/dl/Immersed-x86_64.AppImage"
                 "$pkgname.desktop")
 
-sha256sums_x86_64=('6daa2bd8d3c2c479c1b8f09a5f2f1e2d00d76b0133e3cd19e0bce319f96c0aad'
+sha256sums_x86_64=('fdf73f51160965fb593f2562726663caf7063cb687ae796cac446540537913df'
                    SKIP)
 
 pkgdesc="Immersed Desktop Agent"
