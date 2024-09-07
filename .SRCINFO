@@ -1,0 +1,17 @@
+pkgbase = simple-sddm-theme-2-git
+	pkgdesc = Simple theme variant for the SDDM Login Manager using QT6
+	pkgver = _
+	pkgrel = 1
+	url = https://github.com/JaKooLit/simple-sddm-2
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = qt6-5compat
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = sddm
+	backup = usr/share/sddm/themes/simple-sddm-2/theme.conf
+	source = git+https://github.com/JaKooLit/simple-sddm-2
+	sha256sums = SKIP
+
+pkgname = simple-sddm-theme-2-git
