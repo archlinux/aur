@@ -1,0 +1,19 @@
+pkgbase = lib32-libteam
+	pkgdesc = Library for controlling team network device
+	pkgver = 1.32
+	pkgrel = 2
+	url = http://libteam.org/
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = lib32-jansson
+	makedepends = lib32-libdaemon
+	makedepends = swig
+	depends = lib32-dbus
+	depends = lib32-libnl
+	depends = lib32-zeromq
+	depends = libteam
+	source = git+https://github.com/jpirko/libteam.git#tag=8b843e93cee1dab61fb79b01791201cdad45e1d1
+	sha256sums = SKIP
+
+pkgname = lib32-libteam
