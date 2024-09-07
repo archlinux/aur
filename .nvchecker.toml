@@ -1,0 +1,4 @@
+[zenmap-git]
+source = "regex"
+url = "https://nmap.org/dist/"
+regex = 'nmap-([0-9\.]+)\.'

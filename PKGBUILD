@@ -1,37 +1,38 @@
 # Maintainer:
 
-_gitname="nmap"
-_pkgname="zenmap"
-pkgname="$_pkgname-git"
-pkgver=7.95.r94.g667527c
-pkgrel=1
-pkgdesc="Graphical Nmap frontend and results viewer"
-url='https://github.com/nmap/nmap'
-license=('LicenseRef-Nmap-Public-Source-License-Version-0.95')
-arch=('any')
+: ${_pkgtype=-git}
 
-depends=(
-  'gtk3'
-  'nmap'
-  'python'
-  'python-cairo'
-  'python-gobject'
-)
+pkgbase="zenmap-git"
+pkgver=7.95.r110.g5039f7e
+pkgrel=1
+url="https://github.com/nmap/nmap"
+license=('LicenseRef-Nmap-Public-Source-License-Version-0.95')
+arch=('x86_64')
+
 makedepends=(
   'git'
   'python-build'
   'python-installer'
   'python-setuptools'
   'python-wheel'
-)
-optdepends=(
-  'gksu: start zenmap as root'
+
+  # nmap
+  'libpcap'
+  'libssh2'
+  'lua'
+  'openssl'
+  'pcre2'
+  'zlib'
+
+  # zenmap
+  'gtk3'
+  'python-cairo'
+  'python-gobject'
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
-conflicts=("$_pkgname")
+options=('!debug')
 
-_pkgsrc="$_gitname"
+_pkgsrc="nmap"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
@@ -53,12 +54,83 @@ pkgver() {
   printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
 }
 
-build() {
-  cd "$_pkgsrc/zenmap"
-  python -m build --no-isolation --wheel
+prepare() {
+  cd "$_pkgsrc"
+  # ensure we build devendored deps
+  rm -rf liblua libpcap libpcre macosx mwin32 libssh2 libz
+  autoreconf -fiv
 }
 
-package() {
+_build_nmap() (
+  export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=*/_FORTIFY_SOURCE=2}"
+  export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=*/_FORTIFY_SOURCE=2}"
+
+  cd "$_pkgsrc"
+  ./configure \
+    --prefix=/usr \
+    --with-libpcap=/usr \
+    --with-libpcre=/usr \
+    --with-zlib=/usr \
+    --with-libssh2=/usr \
+    --with-liblua=/usr \
+    --without-ndiff \
+    --without-zenmap
+  make
+)
+
+_build_zenmap() (
+  cd "$_pkgsrc/zenmap"
+  python -m build --no-isolation --wheel
+)
+
+build() {
+  _build_nmap
+  _build_zenmap
+}
+
+check() {
+  cd "$_pkgsrc"
+  make check
+}
+
+_package_nmap() {
+  pkgdesc="Utility for network discovery and security auditing"
+  depends=(
+    'libpcap'
+    'libssh2.so'
+    'lua'
+    'openssl'
+    'pcre2'
+    'zlib'
+  )
+
+  provides=("nmap=${pkgver%%.r*}")
+  conflicts=("nmap")
+
+  cd "$_pkgsrc"
+  make DESTDIR="${pkgdir}" install
+  install -Dm 644 README.md docs/nmap.usage.txt -t "${pkgdir}/usr/share/doc/$pkgname/"
+  install -Dm 644 LICENSE docs/3rd-party-licenses.txt -t "${pkgdir}/usr/share/licenses/$pkgname/"
+}
+
+_package_zenmap() {
+  pkgdesc="Graphical Nmap frontend and results viewer"
+  arch=('any')
+
+  depends=(
+    'gtk3'
+    'nmap'
+    'python'
+    'python-cairo'
+    'python-gobject'
+  )
+  optdepends=(
+    'gksu: start zenmap as root'
+  )
+
+  provides=("zenmap=${pkgver%%.r*}")
+  conflicts=("zenmap")
+
   cd "$_pkgsrc"
   install -Dm644 "docs/zenmap.1" -t "$pkgdir/usr/share/man/man1/"
   install -Dm755 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
@@ -69,3 +141,15 @@ package() {
   ln -s zenmap "$pkgdir/usr/bin/nmapfe"
   ln -s zenmap "$pkgdir/usr/bin/xnmap"
 }
+
+pkgname=(
+  'nmap-git'
+  'zenmap-git'
+)
+
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package_${_p%${_pkgtype:-}}")
+    _package_${_p%${_pkgtype:-}}
+  }"
+done

@@ -1,15 +1,41 @@
 pkgbase = zenmap-git
-	pkgdesc = Graphical Nmap frontend and results viewer
-	pkgver = 7.95.r94.g667527c
+	pkgver = 7.95.r110.g5039f7e
 	pkgrel = 1
 	url = https://github.com/nmap/nmap
-	arch = any
+	arch = x86_64
 	license = LicenseRef-Nmap-Public-Source-License-Version-0.95
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = libpcap
+	makedepends = libssh2
+	makedepends = lua
+	makedepends = openssl
+	makedepends = pcre2
+	makedepends = zlib
+	makedepends = gtk3
+	makedepends = python-cairo
+	makedepends = python-gobject
+	options = !debug
+	source = nmap::git+https://github.com/nmap/nmap.git
+	sha256sums = SKIP
+
+pkgname = nmap-git
+	pkgdesc = Utility for network discovery and security auditing
+	depends = libpcap
+	depends = libssh2.so
+	depends = lua
+	depends = openssl
+	depends = pcre2
+	depends = zlib
+	provides = nmap=7.95
+	conflicts = nmap
+
+pkgname = zenmap-git
+	pkgdesc = Graphical Nmap frontend and results viewer
+	arch = any
 	depends = gtk3
 	depends = nmap
 	depends = python
@@ -18,7 +44,3 @@ pkgbase = zenmap-git
 	optdepends = gksu: start zenmap as root
 	provides = zenmap=7.95
 	conflicts = zenmap
-	source = nmap::git+https://github.com/nmap/nmap.git
-	sha256sums = SKIP
-
-pkgname = zenmap-git
