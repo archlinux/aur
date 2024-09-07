@@ -2,7 +2,7 @@
 _pkgname=GeekbenchAI
 pkgname=geekbench-ai
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Geekbench AI is a cross-platform AI benchmark that uses real-world machine learning tasks to evaluate AI workload performance"
 arch=('x86_64')
 url="https://www.geekbench.com/ai/"
@@ -30,8 +30,7 @@ package() {
 	# Create launch script
 	cat >> "$pkgdir/usr/bin/banff" <<EOF
 #!/usr/bin/env bash
-cd "/usr/lib/$pkgname/"
-./banff "\$@"
+LD_LIBRARY_PATH=/usr/lib/$pkgname:$LD_LIBRARY_PATH /usr/lib/$pkgname/banff "\$@"
 EOF
 	chmod 755 "$pkgdir/usr/bin/banff"
 	# Remove insecure RUNPATH in binaries
