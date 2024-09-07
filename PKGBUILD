@@ -6,7 +6,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-globalmenu
-pkgver=129.0
+pkgver=130.0
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser"
 url="https://www.mozilla.org/firefox/"
@@ -78,37 +78,28 @@ options=(
   !lto
   !makeflags
 )
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/e0b7b3c23a8edbcefb1c23eac25331e006e1240f
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/5f693dd48b2346d3e52096fe1dd45c8bf50ce55a
 source=(
   https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
   $commit/firefox-symbolic.svg
   $commit/firefox.desktop
   $commit/org.mozilla.firefox.metainfo.xml
-  $commit/0001-Bug-1898476-Wayland-Move-MozContainerSurfaceLock-fro.patch
-  $commit/0002-Bug-1898476-Wayland-Provide-surface-lock-by-GtkCompo.patch
-  $commit/0003-Bug-1898476-Wayland-Lock-Wayland-surface-before-Swap.patch
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
   # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('4b9ff955de7099f09aa1f00985e34695fa1a911e56c2d46cb4d60c3bff3d9174'
+sha256sums=('0c12852a502c9ceefc11003416057917466d8788dd8780931ea387b0b137b567'
             'SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
-            '1f241fdc619f92a914c75aece7c7c717401d7467c9a306458e106b05f34e5044'
-            '58d78ce57b3ee936bc966458d6b20ab142d02a897bbe924b3f26717af0c5bee1'
-            'f4e1db05768325bce5f38b67263c47b3aa4038cfadbdbf8a9e0cbec061a58c57'
-            '588b0b94fe188c5f0a133a8bfd88d7d60123315e6f509b119728409ff164419f'
-            'cbe19f6c95d27d50e3b6664907f8d084784162ea35d5d98fadbb91dbb77ef700')
-b2sums=('abd8b0008dfd0948234baf7c307c42051e2f58a9c7ebd07b3b0dec9bdb6d8d78e4e1ae25d552aba8685e8b307dbdeb1360d873fef98ac108671dbbbc53c2a3af'
+            '71fe797430198ac8c00b538dce537284cf526e48be0496698cf5a980d70c16da'
+            '58d78ce57b3ee936bc966458d6b20ab142d02a897bbe924b3f26717af0c5bee1')
+b2sums=('9c7dfc43145e442d60f6971806848e4ecd0145713e31105da6bd13a82a50655f5c4095beff4d61505e26e188b60f49b16dc17fb42dc03a9fb9ef509a7010b0ab'
         'SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
-        'd07557840097dd48a60c51cc5111950781e1c6ce255557693bd11306c7a9258b2a82548329762148f117b2295145f9e66e0483a18e2fe09c5afcffed2e4b8628'
-        '2ce33432f8a73a4f1a412b7a065d3c124e1ca9f6bdf3fad0407e897efc0840f8ef43eeeb1b9bef4a102d9fac0b2c4a2ef205726b817f83fe9c3742d076778b14'
-        '2d4c421aec450c85c25554a8f312df8b74bb184e13fdd631ec7b34abbc3e5b1015fdef8d7ee637638c916f8bdd9cecfcb9c2713055471feb863888fd238e288e'
-        '884183ba979c844a2119dbb28cb1bbe64228b1a1a6b020abea9dfb5bd60487853a1da1012e157b8149f3e89b3d35c76042aa143b28fd55b0120edb03c63f9a81'
-        'b649c5c3edc4a0319d012ff0c12dbc97f3bb244220c9db5334a921864f57e05506943f50ccd7ee832b881ace642ce294892e25eaa555716d2dcc726f4790c605')
+        '2c7936949ef922307fb593bd0480a13bde2eab8ae24fc89071d809d6659384705f9b7838b1ae8bc46b98a152ba01fcffad606d4c84796ad9bfaaf20166f0a0fd'
+        '2ce33432f8a73a4f1a412b7a065d3c124e1ca9f6bdf3fad0407e897efc0840f8ef43eeeb1b9bef4a102d9fac0b2c4a2ef205726b817f83fe9c3742d076778b14')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -116,28 +107,14 @@ b2sums=('abd8b0008dfd0948234baf7c307c42051e2f58a9c7ebd07b3b0dec9bdb6d8d78e4e1ae2
 # more information.
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 
-# Mozilla API keys (see https://location.services.mozilla.com/api)
-# Note: These are for Arch Linux use ONLY. For your own distribution, please
-# get your own set of keys. Feel free to contact heftig@archlinux.org for
-# more information.
-_mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
-
 prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
-
-  # Backport fixes for NVIDIA crashes
-  # https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/issues/7
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1898476
-  patch -Np1 -i ../0001-Bug-1898476-Wayland-Move-MozContainerSurfaceLock-fro.patch
-  patch -Np1 -i ../0002-Bug-1898476-Wayland-Provide-surface-lock-by-GtkCompo.patch
-  patch -Np1 -i ../0003-Bug-1898476-Wayland-Lock-Wayland-surface-before-Swap.patch
 
   # Appmenu patches
   patch -Np1 -i ../unity-menubar.patch
 
   echo -n "$_google_api_key" >google-api-key
-  echo -n "$_mozilla_api_key" >mozilla-api-key
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
@@ -166,7 +143,6 @@ export MOZ_APP_REMOTINGNAME=firefox
 # Keys
 ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
-ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 # System libraries
 ac_add_options --with-system-nspr
@@ -226,6 +202,10 @@ pref("extensions.autoDisableScopes", 11);
 
 // Enable GNOME Shell search provider
 pref("browser.gnome-search-provider.enabled", true);
+
+// Use our own captive portal detection
+pref("captivedetect.canonicalURL", "http://ping.archlinux.org/nm-check.txt");
+pref("captivedetect.canonicalContent", "NetworkManager is online\\n");
 END
 
   local distini="$pkgdir/usr/lib/firefox/distribution/distribution.ini"
