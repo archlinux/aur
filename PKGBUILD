@@ -4,7 +4,7 @@
 _pkgname=lz4
 pkgname=lib32-lz4
 pkgver=1.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Extremely fast compression algorithm (32-bit)'
 arch=('x86_64')
 url='https://lz4.github.io/lz4/'

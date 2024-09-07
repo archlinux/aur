@@ -1,7 +1,7 @@
 pkgbase = lib32-lz4
 	pkgdesc = Extremely fast compression algorithm (32-bit)
 	pkgver = 1.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lz4.github.io/lz4/
 	arch = x86_64
 	license = GPL-2.0-or-later
