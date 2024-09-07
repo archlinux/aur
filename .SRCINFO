@@ -1,6 +1,6 @@
 pkgbase = prjtrellis-nightly
 	pkgdesc = Documenting the Lattice ECP5 bit-stream format.
-	pkgver = 20240906_1.4_66_g2dab009
+	pkgver = 20240907_1.4_66_g2dab009
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/prjtrellis
@@ -13,8 +13,6 @@ pkgbase = prjtrellis-nightly
 	makedepends = ninja
 	makedepends = pkgconf
 	makedepends = boost
-	depends = boost-libs
-	depends = python
 	conflicts = prjtrellis-db-git
 	conflicts = prjtrellis-git
 	conflicts = prjtrellis-db

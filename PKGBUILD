@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=prjtrellis-nightly
-pkgver=20240906_1.4_66_g2dab009
+pkgver=20240907_1.4_66_g2dab009
 pkgrel=1
 epoch=1
 pkgdesc="Documenting the Lattice ECP5 bit-stream format."
@@ -10,6 +10,7 @@ url="https://github.com/YosysHQ/prjtrellis"
 license=("custom:ISC" "MIT")
 groups=()
 options=("!strip")
+provides=("prjtrellis-db" "prjtrellis"
 depends=("boost-libs" "python")
 optdepends=()
 makedepends=("git" "gcc" "cmake" "ninja" "pkgconf" "boost")
