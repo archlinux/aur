@@ -10,43 +10,44 @@ license=('MIT')
 depends=('acpid' 'zsh' 'pciutils' 'usbutils')
 optdepends=('xorg-xrandr: needed for screen settings' 'brightnessctl: needed for brightness settings' 'net-tools: needed to disable ethernet cards')
 makedepends=('cargo')
+conflicts=('power-options-daemon-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thealexdev23/power-options/archive/v$pkgver.tar.gz")
 sha256sums=('2af1d47bf1d1798a4a363076d3fed63663abe2dfe19e466c57ab6e089d4a76a5')
 
 prepare() {
-    export RUSTUP_TOOLCHAIN=stable
-    cd "$srcdir/power-options-$pkgver/crates/power-daemon-mgr"
-    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  export RUSTUP_TOOLCHAIN=stable
+  cd "$srcdir/power-options-$pkgver/crates/power-daemon-mgr"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    export RUSTUP_TOOLCHAIN=stable
-    cd "$srcdir/power-options-$pkgver/crates/power-daemon-mgr"
-    cargo build --frozen --release
+  export RUSTUP_TOOLCHAIN=stable
+  cd "$srcdir/power-options-$pkgver/crates/power-daemon-mgr"
+  cargo build --frozen --release
 }
 
 package() {
-    cd "$srcdir/power-options-$pkgver"
+  cd "$srcdir/power-options-$pkgver"
 
-    install -Dm755 "target/release/power-daemon-mgr" "$pkgdir/usr/bin/power-daemon-mgr"
+  install -Dm755 "target/release/power-daemon-mgr" "$pkgdir/usr/bin/power-daemon-mgr"
 
-    # Generate files
-    "$pkgdir/usr/bin/power-daemon-mgr" -v generate-files --path "$pkgdir" --program-path "/usr/bin/power-daemon-mgr"
+  # Generate files
+  "$pkgdir/usr/bin/power-daemon-mgr" -v generate-files --path "$pkgdir" --program-path "/usr/bin/power-daemon-mgr"
 }
 
 post_install() {
-    systemctl daemon-reload
-    systemctl enable power-options.service
-    systemctl start power-options.service
-    systemctl restart acpid.service
+  systemctl daemon-reload
+  systemctl enable power-options.service
+  systemctl start power-options.service
+  systemctl restart acpid.service
 }
 
 post_upgrade() {
-    systemctl daemon-reload
-    systemctl restart power-options.service
-    systemctl restart acpid.service
+  systemctl daemon-reload
+  systemctl restart power-options.service
+  systemctl restart acpid.service
 }
 
 post_remove() {
-    systemctl daemon-reload
+  systemctl daemon-reload
 }
