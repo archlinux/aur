@@ -2,7 +2,7 @@
 _pkgname='plink2'
 pkgname="$_pkgname-mkl-git"
 _pkgver=2.0
-pkgver=2.0.r91.g705f965b
+pkgver=2.0.r108.ga09b4443
 pkgrel=1
 pkgdesc="whole-genome association analysis toolset, version 2.00 (alpha); dynamically linked to Intel MKL"
 arch=(x86_64)
