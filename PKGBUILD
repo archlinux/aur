@@ -1,11 +1,11 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 # Contributor: Barfin
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
-# Contributors: Jekyll Wu, Jacco Koning, qwak, twa022
+# Contributors: Jekyll Wu, Jacco Koning, qwak, twa022, tee
 
 pkgname=usb-creator
-pkgver=0.3.16
-pkgrel=2
+pkgver=0.3.17
+pkgrel=1
 pkgdesc="Create bootable USB from a LiveCD or disc image of Ubuntu"
 arch=('any')
 url="https://git.launchpad.net/~usb-creator-hackers/usb-creator/+git/main"
@@ -26,7 +26,7 @@ depends=('cdrkit'
 makedepends=('python-distutils-extra'
              'python-setuptools')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_$pkgver.tar.xz")
-b2sums=('96917cd9c3aa12f876b6120214a46d468f35955fea8d66614eb2dcba0063164a6ff68be3c658511016f51900b9d5aed987b44aa5590af7922344371ba1b6d25c')
+b2sums=('76875740e6797955397533ae190da8743d8357a22cb3c10e5872792dd9e42cc41f29b39d213acc26eb4f282ac80a99570d881cdae39d038ed0f6aaae51f50c32')
 
 prepare() {
     cd main
