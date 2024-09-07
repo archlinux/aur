@@ -3,9 +3,9 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch at gmail dot com>
 # Contributor: Marcin Karpezo <sirmacik at gmail dot com>
 _pkgname=scala
-pkgbase=scala_2.12
+pkgbase=scala_2.20
 pkgname=(scala_2.12 scala-docs_2.12 scala-sources_2.12)
-pkgver=2.12.19
+pkgver=2.12.20
 pkgrel=1
 _watch="https://github.com/scala/scala/releases"
 _distdate=20181127-085200
@@ -19,8 +19,8 @@ conflicts=('scala' 'scala-docs' 'scala-sources' 'java-environment<8')
 makedepends=('git' 'sbt')
 source=("scala-${pkgver}.tar.gz::https://github.com/scala/scala/archive/v${pkgver}.tar.gz"
         "scala-docs-${pkgver}.tar.xz::https://www.scala-lang.org/files/archive/scala-docs-${pkgver}.txz")
-sha512sums=('c45ee53a1a9c53b387075b3bf4981387ca5690ade91f22662dce6596fef57da24506c9c907cc4d589f3acbf25f566cbbe5495831b1687ba04cfbce7b311f7fe2'
-            '4af76d8761dfb7084b419cafbc11be7b155d82f1660aa6ed431e6ef8e5bd721bb05ba04eb8c9f3a6825ea9a202894ac777de3eb0a5b73e8e2f6d9eeab5ebc1dc')
+sha512sums=('2f8a1588fc6f8d7fb82d63304190235f6eccb3b4a50a48e3ce9ecad2ee209772f0e0224ed3e547e3e101175cc6e73737a7c21953c036ade7743b353263e2ec51'
+            '70df5ca510022eab64d7deec6a1cbe4fe2decc7606b5fedd9113091563fb3bf4c9658a13898b1acb7d409d194062669d7a7b51e8b22a4acd440081e713e909ea')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
