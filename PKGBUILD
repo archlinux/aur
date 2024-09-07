@@ -2,8 +2,8 @@
 
 _plug=vsmasktools
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.2.1.3.gb7aee78
-pkgrel=2
+pkgver=1.3.0.5.geb4bf7e
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vs-masktools'
@@ -17,6 +17,7 @@ depends=('vapoursynth-plugin-vstools-git'
     'vapoursynth-plugin-awarpsharp2-git'
     'vapoursynth-plugin-retinex-git'
     'vapoursynth-plugin-planestatsmod-git'
+    'vapoursynth-plugin-vssource-git'
 )
 makedepends=('git'
     'python-pip'
