@@ -1,5 +1,5 @@
+_baseurl='https://github.com/ggerganov/whisper.cpp'
 _model='large-v2'
-_model_sha1sum='0f4c8e34f21cf1a914c59d8b3ce882345ad349d6'
 _pkgbase='whisper.cpp-model'
 _download_script_url='https://github.com/ggerganov/whisper.cpp/raw/master/models/download-ggml-model.sh'
 _download_script_sha256sum='5c7e3fa19b688cb5ef5c08484d7a28d951f5afa1f4642232953e7ccd4435126f'
@@ -7,8 +7,6 @@ _download_script_basename='download-ggml-model.sh'
 replaces=('whisper.cpp-model-large')
 # Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
 pkgname="${_pkgbase}-${_model}"
-
-_baseurl="https://github.com/ggerganov/whisper.cpp"
 
 pkgver() {
   git ls-remote "$_baseurl" master | cut -f 1 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
