@@ -1,7 +1,7 @@
 # Maintainer: Chris Mounce <christophermounce@gmail.com>
 
 pkgname=decker
-pkgver=1.48
+pkgver=1.49
 pkgrel=1
 pkgdesc="Multimedia platform for creating interactive documents"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc' 'sdl2' 'sdl2_image')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/JohnEarnest/Decker/archive/refs/tags/v$pkgver.tar.gz"
         'decker.desktop'
         'application-x-decker.xml')
-sha256sums=('c1e3ec53908533f63ab1a9eeac7c906a70c3b73e2abd047af74258b494bf22cb'
+sha256sums=('c156bbdc7529e9b2e5174354671ca7da73a9ab5466d4a0e20fba25924b1c6cd7'
             'd03fc6cefd943d5220b187099f8318f79416b4eea757d26f07fcafb2e917202e'
             '8e73659f80d6aefab6bfde799aec504f4406ed279e3c1e2076cc3715f7ee7dfb')
 
