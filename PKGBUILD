@@ -6,7 +6,7 @@
 
 pkgname=lib32-libpgm
 pkgver=5.3.128
-pkgrel=2
+pkgrel=3
 pkgdesc='An implementation of the PGM reliable multicast protocol'
 arch=('x86_64')
 url='https://github.com/steve-o/openpgm'
@@ -17,7 +17,7 @@ options=('!strip')
 source=("libpgm-${pkgver}.tar.gz::https://github.com/steve-o/openpgm/archive/release-${pkgver//./-}.tar.gz"
          lib32-libpgm-undefined-symbol.patch::"https://github.com/steve-o/openpgm/commit/b7fa865f.patch")
 sha256sums=('8d707ef8dda45f4a7bc91016d7f2fed6a418637185d76c7ab30b306499c6d393'
-            '167ccb9ee3432d96e7ce433f67dd852877a594a096d8562ba45362370c3de86c')
+            'ea0b6c3f51316d5c76b9d04e187ed99b44829f89a5075b0edcaaeffe26482b31')
 
 prepare() {
   cd openpgm-release-${pkgver//./-}/openpgm/pgm

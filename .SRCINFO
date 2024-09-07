@@ -1,0 +1,19 @@
+pkgbase = lib32-libpgm
+	pkgdesc = An implementation of the PGM reliable multicast protocol
+	pkgver = 5.3.128
+	pkgrel = 3
+	url = https://github.com/steve-o/openpgm
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	makedepends = gcc-multilib
+	makedepends = python
+	depends = lib32-glibc
+	depends = libpgm
+	options = !strip
+	source = libpgm-5.3.128.tar.gz::https://github.com/steve-o/openpgm/archive/release-5-3-128.tar.gz
+	source = lib32-libpgm-undefined-symbol.patch::https://github.com/steve-o/openpgm/commit/b7fa865f.patch
+	sha256sums = 8d707ef8dda45f4a7bc91016d7f2fed6a418637185d76c7ab30b306499c6d393
+	sha256sums = ea0b6c3f51316d5c76b9d04e187ed99b44829f89a5075b0edcaaeffe26482b31
+
+pkgname = lib32-libpgm
