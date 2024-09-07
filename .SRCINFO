@@ -1,4 +1,4 @@
-pkgbase = pywal-16-colors
+pkgbase = python-pywal16
 	pkgdesc = Generate and change color-schemes on the fly (fork that uses 16 colors)
 	pkgver = 3.6.0
 	pkgrel = 1
@@ -37,4 +37,4 @@ pkgbase = pywal-16-colors
 	source = git+https://github.com/eylles/pywal16.git#tag=3.6.0
 	b2sums = SKIP
 
-pkgname = pywal-16-colors
+pkgname = python-pywal16

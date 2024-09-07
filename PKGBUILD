@@ -1,8 +1,8 @@
 # Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Kamil Bączkowski <me@kavela.ch>
 
-pkgname=pywal-16-colors
 _gitname=pywal16
+pkgname=python-${_gitname}
 pkgver=3.6.0
 pkgrel=1
 epoch=1
