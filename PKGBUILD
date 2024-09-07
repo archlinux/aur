@@ -3,7 +3,7 @@
 _pkgbasename=xcb-util
 pkgname=lib32-xcb-util
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility libraries for XC Binding (32-bit)"
 arch=('x86_64')
 url="https://xcb.freedesktop.org"

@@ -1,0 +1,16 @@
+pkgbase = lib32-xcb-util
+	pkgdesc = Utility libraries for XC Binding (32-bit)
+	pkgver = 0.4.1
+	pkgrel = 2
+	url = https://xcb.freedesktop.org
+	arch = x86_64
+	license = custom
+	makedepends = gperf
+	makedepends = xorgproto
+	depends = lib32-glibc
+	depends = lib32-libxcb
+	depends = xcb-util
+	source = https://xcb.freedesktop.org/dist/xcb-util-0.4.1.tar.xz
+	sha512sums = da67f2f017d2a1788dcf35f28d6956e171303a622a1dd085cd3d69fdb2ed77965d83c557cc926ebf9b32e905eb2cbb5921987250192d78a2f5edc4d437ed7d2b
+
+pkgname = lib32-xcb-util
