@@ -2,35 +2,25 @@
 
 pkgname=eastl
 _pkgname=EASTL
-pkgver=3.21.12
-pkgrel=4
+pkgver=3.21.23
+pkgrel=1
 pkgdesc="Electronic Arts Standard Template Library. It is an extensive and robust implementation that has an emphasis on high performance."
 arch=('any')
 url="https://github.com/electronicarts/EASTL"
 license=("BSD-3-Clause")
 makedepends=("cmake" "git")
-source=("git+https://github.com/electronicarts/EASTL.git#tag=$pkgver")
-sha256sums=('2c0fb5138a350a3773add4916860587b692799c2959c5dfa99c8e18093320c8a')
-
-prepare() {
-  cd $srcdir/$_pkgname
-
-  sed -i 's|url.*eastl/EASTL$|url = https://github.com/electronicarts/EASTL.git|g' .git/config
-  git submodule update --init
-
-  # Add missing install
-  sed -i '$a install(DIRECTORY include/Common/EABase DESTINATION include)' test/packages/EABase/CMakeLists.txt
-}
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/electronicarts/EASTL/archive/${pkgver}.tar.gz")
+sha256sums=('2bcb48f88f7daf9f91c165aae751c10d11d6959b6e10f2dda8f1db893e684022')
 
 build() {
   # Clear default flags in makepkg.conf
   unset CFLAGS CXXFLAGS LDFLAGS LTOFLAGS
 
-  cmake -B build -S $srcdir/$_pkgname \
+  cmake -B build -S $srcdir/$_pkgname-$pkgver \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_SHARED_LIBS=ON \
         -DEASTL_BUILD_TESTS=ON \
-        -DEASTL_BUILD_BENCHMARK=ON \
+        -DEASTL_BUILD_BENCHMARK=OFF \
         -DEASTL_STD_ITERATOR_CATEGORY_ENABLED=ON \
         -Wno-dev
   cmake --build build --config Release
@@ -43,10 +33,10 @@ check() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 
-  install -Dm755 "${srcdir}/build/test/packages/EAAssert/libEAAssert.so" "${pkgdir}/usr/lib"
-  install -Dm755 "${srcdir}/build/test/packages/EAStdC/libEAStdC.so" "${pkgdir}/usr/lib"
-  install -Dm755 "${srcdir}/build/test/packages/EAThread/libEAThread.so" "${pkgdir}/usr/lib"
+  install -Dm755 "${srcdir}/build/_deps/eaassert-build/libEAAssert.so" "${pkgdir}/usr/lib"
+  install -Dm755 "${srcdir}/build/_deps/eastdc-build/libEAStdC.so" "${pkgdir}/usr/lib"
+  install -Dm755 "${srcdir}/build/_deps/eathread-build/libEAThread.so" "${pkgdir}/usr/lib"
 
-  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "${srcdir}/${_pkgname}/3RDPARTYLICENSES.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/3RDPARTYLICENSES.TXT"
+  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/3RDPARTYLICENSES.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/3RDPARTYLICENSES.TXT"
 }
