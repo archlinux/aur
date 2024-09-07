@@ -1,0 +1,30 @@
+pkgbase = lib32-libcanberra
+	pkgdesc = A small and lightweight implementation of the XDG Sound Theme Specification (32-bit)
+	pkgver = 0.30+r2+gc0620e4
+	pkgrel = 3
+	epoch = 1
+	url = https://0pointer.net/lennart/projects/libcanberra/
+	arch = x86_64
+	license = LGPL
+	makedepends = gtk-doc
+	makedepends = lib32-gtk2
+	makedepends = lib32-gtk3
+	makedepends = git
+	depends = lib32-libvorbis
+	depends = lib32-libltdl
+	depends = lib32-alsa-lib
+	depends = lib32-libpulse
+	depends = lib32-tdb
+	depends = libcanberra
+	provides = lib32-libcanberra-pulse
+	provides = libcanberra.so
+	provides = libcanberra-gtk.so
+	provides = libcanberra-gtk3.so
+	replaces = lib32-libcanberra-pulse<0.30+2+gc0620e4-4
+	options = libtool
+	source = git+https://git.0pointer.net/clone/libcanberra.git#commit=c0620e432650e81062c1967cc669829dbd29b310
+	source = libcanberra-multi-backend.patch
+	sha256sums = SKIP
+	sha256sums = de146cae3e40a16b38c8edb4f1a3a423c64eb9c5000e36c316b677e9909c9b06
+
+pkgname = lib32-libcanberra

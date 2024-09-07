@@ -4,7 +4,7 @@
 
 pkgname=lib32-libcanberra
 pkgver=0.30+r2+gc0620e4
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A small and lightweight implementation of the XDG Sound Theme Specification (32-bit)"
 url="https://0pointer.net/lennart/projects/libcanberra/"
