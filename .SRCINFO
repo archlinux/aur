@@ -1,0 +1,42 @@
+pkgbase = eudev
+	pkgver = 3.2.10
+	pkgrel = 1
+	url = https://github.com/gentoo/eudev
+	arch = x86_64
+	groups = base
+	groups = base-openrc
+	license = GPL
+	makedepends = gobject-introspection
+	makedepends = gperf
+	makedepends = gtk-doc
+	makedepends = intltool
+	makedepends = kmod
+	options = !libtool
+	options = !staticlibs
+	source = eudev-3.2.10.tar.gz::https://github.com/gentoo/eudev/archive/v3.2.10.tar.gz
+	source = initcpio_hooks
+	source = initcpio_install
+	source = udev-hwdb.hook
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = eudev
+	pkgdesc = The userspace dev tools (udev) forked by Gentoo
+	depends = libeudev
+	depends = kbd
+	depends = kmod
+	depends = hwids
+	depends = util-linux
+	provides = udev=243
+	backup = etc/udev/udev.conf
+
+pkgname = libeudev
+	pkgdesc = eudev client libraries
+	depends = glib2
+	depends = glibc
+	provides = libudev=243
+	provides = libudev.so
+	conflicts = libudev.so
+
