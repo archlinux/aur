@@ -1,0 +1,17 @@
+pkgbase = python-nodriver
+	pkgdesc = Successor of Undetected-Chromedriver.
+	pkgver = 0.36
+	pkgrel = 1
+	url = https://github.com/UltrafunkAmsterdam/nodriver
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-mss
+	depends = python-deprecated
+	depends = python-websockets
+	source = https://files.pythonhosted.org/packages/source/n/nodriver/nodriver-0.36.tar.gz
+	sha256sums = 69cd7847d6d7bfe3bc8498adc2c0a0b54649267edd085c4adbf88949f790cc23
+
+pkgname = python-nodriver
