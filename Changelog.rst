@@ -1,6 +1,12 @@
 Changelog
 =========
 
+**[5.9.1] ----- 2024-09-07** ::
+
+	    Tidy restructured text formatting in readme
+	    update Docs/Changelog.rst Docs/wg-client.pdf
+
+
 **[5.9.0] ----- 2024-07-07** ::
 
 	    wg-fix-resolv: Improve compiler / loader options - see Makefile for details
