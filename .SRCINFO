@@ -1,6 +1,6 @@
 pkgbase = bandsnatch
 	pkgdesc = A CLI batch downloader for your Bandcamp collection.
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/Ovyerus/bandsnatch
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = bandsnatch
 	makedepends = git
 	provides = bandsnatch
 	conflicts = bandsnatch
-	source = https://github.com/Ovyerus/bandsnatch/archive/v0.3.2.zip
-	sha256sums = fef6d10516394a2dac344cd84de93c9221cb77dc00ae68cbb209431e1b487f41
+	source = https://github.com/Ovyerus/bandsnatch/archive/v0.3.3.zip
+	sha256sums = afa71d1ca2248aa430a7436c8658fd44fdbfb051d0998b2295ad786b7afcdea9
 
 pkgname = bandsnatch

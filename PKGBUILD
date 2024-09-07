@@ -1,7 +1,7 @@
 # Maintainer: Ovyerus <ovy@ovyerus.com>
 # Contributor: Duale Siad <me@wale.id.au>
 pkgname=bandsnatch
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A CLI batch downloader for your Bandcamp collection."
 url="https://github.com/Ovyerus/bandsnatch"
@@ -14,7 +14,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 source=("https://github.com/Ovyerus/bandsnatch/archive/v${pkgver}.zip")
-sha256sums=('fef6d10516394a2dac344cd84de93c9221cb77dc00ae68cbb209431e1b487f41')
+sha256sums=('afa71d1ca2248aa430a7436c8658fd44fdbfb051d0998b2295ad786b7afcdea9')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
