@@ -1,0 +1,21 @@
+pkgbase = lib32-dbus-glib
+	pkgdesc = GLib bindings for DBUS
+	pkgver = 0.112
+	pkgrel = 3
+	url = https://www.freedesktop.org/wiki/Software/DBusBindings
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = gtk-doc
+	makedepends = lib32-expat
+	makedepends = python
+	depends = dbus-glib
+	depends = lib32-glib2
+	depends = lib32-glibc
+	depends = lib32-dbus
+	source = git+https://gitlab.freedesktop.org/dbus/dbus-glib.git#tag=f16a4ec9a37d067aea4772ce35ae5b88d9416cab
+	validpgpkeys = DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90
+	b2sums = SKIP
+
+pkgname = lib32-dbus-glib

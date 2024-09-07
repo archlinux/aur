@@ -4,7 +4,7 @@
 
 pkgname=lib32-dbus-glib
 pkgver=0.112
-pkgrel=2
+pkgrel=3
 pkgdesc='GLib bindings for DBUS'
 arch=(x86_64)
 license=(GPL)
@@ -17,6 +17,7 @@ depends=(
 )
 makedepends=(
   git
+  glib2-devel
   gtk-doc
   lib32-expat
   python
