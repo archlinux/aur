@@ -13,6 +13,7 @@ pkgbase = eqy-nightly
 	depends = sby-nightly
 	depends = python
 	depends = python-click
+	provides = eqy
 	options = !strip
 	source = eqy::git+https://github.com/YosysHQ/eqy.git#commit=7b16456
 	sha256sums = SKIP

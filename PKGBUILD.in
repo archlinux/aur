@@ -13,6 +13,7 @@ options=("!strip")
 depends=("yosys-nightly" "sby-nightly" "python" "python-click")
 optdepends=()
 makedepends=("git" "gcc" "yosys-nightly")
+provides=("eqy")
 conflicts=()
 replaces=()
 source=(
