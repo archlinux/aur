@@ -1,44 +1,44 @@
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Maintainer:
+# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
-pkgname=urlview
-pkgver=0.9
-pkgrel=13
-_patchlevel=21
+## links
+# https://packages.qa.debian.org/u/urlview.html
+# https://sr.ht/~nabijaczleweli/urlview-ng/
+
+: ${_commit:=add0ab60b4cb2ef5a7051e86fb6d43ba62fa1e2e} # 1d
+
+_pkgname="urlview"
+pkgname="$_pkgname"
+pkgver=1.d
+pkgrel=1
 pkgdesc="A curses URL parser for text files"
-arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-url="http://packages.qa.debian.org/u/urlview.html"
-license=('GPL')
-depends=('bash')
-makedepends=('patch' 'automake' 'autoconf' 'gzip')
-source=(http://ftp.debian.org/debian/pool/main/u/urlview/${pkgname}_$pkgver.orig.tar.gz
-        http://ftp.debian.org/debian/pool/main/u/urlview/${pkgname}_$pkgver-$_patchlevel.diff.gz)
-sha256sums=('746ff540ccf601645f500ee7743f443caf987d6380e61e5249fc15f7a455ed42'
-            'efdf6a279d123952820dd6185ab9399ee1bf081ea3dd613dc96933cd1827a9e9')
+url="https://git.sr.ht/~nabijaczleweli/urlview-ng"
+license=('0BSD' 'GPL-2.0-or-later')
+arch=('i686' 'x86_64')
 
-prepare() {
-  cd "${srcdir}"/$pkgname-$pkgver.orig
+depends=(
+  'bash'
+  'ncurses'
+)
+makedepends=(
+  'git'
+)
 
-  gunzip --force "${srcdir}"/${pkgname}_${pkgver}-$_patchlevel.diff.gz
-  patch -Np1 -i "${srcdir}"/${pkgname}_${pkgver}-$_patchlevel.diff
-  aclocal
-  automake --foreign --ignore-deps --add-missing
-}
+options=('!debug')
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url#commit=$_commit")
+sha256sums=('SKIP')
 
 build() {
-  cd "${srcdir}"/$pkgname-$pkgver.orig
-
-  ./configure --prefix=/usr
+  cd "$_pkgsrc"
   make
 }
 
 package() {
-  cd "${srcdir}"/$pkgname-$pkgver.orig
+  cd "$_pkgsrc"
+  DESTDIR="$pkgdir" PREFIX='/usr' make install
 
-  install -d "${pkgdir}"/etc/urlview "${pkgdir}"/usr/share/man/man1
-  make prefix="${pkgdir}"/usr mandir="${pkgdir}"/usr/share/man install
-
-  install -Dm755 url_handler.sh "${pkgdir}"/etc/urlview/url_handler.sh
-  install -Dm644 sample.urlview "${pkgdir}"/etc/urlview/system.urlview
-  install -d "${pkgdir}"/usr/bin
-  ln -fs /etc/urlview/url_handler.sh "${pkgdir}"/usr/bin/url_handler.sh
+  install -Dm644 'LICENSES/0BSD.txt' "$pkgdir/usr/share/licenses/$pkgname/LICENSE.0BSD"
+  install -Dm644 'LICENSES/GPL-2.0-or-later.txt' "$pkgdir/usr/share/licenses/$pkgname/LICENSE.GPL-2.0-or-later"
 }
