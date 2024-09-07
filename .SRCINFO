@@ -1,0 +1,39 @@
+pkgbase = lib32-libdbusmenu
+	pkgdesc = Library for passing menus over DBus (32-bit)
+	pkgver = 16.04.0
+	pkgrel = 6
+	url = https://launchpad.net/libdbusmenu
+	arch = x86_64
+	license = GPL3
+	license = LGPL2.1
+	license = LGPL3
+	makedepends = gnome-common
+	makedepends = gobject-introspection
+	makedepends = lib32-gtk2
+	makedepends = lib32-gtk3
+	makedepends = intltool
+	makedepends = vala
+	makedepends = valgrind-multilib
+	makedepends = glib2-devel
+	options = !emptydirs
+	source = https://launchpad.net/libdbusmenu/16.04/16.04.0/+download/libdbusmenu-16.04.0.tar.gz
+	source = https://launchpad.net/libdbusmenu/16.04/16.04.0/+download/libdbusmenu-16.04.0.tar.gz.asc
+	validpgpkeys = 45B1103FB93ACBD90296DBCAE83D089481836EBF
+	sha512sums = ee9654ac4ed94bdebc94a6db83b126784273a417a645b2881b2ba676a5f67d7fc95dd2bb37bfb0890aa47299ed73cb21ed7de8b75f3fed6b69bfd39065062241
+	sha512sums = SKIP
+
+pkgname = lib32-libdbusmenu-glib
+	depends = lib32-glib2
+	depends = libdbusmenu-glib
+
+pkgname = lib32-libdbusmenu-gtk2
+	pkgdesc = Library for passing menus over DBus (32-bit) (GTK+ 2 library)
+	depends = lib32-gtk2
+	depends = lib32-libdbusmenu-glib
+	depends = libdbusmenu-gtk2
+
+pkgname = lib32-libdbusmenu-gtk3
+	pkgdesc = Library for passing menus over DBus (32-bit) (GTK+ 3 library)
+	depends = lib32-gtk3
+	depends = lib32-libdbusmenu-glib
+	depends = libdbusmenu-gtk3
