@@ -7,7 +7,7 @@
 _udev_ver=243
 
 pkgbase=eudev
-pkgname=( 'eudev' )
+pkgname=( 'eudev' 'libeudev')
 pkgver=3.2.11
 pkgrel=1
 arch=('x86_64')
@@ -48,7 +48,8 @@ build() {
         --enable-manpages \
         --enable-split-usr
 
-    }
+    make
+}
 
 package_eudev() {
     pkgdesc="The userspace dev tools (udev) forked by Gentoo"
@@ -63,8 +64,18 @@ package_eudev() {
     rm -rv "$pkgdir"/usr/lib/pkgconfig
     rm -v "$pkgdir"/usr/include/libudev.h
     rm -v "$pkgdir"/usr/lib/libudev*.{so*,a}
-      make -C src/libudev DESTDIR="$pkgdir" install
+
     install -Dm644 "${srcdir}/initcpio_hooks" "${pkgdir}/usr/lib/initcpio/hooks/udev"
     install -Dm644 "${srcdir}/initcpio_install" "${pkgdir}/usr/lib/initcpio/install/udev"
     install -Dm644 "$srcdir/udev-hwdb.hook" "$pkgdir/usr/share/libalpm/hooks/udev-hwdb.hook"
+}
+
+package_libeudev() {
+    pkgdesc="eudev client libraries"
+    depends=('glib2' 'glibc')
+    conflicts=('libudev.so')
+    provides=("libudev=${_udev_ver}" 'libudev.so')
+
+    cd "${srcdir}/${pkgbase}-${pkgver}"
+    make -C src/libudev DESTDIR="$pkgdir" install
 }
