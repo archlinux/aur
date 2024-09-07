@@ -7,7 +7,7 @@
 
 pkgname=lib32-sdl_mixer
 pkgver=1.2.12
-pkgrel=5
+pkgrel=6
 pkgdesc='A simple multi-channel audio mixer'
 arch=(x86_64)
 url=https://www.libsdl.org/projects/SDL_mixer/
@@ -52,6 +52,7 @@ build() {
 
   export CC='gcc -m32'
   export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
+  CFLAGS+=" -Wno-implicit-function-declaration"
 
   ./configure \
     --prefix=/usr \
