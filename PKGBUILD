@@ -2,7 +2,7 @@
 
 pkgname=echoping
 pkgver=6.0.2
-pkgrel=12
+pkgrel=13
 pkgdesc="tests performance of a remote host by sending HTTP, TCP and UDP requests"
 arch=('x86_64')
 url="http://echoping.sourceforge.net/"
@@ -24,6 +24,7 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
+  CFLAGS+=" -Wno-implicit-function-declaration -Wno-int-conversion"
   ./configure --prefix=/usr --config-cache --with-ssl
   make
 }
