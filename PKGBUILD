@@ -2,7 +2,7 @@
 pkgname=turtle
 _app_id="de.philippun1.$pkgname"
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
 url="https://gitlab.gnome.org/philippun1/turtle"
@@ -10,9 +10,11 @@ license=('GPL-3.0-or-later')
 depends=(
   'libadwaita'
   'meld'
+  'openssl'
   'python-dbus'
   'python-gobject'
   'python-pygit2'
+  'python-secretstorage'
 )
 makedepends=(
   'python-build'
@@ -22,10 +24,10 @@ makedepends=(
 )
 checkdepends=('python-pytest')
 optdepends=(
-  'python-nautilus: Nautilus plugin'
-  'thunarx-python: Thunar plugin'
   'nemo-python: Nemo plugin'
   'python-caja: Caja plugin'
+  'python-nautilus: Nautilus plugin'
+  'thunarx-python: Thunar plugin'
   'seahorse: sign commits'
 )
 conflicts=('turtlegit')
