@@ -4,7 +4,7 @@
 
 pkgname=lib32-libcaca
 pkgver=0.99.beta20
-pkgrel=1
+pkgrel=2
 pkgdesc="Color AsCii Art library (32-bit)"
 url="http://caca.zoy.org/wiki/libcaca"
 arch=(x86_64)

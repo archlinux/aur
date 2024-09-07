@@ -1,0 +1,14 @@
+pkgbase = lib32-libcaca
+	pkgdesc = Color AsCii Art library (32-bit)
+	pkgver = 0.99.beta20
+	pkgrel = 2
+	url = http://caca.zoy.org/wiki/libcaca
+	arch = x86_64
+	license = custom:WTFPL
+	makedepends = git
+	depends = lib32-imlib2
+	depends = libcaca
+	source = git+https://github.com/cacalabs/libcaca#commit=373c88b9890e67bde91e6acb8f1c442e847d1203
+	sha256sums = SKIP
+
+pkgname = lib32-libcaca
