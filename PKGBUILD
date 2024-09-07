@@ -12,7 +12,7 @@
 
 pkgname=lib32-mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=24.3.0_devel.194283.b78a3d4de90
+pkgver=24.3.0_devel.194499.2a5a12cb71b
 pkgrel=1
 arch=('x86_64')
 makedepends=(python-mako python-packaging lib32-libxml2 lib32-libx11 xorgproto lib32-gcc-libs lib32-libelf git lib32-libglvnd
@@ -31,25 +31,18 @@ license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
                 LICENSE
                 llvm32.native
-                llvm20-change-in-GetResourcesPath.patch #adjustment needed because of https://github.com/llvm/llvm-project/commit/924a7d83b4287b3b85dd1ca29d2d3e1f0a10ea68
 )
 
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
-         '6b4a19068a323d7f90a3d3cd315ed1f9'
-         '56d38c1a761737627c9faaaa063dd616')
+         '6b4a19068a323d7f90a3d3cd315ed1f9')
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            'c7dbb390ebde291c517a854fcbe5166c24e95206f768cc9458ca896b2253aabd6df12a7becf831998721b2d622d0c02afdd8d519e77dea8e1d6807b35f0166fe'
-            'e368e876955000273372c782e593501a865d40d1acf952d94e8b8e5ff8d3cc68c29d9cb190f20f4adbc4a9bb95e9dd77047d8d90f0aabcae565a70e49dac3bcf')
+            'c7dbb390ebde291c517a854fcbe5166c24e95206f768cc9458ca896b2253aabd6df12a7becf831998721b2d622d0c02afdd8d519e77dea8e1d6807b35f0166fe')
 options=(!lto !debug)
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
-
-prepare() {
-    patch --directory mesa --strip=1 --forward --input="$srcdir"/llvm20-change-in-GetResourcesPath.patch
-}
 
 pkgver() {
     cd mesa
@@ -74,7 +67,6 @@ build () {
         -D platforms=x11,wayland \
         -D gallium-drivers=radeonsi,llvmpipe,zink,iris \
         -D vulkan-drivers=amd,swrast,intel \
-        -D dri3=enabled \
         -D egl=enabled \
         -D gallium-extra-hud=true \
         -D vulkan-layers=device-select,overlay \
