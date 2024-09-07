@@ -1,5 +1,7 @@
 # Maintainer:
-# Contributor: Aleksandr Beliaev <trap000d@gmail.com>
+# Contributor: Artem Klevtsov <a.a.klevtso@gmail.com>
+# Contributor: Stephen Martin <hwkiller@gmail.com>
+# Contributor: Conor Anderson <conor@conr.ca>
 
 ## links
 # https://posit.co/products/open-source/rstudio/
