@@ -1,0 +1,16 @@
+pkgbase = sddm-astronaut-theme
+	pkgdesc = Modern looking sddm qt6 theme
+	pkgver = 26.48ea0a7
+	pkgrel = 1
+	url = https://github.com/Keyitdev/sddm-astronaut-theme
+	arch = any
+	license = LGPL3
+	makedepends = git
+	depends = sddm
+	depends = qt6-5compat
+	depends = qt6-declarative
+	depends = qt6-svg
+	source = git+https://github.com/Keyitdev/sddm-astronaut-theme
+	md5sums = SKIP
+
+pkgname = sddm-astronaut-theme
