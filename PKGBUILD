@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=arrowdl
-pkgver=4.0.1
-pkgrel=2
+pkgver=4.0.2
+pkgrel=1
 pkgdesc="A mass download manager that helps you to select, organize, prioritize and run your downloads in parallel."
 arch=('x86_64')
 url="https://www.arrow-dl.com/ArrowDL"
@@ -10,7 +10,7 @@ depends=('libtorrent-rasterbar' 'qt6-base' 'yt-dlp')
 makedepends=('boost' 'cmake' 'qt6-tools')
 conflicts=('downzemall')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/setvisible/ArrowDL/archive/v$pkgver.tar.gz")
-sha256sums=('ca03d55a89ff10534b9848829d78427d6b9a14211b8a09aa5fcedc389ac2675d')
+sha256sums=('14dd870d4f5d9a749e77a79167e01044a552d77fbe66e878ac5e10b47f336e41')
 
 prepare() {
   cd "ArrowDL-$pkgver"
