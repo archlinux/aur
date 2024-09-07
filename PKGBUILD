@@ -1,7 +1,7 @@
 # Maintainer: Maxr1998 <aur@maxr1998.de>
 _pkgname=finamp
 pkgname=finamp-git
-pkgver=2244.d85fbe2a
+pkgver=2272.049185c4
 pkgrel=1
 pkgdesc="An open source Jellyfin music player"
 arch=("x86_64" "aarch64")
