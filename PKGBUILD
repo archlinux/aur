@@ -1,6 +1,6 @@
 # Maintainer: HcgRandon <me@randon.moe>
 pkgname=pokerogue-app-bin
-pkgver=2.4.3
+pkgver=2.4.5
 pkgrel=1
 pkgdesc="Admiral-Billy's Pokerogue App"
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=("${pkgname}-${pkgver}.zip::https://github.com/Admiral-Billy/Pokerogue-Ap
         "pokerogue.sh"
         "pokerogue.desktop")
 noextract=("${pkgname}-${pkgver}.zip")
-sha256sums=('018d4ec434d05b5e1c935ac9a6edf3821545a435c04a48f864ed1203ec61e5c9'
+sha256sums=('0ec05a9f0f171e516f397c6529647cb1e448970b495ec60cf846bd6f1b12f19d'
             '01d67ae770ecd1d74223bd750a43ab1d22942607eb4a24fbf9ba2ba69e2e2859'
             '003155b0691d4222c72dc4d24f398b849690d073938cbd05e38ca0a9bd5ad83c'
             '116c567e84c8a3cfa46fb6d0bad12e63d808a5d3056c6d66867707d200dba7c7')
