@@ -1,9 +1,9 @@
 pkgbase = lib32-llvm-minimal-git
-	pkgver = 20.0.0_r510979.23a26e7120df
+	pkgver = 20.0.0_r510980.1b8e26ff26be
 	pkgrel = 1
 	url = http://llvm.org/
 	arch = x86_64
-	license = custom:Apache 2.0 with LLVM Exception
+	license = Apache-2.0 WITH LLVM-exception
 	makedepends = git
 	makedepends = cmake
 	makedepends = lib32-libffi
@@ -21,7 +21,7 @@ pkgbase = lib32-llvm-minimal-git
 
 pkgname = lib32-llvm-minimal-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies, 32-bit trunk version
-	depends = lib32-llvm-libs-minimal-git=20.0.0_r510979.23a26e7120df-1
+	depends = lib32-llvm-libs-minimal-git=20.0.0_r510980.1b8e26ff26be-1
 	depends = llvm-minimal-git
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
@@ -55,17 +55,17 @@ pkgname = lib32-clang-minimal-git
 
 pkgname = lib32-clang-libs-minimal-git
 	pkgdesc = clang runtime libraries, 32-bit trunk version
-	depends = lib32-llvm-libs-minimal-git=20.0.0_r510979.23a26e7120df-1
+	depends = lib32-llvm-libs-minimal-git=20.0.0_r510980.1b8e26ff26be-1
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
 	provides = lib32-clang-libs
-	conflicts = lib32-clang<20.0.0_r510979.23a26e7120df-1
+	conflicts = lib32-clang<20.0.0_r510980.1b8e26ff26be-1
 	conflicts = lib32-clang-libs
 
 pkgname = lib32-clang-opencl-headers-minimal-git
 	pkgdesc = clang headers & include files for OpenCL, 32-bit trunk version
 	arch = any
-	depends = lib32-clang-libs-minimal-git=20.0.0_r510979.23a26e7120df-1
+	depends = lib32-clang-libs-minimal-git=20.0.0_r510980.1b8e26ff26be-1
 	provides = lib32-clang-opencl-headers
-	conflicts = lib32-clang<20.0.0_r510979.23a26e7120df-1
+	conflicts = lib32-clang<20.0.0_r510980.1b8e26ff26be-1
 	conflicts = lib32-clang-opencl-headers

@@ -19,13 +19,13 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git' 'lib32-clang-minimal-git' 'lib32-clang-libs-minimal-git' 'lib32-clang-opencl-headers-minimal-git')
-pkgver=20.0.0_r510979.23a26e7120df
+pkgver=20.0.0_r510980.1b8e26ff26be
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
-license=('custom:Apache 2.0 with LLVM Exception')
-makedepends=('git' 'cmake' 'lib32-libffi' 'lib32-zlib' 'python' 'lib32-gcc-libs'
-             'lib32-libxml2' 'lib32-zstd' 'llvm-minimal-git')
+license=('Apache-2.0 WITH LLVM-exception')
+makedepends=(git cmake lib32-libffi lib32-zlib python lib32-gcc-libs
+             lib32-libxml2 lib32-zstd llvm-minimal-git)
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
 )
 md5sums=('SKIP')
