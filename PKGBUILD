@@ -26,15 +26,12 @@ provides=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layer libva-mesa-driver vu
 conflicts=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layer libva-mesa-driver vulkan-swrast mesa-vdpau vulkan-nouveau)
 # mixing components from different mesa versions is a bad idea, conflict with everything unique provided by extra/mesa
 url="https://www.mesa3d.org"
-license=('custom')
+license=('MIT AND BSD-3-Clause AND SGI-B-2.0')
 source=("mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git"
-                LICENSE
 )
 
-md5sums=('SKIP'
-         '5c65a0fe315dd347e09b1f2826a1df5a')
-sha512sums=('SKIP'
-            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
+md5sums=('SKIP')
+sha512sums=('SKIP')
 options=(!emptydirs !lto !debug)
 
 # ninja grabs all available cores and leaves almost nothing for other processes.
@@ -117,7 +114,7 @@ package_mesa-minimal-git() {
     # indirect rendering
     ln -s /usr/lib/libGLX_mesa.so.0 "${pkgdir}/usr/lib/libGLX_indirect.so.0"
   
-    install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE"
+    install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" mesa/docs/license.rst
 }
 
 # I dislike splitting packages, but rusticl has several dependencies that are not needed by other mesa components
@@ -131,5 +128,5 @@ package_opencl-rusticl-mesa-minimal-git() {
     )
     
     cp --preserve --recursive "$srcdir"/rusticl/* "$pkgdir"/
-    install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE"
+        install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" mesa/docs/license.rst
 }
