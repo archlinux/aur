@@ -1,16 +1,17 @@
 pkgbase = wazuh-dashboard
 	pkgdesc = Wazuh Dashboard for Arch Linux
-	pkgver = 4.8.2
+	pkgver = 4.9.0
 	pkgrel = 1
 	url = https://wazuh.com/
 	install = wazuh-dashboard.install
 	arch = x86_64
+	groups = wazuh-siem
 	license = gpl2
 	depends = libcap
 	backup = etc/wazuh-dashboard/certs
 	backup = etc/wazuh-dashboard/opensearch_dashboards.yml
 	backup = usr/share/wazuh-dashboard/data/wazuh/config/wazuh.yml
-	source = https://packages.wazuh.com/4.x/yum/wazuh-dashboard-4.8.2-1.x86_64.rpm
-	sha512sums = 39163e37e3930d01ae95264d8522edc052d0a031892df14e9e8c4d8e6a7c85aa902b45bb40142696b778a7b9d38706833aa06be746317e68f6b70121a21f7d76
+	source = https://packages.wazuh.com/4.x/yum/wazuh-dashboard-4.9.0-2.x86_64.rpm
+	sha512sums = e8f72800d9ffebaeb60f5794d2eec1628edc65aab178e53b11dd04463d726849ec2c5cc8c72a3805db192aca8ef175617d61c6e8292538b90282faca51b8630c
 
 pkgname = wazuh-dashboard

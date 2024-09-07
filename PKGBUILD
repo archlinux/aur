@@ -1,14 +1,15 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-dashboard
-pkgver=4.8.2
-_remRevision=1
+pkgver=4.9.0
+_remRevision=2
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
 pkgdesc='Wazuh Dashboard for Arch Linux'
 arch=('x86_64')
 url='https://wazuh.com/'
 license=('gpl2')
+groups=("wazuh-siem")
 depends=(
     'libcap'
 );
@@ -25,7 +26,7 @@ backup=(
   'usr/share/wazuh-dashboard/data/wazuh/config/wazuh.yml'
   )
 
-sha512sums=('39163e37e3930d01ae95264d8522edc052d0a031892df14e9e8c4d8e6a7c85aa902b45bb40142696b778a7b9d38706833aa06be746317e68f6b70121a21f7d76')
+sha512sums=('e8f72800d9ffebaeb60f5794d2eec1628edc65aab178e53b11dd04463d726849ec2c5cc8c72a3805db192aca8ef175617d61c6e8292538b90282faca51b8630c')
 
 install=$pkgname.install
 
