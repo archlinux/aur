@@ -1,10 +1,10 @@
 # Former Maintainer: Eduard Tanase <eduard dot tanase1 at gmail dot com>
-# Current Maintainer: https://aur.archlinux.org/account/froub
+# Current Maintainer: froub (https://aur.archlinux.org/account/froub)
 # Contributor: Sauyon Lee <me at sjl dot re>
 
 
 pkgname=codeql
-pkgver=2.16.5
+pkgver=2.18.3
 pkgrel=1
 epoch=
 pkgdesc="The CLI tool for GitHub's CodeQL"
@@ -24,7 +24,7 @@ options=(!strip)
 install=
 changelog=
 source=("$pkgname-v$pkgver.zip::https://github.com/github/codeql-cli-binaries/releases/download/v$pkgver/codeql-linux64.zip")
-sha256sums=('f97f800240f865f64d51924edc0b96bd25fa7440b098eaf06a167b8fdd445e4d')
+sha256sums=('2f0c0367e3b93195b778e440fa94d57d8074fcf5182f67662dacbf6da3fc7746')
 
 noextract=()
 
