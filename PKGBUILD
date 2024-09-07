@@ -10,14 +10,14 @@ pkgname=(
 
 # Follow handbrakes most current stable branch 1.8.x
 # https://github.com/HandBrake/HandBrake/commits/1.8.x
-readonly _commit=77f199ab02ff2e3bca4ca653e922e9fef67dec43
+readonly _commit=1b09b55fa971682658f9ad22e9d4acbc21dc4a33
 
 pkgver() {
   git -C HandBrake/ gc --auto --prune=now
   git -C HandBrake/ describe ${_commit} | sed -e 's/^v//g' -e 's/-/.r/' -e 's/-/./'
 }
 
-pkgver=1.8.2
+pkgver=1.8.2.r2.g1b09b55fa
 pkgrel=1
 arch=('x86_64')
 url="https://handbrake.fr/"
@@ -90,9 +90,9 @@ prepare() {
 -SVT-AV1.FETCH.url     = https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/SVT-AV1-v2.1.0.tar.gz
 -SVT-AV1.FETCH.url    += https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v2.1.0/SVT-AV1-v2.1.0.tar.gz
 -SVT-AV1.FETCH.sha256  = 72a076807544f3b269518ab11656f77358284da7782cece497781ab64ed4cb8a
-+SVT-AV1.FETCH.url     = https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/SVT-AV1-v2.2.0.tar.gz
-+SVT-AV1.FETCH.url    += https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v2.2.0/SVT-AV1-v2.2.0.tar.gz
-+SVT-AV1.FETCH.sha256  = d5b3094b2583eb9c15705efa92a8b413f01d718ca0adce6826ae1f0f1c69b4fd
++SVT-AV1.FETCH.url     = https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/SVT-AV1-v2.2.1.tar.gz
++SVT-AV1.FETCH.url    += https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v2.2.1/SVT-AV1-v2.2.1.tar.gz
++SVT-AV1.FETCH.sha256  = d02b54685542de0236bce4be1b50912aba68aff997c43b350d84a518df0cf4e5
  
  SVT-AV1.GCC.args.c_std =
 EOF
