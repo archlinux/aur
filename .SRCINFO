@@ -1,0 +1,25 @@
+pkgbase = clutter
+	pkgdesc = A toolkit for creating fast, portable, compelling dynamic UIs
+	pkgver = 1.26.4
+	pkgrel = 3
+	url = https://blogs.gnome.org/clutter/
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = git
+	makedepends = glib2-devel
+	depends = gtk3
+	depends = cogl
+	depends = libinput
+	source = git+https://gitlab.gnome.org/GNOME/clutter.git#commit=fd85623d34a54b3f5607011086cf19cb2c756a6a
+	sha256sums = SKIP
+
+pkgname = clutter
+	depends = gtk3
+	depends = cogl
+	depends = libinput
+	depends = libcogl.so
+	depends = libcogl-pango.so
+	depends = libcogl-path.so
+	provides = libclutter-1.0.so
