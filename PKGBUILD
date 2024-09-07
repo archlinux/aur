@@ -18,10 +18,10 @@
 pkgbase=llvm-minimal-git
 pkgname=(llvm-minimal-git llvm-libs-minimal-git clang-minimal-git clang-libs-minimal-git clang-opencl-headers-minimal-git)
 pkgver=20.0.0_r510973.d6d60707ec2b
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://llvm.org/"
-license=('custom:Apache 2.0 with LLVM Exception')
+license=('Apache-2.0 WITH LLVM-exception')
 makedepends=(git cmake libffi libedit ncurses libxml2
              libxcrypt python python-setuptools zstd)
 source=("git+https://github.com/llvm/llvm-project.git"
