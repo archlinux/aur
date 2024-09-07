@@ -4,16 +4,16 @@
 
 _base=curses-menu
 pkgname=python-${_base}
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A simple console menu system using curses"
 arch=('any')
 url="https://github.com/pmbarrett314/${_base}"
 license=(MIT)
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-poetry')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-poetry' 'python-hatchling')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('cf8894d6ee85c84bed3312fe48fbc2d0fc5b09453aec289b4301137ffdd63fcf834e895e5d33e6ee8da99c6e6da13c2bb1f87f84af86f2d57f8bf1d9044e8e6e')
+sha512sums=('8c0836dc0ac8fdfbd1ef016dd4868dcb17389f1690af742f8aa7a57d67a6dd466a9155d82abccb15da54e1592d5c6ce9f57b3818237b4abe7bdd38790b3322ef')
 
 build() {
   cd "${_base}-${pkgver}"
