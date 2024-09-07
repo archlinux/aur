@@ -4,7 +4,7 @@
 pkgname=picard-tools
 _pkgname=picard
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='set of tools for working with next generation sequencing data in the BAM format'
 arch=(any)
 url="https://github.com/broadinstitute/picard"
@@ -18,8 +18,8 @@ build(){
   ./gradlew shadowJar
 }
 package() {
-  echo "java -jar /usr/share/$pkgname/picard.jar" >> $pkgname
-  chmod +x $pkgname
-  install -Dm 755 $pkgname $pkgdir/usr/bin/$pkgname
-  install -Dm 755 $srcdir/$_pkgname/build/libs/picard.jar $pkgdir/usr/share/$pkgname/picard.jar
+  echo "java -jar /usr/share/$_pkgname/picard.jar \$@" >> $_pkgname-java
+  chmod +x $_pkgname-java
+  install -Dm 755 $_pkgname-java $pkgdir/usr/bin/$_pkgname-java
+  install -Dm 755 $srcdir/$_pkgname/build/libs/picard.jar $pkgdir/usr/share/$_pkgname/picard.jar
 }
