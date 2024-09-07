@@ -2,7 +2,7 @@
 
 - Update version and sha256sums
 - Run `makepkg --printsrcinfo > .SRCINFO`
-- Commit
+- Commit, with meaningful message. Make sure .SRCINFO is commited 
 - Push
 
 # To build package
