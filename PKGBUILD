@@ -19,7 +19,6 @@ depends=(
 )
 makedepends=(
   'git'
-  'intltool'
   'xfce4-dev-tools'
 )
 
@@ -36,15 +35,10 @@ pkgver() {
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "$_pkgsrc"
-  ./autogen.sh
-  xdt-csource --static --strip-comments --strip-content --name=gigolo_ui --output=src/gigolo_ui.h src/gigolo.ui
-}
-
 build() {
   cd "$_pkgsrc"
-  ./configure --prefix=/usr
+  ./autogen.sh
+  ./configure --prefix=/usr --enable-maintainer-mode
   make
 }
 
