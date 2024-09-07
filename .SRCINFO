@@ -1,5 +1,5 @@
 pkgbase = lib32-llvm-minimal-git
-	pkgver = 20.0.0_r506355.456c5121f8e6
+	pkgver = 20.0.0_r510979.23a26e7120df
 	pkgrel = 1
 	url = http://llvm.org/
 	arch = x86_64
@@ -21,8 +21,10 @@ pkgbase = lib32-llvm-minimal-git
 
 pkgname = lib32-llvm-minimal-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies, 32-bit trunk version
-	depends = lib32-llvm-libs-minimal-git=20.0.0_r506355.456c5121f8e6-1
+	depends = lib32-llvm-libs-minimal-git=20.0.0_r510979.23a26e7120df-1
 	depends = llvm-minimal-git
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
 	provides = lib32-llvm
 	conflicts = lib32-llvm
 
@@ -33,11 +35,14 @@ pkgname = lib32-llvm-libs-minimal-git
 	depends = lib32-ncurses
 	depends = lib32-libxml2
 	depends = lib32-gcc-libs
+	depends = lib32-zstd
+	depends = lib32-glibc
 	optdepends = lib32-llvm-libs: for LLVMgold linker
 	provides = lib32-llvm-libs
 
 pkgname = lib32-clang-minimal-git
 	pkgdesc = C language family frontend for LLVM , 32-bit trunk version
+	arch = any
 	depends = llvm-libs-minimal-git
 	depends = clang-libs-minimal-git
 	depends = gcc
@@ -50,14 +55,17 @@ pkgname = lib32-clang-minimal-git
 
 pkgname = lib32-clang-libs-minimal-git
 	pkgdesc = clang runtime libraries, 32-bit trunk version
-	depends = lib32-llvm-libs-minimal-git=20.0.0_r506355.456c5121f8e6-1
+	depends = lib32-llvm-libs-minimal-git=20.0.0_r510979.23a26e7120df-1
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
 	provides = lib32-clang-libs
-	conflicts = lib32-clang<20.0.0_r506355.456c5121f8e6-1
+	conflicts = lib32-clang<20.0.0_r510979.23a26e7120df-1
 	conflicts = lib32-clang-libs
 
 pkgname = lib32-clang-opencl-headers-minimal-git
 	pkgdesc = clang headers & include files for OpenCL, 32-bit trunk version
-	depends = lib32-clang-libs-minimal-git=20.0.0_r506355.456c5121f8e6-1
+	arch = any
+	depends = lib32-clang-libs-minimal-git=20.0.0_r510979.23a26e7120df-1
 	provides = lib32-clang-opencl-headers
-	conflicts = lib32-clang<20.0.0_r506355.456c5121f8e6-1
+	conflicts = lib32-clang<20.0.0_r510979.23a26e7120df-1
 	conflicts = lib32-clang-opencl-headers

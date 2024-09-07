@@ -19,7 +19,7 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git' 'lib32-clang-minimal-git' 'lib32-clang-libs-minimal-git' 'lib32-clang-opencl-headers-minimal-git')
-pkgver=20.0.0_r506355.456c5121f8e6
+pkgver=20.0.0_r510979.23a26e7120df
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
@@ -163,7 +163,7 @@ check() {
 
 package_lib32-llvm-minimal-git() {
     pkgdesc="Collection of modular and reusable compiler and toolchain technologies, 32-bit trunk version"
-    depends=(lib32-llvm-libs-minimal-git=$pkgver-$pkgrel llvm-minimal-git)
+    depends=(lib32-llvm-libs-minimal-git=$pkgver-$pkgrel llvm-minimal-git lib32-gcc-libs lib32-glibc)
     provides=('lib32-llvm')
     conflicts=('lib32-llvm')
     
@@ -210,7 +210,7 @@ package_lib32-llvm-minimal-git() {
 
 package_lib32-llvm-libs-minimal-git() {
     pkgdesc="Low Level Virtual Machine runtime library 32-bit trunk version"
-    depends=('lib32-libffi' 'lib32-zlib' 'lib32-ncurses' 'lib32-libxml2' 'lib32-gcc-libs')
+    depends=(lib32-libffi lib32-zlib lib32-ncurses lib32-libxml2 lib32-gcc-libs lib32-zstd lib32-glibc)
     provides=('lib32-llvm-libs')
     optdepends=('lib32-llvm-libs: for LLVMgold linker')
     
@@ -228,6 +228,7 @@ package_lib32-clang-minimal-git(){
               'python: for scan-view, scan-build, git-clang-format, clang-rename and python bindings'
               'llvm-minimal-git: referenced by some clang headers'
               'clang-miminal-git: for some headers')
+  arch=('any')
   conflicts=(lib32-clang)
   provides=(lib32-clang)
 
@@ -243,7 +244,7 @@ package_lib32-clang-minimal-git(){
 
 package_lib32-clang-libs-minimal-git() {
     pkgdesc="clang runtime libraries, 32-bit trunk version"
-    depends=(lib32-llvm-libs-minimal-git="$pkgver-$pkgrel")
+    depends=(lib32-llvm-libs-minimal-git="$pkgver-$pkgrel" lib32-gcc-libs lib32-glibc)
     # the functionality offered by this package is part of the clang repo pacakge.
     # TODO: when/if this functionality is split off from repo clang, verify if changes are needed to this package
 
@@ -261,6 +262,7 @@ package_lib32-clang-opencl-headers-minimal-git() {
     # the functionality offered by this package is part of the clang repo package.
     # As far as I know rusticl from mesa is the only known user.
     # TODO: when/if this functionality is split off from repo clang, verify if changes are needed to this package
+    arch=('any')
     provides=('lib32-clang-opencl-headers')
     conflicts=("lib32-clang<$pkgver-$pkgrel" 'lib32-clang-opencl-headers')
     
