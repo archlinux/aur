@@ -1,13 +1,12 @@
 pkgbase = python-i18n
 	pkgdesc = Easy to use i18n library for Python
 	pkgver = 0.3.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/danhper/python-i18n
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	depends = python-yaml
-	depends = python-coveralls
 	source = https://pypi.org/packages/source/p/python-i18n/python-i18n-0.3.9.tar.gz
 	sha256sums = df97f3d2364bf3a7ebfbd6cbefe8e45483468e52a9e30b909c6078f5f471e4e8
 
