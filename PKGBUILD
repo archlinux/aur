@@ -2,7 +2,7 @@
 # Contributor: Eric Le Lay <contact at elelay dot fr>
 
 pkgname=ansifilter
-pkgver=2.20
+pkgver=2.21
 pkgrel=1
 pkgdesc="remove or convert ANSI codes to another format"
 arch=('i686' 'x86_64' 'pentium4' 'i486' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('glibc' 'gcc-libs')
 options=(!debug)
 source=("https://gitlab.com/saalen/ansifilter/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('35ec9d71a7f4e5601337937c7734b32a6e346c0f054f4d316376823cfe679067')
+sha256sums=('5ea7cfdfd0752d5a169259da005c18b9037628036fd89d8b82624bacec9c1390')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
