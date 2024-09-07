@@ -1,18 +1,19 @@
 pkgbase = wazuh-manager
 	pkgdesc = Wazuh Manager for Arch Linux
-	pkgver = 4.8.2
+	pkgver = 4.9.0
 	pkgrel = 1
 	url = https://wazuh.com/
 	install = wazuh-manager.install
 	arch = x86_64
+	groups = wazuh-siem
 	license = gpl2
 	depends = wazuh-filebeat
 	backup = var/ossec/etc/client.keys
 	backup = var/ossec/etc/local_internal_options.conf
 	backup = var/ossec/etc/ossec.conf
-	source = https://packages.wazuh.com/4.x/yum/wazuh-manager-4.8.2-1.x86_64.rpm
+	source = https://packages.wazuh.com/4.x/yum/wazuh-manager-4.9.0-1.x86_64.rpm
 	validpgpkeys = 9E646BB0630C8FD18ACD15541B93E6A766CD229D
 	validpgpkeys = 2B9D22B41F2AF1042BFCE73A3CA0B9DF1BE7CE09
-	sha512sums = 1191b8a6e4c717198864057b7b4ad62a9f3fff741a7562344a18530112c502e478ec48917dbd750efc2f08d24fcec86ba2fd97004cb5cb8be2f48d6e3147956c
+	sha512sums = d1bda90ce15d9f41b2fb93d106cada3268635cdfb22e0e2ab35dffc3dde5a0651d5ef607f370618dae06c3a028a9ab17065ab92cd4c0eb67aa94fb4e37cb16b2
 
 pkgname = wazuh-manager

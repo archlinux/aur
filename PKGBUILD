@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-manager
-pkgver=4.8.2
+pkgver=4.9.0
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
@@ -9,6 +9,7 @@ pkgdesc="Wazuh Manager for Arch Linux"
 arch=('x86_64')
 url="https://wazuh.com/"
 license=('gpl2')
+groups=("wazuh-siem")
 depends=(
     'wazuh-filebeat'
 );
@@ -29,7 +30,7 @@ backup=(
   'var/ossec/etc/ossec.conf'
 )
 
-sha512sums=('1191b8a6e4c717198864057b7b4ad62a9f3fff741a7562344a18530112c502e478ec48917dbd750efc2f08d24fcec86ba2fd97004cb5cb8be2f48d6e3147956c')
+sha512sums=('d1bda90ce15d9f41b2fb93d106cada3268635cdfb22e0e2ab35dffc3dde5a0651d5ef607f370618dae06c3a028a9ab17065ab92cd4c0eb67aa94fb4e37cb16b2')
 
 install=$pkgname.install
 
