@@ -4,7 +4,7 @@
 _name=alsa-oss
 pkgname=lib32-alsa-oss
 pkgver=1.1.8
-pkgrel=4
+pkgrel=5
 pkgdesc="OSS compatibility library (32 bit)"
 arch=(x86_64)
 url="https://www.alsa-project.org"
