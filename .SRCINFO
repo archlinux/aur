@@ -1,0 +1,13 @@
+pkgbase = gba-wav-to-s3m-converter
+	pkgdesc = Segment wav music to be played in MaxMod on the GBA
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/Fralacticus/gba-wav-to-s3m-converter
+	arch = x86_64
+	license = zlib
+	options = !debug
+	options = !strip
+	source = https://github.com/Fralacticus/gba-wav-to-s3m-converter/releases/download/1.4.0/gba-wav-to-s3m-converter-linux-1.4.0.zip
+	md5sums = 8d5b1a15bc450d6aa6346f7a4e5d265e
+
+pkgname = gba-wav-to-s3m-converter
