@@ -54,7 +54,7 @@ build() {
 package_eudev() {
     pkgdesc="The userspace dev tools (udev) forked by Gentoo"
     provides=("udev=${_udev_ver}")
-    depends=("libeudev" 'kbd' 'kmod' 'hwids' 'util-linux')
+    depends=("libeudev" 'kbd' 'kmod' 'util-linux')
     backup=('etc/udev/udev.conf')
 
     cd "${srcdir}/${pkgbase}-${pkgver}"
