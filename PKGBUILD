@@ -1,29 +1,39 @@
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
-# Contributor: Jan Misiak <fijam [at] archlinux.us>
+# Maintainer:
+# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
-pkgname=gigolo
-pkgver=0.5.2
+## links
+# https://docs.xfce.org/apps/gigolo/start
+# https://gitlab.xfce.org/apps/gigolo
+
+_pkgname=gigolo
+pkgname="$_pkgname"
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Frontend to manage connections to remote filesystems using GIO/GVFS"
+url="https://gitlab.xfce.org/apps/gigolo"
+license=('GPL-2.0-or-later')
 arch=('x86_64')
-url="https://www.uvena.de/gigolo"
-license=('GPL2')
-depends=('gvfs')
-makedepends=('intltool')
-conflicts=('gigolo-git')
-source=(https://archive.xfce.org/src/apps/$pkgname/0.5/$pkgname-$pkgver.tar.bz2)
-# validpgpkeys=('457990C86F91F33DE05EBF1BCC03633F700990F2') #Enrico Tröger <enrico.troeger@uvena.de>
-sha256sums=('e34a1aa0755f9f6c234c7d24b23a6cecd6ef50741d79da3bb6f698a2281dbbc3')
+
+depends=(
+  'gtk3'
+  'gvfs'
+)
+makedepends=(
+  'intltool'
+)
+
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.bz2"
+source=("$_pkgsrc.$_pkgext"::"https://archive.xfce.org/src/apps/gigolo/${pkgver::3}/$_pkgsrc.$_pkgext")
+sha256sums=('d25984f65744665e2433335249f9547a38cead45440027af0c397ebf254d2fd0')
 
 build() {
-  cd "${srcdir}"/$pkgname-$pkgver
-
+  cd "$_pkgsrc"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}"/$pkgname-$pkgver
-
-  make DESTDIR="${pkgdir}" install
+  cd "$_pkgsrc"
+  make DESTDIR="$pkgdir" install
 }
