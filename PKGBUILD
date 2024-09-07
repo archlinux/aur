@@ -5,7 +5,7 @@
 pkgname=fcitx
 pkgdesc="Flexible Context-aware Input Tool with eXtension"
 pkgver=4.2.9.9
-pkgrel=1
+pkgrel=2
 groups=('fcitx-im')
 arch=('x86_64')
 url="https://fcitx-im.org"
@@ -22,7 +22,7 @@ optdepends=('enchant: for word predication support'
             'fcitx-configtool: for configuration (GTK based)'
             'kcm-fcitx: for configuration under KDE')
 makedepends=('extra-cmake-modules' 'doxygen' 'gtk2' 'gtk3' 'mesa' 'opencc'
-             'iso-codes' 'gobject-introspection' 'enchant' 'python')
+             'iso-codes' 'gobject-introspection' 'enchant' 'python' 'glib2-devel')
 source=("https://download.fcitx-im.org/$pkgname/$pkgname-${pkgver}_dict.tar.xz"{,.sig})
 sha512sums=('d871df84ebb3514b6474000b693246c8e5b198121e9a5a0ca18d478e54cd4144f8dfb58922a004952d26ab3bcfc1f417c446c22d30994ef40875fc2ee3cda441'
             'SKIP')
