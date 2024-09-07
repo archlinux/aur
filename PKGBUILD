@@ -25,14 +25,3 @@ package() {
   cd "$pkgbase-$pkgver"
   DESTDIR="$pkgdir" meson install -C build
 }
-
-# pkgdesc="Library to allow GLib/Qt based applications access to snapd, the daemon that controls Snaps"
-# depends=('libsoup3' 'json-glib' 'qt5-declarative')
-# pkgver=1.63
-# pkgrel=1
-# arch=('x86_64')
-# url="https://github.com/snapcore/snapd-glib"
-# license=('GPL3')
-# makedepends=('gobject-introspection' 'gtk-doc' 'meson' 'qt5-tools' 'vala')
-# source=(https://github.com/snapcore/snapd-glib/releases/download/${pkgver}/snapd-glib-${pkgver}.tar.xz)
-# sha256sums=('28bc96c8bb76d09f709c3d35cab743ccae57699f4eef5d36db914f0c1a77ab47')
