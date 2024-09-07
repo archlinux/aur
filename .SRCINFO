@@ -1,0 +1,18 @@
+pkgbase = lib32-smpeg
+	pkgdesc = SDL MPEG Player Library
+	pkgver = 2.0.0
+	pkgrel = 2
+	url = https://icculus.org/smpeg/
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = lib32-glu
+	makedepends = lib32-mesa
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-sdl2
+	depends = smpeg
+	source = git+https://github.com/icculus/smpeg.git#tag=62aafbc4ee032c1e9ef02ac8bf98b908c5af62ea
+	b2sums = SKIP
+
+pkgname = lib32-smpeg

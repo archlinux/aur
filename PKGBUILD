@@ -8,7 +8,7 @@
 
 pkgname=lib32-smpeg
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='SDL MPEG Player Library'
 arch=(x86_64)
 url=https://icculus.org/smpeg/
@@ -42,7 +42,7 @@ build() {
   cd smpeg
   export CC='gcc -m32'
   export CXX='g++ -m32 -std=gnu++03'
-  export CFLAGS+=' -Wno-format-security'
+  export CFLAGS+=' -Wno-format-security -Wno-narrowing'
   export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
   ./configure \
     --prefix=/usr \
