@@ -3,7 +3,7 @@
 
 pkgname=feishin
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern self-hosted music player.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/jeffvli/feishin'
@@ -11,12 +11,10 @@ license=('GPL-3.0-only')
 makedepends=('npm')
 optdepends=('mpv: Alternative audio backend')
 conflicts=("feishin-git" "feishin-bin")
-source=(
-	"${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-    "feishin.desktop"
-)
-sha256sums=('f233ae9ee7b85e3676c2ecd374a77607b378a5946153904f641f58a607e90f06'
-            '17f4e5c319e625198ffe2032045657e0d33db1d9d64f534bfc2d40f6082fd5db')
+source=("${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
+	"feishin.desktop")
+sha256sums=('SKIP'
+	'17f4e5c319e625198ffe2032045657e0d33db1d9d64f534bfc2d40f6082fd5db')
 
 build() {
   cd $pkgname-$pkgver

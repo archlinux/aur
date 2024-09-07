@@ -1,7 +1,7 @@
 pkgbase = feishin
 	pkgdesc = A modern self-hosted music player.
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jeffvli/feishin
 	arch = x86_64
 	arch = aarch64
@@ -10,9 +10,9 @@ pkgbase = feishin
 	optdepends = mpv: Alternative audio backend
 	conflicts = feishin-git
 	conflicts = feishin-bin
-	source = feishin-0.8.1.tar.gz::https://github.com/jeffvli/feishin/archive/v0.8.1.tar.gz
+	source = feishin-0.8.1::git+https://github.com/jeffvli/feishin.git#tag=v0.8.1
 	source = feishin.desktop
-	sha256sums = f233ae9ee7b85e3676c2ecd374a77607b378a5946153904f641f58a607e90f06
+	sha256sums = SKIP
 	sha256sums = 17f4e5c319e625198ffe2032045657e0d33db1d9d64f534bfc2d40f6082fd5db
 
 pkgname = feishin
