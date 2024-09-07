@@ -1,6 +1,6 @@
 pkgbase = r-screpertoire
 	pkgdesc = A toolkit for single-cell immune receptor profiling
-	pkgver = 2.0.0
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scRepertoire
 	arch = x86_64
@@ -41,8 +41,8 @@ pkgbase = r-screpertoire
 	optdepends = r-spelling
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scRepertoire_2.0.0.tar.gz
-	md5sums = cada6940cf1146f26526d4dcdd6f68f4
-	b2sums = 42c8ea83ae496d8d53b639c4c890b590953125c166c043effbf3ac214635ae33328805a44339ec11d2bb1c6199eb3375170b218d895fc608e9f28f66328fbb41
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scRepertoire_2.0.5.tar.gz
+	md5sums = da9f3d7c7425305c060f7c0d852d7f20
+	b2sums = ee2e8334af937cf35192467bd83cc0024c3884df24fbe341aa6d8ef8aa94c4733b4de4fcf3cf5db7be101a21bd5215288c6eb6a6ebaba25ac4192e0cf50fd4db
 
 pkgname = r-screpertoire

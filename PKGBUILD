@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scRepertoire
-_pkgver=2.0.0
+_pkgver=2.0.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -50,8 +50,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cada6940cf1146f26526d4dcdd6f68f4')
-b2sums=('42c8ea83ae496d8d53b639c4c890b590953125c166c043effbf3ac214635ae33328805a44339ec11d2bb1c6199eb3375170b218d895fc608e9f28f66328fbb41')
+md5sums=('da9f3d7c7425305c060f7c0d852d7f20')
+b2sums=('ee2e8334af937cf35192467bd83cc0024c3884df24fbe341aa6d8ef8aa94c4733b4de4fcf3cf5db7be101a21bd5215288c6eb6a6ebaba25ac4192e0cf50fd4db')
 
 build() {
   mkdir build
