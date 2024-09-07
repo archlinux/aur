@@ -1,0 +1,22 @@
+pkgbase = lib32-libao
+	pkgdesc = A cross-platform audio output library and plugins (32-bit)
+	pkgver = 1.2.2
+	pkgrel = 5
+	url = https://www.xiph.org/ao/
+	arch = x86_64
+	license = GPL2
+	makedepends = lib32-alsa-lib
+	depends = libao=1.2.2
+	depends = lib32-glibc
+	depends = lib32-libpulse
+	provides = libao.so
+	source = https://gitlab.xiph.org/xiph/libao/-/archive/1.2.2/libao-1.2.2.tar.gz
+	sha512sums = d2736d25b60862e7d7469611ce31b1df40a4366ab160e2ff1b46919ae91692d1596c8468e4f016303b306fc3ac1bddc7b727f535a362f403c3fe7c6532e9045a
+	b2sums = e5b5d87c4357ee113769732cb6a7e0afa28b2bc4923be8dacd1fa39ac5fb96d8a5e19bc45137ffc8ec63eef0382130ab9b311aad3a66be4566e0cb9761417b23
+
+pkgname = lib32-libao
+	depends = libao=1.2.2
+	depends = lib32-glibc
+	depends = lib32-libpulse
+	depends = lib32-alsa-lib
+	depends = libasound.so

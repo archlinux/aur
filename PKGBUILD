@@ -7,7 +7,7 @@
 _name=libao
 pkgname=lib32-libao
 pkgver=1.2.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A cross-platform audio output library and plugins (32-bit)"
 url="https://www.xiph.org/ao/"
 arch=(x86_64)
@@ -39,6 +39,7 @@ build() {
   export CC="gcc -m32"
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  CFLAGS+=" -Wno-implicit-function-declaration"
 
   cd $_name-$pkgver
   ./configure "${configure_options[@]}"
