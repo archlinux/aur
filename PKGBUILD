@@ -1,36 +1,38 @@
-# XJump
+# XJump-sdl
 # Maintainer: Sterophonick
 
-# THIS IS A FORK OF THE XBILL PACKAGE MAINTAINED BY THE FOLLOWING PEOPLE
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
-# Contributor: Eric Bélanger <eric@archlinux.org>
-
-pkgname=xjump
-pkgver=2.7.5
+pkgname=xjump-sdl
+pkgver=3.0.4
 pkgrel=1
-pkgdesc="A game where you jump up and up while the tower collapses under your feet."
+pkgdesc="XJump reimplemented in SDL"
 arch=('x86_64' 'i686')
-url="https://github.com/hugomg/xjump"
+url="https://github.com/hugomg/xjump-sdl"
 license=('GPL')
-depends=('xaw3d' 'libxpm')
-makedepends=('libxaw')
-source=(http://archive.ubuntu.com/ubuntu/pool/universe/x/xjump/xjump_2.7.5.orig.tar.gz)
-md5sums=('3e8d09c6b8162b7e4380f8a77eb595dc')
+depends=('sdl2')
+source=(git+https://github.com/hugomg/xjump-sdl.git)
+md5sums=('SKIP')
 
 build() {
-  cd xjump-2.7.5.orig
-  make clean
-  make
+	cd $srcdir/xjump-sdl
+	./configure
+	make
 }
 
+
 package() {
-	mkdir "${pkgdir}/usr"
-	mkdir "${pkgdir}/usr/bin"
-	mkdir "${pkgdir}/usr/share"
-	mkdir "${pkgdir}/usr/share/pixmaps"
-	mkdir "${pkgdir}/usr/share/applications"
-	install -g games -c -s -m 2755 xjump-2.7.5.orig/xjump "${pkgdir}/usr/bin"
-	cp xjump-2.7.5.orig/xjump-icon.xpm "${pkgdir}/usr/share/pixmaps"
-	printf "[Desktop Entry]\nVersion=1.0\nEncoding=UTF-8\nType=Application\nName=XJump\nComment=A jumping game\nComment[fr]=Un jeu de saut\nTryExec=xjump\nExec=xjump\nIcon=xjump-icon.xpm\nCategories=Application;Game;" >> "${pkgdir}/usr/share/applications/xjump.desktop"
+	cd $srcdir/xjump-sdl
+	install -D ./xjump $pkgdir/usr/local/bin/xjump
+	install -m 644 -D data/font-hs.bmp $pkgdir/usr/local/share/xjump/font-hs.bmp
+	install -m 644 -D data/font-ui.bmp $pkgdir/usr/local/share/xjump/font-ui.bmp
+	install -m 644 -D data/themes/classic.bmp $pkgdir/usr/local/share/xjump/themes/classic.bmp
+	install -m 644 -D data/themes/ion.bmp $pkgdir/usr/local/share/xjump/themes/ion.bmp
+	install -m 644 -D data/themes/jumpnbump.bmp $pkgdir/usr/local/share/xjump/themes/jumpnbump.bmp
+	install -m 644 -D misc/xjump.6.gz $pkgdir/usr/local/share/man/man6/xjump.6.gz
+	install -m 644 -D misc/icon32.png $pkgdir/usr/local/share/icons/hicolor/32x32/apps/br.com.gualandi.Xjump.png
+	install -m 644 -D misc/icon64.png $pkgdir/usr/local/share/icons/hicolor/64x64/apps/br.com.gualandi.Xjump.png
+	install -m 644 -D misc/icon128.png $pkgdir/usr/local/share/icons/hicolor/128x128/apps/br.com.gualandi.Xjump.png
+	install -m 644 -D misc/br.com.gualandi.Xjump.desktop $pkgdir/usr/local/share/applications/br.com.gualandi.Xjump.desktop
+	install -m 644 -D misc/br.com.gualandi.Xjump.metainfo.xml $pkgdir/usr/local/share/metainfo/br.com.gualandi.Xjump.metainfo.xml
+
 }
 
