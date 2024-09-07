@@ -4,6 +4,7 @@ pkgname=bam-build
 pkgver=0.8.1
 pkgrel=1
 pkgdesc="build optimally"
+options=(!strip debug)
 arch=('x86_64')
 url="https://git.sr.ht/~hossbeast/bam"
 license=('GPL-3.0-only')
