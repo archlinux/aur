@@ -1,0 +1,13 @@
+pkgbase = rldash
+	pkgdesc = A next-gen Linux TUI dashboard written in Rust
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://rldash.adamperkowski.dev
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = rustup
+	depends = glibc
+	source = rldash-0.0.0.tar.gz::https://static.crates.io/crates/rldash/rldash-0.0.0.crate
+	sha256sums = d4bae85d9b96e0df83bf9eea9371a60b2af2f7ddad68b17bce343198c8f64c0c
+
+pkgname = rldash
