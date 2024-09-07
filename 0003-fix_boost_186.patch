@@ -1,0 +1,11 @@
+--- rstudio-2024.04.2-764.original/src/cpp/core/json/JsonRpc.cpp	2024-06-05 09:19:10.000000000 +1200
++++ rstudio-2024.04.2-764/src/cpp/core/json/JsonRpc.cpp	2024-09-04 07:34:10.202186197 +1200
+@@ -193,7 +193,7 @@
+    
+ bool JsonRpcResponse::hasAfterResponse() const
+ {
+-   return afterResponse_;
++   return (bool)afterResponse_;
+ }
+    
+    

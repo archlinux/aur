@@ -1,108 +1,261 @@
-# Maintainer: Artem Klevtsov <a.a.klevtso@gmail.com>
-# Maintainer: Stephen Martin <hwkiller@gmail.com>
-# Contributor: Conor Anderson <conor@conr.ca>
+# Maintainer:
+# Contributor: Aleksandr Beliaev <trap000d@gmail.com>
 
-_gwtver=2.9.0
-_ginver=2.1.2
-_gitname=rstudio
-pkgname=rstudio-desktop-git
-pkgver=1.4.1103.r736
+## links
+# https://posit.co/products/open-source/rstudio/
+# https://github.com/rstudio/rstudio
+
+## options
+: ${_nodeversion:=22}
+: ${_pandocver:=current}
+: ${_sociver:=4.0.3}
+
+## basic info
+_pkgname="rstudio-desktop"
+pkgname="$_pkgname-git"
+pkgver=2024.04.2.r377.g42d4fe2
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
-arch=('i686' 'x86_64')
-url="https://www.rstudio.com/products/rstudio/"
-license=('AGPL3')
-depends=('r>=3.0.1' boost-libs qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns postgresql-libs sqlite3 soci clang hunspell-en_US mathjax2 pandoc yaml-cpp quarto-cli-bin libldap24)
-makedepends=(git 'cmake>=3.1.0' boost desktop-file-utils jdk8-openjdk apache-ant unzip openssl libcups pam patchelf wget yarn nodejs)
-optdepends=('git: for git support'
-            'subversion: for subversion support'
-            'openssh-askpass: for a git ssh access')
-provides=('rstudio-desktop')
-conflicts=('rstudio-desktop' 'rstudio-desktop-bin' 'rstudio-desktop-preview')
-source=("git+https://github.com/rstudio/rstudio.git"
-        "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/google-gin/gin-${_ginver}.zip"
-        "https://storage.googleapis.com/gwt-releases/gwt-${_gwtver}.zip"
-        "qt.conf"
-        "cran_multithread.patch"
-        "nodejs-external.patch")
-sha256sums=('SKIP'
-            'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
-            '253911e3be63c19628ffef5c1082258704e7896f81b855338c6a036f524fbd42'
-            '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
-            'c907e6eec5ef324ad498b44fb9926bb5baafc4e0778ca01f6ba9b49dd3a2a980'
-            '4a6aff2b586ddfceb7c59215e5f4a03f25b08fcc55687acaa6ae23c11d75d0e8')
-noextract=("gin-${_ginver}.zip")
+url="https://github.com/rstudio/rstudio"
+license=('AGPL-3.0-only')
+arch=('x86_64')
+
+depends=(
+  'hunspell-en_US'
+  'mathjax2'
+  'pandoc'
+  'r'
+)
+makedepends=(
+  'apache-ant'
+  'boost'
+  'cmake'
+  'git'
+  'jdk8-openjdk'
+  'libcups'
+  'ninja'
+  'nvm' # AUR
+  'openssl'
+  'pam'
+  'python'
+  'python-setuptools'
+  'wget'
+  'yarn'
+)
+optdepends=(
+  'git: for git support'
+  'subversion: for subversion support'
+  'openssh-askpass: for a git ssh access'
+  'quarto: for Quarto projects support'
+)
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+options=('!emptydirs' '!debug')
+
+_pkgsrc="$_pkgname"
+source=(
+  "$_pkgsrc"::"git+https://github.com/rstudio/rstudio.git"
+  "quarto"::"git+https://github.com/quarto-dev/quarto.git#branch=release/rstudio-cherry-blossom"
+  "soci-$_sociver.tar.gz"::"https://github.com/SOCI/soci/archive/refs/tags/v${_sociver}.tar.gz"
+  '0003-fix_boost_186.patch'
+)
+
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  '4b1ff9c8545c5d802fbe06ee6cd2886630e5c03bf740e269bb625b45cf934928'
+  '7b3384fc7349a69e866ef0db21f196a2cafa3a9e2fb7f1edaead773b991dac72'
+)
 
 pkgver() {
-    cd "${srcdir}/${_gitname}"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*\)-g.*/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/\+[0-9]+-/-/;s/([^-]*-g)/r\1/;s/[-+]/./g'
 }
 
-prepare() {
-    git -C "${srcdir}/${_gitname}" apply -v "${srcdir}"/nodejs-external.patch
+_nvm_env() {
+  export HOME="$SRCDEST/node-home"
+  export NVM_DIR="$SRCDEST/node-nvm"
 
-    cd ${srcdir}/${_gitname}
-    local JOBS; JOBS="$(grep -oP -- "-j\s*\K[0-9]+" <<< "${MAKEFLAGS}")" || JOBS="1"
-    sed "s/@@proc_num@@/${JOBS}/" -i ${srcdir}/cran_multithread.patch
-    git apply -v ${srcdir}/cran_multithread.patch
+  # set up nvm
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+  nvm install $_nodeversion
+  nvm use $_nodeversion
 
-    msg "Extracting dependencies..."
-    cd "${srcdir}/${_gitname}/src/gwt"
-    install -d lib/gin/${_ginver} lib/gwt/${_gwtver}
-    unzip -qo "${srcdir}/gin-${_ginver}.zip" -d lib/gin/${_ginver}
-    cp -r "${srcdir}/gwt-${_gwtver}/"* lib/gwt/${_gwtver}
-
-    cd "${srcdir}/${_gitname}/dependencies/common"
-    _pandocver=$(grep -oP "(?<=PANDOC_VERSION=\").*(?=\"$)" install-pandoc)
-    install -d pandoc/${_pandocver}
-
-    ln -sfT /usr/share/myspell/dicts dictionaries
-    ln -sfT /usr/share/mathjax2 mathjax-27
-    ln -sfT /opt/quarto quarto
-    ln -sfT /usr/bin/pandoc pandoc/${_pandocver}/pandoc
-    ln -sfT /usr/bin/pandoc-citeproc pandoc/${_pandocver}/pandoc-citeproc
-
-    # Fix links for src/cpp/session/CMakeLists.txt
-    cd "${srcdir}/${_gitname}/dependencies"
-    ln -sfT common/dictionaries dictionaries
-    ln -sfT common/mathjax-27 mathjax-27
-    ln -sfT common/quarto quarto
-    ln -sfT common/pandoc pandoc
+  _npm_path="$(which npm | sed -E 's&/[^/]+$&&')"
+  export RSTUDIO_NODE_VERSION=$(echo "$_npm_path" | sed -E 's&^\S+/v([0-9\.]+)/\S+$&\1&')
 }
 
-build() {
-    msg "Downloading and installing R packages..."
-    bash "${srcdir}/${_gitname}/dependencies/common/install-packages"
+prepare() (
+  _nvm_env
+  npm install yarn
 
-    export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:${PATH}
-    export JAVA_TOOL_OPTIONS="-Djava.util.prefs.userRoot=${srcdir}"
-    export BUILD_ID="local"
-    export PACKAGE_OS="Arch Linux"
+  cd "$_pkgsrc"
+  msg "Do not use outdated version name of pandoc"
+  sed -i '/PANDOC_VERSION/s/2.18/current/' "cmake/globals.cmake"
 
-    cmake -S "${srcdir}/${_gitname}" \
-          -B build \
-          -DRSTUDIO_TARGET=Desktop \
-          -DCMAKE_BUILD_TYPE=Release \
-          -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio \
-          -DRSTUDIO_USE_SYSTEM_BOOST=yes \
-          -DRSTUDIO_USE_SYSTEM_YAML_CPP=yes \
-          -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake \
-          -DBoost_NO_BOOST_CMAKE=ON \
-          -DRSTUDIO_USE_SYSTEM_SOCI=yes \
-          -DRSTUDIO_BUNDLE_QT=FALSE
+  msg "Suppress _FORTIFY_SOURCE mismatch warnings"
+  sed -i 's/D_FORTIFY_SOURCE=2/D_FORTIFY_SOURCE=3/' "src/cpp/CMakeLists.txt"
+
+  # fix npm/node paths
+  install -dm755 "$srcdir/$_pkgsrc/dependencies/common/node"
+  ln -sfT "$NVM_DIR/versions/node/v$RSTUDIO_NODE_VERSION" "$srcdir/$_pkgsrc/dependencies/common/node/${RSTUDIO_NODE_VERSION}-patched"
+
+  sed -E -e 's&PATHS "/opt/rstudio-tools/dependencies/common/node/\$\{RSTUDIO_NODE_VERSION\}"&PATHS "'"${_npm_path}"'"&' \
+    -i src/node/CMakeNodeTools.txt
+
+  sed -E -e 's&(common/node)/([0-9\.]+)-(patched)&\1/'"${RSTUDIO_NODE_VERSION}"'-\3&' \
+    -i src/cpp/conf/rsession-dev.conf src/cpp/session/SessionOptions.cpp
+
+  sed -E -e '/"node\.version"/s&value="[0-9\.]+"&value="'"${RSTUDIO_NODE_VERSION}"'"&' \
+    -i src/gwt/build.xml
+
+  sed -E -e 's&set\(RSTUDIO_NODE_VERSION "[0-9\.]+"\)&set(RSTUDIO_NODE_VERSION "'"${RSTUDIO_NODE_VERSION}"'")&' \
+    -i src/node/CMakeNodeTools.txt
+
+  # fix os-release path
+  sed -E 's&(STRINGS) "/etc/os-release" (OS_RELEASE)&\1 "/usr/lib/os-release" \2&' \
+    -i cmake/modules/OsRelease.cmake
+
+  # fix boost 1.86 incompatibility
+  patch -p1 -i "$srcdir/0003-fix_boost_186.patch"
+
+  cd "$srcdir/$_pkgsrc/dependencies/common"
+  install -d pandoc/${_pandocver}
+
+  ln -sfT /usr/share/myspell/dicts dictionaries
+  ln -sfT /usr/share/mathjax2 mathjax-27
+  ln -sfT /usr/bin/pandoc pandoc/${_pandocver}/pandoc
+
+  # Fix links for src/cpp/session/CMakeLists.txt
+  cd "$srcdir/$_pkgsrc/dependencies"
+  ln -sfT /usr/share/myspell/dicts dictionaries
+  ln -sfT /usr/share/mathjax2 mathjax-27
+
+  # Bundled SOCI libs
+  ln -sfT "${srcdir}/soci-${_sociver}" "soci-${_sociver}"
+
+  # Panmirror is picked up now from Quarto repo
+  ln -sfT "${srcdir}/quarto" "$srcdir/$_pkgsrc/src/gwt/lib/quarto"
+)
+
+_build_soci() {
+  msg "Building SOCI libs..."
+
+  local _opts_soci=(
+    -B "soci-${_sociver}/build"
+    -S "soci-${_sociver}"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DSOCI_TESTS=OFF
+    -DSOCI_CXX11=ON
+    -DSOCI_EMPTY=OFF
+    -DWITH_BOOST=ON
+    -DWITH_POSTGRESQL=ON
+    -DWITH_SQLITE3=ON
+    -DWITH_DB2=OFF
+    -DWITH_MYSQL=OFF
+    -DWITH_ORACLE=OFF
+    -DWITH_FIREBIRD=OFF
+    -DWITH_ODBC=OFF
+    -Wno-dev
+  )
+
+  cmake "${_opts_soci[@]}"
+  cmake --build "soci-${_sociver}/build"
 }
+
+build() (
+  _nvm_env
+  # Quarto set up
+  if (pacman -Q quarto > /dev/null 2> /dev/null); then
+    _quarto="TRUE"
+    msg "Quarto is installed, include it to build"
+    cd "$srcdir/$_pkgsrc/dependencies"
+    install -d quarto/bin/tools
+    ln -sfT /usr/bin/quarto quarto/bin/quarto
+    ln -sfT /usr/bin/pandoc quarto/bin/tools/pandoc
+  else
+    _quarto="FALSE"
+    msg "Quarto is not installed, use Pandoc"
+    cd "$srcdir/$_pkgsrc/dependencies"
+    install -d pandoc/${_pandocver}/bin/tools
+    ln -sfT /usr/bin/pandoc pandoc/${_pandocver}/bin/tools/pandoc
+  fi
+
+  _build_soci
+
+  export LDFLAGS+=" -L$srcdir/$_pkgsrc/dependencies/soci-${_sociver}/build/lib"
+
+  cd "${srcdir}"
+  msg "Downloading and installing R packages..."
+  export R_LIBS_USER="${srcdir}/${_srcname}/dependencies/R"
+  _JOBS="$(grep -oP -- "-j\s*\K[0-9]+" <<< "${MAKEFLAGS}")" || _JOBS="1"
+  mkdir -p "${R_LIBS_USER}"
+  local RPACKAGES=(
+    digest
+    purrr
+    rmarkdown
+    testthat
+    xml2
+    yaml
+  )
+  for RPKG in ${RPACKAGES[*]}; do
+    RINSTALLCMD="if("'!'"require($RPKG, quietly = TRUE)) { options(Ncpus = ${_JOBS} ); install.packages('$RPKG', lib='$R_LIBS_USER', repos='https://cran.rstudio.com/') }"
+    echo "> $RINSTALLCMD"
+    Rscript -e "$RINSTALLCMD"
+  done
+
+  export PATH="/usr/lib/jvm/java-8-openjdk/jre/bin/:${PATH}"
+  export RSTUDIO_TOOLS_ROOT="$srcdir/$_pkgsrc/dependencies"
+  export RSTUDIO_NODE_PATH=/usr/
+  export RSTUDIO_VERSION_MAJOR=$(cut -d'.' -f1 <<< "$pkgver")
+  export RSTUDIO_VERSION_MINOR=$(cut -d'.' -f2 <<< "$pkgver")
+  export RSTUDIO_VERSION_PATCH=$(cut -d'.' -f3 <<< "$pkgver")
+  export RSTUDIO_VERSION_SUFFIX="+$(cut -d'.' -f4 <<< "$pkgver")"
+  export GIT_COMMIT=$(echo "$pkgver" | cut -d'.' -f6 | sed 's/^g//')
+  export PACKAGE_OS=$(uname -om)
+
+  # node-gyp or node have a bug that prevents building with "text file busy"
+  # if the kernel is too fast, so we have to disable IO_URING support. This
+  # is cleary a hack and needs to be removed as soon as possible
+  # nodejs/node#48444 is the necro bumped thread
+  # originally from docker
+  # https://github.com/nodejs/node/issues/48444
+  export UV_USE_IO_URING=0
+
+  # -DCMAKE_INSTALL_PREFIX seems ignored for sub-dependencies,
+  # which results as empty '/usr/local/bin' in package
+  # Following override works for cmake >3.29
+  export CMAKE_INSTALL_PREFIX=/usr/lib/rstudio
+
+  local _opts_rstudio=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DRSTUDIO_TARGET=Electron
+    -DRSTUDIO_USE_SYSTEM_BOOST=YES
+    -DRSTUDIO_USE_SYSTEM_SOCI=NO
+    -DRSTUDIO_USE_SYSTEM_NODE=YES
+    -DRSTUDIO_NODE_VERSION="$RSTUDIO_NODE_VERSION"
+    -DRSTUDIO_INSTALLED_NODE_VERSION="$RSTUDIO_NODE_VERSION"
+    -DQUARTO_ENABLED=${_quarto}
+    -DBUILD_TESTING=OFF
+    -Wno-dev
+  )
+  cmake "${_opts_rstudio[@]}"
+  cmake --build build
+)
 
 package() {
-    # Install the program
-    make -C build DESTDIR="${pkgdir}" install
+  # Install the program
+  DESTDIR="${pkgdir}" cmake --install build
 
-    # Install the license
-    install -Dm 644 "${srcdir}/${_gitname}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-
-    # Symlink main binary
-    install -d "${pkgdir}/usr/bin"
-    ln -sfT "/usr/lib/rstudio/bin/rstudio" "${pkgdir}/usr/bin/rstudio"
-
-    # BUGFIX: qt5-webengine isn't init'ing properly. Likely an Rstudio bug.
-    install -Dm 644 "${srcdir}/qt.conf" "${pkgdir}/usr/lib/qt/libexec/qt.conf"
+  # Symlink main binary
+  install -d "${pkgdir}/usr/bin"
+  ln -s "/usr/lib/rstudio/rstudio" "$pkgdir/usr/bin/rstudio"
 }
