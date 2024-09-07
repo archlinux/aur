@@ -1,38 +1,54 @@
-# Maintainer: Pavlo Ilin <ilin.pa@gmail.com>
-# Contributor: swiftscythe <swiftscythe@gmail.com>
+# Maintainer:
 
-pkgname=gigolo-git
-pkgver=0.4.2.r77.g1a32294
+## links
+# https://docs.xfce.org/apps/gigolo/start
+# https://gitlab.xfce.org/apps/gigolo
+
+_pkgname=gigolo
+pkgname="$_pkgname-git"
+pkgver=0.5.3.r127.g6869f25
 pkgrel=1
-epoch=1
 pkgdesc="Frontend to manage connections to remote filesystems using GIO/GVFS"
-arch=(i686 x86_64)
-url="http://goodies.xfce.org/projects/applications/gigolo"
-license=('GPL2')
-groups=('xfce4-git')
-depends=('gtk2')
-makedepends=('git' 'xfce4-dev-tools')
-provides=("gigolo")
-conflicts=('gigolo')
-source=("$pkgname::git://git.xfce.org/apps/gigolo")
+url="https://gitlab.xfce.org/apps/gigolo"
+license=('GPL-2.0-or-later')
+arch=('x86_64')
 
-noextract=()
-md5sums=('SKIP')
+depends=(
+  'gtk3'
+  'gvfs'
+)
+makedepends=(
+  'git'
+  'intltool'
+  'xfce4-dev-tools'
+)
 
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
-  git describe --long | sed -E 's/gigolo.//;s/([^-]*-g)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --match='gigolo-*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$_pkgsrc"
+  ./autogen.sh
+  xdt-csource --static --strip-comments --strip-content --name=gigolo_ui --output=src/gigolo_ui.h src/gigolo.ui
 }
 
 build() {
-  cd $pkgname
-  ./autogen.sh  
+  cd "$_pkgsrc"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir/" install
+  cd "$_pkgsrc"
+  make DESTDIR="$pkgdir" install
 }
