@@ -1,0 +1,15 @@
+pkgbase = lib32-twolame
+	pkgdesc = An optimized MPEG Audio Layer 2 (MP2) encoder (32-bit)
+	pkgver = 0.4.0
+	pkgrel = 3
+	url = http://www.twolame.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = lib32-libsndfile
+	depends = lib32-glibc
+	depends = twolame
+	provides = libtwolame.so
+	source = https://github.com/njh/twolame/releases/download/0.4.0/twolame-0.4.0.tar.gz
+	sha512sums = cc594bc8d2322922280f915a3c0aa52540cca0350d6498bc96f3f60fd6e53f951e775ea015a44bdb29ec883b46b31a0e5483f6a5c188b02e30008289273c7d03
+
+pkgname = lib32-twolame

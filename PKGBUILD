@@ -5,7 +5,7 @@
 
 pkgname=lib32-twolame
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An optimized MPEG Audio Layer 2 (MP2) encoder (32-bit)"
 arch=('x86_64')
 url="http://www.twolame.org/"
