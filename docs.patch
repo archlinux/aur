@@ -1,0 +1,12 @@
+diff --color -ura py-espeak-ng-0.1.8.orig/setup.py py-espeak-ng-0.1.8.new/setup.py
+--- py-espeak-ng-0.1.8.orig/setup.py	2024-09-07 23:51:15.565511692 +0100
++++ py-espeak-ng-0.1.8.new/setup.py	2024-09-07 23:51:34.472076349 +0100
+@@ -5,7 +5,7 @@
+ setup(name             ='py-espeak-ng',
+       version          ='0.1.8',
+       description      ='Python interface for eSpeak NG',
+-      long_description = open('README.md').read(),
++      long_description = open('README.adoc').read(),
+       url              ='https://github.com/gooofy/py-espeak-ng',
+       classifiers      = [
+                           'Topic :: Multimedia :: Sound/Audio :: Sound Synthesis',
