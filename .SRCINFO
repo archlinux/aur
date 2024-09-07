@@ -1,0 +1,14 @@
+pkgbase = thoth
+	pkgdesc = Terminal scratchpad inspired by the Heynote app
+	pkgver = 0.1.60
+	pkgrel = 1
+	url = https://github.com/jooaf/thoth
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	options = !lto
+	source = thoth-0.1.60.tar.gz::https://github.com/jooaf/thoth/archive/v0.1.60.tar.gz
+	sha512sums = 44470366f40695bf9540b4a989c39190a576d4b145d891f43924c3a0515c0bee93f95b4e62d49025a34e93392ea8333aa418c12bdc5632ae23077d291634cf83
+
+pkgname = thoth
