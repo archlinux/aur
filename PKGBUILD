@@ -4,7 +4,7 @@
 _pkgname=gpm
 pkgname=lib32-$_pkgname
 pkgver=1.20.7.r38.ge82d1a6
-pkgrel=1
+pkgrel=2
 _commit='e82d1a653ca94aa4ed12441424da6ce780b1e530'
 pkgdesc="A mouse server for the console and xterm (32 bit)"
 arch=('x86_64')
