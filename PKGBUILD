@@ -5,15 +5,15 @@
 
 pkgname=bibletime-git
 _gitname="bibletime"
-pkgver=v3.0_rc1.r1562.ga4c054357
+pkgver=v3.0_rc1.r1580.gb3ff1d542
 pkgrel=1
 epoch=2
 pkgdesc="A Bible study application based on the Sword library and Qt toolkit."
 arch=('x86_64' 'i686')
 url="https://bibletime.info/"
 license=('GPL2')
-depends=('sword>=1.8.1' 'qt5-webengine' 'qt5-svg')
-makedepends=('git' 'po4a' 'docbook-xsl' 'docbook-xml' 'clucene>=2.0' 'cmake>=3.12' 'qt5-tools')
+depends=('sword' 'qt6-webengine' 'qt6-svg')
+makedepends=('git' 'po4a' 'docbook-xsl' 'docbook-xml' 'clucene' 'cmake' 'qt6-tools')
 provides=('bibletime')
 conflicts=('bibletime')
 source=("git+https://github.com/bibletime/bibletime.git")
@@ -33,15 +33,18 @@ build() {
 	sed -i 's/@BT_VERSION_FULL@//g' ../cmake/platforms/linux/bibletime.desktop.cmake
 
 	CXXFLAGS+=" -fpermissive"
+
 	cmake -DCMAKE_INSTALL_PREFIX=/usr \
 	      -DCMAKE_BUILD_TYPE=Release \
-	      -DUSE_QT6=OFF \
+	      -DUSE_QT6=ON \
 	      -DBUILD_HANDBOOK_HTML=ON \
 	      -DBUILD_HANDBOOK_PDF=OFF \
 	      -DBUILD_HOWTO_HTML=ON \
 	      -DBUILD_HOWTO_PDF=OFF \
 	      -DBT_DOCBOOK_XSL_HTML_CHUNK_XSL=$_xslstylespath/html/chunk.xsl \
 	      -DBT_DOCBOOK_XSL_PDF_DOCBOOK_XSL=$_xslstylespath/fo/docbook.xsl \
+	      -DQT_LUPDATE_EXECUTABLE=/usr/lib/qt6/bin/lupdate \
+	      -DQT_LRELEASE_EXECUTABLE=/usr/lib/qt6/bin/lrelease \
 	      ..
 	make
 }

@@ -1,6 +1,6 @@
 pkgbase = bibletime-git
 	pkgdesc = A Bible study application based on the Sword library and Qt toolkit.
-	pkgver = v3.0_rc1.r1562.ga4c054357
+	pkgver = v3.0_rc1.r1580.gb3ff1d542
 	pkgrel = 1
 	epoch = 2
 	url = https://bibletime.info/
@@ -11,12 +11,12 @@ pkgbase = bibletime-git
 	makedepends = po4a
 	makedepends = docbook-xsl
 	makedepends = docbook-xml
-	makedepends = clucene>=2.0
-	makedepends = cmake>=3.12
-	makedepends = qt5-tools
-	depends = sword>=1.8.1
-	depends = qt5-webengine
-	depends = qt5-svg
+	makedepends = clucene
+	makedepends = cmake
+	makedepends = qt6-tools
+	depends = sword
+	depends = qt6-webengine
+	depends = qt6-svg
 	provides = bibletime
 	conflicts = bibletime
 	source = git+https://github.com/bibletime/bibletime.git
