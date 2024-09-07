@@ -1,0 +1,18 @@
+pkgbase = lib32-librtmp0
+	pkgdesc = Toolkit for RTMP streams
+	pkgver = 2.4
+	pkgrel = 6
+	url = https://rtmpdump.mplayerhq.hu/
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = git
+	depends = lib32-glibc
+	depends = lib32-gnutls
+	depends = lib32-zlib
+	provides = librtmp.so
+	options = !makeflags
+	source = git+https://git.ffmpeg.org/rtmpdump#commit=c28f1bab7822de97353849e7787b59e50bbb1428
+	b2sums = SKIP
+
+pkgname = lib32-librtmp0
