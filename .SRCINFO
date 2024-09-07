@@ -1,0 +1,13 @@
+pkgbase = lib32-libdv
+	pkgdesc = The Quasar DV codec (libdv) is a software codec for DV video (32-bit)
+	pkgver = 1.0.0
+	pkgrel = 9
+	url = http://libdv.sourceforge.net/
+	arch = x86_64
+	license = LGPL
+	depends = libdv
+	depends = lib32-popt
+	source = https://downloads.sourceforge.net/libdv/libdv-1.0.0.tar.gz
+	sha512sums = 19887a6f452fa7da8924901ad841f5c4a434a3bde56c932ddb43717592aa744281e3a8ad220231e11d7e6bc3b0e704952a8324e5f85d4e088675edceeeca7dc8
+
+pkgname = lib32-libdv
