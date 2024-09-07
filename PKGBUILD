@@ -1,0 +1,82 @@
+# This is fork version of opera from AUR, since the original package is outdated.
+# Maintainer: nanoka <nhktmdzhg AT gmail DOT com>
+
+pkgname=opera-stable-bin
+_pkgname=opera
+pkgver=113.0.5230.62
+pkgrel=1
+pkgdesc="A fast and secure web browser"
+url="https://www.opera.com/"
+options=(!strip !zipman)
+license=('custom:opera')
+backup=("etc/$_pkgname/default")
+arch=('x86_64')
+conflicts=('opera')
+depends=('gtk3' 'qt6-base' 'qt5-base' 'alsa-lib' 'libnotify' 'curl' 'nss' 'libcups' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
+optdepends=(
+    'opera-ffmpeg-codecs: playback of proprietary video/audio'
+    'upower: opera battery save'
+)
+source=(
+    "https://get.geo.opera.com/ftp/pub/${_pkgname}/desktop/${pkgver}/linux/${_pkgname}-stable_${pkgver}_amd64.deb"
+    "opera"
+    "default"
+    'eula.html'
+    'terms.html'
+    'privacy.html'
+)
+
+sha512sums=('5f0365aaf7acbb9de69e24e27d53a6a984fc65560e6adf97959ede1c9f32d2a142d91db23552350c071827ba84b293779e255f919265ad6f8c5f24da5d537744'
+            '7e854e4c972785b8941f60117fbe4b88baeb8d7ca845ef2e10e8064043411da73821ba1ab0068df61e902f242a3ce355b51ffa9eab5397ff3ae3b5defd1be496'
+            'ddb1773877fcfd7d9674e63263a80f9dd5a3ba414cda4cc6c411c88d49c1d5175eede66d9362558ddd53c928c723101e4e110479ae88b8aec4d2366ec179297f'
+            'aaaa4435a3b6a08bf8e6ad4802afcbf111c1e8f477054251f031b70ae57ac1234fa19048121d64c878dc3b1de03522ce7ef11a263a86dc7062f643d569ecff82'
+            '800d62321344ff4e3521ff20fae281cad9206bae80e60965784d144f8bf852f756cbc21f4c9d8d4e93d026da7ca10e0eda7601c83a6d8d85125831eacb907d9a'
+            '43d4a066758805597527dbdfc95b4c8ad4b22c5db812b9493e50f8820c72f30c1e431bed40fdb821ab0c23a63aa31dc0e946ab708cc23ac617446964fa6b96f2')
+
+prepare() {
+    sed -e "s/%pkgname%/$_pkgname/g" -i "$srcdir/opera"
+    sed -e "s/%operabin%/$_pkgname\/$_pkgname/g" \
+        -i "$srcdir/opera"
+
+}
+
+package() {
+    tar -xf data.tar.xz --exclude=usr/share/{lintian,menu} -C "$pkgdir/"
+
+    # get rid of the extra subfolder {i386,x86_64}-linux-gnu
+    (
+        cd "$pkgdir/usr/lib/"*-linux-gnu/
+        mv "$_pkgname" ../
+    )
+    rm -rf "$pkgdir/usr/lib/"*-linux-gnu
+
+    # suid opera_sandbox
+    chmod 4755 "$pkgdir/usr/lib/$_pkgname/opera_sandbox"
+
+    # install default options
+    install -Dm644 "$srcdir/default" "$pkgdir/etc/$_pkgname/default"
+
+    # install opera wrapper
+    rm "$pkgdir/usr/bin/$_pkgname"
+    install -Dm755 "$srcdir/opera" "$pkgdir/usr/bin/$_pkgname"
+
+    # license
+    install -Dm644 \
+        "$pkgdir/usr/share/doc/${_pkgname}-stable/copyright" \
+        "$pkgdir/usr/share/licenses/$_pkgname/copyright"
+
+    # eula
+    install -Dm644 \
+        "$srcdir/eula.html" \
+        "$pkgdir/usr/share/licenses/$_pkgname/eula.html"
+
+    # terms
+    install -Dm644 \
+        "$srcdir/terms.html" \
+        "$pkgdir/usr/share/licenses/$_pkgname/terms.html"
+
+    # privacy
+    install -Dm644 \
+        "$srcdir/privacy.html" \
+        "$pkgdir/usr/share/licenses/$_pkgname/privacy.html"
+}
