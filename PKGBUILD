@@ -5,7 +5,7 @@
 
 pkgname=lib32-jansson
 pkgver=2.14
-pkgrel=1
+pkgrel=2
 pkgdesc='C library for encoding, decoding and manipulating JSON data'
 arch=(x86_64)
 url=http://www.digip.org/jansson/
