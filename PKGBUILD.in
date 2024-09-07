@@ -13,6 +13,7 @@ options=("!strip")
 depends=("yosys-nightly" "sby-nightly" "python" "python-click" "qt5-base" "boost-libs")
 optdepends=("python-flask")
 makedepends=("git" "gcc" "cmake" "boost")
+provides=("mcy")
 conflicts=()
 replaces=()
 source=(

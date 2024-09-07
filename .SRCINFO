@@ -17,6 +17,7 @@ pkgbase = mcy-nightly
 	depends = qt5-base
 	depends = boost-libs
 	optdepends = python-flask
+	provides = mcy
 	options = !strip
 	source = mcy::git+https://github.com/YosysHQ/mcy.git#commit=b01592a
 	sha256sums = SKIP
