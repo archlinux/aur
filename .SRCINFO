@@ -1,18 +1,22 @@
 pkgbase = mtxx-bin
 	pkgdesc = 美图秀秀, An image editing software that is mostly used in Mainland China
 	pkgver = 2.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://xiuxiu.web.meitu.com/
 	arch = x86_64
+	arch = aarch64
 	license = unknown
 	makedepends = patchelf
-	depends = qt5-webkit
 	depends = hicolor-icon-theme
 	depends = freeimage
-	depends = libyuv
+	depends = qt5-webengine
+	depends = openssl-1.1
+	depends = jansson
 	provides = mtxx
 	options = !strip
 	source_x86_64 = mtxx-2.0.4-amd64.deb::https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.meitu.mtxx/com.meitu.mtxx_2.0.4_amd64.deb
 	sha512sums_x86_64 = 6c9bb0ae54914a5366413c74c3637b6f30917922e1b4d6f5935a5e8a3df81fcb17e111b6b2033bde2481b9162b02e6435384d3d58b831dc3a5883ffaa25b74c8
+	source_aarch64 = mtxx-2.0.4-aarch64.deb::https://xiuxiu.dl.meitu.com/com.meitu.mtxx_2.0.4_aarch64.deb
+	sha512sums_aarch64 = 517c5522861c4e96f85ec96b9c6fa4e4b30103804862f76407d93a788915f1d05dc3a797259f4fc58102d2d4a11bd4a67a7e01dbfa9feaf22512e427cb65a416
 
 pkgname = mtxx-bin
