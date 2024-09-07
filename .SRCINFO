@@ -1,11 +1,13 @@
 pkgbase = dektec-utilities
 	pkgdesc = DekTec utilities DtEpc, DtPlay, DtRecord and DtInfoCL
 	pkgver = 17.06.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dektec.com/downloads/utilities/
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
 	makedepends = unzip
+	depends = gcc-libs
+	depends = glibc
 	noextract = DtPlay_v4.18.0.zip
 	noextract = DtRecord_v4.15.1.zip
 	source = https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v2024.06.0.tar.gz
