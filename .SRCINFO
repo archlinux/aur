@@ -1,7 +1,7 @@
 pkgbase = icingadb
 	pkgdesc = Icinga configuration and state database supporting multiple environments
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://github.com/Icinga/icingadb
 	install = icingadb.install
@@ -11,6 +11,7 @@ pkgbase = icingadb
 	license = GPL
 	makedepends = go
 	provides = icingadb
+	provides = icingadb-migrate
 	backup = etc/icingadb/config.yml
 	source = https://github.com/Icinga/icingadb/archive/refs/tags/v1.2.0.tar.gz
 	source = icingadb.sysusers
@@ -20,3 +21,5 @@ pkgbase = icingadb
 	sha256sums = SKIP
 
 pkgname = icingadb
+
+pkgname = icingadb-migrate

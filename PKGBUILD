@@ -1,8 +1,12 @@
 # Maintainer: Donien <donien.96@hotmail.com>
 
-pkgname="icingadb"
+pkgbase="icingadb"
+pkgname=(
+    "icingadb"
+    "icingadb-migrate"
+)
 pkgver="1.2.0"
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Icinga configuration and state database supporting multiple environments"
 arch=(
@@ -19,6 +23,7 @@ makedepends=(
 optdepends=()
 provides=(
     "icingadb"
+    "icingadb-migrate"
 )
 conflicts=()
 replaces=()
@@ -29,7 +34,7 @@ options=()
 install="icingadb.install"
 changelog="icingadb.changelog"
 source=(
-    "https://github.com/Icinga/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+    "https://github.com/Icinga/${pkgbase}/archive/refs/tags/v${pkgver}.tar.gz"
     "icingadb.sysusers"
     "icingadb.service"
 )
@@ -43,22 +48,31 @@ sha256sums=(
 
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    pwd
-    go build -buildvcs=false -trimpath -o icingadb cmd/icingadb/main.go
+    cd "${srcdir}/${pkgbase}-${pkgver}"
+    go build -buildvcs=false -trimpath -o icingadb ./cmd/icingadb
+    go build -buildvcs=false -trimpath -o icingadb-migrate ./cmd/icingadb-migrate
 }
 
-package() {
-    pwd
+package_icingadb() {
     install -dm700                                                     "${pkgdir}/etc/icingadb"
-    install -Dm600 "${srcdir}/${pkgname}-${pkgver}/config.example.yml" "${pkgdir}/etc/icingadb/config.yml"
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/icingadb"           "${pkgdir}/usr/bin/icingadb"
+    install -Dm600 "${srcdir}/${pkgbase}-${pkgver}/config.example.yml" "${pkgdir}/etc/icingadb/config.yml"
+    install -Dm755 "${srcdir}/${pkgbase}-${pkgver}/icingadb"           "${pkgdir}/usr/bin/icingadb"
 
-    install -Dm644 "${srcdir}/icingadb.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-    install -Dm644 "${srcdir}/icingadb.service"  "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm644 "${srcdir}/icingadb.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgbase}.conf"
+    install -Dm644 "${srcdir}/icingadb.service"  "${pkgdir}/usr/lib/systemd/system/${pkgbase}.service"
 
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/icingadb/LICENSE"
+    install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/icingadb/LICENSE"
 
     install -dm755 "${pkgdir}/usr/share/icingadb"
-    cp -r "${srcdir}/${pkgname}-${pkgver}/schema" "${pkgdir}/usr/share/icingadb/"
+    cp -r "${srcdir}/${pkgbase}-${pkgver}/schema" "${pkgdir}/usr/share/icingadb/"
+}
+
+package_icingadb-migrate() {
+    install -dm700                                                                     "${pkgdir}/etc/icingadb"
+    install -Dm600 "${srcdir}/${pkgbase}-${pkgver}/doc/icingadb-migration.example.yml" "${pkgdir}/etc/icingadb/icingadb-migration.yml"
+    install -Dm755 "${srcdir}/${pkgbase}-${pkgver}/icingadb-migrate"                   "${pkgdir}/usr/bin/icingadb-migrate"
+
+    sed -i '1s|^|# Documentation: https://icinga.com/docs/icinga-db/latest/doc/06-Migration/#migration-from-ido\n\n|' "${pkgdir}/etc/icingadb/icingadb-migration.yml"
+
+    install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/icingadb-migrate/LICENSE"
 }

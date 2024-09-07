@@ -1,3 +1,6 @@
+2024-09-07
+  - Addition: Build and package icingadb-migrate
+
 2024-04-18
   - New upstream release: Version 1.2.0
     https://github.com/Icinga/icingadb/releases/tag/v1.2.0
