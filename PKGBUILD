@@ -1,4 +1,4 @@
-# Maintainer: Colin Arnott <colin@urandom.co.uk>
+# Maintainer: Ted To <wintrymix@theo.to>
 pkgname="brlaser"
 pkgver=6.2.6
 pkgrel=1
