@@ -8,7 +8,7 @@ url='https://codeberg.org/KSPAtlas/nufetch'
 source=("git+https://codeberg.org/KSPAtlas/nufetch")
 arch=('any')
 license=('0BSD')
-depends=('git' 'nushell>=0.94.0' 'figlet')
+depends=('git' 'nushell>=0.97.1' 'figlet')
 sha256sums=('SKIP')
 conflicts=('nufetch')
 provides=('nufetch')
