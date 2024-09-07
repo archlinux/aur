@@ -30,3 +30,11 @@ pkgname = eudev
 	depends = util-linux
 	provides = udev=243
 	backup = etc/udev/udev.conf
+
+pkgname = libeudev
+	pkgdesc = eudev client libraries
+	depends = glib2
+	depends = glibc
+	provides = libudev=243
+	provides = libudev.so
+	conflicts = libudev.so
