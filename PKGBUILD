@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=turtle-git
 _app_id="de.philippun1.${pkgname%-git}"
-pkgver=0.9.r10.g007b494
+pkgver=0.10.r0.g735fd1d
 pkgrel=1
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
@@ -10,9 +10,11 @@ license=('GPL-3.0-or-later')
 depends=(
   'libadwaita'
   'meld'
+  'openssl'
   'python-dbus'
   'python-gobject'
   'python-pygit2'
+  'python-secretstorage'
 )
 makedepends=(
   'git'
@@ -23,10 +25,10 @@ makedepends=(
 )
 checkdepends=('python-pytest')
 optdepends=(
-  'python-nautilus: Nautilus plugin'
-  'thunarx-python: Thunar plugin'
   'nemo-python: Nemo plugin'
   'python-caja: Caja plugin'
+  'python-nautilus: Nautilus plugin'
+  'thunarx-python: Thunar plugin'
   'seahorse: sign commits'
 )
 provides=("${pkgname%-git}")
