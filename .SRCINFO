@@ -19,6 +19,5 @@ pkgbase = python-pytkdocs
 pkgname = python-pytkdocs
 	depends = python>=3.8
 	depends = python-astunparse>=1.6
-	depends = python-cached-property>=1.5
 	depends = python-typing_extensions>=3.7
 	optdepends = python-docstring-parser>=0.7: numpy-style

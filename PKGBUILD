@@ -57,7 +57,7 @@ check() {
 package_python-pytkdocs() {
     depends=('python>=3.8'
              'python-astunparse>=1.6'
-             'python-cached-property>=1.5'
+#            'python-cached-property>=1.5'
              'python-typing_extensions>=3.7')
     optdepends=('python-docstring-parser>=0.7: numpy-style')
     cd ${srcdir}/${_pyname}-${pkgver}
