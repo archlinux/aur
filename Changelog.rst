@@ -1,6 +1,12 @@
 Changelog
 =========
 
+**[5.9.0] ----- 2024-07-07** ::
+
+	    wg-fix-resolv: Improve compiler / loader options - see Makefile for details
+	    update Docs/Changelog.rst Docs/wg-client.pdf
+
+
 **[5.8.1] ----- 2024-07-07** ::
 
 	    Typo in version string
