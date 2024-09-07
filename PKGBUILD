@@ -1,8 +1,8 @@
 # Maintainer: FirstAirBender <noblechuk5[at]web[dot]de>
 pkgname=(crowdsec-firewall-bouncer-{iptables,nftables})
 pkgbase=crowdsec-firewall-bouncer
-pkgver=0.0.28
-pkgrel=3
+pkgver=0.0.29
+pkgrel=0
 pkgdesc="Crowdsec bouncer written in golang for firewalls"
 arch=('x86_64')
 url="https://doc.crowdsec.net/docs/bouncers/firewall/"
@@ -20,7 +20,7 @@ source=(
     "$pkgbase-$pkgver.tar.gz::https://github.com/crowdsecurity/cs-firewall-bouncer/releases/download/v${pkgver}/${pkgbase}-linux-amd64.tgz"
 )
 sha256sums=('8c976fa05b0269c6b048b0ef68e38695b0864a7e8ae3064adba9cee787a0703f'
-            'ce39dc3877ceed2827767f8a47277caa799f2a84f0cb9dc86c2fcbe64b2989c4')
+            '9bd3a1b9c535ab7dbe58bc31e8f3dcca70970d7666ae96e89d7713900df3c71e')
 
 prepare() {
     cd "$pkgbase-v$pkgver"
