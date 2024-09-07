@@ -3,7 +3,7 @@
 
 pkgname=immersed
 pkgver=10.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Immersed Desktop Agent"
 arch=('x86_64')
 url="https://immersed.com/"
@@ -12,27 +12,30 @@ depends=('fuse')
 optdepends=('V4L2LOOPBACK-MODULE: Virtual webcam support')
 options=(!strip !debug)
 
-_unversioned_appimage="${pkgname^}-${arch}.AppImage"
-_versioned_appimage="${pkgname^}-${pkgver}-${arch}.AppImage"
+_pkgname_ucfirst="${pkgname^}"
+_appimage_unversioned="${_pkgname_ucfirst}-${arch}.AppImage"
+_appimage_versioned="${_pkgname_ucfirst}-${pkgver}-${arch}.AppImage"
 
-source=("${_versioned_appimage}::https://static.immersed.com/dl/${_unversioned_appimage}"
-        "${pkgname}.desktop")
-sha256sums=('fdf73f51160965fb593f2562726663caf7063cb687ae796cac446540537913df'
-            'SKIP')
+source=("${_appimage_versioned}::https://static.immersed.com/dl/${_appimage_unversioned}")
+sha256sums=('fdf73f51160965fb593f2562726663caf7063cb687ae796cac446540537913df')
 
 prepare() {
-    chmod +x "${srcdir}/${_versioned_appimage}"
-    "${srcdir}/${_versioned_appimage}" --appimage-extract
+    chmod +x "${srcdir}/${_appimage_versioned}"
+    "${srcdir}/${_appimage_versioned}" --appimage-extract
 }
 
 package() {
-    install -Dm755 "${srcdir}/${_versioned_appimage}" "${pkgdir}/opt/${pkgname}/${_unversioned_appimage}"
-    
+    # Deploy AppImage
+    install -Dm755 "${srcdir}/${_appimage_versioned}" "${pkgdir}/opt/${_pkgname_ucfirst}/${_appimage_unversioned}"
+
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${_unversioned_appimage}" "${pkgdir}/usr/bin/${pkgname}"
-    
-    # Install desktop entry and icon
-    install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 "${srcdir}/squashfs-root/Immersed.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    ln -s "/opt/${_pkgname_ucfirst}/${_appimage_unversioned}" "${pkgdir}/usr/bin/${pkgname}"
+
+    # Modify and install .desktop file
+    sed -i "s/Exec=Immersed/Exec=${pkgname}/" "${srcdir}/squashfs-root/${_pkgname_ucfirst}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgname_ucfirst}.desktop" "${pkgdir}/usr/share/applications/${_pkgname_ucfirst}.desktop"
+
+    # Install icon
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgname_ucfirst}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname_ucfirst}.png"
 }
