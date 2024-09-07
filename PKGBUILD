@@ -4,7 +4,7 @@
 
 pkgname=lib32-dconf
 pkgver=0.40.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A low-level configuration system (32-bit)'
 arch=(x86_64)
 url=https://live.gnome.org/dconf
@@ -15,6 +15,7 @@ depends=(
 )
 makedepends=(
   git
+  glib2-devel
   lib32-dbus
   meson
 )
