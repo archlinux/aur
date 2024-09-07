@@ -27,6 +27,7 @@ pkgbase = hplip-minimal
 	conflicts = hplip-lite
 	conflicts = hplip-plugin
 	backup = etc/hp/hplip.conf
+	backup = etc/sane.d/dll.d/hpaio
 	options = !makeflags
 	source = https://downloads.sourceforge.net/hplip/hplip-3.24.4.tar.gz
 	source = https://downloads.sourceforge.net/hplip/hplip-3.24.4.tar.gz.asc
