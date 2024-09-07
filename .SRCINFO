@@ -1,12 +1,12 @@
 pkgbase = nufetch-git
 	pkgdesc = Simple nu+figlet based fetch
-	pkgver = r9.df14258
-	pkgrel = 2
+	pkgver = r12.a789b00
+	pkgrel = 1
 	url = https://codeberg.org/KSPAtlas/nufetch
 	arch = any
 	license = 0BSD
 	depends = git
-	depends = nushell>=0.94.0
+	depends = nushell>=0.97.1
 	depends = figlet
 	provides = nufetch
 	conflicts = nufetch
