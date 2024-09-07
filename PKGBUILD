@@ -24,7 +24,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
-prepare(){
+prepare() {
     cd "${srcdir}/${pkgbase}-${pkgver}"
     sed -e 's/GROUP="dialout"/GROUP="uucp"/' \
         -e 's/GROUP="tape"/GROUP="storage"/' \
