@@ -1,0 +1,29 @@
+pkgbase = lib32-libinstpatch
+	pkgdesc = Instrument file software library
+	pkgver = 1.1.6
+	pkgrel = 3
+	url = https://github.com/swami/libinstpatch
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	makedepends = glib2-devel
+	makedepends = lib32-glib2
+	makedepends = lib32-libsndfile
+	makedepends = python
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = libinstpatch=1.1.6
+	provides = libinstpatch-1.0.so
+	source = https://github.com/swami/libinstpatch/archive/v1.1.6/libinstpatch-v1.1.6.tar.gz
+	sha512sums = 0e22165fc3c045bbc3ab2e1c090728232ed9142797ddbd067b682b9bcfee93850deb76c23b78f49a776e3d099be25fa029673ce8e4a909b2f48860dcdc55803c
+	b2sums = c5881e6559a7fbcb40e1c43c7dbbfc1df9ac9445e83c70044855c192c3b04945ae125c0e06253ba76d3922a1f8fc6965810700ed57018864b319076ee9528d55
+
+pkgname = lib32-libinstpatch
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = libinstpatch=1.1.6
+	depends = lib32-glib2
+	depends = libglib-2.0.so
+	depends = libgobject-2.0.so
+	depends = lib32-libsndfile
+	depends = libsndfile.so
