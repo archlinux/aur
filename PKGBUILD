@@ -8,7 +8,7 @@ sp_version='0906'
 flag="ce"
 
 pkgname="${_pkgname}"-appimage
-pkgver="${major_version}.${minor_version}.${patch_version}_${_sp_version}_${flag}"
+pkgver="${major_version}.${minor_version}.${patch_version}_${sp_version}_${flag}"
 pkgrel=1
 pkgdesc="Cyber Security ALL-IN-ONE Platform"
 arch=('x86_64')
