@@ -1,6 +1,6 @@
-pkgbase = bshchk-bin
+pkgbase = bshchk-git
 	pkgdesc = Bash runtime dependency checker
-	pkgver = 1.1
+	pkgver = master
 	pkgrel = 1
 	url = https://bshchk.blek.codes
 	arch = x86_64
@@ -9,13 +9,9 @@ pkgbase = bshchk-bin
 	provides = bshchk
 	conflicts = bshchk
 
-	source_x86_64 = https://git.blek.codes/blek/bshchk/releases/download/1.1/bshchk.linux.amd64
-	source_x86_64 = https://git.blek.codes/blek/bshchk/releases/download/1.1/bshchk.linux.amd64.asc
-	
-	source_aarch64 = https://git.blek.codes/blek/bshchk/releases/download/1.1/bshchk.linux.arm64
-	source_aarch64 = https://git.blek.codes/blek/bshchk/releases/download/1.1/bshchk.linux.arm64.asc
+	makedepends = go
 
-	validpgpkeys = A6C038E03D212D06575053ADA622C22C9BC616B2
+	source = git+https://git.blek.codes/blek/bshchk.git
 
-pkgname = bshchk-bin
+pkgname = bshchk-git
 

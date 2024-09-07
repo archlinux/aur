@@ -1,25 +1,22 @@
-pkgname=bshchk-bin
-pkgver=1.1
+pkgname=bshchk-git
+pkgver=master
 pkgrel=1
-arch=('x86_64' 'aarch64')
+arch=('any')
 license=('GPL-3.0-only')
 provides=('bshchk')
 conflicts=('bshchk')
 
-source_x86_64=(
-	"https://git.blek.codes/blek/bshchk/releases/download/$pkgver/bshchk.linux.amd64"
-	"https://git.blek.codes/blek/bshchk/releases/download/$pkgver/bshchk.linux.amd64.asc"
-)
-source_aarch64=(
-	"https://git.blek.codes/blek/bshchk/releases/download/$pkgver/bshchk.linux.arm64"
-	"https://git.blek.codes/blek/bshchk/releases/download/$pkgver/bshchk.linux.arm64.asc"
-)
+source=('git+https://git.blek.codes/blek/bshchk.git')
+sha256sums=('SKIP')
 
-validpgpkeys=('A6C038E03D212D06575053ADA622C22C9BC616B2')
-sha256sums_x86_64=('SKIP' 'SKIP')
-sha256sums_aarch64=('SKIP' 'SKIP')
+makedepends=('go')
+
+build() {
+	cd "$srcdir/bshchk"
+	./build.sh
+}
 
 package() {
-	file=$(find . -name "bshchk.linux.*" | grep -vE '.asc$')
-	install -Dm755 $file "$pkgdir/usr/bin/bshchk"
+	cd "$srcdir/bshchk"
+	install -Dm755 bshchk "$pkgdir/usr/bin/bshchk"
 }
