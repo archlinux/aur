@@ -3,7 +3,7 @@
 _pkgname='plink1.9'
 pkgname="$_pkgname-git"
 _pkgver=1.9
-pkgver=1.9.r91.g705f965b
+pkgver=1.9.r108.ga09b4443
 pkgrel=1
 pkgdesc="whole-genome association analysis toolset, version 1.9"
 arch=(x86_64)
