@@ -1,8 +1,8 @@
 pkgbase = cargo-xwin-git
 	pkgdesc = Cross compile Cargo project to Windows msvc target with ease
-	pkgver = v0.12.0.r4.cab2a1a
+	pkgver = v0.17.3.r2.c1b29c7
 	pkgrel = 1
-	url = https://github.com/messense/cargo-xwin
+	url = https://github.com/rust-cross/cargo-xwin
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -11,7 +11,8 @@ pkgbase = cargo-xwin-git
 	optdepends = llvm: for assembly dependencies
 	provides = cargo-xwin
 	conflicts = cargo-xwin
-	source = git+https://github.com/messense/cargo-xwin
+	options = !lto
+	source = git+https://github.com/rust-cross/cargo-xwin
 	md5sums = SKIP
 
 pkgname = cargo-xwin-git
