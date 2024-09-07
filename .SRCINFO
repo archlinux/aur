@@ -1,15 +1,15 @@
 pkgbase = redbean
 	pkgdesc = redbean is a single-file distributable web server that embeds Lua, SQLite, and MbedTLS
-	pkgver = 0
-	pkgrel = 5
-	url = https://cosmo.zip
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://redbean.dev
 	arch = x86_64
 	license = ISC
 	license = MIT
 	license = BSD2
 	license = BSD3
 	license = zlib
-	source = https://cosmo.zip/pub/cosmos/bin/redbean
-	sha256sums = 77b25116ad68154a29c810a19d782a73416dc54a56f7d748850aff39cc02b279
+	source = https://redbean.dev/redbean-3.0.0.com
+	sha256sums = 382f1288bb96ace4bab5145e7df236846c33cc4f1be69233710682a9e71e7467
 
 pkgname = redbean
