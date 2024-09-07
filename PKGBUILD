@@ -4,7 +4,7 @@
 
 pkgname=aegisub-arch1t3cht-git
 pkgver=3.2.2.r1188.bf20c62e6
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
 url="https://github.com/arch1t3cht/Aegisub"
@@ -97,9 +97,6 @@ prepare() {
   meson subprojects packagefiles --apply avisynth
   meson subprojects packagefiles --apply vapoursynth
   meson subprojects packagefiles --apply luajit
-
-  # Fix boost "undefined reference" error
-  sed -i '/BOOST_USE_WINDOWS_H/{n;s/$/\nadd_project_arguments('"'"'-DBOOST_NO_CXX11_SCOPED_ENUMS'"'"', language: '"'"'cpp'"'"')/}' meson.build
 
   # Check if the OPTIONS array contains "!strip"
   check_makepkg_options() (
