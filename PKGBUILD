@@ -11,7 +11,7 @@
 # Contributor: HurricanePootis
 
 pkgname=stockfish
-pkgver=16.1
+pkgver=17
 pkgrel=1
 epoch=1
 pkgdesc="A strong UCI chess engine"
@@ -20,14 +20,14 @@ url="https://stockfishchess.org/"
 license=('GPL-3.0')
 depends=('glibc' 'gcc-libs')
 # Check EvalFileDefaultName{Big,Small} in src/evaluate.h and change accordingly
-_net_name_big=('b1a57edbea57')
-_net_name_small=('baff1ede1f90')
+_net_name_big=('1111cefa1111')
+_net_name_small=('37f18f62d772')
 source=("$pkgname-$pkgver.zip::https://github.com/official-stockfish/Stockfish/archive/sf_$pkgver.zip"
         "https://tests.stockfishchess.org/api/nn/nn-${_net_name_big}.nnue"
         "https://tests.stockfishchess.org/api/nn/nn-${_net_name_small}.nnue")
-sha512sums=('bfaa5c644d2acb8538b1a2c72fdf58c6b0ba6cbb3a4e1a335391faa1529f1069eca888295bd4eef0e887860185a3e0e18529ab609829738c420a0c810be5cca4'
-            'de2141ba301dd4da0cfa5d3a8f3574fa0ac9b24915fa1802654ad8baf274157feb1fd0ce96aae3893b789a1bb1df8eccdb4a5a331756802bebde3c4d1db5f1de'
-            '56358da4810a2bf5b903668d8243ec888a0a64302a893207074b3f1644c9877ddd4557303f025eabcc6e0f7b31af42c1265ba2fd34209df9dd0ea205d4f4a8e9')
+sha512sums=('8d3a52ad3aa9881b98f76d556dca6212ce3bcf6cabdb97e1810cdc0068dc9eb51f3a13a9f84ef721049927f308c86e9c8aea6b5de720a19816fd4df87d112e41'
+            '0814a77442d14f9eee02b1d45195cc8c9ed58e91d10ac22be56f562835baedc77094b442d23f2e088779e58d798184eabc8dfc919558e1ede552cde35d448025'
+            'bf4d01f8cbff94dbff484636dd0351cd66f37eeaea7b7dbe16a3bfe231ae78cfabdeed040b789b64049c6063ef0dca21e4a4f332b99e49a52993e8595e372839')
 
 prepare() {
   ln -sf "${srcdir}/nn-${_net_name_big}.nnue" "Stockfish-sf_${pkgver}/src"
