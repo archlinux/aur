@@ -5,7 +5,7 @@
 
 pkgname=lib32-libidn11
 pkgver=1.33
-pkgrel=2
+pkgrel=3
 pkgdesc='Implementation of the Stringprep, Punycode and IDNA specifications'
 url='https://www.gnu.org/software/libidn/'
 arch=('x86_64')
