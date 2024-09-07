@@ -1,7 +1,7 @@
 # Maintainer: Alexander Karpukhin <thealexdev23@gmail.com>
 
 pkgname=power-options-daemon-git
-pkgver=0.1.0r1
+pkgver=r115.ba04fae
 pkgrel=1
 pkgdesc="The core daemon for Power Options, a blazingly fast power management solution."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("git+https://github.com/thealexdev23/power-options.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir"
+  cd "$srcdir/power-options"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
