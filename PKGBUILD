@@ -13,7 +13,7 @@ options=("!strip")
 depends=()
 optdepends=()
 makedepends=("git" "cargo")
-provides=("prjoxide-db", "prjoxide")
+provides=("prjoxide-db" "prjoxide")
 conflicts=(
 	"prjoxide-git"
 )
