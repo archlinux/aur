@@ -7,39 +7,27 @@
 pkgname='hplip-minimal'
 pkgver=3.24.4
 pkgrel=6
-pkgdesc='Lite build of HPLIP with proprietary binary plugin'
+pkgdesc='Only printer drivers from HPLIP with proprietary binary plugin'
 arch=('x86_64')
 url='https://developers.hp.com/hp-linux-imaging-and-printing/'
 license=('GPL-2.0-only' 'MIT' 'BSD-3-Clause' 'GPL-3.0-only' 'LicenseRef-HPLIP')
-depends=(python-dbus libjpeg-turbo libcups net-snmp rpcbind sane dbus avahi)
-makedepends=(python libusb cups rpcbind sane)
+depends=(libjpeg-turbo libcups)
+makedepends=(python libusb cups)
 conflicts=('hplip' 'hplip-lite' 'hplip-plugin')
 provides=('hplip')
-backup=('etc/hp/hplip.conf' 'etc/sane.d/dll.d/hpaio')
-optdepends=('cups: for printing support'
-            'python-pillow: for commandline scanning support'
-            'python-reportlab: for pdf output in hp-scan')
+backup=('etc/hp/hplip.conf')
+optdepends=('cups: for printing support')
 source=(https://downloads.sourceforge.net/hplip/hplip-$pkgver.tar.gz{,.asc}
         https://developers.hp.com/sites/default/files/hplip-${pkgver}-plugin.run{,.asc}
         0003-models.dat-Re-add-drivers-missing-from-3.19.1.patch
-        0017-Workaround-patch-for-missing-Python3-transition-of-t.patch
-        0018-Allow-non-JPEG-scanning-on-the-HP-DeskJet-3520-All-i.patch
         0024-Add-include-cups-ppd.h-in-various-places-as-CUPS-2.2.patch
-        0026-Fix-handling-of-unicode-filenames-in-sixext.py.patch
-        0073-Fix-upstream-CFLAGS-override.patch
-        hplip-hpaio-gcc14.patch
         hplip-pserror-gcc14.patch)
 sha256sums=('5d7643831893a5e2addf9d42d581a5dbfe5aaf023626886b8762c5645da0f1fb'
             'SKIP'
             '1f3c6bdd25661a8a2e18153655d6f06f028c1d9c308d69c8ecfd7767a2d0c5aa'
             'SKIP'
             '29c4c882deda828257420aeb7b388d5b7dd6400daa2e23cbfbc8dde8367ad5a3'
-            '8572c8300a2a6b2a0f4d721076d48562ffee9be2ae8d6e7ffa02fb8d7814cf42'
-            'b4df02f4614a4b2e373390102d90cd28972c371da903c3d45cc188494e8ea0ba'
             '17f63f4d55ae071922b49585cc9a933ecb997348a9daeb6a30f8ddba49969fce'
-            '98e15d2fa7618bf18c0386d18810669dea5b5d38b684c071ab33ea585e7ec95c'
-            'e362ae5c577434168d0f04c74c59998d2d047bc374957dfda6d2c44be1ca4c1c'
-            '10eca7bc2249a20365d97cc6cf3f15d5104ef74a5faa1c534a7f6994a15771fe'
             'b3f865424f288c7e3e44c46816fcd87f10ac6be7caa2a8698a82b9a5981cd1d7')
 validpgpkeys=('4ABA2F66DBD5A95894910E0673D770CDA59047B9') # HPLIP (HP Linux Imaging and Printing) <hplip@hp.com>
 options=(!makeflags)
@@ -50,12 +38,7 @@ prepare() {
  cd "hplip-$pkgver"
 
  patch -Np1 -i ../0003-models.dat-Re-add-drivers-missing-from-3.19.1.patch
- patch -Np1 -i ../0017-Workaround-patch-for-missing-Python3-transition-of-t.patch
- patch -Np1 -i ../0018-Allow-non-JPEG-scanning-on-the-HP-DeskJet-3520-All-i.patch
  patch -Np1 -i ../0024-Add-include-cups-ppd.h-in-various-places-as-CUPS-2.2.patch
- patch -Np1 -i ../0026-Fix-handling-of-unicode-filenames-in-sixext.py.patch
- patch -Np1 -i ../0073-Fix-upstream-CFLAGS-override.patch
- patch -Np1 -i ../hplip-hpaio-gcc14.patch
  patch -Np1 -i ../hplip-pserror-gcc14.patch
 
  export AUTOMAKE='automake --foreign'
@@ -67,6 +50,8 @@ build() {
  ./configure -q --prefix=/usr \
         --enable-lite-build \
         --disable-imageProcessor-build \
+        --disable-network-build \
+        --disable-scan-build \
         --disable-gui-build \
         --disable-fax-build \
         --disable-doc-build
