@@ -10,21 +10,21 @@ arch=('x86_64')
 url='https://vkdoom.org/'
 license=('BSD' 'GPL3' 'LGPL3')
 depends=(alsa-lib
-		bzip2
-		flac
-		gcc-libs
-		glib2
-		glibc
-		lame
-		libogg
-		libsndfile
-		libvorbis
-		'libvpx>=1.13'
-		mpg123
-		opus
-		pcre2
-		sdl2
-		'zmusic>=1.1.8')
+         bzip2
+         flac
+         gcc-libs
+         glib2
+         glibc
+         lame
+         libogg
+         libsndfile
+         libvorbis
+         'libvpx>=1.13'
+         mpg123
+         opus
+         pcre2
+         sdl2
+         'zmusic>=1.1.8')
 makedepends=('desktop-file-utils')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
@@ -53,14 +53,13 @@ b2sums=('SKIP'
         'b9587a107c69dc98593f98454d411bcd69e9257b15d0d7d535c3afd19ce18b74a4513d67c7e973712768d60d1457dd5972d993cb84466d15525e26cf582cb105')
 
 pkgver() {
-	date +"%Y.%m.%d" --date='@'$(stat -c '%W' ./vkdoom-linux-prerelease/vkdoom)
+    date +"%Y.%m.%d" --date='@'$(stat -c '%W' ./vkdoom-linux-prerelease/vkdoom)
 }
 
 package() {
-    cd ./vkdoom-linux-prerelease/
-    install * -D -m 644 -t "$pkgdir"/opt/vkdoom
+    install "$srcdir"/vkdoom-linux-prerelease/* -D -m 644 -t "$pkgdir"/opt/vkdoom
     chmod +x "$pkgdir"/opt/vkdoom/vkdoom
-	ln -s /usr/lib/libvpx.so "$pkgdir"/opt/vkdoom/libvpx.so.7
+    ln -s /usr/lib/libvpx.so "$pkgdir"/opt/vkdoom/libvpx.so.7
 
     desktop-file-install "$srcdir"/vkdoom.desktop --dir="$pkgdir"/usr/share/applications
     install "$srcdir"/vkdoom.svg -D -m 644 "$pkgdir"/usr/share/pixmaps/vkdoom.svg
