@@ -1,13 +1,13 @@
 pkgbase = cup-docker
 	pkgdesc = Cup is the easiest way to check for container image updates.
-	pkgver = 2.1.3
+	pkgver = 2.2.0
 	pkgrel = 2
 	url = https://github.com/sergi0g/cup
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/sergi0g/cup/archive/refs/tags/v2.1.3.tar.gz
-	sha256sums = 803b98b0efc7749070ec65e13122c91ad764e07f989ca0011febee8c7aaabc87
+	source = https://github.com/sergi0g/cup/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = cc3bee7f2b96b738cf9bfc2bf2d360ad9fc9e3300c22b1d7eb4bb1390b7952c4
 
 pkgname = cup-docker
