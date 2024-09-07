@@ -4,3 +4,4 @@
 src/
 pkg/
 *.xz
+*.zst

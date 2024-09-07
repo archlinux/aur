@@ -1,6 +1,6 @@
 pkgbase = ltfs
 	pkgdesc = Linear Tape File System
-	pkgver = 2.4.5.0
+	pkgver = 2.4.6.2
 	pkgrel = 1
 	url = https://github.com/LinearTapeFileSystem/ltfs
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = ltfs
 	depends = libxml2
 	depends = net-snmp
 	backup = etc/ltfs.conf.local
-	source = https://github.com/LinearTapeFileSystem/ltfs/archive/refs/tags/v2.4.5.0-10502.tar.gz
-	sha256sums = 2525773d740d315e9b1ce3ad615d51f5fa8a9da6b648c9f6e57fcca422bd04ac
+	source = https://github.com/LinearTapeFileSystem/ltfs/archive/refs/tags/v2.4.6.2-10513.tar.gz
+	sha256sums = 3ea9b210507f6bb2c9cd8f9d92f0c2ee321e24241dc5a402e557409a71531c91
 
 pkgname = ltfs

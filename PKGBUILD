@@ -2,8 +2,8 @@
 # Contributor: Jonathan Chasteen <jonathan.chasteen at live dot com>
 
 pkgname=ltfs
-pkgver=2.4.5.0
-_pkgver2=10502
+pkgver=2.4.6.2
+_pkgver2=10513
 pkgrel=1
 pkgdesc='Linear Tape File System'
 arch=('x86_64' 'i686')
@@ -13,12 +13,10 @@ depends=('fuse' 'icu' 'libxml2' 'net-snmp')
 makedepends=('patch' 'gcc' 'pkg-config' 'make' 'fakeroot')
 backup=('etc/ltfs.conf.local')
 source=("https://github.com/LinearTapeFileSystem/ltfs/archive/refs/tags/v${pkgver}-${_pkgver2}.tar.gz")
-sha256sums=('2525773d740d315e9b1ce3ad615d51f5fa8a9da6b648c9f6e57fcca422bd04ac')
+sha256sums=('3ea9b210507f6bb2c9cd8f9d92f0c2ee321e24241dc5a402e557409a71531c91')
 
 build() {
 	cd "${srcdir}/ltfs-${pkgver}-${_pkgver2}"
-	sed -i '/^AC_CONFIG_MACRO_DIR(\[m4\])$/d' configure.ac
-	sed -i 's,sys/sysctl.h,linux/sysctl.h,' src/libltfs/arch/arch_info.c
 	./autogen.sh
 	./configure \
 		--prefix=/usr \
