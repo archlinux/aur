@@ -17,6 +17,7 @@ stages:
   - find_release
   - test
   - release
+  - commit
 
 find_release_job:
   stage: find_release
