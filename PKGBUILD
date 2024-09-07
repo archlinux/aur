@@ -1,6 +1,6 @@
 pkgname=nsdiff
 pkgver=1.85
-pkgrel=1
+pkgrel=2
 pkgdesc="Create an 'nsupdate' script from DNS zone file differences. Includes nsvi, nspatch."
 url="https://dotat.at/prog/nsdiff/"
 license=("0BSD OR MIT-0")

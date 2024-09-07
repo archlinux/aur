@@ -1,7 +1,7 @@
 pkgbase = nsdiff
 	pkgdesc = Create an 'nsupdate' script from DNS zone file differences. Includes nsvi, nspatch.
 	pkgver = 1.85
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dotat.at/prog/nsdiff/
 	arch = any
 	license = 0BSD OR MIT-0
