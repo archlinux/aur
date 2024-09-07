@@ -8,12 +8,11 @@ url="https://openaudible.org"
 license=('Apache')
 depends=("java-runtime-headless" "desktop-file-utils" "webkit2gtk")
 source=("https://github.com/openaudible/openaudible/releases/download/v"$pkgver"/OpenAudible_"$pkgver"_x86_64.deb"
-       "openaudible.desktop")
+        "openaudible.desktop")
 sha512sums=('cbf33332d25166e46fd8bba4abd23e95f5578e4942abcb0f3782fd390eac2ca4819658081ae0f4cc8398c4e487e2441d12099310936d95a63d6283554b8e31bb'
             'fe26bdc5a28f492c60e13f481bd61ae53b299b0b0728311521bb03a73f9592d8de5dda9e8e1ef5e770c74b6335e5b32c22d4b65a38325f8f5f6c1283cdc0c937')
 
 package(){
-
     # Extract package data
     tar xzf data.tar.gz -C "${pkgdir}"
 
