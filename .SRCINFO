@@ -1,6 +1,6 @@
 pkgbase = updpkgsrcs
 	pkgdesc = Update source array of Git submodules in PKGBUILD
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/updpkgsrcs
 	arch = any
@@ -10,6 +10,6 @@ pkgbase = updpkgsrcs
 	depends = sed
 	depends = git
 	source = updpkgsrcs.sh
-	sha256sums = e0fbbd62558e2af5b88869121f163aa15d1a3a63f47323ae89793cb9b89f05d9
+	sha256sums = 54263d1af97817769391f61a12eac61363661193bc1e2499f2db96a99b5307b8
 
 pkgname = updpkgsrcs

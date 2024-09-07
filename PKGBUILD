@@ -1,7 +1,7 @@
 # Maintainer: detiam <dehe_tian@outlook.com>
 
 pkgname=updpkgsrcs
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Update source array of Git submodules in PKGBUILD'
 arch=(any)
@@ -20,4 +20,4 @@ package() {
   install -Dm755 "${source[0]}" "$pkgdir/usr/bin/$pkgname"
 }
 
-sha256sums=('e0fbbd62558e2af5b88869121f163aa15d1a3a63f47323ae89793cb9b89f05d9')
+sha256sums=('54263d1af97817769391f61a12eac61363661193bc1e2499f2db96a99b5307b8')

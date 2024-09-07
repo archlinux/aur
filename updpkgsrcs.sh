@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 # Return Submodule's Git Command
+#
+# $1="init" or not
 function echoGitCMDForSubModule {
     local -A subParent
     local gitCMDName='git '
@@ -18,6 +20,9 @@ function echoGitCMDForSubModule {
     done
     for parent in "${!subParent[@]}"; do
         echo -e "${gitCMDName}${subParent[$parent]}-c protocol.file.allow=always -C '$parent' submodule update"
+        if [[ $1 == init ]]; then
+            echo -e "${gitCMDName}-C '$parent' submodule init"
+        fi
     done
 }
 
@@ -82,22 +87,24 @@ function printUsage {
 	Contain functions:
 	"echoSourceTextForSubModule": Echo source array of given Git repository
 	"echoGitCMDForSubModule": Echo Git command for PKGBUILD to change submodule's url
+	    init: Whether to initialize the submodule, optional if you want to get the submodule of a submodule next time
 	"updateBuildScriptForSubModule [Path to PKGBUILD]": Update source array and replace it in PKGBUILD
+	    [Path to PKGBUILD]: The PKGBUILD that expected to be modified
 
 	example:
 	    $ export _repo="[Path to Git repository]"
 	    $ ${0##*/} echoSourceTextForSubModule
-	    $ ${0##*/} echoGitCMDForSubModule
+	    $ ${0##*/} echoGitCMDForSubModule init
 	    $ ${0##*/} updateBuildScriptForSubModule "[Path to PKGBUILD]"
 
 	EOF
 }
 
-# $1=[ Path to Git Repository ]
 declare -A subUrl
 declare -A subName
 declare -A subPath
 declare -A subCommit
+# $1=[ Path to Git Repository ]
 function readGitModules {
     gitModulesFile=$(readlink -se "$1/.gitmodules") || return 1
     gitModules=$(git config -f "$gitModulesFile" -l) || return 2
@@ -144,13 +151,19 @@ if ! readGitModules "$gitRepo"; then
     exit "$code"
 fi
 
-#for path in "${!subName[@]}"; do
-#    echo -e "$path:\n  ${subCommit[$path]}\n  ${subName[$path]}\n  ${subUrl[$path]}\n"
-#done
-
 case "$1" in
     echoGitCMDForSubModule)
-        echoGitCMDForSubModule
+        case "$2" in
+            '')
+                echoGitCMDForSubModule
+            ;;
+            init)
+                echoGitCMDForSubModule init
+            ;;
+            *)
+                printUsage && exit 1
+            ;;
+        esac
         ;;
     echoSourceTextForSubModule)
         echoSourceTextForSubModule
