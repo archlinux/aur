@@ -3,7 +3,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch at gmail dot com>
 # Contributor: Marcin Karpezo <sirmacik at gmail dot com>
 _pkgname=scala
-pkgbase=scala_2.20
+pkgbase=scala_2.12
 pkgname=(scala_2.12 scala-docs_2.12 scala-sources_2.12)
 pkgver=2.12.20
 pkgrel=1
