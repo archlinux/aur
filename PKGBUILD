@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=oxker
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A simple TUI to view & control Docker containers"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('082c152e31fb0c0f0adfa60780480d756c4589649963b6616599ab696b7989b4')
+sha256sums=('b3c716a8dc5348d2cab3bb5c1779996847d70dd8b8628d57afdd5b1b24bd27d9')
 
 prepare() {
   cd "$pkgname-$pkgver"
