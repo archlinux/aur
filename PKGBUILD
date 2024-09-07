@@ -17,13 +17,13 @@
 
 pkgbase=llvm-minimal-git
 pkgname=(llvm-minimal-git llvm-libs-minimal-git clang-minimal-git clang-libs-minimal-git clang-opencl-headers-minimal-git)
-pkgver=20.0.0_r506221.05e95067eeaa
+pkgver=20.0.0_r510973.d6d60707ec2b
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=(git cmake libffi libedit ncurses libxml2
-             libxcrypt python python-setuptools)
+             libxcrypt python python-setuptools zstd)
 source=("git+https://github.com/llvm/llvm-project.git"
 )
 md5sums=('SKIP')
@@ -132,7 +132,7 @@ build() {
         -D LLVM_LIT_ARGS="$LITFLAGS"" -sv --ignore-fail"
   )
     # build aborts with FORTIFY_SOURCE=3 , see https://github.com/llvm/llvm-project/issues/85509
-    export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+     export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
     
     cmake -B _build -S "$srcdir"/llvm-project/llvm "${cmake_args[@]}" -Wno-dev
     
@@ -155,7 +155,7 @@ check() {
 
 package_llvm-minimal-git() {
     pkgdesc="Collection of modular and reusable compiler and toolchain technologies, trimmed down git version"
-    depends=(llvm-libs-minimal-git="$pkgver-$pkgrel")
+    depends=(llvm-libs-minimal-git="$pkgver-$pkgrel" zstd zlib glibc gcc-libs)
     provides=('llvm')
     conflicts=('llvm')
     optdepends=('python: for using lit (LLVM Integrated Tester)'
@@ -212,7 +212,7 @@ package_llvm-minimal-git() {
 
 package_llvm-libs-minimal-git() {
     pkgdesc="LLVM runtime libraries, trimmed down trunk version"
-    depends=(gcc-libs zlib libffi libedit ncurses libxml2)
+    depends=(gcc-libs zlib libffi libedit ncurses libxml2 zstd glibc)
 
     cp --preserve --recursive "$srcdir"/llvm-libs/* "$pkgdir"/
 
@@ -227,7 +227,7 @@ _python_optimize() {
 
 package_clang-minimal-git() {
   pkgdesc='C language family frontend for LLVM (trimmed down git version)'
-  depends=(llvm-libs-minimal-git clang-libs-minimal-git gcc)
+  depends=(llvm-libs-minimal-git clang-libs-minimal-git gcc-libs glibc)
   optdepends=('openmp: OpenMP support in clang with -fopenmp'
               'python: for scan-view, scan-build, git-clang-format, clang-rename and python bindings'
               'llvm-minimal-git: referenced by some clang headers')
@@ -256,7 +256,7 @@ package_clang-minimal-git() {
 
 package_clang-libs-minimal-git() {
     pkgdesc="clang runtime libraries, trunk version"
-    depends=(llvm-libs-minimal-git="$pkgver-$pkgrel")
+    depends=(llvm-libs-minimal-git="$pkgver-$pkgrel" gcc-libs glibc)
     # the functionality offered by this package is part of the clang repo pacakge.
     # TODO: when/if this functionality is split off from repo clang, verify if changes are needed to this package
 
@@ -274,6 +274,7 @@ package_clang-opencl-headers-minimal-git() {
     # the functionality offered by this package is part of the clang repo package.
     # As far as I know rusticl from mesa is the only known user.
     # TODO: when/if this functionality is split off from repo clang, verify if changes are needed to this package
+    arch=('any')
     provides=('clang-opencl-headers')
     conflicts=("clang<$pkgver-$pkgrel" 'clang-opencl-headers')
     
