@@ -1,18 +1,6 @@
 pkgbase = batpu2-vm
 	pkgdesc = A virtual machine/assembler for MattBatwings' redstone CPU
 	pkgver = 2.10
-	pkgrel = 3
-	url = https://github.com/AdoHTQ/Batpu2-VM
-	arch = x86_64
-	license = MIT
-	depends = python3
-	source = https://github.com/consler/Batpu2-VM/releases/download/AUR5/batpu2-vm.tar.gz
-	sha256sums = SKIP
-
-pkgname = batpu2-vm
-pkgbase = batpu2-vm
-	pkgdesc = A virtual machine/assembler for MattBatwings' redstone CPU
-	pkgver = 2.10
 	pkgrel = 4
 	url = https://github.com/AdoHTQ/Batpu2-VM
 	arch = x86_64
