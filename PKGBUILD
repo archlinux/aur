@@ -7,7 +7,7 @@
 
 pkgname="firefox-pwa-bin"
 pkgdesc="A tool to install, manage and use Progressive Web Apps (PWAs) in Mozilla Firefox (native component)"
-pkgver="2.12.1"
+pkgver="2.12.2"
 pkgrel=1
 url="https://pwasforfirefox.filips.si/"
 arch=("x86_64" "i686" "aarch64" "armv7h")
@@ -23,10 +23,10 @@ source_x86_64=("https://github.com/filips123/PWAsForFirefox/releases/download/v$
 source_i686=("https://github.com/filips123/PWAsForFirefox/releases/download/v${pkgver}/firefoxpwa_${pkgver}_i386.deb")
 source_aarch64=("https://github.com/filips123/PWAsForFirefox/releases/download/v${pkgver}/firefoxpwa_${pkgver}_arm64.deb")
 source_armv7h=("https://github.com/filips123/PWAsForFirefox/releases/download/v${pkgver}/firefoxpwa_${pkgver}_armhf.deb")
-b2sums_x86_64=('48e86e5c9be448b1506ff38014ed36485fc7b23276bb9c3b19b0d6377a53276da0d9fdcd3af63c6fa10cf274ad6a61f9bdfc4a493fd6fd168317d2eee8895487')
-b2sums_i686=('9a5f7fd36b82223231eb41a0935080bfe64797d678c11cf0768d4b5bc613290d7592f5bd59475e37d9b82d3c6078ce8952cded7461c48f84f9069fbb3678345d')
-b2sums_aarch64=('b3169673ce3ec93ceb8fd1643e5adddb7a625a453c337360ef83327cffaf5e60de02112d4d69405c89bf639090f92522158463cb7e866f246ea18c65da40b931')
-b2sums_armv7h=('29a1505479fdb4a925383c998a6055e451118f89e6ab775fde5ac27e3fdaa7b925e5b9819c1eb1f5b04d5342d97c215b4a1769cf930627958e4af513cbd1bea5')
+b2sums_x86_64=('4a0c9682107dc4fa0bec3778e4269d81218ebe5b8bd79ee0be4426b4bb147bb733c1570955e69bf246fd997ac1cede7405434951aa1c7c6f3be1833c259c7e36')
+b2sums_i686=('0d7ec575ce9fdc2c239bcd43f8643ea656b5597a7be3beaf21086404847f2d505594964294017de11ed1e2960d06a98754601f8d77c42f14603f95cd05b62f6e')
+b2sums_aarch64=('c80443a00f64345c89a542fefe95ddb1c2f20f7d385bbb4de90f8060608cba84455bf185f8236221daaa06a073918c143b7fd1700709371fac832180b2f538f9')
+b2sums_armv7h=('ca5aeb1e2aea5678263d56ad934d32648279d8894e5b44ab5c4e44106f1a7a31eca25cf2fa6a34ec7343d8dfe6ed4ec227800148cefc29909c194bb9d357b38e')
 
 prepare() {
     # Extract data from DEB archive
