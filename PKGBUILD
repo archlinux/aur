@@ -1,15 +1,15 @@
 # Maintainer: Colin Arnott <colin@urandom.co.uk>
 pkgname="brlaser"
-pkgver=6
-pkgrel=3
+pkgver=6.2.6
+pkgrel=1
 pkgdesc="Brother laser printer driver"
 arch=('x86_64' 'armv7h' 'aarch64')
-url="https://github.com/pdewacht/brlaser"
+url="https://github.com/Owl-Maintain/brlaser"
 license=('GPL2')
 depends=('cups')
 makedepends=('cmake')
-source=("https://github.com/pdewacht/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('d7e0e63b64be9ae7633381622c13ba0589e5fe58d277212bce4f5bb712a291ed0b0f2ac3d450dce61c7f9052c1ce7323fec66b5005c5cb3da1314b284d20f06f')
+source=("https://github.com/Owl-Maintain/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('285a053473ae576167e653bb94c20a1ae676c1a39ec87d9b14c664e389a4713d93ca29d5cefd92a6793e1ffbc8b03b119ea8cd903749ae21c9354ce30d470a51')
 
 build() {
 	cd "${pkgname}-${pkgver}"
