@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-indexer
-pkgver=4.8.2
+pkgver=4.9.0
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
@@ -9,6 +9,7 @@ pkgdesc="Wazuh Indexer for Arch Linux"
 arch=('x86_64')
 url="https://wazuh.com/"
 license=('gpl2')
+groups=("wazuh-siem")
 depends=(
     'coreutils'
 );
@@ -29,7 +30,7 @@ backup=(
   'etc/wazuh-indexer/opensearch.keystore'
   )
 
-sha512sums=('5bc033f84e37884f5d602477e012cb176a4e34767a417de9ce2e0aa6cfab12c22f1690807299d03df121b4c64c55f171af96ec0587b2c6e6be84fd14556a6531')
+sha512sums=('132c69c02788a51a6e496b623165cadd7465380ce77077561a03bec9a083d082fdd19f3ba1c91de00503e6821066d60d9e843e7a4d28fa78bf49ef99f1e943ad')
 
 install=$pkgname.install
 

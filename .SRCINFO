@@ -1,18 +1,19 @@
 pkgbase = wazuh-indexer
 	pkgdesc = Wazuh Indexer for Arch Linux
-	pkgver = 4.8.2
+	pkgver = 4.9.0
 	pkgrel = 1
 	url = https://wazuh.com/
 	install = wazuh-indexer.install
 	arch = x86_64
+	groups = wazuh-siem
 	license = gpl2
 	depends = coreutils
 	backup = etc/wazuh-indexer/opensearch.yml
 	backup = etc/wazuh-indexer/certs
 	backup = etc/wazuh-indexer/opensearch.keystore
-	source = https://packages.wazuh.com/4.x/yum/wazuh-indexer-4.8.2-1.x86_64.rpm
+	source = https://packages.wazuh.com/4.x/yum/wazuh-indexer-4.9.0-1.x86_64.rpm
 	validpgpkeys = 9E646BB0630C8FD18ACD15541B93E6A766CD229D
 	validpgpkeys = 2B9D22B41F2AF1042BFCE73A3CA0B9DF1BE7CE09
-	sha512sums = 5bc033f84e37884f5d602477e012cb176a4e34767a417de9ce2e0aa6cfab12c22f1690807299d03df121b4c64c55f171af96ec0587b2c6e6be84fd14556a6531
+	sha512sums = 132c69c02788a51a6e496b623165cadd7465380ce77077561a03bec9a083d082fdd19f3ba1c91de00503e6821066d60d9e843e7a4d28fa78bf49ef99f1e943ad
 
 pkgname = wazuh-indexer
