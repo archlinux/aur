@@ -14,6 +14,7 @@ pkgbase = power-options-daemon-git
 	optdepends = xorg-xrandr: needed for screen settings
 	optdepends = brightnessctl: needed for brightness settings
 	optdepends = net-tools: needed to disable ethernet cards
+	conflicts = power-options-daemon
 	source = git+https://github.com/thealexdev23/power-options.git
 	md5sums = SKIP
 

@@ -10,6 +10,7 @@ license=('MIT')
 depends=('acpid' 'zsh' 'pciutils' 'usbutils')
 optdepends=('xorg-xrandr: needed for screen settings' 'brightnessctl: needed for brightness settings' 'net-tools: needed to disable ethernet cards')
 makedepends=('cargo' 'git')
+conflicts=('power-options-daemon')
 
 source=("git+https://github.com/thealexdev23/power-options.git")
 md5sums=('SKIP')
