@@ -1,6 +1,6 @@
 pkgbase = upsnap-bin
 	pkgdesc = A simple wake on lan web app written with SvelteKit, Go and PocketBase.
-	pkgver = 4.3.0
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://github.com/seriousm4x/UpSnap
 	license = MIT
@@ -8,13 +8,13 @@ pkgbase = upsnap-bin
 	conflicts = UpSnap
 	provides = UpSnap
 	arch = aarch64
-	source_aarch64 = https://github.com/seriousm4x/UpSnap/releases/download/4.3.0/UpSnap_4.3.0_linux_arm64.zip
-	sha256sums_aarch64 = 87cec2d7969af488fbbad8d7a36d3e9963b38c7a7cdaedcfdf24ca6e6ae2a5e3
+	source_aarch64 = https://github.com/seriousm4x/UpSnap/releases/download/4.3.1/UpSnap_4.3.1_linux_arm64.zip
+	sha256sums_aarch64 = 311a0a50062c648c18c787c83dd7275943aa65b0e6c31d304dd02ec9771da4bf
 	arch = armv7h
-	source_armv7h = https://github.com/seriousm4x/UpSnap/releases/download/4.3.0/UpSnap_4.3.0_linux_armv7.zip
-	sha256sums_armv7h = 959c6d99aae5476174b6cce9c7b2bd699acd56158ba7fcb9f45870af6286e655
+	source_armv7h = https://github.com/seriousm4x/UpSnap/releases/download/4.3.1/UpSnap_4.3.1_linux_armv7.zip
+	sha256sums_armv7h = 27f225c22e6f9d68fc716558619df24c7311a66b90d9aba2835b3ea394cd031c
 	arch = x86_64
-	source_x86_64 = https://github.com/seriousm4x/UpSnap/releases/download/4.3.0/UpSnap_4.3.0_linux_amd64.zip
-	sha256sums_x86_64 = cb511fd83adbb8c590bbda460bcbab9fd9252d504ec1f189fb44cfa44b04c5d2
+	source_x86_64 = https://github.com/seriousm4x/UpSnap/releases/download/4.3.1/UpSnap_4.3.1_linux_amd64.zip
+	sha256sums_x86_64 = 0da45ab270fdbbed00edd7bc3add41beb8d49c9836227d4642653ee4eb0779da
 	
 pkgname = upsnap-bin
