@@ -1,6 +1,6 @@
 --- a/source/CMakeLists.txt
 +++ b/source/CMakeLists.txt
-@@ -18,10 +18,6 @@ add_subdirectory(dsp56300/source)
+@@ -20,10 +20,6 @@ add_subdirectory(baseLib)
  add_subdirectory(synthLib)
  add_subdirectory(libresample)
  

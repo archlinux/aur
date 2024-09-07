@@ -6,13 +6,12 @@ pkgname=(
   'dsp56300-emulator-lv2'
   'dsp56300-emulator-vst3'
 )
-pkgver=1.3.17
+pkgver=1.3.19
 pkgrel=1
 pkgdesc='Emulates musical devices that used the Motorola 56300 DSPs'
 arch=('x86_64')
 url='https://github.com/dsp56300/gearmulator'
 license=('GPL-3.0-only')
-groups=('pro-audio')
 _common_depends=(
   'glibc'
   'freetype2'
@@ -46,7 +45,7 @@ source=(
   'skip-cpack.patch'
   'skip-tests.patch'
 )
-sha512sums=('9d5de59a4cc5f2460ff271940ff80eb246bc0b750646628efaa34019fd548837756df91cf2f418c153d8c1174f0cb32aa1518449f8cde8db4672b7cc8fde95c0'
+sha512sums=('5c6b945137b9bfddc3d9ed97d8ccc0b03a9dc8bbf351f3d0d60becb79aabf1bf8e55c171ac365dc8fe352a42399f69b9163cfe6e63fff856310a0e217a527db6'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -54,10 +53,10 @@ sha512sums=('9d5de59a4cc5f2460ff271940ff80eb246bc0b750646628efaa34019fd548837756
             'SKIP'
             'SKIP'
             'SKIP'
-            '52202eaeca3dc400c6d54ce17cf04222844df1e0bc568ea782c546f989334bb6aa0c902f7e55ae09a583a21f5fb028b1352839ef0683a033b896b2b957343c58'
+            '07033d6171eabf8a57318c0e441d4c2c591f67ae6add2e6c4817224fe4c87c4c9563f1c2cb6db3282229a6e10415e13a986cc4a976373a493fbcbc302a4ee888'
             '9264c532fdd430f29341461555cf392d199bf58eddf63dfa6b8f88a37775ccba0ad287c8a36410bb7c5c5aac16a9c1ca1c47ab69d71955f12ebc83176872b0cf'
-            'a2cc32ef8eda1b98aff01be4b8f46f7201df7742b81cd947fad871e67355030dfaee6ffa5d53414f98e357c8144598fac5f22fa9f89b8a5394b0ec0561745054')
-b2sums=('2dc3e4d51f50851f21b06654d6d6eedf2e5d8f2b5f5a1872c425450ea0dd7afdade356776f655e3583c93ee2f0277f8110a464a564adec5593a7d4d23639aaae'
+            '2334010c663b5e90e6b63a0e3ca73871609b2bc1d01116ea56dd896972f66a704cf910cfb61d44c922541376a1add69562f31ccc2457f1e16badbc932f0e4a45')
+b2sums=('ee1dfea834671034a9b960dbc19c52cd2b2732397c6f90ba2451a99c21f808cde7d0efb2b9bbb681c44e615823d986ffd7900cdcf94eec18da3dc1826a8b109d'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -65,9 +64,9 @@ b2sums=('2dc3e4d51f50851f21b06654d6d6eedf2e5d8f2b5f5a1872c425450ea0dd7afdade3567
         'SKIP'
         'SKIP'
         'SKIP'
-        '97a00d07438039abc59b3e866528f61ddc85082254815cdf9bc1039246c629225d1e6d9eac4fa69538a770fbbbd470c8063cae708e6fae45ae59166299321580'
+        '27125a193dea0eb2bfb5cc33239fda09d4af8477123eb8550b8c9aee82641b66ef71851a177c7b7d3f6f59c408ee86f064e8c8d8e9a4725cfded48dc8334f7ce'
         '68ec32184ad27cd75a71383025abc4e4fef7252c06f32577832193ca9d58a22c1825631c377ac6160beccc13938c4a4565016844d4cdab5f43e0580f22aee853'
-        'b022516d0726fceee7412f471410caf935ce23e02b3e0e827cd7f675ea1dc141f7bbd53bc498ba26ad77456859dcfbceddd251e877b63f7e2bb4164aea9a6866')
+        'a0f622bf3716435a66bb8023295a8c5250819279461c0e61849e784b1b4586b7514f701608beaff43b0a874430cc8178de7a49da2f89eb47cb5773bb270f1623')
 
 prepare() {
   cd "$pkgbase"
@@ -114,7 +113,6 @@ build() {
   cmake \
     -S "$pkgbase" \
     -B build \
-    -D CMAKE_INSTALL_PREFIX=/usr \
     -D gearmulator_BUILD_JUCEPLUGIN=ON \
     -D gearmulator_BUILD_JUCEPLUGIN_CLAP=ON \
     -D gearmulator_BUILD_JUCEPLUGIN_LV2=ON \
@@ -122,39 +120,30 @@ build() {
     -D gearmulator_SYNTH_OSIRUS=ON \
     -D gearmulator_SYNTH_OSTIRUS=ON \
     -D gearmulator_SYNTH_VAVRA=ON \
-    -D gearmulator_SYNTH_XENIA=ON
+    -D gearmulator_SYNTH_XENIA=ON \
+    -D gearmulator_SYNTH_NODALRED2X=ON
 
   cmake --build build --config Release
 }
 
-# variable used for packaging
-_plugin_dirs=(
-  mqJucePlugin
-  osTIrusJucePlugin
-  osirusJucePlugin
-  xtJucePlugin
-)
-
 package_dsp56300-emulator-clap() {
   pkgdesc+=' - CLAP plugins'
-  groups+=('clap-plugins')
+  groups=('pro-audio' 'clap-plugins')
   depends=(
     "${_common_depends[@]}"
     'clap-host'
   )
 
-  cd build/source
-
-  for plugin_dir in ${_plugin_dirs[@]}; do
-    install -vDm755 \
-      "${plugin_dir}/${plugin_dir}"_{,FX_}artefacts/Release/CLAP/*.clap \
-      -t "$pkgdir/usr/lib/clap"
-  done
+  find \
+    build/source \
+    -type f \
+    -name "*.clap" \
+    -exec install -vDm755 {} -t "$pkgdir/usr/lib/clap" \;
 }
 
 package_dsp56300-emulator-lv2() {
   pkgdesc+=' - LV2 plugins'
-  groups+=('lv2-plugins')
+  groups=('pro-audio' 'lv2-plugins')
   depends=(
     "${_common_depends[@]}"
     'lv2-host'
@@ -163,18 +152,16 @@ package_dsp56300-emulator-lv2() {
   # install required directory
   install -vd "$pkgdir/usr/lib/lv2"
 
-  cd build/source
-
-  for plugin_dir in ${_plugin_dirs[@]}; do
-    cp -vr \
-      "${plugin_dir}/${plugin_dir}"_{,FX_}artefacts/Release/LV2/*.lv2 \
-      "$pkgdir/usr/lib/lv2"
-  done
+  find \
+    build/source \
+    -type d \
+    -name "*.lv2" \
+    -exec cp -vr {} "$pkgdir/usr/lib/lv2" \;
 }
 
 package_dsp56300-emulator-vst3() {
   pkgdesc+=' - VST3 plugins'
-  groups+=('vst3-plugins')
+  groups=('pro-audio' 'vst3-plugins')
   depends=(
     "${_common_depends[@]}"
     'vst3-host'
@@ -183,11 +170,9 @@ package_dsp56300-emulator-vst3() {
   # install required directory
   install -vd "$pkgdir/usr/lib/vst3"
 
-  cd build/source
-
-  for plugin_dir in ${_plugin_dirs[@]}; do
-    cp -vr \
-      "${plugin_dir}/${plugin_dir}"_{,FX_}artefacts/Release/VST3/*.vst3 \
-      "$pkgdir/usr/lib/vst3"
-  done
+  find \
+    build/source \
+    -type d \
+    -name "*.vst3" \
+    -exec cp -vr {} "$pkgdir/usr/lib/vst3" \;
 }

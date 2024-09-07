@@ -1,7 +1,7 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -22,7 +22,6 @@ endif()
- project(gearmulator VERSION 1.3.17)
+ project(gearmulator VERSION 1.3.19)
  
  include(base.cmake)
 -include(CTest)
@@ -10,45 +10,55 @@
  option(${PROJECT_NAME}_BUILD_JUCEPLUGIN_CLAP "Build CLAP version of Juce plugin" on)
 --- a/source/CMakeLists.txt
 +++ b/source/CMakeLists.txt
-@@ -45,9 +45,6 @@ endif()
+@@ -47,9 +47,6 @@ add_subdirectory(wLib EXCLUDE_FROM_ALL)
  
  if(${CMAKE_PROJECT_NAME}_SYNTH_OSIRUS OR ${CMAKE_PROJECT_NAME}_SYNTH_OSTIRUS)
- 	add_subdirectory(virusLib)
--	add_subdirectory(virusConsoleLib)
+ 	add_subdirectory(virusLib EXCLUDE_FROM_ALL)
+-	add_subdirectory(virusConsoleLib EXCLUDE_FROM_ALL)
 -	add_subdirectory(virusTestConsole)
 -	add_subdirectory(virusIntegrationTest)
  	if(${CMAKE_PROJECT_NAME}_BUILD_JUCEPLUGIN)
- 		add_subdirectory(virusJucePlugin)
+ 		add_subdirectory(virusJucePlugin EXCLUDE_FROM_ALL)
  		if(${CMAKE_PROJECT_NAME}_SYNTH_OSIRUS)
-@@ -64,23 +61,6 @@ endif()
+@@ -66,23 +63,6 @@ endif()
  if(${CMAKE_PROJECT_NAME}_SYNTH_VAVRA)
- 	add_subdirectory(mqLib)
+ 	add_subdirectory(mqLib EXCLUDE_FROM_ALL)
  
 -	# needed for test console
 -	set(CPPTERMINAL_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 -	set(CPPTERMINAL_ENABLE_INSTALL OFF CACHE BOOL "" FORCE)
 -	set(CPPTERMINAL_ENABLE_TESING OFF CACHE BOOL "" FORCE)
--	add_subdirectory(cpp-terminal)
+-	add_subdirectory(cpp-terminal EXCLUDE_FROM_ALL)
 -
 -	if(NOT ANDROID)
--		add_subdirectory(portmidi)
+-		add_subdirectory(portmidi EXCLUDE_FROM_ALL)
 -	endif()
 -
 -	set(PA_USE_ASIO OFF CACHE BOOL "" FORCE)
--	add_subdirectory(portaudio)
+-	add_subdirectory(portaudio EXCLUDE_FROM_ALL)
 -
--	add_subdirectory(mqConsoleLib)
+-	add_subdirectory(mqConsoleLib EXCLUDE_FROM_ALL)
 -	add_subdirectory(mqTestConsole)
 -	add_subdirectory(mqPerformanceTest)
 -
  	if(${CMAKE_PROJECT_NAME}_BUILD_JUCEPLUGIN)
  		add_subdirectory(mqJucePlugin)
  	endif()
-@@ -90,7 +70,6 @@ endif()
+@@ -92,7 +72,6 @@ endif()
  
  if(${CMAKE_PROJECT_NAME}_SYNTH_XENIA)
- 	add_subdirectory(xtLib)
+ 	add_subdirectory(xtLib EXCLUDE_FROM_ALL)
 -	add_subdirectory(xtTestConsole)
  
  	if(${CMAKE_PROJECT_NAME}_BUILD_JUCEPLUGIN)
  		add_subdirectory(xtJucePlugin)
+--- a/source/nord/n2x/CMakeLists.txt
++++ b/source/nord/n2x/CMakeLists.txt
+@@ -1,7 +1,6 @@
+ cmake_minimum_required(VERSION 3.15)
+ 
+ add_subdirectory(n2xLib)
+-add_subdirectory(n2xTestConsole)
+ 
+ if(${CMAKE_PROJECT_NAME}_BUILD_JUCEPLUGIN)
+ 	add_subdirectory(n2xJucePlugin)
