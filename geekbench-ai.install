@@ -1,0 +1,20 @@
+post_install() {
+	cat << EOF
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+Binary is named banff
+
+By using this software, you agree to EULA shipped with this package
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+EOF
+}
+
+post_upgrade() {
+	cat << EOF
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+Binary is named banff
+
+By using this software, you agree to EULA shipped with this package
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+
+EOF
+}
