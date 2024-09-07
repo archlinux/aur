@@ -1,5 +1,5 @@
 pkgbase = simple-sddm-theme-2-git
-	pkgdesc = Simple theme variant for the SDDM Login Manager using QT6
+	pkgdesc = Simple theme variant for the SDDM Login Manager using Qt6
 	pkgver = _
 	pkgrel = 1
 	url = https://github.com/JaKooLit/simple-sddm-2
