@@ -12,10 +12,12 @@ groups=()
 options=("!strip")
 depends=("yosys-nightly" "python" "python-click")
 optdepends=(
+	"bitwuzla"
 	"boolector"
 	"yices"
 	"z3"
 )
+provides=("sby" "symbiyosys")
 makedepends=("git")
 conflicts=("symbiyosys-git")
 replaces=("symbiyosys-nightly")
