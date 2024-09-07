@@ -1,6 +1,6 @@
 pkgbase = python-pynotify
 	pkgdesc = Python Inotify Class
-	pkgver = 1.2.5
+	pkgver = 1.2.6
 	pkgrel = 1
 	url = https://github.com/gene-git/pynotify
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-pynotify
 	makedepends = python-installer
 	makedepends = rsync
 	depends = python>3.10
-	source = git+https://github.com/gene-git/pynotify#tag=1.2.5
+	source = git+https://github.com/gene-git/pynotify#tag=1.2.6
 	sha512sums = SKIP
 
 pkgname = python-pynotify
