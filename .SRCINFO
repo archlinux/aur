@@ -1,6 +1,6 @@
 pkgbase = kpcli
 	pkgdesc = Command line browser of KeePassX database files (*.kdb)
-	pkgver = 4.1
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = http://sourceforge.net/projects/kpcli/
 	arch = any
@@ -18,9 +18,9 @@ pkgbase = kpcli
 	optdepends = perl-expect: import Keepass KDBX4 files
 	optdepends = perl-capture-tiny
 	optdepends = perl-clipboard
-	source = kpcli-4.1.pl::https://sourceforge.net/projects/kpcli/files/kpcli-4.1.pl/download
-	source = kpcli-4.1-README::https://sourceforge.net/projects/kpcli/files/README.txt/download
-	sha256sums = dedf0e86f44f8f7a1a9c524a45a515846945d01e04f9402571f18c22971eb7db
-	sha256sums = f8fae3e138dd7a12863e4f12cddfedfdd6d3921c8ad11f24fae737f22966e7d9
+	source = kpcli-4.1.1.pl::https://sourceforge.net/projects/kpcli/files/kpcli-4.1.1.pl/download
+	source = kpcli-4.1.1-README::https://sourceforge.net/projects/kpcli/files/README.txt/download
+	sha256sums = cb218a556a33718d8eae4eb6595f5e0bdb0d63226964f89fd4beded87e0d2ff4
+	sha256sums = 3db4157149fc16469dea0236facd270b51b3fe4259a4066806c68b5f7e821ad7
 
 pkgname = kpcli
