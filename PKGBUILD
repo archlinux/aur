@@ -6,7 +6,7 @@
 _pkgbasename=gtk2
 pkgname=lib32-$_pkgbasename
 pkgver=2.24.33
-pkgrel=2
+pkgrel=3
 pkgdesc="GObject-based multi-platform GUI toolkit (legacy) (32-bit)"
 arch=('x86_64')
 url="https://www.gtk.org/"
@@ -14,23 +14,24 @@ install=gtk2.install
 depends=(lib32-{atk,pango,cairo,gdk-pixbuf2}
          lib32-lib{cups,xcursor,xrandr,xi,xinerama,xcomposite,xdamage}
          $_pkgbasename)
-makedepends=('python')
+makedepends=('python' 'glib2-devel')
 license=('LGPL')
 source=(https://download.gnome.org/sources/gtk+/2.24/gtk+-${pkgver}.tar.xz
-        xid-collision-debug.patch)
+        0001-Lower-severity-of-XID-collision-warnings.patch)
 sha256sums=('ac2ac757f5942d318a311a54b0c80b5ef295f299c2a73c632f6bfb1ff49cc6da'
-            'd758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558')
+            'cbb55e57f06a1439f115d6c6dc4730f70011cc3926deb0ad1b32f2576ee99a0d')
 
 prepare() {
   cd "${srcdir}/gtk+-${pkgver}"
 
-  patch -Np1 -i "${srcdir}/xid-collision-debug.patch"
+  patch -Np1 -i "${srcdir}/0001-Lower-severity-of-XID-collision-warnings.patch"
 }
 
 build() {
   export CC="gcc -m32"
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  CFLAGS+=" -Wno-error=implicit-int -Wno-error=incompatible-pointer-types"
 
   cd "${srcdir}/gtk+-${pkgver}"
 
