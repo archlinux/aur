@@ -1,0 +1,15 @@
+pkgbase = python-primp
+	pkgdesc = HTTP client that can impersonate web browsers, mimicking their headers and `TLS/JA3/JA4/HTTP2` fingerprints
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/deedy5/primp
+	arch = any
+	license = MIT
+	makedepends = python-maturin
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	source = https://files.pythonhosted.org/packages/source/p/primp/primp-0.6.1.tar.gz
+	sha256sums = 64b3c12e3d463a887518811c46f3ec37cca02e6af1ddf1287e548342de436301
+
+pkgname = python-primp
