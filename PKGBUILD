@@ -3,12 +3,12 @@ _Pkgname=Yakit
 _disname=yakit
 major_version=1
 minor_version=3
-patch_version=4
-sp_version='-823'
-_sp_version='_823'
+patch_version=6
+sp_version='0906'
+flag="ce"
 
 pkgname="${_pkgname}"-appimage
-pkgver="${major_version}.${minor_version}.${patch_version}${_sp_version}"
+pkgver="${major_version}.${minor_version}.${patch_version}_${_sp_version}_${flag}"
 pkgrel=1
 pkgdesc="Cyber Security ALL-IN-ONE Platform"
 arch=('x86_64')
@@ -18,48 +18,48 @@ options=('!strip' '!debug')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 provides=('yakit')
 
-source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}${sp_version}-linux-amd64.AppImage::https://github.com/yaklang/yakit/releases/download/v${major_version}.${minor_version}.${patch_version}${sp_version}/${_Pkgname}-${major_version}.${minor_version}.${patch_version}${sp_version}-linux-amd64.AppImage")
-sha256sums_x86_64=('e6498f921f66aac853c506d75417c859b877d63b08913e5b5240d86c3786d0fc')
+source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}-${sp_version}-linux-amd64.AppImage::https://github.com/yaklang/yakit/releases/download/v${major_version}.${minor_version}.${patch_version}-${sp_version}-${flag}/${_Pkgname}-${major_version}.${minor_version}.${patch_version}-${sp_version}-linux-amd64.AppImage")
+sha256sums_x86_64=("2ba74417695a7735b4db32b07d44b01ade14906194537f8ed4e268528b22d88e")
 
-_appimage="${_Pkgname}-${major_version}.${minor_version}.${patch_version}${sp_version}-linux-amd64.AppImage"
+_appimage="${_Pkgname}-${major_version}.${minor_version}.${patch_version}-${sp_version}-linux-amd64.AppImage"
 noextract=("${_appimage}")
 
 prepare() {
-	chmod +x "${_appimage}"
-	./"${_appimage}" --appimage-extract
+  chmod +x "${_appimage}"
+  ./"${_appimage}" --appimage-extract
 }
 
 build() {
-	# Adjust .desktop so it will work outside of AppImage container
-	sed -i \
-		-e "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|" \
-		-e "s|Icon=.*|Icon=/usr/share/icons/${_pkgname}.png|" \
-		"squashfs-root/${_disname}.desktop"
+  # Adjust .desktop so it will work outside of AppImage container
+  sed -i \
+    -e "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|" \
+    -e "s|Icon=.*|Icon=/usr/share/icons/${_pkgname}.png|" \
+    "squashfs-root/${_disname}.desktop"
 
-	# Fix permissions; .AppImage permissions are 700 for all directories
-	chmod -R a-x+rX squashfs-root/usr
+  # Fix permissions; .AppImage permissions are 700 for all directories
+  chmod -R a-x+rX squashfs-root/usr
 }
 
 package() {
-	# AppImage
-	install -Dm755 "${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
-	install -Dm644 "${srcdir}/squashfs-root/LICENSE.electron.txt" "${pkgdir}/opt/${pkgname}/LICENSE"
+  # AppImage
+  install -Dm755 "${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+  install -Dm644 "${srcdir}/squashfs-root/LICENSE.electron.txt" "${pkgdir}/opt/${pkgname}/LICENSE"
 
-	# Desktop file
-	install -Dm644 "${srcdir}/squashfs-root/${_disname}.desktop" \
-		"${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  # Desktop file
+  install -Dm644 "${srcdir}/squashfs-root/${_disname}.desktop" \
+    "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
-	# Icon images
-	install -dm755 "${pkgdir}/usr/share/"
-	cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
-	ln -s "$(realpath ${srcdir}/squashfs-root/${_disname}.png --relative-to ${srcdir}/squashfs-root/usr/share/icons)" \
-		"${pkgdir}/usr/share/icons/${_pkgname}.png"
+  # Icon images
+  install -dm755 "${pkgdir}/usr/share/"
+  cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
+  ln -s "$(realpath ${srcdir}/squashfs-root/${_disname}.png --relative-to ${srcdir}/squashfs-root/usr/share/icons)" \
+    "${pkgdir}/usr/share/icons/${_pkgname}.png"
 
-	# Symlink executable
-	install -dm755 "${pkgdir}/usr/bin"
-	ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+  # Symlink executable
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 
-	# Symlink license
-	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-	ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+  # Symlink license
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
+  ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
