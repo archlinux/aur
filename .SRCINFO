@@ -1,0 +1,20 @@
+pkgbase = power-options-daemon-git
+	pkgdesc = The core daemon for Power Options, a blazingly fast power management solution.
+	pkgver = 0.1.0r1
+	pkgrel = 1
+	url = https://github.com/thealexdev23/power-options
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = acpid
+	depends = zsh
+	depends = pciutils
+	depends = usbutils
+	optdepends = xorg-xrandr: needed for screen settings
+	optdepends = brightnessctl: needed for brightness settings
+	optdepends = net-tools: needed to disable ethernet cards
+	source = git+https://github.com/thealexdev23/power-options.git
+	md5sums = SKIP
+
+pkgname = power-options-daemon-git
