@@ -11,7 +11,6 @@ license=(GPL3)
 depends=('qt6-5compat' 'qt6-declarative' 'qt6-svg' 'sddm')
 makedepends=(git)
 backup=("usr/share/sddm/themes/${_gitname}/theme.conf")
-source=("git+https://github.com/JaKooLit/${_gitname}")
 sha256sums=('SKIP')
 
 package() {
