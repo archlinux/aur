@@ -8,13 +8,12 @@ _srcname=SPIRV-LLVM-Translator
 pkgname=lib32-spirv-llvm-translator-minimal-git
 pkgdesc="Tool and a library for bi-directional translation between SPIR-V and LLVM IR, trunk version"
 epoch=1
-pkgver=r2107.2b5f15d
+pkgver=r2109.7cd8641
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
 license=('custom:Apache 2.0 with LLVM Exception')
-makedepends=(lib32-llvm-minimal-git git cmake spirv-headers lib32-spirv-tools 'lib32-llvm-libs<$_major_llvm_ver')
-depends=(lib32-llvm-libs-minimal-git lib32-spirv-tools lib32-gcc-libs lib32-glibc spirv-llvm-translator-minimal-git)
+makedepends=(lib32-llvm-minimal-git git cmake spirv-headers-git lib32-spirv-tools)
 provides=(lib32-spirv-llvm-translator)
 conflicts=(lib32-spirv-llvm-translator)
 source=("git+$url.git"
@@ -54,7 +53,8 @@ build() {
 }
 
 package() {
-
+    depends=(lib32-llvm-libs-minimal-git lib32-gcc-libs lib32-glibc spirv-llvm-translator-minimal-git)
+    
     make -C _build DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}"/usr/{bin,include}
     install -Dm644 $_srcname/LICENSE.TXT -t "$pkgdir"/usr/share/licenses/$pkgname/
