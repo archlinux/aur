@@ -3,8 +3,8 @@
 
 _target=riscv64-unknown-elf
 pkgname=$_target-gcc
-pkgver=13.2.0
-_islver=0.26
+pkgver=14.2.0
+_islver=0.27
 pkgrel=2
 #_snapshot=7-20170504
 pkgdesc='The GNU Compiler Collection - cross compiler for 32bit and 64bit RISC-V bare-metal'
@@ -15,8 +15,8 @@ depends=("$_target-binutils" 'zlib' 'libmpc')
 options=(!emptydirs !strip)
 source=("https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "https://libisl.sourceforge.io/isl-$_islver.tar.xz")
-sha256sums=('e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da'
-            'a0b5cb06d24f9fa9e77b55fabbe9a3c94a336190345c2555f9915bb38e976504')
+sha256sums=('a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9'
+            '6d8babb59e7b672e8cb7870e874f3f7b813b6e00e6af3f8b04f7579965643d5c')
 
 if [[ -n "$_snapshot" ]]; then
   _basedir=gcc-$_snapshot
