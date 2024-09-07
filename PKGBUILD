@@ -3,7 +3,7 @@
 pkgname=('mtxx-bin')
 _pkgname="mtxx"
 pkgver=2.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="美图秀秀, An image editing software that is mostly used in Mainland China"
 provides=($_pkgname)
 url="https://xiuxiu.web.meitu.com/"
@@ -22,7 +22,7 @@ prepare() {
     cd ${srcdir}
     tar -xJvf data.tar.xz -C "${srcdir}"
     cd opt/apps/com.meitu.mtxx/files/mtxx
-    patchelf --add-rpath '$ORIGIN/../lib/mtxx' mtxx
+    patchelf --add-rpath '$ORIGIN/../../lib/mtxx' mtxx
 
     cd ${srcdir}/opt/apps/com.meitu.mtxx/entries
     rm -rf .DS_Store icons/.DS_Store
