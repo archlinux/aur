@@ -1,6 +1,6 @@
 pkgbase = urlview-git
 	pkgdesc = A curses URL parser for text files
-	pkgver = 1d.r0.g51a8d27
+	pkgver = 1.d.r2.g87d2ed7
 	pkgrel = 1
 	url = https://git.sr.ht/~nabijaczleweli/urlview-ng
 	arch = i686
@@ -11,7 +11,8 @@ pkgbase = urlview-git
 	depends = bash
 	depends = ncurses
 	provides = urlview
-	conflicts = urlview=1d.r0.g51a8d27
+	conflicts = urlview
+	options = !debug
 	source = urlview::git+https://git.sr.ht/~nabijaczleweli/urlview-ng
 	sha256sums = SKIP
 

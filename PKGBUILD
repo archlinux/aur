@@ -5,10 +5,9 @@
 # https://packages.qa.debian.org/u/urlview.html
 # https://sr.ht/~nabijaczleweli/urlview-ng/
 
-# basic info
 _pkgname="urlview"
 pkgname="$_pkgname-git"
-pkgver=1d.r0.g51a8d27
+pkgver=1.d.r2.g87d2ed7
 pkgrel=1
 pkgdesc="A curses URL parser for text files"
 url="https://git.sr.ht/~nabijaczleweli/urlview-ng"
@@ -23,8 +22,10 @@ makedepends=(
   'git'
 )
 
-conflicts=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 provides=("$_pkgname")
+
+options=('!debug')
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url")
@@ -33,7 +34,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_pkgsrc"
   git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+    | sed -E 's/^[^0-9]*//;s/([0-9]+)([a-z]+)/\1.\2/;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
