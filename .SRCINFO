@@ -1,12 +1,14 @@
 pkgbase = pypy3-pip
 	pkgdesc = The PyPA recommended tool for installing Python packages
 	pkgver = 24.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pip.pypa.io
 	arch = any
 	license = MIT
+	makedepends = pypy3-build
+	makedepends = pypy3-installer
+	makedepends = pypy3-setuptools
 	depends = pypy3
-	depends = pypy3-setuptools
 	source = https://pypi.org/packages/source/p/pip/pip-24.2.tar.gz
 	sha512sums = 42da0dc6ccf5759fea20fd6f54db272aae7afb2d997c84e1d817e3c95437ba073f4f15cb511e5275cf4f35a82828bb0259c5ffe381d278dc75c2bc8f82dfa404
 

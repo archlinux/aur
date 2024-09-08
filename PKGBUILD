@@ -9,26 +9,25 @@
 _base=pip
 pkgname=pypy3-${_base}
 pkgver=24.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The PyPA recommended tool for installing Python packages"
 url="https://${_base}.pypa.io"
 arch=(any)
 license=(MIT)
-depends=(pypy3 pypy3-setuptools)
+depends=(pypy3)
+makedepends=(pypy3-build pypy3-installer pypy3-setuptools)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
 sha512sums=('42da0dc6ccf5759fea20fd6f54db272aae7afb2d997c84e1d817e3c95437ba073f4f15cb511e5275cf4f35a82828bb0259c5ffe381d278dc75c2bc8f82dfa404')
 
 build() {
   cd ${_base}-${pkgver}
-  pypy3 setup.py build
+  pypy3 -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" pypy3 setup.py install --prefix=/opt/pypy3/ --root="${pkgdir}"
-
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" pypy3 -m installer --destdir="$pkgdir" dist/*.whl
   mkdir -p "${pkgdir}/usr/bin"
   mv "${pkgdir}/opt/pypy3/bin/pip" "${pkgdir}/usr/bin/pip-pypy3"
-
   install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
