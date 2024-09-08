@@ -1,6 +1,6 @@
 pkgbase = amber-bash-git
 	pkgdesc = The programming language compiled to bash
-	pkgver = master
+	pkgver = r447.abfb15f
 	pkgrel = 1
 	url = https://amber-lang.com/
 	arch = x86_64
