@@ -2,7 +2,7 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.33.r16913.92c1a8c45d
+pkgver=0.0.33.r16916.53c84577c0
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64 aarch64)
@@ -47,7 +47,6 @@ makedepends=(
   git
   libglvnd
   python
-  vulkan-validation-layers
   # clang is required because audio is broken with latest gcc
   clang
 )
@@ -79,7 +78,7 @@ prepare() {
   git config submodule.3rdparty/glslang.url ../glslang
   
   SUBMODULES=($(git config --file .gitmodules --get-regexp path | \
-    awk '!/libpng/ && !/zlib/ && !/curl/ && !/llvm/ && !/glslang/ && !/pugixml/ '))
+    awk '!/libpng/ && !/zlib/ && !/curl/ && !/llvm/ && !/glslang/ && !/pugixml/ && !/SDL/ && !/flatbuffers/ '))
 
   # We need to convert from a relative folder path to a https://github.com path
   for ((i=0;i<${#SUBMODULES[@]};i+=2))
@@ -121,11 +120,11 @@ build() {
     -DBUILD_LLVM=OFF \
     -DUSE_SYSTEM_WOLFSSL=OFF
   
-  make -C build
+  cmake --build build
 }
 
 package() {
-  make DESTDIR="${pkgdir}" -C build install
+  DESTDIR="${pkgdir}" cmake --install build
 }
 
 # vim: ts=2 sw=2 et:

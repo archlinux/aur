@@ -1,6 +1,6 @@
 pkgbase = rpcs3-git
 	pkgdesc = A Sony PlayStation 3 emulator
-	pkgver = 0.0.33.r16913.92c1a8c45d
+	pkgver = 0.0.33.r16916.53c84577c0
 	pkgrel = 1
 	url = https://github.com/RPCS3/rpcs3
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = rpcs3-git
 	makedepends = git
 	makedepends = libglvnd
 	makedepends = python
-	makedepends = vulkan-validation-layers
 	makedepends = clang
 	depends = alsa-lib
 	depends = glew
