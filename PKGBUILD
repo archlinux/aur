@@ -1,8 +1,8 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _binname="flow"
 pkgname="${_binname}-cli"
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A command-line interface that provides useful utilities for building Flow applications"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('go')
 depends=('glibc')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5767f8e2a1ff8ec4fbd4b04ddcdc0509fcc9e7cb24cfc02d7ec87f847ed9c222')
+sha256sums=('ec9f8926faa8f672cd01e8b374e3383a61301fe91d6a76ec9ef112b1279ed2bd')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
