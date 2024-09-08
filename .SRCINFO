@@ -19,6 +19,7 @@ pkgbase = elmerfem-git
 	depends = qwt
 	depends = openmpi
 	depends = netcdf-fortran-openmpi
+	depends = hdf5-openmpi
 	depends = openmp
 	depends = paraview
 	provides = elmerfem
