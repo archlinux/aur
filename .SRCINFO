@@ -1,14 +1,14 @@
 pkgbase = pypy3-installer
 	pkgdesc = A low-level library for installing from a Python wheel distribution
-	pkgver = 0.2.3
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://installer.pypa.io
 	arch = any
 	license = MIT
 	makedepends = pypy3-setuptools
 	makedepends = python-dephell
 	depends = pypy3
-	source = installer-0.2.3.tar.gz::https://github.com/pypa/installer/archive/0.2.3.tar.gz
-	sha512sums = daa80c11e734ffa520779c7e08df4779f41dec429ebf642f024d575cfd952da0bbd0cc78190ca1b50bbcff3adf5cf5d97c4f1f605714d5f8fd40a21a64fbe623
+	source = installer-0.4.0.tar.gz::https://github.com/pypa/installer/archive/0.4.0.tar.gz
+	sha512sums = 13537c479bc8ead8f8b45c8e5c5182e8b1b32c2889df8015be7f517f390a9efbea6fa167e0886dfade6621a8a2d822bfd662ee0238d3d86689619ca4d5483b26
 
 pkgname = pypy3-installer
