@@ -36,23 +36,18 @@ build () {
 	ruby docgen.rb mangen
 	popd &> /dev/null
 
-	rm -rf "${pkgname}/build"
-	mkdir "${pkgname}/build"
-	cd "${pkgname}/build"
-	cmake \
+	cmake -B build -S "$pkgname/src" \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DVIDEO_PLATFORM=egl-dri \
 		-DHYBRID_SDL=ON \
 		-DENABLE_LWA=ON \
-		-DENABLE_LTO=ON \
-		../src
-	make
+		-DENABLE_LTO=ON
+	cmake --build build
 }
 
 package () {
-	cd "${pkgname}/build"
-	DESTDIR="${pkgdir}" make install
+	DESTDIR="${pkgdir}" cmake --install build
 
 	# Fix location of manpages.
 	if [[ -d ${pkgdir}/usr/man ]] ; then
