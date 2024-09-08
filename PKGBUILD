@@ -2,7 +2,7 @@
 
 pkgname=azure-dev-cli
 _pkgname=azure-dev
-pkgver=1.9.6
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="Developer CLI that reduces the time it takes for you to get started on Azure"
 arch=(x86_64)
@@ -17,36 +17,30 @@ depends=(
 )
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/azure-dev-cli_$pkgver.tar.gz")
-sha256sums=('44ff577884260d14bf72aeddb4e2a9b355e6dc1f5b4c5d30b86c5524dab4824f')
+sha256sums=('a48dcc2e0912a2cb992519f3e8175de547368dcd0089c5467ee1a15c80183b27')
 
 _archive="$_pkgname-azure-dev-cli_$pkgver"
 
 prepare() {
   cd "$_archive"
-
-  go mod download -x
+  GOFLAGS="-mod=readonly" go mod vendor -v
 }
 
 build() {
   cd "$_archive"
-
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -mod=vendor -modcacherw -buildvcs=false"
+  export GOPATH="$srcdir"
 
-  go build -v -buildvcs=false -o azd ./cli/azd/main.go
-
-  # Completions
-  ./azd completion bash > azd.bash
-  ./azd completion fish > azd.fish
-  ./azd completion zsh > azd.zsh
+  local ld_flags="-compressdwarf=false -linkmode=external"
+  go build -v -ldflags="$ld_flags" -o azd ./cli/azd/main.go
 }
 
 check() {
   cd "$_archive"
-
   # Skip failing tests - not sure why they fail.
   local unit_tests=$(
     go list ./... \
@@ -60,15 +54,16 @@ check() {
 
 package() {
   cd "$_archive"
+  install -vDm755 -t "$pkgdir/usr/bin" azd
 
-  install -Dm755 -t "$pkgdir/usr/bin" azd
+  ./azd completion bash \
+    | install -vDm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/azd"
+  ./azd completion fish \
+    | install -vDm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/azd.fish"
+  ./azd completion zsh \
+    | install -vDm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_azd"
 
-  install -Dm644 azd.bash "$pkgdir/usr/share/bash-completion/completions/azd"
-  install -Dm644 azd.fish "$pkgdir/usr/share/fish/vendor_completions.d/azd.fish"
-  install -Dm644 azd.zsh "$pkgdir/usr/share/zsh/site-functions/_azd"
-
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
   cp -a -t "$pkgdir/usr/share/doc/$pkgname" docs
-
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
