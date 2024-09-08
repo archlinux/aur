@@ -1,6 +1,6 @@
 pkgbase = pyglet
 pkgdesc = A cross-platform windowing and multimedia library for Python
-pkgver = 2.0.16
+pkgver = 2.0.17
 pkgrel = 1
 url = https://github.com/pyglet/pyglet
 arch = any
@@ -11,8 +11,8 @@ depends = glu
 depends = python-future
 optdepends = ffmpeg: provides audio&video support
 optdepends = openal: live audio
-source = https://github.com/pyglet/pyglet/archive/refs/tags/v2.0.16.zip
-sha256sums = 0deb5263eaa2ba263817f4a72503eb0d6f33e11d3d5344c980aeb3ef249eb732
+source = https://github.com/pyglet/pyglet/archive/refs/tags/v2.0.17.zip
+sha256sums = 4acc5a5cc7769a31d047782a9bee9a14995ae95dfcbc85bea176fe320b510307
 
 pkgname = python-pyglet
 depends = python
