@@ -288,6 +288,18 @@
      * We can't allocate memory with interrupts disabled on all hosts
 --- a/vmmon/common/vmx86.c
 +++ b/vmmon/common/vmx86.c
+@@ -58,7 +58,11 @@
+ #include "x86svm.h"
+ #include "x86cpuid_asm.h"
+ #if defined(linux)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 8, 0)
+ #include <asm/timex.h>
++#else
++#include <linux/timex.h>
++#endif
+ #endif
+ #include "x86perfctr.h"
+ 
 @@ -723,6 +723,35 @@ cleanup:
  /*
   *----------------------------------------------------------------------
@@ -972,11 +984,13 @@
   *
   *      linux module entry point. Called by /sbin/insmod command
   *
-@@ -266,7 +222,7 @@
+@@ -265,8 +221,8 @@
+  *----------------------------------------------------------------------
   */
  
- int
+-int
 -init_module(void)
++static int
 +LinuxDriverInit(void)
  {
     int retval;
@@ -1035,11 +1049,13 @@
   *
   *      Called by /sbin/rmmod
   *
-@@ -390,7 +348,7 @@
+@@ -389,8 +347,8 @@
+  *----------------------------------------------------------------------
   */
  
- void
+-void
 -cleanup_module(void)
++static void
 +LinuxDriverExit(void)
  {
     unregister_ioctl32_handlers();
@@ -1696,7 +1712,7 @@
 + *-----------------------------------------------------------------------------
 + */
 +
-+Bool
++static Bool
 +HostIFCheckTrackedMPN(VMDriver *vm, // IN: The VM instance
 +                      MPN64 mpn)      // IN: The MPN
 +{
@@ -1865,6 +1881,15 @@
     return -ENOIOCTLCMD;
  }
  #endif //VMON_USE_HIGH_RES_TIMERS
+@@ -3196,7 +3416,7 @@
+  *----------------------------------------------------------------------
+  */
+ 
+-int
++static int
+ HostIFStartTimer(Bool rateChanged,  //IN: Did rate change? 
+ 		 unsigned int rate, //IN: current clock rate
+                  struct file *filp) //IN: /dev/rtc descriptor
 @@ -3304,12 +3509,9 @@ HostIFFastClockThread(void *data)  // IN
  {
     struct file *filp = (struct file *) data;
@@ -2019,91 +2044,3 @@ index 3f43c62..7eaa49a 100644
 +#endif /* COMPAT_LINUX_VERSION_CHECK_LT(6, 5, 0) */
 +
  #endif /* __PGTBL_H__ */
-From 218fec600d0af1c5e9f4af819b216fb9c69bb838 Mon Sep 17 00:00:00 2001
-From: Michal Kubecek <mkubecek@suse.cz>
-Date: Fri, 12 Jan 2024 08:30:33 +0100
-Subject: [PATCH] modules: fix build with -Wmissing-prototypes
-
-Mainline commit 0fcb70851fbf ("Makefile.extrawarn: turn on
-missing-prototypes globally") in 6.8-rc1 enables -Wmissing-prototypes
-globally, revealing a lot of unclean code and also some actual problems.
-This is also the case in vmmon and vmnet modules.
-
-Most of them are addressed by making functions used only within one file
-static. The missing prototype of random_get_entropy_fallback() is handled
-by including <linux/timex.h> rather than <asm/timex.h>.
-
-Finally, there are four functions in vmnet module which are actually used
-in multiple files but instead of proper declarations, their prototype is
-duplicated in vmnet-only/driver.c, risking that the two copies won't match
-(which actually happened in one case). The cleanest solution would be
-creating separate header files for them (bridge.h, netif.h, userif.h and
-vnetUserListener.h) and including them in the respective source file and
-driver.c. As the developers already handle similar cases by simply putting
-the declarations into vnetInt.h, let us do the same to keep things simple.
----
- vmmon-only/common/vmx86.c |  2 +-
- vmmon-only/linux/driver.c |  4 ++--
- vmmon-only/linux/hostif.c |  6 +++---
- vmnet-only/bridge.c       |  2 +-
- vmnet-only/driver.c       | 16 ++--------------
- vmnet-only/vnetInt.h      |  7 +++++++
- 6 files changed, 16 insertions(+), 21 deletions(-)
-
-diff --git a/vmmon-only/common/vmx86.c b/vmmon-only/common/vmx86.c
-index 156e94a9..c5ed3e25 100644
---- a/vmmon-only/common/vmx86.c
-+++ b/vmmon-only/common/vmx86.c
-@@ -58,7 +58,7 @@
- #include "x86svm.h"
- #include "x86cpuid_asm.h"
- #if defined(linux)
--#include <asm/timex.h>
-+#include <linux/timex.h>
- #endif
- #include "x86perfctr.h"
- 
-diff --git a/vmmon-only/linux/driver.c b/vmmon-only/linux/driver.c
-index 9c855869..32e9c5ea 100644
---- a/vmmon-only/linux/driver.c
-+++ b/vmmon-only/linux/driver.c
-@@ -221,7 +221,7 @@ LinuxDriverInitTSCkHz(void)
-  *----------------------------------------------------------------------
-  */
- 
--int
-+static int
- LinuxDriverInit(void)
- {
-    int retval;
-@@ -347,7 +347,7 @@ LinuxDriverInit(void)
-  *----------------------------------------------------------------------
-  */
- 
--void
-+static void
- LinuxDriverExit(void)
- {
-    unregister_ioctl32_handlers();
-diff --git a/vmmon-only/linux/hostif.c b/vmmon-only/linux/hostif.c
-index 3bce32c3..b83e21d3 100644
---- a/vmmon-only/linux/hostif.c
-+++ b/vmmon-only/linux/hostif.c
-@@ -3110,7 +3110,7 @@ HostIF_ReadPage(VMDriver *vm,        // IN: The VM instance
-  *----------------------------------------------------------------------
-  */
- 
--int
-+static int
- HostIFWritePageWork(MPN64 mpn,            // MPN of the page
-                     VA64 addr,            // data to write to the page
-                     Bool kernelBuffer)    // is the buffer in kernel space?
-@@ -3416,7 +3416,7 @@ HostIFDoIoctl(struct file *filp,
-  *----------------------------------------------------------------------
-  */
- 
--int
-+static int
- HostIFStartTimer(Bool rateChanged,  //IN: Did rate change? 
- 		 unsigned int rate, //IN: current clock rate
-                  struct file *filp) //IN: /dev/rtc descriptor

@@ -16,7 +16,7 @@ pkgname=vmware-workstation11
 pkgver=11.1.4
 _buildver=3848939
 _pkgver=${pkgver}_${_buildver}
-pkgrel=33
+pkgrel=34
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -121,8 +121,8 @@ sha256sums=(
 
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
-  '3c98e7ab9b9a4e159ee94d3ad4d3e3441f803a5fe6c1c5d87ec1d7875877aaf5'
-  '1a87bc1e4c56f5113b6791f3887518a8130964bfdc1608682d75ee66a2b4e76a'
+  'bd05314b23cb92f9f28debe8715b0076719b8ff94b9776cd5c821dd0dae68102'
+  'ce775e8a3b02de704987929021eb4ebfac39d1ee71cb0fe87285c768a441d1e9'
 )
 options=(!strip emptydirs !debug)
 
