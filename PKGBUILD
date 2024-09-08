@@ -4,7 +4,7 @@ pkgname="communique"
 # Temporarily pin to a specific commit. We'll tag a v0.0.1 release soon.
 _commit=10dc75050cf8f09bb9d27e0d53e5c10937de54bc
 pkgver="v0.0.0_${_commit}"
-pkgrel=2
+pkgrel=3
 pkgdesc='A TUI instant messaging client compatible with the Jabber network and XMPP.'
 url="https://codeberg.org/mellium/communique-tui/"
 license=('bsd-2-clause')
@@ -23,5 +23,5 @@ build() {
 
 package() {
     cd ${pkgname}-tui
-		make DESTDIR="$pkgdir" install
+		make DESTDIR="$pkgdir" PREFIX=/usr install
 }

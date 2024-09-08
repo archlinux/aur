@@ -1,7 +1,7 @@
 pkgbase = communique
 	pkgdesc = A TUI instant messaging client compatible with the Jabber network and XMPP.
 	pkgver = v0.0.0_10dc75050cf8f09bb9d27e0d53e5c10937de54bc
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/mellium/communique-tui/
 	arch = x86_64
 	license = bsd-2-clause
