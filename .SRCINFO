@@ -1,6 +1,6 @@
 pkgbase = translate-toolkit
 	pkgdesc = A toolkit to convert between various different translation formats, help process and validate localisations
-	pkgver = 3.13.0
+	pkgver = 3.13.1
 	pkgrel = 1
 	url = https://toolkit.translatehouse.org/
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = translate-toolkit
 	optdepends = python-pyenchant: for spellcheck filter
 	optdepends = python-pyparsing: RC support for po2rc
 	optdepends = python-vobject: iCalendar files support for po2ical
-	source = translate-toolkit-3.13.0.tar.gz::https://github.com/translate/translate/archive/3.13.0.tar.gz
-	sha256sums = b8a9c84412d415d02c8ed53e1696b2b46924fdc6675762bc0136669acda99f8b
+	source = translate-toolkit-3.13.1.tar.gz::https://github.com/translate/translate/archive/3.13.1.tar.gz
+	sha256sums = baa2018825087fa3d896d924f5da90a5f29462d9de272236e6c619ec93066ae5
 
 pkgname = translate-toolkit
