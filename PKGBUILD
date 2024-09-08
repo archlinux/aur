@@ -1,6 +1,6 @@
 #Maintainer: Noble Eugene <nobleeugene2005@gmail.com>
 pkgname="swengine"
-pkgver="0.12"
+pkgver="0.13"
 pkgrel=1
 pkgdesc="Download and apply live wallpapers with swww"
 arch=("x86_64")
