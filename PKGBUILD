@@ -2,7 +2,7 @@
 pkgname=turtle
 _app_id="de.philippun1.$pkgname"
 pkgver=0.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
 url="https://gitlab.gnome.org/philippun1/turtle"
@@ -44,7 +44,7 @@ build() {
 }
 
 check() {
-  cd "${pkgname%-git}"
+  cd "$pkgname-$pkgver"
   PYTHONPATH=./ pytest
 
   appstreamcli validate --no-net "data/${_app_id}.metainfo.xml"
@@ -52,7 +52,7 @@ check() {
 }
 
 package() {
-   cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm755 "${pkgname}"{_cli,_service} -t "$pkgdir/usr/bin/"
