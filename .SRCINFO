@@ -1,12 +1,13 @@
 pkgbase = ocaml4-findlib
 	pkgdesc = OCaml package manager
 	pkgver = 1.9.6
-	pkgrel = 1
+	pkgrel = 3
 	url = http://projects.camlcity.org/projects/findlib.html
 	arch = x86_64
 	license = MIT
 	depends = ocaml4-compiler-libs
 	depends = ocaml4
+	conflicts = ocaml-findlib
 	options = !makeflags
 	options = !strip
 	options = staticlibs
