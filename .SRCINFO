@@ -1,0 +1,21 @@
+pkgbase = python-faster-whisper
+	pkgdesc = Faster Whisper transcription with CTranslate2
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/SYSTRAN/faster-whisper
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-ctranslate2
+	depends = python-huggingface-hub
+	depends = python-tokenizers
+	depends = python-onnxruntime
+	depends = python-av
+	source = https://github.com/SYSTRAN/faster-whisper/archive/refs/tags/v1.0.3.tar.gz
+	b2sums = 7f4035b31a376fa050671f171677267ff3538a8c2407659f4d29c90c79decded6a72b5792b4d7bea0b446462db12d22dc3d898cc8fa3e2a319969580a48b0e60
+
+pkgname = python-faster-whisper
