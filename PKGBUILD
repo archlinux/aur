@@ -2,13 +2,11 @@
 
 pkgname=alire-bin
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tool from the Alire project and supporting library "
 url="https://github.com/alire-project/alire"
 arch=("x86_64")
 license=("GPL-3.0")
-
-depends=("swift-language")
 
 source=(
     "${pkgname}_${pkgver}.zip::https://github.com/alire-project/alire/releases/download/v${pkgver}/alr-${pkgver}-bin-x86_64-linux.zip"
