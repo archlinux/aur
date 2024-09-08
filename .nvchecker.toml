@@ -1,0 +1,5 @@
+[vagrant]
+source = "git"
+git = "https://github.com/hashicorp/vagrant.git"
+prefix = "v"
+exclude_regex = "\\d\\.\\d\\.\\d\\.dev\\+\\d+-[a-z0-9]+"
