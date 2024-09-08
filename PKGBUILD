@@ -2,7 +2,7 @@
 
 _pkgname=libhelium
 pkgname="${_pkgname}-git"
-pkgver=r1382.6d02226
+pkgver=r1594.f173173
 pkgrel=1
 pkgdesc="The application framework for tauOS apps."
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/tau-OS/libhelium.git"
         "$pkgname.patch")
 sha256sums=('SKIP'
-            '577a8e5af057a6634e9bdd2c87072bb13d69a6ac41ab6e3d278055b8090cc84c')
+            '10cf52c999db7484dc3bf220772cfa58f58c9d539c43c968727251bbf60e8ad6')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
