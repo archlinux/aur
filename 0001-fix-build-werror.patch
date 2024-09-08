@@ -5,7 +5,7 @@
  		-Wno-unused-variable
  		-Wno-unused-result
 -		-Wformat=0
-+		-Wno-error=format-security
++		-Wno-format-security
 +		-Wno-format
  	)
  

@@ -14,7 +14,7 @@ url='https://arcan-fe.com/'
 source=("${pkgname}::git+https://github.com/letoram/arcan.git"
         "0001-fix-build-werror.patch")
 sha512sums=('SKIP'
-            '709f4ec87d722cfafaed406596ed4e49d035f21fe6c50847521018b73fe426a767de437690c774f9f95d9095c65cb12f8bea3ce05c08b423425c7e95c23529fc')
+            'd2eb7c699753ed5ab359b7b34979b7d5eee2fc7356c803c37f68f7dc919586d1698da05377ad16b77dfb458668562805002e0334e4b309260939182ef17a1934')
 
 pkgver () {
 	cd "${pkgname}"
@@ -27,7 +27,7 @@ pkgver () {
 
 prepare () {
   cd "${srcdir}"
-  #patch -Np1 -i 0001-fix-build-werror.patch
+  patch -Np1 -i 0001-fix-build-werror.patch
 }
 
 build () {
