@@ -52,5 +52,4 @@ package() {
 		# create symlink for binar
   mkdir -p "$_bin_dir"
 	ln -s "$_rooted_application/firecamp.AppImage" "$_bin_dir/$pkgname"
-	chmod +x "$_bin_dir/$pkgname"
 }
