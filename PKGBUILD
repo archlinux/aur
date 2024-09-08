@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-session-git
 pkgver=1.0.0.alpha.1.r5.g39c7f93
-pkgrel=1
+pkgrel=2
 pkgdesc="Session manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-session"
@@ -90,7 +90,7 @@ build() {
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  XDP_COSMIC="/usr/lib/xdg-desktop-portal-cosmic" nice just build --release --frozen --offline
+  XDP_COSMIC="/usr/lib/xdg-desktop-portal-cosmic" nice cargo build --release --frozen --offline
 }
 
 package() {
