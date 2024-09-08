@@ -4,7 +4,7 @@
 
 pkgname=b4
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Helper utility to work with patches made available via a public-inbox archive like lore.kernel.org.'
 license=('GPL-2.0-or-later')
 arch=('any')
@@ -16,6 +16,7 @@ makedepends=(
     'python-installer'
     'python-wheel'
     'python-docutils'
+    'python-shtab'
 )
 checkdepends=('python-pytest')
 depends=(
@@ -36,6 +37,10 @@ build() {
     cd "$pkgname-$pkgver"
     rst2man src/b4/man/b4.5.rst src/b4/man/b4.1
     gzip src/b4/man/b4.1
+
+    misc/tc-generate.sh bash > _bash
+    misc/tc-generate.sh zsh > _zsh
+
     python -m build --wheel --no-isolation
 }
 
@@ -49,4 +54,7 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm 644 src/b4/man/b4.1.gz "$pkgdir/usr/share/man/man1/b4.1.gz"
     rm -rf "$pkgdir/usr/lib/python3.12/site-packages/b4/man/"
+
+    install -Dm 644 _bash "$pkgdir/usr/share/bash-completion/completions/b4"
+    install -Dm 644 _zsh "$pkgdir/usr/share/zsh/site-functions/_b4"
 }
