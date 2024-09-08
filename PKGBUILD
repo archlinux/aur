@@ -9,7 +9,7 @@ arch=('x86_64' 'i686')
 url="https://ra3xdh.github.io"
 license=('GPL')
 depends=('qt6-svg' 'ngspice')
-makedepends=('cmake' 'qt6-tools' 'gperf' 'dos2unix' 'lib32-gettext')
+makedepends=('cmake' 'qt6-tools' 'gperf' 'dos2unix')
 optdepends=('ngspice: recommended simulation backend'
             'qucs: for Qucsator simulation backend'
             'xyce-serial: SPICE-compatible simulation backend'

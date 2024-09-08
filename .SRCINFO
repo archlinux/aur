@@ -10,7 +10,6 @@ pkgbase = qucs-s
 	makedepends = qt6-tools
 	makedepends = gperf
 	makedepends = dos2unix
-	makedepends = lib32-gettext
 	depends = qt6-svg
 	depends = ngspice
 	optdepends = ngspice: recommended simulation backend
