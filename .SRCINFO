@@ -6,7 +6,6 @@ pkgbase = geminishell
 	arch = any
 	license = Apache
 	depends = python
-	depends = pyinstaller
 	depends = python-pip
 	source = git+https://github.com/kshitijaucharmal/geminishell.git#branch=main
 	sha256sums = SKIP
