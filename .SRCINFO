@@ -1,0 +1,16 @@
+pkgbase = zpotify-bin
+	pkgdesc = A CLI for Spotify
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ratakor/zpotify
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	provides = zpotify
+	conflicts = zpotify
+	source = https://github.com/ratakor/zpotify/releases/download/0.1.0/x86_64-linux-zpotify
+	source = https://github.com/ratakor/zpotify/raw/master/_zpotify
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = zpotify-bin
