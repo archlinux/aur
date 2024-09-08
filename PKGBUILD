@@ -6,10 +6,10 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 declare -r _pkgname="RediSearch"
-declare -r _tag="e7e0d0808d5698fa1053ccd4acc4fee5d27360a5"
+declare -r _tag="11cbdcdc7debab298e59e8b1056fa3ce02a4e1a0"
 
 pkgname="redisearch"
-pkgver="2.10.6"
+pkgver="2.10.7"
 pkgrel="1"
 pkgdesc="A query and indexing engine for Redis, providing secondary indexing, full-text search, vector similarity search and aggregations."
 arch=("any")
