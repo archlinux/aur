@@ -1,5 +1,3 @@
-# Maintainer: Your Name <your@email.com>
-
 pkgname=hpaper
 pkgver=0.1.0
 pkgrel=1
@@ -25,7 +23,5 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
-    # If you have a README or license file, install them like this:
-    # install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-    # install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
