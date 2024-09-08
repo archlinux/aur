@@ -8,7 +8,7 @@ pkgname=adjust-pci-latency-git
 # shellcheck disable=SC2034
 pkgdesc="Adjust PCI bus latency for gaming or pro-audio production"
 # shellcheck disable=SC2034
-pkgver=.r1.e9cf58d
+pkgver="0.0.1".r2.041e777
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -43,7 +43,7 @@ pkgver() {
     return 1
   }
 
-  printf "%s.r%s.%s" "$(awk -F '=' '{if (/^readonly __VERSION=/) {print $2}}' "${_gitname}")" \
+  printf "%s.r%s.%s" "$(awk -F '=' '{if (/^readonly VERSION=/) {print $2}}' "${_gitname}")" \
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
