@@ -1,7 +1,7 @@
 pkgbase = flashprog
 	pkgdesc = Flashprog is a utility which can be used to detect, read, erase, or write BIOS chips (DIP, PLCC, SPI).
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flashprog.org/
 	arch = riscv64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = flashprog
 	license = GPL
 	makedepends = git
 	makedepends = make
+	makedepends = pkgconf
 	depends = pciutils
 	depends = libusb
 	depends = libftdi
