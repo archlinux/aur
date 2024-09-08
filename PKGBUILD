@@ -3,7 +3,7 @@
 
 pkgname=autenticacao-gov-pt-bin
 pkgver=3.12.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries by AMA"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -32,7 +32,7 @@ optdepends=('plugin-autenticacao-gov-pt: Necessário para autenticações online
 conflicts=('cartaodecidadao' 'cartaodecidadao-bin' 'autenticacao-gov-pt')
 replaces=('cartaodecidadao-bin')
 
-source_x86_64=("https://github.com/amagovpt/autenticacao.gov/releases/download/v3.12.0/pteid-mw-3.12.0.flatpak"
+source_x86_64=("https://github.com/amagovpt/autenticacao.gov/releases/download/v${pkgver}/pteid-mw-${pkgver}.flatpak"
  "autenticacao-gov-pt-bin.install")
 
 sha512sums_x86_64=('01fec7530b9c918e4d357a03152faa78754230e281eb3826355c4cc80163ad2653b71fd0846fdfd4078295f2f241d1c775376d95e94387feba8e097e9077f7fc'
