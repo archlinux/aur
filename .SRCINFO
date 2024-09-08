@@ -1,0 +1,18 @@
+pkgbase = nspawn-rust-git
+	pkgdesc = A wrapper around machinectl for easy-deployment of nspawn.org containers (rust_dev branch)
+	pkgver = r48.696c9fc
+	pkgrel = 1
+	url = https://github.com/nspawn/nspawn
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	provides = nspawn
+	conflicts = nspawn
+	source = nspawn-rust-git::git+https://github.com/nspawn/nspawn.git#branch=rust_dev
+	sha256sums = SKIP
+
+pkgname = nspawn-rust-git
