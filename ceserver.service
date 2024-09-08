@@ -3,7 +3,7 @@ Description=Cheat Engine Server
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/ceserver
+ExecStart=/opt/ceserver/ceserver
 Restart=on-failure
 
 [Install]

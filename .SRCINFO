@@ -1,7 +1,7 @@
 pkgbase = ceserver
 	pkgdesc = Cheat Engine Server.
 	pkgver = 7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cheat-engine/cheat-engine/tree/master/Cheat%20Engine/ceserver
 	install = ceserver.install
 	arch = i686
@@ -13,6 +13,6 @@ pkgbase = ceserver
 	source = ceserver-7.5.tar.gz::https://github.com/cheat-engine/cheat-engine/archive/7.5.tar.gz
 	source = ceserver.service
 	sha512sums = f2b8dab12f56709a47759fb027590643c560d2d0f9be4aaea8ff6c1f150b158117bfc5950d3351bb4ee33b3e74c792c17b85c5f9ce9849d69c03758e6d4e3e9f
-	sha512sums = 7b9b0287b1962a60f00cd9747de8b31cc217adc91adf61f7c6bb12a607b3cda0dca7e5a7b6054120384b0c59869460f80ec98649b57c47906126ff3d23e8c20d
+	sha512sums = b2d5cbf7b1635324be0b6575a5dbe1e2195374e1526b5723b1959d8ab9bfe4ee9b914f5145afb74b18296aab0904c43d735bafdb4477256aef4ec2b20f30c044
 
 pkgname = ceserver
