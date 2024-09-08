@@ -3,7 +3,7 @@
 
 _srcname=pulsectl-asyncio
 pkgname=python-$_srcname
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Asyncio frontend for pulsectl, a Python bindings library for PulseAudio (libpulse)'
 arch=(any)
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python>=3.6' 'python-pulsectl>=1:23.5.0')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${_srcname}_$pkgver.tgz::https://github.com/mhthies/$_srcname/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('b560c38b6d18a4c73551ae4ba34243f0043dc18426141c128c6ca3e8bd30f4d94d8718c3003ae506be038bc645ee569b77e6289b97ac913daa1e42e6b9aef03b')
+sha512sums=('b22d0a634433d558860ff1590020ba7272412be97da478a8b00ec457506cb58353b645537ae26591f1aed300cacc14fd0f50c8a3a0c7d650d610b24cc52248ee')
 
 build() {
   cd "${srcdir}/${_srcname}-${pkgver}"
