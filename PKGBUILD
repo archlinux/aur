@@ -4,7 +4,7 @@
 
 pkgname=python-pygame-sdl2
 _dir=pygame_sdl2
-pkgver=8.3.1.24082412
+pkgver=8.3.1.24090601
 pkgrel=1
 epoch=1
 pkgdesc='Reimplementation of portions of the pygame API using SDL2'
