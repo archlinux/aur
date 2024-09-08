@@ -1,6 +1,6 @@
 pkgbase = bshchk-git
 	pkgdesc = Bash runtime dependency checker
-	pkgver = master
+	pkgver = 1.1.r0.g96d42c6
 	pkgrel = 1
 	url = https://bshchk.blek.codes
 	arch = x86_64

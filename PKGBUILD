@@ -1,5 +1,5 @@
 pkgname=bshchk-git
-pkgver=master
+pkgver=1.1.r0.g96d42c6
 pkgrel=1
 arch=('any')
 license=('GPL-3.0-only')
@@ -14,6 +14,11 @@ makedepends=('go')
 build() {
 	cd "$srcdir/bshchk"
 	./build.sh
+}
+
+pkgver() {
+	cd "$srcdir/bshchk"
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
