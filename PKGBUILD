@@ -48,24 +48,4 @@ build () {
 
 package () {
 	DESTDIR="${pkgdir}" cmake --install build
-
-	# Fix location of manpages.
-	if [[ -d ${pkgdir}/usr/man ]] ; then
-		mv "${pkgdir}/usr/man" "${pkgdir}/usr/share"
-	fi
-
-	# Ditto for CMake files.
-	if [[ -d ${pkgdir}/usr/CMake ]] ; then
-		for path in "${pkgdir}/usr/CMake"/*.cmake ; do
-			local basename=${path##*/}
-			if [[ ${basename} = *-config.cmake ]] ; then
-				install -vDm644 "${path}" \
-					"${pkgdir}/usr/share/cmake/${basename:0:-13}/${basename}"
-			elif [[ ${basename} = *Config.cmake ]] ; then
-				install -vDm644 "${path}" \
-					"${pkgdir}/usr/share/cmake/${basename:0:-12}/${basename}"
-			fi
-		done
-		rm -rf "${pkgdir}/usr/CMake"
-	fi
 }
