@@ -1,7 +1,7 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-comp-git
-pkgver=1.0.0.alpha.1.r13.ga3c8111
+pkgver=1.0.0.alpha.1.r48.g79ae56c
 pkgrel=1
 pkgdesc="Compositor for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -47,7 +47,7 @@ build() {
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  nice cargo build --release --frozen
+  ARGS+=" --frozen" nice make
 }
 
 package() {
