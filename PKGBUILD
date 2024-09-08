@@ -7,16 +7,25 @@ pkgdesc="A shell program written in Python"
 arch=('any')
 url="https://github.com/kshitijaucharmal/geminishell"  # Replace with your project's URL
 license=('Apache')
-depends=('python' 'pyinstaller' 'python-pip')  # Add other dependencies if needed
+depends=('python' 'python-pip')  # Add other dependencies if needed
 source=("git+https://github.com/kshitijaucharmal/$pkgname.git#branch=main")
 sha256sums=('SKIP')  # Not required when using git
 
 build() {
   cd "$srcdir/$pkgname"
-
-  # Install dependencies and build using PyInstaller
+  # Create virtual environment and install dependencies
+  python -m venv env
+  source env/bin/activate
   pip install -r requirements.txt
+  pip install pyinstaller
+
+  # Build the application
   pyinstaller src/__main__.py --clean -n geminishell --distpath target
+
+  deactivate
+
+  # Remove virtual environment
+  rm -rf env
 }
 
 package() {
