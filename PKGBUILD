@@ -1,18 +1,22 @@
 # Maintainer: Alexander Karpukhin <thealexdev23@gmail.com>
 
 pkgname=power-options-daemon
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="The core daemon for Power Options, a blazingly fast power management solution."
 arch=('x86_64')
 url="https://github.com/thealexdev23/power-options"
 license=('MIT')
+
 depends=('acpid' 'zsh' 'pciutils' 'usbutils')
 optdepends=('xorg-xrandr: needed for screen settings' 'brightnessctl: needed for brightness settings' 'net-tools: needed to disable ethernet cards')
 makedepends=('cargo')
+
+provides=('power-options-daemon')
 conflicts=('power-options-daemon-git')
+
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thealexdev23/power-options/archive/v$pkgver.tar.gz")
-sha256sums=('2af1d47bf1d1798a4a363076d3fed63663abe2dfe19e466c57ab6e089d4a76a5')
+sha256sums=('69814c9baf321471f88eebabe4e7eea04cf93473668e26c52be738704f96240d')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
