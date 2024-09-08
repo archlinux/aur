@@ -4,7 +4,7 @@
 pkgname=ceserver
 _srcfile=cheat-engine
 pkgver=7.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Cheat Engine Server.'
 url='https://github.com/cheat-engine/cheat-engine/tree/master/Cheat%20Engine/ceserver'
 arch=('i686' 'x86_64')
@@ -26,7 +26,6 @@ makedepends=()
 
 build() {
 	cd "$_srcfile-$pkgver"/Cheat\ Engine/ceserver
-
 	case "$CARCH" in
 		x86_64)
 			make all -C gcc -f makefile
@@ -34,9 +33,9 @@ build() {
 			;;
 		i686)
 			make all -C gcc -f makefile32
-			make all -C extension/gcc -f makefile32
 			;;
 		esac
+			make all -C extension/gcc -f makefile32
 }
 
 package() {
@@ -45,13 +44,6 @@ package() {
 		install -d "${pkgdir}/opt/${pkgname}"
 		install -Dm 755 gcc/"${pkgname}" "${pkgdir}/opt/$pkgname/${pkgname}"
 		install -Dm 644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-
-	case "$CARCH" in
-		i686) _pkgarch="x86"
-			install -Dm 755 "extension/gcc/libceserver-extension.so" "${pkgdir}/opt/$pkgname/libceserver-extension_${_pkgarch}.so"
-			;;
-		x86_64) _pkgarch="x86_64"
-			install -Dm 755 "extension/gcc/libceserver-extension.so" "${pkgdir}/opt/$pkgname/libceserver-extension_${_pkgarch}.so"
-			;;
-		esac
+		install -Dm 755 "extension/gcc/libceserver-extension.so" "${pkgdir}/opt/$pkgname/libceserver-extension_x86_64.so"
+		install -Dm 755 "extension/gcc/libceserver-extension_x86.so" "${pkgdir}/opt/$pkgname/libceserver-extension_x86.so"
 }
