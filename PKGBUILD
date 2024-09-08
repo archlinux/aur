@@ -11,20 +11,22 @@ license=('GPL-2.0-or-later')
 makedepends=('doxygen' 'graphviz' 'gstreamer>=1.0' 'gtk3>=3.4.2'
              'libaudclient>=3.0' "libmp3splt=${pkgver}") # 'gnome-doc-utils'
 # checkdepends=('cutter-test')
-_pkgsrc="${pkgname}-${pkgver}"
+_pkgsrc="${pkgbase}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::https://downloads.sourceforge.net/sourceforge/mp3splt/${_pkgsrc}.tar.gz"
-        # https://sources.debian.org/patches/mp3splt/2.6.2%2B20170630-3.2/20_mp3splt-gtk-0.9.2-fno-common.patch
-        "${pkgname}_fix_gcc10_-fno-common.patch"
-        "${pkgname}_fix_ui_manager_c.patch"
-        "${pkgname}_fix_doxyfile_in.patch")
+        "${pkgbase}_fix_gcc10_-fno-common.patch::https://sources.debian.org/data/main/m/mp3splt/2.6.2%2B20170630-3.2/debian/patches/20_mp3splt-gtk-0.9.2-fno-common.patch"
+        "${pkgbase}_fix_ui_manager_c.patch"
+        "${pkgbase}_fix_doxyfile_in.patch")
 sha256sums=('2084cc942b5d1aa6ff74848a41d05cb37876cbc74dfdc341ceb424c763887650'
-            '06e7641d255c35bbb665cca9b29acb47010cfb390b3f3814952ac7de85ea4c46'
+            '6de20db065d668a4f6abe064c4e43129a66605e7baa690e49b946997a517084b'
             '402d261ac26dacede3a19742197e9ed15186a759007536b70b1f05827775ea0e'
             'a34f46d6a52fedd23004466fcafdf45ced74569cc787e7823055ebc8fd9e5bbb')
 
 prepare() {
-  cd "${srcdir}/${_pkgsrc}"
-  for _patch in "${srcdir}/${_pkgname}"*".patch"; do
+  cd "${srcdir}"
+  find . -name '*.patch' -exec sed -i 's#/mp3splt-gtk/src/#/src/#g' {} +
+
+  cd "${_pkgsrc}"
+  for _patch in "${srcdir}/${pkgbase}"*".patch"; do
     patch -p1 -i "${_patch}"
   done
 
