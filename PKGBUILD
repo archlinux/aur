@@ -1,14 +1,14 @@
 # Maintainer: Alexander Karpukhin <thealexdev23@gmail.com>
 
 pkgname=power-options-gtk-git
-pkgver=0.1.0r14.0c3572
+pkgver=0.1.1r1.e3aeb0
 pkgrel=1
 pkgdesc="A gtk frontend for Power Options, a blazingly fast power management solution."
 arch=('x86_64')
 url=https://github.com/thealexdev23/power-options
 license=('MIT')
 
-depends=('power-options-daemon' 'libadwaita' 'yad')
+depends=('power-options-daemon-git' 'libadwaita' 'yad')
 makedepends=('cargo' 'git')
 
 provides=('power-options-gtk')
