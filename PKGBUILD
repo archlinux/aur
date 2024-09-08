@@ -4,8 +4,8 @@ _appname=zeal
 _builddir=build
 
 pkgname=${_appname}-git
-pkgver=0.7.0.r0.g90ad776
-pkgrel=3
+pkgver=0.7.2.r0.g66b3033
+pkgrel=1
 pkgdesc='Offline documentation browser'
 arch=('aarch64' 'i686' 'x86_64')
 url="https://zealdocs.org/"
