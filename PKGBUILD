@@ -1,12 +1,13 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgdesc='Game Engine meets a Display Server meets a Multimedia Framework'
 pkgname='arcan-git'
-pkgver=r4375.e9fe275c
+pkgver=r4447.433241c2
 pkgrel=1
 license=('GPL2' 'LGPL' 'custom:BSD')
 arch=(aarch64 'x86_64')
 depends=('freetype2' 'harfbuzz' 'harfbuzz-icu' 'mesa' 'luajit' 'sqlite'
-         'libxkbcommon' 'libvncserver' 'libusb' 'openal' 'ffmpeg' 'apr' 'wayland-protocols')
+         'libxkbcommon' 'libvncserver' 'libusb' 'openal' 'ffmpeg' 'apr' 'wayland-protocols'
+         'libuvc' 'xcb-util' 'xcb-util-wm')
 makedepends=('cmake' 'ruby' 'git')
 provides=('arcan')
 conflicts=('arcan')
@@ -34,10 +35,6 @@ build () {
 	pushd "${pkgname}/doc" &> /dev/null
 	ruby docgen.rb mangen
 	popd &> /dev/null
-
-  cd "${pkgname}/external/git"
-  ./clone.sh || echo "foobar"
-  cd ../../../
 
 	rm -rf "${pkgname}/build"
 	mkdir "${pkgname}/build"
