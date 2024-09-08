@@ -11,6 +11,7 @@ pkgbase = simple-sddm-theme-2-git
 	depends = qt6-svg
 	depends = sddm
 	backup = usr/share/sddm/themes/simple-sddm-2/theme.conf
+	source = git+https://github.com/JaKooLit/simple-sddm-2
 	sha256sums = SKIP
 
 pkgname = simple-sddm-theme-2-git
