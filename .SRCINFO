@@ -1,7 +1,7 @@
 pkgbase = python-free-proxy
 	pkgdesc = Free proxy scraper written in python
-	pkgver = 1.1.1
-	pkgrel = 2
+	pkgver = 1.1.2
+	pkgrel = 1
 	url = https://github.com/jundymek/free-proxy
 	arch = any
 	license = LGPL
@@ -12,7 +12,7 @@ pkgbase = python-free-proxy
 	depends = python
 	depends = python-lxml
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/f/free_proxy/free_proxy-1.1.1.tar.gz
-	sha256sums = 2b20eb863972b42984292cee17132f4c9ddb8fef0a9bee9bc15215a08e6899fb
+	source = https://files.pythonhosted.org/packages/source/f/free_proxy/free_proxy-1.1.2.tar.gz
+	sha256sums = f7c361d3b6c82918ab845163c46ea574e6bd4ce54b1342e89804aaf07e53b848
 
 pkgname = python-free-proxy
