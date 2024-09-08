@@ -1,12 +1,12 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=alist
-pkgver=3.36.0
+pkgver=3.37.0
 pkgrel=1
 pkgdesc="File list program that supports multiple storage"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'arm7vh' 'aarch64' 'riscv64' 'loong64')
 url="https://github.com/alist-org/alist"
-license=('AGPL3')
+license=('AGPL-3.0-only')
 depends=('glibc')
 makedepends=('go')
 backup=('etc/alist/config.json')
@@ -17,12 +17,12 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
     'alist.tmpfiles'
     'alist.sysusers'
     'config.json')
-sha256sums=('809072becc16613755c33286c5b19539f81dcb2b40f0c4cd4838c4614946c874'
-            'b997d3ecf92f447cc1daca9b1ae9b9dc3f28445589db3dc054174ecc15a600a9'
-            '5712b21aebf669fe9fb5d47dd685809d4d9670b1bb1d5e6fef962b9d11ba9d72'
-            'c6b62c4a750ab921c2e8f965e4baeee28855c9a969b00eddd346670f2fdf12de'
-            '3658370660806f73c3d9bc5f1b6e2a013c9520d34ffc4462df99f7692473613d'
-            'b72f194a7b8855e97eeb76e63e179f38132cc9e6be9daa5b396699c9c11611de')
+sha256sums=('dc2efcc420f6071e59a7a87431856550c3adfffdd20193469ff7d9010e8f6426'
+    '4d300940ec66ae4d57dc2e752a8a6a1049cb0b6d13305ad2ed0af10536c929fe'
+    '5712b21aebf669fe9fb5d47dd685809d4d9670b1bb1d5e6fef962b9d11ba9d72'
+    'c6b62c4a750ab921c2e8f965e4baeee28855c9a969b00eddd346670f2fdf12de'
+    '3658370660806f73c3d9bc5f1b6e2a013c9520d34ffc4462df99f7692473613d'
+    'b72f194a7b8855e97eeb76e63e179f38132cc9e6be9daa5b396699c9c11611de')
 
 prepare() {
     cd "${srcdir}/$pkgname-$pkgver"
@@ -32,25 +32,24 @@ prepare() {
 }
 
 build() {
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-	cd "$pkgname-$pkgver"
-	go mod download
-	## i tried, doesn't actually tag properly
-	go build -o build \
-		-ldflags="-linkmode external -extldflags \"${LDFLAGS}\" \
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    cd "$pkgname-$pkgver"
+    go mod download
+    ## i tried, doesn't actually tag properly
+    go build -o build \
+        -ldflags="-linkmode external -extldflags '${LDFLAGS}' \
 		-X 'github.com/alist-org/alist/conf.GoVersion=$(go version | awk '{print $3}')' \
 		-X 'github.com/alist-org/alist/conf.GitTag=$pkgver'"
 }
 
-
 package() {
-	cd "$pkgname-$pkgver"
-	install -Dv "build/$pkgname" -t "$pkgdir/usr/bin/"
-	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+    cd "$pkgname-$pkgver"
+    install -Dv "build/$pkgname" -t "$pkgdir/usr/bin/"
+    install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
     install -Dvm644 "${srcdir}/alist.service" -t "${pkgdir}/usr/lib/systemd/system/"
     install -Dvm644 "${srcdir}/config.json" -t "${pkgdir}/etc/${pkgname}"
     install -Dvm644 "${srcdir}/alist.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
