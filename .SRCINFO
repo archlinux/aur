@@ -1,7 +1,7 @@
 pkgbase = ocaml4-camlp4
 	pkgdesc = Caml preprocessor and pretty-printer
 	pkgver = 4.14+1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/ocaml/camlp4/releases
 	arch = x86_64
 	license = GPL2
@@ -10,6 +10,7 @@ pkgbase = ocaml4-camlp4
 	makedepends = ocaml4-findlib
 	makedepends = ocaml4-camlp-streams
 	depends = ocaml4
+	conflicts = ocaml-camlp4
 	options = !makeflags
 	options = !emptydirs
 	options = staticlibs
