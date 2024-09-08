@@ -1,0 +1,5 @@
+[pypy3-pyproject-hooks]
+source = "github"
+github = "pypa/pyproject-hooks"
+use_max_tag = "true"
+prefix = "v"
