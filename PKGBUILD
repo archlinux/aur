@@ -21,7 +21,7 @@ sha256sums_x86_64=('e03485f88d2e2b7becd41d8bb68f46bf4993c7475d94a5d886ff01bff340
 package() {
 
   # bin
-  install -Dm755 "./waku" -t "$pkgdir/usr/bin/waku"
+  install -Dm755 "./waku" -t "$pkgdir/usr/bin"
 
   # license
   install -Dm644 "./LICENSE" "$pkgdir/usr/share/licenses/waku"
