@@ -7,23 +7,24 @@ pkgdesc="A shell program written in Python"
 arch=('any')
 url="https://github.com/kshitijaucharmal/geminishell"  # Replace with your project's URL
 license=('Apache')
-depends=('python')  # Add other dependencies if needed
-source=("git+https://github.com/kshitijaucharmal/$pkgname.git#branch=main")  # Replace 'main' with your branch if needed
-sha256sums=('SKIP')  # not required when using git
+depends=('python' 'pyinstaller' 'python-pip')  # Add other dependencies if needed
+source=("git+https://github.com/kshitijaucharmal/$pkgname.git#branch=main")
+sha256sums=('SKIP')  # Not required when using git
 
 build() {
   cd "$srcdir/$pkgname"
-  # Optional: Add commands to prepare the build environment if needed
+
+  # Install dependencies and build using PyInstaller
+  pip install -r requirements.txt
+  pyinstaller src/__main__.py --clean -n geminishell --distpath target
 }
 
 package() {
   cd "$srcdir/$pkgname"
   
-  # Run the install.sh script
-  chmod +x install.sh
-  ./install.sh
+  # Install the binary into /usr/bin
+  install -Dm755 "target/geminishell/geminishell" "$pkgdir/usr/bin/geminishell"
 
-  # Install additional files if needed
+  # Install the LICENSE file
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
