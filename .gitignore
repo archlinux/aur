@@ -1,0 +1,5 @@
+/pkg
+/src
+/cf-terraforming-*.pkg.tar.zst
+/cf-terraforming-*.tar.gz
+/.idea
