@@ -1,0 +1,20 @@
+pkgbase = brother-mfc-l3760cdw
+	pkgdesc = LPR and CUPS drivers for the Brother MFC-L3760CDW
+	pkgver = 3.5.1
+	pkgrel = 0
+	url = http://support.brother.com/g/s/id/linux/en/index.html
+	install = brother-mfc-l3760cdw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother
+	license = GPL
+	makedepends = perl
+	makedepends = tar
+	depends = cups
+	depends = lib32-expat
+	depends = lib32-gcc-libs
+	options = !debug
+	source = https://download.brother.com/welcome/dlf105762/mfcl3760cdwpdrv-3.5.1-1.i386.deb
+	md5sums = a5fb3394dc1b7f0b9aec16ffdbaf5100
+
+pkgname = brother-mfc-l3760cdw
