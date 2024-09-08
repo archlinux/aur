@@ -1,0 +1,12 @@
+pkgbase = zypper-dup
+	pkgdesc = A dummy package that replaces 'sudo zypper dup' with a dangerous command
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	provides = zypper
+	conflicts = zypper
+	source = mycommand.sh
+	sha256sums = SKIP
+
+pkgname = zypper-dup
