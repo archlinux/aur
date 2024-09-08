@@ -1,7 +1,7 @@
 pkgbase = mldonkey
 	pkgdesc = A multi-network P2P client
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ygrek/mldonkey
 	arch = x86_64
 	license = GPL2
