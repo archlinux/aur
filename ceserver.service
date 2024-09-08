@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 ExecStart=/usr/bin/ceserver
-Restart=always
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target

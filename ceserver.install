@@ -1,0 +1,15 @@
+post_install() {
+    echo "Enabling and starting ceserver service..."
+    systemctl daemon-reload
+    systemctl enable --now ceserver.service
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    systemctl restart ceserver.service
+}
+
+pre_remove() {
+    echo "Stopping and disabling ceserver service..."
+    systemctl disable --now ceserver.service
+}
