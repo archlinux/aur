@@ -2,8 +2,8 @@
 # Contributor: tuxsavvy
 
 pkgname=realrtcw
-pkgver=4.0
-pkgrel=3
+pkgver=5.0
+pkgrel=1
 pkgdesc="An overhaul mod for critically acclaimed Return To Castle Wolfenstein."
 arch=('i686' 'x86_64')
 url="http://www.moddb.com/mods/realrtcw-realism-mod"
@@ -19,12 +19,11 @@ sha256sums=('ecadc55bdb4e3d41dcd4e3872b110d7d0e716a45c6393108387dc7b062830a00'
   '6482482e637d38ce6eff6ab740f971f86b7e0d205797b2c5044aecfcf5701364'
   '5b6c8259e381039c3e0184211cf3624663cd8670798f7ee894c30a001cc2eb81')
 
-_mainid=236053
-
+_mainid=273184
 noextract=("${pkgname}-${pkgver}.zip")
 PKGEXT='.pkg.tar'
 DLAGENTS+=("moddb::${BASH_SOURCE[0]%/*}/moddb-downloader.sh %u %o")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wolfetplayer/RealRTCW/archive/refs/tags/${pkgver}.tar.gz"
+source=("${pkgname}-4.0.tar.gz::https://github.com/wolfetplayer/RealRTCW/archive/refs/tags/4.0.tar.gz"
   "${pkgname}-${pkgver}.zip::moddb://www.moddb.com/downloads/start/${_mainid}/all"
   "${pkgname}.png"
   "${pkgname}.launcher"
@@ -41,7 +40,7 @@ prepare() {
 }
 
 package() {
-  cd "${srcdir}/RealRTCW-${pkgver}"
+  cd "${srcdir}/RealRTCW-4.0"
 
   unset CFLAGS
   # Disable steam build
