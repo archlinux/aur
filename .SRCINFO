@@ -1,13 +1,21 @@
 pkgbase = power-options-gtk-git
 	pkgdesc = A gtk frontend for Power Options, a blazingly fast power management solution.
-	pkgver = 0.1.0r13.9a79d8
+	pkgver = 0.1.0r14.0c3572
 	pkgrel = 1
 	url = https://github.com/thealexdev23/power-options
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	depends = power-options-daemon-git
+	makedepends = git
+	depends = power-options-daemon
+	depends = libadwaita
+	depends = yad
+	provides = power-options-gtk
 	conflicts = power-options-gtk
+	conflicts = tlp
+	conflicts = auto-cpufreq
+	conflicts = power-profiles-daemon
+	conflicts = cpupower-gui
 	source = git+https://github.com/thealexdev23/power-options.git
 	sha256sums = SKIP
 
