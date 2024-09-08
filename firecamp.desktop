@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Firecamp
+Name[de]=Firecamp
+Comment=Open Source Postman Alternative - https://firecamp.dev/
+Comment[de]=Open Source Postman Alternative - https://firecamp.dev/
+Exec=/usr/share/firecamp-appimage/firecamp.AppImage
+Icon=/usr/share/firecamp-appimage/firecamp.svg
+Terminal=false
+Type=Application
+Categories=Development;Utility;
+StartupNotify=false

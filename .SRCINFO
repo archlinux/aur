@@ -1,0 +1,18 @@
+pkgbase = firecamp-appimage
+	pkgdesc = Developer-first OpenSource API DevTool, Postman/Insomnia alternative
+	pkgver = 3.3.0_beta.3
+	pkgrel = 1
+	url = https://github.com/firecamp-dev/firecamp
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = fuse2
+	conflicts = firecamp
+	options = !strip
+	source = firecamp.AppImage::https://github.com/firecamp-dev/firecamp/releases/download/v3.3.0-beta.3/Firecamp-3.3.0-beta.3.x86_64.AppImage
+	source = firecamp.svg::https://raw.githubusercontent.com/firecamp-dev/firecamp/main/.github/logo.svg
+	source = firecamp.desktop
+	sha256sums = e7dfdbb3df963c3e4c186327530d76dbbb677260d15e5b3e19187b5992ef71ed
+	sha256sums = f8d063b62f694acc7d1a54ecc8d8777b5c20aa70fe347db830a32cec28da9cc3
+	sha256sums = 60244c18c4f17d481307eb777d26535a60791ff7b62a34a235908c07a7fc9f9e
+
+pkgname = firecamp-appimage
