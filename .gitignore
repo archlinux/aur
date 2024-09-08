@@ -1,0 +1,8 @@
+clap/
+clap-helpers/
+clap-juce-extensions/
+dr_libs/
+pkg/
+src/
+ysfx-saike-mod-git-*.pkg.tar.*
+ysfx/
