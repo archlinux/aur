@@ -1,18 +1,26 @@
 # Maintainer: Parker Reed <parker.l.reed@gmail.com>
-# Co-Maintainer: Martin Rys <rys.pw/contact>
+# Co-Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 # PKGBUILD that builds package from git.
 # Run 'makepkg -i' and hope for best :)
 
 pkgname=sc-controller-git
-pkgver=0.4.8.14.r0.ccde45f
+pkgver=0.4.8.21.r4.2a7110e
 pkgrel=1
 pkgdesc='User-mode driver and GTK3 based GUI for Steam Controller'
 arch=('x86_64' 'aarch64')
 url='https://github.com/C0rn3j/sc-controller'
 license=('GPL-2.0-only')
-depends=('gtk3' 'python-gobject' 'python-cairo' 'python-pylibacl' 'python-evdev' 'python-vdf' 'xorg-xinput')
-optdepends=('gtk-layer-shell: wayland OSD support')
-makedepends=('python-setuptools' 'git')
+depends=(
+	'gtk3'
+	'gtk-layer-shell'
+	'python-cairo'
+	'python-evdev'
+	'python-gobject'
+	'python-pylibacl'
+	'python-setuptools'
+	'python-vdf'
+	'xorg-xinput')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'scc')
 source=('sc-controller'::'git+https://github.com/C0rn3j/sc-controller.git')
