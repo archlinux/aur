@@ -1,6 +1,6 @@
 # Maintainer: Sergey Mezentsev <thebits@yandex.ru>
 pkgname=catboost-bin
-pkgver=1.2.5
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="CatBoost is a high-performance open source library for gradient boosting on decision trees"
 arch=('x86_64' 'aarch64')
@@ -8,8 +8,8 @@ url="https://github.com/catboost/catboost/"
 license=(APACHE)
 source_x86_64=("https://github.com/catboost/catboost/releases/download/v${pkgver}/catboost-linux-x86_64-${pkgver}")
 source_aarch64=("https://github.com/catboost/catboost/releases/download/v${pkgver}/catboost-linux-aarch64-${pkgver}")
-b2sums_x86_64=('57f186d6a6d2a390fb647e3db1e71ace5af6c28823c3cd6c1c095448b8dddad90e8eec6e547403349a5d54c4aedf6fbc06dd826540771d00a0f055f1862a42d7')
-b2sums_aarch64=('424e5621f25b8fe23f555959406a78ecbc4967e55983ed86944f009df979c04d94b370e9fb331eb3c693b96db3ec54ea831a35148ddb507200743681024011db')
+b2sums_x86_64=('a40e5c3cd6e256dd52342bd07f751a6fb0aca08ffde303801379eea29031a457bf0f78bab9acca8dd3931fd4e35cf39d86e52c7a36165477275dfc0ec8f3179e')
+b2sums_aarch64=('86256bcd8d757c451b67caf07cc54432876ace1620086ecd5a9fb54206a945f0c2a2dbde16a9c51e34c34d6717b61238ec819fe79af01b0c4278223d805e5c08')
 
 package() {
   install -Dm0755 "catboost-linux-${CARCH}-${pkgver}" "$pkgdir/usr/bin/catboost"
