@@ -14,12 +14,13 @@ pkgname=(
   "${_pkgbare}-common-git"
 )
 pkgver=0.0.alpha_3+344.r519.20240831.733b5c1
-pkgrel=1
+pkgrel=2
 pkgdesc="32 and 64 bit DOS command interpreters ('command.com'), e.g. for fdpp and dosemu2. Latest git checkout."
 arch=('any')
 url='https://github.com/dosemu2/comcom64'
 license=('GPL-3.0-or-later')
 makedepends=(
+  'djstub'
   'git'
 )
 if "${_build_32}"; then
@@ -37,7 +38,6 @@ if "${_build_64}"; then
   )
   makedepends+=(
     'dj64'
-    'djstub'
     'thunk_gen'
   )
 fi
