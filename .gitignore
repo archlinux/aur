@@ -1,4 +1,4 @@
 pkg/
 src/
-shadowsocks-go-git/
+shadowsocks-go/
 *.tar.zst

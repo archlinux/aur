@@ -1,11 +1,11 @@
 pkgbase = shadowsocks-go-git
 	pkgdesc = A versatile and efficient proxy platform for secure communications
-	pkgver = 1.5.2.r4.gfc3eb45
+	pkgver = 1.11.1.r0.ga2168a2
 	pkgrel = 1
 	url = https://github.com/database64128/shadowsocks-go
 	arch = x86_64
 	arch = aarch64
-	license = AGPL3
+	license = AGPL-3.0-or-later
 	makedepends = git
 	makedepends = go
 	optdepends = shadowsocks-go-domain-sets: commonly used domain sets
@@ -16,7 +16,8 @@ pkgbase = shadowsocks-go-git
 	backup = etc/shadowsocks-go/server.json
 	backup = etc/shadowsocks-go/client.json
 	backup = etc/shadowsocks-go/upsks.json
-	source = shadowsocks-go-git::git+https://github.com/database64128/shadowsocks-go.git
+	source = shadowsocks-go::git+https://github.com/database64128/shadowsocks-go.git?signed
+	validpgpkeys = 4DCED15E346E2923B931D6F71CA27546BEDB8B01
 	b2sums = SKIP
 
 pkgname = shadowsocks-go-git
