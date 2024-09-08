@@ -13,7 +13,7 @@ license=('GPL-2.0-or-later')
 makedepends=('doxygen' 'flac>=1.2.1' 'graphviz' 'libid3tag' 'libmad' 'libogg'
              'libvorbis' 'pcre')
 # checkdepends=('cutter-test')
-_pkgsrc="${pkgname}-${pkgver}"
+_pkgsrc="${pkgbase}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::https://downloads.sourceforge.net/sourceforge/mp3splt/${_pkgsrc}.tar.gz"
         "${pkgbase}_fix_informations_spelling.patch::https://sources.debian.org/data/main/${pkgbase::4}/${pkgbase}/${pkgver}-0.1/debian/patches/fix-informations-spelling"
         "${pkgbase}_fix_ogg_and_vorbis_state_structs_init.patch::https://sources.debian.org/data/main/m/mp3splt/2.6.2%2B20170630-3.2/debian/patches/10_Properly-zero-initialise-the-ogg-and-vorbis-state-st.patch")
