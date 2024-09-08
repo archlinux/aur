@@ -1,7 +1,7 @@
 pkgbase = manjaro-zsh-config
 	pkgdesc = Zsh configuration for manjaro
 	pkgver = 0.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Chrysostomus/manjaro-zsh-config
 	install = manjaro-zsh-config.install
 	arch = any
@@ -14,8 +14,9 @@ pkgbase = manjaro-zsh-config
 	depends = zsh
 	depends = pkgfile
 	depends = ttf-noto-nerd
-	depends = zsh-theme-powerlevel10k
-	source = git+https://github.com/Chrysostomus/manjaro-zsh-config.git#commit=a09dbc3f6bf22d553def64247b3529d9310c7b1f
+	depends = zsh-theme-powerlevel10k-git
+	backup = root/.zshrc
+	source = git+https://github.com/Chrysostomus/manjaro-zsh-config.git#commit=1f9d0da2c8408de895156cb65d324636d656df1c
 	sha256sums = SKIP
 
 pkgname = manjaro-zsh-config
