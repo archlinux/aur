@@ -4,7 +4,7 @@
 pkgbase=ocaml4
 pkgname=(ocaml4 ocaml4-compiler-libs)
 pkgver=4.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A functional language with OO extensions"
 arch=(x86_64)
 license=(LGPL2.1 'custom: QPL-1.0')

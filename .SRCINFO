@@ -1,7 +1,7 @@
 pkgbase = ocaml4
 	pkgdesc = A functional language with OO extensions
 	pkgver = 4.14.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ocaml.org/
 	arch = x86_64
 	license = LGPL2.1
