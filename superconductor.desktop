@@ -5,5 +5,5 @@ Terminal=false
 Type=Application
 Icon=superconductor
 StartupWMClass=SuperConductor
-Comment=A playout client for Windows, Linux or MacOS to control CasparCG, Atem, OBS and more!
+Comment=A playout client to control CasparCG, Atem, OBS and more!
 Categories=Utility;
