@@ -4,7 +4,7 @@
 pkgname=python-puzpy
 pkgver=0.2.6
 pkgrel=1
-pkgdesc="Python library for reading and writing .puz crossword files"
+pkgdesc="Python library for reading and writing across lite crossword puzzle .puz files."
 arch=('any')
 url="https://github.com/alexdej/puzpy"
 license=('MIT')
