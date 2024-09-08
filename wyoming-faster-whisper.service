@@ -7,11 +7,13 @@ Restart=on-failure
 User=wyoming-faster-whisper
 Group=wyoming-faster-whisper
 DynamicUser=true
+CacheDirectory=wyoming-faster-whisper
+Environment="HF_HOME=/var/cache/wyoming-faster-whisper/huggingface"
 StateDirectory=wyoming-faster-whisper
 WorkingDirectory=/var/lib/wyoming-faster-whisper
 
 EnvironmentFile=/etc/conf.d/wyoming-faster-whisper
-ExecStart=python3 -m wyoming_faster_whisper \
+ExecStart=wyoming-faster-whisper \
     --device $DEVICE \
     --model $MODEL \
     --uri $URI \

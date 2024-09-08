@@ -1,7 +1,7 @@
 pkgbase = python-wyoming-faster-whisper
 	pkgdesc = Wyoming Server for Faster Whisper
-	pkgver = 1.1.0
-	pkgrel = 4
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://github.com/rhasspy/wyoming-faster-whisper
 	arch = any
 	license = MIT
@@ -11,15 +11,12 @@ pkgbase = python-wyoming-faster-whisper
 	makedepends = python-setuptools
 	depends = python
 	depends = python-wyoming>=1.5.2
-	depends = ctranslate2
-	depends = python-tokenizers
-	source = https://github.com/rhasspy/wyoming-faster-whisper/archive/refs/tags/v1.1.0.tar.gz
+	depends = python-faster-whisper>=1.0.3
+	source = https://github.com/rhasspy/wyoming-faster-whisper/archive/refs/tags/v2.1.0.tar.gz
 	source = wyoming-faster-whisper.conf
 	source = wyoming-faster-whisper.service
-	source = 0001-fix-setup.patch
-	sha256sums = b7eed249299c6da59b015aff81af171578d3cbd2a133254ccac63b14c6ac16ee
+	sha256sums = 51d40af4f4ed0b14c8fd18a0d2eed720d800fdd48ddf3fd836f30f6ce07d7f05
 	sha256sums = 9b4a794ebcfbed17849adae53ce5a70ca354d8522693ca721a3938aad150a97d
-	sha256sums = a3d8484cc0483deea2cc2097229d48911bd22e84ce30cabbfac4704399454502
-	sha256sums = a04fea323539a46da3e7e90e8bf04a6974317005a6ea470bf8335f73d97ca351
+	sha256sums = da812eeb970b1fb67109c0094af869d0f4764cf355833cb64e72c359e4b5a848
 
 pkgname = python-wyoming-faster-whisper
