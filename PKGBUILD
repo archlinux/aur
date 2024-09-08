@@ -1,7 +1,7 @@
 # Maintainer: Entailz <entail-wraps0r at icloud dot com>
 
 pkgname=quickshell
-pkgver=r304.f95e7db
+pkgver=r307.79b22af
 pkgrel=1
 pkgdesc='Simple and flexbile QtQuick based desktop shell toolkit.'
 arch=(x86_64 aarch64)
@@ -18,7 +18,7 @@ depends=(
 	'libxcb'
 	'wayland'
 	'cli11'
-	'google-breakpad-unbroken'
+	'google-breakpad'
 )
 makedepends=(
 	'ninja'
