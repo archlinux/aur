@@ -1,0 +1,13 @@
+pkgbase = ofxstatement-revolut-git
+	pkgdesc = ofxstatement support for Revolut
+	pkgver = r87.7bce386
+	pkgrel = 1
+	url = https://github.com/hades/ofxstatement-revolut.git
+	arch = any
+	license = GPL-3
+	makedepends = git
+	depends = ofxstatement
+	source = git+https://github.com/hades/ofxstatement-revolut
+	md5sums = SKIP
+
+pkgname = ofxstatement-revolut-git
