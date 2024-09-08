@@ -1,0 +1,24 @@
+diff --git a/src/net/ea/chatrecv.h b/src/net/ea/chatrecv.h
+index 8dc29002ea1085789a81113ba6b5debf8766aee2..df4188690fb60c4ea89e793dcb4a2e489209f044 100644
+--- a/src/net/ea/chatrecv.h
++++ b/src/net/ea/chatrecv.h
+@@ -28,6 +28,7 @@
+ #if defined(__APPLE__)
+ #include <tr1/cstdint>
+ #endif  // defined(__APPLE__)
++#include <cstdint>
+ #else  // defined(__GXX_EXPERIMENTAL_CXX0X__)
+ #include <stdint.h>
+ #endif  // defined(__GXX_EXPERIMENTAL_CXX0X__)
+diff --git a/src/net/ea/traderecv.h b/src/net/ea/traderecv.h
+index d850fee472efeae8b64cb4f1d8def06face006ad..2d9626a8eaad7065cecb0f90e1bf931d3cd09628 100644
+--- a/src/net/ea/traderecv.h
++++ b/src/net/ea/traderecv.h
+@@ -28,6 +28,7 @@
+ #if defined(__APPLE__)
+ #include <tr1/cstdint>
+ #endif  // defined(__APPLE__)
++#include <cstdint>
+ #else  // defined(__GXX_EXPERIMENTAL_CXX0X__)
+ #include <stdint.h>
+ #endif  // defined(__GXX_EXPERIMENTAL_CXX0X__)

@@ -1,0 +1,24 @@
+diff -aur ManaPlus-2.1.3.17.orig/src/progs/dyecmd/client.cpp ManaPlus-2.1.3.17/src/progs/dyecmd/client.cpp
+--- ManaPlus-2.1.3.17.orig/src/progs/dyecmd/client.cpp	2023-09-02 12:21:30.200665077 +0200
++++ ManaPlus-2.1.3.17/src/progs/dyecmd/client.cpp	2023-09-02 12:24:21.513327859 +0200
+@@ -88,9 +88,7 @@
+ #undef ERROR
+ #endif  // WIN32
+ 
+-#ifdef __clang__
+ #include <ctime>
+-#endif  // __clang__
+ 
+ #ifdef ANDROID
+ #ifndef USE_SDL2
+diff -aur ManaPlus-2.1.3.17.orig/src/resources/wallpaper.cpp ManaPlus-2.1.3.17/src/resources/wallpaper.cpp
+--- ManaPlus-2.1.3.17.orig/src/resources/wallpaper.cpp	2023-09-02 12:21:30.207331847 +0200
++++ ManaPlus-2.1.3.17/src/resources/wallpaper.cpp	2023-09-02 12:21:51.927670696 +0200
+@@ -34,6 +34,7 @@
+ #include "utils/foreach.h"
+ 
+ #include <algorithm>
++#include <ctime>
+ 
+ #ifdef WIN32
+ #include <sys/time.h>
