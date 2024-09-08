@@ -1,0 +1,43 @@
+Description: fix build with _TIME_BITS=64
+ The startup-notification API takes a long * where it ought to have always
+ taken a time_t *.  As a consequence, changing the size of time_t makes
+ callers fail to build.  Work around this by safely casting to a long.
+ This will continue to work on 32-bit systems until 2038, by which time
+ all the 32-bit systems will be dead or no longer running GUIs or at least
+ not using libstartup-notification0.
+Author: Steve Langasek <steve.langasek@canonical.com>
+Forwarded: no
+Last-Update: 2024-03-15
+
+Index: compiz-0.9.14.2+22.10.20220822/src/screen.cpp
+===================================================================
+--- compiz-0.9.14.2+22.10.20220822.orig/src/screen.cpp
++++ compiz-0.9.14.2+22.10.20220822/src/screen.cpp
+@@ -2315,19 +2315,22 @@
+ bool
+ cps::StartupSequence::handleStartupSequenceTimeout ()
+ {
+-    struct timeval	now, active;
++    struct timeval	now;
+     double		elapsed;
+ 
+     gettimeofday (&now, NULL);
+ 
+     foreach (CompStartupSequence *s, startupSequences)
+     {
++        /* workaround for broken startup-notification api that uses
++           a long where it should have used time_t */
++	long seconds, useconds;
+ 	sn_startup_sequence_get_last_active_time (s->sequence,
+-						  &active.tv_sec,
+-						  &active.tv_usec);
++						  &seconds,
++						  &useconds);
+ 
+-	elapsed = ((((double) now.tv_sec - active.tv_sec) * 1000000.0 +
+-		    (now.tv_usec - active.tv_usec))) / 1000.0;
++	elapsed = ((((double) now.tv_sec - seconds) * 1000000.0 +
++		    (now.tv_usec - useconds))) / 1000.0;
+ 
+ 	if (elapsed > STARTUP_TIMEOUT_DELAY)
+ 	    sn_startup_sequence_complete (s->sequence);
