@@ -15,10 +15,10 @@ pkgbase = libmp3splt
 	makedepends = pcre
 	source = libmp3splt-0.9.2.tar.gz::https://downloads.sourceforge.net/sourceforge/mp3splt/libmp3splt-0.9.2.tar.gz
 	source = libmp3splt_fix_informations_spelling.patch::https://sources.debian.org/data/main/libm/libmp3splt/0.9.2-0.1/debian/patches/fix-informations-spelling
-	source = libmp3splt_fix_ogg_and_vorbis_state_structs_init.patch
+	source = libmp3splt_fix_ogg_and_vorbis_state_structs_init.patch::https://sources.debian.org/data/main/m/mp3splt/2.6.2%2B20170630-3.2/debian/patches/10_Properly-zero-initialise-the-ogg-and-vorbis-state-st.patch
 	sha256sums = 30eed64fce58cb379b7cc6a0d8e545579cb99d0f0f31eb00b9acc8aaa1b035dc
 	sha256sums = f6f730a6fc1231571368a3b984b24273bddbe1d9cc902111909ddd1221cca517
-	sha256sums = 3fedbcf86e7b93fa548bdc0ac6874a98d6045082e51ed90ec570a06efca37422
+	sha256sums = 6c8721e71937b2f8b83189dad5be190de0bc0ece12bfcc9429e46d03e432e247
 
 pkgname = libmp3splt
 	arch = x86_64
