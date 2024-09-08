@@ -18,3 +18,4 @@ package() {
         mkdir -p "${pkgdir}/usr/share/sddm/themes/"
         cp -r "${_gitname}/" "${pkgdir}/usr/share/sddm/themes/"
 }
+sha256sums=('SKIP')
