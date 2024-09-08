@@ -1,0 +1,13 @@
+pkgbase = libsfdo
+	pkgdesc = collection of libraries which implement some of the freedesktop.org specifications
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/vyivel/libsfdo
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = meson
+	depends = glibc
+	source = libsfdo-0.1.2.tar.gz::https://gitlab.freedesktop.org/vyivel/libsfdo/-/archive/v0.1.2/libsfdo-v0.1.2.tar.gz
+	b2sums = 8d4b10f104636039fd996332305c50925696b6b2e349fa31d105daa6d389aad9778843d0a5498f867c73c8e83a671f6da5141d70032c634e01dd3b0d778f4cee
+
+pkgname = libsfdo
