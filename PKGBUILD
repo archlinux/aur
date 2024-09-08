@@ -2,8 +2,8 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=mldonkey-git
-pkgver=3.1.7.2.r38.gb9a1237b
-pkgrel=1
+pkgver=3.2.1.r10.gcb0da53f
+pkgrel=2
 pkgdesc='A multi-network P2P client'
 arch=(x86_64)
 url='http://mldonkey.sourceforge.net/'
@@ -31,12 +31,6 @@ pkgver() {
   git describe --long --tags | sed 's/^release.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "mldonkey"
-  # UPNP build error https://github.com/ygrek/mldonkey/issues/101
-  sed -i 's/sizeof( map->lanaddr )/sizeof( map->lanaddr ), NULL , 0/g' src/utils/net/upnp_stubs.c
-}
-
 build() {
   cd "mldonkey"
   ./configure \
@@ -49,7 +43,6 @@ build() {
 
 #    --enable-batch \
 
-  #make depend
   make
   make utils
 }

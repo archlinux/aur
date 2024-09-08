@@ -1,7 +1,7 @@
 pkgbase = mldonkey-git
 	pkgdesc = A multi-network P2P client
-	pkgver = 3.1.7.2.r38.gb9a1237b
-	pkgrel = 1
+	pkgver = 3.2.1.r10.gcb0da53f
+	pkgrel = 2
 	url = http://mldonkey.sourceforge.net/
 	arch = x86_64
 	license = GPL2
