@@ -4,7 +4,7 @@ pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
 pkgver=1.8.0
 srcrel=2 # Incremented when there is a new release for the same version number
-pkgrel=1
+pkgrel=2
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
 url="https://www.xnview.com/en/xnviewmp/"
 
