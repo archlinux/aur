@@ -1,7 +1,7 @@
 # Maintainer: Emil Velikov <emil.l.velikov@gmail.com>
 
 pkgname=umr
-pkgver=1.0.8
+pkgver=1.0.10
 pkgrel=1
 pkgdesc='User Mode Register Debugger for AMDGPU Hardware'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('libpciaccess' 'ncurses' 'llvm-libs')
 makedepends=('cmake' 'llvm' 'libdrm')
 source=("$url/-/archive/$pkgver/umr-$pkgver.tar.bz2")
-sha256sums=('a4c817588e7646a7efb0a177cdddcab58c49fc0923b33b5105dd3ac0183b276a')
+sha256sums=('9bb1b9a95d1d2a9f23f8d5126d5c073f82e6a580268f7d7bcafb0d95ce655f79')
 
 build() {
 	local cmake_args=(
@@ -29,7 +29,8 @@ package() {
 	DESTDIR="$pkgdir" cmake --install build
 	# Remove some files which should not be installed. See:
 	# https://gitlab.freedesktop.org/tomstdenis/umr/-/merge_requests/32
-	rm -rf "$pkgdir/usr/bin/umrgui"
+	# The MR has landed and was effectively reverted with
+	# https://gitlab.freedesktop.org/tomstdenis/umr/-/commit/cdba623668920a0c765c50d84ac66f7b73658ccb
 	rm -rf "$pkgdir/usr/include"
 	rm -rf "$pkgdir/usr/lib"
 	install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 "$pkgname-$pkgver/LICENSE"
