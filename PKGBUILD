@@ -5,7 +5,7 @@
 _pkgname=deadbeef-lyricbar
 pkgname=deadbeef-plugin-lyricbar-git
 pkgver=r80.ga1b2dba
-pkgrel=3
+pkgrel=4
 pkgdesc="DeaDBeeF lyric bar plugin"
 arch=('i686' 'x86_64')
 url="https://github.com/loskutov/deadbeef-lyricbar"
@@ -36,6 +36,9 @@ prepare() {
 
 build() {
   cd "${_pkgname}"
+  # Fix GCC14
+  export CFLAGS+=" -Wno-incompatible-pointer-types"
+  export CXXFLAGS+=" -Wno-incompatible-pointer-types"
   make COPTS="${CFLAGS}" CXXOPTS="${CXXFLAGS}" gtk2
   mv ddb_lyricbar_gtk2.so ddb_lyricbar_gtk2.so.save
   make clean
