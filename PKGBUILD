@@ -1,4 +1,5 @@
 # Maintainer: Terrasse <terrasse@qq.com>
+# Maintainer: ccmywish <ccmywish@qq.com>
 pkgname=chsrc-git
 pkgver=20240905.r780.bf666fa
 pkgrel=1
