@@ -6,7 +6,7 @@
 # Contributor: lubosz
 
 pkgname=pcl-git
-pkgver=r14416.eb9c003fc
+pkgver=r14455.af7b2d5f7
 pkgrel=1
 pkgdesc="a standalone, large scale, open project for 2D/3D image and point cloud processing"
 arch=(i686 x86_64)
@@ -71,6 +71,7 @@ prepare() {
 		-DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS} -Wl,--as-needed" \
 		-DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS} -Wl,--as-needed" \
 		-DCMAKE_CUDA_ARCHITECTURES="all" \
+        -DBoost_USE_DEBUG_RUNTIME=OFF \
 		-DBUILD_apps=ON \
 		-DBUILD_apps_cloud_composer=ON \
 		-DBUILD_apps_in_hand_scanner=ON \
