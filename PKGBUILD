@@ -2,17 +2,17 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.33.r16885.e56164f1e3
+pkgver=0.0.33.r16913.92c1a8c45d
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url=https://github.com/RPCS3/rpcs3
 license=(GPL-2.0-only)
 depends=(
   alsa-lib
   glew
   glu
-  # Use bundled FFMPEG for now since we use FFMPEG 6.0
+  # Use bundled FFMPEG for now since we use FFMPEG 5.1.2
   #libavcodec.so
   #libavutil.so
   #libswscale.so
@@ -35,10 +35,11 @@ depends=(
   zlib
   curl
   pugixml
-# newer system flatbuffers is incompatible with the version RPCS3 depends on
-# flatbuffers
+  flatbuffers
+  llvm
 )
 optdepends=(
+  vulkan-validation-layers
   rpcs3-udev
 )
 makedepends=(
@@ -55,11 +56,9 @@ conflicts=(rpcs3)
 options=(!emptydirs !lto !strip)
 source=(
   git+https://github.com/RPCS3/rpcs3.git
-  llvm::git+https://github.com/llvm/llvm-project.git
   git+https://github.com/KhronosGroup/glslang.git
 )
 sha256sums=(
-  SKIP
   SKIP
   SKIP
 )
@@ -76,9 +75,8 @@ pkgver() {
 prepare() {
   cd rpcs3
   
-  git submodule init 3rdparty/glslang/glslang 3rdparty/llvm/llvm
+  git submodule init 3rdparty/glslang/glslang
   git config submodule.3rdparty/glslang.url ../glslang
-  git config submodule.3rdparty/llvm/llvm.url ../llvm
   
   SUBMODULES=($(git config --file .gitmodules --get-regexp path | \
     awk '!/libpng/ && !/zlib/ && !/curl/ && !/llvm/ && !/glslang/ && !/pugixml/ '))
@@ -99,7 +97,7 @@ prepare() {
     git -c protocol.file.allow=always submodule update --init --filter=tree:0 $path
   done
   
-  git -c protocol.file.allow=always submodule update 3rdparty/glslang/glslang 3rdparty/llvm/llvm
+  git -c protocol.file.allow=always submodule update 3rdparty/glslang/glslang
 }
 
 build() {
@@ -116,11 +114,11 @@ build() {
     -DUSE_SYSTEM_LIBPNG=ON \
     -DUSE_SYSTEM_ZLIB=ON \
     -DUSE_SYSTEM_CURL=ON \
-    -DUSE_SYSTEM_FLATBUFFERS=OFF \
+    -DUSE_SYSTEM_FLATBUFFERS=ON \
     -DUSE_SYSTEM_PUGIXML=ON \
     -DUSE_SDL=ON \
     -DUSE_SYSTEM_SDL=ON \
-    -DBUILD_LLVM=ON \
+    -DBUILD_LLVM=OFF \
     -DUSE_SYSTEM_WOLFSSL=OFF
   
   make -C build
