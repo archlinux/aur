@@ -1,11 +1,11 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname=tetrigo
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Play Tetris in your terminal.'
 arch=('x86_64')
 url="https://github.com/Broderick-Westrope/tetrigo"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
