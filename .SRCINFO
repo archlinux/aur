@@ -14,7 +14,6 @@ pkgbase = qucs-s
 	depends = ngspice
 	optdepends = ngspice: recommended simulation backend
 	optdepends = qucs: for Qucsator simulation backend
-	optdepends = c
 	optdepends = xyce-serial: SPICE-compatible simulation backend
 	optdepends = spiceopus: general purpose simulation backend for optimization loops
 	optdepends = openvaf: compiler for Verilog-A devices support

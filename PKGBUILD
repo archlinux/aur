@@ -12,7 +12,7 @@ depends=('qt6-svg' 'ngspice')
 makedepends=('cmake' 'qt6-tools' 'gperf' 'dos2unix')
 optdepends=('ngspice: recommended simulation backend'
             'qucs: for Qucsator simulation backend'
-   c         'xyce-serial: SPICE-compatible simulation backend'
+            'xyce-serial: SPICE-compatible simulation backend'
             'spiceopus: general purpose simulation backend for optimization loops'
             'openvaf: compiler for Verilog-A devices support'
             'octave: high-level language for post-simulation data processing'
