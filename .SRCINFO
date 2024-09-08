@@ -1,0 +1,15 @@
+pkgbase = gpg-crypter
+	pkgdesc = A graphical front-end to GnuPG(GPG) using the GTK3 toolkit and libgpgme
+	pkgver = 0.4.1
+	pkgrel = 4
+	url = http://gpg-crypter.sourceforge.net/
+	changelog = gpg-crypter.changelog
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	depends = gtk3
+	depends = gpgme
+	source = https://downloads.sourceforge.net/sourceforge/gpg-crypter/gpg-crypter-0.4.1.tar.gz
+	sha512sums = 300f1c313fb9f6cc5a1def24e2783cd4b40a8ed1f81b35201399374817b314c1e21bb0fd1dda10ba78f6dc6ffdbf5b26ffb57734eb1cb644650db7f97de7bb23
+
+pkgname = gpg-crypter
