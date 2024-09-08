@@ -1,5 +1,5 @@
 pkgname=basedpyright
-pkgver=1.17.2
+pkgver=1.17.3
 pkgrel=1
 pkgdesc="pyright fork with various improvements and pylance features"
 arch=("any")
@@ -11,7 +11,7 @@ makedepends=("npm" "python" "git"
     "tk")
 checkdepends=("python-pytest")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DetachHead/basedpyright/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('55cc6a3b8aa0dc6cc1853dce8e2f87d6909945cdd8df0f1995635da8ba0dcf21')
+sha256sums=('364959b9b78dd56fdec7cd425a9eaf276e133f6d0a490525b1bbee0c32da5795')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -39,7 +39,7 @@ check() {
     ln -srfv node_modules/webpack/bin/webpack.js node_modules/.bin/webpack
     ln -srfv node_modules/webpack-cli/bin/cli.js node_modules/.bin/webpack-cli
     ln -srfv node_modules/jest/bin/jest.js node_modules/.bin/jest
-    npm test -- --testTimeout=100000
+    npm test -- --testTimeout=100000 --maxWorkers=1
 }
 
 package() {
