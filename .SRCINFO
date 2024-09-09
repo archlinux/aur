@@ -2,6 +2,7 @@ pkgbase = spiral-git
 	pkgdesc = A simple helix-inspired modal text editor; like helix, but worse
 	pkgver = r12.d1db661
 	pkgrel = 2
+	url = https://github.com/Elekrisk/spiral.git
 	arch = x86_64
 	license = MIT
 	makedepends = git
