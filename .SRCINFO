@@ -1,6 +1,6 @@
 pkgbase = haystack-editor-bin
 	pkgdesc = An IDE built on top of a canvas, Haystack takes care of the tedious and confusing parts of coding for you
-	pkgver = 0.15
+	pkgver = 0.16
 	pkgrel = 1
 	url = https://haystackeditor.com
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = haystack-editor-bin
 	conflicts = haystack-editor
 	source = haystack-editor.desktop
 	sha256sums = e60118c2d914911da80fcea2976081d247cdfe8b24ca1baa74ebfadd984784bf
-	source_x86_64 = https://d2dv27o1k99orf.cloudfront.net/Haystack+Editor+Linux-0.15.zip
-	sha256sums_x86_64 = 54b563358cd10bb75b1a45e9376125d495b5817f9077cbbd184e03fdf9d0575d
+	source_x86_64 = https://d2dv27o1k99orf.cloudfront.net/Haystack+Editor+Linux-0.16.zip
+	sha256sums_x86_64 = 9d560ed19aaafd60fc98c985a023c4ce3705022178304780fca51e6c7ac83789
 
 pkgname = haystack-editor-bin
