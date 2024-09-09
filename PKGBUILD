@@ -1,6 +1,6 @@
 # Maintainer: Axel Kappel <aur@kappel.dev>
 pkgname='simp'
-pkgver=3.6.1
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="A simple and fast image manipulation program"
 arch=('x86_64')
@@ -23,8 +23,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   RUSTFLAGS="-C link-arg=-fuse-ld=mold"
-  cargo build --frozen --release --all-features
-  gzip simp.1
+  cargo build --frozen --release --features full
 }
 
 package() {
@@ -32,5 +31,7 @@ package() {
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
   install -Dm644 -T $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 -T icon.png "$pkgdir/usr/share/icons/$pkgname.png"
+  target/release/$pkgname --generate-man > simp.1
+  gzip simp.1
   install -Dm644 -T simp.1.gz "$pkgdir/usr/share/man/man1/simp.1.gz"
 }
