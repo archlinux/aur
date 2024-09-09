@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nostr-relay-tray-bin
-pkgver=1.6.0
+pkgver=1.8.0
 _electronversion=28
 pkgrel=1
 pkgdesc="A simple nostr relay tray."
@@ -17,16 +17,17 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/CodyTseng/nostr-relay-tray/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4651a01f34ce263db5cad7b742b59cd646941a77d0312101f01a5b48de6eca70'
+sha256sums=('3d6fe520d1494e4c65f5b3c03965fdb96b7814b7ec6035adbcd48581e814893d'
             '6aa57f1ed1b76d69cf0dbd1d68048c6a718a80589d762a8e2f2f2a389c802083'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-bin}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/${pkgname%-bin}/
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
 package() {
