@@ -1,0 +1,15 @@
+pkgbase = libgcrypt15
+	pkgdesc = General purpose cryptographic library based on the code from GnuPG
+	pkgver = 1.5.6
+	pkgrel = 6
+	url = http://www.gnupg.org
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = glibc
+	depends = libgpg-error
+	replaces = libgcrypt11
+	source = git+https://github.com/gpg/libgcrypt.git#tag=6e481d6bf0a69f8c9bd2866eb491e1e4e9b0717f
+	b2sums = SKIP
+
+pkgname = libgcrypt15
