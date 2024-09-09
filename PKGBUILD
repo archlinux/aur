@@ -3,10 +3,10 @@
 
 pkgname=keyringer
 pkgver=0.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Encrypted and distributed secret sharing software"
 arch=('any')
-url="https://keyringer.fluxo.info/"
+url="https://0xacab.org/rhatto/keyringer"
 license=('GPL3')
 depends=('gnupg' 'git')
 source=("https://keyringer.fluxo.info/releases/${pkgname}-${pkgver}.tar.bz2"

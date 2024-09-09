@@ -1,8 +1,8 @@
 pkgbase = keyringer
 	pkgdesc = Encrypted and distributed secret sharing software
 	pkgver = 0.5.9
-	pkgrel = 1
-	url = https://keyringer.fluxo.info/
+	pkgrel = 2
+	url = https://0xacab.org/rhatto/keyringer
 	arch = any
 	license = GPL3
 	depends = gnupg
