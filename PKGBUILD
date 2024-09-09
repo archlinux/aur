@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=open-ecard-app-bin
 _pkgname=Open-eCard-App
-pkgver=2.2.1
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Client side implementation of the eCard-API-Framework (BSI TR-03112) and related international standards, such as ISO/IEC 24727."
 arch=('x86_64')
@@ -38,13 +38,13 @@ source=(
     "License-MIT-${pkgver}::https://raw.githubusercontent.com/ecsec/open-ecard/v${pkgver}/LICENSE.MIT"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('892872cf90af89b0819135e5161b319158265ede74a7d1dd16bb000dcc47859c'
+sha256sums=('53d3a130a1350d02f421e715817cd1d82cd83d689b3d3f391ace39fddfd5f62a'
             '8137d0fbe30981aa23ee0507994b5af3fb8ead0336c3c1a1bb637be4c01e86e9'
             '21366ef752c0c7fbf91c46ff163212d3991c6f31cf5edd216467966c50783e7e'
-            'c40cdb7811af31787b4284cc2f9e54696734e28f2d9dc718421439645dae798f')
+            'b8f91b2c58c9a52fdd956fbbf13e82ac8f404b3cce08cb1dae40f50634ec5af4')
 build() {
     sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${pkgname%-bin}|g" \
+        -e "s|@runname@|${_pkgname}|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -e "s|/opt/${pkgname%-bin}/bin/${_pkgname}|${pkgname%-bin}|g" \
@@ -52,8 +52,9 @@ build() {
         -i "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" -t "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/" "${pkgdir}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib"
+    cp -r "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/lib/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/License-BouncyCastle-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/License-BouncyCastle"
