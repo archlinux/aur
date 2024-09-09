@@ -4,11 +4,11 @@ pkgname='zsa-kontroll'
 _repo="$(cut -d "-" -f 2 <<< ${pkgname})"
 pkgdesc="Control your ZSA keyboard from the command line and scripts"
 pkgver=1.0.3
-pkgrel=1
-url='https://github.com/zsa/${pkgname}'
-source=("git+https://github.com/zsa/${_repo}#tag=${pkgver}") #https://github.com/zsa/${_repo}/releases/download/1.0.3/${_repo}-1.0.3-linux-x64.tar.gz
-makedepends=(rust protobuf)
-depends=(glibc gcc-libs)
+pkgrel=2
+url="https://github.com/zsa/${pkgname}"
+source=("git+https://github.com/zsa/${_repo}#tag=${pkgver}")
+makedepends=('rust' 'protobuf')
+depends=('glibc' 'gcc-libs' 'zsa-keymapp-bin')
 arch=('x86_64')
 license=('MIT')
 sha512sums=('SKIP')
