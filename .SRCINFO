@@ -1,0 +1,24 @@
+pkgbase = libcryptui
+	pkgdesc = Library for OpenPGP prompts
+	pkgver = 3.12.2+r71+ged4f890e
+	pkgrel = 1
+	epoch = 1
+	url = https://gitlab.gnome.org/GNOME/libcryptui
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = gnome-common
+	makedepends = git
+	depends = gtk3
+	depends = gpgme
+	depends = dbus-glib
+	depends = libnotify
+	depends = gcr
+	depends = dconf
+	depends = libsm
+	provides = libcryptui.so
+	source = git+https://gitlab.gnome.org/GNOME/libcryptui.git#commit=ed4f890ee29b94c1bedd7030d5c857e3b9edb465
+	sha256sums = SKIP
+
+pkgname = libcryptui
