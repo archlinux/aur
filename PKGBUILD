@@ -7,7 +7,7 @@ _appname="${_pkgname} Terminal"
 pkgver=0.7.6
 _electronversion=30
 _nodeversion=20
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source, cross-platform terminal for seamless workflows"
 arch=(
     'aarch64'
@@ -38,28 +38,26 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('78879dddc0d6fdc3c0c3cd3ee0ee5097c9641d867fd0ee7654a85c5997088947'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
 build() {
     _ensure_local_nvm
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname}|g" \
-        -e "s|@runname@|app|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/${_pkgname}/
+        s/@options@//
+    " -i "${srcdir}/${pkgname}.sh"
     gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_appname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export CGO_ENABLED=1
     export GO111MODULE=on
     export GOOS=linux
@@ -67,23 +65,24 @@ build() {
     export GOMODCACHE="${srcdir}/go/pkg/mod"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
-    touch "${srcdir}/.electron-gyp/.yarnrc"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        export npm_config_registry=https://registry.npmmirror.com
+    touch "${srcdir}/.electron-gyp/.yarnrc.yml"
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
-        export GOPROXY=https://goproxy.cn
+        echo 'npmRegistryServer: "https://registry.npmmirror.com"' >> "${srcdir}/.electron-gyp/.yarnrc.yml"
+        go env -w GOPROXY=https://goproxy.cn,direct
     else
         echo "Your network is OK."
     fi
-    sed 's|"zip", "deb", "rpm", "AppImage", "pacman"|"dir"|g' -i electron-builder.config.js
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
+    sed 's/"zip", "deb", "rpm", "AppImage", "pacman"/"dir"/' -i electron-builder.config.js
     corepack enable
-    yarn set version 4.1.1
-    NODE_ENV=development yarn install #--cache-folder "${srcdir}/.yarn_cache"
-    NODE_ENV=production scripthaus run electron-rebuild
-    NODE_ENV=production scripthaus run build-backend
-    NODE_ENV=production scripthaus run build-package-linux
+    echo y | yarn set version 4.1.1
+    NODE_ENV=development    yarn install #--cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production     scripthaus run electron-rebuild
+    NODE_ENV=production     scripthaus run build-backend
+    NODE_ENV=production     scripthaus run build-package-linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
