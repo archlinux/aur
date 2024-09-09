@@ -2,7 +2,7 @@
 
 pkgname=python-pytest-postgresql
 _pkgname=${pkgname#python-}
-pkgver=6.0.1
+pkgver=6.1.1
 pkgrel=1
 pkgdesc="Test your code that relies on a running PostgreSQL Database"
 arch=(any)
@@ -30,7 +30,7 @@ checkdepends=(
   python-typing_extensions
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('33f5386a834803684469166f58fd90d6c1e09d61d39a7358713bf495a9da2507')
+sha256sums=('94250d6786a342223c9b69402e50446073184f485cdc5ad14c064e4e5652e1d1')
 
 build() {
   cd "$_pkgname-$pkgver"
