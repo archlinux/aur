@@ -1,10 +1,10 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="clai"
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Command line artificial intelligence - Multi-vendor generation in your terminal"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/baalimago/${pkgname}"
 license=('MIT')
 makedepends=('go')
@@ -12,12 +12,11 @@ depends=('glibc')
 optdepends=('glow: for formatted markdown output when querying text responses')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8a81b584a97b6480bc08c74ecb9d540990dfe7f5d7f89a3da88dd08514a20fba')
+sha256sums=('0406c6fec19787d3133b6e97b42c520131b17a297df497794daac9cc1a6255a5')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   mkdir -p "build"
-  go mod download
 }
 
 build() {
