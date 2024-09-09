@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=radian
 pkgver=0.6.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A 21st century R console"
 url="https://github.com/randy3k/radian"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-check() { # may fail because of R profile
+check_disabled() { # may fail because of R profile
   cd "$srcdir/$pkgname-$pkgver"
   pytest
 }
