@@ -1,0 +1,27 @@
+pkgbase = phonon-qt5-gstreamer
+	pkgdesc = Phonon GStreamer backend for Qt5
+	pkgver = 4.10.0
+	pkgrel = 4
+	url = https://community.kde.org/Phonon
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	depends = gst-plugins-base
+	depends = qt5-x11extras
+	depends = phonon-qt5
+	optdepends = pulseaudio: PulseAudio support
+	optdepends = gst-plugins-good: PulseAudio support and good codecs
+	optdepends = gst-plugins-bad: additional codecs
+	optdepends = gst-plugins-ugly: additional codecs
+	optdepends = gst-libav: libav codec
+	provides = phonon-qt5-backend
+	source = https://download.kde.org/stable/phonon/phonon-backend-gstreamer/4.10.0/phonon-backend-gstreamer-4.10.0.tar.xz
+	source = https://download.kde.org/stable/phonon/phonon-backend-gstreamer/4.10.0/phonon-backend-gstreamer-4.10.0.tar.xz.sig
+	source = https://invent.kde.org/libraries/phonon-gstreamer/-/commit/bbbb160f.patch
+	validpgpkeys = CB9387521E1EE0127DA804843FDBB55084CC5D84
+	sha256sums = c5871835521d015ef2ad1276b1f58340d946c2903466337f3170bac3c58d61f2
+	sha256sums = SKIP
+	sha256sums = 79068597cd4ea57f3b1fe1b30ffeb4749bccefbbcbbf6585f57e2dc5944ae3d7
+
+pkgname = phonon-qt5-gstreamer
