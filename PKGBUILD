@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="posting"
-pkgver=1.12.3
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="The modern API client that lives in your terminal"
 arch=('any')
@@ -9,13 +9,14 @@ url="https://github.com/darrenburns/${pkgname}"
 license=('MIT')
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 # checkdepends=('python-pytest>=8.3.1' 'python-pytest-cov' 'python-pytest-xdist')
-depends=('python>=3.11' 'python-click' 'python-xdg-base-dirs' 'python-httpx'
-         'python-click-default-group' 'python-pyperclip' 'python-pydantic'
-         'python-yaml' 'python-pydantic-settings' 'python-dotenv' 'python-rich'
-         'python-textual' 'python-typing_extensions' 'python-textual-autocomplete')
+depends=('python>=3.11' 'python-click' 'python-xdg-base-dirs'
+         'python-click-default-group' 'python-httpx' 'python-pyperclip'
+         'python-pydantic' 'python-yaml' 'python-pydantic-settings'
+         'python-dotenv' 'python-textual' 'python-textual-autocomplete' 
+         'python-watchfiles>=0.24' 'python-rich' 'python-typing_extensions')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('7b32265eb1aad1f5098616dcd3cffb89ec1f9e6af8f2fd645e1029a01420a827')
+sha256sums=('c77f942e1ae14b95ce3f59dd33f1d523bd0da953d0c69e0a66ff6f349765c18e')
 
 # prepare() {
 #   cd "${srcdir}/${_pkgsrc}/src/${pkgname}"
@@ -40,7 +41,7 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
-  install -Dm644 "README.md"   "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -s "${site_packages}/${_pkgsrc}.dist-info/licenses/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
