@@ -2,7 +2,7 @@
 #
 
 pkgname=check_mk-agent
-pkgver=2.2.0p24
+pkgver=2.2.0p32
 pkgrel=1
 pkgdesc='Agent to send information to a Check_MK server'
 arch=(any)
