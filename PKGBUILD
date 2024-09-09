@@ -1,13 +1,13 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Masoud Naservand <relive.mn@gmail.com>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Randy Ramos <rramos1295@gmail.com>
-# Contributor: Masoud Naservand <relive.mn@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 
 pkgname='neovim-jellybeans'
 _pkgname=jellybeans.vim
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Colorful, dark color scheme, inspired by ir_black and twilight'
 arch=('any')
 url="https://github.com/nanotech/$_pkgname"
@@ -25,5 +25,10 @@ package() {
   install -Dm644 "$_pkgname-$pkgver/colors/$_pkgname" \
     "$pkgdir/usr/share/nvim/runtime/colors/$_pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$_pkgname-$pkgver/README.markdown" \
+    "$pkgdir/usr/share/doc/neovim-jellybeans/README.markdown"
+  install -Dm644 "$_pkgname-$pkgver/ansi-term-colors.txt" \
+    "$pkgdir/usr/share/doc/neovim-jellybeans/ansi-term-colors.txt"
+
 }
 
