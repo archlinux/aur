@@ -1,9 +1,9 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=cloudflarespeedtest-git
-pkgver=2.2.5.6.g176271d
+pkgver=2.2.5.20.g84cbd29
 pkgrel=1
-pkgdesc="「自选优选 IP / 过滤假墙」测试 Cloudflare CDN 延迟和速度，获取最快 IP (IPv4+IPv6)！ "
+pkgdesc="XIU2/CloudflareSpeedTest 🌩 “Choose Your Own Preferred IP” Test Cloudflare CDN latency and speed, get the fastest IP! Written in go."
 arch=(aarch64
     riscv64
     x86_64)
@@ -49,7 +49,7 @@ package() {
     install -Dm0755 script/cfst_hosts.sh "${pkgdir}"/usr/share/${pkgname%-git}/cfst-hosts
     cp -rv *.txt "${pkgdir}"/usr/share/${pkgname%-git}/
     install -Dm0644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/CloudflareST" << EOF
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/CloudflareST" <<EOF
 #!/bin/sh
 
 cd /usr/share/${pkgname%-git}/
