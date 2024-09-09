@@ -1,21 +1,21 @@
 pkgbase = codegpt-bin
 	pkgdesc = A CLI written in Go language that writes git commit messages or do a code review brief for you using ChatGPT AI (gpt-4, gpt-3.5-turbo model) and automatically installs a git prepare-commit-msg hook
-	pkgver = 0.14.2
+	pkgver = 0.14.3
 	pkgrel = 1
 	url = https://github.com/appleboy/CodeGPT
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
-	provides = codegpt=0.14.2
+	provides = codegpt=0.14.3
 	conflicts = codegpt
-	source = LICENSE-0.14.2::https://raw.githubusercontent.com/appleboy/CodeGPT/v0.14.2/LICENSE
+	source = LICENSE-0.14.3::https://raw.githubusercontent.com/appleboy/CodeGPT/v0.14.3/LICENSE
 	sha256sums = 11d290bc694f8f7fa7393406a3b47c0f51c06093634c6e24c21bb6dd74e5874b
-	source_aarch64 = codegpt-0.14.2-aarch64.xz::https://github.com/appleboy/CodeGPT/releases/download/v0.14.2/CodeGPT-0.14.2-linux-arm64.xz
-	sha256sums_aarch64 = 59edab91585145dc1e4310132fba6451686a2974a6bdae4f8dc3534232186a38
-	source_armv7h = codegpt-0.14.2-armv7h.xz::https://github.com/appleboy/CodeGPT/releases/download/v0.14.2/CodeGPT-0.14.2-linux-arm-7.xz
-	sha256sums_armv7h = 20c4ede2e5a433834ff4c3f8cdc7b5be271d0a6f95dadb7cbab9e333b81dfbd1
-	source_x86_64 = codegpt-0.14.2-x86_64.xz::https://github.com/appleboy/CodeGPT/releases/download/v0.14.2/CodeGPT-0.14.2-linux-amd64.xz
-	sha256sums_x86_64 = 978a1c14aa34ed2c6e8b7b16bc09de22779eeb56cdad582a657ef944217a8057
+	source_aarch64 = codegpt-0.14.3-aarch64.xz::https://github.com/appleboy/CodeGPT/releases/download/v0.14.3/CodeGPT-0.14.3-linux-arm64.xz
+	sha256sums_aarch64 = d8177c08707f065138a50099be7fb5d3710ed9930d453b4ef3b4ebc71a87e16e
+	source_armv7h = codegpt-0.14.3-armv7h.xz::https://github.com/appleboy/CodeGPT/releases/download/v0.14.3/CodeGPT-0.14.3-linux-arm-7.xz
+	sha256sums_armv7h = 0dc0db9645fb339fe71e5f2bb8c97ead7125aed3681952da8e6ae48aca3ede8d
+	source_x86_64 = codegpt-0.14.3-x86_64.xz::https://github.com/appleboy/CodeGPT/releases/download/v0.14.3/CodeGPT-0.14.3-linux-amd64.xz
+	sha256sums_x86_64 = 7ee6985eed5564371a51f88b1ec1d06ba48e6e172a00a98b6e0e843835aadc1c
 
 pkgname = codegpt-bin
