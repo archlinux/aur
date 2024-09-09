@@ -1,0 +1,20 @@
+pkgbase = opencollada
+	pkgdesc = Stream based reader and writer library for COLLADA files
+	pkgver = 1.6.68
+	pkgrel = 3
+	epoch = 1
+	url = https://github.com/KhronosGroup/OpenCOLLADA
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = libxml2
+	depends = pcre
+	source = opencollada.conf
+	source = pcre.patch
+	source = git+https://github.com/KhronosGroup/OpenCOLLADA.git#tag=v1.6.68
+	sha256sums = 2fc9656a2b881ca4528416daa91fc525adaa97d73e96a18b41aa7856270eba1f
+	sha256sums = f37a7cbadcaa06b70133f76c509c61bdcf13715bc13aed11b5db83ef594813b3
+	sha256sums = SKIP
+
+pkgname = opencollada
