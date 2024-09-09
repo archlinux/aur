@@ -1,0 +1,15 @@
+pkgbase = gtk-engine-murrine
+	pkgdesc = GTK2 engine to make your desktop look like a 'murrina', an italian word meaning the art glass works done by Venicians glass blowers.
+	pkgver = 0.98.2
+	pkgrel = 4
+	url = http://cimitan.com/murrine/project/murrine
+	arch = x86_64
+	license = LGPL3
+	makedepends = intltool
+	depends = gtk2
+	source = https://ftp.gnome.org/pub/GNOME/sources/murrine/0.98/murrine-0.98.2.tar.xz
+	source = fix-crasher.patch
+	sha256sums = e9c68ae001b9130d0f9d1b311e8121a94e5c134b82553ba03971088e57d12c89
+	sha256sums = e33f76ea23e38eecd2921300c7c01ff06ca33f63b9c7810d83d95e47681fe7da
+
+pkgname = gtk-engine-murrine
