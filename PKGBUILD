@@ -2,9 +2,9 @@
 pkgname=colour-contrast-analyser-bin
 _pkgname="Colour Contrast Analyser"
 _appname=cca
-pkgver=3.5.3
-_electronversion=29
-pkgrel=2
+pkgver=3.5.4
+_electronversion=31
+pkgrel=1
 pkgdesc="Helps you determine the legibility of text and the contrast of visual elements, such as graphical controls and visual indicators."
 arch=("x86_64")
 url="http://www.paciellogroup.com/resources/contrastanalyser/"
@@ -22,8 +22,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-Setup-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c152a5a93191aec52e0220e6e36aa1eb45c6abf5fc44bcdea18d9930704e870e'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums=('3d84896abbec26c914a2aae6a92f3f61ce5e444fb8e008e65a5bb7771fb12a83'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
