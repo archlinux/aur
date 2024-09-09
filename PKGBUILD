@@ -1,28 +1,21 @@
-# Maintainer: Pylogmon <pylogmon@outlook.com>
-
 pkgname=clash-verge-rev-alpha-bin
 _pkgname=clash-verge-rev
-pkgver=1.7.7
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Continuation of Clash Verge | A Clash Meta GUI based on Tauri | Alpha Version"
-arch=('x86_64' 'i686' 'aarch64' 'armv7h')
+arch=('x86_64')
 url="https://github.com/clash-verge-rev/clash-verge-rev"
 license=('GPL3')
 depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator')
 conflicts=("$_pkgname-bin" "$_pkgname-alpha" "$_pkgname-git" "clash-verge" "clash-verge-bin")
 install=.install
 
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/alpha/clash-verge_${pkgver}_amd64.deb")
-source_i686=("${_pkgname}-${pkgver}-i686.deb::${url}/releases/download/alpha/clash-verge_${pkgver}_i386.deb")
-source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/alpha/clash-verge_${pkgver}_arm64.deb")
-source_armv7h=("${_pkgname}-${pkgver}-armv7h.deb::${url}/releases/download/alpha/clash-verge_${pkgver}_armhf.deb")
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/alpha/Clash.Verge_${pkgver}_amd64.deb")
 
-sha512sums_x86_64=('SKIP')
-sha512sums_i686=('SKIP')
-sha512sums_aarch64=('SKIP')
-sha512sums_armv7h=('SKIP')
+sha512sums_x86_64=('5aea2678e9c202e75c47052ff6cb735a9f4d56ec1b140119ab3abac308d611034fe8cafe8505775dc95a07714ab10a20e66c1f286c8de1e7c0f50ab5ff702842')
 
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
     chown -R root:root ${pkgdir}
 }
+

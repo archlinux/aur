@@ -11,3 +11,4 @@ _yellow="${_bold}$(tput setaf 3)"
 post_upgrade() {
     note "If you are using the service mode, please run \"systemctl restart clash-verge-service\" after upgrade"
 }
+
