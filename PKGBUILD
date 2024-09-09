@@ -2,7 +2,7 @@
 # Contributor: Sukanka <su975853527 [AT] gmail.com>
 pkgname=yank-note-bin
 _pkgname=Yank-Note
-pkgver=3.75.4
+pkgver=3.76.1
 _electronversion=28
 pkgrel=1
 pkgdesc='A Hackable Markdown Note Application for Programmers'
@@ -25,16 +25,17 @@ source=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-arm64-${pkgver}.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-${pkgver}.deb")
-sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('f2c4f67c22083ad0ad043dcb468aabcc769e16d595ee5d2192370524e8c642be')
-sha256sums_x86_64=('ec4df9ae5f9c9a48815057d14a6285d9acf6288066db00030d1ca6b004cf6ace')
+sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_aarch64=('96bf7e6240997e6c13661c0cbff5d3440794d46ec246da0a6133524f6b2783e5')
+sha256sums_x86_64=('32a7180cbf3e595a158d41d86a68f6bda186a13ccf057ce3c2839399fee4f0bf')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|yank.note|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s|@electronversion@|${_electronversion}|g
+        s|@appname@|${pkgname%-bin}|g
+        s|@runname@|app.asar|g
+        s|@cfgdirname@|yank.note|g
+        s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g
+        " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_pkgname//-/ }/${pkgname%-bin}\"|${pkgname%-bin}|g;s|Markdown;|Utility;|g" \
         -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
