@@ -2,7 +2,7 @@
 # Maintainer: Lucas Magalhães <whoisroot@national.shitposting.agency>
 _pkgname=passivedns
 pkgname=${_pkgname}-git
-pkgver=r287.d757713
+pkgver=r297.be48a8e
 pkgrel=1
 pkgdesc="A network sniffer that logs all DNS server replies for use in a passive DNS setup"
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('GPLv2')
 depends=('ldns' 'libpcap')
 makedepends=('git' 'binutils')
 provides=("${_pkgname}")
-source=("passivedns::git+git://github.com/gamelinux/passivedns.git"
-        passivedns.service)
+source=("git+https://github.com/gamelinux/passivedns.git"
+        "passivedns.service")
 sha256sums=('SKIP'
             '49eccbd5e9f5a78d444abd5b0282af3143de5a4c8105203a3270724685a47a73')
 
@@ -33,10 +33,7 @@ package() {
     make DESTDIR="${pkgdir}" install
 
     install -D -m 0644 "${srcdir}/${_pkgname}"/tools/* -t "$pkgdir"/usr/share/doc/passivedns/tools/
-
     install -D -m 0644 "${srcdir}/${_pkgname}"/doc/* -t "$pkgdir"/usr/share/doc/passivedns/doc/
-
     install -D -m 0644 README "$pkgdir"/usr/share/doc/passivedns/README
-
     install -D -m 0644 ../passivedns.service "$pkgdir"/usr/lib/systemd/system/passivedns.service
 }
