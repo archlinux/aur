@@ -1,6 +1,6 @@
 pkgbase = wlcs
 	pkgdesc = Canonical's protocol-conformance-verifying test suite for Wayland compositor implementations.
-	pkgver = 1.5.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/MirServer/wlcs
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = wlcs
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost
-	makedepends = gmock
 	makedepends = wayland-protocols
+	depends = glibc
+	depends = gcc-libs
 	depends = gtest
-	depends = boost-libs
 	depends = wayland
-	source = wlcs-1.5.0.tar.gz::https://github.com/MirServer/wlcs/archive/v1.5.0.tar.gz
-	sha512sums = 2d05f62ccfbbd0c4300556e7713b086663678b2ee87fe8297cb7c81a482d23fa7948034da494f91609b954c11e350d4e52837217fbafeaba2a694de7828480b6
+	source = wlcs-1.7.0.tar.gz::https://github.com/MirServer/wlcs/archive/v1.7.0.tar.gz
+	sha512sums = e45a93819ad37b2594e4bde6a784fda6f96e427fa9d125f606433b3ad9d816dfd2f7adacaf93238909de117e7af37779ad7d3ade8c0535ca81fdd629de026057
 
 pkgname = wlcs
