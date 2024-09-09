@@ -1,0 +1,14 @@
+pkgbase = riscv32-elf-newlib
+	pkgdesc = A C standard library implementation intended for use on embedded systems (RISCV32 bare metal)
+	pkgver = 3.3.0
+	pkgrel = 2
+	url = https://www.sourceware.org/newlib/
+	arch = any
+	license = BSD
+	makedepends = riscv32-elf-gcc
+	options = !emptydirs
+	options = !strip
+	source = https://sourceware.org/pub/newlib/newlib-3.3.0.tar.gz
+	sha256sums = 58dd9e3eaedf519360d92d84205c3deef0b3fc286685d1c562e245914ef72c66
+
+pkgname = riscv32-elf-newlib
