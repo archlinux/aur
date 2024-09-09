@@ -1,0 +1,17 @@
+pkgbase = scratch
+	pkgdesc = Create and share your own interactive stories, games, music and art
+	pkgver = 1.4.0.7
+	pkgrel = 8
+	url = https://scratch.mit.edu
+	arch = x86_64
+	license = GPL2
+	depends = squeak-vm
+	depends = shared-mime-info
+	depends = desktop-file-utils
+	depends = pango
+	depends = gtk-update-icon-cache
+	backup = usr/lib/scratch/Scratch.ini
+	source = https://download.scratch.mit.edu/scratch-1.4.0.7.src.tar.gz
+	sha256sums = b94d89278ecef2ba2d1147eec23936dd99697293ffa2c216c0a375ba98226a3e
+
+pkgname = scratch
