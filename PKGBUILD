@@ -2,7 +2,7 @@
 pkgname=xterminal-bin
 _pkgname=XTerminal
 _pkgver_aarch64=1.25.1
-_pkgver_x86_64=1.32.5
+_pkgver_x86_64=1.32.6
 case "${CARCH}" in
     aarch64)
         pkgver="${_pkgver_aarch64}"
@@ -38,20 +38,21 @@ source=(
 source_aarch64=("${pkgname%-bin}-${_pkgver_aarch64}-aarch64.deb::https://cdn-cn.xterminal.cn/downloads/${_pkgname}-${_pkgver_aarch64}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${_pkgver_x86_64}-x86_64.deb::https://cdn-cn.xterminal.cn/downloads/${_pkgname}-${_pkgver_x86_64}-linux-amd64.deb")
 sha256sums=('8d08a959e0086a206ef3454cc0fc323454c73609cd764f102d8d2d076dafa0af'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 sha256sums_aarch64=('921222e7b58b89575da8f44f3b372732e719f909174d5410f1fad89bf8d62861')
-sha256sums_x86_64=('cc2a03228a7acd504c9b4ef16892c35aada464b5f82c6f1fc5c83e49509aea5d')
+sha256sums_x86_64=('1c4b025c92a3921fe9b9ca45413b8ee37cde581c5743130ac65dc52c0adaf16c')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-bin}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/${pkgname%-bin}/
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g" -i "${srcdir}/app.asar.unpacked/dist/main/index.js"
+    sed "s/process.resourcesPath/\"\/usr\/lib\/${pkgname%-bin}\"/" -i "${srcdir}/app.asar.unpacked/dist/main/index.js"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
