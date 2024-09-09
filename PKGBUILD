@@ -8,6 +8,7 @@ pkgdesc="Cross-platform library of PODT (plain old data types) in C/C++"
 arch=('any')
 url="https://${pkgname}.sourceforge.net"
 license=('BSD-3-Clause')
+makedepends=('cmake>=2.4.2')
 _pkgsrc="${pkgname}-code-${_revision}"
 source=("${_pkgsrc}.zip::https://sourceforge.net/code-snapshots/svn/${pkgname::1}/${pkgname::2}/${pkgname}/code/${pkgname}-code-${_revision}.zip")
 sha256sums=('6068387fb2ac4b7208664dc68079fbba3eb4c4e781c359c566f265c77955c48d')
