@@ -5,12 +5,15 @@
 
 pkgname='perl-test-compile'
 _distname='Test-Compile'
-pkgver=3.3.1
+pkgver=3.3.3
 pkgrel=1
 pkgdesc="Check whether Perl files compile correctly."
 arch=('any')
 url="https://metacpan.org/release/${_distname}"
-license=('PerlArtistic' 'GPL')
+license=(
+  'Artistic-1.0-Perl'
+  'GPL-2.0-or-later'
+)
 options=('!emptydirs')
 depends=(
   'perl>=5.10.0'
@@ -26,15 +29,19 @@ checkdepends=(
   'perl-test-exception'
 )
 _pkgtarname="${_distname}-v${pkgver}"
-source=("https://cpan.metacpan.org/authors/id/E/EG/EGILES/${_pkgtarname}.tar.gz")
-b2sums=('5a1b52447eb8e1f92903e3eae09f3b91fef4ba9bb7962edc854629a730dc8c0e622aaf78a13e6ec26a002749cfd9d112f4d2aa33acfb6a2775ce5b77a026ff04')
+source=(
+  "https://cpan.metacpan.org/authors/id/E/EG/EGILES/${_pkgtarname}.tar.gz"
+)
+sha256sums=(
+  'df3ab30ecb51ae14a1aa9b9fc14324c969cc258ef2adacc35bc68194112da685'
+)
 options+=('emptydirs')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
       PERL_AUTOINSTALL='--skipdeps'                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='${pkgdir}'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '${pkgdir}'" \
       MODULEBUILDRC='/dev/null'
 
     cd "${_pkgtarname}"
@@ -54,5 +61,5 @@ package() {
   cd "${_pkgtarname}"
   make install
 
-  find "$pkgdir" -name '.packlist' -o -name 'perllocal.pod' -delete
+  find "${pkgdir}" -name '.packlist' -o -name 'perllocal.pod' -delete
 }
