@@ -1,0 +1,17 @@
+pkgbase = lxappearance-obconf-gtk3
+	pkgdesc = Plugin for LXAppearance to configure Openbox (GTK+ 3 version)
+	pkgver = 0.2.3
+	pkgrel = 3
+	url = https://lxde.org/
+	arch = x86_64
+	groups = lxde-gtk3
+	license = GPL2
+	makedepends = intltool
+	depends = lxappearance-gtk3
+	depends = openbox
+	depends = libobrender.so
+	conflicts = lxappearance-obconf
+	source = https://downloads.sourceforge.net/lxde/lxappearance-obconf-0.2.3.tar.xz
+	sha256sums = 3150b33b4b7beb71c1803aee2be21c94767d73b70dfc8d2bcaafe2650ea83149
+
+pkgname = lxappearance-obconf-gtk3
