@@ -6,7 +6,7 @@
 
 pkgname=gnome-shell-beta-performance
 pkgver=47.rc.r24.g449a7a1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell"
 url="https://gitlab.gnome.org/GNOME/gnome-shell"
