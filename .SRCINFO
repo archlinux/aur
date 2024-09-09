@@ -1,13 +1,13 @@
 pkgbase = lebiniou
 	pkgdesc = User-friendly, powerful music visualization / VJing tool
 	pkgver = 3.67.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://biniou.lenain.info/
 	arch = x86_64
 	arch = pentium4
 	arch = i686
 	license = GPL
-	depends = libmagick6
+	depends = imagemagick
 	depends = fftw
 	depends = sdl2
 	depends = libcaca
