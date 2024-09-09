@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=Bloomee Tunes
+GenericName=Music Player
+Comment=Stream Music from various sources
+Exec=/opt/bloomeetunes/bloomee %U
+Icon=/opt/bloomeetunes/data/flutter_assets/assets/icons/bloomee_new_logo_c.png
+Terminal=false
+Type=Application
+Categories=Audio;Music;Player;
+MimeType=x-scheme-handler/http;x-scheme-handler/https;
+StartupWMClass=bloomeetunes
+
