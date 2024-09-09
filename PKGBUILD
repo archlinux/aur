@@ -16,8 +16,8 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
-    #'podman'
-    #'docker'
+    'podman'
+    'docker'
 )
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/iongion/podman-desktop-companion/${pkgver//_/-}/LICENSE"

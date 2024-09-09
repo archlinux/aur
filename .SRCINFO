@@ -7,6 +7,8 @@ pkgbase = podman-desktop-companion-bin
 	arch = x86_64
 	license = MIT
 	depends = electron32
+	depends = podman
+	depends = docker
 	provides = podman-desktop-companion
 	conflicts = podman-desktop-companion=5.2.2_rc.3
 	source = LICENSE-5.2.2_rc.3::https://raw.githubusercontent.com/iongion/podman-desktop-companion/5.2.2-rc.3/LICENSE
