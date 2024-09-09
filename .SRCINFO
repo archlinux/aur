@@ -1,6 +1,6 @@
 pkgbase = aa-snapshot-maker
-	pkgver = 1.0.9
-	pkgrel = 4
+	pkgver = 1.1.8
+	pkgrel = 1
 	url = https://audioassault.mx/products/snapshot-maker
 	arch = x86_64
 	license = EULA
@@ -35,11 +35,10 @@ pkgbase = aa-snapshot-maker
 	depends = zstd
 	source = AA Snapshot Maker.desktop
 	source = aa-snapshot-maker.png
+	source = https://audioassaultdownloads.s3.amazonaws.com/AmpLocker/AmpLocker109/SnapshotMakerLinux.zip
 	sha256sums = b8dcdabd714eaed0b4d06861c5dc6245529ca5e8ef90b46a927878494be17cd6
 	sha256sums = 2ccb54d693ba09c2f86750891f2d1ea090f74fe282c3268617d1519b58f79ad5
-
-pkgname = aa-snapshot-maker-docs-bin
-	pkgdesc = Audio Assault amp modeller preset maker (Documentation)
+	sha256sums = 0d1c33c678fd8c34c50d84d6f499d0ea00712fddab7d417ee841e9dff2aef0f8
 
 pkgname = aa-snapshot-maker-standalone-bin
 	pkgdesc = Audio Assault amp modeller preset maker (Standalone)
