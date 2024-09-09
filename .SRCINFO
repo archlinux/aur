@@ -1,6 +1,6 @@
 pkgbase = amp-locker
 	pkgver = 1.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://audioassault.mx/amplocker
 	arch = x86_64
 	license = EULA
@@ -37,9 +37,11 @@ pkgbase = amp-locker
 	source = Amp Locker.desktop
 	source = Amp Locker Linker
 	source = amp-locker.png
+	source = https://audioassaultdownloads.s3.amazonaws.com/AmpLocker/AmpLocker109/AmpLockerLinux.zip
 	sha256sums = bbeb596d62ed9943294ee5025ba690def02e263b5c9b3b88304ee84607c52f53
 	sha256sums = 7784d4c4cf7bd953b52c34268cfd92dae1e23028e15c77b8e9e3ebd4970d0e80
 	sha256sums = 2ccb54d693ba09c2f86750891f2d1ea090f74fe282c3268617d1519b58f79ad5
+	sha256sums = b3e9ac8860c7041ee656a362225bb99b60d02af7164fcd4938340ad7aa87298e
 
 pkgname = amp-locker-data-bin
 	pkgdesc = Audio Assault Multamp Simulator (Data Assets)

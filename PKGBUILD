@@ -1,7 +1,7 @@
 pkgbase=amp-locker
 pkgname=('amp-locker-data-bin' 'amp-locker-standalone-bin' 'amp-locker-lv2-bin' 'amp-locker-vst3-bin')
 pkgver=1.1.8
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://audioassault.mx/amplocker"
 license=('EULA')
@@ -10,17 +10,12 @@ makedepends=('xdg-user-dirs' 'unzip')
 provides=('amp-locker')
 source=('Amp Locker.desktop'
         'Amp Locker Linker'
-        'amp-locker.png')
+        'amp-locker.png'
+        'https://audioassaultdownloads.s3.amazonaws.com/AmpLocker/AmpLocker109/AmpLockerLinux.zip')
 sha256sums=('bbeb596d62ed9943294ee5025ba690def02e263b5c9b3b88304ee84607c52f53'
             '7784d4c4cf7bd953b52c34268cfd92dae1e23028e15c77b8e9e3ebd4970d0e80'
-            '2ccb54d693ba09c2f86750891f2d1ea090f74fe282c3268617d1519b58f79ad5')
-
-prepare () {
-	_archive="`xdg-user-dir DOWNLOAD`/AmpLockerLinux.zip"
-	ln -srf "${_archive}" "$srcdir/`basename "${_archive}"`"
-	unzip "$srcdir/`basename "${_archive}"`"
-	find $srcdir -name ".DS_Store" -delete
-}
+            '2ccb54d693ba09c2f86750891f2d1ea090f74fe282c3268617d1519b58f79ad5'
+            'b3e9ac8860c7041ee656a362225bb99b60d02af7164fcd4938340ad7aa87298e')
 
 package_amp-locker-data-bin() {
     ## Install Asset Data
@@ -31,7 +26,7 @@ package_amp-locker-data-bin() {
     mkdir -p "$pkgdir/usr/lib/AmpLockerData/data"
 
     ## Copy assets to data directory
-    cp -r "$srcdir/AmpLockerLinux/data/"* "$pkgdir/usr/lib/AmpLockerData"
+    cp -r "$srcdir/data/"* "$pkgdir/usr/lib/AmpLockerData"
 
     ## Remove empty folder
     rm -r "$pkgdir/usr/lib/AmpLockerData/data"
@@ -45,10 +40,10 @@ package_amp-locker-lv2-bin() {
     pkgdesc="Audio Assault Multamp Simulator (LV2)"
     depends=('amp-locker-data-bin')
     groups=('pro-audio' 'lv2-plugins')
-    install -Dm755 "$srcdir/AmpLockerLinux/Amp Locker.lv2/Amp Locker.so" "$pkgdir/usr/lib/lv2/Amp Locker.lv2/Amp Locker.so"
-    install -Dm644 "$srcdir/AmpLockerLinux/Amp Locker.lv2/dsp.ttl" "$pkgdir/usr/lib/lv2/Amp Locker.lv2/dsp.ttl"
-    install -Dm644 "$srcdir/AmpLockerLinux/Amp Locker.lv2/manifest.ttl" "$pkgdir/usr/lib/lv2/Amp Locker.lv2/manifest.ttl"
-    install -Dm644 "$srcdir/AmpLockerLinux/Amp Locker.lv2/ui.ttl" "$pkgdir/usr/lib/lv2/Amp Locker.lv2/ui.ttl"
+    install -Dm755 "$srcdir/Amp Locker.lv2/Amp Locker.so" "$pkgdir/usr/lib/lv2/Amp Locker.lv2/Amp Locker.so"
+    install -Dm644 "$srcdir/Amp Locker.lv2/dsp.ttl" "$pkgdir/usr/lib/lv2/Amp Locker.lv2/dsp.ttl"
+    install -Dm644 "$srcdir/Amp Locker.lv2/manifest.ttl" "$pkgdir/usr/lib/lv2/Amp Locker.lv2/manifest.ttl"
+    install -Dm644 "$srcdir/Amp Locker.lv2/ui.ttl" "$pkgdir/usr/lib/lv2/Amp Locker.lv2/ui.ttl"
 }
 
 package_amp-locker-vst3-bin() {
@@ -56,7 +51,7 @@ package_amp-locker-vst3-bin() {
     pkgdesc="Audio Assault Multamp Simulator (VST3)"
     depends=('amp-locker-data-bin')
     groups=('pro-audio' 'vst3-plugins')
-    install -Dm755 "$srcdir/AmpLockerLinux/Amp Locker.vst3/Contents/x86_64-linux/Amp Locker.so" "$pkgdir/usr/lib/vst3/Amp Locker.vst3/Contents/x86_64-linux/Amp Locker.so"
+    install -Dm755 "$srcdir/Amp Locker.vst3/Contents/x86_64-linux/Amp Locker.so" "$pkgdir/usr/lib/vst3/Amp Locker.vst3/Contents/x86_64-linux/Amp Locker.so"
 }
 
 package_amp-locker-standalone-bin() {
@@ -66,5 +61,5 @@ package_amp-locker-standalone-bin() {
     groups=('pro-audio')
     install -Dm644 "$srcdir/Amp Locker.desktop" "$pkgdir/usr/share/applications/Amp Locker.desktop"
     install -Dm644 "$srcdir/amp-locker.png" "$pkgdir/usr/share/icons/hicolor/192x192/apps/amp-locker.png"
-    install -Dm755 "$srcdir/AmpLockerLinux/Amp Locker Standalone" "$pkgdir/usr/bin/Amp Locker Standalone"
+    install -Dm755 "$srcdir/Amp Locker Standalone" "$pkgdir/usr/bin/Amp Locker Standalone"
 }
