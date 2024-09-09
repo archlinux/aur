@@ -3,12 +3,12 @@
 
 _pkgname="zxing-cpp"
 pkgname="$_pkgname-git"
-pkgver=2.1.0.r80.gb15819d6
+pkgver=2.2.1.r288.g39ebe724
 pkgrel=1
 pkgdesc="A C++ library to decode QRCode"
 url="https://github.com/zxing-cpp/zxing-cpp"
-license=('Apache')
-arch=(x86_64)
+license=('Apache-2.0')
+arch=('x86_64')
 
 depends=(
   gcc-libs
@@ -16,6 +16,7 @@ depends=(
 makedepends=(
   cmake
   git
+  ninja
 )
 checkdepends=(
   gtest
@@ -37,10 +38,12 @@ build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
-    -DCMAKE_INSTALL_PREFIX='/usr'
+    -G Ninja
     -DCMAKE_BUILD_TYPE=None
-    -DBUILD_EXAMPLES=OFF
-    -DBUILD_UNIT_TESTS=ON
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DZXING_DEPENDENCIES=LOCAL
+    -DZXING_EXAMPLES=OFF
+    -DZXING_UNIT_TESTS=ON
     -Wno-dev
   )
 
@@ -53,5 +56,5 @@ check() {
 }
 
 package() {
-  DESTDIR="${pkgdir:?}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }

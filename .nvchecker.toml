@@ -1,0 +1,4 @@
+[zxing-cpp-git]
+source = "git"
+git = "https://github.com/zxing-cpp/zxing-cpp.git"
+prefix = "v"
