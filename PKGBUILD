@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note-git
-pkgver=3.0.2.r2267.g2703034
+pkgver=3.0.2.r2360.g9a87466
 _electronversion=28
 _nodeversion=18
 pkgrel=1
@@ -30,51 +30,61 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-git}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|yank.note|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-git}.sh"
+    sed -e "
+        s|@electronversion@|${_electronversion}|g
+        s|@appname@|${pkgname%-git}|g
+        s|@runname@|app.asar|g
+        s|@cfgdirname@|yank.note|g
+        s|@options@||g
+        " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
-    export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
-    HOME="${srcdir}/.electron-gyp"
-    mkdir -p "${srcdir}/.electron-gyp"
-    touch "${srcdir}/.electron-gyp/.yarnrc"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        export npm_config_registry=https://registry.npmmirror.com
-        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
-    else
-        echo "Your network is OK."
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    #HOME="${srcdir}/.electron-gyp"
+    #mkdir -p "${srcdir}/.electron-gyp"
+    if [ -f .yarnrc ] && [ "$(grep -c registry .yarnrc)" -eq 1 ]; then
+        sed -i "/yarnpkg/d" .yarnrc
     fi
+    {
+        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+            echo 'registry "https://registry.npmmirror.com"'
+            echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
+            echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
+            echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
+            echo "cacheFolder "${srcdir}"/.yarn/cache"
+            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
+            echo "globalFolder "${srcdir}"/.yarn/global"
+            echo 'useHardlinks true'
+            echo 'buildFromSource true'
+            echo 'linkWorkspacePackages true'
+            echo 'fetchRetries 3'
+            echo 'fetchRetryTimeout 10000'
+        else
+            echo "Your network is OK."
+        fi
+    } >> .yarnrc
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
     sed "s|icon.icns|icon.png|g" -i electron-builder.json
-    export NODE_ENV=development
-    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    yarn run electron-rebuild
-    npx node scripts/download-pandoc.js
-    npx node scripts/download-plantuml.js
-    yarn run build
-    yarn run electron-builder -l --dir
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production     yarn run electron-rebuild
+    NODE_ENV=production     npx node scripts/download-pandoc.js
+    NODE_ENV=production     npx node scripts/download-plantuml.js
+    NODE_ENV=production     yarn run build
+    NODE_ENV=production     yarn run electron-builder -l --dir
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
