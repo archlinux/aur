@@ -1,0 +1,26 @@
+2024-09-09 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* gstreamermm 1.10.0-2
+	* dropped to AUR
+
+2017-10-25 Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+	* gstreamermm 1.10.0-1
+	* split docs
+
+2015-02-25 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* gstreamermm 1.4.3-1
+
+2014-11-12 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* gstreamermm 1.0.10-1
+
+2012-10-28 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* gstreamermm 0.10.11-1
+
+2010-02-02 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* gstreamermm 0.10.10-1
+
+2010-02-02 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* Update to major release 0.10.6
+
+2009-11-07 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* Package moved to [community] as a dependency of subtitleeditor
+	* version 0.10.5
