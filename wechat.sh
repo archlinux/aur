@@ -163,6 +163,7 @@ function execApp() {
 	-p Environment=LD_PRELOAD="${LD_PRELOAD}" \
 	-u "${unitName}" \
 	-p Description="WeChat Qt" \
+	-p Documentation="https://wiki.archlinuxcn.org/wiki/%E5%BE%AE%E4%BF%A1#%E5%BE%AE%E4%BF%A1_Linux_%E5%8E%9F%E7%94%9F%E7%89%88%E9%87%8D%E6%9E%84" \
 	-p ExitType=cgroup \
 	-p OOMPolicy=stop \
 	-p OOMScoreAdjust=100 \
@@ -172,7 +173,6 @@ function execApp() {
 	-p CPUSchedulingPriority=1 \
 	-p CPUSchedulingPolicy=idle \
 	-p Nice=19 \
-	-p Documentation="https://wiki.archlinuxcn.org/wiki/%E5%BE%AE%E4%BF%A1#%E5%BE%AE%E4%BF%A1_Linux_%E5%8E%9F%E7%94%9F%E7%89%88%E9%87%8D%E6%9E%84" \
 	-p StartupIOWeight=1 \
 	-p MemoryMax=90% \
 	-p MemoryHigh=80% \
@@ -230,6 +230,9 @@ function execApp() {
 	-p BindReadOnlyPaths=/usr/bin/true:/usr/bin/lsblk \
 	-p BindReadOnlyPaths=/dev/null:/proc/cpuinfo \
 	-p BindReadOnlyPaths=/dev/null:/proc/meminfo \
+	-p BindReadOnlyPaths=/dev/null:/sys/firmware \
+	-p BindReadOnlyPaths=/dev/null:/sys/kernel \
+	-p BindReadOnlyPaths=/dev/null:/sys/module \
 	-p BindReadOnlyPaths=/opt/wechat-uos-qt/files:/usr/lib/license \
 	-p BindReadOnlyPaths=-/run/systemd/resolve/stub-resolv.conf \
 	-p BindReadOnlyPaths=/usr/share/wechat-uos-qt/license/etc/os-release:"${osRel}" \
