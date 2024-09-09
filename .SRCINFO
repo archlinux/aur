@@ -9,10 +9,10 @@ pkgbase = xmage
 	depends = jre8-openjdk
 	depends = java8-openjfx
 	optdepends = wmname: change window manager name for compatibility with certain WMs
-	source = http://beta.xmage.today/files/mage-full_1.4.54-dev_2024-09-08_18-21.zip
+	source = http://beta.xmage.today/files/mage-full_1.4.54-dev_2024-09-09_11-34.zip
 	source = https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt
 	source = https://raw.githubusercontent.com/magefree/Launcher/master/src/main/resources/icon-mage.png
-	sha256sums = e93696e3b3d74e1acc0ef3d2968a6f290385efc6fb5565870b10a54621ad4e60
+	sha256sums = f08a54ef342cc0991624e8689c85fd76a10a70616f197426a8d8888e83e64b8c
 	sha256sums = SKIP
 	sha256sums = SKIP
 
