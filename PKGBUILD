@@ -4,7 +4,7 @@
 pkgname=matrix-sliding-sync
 arch=('x86_64' 'aarch64')
 backup=("etc/default/sliding-sync")
-pkgver=0.99.15
+pkgver=0.99.19
 pkgrel=1
 pkgdesc="Run a sliding sync proxy. An implementation of MSC3575."
 url=https://github.com/matrix-org/sliding-sync
@@ -12,7 +12,7 @@ license=("Apache")
 depends=("postgresql>13")
 source=("git+https://github.com/matrix-org/sliding-sync.git#tag=v${pkgver}" "sliding-sync-git.service")
 makedepends=("go" "git")
-sha256sums=('10b64b86758a1c30d44c4f730977124c730c4309bf746738d1b4d0685953fb12'
+sha256sums=('556b7cdb2aa29f955c5c01a1e4a8a7186a943ee0806e5f24780febfa73c92cfd'
             '7f456f0c130fc46e79964ae8587d8fb4eb74ce78106523978aeb60f024d291de')
 provides=("sliding-sync" "matrix-sliding-sync")
 conflicts=("sliding-sync" "matrix-sliding-sync")
