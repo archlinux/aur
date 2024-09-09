@@ -1,7 +1,7 @@
 pkgbase = b4
 	pkgdesc = Helper utility to work with patches made available via a public-inbox archive like lore.kernel.org.
 	pkgver = 0.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.kernel.org/pub/scm/utils/b4/b4.git/
 	arch = any
 	license = GPL-2.0-or-later
@@ -12,6 +12,7 @@ pkgbase = b4
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-docutils
+	makedepends = python-shtab
 	depends = python-requests
 	depends = git-filter-repo
 	depends = patatt
