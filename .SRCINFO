@@ -1,6 +1,6 @@
 pkgbase = e-search
 	pkgdesc = 识屏 · 搜索
-	pkgver = 13.1.0
+	pkgver = 13.1.2
 	pkgrel = 1
 	url = https://github.com/xushengfeng/eSearch
 	install = e-search.install
@@ -17,7 +17,7 @@ pkgbase = e-search
 	conflicts = e-search-git
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/xushengfeng/eSearch/releases/download/13.1.0/eSearch_13.1.0.aur
-	sha512sums = 1c7fa02c1a239913ff25037208dd48bdc36c2f449adbc0ce95b3adbfb0c980053e0c56b8e97f7f47a53ab71a31c624fbca37ef07168cebb0292a5b26cfcb7cc4
+	source = https://github.com/xushengfeng/eSearch/releases/download/13.1.2/eSearch_13.1.2.aur
+	sha512sums = 7723459a4288a5ad6ec62a47c969d4329691b5eeaee6aaf6c735606268db65e915a6ccadd1ba63548d83d18c64956814e8338ae249361dc8d789b519f682c48e
 
 pkgname = e-search
