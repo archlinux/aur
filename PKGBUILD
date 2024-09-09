@@ -1,26 +1,29 @@
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Brodi <me@brodi.space>
 
-# Maintainer: Brodi <me@brodi.space>
-_pkgname=aretext
-pkgname=${_pkgname}
-pkgver=0.7.0
+pkgname=aretext
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="[BETA] Minimalist text editor that never slows you down."
 arch=("any")
 url="https://github.com/aretext/aretext"
 license=("GPL3")
 makedepends=("go")
-provides=("${_pkgname}")
-conflicts=("${_pkgname}-bin" "${_pkgname}-git")
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("a9d0eedca74d310bddf2efe47d8cee049f88f38d5cf849b6616f2b0ab673dfdb")
+source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('778dda2d2227145deff1c43efa667fe16e2c19e4fb2b656a11dfe6a99ebcf838')
 
 build() {
-	cd ${srcdir}/${pkgname}-${pkgver}
-	go build -o aretext -ldflags="-X 'main.commit=7b2e0c0c9dc98c85f26f6149bcae2044ce2e9a4f' -X 'main.version=${pkgver}'" main.go
+	cd ${pkgname}-${pkgver}
+	go build \
+		-trimpath \
+		-buildmode=pie \
+		-mod=readonly \
+		-modcacherw \
+		.
 }
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd ${pkgname}-${pkgver}
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 	install -Dm755 aretext "${pkgdir}/usr/bin/aretext"
 }
