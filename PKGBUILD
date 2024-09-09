@@ -2,13 +2,13 @@
 # Contributor: wedjat <wedjat@protonmail.com>
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=python-pydicom
-pkgver=2.4.4
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Pure python package for working with DICOM files"
 arch=("any")
 url="https://pydicom.github.io/pydicom/stable/index.html"
 license=('MIT' 'LicenseRef-GDCM')
-depends=('python')
+depends=('python' 'python-setuptools')
 makedepends=('python-wheel' 'python-build' 'python-installer' 'python-flit-core')
 optdepends=('python-numpy: for working with pixel data'
             'python-pillow: for working with compressed image data'
@@ -18,16 +18,8 @@ optdepends=('python-numpy: for working with pixel data'
             'python-pylibjpeg-rle: for working with compressed RLE images'
             )
 checkdepends=('python-pytest')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/pydicom/pydicom/archive/v$pkgver.tar.gz"
-        "pillow-10.1.patch")
-sha256sums=('42c06ed74331174111dd42c89db774a13fc472abe18015f22c5aba80cddb7843'
-            '72aa784588b8f8d07142d130e755f223827d9e143e8ba07bc2276b5b0cca7633')
-
-prepare()
-{
-	cd "$srcdir/pydicom-$pkgver"
-	patch --forward --strip=1 --input="$srcdir/pillow-10.1.patch"
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pydicom/pydicom/archive/v$pkgver.tar.gz")
+sha256sums=('0d21b27ea0110190725ee7cf2ddc29de633e230518b6f859025c1bb063df1b21')
 
 build()
 {
@@ -46,6 +38,11 @@ package()
 check()
 {
 	cd "$srcdir/pydicom-$pkgver"
-	# CLI tests are broken, skip those
-	pytest -k "not TestCLIcall"
+
+	# Create a venv because software needs to be installed to run tests
+	python -m venv --system-site-packages test-env
+	test-env/bin/python -m installer dist/*.whl
+
+	# Skipped tests: have almost correct assertions on exception message
+	test-env/bin/python -m pytest -v -k "not test_deepcopy_bufferedreader_raises and not test_no_decoders_raises"
 }
