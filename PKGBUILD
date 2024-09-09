@@ -1,13 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-greeter-git
-pkgver=1.0.0.alpha.1.r5.g3679ee5
-pkgrel=2
+pkgver=1.0.0.alpha.1.r29.g55c02cd
+pkgrel=1
 pkgdesc="libcosmic greeter for greetd, which can be run inside cosmic-comp"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-greeter"
 license=('GPL-3.0-or-later')
 depends=(
   'cosmic-comp-git'
+  'gnome-keyring'
   'greetd'
   'libxkbcommon'
   'pam'
@@ -65,4 +66,5 @@ package() {
   install -Dm644 "${pkgname%-git}.toml" -t "$pkgdir/etc/greetd/"
   install -Dm644 debian/"${pkgname%-git}"{.service,-daemon.service} -t \
     "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 "debian/${pkgname%-git}.pam" "$pkgdir/etc/pam.d/${pkgname%-git}"
 }
