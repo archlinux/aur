@@ -1,0 +1,22 @@
+pkgbase = t1lib
+	pkgdesc = Library for generating character- and string-glyphs from Adobe Type 1 fonts
+	pkgver = 5.1.2
+	pkgrel = 8
+	url = https://www.ibiblio.org/pub/Linux/libs/graphics/!INDEX.html
+	arch = x86_64
+	license = GPL
+	depends = libxaw
+	source = https://www.ibiblio.org/pub/Linux/libs/graphics/t1lib-5.1.2.tar.gz
+	source = lib-cleanup.diff
+	source = format-security.diff
+	source = CVE-2011-0764.diff
+	source = CVE-2011-1552_1553_1554.patch
+	source = CVE-2010-2642.patch
+	sha256sums = 821328b5054f7890a0d0cd2f52825270705df3641dbd476d58d17e56ed957b59
+	sha256sums = 5b161f4e0f4ad297ad8eea70ea99620f5db6f7e487bbd63a819b6a9958540961
+	sha256sums = 89b0aa7ca57fd8e9753336033c1d3e3e58c6c79e943144430e8af9a4626fdd25
+	sha256sums = a763650bdcffd33a61cd2cecef766b8d6baa9999561463ae9dfdc20d55caef04
+	sha256sums = 4bc34e092fdec37e06b38b5b7a3b02194732dbe6a39edbd174b36c2db1f113ac
+	sha256sums = dcd9064f368e0fc1f3ede0a45e61b364f6b5d3607dccae78ac07e74ca315a27d
+
+pkgname = t1lib
