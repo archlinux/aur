@@ -1,21 +1,24 @@
 pkgname=orca-slicer-git
-pkgver=2.2.0_dev.c179a57725
+pkgver=2.2.0.158c71f05e_beta
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
 license=('AGPL-3.0-only')
-depends=('cairo' 'dbus' 'expat' 'fontconfig' 'gcc-libs' 'glib2' 'glibc' 'gtk3' 'gdk-pixbuf2' 'gstreamer' 
-         'gst-plugins-bad-libs' 'hicolor-icon-theme' 'libglvnd' 'libjpeg-turbo' 'libspnav' 'libx11' 'pango' 
-         'python' 'wayland' 'webkit2gtk-4.1' 'zlib')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'm4' 'ninja' 'pkgconf' 'wayland-protocols' 'glew')
+depends=('cairo' 'dbus' 'expat' 'fontconfig' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 
+         'gst-plugins-bad-libs' 'gstreamer' 'gtk3' 'hicolor-icon-theme' 'libglvnd' 'libjpeg-turbo' 
+         'libspnav' 'libtiff' 'libx11' 'pango' 'python' 'wayland' 'webkit2gtk-4.1' 'zlib')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'glew' 'm4' 'ninja' 'pkgconf' 'wayland-protocols')
 provides=("orca-slicer")
 source=("$pkgname::git+https://github.com/SoftFever/OrcaSlicer.git")
 b2sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  printf "%s_dev.%s" "$(sed -n 's/.*SoftFever_VERSION "\([^"]*\)".*/\1/p' version.inc | sed 's/-dev//')" "$(git rev-parse --short HEAD)"
+  _version=$(sed -n 's/set(SoftFever_VERSION "\([^"]*\)-.*".*/\1/p' version.inc)
+  _suffix=$(sed -n 's/set(SoftFever_VERSION ".*-\([^"]*\)".*/\1/p' version.inc)
+  _commit=$(git rev-parse --short HEAD)
+  printf "%s.%s_%s" $_version $_commit $_suffix
 }
 
 prepare() {
