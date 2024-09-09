@@ -1,5 +1,5 @@
 pkgbase = goby-community
-	pkgdesc = Attack surface mapping
+	pkgdesc = Goby 社区版 | Goby Community Edition
 	pkgver = 2.9.7
 	pkgrel = 1
 	url = https://gobies.org/
