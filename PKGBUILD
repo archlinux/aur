@@ -2,8 +2,8 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=veyon-bin
-pkgver=4.8.3
-pkgrel=2
+pkgver=4.9.0
+pkgrel=1
 pkgdesc="Cross-platform computer monitoring and classroom management"
 arch=('x86_64')
 url="https://veyon.io/"
@@ -28,9 +28,9 @@ depends=(
     'qt5-base'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}.0-ubuntu.jammy_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}.0-ubuntu.22.04_amd64.deb"
 )
-sha256sums=('acdc1c377696b182a13e6302a7f14e67082197580b6deb7a2d785035c2277f3e')
+sha256sums=('0ad411db541bb6a25c771ceedecc9b24b3499a5e2ad9233a8a167139d5c87ae5')
 
 build() {
     bsdtar -xf "${srcdir}/data."*
