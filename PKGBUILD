@@ -5,20 +5,21 @@
 pkgname='invoiceninja-desktop'
 _repo='admin-portal'
 pkgdesc="Desktop client for Invoice Ninja"
-pkgver=5.0.160
-pkgrel=2
+pkgver=5.0.168
+pkgrel=1
+url='https://invoiceninja.com/'
 source=("git+https://github.com/invoiceninja/${_repo}#tag=v${pkgver}" "invoiceninja-desktop.desktop" "invoiceninja")
-makedepends=(fvm ninja clang cmake)
+makedepends=(fvm ninja clang cmake unzip)
 depends=(gtk3
-  glib2
-  gcc-libs
-	at-spi2-core
-	libepoxy
-	glibc)
+        glib2
+        gcc-libs
+        at-spi2-core
+        libepoxy
+        glibc)
 arch=('i686' 'x86_64')
 license=('custom')
 sha512sums=('SKIP'
-            '897d91da9139716167beefee20a179ddd442203dbd488eb2a951e9e18b3faf4169910f8db924f75a2cf8bd9e430cbbf5fd07be6b2d3a5625b3fab2c841b5525d'
+            '2465924fe1087c5980419841d17352f23fb2458a74bb1acda577d58f374e0dcd871e8bc1334c7ed151e6050b08e50eb400631a24b0b94007b5e938d875db6255'
             'bb7286a93b510c0c0b5fbb7b3889e4e264bb17108d43e981fdca1535764c02d99b1a8f4a3ee878c994730cff82ff736a0c56ca8089bdca26d82d66df12ef9a93')
 
 prepare() {
