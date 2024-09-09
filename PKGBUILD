@@ -3,7 +3,7 @@
 
 _srcname=virtme-ng
 pkgname=$_srcname-git
-pkgver=1.27.r16.g4290a32
+pkgver=1.28.r0.g52b86fc
 pkgrel=1
 pkgdesc="A tool that allows to easily and quickly recompile and test a Linux kernel, starting from the source code."
 arch=('x86_64')
@@ -15,6 +15,7 @@ depends=(
   gcc-libs
   glibc
   python
+  python-argparse-manpage
   python-requests
   qemu
   virtiofsd
@@ -23,7 +24,6 @@ makedepends=(
   cargo
   git
   python-argcomplete
-  python-argparse-manpage
   python-setuptools
 )
 provides=('virtme=$pkgver')
