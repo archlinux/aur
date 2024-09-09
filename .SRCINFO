@@ -1,0 +1,18 @@
+pkgbase = taskd
+	pkgdesc = A lightweight, secure server providing multi-user, multi-client access to task data
+	pkgver = 1.1.0
+	pkgrel = 6
+	url = http://tasktools.org/projects/taskd.html
+	install = taskd.install
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = gnutls
+	depends = util-linux-libs
+	optdepends = which: for certificate generation script
+	source = https://taskwarrior.org/download/taskd-1.1.0.tar.gz
+	source = taskd.sysusers.conf
+	sha512sums = df2349c354258fd1b014b1a9c78f68dc10c9e5a48357e282e8a760cf4e4aaf4d36486796ad094ee2b050e7506195b778e3316c90ef543a2f8242de313daa13aa
+	sha512sums = 882ffe7de4bf569a16595d69cfd827fffd23beae7af19c90748bc2ee23e74f8313bcd2733131155d8fea4a37a207b052255fa5aeb6b61b47e4207332f7083e04
+
+pkgname = taskd
