@@ -7,11 +7,12 @@
 
 _pkgbase=nginx
 _commit=dd4a8a4620ca
+_commit=00637cce366f17b78fe1ed5c1ef0e534143045f6
 _libressl_ver=3.9.2
 pkgbase=nginx-quic-libressl
 pkgname=($pkgbase $pkgbase-src)
-pkgver=1.26.2
-pkgrel=2
+pkgver=1.27.1
+pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -30,11 +31,12 @@ backup=('etc/nginx/fastcgi.conf'
 install=nginx.install
 provides=('nginx' 'nginx-mainline')
 conflicts=('nginx')
-source=("hg+https://hg.nginx.org/nginx#revision=$_commit"
+source=("git+https://github.com/nginx/nginx.git#commit=$_commit"
+#       "hg+https://hg.nginx.org/nginx#revision=$_commit"
         "https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${_libressl_ver}.tar.gz"
         "service"
         "logrotate")
-sha256sums=('c2628c0eb081d21ae562cfd6a319bfbcc63d6511842b126f25d3e235fbd8871f'
+sha256sums=('8987d460f13f0ef5f5578adf9e973cc33f64f84fdb231570fabc02332ab2898f'
             '7b031dac64a59eb6ee3304f7ffb75dad33ab8c9d279c847f92c89fb846068f97'
             'adb4a2b5176be3a3bf39666584f7a0a7f10b1b1aca927c189c1910c789d6d13c'
             'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e')
@@ -82,6 +84,11 @@ prepare() {
   # Backup pristine version of nginx source for -src package
   test -d ${srcdir}/${pkgname}-src && rm -r ${srcdir}/${pkgname}-src
   cp -r ${srcdir}/nginx ${srcdir}/nginx-src
+}
+
+pkgver() {
+  cd nginx
+  git describe --long --tags | sed -e 's/release-\([^-]*\)-.*/\1/'
 }
 
 build() {
@@ -189,7 +196,7 @@ package_nginx-quic-libressl-src() {
   cp -r ${srcdir}/nginx-src "$pkgdir/usr/src/nginx"
   # Delete the .hg directory, it is huge and not needed
   #rm -r ${pkgdir}/usr/src/nginx/{.hg,.hgtags}
-  rm -r ${pkgdir}/usr/src/nginx/.hg
+  #rm -r ${pkgdir}/usr/src/nginx/.hg
   # Link the 'configure' script to its location in release tarballs,
   # as this is where modules expect it
   ln -s /usr/src/nginx/auto/configure "$pkgdir/usr/src/nginx"
