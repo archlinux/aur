@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=clash-nyanpasu
 _pkgname=clash-nyanpasu
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A Clash GUI based on tauri."
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=("git+https://github.com/keiko233/clash-nyanpasu.git#tag=v${pkgver}"
 provides=(clash-nyanpasu)
 conflicts=()
 
-sha512sums=('c4e6c188342199dacfd4854e894e4eb3676e2772ad6fed38bb00b51d2b2dcb236439518445c86973c4857791e1951426d062b861ea3c661cfcdba59f55c60efd'
+sha512sums=('e2e9020f4c39db1b584ac8abc4257e260c30ba01640e5a9d720ed07ed09997d2d53b0580b26f74dcc85349bc6cb5599032ccce6a2cb8cb2e9d9fff70025741e8'
             '085ba585e531f430050cb5fba6221228091c5c59d7c73004eba6c305a794a270e067ce971b92afa23c7d3b6024e4ad208061a2048b219ff42175a28c9d41ee82')
 options=(strip !debug !lto !debug)
 

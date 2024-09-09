@@ -1,6 +1,6 @@
 pkgbase = clash-nyanpasu
 	pkgdesc = A Clash GUI based on tauri.
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/keiko233/clash-nyanpasu
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = clash-nyanpasu
 	options = !debug
 	options = !lto
 	options = !debug
-	source = git+https://github.com/keiko233/clash-nyanpasu.git#tag=v1.6.0
+	source = git+https://github.com/keiko233/clash-nyanpasu.git#tag=v1.6.1
 	source = clash-nyanpasu.desktop
 	sha512sums = c4e6c188342199dacfd4854e894e4eb3676e2772ad6fed38bb00b51d2b2dcb236439518445c86973c4857791e1951426d062b861ea3c661cfcdba59f55c60efd
 	sha512sums = 085ba585e531f430050cb5fba6221228091c5c59d7c73004eba6c305a794a270e067ce971b92afa23c7d3b6024e4ad208061a2048b219ff42175a28c9d41ee82
