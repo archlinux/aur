@@ -4,7 +4,7 @@
 
 pkgname=hiredict
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='C client library for Redict'
 arch=('x86_64')
 url="https://codeberg.org/redict/$pkgname"
@@ -16,12 +16,12 @@ sha256sums=('SKIP')
 
 build() {
   cd $pkgname
-  make PREFIX=/usr
+  make USE_SSL=yes PREFIX=/usr
 }
 
 check() {
   cd $pkgname
-  make check
+  make USE_SSL=yes check
 }
 
 package() {
