@@ -1,0 +1,9 @@
+cudaroot=/opt/cuda
+libdir=${cudaroot}/targets/x86_64-linux/lib
+includedir=${cudaroot}/targets/x86_64-linux/include
+
+Name: cublas
+Description: CUDA BLAS Library
+Version: 11.0
+Libs: -L${libdir} -lcublas
+Cflags: -I${includedir}
