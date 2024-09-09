@@ -2,9 +2,9 @@
 # Contributor: Keeyou <keeyou-cn@outlook.com>
 
 pkgname=yass-proxy-gtk3
-pkgver=1.13.1
+pkgver=1.13.2
 pkgrel=1
-_pkgver=1.13.1
+_pkgver=1.13.2
 _pkgrel=1
 pkgdesc="lightweight http/socks proxy"
 arch=(x86_64)
@@ -18,7 +18,7 @@ provides=(yass-proxy)
 conflicts=(yass-proxy-git)
 source=("https://github.com/Chilledheart/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.bz2"
         )
-sha256sums=('26015d32a6bdc5bf2670b36c8f5fb68f4a324d577e027bc5eef18ae977e00c9f')
+sha256sums=('1b661be8901c0c8c8bf292b02563ca8abdba503a9f1f7de8ca5f808aff63e8a4')
 
 build(){
   SRC_DIR="${srcdir}/yass-${_pkgver}"
