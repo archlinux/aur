@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: aulonsal <seraur at aulonsal dot com>
 pkgname=dbgate-bin
-pkgver=5.4.1
+pkgver=5.4.3
 _electronversion=30
 pkgrel=1
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Runs under Windows, Linux, Mac or as web application"
@@ -30,9 +30,9 @@ source=(
 )
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('b158de4c0a816bac27ae9e84fb5de449612dcb8f24653f6daca152dca420e0bf')
-sha256sums_armv7h=('57ef3cce2210455393f23d97bda7aabe9d4804ad41955f1de77cc4b020e48447')
-sha256sums_x86_64=('02e536255ba2d6d98a1bafc3e16fe46d6bf95a5e7bd58bc4d49a3a374c69a30c')
+sha256sums_aarch64=('6264e3bde327458bb4c85663fd0b8b861a9ee2c94d3b3aec761ac942cd3da03b')
+sha256sums_armv7h=('e4c0d401c29cf29fa37fe2415cc69eb409bf388072dfc8f4eddb5b63ab192d93')
+sha256sums_x86_64=('4caf54b2f3f9395829571b0ce74b547dbfbb45e8e89c9edd72ac0d6af32978c1')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
         -e "s|@appname@|${pkgname%-bin}|g" \
