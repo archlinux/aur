@@ -1,14 +1,16 @@
 pkgbase = pypy-packaging
 	pkgdesc = Core utilities for Python packages
-	pkgver = 21.3
-	pkgrel = 2
+	pkgver = 24.1
+	pkgrel = 1
 	url = https://github.com/pypa/packaging
 	arch = any
 	license = Apache-2.0
 	license = BSD-2-Clause
-	makedepends = pypy3-setuptools70
-	source = https://pypi.org/packages/source/p/packaging/packaging-21.3.tar.gz
-	sha512sums = 2e3aa276a4229ac7dc0654d586799473ced9761a83aa4159660d37ae1a2a8f30e987248dd0e260e2834106b589f259a57ce9936eef0dcc3c430a99ac6b663e05
+	makedepends = pypy3-build
+	makedepends = pypy3-installer
+	makedepends = pypy3-flit-core
+	source = packaging-24.1.tar.gz::https://github.com/pypa/packaging/archive/24.1.tar.gz
+	sha512sums = 45836ea0e7531c485a7d5e568f9740c7f075ff1b72a0d60422c5b76c031866428ff2137d9bd153790a9fcfff6bd4a7555bc40555409ad46debae7f1c9c1fe129
 
 pkgname = pypy3-packaging
-	depends = pypy3-pyparsing
+	depends = pypy3

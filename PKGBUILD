@@ -3,20 +3,25 @@
 _base=packaging
 pkgbase=pypy-${_base}
 pkgname=pypy3-packaging
-pkgver=21.3
-pkgrel=2
+pkgver=24.1
+pkgrel=1
 pkgdesc="Core utilities for Python packages"
 arch=(any)
 url="https://github.com/pypa/${_base}"
 license=(Apache-2.0 BSD-2-Clause)
-makedepends=(pypy3-setuptools70) # pypa/setuptools/issues/4483
-source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('2e3aa276a4229ac7dc0654d586799473ced9761a83aa4159660d37ae1a2a8f30e987248dd0e260e2834106b589f259a57ce9936eef0dcc3c430a99ac6b663e05')
+makedepends=(pypy3-build pypy3-installer pypy3-flit-core)
+source=(${_base}-${pkgver}.tar.gz::https://github.com/pypa/${_base}/archive/${pkgver}.tar.gz)
+sha512sums=('45836ea0e7531c485a7d5e568f9740c7f075ff1b72a0d60422c5b76c031866428ff2137d9bd153790a9fcfff6bd4a7555bc40555409ad46debae7f1c9c1fe129')
+
+build() {
+  cd ${_base}-${pkgver}
+  pypy3 -m build --wheel --skip-dependency-check --no-isolation
+}
 
 package_pypy3-packaging() {
-  depends=(pypy3-pyparsing)
+  depends=(pypy3)
 
   cd ${_base}-${pkgver}
-  pypy3 setup.py install --prefix=/opt/pypy3 --root="${pkgdir}" --optimize=1
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" pypy3 -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
