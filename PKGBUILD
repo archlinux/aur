@@ -1,7 +1,7 @@
 # Maintainer: banana-bred <j.forer@posteo.net>
 pkgname="molden"
 pkgver=7.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A program for molecular and electronic structure visualization"
 arch=('i686' 'x86_64')
 url="https://www.theochem.ru.nl/molden/"
@@ -14,6 +14,7 @@ makedepends=(
     'xorgproto'
     'libx11'
     'makedepend'
+    'libxmu'
 )
 optdepends=(
    'openbabel: to create 2D images of the molecules in a .sdf file'
