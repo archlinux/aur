@@ -2,18 +2,18 @@
 # shellcheck shell=bash disable=SC2034
 
 pkgname=lib32-vulkan-tools
-pkgver=1.3.285
+pkgver=1.3.295
 pkgrel=1
 arch=(x86_64)
 url="https://www.khronos.org/vulkan/"
 pkgdesc="Vulkan Utilities and Tools (32-bit)"
 license=('Apache-2.0')
 depends=('lib32-libx11' 'lib32-libxcb' 'lib32-wayland' 'lib32-vulkan-icd-loader')
-makedepends=('cmake' 'python' 'vulkan-headers' 'wayland-protocols' 'glslang' 'spirv-tools' 'git')
+makedepends=('cmake' 'python' "vulkan-headers>=1:${pkgver}" 'wayland-protocols' 'glslang' 'spirv-tools' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/Vulkan-Tools/archive/v${pkgver}.tar.gz"
-        "git+https://github.com/zeux/volk.git#commit=e47fea602c55c557018ef751e53c196d5137ebfd") # 1.3.285
-sha256sums=('5153253f20296558000e730b0340b5a40fac212c91fb4ffe5bf490a8406d89c3'
-            'SKIP')
+        "git+https://github.com/zeux/volk.git#commit=22f73aedb7b25593199c77159de02b67022cedcb") # 1.3.295
+sha256sums=('caaf5972173e986605df279b5714f4fc0295769527372ec1752b87e001a8e7cf'
+            '70b5ed170727efdd86ce1e9eb2fdd112b4644d363b96adae5d223a3958a6bbfd')
 
 build() {
   export CC="gcc -m32"
