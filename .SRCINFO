@@ -1,12 +1,13 @@
 pkgbase = kd
 	pkgdesc = A command-line dictionary
-	pkgver = v0.0.3
+	pkgver = v0.0.11
 	pkgrel = 1
 	url = https://github.com/Karmenzind/kd
 	arch = x86_64
 	license = MIT
+	provides = kd
+	conflicts = kd-bin
 	source = kd::https://github.com/Karmenzind/kd/releases/latest/download/kd_linux_amd64
-	source = kd.go::https://raw.githubusercontent.com/Karmenzind/kd/main/cmd/kd.go
 	sha256sums = SKIP
 	sha256sums = SKIP
 
