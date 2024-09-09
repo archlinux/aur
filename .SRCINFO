@@ -1,0 +1,14 @@
+pkgbase = xdialog
+	pkgdesc = A drop-in replacement for the 'dialog' or 'cdialog' programs
+	pkgver = 2.3.1
+	pkgrel = 9
+	url = http://xdialog.free.fr/
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	source = http://xdialog.free.fr/Xdialog-2.3.1.tar.bz2
+	source = xdialog-2.3.1-gtk2.patch
+	sha512sums = 2a0f6e15297ae3ef54a41da1b1fe2ef376d28757d47433df2b8e9918cd4f95871a630b94ec544bd848e518df7f86934030a71bf0371a1466286bf7d912335525
+	sha512sums = e1a1d4e93946f89a9f4d2a619fcb0069cd5e6ec1b0c3a3ebcd87b1b601c07a7941ad1edeb1cbe89f22f993667c4431c496a6c9b35a13fd9e7d1b8dbd89546694
+
+pkgname = xdialog
