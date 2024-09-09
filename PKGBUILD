@@ -13,7 +13,7 @@ source=("${pkgname}-check_mk_agent.linux-${pkgver}::https://raw.githubuserconten
         "${pkgname}-check_mk_caching_agent.linux-${pkgver}::https://raw.githubusercontent.com/tribe29/checkmk/v${pkgver}/agents/check_mk_caching_agent.linux"
         'check_mk.socket'
         'check_mk@.service')
-sha256sums=('7c10a68daa0c5c0c366ccc8b4b898bc94b32221d25aea2191df5b768f04b214c'
+sha256sums=('939e89316d3fce0e6c41cac8a9651eb7df37feda759896832c4e1e840acd48cb'
             '54bb693ef89cf65fa53440384b238e507193d5770f803854746335ccb2dd7162'
             'a891bb3020f20ff8e6c1672e58607dd5545923bfce6420911fd1c967ec500b08'
             '7a8507af8fd92a7acc68c34d6a7525b67e0c0419ef8a99cd620d459837c7d1e8')
