@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=miteiru
 _pkgname=Miteiru
-pkgver=5.0.1
+pkgver=5.1.0
 _electronversion=31
 _nodeversion=20
 pkgrel=1
@@ -12,7 +12,7 @@ license=("CC-BY-NC-4.0")
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'mecab'
+    #'mecab'
     'java-runtime'
 )
 makedepends=(
@@ -33,41 +33,46 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('89c608b64c4b8d6b254c477835d88376b2e39d64f0690da58860b0b3c26b92e5'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums=('284ba8b2a7ddcf3cd9fcdce8e3f7e5784710007009846105fc982621866060e3'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/${pkgname}/
+        s/@options@//
+    " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
-    export npm_config_build_from_source=true
-    export npm_config_cache="${srcdir}/.npm_cache"
-    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        export npm_config_registry=https://registry.npmmirror.com
-        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
-    else
-        echo "Your network is OK."
-    fi
+    {
+        echo 'build_from_source=true'
+        echo "cache=${srcdir}/.npm_cache"
+        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        else
+            echo 'registry=https://registry.npmjs.org'
+            echo 'disturl=https://nodejs.org/dist'
+            echo 'electron_mirror=https://www.electronjs.org/versions'
+            echo 'electron_builder_binaries_mirror=https://github.com/electron-userland/electron-builder-binaries/releases/download'
+        fi
+    } >> .npmrc
     icotool -i 1 -x resources/icon.ico -o resources/icon.png
-    sed "s|icon.icns|icon.png|g;s|\"deb\", \"AppImage\"|\"dir\"|g" -i buildConfig/linux22.config.json
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
+    sed "s/icon.icns/icon.png/;s/\"deb\", \"AppImage\"/\"dir\"/" -i buildConfig/linux22.config.json
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run build:linux22
 }
