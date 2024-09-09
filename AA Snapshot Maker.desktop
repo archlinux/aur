@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=Audio Assault Snapshot Maker
+Name=Snapshot Maker
 Comment=Audio Assault amp modeller preset maker (Standalone)
 Exec="/usr/bin/AA Snapshot Maker Standalone"
 Icon=/usr/share/icons/hicolor/192x192/apps/aa-snapshot-maker.png
