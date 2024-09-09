@@ -14,6 +14,7 @@ pkgbase = snapd-glib
 	depends = json-glib
 	depends = qt5-declarative
 	depends = glib2-devel
+	depends = qt5-base
 	source = https://github.com/snapcore/snapd-glib/releases/download/1.65/snapd-glib-1.65.tar.xz
 	sha256sums = f2e6d0f45ed10065f8d7d65cde27d57ef23c0541663d912acbf85322ae911e61
 
