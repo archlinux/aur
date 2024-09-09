@@ -1,3 +1,4 @@
+# Maintainer: Enrique AM <enriqueam.dev@gmail.com>
 # Maintainer: naetherm <naether.markus@gmail.com>
 # Maintainer: Adrien Jussak <adrien.jussak@wascardev.com>
 # Maintainer: sum01 <sum01@protonmail.com>
