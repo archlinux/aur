@@ -1,0 +1,15 @@
+pkgbase = crosstypes-svn
+	pkgdesc = Cross-platform library of PODT (plain old data types) in C/C++
+	pkgver = 0.1.0.r0
+	pkgrel = 1
+	url = https://crosstypes.sourceforge.net
+	arch = any
+	license = BSD-3-Clause
+	makedepends = cmake>=2.4.2
+	makedepends = subversion
+	provides = crosstypes=0.1.0
+	conflicts = crosstypes
+	source = crosstypes::svn+https://svn.code.sf.net/p/crosstypes/code/work
+	sha256sums = SKIP
+
+pkgname = crosstypes-svn
