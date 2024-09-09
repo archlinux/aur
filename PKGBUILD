@@ -3,7 +3,7 @@
 _pkgname=Equibop
 pkgname=equibop-bin
 _appname=equibop-desktop
-pkgver=2.1.0
+pkgver=2.0.8
 _electronversion=31
 pkgrel=1
 pkgdesc="A Vesktop fork cross platform electron-based desktop app aiming to give you a snappier Discord experience with Suncord pre-installed"
