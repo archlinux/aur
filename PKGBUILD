@@ -13,8 +13,8 @@ source=("drawio-${pkgver}.tar.gz::https://github.com/jgraph/drawio/archive/refs/
 sha512sums=('0b8e7e3c0c0bb2a7ba5ce07f64cf800c5deb73f7db69084e0929af667628171b78957b849a82420be256f4846080617a64e5fa1637bad574f0bde65777f11fc1')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}/etc/dependencies/"
-	npm install
+#	cd "${srcdir}/${pkgname}-${pkgver}/etc/dependencies/"
+#	npm install
 	cd "${srcdir}/${pkgname}-${pkgver}/etc/build/"
 	ant all
 }
