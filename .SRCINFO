@@ -1,6 +1,6 @@
 pkgbase = vulkan-nouveau-git
 	pkgdesc = Nouveau Vulkan (NVK) Mesa driver with some additions (Git version)
-	pkgver = 24.2.branchpoint.r2164.g6378107
+	pkgver = 24.2.branchpoint.r2290.g05dc524
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/mesa/mesa
 	install = vulkan-nouveau-git.install
@@ -28,6 +28,7 @@ pkgbase = vulkan-nouveau-git
 	depends = libdrm
 	depends = libxshmfence
 	depends = libx11
+	depends = spirv-tools
 	depends = systemd-libs
 	depends = vulkan-icd-loader
 	depends = wayland

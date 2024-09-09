@@ -3,10 +3,10 @@
 
 pkgname=vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) Mesa driver with some additions (Git version)"
-pkgver=24.2.branchpoint.r2164.g6378107
+pkgver=24.2.branchpoint.r2290.g05dc524
 pkgrel=1
 arch=('x86_64' 'aarch64' 'armv7h')
-depends=('libdrm' 'libxshmfence' 'libx11' 'systemd-libs' 'vulkan-icd-loader' 'wayland')
+depends=('libdrm' 'libxshmfence' 'libx11' 'spirv-tools' 'systemd-libs' 'vulkan-icd-loader' 'wayland')
 makedepends=('cbindgen' 'elfutils' 'git' 'glslang' 'libunwind' 'libxrandr' 'meson>=1.3.0rc2' 'python-mako'
              'python-packaging' 'python-yaml' 'rust' 'rust-bindgen' 'systemd' 'valgrind' 'wayland-protocols'
              'xorgproto' 'zstd') # Meson 1.3.0-rc1 has weird crate issues
@@ -75,7 +75,6 @@ build() {
     -D egl=disabled \
     -D gallium-extra-hud=false \
     -D gallium-nine=false \
-    -D gallium-omx=disabled \
     -D gallium-opencl=disabled \
     -D gallium-va=disabled \
     -D gallium-vdpau=disabled \
