@@ -1,6 +1,6 @@
 pkgbase = mutter-beta-performance
 	pkgdesc = Window manager and compositor for GNOME
-	pkgver = 47.rc.r25.g57c1679
+	pkgver = 47.rc.r28.gffc3eb4
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
@@ -69,9 +69,9 @@ pkgbase = mutter-beta-performance
 	depends = wayland
 	depends = xorg-xwayland
 	source = mr1441.patch::https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441.patch
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=57c1679ecbb0473dc946d8f804c1dad0f2bff2b7
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=ffc3eb4ef7eeec52849c6c61cca4b98aff92d5b2
 	b2sums = 343186ecf7ecd688fd1b3c18c646a558b17d8b535d23505574d7dcb223201b95b4af12311fce927873240f855471c04fbc73277c2fb900ba4106a1240741a8cb
-	b2sums = ee8e07849fdaa70771469bd1f936dac5a9fcca3d939fdca8f9845a665835faa3cee1adf64a75bac8b69be3a712b95fe7c7726db1342f3417c21b8847e7f4ec97
+	b2sums = 57ce5f4e6f222bb87731aac4238b3626376368dd6e729c0b5c8fecbefb8d9170aa65ea6b6cefeb14cd2f78e463093d62d354517676b5809d23c80af23885ceeb
 
 pkgname = mutter-beta-performance
 	provides = mutter
