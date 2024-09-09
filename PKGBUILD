@@ -17,7 +17,7 @@ sha256sums=('339b8ff760f7df5f93d543585e49c52f69f59c9d3e9563aba205a09f93611672')
 noextract=("${_npmname}-${_npmver}.tgz")
 
 package() {
-    # https://github.com/mermaid-js/mermaid-cli/blob/1a04781c5a9a6ceff8ad3c126db736ac9f6ba8c4/docs/already-installed-chromium.md
+    # https://github.com/mermaid-js/mermaid-cli/blob/11.1.1/docs/already-installed-chromium.md
     PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true PUPPETEER_SKIP_DOWNLOAD=1 npm install --global --omit dev --prefix "${pkgdir}/usr" "${_npmname}-${_npmver}.tgz"
     sed -i "s# headless: 'shell'# headless: 'shell', executablePath: '$(which chromium)'#g" "${pkgdir}/usr/lib/node_modules/@mermaid-js/mermaid-cli/src/index.js"
 
