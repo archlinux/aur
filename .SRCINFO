@@ -1,19 +1,19 @@
 pkgbase = git-town-bin
 	pkgdesc = Git workflow automation to keep branches in sync and reduce merge conflicts.
-	pkgver = 16.0.0
+	pkgver = 16.1.0
 	pkgrel = 1
 	url = https://www.git-town.com/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = git
-	provides = git-town=16.0.0
+	provides = git-town=16.1.0
 	conflicts = git-town
-	source = LICENSE-16.0.0::https://raw.githubusercontent.com/git-town/git-town/v16.0.0/LICENSE
+	source = LICENSE-16.1.0::https://raw.githubusercontent.com/git-town/git-town/v16.1.0/LICENSE
 	sha256sums = eec8a092b92231375231488d27b959e2fa2be80559c97db60c1b0458d3298791
-	source_aarch64 = git-town-16.0.0-aarch64.deb::https://github.com/git-town/git-town/releases/download/v16.0.0/git-town_linux_arm_64.deb
-	sha256sums_aarch64 = 22b0af39ede69684e2c34c8a6d4e2d52b427228137d553c2d0c8d3a9331bbf47
-	source_x86_64 = git-town-16.0.0-x86_64.deb::https://github.com/git-town/git-town/releases/download/v16.0.0/git-town_linux_intel_64.deb
-	sha256sums_x86_64 = 640c3878b2b91b971d30a9abc387741c8496ef3e4f8cb683a92461f4f22ed3c4
+	source_aarch64 = git-town-16.1.0-aarch64.deb::https://github.com/git-town/git-town/releases/download/v16.1.0/git-town_linux_arm_64.deb
+	sha256sums_aarch64 = dcdb173681ca92dd71d5ba964a298afe7cb8e757992877e44f534213c0dbb038
+	source_x86_64 = git-town-16.1.0-x86_64.deb::https://github.com/git-town/git-town/releases/download/v16.1.0/git-town_linux_intel_64.deb
+	sha256sums_x86_64 = 61a227cc29f61685e6c2babaa7b789bc9dd99aa0821b91c59423b392f4aa53fb
 
 pkgname = git-town-bin
