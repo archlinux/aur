@@ -3,7 +3,7 @@
 pkgname=bloomeetunes-git
 _pkgname=bloomeetunes
 pkgver=2.9.9+138.r0.g6455809
-pkgrel=1
+pkgrel=2
 _flutterver=3.24.0
 pkgdesc='🌸Bloomee is a cross-platform music app designed to bring you ad-free tunes from various sources. 🌼🎵'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("${_pkgname}::git+https://github.com/HemantKArya/BloomeeTunes.git"
         "${_pkgname}.desktop")
 
 sha512sums=('SKIP'
-            '132a8d7d047d5cacf717ca1b13986699e977c62b64b88590bc2cbb3299fd27ad72d277b078159d7e548ddcefd16ed89208bfa898702b77a6941ff2cf5184ff30')
+            'bfd5f754fe1a87f23872520a1c15e4dea3482bbaa81d4edc408e9a474ebd28faaff6e70cc79e36e5ee0598f36bdf60a657ee8fe39b9b243832542f8e9532db7e')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
