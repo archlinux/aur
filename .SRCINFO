@@ -1,0 +1,17 @@
+pkgbase = cutefish-dock
+	pkgdesc = CutefishOS application dock
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/cutefishos/dock
+	arch = x86_64
+	groups = cutefish
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = qt5-tools
+	depends = fishui
+	depends = qt5-svg
+	source = https://github.com/cutefishos/dock/archive/0.8/cutefish-dock-0.8.tar.gz
+	sha512sums = 98d97abcbc82afd31e13fff3f76bc81f12ba2ab2c1fdcec3c0c800d1945d9353bb7d7086d3d79ae0edc397db025a76afcd7e09e2e68ab60f07770bd3931515d7
+
+pkgname = cutefish-dock
