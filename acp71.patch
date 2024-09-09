@@ -1,0 +1,141 @@
+From git@z Thu Jan  1 00:00:00 1970
+Subject: [PATCH] ASoC: amd: acp: add legacy driver support for ACP7.1 based
+ platforms
+From: Vijendar Mukunda <Vijendar.Mukunda@amd.com>
+Date: Tue, 13 Aug 2024 13:38:50 +0530
+Message-Id: <20240813080850.3107409-1-Vijendar.Mukunda@amd.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Add acp pci driver and machine driver changes for ACP7.1 based platforms
+for legacy stack.
+
+Signed-off-by: Vijendar Mukunda <Vijendar.Mukunda@amd.com>
+---
+ sound/soc/amd/acp/acp-legacy-common.c |  7 ++++---
+ sound/soc/amd/acp/acp-mach-common.c   |  2 +-
+ sound/soc/amd/acp/acp-mach.h          |  1 +
+ sound/soc/amd/acp/acp-pci.c           |  4 ++++
+ sound/soc/amd/acp/acp70.c             | 12 ++++++++++--
+ sound/soc/amd/acp/amd.h               |  1 +
+ 6 files changed, 21 insertions(+), 6 deletions(-)
+
+diff --git a/sound/soc/amd/acp/acp-legacy-common.c b/sound/soc/amd/acp/acp-legacy-common.c
+index 04bd605fdce3..3cc083fac837 100644
+--- a/sound/soc/amd/acp/acp-legacy-common.c
++++ b/sound/soc/amd/acp/acp-legacy-common.c
+@@ -270,6 +270,7 @@ static int acp_power_on(struct acp_chip_info *chip)
+ 		acp_pgfsm_ctrl_reg = ACP63_PGFSM_CONTROL;
+ 		break;
+ 	case ACP70_DEV:
++	case ACP71_DEV:
+ 		acp_pgfsm_stat_reg = ACP70_PGFSM_STATUS;
+ 		acp_pgfsm_ctrl_reg = ACP70_PGFSM_CONTROL;
+ 		break;
+@@ -336,10 +337,9 @@ int acp_deinit(struct acp_chip_info *chip)
+ 	if (ret)
+ 		return ret;
+ 
+-	if (chip->acp_rev != ACP70_DEV)
++	if (chip->acp_rev < ACP70_DEV)
+ 		writel(0, chip->base + ACP_CONTROL);
+-
+-	if (chip->acp_rev >= ACP70_DEV)
++	else
+ 		writel(0x01, chip->base + ACP_ZSC_DSP_CTRL);
+ 	return 0;
+ }
+@@ -461,6 +461,7 @@ void check_acp_config(struct pci_dev *pci, struct acp_chip_info *chip)
+ 		check_acp6x_config(chip);
+ 		break;
+ 	case ACP70_DEV:
++	case ACP71_DEV:
+ 		pdm_addr = ACP70_PDM_ADDR;
+ 		check_acp70_config(chip);
+ 		break;
+diff --git a/sound/soc/amd/acp/acp-mach-common.c b/sound/soc/amd/acp/acp-mach-common.c
+index a36300a4ed8a..e9ff4815c12c 100644
+--- a/sound/soc/amd/acp/acp-mach-common.c
++++ b/sound/soc/amd/acp/acp-mach-common.c
+@@ -1766,7 +1766,7 @@ int acp_legacy_dai_links_create(struct snd_soc_card *card)
+ 		} else if (drv_data->platform == ACP63) {
+ 			links[i].platforms = platform_acp63_component;
+ 			links[i].num_platforms = ARRAY_SIZE(platform_acp63_component);
+-		} else if (drv_data->platform == ACP70) {
++		} else if ((drv_data->platform == ACP70) || (drv_data->platform == ACP71)) {
+ 			links[i].platforms = platform_acp70_component;
+ 			links[i].num_platforms = ARRAY_SIZE(platform_acp70_component);
+ 		} else {
+diff --git a/sound/soc/amd/acp/acp-mach.h b/sound/soc/amd/acp/acp-mach.h
+index a48546d8d407..93d9e3886b7e 100644
+--- a/sound/soc/amd/acp/acp-mach.h
++++ b/sound/soc/amd/acp/acp-mach.h
+@@ -56,6 +56,7 @@ enum platform_end_point {
+ 	REMBRANDT,
+ 	ACP63,
+ 	ACP70,
++	ACP71,
+ };
+ 
+ struct acp_mach_ops {
+diff --git a/sound/soc/amd/acp/acp-pci.c b/sound/soc/amd/acp/acp-pci.c
+index b0304b813cad..f7450a5bd103 100644
+--- a/sound/soc/amd/acp/acp-pci.c
++++ b/sound/soc/amd/acp/acp-pci.c
+@@ -95,6 +95,10 @@ static int acp_pci_probe(struct pci_dev *pci, const struct pci_device_id *pci_id
+ 		chip->name = "acp_asoc_acp70";
+ 		chip->acp_rev = ACP70_DEV;
+ 		break;
++	case 0x71:
++		chip->name = "acp_asoc_acp70";
++		chip->acp_rev = ACP71_DEV;
++		break;
+ 	default:
+ 		dev_err(dev, "Unsupported device revision:0x%x\n", pci->revision);
+ 		ret = -EINVAL;
+diff --git a/sound/soc/amd/acp/acp70.c b/sound/soc/amd/acp/acp70.c
+index a2cbdcca4313..81636faa22cd 100644
+--- a/sound/soc/amd/acp/acp70.c
++++ b/sound/soc/amd/acp/acp70.c
+@@ -147,7 +147,11 @@ static int acp_acp70_audio_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 	}
+ 
+-	if (chip->acp_rev != ACP70_DEV) {
++	switch (chip->acp_rev) {
++	case ACP70_DEV:
++	case ACP71_DEV:
++		break;
++	default:
+ 		dev_err(&pdev->dev, "Un-supported ACP Revision %d\n", chip->acp_rev);
+ 		return -ENODEV;
+ 	}
+@@ -178,7 +182,11 @@ static int acp_acp70_audio_probe(struct platform_device *pdev)
+ 	adata->num_dai = ARRAY_SIZE(acp70_dai);
+ 	adata->rsrc = &rsrc;
+ 	adata->machines = snd_soc_acpi_amd_acp70_acp_machines;
+-	adata->platform = ACP70;
++	if (chip->acp_rev == ACP70_DEV)
++		adata->platform = ACP70;
++	else
++		adata->platform = ACP71;
++
+ 	adata->flag = chip->flag;
+ 	acp_machine_select(adata);
+ 
+diff --git a/sound/soc/amd/acp/amd.h b/sound/soc/amd/acp/amd.h
+index c095a34a7229..4f0cd7dd04e5 100644
+--- a/sound/soc/amd/acp/amd.h
++++ b/sound/soc/amd/acp/amd.h
+@@ -22,6 +22,7 @@
+ #define ACP6X_DEV			6
+ #define ACP63_DEV			0x63
+ #define ACP70_DEV			0x70
++#define ACP71_DEV			0x71
+ 
+ #define DMIC_INSTANCE			0x00
+ #define I2S_SP_INSTANCE			0x01
+-- 
+2.34.1
+
