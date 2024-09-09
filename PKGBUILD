@@ -5,7 +5,7 @@ _pkgname=bloomeetunes
 _ver=2.9.9
 pkgver=${_ver}+138
 _relver=${_ver}_dev+16
-pkgrel=1
+pkgrel=2
 pkgdesc='🌸Bloomee is a cross-platform music app designed to bring you ad-free tunes from various sources. 🌼🎵'
 arch=('x86_64')
 url='https://github.com/HemantKArya/BloomeeTunes'
@@ -20,7 +20,7 @@ source=("https://github.com/HemantKArya/BloomeeTunes/releases/download/v${pkgver
         "$_pkgname.desktop")
 
 sha512sums=('d7746a13a3a3ca046d5209b7450788659c133c55218d64fe61d19715f6f8625575530a0f7eb9b86e35ba8a4929688d6fbbe459cb01685240aa44c02e49e288f7'
-            '132a8d7d047d5cacf717ca1b13986699e977c62b64b88590bc2cbb3299fd27ad72d277b078159d7e548ddcefd16ed89208bfa898702b77a6941ff2cf5184ff30')
+            'bfd5f754fe1a87f23872520a1c15e4dea3482bbaa81d4edc408e9a474ebd28faaff6e70cc79e36e5ee0598f36bdf60a657ee8fe39b9b243832542f8e9532db7e')
 
 package() {
   install -dm755 "${pkgdir}/opt"
