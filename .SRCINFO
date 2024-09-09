@@ -1,7 +1,7 @@
 pkgbase = wechat-uos-bwrap
 	pkgdesc = WeChat Qt, the so-called universal version
 	pkgver = 1.0.0.241
-	pkgrel = 31
+	pkgrel = 32
 	url = https://weixin.qq.com/
 	arch = x86_64
 	arch = aarch64
@@ -77,7 +77,7 @@ pkgbase = wechat-uos-bwrap
 	source = CMakeLists.txt
 	source = mimeapps.list
 	source = flatpak-info
-	md5sums = e271c13dfa4904b6ec84f0acc0d3b878
+	md5sums = 30d9f5faf074d7891c661e89260623d5
 	md5sums = 860ea16819270285e22ef0dee6abd217
 	md5sums = 468e0367346707c026e577e7bf3e3a82
 	md5sums = 5257ea879774084f8ca4b4c82bdeef85

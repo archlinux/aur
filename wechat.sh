@@ -103,9 +103,6 @@ function cameraDect() {
 			bwCamPar="${bwCamPar} --dev-bind ${camera} ${camera}"
 		fi
 	done
-	if [[ ${bwCamPar} =~ dev-bind ]]; then
-		echo "[Info] Camera bound"
-	fi
 }
 
 function execApp() {
@@ -230,9 +227,6 @@ function execApp() {
 	-p BindReadOnlyPaths=/usr/bin/true:/usr/bin/lsblk \
 	-p BindReadOnlyPaths=/dev/null:/proc/cpuinfo \
 	-p BindReadOnlyPaths=/dev/null:/proc/meminfo \
-	-p BindReadOnlyPaths=/dev/null:/sys/firmware \
-	-p BindReadOnlyPaths=/dev/null:/sys/kernel \
-	-p BindReadOnlyPaths=/dev/null:/sys/module \
 	-p BindReadOnlyPaths=/opt/wechat-uos-qt/files:/usr/lib/license \
 	-p BindReadOnlyPaths=-/run/systemd/resolve/stub-resolv.conf \
 	-p BindReadOnlyPaths=/usr/share/wechat-uos-qt/license/etc/os-release:"${osRel}" \
@@ -295,8 +289,9 @@ function execApp() {
 		${bwCamPar} \
 		--setenv XDG_DOCUMENTS_DIR "$HOME/Documents" \
 		--setenv XDG_DATA_HOME "${XDG_DATA_HOME}" \
-		--unshare-all \
-		--share-net \
+		--unshare-cgroup-try \
+		--unshare-ipc \
+		--unshare-uts \
 		--unshare-user \
 		--disable-userns \
 		-- \
