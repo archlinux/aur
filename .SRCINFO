@@ -1,0 +1,20 @@
+pkgbase = libchamplain
+	pkgdesc = Map widget for GTK 3
+	pkgver = 0.12.21
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/libchamplain
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = vala
+	makedepends = meson
+	makedepends = git
+	depends = clutter-gtk
+	depends = libsoup3
+	depends = cairo
+	depends = sqlite
+	source = git+https://gitlab.gnome.org/GNOME/libchamplain.git#commit=941560af497148588783db991e8135f52a82574d
+	sha256sums = SKIP
+
+pkgname = libchamplain
