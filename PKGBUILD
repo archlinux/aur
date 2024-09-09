@@ -11,7 +11,7 @@ url="https://github.com/bluescan/tacentview"
 license=('ISC')
 arch=('x86_64')
 depends=('hicolor-icon-theme' 'libx11' 'libxcb')
-makedepends=('cmake' 'git' 'ninja')
+makedepends=('clang' 'cmake' 'git' 'ninja')
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 

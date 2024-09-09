@@ -5,6 +5,7 @@ pkgbase = tacentview
 	url = https://github.com/bluescan/tacentview
 	arch = x86_64
 	license = ISC
+	makedepends = clang
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
