@@ -1,0 +1,16 @@
+pkgbase = rathole
+	pkgdesc = A reverse proxy for NAT traversal
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/rapiz1/rathole
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	makedepends = libgit2
+	depends = gcc-libs
+	depends = openssl
+	options = !lto
+	source = rathole-0.5.0.tar.gz::https://github.com/rapiz1/rathole/archive/v0.5.0.tar.gz
+	sha256sums = c8698dc507c4c2f7e0032be24cac42dd6656ac1c52269875d17957001aa2de41
+
+pkgname = rathole
