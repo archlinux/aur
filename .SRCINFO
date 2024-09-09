@@ -1,0 +1,16 @@
+pkgbase = iptables-geoblock-git
+	pkgdesc = Block IP addresses based on Country
+	pkgver = 0.0.1.r2.0149eec
+	pkgrel = 1
+	url = https://github.com/pyamsoft/iptables-geoblock.git
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = iptables
+	depends = xtables-addons
+	provides = iptables-geoblock
+	conflicts = iptables-geoblock
+	source = iptables-geoblock::git+https://github.com/pyamsoft/iptables-geoblock.git#branch=main
+	sha256sums = SKIP
+
+pkgname = iptables-geoblock-git
