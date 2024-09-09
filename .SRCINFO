@@ -1,0 +1,13 @@
+pkgbase = horst
+	pkgdesc = A small, lightweight IEEE802.11 wireless LAN analyzer with a text interface
+	pkgver = 5.1
+	pkgrel = 2
+	url = https://github.com/br101/horst
+	arch = x86_64
+	license = GPL2
+	depends = ncurses
+	depends = libnl
+	source = horst-5.1.tar.gz::https://github.com/br101/horst/archive/v5.1.tar.gz
+	sha256sums = 74b4cb1143d93c73c3b4bbbe0c36f89a790401bde9e894e94e2a27339ca384d9
+
+pkgname = horst
