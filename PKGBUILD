@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=7.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -424,6 +424,10 @@ prepare() {
 
   ## https://crbug.com/1251779
   patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch
+
+  ## Fix VAAPI AV1 performance with Mesa
+  git cherry-pick -n fe9d889dcd79ea18d4dfaa39df4ddbd4c8c3b15c
+  git cherry-pick -n d2d911eb9a2fc6eb8d86b3ae025a56c1a2692fba
 
   ### OBS changes
 
