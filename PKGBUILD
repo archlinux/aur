@@ -1,6 +1,6 @@
 # Maintainer: Noa Himesaka <himesaka AT noa DOT codes>
 pkgname=roon-tui
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A Roon Remote for the terminal"
 url="https://github.com/TheAppgineer/roon-tui"
@@ -8,7 +8,7 @@ arch=('x86_64')
 license=('MIT')
 makedepends=('git' 'cargo')
 source=("git+https://github.com/TheAppgineer/roon-tui.git#tag=$pkgver")
-sha256sums=('a2e4c3224e3b067099b1ee041d73bdbcfce4ac1bd53405d95aa59ae3e889560f')
+sha256sums=('6cb5fec18ba92bac53abadfec909ce4e53f5fd7b352018f69d0a45ba24b6c81a')
 
 prepare() {
     cd "$pkgname"
