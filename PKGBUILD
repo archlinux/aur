@@ -23,7 +23,8 @@ makedepends=(
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
-    "${pkgname%-git}.sh")
+    "${pkgname%-git}.sh"
+)
 sha256sums=('SKIP'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
