@@ -1,0 +1,13 @@
+pkgbase = libkeybinder2
+	pkgdesc = Library for registering global keyboard shortcuts
+	pkgver = 0.3.1
+	pkgrel = 4
+	url = https://github.com/kupferlauncher/keybinder
+	arch = x86_64
+	license = GPL
+	makedepends = gobject-introspection
+	depends = gtk2
+	source = https://github.com/kupferlauncher/keybinder/releases/download/v0.3.1/keybinder-0.3.1.tar.gz
+	sha256sums = 879f07130ac64792ddb9fd758e6673119283bda37d75573787ae22af8684a240
+
+pkgname = libkeybinder2
