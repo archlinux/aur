@@ -3,31 +3,18 @@
 # Contributor: Manuel Schneider  <manuelschneid3r at googles mail>
 
 pkgname=albert
-pkgver=0.26.2
-pkgrel=2
+pkgver=0.26.3
+pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
 url="https://github.com/albertlauncher"
 license=('custom')
 depends=('hicolor-icon-theme' 'qt6-5compat' 'qt6-declarative' 'qt6-scxml' 'qt6-shadertools' 'qt6-svg')
 makedepends=('cmake' 'git' 'libqalculate' 'pybind11' 'python' 'qt6-tools')
-optdepends=('ddgr: duckduckgo search plugin'
-            'libarchive: documentation plugin'
+optdepends=('libarchive: documentation plugin'
             'libqalculate: calculator plugin'
-            'python: python extension'
-            'python-docker: docker plugin'
-            'python-googletrans: google translate plugin'
-            'python-pylatexenc: TeX plugin'
-            'python-syncthing: syncthing plugin'
-            'python-urllib3: python web plugins'
-            'python-virtualbox: virtualbox plugin')
-source=("https://github.com/albertlauncher/albert/releases/download/v${pkgver}/v${pkgver}.tar.gz"
-        "gh1426.patch")
-
-prepare() {
-  # remove after fix https://github.com/albertlauncher/albert/issues/1426g
-  patch -p0 -i gh1426.patch
-}
+            'python: python extension')
+source=("https://github.com/albertlauncher/albert/releases/download/v${pkgver}/v${pkgver}.tar.gz")
 
 build() {
   mkdir -p build
@@ -73,5 +60,4 @@ package() {
   install -Dm644 "$srcdir/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha512sums=('dba6a850bbc787aae8e1ca7c65b98a84f892405e75042c153255756f85c0b1b552be199416dd65e555291b5d731823c290639d8903c87d1b5af1a0b7dc96765b'
-            '225819b49f30b9a17527d48ec5fe29b82c50127c5e116833ddc91e6d4ae3680d639de4bb749d26195d9d196d9f68fa55fdc30761c126569e3778fb882ea86cb4')
+sha512sums=('f3367226a78937607aa2feb9bf0ff3cb453d5213d141af501f858b8d7f57dc81024a261ba5feaf52219a03718895cc3551eeab337163fb07c0339ada7c0b0519')
