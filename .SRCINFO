@@ -1,6 +1,6 @@
 pkgbase = alchemy-next-viewer-bin
 	pkgdesc = A Second Life client with focus on performance and code correctness - Binary Project build.
-	pkgver = 7.1.9.2492
+	pkgver = 7.1.9.2501
 	pkgrel = 1
 	url = https://www.alchemyviewer.org
 	install = alchemy.install
@@ -33,13 +33,14 @@ pkgbase = alchemy-next-viewer-bin
 	optdepends = mesa-libgl: Intel, Radeon, Nouveau support
 	optdepends = nvidia-libgl: NVIDIA support
 	optdepends = nvidia-utils: NVIDIA support
+	optdepends = switcheroo-control: Automatic GPU selection on some laptops
 	optdepends = wine: More up-to-date, less buggy SLVoice support
 	optdepends = xdg-desktop-portal-gtk: File picker portal (example)
 	optdepends = xdg-desktop-portal-kde: File picker portal (example)
 	optdepends = xdg-desktop-portal-hyprland: File picker portal (example)
 	provides = alchemy-viewer
 	options = !strip
-	source = https://github.com/AlchemyViewer/Alchemy/releases/download/7.1.9.2492-beta/Alchemy_Beta_7_1_9_2492_x86_64.tar.xz
-	sha256sums = 7d09a1b6042d00668f679c9112a456159f21d4221edcc1588bde2ab4855a7a89
+	source = https://github.com/AlchemyViewer/Alchemy/releases/download/7.1.9.2501-beta/Alchemy_Beta_7_1_9_2501_x86_64.tar.xz
+	sha256sums = 370fa700c4cf1ccf9e16a933d5bb056fc3adb783971aba4c238797ff0324301e
 
 pkgname = alchemy-next-viewer-bin

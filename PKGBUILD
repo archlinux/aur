@@ -4,7 +4,7 @@
 
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-bin
-pkgver=7.1.9.2492
+pkgver=7.1.9.2501
 pkgrel=1
 _project_id=78
 _ci_name=beta
@@ -33,6 +33,7 @@ optdepends=(
 	'mesa-libgl: Intel, Radeon, Nouveau support'
 	'nvidia-libgl: NVIDIA support'
 	'nvidia-utils: NVIDIA support'
+	'switcheroo-control: Automatic GPU selection on some laptops'
 	'wine: More up-to-date, less buggy SLVoice support'
 	'xdg-desktop-portal-gtk: File picker portal (example)'
 	'xdg-desktop-portal-kde: File picker portal (example)'
@@ -40,7 +41,7 @@ optdepends=(
 provides=('alchemy-viewer')
 # The release url format changes often, please keep this comment for easy switching.
 source=('https://github.com/AlchemyViewer/Alchemy/releases/download/'"${pkgver}-${_ci_name}"'/'"${_pkgfolder}.tar.xz")
-sha256sums=('7d09a1b6042d00668f679c9112a456159f21d4221edcc1588bde2ab4855a7a89')
+sha256sums=('370fa700c4cf1ccf9e16a933d5bb056fc3adb783971aba4c238797ff0324301e')
 package() {
 	mkdir -p "${pkgdir}"/opt
 	# Patch shortcut to avoid duplicated entries
