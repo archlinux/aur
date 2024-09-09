@@ -1,0 +1,15 @@
+pkgbase = i686-elf-gcc-bin
+	pkgdesc = GNU gcc for the i686- toolchain
+	pkgver = 11.2.0
+	pkgrel = 1
+	url = https://www.gnu.org/software/gcc
+	arch = x86_64
+	license = GPL
+	depends = xz
+	depends = libmpc
+	depends = i686-elf-binutils-bin
+	conflicts = i686-elf-gcc
+	source = i686-elf-gcc-bin-11.2.0.zip::https://github.com/nasOS-official/i686-elf-gcc/releases/download/main/release.zip
+	sha256sums = SKIP
+
+pkgname = i686-elf-gcc-bin
