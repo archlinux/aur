@@ -1,6 +1,6 @@
 pkgbase = way-edges-git
 	pkgdesc = Hidden widget on screen edges
-	pkgver = r242.59cf0f5
+	pkgver = r276.0cb97e2
 	pkgrel = 1
 	url = https://github.com/way-edges/way-edges
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = way-edges-git
 	depends = glib2
 	depends = pipewire-pulse
 	provides = way-edges
+	conflicts = way-edges-bin
 	options = !debug
 	source = git+https://github.com/way-edges/way-edges.git
 	sha256sums = SKIP
