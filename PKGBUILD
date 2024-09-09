@@ -4,13 +4,13 @@ _pkgname=vulkan-icd-loader
 pkgname=mingw-w64-${_pkgname}
 _dirname=Vulkan-Loader
 pkgver=1.3.295
-pkgrel=1
+pkgrel=2
 pkgdesc='Vulkan Installable Client Driver (ICD) Loader (mingw-w64)'
 arch=(any)
 url='https://www.khronos.org/vulkan/'
 groups=('mingw-w64-vulkan-devel')
 license=('APACHE')
-makedepends=(mingw-w64-cmake mingw-w64-vulkan-headers python-lxml)
+makedepends=(mingw-w64-cmake mingw-w64-vulkan-headers python-lxml ninja)
 depends=(mingw-w64-crt)
 options=(!buildflags staticlibs !strip)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/${_dirname}/archive/v${pkgver}.tar.gz")
@@ -38,7 +38,7 @@ build() {
     #  -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
     #cmake --build "build-${_arch}-static"
 
-    ${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTS=OFF
+    ${_arch}-cmake -G Ninja -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTS=OFF
     cmake --build "build-${_arch}"
   done
 }

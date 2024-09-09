@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-vulkan-icd-loader
 	pkgdesc = Vulkan Installable Client Driver (ICD) Loader (mingw-w64)
 	pkgver = 1.3.295
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.khronos.org/vulkan/
 	arch = any
 	groups = mingw-w64-vulkan-devel
@@ -9,6 +9,7 @@ pkgbase = mingw-w64-vulkan-icd-loader
 	makedepends = mingw-w64-cmake
 	makedepends = mingw-w64-vulkan-headers
 	makedepends = python-lxml
+	makedepends = ninja
 	depends = mingw-w64-crt
 	options = !buildflags
 	options = staticlibs
