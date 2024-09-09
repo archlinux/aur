@@ -1,18 +1,18 @@
 pkgbase = yarle-evernote-to-md-bin
 	pkgdesc = Yarle - The ultimate converter of Evernote notes to Markdown
-	pkgver = 6.14.8
+	pkgver = 6.15.0
 	pkgrel = 1
 	url = https://github.com/akosbalasko/yarle
 	arch = x86_64
 	license = MIT
 	depends = electron22
-	provides = yarle-evernote-to-md=6.14.8
+	provides = yarle-evernote-to-md=6.15.0
 	conflicts = yarle-evernote-to-md
-	source = yarle-evernote-to-md-6.14.8.deb::https://github.com/akosbalasko/yarle/releases/download/v6.14.8/yarle-evernote-to-md_linux_amd64.deb
-	source = LICENSE-6.14.8::https://raw.githubusercontent.com/akosbalasko/yarle/v6.14.8/LICENSE
+	source = yarle-evernote-to-md-6.15.0.deb::https://github.com/akosbalasko/yarle/releases/download/v6.15.0/yarle-evernote-to-md_linux_amd64.deb
+	source = LICENSE-6.15.0::https://raw.githubusercontent.com/akosbalasko/yarle/v6.15.0/LICENSE
 	source = yarle-evernote-to-md.sh
-	sha256sums = 5b1e3625693868c4cb36234042029ee520bd7fa502d88ec2ab29e6cdaf4907d6
+	sha256sums = 9aa248712ecad7e02eb8d73655a78ac75864f1d2681a6e63ed7de9f8b6c52077
 	sha256sums = 16691c563f896a0d485a742fbd5a389fc7c798ff606c75cb3f753bb7297a9bdb
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = yarle-evernote-to-md-bin
