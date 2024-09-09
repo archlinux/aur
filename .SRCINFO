@@ -1,0 +1,18 @@
+pkgbase = libjpeg6-turbo
+	pkgdesc = libjpeg derivative with accelerated baseline JPEG compression and decompression
+	pkgver = 1.5.3
+	pkgrel = 2
+	url = https://libjpeg-turbo.org/
+	arch = x86_64
+	license = BSD
+	makedepends = nasm
+	depends = glibc
+	provides = libjpeg6
+	conflicts = libjpeg6
+	source = https://downloads.sourceforge.net/project/libjpeg-turbo/1.5.3/libjpeg-turbo-1.5.3.tar.gz
+	source = https://downloads.sourceforge.net/project/libjpeg-turbo/1.5.3/libjpeg-turbo-1.5.3.tar.gz.sig
+	validpgpkeys = 7D6293CC6378786E1B5C496885C7044E033FDE16
+	sha256sums = b24890e2bb46e12e72a79f7e965f409f4e16466d00e1dd15d93d73ee6b592523
+	sha256sums = SKIP
+
+pkgname = libjpeg6-turbo
