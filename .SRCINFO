@@ -1,0 +1,16 @@
+pkgbase = cutefish-calculator
+	pkgdesc = CutefishOS Calculator
+	pkgver = 0.4
+	pkgrel = 2
+	url = https://github.com/cutefishos/calculator
+	arch = x86_64
+	groups = cutefish
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = qt5-tools
+	depends = fishui
+	source = https://github.com/cutefishos/calculator/archive/0.4/cutefish-calculator-0.4.tar.gz
+	sha512sums = 2c9bf5b7cf749066a87440c101658b33e4cc99f4510f0efd44a91ba0cd25a1c39414d3c8f4a4dbfa1204d4856a195f16e746985463950b93f87790fece74a0ec
+
+pkgname = cutefish-calculator
