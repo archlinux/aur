@@ -123,15 +123,9 @@ function execApp() {
 	if [[ ${wechatXserverPatch} = 1 ]]; then
 		xhost +
 	fi
-	if [ -d "${XDG_CONFIG_HOME}"/fontconfig ]; then
-		cp -r "${XDG_CONFIG_HOME}"/fontconfig \
-			"${XDG_DATA_HOME}"/WeChat_Data/Fonts
-	else
-		mkdir -p "${XDG_DATA_HOME}"/WeChat_Data/Fonts
-	fi
 	if [ -f /usr/share/fontconfig/conf.avail/75-twemoji.conf ]; then
 		cp /usr/share/fontconfig/conf.avail/75-twemoji.conf \
-			"${XDG_DATA_HOME}"/WeChat_Data/Fonts
+			"${XDG_CONFIG_HOME}"/fontconfig
 	fi
 	if [ ! -S "${busDir}/bus" ]; then
 		echo "[Info] Waiting for D-Bus proxy..."
