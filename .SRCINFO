@@ -1,9 +1,9 @@
 pkgbase = aretext
-	pkgdesc = [BETA] Minimalist text editor that never slows you down.
+	pkgdesc = Minimalist text editor with vim-compatible key bindings
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aretext/aretext
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = go
 	source = aretext-1.3.0.tar.gz::https://github.com/aretext/aretext/archive/refs/tags/v1.3.0.tar.gz

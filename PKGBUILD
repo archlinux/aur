@@ -3,9 +3,9 @@
 
 pkgname=aretext
 pkgver=1.3.0
-pkgrel=1
-pkgdesc="[BETA] Minimalist text editor that never slows you down."
-arch=("any")
+pkgrel=2
+pkgdesc="Minimalist text editor with vim-compatible key bindings"
+arch=(x86_64)
 url="https://github.com/aretext/aretext"
 license=("GPL3")
 makedepends=("go")
