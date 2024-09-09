@@ -1,6 +1,6 @@
 post_install() {
   systemd-sysusers flexo.conf
-  mkdir -p /var/cache/flexo/pkg/{community,community-staging,community-testing,core,extra,gnome-unstable,kde-unstable,multilib,multilib-testing,staging,testing}/os/x86_64
+  mkdir -p /var/cache/flexo/pkg/{core,extra,gnome-unstable,kde-unstable,multilib,multilib-testing,staging,testing}/os/x86_64
   mkdir -p /var/cache/flexo/state
   chown -R flexo:flexo "/var/cache/flexo"
 }

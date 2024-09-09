@@ -18,7 +18,7 @@ source=('git+https://github.com/nroi/flexo.git'
 )
 sha256sums=('SKIP'
             'b6a618c66d3ffb9ad119b0497d2181cdd382ec870cc768606debed40716c1f4e'
-            '662e8c6c4d024ec035c2c02d9298a8cb6062cfb30d02bfaecf17a9d3d9b35167'
+            '29ad0efaf1f7fd6d7d2095dd114eda4b1a391a0fda89d45c50ceb96aa3ed61f8'
             'd2767b50baab4f441d38a117565382719a77af52ebad206ae206cfc6faa248ed'
 )
 
