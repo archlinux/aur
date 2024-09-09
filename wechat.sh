@@ -13,23 +13,16 @@ function moeDect() {
 
 function sourceXDG() {
 	if [[ ! ${XDG_CONFIG_HOME} ]]; then
-		if [ -f "${HOME}"/.config/user-dirs.dirs ]; then
-			source "${HOME}"/.config/user-dirs.dirs
-		fi
-		if [ ! ${XDG_CONFIG_HOME} ]; then
-			export XDG_CONFIG_HOME="${HOME}"/.config
-		fi
+		export XDG_CONFIG_HOME="${HOME}"/.config
 		echo "[Info] Guessing XDG Config Home @ ${XDG_CONFIG_HOME}"
 	else
 		source "${XDG_CONFIG_HOME}"/user-dirs.dirs
-		echo "[Info] XDG Config Home @ ${XDG_CONFIG_HOME}"
-	fi
-	if [ -f "${XDG_CONFIG_HOME}"/user-dirs.dirs ]; then
-		source "${XDG_CONFIG_HOME}"/user-dirs.dirs
+		echo "[Info] XDG Config Home defined @ ${XDG_CONFIG_HOME}"
 	fi
 	if [[ ! ${XDG_DATA_HOME} ]]; then
 		export XDG_DATA_HOME="${HOME}"/.local/share
 	fi
+	export XDG_DOCUMENTS_DIR="$(xdg-user-dir DOCUMENTS)"
 }
 
 function manageDirs() {
@@ -86,14 +79,6 @@ function inputMethod() {
 		LC_CTYPE=zh_TW.UTF-8
 	else
 		echo '[Warn] Input Method potentially broken! Please set $XMODIFIERS properly'
-	fi
-}
-
-function lnDir() {
-	# Deprecated function
-	if [ -d "${XDG_DATA_HOME}"/WeChat_Data/Documents/xwechat_files ]; then
-		ln -srf "${XDG_DATA_HOME}"/WeChat_Data/xwechat_files \
-			"${HOME}"/xwechat_files
 	fi
 }
 
@@ -469,7 +454,6 @@ function launch() {
 	detectXauth
 	inputMethod
 	moeDect
-	#lnDir
 	if [[ $(systemctl --user is-failed wechat-uos-qt.service) = failed ]]; then
 		echo "[Warning] WeChat failed last time"
 		systemctl --user reset-failed wechat-uos-qt.service
