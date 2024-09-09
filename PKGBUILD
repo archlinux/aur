@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=seamonkey
-pkgver=2.53.18.2
+pkgver=2.53.19
 pkgrel=1
 pkgdesc="SeaMonkey internet suite"
 arch=(x86_64)
@@ -45,14 +45,15 @@ depends=(
 )
 makedepends=(
   autoconf2.13
-  cargo
+#  cargo
+  rustup
   cbindgen
   clang
   imake
   llvm
   mesa
   nasm
-  python
+#  python, fails with python 3.12
   unzip
   yasm
   zip
@@ -67,10 +68,14 @@ options=(!lto)
 source=(
   "https://archive.seamonkey-project.org/releases/$pkgver/source/seamonkey-$pkgver.source.tar.xz"
   "mozconfig"
+  https://www.python.org/ftp/python/3.11.10/Python-3.11.10.tar.xz{,.asc}
 )
+validpgpkeys=('A035C8C19219BA821ECEA86B64E628F8D684696D')  # Pablo Galindo Salgado <pablogsal@gmail.com>
 sha256sums=(
-  '2422e824dbec0cb268d3741dcbf3f2b23a477437052300f181fa7b6c7c364fef'
+  'a6c9a44d2a167f04fff5d4175ad61e934c6177852ab8ab56c319f242a73146e2'
   '9554b2823d05c7d406325daec629c8b3f64e7d6a32db1bae5683c57d41de529f'
+  '07a4356e912900e61a15cb0949a06c4a05012e213ecd6b4e84d0f67aabbee372'
+  'SKIP'
 )
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -88,6 +93,11 @@ _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 _archive="$pkgname-$pkgver"
 
 prepare() {
+  # packed_simd no longer builds with 1.78.0
+  # https://github.com/rust-lang/packed_simd/issues/360
+  rustup toolchain update --profile minimal 1.77.2
+  rustup default 1.77.2
+
   cd "$_archive"
 
   cp "$srcdir/mozconfig" .mozconfig
@@ -103,11 +113,19 @@ prepare() {
 }
 
 build() {
+  cd Python-3.11.10
+  ./configure
+  make
+  make DESTDIR="$srcdir/pythoninstall" install
+  cd ..
+  PATH="$PWD/pythoninstall/usr/local/bin:$PATH"
+
   cd "$_archive"
 
   # Don't use mold - fails.
   LDFLAGS=$(printf '%s' "$LDFLAGS" | sed 's/-fuse-ld=[^[:space:]]*//')
   export LDFLAGS
+  export MACH_USE_SYSTEM_PYTHON=1
   ./mach build
 }
 
