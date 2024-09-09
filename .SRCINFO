@@ -1,0 +1,16 @@
+pkgbase = cutefish-screenlocker
+	pkgdesc = CutefishOS system screen locker
+	pkgver = 0.5
+	pkgrel = 2
+	url = https://github.com/cutefishos/screenlocker
+	arch = x86_64
+	groups = cutefish
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	depends = fishui
+	depends = libcutefish
+	source = https://github.com/cutefishos/screenlocker/archive/0.5/cutefish-screenlocker-0.5.tar.gz
+	sha512sums = 7b5c2064afe74ff036a840cb73ea51a0b203d4abd2756d983bd160b670374813d851a9b0f8fd0028d3dc3340c1947b8edd153ce4c9cd966d480f4e65fb9f8f76
+
+pkgname = cutefish-screenlocker
