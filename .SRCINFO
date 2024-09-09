@@ -8,6 +8,7 @@ pkgbase = iptables-geoblock-git
 	makedepends = git
 	depends = iptables
 	depends = xtables-addons
+	depends = grep
 	provides = iptables-geoblock
 	conflicts = iptables-geoblock
 	source = iptables-geoblock::git+https://github.com/pyamsoft/iptables-geoblock.git#branch=main
