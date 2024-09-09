@@ -1,6 +1,6 @@
 pkgbase = tango-idl
 	pkgdesc = This is the Tango CORBA IDL file.
-	pkgver = 5.1.2
+	pkgver = 6.0.2
 	pkgrel = 1
 	url = https://www.tango-controls.org/
 	arch = x86_64
@@ -9,9 +9,7 @@ pkgbase = tango-idl
 	license = GPL3
 	depends = cmake>=3.7
 	conflicts = tango-idl-git
-	source = https://gitlab.com/tango-controls/tango-idl/-/archive/5.1.2/tango-idl-5.1.2.tar.gz
-	source = version-fix.patch
-	sha256sums = b0a955d14c6c88fe331e2323205522a3710a4aa1909c1e7f3ee3acc371a5a77d
-	sha256sums = fd4734107be21dcfc3388efef6ac1ebc3645956756c10ced0b956edee9cddb2d
+	source = https://gitlab.com/tango-controls/tango-idl/-/archive/6.0.2/tango-idl-6.0.2.tar.gz
+	sha256sums = 490ca710957b69fa412e04534ec06f8f1925dbe681df520469637ba12e15737a
 
 pkgname = tango-idl
