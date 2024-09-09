@@ -1,6 +1,6 @@
 pkgbase = beaver-notes-bin
 	pkgdesc = Your Personal Note-Taking Haven for Privacy and Efficiency (binary release)
-	pkgver = 3.5.0
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://github.com/Daniele-rolli/Beaver-Notes
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = beaver-notes-bin
 	conflicts = beaver-notes
 	source = https://github.com/Daniele-rolli/Beaver-Notes/raw/main/LICENSE
 	sha256sums = SKIP
-	source_x86_64 = https://github.com/Daniele-rolli/Beaver-Notes/releases/download/3.5.0/Beaver-notes-3.5.0.x86_64.rpm
-	sha256sums_x86_64 = c444a86103096250fddc56bff1670761b4048a438631b0d38bd7f5fdd266b469
-	source_aarch64 = https://github.com/Daniele-rolli/Beaver-Notes/releases/download/3.5.0/Beaver-notes-3.5.0.aarch64.rpm
-	sha256sums_aarch64 = 9757a832f5e76649d63969b540ef93fc5b006293049ed4fd98bcc597d03bdde6
+	source_x86_64 = https://github.com/Daniele-rolli/Beaver-Notes/releases/download/3.6.0/Beaver-notes-3.6.0.x86_64.rpm
+	sha256sums_x86_64 = c2f695979fbf1d44cc207680fae49b8dbf6c4ce181a2d3cfdfb5b0959115823d
+	source_aarch64 = https://github.com/Daniele-rolli/Beaver-Notes/releases/download/3.6.0/Beaver-notes-3.6.0.aarch64.rpm
+	sha256sums_aarch64 = 1ffb5f4bddbab6074d19116209bfabada2c6a1434d562ac965b0328344e8ddbd
 
 pkgname = beaver-notes-bin
