@@ -13,7 +13,7 @@ url='https://www.coreboot.org'
 license=(BSD2 BSD3 GPL2 LGPL2Plus GPL3Plus)
 arch=(x86_64 aarch64 riscv)
 depends=() # TODO
-makedepends=('gcc-ada' 'git' 'python') # TODO
+makedepends=('gcc-ada' 'git') # TODO
 options=('buildflags' '!debug')
 sources_gcc=(
   'https://ftpmirror.gnu.org/gmp/gmp-6.3.0.tar.xz'
@@ -70,6 +70,7 @@ if [ ${#_gcc_targets[@]} -ne 0 ]; then
 fi
 
 if [ ${_is_clang_enabled} -eq 1 ]; then
+  makedepends+=('python')
   source+=("${sources_clang[@]}")
   sha256sums+=("${hashes_clang[@]}")
 fi
