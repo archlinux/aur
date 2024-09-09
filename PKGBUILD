@@ -4,7 +4,7 @@
 # Contributor: Jun Bo Bi <jambonmcyeah@gmail.com>
 
 pkgname=netcoredbg
-_pkgver=3.1.0-1031
+_pkgver=3.1.1-1042
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 pkgdesc='Debugger for .NET Core runtime'
@@ -15,12 +15,12 @@ depends=('dotnet-runtime-8.0')
 makedepends=('git' 'cmake' 'clang' 'dotnet-sdk-8.0')
 # keep synced with extra/dotnet-core
 # see Components.md of dotnet/dotnet
-_runtime_tag=2aade6beb02ea367fd97c4070a4198802fe61c03
+_runtime_tag=08338fcaa5c9b9a8190abb99222fed12aaba956c
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/Samsung/netcoredbg/archive/refs/tags/$_pkgver.tar.gz"
-        "dotnet_$_runtime_tag.tar.gz::https://github.com/dotnet/runtime/archive/$_runtime_tag.tar.gz")
+        "dotnet_runtime_${_runtime_tag:0:7}.tar.gz::https://github.com/dotnet/runtime/archive/$_runtime_tag.tar.gz")
 
-sha256sums=('f9393d7ebef9070044b325ca419ce52a8f9a2c9b9b33b326edb7c2e134a52849'
-            '2814c6b2933deaa6f3f950eb4ce797a9155e3ab103133061a1d73f0afd2a0a18')
+sha256sums=('14578158c84edc58d863632ac55969e876d04892f6c2bd058a60638c706b5352'
+            'e8c51db7aa583f6ccc0583b4604a3f3a9285bc84715c51e74ac6dcdc00416530')
 
 build() {
   cmake -B build -S "$pkgname-$_pkgver" \
