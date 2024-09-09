@@ -1,0 +1,21 @@
+pkgbase = geratron-git
+	pkgdesc = Secure password generator desktop application, built using Electron.
+	pkgver = 1.0.1.r2.g6af7823
+	pkgrel = 1
+	url = https://github.com/thiagowaib/geratron
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = curl
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	depends = electron32
+	provides = geratron=1.0.1
+	conflicts = geratron
+	source = geratron.git::git+https://github.com/thiagowaib/geratron.git
+	source = geratron.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = geratron-git
