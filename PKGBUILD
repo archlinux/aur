@@ -2,7 +2,7 @@
 _appname=bonbon
 pkgname="${_appname}-browser-bin"
 _pkgname=BonBon
-pkgver=1.0.0_early
+pkgver=1.0.1_early
 _electronversion=22
 pkgrel=1
 pkgdesc="A lightweight and innovative browser.It makes you appreciate your browsing experience, and offers privacy. "
@@ -23,15 +23,16 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e2bb04d356146916de9d9267b09d8e3d427a5f7ed5c5fba1a3629e00c7109aef'
+sha256sums=('8c2b5e743a34c1ebcb83320b8db134a828a721475107ca101991e98cef464a77'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s|@electronversion@|${_electronversion}|g
+        s|@appname@|${pkgname%-bin}|g
+        s|@runname@|app|g
+        s|@cfgdirname@|${_pkgname}|g
+        s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox|${pkgname%-bin}|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g;s|Development|Development;Network|g" \
