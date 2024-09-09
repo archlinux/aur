@@ -1,0 +1,17 @@
+pkgbase = libretro-retrodream
+	pkgdesc = Sega Dreamcast core
+	pkgver = 1104
+	pkgrel = 2
+	url = https://github.com/libretro/retrodream
+	arch = x86_64
+	groups = libretro
+	license = GPL2
+	makedepends = git
+	makedepends = mesa
+	depends = libgl
+	depends = libretro-core-info
+	replaces = libretro-redream
+	source = https://sources.archlinux.org/other/packages/libretro/libretro-retrodream-1104.tar.gz
+	sha256sums = c73e773d999e4c5c44792eea09a88d0a3741c3bcd3f16b37070bcc0b5b49d56e
+
+pkgname = libretro-retrodream
