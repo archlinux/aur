@@ -4,12 +4,12 @@ _pkgname=vulkan-headers
 pkgname=mingw-w64-${_pkgname}
 _dirname=Vulkan-Headers
 pkgver=1.3.295
-pkgrel=1
+pkgrel=2
 pkgdesc='Vulkan header files (mingw-w64)'
 arch=(any)
 url='https://www.khronos.org/vulkan/'
 license=('APACHE')
-makedepends=(mingw-w64-cmake)
+makedepends=(mingw-w64-cmake ninja)
 groups=('mingw-w64-vulkan-devel')
 options=(!buildflags staticlibs !strip)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/${_dirname}/archive/v${pkgver}.tar.gz")
@@ -20,7 +20,7 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 build() {
   for _arch in ${_architectures}; do
-    ${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}"
+    ${_arch}-cmake -G Ninja -S "${_srcdir}" -B "build-${_arch}"
     cmake --build "build-${_arch}"
   done
 }
