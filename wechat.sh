@@ -237,6 +237,9 @@ function execApp() {
 		--dev /dev \
 		--dev-bind /dev/dri /dev/dri \
 		--dev-bind /dev/shm /dev/shm \
+		--dev-bind-try /dev/nvidia0 /dev/nvidia0 \
+		--dev-bind-try /dev/nvidia-modeset /dev/nvidia-modeset \
+		--dev-bind-try /dev/nvidia-uvm /dev/nvidia-uvm \
 		--tmpfs /sys \
 		--ro-bind /sys/dev/char /sys/dev/char \
 		--ro-bind /sys/devices /sys/devices \
