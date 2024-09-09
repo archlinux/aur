@@ -1,8 +1,7 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
-# Maintainer: Joao Valverde <j at v6e dot pt>
+# Maintainer: Pavel Cadersky <aur-ahshaev8@mess.cz>
 
 pkgname=mingw-w64-c-ares
-pkgver=1.19.1
+pkgver=1.33.1
 pkgrel=1
 pkgdesc="C library that performs DNS requests and name resolves asynchronously (mingw-w64)"
 arch=('any')
@@ -11,8 +10,8 @@ license=('MIT')
 makedepends=('mingw-w64-cmake')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("https://c-ares.org/download/c-ares-${pkgver}.tar.gz")
-sha256sums=('321700399b72ed0e037d0074c629e7741f6b2ec2dda92956abe3e9671d3e268e')
+source=("https://github.com/c-ares/c-ares/releases/download/v${pkgver}/c-ares-${pkgver}.tar.gz")
+sha256sums=('06869824094745872fa26efd4c48e622b9bd82a89ef0ce693dc682a23604f415')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
