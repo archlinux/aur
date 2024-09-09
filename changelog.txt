@@ -1,4 +1,12 @@
--- $MawkId: CHANGES,v 1.391 2024/08/27 23:54:59 tom Exp $
+-- $MawkId: CHANGES,v 1.397 2024/09/05 22:57:27 tom Exp $
+
+20240905
+	+ update manual page discussing approved extensions.
+	+ mask nonprintable characters when reporting errors in scripts
+	+ fix for unmatchable pattern workaround in 20240819, in case the regex
+	  also has a syntax error immediately after (report/testcase by Tyler
+	  Hawkins).
+	+ fix sign-extension in scan.c (report/testcase by Tyler Hawkins).
 
 20240827
 	+ amend fix for Original Mawk #48, providing for deep function
@@ -119,7 +127,7 @@
 
 20230808
 	+ modify input buffer-resizing to improve performance with very long
-	  longs (report/testcase by Leif LeBaron).
+	  lines (report/testcase by Leif LeBaron).
 
 20230804
 	> fixes for nulls (patches by Miguel Pineiro Jr).
