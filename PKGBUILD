@@ -2,7 +2,7 @@
 
 pkgname=mermaid-cli
 pkgver=11.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Generation of diagram and flowchart from text in a similar manner as markdown (CLI)'
 arch=('any')
 url='https://github.com/mermaid-js/mermaid-cli'
@@ -18,8 +18,8 @@ noextract=("${_npmname}-${_npmver}.tgz")
 
 package() {
     # https://github.com/mermaid-js/mermaid-cli/blob/1a04781c5a9a6ceff8ad3c126db736ac9f6ba8c4/docs/already-installed-chromium.md
-    PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true npm install --global --omit dev --prefix "${pkgdir}/usr" "${_npmname}-${_npmver}.tgz"
-    sed -i "s#headless: 1#headless: 1, executablePath: '$(which chromium)'#g" "${pkgdir}/usr/lib/node_modules/@mermaid-js/mermaid-cli/src/index.js"
+    PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true PUPPETEER_SKIP_DOWNLOAD=1 npm install --global --omit dev --prefix "${pkgdir}/usr" "${_npmname}-${_npmver}.tgz"
+    sed -i "s# headless: 'shell'# headless: 'shell', executablePath: '$(which chromium)'#g" "${pkgdir}/usr/lib/node_modules/@mermaid-js/mermaid-cli/src/index.js"
 
     # -> https://wiki.archlinux.org/index.php/Node.js_package_guidelines
     # Non-deterministic race in npm gives 777 permissions to random directories.
