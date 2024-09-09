@@ -1,6 +1,6 @@
 pkgbase = libsbml
 	pkgdesc = XML-based description language for computational models in systems biology
-	pkgver = 5.20.2
+	pkgver = 5.20.4
 	pkgrel = 1
 	url = https://github.com/sbmlteam/libsbml
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = libsbml
 	optdepends = ruby
 	optdepends = java-runtime
 	options = !libtool
-	source = libsbml-5.20.2.tar.gz::https://github.com/sbmlteam/libsbml/archive/v5.20.2.tar.gz
-	sha256sums = a196cab964b0b41164d4118ef20523696510bbfd264a029df00091305a1af540
+	source = libsbml-5.20.4.tar.gz::https://github.com/sbmlteam/libsbml/archive/v5.20.4.tar.gz
+	sha256sums = 02c225d3513e1f5d6e3c0168456f568e67f006eddaab82f09b4bdf0d53d2050e
 
 pkgname = libsbml
