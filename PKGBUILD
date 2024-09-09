@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=tailchat
 pkgname="${_pkgname}-desktop"
-pkgver=1.11.6
+pkgver=1.11.7
 _electronversion=18
 _nodeversion=18
 pkgrel=1
@@ -28,51 +28,58 @@ source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('e851598256e287e94fadfcc5aabc3e9c5782f9509f271afd57badf8b64d88c5d'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums=('bba6eed9b1c21d513d363861a61eb976a0aad3b93bdee9ee738d9e8b965cb7df'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@cfgdirname@|${pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/${_pkgname}/
+        s/@options@//
+    " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${_pkgname}-desktop" --pkgdesc="${pkgdesc}" --categories="Network" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git/client/desktop"
-    export npm_config_build_from_source=true
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
-    touch "${srcdir}/.electron-gyp/.yarnrc"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        export npm_config_registry=https://registry.npmmirror.com
-        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
-    else
-        echo "Your network is OK."
-    fi
-    sed "s|--publish never|--dir|g" -i package.json
-    sed "s|\/build||g" -i electron-builder.yml
-    yarn install
-    yarn add -D ts-node source-map-support
-    yarn run package
+    {
+        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+            echo 'registry "https://registry.npmmirror.com"'
+            echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
+            echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
+            echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
+            echo "cacheFolder "${srcdir}"/.yarn/cache"
+            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
+            echo "globalFolder "${srcdir}"/.yarn/global"
+            echo 'useHardlinks true'
+            echo 'buildFromSource true'
+            echo 'linkWorkspacePackages true'
+            echo 'fetchRetries 3'
+            echo 'fetchRetryTimeout 10000'
+        else
+            echo "Your network is OK."
+        fi
+    } >> .yarnrc
+    find src -type f -exec sed -i "s/process.resourcesPath/\"\/usr\/lib\/${pkgname}\"/" {} \;
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/;s/--publish never/-l --dir/" package.json
+    sed -i "s/\/build//" -i electron-builder.yml
+    NODE_ENV=development    yarn install
+    NODE_ENV=development    yarn add -D ts-node source-map-support
+    NODE_ENV=production     yarn run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.git/client/desktop/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}.git/client/desktop/release/linux-"*/resources/assets "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}.git/client/desktop/release/linux-"*/resources/{app,assets} "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.git/client/desktop/release/linux-"*/swiftshader/* -t "${pkgdir}/usr/lib/${pkgname}/swiftshader"
     install -Dm644 "${srcdir}/${pkgname}.git/client/desktop/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
