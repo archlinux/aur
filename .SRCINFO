@@ -1,0 +1,23 @@
+pkgbase = libquvi
+	pkgdesc = Library for parsing video download links.
+	pkgver = 0.9.4
+	pkgrel = 7
+	url = http://quvi.sourceforge.net/
+	arch = x86_64
+	license = AGPL3
+	depends = libquvi-scripts
+	depends = curl
+	depends = lua52
+	depends = libproxy
+	depends = libgcrypt
+	depends = glib2
+	conflicts = quvi<0.9.0
+	source = https://downloads.sourceforge.net/sourceforge/quvi/libquvi-0.9.4.tar.xz
+	source = https://downloads.sourceforge.net/sourceforge/quvi/libquvi-0.9.4.tar.xz.sig
+	source = reproducible-date.patch
+	validpgpkeys = E220FCFF9EADBA326FD6B23BBF1D59CCAD00BE50
+	sha512sums = 287015e370e7b7f98f0f4c3717f5b044c8fcfb8b823c7988cd248e56b5fbbfa1a1aa421fbdafb38d727b79495267ccd4dead71587052117db53f29236268b651
+	sha512sums = SKIP
+	sha512sums = 0636da3c9cebb0a7c6f09198bc40a9781a84cedeff03566e6d6d3382de45296d9f517989a858bce67b34105091c4855f6463713ddf1dc867db1e14bb51b8709f
+
+pkgname = libquvi
