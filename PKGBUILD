@@ -7,7 +7,7 @@ pkgname=tango-cpp
 _pkgname=cppTango
 _pkgver="9.5.0"
 pkgver="9.5.0"
-pkgrel=1
+pkgrel=2
 groups=('tango-controls')
 pkgdesc="TANGO distributed control system - shared library"
 arch=('x86_64' 'armv7h')
@@ -27,7 +27,7 @@ build() {
   then
     _MMX=-DTANGO_JPEG_MMX=OFF
   fi
-  cmake -B build -S "${_pkgname}-${_pkgver}" $_MMX -DTANGO_IDL_BASE=/usr -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -B build -S "${_pkgname}-${_pkgver}" $_MMX -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr
   make -C build
 }
 
