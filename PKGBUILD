@@ -9,7 +9,7 @@
 _pkgname="compiz-core"
 pkgbase="$_pkgname${_pkgtype:-}"
 pkgver=0.8.18.r23.gfe274c9
-pkgrel=1
+pkgrel=2
 pkgdesc="Compositing manager without desktop-environment depends"
 url="https://gitlab.com/compiz/compiz-core"
 license=('GPL-2.0-or-later' 'LGPL-2.1-or-later' 'MIT')
@@ -80,11 +80,15 @@ build() {
 }
 
 _package_compiz-core() {
-  cd "$_pkgsrc"
-
   pkgdesc+=" (Core w/o decorator)"
-  conflicts=('compiz')
 
+  provides=('compiz-core')
+  conflicts=(
+    'compiz'
+    'compiz-core'
+  )
+
+  cd "$_pkgsrc"
   make DESTDIR="${pkgdir}" install
 
   local REMOVE_THESE=(
@@ -108,6 +112,9 @@ _package_compiz-gtk() {
     'compiz-core'
     'libwnck3'
   )
+
+  provides=('compiz-gtk')
+  conflicts=('compiz-gtk')
 
   if (("${_use_marco}" > 0)); then
     depends+=('marco')

@@ -1,7 +1,7 @@
 pkgbase = compiz-core-git
 	pkgdesc = Compositing manager without desktop-environment depends
 	pkgver = 0.8.18.r23.gfe274c9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/compiz/compiz-core
 	arch = i686
 	arch = x86_64
@@ -30,7 +30,9 @@ pkgbase = compiz-core-git
 
 pkgname = compiz-core-git
 	pkgdesc = Compositing manager without desktop-environment depends (Core w/o decorator)
+	provides = compiz-core
 	conflicts = compiz
+	conflicts = compiz-core
 
 pkgname = compiz-gtk-git
 	pkgdesc = Compositing manager without desktop-environment depends (GTK+ window decorator)
@@ -49,3 +51,5 @@ pkgname = compiz-gtk-git
 	depends = compiz-core
 	depends = libwnck3
 	depends = marco
+	provides = compiz-gtk
+	conflicts = compiz-gtk
