@@ -1,7 +1,7 @@
 pkgbase = python-python-jenkins
 	pkgdesc = A python wrapper for the Jenkins REST API which aims to provide a more conventionally pythonic way of controlling a Jenkins server
 	pkgver = 1.8.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://opendev.org/jjb/python-jenkins/
 	arch = any
 	license = BSD-3-Clause
