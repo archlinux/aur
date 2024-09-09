@@ -1,7 +1,7 @@
 # Maintainer: sgar <swhaat in github>
 
 pkgname=veyon
-pkgver=4.8.3
+pkgver=4.9.0
 pkgrel=1
 pkgdesc="Cross-platform computer monitoring and classroom management"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('hicolor-icon-theme' 'libfakekey' 'libjpeg-turbo' 'libldap' 'libsasl'
          'procps-ng' 'qca-qt6' 'qt6-base')
 makedepends=('clang' 'cmake' 'git' 'qt6-declarative' 'qt6-httpserver' 'qt6-tools')
 optdepends=('kldap: KDE support')
-_commit=fd8f0ba1e5c1025e71abcebec5f17a186096b610  # tags/v4.8.3
+_commit=cb2aadd88db9f68657a40af714a2fd72859248f7  # tags/v4.9.0
 source=("git+https://github.com/veyon/veyon.git#commit=${_commit}"
         'git+https://github.com/veyon/ultravnc.git'
         'git+https://invent.kde.org/pim/kldap.git'

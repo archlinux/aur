@@ -1,6 +1,6 @@
 pkgbase = veyon
 	pkgdesc = Cross-platform computer monitoring and classroom management
-	pkgver = 4.8.3
+	pkgver = 4.9.0
 	pkgrel = 1
 	url = https://veyon.io/
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = veyon
 	depends = qca-qt6
 	depends = qt6-base
 	optdepends = kldap: KDE support
-	source = git+https://github.com/veyon/veyon.git#commit=fd8f0ba1e5c1025e71abcebec5f17a186096b610
+	source = git+https://github.com/veyon/veyon.git#commit=cb2aadd88db9f68657a40af714a2fd72859248f7
 	source = git+https://github.com/veyon/ultravnc.git
 	source = git+https://invent.kde.org/pim/kldap.git
 	source = git+https://github.com/veyon/libvncserver.git
