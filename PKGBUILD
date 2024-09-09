@@ -1,4 +1,4 @@
-# Contributor: Slash <demodevil5[at]yahoo[dot]com>
+# Maintainer: Slash <demodevil5[at]yahoo[dot]com>
 
 pkgname=quake-rocketarena
 pkgver=1.2
@@ -9,8 +9,8 @@ arch=('any')
 license=('custom')
 depends=('quake')
 install=
-source=('http://slashbunny.com/aur/quake-rocketarena/farena12.zip')
-md5sums=('6447224a2ac55cefa8a04e6b70888cd7')
+source=('https://aur.slashbunny.com/quake-rocketarena/farena12.zip')
+sha512sums=('1187afdfb3d2c6d0268f53c0d5c15b573b8cafa2496435195a252f3c3983a97025fac80e3bb766624394af62f5f6ba145b1d0962bdac50b9add37ef65bd41e1d')
 PKGEXT='.pkg.tar'
 
 package() {
