@@ -26,6 +26,10 @@ prepare() {
 
   # C++20 disallows the use of the Point<T> syntax in the constructor
   sed -i 's/explicit Point<T>(/explicit Point(/' src/clipper2/Clipper2Lib/include/clipper2/clipper.core.h
+  # abuse PLATPAK IF statement to build with some system libs
+  sed -i 's/if(FLATPAK)/if(true)/' deps/CMakeLists.txt
+  # System Freetype has some breaking changes
+  sed -i 's/find_package(Freetype)/# find_package(Freetype)/' deps/CMakeLists.txt
 }
 
 build() {
