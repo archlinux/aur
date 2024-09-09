@@ -1,7 +1,7 @@
 # Maintainer: Daniel Chesters <archlinux@coin-coin.xyz>
 
 pkgname=oterm
-pkgver=0.4.2
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A text-based terminal client for Ollama"
 arch=('any')
@@ -22,12 +22,15 @@ depends=(
 	'python-rich-pixels'
 	'python-pillow'
 )
-makedepends=('python-poetry')
+makedepends=(
+	'python-installer'
+	'uv'
+)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ggozad/oterm/archive/refs/tags/$pkgver.tar.gz")
 
 build() {
 	cd "$pkgname-$pkgver"
-	poetry build -f wheel
+	uvx --from build pyproject-build --installer uv
 }
 
 package() {
@@ -35,4 +38,4 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
-b2sums=('454e597168c8198af790f02ba96cd314f7b78c296b1c861caf8f9e7e9f83438e994fc804a21c2bc77618f849edd77a4be37bc45e81b9bdf993f1176c0bcf559a')
+b2sums=('fb094d168b1dc8858a26b8460ed69a841bb3610ef66046bd1d3113f0e1cda865c7acb8b2a9c8f420740d8d2679b5be9d7031fd69686aa0bf0c4a5ddb03b258d5')
