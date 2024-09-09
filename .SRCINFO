@@ -1,0 +1,17 @@
+pkgbase = kyocera-taskalfa-1800-2200
+	pkgdesc = PPD drivers for Kyocera TASKalfa 1800, 1801, 2200, 2201 KPSL printers copiers A3 format
+	pkgver = 8.1305
+	pkgrel = 1
+	url = https://www.kyoceradocumentsolutions.eu/
+	arch = x86_64
+	license = custom:proprietary
+	makedepends = tar
+	depends = libcups
+	provides = rastertokpsl_A3=${pkgver}
+	noextract = kyocera-taskalfa-1800-2200-8.1305-license.pdf
+	source = kyocera-taskalfa-1800-2200-8.1305.zip::https://www.kyoceradocumentsolutions.eu/content/download-center/eu/drivers/all/LinuxDrv_8_1305_TASKalfa1801_2201_zip.download.zip
+	source = kyocera-taskalfa-1800-2200-8.1305-license.pdf::https://www.kyoceradocumentsolutions.eu/content/dam/kyocera/common/documents/20181012%20Terms%20to%20accept%20before%20downloadingv2.pdf
+	md5sums = 14f48f00077ff3d76beda0fff1231ff3
+	md5sums = 4fb159cde2f3de8bb0c9533ab1f934a2
+
+pkgname = kyocera-taskalfa-1800-2200
