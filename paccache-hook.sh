@@ -3,25 +3,32 @@ set -e
 
 . /etc/paccache-hook.conf
 
-cache_args=""
-for cdir in ${cache_dirs[@]}; do
-	cache_args="$cache_args -c $cdir"
+common_args=()
+for dir in "${cache_dirs[@]}"; do
+	common_args+=("--cachedir" "$dir")
 done
+common_args+=("${extra_args[@]}")
 
 if [ "$installed" = "true" ]; then
-	echo "Removing old installed packages..."
+	installed_args=("--keep" "${installed_keep:-2}")
 	if [ -n "$installed_move_to" ]; then
-		paccache $cache_args -m "$installed_move_to" "-k${installed_keep:-2}" $extra_args $installed_extra_args
+		installed_args+=("--move" "$installed_move_to")
 	else
-		paccache $cache_args "-rk${installed_keep:-2}" $extra_args $installed_extra_args
+		installed_args+=("--remove")
 	fi
+
+	echo "Removing old installed packages..."
+	paccache "${installed_args[@]}" "${installed_extra_args[@]}" "${common_args[@]}"
 fi
 
 if [ "$uninstalled" = "true" ]; then
-	echo "Removing old uninstalled packages..."
+	uninstalled_args=("--uninstalled" "--keep" "${uninstalled_keep:-0}")
 	if [ -n "$uninstalled_move_to" ]; then
-		paccache $cache_args -m "$uninstalled_move_to" "-uk${uninstalled_keep:-0}" $extra_args $uninstalled_extra_args
+		uninstalled_args+=("--move" "$uninstalled_move_to")
 	else
-		paccache $cache_args "-ruk${uninstalled_keep:-0}" $extra_args $uninstalled_extra_args
+		uninstalled_args+=("--remove")
 	fi
+
+	echo "Removing old uninstalled packages..."
+	paccache "${uninstalled_args[@]}" "${uninstalled_extra_args[@]}" "${common_args[@]}"
 fi
