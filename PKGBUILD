@@ -1,28 +1,20 @@
-# Maintainer: TwoFinger
+# Maintainer: Jonas Hvid <mail@johv.dk>
+# Contributor: TwoFinger
 # Contributor: taij33n <bwbuiz@gmail.com>
 pkgname=picolisp
-pkgver=24.3
+pkgver=24.9.7
 pkgrel=1
 pkgdesc="Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines)."
 url="https://picolisp.com"
 arch=(x86_64)
 license=(MIT)
 depends=(openssl libffi readline ncurses)
-makedepends=(clang llvm)
-source=("https://software-lab.de/picoLisp-$pkgver.tgz")
-md5sums=(8a355c22124b1b47bbeacf118444f6c5)
-
-prepare() {
-  MAKEFILE="$srcdir/pil21/src/Makefile"
-  LDFLAGS=-Wl,-z,relro,-z,now,-z,shstk
-  sed -i "s/SHARED =\|MAIN =/& $LDFLAGS/" "$MAKEFILE"
-  sed -i "/CC.\+balance\|CC.\+ssl\|CC.\+httpGate/ s/$/ $LDFLAGS/" "$MAKEFILE"
-}
+makedepends=(git clang llvm)
+source=("pil21::git+https://github.com/picolisp/pil21.git#commit=88c5c68b684e3a65f832bed4c2e4d88f45999098")
+sha256sums=("bc8213403bcf4b6b8d2520068d11ef5ad65c8578d5d78722e62cf03d80faf06d")
 
 build() {
-  cd "$srcdir/pil21/src"
-  make
-  make clean
+  cd "$srcdir/pil21/src" && make -W base.ll
 }
 
 package() {
@@ -36,19 +28,11 @@ package() {
 
   install -d -m755 "${MAN1DIR:=$pkgdir/usr/share/man/man1}"
   mv "$LIBDIR"/man/man1/*.1 "$MAN1DIR"
-  rmdir "$LIBDIR/man/man1"
-  rmdir "$LIBDIR/man"
 
-  install -d -m755 "${DATADIR:=$pkgdir/usr/share/$pkgname}"
+  ln -s "../lib/picolisp" -T "$pkgdir/usr/share/$pkgname"
+
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
   mv "$LIBDIR/COPYING" "$pkgdir/usr/share/licenses/$pkgname"
-  mv "$LIBDIR/README" "$DATADIR"
-  mv "$LIBDIR/INSTALL" "$DATADIR"
-  mv "$LIBDIR/test" "$DATADIR"
-  mv "$LIBDIR/misc" "$DATADIR"
-  mv "$LIBDIR/src" "$DATADIR"
-  mv "$LIBDIR/img" "$DATADIR"
-  mv "$LIBDIR/lib.css" "$DATADIR"
 
   install -d -m755 "${COMPDIR:=$pkgdir/usr/share/bash-completion/completions/}"
   mv "$LIBDIR/lib/bash_completion" "$COMPDIR/$pkgname"

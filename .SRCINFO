@@ -1,17 +1,18 @@
 pkgbase = picolisp
 	pkgdesc = Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines).
-	pkgver = 24.3
+	pkgver = 24.9.7
 	pkgrel = 1
 	url = https://picolisp.com
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = clang
 	makedepends = llvm
 	depends = openssl
 	depends = libffi
 	depends = readline
 	depends = ncurses
-	source = https://software-lab.de/picoLisp-24.3.tgz
-	md5sums = 8a355c22124b1b47bbeacf118444f6c5
+	source = pil21::git+https://github.com/picolisp/pil21.git#commit=88c5c68b684e3a65f832bed4c2e4d88f45999098
+	sha256sums = bc8213403bcf4b6b8d2520068d11ef5ad65c8578d5d78722e62cf03d80faf06d
 
 pkgname = picolisp
