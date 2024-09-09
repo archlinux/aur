@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qrocad-desktop-bin
 _pkgname="QroCAD Desktop"
-pkgver=1.6.0
+pkgver=1.6.1
 _electronversion=25
 pkgrel=1
 pkgdesc="The most insane, life-changing computer-aided design application on the web."
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('930b609b6cfe5d652f7061a0da83a1e89fcecc0448b34b4450b230da8fdcb414'
+sha256sums=('86413cb8a6b454f3d3cd18cc740b59b1068ce98ab8518157f16b90e494f3577c'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|g" \
