@@ -1,6 +1,6 @@
 pkgbase = lib32-vulkan-nouveau-git
 	pkgdesc = Nouveau Vulkan (NVK) Mesa driver with some additions (32-bit Git version)
-	pkgver = 24.2.branchpoint.r2164.g6378107
+	pkgver = 24.2.branchpoint.r2290.g05dc524
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/mesa/mesa
 	install = lib32-vulkan-nouveau-git.install
@@ -25,6 +25,7 @@ pkgbase = lib32-vulkan-nouveau-git
 	depends = lib32-libdrm
 	depends = lib32-libxshmfence
 	depends = lib32-libx11
+	depends = lib32-spirv-tools
 	depends = lib32-systemd
 	depends = lib32-vulkan-icd-loader
 	depends = lib32-wayland
