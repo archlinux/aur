@@ -27,9 +27,34 @@ license=('custom:SLA0048')
 #
 # stlink provides stlink udev rules
 depends=('stlink'
-  'libusb')
-makedepends=('icoutils'
+  'at-spi2-core'
+  'bash'
+  'cairo'
+  'dbus'
+  'gcc-libs'
+  'gdk-pixbuf2'
+  'glib2'
+  'glibc'
+  'gtk3'
+  'freetype2'
   'fontconfig'
+  'hicolor-icon-theme'
+  'libglvnd'
+  'libdrm'
+  'libusb'
+  'libx11'
+  'libxi'
+  'libxcb'
+  'libxext'
+  'libxrender'
+  'libxkbcommon'
+  'libxtst'
+  'libxxf86vm'
+  'krb5'
+  'pango'
+  'wayland'
+  'zlib')
+makedepends=('icoutils'
   'gsfonts'
   'p7zip'
   'java-environment=8')
@@ -67,24 +92,24 @@ source=("en.${_pkg_main_name}.zip::$_download_path"
   "FinishProgrammerPanelConsoleHelper.java"
   "TargetProgrammerPanelConsoleHelper.java"
   "SLA0048_STM32CubeProg.pdf")
-sha256sums=(
-  '44956b76aa2fcff0d899c5c43e353a83a9ea36afc6ad2f6e7b89c5141ccbfde4'
-  '12f3f8a3301d6f50c00195f9c852e25f8d841246768bf3bbfd4e91fd2052ce6e'
-  '8775375cfd21848eafb92bc11712b2d797bbec4f0109e728c175c4abb014131c'
-  'd67e0fe0e16cb6f8e1f01f324a348484f38805fdbb48780788607f53b2e46901'
-  '95a6ee378bb3d2b6bea9284d930a58af43db825ec22c89e5617af9b9ec959890'
-  'c6d92c00dee63e0f4a54d8ea62f82a646243c3e1480142ae3e7f4ca5d77d5702')
+sha256sums=('44956b76aa2fcff0d899c5c43e353a83a9ea36afc6ad2f6e7b89c5141ccbfde4'
+            '12f3f8a3301d6f50c00195f9c852e25f8d841246768bf3bbfd4e91fd2052ce6e'
+            '8775375cfd21848eafb92bc11712b2d797bbec4f0109e728c175c4abb014131c'
+            'd67e0fe0e16cb6f8e1f01f324a348484f38805fdbb48780788607f53b2e46901'
+            '95a6ee378bb3d2b6bea9284d930a58af43db825ec22c89e5617af9b9ec959890'
+            'c6d92c00dee63e0f4a54d8ea62f82a646243c3e1480142ae3e7f4ca5d77d5702')
 
 prepare() {
   chmod u+x Setup${_pkgname}-${pkgver}.linux
-  javac --release 8 -cp "Setup${_pkgname}-${pkgver}.exe" -d . AnalyticsPanelsConsoleHelper.java CheckedHelloPorgrammerPanelConsoleHelper.java TargetProgrammerPanelConsoleHelper.java FinishProgrammerPanelConsoleHelper.java
+  # devtools test failed： javac --release 8
+  javac -cp "Setup${_pkgname}-${pkgver}.exe" -d . AnalyticsPanelsConsoleHelper.java CheckedHelloPorgrammerPanelConsoleHelper.java TargetProgrammerPanelConsoleHelper.java FinishProgrammerPanelConsoleHelper.java
   7z a Setup${_pkgname}-${pkgver}.exe com/st/CustomPanels/AnalyticsPanelsConsoleHelper.class com/st/CustomPanels/CheckedHelloPorgrammerPanelConsoleHelper.class com/st/CustomPanels/TargetProgrammerPanelConsoleHelper.class com/st/CustomPanels/FinishProgrammerPanelConsoleHelper.class
 }
 
 build() {
   mkdir -p build
 
-  java -DINSTALL_PATH=${srcdir}/build -jar ./SetupSTM32CubeProgrammer-2.17.0.exe -options-system
+  java -DINSTALL_PATH=${srcdir}/build -jar ./SetupSTM32CubeProgrammer-${pkgver}.exe -options-system
 
   # convert ico to icon
   mkdir -p icon
