@@ -1,0 +1,12 @@
+pkgbase = xfce4-artwork
+	pkgdesc = Backdrops for the Xfce4 desktop
+	pkgver = 0.1.1a_git20110420
+	pkgrel = 6
+	url = https://goodies.xfce.org/projects/artwork/xfce4-artwork
+	arch = any
+	groups = xfce4-goodies
+	license = GPL2
+	source = https://deb.debian.org/debian/pool/main/x/xfce4-artwork/xfce4-artwork_0.1.1a~git+20110420.orig.tar.gz
+	sha256sums = 7a97c0acd0ed67ebb871866cc79c2925bea45bf1b92442bd88fac390dbe639ac
+
+pkgname = xfce4-artwork
