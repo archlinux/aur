@@ -1,17 +1,21 @@
 # Maintainer: OGIOS <ogios@foxmail.com>
 _pkgname=way-edges
 pkgname=way-edges-git
-pkgver=r242.59cf0f5
+pkgver=r276.0cb97e2
 pkgrel=1
 pkgdesc="Hidden widget on screen edges"
 arch=('x86_64' 'aarch64')
 url="https://github.com/way-edges/way-edges"
 license=('MIT')
+
+provides=(way-edges)
+conflicts=("$_pkgname"-bin)
+
 depends=('gtk4' 'gtk4-layer-shell' 'cairo' 'pango' 'wayland' 'glib2' 'pipewire-pulse')
 makedepends=(cargo git)
-provides=(way-edges)
-options=(!debug)
+
 source=("git+$url.git")
+options=(!debug)
 sha256sums=('SKIP')
 
 pkgver() {
