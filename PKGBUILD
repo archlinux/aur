@@ -5,17 +5,17 @@ pkgver=1.41b
 pkgrel=5
 pkgdesc="Return to Castle Wolfenstein is a single and multiplayer first person shooter. You need the retail game files to play."
 arch=('i686' 'x86_64')
-url="http://zerowing.idsoftware.com/linux/wolf/"
+url="https://web.archive.org/web/20190805003933/http://zerowing.idsoftware.com/linux/wolf/"
 license=('custom')
-[ "${CARCH}" = "i686" ] && depends=('libgl' 'libxext')
-[ "${CARCH}" = "x86_64" ] && depends=('lib32-libgl' 'lib32-libxext')
+depends_i686=('libgl' 'libxext')
+depends_x86_64=('lib32-libgl' 'lib32-libxext')
 optdepends=('xdg-utils: for opening urls'
             'et-sdl-sound: for sdl/alsa support')
 install='wolf.install'
 source=('wolfsp.desktop' 'wolfmp.desktop' \
 'wolf.launcher' 'wolfsp.launcher' 'wolfmp.launcher' 'wolfded.launcher' \
-'http://www.slashbunny.com/aur/wolf/libstdc++-libc6.2-2.so.3' \
-"http://www.slashbunny.com/aur/wolf/wolf-linux-${pkgver}.x86.run")
+'https://aur.slashbunny.com/wolf/libstdc++-libc6.2-2.so.3' \
+"https://aur.slashbunny.com/wolf/wolf-linux-${pkgver}.x86.run")
 sha256sums=('20adb799ec0e1adef579acc02ecbd63486dc9bfe90ef48a72e1ea9049d017558'
             'f8dc16a01bf3c5fc7d3914315ffec570f5ae4f148fccffdd05326a589dabf060'
             '7fca88d5c2ca1ad9d5f782f7a7c092246f91112db8918a032234f827de123a7e'
