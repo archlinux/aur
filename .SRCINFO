@@ -1,0 +1,32 @@
+pkgbase = choria-io
+	pkgdesc = Go based server to host Choria agents, networks, federations and discovery
+	pkgver = 0.23.0
+	pkgrel = 1
+	url = https://choria.io
+	arch = x86_64
+	license = Apache
+	checkdepends = ruby
+	makedepends = go
+	depends = glibc
+	depends = logrotate
+	depends = puppet>=6.0.0
+	depends = facter
+	backup = etc/default/choria-server
+	backup = etc/choria/server.conf
+	backup = etc/choria/broker.conf
+	source = choria-io-0.23.0.tar.gz::https://github.com/choria-io/go-choria/archive/v0.23.0.tar.gz
+	source = choria-broker.service
+	source = choria-server.service
+	source = choria-server
+	source = server.conf
+	source = broker.conf
+	source = choria
+	sha512sums = 4dd636d80ab3926fe63f6158fdf2fce5830638b34bf517596469912b76fab323004024a1be41ae2378c762fd41dfc26b8970f8b3ecf6432f4aee4a6829f0bd34
+	sha512sums = 78337d1cd28aa5f6206f85b0a5998c96a974e148149498183057f7e2d9b5adbe9ebe37ceb3add117d4229ca84312fd870ea541512dd29e57dade81f10efe3583
+	sha512sums = 7d889360b06fdd5e297cb781e898c8f3e87b17b3c7a33f952edd40a35f215032abfdee52e458b8f47678c06ff674e339d99c79fa435d3dd4841c96f28226a9ec
+	sha512sums = fa1dbba2353051d9f9c6cd5f6ac8ef9daa179b87a6f12fd476e34a51d17568dfce5f35e92868b7eb277e6f6f114484816062e70cf1219a2ddedd3362d46aa6e2
+	sha512sums = fee8f5ce202400d3fe29b7d83df50c59c7a378d41c752356ba27e9a442c39e332f98e4d0316cf67f3994c1b099b88fc76b9c1f41a1415bc072861fe3b740c8af
+	sha512sums = 29574a94301961abda5140aeec1e97042285b5af027822e55f39be332111a68d2d1054c965d394d9f30a25bc94439f481c9f4e83b977b1c278a5aa7ae5d50416
+	sha512sums = c28b500df5728d6880a49d4e02b400f7408fe49ff1ae8372e49ad7e741254feddc3e28815a5922a49522f77978d2d4f85e283721580e4495b5367996d6e7bce9
+
+pkgname = choria-io
