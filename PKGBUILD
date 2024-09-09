@@ -1,7 +1,7 @@
 # Maintainer: Madison Lynch <madi@mxdi.xyz>
 pkgname='dynamicarray'
-pkgver=2.4.0
-pkgrel=4
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="Dynamic arrays in C"
 arch=('x86_64')
 url="https://gitlab.com/deadgirl/dynamicarray"
