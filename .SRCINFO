@@ -1,0 +1,15 @@
+pkgbase = owncloud-client-desktop-shell-integration-dolphin-git
+	pkgdesc = ownCloud Dolphin integration
+	pkgver = r17.bddcf5c
+	pkgrel = 1
+	url = https://github.com/owncloud/client-desktop-shell-integration-dolphin
+	arch = any
+	license = GPL-2.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules>=5.52.0
+	depends = owncloud-client
+	source = owncloud-client-desktop-shell-integration-dolphin::git+https://github.com/owncloud/client-desktop-shell-integration-dolphin.git
+	sha256sums = SKIP
+
+pkgname = owncloud-client-desktop-shell-integration-dolphin-git
