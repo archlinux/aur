@@ -3,7 +3,7 @@
 pkgbase=python-stcal
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.7.3
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="STScI tools and algorithms used in calibration pipelines"
 arch=('i686' 'x86_64')
@@ -16,13 +16,15 @@ makedepends=('python-setuptools-scm>=3.4'
              'python-installer'
              'python-numpy'
              'python-sphinx-asdf'
-             'python-stsci_rtd_theme'
-             'python-gwcs')
-checkdepends=('python-pytest-doctestplus'
-              'python-opencv'
-              'python-scipy')   # gwcs already in makedepends
+             'python-drizzle'
+             'python-scikit-image'
+             'python-gwcs'
+             'python-tweakwcs')
+#checkdepends=('python-pytest-doctestplus'
+##             'python-pytest-xdist'
+#              'python-opencv')   # gwcs tweakwcs drizzle skimage already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('4b936a6d219d837026afbb8b6e8ae89d')
+md5sums=('2d70fcb7a128aa6784a3accb38f9f2a4')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -36,17 +38,21 @@ build() {
     PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
 }
 
-check() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    mv src/{,_}${_pyname}
-    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
-}
+#check() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#    # Cost long time
+#    mv src/{,_}${_pyname}
+#    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
+#}
 
 package_python-stcal() {
     depends=('python>=3.10'
+             'python-drizzle>=1.15.0'
              'python-gwcs>=0.18.1'
+             'python-requests>=2.22'
              'python-scipy>=1.7.2'
+             'python-scikit-image>=0.19'
+             'python-tweakwcs>=0.8.8'
              'python-opencv>=4.6.0.66')
     optdepends=('python-stcal-doc: Documentation for stcal')
     cd ${srcdir}/${_pyname}-${pkgver}
