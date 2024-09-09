@@ -1,6 +1,6 @@
 pkgbase = flightcore
 	pkgdesc = Installer/Updater/Launcher for Northstar
-	pkgver = 2.25.0
+	pkgver = 2.26.0
 	pkgrel = 1
 	url = https://github.com/R2NorthstarTools/FlightCore
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = flightcore
 	depends = hicolor-icon-theme
 	depends = webkit2gtk
 	options = !lto
-	source = git+https://github.com/R2NorthstarTools/FlightCore.git#commit=2931ff52b813f1d8d3f6462c998cd261729e25a8
+	source = git+https://github.com/R2NorthstarTools/FlightCore.git#commit=f9cee369055b8ec41107d3dbe8d18bab5f02f0c8
 	sha256sums = SKIP
 
 pkgname = flightcore
