@@ -2,7 +2,7 @@
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=coot
 pkgver=1.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Crystallographic Object-Oriented Toolkit for model building, completion and validation"
 arch=('i686' 'x86_64')
 url="https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/"
@@ -42,7 +42,8 @@ build() {
   PYTHON=python3
 
   ./configure --prefix=/usr \
-              --disable-static 
+              --disable-static \
+              --with-enhanced-ligand-tools
   make
 }
 
