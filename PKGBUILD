@@ -6,7 +6,7 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname="aide"
-pkgver=0.18.6
+pkgver=0.18.8
 pkgrel=1
 pkgdesc="A file integrity checker and intrusion detection program"
 arch=("x86_64" "armv7h" "aarch64")
@@ -21,7 +21,7 @@ source=("https://github.com/aide/aide/releases/download/v$pkgver/aide-$pkgver.ta
         "aide.conf"
         "aidecheck.service"
         "aidecheck.timer")
-b2sums=('63bb647100820ee1846f8a0585ea8d94e1b7cea1ae593e2d079aea967cf6e2dceb1c92aa9250b1950dac4629326ebf85ac6e7cf2524fa1cf1757b568dad38ed4'
+b2sums=('a3b7efca89d0be99614e423a983fb0a3413f1cbdbc370b54f755e6dae8bb7f5612921ba998fd6db9248ae739fdaf3d344e092933b7dad7fd94dc1844e68a605e'
         'SKIP'
         '2e16baf306dcbe5d5207685391bb3e77b80a8caafaeafee3094228ee19671092afc042762523663a1d5155341a5d190c5e6c355d639e1a840efddf56047c05bc'
         'fcae2514bffcfe8c2110c8b82d857f39de8c95e0d7d2788bb4945243c127c9566871606b9e4bca39034b624c7bd579f46ed88cb0b86830d6ff16ff1fbb04b081'
