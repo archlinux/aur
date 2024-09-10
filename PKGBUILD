@@ -8,8 +8,8 @@ provides=("pcloudcc")
 conflicts=("pcloudcc-git")
 url="https://github.com/lneely/pcloudcc-lneely"
 license=(BSD-3-Clause)
-depends=(zlib fuse2 mbedtls2 sqlite)
-makedepends=(boost udev)
+depends=(zlib fuse2 mbedtls2 sqlite boost)
+makedepends=(udev)
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/lneely/pcloudcc-lneely/tar.gz/refs/tags/$pkgver")
 sha256sums=('a7e21fc03e9fb588949d64350fee69c7d7200eb33a294526c910b0020b5120be')
 
