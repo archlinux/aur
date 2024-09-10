@@ -1,4 +1,4 @@
-From 89592d61a03488d2eff67c42f14bcb65726299c5 Mon Sep 17 00:00:00 2001
+From a7980fda9150adb4f50078a342ec7ae9c2040a18 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 21:44:42 +0200
 Subject: [PATCH 1/2] Fix linguist macro
@@ -13,7 +13,7 @@ Change-Id: Ie502d6237f0fed14f377912463f394c8d6ae396d
  1 file changed, 4 insertions(+), 3 deletions(-)
 
 diff --git a/src/linguist/Qt5LinguistToolsMacros.cmake b/src/linguist/Qt5LinguistToolsMacros.cmake
-index 0ccf59f3c..01f5f3cd6 100644
+index dbccdbaaa..15037be68 100644
 --- a/src/linguist/Qt5LinguistToolsMacros.cmake
 +++ b/src/linguist/Qt5LinguistToolsMacros.cmake
 @@ -104,8 +104,9 @@ function(QT5_CREATE_TRANSLATION _qm_files)
@@ -27,7 +27,7 @@ index 0ccf59f3c..01f5f3cd6 100644
              ARGS ${_lupdate_options} "@${_ts_lst_file}" -ts ${_ts_file}
              COMMAND ${CMAKE_COMMAND} -E touch "${stamp_file}"
              DEPENDS ${_dependencies}
-@@ -156,9 +157,9 @@ function(QT5_ADD_TRANSLATION _qm_files)
+@@ -155,9 +156,9 @@ function(QT5_ADD_TRANSLATION _qm_files)
          else()
              set(qm_dep "${_abs_FILE}")
          endif()
@@ -40,5 +40,5 @@ index 0ccf59f3c..01f5f3cd6 100644
              DEPENDS ${qm_dep} VERBATIM
          )
 -- 
-2.45.1
+2.46.0
 
