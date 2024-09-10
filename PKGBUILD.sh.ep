@@ -4,7 +4,7 @@
 # Contributor: Wolfgang Pupp <wolfgang.pupp@gmail.com>
 % end
 \
-pkgver=5.15.14
+pkgver=5.15.15
 pkgrel=1
 arch=('any')
 pkgdesc="Qt module for general purpose serial bus access (mingw-w64)"

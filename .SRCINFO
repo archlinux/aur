@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-serialbus
 	pkgdesc = Qt module for general purpose serial bus access (mingw-w64)
-	pkgver = 5.15.14
+	pkgver = 5.15.15+kde+r0
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = mingw-w64-qt5-serialbus
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://invent.kde.org/qt/qt/qtserialbus#commit=616bc5b962cdcacb1c1ba985d7236392e9cadb8c
-	sha256sums = 45616157873e68d85dfd116617885bd877c443ae72724b52551d5ca5cfbcd8fe
+	source = git+https://invent.kde.org/qt/qt/qtserialbus#commit=77dae896b13e36969fefdfa25d711e455d58597b
+	sha256sums = SKIP
 
 pkgname = mingw-w64-qt5-serialbus
