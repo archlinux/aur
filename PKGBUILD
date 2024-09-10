@@ -3,12 +3,12 @@
 # Contributor: taij33n <bwbuiz@gmail.com>
 pkgname=picolisp
 pkgver=24.9.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines)."
 url="https://picolisp.com"
 arch=(x86_64)
 license=(MIT)
-depends=(openssl libffi readline ncurses)
+depends=(glibc bash openssl libffi readline ncurses)
 makedepends=(git clang llvm)
 source=("pil21::git+https://github.com/picolisp/pil21.git#commit=88c5c68b684e3a65f832bed4c2e4d88f45999098")
 sha256sums=("bc8213403bcf4b6b8d2520068d11ef5ad65c8578d5d78722e62cf03d80faf06d")
@@ -33,7 +33,8 @@ package() {
   mv "$LIBDIR/bin/vip" "$BINDIR"
 
   install -d -m755 "${MAN1DIR:=$pkgdir/usr/share/man/man1}"
-  mv "$LIBDIR"/man/man1/*.1 "$MAN1DIR"
+  cp "$LIBDIR"/man/man1/*.1 "$MAN1DIR"
+  rm -r "$LIBDIR/man"
 
   ln -s "../lib/picolisp" -T "$pkgdir/usr/share/$pkgname"
 
