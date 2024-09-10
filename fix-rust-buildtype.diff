@@ -1,0 +1,39 @@
+diff -u libipuz/rust/cargo.sh.old libipuz/rust/cargo.sh
+--- a/libipuz/rust/cargo.sh.old   2024-09-10 03:31:42.118845092 +0000
++++ b/libipuz/rust/cargo.sh       2024-09-10 03:30:55.142219343 +0000
+@@ -7,28 +7,28 @@
+ 
+ export OUTPUT="$2"
+ export CARGO_TARGET_DIR="$3"/target
+-export BUILD_TYPE="$4"
+ 
+ CARGO_TOML=$1/Cargo.toml
+ 
+-if [ "$BUILD_TYPE" = "release" ]
++if [ "$4" = "release" ]
+ then
++    export BUILD_TYPE="release"
+     export BUILD_TYPE_BANNER="RELEASE MODE"
+-    export BUILD_TYPE_FLAG="--release"
+ else
++    export BULID_TYPE="debug"
+     export BUILD_TYPE_BANNER="DEBUG MODE"
+-    export BUILD_TYPE_FLAG=""
+ fi
+ 
++export BUILD_TYPE_FLAG="--$BUILD_TYPE"
+ 
+ if [ $"SANDBOXED" = yes ]
+ then
+     echo "$BUILD_TYPE_BANNER"
+     cargo --offline fetch --manifest-path $CARGO_TOML --verbose
+     cargo --offline build --manifest-path $CARGO_TOML $BUILD_TYPE_FLAG
+-    cp "$CARGO_TARGET_DIR"/release/libipuz_rust.a "$OUTPUT"
++    cp "$CARGO_TARGET_DIR/$BUILD_TYPE"/libipuz_rust.a "$OUTPUT"
+ else
+     echo "$BUILD_TYPE_BANNER"
+-    cargo build --manifest-path $CARGO_TOML
+-    cp "$CARGO_TARGET_DIR"/debug/libipuz_rust.a "$OUTPUT"
++    cargo build --manifest-path $CARGO_TOML $BUILD_TYPE_FLAG
++    cp "$CARGO_TARGET_DIR/$BUILD_TYPE"/libipuz_rust.a "$OUTPUT"
+ fi
