@@ -5,7 +5,7 @@
 
 pkgname="droidcam-obs-plugin"
 pkgver="2.3.3"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="plugin for droidcam obs"
 arch=("x86_64" "i686")
 url="https://dev47apps.com/obs/"
@@ -16,20 +16,20 @@ depends=("obs-studio" 'libusbmuxd' 'libjpeg-turbo' 'libimobiledevice')
 makedepends=('git')
 conflicts=("${pkgname}-git")
 pkgstem=${pkgname%-git}
-source=("${pkgstem}::git+${srcurl}#tag=${_tag}" "fix_Makefile.patch")
-sha256sums=('SKIP' '5b473fd966c28c31e0555301764c09fb481a5236d48fe0a6a1c28525edebc00e')
+source=("${pkgstem}::git+${srcurl}#tag=${_tag}" "fixes.patch")
+sha256sums=('SKIP' 'a355e7712ad5d6c34e6d1e7c4ce4d99048330907f24bda30c8bf1afd2c45837e')
 
 
 prepare() {
     cd "$srcdir/$pkgstem"
-    patch -p1 -i "$srcdir/fix_Makefile.patch"
+    patch -p1 -i "$srcdir/fixes.patch"
     mkdir -p build
 }
 
 build() {
     cd "$srcdir/$pkgstem"
 	 pwd
-    make ALLOW_STATIC=no
+    make LIBUSBMUXD_DYN_NAME=libusbmuxd-2.0 LIBIMOBILEDEV_DYN_NAME=libimobiledevice-1.0 ALLOW_STATIC=no
 }
 
 package() {
