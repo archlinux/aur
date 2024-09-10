@@ -1,6 +1,6 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
 pkgname=psf-unifont
-pkgver=15.1.05
+pkgver=16.0.01
 pkgrel=1
 pkgdesc="GNU Unifont Glyphs (PSF version)"
 arch=('any')
