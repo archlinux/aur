@@ -1,6 +1,6 @@
 pkgbase = coreboot-toolchain
 	pkgdesc = Used to build coreboot
-	pkgver = 24.02
+	pkgver = 24.08
 	pkgrel = 1
 	url = https://www.coreboot.org
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = coreboot-toolchain
 	makedepends = gcc-ada
 	makedepends = git
 	makedepends = python
-	noextract = coreboot#commit=4845b69db29107ce8d9cd2969b4aad5c7daa6399
+	noextract = coreboot#commit=04bb74a7267a64d39ca87ba8c9b4f9f34c7d2bbb
 	noextract = acpica-unix-20230628.tar.gz
 	noextract = nasm-2.16.03.tar.bz2
 	noextract = gmp-6.3.0.tar.xz
@@ -32,7 +32,7 @@ pkgbase = coreboot-toolchain
 	noextract = cmake-3.29.3.tar.gz
 	options = buildflags
 	options = !debug
-	source = git+https://review.coreboot.org/coreboot#commit=4845b69db29107ce8d9cd2969b4aad5c7daa6399
+	source = git+https://review.coreboot.org/coreboot#commit=04bb74a7267a64d39ca87ba8c9b4f9f34c7d2bbb
 	source = https://downloadmirror.intel.com/783534/acpica-unix-20230628.tar.gz
 	source = https://www.nasm.us/pub/nasm/releasebuilds/2.16.03/nasm-2.16.03.tar.bz2
 	source = https://ftpmirror.gnu.org/gmp/gmp-6.3.0.tar.xz

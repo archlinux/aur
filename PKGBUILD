@@ -2,11 +2,11 @@
 
 _gcc_targets="i386 x64 arm aarch64 riscv ppc64 nds32le"
 _is_clang_enabled=1
-_commit='4845b69db29107ce8d9cd2969b4aad5c7daa6399'
+_commit='04bb74a7267a64d39ca87ba8c9b4f9f34c7d2bbb'
 
 pkgbase='coreboot-toolchain'
 pkgname=()
-pkgver=24.02
+pkgver=24.08
 pkgrel=1
 pkgdesc='Used to build coreboot'
 url='https://www.coreboot.org'
