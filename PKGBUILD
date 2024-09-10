@@ -3,7 +3,7 @@
 # Contributor: taij33n <bwbuiz@gmail.com>
 pkgname=picolisp
 pkgver=24.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines)."
 url="https://picolisp.com"
 arch=(x86_64)
@@ -12,6 +12,12 @@ depends=(openssl libffi readline ncurses)
 makedepends=(git clang llvm)
 source=("pil21::git+https://github.com/picolisp/pil21.git#commit=88c5c68b684e3a65f832bed4c2e4d88f45999098")
 sha256sums=("bc8213403bcf4b6b8d2520068d11ef5ad65c8578d5d78722e62cf03d80faf06d")
+prepare() {
+  MAKEFILE="$srcdir/pil21/src/Makefile"
+  LDFLAGS=-Wl,-z,relro,-z,now,-z,shstk
+  sed -i "s/SHARED =\|MAIN =/& $LDFLAGS/" "$MAKEFILE"
+  sed -i "/CC.\+balance\|CC.\+ssl\|CC.\+httpGate/ s/$/ $LDFLAGS/" "$MAKEFILE"
+}
 
 build() {
   cd "$srcdir/pil21/src" && make -W base.ll
