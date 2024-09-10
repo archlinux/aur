@@ -16,9 +16,9 @@ makedepends=(gcc binutils git ninja perl pkg-config cmake gettext curl go)
 checkdepends=(curl)
 provides=(yass-proxy)
 conflicts=(yass-proxy-git)
-source=("https://github.com/Chilledheart/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.bz2"
+source=("https://github.com/Chilledheart/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.zst"
         )
-sha256sums=('1b661be8901c0c8c8bf292b02563ca8abdba503a9f1f7de8ca5f808aff63e8a4')
+sha256sums=('fae2f5432e1995087b36240f2c467ab70e5ca3a040b42dd34c383d27fe8388ad')
 
 build(){
   SRC_DIR="${srcdir}/yass-${_pkgver}"
