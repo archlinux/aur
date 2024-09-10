@@ -15,12 +15,29 @@ arch=(x86_64 aarch64 riscv)
 depends=() # TODO
 makedepends=('gcc-ada' 'git') # TODO
 options=('buildflags' '!debug')
+source=(
+  "git+https://review.coreboot.org/coreboot#commit=${_commit}"
+  'https://github.com/acpica/acpica/archive/refs/tags/R06_28_23.tar.gz'
+  'https://www.nasm.us/pub/nasm/releasebuilds/2.16.01/nasm-2.16.01.tar.bz2'
+)
+sha256sums=(
+  'SKIP'
+  '2248799b7ca08a7711ac87d31924354ed49047507607d033bd327ba861ec4d31'
+  '35b6ad2ee048d41c4779f073f3efca7762a822b7d2d4ef4e8df24cf65747bb2e'
+)
 sources_gcc=(
   'https://ftpmirror.gnu.org/gmp/gmp-6.3.0.tar.xz'
   'https://ftpmirror.gnu.org/mpfr/mpfr-4.2.1.tar.xz'
   'https://ftpmirror.gnu.org/mpc/mpc-1.3.1.tar.gz'
   'https://ftpmirror.gnu.org/gcc/gcc-13.2.0/gcc-13.2.0.tar.xz'
   'https://ftpmirror.gnu.org/binutils/binutils-2.41.tar.xz'
+)
+hashes_gcc=(
+  'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
+  '277807353a6726978996945af13e52829e3abd7a9a5b7fb2793894e18f1fcbb2'
+  'ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8'
+  'e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da'
+  'ae9a5789e23459e59606e6714723f2d3ffc31c03174191ef0d015bdf06007450'
 )
 sources_clang=(
   'https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/llvm-16.0.6.src.tar.xz'
@@ -30,18 +47,6 @@ sources_clang=(
   'https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/clang-tools-extra-16.0.6.src.tar.xz'
   'https://cmake.org/files/v3.27/cmake-3.27.7.tar.gz'
 )
-source=(
-  "git+https://review.coreboot.org/coreboot#commit=${_commit}"
-  'https://github.com/acpica/acpica/archive/refs/tags/R06_28_23.tar.gz'
-  'https://www.nasm.us/pub/nasm/releasebuilds/2.16.01/nasm-2.16.01.tar.bz2'
-)
-hashes_gcc=(
-  'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
-  '277807353a6726978996945af13e52829e3abd7a9a5b7fb2793894e18f1fcbb2'
-  'ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8'
-  'e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da'
-  'ae9a5789e23459e59606e6714723f2d3ffc31c03174191ef0d015bdf06007450'
-)
 hashes_clang=(
   'e91db44d1b3bb1c33fcea9a7d1f2423b883eaa9163d3d56ca2aa6d2f0711bc29'
   '1186b6e6eefeadd09912ed73b3729e85b59f043724bb2818a95a2ec024571840'
@@ -49,11 +54,6 @@ hashes_clang=(
   '7911a2a9cca10393a17f637c01a6f5555b0a38f64ff47dc9168413a4190bc2db'
   '174c7844db2590b18b2a59a9ce503f8fe439edc2de2f0f625006501c99736f31'
   '08f71a106036bf051f692760ef9558c0577c42ac39e96ba097e7662bd4158d8e'
-)
-sha256sums=(
-  'SKIP'
-  '2248799b7ca08a7711ac87d31924354ed49047507607d033bd327ba861ec4d31'
-  '35b6ad2ee048d41c4779f073f3efca7762a822b7d2d4ef4e8df24cf65747bb2e'
 )
 
 for target in ${_gcc_targets}; do
