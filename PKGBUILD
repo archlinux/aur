@@ -3,7 +3,7 @@
 # Debian Upstream Maintainer: IOhannes m zmölnig <umlaeute at debian.org>
 
 pkgname=pd-lua-git
-pkgver=0.11.1.r0.g7dcbefd
+pkgver=0.12.15.r0.ge6046be
 pkgrel=1
 epoch=1
 pkgdesc="Lua bindings for Pd"
