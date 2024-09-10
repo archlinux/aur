@@ -14,55 +14,13 @@ depends=('coordgen' 'guile' 'libccp4>=6.5.1-2' 'libclipper>=2.1.20170202-3' 'fft
 source=($pkgname-$pkgver.tar.gz::https://github.com/pemsley/$pkgname/archive/Release-$pkgver-fix.tar.gz
         https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/dependencies/refmac-monomer-library.tar.gz
         https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/dependencies/reference-structures.tar.gz
-        coot-configure.ac.patch
-        coot-makefile.patch
-        coot-guile.patch
-        coot-libguile.patch
-        coot-utils.patch
-        coot-lbg.patch
-        coot-python.patch
-        coot-lidia.patch
-        coot-pyrogen.patch
-        coot-dynarama.patch
-        coot.in
         )
 
 sha256sums=('3cc3ba08dd0221e655669ff3ef6858713d11959478a48278afb055337b8846d2'
             '03562eec612103a48bd114cfe0d171943e88f94b84610d16d542cda138e5f36b'
             '44db38506f0f90c097d4855ad81a82a36b49cd1e3ffe7d6ee4728b15109e281a'
-            '2babfbc3cb798868d9e22f19ee49d12981fac35e3dfba2d8f7318716f59f673c'
-            '9ad5a56116748ab5b1f77b2a4b2e3df47847ff881579105dff6589ed60ac8eb4'
-            'c15e844536f512c2d5524391dbc046a889a0d5f8c23336b854508e453e226911'
-            'aa1e18d4ef43fb61e85aba05d13797f9aa2beb1da220405f1eb6058ac36eb60b'
-            '059d57dc092feb8134a95e6fa452a2d807ccb3666da374f4a023e5684e3a0dfa'
-            '423a50d27639376c52e6987877acea908d854decb48c7c2452f7f5ecb92b60e9'
-            'f4747e1fc7a3387f42b6c40358f999404761a0282ee6be3c621091d9d5d88099'
-            'dd2eb7c66ff2fa6f68a9d1e834e1911d2a1669a76ed29b5dbd6863619edcba18'
-            'b07517bdf9fcee43cf13533902ef333adcdaa45e60905628dfefc98ff55e95b5'
-            '485f305444fbe8ec3df3add5df68c5f2f7524507211f94bdecf2fa110c28c014'
-            '5ba4e0d9bdc4db0bab403b8f9aadb1320af60e91f9ed87e81dc680425375590b')
+            )
 
-prepare() {
-
-  cd "$srcdir/$pkgname-Release-$pkgver-fix"
-
-  patch -Np0 -i "$srcdir/coot-configure.ac.patch"
-  patch -Np0 -i "$srcdir/coot-makefile.patch"
-  patch -Np0 -i "$srcdir/coot-guile.patch"
-  patch -Np1 -i "$srcdir/coot-libguile.patch"
-  patch -Np0 -i "$srcdir/coot-utils.patch"
-  patch -Np0 -i "$srcdir/coot-lbg.patch"
-  patch -Np0 -i "$srcdir/coot-python.patch"
-  patch -Np0 -i "$srcdir/coot-lidia.patch"
-  patch -Np0 -i "$srcdir/coot-pyrogen.patch"
-  patch -NRtp0 -i "$srcdir/coot-dynarama.patch"
-
-  iconv -f iso8859-1 -t utf-8 README > README.conv && mv -f README.conv README
-
-  cp $srcdir/coot.in src/
-  # rm macros/libtool.m4
-
-}
 
 build() {
   cd "$srcdir/$pkgname-Release-$pkgver-fix"
@@ -72,8 +30,7 @@ build() {
   autoconf
   automake --copy --add-missing --gnu
 
-  # Work around coot's code not beeing completely standard compliant
-  CXXFLAGS="${CXXFLAGS} -fpermissive"
+  #CXXFLAGS="${CXXFLAGS} -fpermissive"
 
   ./configure --prefix=/usr \
               --with-python \
@@ -92,7 +49,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname-Release-$pkgver-fix"
   make DESTDIR="$pkgdir/" install
-  sed -i 's|COOT_PYTHON_DIR=|COOT_PYTHON_DIR=/usr/lib/python2.7/site-packages/coot|' src/$pkgname
+  #sed -i 's|COOT_PYTHON_DIR=|COOT_PYTHON_DIR=/usr/lib/python2.7/site-packages/coot|' src/$pkgname
   sed -i 's|COOT_REFMAC_LIB_DIR=|COOT_REFMAC_LIB_DIR=/usr/share/coot/lib/|' src/$pkgname
   install -p -m 755 src/$pkgname $pkgdir/usr/bin
 
