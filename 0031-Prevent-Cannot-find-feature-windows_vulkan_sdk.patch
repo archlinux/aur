@@ -1,4 +1,4 @@
-From ae10eba2d47cb222ebc157c4a8b3c99c04680795 Mon Sep 17 00:00:00 2001
+From 56726797d07ef5671414304e2f92da0fa8dffa0c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 24 Jun 2019 13:51:02 +0200
 Subject: [PATCH 31/32] Prevent 'Cannot find feature windows_vulkan_sdk'
@@ -10,7 +10,7 @@ See https://bugreports.qt.io/browse/QTBUG-76660
  2 files changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/mkspecs/common/windows-vulkan.conf b/mkspecs/common/windows-vulkan.conf
-index da061422dc..a5a8ec68d2 100644
+index da061422dca..a5a8ec68d2f 100644
 --- a/mkspecs/common/windows-vulkan.conf
 +++ b/mkspecs/common/windows-vulkan.conf
 @@ -1,2 +1,2 @@
@@ -18,7 +18,7 @@ index da061422dc..a5a8ec68d2 100644
 +load(win32/windows_vulkan_sdk)
  QMAKE_LIBS_VULKAN       =
 diff --git a/mkspecs/features/qmake_use.prf b/mkspecs/features/qmake_use.prf
-index 8475e4111a..c0eb8faa17 100644
+index 8475e4111a7..c0eb8faa17d 100644
 --- a/mkspecs/features/qmake_use.prf
 +++ b/mkspecs/features/qmake_use.prf
 @@ -15,7 +15,9 @@ for(ever) {
