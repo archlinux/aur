@@ -13,11 +13,10 @@
 # Use: {yay,paru} --mflags=DISABLE_AUTOCONFIG=1,VAR1=0,VAR2=1
 # Use: aurutils --margs=DISABLE_AUTOCONFIG=1,VAR1=0,VAR2=1
 # Use: DISABLE_AUTOCONFIG=1 VAR1=0 VAR2=1 pamac
-# If parallel compilation fails due to race conditions, define NJOBS from 1 to ~24 jobs (try and error).
 
 # Build using a working configuration that not depens on other AUR packages
 # Use DISABLE_AUTOCONFIG=1 to build using all the available options (This can cause compilation problems)
-#  or use the syntax mentioned earlier to enable the desired options
+# or use the syntax mentioned earlier to enable the desired options
 if((!DISABLE_AUTOCONFIG)); then
   ENABLE_DEBUG=0
   DISABLE_CHECK=1
@@ -38,15 +37,16 @@ if((!DISABLE_AUTOCONFIG)); then
   #DISABLE_ROCALUTION
   DISABLE_OCC=1
   DISABLE_VTK=1
-  # VTK also needs MPI.
   DISABLE_MPI=0
-  DISABLE_MUMPS=1
-  DISABLE_HYPRE=1
   DISABLE_INTERNAL_UMFPACK=1
   DISABLE_INTERNAL_ARPACK=1
+  #AUR packages
   DISABLE_TRILINOS=1
   DISABLE_ZOLTAN=1
-  DISABLE_INTERNAL_ZOLTAN=1
+  #Using external Zoltan is currently broken
+  DISABLE_INTERNAL_ZOLTAN=0
+  DISABLE_MUMPS=1
+  DISABLE_HYPRE=1
 fi
 
 # Use FRAGMENT=#{commit,tag,brach}=xxx for bisect build
@@ -93,9 +93,6 @@ _fragment=${FRAGMENT:-#branch=devel}
 ((DISABLE_INTERNAL_ARPACK))  && _use_external_arpack=ON  || _use_external_arpack=OFF  # Use arpack package
 ((DISABLE_INTERNAL_ZOLTAN))  && _use_external_zoltan=ON  || _use_external_zoltan=OFF  # Use Zoltan library bundled with Trilinos
 
-# Disable check
-((DISABLE_CHECK))    && _disable_check=OFF || _disable_check=ON # Disable CTEST Routines
-
 _CMAKE_FLAGS+=(
         -DCMAKE_BUILD_TYPE=${_build_type}
         -DCMAKE_INSTALL_PREFIX=/usr
@@ -127,6 +124,7 @@ _CMAKE_FLAGS+=(
 
         -DEXTERNAL_UMFPACK=${_use_external_umfpack}
         -DEXTERNAL_ARPACK=${_use_external_arpack}
+        -DEXTERNAL_PARPACK=${_use_external_arpack}
 
         -GNinja
         -Wno-dev
@@ -136,7 +134,7 @@ _CMAKE_FLAGS+=(
                                   )
 pkgname=elmerfem-git
 _pkgname=elmerfem
-pkgver=9.0.r3132.g30dfce537
+pkgver=9.0.r3137.gca0cce3e1
 pkgrel=1
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
@@ -190,7 +188,7 @@ pkgver() {
 }
 
 prepare() {
-  if((USE_SYSTEM_ZOLTAN && !DISABLE_ZOLTAN)); then
+  if((!DISABLE_INTERNAL_ZOLTAN && !DISABLE_ZOLTAN)); then
     cd "$srcdir/$_pkgname"
     git submodule update --init --recursive
   fi
@@ -207,7 +205,7 @@ build() {
   ((ENABLE_DEBUG)) && msg2 "${_CMAKE_FLAGS[@]}"
   cmake -S "${srcdir}"/$_pkgname -B build \
         "${_CMAKE_FLAGS[@]}"
-  msg2 "Using ${MAKEFLAGS} for compilation"
+  msg2 "Using $(grep -oP -- "-j\s*\K[0-9]+" <<< "${MAKEFLAGS}") jobs for compilation"
   ninja $MAKEFLAGS -C build all
 }
 
