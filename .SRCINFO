@@ -1,15 +1,15 @@
 pkgbase = pcf-unifont
 	pkgdesc = GNU Unifont Glyphs (PCF version)
-	pkgver = 15.1.05
+	pkgver = 16.0.01
 	pkgrel = 1
 	url = https://unifoundry.com/unifont/index.html
 	arch = any
 	license = OFL-1.1 OR GPL-2.0-or-later WITH Font-exception-2.0
-	source = https://ftp.gnu.org/gnu/unifont/unifont-15.1.05/unifont-15.1.05.pcf.gz
-	source = https://ftp.gnu.org/gnu/unifont/unifont-15.1.05/unifont-15.1.05.pcf.gz.sig
+	source = https://ftp.gnu.org/gnu/unifont/unifont-16.0.01/unifont-16.0.01.pcf.gz
+	source = https://ftp.gnu.org/gnu/unifont/unifont-16.0.01/unifont-16.0.01.pcf.gz.sig
 	source = https://unifoundry.com/LICENSE.txt
 	validpgpkeys = 95D2E9AB8740D8046387FD151A09227B1F435A33
-	sha256sums = ce973d6785d7be66bfb574583af000408a63c984bed573e268b645e3160f4dbc
+	sha256sums = e756045ba0893ee2e8369b27afc02436bed90299db4e1672ce766e0470cd9825
 	sha256sums = SKIP
 	sha256sums = 1e74cb82bf476843e97c2596297b04219b1a7e51f7238944a8c031cb9401fa87
 
