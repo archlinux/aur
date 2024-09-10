@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Xiaozhu1337 <nihaoaheheda@gmail.com>
 pkgname=siyuan
-pkgver=3.1.5
+pkgver=3.1.6
 _electronversion=30
 _nodeversion=18
 pkgrel=1
@@ -34,7 +34,7 @@ source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('cadb49d557c3fd68abd57622ca68946df4025005594ea2dfa6fe631da1067c9d'
+sha256sums=('7dca97174019d40e50938708e30522bf05a1604b302f993379b08f63b4c9a3b0'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -43,42 +43,45 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname}|g" \
-        -e "s|@runname@|app|g" \
-        -e "s|@cfgdirname@|SiYuan-Electron|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/SiYuan-Electron/
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+    " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Office" --name="${pkgname}" --exec="${pkgname} %U"
     sed "2i\Name[zh_CN]=思源笔记" -i "${srcdir}/${pkgname}.desktop"
     cd "${srcdir}/${pkgname}.git/app"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export ELECTRONVERSION="${_electronversion}"
     export CGO_ENABLED=1
     export GO111MODULE=on
     export GOOS=linux
     export GOCACHE="${srcdir}/go-build"
     export GOMODCACHE="${srcdir}/go/pkg/mod"
     HOME="${srcdir}/.electron-gyp"
-    echo 'build_from_source=true'  >> .npmrc
-    echo 'link-workspace-packages=true'  >> .npmrc
-    echo 'fetch-retry-maxtimeout=10000'  >> .npmrc
-    echo "cache-dir="${srcdir}"/.pnpm_cache"  >> .npmrc
-    echo "store-dir="${srcdir}"/.pnpm_store"  >> .npmrc
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        echo 'registry=https://registry.npmmirror.com' >> .npmrc
-        echo 'disturl=https://registry.npmmirror.com/-/binary/node/' >> .npmrc
-        echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/' >> .npmrc
-        echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/' >> .npmrc
-        go env -w GOPROXY=https://goproxy.cn,direct
-
-    else
-        echo "Your network is OK."
-    fi
-    sed "/tar.gz/d;/deb/d;s|AppImage|dir|g;s|icon.icns|icon.png|g" -i electron-builder-linux.yml
-    sed "s|tar.gz|dir|g;s|deb|dir|g;s|AppImage|dir|g;s|icon.icns|icon.png|g" -i electron-builder-linux-arm64.yml
+    {
+        #echo 'build_from_source=true'
+        echo 'link-workspace-packages=true'
+        echo 'fetch-retry-maxtimeout=10000'
+        echo "cache-dir="${srcdir}"/.pnpm_cache"
+        echo "store-dir="${srcdir}"/.pnpm_store"
+        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+            go env -w GOPROXY=https://goproxy.cn,direct
+        else
+            echo 'registry=https://registry.npmjs.org'
+            echo 'disturl=https://nodejs.org/dist'
+            echo 'electron_mirror=https://www.electronjs.org/versions'
+            echo 'electron_builder_binaries_mirror=https://github.com/electron-userland/electron-builder-binaries/releases/download'
+        fi
+    } >> .npmrc
+    sed "/tar.gz/d;/deb/d;s/AppImage/dir/;s/icon.icns/icon.png/" -i {electron-builder-linux.yml,electron-builder-linux-arm64.yml}
     sed -i "s/\"electron\": \"\([^\"]*\)\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" -i package.json
     NODE_ENV=development    pnpm install --no-frozen-lockfile
     NODE_ENV=production     pnpm run build
@@ -87,12 +90,13 @@ build() {
     cd "${srcdir}/${pkgname}.git/app"
     case "${CARCH}" in
         aarch64)
-            NODE_ENV=production pnpm run dist-linux-arm64
+            _CFG_FILE=electron-builder-linux-arm64.yml
             ;;
         x86_64)
-            NODE_ENV=production pnpm run dist-linux
+            _CFG_FILE=electron-builder-linux.yml
             ;;
     esac
+    NODE_ENV=production npx electron-builder -l --dir --config "${_CFG_FILE}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
