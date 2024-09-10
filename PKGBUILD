@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=billboarder
-_pkgver=0.4.1
+_pkgver=0.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Create Interactive Chart with the JavaScript 'Billboard' Library"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('46c766c3238792e3bc6b3e59bd9c7bf6')
-b2sums=('27ceebcb71a4286a60fdbb527baa838000b859827443d3fe8643dee9b4cb365f1dec30b19d0950a88bd64784d829876a2c9c4991c08f7944021c5fc2b4f21744')
+md5sums=('bdfacb2b873f17ada4c9850c4bba7d25')
+b2sums=('7ea95575026c3be587c6749fa574c743ee31877031362529269f49b78e759498ec1bc614ba9a1f8dc926626e0da62a90c3269340c654e8df366ad53fba45f39c')
 
 build() {
   mkdir build
