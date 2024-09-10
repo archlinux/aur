@@ -2,8 +2,8 @@
 
 pkgname=ffmpeg-dektec
 pkgver=2024.05.0
-pkgrel=3
-_sdkver=2024.06.0
+pkgrel=4
+_sdkver=2024.06.1
 pkgdesc="FFmpeg Integration for DekTec Devices"
 arch=('x86_64')
 url="https://www.dektec.com/products/SDK/ffmpeg/"
@@ -29,7 +29,7 @@ source=("FFmpeg_v${pkgver}.tar.gz::https://www.dektec.com/products/SDK/ffmpeg/li
         "LinuxSDK_v${_sdkver}.tar.gz::https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdkver}.tar.gz")
 noextract=("FFmpeg_v${pkgver}.tar.gz")
 sha256sums=('c07d952c210967896bb3ab87753e15191936a87b68840034a876b850f423cbf6'
-            '8b2ae732837f9d0be1db435c10b0f3bd2a12e1bf2d51200da84f4d378701a785')
+            '903772f0ef251dad1871e6110bd17409dab502ad7c1e49dfcf2882df3f082d98')
 
 prepare() {
   # Extract all files from DekTec upstream
