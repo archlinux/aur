@@ -1,8 +1,8 @@
 # Maintainer: Antti <antti@antti.codes>
 
 pkgname=modrinth-app
-pkgver=0.8.5
-pkgrel=2
+pkgver=0.8.6
+pkgrel=1
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
 optdepends=(
     'xorg-xrandr: for older minecraft versions'
 )
-_release_hash="bd61f5d5915f8a899f2075037358b0f3bcd23fe8"
+_release_hash="0b31f2eb41eeee919053b06f878c0e941a36787d"
 source=(
     # WHY DO THEY NOT TAG THE RELEASES?!?!?!
     #"$pkgname-$pkgver.tar.gz::https://github.com/modrinth/code/archive/refs/tags/v${pkgver}.tar.gz"
@@ -25,7 +25,7 @@ source=(
     "modrinth-app.desktop"
     "modrinth-app"
 )
-sha256sums=('0802c6c80834cde4f63c7ddfe3d36ac165205385f8c0e5317fa199f192616314'
+sha256sums=('19e7cc70276e909007428ce782d8395ad9016943b636fe06772b5542756991ce'
             '7f6673916e0cf1cef2f2e3d1e5865d722abcbd8fba879688f8102816773a9d44'
             '5404b4e7b25903afe43ab2f2451be4b27f4823c6785327b166f2faa519fa38a9')
 options=('!lto')
@@ -51,8 +51,9 @@ build() {
 
     export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
-    #cargo build --frozen --release --all-features
-    pnpm tauri build --no-bundle
+    cargo build --frozen --release
+    #pnpm tauri build --no-bundle
+    #pnpm tauri build --bundles none
 }
 
 package() {
