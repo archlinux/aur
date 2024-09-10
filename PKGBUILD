@@ -517,6 +517,7 @@ prepare() { _set_vars;
   done
 
   ## make tools/make_makefiles happy
+  git config commit.gpgsign false &>/dev/null || true
   git config user.email "wine@build.dev" &>/dev/null || true
   git config user.name "winebuild" &>/dev/null || true
   git add --all &>/dev/null || true
