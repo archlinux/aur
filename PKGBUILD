@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vnite-git
 _pkgname=Vnite
-pkgver=1.2.0.r0.g11a638f
+pkgver=1.2.1.r0.g2633e62
 _electronversion=28
 _nodeversion=20
 pkgrel=1
@@ -39,11 +39,11 @@ _ensure_local_nvm() {
 }
 build() {
     sed -e "
-        s|@electronversion@|${_electronversion}|;
-        s|@appname@|${pkgname%-git}|g;
-        s|@runname@|app.asar|g;
-        s|@cfgdirname@|${_pkgname}|g;
-        s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-git}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/${_pkgname}/
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname%-git} %U"
@@ -52,23 +52,23 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-       echo 'build_from_source=true'
-       echo "cache=${srcdir}/.npm_cache"
-       if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-           echo 'registry=https://registry.npmmirror.com'
-           echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-           echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-           echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-       else
-           echo 'registry=https://registry.npmjs.org'
-           echo 'disturl=https://nodejs.org/dist'
-           echo 'electron_mirror=https://www.electronjs.org/versions'
-           echo 'electron_builder_binaries_mirror=https://github.com/electron-userland/electron-builder-binaries/releases/download'
-       fi
+        #echo 'build_from_source=true'
+        echo "cache=${srcdir}/.npm_cache"
+        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        else
+            echo 'registry=https://registry.npmjs.org'
+            echo 'disturl=https://nodejs.org/dist'
+            echo 'electron_mirror=https://www.electronjs.org/versions'
+            echo 'electron_builder_binaries_mirror=https://github.com/electron-userland/electron-builder-binaries/releases/download'
+        fi
     } >> .npmrc
     sed "/external: /d" -i electron.vite.config.mjs
-    sed "s|getAppRootPath(), '/logs|app.getPath('userData'), '/logs|g" -i src/main/index.js
-    sed "s|\"electron\": \"\([^\"]*\)\"|\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"|g" -i package.json
+    sed "s/getAppRootPath(), \'\/logs/app.getPath(\'userData\'), \'\/logs/" -i src/main/index.js
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run build:unpack
 }
