@@ -1,11 +1,10 @@
 pkgbase = suyu-bin
 	pkgdesc = suyu is a Nintendo Switch emulator, based on yuzu, with additional features. It is written in C++ with portability in mind.
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.suyu.dev/suyu/suyu
 	arch = x86_64
 	license = GPL3
-	depends = fuse2
 	options = !strip
 	source = https://git.darksys.pw/aur/suyu-bin/suyu
 	source = suyu.desktop
