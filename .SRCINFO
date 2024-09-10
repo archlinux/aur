@@ -1,6 +1,6 @@
 pkgbase = e-search-bin
 	pkgdesc = 截屏,离线OCR,搜索翻译,以图搜图,贴图,录屏,滚动截屏.Screenshot,OCR search,translate,search for picture paste the picture on the screen,screen recorder.Use system-wide electron.
-	pkgver = 13.1.0
+	pkgver = 13.1.2
 	pkgrel = 1
 	url = https://esearch-app.netlify.app/
 	arch = aarch64
@@ -8,16 +8,16 @@ pkgbase = e-search-bin
 	license = GPL-3.0-only
 	depends = electron31
 	depends = nodejs
-	provides = e-search=13.1.0
+	provides = e-search=13.1.2
 	conflicts = e-search
 	conflicts = esearch-electron
 	options = !strip
 	options = !emptydirs
 	source = e-search.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = e-search-13.1.0-aarch64.deb::https://github.com/xushengfeng/eSearch/releases/download/13.1.0/eSearch-13.1.0-linux-arm64.deb
-	sha256sums_aarch64 = de605a6ebf48c69e667ec936d03db5299c3bb6a74bd3d0a4a9f6143d55004a7d
-	source_x86_64 = e-search-13.1.0-x86_64.deb::https://github.com/xushengfeng/eSearch/releases/download/13.1.0/eSearch-13.1.0-linux-x64.deb
-	sha256sums_x86_64 = fc99e61c86fa06b3ece1cd3f92139462edd4a40bff247c71e630e6d497fbf900
+	source_aarch64 = e-search-13.1.2-aarch64.deb::https://github.com/xushengfeng/eSearch/releases/download/13.1.2/eSearch-13.1.2-linux-arm64.deb
+	sha256sums_aarch64 = 924c6bace48f33389a4f3b45b4d3dd93997cef0bc52b21b0bf55ca7cb170cf82
+	source_x86_64 = e-search-13.1.2-x86_64.deb::https://github.com/xushengfeng/eSearch/releases/download/13.1.2/eSearch-13.1.2-linux-x64.deb
+	sha256sums_x86_64 = 8a213834cde2333709ba2a49e050cdd7cee1bfe9cd910071e1395ffc6dd77cf0
 
 pkgname = e-search-bin
