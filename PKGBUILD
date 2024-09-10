@@ -2,12 +2,12 @@
 
 pkgname=rclone-bisync-manager-git
 pkgver=0.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A daemon-based solution for automated, bidirectional synchronization of files using RClone"
 arch=('any')
 url="https://github.com/Gunther-Schulz/rclone-bisync-manager"
 license=('MIT')
-depends=('python>=3.12' 'rclone''python-croniter' 'python-pydantic' 'python-daemon' 'python-yaml' 'python-psutil')
+depends=('python>=3.12' 'rclone' 'python-croniter' 'python-pydantic' 'python-daemon' 'python-yaml' 'python-psutil')
 optdepends=('rclone-bisync-manager-tray-git: for tray application' 'cpulimit: for limiting CPU usage of rclone processes')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
