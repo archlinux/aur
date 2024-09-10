@@ -2,7 +2,7 @@
 
 _pkgname=ashell
 pkgname="${_pkgname}-git"
-pkgver=3c2d6e5
+pkgver=r113.3c2d6e5
 pkgrel=1
 pkgdesc="A ready to go Wayland status bar for Hyprland"
 _git="https://github.com/MalpenZibo/${_pkgname}.git"
@@ -30,7 +30,7 @@ b2sums=('SKIP')
 pkgver() {
   cd "${_pkgname}"
 
-  git rev-parse --short HEAD
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
