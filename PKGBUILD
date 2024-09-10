@@ -2,7 +2,7 @@
 _appname=codium
 _pkgname="vs${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.92.2.24228
+pkgver=1.93.0.24253
 _electronversion=30
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing.Prebuild and System-wide Electron edition"
@@ -42,24 +42,23 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/${pkgver}/codium_${pkgver}_armhf.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/${pkgver}/codium_${pkgver}_amd64.deb")
 sha256sums=('ed289092386002771285e3423f66f49af65ff918e1b667b517d977fa4fe1f057'
-            'a9c673c3ae09a9a0dbb68e1c9f5e7f4dbedda3bc3642777f881d64261f8d0f00'
-            'b7b6327d20247b5b03607696d83869222b2ca9dd20eafcac95d5307c03ae3a70')
-sha256sums_aarch64=('87728ed55b0ab82f9e2223743d2d79c9de053d1a14c73d8a0d8af0fcb8175410')
-sha256sums_armv7h=('d2eecd1c405016f6d34cf3894fd973615871a1e3acaa622ae5315b3dcfdca08c')
-sha256sums_x86_64=('f62d44f9d62853429d409f3802b9c1ee32aa0d2955ab7e6a7e06e867fcfeb74d')
+            '71463726de1e6b3d8e2daf8d6816f2dc616ebac36c7097c5829074ca38a95309'
+            '164bbaffe22f4ad43607f44a114528317c4d63592b88e911abadfa962443ac26')
+sha256sums_aarch64=('541a91012fd120602401def109aa5a6ad2bb9d2d5211ae76ff4a65be5658737a')
+sha256sums_armv7h=('0e1825e5351c72c0ad71563a4d683e45d7d106b606e61c6bfc91be43da11dab0')
+sha256sums_x86_64=('ef4c6db9635b172982934a057ca5751560dc9f48f7bfb010690569407f7ddc08')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-bin}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/${_pkgname}/
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|${_appname}.desktop|${pkgname%-bin}.desktop|g" -i "${srcdir}/usr/share/appdata/${_appname}.appdata.xml"
-    sed "s|\/usr\/share\/${_appname}\/${_appname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" -i \
-        "${srcdir}/usr/share/applications/${_appname}-url-handler.desktop"
-    sed "s|\/usr\/share\/${_appname}\/${_appname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" -i \
-        "${srcdir}/usr/share/applications/${_appname}.desktop"
+    sed "s/${_appname}.desktop/${pkgname%-bin}.desktop/" -i "${srcdir}/usr/share/appdata/${_appname}.appdata.xml"
+    sed "s/\/usr\/share\/${_appname}\/${_appname}/${pkgname%-bin}/;s/Icon=${_pkgname}/Icon=${pkgname%-bin}/" \
+        -i "${srcdir}/usr/share/applications/"{"${_appname}-url-handler.desktop","${_appname}.desktop"}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

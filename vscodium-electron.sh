@@ -21,7 +21,7 @@ if [[ -f "${_FLAGS_FILE}" ]]; then
         fi
     done < "${_FLAGS_FILE}"
 fi
-cd "${_APPDIR}"
+cd "${_APPDIR}" || { echo "Failed to change directory to ${_APPDIR}"; exit 1; }
 if [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
    unset DISPLAY
    exec electron@electronversion@ "${_APPDIR}/out/cli.js" --enable-features=UseOzonePlatform --ozone-platform=wayland "${_APPDIR}/@appname@.js" "$@"
