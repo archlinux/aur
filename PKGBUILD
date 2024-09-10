@@ -1,4 +1,5 @@
 # Maintainer: Jakub Smulski <hgonomeg@gmail.com>
+# Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=coot
 pkgver=1.1.10
 pkgrel=1
