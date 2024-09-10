@@ -1,6 +1,6 @@
 pkgbase = waku-bin
 	pkgdesc = A simple template repository generator. Lets make starting new proejcts feel like a breeze again!
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/caffeine-addictt/waku
 	license = AGPL-3.0
@@ -8,10 +8,10 @@ pkgbase = waku-bin
 	conflicts = waku
 	provides = waku
 	arch = aarch64
-	source_aarch64 = https://github.com/caffeine-addictt/waku/releases/download/v0.2.1/waku_0.2.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 410bd19667f7fb28e16d2777db3c5316405c9eb984828436eeeef8942d42e79f
+	source_aarch64 = https://github.com/caffeine-addictt/waku/releases/download/v0.2.2/waku_0.2.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = f20322dc6d643f56a1a5f28fe469ae773c3cf17ca97dcea8035f30e6ecaf35be
 	arch = x86_64
-	source_x86_64 = https://github.com/caffeine-addictt/waku/releases/download/v0.2.1/waku_0.2.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 292c540336cfa8f4cffdf9e66b7ebe2cb9249c6ecb230fa42196e415c8539816
+	source_x86_64 = https://github.com/caffeine-addictt/waku/releases/download/v0.2.2/waku_0.2.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3cbea8a2f22b1dedfc70b38b68f18543dba6cb1165262937aae4b78b0f88dec2
 	
 pkgname = waku-bin
