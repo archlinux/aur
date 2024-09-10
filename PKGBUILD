@@ -1,7 +1,7 @@
 # Maintainer:  Michael (https://aur.archlinux.org/account/michael_wzq)
 # Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 pkgname=gtfs-to-html
-pkgver=2.7.2
+pkgver=2.9.6
 pkgrel=1
 pkgdesc="Build human readable transit timetables as HTML or PDF from GTFS."
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,7 @@ install=
 changelog=
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('12cf5f0887e7b80d0b81b84a5f162c94964ddb87219d564b52c93e22d5bb12bd')
+b2sums=('2b6dd8d47f043cb525e55dbbc0ca39e7062e763e7b5a61f29d644dfd3b9ea78eaa7810e37f0da1b52f32b8bd11d6c734e6669f4fadfdbc99adf2e76a71e1f80d')
 
 prepare() {
 	npm pack $pkgname
