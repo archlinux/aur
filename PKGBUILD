@@ -6,7 +6,7 @@
 
 pkgname=jmeter
 pkgver=5.6.3
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Java application designed to load test functional behavior and measure performance"
 url="http://jmeter.apache.org/"
@@ -16,7 +16,7 @@ options=('!strip')
 source=("http://archive.apache.org/dist/jmeter/binaries/apache-${pkgname}-${pkgver}.tgz"
   "${pkgname}.desktop")
 sha256sums=('f68efc17fe060f698c48a6abe2599a933927486bda2924dbe14c74895318ddde'
-  '3f039d5a34c55ce5d884bffb252cec8d88ceec367620b0ab42b201f8e45a2218')
+  '5825c95e8aa3fd29bb0e67ae1f6f4640008f74bac756b62394c70b61a3f506ad')
 validpgpkeys=('C4923F9ABFB2F1A06F08E88BAC214CAA0612B399')
 
 package() {
