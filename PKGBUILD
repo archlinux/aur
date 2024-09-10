@@ -5,7 +5,7 @@ _typesuffix='-dkms'
 _vcssuffix='-git'
 pkgname="${_pkgname}${_typesuffix}${_vcssuffix}"
 pkgver=r16.20230811.4bcd1f7
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux kernel module that creates a device '/dev/scream', similar to '/dev/zero' but outputting random letter combinations of 'aAHh' (screaming)."
 url='https://github.com/matlink/dev_scream'
 arch=(
@@ -33,12 +33,14 @@ depends=(
 install='dev_scream-dkms.install'
 source=(
   "${_pkgname}::git+${url}.git"
+  "adapt_for_linux_6.8+.patch"
   "${_pkgname}-dkms.conf.in"
   "scream.modules-load.conf"
   "${install}"
 )
 sha256sums=(
   'SKIP'                                                             # Main source (latest git checkout from $url.git)
+  'cffe952ab47a818a6cf9200423455d520e34c40c969e0d9d16e554bb1da752e0' # adapt_for_linux_6.8+.patch
   '64c5fbe7d7f2cbc9915952ab2c74545a7cc4f32977baae2ba8e0b6a9f41af333' # ${_pkgname}-dkms.conf.in (dev_scream-dkms.conf.in)
   'e9b19eebf2d48369666e5e5657f6459ef9c14889d4a6737bd946e1a48fe82942' # scream.modules-load.conf
   'ae8deb764fd94fe1d002b7dfdd2b11fbe3e0dd6e743603b3702fe9db7a8c3088' # ${install} (dev_scream-dkms.install)
