@@ -1,6 +1,6 @@
 # Maintainer: Achno <logiaTemp@proton.me>
 pkgname=gocheat
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A tool to create beautiful cheatsheets for your keybinds and aliases"
 arch=('x86_64')
