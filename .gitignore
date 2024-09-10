@@ -1,3 +1,4 @@
 audacity/*
 pkg/*
 src/*
+*.pkg.tar.zst
