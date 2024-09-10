@@ -16,7 +16,7 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=mesa-amdonly-gaming-git
-pkgver=24.3.0_devel.194455.5fd3be6f1b7.d41d8cd
+pkgver=24.3.0_devel.194568.0c7896deef8.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 pkgname=(
   'amdonly-gaming-vulkan-mesa-layers-git'
@@ -74,9 +74,6 @@ makedepends=(
 
   # d3d12 deps
   'directx-headers'
-
-  # gallium-omx deps
-  'libomxil-bellagio'
 )
 source=(
   'mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
@@ -134,7 +131,6 @@ build() {
     -D gallium-drivers=radeonsi,llvmpipe,softpipe,zink
     -D gallium-extra-hud=true
     -D gallium-nine=true
-    -D gallium-omx=bellagio
     -D gallium-opencl=icd
     -D gallium-rusticl=true
     -D gallium-va=enabled
@@ -381,8 +377,6 @@ package_amdonly-gaming-mesa-git() {
     'vulkan-icd-loader'
     'wayland'
     'zstd'
-
-    'libomxil-bellagio'
   )
   optdepends=(
     'opengl-man-pages: for the OpenGL API man pages'
@@ -403,7 +397,6 @@ package_amdonly-gaming-mesa-git() {
   # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast, swr
   _install fakeinstall/$_libdir/dri/*_dri.so
 
-  _install fakeinstall/$_libdir/bellagio
   _install fakeinstall/$_libdir/d3d
   _install fakeinstall/$_libdir/lib{gbm,glapi}.so*
   _install fakeinstall/$_libdir/libOSMesa.so*
