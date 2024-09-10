@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-daemon-git
-pkgver=1.0.0.alpha.1.r5.g1ed6880
-pkgrel=3
+pkgver=1.0.0.alpha.1.r6.ga41d199
+pkgrel=1
 pkgdesc="Cosmic settings daemon"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-settings-daemon"
@@ -9,8 +9,10 @@ license=('GPL-3.0-or-later')
 depends=(
   'acpid'
   'adw-gtk-theme'
+  'alsa-utils'
   'geoclue'
   'libinput'
+  'playerctl'
   'pop-sound-theme-git'
   'systemd-libs'
 )
