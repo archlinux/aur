@@ -1,6 +1,6 @@
 pkgbase = zpotify-bin
 	pkgdesc = A CLI for Spotify
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/ratakor/zpotify
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = zpotify-bin
 	license = ISC
 	provides = zpotify
 	conflicts = zpotify
-	source = https://github.com/ratakor/zpotify/releases/download/0.2.1/x86_64-linux-zpotify
+	source = https://github.com/ratakor/zpotify/releases/download/0.2.2/x86_64-linux-zpotify
 	source = https://github.com/ratakor/zpotify/raw/master/_zpotify
 	sha256sums = SKIP
 	sha256sums = SKIP

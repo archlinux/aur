@@ -2,7 +2,7 @@
 
 pkgname=zpotify-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A CLI for Spotify"
 arch=('x86_64' 'aarch64')
