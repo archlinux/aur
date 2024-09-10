@@ -1,8 +1,8 @@
 # Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
 
 pkgname=dektec-drivers-dkms
-pkgver=2024.06.0
-pkgrel=2
+pkgver=2024.06.1
+pkgrel=1
 pkgdesc='Linux DKMS for Dektec device drivers'
 arch=('x86_64')
 url="https://www.dektec.com/downloads/SDK/#linux"
@@ -18,10 +18,10 @@ source=("https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${pkgver}
         'dkms.conf'
         'Makefile'
         '01-wildcard.patch')
-sha256sums=('8b2ae732837f9d0be1db435c10b0f3bd2a12e1bf2d51200da84f4d378701a785'
+sha256sums=('903772f0ef251dad1871e6110bd17409dab502ad7c1e49dfcf2882df3f082d98'
             '3ab98092aad33786c1766b8d0b29636c5bb1ccdb116cbfe32608c972b99d4d47'
             '3ee9f2b8836d3e68451c3c29f343295f6ceaca52e84e18d040205b245473d314'
-            'b7c5d16d7febe92ca077fa7197d469cfb36b6e7a7017f54223c418b157a2f4ea')
+            '2f97f611df8aa77dfb710f192f016b12337015dc747327a4bb5977c052e4c9b2')
 
 prepare() {
   # Set version
@@ -33,7 +33,7 @@ prepare() {
 package() {
   # Install drivers
   install -d "${pkgdir}/usr/src/${pkgname}-${pkgver}/Drivers"
-  cp -a --no-preserve='ownership,mode' \
+  cp -a --no-preserve='mode,ownership' \
     LinuxSDK/Drivers/{Dta,DtaNw,DtDrvCommon,DtPcie,DtPcieNw,DtSal,Dtu} \
     "${pkgdir}/usr/src/${pkgname}-${pkgver}/Drivers"
   install -Dm644 LinuxSDK/Common/Source/*.h -t "${pkgdir}/usr/src/${pkgname}-${pkgver}/Common/Source"
