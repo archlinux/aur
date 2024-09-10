@@ -1,14 +1,14 @@
 pkgbase = some-sass-language-server
 	pkgdesc = Sass LSP with improved code suggestions, documentation and code navigation for SCSS.
-	pkgver = 1.5.2
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/wkillerud/some-sass
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = some-sass-language-server-1.5.2.tgz
-	source = https://registry.npmjs.org/some-sass-language-server/-/some-sass-language-server-1.5.2.tgz
-	sha256sums = 2e6c06ab19c34fb979ff22b64a24cc0f668bfbbf040401493c68a0843ca3956a
+	noextract = some-sass-language-server-1.7.0.tgz
+	source = https://registry.npmjs.org/some-sass-language-server/-/some-sass-language-server-1.7.0.tgz
+	sha256sums = 402a68e3568b69762aee2572c4d2db40782eff3caf955122815b064b87b25e10
 
 pkgname = some-sass-language-server
