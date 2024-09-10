@@ -17,43 +17,47 @@ makedepends=('gcc-ada' 'git') # TODO
 options=('buildflags' '!debug')
 source=(
   "git+https://review.coreboot.org/coreboot#commit=${_commit}"
-  'https://github.com/acpica/acpica/archive/refs/tags/R06_28_23.tar.gz'
-  'https://www.nasm.us/pub/nasm/releasebuilds/2.16.01/nasm-2.16.01.tar.bz2'
+  'https://downloadmirror.intel.com/783534/acpica-unix-20230628.tar.gz'
+  'https://www.nasm.us/pub/nasm/releasebuilds/2.16.03/nasm-2.16.03.tar.bz2'
 )
 sha256sums=(
   'SKIP'
-  '2248799b7ca08a7711ac87d31924354ed49047507607d033bd327ba861ec4d31'
-  '35b6ad2ee048d41c4779f073f3efca7762a822b7d2d4ef4e8df24cf65747bb2e'
+  '86876a745e3d224dcfd222ed3de465b47559e85811df2db9820ef09a9dff5cce'
+  'bef3de159bcd61adf98bb7cc87ee9046e944644ad76b7633f18ab063edb29e57'
 )
 sources_gcc=(
   'https://ftpmirror.gnu.org/gmp/gmp-6.3.0.tar.xz'
   'https://ftpmirror.gnu.org/mpfr/mpfr-4.2.1.tar.xz'
   'https://ftpmirror.gnu.org/mpc/mpc-1.3.1.tar.gz'
-  'https://ftpmirror.gnu.org/gcc/gcc-13.2.0/gcc-13.2.0.tar.xz'
-  'https://ftpmirror.gnu.org/binutils/binutils-2.41.tar.xz'
+  'https://ftpmirror.gnu.org/gcc/gcc-14.1.0/gcc-14.1.0.tar.xz'
+  'https://ftpmirror.gnu.org/binutils/binutils-2.42.tar.xz'
 )
 hashes_gcc=(
   'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
   '277807353a6726978996945af13e52829e3abd7a9a5b7fb2793894e18f1fcbb2'
   'ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8'
-  'e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da'
-  'ae9a5789e23459e59606e6714723f2d3ffc31c03174191ef0d015bdf06007450'
+  'e283c654987afe3de9d8080bc0bd79534b5ca0d681a73a11ff2b5d3767426840'
+  'f6e4d41fd5fc778b06b7891457b3620da5ecea1006c6a4a41ae998109f85a800'
 )
 sources_clang=(
-  'https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/llvm-16.0.6.src.tar.xz'
-  'https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/clang-16.0.6.src.tar.xz'
-  'https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/cmake-16.0.6.src.tar.xz'
-  'https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/compiler-rt-16.0.6.src.tar.xz'
-  'https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/clang-tools-extra-16.0.6.src.tar.xz'
-  'https://cmake.org/files/v3.27/cmake-3.27.7.tar.gz'
+  'https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.6/lld-18.1.6.src.tar.xz'
+  'https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.6/llvm-18.1.6.src.tar.xz'
+  'https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.6/clang-18.1.6.src.tar.xz'
+  'https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.6/cmake-18.1.6.src.tar.xz'
+  'https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.6/compiler-rt-18.1.6.src.tar.xz'
+  'https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.6/clang-tools-extra-18.1.6.src.tar.xz'
+  'https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.6/libunwind-18.1.6.src.tar.xz'
+  'https://cmake.org/files/v3.29/cmake-3.29.3.tar.gz'
 )
 hashes_clang=(
-  'e91db44d1b3bb1c33fcea9a7d1f2423b883eaa9163d3d56ca2aa6d2f0711bc29'
-  '1186b6e6eefeadd09912ed73b3729e85b59f043724bb2818a95a2ec024571840'
-  '39d342a4161095d2f28fb1253e4585978ac50521117da666e2b1f6f28b62f514'
-  '7911a2a9cca10393a17f637c01a6f5555b0a38f64ff47dc9168413a4190bc2db'
-  '174c7844db2590b18b2a59a9ce503f8fe439edc2de2f0f625006501c99736f31'
-  '08f71a106036bf051f692760ef9558c0577c42ac39e96ba097e7662bd4158d8e'
+  'f1f059c2bf98ffa558cd0c48ea568736c41f0c8029dabb53147d48b9efdaa802'
+  'c231d0a5445db2aafab855e052c247bdd9856ff9d7d9bffdd04e9f0bf8d5366f'
+  '54e0817f918b90b5f94684e9729ac2f9d3820fce040d6395d71c1f19ffa3b03c'
+  'a643261ed98ff76ab10f1a7039291fa841c292435ba1cfe11e235c2231b95cdb'
+  'f05f4e15a4524194c93303aa6027006a5182eccfe8f5c90491c2f1fbfcedb96b'
+  'd78732ec6d55b7374abe14b97c9529a7b56a1fe19929a5bf4c3802b69f77764e'
+  '7ed4651612a5c07aadfda38fdbd4e7e786877826790b5d74ce30edd638eb00b3'
+  '252aee1448d49caa04954fd5e27d189dd51570557313e7b281636716a238bccb'
 )
 
 for target in ${_gcc_targets}; do
