@@ -3,7 +3,7 @@
 pkgbase=libajantv2
 pkgname=('libajantv2' 'ajantv2-tools'  'ajantv2-dkms')
 pkgdesc="Open-source SDK for discovering, interrogating and controlling NTV2 professional video I/O devices from AJA Video Systems, Inc"
-_pkgver=17.0.1
+_pkgver=17.1.0
 pkgver=${_pkgver//-/_}
 pkgrel=1
 epoch=1
@@ -12,14 +12,11 @@ url="https://github.com/aja-video/libajantv2"
 license=(MIT)
 makedepends=("cmake" "git")
 options=('debug')
-source=("libajantv2::git+https://github.com/aja-video/libajantv2.git#commit=b6acce6b135c3d9ae7a2bce966180b159ced619f")
+source=("libajantv2::git+https://github.com/aja-video/libajantv2.git#commit=7a53c590243868b76e5401fdcb23ec743bc07f7a")
 sha256sums=("SKIP")
 
 prepare() {
   cd libajantv2
-
-  # Don't add rdmawhacker if AJA_DISABLE_NVIDIA is enabled
-  git cherry-pick -n 8b2575c878726b05ad476a578764be7c412bddb5
 
   # Add fixup VERSION and add SOVERSION
   sed -i 's|VERSION "${AJA_NTV2_VER_STR}"|VERSION "${AJA_NTV2_VER_STR}" SOVERSION "${AJA_NTV2_SDK_VERSION_MAJOR}"|g' ajantv2/CMakeLists.txt
@@ -30,6 +27,9 @@ prepare() {
   sed -e 's|Makefile \\|Makefile #\\|g' \
       -e 's|\tnvidia-ko-to-module-symvers|\t#nvidia-ko-to-module-symvers|g' \
       -i driver/linux/Makefile
+
+  # Fix missing header
+  sed -i '19 a #include <linux/serial_core.h>\n#include <linux/circ_buf.h>' driver/linux/ntv2serial.h
 }
 
 # TODO: Add Qt deps ("qt6-base" "qt6-multimedia") and create the demo package
@@ -44,7 +44,7 @@ build() {
     -DAJANTV2_DISABLE_DRIVER=ON \
     -DAJANTV2_DISABLE_TESTS=ON \
     -DAJANTV2_DISABLE_TOOLS=OFF \
-    -DAJANTV2_DISABLE_PLUGINS=ON \
+    -DAJANTV2_DISABLE_PLUGIN_LOAD=ON \
     -DAJA_INSTALL_HEADERS=ON \
     -DAJA_INSTALL_SOURCES=OFF \
     -DAJA_INSTALL_CMAKE=OFF \
@@ -70,7 +70,7 @@ _install() {
 }
 
 package_libajantv2() {
-  depends=("gcc-libs" "glibc")
+  depends=("gcc-libs" "glibc" "systemd-libs")
 
   _install fakeinstall/usr/include
   _install fakeinstall/usr/lib
