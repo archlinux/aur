@@ -28,10 +28,10 @@ build() {
 	  -DCMAKE_INSTALL_PREFIX=/usr \
     -DWITH_QT6=ON \
 	  ..
-  make -j$(nproc) 
+  cmake --build .
 }
 
 package() {
   cd $srcdir/$pkgname-$pkgver/builddir
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install .
 }
