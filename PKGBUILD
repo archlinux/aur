@@ -2,8 +2,8 @@
 
 pkgname="librespeed-go"
 pkgver=1.1.5
-pkgrel=1
-pkgdesc="Very lightweight speed test implemented in Javascript, using XMLHttpRequest and Web Workers"
+pkgrel=2
+pkgdesc="LibreSpeed speed test backend written in go"
 url="https://github.com/librespeed/speedtest-go"
 license=("LGPL3")
 arch=("i386" "x86_64" "aarch64" "armv5h" "armv6h" "armv7h")
