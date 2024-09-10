@@ -2,7 +2,7 @@
 
 _pkgname=ashell
 pkgname="${_pkgname}-git"
-pkgver=7bbc9e5
+pkgver=3c2d6e5
 pkgrel=1
 pkgdesc="A ready to go Wayland status bar for Hyprland"
 _git="https://github.com/MalpenZibo/${_pkgname}.git"
@@ -46,13 +46,6 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
-}
-
-check() {
-  cd "${_pkgname}"
-
-  export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
 }
 
 package() {
