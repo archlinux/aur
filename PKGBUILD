@@ -9,14 +9,14 @@
 
 _qt_module=qtconnectivity
 pkgname=mingw-w64-qt5-connectivity-static
-pkgver=5.15.14
+pkgver=5.15.15
 pkgrel=1
 arch=('any')
 pkgdesc="Provides access to Bluetooth hardware (mingw-w64)"
 depends=('mingw-w64-qt5-base-static')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-qt5-declarative-static')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=99f30db37c63447c59d5fac15bc8feb832a7fd04
+_commit=f2a9c5d1235d88cc26f2cfa348a037b65e31a5ae
 _basever=${pkgver%%+*}
 pkgver+=+kde+r3
 makedepends+=('git')
@@ -25,7 +25,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('3775e6f5600d43713a0d7337e297aa608d2bb0e7b8c2cbb76ccdf0bfdb656132')
+sha256sums=('SKIP')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -48,6 +48,7 @@ build() {
     for _config in "${_configurations[@]}"; do
       msg2 "Building ${_config##*=} version for ${_arch}"
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
+      _additional_qmake_args=QMAKE_CXXFLAGS+=-fpermissive
       ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} ${_additional_qmake_args}
       make
       popd
