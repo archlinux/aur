@@ -1,17 +1,13 @@
 # Maintainer: Ryan Petris <ryan@petris.net>
 
 pkgname=aur-builder
-pkgver=1.1.1
+pkgver=1.3.16
 pkgrel=1
 pkgdesc='AUR Build Helper'
 url='https://github.com/ryanpetris/aur-builder'
 arch=('x86_64')
 license=('GPL-3.0-only')
-depends=(
-    'pacman'
-    'git'
-    'pacdb'
-)
+depends=()
 makedepends=(
     'go'
 )
@@ -19,7 +15,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/ryanpetris/${pkgname}/archive/v${pkgver}.tar.gz"
 )
 b2sums=(
-    'da60409f7421eda41f767f1184899a737865a9239f32b373f630376d6aa2ecf5fb3be4cfee0e920621d9a504f009feed533f93be5509dc40821d67d505d965db'
+    '747b3c49589bc2173bc0bc1ef7df2329e03deb662ee7644e0fdfa1c37f1e154a47ac7f25af263ebe215da7382c8737e6f81543e1d214cf3f499eb2527f8c6909'
 )
 
 build() {
@@ -36,6 +32,12 @@ build() {
 }
 
 package() {
+    depends+=(
+        'pacman'
+        'git'
+        'pacdb'
+    )
+
     cd "${srcdir}/${pkgname}-${pkgver}"
 
     make VERSION="$pkgver" DESTDIR="$pkgdir" PREFIX="/usr" install
