@@ -1,10 +1,10 @@
 # Maintainer: zotan <aur@zotan.email>
 
-_pkgver=v2024.1-beta2.security3
+_pkgver=v2024.1-beta3
 
 pkgname=iceshrimp.net-pre
-pkgver=2024.1.beta2.security3
-pkgrel=2
+pkgver=2024.1.beta3
+pkgrel=1
 pkgdesc="Decentralized and federated social networking service, implementing the ActivityPub standard"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp.net"
@@ -32,7 +32,7 @@ source=(
   "iceshrimp.net.hook"
 )
 
-sha512sums=('f4e54aa74d44e3810d1ef3d10bebd1de69a0e09132d2c845fcd33c1635f41e6f4628183d5ccc4d9fe85bba2e4417a2a207db4940eb2eea1d7f9f40c4b02b31b7'
+sha512sums=('51c571ef4dec07b1b164c70b50a1b030ceb133d9959da9fbc93907aaae7c9d7f520d20e1d122f7cbcd181993e0a24e209c93f6e944c614880a1d760d520d3680'
             'cfb7adf7e9f0d9d05ab89b2237ddf1ef4135ed9dde463e96c7cd94e03e497a85c77a795ac20c09214a2364e675c88e65ac119f6de82a08f5c2d64d657c4b3fc0'
             '9adf1781842ae7ff2779ca561f06ab2b6fb93e206698084283986627aba69b0fd4482ccbed3daebb2517e5966c326604e1cc57618589f331a966fee2db63815d'
             '0665aa7af2b2aa4405289ce9119439ddcc6b9e6c81dc8e3b9ed5d8ecdc4a39d49c950d41d3098ce99fe294ce51a2dee55ec7248c1756783b0e9aad0bde4654fa'
