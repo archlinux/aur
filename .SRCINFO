@@ -10,7 +10,7 @@ pkgbase = otf-apple-sf-mono
 	source = https://devimages-cdn.apple.com/design/resources/download/SF-Mono.dmg
 	source = license.awk
 	source = version.awk
-	sha256sums = f278893e4de119f2b551222cf5ea3167a1a5338699ed939b9908f66689a3f86a
+	sha256sums = 51aaf1d5328eee0e725415c0c7a6248b4eb9af3ff046e6221cfcf38ba7134e5f
 	sha256sums = cd45a6edaa3829837b090a5a18d3c906816931e7a779b33b6ada23b49b5a5889
 	sha256sums = 55a4e9e108e50b07481044fad445636e502f2d95d7e8964e1d4cda3e9618b198
 

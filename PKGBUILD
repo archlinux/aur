@@ -1,7 +1,8 @@
 # Maintainer: Leonard Janis König <ljrk@ljrk.org>
+# Contributor: witt <1989161762 at qq dot com>
 
 pkgname='otf-apple-sf-mono'
-pkgver=16.0d2e1
+pkgver=18.0d1e1
 pkgrel=1
 pkgdesc='Apples the San Francisco typeface family. Monospaced variant.'
 arch=('any')
@@ -10,7 +11,7 @@ license=('custom:apple-restricted-font')
 source=('https://devimages-cdn.apple.com/design/resources/download/SF-Mono.dmg'
         'license.awk'
         'version.awk')
-sha256sums=('f278893e4de119f2b551222cf5ea3167a1a5338699ed939b9908f66689a3f86a'
+sha256sums=('51aaf1d5328eee0e725415c0c7a6248b4eb9af3ff046e6221cfcf38ba7134e5f'
             'cd45a6edaa3829837b090a5a18d3c906816931e7a779b33b6ada23b49b5a5889'
             '55a4e9e108e50b07481044fad445636e502f2d95d7e8964e1d4cda3e9618b198')
 makedepends=('texlive-bin' 'p7zip')
