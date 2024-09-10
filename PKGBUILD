@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://git.suyu.dev/suyu/suyu"
 license=('GPL3')
 depends=('fuse2')
-source=("suyu"
+source=("https://git.darksys.pw/aur/suyu-bin/suyu"
         "suyu.desktop"
         "suyu.png")
 sha256sums=('46bbcc6e16262ec32bdad6ccd7deb8d8127ae582b1be9b10cd4313205c9f30e9'
