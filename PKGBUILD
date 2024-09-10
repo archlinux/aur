@@ -36,7 +36,7 @@ build() {
 
   ./configure --prefix=/usr \
               --disable-static \
-              --with-rdki-prefix=/usr
+              --with-rdki-prefix=/usr \
               --with-enhanced-ligand-tools 
   make
 }
