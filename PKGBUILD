@@ -4,13 +4,13 @@
 
 pkgname=perl-event
 pkgver=1.28
-pkgrel=1.2
+pkgrel=1.3
 pkgdesc="Event loop processing"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 makedepends=()
-url='http://search.mcpan.org/dist/Event'
+url='http://metacpan.org/dist/Event'
 source=("http://search.mcpan.org/CPAN/authors/id/E/ET/ETJ/Event-${pkgver}.tar.gz")
 sha512sums=('8c7e676c3f659f85ae53ff3b60142943c72881f101f2c66dfd1a7e47babfade0171b78a2062476b6e061f12370b279b73abbe3ab01b07d7088145fa9508e7d0c')
 _distdir="Event-${pkgver}"
