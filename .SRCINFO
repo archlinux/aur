@@ -1,0 +1,15 @@
+pkgbase = lazybar-git
+	pkgdesc = A lightweight, event-driven status bar for EWMH-compliant window managers on X11
+	pkgver = 0.5.1.r10.g2577768
+	pkgrel = 1
+	url = https://github.com/qelxiros/lazybar
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = lazybar-git
+	backup = etc/lazybar/config.toml
+	source = git+https://github.com/Qelxiros/lazybar
+	sha512sums = SKIP
+
+pkgname = lazybar-git
