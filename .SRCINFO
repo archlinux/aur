@@ -9,7 +9,7 @@ pkgbase = zsa-kontroll
 	makedepends = protobuf
 	depends = glibc
 	depends = gcc-libs
-	depends = zsa-keymapp-bin
+	depends = zsa-keymapp
 	source = git+https://github.com/zsa/kontroll#tag=1.0.3
 	sha512sums = SKIP
 

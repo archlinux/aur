@@ -8,7 +8,7 @@ pkgrel=2
 url="https://github.com/zsa/${pkgname}"
 source=("git+https://github.com/zsa/${_repo}#tag=${pkgver}")
 makedepends=('rust' 'protobuf')
-depends=('glibc' 'gcc-libs' 'zsa-keymapp-bin')
+depends=('glibc' 'gcc-libs' 'zsa-keymapp')
 arch=('x86_64')
 license=('MIT')
 sha512sums=('SKIP')
