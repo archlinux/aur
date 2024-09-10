@@ -1,6 +1,6 @@
 pkgbase = 5db5-compressor
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://audioassault.mx/plugin/Compressor551
 	arch = x86_64
 	license = EULA
@@ -34,6 +34,8 @@ pkgbase = 5db5-compressor
 	depends = zlib
 	depends = zstd
 	provides = 5db5-compressor
+	source = https://5db5public.s3.amazonaws.com/Compressor551Linux.zip
+	sha256sums = 951123384a1816c09ec2686abc50f73a0dd3bbd8db7af1ae85ffa8aa3378561a
 
 pkgname = 5db5-compressor-lv2-bin
 	pkgdesc = British Style Compressor (LV2)
