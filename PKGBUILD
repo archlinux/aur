@@ -2,8 +2,8 @@
 
 pkgname=dektec-dtapiservice-bin
 pkgver=5.1.2.121
-pkgrel=3
-_sdkver=2024.06.0
+pkgrel=4
+_sdkver=2024.06.1
 pkgdesc="The DTAPI service is a Linux daemon (service) that manages DekTec's range of demodulator boards."
 arch=('i686' 'x86_64')
 url="https://www.dektec.com/downloads/SDK/#linux"
@@ -11,7 +11,7 @@ license=('LicenseRef-custom')
 depends=('gcc-libs' 'glibc' 'dektec-drivers-dkms')
 makedepends=()
 source=("https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdkver}.tar.gz")
-sha256sums=('8b2ae732837f9d0be1db435c10b0f3bd2a12e1bf2d51200da84f4d378701a785')
+sha256sums=('903772f0ef251dad1871e6110bd17409dab502ad7c1e49dfcf2882df3f082d98')
 
 prepare() {
   cd LinuxSDK/DtapiService
