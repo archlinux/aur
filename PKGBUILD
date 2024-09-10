@@ -1,28 +1,45 @@
-# Maintainer: Dawid Weglarz <dawid.weglarz95@gmail.com>
+# Contributor: tippfehlr <tippfehlr@tippfehlr.dev>
+# Contributor: Dawid Weglarz <dawid.weglarz95@gmail.com>
 
 pkgname=geforcenow-electron
-_newpkgname=gfn-electron
 pkgver=2.2.0
-pkgrel=1
-pkgdesc="Linux desktop client for GeForce NOW, using Electron"
-arch=("armv7l" "i686" "x86_64")
-url="https://github.com/hmlendea/${_newpkgname}"
-license=('GPLv3')
-depends=('libva')
-source=("https://github.com/hmlendea/${pkgname}/releases/download/v${pkgver}/geforcenow-electron_${pkgver}_linux.zip"
-	"https://raw.githubusercontent.com/hmlendea/geforcenow-electron/v${pkgver}/icon.png")
-sha256sums=('ec62644e6f94eb4919c0895f73736b2074686c829144506162be38074ef1da2a'
-            '582ad4bb073926e51d8acaa0ab81aa70a1dbe4736eda0cf130b6ae689982b7a0')
+pkgrel=2
+pkgdesc='Linux desktop client for GeForce NOW, using Electron'
+arch=(any)
+url='https://github.com/hmlendea/gfn-electron'
+license=(GPL-3.0-only)
+_electron=electron35
+depends=(libva $_electron)
+makedepends=(npm git)
+source=("git+$url#tag=v$pkgver")
+sha512sums=('be5fb6b056a895a771df7ab0850940dc5a25fd15e1624265a2914e0000e0465c43efed30a3ebeeff683bf8f2b7875b557ceb878b7878c5e3682130cc1bcb09c9')
+
+prepare() {
+	cd gfn-electron
+
+	sed -i 's|Exec=.*|Exec=/usr/bin/geforcenow|' com.github.hmlendea.geforcenow-electron.desktop
+	sed -i 's|Icon=.*|Icon=geforcenow-electron|' com.github.hmlendea.geforcenow-electron.desktop
+}
+
+build() {
+	cd gfn-electron
+
+	HOME="$srcdir/.electron-gyp" npm install
+
+	./node_modules/.bin/electron-builder --linux --x64 --dir \
+		-c.electronDist=/usr/lib/$_electron/ \
+		-c.electronVersion=$(cat /usr/lib/$_electron/version)
+}
 
 package() {
-	install -d ${srcdir} ${pkgdir}/opt/${pkgname}
-	install -d ${pkgdir}/usr/share/applications
-	install -d ${pkgdir}/usr/share/pixmaps
-	install -d ${pkgdir}/usr/bin
+	cd gfn-electron
 
-	cp -r ${srcdir}/* ${pkgdir}/opt/${pkgname}/
-	ln -s /opt/${pkgname}/geforcenow-electron ${pkgdir}/usr/bin/geforcenow
+	mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/lib" "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
+	cp -r --preserve=mode "dist/linux-unpacked/resources/app" "$pkgdir/usr/lib/$pkgname"
 
-	install -m644 ${srcdir}/icon.png ${pkgdir}/usr/share/pixmaps/nvidia.png
-	install -m755 ${srcdir}/com.github.hmlendea.${pkgname}.desktop ${pkgdir}/usr/share/applications
+	ln -s "/usr/lib/$pkgname/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/geforcenow-electron.png"
+	install -Dm644 "com.github.hmlendea.geforcenow-electron.desktop" -t "$pkgdir/usr/share/applications/"
+
+	echo -e "#!/usr/bin/bash\nexec $_electron /usr/lib/geforcenow-electron \"\$@\"" >"$pkgdir/usr/bin/geforcenow"
+	chmod 755 "$pkgdir/usr/bin/geforcenow"
 }

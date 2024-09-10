@@ -1,16 +1,15 @@
 pkgbase = geforcenow-electron
 	pkgdesc = Linux desktop client for GeForce NOW, using Electron
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hmlendea/gfn-electron
-	arch = armv7l
-	arch = i686
-	arch = x86_64
-	license = GPLv3
+	arch = any
+	license = GPL-3.0-only
+	makedepends = npm
+	makedepends = git
 	depends = libva
-	source = https://github.com/hmlendea/geforcenow-electron/releases/download/v2.2.0/geforcenow-electron_2.2.0_linux.zip
-	source = https://raw.githubusercontent.com/hmlendea/geforcenow-electron/v2.2.0/icon.png
-	sha256sums = ec62644e6f94eb4919c0895f73736b2074686c829144506162be38074ef1da2a
-	sha256sums = 582ad4bb073926e51d8acaa0ab81aa70a1dbe4736eda0cf130b6ae689982b7a0
+	depends = electron35
+	source = git+https://github.com/hmlendea/gfn-electron#tag=v2.2.0
+	sha512sums = be5fb6b056a895a771df7ab0850940dc5a25fd15e1624265a2914e0000e0465c43efed30a3ebeeff683bf8f2b7875b557ceb878b7878c5e3682130cc1bcb09c9
 
 pkgname = geforcenow-electron
