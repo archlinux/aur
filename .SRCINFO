@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-location-static
 	pkgdesc = Provides access to position, satellite and area monitoring classes (mingw-w64)
-	pkgver = 5.15.14+kde+r7
+	pkgver = 5.15.15+kde+r7
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = mingw-w64-qt5-location-static
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://invent.kde.org/qt/qt/qtlocation#commit=3beb9c810611337fde61d89aa981e9f177a9ede9
-	sha256sums = dc670dfa97df6934114d5e85db5ebfbbe892cd6f17e7b3ff478d9dd6e9e0d4f8
+	source = git+https://invent.kde.org/qt/qt/qtlocation#commit=e0a477d04f35495ba6eeda8578d1311dba623270
+	sha256sums = SKIP
 
 pkgname = mingw-w64-qt5-location-static

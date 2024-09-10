@@ -15,14 +15,14 @@ _additional_qmake_args+='-- -no-feature-geoservices_mapbox -no-feature-geoservic
 
 _qt_module=qtlocation
 pkgname=mingw-w64-qt5-location-static
-pkgver=5.15.14
+pkgver=5.15.15
 pkgrel=1
 arch=('any')
 pkgdesc='Provides access to position, satellite and area monitoring classes (mingw-w64)'
 depends=('mingw-w64-qt5-base-static' 'mingw-w64-qt5-declarative-static')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=3beb9c810611337fde61d89aa981e9f177a9ede9
+_commit=e0a477d04f35495ba6eeda8578d1311dba623270
 _basever=${pkgver%%+*}
 pkgver+=+kde+r7
 makedepends+=('git')
@@ -31,7 +31,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('dc670dfa97df6934114d5e85db5ebfbbe892cd6f17e7b3ff478d9dd6e9e0d4f8')
+sha256sums=('SKIP')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
