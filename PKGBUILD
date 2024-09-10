@@ -6,7 +6,7 @@
 
 pkgname=jmeter
 pkgver=5.6.3
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Java application designed to load test functional behavior and measure performance"
 url="http://jmeter.apache.org/"
@@ -24,6 +24,7 @@ package() {
   install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   cp -a "apache-$pkgname-$pkgver"/* "$pkgdir/opt/jmeter"
   ln -s /opt/jmeter/bin/jmeter "$pkgdir/usr/bin/jmeter"
+  ln -s /opt/jmeter/docs/images/jmeter_square.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/jmeter.svg"
   sed -i '/^java/s|`dirname "$0"`|/opt/jmeter/bin|' "$pkgdir/opt/jmeter/bin/jmeter"
 }
 
