@@ -1,22 +1,17 @@
 pkgbase=head-crusher
 pkgname=('head-crusher-data-bin' 'head-crusher-lv2-bin' 'head-crusher-vst3-bin')
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://audioassault.mx/plugin/Head_Crusher"
 license=('EULA')
 depends=('alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' 'keyutils' 'krb5' 'libcurl-gnutls' 'libffi' 'libnghttp2' 'libidn2' 'libp11-kit' 'libpng' 'libpsl' 'libssh2' 'libtasn1' 'libunistring' 'libxau' 'libxcb' 'libx11' 'nettle' 'openssl' 'pcre2' 'zlib' 'zstd')
 makedepends=('xdg-user-dirs' 'unzip')
 provides=('head-crusher')
-source=('Head Crusher Linker')
-sha256sums=('ecdcf0b394fabfd10058c41dc2993ac2c08c7916f0e2d1970620f4ff8d1c1046')
-
-prepare () {
-	_archive="`xdg-user-dir DOWNLOAD`/HeadCrusherLinux.zip"
-	ln -srf "${_archive}" "$srcdir/`basename "${_archive}"`"
-	unzip "$srcdir/`basename "${_archive}"`"
-	find $srcdir -name ".DS_Store" -delete
-}
+source=('Head Crusher Linker'
+        'https://5db5public.s3.amazonaws.com/HeadCrusherLinux.zip')
+sha256sums=('ecdcf0b394fabfd10058c41dc2993ac2c08c7916f0e2d1970620f4ff8d1c1046'
+            'd6febfe830a177b59256a11087730a94fe85fce9eede5475788055a59b800763')
 
 package_head-crusher-data-bin() {
     ## Install Asset Data
