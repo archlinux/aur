@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=sshuttle_gui
 pkgname="${_pkgname//_/-}-bin"
-pkgver=0.2
-pkgrel=7
+pkgver=0.3
+pkgrel=1
 pkgdesc="GUI for SShuttle - Transparent proxy server that works as a poor man's VPN. Forwards over ssh."
 arch=('x86_64')
 url="https://github.com/AKotov-dev/SShuttle-GUI"
@@ -16,15 +16,16 @@ depends=(
     'gtk2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-0.mrx8_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-0.mrx9_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9fccc06d6a60b369371fd4a204dca0cd4efc05e060682773815a3e48cc786bb5'
-            '62866488605fd131f9714133216855110030a52d66b54c06445e09e30825f5ef')
+sha256sums=('c6ab0de12eca7b2f307a774c89866548e4f9cc0363531e93b4a4744c5df9d646'
+            'd4b8aa180a4fadebb52de6343ef56501affba634eadff0ed9a493aab20da442d')
 build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${_pkgname}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@appname@/${pkgname%-bin}/
+        s/@runname@/${_pkgname}/
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
 package() {
