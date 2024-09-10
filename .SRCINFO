@@ -1,6 +1,6 @@
 pkgbase = prince-bin
 	pkgdesc = Convert HTML documents to PDF with CSS
-	pkgver = 15.3
+	pkgver = 15.4
 	pkgrel = 1
 	url = https://www.princexml.com/
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = prince-bin
 	backup = etc/prince/license.dat
 	source = prince.sh
 	sha256sums = a02a6159dd0ae8b2a2440c21ed370fd5057148cc6633214f8bc48228d23138fb
-	source_x86_64 = https://www.princexml.com/download/prince-15.3-linux-generic-x86_64.tar.gz
-	sha256sums_x86_64 = fb28affbb7471411643cf27ffb93a330c1b8f209af452f3bfddc0400cb484842
-	source_aarch64 = https://www.princexml.com/download/prince-15.3-linux-generic-aarch64.tar.gz
-	sha256sums_aarch64 = 231f43df36823b2630acc8bd2fd6f4d4857b1b0ede207f07ac8645cc9466cc33
+	source_x86_64 = https://www.princexml.com/download/prince-15.4-linux-generic-x86_64.tar.gz
+	sha256sums_x86_64 = d7940e1fc5c7647b7df23f19cbd5431c6bc7ca97c8abbfe0d3314094de82f9b1
+	source_aarch64 = https://www.princexml.com/download/prince-15.4-linux-generic-aarch64.tar.gz
+	sha256sums_aarch64 = 51ee6f454f8c14bea4c621033dd3bf5dd30d81991ebfc6a419bdaca3388972ee
 
 pkgname = prince-bin
