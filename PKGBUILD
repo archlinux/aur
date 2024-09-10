@@ -122,8 +122,8 @@ package_gtk3-classic()
 {
 	DESTDIR="$pkgdir" meson install -C build
 
-	install -Dt "$pkgdir/usr/share/gtk-3.0" -m644 settings.ini
-	install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 gtk-query-immodules-3.0.hook
+	install -Dm644 settings.ini -t "$pkgdir/usr/share/gtk-3.0"
+	install -Dm644 gtk-query-immodules-3.0.hook -t "$pkgdir/usr/share/libalpm/hooks"
 
 	rm "$pkgdir/usr/bin/gtk-update-icon-cache"
 }
