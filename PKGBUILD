@@ -4,8 +4,8 @@
 # Contributor: Dhananjay Balan <mail@dbalan.in>
 
 pkgname=minio-client
-pkgver=2024.08.26
-_timever=T10-49-58Z
+pkgver=2024.09.09
+_timever=T07-53-10Z
 _pkgver="${pkgver//./-}${_timever//:/-}"
 pkgrel=1
 pkgdesc='Replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage'
@@ -17,7 +17,7 @@ depends=('glibc')
 options=(!lto)
 install=minio-client.install
 source=(git+https://github.com/minio/mc.git#tag=RELEASE.${_pkgver})
-sha512sums=('0fff0ade19f006ba5b24a9314758dd6b8321360a722fa7c812e92e636e0cee757089171db99f7aa6951a323f888b8c2677c95226ee756485335461b9b3070c47')
+sha512sums=('f801313731ed21af94c4d64b4f589f404b685d4dc2699f19d36bc399d39417df77bf8347e0a2982877123547399dd6c7f94d5be2fa0512588ad492c981585e5f')
 
 build() {
   cd mc
