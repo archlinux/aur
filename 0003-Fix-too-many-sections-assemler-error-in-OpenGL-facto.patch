@@ -1,4 +1,4 @@
-From d29523ad850dc556ff76b3bbe9e7418f97d637df Mon Sep 17 00:00:00 2001
+From 75a399e0f8c797d5769cd06348ec0c5ffc5d4578 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:48:51 +0200
 Subject: [PATCH 03/32] Fix too many sections assemler error in OpenGL factory
@@ -11,7 +11,7 @@ Hence the assembler option -mbig-obj is required.
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/src/gui/opengl/opengl.pri b/src/gui/opengl/opengl.pri
-index 24758afdeb..aa04b4a672 100644
+index 24758afdeb3..aa04b4a672e 100644
 --- a/src/gui/opengl/opengl.pri
 +++ b/src/gui/opengl/opengl.pri
 @@ -3,7 +3,8 @@

@@ -1,4 +1,4 @@
-From 655f68b81d85afd13c6fb0664b6bfb8d9f8f8113 Mon Sep 17 00:00:00 2001
+From 9efa97e7788da4201e19cc29a9c0546431bce6f6 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 26 Jan 2017 17:51:31 +0100
 Subject: [PATCH 07/32] Fix linking against shared/static libpng
@@ -9,7 +9,7 @@ Change-Id: Ic7a0ec9544059b8e647a5d0186f1b88c00911dcf
  1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/src/gui/configure.json b/src/gui/configure.json
-index 95e8955b51..bc3eae9087 100644
+index 1f0e0534a50..08c0dcee370 100644
 --- a/src/gui/configure.json
 +++ b/src/gui/configure.json
 @@ -399,8 +399,10 @@
