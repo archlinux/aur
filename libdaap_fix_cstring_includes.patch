@@ -1,0 +1,40 @@
+--- a/lib/content-codes.cpp
++++ b/lib/content-codes.cpp
+@@ -27,6 +27,7 @@
+ #include <libdaap/string-chunk.h>
+ #include <libdaap/version-chunk.h>
+ #include <libdaap/container-chunk.h>
++#include <cstring>
+ 
+ namespace DAAP {
+ 
+--- a/lib/integer-chunk.cpp
++++ b/lib/integer-chunk.cpp
+@@ -22,6 +22,7 @@
+ 
+ #include <libdaap/integer-chunk.h>
+ #include "macros.h"
++#include <cstring>
+ 
+ namespace DAAP {
+
+--- a/lib/version-chunk.cpp
++++ b/lib/version-chunk.cpp
+@@ -22,6 +22,7 @@
+ 
+ #include <libdaap/version-chunk.h>
+ #include "macros.h"
++#include <cstring>
+ #include <stdio.h>
+ 
+ namespace DAAP {
+
+--- a/lib/container-chunk.cpp
++++ b/lib/container-chunk.cpp
+@@ -22,6 +22,7 @@
+ 
+ #include <libdaap/container-chunk.h>
+ #include "macros.h"
++#include <cstring>
+ 
+ namespace DAAP {

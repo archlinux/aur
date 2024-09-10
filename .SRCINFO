@@ -1,0 +1,15 @@
+pkgbase = libdaap
+	pkgdesc = A C/C++ library to share digital audio between computers on a network
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://libdaap.sourceforge.net
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	depends = gcc-libs
+	depends = glibc
+	source = libdaap-0.0.4.tar.gz::https://downloads.sourceforge.net/sourceforge/daap/libdaap-0.0.4.tar.gz
+	source = libdaap_fix_cstring_includes.patch
+	sha256sums = 5539c9a08a51aae946639144315d4d71d6c538fb881e9bae9bb541f140f4abda
+	sha256sums = 14b5c0270c1cdb466a6a7d92d1cbb173522ea6375ca82bcdc3b0a7d0b6cd1c84
+
+pkgname = libdaap
