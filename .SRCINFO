@@ -1,0 +1,14 @@
+pkgbase = adrdox
+	pkgdesc = Documentation generator for D
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://github.com/adamdruppe/adrdox
+	arch = x86_64
+	license = BSL-1.0
+	makedepends = dmd
+	depends = postgresql-libs
+	options = !lto
+	source = adrdox-2.6.0.tar.gz::https://github.com/adamdruppe/adrdox/archive/v2.6.0.tar.gz
+	sha512sums = 051923562f6eb1e42a2039f9934db06673197dc594f1a9d5c22807028e8eb2324a8b85e6db625d7866aa493f068cf7ad5d2ffb25976c13a6e54de3bd0236a39c
+
+pkgname = adrdox
