@@ -31,6 +31,7 @@ build() {
   automake --copy --add-missing --gnu
 
   #CXXFLAGS="${CXXFLAGS} -fpermissive"
+  CXXFLAGS="-Wreturn-type -Wl,--as-needed -Wno-sequence-point -Wsign-compare -Wno-unknown-pragmas -Wno-template-id-cdtor -Wno-deprecated-declarations"
 
   ./configure --prefix=/usr \
               --with-python \
