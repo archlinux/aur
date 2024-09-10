@@ -3,19 +3,20 @@
 
 _pkgname="supabase"
 pkgname="${_pkgname}-bin"
-pkgver=1.191.3
+pkgver=1.192.5
 pkgrel=1
 pkgdesc="A CLI for Supabase, an open source Firebase alternative"
 arch=('x86_64' 'aarch64')
-url="https://github.com/${_pkgname}/cli"
+url="https://supabase.com/docs/reference/cli/about"
+_url="https://github.com/${_pkgname}/cli"
 license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_linux_amd64.tar.gz")
-source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_linux_arm64.tar.gz")
-sha256sums_x86_64=('de99ba3527581ac77c37d262b3220544fe8db42174b9d9c06328cca792e0e028')
-sha256sums_aarch64=('679e29d47dadd58f30950ee2eb46a487443bebf5bbc31e46f974221af8f46f2c')
+source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}_linux_amd64.tar.gz")
+source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}_linux_arm64.tar.gz")
+sha256sums_x86_64=('87fcf53e1aad4b763a94c5c706f66346ca0c6c873f3180ec39cf42788c63e6ec')
+sha256sums_aarch64=('b784b3f3af6f863ef5d6c4c047eb3cc6dc7adb6340e1c2bd47ea41f407c60750')
 
 prepare() {
   cd "${srcdir}"
@@ -24,7 +25,6 @@ prepare() {
 
 build() {
   cd "${srcdir}"
-
   for _sh in bash fish zsh powershell; do
     ./"${_pkgname}" completion "${_sh}" > "completions/${_pkgname}.${_sh}"
   done
