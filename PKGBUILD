@@ -2,7 +2,7 @@
 pkgname=geo-osm-tiles
 pkgname_cap=Geo-OSM-Tiles
 pkgver=0.04
-pkgrel=2
+pkgrel=3
 pkgdesc="Utility that enables download of OSM tiles (downloadosmtiles.pl)"
 arch=('any')
 url="https://metacpan.org/release/ROTKRAUT/Geo-OSM-Tiles-0.04/view/downloadosmtiles.pl"
@@ -24,4 +24,7 @@ build() {
 package() {
     cd "$srcdir/${pkgname_cap}-$pkgver"
     make pure_install doc_install DESTDIR="$pkgdir"
+    mkdir -p "$pkgdir/usr/bin"
+    mv "$pkgdir/usr/bin/site_perl/downloadosmtiles.pl" "$pkgdir/usr/bin/downloadosmtiles"
+    rmdir "$pkgdir/usr/bin/site_perl"
 }
