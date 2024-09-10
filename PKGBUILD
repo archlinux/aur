@@ -11,7 +11,7 @@ depends=('python>=3.12' 'python-croniter' 'python-pydantic' 'python-daemon' 'pyt
 optdepends=('rclone-bisync-manager-tray-git: for tray application' 'cpulimit: for limiting CPU usage of rclone processes')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('103ef0b128aef252c873e6879f16d324d84ad0dc9178b2ee900b4c360be561f8')
+sha256sums=('dd9d6d52858664fad7eca0b6acd7b2e1fa30701387313714ff7a71b4945253f3')
 install=rclone-bisync-manager.install
 
 build() {
