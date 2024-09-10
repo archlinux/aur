@@ -10,7 +10,7 @@
 
 pkgname=ansible-core-2.16
 _pkgname=ansible
-pkgver=2.16.10
+pkgver=2.16.11
 pkgrel=1
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
@@ -66,8 +66,8 @@ replaces=('ansible-base')
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/ansible/ansible/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha512sums=('a40de128d8f3c44f7e45c59fed50e98b47a8bef7b15912bd6ca8a870d9a20542b6dee7235db02dbb9b743b462e1b3a87142a77286aecc53b0dee364bbb8af26c')
-b2sums=('8db2c22831325fba68c75b2851bef4a80ca4986927f502697e39435a1ed0bb08e93fa77927a082dc1da5fa0dff7adfd997ce47fad48625bea03fa886d9f0d3e5')
+sha512sums=('838f9a0408c4cb06c80c22d978ce61afffe47e8cb046f218f121a3546b0d39aacf998e45598b8542493df7489f012054c55a9b1f16da428b0ef0c6912b0b84e6')
+b2sums=('606b299c4193b59a0d9948c6dc606102c04aeacc49cac29182d068490be16c5e3596db943976815edd381588a240a0c808db22d4e3cc1f82f733325bdbf7bd1c')
 
 build() {
   cd "${_pkgname}-${pkgver}"
