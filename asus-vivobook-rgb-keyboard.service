@@ -1,0 +1,11 @@
+[Unit]
+Description=ASUS Vivobook OOBE mode for RGB keyboard backlight
+After=hibernate.target
+StartLimitBurst=0
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/asus-vivobook-rgb-keyboard.sh
+
+[Install]
+WantedBy=hibernate.target multi-user.target
