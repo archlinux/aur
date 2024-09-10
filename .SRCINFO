@@ -1,0 +1,15 @@
+pkgbase = perl-pod-usage
+	pkgdesc = Perl module for displaying usage messages for Perl scripts
+	pkgver = 2.03
+	pkgrel = 1
+	url = https://metacpan.org/pod/Pod::Usage
+	arch = any
+	license = Artistic-1.0-Perl
+	makedepends = perl-module-build
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/M/MA/MAREKR/Pod-Usage-2.03.tar.gz
+	sha256sums = 7d8fdc7dce60087b6cf9e493b8d6ae84a5ab4c0608a806a6d395cc6557460744
+
+pkgname = perl-pod-usage
