@@ -1,0 +1,9 @@
+cudaroot=/opt/cuda/cuda-12.0
+libdir=${cudaroot}/targets/x86_64-linux/lib
+includedir=${cudaroot}/targets/x86_64-linux/include
+
+Name: cudart
+Description: CUDA Runtime Library, version 12.0
+Version: 12.0
+Libs: -L${libdir} -lcudart
+Cflags: -I${includedir}
