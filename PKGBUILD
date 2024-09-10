@@ -3,11 +3,11 @@
 # Contributor: Łukasz Mariański <lmarianski at protonmail dot com>
 
 _pkgname=vscodium
-_electron=electron29
-_nodejs="20.9.0"
+_electron=electron30
+_nodejs="20.16.0"
 
 pkgname=${_pkgname}-electron
-pkgver=1.92.2.24228
+pkgver=1.93.0.24253
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -40,7 +40,7 @@ source=(
 )
 sha256sums=(
 	SKIP
-        'b96a713be2577dd07b727362c77edc7fd0430a5894eead186c1f18f666fc5536'
+        '3ef48e81949b6f25fd328dcb4b69e5aab0d5c0e0d82ee60f4818601e2be21062'
         'da8fbd6dcafa667e2b3368ae87ed216e7e76f56ce4a3e4ede426dc129e8f8349'
         '3010640182f3bb65404eb96e087e3cbe9f2d931c74822cc3c7547712fab1acec'
         '3a5bc109974fcf408855c13965f6d6be0997655c5b359de0bfd19a678c00844e'
