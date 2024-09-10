@@ -1,0 +1,4 @@
+pkg/
+src/
+shellcheck_makefile/
+shellcheck_makefile-*.pkg.*

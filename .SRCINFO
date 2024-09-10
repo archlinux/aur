@@ -1,0 +1,21 @@
+pkgbase = shellcheck_makefile-git
+	pkgdesc = Small utility for applying Shellcheck on Makefiles. Depends only on shellcheck, make and python.
+	pkgver = 1.27.r4.gda75cb6
+	pkgrel = 1
+	url = https://github.com/actionless/shellcheck_makefile
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = shellcheck
+	depends = make
+	depends = python
+	provides = shellcheck_makefile
+	conflicts = shellcheck_makefile
+	source = shellcheck_makefile-git::git+https://github.com/actionless/shellcheck_makefile#branch=master
+	b2sums = SKIP
+
+pkgname = shellcheck_makefile-git
