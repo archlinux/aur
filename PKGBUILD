@@ -13,6 +13,7 @@ makedepends=(
 )
 depends=(
 	"python"
+	"python-plexapi"
 	"mov-cli"
 )
 optdepends=()
