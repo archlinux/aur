@@ -1,0 +1,37 @@
+diff --git a/configure.ac b/configure.ac
+index 8ed018b34..14e21afea 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -255,8 +255,31 @@ CFLAGS="$save_cflags"
+ 
+ dnl =========================== GLM ================================
+ 
+-PKG_CHECK_MODULES(GLM, glm >= 0.9.9)
++# Copied and adapted from how gemmi and rdkit are found below
++AC_ARG_WITH([glm], AS_HELP_STRING([--with-glm location of the GLM package]), with_glm="$withval", with_glm=false)
+ 
++AC_MSG_CHECKING([for GLM])
++if test "x$with_glm" = xfalse ; then
++   :
++   if test -x $prefix/include/glm ; then
++      #echo OK, good we found glm in $prefix
++      AC_MSG_RESULT(yes)
++      glm_install_dir=$prefix
++      AC_SUBST(GLM_CXXFLAGS, "-I$glm_install_dir/include")
++      AC_SUBST(GLM_LIBS, "-L$glm_install_dir/lib -lglm")
++   else
++      AC_MSG_RESULT(no)
++      echo Configuration error. Could not find GLM. 
++      echo Note: This currently comes from an unofficial patch for Archlinux. Contact the AUR package maintainer.
++      exit 1
++   fi
++else
++   AC_MSG_RESULT(yes)
++   AC_SUBST(GLM_CXXFLAGS, "-I$withval/include")
++   AC_SUBST(GLM_LIBS, "-L$withval/lib -lglm")
++fi
++
++   
+ dnl =========================== GTK ===========================
+ 
+ PKG_CHECK_MODULES(GTK, gtk4 >= 4.4)

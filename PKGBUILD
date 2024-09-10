@@ -14,13 +14,18 @@ depends=('coordgen' 'guile' 'libccp4>=6.5.1-2' 'libclipper>=2.1.20170202-3' 'fft
 source=($pkgname-$pkgver.tar.gz::https://github.com/pemsley/$pkgname/archive/refs/tags/Release-$pkgver.tar.gz
         https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/dependencies/refmac-monomer-library.tar.gz
         https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/dependencies/reference-structures.tar.gz
+        glm_nopkgconfig.patch
         )
 
 sha256sums=('3cc3ba08dd0221e655669ff3ef6858713d11959478a48278afb055337b8846d2'
             '03562eec612103a48bd114cfe0d171943e88f94b84610d16d542cda138e5f36b'
             '44db38506f0f90c097d4855ad81a82a36b49cd1e3ffe7d6ee4728b15109e281a'
+            '8cdeb98d2ff3bbda91d6f569e4b30915b6f96229926a43c5ecf3c97d69f6a28a'
             )
-
+prepare() {	
+  cd "$srcdir/$pkgname-Release-$pkgver"
+  patch -Np1 -i "$srcdir/glm_nopkgconfig.patch"
+}
 
 build() {
   cd "$srcdir/$pkgname-Release-$pkgver"
