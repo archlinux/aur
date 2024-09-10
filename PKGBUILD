@@ -9,7 +9,7 @@
 
 _qt_module=qtgamepad
 pkgname=mingw-w64-qt5-gamepad-static
-pkgver=5.15.14
+pkgver=5.15.15
 pkgrel=1
 arch=('any')
 pkgdesc="Adds support for getting events from gamepad devices (mingw-w64)"
@@ -17,15 +17,16 @@ depends=('mingw-w64-qt5-base-static' 'mingw-w64-sdl2')
 optdepends=('mingw-w64-qt5-declarative-static: QML bindings')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-qt5-declarative-static')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=b1c2f272f69e222a532485e6f820776c220b3535
+_commit=e9109dadba5c8f2419af67139106b4c30f90332e
 _basever=${pkgver%%+*}
+pkgver+=+kde+r0
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('87abfd163b30583e2e50d5df7a3716b5684838ced32ffbdd82e0fc730c3354bf')
+sha256sums=('SKIP')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
