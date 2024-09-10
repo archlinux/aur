@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=animeclient-bin
 _pkgname=AnimeClient
-pkgver=2.1.1
+pkgver=2.1.2
 _electronversion=31
 pkgrel=1
 pkgdesc="An application that brings together several anime streaming platforms"
@@ -26,10 +26,10 @@ makedepends=(
     'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_Setup_${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     #"${pkgname%-bin}.sh"
 )
-sha256sums=('da2b3627bd6dcea3af228b7d195198b30da8e1c4847c777936d5b0173679da25')
+sha256sums=('50a1addebddd7913c67ddec66b3982e1ba7f560cc4cab7154489f7b3e707213d')
 build() {
     #sed -e "s|@electronversion@|${_electronversion}|g" \
     #    -e "s|@appname@|${pkgname%-bin}|g" \
