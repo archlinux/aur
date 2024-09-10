@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 pkgname=kcc-beta
 pkgver=6.2.0b2
-pkgrel=2
+pkgrel=3
 pkgdesc="Kindle Comic Converter converts comic files or folders to ePub or Panel View MOBI"
 arch=(any)
 url="https://github.com/darodi/kcc"
@@ -16,6 +16,9 @@ depends=(
   'python-raven'
   'python-mozjpeg-lossless-optimization'
   'python-natsort'
+  'python-distro'
+  'python-setuptools'
+  'python-packaging'
 )
 optdepends=(
   'kindlegen>=2.9: for .mobi generation'
@@ -51,3 +54,4 @@ package() {
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.txt"
   install -Dm644 README.md "$pkgdir/usr/share/docs/${pkgname}/README.md"
 }
+
