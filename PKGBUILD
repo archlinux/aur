@@ -1,37 +1,56 @@
-# Maintainer: Echizen Ryoma <echizenryoma.zhang@gmail.com>
-# Contributor: Ouyang Jun <ouyangjun1999@gmail.com>
-# Contributor: Astro Benzene <universebenzene at sina dot com>
-# Contributor: Felix Yan <felixonmars@archlinux.org>
-# Contributor: Jove Yu <yushijun110 [at] gmail.com>
-# Contributor: Ariel AxionL <axionl at aosc dot io>
-
-pkgname=wps-office-bin
-pkgver=11.1.0.8392
+# Maintainer: yifwon <wyf9661 [at] gmail.com>
+pkgbase=wps-office-bin
+pkgname=('wps-office-bin')
+pkgver=12.1.0.17881
 pkgrel=1
-pkgdesc="Kingsoft Office (WPS Office) Debian Binary Package"
-arch=('i686' 'x86_64')
-license=("custom")
-url="http://wps-community.org/"
-depends=('alsa-lib' 'gtk2' 'xorg-mkfontdir' 'openssl-1.0' 'sdl2' 'libpng12' 'libxss' 'libxtst' 'libsm' 'nss')
-optdepends=('cups: for printing support'
-            'curl: An URL retrieval utility and library'
-            'libjpeg-turbo: JPEG image codec support'
-            'pango: for complex (right-to-left) text support'
-            'ttf-wps-fonts: Symbol fonts required by wps-office')
-provides=('wps-office')
+pkgdesc="WPS Office, is an office productivity suite."
+arch=('x86_64')
+url="https://linux.wps.cn"
+license=('LicenseRef-WPS-EULA')
+makedepends=(
+  'tar')
+depends=(
+  'fontconfig' 'libxrender' 'xdg-utils' 'glu'
+  'libpulse' 'libxss' 'sqlite' 'libtool' 'libtiff'
+  'libxslt' 'freetype2')
+optdepends=(
+  'wps-office-fonts: FZ TTF fonts provided by wps office'
+  'cups: for printing support'
+  'libjpeg-turbo: JPEG image codec support'
+  'libpng12: PNG image codec support'
+  'ttf-wps-fonts: Symbol fonts required by wps-office'
+  'ttf-ms-fonts: Microsft Fonts recommended for wps-office')
 conflicts=('wps-office')
-install="${pkgname}.install"
-source_i686=("https://wdl1.cache.wps.cn/wps/download/ep/Linux2019/${pkgver##*.}/wps-office_${pkgver}_i386.deb")
-source_x86_64=("https://wdl1.cache.wps.cn/wps/download/ep/Linux2019/${pkgver##*.}/wps-office_${pkgver}_amd64.deb")
-sha1sums_i686=('60b1c9e33ee6fc1edcefe40dc9ec529d4a668825')
-sha1sums_x86_64=('edb1bc215e46c46bb979869e374788498486b56c')
+provides=('wps-office')
+options=(!strip !zipman !debug)
 
-package() {
-  msg2 "Extracting the data.tar.xz..."
-  bsdtar -xf data.tar.xz -C "${pkgdir}"
-  
-  install -Dm644 "${pkgdir}/opt/kingsoft/wps-office/office6/mui/default/EULA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/EULA.txt"
-  
-  msg2 "Removing Debian Cron job..."
-  rm -r "${pkgdir}/etc/cron.d" "${pkgdir}/etc/logrotate.d" "${pkgdir}/etc/xdg/autostart"
+# https://gitlab.com/cwittlut/wps-tsk/-/blob/main/tsk.sh?ref_type=heads by Ryan Tsien
+# https://pastebin.com/29TeRUMj by Asuka Minato
+_get_source_url() {
+    url="https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/${pkgver##*.}/wps-office_${pkgver}_$1.deb"
+    uri="${url#https://wps-linux-personal.wpscdn.cn}"
+    secrityKey='7f8faaaa468174dc1c9cd62e5f218a5b'
+    timestamp10=$(date '+%s')
+    md5hash=$(echo -n "${secrityKey}${uri}${timestamp10}" | md5sum)
+    url+="?t=${timestamp10}&k=${md5hash%% *}"
+    echo "$url"
 }
+
+source_x86_64=("wps-office_${pkgver}_amd64.deb::$(_get_source_url amd64)")
+sha1sums_x86_64=('ef71d43eaa06a6ffbad4f6307499b80f25478d42')
+
+package(){
+  xz -df data.tar.xz
+  tar --no-same-owner -C "${pkgdir}" -xf data.tar --exclude './usr/share/fonts'\
+  --exclude './usr/share/desktop-directories' ./opt/kingsoft ./usr
+
+  cd "${pkgdir}"
+  # use system lib
+  rm opt/kingsoft/wps-office/office6/lib{jpeg,stdc++}.so*
+
+  # fix python2 call
+  sed -i "s/python -c 'import sys, urllib; print urllib\.unquote(sys\.argv\[1\])'/\
+  python -c 'import sys, urllib.parse; print(urllib.parse.unquote(sys.argv[1]))'/" usr/bin/wps
+}
+
+
