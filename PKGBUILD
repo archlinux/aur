@@ -1,12 +1,22 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 pkgname=kcc-beta
 pkgver=6.2.0b2
-pkgrel=1
+pkgrel=2
 pkgdesc="Kindle Comic Converter converts comic files or folders to ePub or Panel View MOBI"
 arch=(any)
 url="https://github.com/darodi/kcc"
 license=('ISC')
-depends=('python' 'python-pillow' 'python-psutil' 'python-pyqt5' 'python-raven' 'python-slugify' 'python-mozjpeg-lossless-optimization')
+depends=(
+  'python'
+  'pyside6'
+  'python-pillow'
+  'python-psutil'
+  'python-requests'
+  'python-slugify'
+  'python-raven'
+  'python-mozjpeg-lossless-optimization'
+  'python-natsort'
+)
 optdepends=(
   'kindlegen>=2.9: for .mobi generation'
   'p7zip: for zip/CBZ, rar/CBZ, 7z/CB7 support'
