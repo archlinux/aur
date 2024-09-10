@@ -1,8 +1,8 @@
 pkgbase = perl-archive-tar-wrapper
 	pkgdesc = API wrapper around the 'tar' utility
-	pkgver = 0.39
+	pkgver = 0.42
 	pkgrel = 1
-	url = https://github.com/glasswalk3r/archive-tar-wrapper-perl
+	url = https://github.com/haarg/Archive-Tar-Wrapper
 	arch = any
 	license = PerlArtistic
 	makedepends = perl-extutils-makemaker>=0
@@ -14,8 +14,7 @@ pkgbase = perl-archive-tar-wrapper
 	depends = perl-ipc-run>=0
 	options = !emptydirs
 	options = purge
-	source = https://github.com/glasswalk3r/archive-tar-wrapper-perl/archive/refs/tags/rel_039.tar.gz
-	sha256sums = 6f36a9117aac1a75a380c9e2247c183933c98f79a1e62c9a4c715c761e394441
+	source = https://github.com/haarg/Archive-Tar-Wrapper/archive/refs/tags/v0.42.tar.gz
+	sha256sums = 3638a95ae678e8e1e5806ee5780d8014811462a4c4d1b153a924007596fbc833
 
 pkgname = perl-archive-tar-wrapper
-
