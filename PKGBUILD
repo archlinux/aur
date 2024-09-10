@@ -5,18 +5,27 @@ pkgname=('libajantv2' 'ajantv2-tools'  'ajantv2-dkms')
 pkgdesc="Open-source SDK for discovering, interrogating and controlling NTV2 professional video I/O devices from AJA Video Systems, Inc"
 _pkgver=17.1.0
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=("x86_64" "aarch64")
 url="https://github.com/aja-video/libajantv2"
 license=(MIT)
 makedepends=("cmake" "git")
 options=('debug')
-source=("libajantv2::git+https://github.com/aja-video/libajantv2.git#commit=7a53c590243868b76e5401fdcb23ec743bc07f7a")
-sha256sums=("SKIP")
+source=(
+  "libajantv2::git+https://github.com/aja-video/libajantv2.git#commit=7a53c590243868b76e5401fdcb23ec743bc07f7a"
+  "0001-fix_build_with_kernel_6_10_and_newer.patch"
+)
+sha256sums=(
+  "SKIP"
+  "728b175a8249dfbdbf3513384e24d652313914f2d382ee60a2e58f48af3ebde1"
+)
 
 prepare() {
   cd libajantv2
+
+  # Fix build with kernel 6.10 and newer (https://github.com/aja-video/libajantv2/pull/30)
+  patch -Np1 -i "$srcdir"/0001-fix_build_with_kernel_6_10_and_newer.patch
 
   # Add fixup VERSION and add SOVERSION
   sed -i 's|VERSION "${AJA_NTV2_VER_STR}"|VERSION "${AJA_NTV2_VER_STR}" SOVERSION "${AJA_NTV2_SDK_VERSION_MAJOR}"|g' ajantv2/CMakeLists.txt
