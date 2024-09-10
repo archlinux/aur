@@ -15,7 +15,7 @@ _generic_release=false
 ## hack taken from wine-tkg PKGBUILD, real pkgrel is the eval one
 pkgver=9.17.w21.s27b121f
 pkgrel=1
-eval pkgrel=1
+eval pkgrel=2
 
 ################################################################################################################################
 ################################################################################################################################
@@ -35,7 +35,7 @@ _enabled_staging=()
 _disabled_staging=()
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="09-09-2024-82f4d38a-27b121f2"
+_patchbase_tag="09-09-2024-82f4d38a-27b121f2-v2"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -135,7 +135,7 @@ noextract=()
 ## don't needlessly add the wine-osu-patches repo if we explicitly specify custom ones
 if ! { [ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ] ; }; then
   source+=("git+https://github.com/whrvt/wine-osu-patches.git#tag=${_patchbase_tag}")
-  sha512sums+=('ee243d6d89ea194d5f45b063485e925bacf873e6676b3d4f8e9a17c8f8ec52cb8a7c847dd8edcd4b846d78a811f9e19dfd01cb36cf2c7cf0ece4713d002abdc1')
+  sha512sums+=('5f77c68ef88c1c8f46904c9cf866ae561585aff020bd77ade945c6c69b7c4a3917db8b14b19e5a009eb2fd4511e27dc9c72efb348fb8cc952546a3092d55e0e0')
 
   if [ "${_custompatches}" = "true" ]; then
     msg2 "WARNING: _custompatches=true but custompatches directory not found. Will be using wine-osu-patches repo."
