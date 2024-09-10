@@ -11,15 +11,16 @@
 
 _qt_module=qtwebglplugin
 pkgname=mingw-w64-qt5-webglplugin-static
-pkgver=5.15.14
+pkgver=5.15.15
 pkgrel=1
 arch=('any')
 pkgdesc="QPA plugin for running an application via a browser using streamed WebGL commands (mingw-w64)"
 depends=('mingw-w64-qt5-declarative-static' 'mingw-w64-qt5-websockets-static')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=3681356904277e055759693551357e7e488d1be9
+_commit=0d29f1cd46331caf1b5169eb037d573680454348
 _basever=${pkgver%%+*}
+pkgver+=+kde+r0
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
@@ -27,7 +28,7 @@ url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         '0001-Hardcode-linker-flags-for-platform-plugin.patch')
-sha256sums=('67b5e853bd1d0fc61a87940512ae91990a42628eca1e20e108866c34df258b93'
+sha256sums=('SKIP'
             'c855d5b15171ed0f8d730898a62621462a71dbdb0b296d1e0ba2d3cfa87a8bcb')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
