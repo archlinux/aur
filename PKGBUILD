@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mlr3tuning
-_pkgver=1.0.0
+_pkgver=1.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Hyperparameter Optimization for 'mlr3'"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -35,8 +35,8 @@ optdepends=(
   r-xgboost
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('101dfefc442254f3a19f6677986d69fc')
-b2sums=('5a6dc48f55fa1c29db8845607cf4a15cd7f3f513f693684160cd62915696281a18c710ec9178c92da938efc8212711b38dc181b86378152281f5f3e428558910')
+md5sums=('969505c948c86f4524c0c9b4c69c6780')
+b2sums=('dddfb4d9a331d59f7b44cc447add37d81e61cfc8929f6cc5e115e8378cfeea271865bca2003b1c9a621e15c661d367025f32e345229ead87e4aa6a35e7a1dd8a')
 
 build() {
   mkdir build
