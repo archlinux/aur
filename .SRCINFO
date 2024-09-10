@@ -1,0 +1,15 @@
+pkgbase = mic-indicator-bin
+	pkgdesc = PipeWire microphone tray indicator. Pre-compiled.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lincot/mic-indicator
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = qt6-base
+	depends = pipewire
+	provides = mic-indicator
+	conflicts = mic-indicator
+	source = https://github.com/lincot/mic-indicator/releases/download/v0.1.0/mic-indicator_0.1.0.tar.gz
+	sha256sums = e320e2e44198b684bf2e0ac17be93cb7a8755b7dbf87401c316ebd55d55036eb
+
+pkgname = mic-indicator-bin
