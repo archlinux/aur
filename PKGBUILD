@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="playedit"
-pkgver=0.1.6+r198+gbf09f69
+pkgver=0.1.6+198+gbf09f69
 _commit="bf09f692f151be776efcb72703f9b9b5f6a54419"
 pkgrel=1
 pkgdesc="A GTK GUI for creating and editing playlists on an MTP (Media Transfer Protocol) device"
