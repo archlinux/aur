@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=3.1.5.r0.g260a477
+pkgver=3.1.6.r0.g3eec016
 _electronversion=30
 _nodeversion=18
 pkgrel=1
@@ -45,48 +45,60 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-git}|g" \
-        -e "s|@runname@|app|g" \
-        -e "s|@cfgdirname@|SiYuan-Electron|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-git}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-git}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/SiYuan-Electron/
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+    " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --categories="Office" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     sed "2i\Name[zh_CN]=思源笔记" -i "${srcdir}/${pkgname%-git}.desktop"
     cd "${srcdir}/${pkgname//-/.}/app"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export ELECTRONVERSION="${_electronversion}"
     export CGO_ENABLED=1
     export GO111MODULE=on
     export GOOS=linux
     export GOCACHE="${srcdir}/go-build"
     export GOMODCACHE="${srcdir}/go/pkg/mod"
     HOME="${srcdir}/.electron-gyp"
-    echo 'build_from_source=true'  >> .npmrc
-    echo 'link-workspace-packages=true'  >> .npmrc
-    echo 'fetch-retry-maxtimeout=10000'  >> .npmrc
-    echo "cache-dir="${srcdir}"/.pnpm_cache"  >> .npmrc
-    echo "store-dir="${srcdir}"/.pnpm_store"  >> .npmrc
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        echo 'registry=https://registry.npmmirror.com' >> .npmrc
-        echo 'disturl=https://registry.npmmirror.com/-/binary/node/' >> .npmrc
-        echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/' >> .npmrc
-        echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/' >> .npmrc
-        go env -w GOPROXY=https://goproxy.cn,direct
- 
-    else
-        echo "Your network is OK."
-    fi
-    sed "s/\"electron\": \"\([^\"]*\)\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" -i package.json
-    sed "/tar.gz/d;s|AppImage|dir|g" -i electron-builder-linux.yml
+    {
+        #echo 'build_from_source=true'
+        echo 'link-workspace-packages=true'
+        echo 'fetch-retry-maxtimeout=10000'
+        echo "cache-dir="${srcdir}"/.pnpm_cache"
+        echo "store-dir="${srcdir}"/.pnpm_store"
+        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+            go env -w GOPROXY=https://goproxy.cn,direct
+        else
+            echo 'registry=https://registry.npmjs.org'
+            echo 'disturl=https://nodejs.org/dist'
+            echo 'electron_mirror=https://www.electronjs.org/versions'
+            echo 'electron_builder_binaries_mirror=https://github.com/electron-userland/electron-builder-binaries/releases/download'
+        fi
+    } >> .npmrc
+    sed "/tar.gz/d;/deb/d;s/AppImage/dir/;s/icon.icns/icon.png/" -i {electron-builder-linux.yml,electron-builder-linux-arm64.yml}
+    sed -i "s/\"electron\": \"\([^\"]*\)\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" -i package.json
     NODE_ENV=development    pnpm install --no-frozen-lockfile
     NODE_ENV=production     pnpm run build
     cd "${srcdir}/${pkgname//-/.}/kernel"
     go build --tags fts5 -o "../app/kernel-linux/SiYuan-Kernel" -v -ldflags "-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
     cd "${srcdir}/${pkgname//-/.}/app"
-    NODE_ENV=production     pnpm run dist-linux
+    case "${CARCH}" in
+        aarch64)
+            _CFG_FILE=electron-builder-linux-arm64.yml
+            ;;
+        x86_64)
+            _CFG_FILE=electron-builder-linux.yml
+            ;;
+    esac
+    NODE_ENV=production npx electron-builder -l --dir --config "${_CFG_FILE}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
