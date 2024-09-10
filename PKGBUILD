@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TMB
-_pkgver=1.9.14
+_pkgver=1.9.15
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,8 +21,8 @@ optdepends=(
   r-numderiv
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0c36c848c1ed407f348043fef4a18a5c')
-b2sums=('3e8f741512426e5d2ed2f4bbac99e235b04df94bea4b996f45987440260b8e6b8ddefb167cd95e3192c3c7ddc9a0e5b498471abdfc512b74851ad3fec56f6320')
+md5sums=('e73af3ed2d0bf0336e401eabbdf8dec0')
+b2sums=('a799a5dcaa11b17e39268c75d49a078d543c40112a322e00a8ca0647116c20222f06caf9f17fbacc7978e09329f2ce0074271d335432607a3d0bc5cc06495136')
 
 build() {
   mkdir build
