@@ -1,6 +1,6 @@
 pkgbase = plasma6-applets-panel-spacer-extended
 	pkgdesc = Mouse gestures for the KDE Plasma Panel, drag window, run any shortcut, command, application with configurable mouse actions!
-	pkgver = 1.8.3
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/luisbocanegra/plasma-panel-spacer-extended
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = plasma6-applets-panel-spacer-extended
 	makedepends = extra-cmake-modules
 	depends = plasma-workspace
 	depends = kdeplasma-addons
-	source = plasma-panel-spacer-extended-1.8.3.tar.gz::https://github.com/luisbocanegra/plasma-panel-spacer-extended/archive/v1.8.3/plasma-panel-spacer-extended-1.8.3.tar.gz
-	sha256sums = fd4a3e97318dcfb6687e57683dcb3fff05aa83d74697c2adb62e16cc16d15f70
+	source = plasma-panel-spacer-extended-1.9.0.tar.gz::https://github.com/luisbocanegra/plasma-panel-spacer-extended/archive/v1.9.0/plasma-panel-spacer-extended-1.9.0.tar.gz
+	sha256sums = 28a0c5484d4e70bf2f60617200fbbf7f93ad7a0a710be32e4e02d9ecd95ed227
 
 pkgname = plasma6-applets-panel-spacer-extended
