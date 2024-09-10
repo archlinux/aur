@@ -1,0 +1,16 @@
+pkgbase = fabric-cli-git
+	pkgdesc = an alternative cli for fabric
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/Fabric-Development/fabric-cli
+	arch = x86_64
+	license = AGPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = go
+	provides = fabric-cli
+	conflicts = fabric-cli
+	source = git+https://github.com/Fabric-Development/fabric-cli.git
+	sha256sums = SKIP
+
+pkgname = fabric-cli-git
