@@ -1,11 +1,11 @@
 pkgbase = dev_one-dkms-git
 	pkgdesc = Linux kernel module that creates a device '/dev/one', similar to '/dev/zero' but outputting one-bits (0xFF-bytes).
 	pkgver = r15.20230110.0171589
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tinmarino/dev_one
 	install = dev_one-dkms.install
 	arch = any
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = linux
 	depends = dkms
