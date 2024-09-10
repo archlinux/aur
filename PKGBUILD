@@ -2,7 +2,7 @@
 # Ex-Maintainer: Nixuge
 
 pkgname=modrinth-app-git
-pkgver=0.8.5.r1464.bd61f5d
+pkgver=0.8.6.r1477.9500384
 pkgrel=1
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
@@ -56,8 +56,9 @@ build() {
     cd "$srcdir/code/apps/app"
     export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
-    #cargo build --frozen --release --all-features
-    pnpm tauri build --no-bundle
+    cargo build --frozen --release
+    #pnpm tauri build --no-bundle
+    #pnpm tauri build --bundles none
 }
 
 package() {
