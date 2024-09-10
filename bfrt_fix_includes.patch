@@ -1,0 +1,21 @@
+--- a/bfrt.cpp
++++ b/bfrt.cpp
+@@ -23,6 +23,7 @@
+ #include <sstream>
+ #include <new>
+ #include <csignal>
++#include <cstring>
+ 
+ #include "broken_file.h"
+ #include "curl_stuff.h"
+
+--- a/hash.h
++++ b/hash.h
+@@ -25,6 +25,7 @@
+ #include <iostream>
+ #include <string>
+ #include <sstream>
++#include <stdint.h>
+ 
+ namespace libmd5 {
+ #      include "md5/md5.h"

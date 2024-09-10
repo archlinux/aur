@@ -1,0 +1,20 @@
+pkgbase = bfrt
+	pkgdesc = To save time and traffic, re-download file's parts until they are fixed
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://bfrt.sourceforge.net
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = curl
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	noextract = bfrt-0.2.3.tar.bz2
+	source = bfrt-0.2.3.tar.bz2::https://downloads.sourceforge.net/sourceforge/bfrt/bfrt_v0.2.3_src.tar.bz2
+	source = bfrt_fix_includes.patch
+	source = bfrt_fix_build_flags.patch
+	sha256sums = 1fdfd6ccbb2313b7945a168f379ea7ac28e3c7ab5007afa8bbd704d1961c6921
+	sha256sums = 61c89615d290cf85265aec27581b7559ddc5e2800c0ea5015c42a7f64624ee81
+	sha256sums = bf331daa851e9771f5e5ea5151a0d177dbf348cddefe1fe87962305a435fd59a
+
+pkgname = bfrt

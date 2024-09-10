@@ -1,0 +1,22 @@
+--- a/Makefile
++++ b/Makefile
+@@ -2,9 +2,7 @@
+ 
+ CXX=g++
+ CC=gcc
+-CFLAGS=-I/usr/local/include -O2
+-CXXFLAGS=-I/usr/local/include -O2
+-CXXLIBS=-L/usr/local/lib -lcurl -lssl -lcrypto -lz
++CXXLIBS += -lcurl -lz
+ OBJS=bfrt.o broken_file.o curl_stuff.o hash.o io_rtns.o other_stuff.o md5/md5.o sha1/sha1.o sha2/sha2.o
+ 
+ default: bfrt
+@@ -13,7 +11,7 @@
+ 	$(RM) $(OBJS) bfrt
+ 
+ bfrt: $(OBJS)
+-	$(CXX) $(CXXFLAGS) $(CXXLIBS) -o bfrt $(OBJS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) $(CXXLIBS) -o bfrt
+ 
+ bfrt.o: bfrt.cpp broken_file.h curl_stuff.h hash.h io_rtns.h other_stuff.h
+ 	$(CXX) $(CXXFLAGS) -c bfrt.cpp
