@@ -7,6 +7,7 @@ pkgbase = libdaap
 	license = LGPL-2.1-or-later
 	depends = gcc-libs
 	depends = glibc
+	provides = libdaap.so
 	source = libdaap-0.0.4.tar.gz::https://downloads.sourceforge.net/sourceforge/daap/libdaap-0.0.4.tar.gz
 	source = libdaap_fix_cstring_includes.patch
 	sha256sums = 5539c9a08a51aae946639144315d4d71d6c538fb881e9bae9bb541f140f4abda

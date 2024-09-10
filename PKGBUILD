@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://${pkgname}.sourceforge.net"
 license=('LGPL-2.1-or-later')
 depends=('gcc-libs' 'glibc')
+provides=('libdaap.so')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::https://downloads.sourceforge.net/sourceforge/${pkgname#lib}/${_pkgsrc}.tar.gz"
         "${pkgname}_fix_cstring_includes.patch")
