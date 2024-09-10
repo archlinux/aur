@@ -1,7 +1,7 @@
 pkgbase = wine-osu-spectator
 	pkgdesc = A compatibility layer for running Windows programs, but with osu! specific patches
 	pkgver = 9.17.w21.s27b121f
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.winehq.com
 	install = wine.install
 	arch = x86_64
@@ -189,7 +189,7 @@ pkgbase = wine-osu-spectator
 	source = buildiswow64
 	source = wine::git+https://gitlab.winehq.org/wine/wine.git#commit=82f4d38a39a28e802060a84d689550e166ae1721
 	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=27b121f293bc27220dd0ff19d251a19ce695d31d
-	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=09-09-2024-82f4d38a-27b121f2
+	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=09-09-2024-82f4d38a-27b121f2-v2
 	sha512sums = 2d431b8830f783b9973ef3df50606b3dae705dffe3cd6106a7daa3b5ad89eaecd6b0e7da835ebf18985a6f3c9c1c952866f39126e34fb6503935baa91a9e8189
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 	sha512sums = bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285
@@ -199,6 +199,6 @@ pkgbase = wine-osu-spectator
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = ee243d6d89ea194d5f45b063485e925bacf873e6676b3d4f8e9a17c8f8ec52cb8a7c847dd8edcd4b846d78a811f9e19dfd01cb36cf2c7cf0ece4713d002abdc1
+	sha512sums = 5f77c68ef88c1c8f46904c9cf866ae561585aff020bd77ade945c6c69b7c4a3917db8b14b19e5a009eb2fd4511e27dc9c72efb348fb8cc952546a3092d55e0e0
 
 pkgname = wine-osu-spectator
