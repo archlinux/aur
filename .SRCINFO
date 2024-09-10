@@ -1,0 +1,21 @@
+pkgbase = tuxmake
+	pkgdesc = A tool for building Linux kernels across architectures, toolchains, and configurations
+	pkgver = 1.27.0
+	pkgrel = 1
+	url = https://tuxmake.org/
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	depends = python
+	depends = docker
+	depends = podman
+	optdepends = docker: for containerized builds with docker
+	optdepends = podman: for containerized builds with podman
+	source = https://files.pythonhosted.org/packages/source/t/tuxmake/tuxmake-1.27.0.tar.gz
+	sha256sums = 835352c301e363987b074d91a6390a5d2ca14f17b7b602a979a4f7d234a82d65
+
+pkgname = tuxmake
