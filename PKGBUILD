@@ -9,7 +9,7 @@ license=('GPL')
 replaces=('coot-data')
 #depends=('guile' 'gtkglext' 'libccp4>=6.5.1-2' 'libclipper>=2.1.20170202-3' 'gsl' 'imlib' 'swig'
 #         'freeglut' 'libgl' 'gtk4' 'cairo' 'libssm>=1.4.0-2' 'zlib' 'curl' 'python' 'gtkglarea' 'which' 'bc' 'sqlite' 'rdkit' 'mmdb2>=2.0.12-4')
-depends=('coordgen' 'guile' 'libccp4>=6.5.1-2' 'libclipper>=2.1.20170202-3' 'fftw2-float' 'gsl' 'swig'
+depends=('guile' 'libccp4>=6.5.1-2' 'libclipper>=2.1.20170202-3' 'fftw2-float' 'gsl' 'swig'
          'libgl' 'gtk4' 'glm' 'cairo' 'libssm>=1.4' 'zlib' 'curl' 'python' 'python-gobject' 'which' 'bc' 'sqlite' 'rdkit' 'mmdb2>=2.0.12-4')
 source=($pkgname-$pkgver.tar.gz::https://github.com/pemsley/$pkgname/archive/refs/tags/Release-$pkgver.tar.gz
         https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/dependencies/refmac-monomer-library.tar.gz
@@ -40,9 +40,7 @@ build() {
   PYTHON=python3
 
   ./configure --prefix=/usr \
-              --disable-static \
-              --with-rdki-prefix=/usr \
-              --with-enhanced-ligand-tools 
+              --disable-static 
   make
 }
 
