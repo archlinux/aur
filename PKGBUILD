@@ -4,7 +4,7 @@
 
 pkgname=mpg321
 pkgver=0.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A completely free drop-in replacement for mpg123"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/mpg321/"
@@ -19,7 +19,12 @@ sha512sums=('f1bead2c11e4cde0f1a87e1b2e3d216ef80c9a5dd8b219841961688d44a5fc63a54
 build() {
   cd "$pkgname-$pkgver-orig"
 
-  CFLAGS="$CFLAGS -fcommon -Wno-error=format-security" \
+  CFLAGS="$CFLAGS \
+    -fcommon \
+    -Wno-error=format-security \
+    -Wno-error=implicit-function-declaration \
+    -Wno-error=implicit-int \
+    -Wno-error=int-conversion" \
   ./configure \
     --prefix="/usr"
   make

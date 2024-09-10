@@ -1,7 +1,7 @@
 pkgbase = mpg321
 	pkgdesc = A completely free drop-in replacement for mpg123
 	pkgver = 0.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/mpg321/
 	arch = i686
 	arch = x86_64
