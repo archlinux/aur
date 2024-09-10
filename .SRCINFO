@@ -1,7 +1,7 @@
 pkgbase = gitify-bin
 	pkgdesc = GitHub notifications on your menu bar
 	pkgver = 5.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gitify.io/
 	arch = x86_64
 	license = MIT
