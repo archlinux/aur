@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Gauvrit <guillaume@gauvr.it>
 pkgname=rustaman-git
-pkgver=0.2.2.r0.3246ac2
+pkgver=0.2.4.r0.d996956
 # DO NOT FORGET TO RUN / makepkg --printsrcinfo > .SRCINFO
 pkgrel=1
 pkgdesc="Template based HTTP client"
