@@ -3,7 +3,7 @@
 
 pkgname=lan-mouse-git
 _pkgname=lan-mouse
-pkgver=0.9.1.r0.g22dc33367b
+pkgver=0.9.1.r14.g39fed0344c
 pkgrel=1
 pkgdesc="Software KVM Switch / mouse & keyboard sharing software for Local Area Networks"
 url="https://github.com/feschber/lan-mouse"
@@ -44,7 +44,7 @@ package() {
 
   desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "de.feschber.LanMouse.desktop"
 
-  install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/scalable/apps" "resources/de.feschber.LanMouse.svg"
+  install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/scalable/apps" "lan-mouse-gtk/resources/de.feschber.LanMouse.svg"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$_pkgname" LICENSE
 }

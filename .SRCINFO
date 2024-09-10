@@ -1,6 +1,6 @@
 pkgbase = lan-mouse-git
 	pkgdesc = Software KVM Switch / mouse & keyboard sharing software for Local Area Networks
-	pkgver = 0.9.1.r0.g22dc33367b
+	pkgver = 0.9.1.r14.g39fed0344c
 	pkgrel = 1
 	url = https://github.com/feschber/lan-mouse
 	arch = any
