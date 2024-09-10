@@ -1,0 +1,24 @@
+pkgbase = fscan-bin
+	pkgdesc = An intranet comprehensive scanning tool.Written in Go,binary version.一款内网综合扫描工具，方便一键自动化、全方位漏扫扫描.
+	pkgver = 1.8.4
+	pkgrel = 1
+	url = https://github.com/shadow1ng/fscan
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = fscan=1.8.4
+	conflicts = fscan
+	source = LICENSE-1.8.4::https://raw.githubusercontent.com/shadow1ng/fscan/1.8.4/LICENSE.txt
+	sha256sums = 9e9a6cba6e93bb83c334d47b92861615b5be438e1076644ff64e7b0f35100379
+	source_aarch64 = fscan-1.8.4-aarch64::https://github.com/shadow1ng/fscan/releases/download/1.8.4/fscan_arm64
+	sha256sums_aarch64 = 9e50082fbf0a118ea32c34b214de45b4a005f28182697e9fe94f231ea137e30f
+	source_armv7h = fscan-1.8.4-armv7h::https://github.com/shadow1ng/fscan/releases/download/1.8.4/fscan_armv7
+	sha256sums_armv7h = 52a2a0a2166dbae63b66a531174dcff5f1c59f311c55751449f732af3cc4cac6
+	source_i686 = fscan-1.8.4-i686::https://github.com/shadow1ng/fscan/releases/download/1.8.4/fscan32
+	sha256sums_i686 = 87ac3181cc2fa68d571a679969ca17a39cd1965b792a1c1c4c0e1c9d6600e523
+	source_x86_64 = fscan-1.8.4-x86_64::https://github.com/shadow1ng/fscan/releases/download/1.8.4/fscan
+	sha256sums_x86_64 = e82ecbe3823046a27d8c39cc0a4acb498f415549946c9ff0e241838b34ed5a21
+
+pkgname = fscan-bin
