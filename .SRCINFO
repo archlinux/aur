@@ -1,6 +1,6 @@
 pkgbase = rime-tupa-sp
-	pkgdesc = TUPA-SP input for rime
-	pkgver = 0.1.0
+	pkgdesc = TUPA-SP input for RIME
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/syimyuzya/rime-tupa-sp
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = rime-tupa-sp
 	depends = rime-tupa
 	depends = rime-luna-pinyin
 	depends = rime-cantonese
-	source = https://github.com/syimyuzya/rime-tupa-sp/archive/fb946f7ebdf00b9a3a2b51fb6c60927d999e09b0/rime-tupa-sp-fb946f7ebdf00b9a3a2b51fb6c60927d999e09b0.tar.gz
-	sha256sums = 56a63c34f1248bd1d6b27667d1837a324bd73867fc107474a1b096dfb34726c3
+	source = https://github.com/syimyuzya/rime-tupa-sp/archive/032b7b6e8a5e3c60fc155362ac6ca413fb7dabc5/rime-tupa-sp-032b7b6e8a5e3c60fc155362ac6ca413fb7dabc5.tar.gz
+	sha256sums = 9e011d67ce0ef1b03036954f085f9e6617cd951797599ae5676fcd9e52781e1a
 
 pkgname = rime-tupa-sp
