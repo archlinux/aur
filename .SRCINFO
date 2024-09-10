@@ -1,14 +1,12 @@
 pkgbase = ttf-lilex
 	pkgdesc = Modern programming font with ligatures
-	pkgver = 2.510
+	pkgver = 2.530
 	pkgrel = 1
 	url = https://github.com/mishamyrt/Lilex
 	arch = any
 	license = OFL-1.1
-	source = https://github.com/mishamyrt/Lilex/releases/download/2.510/Lilex.zip
-	source = https://github.com/mishamyrt/Lilex/raw/master/LICENSE
-	b2sums = 0c43fd4e4efde2c2022d013bba887a7acc77f7c4140df19b86c6e7eb441e640c516e6a7a4dc8444c3e790fdbc1c0dd8ea3f8dd1894689b1c6702a18db1cd3504
-	b2sums = d1d25182ed13733f821935c1653be983c73ac8ae5322e22b5f072090769878ca4c41de505f25e0b5b36b3c9aff7ac516b20c1f30e2ad144237db8ce7036e8a87
+	source = ttf-lilex-2.530.zip::https://github.com/mishamyrt/Lilex/releases/download/2.530/Lilex.zip
+	b2sums = a2a857cd907189bc3ce0a820549c8dcf853aee87aeb5789281d50c9abd597c40df3b8dce87a4b9232c3d9b7cd2d94aa4ded8be1c0703f13ddcf4e8f52c606209
 
 pkgname = ttf-lilex
 
