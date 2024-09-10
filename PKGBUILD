@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=authme-bin
-pkgver=5.2.2
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Simple cross-platform two-factor (2FA) authenticator app for desktop."
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.deb"
 )
-sha256sums=('f355c1d79884ec4ea32eb97551e4e3da8a892f39c4d9e392fe18382ce0be44ff')
+sha256sums=('aaf9ac1a11de43ce99bee4392b0001f41579f4d2d822ff383c916c6022ca8275')
 build() {
     bsdtar -xf "${srcdir}/data."*
 }
