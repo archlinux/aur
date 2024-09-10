@@ -1,6 +1,6 @@
 pkgbase = echoverb
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://audioassault.mx/plugin/EchoVerb
 	arch = x86_64
 	license = EULA
@@ -35,7 +35,9 @@ pkgbase = echoverb
 	depends = zstd
 	provides = echoverb
 	source = EchoVerb Linker
+	source = https://5db5public.s3.amazonaws.com/EchoVerbLinux.zip
 	sha256sums = 341fb36de011892344b656a3da21e7a20ff1910052ccb488757fd40252390def
+	sha256sums = bb256bd4043e88bbc95144e3681897ff20b246a837937cd0e33e7c0bad2a237e
 
 pkgname = echoverb-data-bin
 	pkgdesc = Original Algorithmic Reverb Plugin (Data Assets)
