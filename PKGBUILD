@@ -4,7 +4,7 @@ _pkgver=v2024.1-beta3
 
 pkgname=iceshrimp.net-pre-bin
 pkgver=2024.1.beta3
-pkgrel=1
+pkgrel=2
 pkgdesc="Decentralized and federated social networking service, implementing the ActivityPub standard"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp.net"
@@ -64,7 +64,9 @@ package() {
   install -dm 755 "${pkgdir}/usr/share/iceshrimp.net"
   install -dm 755 "${pkgdir}/etc/iceshrimp.net"
 
-  xdir="${srcdir}/Iceshrimp.NET-${_pkgver}"
+  targetarch=${CARCH/x86_64/amd64}
+  targetarch=${targetarch/aarch64/arm64}
+  xdir="${srcdir}/Iceshrimp.NET-${_pkgver}-linux-${targetarch}-glibc"
 
   # We are requiring libvips as a system dependency, so we can safely delete this
   rm "${xdir}/libvips.so."*
