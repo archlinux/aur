@@ -5,12 +5,12 @@
 # Contributor: userwithuid < userwithuid at gmail dot com >
 
 _pkgname=rust
-_date=2024-06-13
-_rustc=1.79.0
+_date=2024-08-08
+_rustc=1.80.1
 
 pkgname=mingw-w64-rust
 _prefix=opt/rust
-pkgver=1.80.1
+pkgver=1.81.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
@@ -38,15 +38,15 @@ source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
 noextract=("rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "cargo-${_rustc}-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums=('6ab79b70dc57737a1de378f212fcf8852d67fe6cf272d122a15b3ea13be77947'
-            'SKIP'
-            '2c914483c0882d44af2e50a181cbd2c953d672d50b31aa669ee2346cade1f108'
-            'SKIP'
-            'a04cf42022d0a5faf01c31082bfb1dde9c38409f0ca6da90a3e40faa03e797ae'
-            'SKIP'
-            '07fcadd27b645ad58ff4dae5ef166fd730311bbae8f25f6640fe1bfd2a1f3c3c'
-            'SKIP'
-            '739e5fc43ca5da6e4446752fc25a3bc5f784efca81faa7bcc41cc53b608e764e')
+b2sums=('d9f52da9092d0723c862ebbb2dc351cad0670be6872f691b4c9f36faf06803f072720ebd04f06745c355d807991b38312cc830b12d6d3f50b0574bb7325340b7'
+        'SKIP'
+        'ae009bcf8e42893dc0a91f2dc7d1b15adbbac19a6de8d5c96f7f94f862b4c311870b8228052fbc559ea8c0bddd410e07ca396e2301a0104dd4c6e62b8db49f29'
+        'SKIP'
+        'e323fa9a238c649f7280863a132b2168a30b3ee3bb6e7d3945da37848cf6569014444aa5218049d0ac063f09f723a38c3ba5653568f5b7dab1a6bbd304b6782d'
+        'SKIP'
+        '65799f8928a6b02d14b3ab2d2894eba901410210f97e6fa014fb9f3ea32750db95c34a3f5f1b2ddde0d9521ed6c2ba70033ed5c34cd7c46e1638e5b2a0ad1a40'
+        'SKIP'
+        '43c5a1e694756f6156cc7f00ca27d4780f7b6245d2da909b4e3ab5925a158da7cc07c859bd61df8605409eb258f407cb950982a836b70167489efeddd3cfd04e')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/rust/cargo/config")
