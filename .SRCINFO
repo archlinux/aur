@@ -1,6 +1,6 @@
 pkgbase = doubletake
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://audioassault.mx/plugin/DoubleTake
 	arch = x86_64
 	license = EULA
@@ -35,7 +35,9 @@ pkgbase = doubletake
 	depends = zstd
 	provides = doubletake
 	source = Double Take Linker
+	source = https://5db5public.s3.amazonaws.com/DoubleTakeLinux.zip
 	sha256sums = ad956063615ed59a0ba9da17c785c8058d930ade9e12279651bc9c7c42a386b6
+	sha256sums = 385b7cbff913dc3499fca33fce8d2cd5d471455b1aee32aa53a00e60ce68c3f5
 
 pkgname = doubletake-data-bin
 	pkgdesc = Vocal Take Processor Plugin (Data Assets)

@@ -1,22 +1,19 @@
 pkgbase=doubletake
 pkgname=('doubletake-data-bin' 'doubletake-lv2-bin' 'doubletake-vst3-bin')
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://audioassault.mx/plugin/DoubleTake"
 license=('EULA')
 depends=('alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' 'keyutils' 'krb5' 'libcurl-gnutls' 'libffi' 'libnghttp2' 'libidn2' 'libp11-kit' 'libpng' 'libpsl' 'libssh2' 'libtasn1' 'libunistring' 'libxau' 'libxcb' 'libx11' 'nettle' 'openssl' 'pcre2' 'zlib' 'zstd')
 makedepends=('xdg-user-dirs' 'unzip')
 provides=('doubletake')
-source=('Double Take Linker')
-sha256sums=('ad956063615ed59a0ba9da17c785c8058d930ade9e12279651bc9c7c42a386b6')
+source=('Double Take Linker'
+        'https://5db5public.s3.amazonaws.com/DoubleTakeLinux.zip')
+sha256sums=('ad956063615ed59a0ba9da17c785c8058d930ade9e12279651bc9c7c42a386b6'
+            '385b7cbff913dc3499fca33fce8d2cd5d471455b1aee32aa53a00e60ce68c3f5')
 
-prepare () {
-	_archive="`xdg-user-dir DOWNLOAD`/DoubleTakeLinux.zip"
-	ln -srf "${_archive}" "$srcdir/`basename "${_archive}"`"
-	unzip "$srcdir/`basename "${_archive}"`"
-	find $srcdir -name ".DS_Store" -delete
-}
+
 
 package_doubletake-data-bin() {
     ## Install Asset Data
