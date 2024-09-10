@@ -2,7 +2,7 @@
 # Contributor: ryosuke <ryosuke@tutamail.com>
 
 pkgname=fcitx5-pinyin-moegirl
-pkgver=20240809
+pkgver=20240909
 pkgrel=1
 pkgdesc="Fcitx 5 Pinyin Dictionary from moegirl.org wiki"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/outloudvi/mw2fcitx"
 license=('Unlicense' 'CC-BY-NC-SA-3.0')
 source=("moegirl-${pkgver}.dict::${url}/releases/download/${pkgver}/moegirl.dict"
         "${url}/raw/master/LICENSE")
-sha256sums=('da348acc3823c6ecf4fc082a79fcb826b49c9aa33b4979c8b9994b324a80193d'
+sha256sums=('f9ee1acc45876128771b2f576be63c13b7fbac003c6255a56ef6ef6bd90d5c22'
             '7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c')
 
 package() {
