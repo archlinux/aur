@@ -1,0 +1,174 @@
+#! /bin/bash
+
+# Arch Linux helper script to set/unset/check/fix the enabled Java environment
+# This program may be freely redistributed under the terms of the GNU General Public License
+#
+# Author: Guillaume ALAUX <guillaume@archlinux.org>
+#
+# Adapted for CUDA Toolkit by Karl Ludwig Brennan
+# (changed path, changed all references to Java to CUDA, removed most JRE handling logic, added ldconfig -r / on set)
+
+CUDA_DIR=/opt/cuda
+DEFAULT_NAME=default
+DEFAULT_PATH=${CUDA_DIR}/${DEFAULT_NAME}
+
+
+# Utility functions
+
+check_root() {
+  if [ $(id -u) -ne 0 ]; then
+    echo 'This script must be run as root'
+    exit 1
+  fi
+}
+
+# $1: parameter count given to this script for this option
+# $2: expected parameter count for this option
+check_param_count() {
+  if [ $1 -ne $2 ]; then
+    echo 'Wrong parameter count'
+    exit 2
+  fi
+}
+
+# Second level functions
+
+get_default_cuda() {
+  path=$(readlink -e ${DEFAULT_PATH})
+  if [ "x${path}" != "x/dev/null" ]; then
+    echo ${path/${CUDA_DIR}\/}
+  else
+    echo ""
+  fi
+}
+
+get_installed_cudas() {
+  if [ -d ${CUDA_DIR} ]; then
+    for dir in $(find ${CUDA_DIR} -mindepth 1 -maxdepth 1 -type d | sort); do
+      if [ -x ${dir}/bin/nvcc ]; then
+        cudas+=(${dir/${CUDA_DIR}\/})
+      fi
+    done
+  fi
+  echo ${cudas[@]}
+}
+
+# $1: CUDA Toolkit name to test
+is_cuda_valid() {
+  test "x$1" != "x${DEFAULT_NAME}" && test -x ${CUDA_DIR}/$1/bin/nvcc
+}
+
+# $1: CUDA Toolkit name to set as default
+set_default_link_to() {
+  new_default=$1
+  unlink ${DEFAULT_PATH} 2>/dev/null
+  ln -sf ${new_default} ${DEFAULT_PATH}
+
+  # In non-versioned cuda this is done on install/upgrade via cuda.install. We are effectively reinstalling CUDA every time we do this, so do it here.
+  ldconfig -r /
+}
+
+unset_default_link() {
+  unlink ${DEFAULT_PATH} 2>/dev/null
+}
+
+# First level functions
+
+do_status() {
+  installed_cuda=($(get_installed_cudas))
+  if [ ${#installed_cuda[@]} -eq 0 ]; then
+    echo 'No compatible CUDA Toolkit installed'
+  else
+    default_cuda=$(get_default_cuda)
+    echo 'Available CUDA Toolkits:'
+    for cuda in ${installed_cuda[@]}; do
+      if [ ${cuda} = "${default_cuda}" ]; then
+        echo -e "  ${cuda} (default)"
+      else
+        echo "  ${cuda}"
+      fi
+    done
+    if [ -z ${default_cuda} ]; then
+      echo "No CUDA Toolkit set as default"
+    fi
+  fi
+}
+
+do_get() {
+  get_default_cuda
+}
+
+# $1: CUDA Toolkit name to set as default
+do_set() {
+  if ! is_cuda_valid $1; then
+    echo "'${CUDA_DIR}/$1' is not a valid CUDA Toolkit path"
+    exit 1
+  fi
+  default=$(get_default_cuda)
+  if [ "x$1" != "x${default}" ] || ! is_cuda_valid ${default}; then
+    unset_default_link
+    set_default_link_to $1
+  fi
+
+  #parent_dir=$(dirname $1)
+  #if is_cuda_valid ${parent_dir}; then
+  #  echo "Warning: '${parent_dir}' looks like a valid CUDA Toolkit whereas '$1' is set as default"
+  #  echo "Fix this with 'archlinux-cuda set ${parent_dir}'"
+  #fi
+}
+
+# $1: CUDA Toolkit name to unset
+do_unset() {
+  unset_default_link
+}
+
+# [contains JRE logic as holdover from Java, is harmless.]
+do_fix() {
+  default=$(get_default_cuda)
+  if is_cuda_valid ${default}; then
+    # If its parent is also a valid CUDA Toolkit
+    if is_cuda_valid $(dirname ${default}); then
+      unset_default_link
+      set_default_link_to $(dirname ${default})
+    fi
+  else
+    prev=$(readlink ${DEFAULT_PATH})
+    unset_default_link
+    potential_fixes=("${prev/\/jre}" "${prev}/jre")
+    openjdk8=('java-8-openjdk' 'java-8-openjdk/jre')
+    # List of environments to check by order of preference:
+    # - first potential fixes of user choices,
+    # - then OpenJDK8 as it is considered a default in Arch Linux
+    # - finally, any installed environment
+    to_check=(${potential_fixes[@]} ${openjdk8[@]} $(get_installed_cudas))
+    for cuda in ${to_check[@]}; do
+      if ! is_cuda_valid $(get_default_cuda) && is_cuda_valid ${cuda}; then
+        set_default_link_to ${cuda}
+      fi
+    done
+  fi
+  if ! is_cuda_valid $(get_default_cuda); then
+    echo 'No valid CUDA Toolkit found'
+  fi
+}
+
+usage() {
+  echo "$(basename $0) <COMMAND>"
+  echo -e "\nCOMMAND:"
+  echo -e '\tstatus\t\tList installed CUDA Toolkits and enabled one'
+  echo -e '\tget\t\tReturn the short name of the CUDA Toolkit set as default'
+  echo -e '\tset <CUDA_ENV>\tForce <CUDA_ENV> as default'
+  echo -e '\tunset\t\tUnset current default CUDA Toolkit'
+  echo -e '\tfix\t\tFix an invalid/broken default CUDA Toolkit configuration'
+}
+
+## Main
+case $1 in
+  'status') do_status;;
+  'get')    do_get;;
+  'set')    check_root; check_param_count $# 2; do_set $2;;
+  'unset')  check_root; do_unset;;
+  'fix')    check_root; do_fix;;
+  'help' | '--help' | '-h' | '') usage;;
+  *)           echo "$(basename $0): unknown option '$@'"; exit 1;;
+esac

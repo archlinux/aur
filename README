@@ -1,0 +1,20 @@
+*** Versioned CUDA Toolkits for Arch Linux ***
+
+This file provides two functions.
+
+Firstly, it provides a file conflict with any normal, non-versioned cuda packages.
+This is neccessary as having a package conflict would prevent installing multiple
+versioned cuda packages, as they all provide cuda. This would defeat the whole purpose.
+
+Secondly, it provides a brief overview of how the versioned cuda system is configured:
+
+Versioned cuda is a small project of mine to allow having multiple versions of the
+CUDA Toolkit installed, while still using the Arch Linux package management system
+(i.e. avoiding the runfile installers).
+
+Each version of the CUDA Toolkit is installed in its own directory under /opt/cuda,
+with a "default" symlink to the currently selected version. This symlink is managed
+by the "archlinux-cuda" program, provided in 'cuda-versioned-common'.
+
+This system is based on Arch Linux's method of managing Java environments.
+"archlinux-cuda" is in fact a modified version of "archlinux-java".
