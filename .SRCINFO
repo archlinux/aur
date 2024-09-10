@@ -1,6 +1,6 @@
 pkgbase = 5db5-channel
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://audioassault.mx/plugin/Channel551
 	arch = x86_64
 	license = EULA
@@ -34,6 +34,8 @@ pkgbase = 5db5-channel
 	depends = zlib
 	depends = zstd
 	provides = 5db5-channel
+	source = https://5db5public.s3.amazonaws.com/Channel551Linux.zip
+	sha256sums = 3363742449270118ce5807c6081ddb7e50537eb76d55720e4662b1a881f851c8
 
 pkgname = 5db5-channel-lv2-bin
 	pkgdesc = British Style Channel Strip (LV2)

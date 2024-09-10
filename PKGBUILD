@@ -1,20 +1,15 @@
 pkgbase=5db5-channel
 pkgname=('5db5-channel-lv2-bin' '5db5-channel-vst3-bin')
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://audioassault.mx/plugin/Channel551"
 license=('EULA')
 depends=('alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' 'keyutils' 'krb5' 'libcurl-gnutls' 'libffi' 'libnghttp2' 'libidn2' 'libp11-kit' 'libpng' 'libpsl' 'libssh2' 'libtasn1' 'libunistring' 'libxau' 'libxcb' 'libx11' 'nettle' 'openssl' 'pcre2' 'zlib' 'zstd')
 makedepends=('xdg-user-dirs' 'unzip')
 provides=('5db5-channel')
-
-prepare () {
-	_archive="`xdg-user-dir DOWNLOAD`/Channel551Linux.zip"
-	ln -srf "${_archive}" "$srcdir/`basename "${_archive}"`"
-	unzip "$srcdir/`basename "${_archive}"`"
-	find $srcdir -name ".DS_Store" -delete
-}
+source=('https://5db5public.s3.amazonaws.com/Channel551Linux.zip')
+sha256sums=('3363742449270118ce5807c6081ddb7e50537eb76d55720e4662b1a881f851c8')
 
 package_5db5-channel-lv2-bin() {
     ## Install LV2 Plugin
