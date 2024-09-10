@@ -6,7 +6,7 @@
 
 pkgname=jmeter
 pkgver=5.6.3
-pkgrel=3
+pkgrel=4
 arch=('any')
 pkgdesc="Java application designed to load test functional behavior and measure performance"
 url="http://jmeter.apache.org/"
@@ -20,7 +20,7 @@ sha256sums=('f68efc17fe060f698c48a6abe2599a933927486bda2924dbe14c74895318ddde'
 validpgpkeys=('C4923F9ABFB2F1A06F08E88BAC214CAA0612B399')
 
 package() {
-  install -dm755 "$pkgdir/opt/jmeter" "$pkgdir/usr/bin" "${pkgdir}/usr/share/applications"
+  install -dm755 "$pkgdir/opt/jmeter" "$pkgdir/usr/bin" "${pkgdir}/usr/share/applications" "$pkgdir/usr/share/icons/hicolor/scalable/apps"
   install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   cp -a "apache-$pkgname-$pkgver"/* "$pkgdir/opt/jmeter"
   ln -s /opt/jmeter/bin/jmeter "$pkgdir/usr/bin/jmeter"

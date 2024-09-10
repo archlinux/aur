@@ -1,7 +1,7 @@
 pkgbase = jmeter
 	pkgdesc = Java application designed to load test functional behavior and measure performance
 	pkgver = 5.6.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://jmeter.apache.org/
 	arch = any
 	license = apache
