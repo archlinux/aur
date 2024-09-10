@@ -2,12 +2,12 @@
 
 pkgname=rclone-bisync-manager-tray-git
 pkgver=0.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="System tray application for RClone BiSync Manager"
 arch=('any')
 url="https://github.com/Gunther-Schulz/rclone-bisync-manager"
 license=('MIT')
-depends=('python>=3.12' 'python-pillow' 'python-pystray' 'python-gobject' 'python-cairosvg' "rclone-bisync-manager-git>=${pkgver}")
+depends=('python>=3.12' 'tk' 'python-pillow' 'python-pystray' 'python-gobject' 'python-cairosvg' "rclone-bisync-manager-git>=${pkgver}")
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('8138b22f98df0b34a4f7893acca5a815fbe44c7d757bdaa4c673377c07c40413')
