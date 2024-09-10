@@ -1,7 +1,9 @@
 # Maintainer: jSQrD <n1irdwd5 at aur dot addy dot io>
-# Maintainer: lgm <lgm dot aur at outlook dot com>
-# Contributor: Ndoskrnl <lollipop.studio.cn@gmail.com>
-# Contributor: flying <flyinghat42@gmail.com>
+
+# Previous 'fabric-server' maintainers
+## Contributor: lgm <lgm dot aur at outlook dot com>
+## Contributor: Ndoskrnl <lollipop.studio.cn@gmail.com>
+## Contributor: flying <flyinghat42@gmail.com>
 
 # Based on the 'forge-server' AUR package by:
 ## Maintainer: Nitroretro <nitroretro@protonmail.com>
@@ -11,7 +13,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.21.1_1.0.1_0.16.2-0"
+_ver="1.21.1_1.0.1_0.16.5-0"
 _minecraft_ver_latest="1.21.1"
 
 IFS="-" read -ra _ver_temp <<<"$_ver"
