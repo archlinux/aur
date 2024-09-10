@@ -1,7 +1,8 @@
-# Maintainer: Magnus Anderson <magnus@iastate.edu>
+# Maintainer: Norbert Preining <norbert@preining.info>
+# Contributor: Magnus Anderson <magnus@iastate.edu>
 pkgname=px_ptop
-pkgver=3.1.0
-pkgrel=2
+pkgver=3.6.2
+pkgrel=1
 pkgdesc="ps and top for Human Beings"
 arch=('any')
 url="https://github.com/walles/px"
