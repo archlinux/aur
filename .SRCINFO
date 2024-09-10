@@ -1,6 +1,6 @@
 pkgbase = 5db5-rm2
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://audioassault.mx/plugin/RM-2
 	arch = x86_64
 	license = EULA
@@ -35,7 +35,9 @@ pkgbase = 5db5-rm2
 	depends = zstd
 	provides = 5db5-rm2
 	source = RM-2 Linker
+	source = https://5db5public.s3.amazonaws.com/RM2Linux.zip
 	sha256sums = 7ffdc44a6b69444c5b665d5b4280c7610d6f0172739893f56ca316536235c4c6
+	sha256sums = 8d1c58e8163579288ca88b290672c03f19500c760fb26c2c00df2a247b7ba399
 
 pkgname = 5db5-rm2-data-bin
 	pkgdesc = Analog Channel Emulator Plugin (Data Assets)

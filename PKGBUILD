@@ -1,22 +1,17 @@
 pkgbase=5db5-rm2
 pkgname=('5db5-rm2-data-bin' '5db5-rm2-lv2-bin' '5db5-rm2-vst3-bin')
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://audioassault.mx/plugin/RM-2"
 license=('EULA')
 depends=('alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' 'keyutils' 'krb5' 'libcurl-gnutls' 'libffi' 'libnghttp2' 'libidn2' 'libp11-kit' 'libpng' 'libpsl' 'libssh2' 'libtasn1' 'libunistring' 'libxau' 'libxcb' 'libx11' 'nettle' 'openssl' 'pcre2' 'zlib' 'zstd')
 makedepends=('xdg-user-dirs' 'unzip')
 provides=('5db5-rm2')
-source=('RM-2 Linker')
-sha256sums=('7ffdc44a6b69444c5b665d5b4280c7610d6f0172739893f56ca316536235c4c6')
-
-prepare () {
-	_archive="`xdg-user-dir DOWNLOAD`/RM2Linux.zip"
-	ln -srf "${_archive}" "$srcdir/`basename "${_archive}"`"
-	unzip "$srcdir/`basename "${_archive}"`"
-	find $srcdir -name ".DS_Store" -delete
-}
+source=('RM-2 Linker'
+        'https://5db5public.s3.amazonaws.com/RM2Linux.zip')
+sha256sums=('7ffdc44a6b69444c5b665d5b4280c7610d6f0172739893f56ca316536235c4c6'
+            '8d1c58e8163579288ca88b290672c03f19500c760fb26c2c00df2a247b7ba399')
 
 package_5db5-rm2-data-bin() {
     ## Install Asset Data
