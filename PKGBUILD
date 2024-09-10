@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy-bin
 _pkgname=Escrcpy
-pkgver=1.23.5
+pkgver=1.23.6
 _electronversion=30
 pkgrel=1
 pkgdesc="使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动"
@@ -26,23 +26,23 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('a7bf8065a3b3dee53c8ab98f8f84a9f3d40643c46e1a1b1bd812c8ba26fb0628')
-sha256sums_x86_64=('0b89d596c68218f127676d84c2cbb50099e41508d2a07ef6de4030b15962813a')
+sha256sums_aarch64=('4da416a3f20b84d0e29ee53d97ab76b55a65da5b01c9cf63f817de0c0aab8497')
+sha256sums_x86_64=('6c35acc27307b5b24483f9704b5552b526b729d24f8e9973c9c853c85e5dbc2e')
 build() {
     sed -e "
-        s|@electronversion@|${_electronversion}|g
-        s|@appname@|${pkgname%-bin}|g
-        s|@runname@|app.asar|g
-        s|@cfgdirname@|${pkgname%-bin}|g
-        s|@options@||g
-        " -i "${srcdir}/${pkgname%-bin}.sh"
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-bin}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/${_pkgname}/
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     cd "${srcdir}/opt/${_pkgname}/resources/extra/linux"
     chmod 755 android-platform-tools/{adb,etc1tool,fastboot,hprof-conv,make_f2fs,make_f2fs_casefold,mke2fs,sqlite3} \
               gnirehtet/gnirehtet
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    find "${srcdir}/app.asar.unpacked/"{dist,dist-electron} -type f -exec sed -i "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g" {} \;
+    find "${srcdir}/app.asar.unpacked/"{dist,dist-electron} -type f -exec sed -i "s/process.resourcesPath/\"\/usr\/lib\/${pkgname%-bin}\"/" {} \;
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
