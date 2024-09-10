@@ -1,10 +1,10 @@
 # Maintainer: zotan <aur@zotan.email>
 
-_pkgver=v2024.1-beta2.security3
+_pkgver=v2024.1-beta3
 
 pkgname=iceshrimp.net-bin
-pkgver=2024.1.beta2.security3
-pkgrel=2
+pkgver=2024.1.beta3
+pkgrel=1
 pkgdesc="Decentralized and federated social networking service, implementing the ActivityPub standard"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp.net"
@@ -23,8 +23,8 @@ backup=("etc/iceshrimp.net/configuration.ini")
 
 install="iceshrimp.net.install"
 
-source_x86_64=("${pkgname}-${pkgver}-linux_amd64.tar.zst::https://iceshrimp.dev/iceshrimp/Iceshrimp.NET/releases/download/${_pkgver}/Iceshrimp.NET-${_pkgver}-linux-amd64.tar.zst")
-source_aarch64=("${pkgname}-${pkgver}-linux_arm64.tar.zst::https://iceshrimp.dev/iceshrimp/Iceshrimp.NET/releases/download/${_pkgver}/Iceshrimp.NET-${_pkgver}-linux-arm64.tar.zst")
+source_x86_64=("${pkgname}-${pkgver}-linux_amd64.tar.zst::https://iceshrimp.dev/iceshrimp/Iceshrimp.NET/releases/download/${_pkgver}/Iceshrimp.NET-${_pkgver}-linux-amd64-glibc.tar.zst")
+source_aarch64=("${pkgname}-${pkgver}-linux_arm64.tar.zst::https://iceshrimp.dev/iceshrimp/Iceshrimp.NET/releases/download/${_pkgver}/Iceshrimp.NET-${_pkgver}-linux-arm64-glibc.tar.zst")
 
 source=(
   "iceshrimp.net.service"
