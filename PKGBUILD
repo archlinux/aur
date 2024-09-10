@@ -2,7 +2,7 @@
 # Contributor: Magnus Anderson <magnus@iastate.edu>
 pkgname=px_ptop
 pkgver=3.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ps and top for Human Beings"
 arch=('any')
 url="https://github.com/walles/px"
@@ -18,7 +18,7 @@ package() {
 
 	# The script installs two identical binaries. Fix this
 	rm "$pkgdir/usr/bin/ptop"
-	ln -s "$pkgdir/usr/bin/px" "$pkgdir/usr/bin/ptop"
+	ln -s px "$pkgdir/usr/bin/ptop"
 
 	# Install license from latest github LICENSE
 	curl -Ls https://raw.githubusercontent.com/walles/px/python/LICENSE > LICENSE
