@@ -6,7 +6,7 @@ pkgbase=python-sphinx-hoverxref
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Sphinx extension to embed content in a tooltip on xref hover"
 arch=('any')
@@ -23,14 +23,15 @@ makedepends=('python-flit-core'
 #            'python-sphinx-notfound-page'
 #            'python-sphinxcontrib-bibtex'
 #            'python-sphinxemoji'
-#            'python-setuptools')
+#            'python-setuptools'
+#)
 # exception: [Errno 13] Permission denied: '/usr/lib/python3.11/site-packages/versionwarning/_static/data')
 checkdepends=('python-pytest'
               'python-sphinxcontrib-jquery'
               'python-sphinxcontrib-bibtex')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/readthedocs/sphinx-hoverxref/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('84a62bd72307e70431b77b45d6fddca3')
+md5sums=('57c1fba94363960372f7945c7553b348')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}/docs
