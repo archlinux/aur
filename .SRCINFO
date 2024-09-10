@@ -1,0 +1,25 @@
+pkgbase = gjay
+	pkgdesc = DJ-friendly GUI for generating playlists across large music collections
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://gjay.sourceforge.net
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = libvorbis
+	depends = audacious
+	depends = dbus-glib
+	depends = flac
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gsl
+	depends = gtk2
+	depends = libaudclient
+	depends = libmpdclient
+	depends = mpg321
+	optdepends = libvorbis: support .ogg files
+	optdepends = vorbis-tools: support .ogg files
+	source = gjay-d05307507f6db603a9fb5ee702d3cddfd91894e1.tar.gz::https://github.com/csmall/gjay/archive/d05307507f6db603a9fb5ee702d3cddfd91894e1.tar.gz
+	sha256sums = 3e16c1bc0281ceb932757807b7fdbda6065f2512cc534174eedaf4e618bc06ed
+
+pkgname = gjay
