@@ -15,7 +15,7 @@ pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
 url="https://www.rust-lang.org"
-license=('MIT' 'Apache' 'custom')
+license=("Apache-2.0 OR MIT")
 depends=('gcc-libs'
          'curl'
          'libgit2'
