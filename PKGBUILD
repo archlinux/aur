@@ -32,18 +32,12 @@ build() {
 
   #CXXFLAGS="${CXXFLAGS} -fpermissive"
   CXXFLAGS="-Wreturn-type -Wl,--as-needed -Wno-sequence-point -Wsign-compare -Wno-unknown-pragmas -Wno-template-id-cdtor -Wno-deprecated-declarations"
+  PYTHON=python3
 
   ./configure --prefix=/usr \
-              --with-python \
-              --with-guile \
-              --with-guile-gtk \
-              --with-pygtk \
-              --with-sqlite3 \
-              --with-boost \
-              --with-boost-python \
               --disable-static \
-              --with-enhanced-ligand-tools RDKIT_LIBS="-lRDKitMolDraw2D -lRDKitForceFieldHelpers -lRDKitDescriptors -lRDKitForceField -lRDKitSubstructMatch -lRDKitOptimizer -lRDKitDistGeomHelpers -lRDKitDistGeometry -lRDKitAlignment -lRDKitEigenSolvers -lRDKitDepictor -lRDKitMolChemicalFeatures -lRDKitFileParsers  -lRDKitRDGeometryLib -lRDKitGraphMol -lRDKitSmilesParse -lRDKitDataStructs -lRDKitRDGeneral -lboost_python -lpython2.7" RDKIT_CXXFLAGS="-I/usr/include/rdkit"
-
+              --with-rdki-prefix=/usr
+              --with-enhanced-ligand-tools 
   make
 }
 
