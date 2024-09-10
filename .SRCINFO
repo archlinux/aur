@@ -23,7 +23,7 @@ pkgbase = yass-proxy-cli
 	depends = gperftools
 	provides = yass-proxy-cli
 	conflicts = yass-proxy-cli-git
-	source = https://github.com/Chilledheart/yass/releases/download/1.13.2/yass-1.13.2.tar.bz2
-	sha256sums = 1b661be8901c0c8c8bf292b02563ca8abdba503a9f1f7de8ca5f808aff63e8a4
+	source = https://github.com/Chilledheart/yass/releases/download/1.13.2/yass-1.13.2.tar.zst
+	sha256sums = fae2f5432e1995087b36240f2c467ab70e5ca3a040b42dd34c383d27fe8388ad
 
 pkgname = yass-proxy-cli
