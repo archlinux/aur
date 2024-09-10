@@ -12,4 +12,8 @@ if [ "${STAGING_RT_PRIORITY_SERVER}" != "0" ]; then
     export STAGING_RT_PRIORITY_SERVER=${STAGING_RT_PRIORITY_SERVER:-55}
 fi
 
-wine "${@:1}"
+if ! [[ "${*:1}" =~ "wineserver" ]]; then
+  wine "${@:1}"
+else
+  wineserver "${@:2}"
+fi

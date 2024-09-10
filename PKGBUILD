@@ -13,7 +13,7 @@ _devenv=false
 _generic_release=false
 
 ## hack taken from wine-tkg PKGBUILD, real pkgrel is the eval one
-pkgver=9.16.w153.sdeb7042
+pkgver=9.17.w21.s27b121f
 pkgrel=1
 eval pkgrel=1
 
@@ -35,18 +35,18 @@ _enabled_staging=()
 _disabled_staging=()
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="09-03-6a939654-deb70423"
+_patchbase_tag="09-09-2024-82f4d38a-27b121f2"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
-## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the custompatches folder
-## manually if you wish to use them alongside your own patches.
+## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
+## custompatches folder manually if you wish to use them alongside your own patches.
 ## also recommended to set _desired_wine_commit and _desired_staging_commit if this is used (see below)
 _custompatches=false
 
 ## (with custompatches) uses wine/staging master if empty, uses given commit or tag if set
 ## (without custompatches) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=6a9396549e946cdd924cb1211ccb3d8330267c7e
-_desired_staging_commit=deb7042324ec6b4fcf7e6c4cef9e39baf3a28216
+_desired_wine_commit=82f4d38a39a28e802060a84d689550e166ae1721
+_desired_staging_commit=27b121f293bc27220dd0ff19d251a19ce695d31d
 
 ## (with custompatches) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -120,7 +120,7 @@ source=(
 )
 
 sha512sums=(
-  '3d69a588ef32376fe720faca540977ffa4659ef69d6c2321f1f50885cd44da85b0cd4676f5ddcc0af821724597d766bed8b7d280c0edb757eb4b3f939af906d3'
+  '2d431b8830f783b9973ef3df50606b3dae705dffe3cd6106a7daa3b5ad89eaecd6b0e7da835ebf18985a6f3c9c1c952866f39126e34fb6503935baa91a9e8189'
   '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
   'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
   '59920a54e9bd8d1f73c15675f7df29829680b59f4d1c4fc74fe710e4b596fd6a96f3b43994eb5da0fd1e50299b0ada933c6f3796e1d0698febb7870995f7f266'
@@ -135,10 +135,12 @@ noextract=()
 ## don't needlessly add the wine-osu-patches repo if we explicitly specify custom ones
 if ! { [ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ] ; }; then
   source+=("git+https://github.com/whrvt/wine-osu-patches.git#tag=${_patchbase_tag}")
-  sha512sums+=('f31437d0a49f81ecfd4c06cfd16b0c3acf6057c17b4c437061e5ba5baddc8ea13087c951d2fb33a0f6779039ae50d42307d4f8aa56c8462529c3b4327aab01bb')
+  sha512sums+=('ee243d6d89ea194d5f45b063485e925bacf873e6676b3d4f8e9a17c8f8ec52cb8a7c847dd8edcd4b846d78a811f9e19dfd01cb36cf2c7cf0ece4713d002abdc1')
 
-  ## didn't have a custompatches dir
-  _custompatches=
+  if [ "${_custompatches}" = "true" ]; then
+    msg2 "WARNING: _custompatches=true but custompatches directory not found. Will be using wine-osu-patches repo."
+    _custompatches=""
+  fi
 fi
 
 depends=(
@@ -161,6 +163,7 @@ depends=(
   libxkbcommon
   libxcomposite
   libpulse
+  bash
 )
 
 makedepends=(autoconf bison ccache perl fontforge flex
@@ -209,13 +212,15 @@ optdepends=(
   vkd3d
   sdl2
   gsm
-  samba dosbox
+  samba
+  dosbox
+  libusb
 )
 
 if [ "${_wow64build}" != "true" ]; then
   depends+=(lib32-libxkbcommon libvulkan.so=1-32 lib32-gnutls lib32-libxcomposite lib32-libpulse lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
   makedepends+=(lib32-wayland lib32-gtk3 lib32-attr lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-lib lib32-gst-plugins-base-libs lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2)
-  optdepends+=(lib32-libxinerama lib32-giflib lib32-libpng lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
+  optdepends+=(lib32-libusb lib32-libxinerama lib32-giflib lib32-libpng lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
   if [ "${_use_clang}" = "true" ] || [ "${_use_mingw}" = "llvm" ]; then makedepends+=(lib32-llvm-libs); fi
 fi
 
@@ -301,7 +306,7 @@ _set_vars() {
 
   #_OPTIMIZE_HARDER_FLAGS="-fipa-pta -fgcse-sm -fgcse-las -fira-loop-pressure" # -fsched-pressure -fsched-spec-load
 
-  _common_cflags="${_common_64_cflags:-} ${_common_32_cflags:-} ${_cpu_target} -O3 -pipe -fno-semantic-interposition -fomit-frame-pointer -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion -w"
+  _common_cflags="${_cpu_target} -O3 -pipe -fwrapv -fno-strict-aliasing -fno-semantic-interposition -fomit-frame-pointer -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion -w"
   _native_common_cflags="${_lto_flags:-} ${_extra_native_flags:-}" # only for the non-mingw side
 
   export CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
@@ -316,9 +321,11 @@ _set_vars() {
 
   export x86_64_CC="ccache ${_cross64}"
   export x86_64_CXX="ccache ${_crossxx64}"
+  export x86_64_CFLAGS="${_CROSS_FLAGS} ${_common_64_cflags:-}"
 
   export i386_CC="ccache ${_cross32}"
   export i386_CXX="ccache ${_crossxx32}"
+  export i386_CFLAGS="${_CROSS_FLAGS} ${_common_32_cflags:-}"
 
   export CFLAGS="${_GCC_FLAGS}"
   export CXXFLAGS="${_GCC_FLAGS}"
@@ -391,6 +398,8 @@ prepare() { _set_vars;
   _desired_staging_commit=${_desired_staging_commit:-master}
 
   if [ "${_custompatches}" != "true" ]; then
+    _patchdir="${srcdir}/wine-osu-patches"
+
     _patchbase_wine_commit=$(cat "${srcdir}"/wine-osu-patches/wine-commit)
     _patchbase_staging_commit=$(cat "${srcdir}"/wine-osu-patches/staging-commit)
     if [ -f "${srcdir}"/wine-osu-patches/staging-exclude ]; then
@@ -402,6 +411,7 @@ prepare() { _set_vars;
     fi
   else
     msg "Using custom patches"
+    _patchdir="${_where}/custompatches"
   fi
 
   ## Staging setup
@@ -443,6 +453,14 @@ prepare() { _set_vars;
 
   cd "${srcdir}" || _failure
 
+  ## Add current config to custompatches dir
+
+  if [ "${_custompatches}" = "true" ]; then
+    echo -n "${_desired_wine_commit}" > "${_patchdir}/wine-commit"
+    echo -n "${_desired_staging_commit}" > "${_patchdir}/staging-commit"
+    echo -n "${_disabled_staging[@]/#/-W }" > "${_patchdir}/staging-exclude"
+  fi
+
   ## Patching setup
 
   touch "${_where}"/patchlog.txt || _failure
@@ -459,32 +477,34 @@ prepare() { _set_vars;
   if [ "${_use_staging}" != "false" ]; then
     msg2 "Applying staging patches"
     printf "\nApplying staging patches\n\n" >> "${_where}"/patchlog.txt
+
+    ## wip-ish, but shellcheck doesn't complain :^)
+
+    ## if find "${_patchdir}"/staging-overrides -name "*spatch" -print0 -quit | grep . >/dev/null; then
+    ##   find "${_patchdir}"/staging-overrides -name "*spatch" -execdir \
+    ##       sh -c 'cp "$1" $(find "'"${srcdir}"'/wine-staging/patches" -iregex ".*${1%.spatch}.*") &>/dev/null' -- '{}' \+ \
+    ##         || _failure "Error overriding staging patch"
+
+    ##   msg2 "Overrode all staging patches matching those in staging-overrides/*.spatch"
+    ##   printf "\nOverrode all staging patches matching those in staging-overrides/*.spatch\n\n" >> "${_where}"/patchlog.txt
+    ## fi
+
     # shellcheck disable=SC2048,SC2086
     "${staging_patcher[@]}" DESTDIR="${srcdir}"/"${pkgname}" --no-autoconf "${_enabled_staging[@]}" ${_disabled_staging[*]/#/-W } &>> "${_where}"/patchlog.txt || \
         _failure "Error applying staging patches, check patchlog.txt for info."
   fi
 
-  ## Apply patches
+  ## Apply other patches
 
   printf "\nApplying other patches\n\n" >> "${_where}"/patchlog.txt
   cd "${srcdir}"/"${pkgname}" || _failure
-
-  if [ "${_custompatches}" = "true" ]; then
-    if ! [ -d "${_where}/custompatches" ]; then _failure "_custompatches=true but custompatches directory not found."; fi
-    patchdir="${_where}/custompatches"
-    echo -n "${_desired_wine_commit}" > "${patchdir}/wine-commit"
-    echo -n "${_desired_staging_commit}" > "${patchdir}/staging-commit"
-    echo -n "${_disabled_staging[@]/#/-W }" > "${patchdir}/staging-exclude"
-  else
-    patchdir="${srcdir}/wine-osu-patches"
-  fi
 
   patchlist=()
 
   if [ "${_use_mingw}" != "llvm" ] && [ "${_use_mingw}" != "clang" ]; then patchlist+=("${srcdir}"/mingw-gcc-float-precision-fix.patch); fi
   if [ "${_use_clang}" != "true" ]; then patchlist+=("${srcdir}"/lto-fixup.patch); fi
 
-  mapfile -t patchlist_tmp < <(find "${patchdir}" -type f -regex ".*\.patch" | LC_ALL=C sort -f)
+  mapfile -t patchlist_tmp < <(find "${_patchdir}" -type f -regex ".*\.patch" | LC_ALL=C sort -f)
 
   patchlist+=("${patchlist_tmp[@]}")
 
@@ -552,7 +572,7 @@ _tools64() { _set_vars64;
   # don't use lto to speed up tools compilation
   export _tools_flags="${CPPFLAGS} ${_cpu_target} -O1 -pipe -fno-lto -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -w"
   for mkfile in tools/Makefile tools/**/Makefile; do
-    "$@" -C "${mkfile%/Makefile}" -j$(($(nproc) + 1)) CFLAGS="${_tools_flags}" LDFLAGS="${_tools_flags}" CROSSCFLAGS="${_tools_flags}" CROSSLDFLAGS="${_tools_flags}"
+    "$@" -C "${mkfile%/Makefile}" CFLAGS="${_tools_flags}" LDFLAGS="${_tools_flags}" CROSSCFLAGS="${_tools_flags}" CROSSLDFLAGS="${_tools_flags}"
   done
   chmod -R +x "${build64dir}"/tools
 }
@@ -578,6 +598,7 @@ build() { _set_vars;
     --prefix=/opt/"${pkgname}"
     --disable-tests
     --disable-winemenubuilder
+    --disable-win16
     --with-x
     --with-gstreamer
     --with-wayland
@@ -631,7 +652,7 @@ build() { _set_vars;
 
     rm -rf "${build32dir}" || true
     mkdir "${build32dir}" || true
-    make -f "$_where"/Makefile.single -j$(($(nproc) + 1))
+    make -f "${_where}"/Makefile.single -j$(($(nproc) + 1))
   fi
 
   export SOURCE_DATE_EPOCH="$_old_SOURCE_DATE_EPOCH"
