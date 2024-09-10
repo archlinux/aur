@@ -5,7 +5,7 @@ _typesuffix='-dkms'
 _vcssuffix='-git'
 pkgname="${_pkgname}${_typesuffix}${_vcssuffix}"
 pkgver=r15.20230110.0171589
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux kernel module that creates a device '/dev/one', similar to '/dev/zero' but outputting one-bits (0xFF-bytes)."
 url='https://github.com/tinmarino/dev_one'
 arch=(
@@ -33,12 +33,14 @@ depends=(
 install='dev_one-dkms.install'
 source=(
   "${_pkgname}::git+${url}.git"
+  "adapt_for_linux_6.8+.patch::https://github.com/user-attachments/files/16942789/adapt_for_linux_6.8%2B.patch.txt"
   "${_pkgname}-dkms.conf.in"
   "one.modules-load.conf"
   "${install}"
 )
 sha256sums=(
   'SKIP'                                                             # Main source (latest git checkout from https://github.com/tinmarino/dev_one.git)
+  '9d6077dcbb4e0720fce59ffade0e5384f53762e37895e70583896c2e1fd194d2' # adapt_for_linux_6.8+.patch
   'b31b4d876b2d2b0a27f1eaa1ffa3e746f9692743827702c2dcc77fc360f85d9a' # ${_pkgname}-dkms.conf.in (dev_one-dkms.conf.in)
   '2c8b08da5ce60398e1f19af0e5dccc744df274b826abe585eaba68c525434806' # one.modules-load.conf
   '788c11d95b3e9b4967f4d53b62366209a7af825e26a867ed4a76fc49cf290b05' # ${install} (dev_one-dkms.install)
