@@ -1,13 +1,14 @@
 # Maintainer: silverhikari
 pkgname=talentedhack-git
 _pkgname=TalentedHack
-pkgver=v1.9.r0.95c20a5
+pkgver=v1.92.r0.1b4c2e9
 pkgrel=1
 pkgdesc="a lv2 conversion of autotalent, a pitch correction plugin"
 arch=(x86_64)
 url="https://github.com/jeremysalwen/TalentedHack"
-license=('GPL3')
-makedepends=('git' 'fftw')
+license=('GPL-3.0-or-later')
+depends=('fftw')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/jeremysalwen/TalentedHack')
