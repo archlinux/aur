@@ -1,0 +1,15 @@
+pkgbase = objdiff
+	pkgdesc = A local diffing tool for decompilation projects
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/encounter/objdiff
+	arch = x86_64
+	license = Apache-2.0 OR MIT
+	makedepends = cargo
+	depends = fontconfig
+	depends = freetype2
+	conflicts = objdiff
+	source = objdiff-2.0.0.tar.gz::https://github.com/encounter/objdiff/archive/refs/tags/v2.0.0.tar.gz
+	b2sums = b09513597b4fed1646e15f1b1ad747daaf5276baab0f2adfc46234cf066ecfab81394c09b195ed2da27dcc68fa2c8d693759d5679c4fb38fda3fcf8097344934
+
+pkgname = objdiff
