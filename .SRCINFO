@@ -1,7 +1,7 @@
 pkgbase = pdf-xchange
 	pkgdesc = Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more.
-	pkgver = 10.3.1.387
-	pkgrel = 2
+	pkgver = 10.4.0.388
+	pkgrel = 1
 	url = https://www.tracker-software.com/product/pdf-xchange-editor
 	arch = x86_64
 	license = Custom
@@ -10,7 +10,7 @@ pkgbase = pdf-xchange
 	makedepends = gendesk
 	depends = wine
 	depends = hicolor-icon-theme
-	source = pdf-xchange-10.3.1.387.msi::https://www.tracker-software.com/downloads/EditorV10.x64.msi
-	sha256sums = 4a7862b4f3296a1f22ffcf8b26c0197e817b30aa33e04ef87e5a69c1ce0a6356
+	source = pdf-xchange-10.4.0.388.msi::https://www.tracker-software.com/downloads/EditorV10.x64.msi
+	sha256sums = e736d30606577b68fd77ea5d89c9deda0fd467c6e43501933b2f3908fac0cdfb
 
 pkgname = pdf-xchange

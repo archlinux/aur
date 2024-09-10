@@ -1,7 +1,7 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="10.3.1.387"
-pkgrel="2"
+pkgver="10.4.0.388"
+pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
 arch=('x86_64')
@@ -19,7 +19,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-sha256sums=('4a7862b4f3296a1f22ffcf8b26c0197e817b30aa33e04ef87e5a69c1ce0a6356')
+sha256sums=('e736d30606577b68fd77ea5d89c9deda0fd467c6e43501933b2f3908fac0cdfb')
 
 prepare()
 {
@@ -352,6 +352,7 @@ package()
  install -Dm644 "$srcdir/FID_IF_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.ja-JP.xcl"
  install -Dm644 "$srcdir/FID_IF_ko_KR" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.ko-KR.xcl"
  install -Dm644 "$srcdir/FID_IF_lt_LT" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.lt-LT.xcl"
+ install -Dm644 "$srcdir/FID_IF_nl_NL" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.nl-NL.xcl"
  install -Dm644 "$srcdir/FID_IF_pl_PL" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.pl-PL.xcl"
  install -Dm644 "$srcdir/FID_IF_pt_BR" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.pt-BR.xcl"
  install -Dm644 "$srcdir/FID_IF_ru_RU" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.ru-RU.xcl"
