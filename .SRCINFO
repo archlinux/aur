@@ -18,8 +18,8 @@ pkgbase = gjay-git
 	depends = libaudclient
 	depends = libmpdclient
 	depends = mpg321
-	depends = vorbis-tools
 	optdepends = libvorbis: support .ogg files
+	optdepends = vorbis-tools: support .ogg files
 	provides = gjay=0.4
 	conflicts = gjay
 	source = gjay::git+https://github.com/csmall/gjay.git

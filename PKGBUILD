@@ -12,8 +12,9 @@ _url="https://github.com/csmall/${_pkgname}"
 license=('GPL-2.0-or-later')
 makedepends=('git' 'libvorbis')
 depends=('audacious' 'dbus-glib' 'flac' 'gdk-pixbuf2' 'glib2' 'glibc' 'gsl'
-         'gtk2' 'libaudclient' 'libmpdclient' 'mpg321' 'vorbis-tools')
-optdepends=('libvorbis: support .ogg files')
+         'gtk2' 'libaudclient' 'libmpdclient' 'mpg321')
+optdepends=('libvorbis: support .ogg files'
+            'vorbis-tools: support .ogg files')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
