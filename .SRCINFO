@@ -9,9 +9,9 @@ pkgbase = waku-bin
 	provides = waku
 	arch = aarch64
 	source_aarch64 = https://github.com/caffeine-addictt/waku/releases/download/v0.2.0/waku_0.2.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = f8d952d6fc550ad38e8bc2e417f0532c8862370cc9a0ade365f296421e1ccaf1
+	sha256sums_aarch64 = 7feb0832fc8d745d4e381a0e9c06f505f600ee195f46b04d86a0accca071c4bd
 	arch = x86_64
 	source_x86_64 = https://github.com/caffeine-addictt/waku/releases/download/v0.2.0/waku_0.2.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 1095437ab05671dff0cf61524b662b1160e23fd2ad598485f18f6c69f0230113
+	sha256sums_x86_64 = b7755baeeb1d0bf1d5a507eeb2dbfbc476bc4d40db40c9fcb05dfff1e86f1377
 	
 pkgname = waku-bin
