@@ -5,14 +5,14 @@
 
 pkgname=gtk3-patched-filechooser-icon-view
 pkgver=3.24.43
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
 arch=(x86_64)
 url="https://github.com/Dudemanguy/gtk"
 depends=(
   adwaita-icon-theme
-  atk
+  at-spi2-core
   cairo
   cantarell-fonts
   dconf
@@ -48,7 +48,6 @@ depends=(
   wayland
 )
 makedepends=(
-  at-spi2-core
   git
   glib2-devel
   gobject-introspection
@@ -75,17 +74,23 @@ source=(
   "git+https://gitlab.gnome.org/GNOME/gtk.git#tag=$pkgver"
   gtk-query-immodules-3.0.hook
   0001-Allow-disabling-legacy-Tracker-search.patch
+  0002-Stop-looking-for-modules-in-cwd.patch
   gtk3-filechooser-icon-view.patch
 )
 b2sums=('fdda77eebdc0b8e378f0258cb241eda4412b868d59ea1fd90815f459e925e6433f94c22a088d695b72fab99ecca827b370942bea47043debef4fab78e0e03dca'
         '8e6a3906126749c6d853f582e3802254cdbba099c6af7190ad576eff6ea5425404a72b1b36950a87e3afdac82295cfe246003172c3e0341a73bd931a36f3b407'
         '7da1746e7702e4bf397f59dd1019e2c8fa8951b2bcc6bf64ec05f322de6dcec6fe5552848d6b389818f625988a3fb2211501d7f72ae97d2c49fbad1e5fe9cd6a'
+        'f3a2f88b16eec5fca08d190fb8103bcf5ded43ba8292857076663f01e01352db76252701d2597c4f12c6f56bb7417041ffe0bd4aa1f4251613e3f1326059e6ac'
         'a19fce8e87f2789d0bca3a62d2858d89e4db4a14cf76930228b01d94aefb8b58867df9c63a194fd3a2542382e3968bef2eda37e1a33847cbbe77838932d9f6c3')
 
 prepare() {
   cd gtk
 
   git apply -3 ../0001-Allow-disabling-legacy-Tracker-search.patch
+
+  # CVE-2024-6655: https://www.openwall.com/lists/oss-security/2024/09/09/1
+  # https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/7361
+  git apply -3 ../0002-Stop-looking-for-modules-in-cwd.patch
 
   # apply icon-view patch
   patch -Np1 -i ../gtk3-filechooser-icon-view.patch
@@ -119,7 +124,7 @@ gtk-theme-name = Adwaita
 gtk-font-name = Cantarell 11
 END
 
-  install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 gtk-query-immodules-3.0.hook
+  install -Dm644 gtk-query-immodules-3.0.hook -t "$pkgdir/usr/share/libalpm/hooks"
 
   rm $pkgdir/usr/bin/gtk-update-icon-cache
   rm $pkgdir/usr/share/man/man1/gtk-update-icon-cache.1
