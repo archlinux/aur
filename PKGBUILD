@@ -13,10 +13,10 @@ conflicts=('waku')
 depends=('git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.2.0/waku_0.2.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('7feb0832fc8d745d4e381a0e9c06f505f600ee195f46b04d86a0accca071c4bd')
+sha256sums_aarch64=('83e9cc9cb55d72859040394d01a44acea894738d6777fcc0491b78ab6bf236b1')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.2.0/waku_0.2.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('b7755baeeb1d0bf1d5a507eeb2dbfbc476bc4d40db40c9fcb05dfff1e86f1377')
+sha256sums_x86_64=('d8f508967d62e613944438502b9b04f37f92e116808457087b7dd776de5a28a9')
 
 package() {
   # bin
