@@ -1,11 +1,12 @@
 # Maintainer: DarkToaster <admin@darksys.pw>
 pkgname=suyu-bin
 pkgver=0.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="suyu is a Nintendo Switch emulator, based on yuzu, with additional features. It is written in C++ with portability in mind."
 arch=('x86_64')
 url="https://git.suyu.dev/suyu/suyu"
 license=('GPL3')
+depends=('enet')
 source=("https://git.darksys.pw/aur/suyu-bin/suyu"
         "suyu.desktop"
         "suyu.png")
