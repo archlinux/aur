@@ -1,9 +1,9 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=tacentview-bin
-pkgver=1.0.45
+pkgver=1.0.46
 _pkgver=${pkgver%.*}-${pkgver##*.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Image viewer/editor for tga, png, apng, exr, dds, pvr, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files (binary release)"
 url="https://github.com/bluescan/tacentview"
 license=('ISC')
@@ -13,7 +13,7 @@ provides=("tacentview")
 conflicts=("tacentview")
 source=("$url/releases/download/v$pkgver/tacentview_$_pkgver.deb"
         "$url/raw/43f3dbbe06d14736fd8a4673fa30703402777089/LICENSE")
-sha256sums=('070ba295ae1dab0f69b530b46905bb39062b8c8e821545b570f78f4500f5de0e'
+sha256sums=('5857d5ce768f87015e8b0d4e83a1bbc38da50ae1817289df9d6929ed0c76bfb6'
             'c451a16bd0f04374bceadd5080319d81c2de554c0a8d6a9ca139b3f0fb2b26a4')
 
 package() {
