@@ -1,6 +1,6 @@
 pkgbase = wgnord
 	pkgdesc = A NordVPN Wireguard ("NordLynx") client in POSIX shell
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/phirecc/wgnord
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = wgnord
 	depends = wireguard-tools
 	depends = openresolv
 	backup = var/lib/wgnord/template.conf
-	source = https://github.com/phirecc/wgnord/archive/refs/tags/0.2.1.tar.gz
-	md5sums = e73e348459591e3901c4db1dfbdc2938
+	source = https://github.com/phirecc/wgnord/archive/refs/tags/0.2.2.tar.gz
+	sha256sums = 0ed3fb12d2ba68932227f9f2be0dc5f40f7dbfaf46655dc2c516d999a8564f6c
 
 pkgname = wgnord
