@@ -1,0 +1,6 @@
+*
+!PKGBUILD
+!playedit_gnome-doc-utils.make
+!*.patch
+!.SRCINFO
+!.gitignore

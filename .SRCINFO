@@ -1,0 +1,29 @@
+pkgbase = playedit
+	pkgdesc = A GTK GUI for creating and editing playlists on an MTP (Media Transfer Protocol) device
+	pkgver = 0.1.6+r198+gbf09f69
+	pkgrel = 1
+	url = https://playedit.sourceforge.net
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = gnome-common
+	makedepends = gnome-doc-utils
+	depends = atkmm
+	depends = cairomm
+	depends = gcc-libs
+	depends = glibmm
+	depends = glib2
+	depends = glibc
+	depends = gtkmm3>=3.10
+	depends = libgudev
+	depends = libsigc++
+	depends = libusb
+	depends = mpg123
+	depends = pangomm
+	source = playedit-code-bf09f692f151be776efcb72703f9b9b5f6a54419.zip::https://sourceforge.net/code-snapshots/git/p/pl/playedit/code.git/playedit-code-bf09f692f151be776efcb72703f9b9b5f6a54419.zip
+	source = playedit_fix_includes.patch
+	source = playedit_gnome-doc-utils.make
+	sha256sums = 994884a2c6c3810663e60c05885cdbad74b13cff6f0660d2aefecb839aa1d636
+	sha256sums = 18dae5d947ef01acaaf60bf68a001e435c32d4c0b472967eae12f6742341f9d6
+	sha256sums = 55d437d7f068f991e86c6a726fad7b159ac30716ca25aa2c465ac94976af35db
+
+pkgname = playedit
