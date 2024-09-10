@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=1.23.5
+pkgver=1.23.6
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -28,7 +28,7 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('dd31b6613c73730c10a7b2bdd76ebca0235259a95f0c176c8e499efd12861a0a'
+sha256sums=('2242c334b08d3a8f69931779df49cc3493123a7dc0a5532074aa55de00617dff'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -38,12 +38,12 @@ _ensure_local_nvm() {
 }
 build() {
     sed -e "
-        s|@electronversion@|${_electronversion}|g
-        s|@appname@|${pkgname}|g
-        s|@runname@|app.asar|g
-        s|@cfgdirname@|${pkgname}|g
-        s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g
-        " -i "${srcdir}/${pkgname}.sh"
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-git}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/${_pkgname}/
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+    " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
@@ -51,7 +51,7 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo 'build_from_source=true'
+        #echo 'build_from_source=true'
         echo 'link-workspace-packages=true'
         echo 'fetch-retry-maxtimeout=10000'
         echo "cache-dir="${srcdir}"/.pnpm_cache"
@@ -68,9 +68,9 @@ build() {
             echo 'electron_builder_binaries_mirror=https://github.com/electron-userland/electron-builder-binaries/releases/download'
         fi
     } >> .npmrc
-    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g" -i electron/helpers/index.js
+    find {electron,src} -type f -exec sed -i "s/process.resourcesPath/\"\/usr\/lib\/${pkgname%-bin}\"/" {} \;
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/;s/--linux/-l --dir/" package.json
-    sed "s|logo.icns|logo.png|g" -i electron-builder.json
+    sed "s/logo.icns/logo.png/" -i electron-builder.json
     NODE_ENV=development    pnpm install
     NODE_ENV=production     pnpm run build:linux
 }
