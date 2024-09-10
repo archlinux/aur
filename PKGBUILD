@@ -1,8 +1,8 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="gjay"
-pkgver=0.4
-_commit="d05307507f6db603a9fb5ee702d3cddfd91894e1"
+pkgver=0.4+r7+g9df0279
+_commit="9df02799e62e7c3da3bb087cda976ed7accbfdd9"
 pkgrel=1
 pkgdesc="DJ-friendly GUI for generating playlists across large music collections"
 arch=('x86_64')
@@ -16,12 +16,7 @@ optdepends=('libvorbis: support .ogg files'
             'vorbis-tools: support .ogg files')
 _pkgsrc="${pkgname}-${_commit}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/${_commit}.tar.gz")
-sha256sums=('3e16c1bc0281ceb932757807b7fdbda6065f2512cc534174eedaf4e618bc06ed')
-
-pkgver() {
-  cd "${srcdir}/${_pkgsrc}"
-  sed -n 's/AC_INIT(\[[^]]*\],\[\([^]]*\)\].*/\1/p' configure.ac
-}
+sha256sums=('bc84d87c057a1da15c94909f36b4015604e48b6f1e41ba151a0326ac8d201538')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
