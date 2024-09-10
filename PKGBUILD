@@ -14,10 +14,14 @@ groups=('pro-audio')
 depends=(
   alsa-lib
   expat
+  ffmpeg
   flac
+  gcc-libs
+  gdk-pixbuf2
+  glib2
+  glibc
   gtk3
   gtkmm3
-  gst-plugins-bad-libs
   jack
   lame
   libid3tag
@@ -27,7 +31,7 @@ depends=(
   libsndfile
   libsoxr
   libvorbis
-  libx11
+  libxkbcommon-x11
   lilv
   lv2
   mpg123
@@ -37,6 +41,9 @@ depends=(
   portsmf
   rapidjson
   soundtouch
+  serd
+  sord
+  sratom
   sqlite
   suil
   twolame
@@ -44,7 +51,9 @@ depends=(
   vst3sdk
   wavpack
   wxwidgets-gtk3
+  xcb-util
   xcb-util-cursor
+  xcb-util-keysyms
   zlib
 )
 makedepends=('cmake' 'gcc' 'git' 'nasm')
@@ -70,15 +79,21 @@ build() {
   export CC=gcc
   export VST3_SDK_DIR=/usr/src/vst3sdk
 
-  cmake_args=(
+  local cmake_args=(
+    -B build
     -D CMAKE_BUILD_TYPE=Release
     -D CMAKE_INSTALL_PREFIX=/usr
-    -D audacity_conan_enabled=Off
+    -D audacity_conan_enabled=OFF
+    -D audacity_has_networking=OFF
+    -D audacity_has_crashreports=OFF
+    -D audacity_has_updates_check=OFF
+    -D audacity_has_sentry_reporting=OFF
     -D audacity_lib_preference=system
-    -D audacity_obey_system_dependencies=On
+    -D audacity_obey_system_dependencies=ON
+    -S audacity
   )
 
-  cmake -S audacity -B build "${cmake_args[@]}"
+  cmake "${cmake_args[@]}"
   cmake --build build
 }
 
