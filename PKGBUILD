@@ -4,7 +4,7 @@
 
 pkgname=crosswords
 pkgver=0.3.13.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Crossword player and editor for GNOME'
 arch=(x86_64 aarch64)
 url='https://gitlab.gnome.org/jrb/crosswords'
@@ -27,7 +27,7 @@ depends=(
     python-puzpy
     python-regex
 )
-makedepends=(meson)
+makedepends=(glib2-devel meson)
 source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${url}/-/commit/b4689c2426cf24e944f8ae419ed23f1969745995.patch"
         "${url}/-/commit/3891aecfe538864cfc31561d21ccbcd007a94d2d.patch"

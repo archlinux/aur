@@ -1,11 +1,12 @@
 pkgbase = crosswords
 	pkgdesc = Crossword player and editor for GNOME
 	pkgver = 0.3.13.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.gnome.org/jrb/crosswords
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
+	makedepends = glib2-devel
 	makedepends = meson
 	depends = dconf
 	depends = cairo
