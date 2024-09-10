@@ -8,6 +8,8 @@ pkgbase = rustpython-git
 	license = MIT
 	makedepends = rust
 	makedepends = python
+	options = !buildflags
+	options = !strip
 	source = git+https://github.com/RustPython/RustPython.git
 	md5sums = SKIP
 

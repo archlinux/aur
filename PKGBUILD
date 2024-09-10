@@ -7,6 +7,7 @@ url='https://github.com/RustPython/RustPython'
 #depends=('')
 makedepends=('rust' 'python')
 license=('MIT')
+options=('!buildflags' '!strip')
 source=('git+https://github.com/RustPython/RustPython.git')
 md5sums=('SKIP')
 
@@ -17,7 +18,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/RustPython"
-    cargo build --release --locked
+    cargo build --release --locked --features jit --features ssl
 }
 
 check() {
