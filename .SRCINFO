@@ -11,3 +11,16 @@ pkgbase = conway-screensaver
 	sha256sums = bf7217ee0e212abfe093a3b4da1810c1e91cd004dede70b19ff422794d440b5e
 
 pkgname = conway-screensaver
+pkgbase = conway-screensaver
+	pkgdesc = Conway's Game of Life (Terminal Screensaver)
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/cdkw2/conway-screensaver
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = ncurses
+	source = conway-screensaver-1.0.2.tar.gz::https://github.com/cdkw2/conway-screensaver/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = f8598fa30f89b1a1c2d8cf7236768c7fa39e0a5090a3a76e2ed5fef2266f51b0
+
+pkgname = conway-screensaver
