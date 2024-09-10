@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-virtualkeyboard
 	pkgdesc = Virtual keyboard framework (translations, mingw-w64)
-	pkgver = 5.15.14
+	pkgver = 5.15.15+kde+r0
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = mingw-w64-qt5-virtualkeyboard
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://invent.kde.org/qt/qt/qtvirtualkeyboard#commit=7389450a5de5fdd210f1459abcf73621ec0496bd
-	sha256sums = 8ab1ea50bcf50e92b2f18d7d63c8452345d8512827c7aa9d45eab6563cf060b3
+	source = git+https://invent.kde.org/qt/qt/qtvirtualkeyboard#commit=e62c1219caef25182ba85383834be04eefce12bf
+	sha256sums = SKIP
 
 pkgname = mingw-w64-qt5-virtualkeyboard
