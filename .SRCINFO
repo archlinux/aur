@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-charts-static
 	pkgdesc = Provides a set of easy to use chart components (mingw-w64)
-	pkgver = 5.15.14
+	pkgver = 5.15.15+kde+r0
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = mingw-w64-qt5-charts-static
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://invent.kde.org/qt/qt/qtcharts#commit=7315c48bcec88014e78165bbda54abfcd557e0af
-	sha256sums = 222e7f3fa95314e9e25e202ed02d92b67fae320762c0d6fc5734ff8c1c98bbdf
+	source = git+https://invent.kde.org/qt/qt/qtcharts#commit=0c97aae7dc242ac0710e09397672ad878761157a
+	sha256sums = SKIP
 
 pkgname = mingw-w64-qt5-charts-static
