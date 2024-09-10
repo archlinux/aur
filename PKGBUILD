@@ -3,7 +3,7 @@
 pkgname=perl-geoip
 _gitname=geoip-api-perl
 pkgver=1.51
-pkgrel=2.3
+pkgrel=2.4
 pkgdesc="GeoIP Perl API"
 arch=(i686 x86_64)
 license=(GPL)
