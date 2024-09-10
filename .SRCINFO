@@ -77,6 +77,4 @@ pkgname = coreboot-toolchain-gcc-riscv
 
 pkgname = coreboot-toolchain-gcc-ppc64
 
-pkgname = coreboot-toolchain-gcc-nds32le
-
 pkgname = coreboot-toolchain-clang

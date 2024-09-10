@@ -1,6 +1,6 @@
 # Maintainer: Felix Singer <felixsinger@posteo.net>
 
-_gcc_targets="i386 x64 arm aarch64 riscv ppc64 nds32le"
+_gcc_targets="i386 x64 arm aarch64 riscv ppc64"
 _is_clang_enabled=1
 _commit='04bb74a7267a64d39ca87ba8c9b4f9f34c7d2bbb'
 
@@ -144,10 +144,6 @@ package_coreboot-toolchain-gcc-riscv() {
 }
 
 package_coreboot-toolchain-gcc-ppc64() {
-  do_package_gcc
-}
-
-package_coreboot-toolchain-gcc-nds32le() {
   do_package_gcc
 }
 
