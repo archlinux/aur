@@ -1,0 +1,141 @@
+diff '--color=auto' -ura package.orig/lib/appindicator/tpapplet.py package.new/lib/appindicator/tpapplet.py
+--- package.orig/lib/appindicator/tpapplet.py	2024-05-08 04:58:21.000000000 -0400
++++ package.new/lib/appindicator/tpapplet.py	2024-09-10 11:50:57.935697289 -0400
+@@ -1,5 +1,9 @@
+ #!/usr/bin/env python2.7
+ 
++import gi
++gi.require_version("Gtk", "3.0")
++gi.require_version("AppIndicator3", "0.1")
++gi.require_version("Notify", "0.7")
+ from gi.repository import Gtk as gtk
+ from gi.repository import GLib
+ from gi.repository import AppIndicator3 as appindicator
+@@ -58,50 +62,50 @@
+ 
+ 	def cleanup(self):
+ 	   for data in self.notifies:
+-		data.notification.close()
+-	   self.notifies=[]
+-	   self.newlist =[]
++	    data.notification.close()
++	    self.notifies=[]
++	    self.newlist =[]
+ 
+ 	def setNotify(self,printer,message,level):
+-	   found = 0
++	  found = 0
+ 	   # check if printer already present in notifies list
+-	   for data in self.newlist:
+-		if data.printer == printer:
++	  for data in self.newlist:
++	    if data.printer == printer:
+    		   found = 1
+-		   if data.level<level:
+-			data.message=message
+-			data.level=level
+-			break
+-	   if found<1:
+-		self.newlist.append(nstruct(printer,message,level,0))
++	    if data.level<level:
++   		   data.message=message
++   		   data.level=level
++   		   break
++	    if found<1:
++   		   self.newlist.append(nstruct(printer,message,level,0))
+ 		
+ 	def mergeNotifies(self):
+ 	   # mark all entries as unchanged
+ 	   for old in self.notifies:
+-		old.level = 0;
++   		   old.level = 0;
+ 
+ 	   for data in self.newlist:
+                 found=0
+-		for note in self.notifies:
++	   for note in self.notifies:
+ 		   if note.printer == data.printer:
+-			note.level=1
+-   		        found=1
+-			if note.message == data.message:
+-			   break
+-			else:
+-			   note.message=data.message
+-			   result = note.notification.update("%s"%(data.printer), data.message, None)
+-			   note.notification.show()
+-			break
+-		if found==0:
+-		   newnotify=nstruct(data.printer,data.message,1,0)
+-		   newnotify.notification=notifyclass.Notification.new("%s"%(newnotify.printer), newnotify.message, None)
+-		   newnotify.notification.show()
+-		   self.notifies.append(newnotify)
++		    note.level=1
++		    found=1
++		    if note.message == data.message:
++		      break
++		    else:
++		      note.message=data.message
++		      result = note.notification.update("%s"%(data.printer), data.message, None)
++		      note.notification.show()
++		      break
++		    if found==0:
++		      newnotify=nstruct(data.printer,data.message,1,0)
++		      newnotify.notification=notifyclass.Notification.new("%s"%(newnotify.printer), newnotify.message, None)
++		      newnotify.notification.show()
++		      self.notifies.append(newnotify)
+ 	   for old in self.notifies:
+ 	      if old.level ==0:
+-		 old.notification.close()
+-		 self.notifies.remove(old)
++                old.notification.close()
++                self.notifies.remove(old)
+ 	   self.newlist = []
+ 
+ 
+@@ -124,14 +128,14 @@
+         self.animcounter=0
+         self.anim_sequence=0
+         self.curimgpath = ''
+-    	self.mynotifies = notifies()
+-	self.notifyThreshold = 2
++        self.mynotifies = notifies()
++        self.notifyThreshold = 2
+  
+         tplogpath=""
+         animstate=0
+ 
+     def cleanup(self):
+-	self.mynotifies.cleanup()
++        self.mynotifies.cleanup()
+ 
+     def openTPMonitor(self,menuitem,myclass, queueName):
+         if(len(queueName)>0):
+@@ -195,7 +199,7 @@
+                                msgtext = message[position2+1:]
+                                self.numEntries[mode]+=1;
+                                
+-			       if self.notifyThreshold > 2-mode: self.mynotifies.setNotify(printername,msgtext,mode)
++                               if self.notifyThreshold > 2-mode: self.mynotifies.setNotify(printername,msgtext,mode)
+ 
+                                if(inum<num_entries):
+                                    if self.messageStore[0][inum] != printername or self.messageStore[1][inum] != msgtext or self.itemState[inum]!=msgnumber:
+@@ -219,7 +223,7 @@
+         if queuestate == TPSTATE_NONE and self.curMode> mode_warning:
+             queuestate = TPSTATE_WARNING    
+         self.printerstate=queuestate
+-	self.mynotifies.mergeNotifies()
++        self.mynotifies.mergeNotifies()
+         
+         
+     def load_tpcfg(self):
+@@ -245,8 +249,8 @@
+                     self.varpath=right
+                 elif "TPPATH_BIN" in left:
+                     self.binpath=right
+-		elif "APPLET_NOTIFYLEVEL" in left:
+-		    self.notifyThreshold = int(right)
++                elif "APPLET_NOTIFYLEVEL" in left:
++                    self.notifyThreshold = int(right)
+         f.close
+ 
+ 

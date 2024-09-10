@@ -12,7 +12,7 @@
 
 set -u
 pkgname='turboprint'
-_pkgver='2.56-1'
+_pkgver='2.56-2'
 pkgver="${_pkgver//-/.}"
 pkgrel='1'
 pkgdesc='High-quality printer driver system for Linux'
@@ -34,7 +34,8 @@ install="${pkgname}.install"
 #_verwatch=('http://www.turboprint.info/history.html' '[0-9][0-9]-[a-z][a-z][a-z]-[0-9][0-9] - \([0-9\.]\+\).*' 'f')
 source=('turboprint.desktop'
         'turboprint-monitor.desktop'
-        'tprintdaemon.service')
+        'tprintdaemon.service'
+        'tpapplet.patch')
 _srcdir="${pkgname}-${_pkgver}"
 # ftp://ftp.zedonet.com/tp2/turboprint-2.44-1.x86_64.tgz
 # ftp://ftp.zedonet.com/tp2/turboprint-2.44-1.i586.tgz
@@ -44,13 +45,15 @@ source_i686=("https://www.zedonet.com/download/tp2/${_srcdir}.i586.tgz")
 source_x86_64=("https://www.zedonet.com/download/tp2/${_srcdir}.x86_64.tgz")
 md5sums=('e3c504b2c1b7deb01d03fde710b117d7'
          '60a1754b2abd30e75e51acd9576cda43'
-         '2640e1d95c3579d6cef590d18b4476df')
-md5sums_i686=('ccf7d37f20076d6293b5b9e3240c0fb9')
+         '2640e1d95c3579d6cef590d18b4476df'
+         '1206069a3d461d97be48c251007975b1')
+md5sums_i686=('00aae4755425223b1062dd464be566fc')
 md5sums_x86_64=('11e75e43d60fee922aa504d4b4136906')
 sha256sums=('c90e4f71a234dc0638d15305184daeed212ebf1f7efc2f5a2a09895ca09bea6d'
             'de0c92b665150ceaf33c3cfd94b0afb422609194db9416aff59add5123bb8a2f'
-            'a6ba2b4bab8d2512e542427dd3473d1764a777ef0493031046dc7282dc05fdad')
-sha256sums_i686=('54495c2dc00c6dd6b274c352eccc4813c4b1af75e9c24aa47c86bb70b2bccbbe')
+            'a6ba2b4bab8d2512e542427dd3473d1764a777ef0493031046dc7282dc05fdad'
+            '6123cfea355a0e308e1f5bab357450399670dde45d6ed367c13da38c53a871fb')
+sha256sums_i686=('7d62eadb52ec577ae8e7738d8c0be2e0274168bc546d46b27d95de65301eb4b0')
 sha256sums_x86_64=('b9a069b59b75d82ed9e9ca9fafbbb77c5eaf0570a85ff4cc9d005a1f35b4f2b2')
 
 prepare() {
@@ -61,6 +64,8 @@ prepare() {
     echo 'TP_CUPS=1' >> 'system.cfg'
   fi
   set +u
+
+  patch -Np1 -i ../tpapplet.patch
 }
 
 package() {
