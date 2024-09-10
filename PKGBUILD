@@ -4,7 +4,7 @@
 # Helper: paulequilibrio
 pkgname=gdevelop-bin
 _pkgname=GDevelop
-pkgver=5.4.210
+pkgver=5.4.211
 _electronversion=18
 pkgrel=1
 pkgdesc="A full-featured, no-code, open-source game development software."
@@ -34,20 +34,21 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-5-${pkgver}.AppImage")
 sha256sums=('0620d885ddbc88e952f99090d767de08671b6a81e5c10900ef5b949531460b92'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('fa24b7f6fa95123c3deeadb79a8876c065b555a3d593ab2997f5cefe3c28375e')
-sha256sums_x86_64=('5dc18cab87234f5cd10c1a10fb1589ad34fa4b0156a24624a7f4e2cafad38ac6')
+sha256sums_aarch64=('e7d334c29a988d998d4361932cdf6f293fd0b8b03f5a6617e34fa048d0d1af56')
+sha256sums_x86_64=('adb7ddf765c0c52ad0d042f59f016ce749c3e37ee007be52cce0f1234c2086e3')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname} 5|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-bin}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/${_appname}/
+        s/@options@//
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed "s|if (isDev)|if (!isDev)|g;s|isDev,|\/\/isDev,|g;s|devTools,|\/\/devTools,|g" -i "${srcdir}/app.asar.unpacked/main.js"
+    sed "s/if (isDev)/if (!isDev)/;s/isDev,/\/\/isDev,/;s/devTools,/\/\/devTools,/" -i "${srcdir}/app.asar.unpacked/main.js"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
