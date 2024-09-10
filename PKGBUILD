@@ -1,6 +1,6 @@
 # Maintainer: hybridkernel <admin@hzqki.me>
 pkgname=smoothie-rs-linux-git
-pkgver=Nightly_2024.01.08_14.47.r46.g5ccc2a2
+pkgver=Nightly_2024.07.21_06.07.r4.ge0b804e
 pkgrel=1
 pkgdesc="Linux-Tested version of smoothie-rs"
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=('vapoursynth-plugin-mvtools'
          'vapoursynth-plugin-vsakarin-llvm14-git'
          'python')
 optdepends=('vapoursynth-plugin-rife-ncnn-vulkan: RIFE-NCNN Vulkan support')
-makedepends=('rustup' 'gtk3' 'git')
+makedepends=('rust' 'gtk3' 'git')
 source=("$pkgname::git+https://github.com/Hzqkii/smoothie-rs.git")
 sha256sums=('SKIP')
 provides=("smoothie-rs-linux" "smoothie-rs-linux-debug")
@@ -32,9 +32,6 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   
-  # Ensure rustup and the stable toolchain are installed
-  rustup default stable
-
   cargo build --release
 }
 
