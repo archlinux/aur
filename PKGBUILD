@@ -5,13 +5,13 @@ _typesuffix='-dkms'
 _vcssuffix='-git'
 pkgname="${_pkgname}${_typesuffix}${_vcssuffix}"
 pkgver=r15.20230110.0171589
-pkgrel=4
+pkgrel=5
 pkgdesc="Linux kernel module that creates a device '/dev/one', similar to '/dev/zero' but outputting one-bits (0xFF-bytes)."
 url='https://github.com/tinmarino/dev_one'
 arch=(
   'any' # It builds binaries via DKMS _after_ module installation, for whatever architecture the current system runs on, so this package is regarded to be architecture independent.
 )
-license=('GPL-2.0-or-later')
+license=('GPL-2.0-only')
 provides=(
   "${_pkgname}"
   "${_pkgname}${_typesuffix}"
