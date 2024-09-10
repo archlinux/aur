@@ -1,7 +1,7 @@
 # Maintainer: Filip Parag <filip@parag.rs>
 
 pkgname=bas-celik-cli-bin
-pkgver=1.8.2
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Command line program for reading smart-card documents issued by the government of Serbia'
 arch=(x86_64)
@@ -11,7 +11,7 @@ url='https://github.com/ubavic/bas-celik/'
 license=(MIT)
 depends=(ccid opensc)
 source=("bas_celik_cli-${pkgver}_amd64::https://github.com/ubavic/bas-celik/releases/download/v${pkgver}/bas-celik-cli.linux.amd64")
-sha256sums=('e3ceca638c467b739c7c04aea0eb2a817d23ab2afdec9ca8f3507342d703bd29')
+sha256sums=('8aac434e2f0c7bc5904f45127c35c67ee3bab34891d563cfcfd8ff335347602c')
 
 package()
 {
