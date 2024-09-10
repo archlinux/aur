@@ -20,4 +20,3 @@ app.setPath('userData', path.join(app.getPath('appData'), name));
 app.setVersion(packageJson.version);
 // Run the application.
 require('module')._load(appPath, module, true);
-
