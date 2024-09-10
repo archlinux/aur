@@ -1,0 +1,12 @@
+pkgbase = leancrypto
+	pkgdesc = The leancrypto library is a cryptographic library that exclusively contains only PQC-resistant cryptographic algorithms.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/smuellerDD/leancrypto
+	arch = any
+	license = GPL2
+	depends = meson
+	source = leancrypto-1.0.0.tar.gz::https://github.com/smuellerDD/leancrypto/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 7e924430d6cc0b0ce274018b3d4a471326b05937e86b2742ccd359be1e3b48a3
+
+pkgname = leancrypto
