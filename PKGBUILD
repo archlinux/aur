@@ -1,7 +1,7 @@
 # Maintainer: Piroro-hs
 
 pkgname=hyprland-nox
-pkgver=0.42.0
+pkgver=0.43.0
 pkgrel=1
 pkgdesc="An independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks. (w/o XWayland support)"
 arch=('x86_64')
@@ -28,7 +28,6 @@ depends=('aquamarine'
          'wayland')
 makedepends=('cmake'
              'git'
-             'hwdata'
              'hyprwayland-scanner'
              'ninja'
              'python'
@@ -43,19 +42,18 @@ backup=()
 source=("$pkgname::git+$url#tag=v$pkgver"
         "${pkgname}_hyprland-protocols::git+https://github.com/hyprwm/hyprland-protocols.git"
         "${pkgname}_udis86::git+https://github.com/canihavesomecoffee/udis86.git")
-sha256sums=('cda4d93ec3fdb537ec1a4e84e9cfe603a59b7bc29fa98f8c678d764171293beb'
+sha256sums=('fee6bae21e9bbe1766f28366672d5669efbd5e3dad63a3b9b1c2213f2ecb036b'
             'SKIP'
             'SKIP')
 
 prepare() {
   cd "$srcdir/$pkgname"
+
   git submodule init
   git submodule deinit subprojects/tracy
   git config submodule.subprojects/hyprland-protocols.url "$srcdir/${pkgname}_hyprland-protocols"
   git config submodule.subprojects/udis86.url "$srcdir/${pkgname}_udis86"
   git -c protocol.file.allow=always submodule update
-
-  sed -E -i '/lib(seat|display-info|liftoff)/d' "$srcdir/${pkgname}/CMakeLists.txt"
 }
 
 build() {
