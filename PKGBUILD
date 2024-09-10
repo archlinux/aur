@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=rclone-bisync-manager-tray-git
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="System tray application for RClone BiSync Manager"
 arch=('any')
