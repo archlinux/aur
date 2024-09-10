@@ -5,8 +5,9 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-fancy-progress-git
-pkgver=6.0.1.r123.g2c45e854
-pkgrel=3
+pkgver=6.1.0.r28.g25ff3a71
+pkgver_repo="$(pacman -Sp pacman | grep -Eo "pacman-.*-[0-9]+"| cut -d- -f2-)"
+pkgrel=1
 pkgdesc="pacman-git but patched to have a unicode progressbar"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.archlinux.org/pacman/"
@@ -22,7 +23,7 @@ conflicts=('pacman')
 backup=("etc/pacman.conf"
         "etc/makepkg.conf")
 options=('emptydirs' 'strip' 'debug')
-source=("git+https://gitlab.archlinux.org/pacman/pacman.git"
+source=("git+https://gitlab.archlinux.org/pacman/pacman.git#branch=release/${pkgver_repo%.*}.x"
         "pacman.conf.i686"
         "pacman.conf.x86_64"
         "pacman.conf.arm"
@@ -33,7 +34,7 @@ sha256sums=('SKIP'
             '7ff75a61a07eabbc1718a7171b897b6504a6370f2f59a14caf42bbf0dce26ea6'
             '3fa640a4a2138b8d07b6e6366ff0743206ecb32fc3b7f53490a614388c492cf3'
             '0c1ecbb8c57e8ef2c600b41d4458269095fc4ddb6778d0000d4a9a067f68fe2d'
-            'cd2b5e3ce691b84e18e90c5cc70a00874098e1281ae74f401539ad74b7c25a09')
+            'e04d128c4500f9c7d1ba473e2e2ac8b561a16954409debab18aa0a537808aa49')
 
 pkgver() {
   cd pacman
@@ -123,3 +124,4 @@ package() {
 }
 
 # vim: set ts=2 sw=2 et:
+
