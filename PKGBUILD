@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=ruby-flexmock
 _pkgname=${pkgname#ruby-}
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Flexible mocking for Ruby testing"
 arch=(any)
@@ -21,7 +21,7 @@ checkdepends=(
 )
 options=(!emptydirs)
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('cf90454ac58be04a9bcb1b0d5e4124bd2b88149729ec5f437e2c3ebb621fb1f0')
+sha256sums=('eba38fa86a4d5948939922135ee1ebb5788f72ad81066f8a6ec7a3eda47021b0')
 
 prepare() {
   cd "$_pkgname"
