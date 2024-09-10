@@ -11,7 +11,7 @@ replaces=('coot-data')
 #         'freeglut' 'libgl' 'gtk4' 'cairo' 'libssm>=1.4.0-2' 'zlib' 'curl' 'python' 'gtkglarea' 'which' 'bc' 'sqlite' 'rdkit' 'mmdb2>=2.0.12-4')
 depends=('coordgen' 'guile' 'libccp4>=6.5.1-2' 'libclipper>=2.1.20170202-3' 'fftw2-float' 'gsl' 'swig'
          'libgl' 'gtk4' 'glm' 'cairo' 'libssm>=1.4' 'zlib' 'curl' 'python' 'python-gobject' 'which' 'bc' 'sqlite' 'rdkit' 'mmdb2>=2.0.12-4')
-source=($pkgname-$pkgver.tar.gz::https://github.com/pemsley/$pkgname/archive/Release-$pkgver-fix.tar.gz
+source=($pkgname-$pkgver.tar.gz::https://github.com/pemsley/$pkgname/archive/refs/tags/Release-$pkgver.tar.gz
         https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/dependencies/refmac-monomer-library.tar.gz
         https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/$pkgname/dependencies/reference-structures.tar.gz
         )
@@ -23,7 +23,7 @@ sha256sums=('3cc3ba08dd0221e655669ff3ef6858713d11959478a48278afb055337b8846d2'
 
 
 build() {
-  cd "$srcdir/$pkgname-Release-$pkgver-fix"
+  cd "$srcdir/$pkgname-Release-$pkgver"
 
   aclocal -I macros
   libtoolize --automake --copy
@@ -47,7 +47,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-Release-$pkgver-fix"
+  cd "$srcdir/$pkgname-Release-$pkgver"
   make DESTDIR="$pkgdir/" install
   #sed -i 's|COOT_PYTHON_DIR=|COOT_PYTHON_DIR=/usr/lib/python2.7/site-packages/coot|' src/$pkgname
   sed -i 's|COOT_REFMAC_LIB_DIR=|COOT_REFMAC_LIB_DIR=/usr/share/coot/lib/|' src/$pkgname
