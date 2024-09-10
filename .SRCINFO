@@ -1,11 +1,11 @@
 pkgbase = gnome-shell-extension-tilingshell
 	pkgdesc = Extend GNOME Shell with advanced tiling window management.
 	pkgver = 12.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/domferr/tilingshell
 	arch = any
 	license = GPL-2.0-or-later
-	makedepends = npm
+	makedepends = nvm
 	makedepends = zip
 	depends = gnome-shell
 	source = tilingshell-12.2.0.tar.gz::https://github.com/domferr/tilingshell/archive/refs/tags/12.2.0.tar.gz
