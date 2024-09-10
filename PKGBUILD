@@ -49,13 +49,13 @@ package() {
   install -p -m 755 src/$pkgname $pkgdir/usr/bin
 
   # remove shebang from python scripts
-  for lib in $(find $pkgdir/usr/lib/python2.7/site-packages/$pkgname/ -name "*.py"); do
-    sed '/\/usr\/bin\/env/d' $lib > $lib.new &&
-    touch -r $lib $lib.new &&
-    mv $lib.new $lib
-  done
+  # for lib in $(find $pkgdir/usr/lib/python2.7/site-packages/$pkgname/ -name "*.py"); do
+  #  sed '/\/usr\/bin\/env/d' $lib > $lib.new &&
+  #  touch -r $lib $lib.new &&
+  #  mv $lib.new $lib
+  # done
 
-  chmod 644 $pkgdir/usr/lib/python2.7/site-packages/$pkgname/$pkgname.py
+  # chmod 644 $pkgdir/usr/lib/python2.7/site-packages/$pkgname/$pkgname.py
 
   install -d $pkgdir/usr/share/$pkgname/reference-structures
   install -Dm644 $srcdir/reference-structures/*.pdb $pkgdir/usr/share/$pkgname/reference-structures/
