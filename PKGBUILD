@@ -13,7 +13,7 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=24.3.0_devel.194642.a9d64fa1bde
+pkgver=24.3.0_devel.194673.5db135f66ad
 pkgrel=2
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
@@ -24,7 +24,7 @@ makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto lib
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layers libva-mesa-driver vulkan-swrast vulkan-virtio mesa-vdpau vulkan-driver opengl-driver)
 conflicts=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layers libva-mesa-driver vulkan-swrast mesa-vdpau vulkan-virtio
-                vulkan-nouveau mesa-libgl  opencl-clover-mesa opencl-rusticl-mesa
+                vulkan-nouveau mesa-libgl  opencl-clover-mesa
 )
 # mixing components from different mesa versions is a bad idea, conflict with everything unique provided by extra/mesa
 
@@ -100,6 +100,7 @@ package_mesa-minimal-git() {
                         glibc libx11 libxfixes gcc-libs
                         xcb-util-keysyms spirv-tools
     )
+    conflicts+=("opencl-rusticl-mesa<$pkgver-$pkgrel")
 
     DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C _build install
 
