@@ -1,0 +1,20 @@
+pkgbase = emilua-botan
+	pkgdesc = Securely clears secrets from memory in Emilua
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/emilua/botan
+	arch = i686
+	arch = x86_64
+	license = boost
+	makedepends = git
+	makedepends = meson
+	makedepends = boost
+	makedepends = gawk
+	makedepends = gperf
+	makedepends = asciidoctor
+	depends = emilua
+	depends = botan
+	source = emilua-botan::git+https://gitlab.com/emilua/botan.git#tag=v1.0.0
+	md5sums = SKIP
+
+pkgname = emilua-botan
