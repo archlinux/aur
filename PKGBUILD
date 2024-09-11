@@ -3,7 +3,7 @@
 pkgname=betacraft-launcher-git
 pkgver=1.09_17.r0.6c6f5d1
 pkgrel=1
-pkgdesc="A Minecraft launcher aims to provide easy access to old versions and improve the overall game experience in those versions."
+pkgdesc="A Minecraft launcher that aims to provide easy access to old versions and improve the overall game experience in those versions."
 arch=('x86_64')
 url="https://github.com/betacraftuk/betacraft-launcher"
 license=('GPL3')
