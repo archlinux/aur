@@ -7,19 +7,29 @@
 pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
 epoch=1
-pkgver=a26.r825.g09f55a1afc
+pkgver=a26.r849.gea4b580527
 pkgrel=1
 pkgdesc="Cross-platform, 3D and historically-based real-time strategy game - built from git development version."
 arch=('i686' 'x86_64')
 url="http://play0ad.com/"
 license=('GPL-2.0-or-later' 'LicenseRef-CCPL')
-makedepends=('boost' 'cmake' 'mesa' 'zip' 'libsm' 'rust' 'python311' 'python3' 'git' 'git-lfs'
+makedepends=('boost' 'cmake' 'mesa' 'zip' 'libsm' 'rust' 'git' 'git-lfs'
              'enet' 'fmt' 'gloox' 'libminiupnpc.so'
              'libpng' 'libsodium' 'libvorbis' 'miniupnpc' 'openal'
              'sdl2' 'wxwidgets-gtk3' 'which' 'subversion')
 options=('!lto' '!debug') # lto breaks spidermonkey linking (https://bugs.gentoo.org/746947)
-source=("git+https://gitea.wildfiregames.com/0ad/0ad" "patch.patch")
-md5sums=('SKIP' '0c789b7aa65258125a488c857e3fb74b')
+source=(
+  "git+https://gitea.wildfiregames.com/0ad/0ad"
+  "patch.patch"
+  https://www.python.org/ftp/python/3.11.10/Python-3.11.10.tar.xz{,.asc}
+)
+validpgpkeys=('A035C8C19219BA821ECEA86B64E628F8D684696D')  # Pablo Galindo Salgado <pablogsal@gmail.com>
+md5sums=(
+  'SKIP'
+  '0c789b7aa65258125a488c857e3fb74b'
+  'af59e243df4c7019f941ae51891c10bc'
+  'SKIP'
+)
 
 pkgver() {
   cd ${_pkgname}
@@ -38,11 +48,17 @@ prepare() {
 }
 
 build() {
+  cd Python-3.11.10
+  ./configure
+  make
+  make DESTDIR="$srcdir/pythoninstall" install
+  cd ..
+  PATH="$PWD/pythoninstall/usr/local/bin:$PATH"
+
   # this uses malloc_usable_size, which is incompatible with fortification level 3
   export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
   export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
   # remove once this is fixed https://trac.wildfiregames.com/ticket/6895
-  export PYTHON3=python3.11
   cd "$srcdir/${_pkgname}/libraries"
   ./build-source-libs.sh
   cd "$srcdir/${_pkgname}/build/workspaces"
