@@ -10,8 +10,8 @@ license=('MIT')
 depends=('python')
 makedepends=('git' 'python-wheel' 'python-build' 'python-installer')
 source=("dwipe::git+https://github.com/joedefen/dwipe.git")
-provides=("$pkgname")
-conflicts=("pkgname")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 md5sums=('SKIP')
 
 pkgver() {

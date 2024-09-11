@@ -10,8 +10,8 @@ pkgbase = dwipe-git
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
-	provides = dwipe-git
-	conflicts = dwipe-git
+	provides = dwipe
+	conflicts = dwipe
 	source = dwipe::git+https://github.com/joedefen/dwipe.git
 	md5sums = SKIP
 
