@@ -1,5 +1,5 @@
 pkgname=cminpack
-pkgver=1.3.9
+pkgver=1.3.10
 pkgrel=1
 pkgdesc="A C/C++ rewrite of the MINPACK software"
 arch=('x86_64')
@@ -8,13 +8,13 @@ license=('BSD')
 depends=('cblas')
 makedepends=('cmake')
 source=("https://github.com/devernay/cminpack/archive/v${pkgver}.tar.gz")
-sha256sums=('aa37bac5b5caaa4f5805ea5c4240e3834c993672f6dab0b17190ee645e251c9f')
+sha256sums=('6355776f60ebfeef63883aa02c19ab57f1ba776e43122f27cb3161e7fc277d1d')
 
 build() {
   cd $srcdir/cminpack-${pkgver}
   cmake -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_SHARED_LIBS=ON -DBUILD_EXAMPLES=OFF -DUSE_BLAS=OFF -B build .
+    -DBUILD_SHARED_LIBS=ON -DBUILD_EXAMPLES=OFF -B build .
   make -C build
 }
 
