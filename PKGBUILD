@@ -2,7 +2,7 @@
 _projectname='qcheck'
 pkgname="ocaml-$_projectname"
 pkgver='0.22'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='QuickCheck inspired property-based testing for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/c-cube/$_projectname"
@@ -22,7 +22,7 @@ build() {
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune runtest --release --verbose
+	ALCOTEST_COLUMNS='80' dune runtest --release --verbose
 }
 
 package() {
