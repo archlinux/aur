@@ -1,0 +1,4 @@
+[helm-synth]
+source = "git"
+git = "https://github.com/mtytel/helm.git"
+prefix = "v"
