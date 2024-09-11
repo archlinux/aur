@@ -1,7 +1,7 @@
 # Maintainer: Faugus <felix.ribeiro@live.com>
 
 pkgname=faugus-launcher-git
-pkgver=r134.098fe9f
+pkgver=r136.9ffef36
 pkgrel=1
 pkgdesc="A simple and lightweight app for running Windows games using UMU-Launcher/UMU-Proton"
 arch=('x86_64')
