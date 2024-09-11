@@ -1,0 +1,5 @@
+[openbuilds-control-bin]
+source = "git"
+git = "https://github.com/OpenBuilds/OpenBuilds-CONTROL.git"
+prefix = "v"
+ignored = "v1.8.0"
