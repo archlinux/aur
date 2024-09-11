@@ -1,9 +1,10 @@
-# Maintainer: William Tang <galaxyking0419@gmail.com>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: William Tang <galaxyking0419@gmail.com>
 # Contributor: Chris Severance <aur.severach@spamgourmet.com>
 # Contributor: David Roheim <david.roheim@gmail.com>
 
 pkgname=hadoop
-pkgver=3.3.5
+pkgver=3.3.6
 pkgrel=2
 pkgdesc='An open-source software for reliable, scalable, distributed computing'
 arch=('x86_64')
@@ -79,3 +80,11 @@ package() {
     # Create required directories
     mkdir -p "$pkgdir"/var/{lib,log}/hadoop
 }
+sha256sums=('6da5348334de7ebe6e85bae559d3e42fab56f9c155648912b6212e191c713323'
+            '1ec173297234b0d587255c1fac978b3929e967146ac542e2e1b44323f80e0bc5'
+            '3d20dd2ad1b773e7d4cb855c7556613e36ff56081749fe7b01c6e4fd0c743cc5'
+            '876d40b0a2ec9b9cec9b667d7909591ee0ef1acbd5417a0357c33539d8a54e1a'
+            'f8f3b3a93a9e455da198ee93a873012399878459e78a3a7de0e396d69e81b61f'
+            '3d4aa2a660bd509e658c8109d9e91c00b0f0eee3a2ecab71a4785a76529ea242'
+            '2f6b8893a4b4e2ef120193ecfc2d929a8558d2a1c5b0af12e9224342ca90a158'
+            'ed1e7f13d2023d49a51dc04c4459d12a53bff258a05b852a3e10a9fd2d18bbb8')
