@@ -4,8 +4,8 @@
 _pkgname='optimal-congress'
 _vcssuffix='-git'
 pkgname="${_pkgname}${_vcssuffix}"
-pkgver=0.7.3+2.r84.20240718.b363174
-pkgrel=2
+pkgver=0.7.3+3.r85.20240905.0a839e6
+pkgrel=1
 pkgdesc="Command line tool to find an optional, personal chedule for the 37th Chaos Communication Congress (37C3) 2023."
 arch=(
   'any'
