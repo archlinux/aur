@@ -1,14 +1,14 @@
 # Maintainer: k1f0 <generic@k1f0.mozmail.com>
 _pkgname=signalbackup-tools
 pkgname=${_pkgname}-git
-pkgver=20220914.1.r1.g3792949
-pkgrel=2
+pkgver=20240910.r0.g1543540
+pkgrel=1
 pkgdesc="Tool to work with Signal Backup files"
 arch=('x86_64')
 url="https://github.com/bepaald/signalbackup-tools"
 license=('GPL3')
-depends=('openssl' 'sqlite')
-makedepends=('git')
+depends=('openssl' 'sqlite' 'dbus')
+makedepends=('git' 'cmake' 'pkgconfig')
 provides=("signalbackup-tools")
 conflicts=()
 source=("git+https://github.com/bepaald/${_pkgname}.git")
@@ -21,7 +21,9 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${_pkgname}"
-	/bin/bash ./BUILDSCRIPT_MULTIPROC.bash44
+	export CXXFLAGSEXTRA="$(pkg-config --cflags dbus-1)"
+	export LDLIBS="$(pkg-config --libs dbus-1) -lcrypto -lsqlite3"
+	./BUILDSCRIPT.bash
 }
 
 package() {
