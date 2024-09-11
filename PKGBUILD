@@ -13,7 +13,7 @@
 # You can pass parameters to `ninja` via MAKEFLAGS
 
 pkgname=telegram-desktop-dev
-pkgver=5.4.1
+pkgver=5.5.3
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -50,7 +50,7 @@ source=(
     # New approach: source tarball, same as the stable Arch package
     "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
 )
-sha512sums=('f86b86c6001b2c214d897821c175f41c53ca44401285909b2b12254634cca821137d61a28c75d79ed757c1ade08873035397aae7c462494c1ab6382501a8072a')
+sha512sums=('27eee61e4e81d0cdeeb7c13111a6a98f0deb83204a13e475d1d0c548bd0ac9fc607a95b5e2b0c16a00fca746d3c0ea039120dcc4104b3bcc8970b7ee13300c74')
 
 prepare() {
     # Magic submodule configuration, thanks to the Python script
@@ -82,8 +82,8 @@ build() {
 
     # Ensure that we won't have issues with tmpfs.
     # If you prefer to speed up things, comment the next 2 lines.
-    export TMPDIR="$srcdir/build_tmp"
-    mkdir -p $TMPDIR
+    # export TMPDIR="$srcdir/build_tmp"
+    # mkdir -p $TMPDIR
 
     # Turns out we're allowed to use the official API key that telegram uses for their snap builds:
     # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88

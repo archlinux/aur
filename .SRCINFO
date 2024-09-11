@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-dev
 	pkgdesc = Official Telegram Desktop client - development release
-	pkgver = 5.4.1
+	pkgver = 5.5.3
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = x86_64
@@ -53,7 +53,7 @@ pkgbase = telegram-desktop-dev
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = https://github.com/telegramdesktop/tdesktop/releases/download/v5.4.1/tdesktop-5.4.1-full.tar.gz
-	sha512sums = f86b86c6001b2c214d897821c175f41c53ca44401285909b2b12254634cca821137d61a28c75d79ed757c1ade08873035397aae7c462494c1ab6382501a8072a
+	source = https://github.com/telegramdesktop/tdesktop/releases/download/v5.5.3/tdesktop-5.5.3-full.tar.gz
+	sha512sums = 27eee61e4e81d0cdeeb7c13111a6a98f0deb83204a13e475d1d0c548bd0ac9fc607a95b5e2b0c16a00fca746d3c0ea039120dcc4104b3bcc8970b7ee13300c74
 
 pkgname = telegram-desktop-dev
