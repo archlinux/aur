@@ -1,8 +1,9 @@
+
 # Maintainer: Nicolas Lorin <androw95220@gmail.com>
 
 pkgname=stayrtr
 pkgver=0.6.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Simple RPKI-To-Router server. (Hard fork of GoRTR)"
 arch=('x86_64')
 url='https://github.com/bgp/stayrtr'
@@ -28,18 +29,26 @@ prepare(){
 
 build() {
   cd "$pkgname-$pkgver"
+  export CGO_ENABLED=1
   export GOPATH="$srcdir"/go
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build ./cmd/...
+  # go build -o build ./cmd/...
+  make \
+    OUTPUT_STAYRTR=build/stayrtr \
+    OUTPUT_RTRDUMP=build/rtrdump \
+    OUTPUT_RTRMON=build/rtrmon \
+    STAYRTR_VERSION=$pkgver \
+    LDFLAGS='"-X main.version=$(STAYRTR_VERSION) -X main.buildinfos=$(BUILDINFOS)"' \
+    build-stayrtr build-rtrdump build-rtrmon
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  go test ./...
+  make test
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = stayrtr
 	pkgdesc = Simple RPKI-To-Router server. (Hard fork of GoRTR)
 	pkgver = 0.6.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/bgp/stayrtr
 	arch = x86_64
 	license = BSD-3-Clause
