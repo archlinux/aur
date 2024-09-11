@@ -1,0 +1,4 @@
+[radicle-bin]
+source = "jq"
+url = "https://files.radicle.xyz/releases/latest/radicle.json"
+filter = ".version"
