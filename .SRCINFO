@@ -1,7 +1,7 @@
 pkgbase = viddy-bin
 	pkgdesc = A modern watch command, binary version
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sachaos/viddy
 	arch = x86_64
 	arch = i686

@@ -4,15 +4,15 @@
 _pkgname=viddy
 pkgname=${_pkgname}-bin
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern watch command, binary version'
-url="https://github.com/sachaos/viddy"
-_urlraw="https://raw.githubusercontent.com/sachaos/viddy/v${pkgver}"
+url="https://github.com/sachaos/${_pkgname}"
+_urlraw="https://raw.githubusercontent.com/sachaos/${_pkgname}/v${pkgver}"
 arch=('x86_64' 'i686' 'aarch64')
 license=('MIT')
 depends=('glibc')
-conflicts=('viddy')
-provides=('viddy')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 source=("${_urlraw}/LICENSE" "${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x86_64.tar.gz")
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-i686.tar.gz")
@@ -26,7 +26,7 @@ sha256sums_aarch64=('db06823fdadd78df6c3219524cbdff5f7844d0d1752e7f0d7c1c87f16e1
 package() {
   cd "$srcdir/"
 
-  install -Dm755 viddy "${pkgdir}/usr/bin/viddy"
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
