@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034 disable=SC2148 disable=SC2154 disable=SC2001
 _pkgname=code-insiders
 pkgname="$_pkgname-bin"
-pkgver=1.91.0_1718000210
+pkgver=1.94.0_1725948477
 pkgrel=1
 pkgdesc="Code editing. Redefined."
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=("${_pkgname}_${_pkgver}.deb::$_download_url")
 sha256sums=('SKIP')
 
 package() {
-  bsdtar -xf data.tar.xz -C "$pkgdir/"
+  bsdtar -xf data.tar.zst -C "$pkgdir/"
 
   replacement="s|\(Exec=[^%]*\)\(%.*\)|\1--no-sandbox \2|"
   sed -i "$replacement" "$pkgdir/usr/share/applications/$_pkgname.desktop"
