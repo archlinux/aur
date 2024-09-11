@@ -1,5 +1,5 @@
 pkgname=mingw-w64-cminpack
-pkgver=1.3.9
+pkgver=1.3.10
 pkgrel=1
 pkgdesc="A C/C++ rewrite of the MINPACK software (mingw-w64)"
 arch=('any')
@@ -9,14 +9,14 @@ depends=('mingw-w64-cblas')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/devernay/cminpack/archive/v${pkgver}.tar.gz")
-sha256sums=('aa37bac5b5caaa4f5805ea5c4240e3834c993672f6dab0b17190ee645e251c9f')
+sha256sums=('6355776f60ebfeef63883aa02c19ab57f1ba776e43122f27cb3161e7fc277d1d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd $srcdir/cminpack-${pkgver}
   for _arch in ${_architectures}; do
-    ${_arch}-cmake -DCMINPACK_LIB_INSTALL_DIR=lib -DBUILD_EXAMPLES=OFF -DUSE_BLAS=OFF -B build-${_arch} .
+    ${_arch}-cmake -DCMINPACK_LIB_INSTALL_DIR=lib -DBUILD_EXAMPLES=OFF -B build-${_arch} .
     make -C build-${_arch}
   done
 }
