@@ -1,7 +1,7 @@
 # Maintainer: Sébastien Luttringer
 
 pkgname=virtualbox-ext-oracle
-pkgver=7.0.20
+pkgver=7.1.0
 _filever="${pkgver}"
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Extension Pack'
@@ -12,21 +12,21 @@ depends=("virtualbox=${pkgver}")
 optdepends=('rdesktop: client to connect vm via RDP')
 options=('!strip')
 install=virtualbox-ext-oracle.install
-source=("https://download.virtualbox.org/virtualbox/${pkgver}/Oracle_VM_VirtualBox_Extension_Pack-${_filever}.vbox-extpack")
-noextract=("Oracle_VM_VirtualBox_Extension_Pack-${_filever}.vbox-extpack")
-sha256sums=('d750fb17688d70e0cb2d7b06f1ad3a661303793f4d1ac39cfa9a54806b89da25')
+source=("https://download.virtualbox.org/virtualbox/${pkgver}/Oracle_VirtualBox_Extension_Pack-${_filever}.vbox-extpack")
+noextract=("Oracle_VirtualBox_Extension_Pack-${_filever}.vbox-extpack")
+sha256sums=('14f384053368ce5e806a808a07e66a38c6cbb141033e21de4768e670ff0df3ce')
 
 prepare() {
   # shrink uneeded cpuarch
   [[ -d shrunk ]] || mkdir shrunk
-  tar xfC "Oracle_VM_VirtualBox_Extension_Pack-${_filever}.vbox-extpack" shrunk
+  tar xfC "Oracle_VirtualBox_Extension_Pack-${_filever}.vbox-extpack" shrunk
   rm -r shrunk/{darwin*,solaris*,win*}
   tar -c --gzip --file shrunk.vbox-extpack -C shrunk .
 }
 
 package() {
   install -Dm 644 shrunk.vbox-extpack \
-    "$pkgdir/usr/share/virtualbox/extensions/Oracle_VM_VirtualBox_Extension_Pack-${pkgver}.vbox-extpack"
+    "$pkgdir/usr/share/virtualbox/extensions/Oracle_VirtualBox_Extension_Pack-${pkgver}.vbox-extpack"
   install -Dm 644 shrunk/ExtPack-license.txt \
     "$pkgdir/usr/share/licenses/${pkgname}/PUEL"
 }
