@@ -1,12 +1,12 @@
 pkgbase = kefir
 	pkgdesc = C17 language compiler for x86_64 systems
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://kefir.protopopov.lv
 	arch = x86_64
 	license = GPL3
 	license = BSD
-	source = https://git.sr.ht/~jprotopopov/kefir/archive/v0.3.1.tar.gz
-	sha512sums = 7c9350d7c87ab5589880919489a6233490314cf64a9c20fb251ba3f8fdecbbb6f0851a69c1c5c87cd01f451f1697c4e1c6715c544fbecf719dc98c75f5d2f21f
+	source = https://git.sr.ht/~jprotopopov/kefir/archive/v0.4.0.tar.gz
+	sha512sums = 8f77d4b4a2d41d44cc386dd6178de81bd414650540673851f14e60508108412b21b4155e30c6dde137faa67c81b88b25d3a2799141a1964c16457fbf7b1cfaa8
 
 pkgname = kefir
