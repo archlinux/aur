@@ -4,7 +4,7 @@
 
 pkgname=b4
 pkgver=0.14.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Helper utility to work with patches made available via a public-inbox archive like lore.kernel.org.'
 license=('GPL-2.0-or-later')
 arch=('any')
@@ -36,7 +36,7 @@ sha256sums=('29ebbc8a2facc5cc858ce3cc11e452724f27911bccff33f81b69f87f2be1c894'
 build() {
     cd "$pkgname-$pkgver"
     rst2man src/b4/man/b4.5.rst src/b4/man/b4.1
-    gzip src/b4/man/b4.1
+    gzip -n src/b4/man/b4.1
 
     misc/tc-generate.sh bash > _bash
     misc/tc-generate.sh zsh > _zsh
