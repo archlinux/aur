@@ -1,7 +1,7 @@
 # Maintainer: RifsxD <33044977+rifsxd at users dot noreply dot github dot com>
 
 pkgname=blazefetch
-pkgver=2.9.3
+pkgver=2.9.17
 pkgrel=1
 pkgdesc='A lite & blazing fast system info fetch utility'
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('blazefetch-git')
 depends=('libx11' 'networkmanager' 'playerctl' 'figlet' 'pciutils' 'mesa-utils')
 makedepends=('cmake' 'ninja' 'gcc')
 source=("$url/releases/download/$pkgver/src-$pkgname-$pkgver.tar.gz")
-sha256sums=('85134351b0f446abc59d6d0fe812d5d930d3eb9a4790d1a8aba197a3c5826c3f')
+sha256sums=('f02a335a91bd708b6d57d6c503f1d519b030992ca85d76d9bb4610b51e357294')
 
 build() {
 	rm -rf build

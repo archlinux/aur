@@ -1,6 +1,6 @@
 pkgbase = blazefetch
 	pkgdesc = A lite & blazing fast system info fetch utility
-	pkgver = 2.9.3
+	pkgver = 2.9.17
 	pkgrel = 1
 	url = https://github.com/rifsxd/blazefetch
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = blazefetch
 	depends = mesa-utils
 	provides = blazefetch
 	conflicts = blazefetch-git
-	source = https://github.com/rifsxd/blazefetch/releases/download/2.9.3/src-blazefetch-2.9.3.tar.gz
-	sha256sums = 85134351b0f446abc59d6d0fe812d5d930d3eb9a4790d1a8aba197a3c5826c3f
+	source = https://github.com/rifsxd/blazefetch/releases/download/2.9.17/src-blazefetch-2.9.17.tar.gz
+	sha256sums = f02a335a91bd708b6d57d6c503f1d519b030992ca85d76d9bb4610b51e357294
 
 pkgname = blazefetch
