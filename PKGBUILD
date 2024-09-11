@@ -13,7 +13,7 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=24.3.0_devel.194580.88026124585
+pkgver=24.3.0_devel.194642.a9d64fa1bde
 pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
@@ -22,9 +22,10 @@ makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto lib
                             python-ply libunwind libxdamage vulkan-icd-loader xcb-util-keysyms python-pyaml)
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layer libva-mesa-driver vulkan-swrast mesa-vdpau vulkan-driver opengl-driver)
-conflicts=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layer libva-mesa-driver vulkan-swrast mesa-vdpau vulkan-nouveau)
+provides=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layer libva-mesa-driver vulkan-swrast vulkan-virtio mesa-vdpau vulkan-driver opengl-driver)
+conflicts=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layer libva-mesa-driver vulkan-swrast mesa-vdpau vulkan-virtio vulkan-nouveau mesa-libgl)
 # mixing components from different mesa versions is a bad idea, conflict with everything unique provided by extra/mesa
+
 url="https://www.mesa3d.org"
 license=('MIT AND BSD-3-Clause AND SGI-B-2.0')
 source=("mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git"
