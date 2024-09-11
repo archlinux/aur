@@ -3,7 +3,7 @@
 # Contributor: Roman Timushev <romikt@gmail.com>
 pkgname=gnome-defaults-list
 pkgver=46.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Default file associations for GNOME environment"
 url="https://tracker.debian.org/pkg/gnome-session"
 arch=(any)
@@ -12,7 +12,7 @@ source=("https://deb.debian.org/debian/pool/main/g/gnome-session/gnome-session_$
 # Old Ubuntu source
 #_ubuntuver=0ubuntu5
 #source=(http://archive.ubuntu.com/ubuntu/pool/main/g/gnome-session/gnome-session_${pkgver}-${_ubuntuver}.debian.tar.xz)
-sha256sums=('07db376d2bb6928b653d6c73a915ad3aaad17aafb629c051f582868c157ce88f')
+sha256sums=('f11274f2eaaeca6a852173540a3abdbdca29d3820dca2d108690e04c3e4ec170')
 
 package() {
 	install -d "$pkgdir/usr/share/applications"
