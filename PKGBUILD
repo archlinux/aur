@@ -1,16 +1,17 @@
-#!/bin/hint/bash
+# Maintainer:
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Fredrick R. Brennan <copypaste@kittens.ph>
 # Contributor: nyorain <nyorain at gmail dot com>
 
 pkgname=('skia-git')
-pkgver=r73056.c7fa1752c3
+pkgver=r73166.0b776ce0b8
 pkgrel=1
 pkgdesc="Chromiums high-performance rendering library"
 arch=('x86_64')
 url="https://github.com/google/skia"
 license=('BSD')
 depends=('zlib' 'libglvnd' 'freetype2' 'expat' 'libpng' 'libjpeg-turbo' 'fontconfig' 'harfbuzz' 'gcc-libs' 'libwebp' 'glibc')
-makedepends=('git' 'rsync' 'python' 'procps-ng' 'ninja')
+makedepends=('git' 'rsync' 'python' 'procps-ng' 'ninja' 'depot-tools-git')
 pkgver() {
     cd "$srcdir/skia"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -18,28 +19,30 @@ pkgver() {
 
 #TODO:
 # skia-git W: ELF file ('usr/lib/libskia.so') lacks FULL RELRO, check LDFLAGS.
-# use system depot tools
 # use system gn
+# try not to use rsync
+# clean up package()
+# recheck deps + makedeps
 
 prepare() {
     # to make sure depot tools are in path
     cd "$srcdir"
     SRC_DIR="$(readlink -f "$srcdir")"
-    [ ! -d "/opt/depot_tools/.git" ] && {
-        tput bold
-        echo $'depot_tools not found, cloning just for this AUR build of Skia!!!\nSee https://aur.archlinux.org/packages/depot-tools-git#comment-941904'
-        tput sgr0
-        [ -d ./depot_tools ] && {
-            pushd depot_tools
-            git switch main
-            git pull
-            popd
-        } || {
-            git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-        }
-    } || {
+#    [ ! -d "/opt/depot_tools/.git" ] && {
+#        tput bold
+#        echo $'depot_tools not found, cloning just for this AUR build of Skia!!!\nSee https://aur.archlinux.org/packages/depot-tools-git#comment-941904'
+#        tput sgr0
+#        [ -d ./depot_tools ] && {
+#            pushd depot_tools
+#            git switch main
+#            git pull
+#            popd
+#        } || {
+#            git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+#        }
+#    } || {
         rsync -Pa /opt/depot_tools/ "$SRC_DIR/depot_tools/"
-    }
+#    }
 
     export PATH="$SRC_DIR/depot_tools:$PATH"
 
