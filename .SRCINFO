@@ -1,0 +1,26 @@
+pkgbase = mingw-w64-python313-bin
+	pkgdesc = The Python programming language (native MSVC version) (mingw-w64)
+	pkgver = 3.13.0
+	pkgrel = 1
+	url = http://www.python.org/
+	arch = any
+	license = PSF
+	makedepends = mingw-w64-tools
+	makedepends = mingw-w64-binutils
+	depends = mingw-w64-openssl
+	optdepends = mingw-w64-wine: runtime support
+	noextract = python-3.13.0-embed-win32.zip
+	noextract = python-3.13.0-embed-amd64.zip
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = https://www.python.org/ftp/python/3.13.0/python-3.13.0rc2-embed-win32.zip
+	source = https://www.python.org/ftp/python/3.13.0/python-3.13.0rc2-embed-amd64.zip
+	source = https://www.python.org/ftp/python/3.13.0/Python-3.13.0rc2.tgz
+	source = wine-python.sh
+	sha256sums = 73072a27f1c8495c99f90c4c0a5be994d0cb017260aaa7d6ff605febfe372f33
+	sha256sums = ba0e3c41cb4ceef816d61980810d1f1f18493af9d79eedc46550afa48d272e9f
+	sha256sums = d08965c543f21d9949b2715b50d7e4619a5c13984a2ba6d2efcabf413d41479a
+	sha256sums = a76a4715e87d3ed4aca6babc8715de8de94513dae4c683c1681551c43698b5ae
+
+pkgname = mingw-w64-python313-bin
