@@ -2,7 +2,7 @@
 _pkgname=way-edges
 pkgname=way-edges-bin
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Hidden widget on screen edges"
 arch=('x86_64' 'aarch64')
@@ -15,14 +15,15 @@ conflicts=("$_pkgname"-git)
 depends=('gtk4' 'gtk4-layer-shell' 'cairo' 'pango' 'wayland' 'glib2' 'pipewire-pulse')
 
 _repo=way-edges/way-edges
-_source_name="$_pkgname"_linux-x86_64.tar.gz
-source=(https://github.com/"$_repo"/releases/download/"$pkgver"/"$_source_name" https://raw.githubusercontent.com/"$_repo"/"$pkgver"/LICENSE)
+_tar_name="$_pkgname"_linux-x86_64.tar.gz
+_tar_rename="$pkgname"-"$pkgver"-"$pkgrel".tar.gz
+source=("$_tar_rename"::https://github.com/"$_repo"/releases/download/"$pkgver"/"$_tar_name" https://raw.githubusercontent.com/"$_repo"/"$pkgver"/LICENSE)
 sha256sums=('SKIP' 'SKIP')
 
 options=(!debug)
 
 build() {
-  tar -zxf "$_source_name"
+  tar -zxf "$_tar_rename"
 }
 
 package() {
