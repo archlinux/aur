@@ -1,20 +1,22 @@
 pkgbase = openbabel2
 	pkgdesc = A library designed to interconvert between many file formats used in molecular modeling and computational chemistry (libs only)
 	pkgver = 2.4.1
-	pkgrel = 1
-	url = https://openbabel.org/wiki/Main_Page
+	pkgrel = 2
+	url = https://openbabel.org/
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
 	makedepends = cmake
 	makedepends = eigen
-	makedepends = wxgtk
-	makedepends = boost
-	makedepends = python
+	makedepends = python-setuptools
+	makedepends = wxwidgets-gtk3
+	depends = cairo
+	depends = gcc-libs
+	depends = glibc
 	depends = libxml2
-	depends = libsm
-	optdepends = wxgtk: GUI interface
+	depends = openbabel
+	depends = python
+	depends = zlib
 	source = https://downloads.sourceforge.net/openbabel/openbabel-2.4.1.tar.gz
 	md5sums = d9defcd7830b0592fece4fe54a137b99
 
 pkgname = openbabel2
-
