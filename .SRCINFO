@@ -1,0 +1,15 @@
+pkgbase = bytelizer-git
+	pkgdesc = Bytelizer is a binary packaging/unpack library written in modern c, focusing on performance and lightweight.
+	pkgver = r20.23779b0
+	pkgrel = 1
+	url = https://github.com/TheSnowfield/bytelizer
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = cmake
+	provides = bytelizer-git
+	conflicts = bytelizer
+	source = bytelizer-git::git+https://github.com/TheSnowfield/bytelizer.git
+	sha256sums = SKIP
+
+pkgname = bytelizer-git
