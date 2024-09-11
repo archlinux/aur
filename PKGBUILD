@@ -2,17 +2,15 @@
 
 _pkgname=breath
 pkgname=breath-theme-git
-pkgver=r256.98822e7d
-pkgrel=2
+pkgver=r270.1b708941
+pkgrel=1
 pkgdesc="Breath Plasma Look & Feel packages by Manjaro Team"
-provides=('breath-wallpaper' 'plasma5-themes-breath' 'sddm-breath-theme')
-conflicts=('breath2-git' 'breath-legacy-theme-git' 'breath-wallpapers' 'plasma5-themes-breath' 'plasma5-themes-breath-extra' 'plasma5-themes-breath-migration' 'sddm-breath-theme')
+provides=('breath-wallpaper' 'plasma-themes-breath' 'sddm-breath-theme' 'yakuake-skin-breath')
 arch=('any')
-url="https://gitlab.manjaro.org/artwork/themes/$_pkgname"
-license=('LGPL')
-depends=('breeze' 'plasma-framework5' 'plasma-workspace')
-makedepends=('extra-cmake-modules' 'git' 'plasma-framework5')
-optdepends=('breath-gtk-theme: Breath widget style for GTK applications')
+url="https://gitlab.manjaro.org/artwork/themes/breath"
+license=('LGPL-2.0-or-later' 'CC-BY-SA-4.0' 'GPL-3.0-only' 'GPL-2.0-or-later')
+depends=('breeze' 'plasma-workspace')
+makedepends=('extra-cmake-modules' 'git' 'libplasma')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -21,11 +19,8 @@ pkgver() {
   echo r$(git rev-list --count master).$(git rev-parse --short master)
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
+  mkdir -p build
   cd build
   cmake ../$_pkgname \
     -DCMAKE_BUILD_TYPE=Release \
