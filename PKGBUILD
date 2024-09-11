@@ -3,7 +3,7 @@
 
 pkgname=realrtcw
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An overhaul mod for critically acclaimed Return To Castle Wolfenstein."
 arch=('i686' 'x86_64')
 url="http://www.moddb.com/mods/realrtcw-realism-mod"
@@ -11,8 +11,8 @@ license=('GPL')
 depends=('freetype2' 'graphite' 'harfbuzz' 'iortcw-data' 'libjpeg-turbo' 'libogg' 'openal' 'opus' 'opusfile' 'pcre' 'sdl2' 'zlib')
 makedepends=('unzip')
 install='realrtcw.install'
-sha256sums=('ecadc55bdb4e3d41dcd4e3872b110d7d0e716a45c6393108387dc7b062830a00'
-  'SKIP'
+sha256sums=('aa3d95f30494face01ea9cae7e260d4a6b4b5d5d6c71692c156fddd0e7582140'
+  'a0425380b4c84ae604c03116efb921cf63637036bcfc498cf24416f49865018d'
   '643bd2a56b06fbdf9790b3bb7557c7f6663cc3e86295431f6470b347e37b4bb2'
   'e68d6f400342e36d3db94e519978da0afa2d74f3368b1fe88014c4bdb26b193e'
   '43501d60c80ae4a2837295fb5faf01d42e31f31371fcd6cecc8054eed965b8f6'
@@ -23,7 +23,7 @@ _mainid=273184
 noextract=("${pkgname}-${pkgver}.zip")
 PKGEXT='.pkg.tar'
 DLAGENTS+=("moddb::${BASH_SOURCE[0]%/*}/moddb-downloader.sh %u %o")
-source=("${pkgname}-4.0.tar.gz::https://github.com/wolfetplayer/RealRTCW/archive/refs/tags/4.0.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wolfetplayer/RealRTCW/archive/refs/tags/${pkgver}.tar.gz"
   "${pkgname}-${pkgver}.zip::moddb://www.moddb.com/downloads/start/${_mainid}/all"
   "${pkgname}.png"
   "${pkgname}.launcher"
@@ -40,7 +40,7 @@ prepare() {
 }
 
 package() {
-  cd "${srcdir}/RealRTCW-4.0"
+  cd "${srcdir}/RealRTCW-${pkgver}"
 
   unset CFLAGS
   # Disable steam build
