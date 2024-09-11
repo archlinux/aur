@@ -1,6 +1,6 @@
 pkgbase = dnf5
 	pkgdesc = Next-generation RPM package management system
-	pkgver = 5.2.5.0
+	pkgver = 5.2.6.0
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/dnf5
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = dnf5
 	depends = json-c
 	depends = libmodulemd>=2.11.2
 	depends = librepo>=1.18.0
-	depends = libsolv>=0.7.25
+	depends = libsolv>=0.7.30
 	depends = libxml2
 	depends = rpm-tools>=4.17.0
 	depends = sdbus-cpp>=0.9.0
@@ -41,7 +41,7 @@ pkgbase = dnf5
 	options = !emptydirs
 	backup = etc/dnf/dnf.conf
 	backup = etc/dnf/libdnf5-plugins/actions.conf
-	source = https://github.com/rpm-software-management/dnf5/archive/5.2.5.0/dnf5-5.2.5.0.tar.gz
-	sha256sums = 0fc67e96f6bfd409a6f86bd66c8b130e231fb1e14843751fe92ccfadd5fc110c
+	source = https://github.com/rpm-software-management/dnf5/archive/5.2.6.0/dnf5-5.2.6.0.tar.gz
+	sha256sums = c1a188e996c07bb621df25679a44acd352fc2054732fea13b9f962f553e11c4c
 
 pkgname = dnf5
