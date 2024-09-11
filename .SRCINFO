@@ -1,0 +1,27 @@
+pkgbase = odmpy
+	pkgdesc = A simple command line manager for OverDrive/Libby loans.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/ping/odmpy
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	depends = python-eyed3
+	depends = python-mutagen
+	depends = python-termcolor
+	depends = python-tqdm
+	depends = python-typing_extensions
+	depends = python-lxml
+	depends = python-iso639-lang
+	depends = python-beautifulsoup4
+	optdepends = ffmpeg: for audiobook merging
+	source = git+https://github.com/ping/odmpy#tag=0.8.1
+	sha512sums = b1d9fc09a846bf96ac7f0e73636600bd592506a98e9c9cb5f0821f947778f17e791449cada7102d9c4f0c89885f87edb18351d70a7284bd580de9f1bd2ff2f27
+
+pkgname = odmpy
