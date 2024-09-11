@@ -123,7 +123,7 @@ function execApp() {
 	if [[ ${wechatXserverPatch} = 1 ]]; then
 		xhost +
 	fi
-	if [[ $(fc-match emoji) =~ Twemoji ]]; then
+	if [[ $(fc-match emoji | head --lines 1) =~ Twemoji ]]; then
 		echo "[Info] Emoji already set to Twemoji"
 	else
 		if [ -f /usr/share/fontconfig/conf.avail/75-twemoji.conf ]; then
@@ -236,6 +236,8 @@ function execApp() {
 	-p Environment=PATH=/sandbox:"${PATH}" \
 	-- \
 	bwrap \
+		--tmpfs /tmp \
+		--ro-bind-try /tmp/.X11-unix /tmp/.X11-unix \
 		--dev /dev \
 		--dev-bind /dev/dri /dev/dri \
 		--dev-bind-try /dev/nvidia0 /dev/nvidia0 \
@@ -253,8 +255,6 @@ function execApp() {
 			/sandbox/firefox \
 		--ro-bind /usr/lib/wechat-uos-qt/mimeapps.list \
 			"${XDG_DATA_HOME}"/WeChat_Data/.config/mimeapps.list \
-		--tmpfs /tmp \
-		--ro-bind-try /tmp/.X11-unix /tmp/.X11-unix \
 		--proc /proc \
 		--bind /usr /usr \
 		--ro-bind /etc /etc \
@@ -365,7 +365,7 @@ function dbusProxy() {
 	systemd-run \
 		--user \
 		-u wechat-dbus-proxy \
-			-- bwrap \
+		-- bwrap \
 			--symlink /usr/lib64 /lib64 \
 			--ro-bind /usr/lib /usr/lib \
 			--ro-bind /usr/lib64 /usr/lib64 \
@@ -386,7 +386,6 @@ function dbusProxy() {
 			--talk=org.freedesktop.Notifications \
 			--talk=org.freedesktop.FileManager1 \
 			--talk=org.kde.StatusNotifierWatcher \
-			--talk=org.mozilla.firefox.OpenURL \
 			--talk=org.freedesktop.portal.OpenURI \
 			--talk=org.freedesktop.portal.OpenURI.* \
 			--call=org.freedesktop.portal.*=* \
