@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/royreznik/rexi"
 license=('MIT')
 depends=('python-typer' 'python-textual' 'python-colorama')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('25e6b24cfee83c6dd0dd897c940c4ca209f0f836f5fbf5da4a3f4ebae41af7c3da6ab7ad806da017e8a45c81f2159c0c793298c3b8a9a1fca1f093c71ac5a749')
 

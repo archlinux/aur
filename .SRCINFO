@@ -8,6 +8,7 @@ pkgbase = rexi
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-poetry-core
 	depends = python-typer
 	depends = python-textual
 	depends = python-colorama
