@@ -1,8 +1,0 @@
-diff -rU1 dev_scream.orig/scream.c dev_scream/scream.c
---- dev_scream.orig/scream.c	2024-09-10 11:46:05.699880185 +0200
-+++ dev_scream/scream.c	2024-09-10 11:50:16.216539665 +0200
-@@ -73,3 +73,3 @@
-     printk( KERN_NOTICE "scream: Creating Device class\n" );
--    if ((cl = class_create(THIS_MODULE, "chardrv")) == NULL) {
-+    if ((cl = class_create("chardrv")) == NULL) {
-         printk( KERN_ALERT "scream: Device class creation failed\n" );
