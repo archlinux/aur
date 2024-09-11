@@ -3,7 +3,7 @@
 
 _pkgname=igt-gpu-tools
 pkgname="$_pkgname-git"
-pkgver=1.29.r14053.20240904.fc3113c8c
+pkgver=1.29+21.r14074.20240904.dde161e13
 pkgrel=1
 pkgdesc="Collection of tools for development and testing of the DRM drivers."
 url="https://gitlab.freedesktop.org/drm/igt-gpu-tools"
