@@ -1,0 +1,16 @@
+pkgbase = openups-git
+	pkgdesc = Status and Configuration application for Mini-Box.com Open UPS, Open UPS 2 and NUC UPS
+	pkgver = 20240630.8c6db67
+	pkgrel = 1
+	url = https://github.com/mini-box/ups
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	depends = libusb-compat
+	provides = openups
+	conflicts = openups
+	source = ups::git+https://github.com/mini-box/ups.git
+	sha256sums = SKIP
+
+pkgname = openups-git
