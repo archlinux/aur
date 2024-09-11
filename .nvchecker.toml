@@ -1,0 +1,4 @@
+[servicer-bin]
+source = "git"
+git = "https://github.com/servicer-labs/servicer.git"
+prefix = "v"
