@@ -1,11 +1,11 @@
 pkgbase = gradle-autowrap
 	pkgdesc = Alternative Gradle front-end that redirects to Gradle wrapper if available
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	arch = any
 	license = custom:unlicense
 	depends = bash
-	source = git+https://github.com/emlun/gradle-autowrap#tag=v1.1.1
+	source = git+https://github.com/emlun/gradle-autowrap#tag=v1.1.2
 	sha256sums = SKIP
 
 pkgname = gradle-autowrap
