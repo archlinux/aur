@@ -1,7 +1,7 @@
 pkgbase = ocaml-uunf
 	pkgdesc = Unicode text normalization for OCaml
 	pkgver = 16.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://erratique.ch/software/uunf
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = ocaml-uunf
 	makedepends = opam
 	depends = ocaml>=4.14.0
 	depends = ocaml-cmdliner>=1.1.O
-	depends = ocaml-uucd>=15.1.0
+	depends = ocaml-uucd>=16.0.0
 	depends = ocaml-uutf>=1.0.0
 	options = !strip
 	source = ocaml-uunf-16.0.0.tar.gz::https://github.com/dbuenzli/uunf/archive/v16.0.0.tar.gz

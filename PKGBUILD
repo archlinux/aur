@@ -2,12 +2,12 @@
 _projectname='uunf'
 pkgname="ocaml-$_projectname"
 pkgver='16.0.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Unicode text normalization for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
 license=('ISC')
-depends=('ocaml>=4.14.0' 'ocaml-cmdliner>=1.1.O' 'ocaml-uucd>=15.1.0' 'ocaml-uutf>=1.0.0')
+depends=('ocaml>=4.14.0' 'ocaml-cmdliner>=1.1.O' 'ocaml-uucd>=16.0.0' 'ocaml-uutf>=1.0.0')
 makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=1.0.3' 'opam')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
