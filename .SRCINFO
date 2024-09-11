@@ -1,0 +1,14 @@
+pkgbase = brother-dcp-l2660dw
+	pkgdesc = CUPS and LPR drivers for the Brother DCP-L2660DW printer
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://www.brother.de/support/dcp-l2660dw/downloads
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = custom:Brother EULA
+	depends = cups
+	source = https://download.brother.com/welcome/dlf106029/dcpl2660dwpdrv-4.1.0-1.i386.rpm
+	md5sums = 47ac5a16159e28c799e783417f6bb576
+
+pkgname = brother-dcp-l2660dw
