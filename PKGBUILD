@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Lorin <androw95220@gmail.com>
 
 pkgname=stayrtr
-pkgver=0.5.1
+pkgver=0.6.1
 pkgrel=0
 pkgdesc="Simple RPKI-To-Router server. (Hard fork of GoRTR)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
   'stayrtr.sysusers'
 )
 
-sha512sums=('a155045d423bf4da20a07699df096c38e6ace23ad9f93bbc7180135ec5bc367eed1ad349f9033ceda5521afba7d455d19afd0bc8d95b7376c91b4b051bd4a51f'
+sha512sums=('4307cebef25a062eb68e0a3382f9a57381fd949a58bda6dea6b1cff4711c7ac75c9a655858f92e0880ea55551818dbbf7ab6cc32d89c94fa0d069cd49257e856'
             '5d8173ff4a97f3af2830aaab481239add40929810082ce31f83efdfa0127f2d5da4acbffc38332ee4481eb4acf168f122653f8138226e1eeca3f2fffe7185216'
             '7a4dc1b760059299c9fd13da9ab33706d8a571004001e708b00d95cec8729c2c3035fc6aa0b0c4ede52fb7906d983064661efb0e83144f7359fa75f28076638a')
 
