@@ -3,28 +3,22 @@
 pkgbase=radicle-bin
 pkgname=(radicle-bin radicle-{cli,node}-bin)
 epoch=1
-_version='1.0.0-rc.15'
-pkgver=${_version/-/}
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="open source, peer-to-peer code collaboration stack built on Git"
 arch=('x86_64' 'aarch64')
 license=('Apache-2.0 OR MIT')
-url="https://app.radicle.xyz/nodes/seed.radicle.xyz/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5"
-_license_url="https://seed.radicle.xyz/raw/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5/081af03362b5bd3d637ee22011a4e5b51a1f1498/LICENSE-MIT"
-_prefix="$pkgbase-$epoch:$pkgver-$pkgrel"
-_source=(
-    "https://files.radicle.xyz/releases/$_version/radicle-${_version}-$CARCH-unknown-linux-musl.tar.xz"
-    "$_prefix-LICENSE-MIT::$_license_url"
+url="https://radicle.xyz"
+source=(
+    "$pkgbase-$pkgver-LICENSE-MIT::https://seed.radicle.xyz/raw/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5/081af03362b5bd3d637ee22011a4e5b51a1f1498/LICENSE-MIT"
     "radicle-node.service"
 )
-source_x86_64=(${_source[@]})
-source_aarch64=(${_source[@]})
-sha256sums_x86_64=('f13e490f88a14dc6795224ef3bf5ab00b58cd3039abd8e94166a963a13e5b2ce'
-                   'fff889db903497b59500b5171806c511b3c83df1100532c2f7aa8f96af46cc4d'
-                   '38071bb7e6c362cd587e30e42f42abcb9960612276da88c9099367713e4ca412')
-sha256sums_aarch64=('f13e490f88a14dc6795224ef3bf5ab00b58cd3039abd8e94166a963a13e5b2ce'
-                    'fff889db903497b59500b5171806c511b3c83df1100532c2f7aa8f96af46cc4d'
-                    '38071bb7e6c362cd587e30e42f42abcb9960612276da88c9099367713e4ca412')
+source_x86_64=("https://files.radicle.xyz/releases/$pkgver/radicle-$pkgver-x86_64-unknown-linux-musl.tar.xz")
+source_aarch64=("https://files.radicle.xyz/releases/$pkgver/radicle-$pkgver-aarch64-unknown-linux-musl.tar.xz")
+sha512sums=('76235a3247342b8531cb259a1a51c9789be81e5332f210949063e4444edc2659eebe0afb0c2aae9e9c6989599d29beca0ca57a7839156c92b195bdb54c7ca448'
+    '66bd43b60b73fd832a23ad7a280f77d06398c55b4e8572200ad95acc42da84e6a44c7deeb1fec91d11e29678d1abd2f74c45099ae31141ee1b6945568501bceb')
+sha512sums_x86_64=('8314947640be703e19a964845352e91af3068fc69edb42938e81bbd3e3e79aa8f361853778b76a3e9f68119faefbe64613b8eb7faf8c60e886f37c4a89b58b30')
+sha512sums_aarch64=('3115474dd72a006f137e3721e9727de64199e3d59a32ebef2dd367a0d4f9b3b2e339bf32c39e4e3a070457ca26e6127b2c802e2814ee1d23c0562c6a9c57b3f5')
 
 package_radicle-bin() {
     provides=('radicle')
@@ -37,15 +31,15 @@ package_radicle-cli-bin() {
     provides=('radicle-cli')
     conflicts=('radicle-cli')
 
-    pushd "radicle-${_version}-$CARCH-unknown-linux-musl" >/dev/null
-    install -Dm755 "bin/rad" "$pkgdir/usr/bin/rad"
-    install -Dm755 "bin/git-remote-rad" "$pkgdir/usr/bin/git-remote-rad"
+    install -Dm644 "$pkgbase-$pkgver-LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
 
-    install -Dm644 "man/man1/rad.1" "$pkgdir/usr/share/man/man1/rad.1"
-    install -Dm644 "man/man1/rad-patch.1" "$pkgdir/usr/share/man/man1/rad-patch.1"
-    install -Dm644 "man/man1/git-remote-rad.1" "$pkgdir/usr/share/man/man1/git-remote-rad.1"
-    popd >/dev/null
-    install -Dm644 "$_prefix-LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
+    cd "radicle-$pkgver-$CARCH-unknown-linux-musl"
+    install -Dm755 "bin/rad" -t "$pkgdir/usr/bin/"
+    install -Dm755 "bin/git-remote-rad" -t "$pkgdir/usr/bin/"
+
+    install -Dm644 "man/man1/rad.1" -t "$pkgdir/usr/share/man/man1/"
+    install -Dm644 "man/man1/rad-patch.1" -t "$pkgdir/usr/share/man/man1/"
+    install -Dm644 "man/man1/git-remote-rad.1" -t "$pkgdir/usr/share/man/man1/"
 }
 
 package_radicle-node-bin() {
@@ -53,10 +47,10 @@ package_radicle-node-bin() {
     provides=('radicle-node')
     conflicts=('radicle-node')
 
-    pushd "radicle-${_version}-$CARCH-unknown-linux-musl" >/dev/null
-    install -Dm755 "bin/radicle-node" "$pkgdir/usr/bin/radicle-node"
-    install -Dm644 "man/man1/radicle-node.1" "$pkgdir/usr/share/man/man1/radicle-node.1"
-    popd >/dev/null
-    install -Dm644 "radicle-node.service" "$pkgdir/usr/lib/systemd/user/radicle-node.service"
-    install -Dm644 "$_prefix-LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
+    install -Dm644 "radicle-node.service" -t "$pkgdir/usr/lib/systemd/user/"
+    install -Dm644 "$pkgbase-$pkgver-LICENSE-MIT" -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+    cd "radicle-$pkgver-$CARCH-unknown-linux-musl"
+    install -Dm755 "bin/radicle-node" -t "$pkgdir/usr/bin/"
+    install -Dm644 "man/man1/radicle-node.1" -t "$pkgdir/usr/share/man/man1/"
 }
