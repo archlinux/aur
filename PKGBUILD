@@ -2,7 +2,7 @@
 # Maintainer: Gabe Cook <gabe565@gmail.com>
 
 pkgname='pwgen-go-bin'
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Command line passphrase generator written in Go'
 url='https://github.com/gabe565/pwgen-go'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('pwgen-go')
 conflicts=('pwgen-go')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/pwgen-go/releases/download/v0.4.1/pwgen-go_0.4.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('cb12b2944e8fcf1a770e67caf9080c3f68866a835bcd65dda03dfbc61efa6960')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/pwgen-go/releases/download/v0.5.0/pwgen-go_0.5.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('c85c11beadaebbfc104d7f2023500c870983951f73a830d85f1d5f24a7c5c4e2')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/pwgen-go/releases/download/v0.4.1/pwgen-go_0.4.1_linux_armv7.tar.gz")
-sha256sums_armv7h=('0bc82a59a6e0b8878ac56d9f6cecd606be97c4a40d5e12c73c9d86e79ae0d585')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/pwgen-go/releases/download/v0.5.0/pwgen-go_0.5.0_linux_armv7.tar.gz")
+sha256sums_armv7h=('b498888004d0e81c57605a5f133dcf233c03e2afda03a17a352aeefc0827a904')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/pwgen-go/releases/download/v0.4.1/pwgen-go_0.4.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('3fc0a6c09fe50a9510cc9954172ece1cce0e0ae030a9bf95d6b458faa14e770a')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/pwgen-go/releases/download/v0.5.0/pwgen-go_0.5.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('9de71f2af403a7fd5fafe32b367dfc8a4c0df682e81f2f807f8bbb0ee6638057')
 
 package() {
   # bin
