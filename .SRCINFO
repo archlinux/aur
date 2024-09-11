@@ -1,7 +1,7 @@
 pkgbase = perl-class-std-fast
 	pkgdesc = A faster but less secure Class::Std
 	pkgver = 0.0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/pod/Class::Std::Fast
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later

@@ -3,7 +3,7 @@
 
 pkgname='perl-class-std-fast'
 pkgver=0.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc='A faster but less secure Class::Std'
 arch=('any')
 url='https://metacpan.org/pod/Class::Std::Fast'
