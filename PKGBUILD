@@ -1,8 +1,8 @@
 # Maintainer: k1f0 <generic at k1f0.mozmail.com>
 
 pkgname=xcursor-pro-hyprcursor
-pkgver=0.1
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 pkgdesc="Hyprcursor port of https://github.com/ful1e5/XCursor-pro"
 arch=(any)
 url="https://github.com/0xk1f0/XCursor-Pro-Hyprcursor"
@@ -13,9 +13,9 @@ source=(
     "${url}/releases/download/v${pkgver}/XCursor-Pro-Hyprcursor-Red.tar.gz"
 )
 sha256sums=(
-    "ddcc4be68bf18486b8090588a80bfae72b7ef1dbb2d2ade88bf15c16b4e7bf18"
-    "e656804228d942de57062d527e91323bfd19574c37d2bac85eb7e14ee5237829"
-    "9ee021aaf8a3577cf8a9a1b532fc02477c8cfc648dcadf7ad55245f9619d0e47"
+    "02c59e7809e741935091ba0c7aab5524644f983e852f169dd68eecc48434acd7"
+    "9605c98590fbd4ec70fb490d91411b5bc0dddba380da9575bc8c8e360ca617ba"
+    "67ba6e88d0e5265b6afdf45db96da70ce81612bdca49620b4b24999dc4099d77"
 )
 
 package() {
