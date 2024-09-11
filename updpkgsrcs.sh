@@ -114,7 +114,7 @@ function readGitModules {
     gitModules=$(git config -f "$gitModulesFile" -l) || return 2
 
     # Submodule's Commit Array
-    gitModulesStatus=$(git submodule status --recursive --cached -- "$1") || return 3
+    gitModulesStatus=$(git -C "$1" submodule status --recursive --cached) || return 3
     IFS=$'\n' && for line in $gitModulesStatus; do
         line=${line:1}; line=${line% (*)}
         path=${line#* }
@@ -180,7 +180,7 @@ case "$1" in
         echoSourceTextForSubModule
         ;;
     updateBuildScriptForSubModule)
-        updateBuildScriptForSubModule "${2:-$PWD/../../PKGBUILD}" # The path to PKGBUILD in most case
+        updateBuildScriptForSubModule "${2:-$gitRepo/../../PKGBUILD}" # The path to PKGBUILD in most case
         ;;
     *)
         printUsage && exit 1
