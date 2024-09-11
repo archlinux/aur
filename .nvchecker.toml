@@ -1,0 +1,4 @@
+[wrestic]
+source = "git"
+git = "https://github.com/alvaro17f/wrestic.git"
+prefix = "v"
