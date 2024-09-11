@@ -9,10 +9,11 @@ arch=('x86_64')
 url="https://${pkgname}.sourceforge.net"
 _url="https://github.com/csmall/${pkgname}"
 license=('GPL-2.0-or-later')
-makedepends=('libvorbis')
-depends=('audacious' 'dbus-glib' 'flac' 'gdk-pixbuf2' 'glib2' 'glibc' 'gsl'
-         'gtk2' 'libaudclient' 'libmpdclient' 'mpg321')
-optdepends=('libvorbis: support .ogg files'
+makedepends=('libmpdclient' 'libvorbis')
+depends=('dbus-glib' 'flac' 'gdk-pixbuf2' 'glib2' 'glibc' 'gsl' 'gtk2'
+         'libaudclient' 'mpg321')
+optdepends=('audacious: small and fast audio player which supports lots of formats'
+            'libmpdclient: Music Player Daemon'
             'vorbis-tools: support .ogg files')
 _pkgsrc="${pkgname}-${_commit}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/${_commit}.tar.gz")
