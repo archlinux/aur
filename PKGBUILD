@@ -2,7 +2,7 @@
 pkgname="filius"
 pkgver="2.6.1"
 _pkgver="${pkgver}"
-pkgrel=0
+pkgrel=1
 pkgdesc="Network simulation program"
 arch=('any')
 url="http://www.lernsoftware-filius.de"
