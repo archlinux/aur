@@ -2,7 +2,7 @@
 
 pkgname='python-sphinx-needs'
 _name=sphinx_needs
-pkgver='2.1.0'
+pkgver='3.0.0'
 pkgrel=1
 pkgdesc="Sphinx needs extension for managing needs/requirements and specifications"
 url="https://www.sphinx-needs.com/"
@@ -11,7 +11,7 @@ makedepends=('python-build' 'python-installer' 'python-poetry' 'python-wheel')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('b71ae36b3c14000ceedc42b1b230f214fececb227dbe4e282bc0b8ac7b7e76c8')
+sha256sums=('2c8892468d0bad131d94f221ac6e8595c30a07ef54b532511250e79816b08d96')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"

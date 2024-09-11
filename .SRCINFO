@@ -1,6 +1,6 @@
 pkgbase = python-sphinx-needs
 	pkgdesc = Sphinx needs extension for managing needs/requirements and specifications
-	pkgver = 2.1.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://www.sphinx-needs.com/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-sphinx-needs
 	depends = python-sphinx
 	depends = python-sphinxcontrib-plantuml
 	depends = python-typing_extensions
-	source = https://files.pythonhosted.org/packages/source/s/sphinx_needs/sphinx_needs-2.1.0.tar.gz
-	sha256sums = b71ae36b3c14000ceedc42b1b230f214fececb227dbe4e282bc0b8ac7b7e76c8
+	source = https://files.pythonhosted.org/packages/source/s/sphinx_needs/sphinx_needs-3.0.0.tar.gz
+	sha256sums = 2c8892468d0bad131d94f221ac6e8595c30a07ef54b532511250e79816b08d96
 
 pkgname = python-sphinx-needs
