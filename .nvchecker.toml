@@ -1,0 +1,3 @@
+[prettier-plugin-latex]
+source = "npm"
+npm = "prettier-plugin-latex"

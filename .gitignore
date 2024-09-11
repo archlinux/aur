@@ -1,4 +1,1 @@
-*
-!.gitignore
-!PKGBUILD
-!.SRCINFO
+*.tgz
