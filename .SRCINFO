@@ -1,13 +1,15 @@
 pkgbase = kefir-git
 	pkgdesc = C17 language compiler for x86_64 systems (upstream version)
-	pkgver = 0.3.1.dev
+	pkgver = 0.4.0.dev.r1903.69c3c7a4d42eb867f79ce306aecb2a4af8c58c71
 	pkgrel = 1
 	url = https://kefir.protopopov.lv
 	arch = x86_64
 	license = GPL3
 	license = BSD
 	provides = kefir
+	provides = kefir-debug
 	conflicts = kefir
+	conflicts = kefir-debug
 	source = kefir::git+https://git.sr.ht/~jprotopopov/kefir#branch=master
 	sha512sums = SKIP
 

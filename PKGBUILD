@@ -1,10 +1,10 @@
 # Maintainer: Jevgenijs Protopopovs <jevgenij@protopopov.lv>
 pkgname='kefir-git'
-pkgver=0.3.1.dev
+pkgver=0.4.0.dev.r1903.69c3c7a4d42eb867f79ce306aecb2a4af8c58c71
 pkgrel=1
 pkgdesc='C17 language compiler for x86_64 systems (upstream version)'
-provides=('kefir')
-conflicts=('kefir')
+provides=('kefir' 'kefir-debug')
+conflicts=('kefir' 'kefir-debug')
 arch=('x86_64')
 url='https://kefir.protopopov.lv'
 license=('GPL3' 'BSD')
@@ -30,7 +30,7 @@ build () {
 
 package () {
     cd kefir
-    make DESTDIR="$pkgdir" prefix="/usr" install
+    make DESTDIR="$pkgdir" prefix="/usr" INSTALL_LICENSES=no install
     install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
     install -Dm644 source/runtime/LICENSE "$pkgdir/usr/share/licenses/$pkgname/runtime/LICENSE"
     install -Dm644 dist/README.license "$pkgdir/usr/share/licenses/$pkgname/README"
