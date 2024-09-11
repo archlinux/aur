@@ -2,14 +2,14 @@
 
 pkgname=nuc970-nuwriter-git
 pkgver=r13.1328b10
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="The Nu-writer Command Tool is a linux console application consisting of functions to access storage(eg. DRAM,NAND,SPINOR,SPINAND,SD) in a NUC970 family processors"
 arch=('x86_64'
     'aarch64'
     'riscv64')
 url="https://gitee.com/OpenNuvoton/NUC970_NuWriter_CMD"
-license=('GPL-3.0-or-only')
+license=('GPL-3.0-only')
 groups=()
 depends=(
     glibc
@@ -33,9 +33,10 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
@@ -43,13 +44,13 @@ build() {
     cd "${srcdir}/${pkgname%-git}"
     autoreconf -f -i
     ./configure
-#     ./configure --prefix=$PWD/install
+    #     ./configure --prefix=$PWD/install
     make
 }
 
 package() {
     cd "${srcdir}/${pkgname%-git}"
-#     make install
+    #     make install
     install -Dm0755 "nuwriter" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm0755 "99-nuvoton_isp.rules" "${pkgdir}/usr/lib/udev/rules.d/99-nuvoton_isp.rules"
     install -dm0755 "${pkgdir}/usr/share/${pkgname%-git}"
