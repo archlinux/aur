@@ -1,8 +1,9 @@
 # Maintainer: Dmitriy Q <krotesk at mail dot ru>
+# Contributor: Dmitriy Q <krotesk at mail dot ru>
 
 pkgname="mkdocs-print-site-plugin"
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc=" MkDocs Plugin that adds an additional page that combines all pages, allowing easy exports to PDF and standalone HTML."
 url="https://github.com/timvink/mkdocs-print-site-plugin"
 license=("MIT")
