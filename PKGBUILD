@@ -13,9 +13,9 @@ pkgname=(
     icesugar-pro-git
     icesugar-pro-demo-git
     icesugar-pro-doc-git
-    )
+)
 pkgver=1.1a.r27.g2abb4c7
-pkgrel=1
+pkgrel=8
 epoch=
 pkgdesc="iCESugar FPGA Board (base on iCE40UP5k) "
 arch=(x86_64
@@ -46,8 +46,8 @@ source=("${pkgbase}::git+${url}.git"
     "${pkgbase/git/nano}::git+${url}-nano.git")
 noextract=()
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+    'SKIP'
+    'SKIP')
 #validpgpkeys=()
 
 pkgver() {
@@ -55,15 +55,14 @@ pkgver() {
     git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgbase}" clean -dfx
     rm -rf "${srcdir}/${pkgbase}/tools/src/icesprog"
 }
 
 build() {
     cd "${srcdir}/${pkgbase}/tools/src"
-    head -n 18 icesprog.c > LICENSE
+    head -n 18 icesprog.c >LICENSE
     make
 }
 
@@ -80,19 +79,19 @@ package_icesugar-git() {
     conflicts=(${pkgname%-git})
     arch=(any)
     depends=(
-        arachne-pnr
+        #         arachne-pnr
         icesugar-demo
         icesugar-doc
         icesugar-icesprog
         icestorm
-#         icestorm-nightly
+        #         icestorm-nightly
         nextpnr
-#         nextpnr-ice40-nightly
+        #         nextpnr-ice40-nightly
         riscv64-linux-gnu-gcc
         sbt
         yosys
-#         yosys-nightly
-        )
+        #         yosys-nightly
+    )
 }
 
 package_icesugar-demo-git() {
@@ -103,7 +102,7 @@ package_icesugar-demo-git() {
 
     cd ${srcdir}/${pkgbase}
     install -dm0755 "${pkgdir}/usr/share/${pkgbase%-git}"
-    cp -rva demo firmware   "${pkgdir}/usr/share/${pkgbase%-git}/"
+    cp -rva demo firmware "${pkgdir}/usr/share/${pkgbase%-git}/"
 }
 
 package_icesugar-doc-git() {
@@ -114,7 +113,7 @@ package_icesugar-doc-git() {
 
     cd ${srcdir}/${pkgbase}
     install -dm0755 "${pkgdir}/usr/share/${pkgbase%-git}"
-    cp -rva doc schematic   "${pkgdir}/usr/share/${pkgbase%-git}/"
+    cp -rva doc schematic "${pkgdir}/usr/share/${pkgbase%-git}/"
 }
 
 package_icesugar-icesprog-git() {
@@ -147,19 +146,19 @@ package_icesugar-nano-git() {
     conflicts=(${pkgname%-git})
     arch=(any)
     depends=(
-        arachne-pnr
+        #         arachne-pnr
         icesugar-icesprog
         icesugar-nano-demo
         icesugar-nano-doc
         icestorm
-#         icestorm-nightly
+        #         icestorm-nightly
         nextpnr
-#         nextpnr-ice40-nightly
+        #         nextpnr-ice40-nightly
         riscv64-linux-gnu-gcc
         sbt
         yosys
-#         yosys-nightly
-        )
+        #         yosys-nightly
+    )
 }
 
 package_icesugar-nano-demo-git() {
@@ -170,7 +169,7 @@ package_icesugar-nano-demo-git() {
 
     cd ${srcdir}/${pkgbase/git/nano}
     install -dm0755 "${pkgdir}/usr/share/${pkgbase/git/nano}"
-    cp -rva demo firmware   "${pkgdir}/usr/share/${pkgbase/git/nano}/"
+    cp -rva demo firmware "${pkgdir}/usr/share/${pkgbase/git/nano}/"
 }
 
 package_icesugar-nano-doc-git() {
@@ -181,7 +180,7 @@ package_icesugar-nano-doc-git() {
 
     cd ${srcdir}/${pkgbase/git/nano}
     install -dm0755 "${pkgdir}/usr/share/${pkgbase/git/nano}"
-    cp -rva doc schematic   "${pkgdir}/usr/share/${pkgbase/git/nano}/"
+    cp -rva doc schematic "${pkgdir}/usr/share/${pkgbase/git/nano}/"
 }
 
 package_icesugar-pro-git() {
@@ -190,21 +189,21 @@ package_icesugar-pro-git() {
     conflicts=(${pkgname%-git})
     arch=(any)
     depends=(
-        arachne-pnr
+        #         arachne-pnr
         dtc
         icesugar-dapprog
         icesugar-icesprog
         icesugar-pro-demo
         icesugar-pro-doc
         icestorm
-#         icestorm-nightly
+        #         icestorm-nightly
         nextpnr
-#         nextpnr-ice40-nightly
+        #         nextpnr-ice40-nightly
         riscv64-linux-gnu-gcc
         sbt
         yosys
-#         yosys-nightly
-)
+        #         yosys-nightly
+    )
 }
 
 package_icesugar-pro-demo-git() {
@@ -215,7 +214,7 @@ package_icesugar-pro-demo-git() {
 
     cd ${srcdir}/${pkgbase/git/pro}
     install -dm0755 "${pkgdir}/usr/share/${pkgbase/git/pro}"
-    cp -rva demo firmware   "${pkgdir}/usr/share/${pkgbase/git/pro}/"
+    cp -rva demo firmware "${pkgdir}/usr/share/${pkgbase/git/pro}/"
 }
 
 package_icesugar-pro-doc-git() {
@@ -226,7 +225,7 @@ package_icesugar-pro-doc-git() {
 
     cd ${srcdir}/${pkgbase/git/pro}
     install -dm0755 "${pkgdir}/usr/share/${pkgbase/git/pro}"
-    cp -rva doc schematic   "${pkgdir}/usr/share/${pkgbase/git/pro}/"
+    cp -rva doc schematic "${pkgdir}/usr/share/${pkgbase/git/pro}/"
 }
 
 package_icesugar-dapprog-git() {
@@ -238,16 +237,15 @@ package_icesugar-dapprog-git() {
 
     cd "${srcdir}/${pkgbase/git/pro}"
     install -dm0755 "${pkgdir}/usr/share/${pkgbase/git/pro}"
-    cp -rva tools   "${pkgdir}/usr/share/${pkgbase/git/pro}/"
+    cp -rva tools "${pkgdir}/usr/share/${pkgbase/git/pro}/"
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/dapprog" <<EOF
 #!/bin/bash
 
 cd /usr/share/icesugar-pro/tools
 
-CURRENT_DIR=$(pwd)
-export PATH=${PATH}:${CURRENT_DIR}
+CURRENT_DIR=\$(pwd)
+export PATH=\${PATH}:\${CURRENT_DIR}
 
 ./dapprog \$@
 EOF
 }
-
