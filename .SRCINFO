@@ -1,0 +1,24 @@
+pkgbase = saturn-git
+	pkgdesc = Your go-to ToS Compliant Custom Deezer Client - Freezer Reborn
+	pkgver = 1.1.1.r4.g310bd4d
+	pkgrel = 1
+	url = https://github.com/SaturnMusic/PC
+	arch = x86_64
+	license = GPL3
+	makedepends = jq
+	makedepends = moreutils
+	makedepends = npm
+	depends = flac
+	depends = libnotify
+	depends = libxtst
+	depends = nss
+	optdepends = libappindicator-gtk3
+	provides = saturnmusic
+	conflicts = saturnmusic-bin
+	options = !debug
+	source = saturnmusic::git+https://github.com/SaturnMusic/PC.git
+	source = saturn.desktop
+	sha256sums = SKIP
+	sha256sums = 7e3fc3750bea9e62677f055ef00bf3f3fd64ed03dfc73365f273596d43fc65f4
+
+pkgname = saturn-git

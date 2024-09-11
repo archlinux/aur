@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=Saturn
+Exec=/opt/Saturn/saturn %U
+Terminal=false
+Type=Application
+Icon=saturn
+StartupWMClass=saturn
+Version=1.1
+GenericName=Electron-based Deezer client
+Comment=Electron-based Deezer client
+Categories=AudioVideo;Network;Audio;FileTransfer;Player;
+MimeType=application/http;
+Keywords=audio;download;flac;lyrics;mp3;music;spotify;stream;
+StartupNotify=true
+DBusActivatable=false
+NoDisplay=false
+Hidden=false
