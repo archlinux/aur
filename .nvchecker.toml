@@ -1,0 +1,4 @@
+[radicle-httpd-bin]
+source = "jq"
+url = "https://files.radicle.xyz/releases/radicle-httpd/latest/radicle-httpd.json"
+filter = ".version"
