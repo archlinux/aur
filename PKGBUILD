@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='uucp'
 pkgname="ocaml-$_projectname"
-pkgver='15.1.0'
-pkgrel='2'
+pkgver='16.0.0'
+pkgrel='1'
 pkgdesc='Unicode character properties for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
 license=('ISC')
-depends=('ocaml>=4.14.0' 'ocaml-cmdliner>=1.1.0' 'ocaml-uucd>=15.1.0' 'ocaml-uunf>=15.1.0')
+depends=('ocaml>=4.14.0' 'ocaml-cmdliner>=1.1.0' 'ocaml-uucd>=16.0.0' 'ocaml-uunf>=16.0.0')
 makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=1.0.3' 'opam')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
-b2sums=('0a10ce405321b3d31e19db8a5a9a3379b2b2e2710dc2e6e2f53e3aab0d9e91d0dfe9cf30652efceb5f189d43da5237b078e4927738afc36a6e1fec8f7aa2782c')
+b2sums=('7b9142a3095a6c85f04a692b9a62696868ec16a91094dc42d67dc1d04cd3090c3020b7ac1d2b68b69ae24b8fb2807aa6880ab9af6ac26470c7e2efe89ebcba06')
 
 _sourcedirectory="$_projectname-$pkgver"
 
