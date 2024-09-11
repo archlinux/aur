@@ -1,7 +1,7 @@
-# Author: Emil Lundberg <lundberg.emil@gmail.com> <https://keybase.io/emlun>
+# Author: Emil Lundberg <emil@emlun.se>
 
 pkgname=gradle-autowrap
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Alternative Gradle front-end that redirects to Gradle wrapper if available"
 arch=('any')
