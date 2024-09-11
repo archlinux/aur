@@ -1,7 +1,7 @@
 # Maintainer: Dominik Wetzel <dimonok [at] web [dot] de>
 # Contributors: Julian Eckhardt <julian [at] eckhardt [dot] fi>, Paulo Marcos <contato-myghi63 [at] protonmail [dot] com>
 pkgname=kyocera_universal
-pkgver=9.3.20230720
+pkgver=9.4.20240521
 pkgrel=1
 major=$(cut -d '.' -f 1 <<< $pkgver)
 minor=$(cut -d '.' -f 2 <<< $pkgver)
@@ -18,7 +18,7 @@ DLAGENTS=("https::/usr/bin/wget")
 toDwnld="KyoceraLinuxPackages_${date}_tar_gz.download.gz"
 source=("https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/${toDwnld}")
 install=kyodialog-bin.install
-sha256sums=('55cd5e90851738d7de564138ebcdfca9c255ededafdb3a591ea0fb3d656b8584')
+sha256sums=('7f9f1ca91cef018a6e56f2210d86f16afa00d0bf06b33ac32c875e49dc5439ef')
 
 if [ "$arch" == "x86_64" ]; then
   _arch="amd64"
