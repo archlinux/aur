@@ -1,16 +1,16 @@
 pkgbase = prettier-plugin-latex
 	pkgdesc = Plugin to format LaTeX with prettier.js
-	pkgver = 1.2.4
+	pkgver = 2.0.1
 	pkgrel = 1
-	url = https://github.com/siefkenj/latex-parser#readme
+	url = https://github.com/siefkenj/prettier-plugin-latex
 	arch = any
 	license = MIT
 	makedepends = jq
 	makedepends = npm
 	depends = nodejs
 	depends = prettier
-	noextract = prettier-plugin-latex-1.2.4.tgz
-	source = https://registry.npmjs.org/prettier-plugin-latex/-/prettier-plugin-latex-1.2.4.tgz
-	sha256sums = 746a653e8b00c82e3ad3280e90b6112e44d8c612cbc3d6fe33c0c53cb735a57c
+	noextract = prettier-plugin-latex-2.0.1.tgz
+	source = https://registry.npmjs.org/prettier-plugin-latex/-/prettier-plugin-latex-2.0.1.tgz
+	sha256sums = a3ce3da1b0d2bc573e00229921f201dae5b4bc466f2d37d0f92a7bc9f1a3e042
 
 pkgname = prettier-plugin-latex
