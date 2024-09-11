@@ -4,6 +4,8 @@ pkgver='0.4.0'
 pkgrel='1'
 pkgdesc='C17 language compiler for x86_64 systems'
 arch=('x86_64')
+provides=('kefir' 'kefir-debug')
+conflicts=('kefir' 'kefir-debug')
 url='https://kefir.protopopov.lv'
 license=('GPL3' 'BSD')
 

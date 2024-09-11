@@ -6,6 +6,10 @@ pkgbase = kefir
 	arch = x86_64
 	license = GPL3
 	license = BSD
+	provides = kefir
+	provides = kefir-debug
+	conflicts = kefir
+	conflicts = kefir-debug
 	source = https://git.sr.ht/~jprotopopov/kefir/archive/v0.4.0.tar.gz
 	sha512sums = 8f77d4b4a2d41d44cc386dd6178de81bd414650540673851f14e60508108412b21b4155e30c6dde137faa67c81b88b25d3a2799141a1964c16457fbf7b1cfaa8
 
