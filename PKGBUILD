@@ -2,8 +2,8 @@
 pkgdesc="Gnome: Organize the items of the top (menu)bar"
 _pkgname="top-bar-organizer"
 pkgname="gnome-shell-extension-${_pkgname}"
-pkgver=10
-pkgrel=3
+pkgver=11
+pkgrel=1
 arch=(any)
 url="https://gitlab.gnome.org/julianschacher/top-bar-organizer"
 license=(GPL3)

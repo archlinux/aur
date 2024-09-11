@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-top-bar-organizer
 	pkgdesc = Gnome: Organize the items of the top (menu)bar
-	pkgver = 10
-	pkgrel = 3
+	pkgver = 11
+	pkgrel = 1
 	url = https://gitlab.gnome.org/julianschacher/top-bar-organizer
 	arch = any
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = gnome-shell-extension-top-bar-organizer
 	makedepends = glib2
 	depends = gnome-shell>=1:45.0
 	options = !debug
-	source = https://gitlab.gnome.org/julianschacher/top-bar-organizer/-/archive/v10/top-bar-organizer-v10.tar.gz
+	source = https://gitlab.gnome.org/julianschacher/top-bar-organizer/-/archive/v11/top-bar-organizer-v11.tar.gz
 	md5sums = e8673e5e212410127e6a437744bef22a
 
 pkgname = gnome-shell-extension-top-bar-organizer
