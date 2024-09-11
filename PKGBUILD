@@ -10,12 +10,12 @@
 pkgname=librewolf-hg
 _pkgname=librewolf-nightly
 __pkgname="Librewolf Nightly"
-pkgver=131.0a1.r831211.a5615acbb20e
+pkgver=132.0a1.r835902.4a074016c96b
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom.  Mercurial version."
 url="https://librewolf.net/"
+arch=(x86_64 aarch64)
 
-arch=(x86_64 x86_64_v3 aarch64)
 license=(MPL GPL LGPL)
 depends=(
   dbus
@@ -44,7 +44,7 @@ depends=(
   libxt
   mime-types
   nspr
-  'nss>=3.103'
+  'nss>=3.104'
   pango
   ttf-font
 )

@@ -1,11 +1,10 @@
 pkgbase = librewolf-hg
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom. Mercurial version.
-	pkgver = 131.0a1.r831211.a5615acbb20e
+	pkgver = 132.0a1.r835902.4a074016c96b
 	pkgrel = 1
 	url = https://librewolf.net/
 	install = librewolf-nightly.install
 	arch = x86_64
-	arch = x86_64_v3
 	arch = aarch64
 	license = MPL
 	license = GPL
@@ -64,7 +63,7 @@ pkgbase = librewolf-hg
 	depends = libxt
 	depends = mime-types
 	depends = nspr
-	depends = nss>=3.103
+	depends = nss>=3.104
 	depends = pango
 	depends = ttf-font
 	optdepends = networkmanager: Location detection via available WiFi networks
