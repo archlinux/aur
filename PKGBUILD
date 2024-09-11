@@ -16,11 +16,9 @@
 # /etc/oauth2l.json is your client ID info
 # /etc/ssmtp/oauth2l.cache is the oauth2l cache location for storing the refresh token.
 
-
-
 pkgname=ssmtp
 pkgver=2.64
-pkgrel=18
+pkgrel=19
 pkgdesc="Extremely simple MTA to get mail off the system to a mailhub (with Fedora patches)"
 arch=('i686' 'x86_64' 'armv7' 'aarch64' 'armv6h' 'armv7h')
 license=('GPL')
@@ -32,36 +30,46 @@ provides=('smtp-forwarder')
 backup=('etc/ssmtp/ssmtp.conf' 'etc/ssmtp/revaliases')
 options=('!makeflags' '!emptydirs')
 source=("http://ftp.debian.org/debian/pool/main/s/ssmtp/${pkgname}_${pkgver}.orig.tar.bz2"
-        'aliases.patch'
-        'authpass.patch'
-        'defaultvalues.patch'
-        'garbage_writes.patch'
-        'remote-addr.patch'
-        'validate-TLS-server-cert.patch'
+        'ssmtp-aliases.patch'
+        'ssmtp-c99.patch'
+        'ssmtp-defaultvalues.patch'
+        'ssmtp-md5auth-non-rsa.patch'
+        'ssmtp-validate-TLS-server-cert.patch'
+        'ssmtp-authpass.patch'
+        'ssmtp-configure-c99.patch'
+        'ssmtp-garbage_writes.patch'
+        'ssmtp-remote-addr.patch'
         'openssl_crypto.patch'
         'xoauth2.patch'
 )
 sha256sums=('22c37dc90c871e8e052b2cab0ad219d010fa938608cd66b21c8f3c759046fa36'
-            'b0203e2bed2a3c053b47fc7e36b48decf1157ec2fc3eae130b9a1bc46bd2d357'
-            'eaa35ea5cee7ba471791555e5017c4565de4d527d15d9d3c86f36b985373f325'
-            '108d1a04dac1d99bb5bc67829f64cab5dc95c44611ebe4f535d0a5b5e8f3a49f'
-            'd0c05b24ff27c781a3e0379769f4af3ad1f0244c8899344928805a95a6ded8b3'
-            '3f9f21f6363cee92c1e5763b9bd491e262258d39b401dccc8efc2b40c8e0dd0a'
-            '280ac74257ad89029f91dc47b78ce3c1f9f4a96696b31f82b66d64bb3b2bcc47'
+            'fe031849b891e0fa72114b01e2b87f6a2e75c51832727fb5abaf9d8db83b4d29'
+            'a624f54e8cb12250c63461efd4885783b6119aaf50d8571bbf6fe9792c6f9a32'
+            'c39c6ddd90fb7311440ec1709a4bcda2d600c9a7b3a9c93be8ab899b932f04e8'
+            '71d3f333d05ffbb6dcbe27a6e4655593c8298a95ade52673c4dfd5ae46d923cd'
+            '85598c3964862b4d4d2314ab8f783eefaef6cbb22fb8a3a339cd60e611dad6ff'
+            '7f89cfa626e198660da37cae0339d02f42216cf92eadcdeda05efe35c3c41a71'
+            '1fa4fe4070ced28ccdd74dc284c71fe13e19091f7d01b47fdf34fe23539b8d58'
+            '831caf28a16c729e56e08600eee8d19c20f3bdb3a5df56815cde45a248555358'
+            '36edd03e4cfcde14830e345256b05b8630d9f25ce714455cf1a910d5ab30c341'
             '6cfcc8660968c97ff95e1df0b0725076838b4d35ffaa17c65afcf09ebca3170d'
             'fc8d166a97329755cff25a1f444b3892071ff5618ef698e27de5bfb004373937')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p1 -i "${srcdir}/openssl_crypto.patch"
 
-  # Patches from https://src.fedoraproject.org/rpms/ssmtp/tree/master
-  patch -p1 -i "${srcdir}/aliases.patch"
-  patch -p1 -i "${srcdir}/authpass.patch"
-  patch -p1 -i "${srcdir}/defaultvalues.patch"
-  patch -p1 -i "${srcdir}/garbage_writes.patch"
-  patch -p1 -i "${srcdir}/remote-addr.patch"
-  patch -p1 -i "${srcdir}/validate-TLS-server-cert.patch"
+  # Patches from https://src.fedoraproject.org/rpms/ssmtp/tree/main
+  patch -p1 -i "${srcdir}/ssmtp-md5auth-non-rsa.patch"
+  patch -p1 -i "${srcdir}/ssmtp-garbage_writes.patch"
+  patch -p1 -i "${srcdir}/ssmtp-authpass.patch"
+  patch -p1 -i "${srcdir}/ssmtp-aliases.patch"
+  patch -p1 -i "${srcdir}/ssmtp-remote-addr.patch"
+  patch -p1 -i "${srcdir}/ssmtp-validate-TLS-server-cert.patch"
+  patch -p1 -i "${srcdir}/ssmtp-defaultvalues.patch"
+  patch -p1 -i "${srcdir}/ssmtp-configure-c99.patch"
+
+  # Other patches
+  patch -p1 -i "${srcdir}/openssl_crypto.patch"
   patch -p1 -i "${srcdir}/xoauth2.patch"
 }
 
@@ -70,10 +78,10 @@ build() {
 
   autoreconf
 
+  CFLAGS="-Wno-pointer-to-int-cast -Wno-discarded-qualifiers -Wno-int-conversion" \
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --mandir=/usr/share/man \
-              --enable-md5auth \
               --enable-ssl\
               --enable-inet6
   make
@@ -95,6 +103,6 @@ package() {
   cd "$pkgdir"
   mv usr/sbin usr/bin
 
-  chown root.mail "${pkgdir}/usr/bin/ssmtp"
+  chown root:mail "${pkgdir}/usr/bin/ssmtp"
   chmod 2755 "${pkgdir}/usr/bin/ssmtp"
 }

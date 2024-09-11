@@ -11,4 +11,3 @@ diff -up ssmtp-2.61/ssmtp.c.orig ssmtp-2.61/ssmtp.c
  					die("parse_config() -- strdup() failed");
  				}
  
-

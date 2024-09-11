@@ -151,4 +151,3 @@ diff -up ssmtp-2.64/TLS.orig ssmtp-2.64/TLS
 +Optional directory of trusted certificates for validating the server.
  
  
-

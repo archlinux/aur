@@ -24,4 +24,3 @@ Modified by Anibal Monsalve Salazar <anibal@debian.org>
  	if(have_date == False) {
  		outbytes += smtp_write(sock, "Date: %s", arpadate);
  	}
-
