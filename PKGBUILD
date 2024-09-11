@@ -1,8 +1,8 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='uunf'
 pkgname="ocaml-$_projectname"
-pkgver='15.1.0'
-pkgrel='2'
+pkgver='16.0.0'
+pkgrel='1'
 pkgdesc='Unicode text normalization for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
@@ -11,7 +11,7 @@ depends=('ocaml>=4.14.0' 'ocaml-cmdliner>=1.1.O' 'ocaml-uucd>=15.1.0' 'ocaml-uut
 makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=1.0.3' 'opam')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
-b2sums=('73f2182205f90351223ce6890a31d74ea526b83463469033bd4ca9c1c7461ea8b2b8fb25f16403fbbaedacbe1ae8ef2f2a59275203e3fdf78b68ab513dd05fde')
+b2sums=('92f2e2a0084ce20e8ceed16dac9830f8da0200227771bc74838acdde58128a1637225183c6af460f87379aea162c7775757859f13fbd0347078cf5db15e99f48')
 
 _sourcedirectory="$_projectname-$pkgver"
 
