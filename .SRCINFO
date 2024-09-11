@@ -1,6 +1,6 @@
 pkgbase = xf86-input-wacom-nosystemd-git
 	pkgdesc = X.Org Wacom tablet driver. Without systemd dependency. Git checkout.
-	pkgver = 1.2.2+13.r2333.20240904.fdf6d5a
+	pkgver = 1.2.2+14.r2334.20240905.659fee3
 	pkgrel = 1
 	url = https://github.com/linuxwacom/xf86-input-wacom
 	arch = i686
@@ -15,9 +15,9 @@ pkgbase = xf86-input-wacom-nosystemd-git
 	depends = libxinerama
 	depends = libxrandr
 	depends = libx11
-	provides = xf86-input-wacom=1.2.2+13.r2333.20240904.fdf6d5a
-	provides = xf86-input-wacom-nosystemd=1.2.2+13.r2333.20240904.fdf6d5a
-	provides = xf86-input-wacom-git=1.2.2+13.r2333.20240904.fdf6d5a
+	provides = xf86-input-wacom=1.2.2+14.r2334.20240905.659fee3
+	provides = xf86-input-wacom-nosystemd=1.2.2+14.r2334.20240905.659fee3
+	provides = xf86-input-wacom-git=1.2.2+14.r2334.20240905.659fee3
 	conflicts = xf86-input-wacom
 	source = xf86-input-wacom::git+https://github.com/linuxwacom/xf86-input-wacom.git
 	sha256sums = SKIP
