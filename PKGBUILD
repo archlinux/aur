@@ -2,7 +2,8 @@
 _reponame='OSTRAJava'
 pkgname="${_reponame,,}"
 pkgver='1.1'
-pkgrel='1'
+_commit='1c9031fe7350e895b357c344f4f68658c319fc70'
+pkgrel='2'
 pkgdesc='Bo neni cas pyco'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/tkohout/$_reponame"
@@ -10,13 +11,13 @@ license=('unknown')
 depends=('java-runtime<20')
 makedepends=('java-environment<20' 'maven')
 source=(
-	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+	"$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz"
 	"fix-lib-paths.diff"
 )
-sha512sums=('4acf1d9ec53f1af58022512b2d7e5427e9251f919709c4e010922bfdb934e1bc4eb37e9e33662eccca314f8971b594f0a603c308acf16070a284d963d13987b8'
+sha512sums=('edfc7210f99cd1d02ac5c12bb355ebc3b4c0d97381159c617f64d816ba0e4375e0d97bb78435af0bd9fcd4f019fbb79ba637534fbebe195487606a67dc75123f'
             '6b71abf24317df13e8ffb95e0199d20da27537ddeda5cc21c11d49e0217cf345ee4db1dcf53d81e66bb24b4b9db884e6a103cbaa15635616154be9651849c687')
 
-_sourcedirectory="$_reponame-$pkgver"
+_sourcedirectory="$_reponame-$_commit"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
