@@ -3,7 +3,7 @@
 # Contributor: nicoulaj julien.nicoulaud [at] gmail [dot] com
 
 pkgname=firefox-extension-video-download-helper
-pkgver=9.1.0.42
+pkgver=9.1.0.44
 pkgrel=1
 pkgdesc='The easy way to download and convert Web videos from hundreds of YouTube-like sites.'
 arch=('any')
@@ -14,12 +14,12 @@ groups=('firefox-addons')
 optdepends=('vdhcoapp: companion app, see https://www.downloadhelper.net/install-coapp'
             'vdhcoapp-bin: companion app (binary version)')
 source=("license.html::https://www.downloadhelper.net/terms-of-service"
-        "extension_${pkgver}-${pkgrel}.xpi::https://addons.mozilla.org/firefox/downloads/file/4330505/video_downloadhelper-${pkgver}.xpi")
+        "extension_${pkgver}-${pkgrel}.xpi::https://addons.mozilla.org/firefox/downloads/file/4347883/video_downloadhelper-${pkgver}.xpi")
 
 noextract=("license.html"
            "extension_${pkgver}-${pkgrel}.xpi")
 sha512sums=(SKIP
-            '859b525b146d78d14a83655775a8d6458700959de5d763ad2b2f7702f53a2f4d3b410d133b3e57f81dd46155e5ef3f22a89ec9f93446e0ac7f3a2f0594ff2990')
+            '84d1127c9e384db6dc662152b6a44c39fc23ebe4503631c1308fe746a5d3b1cd3c1984080020433061b0c2b85d3d0f91e041e4e4708b6077c4ad27e1cf89a634')
 
 package() {
   install -Dm644 extension_${pkgver}-${pkgrel}.xpi "${pkgdir}/usr/lib/firefox/browser/extensions/{b9db16a4-6edc-47ec-a1f4-b86292ed211d}.xpi"
