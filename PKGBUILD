@@ -5,7 +5,7 @@
 
 pkgname=hadoop
 pkgver=3.3.6
-pkgrel=2
+pkgrel=1
 pkgdesc='An open-source software for reliable, scalable, distributed computing'
 arch=('x86_64')
 url='https://hadoop.apache.org/'
