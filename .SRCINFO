@@ -8,6 +8,7 @@ pkgbase = binsider-git
 	license = MIT
 	makedepends = cargo
 	makedepends = git
+	depends = gcc-libs
 	provides = binsider
 	provides = binsider-git
 	conflicts = binsider

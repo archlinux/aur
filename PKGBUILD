@@ -11,12 +11,13 @@ makedepends=('cargo' 'git')
 conflicts=('binsider' 'binsider-git')
 source=("binsider::git+https://github.com/orhun/binsider")
 sha1sums=('SKIP')
+depends=('gcc-libs')
 
 build() {
   cd binsider || exit 1
-  if command -v rustup > /dev/null 2>&1; then
+  if command -v rustup >/dev/null 2>&1; then
     RUSTFLAGS="-C target-cpu=native" rustup run stable \
-      cargo build --release 
+      cargo build --release
   elif rustc --version | grep -q stable; then
     RUSTFLAGS="-C target-cpu=native" \
       cargo build --release
