@@ -1,6 +1,6 @@
 pkgbase = gamescope-nvidia-git
 	pkgdesc = SteamOS session compositing window manager (NVIDIA patch)
-	pkgver = 3.15.3.r0.g141782b2
+	pkgver = 3.15.9.r0.g80457860
 	pkgrel = 1
 	url = https://github.com/sharkautarch/gamescope/tree/nvidia-fix
 	install = gamescope.install

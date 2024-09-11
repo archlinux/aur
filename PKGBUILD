@@ -6,7 +6,7 @@
 
 pkgname=gamescope-nvidia-git
 _pkgname=gamescope
-pkgver=3.15.3.r0.g141782b2
+pkgver=3.15.9.r0.g80457860
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager (NVIDIA patch)'
 arch=(x86_64)
@@ -68,10 +68,8 @@ prepare() {
 
   msg2 'Retrieving git build dependencies...'
   local outmsg='first'; until [[ -z $outmsg ]]; do
-    if outmsg=$(eval "$(updpkgsrcs echoGitCMDForSubModule force)" 2>&1); then
-      echo "$outmsg"
-    else
-      echo "$outmsg"; updpkgsrcs updateBuildScriptForSubModule || exit $?
+    if ! outmsg=$( { eval "$(updpkgsrcs echoGitCMDForSubModule force)" 1>/dev/null; } 2>&1 ); then
+      updpkgsrcs updateBuildScriptForSubModule || exit $?
     fi
   done; unset outmsg
 
