@@ -123,9 +123,16 @@ function execApp() {
 	if [[ ${wechatXserverPatch} = 1 ]]; then
 		xhost +
 	fi
-	if [ -f /usr/share/fontconfig/conf.avail/75-twemoji.conf ]; then
-		cp /usr/share/fontconfig/conf.avail/75-twemoji.conf \
-			"${XDG_CONFIG_HOME}"/fontconfig
+	if [[ $(fc-match emoji) =~ Twemoji ]]; then
+		echo "[Info] Emoji already set to Twemoji"
+	else
+		if [ -f /usr/share/fontconfig/conf.avail/75-twemoji.conf ]; then
+			cp /usr/share/fontconfig/conf.avail/75-twemoji.conf \
+				"${XDG_CONFIG_HOME}"/fontconfig
+			echo "[Info] Using Twemoji as Emoji font, fontconfig has been changed"
+		else
+			echo "[Warn] Emojis may be broken"
+		fi
 	fi
 	if [ ! -S "${busDir}/bus" ]; then
 		echo "[Info] Waiting for D-Bus proxy..."
@@ -147,13 +154,14 @@ function execApp() {
 		unitName="wechat-uos-qt"
 	fi
 	mkdir -p "${XDG_DATA_HOME}"/WeChat_Data/.config
+	createWrapIfNotExist "${XDG_DOCUMENTS_DIR}"/WeChat
 	systemd-run \
 	--user \
 	${sdOption} \
 	-p SyslogIdentifier=WeChat \
 	-p Environment=LD_PRELOAD="${LD_PRELOAD}" \
 	-u "${unitName}" \
-	-p Description="WeChat Qt" \
+	-p Description="WeChat UOS (Qt)" \
 	-p Documentation="https://wiki.archlinuxcn.org/wiki/%E5%BE%AE%E4%BF%A1#%E5%BE%AE%E4%BF%A1_Linux_%E5%8E%9F%E7%94%9F%E7%89%88%E9%87%8D%E6%9E%84" \
 	-p ExitType=cgroup \
 	-p OOMPolicy=stop \
@@ -230,11 +238,12 @@ function execApp() {
 	bwrap \
 		--dev /dev \
 		--dev-bind /dev/dri /dev/dri \
-		--dev-bind /dev/shm /dev/shm \
 		--dev-bind-try /dev/nvidia0 /dev/nvidia0 \
+		--dev-bind-try /dev/nvidiactl /dev/nvidiactl \
 		--dev-bind-try /dev/nvidia-modeset /dev/nvidia-modeset \
 		--dev-bind-try /dev/nvidia-uvm /dev/nvidia-uvm \
 		--tmpfs /sys \
+		--bind /sys/module/ /sys/module/ \
 		--ro-bind /sys/dev/char /sys/dev/char \
 		--ro-bind /sys/devices /sys/devices \
 		--dir /sandbox \
@@ -245,7 +254,8 @@ function execApp() {
 		--ro-bind /usr/lib/wechat-uos-qt/mimeapps.list \
 			"${XDG_DATA_HOME}"/WeChat_Data/.config/mimeapps.list \
 		--tmpfs /tmp \
-		--bind /proc /proc \
+		--ro-bind-try /tmp/.X11-unix /tmp/.X11-unix \
+		--proc /proc \
 		--bind /usr /usr \
 		--ro-bind /etc /etc \
 		--ro-bind-try /lib /lib \
@@ -273,10 +283,6 @@ function execApp() {
 			"${XDG_CONFIG_HOME}"/fontconfig \
 		--ro-bind-try "${XDG_DATA_HOME}/fonts" \
 			"${XDG_DATA_HOME}/fonts" \
-		--ro-bind-try "${XDG_CONFIG_HOME}"/Trolltech.conf \
-			"${XDG_CONFIG_HOME}"/Trolltech.conf \
-		--ro-bind-try "${XDG_CONFIG_HOME}"/kdeglobals \
-			"${XDG_CONFIG_HOME}"/kdeglobals \
 		--ro-bind-try "/run/systemd/resolve/stub-resolv.conf" \
 			"/run/systemd/resolve/stub-resolv.conf" \
 		--dir "${XDG_DATA_HOME}/WeChat_Data/Documents" \
@@ -285,6 +291,10 @@ function execApp() {
 		${bwBindPar} \
 		${bwCamPar} \
 		--setenv XDG_DOCUMENTS_DIR "$HOME/Documents" \
+		--bind "${XDG_DOCUMENTS_DIR}"/WeChat \
+			"${XDG_DATA_HOME}/WeChat_Data/共享目录" \
+		--bind "${XDG_DOCUMENTS_DIR}"/WeChat \
+			"${XDG_DATA_HOME}/WeChat_Data/Shared Directory" \
 		--setenv XDG_DATA_HOME "${XDG_DATA_HOME}" \
 		--unshare-cgroup-try \
 		--unshare-ipc \
@@ -441,6 +451,11 @@ function disableSandbox() {
 function openDataDir() {
 	if [[ $@ =~ "--actions" ]] && [[ $@ =~ "opendir" ]]; then
 		xdg-open "${XDG_DATA_HOME}"/WeChat_Data
+		exit $?
+	fi
+	if [[ $@ =~ "--actions" ]] && [[ $@ =~ "shareddir" ]]; then
+		mkdir -p "${XDG_DOCUMENTS_DIR}"/WeChat
+		xdg-open "${XDG_DOCUMENTS_DIR}"/WeChat
 		exit $?
 	fi
 }
