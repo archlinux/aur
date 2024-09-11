@@ -1,6 +1,6 @@
 pkgbase = modrinth-app-segfault-fix-bin
 	pkgdesc = An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.
-	pkgver = 0.8.5
+	pkgver = 0.8.7
 	pkgrel = 1
 	url = https://modrinth.com/app
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = modrinth-app-segfault-fix-bin
 	optdepends = xorg-xrandr: for older minecraft versions
 	provides = modrinth-app
 	conflicts = modrinth-app
-	source = https://launcher-files.modrinth.com/versions/0.8.5/linux/Modrinth%20App_0.8.5_amd64.deb
+	source = https://launcher-files.modrinth.com/versions/0.8.7/linux/Modrinth%20App_0.8.7_amd64.deb
 	source = modrinth-app
-	sha256sums = 09dae4684b034a796219d722cf809a584be933b1927c077c202e8065e89ce9b9
-	sha256sums = 3a122138375fa8c8e38be9e11e33f39e784fe895e0490d00967c9a6173145508
+	sha256sums = 03fd48168abdccf7074d30015ec9aeeae7f684a8b9495102e246b6ed3791b88c
+	sha256sums = 8b4f95adec7a0d84b11c304430b1a1e5bcb8422314072b3c56ed53e22cd22030
 
 pkgname = modrinth-app-segfault-fix-bin

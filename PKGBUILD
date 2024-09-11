@@ -2,7 +2,7 @@
 # Maintainer: Antti <antti@antti.codes>
 
 pkgname=modrinth-app-segfault-fix-bin
-pkgver=0.8.5
+pkgver=0.8.7
 pkgrel=1
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
@@ -23,8 +23,8 @@ source=(
     "https://launcher-files.modrinth.com/versions/${pkgver}/linux/Modrinth%20App_${pkgver}_amd64.deb"
     "modrinth-app"
 )
-sha256sums=('09dae4684b034a796219d722cf809a584be933b1927c077c202e8065e89ce9b9'
-            '3a122138375fa8c8e38be9e11e33f39e784fe895e0490d00967c9a6173145508')
+sha256sums=('03fd48168abdccf7074d30015ec9aeeae7f684a8b9495102e246b6ed3791b88c'
+            '8b4f95adec7a0d84b11c304430b1a1e5bcb8422314072b3c56ed53e22cd22030')
 
 build() {
     cd "$srcdir/"
@@ -34,7 +34,6 @@ build() {
 package() {
     cp -r "${srcdir}/usr/" "${pkgdir}"
     mkdir -p "${pkgdir}/opt/modrinth-app"
-    mv "${pkgdir}/usr/bin/theseus_gui" "${pkgdir}/opt/modrinth-app/"
+    mv "${pkgdir}/usr/bin/modrinth-app" "${pkgdir}/opt/modrinth-app/"
     install -Dm755 "${srcdir}/modrinth-app" "${pkgdir}/usr/bin/modrinth-app"
-    install -Dm755 "${srcdir}/modrinth-app" "${pkgdir}/usr/bin/theseus_gui"
 }
