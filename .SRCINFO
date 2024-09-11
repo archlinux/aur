@@ -1,7 +1,7 @@
 pkgbase = curlyq
 	pkgdesc = A command line helper for curl and web scraping
 	pkgver = 0.0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ttscoff/curlyq
 	arch = any
 	license = MIT
