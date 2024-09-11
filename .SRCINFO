@@ -1,0 +1,18 @@
+pkgbase = dwipe-git
+	pkgdesc = wipe disks and partitions
+	pkgver = r12.8953a1c
+	pkgrel = 1
+	url = https://github.com/joedefen/dwipe
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	provides = dwipe-git
+	conflicts = dwipe-git
+	source = dwipe::git+https://github.com/joedefen/dwipe.git
+	md5sums = SKIP
+
+pkgname = dwipe-git
