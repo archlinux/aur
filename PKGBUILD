@@ -2,8 +2,8 @@
 # Contributor: solarbaron
 
 pkgname=feishin
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='A modern self-hosted music player.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/jeffvli/feishin'
