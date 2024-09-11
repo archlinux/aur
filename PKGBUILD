@@ -3,14 +3,14 @@
 pkgname=nutool-usbtoserialport-git
 _pkgname=NuTool-USBtoSerialPort
 pkgver=r20.e7da256
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="NuTool-USB to Serial Port is a host-side software, it passes through and montiors I2C, SPI and CAN data of Nu-Link2-Pro® adapter"
 arch=('x86_64'
-    'aarch64'
-    'riscv64')
+  'aarch64'
+  'riscv64')
 url="https://gitee.com/OpenNuvoton/NuTool-USB-to-Serial-Port"
-license=('GPL-3.0-or-only')
+license=('GPL-3.0-only')
 groups=()
 depends=(
   gcc-libs
@@ -33,24 +33,25 @@ sha256sums=('SKIP')
 #validpgpkeys=()
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    ( set -o pipefail
-        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-    )
+  cd "${srcdir}/${_pkgname}"
+  (
+    set -o pipefail
+    git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}"
-    qmake
-    make
+  cd "${srcdir}/${_pkgname}"
+  qmake
+  make
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
-    install -Dm0755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
+  install -Dm0755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
 
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/metainfo/io.gitee.opennuvoton.nutool-usb-to-serial-port.metainfo.xml" << EOF
+  install -Dm0644 /dev/stdin "${pkgdir}/usr/share/metainfo/io.gitee.opennuvoton.nutool-usb-to-serial-port.metainfo.xml" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>io.gitee.opennuvoton.nutool-usb-to-serial-port</id>
@@ -71,7 +72,7 @@ package() {
 </component>
 EOF
 
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/io.gitee.opennuvoton.nutool-usb-to-serial-port.desktop" << EOF
+  install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/io.gitee.opennuvoton.nutool-usb-to-serial-port.desktop" <<EOF
 [Desktop Entry]
 Version=1.0
 Type=Application
@@ -84,6 +85,6 @@ Icon=${_pkgname}
 Exec=${_pkgname}
 Terminal=false
 EOF
-    install -dm0755 "${pkgdir}/usr/share/licenses/${pkgname%-git}/"
-    cp -ra "${srcdir}/${_pkgname}/Licenses" "${pkgdir}/usr/share/licenses/${pkgname%-git}/"
+  install -dm0755 "${pkgdir}/usr/share/licenses/${pkgname%-git}/"
+  cp -ra "${srcdir}/${_pkgname}/Licenses" "${pkgdir}/usr/share/licenses/${pkgname%-git}/"
 }

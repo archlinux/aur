@@ -1,12 +1,12 @@
 pkgbase = nutool-usbtoserialport-git
 	pkgdesc = NuTool-USB to Serial Port is a host-side software, it passes through and montiors I2C, SPI and CAN data of Nu-Link2-Pro® adapter
 	pkgver = r20.e7da256
-	pkgrel = 1
+	pkgrel = 4
 	url = https://gitee.com/OpenNuvoton/NuTool-USB-to-Serial-Port
 	arch = x86_64
 	arch = aarch64
 	arch = riscv64
-	license = GPL-3.0-or-only
+	license = GPL-3.0-only
 	makedepends = qt5-tools
 	makedepends = git
 	depends = gcc-libs
