@@ -1,0 +1,4 @@
+[inav-blackbox-explorer-bin]
+source = "git"
+git = "https://github.com/iNavFlight/blackbox-log-viewer.git"
+prefix = "v"
