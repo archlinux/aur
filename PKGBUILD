@@ -1,4 +1,5 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Bart Prokop <bart@prokop.dev>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=passphrase2pgp
 pkgver=1.2.1
