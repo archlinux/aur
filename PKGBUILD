@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 _pkg=qsv
 pkgname=qsv-bin
-pkgver=0.133.1
+pkgver=0.134.0
 pkgrel=1
 pkgdesc='CSVs sliced, diced & analyzed. Quicksilver (qsv) is a fork of the popular xsv utility'
 arch=(x86_64)
@@ -19,12 +19,11 @@ sha256sums=('08579b91a9557dcf2ec5085c2f4e01766c489e18f65128f854427796ad31acb4'
             '29526dd2daf4276b52a36b7965e835e11d910b0fd900877fd7fd755d676cc01c'
             '55aec6756a1617a666870bf73e6dea1194d3cc1d448c283e827a4b32030994b6'
             '76b742035cac63cbd353f41559808723993a19f459ac873556ddf19f0a97a03f')
-sha256sums_x86_64=('44711b9403c0b9786558a3a5b174d40547bb455f4bc459d1cb8f87f6be96f28a')
+sha256sums_x86_64=('4b153566d933d1e696c3c1bfae6b4e0f301cb98362aaafe6a1561793d121eed6')
 
 package() {
     install -Dm0755 "qsv" -t "$pkgdir/usr/bin/"
     install -Dm0755 "qsvdp" -t "$pkgdir/usr/bin/"
-    install -Dm0755 "qsvpy312" -t "$pkgdir/usr/bin/"
 	install -Dm644 "LICENSE-MIT" -t "$pkgdir/usr/share/licenses/${pkgname}/"
 	install -Dm644 "UNLICENSE" -t "$pkgdir/usr/share/licenses/${pkgname}/"
 	install -Dm644 "$pkgver.bash" "$pkgdir/usr/share/bash-completion/completions/$_pkg"
