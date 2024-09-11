@@ -1,7 +1,7 @@
 # Maintainer: João Vitor S. Anjos <jvanjos at protonmail dot com>
 
 pkgname=rexi
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Terminal UI for Regex Testing"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-typer' 'python-textual' 'python-colorama')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('25e6b24cfee83c6dd0dd897c940c4ca209f0f836f5fbf5da4a3f4ebae41af7c3da6ab7ad806da017e8a45c81f2159c0c793298c3b8a9a1fca1f093c71ac5a749')
+sha512sums=('a0221745dcb54925451b38614a2325c9ff35e53eb298a05f3d7b1cba521a587ceedd8914905530aa6e810e9f73de656fad9922b51361f676e3bfed8869cdb0ed')
 
 build() {
   cd ${pkgname}-${pkgver}
