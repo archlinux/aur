@@ -4,15 +4,16 @@
 
 pkgname=bd-git
 _pkgname=bd
-pkgver=v1.02.r7.ge379330
-pkgrel=2
+pkgver=v1.03.r2.g4277ad8
+pkgrel=1
 pkgdesc='Quickly go back to a parent directory instead of typing "cd ../../.." repeatedly'
 url='https://github.com/vigneshwaranr/bd'
 arch=('any')
 license=('MIT')
 makedepends=('git')
 depends=('bash')
-optdepends=('bash-completion')
+provides=('bd')
+conflicts=('bd')
 source=("${_pkgname}::git+${url}.git")
 md5sums=('SKIP')
 
