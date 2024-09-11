@@ -12,7 +12,7 @@ depends=( flac libnotify libxtst nss )
 makedepends=( jq moreutils npm )
 optdepends=( libappindicator-gtk3 )
 provides=( 'saturnmusic' )
-conflicts=( 'saturnmusic-bin')
+conflicts=( 'saturn-bin')
 options=(!debug)
 
 source=( "${_pkgname}::git+https://github.com/SaturnMusic/PC.git"
