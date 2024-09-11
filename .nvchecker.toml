@@ -1,0 +1,4 @@
+[autorestic]
+source = "git"
+git = "https://github.com/cupcakearmy/autorestic.git"
+prefix = "v"
