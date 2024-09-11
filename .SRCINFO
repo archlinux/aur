@@ -6,6 +6,7 @@ pkgbase = ruby-bcrypt
 	arch = x86_64
 	license = MIT
 	makedepends = ruby-rake-compiler
+	makedepends = ruby-rdoc
 	makedepends = ruby-rspec
 	depends = glibc
 	depends = ruby

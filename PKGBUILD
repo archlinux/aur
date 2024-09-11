@@ -12,7 +12,7 @@ url='https://github.com/bcrypt-ruby/bcrypt-ruby'
 license=('MIT')
 options=(!emptydirs)
 depends=('glibc' 'ruby')
-makedepends=('ruby-rake-compiler' 'ruby-rspec')
+makedepends=('ruby-rake-compiler' 'ruby-rdoc' 'ruby-rspec')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('a89e992a8684211fda22074269000475f7975dd41f05f9b1c2acd82e7a7e084134dc33c66053b315dc918f848330f2990545e7c806c17b69cdffbf2b382e0f4d')
 
