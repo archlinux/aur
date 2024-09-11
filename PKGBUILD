@@ -44,7 +44,7 @@ build() {
 	cmake \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
-        -DWITH_FREERDP_MASTER=ON \
+        -DWITH_FREERDP3=ON \
         -DWITH_CUPS=ON \
 	-DWITH_LIBSSH=ON \
         -DWITH_NEWS=ON \
