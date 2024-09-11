@@ -1,0 +1,13 @@
+pkgbase = gnubc-git
+	pkgdesc = Fork of GNU bc with small improvements
+	pkgver = r16.d6397df
+	pkgrel = 1
+	url = https://github.com/nlitsme/gnubc
+	arch = x86_64
+	license = MIT
+	makedepends = ed
+	conflicts = bc
+	source = git+https://github.com/nlitsme/gnubc
+	sha512sums = SKIP
+
+pkgname = gnubc-git
