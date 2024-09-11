@@ -1,19 +1,19 @@
 pkgbase = souko-bin
 	pkgdesc = Provides an easy way to organize clones of remote git repositories
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/gifnksm/souko
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	license = Apache
+	license = Apache-2.0
 	depends = gcc-libs
 	depends = zlib
 	provides = souko
 	conflicts = souko
-	source_x86_64 = https://github.com/gifnksm/souko/releases/download/v0.2.0/souko-v0.2.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = ce67e2fef7dc94cc9bfc3c7e6add947268ba115683b684f07d38e016457641ff
-	source_aarch64 = https://github.com/gifnksm/souko/releases/download/v0.2.0/souko-v0.2.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 3bf45522ada5139c907ff69c23ddfd0a24affe61346bc2d116bc0895b5a9ac3c
+	source_x86_64 = https://github.com/gifnksm/souko/releases/download/v0.2.1/souko-v0.2.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 471f021640e580c23b71f742a0306d8acd101590abd5a755335efee032ed2260
+	source_aarch64 = https://github.com/gifnksm/souko/releases/download/v0.2.1/souko-v0.2.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 0bb6280928f9f9f8bfc4eb691ed7162d9195fff29f981d9728faf9cf81a20f7a
 
 pkgname = souko-bin
