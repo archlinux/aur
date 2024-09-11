@@ -1,6 +1,6 @@
 pkgbase = zswap-cli-nosystemd-git
 	pkgdesc = Command-line tool to control ZSwap Linux kernel module. Build without systemd dependency/ support. Latest git checkout.
-	pkgver = 0.9.1+102.r362.20240829.fc4e2ec
+	pkgver = 0.9.1+106.r366.20240911.38b4d10
 	pkgrel = 1
 	url = https://github.com/xvitaly/zswap-cli
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = zswap-cli-nosystemd-git
 	depends = glibc
 	depends = sdbus-cpp
 	optdepends = semver: Semantic versioning for C++
-	provides = zswap-cli-nosystemd=0.9.1+102.r362.20240829.fc4e2ec
-	provides = zswap-cli-git=0.9.1+102.r362.20240829.fc4e2ec
-	provides = zswap-cli=0.9.1+102.r362.20240829.fc4e2ec
+	provides = zswap-cli-nosystemd=0.9.1+106.r366.20240911.38b4d10
+	provides = zswap-cli-git=0.9.1+106.r366.20240911.38b4d10
+	provides = zswap-cli=0.9.1+106.r366.20240911.38b4d10
 	conflicts = zswap-cli
 	backup = etc/zswap-cli/zswap-cli.conf
 	source = zswap-cli::git+https://github.com/xvitaly/zswap-cli.git
