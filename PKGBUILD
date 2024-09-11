@@ -1,18 +1,18 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=godot
 pkgname=godot3-mono-bin
-pkgver=3.5.3
-pkgrel=4
+pkgver=3.6
+pkgrel=1
 pkgdesc="Advanced cross-platform 2D and 3D game engine (3.X Branch Mono)"
 arch=("x86_64")
 url='https://godotengine.org'
 license=('MIT')
 depends=(libglvnd libxcursor libxi libxinerama libxrandr hicolor-icon-theme glibc libxrender libx11 bash libxext mono mono-msbuild)
-optdepends=(pipewire-alsa pipewire-pulse)
+optdepends=(pipewire-alsa pulse-native-provider)
 source=("https://github.com/godotengine/godot/releases/download/${pkgver}-stable/Godot_v${pkgver}-stable_mono_x11_64.zip"
 	"https://github.com/godotengine/godot/archive/refs/tags/${pkgver}-stable.tar.gz")
-sha256sums=('7ef4cf25895efec516137b0f9f2d218d589e64f0208b611202b00c0aada7b04d'
-            '643366a288fc529564d8bb42a42093d72071c8186f57ff03cae6d5929f81bd1d')
+sha256sums=('0e38b4bb3bb921551b8bc9b87fae266861372bf94013aeaba813f2af261068b9'
+            '771ae03e20f74907a11c12c8d0de046952d12593aafde99ffb2feb55c4866cd5')
 
 package() {
 	cd "${srcdir}"
