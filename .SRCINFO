@@ -1,6 +1,6 @@
 pkgbase = power-options-daemon
 	pkgdesc = The core daemon for Power Options, a blazingly fast power management solution.
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/thealexdev23/power-options
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = power-options-daemon
 	optdepends = net-tools: needed to disable ethernet cards
 	provides = power-options-daemon
 	conflicts = power-options-daemon-git
-	source = power-options-daemon-0.1.1.tar.gz::https://github.com/thealexdev23/power-options/archive/v0.1.1.tar.gz
-	sha256sums = 69814c9baf321471f88eebabe4e7eea04cf93473668e26c52be738704f96240d
+	source = power-options-daemon-0.1.2.tar.gz::https://github.com/thealexdev23/power-options/archive/v0.1.2.tar.gz
+	sha256sums = 66eeeb9bc9b46288418ac403d775bdba273c4c9b8ba96d857ddd4871b0b9611f
 
 pkgname = power-options-daemon
