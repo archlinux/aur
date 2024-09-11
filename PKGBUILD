@@ -14,7 +14,7 @@ set -u
 pkgname='turboprint'
 _pkgver='2.57-1'
 pkgver="${_pkgver//-/.}"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='High-quality printer driver system for Linux'
 arch=('i686' 'x86_64')
 url='http://www.turboprint.info/'
