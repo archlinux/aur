@@ -8,8 +8,8 @@
 
 _pkgname=godot
 pkgname=godot3
-pkgver=3.5.3
-pkgrel=7
+pkgver=3.6
+pkgrel=1
 pkgdesc='Advanced cross-platform 2D and 3D game engine (3.x Branch)'
 url='https://godotengine.org'
 license=(MIT)
@@ -21,7 +21,7 @@ depends=(embree3 freetype2 libglvnd libtheora libvorbis libvpx libwebp libwslay
 optdepends=(pipewire-alsa pipewire-pulse)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/godotengine/godot/archive/$pkgver-stable.tar.gz"
         "godot3.patch")
-b2sums=('07ee037803e103f863e56a00c6106d00834870881ec75ecc43f947ea3d6e04a560763aa183661fa6437c4c8307f9231b250f2d51462057add1720d71d2ada827'
+b2sums=('d70e80218b37be9673f913a24e367c892ab0462ddc42134a8c1707cb038327fc4c5ae1a5ca8c83dc77c0bb5b226d68426a7625074f677e6c178433f762c4a451'
         '5ed41b79e0121e66614cce997d8c05b3efafefb45d93a426fe4f63bc9917a8dad8519d3f11021a62d6b3a8f7210f2cc86d03361a51dcf79007b0eb71289c1370')
 
 prepare() {
