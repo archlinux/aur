@@ -28,18 +28,20 @@ import os.path        as op
 import subprocess     as sp
 import textwrap       as tw
 import                   argparse
+import                   collections
 import                   contextlib
 import                   datetime
 import                   fnmatch
 import                   getpass
-import                   glob
 import                   hashlib
 import                   json
+import                   locale
 import                   logging
 import                   os
 import                   platform
 import                   pwd
 import                   readline
+import                   re
 import                   shlex
 import                   shutil
 import                   ssl
@@ -63,6 +65,12 @@ except ImportError: import                 urlparse
 try:                import queue
 except ImportError: import Queue as queue
 
+try:                from html.parser import HTMLParser
+except ImportError: from HTMLParser  import HTMLParser
+
+try:                from http.cookiejar import CookieJar
+except ImportError: from cookielib      import CookieJar
+
 
 PYVER = sys.version_info[:2]
 
@@ -74,7 +82,7 @@ log = logging.getLogger(__name__)
 __absfile__ = op.abspath(__file__).rstrip('c')
 
 
-__version__ = '3.11.0'
+__version__ = '3.15.1'
 """Installer script version number. This must be updated
 whenever a new version of the installer script is released.
 """
@@ -134,6 +142,7 @@ ANSICODES = {
     RESET     : '\033[0m',          # Used internally
 }
 
+
 def get_terminal_width(fallback=None):
     """Return the number of columns in the current terminal, or fallback
     if it cannot be determined.
@@ -156,6 +165,14 @@ def get_terminal_width(fallback=None):
         return int(result.strip())
     except Exception:
         return fallback
+
+
+def str2bool(value):
+    """Convert a string containing a boolean into a boolean. Assumes that
+    the value is encoded as "true" or "false" (case insensitive).
+    """
+    if isinstance(value, str): return value.lower() == 'true'
+    else:                      return bool(value)
 
 
 def printmsg(*args, **kwargs):
@@ -203,7 +220,14 @@ def printmsg(*args, **kwargs):
         print(coded, **kwargs)
 
         if logmsg:
-            log.debug(uncoded)
+
+            # print line number of caller rather than
+            # this line number with the stacklevel
+            # argument if we are running python >= 3.8
+            if PYVER >= (3, 8): kwargs = {'stacklevel' : 2}
+            else:               kwargs = {}
+
+            log.debug(uncoded, **kwargs)
 
     sys.stdout.flush()
 
@@ -222,22 +246,111 @@ def prompt(promptmsg, *msgtypes, **kwargs):
     return response
 
 
-def post_request(url, data):
-    """Send JSON data to a URL via a HTTP POST request. """
+def send_registration_info(url, data):
+    """Called by register_installation. Sends information about the
+    installation to the FSL registration server. The data is assumed
+    to be a dictionary of key-value pairs to be sent.
+    """
 
-    data                    = json.dumps(data).encode('utf-8')
+    class CSRFTokenParser(HTMLParser):
+        """HTML parser which extracts a CSRF token.
+
+        https://docs.djangoproject.com/en/5.0/ref/csrf/
+        """
+        def __init__(self):
+            if sys.version_info[0] < 3:
+                HTMLParser.__init__(self)
+            else:
+                super(CSRFTokenParser, self).__init__()
+            self.csrf_token = None
+
+        def handle_starttag(self, tag, attrs):
+            if tag == 'input':
+                attr_dict = dict(attrs)
+                if attr_dict.get('name') == 'csrfmiddlewaretoken':
+                    self.csrf_token = attr_dict.get('value')
+
+    data                    = dict(data)
     headers                 = {}
-    headers['Content-Type'] = 'application/json'
+    headers['Content-Type'] = 'application/x-www-form-urlencoded'
+    headers['Referer']      = url
     resp                    = None
 
     try:
+        # Use cookie jar to store CSRF token
+        cj = CookieJar()
+
+        # Download the HTML form (which will
+        # contain the CSRF token)
+        opener = urlrequest.build_opener(urlrequest.HTTPCookieProcessor(cj))
+        resp   = opener.open(url)
+
+        if PYVER[0] == 2: form = resp.read()
+        else:             form = resp.read().decode('utf-8')
+
+        # extract CSRF token
+        parser = CSRFTokenParser()
+        parser.feed(form)
+        csrf_token = parser.csrf_token
+
+        # Send installation data to
+        # server via POST request
+        data['csrfmiddlewaretoken'] = csrf_token
+        data['emailaddress']        = ''
+
+        if PYVER[0] == 2: data_enc = urllib.urlencode(data)
+        else:             data_enc = urlparse.urlencode(data).encode('utf-8')
+
         req  = urlrequest.Request(url,
                                   headers=headers,
-                                  data=data)
-        resp = urlrequest.urlopen(req)
+                                  data=data_enc)
+        resp = opener.open(req)
+
+        if PYVER[0] == 2: msg = resp.read()
+        else:             msg = resp.read().decode('utf-8')
+
+        log.debug(msg)
+
+        if 'Registered' in msg:
+            log.debug("Registration with %s successful", url)
+        else:
+            log.debug("Registration with %s failed", url)
+
     finally:
         if resp:
             resp.close()
+
+
+def funccache(func):
+    """Memoisation decorator for a function. Alternative to
+    ``functools.lru_cache``, which is not available in Python 2.x.
+    """
+
+    cache = {}
+
+    def decorator(*args, **kwargs):
+
+        key = list()
+        key.extend(args)
+        key.extend([kwargs[k] for k in sorted(kwargs.keys())])
+
+        if len(key) > 0: key = tuple(key)
+        else:            key = ('default',)
+
+        value = cache.get(key, None)
+
+        if value is None:
+            value      = func(*args, **kwargs)
+            cache[key] = value
+
+        return value
+
+    def reset():
+        cache.clear()
+
+    decorator.reset = reset
+
+    return decorator
 
 
 def identify_platform():
@@ -271,16 +384,67 @@ def identify_platform():
     return platforms[key]
 
 
-def timestamp():
-    """Return a string containing the local time, with time zone offset.
+def getlocale():
+    """Returns an ID describing the user locale. This is sent to the FSL
+    regstration server to give information about the host language.
     """
-    now     = datetime.datetime.now()
-    offset  = (now - datetime.datetime.utcnow())
-    offset  = round(offset.total_seconds())
-    hours   = int(offset / 3600)
-    minutes = int((offset % 3600) / 60)
-    now     = now.strftime('%Y-%m-%dT%H:%M:%S')
-    return '{}{:+03d}:{:02d}'.format(now, hours, minutes)
+    try:
+        # returns a tuple like ('en_US', 'UTF-8')
+        locale_tup = locale.getlocale()
+        if locale_tup[0] is None:
+            locale_str = locale.setlocale(locale.LC_ALL, '')
+            locale_str = locale_str.replace('C.UTF-8', 'en_US.UTF-8')
+        else:
+            locale_str = '.'.join(locale_tup)
+    except TypeError:
+        locale_str = 'en_US.UTF-8'
+    return locale_str
+
+
+@funccache
+def identify_cuda(device=None):
+    """Tries to call nvidia-smi to interrogate the supported CUDA runtime
+    version for the specified device (default: 0).
+
+    If nvidia-smi cannot be called, returns None.
+
+    Otherwise returns the latest CUDA version supported by the driver, as a
+    tuple of (major, minor) ints.
+    """
+
+    if device is None:
+        device = 0
+
+    # We can use the nvidia-smi --query-gpu option to
+    # selectively query device name, compute capability,
+    # driver version, etc, e.g.:
+    #
+    #     nvidia-smi -i <device>                        \
+    #       --query-gpu=name,compute_cap,driver_version \
+    #       --format=noheader
+    #
+    # But this option doesn't allow us to query the
+    # supported CUDA version. So here we just scrape the
+    # human-readable output to get that information.
+    cudaver = None
+
+    try:
+        output = Process.check_output('nvidia-smi -i {}'.format(device))
+        output = output.split('\n')
+        pat    = r'CUDA Version: (\S+)'
+        for line in output:
+            match = re.search(pat, line)
+            if match:
+                cudaver      = match.group(1)
+                major, minor = cudaver.split('.')
+                cudaver      = (int(major),  int(minor))
+                break
+
+    except Exception as e:
+        log.debug('Unable to interrogate CUDA version: %s', e, exc_info=True)
+        return None
+
+    return cudaver
 
 
 def check_need_admin(dirname):
@@ -538,7 +702,7 @@ def clean_environ():
     return env
 
 
-def install_environ(fsldir, username=None, password=None):
+def install_environ(fsldir, username=None, password=None, cuda_version=None):
     """Returns a dict containing some environment variables that should
     be added to the shell environment when the FSL conda environment is
     being installed.
@@ -569,6 +733,31 @@ def install_environ(fsldir, username=None, password=None):
     # so we need to set those variables
     if username: env['FSLCONDA_USERNAME'] = username
     if password: env['FSLCONDA_PASSWORD'] = password
+
+    # Some versions of miniconda seem to have trouble on
+    # some versions of macOS, where macOS reports its
+    # version as being 10.16 (which for some reason is
+    # equivalent to macOS 11.0), which causes errors with
+    # "__osx >= 11.0" constraints.
+    #
+    # https://eclecticlight.co/2020/08/13/macos-version-numbering-isnt-so-simple/
+    # https://github.com/conda/conda/issues/13832
+    if platform.system().lower() == 'darwin':
+        env['SYSTEM_VERSION_COMPAT'] = '0'
+
+    # Trick conda into thinking that CUDA is
+    # available on this platform if it is, or if
+    # the user has specifically requested that
+    # CUDA packages be installed
+    #
+    # Otherwise clear the var in case we have a
+    # local GPU that the user wishes to ignore (if
+    # they passed --cuda=none)
+    #
+    # https://conda.io/projects/conda/en/\
+    # latest/user-guide/tasks/manage-virtual.html
+    if cuda_version is not None: env['CONDA_OVERRIDE_CUDA'] = cuda_version
+    else:                        env['CONDA_OVERRIDE_CUDA'] = ''
 
     return env
 
@@ -722,7 +911,9 @@ def download_dev_releases(url, workdir=None, **kwargs):
     def parse_devrelease_name(url):
         name = urlparse.urlparse(url).path
         name = op.basename(name)
-        name = name.lstrip('manifest-').rstrip('.json')
+
+        # strip "manifest-" and ".json"
+        name = name[9:-5]
 
         # The devrelease list may contain public
         # releases too - sniff the commit, and if
@@ -783,7 +974,8 @@ class Progress(object):
                  total=None,
                  width=None,
                  proglabel='progress',
-                 progfile=None):
+                 progfile=None,
+                 prefix=None):
         """Create a Progress reporter.
 
         :arg label:     Units (e.g. "MB", "%",)
@@ -798,7 +990,8 @@ class Progress(object):
 
         :arg width:     Maximum width, if a progress bar is displayed. Default
                         is to automatically infer the terminal width (see
-                        get_terminal_width).
+                        get_terminal_width). Not applied to count/spin
+                        displays.
 
         :arg proglabel: Label to use when writing progress updates to progfile.
 
@@ -806,10 +999,15 @@ class Progress(object):
                         written on a new line, and has the form:
 
                         <proglabel> <value>[ <total>]
+
+        :arg prefix:    Text to display before the progress bar
         """
 
         if transform is None:
             transform = Progress.default_transform
+
+        if prefix is None: prefix = ''
+        else:              prefix = '{} '.format(prefix)
 
         self.width     = width
         self.fmt       = fmt.format
@@ -818,6 +1016,7 @@ class Progress(object):
         self.transform = transform
         self.proglabel = proglabel
         self.progfile  = progfile
+        self.prefix    = prefix
 
         # used by the spin function
         self.__last_spin = None
@@ -871,7 +1070,7 @@ class Progress(object):
 
         self.write_progress(value, total)
 
-    def spin(self):
+    def spin(self, show_prefix=True):
 
         symbols = ['|', '/', '-',  '\\']
 
@@ -882,7 +1081,10 @@ class Progress(object):
         idx  = (idx + 1) % len(symbols)
         this = symbols[idx]
 
-        printmsg(this, end='\r', log=False, fill=False)
+        if show_prefix: msg = '{}{}'.format(self.prefix, this)
+        else:           msg = this
+
+        printmsg(msg, end='\r', log=False, fill=False)
         self.__last_spin = this
 
     def count(self, value):
@@ -892,7 +1094,9 @@ class Progress(object):
         if self.label is None: line = '{} ...'.format(value)
         else:                  line = '{}{} ...'.format(value, self.label)
 
-        printmsg(line, end='\r', log=False, fill=False)
+        msg = '{}{}'.format(self.prefix, line)
+
+        printmsg(msg, end='\r', log=False, fill=False)
 
     def progress(self, value, total):
 
@@ -905,21 +1109,23 @@ class Progress(object):
 
         fvalue = self.fmt(value)
         ftotal = self.fmt(total)
+        prefix = self.prefix
         suffix = '{} / {} {}'.format(fvalue, ftotal, self.label).rstrip()
 
-        # +5: - square brackets around bar
+        # +6: - square brackets around bar
         #     - space between bar and tally
-        #     - space+spin at the end
-        width     = width - (len(suffix) + 5)
+        #     - space+spin+space at the end
+        width     = width - (len(prefix) + len(suffix) + 6)
         completed = int(round(width * (value  / total)))
         remaining = width - completed
-        progress  = '[{}{}] {}'.format('#' * completed,
-                                       ' ' * remaining,
-                                       suffix)
+        progress  = '{}[{}{}] {}'.format(prefix,
+                                         '#' * completed,
+                                         ' ' * remaining,
+                                         suffix)
 
-        printmsg(progress, end='', log=False, fill=False)
+        printmsg(progress, end='', fill=False)
         printmsg(' ', end='', log=False, fill=False)
-        self.spin()
+        self.spin(False)
         printmsg(end='\r', log=False, fill=False)
 
 
@@ -1084,12 +1290,15 @@ class Process(object):
         :arg progfile:  File to write progress updates to.
 
         :arg proglabel: Label to use when writing progress updates to progfile.
+
+        :arg prefix:    Label to show before progress bar
         """
 
         timeout   = kwargs.pop('timeout',   0.5)
         progfunc  = kwargs.pop('progfunc',  None)
         proglabel = kwargs.pop('proglabel', None)
         progfile  = kwargs.pop('progfile',  None)
+        prefix    = kwargs.pop('prefix',    None)
 
         if total is None: label = None
         else:             label = '%'
@@ -1111,7 +1320,8 @@ class Process(object):
                       fmt='{:.0f}',
                       transform=Progress.percent,
                       proglabel=proglabel,
-                      progfile=progfile) as prog:
+                      progfile=progfile,
+                      prefix=prefix) as prog:
 
             progcount = 0 if total else None
 
@@ -1327,13 +1537,18 @@ class Context(object):
         # here - refer to overwrite_destdir.
         self.old_destdir = None
 
-        # The download_fsl_environment function stores
-        # the path to the FSL conda environment file
-        # list of conda channels, and python version
-        # to be installed
-        self.environment_file     = None
-        self.environment_channels = None
-        self.python_version       = None
+        # The download_fsl_environment_files function
+        # stores the path to the FSL conda environment
+        # files, list of conda channels, python
+        # version to be installed, and cuda version if
+        # applicable. The cuda version is used during
+        # installation to ensure that the correct CUDA
+        # packages are installed.
+        self.environment_file        = None
+        self.extra_environment_files = None
+        self.environment_channels    = None
+        self.python_version          = None
+        self.cuda_version            = None
 
         # The config_logging function stores the path
         # to the fslinstaller log file here.
@@ -1350,6 +1565,7 @@ class Context(object):
         self.destdir
         self.need_admin
         self.admin_password
+        self.extras_dir
 
 
     @property
@@ -1399,7 +1615,8 @@ class Context(object):
     def miniconda_metadata(self):
         """Returns a dict with information about the miniconda installer
         to use as the base of the FSL installation. This must not be called
-        until after the download_fsl_environment function has been called.
+        until after the download_fsl_environment_files function has been
+        called.
 
         The returned dict has `'url'`, `'sha256'` and `'output'` keys.
         """
@@ -1464,12 +1681,14 @@ class Context(object):
         installer manifest) for the target platform.
 
         The returned dictionary has the following elements:
-          - 'version'      FSL version.
-          - 'platform':    Platform identifier (e.g. 'linux-64')
-          - 'environment': Environment file to download
-          - 'sha256':      Checksum of environment file
-          - 'output':      Number of lines of expected output, for reporting
-                           progress
+          - 'version'       FSL version.
+          - 'platform':     Platform identifier (e.g. 'linux-64')
+          - 'environment':  Environment file to download
+          - 'sha256':       Checksum of environment file
+          - 'cuda_enabled': Boolean flag indicating whether any packages in
+                            this build is CUDA-capable.
+          - 'output':       Number of lines of expected output, for reporting
+                            progress
         """
 
         if self.__build is not None:
@@ -1493,6 +1712,13 @@ class Context(object):
                 'platform {}'.format(self.platform))
 
         printmsg('FSL {} selected for installation'.format(build['version']))
+
+        # Make sure the cuda_enabled flag is present
+        # for all environments specified in the build
+        # entry
+        build['cuda_enabled'] = str2bool(build.get('cuda_enabled', False))
+        for extra in build.get('extras', {}).values():
+            extra['cuda_enabled'] = str2bool(extra.get('cuda_enabled', False))
 
         self.__build = build
         return build
@@ -1584,6 +1810,21 @@ class Context(object):
             return self.args.miniconda
         else:
             return self.destdir
+
+
+    @property
+    def extras_dir(self):
+        """Return the path to a directory into which child environments for
+        additional FSL modules should be installed into. For a normal FSL
+        installation, this is set to $FSLDIR/envs/.
+        """
+        if self.basedir == self.destdir:
+            return op.join(self.destdir, 'envs')
+
+        if self.args.extras_dir is None:
+            raise RuntimeError('--extras_dir must be specified when '
+                               'installing FSL as a child environment!')
+        return self.args.extras_dir
 
 
     @property
@@ -1696,7 +1937,9 @@ class Context(object):
         env.update(clean_environ())
         append_env.update(install_environ(self.destdir,
                                           self.args.username,
-                                          self.args.password))
+                                          self.args.password,
+                                          self.cuda_version))
+
         return process_func(admin=self.need_admin,
                             password=self.admin_password,
                             env=env,
@@ -1757,13 +2000,18 @@ def check_rosetta_status(ctx):
 def list_available_versions(manifest):
     """Lists available FSL versions. """
     printmsg('Available FSL versions:', EMPHASIS)
-    for version in manifest['versions']:
-        if version == 'latest':
+    versions = list(manifest['versions'].keys())
+    versions = reversed(sorted([Version(v) for v in versions]))
+    for version in versions:
+        if str(version) == 'latest':
             continue
-        printmsg(version, IMPORTANT, EMPHASIS)
-        for build in manifest['versions'][version]:
+        printmsg(str(version), IMPORTANT, EMPHASIS)
+        for build in manifest['versions'][str(version)]:
             printmsg('  {}'.format(build['platform']), EMPHASIS, end=' ')
             printmsg(build['environment'], INFO)
+            if len(build.get('extras', [])) > 0:
+                extras = ', '.join(build['extras'])
+                printmsg('  Extras: {}'.format(extras), INFO)
 
 
 def prompt_dev_release(devreleases, latest):
@@ -1806,122 +2054,316 @@ def prompt_dev_release(devreleases, latest):
     return devreleases[selection][0]
 
 
-def download_fsl_environment(ctx):
-    """Downloads the environment specification file for the selected FSL
-    version.
+def add_cuda_packages(ctx):
+    """Used by download_fsl_environment_files. If the target system has a GPU,
+    or the user has explicitly requested a CUDA version, returns a set of
+    package constraints to be added to the conda environment specifications.
 
-    Internal/development FSL versions may source packages from the internal
-    FSL conda channel, which requires a username+password to authenticate.
+    The way that CUDA libraries are packaged on conda-forge has changed
+    a few times. The current state of affairs is described in a github issue:
 
-    These are referred to in the environment file as ${FSLCONDA_USERNAME}
-    and ${FSLCONDA_PASSWORD}.
+    https://github.com/conda-forge/conda-forge.github.io/issues/1963
 
-    If the user has not provided a username+password on the command-line, they
-    are prompted for them.
+    This function just adds "cuda-version" to the list of packages to be
+    installed, which should cause conda to install packages compatible with
+    that version.
 
-    The downloaded environment file may be modified - if the (hidden)
-    --exclude_package option has been used.
+    Returns a tuple containing:
+
+     - a dict of packages, of the form "{package : version};", to be
+       installed. Prints warnings if it appears that the requested CUDA version
+       might not be compatible with the system, or might not be available on
+       conda-forge.
+     - A string containing the X.Y CUDA version, or None if CUDA libraries are
+       not to be installed.
     """
 
-    build        = ctx.build
-    url          = build['environment']
-    checksum     = build.get('sha256', None)
+    # User has requested no CUDA
+    if ctx.args.cuda == 'none':
+        return {}, None
 
-    printmsg('Downloading FSL environment specification '
-             'from {}...'.format(url))
-    fname = url.split('/')[-1]
-    download_file(url, fname, ssl_verify=(not ctx.args.skip_ssl_verify))
-    ctx.environment_file = op.abspath(fname)
-    if (checksum is not None) and (not ctx.args.no_checksum):
-        sha256(fname, checksum)
+    # If user has requested a specific CUDA/
+    # compute capability, ignore the version
+    # supported by the local GPU (if present)
+    if ctx.args.cuda is not None:
+        cuda = ctx.args.cuda
 
-    # Environment files for internal/dev FSL versions
-    # will list the internal FSL conda channel with
-    # ${FSLCONDA_USERNAME} and ${FSLCONDA_PASSWORD}
-    # as placeholders for the username/password.
-    with open(fname, 'rt') as f:
-        need_auth = '${FSLCONDA_USERNAME}' in f.read()
+    # Otherwise interrogate the local GPU to
+    # select a suitable CUDA version. The
+    # returned value will be None if there
+    # is no GPU available on this system.
+    else:
+        cuda = identify_cuda()
 
-    # We need a username/password to access the internal
-    # FSL conda channel. Prompt the user if they haven't
-    # provided credentials.
-    if need_auth and (ctx.args.username is None):
-        printmsg('A username and password are required to install '
-                 'this version of FSL.', WARNING, EMPHASIS)
-        ctx.args.username = prompt('Username:').strip()
-        ctx.args.password = getpass.getpass('Password: ').strip()
+    # There is no GPU on this system, and the
+    # user has not requested a particular CUDA
+    # version, so we don't add any CUDA pins
+    if cuda is None:
+        return {}, None
 
-    # Conda expands environment variables within a
-    # .condarc file, but *not* within an environment.yml
-    # file. So to authenticate to our internal channel
-    # without storing credentials anywhere in plain text,
-    # we *move* the channel list from the environment.yml
-    # file into $FSLDIR/.condarc.
-    #
-    # Here we extract the channels from the environment
-    # file, and save them to ctx.environment_channels.
-    # The install_miniconda function will then add the
-    # channels to $FSLDIR/.condarc.
-    #
-    # We also identify the version of Python to be
-    # installed, remove any packages that the user has
-    # requested to exclude from the installation.
-    copy     = '.' + op.basename(ctx.environment_file)
+    # We have a GPU, and/or the user
+    # has requested CUDA packages.
+    printmsg('\nBy downloading and using the CUDA Toolkit conda packages, you '
+             'accept the terms and conditions of the CUDA End User License '
+             'Agreement (EULA): https://docs.nvidia.com/cuda/eula/index.html'
+             '\n', IMPORTANT)
+
+    # CUDA >= 11 should have binary compatibility
+    # within major release, so we set the version
+    # constraint accordingly. Conda-forge has
+    # limited support for CUDA versions older
+    # than 11.2, so we are not doing anything
+    # special to handle older versions.
+    major, minor = cuda
+    packages     = {
+        'cuda-version' : '>={}.{},<{}'.format(major, minor, major + 1)
+    }
+
+    return packages, '{}.{}'.format(*cuda)
+
+
+def read_environment_file(filename):
+    """Very primitive routine which loads a conda environment.yml file.
+    Returns:
+     - An environment name
+     - A list of conda channels
+     - A dict of { package : version } packages (where version may be None)
+    """
+
+    name     = None
     channels = []
-    pyver    = None
+    packages = collections.OrderedDict()
 
-    shutil.move(ctx.environment_file, copy)
-    with open(copy,                 'rt') as inf, \
-         open(ctx.environment_file, 'wt') as outf:
+    # load the channel and package lists
+    # from the environment file.
+    with open(filename, 'rt') as f:
 
         in_channels_section = False
+        in_deps_section     = False
 
-        for line in inf:
+        for line in f:
+            line = line.strip()
+
+            # environment name
+            if line.startswith('name:'):
+                name = line.split(':')[1].strip()
+                continue
+
+            line = line.strip()
+
+            if line == '':           continue
+            if line.startswith('#'): continue
 
             # start of channels list
-            if line.strip() == 'channels:':
+            if line == 'channels:':
                 in_channels_section = True
                 continue
 
             if in_channels_section:
                 # end of channels list
-                if not line.strip().startswith('-'):
+                if not line.startswith('-'):
                     in_channels_section = False
                 else:
-                    channels.append(line.split()[-1])
+                    channels.append(line[1:].strip())
                     continue
 
-            # Include/exclude packages upon user request
-            exclude = False
-            pkgname = line.strip(' -').split()[0]
+            # start of deps list
+            if line == 'dependencies:':
+                in_deps_section = True
+                continue
 
-            # Also pull out the python version so we
-            # know which miniconda installer to use
-            if pkgname == 'python' and pyver is None:
-                pyver = line.strip(' -').split()[1]
-                pyver = '.'.join(pyver.split('.')[:2])
-            else:
-                exclude = match_any(pkgname, ctx.args.exclude_package)
+            if in_deps_section:
+                # end of deps list
+                if not line.startswith('-'):
+                    in_deps_section = False
 
+                else:
+                    # Split line into (package, version+build).
+                    # Setting maxsplit=1 ensures the result will
+                    # be either length 1 or 2 (unless the line
+                    # was just a single "-", in which case it is
+                    # an invalid file).
+                    #
+                    # Note that we assume here that packages are
+                    # specified as "package version", rather than
+                    # "package=version".
+                    pkg = line.strip('- ').split(' ', 1)
+
+                    if len(pkg) == 1: pkg, ver = pkg[0], None
+                    else:             pkg, ver = pkg
+
+                    packages[pkg] = ver
+                    continue
+
+    return name, channels, packages
+
+
+def write_environment_file(filename, name, channels, packages):
+    """Writes a conda environment.yml file with the given channels and
+    and packages.
+    """
+
+    with open(filename, 'wt') as f:
+
+        if name is not None:
+            f.write('name: {}\n'.format(name))
+
+        if len(channels) > 0:
+            f.write('channels:\n')
+            for channel in channels:
+                f.write(' - {}\n'.format(channel))
+
+        f.write('dependencies:\n')
+        for package, version in packages.items():
+
+            if version is None: version = ''
+            else:               version = ' {}'.format(version)
+
+            f.write(' - {}{}\n'.format(package, version))
+
+
+def download_fsl_environment_files(ctx):
+    """Downloads the environment specification files for the selected FSL
+    version.
+
+    A copy of each environment file is made. Any packages specified by
+    --exclude_package will be removed from the environment specifications.
+
+    Internal/development FSL versions may source packages from the internal
+    FSL conda channel, which requires a username+password to authenticate.
+    These are referred to in the environment file as ${FSLCONDA_USERNAME} and
+    ${FSLCONDA_PASSWORD}.  If the user has not provided a username+password on
+    the command-line, they are prompted for them.
+
+    The downloaded files may be modified, e.g. if the user has used
+    --exclude_package, and/or if CUDA software is to be installed.
+    """
+
+    # If installing CUDA libraries, we add
+    # appropriate versions of CUDA packges to
+    # the package list for each conda
+    # environment to be installed.
+    cuda_pkgs, cuda_ver = add_cuda_packages(ctx)
+    ctx.cuda_version    = cuda_ver
+
+    # A FSL release may comprise multiple
+    # separate environment files - a "main"
+    # environment, and a set of additional/
+    # extra environments - these extra envs
+    # are installed as child environemnts.
+    # We gather all fo the environment file
+    # URLs and loop through and download+
+    # process them one-by-one.
+    #
+    # We identify the main env with an empty
+    # string - extra/child environments are
+    # all named in the manifest.
+    allenvs  = [('', ctx.build)]
+    allenvs += list(ctx.build.get('extras', {}).items())
+
+    ctx.extra_environment_files = {}
+
+    for envname, build in allenvs:
+
+        url      = build['environment']
+        checksum = build.get('sha256', None)
+
+        printmsg('Downloading FSL environment specification '
+                 'from {}...'.format(url))
+
+        fname = url.split('/')[-1]
+
+        download_file(url, fname, ssl_verify=(not ctx.args.skip_ssl_verify))
+
+        if (checksum is not None) and (not ctx.args.no_checksum):
+            sha256(fname, checksum)
+
+        # Environment files for internal/dev FSL versions
+        # will list the internal FSL conda channel with
+        # ${FSLCONDA_USERNAME} and ${FSLCONDA_PASSWORD}
+        # as placeholders for the username/password.
+        with open(fname, 'rt') as f:
+            need_auth = '${FSLCONDA_USERNAME}' in f.read()
+
+        # We need a username/password to access the internal
+        # FSL conda channel. Prompt the user if they haven't
+        # provided credentials.
+        if need_auth and (ctx.args.username is None):
+            printmsg('A username and password are required to install '
+                     'this version of FSL.', WARNING, EMPHASIS)
+            ctx.args.username = prompt('Username:').strip()
+            ctx.args.password = getpass.getpass('Password: ').strip()
+
+        # We are now going to load, modify, and re-write, the
+        # FSL environment file.
+        #
+        # Conda expands environment variables within a
+        # .condarc file, but *not* within an environment.yml
+        # file. So to authenticate to our internal channel
+        # without storing credentials anywhere in plain text,
+        # we *move* the channel list from the environment.yml
+        # file into $FSLDIR/.condarc.
+        name, channels, packages = read_environment_file(fname)
+
+        # Save some key information about the base environment
+        if envname == '':
+            ctx.environment_file = fname
+
+            # Save the python version to ctx.python_version.
+            # The Context.miniconda_metadata function will
+            # use it to select a suitable miniconda installer.
+            if 'python' not in packages:
+                raise Exception('Could not identify Python version in '
+                                'FSL environment file ({})'.format(url))
+
+            # Just save the X.Y version
+            pyver              = packages['python'].split('.')
+            pyver              = '.'.join(pyver[:2])
+            ctx.python_version = pyver
+
+            # Save the channels to ctx.environment_channels.
+            # The install_miniconda function will then add the
+            # channels to $FSLDIR/.condarc.
+
+            # Prepend any additional channels that the user has
+            # specified on the command-line (e.g. file-system-
+            # based conda channels that can be used as local
+            # caches). Note though that we only consider the
+            # channel list in the main/base environment file -
+            # channels in extra/child environments are ignored.
+            ctx.environment_channels = ctx.args.channel + channels
+        else:
+            ctx.extra_environment_files[envname] = fname
+
+        # Remove any packages that the user has
+        # requested to exclude from the installation.
+        for package in list(packages.keys()):
+            exclude = match_any(package, ctx.args.exclude_package)
             if exclude:
-                log.debug('Excluding package %s (matched '
-                          '--exclude_package %s)', line, exclude)
-            else:
-                outf.write(line)
+                log.debug('Excluding package %s', exclude)
+                packages.pop(package)
 
-    if pyver is None:
-        raise Exception('Could not identify Python version in '
-                        'FSL environment file ({})'.format(url))
+        # Add cuda_pkgs to each environment, but only
+        # if the build entry has cuda_enabled=True
+        if build['cuda_enabled']:
+            packages.update(cuda_pkgs)
 
-    ctx.environment_channels = channels
-    ctx.python_version       = pyver
+        # Re-generate the environment file so it contains
+        # the updated package list. We don't need to
+        # save the channels, as they will be written to
+        # condarc.
+        copy = '.' + op.basename(fname)
+        shutil.move(fname, copy)
+        write_environment_file(fname, name, [], packages)
 
 
-def download_miniconda(ctx):
+def download_miniconda(ctx, **kwargs):
     """Downloads the miniconda/miniforge installer and saves it as
     "miniconda.sh".
 
     This function assumes that it is run within a temporary/scratch directory.
+
+    Keyword arguments are passed through to the Progress bar constructor.
     """
 
     # The user has specified a path to an
@@ -1948,18 +2390,21 @@ def download_miniconda(ctx):
     printmsg('Downloading miniconda from {}...'.format(url))
     with Progress('MB', transform=Progress.bytes_to_mb,
                   proglabel='download_miniconda',
-                  progfile=ctx.args.progress_file) as prog:
+                  progfile=ctx.args.progress_file,
+                  **kwargs) as prog:
         download_file(url, 'miniconda.sh', prog.update,
                       ssl_verify=(not ctx.args.skip_ssl_verify))
     if (not ctx.args.no_checksum) and (checksum is not None):
         sha256('miniconda.sh', checksum)
 
 
-def install_miniconda(ctx):
+def install_miniconda(ctx, **kwargs):
     """Downloads the miniconda/miniforge installer, and installs it to the
     destination directory.
 
     This function assumes that it is run within a temporary/scratch directory.
+
+    Keyword arguments are passed through to the Progress bar constructor.
     """
 
     # We have been instructed to use an
@@ -1970,7 +2415,11 @@ def install_miniconda(ctx):
     # Get information about the miniconda installer
     # from the manifest.
     metadata = ctx.miniconda_metadata
-    output   = metadata.get('output', '').strip()
+    output   = metadata.get('output', '')
+
+    # output may be a string or int
+    if isinstance(output, str):
+        output = output.strip()
 
     if output == '': output = None
     else:            output = int(output)
@@ -1981,7 +2430,8 @@ def install_miniconda(ctx):
     cmd = 'bash miniconda.sh -b -p {}'.format(ctx.basedir)
     ctx.run(Process.monitor_progress, cmd, total=output,
             proglabel='install_miniconda',
-            progfile=ctx.args.progress_file)
+            progfile=ctx.args.progress_file,
+            **kwargs)
 
     # Avoid WSL filesystem issue
     # https://github.com/conda/conda/issues/9948
@@ -2063,9 +2513,13 @@ def generate_condarc(fsldir,
     # if a pkgsdir was provided
     if pkgsdir is not None:
         condarc += tw.dedent("""
-        # Fix the package cache at $FSLDIR/pkgs/
-        pkgs_dirs: #!final
-        - {} #!top #!bottom
+        # Fix the package cache at $FSLDIR/pkgs/. Conda
+        # will download packages to this directory,
+        # unless it is not writeable, in which case the
+        # user can specify another location in their
+        # ~/.condarc
+        pkgs_dirs:
+        - {} #!top
         """.format(pkgsdir))
 
     if skip_ssl_verify:
@@ -2091,14 +2545,14 @@ def generate_condarc(fsldir,
     if len(channels) > 0:
         channels[0]  += ' #!top'
         channels[-1] += ' #!bottom'
-    condarc      += '\nchannels: #!final\n'
-    for channel in channels:
-        condarc += ' - {}\n'.format(channel)
+        condarc      += '\nchannels: #!final\n'
+        for channel in channels:
+            condarc += ' - {}\n'.format(channel)
 
     return condarc
 
 
-def get_install_fsl_progress_reporting_method(ctx):
+def get_install_fsl_progress_reporting_method(ctx, build=None, destdir=None):
     """Figure out which reporting mechansim to use for reporting progress
     whilst FSL is being installed. The mechanism that is used has changed
     a few times.
@@ -2110,13 +2564,27 @@ def get_install_fsl_progress_reporting_method(ctx):
       - a function to pass as the progfunc.
     """
 
+    if build   is None: build   = ctx.build
+    if destdir is None: destdir = ctx.destdir
+
+    # Installation progress parameters may differ
+    # depending on the target system. If we are
+    # installing CUDA packages, and the FSL /
+    # extra environment is CUDA-capable, the
+    # manifest should contain CUDA-specific
+    # installation parameters.
+    if (ctx.cuda_version is not None) and build['cuda_enabled']:
+        params_key = 'cuda'
+    else:
+        params_key = 'install'
+
     # We calculate installation progress in
     # one of a few ways, as we have changed
     # the mechanism a few times.  The
     # 'output/install' field in the manifest
     # gives us information about how to
     # report installation progress.
-    progparams = ctx.build.get('output', {}).get('install', None)
+    progparams = build.get('output', {}).get(params_key, None)
 
     # The first method (version 1) involves
     # progress reporting by monitoring number of
@@ -2153,8 +2621,8 @@ def get_install_fsl_progress_reporting_method(ctx):
     # $FSLDIR/lib/
     pkgdir = op.join(ctx.basedir, 'pkgs')
     pkgdir = op.join(ctx.basedir, 'pkgs')
-    bindir = op.join(ctx.destdir, 'bin')
-    libdir = op.join(ctx.destdir, 'lib')
+    bindir = op.join(    destdir, 'bin')
+    libdir = op.join(    destdir, 'lib')
 
     def matchany(name, *filters):
         return any([fnmatch.fnmatch(name, f) for f in filters])
@@ -2221,7 +2689,7 @@ def get_install_fsl_progress_reporting_method(ctx):
         # version 4: progval is a dict
         # containing various quantities
         if progver == 4:
-            progval = sum(progval.values())
+            progval = sum([int(v) for v in progval.values()])
 
         # older versions: progval is an integer
         elif progver:
@@ -2230,11 +2698,13 @@ def get_install_fsl_progress_reporting_method(ctx):
     return progval, progfunc
 
 
-def install_fsl(ctx):
+def install_fsl(ctx, **kwargs):
     """Install FSL into ctx.destdir (which is assumed to be a miniconda
     installation.
 
     This function assumes that it is run within a temporary/scratch directory.
+
+    Keyword arguments are passed through to the Progress bar constructor.
     """
 
     progval, progfunc = get_install_fsl_progress_reporting_method(ctx)
@@ -2274,9 +2744,10 @@ def install_fsl(ctx):
 
     # We install FSL simply by running conda
     # env [update|create] -f env.yml.
-    cmd = (ctx.conda + ' env ' + cmd +
-           ' -p ' + ctx.destdir      +
-           ' -f ' + ctx.environment_file)
+    envfile = ctx.environment_file
+    cmd     = (ctx.conda + ' env ' + cmd +
+               ' -p ' + ctx.destdir      +
+               ' -f ' + envfile)
 
     # Make conda/mamba super verbose if the
     # hidden --debug option was specified.
@@ -2292,7 +2763,9 @@ def install_fsl(ctx):
     # to a network error.
     err_patterns = ['Connection broken',
                     'Download error',
-                    'NewConnectionError']
+                    'NewConnectionError',
+                    'Downloaded bytes did not match Content-Length',
+                    'CONNECTION FAILED']
 
     with LogRecordingHandler(err_patterns) as hd:
 
@@ -2316,7 +2789,41 @@ def install_fsl(ctx):
                        cmd, timeout=2, total=progval, progfunc=progfunc,
                        proglabel='install_fsl', progfile=ctx.args.progress_file,
                        retry_error_message=err_message,
-                       retry_condition=retry_install)
+                       retry_condition=retry_install, **kwargs)
+
+
+def install_extra(ctx, name, **kwargs):
+    """Install an additional FSL component as a separate child environment into
+    <ctx.destdir>/envs/<name>/.
+
+    This function assumes that it is run within a temporary/scratch directory.
+
+    Keyword arguments are passed through to the Progress bar constructor.
+    """
+
+    envfile = ctx.extra_environment_files[name]
+    destdir = op.join(ctx.extras_dir, name)
+
+    # directory already exists - try updating
+    if not op.exists(destdir): action = 'create'
+    else:                      action = 'update'
+
+    cmd = (ctx.conda + ' env ' + action +
+               ' -p ' + destdir +
+               ' -f ' + envfile)
+
+    if ctx.args.debug:
+        cmd += ' -v -v -v'
+
+    progval, progfunc = get_install_fsl_progress_reporting_method(
+        ctx, ctx.build['extras'][name], destdir)
+
+    printmsg('Installing {} into {}...'.format(name, destdir))
+    ctx.run(Process.monitor_progress, cmd,
+            timeout=2, total=progval, progfunc=progfunc,
+            proglabel='install_{}'.format(name),
+            progfile=ctx.args.progress_file,
+            **kwargs)
 
 
 @warn_on_error('WARNING: The installation succeeded, but an error occurred '
@@ -2333,9 +2840,11 @@ def finalise_installation(ctx):
         f.write(ctx.build['version'])
 
     etcdir = op.join(ctx.destdir, 'etc')
-    cmds   = [
-        'cp fslversion {}' .format(etcdir),
-        'cp {} {}'         .format(ctx.environment_file, etcdir)]
+    cmds   = ['cp fslversion {}' .format(etcdir),
+              'cp {} {}'         .format(ctx.environment_file, etcdir)]
+
+    for envfile in ctx.extra_environment_files.values():
+        cmds.append('cp {} {}'.format(envfile, etcdir))
 
     for cmd in cmds:
         ctx.run(Process.check_call, cmd)
@@ -2369,8 +2878,10 @@ def register_installation(ctx):
     if regurl is None:
         return
 
+    # Exclude hostname from uname output, as
+    # it may contain identifying information
+    uname  = Process.check_output('uname -msrv', check=False)
     system = platform.system().lower()
-    uname  = Process.check_output('uname -a', check=False)
     osinfo = ''
 
     # macOS
@@ -2379,17 +2890,15 @@ def register_installation(ctx):
 
     # Linux
     else:
-        for releasefile in glob.glob(op.join('/etc/*-release')):
-            with open(releasefile, 'rt') as f:
+        if op.exists('/etc/os-release'):
+            with open('/etc/os-release', 'rt') as f:
                 osinfo = f.read().strip()
-            break
-
+        else:
+            osinfo = 'Unknown'
         # WSL
         if 'microsoft' in uname.lower():
             osinfo += '\n\n' + Process.check_output('wsl.exe -v', check=False)
-
     info = {
-        'timestamp'      : timestamp(),
         'architecture'   : platform.machine(),
         'os'             : system,
         'os_info'        : osinfo,
@@ -2398,11 +2907,12 @@ def register_installation(ctx):
         'python_info'    : sys.version,
         'fsl_version'    : ctx.build['version'],
         'fsl_platform'   : ctx.build['platform'],
+        'locale'         : getlocale(),
     }
 
     printmsg('Registering installation with {}'.format(regurl))
 
-    post_request(regurl, data=info)
+    send_registration_info(regurl, data=info)
 
 
 def patch_file(filename, searchline, numlines, content):
@@ -2500,6 +3010,7 @@ def configure_shell(shell, homedir, fsldir):
     printmsg('Adding FSL configuration to {}'.format(profile))
 
     patch_file(profile, '# FSL Setup', len(cfg.split('\n')), cfg)
+
 configure_shell.shell_profiles = {'sh'   : ['.profile'],
                                   'ksh'  : ['.profile'],
                                   'bash' : ['.bash_profile', '.profile'],
@@ -2671,7 +3182,9 @@ def parse_args(argv=None, include=None, parser=None):
         'no_shell'          : ('-s', {'action'  : 'store_true'}),
         'no_matlab'         : ('-m', {'action'  : 'store_true'}),
         'skip_registration' : ('-r', {'action'  : 'store_true'}),
+        'extra'             : ('-e', {'action'  : 'append'}),
         'fslversion'        : ('-V', {'default' : 'latest'}),
+        'cuda'              : ('-c', {'metavar' : 'X.Y'}),
 
         # hidden options
         'skip_ssl_verify'    : (None, {'action'  : 'store_true'}),
@@ -2688,7 +3201,9 @@ def parse_args(argv=None, include=None, parser=None):
         'devrelease'         : (None, {'action'  : 'store_true'}),
         'devlatest'          : (None, {'action'  : 'store_true'}),
         'manifest'           : (None, {}),
+        'channel'            : (None, {'action'  : 'append'}),
         'miniconda'          : (None, {}),
+        'extras_dir'         : (None, {}),
         'conda'              : (None, {'action'  : 'store_true'}),
         'no_self_update'     : (None, {'action'  : 'store_true'}),
         'exclude_package'    : (None, {'action'  : 'append'}),
@@ -2714,7 +3229,15 @@ def parse_args(argv=None, include=None, parser=None):
         'no_matlab'         : 'Do not modify your MATLAB configuration.',
         'skip_registration' : 'Do not register this installation with the '
                               'FSL development team.',
+        'extra'             : 'Install optional FSL components',
         'fslversion'        : 'Install this specific version of FSL.',
+        'cuda'              : 'Install CUDA libraries which are compatible '
+                              'with this CUDA version (default: install '
+                              'versions of CUDA libraries that are compatible '
+                              'with the GPU on the system, or do not install '
+                              'CUDA libraries on systems without a GPU). Set '
+                              'to "none" to disable installation of CUDA '
+                              'libraries.',
 
         # Configure conda to skip SSL verification.
         # Not recommended.
@@ -2768,6 +3291,22 @@ def parse_args(argv=None, include=None, parser=None):
         # manifest.
         'manifest' : argparse.SUPPRESS,
 
+        # Source packages from additional conda
+        # channels. Can be used multiple times.
+        # Channels specified with this argument
+        # are pre-pended to the channel list,
+        # e.g.:
+        #
+        #   fslinstaller.py --channel A --channel B
+        #
+        # will result in a channel list such as:
+        #
+        #   - A
+        #   - B
+        #   - https://fsl.fmrib..../fslconda/public
+        #   - conda-forge
+        'channel' : argparse.SUPPRESS,
+
         # Install miniconda from this path/URL,
         # instead of the one specified in the
         # FSL release manifest.
@@ -2798,6 +3337,15 @@ def parse_args(argv=None, include=None, parser=None):
         #
         #   fslinstaller.py --miniconda ~/miniconda3/ -d ~/fsl/
         'miniconda' : argparse.SUPPRESS,
+
+        # Directory in which to create child
+        # environments for additional FSL
+        # modules. Defaults to destdir/envs/
+        # for typical installations where
+        # destdir is a base miniconda environment.
+        # Must be specified when destdir is an
+        # existing miniconda installation.
+        'extras_dir' : argparse.SUPPRESS,
 
         # Use conda and not mamba
         'conda' : argparse.SUPPRESS,
@@ -2864,9 +3412,28 @@ def parse_args(argv=None, include=None, parser=None):
                      ERROR, EMPHASIS)
             sys.exit(1)
 
+    # convert --cuda X.Y into
+    # a tuple of (X, Y) ints
+    if args.cuda is not None:
+
+        # User does not want CUDA
+        if args.cuda.lower() == 'none':
+            args.cuda = 'none'
+        else:
+            try:
+                major, minor = args.cuda.split('.')
+                major        = int(major)
+                minor        = int(minor)
+                args.cuda    = (major, minor)
+            except Exception:
+                printmsg('Invalid CUDA version specified: '
+                         '{}'.format(args.cuda),
+                         ERROR, EMPHASIS)
+                sys.exit(1)
+
     # --no-env is automatically enabled
     #  when installer is run as root
-    if os.getuid() == 0 and not (args.root_env):
+    if os.getuid() == 0 and not args.root_env:
         args.no_env = True
 
     # don't modify shell profile
@@ -2880,6 +3447,12 @@ def parse_args(argv=None, include=None, parser=None):
         if not op.exists(args.workdir):
             os.mkdir(args.workdir)
 
+    if args.extra is None:
+        args.extra = []
+
+    if args.extras_dir is not None:
+        args.extras_dir = op.abspath(args.extras_dir)
+
     # manifest takes priority over devrelease/devlatest
     if args.manifest is not None:
         args.devrelease = False
@@ -2887,6 +3460,12 @@ def parse_args(argv=None, include=None, parser=None):
 
     if args.manifest is None:
         args.manifest = FSL_RELEASE_MANIFEST
+
+    if args.channel is None:
+        args.channel = []
+    for i, channel in enumerate(args.channel):
+        if op.exists(channel):
+            args.channel[i] = op.abspath(channel)
 
     if args.devlatest:
         args.devrelease = True
@@ -2962,8 +3541,8 @@ def handle_error(ctx):
 
         # send env to logfile
         log.debug('Environment variables:')
-        for k, v in os.environ.items():
-            log.debug('{}={}'.format(k, v))
+        for k in sorted(os.environ.keys()):
+            log.debug('{}={}'.format(k, os.environ[k]))
 
         if op.exists(ctx.destdir):
             printmsg('Removing failed installation directory '
@@ -3012,7 +3591,7 @@ def main(argv=None):
     logfile = config_logging(logdir=args.workdir, logfile=args.logfile)
 
     log.debug(' '.join(sys.argv))
-    log.debug('Python: %s', sys.executable)
+    log.debug('Python: %s %s', sys.executable, str(PYVER))
     printmsg('Installation log file: {}\n'.format(logfile), INFO)
 
     ctx         = Context(args)
@@ -3043,6 +3622,8 @@ def main(argv=None):
         printmsg('An error has occurred: {}'.format(e), ERROR)
         sys.exit(1)
 
+    # Check if using x86 emulation on an Apple
+    # arm64 machine
     check_rosetta_status(ctx)
 
     # Do everything in a temporary directory,
@@ -3059,13 +3640,33 @@ def main(argv=None):
         # an existing installation
         overwrite_destdir(ctx)
 
-        download_fsl_environment(ctx)
-
+        download_fsl_environment_files(ctx)
         printmsg('\nInstalling FSL in {}\n'.format(ctx.destdir), EMPHASIS)
+
         with handle_error(ctx):
-            download_miniconda(ctx)
-            install_miniconda(ctx)
-            install_fsl(ctx)
+
+            # These are the main steps of the installation,
+            # which perform downloading and/or installing.
+            # We iterate over them so we can show the user
+            # a step number and a total, e.g. "Step 2 of 4".
+            steps = [
+                (download_miniconda, ctx),
+                (install_miniconda,  ctx),
+                (install_fsl,        ctx)]
+
+            for name in args.extra:
+                if name not in ctx.extra_environment_files:
+                    printmsg('There is no extra FSL component called {} - '
+                             'ignoring'.format(name), WARNING, EMPHASIS)
+                    continue
+                steps.append((install_extra, ctx, name))
+
+            for i, step in enumerate(steps):
+                func     = step[0]
+                funcargs = step[1:]
+                prefix   = '{} / {}'.format(i + 1, len(steps))
+                func(*funcargs, prefix=prefix)
+
             finalise_installation(ctx)
             post_install_cleanup(ctx, tmpdir)
             register_installation(ctx)
