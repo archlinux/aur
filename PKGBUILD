@@ -1,8 +1,8 @@
 # Maintainer: Rsplwe <i@rsplwe.com>
 
 pkgname=snipaste
-pkgver=2.9.2_Beta
-pkgrel=2
+pkgver=2.10
+pkgrel=1
 pkgdesc="Snip & Paste!"
 arch=('x86_64')
 url="https://www.snipaste.com"
@@ -11,10 +11,10 @@ options=(!strip)
 depends=()
 makedepends=()
 source_x86_64=(
-	"$pkgname-$pkgver.AppImage::https://download.snipaste.com/archives/Snipaste-2.9.2-Beta-x86_64.AppImage"
+	"$pkgname-$pkgver.AppImage::https://download.snipaste.com/archives/Snipaste-$pkgver-x86_64.AppImage"
 )
 sha256sums_x86_64=(
-	"a15ebdb80063ce46d07706fed70451c6cce1af0238bb2ce1419e1a5c19f27a8f"
+	"5b495345c0a7dd8c942b91e2a3ba3be0d3f7cef1f0f7e89f7f05c2d009c58344"
 )
 
 noextract=("$pkgname-$pkgver.AppImage")
@@ -40,5 +40,4 @@ package() {
 
 	install -d "$pkgdir"/usr/share/icons
 	cp -a ./squashfs-root/usr/share/icons/. "$pkgdir"/usr/share/icons
-
 }
