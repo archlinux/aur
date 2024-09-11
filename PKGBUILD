@@ -3,7 +3,7 @@ pkgname=bluebubbles-bin
 _pkgname=BlueBubbles
 pkgver=1.12.7
 _subver=2B61
-pkgrel=5
+pkgrel=6
 pkgdesc="A cross-platform app ecosystem, bringing iMessage to Android, PC (Windows, Linux, & even macOS), and Web!"
 arch=(
     'aarch64'
@@ -32,21 +32,21 @@ options=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar::${_ghurl}/releases/download/v${pkgver}%${_subver}/${pkgname%-bin}-linux-aarch64.tar")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar::${_ghurl}/releases/download/v${pkgver}%${_subver}/${pkgname%-bin}-linux-x86_64.tar")
 source=("${pkgname%-bin}.sh")
-sha256sums=('463a6423f1107da6397bca9851047e08229cbe42028804dfce146359d541846e')
+sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 sha256sums_aarch64=('6df20701f6a7087d362f0b27e294929d259896bd2f36908053d00cf713e7a08b')
 sha256sums_x86_64=('8c0c3487062cb7546b5208b85cbda6794251e046256f9c422fee1ce067ffc34c')
 build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${pkgname%-bin}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@appname@/${pkgname%-bin}/
+        s/@runname@/${pkgname%-bin}/
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -f -n -q --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -r "${srcdir}/"{data,lib} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/data/flutter_assets/assets/icon/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/opt/${pkgname%-bin}"
     ln -sf "/usr/lib/libmpv.so" "${pkgdir}/usr/lib/libmpv.so.1"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
