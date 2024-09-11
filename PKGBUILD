@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com
 pkgname=vtex2
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A VTF converter and editor"
 arch=('x86_64')
 url="https://github.com/StrataSource/vtex2"
@@ -41,6 +41,7 @@ package() {
 	DESTDIR=$pkgdir cmake --install build && rm -rf "$pkgdir/usr/lib" "$pkgdir/usr/include"
 	install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "$srcdir/$pkgname/res/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/vtfview.svg"
+	sed -i 's/Name=vtfview/Name=VTFView/g' "$pkgdir/usr/share/applications/vtfview.desktop"
 	cat >> "$pkgdir/usr/share/applications/vtfview.desktop" <<-EOF
 MimeType=application/x-vtf
 EOF
