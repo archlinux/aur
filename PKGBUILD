@@ -3,7 +3,7 @@
 _pyname="aardwolfgui"
 _pkgname="${_pyname}"
 pkgname="${_pkgname}-git"
-pkgver=0.0.6+9.r24.20231201.3aa1ea6
+pkgver=0.0.8.r28.20240905.c144cb8
 pkgrel=1
 pkgdesc="Asynchronous RDP protocol implementation for python: GUI."
 arch=(
