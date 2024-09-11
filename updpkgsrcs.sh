@@ -12,18 +12,20 @@ function echoGitCMDForSubModule {
         moduleParent=$path
         while true; do
             moduleParent=${moduleParent%\/*}
-            if [[ -f $moduleParent/.gitmodules ]]; then
+            if [[ -f $gitRepo/$moduleParent/.gitmodules ]]; then
                 subParent[$moduleParent]+="$configUrl"$'\n'$(printf %"${#gitCMDName}"s); break
             elif [[ $moduleParent == "${moduleParent%\/*}" ]]; then
                 subParent[.]+="$configUrl"$'\n'$(printf %"${#gitCMDName}"s); break
             fi
         done
     done
-    for parent in "${!subParent[@]}"; do
+    count=1 && for parent in "${!subParent[@]}"; do
         if [[ $1 == init ]]; then
-            echo -e "${gitCMDName}-C '$parent' submodule init"
+            echo -e "${gitCMDName}-C '$gitRepo/$parent' submodule init && \\"
         fi
-        echo -e "${gitCMDName}${subParent[$parent]}-c protocol.file.allow=always -C '$parent' submodule update ${_extraArgs}"
+        echo -en "${gitCMDName}${subParent[$parent]}-c protocol.file.allow=always -C '$gitRepo/$parent' submodule update ${_extraArgs}"
+        if [ "${#subParent[@]}" == "$count" ]; then echo; else echo " && \\"; fi
+        ((count++))
     done
 }
 
@@ -89,13 +91,14 @@ function printUsage {
 	"echoSourceTextForSubModule": Echo source array of given Git repository
 	"echoGitCMDForSubModule": Echo Git command for PKGBUILD to change submodule's url
 	    init: Whether to initialize the submodule, optional if you want to get the submodule of a submodule next time
+	    force: Add '--force' parameter to command when update submodule
 	"updateBuildScriptForSubModule [Path to PKGBUILD]": Update source array and replace it in PKGBUILD
 	    [Path to PKGBUILD]: The PKGBUILD that expected to be modified
 
 	example:
 	    $ export _repo="[Path to Git repository]"
 	    $ ${0##*/} echoSourceTextForSubModule
-	    $ ${0##*/} echoGitCMDForSubModule init
+	    $ ${0##*/} echoGitCMDForSubModule init force
 	    $ ${0##*/} updateBuildScriptForSubModule "[Path to PKGBUILD]"
 
 	EOF
@@ -107,20 +110,17 @@ declare -A subPath
 declare -A subCommit
 
 # Update arrays about Submodule
-#
-# $1: [ Path to Git Repository ]
 function readGitModules {
-    gitModulesFile=$(readlink -se "$1/.gitmodules") || return 1
-    gitModules=$(git config -f "$gitModulesFile" -l) || return 2
+    gitModules=$(git config -f "$gitRepo/.gitmodules" -l) || return 1
 
     # Submodule's Commit Array
-    gitModulesStatus=$(git -C "$1" submodule status --recursive --cached) || return 3
+    gitModulesStatus=$(git -C "$gitRepo" submodule status --recursive --cached) || return 1
     IFS=$'\n' && for line in $gitModulesStatus; do
         line=${line:1}; line=${line% (*)}
         path=${line#* }
         subCommit+=(["$path"]="${line% *}")
-        if [[ -f $path/.gitmodules ]]; then
-            gitModules+=$'\n'$(git config -f "$path/.gitmodules" -l | sed "s#.path=#.path=$path/#g") || return 4
+        if [[ -f $gitRepo/$path/.gitmodules ]]; then
+            gitModules+=$'\n'$(git config -f "$gitRepo/$path/.gitmodules" -l | sed "s#.path=#.path=$path/#g") || return 1
         fi
     done && unset IFS
 
@@ -149,10 +149,8 @@ if ! type git > /dev/null 2>&1; then
 fi
 
 gitRepo=${_repo:-$PWD}
-if ! readGitModules "$gitRepo"; then
-    code=$?; printUsage
-    echo "No submodule in '$gitRepo', aborting..."
-    exit "$code"
+if ! readGitModules; then
+    printUsage; echo "No submodule in '$gitRepo', aborting..."; exit 1
 fi
 
 case "$1" in
@@ -164,17 +162,17 @@ case "$1" in
                 '')
                     ;;
                 force)
-                    _force=1
+                    _extraArgs='--force'
                     ;;
                 init)
-                    _init=1
+                    _Args='init'
                     ;;
                 *)
                     printUsage && exit 1
                     ;;
             esac
         done
-        _extraArgs="$([[ $_force == 1 ]] && echo '--force 1>/dev/null' )"; echoGitCMDForSubModule "$([[ $_init == 1 ]] && echo init)"
+        echoGitCMDForSubModule "$_Args"
         ;;
     echoSourceTextForSubModule)
         echoSourceTextForSubModule
