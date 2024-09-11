@@ -1,6 +1,6 @@
-pkgbase = ssh-audit
+pkgbase = ssh-audit-git
 	pkgdesc = SSH configuration auditing
-	pkgver = 3.2.0
+	pkgver = 3.2.0.r15.g06ebdbd
 	pkgrel = 1
 	url = https://github.com/jtesta/ssh-audit
 	arch = any
@@ -12,8 +12,9 @@ pkgbase = ssh-audit
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = ssh-audit::git+https://github.com/jtesta/ssh-audit#tag=v3.2.0
-	sha512sums = 30803f7cad987cf381973df285f0a85110c2da571a85f920b78ec25cae952d44201cb4bb427551b05cfa14811009a4b9b2d324298b95086a71f1bd8153640bd1
-	b2sums = 0ab4843bd1c5ad49f8b04febbe1f58a0a41befdddfacc86268176c0e555cd2b329abfff7efe2fe0e16574c5b44141e4bf4d91f06015af6f3b8c92c7a1f5c0b86
+	conflicts = ssh-audit
+	source = ssh-audit-git::git+https://github.com/jtesta/ssh-audit.git
+	sha512sums = SKIP
+	b2sums = SKIP
 
-pkgname = ssh-audit
+pkgname = ssh-audit-git

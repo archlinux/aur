@@ -1,8 +1,10 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Yuki Sireneva <yuki dot utk8g at gmail dot com>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 # Contributor: graysky <graysky AT archlinux DOT us>
 
-pkgname=ssh-audit
-pkgver=3.2.0
+_pkgbasename=ssh-audit
+pkgname=$_pkgbasename-git
+pkgver=3.2.0.r15.g06ebdbd
 pkgrel=1
 pkgdesc='SSH configuration auditing'
 arch=('any')
@@ -16,10 +18,16 @@ makedepends=(
   'python-wheel'
   'python-setuptools'
 )
+conflicts=($_pkgbasename)
 checkdepends=('python-pytest')
-source=("$pkgname::git+$url#tag=v$pkgver")
-sha512sums=('30803f7cad987cf381973df285f0a85110c2da571a85f920b78ec25cae952d44201cb4bb427551b05cfa14811009a4b9b2d324298b95086a71f1bd8153640bd1')
-b2sums=('0ab4843bd1c5ad49f8b04febbe1f58a0a41befdddfacc86268176c0e555cd2b329abfff7efe2fe0e16574c5b44141e4bf4d91f06015af6f3b8c92c7a1f5c0b86')
+source=("$pkgname::git+$url.git")
+sha512sums=('SKIP')
+b2sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  echo "$(git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
+}
 
 build() {
   cd "$pkgname"
@@ -36,14 +44,16 @@ check() {
 package() {
   cd "$pkgname"
 
+  local basename=${pkgname%-git}
+
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   # man page
-  install -vDm644 -t "$pkgdir/usr/share/man/man1" "$pkgname.1"
+  install -vDm644 -t "$pkgdir/usr/share/man/man1" "$basename.1"
 
   # symlink license file
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  install -d "$pkgdir/usr/share/licenses/$basename"
   ln -s "$site_packages/ssh_audit-$pkgver.dist-info/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    "$pkgdir/usr/share/licenses/$basename/LICENSE"
 }
