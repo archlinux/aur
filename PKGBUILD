@@ -4,12 +4,12 @@
 
 pkgname=ecwolf
 pkgver=1.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Advanced source port for Wolfenstein 3D engine games"
 arch=("x86_64")
 url="https://maniacsvault.net/ecwolf/"
-license=("GPL")
-depends=("gtk2" "libjpeg-turbo" "sdl2" "sdl2_mixer")
+license=("GPL-2.0-or-later")
+depends=("gtk3" "libjpeg-turbo" "sdl2" "sdl2_mixer" "sdl2_net")
 makedepends=("cmake")
 install=ecwolf.install
 source=("https://maniacsvault.net/${pkgname}/files/${pkgname}/1.x/${pkgname}-${pkgver}-src.tar.xz"
