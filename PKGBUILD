@@ -1,13 +1,13 @@
 # Maintainer: Axel Kappel <aur@kappel.dev>
 pkgname='simp'
 pkgver=3.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and fast image manipulation program"
 arch=('x86_64')
 url="https://github.com/Kl4rry/simp"
 license=('Apache-2.0')
 depends=('dav1d' 'libheif')
-makedepends=('cargo' 'cargo-about' 'git' 'nasm' 'gendesk' 'clang' 'mold' 'gzip')
+makedepends=('cargo' 'cargo-about' 'git' 'gendesk' 'clang' 'mold' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 md5sums=('SKIP')
 
