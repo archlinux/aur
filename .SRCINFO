@@ -1,0 +1,37 @@
+pkgbase = fjordlauncher-unlocked
+	pkgdesc = Prism Launcher fork with support for alternative auth servers
+	pkgver = 8.4.2
+	pkgrel = 1
+	url = https://github.com/hero-persson/FjordLauncherUnlocked
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND BSD-2-Clause AND BSD-3-Clause AND LicenseRef-Batch AND OFL-1.1
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = jdk17-openjdk
+	makedepends = scdoc
+	makedepends = ghc-filesystem
+	makedepends = gamemode
+	depends = java-runtime=17
+	depends = libgl
+	depends = qt6-base
+	depends = qt6-5compat
+	depends = qt6-svg
+	depends = qt6-imageformats
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = quazip-qt6
+	depends = tomlplusplus
+	depends = cmark
+	optdepends = glfw: to use system GLFW libraries
+	optdepends = openal: to use system OpenAL libraries
+	optdepends = visualvm: Profiling support
+	optdepends = xorg-xrandr: for older minecraft versions
+	optdepends = java-runtime=8: for older minecraft versions
+	optdepends = flite: minecraft voice narration
+	source = https://github.com/hero-persson/FjordLauncherUnlocked/releases/download/8.4.2/FjordLauncher-8.4.2.tar.gz
+	sha256sums = b1e3c943f0b8f7f0fa5f50968d8a91c93e09416b12a2f433556c247e27da1f7b
+
+pkgname = fjordlauncher-unlocked
