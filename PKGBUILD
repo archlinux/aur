@@ -1,19 +1,17 @@
-# Maintainer: FabioLolix
-# Contributor: Daniel Milde <daniel.milde@firma.seznam.cz>
-# Contributor: Bradley Nelson <bradleynelson102@gmail.com>
+# Maintainer: Drommer <drommer@github.com>
 
 pkgname=stacer-git
-pkgver=1.1.0.r87.ga146edd
+pkgver=1.3.0.r3.g07a0966
 pkgrel=1
 pkgdesc="Linux System Optimizer and Monitoring"
-url="https://oguzhaninan.github.io/Stacer-Web/"
-arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
-license=(GPL3)
-depends=(qt5-charts qt5-svg)
-makedepends=(git cmake qt5-tools)
-provides=(stacer)
-conflicts=(stacer)
-source=("${pkgname%-git}::git+https://github.com/oguzhaninan/Stacer.git")
+url="https://stacer.quentium.fr/"
+arch=('x86_64')
+license=('GPL3')
+depends=('qt6-charts' 'qt6-svg')
+makedepends=('git' 'cmake' 'qt6-tools')
+provides=('stacer')
+conflicts=('stacer')
+source=("${pkgname%-git}::git+https://github.com/QuentiumYT/Stacer.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,32 +21,29 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  [ -d build ] && rm -fr build
   mkdir build
-  cd build
 
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/qt/path/bin .. 
-  sed -i s/\;/" "/g ./stacer/CMakeFiles/stacer.dir/link.txt
-  make
+  cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=g++ -B build -S .
+  make -C build
+
+  lupdate stacer/stacer.pro -no-obsolete
+  lrelease stacer/stacer.pro
 }
 
 package() {
-  cd "${pkgname%-git}/build"
-  mkdir -p "${pkgdir}"/usr/lib/stacer
-  
-  install -Dm755 ./output/lib/libstacer-core.a "${pkgdir}"/usr/lib
-  
-  mkdir -p "${pkgdir}"/usr/bin
-  install -Dm755 ./output/stacer "${pkgdir}"/usr/bin/stacer
+  cd "${pkgname%-git}"
 
-  install -Dm644 ../LICENSE "{$pkgdir}"/usr/share/licenses/stacer/LICENSE
-  
-  mkdir -p "${pkgdir}"/usr/share/
-  cp -ar ../icons "${pkgdir}"/usr/share/
-  
-  install -Dm644 ../applications/stacer.desktop "${pkgdir}"/usr/share/applications/stacer.desktop
+  install -Dm755 "build/output/stacer" -t "${pkgdir}/usr/share/stacer"
+  install -Dm755 "build/output/lib/libstacer-core.a" -t "${pkgdir}/usr/share/stacer/lib"
+  install -Dm644 "applications/stacer.desktop" -t "${pkgdir}/usr/share/applications"
 
-  # Install translations
-  mkdir -p "${pkgdir}"/usr/lib/stacer/translations
-  install -Dm644 ../translations/*.ts "${pkgdir}"/usr/lib/stacer/translations/
+  for i in 16 32 64 128 256; do
+    install -Dm644 "icons/hicolor/${i}x${i}/apps/stacer.png" -t "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps"
+  done
+
+  install -Dm644 "translations"/*.qm -t "${pkgdir}/usr/share/stacer/translations"
+  install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/stacer"
+
+  mkdir "${pkgdir}/usr/bin"
+  ln -sf "/usr/share/stacer/stacer" "${pkgdir}/usr/bin/stacer"
 }
