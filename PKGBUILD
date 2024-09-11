@@ -7,8 +7,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gnome-commander
-pkgver=1.16.2
-_pkgver=1.16
+pkgver=1.18.1
+_pkgver=1.18
 pkgrel=1
 pkgdesc='Graphical two-pane filemanager for Gnome'
 arch=('i686' 'x86_64')
@@ -18,10 +18,10 @@ depends=('libgsf' 'taglib' 'poppler-glib' 'gtk2' 'exiv2' 'smbclient')
 makedepends=('itstool' 'meson' 'gtest' 'flex' 'glib2-devel')
 source=("https://download.gnome.org/sources/$pkgname/${_pkgver}/$pkgname-$pkgver.tar.xz")
 
-sha256sums=('7cf5d56c77a95d828f25407294312abaae20dc6b556ceafd9424dbfe209e5ed3')
+sha256sums=('240e87bd8fd8f546189ad41c0361fbdfafdaafe2cdc216287e026c5eeb21b0f4')
 build() {
   cd "$pkgname-$pkgver"
-   meson setup --prefix=/usr --buildtype=plain build -Dunique=disabled
+   meson setup --prefix=/usr --buildtype=plain build
    meson compile -C build
 }
 
