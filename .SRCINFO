@@ -1,7 +1,7 @@
 pkgbase = c001apk-flutter-git
 	pkgdesc = A third-party CoolApk client written in Flutter | 使用 Flutter 开发的第三方酷安客户端
-	pkgver = r31.726c162
-	pkgrel = 1
+	pkgver = r47.989cea4
+	pkgrel = 2
 	url = https://github.com/bggRGjQaUbCoE/c001apk-flutter
 	arch = x86_64
 	arch = aarch64
@@ -16,6 +16,6 @@ pkgbase = c001apk-flutter-git
 	source = git+https://github.com/bggRGjQaUbCoE/c001apk-flutter.git
 	source = c001apk-flutter.desktop
 	sha256sums = SKIP
-	sha256sums = 21532a3cdf1cdfca186c1221f6f1bcd015d259a63861056330f2be5f760676d1
+	sha256sums = 9d527cc7aaa8a4c4bc2ac80b88fb358aec2256eb503580e352c88671fa8653eb
 
 pkgname = c001apk-flutter-git

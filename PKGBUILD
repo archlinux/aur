@@ -2,8 +2,8 @@
 
 pkgname=c001apk-flutter-git
 _pkgname=${pkgname%-git}
-pkgver=r31.726c162
-pkgrel=1
+pkgver=r47.989cea4
+pkgrel=2
 pkgdesc="A third-party CoolApk client written in Flutter | 使用 Flutter 开发的第三方酷安客户端"
 arch=('x86_64' 'aarch64')
 url="https://github.com/bggRGjQaUbCoE/${_pkgname}"
@@ -17,7 +17,7 @@ source=(
 	"${_pkgname}.desktop"
 )
 sha256sums=('SKIP'
-            '21532a3cdf1cdfca186c1221f6f1bcd015d259a63861056330f2be5f760676d1')
+            '9d527cc7aaa8a4c4bc2ac80b88fb358aec2256eb503580e352c88671fa8653eb')
 
 pkgver() {
 	cd "${_pkgname}/"
@@ -38,6 +38,7 @@ package() {
 	install -Dm644 "${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
 
 	cd "${_pkgname}/"
+	install -Dm644 assets/icon/icon.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
 
 	case "${CARCH}" in
@@ -55,4 +56,5 @@ package() {
 
 	install -dm755 "${pkgdir}/usr/bin/"
 	ln -s "/usr/lib/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
 }
