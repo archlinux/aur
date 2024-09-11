@@ -1,13 +1,13 @@
 pkgbase = ttf-lastresort
 	pkgdesc = Unicode last resort fallback font.
-	pkgver = 15.100
+	pkgver = 16.000
 	pkgrel = 1
 	url = https://github.com/unicode-org/last-resort-font
 	arch = any
 	license = OFL
-	source = LastResortHE-15.100.ttf::https://github.com/unicode-org/last-resort-font/releases/download/15.100/LastResortHE-Regular.ttf
-	source = LastResort-LICENSE-15.100::https://raw.githubusercontent.com/unicode-org/last-resort-font/15.100/LICENSE
-	sha256sums = 74f93a8fb3ab8756e0e86cb3c2c0783fda10bdea6f979d5817869ba7284e56ca
-	sha256sums = 6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2
+	source = LastResortHE-16.000.ttf::https://github.com/unicode-org/last-resort-font/releases/download/16.000/LastResortHE-Regular.ttf
+	source = LastResort-LICENSE-16.000::https://raw.githubusercontent.com/unicode-org/last-resort-font/16.000/LICENSE
+	sha256sums = 60c48abfc05e9f2ba33599c4dcba40105d1ece71d3761f0b26f75a38b5b17895
+	sha256sums = fc8fc512b27846bdb0d6645bed8069ac87ea599548b58a8d04bc3b0ea705a9c4
 
 pkgname = ttf-lastresort

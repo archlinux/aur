@@ -1,0 +1,3 @@
+[ttf-lastresort]
+source = "git"
+git = "https://github.com/unicode-org/last-resort-font.git"
