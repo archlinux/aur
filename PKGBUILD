@@ -20,21 +20,21 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         postgresql-perl-rpath.patch
         postgresql-fix-libxml2-2.12.patch)
 md5sums=('35307327ee61f9c8c973d54a8cb091bc'
-         '8d52369bafe10a61d168dfa4c4d6fb58'
-         'f0784a861197e530169110dffdf49815')
+         'e57d161913b0d6dc5962bf51f9dc180e'
+         '2e3311a060598a600045361c11041763')
 sha256sums=('93e8e1b23981d5f03c6c5763f77b28184c1ce4db7194fa466e2edb65d9c1c5f6'
-            'bd8e0f6ecb7c1b9b5d34eaa1d456cac20160e8350a9a151e31557a0ec7a51deb'
-            '79ab94d82027699135d4cbbf4f5e65747d575569e8ce1b8ed07dc1e002321a6e')
+            'fe5ba692eb357b66c03d07a319fb1c512b5b639642e7f0ae30edf5acbd1064fb'
+            'c29b81a7366807c447114481ef05340065be389a2939102ef28d80019e7a1d1f')
 b2sums=('dda4b06d8d36d3257e1eea251ccbdf38f1ce63ca811045b7b8d156d2b54614304b83b30ad3b1ead4e7ad74fa9f42acc8934f648902e17a4f7c89a117dc8e3c03'
-        '748515d1fcb0176dac4d74435e8fbe655989e31cc65cb2871bf05822dd5cc52b2e4014b8915f039c6f09b0230236add830ce981c7dc1b2269bdaad6620e88e8b'
-        'a7f69aba1a33bb8977ae59d91fb86d32e20e8e8dac6d5be76ee3af9ace0ca2ee45efb73dbf992159f64376ec9aeee181c90cb71e2827231ab108971619ed1a53')
+        '518fd5fac1545e26d071521fb5f812a229a5366c3855acf934cc3acf2bb244e5daadefea46b7e79bd0d457c64ad07faaf186310fbcb66e910b6b0595378eb271'
+        '6513bdc13525742cb045dcf8c447669d865d508ec888778aeed0d2e1ed478689946be257c511316c633a09c11eea388d4e5b61bce93c4d9047127dc29bb55c7b')
 
 # Upstream provides md5 and sha256
 
 prepare() {
   cd postgresql-${pkgver}
-  patch -p1 < ../postgresql-perl-rpath.patch
-  patch -p1 < ../postgresql-fix-libxml2-2.12.patch
+  patch -l -p1 < ../postgresql-perl-rpath.patch
+  patch -l -p1 < ../postgresql-fix-libxml2-2.12.patch
 }
 
 build() {
