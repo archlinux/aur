@@ -2,7 +2,7 @@
 
 pkgname=tomato-radio-automation-git
 _pkgname=tomato-radio-automation
-pkgver=0.10.12.next.14.4f4c44c4
+pkgver=0.10.12.next.30.dee4efd9
 pkgrel=1
 pkgdesc='Tomato Radio Automation desktop client. Dead simple radio ads. Preview version.'
 arch=('x86_64' 'aarch64')
@@ -10,6 +10,7 @@ url='https://dtcooper.github.io/tomato/'
 license=('MIT')
 depends=('gtk3' 'nss' 'alsa-lib')
 makedepends=('nodejs' 'npm' 'git')
+options=('!debug')
 source=(
     "${_pkgname}::git+https://github.com/dtcooper/tomato.git"
 )
