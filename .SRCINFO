@@ -1,6 +1,6 @@
 pkgbase = exo-git
 	pkgdesc = Extensions to Xfce originally developed by os-cillation.
-	pkgver = 4.19.0.r12.gb49e9eb9
+	pkgver = 4.19.0.r23.g804f7656
 	pkgrel = 1
 	epoch = 2
 	url = https://gitlab.xfce.org/xfce/exo/
@@ -9,6 +9,7 @@ pkgbase = exo-git
 	groups = xfce4-git
 	license = LGPL-2.1-only
 	makedepends = git
+	makedepends = glib2-devel
 	makedepends = xfce4-dev-tools
 	depends = libxfce4ui
 	depends = libxfce4util

@@ -9,7 +9,7 @@
 
 _pkgname=exo
 pkgname="${_pkgname}-git"
-pkgver=4.19.0.r12.gb49e9eb9
+pkgver=4.19.0.r23.g804f7656
 pkgrel=1
 pkgdesc="Extensions to Xfce originally developed by os-cillation."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ url="https://gitlab.xfce.org/xfce/exo/"
 groups=('xfce4-git')
 provides=("${_pkgname}=${pkgver%%.r*}")
 depends=('libxfce4ui' 'libxfce4util')
-makedepends=('git' 'xfce4-dev-tools')
+makedepends=('git' 'glib2-devel' 'xfce4-dev-tools')
 conflicts=("$_pkgname")
 source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}.git")
 options=('!libtool')
@@ -51,3 +51,5 @@ package() {
   cd "${_pkgname}"
   make DESTDIR=$pkgdir install
 }
+
+# vim:set ts=2 sw=2 et:
