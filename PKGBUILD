@@ -8,26 +8,27 @@ _configfiles=(
 _pkgname=catch-my-bus-python
 pkgname="${_pkgname}-git"
 pkgver=r105.20170419.e458b52
-pkgrel=6
+pkgrel=7
 pkgdesc="A GTK3 status icon for real time public transport departures from a selected stop in Dresden (Verkehrsverbund Oberelbe/ VVO)."
 arch=(
   "any"
 )
 url="https://github.com/meepoSenpai/catch-my-bus-python"
 license=(
-  'custom: unspecified'
+  'MIT'
 )
 backup=()
 for _config_file in "${_configfiles[@]}"; do
   backup+=("etc/catch-my-bus-python/${_config_file}")
 done
 depends=(
+  'gtk3'
+  'libgsf'
   'python>=3'
   'python-gobject'
   'python-notify2'
   'python-requests'
-  'gtk3'
-  'libgsf'
+  'sh'
 )
 makedepends=(
   'git'
@@ -50,7 +51,7 @@ sha256sums=(
   'SKIP'
   'b04ffdf8eeae08d6582c6a1dd8102148cfb147c32c6bcb16ba832cd446164388'
   '4762ab7a033a7ebcb80c35fec33dd4ac40212f09abb88c834037139b0ec82793'
-  '4b5dc58a16f4388301ca913765db1a98f3697d5923c81923cfe0971f8e386338'
+  'e17fa9f9faa454b2068571bfa60ad70945d945d3f804862beffd4a8d94fa0c7c'
 )
 
 pkgver() {

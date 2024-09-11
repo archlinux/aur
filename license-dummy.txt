@@ -1,5 +1,5 @@
-Upstream has not specified any license.
+Upstream author wrote:
 
-So assume all rights reserved to the author.
+> Just mark it as MIT and I'll add the license sometime later.
 
 See https://github.com/meepoSenpai/catch-my-bus-python for all matters.
