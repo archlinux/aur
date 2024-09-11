@@ -1,8 +1,8 @@
-pkgbase = mkdocs-static-i18n-plugin
-	pkgdesc = MkDocs i18n plugin using static translation markdown files
-	pkgver = 1.2.0
+pkgbase = mkdocs-print-site-plugin
+	pkgdesc = MkDocs Plugin that adds an additional page that combines all pages, allowing easy exports to PDF and standalone HTML.
+	pkgver = 2.5.0
 	pkgrel = 1
-	url = https://github.com/ultrabug/mkdocs-static-i18n
+	url = https://github.com/timvink/mkdocs-print-site-plugin
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -12,7 +12,7 @@ pkgbase = mkdocs-static-i18n-plugin
 	depends = mkdocs
 	depends = python-hatchling
 	options = !strip
-	source = mkdocs-static-i18n-plugin-1.2.0.tar.gz::https://github.com/ultrabug/mkdocs-static-i18n/archive/refs/tags/1.2.0.tar.gz
-	b2sums = 27cdb34f6de8d16b915a7237df3be65dbe7e565531db0431086f7e6ce292ef32118588afb79a9e90667622d9cf5de63052db47a9b15290d0544c25066fd53ce1
+	source = mkdocs-print-site-plugin-2.5.0.tar.gz::https://github.com/timvink/mkdocs-print-site-plugin/archive/refs/tags/v2.5.0.tar.gz
+	sha256sums = c129c653cd61e59da8d4dbbe3d01db599373724fa7de622c31a97ce7b8e40d34
 
-pkgname = mkdocs-static-i18n-plugin
+pkgname = mkdocs-print-site-plugin

@@ -1,25 +1,26 @@
-# Maintainer: AlphaJack <alphajack at tuta dot io>
-# Contributor: Guoyi Zhang <GuoyiZhang at malacology dot net>
+# Maintainer: Dmitriy Q <krotesk at mail dot ru>
 
-pkgname="mkdocs-static-i18n-plugin"
-pkgver=1.2.0
+pkgname="mkdocs-print-site-plugin"
+pkgver=2.5.0
 pkgrel=1
-pkgdesc="MkDocs i18n plugin using static translation markdown files"
-url="https://github.com/ultrabug/mkdocs-static-i18n"
+pkgdesc=" MkDocs Plugin that adds an additional page that combines all pages, allowing easy exports to PDF and standalone HTML."
+url="https://github.com/timvink/mkdocs-print-site-plugin"
 license=("MIT")
 arch=("any")
 depends=("mkdocs" "python-hatchling")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('27cdb34f6de8d16b915a7237df3be65dbe7e565531db0431086f7e6ce292ef32118588afb79a9e90667622d9cf5de63052db47a9b15290d0544c25066fd53ce1')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 options=("!strip")
 
+sha256sums=('c129c653cd61e59da8d4dbbe3d01db599373724fa7de622c31a97ce7b8e40d34')
+
 build(){
- cd "${pkgname/-plugin/}-$pkgver"
+ cd "$pkgname-$pkgver"
  python -m build --wheel --no-isolation
 }
 
 package(){
- cd "${pkgname/-plugin/}-$pkgver"
+ cd "$pkgname-$pkgver"
+ install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
  python -m installer --destdir="$pkgdir" dist/*.whl
 }
