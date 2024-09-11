@@ -2,7 +2,7 @@
 # Maintainer: silentnoodle <lonnqvistben at gmail dot com>
 # Contributor: agnotek <agnostic.sn [at]gmail.com>
 pkgname=telegram-desktop-dev-bin
-pkgver=5.4.1
+pkgver=5.5.3
 pkgrel=1
 # If it is a dev-only version, set this to 1
 _dev=0
@@ -68,8 +68,8 @@ sha256sums=('ea1f36152b143cc2664daef5026656d55be2230ed42d43628e17ef7d2fff718c'
             'e297771c75bd2f81d637a3234f83568be62092f67d16946be23895fa92fa7119'
             'd47cc89465281500b23ee646b8deafa67dd35dd0a46f50c3df1d5468abf07ff9'
             '3a683f1c5cea4dab752339181a7424add98b4c962efe25b39bbf585cddd2596d'
-            '0eb6bcd5c84b30371c0ac925390c59c2a3df74a1217592313b4942d71e0de6cc')
-sha256sums_x86_64=('02d827e50bd6c6de5d0e50aa84813977b56bdad3999298b7dec64ac2ad544447')
+            '14fd330ff12c3797028bf404b5c7c997201d05cc80bc0efc21313a6094c32e28')
+sha256sums_x86_64=('ac907f94c54c8517287bcab3645aeb4d63ff18a5f75044deea6f89a89195de63')
 # Some installation information
 install="$pkgname.install"
 
