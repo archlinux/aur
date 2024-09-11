@@ -1,0 +1,3 @@
+[python-html-void-elements]
+source = "pypi"
+pypi = "html-void-elements"
