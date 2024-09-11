@@ -1,6 +1,6 @@
 pkgbase = lightningcss-cli-bin
 	pkgdesc = Extremely fast CSS parser, transformer, and minifier
-	pkgver = 1.26.0
+	pkgver = 1.27.0
 	pkgrel = 1
 	url = https://lightningcss.dev/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = lightningcss-cli-bin
 	conflicts = lightningcss-cli
 	options = !strip
 	options = !debug
-	source_x86_64 = lightningcss-cli-bin-1.26.0.tar.gz::https://registry.npmjs.org/lightningcss-cli-linux-x64-gnu/-/lightningcss-cli-linux-x64-gnu-1.26.0.tgz
-	sha256sums_x86_64 = 0df137f50e351ea7b1a9355770902854e3b66e3d9a5bbc1a339d9f750cc3ebb7
-	source_aarch64 = lightningcss-cli-bin-1.26.0.tar.gz::https://registry.npmjs.org/lightningcss-cli-linux-arm64-gnu/-/lightningcss-cli-linux-arm64-gnu-1.26.0.tgz
-	sha256sums_aarch64 = 1850fd9fda632fa0725e171d8644d6a4c6b45d643da93775a2e33babe4919954
+	source_x86_64 = lightningcss-cli-bin-1.27.0.tar.gz::https://registry.npmjs.org/lightningcss-cli-linux-x64-gnu/-/lightningcss-cli-linux-x64-gnu-1.27.0.tgz
+	sha256sums_x86_64 = 2b159ab2e06a0d930e4bfcef61f57c57c94621d9e7675b7f0381f359d4ba311c
+	source_aarch64 = lightningcss-cli-bin-1.27.0.tar.gz::https://registry.npmjs.org/lightningcss-cli-linux-arm64-gnu/-/lightningcss-cli-linux-arm64-gnu-1.27.0.tgz
+	sha256sums_aarch64 = 2b159ab2e06a0d930e4bfcef61f57c57c94621d9e7675b7f0381f359d4ba311c
 
 pkgname = lightningcss-cli-bin
