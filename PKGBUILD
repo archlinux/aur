@@ -1,43 +1,39 @@
+#!/usr/bin/bash
 # Maintainer: Silvio Knizek <killermoehre@gmx.net>
+
 _pkgname=xfconf
 pkgname="${_pkgname}-git"
-pkgver=4.16.0+102+gb836868
+pkgver=4.19.2+14+g4593943
 pkgrel=1
-pkgdesc="A simple client-server configuration storage and query system - git checkout"
+pkgdesc="D-Bus-based configuration storage system - git checkout"
 arch=('i686' 'x86_64')
-url="http://www.xfce.org/"
+url="https://docs.xfce.org/xfce/${_pkgname}/start"
 license=('GPL2')
 groups=('xfce4')
-depends=('libxfce4util' 'dbus-glib')
-makedepends=('intltool' 'git' 'xfce4-dev-tools' 'perl-extutils-depends' 'perl-extutils-pkgconfig' 'glib-perl' 'chrpath')
+depends=('libxfce4util')
+makedepends=('intltool' 'gobject-introspection' 'vala' 'git' 'xfce4-dev-tools>=4.19' 'glib2-devel')
 provides=("${_pkgname}=${pkgver}")
-conflicts=("$_pkgname" 'terminal')
-replaces=("$_pkgname" 'terminal')
+conflicts=("$_pkgname")
 source=("git+https://gitlab.xfce.org/xfce/${_pkgname}.git")
 sha256sums=('SKIP')
+
 pkgver() {
-    cd "$srcdir/$_pkgname"
+    cd "${srcdir}/${_pkgname}" || return 1
     git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
+    cd "${srcdir}/${_pkgname}" || return 1
     ./autogen.sh \
-        --disable-dependency-tracking \
         --prefix=/usr \
         --sysconfdir=/etc \
-        --libexecdir=/usr/lib/xfce4 \
-        --localstatedir=/var \
-        --disable-static \
-        --enable-gtk-doc \
-        --enable-checks \
-        --with-perl-options=INSTALLDIRS="vendor"
+        --localstatedir=/var
     make
 }
-package() {
-    cd "$srcdir/$_pkgname"
-    make DESTDIR="$pkgdir" install
 
-    # Fix insecure rpath, http://bugs.archlinux.org/task/19980
-    find "$pkgdir" -name Xfconf.so -exec chrpath -d {} +
+package() {
+    cd "${srcdir}/${_pkgname}" || return 1
+    make DESTDIR="${pkgdir}" install
 }
+
+# vim:set ts=2 sw=2 et:
