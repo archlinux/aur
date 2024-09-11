@@ -2,16 +2,16 @@
 
 pkgname='python-overturemaps'
 _name="${pkgname#python-}"
-pkgver='0.8.0'
+pkgver='0.9.0'
 pkgrel=1
 pkgdesc="Python tools for interacting with Overture Maps (overturemaps.org) data."
 url="https://pypi.org/project/overturemaps/"
 depends=('python' 'python-click' 'python-geopandas' 'python-pyarrow' 'python-shapely')
-makedepends=('python-build' 'python-installer')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('beac618c6f2d6955b060da30173f76655f5f269d38566fc19be1fe9d328c32fc')
+sha256sums=('26c82e7c4f179b0ef15d5ca933e83756399fe5f2ff15047175d192a50efad8f4')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
