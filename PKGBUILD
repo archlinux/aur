@@ -4,7 +4,7 @@ pkgname=equibop
 _pkgname=Equibop
 pkgdesc="Equibop is a Vesktop fork that gives you the performance of web Discord and the comfort of Discord Desktop, with additional plugins."
 pkgver=2.0.9
-# Reminder for devs: don't forget to update the electron version on sunroof.sh
+# Reminder for devs: don't forget to update the electron version on equibop.sh
 pkgrel=1
 electron=electron31
 arch=('x86_64' 'aarch64')
