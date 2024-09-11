@@ -6,7 +6,11 @@ pkgdesc="suyu is a Nintendo Switch emulator, based on yuzu, with additional feat
 arch=('x86_64')
 url="https://git.suyu.dev/suyu/suyu"
 license=('GPL3')
-depends=('enet')
+depends=(
+	"enet"
+	"qt5-base"
+	"qt5-multimedia"
+	)
 source=("https://git.darksys.pw/aur/suyu-bin/suyu"
         "suyu.desktop"
         "suyu.png")
