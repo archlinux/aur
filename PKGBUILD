@@ -1,8 +1,8 @@
 # Maintainer: Stick <stick@stma.is>
 
 pkgname=scalafmt
-pkgver=3.6.1
-pkgrel=2
+pkgver=3.8.3
+pkgrel=1
 pkgdesc="code formatter for the Scala programming language"
 arch=('any')
 url="https://scalameta.org/scalafmt/"
