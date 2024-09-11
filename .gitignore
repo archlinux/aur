@@ -1,0 +1,4 @@
+pak-*-*-any.pkg.tar.zst
+pak-*.tar.gz
+pkg/
+src/

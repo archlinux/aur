@@ -1,23 +1,35 @@
-# Maintainer: Arsen Musayelyan <moussaelianarsen@gmail.com>
-pkgname=pak
-pkgver=1.0
-pkgrel=3
-pkgdesc="A package manager wrapper written in swift designed to unify different package managers"
-arch=('x86_64')
-url="https://gitlab.com/moussaelianarsen/pak"
-license=('GPL3')
-depends=('pak-config')
-provides=('pak')
-source=("https://gitlab.com/moussaelianarsen/pak/-/archive/master/pak-master.tar.gz")
-md5sums=('SKIP')
-replaces=('pak-yay' 'pak-pacman')
+# Maintainer: claybie <claybie at claybie dot org>
 
-build() {
-	cd "pak-master"
-	make
-}
+pkgname='pak'
+pkgver='1.0.1'
+pkgrel='1'
+pkgdesc='A fork of pac-wrapper with commands styled toward apk (alpine package keeper).'
+arch=('any')
+url='https://github.com/claybie/pak'
+license=('MIT')
+depends=(
+  'pacman'
+  'util-linux'
+)
+optdepends=(
+  'bash'
+  'zsh'
+  'fish'
+  'sudo'
+  'opendoas'
+)
+provides=('pak')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('7f24bdf4b75ec6246a5e2df76bbb1133db2f69bce1cdf1336bae4bc8b0d1edab')
 
 package() {
-	cd "pak-master"
-	install -Dm755 pak $pkgdir/usr/bin/pak
+  cd "$pkgname-$pkgver"
+
+  make DESTDIR="$pkgdir" install
+
+  # license
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+
+  # doc
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 }
