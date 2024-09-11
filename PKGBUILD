@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SpliceWiz
-_pkgver=1.6.2
+_pkgver=1.6.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -79,9 +79,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "link-zlib.patch")
-md5sums=('ddf0d7e98190e9496075d8b7f906ccaa'
+md5sums=('59df999b983339da5b70837c68ef83ae'
          '6d95a56e1b05ba50e118ddbbee00f1cf')
-b2sums=('22e6e2ec23a1e45a4ac90af2428b87001b784ca20d001d16a7a2e90bc4862d67b4def39ddb310e3b97376fc9fee3496f96e08bc0a561331f95ee21f2bbf8c841'
+b2sums=('02f65f1a4c76894497a08b1c0932beea3e4674ee904988c3143da25b8b0c2c8b583498b9346ba147c173fb4a842477c029fa10f3ce9473517c76e7b19fa8ca14'
         'c81190033eaba3e11043f9eb9ab2e0275b37a40ba6d5ad821a37560c74f3dc65a0fe3e0e9c4825fcc23e6bd9a7084ff0ba144daa6ef7b564517e4af2b4471362')
 
 prepare() {
