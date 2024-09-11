@@ -2,7 +2,7 @@
 # Maintainer: Dan McGee <dan@archlinux.org>
 
 pkgname=postgresql-12-upgrade
-pkgver=12.17
+pkgver=12.19
 _majorver=${pkgver%.*}
 pkgrel=1
 pkgdesc='PostgreSQL build for migrating between major versions with pg_upgrade'
@@ -17,24 +17,19 @@ optdepends=('python: for PL/Python 3 support'
             'tcl: for PL/Tcl support')
 options=('debug')
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
-        postgresql-perl-rpath.patch
-        postgresql-fix-libxml2-2.12.patch)
-md5sums=('35307327ee61f9c8c973d54a8cb091bc'
-         'e57d161913b0d6dc5962bf51f9dc180e'
-         '2e3311a060598a600045361c11041763')
-sha256sums=('93e8e1b23981d5f03c6c5763f77b28184c1ce4db7194fa466e2edb65d9c1c5f6'
-            'fe5ba692eb357b66c03d07a319fb1c512b5b639642e7f0ae30edf5acbd1064fb'
-            'c29b81a7366807c447114481ef05340065be389a2939102ef28d80019e7a1d1f')
-b2sums=('dda4b06d8d36d3257e1eea251ccbdf38f1ce63ca811045b7b8d156d2b54614304b83b30ad3b1ead4e7ad74fa9f42acc8934f648902e17a4f7c89a117dc8e3c03'
-        '518fd5fac1545e26d071521fb5f812a229a5366c3855acf934cc3acf2bb244e5daadefea46b7e79bd0d457c64ad07faaf186310fbcb66e910b6b0595378eb271'
-        '6513bdc13525742cb045dcf8c447669d865d508ec888778aeed0d2e1ed478689946be257c511316c633a09c11eea388d4e5b61bce93c4d9047127dc29bb55c7b')
+        postgresql-perl-rpath.patch)
+md5sums=('20da36a5dd7800e00008c0250c8ceb75'
+         'e57d161913b0d6dc5962bf51f9dc180e')
+sha256sums=('617e3de52c22e822f4f57d01d5b2240503e198a9eccaf598a851109bd18e6fbb'
+            'fe5ba692eb357b66c03d07a319fb1c512b5b639642e7f0ae30edf5acbd1064fb')
+b2sums=('d858108017ad9fd1c9813080c18f21cf2574f2b21a9881ae35e0291f3710664890983e71a2cd1c45f10b4c1ff8ab19d9d2383e35217b55e8e67b72b2673bec29'
+        '518fd5fac1545e26d071521fb5f812a229a5366c3855acf934cc3acf2bb244e5daadefea46b7e79bd0d457c64ad07faaf186310fbcb66e910b6b0595378eb271')
 
 # Upstream provides md5 and sha256
 
 prepare() {
   cd postgresql-${pkgver}
   patch -l -p1 < ../postgresql-perl-rpath.patch
-  patch -l -p1 < ../postgresql-fix-libxml2-2.12.patch
 }
 
 build() {
