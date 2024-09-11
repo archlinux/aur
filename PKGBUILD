@@ -29,7 +29,7 @@ esac
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
 pkgver=3.21.0+2.r11815.20240610.e6f6d119d
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK based e-mail client. Latest git checkout, built against '${_TOOLKIT}'. Patched to use charset supersets to decode titles and to display protected headers."
 arch=(
   'i686'
@@ -143,7 +143,7 @@ provides=(
 source=(
   "${_pkgname}::git://git.claws-mail.org/claws.git#branch=${_gitbranch}"
   "0001_encoding.diff::https://aur.archlinux.org/cgit/aur.git/plain/0001_encoding.diff?h=claws-mail-title-superset" ## NOTE!, if this gets removed, adapt the `provides` array and the `$pkgdesc`!
-  "0002_protectedheaders.patch::https://www.thewildbeast.co.uk/claws-mail/bugzilla/attachment.cgi?id=2331" ## NOTE!, if this gets removed, adapt the `provides` array and the `$pkgdesc`!
+  "0002_protectedheaders.patch::http://web.archive.org/web/20240721164745/https://www.thewildbeast.co.uk/claws-mail/bugzilla/attachment.cgi?id=2331" ## NOTE!, if this gets removed, adapt the `provides` array and the `$pkgdesc`!
   "0002_protectedheaders.patch.AUTHORS.patch"  # Fixes `0002_protectedheaders.patch` so that it applies to the changed `AUTHORS` file.
 )
 sha256sums=(

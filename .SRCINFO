@@ -1,7 +1,7 @@
 pkgbase = claws-mail-gtk2-git
 	pkgdesc = A GTK based e-mail client. Latest git checkout, built against 'gtk2'. Patched to use charset supersets to decode titles and to display protected headers.
 	pkgver = 3.21.0+2.r11815.20240610.e6f6d119d
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://www.claws-mail.org/
 	arch = i686
@@ -98,7 +98,7 @@ pkgbase = claws-mail-gtk2-git
 	replaces = sylpheed-claws
 	source = claws-mail::git://git.claws-mail.org/claws.git#branch=gtk2
 	source = 0001_encoding.diff::https://aur.archlinux.org/cgit/aur.git/plain/0001_encoding.diff?h=claws-mail-title-superset
-	source = 0002_protectedheaders.patch::https://www.thewildbeast.co.uk/claws-mail/bugzilla/attachment.cgi?id=2331
+	source = 0002_protectedheaders.patch::http://web.archive.org/web/20240721164745/https://www.thewildbeast.co.uk/claws-mail/bugzilla/attachment.cgi?id=2331
 	source = 0002_protectedheaders.patch.AUTHORS.patch
 	source = protectedheaders.patch.for-gtk2.patch
 	sha256sums = SKIP
