@@ -4,7 +4,7 @@
 
 pkgname=python-jsonargparse
 _name=${pkgname#python-}
-pkgver=4.32.0
+pkgver=4.32.1
 pkgrel=1
 pkgdesc='Parsing library for CLI options, configs, and environment variables'
 arch=('any')
@@ -38,7 +38,7 @@ checkdepends=(
   'python-coverage'
   )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('a93f29506e9780b28fc6854c3b3718f4a74d92bf7f0c1f4c34e3047cd5d8be42')
+sha256sums=('17e66ec1ab6529907dd38cbf26d740e2fb5a8e52782739c76d5659247b43cda5')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
