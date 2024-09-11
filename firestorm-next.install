@@ -1,8 +1,34 @@
 post_install() {
   cat <<EOF
-You must register an account on the official Second Life website in
-order to use Second Life: https://secondlife.com/
 
-Remember to log out and back in for the change to take effect.
+===================================================================
+For support of early access releases, please join and message the Firestorm Preview group inworld:
+  Group URL: https://my.secondlife.com/groups/7ba4569c-9dd9-fed2-aaa7-36065d18a13c
+  Inworld Group URI: secondlife:///app/group/7ba4569c-9dd9-fed2-aaa7-36065d18a13c/about
+
+For more information about Firestorm's early access releases, refer to the official download page:
+  https://www.firestormviewer.org/early-access-beta-downloads/
+
+The latest release notes can be found on the official Firestorm wiki:
+  https://wiki.firestormviewer.org/changelog:firestorm_beta
+
+For guides and troubleshooting, refer to Firestorm's official documentation:
+  https://wiki.firestormviewer.org
+
+From the latest inworld Firestorm group notice:
+* This is pre-release quality, bugs are to be expected, reporting them when found is also expected.
+* These viewers are not supported by the regular support channels.
+  - Wiki pages may not correspond to the UI and function that you see.
+  - The support groups for the release viewer will ask you to revert to the release viewer if you report an issue there.
+* These builds are blocked regularly when out of date. They are also preset with a hard extinction date.
+* Share the page freely, but do not share the links.
+  - For the reasons stated, it is far better that people stop clicking on links inworld and downloading software. By sharing a legitimate link you are still encouraging poor discipline, this is why we have ceased to do that and it is why I ask that you do too.
+  - As people learn that all such links are to be considered suspect, people found to be sharing links may find that they get AR'd, rightly or wrongly.
+===================================================================
+
 EOF
+}
+
+post_upgrade() {
+  post_install
 }
