@@ -1,0 +1,4 @@
+[aw-watcher-media-player]
+source = "git"
+git = "https://github.com/2e3s/aw-watcher-media-player.git"
+prefix = "v"
