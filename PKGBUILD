@@ -2,8 +2,8 @@
 
 pkgbase=hqdfm-wine
 pkgname=hqdfm-wine
-pkgver=4.2
-pkgrel=2
+pkgver=4.3
+pkgrel=1
 pkgdesc="Wine 华秋 DFM 是一款高效的 PCB 设计软件，一键分析设计隐患，提供优化方案，输出 Gerber、BOM、坐标文件，让设计和制造更简单。"
 arch=('x86_64')
 url="https://dfm.elecfans.com"
@@ -23,10 +23,10 @@ backup=()
 options=('!strip' '!debug')
 install=${pkgname}.install
 source=(
-        "${pkgname%-wine}-v${pkgver}.zip::${url}/uploads/software/HQDFM%20V${pkgver}.zip"
-        "${pkgname}.install"
-        "${pkgname%-wine}.png::${url}/static/images/dfm_logo.png")
-sha256sums=('03f5dec2f42df7f93f9a2c2b6b69da1cee0715e14d234d8f1ca1f01663881f89'
+    "${pkgname%-wine}-v${pkgver}.zip::${url}/uploads/software/HQDFM%20V${pkgver}.zip"
+    "${pkgname}.install"
+    "${pkgname%-wine}.png::${url}/static/images/dfm_logo.png")
+sha256sums=('3bd0af47b016147dd715ed72919df262604902f34b9e3c5de85ebe361c5576c2'
             '18ba316bf686a95eda0ac51276965b6ba2a0c7093ed6c73484b3d226b5cb1085'
             '2fa20ad946fbf021b14d9493aad8b7af3d8829e71b0ca66316b2ee1065b66b15')
 # noextract=("${pkgname%-wine}-v${pkgver}.zip"
@@ -47,13 +47,13 @@ package() {
     install -dm0755 "${pkgdir}/${_pname}/${pkgname%-wine}"
     install -Dm6644 "${srcdir}/${pkgname%-wine}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-wine}.png"
 
-#     cp -ra "${srcdir}/${pkgname%-wine}-v${pkgver}.exe" "${pkgdir}/${_pname}/${pkgname%-wine}"
+    #     cp -ra "${srcdir}/${pkgname%-wine}-v${pkgver}.exe" "${pkgdir}/${_pname}/${pkgname%-wine}"
     cp -ra "${srcdir}/HQDFM Setup.exe" "${pkgdir}/${_pname}/${pkgname%-wine}/${pkgname%-wine}-v${pkgver}.exe"
 
-#     find "${pkgdir}/${_pname}" -type f -exec chmod 644 "{}" \;
+    #     find "${pkgdir}/${_pname}" -type f -exec chmod 644 "{}" \;
     find "${pkgdir}/${_pname}" -type d -exec chmod 755 "{}" \;
 
-    install -Dm0644 /dev/stdin "${pkgdir}/${_pname}/${pkgname%-wine}/regpatch.reg" << EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/${_pname}/${pkgname%-wine}/regpatch.reg" <<EOF
 REGEDIT4
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink]
@@ -99,7 +99,7 @@ REGEDIT4
 
 EOF
 
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-wine}" << EOF
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-wine}" <<EOF
 #!/bin/bash
 export LC_CTYPE="zh_CN.UTF-8"
 export WINEARCH=win64 WINEPREFIX="\$HOME/.${pkgname%-wine}/wine"
@@ -122,7 +122,7 @@ fi
 wine "\$HOME"/.${pkgname%-wine}/${pkgname%-wine} "\$@"
 EOF
 
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname%-wine}.desktop" << EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname%-wine}.desktop" <<EOF
 [Desktop Entry]
 Name=${pkgname%-wine}
 Name[zh_CN]=${pkgname%-wine}
