@@ -1,18 +1,19 @@
 pkgbase = udev-usb-sync
 	pkgdesc = Fine tune write cache and impose buffer limites when USB storage device is plugged
-	pkgver = 0.8
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://codeberg.org/wonky/udev-usb-sync
 	install = udev-usb-sync.install
 	arch = any
 	license = MIT
 	depends = hdparm
+	depends = bc
 	backup = etc/udev-usb-sync/udev-usb-sync.conf
 	source = 99-usb-sync.rules
 	source = udev-usb-sync
 	source = udev-usb-sync.conf
-	sha256sums = 0c945450f8b472995c27ac4d0b41f333a49a7c8a181827cd57bb80e71194a6f3
-	sha256sums = b514e3bf1ea55f5e1dc4f5af46da3b5f9f2409da1efe7b36a11647704faf0a8f
-	sha256sums = 7cf194b2e3767f8ce4dcbf98b665e46d67624034d5ec0f4cb89f359b677c3687
+	sha256sums = 14ff9fa9783f72cb321792ea8a44051d0eb0aaf244edec773d7fa16fdf8dc023
+	sha256sums = bdc35135e6f8074890a911a501ca4fb3e6a7888963b51c3a1edb98c23bb62ec2
+	sha256sums = ec26baede73e94f9cfab77cd5aa6e0ffebcc413ff657a4e98eae6c9e2145655e
 
 pkgname = udev-usb-sync

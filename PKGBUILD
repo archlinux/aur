@@ -1,18 +1,18 @@
 # Maintainer: root.nix.dk
 pkgname='udev-usb-sync'
-pkgver=0.8
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 pkgdesc='Fine tune write cache and impose buffer limites when USB storage device is plugged'
 arch=('any')
 url='https://codeberg.org/wonky/udev-usb-sync'
 license=('MIT')
-depends=('hdparm')
+depends=('hdparm' 'bc')
 backup=("etc/${pkgname}/${pkgname}.conf")
 install="${pkgname}.install"
 source=('99-usb-sync.rules' 'udev-usb-sync' 'udev-usb-sync.conf')
-sha256sums=('0c945450f8b472995c27ac4d0b41f333a49a7c8a181827cd57bb80e71194a6f3'
-            'b514e3bf1ea55f5e1dc4f5af46da3b5f9f2409da1efe7b36a11647704faf0a8f'
-            '7cf194b2e3767f8ce4dcbf98b665e46d67624034d5ec0f4cb89f359b677c3687')
+sha256sums=('14ff9fa9783f72cb321792ea8a44051d0eb0aaf244edec773d7fa16fdf8dc023'
+            'bdc35135e6f8074890a911a501ca4fb3e6a7888963b51c3a1edb98c23bb62ec2'
+            'ec26baede73e94f9cfab77cd5aa6e0ffebcc413ff657a4e98eae6c9e2145655e')
 
 package() {
     install -d -m755 "$pkgdir/etc/udev/rules.d"

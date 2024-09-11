@@ -31,16 +31,13 @@
 #             : @linux-aarhus (Manjaro Forum)
 # inspired by : @kwg (EndeavourOS Forum)
 
-# rule to disable write cache for usb storage
-# requires hdparm to be installed
-ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", RUN+="/usr/bin/hdparm -W 0 /dev/%k"
+KERNEL!="sd[a-z]", GOTO="usb_limit_write_cache_end"
+ENV{ID_USB_TYPE}!="disk", GOTO="usb_limit_write_cache_end"
+ACTION!="add|change", GOTO="usb_limit_write_cache_end"
 
-# rules to impose buffer limits on USB devices
-# implemented using: /usr/bin/udev-usb-sync
-# see configuration: /etc/udev-usb-sync/udev-usb-sync.conf
-# Works since Linux 6.2
-ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", RUN+="/usr/bin/udev-usb-sync %k"
-ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", ATTRS{speed}=="12",    RUN+="/usr/bin/udev-usb-sync %k 12"
-ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", ATTRS{speed}=="480",   RUN+="/usr/bin/udev-usb-sync %k 480"
-ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", ATTRS{speed}=="5000",  RUN+="/usr/bin/udev-usb-sync %k 5000"
-ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", ATTRS{speed}=="10000", RUN+="/usr/bin/udev-usb-sync %k 10000"
+ATTRS{bDeviceClass}!="09", ATTRS{speed}=="10000", RUN+="/usr/bin/udev-usb-sync %k %s{speed}", GOTO="usb_limit_write_cache_end"
+ATTRS{bDeviceClass}!="09", ATTRS{speed}=="5000",  RUN+="/usr/bin/udev-usb-sync %k %s{speed}", GOTO="usb_limit_write_cache_end"
+ATTRS{bDeviceClass}!="09", ATTRS{speed}=="480",   RUN+="/usr/bin/udev-usb-sync %k %s{speed}", GOTO="usb_limit_write_cache_end"
+ATTRS{bDeviceClass}!="09", ATTRS{speed}=="12",    RUN+="/usr/bin/udev-usb-sync %k %s{speed}", GOTO="usb_limit_write_cache_end"
+
+LABEL="usb_limit_write_cache_end"

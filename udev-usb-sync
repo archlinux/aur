@@ -18,7 +18,7 @@
 #    @linux-aarhus - root.nix.dk
 #
 # configuration : /etc/usb-dev-sync/usb-dev-sync.conf
-# triggered by  : /usr/lib/udev/rules.d/99-usb-sync.rules
+# triggered by  : /etc/udev/rules.d/99-usb-sync.rules
 #
 # contributors: @megavolt (Manjaro Forum)
 #             : @linux-aarhus (Manjaro Forum)
@@ -28,46 +28,51 @@
 #     $1: usb block device
 #     $2: usb bandwidth reported by device
 #
-# default values (override in configuration file)
-#
 
-# block device is passed in $1
-# speed is passed as $2
+set -euo pipefail
 
-# defaults
-use_tweaks=1
-use_bandwith=1
-max_ratio=50
-strict_limit=1
-max_bytes=16777216
-# speed defined values
-max_bytes_12=10485
-max_bytes_480=629145
-max_bytes_5000=655369
-max_bytes_10000=13107200
+LANG=C
+LC_NUMERIC=C
 
-# source configuratoin to override default values
-source /etc/udev-usb-sync/udev-usb-sync.conf
-if [[ "$use_tweaks" = 0 ]]; then
-	exit 0
-fi
+AUTOCALC=${AUTOCALC:-1}
+CONFIG='/etc/udev-usb-sync/udev-usb-sync.conf'
 
-if [[ -z "$1" ]]; then
-	exit 1
-fi
+[[ -f $CONFIG ]] && source $CONFIG
 
-# if speed value is not present use default max_bytes
-[[ -z $2 ]] && use_bandwith=0
+BLOCKDEVICE="$1"
+SPEED="$2"
+KERNEL_MAJOR_VERSION=$(uname -r | awk -F'.' '{print $1}')
 
-# apply max_ratio
-echo "$max_ratio" > "/sys/block/$1/bdi/max_ratio"
-# apply strict limit
-echo "$strict_limit" > "/sys/block/$1/bdi/strict_limit"
-# apply max_bytes depending on speed value
-if [[ use_bandwith == 0 ]]; then
-	# apply default value
-	echo "$max_bytes" > "/sys/block/$1/bdi/max_bytes"
-else
-	# apply bandwidth defined value
-	echo "$max_bytes_$2" > "/sys/block/%1/bdi/max_bytes"
+# disable write cache for device if possible
+[[ -n $(which hdparm) ]] && $(which hdparm) -W 0 /dev/$BLOCKDEVICE
+
+if [[ $KERNEL_MAJOR_VERSION -le 5 ]]; then
+   # the following rules is introduced with kernel 2.6
+   # https://docs.kernel.org/admin-guide/abi-testing.html#abi-sys-class-bdi-bdi-max-ratio
+
+   # 1% of available RAM ->  8046522kB -> 80.465kB -> 80MB
+   echo 1 > /sys/block/$BLOCKDEVICE/bdi/max_ratio
+elif [[ $KERNEL_MAJOR_VERSION -ge 6 ]]; then
+    # the following rules is introduced with kernel 6.1
+    # https://docs.kernel.org/admin-guide/abi-testing.html#abi-sys-class-bdi-bdi-strict-limit
+    # https://docs.kernel.org/admin-guide/abi-testing.html#abi-sys-class-bdi-bdi-max-bytes
+
+    # apply strict limit
+    echo 1 > /sys/block/$BLOCKDEVICE/bdi/strict_limit
+
+    if [[ ${AUTOCALC} == 0 ]]; then
+        # apply 16M as max_bytes
+        echo 16777216 > /sys/block/$BLOCKDEVICE/bdi/max_bytes
+    elif [[ ${AUTOCALC} == 1 ]]; then
+        BUFFER_TIME=${BUFFER_TIME:-"0.05"}
+        SAFETY_FACTOR=${SAFETY_FACTOR:-"1.3"}
+        BUFFER_SIZE=$(printf '%.0f' `echo "( ($SPEED / 8) * $BUFFER_TIME * $SAFETY_FACTOR) * 1024 * 1024" | bc`)
+        # for x in 12 480 5000 10000; do echo -n "$x -> " ;printf "%.0f\n" ` echo "(($x / 8) * 0.05 * 1.3) * 1024 * 1024" | bc`; done
+        # 62915
+        # 4089446
+        # 42593157
+        # 85196800
+        # apply calculated buffer size
+        echo "$BUFFER_SIZE" > /sys/block/$BLOCKDEVICE/bdi/max_bytes
+    fi
 fi
