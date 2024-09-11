@@ -1,0 +1,5 @@
+[geph4-client]
+source = "github"
+github = "geph-official/geph4-client"
+use_max_tag = true
+prefix = "v"
