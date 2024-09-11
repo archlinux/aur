@@ -1,7 +1,7 @@
 pkgbase = saturn-bin
 	pkgdesc = Your go-to ToS Compliant Custom Deezer Client - Freezer Reborn
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SaturnMusic/PC
 	arch = x86_64
 	license = GPL3
@@ -12,9 +12,7 @@ pkgbase = saturn-bin
 	depends = nss
 	optdepends = libappindicator-gtk3
 	provides = saturnmusic
-	provides = saturnmusic-bin
-	conflicts = saturnmusic
-	conflicts = saturnmusic-bin
+	conflicts = saturn-git
 	source = https://github.com/SaturnMusic/PC/releases/download/v1.1.1/saturn_1.1.1_amd64.deb
 	sha256sums = 0b58bce227f0f05b96abb6f7532fc315dfffb53342d0ff0fade7b54107d99888
 
