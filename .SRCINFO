@@ -1,0 +1,24 @@
+pkgbase = way-edges-bin
+	pkgdesc = Hidden widget on screen edges
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/way-edges/way-edges
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = cairo
+	depends = pango
+	depends = wayland
+	depends = glib2
+	depends = pipewire-pulse
+	provides = way-edges
+	conflicts = way-edges-git
+	options = !debug
+	source = https://github.com/way-edges/way-edges/releases/download/0.1.2/way-edges_linux-x86_64.tar.gz
+	source = https://raw.githubusercontent.com/way-edges/way-edges/0.1.2/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = way-edges-bin
