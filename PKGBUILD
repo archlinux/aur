@@ -2,7 +2,7 @@
 # Maintainer: cropinghigh <joinmark60@gmail.com>
 # Author: Ryzerth
 pkgname=sdrpp-headers-git
-pkgver=r1589.632a4eeb
+pkgver=r1604.c89763a9
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="SDR++ headers for building out-of-tree modules"
@@ -24,6 +24,7 @@ package() {
     cd "$srcdir/SDRPlusPlus/core/src"
     mkdir -p "$pkgdir/usr/include/sdrpp_core/src"
     mkdir -p "$pkgdir/usr/share/cmake/Modules/"
+    find . -regex ".*\.\(h\|hpp\)"  -exec sed -i -e s/Windows.h/windows.h/ {} \;
     find . -regex ".*\.\(h\|hpp\)" -exec cp --parents \{\} "$pkgdir/usr/include/sdrpp_core/src" \;
     cp "$srcdir/sdrpp_module.cmake" "$pkgdir/usr/share/cmake/Modules"
 }
