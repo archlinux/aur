@@ -2,26 +2,26 @@
 # Contributor: davedatum <ask at davedatum dot com>
 _name=imagine
 pkgname=${_name}-git
-pkgver=0.7.1.r0.g278e380
+pkgver=0.7.5.r0.g9b9000d
 pkgrel=1
 pkgdesc="PNG/JPEG optimization app"
 arch=(x86_64)
 url="https://github.com/meowtec/${_name}"
 license=(MIT)
-depends=(electron imagemagick)
+depends=(electron libjpeg6-turbo)
 makedepends=(nodejs npm git)
 provides=("${_name}")
 conflicts=("${_name}")
 install=${_name}.install
 # options=(!strip)
-source=("git+${url}.git#tag=v0.7.1"
+source=("git+${url}.git#branch=master"
   "${_name}.sh"
   "${_name}.desktop"
   "${_name}.install")
 sha512sums=('SKIP'
-  '30337d827976019c3b143727fe83faf4a648afd23b4dd5b74a0deb5d82b3c3317897b671a543a6fc3f50a7fade538e77cbfcc9781feb9efa4bb56842b14826c0'
-  '422200c31ce054e0fc207914e197aa5bdb65904a0cd835ee8421c784bc93c392b1921d787d6e2bde6c149e0dbf83e813ddb2c0b0d5b4e724e11d5a0ccd543ae8'
-  '815bd0648c4b9403cce83bf6ff4480b1c072afc593cf2ee2eee076b1075bd5703f85308eee55c51a87642bd2a73353d50bbdc20cb13fc4417eade3ff3f380ffb')
+            '30337d827976019c3b143727fe83faf4a648afd23b4dd5b74a0deb5d82b3c3317897b671a543a6fc3f50a7fade538e77cbfcc9781feb9efa4bb56842b14826c0'
+            '422200c31ce054e0fc207914e197aa5bdb65904a0cd835ee8421c784bc93c392b1921d787d6e2bde6c149e0dbf83e813ddb2c0b0d5b4e724e11d5a0ccd543ae8'
+            '815bd0648c4b9403cce83bf6ff4480b1c072afc593cf2ee2eee076b1075bd5703f85308eee55c51a87642bd2a73353d50bbdc20cb13fc4417eade3ff3f380ffb')
 
 pkgver() {
   cd ${_name}
