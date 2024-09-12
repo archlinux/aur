@@ -1,6 +1,6 @@
 pkgbase = twitch-dl-bin
 	pkgdesc = Twitch video downloader that use multiple concurrent connections
-	pkgver = 2.9.1
+	pkgver = 2.9.2
 	pkgrel = 1
 	url = https://github.com/ihabunek/twitch-dl
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = twitch-dl-bin
 	conflicts = twitch-dl
 	conflicts = twitch-dl-bin
 	noextract = twitch-dl
-	source = https://github.com/ihabunek/twitch-dl/releases/download/2.9.1/twitch-dl.2.9.1.pyz
-	sha256sums = ('5dabb60e6b6666366e71a0d4be523f20e2c7195ea65c70d43bf962ce6f699d08')
+	source = https://github.com/ihabunek/twitch-dl/releases/download/2.9.2/twitch-dl.2.9.2.pyz
+	sha256sums = ('7b2544418f539ee956f6afa976cfca7dcf0c87aa4f50b07d0c81f3d1f0eccead')
 
 pkgname = twitch-dl-bin
