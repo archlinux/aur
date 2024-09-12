@@ -2,7 +2,7 @@
 
 _pkgname=aeolus-plugin
 pkgname=${_pkgname}-git
-pkgver=r220.50494c1
+pkgver=r240.d74f818
 pkgrel=1
 pkgdesc="Synthesised pipe organ emulator"
 arch=(x86_64)
@@ -37,8 +37,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}"
   # cd $pkgname-$pkgver
-  git submodule init
-  git submodule update
+  git submodule update --init --recursive
   cmake -S . -B build_dir
   cd build_dir
   make
