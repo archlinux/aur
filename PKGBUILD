@@ -8,7 +8,7 @@ pkgname=(
   $pkgbase-signal
   $pkgbase-relay
 )
-pkgver=0.29.1
+pkgver=0.29.2
 pkgrel=1
 url='https://netbird.io'
 arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
@@ -26,7 +26,7 @@ source=(
   'netbird-relay.env'
   'netbird-relay.service'
 )
-sha256sums=('9072d16845de49ce395b150564b82f97a33defe007276b6b46d733306b6760ee'
+sha256sums=('1a9b52f620d1b9e7215898c0a9f857f0d2cc49b3ca29f3565a3768239df20c20'
             '128e36e1f814a12886f3122a1809a404be17f81481275b6624e66937941f5269'
             '2fa681ef862bfa609d62596e730ff5fbfa706fedca801556cd18a97f349e039f'
             '80cd7b6a22087a83c1332c15693d8a18b780ef5ecf3fbc562af28d1a623eef3b'
