@@ -4,7 +4,7 @@ _pkgname=pcl_conversions
 _metaname=perception_pcl
 _distro=humble
 pkgname="ros2-$_distro-${_pkgname/_/-}"
-pkgver=2.4.3
+pkgver=2.4.5
 pkgrel=1
 pkgdesc="Provides conversions from PCL data types and ROS message types."
 url="https://index.ros.org/p/$_pkgname/"
@@ -19,7 +19,7 @@ depends=(
 )
 checkdepends=('gtest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ros-perception/$_metaname/archive/$pkgver.tar.gz")
-sha256sums=('a10707f096e8eb8d4c290c29739f35af2e50ae254d7cc56b91d868d50f8fc16e')
+sha256sums=('018f1ceae604cae9e9beb1bbae31e79052f35c71bbbcedcf5adb44aaaf4aedab')
 
 build() {
   source /opt/ros/$_distro/setup.bash
