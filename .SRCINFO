@@ -5,11 +5,12 @@ pkgbase = acme-upstream
 	url = https://sourceforge.net/projects/acme-crossass/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-only
+	depends = glibc
 	provides = acme
 	conflicts = acme
 	conflicts = acme-git
 	source = https://github.com/uffejakobsen/acme/archive/0.97.tar.gz
-	md5sums = 65de22b31ec97b6270d498aa36d54207
+	sha256sums = 5e879065c8d65c2f246152d23ee837e535d0f7461c0df86882a5bd1e488f44f6
 
 pkgname = acme-upstream

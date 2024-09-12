@@ -12,11 +12,11 @@ url="https://sourceforge.net/projects/acme-crossass/"
 source=(https://github.com/uffejakobsen/acme/archive/${pkgver}.tar.gz)
 #url="http://www.esw-heim.tu-clausthal.de/~marco/smorbrod/acme"
 #source=(http://www.esw-heim.tu-clausthal.de/~marco/smorbrod/${pkgname}/current/${_pkgname}${pkgver}src.tar.bz2)
-license=('GPL')
-md5sums=('65de22b31ec97b6270d498aa36d54207')
-#depends=('glibc')
+license=('GPL-2.0-only')
+depends=('glibc')
 provides=('acme')
 conflicts=('acme' 'acme-git')
+sha256sums=('5e879065c8d65c2f246152d23ee837e535d0f7461c0df86882a5bd1e488f44f6')
 
 build()
 {
