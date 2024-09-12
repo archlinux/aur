@@ -1,7 +1,7 @@
 pkgbase = libgvps-git
 	pkgdesc = Generic Viterbi Path Searcher Library
 	pkgver = 2f1b410
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sleepwalking/libgvps
 	arch = x86_64
 	license = BSD-3
@@ -10,7 +10,7 @@ pkgbase = libgvps-git
 	provides = libgvps
 	conflicts = libgvps
 	replaces = libgvps
-	source = git+https://github.com/Sleepwalking/libgvps.git
+	source = libgvps::git+https://github.com/Sleepwalking/libgvps.git
 	sha256sums = SKIP
 
 pkgname = libgvps-git
