@@ -2,9 +2,9 @@
 
 _name=great-tables
 pkgname="python-${_name}"
-pkgver=0.10.0
-_tag=3a14f2b6c08e59c442ca4f55511312888b69c860 # git rev-parse "v${pkgver}"
-pkgrel=2
+pkgver=0.11.0
+_tag=11660a66b9291e137db93a74b985941f4a63ad90 # git rev-parse "v${pkgver}"
+pkgrel=1
 pkgdesc="Make awesome display tables using Python"
 arch=('any')
 url="https://posit-dev.github.io/great-tables/"
@@ -39,7 +39,7 @@ checkdepends=(
 )
 source=("$pkgname-$pkgver::git+https://github.com/posit-dev/great-tables.git#tag=$_tag"
 	"pytest.ini")
-b2sums=('cdc33a8b91e472e223f9cb66ed1d06508465a75dde40eb5585b3134982efd15e570a159f0161a71351c69decba9d687c4b0ffee3ca8ab4f5a1403138b957605d'
+b2sums=('c04297ad720a3d837dbb55002f9f7862b85791e2651a609f8e8ce3434d3b560c5b3de4b294784c163a667c821f017d2b65f617dde697513006d5dbac0ed5ac6c'
         '6fc96614ad70fdb6774643e5a6bc08165cab99f5f0241c9b885fa93ba0742ff5f8224360c9914a9b8924311f3387fb6b204ec95a2be5dfb0e4dee711adf177da')
 
 prepare() {
