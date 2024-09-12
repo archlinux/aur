@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=okular
-pkgver=24.08.0
+pkgver=24.08.1
 pkgrel=1
 pkgdesc='Document Viewer'
 arch=(x86_64)
@@ -57,7 +57,7 @@ optdepends=('ebook-tools: mobi and epub support'
 groups=(kde-applications
         kde-graphics)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('3de16e26294b3863270df1760403a676ba3d7204738bebce8a05562d932c318b'
+sha256sums=('b057655c13e4fa566d288730aeb96198aef8a90cb6a1d6a55f566fa5a6b02e89'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
