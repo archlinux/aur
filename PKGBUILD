@@ -1,5 +1,5 @@
 pkgname=markdump
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Serves a dump of markdown files via web."
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
 	"markdump.sysusers"
 	"markdump.tmpfiles"
 )
-sha256sums=('61ae5b46b652326515672e538a4404751c511fec3e0efb166b2b1747968d1ac9'
+sha256sums=('67088f4644569b5db7fee72b7285682b16877ec6e643fee1183a3e3d13645be4'
             'f3d8d16bda8ae68cb22f0a1a0f5b313dee7046b8958cc37b1d7f3b01e2c5416f'
             '7c0dd5c962bdaeb3d1514bd0eaaaf6e4490e0df631d8acbf8c9cceae9a41f7a3'
             '527a83a17234a02eeb422c8dade89efe200e3036219604692d725a3fdae7ce1b'
