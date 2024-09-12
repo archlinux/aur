@@ -7,8 +7,8 @@ arch=('x86_64' 'i686')
 url='https://github.com/marker5a/EasyTerm'
 
 license=('GPLv3')
-depends=()
-makedepends=('git' 'qt5-serialport' 'qt5-base')
+depends=('qt5-serialport')
+makedepends=('git' 'qt5-base')
 optdepends=()
 provides=(easyterm)
 replaces=(easyterm)
