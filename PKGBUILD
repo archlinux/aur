@@ -1,6 +1,6 @@
 # Maintainer: Igor Kalishevskii <lilo.panic@gmail.com>
 pkgname=led_matrix_monitoring
-pkgver=0.1.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A daemon that renders metrics on a LED matrix connected to a Framework 16 Laptop using led_matrix_daemon"
 arch=('x86_64')
