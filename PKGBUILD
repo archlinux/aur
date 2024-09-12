@@ -1,8 +1,8 @@
 # Maintainer: grtcdr <ba.tahaaziz@gmail.com>
 
 pkgname=macchina
-pkgver=6.1.8
-pkgrel=2
+pkgver=6.2.0
+pkgrel=1
 pkgdesc="A system information fetcher, with an (unhealthy) emphasis on performance."
 
 depends=('gcc-libs' 'glibc')
@@ -14,7 +14,7 @@ license=('MIT')
 
 url="https://github.com/Macchina-CLI/macchina"
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e827f640b55fe47a6127dd0c276e76b597e3cb83916be37351cdd6a81d75311e')
+sha256sums=('16ab0690f9a998c7403e26439626ce9f70cd114898a40ecccd28c47ce25d3f78')
 
 build() {
     cd "$pkgname-$pkgver"
