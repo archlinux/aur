@@ -1,0 +1,18 @@
+pkgbase = go-librespot-git
+	pkgdesc = Yet another open source Spotify client, written in Go.
+	pkgver = v0.0.17.r35.g9da54b7
+	pkgrel = 1
+	url = https://github.com/devgianlu/go-librespot
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = go
+	depends = libogg
+	depends = libvorbis
+	depends = alsa-lib
+	provides = go-librespot=v0.0.17.r35.g9da54b7
+	conflicts = go-librespot
+	source = go-librespot-git::git+https://github.com/devgianlu/go-librespot.git
+	sha256sums = SKIP
+
+pkgname = go-librespot-git
