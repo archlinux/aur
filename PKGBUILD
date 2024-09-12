@@ -1,7 +1,7 @@
 # Maintainer: Maki <maki@hotmilk.space>
 
 pkgname=pony-house-bin
-pkgver=1.4.10
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A Matrix client, focused on being a completely customizable open source superapp"
 arch=("x86_64")
@@ -21,7 +21,7 @@ source=(
 )
 
 sha256sums=(
-	"b8aa9c9ae5519d3ba4d087d09692141a00d9c757d958d9257dcfecd109aa6d35"
+	"c6f17d82850eec8bd0206422f118c6a83801154907415d56c1cca4737ee2b986"
 	"4df3c306dddaaf4baffdff5ca820cc679ac8cd6dc263c6a74517783e42fa7a3b"
 )
 
@@ -31,10 +31,10 @@ _install_name="pony-house"
 # https://archlinux.org/packages/extra/x86_64/element-desktop
 
 asar_patches() {
-    sed -i -E 's/ \+ appName/ \+ "'$_install_name'"/g' \
+    sed -i -E 's| \+ appName| \+ "'$_install_name'"|g' \
         app/node_modules/auto-launch/dist/AutoLaunchLinux.js
     
-    sed -i -E 's/ \+ appPath/ \+ "\/usr\/bin\/'$_install_name'"/g' \
+    sed -i -E 's| \+ appPath| \+ "\/usr\/bin\/'$_install_name'"|g' \
         app/node_modules/auto-launch/dist/AutoLaunchLinux.js
 }
 
@@ -43,9 +43,13 @@ package() {
     chmod +x "$_filename"
     ./$_filename --appimage-extract &>/dev/null
 
-    # install app.asar
+    # install app.asar and app.asar.unpacked
+
     install -Dm644 squashfs-root/resources/app.asar \
         "$pkgdir/usr/lib/$_install_name/app.asar"
+
+    cp -r squashfs-root/resources/app.asar.unpacked \
+        "$pkgdir/usr/lib/$_install_name/"
 
     # no other resources need to be installed
 
@@ -58,7 +62,7 @@ package() {
     asar_patches
 
     asar pack app app.asar
-    rm -rf app
+    rm -rf app app.asar.unpacked
     cd "$srcdir"
 
     # create executable
@@ -70,7 +74,7 @@ EOF
     chmod +x "$pkgdir/usr/bin/$_install_name"
 
     # install icon
-    install -Dm644 squashfs-root/usr/share/icons/hicolor/0x0/apps/pony-house-matrix.png \
+    install -Dm644 squashfs-root/usr/share/icons/hicolor/512x512/apps/pony-house-matrix.png \
         "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_install_name.png"
     
     # install desktop file
