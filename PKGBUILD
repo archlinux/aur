@@ -3,7 +3,7 @@
 
 pkgname=spiderfoot
 pkgver=4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="SpiderFoot is an open source intelligence automation tool. Its goal is to automate the process of gathering intelligence about a given target."
 arch=('any')
 url="http://www.spiderfoot.net/"
@@ -16,9 +16,9 @@ depends=( 'python' 'python-adblockparser' 'python-dnspython>=2.1.0'
           'python-phonenumbers' 'python-pypdf2' 'python-docx' 'python-whois'
           'python-secure>=0.3.0' 'python-pyopenssl' 'python-pptx' 
           'python-networkx' 'python-cryptography' 'python-publicsuffixlist'
-          'python-openpyxl' 'python-exifread' 'python-setuptools-scm')
+          'python-openpyxl' 'python-exifread')
 	
-makedepends=('python')
+makedepends=('python' 'python-setuptools-scm')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/smicallef/spiderfoot/archive/v${pkgver}.tar.gz"
 	"spiderfoot.sh"
