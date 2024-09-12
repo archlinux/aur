@@ -4,7 +4,7 @@ _pkgname=qq
 pkgname=${_pkgname}-bin
 _pkgver=0.2.2-r
 pkgver=${_pkgver%-r}
-pkgrel=1
+pkgrel=2
 pkgdesc="jq inspired interoperable config format transcoder with interactive querying; JSON/YAML/TOML/XML/... support; MIT license - git development version"
 arch=('x86_64' 'aarch64')
 url="https://github.com/JFryy/${_pkgname}/"
@@ -13,7 +13,8 @@ license=('MIT')
 makedepends=('tar')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("${_urlraw}/LICENSE" "${_urlraw}/README.md")
+source=("LICENSE_${pkgver}::${_urlraw}/LICENSE"
+        "README_${pkgver}::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}_x86_64.tar.gz::${url}/releases/download/v${_pkgver}/${_pkgname}-v${_pkgver}-linux-amd64.tar.gz")
 source_aarch64=("${_pkgname}_aarch64.tar.gz::${url}/releases/download/v${_pkgver}/${_pkgname}-v${_pkgver}-linux-arm64.tar.gz")
 md5sums=('2334c8619b392ef67df716363660a45d'
@@ -26,6 +27,6 @@ package() {
 
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 "LICENSE_${pkgver}" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "README_${pkgver}" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
