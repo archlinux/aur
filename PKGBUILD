@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=acstools
 pkgname=python-${_pyname}-doc
-pkgver=3.7.1
+pkgver=3.7.2
 pkgrel=1
 pkgdesc="Documentation for Python ACS Tools"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=("python-${_pyname}=${pkgver}"
              'python-sphinx_rtd_theme'
              'python-scikit-image')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('7808ea9ba14cd37a376a962c9a323f3d')
+md5sums=('0fa024a07f40b7878581578b242fa02f')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/doc
