@@ -10,8 +10,7 @@ url="https://github.com/skeeto/endlessh"
 license=('custom')
 depends=()
 makedepends=('git')
-conflicts=('endlessh')
-replaces=('endlessh')
+provides=('endlessh')
 source=('git+https://github.com/skeeto/endlessh' 'endlessh.conf')
 sha256sums=('SKIP'
             '9aa763197e6920fb04f084407c267863b9da2827d785015f65c876c2315f783d')
