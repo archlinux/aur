@@ -2,7 +2,7 @@
 # Contributor: Songtronix <contact@songtronix.com>
 pkgname=airshipper
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The official launcher for Veloren - an open-world, open-source multiplayer voxel RPG"
 arch=('x86_64')
 url='https://gitlab.com/veloren/airshipper'
