@@ -1,7 +1,7 @@
 pkgbase = tmlshock-bin
 	pkgdesc = A terminal ttl clock and stopwatch build by golang
 	pkgver = 1.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/yorukot/tmlshock
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = tmlshock-bin
 	source = README-1.3.0::https://raw.githubusercontent.com/yorukot/tmlshock/v1.3.0/README.md
 	sha256sums = 5da911b05588598fe7d1b504fa3afeee20af08bf3f1fe3c3518d54da0f3769d6
 	sha256sums = d2bd04599fde072198a7acbe3d16afeec0cabc6ee01309055ea59e0bf7fcb46d
-	source_x86_64 = tmlshock::https://github.com/yorukot/tmlshock/releases/download/v1.3.0/tmlshock
+	source_x86_64 = tmlshock-1.3.0::https://github.com/yorukot/tmlshock/releases/download/v1.3.0/tmlshock
 	sha256sums_x86_64 = 52dd07e19cf0e2dfc59c3c6cb414bffe443b7bd7fea70f02d96d1d833fd5b10a
 
 pkgname = tmlshock-bin
