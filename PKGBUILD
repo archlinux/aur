@@ -8,7 +8,7 @@
 pkgbase=linux-mainline-um5606
 _tag=v6.11-rc7
 pkgver=6.11rc7
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Mainline with patches for the Asus UM5606(WA) laptop"
 arch=(x86_64)
 url="https://kernel.org/"
@@ -47,7 +47,7 @@ sha256sums=(
 	'SKIP'
 	'db35dc40884ec866a32225b2f7916fa7ae24273e08f9e204cddb010816255e17'
 	'5cbb7f291d9d625817a675d736f8bf0cd15b833ea227ac7da60688b2e508f942'
-	'3330dfc9c8dc49c470041f69f9558af69b7b6de2de5230a274e606754cef645a'
+	'c56b692379403d493d6455400c868b1b7441a5c382a2002fc5019b379b108c9a'
 	'3dfea6ee17a195d87210762d5801e54ce60c154f376693f526ed08a98e7e0622'
 	'60c04d09353c0dc41be01f57364b7ceb0d425a0f41db302857c2df9980728906'
  )
