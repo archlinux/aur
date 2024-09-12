@@ -1,0 +1,13 @@
+pkgbase = nodejs-types-geojson
+	pkgdesc = type definitions for geojson
+	pkgver = 7946.0.14
+	pkgrel = 1
+	url = https://geojson.org/
+	arch = any
+	license = MIT
+	makedepends = npm
+	noextract = types-geojson-7946.0.14.tgz
+	source = https://registry.npmjs.org/@types/geojson/-/geojson-7946.0.14.tgz
+	b2sums = 20806fba4c8d717c3b82322de9cdd63bfae3139c9d913a558a55e6cd04451ddfdf0f334677afd4b226f25b44fd393c54b08e373db4cfb2b451f89062f447a889
+
+pkgname = nodejs-types-geojson
