@@ -49,21 +49,22 @@ _disable_debug=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-tip-git
-pkgver=6.6.0.r1215533.g96c6ffc69c32
+pkgver=6.11.0.r1296984.g4c293d0fa315
 _srcname=tip
 pkgrel=1
 pkgdesc='Linux Kernel based on the tip branch'
 arch=('x86_64')
 url="http://www.kernel.org/"
-license=('GPL2')
+license=('GPL-2.0-only')
 options=('!strip')
 makedepends=('bc' 'libelf' 'git' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'python')
-_lucjanver=6.4
+_lucjanver=next
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
 source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/tip/tip.git"
         "${_lucjanpath}/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-sep/0002-arch-Kconfig-Default-to-maximum-amount-of-ASLR-bits.patch"
          # the main kernel config files
         'config')
 
@@ -321,5 +322,6 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha512sums=('SKIP'
-            'a577b74a51232272a1edd210c151259a163c6c677468e572c43aeb3f18fbfe4cc92bb73d40d83b1b3a8341f3afd2c78a08306c77e40e1ec5f83b6ccead589183'
-            'abf994eee951814357f14ddcc32836e9467b1a1201b673d661d290c6cddb2a71a33103b3a1ecf5bb250bebd9c962dc9ba97c5796cef85635854e2e29a75ca19a')
+            'ced0e91e2e8293fa838589bb3fe3cc53f12a608297713d20a3b32793fdbfb4524d0b37e79e6ad5c9e63bce8e9ba7560f21cae17ae3b386a55c293446ef217846'
+            'baa07e7b440af857ec32449ef570f50793a96da8e0b4aa6f905b048b9626ac6c10ceb9df97b42a02c550a029906efbc584eeafa30dd6faa22959bdf649ee2639'
+            'd93bb4f8846223af24ae46f610197c2edfae61cca53709348d326f155856d3aa657809f46c5887c9be5944ca6012006d5d45508acc67b4fde9e183d6f3b084d3')
