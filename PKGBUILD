@@ -2,14 +2,14 @@
 
 pkgname=gnome-shell-extension-extension-list
 _pkgname=extension-list
-pkgver=44.0
+pkgver=46.1
 pkgrel=1
 pkgdesc="A Simple GNOME Shell extension manager in the top panel"
 arch=('any')
 url="https://github.com/tuberry/extension-list"
 license=('GPL3')
 depends=('gnome-shell')
-makedepends=('git' 'meson')
+makedepends=('git' 'meson' 'sassc')
 provides=('gnome-shell-extension-extension-list')
 conflicts=('gnome-shell-extension-extension-list-git')
 source=("$_pkgname::git+$url#tag=$pkgver")
@@ -26,7 +26,7 @@ build() {
 
   git submodule update --init --recursive
 
-  meson setup build -Dtarget=system --prefix=/usr
+  meson setup build -Dtarget=system -Dversion=46 --prefix=/usr
 }
 
 package() {
