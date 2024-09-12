@@ -1,6 +1,6 @@
 pkgbase = libkcompactdisc
 	pkgdesc = A library for interfacing with CDs
-	pkgver = 24.08.0
+	pkgver = 24.08.1
 	pkgrel = 1
 	url = https://www.kde.org/
 	arch = x86_64
@@ -14,12 +14,12 @@ pkgbase = libkcompactdisc
 	depends = phonon-qt6
 	depends = qt6-base
 	depends = solid
-	source = https://download.kde.org/stable/release-service/24.08.0/src/libkcompactdisc-24.08.0.tar.xz
-	source = https://download.kde.org/stable/release-service/24.08.0/src/libkcompactdisc-24.08.0.tar.xz.sig
+	source = https://download.kde.org/stable/release-service/24.08.1/src/libkcompactdisc-24.08.1.tar.xz
+	source = https://download.kde.org/stable/release-service/24.08.1/src/libkcompactdisc-24.08.1.tar.xz.sig
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = 40be0e5edb051aa7de8ca7ce20e75de935f34e37b6a5251b7ad1f3088a466b3c
+	sha256sums = 45624b7252fcbe30f6e105ff8bcf8e844cb56c1cd3de26425c1bdac1e7c92eb6
 	sha256sums = SKIP
 
 pkgname = libkcompactdisc
