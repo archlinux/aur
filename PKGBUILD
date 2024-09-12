@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Neidel <aur at jneidel dot com>
 
 pkgname=bandcamp-dl-git
-pkgver=v0.0.13.r38.gd454199
+pkgver=v0.0.16.r0.gcdf24c0
 pkgrel=1
 pkgdesc="Download audio from bandcamp.com"
 arch=('any')
@@ -19,6 +19,7 @@ depends=(
   'python-requests'
   'python-unicode-slugify'
   'python-setuptools'
+  'python-urllib3-future'
 )
 provides=("${pkgname/-git/}")
 conflicts=("${pkgname/-git/}")
@@ -33,6 +34,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname/-git/}"
+  sed -i 's/from urllib3.util/from urllib3_future.util/' bandcamp_dl/bandcamp.py
   python -m build --wheel --no-isolation
 }
 

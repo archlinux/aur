@@ -1,6 +1,6 @@
 pkgbase = bandcamp-dl-git
 	pkgdesc = Download audio from bandcamp.com
-	pkgver = v0.0.13.r38.gd454199
+	pkgver = v0.0.16.r0.gcdf24c0
 	pkgrel = 1
 	url = https://github.com/iheanyi/bandcamp-dl
 	arch = any
@@ -18,6 +18,7 @@ pkgbase = bandcamp-dl-git
 	depends = python-requests
 	depends = python-unicode-slugify
 	depends = python-setuptools
+	depends = python-urllib3-future
 	provides = bandcamp-dl
 	conflicts = bandcamp-dl
 	options = !emptydirs
