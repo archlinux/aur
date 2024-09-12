@@ -24,8 +24,8 @@
 #
 #    @linux-aarhus - root.nix.dk
 #
-# configuration : /etc/usb-dev-sync/usb-dev-sync.conf
-# triggered by  : /usr/lib/udev/rules.d/99-usb-sync.rules
+# configuration : /etc/usb-dev-sync/udev-usb-sync.conf
+# trigger script: /usr/bin/udev-usb-sync
 #
 # contributors: @megavolt (Manjaro Forum)
 #             : @linux-aarhus (Manjaro Forum)
