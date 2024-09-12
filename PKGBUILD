@@ -46,20 +46,20 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-sched-ext-git
-pkgver=6.8.0.r1251075.g384c4bce5006
+pkgver=6.11.0.r1295922.g902d67a2d40f
 _srcname=sched_ext
 pkgrel=1
 pkgdesc='Linux Kernel based on the sched_ext branch'
 arch=('x86_64')
 url="http://www.kernel.org/"
-license=('GPL2')
+license=('GPL-2.0-only')
 options=('!strip')
 makedepends=('bc' 'libelf' 'git' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'python')
 _lucjanver=next
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
-source=("git+https://github.com/sched-ext/sched_ext.git#branch=sched_ext"
+source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/tj/sched_ext.git#branch=for-6.12"
         "${_lucjanpath}/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_lucjanpath}/arch-patches-sep/0002-arch-Kconfig-Default-to-maximum-amount-of-ASLR-bits.patch"
          # the main kernel config files
@@ -172,7 +172,6 @@ prepare() {
 
     ### Running make gconfig
 	[[ -z "$_makegconfig" ]] || make gconfig
-
 }
 
 build() {
@@ -302,6 +301,6 @@ for _p in "${pkgname[@]}"; do
 done
 
 b2sums=('SKIP'
-        'fb48a58e7aaa8f79723b999ecc83c7ecf50b126881a6b299d80da0424160bddc715dd7cd7c87c07d4aa7cbcc9ea6f405c11b0c4ad1a109e750dcc97bda4c9c78'
+        'efe75d4575d6b788a36a1e90d1e0e0325a134a254b31e6b82da911579252f661a01b21a5b36aceb0e5f2f617dfd17915ddcb8fbf4fce36a327607533815a334e'
         '38afff5ca38dcfdba13fb077a5e3df32fbbbb97c8cb9b55e8c674f3cadcc5dd163e2c6472f8365ef10bfeb5bcc11d64b78ee0366bddea124d3f61b21314a5468'
-        'daefde1bb65c26847d236ff3b35b9eac59fb2b15f691b021ae6639b04e6a7ed266f1c6f87f653dc494b53b631851cfbf94f9eb8a0560767e4f4d48cef1069b71')
+        'b1d5581a6f7e8da87b0eaf20fae7752eb401f1c87c8febf64dd1ff5c86a11170175196bdaa38129c5624a0f4a2a4ec3adef7753f63211224a69b51b29635626c')
