@@ -2,9 +2,9 @@
 _appname=anythingllm
 pkgname="${_appname}-desktop-bin"
 _pkgname=Anything-LLM-Desktop
-pkgver=1.2.1
+pkgver=1.2.2
 _electronversion=26
-pkgrel=2
+pkgrel=1
 pkgdesc="The all-in-one AI application, tool suite, and API for RAG & Agents for Docker & Desktop."
 arch=('x86_64')
 url="https://useanything.com/"
@@ -32,22 +32,23 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Mintplex-Labs/anything-llm/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('70f643c574a8b51b6aa0de6b2ddc1685b07bc525cdc28e72f320c632fefa72f7'
+sha256sums=('6d99eae8516abb5ec5c57e5b37c061f95a78d9cea4defc084121d9b647b3b31b'
             '782d2dc18a1ed9028ca992520f42b2e0b6187807da0d14455b8ae608e2e5692e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-bin}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/${_pkgname}/
+        s/@options@//
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    find "${srcdir}/app.asar.unpacked/dist-electron" -type f -exec sed -i "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g" {} \;
+    find "${srcdir}/app.asar.unpacked/dist-electron" -type f -exec sed -i "s/process.resourcesPath/\"\/usr\/lib\/${pkgname%-bin}\"/" {} \;
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
