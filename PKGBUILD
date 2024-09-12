@@ -1,7 +1,7 @@
 # Contributor: Lex Black <autumn-wind@web.de>
 
 pkgname=picocrypt
-pkgver=1.42
+pkgver=1.43
 pkgrel=1
 pkgdesc="A very small, very simple, yet very secure encryption tool."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=(gtk3)
 makedepends=(go)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz
         picocrypt.desktop)
-sha512sums=('5ab513de1ea91469deed82bf604e836eaeace705c05ac51c03d476fa32916fc359101519bce1c69f6fb7e1d98bd4c328cb6bdc2797528e70a35062b6c08c2e4c'
+sha512sums=('1a3abfbd38b20b3fdf007e79228f4712abb01a37b0c16bb7d3178602c679c0b702648e4e8cac3c3d45a1e4a51fc51da512d5dfb4a647f3d69fb1d591d5c62065'
             '1c499ed01d8550a0be97084903776e1b3c8922401e6a73270457ffdcfe879449d3d718ed4c3ae9dc2cf90a98952b76c9bf455871fbace77a563a8681dddf1d81')
 
 
