@@ -1,0 +1,16 @@
+pkgbase = nk-bin
+	pkgdesc = A command-line client for Nekoweb
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ratakor/nk
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	provides = nk
+	conflicts = nk
+	source = https://github.com/ratakor/nk/releases/download/0.1.0/x86_64-linux-nk
+	source = https://github.com/ratakor/nk/raw/master/_nk
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = nk-bin
