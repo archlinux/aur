@@ -3,7 +3,7 @@
 # Contributor: Funami
 
 pkgname=jetbrains-fleet
-pkgver=1.40.83
+pkgver=1.40.86
 pkgrel=1
 pkgdesc="JetBrains IDE for any language"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source_x86_64=("${pkgname}-${pkgver}-${arch[0]}.tar.gz::https://download-cdn.jet
 source_aarch64=("${pkgname}-${pkgver}-${arch[1]}.tar.gz::https://download-cdn.jetbrains.com/fleet/installers/linux_${arch[1]}/Fleet-${pkgver}-${arch[1]}.tar.gz")
 sha256sums=('cd955f6a93108b2438e6d8ff0434dae97c076f2201b64783338bbdad06d047fb'
             'db26ca1fd026fbacfeb87f4bad42d78b3512bb733ce1c566bdd5b751e77d7bb3')
-sha256sums_x86_64=('fd2d057cb3175844729aec42708221112c29b3cb2eed4e2b340f039bac0ee57c')
-sha256sums_aarch64=('1b37d076864cfdc03f35d428004504cd281f4605541d56756029f22326b30ce6')
+sha256sums_x86_64=('e76615a20a5d872c7077468ed153a4e771d1cb18815d774230a0c9300c95bf8e')
+sha256sums_aarch64=('050f02d58feac9564eae4bd10a91a0cc44bbf85550beaa83524ab0e8dd66bdc3')
 
 package() {
   install -dm 755 "${pkgdir}/opt/${pkgname}"
