@@ -1,5 +1,5 @@
 pkgbase = discord-electron-openasar-git
-	pkgdesc = Discord packaged with OpenAsar (git) using system provided electron (v29) for increased security and performance
+	pkgdesc = Discord packaged with OpenAsar (git) using system provided electron (v32) for increased security and performance
 	pkgver = 0.0.68+830.f92ee8c
 	pkgrel = 1
 	url = https://discord.com
@@ -11,7 +11,7 @@ pkgbase = discord-electron-openasar-git
 	makedepends = nodejs
 	makedepends = curl
 	makedepends = python-html2text
-	depends = electron29
+	depends = electron32
 	depends = libxss
 	depends = bash
 	optdepends = libpulse: Pulseaudio support
