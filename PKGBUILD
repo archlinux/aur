@@ -22,13 +22,13 @@ depends=(
 	'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so' 'libgl'
 	'libsfml-network.so' 'libsfml-system.so' 'libspng.so' 'libswscale.so'
 	'libusb-1.0.so' 'libx11' 'libxi' 'libxrandr' 'lz4' 'lzo' 'mbedtls2'
-	'minizip-ng' 'pugixml' 'sdl2' 'sfml' 'speexdsp' 'xz' 'zstd'
-	# Addition dependencies to replace vendored deps
-	'cubeb' 'libxxhash.so' 'zlib-ng'
+	'pugixml' 'sdl2' 'sfml' 'speexdsp' 'xxhash' 'xz' 'zstd'
+	# Additional dependencies to replace vendored deps
+	'cubeb' 'minizip-ng' 'zlib-ng'
 )
 makedepends=(
-	'alsa-lib' 'cmake' 'git' 'libevdev' 'libminiupnpc.so' 'libpulse' 'libudev.so'
-	'ninja' 'python' 'qt6-base' 'qt6-svg'
+	'alsa-lib' 'cmake' 'git' 'libevdev' 'libminiupnpc.so' 'libpulse'
+	'libudev.so' 'ninja' 'python' 'qt6-base' 'qt6-svg'
 )
 checkdepends=('gtest')
 optdepends=('pulseaudio: PulseAudio backend')
