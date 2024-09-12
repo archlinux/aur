@@ -1,5 +1,5 @@
 # Maintainer: tuxayo <victor (replace by @) tuxayo DOT net>
-# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Brenton Horne <brentonhorne77 at gmail dot com>
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: t3ddy  <t3ddy1988 "at" gmail {dot} com>
@@ -8,18 +8,18 @@ pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
 epoch=1
 pkgver=a26.r849.gea4b580527
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform, 3D and historically-based real-time strategy game - built from git development version."
 arch=('i686' 'x86_64')
 url="http://play0ad.com/"
 license=('GPL-2.0-or-later' 'LicenseRef-CCPL')
-makedepends=('boost' 'cmake' 'mesa' 'zip' 'libsm' 'rust' 'git' 'git-lfs'
+makedepends=('boost' 'cmake' 'mesa' 'zip' 'libsm' 'rust' 'git'
              'enet' 'fmt' 'gloox' 'libminiupnpc.so'
              'libpng' 'libsodium' 'libvorbis' 'miniupnpc' 'openal'
-             'sdl2' 'wxwidgets-gtk3' 'which' 'subversion')
+             'sdl2' 'wxwidgets-gtk3' 'which' 'subversion' 'makepkg-git-lfs-proto')
 options=('!lto' '!debug') # lto breaks spidermonkey linking (https://bugs.gentoo.org/746947)
 source=(
-  "git+https://gitea.wildfiregames.com/0ad/0ad"
+  "git-lfs+https://gitea.wildfiregames.com/0ad/0ad"
   "patch.patch"
   https://www.python.org/ftp/python/3.11.10/Python-3.11.10.tar.xz{,.asc}
 )
@@ -38,13 +38,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${_pkgname}"
-  git lfs install --local
-  git remote add network-origin https://gitea.wildfiregames.com/0ad/0ad
-  git lfs fetch network-origin
-  git lfs checkout
-
   patch -p1 -i ../patch.patch # Fix build with GCC 14
-
 }
 
 build() {
