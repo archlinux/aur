@@ -1,4 +1,5 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer: Adam Perkowski <adas1per@protonmail.com>
+
 # Contributor: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: Andrey Mivrenik <gim at fastmail dot fm>
 # Contributor: Glen Oakley <goakley123@gmail.com>
@@ -9,14 +10,14 @@ pkgver=1.2.0.r3.gf157648
 pkgrel=1
 pkgdesc='A good looking terminal emulator which mimics the old cathode display - git version'
 arch=('i686' 'x86_64')
-url='https://github.com/Swordfish90/cool-retro-term'
-license=('GPL3')
+url="https://github.com/Swordfish90/$_pkgname"
+license=('GPL-3.0')
 depends=('hicolor-icon-theme' 'qt5-declarative')
 makedepends=('git' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qmltermwidget-git')
-provides=("$_pkgname=$pkgver")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/Swordfish90/cool-retro-term.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/Swordfish90/$_pkgname")
+sha256sums=(SKIP)
 
 prepare() {
   cd $_pkgname
