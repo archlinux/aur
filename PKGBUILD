@@ -77,5 +77,4 @@ build() {
 package() {
   cd $_gitname
   meson install -C build --destdir "${pkgdir}"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
