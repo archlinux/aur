@@ -4,7 +4,7 @@ pkgbase=python-acstools
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.7.1
+pkgver=3.7.2
 pkgrel=1
 pkgdesc="Python Tools for ACS (Advanced Camera for Surveys) Data"
 arch=('any')
@@ -24,7 +24,7 @@ checkdepends=('python-pytest-astropy-header'
               'python-ci_watson'
               'python-scikit-image>=0.11')  # stsci.tools, {ci_watson -> crds} -> astropy, requests skimage -> matplotlib, scipy
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('7808ea9ba14cd37a376a962c9a323f3d')
+md5sums=('0fa024a07f40b7878581578b242fa02f')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
