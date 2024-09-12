@@ -2,13 +2,13 @@
 
 _pkgbase=hid-tmff2
 pkgname="${_pkgbase}-dkms-git"
-pkgver=r224.9018ee9
+pkgver=r266.542f3f0
 pkgrel=1
 pkgdesc="Linux kernel module (DKMS) for Thrustmaster T300RS, T248, TX and TS-XW"
 arch=('x86_64')
 url="https://github.com/Kimplul/${_pkgbase}"
 license=('GPL-3.0')
-depends=('dkms' 'linux-headers')
+depends=('dkms')
 makedepends=('git' 'make')
 conflicts=("${_pkgbase}" "${_pkgbase}-dkms")
 provides=("hid-tmff2-dkms=${pkgver}")

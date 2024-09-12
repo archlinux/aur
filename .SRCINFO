@@ -1,6 +1,6 @@
 pkgbase = hid-tmff2-dkms-git
 	pkgdesc = Linux kernel module (DKMS) for Thrustmaster T300RS, T248, TX and TS-XW
-	pkgver = r224.9018ee9
+	pkgver = r266.542f3f0
 	pkgrel = 1
 	url = https://github.com/Kimplul/hid-tmff2
 	install = hid-tmff2-dkms-git.install
@@ -9,8 +9,7 @@ pkgbase = hid-tmff2-dkms-git
 	makedepends = git
 	makedepends = make
 	depends = dkms
-	depends = linux-headers
-	provides = hid-tmff2-dkms=r224.9018ee9
+	provides = hid-tmff2-dkms=r266.542f3f0
 	conflicts = hid-tmff2
 	conflicts = hid-tmff2-dkms
 	source = git+https://github.com/Kimplul/hid-tmff2
