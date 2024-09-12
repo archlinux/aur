@@ -1,6 +1,6 @@
 pkgbase = python-tree-sitter
 	pkgdesc = Python bindings to the tree-sitter parsing library
-	pkgver = 0.22.3
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://github.com/tree-sitter/py-tree-sitter
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = python-tree-sitter
 	makedepends = python-installer
 	depends = glibc
 	depends = python
-	source = https://pypi.io/packages/source/t/tree-sitter/tree-sitter-0.22.3.tar.gz
+	source = https://pypi.io/packages/source/t/tree-sitter/tree-sitter-0.23.0.tar.gz
 	source = LICENSE
-	sha256sums = 6516bcef5d36e0365670b97c91a169c8b1aa82ea4b60946b879020820718ce3d
+	sha256sums = 4c0d186f262a6b186e155a327150064abbf02b5659f7bc580eb965374025f2c2
 	sha256sums = SKIP
 
 pkgname = python-tree-sitter
