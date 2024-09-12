@@ -1,14 +1,14 @@
 pkgbase = kmonad-bin
 	pkgdesc = An advanced keyboard manager - static binary version
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/kmonad/kmonad
 	arch = x86_64
 	license = MIT
 	provides = kmonad
 	conflicts = kmonad
-	source = https://github.com/kmonad/kmonad/releases/download/0.4.2/kmonad
-	source = https://github.com/kmonad/kmonad/archive/0.4.2.tar.gz
+	source = https://github.com/kmonad/kmonad/releases/download/0.4.3/kmonad
+	source = https://github.com/kmonad/kmonad/archive/0.4.3.tar.gz
 	md5sums = SKIP
 	md5sums = SKIP
 

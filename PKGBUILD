@@ -1,6 +1,6 @@
 # Maintainer: Matteo Bonora <bonora.matteo@gmail.com>
 pkgname=kmonad-bin
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="An advanced keyboard manager - static binary version"
 arch=('x86_64')
