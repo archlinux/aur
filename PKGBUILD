@@ -5,7 +5,7 @@
 # Contributor: Jan Holthuis <holthuis.jan@googlemail.com>
 
 pkgname=nzbget-bin
-pkgver=24.2
+pkgver=24.3
 pkgrel=1
 pkgdesc="Download from Usenet using .nzb files (nzbget.com fork)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ conflicts=('nzbget' 'nzbget-systemd')
 install=nzbget.install
 source=("nzbget-${pkgver}-amd64.deb::https://github.com/nzbgetcom/nzbget/releases/download/v${pkgver}/nzbget-${pkgver}-amd64.deb"
         "nzbget.service")
-sha256sums=('830cede689b78f91286798beddd2d24cbf2b183e4ba614591ddb2df3576d07e9'
+sha256sums=('bac310b40cb7ae403da9f84ec810febaf95df6b6d1b209aa6392ac433fcfff56'
             'e92d2d09e56930475c9f28641a3326a17aa187834e1bd6328a65b6ed7cc25e99')
 
 prepare() {
