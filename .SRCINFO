@@ -1,0 +1,24 @@
+pkgbase = libqglviewer-qt5
+	pkgdesc = C++ library based on Qt that eases the creation of OpenGL 3D viewers, qt5 version
+	pkgver = 2.9.1
+	pkgrel = 1
+	url = https://github.com/GillesDebunne/libQGLViewer
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	license = GPL-3.0-only
+	license = LicenseRef-libQGLViewer
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	depends = glu
+	depends = libglvnd
+	depends = qt5-base
+	conflicts = libqglviewer
+	source = libqglviewer-qt5-2.9.1.tar.gz::https://github.com/GillesDebunne/libQGLViewer/archive/refs/tags/v2.9.1.tar.gz
+	source = qt-option.patch
+	sha256sums = ea4f9ac627c136a6851ffd3763b154f21c87a58bcec4e5d5b2d07e65a403096b
+	sha256sums = 7501d3fe3b2b280cf4a5cd3b5cc7b0198bd9bbeae6f960cd4d20e9c94a9310a5
+
+pkgname = libqglviewer-qt5

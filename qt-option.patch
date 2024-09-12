@@ -1,0 +1,16 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 034e560..218cf3d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,8 +17,9 @@ set(CMAKE_AUTOMOC ON)
+ set(CMAKE_AUTOUIC ON)
+ 
+ # This will find the Qt files.
+-find_package(Qt6 COMPONENTS Core Widgets Xml OpenGL OpenGLWidgets)
+-if (Qt6_FOUND)
++option(QT6 "use Qt6 instead of Qt5" ON)
++if (QT6)
++    find_package(Qt6 COMPONENTS Core Widgets Xml OpenGL OpenGLWidgets)
+     message("Building with Qt6")
+     set(QtLibs Qt::Core Qt::Widgets Qt::Xml Qt::OpenGL Qt::OpenGLWidgets)
+ else()
