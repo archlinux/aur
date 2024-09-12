@@ -63,10 +63,7 @@ build() {
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         else
-            echo 'registry=https://registry.npmjs.org'
-            echo 'disturl=https://nodejs.org/dist'
-            echo 'electron_mirror=https://www.electronjs.org/versions'
-            echo 'electron_builder_binaries_mirror=https://github.com/electron-userland/electron-builder-binaries/releases/download'
+            echo "Your network is OK."
         fi
     } >> .npmrc
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/;/AppImage/d;s/\"tar.gz\"/\"dir\"/" package.json
