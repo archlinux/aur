@@ -1,0 +1,4 @@
+[python-thumbnails-readme]
+source = "github"
+github = "firefly-cpp/thumbnails-readme"
+use_latest_release = true
