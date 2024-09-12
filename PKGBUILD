@@ -3,7 +3,7 @@
 
 _pkgname="waemon"
 pkgname="$_pkgname-git"
-pkgver=0.1.1.r0.gc2487de
+pkgver=0.1.1.r0.g35d4657
 pkgrel=1
 pkgdesc="Wayland wallpaper daemon."
 url="https://github.com/MaticBabnik/waemon"

@@ -1,6 +1,6 @@
 pkgbase = waemon-git
 	pkgdesc = Wayland wallpaper daemon.
-	pkgver = 0.1.1.r0.gc2487de
+	pkgver = 0.1.1.r0.g35d4657
 	pkgrel = 1
 	url = https://github.com/MaticBabnik/waemon
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = waemon-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
+	makedepends = nlohmann-json
 	makedepends = wayland-protocols
 	depends = wayland
 	depends = cairo
 	depends = openimageio
-	depends = nlohmann-json
 	provides = waemon=0.1.1
 	conflicts = waemon
 	source = waemon::git+https://github.com/MaticBabnik/waemon.git
