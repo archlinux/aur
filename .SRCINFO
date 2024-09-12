@@ -1,0 +1,15 @@
+pkgbase = rustii-bin
+	pkgdesc = Command line tool for converting images to ASCII art
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://crates.io/crates/rustii
+	arch = x86_64
+	license = MIT
+	provides = rustii=0.1.2
+	conflicts = rustii
+	source = rustii-0.1.2::https://github.com/ndr3www/rustii/releases/download/v0.1.2/rustii
+	source = LICENSE-0.1.2::https://raw.githubusercontent.com/ndr3www/rustii/v0.1.2/LICENSE
+	sha256sums = abdc91ce9a1c50896c2c32a9bab689f84b88e429d8c96fb72c8517dfebfa860d
+	sha256sums = 4cf46f46911495e998338f7e5268f1cc72191241a6b5bfd77ef96f95e4df91ec
+
+pkgname = rustii-bin
