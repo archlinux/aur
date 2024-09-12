@@ -2,15 +2,20 @@
 
 pkgname=arenatracker-bin
 _pkgname=ArenaTracker
-pkgver=24.07
+pkgver=24.09
 pkgrel=1
 pkgdesc="Tracks your Hearthstone Arena matches and cards."
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://github.com/supertriodo/Arena-Tracker/"
 license=('GPL')
-depends=('qt5-base' 'xcb-util-renderutil' 'libpng12' 'openssl-1.0' 'gtk2')
+depends=('qt5-base'
+		'xcb-util-renderutil'
+		'libpng12'
+		'openssl-1.0'
+		'gtk2')
 provides=(arenatracker)
-conflicts=('arenatracker-git' 'arenatracker')
+conflicts=('arenatracker-git'
+			'arenatracker')
 source=("https://github.com/supertriodo/Arena-Tracker/releases/download/v$pkgver/Arena.Tracker.v$pkgver.Linux.zip"
 	"ArenaTracker.ico"
 	"ArenaTracker.desktop")
@@ -26,6 +31,6 @@ package() {
 	ln -s "/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
 
-md5sums=('c3215f55073cff0ca95f0f99feed8285'
+md5sums=('2dd2492ca13823358ea43e46b19b0bd6'
          '926afbd5024076726f89aa5eb8937a31'
          '57c93a7a9550450ee5d1d757a3b228fd')
