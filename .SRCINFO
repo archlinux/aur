@@ -16,6 +16,7 @@ pkgbase = python-numpy-mkl
 	makedepends = procps-ng
 	depends = python
 	depends = intel-oneapi-mkl
+	optdepends = python-threadpoolctl: for show_runtime() support
 	provides = python-numpy=2.1.1
 	conflicts = python-numpy
 	source = https://github.com/numpy/numpy/releases/download/v2.1.1/numpy-2.1.1.tar.gz

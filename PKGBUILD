@@ -23,6 +23,7 @@ conflicts=(python-numpy)
 depends=(python intel-oneapi-mkl)
 makedepends=(python-build python-installer meson-python python-setuptools cython gcc-fortran procps-ng)
 checkdepends=(python-pytest python-hypothesis)
+optdepends=('python-threadpoolctl: for show_runtime() support')
 source=("https://github.com/numpy/numpy/releases/download/v$pkgver/numpy-$pkgver.tar.gz")
 sha512sums=('94843f88a32cc1df3e572ac13f294e49201a1f50fbd28707a500839cdff61958823c5b8748a7a54cd866a1acc9bd11efde53042141a81cca44393ee7cee78cdc')
 
