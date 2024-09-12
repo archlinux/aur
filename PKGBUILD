@@ -4,8 +4,8 @@ provides=(librewolf)
 conflicts=(librewolf)
 __pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=129.0.2
-pkgrel=1
+pkgver=130.0
+pkgrel=3
 pkgdesc="Librewolf with the privacy.override_rfp_for_color_scheme about:config option added, which (if enabled) let's you change the color scheme even if rfp is turned on"
 url="https://librewolf.net/"
 arch=(x86_64 aarch64)
@@ -93,15 +93,13 @@ source=(
   https://gitlab.com/api/v4/projects/32320088/packages/generic/librewolf-source/${pkgver}-${pkgrel}/librewolf-${pkgver}-${pkgrel}.source.tar.gz # {,.sig} sig files are currently broken, it seems
   $__pkgname.desktop
   "default192x192.png"
-  "${_arch_git}/f5580e563ac0dc7f0095af92bc59d849f0f45849/0004-Bug-1912663-Fix-some-build-issues-with-cbindgen-0.27.patch"
   allow_dark.patch
 )
 
-sha256sums=('7308bf8765201746babca8638177b81252d85831b20ab721bc02dd4f83c032f1'
+sha256sums=('68446ada62836cb232617796cf58870626d053a8af3513f0142c9c93affbc448'
             '7d01d317b7db7416783febc18ee1237ade2ec86c1567e2c2dd628a94cbf2f25d'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
-            'dd2aba1c02c21b89ceed0713a6aa0241365fe79b1e3a4d21cdcd7231db6fab5e'
-            'dd796fdd2605eefa9a5cc47404ac9a96259dac40f90f08f329166b46b55e0a91')
+            '2a8625e7dfe6859475c7b68dad640ff6ed3f243211f623b47f7024af75854005')
 
 validpgpkeys=('034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3') # maltej(?)
 
@@ -182,11 +180,7 @@ export LDFLAGS+=" -Wl,--no-keep-memory"
 fi
 
   # upstream Arch fixes
-
-  # Fix build with cinbdgen 0.27.0
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1912663
-  patch -Np1 -i ../0004-Bug-1912663-Fix-some-build-issues-with-cbindgen-0.27.patch
-
+  #
 }
 
 

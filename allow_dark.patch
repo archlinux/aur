@@ -1,7 +1,7 @@
 diff -ru a/browser/components/preferences/main.js b/browser/components/preferences/main.js
 --- a/browser/components/preferences/main.js
 +++ b/browser/components/preferences/main.js
-@@ -4272,6 +4272,7 @@
+@@ -4271,6 +4271,7 @@
      FORCED_COLORS_QUERY.addEventListener("change", this);
      Services.prefs.addObserver(PREF_USE_SYSTEM_COLORS, this);
      Services.prefs.addObserver("privacy.resistFingerprinting", this);
@@ -9,7 +9,7 @@ diff -ru a/browser/components/preferences/main.js b/browser/components/preferenc
      Services.obs.addObserver(this, "look-and-feel-changed");
      this._update();
    },
-@@ -4309,6 +4310,7 @@
+@@ -4308,6 +4309,7 @@
    destroy() {
      Services.prefs.removeObserver(PREF_USE_SYSTEM_COLORS, this);
      Services.prefs.removeObserver("privacy.resistFingerprinting", this);
@@ -17,9 +17,9 @@ diff -ru a/browser/components/preferences/main.js b/browser/components/preferenc
      Services.obs.removeObserver(this, "look-and-feel-changed");
      FORCED_COLORS_QUERY.removeEventListener("change", this);
    },
-@@ -4350,7 +4352,8 @@
+@@ -4349,7 +4351,8 @@
      this.warning.hidden = !forcingColorsAndNoColorSchemeSupport;
-
+ 
      document.getElementById("web-appearance-rfp-warning")?.remove();
 -    if (Services.prefs.getBoolPref("privacy.resistFingerprinting")) {
 +    if (Services.prefs.getBoolPref("privacy.resistFingerprinting") &&
@@ -30,8 +30,8 @@ diff -ru a/browser/components/preferences/main.js b/browser/components/preferenc
 diff -ru a/dom/base/Document.cpp b/dom/base/Document.cpp
 --- a/dom/base/Document.cpp
 +++ b/dom/base/Document.cpp
-@@ -19067,7 +19067,8 @@
-
+@@ -19126,7 +19126,8 @@
+ 
  ColorScheme Document::PreferredColorScheme(IgnoreRFP aIgnoreRFP) const {
    if (ShouldResistFingerprinting(RFPTarget::CSSPrefersColorScheme) &&
 -      aIgnoreRFP == IgnoreRFP::No) {
@@ -39,14 +39,14 @@ diff -ru a/dom/base/Document.cpp b/dom/base/Document.cpp
 +      !StaticPrefs::privacy_override_rfp_for_color_scheme()) {
      return ColorScheme::Light;
    }
-
+ 
 diff -ru a/modules/libpref/init/StaticPrefList.yaml b/modules/libpref/init/StaticPrefList.yaml
 --- a/modules/libpref/init/StaticPrefList.yaml
 +++ b/modules/libpref/init/StaticPrefList.yaml
-@@ -14153,6 +14153,12 @@
+@@ -14300,6 +14300,12 @@
    value: false
    mirror: always
-
+ 
 +# Allows overriding RFP for only the dark/light pref
 +- name: privacy.override_rfp_for_color_scheme
 +  type: bool
