@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=memospot-bin
 _pkgname=Memospot
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Self-contained desktop version of Memos -a privacy-first, lightweight note-taking service."
 arch=("x86_64")
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/memospot/memospot/v${pkgver}/LICENSE"
 )
-sha256sums=('bcd8f863fb0e52d0616efbd7c1e1979fc3f999ea258887b14f093e6686dabded'
+sha256sums=('72e4c4acdafe2d187e23871703353b9beacb45d0c86b5439416a11afdbebeae2'
             '7b6871a7c7b860a8a3d9ff677ac8aea44a3dd8aa9e33da91adcd26cc54182cde')
 build() {
     bsdtar -xf "${srcdir}/data."*
