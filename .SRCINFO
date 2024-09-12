@@ -1,6 +1,6 @@
 pkgbase = wps-office-bin
 	pkgdesc = WPS Office, is an office productivity suite.
-	pkgver = 12.1.0.17881
+	pkgver = 12.1.0.17885
 	pkgrel = 1
 	url = https://linux.wps.cn
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = wps-office-bin
 	options = !strip
 	options = !zipman
 	options = !debug
-	source_x86_64 = wps-office_12.1.0.17881_amd64.deb::https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/17881/wps-office_12.1.0.17881_amd64.deb?t=1725934765&k=1e573d4e17ae2f3562df950032e9bbd1
-	sha1sums_x86_64 = ef71d43eaa06a6ffbad4f6307499b80f25478d42
+	source_x86_64 = wps-office_12.1.0.17885_amd64.deb::https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2023/17885/wps-office_12.1.0.17885_amd64.deb?t=1726117735&k=45bbe46573afa99ea835c553db059c35
+	sha1sums_x86_64 = 89d695abee061c97fd64062d99c776e6f516b172
 
 pkgname = wps-office-bin
