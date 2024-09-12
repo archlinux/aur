@@ -1,7 +1,7 @@
 pkgbase = electricsheep
 	pkgdesc = Screensaver that realize the collective dream of sleeping computers from all over the internet
 	pkgver = 3.0.2
-	pkgrel = 12
+	pkgrel = 13
 	url = http://community.electricsheep.org/
 	arch = x86_64
 	license = GPL
@@ -20,7 +20,7 @@ pkgbase = electricsheep
 	depends = tinyxml
 	optdepends = xscreensaver: to use electricsheep with xscreensaver
 	options = !emptydirs
-	source = electricsheep-3.0.2-12.tar.gz::https://github.com/Rogach/electricsheep/archive/fa2d296ae71ca479e9bd89e8024b8a1ee556ff0c.tar.gz
-	sha256sums = 3358f8e2ee499f3a26c7a271e6ecb7b29230117d84ac5b8524e07b8f5adf9c04
+	source = electricsheep-3.0.2-13.tar.gz::https://github.com/Rogach/electricsheep/archive/f3417c7a5b6bf5bc56d2cb5572ebfad3661dc740.tar.gz
+	sha256sums = 2383e5962d05545ad0321c224d2b443a4f4c57207876555794461e299fd1c5c2
 
 pkgname = electricsheep
