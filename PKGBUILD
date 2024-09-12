@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=tui-slides
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Terminal presentation utility with a modern TUI"
 arch=('x86_64')
@@ -11,12 +11,12 @@ license=('Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('2333f4e3f4c9a0e74242c134309957b899a5e12c42ced291e2b7463f28ee9652f221f1592386492aacf21b2ddc70e0628b1c9ba3b1595f4d1899ce207d77f168')
+sha512sums=('c117bf56d9ce83c3aea537090d30ea6efa22e3f5a0779a08f421e66327e36b3ca6a2a69a8b52dd3002236c7f8af3751c3f0f095702a0f561fca103545d108ae4')
 options=('!lto')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')" # --locked
 }
 
 build() {
