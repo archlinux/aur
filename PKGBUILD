@@ -2,7 +2,7 @@
 _appname=tomato
 pkgname="${_appname}-radio-automation-bin"
 _pkgname="Tomato Radio Automation"
-pkgver=0.10.12
+pkgver=0.11.5
 _electronversion=32
 pkgrel=1
 pkgdesc="Tomato Radio Automation desktop client. Dead simple radio ads.Binary version.Use system-wide electron."
@@ -28,17 +28,19 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-client-v${pkgver}-linux_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-client-v${pkgver}-linux_amd64.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('25eaf0e5f583d5973bda8e0917d282939b6e76519644b648116f4ea38b062d1d')
-sha256sums_x86_64=('fa2c419f3497deb0976d49e2ca68b287d8d7aaa3f2255e964c8d07e17f1ce83a')
+sha256sums_aarch64=('11120a9d82f96de3fbbe1163f65e832b4fb44bb57e3f18b133dc832586d61eca')
+sha256sums_x86_64=('9f65b9a3a513b91768c5f53a3cdd58beb1e73632ac94c531f0384955e715bd30')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}-p7|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-bin}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/${_pkgname}/
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|${_appname}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    bsdtar -xf "${srcdir}/data."*
+    sed "s/${_appname}/${pkgname%-bin}/" -i "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
