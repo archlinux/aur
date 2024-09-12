@@ -1,19 +1,20 @@
 # Contributor: Doug Newgard <scimmia at archlinux dot info>
+# Maintainer: Adam Perkowski <adas1per@protonmail.com>
 
 _pkgname=qmltermwidget
 pkgname=$_pkgname-git
 pkgrel=1
-pkgver=0.2.0.r186.g65e75bc
+pkgver=0.2.0.r192.g6322802
 pkgdesc='QML port of qtermwidget - development version'
 arch=('x86_64')
-url='https://github.com/Swordfish90/qmltermwidget'
-license=('GPL')
+url="https://github.com/Swordfish90/$_pkgname"
+license=('GPL-2.0')
 depends=('qt5-declarative')
 makedepends=('git')
-provides=("$_pkgname=$pkgver")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/Swordfish90/qmltermwidget.git")
-sha512sums=('SKIP')
+source=("git+https://github.com/Swordfish90/$_pkgname")
+sha512sums=(SKIP)
 
 pkgver () {
   cd "$srcdir/$_pkgname"
