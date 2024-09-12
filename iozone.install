@@ -1,7 +1,6 @@
 post_install() {
   echo ">>> Iozone usage: man iozone"
-  echo ">>> Rules for accurate results: /usr/share/doc/iozone/Guidelines.doc"
-  echo ">>> How to plot results: /usr/share/doc/iozone/Generate_Graphs.txt"
+  echo ">>> Rules for accurate results: /usr/share/doc/iozone/Run_rules.doc"
 }
 
 post_upgrade() {

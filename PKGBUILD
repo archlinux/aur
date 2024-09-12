@@ -7,7 +7,7 @@
 pkgname=iozone
 pkgver=3.506
 _pkgver=${pkgver/./_}
-pkgrel=3
+pkgrel=4
 pkgdesc="A filesystem benchmark tool"
 arch=('any')
 url="http://www.iozone.org/"
