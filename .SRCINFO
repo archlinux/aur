@@ -1,18 +1,18 @@
 pkgbase = burpsuite
 	pkgdesc = An integrated platform for performing security testing of web applications (free edition)
-	pkgver = 2024.8
+	pkgver = 2024.7.6
 	pkgrel = 1
 	url = https://portswigger.net/burp/
 	install = burpsuite.install
 	arch = any
 	license = custom
 	depends = java-runtime>=21
-	noextract = burpsuite-2024.8.jar
-	source = burpsuite-2024.8.jar::https://portswigger-cdn.net/burp/releases/download?product=community&version=2024.8&type=Jar
+	noextract = burpsuite-2024.7.6.jar
+	source = burpsuite-2024.7.6.jar::https://portswigger-cdn.net/burp/releases/download?product=community&version=2024.7.6&type=Jar
 	source = LICENSE
 	source = burpsuite.desktop
 	source = icon64.png
-	sha256sums = 65012b77baafb3e58da02a84d287b8ffae1a37771614cb31dccd8f1e7dc3994a
+	sha256sums = 3ab8b1200f4a7f3b57c094319087bfe94f5955e2fc90c68aecb80b04c3226da8
 	sha256sums = a1146672de7084a1cddc5b7dab4d18b3530c194bd6e45a2b0ac04b579751ca30
 	sha256sums = 950c61d7ce1257c21a4152abebb8da320d0206ceb59247d6c912903d1ed39fc8
 	sha256sums = d31232a7dbdab9d5723f12aa25c52d13fd46ef2e8837a85fb9a08c3a7f151541
