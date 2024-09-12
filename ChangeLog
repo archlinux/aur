@@ -937,3 +937,20 @@ Fixes:
 - We fixed an issue that could make it impossible to authenticate Outlook accounts due to persistent requests for an admin authorisation, even if this was already granted.
 - A problem that could cause the event panel not to open in some rare cases has been rectified.
 - A bug that was causing unhealthy accounts to appear as correctly connected has been fixed.
+
+
+=== Morgen 3.5.7
+New Features:
+- New task search and filter options are now available. You can now search and filter tasks across all task integrations in one place, making it easier than ever to find a specific task. We will add the ability to save filters as custom views on your task panel in future iterations. Please let us know what other filtering options you would like.
+- Morgen now has multi-person Scheduling Links and Open Invites. Add your colleagues to a link to let Morgen check your consolidated availability. Once an invitee selects a time slot, all co-hosts will be added and invited to the event.
+
+
+Improvements:
+- You can now create your Morgen team and invite team members directly from the desktop app, meaning you no longer need to manage your team from the web platform.
+- We improved the UX of the attendee selector.
+ 
+Fixes:
+- We fixed an edge case that caused events organised by you to be displayed with a dashed border as if they were waiting for RSVP.
+- We fixed an issue that could make it impossible to authenticate Outlook accounts due to persistent requests for an admin authorisation, even if this was already granted.
+- A problem that could cause the event panel not to open in some rare cases has been rectified.
+- A bug that was causing unhealthy accounts to appear as correctly connected has been fixed.
