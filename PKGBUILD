@@ -3,20 +3,33 @@
 pkgname=python-pykdtree
 pkgdesc='Fast kd-tree implementation with OpenMP-enabled queries'
 url='https://github.com/storpipfugl/pykdtree'
-pkgver=1.3.12
+pkgver=1.3.13
 pkgrel=1
 arch=('x86_64')
 license=('LGPL-3.0-only')
-depends=('gcc-libs' 'python-numpy')
-makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=('python-nose')
+
+depends=(
+  'gcc-libs'
+  'glibc'
+  'python-numpy'
+)
+makedepends=(
+  'cython'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+checkdepends=(
+ 'python-nose'
+)
 
 _pypi=pykdtree
 source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  'cc20b2a67c64056485a314d2c2b6dba354af7ee1c8fb8dae1be6f2936a374341'
+  '3accf852e946653e399c3d4dbbe119dbc6d3f72cfd2d5a95cabf0bf0c7f924fe'
 )
 
 prepare() {
