@@ -1,7 +1,7 @@
 # Maintainer: Alexey Rochev <equeim@gmail.com>
 
 pkgname='tremotesf'
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc='Remote GUI for transmission-daemon'
 _github='https://github.com/equeim/tremotesf2'
@@ -12,7 +12,7 @@ depends=('qt6-base' 'qt6-svg' 'kwidgetsaddons' 'kwindowsystem' 'fmt' 'hicolor-ic
 makedepends=('qt6-tools' 'cmake' 'ninja' 'gettext' 'cxxopts' 'pkgconf')
 source=("${_github}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.zst")
 
-sha256sums=('dbd41d187b8616a74406389fb4a6233c0f8c696d361030ac8986813bfe4dd6b8')
+sha256sums=('e0d467bc070852c25767bb580919d5fc63f875f4b59154ed7112aca0c7111ed3')
 
 build() {
     cmake -B build -S "${pkgname}-${pkgver}" \
