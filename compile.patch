@@ -1,0 +1,40 @@
+--- common/scheduler/task.c  2024-09-12 22:13:41.876266121 +0200
++++ common/scheduler/task.c  2024-09-12 22:13:41.876266121 +0200
+@@ -40,6 +40,7 @@
+ #include "duration.h"
+ #include "file.h"
+ #include "log.h"
++#include "utilities.h"
+
+ static const char* task_str = "task";
+ static pthread_mutex_t worklock = PTHREAD_MUTEX_INITIALIZER;
+--- enforcer/src/utils/kc_helper.c	2024-08-22 17:02:49.000000000 +0200
++++ enforcer/src/utils/kc_helper.c	2024-09-12 22:29:33.009631343 +0200
+@@ -27,6 +27,7 @@
+ #include <syslog.h>
+ #include <stdarg.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <sys/stat.h>
+ #include <errno.h>
+--- enforcer/src/daemon/time_leap_cmd.c	2024-08-22 17:02:49.000000000 +0200
++++ enforcer/src/daemon/time_leap_cmd.c	2024-09-12 22:30:02.476299007 +0200
+@@ -27,6 +27,7 @@
+  */
+
+ #include <getopt.h>
++#include <time.h>
+ #include "config.h"
+
+ #include "file.h"
+--- enforcer/src/utils/kaspcheck.c	2024-08-22 17:02:49.000000000 +0200
++++ enforcer/src/utils/kaspcheck.c	2024-09-12 22:29:19.129630872 +0200
+@@ -25,6 +25,7 @@
+
+ #define _GNU_SOURCE
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <getopt.h>
+ #include <string.h>
+ #include <syslog.h>

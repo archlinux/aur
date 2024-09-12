@@ -1,7 +1,7 @@
 # Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
 
 pkgname=opendnssec
-pkgver=2.1.13
+pkgver=2.1.14
 pkgrel=1
 pkgdesc="Turn-key solution for DNSSEC"
 arch=('i686' 'x86_64')
@@ -21,27 +21,30 @@ options=()
 install="opendnssec.install"
 changelog=
 source=("http://www.opendnssec.org/files/source/${pkgname}-${pkgver}.tar.gz"
-	"pid-path.patch"
-	"2.0-migrator.patch"
+        "pid-path.patch"
+        "2.0-migrator.patch"
+        "compile.patch"
         "ods-signer.service"
         "ods-enforcer.service"
         "opendnssec.tmpfiles")
 noextract=()
 
-sha1sums=('af526800ad5ecad61702952fafcd7937c12373bd'
-          '72bff87f9a2900e24921451f35716b8a94fcf695'
+sha1sums=('02e9cb52452c010eff6c012b0844ee505aa20c87'
+          '1fe209788587d2c8870939ef70be0ec51c170be7'
           '04e8bf7504cf728b2c3744d19295a63839dd61ca'
+          'bab8a37412fa86e1fffb8f2889a63c86dc03bb69'
           '2a4fac3a16fea3f89b281f0933b6920524978d49'
           'fa28111fdce06c389813ff6ed2d4cae136252488'
           'f10d783b3e0232fd3beff645a07207c161371d0c')
-sha256sums=('76e9358dd242abf9a7359948ab422ce9b34a04150b5af764dae5c214f9041b49'
-            'd11f75881ddf9f6b753b6179ec039ee3a77bb55baa7bef183af239de3e6db073'
+sha256sums=('5a68d62ea0ea3a6c61e9f4946f462c7b907fbe6bccc9e8a721b7fe0f906f95d0'
+            '45e2a55bd72cbf507787991f66f897f20903f0a538e68be789f480af3d73e409'
             '1a7f604364c050f7206ba893d109db5851c60cb5b000bd282ac55b81d8ff14ca'
+            '32ce1ce254b4c5d9bb0f0a00359eedd65619d3df3ea0e6b9ca9c273476b924bb'
             '596d238ad219de1c88f79fd26a8b829250bf0512a308b34c11fd231d0b4eb0f4'
             '75cecbfb0ece13957a68a5bc39c20a1d69b95373e7473545d70621e1732733d8'
             '28a43d8d5ee512db5425c86bdba9c5832753dce0260291958b1b73253e3ebf55')
 
-build() 
+prepare()
 {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
@@ -50,6 +53,9 @@ build()
 
   # 1.4 -> 2.0 migrator
   patch -p0 < "${srcdir}/2.0-migrator.patch"
+
+  # Compile error
+  patch -p0 < "${srcdir}/compile.patch"
 
   aclocal
   autoconf
@@ -65,8 +71,12 @@ build()
   -e "s/\$(INSTALL) -d \$(DESTDIR)\$(localstatedir)\/run\/opendnssec/#Removed/" \
   -e "s/\$(INSTALL) -d \$(DESTDIR)\$(localstatedir)\/run/\$(INSTALL) -d \$(DESTDIR)\$(OPENDNSSEC_PID_DIR)/" \
   Makefile
+}
 
-  make
+build()
+{
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make CFLAGS='-D _XOPEN_SOURCE=600'
 }
 
 package() {
@@ -93,6 +103,6 @@ package() {
 
   chmod 750 "${pkgdir}/etc/opendnssec" \
             "${pkgdir}/var/lib/opendnssec"
-            
+
   rm "${pkgdir}/run" -R
 }
