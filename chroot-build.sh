@@ -1,24 +1,22 @@
 #!/bin/bash
 
-# This script updates the package version if a new version is available
 set -euxo pipefail
 
 # Preparing arch-chroot
 CHROOT=$HOME/.local/share/chroot
-if [[ ! -d "$CHROOT" ]]; then
-        mkdir -p ~/.local/share/chroot
-        mkarchroot "$HOME/.local/share/chroot/root" base-devel
-        arch-nspawn "$HOME/.local/share/chroot/root" pacman -Syu
+if [[ ! -d "$CHROOT/root" ]]; then
+    mkdir -p "$CHROOT"
+    mkarchroot -M /etc/makepkg.conf "$CHROOT/root" base-devel
 fi
 
-# Start generate package
+arch-nspawn "$CHROOT/root" pacman -Syu
 makechrootpkg -c -r "$CHROOT" -- -Acsf .
 
 # Update .SRCINFO
-#makepkg --printsrcinfo >.SRCINFO
+makepkg --printsrcinfo >.SRCINFO
 
-# Commit changes
-#git add PKGBUILD .SRCINFO
-#git commit -s -m "Update to ${VER}"
-#rm -rf *.gz *.log *.zst
-sudo rm -Rf "$CHROOT"
+rm -rf -- */ *.log *.gz
+#sudo btrfs subvolume delete "$CHROOT/root"
+
+PACKAGE="$(makepkg --packagelist)"
+gpg --use-agent --output "$PACKAGE.sig" --detach-sign "$PACKAGE"
