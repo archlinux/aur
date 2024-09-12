@@ -1,8 +1,8 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=stfed
-pkgver=1.0.2
-pkgrel=4
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Synthing folder event daemon"
 arch=('x86_64')
 url="https://github.com/desbma/${pkgname}"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gcc-libs' 'syncthing')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/desbma/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('4d9dc80c8377b53378eb8df678d50636fbdbc7628bd6740a0476e8ce02632e24c04b06c23aae1a37e8c338a9e652b363a24a26015dfd76fe792428805abb40c6')
+sha512sums=('dc765af1e9130269c1e8a483f61315878d122e65caaf9be989bce768964167a4908ef408e2ee10782d1e783d948e3d84811cfd4fd06ad5a9b11cee867ca8919a')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
