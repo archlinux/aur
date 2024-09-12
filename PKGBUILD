@@ -4,7 +4,7 @@ _pkgname=pcl_ros
 _metaname=perception_pcl
 _distro=humble
 pkgname="ros2-$_distro-${_pkgname/_/-}"
-pkgver=2.4.3
+pkgver=2.4.5
 pkgrel=1
 pkgdesc="PCL-ROS is the preferred bridge for 3D applications involving n-D Point Clouds and 3D geometry processing in ROS."
 url="https://index.ros.org/p/$_pkgname/"
@@ -19,7 +19,7 @@ depends=(
 )
 #checkdepends=('cppcheck' 'flake8' 'gtest' 'python-pydocstyle')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ros-perception/$_metaname/archive/$pkgver.tar.gz")
-sha256sums=('a10707f096e8eb8d4c290c29739f35af2e50ae254d7cc56b91d868d50f8fc16e')
+sha256sums=('018f1ceae604cae9e9beb1bbae31e79052f35c71bbbcedcf5adb44aaaf4aedab')
 
 build() {
   source /opt/ros/$_distro/setup.bash

@@ -1,6 +1,6 @@
 pkgbase = ros2-humble-pcl-ros
 	pkgdesc = PCL-ROS is the preferred bridge for 3D applications involving n-D Point Clouds and 3D geometry processing in ROS.
-	pkgver = 2.4.3
+	pkgver = 2.4.5
 	pkgrel = 1
 	url = https://index.ros.org/p/pcl_ros/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ros2-humble-pcl-ros
 	depends = pcl
 	depends = ros2-humble
 	depends = ros2-humble-pcl-conversions
-	source = ros2-humble-pcl-ros-2.4.3.tar.gz::https://github.com/ros-perception/perception_pcl/archive/2.4.3.tar.gz
-	sha256sums = a10707f096e8eb8d4c290c29739f35af2e50ae254d7cc56b91d868d50f8fc16e
+	source = ros2-humble-pcl-ros-2.4.5.tar.gz::https://github.com/ros-perception/perception_pcl/archive/2.4.5.tar.gz
+	sha256sums = 018f1ceae604cae9e9beb1bbae31e79052f35c71bbbcedcf5adb44aaaf4aedab
 
 pkgname = ros2-humble-pcl-ros
