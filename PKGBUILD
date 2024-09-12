@@ -4,7 +4,7 @@ _name=great-tables
 pkgname="python-${_name}"
 pkgver=0.10.0
 _tag=3a14f2b6c08e59c442ca4f55511312888b69c860 # git rev-parse "v${pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Make awesome display tables using Python"
 arch=('any')
 url="https://posit-dev.github.io/great-tables/"
@@ -24,7 +24,7 @@ depends=('ipython'
 	 'python-typing_extensions>=3.10.0.0'
 	 'python>=3.9'
 	)
-checkdepends=('python-ipykernel' 'python-pytest' 'selenium-manager')
+checkdepends=('python-ipykernel' 'python-pytest' 'selenium-manager' 'python-pytest-textual-snapshot')
 source=("$pkgname-$pkgver::git+https://github.com/posit-dev/great-tables.git#tag=$_tag"
 	"pytest.ini")
 b2sums=('cdc33a8b91e472e223f9cb66ed1d06508465a75dde40eb5585b3134982efd15e570a159f0161a71351c69decba9d687c4b0ffee3ca8ab4f5a1403138b957605d'
