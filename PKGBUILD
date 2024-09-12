@@ -1,44 +1,45 @@
-# Maintainer: Emilio Reggi <nag@mailbox.org>
+# Maintainer: Adam Perkowski <adas1per@protonmail.com>
 pkgname=himalaya-git
 _pkgname=himalaya
-pkgver=r388.bda37ca
+pkgver=r713.681837b
 pkgrel=1
-pkgdesc="Minimalist CLI email client, written in Rust."
-arch=('x86_64')
-url="https://github.com/soywod/himalaya"
+pkgdesc="CLI to manage emails, written in Rust"
+arch=('x86_64' 'aarch64')
+url="https://github.com/pimalaya/himalaya"
 license=('MIT')
-depends=('gcc-libs' 'openssl')
-makedepends=('cargo' 'git')
-optdepends=('notmuch-runtime: notmuch backend through cargo features')
+depends=('glibc' 'gcc-libs' 'openssl')
+makedepends=('rustup' 'git')
+optdepends=('notmuch-runtime: notmuch backend through cargo features' 'gpgme: encryption')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}"::"git+${url}")
-md5sums=('SKIP')
+source=("git+${url}")
+md5sums=(SKIP)
 
 pkgver() {
-	cd "$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$_pkgname"
-	cargo update
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    export RUSTUP_TOOLCHAIN=stable
+    
+    cd "$_pkgname"
+
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "$_pkgname"
-	RUSTUP_TOOLCHAIN=stable cargo build --release --frozen --features default --target-dir=target
-}
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
 
-check() {
-   cd "$_pkgname"
-   RUSTUP_TOOLCHAIN=stable cargo test --frozen --features default
+    cd "$_pkgname"
+
+    cargo build --frozen --release --features default
 }
 
 package() {
    cd "$_pkgname"
-   install -Dm 755 target/release/${_pkgname} -t "${pkgdir}/usr/bin"
-   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${_pkgname}"
-   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/${_pkgname}"
+   
+   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
 }
+
