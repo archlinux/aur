@@ -1,8 +1,8 @@
 pkgbase = linux-neptune-65
 	pkgdesc = SteamOS linux-neptune 6.5 mirrored from Valve
-	pkgver = 6.5.0.valve13
+	pkgver = 6.5.0.valve19
 	pkgrel = 1
-	url = https://gitlab.steamos.cloud/jupiter/linux-integration/-/tree/6.5.0-valve13
+	url = https://gitlab.steamos.cloud/jupiter/linux-integration/-/tree/6.5.0-valve19
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -17,12 +17,12 @@ pkgbase = linux-neptune-65
 	makedepends = openssh
 	options = !strip
 	options = !debug
-	source = archlinux-linux-neptune::git+https://gitlab.com/evlaV/linux-integration.git#tag=6.5.0-valve13
+	source = archlinux-linux-neptune::git+https://gitlab.com/evlaV/linux-integration.git#tag=6.5.0-valve19
 	source = config
 	source = config-neptune
 	sha256sums = SKIP
 	sha256sums = 5aff0f8584e01165dc20cd107df338f57a13ce7f0da14e07f4c9097cd748469f
-	sha256sums = 94b879b743ea6385d1c7dbfbe65a003dd537b160f776f77bc43734466c726420
+	sha256sums = 8a2f6844c09df44bb09e858a518c4f69150d12557450a351778010acc9079154
 
 pkgname = linux-neptune-65
 	pkgdesc = The SteamOS linux-neptune 6.5 mirrored from Valve kernel and modules

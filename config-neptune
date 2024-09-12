@@ -106,3 +106,6 @@ CONFIG_ATH11K_TRACING=y
 
 # Disable simple-framebuffer to fix logo regression
 CONFIG_SYSFB_SIMPLEFB=n
+
+# Disable call depth tracking speculative execution vulnerability mitigation
+CONFIG_CALL_DEPTH_TRACKING=n
