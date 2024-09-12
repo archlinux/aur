@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=(wechat-uos-bwrap wechat-uos-qt wechat-key-block)
 pkgver=1.0.0.241
-pkgrel=33
+pkgrel=34
 epoch=
 pkgdesc="WeChat Qt, the so-called universal version"
 arch=('x86_64' 'aarch64' 'loong64')
@@ -105,7 +105,7 @@ source_loong64=(
 	wechat-loong64-${pkgver}.deb::"https://pro-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.wechat/com.tencent.wechat_${pkgver}_arm64.deb"
 )
 
-md5sums=('3a641011562ede05390ecb8b78fb718c'
+md5sums=('67f3225a175416b7aea335710c0829f2'
          '5c4a2dd36966cecc3ac48a07a4e98cc5'
          '468e0367346707c026e577e7bf3e3a82'
          'b48d860c2d03ddb4ffa609fcd5fe6857'

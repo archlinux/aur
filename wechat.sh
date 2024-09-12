@@ -267,6 +267,13 @@ function execApp() {
 		--ro-bind "${XDG_RUNTIME_DIR}/pulse" \
 			"${XDG_RUNTIME_DIR}/pulse" \
 		--bind "${XDG_DATA_HOME}"/WeChat_Data "${HOME}" \
+		--dir "${XDG_DATA_HOME}/WeChat_Data/Shared Directory" \
+		--dir "${HOME}/共享目录" \
+		--dir "${XDG_DOCUMENTS_DIR}/WeChat" \
+		--bind "${XDG_DOCUMENTS_DIR}/WeChat" \
+			"${HOME}/共享目录" \
+		--bind "${XDG_DOCUMENTS_DIR}"/WeChat \
+			"${HOME}/Shared Directory" \
 		--ro-bind-try "${XAUTHORITYpath}" "${XAUTHORITYpath}" \
 		--ro-bind /usr/lib/wechat-uos-qt/open \
 			/sandbox/dde-file-manager \
@@ -291,10 +298,6 @@ function execApp() {
 		${bwBindPar} \
 		${bwCamPar} \
 		--setenv XDG_DOCUMENTS_DIR "$HOME/Documents" \
-		--bind "${XDG_DOCUMENTS_DIR}"/WeChat \
-			"${XDG_DATA_HOME}/WeChat_Data/共享目录" \
-		--bind "${XDG_DOCUMENTS_DIR}"/WeChat \
-			"${XDG_DATA_HOME}/WeChat_Data/Shared Directory" \
 		--setenv XDG_DATA_HOME "${XDG_DATA_HOME}" \
 		--unshare-cgroup-try \
 		--unshare-ipc \
