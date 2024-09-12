@@ -1,35 +1,34 @@
-# Maintainer: orhun <orhunparmaksiz@gmail.com>
-# Contributor: spikecodes <19519553+spikecodes@users.noreply.github.com>
-# https://github.com/orhun/pkgbuilds
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-pkgname=sic-git # TODO: rename it to sic-image-cli-git
-_newname=sic-image-cli-git
-_pkgname=sic
-pkgver=0.14.0.r0.g9c0e31f
+_pkgname="sic"
+pkgname="${_pkgname}-git"
+pkgver=1.3.r0.g058547e
 pkgrel=1
-pkgdesc="Accessible image processing and conversion from the terminal (git)"
+pkgdesc="An extremely simple IRC client"
+url="https://tools.suckless.org/sic"
 arch=('x86_64')
-url="https://github.com/foresterre/sic"
 license=('MIT')
-makedepends=('cargo' 'git')
-conflicts=("${_newname%-git}" "${_newname%-git}-bin")
-provides=("${_newname%-git}")
-source=("git+${url}")
-sha512sums=('SKIP')
+makedepends=('git')
+depends=('glibc')
+provides=("${_pkgname}=${pkgver%%.r*}")
+conflicts=("${_pkgname}")
+_pkgsrc="${_pkgname}"
+source=("${_pkgsrc}::git+https://git.suckless.org/${_pkgname}")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --long --tags $(git rev-list --tags --max-count=1) | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${_pkgsrc}"
+  git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$_pkgname"
-  cargo build --release --locked --all-features
+  cd "${srcdir}/${_pkgsrc}"
+  make
 }
 
 package() {
-  cd "$_pkgname"
-  install -Dm 755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
-  install -Dm 644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$_pkgname"
+  cd "${srcdir}/${_pkgsrc}"
+  make PREFIX='/usr' DESTDIR="${pkgdir}" install
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 "README"  "${pkgdir}/usr/share/doc/${_pkgname}/README"
 }
