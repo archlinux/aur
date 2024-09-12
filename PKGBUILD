@@ -1,6 +1,6 @@
 # Maintainer: Tal <talwat321@gmail.com>
 pkgname=pokeget
-pkgver=1.4.0
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="Display pokemon sprites in your terminal."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/talwat/pokeget-rs"
 license=('MIT')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('9234df621caa9afc16e39c6aa377cedec8892d0b3764bac99eb675b998ee3767efc1ecbec428cca432cd6f2cc94ed4bc309e092147a5cd94c7e7821423b5d10b')
+sha512sums=('858d1efff4209b4881575fbaf0392694efa96df81c3f3cc8138cecf8718b6a23463f9542a5c89027367499e47297007f8617159f8c93f374fff4ea7fd04fdb54')
 
 prepare() {
     cd "pokeget-$pkgver"
