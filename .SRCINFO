@@ -1,13 +1,13 @@
 pkgbase = rill-bin
 	pkgdesc = Rill is an operational BI tool that provides fast dashboards that your team will actually use.
-	pkgver = 0.48.5
+	pkgver = 0.48.6
 	pkgrel = 1
 	url = https://rilldata.com
 	arch = x86_64
 	license = Apache
 	provides = rill
 	conflicts = rill
-	source = rill-0.48.5.zip::https://github.com/rilldata/rill/releases/download/v0.48.5/rill_linux_amd64.zip
-	sha256sums = 002c9522b81504496c58644214ed4240222abbd24ac6973eb0604bc22bebf19e
+	source = rill-0.48.6.zip::https://github.com/rilldata/rill/releases/download/v0.48.6/rill_linux_amd64.zip
+	sha256sums = ba649567b9ca9d3c60854724bc5afc0c98722bf34a20555c2e7cc44126be4202
 
 pkgname = rill-bin
