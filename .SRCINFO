@@ -1,12 +1,13 @@
 pkgbase = rpi-imager-bin
 	pkgdesc = Raspberry Pi Imaging Utility
 	pkgver = 1.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/raspberrypi/rpi-imager
 	arch = x86_64
 	license = Apache-2.0
 	depends = qt6-base
 	depends = qt6-declarative
+	depends = qt6-tools
 	depends = qt6-svg
 	depends = hicolor-icon-theme
 	depends = gnutls

@@ -1,12 +1,12 @@
 # Maintainer: Funami
 pkgname=rpi-imager-bin
 pkgver=1.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Raspberry Pi Imaging Utility"
 arch=('x86_64')
 url="https://github.com/raspberrypi/rpi-imager"
 license=('Apache-2.0')
-depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'hicolor-icon-theme' 'gnutls' 'libcurl-gnutls' 'libarchive' 'dosfstools' 'util-linux')
+depends=('qt6-base' 'qt6-declarative' 'qt6-tools' 'qt6-svg' 'hicolor-icon-theme' 'gnutls' 'libcurl-gnutls' 'libarchive' 'dosfstools' 'util-linux')
 optdepends=('udisks2: non-root user support')
 provides=('rpi-imager')
 conflicts=('rpi-imager')
