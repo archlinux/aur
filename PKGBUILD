@@ -2,8 +2,8 @@
 
 pkgname=python-youseedee
 _pyname=${pkgname#python-}
-pkgver=0.5.3
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc='Interface to the Unicode Character Database'
 arch=(any)
 url="https://github.com/simoncozens/$_pyname"
@@ -12,11 +12,17 @@ _pydeps=(requests)
 depends=(python
          "${_pydeps[@]/#/python-}")
 makedepends=(python-{build,installer,wheel}
-             python-setuptools)
+             python-setuptools-scm)
 _archive="$_pyname-$pkgver"
 # source=("$url/archive/v$pkgver/$_archive.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('850908f2476ba292e23bce8b5c3cba79099adc5120e3c80b95d53b6c583d7732')
+sha256sums=('f70eb2af6f33ab42e03af329e5f08568718ec0ae306db0e8fe0d631f8524cb41')
+
+prepare() {
+	cd "$_archive"
+	# Unpin aggressive build system dependencies
+	sed -i -Ee '/^requires/s/>=[0-9\.]+//g' pyproject.toml
+}
 
 build() {
 	cd "$_archive"
