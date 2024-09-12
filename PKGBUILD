@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gameclock-git
 _pkgname=GameClock
-pkgver=1.5.2.r0.gaa04e65
+pkgver=1.5.3.r0.gc57c971
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -44,7 +44,7 @@ build() {
         s/@appname@/${pkgname%-git}/
         s/@runname@/app.asar/
         s/@cfgdirname@/${_pkgname}/
-        s/@options@//
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Game" --name="${_pkgname}" --exec="${pkgname%-git} %U"
@@ -53,18 +53,13 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo 'build_from_source=true'
+        #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
         if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
             echo 'registry=https://registry.npmmirror.com'
             echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        else
-            echo 'registry=https://registry.npmjs.org'
-            echo 'disturl=https://nodejs.org/dist'
-            echo 'electron_mirror=https://www.electronjs.org/versions'
-            echo 'electron_builder_binaries_mirror=https://github.com/electron-userland/electron-builder-binaries/releases/download'
         fi
     } >> .npmrc
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
