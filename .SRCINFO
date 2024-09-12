@@ -13,11 +13,9 @@ pkgbase = buttercup-desktop
 	depends = nss
 	depends = libsass
 	source = buttercup-desktop-2.28.1.tar.gz::https://github.com/buttercup/buttercup-desktop/archive/v2.28.1.tar.gz
-	source = badge.svg
 	source = buttercup-desktop.desktop
 	source = arch_fix.patch
 	sha512sums = b765ca0861cd9ffcd53691db59b2e6c060b8055775c90c0f61c24865c5702c60888162a30db0312b5a733424878ab618113f80aef24aa8956c95bd26315990a4
-	sha512sums = 999131f7dde17c460a0cea9a3d1900a13178c096fb618c6ba5f34a83045b7447b4571571c771bc5988e4867107638c653f7babc84011705352d763e9130424db
 	sha512sums = bc6af99782518980ea7fb8ed41d4e5a9998d01ac6ea1467cf6d232af987cf5aa5d71674720d0f4f71fa7f48d3a6270148b2297fc91e78bfa2fae4c11f16a5083
 	sha512sums = a86c0069e0c42032597b27f5c0e218f8430ff21bdc37d54834ce3c227942581bb09859301f743c6a1c98e0ba2348c749e80160350629f1d9981fbe4a31416beb
 
