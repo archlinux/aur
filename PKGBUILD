@@ -1,7 +1,7 @@
 # Maintainer: Vlad Pirlog <(firstname) at (lastname) dot com>
 
 pkgname='extract-otp-secrets'
-pkgver='2.8.1'
+pkgver='2.8.2'
 pkgrel=1
 pkgdesc='Extract one time password secrets from QR codes exported by two-factor authentication apps'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc' 'libglvnd' 'libice' 'libsm' 'mpdecimal' 'tk' 'zbar' 'zlib')
 makedepends=('git' 'python')
 
 source=("${pkgname}-${pkgver}::git+https://github.com/scito/extract_otp_secrets.git#tag=v${pkgver}")
-b2sums=('6ff7f9a9f8065b5a0258b7f7dd251143cc82fc1023ef095a998d43eaefe054ee6631e2e919952c7309db97c70f07d867f995cfb0f5f18a9d549eb18cff36e3a7')
+b2sums=('ffd92567ed8debe1418ba05d0c6be3f2462e70dc8fd4ef5736ebf2379a76eb73517597e3dfec575675362cb22411769e4bc88176bbde8743cdbd98a2cc22a76f')
 
 build() {
     cd "${pkgname}-${pkgver}"
