@@ -1,19 +1,35 @@
 # Maintainer: Funami
 pkgname=rpi-imager-bin
-pkgver=1.8.5
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Raspberry Pi Imaging Utility"
 arch=('x86_64')
 url="https://github.com/raspberrypi/rpi-imager"
-license=('APACHE')
-depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-svg' 'hicolor-icon-theme' 'gnutls' 'libcurl-gnutls' 'libarchive' 'dosfstools' 'util-linux')
+license=('Apache-2.0')
+depends=('qt6-base' 'qt6-declarative' 'qt6-quickcontrols2' 'qt6-svg' 'hicolor-icon-theme' 'gnutls' 'libcurl-gnutls' 'libarchive' 'dosfstools' 'util-linux')
 optdepends=('udisks2: non-root user support')
 provides=('rpi-imager')
 conflicts=('rpi-imager')
-source=("https://github.com/raspberrypi/rpi-imager/releases/download/v$pkgver/rpi-imager_${pkgver}_amd64.deb")
-sha256sums=('fcf96ce24f2b852b30a16b243a6592f1f315eb0a19b248efc94d25b34d1167b1')
+_filename="Raspberry_Pi_Imager-${pkgver}-${arch}.AppImage"
+source=("https://github.com/raspberrypi/rpi-imager/releases/download/v$pkgver/${_filename}"
+    "https://github.com/raspberrypi/rpi-imager/raw/qml/doc/man/rpi-imager.1"
+    "https://github.com/raspberrypi/rpi-imager/raw/qml/debian/changelog")
+sha256sums=('26e837a758776d8a6cec7b92262d73188bcecee20c48cff066d05adef2dc555f'
+            '69bc1528af1d369795d7a6fa1726084ffe62b47b19378de4fdf9022c91760e99'
+            'c2f70b370a6bbe535811ddcec1f3bcdb183c461a8b5c1f0d0ce250f98c17e9ba')
+
+prepare() {
+  chmod +x "${_filename}"
+  ./${_filename} --appimage-extract > /dev/null
+}
 
 package() {
-  bsdtar -xf "$srcdir/data.tar.zst" -C "$pkgdir"
-  rm "$pkgdir/usr/share/doc/rpi-imager/copyright"
+  cd squashfs-root
+
+  install -Dm755 usr/bin/rpi-imager "${pkgdir}/usr/bin/rpi-imager"
+  install -Dm644 usr/share/applications/org.raspberrypi.rpi-imager.desktop "${pkgdir}/usr/share/applications/org.raspberrypi.rpi-imager.desktop"
+  install -Dm644 usr/share/icons/hicolor/128x128/apps/rpi-imager.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/rpi-imager.png"
+  install -Dm644 usr/share/metainfo/rpi-imager.metainfo.xml "${pkgdir}/usr/share/metainfo/rpi-imager.metainfo.xml"
+  install -Dm644 ../rpi-imager.1 "${pkgdir}/usr/share/man/man1/rpi-imager.1"
+  install -Dm644 ../changelog "${pkgdir}/usr/share/doc/rpi-imager/changelog"
 }
