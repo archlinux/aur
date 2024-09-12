@@ -70,14 +70,18 @@ post_upgrade() {
 }
 
 pre_install() {
-  chmod -R u+rwX,go+rX,go-w opt/flutter
+  pre_remove
 }
 
 pre_upgrade() {
-  chmod -R u+rwX,go+rX,go-w opt/flutter
+  pre_remove
 }
 
 pre_remove() {
+  if [ ! -e opt/flutter ]; then
+    return
+  fi
+
   # remove extra permissions
   for i in ${_builders[@]} ${_groups[@]}; do
     if grep -q "group:$i" <<< $(getfacl -ac /opt/flutter 2> /dev/null); then
