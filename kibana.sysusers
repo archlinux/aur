@@ -1,1 +1,1 @@
-u kibana - "Kibana user" /var/lib/kibana /bin/bash
+u   kibana   -   "Kibana"     /     /sbin/nologin

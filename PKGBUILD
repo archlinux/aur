@@ -1,35 +1,40 @@
-# Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
+# Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=kibana-bin
-pkgver=8.4.2
+pkgver=8.15.1
 pkgrel=1
-pkgdesc='Explore and visualize your Elasticsearch data'
-arch=('i686' 'x86_64')
-url='https://www.elastic.co/kibana'
-license=('custom:Elastic')
-backup=('etc/kibana/kibana.yml')
+pkgdesc='Browser based analytics and search dashboard for Elasticsearch'
+arch=('x86_64')
+url='https://github.com/elastic/kibana'
+license=('Apache')
 depends=('nodejs')
-optdepends=('elasticsearch: for running standalone installation')
-source_i686=("https://artifacts.elastic.co/downloads/kibana/kibana-$pkgver-arm64.deb")
-source_x86_64=("https://artifacts.elastic.co/downloads/kibana/kibana-$pkgver-amd64.deb")
-source=(
-    'kibana.sysusers'
-    'kibana.tmpfiles'
-)
-sha512sums_i686=('3145d2a5a63275c0e6a6ebe1bda8a26e51eb540014bf1f742549b0238d69983df5e91cf28b55cdaff657b0cc401e2b8beeb07606dcf86ff8383b983f010f2e1f')
-sha512sums_x86_64=('f42e0b1835b521e961261e2b9543174155cda41d95a9b129f158ae9e967dcd31c0cd563924c27007348213310c19866a61540a89f8fbdac18db51cece00aba52')
-sha512sums=(
-    '1ba7f466d2d10bd320bb69deb0ff8a5a6c51be991f9683186d2cd16aca28d560ee9941da27c11a819c7ee1be3e5e2d133b7848b13c359d170f492c107080afbe'
-    '8882e23e475c10e3560008ce0239612b30fcdec955e459c27e9c90b3b972af3d96955387865c2e312f1d87addba5322f939715438562051f5999c8455c83c2dd'
-)
+optdepends=('elasticsearch')
+backup=('etc/kibana/kibana.yml')
+options=('!strip' 'emptydirs')
+source=(https://artifacts.elastic.co/downloads/kibana/kibana-${pkgver}-linux-x86_64.tar.gz
+        kibana.service
+        kibana.tmpfiles
+        kibana.sysusers)
+sha512sums=('fe2cec0fae976b4d299d60f0b5a71532d9d5c3bf993682f0044c09c93c2bb17bf4642848bdfcf62c0249da4179de7dda643aedcc12204682539a31ed01aabe63'
+            'c8858f16fb04bd0f549e9e0b36b1792d7873650a6a78a6cad685f2f758f5bf07d7189abddb8a5f013453e74390b79d4217d3b56f1ac9e917ecc5002f61fdffef'
+            'b3732aa30d88889f2269fa87fcf18fdfb76cf5e407a584e6706d0d46e32791773d9647c4646087b7043631cfd969b54fc3be776624df7c67000696937832b7a6'
+            '5d783604a1afe56f075341405e2e05247a4dabf234c2a6861078a17d42cb884fb7e33ffba2b2b294c906e72b1d86fdd1a03189a6d6ac9d813b791ad7acf86b04')
 
 prepare() {
-    tar -xf data.tar.gz
-    rm -rf usr/lib/tmpfiles.d
+  cd kibana-${pkgver}
+  sed "s@^var isVersionValid = .*@var isVersionValid = true;@" -i src/setup_node_env/node_version_validator.js
+  sed -r 's|#(logging.quiet:) false|\1 true|' -i config/kibana.yml
 }
 
 package() {
-    install -Dm644 kibana.sysusers "$pkgdir/usr/lib/sysusers.d/kibana.conf"
-    install -Dm644 kibana.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/kibana.conf"
-    cp -r etc usr "$pkgdir/"
+  cd kibana-${pkgver}
+  find node_modules -type d -empty -delete
+  rm -rf node
+  install -Dm 640 config/kibana.yml "${pkgdir}/etc/kibana/kibana.yml"
+  install -dm 755 "${pkgdir}/usr/share/webapps/kibana"
+  cp -a * "${pkgdir}/usr/share/webapps/kibana"
+  install -Dm 644 "${srcdir}/kibana.service" "${pkgdir}/usr/lib/systemd/system/kibana.service"
+  install -Dm 644 "${srcdir}/kibana.sysusers" "${pkgdir}/usr/lib/sysusers.d/kibana.conf"
+  install -Dm 644 "${srcdir}/kibana.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/kibana.conf"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
