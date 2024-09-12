@@ -3,7 +3,7 @@ post_install() {
     printf "\e[1;32m[!] - - - - - - - - - - - - - - - - - - - -  | IMPORTANT | - - - - - - - - - - - - - - - - - - - - [!]\e[0m\n"
     printf "\e[1;32mCheck the Optional Dependencies section to install the required Dependencies based on your DE / WM :\e[0m\n"
     printf "• \e[30m\e[46m Wayland wlroots based \e[0m: wl-clipboard, slurp & wf-recorder\n"
-    printf "• \e[30m\e[46m GNOME & KDE Wayland \e[0m: wl-clipboard & kooha\n"
+    printf "• \e[30m\e[46m COSMIC & GNOME / KDE Wayland \e[0m: wl-clipboard & kooha\n"
     printf "• \e[30m\e[46m Any X11 \e[0m: xclip & slop\n"
     echo ""
     printf "\e[1;32m✱ Otherwise, the script wouldn't work at all.\e[0m\n"
@@ -16,6 +16,6 @@ post_remove() {
     echo ""
     printf "\e[1;31mDelete All the Dependencies:\e[0m\n"
     printf "• \e[30m\e[46m Wayland wlroots based \e[0m: wl-clipboard, slurp & wf-recorder\n"
-    printf "• \e[30m\e[46m GNOME & KDE Wayland \e[0m: wl-clipboard & kooha\n"
+    printf "• \e[30m\e[46m COSMIC & GNOME / KDE Wayland \e[0m: wl-clipboard & kooha\n"
     printf "• \e[30m\e[46m Any X11 \e[0m: xclip & slop\n"
 }
