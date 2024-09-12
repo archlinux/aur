@@ -2,7 +2,7 @@
 pkgname=betterbird-bin
 _pkgname=betterbird
 pkgver=115.15.0
-_build=bb32
+_build=bb32-build2
 pkgrel=2
 pkgdesc="EN-US // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
@@ -13,11 +13,7 @@ optdepends=('hunspell-en_US')
 provides=("betterbird=${pkgver}")
 conflicts=()
 source=(
-#    "https://www.betterbird.eu/downloads/get.php?os=linux&lang=en-US&version=release"
-#    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}-replacement.en-US.linux-x86_64.tar.bz2"
-#    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}-hotfix.en-US.linux-x86_64.tar.bz2"
-    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}-build2.en-US.linux-x86_64.tar.bz2"
-#    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}.en-US.linux-x86_64.tar.bz2"
+    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}.en-US.linux-x86_64.tar.bz2"
     "betterbird.desktop"
     "vendor-prefs.js"
 )
