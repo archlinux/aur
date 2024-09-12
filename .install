@@ -1,0 +1,7 @@
+post_upgrade(1.8.1 1.7.2) {
+	echo "important change! the save and config files are now located in the XDG Home folder"
+	echo "please move your config and save files if you want to prevent them"
+	echo "old path: /usr/share/boom/"
+	echo "new path save: /home/${USER}/.local/share/lifish/"
+	echo "new path config: /home/${USER}/.config/lifish/lif_prefs.json"
+}
