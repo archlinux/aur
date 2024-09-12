@@ -172,19 +172,15 @@ license=('GPL-2.0-only')
 options=('!strip' '!debug' '!lto')
 makedepends=(
   bc
+  cpio
+  gettext
   libelf
   pahole
-  cpio
   perl
+  python
   tar
   xz
   zstd
-  gcc
-  gcc-libs
-  glibc
-  make
-  patch
-  python
 )
 # LLVM makedepends
 if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_kcfi" ]; then
@@ -215,7 +211,7 @@ fi
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=55a3483f28e69bf0514abb8c0a8e3812da282e73")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=baa50314567afd986a00838f0fa65fdacbd12daf")
 fi
 
 # NVIDIA pre-build module support
