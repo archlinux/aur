@@ -1,9 +1,10 @@
 pkgbase = bluos-controller-appimage
 	pkgdesc = BluOS Controller application repackaged for Linux.
 	pkgver = 4.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/fabrice.aeschbacher/bluos-controller-linux
 	arch = x86_64
+	depends = fuse2
 	provides = bluos-controller
 	options = !strip
 	options = !emptydirs

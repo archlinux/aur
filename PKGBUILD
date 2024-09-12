@@ -3,9 +3,10 @@
 pkgname=bluos-controller-appimage
 _pkgname=bluos-controller
 pkgver=4.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="BluOS Controller application repackaged for Linux."
 arch=('x86_64')
+depends=('fuse2')
 url="https://gitlab.com/fabrice.aeschbacher/bluos-controller-linux"
 provides=('bluos-controller')
 
