@@ -1,6 +1,6 @@
 pkgbase = wahoomc
 	pkgdesc = wahooMapsCreator - Create maps for Wahoo device based on latest OSM maps
-	pkgver = 4.1.1
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/treee111/wahooMapsCreator
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = wahoomc
 	optdepends = phyghtmap
 	provides = wahoomc
 	conflicts = wahoomc
-	source = wahoomc-4.1.1.tar.gz::https://github.com/treee111/wahooMapsCreator/archive/refs/tags/v4.1.1.tar.gz
-	sha256sums = 4df2d5705555158fcfd04ceb02ddc0c62d3a0e7f34b7d92c32d80703520b48de
+	source = wahoomc-4.2.0.tar.gz::https://github.com/treee111/wahooMapsCreator/archive/refs/tags/v4.2.0.tar.gz
+	sha256sums = 083794ec046d049769ee46647b14348ff56f26b3aff52c01c5519763f1506c17
 
 pkgname = wahoomc

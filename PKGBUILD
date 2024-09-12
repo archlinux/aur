@@ -1,7 +1,7 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
 pkgname=wahoomc
-pkgver=4.1.1
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='wahooMapsCreator - Create maps for Wahoo device based on latest OSM maps'
 _outname="${pkgname}-${pkgver}"
@@ -15,7 +15,7 @@ optdepends=('phyghtmap')
 provides=('wahoomc')
 conflicts=('wahoomc')
 source=("${_outname}.tar.gz::https://github.com/treee111/wahooMapsCreator/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4df2d5705555158fcfd04ceb02ddc0c62d3a0e7f34b7d92c32d80703520b48de')
+sha256sums=('083794ec046d049769ee46647b14348ff56f26b3aff52c01c5519763f1506c17')
 
 build() {
     cd "${_rootdir}"
