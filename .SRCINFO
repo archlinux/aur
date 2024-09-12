@@ -1,6 +1,6 @@
 pkgbase = python-stanza
 	pkgdesc = Stanford NLP Python library for tokenization, sentence segmentation, NER, and parsing of many human languages
-	pkgver = 1.8.2
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://stanfordnlp.github.io/stanza
 	arch = any
@@ -15,9 +15,9 @@ pkgbase = python-stanza
 	depends = python-protobuf
 	depends = python-pytorch
 	depends = python-requests
-	depends = python-toml
 	depends = python-tqdm
-	source = stanza-1.8.2.tar.gz::https://github.com/stanfordnlp/stanza/archive/refs/tags/v1.8.2.tar.gz
-	sha256sums = fd1e9df4649e157d45b3c039d673524e79b5d40100d367cb1754ee55a6fc7866
+	optdepends = python-scipy: Perform CEAF scoring for the Kuhn-Munkres linear assignment scheme
+	source = stanza-1.9.0.tar.gz::https://github.com/stanfordnlp/stanza/archive/refs/tags/v1.9.0.tar.gz
+	sha256sums = 7527563490d6554b2011c84369f26f6303b4ab18e27f4b7c1493f2817f7d1227
 
 pkgname = python-stanza
