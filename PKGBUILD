@@ -2,7 +2,7 @@
 
 pkgname=git-gl
 _pkgname=git
-pkgver=2.44.2.gl1
+pkgver=2.45.2.gl1
 pkgrel=1
 pkgdesc="GitLab's version of Git"
 arch=('x86_64')
