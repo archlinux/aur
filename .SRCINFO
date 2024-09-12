@@ -1,0 +1,12 @@
+pkgbase = sticker.webp-git
+	pkgdesc = Express yourself with simple terminal utility
+	pkgver = r7.g434f197
+	pkgrel = 1
+	url = https://github.com/q60/sticker.webp
+	arch = any
+	license = Unlicense
+	depends = bash
+	source = sticker.webp-git::git+https://github.com/q60/sticker.webp.git
+	sha256sums = SKIP
+
+pkgname = sticker.webp-git
