@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=BluOS Controller
+Comment=Control your BluOS-enabled music system.
+Exec=/usr/bin/bluos-controller
+Icon=/opt/bluos-controller/bluos-controller.png
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;
