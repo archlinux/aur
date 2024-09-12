@@ -5,7 +5,7 @@
 
 _basever=2.0.0.main
 pkgname=mypaint-git
-pkgver=2.0.0.main.r6208.8187b1e2
+pkgver=2.0.0.main.r6214.ad795c76
 pkgrel=1
 pkgdesc="Simple drawing & painting program that works well with graphics tablets (git)."
 arch=('i686' 'x86_64')
@@ -17,8 +17,7 @@ makedepends=('git' 'swig' 'pygobject-devel' 'python' 'python-setuptools')
 provides=("mypaint=${_basever}")
 conflicts=('mypaint')
 source=('git+https://github.com/mypaint/mypaint.git'
-        'mypaint-git.install'
-        'radius_lock.patch')
+        'mypaint-git.install')
 
 pkgver() {
     cd "${srcdir}/mypaint"
@@ -27,7 +26,6 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/mypaint"
-    patch --forward --strip=1 --input="${srcdir}/radius_lock.patch"
     export CFLAGS='-Ofast -ftree-vectorize -fopt-info-vec-optimized -march=native -mtune=native -funsafe-math-optimizations -funsafe-loop-optimizations'
 }
 
@@ -48,5 +46,4 @@ package() {
 }
 
 sha256sums=('SKIP'
-            'e7b2787bf6e4b7529c85757b0ceb438264bbbd462793ba561c50ebf77852e41d'
-            '922cd92ba2a96691d45694c78c4ca26a104f011d2477b8a4581c1e45d45c4f58')
+            'e7b2787bf6e4b7529c85757b0ceb438264bbbd462793ba561c50ebf77852e41d')
