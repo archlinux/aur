@@ -3,7 +3,7 @@
 _pkgname=aeolus-plugin
 pkgname=${_pkgname}-git
 pkgver=r240.d74f818
-pkgrel=1
+pkgrel=2
 pkgdesc="Synthesised pipe organ emulator"
 arch=(x86_64)
 url="https://github.com/Archie3d/aeolus_plugin"

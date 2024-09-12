@@ -1,7 +1,7 @@
 pkgbase = aeolus-plugin-git
 	pkgdesc = Synthesised pipe organ emulator
 	pkgver = r240.d74f818
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Archie3d/aeolus_plugin
 	arch = x86_64
 	groups = pro-audio
