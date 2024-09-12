@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MouseFM
-_pkgver=1.14.5
+_pkgver=1.14.6
 pkgname=r-${_pkgname,,}
-pkgver=1.14.5
+pkgver=1.14.6
 pkgrel=1
 pkgdesc='In-silico methods for genetic finemapping in inbred mice'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('54b4cf056094e5dca0bf3b6958b3f3474edc3cfe9626af8eca907cad243358d6')
+sha256sums=('e6c2d4dadcd88dfb5f3a193599e1da0363389c23505d6f2ebbc67ec0a957b5a6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
