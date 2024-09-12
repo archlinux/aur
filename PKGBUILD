@@ -2,8 +2,8 @@
 pkgname=betterbird-pt-bin
 _pkgname=betterbird
 pkgver=115.15.0
-_build=bb32
-pkgrel=1
+_build=bb32-build2
+pkgrel=2
 pkgdesc="PORTUGUESE // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
 url="https://www.betterbird.eu/index.html"
@@ -12,11 +12,7 @@ depends=('dbus-glib')
 provides=("betterbird=${pkgver}")
 conflicts=('betterbird')
 source=(
-#	"https://www.betterbird.eu/downloads/get.php?os=linux&lang=de&version=release"
-#    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}-replacement.pt-BR.linux-x86_64.tar.bz2"
-#    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}-hotfix.pt-BR.linux-x86_64.tar.bz2"
-#    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}-build2.pt-BR.linux-x86_64.tar.bz2"
-    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}.pt-BR.linux-x86_64.tar.bz2"
+    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}-build2.pt-BR.linux-x86_64.tar.bz2"
     "betterbird.desktop"
 )
 
@@ -42,6 +38,6 @@ package() {
             "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
     done
 }
-sha256sums=('9285bf4616f4ec4fdba4d0b198fdf1302a6044a5b37b553e7e3a0e4000c2114b'
+sha256sums=('9269df4c0afd61419d196d080bb893847cfde314e7ba09ff971e80c7ad864a77'
             'b664d5453512ba1c8a58699d106fb1248991dbae0ee44464484be0886278945b')
 
