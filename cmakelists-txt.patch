@@ -1,0 +1,71 @@
+--- /home/michael/src/IQmol3-old/CMakeLists.txt	2024-09-11 21:18:30.913015308 +1000
++++ /home/michael/src/IQmol3/CMakeLists.txt	2024-09-12 17:28:44.353531231 +1000
+@@ -12,9 +12,6 @@
+ 
+ set(CMAKE_CXX_STANDARD 11)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+-set(CMAKE_BUILD_TYPE Release)
+-set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wno-deprecated")
+-set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+ 
+ # We need this to be able to include e.g. "Data/Bank.h" in the sources
+ include_directories(src)
+@@ -35,25 +32,7 @@
+ find_package(OpenGL  REQUIRED)
+ find_package(OpenSSL REQUIRED)
+ 
+-  
+-# No CMakeLists.txt for libQGLViewer
+-include_directories(modules/libQGLViewer)
+-add_subdirectory(modules  EXCLUDE_FROM_ALL)
+-
+-include_directories(modules/libssh2/include)
+-add_subdirectory(modules/libssh2  EXCLUDE_FROM_ALL)
+-
+-include_directories(modules/openmesh/src)
+-add_subdirectory(modules/openmesh  EXCLUDE_FROM_ALL)
+-set(OPENMESH_LIBRARIES OpenMeshCoreStatic OpenMeshToolsStatic)
+-
+-include_directories(modules/yaml-cpp/include)
+-add_subdirectory(modules/yaml-cpp  EXCLUDE_FROM_ALL)
+-
+-include_directories(modules/openbabel/includel)
+-include_directories(${CMAKE_CURRENT_BINARY_DIR}/modules/openbabel/include)
+-add_subdirectory(modules/openbabel EXCLUDE_FROM_ALL)
+-
++include_directories(/usr/include/openbabel3)
+ 
+ if(QARCHIVE)
+    #set(HDF5_USE_STATIC_LIBRARIES 1)
+@@ -146,11 +125,6 @@
+    set_target_properties(${targetName} PROPERTIES WIN32_EXECUTABLE ON)
+ endif (WIN32)
+ 
+-
+-# This works on ubuntu, not sure about others
+-unset(CMAKE_Fortran_IMPLICIT_LINK_LIBRARIES)
+-set(FORTRAN_LIBRARIES libgfortran.a libquadmath.a)
+-
+ target_link_libraries (${targetName}
+    Main
+    Process
+@@ -166,9 +140,10 @@
+    Math
+    Plot
+    Fort
+-   libssh2
++   ssh2
+    yaml-cpp
+    openbabel
++        OpenMeshTools
+    QGLViewer
+    Qt5::Core
+    Qt5::Gui
+@@ -178,7 +153,6 @@
+    Qt5::OpenGL
+    ${OPENMESH_LIBRARIES}
+    ${Boost_LIBRARIES}
+-   ${LIBSSH2_LIBRARY}
+    ${OPENGL_LIBRARIES}
+    ${ZLIB_LIBRARIES}
+    ${FORTRAN_LIBRARIES}
