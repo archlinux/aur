@@ -1,6 +1,3 @@
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
-# Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
-
 pkgname=compiler-rt15
 pkgver=15.0.7
 pkgrel=1
@@ -33,10 +30,11 @@ build() {
 
   local cmake_args=(
     -G Ninja
-    -DCMAKE_BUILD_TYPE=Release
-    -DCMAKE_INSTALL_PREFIX=/usr/lib/llvm15
-    -DCMAKE_SKIP_RPATH=ON
-    -DCOMPILER_RT_INSTALL_PATH=/usr/lib/llvm15/lib/clang/$pkgver
+    -D CMAKE_BUILD_TYPE=Release
+    -D LLVM_CONFIG_PATH=/usr/bin/llvm-config-15
+    -D CMAKE_INSTALL_PREFIX=/usr/lib/llvm15
+    -D CMAKE_SKIP_RPATH=ON
+    -D COMPILER_RT_INSTALL_PATH=/usr/lib/llvm15/lib/clang/$pkgver
   )
   cmake .. "${cmake_args[@]}"
   ninja
