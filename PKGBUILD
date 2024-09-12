@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gsignal
-_pkgver=0.3-6
+_pkgver=0.3-7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,8 +26,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('74f3a79c1d6963b8fa14b1a0cb843e10')
-b2sums=('8bc3d52a42ac1b0880ab49b899b8f350b1c544dcaec17997ce1d3828533ef258ae0b7e2cc45ab2536df4c0f3e6d352dec84c4b171aa4c6451c233cf36ba764d8')
+md5sums=('95c7f3421559c6a1cca4026d378ffdcc')
+b2sums=('801e41b7186e448b7348af2233fd8024c527b0ab281d5f7ba998dac7ccae754a0649843bf6ad6078ee6531d263eb7c889579c77bb3d0a63b88c2f828a938d6d7')
 
 build() {
   mkdir build
