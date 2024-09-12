@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=podman-desktop-companion-bin
 _pkgname="Podman Desktop Companion"
-pkgver=5.2.2_rc.3
+pkgver=5.2.2_rc.4
 _electronversion=32
 pkgrel=1
 pkgdesc="Cross-platform desktop integrated application with consistent UI,Learning tool for the powerful podman command line interface"
@@ -27,8 +27,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${_ghurl}/releases/do
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${_ghurl}/releases/download/${pkgver//_/-}/${pkgname%-bin}-x64-${pkgver//_/-}.pacman")
 sha256sums=('fd5805079cad1ee5ebcfd2a2a58e16553314c51700ce5f4e32dba06d9ce49283'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('38acd6c340ab4ffebac1344720721bebea9e13afb734036daf4e9af6c12fa74b')
-sha256sums_x86_64=('539653d3ab2e338729cf17aeafa63b92aa520e534c9c409378735fc9b86556df')
+sha256sums_aarch64=('3bd8508d4045fe7a89bd25631ee173eb92126ed63f477651d4d137f643337025')
+sha256sums_x86_64=('11a119bbb44fdeb0b35057ec0bd1a4b3da59a92fc12fdaf17388ecce23f85dd0')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/
@@ -37,7 +37,7 @@ build() {
         s/@cfgdirname@/${pkgname%-bin}/
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed "s|/opt/${pkgname%-bin}/${pkgname%-bin} --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s/\/opt\/${pkgname%-bin}\/${pkgname%-bin} --no-sandbox/${pkgname%-bin}/" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
