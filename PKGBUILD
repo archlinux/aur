@@ -23,10 +23,6 @@ sha256sums=('f8ed5e019d7bc6dba1d7dfa5d59052b5241c37e8eaa5293133c898ac7acedb98'
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-prepare () {
-  cd "${srcdir}/Python-${pkgver}"
-}
-
 build() {
   cd "${srcdir}/Python-${pkgver}"
   for _arch in ${_architectures}; do
