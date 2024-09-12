@@ -1,0 +1,11 @@
+diff -ura src/Modules/Core/Adapters/GdalAdapters/src/otbSpatialReference.cxx src.new/Modules/Core/Adapters/GdalAdapters/src/otbSpatialReference.cxx
+--- src/Modules/Core/Adapters/GdalAdapters/src/otbSpatialReference.cxx	2024-03-01 14:59:11.000000000 +0200
++++ src.new/Modules/Core/Adapters/GdalAdapters/src/otbSpatialReference.cxx	2024-09-12 11:55:05.077845925 +0300
+@@ -30,6 +30,7 @@
+ 
+ #include <sstream>
+ #include <stdexcept>
++#include <cassert>
+ 
+ namespace otb
+ {

@@ -5,7 +5,7 @@
 pkgname=orfeo-toolbox
 pkgver=9.0.0
 _pkgver=9.0
-pkgrel=2
+pkgrel=6
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org"
@@ -23,10 +23,12 @@ install=
 changelog=
 
 source=("${pkgname}-${pkgver}.tar.gz::https://www.orfeo-toolbox.org/packages/OTB-$pkgver.tar.gz"
+        "package.patch"
 		"git+https://github.com/jmichel-otb/GKSVM.git")
 noextract=()
 
 md5sums=('96514ae349ded4498d1e105694f7af5a'
+         '28eca0a5a7d488745b62c23ea3a3f0bf'
          'SKIP')
 
 
@@ -43,13 +45,20 @@ prepare() {
 	
 }
 
+prepare() {
+    cd $srcdir
+    patch -Np1 -i ../package.patch
+}
+
+
+
 build() {
   cd $srcdir/
  
-  if  [ -d "$srcdir/build/" ]; then
-    rm -rf $srcdir/build/
-  fi
-  mkdir $srcdir/build/
+if  [ -d "$srcdir/build/" ]; then
+   rm -rf $srcdir/build/
+ fi
+mkdir $srcdir/build/
  
   cd $srcdir/build
  
@@ -75,15 +84,15 @@ build() {
   -DOTB_USE_LIBKML=ON \
   -DOTB_USE_LIBSVM=ON \
   -DOTB_USE_OPENMP=ON \
-  -DOTB_USE_6S=ON \
+  -DOTB_USE_6S=OFF \
   -DOTB_DATA_USE_LARGEINPUT=ON \
   -DOTB_USE_SPTW=ON \
   -DOTB_USE_SPTW=ON \
   -DOTB_USE_SHARK=OFF \
   -DITK_DIR=/opt/insight-toolkit4 \
   -DCMAKE_PREFIX_PATH=/opt/insight-toolkit4 \
-  -DCMAKE_CXX_STANDARD=17 \
-  -DBoost_USE_STATIC_LIBS=ON
+  -DCMAKE_CXX_STANDARD=11 \
+  -DBoost_USE_STATIC_LIBS=OFF
          
   make
  
@@ -98,4 +107,7 @@ package() {
  
   cd "$srcdir/"build
   make DESTDIR="$pkgdir" install
+  mkdir ${pkgdir}/usr/bin/tools/
+  cp "$srcdir/Packaging/Files/post_install.sh" "${pkgdir}/usr/bin/tools/"
+
 }
