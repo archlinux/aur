@@ -33,10 +33,8 @@ build() {
     fi
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
     bsdtar -xf "${srcdir}"/python-${pkgver}-embed-${target}.zip
-    gendef python3.dll
     gendef python${_pybasever}.dll
     ${_arch}-dlltool --dllname python${_pybasever}.dll --def python${_pybasever}.def --output-lib libpython${_pybasever}.dll.a
-    ${_arch}-dlltool --dllname python3.dll --def python3.def --output-lib libpython3.dll.a
     sed "s|@TRIPLE@|${_arch}|g;s|@PYVER@|${_pybasever}|g" "${srcdir}"/wine-python.sh > ${_arch}-python${_pybasever}-bin
     popd
   done
@@ -50,10 +48,8 @@ package() {
     install -d "$pkgdir"/usr/${_arch}/bin
     install -d "$pkgdir"/usr/${_arch}/include/python${_pybasever}
     cp -r ../Include/* "$pkgdir"/usr/${_arch}/include/python${_pybasever}
-    chmod a+r -R "$pkgdir"/usr/${_arch}/include
-    chmod a+x "$pkgdir"/usr/${_arch}/include/python${_pybasever}/{cpython,internal}
     install -m644 ../PC/pyconfig.h "$pkgdir"/usr/${_arch}/include/python${_pybasever}
-    install -m755 python*.dll "$pkgdir"/usr/${_arch}/bin
+    install -m755 python${_pybasever}.dll "$pkgdir"/usr/${_arch}/bin
     install -d "$pkgdir"/usr/${_arch}/lib/python${_pybasever}
     install -m644 *.pyd "$pkgdir"/usr/${_arch}/lib/python${_pybasever}
     install -m755 python.exe "$pkgdir"/usr/${_arch}/bin/python${_pybasever}.exe
