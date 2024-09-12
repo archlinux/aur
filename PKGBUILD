@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="gjay"
-pkgver=0.4+7+g9df0279
+pkgver=0.4+r7+g9df0279
 _commit="9df02799e62e7c3da3bb087cda976ed7accbfdd9"
 pkgrel=1
 pkgdesc="DJ-friendly GUI for generating playlists across large music collections"

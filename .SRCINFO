@@ -1,6 +1,6 @@
 pkgbase = gjay
 	pkgdesc = DJ-friendly GUI for generating playlists across large music collections
-	pkgver = 0.4+7+g9df0279
+	pkgver = 0.4+r7+g9df0279
 	pkgrel = 1
 	url = https://gjay.sourceforge.net
 	arch = x86_64
