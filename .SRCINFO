@@ -1,6 +1,6 @@
 pkgbase = pingpath
 	pkgdesc = ping wrapper to display path
-	pkgver = 0.3.r20.bc8f036
+	pkgver = 0.3.r22.c2b333d
 	pkgrel = 1
 	url = https://github.com/yvs2014/pingpath
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = pingpath
 	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = gcc
-	makedepends = make
+	makedepends = cmake
 	makedepends = pkgconf
 	depends = iputils
 	depends = gtk4
