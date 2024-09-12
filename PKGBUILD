@@ -2,7 +2,7 @@
 pkgname=qtvsplayer-bin
 _pkgname=QtVsPlayer
 pkgver=1.0.52_5
-pkgrel=1
+pkgrel=2
 pkgdesc="Read local video files of Hikvision devices and display blue, green and red vectors."
 arch=(
     'aarch64'
@@ -23,28 +23,29 @@ depends=(
 source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.surf.mlo.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.surf.mlo.x86_64.rpm")
-sha256sums=('f5b3c299a0d654df9d23e68ecf642973bcb5f12243ebd013fb3393e0b30d4ef5')
-sha256sums_aarch64=('c4e065f09c54aa4eeb32b9914347b28687b7f8872f718842acde95903e740ace')
-sha256sums_x86_64=('cd172a046cd6b187ed33d3d417bd0fcdac8af83e147311c7c28e78a26759e33f')
+sha256sums=('bf4d06acb51b2b677a5d01fce315343fc787fe38618d2a26acc2f0701996073b')
+sha256sums_aarch64=('142ae1d90593524e7c70fcc409853d3f4d5db0299edce5787e80cfd6e18a444a')
+sha256sums_x86_64=('dafd85b5258971ab373bf4be3dcf543c6e53910f5c24632ca11018bef12f59d9')
 build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${_pkgname}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    sed "s|/usr/bin/${_pkgname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g;s|/usr/bin|/opt/${pkgname%-bin}|g" \
+    sed -e "
+        s/@appname@/${pkgname%-bin}/
+        s/@runname@/${_pkgname}/
+    " -i "${srcdir}/${pkgname%-bin}.sh"
+    sed "s/\/usr\/bin\/${_pkgname}/${pkgname%-bin}/;s/Icon=${_pkgname}/Icon=${pkgname%-bin}/;s/\/usr\/bin/${pkgname%-bin}/" \
         -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     rm -rf "${srcdir}/usr/lib64/${_pkgname}/"{libcrypto.so,libcrypto.so.1.1,libopenal.so.1,libssl.so,libssl.so.1.1,libz.so.1}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 "${srcdir}/usr/bin/${_pkgname}" -t "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/usr/lib64/${_pkgname}/"* "${pkgdir}/opt/${pkgname%-bin}"
-    ln -sf "/usr/lib/libcrypto.so" "${pkgdir}/opt/${pkgname%-bin}/libcrypto.so"
-    ln -sf "/usr/lib/libcrypto.so.1.1" "${pkgdir}/opt/${pkgname%-bin}/libcrypto.so.1.1"
-    ln -sf "/usr/lib/libopenal.so.1" "${pkgdir}/opt/${pkgname%-bin}/libopenal.so.1"
-    ln -sf "/usr/lib/libssl.so" "${pkgdir}/opt/${pkgname%-bin}/libssl.so"
-    ln -sf "/usr/lib/libssl.so.1.1" "${pkgdir}/opt/${pkgname%-bin}/libssl.so.1.1"
-    ln -sf "/usr/lib/libz.so.1" "${pkgdir}/opt/${pkgname%-bin}/libz.so.1"
-    install -Dm644 "${srcdir}/usr/share/${_pkgname}/translations/${_pkgname}_fr_FR.qm" -t "${pkgdir}/opt/${pkgname%-bin}/translations"
+    install -Dm755 "${srcdir}/usr/bin/${_pkgname}" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/usr/lib64/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    ln -sf "/usr/lib/libcrypto.so" "${pkgdir}/usr/lib/${pkgname%-bin}/libcrypto.so"
+    ln -sf "/usr/lib/libcrypto.so.1.1" "${pkgdir}/usr/lib/${pkgname%-bin}/libcrypto.so.1.1"
+    ln -sf "/usr/lib/libopenal.so.1" "${pkgdir}/usr/lib/${pkgname%-bin}/libopenal.so.1"
+    ln -sf "/usr/lib/libssl.so" "${pkgdir}/usr/lib/${pkgname%-bin}/libssl.so"
+    ln -sf "/usr/lib/libssl.so.1.1" "${pkgdir}/usr/lib/${pkgname%-bin}/libssl.so.1.1"
+    ln -sf "/usr/lib/libz.so.1" "${pkgdir}/usr/lib/${pkgname%-bin}/libz.so.1"
+    install -Dm644 "${srcdir}/usr/share/${_pkgname}/translations/${_pkgname}_fr_FR.qm" -t "${pkgdir}/usr/lib/${pkgname%-bin}/translations"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/icons/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }
