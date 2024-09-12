@@ -2,21 +2,27 @@
 # Maintainer: Jun Xiang <contact@ngjx.org>
 
 pkgname='waku-bin'
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='A simple template repository generator. Lets make starting new proejcts feel like a breeze again!'
 url='https://github.com/caffeine-addictt/waku'
-arch=('aarch64' 'x86_64')
+arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 license=('AGPL-3.0')
 provides=('waku')
 conflicts=('waku')
 depends=('git')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.2.4/waku_0.2.4_linux_arm64.tar.gz")
-sha256sums_aarch64=('856d6da27226475f01a67d9bceec1cbf84c761b8fa335bdf4eca55ac150de144')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.2.5/waku_Linux_arm64.tar.gz")
+sha256sums_aarch64=('b24a9739b8bad3db411f35f8d86489cbbc1b5a8817a0436635fe19895da61a69')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.2.4/waku_0.2.4_linux_amd64.tar.gz")
-sha256sums_x86_64=('1b4e15147876137f754e135417645a013e8c8708e21b6c4725188daf0526dac3')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.2.5/waku_Linux_armv7.tar.gz")
+sha256sums_armv7h=('a1890c18389a156a70b6cd5ae29aa6fbaf0d5d6cf83eafc62a905cb4ee223e51')
+
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.2.5/waku_Linux_i386.tar.gz")
+sha256sums_i686=('ec4d93bf40fe27f18aeb79682edbe883ddab60f904047caa132e5307e574df92')
+
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.2.5/waku_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('9565eb8434e46680185941e67bdd57703d5047dcf340f8606b546883a4dbd3e5')
 
 package() {
   # bin
@@ -29,16 +35,11 @@ package() {
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
   mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
   mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
-  install -Dm644 <(./waku completion bash) "$pkgdir/usr/share/bash-completion/completions/waku"
-  install -Dm644 <(./waku completion zsh) "$pkgdir/usr/share/zsh/site-functions/_waku"
-  install -Dm644 <(./waku completion fish) "$pkgdir/usr/share/fish/completions/waku.fish"
+  install -Dm644 "./completions/waku.bash" "$pkgdir/usr/share/bash-completion/completions/waku"
+  install -Dm644 "./completions/waku.zsh" "$pkgdir/usr/share/zsh/site-functions/_waku"
+  install -Dm644 "./completions/waku.fish" "$pkgdir/usr/share/fish/vendor_completions.d/waku.fish"
 
   # man page
-  man_dir="$(mktemp -d)"
-  ./waku man "$man_dir"
-
   mkdir -p "$pkgdir/usr/share/man/man1"
-  install -Dm644 "$man_dir"/*.1 "$pkgdir/usr/share/man/man1"
-
-  rm -r "$man_dir"
+  install -Dm644 "./manpages/waku.1.gz" "$pkgdir/usr/share/man/man1/waku.1.gz"
 }
