@@ -1,7 +1,7 @@
 pkgbase = bloomeetunes-bin
 	pkgdesc = 🌸Bloomee is a cross-platform music app designed to bring you ad-free tunes from various sources. 🌼🎵
-	pkgver = 2.9.9+138
-	pkgrel = 2
+	pkgver = 2.9.11+140
+	pkgrel = 1
 	url = https://github.com/HemantKArya/BloomeeTunes
 	arch = x86_64
 	license = GPL2
@@ -16,9 +16,9 @@ pkgbase = bloomeetunes-bin
 	provides = bloomeetunes
 	conflicts = bloomeetunes-git
 	options = !debug
-	source = https://github.com/HemantKArya/BloomeeTunes/releases/download/v2.9.9+138/bloomee_tunes_linux_v2.9.9_dev+16.zip
+	source = https://github.com/HemantKArya/BloomeeTunes/releases/download/v2.9.11+140/bloomee_tunes_linux_v2.9.11_dev+18.zip
 	source = bloomeetunes.desktop
-	sha512sums = d7746a13a3a3ca046d5209b7450788659c133c55218d64fe61d19715f6f8625575530a0f7eb9b86e35ba8a4929688d6fbbe459cb01685240aa44c02e49e288f7
+	sha512sums = 329de8e5c57065a353c27abfe4ce49395b74c41f38ef9c3cb35ec993f1482b0e714307fa88ce7f89abf102dd5490081e910fb280c49331d954dcf13131f6b3cb
 	sha512sums = bfd5f754fe1a87f23872520a1c15e4dea3482bbaa81d4edc408e9a474ebd28faaff6e70cc79e36e5ee0598f36bdf60a657ee8fe39b9b243832542f8e9532db7e
 
 pkgname = bloomeetunes-bin
