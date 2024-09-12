@@ -1,14 +1,12 @@
 pkgbase = sic
-	pkgdesc = An extremely simple IRC client.
-	pkgver = 1.2
+	pkgdesc = An extremely simple IRC client
+	pkgver = 1.3
 	pkgrel = 1
-	url = http://tools.suckless.org/sic
-	arch = i686
+	url = https://tools.suckless.org/sic
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	source = http://dl.suckless.org/tools/sic-1.2.tar.gz
-	md5sums = eb099e790c3ce7866df50d3fe1a52c25
+	source = sic-1.3.tar.gz::https://dl.suckless.org/tools/sic-1.3.tar.gz
+	b2sums = 40b4e11982f9bca2ad8904c1c17e9a302dde90f27bf486541db1746afa6f88b8947b8a61406708b014231a197e35bdd5d672f2335816fd3b658f1fc758a1efc0
 
 pkgname = sic
-
