@@ -1,7 +1,7 @@
 pkgbase = linux-mainline-um5606
 	pkgdesc = Linux Mainline with patches for the Asus UM5606(WA) laptop
 	pkgver = 6.11rc7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kernel.org/
 	arch = x86_64
 	license = GPL-2.0-only
@@ -23,6 +23,7 @@ pkgbase = linux-mainline-um5606
 	source = keyboard_bl.patch::https://patchwork.kernel.org/project/platform-driver-x86/patch/20240909223503.1445779-1-bas@basnieuwenhuizen.nl/mbox/
 	source = npu.patch
 	source = zsc_control.patch
+	source = amd_pstate.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 83BC8889351B5DEBBB68416EB8AC08600F108CDF
@@ -32,6 +33,7 @@ pkgbase = linux-mainline-um5606
 	sha256sums = c56b692379403d493d6455400c868b1b7441a5c382a2002fc5019b379b108c9a
 	sha256sums = 3dfea6ee17a195d87210762d5801e54ce60c154f376693f526ed08a98e7e0622
 	sha256sums = 60c04d09353c0dc41be01f57364b7ceb0d425a0f41db302857c2df9980728906
+	sha256sums = c6ea647426bb2bb225b0b9328d9b17887a793a415fefbd0bb0ba5c4ad8ecd670
 
 pkgname = linux-mainline-um5606
 	pkgdesc = The Linux Mainline with patches for the Asus UM5606(WA) laptop kernel and modules
