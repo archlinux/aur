@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=python-bark-git
-pkgver=0.1.4
+pkgver=0.0.0.r83.gf4f32d4
 pkgrel=1
 pkgdesc="Text-Prompted Generative Audio Model by Suno AI"
 arch=('any')
@@ -40,7 +40,9 @@ provides=('python-bark')
 pkgver() {
 	cd "${srcdir}/${pkgname}" || exit 2
 	set -o pipefail
-	git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || echo 0.0.1
+	git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
+	|| printf "0.0.0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)" \
+	|| echo 0.0.0.1
 }
 
 build() {
