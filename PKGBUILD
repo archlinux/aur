@@ -2,9 +2,9 @@
 pkgname=nodejs-types-geojson
 _pkgname=${pkgname#nodejs-}
 pkgver=7946.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc='type definitions for geojson'
-url='https://geojson.org/'
+url='https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/geojson'
 license=('MIT')
 arch=('any')
 makedepends=('npm')

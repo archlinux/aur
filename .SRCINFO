@@ -1,8 +1,8 @@
 pkgbase = nodejs-types-geojson
 	pkgdesc = type definitions for geojson
 	pkgver = 7946.0.14
-	pkgrel = 1
-	url = https://geojson.org/
+	pkgrel = 2
+	url = https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/geojson
 	arch = any
 	license = MIT
 	makedepends = npm
