@@ -5,7 +5,7 @@
 
 pkgname=meshtastic-python
 _name=python
-pkgver=2.4.1
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="Python CLI and API for talking to Meshtastic devices"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=(python-build python-installer python-poetry-core python-wheel)
 depends=(python-bleak python-dotmap python-protobuf python-pexpect python-print-color python-pypubsub python-pyqrcode python-pyserial python-pyyaml python-requests python-setuptools python-tabulate python-timeago)
 optdepends=('python-pytap2: TUN tunnel support')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/meshtastic/python/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('fa062ca02e8f9b302e5669baa5d8d9d45417dbed226b9040e7129c1ba1a39ff7')
+sha256sums=('ca05412a2f6492aaf6cc4567cc7e6745eb9e864a84499bbe8f2c2f82ea14d49a')
 
 build() {
     cd "$_name-$pkgver"
