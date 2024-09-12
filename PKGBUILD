@@ -2,7 +2,7 @@
 
 _pkgname=motoc
 pkgname=$_pkgname-git
-pkgver=0.2.0.r1.300368a
+pkgver=0.3.0.r0.bab89ae
 pkgrel=1
 pkgdesc="Monado Tracking Origin Calibrator"
 url="https://github.com/galister/motoc"
