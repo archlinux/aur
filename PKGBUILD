@@ -145,12 +145,12 @@ _build_nvidia_open=${_build_nvidia_open-}
 _build_debug=${_build_debug-}
 
 if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] && [ "$_use_lto_suffix" = "y"  ]; then
-    pkgsuffix=cachyos-${_cpusched}-lto
-    pkgbase=linux-$pkgsuffix
+    _pkgsuffix="cachyos-${_cpusched}-lto"
+    pkgbase="linux-$_pkgsuffix"
 
 elif [ -n "$_use_llvm_lto" ]  ||  [[ "$_use_lto_suffix" = "n" ]]; then
-    pkgsuffix=cachyos-${_cpusched}
-    pkgbase=linux-$pkgsuffix
+    _pkgsuffix="cachyos-${_cpusched}"
+    pkgbase="linux-$_pkgsuffix"
 fi
 _major=6.9
 _minor=9
@@ -163,13 +163,25 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux ECHO scheduler + Cachy Sauce Kernel by CachyOS with other patches and improvements'
-pkgrel=1
+pkgrel=6
 _kernver=$pkgver-$pkgrel
-arch=('x86_64' 'x86_64_v3')
+_kernuname="${pkgver}-${_pkgsuffix}"
+arch=('x86_64')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL-2.0-only')
 options=('!strip' '!debug' '!lto')
-makedepends=('bc' 'libelf' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'zstd' 'gcc' 'gcc-libs' 'glibc' 'binutils' 'make' 'patch' 'python')
+makedepends=(
+  bc
+  cpio
+  gettext
+  libelf
+  pahole
+  perl
+  python
+  tar
+  xz
+  zstd
+)
 # LLVM makedepends
 if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_kcfi" ]; then
     makedepends+=(clang llvm lld)
@@ -182,7 +194,7 @@ if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_k
 fi
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=555.58.02
+_nv_ver=560.35.03
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="open-gpu-kernel-modules-${_nv_ver}"
 source=(
@@ -199,7 +211,7 @@ fi
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=228ff3867f53d31dab403a3b6b3b555eaf8bdc04")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=baa50314567afd986a00838f0fa65fdacbd12daf")
 fi
 
 # NVIDIA pre-build module support
@@ -212,7 +224,7 @@ if [ -n "$_build_nvidia_open" ]; then
     source+=("nvidia-open-${_nv_ver}.tar.gz::https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/${_nv_ver}.tar.gz"
              "${_patchsource}/misc/nvidia/make-modeset-fbdev-default.patch"
              "${_patchsource}/misc/nvidia/nvidia-open-gcc-ibt-sls.patch"
-             "${_patchsource}/misc/nvidia/gsp-fix-stutter.patch")
+             "${_patchsource}/misc/nvidia/fix-zen5.patch")
 fi
 
 ## List of CachyOS schedulers
@@ -239,14 +251,13 @@ case "$_cpusched" in
 esac
 
 export KBUILD_BUILD_HOST=cachyos
-export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_USER="$pkgbase"
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 _die() { error "$@" ; exit; }
 
 prepare() {
-
-    cd ${srcdir}/$_srcname
+    cd "$_srcname"
 
     echo "Setting version..."
     echo "-$pkgrel" > localversion.10-pkgrel
@@ -259,7 +270,7 @@ prepare() {
         src="${src%.zst}"
         [[ $src = make-modeset-fbdev-default.patch ]] && continue
         [[ $src = nvidia-open-gcc-ibt-sls.patch ]] && continue
-        [[ $src = gsp-fix-stutter.patch ]] && continue
+        [[ $src = fix-zen5.patch ]] && continue
         [[ $src = *.patch ]] || continue
         echo "Applying patch $src..."
         patch -Np1 < "../$src"
@@ -280,7 +291,7 @@ prepare() {
         fi
 
         scripts/config -k -d CONFIG_GENERIC_CPU
-        scripts/config -k -e CONFIG_${MARCH2}
+        scripts/config -k -e "CONFIG_${MARCH2}"
     fi
 
     ### Use autooptimization
@@ -302,8 +313,8 @@ prepare() {
         bore|hardened) scripts/config -e SCHED_BORE --set-val MIN_BASE_SLICE_NS 1000000;;
         echo) scripts/config -e ECHO_SCHED;;
         eevdf) ;;
-        rt) scripts/config -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -d PREEMPT_DYNAMIC -d PREEMPT_BUILD;;
-        rt-bore) scripts/config -e SCHED_BORE --set-val MIN_BASE_SLICE_NS 1000000 -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -d PREEMPT_DYNAMIC -d PREEMPT_BUILD;;
+        rt) scripts/config -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -d PREEMPT_RT -d PREEMPT_DYNAMIC -e PREEMPT_BUILD -e PREEMPT_BUILD_AUTO -e PREEMPT_AUTO;;
+        rt-bore) scripts/config -e SCHED_BORE --set-val MIN_BASE_SLICE_NS 1000000 -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -d PREEMPT_RT -d PREEMPT_DYNAMIC -e PREEMPT_BUILD -e PREEMPT_BUILD_AUTO -e PREEMPT_AUTO;;
         sched-ext) scripts/config -e SCHED_CLASS_EXT;;
         *) _die "The value $_cpusched is invalid. Choose the correct one again.";;
     esac
@@ -330,7 +341,7 @@ prepare() {
     echo "Selecting '$_use_llvm_lto' LLVM level..."
 
     ### Select tick rate
-    [ -z $_HZ_ticks ] && _die "The value is empty. Choose the correct one again."
+    [ -z "$_HZ_ticks" ] && _die "The value is empty. Choose the correct one again."
 
     case "$_HZ_ticks" in
         100|250|500|600|625|750|1000)
@@ -476,19 +487,18 @@ prepare() {
     ### Optionally load needed modules for the make localmodconfig
     # See https://aur.archlinux.org/packages/modprobed-db
     if [ -n "$_localmodcfg" ]; then
-        if [ -e $HOME/.config/modprobed.db ]; then
+        if [ -e "$HOME/.config/modprobed.db" ]; then
             echo "Running Steven Rostedt's make localmodconfig now"
-            make ${BUILD_FLAGS[*]} LSMOD=$HOME/.config/modprobed.db localmodconfig
+            make "${BUILD_FLAGS[@]}" LSMOD="$HOME/.config/modprobed.db" localmodconfig
         else
-            echo "No modprobed.db data found"
-            exit
+            _die "No modprobed.db data found"
         fi
     fi
 
     ### Rewrite configuration
     echo "Rewrite configuration..."
-    make ${BUILD_FLAGS[*]} prepare
-    yes "" | make ${BUILD_FLAGS[*]} config >/dev/null
+    make "${BUILD_FLAGS[@]}" prepare
+    yes "" | make "${BUILD_FLAGS[@]}" config >/dev/null
     diff -u ../config .config || :
 
     ### Prepared version
@@ -496,20 +506,21 @@ prepare() {
     echo "Prepared $pkgbase version $(<version)"
 
     ### Running make nconfig
-    [[ -z "$_makenconfig" ]] ||  make ${BUILD_FLAGS[*]} nconfig
+    [[ -z "$_makenconfig" ]] ||  make "${BUILD_FLAGS[@]}" nconfig
 
     ### Running make menuconfig
-    [[ -z "$_makemenuconfig" ]] ||  make ${BUILD_FLAGS[*]} menuconfig
+    [[ -z "$_makemenuconfig" ]] ||  make "${BUILD_FLAGS[@]}" menuconfig
 
     ### Running make xconfig
-    [[ -z "$_makexconfig" ]] ||  make ${BUILD_FLAGS[*]} xconfig
+    [[ -z "$_makexconfig" ]] ||  make "${BUILD_FLAGS[@]}" xconfig
 
     ### Running make gconfig
-    [[ -z "$_makegconfig" ]] ||  make ${BUILD_FLAGS[*]} gconfig
+    [[ -z "$_makegconfig" ]] ||  make "${BUILD_FLAGS[@]}" gconfig
 
     ### Save configuration for later reuse
     echo "Save configuration for later reuse..."
-    cat .config > "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
+    local basedir="$(dirname "$(readlink "${srcdir}/config")")"
+    cat .config > "${basedir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
 
     if [ -n "$_build_nvidia" ]; then
         cd "${srcdir}"
@@ -523,19 +534,19 @@ prepare() {
         patch -Np1 -i "${srcdir}/make-modeset-fbdev-default.patch" -d "${srcdir}/${_nv_open_pkg}/kernel-open"
         # Fix for https://bugs.archlinux.org/task/74886
         patch -Np1 --no-backup-if-mismatch -i "${srcdir}/nvidia-open-gcc-ibt-sls.patch" -d "${srcdir}/${_nv_open_pkg}"
-        # Fix for Stutters in KDE
-        patch -Np1 -i "${srcdir}/gsp-fix-stutter.patch" -d "${srcdir}/${_nv_open_pkg}"
+        # Fix for Zen5 error print in dmesg
+        patch -Np1 --no-backup-if-mismatch -i "${srcdir}/fix-zen5.patch" -d "${srcdir}/${_nv_open_pkg}"
     fi
 }
 
 build() {
-    cd ${srcdir}/${_srcname}
-    make ${BUILD_FLAGS[*]} -j$(nproc) all
+    cd "$_srcname"
+    make "${BUILD_FLAGS[@]}" -j"$(nproc)" all
     make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 
     if [ -n "$_build_nvidia" ]; then
         local MODULE_FLAGS=(
-           KERNEL_UNAME="${pkgver}-${pkgsuffix}"
+           KERNEL_UNAME="${_kernuname}"
            IGNORE_PREEMPT_RT_PRESENCE=1
            NV_EXCLUDE_BUILD_MODULES='__EXCLUDE_MODULES'
            SYSSRC="${srcdir}/${_srcname}"
@@ -543,20 +554,20 @@ build() {
         )
 
         cd "${srcdir}/${_nv_pkg}/kernel"
-        make ${BUILD_FLAGS[*]} ${MODULE_FLAGS[*]} -j$(nproc) modules
+        make "${BUILD_FLAGS[@]}" "${MODULE_FLAGS[@]}" -j"$(nproc)" modules
 
     fi
 
     if [ -n "$_build_nvidia_open" ]; then
         cd "${srcdir}/${_nv_open_pkg}"
         local MODULE_FLAGS=(
-           KERNEL_UNAME="${pkgver}-${pkgsuffix}"
+           KERNEL_UNAME="${_kernuname}"
            IGNORE_PREEMPT_RT_PRESENCE=1
            IGNORE_CC_MISMATCH=yes
            SYSSRC="${srcdir}/${_srcname}"
            SYSOUT="${srcdir}/${_srcname}"
         )
-        CFLAGS= CXXFLAGS= LDFLAGS= make ${BUILD_FLAGS[*]} ${MODULE_FLAGS[*]} -j$(nproc) modules
+        CFLAGS= CXXFLAGS= LDFLAGS= make "${BUILD_FLAGS[@]}" "${MODULE_FLAGS[@]}" -j"$(nproc)" modules
     fi
 
     if [ -n "$_build_zfs" ]; then
@@ -566,12 +577,12 @@ build() {
         [ "$_use_llvm_lto" != "none" ] && CONFIGURE_FLAGS+=("KERNEL_LLVM=1")
 
         ./autogen.sh
-        sed -i "s|\$(uname -r)|${pkgver}-${pkgsuffix}|g" configure
-        ./configure ${CONFIGURE_FLAGS[*]} --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin \
+        sed -i "s|\$(uname -r)|${_kernuname}|g" configure
+        ./configure "${CONFIGURE_FLAGS[@]}" --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin \
             --libdir=/usr/lib --datadir=/usr/share --includedir=/usr/include \
             --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs --with-config=kernel \
-            --with-linux=${srcdir}/$_srcname
-        make ${BUILD_FLAGS[*]}
+            --with-linux="${srcdir}/$_srcname"
+        make "${BUILD_FLAGS[@]}"
     fi
 
 }
@@ -585,7 +596,7 @@ _package() {
                 'uksmd: Userspace KSM helper daemon')
     provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE UKSMD-BUILTIN)
 
-    cd ${srcdir}/$_srcname
+    cd "$_srcname"
 
     local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
@@ -607,9 +618,9 @@ _package() {
 
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-    depends=('pahole' linux-${pkgsuffix} )
+    depends=('pahole' "${pkgbase}")
 
-    cd ${srcdir}/${_srcname}
+    cd "${_srcname}"
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
     echo "Installing build files..."
@@ -691,51 +702,62 @@ _package-headers() {
 
 _package-dbg(){
     pkgdesc="Non-stripped vmlinux file for the $pkgdesc kernel"
-    depends=(linux-${pkgsuffix}-headers)
+    depends=("${pkgbase}-headers")
 
-    cd "${srcdir}/${_srcname}"
-    mkdir -p "$pkgdir/usr/src/debug/linux-${pkgsuffix}"
-    install -Dt "$pkgdir/usr/src/debug/linux-${pkgsuffix}" -m644 vmlinux
+    cd "${_srcname}"
+    mkdir -p "$pkgdir/usr/src/debug/${pkgbase}"
+    install -Dt "$pkgdir/usr/src/debug/${pkgbase}" -m644 vmlinux
 }
 
 _package-zfs(){
     pkgdesc="zfs module for the $pkgdesc kernel"
-    depends=('pahole' $pkgbase=$_kernver)
+    depends=('pahole' "${pkgbase}=${_kernver}")
     provides=('ZFS-MODULE')
     license=('CDDL')
 
-    cd ${srcdir}/"zfs"
-    install -dm755 "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
-    install -m644 module/*.ko "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
-    find "$pkgdir" -name '*.ko' -exec zstd --rm -10 {} +
+    cd "$_srcname"
+    local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
+
+    cd "${srcdir}/zfs"
+    install -dm755 "${modulesdir}"
+    install -m644 module/*.ko "${modulesdir}"
+    find "$pkgdir" -name '*.ko' -exec zstd --rm -19 {} +
     #  sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${pkgver}-${pkgbase}'/" "$startdir/zfs.install"
 }
 
 _package-nvidia(){
-    pkgdesc="nvidia module of ${_nv_ver} driver for the linux-$pkgsuffix kernel"
+    pkgdesc="nvidia module of ${_nv_ver} driver for the ${pkgbase} kernel"
     depends=("$pkgbase=$_kernver" "nvidia-utils=${_nv_ver}" "libglvnd")
     provides=('NVIDIA-MODULE')
+    conflicts=("$pkgbase-nvidia-open")
     license=('custom')
 
-    cd "${srcdir}/${_nv_pkg}/"
-    install -dm755 "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
-    install -m644 kernel/*.ko "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
+    cd "$_srcname"
+    local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
+
+    cd "${srcdir}/${_nv_pkg}"
+    install -dm755 "${modulesdir}"
+    install -m644 kernel/*.ko "${modulesdir}"
     install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 LICENSE
-    find "$pkgdir" -name '*.ko' -exec zstd --rm -10 {} +
+    find "$pkgdir" -name '*.ko' -exec zstd --rm -19 {} +
 }
 
 _package-nvidia-open(){
-    pkgdesc="nvidia open modules of ${_nv_ver} driver for the linux-$pkgsuffix kernel"
+    pkgdesc="nvidia open modules of ${_nv_ver} driver for the ${pkgbase} kernel"
     depends=("$pkgbase=$_kernver" "nvidia-utils=${_nv_ver}" "libglvnd")
     provides=('NVIDIA-MODULE')
-    license=(GPL-1.0-only)
+    conflicts=("$pkgbase-nvidia")
+    license=('MIT AND GPL-2.0-only')
+
+    cd "$_srcname"
+    local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
     cd "${srcdir}/${_nv_open_pkg}"
-    install -dm755 "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
-    install -m644 kernel-open/*.ko "$pkgdir/usr/lib/modules/${_kernver}-${pkgsuffix}"
+    install -dm755 "${modulesdir}"
+    install -m644 kernel-open/*.ko "${modulesdir}"
     install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 COPYING
 
-    find "$pkgdir" -name '*.ko' -exec zstd --rm -10 {} +
+    find "$pkgdir" -name '*.ko' -exec zstd --rm -19 {} +
 }
 
 pkgname=("$pkgbase")
@@ -752,7 +774,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 b2sums=('a228397902894f566d49adef24e4d44271893173cf0c58e8eb6006137dfb870b5f3aea17cadc775988a0682ba4a5261ebd3f10689b6c096f762cc8af666c56ff'
-        '06d0753d804a12a1e7299f948d79770a326aa573af7ef8adef607ae8b00e8576f4327bfb0f4ad520cd3e694107a8c2e2ce9a952f33de4d7c89ce533938116049'
+        'a4c945d49035c247a014e6791fa021c53f92d338455b0fe6e255c1e74b5ead9c95b0f3999417c727542238aacca0c35d7611202201fc0db2e050b3c8645cfafa'
         'b1e964389424d43c398a76e7cee16a643ac027722b91fe59022afacb19956db5856b2808ca0dd484f6d0dfc170482982678d7a9a00779d98cd62d5105200a667'
-        'bf13687cfa952136b63542fec6cb011f13853386e143370ea62eb40b403073cb7822e41aa1824fb77c878c43c34fda2980235897e2a7fcade484dc2c56a503ad'
+        '6f1a60ace295554a280c0b0543e9424d4162a6a9bd1d1f10c747fc81dec82ae998fffa224ccd8f0c0a0de5013e8f957af86abffe1795261abd198a66f5f9bf67'
         '6eedcd7ef7e82dea92022734076999a4f961bbe8bb2a86095982eb12c620751b45bcca458e728957203ab15c11da30a750f89f195fa3778595f13acf72ed123f')
