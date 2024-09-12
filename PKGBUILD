@@ -6,7 +6,7 @@
 _pkgname="gr-adsb"
 pkgname="$_pkgname-git"
 pkgver=r212.0f36000
-pkgrel=1
+pkgrel=2
 pkgdesc="GNURadio blocks for receiving ADS-B modulated radio messages using SDR"
 url="https://github.com/mhostetter/gr-adsb"
 license=('GPL-3.0-or-later')
@@ -15,8 +15,10 @@ arch=('any')
 depends=(
   "gnuradio>=$_version_gnuradio"
   'python'
+  'python-numpy'
 )
 makedepends=(
+  'boost'
   'cmake'
   'git'
   'ninja'

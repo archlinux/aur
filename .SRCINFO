@@ -1,15 +1,17 @@
 pkgbase = gr-adsb-git
 	pkgdesc = GNURadio blocks for receiving ADS-B modulated radio messages using SDR
 	pkgver = r212.0f36000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mhostetter/gr-adsb
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = boost
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
 	depends = gnuradio>=3.10
 	depends = python
+	depends = python-numpy
 	provides = gr-adsb=r212.0f36000
 	conflicts = gr-adsb
 	source = gr-adsb::git+https://github.com/mhostetter/gr-adsb#branch=maint-3.10
@@ -18,4 +20,5 @@ pkgbase = gr-adsb-git
 pkgname = gr-adsb-git
 	depends = gnuradio>=3.10
 	depends = python
+	depends = python-numpy
 	depends = python-colorama
