@@ -3,7 +3,7 @@
 # Contributor: FlyInWind <2518509078@qq.com>
 pkgname=ynote-desktop-bin
 _zhsname="有道云笔记"
-pkgver=8.0.20
+pkgver=8.0.30
 _electronversion=18
 pkgrel=1
 pkgdesc="Netease Youdao Ynote for Linux.Use system-wide electron."
@@ -24,27 +24,29 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::https://cowork-common-public-cdn.lx.netease.com/artifact%2F2024%2F08%2F09%2F61169e21.deb"
+    "${pkgname%-bin}-${pkgver}.deb::https://cowork-common-public-cdn.lx.netease.com/artifact%2F2024%2F08%2F23%2F00980422.deb"
     "LICENSE.html::https://note.youdao.com/license.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('319ca836182c1636ab68ba398becccf8cf94c3d0eaf662a495901538df1d8c01'
+sha256sums=('d1122bf0a83d38d54ebcac024c6535ae86990aac891d14f8153e401b887a37dc'
             'a8aec47c7cc6e6d838d525c89b58a962d650c84b0ebec09ecfb8955381fe6460'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-bin}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/${pkgname%-bin}/
+        s/@options@//
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "s|\"\/opt\/${_zhsname}\/${pkgname%-bin}\" --no-sandbox|${pkgname%-bin}|g" \
-        -e "s|\/opt\/${_zhsname}\/resources\/build\/icon.svg|${pkgname%-bin}|g" \
-        -e "s|Utility|Utility;Office|g" \
-        -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -e "
+        s/\"\/opt\/${_zhsname}\/${pkgname%-bin}\" --no-sandbox/${pkgname%-bin}/
+        s/\/opt\/${_zhsname}\/resources\/build\/icon.svg/${pkgname%-bin}/
+        s/Utility/Utility;Office/
+    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_zhsname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g;s|\.\.\/dll\/scholar|dll\/scholar|g" \
+    sed "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/;s/\.\.\/dll\/scholar/dll\/scholar/" \
       -i "${srcdir}/app.asar.unpacked/dist/"{main.js,scholar.js}
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
