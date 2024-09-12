@@ -2,7 +2,7 @@
 # Contributor: Marius Hirt <marius-hirt@web.de>
 
 pkgname="zork++"
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="A project manager and build system for modern C++"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('cargo')
 depends=('glibc' 'gcc-libs')
 _pkgsrc="Zork-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('00aa888c43c496045220bf350dbc04ab44ca1e80cbc095dae49689c5170e390d')
+sha256sums=('dc0ded28fe7fd5c09f3059309c0f4f7e39b64010eb7742cf539670e57f7c389f')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}/${pkgname}"
