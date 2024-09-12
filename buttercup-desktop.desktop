@@ -1,6 +1,6 @@
 [Desktop Entry]
-Version=2.24.4
-Name=Buttercup Password Manager
+Version=2.28.1
+Name=Buttercup
 Comment=Javascript Password Vault
 Exec=buttercup %u %U
 Icon=buttercup
