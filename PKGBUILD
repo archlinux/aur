@@ -1,7 +1,7 @@
 # Maintainer: noraj <printf %s 'YWxleGFuZHJlLnphbm5pQGV1cm9wZS5jb20='|base64 -d>
 
 pkgname=firefox-extension-arch-search
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=4
 _amo_base_url=https://addons.mozilla.org/firefox/downloads/file
 
@@ -41,8 +41,8 @@ _alman_dl_id=4337416
 _alman_gecko_id=ArchMan@archlinux.org
 
 _alsec_code=archlinux_security_search
-_alsec_ver=1.0.0
-_alsec_dl_id=4337406
+_alsec_ver=1.0.1
+_alsec_dl_id=4349093
 _alsec_gecko_id=ArchSec@archlinux.org
 
 _alsrc_code=archlinux_pkgbuild_search
@@ -83,7 +83,7 @@ b2sums=('1a0010fefea0986b0ded2c483e56244418b000712d84c0d252a00f35622905f4e6dd67d
         'ae8574a0899510a7d6f338a24f0ca96456fd3ff3e14a1c1c1e5a7d4a225df1dcb23329ce71c5d49d3b4374f7c595ba390b5556d3bb83d3a13147d38103473e17'
         'e498b4cc098ef64f4d1c2b51b9988eecded6e7695db17b5edd483098bae132f55eae437d7ee23520a6f5b1d80ea1c5fced5bff6a13c2b17a89add242447a22d6'
         'e422cde6ee9d0ff10866713a5ebc5219dbafc9e0381d7aa6f185ed14a2758c53e56a020502c2b8badc1eb2e8844ee73c74f0a8a2f41588638be53077677f53cc'
-        'ef1683e513719d083a2478d1418e10ddc35364e799032ea3a027b40c50c39b51ffbcf9aa25dac935b14bf4dc5d45ee29cbc8b924c16cbbcf3de0e7c3c5738a43'
+        '0a8308713f38bdd8c00359457530dbedc6676b4eaa77deffe928b506f411a6863c462dbf31c924dbde5750535049380820ce0057c567416145a54155c1c8c10c'
         'b82d5f510ecdd9eb3ec75ae8f73c4a3e06da80e31f6f972a192534ebebf029b1be4f260cd907296274d184a9ac00162f2ff3c0707471e443ce225b93d8b2e218'
         '34a88b0db4073f62e676a5f00808deec333e71090799ef011c8d75904e865d566539ba7a495fd2738bf8e34429240b31648664cdd37fe28feb2f298ee3bb5f6e')
 
