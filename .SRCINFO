@@ -1,8 +1,8 @@
 pkgbase = udev-usb-sync
 	pkgdesc = Fine tune write cache and impose buffer limits when USB storage device is plugged
 	pkgver = 0.9
-	pkgrel = 2
-	url = https://gitlab.manjaro.org/fhdk/udev-usb-sync
+	pkgrel = 3
+	url = https://codeberg.org/wonky/udev-usb-sync
 	install = udev-usb-sync.install
 	arch = any
 	license = MIT
