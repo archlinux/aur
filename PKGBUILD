@@ -1,16 +1,17 @@
-# Maintainer: David Mazieres (http://www.scs.stanford.edu/~dm/addr/)
+# Maintainer : Greg Aluise <galuise@giantg.net>
+# Contributer: David Mazieres (http://www.scs.stanford.edu/~dm/addr/)
+
 pkgname=droidcam-obs-plugin-git
-pkgver=1.1.r5.b8febd6
+pkgver=2.3.3.r1.aea63f6
 pkgrel=1
 pkgdesc="plugin for droidcam obs"
-arch=(x86_64)
+arch=('x86_64' 'i686')
 url="https://dev47apps.com/obs/"
 srcurl="https://github.com/dev47apps/droidcam-obs-plugin.git"
 license=('GPL')
 groups=()
-depends=(obs-studio)
-makedepends=('git' 'libjpeg-turbo' 'libusbmuxd')
-optdepends=()
+depends=('obs-studio' 'libusbmuxd' 'libjpeg-turbo' 'libimobiledevice')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -18,11 +19,9 @@ backup=()
 options=()
 install=
 pkgstem=${pkgname%-git}
-source=("${pkgstem}::git+${srcurl}"
-	fix_Makefile.patch)
+source=("${pkgstem}::git+${srcurl}")
 noextract=()
-sha256sums=('SKIP'
-            '5a52749268fafe141eecbb63f0dea10ac1a100e1b1ba63a2f1cf574837b8c069')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgstem"
@@ -32,13 +31,12 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$pkgstem"
-	patch -p1 -i "$srcdir/fix_Makefile.patch"
 	mkdir -p build
 }
 
 build() {
 	cd "$srcdir/$pkgstem"
-	make
+	make LIBUSBMUXD=libusbmuxd-2.0 LIBIMOBILEDEV=libimobiledevice-1.0 ALLOW_STATIC=no
 }
 
 package() {
