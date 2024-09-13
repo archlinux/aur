@@ -1,6 +1,6 @@
 pkgbase = all-repos
 	pkgdesc = Clone all your repositories and apply sweeping changes
-	pkgver = 1.25.0
+	pkgver = 1.27.0
 	pkgrel = 1
 	url = https://github.com/asottile/all-repos
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = all-repos
 	optdepends = python-pre-commit: for pre-commit autofixer
 	optdepends = python-yaml: for autofixer on yaml files (pre-commit, azure pipelines)
 	optdepends = jq: all-repos-complete
-	source = https://files.pythonhosted.org/packages/source/a/all-repos/all_repos-1.25.0.tar.gz
-	sha256sums = 06fdef4b4d0984c79b1887e012e8c90e03ddea0273ac692d4127ba44c6b34d99
+	source = https://files.pythonhosted.org/packages/source/a/all-repos/all_repos-1.27.0.tar.gz
+	sha256sums = 96fea3e34caa004b0770501e6efb93dc49cbca05fb56c2b8b2a85d06fb3a4573
 
 pkgname = all-repos

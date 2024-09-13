@@ -1,6 +1,6 @@
 # Maintainer: Max Gautier <mg@max.gautier.name>
 pkgname=all-repos
-pkgver=1.25.0
+pkgver=1.27.0
 pkgrel=1
 pkgdesc="Clone all your repositories and apply sweeping changes"
 arch=(any)
@@ -13,7 +13,7 @@ optdepends=(
         'jq: all-repos-complete'
 )
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('06fdef4b4d0984c79b1887e012e8c90e03ddea0273ac692d4127ba44c6b34d99')
+sha256sums=('96fea3e34caa004b0770501e6efb93dc49cbca05fb56c2b8b2a85d06fb3a4573')
 
 build() {
     cd "${pkgname//-/_}-$pkgver"
