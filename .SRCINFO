@@ -1,7 +1,7 @@
 pkgbase = mepo-git
 	pkgdesc = Fast, simple, hackable OSM (OpenStreetMap) map viewer
 	pkgver = 1.3.1.r2.ga1f5337
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mepo.lrdu.org
 	arch = i686
 	arch = x86_64

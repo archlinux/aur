@@ -5,7 +5,7 @@
 
 pkgname=mepo-git
 pkgver=1.3.1.r2.ga1f5337
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, simple, hackable OSM (OpenStreetMap) map viewer'
 #arch=(x86_64)
 arch=(i686 x86_64 arm aarch64)
@@ -36,11 +36,13 @@ build() {
 
 check() {
   cd $pkgname
-  zig build test
+  zig test src/test.zig
 }
 
 package() {
   cd $pkgname
+
+  install -Dm644 README.md -t "$pkgdir/usr/share/${pkgname%-git}"
 
   install -Dm755 zig-out/bin/* -t "$pkgdir/usr/bin"
 
