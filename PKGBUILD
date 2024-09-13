@@ -3,7 +3,7 @@
 
 pkgname=ueberzugpp
 pkgver=2.9.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Command line utility which allows to display images in the terminal, written in C++"
 arch=(x86_64 aarch64 powerpc64le)
 url="https://github.com/jstkdng/ueberzugpp"
