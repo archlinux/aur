@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-greeter-git
 pkgver=1.0.0.alpha.1.r29.g55c02cd
-pkgrel=1
+pkgrel=2
 pkgdesc="libcosmic greeter for greetd, which can be run inside cosmic-comp"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-greeter"
@@ -66,5 +66,7 @@ package() {
   install -Dm644 "${pkgname%-git}.toml" -t "$pkgdir/etc/greetd/"
   install -Dm644 debian/"${pkgname%-git}"{.service,-daemon.service} -t \
     "$pkgdir/usr/lib/systemd/system/"
-  install -Dm644 "debian/${pkgname%-git}.pam" "$pkgdir/etc/pam.d/${pkgname%-git}"
+
+  # Symlink PAM login config instead of shipping upstream greeter config
+  ls -s /etc/pam.d/login "$pkgdir/etc/pam.d/${pkgname%-git}"
 }
