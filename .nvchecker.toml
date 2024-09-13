@@ -1,0 +1,4 @@
+[text-engine-git]
+source = "git"
+git = "https://github.com/mjakeman/text-engine.git"
+prefix = "v"
