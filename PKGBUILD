@@ -1,16 +1,17 @@
 # Maintainer: omansh-krishn <omanshkrishn@duck.com>
-# Contributor: westpain <homicide@disroot.org>
+# Previous Maintainer: westpain <homicide@disroot.org>
 pkgname=materialgram-git
-pkgver=5.1.7.1.r0.g9aa51761e
+_name=materialgram
+pkgver=5.5.4.1.r0.g98c46abe6
 pkgrel=1
 pkgdesc='Telegram Desktop based messenger with Material Design and additional features'
 arch=('x86_64' 'aarch64')
 url="https://github.com/kukuruzka165/materialgram"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
-         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash'
+         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash' 'ada'
          'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'libxcomposite' 'libxdamage' 'abseil-cpp' 'libdispatch'
-         'openssl' 'protobuf' 'glib2' 'libsigc++-3.0' 'kcoreaddons')
+         'openssl' 'protobuf' 'glib2' 'libsigc++-3.0' 'kcoreaddons' 'openh264')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
              'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt'
              'gobject-introspection' 'boost' 'fmt' 'mm-common' 'perl-xml-parser' 'python-packaging'
@@ -18,22 +19,24 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 provides=('materialgram')
-conflicts=('materialgram')
-source=("materialgram::git+https://github.com/kukuruzka165/materialgram.git#branch=main")
+conflicts=('materialgram-bin')
+options=(!debug)
+
+source=("${_name}::git+https://github.com/kukuruzka165/${_name}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/materialgram"
+    cd "${srcdir}/${_name}"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$srcdir/materialgram"
+    cd "${srcdir}/${_name}"
     git submodule update --init --recursive
 }
 
 build() {
-    cd "$srcdir/materialgram"
+    cd "${srcdir}/${_name}"
     cmake \
         -B build \
         -G Ninja \
@@ -47,6 +50,6 @@ build() {
 }
 
 package() {
-    cd "$srcdir/tdesktop"
-    DESTDIR=$pkgdir ninja -C build install
+    cd "${srcdir}/${_name}"
+    DESTDIR=${pkgdir} ninja -C build install
 }
