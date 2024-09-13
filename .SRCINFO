@@ -1,0 +1,34 @@
+pkgbase = podman-desktop-git
+	pkgdesc = Manage Podman and other container engines from a single UI and tray.Use system-wide electron.
+	pkgver = r5126.e67b2f6
+	pkgrel = 1
+	url = https://podman-desktop.io/
+	arch = any
+	license = Apache-2.0
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = pnpm
+	depends = electron32
+	depends = docker-compose
+	depends = podman
+	depends = docker
+	depends = nodejs
+	optdepends = crc: crc plugin
+	optdepends = lima: lima plugin
+	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
+	optdepends = trash-cli: file deletion support (trash-put)
+	optdepends = libappindicator-gtk3: StatusNotifierItem support
+	optdepends = pipewire: WebRTC desktop sharing under Wayland
+	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
+	provides = podman-desktop=r5126.e67b2f6
+	conflicts = podman-desktop
+	options = !strip
+	options = !emptydirs
+	source = podman-desktop.git::git+https://github.com/containers/podman-desktop
+	source = podman-desktop.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = podman-desktop-git
