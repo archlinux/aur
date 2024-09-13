@@ -1,7 +1,7 @@
 pkgbase = colorhug-client
 	pkgdesc = Client tools for ColorHug & ColorHug2
 	pkgver = 0.2.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/hughski/colorhug-client
 	arch = x86_64
 	license = GPL2
@@ -17,6 +17,8 @@ pkgbase = colorhug-client
 	makedepends = appstream-glib
 	depends = colord-gtk
 	depends = libcanberra
+	depends = libsoup
+	depends = colord
 	source = https://people.freedesktop.org/~hughsient/releases/colorhug-client-0.2.8.tar.xz
 	sha256sums = b7787aa58db2dde6a69a13295b98154040a100d8772aac656f3b5ed0bffc0991
 
