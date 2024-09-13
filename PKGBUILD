@@ -31,6 +31,4 @@ package() {
   install -Dm 644 "${srcdir}/logstash.sysusers" "${pkgdir}/usr/lib/sysusers.d/logstash.conf"
   install -Dm 644 "${srcdir}/logstash.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/logstash.conf"
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -d "${pkgdir}/usr/bin"
-  ln -s /usr/share/logstash/bin/logstash "${pkgdir}/usr/bin/logstash"
 }
