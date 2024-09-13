@@ -9,7 +9,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=515dd864e2c8c0fd910bbef082cf3c4d52a41130
+_mozc_commit=9d6931424e9da3d44ae5fb7b809ce8236c2be881
 _mozcdict_ext_commit=de931271344ebb2d1349a7ae0a8ec883457ed930
 _branch=fcitx
 # Sudachi Dictionary
@@ -18,7 +18,7 @@ _sudachidict_date=20240716
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.30.5544.102
-pkgrel=10
+pkgrel=11
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003')
@@ -39,7 +39,7 @@ source=("git+$url.git#commit=${_mozc_commit}"
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
 
-sha512sums=('fe5039ca1f7f2e6a7b098352c53648b826872de72a604e43355b203dddb26ddd59b75c23ef6c490e1eacde8fad08a3abb68a812f8a4838a929f1d97312da253f'
+sha512sums=('864953274bbf943d90f32b81755787f799eb7f74794ae55d3b00abe19f31d0a124f75330e20808124cbb18ead15bbb469cc3666bd0b7333fb507c4b477e77bd8'
             'a0aeb2856d62c71d0c137a687d901098eaa3371b896dbe39e54c36951cbd7d3cfba666ee96d055dba7e8c8384ed17e13597a697707cd960fac320e11f9b7b76c'
             '56cfde2339a06caf9bd56fd802470d933ce013e3f4f85354d739043cc2eccb26677c9260ca5a3ff92791715eb651930cdb2c9c96574ababcb8382b413fe2b65d'
             'fcde4a3c0200969ebb21fa927f1ff59581386a39d83ea7ec5c0092e1566c38638129b71b286434e11fb4c6b76b48d6b36eb64b053306c2bbb8a7900e2c641558'
