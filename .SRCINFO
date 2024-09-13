@@ -1,0 +1,35 @@
+pkgbase = libfprint-tod
+	pkgdesc = Library for fingerprint readers - TOD version
+	pkgver = 1.94.8+tod1
+	pkgrel = 1
+	url = https://fprint.freedesktop.org/
+	arch = x86_64
+	groups = fprint
+	license = LGPL-2.1-or-later
+	checkdepends = cairo
+	checkdepends = umockdev
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = meson
+	makedepends = python-cairo
+	makedepends = python-gobject
+	makedepends = systemd
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = libgudev
+	depends = libgusb
+	depends = nss
+	depends = pixman
+	provides = libfprint
+	provides = libfprint-tod
+	provides = libfprint-2.so
+	provides = libfprint-2-tod.so
+	conflicts = libfprint
+	source = git+https://gitlab.freedesktop.org/3v1n0/libfprint.git?signed#tag=v1.94.8+tod1
+	validpgpkeys = D4C501DA48EB797A081750939449C2F50996635F
+	b2sums = e2e653c3c181f232b1fb3cc6595008bbb0eebf6805dcf7bbf9c0865ee558f638efc3987d86ef5141b93a54a50b25323e6e78dec8fbeb5eabf5d541de12c6c75a
+
+pkgname = libfprint-tod
