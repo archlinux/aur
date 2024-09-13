@@ -5,7 +5,7 @@
 
 pkgname=siyuan_stable
 pkgver=v3.1.6
-pkgrel=0
+pkgrel=1
 pkgdesc="auto upload to AUR when SiYuan stable release"
 arch=("x86_64")
 url="https://b3log.org/siyuan"

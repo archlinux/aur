@@ -1,7 +1,7 @@
 pkgbase = siyuan_stable
 	pkgdesc = auto upload to AUR when SiYuan stable release
 	pkgver = v3.1.6
-	pkgrel = 0
+	pkgrel = 1
 	url = https://b3log.org/siyuan
 	arch = x86_64
 	license = AGPL-3.0-only
