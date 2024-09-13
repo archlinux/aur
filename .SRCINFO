@@ -1,7 +1,7 @@
 pkgbase = ruby-faraday-typhoeus
 	pkgdesc = Faraday adapter for Typhoeus
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dleavitt/faraday-typhoeus
 	arch = any
 	license = MIT
