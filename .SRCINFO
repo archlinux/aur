@@ -1,0 +1,15 @@
+pkgbase = vscode-bookmark-bin
+	pkgdesc = A utility to save your favorite projects and open them easily in vscode
+	pkgver = 1.1.0_beta
+	pkgrel = 1
+	url = https://github.com/ailtonloures/vscode-bookmark
+	arch = x86_64
+	license = MIT
+	depends = electron32
+	conflicts = vscode-bookmark
+	source = vscode-bookmark-1.1.0_beta.deb::https://github.com/ailtonloures/vscode-bookmark/releases/download/v1.1.0-beta/vscode-bookmark_1.1.0.beta_amd64.deb
+	source = vscode-bookmark.sh
+	sha256sums = 9c91cb2b9a249fff428767ef18f417f2fc838416065da270c5283df570d2ed62
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = vscode-bookmark-bin
