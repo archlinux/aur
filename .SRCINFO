@@ -1,6 +1,6 @@
 pkgbase = ocaml-unisim_archisec
 	pkgdesc = Disassembly metadata and DBA (Dynamic Bitvector Automata) semantics of several instruction set architectures
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://binsec.github.io
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ocaml-unisim_archisec
 	depends = gcc-libs
 	depends = glibc
 	depends = ocaml
-	source = ocaml-unisim_archisec-0.0.8.tar.gz::https://github.com/binsec/unisim_archisec/archive/refs/tags/0.0.8.tar.gz
-	b2sums = 5c14170b2d8f1d633fcec68f19c68d987a184531a60167fc787357aeb82550ba20bddef5e2573facf98a8b8b5df7c3648514c01768ecdb500b0e6562faaa86b8
+	source = ocaml-unisim_archisec-0.0.9.tar.gz::https://github.com/binsec/unisim_archisec/archive/refs/tags/0.0.9.tar.gz
+	b2sums = b42d9808e54789e11baf8fd7f5e2fb0d63185475ca6d5d905c14ba82fea6320a0e2a55a6986fa54b9c4bd3dc917c9959cf27f8e42f2bc5a7d4b39d05e1a4fc39
 
 pkgname = ocaml-unisim_archisec
