@@ -1,7 +1,7 @@
-diff --git i/test-libversion.c w/test-libversion.c
+diff --git i/zest.c w/zest.c
 index 808c01f..a122585 100644
---- i/test-libversion.c
-+++ w/test-libversion.c
+--- i/zest.c
++++ w/zest.c
 @@ -660,7 +660,7 @@ int main(int argc, char **argv)
      if(!handle)
          handle = dlopen("libzest.so", RTLD_LAZY);
