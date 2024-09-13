@@ -2,14 +2,14 @@
 _pkgname=cinny-dekstop
 _appimagename=Cinny_desktop-x86_64.AppImage
 pkgname=cinny-desktop-appimage
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Yet another matrix client for desktop"
 arch=("x86_64")
 url="https://github.com/cinnyapp/cinny-desktop"
 license=('AGPLv3')
 source=("${url}/releases/download/v${pkgver}/${_appimagename}")
-sha256sums=("26f817a5ff7a97cc6090fe5f1e13f9ac01f0dcc6ab6f02451936642bc689b1b6")
+sha256sums=("70b4426d7d7f770fd42da102b0073cd2dcb52b0d2e13dddab15246ff5c2ab078")
 options=(!strip)
 provides=("cinny")
 conflicts=("cinny-desktop" "cinny-dekstop-bin")
