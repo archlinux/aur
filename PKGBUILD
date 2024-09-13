@@ -3,7 +3,7 @@
 pkgname=virtualbox-ext-oracle
 pkgver=7.1.0
 _filever="${pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Oracle VM VirtualBox Extension Pack'
 arch=('any')
 url='https://www.virtualbox.org/'

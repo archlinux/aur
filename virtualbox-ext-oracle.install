@@ -1,7 +1,9 @@
 #!/bin/sh
 
 post_install () {
-  VBoxManage extpack install --accept-license="$(sha256sum /usr/share/licenses/virtualbox-ext-oracle/PUEL | head --bytes=64)" "/usr/share/virtualbox/extensions/Oracle_VM_VirtualBox_Extension_Pack-${1%%-*}.vbox-extpack" >/dev/null
+  VBoxManage extpack install \
+    --accept-license="$(sha256sum /usr/share/licenses/virtualbox-ext-oracle/PUEL | head --bytes=64)" \
+    "/usr/share/virtualbox/extensions/Oracle_VirtualBox_Extension_Pack-${1%%-*}.vbox-extpack" >/dev/null
 }
 
 pre_upgrade() {
@@ -13,7 +15,7 @@ post_upgrade() {
 }
 
 post_remove() {
-  VBoxManage extpack uninstall 'Oracle VM VirtualBox Extension Pack' >/dev/null
+  VBoxManage extpack uninstall 'Oracle VirtualBox Extension Pack' >/dev/null
 }
 
 # vim:set ts=2 sw=2 ft=sh et:
