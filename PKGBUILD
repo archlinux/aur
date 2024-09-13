@@ -1,6 +1,6 @@
 # Maintainer: nezu <nezu@nezu.cc>
 pkgname=teamwork-desktop
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Teamwork for Desktop - Launch Teamwork directly from your desktop."
 arch=('any')
@@ -15,7 +15,7 @@ source=(
 	"remove-auto-update.patch"
 	"teamwork-desktop.desktop"
 	"teamwork-desktop.sh")
-sha256sums=('ce0ea182dd402c30df568c2e92c2cff2d3e1f29133577d53ce2b61a9b18c0d2b'
+sha256sums=('fae7d87686c7a40c0588914b9350bb4dd6f2d778341a3ef78079f3b2ee302285'
             'e0c69e7a9d26d4afe1389a0348e34d84affa6783b0f64b4a6c9752041e8d0595'
             '57071e5305fe9b973b8d48e90e827a9323f3f0b5b15f3ba5ecb4e57e03b1cc8f'
             'abd0bf317ac70d5aa51516508cdcf09875496b8bfde643af52df98f0e58d0b93'
