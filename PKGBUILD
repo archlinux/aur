@@ -5,7 +5,7 @@
 pkgname=cultris2
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Cultris II is one of the fastest Tetris®-clones ever! Train your reflexes in single-player challenges, enjoy split-screen matches with friends, or compete online with the best."
+pkgdesc="Cultris II is one of the fastest Tetris®-clones ever!"
 arch=('x86_64')
 url="https://github.com/LofisMusk/c2-patch-aur"
 license=('proprietary')
