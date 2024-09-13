@@ -1,0 +1,56 @@
+diff -ura Ogg-Vorbis-Header-0.11.orig/lib/Ogg/Vorbis/Header.pm Ogg-Vorbis-Header-0.11/lib/Ogg/Vorbis/Header.pm
+--- Ogg-Vorbis-Header-0.11.orig/lib/Ogg/Vorbis/Header.pm	2021-01-04 14:38:15.000000000 +0100
++++ Ogg-Vorbis-Header-0.11/lib/Ogg/Vorbis/Header.pm	2024-09-13 11:08:21.457817020 +0200
+@@ -476,14 +476,14 @@
+   if ((fd = fopen(inpath, "rb")) == NULL) {
+     perror("Error opening file in Ogg::Vorbis::Header::write\n");
+     free(outpath);
+-    return &PL_sv_undef;
++    return (int)&PL_sv_undef;
+   }
+ 
+   if ((fd2 = fopen(outpath, "w+b")) == NULL) {
+     perror("Error opening temp file in Ogg::Vorbis::Header::write\n");
+     fclose(fd);
+     free(outpath);
+-    return &PL_sv_undef;
++    return (int)&PL_sv_undef;
+   }
+ 
+   /* Setup the state and comments structs */
+@@ -494,7 +494,7 @@
+     fclose(fd2);
+     unlink(outpath);
+     free(outpath);
+-    return &PL_sv_undef;
++    return (int)&PL_sv_undef;
+   }
+   vc = vcedit_comments(state);
+ 
+@@ -526,7 +526,7 @@
+     vcedit_clear(state);
+     unlink(outpath);
+     free(outpath);
+-    return &PL_sv_undef;
++    return (int)&PL_sv_undef;
+   }
+ 
+   fclose(fd);
+@@ -536,7 +536,7 @@
+     perror("Error copying tempfile in Ogg::Vorbis::Header::add_comment\n");
+     unlink(outpath);
+     free(outpath);
+-    return &PL_sv_undef;
++    return (int)&PL_sv_undef;
+   }
+ 
+   if ((fd2 = fopen(inpath, "wb")) == NULL) {
+@@ -544,7 +544,7 @@
+     fclose(fd);
+     unlink(outpath);
+     free(outpath);
+-    return &PL_sv_undef;
++    return (int)&PL_sv_undef;
+   }
+ 
+   while ((bytes = fread(buffer, 1, BUFFSIZE, fd)) > 0)
