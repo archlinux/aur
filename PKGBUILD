@@ -1,8 +1,8 @@
 # Maintainer: Marcin Nowak <marcin.j.nowak@gmail.com>
 
 pkgname=ufraw-thumbnailer
-pkgver=0.2
-pkgrel=2
+pkgver=0.3
+pkgrel=1
 epoch=
 pkgdesc="Provides thumbnailer definition to generate thumbnails for RAW images in file managers like Nautilus or Nemo"
 arch=('any')
@@ -23,7 +23,7 @@ changelog=
 source=("Makefile" "ufraw.thumbnailer")
 noextract=()
 md5sums=('bb7b2a9549d5d53f21305258e2fcf262'
-         'de62d9b3b4b79423c7258e549d280936')
+         '52989011d14890d8f775b41992200369')
 validpgpkeys=()
 
 package() {

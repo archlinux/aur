@@ -1,7 +1,7 @@
 pkgbase = ufraw-thumbnailer
 	pkgdesc = Provides thumbnailer definition to generate thumbnails for RAW images in file managers like Nautilus or Nemo
-	pkgver = 0.2
-	pkgrel = 2
+	pkgver = 0.3
+	pkgrel = 1
 	arch = any
 	license = GPL
 	depends = gimp-nufraw
@@ -11,4 +11,3 @@ pkgbase = ufraw-thumbnailer
 	md5sums = de62d9b3b4b79423c7258e549d280936
 
 pkgname = ufraw-thumbnailer
-
