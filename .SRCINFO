@@ -20,7 +20,7 @@ pkgbase = cemu
 	makedepends = glu
 	makedepends = libpulse
 	depends = boost-libs>=1.79
-	depends = fmt
+	depends = fmt10
 	depends = libzip>=1.9.2
 	depends = libpng>=1.6.37
 	depends = pugixml>=1.12.1
