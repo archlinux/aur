@@ -1,10 +1,10 @@
 pkgname=mihomo-party-electron
 _pkgname=mihomo-party
-pkgver=1.2.16
+pkgver=1.2.17
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
-url="https://github.com/pompurin404/mihomo-party"
+url="https://github.com/mihomo-party-org/mihomo-party"
 license=('GPL3')
 conflicts=("$_pkgname" "$_pkgname-git" "$_pkgname-bin" "$_pkgname-electron-bin")
 depends=('electron' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
@@ -16,7 +16,7 @@ source=(
     "${_pkgname}.desktop"
     "${_pkgname}.sh"
 )
-sha256sums=("53c2ad3b2a560270b366cf0a76e63ae448bcceef92bc67cda5077b86db86c578"
+sha256sums=("3d0edd7f2d43aa4e264b8282821475524301cae53fdcbe101c7aa1e92cc26539"
 "96a6250f67517493f839f964c024434dbcf784b25a73f074bb505f1521f52844"
 "560733f0e5bd9b47ff50c849301c8a22ae17a5df26830d8c97033dfcbd392382"
 )
