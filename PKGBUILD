@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=reqable-bin
 pkgver=2.23.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross platform professional HTTP development and Debugger that supports HTTP1, HTTP2, and HTTP3 (QUIC) protocols"
 arch=('x86_64')
 url="https://reqable.com"
-_ghurl="https://ithub.com/reqable/reqable-app"
+_ghurl="https://github.com/reqable/reqable-app"
 license=('LicenseRef-custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
