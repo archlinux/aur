@@ -1,7 +1,7 @@
 pkgbase = nodejs-tslib
 	pkgdesc = runtime library for TypeScript that contains all of the TypeScript helper functions
 	pkgver = 2.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.typescriptlang.org/
 	arch = any
 	license = 0BSD
