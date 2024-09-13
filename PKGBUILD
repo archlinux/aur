@@ -1,7 +1,7 @@
 # Maintainer: michaelkuc6 <michaelkuc6 at gmail dot com>
 _pkgname=headscale
 pkgname="${_pkgname}-git"
-_pkgver=v0.23.0-beta.4
+_pkgver=v0.23.0-rc.1
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 pkgdesc="An open source, self-hosted implementation of the Tailscale coordination server."
@@ -26,7 +26,7 @@ source=(
 	'headscale.sysusers'
 	'headscale.tmpfiles'
 )
-sha256sums=('9c2e53ba37e4496c7e08413b6d17ddf267a8df66cb88d78eb9a902692c471d48'
+sha256sums=('b9b8adba7afcc9d7e88d45c095fa30d92b31a3838bb27292e46b4bd308cd0257'
             '059353f4843dec6eb447c567fac890ef63cc9c8acea18840fcfc3f4a76d596db'
             '8a22d7193ceeac0be32725cf8108f963be3a21855e6099de964f810094d0adc7')
 
