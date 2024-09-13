@@ -2,7 +2,7 @@
 # Contributor: Cillian Berragan <cjberragan@gmail.com>
 pkgname=python-stanza
 _name=${pkgname#python-}
-pkgver=1.9.0
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Stanford NLP Python library for tokenization, sentence segmentation, NER, and parsing of many human languages"
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   'python-scipy: Perform CEAF scoring for the Kuhn-Munkres linear assignment scheme'
 )
 source=("$_name-$pkgver.tar.gz::https://github.com/stanfordnlp/stanza/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7527563490d6554b2011c84369f26f6303b4ab18e27f4b7c1493f2817f7d1227')
+sha256sums=('ffc8dd63dba99e17bfef152c5eee428cbe77e268711fef53f1a80fc98f0500ad')
 
 build() {
   cd "$_name-$pkgver"
