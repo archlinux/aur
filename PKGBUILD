@@ -1,13 +1,13 @@
 # Maintainer: Petrov Vlad <petrov.vlad@ya.ru>
 
 pkgname=freelib-dev-git
-pkgver=6.1.0.r19.g87c3351
+pkgver=6.1.10
 pkgrel=1
 pkgdesc="Freelib is book library manager"
 arch=(x86_64)
 url="https://github.com/petrovvlad/freeLib"
 license=(GPL3)
-depends=(qt6-base qt6-svg qt6-httpserver quazip-qt6)
+depends=(qt6-base qt6-svg qt6-httpserver quazip-qt6 onetbb)
 optdepends=('kindlegen: convert to MOBI, AZW3'
             'djvulibre: djvu covers')
 makedepends=(git cmake)
@@ -17,11 +17,6 @@ source=("git+https://github.com/petrovvlad/freeLib.git#branch=develop"
         "freelib-SmtpClient-for-Qt::git+https://github.com/petrovvlad/SmtpClient-for-Qt.git")
 sha256sums=('SKIP'
             'SKIP')
-
-pkgver() {
-  cd "freeLib"
-  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 prepare() {
   cd "freeLib"
@@ -43,5 +38,3 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --install build
 }
-sha256sums=('SKIP'
-            'SKIP')
