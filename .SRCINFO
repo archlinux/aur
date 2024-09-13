@@ -1,6 +1,6 @@
 pkgbase = hpaper
 	pkgdesc = Automated Wallpaper Management for Hyprland Using Hyprpaper
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/Hcode00/hpaper
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = hpaper
 	makedepends = go
 	depends = hyprland>0
 	depends = hyprpaper>0
-	source = hpaper-0.1.2.tar.gz::https://github.com/Hcode00/hpaper/archive/v0.1.2.tar.gz
-	sha256sums = 5fd9c05d6b1454f61143be9d567b68618a66dd72b1ba1fb618fbcc076cf89da6
+	source = hpaper-0.1.3.tar.gz::https://github.com/Hcode00/hpaper/archive/v0.1.3.tar.gz
+	sha256sums = 84693492b0a175a35e80c0d2aca41fd587975be48658da454b1870780e19b4ac
 
 pkgname = hpaper
