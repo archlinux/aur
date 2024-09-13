@@ -14,10 +14,11 @@ srcurl="https://github.com/dev47apps/droidcam-obs-plugin.git"
 license=('GPL')
 depends=("obs-studio" 'libusbmuxd' 'libjpeg-turbo' 'libimobiledevice')
 makedepends=('git')
+provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 pkgstem=${pkgname%-git}
 source=("${pkgstem}::git+${srcurl}#tag=${_tag}" "fixes.patch")
-sha256sums=('SKIP' 'a355e7712ad5d6c34e6d1e7c4ce4d99048330907f24bda30c8bf1afd2c45837e')
+sha256sums=('SKIP' '2a1fb39a214fbc0cacaa687ae12d9d11461d170ae6db7aed344d954c045d5958')
 
 
 prepare() {
@@ -29,7 +30,7 @@ prepare() {
 build() {
     cd "$srcdir/$pkgstem"
 	 pwd
-    make LIBUSBMUXD_DYN_NAME=libusbmuxd-2.0 LIBIMOBILEDEV_DYN_NAME=libimobiledevice-1.0 ALLOW_STATIC=no
+    make LIBUSBMUXD=libusbmuxd-2.0 LIBIMOBILEDEV=libimobiledevice-1.0 ALLOW_STATIC=no
 }
 
 package() {
