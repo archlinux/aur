@@ -1,6 +1,6 @@
 pkgbase = dlib-cuda
 	pkgdesc = A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques
-	pkgver = 19.24.3
+	pkgver = 19.24.6
 	pkgrel = 1
 	url = http://dlib.net
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = dlib-cuda
 	optdepends = sqlite: for sqlite support
 	provides = dlib
 	conflicts = dlib
-	source = http://dlib.net/files/dlib-19.24.3.tar.bz2
-	sha256sums = 28fdd1490c4d0bb73bd65dad64782dd55c23ea00647f5654d2227b7d30b784c4
+	source = https://codeload.github.com/davisking/dlib/tar.gz/refs/tags/v19.24.6
+	sha256sums = 22513c353ec9c153300c394050c96ca9d088e02966ac0f639e989e50318c82d6
 
 pkgname = dlib-cuda
