@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gam
-_pkgver=1.22-4
+_pkgver=1.22-5
 pkgname=r-${_pkgname,,}
-pkgver=1.22.4
+pkgver=1.22.5
 pkgrel=1
 pkgdesc='Generalized Additive Models'
 arch=('x86_64')
@@ -21,7 +21,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('78417408f5eebb6fc951665698215e3f8c5fac4e7b694a324550d5f4918ac073')
+sha256sums=('7d33a1005e0982781b47bed611f0b0e0f450717d39ba7b97439f9b532182e955')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
