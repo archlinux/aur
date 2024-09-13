@@ -1,7 +1,7 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoakanter@gmail.com>
 _pkgname="asus-5606-fan-state"
 pkgname="${_pkgname}-git"
-pkgver=r4.2db3bb5
+pkgver=r6.ccf90a6
 pkgrel=1
 pkgdesc="Script to set the fan state on the ZenBook S 16 UM5606 and Vivobook M5606"
 arch=('any')
