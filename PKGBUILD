@@ -1,7 +1,7 @@
 # Maintainer: khvalera <khvalera[at]ukr[dot]net>
 
 pkgname=glpi-agent
-pkgver=1.7.1
+pkgver=1.10
 pkgrel=1
 pkgdesc="GLPI Agent"
 arch=('any')
@@ -15,7 +15,7 @@ depends=( "perl-cpanel-json-xs" "perl-datetime" "perl-file-which" "perl-data-uui
           "perl-net-snmp" "perl-net-ip" "perl-lwp-protocol-https" "perl-http-proxy" "perl-yaml-tiny"
           "perl-http-server-simple-authen" "perl-io-capture" "perl-xml-treepp" "perl-universal-require"
           "perl-xml-libxml")
-sha256sums=('0d33b75e660abc55f0ce9e58beede6c6641cb891afe4f05b23864a2ae218ba18'
+sha256sums=('7fbfec3834005d749cf601fe56aaff9c86cae71acb5a548e274bcf7def192bba'
             'd9aaa2915b9218b9d001017ed95046967de34c0e2be6506eea6f695edc934e3a')
 
 backup=("etc/glpi-agent/agent.cfg"
@@ -32,7 +32,7 @@ backup=("etc/glpi-agent/agent.cfg"
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
 
-   patch --forward --strip=1 --input="../fix-serial-number.patch"
+   #patch --forward --strip=1 --input="../fix-serial-number.patch"
 }
 
 #=========================================
