@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --abbrev=7 --tags | cut -c2-
+  git describe --abbrev=0 --tags | cut -c2-
 }
 
 build() {
