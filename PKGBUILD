@@ -1,4 +1,4 @@
-pkgname=WaveLogGate-git
+pkgname=waveloggate-git
 pkgdesc="Gateway for connecting WSJT-* and FLRig to Wavelog"
 pkgver=1.0.16
 pkgrel=0
@@ -13,6 +13,8 @@ depends=(
 )
 url="https://github.com/wavelog/WaveLogGate"
 license=('MIT')
+# graphic license: MIT
+# source graphic: https://www.wavelog.org/wp-content/uploads/2024/04/wavelog_icon_only.png
 source=(
     "WaveLogGate::git+https://github.com/wavelog/WaveLogGate#tag=v$pkgver"
     "WaveLogGate.sh"
