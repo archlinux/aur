@@ -1,0 +1,16 @@
+pkgbase = ntpstat
+	pkgdesc = Print NTP synchronisation status for ntpd or chronyd
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/mlichvar/ntpstat
+	changelog = NEWS
+	arch = any
+	license = MIT
+	depends = bash
+	optdepends = chrony: chronyd support
+	optdepends = ntp: ntpd support
+	options = zipman
+	source = https://github.com/mlichvar/ntpstat/archive/refs/tags/0.6/ntpstat-0.6.tar.gz
+	sha256sums = 366b146133c71cf3e63c50ee75fd6a0c2e7763b8d239c6ef6f22333be57b13f7
+
+pkgname = ntpstat

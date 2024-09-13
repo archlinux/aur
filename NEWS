@@ -1,0 +1,13 @@
+0.6 (2020-06-11)
+- fix reported polling interval with ntpd and PPS source
+
+0.5 (2018-03-20)
+- add -m option to specify maximum acceptable error
+
+0.4 (2017-07-11)
+- include system offset in reported distance with chrony
+- fix parsing of delay and dispersion from chronyc output
+
+0.3 (2017-03-15)
+- initial release
+
