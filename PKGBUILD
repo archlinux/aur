@@ -4,12 +4,12 @@
 pkgname=conky-manager
 pkgver=2.4
 _ubuntu=~136~ubuntu16.04.1
-pkgrel=5
+pkgrel=6
 pkgdesc="GUI for managing Conky config files with options to browse and edit themes"
 url="https://launchpad.net/conky-manager"
 arch=('x86_64')
 license=('GPL3')
-depends=('cairo' 'conky' 'desktop-file-utils' 'gtk3' 'imagemagick' 'json-glib' 'libgee' 'p7zip' 'rsync')
+depends=('cairo' 'conky' 'gtk3' 'imagemagick' 'json-glib' 'libgee' 'p7zip' 'rsync')
 makedepends=('vala')
 options=('!emptydirs')
 source=(${pkgname}-${pkgver}-${_ubuntu}.tar.xz::https://launchpad.net/~teejee2008/+archive/ubuntu/ppa/+files/${pkgname}_${pkgver}${_ubuntu}.tar.xz
@@ -30,6 +30,7 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}${_ubuntu}
   make DESTDIR="${pkgdir}" install
+  mv "$pkgdir"/usr/share/{appdata,metainfo}
 }
 
 # vim: ts=2 sw=2 et:
