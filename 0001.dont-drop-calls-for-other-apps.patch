@@ -1,0 +1,22 @@
+Author: ElNick on AUR
+Origin: https://aur.archlinux.org/packages/telegram-tdlib-purple-minimal-git#comment-989954
+Rationale:
+
+  Recent tdlib-purple when compiled with -DNoVoip=True immediately drops
+  incoming voice calls with "Received incoming call, but calls are not supported".
+  This results in calls being dropped on all online devices (phone etc).
+  Having tdlib-purple compiled with NoVoip connected essentially means there's
+  no way to receive a call on any other device.
+
+diff --git a/call.cpp b/call.cpp
+index 55d77b2..96b2535 100644
+--- a/call.cpp
++++ b/call.cpp
+@@ -194,7 +194,6 @@ void updateCall(const td::td_api::call &call, TdAccountData &account, TdTranscei
+                                   _("Received incoming call, but calls are not supported"),
+                                   time(NULL), PURPLE_MESSAGE_SYSTEM);
+
+-            discardCall(call.id_, transceiver);
+         }
+         return;
+     }

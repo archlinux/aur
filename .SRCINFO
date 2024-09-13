@@ -2,7 +2,7 @@ pkgbase = telegram-tdlib-purple-minimal-git
 	pkgdesc = libpurple/pidgin Telegram plugin implemented using official tdlib client library, packaged for bitlbee, without voip and image-processing dependencies
 	pkgver = 0.8.1.r523.d220fa8
 	pkgrel = 1
-	url = https://github.com/savoptik/tdlib-purple/
+	url = https://github.com/BenWiederhake/tdlib-purple/
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
@@ -12,9 +12,11 @@ pkgbase = telegram-tdlib-purple-minimal-git
 	depends = libpurple
 	provides = telegram-tdlib-purple=0.8.1.r523.d220fa8
 	conflicts = telegram-tdlib-purple
-	source = telegram-tdlib-purple-minimal-git::git+https://github.com/savoptik/tdlib-purple/#commit=d220fa864942253856752b1d9abadb8d1ed835be
+	source = telegram-tdlib-purple-minimal-git::git+https://github.com/BenWiederhake/tdlib-purple/
 	source = td::git+https://github.com/tdlib/td.git
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = 0001.dont-drop-calls-for-other-apps.patch
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = telegram-tdlib-purple-minimal-git
