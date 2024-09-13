@@ -10,6 +10,7 @@ pkgbase = logstash-bin
 	depends = ruby-bundler
 	depends = coreutils
 	depends = awk
+	optdepends = elasticsearch
 	options = !debug
 	backup = etc/logstash/jvm.options
 	backup = etc/logstash/log4j2.properties
