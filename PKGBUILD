@@ -2,16 +2,16 @@
 
 pkgname=rpcapd
 _srcname=libpcap
-pkgver=1.10.2
+pkgver=1.10.5
 pkgrel=1
 pkgdesc='A remote packet capture daemon'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='http://www.tcpdump.org/'
 license=('BSD')
 makedepends=('bison')
-source=("http://www.tcpdump.org/release/libpcap-${pkgver}.tar.gz"{,.sig})
+source=("http://www.tcpdump.org/release/libpcap-${pkgver}.tar.xz"{,.sig})
 validpgpkeys=('1F166A5742ABB9E0249A8D30E089DEF1D9C15D0D')
-sha256sums=('db6d79d4ad03b8b15fb16c42447d093ad3520c0ec0ae3d331104dcfb1ce77560'
+sha256sums=('84fa89ac6d303028c1c5b754abff77224f45eca0a94eb1a34ff0aa9ceece3925'
             'SKIP')
 
 build() {
