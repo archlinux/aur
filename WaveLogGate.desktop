@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=WaveLogGate
+Comment=Gateway for connecting WSJT-* and FLRig to Wavelog
+GenericName=WaveLogGate
+Exec=/usr/bin/WaveLogGate.sh %U
+Icon=wavelog_icon_only
+Type=Application
+StartupNotify=true
+Categories=HamRadio;Network;
+
