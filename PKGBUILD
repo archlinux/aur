@@ -1,7 +1,7 @@
 # Maintainer: Lucas Schwiderski <lucas@lschwiderski.de>
 _pkgname=sesh
 pkgname=${_pkgname}-bin
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Smart session manager for the terminal"
 arch=("x86_64" "arm64" "i386")
@@ -11,9 +11,9 @@ depends=("zoxide" "tmux")
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_x86_64.tar.gz")
 source_i386=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_i386.tar.gz")
 source_arm64=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_arm64.tar.gz")
-sha256sums_x86_64=('e43c985f4aac9f963b057292943ab3f5d6e52966dcb6ffaee73eea85cf0f8496')
-sha256sums_arm64=('e43c985f4aac9f963b057292943ab3f5d6e52966dcb6ffaee73eea85cf0f8496')
-sha256sums_i386=('e43c985f4aac9f963b057292943ab3f5d6e52966dcb6ffaee73eea85cf0f8496')
+sha256sums_x86_64=('c15be97dab74e567b4801be0f24520be834a1f3a5d87a8475d322961066624a5')
+sha256sums_arm64=('c15be97dab74e567b4801be0f24520be834a1f3a5d87a8475d322961066624a5')
+sha256sums_i386=('c15be97dab74e567b4801be0f24520be834a1f3a5d87a8475d322961066624a5')
 
 package() {
     install -Dm755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
