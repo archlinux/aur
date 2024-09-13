@@ -1,6 +1,6 @@
 # Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at queensu at ca>
 pkgname=rmatrix
-pkgver=0042f31
+pkgver=51899ee
 pkgrel=1
 pkgdesc="Rust port of a curses-based 'Matrix'-like screen"
 arch=('any')
