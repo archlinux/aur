@@ -1,12 +1,12 @@
 pkgbase = gnome-shell-extension-wallpaper-slideshow
 	pkgdesc = Wallpaper slideshow extension for GNOME
-	pkgver = 8
+	pkgver = 9
 	pkgrel = 1
 	url = https://gitlab.com/AndrewZaech/azwallpaper
 	arch = any
 	license = GPL-3.0
 	depends = gnome-shell
-	source = https://gitlab.com/AndrewZaech/azwallpaper/-/archive/v8/azwallpaper-v8.tar.gz
-	sha256sums = 97f75421a8b4aeecfe27625651505b721775503fb596ea24a0d917592a6329df
+	source = https://gitlab.com/AndrewZaech/azwallpaper/-/archive/v9/azwallpaper-v9.tar.gz
+	sha256sums = ed9f5d9ba4c84c321d53dc052f3dc9996fc700c8c2ec89a5938bae3a5bcf2f6d
 
 pkgname = gnome-shell-extension-wallpaper-slideshow
