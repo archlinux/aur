@@ -10,15 +10,29 @@ license=(GPL-3.0-or-later)
 
 depends=(qt5-base
          qt5-x11extras
+         abseil-cpp
+         alsa-lib
          chromaprint
-         protobuf
+         fftw
+         gcc-libs
+         gdk-pixbuf2
+         glib2
+         glibc
          gst-plugins-base
+         gst-plugins-base-libs
          gst-plugins-good
-         udisks2
+         gstreamer
+         icu
          libcdio
+         libebur128
          libgpod
          libmtp
-         fftw)
+         libpulse
+         libx11
+         protobuf
+         sqlite
+         taglib
+         udisks2)
 makedepends=(cmake
              boost
              qt5-tools)
