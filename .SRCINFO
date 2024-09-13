@@ -1,15 +1,15 @@
 pkgbase = beat-saber-mod-manager-bin
 	pkgdesc = Yet another mod installer for Beat Saber, heavily inspired by ModAssistant.
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/affederaffe/BeatSaberModManager
 	arch = x86_64
 	license = MIT
 	options = !strip
-	source = https://github.com/affederaffe/BeatSaberModManager/releases/download/v0.0.5/BeatSaberModManager-linux-x64.zip
+	source = https://github.com/affederaffe/BeatSaberModManager/releases/download/v0.0.6/BeatSaberModManager-linux-x64.zip
 	source = BeatSaberModManager.desktop
 	source = beat-saber-mod-manager.png
-	md5sums = 36a19748946d463e2498331a40e517f7
+	md5sums = fa2b2f25a4c909d3399e3ba2ae2e9d6d
 	md5sums = SKIP
 	md5sums = SKIP
 
