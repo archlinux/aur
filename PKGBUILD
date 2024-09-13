@@ -2,7 +2,7 @@
 # Contributor: Malte Jürgens <maltejur@dismail.de>
 
 pkgname=libation
-pkgver=11.3.17
+pkgver=11.4.0
 pkgrel=1
 pkgdesc="Audible audiobook manager: liberate your Library"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 depends=('fontconfig' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'lttng-ust2.12' 'zlib')
 makedepends=('dotnet-sdk')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('18eb99164e3b7f64963562b851e63952f9e2f7b8095e14feabd8897038068d55')
+sha256sums=('83e31e6dbe201d4ea47d02a9619dd8853f0bbb44e6e4ce842fabbfd5ea077f6d')
 
 build() {
   cd "${pkgname^}-${pkgver}"
