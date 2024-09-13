@@ -2,7 +2,7 @@
 # Contributor: Rojikku <RojikkuNoKami at gmail dot com>
 pkgname=remoteplaywhatever-bin
 _pkgname=RemotePlayWhatever
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Tiny application that lets you force remote play together any game you have in your steam library including non-steam ones."
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}-alpha/${_pkgname}-${pkgver}-Linux.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/m4dEngi/RemotePlayWhatever/${pkgver}-alpha/LICENSE"
 )
-sha256sums=('bfb984b570c21f1ddba0465663b5487df3e34910abbcda575022066654bef1db'
+sha256sums=('15abbc12e301d925d9da34ca7bce830a4e2aec5c5db9c07fa82db3a9cb97a49f'
             '284724acc9bb9b5a0579ca01589605ad6d8b4cd01094d7077ca6308aa5786cdd')
 build() {
     bsdtar -xf "${srcdir}/data."*
