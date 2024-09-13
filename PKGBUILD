@@ -33,6 +33,7 @@ package() {
   install -Dm 640 config/kibana.yml "${pkgdir}/etc/kibana/kibana.yml"
   install -dm 755 "${pkgdir}/usr/share/webapps/kibana"
   cp -a * "${pkgdir}/usr/share/webapps/kibana"
+  chmod -R 755 "${pkgdir}/usr/share/webapps/kibana" "${pkgdir}/etc/kibana/"
   install -Dm 644 "${srcdir}/kibana.service" "${pkgdir}/usr/lib/systemd/system/kibana.service"
   install -Dm 644 "${srcdir}/kibana.sysusers" "${pkgdir}/usr/lib/sysusers.d/kibana.conf"
   install -Dm 644 "${srcdir}/kibana.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/kibana.conf"

@@ -1,5 +1,4 @@
 d /var/log/kibana 0755 kibana kibana
 d /var/lib/kibana 0750 kibana kibana
-d /usr/share/kibana 0755 kibana kibana -
 d /etc/kibana 0750 kibana kibana -
 d /run/kibana 0755 kibana kibana
