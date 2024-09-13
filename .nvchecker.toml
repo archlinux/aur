@@ -1,0 +1,4 @@
+[siril-git]
+source = "git"
+git = "https://gitlab.com/free-astro/siril.git"
+prefix = "v"

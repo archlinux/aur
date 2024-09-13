@@ -7,10 +7,9 @@
 # https://www.siril.org/
 # https://gitlab.com/free-astro/siril
 
-# basic info
 _pkgname="siril"
 pkgname="$_pkgname-git"
-pkgver=1.2.3.r1131.g49a0646
+pkgver=1.2.4.r1240.g09e0b30
 pkgrel=1
 pkgdesc="Astronomical image processing software for Linux (IRIS clone)"
 url="https://gitlab.com/free-astro/siril"
@@ -41,6 +40,8 @@ makedepends=(
 checkdepends=(
   'criterion' # AUR
 )
+
+options=('!lto')
 
 _source_main() {
   provides=("$_pkgname=${pkgver%%.r*}")
@@ -97,10 +98,7 @@ pkgver() {
 }
 
 build() {
-  local _meson_options=(
-    "$_pkgsrc"
-    build
-  )
+  local _meson_options=()
 
   # criterion available and needed only for check
   if pacman -Q criterion 2> /dev/null; then
@@ -109,7 +107,7 @@ build() {
     )
   fi
 
-  arch-meson "${_meson_options[@]}"
+  arch-meson "${_meson_options[@]}" "$_pkgsrc" build
   meson compile -C build
 }
 
