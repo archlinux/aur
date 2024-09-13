@@ -3,7 +3,7 @@
 # Contributor: alium
 
 pkgname=televize
-pkgver=40
+pkgver=41
 pkgrel=1
 pkgdesc="CLI aplication to watch mainly Czech television streams"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('mplayer: for MPlayer backend' 'mpv: for MPV backend'
             'fzf: for channel selection in console using fzf')
 source=(http://xpisar.wz.cz/${pkgname}/${pkgname}-${pkgver}
         televize-menu)
-sha256sums=('a97bed73f738d62afb18e609aca827f8a9fdc29524f58456d9822c7d13748c0d'
+sha256sums=('5b25b573901d1cf485aa050a9aa998a18e26c28ce1e1bf900cdb67794dc03428'
             'f5366f74ee174cf6fd049ab5e43c70f14d93cad41ef66847059105c568973003')
 
 prepare() {
