@@ -1,14 +1,14 @@
 pkgbase = r-deriv
 	pkgdesc = Symbolic Differentiation
-	pkgver = 4.1.3
-	pkgrel = 9
+	pkgver = 4.1.6
+	pkgrel = 1
 	url = https://cran.r-project.org/package=Deriv
 	arch = any
 	license = GPL-3.0-or-later
 	depends = r
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/Deriv_4.1.3.tar.gz
-	md5sums = e4405e9b07cda190696378cf7fb77e71
-	b2sums = bf04f06718243431f2436cca424de285ead05051f2f8ca6a586b4f5ec1e946f630172cdd4bcfd88da6eedb455e52a5649270fd2a5818dbc87e7d056fb4c40aa5
+	source = https://cran.r-project.org/src/contrib/Deriv_4.1.6.tar.gz
+	md5sums = dcea8e11813976cd37a32a7b91781f52
+	b2sums = f34ae9b154d505d3d63dcb0516e341663ef3b029a5181c52b5421f1f14216e72853c94582aa0d67a46b46b4752b34a36713d1a53aa78c98942676e85145135b6
 
 pkgname = r-deriv
