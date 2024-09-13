@@ -1,10 +1,10 @@
 pkgname=mihomo-party-git
 _pkgname=${pkgname%-git}
-pkgver=1.2.16.r5.g724bc5b
+pkgver=1.2.16.r6.g2bf00c7
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
-url="https://github.com/pompurin404/mihomo-party"
+url="https://github.com/mihomo-party-org/mihomo-party"
 license=('GPL3')
 conflicts=("$_pkgname" "$_pkgname-bin" "$_pkgname-electron" "$_pkgname-electron-bin")
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
