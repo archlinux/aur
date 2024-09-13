@@ -1,0 +1,2 @@
+# Home dir of the waycrate user, also contains state.conf
+d       /var/lib/hatsu   0750    hatsu   hatsu 

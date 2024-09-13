@@ -1,0 +1,25 @@
+pkgbase = hatsu
+	pkgdesc = Self-hosted & Fully-automated ActivityPub Bridge for Static Sites.
+	pkgver = 0.3.0_beta.3
+	pkgrel = 1.0
+	url = https://github.com/importantimport/hatsu
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0
+	makedepends = git
+	makedepends = meson
+	makedepends = rust
+	depends = sqlite
+	options = !lto
+	source = hatsu-v0.3.0_beta.3.tar.gz::https://github.com/importantimport/hatsu/archive/refs/tags/v0.3.0-beta.3.tar.gz
+	source = hatsu.sysusers
+	source = hatsu.tmpfiles
+	source = hatsu.service
+	source = hatsu.env
+	sha256sums = 665594bf0b4c78a524967c8d7f1a21b51f19bb0077ea997e004d21b6bcaccb84
+	sha256sums = 80e8a450ddd50a77e3c6aae1ce3d1efe1a5ef83a1eff2466a5b8be9002d3627b
+	sha256sums = 257fe7e172293e96f0ba725dea88ef033837260ce65949420e7798d40e63ac9c
+	sha256sums = 3543f60491638d5c44c1332ca3d4de3f7cba698c8237abf2d0d48a5d7d9ac9c4
+	sha256sums = 5b32af12abab9e1b0c27cb1540c403fc024af9eeb77a52bb54f1085533ef9081
+
+pkgname = hatsu

@@ -1,0 +1,18 @@
+[Unit]
+Description=Self-hosted & Fully-automated ActivityPub Bridge for Static Sites
+After=network.target
+
+[Service]
+User=hastu
+Group=hastu
+ExecStart=/usr/bin/hastu
+Restart=on-failure
+
+# Hardening
+ProtectSystem=yes
+PrivateTmp=true
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

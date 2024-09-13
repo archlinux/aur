@@ -1,0 +1,3 @@
+#Type Name           ID GECOS             Home directory   Shell
+u     hatsu -  "hatsu Account" /var/lib/hatsu   -
+m     hatsu hatsu
