@@ -31,13 +31,17 @@
 #             : @linux-aarhus (Manjaro Forum)
 # inspired by : @kwg (EndeavourOS Forum)
 
-KERNEL!="sd[a-z]", GOTO="usb_limit_write_cache_end"
+KERNEL!="sd[a-z]|sd[a-z][0-9]", GOTO="usb_limit_write_cache_end"
 ENV{ID_USB_TYPE}!="disk", GOTO="usb_limit_write_cache_end"
 ACTION!="add|change", GOTO="usb_limit_write_cache_end"
 
-ATTRS{bDeviceClass}!="09", ATTRS{speed}=="10000", RUN+="/usr/bin/udev-usb-sync %k %s{speed}", GOTO="usb_limit_write_cache_end"
-ATTRS{bDeviceClass}!="09", ATTRS{speed}=="5000",  RUN+="/usr/bin/udev-usb-sync %k %s{speed}", GOTO="usb_limit_write_cache_end"
-ATTRS{bDeviceClass}!="09", ATTRS{speed}=="480",   RUN+="/usr/bin/udev-usb-sync %k %s{speed}", GOTO="usb_limit_write_cache_end"
-ATTRS{bDeviceClass}!="09", ATTRS{speed}=="12",    RUN+="/usr/bin/udev-usb-sync %k %s{speed}", GOTO="usb_limit_write_cache_end"
+PROGRAM+="/usr/bin/uname -r"
+
+RESULT=="4*|5*|6.1.*", ENV{ID_FS_USAGE}=="filesystem", ENV{UDISKS_MOUNT_OPTIONS_DEFAULTS}+="sync", ENV{UDISKS_MOUNT_OPTIONS_ALLOW}+="sync", GOTO="usb_limit_write_cache_end"
+
+RESULT!="4*|5*|6.1.*", ATTRS{bDeviceClass}!="09", ATTRS{speed}=="10000", RUN+="/usr/bin/udev-usb-sync %k %s{speed}", GOTO="usb_limit_write_cache_end"
+RESULT!="4*|5*|6.1.*", ATTRS{bDeviceClass}!="09", ATTRS{speed}=="5000",  RUN+="/usr/bin/udev-usb-sync %k %s{speed}", GOTO="usb_limit_write_cache_end"
+RESULT!="4*|5*|6.1.*", ATTRS{bDeviceClass}!="09", ATTRS{speed}=="480",   RUN+="/usr/bin/udev-usb-sync %k %s{speed}", GOTO="usb_limit_write_cache_end"
+RESULT!="4*|5*|6.1.*", ATTRS{bDeviceClass}!="09", ATTRS{speed}=="12",    RUN+="/usr/bin/udev-usb-sync %k %s{speed}", GOTO="usb_limit_write_cache_end"
 
 LABEL="usb_limit_write_cache_end"
