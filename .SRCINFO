@@ -1,6 +1,6 @@
 pkgbase = pycharm-community-eap
 	pkgdesc = Powerful Python and Django IDE, Early Access Program (EAP) build, Community Edition
-	pkgver = 242.21829.153
+	pkgver = 242.22855.32
 	pkgrel = 1
 	epoch = 14
 	url = http://www.jetbrains.com/pycharm
@@ -18,9 +18,9 @@ pkgbase = pycharm-community-eap
 	options = !strip
 	source = pycharm-community-eap.desktop
 	sha256sums = 5996ba03e5f4d7be7c6f002a1294b97674cb4b6d0f8b3777bc67e255ad20ff85
-	source_x86_64 = https://download.jetbrains.com/python/pycharm-community-2024.2.1.tar.gz
-	sha256sums_x86_64 = 232ddc3c15b138264534820a40049ea4b0108647ba2972294616bc2a3f22234b
-	source_aarch64 = https://download.jetbrains.com/python/pycharm-community-2024.2.1-aarch64.tar.gz
-	sha256sums_aarch64 = 1f4ba170363bfce4d434d2b39aa0ef645c2841ece58b0225243dc9136a37e378
+	source_x86_64 = https://download.jetbrains.com/python/pycharm-community-242.22855.32.tar.gz
+	sha256sums_x86_64 = 00690c76188c6ab11637e0abf490552ad64d7f6c51792e250d8f23d75db9c591
+	source_aarch64 = https://download.jetbrains.com/python/pycharm-community-242.22855.32-aarch64.tar.gz
+	sha256sums_aarch64 = c3cae3523649bb0539b78ce7a8ffee9879a3cfefa424b6c9c074efc348c2c3d3
 
 pkgname = pycharm-community-eap
