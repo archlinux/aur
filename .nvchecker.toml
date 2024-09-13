@@ -1,0 +1,5 @@
+[python-sympde]
+source = "github"
+github = "pyccel/sympde"
+use_latest_release = "true"
+prefix = "v"
