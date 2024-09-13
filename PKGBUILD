@@ -1,13 +1,13 @@
 pkgname=hatsu
 _pkgver=0.3.0-beta.3
 pkgver=0.3.0_beta.3
-pkgrel=1.0
+pkgrel=2.0
 pkgdesc='Self-hosted & Fully-automated ActivityPub Bridge for Static Sites.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/importantimport/hatsu'
 license=('AGPL-3.0')
 depends=('sqlite')
-makedepends=('git' 'meson' 'rust')
+makedepends=('git' 'rust')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/importantimport/hatsu/archive/refs/tags/v${_pkgver}.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles"
