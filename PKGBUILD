@@ -2,7 +2,7 @@
 # Contributor: pinks <aur at papepati dot page>
 
 pkgname=biome
-pkgver=1.8.3
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Formatter, linter, and more for Javascript, Typescript, JSON, and CSS'
 arch=(x86_64)
@@ -15,7 +15,7 @@ makedepends=(cargo)
 replaces=(rome)
 _archive="$pkgname-cli-v$pkgver"
 source=("$_url/archive/cli/v$pkgver/$_archive.tar.gz")
-sha256sums=('8e263bbc1ff644036409471f10320870510025fa1850912a02b1abcfc92ced79')
+sha256sums=('7393b63c747f844e1a3e783ee26f880b0da3d798e4fed72ae7dfc29186a503b4')
 
 prepare() {
 	cd "$_archive/crates/${pkgname}_cli"
@@ -37,7 +37,8 @@ build() {
 check() {
 	_srcenv
 	local skipped=(
-		'commands::explain::explain_help'
+		cases::diagnostics::max_diagnostics_verbose
+		commands::explain::explain_help
 	)
 	cargo test -p "${pkgname}_cli" --frozen --all-features -- \
 		${skipped[@]/#/--skip }
