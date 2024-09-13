@@ -42,21 +42,23 @@ CONFIG='/etc/udev-usb-sync/udev-usb-sync.conf'
 BLOCKDEVICE="$1"
 SPEED="$2"
 KERNEL_MAJOR_VERSION=$(uname -r | awk -F'.' '{print $1}')
+KERNEL_MINOR_VERSION=$(uname -r | awk -F'.' '{print $2}')
 
 # disable write cache for device if possible
-[[ -n $(which hdparm) ]] && $(which hdparm) -W 0 /dev/$BLOCKDEVICE
+[[ -n $(which hdparm) ]] && $(which hdparm) -W 0 /dev/$BLOCKDEVICE > /dev/null
 
-if [[ $KERNEL_MAJOR_VERSION -le 5 ]]; then
+if [[ $KERNEL_MAJOR_VERSION -le 6 ]]; then
    # the following rules is introduced with kernel 2.6
    # https://docs.kernel.org/admin-guide/abi-testing.html#abi-sys-class-bdi-bdi-max-ratio
-
    # 1% of available RAM ->  8046522kB -> 80.465kB -> 80MB
    echo 1 > /sys/block/$BLOCKDEVICE/bdi/max_ratio
-elif [[ $KERNEL_MAJOR_VERSION -ge 6 ]]; then
-    # the following rules is introduced with kernel 6.1
+elif [[ $KERNEL_MAJOR_VERSION -ge 6 ]] && [[ $KERNEL_MINOR_VERSION -ge 2 ]]; then
+    # the following rules is introduced with kernel 6.2
     # https://docs.kernel.org/admin-guide/abi-testing.html#abi-sys-class-bdi-bdi-strict-limit
     # https://docs.kernel.org/admin-guide/abi-testing.html#abi-sys-class-bdi-bdi-max-bytes
 
+    # Turning strictlimit on has no visible effect if max_ratio is equal to 100%.
+    echo 50 > /sys/block/$BLOCKDEVICE/bdi/max_ratio
     # apply strict limit
     echo 1 > /sys/block/$BLOCKDEVICE/bdi/strict_limit
 
