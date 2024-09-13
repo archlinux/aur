@@ -1,0 +1,15 @@
+pkgbase = maestro
+	pkgdesc = Turn natual language into commands. Your CLI tasks, now as easy as a conversation.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/pluja/maestro
+	arch = x86_64
+	makedepends = go
+	depends = glibc
+	optdepends = ollama: ollama support.
+	provides = maestro=0.3.0
+	conflicts = maestro
+	source = maestro-0.3.0.tar.gz::https://github.com/pluja/maestro/archive/refs/tags/v0.3.0.tar.gz
+	b2sums = 66a0fb22182bbfee2fa362a7414d08b412697e46e76062d0decf98036545f65cf46ae9bd60ddd291375166f5c49bd707a6d938dc899856aeeb2ea0568f84ceca
+
+pkgname = maestro
