@@ -1,7 +1,7 @@
 # Maintainer: Dave Nicholson <me@davenicholson.xyz>
 
 pkgname=wallheaven
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='wallheaven is a CLI tool for fetching random wallpapers from wallhaven.cc.'
 url='https://github.com/davenicholson-xyz/wallheaven'
