@@ -1,41 +1,17 @@
 # Maintainer: blinry <mail@blinry.org>
 
-pkgname=ethersync-git
-pkgver=r634.9688e5c
+pkgname=ethersync-bin
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Enables real-time co-editing of local text files."
 arch=('i686' 'x86_64')
 url="https://github.com/ethersync/ethersync"
 license=('AGPL-3.0-or-later')
-makedepends=(git cargo)
-source=("$pkgname::git+https://github.com/ethersync/ethersync")
-sha1sums=('SKIP')
-
-prepare() {
-    export RUSTUP_TOOLCHAIN=stable
-    cd "$pkgname/daemon"
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-}
-
-build() {
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cd "$pkgname/daemon"
-    cargo build --frozen --release
-}
-
-check() {
-    export RUSTUP_TOOLCHAIN=stable
-    cd "$pkgname/daemon"
-    cargo test --frozen
-}
-
-pkgver() {
-    cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
+source=("$pkgname::$url/releases/download/v$pkgver/ethersync-x86_64-unknown-linux-musl.tar.gz")
+sha1sums=('48ed34dd0381b04cc694b44e411267eb1785786b')
+options=("strip")
+conflicts=("ethersync-git")
 
 package() {
-    cd "$pkgname/daemon"
-    install -Dm755 "target/release/ethersync" "$pkgdir/usr/bin/ethersync"
+    install -Dm755 "ethersync" "$pkgdir/usr/bin/ethersync"
 }
