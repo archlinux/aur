@@ -1,20 +1,20 @@
-# Maintainer: DDoSolitary <DDoSolitary@gmail.com>
+# Contributor: DDoSolitary <DDoSolitary@gmail.com>
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 _gemname=travis
 pkgname=ruby-$_gemname
-pkgver=1.11.1
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='CLI and Ruby client library for Travis CI'
 arch=(any)
 url='https://github.com/travis-ci/travis.rb'
 license=(MIT)
-depends=(ruby ruby-backports ruby-faraday ruby-faraday-middleware ruby-gh ruby-highline ruby-json_pure ruby-launchy ruby-pusher-client ruby-pry)
+depends=(ruby-faraday ruby-faraday-rack ruby-highline ruby-json_pure ruby-launchy ruby-pusher-client ruby-rack-test ruby-travis-gh)
 makedepends=('ruby-rdoc')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('7f639deba8edb34f1d03e1917901f6289f52e3e838315c74b416006fa478ad1f19a1b4511876feb0ab22c06ab203a525490463612292728c12fc9d5894a37ad4')
+sha256sums=('915df827466ea17f8c6fcc06a661a7f150d395d1c5b2bbdd62a4e129f3f9e884')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
