@@ -2,8 +2,8 @@
 _appname=bonbon
 pkgname="${_appname}-browser-bin"
 _pkgname=BonBon
-pkgver=1.0.1_early
-_electronversion=22
+pkgver=1.0.2_alpha
+_electronversion=24
 pkgrel=1
 pkgdesc="A lightweight and innovative browser.It makes you appreciate your browsing experience, and offers privacy. "
 arch=('any')
@@ -23,22 +23,22 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8c2b5e743a34c1ebcb83320b8db134a828a721475107ca101991e98cef464a77'
+sha256sums=('3d258494cceda5392b2801570de1dd7f855a11ec1b274abb68f87cddf8de57dd'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
-        s|@electronversion@|${_electronversion}|g
-        s|@appname@|${pkgname%-bin}|g
-        s|@runname@|app|g
-        s|@cfgdirname@|${_pkgname}|g
-        s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-bin}/
+        s/@runname@/app/
+        s/@cfgdirname@/${_pkgname}/
+        s/@options@//
     " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun --no-sandbox|${pkgname%-bin}|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g;s|Development|Development;Network|g" \
         -i "${srcdir}/squashfs-root/${_appname}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-git}\"|g" {} \;
+    find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/" {} \;
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
