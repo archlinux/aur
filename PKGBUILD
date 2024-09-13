@@ -2,7 +2,7 @@
 
 pkgname=binsec
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source toolset to help improve software security at the binary level'
 arch=('x86_64')
 url='https://binsec.github.io'
