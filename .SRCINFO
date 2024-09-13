@@ -1,7 +1,7 @@
 pkgbase = sheepchat-bin
 	pkgdesc = Multi chat for Streamers
 	pkgver = 1.9.159
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sheepchat/desktop
 	arch = x86_64
 	license = custom:unknown

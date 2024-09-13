@@ -4,7 +4,7 @@ _pkgname=sheepchat
 _pkgver=419
 pkgname="${_pkgname}-bin"
 pkgver=1.9.159
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi chat for Streamers"
 arch=('x86_64')
 url="https://github.com/${_pkgname}/desktop"
@@ -18,5 +18,6 @@ prepare() {
 }
 
 package() {
+  chmod +x "${srcdir}/usr/${_pkgname}"
   cp -r "${srcdir}/usr" "${pkgdir}"
 }
