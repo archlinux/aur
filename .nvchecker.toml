@@ -1,4 +1,4 @@
 [kokkos]
 source = "github"
 github = "kokkos/kokkos"
-use_latest_release = "true"
+use_max_tag = "true"
