@@ -1,6 +1,6 @@
 pkgbase = trilinos
 	pkgdesc = algorithms for the solution of large-scale scientific problems
-	pkgver = 15.1.1
+	pkgver = 16.0.0
 	pkgrel = 1
 	url = http://trilinos.org
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = trilinos
 	provides = trilinos-ml
 	provides = zoltan
 	provides = kokkos
-	source = https://github.com/trilinos/Trilinos/archive/refs/tags/trilinos-release-15-1-1.tar.gz
-	sha512sums = 5a1a7d321dd3b47fafe0422884d1a7bf6731d5ee806a4fd1bf31f179ca5d6f4290cda4515d0d7786024ea15c17e88422a9518370c5cfb32b4b44761de232e0de
+	source = https://github.com/trilinos/Trilinos/archive/refs/tags/trilinos-release-16-0-0.tar.gz
+	sha512sums = ed8b9f6ec8d35879f28f066685f70c492ee83ffdc42cfed75750216c0c689c81b00355520a7db441e56d83a6a153b0dbe4f8422d163a942cdcc6786235f64688
 
 pkgname = trilinos
