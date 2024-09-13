@@ -1,17 +1,17 @@
 pkgbase = macchina-bin
 	pkgdesc = A system information fetcher/frontend, with an (unhealthy) emphasis on performance
-	pkgver = 6.2.0
+	pkgver = 6.2.1
 	pkgrel = 1
 	url = https://github.com/macchina-cli/macchina
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	optdepends = wmctrl
-	provides = macchina=6.2.0
+	provides = macchina=6.2.1
 	conflicts = macchina
-	source_aarch64 = macchina-bin-6.2.0-1-aarch64.tar.gz::https://github.com/macchina-cli/macchina/releases/download/v6.2.0/macchina-v6.2.0-linux-gnu-aarch64.tar.gz
-	sha256sums_aarch64 = 76a5a9f98bad37e0fc1c33c868d2914e9ec1200865341de7ac9a21248fcc831a
-	source_x86_64 = macchina-bin-6.2.0-1-x86_64.tar.gz::https://github.com/macchina-cli/macchina/releases/download/v6.2.0/macchina-v6.2.0-linux-gnu-x86_64.tar.gz
-	sha256sums_x86_64 = 101b1748ca8aadd497163669d9372b7c3f257d58acf88acabf1016c1df108cf0
+	source_aarch64 = macchina-bin-6.2.1-1-aarch64.tar.gz::https://github.com/macchina-cli/macchina/releases/download/v6.2.1/macchina-v6.2.1-linux-gnu-aarch64.tar.gz
+	sha256sums_aarch64 = a2c3d0f7e16b10155bfaff045c376cf4ea2c77c1e1f95145f5ce7a021aa79b2b
+	source_x86_64 = macchina-bin-6.2.1-1-x86_64.tar.gz::https://github.com/macchina-cli/macchina/releases/download/v6.2.1/macchina-v6.2.1-linux-gnu-x86_64.tar.gz
+	sha256sums_x86_64 = 80b7cbc14b0448ec54072cf3d366e373175d59ae7dc3687a3ad8f1eaa0ad6275
 
 pkgname = macchina-bin
