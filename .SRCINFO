@@ -9,8 +9,6 @@ pkgbase = kde_gemini
 	noextract = $pkgname.tar.xz
 	options = !strip
 	source = https://github.com/leessmin/kde_gemini/releases/download/0.2.0/kde_gemini.tar.xz
-	source = kde_gemini.desktop
-	sha256sums = 12e2fc0da97f203cda38399bb7c075cf014ee4fba8be729d73365e867a2828a6
-	sha256sums = 9a72f9fb0080e68045ea9aa070d316e5ed6b3fc339e7e1a9d6068c2a6c097656
+	sha256sums = eb899989c9175e6940bf2df01032198e7cc497322a4409f7e39f962fbe454cbe
 
 pkgname = kde_gemini
