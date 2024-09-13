@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=1.23.6
-_electronversion=30
+pkgver=1.24.0
+_electronversion=29
 _nodeversion=20
 pkgrel=1
-pkgdesc="使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动"
+pkgdesc="📱 Graphical Scrcpy to display and control Android, devices powered by Electron. - 使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
 arch=(
     'aarch64'
     'x86_64'
@@ -19,7 +19,6 @@ depends=(
 makedepends=(
     'gendesk'
     'npm'
-    'pnpm'
     'nvm'
     'git'
     'curl'
@@ -28,7 +27,7 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('2242c334b08d3a8f69931779df49cc3493123a7dc0a5532074aa55de00617dff'
+sha256sums=('4dc29d04a071c1ae91d1699a0b1fcac8ee889667d34f886da1c4e78a44b0ed54'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -52,27 +51,19 @@ build() {
     HOME="${srcdir}/.electron-gyp"
     {
         #echo 'build_from_source=true'
-        echo 'link-workspace-packages=true'
-        echo 'fetch-retry-maxtimeout=10000'
-        echo "cache-dir="${srcdir}"/.pnpm_cache"
-        echo "store-dir="${srcdir}"/.pnpm_store"
+        echo "cache=${srcdir}/.npm_cache"
         if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
             echo 'registry=https://registry.npmmirror.com'
             echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        else
-            echo 'registry=https://registry.npmjs.org'
-            echo 'disturl=https://nodejs.org/dist'
-            echo 'electron_mirror=https://www.electronjs.org/versions'
-            echo 'electron_builder_binaries_mirror=https://github.com/electron-userland/electron-builder-binaries/releases/download'
         fi
     } >> .npmrc
     find {electron,src} -type f -exec sed -i "s/process.resourcesPath/\"\/usr\/lib\/${pkgname%-bin}\"/" {} \;
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/;s/--linux/-l --dir/" package.json
     sed "s/logo.icns/logo.png/" -i electron-builder.json
-    NODE_ENV=development    pnpm install
-    NODE_ENV=production     pnpm run build:linux
+    NODE_ENV=development    npm install
+    NODE_ENV=production     npm run build:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
