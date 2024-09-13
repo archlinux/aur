@@ -1,7 +1,7 @@
-# Maintainer: weilinfox <caiweilin at iscas.ac.cn>
+# Maintainer: weilinfox <sakurakaze.fox at gmail.com>
 
 pkgname=ruyi
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="RuyiSDK Package Manager"
 arch=(any)
@@ -11,7 +11,6 @@ depends=(
   'python>=3.11'
   'python-arpy'
   'python-certifi'
-  'python-frontmatter'
   'python-jinja'
   'python-packaging'
   'python-pygit2'
@@ -48,7 +47,7 @@ source=(
   "ruyi"
 )
 sha512sums=(
-  'be7c66f24a96722066ef0aeebdd3d8501d48519f916666ec91f8988d274e92eba16b59b6196abb0250ebea1ff339880a4586d41f8d4f5b7c89dad8d40b453175'
+  '0d887e21fe5d46241e7e71e012d4dc9ce09cbd675c09db31df903a70a85484547a35081003ccd3f89764780dbfff16d6569259492c58580d3cb88342cab7abf4'
   '49d2d53b91e343d029d20b4830098dbcfb04161d323f6fa9c3e1fdc0c02df1335871d0f44627916e076a2062fcb97d52ea87368e6cabc0d7167591022ce293ea'
 )
 provides=(python-ruyi)
