@@ -1,37 +1,62 @@
-# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+# Maintainer:
+# Contributor: xiretza <xiretza+aur@xiretza.xyz>
 # Contributor: Falk Alexander Seidl <fa@terminal.run>
 
-pkgname=fractal-git
-_gitname=fractal
-epoch=1
-pkgver=5.beta1.r6.g5816bdbb
-pkgrel=2
+_pkgname="fractal"
+pkgname="fractal-git"
+pkgver=8.r61.gd4b36a7
+pkgrel=1
 pkgdesc="Matrix messaging app for GNOME written in Rust"
+url="https://gitlab.gnome.org/World/fractal"
+license=('GPL-3.0-only')
 arch=('i686' 'x86_64')
-license=('GPL3')
-url="https://gitlab.gnome.org/GNOME/fractal"
-depends=('gtk4' 'gtksourceview5' 'gst-plugins-base-libs' 'gst-editing-services'
-         'libadwaita>=1:1.3alpha' 'pipewire' 'libshumate' 'org.freedesktop.secrets'
-         'xdg-desktop-portal')
-conflicts=('fractal')
-provides=("fractal=$pkgver" 'fractal-next')
-replaces=('fractal-next')
-makedepends=('rust' 'git' 'meson' 'clang')
-source=("git+https://gitlab.gnome.org/GNOME/fractal.git")
-md5sums=('SKIP')
+
+depends=(
+  'gst-plugins-base-libs'
+  'gtk4'
+  'gtksourceview5'
+  'libadwaita'
+  'libpipewire'
+  'libshumate'
+  'libwebp'
+)
+makedepends=(
+  'clang'
+  'git'
+  'meson'
+  'rust'
+  'xdg-desktop-portal'
+)
+
+provides=("$_pkgname=${pkgver##.r*}")
+conflicts=("$_pkgname")
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$_gitname"
-	git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  # NOTE: upstream uses a custom CARGO_HOME from within meson
+  export CARGO_HOME="$srcdir/build/cargo-home"
+  export RUSTUP_TOOLCHAIN=stable
+
+  cd "$_pkgsrc"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "${srcdir}/${_gitname}/"
-	arch-meson . _build
-	ninja -C _build
+  CFLAGS+=" -ffat-lto-objects"
+  arch-meson "$_pkgsrc" build
+  meson compile -C build
 }
 
 package() {
-	cd "${srcdir}/${_gitname}/"
-	DESTDIR="${pkgdir}" ninja -C _build install
+  # NOTE: explicitly prevent rebuild: https://gitlab.gnome.org/GNOME/fractal/-/issues/1327
+  meson install -C build --destdir "$pkgdir" --no-rebuild
 }

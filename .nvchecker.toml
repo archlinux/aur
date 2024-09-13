@@ -1,0 +1,4 @@
+[fractal-git]
+source = "git"
+git = "https://gitlab.gnome.org/World/fractal.git"
+exclude_regex = ".*(dev|rc|RC|alpha|beta|pre).*"
