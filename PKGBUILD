@@ -7,7 +7,7 @@
 
 _pkgname=taglib
 pkgname=lib32-taglib
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="A Library for reading and editing the meta-data of several popular audio formats (32 bit)"
 arch=('x86_64')
@@ -16,8 +16,8 @@ license=('LGPL' 'MPL')
 depends=($_pkgname 'lib32-zlib' 'lib32-gcc-libs')
 makedepends=('cmake' 'utf8cpp')
 source=("https://taglib.github.io/releases/$_pkgname-$pkgver.tar.gz")
-md5sums=('e1f2ef858bddf65eb17e43043c3da10b')
-sha256sums=('08c0a27b96aa5c4e23060fe0b6f93102ee9091a9385257b9d0ddcf467de0d925')
+md5sums=('95edea13107ac4cc07b7ad4bd1cb5cd1')
+sha256sums=('0de288d7fe34ba133199fd8512f19cc1100196826eafcb67a33b224ec3a59737')
 
 build() {
   export CC='gcc -m32'
