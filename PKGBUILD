@@ -8,7 +8,7 @@ pkgver() {
 pkgrel=1
 pkgdesc="A molecular editor and visualization package with Q-Chem integration"
 arch=('x86_64')
-url="http://http://iqmol.org/"
+url="http://iqmol.org/"
 license=('GPL-3.0-only')
 groups=()
 depends=(
