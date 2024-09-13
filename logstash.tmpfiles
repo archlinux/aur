@@ -1,0 +1,6 @@
+d /var/log/logstash 0755 logstash logstash -
+d /var/lib/logstash 0755 logstash logstash -
+d /usr/share/logstash 0755 logstash logstash -
+Z /usr/share/logstash - logstash logstash -
+
+d /etc/logstash 0750 logstash logstash -
