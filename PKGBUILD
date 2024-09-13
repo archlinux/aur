@@ -5,7 +5,7 @@
 
 pkgname='perl-ogg-vorbis-header'
 pkgver='0.11'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="An object-oriented interface to Ogg Vorbis"
 arch=('any')
 license=('PerlArtistic' 'GPL')
