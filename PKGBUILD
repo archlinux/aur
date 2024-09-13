@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fsolauncher-bin
 _pkgname="FreeSO Launcher"
-pkgver=1.12.1_prod.22
+pkgver=1.12.1_prod.23
 _electronversion=32
 pkgrel=1
 pkgdesc="Official FreeSO Launcher made with Electron"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver//_/-}/${pkgname%-bin}-${pkgver//_/-}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('aaba798281dea119d9f19aef3917040031532ef1a850e00e3e206ddabed1bc26'
+sha256sums=('c11e96daf3baf69d211abf52a398fad9afca8b2e42d8120d6ba150302f50fb97'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
@@ -32,7 +32,7 @@ build() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|Games|Game|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s/Games/Game/" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
