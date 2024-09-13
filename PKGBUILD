@@ -2,27 +2,27 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 pkgname=python-desktop-notifier
-pkgver=5.0.1
+pkgver=6.0.0
 pkgrel=1
 pkgdesc='Python library for cross-platform desktop notifications'
 arch=('any')
 url="https://github.com/SamSchott/desktop-notifier"
 license=('MIT')
 depends=('python'
-         'python-certifi'
-         'python-charset-normalizer'
-         'python-packaging'
-         'python-dbus-next')
+                     'python-certifi'
+                     'python-charset-normalizer'
+                     'python-packaging'
+                     'python-dbus-next')
 makedepends=('python-build'
-             'python-installer'
-             'python-setuptools'
-             'python-sphinx'
-             'python-sphinx-autoapi'
-             'python-sphinx-furo'
-             'python-sphinx_mdinclude'
-             'python-wheel')
+                                'python-installer'
+                                'python-setuptools'
+                                'python-sphinx'
+                                'python-sphinx-autoapi'
+                                'python-sphinx-furo'
+                                'python-sphinx_mdinclude'
+                                'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2d756fb4e82b8f95edb0e49ec9a3e8e4d5ba404c194cc6bffac14cd8bad33f74')
+sha256sums=('b0604b1b92e6b5d74d943c43a125769a8258cc82347590637001b65eff1e1ba9')
 
 build() {
 	cd "${pkgname#python-}-$pkgver"
