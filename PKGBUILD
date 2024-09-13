@@ -28,7 +28,10 @@ prepare() {
 package() {
   cd "$srcdir" || exit 1
 
-	install -Dm644 easytier.service -t "$pkgdir/etc/systemd/system"
+  if [ ! -f "$pkgdir/etc/systemd/system/easytier.service" ]; then
+    install -Dm644 easytier.service -t "$pkgdir/etc/systemd/system"
+  fi
+  
   install -Dm755 easytier-core "$pkgdir/usr/bin/easytier-core"
   install -Dm755 easytier-cli "$pkgdir/usr/bin/easytier-cli"
 }
