@@ -2,12 +2,12 @@
 
 _pkgname=dendrite
 pkgname=$_pkgname-libvips
-pkgver=0.13.7
+pkgver=0.13.8
 pkgrel=1
 pkgdesc="A second-generation Matrix homeserver written in Go"
 arch=('x86_64' 'aarch64')
 url="https://github.com/matrix-org/$_pkgname"
-license=('Apache')
+license=('Apache-2.0')
 depends=('libvips')
 makedepends=('go')
 optdepends=('postgresql: recommended database for large instances')
@@ -17,7 +17,7 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/matrix-org/$_pkgname/archi
         "$_pkgname.sysusers"
         "$_pkgname.tmpfiles"
         "$_pkgname.service")
-sha256sums=('a029c3bd0dd188c5ac1bad7d9008de80882d6b121488db3140b2aa110527679b'
+sha256sums=('b0f04539f0894bc1ea5153a4b52ebed2d813ea6a5172d1de1cd0a4bb6e67dcfd'
             'aba328d7a7244e82f866f9d0ead0a53e79e1590b9c449ad6d18ff2659cb5e035'
             '620b634419e94cb09423d39ecd7edf859bf458e9d72c35be30610b37acc1e8bf'
             '7d33160209ed11f0ed6de84b0891becf175887a679eb5a3e01b672884fdf0c1d')
