@@ -1,0 +1,15 @@
+pkgbase = python-cmap
+	pkgdesc = Scientific colormaps for python, without dependencies
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/tlambert03/cmap
+	arch = any
+	license = BSD 3-Clause
+	makedepends = python-build
+	makedepends = python-hatch-vcs
+	makedepends = python-installer
+	depends = python-numpy
+	source = https://github.com/tlambert03/cmap/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 28d5c99de241648d3985ca69f65b4a43d342ddaf23ce28313f2f24e2b4c664d7
+
+pkgname = python-cmap
