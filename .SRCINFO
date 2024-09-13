@@ -7,7 +7,7 @@ pkgbase = cultris2
 	license = proprietary
 	makedepends = git
 	depends = jdk17-temurin
-	source = git+https://github.com/LofisMusk/c2-patch-aur.git
+	source = https://github.com/LofisMusk/c2-patch-aur.git
 	sha256sums = SKIP
 
 pkgname = cultris2
