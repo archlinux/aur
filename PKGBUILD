@@ -31,4 +31,9 @@ package() {
     install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/siyuan.AppImage"
     install -Dm644 "squashfs-root/resources/stage/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/siyuan_stable.png"
     install -Dm644 "squashfs-root/siyuan.desktop" "${pkgdir}/usr/share/applications/siyuan_stable.desktop"
+
+    mkdir -p "${pkgdir}/usr/bin"
+    echo '#!/bin/sh' > "${pkgdir}/usr/bin/siyuan"
+    echo "exec ${_installdir}/siyuan.AppImage" >> "${pkgdir}/usr/bin/siyuan"
+    chmod 755 "${pkgdir}/usr/bin/siyuan"
 }
