@@ -7,7 +7,7 @@ pkgbase = escrcpy-bin
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = asar
-	depends = electron30
+	depends = electron29
 	depends = scrcpy
 	provides = escrcpy=1.24.0
 	conflicts = escrcpy
