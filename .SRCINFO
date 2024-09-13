@@ -1,6 +1,6 @@
 pkgbase = element-git
 	pkgdesc = A modular audio plugin host (git version)
-	pkgver = 1.0.0.175.g1cfa4191
+	pkgver = 1.0.0.300.g57eff7bc
 	pkgrel = 1
 	url = https://kushview.net/element/
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = element-git
 	makedepends = lv2
 	makedepends = suil
 	makedepends = python
+	makedepends = meson
 	depends = gcc-libs
 	depends = hicolor-icon-theme
 	optdepends = lua: for LUA scripting

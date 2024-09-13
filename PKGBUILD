@@ -4,7 +4,7 @@
 
 _pkgname=element
 pkgname=$_pkgname-git
-pkgver=1.0.0.175.g1cfa4191
+pkgver=1.0.0.300.g57eff7bc
 pkgrel=1
 pkgdesc='A modular audio plugin host (git version)'
 arch=(x86_64)
@@ -12,7 +12,7 @@ url='https://kushview.net/element/'
 license=(GPL3)
 groups=(pro-audio)
 depends=(gcc-libs hicolor-icon-theme)
-makedepends=(alsa-lib boost git ladspa lilv lv2 suil python)
+makedepends=(alsa-lib boost git ladspa lilv lv2 suil python meson)
 optdepends=('lua: for LUA scripting')
 provides=($_pkgname ladspa-host lv2-host vst3-host)
 conflicts=($_pkgname)
@@ -29,7 +29,7 @@ pkgver() {
 }
 
 build() {
-  meson $_pkgname $_pkgname-build --prefix /usr
+  meson setup $_pkgname $_pkgname-build --prefix /usr
   meson compile -C $_pkgname-build
 }
 
