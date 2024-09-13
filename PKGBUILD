@@ -2,19 +2,22 @@
 
 pkgname=ayugram-desktop
 pkgver=5.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop Telegram client with good customization and Ghost mode."
 arch=("x86_64")
 url="https://github.com/AyuGram/AyuGramDesktop"
 license=("GPL-3.0-only")
 depends=(
     "hunspell" "ffmpeg" "hicolor-icon-theme" "lz4" "minizip" "openal"
-    "qt6-imageformats" "qt6-svg" "qt6-wayland" "xxhash" "ada"
-    "rnnoise" "pipewire" "libxtst" "libxrandr" "libxcomposite" "libxdamage" "abseil-cpp" "libdispatch" 
-    "openssl" "protobuf" "glib2" "libsigc++-3.0" "kcoreaddons" "openh264"
+    "qt6-base" "qt6-declarative" "qt6-svg" "qt6-wayland" "xxhash" "ada"
+    "rnnoise" "libpipewire" "libxtst" "libxrandr"
+    "openssl" "protobuf" "glib2" "kcoreaddons" "openh264"
+    "xcb-util-keysyms" "libjpeg" "libvpx" "opus" "zlib" "glibc" "gcc-libs" "libxcb" "libxext" "libxfixes" "libx11"
+    "libxcomposite" "jemalloc" "libxdamage" "abseil-cpp" "libdispatch"
+    # libtgvoip nimf rlottie in aur
 )
 makedepends=(
-    "cmake" "ninja" "python" "range-v3" "tl-expected" "microsoft-gsl" "meson"
+    "cmake" "python" "range-v3" "tl-expected" "microsoft-gsl" "meson"
     "extra-cmake-modules" "wayland-protocols" "plasma-wayland-protocols" "libtg_owt"
     "gobject-introspection" "boost" "fmt" "mm-common" "perl-xml-parser" "python-packaging"
     "glib2-devel"
@@ -60,27 +63,73 @@ declare -rAg _modules_name_map=(
     [Telegram/ThirdParty/lz4]=https://github.com/lz4/lz4/archive/5ff839680134437dbf4678f3d0c7b371d84f4964.tar.gz
     [Telegram/ThirdParty/nimf]=https://github.com/hamonikr/nimf/archive/498ec7ffab3ac140c2469638a14451788f03e798.tar.gz
     [Telegram/ThirdParty/range-v3]=https://github.com/ericniebler/range-v3/archive/a81477931a8aa2ad025c6bda0609f38e09e4d7ec.tar.gz
+    [Telegram/ThirdParty/range-v3/doc/gh-pages]=https://github.com/ericniebler/range-v3/archive/2dae74bb693e42d850fb0adcc9045c5b71fbdeae.tar.gz
     [Telegram/ThirdParty/rlottie]=https://github.com/desktop-app/rlottie/archive/8c69fc20cf2e150db304311f1233a4b55a8892d7.tar.gz
     [Telegram/ThirdParty/tgcalls]=https://github.com/TelegramMessenger/tgcalls/archive/9bf4065ea00cbed5e63cec348457ed13143459d0.tar.gz
     [Telegram/ThirdParty/xdg-desktop-portal]=https://github.com/flatpak/xdg-desktop-portal/archive/11c8a96b147aeae70e3f770313f93b367d53fedd.tar.gz
     [Telegram/ThirdParty/xxHash]=https://github.com/Cyan4973/xxHash/archive/bbb27a5efb85b92a0486cf361a8635715a53f6ba.tar.gz
 )
-for uri in "${_modules_name_map[@]}"
+
+_get_source_name_string() {
+    local host filename name commit
+    host=$(echo "$1" | cut -d / -f 3)
+    name=$(echo "$1" | cut -d / -f 5)
+    filename=${1##*/}
+    commit=${filename%%.*}
+    case "$host" in
+        gitlab.com)
+            # It contains $name in $commit
+            echo "$commit"
+            ;;
+        *)
+            echo "$name-$commit"
+            ;;
+    esac
+}
+
+_fill_gitmodules_recursively() {
+    local gitmodule
+    find "${1:-.}" -type f -name .gitmodules | while read -r gitmodule
+    do
+        if [[ "$gitmodule" =~ ^\.\/ ]]
+        then
+            gitmodule=${gitmodule#*\.\/}
+        fi
+        local prefix
+        prefix=$(dirname "$gitmodule")"/"
+        if [[ "$prefix" =~ ^\.\/ ]]
+        then
+            prefix=${prefix#*\.\/}
+        fi
+        echo "Parsing $gitmodule to fill submodules..."
+        local p
+        grep path "$gitmodule" | awk '{print $3}' | while read -r p
+        do
+            p=${p%$'\r'} # Remove control characters
+            if [[ -n "$p" ]]
+            then
+                local target url name commit fname
+                target="$prefix$p"
+                url="${_modules_name_map[$target]}"
+                fname=$(_get_source_name_string "$url")
+                echo "Filling $target with $srcdir/$fname..."
+                cp -r "$srcdir/$fname/." "$target"
+                _fill_gitmodules_recursively "$target"
+            fi
+        done
+    done
+}
+declare _source_str _uri
+for _uri in "${_modules_name_map[@]}"
 do
-    declare name commit source_str
-    name=$(echo "$uri" | cut -d / -f 5)
-    commit=${uri##*/}
-    if [[ "$commit" == *-* ]]
+    _source_str="$(_get_source_name_string "$_uri").tar.gz::$_uri"
+    if [[ "${source[*]/$_source_str/}" == "${source[*]}" ]]
     then
-        source_str="$commit::$uri"
-    else
-        source_str="$name-$commit::$uri"
-    fi
-    if [[ "${source[*]/$source_str/}" == "${source[*]}" ]]
-    then
-        source+=("$source_str")
+        source+=("$_source_str")
     fi
 done
+unset _source_str _uri
+
 sha256sums=('1a8d1fcb44161f544eebcc89bc62a87aad56d96d6bf677ee6634f9e56548c6b9'
             'd0d4ea2fddcbc7d10ace2c37309feb09da87e8ce7ced6ce73592da1359f4765f'
             '72ecdcd66728a073ca9bfaa3662155c28530b8f61d2241c193c04d6f2ae3a8c6'
@@ -91,6 +140,7 @@ sha256sums=('1a8d1fcb44161f544eebcc89bc62a87aad56d96d6bf677ee6634f9e56548c6b9'
             'c7c39f293f89fae3b47e33b0803c73989a3fc6cf61aefc50e9384e8e25273331'
             'e9b050279a52e48f1fed56e76ed3995329b2f99518b6afba4f97ecb13088f935'
             'ecbb183303a4b49edda9836062e66f891781d29ffd223d6637180a6572fdb78f'
+            '8569c9bf5495b19b76ce6e2e53f40604c8618429ce728bf73b2406d1382fdc94'
             '9b1afca339bd4e0579e73e92478ea26bb0c845dca7231de031e66c2f1a4ea5d9'
             '716fbe4fc85ecd36488afbbc635b59b5ab6aba5ed3b69d4a32a46eae5a453d38'
             '11b926f9605b258c35bd9ed806a10cab7ef5edd673ad53a014427b1c71d24a9e'
@@ -122,37 +172,7 @@ sha256sums=('1a8d1fcb44161f544eebcc89bc62a87aad56d96d6bf677ee6634f9e56548c6b9'
 
 prepare() {
     cd "$srcdir/AyuGramDesktop-$pkgver"
-    declare -ra _modules=(
-        cmake cmake/external/Implib.so cmake/external/glib/cppgir cmake/external/glib/cppgir/expected-lite
-        Telegram/codegen Telegram/lib_base Telegram/lib_crl Telegram/lib_lottie Telegram/lib_qr Telegram/lib_rpl
-        Telegram/lib_spellcheck Telegram/lib_storage Telegram/lib_tl Telegram/lib_ui Telegram/lib_webrtc Telegram/lib_webview
-        Telegram/ThirdParty/GSL Telegram/ThirdParty/QR Telegram/ThirdParty/cld3 Telegram/ThirdParty/dispatch
-        Telegram/ThirdParty/expected Telegram/ThirdParty/fcitx5-qt Telegram/ThirdParty/hime Telegram/ThirdParty/hunspell
-        Telegram/ThirdParty/jemalloc Telegram/ThirdParty/kcoreaddons Telegram/ThirdParty/kimageformats Telegram/ThirdParty/libprisma
-        Telegram/ThirdParty/libtgvoip Telegram/ThirdParty/libtgvoip/cmake Telegram/ThirdParty/lz4 Telegram/ThirdParty/nimf
-        Telegram/ThirdParty/range-v3 Telegram/ThirdParty/rlottie Telegram/ThirdParty/tgcalls Telegram/ThirdParty/xxHash
-        Telegram/ThirdParty/xdg-desktop-portal
-    )
-    for module in "${_modules[@]}"
-    do
-        uri=${_modules_name_map[$module]}
-        declare name commit source_str
-        name=$(echo "$uri" | cut -d / -f 5)
-        commit=${uri##*/}
-        if [[ "$commit" == *-* ]]
-        then
-            fname="${commit%%.*}"
-        else
-            fname=$name-${commit%%.*}
-        fi
-        echo "Copying $module from $fname"
-        if [[ -d "$module" ]]
-        then
-            cp -r "$srcdir/$fname/"* "$module"
-        else
-            cp -r "$srcdir/$fname" "$module"
-        fi
-    done
+    _fill_gitmodules_recursively
     #/usr/bin/ld: /usr/lib/libprotobuf-lite.so: undefined reference to symbol '_ZN4absl12lts_2023080212log_internal17MakeCheckOpStringIllEEPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEET_T0_PKc'
     #/usr/bin/ld: /usr/lib/libabsl_log_internal_check_op.so.2308.0.0: error adding symbols: DSO missing from command line
     #collect2: error: ld returned 1 exit status
@@ -167,7 +187,7 @@ build() {
     CXXFLAGS+=' -ffat-lto-objects'
     # https://github.com/AyuGram/AyuGramDesktop/blob/dev/docs/building-linux.md#building-the-project
     # for API_ID and API_HASH
-    cmake -B build -S AyuGramDesktop-$pkgver -G Ninja \
+    cmake -B build -S AyuGramDesktop-$pkgver \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID="${MAKEPKG_AYUGRAM_API_ID:-2040}" \
