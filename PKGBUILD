@@ -2,7 +2,7 @@
 
 pkgname=orchis-theme
 pkgdesc="A Material Design theme for GNOME/GTK based desktop environments."
-pkgver=2024_05_30
+pkgver=2024_09_02
 pkgrel=1
 url="https://github.com/vinceliuice/${pkgname}"
 arch=('any')
@@ -15,7 +15,7 @@ conflicts=("${pkgname}")
 replaces=("${pkgname}-bin")
 options=(!strip !debug)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver//_/-}.tar.gz")
-sha256sums=('24eedf42d79b36d2f405a167db47d2a8d50ccb34a27767ae80a8dff470d0a482')
+sha256sums=('ecba0e0db854e74a2cc31e92b5f7218832229b74bd8d0ebdbd6ebb6dafe557fa')
 
 package() {
     cd "Orchis-theme-${pkgver//_/-}"
