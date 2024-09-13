@@ -1,7 +1,7 @@
 pkgbase = debspawn
 	pkgdesc = Debspawn is a tool to build Debian packages in an isolated environment, using systemd-nspawn containers
 	pkgver = 0.6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lkhq/debspawn
 	arch = any
 	license = LGPL-3.0-only
