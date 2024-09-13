@@ -1,6 +1,6 @@
 pkgbase = strawberry-qt5
 	pkgdesc = A music player aimed at audio enthusiasts and music collectors (Qt5 version)
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://strawberrymusicplayer.org/
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = strawberry-qt5
 	optdepends = gst-plugins-ugly: additional codecs
 	provides = strawberry
 	conflicts = strawberry
-	source = https://github.com/strawberrymusicplayer/strawberry/releases/download/1.1.1/strawberry-1.1.1.tar.xz
-	sha256sums = ec0deff3c332aaa79dc9fb6dddd694480695cc6c97e7a7aba48e45cdde11f302
+	source = https://github.com/strawberrymusicplayer/strawberry/releases/download/1.1.2/strawberry-1.1.2.tar.xz
+	sha256sums = 270899825bd3c9283d31b2e10edd0e86df14a2f3a4fbea44dde78928ef388848
 
 pkgname = strawberry-qt5
