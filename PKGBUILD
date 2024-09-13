@@ -1,7 +1,7 @@
 # Maintainer: Daniel Liland <liland@await.sh>
 pkgname=haystack-editor-bin
 _pkgname=haystack-editor
-pkgver=0.16
+pkgver=0.17
 pkgrel=1
 pkgdesc="An IDE built on top of a canvas, Haystack takes care of the tedious and confusing parts of coding for you"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(libxkbfile gnupg gtk3 libsecret nss gcc-libs libnotify libxss glibc lso
 source=(haystack-editor.desktop)
 source_x86_64=("https://d2dv27o1k99orf.cloudfront.net/Haystack+Editor+Linux-${pkgver}.zip")
 sha256sums=('e60118c2d914911da80fcea2976081d247cdfe8b24ca1baa74ebfadd984784bf')
-sha256sums_x86_64=('9d560ed19aaafd60fc98c985a023c4ce3705022178304780fca51e6c7ac83789')
+sha256sums_x86_64=('7072cc48d121cb76161037317faa8ae77cf7ced1cf084ea1117083465498257b')
 
 package() {
 	_pkg="Haystack"
