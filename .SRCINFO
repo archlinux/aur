@@ -1,13 +1,13 @@
 pkgbase = zsh-autocomplete
 	pkgdesc = IDE-style type-ahead completion for Zsh
-	pkgver = 23.07.13
+	pkgver = 24.09.04
 	pkgrel = 1
 	url = https://github.com/marlonrichert/zsh-autocomplete
 	arch = any
 	license = MIT
 	depends = zsh
 	provides = zsh-autocomplete
-	source = zsh-autocomplete-23.07.13.tar.gz::https://github.com/marlonrichert/zsh-autocomplete/archive/refs/tags/23.07.13.tar.gz
-	sha256sums = 97bd8061b7eb2abb87045ebb00abc2568a9367f296fc27ec3e636fcf07ff8f78
+	source = zsh-autocomplete-24.09.04.tar.gz::https://github.com/marlonrichert/zsh-autocomplete/archive/refs/tags/24.09.04.tar.gz
+	sha256sums = bfcaa4b2d3add07c6b3d5a587d9ed743e091f1bb8e818cbd157895376edf2e87
 
 pkgname = zsh-autocomplete
