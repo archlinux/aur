@@ -1,0 +1,16 @@
+pkgbase = ruby-faraday-typhoeus
+	pkgdesc = Faraday adapter for Typhoeus
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/dleavitt/faraday-typhoeus
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby-faraday
+	depends = ruby-typhoeus
+	noextract = faraday-typhoeus-1.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/faraday-typhoeus-1.1.0.gem
+	sha256sums = 24c6147c213818dde3ebc50ae47ab92f9a7e554903aa362707126f749c6890e7
+
+pkgname = ruby-faraday-typhoeus
