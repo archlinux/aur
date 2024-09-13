@@ -11,7 +11,7 @@ url="https://github.com/LofisMusk/c2-patch-aur"
 license=('proprietary')
 depends=('jdk17-temurin')
 makedepends=('git')
-source=("${url}.git")
+source=("${url}")
 sha256sums=('SKIP')
 
 package() {
