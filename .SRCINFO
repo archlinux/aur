@@ -1,10 +1,10 @@
 pkgbase = duckstation-preview-latest-bin
 	pkgdesc = Fast PlayStation 1 emulator for PC and Android
-	pkgver = 0.1.7300
+	pkgver = 0.1.7561
 	pkgrel = 1
 	url = https://github.com/stenzek/duckstation
 	arch = x86_64
-	license = GPL-3.0-only
+	license = CC BY-NC-ND 4.0
 	makedepends = yq
 	provides = duckstation-qt
 	provides = duckstation
