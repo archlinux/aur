@@ -1,3 +1,4 @@
+# Maintainer: Self Denial <selfdenial@pm.me>
 _pkgname='gollama'
 pkgname="${_pkgname}-git"
 pkgdesc='Go manage your Ollama models'
