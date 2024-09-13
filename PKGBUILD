@@ -28,6 +28,7 @@ package() {
   install -dm 755 "${pkgdir}/usr/share/logstash" "${pkgdir}/etc/logstash"
   mv config/* "${pkgdir}/etc/logstash/"
   cp -a * "${pkgdir}/usr/share/logstash"
+  chmod -R 755 "${pkgdir}/usr/share/logstash" "${pkgdir}/etc/logstash/"
   install -Dm 644 "${srcdir}/logstash.service" "${pkgdir}/usr/lib/systemd/system/logstash.service"
   install -Dm 644 "${srcdir}/logstash.sysusers" "${pkgdir}/usr/lib/sysusers.d/logstash.conf"
   install -Dm 644 "${srcdir}/logstash.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/logstash.conf"
