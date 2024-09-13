@@ -3,19 +3,20 @@
 # Contributor: witt <1989161762 at qq dot com>
 pkgname=apifox
 pkgver=2.6.15
-pkgrel=1
+pkgrel=2
 pkgdesc="API 文档、API 调试、API Mock、API 自动化测试"
 arch=("x86_64")
-url="https://www.apifox.cn/"
+url="https://www.apifox.com/"
 license=('custom')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2' 'snappy' 'fuse2')
 source=(
 	"${pkgname}-v${pkgver}-${pkgrel}.zip"::"https://file-assets.apifox.com/download/Apifox-linux-latest.zip"
 	"apifox.desktop"
 	"apifox.svg")
-sha256sums=('cf883372049ef00617af1b1526aa6cf0f5b09c95e36644d7c835459402b0db1b'
-            'e89d2d53ce221c59436b7f1f9e4e9c0f2ccf6f55597df2fd16c419c8de5360a9'
-            '48dbd5c9727e568c3f19b45d36851eed15fa875a0ca40e83ec35d4e30ecd350d')
+sha256sums=(
+	'SKIP'
+	'e89d2d53ce221c59436b7f1f9e4e9c0f2ccf6f55597df2fd16c419c8de5360a9'
+	'48dbd5c9727e568c3f19b45d36851eed15fa875a0ca40e83ec35d4e30ecd350d')
 options=(!strip)
 
 package() {
