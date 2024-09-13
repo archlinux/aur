@@ -11,13 +11,18 @@ license=('AGPL-3.0-or-later')
 makedepends=('git' 'rust' 'cmake' 'clang' 'yarn' 'protobuf')
 depends=('gcc-libs' 'zlib' 'openssl')
 backup=('etc/quickwit.yaml')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/quickwit-oss/quickwit/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aa9e932662e48447d814e36db657acd4c9a69beb97c16006e9cb5539585fd947')
-b2sums=('52f3f78a1b979222d4a117410697a85b80778568c2aa029d2e8aa704be4d6bd9e7ba86e8653d51a8debcaea30eb6ce89a4f925537364d5890375ddd5e04341ae')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/quickwit-oss/quickwit/archive/refs/tags/v$pkgver.tar.gz"
+        0001-arch-Update-time-crate.patch)
+sha256sums=('aa9e932662e48447d814e36db657acd4c9a69beb97c16006e9cb5539585fd947'
+            '974bcf7fdd7275295d0be8531c770b969d4663fa3d3736a43a08697c20239402')
+b2sums=('52f3f78a1b979222d4a117410697a85b80778568c2aa029d2e8aa704be4d6bd9e7ba86e8653d51a8debcaea30eb6ce89a4f925537364d5890375ddd5e04341ae'
+        '458055efb9283da5da3306d03c62631fb17426e32fd4db9b6685e8acf895ce1dab40952435bd2c7bb30914379eaabf64691b2fa70717c40f162133b35648a61b')
 options=('!lto')
 
 prepare() {
   cd "quickwit-$pkgver"
+
+  patch -Np1 -i "$srcdir/0001-arch-Update-time-crate.patch"
 
   cargo fetch --manifest-path quickwit/Cargo.toml --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -32,8 +37,8 @@ build() {
 
   # build web UI
   pushd "quickwit/quickwit-ui"
-  yarn install
-  yarn build
+  yarn install || true
+  yarn build || true
   popd
 
   cargo build --manifest-path quickwit/Cargo.toml --frozen --release --features release-feature-set

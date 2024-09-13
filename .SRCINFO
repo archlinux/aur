@@ -17,7 +17,10 @@ pkgbase = quickwit
 	options = !lto
 	backup = etc/quickwit.yaml
 	source = quickwit-0.8.2.tar.gz::https://github.com/quickwit-oss/quickwit/archive/refs/tags/v0.8.2.tar.gz
+	source = 0001-arch-Update-time-crate.patch
 	sha256sums = aa9e932662e48447d814e36db657acd4c9a69beb97c16006e9cb5539585fd947
+	sha256sums = 974bcf7fdd7275295d0be8531c770b969d4663fa3d3736a43a08697c20239402
 	b2sums = 52f3f78a1b979222d4a117410697a85b80778568c2aa029d2e8aa704be4d6bd9e7ba86e8653d51a8debcaea30eb6ce89a4f925537364d5890375ddd5e04341ae
+	b2sums = 458055efb9283da5da3306d03c62631fb17426e32fd4db9b6685e8acf895ce1dab40952435bd2c7bb30914379eaabf64691b2fa70717c40f162133b35648a61b
 
 pkgname = quickwit
