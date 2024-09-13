@@ -1,0 +1,10 @@
+build/
+*.egg-info
+dist/
+*.log
+__pycache__/
+*.anki2
+*.json
+*.apkg
+pkg/
+*.zst*
