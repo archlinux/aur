@@ -1,0 +1,26 @@
+--- src/PCSX-Reloaded-1.9.95/pcsxr/Makefile.am	2015-09-25 12:56:47.000000000 -0400
++++ Makefile.am	2023-07-21 22:20:30.304660929 -0400
+@@ -1,10 +1,10 @@
+-SUBDIRS =  data
+-SUBDIRS += doc
+-SUBDIRS += pixmaps
+-SUBDIRS += po
+-SUBDIRS += libpcsxcore
+-SUBDIRS += gui
+-SUBDIRS += plugins/dfinput
++# SUBDIRS =  data
++# SUBDIRS += doc
++# SUBDIRS += pixmaps
++# SUBDIRS += po
++# SUBDIRS += libpcsxcore
++# SUBDIRS += gui
++SUBDIRS = plugins/dfinput
+ SUBDIRS += plugins/dfsound
+ SUBDIRS += plugins/dfxvideo 
+ SUBDIRS += plugins/dfcdrom
+@@ -15,4 +15,4 @@
+ 
+ DIST_SUBDIRS = $(SUBDIRS) plugins/bladesio1 plugins/peopsxgl
+ 
+-EXTRA_DIST = AUTHORS COPYING INSTALL NEWS README ChangeLog ChangeLog.df strip_fPIC.sh
++# EXTRA_DIST = AUTHORS COPYING INSTALL NEWS README ChangeLog ChangeLog.df strip_fPIC.sh

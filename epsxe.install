@@ -4,6 +4,29 @@ post_install() {
 Add your user to group 'games' in order to play.
 
 EOF
+
+post_upgrade
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  _myold="${2/-/}"
+  _myold="${arg2/./}"
+
+  # version 2.0.5-32 is the first version to build the plugins from scratch using pcsxr source
+
+  if [[ $_myold -le 20531 ]]; then
+    cat << EOF
+Be sure to LINK the plugin and shader directories so ePSXe can make use of them:
+
+ln -sf /opt/epsxe/{plugins,shaders,config} \$HOME/.epsxe/
+
+or COPY them:
+
+cp -r --no-preserve=mode /opt/epsxe/{plugins,shaders,config} \$HOME/.epsxe/
+EOF
+  fi
 }
 
 #There are launcher packages out for epsxe. Search

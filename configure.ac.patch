@@ -1,0 +1,21 @@
+--- src/PCSX-Reloaded-1.9.95/pcsxr/configure.ac	2015-09-25 12:56:47.000000000 -0400
++++ configure.ac	2024-01-22 18:02:25.887825561 -0500
+@@ -39,10 +39,6 @@
+ AC_SUBST(GTK3_LIBS)
+ 
+ AC_CONFIG_FILES([Makefile
+-data/Makefile
+-doc/Makefile
+-libpcsxcore/Makefile
+-gui/Makefile
+ plugins/bladesio1/Makefile
+ plugins/dfinput/Makefile
+ plugins/dfsound/Makefile
+@@ -50,7 +46,6 @@
+ plugins/dfcdrom/Makefile
+ plugins/dfnet/Makefile
+ plugins/peopsxgl/Makefile
+-pixmaps/Makefile
+ po/Makefile.in])
+ 
+ AC_CHECK_LIB(dl, dlsym, [LIBS="$LIBS -ldl"], [])
