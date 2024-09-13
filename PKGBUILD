@@ -1,10 +1,10 @@
 pkgname=mihomo-party-bin
 _pkgname=mihomo-party
-pkgver=1.2.16
+pkgver=1.2.17
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
-url="https://github.com/pompurin404/mihomo-party"
+url="https://github.com/mihomo-party-org/mihomo-party"
 license=('GPL3')
 conflicts=("$_pkgname" "$_pkgname-git" "$_pkgname-electron" "$_pkgname-electron-bin")
 conflicts=("mihomo-party-git" 'mihomo-party')
@@ -16,8 +16,8 @@ source=("${_pkgname}.sh")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/mihomo-party-linux-${pkgver}-amd64.deb")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/mihomo-party-linux-${pkgver}-arm64.deb")
 sha256sums=('f8049c1f26d5a92fbcebd7bebbdedbb3eab53422b21cf6127418251ccd061282')
-sha256sums_x86_64=("10c5c683da630b0706848b89d2acf327b91c4987d97f43e82287715b7e3eb6a7")
-sha256sums_aarch64=("cdcbdefb0730402b5231ccb36e2e8d597127eca8849d8c8518909cb03778f3a8")
+sha256sums_x86_64=("d14006d82fa4fe0f8b5c899f98ac3ee6ae486a904d61dddbbe504103c573df1e")
+sha256sums_aarch64=("ccea7dd721b07724a5b23ee7d553e07b488dd568e8fe1d16fa51a365b022e765")
 
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}/"
