@@ -1,10 +1,10 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=6.10.8
+_kernver=6.10.9
 _archver=arch1
-_pkgrel=1
+_pkgrel=2
 _pkgver="${_kernver}.${_archver}"
-_KERNNAME=6.10.8-arch1-1
+_KERNNAME=6.10.9-arch1-2
 pkgbase="${_pkgname}-versioned-bin"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('0423349dc70fae6cb58f763960e85508cd7df28f9cd651e0a0dd70aa0b8a004d'
-            '349d2d341ff0bdb19acf7e8eaeabe0d25b42befd736edd1d59453167fb3136e4'
-            '78f173ec2d238cb6a5847202f85436165f45d7e1238fa524c17c30fbf8694ae2')
+sha256sums=('c00c9202e688cda4e9114dac2326236102c3c0ebecc2e330df22967748b18e56'
+            '760ca24cb3bb684bef52629ef79b25dc2fb12d9623c59c906d24e0b69dbb9b0b'
+            'e193e2df9eb55f9b23df62080c01aec42504916352e8bb3b263179c6cf0b6a6b')
 
 package_linux-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.10.8.arch1-1-bin() {
+package_linux6.10.9.arch1-2-bin() {
   pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -82,7 +82,7 @@ package_linux6.10.8.arch1-1-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux6.10.8.arch1-1-headers-bin() {
+package_linux6.10.9.arch1-2-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -91,7 +91,7 @@ package_linux6.10.8.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.10.8.arch1-1-docs-bin() {
+package_linux6.10.9.arch1-2-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
