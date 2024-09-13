@@ -1,1 +1,1 @@
-u   kibana   -   "Kibana"     /     /sbin/nologin
+u kibana - "Kibana" /var/lib/kibana /sbin/nologin

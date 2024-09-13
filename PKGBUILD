@@ -3,18 +3,18 @@
 pkgname=kibana-bin
 pkgver=8.15.1
 pkgrel=1
-pkgdesc='Browser based analytics and search dashboard for Elasticsearch'
+pkgdesc="Browser based analytics and search dashboard for Elasticsearch"
 arch=('x86_64')
-url='https://github.com/elastic/kibana'
+url="https://github.com/elastic/kibana"
 license=('Apache')
 depends=('nodejs')
 optdepends=('elasticsearch')
 backup=('etc/kibana/kibana.yml')
 options=('!strip' 'emptydirs')
-source=(https://artifacts.elastic.co/downloads/kibana/kibana-${pkgver}-linux-x86_64.tar.gz
-        kibana.service
-        kibana.tmpfiles
-        kibana.sysusers)
+source=("https://artifacts.elastic.co/downloads/kibana/kibana-${pkgver}-linux-x86_64.tar.gz"
+        "kibana.service"
+        "kibana.tmpfiles"
+        "kibana.sysusers")
 sha512sums=('fe2cec0fae976b4d299d60f0b5a71532d9d5c3bf993682f0044c09c93c2bb17bf4642848bdfcf62c0249da4179de7dda643aedcc12204682539a31ed01aabe63'
             'c8858f16fb04bd0f549e9e0b36b1792d7873650a6a78a6cad685f2f758f5bf07d7189abddb8a5f013453e74390b79d4217d3b56f1ac9e917ecc5002f61fdffef'
             'b3732aa30d88889f2269fa87fcf18fdfb76cf5e407a584e6706d0d46e32791773d9647c4646087b7043631cfd969b54fc3be776624df7c67000696937832b7a6'
