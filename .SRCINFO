@@ -1,0 +1,17 @@
+pkgbase = sylixos-cross-compiler-toolchain
+	pkgdesc = cross compile toolchain to build objects running on sylixos
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://10.7.0.200:9000/RealEvo-IDE/realevo-linux-tools-0.2.0.tar.gz
+	arch = x86_64
+	license = custom
+	depends = systemd
+	options = !strip
+	source_x86_64 = realevo-linux-tools-0.2.0.tar.gz::http://10.7.0.200:9000/RealEvo-IDE/realevo-linux-tools-0.2.0.tar.gz
+	sha1sums_x86_64 = 5de738750947c95ba36e49ea2518f5117371fed2
+
+pkgname = sylixos-cross-compiler-toolchain
+
+pkgname = sylixos-cross-compiler-lcsproxy
+
+pkgname = sylixos-cross-compiler-senseshield
