@@ -1,7 +1,7 @@
 pkgbase = ueberzugpp
 	pkgdesc = Command line utility which allows to display images in the terminal, written in C++
 	pkgver = 2.9.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jstkdng/ueberzugpp
 	arch = x86_64
 	arch = aarch64
