@@ -1,1 +1,1 @@
-u logstash - "Logstash user" /var/lib/logstash
+u logstash - "Logstash" /var/lib/logstash /sbin/nologin
