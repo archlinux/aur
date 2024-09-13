@@ -1,9 +1,9 @@
 pkgname=mihomo-party
-pkgver=1.2.16
+pkgver=1.2.17
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
-url="https://github.com/pompurin404/mihomo-party"
+url="https://github.com/mihomo-party-org/mihomo-party"
 license=('GPL3')
 conflicts=("$pkgname-git" "$pkgname-bin" "$pkgname-electron" "$pkgname-electron-bin")
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
@@ -14,7 +14,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=("53c2ad3b2a560270b366cf0a76e63ae448bcceef92bc67cda5077b86db86c578"
+sha256sums=("3d0edd7f2d43aa4e264b8282821475524301cae53fdcbe101c7aa1e92cc26539"
 "f8049c1f26d5a92fbcebd7bebbdedbb3eab53422b21cf6127418251ccd061282")
 options=('!lto')
 
