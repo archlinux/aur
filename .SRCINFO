@@ -8,6 +8,7 @@ pkgbase = imagine-git
 	license = MIT
 	makedepends = nodejs
 	makedepends = npm
+	makedepends = imagemagick
 	makedepends = git
 	depends = electron
 	depends = libjpeg6-turbo

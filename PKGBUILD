@@ -9,7 +9,7 @@ arch=(x86_64)
 url="https://github.com/meowtec/${_name}"
 license=(MIT)
 depends=(electron libjpeg6-turbo)
-makedepends=(nodejs npm git)
+makedepends=(nodejs npm imagemagick git)
 provides=("${_name}")
 conflicts=("${_name}")
 install=${_name}.install
@@ -45,7 +45,7 @@ package() {
 
   for _size in "192x192" "128x128" "96x96" "64x64" "48x48" "32x32" "24x24" "22x22" "20x20" "16x16" "8x8"; do
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/$_size/apps"
-    convert "${_name}/build/icon.png" \
+    magick "${_name}/build/icon.png" \
       -resize "$_size" "${pkgdir}/usr/share/icons/hicolor/$_size/apps/${_name}.png"
   done
 }
