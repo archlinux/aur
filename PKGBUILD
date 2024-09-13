@@ -5,8 +5,8 @@
 
 _pkgname=j4-dmenu-desktop
 pkgname=j4-dmenu-desktop-git
-pkgver=2.18.r231.g7da7e1d
-pkgrel=2
+pkgver=3.1.r10.g595dd14
+pkgrel=1
 pkgdesc='A rewrite of i3-dmenu-desktop, which is much faster'
 arch=('i686' 'x86_64')
 url='https://github.com/enkore/j4-dmenu-desktop'
@@ -25,7 +25,7 @@ optdepends=(
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$pkgname::git+https://github.com/enkore/j4-dmenu-desktop.git")
+source=("$pkgname::git+$url.git")
 b2sums=('SKIP')
 
 pkgver() {
