@@ -1,0 +1,22 @@
+pkgbase = ruby-travis-gh
+	pkgdesc = multi-layer client for the github api v3
+	pkgver = 0.21.0
+	pkgrel = 1
+	url = https://github.com/travis-ci/gh
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby-activesupport
+	depends = ruby-addressable
+	depends = ruby-faraday
+	depends = ruby-faraday-retry
+	depends = ruby-faraday-typhoeus
+	depends = ruby-multi_json
+	depends = ruby-net-http-persistent
+	depends = ruby-net-http-pipeline
+	noextract = travis-gh-0.21.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/travis-gh-0.21.0.gem
+	sha256sums = 43265fdd15eab3a19422faf442cdf8f0508500542e835cd3cdc1029fe73f7a5b
+
+pkgname = ruby-travis-gh
