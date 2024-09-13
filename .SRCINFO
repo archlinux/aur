@@ -1,0 +1,24 @@
+pkgbase = python-kipart
+	pkgdesc = Generate multi-unit schematic symbols for KiCad from a CSV, text, or Excel file.
+	pkgver = 1.4.2
+	pkgrel = 0
+	url = https://pypi.org/project/kipart
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-affine
+	depends = python-future
+	depends = python-sexpdata
+	depends = python-openpyxl
+	depends = python-pyparsing
+	provides = kipart
+	conflicts = kipart
+	options = !strip
+	source = kipart-1.4.2.tar.gz::https://files.pythonhosted.org/packages/source/k/kipart/kipart-1.4.2.tar.gz
+	sha256sums = 947ca5cc2c9fcb90e3b63769e0e6603c7a93d26088c30ee3496f4291e01bff7b
+
+pkgname = python-kipart
