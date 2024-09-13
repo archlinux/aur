@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=xrock
-pkgver=1.0.9
+pkgver=1.1.0
 pkgrel=1
 epoch=
 pkgdesc="The low level tools for rockchip SOC with maskrom and loader mode support."
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('e0085220c2462fd2e26f28c5b3bb71230e68ab899fbad640a4d7b79206743f4d')
+sha256sums=('b5806d2b43cbd04bc863da8fefc43955f54780c007360b39bdfdde762a177235')
 #validpgpkeys=()
 
 build() {
