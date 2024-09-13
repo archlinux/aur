@@ -1,8 +1,8 @@
 # Maintainer: Loic Coyle <loic.coyle@hotmail.fr>
 
 pkgname=thqm
-pkgdesc='A simple HTTP server to serve a dynamic menu for your scripts over the network.'
-pkgver=0.1.6
+pkgdesc='A simple HTTP server to serve a dynamic menu web page.'
+pkgver=0.2.0
 pkgrel=1
 arch=('any')
 url='https://github.com/loiccoyle/thqm-rs'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('git')
 makedepends=('rust')
 source=("$pkgname-${pkgver}.tar.gz::https://github.com/loiccoyle/thqm.rs/archive/v${pkgver}.tar.gz")
-sha256sums=('3259815a7bc41e8fc2041935d5c170f37a7d5ce87f1854f68ef2e5156129a0ad')
+sha256sums=('3a42a8a28c79d2e6f7f2156b24ce81e0eeba87d0337a153e4accd67e47b448f6')
 
 build() {
     cd "$pkgname-rs-$pkgver"
@@ -22,7 +22,7 @@ package() {
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     # completions
-    install -Dm644 "completions/$pkgname" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+    install -Dm644 "completions/$pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
     install -Dm644 "completions/$pkgname.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
     install -Dm644 "completions/_$pkgname" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
