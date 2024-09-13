@@ -7,7 +7,7 @@ pkgname=(linux-firmware-whence-amd-staging-um5606-git linux-firmware-amd-staging
   linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-amd-staging-um5606-git
 )
 epoch=1
-pkgver=20240823.2cdc11a7
+pkgver=20240913.a34e7a5f
 pkgrel=1
 pkgdesc="A package that combines the latest AMD staging Linux firmware targeting the new Ryzen AI laptops, including the latest ipu (NPU) firmware."
 url="https://gitlab.com/kernel-firmware/linux-firmware"
@@ -26,7 +26,8 @@ source=(
   "${pkgbase}::git+${url}.git"
   "https://raw.githubusercontent.com/ThatOneCalculator/linux-firmware-amd-ipu-staging-patch/main/amd-ipu-staging.patch"
 )
-sha256sums=('SKIP' 'ced839307005064875067f477b0c6c71515685274dc0d1037a96d5c450d9b9a9')
+sha256sums=('SKIP'
+            'fcada970801979a87a3f974a07fca18345ae9cc8a7b0e9cfe82eb00a80df6bb0')
 validpgpkeys=('4CDE8575E547BF835FE15807A31B6BD72486CFD6') # Josh Boyer <jwboyer@fedoraproject.org>
 
 pkgver() {
