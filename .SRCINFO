@@ -1,0 +1,13 @@
+pkgbase = cultris2-git
+	pkgdesc = Cultris II is one of the fastest Tetris®-clones ever! Train your reflexes in single-player challenges, enjoy split-screen matches with friends, or compete online with the best.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/LofisMusk/c2-patch-aur
+	arch = x86_64
+	license = proprietary
+	makedepends = git
+	depends = jdk17-temurin
+	source = git+https://github.com/LofisMusk/c2-patch-aur.git
+	sha256sums = SKIP
+
+pkgname = cultris2-git
