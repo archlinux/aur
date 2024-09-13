@@ -16,12 +16,12 @@ conflicts=('fabric-cli')
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/fabric-cli"
     arch-meson build
 }
 
 package() {
-    cd "$srcdir/$pkgname/build"
+    cd "$srcdir/fabric-cli/build"
     meson install --destdir "$pkgdir"
 }
 
