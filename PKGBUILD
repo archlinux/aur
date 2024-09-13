@@ -2,7 +2,7 @@
 
 pkgname=python-tcm
 _pkg="${pkgname#python-}"
-pkgver=0.1.3
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Topic Context Model (TCM)."
 url="https://github.com/jnphilipp/tcm"
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 license=('GPL-3.0-or-later')
 arch=(any)
 source=("$_pkg-$pkgver.tar.gz::https://github.com/jnphilipp/tcm/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=("fa4ae6bff4c7b8d26c4b10ee612653fd56fc8b5e876831e846bd0e83cbb6f2f4")
+sha256sums=("1752edbfab70f9d707c5cee5294133c5bef1f2c5342dd9797e5cec29a1c53776")
 
 build() {
 	cd $_pkg-$pkgver

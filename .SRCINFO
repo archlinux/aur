@@ -1,6 +1,6 @@
 pkgbase = python-tcm
 	pkgdesc = Topic Context Model (TCM).
-	pkgver = 0.1.3
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/jnphilipp/tcm
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-tcm
 	depends = python-scipy
 	depends = python-scikit-learn
 	depends = python-conllu
-	source = tcm-0.1.3.tar.gz::https://github.com/jnphilipp/tcm/archive/refs/tags/0.1.3.tar.gz
-	sha256sums = fa4ae6bff4c7b8d26c4b10ee612653fd56fc8b5e876831e846bd0e83cbb6f2f4
+	source = tcm-0.1.5.tar.gz::https://github.com/jnphilipp/tcm/archive/refs/tags/0.1.5.tar.gz
+	sha256sums = 1752edbfab70f9d707c5cee5294133c5bef1f2c5342dd9797e5cec29a1c53776
 
 pkgname = python-tcm
