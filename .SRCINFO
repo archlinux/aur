@@ -1,6 +1,6 @@
 pkgbase = ncmdump
 	pkgdesc = Convert Netease Cloud Music ncm files to mp3/flac files.
-	pkgver = 1.3.2
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/taurusxin/ncmdump
 	arch = i686
@@ -19,9 +19,9 @@ pkgbase = ncmdump
 	provides = ncmdump-latest-bin
 	conflicts = ncmdump
 	conflicts = ncmdump-latest-bin
-	source = ncmdump-1.3.2.tar.gz::https://github.com/taurusxin/ncmdump/archive/refs/tags/1.3.2.tar.gz
+	source = ncmdump-1.4.0.tar.gz::https://github.com/taurusxin/ncmdump/archive/refs/tags/1.4.0.tar.gz
 	source = use-local-taglib.patch
-	sha256sums = 331f78985f95280a88c481b2254b3e35598bc6e6892381b55ace67d0b2900ea9
+	sha256sums = e3c737d9a526fe7adfd22103ff0f06fb1d7ee923d3fbd3de4ab4e861f7bddcef
 	sha256sums = 0070228c1e04d829d8e01e3f997dd4d9acee53fccd6ed6e1e1440b0d8aa66b74
 
 pkgname = ncmdump
