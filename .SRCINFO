@@ -1,16 +1,15 @@
 pkgbase = code2prompt
 	pkgdesc = A CLI tool to convert your codebase into a single LLM prompt
-	pkgver = 1.1.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/mufeedvh/code2prompt
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	depends = glibc
 	depends = gcc-libs
-	depends = openssl
+	depends = glibc
 	depends = zlib
-	source = code2prompt-1.1.0.tar.gz::https://github.com/mufeedvh/code2prompt/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = b6ed9c68f4dff187bccb11cdf59ae0777991ec1f071da36956e6b3af7a06a8df
+	source = code2prompt-2.0.0.tar.gz::https://github.com/mufeedvh/code2prompt/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = cf08be573e816ebe8852cd8afa6fd122f6b5c00c081ac058ada326647cf8251c
 
 pkgname = code2prompt
