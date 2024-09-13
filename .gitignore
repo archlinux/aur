@@ -1,6 +1,4 @@
 *
-!.gitignore
 !PKGBUILD
-!*.install
-!*.sysusers
 !.SRCINFO
+!.gitignore

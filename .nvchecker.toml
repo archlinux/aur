@@ -1,0 +1,4 @@
+[nm-tray]
+source = "git"
+git = "https://github.com/palinek/nm-tray.git"
+prefix = "v"
