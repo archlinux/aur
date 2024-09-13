@@ -1,10 +1,10 @@
 pkgname=mihomo-party-electron-bin
 _pkgname=mihomo-party
-pkgver=1.2.16
+pkgver=1.2.17
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
-url="https://github.com/pompurin404/mihomo-party"
+url="https://github.com/mihomo-party-org/mihomo-party"
 license=('GPL3')
 conflicts=("$_pkgname" "$_pkgname-git" "$_pkgname-bin" "$_pkgname-electron")
 depends=('electron' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
@@ -18,8 +18,8 @@ sha256sums=(
     "96a6250f67517493f839f964c024434dbcf784b25a73f074bb505f1521f52844"
     "560733f0e5bd9b47ff50c849301c8a22ae17a5df26830d8c97033dfcbd392382"
 )
-sha256sums_x86_64=("10c5c683da630b0706848b89d2acf327b91c4987d97f43e82287715b7e3eb6a7")
-sha256sums_aarch64=("cdcbdefb0730402b5231ccb36e2e8d597127eca8849d8c8518909cb03778f3a8")
+sha256sums_x86_64=("d14006d82fa4fe0f8b5c899f98ac3ee6ae486a904d61dddbbe504103c573df1e")
+sha256sums_aarch64=("ccea7dd721b07724a5b23ee7d553e07b488dd568e8fe1d16fa51a365b022e765")
 options=('!lto')
 
 package() {
