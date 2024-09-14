@@ -12,12 +12,12 @@
 
 : ${_ver_clang=}
 : ${RUSTUP_TOOLCHAIN:=stable}
-: ${_commit=970dfc1fb48cb0f6280d18034e86e14c610b5215} # 11.18.0
+: ${_commit=c7c98c992317aa39cfcf5ad0ed8e0d4748c827c6} # 11.18.1
 
 ## basic info
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=11.18.0
+pkgver=11.18.1
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
