@@ -8,11 +8,11 @@ pkgname=epsxe
 _pkgname=ePSXe
 pkgver=2.0.5
 _plgnver=1.9.95
-pkgrel=32
+pkgrel=33
 pkgdesc="Enhanced PSX emulator"
 url="https://epsxe.com"
 arch=('x86_64')
-depends=(bash libcurl-compat gtk3 sdl_ttf ncurses openssl-1.0 libxt libcanberra libcurl-compat)
+depends=(bash libcurl-compat gtk3 sdl_ttf ncurses openssl-1.0 libxt libcanberra libcurl-compat libxv libcdio libarchive)
 makedepends=(unzip tar cmake mesa intltool nasm valgrind)
 license=('unknown')
 install=${pkgname}.install
@@ -27,14 +27,15 @@ source=(${pkgname}.desktop
         "pcsxr-$_plgnver.tar.gz::https://github.com/frealgagu/PCSX-Reloaded/archive/$_plgnver.tar.gz"
         Makefile.patch
         pcsxr-fix-undefined-operations.patch
-        configure.ac.patch
-        gpu.c.patch
+        configure_ac.patch
+        peopsxgl_gpu_c.patch
+        dfxvideo_cfg_c.patch
         )
 conflicts=(bin32-epsxe)
 noextract=(shaders.zip ncurses-5.9_20141101-1-$CARCH.pkg.tar.xz)
 md5sums=('aeb34e2ca34f968630ca133ea821c61c'
          'eb0c46b8ae1355c589792f6be1835e47'
-         '8d47875ba4f51943cdb6e09c2f25e4b5'
+         '6239ab64858d131acc3d2629d5834701'
          'a863740899adb064b8a28c3fa47d5280'
          '79fefeb4bff26bf1d374befb35b390df'
          'd435d3e9481e5786b9e377abe63ce325'
@@ -42,7 +43,10 @@ md5sums=('aeb34e2ca34f968630ca133ea821c61c'
          '65b85557db7af4fbb775ce3256d9784c'
          '96a82dcc66851160f452160a538cd6f8'
          'f84d9eff59ac127eb37be4088c599fe6'
-         'c3d8ff36dce00a004c088f2879f0d409')
+         'db7ecf156cd7315ea7cb9b9614d6fd69'
+         '97dba4a28e162cd93882194d3a02bbf1')
+
+
 
 prepare()
 {
@@ -62,27 +66,24 @@ prepare()
 
   cd "$srcdir/PCSX-Reloaded-$_plgnver/pcsxr"
   patch < $srcdir/Makefile.patch
-  patch < $srcdir/configure.ac.patch
+  patch < $srcdir/configure_ac.patch
   cd ..
-  patch -Np1 -i $srcdir/pcsxr-fix-undefined-operations.patch
+  patch -Np1 -i "$srcdir"/pcsxr-fix-undefined-operations.patch
   mkdir -p "$srcdir/PCSX-Reloaded-$_plgnver/pcsxr/include"
-  patch -Np1 -i $srcdir/gpu.c.patch "$srcdir/PCSX-Reloaded-$_plgnver/pcsxr/plugins/peopsxgl/gpu.c"
+  patch -Np1 -i "$srcdir"/peopsxgl_gpu_c.patch "$srcdir/PCSX-Reloaded-$_plgnver/pcsxr/plugins/peopsxgl/gpu.c"
+  patch -Np1 -i "$srcdir"/dfxvideo_cfg_c.patch "$srcdir/PCSX-Reloaded-$_plgnver/pcsxr/plugins/dfxvideo/cfg.c"
 
   cd "$srcdir/PCSX-Reloaded-$_plgnver/pcsxr"
 
 
   ## Replace ~/.pcsxr with ~/.epsxe
-  # sed -i 's|\.pcsxr/plugins/config/|.epsxe/config/|' plugins/peopsxgl/gpu.c
-  sed -i 's|\.pcsxr/plugins/cfg/|../../opt/epsxe/cfg/|' plugins/peopsxgl/gpu.c
   # # sed -i 's|\.pcsxr/plugins/|.epsxe/config/|' plugins/dfxvideo/cfg.c
-  sed -i 's|\.pcsxr/plugins/|../../opt/|' plugins/dfxvideo/cfg.c
-  sed -i 's|\.pcsxr/plugins/cfg/|../../opt/epsxe/cfg/|' gui/Linux.h
+  # sed -i 's|\.pcsxr/plugins/cfg/||' gui/Linux.h
   sed -i 's|\.pcsxr|.epsxe|' gui/Linux.h
 
   ## Fix several implict function definitions (waitpid)
   sed -ri 's|(#include "pad.h")|\1\n#include <sys/wait.h>|' plugins/dfinput/pad.c
   sed -ri 's|(#include "stdafx.h")|\1\n#include <sys/wait.h>|' plugins/dfsound/cfg.c
-  sed -ri 's|(#include <sys/stat.h>)|\1\n#include <sys/wait.h>|' plugins/dfxvideo/cfg.c
   sed -ri 's|(#include "cdr.h")|\1\n#include <sys/wait.h>|' plugins/dfcdrom/cdr.c
   sed -ri 's|(#include "sio1.h")|\1\n#include <sys/wait.h>|' plugins/bladesio1/sio1.c
   # sed -ri 's|(#include "stdafx.h")|\1\n#include <sys/wait.h>|' plugins/peopsxgl/gpu.c
@@ -115,18 +116,18 @@ build() {
     --enable-libcdio \
     --enable-opengl \
     --libdir="/opt/$pkgname/plugins" \
-    --datadir="/opt/$pkgname/cfg" \
+    --datadir="/opt/$pkgname/config" \
     --bindir="/opt/$pkgname/plugins" \
-    --datarootdir="/opt/$pkgname/cfg"
+    --datarootdir="/opt/$pkgname/config"
   # make clean
-  make
+  make # DATADIR="/opt/$pkgname/cfg"
 }
 
 package()
 {
   cd "$srcdir"
   install -d "$pkgdir"/usr/share/doc/$pkgname
-  install -d "$pkgdir"/opt/$pkgname/cfg \
+  install -d "$pkgdir"/opt/$pkgname/config \
     "$pkgdir"/opt/$pkgname/plugins \
     "$pkgdir"/opt/$pkgname/shaders
 
@@ -167,6 +168,7 @@ package()
   # cd "$pkgdir/opt/$pkgname/plugins/"
 
   ## PeopsSoftX
+  ln -sf /opt/"$pkgname"/config/peopsxgl.ui "$pkgdir"/opt/epsxe/config/cfgpeopsxgl.ui
   #
   # install -m 755 -t "$pkgdir/opt/$pkgname/plugins" \
   #   opt/epsxe/plugins/libpeopsxgl.la \
@@ -175,6 +177,7 @@ package()
   # install -m 755 usr/lib/games/psemu/cfgpeopsxgl "$pkgdir/opt/$pkgname/"
 
   chgrp games -R "$pkgdir/opt/epsxe"
+  chmod g+rwx -R "$pkgdir/opt/epsxe"
 
   # cd
   #
