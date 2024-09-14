@@ -9,7 +9,7 @@ fi
 ## basic info
 _pkgname="ryujinx"
 pkgname="$_pkgname"
-pkgver=1.1.1385
+pkgver=1.1.1386
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://github.com/Ryujinx/Ryujinx"
@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=(
   'desktop-file-utils'
-  'dotnet-sdk>=8.0.7.sdk303' # aur/dotnet-core-bin
+  'dotnet-sdk-bin' # aur/dotnet-core-bin
 )
 
 options=('!strip' '!debug' 'emptydirs')
@@ -57,9 +57,17 @@ build() {
     -p:Version=${pkgver%%.r*}
   )
 
+  echo "Building AVA Interface..."
   dotnet publish "${_args[@]}" -o publish_ava src/Ryujinx
+
+  echo "Building GTK3 Interface..."
   dotnet publish "${_args[@]}" -o publish_gtk src/Ryujinx.Gtk3
+
+  echo "Building SDL2 Headless..."
   dotnet publish "${_args[@]}" -o publish_sdl src/Ryujinx.Headless.SDL2
+
+  echo "Shutting down dotnet build server in background."
+  (timeout -k 45 30 dotnet build-server shutdown) > /dev/null 2>&1 &
 }
 
 package() {

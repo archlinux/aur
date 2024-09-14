@@ -1,3 +1,34 @@
+note() {
+  printf "${BLUE}==>${YELLOW} $1 ${WHITE}$2${ALL_OFF}\n"
+}
+
+msg1() {
+  printf "${BLUE}==>${WHITE} $1${ALL_OFF}\n"
+}
+
+msg2() {
+  printf "   ${WHITE} $1${ALL_OFF}\n"
+}
+
+ALL_OFF="$(tput sgr0)"
+BOLD="${ALL_OFF}$(tput bold)"
+BLACK="${BOLD}$(tput setaf 0)"
+RED="${BOLD}$(tput setaf 1)"
+GREEN="${BOLD}$(tput setaf 2)"
+YELLOW="${BOLD}$(tput setaf 3)"
+BLUE="${BOLD}$(tput setaf 4)"
+MAGENTA="${BOLD}$(tput setaf 5)"
+CYAN="${BOLD}$(tput setaf 6)"
+WHITE="${BOLD}$(tput setaf 7)"
+
+post_install() {
+  note 'Warning:' "Contents of '/opt/ryujinx/Logs' will be deleted on uninstall."
+}
+
+post_upgrade() {
+  post_install
+}
+
 pre_remove() {
   if [ -d "/opt/ryujinx/Logs" ]; then
     rm -rf /opt/ryujinx/Logs/*
