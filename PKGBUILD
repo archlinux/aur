@@ -23,7 +23,7 @@ source=("$url/archive/refs/tags/v${pkgver}.tar.gz"
         'io.github.equicord.equibop.desktop'
         'equibop.sh')
 sha256sums=('b6ec6474de14ac718a577a2fe2a178800caab3322ba9d58fb6292691dba7324d'
-            'd84e7ae91a126374948ccaa86bf2d0e64bb198f748596f8c086e19a1bf3827ad'
+            '1e4766362fab2657e6b9a6a0a742518b545a5678f211ba25f7fdd3f5080d48d5'
             'ae9f22bb24ffe42a14ac59b20e7d48c807aa96272eb2c2c36b93b4aee161d02c')
 
 prepare() {

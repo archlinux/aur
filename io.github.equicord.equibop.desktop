@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Equibop
 GenericName=Internet Messenger
-Comment=Equibop is a Vesktop fork that is a free/libre cross platform desktop app aiming to give you a snappier Discord experience with Suncord pre-installed
+Comment=Equibop is a Vesktop fork that is a free/libre cross platform desktop app aiming to give you a snappier Discord experience with Equicord pre-installed
 Type=Application
 Exec=/usr/bin/equibop
 Icon=equibop
