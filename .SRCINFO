@@ -1,0 +1,25 @@
+pkgbase = r-poissonreg
+	pkgdesc = Model Wrappers for Poisson Regression
+	pkgver = 1.0.1
+	pkgrel = 5
+	url = https://cran.r-project.org/package=poissonreg
+	arch = any
+	license = GPL-3.0-only
+	checkdepends = r-testthat
+	depends = r-dplyr
+	depends = r-generics
+	depends = r-glue
+	depends = r-purrr
+	depends = r-rlang
+	depends = r-stats
+	depends = r-tibble
+	depends = r-tidyr
+	optdepends = r-covr
+	optdepends = r-pscl
+	optdepends = r-spelling
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/poissonreg_1.0.1.tar.gz
+	md5sums = d9a1c0e4b16c40b7f5281d7449333e41
+	b2sums = 700216e03db2b03a5fd07c7daa84a84a5b9944b70683e270a16f234d4db8a5f5ad565e0d0582f5f656e5807955124d778d6b72ce10302583199308a5072b7c4f
+
+pkgname = r-poissonreg
