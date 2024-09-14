@@ -1,3 +1,347 @@
+5.17.1 (2024-08-30 18:57:13)
+
+    Provides a way to specify a multiplier when defining switch hints.
+    Adds the multiplier as a formatting option for address differences. 
+
+5.17.0 (2024-08-27 17:47:17)
+
+    Show unicode strings in the comments. 
+
+5.16.2 (2024-08-12 18:16:42)
+
+    Fixes a crash on macOS 15.1 beta 1,
+    Adds a shortcut to copy the current address. 
+
+5.16.1 (2024-08-06 12:30:52)
+
+    Improves detection of strings,
+    Improves detection of hardened runtime on attach. 
+
+5.16.0 (2024-07-16 15:25:04)
+
+    Improves the detection of hardened runtime,
+    Fixes the patches not being applied before launching the debugger. 
+
+5.15.6 (2024-05-24 15:31:24)
+
+    Fixes a crash on Intel computers. 
+
+5.15.4 (2024-05-16 17:09:26)
+
+    Fixes an issue where Hopper would hang on some mangled files improperly extracted from the DYLD shared cache. 
+
+5.15.3 (2024-04-09 15:48:13)
+
+    Improves compatibility with the latest versions of Python. 
+
+5.15.0 (2024-03-26 17:56:24)
+
+    Improves compatibility with DYLD shared cache of macOS 14.4 and later. 
+
+5.14.3 (2024-03-11 12:55:18)
+
+    Allows modifications of BSS sections,
+    Fixes a compatibility issue with the latest version of Python (3.12). 
+
+5.14.2 (2024-02-21 10:56:25)
+
+    Improves compatibility with macOS 14.4 beta 3 and 4 DYLD shared cache. 
+
+5.14.1 (2024-02-19 18:08:18)
+
+    Improves the export of Objective-C header,
+    Fixes a few issues in the C type parser. 
+
+5.14.0 (2024-01-16 11:41:47)
+
+    Adds a new command palette which allows to quickly navigate between menus, documents, symbols and strings,
+    Improves detection of some weird ARM constructs for simulating a call instruction,
+    Fixes a decompiler issue where some variable assignments were too aggressively optimised. 
+
+5.13.5 (2023-12-12 17:11:03)
+
+    Fixes some AArch64 vector instructions which were missing their register size suffixes,
+    Fixes an issue with the Python API which prevented usage of some helper functions,
+    Fixes a deadlock in the Linux version. 
+
+5.13.4 (2023-11-08 11:55:11)
+
+    Fixes a crash on startup on macOS 12 and earlier. 
+
+5.13.3 (2023-11-07 17:41:07)
+
+    Reduces the memory footprint of the BinDiff exporter,
+    Proper handling or the ARMv8.5 extension,
+    Fixes a crash when exporting BinDiff for some large files,
+    Fixes disassembly of some vector instructions (aarch64). 
+
+5.13.2 (2023-10-19 18:02:03)
+
+    Fixes an issue in the propagation of no-return method. 
+
+5.13.1 (2023-10-17 14:26:39)
+
+    Improves BinDiff exports. 
+
+5.13.0 (2023-10-10 17:33:57)
+
+    Disassembles the Apple AMX extension instructions,
+    Improves dead code removal in the decompiler,
+    Fixes an issue when a conditional instruction was jumping to a no-return function,
+    Improves how the method signature is computed from a C++ mangled name,
+    Fixes m68k bit field instructions disassembly. 
+
+5.12.0 (2023-09-14 16:53:20)
+
+    Fixes a few issues when debugging a GDB remote target. 
+
+5.11.7 (2023-08-26 16:21:14)
+
+    Drastically reduce the memory footprint on very large binaries during the analysis. 
+
+5.11.6 (2023-08-04 19:17:47)
+
+    Fixes the display of pseudo-string arguments for big endian CPU,
+    Cleans up the code for license and update plan purchases. 
+
+5.11.5 (2023-07-19 19:14:58)
+
+    Improves the handling of newer DYLD caches, especially symbols reading,
+    Works around a bug in macOS Sonoma beta which prevents large documents from being properly displayed. 
+
+5.11.4 (2023-07-10 16:49:01)
+
+    Improves the responsiveness of the address list,
+    Fixes a dead lock when resizing the address list when the procedure list was displayed and a background analysis was running. 
+
+5.11.3 (2023-06-29 17:35:17)
+
+    Improves M68k XREF computation,
+    Fixes the Fedora package. 
+
+5.11.2 (2023-06-29 10:43:53)
+
+    Fixes a crash in the M68k CPU plugin. 
+
+5.11.1 (2023-06-14 19:00:33)
+
+    Adds Python method for bookmarks handling,
+    Fixes the Python prompt for accepting unterminated commands,
+    Refinements on 6502 and M68k CPU plugins. 
+
+5.11.0 (2023-05-23 13:43:18)
+
+    Provides a useful error message when the assembler fails,
+    Highlights the path that will be taken when the program counter reaches a conditional jump instruction in the debugger,
+    Adds initial support for Motorola 680x0 CPUs,
+    Adds support for Amiga executables and raw ADF,
+    Fixes a potential deadlock when exporting assembly or pseudo-code,
+    Fixes an issue when assembling TBZ / TBNZ instructions. 
+
+5.10.0 (2023-05-05 11:26:13)
+
+    Adds support for iOS and macOS Kernel Caches (only the ones that are not encrypted),
+    Slightly improve the disassembly of some bit shifting ARMv7 instructions. 
+
+5.9.0 (2023-04-20 19:13:10)
+
+    Fixes an issue when decompiling conditional ARM instructions using the LS condition,
+    Improves the disassembly of ARM instructions using an imm12 encoded field. 
+
+5.8.8 (2023-03-17 17:14:04)
+
+    Improves Apple Silicon decompilation,
+    Fixes an issue which prevented Hopper from decrypting some of the Intel system binaries on Apple Silicon. 
+
+5.8.7 (2023-03-07 20:20:14)
+
+    Improves switch / case detection,
+    Improves no-return function detection,
+    Fixes a crash when exporting BinDiff databases. 
+
+5.8.6 (2023-02-03 18:24:21)
+
+    Exports more symbols from the DYLD shared cache,
+    Improves the time needed to extract a file from the DYLD shared cache,
+    Fixes some colors used for texts on Linux which were not readable on dark themes. 
+
+5.8.5 (2023-01-16 17:24:23)
+
+    Improves the preferences window,
+    Handles some third party mouses for navigating backward / forward using dedicated buttons. 
+
+5.8.4 (2022-12-21 17:33:38)
+
+    Provides a way to identify some Windows functions imported by ordinal. 
+
+5.8.3 (2022-12-09 17:01:36)
+
+    Fixes a crash when parsing Swift metadata on ciphered files. 
+
+5.8.1 (2022-12-03 13:58:10)
+
+    Fixes a layout issue with tabs,
+    Fixes an issue where the decompiler would generate incoherent goto statements,
+    Adds a way to prevent loading user plugins if a plugin make Hopper crash at startup to prevent a crash loop. 
+
+5.8.0 (2022-11-18 17:57:17)
+
+    First iteration on loading Swift metadata. Retrieved information can be found as comments in the dedicated sections,
+    Improves the handling of the new DYLD shared caches, and especially symbols,
+    Fixes a crash when exporting pseudo-code containing very large methods. 
+
+5.7.8 (2022-11-07 16:25:18)
+
+    Adds a way to define environment variables in the debugger,
+    Adds an option to displays the hex column in the debugger when PC / RIP is outside of the main binary file,
+    Allows one to define struct containing relative pointers,
+    Fixes an issue with Python scripts not being updated when edited outside of Hopper,
+    Better parses some Objective-C sections,
+    Fixes a crash when trying to read an old DYLD shared cache from iOS 3. 
+
+5.7.7 (2022-09-09 17:12:49)
+
+    Fixes loading older dyld caches. 
+
+5.7.6 (2022-09-03 01:18:55)
+
+    Fixes a crash while loading an Intel DYLD shared cache. 
+
+5.7.5 (2022-09-02 21:30:03)
+
+    Makes Hopper compatible with iOS 16 DYLD shared caches,
+    Improves extraction of files from DYLD shared caches. 
+
+5.7.4 (2022-07-29 16:17:02)
+
+    Improves the detection of ARMv7EM binaries,
+    Improves the loading of malicious Mach-O executables with a symbol table modified by hand,
+    Improves the loading of DLL files targetting platforms other than Windows,
+    Fixes an issue where only the first references to an address were listed in the inspector,
+    Fixes a crash for some files extracted from a DYLD shared cache. 
+
+5.7.3 (2022-07-20 17:54:11)
+
+    Fixes an issue with the hex editor for files extracted from a FAT binary,
+    Adds an option in the "go to" dialog for jumping at a local or a global (i.e., in the original container) file offset. 
+
+5.7.2 (2022-07-19 10:33:21)
+
+    Fixes a crash when disassembling some variants of the LD1 AArch64 instruction. 
+
+5.7.1 (2022-07-18 17:23:55)
+
+    Fixes missing operands for some vector AArch64 instructions,
+    Fixes a few issues introduced by the Python 3 migration on functions like readBytes. 
+
+5.7.0 (2022-07-08 16:54:15)
+
+    Improves the decompilation of Objective-C programs extracted from the DYLD cache,
+    Fixes the display of 32-bit operands formatted as a float. 
+
+5.6.1 (2022-06-29 17:46:54)
+
+    Improves DYLD cache path discovery on macOS Ventura,
+    Slightly improves the decompiler output,
+    Fixes a crash on multi-display systems when the computer was awakened,
+    Fixes conditional jump instructions on the PowerPC plugin. 
+
+5.6.0 (2022-05-31 12:51:35)
+
+    Adds a decompiler's option which removes (almost) all GOTO statements. This is still considered as beta as it introduces a lot of temporary variables.
+    Adds a way to change the fields order of a structure, a union or an enum.
+    Adds a way to change the arguments order of a method signature.
+    Fixes an issue with the disassembly of the CCMP instruction (AArch64). 
+
+5.5.3 (2022-04-15 18:02:44)
+
+    Improves loading of ARMv8 ELF binaries by handling more relocation types. 
+
+5.5.2 (2022-03-24 23:36:08)
+
+    Fixes a crash in the DYLD cache loader introduced in 5.5.1. 
+
+5.5.1 (2022-03-24 21:48:04)
+
+    Adds a tooltip when hovering a truncated name in the list of symbols,
+    Improves the demangling of Swift symbols,
+    Fixes an issue which would prevent some Objective-C protocols from being read from a DYLD shared cache,
+    Improves keyboard navigation in the executable selection dialog. 
+
+5.5.0 (2022-03-22 19:08:11)
+
+    Allows enum types to have a base type in the type editor,
+    Adds a quick way to load a library from the current DYLD cache,
+    Improves the executable dialogs in order to ease navigation with the keyboard. 
+
+5.4.0 (2022-03-03 18:00:52)
+
+    Adds support for BinDiff: you can export a BinExport file to be used with BinDiff, and import back a BinDiff database,
+    Fixes misidentified AArch64e binaries in FAT archives. 
+
+5.3.4 (2022-01-27 17:07:24)
+
+    Speed improvement for the dataflow analysis,
+    Fixes the tool for installing a license for multiple local account for people owing Computer Licenses. 
+
+5.3.3 (2022-01-20 18:11:53)
+
+    More debugger fixes. 
+
+5.3.2 (2022-01-20 13:13:31)
+
+    Fixes a crash in the debugger. 
+
+5.3.1 (2022-01-06 20:06:14)
+
+    Improves detection of no-return functions,
+    Adds a way to choose the entries' size of a switch / case table,
+    Fixes an issue when creating procedures using PAC. 
+
+5.3.0 (2021-12-23 18:17:50)
+
+    Updates Capstone to a more recent version,
+    Fixes a crash when rebasing a MachO binary without chained fixups. 
+
+5.2.0 (2021-12-04 18:29:35)
+
+    Handles the new iOS15 / macOS 12 chained fixups pointers. 
+
+5.1.4 (2021-11-26 18:47:22)
+
+    Fixes an issue where argument analysis was not seeing some instructions. 
+
+5.1.3 (2021-11-25 20:40:51)
+
+    Improves detection of methods' argument, and the signature editor. 
+
+5.1.2 (2021-11-23 14:43:52)
+
+    Uses the same limit as the one defined in the preferences when exporting pseudo-code,
+    Fixes an issue preventing users to re-download the latest version associated to their license. 
+
+5.1.1 (2021-11-18 19:54:59)
+
+    Updates Sparkle to version 1.27.1,
+    Fixes a crash on malformed Mach-O files,
+    Fixes multiple memory leaks. 
+
+5.1.0 (2021-11-16 16:16:44)
+
+    Fixes a parsing issue of bogus exception tables generated by GCC,
+    Fixes an issue with Mach-O relocations,
+    Fixes an issue where it was impossible to read a previously saved document containing too many entrypoints. 
+
+5.0.0 (2021-10-28 18:49:44)
+
+    Fixes a crash in the debugger when logging was enabled,
+    Improves overral macOS Monterey compatibility,
+    Improves detection of a newly added update plan. 
+
+4.9.6 (2021-10-26 18:07:25)
+
+    Fixes a deadlock which may happen when a document was closed. 
+
 4.9.5 (2021-10-26 12:44:47)
 
     Fixes a crash when loading an old DYLD shared caches (iOS 13 and before),
