@@ -1,29 +1,43 @@
 # Maintainer: Masaki Waga <masakiwaga@gmail.com>
+# Contributor: Martin Kühl <martin.kuehl@posteo.net>
 pkgname=teip
-pkgver=1.2.1
+pkgver=2.3.2
 pkgrel=1
-makedepends=('rust' 'cargo')
-depends=('gcc-libs')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-pkgdesc="Highly efficient \"Masking tape\" for standard input"
+epoch=
+pkgdesc='Masking tape to help commands "do one thing well"'
+arch=(i686 x86_64 armv6h armv7h)
 url="https://github.com/greymd/teip"
-license=('MIT')
-source=("https://github.com/greymd/teip/archive/v${pkgver}.tar.gz")
-sha256sums=('5c09e4a3507c2298df59c3070a11cf0ec1ec71162ff492d915ee6d646771eb0c')
+license=(MIT)
+groups=()
+depends=(glibc gcc-libs)
+makedepends=(cargo)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/greymd/teip/archive/v${pkgver}.tar.gz"
+        cargo-lock.patch)
+sha256sums=('c9e45d9f5fb263a67c42907d05d8a20dd62b910175270a59decc475e66ea6031'
+            'c2929a186925d0286fc91e0e37cd370ae6dc23e8e3c4e902a1bd1c8548074edd')
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	patch -Np0 -i ../cargo-lock.patch
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  cargo build
+	cd "$pkgname-$pkgver"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  cargo test --release --locked
+	cd "$pkgname-$pkgver"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen --all-features
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
-  mkdir -p "${pkgdir}/usr/share/licenses/teip/"
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/teip/LICENSE"
+	cd "$pkgname-$pkgver"
+	install -Dm755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
