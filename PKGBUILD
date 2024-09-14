@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vnite-git
 _pkgname=Vnite
-pkgver=1.2.6.r0.g16d1827
+pkgver=1.2.7.r0.g9c59e82
 _electronversion=28
 _nodeversion=20
 pkgrel=1
@@ -29,7 +29,9 @@ sha256sums=('SKIP'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+    set -o pipefail
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
