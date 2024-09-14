@@ -7,7 +7,7 @@
 pkgname=perl-gtk2-unique
 _cpanname=Gtk2-Unique
 pkgver=0.07
-pkgrel=1.3
+pkgrel=1.4
 pkgdesc="Perl bindings for the C library libunique"
 arch=('i686' 'x86_64')
 url="https://metacpan.org/release/${_cpanname}"
