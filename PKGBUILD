@@ -69,8 +69,8 @@ package() {
     -T "${pkgdir}/usr/bin/${pkgname}"
   install -Dm755 "${srcdir}/build/publish/Image2Display/release_${_dotnet_os}-${_dotnet_arch}/libHarfBuzzSharp.so" \
     -t "${pkgdir}/usr/lib"
-  install -Dm755 "${srcdir}/build/publish/Image2Display/release_${_dotnet_os}-${_dotnet_arch}/libSkiaSharp.so" \
-    -t "${pkgdir}/usr/lib"
+#  install -Dm755 "${srcdir}/build/publish/Image2Display/release_${_dotnet_os}-${_dotnet_arch}/libSkiaSharp.so" \
+#    -t "${pkgdir}/usr/lib"
 
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
