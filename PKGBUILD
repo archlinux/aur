@@ -10,12 +10,12 @@ license=('MIT')
 arch=('x86_64' 'aarch64')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$url/raw/main/LICENSE")
+source=("$url/raw/3.6.0/LICENSE")
 source_aarch64=("$url/releases/download/$pkgver/Beaver-notes-$pkgver.aarch64.rpm")
 source_x86_64=("$url/releases/download/$pkgver/Beaver-notes-$pkgver.x86_64.rpm")
-sha256sums=('SKIP')
-sha256sums_aarch64=('1ffb5f4bddbab6074d19116209bfabada2c6a1434d562ac965b0328344e8ddbd')
-sha256sums_x86_64=('c2f695979fbf1d44cc207680fae49b8dbf6c4ce181a2d3cfdfb5b0959115823d')
+sha256sums=('593ed481f41652b46705e544226e0b58ffc046138f6a34777a0092e8d1f54b1d')
+sha256sums_aarch64=('74446c7bcf2eb2d17833a7345afc9813d0ac755ad39027d249c25749bf6077a8')
+sha256sums_x86_64=('d4087b615d49cbbf89382b624a01ee1150de5176a94b6d40bcce6a6949b2c7eb')
 
 prepare() {
 # Edit the shortcut
