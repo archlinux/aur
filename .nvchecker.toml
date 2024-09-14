@@ -1,0 +1,4 @@
+[soundcloud-dl-git]
+source = "git"
+git = "https://github.com/flyingrub/scdl.git"
+prefix = "v"
