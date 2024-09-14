@@ -1,22 +1,22 @@
 # Maintainer: sem.z <sem.z at protonmail dot com>
 
 pkgname="orca-slicer-unstable-bin"
-pkgver=2.1.1
-_pkgver=2.1.1
+pkgver=2.2.0.beta
+_pkgver=2.2.0-beta
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (all versions including alpha, beta, release candidates and stable versions)"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
 license=('AGPL3')
-depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'ttf-harmonyos-sans' 'gst-plugins-base' 'gst-libav')
+depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'gst-plugins-base' 'gst-libav')
 provides=("orca-slicer")
 conflicts=("orca-slicer")
-source=("https://github.com/SoftFever/OrcaSlicer/releases/download/v${_pkgver}/OrcaSlicer_Linux_V${_pkgver}.AppImage")
-sha512sums=('f3e5ee8a8bd1b0c6ad3f8a2ce317d85fb6dd2c6232d89d2cfe1188caa7f2d74e5016b155dd3a4811f3d2369bd9da0e62f9d9a09181776356055101b0fc97d6b1')
+source=("https://github.com/SoftFever/OrcaSlicer/releases/download/v${_pkgver}/OrcaSlicer_Linux_Ubuntu2404_V${_pkgver}.AppImage")
+sha512sums=('e46bda27bad401115a20179999cfb831a25f97aa1f669d8ee7d3d0ce822ec2feb07d1df7a483ba6cca008a8f557b72046e7eca56659fbe2902005719f941d1d2')
 
 prepare() {
-	chmod +x OrcaSlicer_Linux_V${_pkgver}.AppImage
-	./OrcaSlicer_Linux_V${_pkgver}.AppImage --appimage-extract
+	chmod +x OrcaSlicer_Linux_Ubuntu2404_V${_pkgver}.AppImage
+	./OrcaSlicer_Linux_Ubuntu2404_V${_pkgver}.AppImage --appimage-extract
 
 	sed -i 's|Exec=AppRun|Exec=/opt/orca-slicer-unstable/bin/orca-slicer|g' \
 		"squashfs-root/OrcaSlicer.desktop"
