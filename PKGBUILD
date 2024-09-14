@@ -1,18 +1,20 @@
-# Maintainer: Muflone http://www.muflone.com/contacts/english/
-
-pkgname=android-google-apis-playstore-x86-64-system-image
-pkgver=33_r07
+# Maintainer: nezu <nezu@nezu.cc>
+# Contributor: Muflone http://www.muflone.com/contacts/english/
+_pkgname=android-google-apis-playstore-x86-64-system-image
+_apilevel=33
+pkgname="${_pkgname}-${_apilevel}"
+pkgver="${_apilevel}_r07"
 pkgrel=1
-pkgdesc='Android with Google APIs and Play Store x86_64 Atom System Image, latest API'
+pkgdesc="Android with Google APIs and Play Store x86_64 Atom System Image, API ${_apilevel}"
 arch=('any')
 url='https://developer.android.com/studio/index.html'
 license=('custom')
-depends=('android-platform')
+depends=("android-platform-${_apilevel}")
 optdepends=('qemu' 'libvirt')
-provides=("${pkgname}-${pkgver/_*/}")
-conflicts=("${pkgname}-${pkgver/_*/}")
+provides=("${_pkgname}-${pkgver/_*/}")
+conflicts=("${_pkgname}-${pkgver/_*/}")
 options=('!strip')
-source=("${pkgname}-${pkgver}.zip"::"http://dl.google.com/android/repository/sys-img/google_apis_playstore/x86_64-${pkgver}.zip"
+source=("${_pkgname}-${pkgver}.zip::http://dl.google.com/android/repository/sys-img/google_apis_playstore/x86_64-${pkgver}.zip"
         "package.xml")
 sha256sums=('74b0a57c2cfee755dcf7645e5da9d5468a2982af0bf012dfb46f661bc8b9f84a'
             'f9e506475a22eed319e187dd908da12ea75a0694476e0401bab3a63dd891a1ef')
