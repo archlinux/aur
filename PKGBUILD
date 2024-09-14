@@ -10,7 +10,6 @@ license=('GPL-3.0-or-later')
 makedepends=('cargo' 'asciidoctor')
 optdepends=('archivefs: compressed archive support')
 replaces=('rnr-fm')
-conflicts=(fcd)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bugnano/$pkgname/archive/$pkgver.tar.gz")
 sha512sums=('8f22cdc5cef571b20d7d4398e7b0e67bf2916c4269ace918f363971a795b66408c51301b845c48662c05cc53f13296350d99b71a8fd016be33f4150a5ee3bbfe')
 
