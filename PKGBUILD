@@ -9,18 +9,14 @@ source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 license=('GPL')
 
 build() {
-	cd $BUILDDIR/src/
+	cd "$pkgname-$pkgver/src/"
 	go build
 }
 
 package(){
 	mkdir -p ~/.config/ttr/
-	cd $BUILDDIR/src/
-	install -Dm755 ttr "$pkgdir"/usr/bin/ttr
-	cd $BUILDDIR/
-	cp launch.sh $pkgdir/
-	cp -r assets/ $pkgdir/
-	cp $pkgdir/launch.sh ~/.config/ttr/
-	cp -r $pkgdir/assets/ ~/.config/ttr/
+	install -Dm755 "$pkgname-$pkgver/src/ttr" "$pkgdir"/usr/bin/ttr
+	cp "$pkgname-$pkgver/launch.sh" ~/.config/ttr/
+	cp -r "$pkgname-$pkgver/assets/" ~/.config/ttr/
 }
 sha256sums=('1845d4dfff3bd95b560708069b6ce596a3d3121cb9f5510918c5616e240c155c')
