@@ -1,7 +1,7 @@
 # Maintainer: Alexander Karpukhin <thealexdev23@gmail.com>
 
 pkgname=power-options-daemon
-pkgver=0.1.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="The core daemon for Power Options, a blazingly fast power management solution."
 arch=('x86_64')
@@ -16,7 +16,9 @@ provides=('power-options-daemon')
 conflicts=('power-options-daemon-git')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thealexdev23/power-options/archive/v$pkgver.tar.gz")
-sha256sums=('66eeeb9bc9b46288418ac403d775bdba273c4c9b8ba96d857ddd4871b0b9611f')
+sha256sums=('SKIP')
+
+install="daemon.install"
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
