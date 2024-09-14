@@ -1,8 +1,8 @@
 # Maintainer: Maximilian Luz <m@mxnluz.io>
 
 pkgname='pbpctrl'
-pkgver=0.1.5
-pkgrel=2
+pkgver=0.1.6
+pkgrel=1
 pkgdesc='Control Google Pixel Buds Pro from the Linux command line.'
 url='https://github.com/qzed/pbpctrl'
 license=('MIT' 'Apache')
@@ -14,7 +14,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/qzed/pbpctrl/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-sha256sums=('19006e08500b2788fac7dbcbff6b765c983677261a70a4b7a8b67e787e52e31b')
+sha256sums=('86b970ed1779dadc78754a4b34bfc1f967c038ceb159d43565a3c67a28d679bb')
 
 build(){
     cd "${srcdir}/${pkgname}-${pkgver}"
