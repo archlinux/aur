@@ -1,4 +1,5 @@
-# Marco Rubin <marco.rubin@protonmail.com>
+# Maintainer: wackbyte <wackbyte@protonmail.com>
+# Contributor: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=discord-rpc
 pkgver=20200921
