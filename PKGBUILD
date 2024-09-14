@@ -7,7 +7,7 @@ pkgdesc="由Rust和Tokio驱动，一个简单、安全、去中心化的内网�
 arch=("x86_64" "aarch64")
 url="https://github.com/EasyTier/EasyTier"
 license=('Apache License 2.0')
-source=("easytier.service")
+source=("easytier-example.service")
 source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://github.com/EasyTier/EasyTier/releases/download/v1.2.3/easytier-linux-x86_64-v1.2.3.zip")
 source_aarch64=("$pkgname-$pkgver-aarch64.zip::https://github.com/EasyTier/EasyTier/releases/download/v1.2.3/easytier-linux-aarch64-v1.2.3.zip")
 sha256sums=('SKIP')
@@ -27,11 +27,7 @@ prepare() {
 
 package() {
   cd "$srcdir" || exit 1
-
-  if [ ! -f "$pkgdir/etc/systemd/system/easytier.service" ]; then
-    install -Dm644 easytier.service -t "$pkgdir/etc/systemd/system"
-  fi
-  
+	install -Dm644 easytier-example.service -t "$pkgdir/etc/systemd/system"
   install -Dm755 easytier-core "$pkgdir/usr/bin/easytier-core"
   install -Dm755 easytier-cli "$pkgdir/usr/bin/easytier-cli"
 }
