@@ -20,11 +20,17 @@ post_upgrade() {
     cat << EOF
 Be sure to LINK the plugin and shader directories so ePSXe can make use of them:
 
-ln -sf /opt/epsxe/{plugins,shaders,config} \$HOME/.epsxe/
+epsxe --link
 
 or COPY them:
 
-cp -r --no-preserve=mode /opt/epsxe/{plugins,shaders,config} \$HOME/.epsxe/
+epsxe --install
+
+# ln -sf /opt/epsxe/{plugins,shaders,config} \$HOME/.epsxe/
+#
+# or COPY them:
+#
+# cp -r /opt/epsxe/{plugins,shaders,config} \$HOME/.epsxe/
 EOF
   fi
 }
