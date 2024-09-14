@@ -2,8 +2,10 @@
 
 pkgname=eclipse-rcptt-bin
 epoch=1
-pkgver=2.5.4
-pkgrel=2
+pkgver=2.5.5
+pkgrel=1
+provides=(eclipse-rcptt=$pkgver-$pkgrel)
+conflicts=(eclipse-rcptt)
 pkgdesc="Eclipse RCP Testing Tool IDE"
 arch=('x86_64')
 url="https://eclipse.org/rcptt"
@@ -12,9 +14,10 @@ depends=('java-environment>=17')
 source=("rcptt.ide-$pkgver-linux.gtk.x86_64.zip::https://www.eclipse.org/downloads/download.php?file=/rcptt/release/$pkgver/ide/rcptt.ide-$pkgver-linux.gtk.x86_64.zip&r=1"
         "eclipse-rcptt.png"
         "eclipse-rcptt.desktop")
-sha512sums=('3c4120932afdef245b265ce0775fe11f075e1427d92c69e4fa71390199e1b59d5534a18cfc0fd1c38de23fa89c1627a6ece562d6c1ddb5dfcf7ad476488c6c28'
+sha512sums=('af84e43e7313fd68e00876608c67041e12d8f40f1a47e2083723086f0d852bc2fd797bd37f59d32588792587a17b24183414b749e6fa452e4a928927507498e3'
             'SKIP'
             'SKIP')
+options=(!strip)
 
 package() {
   install -d "${pkgdir}/usr/lib"
