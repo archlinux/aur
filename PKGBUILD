@@ -1,14 +1,14 @@
 # Maintainer: Alexander Karpukhin <thealexdev23@gmail.com>
 
 pkgname=power-options-webview-git
-pkgver=0.1.2r4.6fc4e4
+pkgver=0.1.2r5.5ed259
 pkgrel=1
 pkgdesc="A Web Renderer frontend for Power Options, a blazingly fast power management solution."
 arch=('x86_64')
 url=https://github.com/thealexdev23/power-options
 license=('MIT')
 
-depends=('power-options-daemon-git')
+depends=('power-options-daemon-git' 'webkit2gtk')
 makedepends=('cargo' 'dioxus-cli' 'git')
 
 provides=('power-options-webview')
