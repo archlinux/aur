@@ -1,23 +1,23 @@
-# Maintainer: Frederic Bezies <fredbezies@gmail.com>
+# Contributor: Frederic Bezies <fredbezies@gmail.com>
 # Work in progress PKGBUILD.
 
 pkgname=artefetcher-qt4
 _pkgname=artefetcher
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A video grabber for Arte Catch UP TV - QT4 version"
 arch=('i686' 'x86_64')
 url="http://artefetcher.sourceforge.net/"
 license=('GPL')
 depends=('qt4')
-makedepends=('qt4' 'libxkbcommon-x11')
+makedepends=('libxkbcommon-x11')
 provides=()
 conflicts=(artefetcher-qt5)
 replaces=()
 backup=()
 options=('!libtool' '!emptydirs')
 source=(http://downloads.sf.net/sourceforge/$_pkgname/artefetcher_$pkgver.tar.gz)
-md5sums=('650c3ec91b22572af918d921e26a7f90')
+md5sums=('b039ca117aaeed5abcabfc0c023d750b')
 
 build() {
   cd $_pkgname
