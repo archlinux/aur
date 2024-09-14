@@ -1,0 +1,14 @@
+pkgbase = steamdeck-dkms
+	pkgdesc = Steam Deck EC sensors driver (DKMS)
+	pkgver = 6.8.12.valve2
+	pkgrel = 1
+	url = https://github.com/firlin123/steamdeck-dkms
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dkms
+	conflicts = jupiter-dkms
+	source = git+https://github.com/firlin123/steamdeck-dkms.git#tag=f9c0a828b9c1b6c0ce16311822389b8d1c65eb54
+	b2sums = SKIP
+
+pkgname = steamdeck-dkms
