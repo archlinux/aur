@@ -10,7 +10,7 @@
 
 pkgname=wxglade-git
 pkgver=1.1.0b1.r10.g38c866b
-pkgrel=1
+pkgrel=2
 pkgdesc='wxGlade is a GUI builder written in Python for the GUI toolkit wxWidgets/wxPython'
 arch=('any')
 license=('MIT')
