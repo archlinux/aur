@@ -1,16 +1,18 @@
 pkgbase = python-pybeam
 	pkgdesc = Python module to parse Erlang BEAM files
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://github.com/matwey/pybeam
 	arch = any
 	license = custom:MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = python-construct
 	depends = python-six
-	source = https://files.pythonhosted.org/packages/source/p/pybeam/pybeam-0.7.tar.gz
-	md5sums = 4759e2e15052e1254cddaa0da604c957
+	source = https://files.pythonhosted.org/packages/source/p/pybeam/pybeam-0.8.tar.gz
+	md5sums = 8af8064115cc096313e5f6b719540aef
 
 pkgname = python-pybeam
-
