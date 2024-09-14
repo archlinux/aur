@@ -1,4 +1,4 @@
-From b89d3ac556baafbf88b34ae2feadbcffc87bc3e4 Mon Sep 17 00:00:00 2001
+From cc9e93e764de5800a078332cd909f64078045423 Mon Sep 17 00:00:00 2001
 From: Dorian Stoll <dorian.stoll@tmsp.io>
 Date: Sat, 27 Jun 2020 18:21:11 +0200
 Subject: [PATCH 01/16] Add support for BUS_VIRTUAL
@@ -21,7 +21,7 @@ Signed-off-by: Dorian Stoll <dorian.stoll@tmsp.io>
  6 files changed, 13 insertions(+)
 
 diff --git a/libwacom/libwacom-database.c b/libwacom/libwacom-database.c
-index eb47510..c5e2fcf 100644
+index 050ee25..7992930 100644
 --- a/libwacom/libwacom-database.c
 +++ b/libwacom/libwacom-database.c
 @@ -130,6 +130,8 @@ bus_from_str (const char *str)
@@ -43,7 +43,7 @@ index eb47510..c5e2fcf 100644
  	g_assert_not_reached ();
  }
 diff --git a/libwacom/libwacom.c b/libwacom/libwacom.c
-index 1ffb910..c028bde 100644
+index 40b54b7..5c89f65 100644
 --- a/libwacom/libwacom.c
 +++ b/libwacom/libwacom.c
 @@ -149,6 +149,10 @@ get_bus_vid_pid (GUdevDevice  *device,
@@ -57,7 +57,7 @@ index 1ffb910..c028bde 100644
  	}
  
  out:
-@@ -1022,6 +1026,7 @@ static void print_match(int fd, const WacomMatch *match)
+@@ -1008,6 +1012,7 @@ static void print_match(int fd, const WacomMatch *match)
  		case WBUSTYPE_USB:		bus_name = "usb";	break;
  		case WBUSTYPE_SERIAL:		bus_name = "serial";	break;
  		case WBUSTYPE_I2C:		bus_name = "i2c";	break;
@@ -114,5 +114,5 @@ index 2cdac20..51ec53e 100644
  		func(libwacom_get_bustype, "%s", busstr);
  	}
 -- 
-2.45.1
+2.46.0
 

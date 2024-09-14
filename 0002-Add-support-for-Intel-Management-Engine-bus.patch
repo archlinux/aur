@@ -1,4 +1,4 @@
-From b8dae24b8f4bf24c3d1aeccc3efef81fc0f8b08d Mon Sep 17 00:00:00 2001
+From 74022a0f69ddb2e85913329a0aae63a6e30212b9 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sat, 1 Jun 2019 21:17:15 +0200
 Subject: [PATCH 02/16] Add support for Intel Management Engine bus
@@ -16,7 +16,7 @@ the Microsoft Surface Books, Surface Pro 5 and 6, and Surface Laptops.
  6 files changed, 13 insertions(+)
 
 diff --git a/libwacom/libwacom-database.c b/libwacom/libwacom-database.c
-index c5e2fcf..d9fc0c4 100644
+index 7992930..9e93f4a 100644
 --- a/libwacom/libwacom-database.c
 +++ b/libwacom/libwacom-database.c
 @@ -132,6 +132,8 @@ bus_from_str (const char *str)
@@ -38,7 +38,7 @@ index c5e2fcf..d9fc0c4 100644
  	g_assert_not_reached ();
  }
 diff --git a/libwacom/libwacom.c b/libwacom/libwacom.c
-index c028bde..0d34227 100644
+index 5c89f65..f5f3dab 100644
 --- a/libwacom/libwacom.c
 +++ b/libwacom/libwacom.c
 @@ -153,6 +153,10 @@ get_bus_vid_pid (GUdevDevice  *device,
@@ -52,7 +52,7 @@ index c028bde..0d34227 100644
  	}
  
  out:
-@@ -1027,6 +1031,7 @@ static void print_match(int fd, const WacomMatch *match)
+@@ -1013,6 +1017,7 @@ static void print_match(int fd, const WacomMatch *match)
  		case WBUSTYPE_SERIAL:		bus_name = "serial";	break;
  		case WBUSTYPE_I2C:		bus_name = "i2c";	break;
  		case WBUSTYPE_VIRTUAL:		bus_name = "virt";	break;
@@ -109,5 +109,5 @@ index 51ec53e..6a00f9d 100644
  		func(libwacom_get_bustype, "%s", busstr);
  	}
 -- 
-2.45.1
+2.46.0
 
