@@ -1,0 +1,5 @@
+[ravedude]
+source = "github"
+github = "Rahix/avr-hal"
+use_max_tag = true
+prefix = "ravedude-"
