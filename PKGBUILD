@@ -1,35 +1,38 @@
+# Maintainer: Franco Bugnano <franco@bugnano.it>
 
 pkgname=fcd
-pkgver=3
+pkgver=1.0.0
 pkgrel=1
+pkgdesc="Text mode file manager combining the best features of ranger and mc"
 arch=('x86_64')
-pkgdesc="LLVM-based native program optimizing decompiler"
-depends=('llvm40' 'capstone')
-makedepends=('clang')
-license=('GPL')
-url="http://zneak.github.io/fcd/"
-source=("https://github.com/zneak/fcd/archive/llvm-4.0.tar.gz")
-sha1sums=('SKIP')
+url="https://github.com/bugnano/fcd"
+license=('GPL-3.0-or-later')
+makedepends=('cargo' 'asciidoctor')
+optdepends=('archivefs: compressed archive support')
+replaces=('rnr-fm')
+conflicts=(fcd)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/bugnano/$pkgname/archive/$pkgver.tar.gz")
+sha512sums=('8f22cdc5cef571b20d7d4398e7b0e67bf2916c4269ace918f363971a795b66408c51301b845c48662c05cc53f13296350d99b71a8fd016be33f4150a5ee3bbfe')
 
-prepare()
-{
-  cd "$srcdir/fcd-llvm-4.0"
-  sed -i "s| python | python2 |g" CMakeLists.txt
+build() {
+	cd "$pkgname-$pkgver"
+
+	cargo build --release --locked
+
+	asciidoctor -b manpage doc/fcd.1.adoc
+	asciidoctor -b manpage doc/fcd-view.1.adoc
 }
 
-build()
-{
-  cd "$srcdir/fcd-llvm-4.0"
-  mkdir -p build && cd build
-  LDFLAGS="-Wl,-rpath,/usr/lib/llvm-4.0/lib" cmake -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
-    -DLLVM_DIR=/usr/lib/llvm-4.0/lib/cmake/llvm ..
-  make
+package() {
+	cd "$pkgname-$pkgver"
+
+	install -D -m755 "target/release/fcd" "$pkgdir/usr/bin/fcd"
+	install -D -m644 "doc/fcd.1" "$pkgdir/usr/share/man/man1/fcd.1"
+	install -D -m644 "doc/fcd-view.1" "$pkgdir/usr/share/man/man1/fcd-view.1"
+	install -D -m644 "fcd.sh" "$pkgdir/etc/profile.d/fcd.sh"
+	install -D -m644 "fcd.fish" "$pkgdir/etc/fish/functions/fcd.fish"
+	install -D -m644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
+	install -D -m644 "CHANGELOG.md" "$pkgdir/usr/share/doc/${pkgname}/CHANGELOG.md"
+	install -D -m644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-package()
-{
-  cd "$srcdir/fcd-llvm-4.0"/build
-  install -d "$pkgdir"/usr/bin/
-  install -m755 fcd "$pkgdir"/usr/bin/
-}
