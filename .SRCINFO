@@ -1,7 +1,7 @@
 pkgbase = mathics
 	pkgdesc = A general-purpose computer algebra system.
-	pkgver = 6.0.4
-	pkgrel = 3
+	pkgver = 7.0.0
+	pkgrel = 1
 	url = https://mathics.org/
 	arch = any
 	license = GPL3
@@ -28,7 +28,7 @@ pkgbase = mathics
 	optdepends = python-pyocr: Used for TextRecognize
 	optdepends = python-unidecode: Used in Transliterate
 	optdepends = python-wordcloud: Used in builtin/image.py by WordCloud
-	source = mathics-6.0.4.tar.gz::https://github.com/Mathics3/mathics-core/releases/download/6.0.4/Mathics3-6.0.4.tar.gz
-	sha256sums = b2d4e41008fb92c6ca00cfb345bbeca14b2ac1b447ae592254f48aba56e91d70
+	source = mathics-7.0.0.tar.gz::https://github.com/Mathics3/mathics-core/releases/download/7.0.0/Mathics3-7.0.0.tar.gz
+	sha256sums = d039a5dac244d7342abd29a5663d083ba28a86370f6b5cfddc6604ef42af150b
 
 pkgname = mathics
