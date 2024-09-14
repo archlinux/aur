@@ -1,0 +1,4 @@
+[cockroachdb-bin]
+source = "git"
+git = "https://github.com/cockroachdb/cockroach.git"
+prefix = "v"
