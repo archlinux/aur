@@ -2,12 +2,28 @@
 
 pkgname=fedi-fetcher
 pkgver=7.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="FediFetcher is a tool for Mastodon that automatically fetches missing replies and posts from other fediverse instances, and adds them to your own Mastodon instance"
 arch=(any)
 url="https://github.com/nanos/FediFetcher"
 license=(MIT)
-depends=(python python-certifi python-charset-normalizer python-docutils python-idna python-dateutil python-requests python-six python-smmap python-urllib3 python-defusedxml)
+checkdepends=(python-pytest)
+depends=(
+	python
+	python-certifi
+	python-charset-normalizer
+	python-defusedxml
+	python-docutils
+	python-idna
+	python-iniconfig
+	python-pluggy
+	python-dateutil
+	python-requests
+	python-six
+	python-smmap
+	python-urllib3
+	python-xxhash
+)
 
 backup=(etc/fedi-fetcher/config.json)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
@@ -22,6 +38,11 @@ sha256sums=('c1fbedbf8262920b38956fe5ae118f9f37ad48e4e6590d437bac6670e4094a35'
             'eca9986a6e86b3208c2f786125f8a513037cd5a59dab2670e9439d57a2f7f595'
             'b97bfea3b64a666f199f46c979711c0d469cc2d34a35e61443ee42ff8096538b'
             'f6f93eb189cdcc11343adab783eb3aa5dab0785baa9a2868ec8fe0fc0c2949b5')
+
+check() {
+	cd "$srcdir"
+	pytest
+}
 
 package() {
 	cd "$srcdir"
