@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vscode-bookmark-bin
 _pkgname="VSCode Bookmark"
-pkgver=1.1.0_beta
+pkgver=1.0.0
 _electronversion=32
 pkgrel=1
 pkgdesc="A utility to save your favorite projects and open them easily in vscode"
@@ -14,10 +14,10 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/.}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9c91cb2b9a249fff428767ef18f417f2fc838416065da270c5283df570d2ed62'
+sha256sums=('b790192983541890041c3e74a29fd85af0c13a1b5f16159d3b41e43812fe693c'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
