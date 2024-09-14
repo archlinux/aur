@@ -20,6 +20,11 @@ pkgver() {
     git log -n1 --pretty='format:%cd' --date=format:'%Y%m%d' $_commit
 }
 
+prepare() {
+    cd $pkgname
+    sed -i '48d' .clang-format # remove duplicate line, otherwise it does not compile
+}
+
 build() {
     cd $pkgname
     cmake -B build \
@@ -29,7 +34,6 @@ build() {
         -DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -Wno-dev
-    sed -i '48d' .clang-format # remove duplicate line, otherwise it does not compile
     cmake --build build
 }
 
