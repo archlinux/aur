@@ -1,6 +1,6 @@
 pkgname=openwsman
 pkgver=2.7.2
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc="Opensource Implementation of WS-Management"
 arch=('i686' 'x86_64')
 url="https://$pkgname.github.io/"
@@ -8,8 +8,8 @@ license=('custom:BSD')
 depends=('curl' 'libxml2' 'openssl' 'sblim-sfcc')
 makedepends=('cmake>=3.13' 'swig'
              'perl'
-             'python'
-             'ruby' 'ruby-docs' 'ruby-rdoc')
+             'python' 'python-distutils-extra'
+             'ruby' 'rubygems' 'ruby-docs' 'ruby-rdoc')
 optdepends=('perl: for perl bindings'
             'python: for python bindings'
             'ruby: for ruby bindings')
