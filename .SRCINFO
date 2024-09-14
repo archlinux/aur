@@ -1,16 +1,16 @@
 pkgbase = whalebird-bin
-	pkgdesc = An Electron based Mastodon, Pleroma, and Misskey client
-	pkgver = 6.1.4
+	pkgdesc = Single-column Fediverse client for desktop.Binary version,use system-wide electron.
+	pkgver = 6.1.5
 	pkgrel = 1
 	url = https://whalebird.social/
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = electron31
-	provides = whalebird=6.1.4
+	provides = whalebird=6.1.5
 	conflicts = whalebird
-	source = whalebird-6.1.4.deb::https://github.com/h3poteto/whalebird-desktop/releases/download/v6.1.4/Whalebird-6.1.4-linux-amd64.deb
+	source = whalebird-6.1.5.deb::https://github.com/h3poteto/whalebird-desktop/releases/download/v6.1.5/Whalebird-6.1.5-linux-amd64.deb
 	source = whalebird.sh
-	sha256sums = ae9e4f1c06f89baff30a51538e120da2b49679d324def0af101fde487f61d628
+	sha256sums = 5cd69daee98a23033e960a04c9ab3f6e58f19c55f88ea01ab6f2b3a66721f088
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = whalebird-bin
