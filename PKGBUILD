@@ -1,73 +1,36 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
-# Previous Maintainer: John Troxler <firstname dot lastname at gmail dot com>
 
-pkgname=loot
+# Problems as of 0.24.0:
+#   libloot W: ELF file ('usr/lib/libloot/libloot.so') lacks GNU_PROPERTY_X86_FEATURE_1_SHSTK.
+
+pkgname=libloot
+_pkgname=loot
 # https://github.com/loot/loot/releases
-pkgver=0.23.0
-# https://github.com/loot/libloot/releases
-_pkglibver=0.23.0
+pkgver=0.24.0
 pkgrel=1
-pkgdesc="A load order optimisation tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
+pkgdesc="A library for the Load Order Optimisation Tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
 arch=('x86_64')
 url="https://loot.github.io"
 license=('GPL-3.0-only')
-depends=('icu' 'hicolor-icon-theme' 'onetbb' 'qt6-base')
-## Maybe add doxgen for /docs, but then we get
-#                 from /build/loot/src/libloot-0.22.4/src/api/api_database.cpp:32:
-#/build/loot/src/libloot-0.22.4/src/api/metadata/yaml/message.h:29:10: fatal error: spdlog/fmt/bundled/args.h: No such file or directory
-#   29 | #include <spdlog/fmt/bundled/args.h>
-#      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~
-#compilation terminated.
-#make[3]: *** [CMakeFiles/loot.dir/build.make:90: CMakeFiles/loot.dir/src/api/api_database.cpp.o] Error 1
+depends=('tbb' 'icu')
 
 makedepends=('git' 'boost' 'cbindgen' 'cmake' 'rust')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz"
-        "lib$pkgname-$_pkglibver.tar.gz::https://github.com/$pkgname/lib$pkgname/archive/$_pkglibver.tar.gz"
-        'LOOT.desktop'
-)
-sha256sums=('65d07b87e98d908eb0e9aa307ea7a7236508c41c6ed6f8b44975f5e0ff478a73'
-            'e48de81eb98904450a2de5db7a0526d4245aa674c3fec807a59b686af52bd31f'
-            '3dd063fdbe33dc82a4298bd5bcd3b4e7490adab4128389c153d12c6b074b27fb')
-
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('f7d868fb5f5a658c98ba45bb3b0735905c5a12fbf267b61057b91554c5515aed')
 build() {
-	# libloot
-	cd "$srcdir/libloot-$_pkglibver"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	mkdir -p build
 	cd build
-	cmake .. \
-		-DCMAKE_SKIP_RPATH=TRUE
+	cmake .. \ -DCMAKE_SKIP_RPATH=TRUE
 	make loot
 
 	mkdir -p pkg/lib
 	cp libloot.so ./pkg/lib/libloot.so
 	cp -r ../include/ ./pkg/
-	tar -zcf libloot-$_pkglibver.tar.gz ./pkg/
-
-	# loot
-	cd "$srcdir/$pkgname-$pkgver"
-
-	mkdir -p build
-	cd build
-	cmake .. \
-		-DLIBLOOT_URL="$srcdir/lib$pkgname-$_pkglibver/build/lib$pkgname-$_pkglibver.tar.gz" \
-		-DCMAKE_BUILD_WITH_INSTALL_RPATH=TRUE \
-		-DCMAKE_INSTALL_RPATH="/opt/$pkgname"
-	make LOOT
+	tar -zcf "${pkgname}-${pkgver}.tar.gz" ./pkg/
 }
 
 package() {
-	_builddir="$srcdir/$pkgname-$pkgver/build"
-
-	install -Dm755 -t "${pkgdir}/opt/${pkgname}" \
-		"$_builddir/LOOT" \
-		"$_builddir/libloot.so"
-
-	mkdir -p "${pkgdir}/usr/bin"
-	ln -s "/opt/${pkgname}/LOOT" "${pkgdir}/usr/bin"
-	ln -s "libloot.so" "${pkgdir}/opt/${pkgname}/libloot.so.0"
-
-	# Install the icon
-	install -Dm644 "${_builddir}/../resources/icons/loot.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/loot.svg"
-	# Install desktop entry
-	install -Dm644 "${srcdir}/LOOT.desktop" "${pkgdir}/usr/share/applications/LOOT.desktop"
+	_builddir="${srcdir}/${pkgname}-${pkgver}/build"
+	install -Dm755 -t "${pkgdir}/usr/lib/${pkgname}" "${_builddir}/libloot.so"
 }
