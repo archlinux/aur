@@ -22,15 +22,6 @@ Be sure to LINK the plugin and shader directories so ePSXe can make use of them:
 
 epsxe --link
 
-or COPY them:
-
-epsxe --install
-
-# ln -sf /opt/epsxe/{plugins,shaders,config} \$HOME/.epsxe/
-#
-# or COPY them:
-#
-# cp -r /opt/epsxe/{plugins,shaders,config} \$HOME/.epsxe/
 EOF
   fi
 }
