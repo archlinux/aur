@@ -3,7 +3,7 @@
 # Maintainer: Colin Woodbury <colin@fosskers.ca>
 
 pkgname="aura-git"
-pkgver=4.0.6.r0.ga9ecf5b
+pkgver=4.0.7.r0.gcdebca1
 pkgrel=1
 pkgdesc="A package manager for Arch Linux and its AUR"
 arch=("x86_64")
