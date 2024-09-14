@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang-git
 _pkgname=Mustang
-pkgver=0.6.6.r1.g729e9e9
+pkgver=0.6.7.r1.g194bedf
 _electronversion=32
-_nodever=20
+_nodeversion=20
 pkgrel=1
 pkgdesc="New full-featured desktop email, chat and video conference client"
 arch=('any')
@@ -30,8 +30,8 @@ pkgver() {
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-    nvm install "${_nodever}"
-    nvm use "${_nodever}"
+    nvm install "${_nodeversion}"
+    nvm use "${_nodeversion}"
 }
 build() {
     sed -e "
