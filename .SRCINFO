@@ -1,0 +1,21 @@
+pkgbase = flomo-bin
+	pkgdesc = A new generation of cloud knowledge base for personal note-taking and knowledge creation, team collaboration and knowledge accumulation.新一代云端知识库，用于个人笔记与知识创作，团队协同与知识沉淀
+	pkgver = 5.24.81
+	pkgrel = 1
+	url = https://flomoapp.com/
+	arch = x86_64
+	license = LicenseRef-custom
+	makedepends = gendesk
+	makedepends = asar
+	makedepends = icoutils
+	makedepends = p7zip
+	depends = electron20
+	conflicts = flomo
+	source = flomo-5.24.81.exe::https://github.com/zxp19821005/My_AUR_Files/releases/download/flomo5.24.81/flomo-5.24.81.exe
+	source = LICENSE.html::https://help.flomoapp.com/legal/
+	source = flomo.sh
+	sha256sums = ddfacd31139e85919fc539bee61c549ada30683bd1fefd89c39dab0e9456f7de
+	sha256sums = da4d3a082134384d73e40702c3417346cd8d398531ed87c4bb9ca061579997f1
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = flomo-bin
