@@ -13,7 +13,7 @@ depends=(
     'python-audiotsm'
     'python-scipy'
     'ffmpeg'
-    'python-python-ffmpeg'
+    'python-ffmpeg-python'
 )
 makedepends=(
     'python-poetry-core'

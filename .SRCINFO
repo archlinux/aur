@@ -15,7 +15,7 @@ pkgbase = videocondenser-git
 	depends = python-audiotsm
 	depends = python-scipy
 	depends = ffmpeg
-	depends = python-python-ffmpeg
+	depends = python-ffmpeg-python
 	source = videocondenser-git::git+https://github.com/frank-monkey/videocondenser.git
 	sha256sums = SKIP
 
