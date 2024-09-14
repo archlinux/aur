@@ -61,8 +61,8 @@ package() {
 
     command -p python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
-    install -Dm644 "${srcdir}/${_pkgname}/wxglade-mime.xml" "${pkgdir}/usr/share/mime/packages/${_pkgname}.xml"
-    install -Dm644 "${srcdir}/${_pkgname}/wxGlade.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/${pkgname}/wxglade-mime.xml" "${pkgdir}/usr/share/mime/packages/${_pkgname}.xml"
+    install -Dm644 "${srcdir}/${pkgname}/wxGlade.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
     find "${srcdir}" -maxdepth 1 -name "${_pkgname}*128*.png" \
         -execdir install -Dm644 {} "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png" \; \
