@@ -1,0 +1,37 @@
+# Maintainer: Alexander Karpukhin <thealexdev23@gmail.com>
+
+pkgname=power-options-webview
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="A Web Renderer frontend for Power Options, a blazingly fast power management solution."
+arch=('x86_64')
+url=https://github.com/thealexdev23/power-options
+license=('MIT')
+
+depends=('power-options-daemon' 'webkit2gtk')
+makedepends=('cargo' 'dioxus-cli')
+
+provides=('power-options-webview')
+conflicts=('power-options-webview-git')
+
+source=("$pkgname-$pkgver.tar.gz::https://github.com/thealexdev23/power-options/archive/v$pkgver.tar.gz")
+sha256sums=('c5e28b630e90c9a32d1e4dff34f45c4e5c973fed9c37e66edb4eea3fe8b71749')
+
+build() {
+  export RUSTUP_TOOLCHAIN=stable
+  cd "$srcdir/power-options-$pkgver/crates/frontend-webview"
+  dx build --release
+}
+
+package() {
+  cd "$srcdir/power-options-$pkgver"
+
+  install -Dm755 "target/release/frontend" "$pkgdir/usr/bin/power-options-webview"
+
+  mkdir -p "$pkgdir/usr/lib/power-options-webview/"
+  cp -r "crates/frontend-webview/assets" "$pkgdir/usr/lib/power-options-webview/"
+
+  install -Dm755 "icon.png" "$pkgdir/usr/share/icons/power-options-webview.png"
+
+  install -Dm755 "install/power-options-webview.desktop" "$pkgdir/usr/share/applications/power-options-webview.desktop"
+}
