@@ -1,7 +1,7 @@
 # Maintainer: Alexander Karpukhin <thealexdev23@gmail.com>
 
 pkgname=power-options-daemon-git
-pkgver=0.1.2r3.13a0b5
+pkgver=0.1.2r4.6fc4e4
 pkgrel=1
 pkgdesc="The core daemon for Power Options, a blazingly fast power management solution."
 arch=('x86_64')
@@ -17,6 +17,8 @@ conflicts=('power-options-daemon')
 
 source=("git+https://github.com/thealexdev23/power-options.git")
 sha256sums=('SKIP')
+
+install="daemon.install"
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
@@ -37,21 +39,4 @@ package() {
 
   # Generate files
   "$pkgdir/usr/bin/power-daemon-mgr" -v generate-base-files --path "$pkgdir" --program-path "/usr/bin/power-daemon-mgr"
-}
-
-post_install() {
-  systemctl daemon-reload
-  systemctl enable power-options.service
-  systemctl start power-options.service
-  systemctl restart acpid.service
-}
-
-post_upgrade() {
-  systemctl daemon-reload
-  systemctl restart power-options.service
-  systemctl restart acpid.service
-}
-
-post_remove() {
-  systemctl daemon-reload
 }

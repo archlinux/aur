@@ -1,0 +1,15 @@
+post_install() {
+  systemctl daemon-reload
+  systemctl restart acpid.service
+  systemctl enable --now power-options.service
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+  systemctl restart acpid.service
+  systemctl restart power-options.service
+}
+
+post_remove() {
+  systemctl daemon-reload
+}
