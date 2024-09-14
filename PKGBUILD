@@ -1,7 +1,7 @@
 # Contributer: giacomogiorgianni@gmail.com 
 
 pkgname=arrowmatcher
-pkgver=3.1.0
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="ballistics software for arrows and bullets"
 arch=('i386' 'x86_64')
@@ -10,8 +10,8 @@ license=('GPL')
 depends=('qt4')
 makedepends=('cmake' 'gettext' 'automoc4')
 options=()
-source=("http://kent.dl.sourceforge.net/project/${pkgname}/${pkgname}/${pkgname}2-${pkgver}/${pkgname}2-${pkgver}.tar.gz")
-sha1sums=('e8ed9ee08ff5671440c9e3c8267c6551d8c9a653')
+source=("${pkgname}-${pkgver}.tar.gz::https://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}2-${pkgver}/${pkgname}2-${pkgver}.tar.gz/download")
+sha1sums=('6e18d0907b84a13d200e255820c5caf14b5e258d')
 #install=$pkgname.install
  
 build() {
