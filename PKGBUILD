@@ -14,7 +14,6 @@ python-setuptools-scm
 depends=(
 python-asteval
 python-dill
-python-emcee
 ipython
 python-matplotlib
 python-numpy
@@ -22,6 +21,9 @@ python-pandas
 python-pytest
 python-scipy
 python-uncertainties
+)
+optdepends=(
+'python-emcee: documentation generation'
 )
 checkdepends=(
 python-pytest-cov

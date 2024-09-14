@@ -14,7 +14,6 @@ pkgbase = python-lmfit
 	makedepends = python-setuptools-scm
 	depends = python-asteval
 	depends = python-dill
-	depends = python-emcee
 	depends = ipython
 	depends = python-matplotlib
 	depends = python-numpy
@@ -22,6 +21,7 @@ pkgbase = python-lmfit
 	depends = python-pytest
 	depends = python-scipy
 	depends = python-uncertainties
+	optdepends = python-emcee: documentation generation
 	source = python-lmfit-1.3.2.tar.gz::https://github.com/lmfit/lmfit-py/archive/1.3.2.tar.gz
 	sha256sums = 68f00e729112202c751d2adc0cdeddc91fc24a29844c625de3de0a7ea649b7ab
 
