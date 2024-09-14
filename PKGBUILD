@@ -6,7 +6,7 @@ _appname=equibop-desktop
 pkgver=2.0.9
 _electronversion=31
 pkgrel=1
-pkgdesc="A Vesktop fork cross platform electron-based desktop app aiming to give you a snappier Discord experience with Suncord pre-installed"
+pkgdesc="A Vesktop fork cross platform electron-based desktop app aiming to give you a snappier Discord experience with Equicord pre-installed"
 arch=(
     'aarch64'
     'x86_64'
