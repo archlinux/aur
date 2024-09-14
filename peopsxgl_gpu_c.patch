@@ -1,5 +1,5 @@
---- gpu.c	2024-09-12 23:40:55.011173946 -0400
-+++ gpu.c.patch	2024-09-12 23:40:09.491989745 -0400
+--- gpu.org	2024-09-13 12:14:41.673946173 -0400
++++ gpu.c	2024-09-13 12:17:37.146199700 -0400
 @@ -20,6 +20,7 @@
  //#define NOVMODE
  
@@ -17,3 +17,12 @@
  #endif
    }
  
+@@ -3061,7 +3062,7 @@
+ 		return;
+ 	}
+ 
+-	sprintf(cfg, "%s/.pcsxr/plugins/cfg/cfgpeopsxgl", getenv("HOME"));
++	sprintf(cfg, "%s/.epsxe/plugins/cfgpeopsxgl", getenv("HOME"));
+ 	if (stat(cfg, &buf) != -1) {
+ 		int pid = fork();
+ 		if (pid == 0) {
