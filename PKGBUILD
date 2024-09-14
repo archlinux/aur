@@ -2,7 +2,7 @@
 
 pkgname=libkeccak-musl
 _pkgname=libkeccak
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Keccak-family hashing library (musl-version)'
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ license=('custom:ISC')
 _compiler=gcc
 depends=('musl' "${_compiler}")
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-b2sums=('645ae0cb8bb8c8f512487eec876bc63bd8c2e2a5243e3ebe32aca2e4cc79a3271a18a8295d097f6a1e536444bcf1af6331507ccf814bab2ae838c005434ca84f')
+b2sums=('b2863d4050aaab16717ce3bfb6461b2e0cc6dad7d6a44b27c382218e26c23aef50f3d6215a5d2418b0d7b5740eb5bbb67f30ed7c716d1ce987e2742d02ac5f4a')
 
 prepare() {
   cd ${_pkgname}
