@@ -1,0 +1,4 @@
+[dolphin-tabopts]
+source = "pacman"
+pacman = "dolphin"
+strip_release = "true"
