@@ -27,14 +27,17 @@ prepare() {
   git submodule init
   git config submodule.KDGpu.url $srcdir/libs/KDGpu
   git submodule update
-  
-  git clone --depth=1 https://github.com/microsoft/vcpkg.git
-  vcpkg/bootstrap-vcpkg.sh
-  vcpkg/vcpkg --triplet="x64-linux-release" install vulkan "ktx[vulkan]" glslang spirv-cross vulkan-memory-allocator spdlog
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
+
+  if [ ! -d vcpkg ]; then
+    git clone --depth=1 https://github.com/microsoft/vcpkg.git
+    vcpkg/bootstrap-vcpkg.sh
+  fi
+  vcpkg/vcpkg --triplet="x64-linux-release" install vulkan "ktx[vulkan]" glslang spirv-cross vulkan-memory-allocator spdlog
+
   cmake -B _build -DVERSION="$pkgver" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_TOOLCHAIN_FILE=vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET="x64-linux-release"
   cmake --build _build
 }
