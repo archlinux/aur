@@ -1,7 +1,7 @@
 # Maintainer: Alexander Karpukhin <thealexdev23@gmail.com>
 
 pkgname=power-options-gtk
-pkgver=0.1.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A gtk frontend for Power Options, a blazingly fast power management solution."
 arch=('x86_64')
@@ -15,24 +15,24 @@ provides=('power-options-gtk')
 conflicts=('power-options-gtk-git' 'tlp' 'auto-cpufreq' 'power-profiles-daemon' 'cpupower-gui')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thealexdev23/power-options/archive/v$pkgver.tar.gz")
-sha256sums=('66eeeb9bc9b46288418ac403d775bdba273c4c9b8ba96d857ddd4871b0b9611f')
+sha256sums=('c5e28b630e90c9a32d1e4dff34f45c4e5c973fed9c37e66edb4eea3fe8b71749')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
-  cd "$srcdir/power-options/crates/frontend-gtk"
+  cd "$srcdir/power-options-$pkgver/crates/frontend-gtk"
   cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
-  cd "$srcdir/power-options/crates/frontend-gtk"
+  cd "$srcdir/power-options-$pkgver/crates/frontend-gtk"
   cargo build --frozen --release
 }
 
 package() {
-  cd "$srcdir/power-options"
+  cd "$srcdir/power-options-$pkgver"
 
   install -Dm755 "target/release/frontend-gtk" "$pkgdir/usr/bin/power-options-gtk"
-  install -Dm755 "icon.png" "$pkgdir/usr/share/icons/power-options.png"
+  install -Dm755 "icon.png" "$pkgdir/usr/share/icons/power-options-gtk.png"
   install -Dm755 "install/power-options-gtk.desktop" "$pkgdir/usr/share/applications/power-options-gtk.desktop"
 }

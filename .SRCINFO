@@ -1,6 +1,6 @@
 pkgbase = power-options-gtk
 	pkgdesc = A gtk frontend for Power Options, a blazingly fast power management solution.
-	pkgver = 0.1.2
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/thealexdev23/power-options
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = power-options-gtk
 	conflicts = auto-cpufreq
 	conflicts = power-profiles-daemon
 	conflicts = cpupower-gui
-	source = power-options-gtk-0.1.2.tar.gz::https://github.com/thealexdev23/power-options/archive/v0.1.2.tar.gz
-	sha256sums = 66eeeb9bc9b46288418ac403d775bdba273c4c9b8ba96d857ddd4871b0b9611f
+	source = power-options-gtk-1.0.0.tar.gz::https://github.com/thealexdev23/power-options/archive/v1.0.0.tar.gz
+	sha256sums = c5e28b630e90c9a32d1e4dff34f45c4e5c973fed9c37e66edb4eea3fe8b71749
 
 pkgname = power-options-gtk
