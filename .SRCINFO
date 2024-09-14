@@ -2,7 +2,7 @@ pkgbase = chessx-git
 	pkgdesc = A free chess database
 	pkgver = 1.6.2
 	pkgrel = 1
-	url = http://chessx.sourceforge.net
+	url = https://chessx.sourceforge.net
 	install = chessx-git.install
 	arch = i686
 	arch = x86_64
@@ -14,12 +14,12 @@ pkgbase = chessx-git
 	depends = qt5-svg
 	depends = desktop-file-utils
 	depends = qt5-multimedia
-	provides = chessx chessx-svn
+	provides = chessx=1.6.2
 	conflicts = chessx
+	replaces = chessx-svn
 	options = !emptydirs
 	source = chessx-git::git+https://github.com/Isarhamster/chessx.git
 	sha256sums = SKIP
 	sha512sums = SKIP
 
 pkgname = chessx-git
-
