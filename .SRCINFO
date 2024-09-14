@@ -1,4 +1,4 @@
-pkgbase = chessx-git
+pkgbase = chessx-svn
 	pkgdesc = A free chess database
 	pkgver = 1.6.2
 	pkgrel = 1

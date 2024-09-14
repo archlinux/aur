@@ -1,8 +1,9 @@
-# Maintainer: < astronautintheocean.sub (plus) aur (at) protonmail (dot) com >
+# Maintainer: arcaneninja < astronautintheocean.sub (plus) aur (at) protonmail (dot) com >
 # Contributor: Frederic Bezies < fredbezies at gmail dot com >
 # Contributor: Eric Waller <ewwaller+aur@gmail.com>
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 
+pkgbase=chessx-svn
 pkgname=chessx-git
 pkgver=1.6.2
 pkgrel=1
