@@ -2,11 +2,11 @@
 # Maintainer: João Figueiredo <islandc0der@chaotic.cx>
 
 pkgname=bash-git
-pkgver=5.1_r171.gce237286
-pkgrel=2
+pkgver=5.2_r213.g142bbdd8
+pkgrel=1
 pkgdesc='The GNU Bourne Again shell'
 arch=($CARCH)
-license=(GPL)
+license=(GPL-3.0-or-later)
 url='https://www.gnu.org/software/bash/bash.html'
 backup=(etc/bash.bash{rc,_logout} etc/skel/.bash{rc,_profile,_logout})
 depends=(readline libreadline.so glibc ncurses)

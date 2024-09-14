@@ -1,10 +1,10 @@
 pkgbase = bash-git
 	pkgdesc = The GNU Bourne Again shell
-	pkgver = 5.1_r171.gce237286
-	pkgrel = 2
+	pkgver = 5.2_r213.g142bbdd8
+	pkgrel = 1
 	url = https://www.gnu.org/software/bash/bash.html
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = readline
 	depends = libreadline.so
