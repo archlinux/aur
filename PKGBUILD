@@ -1,7 +1,7 @@
 # Maintainer: Colin Woodbury <colin@fosskers.ca>
 
 pkgname=aura-bin
-pkgver=4.0.6
+pkgver=4.0.7
 pkgrel=1
 pkgdesc="A package manager for Arch Linux and its AUR - Prebuild binary"
 url="https://github.com/fosskers/aura"
@@ -21,7 +21,7 @@ provides=("aura")
 conflicts=("aura" "aura-git" "aura3-bin")
 options=("strip")
 source=("aura-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/aura-$pkgver-x86_64.tar.gz")
-sha256sums=('f9d4a63a338b6618d3b5d6fa010b58951b1fa773f81fcbc582a2bb6b3cf4216e')
+sha256sums=('d5dee42a13dfc7c5c2f0df3b6b207c2d09312527f2b9634eba97aad7889efda2')
 
 build() {
     # Build the `info` page.
