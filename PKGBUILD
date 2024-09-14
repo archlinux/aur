@@ -29,7 +29,7 @@ prepare() {
   git submodule update
   
   git clone --depth=1 https://github.com/microsoft/vcpkg.git
-  vcpkg/bootstrap-vcpkg.sh --disable-metrics
+  vcpkg/bootstrap-vcpkg.sh
   vcpkg/vcpkg --triplet="x64-linux-release" install vulkan "ktx[vulkan]" glslang spirv-cross vulkan-memory-allocator spdlog
 }
 
