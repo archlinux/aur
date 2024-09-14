@@ -1,14 +1,4 @@
 
-## 8.0.2
+## 8.0.3
 
-- Reworked asynchronous search/filter UI code to avoid noticeable lag due to
-  waiting for cancellations that take too long
-
-    - Previously there was still a lockstep somewhere that would prevent UI
-      from progressing if previous search was still being cancelled
-
-    - The current implementation allows newest requests to override older
-      requests entirely, and not wait for cancellations at all
-
-- Adjusted document counter in multi-file view to be visible even when no files
-  are listed
+- Fixed single file view crash
