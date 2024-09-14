@@ -3,16 +3,16 @@
 # Maintainer: Lawrence Stalder <lawrence.stalder@pm.me>
 
 pkgname=nymvpn-x
-pkgver=0.1.9
+pkgver=0.1.10
 # upstream version
-_pkgver=0.1.9
-_release_tag=nym-vpn-x-v0.1.9
+_pkgver=0.1.10
+_release_tag=nym-vpn-x-v0.1.10
 pkgrel=1
 pkgdesc='NymVPN next desktop client'
 arch=('x86_64')
 url='https://github.com/nymtech/nym-vpn-client'
 license=('GPL-3.0-only')
-depends=('gcc-libs' 'bash' 'cairo' 'pango' 'gtk3' 'webkit2gtk' 'gdk-pixbuf2' 'glib2' 'openssl' 'libsoup')
+depends=('gcc-libs' 'bash' 'cairo' 'gtk3' 'webkit2gtk-4.1' 'gdk-pixbuf2' 'glib2' 'openssl' 'libsoup3')
 makedepends=('rust' 'cargo' 'protobuf' 'npm')
 optdepends=('nym-vpnd: NymVPN daemon as a systemd service')
 provides=('nymvpn-x')
@@ -23,8 +23,8 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_release_tag.tar.gz"
     'nymvpn-x.desktop'
     'nymvpn-x.svg')
 sha256sums=(
-    '745c44d86992a458d7ab45b27ceb377240a0b174e8bf254040c5425873407725' 
-    '71adbcd7b933b1e68ef6be7f43fda4e291b99a710ac36616238a8ce6ce8dc8df' 
+    'aa11acd8ababeee1150b5c3f4df3cc2390fd021105c22f6cbe0535b2c27c7063' 
+    'aa573dad7ada4d6d6aacfc58d50184ee6b67e9e919187c9a6ed0fd4ea9652106' 
     '8bf0dbd2a6c312630e1c2e866431d0361b24975ba17b4ab14c891efea326251c' 
     'c15b6028f25ea931c9bedf2b5600f91d6f94f15066afdbd7f789c770ea250e06')
 _srcdir="nym-vpn-client-$_release_tag"
@@ -41,15 +41,21 @@ prepare() {
 build() {
   pushd "$_srcdir/nym-vpn-x"
 
-  # install UI dependencies
+  # install Js dependencies
   npm i
 
   # build app
   pushd src-tauri
-  # sqlx does not support LTO build flag, which is enabled by default in Arch
+
+  export RUSTUP_TOOLCHAIN=stable
+  # LTO build flag is enabled by default in Arch's makepkg config
+  # but `zstd` fails to build with LTO (dependency of `build-info` crate)
   # set the C flag -ffat-lto-objects to solve the issue
-  # see https://github.com/launchbadge/sqlx/issues/3149
-  CFLAGS+=" -ffat-lto-objects" npm run tauri build -- --bundles none
+  # see https://github.com/mozilla/sccache/issues/862
+  # https://github.com/launchbadge/sqlx/issues/3149
+  export CFLAGS+=' -ffat-lto-objects'
+
+  npm run tauri build -- --no-bundle
 }
 
 package() {
