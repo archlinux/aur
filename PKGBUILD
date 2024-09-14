@@ -1,42 +1,31 @@
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Liam Timms <timms5000@gmail.com>
 # Contributor: Frank Fishburn <frankthefishburn@gmail.com>
-# Maintainer: Liam Timms <timms5000@gmail.com>
-
-pkgname=python-nilearn
-pkgver=0.10.3
+_base=nilearn
+pkgname=python-${_base}
+pkgver=0.10.4
 pkgrel=1
 pkgdesc="Python library for fast and easy statistical learning on NeuroImaging data"
-arch=('any')
-url="http://nilearn.github.io/"
-license=('BSD')
-# see https://github.com/nilearn/nilearn/blob/main/setup.cfg	
-depends=('python-lxml'
-         'python-joblib>=1.0.0'
-         'python-scipy>=1.6.0' 
-         'python-numpy>=1.19.0' 
-         'python-pandas>=1.1.5' 
-         'python-scikit-learn>=1.0.0' 
-         'python-nibabel>=3.2.0'
-         'python-statsmodels')
-makedepends=('python-setuptools-scm' 'python-build' 'python-installer' 'python-wheel')
+arch=(any)
+url="https://${_base}.github.io"
+license=(BSD-4-Clause)
+depends=(python-joblib python-lxml python-nibabel python-scipy python-pandas python-scikit-learn python-packaging)
+makedepends=(python-build python-installer python-hatchling python-wheel)
 optdepends=('python-matplotlib: for general plotting'
-            'python-plotly: for surface plotting'
-            'python-kaleido: required if using plotly')
+  'python-plotly: for surface plotting'
+  'python-kaleido: required if using plotly')
 options=(!emptydirs)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nilearn/nilearn/archive/${pkgver}.tar.gz")
-sha256sums=('e71734179c79c0886b65497a5d4f7997b1e9eeb170e36f6dfd46c4fe9b95415c')
+source=(${_base}-${pkgver}.tar.gz::https://github.com/${_base}/${_base}/archive/${pkgver}.tar.gz)
+sha512sums=('0cc16eded7ff9d1a26bdfff4b4cb09508c6445e5ef60dfbb6cdd8037439afe392df8ce59a7911b0de6e475741418f1de8c61d942e2acdd9b73e00f6285cf3fdf')
 
 build() {
-  cd "$srcdir"/nilearn-$pkgver
+  cd ${_base}-${pkgver}
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
-  # python setup.py build
-  python -m build --wheel --no-isolation
+  python -m build --wheel --skip-dependency-check --no-isolation
 
 }
 
 package() {
-  cd "$srcdir"/nilearn-$pkgver
-  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
-  # python setup.py install --root="$pkgdir"/ --optimize=1
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
 }
-

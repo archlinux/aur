@@ -1,0 +1,4 @@
+[python-nilearn]
+source = "github"
+github = "nilearn/nilearn"
+use_latest_release = true
