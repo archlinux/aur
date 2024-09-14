@@ -24,9 +24,9 @@ index 5f9c04279..b85ec82c7 100644
 --- a/readconf.c
 +++ b/readconf.c
 @@ -168,7 +168,7 @@ typedef enum {
- 	oLocalCommand, oPermitLocalCommand, oRemoteCommand,
  	oTcpRcvBufPoll, oHPNDisabled,
  	oNoneEnabled, oNoneMacEnabled, oNoneSwitch,
+ 	oDisableMTAES,
 -	oMetrics, oMetricsPath, oMetricsInterval, oFallback, oFallbackPort,
 +	oMetrics, oMetricsPath, oMetricsInterval,
  	oVisualHostKey,
