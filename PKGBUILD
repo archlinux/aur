@@ -1,12 +1,15 @@
 # Maintainer:  CloverGit <clovergit@hotmail.com>
 
 pkgname=image2display
-pkgver=1.0.0
+pkgver=1.0.0.r0.g7ea0251
 pkgrel=1
 pkgdesc='A cross-platform image and font data processing tool for generating data usable by microcontrollers'
 arch=('x86_64' 'aarch64')
 license=('MIT')
 url='https://github.com/chenxuuu/image2display'
+
+_dotnet_os=linux
+_dotnet_arch=$([[ "${CARCH}" == 'x86_64' ]] && echo -n "x64" || ([[ "${CARCH}" == 'aarch64' ]] && echo -n "arm64"))
 
 depends=(
   'skia-sharp'
@@ -31,8 +34,10 @@ sha256sums=(
   'SKIP'
 )
 
-_dotnet_os=linux
-_dotnet_arch=$([[ "${CARCH}" == 'x86_64' ]] && echo -n "x64" || ([[ "${CARCH}" == 'aarch64' ]] && echo -n "arm64"))
+pkgver() {
+  cd ${pkgname}
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//'
+}
 
 prepare() {
   gendesk -f -n \
