@@ -2,7 +2,7 @@
 _appname=we-read
 pkgname="${_appname//-/}-pake"
 _pkgname=WeRead
-pkgver=2.5.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Use Pake to package WeRead.微信读书是广州腾讯科技有限公司推出的阅读软件.为用户推荐合适的书籍，并可查看微信好友的读书动态、与好友讨论正在阅读的书籍等."
 arch=('x86_64')
@@ -18,11 +18,11 @@ source=(
     "${pkgname}-${pkgver}.deb::${_ghurl}/releases/download/V${pkgver}/${_pkgname}_${CARCH}.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${pkgver}/LICENSE"
 )
-sha256sums=('2f0f824076887a61423c6fd5ed2848071f192ea0ab3df451efcbe90561c6b911'
+sha256sums=('2eae5772ee4d29efe796e302b13d5263da9ea921702644ab488f42bba0a6b8aa'
             '462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758')
 build() {
     bsdtar -xf "${srcdir}/data."*
-    sed "s|com-pake-${_appname//-/}|${pkgname%-pake}|g;s|Office|Utility;|g" -i "${srcdir}/usr/share/applications/com-pake-${_appname//-/}.desktop"
+    sed "s/com-pake-${_appname//-/}/${pkgname%-pake}/;s/Office/Utility;/" -i "${srcdir}/usr/share/applications/com-pake-${_appname//-/}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_appname}" "${pkgdir}/usr/bin/${pkgname%-pake}"
