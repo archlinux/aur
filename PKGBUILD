@@ -3,13 +3,14 @@
 pkgname=perl-gtk2-traymanager
 _cpanname=Gtk2-TrayManager
 pkgver=0.05
-pkgrel=10.3
+pkgrel=11
 pkgdesc="CPAN/Gtk2::TrayManger -- perl bindings for EggTrayManager"
 arch=(x86_64 i686)
 url="https://metacpan.org/module/Gtk2::TrayManager"
 license=('GPL')
 depends=('gtk2-perl')
-makedepends=('perl-extutils-depends' 'perl-extutils-pkgconfig' 'python')
+makedepends_x86_64=('perl-extutils-depends' 'perl-extutils-pkgconfig' 'python' 'glib2-devel')
+makedepends_i686=('perl-extutils-depends' 'perl-extutils-pkgconfig' 'python')
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/B/BO/BORUP/$_cpanname-$pkgver.tar.gz")
 sha512sums=('1f5e70f86f6c46aede939ed1c2412afbc3abb96176c13a953fdaad8110d9a0403d18f27eebe57eeb7d9d9d25c5ddeb7c74f5be9d89ee51a6a156eb9010025f48')
