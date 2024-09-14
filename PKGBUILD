@@ -5,7 +5,7 @@
 pkgbase="libmp3splt"
 pkgname=("${pkgbase}" "${pkgbase}-docs")
 pkgver=0.9.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Split mp3, ogg, and flac files without decoding - Library"
 arch=('any')
 url="https://mp3splt.sourceforge.net"
