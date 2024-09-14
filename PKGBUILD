@@ -1,7 +1,7 @@
 # Maintainer: Alejandro Oranday <alejandro at oran dot day>
 _name="r2modman"
 pkgname="r2modman-bin"
-pkgver=3.1.49
+pkgver=3.1.50
 pkgrel=1
 pkgdesc="A simple and easy to use mod manager for several games using Thunderstore."
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("r2modman")
 source=("${url}/releases/download/v${pkgver}/${_name}-$pkgver.pacman"
 	"LICENSE")
 md5sums=(
-		 'd37605899f50cf4704ac293232bbd2c9'
+		 'a84ce3cc60195507597698c38a4c7054'
          'cdc88d3d1b56736d0dbc702aaa7de854')
 
 package() {
