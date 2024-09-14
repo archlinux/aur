@@ -2,7 +2,7 @@
 pkgname=quickpdfjoin-bin
 _pkgname="Quick PDF Join"
 _appname=QuickPdfJoin
-pkgver=1.2024.08.20
+pkgver=1.2024.09.14
 pkgrel=1
 pkgdesc="Quick PDF Join is a cross-platform application that joins multiple PDF files together."
 arch=(
@@ -31,13 +31,14 @@ makedepends=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download/${pkgver}/${_pkgname// /}_Linux_arm64.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/${pkgver}/${_pkgname// /}_Linux_x64.zip")
 source=("${pkgname%-bin}.sh")
-sha256sums=('a1144f712599af4c256116efd6af761fd372b09c635a14887042d0ffc0112b86')
-sha256sums_aarch64=('fb17aeeb8379988581f1ffad22ee8bc1b35b111c864467fb433fd9fcd113db66')
-sha256sums_x86_64=('43a262ccff183910fdc2702a63bf21f272a2308347e398ebd326390f2a157899')
+sha256sums=('6aca7dfd3abf71dd91e7b5d6a6d78084c8d52cf5df2564d3889b07e6621940c4')
+sha256sums_aarch64=('1dd22b25b10947b82abebe1874dcede37b43ce2bd3cf264c2863516a6739798a')
+sha256sums_x86_64=('7448c5cb60a43e103ae05d54391dd9fba7d8353de9ed6d9466852f989b3fea8b')
 build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${_appname}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@appname@/${pkgname%-bin}/
+        s/@runname@/${_appname}/
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     icotool -i 1 -x "${srcdir}/${_appname}_Linux_"*/ApplicationIcon.ico -o "${srcdir}/${pkgname%-bin}.png"
     gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
