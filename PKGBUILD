@@ -20,7 +20,7 @@ source=(
     "LICENSE-13.17.0::https://github.com/firebase/firebase-tools/raw/v13.17.0/LICENSE"
     )
 md5sums=(
-    '9d1ead73e678fa2f51a70a933b0bf017'
+    '0db57706b99a3b2a408663cd6545ba19'
     '6ea8f4d1de9a164d33ffe95483a58af4'
     )
 
