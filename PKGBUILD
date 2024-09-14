@@ -15,10 +15,10 @@ makedepends=('unzip')
 #   "htTps://www.willuhn.de/products/jameica/releases/current/jameica/jameica-linux-${pkgver}.zip.asc")
 source_x86_64=("https://www.willuhn.de/products/jameica/releases/current/jameica/jameica-linux64-${pkgver}.zip"
     "https://www.willuhn.de/products/jameica/releases/current/jameica/jameica-linux64-${pkgver}.zip.asc"
-    "swt-4.30-x86_64.zip::https://ftp.fau.de/eclipse/eclipse/downloads/drops4/R-4.30-202312010110/swt-4.30-gtk-linux-x86_64.zip")
+    "swt-4.33-x86_64.zip::https://ftp.fau.de/eclipse/eclipse/downloads/drops4/R-4.33-202409030240/swt-4.33-gtk-linux-x86_64.zip")
 source_aarch64=("https://willuhn.de/products/jameica/releases/current/jameica/jameica-linuxarm64-${pkgver}.zip"
     "https://willuhn.de/products/jameica/releases/current/jameica/jameica-linuxarm64-${pkgver}.zip.asc"
-    "swt-4.30-aarch64.zip::https://ftp.fau.de/eclipse/eclipse/downloads/drops4/R-4.30-202312010110/swt-4.30-gtk-linux-aarch64.zip")
+    "swt-4.30-aarch64.zip::https://ftp.fau.de/eclipse/eclipse/downloads/drops4/R-4.33-202409030240/swt-4.33-gtk-linux-aarch64.zip")
 validpgpkeys=("7314FBDE7D38EE5610D291B65A8ED9CFC0DB6C70") # Olaf Willuhn <info@willuhn.de>
 source=("jameica-start-script.patch" "jameicaserver-start-script.patch"
         "jameica.desktop")
@@ -27,10 +27,10 @@ sha1sums=('a7b8b39822ac22d830aae03f292fda623977e526'
           'da4fbe27bfe2e133cafb4328919f5fdcce815195')
 sha1sums_x86_64=('bfaee83799f551a4c5403d59821d02d03e46a809'
                  'SKIP'
-                 '700f31b53866b33aa2d3b9f7739d96aeca0ed07a')
+                 'cbff72d20c6467dd6957a855c1af4daeb0f6926f')
 sha1sums_aarch64=('a0e2a097766d28cb732b74c1203ba1e892cbd8f1'
                   'SKIP'
-                  'd182195695828f968c1b1c179b258374735b35f9')
+                  'e7d8192bd2668f68ba7e20dc15e017d0e36e58e7')
 #sha1sums_i686=('7afbc5bb10e43479e100536559d174fb4259b1c7'
 #               'SKIP')
 
