@@ -1,16 +1,16 @@
 pkgbase = cloudflarewarpspeedtest-bin
 	pkgdesc = Test the latency and speed of all Cloudflare Warp IPs to obtain the lowest latency and port. ⭐WARP IP 优选工具
-	pkgver = v1.5.3
+	pkgver = v1.5.4
 	pkgrel = 1
 	url = https://github.com/peanut996/CloudflareWarpSpeedTest
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
-	provides = cloudflarewarpspeedtest=v1.5.3
+	provides = cloudflarewarpspeedtest=v1.5.4
 	conflicts = cloudflarewarpspeedtest
-	source_aarch64 = cloudflarewarpspeedtest-bin-v1.5.3-aarch64.tar.gz::https://github.com/peanut996/CloudflareWarpSpeedTest/releases/download/v1.5.3/CloudflareWarpSpeedTest-v1.5.3-linux-arm64.tar.gz
-	md5sums_aarch64 = efdcc27beabe5c1899e5b7ca6a7cb9a4
-	source_x86_64 = cloudflarewarpspeedtest-bin-v1.5.3-x86_64.tar.gz::https://github.com/peanut996/CloudflareWarpSpeedTest/releases/download/v1.5.3/CloudflareWarpSpeedTest-v1.5.3-linux-amd64.tar.gz
-	md5sums_x86_64 = a532cea632fd9bf05af5e72367db2b03
+	source_aarch64 = cloudflarewarpspeedtest-bin-v1.5.4-aarch64.tar.gz::https://github.com/peanut996/CloudflareWarpSpeedTest/releases/download/v1.5.4/CloudflareWarpSpeedTest-v1.5.4-linux-arm64.tar.gz
+	md5sums_aarch64 = 9fe20734e4711eeca270189f4aea5ff0
+	source_x86_64 = cloudflarewarpspeedtest-bin-v1.5.4-x86_64.tar.gz::https://github.com/peanut996/CloudflareWarpSpeedTest/releases/download/v1.5.4/CloudflareWarpSpeedTest-v1.5.4-linux-amd64.tar.gz
+	md5sums_x86_64 = b4716ce848ec2312ce45d4e57e3e7458
 
 pkgname = cloudflarewarpspeedtest-bin
