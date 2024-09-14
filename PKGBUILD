@@ -1,7 +1,7 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 
 # https://github.com/loot/libloot/issues/95
-# Maybe add doxgen for /docs, but then we get the following error unless we set LIBLOOT_INSTALL_DOCS=OFF:
+# Maybe add doxgen for /docs, but then we get the following error as `spdlog`` will be pulled:
 #   In file included from /build/libloot/src/libloot-0.24.0/src/api/metadata/yaml/plugin_metadata.h:40,
 #                    from /build/libloot/src/libloot-0.24.0/src/api/api_database.cpp:32:
 #   /build/libloot/src/libloot-0.24.0/src/api/metadata/yaml/message.h:29:10: fatal error: spdlog/fmt/bundled/args.h: No such file or directory
@@ -18,7 +18,7 @@ arch=('x86_64')
 url="https://loot.github.io"
 license=('GPL-3.0-only')
 depends=('tbb' 'icu')
-makedepends=('git' 'boost' 'cbindgen' 'cmake' 'rust') # 'doxygen' 'python-breathe' 'python-sphinx' 'spdlog'
+makedepends=('git' 'boost' 'cbindgen' 'cmake' 'rust') # 'doxygen' 'python-breathe' 'python-sphinx'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('f7d868fb5f5a658c98ba45bb3b0735905c5a12fbf267b61057b91554c5515aed')
 build() {
