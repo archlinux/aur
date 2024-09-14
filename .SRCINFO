@@ -1,6 +1,6 @@
 pkgbase = remoteplaywhatever
 	pkgdesc = Tiny application that lets you force remote play together any game you have in your steam library including non-steam ones.
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/m4dEngi/RemotePlayWhatever
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = remoteplaywhatever
 	depends = wxwidgets-common
 	depends = wxwidgets-gtk3
 	provides = remoteplaywhatever
-	source = remoteplaywhatever::git+https://github.com/m4dEngi/RemotePlayWhatever.git#tag=0.2.7-alpha
-	sha512sums = 0672ac0618718ac80c705ae4293fb3e1780e0d6b4942fe4e1884d8af4b1a1c24a6446925cd2688f33b9d44e32a587b912738cd5a034960d2165cb8261d2cd94e
+	source = remoteplaywhatever::git+https://github.com/m4dEngi/RemotePlayWhatever.git#tag=0.2.8-alpha
+	sha512sums = 13efa7474307976d05fc93b6fd713b4d9789b8108d674bd03cf8c89926594dbc08ce16fda7995479768e30544f86089b447b2693991646cea3cd3f8fb6baa42a
 
 pkgname = remoteplaywhatever

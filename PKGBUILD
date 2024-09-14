@@ -1,6 +1,6 @@
 # Maintainer: Rojikku <RojikkuNoKami at gmail dot com>
 pkgname=remoteplaywhatever
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Tiny application that lets you force remote play together any game you have in your steam library including non-steam ones."
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('remoteplaywhatever')
 depends=('libtiff' 'wxwidgets-common' 'wxwidgets-gtk3')
 makedepends=('git' 'cmake')
 source=("${pkgname}::git+${url}.git#tag=${pkgver}-alpha")
-sha512sums=('0672ac0618718ac80c705ae4293fb3e1780e0d6b4942fe4e1884d8af4b1a1c24a6446925cd2688f33b9d44e32a587b912738cd5a034960d2165cb8261d2cd94e')
+sha512sums=('13efa7474307976d05fc93b6fd713b4d9789b8108d674bd03cf8c89926594dbc08ce16fda7995479768e30544f86089b447b2693991646cea3cd3f8fb6baa42a')
 
 prepare() {
   git -C "${pkgname}" submodule update --init --recursive
