@@ -1,23 +1,36 @@
 # Maintainer: firlin123 <firlin123@gmail.com>
 
 pkgname=jupiter-dkms
-_tag='e32d2149de5fe3c73cad347ccbc6e257484f1516' # git rev-parse v${_tag_name}
-pkgver=1.0
+_tag='f4545384339049d03a11f94f774c33de837abf2d' # git rev-parse v${_tag_name}
+pkgver=6.1.9.valve2
 pkgrel=1
-pkgdesc='Jupiter ACPI platform driver DKMS - module sources'
+pkgdesc='Jupiter ACPI platform driver (DKMS)'
 url='https://github.com/firlin123/jupiter-dkms'
-arch=('any')
+arch=('x86_64')
 license=('GPL')
 depends=('dkms')
 makedepends=('git')
-source=("git+https://github.com/firlin123/jupiter-dkms.git#tag=${_tag}"
-        'dkms.conf')
-b2sums=('SKIP'
-        '6bd3eac1bad7cff3bf52eeab3a4c85698beecc379771c54c577b82e822aab688f527672d31f9de5af51e8a7bc4753587e10e3cb7d464090221906c2c2fa30658')
+conflicts=('steamdeck-dkms')
+source=("git+https://github.com/firlin123/jupiter-dkms.git#tag=${_tag}")
+b2sums=('SKIP')
 
 package() {
-  install -D -m0644 jupiter-dkms/{Makefile,jupiter.c} dkms.conf -t "${pkgdir}"/usr/src/jupiter-${pkgver}
-  echo jupiter | install -D -m0644 /dev/stdin "${pkgdir}"/usr/lib/modules-load.d/jupiter.conf
+  cd "jupiter-dkms"
+
+  # Installation directory
+  local install_dir="$pkgdir/usr/src/jupiter-${pkgver//+*/}"
+
+  # Install source files
+  for file in {Makefile,*.c,*.h}; do
+    [ -f "$file" ] || continue
+    install -D -m644 -t "$install_dir/" "$file"
+  done
+
+  # Edit and install dkms configuration
+  sed "s/#MODULE_VERSION#/${pkgver//+*/}/" "debian/jupiter-dkms.dkms" > "$install_dir/dkms.conf"
+
+  # Install modules-load configuration
+  install -Dm644 "usr/share/initramfs-tools/modules.d/jupiter-dkms.conf" "$pkgdir/etc/modules-load.d/jupiter-modules.conf"
 }
 
 # vim: ts=2 sw=2 et:
