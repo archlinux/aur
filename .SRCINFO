@@ -1,20 +1,20 @@
 pkgbase = restfox-bin
 	pkgdesc = Offline-first web HTTP client
-	pkgver = 0.24.0
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://restfox.dev
 	arch = x86_64
 	license = MIT
 	depends = electron29
 	depends = nodejs
-	provides = restfox=0.24.0
+	provides = restfox=0.25.0
 	conflicts = restfox
 	options = !emptydirs
-	source = restfox-0.24.0.deb::https://github.com/flawiddsouza/Restfox/releases/download/v0.24.0/restfox_0.24.0_amd64.deb
-	source = LICENSE-0.24.0::https://raw.githubusercontent.com/flawiddsouza/Restfox/v0.24.0/LICENSE
+	source = restfox-0.25.0.deb::https://github.com/flawiddsouza/Restfox/releases/download/v0.25.0/restfox_0.25.0_amd64.deb
+	source = LICENSE-0.25.0::https://raw.githubusercontent.com/flawiddsouza/Restfox/v0.25.0/LICENSE
 	source = restfox.sh
-	sha256sums = 4030eafbf0e6adf3158e7e526b2931e9946d95a181826cc4dcaa684fc46bbbf9
+	sha256sums = db0d3d6ca3bbc12bcbc3709cb3c72d80ea306e51f6d91fc9c28ed78117c8686f
 	sha256sums = 82601c8ed24f59528b28c23a2fb309f9743dffc860ba06ce8d253e1ed8959a16
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = restfox-bin
