@@ -1,13 +1,15 @@
-# Maintainer: Frederic Bezies < fredbezies at gmail dot com >
+# Maintainer: < astronautintheocean.sub (plus) aur (at) protonmail (dot) com >
+# Contributor: Frederic Bezies < fredbezies at gmail dot com >
 # Contributor: Eric Waller <ewwaller+aur@gmail.com>
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 
-pkgname=chessx-svn
-pkgver=1.5.0.2533
+pkgname=chessx-git
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="A free chess database"
 arch=(i686 x86_64)
-url=http://chessx.sourceforge.net
+url=https://chessx.sourceforge.net
+replaces=('chessx-svn')
 license=(GPL2)
 depends=(qt5-svg desktop-file-utils qt5-multimedia)
 makedepends=(subversion
@@ -20,7 +22,7 @@ provides=(${pkgname%-*}=$pkgver)
 conflicts=(${pkgname%-*})
 options=(!emptydirs)
 install=$pkgname.install
-source=($pkgname::svn+http://svn.code.sf.net/p/${pkgname%-*}/code/trunk)
+source=($pkgname::git+https://github.com/Isarhamster/chessx.git)
 sha256sums=('SKIP')
 sha512sums=('SKIP')
 
