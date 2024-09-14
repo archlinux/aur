@@ -1,11 +1,11 @@
 pkgbase = mathicsscript
 	pkgdesc = A more advanced command-line interface to Mathics.
-	pkgver = 6.0.0
-	pkgrel = 2
+	pkgver = 7.0.0
+	pkgrel = 1
 	url = https://mathics.org/
 	arch = any
 	license = GPL3
-	depends = mathics>6.0.0
+	depends = mathics>=7.0.0
 	depends = mathics-scanner>=1.3.0
 	depends = python-click
 	depends = python-colorama
@@ -16,11 +16,11 @@ pkgbase = mathicsscript
 	depends = mathics-pygments>=1.0.2
 	depends = python-term-background>=1.0.1
 	optdepends = python-yaml: Used for admin-tools/make-tables.sh to build JSON tables
-	optdepends = python-pyqt5: For inte ractive display of graphs via matplotlib
+	optdepends = python-pyqt6: For interactive display of graphs via matplotlib
 	optdepends = python-cairosvg: For rendering plots and graphs as SVGs via matplotlib
 	optdepends = python-cson: for xasy
 	optdepends = python-matplotlib: For rendering SVG plots
-	source = mathicsscript-6.0.0.tar.gz::https://github.com/Mathics3/mathicsscript/releases/download/6.0.0/mathicsscript-6.0.0.tar.gz
-	sha256sums = 4e0268236c5c19d6bb7c68b8935e91163f78e78761ff83ec094b441c8ff55ae3
+	source = mathicsscript-7.0.0.tar.gz::https://github.com/Mathics3/mathicsscript/releases/download/7.0.0/mathicsscript-7.0.0.tar.gz
+	sha256sums = f4dc0974fa04782fff09a82c89b3c5554c47c38eb85d4b8c19460e20357af796
 
 pkgname = mathicsscript
