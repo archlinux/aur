@@ -1,16 +1,16 @@
 pkgname=aur-check-updates
-pkgver=1.0.11
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A very basic CLI app for checking updates from AUR"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/HanabishiRecca/${pkgname}"
 license=('MIT')
-depends=('libalpm.so' 'libcurl.so')
+depends=('glibc' 'libalpm.so' 'libcurl.so')
 makedepends=('cargo')
 
 _snapshot="${pkgname}-${pkgver}"
-source=("${_snapshot}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('859e5a029afe8d42a3fe9e40d3b5645b3896b018cd59a24e856ff19725193437')
+source=("${url}/archive/${pkgver}/${_snapshot}.tar.gz")
+sha256sums=('0a4ffbfbfc131e5c58409d190e8c7cbd825c7d8d203ec8ca1b91d822e35421de')
 
 prepare() {
     cd "${_snapshot}"
