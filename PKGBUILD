@@ -3,7 +3,7 @@
 
 pkgname='python-runtype'
 _pkgname="${pkgname#python-}"
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Python utilities for run-time type validation and multiple dispatch'
 arch=('any')
@@ -39,15 +39,17 @@ package() {
     LICENSE
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     {CHANGES,README}.md
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/examples" \
+    examples/*.py
   install -vDm0644 docs/_build/man/runtype.7 \
     "$pkgdir/usr/share/man/man7/${pkgname}.7"
 }
 
 sha256sums=(
-  'c3e315f98413f099996932b070309db237141be4099d478723cabda8d8b3cef4'
+  'a55ca7fc74190142e967d7b50061ca46c5657eaa2c4b68ad5de3590182d306c7'
 )
 b2sums=(
-  '94aea1075e87e6ebb70a9ea7eaaef4e7bc6dee6cd82b450cb5af71e49b8da0f3b547296b29fe91d46551a6cb6227c65b780687b5c33d72e3088c4e92a36a2fce'
+  '1b60b7734cbc1b62899df713ae1b8cb37496ae9bfcaaf42491aef6fc19839fe6333fc7b5bdbbc544cd762d8c93358668e3ffc2baad75207f525e41be0d9e92dd'
 )
 
 # eof
