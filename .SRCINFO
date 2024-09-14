@@ -1,7 +1,7 @@
 pkgbase = firebase-tools-bin
 	pkgdesc = The Firebase Command Line Tools (bundled official standalone binary)
 	pkgver = 13.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/firebase/firebase-tools
 	arch = x86_64
 	license = MIT
