@@ -1,0 +1,12 @@
+diff -up src/Audio-Mixer-0.7/Mix.c.orig src/Audio-Mixer-0.7/Mix.c
+--- src/Audio-Mixer-0.7/Mix.c.orig	2003-03-26 22:43:11.000000000 -0700
++++ src/Audio-Mixer-0.7/Mix.c	2024-09-14 12:41:00.920000000 -0600
+@@ -78,7 +78,7 @@ close_mixer() {
+ #ifdef DEBUG
+   fprintf(stderr, "close_mixer()\n");
+ #endif
+-  if (mixer_fd < 0) return;
++  if (mixer_fd < 0) return(-1);
+   close(mixer_fd);
+   init_flag = 0;
+   mixer_fd = -1;
