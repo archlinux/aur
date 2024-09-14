@@ -1,7 +1,7 @@
 # Maintainer: Alexander Karpukhin <thealexdev23@gmail.com>
 
 pkgname=power-options-webview
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A Web Renderer frontend for Power Options, a blazingly fast power management solution."
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('power-options-webview')
 conflicts=('power-options-webview-git')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thealexdev23/power-options/archive/v$pkgver.tar.gz")
-sha256sums=('c5e28b630e90c9a32d1e4dff34f45c4e5c973fed9c37e66edb4eea3fe8b71749')
+sha256sums=('55b3056b972d37151397fec0c45522b566573a129779be5a3a66556aea4fe226')
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
