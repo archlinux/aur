@@ -8,7 +8,7 @@ pkgdesc="Perl bindings for libxcb"
 arch=('i686' 'x86_64')
 url="http://metacpan.org/release/$_cpanname"
 license=('PerlArtistic')
-makedepends=('perl-xs-object-magic' 'perl-extutils-depends' 'libpthread-stubs' 'python'
+makedepends=('perl-xs-object-magic' 'perl-extutils-depends' 'libpthread-stubs'
 	     'perl-module-install' 'perl-extutils-pkgconfig' 'perl-data-dump'
 	     'perl-xml-simple' 'perl-xml-descent')
 depends=('libxau' 'libxdmcp' 'perl-mouse' 'perl-mousex-nativetraits' 'perl-try-tiny'

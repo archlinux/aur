@@ -9,7 +9,6 @@ pkgbase = perl-x11-xcb
 	makedepends = perl-xs-object-magic
 	makedepends = perl-extutils-depends
 	makedepends = libpthread-stubs
-	makedepends = python
 	makedepends = perl-module-install
 	makedepends = perl-extutils-pkgconfig
 	makedepends = perl-data-dump
