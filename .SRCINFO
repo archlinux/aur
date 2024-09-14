@@ -1,7 +1,7 @@
 pkgbase = alt-media-writer
 	pkgdesc = ALT Media Writer is a tool that helps users put ALT images on their portable drives such as flash disks.
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/altlinux/ALTMediaWriter
 	arch = any
 	license = GPL2
@@ -17,7 +17,8 @@ pkgbase = alt-media-writer
 	depends = qt5-quickcontrols2
 	depends = yaml-cpp
 	optdepends = udisks2: Disk Management Service for disk installation
-	source = https://github.com/altlinux/ALTMediaWriter/archive/master.tar.gz
-	md5sums = 5b4193edd2a735bad157167892051e51
+	conflicts = mediawriter
+	source = https://github.com/altlinux/ALTMediaWriter/archive/1.0.4-alt2.tar.gz
+	md5sums = 2af023fbd47017e5f38ff4bd81f0ed2d
 
 pkgname = alt-media-writer
