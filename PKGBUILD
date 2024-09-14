@@ -2,17 +2,17 @@
 
 _pkgname="watershot"
 pkgname="${_pkgname}-wayshot-git"
-pkgver=r82.8dbd789
+pkgver=r83.7b9723c
 pkgrel=1
 pkgdesc="Watershot fork with libwayshot instead of grim"
 arch=("x86_64")
-url="github.com/Gigas002/watershot"
+url="https://github.com/Gigas002/watershot"
 license=('GPL3')
 depends=(vulkan-driver)
 makedepends=(git cargo)
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-source=("${_pkgname}::git+https://$url.git")
+source=("${_pkgname}::git+$url.git")
 sha256sums=('SKIP')
 pkgver() {
   cd "${_pkgname}"
