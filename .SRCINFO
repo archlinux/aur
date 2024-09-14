@@ -1,0 +1,14 @@
+pkgbase = ueli-git
+	pkgdesc = Keystroke launcher for Windows, macOS and Linux
+	pkgver = 9.5.1.r0.g91db343
+	pkgrel = 1
+	url = https://ueli.app/
+	arch = any
+	license = MIT
+	depends = electron32
+	source = ueli.git::git+https://github.com/oliverschwendener/ueli.git
+	source = ueli.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = ueli-git
