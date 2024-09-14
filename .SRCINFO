@@ -1,0 +1,20 @@
+pkgbase = stramon-bin
+	pkgdesc = Process behavior monitoring utility and library based on strace
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/darrenldl/stramon
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = stramon
+	conflicts = stramon
+	source = stramon_0.3.2::https://github.com/darrenldl/stramon/releases/download/stramon-0.3.2/stramon
+	source = LICENSE_0.3.2::https://raw.githubusercontent.com/darrenldl/stramon/stramon-0.3.2/LICENSE
+	source = README_0.3.2::https://raw.githubusercontent.com/darrenldl/stramon/stramon-0.3.2/README.md
+	source = CHANGELOG_0.3.2::https://raw.githubusercontent.com/darrenldl/stramon/stramon-0.3.2/CHANGELOG.md
+	sha256sums = 35c004d119364fe7da9f468747a660969e212e5543a553bc56b7cc60fbd04d84
+	sha256sums = 918e7f7aeac2a0e1f8557528c23499716b876bbc04700deb2cd17e0d345689be
+	sha256sums = d6d05b68541d06fc177924133a416a9b7d9355075234cab242662f7c754e01e2
+	sha256sums = 02611e29635bb13b8b16a00e92551ef4fa99aecfb68d4f7cf791cfd1627ea624
+
+pkgname = stramon-bin
