@@ -3,14 +3,14 @@
 
 pkgname=python-sdnotify
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A pure Python implementation of systemd's service notification protocol (sd_notify)"
 arch=('any')
 url=https://github.com/Liganic/python-sdnotify
 license=('MIT')
 depends=('python')
 makedepends=(python-build python-installer python-wheel)
-source=("git+ssh://git@github.com/Liganic/python-sdnotify.git")
+source=("git+https://git@github.com/Liganic/python-sdnotify.git")
 sha512sums=('SKIP')
 
 pkgver() {

@@ -1,7 +1,7 @@
 pkgbase = python-sdnotify
 	pkgdesc = A pure Python implementation of systemd's service notification protocol (sd_notify)
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Liganic/python-sdnotify
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = python-sdnotify
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = git+ssh://git@github.com/Liganic/python-sdnotify.git
+	source = git+https://git@github.com/Liganic/python-sdnotify.git
 	sha512sums = SKIP
 
 pkgname = python-sdnotify
