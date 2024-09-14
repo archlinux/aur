@@ -8,7 +8,7 @@
 
 pkgname=ffmpeg-headless
 pkgver=7.0.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -71,6 +71,7 @@ depends=(
   x265
   xvidcore
   xz
+  zeromq
   zimg
   zlib
 )
@@ -111,9 +112,12 @@ source=("$pkgname::git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}")
 b2sums=('bcc0fb367d2822665f0918292a0cf581e0119d6ba6d2e3d0b6e794b6f74d30c118b5c47e26b5687473f01b346f8ec7e885f80729ce6115e18003b2371ff4553f')
 validpgpkeys=('DD1EC9E8DE085C629B3E1846B18E8928B3948D64')   # Michael Niedermayer <michael@niedermayer.cc>
 
-# prepare() {
-#   cd "${pkgname}" || exit 1
-# }
+prepare() {
+  cd "${pkgname}" || exit 1
+  # Fix VAAPI AV1 performance with Mesa
+  git cherry-pick -n fe9d889dcd79ea18d4dfaa39df4ddbd4c8c3b15c
+  git cherry-pick -n d2d911eb9a2fc6eb8d86b3ae025a56c1a2692fba
+}
 
 pkgver() {
   cd "${pkgname}" || exit 1
@@ -185,6 +189,7 @@ build() {
     --enable-libxml2 \
     --enable-libxvid \
     --enable-libzimg \
+    --enable-libzmq \
     --enable-nvdec \
     --enable-nvenc \
     --enable-opencl \
@@ -225,6 +230,7 @@ package() {
     libx265.so
     libxvidcore.so
     libzimg.so
+    libzmq.so
   )
 
   make DESTDIR="${pkgdir}" -C ${pkgname} install install-man
