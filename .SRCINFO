@@ -1,7 +1,7 @@
 pkgbase = r-ps
 	pkgdesc = List, Query, Manipulate System Processes
-	pkgver = 1.7.7
-	pkgrel = 2
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=ps
 	arch = x86_64
 	license = MIT
@@ -16,8 +16,9 @@ pkgbase = r-ps
 	optdepends = r-rlang
 	optdepends = r-testthat
 	optdepends = r-webfakes
-	source = https://cran.r-project.org/src/contrib/ps_1.7.7.tar.gz
-	md5sums = 8c0dd99a89635cb7a8f837f7f0ab6e93
-	b2sums = 49e61deccac77a8fd3018eed95530239176f41bfffeb0d9c9ca482dd7b53af1c18d9136cfe9127474c74da1204943fcf0b564d7469dc5b75bbe5d88c1a9fc383
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/ps_1.8.0.tar.gz
+	md5sums = c708a4e53df83d4ade2b7858cfb1f133
+	b2sums = 79c8ef51cbd91b814d4a1a38f24fb4acc5789c45eae1e7419122c5d70aaf03efada0c014039ec058b00eaa3e5729504f72ba4d46b040831d56990a93afb89b00
 
 pkgname = r-ps
