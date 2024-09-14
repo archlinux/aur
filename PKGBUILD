@@ -1,28 +1,41 @@
-# Maintainer: houmain <houmain@posteo.net>
+# Maintainer: houmain <houmain at posteo dot net>
+
 pkgname=gpupad-git
 _pkgname=gpupad
 pkgver=latest
-pkgrel=5
+pkgrel=6
 pkgdesc='A flexible GLSL shader editor and IDE.'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+arch=(x86_64)
 url="https://github.com/houmain/gpupad"
-license=('GPL3')
-depends=('qt5-quickcontrols2' 'qt5-multimedia' 'gst-libav')
-makedepends=('cmake' 'git')
+license=(GPL3)
+depends=(qt6-declarative qt6-multimedia libdrm openimageio)
+makedepends=(cmake git)
 conflicts=(${_pkgname})
 provides=(${_pkgname})
-source=('git+https://github.com/houmain/gpupad.git')
-md5sums=(SKIP)
+source=(git+https://github.com/houmain/gpupad.git
+        git+https://github.com/houmain/KDGpu.git)
+md5sums=(SKIP
+         SKIP)
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  git submodule init
+  git config submodule.KDGpu.url $srcdir/libs/KDGpu
+  git submodule update
+  
+  git clone --depth=1 https://github.com/microsoft/vcpkg.git
+  vcpkg/bootstrap-vcpkg.sh --disable-metrics
+  vcpkg/vcpkg --triplet="x64-linux-release" install vulkan "ktx[vulkan]" glslang spirv-cross vulkan-memory-allocator spdlog
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  echo "\"${pkgver}\"" > "src/_version.h"
-  cmake -B _build -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -B _build -DVERSION="$pkgver" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_TOOLCHAIN_FILE=vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET="x64-linux-release"
   cmake --build _build
 }
 
