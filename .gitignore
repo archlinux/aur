@@ -4,6 +4,6 @@
 # Whitelist:
 !.gitignore
 !.SRCINFO
-!Outertale.desktop
+!outertale.desktop
 !outertale.sh
 !PKGBUILD
