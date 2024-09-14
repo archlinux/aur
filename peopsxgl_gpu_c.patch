@@ -26,3 +26,4 @@
  	if (stat(cfg, &buf) != -1) {
  		int pid = fork();
  		if (pid == 0) {
+
