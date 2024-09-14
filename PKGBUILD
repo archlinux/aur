@@ -4,7 +4,7 @@
 pkgname=discord-rpc
 pkgver=20200921
 _commit=963aa9f3e5ce81a4682c6ca3d136cddda614db33
-pkgrel=3
+pkgrel=4
 pkgdesc="Discord Rich Presence library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/discord/discord-rpc"
