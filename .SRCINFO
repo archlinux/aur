@@ -1,0 +1,18 @@
+pkgbase = image2display
+	pkgdesc = A cross-platform image and font data processing tool for generating data usable by microcontrollers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/chenxuuu/image2display
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = gendesk
+	makedepends = dotnet-sdk
+	makedepends = imagemagick
+	depends = skia-sharp
+	depends = dotnet-runtime
+	options = !strip
+	source = image2display::git+https://github.com/chenxuuu/image2display.git
+	sha256sums = SKIP
+
+pkgname = image2display
