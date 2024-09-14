@@ -4,7 +4,7 @@
 _pkgname="soundcloud-dl"
 pkgname="$_pkgname-git"
 pkgver=2.12.1.r0.g9732b53
-pkgrel=1
+pkgrel=2
 pkgdesc="Souncloud music downloader"
 url="https://github.com/flyingrub/scdl"
 license=('GPL-2.0-only')
@@ -32,6 +32,9 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
+
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
