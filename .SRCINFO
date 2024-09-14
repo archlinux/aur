@@ -1,7 +1,7 @@
 pkgbase = spright-git
 	pkgdesc = A command line sprite sheet packer
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/houmain/spright
 	arch = i686
 	arch = x86_64
