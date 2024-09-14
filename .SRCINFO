@@ -1,7 +1,7 @@
 pkgbase = beaver-notes-bin
 	pkgdesc = Your Personal Note-Taking Haven for Privacy and Efficiency (binary release)
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Daniele-rolli/Beaver-Notes
 	arch = x86_64
 	arch = aarch64

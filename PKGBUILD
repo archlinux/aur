@@ -1,9 +1,10 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Co-Maintainer: tee < teeaur at duck dot com >
 
 _pkgname=beaver-notes
 pkgname=$_pkgname-bin
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Your Personal Note-Taking Haven for Privacy and Efficiency (binary release)"
 url="https://github.com/Daniele-rolli/Beaver-Notes"
 license=('MIT')
