@@ -1,6 +1,6 @@
 pkgbase = nymvpn-x-bin
 	pkgdesc = NymVPN next desktop client
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/nymtech/nym-vpn-client
 	arch = x86_64
@@ -19,12 +19,12 @@ pkgbase = nymvpn-x-bin
 	provides = nymvpn-x
 	conflicts = nymvpn-x
 	options = !debug
-	source = https://github.com/nymtech/nym-vpn-client/releases/download/nym-vpn-x-v0.1.9/nymvpn-x_0.1.9_linux_x64
+	source = https://github.com/nymtech/nym-vpn-client/releases/download/nym-vpn-x-v0.1.10/nymvpn-x_0.1.10_linux_x64
 	source = nymvpn-x-wrapper.sh
 	source = nymvpn-x.desktop
 	source = nymvpn-x.svg
-	sha256sums = d7031d17b2914d72a1bb3638585aefc1d02fe6e9a4c99ff710e8e9dde7c670e7
-	sha256sums = 71adbcd7b933b1e68ef6be7f43fda4e291b99a710ac36616238a8ce6ce8dc8df
+	sha256sums = 7c599e94cbfb8fee2e36f43ff0895b95dba815823e97cc1eb043b9825e8d8f59
+	sha256sums = aa573dad7ada4d6d6aacfc58d50184ee6b67e9e919187c9a6ed0fd4ea9652106
 	sha256sums = 8bf0dbd2a6c312630e1c2e866431d0361b24975ba17b4ab14c891efea326251c
 	sha256sums = c15b6028f25ea931c9bedf2b5600f91d6f94f15066afdbd7f789c770ea250e06
 
