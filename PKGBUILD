@@ -3,7 +3,7 @@
 pkgbase=python-pysiaf
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.22.0
+pkgver=0.23.3
 pkgrel=1
 pkgdesc="Handling of Science Instrument Aperture Files (SIAF) for space telescopes"
 arch=('any')
@@ -22,9 +22,10 @@ makedepends=('python-setuptools-scm>=3.4'
              'python-openpyxl'
              'python-scipy')
 checkdepends=('python-pytest'
+#             'python-pytest-xdist'
               'python-requests') # astropy, lxml, matplotlib, openpyxl, scipy already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('c305df7191966e609cd96521166bda9d')
+md5sums=('4942e509a20f950d59471b4d7dd253cb')
 
 get_pyinfo() {
     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
@@ -42,14 +43,13 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist n -4
 }
 
 package_python-pysiaf() {
     depends=('python-astropy>=4.3.1'
              'python-lxml>=4.6.4'
              'python-matplotlib>=3.4.3'
-             'python-numpydoc>=1.1.0'
              'python-openpyxl>=3.0.9'
              'python-requests>=2.26.0'
              'python-scipy>=1.7.2')
