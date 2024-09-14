@@ -5,40 +5,43 @@
 
 _pkgname=Chatbox
 pkgname="chatbox-appimage"
-pkgver=1.4.0
+pkgver=1.4.2
 pkgrel=1
-pkgdesc="Chatbox is a desktop app for GPT-4 / GPT-3.5 (OpenAI API) that supports Windows, Mac & Linux."
+pkgdesc="User-friendly Desktop Client App for AI Models/LLMs (GPT, Claude, Gemini, Ollama...)"
 arch=('x86_64')
 url="https://chatboxai.app"
 license=('GPL')
 depends=('fuse2')
 provides=("$pkgname")
-conflicts=("${_pkgname}-bin")
+conflicts=("chatbox-bin" "chatbox-git")
 options=(!strip)
 _appimage="${_pkgname}-${pkgver}-${arch}.AppImage"
-source=("${url}/install_chatbox/linux")
+_pkgid="xyz.chatboxapp.app"
+source=("https://download.chatboxai.app/releases/${_appimage}")
 noextract=("$_appimage")
-sha512sums=('6df719b5194f022526d9eb6100e5603dd611b4accd863458db447531129cbf21673a8dc02c274b3382dfacd36d2f514ec6a62c46ca2b19c41bd533ccc62d58cb')
+sha512sums=('18b0f222294cbf18d6518b1eb30c466da941632ff4be49620b24f21be3e2ff7239037e73bb8d736cb4074a55447643946272ae1f9f0a41439bac7e70afaa5b01')
 
 prepare() {
-    mv "linux" "$_appimage"
+    # Make the AppImage executable
     chmod +x "$_appimage"
+
+    # Extract the AppImage
     "./$_appimage" --appimage-extract
 
-    # Fixing the desktop file
-    sed -i -E "s:Exec=AppRun:Exec=/opt/${_pkgname}/${_appimage}:" "squashfs-root/xyz.chatboxapp.app.desktop"
+    # Update the Exec line in the desktop entry file
+    sed -i -E "s:Exec=AppRun:Exec=/opt/${_pkgname}/${_appimage}:" "squashfs-root/${_pkgid}.desktop"
 }
 
 package() {
-    # Appimage and symlink
+    # Install the AppImage and create a symlink
     install -Dpm755 "${_appimage}" "${pkgdir}/opt/${_pkgname}/${_appimage}"
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${_pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
 
-    # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/xyz.chatboxapp.app.desktop" "${pkgdir}/usr/share/applications/xyz.chatboxapp.app.desktop"
+    # Install the desktop entry file
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgid}.desktop" "${pkgdir}/usr/share/applications/${_pkgid}.desktop"
 
-    # Icons
+    # Install the icon
     install -dm755 "${pkgdir}/usr/share/pixmaps/"
-    cp --no-preserve=mode,ownership "${srcdir}/squashfs-root/xyz.chatboxapp.app.png" "${pkgdir}/usr/share/pixmaps/xyz.chatboxapp.app.png"
+    cp --no-preserve=mode,ownership "${srcdir}/squashfs-root/${_pkgid}.png" "${pkgdir}/usr/share/pixmaps/${_pkgid}.png"
 }
