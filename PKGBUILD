@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=whatsie
-pkgver=4.15.3
+pkgver=4.15.5
 pkgrel=1
 pkgdesc="Fast Light weight WhatsApp Client based on Qt's WebEngine, With lots of settings and packed goodies"
 arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
@@ -22,4 +22,4 @@ package() {
   make INSTALL_ROOT="${pkgdir}" install
 }
 
-sha256sums=('0952b233a8f6d70b0b0d38cda913f73ab70d301fa40dcfdf5a7652dc57bd5abc')
+sha256sums=('5201ef2e62254595be03106bc9c9bfee034cbc9a47e45711489345f49edff219')
