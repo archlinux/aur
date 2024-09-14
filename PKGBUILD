@@ -2,7 +2,7 @@
 
 pkgname=tomato-radio-automation-git
 _pkgname=tomato-radio-automation
-pkgver=0.11.8.next.2.c1ab2042
+pkgver=0.11.9.next.0.28b0c0ae
 pkgrel=1
 pkgdesc='Tomato Radio Automation desktop client. Dead simple radio ads. Preview version.'
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,12 @@ _repodir="${_pkgname}"
 _buildver="r${pkgver}"
 
 _shortver() {
-  git describe --exclude=preview-build --tags | sed 's/^v//' | sed 's/-g.*$//' | sed 's/-/-next./'
+  local SHORTVER
+  SHORTVER="$(git describe --exclude=preview-build --tags | sed 's/^v//' | sed 's/-g.*$//' | sed 's/-/-next./')"
+  if echo "${SHORTVER}" | grep -qv -- -; then
+    SHORTVER="${SHORTVER}-next.0"
+  fi
+  echo "${SHORTVER}"
 }
 
 _longver() {
