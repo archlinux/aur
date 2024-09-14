@@ -1,21 +1,23 @@
 # Maintainer: Zosoled <zosoled@codecow.xyz>
 
-pkgname=greenlight-git
-pkgver=v2.3.1.r2.3462844
+_pkgname=greenlight
+pkgname=${_pkgname}-git
+_author=unknownskl
+pkgver=v2.3.1.r28.64bfd99
 pkgrel=1
 pkgdesc="Client for xCloud and Xbox home streaming."
 
 arch=(x86_64)
-url=https://github.com/unknownskl/greenlight
+url=https://github.com/${_author}/${_pkgname}
 license=(MIT)
 depends=(nodejs)
 makedepends=(git yarn libxcrypt-compat)
-provides=(${pkgname%-git}=${pkgver})
-conflicts=(${pkgname%-git})
+provides=(${_pkgname}=${pkgver})
+conflicts=(${_pkgname})
 
 source=(
-	${pkgname%-git}::git+https://github.com/unknownskl/greenlight.git
-	LICENSE::https://raw.githubusercontent.com/unknownskl/greenlight/main-v2/LICENSE
+	${_pkgname}::git+${url}.git
+	LICENSE::https://raw.githubusercontent.com/${_author}/${_pkgname}/main-v2/LICENSE
 )
 
 sha512sums=(
@@ -24,28 +26,28 @@ sha512sums=(
 )
 
 pkgver() {
-	cd ${srcdir}/${pkgname%-git}
+	cd ${srcdir}/${_pkgname}
 	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
-	cd ${srcdir}/${pkgname%-git}
+	cd ${srcdir}/${_pkgname}
 	git submodule update --init --recursive
 	sed -i -e 's/- "AppImage"/# - "AppImage"/;s/- "deb"/# - "deb"/' electron-builder.yml
 }
 
 build() {
-	cd ${srcdir}/${pkgname%-git}
+	cd ${srcdir}/${_pkgname}
 	yarn
 	yarn build
 }
 
 package() {
-	install -dm755 ${pkgdir}/usr/lib/${pkgname%-git}
-	cp -r ${srcdir}/${pkgname%-git}/dist/linux-unpacked/* ${pkgdir}/usr/lib/${pkgname%-git}
+	install -dm755 ${pkgdir}/usr/lib/${_pkgname}
+	cp -r ${srcdir}/${_pkgname}/dist/linux-unpacked/* ${pkgdir}/usr/lib/${_pkgname}
 
 	install -dm755 ${pkgdir}/usr/bin
-	ln -s /usr/lib/${pkgname%-git}/${pkgname%-git} ${pkgdir}/usr/bin/${pkgname%-git}
+	ln -s /usr/lib/${_pkgname}/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
 
-	install -Dm644 -t ${pkgdir}/usr/share/licenses/${pkgname%-git} LICENSE
+	install -Dm644 -t ${pkgdir}/usr/share/licenses/${_pkgname} LICENSE
 }
