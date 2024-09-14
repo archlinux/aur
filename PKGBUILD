@@ -1,6 +1,6 @@
 # Maintainer: Ms. Haze <ms-haze@riseup.net>
 pkgname=pacupdate-git
-pkgver=a84a9af1
+pkgver=r0.a84a9af1
 pkgrel=1
 pkgdesc="Update all packages using Paru - automatically avoids some common issues when updating normally."
 url="https://gitlab.com/MayESchaefer/pacupdate"
