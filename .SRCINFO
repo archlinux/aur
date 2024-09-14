@@ -1,0 +1,15 @@
+pkgbase = python-vtf2img
+	pkgdesc = A Python library to convert Valve Texture Format (VTF) files to images
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/julienc91/vtf2img
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	source = python-vtf2img-0.1.0.tar.gz::https://github.com/julienc91/vtf2img/archive/6db0178d69b7b141279078cb3576d4d1f79ad567.tar.gz
+	sha256sums = 93d6b946032853b0055ff961d5c3784d8442e026a987578a3eeb33fa2e9cde10
+
+pkgname = python-vtf2img
