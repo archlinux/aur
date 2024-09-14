@@ -4,7 +4,7 @@
 # Contributor: Jason Lenz <Jason@Lenzplace.org>
 _pkgname=oscar
 pkgname=oscar
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Open-source, cross platform, sleep tracking software with a focus on monitoring CPAP treatment. Fork of the sleepyhead project."
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ source=(
   'oscar.desktop'
   'odr-fix.patch'
 )
-sha256sums=('390c8524166e6b1a2858a87da12853d0584dc666d8b09cec4bf3532f28cf5a32'
+sha256sums=('ba18db824f6943bad456830c92243bcdf956063c6027e8425cdb38be289d895e'
             '6b2f735622f218e2ac5ef61475886fadfeeedd5f15b04fa0d54451162ee394ad'
             '5a887520f92ffde54835adf5507c6f8a93a54561866d07573d2a80bcaf8f3691')
 
