@@ -2,7 +2,7 @@
 
 _pkgname="psource"
 pkgname="${_pkgname}-git"
-pkgver=0.4.2.c893900 # This will be dynamically replaced by the pkgver() function
+pkgver=0.4.3.f2eae02 # This will be dynamically replaced by the pkgver() function
 pkgrel=1
 pkgdesc="CLI tool to pretty print source code to stdout or directly to the clipboard."
 arch=('x86_64')
@@ -12,6 +12,7 @@ license=('MIT')
 depends=("libgit2.so")
 makedepends=('git' 'cargo')
 checkdepends=("cargo")
+options=(!lto)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 sha256sums=('SKIP')
