@@ -1,4 +1,4 @@
-pkgbase = gnome-shell-performance
+pkgbase = gnome-shell-performance-unstable
 	pkgdesc = Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
 	pkgver = 47.0
 	pkgrel = 1
@@ -44,7 +44,7 @@ pkgbase = gnome-shell-performance
 	b2sums = 7c5b48d4ad2c9119bac501dfc99d2e73132a8418dd6d6020778c6a76090faa5489d85bb9ca9bf2908592efba077e14f66a6515e57e1c1b18ba8d22d43ca56d81
 	b2sums = e31ae379039dfc345e8032f7b9803a59ded075fc52457ba1553276d3031e7025d9304a7f2167a01be2d54c5e121bae00a2824a9c5ccbf926865d0b24520bb053
 
-pkgname = gnome-shell-performance
+pkgname = gnome-shell-performance-unstable
 	groups = gnome
 	depends = accountsservice
 	depends = gcr-4

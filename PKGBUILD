@@ -18,7 +18,7 @@ _merge_requests_to_use=()
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _pkgname=gnome-shell
-pkgname=gnome-shell-performance
+pkgname=gnome-shell-performance-unstable
 pkgver=47.0
 pkgrel=1
 epoch=1
