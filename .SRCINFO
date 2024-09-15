@@ -1,0 +1,14 @@
+pkgbase = gba-mus-ripper
+	pkgdesc = Suite of tools to rip music from GBA games that use MP2K.
+	pkgver = v3.3
+	pkgrel = 1
+	url = https://github.com/CaptainSwag101/gba-mus-ripper
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = gplv3
+	makedepends = base-devel
+	source = git+https://github.com/CaptainSwag101/gba-mus-ripper
+	md5sums = SKIP
+
+pkgname = gba-mus-ripper
