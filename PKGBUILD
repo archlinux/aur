@@ -1,114 +1,96 @@
-# SPDX-License-Identifier: AGPL-3.0
-#
-# Maintainer: Truocolo <truocolo@aol.com>
-# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Maintainer: Nikolay Bryskin <nbryskin@gmail.com>
+# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
 # shellcheck disable=SC2034
-_pkg="metamask"
-_browsers=(
-  "chrome"
-  "firefox"
+pkgbase=metamask
+pkgname=(
+  "${pkgbase}-chromium"
+  "${pkgbase}-firefox"
+  "${pkgbase}-google-chrome"
 )
-pkgbase="${_pkg}"
-_pkgname="${pkgbase}-extension"
-pkgname=()
-for _browser \
-  in "${_browsers[@]}"; do
-  pkgname+=(
-    "${_pkg}-${_browser}"
-  )
-done
-_addon_id="2e742fd4-1e66-4604-89a2-b99cc03f171a"
-_pkgver=10.25.0
-pkgver=10.32.0
+pkgver=12.1.3
 pkgrel=1
-_pkgdesc() {
-  local \
-    _browser="${1}" \
-    _desc=()
-  _desc=(
-    "${_browser} extension that enables"
-    "interacting with Ethereum Virtual Machine"
-    "networks enabled websites"
-  )
-  echo \
-    "${_desc[@]}"
-}
-pkgdesc="$( \
-  _pkgdesc \
-    "Browser")"
-_http="https://github.com"
-_ns="MetaMask"
-url="${_http}/${_ns}/${_pkgname}"
-license=(
-  'custom:consensys'
-)
-arch=(
-  'any'
-)
+pkgdesc='Browser extension that enables browsing Ethereum blockchain enabled websites'
+url="https://github.com/MetaMask/metamask-extension"
+license=('LicenseRef-ConsenSys')
+groups=('firefox-addons')
+arch=('any')
 depends=()
-provides=(
-  "${_pkg}=${pkgver}"
-)
-makedepends=(
-  'git'
-  'nodejs-lts-gallium'
-  'yarn'
-  'typescript'
-)
-_commit="d52ef735146a58016f870322adfb901ee1d95f6c" # $pkgver
+makedepends=('git' 'nvm' 'yarn-berry' 'chromium')
 source=(
-  "${_pkg}::git+${url}.git#commit=${_commit}"
-  "${_pkg}_policy.json"
+  "${pkgbase}::git+$url.git#tag=v${pkgver}"
+  "chrome.pem"
 )
 sha512sums=(
   'SKIP'
-  '912bc9a9ac604b8603bbc34bbc7793caaad4b796ecd3fe59dea2e2e53e22de9573fb9f84e5b2e3601bf2d9193d71f858b066e4a086a8818d9a97cb8fc8d141e4'
+  '6732e47d2431484e084512e815e44590c6693d9a1f7a192c0de2f11561fdfd6d87769a375650c4025ab8e2049fd7694ff2c45e19a03991d65c9b8a241bd7292a'
 )
+_chromium_extension_id="cfcbhkcbidaoaeljekeilbnebipmnkjm"
 
-build() {
-  cd \
-    "${srcdir}/${_pkg}"
-  ls \
-    -a
-  yarn # setup
-  cp \
-    ".${_pkg}rc.dist" \
-    ".${_pkg}rc"
-  sed \
-    -i \
-    -e \
-    's/00000000000/2f8ebfee0f81453d83fe6219b9a59754/g' \
-    ".${_pkg}rc"
-  yarn \
-    dist
+_ensure_local_nvm() {
+    # let's be sure we are starting clean
+    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+    export NVM_DIR="${srcdir}/.nvm"
+
+    # The init script returns 3 if version specified
+    # in ./.nvrc is not (yet) installed in $NVM_DIR
+    # but nvm itself still gets loaded ok
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
 }
 
-package_metamask-chrome() {
-  pkgdesc="$( \
-    _pkgdesc \
-      "Chrome")"
-  depends+=(
-    'chromium'
-  )
-  install \
-    -Dm644 \
-    "${srcdir}/${_pkg}_policy.json" \
-    "${pkgdir}/etc/chromium/policies/managed/${_pkg}_policy.json"
+prepare() {
+  cd "${srcdir}/${pkgbase}"
+  cp .metamaskrc.dist .metamaskrc
+  # set infura project id
+  sed -i -e 's/00000000000/2f8ebfee0f81453d83fe6219b9a59754/g' .metamaskrc
+  # nodejs 20.15 fails with:
+  # TypeError: Cannot read properties of undefined (reading '0')
+  _ensure_local_nvm
+  nvm install 20.14
+}
+
+build() {
+  cd "${srcdir}/${pkgbase}"
+  _ensure_local_nvm
+  yarn # setup
+  yarn dist:mv2
+  chromium \
+    --disable-gpu \
+    --disable-namespace-sandbox \
+    --pack-extension="${srcdir}/${pkgbase}/dist/chrome" \
+    --pack-extension-key="${srcdir}/chrome.pem"
+}
+
+package_metamask-chromium() {
+  crx_path="/usr/lib/chromium-extension-metamask/metamask-${pkgver}.crx"
+  cat > "${srcdir}/${_chromium_extension_id}.json" <<EOF
+{
+	"external_crx": "${crx_path}",
+	"external_version": "${pkgver}"
+}
+EOF
+  install -Dm644 "${srcdir}/${pkgbase}/dist/chrome.crx" "${pkgdir}${crx_path}"
+  install -Dm644 "${srcdir}/${_chromium_extension_id}.json" \
+                 "${pkgdir}/usr/share/chromium/extensions/${_chromium_extension_id}.json"
+  install -Dm644 "${srcdir}/${pkgbase}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_metamask-google-chrome() {
+  crx_path="/usr/lib/google-chrome-extension-metamask/metamask-${pkgver}.crx"
+  cat > "${srcdir}/${_chromium_extension_id}.json" <<EOF
+{
+	"external_crx": "${crx_path}",
+	"external_version": "${pkgver}"
+}
+EOF
+  install -Dm644 "${srcdir}/${pkgbase}/dist/chrome.crx" "${pkgdir}${crx_path}"
+  install -Dm644 "${srcdir}/${_chromium_extension_id}.json" \
+                 "${pkgdir}/usr/share/google-chrome/extensions/${_chromium_extension_id}.json"
+  install -Dm644 "${srcdir}/${pkgbase}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_metamask-firefox() {
-  pkgdesc="$( \
-    _pkgdesc \
-      "Firefox")"
-  depends+=(
-    'firefox'
-  )
-  extensions_dir="${pkgdir}/usr/lib/firefox/browser/extensions"
-  install \
-    -Dm644 \
-    "${srcdir}/${_pkg}/builds/${_pkg}-firefox-${_pkgver}.zip" \
-    "${extensions_dir}/webextension@${_pkg}.io.xpi"
+  install -Dm644 "${srcdir}/${pkgbase}/builds/metamask-firefox-${pkgver}.zip" \
+                 "${pkgdir}/usr/lib/firefox/browser/extensions/webextension@metamask.io.xpi"
+  install -Dm644 "${srcdir}/${pkgbase}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim:set sw=2 sts=-1 et:

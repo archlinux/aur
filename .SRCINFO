@@ -1,24 +1,22 @@
 pkgbase = metamask
-	pkgdesc = Browser extension that enables interacting with Ethereum Virtual Machine networks enabled websites
-	pkgver = 10.32.0
+	pkgdesc = Browser extension that enables browsing Ethereum blockchain enabled websites
+	pkgver = 12.1.3
 	pkgrel = 1
 	url = https://github.com/MetaMask/metamask-extension
 	arch = any
-	license = custom:consensys
+	groups = firefox-addons
+	license = LicenseRef-ConsenSys
 	makedepends = git
-	makedepends = nodejs-lts-gallium
-	makedepends = yarn
-	makedepends = typescript
-	provides = metamask=10.32.0
-	source = metamask::git+https://github.com/MetaMask/metamask-extension.git#commit=d52ef735146a58016f870322adfb901ee1d95f6c
-	source = metamask_policy.json
+	makedepends = nvm
+	makedepends = yarn-berry
+	makedepends = chromium
+	source = metamask::git+https://github.com/MetaMask/metamask-extension.git#tag=v12.1.3
+	source = chrome.pem
 	sha512sums = SKIP
-	sha512sums = 912bc9a9ac604b8603bbc34bbc7793caaad4b796ecd3fe59dea2e2e53e22de9573fb9f84e5b2e3601bf2d9193d71f858b066e4a086a8818d9a97cb8fc8d141e4
+	sha512sums = 6732e47d2431484e084512e815e44590c6693d9a1f7a192c0de2f11561fdfd6d87769a375650c4025ab8e2049fd7694ff2c45e19a03991d65c9b8a241bd7292a
 
-pkgname = metamask-chrome
-	pkgdesc = Chrome extension that enables interacting with Ethereum Virtual Machine networks enabled websites
-	depends = chromium
+pkgname = metamask-chromium
 
 pkgname = metamask-firefox
-	pkgdesc = Firefox extension that enables interacting with Ethereum Virtual Machine networks enabled websites
-	depends = firefox
+
+pkgname = metamask-google-chrome
