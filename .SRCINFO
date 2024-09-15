@@ -1,0 +1,19 @@
+pkgbase = wasynth
+	pkgdesc = WebAssembly translation tools targeting Lua
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/Rerumu/Wasynth
+	arch = aarch64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = wasynth-0.13.0.tar.gz::https://github.com/Rerumu/Wasynth/archive/v0.13.0.tar.gz
+	b2sums = dffe0c9c89f1ad7667c2fc84392d51b75925f05dd00b3038f5ca21a8733943f9e36c43e8bd7050d189949134f813c8b89b451638413907e5186e402ba3d5c798
+
+pkgname = wasynth
