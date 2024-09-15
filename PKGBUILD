@@ -1,40 +1,66 @@
 # Maintainer: Florian Schweikert <kelvan@ist-total.org>
+# Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
 
-pkgname=dput-ng-git
 _gitname=dput-ng
-_foldername=${_gitname}
-pkgver=1.33
+pkgname="${_gitname}-git"
+pkgver=1.40.r6.gf5f72a1
 pkgrel=1
-pkgdesc='like dput, but better'
-url='http://dput-ng.debian.net/'
-makedepends=('python-setuptools')
-depends=('python-debian')
-license=('GPL')
+pkgdesc='Like dput but better'
+url='https://salsa.debian.org/debian/dput-ng'
+makedepends=('git' 'python-setuptools' 'python-sphinx')
+depends=('distro-info' 'python' 'python-debian' 'python-jsonschema' 'python-paramiko' 'python-pyxdg')
+license=('GPL-2.0-or-later')
 arch=('any')
 provides=('dput')
 conflicts=('dput')
-source=("git+https://salsa.debian.org/debian/${_gitname}.git")
-sha1sums=('SKIP')
+source=("git+https://salsa.debian.org/debian/${_gitname}.git"
+	"0001-xdg-import.patch")
+b2sums=('SKIP'
+	'b65e2c06fee5d2c25cacfbcf901c26176cd205664113e408f6d1e20859c37253cd43bb21d9387b1a429b8376be0764415692c63658bf26ba13fd5ad0f05f4c65')
 
-build() {
-    cd "${srcdir}/${_foldername}"
-    python3 setup.py build
+pkgver()
+{
+    cd "${srcdir}/${_gitname}"
+    git describe --long --abbrev=7 --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package() {
-    cd "${srcdir}/${_foldername}"
-    git checkout -f ${pkgver}
-    python3 setup.py install --skip-build -O1 --root="$pkgdir"
-    install -d "${pkgdir}/usr/bin"
-    install "${srcdir}"/${_foldername}/bin/* "${pkgdir}/usr/bin/"
-    install -d "${pkgdir}/etc/dput.d/"
-    install "${srcdir}"/${_foldername}/skel/metas/* "${pkgdir}/etc/dput.d/"
-    install "${srcdir}"/${_foldername}/skel/profiles/* "${pkgdir}/etc/dput.d/"
-    install -d "${pkgdir}/usr/share/dput-ng/"
-    cp -r "${srcdir}"/${_foldername}/skel/hooks "${pkgdir}/usr/share/dput-ng/"
-    cp -r "${srcdir}"/${_foldername}/skel/commands "${pkgdir}/usr/share/dput-ng/"
-    cp -r "${srcdir}"/${_foldername}/skel/interfaces "${pkgdir}/usr/share/dput-ng/"
-    cp -r "${srcdir}"/${_foldername}/skel/uploaders "${pkgdir}/usr/share/dput-ng/"
-    cp -r "${srcdir}"/${_foldername}/skel/schemas "${pkgdir}/usr/share/dput-ng/"
-    cp -r "${srcdir}"/${_foldername}/skel/codenames "${pkgdir}/usr/share/dput-ng/"
+prepare()
+{
+    cd "${srcdir}/${_gitname}"
+    patch --forward --strip=1 --input=../0001-xdg-import.patch
+}
+
+build()
+{
+    cd "${srcdir}/${_gitname}"
+    python setup.py build
+
+    cd docs
+    make man
+}
+
+package()
+{
+    cd "${srcdir}/${_gitname}"
+
+    python setup.py install --skip-build -O1 --root="$pkgdir"
+
+    # Binaries
+    install -Dm755 bin/dcut "${pkgdir}/usr/bin/dcut"
+    install -Dm755 bin/dirt "${pkgdir}/usr/bin/dirt"
+    install -Dm755 bin/dput "${pkgdir}/usr/bin/dput"
+
+    # Config
+    find skel/metas -exec install -Dm644 {} --target-directory="${pkgdir}/etc/dput.d/" \;
+    find skel/profiles -exec install -Dm644 {} --target-directory="${pkgdir}/etc/dput.d/" \;
+
+    find skel/hooks -exec install -Dm644 {} --target-directory="${pkgdir}/usr/share/dput-ng/" \;
+    find skel/commands -exec install -Dm644 {} --target-directory="${pkgdir}/usr/share/dput-ng/" \;
+    find skel/interfaces -exec install -Dm644 {} --target-directory="${pkgdir}/usr/share/dput-ng/" \;
+    find skel/uploaders -exec install -Dm644 {} --target-directory="${pkgdir}/usr/share/dput-ng/" \;
+    find skel/schemas -exec install -Dm644 {} --target-directory="${pkgdir}/usr/share/dput-ng/" \;
+    find skel/codenames -exec install -Dm644 {} --target-directory="${pkgdir}/usr/share/dput-ng/" \;
+
+    # Docs
+    install -Dm644 docs/_build/man/dput.1 "${pkgdir}/usr/share/man/man1/dput.1"
 }

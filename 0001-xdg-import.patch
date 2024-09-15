@@ -1,0 +1,24 @@
+Only in dput-ng: build
+Only in dput-ng/dput/configs: __pycache__
+diff -rua dput-ng.orig/dput/core.py dput-ng/dput/core.py
+--- dput-ng.orig/dput/core.py	2024-09-14 14:49:46.706904193 +0200
++++ dput-ng/dput/core.py	2024-09-14 14:55:17.501689784 +0200
+@@ -27,7 +27,7 @@
+ import traceback
+ import getpass
+ 
+-import xdg
++from xdg import BaseDirectory as xdg
+ 
+ import dput.logger
+ from logging.handlers import RotatingFileHandler
+@@ -49,7 +49,7 @@
+ 
+ # dput reads from either of these locations but not both; do the same here
+ def _find_user_dput_cf():
+-    xdg_name = os.path.join(xdg.xdg_config_home(), "dput", "dput.cf")
++    xdg_name = os.path.join(xdg.xdg_config_home, "dput", "dput.cf")
+     try:
+         open(xdg_name).close()
+     except EnvironmentError:
+Only in dput-ng/dput: __pycache__
