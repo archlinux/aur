@@ -8,6 +8,7 @@ pkgbase = dict-ozhegov
 	license = unknown
 	makedepends = python3
 	makedepends = dictd
+	makedepends = git
 	optdepends = dictd: dict client and server
 	provides = dictd-ozhegov
 	conflicts = dictd-ozhegov
