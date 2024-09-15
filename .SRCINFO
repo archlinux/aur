@@ -1,7 +1,7 @@
 pkgbase = r-tidybayes
 	pkgdesc = Tidy Data and 'Geoms' for Bayesian Models
-	pkgver = 3.0.6
-	pkgrel = 3
+	pkgver = 3.0.7
+	pkgrel = 1
 	url = https://cran.r-project.org/package=tidybayes
 	arch = any
 	license = GPL
@@ -51,7 +51,7 @@ pkgbase = r-tidybayes
 	optdepends = r-testthat
 	optdepends = r-transformr
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/tidybayes_3.0.6.tar.gz
-	sha256sums = 706044e17855a684a5ad1aeb582963dd3c7192a4a8ad0584358d0ea7c7aadb90
+	source = https://cran.r-project.org/src/contrib/tidybayes_3.0.7.tar.gz
+	sha256sums = 1ccc481a430547f0134d32595d59c252a9469a2202cc5300306aa3bb4708290a
 
 pkgname = r-tidybayes
