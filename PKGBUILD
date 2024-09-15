@@ -4,7 +4,7 @@
 
 pkgname='git-quick-stats'
 pkgver='2.5.6'
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple and efficient way to access various statistics in git repository'
 arch=('any')
 url="https://github.com/arzzen/$pkgname"
