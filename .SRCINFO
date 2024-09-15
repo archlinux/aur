@@ -1,0 +1,11 @@
+pkgbase = phoenix-policies
+	pkgdesc = Standard Phoenix policies for Mozilla Firefox
+	pkgver = 20240914
+	pkgrel = 1
+	url = https://phoenix.celenity.dev
+	arch = any
+	license = GPL3
+	source = policies.json
+	sha512sums = 364dfe568397dc9aac0f30d30df2ecc4914ced0f01391b0de798c2f81e723336122740e9e21aefbbbc2c0c8e52310743d1a4638404bad1f52e45edcd2bc3f061
+
+pkgname = phoenix-policies
