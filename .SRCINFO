@@ -1,6 +1,6 @@
 pkgbase = xcpc
 	pkgdesc = An Amstrad CPC emulator
-	pkgver = 0.52.0
+	pkgver = 0.52.1
 	pkgrel = 1
 	epoch = 1
 	url = http://www.xcpc-emulator.net/
@@ -8,7 +8,7 @@ pkgbase = xcpc
 	arch = x86_64
 	license = GPL
 	depends = gtk3
-	source = https://bitbucket.org/ponceto/xcpc/downloads/xcpc-0.52.0.tar.gz
-	sha256sums = 4bc8f2f24437a9e94bc507131eedcc406c608f27f01aeb9d79c1b8c0e7f9717f
+	source = https://bitbucket.org/ponceto/xcpc/downloads/xcpc-0.52.1.tar.gz
+	sha256sums = 0dcc1079e55b3cadf051b9621d983e6b00c1a21d98b6afd692311eb116ffb1a2
 
 pkgname = xcpc

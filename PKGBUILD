@@ -1,7 +1,7 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Feufochmar <feufochmar@d-20.fr>
 pkgname=xcpc
-pkgver=0.52.0
+pkgver=0.52.1
 pkgrel=1
 epoch=1
 pkgdesc="An Amstrad CPC emulator"
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('gtk3')
 optdepends=()
 source=(https://bitbucket.org/ponceto/xcpc/downloads/xcpc-$pkgver.tar.gz)
-sha256sums=('4bc8f2f24437a9e94bc507131eedcc406c608f27f01aeb9d79c1b8c0e7f9717f')
+sha256sums=('0dcc1079e55b3cadf051b9621d983e6b00c1a21d98b6afd692311eb116ffb1a2')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
