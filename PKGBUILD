@@ -3,7 +3,7 @@
 
 pkgname=openspace-git
 _pkgname=OpenSpace
-pkgver=v0.20.0.41.gc0b4103d46
+pkgver=v0.20.0.119.g062278b0a0
 pkgrel=1
 pkgdesc="OpenSpace is an open source, non-commercial, and freely available interactive data visualization software designed to visualize the entire known universe and portray our ongoing efforts to investigate the cosmos"
 arch=('x86_64')
@@ -117,13 +117,13 @@ package() {
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/webgui/ext/nodejs"
 	cp -R "${srcdir}/${_pkgname}/modules/webgui/ext/nodejs"  "$pkgdir/opt/OpenSpace/modules/webgui/ext"
 	mkdir -p "$pkgdir/opt/OpenSpace/modules/webbrowser/ext"
-	cp -R "${srcdir}/${_pkgname}/build/modules/webbrowser/ext/cef/cef_binary_102.0.10+gf249b2e+chromium-102.0.5005.115_linux64/Release"  "$pkgdir/opt/OpenSpace/modules/webbrowser/ext"
+	cp -R "${srcdir}/${_pkgname}/build/modules/webbrowser/ext/cef/cef_binary_127.3.5+g114ea2a+chromium-127.0.6533.120_linux64/Release"  "$pkgdir/opt/OpenSpace/modules/webbrowser/ext"
 	rm "$pkgdir/opt/OpenSpace/modules/webbrowser/ext/Release/libvulkan.so.1"
 	mkdir -p "$pkgdir/opt/OpenSpace/bin"
 	cp -R "${srcdir}/${_pkgname}/bin"  "$pkgdir/opt/OpenSpace"
 	install ../open-space "$pkgdir/opt/OpenSpace/bin/open-space"
 	mkdir -p "$pkgdir/opt/OpenSpace/lib"
-	cp "${srcdir}/${_pkgname}/build/ext/ghoul/ext/lua/libLua.so" "$pkgdir/opt/OpenSpace/lib/."
+	cp "${srcdir}/${_pkgname}/build/ext/ghoul/ext/lua/libLua.a" "$pkgdir/opt/OpenSpace/lib/."
 	cp "${srcdir}/${_pkgname}/openspace.cfg"  "$pkgdir/opt/OpenSpace/."
 	cp "${srcdir}/${_pkgname}/ACKNOWLEDGMENTS.md" "$pkgdir/opt/OpenSpace/."
 	cp "${srcdir}/${_pkgname}/CITATION.cff" "$pkgdir/opt/OpenSpace/."
@@ -132,4 +132,6 @@ package() {
 	cp "${srcdir}/${_pkgname}/CREDITS.md" "$pkgdir/opt/OpenSpace/."
 	cp "${srcdir}/${_pkgname}/LICENSE.md" "$pkgdir/opt/OpenSpace/."
 	cp "${srcdir}/${_pkgname}/README.md" "$pkgdir/opt/OpenSpace/."
+	mkdir -p "$pkgdir/opt/OpenSpace/bin/cefcache"
+	chmod -R 777 "$pkgdir/opt/OpenSpace/bin/cefcache/."
 }
