@@ -122,7 +122,6 @@ sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
-  "c397a8da291547c757a42f7727a5e6650aa70e6e531f2ef150356eb9eb1fb49c"
 )
 
 if [[ $CARCH == 'x86_64' ]]; then
