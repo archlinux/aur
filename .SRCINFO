@@ -1,74 +1,128 @@
 pkgbase = vlc-luajit
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility
 	pkgver = 3.0.21
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.videolan.org/vlc/
 	arch = x86_64
 	arch = aarch64
 	license = GPL-2.0-or-later
 	license = LGPL-2.1-or-later
+	makedepends = a52dec
 	makedepends = aalib
+	makedepends = abseil-cpp>=20240722
 	makedepends = alsa-lib
 	makedepends = aom>=3
+	makedepends = aribb24
 	makedepends = aribb25
 	makedepends = avahi
-	makedepends = chromaprint
-	makedepends = dav1d>=1.3.0
+	makedepends = bash
+	makedepends = cairo
+	makedepends = dav1d
+	makedepends = dbus
+	makedepends = faad2
+	makedepends = ffmpeg>=7
 	makedepends = flac>=1.4.0
 	makedepends = fluidsynth
+	makedepends = fontconfig
+	makedepends = freetype2
+	makedepends = fribidi
+	makedepends = gcc-libs
+	makedepends = gdk-pixbuf2
+	makedepends = glib2
+	makedepends = glibc
+	makedepends = gnutls
 	makedepends = gst-plugins-base-libs
 	makedepends = gtk3
+	makedepends = harfbuzz
+	makedepends = hicolor-icon-theme
 	makedepends = jack
+	makedepends = libarchive
 	makedepends = libass
 	makedepends = libavc1394
 	makedepends = libbluray
 	makedepends = libcaca
+	makedepends = libdca
 	makedepends = libdc1394>=2.2.7
+	makedepends = libdvbpsi
 	makedepends = libdvdcss
 	makedepends = libdvdnav
 	makedepends = libdvdread
+	makedepends = libglvnd
 	makedepends = libgme
 	makedepends = libgoom2
 	makedepends = libjpeg-turbo
 	makedepends = libkate
+	makedepends = libmad
+	makedepends = libmatroska
 	makedepends = libmicrodns>=0.2
 	makedepends = libmodplug
+	makedepends = libmpcdec
+	makedepends = libmpeg2
 	makedepends = libmtp
 	makedepends = libnotify
 	makedepends = libnfs
 	makedepends = libogg
 	makedepends = libpng
+	makedepends = libproxy
 	makedepends = libpulse
 	makedepends = librsvg
 	makedepends = libsamplerate
+	makedepends = libsecret
 	makedepends = libshout
 	makedepends = libsoxr
 	makedepends = libssh2
+	makedepends = libtar
 	makedepends = libtheora
 	makedepends = libtiger
+	makedepends = libupnp>=1.14
 	makedepends = libvorbis
 	makedepends = libvpx>=1.14
+	makedepends = libx11
+	makedepends = libxcb
+	makedepends = libxinerama
+	makedepends = libxml2
+	makedepends = libxpm
 	makedepends = lirc
 	makedepends = live-media>=2024.04.19
+	makedepends = lua
 	makedepends = mesa
 	makedepends = mpg123>=1.32.2
 	makedepends = opus
 	makedepends = pcsclite
 	makedepends = projectm
 	makedepends = protobuf>=28.1
+	makedepends = qt5-base
+	makedepends = qt5-svg
+	makedepends = qt5-x11extras
 	makedepends = sdl_image
 	makedepends = smbclient
 	makedepends = speex
 	makedepends = srt>=1.5
 	makedepends = systemd-libs
+	makedepends = taglib>=2
 	makedepends = twolame
 	makedepends = vcdimager
+	makedepends = wayland
 	makedepends = wayland-protocols
 	makedepends = x264>=0.164
 	makedepends = x265>=3.6
+	makedepends = xcb-util-keysyms
 	makedepends = xosd
+	makedepends = zlib
 	makedepends = zvbi
+	makedepends = luajit
 	makedepends = lua51
+	options = !emptydirs
+	source = https://download.videolan.org/vlc/3.0.21/vlc-3.0.21.tar.xz
+	source = update-vlc-plugin-cache.hook
+	source = taglib-2.patch
+	source = add-ffmpeg7-support.patch
+	sha512sums = cb1af76c8056648c331d7e6e0680d161ed1849eb635987504f45eae02531e9b432651034317fa7e02b0722905dfb9f0f5dad67b5924cc62edcaf0d173ac36aee
+	sha512sums = b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3
+	sha512sums = ea0d1e1dfed16dac8f9027eb55d987dee59630568b9744ceb42bfa134ea9295252d83574f3d793a76a5be3b02661c1731ed366003b6b55b2d7f02fde70586ff3
+	sha512sums = dc155f70ae6a800cea2fd8a9167c0fec0b67b695cbe5bf7bb7f1ca76247100ddb8493e7ce6a9ff5e35686d20b79408960a367156955fab892357bc1fb91e2bfe
+
+pkgname = vlc-luajit
 	depends = a52dec
 	depends = abseil-cpp>=20240722
 	depends = aribb24
@@ -100,12 +154,13 @@ pkgbase = vlc-luajit
 	depends = libsecret
 	depends = libtar
 	depends = libupnp>=1.14
+	depends = libvlc-luajit
 	depends = libx11
 	depends = libxcb
 	depends = libxinerama
 	depends = libxml2
 	depends = libxpm
-	depends = luajit
+	depends = lua
 	depends = qt5-base
 	depends = qt5-svg
 	depends = qt5-x11extras
@@ -113,14 +168,14 @@ pkgbase = vlc-luajit
 	depends = wayland
 	depends = xcb-util-keysyms
 	depends = zlib
+	depends = luajit
 	optdepends = aalib: ASCII art video output
 	optdepends = alsa-lib: ALSA audio output
-	optdepends = aom>=3: AOM AV1 codec
+	optdepends = aom: AOM AV1 codec
 	optdepends = aribb25: aribcam support
 	optdepends = avahi: service discovery using bonjour protocol
-	optdepends = chromaprint: Chromaprint audio fingerprinter
-	optdepends = dav1d>=1.3.0: dav1d AV1 decoder
-	optdepends = flac>=1.4.0: Free Lossless Audio Codec plugin
+	optdepends = dav1d: dav1d AV1 decoder
+	optdepends = flac: Free Lossless Audio Codec plugin
 	optdepends = fluidsynth: FluidSynth based MIDI playback plugin
 	optdepends = gnu-free-fonts: subtitle font
 	optdepends = gst-plugins-base-libs: for libgst plugins
@@ -133,7 +188,7 @@ pkgbase = vlc-luajit
 	optdepends = libbluray: Blu-Ray video input
 	optdepends = libcaca: colored ASCII art video output
 	optdepends = libcdio: audio CD playback
-	optdepends = libdc1394>=2.2.7: IEEE 1394 access plugin
+	optdepends = libdc1394: IEEE 1394 access plugin
 	optdepends = libdvdcss: decoding encrypted DVDs
 	optdepends = libdvdnav: DVD with navigation input module
 	optdepends = libdvdread: DVD input module
@@ -142,7 +197,7 @@ pkgbase = vlc-luajit
 	optdepends = libjpeg-turbo: JPEG support
 	optdepends = libkate: Kate codec
 	optdepends = libmodplug: MOD output plugin
-	optdepends = libmicrodns>=0.2: mDNS services discovery (chromecast etc)
+	optdepends = libmicrodns: mDNS services discovery (chromecast etc)
 	optdepends = libmtp: MTP devices discovery
 	optdepends = libnfs: NFS access
 	optdepends = libnotify: notification plugin
@@ -158,42 +213,39 @@ pkgbase = vlc-luajit
 	optdepends = libtheora: theora codec
 	optdepends = libtiger: Tiger rendering for Kate streams
 	optdepends = libvorbis: Vorbis decoder/encoder
-	optdepends = libvpx>=1.14: VP8 and VP9 codec
+	optdepends = libvpx: VP8 and VP9 codec
 	optdepends = lirc: lirc control
 	optdepends = live-media: streaming over RTSP
-	optdepends = lua51-socket: http interface
-	optdepends = mpg123>=1.32.2: mpg123 codec
+	optdepends = lua-socket: http interface
+	optdepends = mpg123: mpg123 codec
 	optdepends = ncurses: ncurses interface
 	optdepends = opus: opus codec
 	optdepends = pcsclite: aribcam support
 	optdepends = projectm: ProjectM visualisation
-	optdepends = protobuf>=28.1: chromecast streaming
+	optdepends = protobuf: chromecast streaming
 	optdepends = sdl12-compat: SDL image support
 	optdepends = sdl_image: SDL image support
 	optdepends = smbclient: SMB access plugin
 	optdepends = speex: Speex codec
 	optdepends = speexdsp: Speex codec
-	optdepends = srt>=1.5: SRT input/output plugin
+	optdepends = srt: SRT input/output plugin
 	optdepends = systemd-libs: udev services discovery
 	optdepends = ttf-dejavu: subtitle font
 	optdepends = twolame: TwoLAME mpeg2 encoder plugin
 	optdepends = vcdimager: navigate VCD with libvcdinfo
-	optdepends = x264>=0.164: H264 encoding
-	optdepends = x265>=3.6: HEVC/H.265 encoder
+	optdepends = x264: H264 encoding
+	optdepends = x265: HEVC/H.265 encoder
 	optdepends = zvbi: VBI/Teletext/webcam/v4l2 capture/decoding
 	provides = vlc=3.0.21
 	conflicts = vlc
 	conflicts = vlc-dev
 	conflicts = vlc-plugin
 	conflicts = vlc-stable-git
-	options = !emptydirs
-	source = https://download.videolan.org/vlc/3.0.21/vlc-3.0.21.tar.xz
-	source = update-vlc-plugin-cache.hook
-	source = taglib-2.patch
-	source = add-ffmpeg7-support.patch
-	sha512sums = cb1af76c8056648c331d7e6e0680d161ed1849eb635987504f45eae02531e9b432651034317fa7e02b0722905dfb9f0f5dad67b5924cc62edcaf0d173ac36aee
-	sha512sums = b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3
-	sha512sums = ea0d1e1dfed16dac8f9027eb55d987dee59630568b9744ceb42bfa134ea9295252d83574f3d793a76a5be3b02661c1731ed366003b6b55b2d7f02fde70586ff3
-	sha512sums = dc155f70ae6a800cea2fd8a9167c0fec0b67b695cbe5bf7bb7f1ca76247100ddb8493e7ce6a9ff5e35686d20b79408960a367156955fab892357bc1fb91e2bfe
 
-pkgname = vlc-luajit
+pkgname = libvlc-luajit
+	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility - library
+	depends = dbus
+	depends = gcc-libs
+	depends = glibc
+	provides = libvlc
+	conflicts = libvlc
