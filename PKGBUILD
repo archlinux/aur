@@ -18,7 +18,7 @@ _merge_requests_to_use=('1441' '3751')
 ### IMPORTANT: Do no edit below this line unless you know what you're doing!
 
 _pkgname=mutter
-pkgname=mutter-performance
+pkgname=mutter-performance-unstable
 epoch=1
 pkgver=47.0
 pkgrel=1
