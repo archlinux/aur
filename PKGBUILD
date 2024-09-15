@@ -4,17 +4,14 @@
 
 pkgbase='firefox-nightly-i18n'
 pkgname=("$pkgbase-all")
-pkgrel=1
+pkgrel=2
 pkgdesc="Language pack for Firefox Nightly"
 arch=('any')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.mozilla.org/firefox/"
 
-_name=firefox
-_channel=nightly
-_base_url="https://ftp.mozilla.org/pub/${_name}/${_channel}"
-_language=ach
-_version=$(curl "${CURL_OPTS[@]}" ${_base_url}/latest-mozilla-central-l10n/linux-x86_64/xpi/ | grep "${_language}.langpack.xpi" | sed "s/^.*>firefox-//; s/\.${_language}.*//" | sort -n | tail -n 1)
+_url=https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi
+_version=$(curl "${CURL_OPTS[@]}" ${_url}/ | grep "ach.langpack.xpi" | sed "s/^.*>firefox-//; s/\.ach.*//" | sort -n | tail -n 1)
 
 pkgver=132.0a1
 
@@ -125,15 +122,15 @@ _languages=(
 
 pkgname=()
 source=()
-_url=https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi
+sha256sums=()
 
 for _lang in "${_languages[@]}"; do
   _locale=${_lang%% *}
   _pkgname=firefox-nightly-i18n-${_locale,,}
 
   pkgname+=($_pkgname)
-#  echo "firefox-i18n-${_version}-$_locale.xpi::$_url/firefox-${_version}.$_locale.langpack.xpi"
   source+=("firefox-i18n-${_version}-$_locale.xpi::$_url/firefox-${_version}.$_locale.langpack.xpi")
+  sha256sums+=('SKIP')
   eval "package_$_pkgname() {
     _package $_lang
   }"
@@ -142,112 +139,8 @@ done
 # Don't extract anything
 noextract=("${source[@]%%::*}")
 
-package_firefox-beta-i18n-all() {
-  pkgdesc="All language packs for Firefox Beta (meta)"
-  depends=("${_all_depends[@]}")
-}
-
 _package() {
   pkgdesc="${_languages["$1"]} language pack for Firefox Beta"
-  provides+=("firefox-i18n-$_as_lower" "firefox-developer-edition-i18n-$_as_lower")
-  conflicts=("firefox-i18n-$_as_lower" "firefox-developer-edition-i18n-$_as_lower")
-
   install -Dm644 "firefox-i18n-${_version}-$1.xpi" \
       "$pkgdir/opt/firefox-nightly/distribution/extensions/langpack-$1@firefox.mozilla.org.xpi"
 }
-
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
