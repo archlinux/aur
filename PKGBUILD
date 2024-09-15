@@ -1,6 +1,6 @@
 # Maintainer: Thiago Perrotta <tbperrotta@gmail.com>
 pkgname=git-crecord
-pkgver=20201025.0
+pkgver=20230226.0
 pkgrel=1
 pkgdesc="Git subcommand to interactively select changes to commit or stage"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('python')
 makedepends=('python-docutils' 'python-setuptools')
 source=("https://github.com/andrewshadura/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('54a1ff68464302c8aff4278c0ad137b5b6e7ad10b7a4c12016e5dbc89cf93df7')
+sha256sums=('9bdf5d197fcdd753010d1f0f6fd465faa1f4805587528e4d3cefc4038b9132c9')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
