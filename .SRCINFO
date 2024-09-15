@@ -1,0 +1,17 @@
+pkgbase = gimp-plugin-resynthesizer-scm-git
+	pkgdesc = Suite of gimp plugins for texture synthesis (like heal-selection) - fork that works with GIMP 2 without Python 2 (using script-fu); git version.
+	pkgver = r154.c44500b
+	pkgrel = 1
+	url = https://github.com/itr-tert/gimp-resynthesizer-scm
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = intltool
+	depends = gimp
+	provides = gimp-plugin-resynthesizer-scm
+	conflicts = gimp-plugin-resynthesizer-scm
+	conflicts = gimp-plugin-resynthesizer
+	source = git+https://github.com/itr-tert/gimp-resynthesizer-scm.git
+	md5sums = SKIP
+
+pkgname = gimp-plugin-resynthesizer-scm-git
