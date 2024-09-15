@@ -28,16 +28,16 @@ build() {
 
 package() {
   local destdir="/opt/prisonarchitect"
-	install -d "$pkgdir"{"$destdir",/usr/{bin,share/{pixmaps,applications}}}
+  install -d "$pkgdir"{"$destdir",/usr/{bin,share/{pixmaps,applications}}}
 
-	# Install game files
-	cp -r --no-preserve=ownership prisonarchitect*/* "$pkgdir$destdir"
+  # Install game files
+  cp -r --no-preserve=ownership prisonarchitect*/* "$pkgdir$destdir"
 
-	# Point launcher script to the correct directory
-	sed -i "s|^base=.*|base=$destdir|" "$pkgdir$destdir/PrisonArchitect"
+  # Point launcher script to the correct directory
+  sed -i "s|^base=.*|base=$destdir|" "$pkgdir$destdir/PrisonArchitect"
 
-	# Link executable
-	ln -s "$destdir/PrisonArchitect" "$pkgdir/usr/bin/prisonarchitect"
+  # Link executable
+  ln -s "$destdir/PrisonArchitect" "$pkgdir/usr/bin/prisonarchitect"
 
   # Install desktop file and icon
   install -m644 *.desktop "$pkgdir/usr/share/applications"
