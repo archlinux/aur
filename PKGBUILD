@@ -33,6 +33,9 @@ package() {
   # Install game files
   cp -r --no-preserve=ownership prisonarchitect*/* "$pkgdir$destdir"
 
+  # Make executable executable.
+  chmod +x "$pkgdir$destdir/PrisonArchitect"
+
   # Point launcher script to the correct directory
   sed -i "s|^base=.*|base=$destdir|" "$pkgdir$destdir/PrisonArchitect"
 
