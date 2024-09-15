@@ -4,7 +4,7 @@
 
 _pkgname=lammps
 pkgname=${_pkgname}-git
-pkgver=patch_29Aug2024+46.r40382.20240903.9243959ca4
+pkgver=patch_29Aug2024.r251.g2995cb7
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
@@ -19,15 +19,12 @@ sha512sums=('SKIP')
 optdepends=('clang' 'python' 'python-mpi4py')
 
 pkgver() {
+    # https://wiki.archlinux.org/title/VCS_package_guidelines#Git
     cd $srcdir/${_pkgname}
-    _tag="$(git describe --tags)"
-    _ver="$(sed -E -e 's|^[vV]||' -e 's|^([a-zA-Z]*)-|\1_|' -e 's|\-g[0-9a-f]*$||' -e 's|-|+|g' <<<${_tag})"
-    _rev="$(git rev-list --count HEAD)"
-    _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
-    _hash="$(git rev-parse --short HEAD)"
-
-    printf "${_ver}.r${_rev}.${_date}.${_hash}"
-    # printf "r%s.%s" "$(git rev-list HEAD --count)" "$(git rev-parse --short HEAD)"
+    ( set -o pipefail
+      git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 prepare() {
