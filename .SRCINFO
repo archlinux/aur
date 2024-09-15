@@ -8,7 +8,7 @@ pkgbase = tosu
 	provides = tosu
 	conflicts = tosu
 	noextract = 3.1.0/tosu-linux-v3.1.0.zip
-	source = https://github.com/kotrikd/tosu/releases/download/3.1.0/tosu-linux-v3.1.0.zip
+	source = https://github.com/kotrikd/tosu/releases/download/v3.1.0/tosu-linux-v3.1.0.zip
 	sha256sums = 3f164de319446f89cf2b03b065a60d4857a390df0167fad32e4a744d66381d38
 
 pkgname = tosu
