@@ -11,6 +11,8 @@ pkgbase = perl-net-rawip
 	depends = perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/S/SA/SAPER/Net-RawIP-0.25.tar.gz
+	source = fixes.patch
 	sha512sums = c48c77389db9dc8d5c64d67e5c62bac5e3314dbc36bcfa51aa20d07224492edaa65f5c71d47ca0b804ac62b1b02387e172cd3561eadaa3a1a8040968b182b3ca
+	sha512sums = a87c4fe0552e95d8a331c75036bd1fc8f2359ead8a4ce75529af0f9668729699165acf8bf8b57cd347d571b9f1545f58d82cbfbf50920aea8cfb95c4649410a3
 
 pkgname = perl-net-rawip
