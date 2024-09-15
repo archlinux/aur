@@ -18,6 +18,10 @@ sha512sums=(
     'SKIP'
     '1f2a094a32cdb88751c7b1ea2e2babaca361eface09c8ec34c79fba68dfa61f33b40bad780cba9bdde62a2c0a81886e01a69ac39cb7e8bd28e52c85e1512fd21'
 )
+optdepends=(
+    'hydownloader-git: Alternative download system for Hydrus'
+    'hydrus: Danbooru-like image tagging and searching system for the desktop'
+)
 
 pkgver() {
   cd "$srcdir/$pkgname"
