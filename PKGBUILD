@@ -2,8 +2,8 @@
 # https://github.com/dnaka91/pkgbuilds
 
 pkgname=llvm-cov-pretty
-pkgver=0.1.9
-pkgrel=2
+pkgver=0.1.10
+pkgrel=1
 pkgdesc="More beautiful HTML reports for llvm-cov/cargo-llvm-cov"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/dnaka91/llvm-cov-pretty"
@@ -11,7 +11,7 @@ license=('AGPL-3.0-only')
 depends=('gcc-libs' 'cargo-llvm-cov')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('8e629d0b3e76b002ec6c1efb547a825767dd541b86c91ed6fcc19fa0216f17dfa381d8c62233a2bacca86bdb20e90e34db4703d7aca22c3141f2c58dd3cb48da')
+b2sums=('863aa0eea31b267c1f83ea101e406ca1a2d784091205abc35a5d92d885323acded58f4ae0a378740b56793bbd55f150d2d3884bf008cd014b75f95c4aa661928')
 
 prepare() {
   cd "$pkgname-$pkgver"
