@@ -1,6 +1,6 @@
 pkgbase = prisonarchitect-hib
 	pkgdesc = Prison construction and management simulation (Humble Bundle version)
-	pkgver = update5b
+	pkgver = 1.03
 	pkgrel = 1
 	url = http://www.introversion.co.uk/prisonarchitect/
 	install = desktop.install
@@ -10,12 +10,11 @@ pkgbase = prisonarchitect-hib
 	depends = glu
 	provides = prisonarchitect
 	conflicts = prisonarchitect
-	source = hib://prisonarchitect-update5b-linux.tar.gz
+	source = hib://prisonarchitect-the_slammer_1.03-linux.tar.gz
 	source = prisonarchitect.png::http://www.introversion.co.uk/prisonarchitect/images/tier/tier_icon250.png
 	source = prisonarchitect.desktop
-	md5sums = cf8c3efde8188021e64363127451b8de
+	md5sums = 33234710874924d50ccb3719ae951583
 	md5sums = d8df107c67e1474fabf56cbd90b174ed
 	md5sums = 9e6cf081869d3e0949fe803a01907d50
 
 pkgname = prisonarchitect-hib
-

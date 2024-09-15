@@ -2,7 +2,9 @@
 # Contributor: Duncan K. <duncank@fastmail.fm>
 
 pkgname=prisonarchitect-hib
-pkgver=update5b
+pkgver=1.03
+_codename="The Slammer"
+_codename="${_codename,,}"
 pkgrel=1
 pkgdesc='Prison construction and management simulation (Humble Bundle version)'
 url='http://www.introversion.co.uk/prisonarchitect/'
@@ -14,10 +16,10 @@ provides=('prisonarchitect')
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
 install=desktop.install
 
-source=("hib://prisonarchitect-${pkgver}-linux.tar.gz"
+source=("hib://prisonarchitect-${_codename/ /_}_${pkgver}-linux.tar.gz"
         "prisonarchitect.png::http://www.introversion.co.uk/prisonarchitect/images/tier/tier_icon250.png"
         "prisonarchitect.desktop")
-md5sums=('cf8c3efde8188021e64363127451b8de'
+md5sums=('33234710874924d50ccb3719ae951583'
          'd8df107c67e1474fabf56cbd90b174ed'
          '9e6cf081869d3e0949fe803a01907d50')
 
