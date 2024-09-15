@@ -1,0 +1,4 @@
+[chessx]
+source = "regex"
+url = "https://sourceforge.net/projects/chessx/files/chessx"
+regex = "\\d\\.\\d\\.\\d"
