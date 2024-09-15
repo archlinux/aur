@@ -1,5 +1,6 @@
 # Maintainer: NextWorks <nextworks@protonmail.com>
 # Maintainer: Peter Jung <admin@ptr1337.dev>
+# Maintainer: Luis Vervaet <luisvervaet@gmail.com>
 # Contributor: Alad Wenter <alad@archlinux.org>
 # Contributor: Luna Jernberg <droidbittin@gmail.com>
 # Contributor: Hilton Medeiros <medeiros.hilton@gmail.com>
@@ -9,8 +10,9 @@
 pkgname=zen-browser-avx2-bin
 _pkgname=zen-browser
 _realpkgver=1.0.0-a.39
+_desktopname=zen-alpha
 pkgver=1.0.0.a.39
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser - Static binaries from upstream"
 arch=('x86_64' 'i686')
 url="https://github.com/zen-browser/desktop"
@@ -28,11 +30,11 @@ conflicts=('zen-browser')
 
 source=("zen-browser-$_realpkgver.tar.bz2::https://github.com/zen-browser/desktop/releases/download/$_realpkgver/zen.linux-specific.tar.bz2"
         "$_pkgname.sh"
-        "$_pkgname.desktop"
+        "$_desktopname.desktop"
         "policies.json")
 sha256sums=('20061bea8aa946be421161fc72faf069dd0aa24ac70e5f04df37db07ad668cef'
             'b32396cfb4272398d68c59b48c548b86f99ca4ea70bce8e6bed434819b165e53'
-            'cbf160c917bfa4f342a3de018fe70089e4a80767c5bc73dcd2a083993880654c'
+            'e81e41cb90be3d189c541fb4b013d9250d07f9c6a3bb219065719326514c33b0'
             'f93eb77db526147a8a20744905923a6eda79e2fbcc9f282e2f9228a7a995c798')
 
 #pkgver() {
