@@ -1,7 +1,7 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 # Contributor: Magnus Anderson <magnus@iastate.edu>
 pkgname=px_ptop
-pkgver=3.6.3
+pkgver=3.6.5
 pkgrel=1
 pkgdesc="ps and top for Human Beings"
 arch=('any')
