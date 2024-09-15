@@ -16,9 +16,6 @@ prepare() {
 }
 
 package() {
-    install -dm755 "${pkgdir}/usr/share/fonts/${pkgname}"
-    install -Dm644 RenogareSoft-Regular.ttf "${pkgdir}/usr/share/fonts/${pkgname}"
-
-    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 'renogare soft license.pdf' "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 -t "${pkgdir}/usr/share/fonts/TTF" RenogareSoft-Regular.ttf
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" 'renogare soft license.pdf'
 }
