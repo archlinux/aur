@@ -1,8 +1,9 @@
-# Maintainer: Jelle van der Waa <jelle@archlinux.org
+# Maintainer: Jelle van der Waa <jelle@archlinux.org>
+# Maintainer: Andreas Baumann <mail at andreas baumann dot cc>
 
 pkgname=taskell
 pkgver=1.11.4
-pkgrel=445
+pkgrel=446
 pkgdesc='A command-line kanban board/task manager'
 license=(BSD)
 arch=(x86_64)
