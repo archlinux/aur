@@ -9,6 +9,7 @@ pkgbase = apngopt
 	makedepends = cmake
 	depends = libpng
 	depends = gcc-libs
+	conflicts = apng-utils
 	source = https://sourceforge.net/projects/apng/files/APNG_Optimizer/1.4/apngopt-1.4-src.zip
 	sha512sums = 8dd97ca6fdd10b1285c3a850ab0f6e14113df0b4a607877a6fb7c5bacded02432504e3af87a43c4aa660bad7226f300af8e0967368ca1eef00c9df7f624d578c
 
