@@ -1,7 +1,8 @@
 pkgbase = cnrdrvcups-lb
 	pkgdesc = CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers
 	pkgver = 6.00.1.00
-	pkgrel = 4
+	pkgrel = 1
+	epoch = 1
 	url = https://www.canon-europe.com/support/consumer/products/printers/i-sensys/mf-series/i-sensys-mf657cdw.html?type=drivers&language=EN&os=Linux%20(64-bit)
 	arch = x86_64
 	arch = aarch64

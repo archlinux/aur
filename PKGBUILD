@@ -16,8 +16,8 @@ pkgname='cnrdrvcups-lb'
 _pkgver='6.00';  _dl='8/0100007658/41';_suffix1='m17n';_suffix2='00'
 
 pkgver="${_pkgver}.1.${_suffix2}"
-
-pkgrel=4
+epoch=1
+pkgrel=1
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
 arch=('x86_64' 'aarch64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
@@ -130,7 +130,7 @@ _setvars() {
     
     local -A _libsarchfolder
     _libsarchfolder['x86_64']="libs64/intel"
-    _libsarchfolder['aarch64']="libs64/arm'"
+    _libsarchfolder['aarch64']="libs64/arm"
 
     _vars=(
         _builddir="${srcdir}/${_srcdir}"
