@@ -1,6 +1,6 @@
 pkgbase = hydownloader-git
 	pkgdesc = Alternative download system for Hydrus
-	pkgver = 0.43.0.r3.gd59967b
+	pkgver = r559.d59967b
 	pkgrel = 1
 	url = https://gitgud.io/thatfuckingbird/hydownloader
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = hydownloader-git
 	depends = python-opencv
 	depends = python-numpy
 	depends = python-pillow
-	provides = hydownloader=0.43.0
+	provides = hydownloader=r559.d59967b
 	source = git+https://gitgud.io/thatfuckingbird/hydownloader.git
 	sha256sums = SKIP
 

@@ -2,7 +2,7 @@
 
 pkgname=hydownloader-git
 _name=hydownloader
-pkgver=0.43.0.r3.gd59967b
+pkgver=r559.d59967b
 pkgrel=1
 pkgdesc="Alternative download system for Hydrus"
 arch=(x86_64 aarch64)
@@ -36,7 +36,7 @@ prepare() {
 
 pkgver() {
   cd "$_name"
-  git describe --long --tags | sed -E 's/^[^0-9]+//;s/([^-]*-g)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
