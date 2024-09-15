@@ -1,8 +1,8 @@
 # Maintainer: OGIOS <ogios@foxmail.com>
 _pkgname=way-edges
 pkgname=way-edges-bin
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 
 pkgdesc="Hidden widget on screen edges"
 arch=('x86_64' 'aarch64')
