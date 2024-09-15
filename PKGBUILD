@@ -4,7 +4,7 @@
 
 pkgname='therion'
 pkgver='6.2.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Cave surveying: processes survey data and generates maps or 3D models of caves"
 arch=('x86_64' 'i686')
 url="http://therion.speleo.sk"
@@ -59,6 +59,9 @@ prepare() {
 
   # patch to get UTF8 and available fonts
   patch -p0 -i ${srcdir}/therion_ini.patch
+
+  # https://github.com/therion/therion/pull/586
+  sed -i.bak 's/auto format.*)/& const/' thdouble.h
 }
 
 build() {
