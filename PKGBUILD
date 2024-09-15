@@ -3,7 +3,7 @@
 # Contributor: Jonathon Fernyhough <jonathon+m2x+dev>
 
 pkgname=zsync2-git
-pkgver=2.0.0.alpha.1.20230304.r5.g87fb5a0
+pkgver=2.0.0.alpha.1.20230304.r7.g9337846
 pkgrel=1
 pkgdesc="A rewrite of the advanced file download/sync tool zsync"
 arch=(x86_64)
@@ -15,6 +15,8 @@ provides=(zsync2)
 conflicts=(zsync2)
 source=("git+https://github.com/AppImageCommunity/zsync2.git")
 b2sums=('SKIP')
+
+CFLAGS="$CFLAGS -Wno-incompatible-pointer-types"
 
 pkgver() {
   cd zsync2
