@@ -7,7 +7,7 @@
 
 pkgname=perl-goo-canvas
 pkgver=0.06
-pkgrel=13.3
+pkgrel=13.5
 pkgdesc="Perl bindings for GooCanvas"
 arch=('i686' 'x86_64')
 url="https://metacpan.org/pod/Goo::Canvas"
@@ -15,17 +15,23 @@ license=('GPL' 'PerlArtistic')
 depends=('perl' 'cairo-perl' 'glib-perl' 'goocanvas1' 'gtk2-perl')
 makedepends=('perl-extutils-depends' 'perl-extutils-pkgconfig')
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/Y/YE/YEWENBIN/Goo-Canvas-$pkgver.tar.gz")
-md5sums=('7dfe0be8c17bfd641d18384d4fd8fb23')
+source=("https://cpan.metacpan.org/authors/id/Y/YE/YEWENBIN/Goo-Canvas-$pkgver.tar.gz" privfunctions.patch)
+md5sums=('7dfe0be8c17bfd641d18384d4fd8fb23'
+         '55ad0e64de98546d101395ac246ed5b7')
+
+prepare() {
+  cd Goo-Canvas-$pkgver
+  patch -Np2 -b -z .orig <../privfunctions.patch
+}
 
 build() {
-  cd "$srcdir/Goo-Canvas-$pkgver"
+  cd Goo-Canvas-$pkgver
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   PERL_USE_UNSAFE_INC=1 make
 }
 
 check() {
-  cd "$srcdir/Goo-Canvas-$pkgver"
+  cd Goo-Canvas-$pkgver
   make test
 }
 
@@ -40,7 +46,7 @@ fi
 }
 
 package() {
-  cd "$srcdir/Goo-Canvas-$pkgver"
+  cd Goo-Canvas-$pkgver
   make install DESTDIR="$pkgdir"
   _perl_depends
 }
