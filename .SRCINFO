@@ -1,7 +1,7 @@
 pkgbase = photoqt-bin
 	pkgdesc = Fast and highly configurable image viewer with a simple and nice interface (binary release)
 	pkgver = 4.6
-	pkgrel = 3
+	pkgrel = 4
 	url = http://photoqt.org/
 	arch = x86_64
 	license = GPL2
@@ -31,6 +31,6 @@ pkgbase = photoqt-bin
 	provides = photoqt
 	conflicts = photoqt
 	source = https://photoqt.org/downloads/bin/photoqt-4.6.tar.gz
-	sha256sums = b5285638977da71d79dbd90f94b1836154686396f708d0e834cbe8bf5cef32d1
+	sha256sums = c456cc9de480b2feac4044a9b89c6350375e50985094b612f82faf98706becee
 
 pkgname = photoqt-bin
