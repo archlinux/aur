@@ -1,0 +1,447 @@
+commit 4dbb1f0a6fce8c61a1eed25eb5b597852f2559a0
+Author: Jan Kohnert <jan@jan-kohnert.de>
+Date:   Sun Sep 15 18:58:13 2024 +0200
+
+    Only changed source files.
+
+diff --git a/src/custom.c b/src/custom.c
+index 8d57766..4d39331 100644
+--- a/src/custom.c
++++ b/src/custom.c
+@@ -30,16 +30,10 @@
+ #include "config.h"
+ #endif
+ 
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <string.h>
+- 
+ #include "define.h"
+-#include "globals.h"
+ #include "custom.h"
+ #include "fits/fitscat.h"
+ #include "fitswcs.h"
+-#include "prefs.h"
+ 
+ /****** fix_wfi *******************************************************
+ PROTO	void fix_wfi(tabstruct *tab)
+diff --git a/src/custom.h b/src/custom.h
+index 6f724cf..b5909d6 100644
+--- a/src/custom.h
++++ b/src/custom.h
+@@ -26,16 +26,17 @@
+ *
+ *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+ 
++#ifndef CUSTOM_H
++#define CUSTOM_H
++
+ #ifndef _FITSCAT_H_
+ #include "fits/fitscat.h"
+ #endif
+ 
+-#ifndef _PREFS_H_
+-#include "prefs.h"
+-#endif
+-
+ /*------------------------------- constants ---------------------------------*/
+ #define		WFI_PIXSCALE	(0.238*ARCSEC/DEG)
+ 
+ /*------------------------------- functions ---------------------------------*/
+ void	fix_wfi(tabstruct *tab);
++
++#endif // CUSTOM_H
+diff --git a/src/define.h b/src/define.h
+index 8c3d916..eb8406e 100644
+--- a/src/define.h
++++ b/src/define.h
+@@ -26,6 +26,9 @@
+ *
+ *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+ 
++#ifndef DEFINE_H
++#define DEFINE_H
++
+ /* Check if we are using a configure script here */
+ #ifndef HAVE_CONFIG_H
+ #define		VERSION		"2.x"
+@@ -125,17 +128,17 @@
+ #define	QCALLOC(ptr, typ, nel) \
+ 		{if (!(ptr = (typ *)calloc((size_t)(nel),sizeof(typ)))) \
+ 		  error(EXIT_FAILURE, "Not enough memory for ", \
+-			#ptr " (" #nel " elements) !");;}
++			#ptr " (" #nel " elements) !");}
+ 
+ #define	QMALLOC(ptr, typ, nel) \
+ 		{if (!(ptr = (typ *)malloc((size_t)(nel)*sizeof(typ)))) \
+ 		  error(EXIT_FAILURE, "Not enough memory for ", \
+-			#ptr " (" #nel " elements) !");;}
++			#ptr " (" #nel " elements) !");}
+ 
+ #define	QREALLOC(ptr, typ, nel) \
+ 		{if (!(ptr = (typ *)realloc(ptr, (size_t)(nel)*sizeof(typ)))) \
+ 		   error(EXIT_FAILURE, "Not enough memory for ", \
+-			#ptr " (" #nel " elements) !");;}
++			#ptr " (" #nel " elements) !");}
+ 
+ #define QMEMCPY(ptrin, ptrout, typ, nel) \
+ 		{if (ptrin) \
+@@ -156,3 +159,5 @@
+ #define	FPRINTF		if (prefs.verbose_type == FULL)	fprintf
+ 
+ #define QPRINTF		if (prefs.verbose_type != QUIET)	fprintf
++
++#endif // DEFINE_H
+diff --git a/src/file.c b/src/file.c
+index 1d6b815..efada76 100644
+--- a/src/file.c
++++ b/src/file.c
+@@ -35,15 +35,12 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <sys/stat.h>
+-#include <sys/types.h>
+ #include <unistd.h>
+  
+ #include "define.h"
+ #include "globals.h"
+ #include "fits/fitscat.h"
+ #include "file.h"
+-#include "prefs.h"
+-#include "xml.h"
+ 
+ /****** load_fitsfiles *******************************************************
+ PROTO	catstruct **load_fitsfiles(char *name, int *ncat, int * outcat,
+diff --git a/src/file.h b/src/file.h
+index 684e264..6114502 100644
+--- a/src/file.h
++++ b/src/file.h
+@@ -27,9 +27,8 @@
+ *
+ *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+ 
+-#ifndef _FITSCAT_H_
+-#include "fits/fitscat.h"
+-#endif
++#ifndef FILE_H
++#define FILE_H
+ 
+ #ifndef _PREFS_H_
+ #include "prefs.h"
+@@ -44,3 +43,5 @@ extern int		read_aschead(char *filename, int frameno,
+ 
+ extern void		save_fitsfiles(char *name, int t, int nfile,
+                                 catstruct *cat, filenum filetype);
++
++#endif // FILE_H
+diff --git a/src/fits/fitscat.h b/src/fits/fitscat.h
+index 41ebb72..e090427 100644
+--- a/src/fits/fitscat.h
++++ b/src/fits/fitscat.h
+@@ -27,8 +27,8 @@
+ *
+ *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+ 
+-#ifndef _FITSCAT_H_
+-#define _FITSCAT_H_
++#ifndef FITSCAT_H
++#define FITSCAT_H
+ 
+ #include <stdio.h>
+ 
+@@ -333,6 +333,6 @@ extern  void	error(int, char *, char *),
+ 		warning(char *msg1, char *msg2);
+ 
+ 
+-int		bswapflag;
++extern int		bswapflag;
+ 
+-#endif
++#endif // FITSCAT_H
+diff --git a/src/fits/fitscat_defs.h b/src/fits/fitscat_defs.h
+index bc9c37e..866c491 100644
+--- a/src/fits/fitscat_defs.h
++++ b/src/fits/fitscat_defs.h
+@@ -27,6 +27,9 @@
+ *
+ *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+ 
++#ifndef FITSCAT_DEFS_H
++#define FITSCAT_DEFS_H
++
+ /* Check if we are using a configure script here */
+ #ifndef HAVE_CONFIG_H
+ #define		VERSION		"2.0"
+@@ -156,3 +159,5 @@ typedef	int		LONG;			/* for DEC-Alpha... */
+ 	 dest = key->ptr;}
+ 
+ #define MIN(a,b) (a<b?a:b)
++
++#endif // FITSCAT_DEFS_H
+diff --git a/src/fitswcs.h b/src/fitswcs.h
+index 60013c4..c599c82 100644
+--- a/src/fitswcs.h
++++ b/src/fitswcs.h
+@@ -27,8 +27,8 @@
+ *
+ *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+ 
+-#ifndef _FITSWCS_H_
+-#define _FITSWCS_H_
++#ifndef FITSWCS_H
++#define FITSWCS_H
+ 
+ /*-------------------------------- macros -----------------------------------*/
+ 
+@@ -160,4 +160,4 @@ extern void		b2j(double yearobs, double alphain, double deltain,
+ 			range_wcs(wcsstruct *wcs),
+ 			write_wcs(tabstruct *tab, wcsstruct *wcs);
+ 
+-#endif
++#endif // FITSWCS_H
+diff --git a/src/globals.h b/src/globals.h
+index 85cb2b6..ec88686 100644
+--- a/src/globals.h
++++ b/src/globals.h
+@@ -27,11 +27,16 @@
+ *
+ *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+ 
++#ifndef GLOBALS_H
++#define GLOBALS_H
++
+ #include	"types.h"
+ 
+ /*----------------------- miscellaneous variables ---------------------------*/
+-char		gstr[MAXCHAR];
++extern  char	gstr[MAXCHAR];
+ 
+ /*------------------------------- functions ---------------------------------*/
+ extern	void	makeit(void),
+                 write_error(char *msg1, char *msg2);
++
++#endif // GLOBALS_H
+\ No newline at end of file
+diff --git a/src/key.h b/src/key.h
+index f1b7a63..e509106 100644
+--- a/src/key.h
++++ b/src/key.h
+@@ -27,6 +27,9 @@
+ *
+ *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+ 
++#ifndef KEY_H
++#define KEY_H
++
+ /*--------------------------------- constants -------------------------------*/
+ 
+ #define         FIND_STRICT     0
+@@ -53,3 +56,4 @@ typedef struct
+ 
+ int	findkeys(char *str, char key[][32], int mode);
+ 
++#endif // KEY_H
+diff --git a/src/main.c b/src/main.c
+index 5639cda..d95c874 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -42,7 +42,7 @@
+ #include	"globals.h"
+ #include	"fits/fitscat.h"
+ #include	"prefs.h"
+-#include        "xml.h"
++#include    "xml.h"
+ 
+ #define		SYNTAX \
+ "missfits image1 [image2 ...][@image_list1 [@image_list2 ...]]\n" \
+@@ -56,6 +56,12 @@ extern const char	notokstr[];
+ 
+ time_t		thetime, thetime2;
+ 
++// define variable marked extern in headers and used throughout the program
++char gstr[MAXCHAR];
++int bswapflag;
++prefstruct prefs;
++
++
+ /********************************** main ************************************/
+ int	main(int argc, char *argv[])
+ 
+diff --git a/src/makeit.c b/src/makeit.c
+index d77119b..60b4a71 100644
+--- a/src/makeit.c
++++ b/src/makeit.c
+@@ -34,9 +34,6 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+-#include <sys/stat.h>
+-#include <unistd.h>
+-#include <math.h>
+  
+ #include "define.h"
+ #include "globals.h"
+@@ -44,7 +41,6 @@
+ #include "fits/fitscat.h"
+ #include "file.h"
+ #include "prefs.h"
+-#include "process.h"
+ #include "xml.h"
+ 
+ void	print_tabinfo(tabstruct *tab, xmlkeystruct *xmlkey, int no);
+diff --git a/src/prefs.h b/src/prefs.h
+index 0aa9da3..1e51369 100644
+--- a/src/prefs.h
++++ b/src/prefs.h
+@@ -27,8 +27,8 @@
+ *
+ *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+ 
+-#ifndef _PREFS_H_
+-#define _PREFS_H_
++#ifndef PREFS_H
++#define PREFS_H
+ 
+ /*--------------------------------- typedefs --------------------------------*/
+ typedef  enum {FILE_SAME,FILE_MULTI,FILE_SPLIT,FILE_SLICE,FILE_CUBE,FILE_DIR} 
+@@ -84,7 +84,7 @@ typedef struct
+   double	time_diff;		    /* Execution time */
+   }	prefstruct;
+ 
+-prefstruct	prefs;
++extern prefstruct	prefs;
+ 
+ /*----------------------------- Internal constants --------------------------*/
+ 
+@@ -99,5 +99,4 @@ extern void	dumpprefs(int state),
+                 endprefs(void);
+ extern char     *fitsroot(char *str);
+ 
+-#endif
+-
++#endif // PREFS_H
+diff --git a/src/process.h b/src/process.h
+index 35e9805..c0467ff 100644
+--- a/src/process.h
++++ b/src/process.h
+@@ -27,6 +27,9 @@
+ *
+ *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+ 
++#ifndef PROCESS_H
++#define PROCESS_H
++
+ #ifndef _FITSCAT_H_
+ #include "fits/fitscat.h"
+ #endif
+@@ -38,3 +41,5 @@
+ /*------------------------------- functions ---------------------------------*/
+ 
+ extern void		    *reduce_bitpix(tabstruct *tab);
++
++#endif // PROCESS_H
+\ No newline at end of file
+diff --git a/src/types.h b/src/types.h
+index 6c9ffe5..5a813d5 100644
+--- a/src/types.h
++++ b/src/types.h
+@@ -27,3 +27,9 @@
+ *
+ *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+ 
++#ifndef TYPES_H
++#define TYPES_H
++
++// TODO why is this file in place?
++
++#endif // TYPES_H
+diff --git a/src/wcs/poly.h b/src/wcs/poly.h
+index 5bc91d8..21b484b 100644
+--- a/src/wcs/poly.h
++++ b/src/wcs/poly.h
+@@ -27,9 +27,8 @@
+ *
+ *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+ 
+-#ifndef _POLY_H_
+-#define _POLY_H_
+-
++#ifndef POLY_H
++#define POLY_H
+ /*--------------------------------- constants -------------------------------*/
+ 
+ #define	POLY_MAXDIM		4	/* Max dimensionality of polynom */
+@@ -64,5 +63,4 @@ extern void		poly_addcste(polystruct *poly, double *cste),
+ 			poly_fit(polystruct *poly, double *x, double *y,
+ 				double *w, int ndata, double *extbasis),
+ 			poly_solve(double *a, double *b, int n);
+-#endif
+-
++#endif // POLY_H
+diff --git a/src/wcs/tnx.h b/src/wcs/tnx.h
+index 8143a9e..98af252 100644
+--- a/src/wcs/tnx.h
++++ b/src/wcs/tnx.h
+@@ -27,8 +27,8 @@
+ *
+ *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+ 
+-#ifndef _TNX_H_
+-#define _TNX_H_
++#ifndef TNX_H
++#define TNX_H
+ 
+ /*-------------------------------- macros -----------------------------------*/
+ 
+@@ -69,5 +69,4 @@ double		raw_to_tnxaxis(tnxaxisstruct *axis, double x, double y);
+ 
+ void		free_tnxaxis(tnxaxisstruct *axis);
+ 
+-#endif
+-
++#endif // TNX_H
+diff --git a/src/wcscelsys.h b/src/wcscelsys.h
+index d3eef9a..1e8dc3a 100644
+--- a/src/wcscelsys.h
++++ b/src/wcscelsys.h
+@@ -27,6 +27,9 @@
+ *
+ *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+ 
++#ifndef WCSCELSYS_H
++#define WCSCELSYS_H
++
+ /*-------------------------------- constants --------------------------------*/
+ 
+ /* Equatorial coordinates of origin and pole and rotation sign of equatorial,*/
+@@ -52,3 +55,4 @@ double	celsysorig[][2] = {	{0.0, 0.0},
+ 				 1.0,
+ 				 1.0};
+ 
++#endif // WCSCELSYS_H
+diff --git a/src/xml.h b/src/xml.h
+index ef734ab..b7f1d7c 100644
+--- a/src/xml.h
++++ b/src/xml.h
+@@ -27,12 +27,13 @@
+ *
+ *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+ 
++#ifndef XML_H
++#define XML_H
++
+ #ifdef HAVE_CONFIG_H
+ #include	"config.h"
+ #endif
+ 
+-#include "prefs.h"
+-
+ /*----------------------------- Internal constants --------------------------*/
+ #ifndef XSL_URL
+ #define	XSL_URL	"."
+@@ -71,3 +72,5 @@ extern int	init_xml(int nfile),
+                                 char *ucd, char *format),
+                 end_xml(void);
+ extern void	write_xmlerror(char *filename, char *error);
++
++#endif // XML_H

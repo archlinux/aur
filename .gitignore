@@ -3,3 +3,4 @@
 !.gitlab-ci.yml
 !PKGBUILD
 !.SRCINFO
+!missfits-2.8.0.patch
