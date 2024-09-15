@@ -1,0 +1,27 @@
+pkgbase = hydownloader-git
+	pkgdesc = Alternative download system for Hydrus
+	pkgver = 0.43.0.r3.gd59967b
+	pkgrel = 1
+	url = https://gitgud.io/thatfuckingbird/hydownloader
+	arch = x86_64
+	arch = aarch64
+	license = GNU
+	license = AGPL
+	makedepends = python-poetry
+	depends = python
+	depends = python-click
+	depends = python-bottle
+	depends = yt-dlp
+	depends = python-hydrus
+	depends = python-dateutil
+	depends = python-brotli
+	depends = python-saucenao
+	depends = gallery-dl
+	depends = python-opencv
+	depends = python-numpy
+	depends = python-pillow
+	provides = hydownloader=0.43.0
+	source = git+https://gitgud.io/thatfuckingbird/hydownloader.git
+	sha256sums = SKIP
+
+pkgname = hydownloader-git
