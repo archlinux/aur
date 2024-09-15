@@ -11,15 +11,15 @@
 
 ### PACKAGE OPTIONS
 ## MERGE REQUESTS SELECTION
-# Merge Requests List: ('3252')
-_merge_requests_to_use=('3252')
+# Merge Requests List: ()
+_merge_requests_to_use=()
 
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _pkgname=gnome-shell
 pkgname=gnome-shell-performance
-pkgver=46.5
+pkgver=47.0
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
@@ -57,30 +57,18 @@ makedepends=(
   gnome-control-center
   gobject-introspection
   meson
+  python-docutils
   sassc
 )
-if [ -n "$_enable_check" ]; then
-  checkdepends=(
-    appstream-glib
-    python-dbusmock
-    xorg-server-xvfb
-  )
-fi
-_commit=a6b6a58190d648f8a0e38ecb84644ea13d110153  # tags/46.5^0
+_commit=957504b1f673cb016e32ccea26bac3a6723d34a1  # tags/47.0^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=5f9768a2eac29c1ed56f1fbb449a77a3523683b6"
-  'mr3252.patch'
-  'fix-tray-offscreen-xwindows.patch'
 )
-sha256sums=('f07f5aae1f0e844e1807af78a9ce69d820417acf9170a1f43b424df69c0a2d70'
-            '587319b45ff7d989635aed0c3bd9ef834d6e53ae46788cb6ba083d42d7e63855'
-            '29abd82509db22abb4ce1b3318c9d7bf6cc23ba28d0c222412c273d784eacf1d'
-            '065daaadcb037ebe4a449bc82a74d078243ec9a6f82e2c015d6ebcb7d95ee622')
-b2sums=('7fa976e8f61ec2f0a6cb3f52a465a99dd22ae105e692c28a1272f0fae40d35d8ca6660ba6f694405e77bd4f150645316084faf5f345b29324204d1c7ed5773b9'
-        'e31ae379039dfc345e8032f7b9803a59ded075fc52457ba1553276d3031e7025d9304a7f2167a01be2d54c5e121bae00a2824a9c5ccbf926865d0b24520bb053'
-        'bacf1db67096ebd3690de2d0a01ee1b0ba1ea3094c7539eff05e398acc230164724b3c872e468ad992409501fb027026bfad35e387be150e4dafd6be81a68841'
-        '2d923a01c48b2ea5c25fe10e40cd81e8ed49c0adc0660211b1211529a5b98040dd0ae1a406e6f250b051e7db6d47e00a1ba7e9540cd5aecc466b92ee3d2aed4e')
+sha256sums=('58e67d2a3b0e8dd4074d234d7c67383f5a51c1079c2876eae19c389d423e98b2'
+            '587319b45ff7d989635aed0c3bd9ef834d6e53ae46788cb6ba083d42d7e63855')
+b2sums=('7c5b48d4ad2c9119bac501dfc99d2e73132a8418dd6d6020778c6a76090faa5489d85bb9ca9bf2908592efba077e14f66a6515e57e1c1b18ba8d22d43ca56d81'
+        'e31ae379039dfc345e8032f7b9803a59ded075fc52457ba1553276d3031e7025d9304a7f2167a01be2d54c5e121bae00a2824a9c5ccbf926865d0b24520bb053')
 
 pkgver() {
   cd $_pkgname
@@ -126,11 +114,6 @@ prepare() {
   git reset --hard
   git cherry-pick --abort || true
 
-  # https://github.com/ubuntu/gnome-shell-extension-appindicator/issues/439
-  # https://bugs.launchpad.net/ubuntu/+source/gnome-shell-extension-appindicator/+bug/2012388
-  msg2 "Applying the shell tray icon patches..."
-  patch -Np1 -i ../fix-tray-offscreen-xwindows.patch
-
   # git remote add verde https://gitlab.gnome.org/verdre/gnome-shell.git || true
   # git fetch verde
   # git remote add 3v1n0 https://gitlab.gnome.org/3v1n0/gnome-shell || true
@@ -162,23 +145,12 @@ prepare() {
   #
   # Generally, a MR status oscillate between 2 and 3 and then becomes 4.
 
-  # Title: st/theme-node: Forget properties cache on theme changes
-  # Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
-  # URL:  https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/3252
-  # Type: 3
-  # Status: 2
-  # Comment: Closes:
-  #          https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/7339
-  #          https://github.com/micheleg/dash-to-dock/issues/2243
-  #          https://github.com/micheleg/dash-to-dock/issues/2179
-  pick_mr '3252' 'mr3252.patch' 'patch'
-
 }
 
 build() {
   local meson_options=(
     -D gtk_doc=false
-    -D tests=false
+    -D tests=disabled
   )
 
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
@@ -192,7 +164,7 @@ build() {
 }
 
 package() {
-  depends+=(libmutter-14.so)
+  depends+=(libmutter-15.so)
   optdepends=(
     'evolution-data-server: Evolution calendar integration'
     'gnome-bluetooth-3.0: Bluetooth support'
