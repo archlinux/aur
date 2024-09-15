@@ -1,7 +1,7 @@
 pkgbase = python-argparse-manpager-git
 	pkgdesc = A generator and waf tool to make manual pages from executable python modules.
-	pkgver = r0
-	pkgrel = 3
+	pkgver = r66
+	pkgrel = 1
 	url = https://github.com/dffischer/argparse-manpager
 	arch = any
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = python-argparse-manpager-git
 	makedepends = git
 	depends = python
 	optdepends = waf: to use the corresponding waf tool
-	provides = python-argparse-manpager=r0
+	provides = python-argparse-manpager=r66
 	conflicts = python-argparse-manpager
 	source = python-argparse-manpager::git+https://github.com/dffischer/argparse-manpager
 	b2sums = SKIP
