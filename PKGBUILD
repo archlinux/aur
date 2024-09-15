@@ -21,12 +21,11 @@ install=
 changelog=
 source=("https://github.com/kotrikd/${pkgname}/releases/download/v${pkgver}/${pkgname}-linux-v${pkgver}.zip"
         )
-noextract=("${pkgver}/${pkgname}-linux-v${pkgver}.zip")
 sha256sums=("3f164de319446f89cf2b03b065a60d4857a390df0167fad32e4a744d66381d38")
 validpgpkeys=()
 
 prepare() {
-	unzip -f "${pkgname}-linux-v${pkgver}.zip"
+	unzip -fa "${pkgname}-linux-v${pkgver}.zip"
 }
 
 package() {
