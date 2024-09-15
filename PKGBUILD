@@ -2,7 +2,7 @@
 
 pkgname=dict-ozhegov
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Ozhegov's Russian Dictionary"
 arch=('any')
 url="https://github.com/Layerex/ozhegov-dict"
