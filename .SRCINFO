@@ -1,14 +1,13 @@
 pkgbase = linux_logo
 	pkgdesc = Text-based logo and system information program
-	pkgver = 6.0
+	pkgver = 6.01
 	pkgrel = 1
 	url = https://github.com/deater/linux_logo
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	depends = glibc
-	source = linux_logo-6.0::git+https://github.com/deater/linux_logo.git#tag=6.0
-	sha512sums = SKIP
+	source = https://github.com/deater/linux_logo/archive/refs/tags/v6.01.tar.gz
+	sha512sums = 50c6d2188483f4038c9553b3a90ed1d9b1b8f5fc18cd6c433f324454f50c3befafb8f0bf2b1c51208eeaa55393bccfb04e64d8632e501cd305f0ee5dbe6da159
 
 pkgname = linux_logo
-
