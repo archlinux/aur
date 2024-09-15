@@ -1,4 +1,5 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: jakka <jakkadoujin at gmail dot com>
 
 pkgname=apng2gif-bin
 pkgver=1.8
@@ -8,7 +9,7 @@ arch=('i686' 'x86_64')
 url='https://sourceforge.net/projects/apng2gif'
 license=('ZLIB')
 provides=('apng2gif')
-conflicts=('apng2gif')
+conflicts=('apng2gif' 'apng-utils')
 depends=('lib32-gcc-libs'
          'lib32-libpng')
 source=("${pkgname}-${pkgver}.zip::https://sourceforge.net/projects/apng2gif/files/${pkgver}/apng2gif-${pkgver}-bin-linux.zip/download")
