@@ -1,0 +1,21 @@
+diff -up src/Spread-3.17.4.4/Spread.xs.orig src/Spread-3.17.4.4/Spread.xs
+--- src/Spread-3.17.4.4/Spread.xs.orig	2009-10-01 08:08:55.000000000 -0600
++++ src/Spread-3.17.4.4/Spread.xs	2024-09-14 23:18:29.710000000 -0600
+@@ -651,7 +651,7 @@ GC_multicast(svmbox, stype, svgroups, mt
+ 	    /* groupnames is already set and
+ 	       we are multicasting to a multigroup */
+ 	    ret = SP_multigroup_multicast(mbox, stype, ngroups,
+-				groupnames,
++				(void *)groupnames,
+ 				mtype, mlength, message);
+ 	  } else {
+ 	    /* Something went horrbily wrong */
+@@ -722,7 +722,7 @@ GC_receive(svmbox, svtimeout=&PL_sv_unde
+ 	      New(0, mess, newmsize, char);
+ 	    oldmsize=newmsize;
+ 	  }
+-	  if((ret=SP_receive(mbox, &stype, sender, newgsize, &ngrps, groups,
++	  if((ret=SP_receive(mbox, &stype, sender, newgsize, &ngrps, (void *)groups,
+ 		&mtype, &endmis, newmsize, mess))<0) {
+ 		if(ret==BUFFER_TOO_SHORT) {
+ 		  /* Lets double it, so this won't happen again */
