@@ -1,6 +1,6 @@
 # Maintainer: Bhanupong Petchlert <bpetlert@gmail.com>
 pkgname=pacman-repo-stats
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Show usage statistics of repositories in pacman.conf"
 arch=('x86_64')
@@ -10,18 +10,19 @@ depends=(libalpm.so)
 makedepends=(cargo)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bpetlert/${pkgname}/archive/${pkgver}.tar.gz")
-b2sums=('79efe3c7c4ff7a3b07a76f465d02671e18a0b59759918bdd9df64ecc39df5e8071d2a1a0e7e06124d58add906e90f0665d077d6aebfe90de760bc1dd380774d5')
+b2sums=('ddcce4438b0931b834f7e747b9e7014f96e620369802e917776640eaae7c8f31ae412330582f573bf71999f89bc75f7ca94d0eeaf171032f9e570ce72a50156a')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build  --frozen --release
+  cargo build --frozen --release
 }
 
 package() {
