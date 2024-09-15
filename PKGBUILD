@@ -13,6 +13,7 @@ makedepends=(
             'python>=3.7'
 		    'python-pyserial'
             'tk'
+            'python-sv-ttk'
 )
 source=("$_pkgname::git+https://github.com/unofficial-rev-port/REVHubInterface.git#tag=v1.4")
 b2sums=('SKIP')
