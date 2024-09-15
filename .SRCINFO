@@ -15,4 +15,3 @@ pkgbase = vim-visual-star-search-git
 	b2sums = SKIP
 
 pkgname = vim-visual-star-search-git
-
