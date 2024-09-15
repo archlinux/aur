@@ -1,7 +1,7 @@
 # Maintainer: xyzzy
 
 pkgname=ryujinx-bin
-pkgver=1.1.1385
+pkgver=1.1.1386
 pkgrel=1
 pkgdesc='Experimental Nintendo Switch Emulator written in C# (master build channel release)'
 arch=(x86_64)
@@ -16,7 +16,7 @@ source=("${url}/releases/download/${pkgver}/ryujinx-${pkgver}-linux_x64.tar.gz"
         'https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/misc/Logo.svg'
         'https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/linux/mime/Ryujinx.xml')
 
-b2sums=('3a06b49ab2ff1a02fa4e414d65bec53aad6e536a12aef0527ccf5c2ed90de6445d7ef6047a6a998c690e2e9a74e98285132d43bfd411816fa5dccbf451691ed0'
+b2sums=('9ce79c98d7511b82cabb69c0a40597f9848288aff5b4f0eb49dde9b273c3e4ec1cc7a3cccbdb037b87c90a6e43a5b3fa01d0c3d1726209e3a8da5563dc243f1d'
         'aaf7e9ddc24bc0068d75a4136262ab2e7f669acda91b7abc66ac5c8d6332804af45b5f9eec43d1d5541dc8e7944001362fbb67bec873fffde496c6c46d6500fc'
         'f96fe6146018fd869c55e413b2cc6cf12f17c5257af52df14f57978133792c7fb76e8526b15a5120dbf12a9fed7b8e4723a3ff9f2e45b613b10ee1017ba0b996'
         '0002cccf2a3e9dec4b0646e8d50ed105dfd4544baf49ae4868cc2a0785839ab578171063b6149b54fee947a38d88bbd6552647f6c69c590acf8fd1b12835c67a')
