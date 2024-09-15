@@ -2,15 +2,15 @@
 
 pkgname=xcursor-pro-hyprcursor
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyprcursor port of https://github.com/ful1e5/XCursor-pro"
 arch=(any)
 url="https://github.com/0xk1f0/XCursor-Pro-Hyprcursor"
 license=('GPL-3.0-only')
 source=(
-    "${url}/releases/download/v${pkgver}/XCursor-Pro-Hyprcursor-Dark.tar.gz"
-    "${url}/releases/download/v${pkgver}/XCursor-Pro-Hyprcursor-Light.tar.gz"
-    "${url}/releases/download/v${pkgver}/XCursor-Pro-Hyprcursor-Red.tar.gz"
+    "${pkgname}-${pkgver}-dark.tar.gz::${url}/releases/download/v${pkgver}/XCursor-Pro-Hyprcursor-Dark.tar.gz"
+    "${pkgname}-${pkgver}-light.tar.gz::${url}/releases/download/v${pkgver}/XCursor-Pro-Hyprcursor-Light.tar.gz"
+    "${pkgname}-${pkgver}-red.tar.gz::${url}/releases/download/v${pkgver}/XCursor-Pro-Hyprcursor-Red.tar.gz"
 )
 sha256sums=(
     "02c59e7809e741935091ba0c7aab5524644f983e852f169dd68eecc48434acd7"

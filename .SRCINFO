@@ -1,13 +1,13 @@
 pkgbase = xcursor-pro-hyprcursor
 	pkgdesc = Hyprcursor port of https://github.com/ful1e5/XCursor-pro
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0xk1f0/XCursor-Pro-Hyprcursor
 	arch = any
 	license = GPL-3.0-only
-	source = https://github.com/0xk1f0/XCursor-Pro-Hyprcursor/releases/download/v0.2/XCursor-Pro-Hyprcursor-Dark.tar.gz
-	source = https://github.com/0xk1f0/XCursor-Pro-Hyprcursor/releases/download/v0.2/XCursor-Pro-Hyprcursor-Light.tar.gz
-	source = https://github.com/0xk1f0/XCursor-Pro-Hyprcursor/releases/download/v0.2/XCursor-Pro-Hyprcursor-Red.tar.gz
+	source = xcursor-pro-hyprcursor-0.2-dark.tar.gz::https://github.com/0xk1f0/XCursor-Pro-Hyprcursor/releases/download/v0.2/XCursor-Pro-Hyprcursor-Dark.tar.gz
+	source = xcursor-pro-hyprcursor-0.2-light.tar.gz::https://github.com/0xk1f0/XCursor-Pro-Hyprcursor/releases/download/v0.2/XCursor-Pro-Hyprcursor-Light.tar.gz
+	source = xcursor-pro-hyprcursor-0.2-red.tar.gz::https://github.com/0xk1f0/XCursor-Pro-Hyprcursor/releases/download/v0.2/XCursor-Pro-Hyprcursor-Red.tar.gz
 	sha256sums = 02c59e7809e741935091ba0c7aab5524644f983e852f169dd68eecc48434acd7
 	sha256sums = 9605c98590fbd4ec70fb490d91411b5bc0dddba380da9575bc8c8e360ca617ba
 	sha256sums = 67ba6e88d0e5265b6afdf45db96da70ce81612bdca49620b4b24999dc4099d77
