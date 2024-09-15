@@ -2,9 +2,10 @@
 # Contributor: Jean-Michaël Celerier <jeanmichael.celerier at gmail dot com>
 
 _name=ysfx_saike_mod
+_plugin_name=ysfx-s
 _reponame=ysfx
 pkgname=${_name//_/-}-git
-pkgver=0.0.22.r0.gf160367
+pkgver=0.0.22.r5.g51bbf27
 pkgrel=1
 pkgdesc='Hosting library and plugin for JSFX (saike mod, git version)'
 arch=(x86_64)
@@ -65,13 +66,16 @@ package() {
   depends+=(libfontconfig.so libfreetype.so)
   DESTDIR="$pkgdir" cmake --install $pkgname-build
   install -vDm 755 \
-    $pkgname-build/ysfx_plugin_artefacts/Release/VST3/$_name.vst3/Contents/$CARCH-linux/$_name.so \
-    -t "$pkgdir"/usr/lib/vst3/$_name.vst3/Contents/$CARCH-linux
+    $pkgname-build/ysfx_plugin_instrument_artefacts/Release/VST3/$_plugin_name.vst3/Contents/$CARCH-linux/$_plugin_name.so \
+    -t "$pkgdir"/usr/lib/vst3/$_plugin_name.vst3/Contents/$CARCH-linux
   install -vDm 755 \
-    $pkgname-build/ysfx_plugin_artefacts/Release/CLAP/$_name.clap \
+    "$pkgname-build/ysfx_plugin_artefacts/Release/VST3/$_plugin_name FX.vst3/Contents/$CARCH-linux/$_plugin_name FX.so" \
+    -t "$pkgdir/usr/lib/vst3/$_plugin_name FX.vst3/Contents/$CARCH-linux"
+  install -vDm 755 \
+    "$pkgname-build/ysfx_plugin_artefacts/Release/CLAP/$_plugin_name FX.clap" \
     -t "$pkgdir"/usr/lib/clap
   install -vDm 644 $_reponame/README.md -t "$pkgdir"/usr/share/doc/$pkgname
   # rename files which would conflict with ysfx package
-  mv "$pkgdir"/usr/include/{$_reponame,$_name}.h
-  mv "$pkgdir"/usr/lib/lib{$_reponame,$_name}.a
+  mv "$pkgdir"/usr/include/{$_reponame,$_plugin_name}.h
+  mv "$pkgdir"/usr/lib/lib{$_reponame,$_plugin_name}.a
 }
