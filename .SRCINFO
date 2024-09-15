@@ -1,14 +1,14 @@
 pkgbase = wxwidgets-light
 	pkgdesc = wxWidgets suite for Base, Qt5 and GTK3 toolkits (GNOME/GStreamer free!)
-	pkgver = 3.2.4
-	pkgrel = 3
+	pkgver = 3.2.6
+	pkgrel = 1
 	url = http://wxwidgets.org
 	arch = x86_64
 	license = custom:wxWindows
 	makedepends = git
 	makedepends = cmake
 	makedepends = glu
-	makedepends = webkit2gtk
+	makedepends = webkit2gtk-4.1
 	makedepends = gtk3
 	makedepends = libnotify
 	makedepends = qt5-base
@@ -35,10 +35,10 @@ pkgbase = wxwidgets-light
 	makedepends = gdk-pixbuf2
 	makedepends = wayland
 	makedepends = cython
+	makedepends = nanosvg
+	makedepends = libxkbcommon
 	options = debug
-	source = wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v3.2.4
-	source = git+https://github.com/wxWidgets/nanosvg.git
-	sha256sums = SKIP
+	source = wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v3.2.6
 	sha256sums = SKIP
 
 pkgname = wxwidgets-common-light
@@ -116,7 +116,9 @@ pkgname = wxwidgets-gtk3-light
 	depends = wayland
 	depends = libwayland-client.so
 	depends = libwayland-egl.so
-	optdepends = webkit2gtk: for webview support
+	depends = libxkbcommon
+	depends = libxkbcommon.so
+	optdepends = webkit2gtk-4.1: for webview support
 	provides = wxwidgets
 	provides = wxwidgets-gtk3=3.2
 	provides = libwx_gtk3u_adv-3.2.so

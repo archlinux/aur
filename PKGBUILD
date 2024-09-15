@@ -7,8 +7,8 @@ pkgname=(
 #   'wxwidgets-gtk4-light'
   'wxwidgets-qt5-light'
 )
-pkgver=3.2.4
-pkgrel=3
+pkgver=3.2.6
+pkgrel=1
 pkgdesc="wxWidgets suite for Base, Qt5 and GTK3 toolkits (GNOME/GStreamer free!)"
 arch=('x86_64')
 url='http://wxwidgets.org'
@@ -17,7 +17,7 @@ makedepends=(
   'git'
   'cmake'
   'glu'
-  'webkit2gtk'
+  'webkit2gtk-4.1'
   'gtk3'
 #  'gtk4'
   'libnotify'
@@ -45,13 +45,13 @@ makedepends=(
   'gdk-pixbuf2'
   'wayland'
   'cython'
+  'nanosvg'
+  'libxkbcommon'
 )
 source=(
   "wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
-  'git+https://github.com/wxWidgets/nanosvg.git'
 )
 sha256sums=(
-  'SKIP'
   'SKIP'
 )
 options=('debug')
@@ -59,12 +59,8 @@ options=('debug')
 prepare() {
   cd wxwidgets
 
-  git cherry-pick ed510012bac97f6ad1f3b776d1b13c37a987e83e -m 1 # Fix undefined symbols in Qt build
-  git cherry-pick 8ea22b5e92bf46add0b20059f6e39a938858ff97 -m 1 # Avoid crash with GTK3 if console program is using a GUI wxApp
-
-  git config submodule.3rdparty/nanosvg.url "${srcdir}/nanosvg"
-  git -c protocol.file.allow=always submodule update --init \
-    3rdparty/nanosvg
+  git cherry-pick ed510012bac97f6ad1f3b776d1b13c37a987e83e -n # Fix undefined symbols in Qt build
+  git cherry-pick 8ea22b5e92bf46add0b20059f6e39a938858ff97 -n # Avoid crash with GTK3 if console program is using a GUI wxApp
 }
 
 build() {
@@ -80,11 +76,13 @@ build() {
     -DwxUSE_LIBJPEG=sys \
     -DwxUSE_LIBPNG=sys \
     -DwxUSE_LIBTIFF=sys \
-    -DwxUSE_LIBLZMA=ON \
+    -DwxUSE_LIBLZMA=sys \
+    -DwxUSE_NANOSVG=sys \
     -DwxUSE_LIBMSPACK=ON \
     -DwxUSE_LIBSDL=ON \
     -DwxUSE_STL=ON \
-    -DwxUSE_PRIVATE_FONTS=ON
+    -DwxUSE_PRIVATE_FONTS=ON \
+    -DwxUSE_UNICODE_UTF8=ON
 
   cmake --build build-base
 
@@ -100,7 +98,8 @@ build() {
     -DwxUSE_LIBJPEG=sys \
     -DwxUSE_LIBPNG=sys \
     -DwxUSE_LIBTIFF=sys \
-    -DwxUSE_LIBLZMA=ON \
+    -DwxUSE_LIBLZMA=sys \
+    -DwxUSE_NANOSVG=sys \
     -DwxUSE_LIBMSPACK=ON \
     -DwxUSE_LIBSDL=ON \
     -DwxUSE_STL=ON \
@@ -108,7 +107,8 @@ build() {
     -DwxUSE_PRIVATE_FONTS=ON \
     -DwxUSE_GTKPRINT=ON \
     -DwxUSE_DETECT_SM=ON \
-    -DwxUSE_AUTOID_MANAGEMENT=ON
+    -DwxUSE_AUTOID_MANAGEMENT=ON \
+    -DwxUSE_UNICODE_UTF8=ON
 
   cmake --build build-gtk3
 
@@ -124,7 +124,8 @@ build() {
 #     -DwxUSE_LIBJPEG=sys \
 #     -DwxUSE_LIBPNG=sys \
 #     -DwxUSE_LIBTIFF=sys \
-#     -DwxUSE_LIBLZMA=ON \
+#     -DwxUSE_LIBLZMA=sys \
+#     -DwxUSE_NANOSVG=sys \
 #     -DwxUSE_LIBMSPACK=ON \
 #     -DwxUSE_LIBSDL=ON \
 #     -DwxUSE_STL=ON \
@@ -132,7 +133,8 @@ build() {
 #     -DwxUSE_PRIVATE_FONTS=ON \
 #     -DwxUSE_GTKPRINT=ON \
 #     -DwxUSE_DETECT_SM=ON \
-#     -DwxUSE_AUTOID_MANAGEMENT=ON
+#     -DwxUSE_AUTOID_MANAGEMENT=ON \
+#     -DwxUSE_UNICODE_UTF8=ON
 
 #   cmake --build build-gtk4
 
@@ -148,14 +150,16 @@ build() {
     -DwxUSE_LIBJPEG=sys \
     -DwxUSE_LIBPNG=sys \
     -DwxUSE_LIBTIFF=sys \
-    -DwxUSE_LIBLZMA=ON \
+    -DwxUSE_LIBLZMA=sys \
+    -DwxUSE_NANOSVG=sys \
     -DwxUSE_LIBMSPACK=ON \
     -DwxUSE_LIBSDL=ON \
     -DwxUSE_STL=ON \
     -DwxUSE_MEDIACTRL=OFF \
     -DwxUSE_PRIVATE_FONTS=ON \
     -DwxUSE_DETECT_SM=ON \
-    -DwxUSE_AUTOID_MANAGEMENT=ON
+    -DwxUSE_AUTOID_MANAGEMENT=ON \
+    -DwxUSE_UNICODE_UTF8=ON
 
   cmake --build build-qt5
 
@@ -239,6 +243,7 @@ package_wxwidgets-gtk3-light() {
     'pango' 'libpango-1.0.so' 'libpangocairo-1.0.so' 'libpangoft2-1.0.so'
     'libtiff' 'libtiff.so'
     'wayland' 'libwayland-client.so' 'libwayland-egl.so'
+    'libxkbcommon' 'libxkbcommon.so'
   )
   provides=(
     'wxwidgets'
@@ -256,7 +261,7 @@ package_wxwidgets-gtk3-light() {
     'libwx_gtk3u_webview-3.2.so'
     'libwx_gtk3u_xrc-3.2.so'
   )
-  optdepends=('webkit2gtk: for webview support')
+  optdepends=('webkit2gtk-4.1: for webview support')
   conflicts=('wxwidgets-gtk3')
 
   DESTDIR="${pkgdir}" cmake --install build-gtk3
@@ -287,7 +292,7 @@ package_wxwidgets-gtk4-light() {
     'libnotify' 'libnotify.so'
     'libtiff'  'libtiff.so'
 )
-  optdepends=('webkit2gtk: for webview support')
+  optdepends=('webkit2gtk-4.1: for webview support')
   provides=(
     'wxwidgets'
     "wxwidgets-gtk4=${pkgver:0:3}"
