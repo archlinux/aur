@@ -3,15 +3,20 @@
 pkgname=jupyterlab-execute-time
 pkgdesc="JupyterLab extension to show execution time for each cell"
 url='https://github.com/deshaw/jupyterlab-execute-time'
-pkgver=3.1.2
+pkgver=3.2.0
 pkgrel=1
 license=('BSD-3-Clause')
 arch=('any')
 
-depends=('jupyterlab')
+depends=(
+  'jupyterlab'
+)
 makedepends=(
-  'python-build' 'python-installer' 'python-jupyter-packaging'
-  'python-setuptools' 'python-wheel' 'npm'
+  'python-build'
+  'python-installer'
+  'python-jupyter-packaging'
+  'python-setuptools'
+  'python-wheel'
 )
 
 _pypi=jupyterlab_execute_time
@@ -20,7 +25,7 @@ source=(
   'install.json'
 )
 sha256sums=(
-  '0e2c86b283575e1fa278c7e94ab03a03fe5cd1fb4d57d620b3d4e5dbf54475b9'
+  '9b13b65c2c139bfabb3f6ff1706c4d33ed5a56203a89d0297608334e15bc9c0b'
   'fcaf662d9c5fcc529b4add01452bf3f1809c418c75d9b7e55f7fd822d407f9a3'
 )
 
@@ -33,10 +38,6 @@ prepare() {
 
 build() {
   cd "$_pypi-$pkgver"
-
-  # Not available otherwise, probably related to JupyterLab issue #14552
-  npm install @types/react
-
   python -m build --no-isolation --wheel -x
 }
 
