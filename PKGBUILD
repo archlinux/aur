@@ -24,6 +24,8 @@ depends=(
     glfw-x11
     gtest
     libjpeg-turbo
+    jsoncpp
+    liblzf
     libpng
     mesa
     python
@@ -59,16 +61,22 @@ makedepends=(
     python-setuptools
 )
 source=(
-    "${pkgbase}::git+https://github.com/isl-org/Open3D.git#commit=c1b55eebaf1e4e969560baf039ced0df5c74e0e7"
+    "${pkgbase}::git+https://github.com/isl-org/Open3D.git#commit=dbb3c7d58b7af5819540dacd8ea4e0a11ab605dc"
     "no_werror.patch"
+    "fmt-v11.patch::https://github.com/daizhirui/Open3D/commit/3773d816260c5912581397a0dadf08da4c943d68.patch"
+    "archlinux.patch::https://github.com/daizhirui/Open3D/commit/9745817370d1d504d45344959a000189bb9213cb.patch"
 )
 sha256sums=(
     'SKIP'
-    'e58dacd86497e4d8a61fe00e4e41a4b8748e1dcca8d3172918d1bc5a1e7390cc')
+    'e58dacd86497e4d8a61fe00e4e41a4b8748e1dcca8d3172918d1bc5a1e7390cc'
+    '7477f6ac021bf11804b19f4005bcbc1032789346e75efee3eca1c979024ae476'
+    'd652b06bd4bc10f4eed18a69cd42cc07d10a58728ff6adddb45fb2a7c488dd9e')
 
 function prepare() {
     cd "${srcdir}/${pkgbase}"
     patch -Np1 -i "${srcdir}/no_werror.patch"
+    patch -Np1 -i "${srcdir}/fmt-v11.patch"
+    patch -Np1 -i "${srcdir}/archlinux.patch"
     # find . -name "CMakeLists.txt" -exec sed -i 's/-Werror//g' {} \;
     # grep --files-with-matches -r "_FORTIFY_SOURCE" | xargs -I {} sed -i 's/_FORTIFY_SOURCE=[0-9]/""/g' {}
     mkdir -p build
@@ -113,7 +121,8 @@ function build() {
           -DUSE_SYSTEM_QHULLCPP=ON \
           -DUSE_SYSTEM_VTK=ON \
           -DUSE_SYSTEM_ZEROMQ=ON \
-          -DUSE_SYSTEM_JSONCPP=OFF \
+          -DUSE_SYSTEM_JSONCPP=ON \
+          -DUSE_SYSTEM_LZF=ON \
           -DBUILD_LIBREALSENSE=ON \
           -DWITH_MINIZIP=ON
 
@@ -134,6 +143,8 @@ function package_open3d() {
         glfw-x11
         gtest
         libjpeg-turbo
+        jsoncpp
+        liblzf
         libpng
         mesa
         python
@@ -183,6 +194,8 @@ function package_python-open3d() {
         glfw-x11
         gtest
         libjpeg-turbo
+        jsoncpp
+        liblzf
         libpng
         mesa
         python
@@ -239,6 +252,8 @@ function package_python-py3d() {
         glfw-x11
         gtest
         libjpeg-turbo
+        jsoncpp
+        liblzf
         libpng
         mesa
         python
