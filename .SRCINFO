@@ -1,14 +1,14 @@
 pkgbase = firefox-nightly-i18n
 	pkgdesc = Language pack for Firefox Nightly
 	pkgver = 132.0a1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/firefox/
 	arch = any
 	license = MPL
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	provides = firefox-nightly-i18n=132.0a1-1
+	provides = firefox-nightly-i18n=132.0a1-2
 	noextract = firefox-i18n-132.0a1-ach.xpi
 	noextract = firefox-i18n-132.0a1-af.xpi
 	noextract = firefox-i18n-132.0a1-an.xpi
