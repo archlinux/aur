@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc='Security-Hardened Linux'
 url='https://github.com/anthraxx/linux-hardened'
 arch=(x86_64)
-license=(GPL2)
+license=(GPL-2.0-only)
 makedepends=(
   bc
   cpio
@@ -25,9 +25,13 @@ makedepends=(
   graphviz
   imagemagick
   python-sphinx
+  python-yaml
   texlive-latexextra
 )
-options=('!strip')
+options=(
+  !debug
+  !strip
+)
 _srcname=linux-${pkgver%.*}
 _srctag=${pkgver%.*}-${pkgver##*.}
 source=(
@@ -89,6 +93,7 @@ build() {
   local pid_docs=$!
 
   make all
+  # make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
   wait "${pid_docs}"
 }
 
@@ -140,7 +145,7 @@ _package-headers() {
 
   echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-    localversion.* version vmlinux
+    localversion.* version vmlinux # tools/bpf/bpftool/vmlinux.h
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
