@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Alternative download system for Hydrus"
 arch=(x86_64 aarch64)
 url="https://gitgud.io/thatfuckingbird/hydownloader"
-license=(GNU AGPL)
+license=('GNU AGPL')
 depends=(
   python
   python-click
