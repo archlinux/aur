@@ -1,6 +1,6 @@
 pkgbase = devpod
 	pkgdesc = Codespaces but open-source, client-only, and unopinionated - unofficial package
-	pkgver = 0.5.19
+	pkgver = 0.5.20
 	pkgrel = 1
 	url = https://github.com/loft-sh/devpod
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = devpod
 	makedepends = libwmf
 	makedepends = librsvg
 	makedepends = libvips
+	makedepends = git
 	depends = gdk-pixbuf2
 	depends = webkit2gtk
 	depends = cairo
@@ -32,7 +33,7 @@ pkgbase = devpod
 	provides = devpod
 	provides = devpod-cli
 	conflicts = devpod-bin
-	source = devpod-0.5.19.tar.gz::https://github.com/loft-sh/devpod/archive/refs/tags/v0.5.19.tar.gz
-	sha256sums = a9e30acbe5823c11a2a021ba6ff8aabb33fecc06759d0ab34ab493420b499291
+	source = devpod-0.5.20.tar.gz::https://github.com/loft-sh/devpod/archive/refs/tags/v0.5.20.tar.gz
+	sha256sums = 9c233a5d8043b34694b472855078ffb457e31c1fe65199a2297b5ce531b689cd
 
 pkgname = devpod
