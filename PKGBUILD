@@ -2,13 +2,13 @@
 _pkgname=signalbackup-tools
 pkgname=${_pkgname}-git
 pkgver=20240910.r0.g1543540
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to work with Signal Backup files"
 arch=('x86_64')
 url="https://github.com/bepaald/signalbackup-tools"
 license=('GPL3')
 depends=('openssl' 'sqlite' 'dbus')
-makedepends=('git' 'cmake' 'pkgconfig')
+makedepends=('git' 'pkgconfig')
 provides=("signalbackup-tools")
 conflicts=()
 source=("git+https://github.com/bepaald/${_pkgname}.git")
