@@ -1,17 +1,16 @@
-diff --git a/src/x.c b/src/x.c
-index 6c704139..db79f759 100644
---- a/src/x.c
-+++ b/src/x.c
-     set_shape_state(con, need_reshape);
+diff '--color=auto' --unified --recursive --text i3.orig/src/x.c i3.new/src/x.c
+--- i3.orig/src/x.c	2023-04-21 17:48:10.480025097 +0200
++++ i3.new/src/x.c	2023-04-21 17:48:44.040025554 +0200
+@@ -902,6 +902,22 @@
+         FREE(state->name);
+     }
  
-+    /* Set _NET_FRAME_EXTENTS according to the actual decoration size. */
 +    if (con != NULL && con->window != NULL) {
-+        Rect bsr = con_border_style_rect(con);
 +        Rect r = {
-+            bsr.x,                  /* left */
-+            0 - bsr.width - bsr.x,  /* right */
-+            bsr.y,                  /* top */
-+            0 - bsr.height - bsr.y  /* bottom */
++            con->current_border_width, /* left */
++            con->current_border_width, /* right */
++            con->current_border_width, /* top */
++            con->current_border_width  /* bottom */
 +        };
 +        xcb_change_property(
 +            conn,
@@ -22,6 +21,7 @@ index 6c704139..db79f759 100644
 +            &r);
 +    }
 +
-     /* Map if map state changed, also ensure that the child window
-      * is changed if we are mapped and there is a new, unmapped child window.
-      * Unmaps are handled in x_push_node_unmaps(). */
+     if (con->window == NULL && (con->layout == L_STACKED || con->layout == L_TABBED)) {
+         /* Calculate the height of all window decorations which will be drawn on to
+          * this frame. */
+

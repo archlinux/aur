@@ -2,7 +2,7 @@
 
 pkgname=i3-rounded-border-patch
 pkgver=4.23
-pkgrel=1
+pkgrel=2
 pkgdesc='An improved dynamic tiling window manager, with a patch for rounded borders'
 arch=('i686' 'x86_64')
 url='http://i3wm.org/'
