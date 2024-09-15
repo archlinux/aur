@@ -15,4 +15,3 @@ pkgbase = python-argparse-manpager-git
 	b2sums = SKIP
 
 pkgname = python-argparse-manpager-git
-
