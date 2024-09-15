@@ -1,12 +1,12 @@
-pkgbase = renogare
+pkgbase = otf-renogare
 	pkgdesc = A clean and elegant sans serif font created by Deepak Dogra
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://www.creativefabrica.com/product/renogare/
 	arch = any
 	license = custom
 	makedepends = unzip
-	source = renogare.zip::https://dl.dafont.com/dl/?f=renogare
+	source = otf-renogare.zip::https://dl.dafont.com/dl/?f=renogare
 	b2sums = a9213cea82ce34b446a6059b80acdb61a1ef01d0dba42b2df9f6b998b7312e14d211d1d882e81d21686d73590734c9eedcd8ec0c44d387e5964395cceb2fbd39
 
-pkgname = renogare
+pkgname = otf-renogare

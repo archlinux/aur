@@ -1,8 +1,8 @@
 # Maintainer: wackbyte <wackbyte@protonmail.com>
 
-pkgname=renogare
+pkgname=otf-renogare
 pkgver=1.0
-pkgrel=2
+pkgrel=1
 pkgdesc='A clean and elegant sans serif font created by Deepak Dogra'
 arch=('any')
 license=('custom')
