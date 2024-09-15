@@ -3,7 +3,7 @@
 
 pkgname=devpod
 pkgver=0.5.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Codespaces but open-source, client-only, and unopinionated - unofficial package"
 arch=('x86_64' 'arm64' 'aarch64')
 url="https://github.com/loft-sh/devpod"
@@ -56,7 +56,7 @@ build() {
     cd "${pkgname}-${pkgver}"
 
     # Build CLI
-    CGO_ENABLED=0 go build -ldflags "-s -w" -o devpod-cli
+    CGO_ENABLED=0 go build -v -ldflags "-s -w" -o devpod-cli
     cp devpod-cli desktop/src-tauri/bin/devpod-cli-${CARCH}-unknown-linux-gnu # That took quite a bit to figure out
 
     cd desktop
