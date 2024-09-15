@@ -16,4 +16,3 @@ pkgbase = nodejs-vinefeed-git
 	sha256sums = SKIP
 
 pkgname = nodejs-vinefeed-git
-
