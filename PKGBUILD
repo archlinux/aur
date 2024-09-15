@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=128.0.6613.137
+pkgver=129.0.6668.42
 pkgrel=1
 _manual_clone=0
 _system_abseil=1
@@ -18,8 +18,6 @@ depends=('nss' 'libffi')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'rust' 'rust-bindgen' 'git')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
-        https://github.com/chromium/chromium/commit/daa9f2af75e031f917c26446b6015eb96328c670.patch
-        https://github.com/chromium/chromium/commit/5c1e85eb085658187f4475ff5e56962473b6f10a.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         abseil-remove-unused-targets.patch
@@ -28,9 +26,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-numeric_limits.patch
         fix-trust-store-segfault.patch
         fix-undeclared-isnan.patch)
-sha256sums=('e1d39c170dfdc2627a7b003e11d77f04a578b8e1cfe41e714cdaa345c91f4943'
-            '83c75c3c46f01b3832d6c03a219ed2228b9c76205f53ec629bb34d091a33b2df'
-            'cd8f24fd092cdebacdf7f679413c52e50e6517479c6e608be49ef27fdab2de53'
+sha256sums=('1523ad6aaed42a0f507737718a17e76f884b2226d96e21780c2fda9457e4cac2'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             SKIP
@@ -213,11 +209,6 @@ prepare() {
   # ../../net/third_party/quiche/src/quiche/web_transport/encapsulated/encapsulated_web_transport.cc:351:16: error: no matching function for call to 'StrCat'
   patch -p0 -i ../fix-no-matching-strcat.patch
 
-  # Fixes building with libstdc++.
-  # See https://issues.chromium.org/issues/41455655.
-  patch -p1 -i ../daa9f2af75e031f917c26446b6015eb96328c670.patch
-  patch -p1 -i ../5c1e85eb085658187f4475ff5e56962473b6f10a.patch
-
   # Fixes segfault caused by `command_line` being null
   patch -p0 -i ../fix-trust-store-segfault.patch
 
@@ -274,6 +265,10 @@ build() {
     'use_system_libffi=true'
     'enable_nacl=false'
   )
+
+  if [[ -n ${_system_libs[icu]+set} ]]; then
+    _flags+=('icu_use_data_file=false')
+  fi
 
   if (( _system_clang )); then
      local _clang_version=$(

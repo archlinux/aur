@@ -1,17 +1,34 @@
 These targets are dead code and they aren't available with system Abseil. Based on:
 https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electron
 
---- third_party/abseil-cpp/BUILD.gn	2024-08-14 22:55:11.256275700 +0200
-+++ third_party/abseil-cpp/BUILD.gn	2024-08-15 18:24:44.474626026 +0200
-@@ -269,7 +269,6 @@
+--- third_party/abseil-cpp/BUILD.gn	2024-09-11 23:34:00.499637600 +0200
++++ third_party/abseil-cpp/BUILD.gn	2024-09-15 15:38:52.458706694 +0200
+@@ -82,13 +82,9 @@
+     "//third_party/abseil-cpp/absl/hash",
+     "//third_party/abseil-cpp/absl/log:absl_check",
+     "//third_party/abseil-cpp/absl/log:absl_log",
+-    "//third_party/abseil-cpp/absl/log:absl_vlog_is_on",
+     "//third_party/abseil-cpp/absl/log:die_if_null",
+     "//third_party/abseil-cpp/absl/log:globals",
+     "//third_party/abseil-cpp/absl/log:initialize",
+-    "//third_party/abseil-cpp/absl/log:log_entry",
+-    "//third_party/abseil-cpp/absl/log:log_sink",
+-    "//third_party/abseil-cpp/absl/log:log_sink_registry",
+     "//third_party/abseil-cpp/absl/memory",
+     "//third_party/abseil-cpp/absl/meta:type_traits",
+     "//third_party/abseil-cpp/absl/numeric:bits",
+@@ -278,10 +274,7 @@
          "absl/base:config_test",
          "absl/base:no_destructor_test",
          "absl/base:nullability_test",
 -        "absl/base:poison_test",
          "absl/base:prefetch_test",
+-        "absl/base:tracing_internal_strong_test",
+-        "absl/base:tracing_internal_weak_test",
          "absl/cleanup:cleanup_test",
- 
-@@ -281,8 +280,6 @@
+
+         # TODO(mbonadei): Fix issue with EXPECT_DEATH and uncomment.
+@@ -292,8 +285,6 @@
          "absl/container:flat_hash_set_test",
          "absl/container:hash_function_defaults_test",
          "absl/container:inlined_vector_test",
@@ -20,7 +37,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/container:node_slot_policy_test",
          "absl/container:raw_hash_set_allocator_test",
          "absl/container:raw_hash_set_test",
-@@ -291,11 +288,8 @@
+@@ -302,11 +293,8 @@
          "absl/crc:crc_cord_state_test",
          "absl/crc:crc_memcpy_test",
          "absl/crc:non_temporal_memcpy_test",
@@ -32,3 +49,15 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/flags:flag_test",
          "absl/functional:any_invocable_test",
          "absl/functional:function_ref_test",
+@@ -369,11 +357,7 @@
+         "absl/strings:str_format_test",
+         "absl/strings:str_replace_test",
+         "absl/strings:string_view_test",
+-        "absl/synchronization:barrier_test",
+-        "absl/synchronization:graphcycles_test",
+         "absl/synchronization:kernel_timeout_internal_test",
+-        "absl/synchronization:mutex_test",
+-        "absl/synchronization:per_thread_sem_test",
+         "absl/synchronization:waiter_test",
+         "absl/time:time_test",
+         "absl/types:optional_test",
