@@ -1,13 +1,14 @@
 # $Id: PKGBUILD 174744 2016-05-11 04:23:20Z fyan $
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Shanto <shanto@hotmail.com>
 # Contributor: TDY <tdy@gmx.com>
 # Contributor: zoe <chp321 [at] gmail [dot] com>
-# Maintainer: PhotonX <photon89 [at] gmail [dot] com>
+# Contributor: PhotonX <photon89 [at] gmail [dot] com>
 
 pkgname=perl-goo-canvas
 pkgver=0.06
-pkgrel=13.5
+pkgrel=13.6
 pkgdesc="Perl bindings for GooCanvas"
 arch=('i686' 'x86_64')
 url="https://metacpan.org/pod/Goo::Canvas"
