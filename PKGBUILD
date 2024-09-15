@@ -2,7 +2,7 @@
 # Maintainer: kedap <kedap at protonmail dot com>
 pkgname=tiempo
 _reponame=tiempo-rs
-pkgver=1.9.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="A command line time tracker application"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('cargo' 'git' 'python-sphinx' 'python-tomlkit' 'gzip' 'make')
 provides=('tiempo')
 conflicts=('tiempo-git' 'tiempo-bin')
 source=("https://gitlab.com/categulario/$_reponame/-/archive/v$pkgver/$pkgname-rs-v$pkgver.tar.gz")
-sha256sums=('5b75d109b0cc9cb967c8bb8bb10c2ffec9a087df0fadfdc534d1064b31c1cc54')
+sha256sums=('083c7c48054b4e7625d2c5a7d4775859cf15f0138fe5bd06dda4f51c8e74be0a')
 
 build() {
   cd "$_reponame-v$pkgver"
