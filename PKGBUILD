@@ -2,7 +2,7 @@
 
 pkgname=xcursor-pro-hyprcursor
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Hyprcursor port of https://github.com/ful1e5/XCursor-pro"
 arch=(any)
 url="https://github.com/0xk1f0/XCursor-Pro-Hyprcursor"
@@ -20,9 +20,9 @@ sha256sums=(
 
 package() {
 	install -d "${pkgdir}/usr/share/icons/XCursor-Pro-Hyprcursor-Dark"
-    cp -ar --no-preserve=ownership "${srcdir}/XCursor-Pro-Hyprcursor-Dark/." "${pkgdir}/usr/share/icons/XCursor-Pro-Hyprcursor-Dark"
-	install -d "${pkgdir}/usr/share/icons/XCursor-Pro-Hyprcursor-Light" "XCursor-Pro-Hyprcursor-Light"
-    cp -ar --no-preserve=ownership "${srcdir}/XCursor-Pro-Hyprcursor-Light/." "${pkgdir}/usr/share/icons/XCursor-Pro-Hyprcursor-Light"
-    install -d "${pkgdir}/usr/share/icons/XCursor-Pro-Hyprcursor-Red" "XCursor-Pro-Hyprcursor-Red"
-    cp -ar --no-preserve=ownership "${srcdir}/XCursor-Pro-Hyprcursor-Red/." "${pkgdir}/usr/share/icons/XCursor-Pro-Hyprcursor-Red"
+	cp -ar --no-preserve=ownership "${srcdir}/XCursor-Pro-Hyprcursor-Dark/." "${pkgdir}/usr/share/icons/XCursor-Pro-Hyprcursor-Dark"
+	install -d "${pkgdir}/usr/share/icons/XCursor-Pro-Hyprcursor-Light"
+	cp -ar --no-preserve=ownership "${srcdir}/XCursor-Pro-Hyprcursor-Light/." "${pkgdir}/usr/share/icons/XCursor-Pro-Hyprcursor-Light"
+	install -d "${pkgdir}/usr/share/icons/XCursor-Pro-Hyprcursor-Red"
+	cp -ar --no-preserve=ownership "${srcdir}/XCursor-Pro-Hyprcursor-Red/." "${pkgdir}/usr/share/icons/XCursor-Pro-Hyprcursor-Red"
 }
