@@ -1,0 +1,19 @@
+pkgbase = ani-skip-git
+	pkgdesc = A script to automatically skip anime opening and ending sequences.
+	pkgver = r35.6eaf57a
+	pkgrel = 1
+	url = https://github.com/synacktraa/ani-skip
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = grep
+	depends = sed
+	depends = curl
+	depends = fzf
+	depends = mpv
+	provides = ani-skip
+	conflicts = ani-skip
+	source = ani-skip::git+https://github.com/synacktraa/ani-skip.git
+	md5sums = SKIP
+
+pkgname = ani-skip-git
