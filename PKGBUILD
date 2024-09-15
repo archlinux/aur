@@ -2,12 +2,12 @@
 
 pkgname=bluemap-bin
 pkgver=5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Minecraft mapping tool that creates 3D models of your Minecraft worlds and displays them in a web viewer."
 arch=('any')
 url="https://bluemap.bluecolored.de/"
 license=('MIT')
-depends=('java-runtime>=16')
+depends=('java-runtime>=21')
 
 source=(
   "bluemap"
