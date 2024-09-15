@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=gui-for-clash
+Comment=GUI for Clash
+Exec=/opt/gui-for-clash/GUI.for.Clash
+Icon=/opt/gui-for-clash/icon/gui-for-clash.png
+Type=Application
+StartupNotify=true
+Categories=Network;Utility;
+StartupWMClass=gui-for-clash
