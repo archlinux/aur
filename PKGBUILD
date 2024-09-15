@@ -18,7 +18,7 @@ depends=(
   'ncurses'
   'util-linux'
 )
-makedepends=()
+makedepends=('git')
 provides=('git-quick-stats')
 conflicts=('git-quick-stats')
 source=("$pkgname::git+$url#tag=$pkgver")
