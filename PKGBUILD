@@ -5,11 +5,11 @@
 # Original: Daniel Bermond <dbermond@archlinux.org> https://aur.archlinux.org/packages/mpv-full-git
 
 pkgname=mpv-amd-full-git
-pkgver=0.38.0.r511.g42a4c306ec
+pkgver=0.38.0.r771.gef19a4a09d
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs except Nvidia)'
 arch=('x86_64')
-license=('GPL')
+license=('GPL-2.0-or-later')
 url='https://mpv.io/'
 depends=(
     # official repositories:
@@ -136,7 +136,6 @@ build() {
         -Dios-gl='disabled' \
         -Dvideotoolbox-gl='disabled' \
         -Dvideotoolbox-pl='disabled' \
-        -Dvulkan-interop='enabled' \
         \
         -Dmacos-cocoa-cb='disabled' \
         -Dmacos-media-player='disabled' \
