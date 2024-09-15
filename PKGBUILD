@@ -3,7 +3,7 @@
 # Contributor: Tyler <tjb0607 at gmail dot com>
 # Contributor: Austin <doorknob60 at gmail dot com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
-# Maintainer: Evgeniy <jakkadoujin at gmail dot com>
+# Maintainer: jakka <jakkadoujin at gmail dot com>
 
 pkgname=apng-utils
 pkgver=3.1.10
@@ -12,7 +12,7 @@ _apngasm_pkgver=3.1.10
 _gif2apng_pkgver=1.9
 _apng2gif_pkgver=1.8
 _apngopt_pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="APNG utilities"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/apng/"
@@ -24,6 +24,7 @@ provides=('apngasm' 'apngdis' 'gif2apng' 'apng2gif' 'apngopt')
 license=('LGPL' 'zlib')
 depends=('libpng' 'gcc-libs')
 makedepends=('cmake' 'boost')
+conflicts=('apngasm' 'apngdis' 'gif2apng' 'apng2gif' 'apngopt')
 source=("https://sourceforge.net/projects/apngdis/files/${_apngdis_pkgver}/apngdis-${_apngdis_pkgver}-src.zip"
         "$pkgname-$pkgver.tar.gz::https://github.com/apngasm/apngasm/archive/${_apngasm_pkgver}.tar.gz"
         "https://sourceforge.net/projects/gif2apng/files/${_gif2apng_pkgver}/gif2apng-${_gif2apng_pkgver}-src.zip"
