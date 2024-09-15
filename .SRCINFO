@@ -1,7 +1,7 @@
 pkgbase = vim-visual-star-search-git
 	pkgdesc = Start a search from a visual block in Vim
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bronson/vim-visual-star-search
 	install = vimdoc.install
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = vim-visual-star-search-git
 	provides = vim-visual-star-search=0.2
 	conflicts = vim-visual-star-search
 	source = vim-visual-star-search::git+https://github.com/bronson/vim-visual-star-search
-	md5sums = SKIP
+	b2sums = SKIP
 
 pkgname = vim-visual-star-search-git
 
