@@ -1,6 +1,6 @@
 pkgname="nodejs-vinefeed-git"
-pkgver=0.1.0.r11
-pkgrel=3
+pkgver=0.1.0.r12
+pkgrel=1
 pkgdesc="RSS/Atom feed generator for Vine users"
 arch=(any)
 url="http://github.com/tremby/vinefeed"
