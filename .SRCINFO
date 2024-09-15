@@ -1,7 +1,7 @@
 pkgbase = lpac
 	pkgdesc = C-based eUICC LPA
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/estkme-group/lpac
 	arch = x86_64
 	makedepends = cmake
@@ -21,6 +21,7 @@ pkgname = lpac
 	depends = libcurl.so
 	depends = libeuicc
 	depends = libpcsclite.so
+	depends = ccid
 	provides = libeuicc-drivers.so
 
 pkgname = libeuicc

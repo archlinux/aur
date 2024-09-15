@@ -3,7 +3,7 @@
 pkgbase=lpac
 pkgname=(lpac libeuicc)
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C-based eUICC LPA"
 arch=('x86_64')
 url=https://github.com/estkme-group/lpac
@@ -40,7 +40,7 @@ package_libeuicc() {
 
 package_lpac() {
     license=('AGPL-3.0-only')
-    depends+=('curl' 'libcurl.so' 'libeuicc' 'libpcsclite.so')
+    depends+=('curl' 'libcurl.so' 'libeuicc' 'libpcsclite.so' 'ccid')
     provides=('libeuicc-drivers.so')
 
     DESTDIR="$pkgdir" cmake --install build/driver

@@ -1,0 +1,5 @@
+[lpac]
+source = "github"
+github = "estkme-group/lpac"
+use_max_tag = true
+prefix = "v"
