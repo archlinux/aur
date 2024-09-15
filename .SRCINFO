@@ -1,6 +1,6 @@
 pkgbase = duma-git
 	pkgdesc = Detect Unintended Memory Access (D.U.M.A.) - A Red-Zone memory allocator
-	pkgver = 2.5.24b1.r55.gdf9201d
+	pkgver = 2.5.24b1.r80.g0b9f76a
 	pkgrel = 1
 	url = https://github.com/johnsonjh/duma
 	arch = x86_64

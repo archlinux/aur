@@ -1,7 +1,7 @@
 # Maintainer: tocic <tocic at protonmail dot ch>
 
 pkgname=duma-git
-pkgver=2.5.24b1.r55.gdf9201d
+pkgver=2.5.24b1.r80.g0b9f76a
 pkgrel=1
 pkgdesc="Detect Unintended Memory Access (D.U.M.A.) -
          A Red-Zone memory allocator"
