@@ -1,7 +1,7 @@
 # Maintainer: Snowstorm64
 
 pkgname=librashader
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="A preprocessor, compiler, and runtime for RetroArch 'slang' shaders, rewritten in pure Rust."
 arch=("x86_64" "aarch64")
@@ -13,13 +13,13 @@ options=(!lto) # workaround for some missing symbols
 provides=("librashader")
 conflicts=("librashader")
 source=("https://github.com/SnowflakePowered/librashader/archive/refs/tags/librashader-v${pkgver}.tar.gz")
-sha512sums=("609b86f6acc079fbf19d532c8465ce34a2d6d44bf8cffc052e96d20c9d3d157312f75853a90fc23672f078fa59f75562d894e2ef409944895d7c07088b878877")
+sha512sums=("1ffb50c4d1fb83bd2cd1d672209777cb90c4a2ff1ff274d95726f51fe0cba02fdc6cb56b9d84a424e1e34d3f4b3bc68b0016531c940a6f3d111ba68c04eddc67")
 _build_profile="optimized"
 _fix_pkgname="${pkgname}-${pkgname}"
 
 build() {
   cd "${_fix_pkgname}-v${pkgver}"
-  RUSTC_BOOTSTRAP=1 cargo run -p librashader-build-script -- --profile ${_build_profile}
+  cargo run -p librashader-build-script -- --stable --profile ${_build_profile} -- --no-default-features --features=runtime-vulkan,runtime-opengl
 }
 
 package() {
@@ -31,6 +31,6 @@ package() {
   install -m 755 "${srcdir}/${_fix_pkgname}-v${pkgver}/target/${_build_profile}/librashader.so" "${pkgdir}/usr/lib/librashader.so.${pkgver}"
   ln -s -r "${pkgdir}/usr/lib/librashader.so.${pkgver}" "${pkgdir}/usr/lib/librashader.so" 
 
-  install -Dm 644 "${srcdir}/${_fix_pkgname}-v${pkgver}/target/${_build_profile}/librashader.h" "${pkgdir}/usr/include/${pkgname}/librashader.h"
+  install -Dm 644 "${srcdir}/${_fix_pkgname}-v${pkgver}/include/librashader.h" "${pkgdir}/usr/include/${pkgname}/librashader.h"
   install -Dm 644 "${srcdir}/${_fix_pkgname}-v${pkgver}/include/librashader_ld.h" "${pkgdir}/usr/include/${pkgname}/librashader_ld.h"
 }
