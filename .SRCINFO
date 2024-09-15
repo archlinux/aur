@@ -6,6 +6,7 @@ pkgbase = apng-utils
 	arch = i686
 	arch = x86_64
 	license = LGPL
+	license = zlib
 	makedepends = cmake
 	makedepends = boost
 	depends = libpng

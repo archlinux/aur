@@ -21,7 +21,7 @@ url="https://sourceforge.net/projects/apng/"
 # gif2apng: "https://sourceforge.net/projects/gif2apng/"
 # apng2gif: "https://sourceforge.net/projects/apng2gif/"
 provides=('apngasm' 'apngdis' 'gif2apng' 'apng2gif' 'apngopt')
-license=('LGPL')
+license=('LGPL' 'zlib')
 depends=('libpng' 'gcc-libs')
 makedepends=('cmake' 'boost')
 source=("https://sourceforge.net/projects/apngdis/files/${_apngdis_pkgver}/apngdis-${_apngdis_pkgver}-src.zip"
