@@ -1,7 +1,7 @@
 pkgbase = tosu
 	pkgdesc = Eponymous software for reading osu! memory
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kotrikd/tosu
 	arch = x86_64
 	license = LGPL3

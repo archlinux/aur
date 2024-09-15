@@ -3,7 +3,7 @@
 
 pkgname=tosu
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Eponymous software for reading osu! memory"
 arch=(x86_64)
 url="https://github.com/kotrikd/tosu"
