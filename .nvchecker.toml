@@ -1,6 +1,4 @@
 [ame]
-source = "gitlab"
-gitlab = "crystal-linux/software/amethyst"
+source = "git"
+git = "https://gitlab.com/crystal-linux/software/amethyst.git"
 prefix = "v"
-use_max_tag = true
-exclude_regex = ".*(pre|a|alpha|b|beta|r|rc).*"
