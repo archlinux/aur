@@ -16,19 +16,24 @@ provides=(tosu)
 conflicts=(tosu)
 replaces=()
 backup=()
-options=()
+options=(!strip)
 install=
 changelog=
 source=("https://github.com/kotrikd/${pkgname}/releases/download/v${pkgver}/${pkgname}-linux-v${pkgver}.zip"
-        )
-sha256sums=("3f164de319446f89cf2b03b065a60d4857a390df0167fad32e4a744d66381d38")
+	"tosu-bin.sh"        
+)
+sha256sums=("3f164de319446f89cf2b03b065a60d4857a390df0167fad32e4a744d66381d38"
+	"16e77f6a192094be77ce1ecc9322e7296b57532851672d15f07bc82132cdfc21"
+)
 validpgpkeys=()
 
-prepare() {
-	unzip -a "${pkgname}-linux-v${pkgver}.zip"
-}
-
 package() {
-	# Install gosumemory binary
-	install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/opt/tosu/tosu"	
+	# Install tosu binary
+	install -Dm777 "${srcdir}/${pkgname}" "${pkgdir}/opt/tosu/tosu"	
+	
+	# Allow user and executable to write new files
+	chmod 777 "${pkgdir}/opt/tosu"
+
+	# Launcher
+	install -Dm755 "${srcdir}/tosu-bin.sh" "${pkgdir}/usr/bin/tosu"
 }

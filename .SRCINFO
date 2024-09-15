@@ -7,7 +7,10 @@ pkgbase = tosu
 	license = LGPL3
 	provides = tosu
 	conflicts = tosu
+	options = !strip
 	source = https://github.com/kotrikd/tosu/releases/download/v3.1.0/tosu-linux-v3.1.0.zip
+	source = tosu-bin.sh
 	sha256sums = 3f164de319446f89cf2b03b065a60d4857a390df0167fad32e4a744d66381d38
+	sha256sums = 16e77f6a192094be77ce1ecc9322e7296b57532851672d15f07bc82132cdfc21
 
 pkgname = tosu
