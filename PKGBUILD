@@ -1,5 +1,5 @@
 # Maintainer: iris snazzsinclair@gmail.com
-pkgname=revhubinterface-git
+pkgname=revhubinterface
 _pkgname=RevHubInterface
 pkgver=1.4
 pkgrel=1
