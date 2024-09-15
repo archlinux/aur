@@ -1,0 +1,13 @@
+pkgbase = ttf-giftscop
+	pkgdesc = Recreations of three fonts from Petscop, used in Giftscop
+	pkgver = 13.3_1.0_1.1.1
+	pkgrel = 1
+	arch = any
+	source = https://giftscop.com/fnt/PetscopWide.ttf
+	source = https://giftscop.com/fnt/PetscopTall.ttf
+	source = https://giftscop.com/fnt/PanicTF.ttf
+	md5sums = c8656e3995c428d26e223cb217ff4f72
+	md5sums = 7fcdbebf44a6d521d92ecacba3787070
+	md5sums = 0410f25b7c3f80002a9a315e16f09325
+
+pkgname = ttf-giftscop
