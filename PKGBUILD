@@ -2,7 +2,7 @@
 # Maintainer:  Radu Potop <radu at wooptoo dot com>
 
 pkgname=oauth2c
-pkgver=1.15.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='User-friendly CLI for OAuth2'
 arch=('x86_64' 'arm64' 'armv6')
@@ -21,4 +21,4 @@ package() {
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
 
-sha256sums=('d75acbe4b456b30803aafab046270b07f1ea9ba76e525c671d2c83a93448e85f')
+sha256sums=('367589bb203347df7c63b413a2b39a1a9f9f6e125974b662932c10949fddae83')
