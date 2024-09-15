@@ -6,11 +6,11 @@ ENABLE_SNAPD=0
 
 pkgname=libpamac-aur
 pkgver=11.6.4
-pkgrel=4
+pkgrel=5
 _pkgfixver=$pkgver
 
 _commit='14212835ca50c3cb90aac0eed88e07b764dcba0e'
-sha256sums=('49f3c7cb94aeeeb52cb62e9807ef17b609f46a1689c2d54b1887ebed6c4e4dbe'
+sha256sums=('19b80dd064e913713cce45aa8e05350a851f4e1489a95d3ce0169a5fc7042ff3'
             '6e0c25f0fcb0076ce78845b037e32925fcc3f1cd1670062c48ed35f564a10244'
             'b5236af02c25cd7de4b2c9c2d0f064dac3c2f54da5cc72bf72fc6236a34bd9c4'
             'e90cb38ce31fac5eae86b73dfd94936f920b50f260afd4979b7cc7f62ca93bae'
@@ -18,10 +18,10 @@ sha256sums=('49f3c7cb94aeeeb52cb62e9807ef17b609f46a1689c2d54b1887ebed6c4e4dbe'
 
 pkgdesc="Pamac package manager library based on libalpm"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://gitlab.manjaro.org/applications/libpamac"
+url="https://github.com/manjaro/libpamac/"
 license=('GPL-3.0-or-later')
 depends=('glib2>=2.42' 'json-glib' 'libsoup3' 'dbus-glib' 'polkit' 'vte3>=0.38' 'libalpm.so=15'
-         'libnotify' 'pacman>=7.0' 'pacman<6.2' 'gnutls>=3.4' 'appstream'
+         'libnotify' 'pacman>=7.0' 'gnutls>=3.4' 'appstream'
          'appstream-glib>=0.7.18-1' 'archlinux-appstream-data' 'git')
 
 makedepends=('gettext' 'itstool' 'vala>=0.46'  'asciidoc' 'meson' 'ninja' 'gobject-introspection' 'systemd')
@@ -30,7 +30,7 @@ conflicts=('libpamac' 'libpamac-all')
 provides=('libpamac.so=11' 'libpamac-aur.so=11' 'libpamac-appstream.so=11')
 options=(!emptydirs !strip)
 install=pamac.install
-source=("libpamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_commit/libpamac-$_commit.tar.gz"
+source=("libpamac-$pkgver-$pkgrel.zip::$url/archive/$_commit.zip"
         'fix-appstream-data.sh' 'fix-appstream-data.hook'
         '0001-flatpak_trans_run.patch' '0002-flatpak_runtime.patch')
 
