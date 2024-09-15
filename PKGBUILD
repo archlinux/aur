@@ -5,7 +5,7 @@
 pkgbase=open3d
 pkgname=( {,python-}open3d python-py3d )
 pkgver=0.18.0
-pkgrel=10
+pkgrel=11
 epoch=1
 pkgdesc="A Modern Library for 3D Data Processing"
 arch=('x86_64')
