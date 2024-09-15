@@ -2,7 +2,7 @@
 
 pkgbase=xautocfg
 pkgname=(xautocfg)
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/SFTtech/xautocfg'
@@ -16,7 +16,7 @@ depends=(
 makedepends=()
 options=()
 source=($pkgname-$pkgver.tar.gz::https://github.com/SFTtech/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz)
-b2sums=('c967e747601608829ab09c46063fbd75d959026edbda6e3290b923c81389607fb5500bd453f28044a6f57a8b87ebb36b2b50a853387a9b258e87cd4f901a3fc3')
+b2sums=('52c70ee05542e60fa2480959a016e6c7dc52a13954cde8ba0153323558bf83836d15dc0da8f4b97259590fc790c756a1dcf39e81cde18be9ff6464437c4b499d')
 
 build() {
   cd ${pkgname}-${pkgver}
