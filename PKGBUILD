@@ -1,6 +1,6 @@
 pkgname="nodejs-vinefeed-git"
 pkgver=0.1.0.r11
-pkgrel=2
+pkgrel=3
 pkgdesc="RSS/Atom feed generator for Vine users"
 arch=(any)
 url="http://github.com/tremby/vinefeed"
@@ -26,7 +26,7 @@ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 package() {
   cd "$_gitname"
-  npm install -g --prefix "$pkgdir/usr" --production
+  npm pack
+  npm install -g --prefix "$pkgdir/usr" --production ${_gitname#*-}-*.tgz
   install -Dm644 -t "$pkgdir/usr/lib/systemd/user/" *.{service,socket}
-  rmdir "$pkgdir/usr/etc"
 }
