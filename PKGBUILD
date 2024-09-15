@@ -5,7 +5,7 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-beta-performance
-pkgver=47.rc.r38.ga6207cd
+pkgver=47.0.r1.g75b8d3a
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -77,14 +77,20 @@ makedepends=(
   meson
   sysprof
   wayland-protocols
+  python-docutils
 )
-_commit=a6207cd1d862cf12e69ba4100993f7b744d7b8a9
+provides=(mutter libmutter-15.so)
+conflicts=(mutter)
+_commit=75b8d3a166ce00fca5241618a649487765a588e6
+_gvdb_commit=b54bc5da25127ef416858a3ad92e57159ff565b3
 source=(
   "mr1441.patch::$url/-/merge_requests/1441.patch"
   "git+$url.git#commit=$_commit"
+  "git+https://gitlab.gnome.org/GNOME/gvdb.git#commit=$_gvdb_commit"
 )
 b2sums=('343186ecf7ecd688fd1b3c18c646a558b17d8b535d23505574d7dcb223201b95b4af12311fce927873240f855471c04fbc73277c2fb900ba4106a1240741a8cb'
-        'b77588f1ed702ae72845e0b7e0b9f4a5d376234812648caf60e10a9999b73b0eea2c4bd8846708c94f3be41875b6dcaba6ead787184feacdb13e332de2822d3f')
+        'c47d125ff4a2883a5f559a6659033e41332276e45dd19c18c96f1bc39040d714dbe43ba3a7da5b33da5d89ba78531250a27bfc50b4ec5a4757920e889d552d82'
+        'f989bc2ceb52aad3c6a23c439df3bbc672bc11d561a247d19971d30cc85ed5d42295de40f8e55b13404ed32aa44f12307c9f5b470f2e288d1c9c8329255c43bf')
 
 pkgver() {
   cd mutter
@@ -100,23 +106,25 @@ build() {
   local meson_options=(
     -D docs=false
     -D egl_device=true
-    -D installed_tests=false
-    -D libdisplay_info=enabled
-    -D tests=disabled
     -D wayland_eglstream=true
+    -D xwayland_initfd=enabled
+    -D libdisplay_info=enabled
+    -D installed_tests=false
+    -D tests=disabled
+    -D profiler=false
   )
 
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
 
+  # Inject gvdb
+  export MESON_PACKAGE_CACHE_DIR="$srcdir"
+
   arch-meson mutter build "${meson_options[@]}"
   meson compile -C build
 }
 
-package_mutter-beta-performance() {
-  provides=(mutter libmutter-15.so)
-  conflicts=(mutter)
-
+package() {
   meson install -C build --destdir "$pkgdir"
 }
 
