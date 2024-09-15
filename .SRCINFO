@@ -1,6 +1,6 @@
 pkgbase = stuntrally-bin
-	pkgdesc = A 3D racing game based on VDrift and OGRE with track editor
-	pkgver = 2.6
+	pkgdesc = A 3D racing game based on VDrift and OGRE with track editor.
+	pkgver = 3.1
 	pkgrel = 1
 	url = http://stuntrally.tuxfamily.org
 	arch = i686
@@ -13,8 +13,15 @@ pkgbase = stuntrally-bin
 	depends = bullet
 	depends = openal
 	depends = hicolor-icon-theme
-	source = https://netcologne.dl.sourceforge.net/project/stuntrally/2.6/StuntRally-2.6-linux.tar.gz
-	sha256sums = 60fd882df354cfcb018127aa3818da284a876adb266d7d7f065314954744c459
+	source = https://github.com/stuntrally/stuntrally3/releases/download/3.1/StuntRally-3.1-Linux.tgz
+	source = stuntrally.desktop
+	source = sr-editor.desktop
+	source = stuntrally3.sh
+	source = sr-editor3.sh
+	sha256sums = 5fd2ccb1f5bea4fcf51a7324919b72d3a9bb7611c74309e137b9c75fc1a7d44f
+	sha256sums = c97393c2ecdaf763125be03e0d19037db9f06bb92aade318c2bf79821b8677f4
+	sha256sums = 5f54cdd7c663f7df884cb3a768e90bb94103d18388622e7835e25d2a529b2a90
+	sha256sums = 7dbc81b9629512de32f444e68f3b39cd774e21fa6f895d0930fd0254d312329b
+	sha256sums = 8f14eccb4ce62e85591997e44ea414682098a93727d79e6bd08024ec4de58c2f
 
 pkgname = stuntrally-bin
-
