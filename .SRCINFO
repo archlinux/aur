@@ -1,0 +1,17 @@
+pkgbase = revhubinterface-git
+	pkgdesc = Software for controling a REV Expansion Hub on a PC over USB
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/unofficial-rev-port/REVHubInterface
+	arch = any
+	license = BSD3
+	makedepends = git
+	makedepends = pyinstaller
+	makedepends = python>=3.7
+	makedepends = python-pyserial
+	makedepends = tk
+	makedepends = python-sv-ttk
+	source = RevHubInterface::git+https://github.com/unofficial-rev-port/REVHubInterface.git#tag=v1.4
+	b2sums = SKIP
+
+pkgname = revhubinterface-git
