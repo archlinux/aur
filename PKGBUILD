@@ -41,14 +41,19 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
+  echo "CGO_CPPFLAGS is ${CPPFLAGS}"
+  echo "CGO_CFLAGS is ${CFLAGS}"
+  echo "CGO_CXXFLAGS is ${CXXFLAGS}"
+  echo "LDFLAGS is ${LDFLAGS}"
 
-  go build -v \
-    -trimpath \
-    -buildmode=pie \
-    -mod=readonly \
-    -modcacherw \
-    -ldflags "-linkmode external -extldflags ${LDFLAGS}" \
-    .
+#  go build -v \
+#    -trimpath \
+#    -buildmode=pie \
+#    -mod=readonly \
+#    -modcacherw \
+#    -ldflags "-linkmode external -extldflags ${LDFLAGS}" \
+#    .
+  go build -v -trimpath -buildmode=pie -mod=readonly -modcacherw -ldflags "-linkmode external"
 }
 
 check() {
