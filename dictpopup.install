@@ -1,3 +1,2 @@
 post_install() {
-  echo "-- Run dictpopup-create in the folder with your Yomichan dictionaries to init the database"
 }
