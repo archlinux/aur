@@ -2,7 +2,7 @@
 
 pkgname=ttf-renogare-soft
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A clean and elegant sans serif font created by Deepak Dogra'
 arch=('any')
 license=('custom')
