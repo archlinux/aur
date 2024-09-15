@@ -17,7 +17,7 @@
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
 pkgname=mutter-x11-scaling
-pkgver=46.4
+pkgver=46.5
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -94,11 +94,10 @@ source=(
   # Mutter tags use SSH signatures which makepkg doesn't understand
   "git+$url.git#tag=${pkgver/[a-z]/.&}"
   "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/64f7d7fb106b7efb5dfb3f86c3bcf9a173ee3c5e/x11-Add-support-for-fractional-scaling-using-Randr.patch"
-  "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/64f7d7fb106b7efb5dfb3f86c3bcf9a173ee3c5e/Support-Dynamic-triple-double-buffering.patch"
+  #"https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/64f7d7fb106b7efb5dfb3f86c3bcf9a173ee3c5e/Support-Dynamic-triple-double-buffering.patch"
 )
-b2sums=('fc21cb8e56728873196fba12ba7a0522aeb9d6e7f6204ac21ade4c632b081fe45e0633d1c072c2416d81faa0f6b63cb69b278ef7b440e2bfccaff775501d3028'
-        'bf2080b587420aa03d413566d34009e7fc63774b23f7826f215b8a317c468c041e5fed4cdca49423b5972bf64179d67d6e34c429a85c10e8c46eb170ce1eda70'
-        'be3ab158f78256443d1b6c1538801870e3c4dcbe9e11b7455bc9b8f6fde5962dbd6d0f3da44a45f2123d8621ff85a57026c65d694ae010402e34a8da61f88686')
+b2sums=('3c7990afd584836dd092e30813194ac24608416051a9b06c51d2f9577206360cb0f8bafceccc42ce1809d47e7a1676326fe8b87fa231c6abe2d9dddba10b6581'
+        'bf2080b587420aa03d413566d34009e7fc63774b23f7826f215b8a317c468c041e5fed4cdca49423b5972bf64179d67d6e34c429a85c10e8c46eb170ce1eda70')
 
 prepare() {
   cd mutter
@@ -109,7 +108,7 @@ prepare() {
   # Add dynamic triple/double buffering support
   # https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/3760
   # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
-  patch -p1 -i "${srcdir}/Support-Dynamic-triple-double-buffering.patch"
+  #patch -p1 -i "${srcdir}/Support-Dynamic-triple-double-buffering.patch"
 }
 
 build() {
