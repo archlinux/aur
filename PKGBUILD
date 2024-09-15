@@ -1,6 +1,6 @@
 # Maintainer: Ziqi Yang <mr.ziqiyang@gmail.com>
 pkgname='ttf-lxgw-fasmart-gothic'
-pkgver=1.200
+pkgver=1.201
 pkgrel=1
 pkgdesc="「霞鹜尚智黑」，在「03スマートフォントUI」的基础上修改制作，将新晰黑字面横向压缩 94%，全新英数与假名，更具稳重时尚感。"
 arch=('any')
