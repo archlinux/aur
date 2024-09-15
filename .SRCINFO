@@ -1,0 +1,20 @@
+pkgbase = emilua-secp256k1
+	pkgdesc = Emilua bindings to libsecp256k1
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://gitlab.com/emilua/secp256k1
+	arch = i686
+	arch = x86_64
+	license = mit
+	makedepends = git
+	makedepends = meson
+	makedepends = boost
+	makedepends = gawk
+	makedepends = gperf
+	makedepends = asciidoctor
+	depends = emilua
+	depends = libsecp256k1
+	source = emilua-secp256k1::git+https://gitlab.com/emilua/secp256k1.git#tag=v0.5.0
+	md5sums = SKIP
+
+pkgname = emilua-secp256k1
