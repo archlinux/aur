@@ -1,0 +1,17 @@
+pkgbase = python-saucenao
+	pkgdesc = unofficial python module to make working with SauceNAO in projects easier
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/DaRealFreak/saucenao
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = python-beautifulsoup4
+	depends = python-requests
+	optdepends = python-pillow: Python Imaging Library, used to generate images for unittests
+	optdepends = python-dotenv: .env file loader used for unittests
+	optdepends = python-requests-mock: requests mock responses used for unittests
+	source = https://github.com/DaRealFreak/saucenao/archive/v1.0.6.tar.gz
+	sha512sums = fc618448a628b396f519ad5b646224858e9a758074bfabe290d0daff509bd084573de100a9bb145b2ef9a8dfe9050cc92a811045ade0399f768b8aa6946b3aaa
+
+pkgname = python-saucenao
