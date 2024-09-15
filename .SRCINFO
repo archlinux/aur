@@ -12,7 +12,6 @@ pkgbase = nodejs-vinefeed-git
 	provides = nodejs-vinefeed=0.1.0.r11
 	conflicts = nodejs-vinefeed
 	source = nodejs-vinefeed::git+http://github.com/tremby/vinefeed
-	md5sums = SKIP
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = nodejs-vinefeed-git
