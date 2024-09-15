@@ -1,6 +1,6 @@
 pkgbase = see
 pkgname = see
-pkgver = 
+pkgver = 0.8.1
 pkgrel = 1
 pkgdesc = A cute cat(1)
 url = https://github.com/guilhermeprokisch/see

@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("see-cat")
 conflicts=("see-cat")
 source=("https://github.com/guilhermeprokisch/see/releases/download/v$pkgver/see-cat-$pkgver-x86_64.tar.gz")
-sha256sums=("2fbc97ac710f515d53cf59d75f3603913c2ed92a9d7c38fbdb0dcfee5ff5550a")
+sha256sums=("d73db851f65833d7233f82627a08d73639141a0e7ad9dcda0d9b3eb7a96c7dd1")
 
 package() {
     install -Dm755 see -t "$pkgdir/usr/bin"
