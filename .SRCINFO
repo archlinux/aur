@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-beta-performance
 	pkgdesc = Next generation desktop shell
 	pkgver = 47.0.r0.g957504b
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-shell
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = gnome-shell-beta-performance
 	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = sassc
+	makedepends = python-docutils
 	depends = accountsservice
 	depends = at-spi2-core
 	depends = bash

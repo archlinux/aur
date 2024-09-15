@@ -6,7 +6,7 @@
 
 pkgname=gnome-shell-beta-performance
 pkgver=47.0.r0.g957504b
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell"
 url="https://gitlab.gnome.org/GNOME/gnome-shell"
@@ -69,6 +69,7 @@ makedepends=(
   gobject-introspection
   meson
   sassc
+  python-docutils
 )
 optdepends=(
   'evolution-data-server: Evolution calendar integration'
