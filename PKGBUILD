@@ -5,7 +5,7 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-beta-performance
-pkgver=47.rc.r30.gc67ea8e
+pkgver=47.0.r0.g957504b
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
@@ -50,6 +50,7 @@ depends=(
   libx11
   libxfixes
   mutter
+  libmutter-15.so
   pango
   polkit
   systemd-libs
@@ -69,13 +70,27 @@ makedepends=(
   meson
   sassc
 )
-_shell_commit=c67ea8e771512fb3a76dc5eea1c268bf615d5422
+optdepends=(
+  'evolution-data-server: Evolution calendar integration'
+  'gnome-bluetooth-3.0: Bluetooth support'
+  'gnome-control-center: System settings'
+  'gnome-disk-utility: Mount with keyfiles'
+  'gst-plugin-pipewire: Screen recording'
+  'gst-plugins-good: Screen recording'
+  'power-profiles-daemon: Power profile switching'
+  'python-gobject: gnome-shell-test-tool performance tester'
+  'python-simplejson: gnome-shell-test-tool performance tester'
+  'switcheroo-control: Multi-GPU support'
+)
+provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
+conflicts=(gnome-shell)
+_shell_commit=957504b1f673cb016e32ccea26bac3a6723d34a1
 _libgnome_volume_control_commit=5f9768a2eac29c1ed56f1fbb449a77a3523683b6
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_shell_commit"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=$_libgnome_volume_control_commit"
 )
-b2sums=('cd947123e3f515967f6249802cf681441e596a36861d9e3c0cb59e60bd1fc75334170dcc87f6c611ae9818e3eefcc7412248909250304aadcf13d46b777a18e6'
+b2sums=('7c5b48d4ad2c9119bac501dfc99d2e73132a8418dd6d6020778c6a76090faa5489d85bb9ca9bf2908592efba077e14f66a6515e57e1c1b18ba8d22d43ca56d81'
         'e31ae379039dfc345e8032f7b9803a59ded075fc52457ba1553276d3031e7025d9304a7f2167a01be2d54c5e121bae00a2824a9c5ccbf926865d0b24520bb053')
 
 pkgver() {
@@ -105,23 +120,6 @@ build() {
 }
 
 package() {
-  provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
-  conflicts=(gnome-shell)
-  depends+=(libmutter-15.so)
-  optdepends=(
-    'evolution-data-server: Evolution calendar integration'
-    'gnome-bluetooth-3.0: Bluetooth support'
-    'gnome-control-center: System settings'
-    'gnome-disk-utility: Mount with keyfiles'
-    'gst-plugin-pipewire: Screen recording'
-    'gst-plugins-good: Screen recording'
-    'power-profiles-daemon: Power profile switching'
-    'python-gobject: gnome-shell-test-tool performance tester'
-    'python-simplejson: gnome-shell-test-tool performance tester'
-    'switcheroo-control: Multi-GPU support'
-  )
-  groups=(gnome)
-
   meson install -C build --destdir "$pkgdir"
 }
 
