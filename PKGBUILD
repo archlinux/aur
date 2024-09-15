@@ -2,7 +2,7 @@
 
 
 pkgname=gdx-liftoff
-pkgver=1.12.1.7
+pkgver=1.12.1.16
 pkgrel=1
 #epoch=1
 pkgdesc="LibGDX project setup"
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/libgdx/gdx-liftoff/archive/
         "gdx-liftoff.desktop"
 )
 
-sha256sums=('01307db8b4e36c3ba131eeeef7a4a0f37d7eb06b3902b5ab1502ceb62a4d353b'
+sha256sums=('95f59abccd1857afbe33285928ec3eb66af6790ae3af46f5aec74baa0e126134'
             'b646f91c9504b229c8a59bbb05a7fc410e5284f1e4cdbbf6fcb258eea8056a8b'
             '3756dc0f908f8616d00cd077891a5e8c1b1f72e575227bcfc72db38e2e57c1b6')
 
@@ -27,7 +27,7 @@ build() {
   echo "Run build script in directory: `pwd`"
   bash ./gradlew build
   # Build script produce jar with doubling version in file name, rename
-  mv $srcdir/$jsrc/build/libs/$pkgname-$pkgver-$pkgver.jar $srcdir/$jsrc/build/libs/$pkgname.jar
+  mv $srcdir/$jsrc/build/libs/$pkgname-$pkgver.jar $srcdir/$jsrc/build/libs/$pkgname.jar
 }
 
 package() {
