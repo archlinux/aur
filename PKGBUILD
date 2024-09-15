@@ -3,10 +3,10 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux-hardened
-pkgver=6.6.14.hardened1
+pkgbase=linux-hardened-lts
+pkgver=6.6.51.hardened1
 pkgrel=1
-pkgdesc='Security-Hardened Linux'
+pkgdesc='Security-Hardened Linux LTS'
 url='https://github.com/anthraxx/linux-hardened'
 arch=(x86_64)
 license=(GPL-2.0-only)
@@ -36,7 +36,7 @@ _srcname=linux-${pkgver%.*}
 _srctag=v${pkgver%.*}-${pkgver##*.}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
-  ${url}/releases/download/${_srctag}/${pkgbase}-${_srctag}.patch{,.sig}
+  ${url}/releases/download/${_srctag}/linux-hardened-${_srctag}.patch{,.sig}
   config  # the main kernel config file
 )
 validpgpkeys=(
@@ -45,16 +45,16 @@ validpgpkeys=(
   E240B57E2C4630BA768E2F26FC1B547C8D8172C8  # Levente Polyak
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('fbe96b2db3f962cd2a96a849d554300e7a4555995160082d4f323c2a1dfa1584'
+sha256sums=('1c0c9a14650879c4913efdbac428ba31a540c3d987155ddf34d33e11eca008b3'
             'SKIP'
-            '7b299439129eaef97189eef7c2b9b36a2248e984204cdba057cf0db2a8e10ae5'
+            '681c4788056e4c754c5f101317ad3797e9232df76dfc1e8d21d352473d15a80e'
             'SKIP'
-            '5bfb88048c3a56447358d0d203e7eb7a246471541ede2fa80933009a8cee69cd')
-b2sums=('d4c804f804562db0439e75d0a9605e0da55f80103d11087ced20486cc0813e4840ec928dc55e33ae654509e593236d6a62fc1a0d4b911a1d943b5e13b525267e'
+            'c5747c78a16e40474a0f9ee918f5049e3d53def436d31db3f6f5bac8b903a628')
+b2sums=('11c628d94cd62e08ec500fd67fc8b989e03cfa617690f5f7ce010f211c7778c7b57c119d827a707b3c09e862b5b96de3eb8e503b7128a4e1651789e4420ac1e6'
         'SKIP'
-        'd62182edeec6255fb58ef673ec8236f28faf87779d6c9886929c890815cb76cbcb89a48aac960a4a727bb803ffb8c8c73a1a9418308a9914c757693d5a95ca7c'
+        'fdb3fde9ae40e197d24a2faf7c1aed187273c7f523b8538964f8b964bcf1c63962be5f3c01684e51eae23f19582868540b7a70c43a71f1ebe65bf53a5c320b53'
         'SKIP'
-        '89e46d7fa06a4b26a0da771dd8a38684a5b5607c8ffff534bdd7e39073d32830f4fa84401573de548ffdb8b3bb4ccf71402e599959f3436393ed529d04d7115c')
+        'e7169a2f0a856bdd32e5c4ce782659cfef7f53a860eb1971bbc622303ad341a6bbe472234033d35af4b814841cde446b1a1ba9d50daeeb2cb3a7002a78b8cf38')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
