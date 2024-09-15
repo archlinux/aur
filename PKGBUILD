@@ -1,10 +1,11 @@
+# shellcheck disable=SC2034,SC2148,SC2128,SC2154,SC2164
 # Maintainer: javalsai <javalsai@proton.me>
 pkgname=lidm-git
-pkgver=0.0.1.r50.ge3052ec
+pkgver=0.1.0.r0.g8071694
 pkgrel=1
 depends=('pam')
 makedepends=('git' 'make' 'gcc')
-pkgdesc="A fully colorful cutomizable TUI display manager made in C. (last git commit)"
+pkgdesc="A fully colorful customizable TUI display manager made in C. (last git commit)"
 arch=('any')
 url="https://github.com/javalsai/lidm"
 license=('GPL')
@@ -26,6 +27,5 @@ build() {
 
 package() {
     cd "lidm"
-    install -Dm755 lidm "${pkgdir}/usr/bin/lidm"
-    install -Dm644 themes/default.ini "${pkgdir}/etc/lidm.ini"
+    make install DESTDIR="${pkgdir}"
 }
