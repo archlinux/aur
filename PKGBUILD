@@ -1,14 +1,15 @@
-# Maintainer: Peter Mattern <pmattern at arcor dot de>
+# Contributor: Peter Mattern <pmattern at arcor dot de>
 
 _pkgname=proj
 pkgname=$_pkgname-git
-pkgver=4.9.0.247.g1384b97
+pkgver=9.0.0.1406.g0a407325f
 pkgrel=1
 pkgdesc='Cartographic Projections Library'
 arch=('i686' 'x86_64')
 url='https://github.com/OSGeo/proj.4'
 license=('MIT')
-makedepends=('git' 'cmake')
+depends=('curl' 'gcc-libs' 'glibc' 'libtiff' 'sqlite')
+makedepends=('git' 'cmake' 'gtest')
 provides=("$_pkgname" "$_pkgname.4" "$_pkgname-configure-git")
 conflicts=("$_pkgname" "$_pkgname.4" "$_pkgname-configure-git")
 source=("$_pkgname::git+https://github.com/OSGeo/proj.4.git")
@@ -23,6 +24,10 @@ build() {
   mkdir -p build ; cd build
   cmake $srcdir/$_pkgname -DCMAKE_INSTALL_PREFIX=/usr
   make
+}
+
+check(){
+  ctest --test-dir build
 }
 
 package() {
