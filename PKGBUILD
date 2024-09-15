@@ -34,6 +34,7 @@ prepare() {
 	cd "${srcdir}"/${_pkgname}
 	git submodule update --init --recursive
 	sed -i -e 's/- "AppImage"/# - "AppImage"/;s/- "deb"/# - "deb"/' electron-builder.yml
+	sed -i -e "s/Icon=.*/Icon=${_pkgname}/;s/run.sh/${_pkgname}/" flatpak/io.github.unknownskl.greenlight.desktop
 }
 
 build() {
@@ -50,4 +51,6 @@ package() {
 	ln -s /usr/lib/${_pkgname}/${_pkgname} "${pkgdir}"/usr/bin/${_pkgname}
 
 	install -Dm644 -t "${pkgdir}"/usr/share/licenses/${_pkgname} LICENSE
+	install -Dm644 "${srcdir}"/${_pkgname}/flatpak/io.github.unknownskl.greenlight.png "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png
+	install -Dm644 "${srcdir}"/${_pkgname}/flatpak/io.github.unknownskl.greenlight.desktop "${pkgdir}"/usr/share/applications/${_pkgname}.desktop
 }
