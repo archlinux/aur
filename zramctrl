@@ -1,22 +1,77 @@
 #!/bin/bash
+declare -i ZRAM_MAX_PERCENT=50
+declare -i RAM_PERCENT=0 SIZE=0
 
 if [ -f /etc/zramswap.conf ]; then
-  source /etc/zramswap.conf
+	source /etc/zramswap.conf
 fi
 
 start() {
-  if [ ! "$ZRAM_SIZE_PERCENT" ]; then
-    ZRAM_SIZE_PERCENT=20
-  fi
-  (( MEM_TOTAL= `cat /proc/meminfo|grep MemTotal|awk '{print $2}'` * 1024 ))
-  (( MEM= MEM_TOTAL * $ZRAM_SIZE_PERCENT / 100 ))
-  modprobe zram
-  if [ -n "$ZRAM_COMPRESSION_ALGO" ]; then
-    echo "$ZRAM_COMPRESSION_ALGO" > /sys/block/zram0/comp_algorithm
-  fi
-  echo $MEM > /sys/block/zram0/disksize
-  mkswap /dev/zram0 -L zram0
-  swapon -p 100 /dev/zram0
+	local Item Multiplier AVAILABLE_ALGO
+	local -i Amount RAM_TOTAL_BYTES ZRAM_SIZE ZRAM_SIZE_REQ FOUND_ALGO
+
+	test $RAM_PERCENT -eq 0 && RAM_PERCENT=20
+	test $RAM_PERCENT -gt $ZRAM_MAX_PERCENT && RAM_PERCENT=$ZRAM_MAX_PERCENT
+	# echo $RAM_PERCENT
+
+	# Grab max memory
+	while read -r Item Amount Multiplier; do
+		test "$Item" != "MemTotal:" && continue
+		# echo "|$Item|$Amount|$Multiplier|"
+		case $Multiplier in
+			kB)	RAM_TOTAL_BYTES=$((Amount * 1024)) ;;
+			mB)	RAM_TOTAL_BYTES=$((Amount * (1024**2) )) ;;
+			gB)	RAM_TOTAL_BYTES=$((Amount * (1024**3) )) ;;
+			*)	RAM_TOTAL_BYTES=$Amount ;;
+		esac
+		# echo "$RAM_TOTAL_BYTES $RAM_PERCENT"
+	done </proc/meminfo
+
+	# SIZE=8
+	# Manual size config?
+	if test $SIZE -gt 0; then
+		case "${SIZE_TYPE:-GiB}" in
+			KiB)	ZRAM_SIZE_REQ=$((SIZE * 1024)) ;;
+			MiB)	ZRAM_SIZE_REQ=$((SIZE * (1024**2) )) ;;
+			GiB)	ZRAM_SIZE_REQ=$((SIZE * (1024**3) )) ;;
+			*)		ZRAM_SIZE_REQ=$SIZE ;;
+		esac
+		if test $ZRAM_SIZE_REQ -gt $((RAM_TOTAL_BYTES * ZRAM_MAX_PERCENT / 100)); then
+			ZRAM_SIZE=$((RAM_TOTAL_BYTES * ZRAM_MAX_PERCENT / 100))
+			echo "Using: $ZRAM_SIZE Bytes (Clipped at $ZRAM_MAX_PERCENT% of max.)"
+		else
+			ZRAM_SIZE=$ZRAM_SIZE_REQ
+			echo "Using: $ZRAM_SIZE Bytes ($SIZE ${SIZE_TYPE:-GiB})"
+		fi
+	else
+		ZRAM_SIZE=$((RAM_TOTAL_BYTES * RAM_PERCENT / 100))
+		echo "Using: $ZRAM_SIZE Bytes ($RAM_PERCENT% of max.)"
+	fi
+
+	# Load the zram module
+	modprobe zram
+	if test -n "$ZRAM_COMPRESSION_ALGO"; then
+		# Iterate over available compression algorithms.
+		for AVAILABLE_ALGO in $(</sys/block/zram0/comp_algorithm); do
+			# Remove brackets from active one
+			AVAILABLE_ALGO=${AVAILABLE_ALGO#[}
+			AVAILABLE_ALGO=${AVAILABLE_ALGO%]}
+			# echo "$AVAILABLE_ALGO"
+			if test "$ZRAM_COMPRESSION_ALGO" = "$AVAILABLE_ALGO"; then
+				FOUND_ALGO=1
+				break
+			fi
+		done
+		# Only change algorithm when available.
+		if test $FOUND_ALGO -eq 1; then
+			echo "$ZRAM_COMPRESSION_ALGO" > /sys/block/zram0/comp_algorithm
+		fi
+	fi
+
+	# Setup the ZRam swap.
+	echo $ZRAM_SIZE > /sys/block/zram0/disksize
+	mkswap /dev/zram0 -L zram0
+	swapon -p 100 --discard /dev/zram0
 }
 
 stop() {

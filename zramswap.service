@@ -1,5 +1,6 @@
 [Unit]
 Description=Zram-based swap (compressed RAM block devices)
+Documentation=https://forum.manjaro.org/t/improved-zramswap/34767
 
 [Service]
 Type=oneshot

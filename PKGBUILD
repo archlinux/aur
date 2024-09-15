@@ -7,7 +7,7 @@
 # Contributor: mystilleef
 
 pkgname=zramswap
-pkgver=5
+pkgver=6
 pkgrel=1
 pkgdesc="Sets up zram-based swap devices on boot"
 arch=('any')
@@ -18,9 +18,9 @@ backup=("etc/zramswap.conf")
 source=("zramctrl"
         "zramswap.conf"
         "zramswap.service")
-md5sums=('fa0b8339c91cb2a45c57671839c46116'
-         '20f7b479830c9511b972268df8479c26'
-         'a6c029dc942c85704b0f6ac1ca078a24')
+md5sums=('fb633774fb523b7107ca62b2647aec89'
+         'aff850d716b5d9a181418cfe9116b279'
+         'a746969adc521826c14b0796968f3ca6')
 
 package() {
   install -Dm755 zramctrl $pkgdir/usr/lib/systemd/scripts/zramctrl
