@@ -1,0 +1,1802 @@
+{
+  "policies": {
+    "3rdparty": {
+      "Extensions": {
+        "uBlock0@raymondhill.net": {
+          "adminSettings": {
+            "assetsBootstrapLocation": "https://phoenix.celenity.dev/uBlock/assets.json",
+            "userSettings": {
+              "advancedUserEnabled": true,
+              "autoUpdate": true,
+              "cnameUncloakEnabled": true,
+              "dynamicFilteringEnabled": true,
+              "firewallPaneMinimized": false,
+              "hyperlinkAuditingDisabled": true,
+              "prefetchingDisabled": true,
+              "suspendUntilListsAreLoaded": true
+            }
+          },
+          "advancedSettings": [
+            [
+              "autoCommentFilterTemplate",
+              "{{url}}"
+            ],
+            [
+              "autoUpdatePeriod",
+              "1"
+            ],
+            [
+              "filterAuthorMode",
+              "true"
+            ],
+            [
+              "updateAssetBypassBrowserCache",
+              "true"
+            ]
+          ]
+        }
+      }
+    },
+    "CaptivePortal": false,
+    "ContentAnalysis": {
+      "DefaultResult": 0,
+      "Enabled": false
+    },
+    "DisableEncryptedClientHello": false,
+    "DisableFirefoxStudies": true,
+    "DisableFormHistory": true,
+    "DisablePocket": true,
+    "DisableSystemAddonUpdate": false,
+    "DisableTelemetry": true,
+    "DNSOverHTTPS": {
+      "Enabled": true,
+      "Locked": false,
+      "ProviderURL": "https://dns.quad9.net/dns-query",
+      "Fallback": false
+    },
+    "DontCheckDefaultBrowser": true,
+    "EncryptedMediaExtensions": {
+      "Enabled": false,
+      "Locked": true
+    },
+    "Extensions": {
+      "Install": [
+        "https://phoenix.celenity.dev/extensions/xpi/default-brave-search-latest.xpi",
+        "https://phoenix.celenity.dev/extensions/xpi/duckduckgo-html-latest.xpi",
+        "https://phoenix.celenity.dev/extensions/xpi/duckduckgo-lite-latest.xpi",
+        "https://phoenix.celenity.dev/extensions/xpi/ecosia-latest.xpi",
+        "https://phoenix.celenity.dev/extensions/xpi/kagi-latest.xpi",
+        "https://phoenix.celenity.dev/extensions/xpi/kagi-html-latest.xpi",
+        "https://phoenix.celenity.dev/extensions/xpi/metager-latest.xpi",
+        "https://phoenix.celenity.dev/extensions/xpi/mojeek-latest.xpi",
+        "https://phoenix.celenity.dev/extensions/xpi/leta-brave-latest.xpi",
+        "https://phoenix.celenity.dev/extensions/xpi/leta-google-latest.xpi",
+        "https://phoenix.celenity.dev/extensions/xpi/no-search-latest.xpi",
+        "https://phoenix.celenity.dev/extensions/xpi/qwant-latest.xpi",
+        "https://phoenix.celenity.dev/extensions/xpi/startpage-latest.xpi"
+      ]
+    },
+    "ExtensionSettings": {
+      "*": {
+        "blocked_install_message": "I am Iron Man.",
+        "install_sources": [
+          "https://addons.mozilla.org/*",
+          "https://agrd.io/*",
+          "https://cdn.mullvad.net/browser-extension/*",
+          "https://codeberg.org/celenity/Phoenix/*",
+          "https://gitflic.ru/project/magnolia1234/bpc_uploads/*",
+          "https://github.com/AdguardTeam/AdguardBrowserExtension/releases/*",
+          "https://github.com/ajayyy/SponsorBlock/releases/*",
+          "https://github.com/anticensority/runet-censorship-bypass/releases/*",
+          "https://github.com/darkreader/darkreader/releases/*",
+          "https://github.com/FastForwardTeam/FastForward/releases/*",
+          "https://github.com/gorhill/uBlock/releases/*",
+          "https://github.com/gorhill/uMatrix/releases/*",
+          "https://github.com/mkaply/queryamoid/releases/*",
+          "https://github.com/mullvad/browser-extension/releases/*",
+          "https://github.com/OhMyGuus/I-Still-Dont-Care-About-Cookies/releases/*",
+          "https://github.com/uBlockOrigin/uBOL-home/releases/*",
+          "https://github.com/violentmonkey/violentmonkey/releases/*",
+          "https://objects.githubusercontent.com/*",
+          "https://www.eff.org/files/*",
+          "https://mullvad.net/ar/download/browser/extension/*",
+          "https://mullvad.net/da/download/browser/extension/*",
+          "https://mullvad.net/de/download/browser/extension/*",
+          "https://mullvad.net/en/download/browser/extension/*",
+          "https://mullvad.net/es/download/browser/extension/*",
+          "https://mullvad.net/fa/download/browser/extension/*",
+          "https://mullvad.net/fi/download/browser/extension/*",
+          "https://mullvad.net/fr/download/browser/extension/*",
+          "https://mullvad.net/it/download/browser/extension/*",
+          "https://mullvad.net/ja/download/browser/extension/*",
+          "https://mullvad.net/ko/download/browser/extension/*",
+          "https://mullvad.net/nl/download/browser/extension/*",
+          "https://mullvad.net/no/download/browser/extension/*",
+          "https://mullvad.net/pl/download/browser/extension/*",
+          "https://mullvad.net/pt/download/browser/extension/*",
+          "https://mullvad.net/ru/download/browser/extension/*",
+          "https://mullvad.net/sv/download/browser/extension/*",
+          "https://mullvad.net/th/download/browser/extension/*",
+          "https://mullvad.net/tr/download/browser/extension/*",
+          "https://mullvad.net/zh-hans/download/browser/extension/*",
+          "https://mullvad.net/zh-hant/download/browser/extension/*",
+          "https://noscript.net/*",
+          "https://phoenix.celenity.dev/extensions/xpi/*",
+          "https://privacybadger.org/*"
+        ],
+        "allowed_types": [
+          "extension",
+          "theme"
+        ],
+        "updates_disabled": false,
+        "temporarily_allow_weak_signatures": false
+      },
+      "uBlock0@raymondhill.net": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi",
+        "default_area": "navbar",
+        "updates_disabled": false,
+        "temporarily_allow_weak_signatures": false
+      },
+      "chrome-mask@overengineer.dev": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/chrome-mask/latest.xpi",
+        "default_area": "navbar",
+        "updates_disabled": false,
+        "temporarily_allow_weak_signatures": false
+      },
+      "{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Adblock Plus, by Eyeo. Highly sketchy, avoid & just use uBlock Origin instead."
+      },
+      "firefox@ghostery.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Ghostery Privacy Ad Blocker. Highly sketchy, has previously sold user data, Just use uBlock Origin."
+      },
+      "jid1-NIfFY2CA8fy1tg@jetpack": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "AdBlock, by Eyeo. Highly sketchy, avoid & just use uBlock Origin instead."
+      },
+      "https-everywhere@eff.org": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "HTTPS Everywhere. Deprecated, also useless with HTTPS-Only Mode (which we enforce) anyways."
+      },
+      "87677a2c52b84ad3a151a4a72f5bd3c4@jetpack": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Grammarly. Keylogger, also very sketchy... if you insist on this type of invasive spell-checking, just use LanguageTool instead, though even that I would be cautious of."
+      },
+      "jid1-93CWPmRbVPjRQA@jetpack": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Honey, by PayPal, horrible privacy policy."
+      },
+      "abb@amazon.com": {
+        "installation_mode": "blocked",
+        "blocked_install-message": "Amazon Assistant, raises serious privacy concerns. Also appears dead anyways."
+      },
+      "CanvasBlocker@kkapsner.de": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "CanvasBlocker, unnecessary with RFP or ETP (Which we enforce)."
+      },
+      "jid1-dwtFBkQjb3SIQp@jetpack": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "AdBlocker Lite, appears dead."
+      },
+      "jid1-BoFifL9Vbdl2zQ@jetpack": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Decentraleyes. Very outdated, just use LocalCDN instead if needed."
+      },
+      "firefox@tampermonkey.net": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Tampermonkey. Closed source, just use Violentmonkey instead if needed."
+      },
+      "jid1-KKzOGWgsW3Ao4Q@jetpack": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "I don't care about cookies, by Avast. Highly sketchy & known for selling data. Just use Firefox's built-in cookie banner blocking & uBlock Origin, or `I still don't care about cookies` if really needed instead."
+      },
+      "{c909a72e-e04b-4528-b14a-f721df46d776}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Adblock_S, appears dead."
+      },
+      "sp@avast.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Avast SafePrice, by Avast. Highly sketchy & known for selling data."
+      },
+      "wrc@avast.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Avast Online Security, by Avast. Highly sketchy & known for selling data. Also unnecessary with Google Safe Browsing & uBlock Origin, avoid."
+      },
+      "secureline-vpn@avast.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Avast SecureLine VPN, by Avast. Highly sketchy & known for selling data."
+      },
+      "aos@avg.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "AVG Online Security, by Avast. Highly sketchy & known for selling data. Also unnecessary with Google Safe Browsing & uBlock Origin, avoid."
+      },
+      "nortonsafeweb@symantec.com": {
+        "installtaion_mode": "blocked",
+        "blocked_install_message": "Norton Safe Web, by Norton. Must I say more? Would almost rather getting a virus than installing this crap... Also unnecessary with Google Safe Browsing & uBlock Origin, avoid."
+      },
+      "idsafe@norton.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Norton Password Manager, by Norton. Must I say more? Would almost rather getting a virus than installing this crap..."
+      },
+      "{8A0D66E3-1C08-49A6-8F6C-7E024029D199}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Norton Family, by Norton. Must I say more? Would almost rather getting a virus than installing this crap..."
+      },
+      "nordvpnproxy@nordvpn.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "NordVPN, highly sketchy. Please just use a trustworthy VPN like Mullvad or ProtonVPN instead."
+      },
+      "nordpassStandalone@nordsecurity.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "NordPass, by NordVPN. Highly sketchy. Please just use a trustworthy password manager like Bitwarden or Proton Pass instead."
+      },
+      "nordpass@nordpass.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "NordPass, by NordVPN. Highly sketchy. Please just use a trustworthy password manager like Bitwarden or Proton Pass instead."
+      },
+      "{2f182d41-fd03-4a6d-938d-081419586c37}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Google Analytics Opt-out, by emano waldeck. Unnecessary with content blocking."
+      },
+      "{9363e9cd-be75-42fb-b787-3b0103e2acc7}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Google Analytics Opt-Out, by Vishwas. Unnecessary with content blocking."
+      },
+      "jid1-16aeif9OQIRKxA@jetpack": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Search and New Tab, by Yahoo. Please don't use Yahoo... but if you insist, extension is unnecessary, just set it in either about:preferences#search or from the Omnibox."
+      },
+      "{635abd67-4fe9-1b23-4f01-e679fa7484c1}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Yahoo Toolbar and New Tab, by Yahoo. Please don't use Yahoo... but if you insist, extension is unnecessary, just set it in either about:preferences#search or from the Omnibox."
+      },
+      "@yset": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Yahoo Search Addon, by Yahoo. Please don't use Yahoo... but if you insist, extension is unnecessary, just set it in either about:preferences#search or from the Omnibox."
+      },
+      "@yahoo_wider_mail_extension": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Search and Wider Mail, by Yahoo. Please don't use Yahoo... but if you insist, extension is unnecessary, just set it in either about:preferences#search or from the Omnibox."
+      },
+      "{98dc1b2a-d86b-4dcd-b73c-b0abde809db4}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "OneSearch, by Yahoo. Please don't use Yahoo... but if you insist, extension is unnecessary, just set it in either about:preferences#search or from the Omnibox."
+      },
+      "jid1-G80Ec8LLEbK5fQ@jetpack": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "New Tab, by Yahoo. Please don't use Yahoo... but if you insist, extension is unnecessary, just set it in either about:preferences#search or from the Omnibox."
+      },
+      "active_eue_enteprise@bmc.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "BMC TrueSight, Real User Monitoring, probably self-explanatory why blocked..."
+      },
+      "search@ghostery.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Ghostery Private Search for Firefox, by Ghostery. Unnecessary, just set in either about:preferences#search or from the Omnibox. I would avoid Ghostery Search anyways due to the company's sketchy practices & past of selling user data."
+      },
+      "amazondotcom@search.mozilla.org": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Mozilla's extension for the built-in Amazon Search Engine. Amazon should be avoided due to its horrible privacy practices, but regardless, Amazon still appears to be selectable as a search engine with this removed."
+      },
+      "bing@search.mozilla.org": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Mozilla's extension for the built-in Bing Search Engine. Bing should be avoided due to its horrible privacy practices, but regardless, Bing still appears to be selectable as a search engine with this removed."
+      },
+      "ebay@search.mozilla.org": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Mozilla's extension for the built-in eBay Search Engine. eBay should be avoided due to its horrible privacy practices, but regardless, eBay still appears to be selectable as a search engine with this removed."
+      },
+      "google@search.mozilla.org": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Mozilla's extension for the built-in Google Search Engine. Google should be avoided due to its horrible privacy practices, but regardless, Google still appears to be selectable as a search engine with this removed."
+      },
+      "{585280b0-ee78-428a-92c5-3fb3c0b85460}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "CyberGhost VPN Free Proxy, by Kape. Highly sketchy. Please just use a trustworthy VPN like Mullvad or ProtonVPN instead."
+      },
+      "{76f42345-d120-4c8e-bdd4-63cf95b780fb}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "CyberGhost Cookie Cleaner, by Kape. Highly sketchy... and also completely useless with our tweaks. Avoid."
+      },
+      "{732216ec-0dab-43bb-ac85-4b5e1977599d}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Surfshark VPN Extension, by NordVPN. Highly sketchy. Please just use a trustworthy VPN like Mullvad or ProtonVPN instead."
+      },
+      "{3e4d2037-d300-4e95-859d-3cba866f46d3}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Private Internet Access, by Kape. Highly sketchy. Please just use a trustworthy VPN like Mullvad or ProtonVPN instead."
+      },
+      "firefox-addon@expressvpn.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "ExpressVPN, by Kape. Highly sketchy. Please just use a trustworthy VPN like Mullvad or ProtonVPN instead."
+      },
+      "{8d8ca802-6b23-43ed-9445-e05d48579542}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Microsoft Bing Search Engine, by Microsoft. Please don't use Bing... but if you insist, extension is unnecessary, just set it in about:preferences#search."
+      },
+      "{9b43dad5-885b-4f0d-882f-e945b7e4b96f}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "MSN Homepage and Bing Search Engine, by Microsoft. Please don't use Bing... but if you insist, extension is unnecessary, just set it in about:preferences#search."
+      },
+      "{a07b7886-3015-4959-9a88-4273860edd6d}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Microsoft Bing Homepage and Search Engine, by Microsoft. Please don't use Bing... but if you insist, extension is unnecessary, just set it in about:preferences#search."
+      },
+      "{7e39f3c8-2ef5-46ea-80d0-f8b8f72541c5}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "MSN Homepage, New Tab and Bing Search Engine, by Microsoft. Please don't use Bing... but if you insist, extension is unnecessary, just set it in about:preferences#search."
+      },
+      "{cfa868c0-6239-47df-bc81-54e13151ec2e}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Microsoft Bing Homepage, by Microsoft. Please don't use Bing... but if you insist, extension is unnecessary, just set it in about:preferences#search."
+      },
+      "adblockultimate@adblockultimate.net": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "AdBlocker Ultimate, by AdAvoid. Highly sketchy. https://x.com/gorhill/status/1165747661691064322. Just use uBlock Origin."
+      },
+      "qwantcomforfirefox@jetpack": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Qwant VIPrivacy, by Qwant. Unnecessary, just set in either about:preferences#search or from the Omnibox."
+      },
+      "qwant-search-firefox@qwant.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Qwant - Search engine, by Qwant. Unnecessary, just set in either about:preferences#search or from the Omnibox."
+      },
+      "qwant-p1-firefox@qwant.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Qwant for you, by Qwant. Unnecessary, just set in either about:preferences#search or from the Omnibox."
+      },
+      "{20fc2e06-e3e4-4b2b-812b-ab431220cada}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Startpage. Unncessary, just set in either about:preferences#search or from the Omnibox."
+      },
+      "firefox@newsguardtech.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "NewsGuard, sketchy & poor privacy policy."
+      },
+      "firefox@hg.newsguardtech.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "HealthGuard, by NewsGuard. Sketchy & poor privacy policy."
+      },
+      "{44df5123-f715-9146-bfaa-c6e8d4461d44}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Fakespot, by Mozilla. Poor privacy policy."
+      },
+      "firefox-translations-addon@mozilla.org": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Firefox Translations, by Mozilla. Dead. Also unnecessary since the Translations feature is now built in."
+      },
+      "@contain-facebook": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Facebook Container, by Mozilla. Unnecessary since cookies are now isolated by default, and if you still wish to create a container for Facebook, you can do so at about:preferences#general or through the Multi-Account Containers extension instead."
+      },
+      "{96ef5869-e3ba-4d21-b86e-21b163096400}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Font Fingerprint Defender, by ilGur. Unnecessary with RFP or ETP (Which we enforce)."
+      },
+      "{2cf5dbed-78fe-4bd5-9524-38fdf837be98}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "WebGL Fingerprint Defender, by ilGur. Unnecessary with RFP or ETP (Which we enforce)."
+      },
+      "{87edebac-93fe-4780-8945-598a961b793f}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Fingerprint Shield, by Francesco De Stefano. Unnecessary with RFP or ETP (Which we enforce)."
+      },
+      "{e98b4b87-bc39-439f-a175-b15fbe4a06c0}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Canvas Blocker - Fingerprint Protect, by Joue. Unnecessary with RFP or ETP (Which we enforce). Also appears dead."
+      },
+      "{b2531c6a-ce38-4b46-961e-62a6e89a1b17}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "No Fingerprint, by Sam0230. Unnecessary with RFP or ETP (Which we enforce). Also appears dead."
+      },
+      "{46cc18f3-9054-4edd-9441-102a1021b5d0}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Fingerprint Spoof, by ns. Unnecessary with RFP or ETP (Which we enforce). Also appears dead."
+      },
+      "{6476684c-e1dc-4505-8bb6-5f0f9663f78e}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "BP Block Font Fingerprint, by BrowserPlugs. Unnecessary with RFP or ETP (Which we enforce)."
+      },
+      "{2ed00a98-3452-4535-a99d-0bb13056d09f}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Browser Plugs Spoof FP Random, by BrowserPlugs. Unnecessary with RFP or ETP (Which we enforce)."
+      },
+      "{e969f389-ecf2-4ba5-b6b3-95157461366c}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Blend In and Spoof Everything, by BrowserPlugs. Unnecessary with RFP or ETP (Which we enforce)."
+      },
+      "jsr@javascriptrestrictor": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "JShelter, by Libor Polčák. Unnecessary with RFP or ETP (Which we enforce)."
+      },
+      "mipfingerprint@mip.co.za": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "MIP Fingerprint, by MIP Holdings. Unnecessary with RFP or ETP (Which we enforce). Also appears dead."
+      },
+      "{07bccf58-b5f1-425c-b7ad-2301e1a42704}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Fingerprint shelter, by Ol. Unnecessary with RFP or ETP (Which we enforce). Also appears dead."
+      },
+      "{6ff498ff-a3b6-4891-a614-12a825d4efcf}": {
+        "intallation_mode": "blocked",
+        "blocked_install_message": "Trace, by AbsoluteDouble. Unnecessary with RFP or ETP (Which we enforce). Also appears dead."
+      },
+      "{ff6bdf28-4fb3-42a0-8e36-11b4125a6ce4}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Logify - Parental Control, by Logify. Remote Monitoring."
+      },
+      "{17c75373-e1fc-43a5-a05b-7f17e306359e}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Stay secure with CyberGhost VPN Free Proxy, by Running __Elephants. CyberGhost is Highly sketchy, by Kape. This extension also appears fake & unmaintained. Please just use a trustworthy VPN like Mullvad or ProtonVPN instead."
+      },
+      "support@lastpass.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "LastPass Password Manager, by LastPass. Sketchy & has had serious breaches. Please just use a trustworthy password manager like Bitwarden or Proton Pass instead."
+      },
+      "{b3e677f4-1150-4387-8629-da738260a48e}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Smart HTTPS, by ilGur. Appears dead, and useless with HTTPS-Only Mode (which we enforce) anyways."
+      },
+      "InternetProtection@360safe.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "360 Internet Protection, by 360 Total Security. Highly sketchy, also unnecessary with Google Safe Browsing & uBlock Origin. Avoid."
+      },
+      "firefox-webext@zenmate.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "ZenMate Free VPN, by ZenMate (Kape). Highly sketchy, please just use a trustworthy VPN like Mullvad or ProtonVPN instead"
+      },
+      "{74fc443d-ab0b-42b2-95d0-890f2d8092cb}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "HTTP to HTTPS, by Balvin. Useless with HTTPS-Only Mode (which we enforce)."
+      },
+      "{4d5b7a5e-5232-9e45-97f4-f8e1ca2626e5}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Eno® from Capital One®, by Capital One. Very sketchy, avoid."
+      },
+      "1block@example.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Dead? Adblock - 1Block, by 1VPN. Highly sketchy, appears to even contain advertising. Avoid & just use uBlock Origin instead."
+      },
+      "1vpn@example.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Free VPN & Adblock - 1VPN, by 1VPN. See 1Block above. Highly sketchy, appears to even contain advertising. Avoid & just use uBlock Origin with a reputable VPN like Proton or Mullvad instead."
+      },
+      "https-by-default@robwu.nl": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "HTTPS by default, by Rob W. Useless with HTTPS-Only Mode (which we enforce)."
+      },
+      "support@netzilo.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Netzilo Secure Browser, by Netzilo Inc. Remote Monitoring. "
+      },
+      "{d0bfdcce-52c7-4b32-bb45-948f62db8d3f}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Flash Video Player for Facebook™, by Baris Derin. Dead technology, but for some reason this is still being updated? Very suspicious."
+      },
+      "{f3bd3dd2-2888-44c5-91a2-2caeb33fb898}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "YouTube Flash Video Player, by Baris Derin. Dead technology, but for some reason this is still being updated? Very suspicious."
+      },
+      "jid1-n8wH2cBfc2QaUj@jetpack": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Flash Block (Plus), by AdblockLite. Dead technology, but for some reason this is still being updated?"
+      },
+      "@contain-facebook-newalexandria": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Facebook Container - Expanded, by New Alexandria. Unnecessary since cookies are now isolated by default, and if you still wish to create a container for Facebook, you can do so at about:preferences#general or through the Multi-Account Containers extension instead. Also appears dead anyways."
+      },
+      "@contain-google-with-integrations": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Google Container - with Integrations, by New Alexandria. Unnecessary since cookies are now isolated by default, and if you still wish to create a container for Google, you can do so at about:preferences#general or through the Multi-Account Containers extension instead. Also appears dead anyways."
+      },
+      "@contain-google": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Google Container, by containers-everywhere. Unnecessary since cookies are now isolated by default, and if you still wish to create a container for Google, you can do so at about:preferences#general or through the Multi-Account Containers extension instead. Also appears dead anyways."
+      },
+      "@contain-google-minus-youtube": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Google Container Minus YouTube, by yoasif. Unnecessary since cookies are now isolated by default, and if you still wish to create a container for Google, you can do so at about:preferences#general or through the Multi-Account Containers extension instead."
+      },
+      "@contain-google-minus-youtube-and-searchpages": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Google Container Minus YouTube & Search Pages, by Bernd Bestel. Unnecessary since cookies are now isolated by default, and if you still wish to create a container for Google, you can do so at about:preferences#general or through the Multi-Account Containers extension instead."
+      },
+      "YandexSearchExtension@io.librity": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Yandex search, by Librity. Please don't use Yandex... but if you insist, extension is unnecessary, just set it in either about:preferences#search or from the Omnibox."
+      },
+      "yasearch@yandex.ru": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Yandex.Bar, by Yandex. Please don't use Yandex... but if you insist, extension is unnecessary, just set it in either about:preferences#search or from the Omnibox."
+      },
+      "homeutil@yandex.ru": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Yandex - Homepage, by Yandex. Please don't use Yandex... but if you insist, extension is unnecessary, just set it in either about:preferences#search or from the Omnibox."
+      },
+      "weather@yandex.ru": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Yandex Elements Weather, by Yandex. Extremely sketchy, requires highly invasive permissions. Yandex generally is sketchy and should be avoided. Just use Firefox's new weather feature on about:home, or an extension like Tabliss."
+      },
+      "{710a25a7-051f-4059-8952-abbaa9aa6121}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "FakeBux for Roblox, by LuckyDev. Just use Inspect Element."
+      },
+      "{9763fbae-6f90-483b-a8ca-aeb9ccfdacac}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "IRobux, by 'Roblox Corporation'. Impersonation scam extension, no idea how this hasn't been removed from the AMO or got signed in the first place."
+      },
+      "{0dce8429-bdf7-4610-b3cf-72d0f86278d5}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Robux Changer, by indxd. Just use Inspect Element."
+      },
+      "BraveSearchExtension@io.Uvera": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Brave search, by Dusan Uveric. Extension is unnecessary, just add Brave Search in either about:preferences#search or from the Omnibox."
+      },
+      "addon@customsearchtool.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Custom Search Tool. Please don't use Yahoo... but if you insist, extension is unnecessary, just set it in either about:preferences#search or from the Omnibox."
+      },
+      "Maps_Assist___Custom_Web_Search_VeyzPDMlKh@mapsassist.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Maps Assist & Custom Web Search. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "Safeplex_Search_qeKaqkdrwd@safeplexsearch.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Safeplex Search. Hijacks search engine to Yahoo without user consent/knowledge. (Also just completely unncessary anyways with uBlock Origin & Google Safe Browsing :/)"
+      },
+      "addon@maproutepro.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Map Route Pro and Search. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "FreespokeSearchExtension@com.Freespoke": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Freespoke Search. Extension is unnecessary, just add this in either about:preferences#search or from the Omnibox."
+      },
+      "earthview360_newvers@earthview360.org": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Earth View 360° & Custom Web Search. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "sp@SearchesCentral": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Sponsored Search, by SearchesCentral/Search Smart/FreeTestNow. Adware & hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "ep@FreeTestNow": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Sponsored Search, by SearchesCentral/Search Smart/FreeTestNow. Adware & hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "sp@SearchSmart": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Search Smart, by SearchesCentral/Search Smart/FreeTestNow. Adware & hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "{441ae0e7-c955-4b0e-8209-99462af458db}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Presearch.com Search Extension. Extension is unnecessary, just add this in either about:preferences#search or from the Omnibox."
+      },
+      "{43d20840-2895-4866-9d79-4f6f2ea537f7}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Music Search, by GetTheResult. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "{ff5dfca6-4e75-4882-a145-b58a4afc35a7}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Movie Search, by GetTheResult. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "{25f17283-8325-42fb-812e-193c8de90b04}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Sport Search, by GetTheResult. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "Converter_Suite_fqRObEsLaM@convertersuite.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Converter Suite. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "{2a168bd0-55d2-466f-9c68-077c416943be}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "YouTube Search Engine, by A. Taha Baki. Extension is unnecessary, just add YouTube in either about:preferences#search or from the Omnibox."
+      },
+      "{af37054b-3ace-46a2-ac59-709e4412bec6}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Add custom search engine, by Tom Schuster. Unnecessary, just add your search engine of choice in either about:preferences#search or from the Omnibox on the search engine's webpage"
+      },
+      "Ezy_Photo_Tab___Custom_Web_Search_YALalKMirg@ezyphototab.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Ezy Photo Tab & Custom Web Search, by EzyPhotoTab. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "Ezy_Alarm_Clock___Custom_Web_Search_aGDLGGilLT@ezyalarmclock.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Ezy Alarm Clock & Custom Web Search, by Ezy Alarm Clock & Custom Web Search. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "Ezy_Screenshot___Custom_Web_Search_nKZANPHKLR@ezyscreenshot.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Ezy Screenshot & Custom Web Search, by Ezy Screenshot. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "{d04b0b40-3dab-4f0b-97a6-04ec3eddbfb0}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Ecosia, by Ecosia Dev Team. Extension is unnecessary, just add Ecosia in either about:preferences#search or from the Omnibox."
+      },
+      "Task_Manager_Tab___Custom_Web_Search_nKQMsPVbct@taskmanagertab.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Task Manager Tab & Custom Web Search, by TaskManagerTab. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "Quick_Live_News_spxMukSrlT@quicklivenews.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Quick Live News & Custom Web Search, by QuickLiveNews. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "Flight_Tab_Pro___Custom_Web_Search_yVOErTvhoC@flighttabpro.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Flight Tab Pro & Custom Web Search, by FlightTabPro. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "{2e0fa8dd-c43c-438c-b77b-95ddc3d893ec}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Add Brave Search, by maaa. Extension is unnecessary, just add Brave Search in either about:preferences#search or from the Omnibox."
+      },
+      "Easy_Games_Tab_zKsDuEzLrv@easygamestab.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Easy Games Tab & Custom Web Search, by EasyGamesTab. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "Ezy_Speed_Test___Custom_Web_Search_nybAAzaSyK@ezyspeedtest.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Ezy Speed Test & Custom Web Search, by Ezy Speed Test. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "viewmanuals_newvers@viewmanuals.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "View Manuals & Custom Web Search, by View Manuals. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "Package_Tracking_Tab___Custom_Web_Search_JVVfIFSBVe@packagetrackingtab.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Package Tracking Tab & Custom Web Search, by PackageTrackingTab. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "ebooksearch1@candytech.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "eBook Search, by Candytechltd. Hijacks search engine to genieosearch.com without user consent/knowledge."
+      },
+      "Quick_Recipe_Hub___Custom_Web_Search_MTyoGHhulF@quickrecipehub.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Quick Recipe Hub & Custom Web Search, by Quick Recipe Hub. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "addon@speedtestmeter.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Speed Test Meter and Search. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "StartpageSearchExtension@roteKlaue": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Startpage search, by roteKlaue. Unncessary, just add Startpage in either about:preferences#search or from the Omnibox."
+      },
+      "addon@documentconverter.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Document Converter & Search. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "viewrecipes_aill@viewrecipes.net": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "View Recipes & Custom Web Search, by View Recipes. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "Turbo_Converter___Custom_Web_Search_jkERzVmVos@turboconverter.co": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Turbo Converter & Custom Web Search, by Turbo Converter. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "Easy_Manuals_Finder_and_Custom_Web_Search_KtQPWLAgRu@easymanualsfinder.co": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Easy Manuals Finder & Custom Web Search. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "search-searx@jirka-justra.cz": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "search-searx, by Jirka Justra. Extension is unnecessary, just add it in either about:preferences#search or from the Omnibox."
+      },
+      "search-odysee.com@jirka-justra.cz": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "search-odysee.com, by Jirka Justra. Extension is unnecessary, just add it in either about:preferences#search or from the Omnibox."
+      },
+      "search-thomann--intl@jirka-justra.cz": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "search-thomann--intl, by Jirka Justra. Extension is unnecessary, just add it in either about:preferences#search or from the Omnibox."
+      },
+      "search-fastshare.cz@jirka-justra.cz": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "search-fastshare.cz, by Jirka Justra. Extension is unnecessary, just add it in either about:preferences#search or from the Omnibox."
+      },
+      "search-kytary.cz@jirka-justra.cz": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "search-kytary.cz, by Jirka Justra. Extension is unnecessary, just add it in either about:preferences#search or from the Omnibox."
+      },
+      "search-thomann--cz@jirka-justra.cz": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "search-thomann--cz, by Jirka Justra. Extension is unnecessary, just add it in either about:preferences#search or from the Omnibox."
+      },
+      "search-gearslutz@jirka-justra.cz": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "search-gearslutz, by Jirka Justra. Extension is unnecessary, just add it in either about:preferences#search or from the Omnibox."
+      },
+      "addon@trendingnews.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Trending News & Search. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "{1e924475-d910-44ab-bed8-af34439d2a8a}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Just Search Qwant, by Naresh. Extension is unnecessary, just add Qwant in either about:preferences#search or from the Omnibox."
+      },
+      "Weather_Authority___Custom_Web_Search_TOLImHKtPk@weatherauthority.co": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Weather Authority & Custom Web Search, by Weather Authority. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "@contain-twitter": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Twitter Container, by Vishwa. Unnecessary since cookies are now isolated by default, and if you still wish to create a container for Twitter, you can do so at about:preferences#general or through the Multi-Account Containers extension instead."
+      },
+      "@twitter_x_container": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Twitter/X Container, by Zachary E. Unnecessary since cookies are now isolated by default, and if you still wish to create a container for Twitter, you can do so at about:preferences#general or through the Multi-Account Containers extension instead."
+      },
+      "firefox@vid.io": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "vidIQ Vision for YouTube, by vidIQ. Sketchy."
+      },
+      "{50f5675e-2d43-4894-a3b6-ad933f6a31a0}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "SignalHire. Data Broker."
+      },
+      "{248e6a49-f636-4c81-9899-a456eb6291a8}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Ground News Bias Checker, by Ground News. Very sketchy, poor privacy policy. Avoid."
+      },
+      "swisscows@swisscows.ch": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Swisscows, by Swisscows AG. Extension is unnecessary, just set Swisscows in either about:preferences#search or from the Omnibox."
+      },
+      "{2d158f19-1146-4bfe-9085-cc15f947bb35}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Yahoo! Search, by balduran98. Please don't use Yahoo... but if you insist, extension is unnecessary, just set it in either about:preferences#search or from the Omnibox."
+      },
+      "{0220de78-d398-47cb-8323-ebab3a845d01}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Yahoo New Tab, by heubergen. Please don't use Yahoo... but if you insist, extension is unnecessary, just set it in either about:preferences#search or from the Omnibox."
+      },
+      "{b69c9b46-2236-45c2-9abd-143972558677}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Yahoo jp, by Viktor. Please don't use Yahoo... but if you insist, extension is unnecessary, just set it in either about:preferences#search or from the Omnibox."
+      },
+      "{aa9eef0b-ca4e-4e24-b42e-e1b006c7160a}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Safe Search Powered by Yahoo, by Safely. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "easyprint@easyprintapp.net": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Easy Print. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "viewpdf_newvers@viewpdf.org": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "View PDF. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "{7313aced-ab7c-40fb-bf3a-115e91ba6c2a}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Maps Driving Directions, by MyDirections. Hijacks search engine & new tab page, accesses browser history, very sketchy..."
+      },
+      "easydrivingdirections_newvers@easydrivingdirections.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Maps & Driving Directions. Hijacks search engine to Yahoo without user consent/knowledge."
+      },
+      "{6cbc4940-eb87-4dba-9654-1002fb91e9e0}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Google Tag Manager Blocker, by heubergen. Unnecessary with uBlock Origin or any content blocking extension."
+      },
+      "{3968ec87-3c9f-45cd-8d9e-7f6d1f3a5093}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Glider Proctoring, by GLIDER.ai. Used for remote monitoring/test 'Proctoring'"
+      },
+      "{67ed3e87-6d34-4e72-9482-45876b90cf8d}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "GLIDER.ai Proctoring, by GLIDER.ai. Used for remote monitoring/test 'Proctoring'"
+      },
+      "webrootsecure@webroot.com": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Web Threat Shield, by Webroot. Seen this force install itself on various PCs. Also unnecessary with Google Safe Browsing & uBlock Origin, avoid."
+      },
+      "{abbf120b-a853-4fbd-a139-7e7dcc2d3e86}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Scam WebRoot Activation theme"
+      },
+      "{eefb374b-ea77-47a1-bb1b-bd5758569056}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Scam WebRoot Activation theme"
+      },
+      "{f637a841-f7e3-4055-a189-6951a9d4fc4f}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Scam WebRoot Activation theme"
+      },
+      "{b9ddfa6d-fb38-47a6-8cf2-8d1044540a1f}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "Scam WebRoot Activation theme"
+      },
+      "{94cadb67-daa0-4761-b6b5-171e5d61da2e}": {
+        "installation_mode": "blocked",
+        "blocked_install_message": "SingleFile Auto-Save, by gildas. Very concerning from a privacy perspective."
+      },
+      "extension@tabliss.io": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/tabliss/latest.xpi",
+        "updates_disabled": false,
+        "temporarily_allow_weak_signatures": false
+      },
+      "magnolia@12.34": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://gitflic.ru/project/magnolia1234/bpc_uploads/blob/raw?file=bypass_paywalls_clean-latest.xpi",
+        "updates_disabled": false,
+        "temporarily_allow_weak_signatures": false
+      }
+    },
+    "ExtensionUpdate": true,
+    "FirefoxHome": {
+      "TopSites": false,
+      "SponsoredTopSites": false,
+      "Pocket": false,
+      "SponsoredPocket": false,
+      "Snippets": false,
+      "Locked": true,
+      "Highlights": false
+    },
+    "FirefoxSuggest": {
+      "WebSuggestions": false,
+      "SponsoredSuggestions": false,
+      "ImproveSuggest": false,
+      "Locked": true
+    },
+    "GoToIntranetSiteForSingleWordEntryInAddressBar": false,
+    "HttpsOnlyMode": "force_enabled",
+    "NetworkPrediction": false,
+    "NoDefaultBookmarks": true,
+    "OverrideFirstRunPage": "",
+    "OverridePostUpdatePage": "",
+    "PDFjs": {
+      "EnablePermissions": false
+    },
+    "Permissions": {
+      "Location": {
+        "BlockNewRequests": true,
+        "Locked": false
+      },
+      "Notifications": {
+        "BlockNewRequests": true,
+        "Locked": true
+      },
+      "VirtualReality": {
+        "BlockNewRequests": true,
+        "Locked": true
+      },
+      "Autoplay": {
+        "Default": "block-audio-video",
+        "Locked": false
+      },
+      "Camera": {
+        "BlockNewRequests": true,
+        "Locked": false
+      },
+      "Microphone": {
+        "BlockNewRequests": true,
+        "Locked": false
+      }
+    },
+    "PopupBlocking": {
+      "Default": true,
+      "Locked": false
+    },
+    "PostQuantumKeyAgreementEnabled": true,
+    "Preferences": {
+      "browser.contentblocking.category": {
+        "Value": "strict",
+        "Status": "locked"
+      },
+      "browser.region.local-geocoding": {
+        "Value": false,
+        "Status": "locked"
+      },
+      "browser.search.geoip.url": {
+        "Value": "",
+        "Status": "locked"
+      },
+      "browser.search.region": {
+        "Value": "US",
+        "Status": "locked"
+      },
+      "intl.accept_languages": {
+        "Value": "en-US, en",
+        "Status": "locked"
+      },
+      "intl.locale.requested": {
+        "Value": "en-US",
+        "Status": "locked"
+      }
+    },
+    "PromptForDownloadLocation": true,
+    "Proxy": {
+      "UseProxyForDNS": true
+    },
+    "SanitizeOnShutdown": {
+      "Cache": true,
+      "Sessions": true,
+      "Locked": true,
+      "Cookies": true,
+      "History": true,
+      "OfflineApps": true
+    },
+    "SearchSuggestEnabled": false,
+    "SSLVersionMin": "tls1.2",
+    "StartDownloadsInTempDirectory": true,
+    "SupportMenu": {
+      "Title": "Phoenix Issue Tracker",
+      "URL": "https://phoenix.celenity.dev/issues"
+    },
+    "UserMessaging": {
+      "ExtensionRecommendations": false,
+      "FeatureRecommendations": false,
+      "SkipOnboarding": true,
+      "UrlbarInterventions": false,
+      "MoreFromMozilla": false,
+      "Locked": true
+    },
+    "WebsiteFilter": {
+      "Block": [
+        "*://*.telemetry.mozilla.org/*",
+        "*://*.ads.prod.webservices.mozgcp.net/*",
+        "*://*.ads.nonprod.webservices.mozgcp.net/*",
+        "*://*.anonymco.com/*",
+        "*://*.contile.services.mozilla.com/*",
+        "*://*.contile-images.services.mozilla.com/*",
+        "*://*.getpocket.com/*",
+        "*://*.snippets.allizom.org/*",
+        "*://*.snippets.cdn.mozilla.net/*",
+        "*://*.snippets.mozilla.com/*",
+        "*://*.snippets-prod.moz.works/*",
+        "*://*.snippets-prod.oregon-b.moz.works/*",
+        "*://*.snippets-prod.frankfurt.moz.works/*",
+        "*://*.snippets-stage.moz.works/*",
+        "*://*.snippets-stage.oregon-b.moz.works/*",
+        "*://*.crash-reports.allizom.org/*",
+        "*://*.crash-reports.mozilla.com/*",
+        "*://*.crash-reports-xpsp2.mozilla.com/*",
+        "*://*.crash-stacks.mozilla.com/*",
+        "*://*.crash-stats.allizom.org/*",
+        "*://*.crash-stats.mozilla.org/*",
+        "*://*.crash-stats.mozilla.com/*",
+        "*://*.socorro.prod.webservices.mozgcp.net/*",
+        "*://*.socorro-collector.services.mozilla.com/*",
+        "*://*.socorro-webapp-allizom.stage.mozaws.net/*",
+        "*://*.socorro-webapp.services.mozilla.com/*",
+        "*://*.talkback.mozilla.org/*",
+        "*://*.talkback-public.mozilla.org/*",
+        "*://*.talkback-reports.mozilla.org/*",
+        "*://*.data.mozilla.com/*",
+        "*://*.dataops.mozgcp.net/*",
+        "*://*.dataservices.mozgcp.net/*",
+        "*://*.download-stats.mozilla.org/*",
+        "*://*.download-stats.r53-2.services.mozilla.com/*",
+        "*://*.normandy.cdn.mozilla.net/*",
+        "*://*.normandy.nonprod.cloudops.mozgcp.net/*",
+        "*://*.normandy.prod.cloudops.mozgcp.net/*",
+        "*://*.normandy.services.mozilla.com/*",
+        "*://*.normandy-cdn.services.mozilla.com/*",
+        "*://*.normandy-devtools.services.mozilla.com/*",
+        "*://*.sentry.nonprod.cloudops.mozgcp.net/*",
+        "*://*.sentry.prod.cloudops.mozgcp.net/*",
+        "*://*.telemetry-coverage.mozilla.org/*",
+        "*://*.coverage.mozilla.org/*",
+        "*://*.telemetry-coverage.r53-2.services.mozilla.com/*",
+        "*://*.telemetry-data.r53-2.services.mozilla.com/*",
+        "*://*.telemetry-incoming.r53-2.services.mozilla.com/*",
+        "*://*.merino.nonprod.cloudops.mozgcp.net/*",
+        "*://*.merino.prod.cloudops.mozgcp.net/*",
+        "*://*.merino.services.mozilla.com/*",
+        "*://*.autoconnect.stage.mozaws.net/*",
+        "*://*.autopush.prod.mozaws.net/*",
+        "*://*.autopush.stage.mozaws.net/*",
+        "*://*.push.services.mozilla.com/*",
+        "*://*.survey.mozilla.com/*",
+        "*://*.qsurvey.mozilla.com/*",
+        "*://*.fakespot.com/*",
+        "*://*.fakespot.io/*",
+        "*://*.getpocket.cdn.mozilla.net/*",
+        "*://*.getpocket.com/*",
+        "*://*.getpocket-cdn.prod.mozaws.net/*",
+        "*://*.img-getpocket.cdn.mozilla.net/*",
+        "*://*.mozilla-ohttp-fakespot.fastly-edge.com/*",
+        "*://*.pocket.prod.cloudops.mozgcp.net/*",
+        "*://*.pocket-image-cache.com/*",
+        "*://*.spocs.mozilla.net/*",
+        "*://*.getpocket.dev/*",
+        "*://*.google-analytics.com/*",
+        "*://*.googlesyndication.com/*",
+        "*://*.googletagmanager.com/*",
+        "*://*.analytics.google.com/*",
+        "*://*.googletagmanager.com/*",
+        "*://*.googletagservices.com/*",
+        "*://*.braze.com/*",
+        "*://*.sentry.io/*",
+        "*://*.omappapi.com/*",
+        "*://*.250analytics.com/*",
+        "*://*.discovery.addons.mozilla.org/*",
+        "*://*.discovery.addons.allizom.org/*",
+        "*://*.discovery.addons-dev.allizom.org/*",
+        "*://*.services.addons.mozilla.org/api/*/discovery/*",
+        "*://*.detectportal.firefox.com/*",
+        "*://*.detectportal.prod.cloudops.mozgcp.net/*",
+        "*://*.dap-09-3.api.divviup.org/*",
+        "*://*.dap.services.mozilla.com/*",
+        "*://*.dap.nonprod.webservices.mozgcp.net/*",
+        "*://*.dap.prod.webservices.mozgcp.net/*",
+        "*://*.location.services.mozilla.com/*",
+        "*://*.classify-client.prod.webservices.mozgcp.net/*",
+        "*://*.classify-client.nonprod.webservices.mozgcp.net/*",
+        "*://*.fuzzing.mozilla.org/*",
+        "*://*.asan-nightly-frontend-elb-1348905149.us-east-2.elb.amazonaws.com/*",
+        "*://*.fuzzing.mozilla.org/*",
+        "*://*.incoming-telemetry.thunderbird.net/*",
+        "*://*.pipeline-incoming-prod-elb-149169523.us-west-2.elb.amazonaws.com/*",
+        "*://*.telemetry-prod-1054754349.us-east-1.elb.amazonaws.com/*"
+      ]
+    },
+    "Cookies": {
+      "Block": [
+        "http://google-analytics.com/",
+        "https://google-analytics.com/",
+        "http://analytics.google.com/",
+        "https://analytics.google.com/",
+        "http://googletagmanager.com/",
+        "https://googletagmanager.com/",
+        "http://googletagservices.com/",
+        "https://googletagservices.com/",
+        "http://doubleclick.net/",
+        "https://doubleclick.net/",
+        "http://doubleclick-cn.net/",
+        "https://doubleclick-cn.net/",
+        "http://doubleclickbygoogle.com/",
+        "https://doubleclickbygoogle.com/",
+        "http://doubleclicksearch.com/",
+        "https://doubleclicksearch.com/",
+        "http://doubleclickusercontent.com/",
+        "https://doubleclickusercontent.com/",
+        "http://googledoubleclick.net/",
+        "https://googledoubleclick.net/",
+        "http://doubleclick.com/",
+        "https://doubleclick.com/",
+        "http://youtube-nocookie.com/",
+        "https://youtube-nocookie.com/",
+        "http://braze.com/",
+        "https://braze.com/",
+        "http://sentry.io/",
+        "https://sentry.io/",
+        "http://omappapi.com/",
+        "https://omappapi.com/",
+        "http://250analytics.com/",
+        "https://250analytics.com/",
+        "http://raw.githubusercontent.com/",
+        "https://raw.githubusercontent.com/",
+        "http://fonts.googleapis.com/",
+        "https://fonts.googleapis.com/",
+        "http://fonts.gstatic.com/",
+        "https://fonts.gstatic.com/",
+        "http://scorecardresearch.com/",
+        "https://scorecardresearch.com/",
+        "http://quantserve.com/",
+        "https://quantserve.com/",
+        "http://ads.google.com/",
+        "https://ads.google.com/",
+        "http://ads.google.cn/",
+        "https://ads.google.cn/",
+        "http://amazon-adsystem.com/",
+        "https://amazon-adsystem.com/",
+        "http://connect.facebook.net/",
+        "https://connect.facebook.com/",
+        "http://2mdn.net/",
+        "https://2mdn.net/",
+        "http://2mdn-cn.net/",
+        "https://2mdn-cn.net/",
+        "http://dartmotif.com/",
+        "https://dartmotif.com/",
+        "http://adsbygoogle.com/",
+        "https://adsbygoogle.com/",
+        "http://admanager.google.com/",
+        "https://admanager.google.com/",
+        "http://admob-creative.googleusercontent.com/",
+        "http://admobapplicationnetwork.com/",
+        "http://adometry.com/",
+        "http://adrollo.com/",
+        "http://mail-ads.google.com/",
+        "https://admobapplicationnetwork.com/",
+        "https://adometry.com/",
+        "https://adrollo.com/",
+        "https://mail-ads.google.com/",
+        "http://adgoogle.net/",
+        "https://adgoogle.net/",
+        "http://adservice.google.ac/",
+        "http://adservice.google.ad/",
+        "http://adservice.google.ae/",
+        "http://adservice.google.af/",
+        "http://adservice.google.ag/",
+        "http://adservice.google.al/",
+        "http://adservice.google.am/",
+        "http://adservice.google.as/",
+        "http://adservice.google.at/",
+        "http://adservice.google.az/",
+        "http://adservice.google.ba/",
+        "http://adservice.google.be/",
+        "http://adservice.google.berlin/",
+        "http://adservice.google.bf/",
+        "http://adservice.google.bg/",
+        "http://adservice.google.bi/",
+        "http://adservice.google.bj/",
+        "http://adservice.google.bo/",
+        "http://adservice.google.bs/",
+        "http://adservice.google.bt/",
+        "http://adservice.google.by/",
+        "http://adservice.google.ca/",
+        "http://adservice.google.cat/",
+        "http://adservice.google.cc/",
+        "http://adservice.google.cd/",
+        "http://adservice.google.cf/",
+        "http://adservice.google.cg/",
+        "http://adservice.google.ch/",
+        "http://adservice.google.ci/",
+        "http://adservice.google.cl/",
+        "http://adservice.google.cm/",
+        "http://adservice.google.co.ao/",
+        "http://adservice.google.co.bw/",
+        "http://adservice.google.co.ck/",
+        "http://adservice.google.co.cr/",
+        "http://adservice.google.co.hu/",
+        "http://adservice.google.co.id/",
+        "http://adservice.google.co.il/",
+        "http://adservice.google.co.im/",
+        "http://adservice.google.co.in/",
+        "http://adservice.google.co.je/",
+        "http://adservice.google.co.jp/",
+        "http://adservice.google.co.ke/",
+        "http://adservice.google.co.kr/",
+        "http://adservice.google.co.ls/",
+        "http://adservice.google.co.ma/",
+        "http://adservice.google.co.mz/",
+        "http://adservice.google.co.nz/",
+        "http://adservice.google.co.th/",
+        "http://adservice.google.co.tz/",
+        "http://adservice.google.co.ug/",
+        "http://adservice.google.co.uk/",
+        "http://adservice.google.co.uz/",
+        "http://adservice.google.co.ve/",
+        "http://adservice.google.co.vi/",
+        "http://adservice.google.co.za/",
+        "http://adservice.google.co.zm/",
+        "http://adservice.google.co.zw/",
+        "http://adservice.google.com/",
+        "http://adservice.google.com.af/",
+        "http://adservice.google.com.ag/",
+        "http://adservice.google.com.ai/",
+        "http://adservice.google.com.ar/",
+        "http://adservice.google.com.au/",
+        "http://adservice.google.com.bd/",
+        "http://adservice.google.com.bh/",
+        "http://adservice.google.com.bn/",
+        "http://adservice.google.com.bo/",
+        "http://adservice.google.com.br/",
+        "http://adservice.google.com.by/",
+        "http://adservice.google.com.bz/",
+        "http://adservice.google.com.co/",
+        "http://adservice.google.com.cu/",
+        "http://adservice.google.com.cy/",
+        "http://adservice.google.com.do/",
+        "http://adservice.google.com.ec/",
+        "http://adservice.google.com.eg/",
+        "http://adservice.google.com.et/",
+        "http://adservice.google.com.fj/",
+        "http://adservice.google.com.ge/",
+        "http://adservice.google.com.gr/",
+        "http://adservice.google.com.gh/",
+        "http://adservice.google.com.gi/",
+        "http://adservice.google.com.gt/",
+        "http://adservice.google.com.hk/",
+        "http://adservice.google.com.iq/",
+        "http://adservice.google.com.jm/",
+        "http://adservice.google.com.jo/",
+        "http://adservice.google.com.kh/",
+        "http://adservice.google.com.kw/",
+        "http://adservice.google.com.lb/",
+        "http://adservice.google.com.ly/",
+        "http://adservice.google.com.mm/",
+        "http://adservice.google.com.mt/",
+        "http://adservice.google.com.mx/",
+        "http://adservice.google.com.my/",
+        "http://adservice.google.com.na/",
+        "http://adservice.google.com.nf/",
+        "http://adservice.google.com.ng/",
+        "http://adservice.google.com.ni/",
+        "http://adservice.google.com.np/",
+        "http://adservice.google.com.nr/",
+        "http://adservice.google.com.om/",
+        "http://adservice.google.com.pa/",
+        "http://adservice.google.com.pe/",
+        "http://adservice.google.com.pg/",
+        "http://adservice.google.com.ph/",
+        "http://adservice.google.com.pk/",
+        "http://adservice.google.com.pl/",
+        "http://adservice.google.com.pr/",
+        "http://adservice.google.com.py/",
+        "http://adservice.google.com.qa/",
+        "http://adservice.google.com.ru/",
+        "http://adservice.google.com.sa/",
+        "http://adservice.google.com.sb/",
+        "http://adservice.google.com.sg/",
+        "http://adservice.google.com.sl/",
+        "http://adservice.google.com.sv/",
+        "http://adservice.google.com.tj/",
+        "http://adservice.google.com.tn/",
+        "http://adservice.google.com.tr/",
+        "http://adservice.google.com.tw/",
+        "http://adservice.google.com.ua/",
+        "http://adservice.google.com.uy/",
+        "http://adservice.google.com.vc/",
+        "http://adservice.google.com.ve/",
+        "http://adservice.google.com.vn/",
+        "http://adservice.google.cv/",
+        "http://adservice.google.cz/",
+        "http://adservice.google.de/",
+        "http://adservice.google.dev/",
+        "http://adservice.google.dj/",
+        "http://adservice.google.dk/",
+        "http://adservice.google.dm/",
+        "http://adservice.google.dz/",
+        "http://adservice.google.ec/",
+        "http://adservice.google.ee/",
+        "http://adservice.google.es/",
+        "http://adservice.google.eu/",
+        "http://adservice.google.fi/",
+        "http://adservice.google.fm/",
+        "http://adservice.google.fr/",
+        "http://adservice.google.ga/",
+        "http://adservice.google.gd/",
+        "http://adservice.google.ge/",
+        "http://adservice.google.gf/",
+        "http://adservice.google.gg/",
+        "http://adservice.google.gl/",
+        "http://adservice.google.gm/",
+        "http://adservice.google.gp/",
+        "http://adservice.google.gr/",
+        "http://adservice.google.gy/",
+        "http://adservice.google.health/",
+        "http://adservice.google.hk/",
+        "http://adservice.google.hn/",
+        "http://adservice.google.hr/",
+        "http://adservice.google.ht/",
+        "http://adservice.google.hu/",
+        "http://adservice.google.ie/",
+        "http://adservice.google.im/",
+        "http://adservice.google.in/",
+        "http://adservice.google.info/",
+        "http://adservice.google.io/",
+        "http://adservice.google.iq/",
+        "http://adservice.google.is/",
+        "http://adservice.google.it/",
+        "http://adservice.google.it.ao/",
+        "http://adservice.google.je/",
+        "http://adservice.google.jo/",
+        "http://adservice.google.jp/",
+        "http://adservice.google.kg/",
+        "http://adservice.google.ki/",
+        "http://adservice.google.kr/",
+        "http://adservice.google.kz/",
+        "http://adservice.google.la/",
+        "http://adservice.google.li/",
+        "http://adservice.google.lk/",
+        "http://adservice.google.lt/",
+        "http://adservice.google.lu/",
+        "http://adservice.google.lv/",
+        "http://adservice.google.ma/",
+        "http://adservice.google.md/",
+        "http://adservice.google.me/",
+        "http://adservice.google.meet/",
+        "http://adservice.google.mg/",
+        "http://adservice.google.mk/",
+        "http://adservice.google.ml/",
+        "http://adservice.google.mn/",
+        "http://adservice.google.ms/",
+        "http://adservice.google.mu/",
+        "http://adservice.google.mv/",
+        "http://adservice.google.mw/",
+        "http://adservice.google.mx/",
+        "http://adservice.google.ne/",
+        "http://adservice.google.ne.jp/",
+        "http://adservice.google.ng/",
+        "http://adservice.google.nl/",
+        "http://adservice.google.no/",
+        "http://adservice.google.nr/",
+        "http://adservice.google.nu/",
+        "http://adservice.google.off.ai/",
+        "http://adservice.google.pf/",
+        "http://adservice.google.ph/",
+        "http://adservice.google.pk/",
+        "http://adservice.google.pl/",
+        "http://adservice.google.pn/",
+        "http://adservice.google.ps/",
+        "http://adservice.google.pt/",
+        "http://adservice.google.qa/",
+        "http://adservice.google.re/",
+        "http://adservice.google.ro/",
+        "http://adservice.google.rs/",
+        "http://adservice.google.ru/",
+        "http://adservice.google.rw/",
+        "http://adservice.google.sc/",
+        "http://adservice.google.se/",
+        "http://adservice.google.sg/",
+        "http://adservice.google.sh/",
+        "http://adservice.google.si/",
+        "http://adservice.google.sk/",
+        "http://adservice.google.sm/",
+        "http://adservice.google.sn/",
+        "http://adservice.google.so/",
+        "http://adservice.google.sr/",
+        "http://adservice.google.st/",
+        "http://adservice.google.td/",
+        "http://adservice.google.tel/",
+        "http://adservice.google.tg/",
+        "http://adservice.google.tk/",
+        "http://adservice.google.tl/",
+        "http://adservice.google.tm/",
+        "http://adservice.google.tn/",
+        "http://adservice.google.to/",
+        "http://adservice.google.tt/",
+        "http://adservice.google.tw/",
+        "http://adservice.google.ua/",
+        "http://adservice.google.us/",
+        "http://adservice.google.uz/",
+        "http://adservice.google.vg/",
+        "http://adservice.google.vn/",
+        "http://adservice.google.vu/",
+        "http://adservice.google.ws/",
+        "https://adservice.google.ac/",
+        "https://adservice.google.ad/",
+        "https://adservice.google.ae/",
+        "https://adservice.google.af/",
+        "https://adservice.google.ag/",
+        "https://adservice.google.al/",
+        "https://adservice.google.am/",
+        "https://adservice.google.as/",
+        "https://adservice.google.at/",
+        "https://adservice.google.az/",
+        "https://adservice.google.ba/",
+        "https://adservice.google.be/",
+        "https://adservice.google.berlin/",
+        "https://adservice.google.bf/",
+        "https://adservice.google.bg/",
+        "https://adservice.google.bi/",
+        "https://adservice.google.bj/",
+        "https://adservice.google.bo/",
+        "https://adservice.google.bs/",
+        "https://adservice.google.bt/",
+        "https://adservice.google.by/",
+        "https://adservice.google.ca/",
+        "https://adservice.google.cat/",
+        "https://adservice.google.cc/",
+        "https://adservice.google.cd/",
+        "https://adservice.google.cf/",
+        "https://adservice.google.cg/",
+        "https://adservice.google.ch/",
+        "https://adservice.google.ci/",
+        "https://adservice.google.cl/",
+        "https://adservice.google.cm/",
+        "https://adservice.google.co.ao/",
+        "https://adservice.google.co.bw/",
+        "https://adservice.google.co.ck/",
+        "https://adservice.google.co.cr/",
+        "https://adservice.google.co.hu/",
+        "https://adservice.google.co.id/",
+        "https://adservice.google.co.il/",
+        "https://adservice.google.co.im/",
+        "https://adservice.google.co.in/",
+        "https://adservice.google.co.je/",
+        "https://adservice.google.co.jp/",
+        "https://adservice.google.co.ke/",
+        "https://adservice.google.co.kr/",
+        "https://adservice.google.co.ls/",
+        "https://adservice.google.co.ma/",
+        "https://adservice.google.co.mz/",
+        "https://adservice.google.co.nz/",
+        "https://adservice.google.co.th/",
+        "https://adservice.google.co.tz/",
+        "https://adservice.google.co.ug/",
+        "https://adservice.google.co.uk/",
+        "https://adservice.google.co.uz/",
+        "https://adservice.google.co.ve/",
+        "https://adservice.google.co.vi/",
+        "https://adservice.google.co.za/",
+        "https://adservice.google.co.zm/",
+        "https://adservice.google.co.zw/",
+        "https://adservice.google.com/",
+        "https://adservice.google.com.af/",
+        "https://adservice.google.com.ag/",
+        "https://adservice.google.com.ai/",
+        "https://adservice.google.com.ar/",
+        "https://adservice.google.com.au/",
+        "https://adservice.google.com.bd/",
+        "https://adservice.google.com.bh/",
+        "https://adservice.google.com.bn/",
+        "https://adservice.google.com.bo/",
+        "https://adservice.google.com.br/",
+        "https://adservice.google.com.by/",
+        "https://adservice.google.com.bz/",
+        "https://adservice.google.com.co/",
+        "https://adservice.google.com.cu/",
+        "https://adservice.google.com.cy/",
+        "https://adservice.google.com.do/",
+        "https://adservice.google.com.ec/",
+        "https://adservice.google.com.eg/",
+        "https://adservice.google.com.et/",
+        "https://adservice.google.com.fj/",
+        "https://adservice.google.com.ge/",
+        "https://adservice.google.com.gr/",
+        "https://adservice.google.com.gh/",
+        "https://adservice.google.com.gi/",
+        "https://adservice.google.com.gt/",
+        "https://adservice.google.com.hk/",
+        "https://adservice.google.com.iq/",
+        "https://adservice.google.com.jm/",
+        "https://adservice.google.com.jo/",
+        "https://adservice.google.com.kh/",
+        "https://adservice.google.com.kw/",
+        "https://adservice.google.com.lb/",
+        "https://adservice.google.com.ly/",
+        "https://adservice.google.com.mm/",
+        "https://adservice.google.com.mt/",
+        "https://adservice.google.com.mx/",
+        "https://adservice.google.com.my/",
+        "https://adservice.google.com.na/",
+        "https://adservice.google.com.nf/",
+        "https://adservice.google.com.ng/",
+        "https://adservice.google.com.ni/",
+        "https://adservice.google.com.np/",
+        "https://adservice.google.com.nr/",
+        "https://adservice.google.com.om/",
+        "https://adservice.google.com.pa/",
+        "https://adservice.google.com.pe/",
+        "https://adservice.google.com.pg/",
+        "https://adservice.google.com.ph/",
+        "https://adservice.google.com.pk/",
+        "https://adservice.google.com.pl/",
+        "https://adservice.google.com.pr/",
+        "https://adservice.google.com.py/",
+        "https://adservice.google.com.qa/",
+        "https://adservice.google.com.ru/",
+        "https://adservice.google.com.sa/",
+        "https://adservice.google.com.sb/",
+        "https://adservice.google.com.sg/",
+        "https://adservice.google.com.sl/",
+        "https://adservice.google.com.sv/",
+        "https://adservice.google.com.tj/",
+        "https://adservice.google.com.tn/",
+        "https://adservice.google.com.tr/",
+        "https://adservice.google.com.tw/",
+        "https://adservice.google.com.ua/",
+        "https://adservice.google.com.uy/",
+        "https://adservice.google.com.vc/",
+        "https://adservice.google.com.ve/",
+        "https://adservice.google.com.vn/",
+        "https://adservice.google.cv/",
+        "https://adservice.google.cz/",
+        "https://adservice.google.de/",
+        "https://adservice.google.dev/",
+        "https://adservice.google.dj/",
+        "https://adservice.google.dk/",
+        "https://adservice.google.dm/",
+        "https://adservice.google.dz/",
+        "https://adservice.google.ec/",
+        "https://adservice.google.ee/",
+        "https://adservice.google.es/",
+        "https://adservice.google.eu/",
+        "https://adservice.google.fi/",
+        "https://adservice.google.fm/",
+        "https://adservice.google.fr/",
+        "https://adservice.google.ga/",
+        "https://adservice.google.gd/",
+        "https://adservice.google.ge/",
+        "https://adservice.google.gf/",
+        "https://adservice.google.gg/",
+        "https://adservice.google.gl/",
+        "https://adservice.google.gm/",
+        "https://adservice.google.gp/",
+        "https://adservice.google.gr/",
+        "https://adservice.google.gy/",
+        "https://adservice.google.health/",
+        "https://adservice.google.hk/",
+        "https://adservice.google.hn/",
+        "https://adservice.google.hr/",
+        "https://adservice.google.ht/",
+        "https://adservice.google.hu/",
+        "https://adservice.google.ie/",
+        "https://adservice.google.im/",
+        "https://adservice.google.in/",
+        "https://adservice.google.info/",
+        "https://adservice.google.io/",
+        "https://adservice.google.iq/",
+        "https://adservice.google.is/",
+        "https://adservice.google.it/",
+        "https://adservice.google.it.ao/",
+        "https://adservice.google.je/",
+        "https://adservice.google.jo/",
+        "https://adservice.google.jp/",
+        "https://adservice.google.kg/",
+        "https://adservice.google.ki/",
+        "https://adservice.google.kr/",
+        "https://adservice.google.kz/",
+        "https://adservice.google.la/",
+        "https://adservice.google.li/",
+        "https://adservice.google.lk/",
+        "https://adservice.google.lt/",
+        "https://adservice.google.lu/",
+        "https://adservice.google.lv/",
+        "https://adservice.google.ma/",
+        "https://adservice.google.md/",
+        "https://adservice.google.me/",
+        "https://adservice.google.meet/",
+        "https://adservice.google.mg/",
+        "https://adservice.google.mk/",
+        "https://adservice.google.ml/",
+        "https://adservice.google.mn/",
+        "https://adservice.google.ms/",
+        "https://adservice.google.mu/",
+        "https://adservice.google.mv/",
+        "https://adservice.google.mw/",
+        "https://adservice.google.mx/",
+        "https://adservice.google.ne/",
+        "https://adservice.google.ne.jp/",
+        "https://adservice.google.ng/",
+        "https://adservice.google.nl/",
+        "https://adservice.google.no/",
+        "https://adservice.google.nr/",
+        "https://adservice.google.nu/",
+        "https://adservice.google.off.ai/",
+        "https://adservice.google.pf/",
+        "https://adservice.google.ph/",
+        "https://adservice.google.pk/",
+        "https://adservice.google.pl/",
+        "https://adservice.google.pn/",
+        "https://adservice.google.ps/",
+        "https://adservice.google.pt/",
+        "https://adservice.google.qa/",
+        "https://adservice.google.re/",
+        "https://adservice.google.ro/",
+        "https://adservice.google.rs/",
+        "https://adservice.google.ru/",
+        "https://adservice.google.rw/",
+        "https://adservice.google.sc/",
+        "https://adservice.google.se/",
+        "https://adservice.google.sg/",
+        "https://adservice.google.sh/",
+        "https://adservice.google.si/",
+        "https://adservice.google.sk/",
+        "https://adservice.google.sm/",
+        "https://adservice.google.sn/",
+        "https://adservice.google.so/",
+        "https://adservice.google.sr/",
+        "https://adservice.google.st/",
+        "https://adservice.google.td/",
+        "https://adservice.google.tel/",
+        "https://adservice.google.tg/",
+        "https://adservice.google.tk/",
+        "https://adservice.google.tl/",
+        "https://adservice.google.tm/",
+        "https://adservice.google.tn/",
+        "https://adservice.google.to/",
+        "https://adservice.google.tt/",
+        "https://adservice.google.tw/",
+        "https://adservice.google.ua/",
+        "https://adservice.google.us/",
+        "https://adservice.google.uz/",
+        "https://adservice.google.vg/",
+        "https://adservice.google.vn/",
+        "https://adservice.google.vu/",
+        "https://adservice.google.ws/",
+        "http://adsgoogle.com/",
+        "https://adsgoogle.com/",
+        "http://displayads-formats.googleusercontent.com/",
+        "https://displayads-formats.googleusercontent.com/",
+        "http://ad-creatives-public.commondatastorage.googleapis.com/",
+        "https://ad-creatives-public.commondatastorage.googleapis.com/",
+        "http://video-ad-creatives-public.commondatastorage.googleapis.com/",
+        "https://video-ad-creatives-public.commondatastorage.googleapis.com/",
+        "http://google-syndicatedsearch.net/",
+        "https://google-syndicatedsearch.net/",
+        "http://google-syndication.com/",
+        "https://google-syndication.com/",
+        "http://googlesyndication.com/",
+        "https://googlesyndication.com/",
+        "http://googleads.com/",
+        "https://googleads.com/",
+        "http://googleads-cn.com/",
+        "https://googleads-cn.com/",
+        "http://googleadservices.com/",
+        "https://googleadservices.com/",
+        "http://secure.gravatar.com/",
+        "https://secure.gravatar.com/",
+        "http://click.discord.com/",
+        "https://click.discord.com/",
+        "http://t.co/",
+        "https://t.co/",
+        "http://bit.ly/",
+        "https://bit.ly/",
+        "http://youtu.be/",
+        "https://youtu.be/",
+        "http://links.mozilla.org/",
+        "https://links.mozilla.org/",
+        "http://ads.youtube.com/",
+        "https://ads.youtube.com/",
+        "http://ads-twitter.com/",
+        "https://ads-twitter.com/",
+        "http://ads-api.x.com/",
+        "https://ads-api.x.com/",
+        "http://ads-api.twitter.com/",
+        "https://ads-api.twitter.com/",
+        "http://location.services.mozilla.com/",
+        "https://location.services.mozilla.com/",
+        "http://classify-client.nonprod.webservices.mozgcp.net",
+        "https://classify-client.nonprod.webservices.mozgcp.net",
+        "http://classify-client.prod.webservices.mozgcp.net",
+        "https://classify-client.prod.webservices.mozgcp.net",
+        "http://ads.allizom.org/",
+        "https://ads.allizom.org/",
+        "http://ads.mozilla.org/",
+        "https://ads.mozilla.org",
+        "http://ads.nonprod.webservices.mozgcp.net/",
+        "https://ads.nonprod.webservices.mozgcp.net/",
+        "http://ads.prod.webservices.mozgcp.net/",
+        "https://ads.prod.webservices.mozgcp.net/",
+        "http://contile.services.mozilla.com/",
+        "https://contile.services.mozilla.com/",
+        "http://contile-images.services.mozilla.com/",
+        "https://contile-images.services.mozilla.com/",
+        "http://getpocket.com/",
+        "https://getpocket.com/",
+        "http://getpocket.dev/",
+        "https://getpocket.dev/",
+        "http://getpocket.cdn.mozilla.net/",
+        "https://getpocket.cdn.mozilla.net/",
+        "http://getpocket-cdn.prod.mozaws.net/",
+        "https://getpocket-cdn.prod.mozaws.net/",
+        "http://img-getpocket.cdn.mozilla.net/",
+        "https://img-getpocket.cdn.mozilla.net/",
+        "http://pocket.prod.cloudops.mozgcp.net/",
+        "https://pocket.prod.cloudops.mozgcp.net/",
+        "http://pocket-image-cache.com/",
+        "https://pocket-image-cache.com/",
+        "http://spocs.mozilla.net/",
+        "https://spocs.mozilla.net/",
+        "http://snippets.allizom.org/",
+        "https://snippets.allizom.org/",
+        "http://snippets.cdn.mozilla.net/",
+        "https://snippets.cdn.mozilla.net/",
+        "http://snippets.mozilla.com/",
+        "https://snippets.mozilla.com/",
+        "http://snippets-prod.moz.works/",
+        "https://snippets-prod.moz.works/",
+        "http://snippets-prod.frankfurt.moz.works/",
+        "https://snippets-prod.frankfurt.moz.works/",
+        "http://snippets-prod.oregon-b.moz.works/",
+        "https://snippets-prod.oregon-b.moz.works/",
+        "http://snippets-stage.moz.works/",
+        "https://snippets-stage.moz.works/",
+        "http://snippets-stage.oregon-b.moz.works/",
+        "https://snippets-stage.oregon-b.moz.works/",
+        "http://anonymco.com/",
+        "https://anonymco.com/",
+        "http://asan-nightly-frontend-elb-1348905149.us-east-2.elb.amazonaws.com/",
+        "https://asan-nightly-frontend-elb-1348905149.us-east-2.elb.amazonaws.com/",
+        "http://crash-reports.allizom.org/",
+        "https://crash-reports.allizom.org/",
+        "http://crash-reports.mozilla.com/",
+        "https://crash-reports.mozilla.com/",
+        "http://crash-reports-xpsp2.mozilla.com/",
+        "https://crash-reports-xpsp2.mozilla.com/",
+        "http://crash-stacks.mozilla.com/",
+        "https://crash-stacks.mozilla.com/",
+        "http://crash-stats.allizom.org/",
+        "https://crash-stats.allizom.org/",
+        "http://crash-stats.mozilla.com/",
+        "https://crash-stats.mozilla.com/",
+        "http://crash-stats.mozilla.org/",
+        "https://crash-stats.mozilla.org/",
+        "http://socorro.nonprod.webservices.mozgcp.net/",
+        "https://socorro.nonprod.webservices.mozgcp.net/",
+        "http://socorro.prod.webservices.mozgcp.net/",
+        "https://socorro.prod.webservices.mozgcp.net/",
+        "http://socorro-collector.services.mozilla.com/",
+        "https://socorro-collector.services.mozilla.com/",
+        "http://socorro-webapp-allizom.stage.mozaws.net/",
+        "https://socorro-webapp-allizom.stage.mozaws.net/",
+        "http://socorro-webapp.services.mozilla.com/",
+        "https://socorro-webapp.services.mozilla.com/",
+        "http://talkback.mozilla.org/",
+        "https://talkback.mozilla.org/",
+        "http://talkback-public.mozilla.org/",
+        "https://talkback-public.mozilla.org/",
+        "http://talkback-reports.mozilla.org/",
+        "https://talkback-reports.mozilla.org/",
+        "http://normandy.cdn.mozilla.net/",
+        "https://normandy.cdn.mozilla.net/",
+        "http://normandy.nonprod.cloudops.mozgcp.net/",
+        "https://normandy.nonprod.cloudops.mozgcp.net/",
+        "http://normandy.prod.cloudops.mozgcp.net/",
+        "https://normandy.prod.cloudops.mozgcp.net/",
+        "http://normandy-cdn.services.mozilla.com/",
+        "https://normandy-cdn.services.mozilla.com/",
+        "http://download-stats.mozilla.org/",
+        "https://download-stats.mozilla.org/",
+        "http://download-stats.r53-2.services.mozilla.com/",
+        "https://download-stats.r53-2.services.mozilla.com/",
+        "http://dap-09-3.api.divviup.org/",
+        "https://dap-09-3.api.divviup.org/",
+        "http://dap.services.mozilla.com/",
+        "https://dap.services.mozilla.com/",
+        "http://dap.nonprod.webservices.mozgcp.net/",
+        "https://dap.nonprod.webservices.mozgcp.net/",
+        "http://dap.prod.webservices.mozgcp.net/",
+        "https://dap.prod.webservices.mozgcp.net/",
+        "http://data.mozilla.com/",
+        "https://data.mozilla.com/",
+        "http://dataops.mozgcp.net/",
+        "https://dataops.mozgcp.net/",
+        "http://dataservices.mozgcp.net/",
+        "https://dataservices.mozgcp.net/",
+        "http://fuzzing.mozilla.org/",
+        "https://fuzzing.mozilla.org/",
+        "http://incoming-telemetry.thunderbird.net/",
+        "https://incoming-telemetry.thunderbird.net/",
+        "http://pipeline-incoming-prod-elb-149169523.us-west-2.elb.amazonaws.com/",
+        "https://pipeline-incoming-prod-elb-149169523.us-west-2.elb.amazonaws.com/",
+        "http://telemetry.mozilla.org",
+        "https://telemetry.mozilla.org",
+        "http://telemetry-data.r53-2.services.mozilla.com",
+        "https://telemetry-data.r53-2.services.mozilla.com",
+        "http://telemetry-incoming.r53-2.services.mozilla.com/",
+        "https://telemetry-incoming.r53-2.services.mozilla.com/",
+        "http://telemetry-prod-1054754349.us-east-1.elb.amazonaws.com/",
+        "https://telemetry-prod-1054754349.us-east-1.elb.amazonaws.com/",
+        "http://sentry.nonprod.cloudops.mozgcp.net/",
+        "https://sentry.nonprod.cloudops.mozgcp.net/",
+        "http://sentry.prod.cloudops.mozgcp.net/",
+        "https://sentry.prod.cloudops.mozgcp.net/",
+        "http://telemetry-coverage.mozilla.org/",
+        "https://telemetry-coverage.mozilla.org/",
+        "http://telemetry-coverage.r53-2.services.mozilla.com/",
+        "https://telemetry-coverage.r53-2.services.mozilla.com/",
+        "http://discovery.addons.allizom.org/",
+        "https://discovery.addons.allizom.org/",
+        "http://discovery.addons.mozilla.org/",
+        "https://discovery.addons.mozilla.org/",
+        "http://discovery.addons-dev.allizom.org/",
+        "https://discovery.addons-dev.allizom.org/",
+        "http://merino.nonprod.cloudops.mozgcp.net/",
+        "https://merino.nonprod.cloudops.mozgcp.net/",
+        "http://merino.prod.cloudops.mozgcp.net/",
+        "https://merino.prod.cloudops.mozgcp.net/",
+        "http://merino.services.mozilla.com/",
+        "https://merino.services.mozilla.com/",
+        "http://autoconnect.stage.mozaws.net/",
+        "https://autoconnect.stage.mozaws.net/",
+        "http://autopush.prod.mozaws.net/",
+        "https://autopush.prod.mozaws.net/",
+        "http://autopush.stage.mozaws.net/",
+        "https://autopush.stage.mozaws.net/",
+        "http://push.services.mozilla.com/",
+        "https://push.services.mozilla.com/",
+        "http://fakespot.com/",
+        "https://fakespot.com/",
+        "http://fakespot.io",
+        "https://fakespot.io",
+        "http://mozilla-ohttp-fakespot.fastly-edge.com/",
+        "https://mozilla-ohttp-fakespot.fastly-edge.com/"
+      ]
+    },
+    "AutofillAddressEnabled": false,
+    "AutofillCreditCardEnabled": false,
+    "DisableFirefoxScreenshots": true,
+    "RequestedLocales": [
+      "en-US"
+    ]
+  }
+}
