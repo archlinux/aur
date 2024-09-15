@@ -33,7 +33,7 @@ options=(
   !strip
 )
 _srcname=linux-${pkgver%.*}
-_srctag=${pkgver%.*}-${pkgver##*.}
+_srctag=v${pkgver%.*}-${pkgver##*.}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   ${url}/releases/download/${_srctag}/${pkgbase}-${_srctag}.patch{,.sig}
