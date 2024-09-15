@@ -5,15 +5,15 @@
 
 _pkgname=tty0tty
 pkgname=tty0tty-dkms-git
-pkgver=1.2+59.r75.20240915.ac540b8
-pkgrel=2
+pkgver=1.2+64.r80.20240915.2639a39
+pkgrel=1
 pkgdesc="tty0tty Virtual Serial Cable (DKMS and userspace variant)."
 arch=(
   'i686'
   'x86_64'
 )
 url="https://github.com/freemed/tty0tty"  # Version 1.2
-# url="https://github.com/lcgamboa/tty0tty" # Version 1.3
+# url="https://github.com/lcgamboa/tty0tty" # Version 1.4
 license=(
   'GPL-2.0-only'
 )
