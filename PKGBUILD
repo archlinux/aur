@@ -16,9 +16,6 @@ prepare() {
 }
 
 package() {
-    install -dm755 "${pkgdir}/usr/share/fonts/${pkgname}"
-    install -Dm644 Renogare-Regular.otf "${pkgdir}/usr/share/fonts/${pkgname}"
-
-    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 'renogare license.pdf' "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 -t "${pkgdir}/usr/share/fonts/OTF" Renogare-Regular.otf
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" 'renogare license.pdf'
 }
