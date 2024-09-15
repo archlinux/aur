@@ -1,0 +1,18 @@
+pkgbase = hydownloader-systray-git
+	pkgdesc = Remote management GUI for hydownloader
+	pkgver = r136.b750130
+	pkgrel = 1
+	url = https://gitgud.io/thatfuckingbird/hydownloader-systray
+	arch = i686
+	arch = x86_64
+	makedepends = cmake
+	makedepends = qt6-tools
+	makedepends = qt6-base
+	depends = qt6-base
+	provides = hydownloader-systray
+	source = hydownloader-systray-git::git+https://gitgud.io/thatfuckingbird/hydownloader-systray.git
+	source = hydownloader-systray.desktop
+	sha512sums = SKIP
+	sha512sums = 1f2a094a32cdb88751c7b1ea2e2babaca361eface09c8ec34c79fba68dfa61f33b40bad780cba9bdde62a2c0a81886e01a69ac39cb7e8bd28e52c85e1512fd21
+
+pkgname = hydownloader-systray-git

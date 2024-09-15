@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=hydownloader systray
+Comment=Systray for hydownloader
+Exec=hydownloader-systray
+Icon=/usr/share/icons/hydownloader-systray.png
+Terminal=false
+Type=Application
+Categories=Application;FileTools;
