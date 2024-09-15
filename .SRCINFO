@@ -1,0 +1,20 @@
+pkgbase = fcitx5-hallelujah-git
+	pkgdesc = Fcitx5 port of HallelujahIM
+	pkgver = r6.9eca643ea97c
+	pkgrel = 1
+	url = https://github.com/fcitx-contrib/fcitx5-hallelujah
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = fcitx5
+	depends = marisa
+	depends = fmt
+	depends = json-c
+	provides = fcitx5-hallelujah
+	conflicts = fcitx5-hallelujah
+	source = fcitx5-hallelujah::git+https://github.com/fcitx-contrib/fcitx5-hallelujah.git
+	sha256sums = SKIP
+
+pkgname = fcitx5-hallelujah-git
