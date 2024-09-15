@@ -4,11 +4,11 @@
 
 pkgname=libuhd-firmware
 pkgver=4.6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Software Radio Peripheral (USRP) userspace firmware"
 arch=('any')
 url="https://files.ettus.com/manual/"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('libuhd')
 source=("https://github.com/EttusResearch/uhd/releases/download/v$pkgver/uhd-images_$pkgver.tar.xz")
 sha256sums=('a312587fbe9fffb6043cd96bae50ef283bb55a1e51e1435b5e4a350beb00e59d')
