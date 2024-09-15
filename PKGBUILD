@@ -5,8 +5,8 @@
 
 _pkgname=tty0tty
 pkgname=tty0tty-dkms-git
-pkgver=1.2+46.r62.20221025.81f8aa2
-pkgrel=4
+pkgver=1.2+59.r75.20240915.ac540b8
+pkgrel=1
 pkgdesc="tty0tty Virtual Serial Cable (DKMS and userspace variant)."
 arch=(
   'i686'
@@ -15,7 +15,7 @@ arch=(
 url="https://github.com/freemed/tty0tty"  # Version 1.2
 # url="https://github.com/lcgamboa/tty0tty" # Version 1.3
 license=(
-  'GPL2'
+  'GPL-2.0-only'
 )
 depends=('dkms')
 makedepends=('git')
@@ -31,15 +31,11 @@ conflicts=(
 source=(
   "${_pkgname}::git+${url}.git"
   '50-tty0tty.rules.arch.patch'
-  'linux-6.1-fixup.patch'
-  'linux-6.6-fixup.patch'
   'modules-load-tty0tty.conf'
 )
 sha256sums=(
   'SKIP'                                                              # Upstream git source
   '4babdbb8988fae9c603c210c9afc1a9d066f40d4a6e23d609c6ae6200bc6d645'  # 50-tty0tty.rules.arch.patch
-  '57bfbb7dda4c67f0ae0c7736ee30a9cd491065babca43b454f76891c671bd71e'  # linux-6.1-fixup.patch. https://github.com/freemed/tty0tty/issues/47#issuecomment-1375882086.
-  'a0d662ff55930fc1faf22bdc18a01c09c74849fa0e4addbb55cd49b4f0191e16'  # linux-6.6-fixup.patch. https://aur.archlinux.org/packages/tty0tty-dkms-git#comment-950887
   '31e97d1ea45da90c70715073d2279fc9482e497179b4fc44645684ffe7371217'  # modules-load-tty0tty.conf
 )
 
