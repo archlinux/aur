@@ -2,7 +2,7 @@
 
 pkgname=mpv-mpris-git
 pkgver=1.1.1.g16fee38
-pkgrel=1
+pkgrel=2
 pkgdesc="MPRIS plugin for mpv. (GIT version)"
 arch=('x86_64')
 license=('MIT')
@@ -50,7 +50,7 @@ package() {
   )
 
   cd mpv-mpris
-  install -Dm755 mpris.so "${pkgdir}/usr/share/mpv/scripts/mpris.so"
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
