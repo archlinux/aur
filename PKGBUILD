@@ -27,7 +27,11 @@ provides=("hydownloader=${pkgver%%.r*}")
 source=(
   "git+https://gitgud.io/thatfuckingbird/hydownloader.git"
 )
-sha256sums=('SKIP')
+sha512sums=('SKIP')
+optdepends=(
+    'hydownloader-systray-git: Remote management GUI for hydownloader'
+    'hydrus: Danbooru-like image tagging and searching system for the desktop'
+)
 
 prepare() {
   cd $srcdir/${_name}

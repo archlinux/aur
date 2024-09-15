@@ -19,8 +19,10 @@ pkgbase = hydownloader-git
 	depends = python-opencv
 	depends = python-numpy
 	depends = python-pillow
+	optdepends = hydownloader-systray-git: Remote management GUI for hydownloader
+	optdepends = hydrus: Danbooru-like image tagging and searching system for the desktop
 	provides = hydownloader=r559.d59967b
 	source = git+https://gitgud.io/thatfuckingbird/hydownloader.git
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = hydownloader-git
