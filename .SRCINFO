@@ -1,6 +1,6 @@
 pkgbase = retro-crisis-gdv-ntsc
 	pkgdesc = CRT shader preset for Libretro based on Guest Advanced NTSC
-	pkgver = 20240910
+	pkgver = 20240913
 	pkgrel = 1
 	url = https://github.com/RetroCrisis/Retro-Crisis-GDV-NTSC
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = retro-crisis-gdv-ntsc
 	depends = libretro-shaders-slang
 	options = !debug
 	options = !strip
-	source = retro-crisis-gdv-ntsc-20240910.zip::https://github.com/RetroCrisis/Retro-Crisis-GDV-NTSC/releases/download/20240910/Retro.Crisis.GDV-NTSC.2024.09.10.zip
-	sha512sums = 7a150d06d50519eb4563c90f9ffc65eebebf0d1980b524965d5530ca827836ccade348e904b8fe3dd11d0bdd388d06816e40b77564f4264ba3b523b4fcba8f1f
+	source = retro-crisis-gdv-ntsc-20240913.zip::https://github.com/RetroCrisis/Retro-Crisis-GDV-NTSC/releases/download/20240913/Retro.Crisis.GDV-NTSC.2024.09.13.zip
+	sha512sums = 612f3e96ce1d47da6466026018ccdc311e20a9fe5b2335a13cee070c7c28cf260df828d8f011b98a6eb1ec1265d112c239f7c03e395950c2e7d022ae8e272889
 
 pkgname = retro-crisis-gdv-ntsc
