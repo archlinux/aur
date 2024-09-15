@@ -1,9 +1,9 @@
 # Maintainer: XZS <d dot f dot fischer at web dot de>
 pkgname=python-argparse-manpager-git
 pkgver=r0
-pkgrel=2
+pkgrel=3
 pkgdesc="A generator and waf tool to make manual pages from executable python modules."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/dffischer/argparse-manpager"
 license=('GPL3')
 depends=('python')
