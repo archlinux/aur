@@ -2,8 +2,8 @@
 # Contributor: Lukas Jirkovsky <l.jirkovsky AT gmail.com>
 
 pkgname=rawtherapee-git
-pkgver=5.10.r274.g4f4a3d233
-pkgrel=2
+pkgver=5.11.r1.g40dccc3fc
+pkgrel=1
 epoch=1
 pkgdesc="A powerful cross-platform raw image processing program"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
@@ -17,6 +17,7 @@ depends=(fftw gtk3 glibmm gtkmm3 lcms2 lensfun libcanberra exiv2 libjxl
 makedepends=(cmake git)
 provides=(rawtherapee)
 conflicts=(rawtherapee)
+options=(!lto)
 source=("git+https://github.com/Beep6581/RawTherapee.git#branch=dev")
 sha256sums=('SKIP')
 
