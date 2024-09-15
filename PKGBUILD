@@ -3,21 +3,28 @@
 # Contributor: TheAssassin
 
 pkgname=appimagelauncher-git
-pkgver=r1251.71e8e32
-pkgrel=1
+pkgver=r1257.0013516
+pkgrel=2
 pkgdesc="A Helper application for running and integrating AppImages."
 arch=(x86_64)
 url="https://assassinate-you.net/tags/appimagelauncher/"
 license=(MIT)
-depends=(qt5-base fuse2 squashfuse libappimage libxpm)
-makedepends=(git cmake boost qt5-tools qt5-declarative lib32-glibc lib32-gcc-libs xxd chrpath)
+depends=(qt5-base qt5-declarative libappimage
+
+         # namcap implicit depends
+         glibc gcc-libs glib2 curl)
+makedepends=(git cmake boost qt5-tools libxpm lib32-glibc lib32-gcc-libs tinyxxd patchelf
+        #appimageupdate-git
+        #fuse2
+)
 provides=(appimagelauncher)
 conflicts=(appimagelauncher)
+options=(debug !strip)
 source=("git+https://github.com/TheAssassin/AppImageLauncher.git"
         "git+https://github.com/AppImageCommunity/AppImageUpdate.git"
-        #"git+https://github.com/AppImageCommunity/libappimage.git"
-        "git+https://github.com/TheAssassin/zsync2.git"
-        "git+https://github.com/TheAssassin/fltk-1.3.4.git"
+        #"git+https://github.com/AppImage/libappimage.git"
+        "git+https://github.com/AppImageCommunity/zsync2.git"
+        "git+https://github.com/AppImageCommunity/fltk-1.3.4.git"
         "git+https://github.com/TheAssassin/libdesktopenvironments.git"
         "git+https://github.com/arsenm/sanitizers-cmake.git"
         "git+https://github.com/google/googletest.git"
@@ -40,6 +47,8 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   #git describe --long --tags --exclude continuous | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
+CFLAGS="$CFLAGS -Wno-deprecated-declarations -Wno-implicit-function-declaration -Wno-incompatible-pointer-types"
 
 prepare() {
   cd AppImageLauncher
@@ -71,15 +80,26 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 }
 
+# not recognized system's libappimageupdate
+
 build() {
   cd AppImageLauncher
 
-  cmake . -Wno-dev \
-        -DCMAKE_INSTALL_PREFIX=/usr/ \
-        -DUSE_SYSTEM_LIBAPPIMAGE=ON \
-        -DBUILD_TESTING=OFF
+  local _flags=(
+    -DUSE_SYSTEM_LIBAPPIMAGE=ON
+    -DBUILD_TESTING=OFF
+  )
+
+  cmake . \
+    -Wno-dev \
+    -DCMAKE_BUILD_TYPE=Debug \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
+
   make libappimageupdate libappimageupdate-qt
+
   cmake .
+
   make
 }
 
@@ -89,9 +109,9 @@ package() {
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 ../appimage-binfmt-remove.hook "$pkgdir"/usr/share/libalpm/hooks/appimage-binfmt-remove.hook
 
-  chrpath --delete "${pkgdir}/usr/lib/appimagelauncher/libappimageupdate-qt.so"
-  chrpath --delete "${pkgdir}/usr/lib/appimagelauncher/libappimageupdate.so"
-  #chrpath --delete "${pkgdir}/usr/bin/AppImageLauncherSettings"
-  #chrpath --delete "${pkgdir}/usr/bin/ail-cli"
-  #chrpath --delete "${pkgdir}/usr/bin/appimagelauncherd"
+  patchelf --shrink-rpath "${pkgdir}/usr/lib/appimagelauncher/libappimageupdate-qt.so"
+  patchelf --shrink-rpath "${pkgdir}/usr/lib/appimagelauncher/libappimageupdate.so"
+  #patchelf --shrink-rpath "${pkgdir}/usr/bin/AppImageLauncherSettings"
+  #patchelf --shrink-rpath "${pkgdir}/usr/bin/ail-cli"
+  #patchelf --shrink-rpath "${pkgdir}/usr/bin/appimagelauncherd"
 }
