@@ -5,6 +5,7 @@ pkgbase = hydownloader-systray-git
 	url = https://gitgud.io/thatfuckingbird/hydownloader-systray
 	arch = i686
 	arch = x86_64
+	license = GNU AGPL
 	makedepends = cmake
 	makedepends = qt6-tools
 	makedepends = qt6-base

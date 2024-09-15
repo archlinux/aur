@@ -9,6 +9,7 @@ url="https://gitgud.io/thatfuckingbird/hydownloader-systray"
 depends=('qt6-base')
 makedepends=('cmake' 'qt6-tools' 'qt6-base')
 provides=('hydownloader-systray')
+license=('GNU AGPL')
 source=(
     "$pkgname"::"git+https://gitgud.io/thatfuckingbird/hydownloader-systray.git"
     "hydownloader-systray.desktop"
