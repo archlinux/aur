@@ -1,7 +1,7 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 pkgname=sasl-xoauth2-git
-pkgver=r200.41b27db
-pkgrel=1
+pkgver=r203.47ff232
+pkgrel=2
 pkgdesc="SASL plugin that enables client-side use of OAuth 2.0"
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
