@@ -1,6 +1,6 @@
 # Maintainer: Bhanupong Petchlert <bpetlert@gmail.com>
 pkgname=pkgdu
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A tool to display packages disk usage size"
 arch=('x86_64')
@@ -10,18 +10,19 @@ depends=(libalpm.so)
 makedepends=(cargo)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bpetlert/${pkgname}/archive/${pkgver}.tar.gz")
-b2sums=('72642708503a9f29157ea47ccc536a8cbeca85e73e2e3b3f70fb8a08537ebeeef417cee01c2b83502587a4eed42f4d05f2b3e4abc7b989f9fb28ae30c453035c')
+b2sums=('13773326f1734833ac59b7a80c499085dacb81dca83898ad3ca63cdc4a5418d8157c0f78aca7d4b973306457e9296ec8f6320b0045fa07f4c14eb8fe5a407f23')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build  --frozen --release
+  cargo build --frozen --release
 }
 
 package() {
