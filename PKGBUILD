@@ -2,14 +2,14 @@
 
 pkgbase=rime-flypy
 pkgname=('rime-flypy' 'fcitx5-flypy')
-pkgver=20240724
-pkgrel=3
+pkgver=20240827
+pkgrel=1
 arch=('x86_64')
 url="http://flypy.com/"
 license=('unknown')
 makedepends=('libime' 'librime' 'python' 'rime-prelude')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/cubercsl/rime-flypy/archive/v$pkgver.tar.gz")
-sha256sums=('3a285b7c68dd4929df58b608380a8707ed0bfabd31c219a56c2bda3c8acd02f0')
+sha256sums=('04fb5dd3ca6a09c13054405025827bcba50f34cb551dd28c4b692ee619a655dd')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
