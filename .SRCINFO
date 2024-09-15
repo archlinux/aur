@@ -8,8 +8,8 @@ pkgbase = apngasm-bin
 	depends = libpng
 	provides = apngasm
 	conflicts = apngasm
+	conflicts = apng-utils
 	source = apngasm-bin-2.91.zip::https://netix.dl.sourceforge.net/project/apngasm/2.91/apngasm-2.91-bin-linux.zip
 	sha256sums = 91f27aad17f8abc5bc197febd24cfa9dce081d280a8e60df1437139e74a93045
 
 pkgname = apngasm-bin
-
