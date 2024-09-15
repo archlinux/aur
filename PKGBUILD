@@ -20,7 +20,7 @@ _merge_requests_to_use=()
 _pkgname=gnome-shell
 pkgname=gnome-shell-performance-unstable
 pkgver=47.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -150,7 +150,7 @@ prepare() {
 build() {
   local meson_options=(
     -D gtk_doc=false
-    -D tests=disabled
+    -D tests=false
   )
 
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
