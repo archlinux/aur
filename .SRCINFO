@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-amd-full-git
 	pkgdesc = Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)
-	pkgver = 7.1.r116028.g1080116658
+	pkgver = 7.1.r117040.g3f84d1d1fb
 	pkgrel = 1
 	url = https://www.ffmpeg.org/
 	arch = x86_64
@@ -156,8 +156,8 @@ pkgbase = ffmpeg-amd-full-git
 	sha256sums = a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81
 	sha256sums = 59da61f2b2c556fbe0cdbf84bcc00977ee3d2447085decb21f6298226559f2aa
 	sha256sums = f3918985d0a156ceb2d05903500544eb1cf6df2ee950cbf6aa63718eb10f6abf
-	sha256sums = 67e87527ba853c2b59fa5efd9e116c157f0abb18a40e3bc55673cf0d98364923
-	sha256sums = e97272668cd16493e520f0188eea265e2372c98b3c09585781e7a453ddb5478f
+	sha256sums = c413f87df4ec496b0e8be705be407ee9c43f09a24ea14b01ea9688d5b410f0f0
+	sha256sums = 26419f819d1f3e4d0534995b73d05a8195bc7c892b74c37c3880085af027515b
 	sha256sums = 04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36
 
 pkgname = ffmpeg-amd-full-git
