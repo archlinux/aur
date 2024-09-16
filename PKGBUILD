@@ -1,4 +1,5 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
+# Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Zbyszek Tokarczyk <ztokarczyk (at) Gmail.com>
 
 pkgname=xfce4-notifyd-git
