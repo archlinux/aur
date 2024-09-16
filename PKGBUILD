@@ -8,7 +8,7 @@ pkgname=(
   'wxwidgets-qt5-light'
 )
 pkgver=3.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="wxWidgets suite for Base, Qt5 and GTK3 toolkits (GNOME/GStreamer free!)"
 arch=('x86_64')
 url='http://wxwidgets.org'
@@ -47,11 +47,14 @@ makedepends=(
   'cython'
   'nanosvg'
   'libxkbcommon'
+  'gettext'
 )
 source=(
   "wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
+  "install_locales_cmake.patch::https://github.com/MaartenBent/wxWidgets/commit/82b50732181a43b4a0a4f3cb6624bf95d05e7a0d.patch"
 )
 sha256sums=(
+  'SKIP'
   'SKIP'
 )
 options=('debug')
@@ -61,6 +64,7 @@ prepare() {
 
   git cherry-pick ed510012bac97f6ad1f3b776d1b13c37a987e83e -n # Fix undefined symbols in Qt build
   git cherry-pick 8ea22b5e92bf46add0b20059f6e39a938858ff97 -n # Avoid crash with GTK3 if console program is using a GUI wxApp
+  patch -p1 -i "${srcdir}/install_locales_cmake.patch"
 }
 
 build() {
@@ -80,9 +84,7 @@ build() {
     -DwxUSE_NANOSVG=sys \
     -DwxUSE_LIBMSPACK=ON \
     -DwxUSE_LIBSDL=ON \
-    -DwxUSE_STL=ON \
-    -DwxUSE_PRIVATE_FONTS=ON \
-    -DwxUSE_UNICODE_UTF8=ON
+    -DwxUSE_PRIVATE_FONTS=ON
 
   cmake --build build-base
 
@@ -102,13 +104,11 @@ build() {
     -DwxUSE_NANOSVG=sys \
     -DwxUSE_LIBMSPACK=ON \
     -DwxUSE_LIBSDL=ON \
-    -DwxUSE_STL=ON \
     -DwxUSE_MEDIACTRL=OFF \
     -DwxUSE_PRIVATE_FONTS=ON \
     -DwxUSE_GTKPRINT=ON \
     -DwxUSE_DETECT_SM=ON \
-    -DwxUSE_AUTOID_MANAGEMENT=ON \
-    -DwxUSE_UNICODE_UTF8=ON
+    -DwxUSE_AUTOID_MANAGEMENT=ON
 
   cmake --build build-gtk3
 
@@ -128,13 +128,11 @@ build() {
 #     -DwxUSE_NANOSVG=sys \
 #     -DwxUSE_LIBMSPACK=ON \
 #     -DwxUSE_LIBSDL=ON \
-#     -DwxUSE_STL=ON \
 #     -DwxUSE_MEDIACTRL=OFF \
 #     -DwxUSE_PRIVATE_FONTS=ON \
 #     -DwxUSE_GTKPRINT=ON \
 #     -DwxUSE_DETECT_SM=ON \
-#     -DwxUSE_AUTOID_MANAGEMENT=ON \
-#     -DwxUSE_UNICODE_UTF8=ON
+#     -DwxUSE_AUTOID_MANAGEMENT=ON
 
 #   cmake --build build-gtk4
 
@@ -154,20 +152,12 @@ build() {
     -DwxUSE_NANOSVG=sys \
     -DwxUSE_LIBMSPACK=ON \
     -DwxUSE_LIBSDL=ON \
-    -DwxUSE_STL=ON \
     -DwxUSE_MEDIACTRL=OFF \
     -DwxUSE_PRIVATE_FONTS=ON \
     -DwxUSE_DETECT_SM=ON \
-    -DwxUSE_AUTOID_MANAGEMENT=ON \
-    -DwxUSE_UNICODE_UTF8=ON
+    -DwxUSE_AUTOID_MANAGEMENT=ON
 
   cmake --build build-qt5
-
-  # Run configure to generate the Makefile, cmake doesn't install translations
-  cd wxwidgets
-  ./configure \
-    --prefix=/usr \
-    --disable-tests
 }
 
 package_wxwidgets-qt5-light() {
@@ -277,7 +267,6 @@ package_wxwidgets-gtk3-light() {
   rm -fr "${pkgdir}/usr/share/bakefile"
   rm -fr "${pkgdir}/usr/share/"{aclocal,locale}
 
-
   install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
@@ -355,8 +344,6 @@ package_wxwidgets-common-light() {
   rm -fr "${pkgdir}/usr/lib/wx/"3*
 
   install -Dm644 wxwidgets/wxwin.m4 -t "${pkgdir}/usr/share/aclocal"
-  # Install translations
-  make DESTDIR="${pkgdir}" -C wxwidgets locale_install
 
   install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxwidgets-common-light/LICENSE"
 }

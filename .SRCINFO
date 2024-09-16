@@ -1,7 +1,7 @@
 pkgbase = wxwidgets-light
 	pkgdesc = wxWidgets suite for Base, Qt5 and GTK3 toolkits (GNOME/GStreamer free!)
 	pkgver = 3.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wxwidgets.org
 	arch = x86_64
 	license = custom:wxWindows
@@ -37,8 +37,11 @@ pkgbase = wxwidgets-light
 	makedepends = cython
 	makedepends = nanosvg
 	makedepends = libxkbcommon
+	makedepends = gettext
 	options = debug
 	source = wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v3.2.6
+	source = install_locales_cmake.patch::https://github.com/MaartenBent/wxWidgets/commit/82b50732181a43b4a0a4f3cb6624bf95d05e7a0d.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = wxwidgets-common-light
