@@ -1,6 +1,6 @@
 pkgbase = power-options-webview-git
 	pkgdesc = A Web Renderer frontend for Power Options, a blazingly fast power management solution.
-	pkgver = 1.0.1r7.a77246
+	pkgver = 1.0.1r10.048512
 	pkgrel = 1
 	url = https://github.com/thealexdev23/power-options
 	arch = x86_64
