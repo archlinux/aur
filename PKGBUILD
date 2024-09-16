@@ -1,6 +1,6 @@
 pkgname=python-mypy-protobuf
-pkgver=3.5.0
-pkgrel=2
+pkgver=3.6.0
+pkgrel=1
 
 pkgdesc='Generate mypy stub files from protobuf specs'
 url='https://github.com/nipunn1313/mypy-protobuf'
@@ -12,7 +12,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 
 source=("https://files.pythonhosted.org/packages/source/m/mypy-protobuf/mypy-protobuf-$pkgver.tar.gz")
 
-sha256sums=('21f270da0a9792a9dac76b0df463c027e561664ab6973c59be4e4d064dfe67dc')
+sha256sums=('02f242eb3409f66889f2b1a3aa58356ec4d909cdd0f93115622e9e70366eca3c')
 
 build() {
   cd mypy-protobuf-$pkgver
