@@ -1,13 +1,14 @@
-# Maintainer: Marco Asa <marcoasa90[at]gmail[dot]com>
+# Maintainer: OSAMC <https://github.com/osam-cologne/archlinux-proaudio>
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Contributor: Marco Asa <marcoasa90[at]gmail[dot]com>
 
 pkgname=linux-show-player
-pkgver=0.6
+pkgver=0.6.4
 pkgrel=1
 pkgdesc='Cue player designed for stage productions'
 url='https://www.linux-show-player.org/'
 arch=(any)
-license=(GPL3)
+license=(GPL-3.0-only)
 depends=(gobject-introspection-runtime gst-plugins-good
          python-pyalsa python-appdirs python-falcon python-humanize
          python-pyliblo python-pyqt5 python-gobject python-mido
@@ -24,7 +25,7 @@ optdepends=(
 )
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FrancescoCeruti/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('bc98f0afc73519e32614d987072f22e0df09677979202b2625e45f6c63d39d9b')
+sha256sums=('9e90779b2509f6a1fe31c208d19e0500202bdf939695fe49ca97fb613d3b945e')
 
 build() {
   cd $pkgname-$pkgver

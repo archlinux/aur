@@ -1,11 +1,11 @@
 pkgbase = linux-show-player
 	pkgdesc = Cue player designed for stage productions
-	pkgver = 0.6
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://www.linux-show-player.org/
 	arch = any
 	groups = pro-audio
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry
@@ -31,7 +31,7 @@ pkgbase = linux-show-player
 	optdepends = python-jack-client: for JACK output support
 	optdepends = python-protobuf: for Art-Net timecode support
 	options = !emptydirs
-	source = linux-show-player-0.6.tar.gz::https://github.com/FrancescoCeruti/linux-show-player/archive/v0.6.tar.gz
-	sha256sums = bc98f0afc73519e32614d987072f22e0df09677979202b2625e45f6c63d39d9b
+	source = linux-show-player-0.6.4.tar.gz::https://github.com/FrancescoCeruti/linux-show-player/archive/v0.6.4.tar.gz
+	sha256sums = 9e90779b2509f6a1fe31c208d19e0500202bdf939695fe49ca97fb613d3b945e
 
 pkgname = linux-show-player
