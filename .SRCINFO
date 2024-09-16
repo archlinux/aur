@@ -1,6 +1,6 @@
 pkgbase = qdap-git
 	pkgdesc = cmsis-dap upper by a Qt
-	pkgver = r37.9e40fb0
+	pkgver = r38.e3bf1fe
 	pkgrel = 1
 	url = https://github.com/ma6254/QDAP
 	arch = x86_64
@@ -21,8 +21,6 @@ pkgbase = qdap-git
 	provides = qdap
 	conflicts = qdap
 	source = qdap-git::git+https://github.com/ma6254/QDAP.git
-	source = git+https://github.com/ma6254/qdap_chips
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = qdap-git
