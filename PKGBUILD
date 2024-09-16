@@ -3,7 +3,7 @@
 
 pkgname=lunarvim-git
 pkgver=1.4.0.r3.g85ccca97
-pkgrel=2
+pkgrel=3
 pkgdesc="An IDE layer for Neovim with sane defaults. Completely free and community driven."
 arch=('any')
 url='https://github.com/LunarVim/LunarVim'
@@ -31,11 +31,15 @@ install=${pkgname}.install
 source=("${pkgname}::git+https://github.com/LunarVim/LunarVim.git#branch=master"
   "git+https://github.com/nvim-treesitter/nvim-treesitter.git#branch=master"
   "init-lvim.sh"
-  "lvim")
+  "lvim"
+  "langs.lua")
 sha256sums=('SKIP'
             'SKIP'
             '292b573c40e8ccad72c70e6602496077835e1370122035685b6a88606004abe0'
-            'fe16e9974a8a4ee877d63e15f346c6f886c357e08c08a7e300e29092d5ec732a')
+            'fe16e9974a8a4ee877d63e15f346c6f886c357e08c08a7e300e29092d5ec732a'
+            '165e39c90fb14aa220b7e0c8082e6b95109f4302acede816ef572f9b5f951ff7')
+
+
 
 pkgver() {
   cd "${pkgname}"
@@ -46,8 +50,17 @@ build() {
   cd "${srcdir}/nvim-treesitter"
   runtime="${srcdir}/nvim-treesitter"
 
-  nvim --clean --cmd "set runtimepath+=${runtime}" --headless \
-    +"TSUpdateSync all" +qall
+  nvim --clean --cmd "set runtimepath+=${runtime}" -l ${srcdir}/langs.lua
+  
+  langs=$(<langs.txt)
+
+  for lang in ${langs[@]}; do
+    if [[ ! -e ${runtime}/parser/${lang}.so ]]; then
+      nvim --clean --cmd "set runtimepath+=${runtime}" --headless \
+        +"TSUpdateSync ${lang}" +qall
+      echo 
+    fi
+  done
 }
 
 package() {
