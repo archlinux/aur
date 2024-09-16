@@ -1,7 +1,7 @@
 # Maintainer: Razer <razer@neuf.fr>
 
 pkgname=python-django-celery-beat
-_pypi_pkgname=django-celery-beat
+_pypi_pkgname=django_celery_beat
 pkgver=2.7.0
 pkgrel=0
 pkgdesc="django-celery-beat enables you to store the periodic task schedule in the django database"

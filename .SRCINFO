@@ -13,7 +13,7 @@ pkgbase = python-django-celery-beat
 	depends = python-python-crontab
 	depends = python-django-timezone-field
 	depends = python-cron-descriptor
-	source = https://pypi.io/packages/source/d/django-celery-beat/django-celery-beat-2.7.0.tar.gz
+	source = https://pypi.io/packages/source/d/django_celery_beat/django_celery_beat-2.7.0.tar.gz
 	sha256sums = 8482034925e09b698c05ad61c36ed2a8dbc436724a3fe119215193a4ca6dc967
 
 pkgname = python-django-celery-beat
