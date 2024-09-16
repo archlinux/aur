@@ -2,18 +2,16 @@
 
 _pkgname="updatecli"
 pkgname="${_pkgname}-git"
-pkgver=0.80.0.r1.g93d2f27
+pkgver=0.84.0.r18.g8cafa82
 pkgrel=1
 pkgdesc="A declarative dependency management command line tool"
-arch=('any')
-url="https://www.${_pkgname}.io"
+arch=('x86_64')
+url="https://www.updatecli.io"
 _url="https://github.com/${_pkgname}/${_pkgname}"
 license=('Apache-2.0')
-depends=('glibc')
-makedepends=('git' 'make' 'go')
+makedepends=('git' 'go')
 # checkdepends=('docker')
-optdepends=('bash-completion: for shell auto-completion'
-            'zsh-completions: for shell auto-completion')
+depends=('glibc')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
@@ -27,9 +25,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  [ -d "build" ] || mkdir "build"
-  [ -d "completions" ] || mkdir "completions"
-  [ -d "manpages" ] || mkdir "manpages"
+  mkdir -p "build" "completions" "manpages"
 }
 
 build() {
@@ -39,7 +35,11 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o "build/${_pkgname}" .
+  go build -o "build/${_pkgname}" -ldflags "\
+    -X ${_url#https://}/pkg/core/version.BuildTime=$(date -u +"%Y-%m-%dT%H:%M:%SZ") \
+    -X ${_url#https://}/pkg/core/version.GoVersion=$(go version | awk '{print $3}') \
+    -X ${_url#https://}/pkg/core/version.Version=${pkgver}" \
+    .
 
   ./"scripts/manpages.sh"
   ./"scripts/completions.sh"
