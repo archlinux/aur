@@ -31,9 +31,7 @@ pkgbase = i3-rounded-border-patch
 	conflicts = i3-gaps
 	conflicts = i3-gaps-next-git
 	options = docs
-	source = git+https://github.com/i3/i3#branch=stable
-	source = rounded-border.patch
-	sha1sums = SKIP
+	source = git+https://github.com/dimkauzh/i3#branch=stable
 	sha1sums = SKIP
 
 pkgname = i3-rounded-border-patch

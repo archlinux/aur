@@ -17,13 +17,8 @@ makedepends=('git' 'bison' 'flex' 'asciidoc' 'xmlto' 'meson')
 optdepends=('i3lock: For locking your screen.'
 	'i3status: To display system information with a bar.')
 options=('docs')
-source=('git+https://github.com/i3/i3#branch=stable' 'rounded-border.patch')
-sha1sums=('SKIP' 'SKIP')
-
-prepare() {
-	cd "$srcdir/i3"
-	patch --forward --strip=1 --input="../rounded-border.patch"
-}
+source=('git+https://github.com/dimkauzh/i3#branch=stable')
+sha1sums=('SKIP')
 
 build() {
 	cd "i3"
