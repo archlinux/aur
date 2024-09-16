@@ -1,5 +1,5 @@
 # Maintainer: primordialhuman https://github.com/primordial-human
-pkgname=seanime-bin
+pkgname=seanime
 pkgver=2.1.1
 pkgrel=1
 pkgdesc="A self-hosted server that seamlessly integrates with your local anime collection with anilist integration."
