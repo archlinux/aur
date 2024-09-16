@@ -1,7 +1,7 @@
 pkgbase = osmo-iuh-git
 	pkgdesc = Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
 	pkgver = 1.6.0.r0.gbb71c57a
-	pkgrel = 1
+	pkgrel = 2
 	url = http://osmocom.org/projects/osmohnbgw
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = osmo-iuh-git
 	makedepends = python
 	depends = libosmocore-git
 	depends = libosmo-netif-git
-	depends = libosmo-sccp-git
+	depends = libosmo-sigtran-git
 	depends = libasn1c-git
 	depends = lksctp-tools
 	depends = talloc

@@ -3,14 +3,14 @@
 
 pkgname=osmo-iuh-git
 pkgver=1.6.0.r0.gbb71c57a
-pkgrel=1
+pkgrel=2
 pkgdesc="Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)"
 url="http://osmocom.org/projects/osmohnbgw"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('AGPL-3.0-or-later')
 depends=('libosmocore-git'
          'libosmo-netif-git'
-         'libosmo-sccp-git'
+         'libosmo-sigtran-git'
          'libasn1c-git'
          'lksctp-tools'
          'talloc')
