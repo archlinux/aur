@@ -2,7 +2,7 @@
 # Contributor: Frédéric Tobias Christ <dev+mautrix-signal@ntr.li> <ftchrist:matrix.org>
 pkgname='mautrix-signal'
 _name='signal'
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A Matrix-Signal puppeting bridge (go rewrite)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=(
   'go'
-  'libsignal-ffi=0.55.0' # AUR
+  'libsignal-ffi=0.57.1' # AUR
 )
 backup=(
   "etc/${pkgname}/config.yaml"
@@ -28,7 +28,7 @@ source=(
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles"
 )
-sha256sums=('e8b4658e2cc934290bd874abd918316808f0aec5e808b71d5e9c9ab48e312ddc'
+sha256sums=('110db8a443cd5c1aff02cc9153cd218c7d504a5df28b5bde8d15bad0c41c6253'
             'e9a6a88f7b08fa00b354c3d50ded995f5578e6a6b75b96988cc2b27432575ded'
             'b47c0829a9f285e0a4bd7852e601f325e1fa8385ea96eaa92cad204c0e583adf'
             '5badc8727dfbf4531f93e86ae475c64753952ee60090a043be22b9dd9a124ca5')
@@ -48,7 +48,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   MAUTRIX_VERSION=$(cat go.mod | grep 'maunium.net/go/mautrix ' | awk '{ print $2 }')
   GO_LDFLAGS="-X main.Tag=$pkgver -X 'main.BuildTime=`date '+%b %_d %Y, %H:%M:%S'`' -X 'maunium.net/go/mautrix.GoModVersion=$MAUTRIX_VERSION'"
-  go build -gcflags="$GO_GCFLAGS" -ldflags="$GO_LDFLAGS" -o mautrix-signal ./cmd/...
+  go build -gcflags="$GO_GCFLAGS" -ldflags="$GO_LDFLAGS" -o "$pkgname" ./cmd/...
   ./mautrix-signal --generate-example-config
 }
 
