@@ -10,7 +10,7 @@ license=('MPL2')
 depends=('python')
 optdepends=('espeak')
 makedepends=('python-setuptools' 'python-sphinx')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v.$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('e47cc9a5d4288d6634fa676f36a581c8d5657f15b86de4dcc45a63e12fa31b27')
 
 build() {
