@@ -1,6 +1,6 @@
 pkgbase = feroxbuster-bin
 	pkgdesc = A fast, simple, recursive content discovery tool written in Rust
-	pkgver = 2.10.4
+	pkgver = 2.11.0
 	pkgrel = 1
 	url = https://github.com/epi052/feroxbuster
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = feroxbuster-bin
 	provides = feroxbuster
 	conflicts = feroxbuster
 	conflicts = feroxbuster-git
-	source = feroxbuster-bin-2.10.4.tar.gz::https://github.com/epi052/feroxbuster/releases/download/v2.10.4/x86_64-linux-feroxbuster.tar.gz
-	b2sums = 16576c58f5038c4dc05cec038ed30bc199e7d93e6d62003516058da9dad279e2e17f56ec6e0ea6072a71ff0ad70f988cc7703f60a2103b2778f8fda0d9a7f515
+	source = feroxbuster-bin-2.11.0.tar.gz::https://github.com/epi052/feroxbuster/releases/download/v2.11.0/x86_64-linux-feroxbuster.tar.gz
+	b2sums = dc3e5ab08fb1a42f1933fc84326a89804c901a35142d27b4b7751e46ae033237f996ac2f493b76ea8229103c398334371cd620b05c07db33886e84af206b8722
 
 pkgname = feroxbuster-bin
