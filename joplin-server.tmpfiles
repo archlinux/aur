@@ -1,0 +1,6 @@
+d /var/lib/joplin-server 0700 joplin-server joplin-server
+d /opt/joplin-server/server/temp 0700 joplin-server joplin-server
+d /opt/joplin-server/server/logs 0700 joplin-server joplin-server
+d /opt/joplin-server/server/.pm2 0700 joplin-server joplin-server
+
+

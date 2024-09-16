@@ -1,0 +1,35 @@
+pkgbase = joplin-server
+	pkgdesc = Joplin Server for self-hosting Joplin Notes
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/laurent22/joplin/tree/dev/packages/server
+	arch = x86_64
+	arch = i686
+	license = Custom
+	makedepends = git
+	makedepends = npm
+	makedepends = yarn
+	makedepends = python
+	makedepends = rsync
+	makedepends = jq
+	makedepends = yq
+	makedepends = libgsf
+	makedepends = node-gyp>=9.4.1
+	makedepends = python-setuptools
+	depends = nodejs>=20.15.0
+	depends = nss
+	depends = rsync
+	depends = pm2
+	backup = etc/joplin-server.env
+	source = joplin-3.0.1.tar.gz::https://github.com/laurent22/joplin/archive/refs/tags/server-v3.0.1.tar.gz
+	source = joplin-server.service
+	source = joplin-server.sysusers
+	source = joplin-server.tmpfiles
+	source = joplin-server.env
+	sha256sums = 9d48e7b4e84831987dc54ed94b92881da3b283d6dd4f83cedcf6512c26d54cbc
+	sha256sums = 025f5eb7fee8bf7526d326050ba59a93dfdc1aed2b0770434b421b7c61f04a1c
+	sha256sums = 819b3cb48f9e624b8613753844981fd391b66b826c984fc95005de62ad9659b5
+	sha256sums = 92bd0dea2d8f8160e25ed2811cc3806f5d95568c6557d6ef0c8afda620caac7b
+	sha256sums = 2384fed0f14940b5c2ebb318786d1a45a8aa9762ee46f8af5dc2dbd25cc2b1b7
+
+pkgname = joplin-server
