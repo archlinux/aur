@@ -1,4 +1,5 @@
-# Maintainer : Eragon <eragon at eragon dot re>
+# Maintainer: Julian Stauffer <julian.stauffer.js@gmail.com>
+# Contributor: Eragon <eragon at eragon dot re>
 
 pkgname=manyverse-bin
 _pkgname=manyverse
