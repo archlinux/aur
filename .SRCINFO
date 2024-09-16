@@ -1,0 +1,12 @@
+pkgbase = cuniq
+	pkgdesc = Command line tool that counts unique lines FAST
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/zkxs/cuniq
+	arch = x86_64
+	license = GPL-3.0
+	provides = cuniq
+	source = cuniq-1.0.3::https://github.com/zkxs/cuniq/releases/download/1.0.3/cuniq-linux
+	sha256sums = f55acb38b7cd4626cd49ce0220c53818cc9d011cf6657f77dd239fb202bb1d87
+
+pkgname = cuniq
