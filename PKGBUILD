@@ -2,12 +2,13 @@
 
 pkgname=cashshuffle
 pkgver=0.6.20
-pkgrel=0
+pkgrel=1
 pkgdesc="CashShuffle server for BCH."
 arch=('i686' 'x86_64')
 url="http://github.com/cashshuffle/cashshuffle"
 license=('MIT')
 makedepends=('go' 'git')
+depends=('glibc')
 options=('!strip' '!emptydirs')
 provides=("${pkgname}")
 source=("https://github.com/cashshuffle/${pkgname}/archive/v${pkgver}.tar.gz")
