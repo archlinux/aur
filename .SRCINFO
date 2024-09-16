@@ -1,7 +1,7 @@
 pkgbase = openafs-modules-dkms
 	pkgdesc = Kernel module for OpenAFS (dkms)
 	pkgver = 1.8.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openafs.org
 	arch = i686
 	arch = x86_64
@@ -9,15 +9,23 @@ pkgbase = openafs-modules-dkms
 	license = IPL-1.0
 	depends = dkms
 	depends = libelf
-	depends = openafs
+	depends = openafs>=1.8.12.1-2
 	provides = openafs-modules=1.8.12.1
 	conflicts = openafs-features-libafs
 	conflicts = openafs-modules
 	conflicts = openafs<1.6.6-2
 	options = !emptydirs
 	source = http://openafs.org/dl/openafs/1.8.12.1/openafs-1.8.12.1-src.tar.bz2
+	source = 0001-rx-Define-symbolic-names-for-Rx-magic-numbers.patch
+	source = 0002-opr-replace-MIN-MAX-macros-with-opr_min-opr_max.patch
+	source = 0003-Remove-MIN-and-MAX-macro-definitions.patch
+	source = 0004-rx-Remove-includes-for-MIN-MAX-in-rx_packet.h.patch
 	source = dkms.conf
 	sha256sums = dfe2f39bef9fb3d6791d602e725be7c34b885e4299018266ff9743cb401e594a
+	sha256sums = 89858ec91fb7cef85f7996c2eeeeb087a7996ed5d902ae4e3ac668e086753b05
+	sha256sums = 247fbe76610056123525b11511f4a426913c7ee61b59f88fdbc0871239af9a94
+	sha256sums = 9b3cac93406f13b3c1ad41c424c43e4df2c997ba9af68e8b73caf3db7e4df42f
+	sha256sums = a7c4eb9dec81628459783705ceee531b29a81c254298e84c89cdc99e6c77729e
 	sha256sums = 5ea5e184f9b44f5ed45817d2b5a10149d15c8c54f49e0b5b4b773652673cb9b0
 
 pkgname = openafs-modules-dkms

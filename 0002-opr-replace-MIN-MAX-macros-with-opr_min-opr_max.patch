@@ -1,0 +1,1545 @@
+From fc95bb974bf35e7a43d76b0ac7883671b550e01f Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Mon, 9 Sep 2024 13:15:47 -0600
+Subject: [PATCH 2/4] opr: replace MIN/MAX macros with opr_min/opr_max
+
+Introduce new macros, opr_min() and opr_max(), to avoid collisions with
+existing MIN()/MAX() macros defined elsewhere.
+
+Within OpenAFS, the MIN/MAX macros are defined in the platform specific
+param.h include file.  This same file is where AFS_{platform}_ENV is
+defined, which is used throughout the OpenAFS source to determine which
+platform specific headers are to be used.  This can lead to collisions
+if platform provided headers define MIN or MAX.
+
+Introduce opr_min and opr_max, using the same definitions that have been
+used for MIN and MAX.  Put the definitions in opr.h, which is already
+included in most of the code that uses the MIN or MAX macros.
+
+Replace all uses of MIN and MAX with opr_min and opr_max.
+
+Add or move the include for afs/opr.h as needed.
+
+Note, this commit does not replace the min()/max() macros.
+
+A later commit will remove the defines for MIN and MAX (which will
+correct a Linux 6.11 build failure due to a collision).
+
+Reviewed-on: https://gerrit.openafs.org/15813
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+(cherry picked from commit 915c5cff168344797e011ee81913d4026c0cea80)
+
+[Backport: Move opr.h include in src/rx/rx.c. The MIN/MAX macros are
+still present in the deprecated afsweb component.]
+
+Change-Id: I05fa833e00f31f07af55cebeb00a996a280bdcef
+---
+ src/afs/AIX/osi_groups.c          |  3 +-
+ src/afs/DARWIN/osi_groups.c       |  3 +-
+ src/afs/DARWIN/osi_vnodeops.c     |  3 +-
+ src/afs/FBSD/osi_groups.c         |  3 +-
+ src/afs/HPUX/osi_groups.c         |  3 +-
+ src/afs/HPUX/osi_vnodeops.c       |  9 ++--
+ src/afs/IRIX/osi_groups.c         |  3 +-
+ src/afs/IRIX/osi_vnodeops.c       | 13 ++---
+ src/afs/NBSD/osi_groups.c         |  3 +-
+ src/afs/NBSD/osi_vnodeops.c       |  3 +-
+ src/afs/OBSD/osi_groups.c         |  3 +-
+ src/afs/UKERNEL/afs_usrops.c      |  3 +-
+ src/afs/VNOPS/afs_vnop_strategy.c |  3 +-
+ src/afs/VNOPS/afs_vnop_write.c    |  3 +-
+ src/afs/afs_call.c                |  5 +-
+ src/lwp/iomgr.c                   |  2 +-
+ src/opr/opr.h                     |  3 ++
+ src/rx/AIX/rx_knet.c              |  7 +--
+ src/rx/DARWIN/rx_knet.c           |  7 +--
+ src/rx/FBSD/rx_knet.c             |  7 +--
+ src/rx/IRIX/rx_knet.c             |  8 ++--
+ src/rx/SOLARIS/rx_knet.c          | 13 ++---
+ src/rx/rx.c                       | 79 +++++++++++++++----------------
+ src/rx/rx_getaddr.c               |  8 ++--
+ src/rx/rx_globals.h               |  2 +-
+ src/rx/rx_kcommon.c               | 37 ++++++++-------
+ src/rx/rx_packet.c                | 35 +++++++-------
+ src/rx/rx_packet.h                |  2 +-
+ src/rx/rx_rdwr.c                  | 22 ++++-----
+ src/rx/rx_user.c                  | 28 +++++------
+ src/rxkad/crypt_conn.c            |  6 +--
+ src/rxkad/rxkad_client.c          |  3 +-
+ 32 files changed, 178 insertions(+), 154 deletions(-)
+
+diff --git a/src/afs/AIX/osi_groups.c b/src/afs/AIX/osi_groups.c
+index 2ef317f42..219dd6db7 100644
+--- a/src/afs/AIX/osi_groups.c
++++ b/src/afs/AIX/osi_groups.c
+@@ -19,6 +19,7 @@
+ 
+ #include "afs/sysincludes.h"
+ #include "afsincludes.h"
++#include "afs/opr.h"
+ #include "afs/afs_stats.h"	/* statistics */
+ 
+ 
+@@ -130,7 +131,7 @@ afs_getgroups(struct ucred *cred, int ngroups, gid_t * gidset)
+     gidset[0] = gidset[1] = 0;
+     AFS_STATCNT(afs_getgroups);
+ 
+-    savengrps = ngrps = MIN(ngroups, cred->cr_ngrps);
++    savengrps = ngrps = opr_min(ngroups, cred->cr_ngrps);
+     gp = cred->cr_groups;
+     while (ngrps--)
+ 	*gidset++ = *gp++;
+diff --git a/src/afs/DARWIN/osi_groups.c b/src/afs/DARWIN/osi_groups.c
+index 11e65e378..5899c7287 100644
+--- a/src/afs/DARWIN/osi_groups.c
++++ b/src/afs/DARWIN/osi_groups.c
+@@ -18,6 +18,7 @@
+ #include "afs/param.h"
+ #include "afs/sysincludes.h"
+ #include "afsincludes.h"
++#include "afs/opr.h"
+ #include "afs/afs_stats.h"	/* statistics */
+ 
+ /* We should be doing something better anyway */
+@@ -122,7 +123,7 @@ afs_getgroups(struct ucred *cred, int ngroups, gid_t * gidset)
+     gid_t *gp;
+ 
+     AFS_STATCNT(afs_getgroups);
+-    savengrps = ngrps = MIN(ngroups, cred->cr_ngroups);
++    savengrps = ngrps = opr_min(ngroups, cred->cr_ngroups);
+     gp = cred->cr_groups;
+     while (ngrps--)
+ 	*gidset++ = *gp++;
+diff --git a/src/afs/DARWIN/osi_vnodeops.c b/src/afs/DARWIN/osi_vnodeops.c
+index b903cc7c4..a92ed5358 100644
+--- a/src/afs/DARWIN/osi_vnodeops.c
++++ b/src/afs/DARWIN/osi_vnodeops.c
+@@ -8,6 +8,7 @@
+ #include <afs/sysincludes.h>	/* Standard vendor system headers */
+ #include <afsincludes.h>	/* Afs-based standard headers */
+ #include <afs/afs_stats.h>	/* statistics */
++#include <afs/opr.h>
+ #include <sys/malloc.h>
+ #include <sys/namei.h>
+ #include <sys/ubc.h>
+@@ -2103,7 +2104,7 @@ afs_vop_cmap(ap)
+ 				 * } */ *ap;
+ {
+     *ap->a_bpn = (daddr_t) (ap->a_foffset / DEV_BSIZE);
+-    *ap->a_run = MAX(ap->a_size, AFS_CHUNKSIZE(ap->a_foffset));
++    *ap->a_run = opr_max(ap->a_size, AFS_CHUNKSIZE(ap->a_foffset));
+     return 0;
+ }
+ #endif
+diff --git a/src/afs/FBSD/osi_groups.c b/src/afs/FBSD/osi_groups.c
+index 6326f6c90..2267550bf 100644
+--- a/src/afs/FBSD/osi_groups.c
++++ b/src/afs/FBSD/osi_groups.c
+@@ -22,6 +22,7 @@
+ 
+ #include "afs/sysincludes.h"
+ #include "afsincludes.h"
++#include "afs/opr.h"
+ #include "afs/afs_stats.h"	/* statistics */
+ 
+ static int
+@@ -106,7 +107,7 @@ afs_getgroups(struct ucred *cred, int ngroups, gid_t * gidset)
+     gid_t *gp;
+ 
+     AFS_STATCNT(afs_getgroups);
+-    savengrps = ngrps = MIN(ngroups, cred->cr_ngroups);
++    savengrps = ngrps = opr_min(ngroups, cred->cr_ngroups);
+     gp = cred->cr_groups;
+     while (ngrps--)
+ 	*gidset++ = *gp++;
+diff --git a/src/afs/HPUX/osi_groups.c b/src/afs/HPUX/osi_groups.c
+index 8d6d9dbd7..c3b024c23 100644
+--- a/src/afs/HPUX/osi_groups.c
++++ b/src/afs/HPUX/osi_groups.c
+@@ -19,6 +19,7 @@
+ 
+ #include "afs/sysincludes.h"
+ #include "afsincludes.h"
++#include "afs/opr.h"
+ #include "afs/afs_stats.h"	/* statistics */
+ 
+ static int
+@@ -104,7 +105,7 @@ afs_getgroups(struct ucred *cred, int ngroups, gid_t * gidset)
+ 	if (gp[-1] != NOGROUP)
+ 	    break;
+     }
+-    savengrps = ngrps = MIN(ngroups, gp - cred->cr_groups);
++    savengrps = ngrps = opr_min(ngroups, gp - cred->cr_groups);
+     for (gp = cred->cr_groups; ngrps--;)
+ 	*gidset++ = *gp++;
+     return savengrps;
+diff --git a/src/afs/HPUX/osi_vnodeops.c b/src/afs/HPUX/osi_vnodeops.c
+index b54bf1a25..711cae8e0 100644
+--- a/src/afs/HPUX/osi_vnodeops.c
++++ b/src/afs/HPUX/osi_vnodeops.c
+@@ -15,6 +15,7 @@
+ 
+ #include "afs/sysincludes.h"	/* Standard vendor system headers */
+ #include "afsincludes.h"	/* Afs-based standard headers */
++#include "afs/opr.h"
+ #include "afs/afs_stats.h"	/* statistics stuff */
+ 
+ #include <sys/uio.h>
+@@ -87,7 +88,7 @@ m_cpytoc(m, off, len, cp)
+     if (m == NULL)
+ 	return (len);
+ 
+-    ml = MIN(len, m->m_len - off);
++    ml = opr_min(len, m->m_len - off);
+     memcpy(cp, mtod(m, caddr_t) + off, (u_int) ml);
+     cp += ml;
+     len -= ml;
+@@ -720,8 +721,8 @@ afspgin_setup_io_ranges(vfspage_t * vm_info, pgcnt_t bpages, k_off_t isize,
+ 
+     maxpage = startindex + (bpages - (startindex + file_offset) % bpages);
+     maxpage = vm_reset_maxpage(vm_info, maxpage);
+-    maxpage = MIN(maxpage, (pgcnt_t) btorp(isize) - file_offset);
+-    maxpage = MIN(maxpage, startindex + maxpagein);
++    maxpage = opr_min(maxpage, (pgcnt_t) btorp(isize) - file_offset);
++    maxpage = opr_min(maxpage, startindex + maxpagein);
+     multio_maxpage = maxpage = vm_maxpage(vm_info, maxpage);
+ 
+     if (!maxpage)
+@@ -753,7 +754,7 @@ afspgin_setup_io_ranges(vfspage_t * vm_info, pgcnt_t bpages, k_off_t isize,
+ 	maxpage = startindex + count;
+ 	VASSERT(maxpage <= startindex + maxpagein);
+ 	minpage = startindex - (startindex + file_offset) % bpages;
+-	minpage = MAX(minpage, maxpage - maxpagein);
++	minpage = opr_max(minpage, maxpage - maxpagein);
+ 	VASSERT(startindex >= VM_BASE_OFFSET(vm_info));
+ 	minpage = vm_minpage(vm_info, minpage);
+ 	VASSERT(minpage <= startindex);
+diff --git a/src/afs/IRIX/osi_groups.c b/src/afs/IRIX/osi_groups.c
+index 208ddcde5..d3f8b3347 100644
+--- a/src/afs/IRIX/osi_groups.c
++++ b/src/afs/IRIX/osi_groups.c
+@@ -21,6 +21,7 @@
+ 
+ #include "afs/sysincludes.h"
+ #include "afsincludes.h"
++#include "afs/opr.h"
+ #include "afs/afs_stats.h"	/* statistics */
+ 
+ 
+@@ -229,7 +230,7 @@ afs_getgroups(struct ucred *cred, int ngroups, gid_t * gidset)
+ 
+     gidset[0] = gidset[1] = 0;
+     AFS_STATCNT(afs_getgroups);
+-    savengrps = ngrps = MIN(ngroups, cred->cr_ngroups);
++    savengrps = ngrps = opr_min(ngroups, cred->cr_ngroups);
+     gp = cred->cr_groups;
+     while (ngrps--)
+ 	*gidset++ = *gp++;
+diff --git a/src/afs/IRIX/osi_vnodeops.c b/src/afs/IRIX/osi_vnodeops.c
+index 1d4a26cff..da0df46c4 100644
+--- a/src/afs/IRIX/osi_vnodeops.c
++++ b/src/afs/IRIX/osi_vnodeops.c
+@@ -16,6 +16,7 @@
+ 
+ #include "afs/sysincludes.h"	/* Standard vendor system headers */
+ #include "afsincludes.h"	/* Afs-based standard headers */
++#include "afs/opr.h"
+ #include "afs/afs_stats.h"	/* statistics */
+ #include "sys/flock.h"
+ #include "afs/nfsclient.h"
+@@ -408,7 +409,7 @@ afsrwvp(struct vcache *avc, struct uio *uio, enum uio_rw rw,
+ 	    /*
+ 	     * compute minimum of rest of block and rest of file
+ 	     */
+-	    cnt = MIN(bsize - off, rem);
++	    cnt = opr_min(bsize - off, rem);
+ 	    osi_Assert((off + cnt) <= bsize);
+ 	    bsize = ctob(btoc(off + cnt));
+ 	    len = BTOBBT(bsize);
+@@ -417,7 +418,7 @@ afsrwvp(struct vcache *avc, struct uio *uio, enum uio_rw rw,
+ 	    bmv[0].length = len;
+ 	    bmv[0].bsize = bsize;
+ 	    bmv[0].pboff = off;
+-	    bmv[0].pbsize = MIN(cnt, uio->uio_resid);
++	    bmv[0].pbsize = opr_min(cnt, uio->uio_resid);
+ 	    bmv[0].eof = 0;
+ 	    bmv[0].pbdev = vp->v_rdev;
+ 	    bmv[0].pmp = uio->uio_pmp;
+@@ -439,7 +440,7 @@ afsrwvp(struct vcache *avc, struct uio *uio, enum uio_rw rw,
+ 		    bsize = AFSBSIZE;
+ 		    bmv[1].bn = bmv[1].offset = bn + len;
+ 		    osi_Assert((BBTOB(bn + len) % bsize) == 0);
+-		    acnt = MIN(bsize, rem);
++		    acnt = opr_min(bsize, rem);
+ 		    bsize = ctob(btoc(acnt));
+ 		    len = BTOBBT(bsize);
+ 		    nmaps = 2;
+@@ -500,7 +501,7 @@ afsrwvp(struct vcache *avc, struct uio *uio, enum uio_rw rw,
+ 	    }
+ 	    counter++;
+ 
+-	    cnt = MIN(bsize - off, uio->uio_resid);
++	    cnt = opr_min(bsize - off, uio->uio_resid);
+ 	    bsize = ctob(btoc(off + cnt));
+ 	    len = BTOBBT(bsize);
+ 	    bmv[0].bn = bn;
+@@ -637,7 +638,7 @@ OSI_VC_DECL(avc);
+     if (rem <= 0)
+ 	cnt = 0;		/* EOF */
+     else
+-	cnt = MIN(bsize - off, rem);
++	cnt = opr_min(bsize - off, rem);
+ 
+     /*
+      * It is benign to ignore *nbmv > 1, since it is only for requesting
+@@ -650,7 +651,7 @@ OSI_VC_DECL(avc);
+      */
+     osi_Assert((off + cnt) <= bsize);
+     bsize = ctob(btoc(off + cnt));
+-    bmv->pbsize = MIN(cnt, count);
++    bmv->pbsize = opr_min(cnt, count);
+     bmv->eof = 0;
+     bmv->pmp = NULL;
+     bmv->pbdev = avc->v.v_rdev;
+diff --git a/src/afs/NBSD/osi_groups.c b/src/afs/NBSD/osi_groups.c
+index 78b80e70b..9ee543932 100644
+--- a/src/afs/NBSD/osi_groups.c
++++ b/src/afs/NBSD/osi_groups.c
+@@ -21,6 +21,7 @@
+ 
+ #include "afs/sysincludes.h"
+ #include "afs/afsincludes.h"
++#include "afs/opr.h"
+ #include "afs/afs_stats.h"	/* statistics */
+ #include "sys/syscallargs.h"
+ 
+@@ -106,7 +107,7 @@ osi_getgroups(afs_ucred_t *cred, int ngroups, gid_t *gidset)
+ {
+     AFS_STATCNT(afs_getgroups);
+ 
+-    ngroups = MIN(kauth_cred_ngroups(cred), ngroups);
++    ngroups = opr_min(kauth_cred_ngroups(cred), ngroups);
+ 
+     kauth_cred_getgroups(cred, gidset, ngroups, UIO_SYSSPACE);
+     return ngroups;
+diff --git a/src/afs/NBSD/osi_vnodeops.c b/src/afs/NBSD/osi_vnodeops.c
+index 2dc0a9b0c..f6c604919 100644
+--- a/src/afs/NBSD/osi_vnodeops.c
++++ b/src/afs/NBSD/osi_vnodeops.c
+@@ -100,6 +100,7 @@ NONINFRINGEMENT.
+ 
+ #include "afs/sysincludes.h"	/* Standard vendor system headers */
+ #include "afs/afsincludes.h"	/* Afs-based standard headers */
++#include "afs/opr.h"
+ #include "afs/afs_stats.h"	/* statistics */
+ 
+ #include <sys/malloc.h>
+@@ -206,7 +207,7 @@ static void
+ afs_nbsd_gop_size(struct vnode *vp, off_t size, off_t *eobp, int flags)
+ {
+ 
+-	*eobp = MAX(size, vp->v_size);
++	*eobp = opr_max(size, vp->v_size);
+ }
+ 
+ static int
+diff --git a/src/afs/OBSD/osi_groups.c b/src/afs/OBSD/osi_groups.c
+index e26088f19..208e5a744 100644
+--- a/src/afs/OBSD/osi_groups.c
++++ b/src/afs/OBSD/osi_groups.c
+@@ -21,6 +21,7 @@
+ 
+ #include "afs/sysincludes.h"
+ #include "afs/afsincludes.h"
++#include "afs/opr.h"
+ #include "afs/afs_stats.h"	/* statistics */
+ #include "sys/syscallargs.h"
+ 
+@@ -115,7 +116,7 @@ afs_getgroups(struct ucred *cred, int ngroups, gid_t * gidset)
+     gid_t *gp;
+ 
+     AFS_STATCNT(afs_getgroups);
+-    savengrps = ngrps = MIN(ngroups, cred->cr_ngroups);
++    savengrps = ngrps = opr_min(ngroups, cred->cr_ngroups);
+     gp = cred->cr_groups;
+     while (ngrps--)
+ 	*gidset++ = *gp++;
+diff --git a/src/afs/UKERNEL/afs_usrops.c b/src/afs/UKERNEL/afs_usrops.c
+index 2d11b445a..a6ca52a79 100644
+--- a/src/afs/UKERNEL/afs_usrops.c
++++ b/src/afs/UKERNEL/afs_usrops.c
+@@ -30,6 +30,7 @@
+ #include "afs/afs_bypasscache.h"
+ #include "rx/rx_globals.h"
+ #include "afsd/afsd.h"
++#include "afs/opr.h"
+ 
+ #define VFS 1
+ #undef	VIRTUE
+@@ -276,7 +277,7 @@ usr_uiomove(char *kbuf, int n, int rw, struct usr_uio *uio)
+      */
+     ptr = kbuf;
+     while (nio > 0 && n > 0) {
+-	len = MIN(n, iovp->iov_len);
++	len = opr_min(n, iovp->iov_len);
+ 	if (rw == UIO_READ) {
+ 	    memcpy(iovp->iov_base, ptr, len);
+ 	} else {
+diff --git a/src/afs/VNOPS/afs_vnop_strategy.c b/src/afs/VNOPS/afs_vnop_strategy.c
+index c4296bb6f..4aeb87a4a 100644
+--- a/src/afs/VNOPS/afs_vnop_strategy.c
++++ b/src/afs/VNOPS/afs_vnop_strategy.c
+@@ -24,6 +24,7 @@
+ #include "afs/afs_cbqueue.h"
+ #include "afs/nfsclient.h"
+ #include "afs/afs_osidnlc.h"
++#include "afs/opr.h"
+ 
+ 
+ 
+@@ -177,7 +178,7 @@ int afs_ustrategy(struct buf *abp)
+ 	 * XXX It this really right? Ideally we should always write block size multiple
+ 	 * and not any arbitrary size, right? XXX
+ 	 */
+-	len = MIN(len, tvc->f.m.Length - dbtob(abp->b_blkno));
++	len = opr_min(len, tvc->f.m.Length - dbtob(abp->b_blkno));
+ #endif
+ 	tuio.afsio_resid = len;
+ #if defined(AFS_NBSD40_ENV) || defined(FBSD_STRUCT_BUF_NO_SAVEADDR)
+diff --git a/src/afs/VNOPS/afs_vnop_write.c b/src/afs/VNOPS/afs_vnop_write.c
+index 3479348e1..c206a0394 100644
+--- a/src/afs/VNOPS/afs_vnop_write.c
++++ b/src/afs/VNOPS/afs_vnop_write.c
+@@ -26,6 +26,7 @@
+ #include "afs/afs_cbqueue.h"
+ #include "afs/nfsclient.h"
+ #include "afs/afs_osidnlc.h"
++#include "afs/opr.h"
+ 
+ 
+ extern unsigned char *afs_indexFlags;
+@@ -250,7 +251,7 @@ afs_write(struct vcache *avc, struct uio *auio, int aio,
+ 	 */
+ 	osi_Assert(filePos <= avc->f.m.Length);
+ 	diff = avc->f.m.Length - filePos;
+-	AFS_UIO_SETRESID(auio, MIN(totalLength, diff));
++	AFS_UIO_SETRESID(auio, opr_min(totalLength, diff));
+ 	totalLength = AFS_UIO_RESID(auio);
+     }
+ #else
+diff --git a/src/afs/afs_call.c b/src/afs/afs_call.c
+index 4ac63b187..45b3f55eb 100644
+--- a/src/afs/afs_call.c
++++ b/src/afs/afs_call.c
+@@ -18,6 +18,7 @@
+ #include "afsincludes.h"	/* Afs-based standard headers */
+ #include "afs/afs_stats.h"
+ #include "rx/rx_globals.h"
++#include "afs/opr.h"
+ #if !defined(UKERNEL)
+ # if defined(AFS_LINUX_ENV)
+ #  include "osi_compat.h"
+@@ -968,9 +969,9 @@ afs_syscall_call(long parm, long parm2, long parm3,
+ 	    if (mvParam->reqtype == AFS_USPC_UMV) {
+ 		/* don't copy out random kernel memory */
+ 		AFS_COPYOUT(param2, AFSKPTR(parm4),
+-			    MIN(namebufsz, strlen((char *)param2)+1), code);
++			    opr_min(namebufsz, strlen((char *)param2)+1), code);
+ 		AFS_COPYOUT(param1, AFSKPTR(parm3),
+-			    MIN(namebufsz, strlen((char *)param1)+1), code);
++			    opr_min(namebufsz, strlen((char *)param1)+1), code);
+ 	    }
+ 	    AFS_COPYOUT((caddr_t)mvParam, AFSKPTR(parm2),
+ 		       sizeof(struct afs_uspc_param), code);
+diff --git a/src/lwp/iomgr.c b/src/lwp/iomgr.c
+index 1251d06ca..2c88b56a9 100644
+--- a/src/lwp/iomgr.c
++++ b/src/lwp/iomgr.c
+@@ -601,7 +601,7 @@ static void SignalIO(int fds, fd_set *readfds, fd_set *writefds,
+ 	struct IoRequest *req;
+ 	PROCESS pid;
+ 	req = (struct IoRequest *) r -> BackPointer;
+-	nfds = MIN(fds, req->nfds);
++	nfds = opr_min(fds, req->nfds);
+ 	if (FDSetCmp(nfds, req->readfds, readfds) ||
+ 	    FDSetCmp(nfds, req->writefds, writefds) ||
+ 	    FDSetCmp(nfds, req->exceptfds, exceptfds)) {
+diff --git a/src/opr/opr.h b/src/opr/opr.h
+index aae17e3cb..6bb2dc8b7 100644
+--- a/src/opr/opr.h
++++ b/src/opr/opr.h
+@@ -21,6 +21,9 @@ extern void opr_NTAbort(void);
+ # define opr_abort() abort()
+ #endif
+ 
++#define opr_min(a, b) ((a) < (b) ? (a) : (b))
++#define opr_max(a, b) ((a) > (b) ? (a) : (b))
++
+ extern void opr_AssertionFailed(const char *, int) AFS_NORETURN;
+ extern void opr_AssertFailU(const char *, const char *, int) AFS_NORETURN;
+ 
+diff --git a/src/rx/AIX/rx_knet.c b/src/rx/AIX/rx_knet.c
+index 5f47ff631..740be552d 100644
+--- a/src/rx/AIX/rx_knet.c
++++ b/src/rx/AIX/rx_knet.c
+@@ -9,6 +9,7 @@
+ 
+ #include <afsconfig.h>
+ #include "afs/param.h"
++#include "afs/opr.h"
+ 
+ 
+ #ifdef AFS_AIX41_ENV
+@@ -406,9 +407,9 @@ osi_NetSend(osi_socket asocket, struct sockaddr_in *addr, struct iovec *dvec,
+ 	}
+ 	/* now compute usable size */
+ 	if (M_HASCL(m)) {
+-	    len = MIN(m->m_ext.ext_size, asize);
++	    len = opr_min(m->m_ext.ext_size, asize);
+ 	} else {
+-	    len = MIN(mlen, asize);
++	    len = opr_min(mlen, asize);
+ 	}
+ 
+ 	tpa = mtod(m, caddr_t);
+@@ -416,7 +417,7 @@ osi_NetSend(osi_socket asocket, struct sockaddr_in *addr, struct iovec *dvec,
+ 	mp = &m->m_next;
+ 	m->m_len = 0;
+ 	while (len) {
+-	    rlen = MIN(len, tl);
++	    rlen = opr_min(len, tl);
+ 	    memcpy(tpa, tdata, rlen);
+ 	    asize -= rlen;
+ 	    len -= rlen;
+diff --git a/src/rx/DARWIN/rx_knet.c b/src/rx/DARWIN/rx_knet.c
+index 405e35312..99bba8dc9 100644
+--- a/src/rx/DARWIN/rx_knet.c
++++ b/src/rx/DARWIN/rx_knet.c
+@@ -9,6 +9,7 @@
+ 
+ #include <afsconfig.h>
+ #include "afs/param.h"
++#include "afs/opr.h"
+ 
+ #ifdef AFS_SOCKPROXY_ENV
+ # include <afs/afs_args.h>
+@@ -716,7 +717,7 @@ rx_upcall_common(socket_t so, struct afs_pkt_hdr *pkt)
+ 	noffset = 0;
+ 
+ 	for (i = 0; i < p->niovecs && resid > 0; i++) {
+-	    sz = MIN(resid, p->wirevec[i].iov_len);
++	    sz = opr_min(resid, p->wirevec[i].iov_len);
+ 	    memcpy(p->wirevec[i].iov_base, payload, sz);
+ 	    resid -= sz;
+ 	    noffset += sz;
+@@ -732,7 +733,7 @@ rx_upcall_common(socket_t so, struct afs_pkt_hdr *pkt)
+ 	    noffset = 0;
+ 	    resid = nbytes;
+ 	    for (i=0;i<p->niovecs && resid;i++) {
+-		sz=MIN(resid, p->wirevec[i].iov_len);
++		sz=opr_min(resid, p->wirevec[i].iov_len);
+ 		error = mbuf_copydata(m, offset, sz, p->wirevec[i].iov_base);
+ 		if (error)
+ 		    break;
+@@ -853,7 +854,7 @@ osi_NetReceive(osi_socket so, struct sockaddr_in *addr, struct iovec *dvec,
+         size_t offset=0,sz;
+         resid = *alength;
+         for (i=0;i<nvecs && resid;i++) {
+-            sz=MIN(resid, iov[i].iov_len);
++            sz=opr_min(resid, iov[i].iov_len);
+             code = mbuf_copydata(m, offset, sz, iov[i].iov_base);
+             if (code)
+                 break;
+diff --git a/src/rx/FBSD/rx_knet.c b/src/rx/FBSD/rx_knet.c
+index cae6caca7..47443eb59 100644
+--- a/src/rx/FBSD/rx_knet.c
++++ b/src/rx/FBSD/rx_knet.c
+@@ -9,6 +9,7 @@
+ 
+ #include <afsconfig.h>
+ #include "afs/param.h"
++#include "afs/opr.h"
+ 
+ 
+ #include <sys/malloc.h>
+@@ -446,18 +447,18 @@ osi_NetSend(osi_socket asocket, struct sockaddr_in *addr, struct iovec *dvec,
+ 	    mlen = MCLBYTES;
+ 
+ 	    /* now compute usable size */
+-	    len = MIN(mlen, asize);
++	    len = opr_min(mlen, asize);
+ /* Should I look at MAPPED_MBUFS??? */
+ 	} else {
+ 	  nopages:
+-	    len = MIN(mlen, asize);
++	    len = opr_min(mlen, asize);
+ 	}
+ 	m->m_len = 0;
+ 	*mp = m;		/* XXXX */
+ 	top->m_pkthdr.len += len;
+ 	tpa = mtod(m, caddr_t);
+ 	while (len) {
+-	    rlen = MIN(len, tl);
++	    rlen = opr_min(len, tl);
+ 	    memcpy(tpa, tdata, rlen);
+ 	    asize -= rlen;
+ 	    len -= rlen;
+diff --git a/src/rx/IRIX/rx_knet.c b/src/rx/IRIX/rx_knet.c
+index 788c5e268..4fc1cbd17 100644
+--- a/src/rx/IRIX/rx_knet.c
++++ b/src/rx/IRIX/rx_knet.c
+@@ -9,7 +9,7 @@
+ 
+ #include <afsconfig.h>
+ #include "afs/param.h"
+-
++#include "afs/opr.h"
+ 
+ #include "rx/rx_kcommon.h"
+ #include "rx/rx_packet.h"
+@@ -366,8 +366,8 @@ rxi_EnumGetIfInfo(struct hashbucket *h, caddr_t key, caddr_t arg1,
+     }
+     rxmtu = rxmtu * rxi_nRecvFrags + ((rxi_nRecvFrags - 1) * UDP_HDR_SIZE);
+     if (!rx_IsLoopbackAddr(ifinaddr) && (rxmtu > rx_maxReceiveSize)) {
+-	rx_maxReceiveSize = MIN(RX_MAX_PACKET_SIZE, rxmtu);
+-	rx_maxReceiveSize = MIN(rx_maxReceiveSize, rx_maxReceiveSizeUser);
++	rx_maxReceiveSize = opr_min(RX_MAX_PACKET_SIZE, rxmtu);
++	rx_maxReceiveSize = opr_min(rx_maxReceiveSize, rx_maxReceiveSizeUser);
+     }
+ 
+     *(int *)arg2 = i + 1;
+@@ -390,7 +390,7 @@ rxi_GetIFInfo()
+     rx_maxJumboRecvSize =
+ 	RX_HEADER_SIZE + rxi_nDgramPackets * RX_JUMBOBUFFERSIZE +
+ 	(rxi_nDgramPackets - 1) * RX_JUMBOHEADERSIZE;
+-    rx_maxJumboRecvSize = MAX(rx_maxJumboRecvSize, rx_maxReceiveSize);
++    rx_maxJumboRecvSize = opr_max(rx_maxJumboRecvSize, rx_maxReceiveSize);
+ 
+     return different;
+ }
+diff --git a/src/rx/SOLARIS/rx_knet.c b/src/rx/SOLARIS/rx_knet.c
+index fe85e63b8..74339375f 100644
+--- a/src/rx/SOLARIS/rx_knet.c
++++ b/src/rx/SOLARIS/rx_knet.c
+@@ -9,6 +9,7 @@
+ 
+ #include <afsconfig.h>
+ #include "afs/param.h"
++#include "afs/opr.h"
+ 
+ 
+ #ifdef AFS_SUN5_ENV
+@@ -121,9 +122,9 @@ rxi_GetIFInfo()
+ 	    addrs[i] = ifinaddr;
+ 
+ 	    if (!rx_IsLoopbackAddr(ifinaddr) && maxmtu > rx_maxReceiveSize) {
+-		rx_maxReceiveSize = MIN(RX_MAX_PACKET_SIZE, maxmtu);
++		rx_maxReceiveSize = opr_min(RX_MAX_PACKET_SIZE, maxmtu);
+ 		rx_maxReceiveSize =
+-		    MIN(rx_maxReceiveSize, rx_maxReceiveSizeUser);
++		    opr_min(rx_maxReceiveSize, rx_maxReceiveSizeUser);
+ 	    }
+             
+     }
+@@ -133,7 +134,7 @@ rxi_GetIFInfo()
+     rx_maxJumboRecvSize =
+ 	RX_HEADER_SIZE + rxi_nDgramPackets * RX_JUMBOBUFFERSIZE +
+ 	(rxi_nDgramPackets - 1) * RX_JUMBOHEADERSIZE;
+-    rx_maxJumboRecvSize = MAX(rx_maxJumboRecvSize, rx_maxReceiveSize);
++    rx_maxJumboRecvSize = opr_max(rx_maxJumboRecvSize, rx_maxReceiveSize);
+ 
+     if (different) {
+ 	int j;
+@@ -180,9 +181,9 @@ rxi_GetIFInfo()
+ 	    i++;
+ 
+ 	    if (!rx_IsLoopbackAddr(ifinaddr) && maxmtu > rx_maxReceiveSize) {
+-		rx_maxReceiveSize = MIN(RX_MAX_PACKET_SIZE, maxmtu);
++		rx_maxReceiveSize = opr_min(RX_MAX_PACKET_SIZE, maxmtu);
+ 		rx_maxReceiveSize =
+-		    MIN(rx_maxReceiveSize, rx_maxReceiveSizeUser);
++		    opr_min(rx_maxReceiveSize, rx_maxReceiveSizeUser);
+ 	    }
+ 	}
+     }
+@@ -190,7 +191,7 @@ rxi_GetIFInfo()
+     rx_maxJumboRecvSize =
+ 	RX_HEADER_SIZE + rxi_nDgramPackets * RX_JUMBOBUFFERSIZE +
+ 	(rxi_nDgramPackets - 1) * RX_JUMBOHEADERSIZE;
+-    rx_maxJumboRecvSize = MAX(rx_maxJumboRecvSize, rx_maxReceiveSize);
++    rx_maxJumboRecvSize = opr_max(rx_maxJumboRecvSize, rx_maxReceiveSize);
+ 
+     if (different) {
+ 	int j;
+diff --git a/src/rx/rx.c b/src/rx/rx.c
+index b3cc50c9b..162d2297e 100644
+--- a/src/rx/rx.c
++++ b/src/rx/rx.c
+@@ -67,11 +67,10 @@ extern afs_int32 afs_termState;
+ #  include <WINNT\afsreg.h>
+ # endif
+ 
+-# include <afs/opr.h>
+-
+ # include "rx_user.h"
+ #endif /* KERNEL */
+ 
++#include <afs/opr.h>
+ #include <opr/queue.h>
+ #include <hcrypto/rand.h>
+ 
+@@ -1123,15 +1122,15 @@ rxi_CheckConnTimeouts(struct rx_connection *conn)
+     /* this logic is slightly complicated by the fact that
+      * idleDeadTime/hardDeadTime may not be set at all, but it's not too bad.
+      */
+-    conn->secondsUntilDead = MAX(conn->secondsUntilDead, RX_MINDEADTIME);
++    conn->secondsUntilDead = opr_max(conn->secondsUntilDead, RX_MINDEADTIME);
+     if (conn->idleDeadTime) {
+-	conn->idleDeadTime = MAX(conn->idleDeadTime, conn->secondsUntilDead);
++	conn->idleDeadTime = opr_max(conn->idleDeadTime, conn->secondsUntilDead);
+     }
+     if (conn->hardDeadTime) {
+ 	if (conn->idleDeadTime) {
+-	    conn->hardDeadTime = MAX(conn->idleDeadTime, conn->hardDeadTime);
++	    conn->hardDeadTime = opr_max(conn->idleDeadTime, conn->hardDeadTime);
+ 	} else {
+-	    conn->hardDeadTime = MAX(conn->secondsUntilDead, conn->hardDeadTime);
++	    conn->hardDeadTime = opr_max(conn->secondsUntilDead, conn->hardDeadTime);
+ 	}
+     }
+ }
+@@ -2898,11 +2897,11 @@ rxi_SetPeerMtu(struct rx_peer *peer, afs_uint32 host, afs_uint32 port, int mtu)
+ 
+         MUTEX_ENTER(&peer->peer_lock);
+ 	/* We don't handle dropping below min, so don't */
+-	mtu = MAX(mtu, RX_MIN_PACKET_SIZE);
+-        peer->ifMTU=MIN(mtu, peer->ifMTU);
++	mtu = opr_max(mtu, RX_MIN_PACKET_SIZE);
++        peer->ifMTU=opr_min(mtu, peer->ifMTU);
+         peer->natMTU = rxi_AdjustIfMTU(peer->ifMTU);
+ 	/* if we tweaked this down, need to tune our peer MTU too */
+-	peer->MTU = MIN(peer->MTU, peer->natMTU);
++	peer->MTU = opr_min(peer->MTU, peer->natMTU);
+ 	/* if we discovered a sub-1500 mtu, degrade */
+ 	if (peer->ifMTU < OLD_MAX_PACKET_SIZE)
+ 	    peer->maxDgramPackets = 1;
+@@ -4336,7 +4335,7 @@ rxi_ReceiveAckPacket(struct rx_call *call, struct rx_packet *np,
+ 	return np;		/* truncated ack packet */
+ 
+     /* depends on ack packet struct */
+-    nAcks = MIN((unsigned)nbytes, (unsigned)ap->nAcks);
++    nAcks = opr_min((unsigned)nbytes, (unsigned)ap->nAcks);
+     first = ntohl(ap->firstPacket);
+     prev = ntohl(ap->previousPacket);
+     serial = ntohl(ap->serial);
+@@ -4566,7 +4565,7 @@ rxi_ReceiveAckPacket(struct rx_call *call, struct rx_packet *np,
+ 	    tSize = RX_MAX_PACKET_SIZE;
+ 	if (tSize < RX_MIN_PACKET_SIZE)
+ 	    tSize = RX_MIN_PACKET_SIZE;
+-	peer->natMTU = rxi_AdjustIfMTU(MIN(tSize, peer->ifMTU));
++	peer->natMTU = rxi_AdjustIfMTU(opr_min(tSize, peer->ifMTU));
+ 
+ 	/* Get the maximum packet size to send to this peer */
+ 	rx_packetread(np, rx_AckDataSize(ap->nAcks), (int)sizeof(afs_int32),
+@@ -4576,7 +4575,7 @@ rxi_ReceiveAckPacket(struct rx_call *call, struct rx_packet *np,
+ 	    tSize = RX_MAX_PACKET_SIZE;
+ 	if (tSize < RX_MIN_PACKET_SIZE)
+ 	    tSize = RX_MIN_PACKET_SIZE;
+-	tSize = (afs_uint32) MIN(tSize, rx_MyMaxSendSize);
++	tSize = (afs_uint32) opr_min(tSize, rx_MyMaxSendSize);
+ 	tSize = rxi_AdjustMaxMTU(peer->natMTU, tSize);
+ 
+ 	/* sanity check - peer might have restarted with different params.
+@@ -4587,8 +4586,8 @@ rxi_ReceiveAckPacket(struct rx_call *call, struct rx_packet *np,
+ 	    if (peer->maxMTU > tSize) /* possible cong., maxMTU decreased */
+ 		peer->congestSeq++;
+ 	    peer->maxMTU = tSize;
+-	    peer->MTU = MIN(tSize, peer->MTU);
+-	    call->MTU = MIN(call->MTU, tSize);
++	    peer->MTU = opr_min(tSize, peer->MTU);
++	    call->MTU = opr_min(call->MTU, tSize);
+ 	}
+ 
+ 	if (np->length == rx_AckDataSize(ap->nAcks) + 3 * sizeof(afs_int32)) {
+@@ -4603,7 +4602,7 @@ rxi_ReceiveAckPacket(struct rx_call *call, struct rx_packet *np,
+ 		tSize = rx_maxSendWindow;
+ 	    if (tSize < call->twind) {	/* smaller than our send */
+ 		call->twind = tSize;	/* window, we must send less... */
+-		call->ssthresh = MIN(call->twind, call->ssthresh);
++		call->ssthresh = opr_min(call->twind, call->ssthresh);
+ 		call->conn->twind[call->channel] = call->twind;
+ 	    }
+ 
+@@ -4632,7 +4631,7 @@ rxi_ReceiveAckPacket(struct rx_call *call, struct rx_packet *np,
+ 	    if (tSize < call->twind) {
+ 		call->twind = tSize;
+ 		call->conn->twind[call->channel] = call->twind;
+-		call->ssthresh = MIN(call->twind, call->ssthresh);
++		call->ssthresh = opr_min(call->twind, call->ssthresh);
+ 	    } else if (tSize > call->twind) {
+ 		call->twind = tSize;
+ 		call->conn->twind[call->channel] = call->twind;
+@@ -4648,9 +4647,9 @@ rxi_ReceiveAckPacket(struct rx_call *call, struct rx_packet *np,
+ 			  rx_AckDataSize(ap->nAcks) + 3 * (int)sizeof(afs_int32),
+ 			  (int)sizeof(afs_int32), &tSize);
+ 	    maxDgramPackets = (afs_uint32) ntohl(tSize);
+-	    maxDgramPackets = MIN(maxDgramPackets, rxi_nDgramPackets);
++	    maxDgramPackets = opr_min(maxDgramPackets, rxi_nDgramPackets);
+ 	    maxDgramPackets =
+-		MIN(maxDgramPackets, (int)(peer->ifDgramPackets));
++		opr_min(maxDgramPackets, (int)(peer->ifDgramPackets));
+ 	    if (maxDgramPackets > 1) {
+ 		peer->maxDgramPackets = maxDgramPackets;
+ 		call->MTU = RX_JUMBOBUFFERSIZE + RX_HEADER_SIZE;
+@@ -4718,7 +4717,7 @@ rxi_ReceiveAckPacket(struct rx_call *call, struct rx_packet *np,
+ 
+     if (call->flags & RX_CALL_FAST_RECOVER) {
+ 	if (newAckCount == 0) {
+-	    call->cwind = MIN((int)(call->cwind + 1), rx_maxSendWindow);
++	    call->cwind = opr_min((int)(call->cwind + 1), rx_maxSendWindow);
+ 	} else {
+ 	    call->flags &= ~RX_CALL_FAST_RECOVER;
+ 	    call->cwind = call->nextCwind;
+@@ -4729,10 +4728,10 @@ rxi_ReceiveAckPacket(struct rx_call *call, struct rx_packet *np,
+     } else if (nNacked && call->nNacks >= (u_short) rx_nackThreshold) {
+ 	/* Three negative acks in a row trigger congestion recovery */
+ 	call->flags |= RX_CALL_FAST_RECOVER;
+-	call->ssthresh = MAX(4, MIN((int)call->cwind, (int)call->twind)) >> 1;
++	call->ssthresh = opr_max(4, opr_min((int)call->cwind, (int)call->twind)) >> 1;
+ 	call->cwind =
+-	    MIN((int)(call->ssthresh + rx_nackThreshold), rx_maxSendWindow);
+-	call->nDgramPackets = MAX(2, (int)call->nDgramPackets) >> 1;
++	    opr_min((int)(call->ssthresh + rx_nackThreshold), rx_maxSendWindow);
++	call->nDgramPackets = opr_max(2, (int)call->nDgramPackets) >> 1;
+ 	call->nextCwind = call->ssthresh;
+ 	call->nAcks = 0;
+ 	call->nNacks = 0;
+@@ -4767,13 +4766,13 @@ rxi_ReceiveAckPacket(struct rx_call *call, struct rx_packet *np,
+ 	 * receive (linear growth).  */
+ 	if (call->cwind < call->ssthresh) {
+ 	    call->cwind =
+-		MIN((int)call->ssthresh, (int)(call->cwind + newAckCount));
++		opr_min((int)call->ssthresh, (int)(call->cwind + newAckCount));
+ 	    call->nCwindAcks = 0;
+ 	} else {
+ 	    call->nCwindAcks += newAckCount;
+ 	    if (call->nCwindAcks >= call->cwind) {
+ 		call->nCwindAcks = 0;
+-		call->cwind = MIN((int)(call->cwind + 1), rx_maxSendWindow);
++		call->cwind = opr_min((int)(call->cwind + 1), rx_maxSendWindow);
+ 	    }
+ 	}
+ 	/*
+@@ -4792,7 +4791,7 @@ rxi_ReceiveAckPacket(struct rx_call *call, struct rx_packet *np,
+ 		    call->MTU = peer->ifMTU;
+ 		else {
+ 		    call->MTU += peer->natMTU;
+-		    call->MTU = MIN(call->MTU, peer->maxMTU);
++		    call->MTU = opr_min(call->MTU, peer->maxMTU);
+ 		}
+ 	    }
+ 	    call->nAcks = 0;
+@@ -5419,10 +5418,10 @@ rxi_ResetCall(struct rx_call *call, int newcall)
+     MUTEX_ENTER(&peer->peer_lock);
+     if (!newcall) {
+ 	if (call->congestSeq == peer->congestSeq) {
+-	    peer->cwind = MAX(peer->cwind, call->cwind);
+-	    peer->MTU = MAX(peer->MTU, call->MTU);
++	    peer->cwind = opr_max(peer->cwind, call->cwind);
++	    peer->MTU = opr_max(peer->MTU, call->MTU);
+ 	    peer->nDgramPackets =
+-		MAX(peer->nDgramPackets, call->nDgramPackets);
++		opr_max(peer->nDgramPackets, call->nDgramPackets);
+ 	}
+     } else {
+ 	call->abortCode = 0;
+@@ -5433,7 +5432,7 @@ rxi_ResetCall(struct rx_call *call, int newcall)
+     } else {
+ 	call->MTU = peer->MTU;
+     }
+-    call->cwind = MIN((int)peer->cwind, (int)peer->nDgramPackets);
++    call->cwind = opr_min((int)peer->cwind, (int)peer->nDgramPackets);
+     call->ssthresh = rx_maxSendWindow;
+     call->nDgramPackets = peer->nDgramPackets;
+     call->congestSeq = peer->congestSeq;
+@@ -5441,7 +5440,7 @@ rxi_ResetCall(struct rx_call *call, int newcall)
+     call->rtt_dev = peer->rtt_dev;
+     clock_Zero(&call->rto);
+     clock_Addmsec(&call->rto,
+-		  MAX(((call->rtt >> 3) + call->rtt_dev), rx_minPeerTimeout) + 200);
++		  opr_max(((call->rtt >> 3) + call->rtt_dev), rx_minPeerTimeout) + 200);
+     MUTEX_EXIT(&peer->peer_lock);
+ 
+     flags = call->flags;
+@@ -5587,7 +5586,7 @@ rxi_SendAck(struct rx_call *call,
+ 	    padbytes = call->conn->peer->maxMTU + 128;
+ 
+ 	/* do always try a minimum size ping */
+-	padbytes = MAX(padbytes, RX_MIN_PACKET_SIZE+RX_IPUDP_SIZE+4);
++	padbytes = opr_max(padbytes, RX_MIN_PACKET_SIZE+RX_IPUDP_SIZE+4);
+ 
+ 	/* subtract the ack payload */
+ 	padbytes -= (rx_AckDataSize(call->rwind) + 4 * sizeof(afs_int32));
+@@ -6133,9 +6132,9 @@ rxi_Resend(struct rxevent *event, void *arg0, void *arg1, int istack)
+      * and start again from the beginning */
+     if (peer->maxDgramPackets >1) {
+ 	call->MTU = RX_JUMBOBUFFERSIZE + RX_HEADER_SIZE;
+-        call->MTU = MIN(peer->natMTU, peer->maxMTU);
++        call->MTU = opr_min(peer->natMTU, peer->maxMTU);
+     }
+-    call->ssthresh = MAX(4, MIN((int)call->cwind, (int)call->twind)) >> 1;
++    call->ssthresh = opr_max(4, opr_min((int)call->cwind, (int)call->twind)) >> 1;
+     call->nDgramPackets = 1;
+     call->cwind = 1;
+     call->nextCwind = 1;
+@@ -6205,7 +6204,7 @@ rxi_Start(struct rx_call *call, int istack)
+ 		call->flags &= ~RX_CALL_NEED_START;
+ #endif /* RX_ENABLE_LOCKS */
+ 		nXmitPackets = 0;
+-		maxXmitPackets = MIN(call->twind, call->cwind);
++		maxXmitPackets = opr_min(call->twind, call->cwind);
+ 		for (opr_queue_Scan(&call->tq, cursor)) {
+ 		    struct rx_packet *p
+ 			= opr_queue_Entry(cursor, struct rx_packet, entry);
+@@ -6222,7 +6221,7 @@ rxi_Start(struct rx_call *call, int istack)
+ 		    p->header.flags &= RX_PRESET_FLAGS;
+ 
+ 		    if (p->header.seq >=
+-			call->tfirst + MIN((int)call->twind,
++			call->tfirst + opr_min((int)call->twind,
+ 					   (int)(call->nSoftAcked +
+ 						 call->cwind))) {
+ 			call->flags |= RX_CALL_WAIT_WINDOW_SEND;	/* Wait for transmit window */
+@@ -6398,9 +6397,9 @@ rxi_CheckCall(struct rx_call *call, int haveCTLock)
+     if (now < call->lastSendTime)
+         clock_diff = call->lastSendTime - now;
+     if (now < call->startWait)
+-        clock_diff = MAX(clock_diff, call->startWait - now);
++        clock_diff = opr_max(clock_diff, call->startWait - now);
+     if (now < call->lastReceiveTime)
+-        clock_diff = MAX(clock_diff, call->lastReceiveTime - now);
++        clock_diff = opr_max(clock_diff, call->lastReceiveTime - now);
+     if (clock_diff > 5 * 60)
+     {
+ 	if (call->state == RX_STATE_ACTIVE)
+@@ -6490,7 +6489,7 @@ mtuout:
+ 	 * Shrink by 128 bytes and try again. */
+ 	if (conn->peer->maxPacketSize < conn->lastPacketSize)
+ 	    /* maxPacketSize will be cleared in rxi_SetPeerMtu */
+-	    newmtu = MAX(conn->peer->maxPacketSize + RX_HEADER_SIZE,
++	    newmtu = opr_max(conn->peer->maxPacketSize + RX_HEADER_SIZE,
+ 			 conn->lastPacketSize - 128 + RX_HEADER_SIZE);
+ 	else
+ 	    newmtu = conn->lastPacketSize - 128 + RX_HEADER_SIZE;
+@@ -6726,7 +6725,7 @@ rxi_ScheduleGrowMTUEvent(struct rx_call *call, int secs)
+ 		secs = (RX_PINGS_LOST_BEFORE_DEAD * call->conn->secondsUntilPing)-1;
+ 
+ 	    if (call->conn->secondsUntilDead)
+-		secs = MIN(secs, (call->conn->secondsUntilDead-1));
++		secs = opr_min(secs, (call->conn->secondsUntilDead-1));
+ 	}
+ 
+ 	when.sec += secs;
+@@ -7101,7 +7100,7 @@ rxi_ComputeRoundTripTime(struct rx_packet *p,
+      * add on a fixed 200ms to account for that timer expiring.
+      */
+ 
+-    rtt_timeout = MAX(((call->rtt >> 3) + call->rtt_dev),
++    rtt_timeout = opr_max(((call->rtt >> 3) + call->rtt_dev),
+ 		      rx_minPeerTimeout) + 200;
+     clock_Zero(&call->rto);
+     clock_Addmsec(&call->rto, rtt_timeout);
+diff --git a/src/rx/rx_getaddr.c b/src/rx/rx_getaddr.c
+index 5bf7ed9c9..c340aaf15 100644
+--- a/src/rx/rx_getaddr.c
++++ b/src/rx/rx_getaddr.c
+@@ -10,6 +10,8 @@
+ #include <afsconfig.h>
+ #include <afs/param.h>
+ 
++#include "afs/opr.h"
++
+ #ifndef KERNEL
+ 
+ # include <roken.h>
+@@ -409,7 +411,7 @@ rx_getAllAddr_internal(afs_uint32 buffer[], int maxSize, int loopbacks)
+ #ifdef AFS_AIX51_ENV
+ 	 cp = cpnext
+ #else
+-	 cp += sizeof(ifr->ifr_name) + MAX(a->sin_len, sizeof(*a))
++	 cp += sizeof(ifr->ifr_name) + opr_max(a->sin_len, sizeof(*a))
+ #endif
+ #endif
+ 	)
+@@ -424,7 +426,7 @@ rx_getAllAddr_internal(afs_uint32 buffer[], int maxSize, int loopbacks)
+ #endif
+ 	a = (struct sockaddr_in *)&ifr->ifr_addr;
+ #ifdef AFS_AIX51_ENV
+-	cpnext = cp + sizeof(ifr->ifr_name) + MAX(a->sin_len, sizeof(*a));
++	cpnext = cp + sizeof(ifr->ifr_name) + opr_max(a->sin_len, sizeof(*a));
+ #endif
+ 	if (a->sin_family != AF_INET)
+ 	    continue;
+@@ -507,7 +509,7 @@ rx_getAllAddrMaskMtu(afs_uint32 addrBuffer[], afs_uint32 maskBuffer[],
+ 	ifc.ifc_len = sizeof(ifs);
+     for (cp = (char *)ifc.ifc_buf, cplim = ifc.ifc_buf + ifc.ifc_len;
+ 	 cp < cplim;
+-	 cp += sizeof(ifr->ifr_name) + MAX(a->sin_len, sizeof(*a))) {
++	 cp += sizeof(ifr->ifr_name) + opr_max(a->sin_len, sizeof(*a))) {
+ 	ifr = (struct ifreq *)cp;
+ #else
+     for (i = 0; i < len; ++i) {
+diff --git a/src/rx/rx_globals.h b/src/rx/rx_globals.h
+index 558dc553b..5326af074 100644
+--- a/src/rx/rx_globals.h
++++ b/src/rx/rx_globals.h
+@@ -295,7 +295,7 @@ EXT int rx_TSFPQMaxProcs GLOBALSINIT(0); /* max number of threads expected */
+     do { \
+         int i; \
+         struct rx_packet * p; \
+-        int tsize = MIN((rx_ts_info_p)->_FPQ.len, (rx_ts_info_p)->_FPQ.len - rx_TSFPQLocalMax + 3 *  rx_TSFPQGlobSize); \
++        int tsize = opr_min((rx_ts_info_p)->_FPQ.len, (rx_ts_info_p)->_FPQ.len - rx_TSFPQLocalMax + 3 *  rx_TSFPQGlobSize); \
+ 	if (tsize <= 0) break; \
+         for (i=0,p=opr_queue_Last(&((rx_ts_info_p)->_FPQ.queue), \
+ 				 struct rx_packet, entry); \
+diff --git a/src/rx/rx_kcommon.c b/src/rx/rx_kcommon.c
+index c90df3d36..f29bd56f0 100644
+--- a/src/rx/rx_kcommon.c
++++ b/src/rx/rx_kcommon.c
+@@ -21,6 +21,7 @@
+ #include "rx_internal.h"
+ #include "rx_stats.h"
+ #include "rx_peer.h"
++#include "afs/opr.h"
+ 
+ #ifdef AFS_HPUX110_ENV
+ # include "h/tihdr.h"
+@@ -372,10 +373,10 @@ rxi_InitPeerParams(struct rx_peer *pp)
+     i = rxi_Findcbi(pp->host);
+     if (i == -1) {
+ 	rx_rto_setPeerTimeoutSecs(pp, 3);
+-	pp->ifMTU = MIN(RX_REMOTE_PACKET_SIZE, rx_MyMaxSendSize);
++	pp->ifMTU = opr_min(RX_REMOTE_PACKET_SIZE, rx_MyMaxSendSize);
+     } else {
+ 	rx_rto_setPeerTimeoutSecs(pp, 2);
+-	pp->ifMTU = MIN(RX_MAX_PACKET_SIZE, rx_MyMaxSendSize);
++	pp->ifMTU = opr_min(RX_MAX_PACKET_SIZE, rx_MyMaxSendSize);
+ 	mtu = ntohl(afs_cb_interface.mtu[i]);
+ 	/* Diminish the packet size to one based on the MTU given by
+ 	 * the interface. */
+@@ -398,7 +399,7 @@ rxi_InitPeerParams(struct rx_peer *pp)
+     ifn = rxi_FindIfnet(pp->host, NULL);
+     if (ifn) {
+ 	rx_rto_setPeerTimeoutSecs(pp, 2);
+-	pp->ifMTU = MIN(RX_MAX_PACKET_SIZE, rx_MyMaxSendSize);
++	pp->ifMTU = opr_min(RX_MAX_PACKET_SIZE, rx_MyMaxSendSize);
+ #  ifdef IFF_POINTOPOINT
+ 	if (rx_ifnet_flags(ifn) & IFF_POINTOPOINT) {
+ 	    /* wish we knew the bit rate and the chunk size, sigh. */
+@@ -415,7 +416,7 @@ rxi_InitPeerParams(struct rx_peer *pp)
+ 	}
+     } else {			/* couldn't find the interface, so assume the worst */
+ 	rx_rto_setPeerTimeoutSecs(pp, 3);
+-	pp->ifMTU = MIN(RX_REMOTE_PACKET_SIZE, rx_MyMaxSendSize);
++	pp->ifMTU = opr_min(RX_REMOTE_PACKET_SIZE, rx_MyMaxSendSize);
+     }
+ 
+     RX_NET_EPOCH_EXIT();
+@@ -428,10 +429,10 @@ rxi_InitPeerParams(struct rx_peer *pp)
+ 
+     if (mtu <= 0) {
+ 	rx_rto_setPeerTimeoutSecs(pp, 3);
+-	pp->ifMTU = MIN(RX_REMOTE_PACKET_SIZE, rx_MyMaxSendSize);
++	pp->ifMTU = opr_min(RX_REMOTE_PACKET_SIZE, rx_MyMaxSendSize);
+     } else {
+ 	rx_rto_setPeerTimeoutSecs(pp, 2);
+-	pp->ifMTU = MIN(RX_MAX_PACKET_SIZE, rx_MyMaxSendSize);
++	pp->ifMTU = opr_min(RX_MAX_PACKET_SIZE, rx_MyMaxSendSize);
+ 
+ 	/* Diminish the packet size to one based on the MTU given by
+ 	 * the interface. */
+@@ -444,14 +445,14 @@ rxi_InitPeerParams(struct rx_peer *pp)
+ #endif /* AFS_SUN5_ENV */
+     pp->ifMTU = rxi_AdjustIfMTU(pp->ifMTU);
+     pp->maxMTU = OLD_MAX_PACKET_SIZE;	/* for compatibility with old guys */
+-    pp->natMTU = MIN(pp->ifMTU, OLD_MAX_PACKET_SIZE);
++    pp->natMTU = opr_min(pp->ifMTU, OLD_MAX_PACKET_SIZE);
+     pp->ifDgramPackets =
+-	MIN(rxi_nDgramPackets,
++	opr_min(rxi_nDgramPackets,
+ 	    rxi_AdjustDgramPackets(rxi_nSendFrags, pp->ifMTU));
+     pp->maxDgramPackets = 1;
+ 
+     /* Initialize slow start parameters */
+-    pp->MTU = MIN(pp->natMTU, pp->maxMTU);
++    pp->MTU = opr_min(pp->natMTU, pp->maxMTU);
+     pp->cwind = 1;
+     pp->nDgramPackets = 1;
+     pp->congestSeq = 0;
+@@ -520,15 +521,15 @@ rxi_GetcbiInfo(void)
+ 	maxmtu = rxi_AdjustMaxMTU(rxmtu, maxmtu);
+ 	addrs[i++] = ifinaddr;
+ 	if (!rx_IsLoopbackAddr(ifinaddr) && (maxmtu > rx_maxReceiveSize)) {
+-	    rx_maxReceiveSize = MIN(RX_MAX_PACKET_SIZE, maxmtu);
+-	    rx_maxReceiveSize = MIN(rx_maxReceiveSize, rx_maxReceiveSizeUser);
++	    rx_maxReceiveSize = opr_min(RX_MAX_PACKET_SIZE, maxmtu);
++	    rx_maxReceiveSize = opr_min(rx_maxReceiveSize, rx_maxReceiveSizeUser);
+ 	}
+     }
+ 
+     rx_maxJumboRecvSize =
+ 	RX_HEADER_SIZE + (rxi_nDgramPackets * RX_JUMBOBUFFERSIZE) +
+ 	((rxi_nDgramPackets - 1) * RX_JUMBOHEADERSIZE);
+-    rx_maxJumboRecvSize = MAX(rx_maxJumboRecvSize, rx_maxReceiveSize);
++    rx_maxJumboRecvSize = opr_max(rx_maxJumboRecvSize, rx_maxReceiveSize);
+ 
+     if (different) {
+ 	for (j = 0; j < i; j++) {
+@@ -648,9 +649,9 @@ rxi_GetIFInfo(void)
+ 			if (!rx_IsLoopbackAddr(ifinaddr) &&
+ 			    (maxmtu > rx_maxReceiveSize)) {
+ 			    rx_maxReceiveSize =
+-				MIN(RX_MAX_PACKET_SIZE, maxmtu);
++				opr_min(RX_MAX_PACKET_SIZE, maxmtu);
+ 			    rx_maxReceiveSize =
+-				MIN(rx_maxReceiveSize, rx_maxReceiveSizeUser);
++				opr_min(rx_maxReceiveSize, rx_maxReceiveSizeUser);
+ 			}
+ 			cnt++;
+ 		    }
+@@ -710,9 +711,9 @@ rxi_GetIFInfo(void)
+ 		maxmtu = rxi_AdjustMaxMTU(rxmtu, maxmtu);
+ 		addrs[i++] = ifinaddr;
+ 		if (!rx_IsLoopbackAddr(ifinaddr) && (maxmtu > rx_maxReceiveSize)) {
+-		    rx_maxReceiveSize = MIN(RX_MAX_PACKET_SIZE, maxmtu);
++		    rx_maxReceiveSize = opr_min(RX_MAX_PACKET_SIZE, maxmtu);
+ 		    rx_maxReceiveSize =
+-			MIN(rx_maxReceiveSize, rx_maxReceiveSizeUser);
++			opr_min(rx_maxReceiveSize, rx_maxReceiveSizeUser);
+ 		}
+ 	    }
+ 	}
+@@ -725,7 +726,7 @@ rxi_GetIFInfo(void)
+     rx_maxJumboRecvSize =
+ 	RX_HEADER_SIZE + rxi_nDgramPackets * RX_JUMBOBUFFERSIZE +
+ 	(rxi_nDgramPackets - 1) * RX_JUMBOHEADERSIZE;
+-    rx_maxJumboRecvSize = MAX(rx_maxJumboRecvSize, rx_maxReceiveSize);
++    rx_maxJumboRecvSize = opr_max(rx_maxJumboRecvSize, rx_maxReceiveSize);
+ 
+     if (different) {
+ 	int l;
+@@ -1084,7 +1085,7 @@ afs_rxevent_daemon(void)
+ 		   "before afs_osi_Wait()");
+ #  endif
+ #  ifdef RXK_TIMEDSLEEP_ENV
+-	afs_osi_TimedSleep(&afs_termState, MAX(500, ((temp.sec * 1000) +
++	afs_osi_TimedSleep(&afs_termState, opr_max(500, ((temp.sec * 1000) +
+ 						     (temp.usec / 1000))), 0);
+ #  else
+ 	afs_osi_Wait(500, NULL, 0);
+diff --git a/src/rx/rx_packet.c b/src/rx/rx_packet.c
+index 2898da189..693d7c0d9 100644
+--- a/src/rx/rx_packet.c
++++ b/src/rx/rx_packet.c
+@@ -43,7 +43,6 @@
+ #else /* KERNEL */
+ # include <roken.h>
+ # include <assert.h>
+-# include <afs/opr.h>
+ # if defined(AFS_NT40_ENV)
+ #  ifndef EWOULDBLOCK
+ #   define EWOULDBLOCK WSAEWOULDBLOCK
+@@ -58,6 +57,8 @@
+ # include <sys/sysmacros.h>
+ #endif
+ 
++
++#include <afs/opr.h>
+ #include <opr/queue.h>
+ 
+ #include "rx.h"
+@@ -194,7 +195,7 @@ rx_SlowReadPacket(struct rx_packet * packet, unsigned int offset, int resid,
+      */
+     r = resid;
+     while ((r > 0) && (i < packet->niovecs)) {
+-	j = MIN(r, packet->wirevec[i].iov_len - (offset - l));
++	j = opr_min(r, packet->wirevec[i].iov_len - (offset - l));
+ 	memcpy(out, (char *)(packet->wirevec[i].iov_base) + (offset - l), j);
+ 	r -= j;
+         out += j;
+@@ -237,7 +238,7 @@ rx_SlowWritePacket(struct rx_packet * packet, int offset, int resid, char *in)
+ 		break;
+ 
+ 	b = (char *)(packet->wirevec[i].iov_base) + (offset - l);
+-	j = MIN(r, packet->wirevec[i].iov_len - (offset - l));
++	j = opr_min(r, packet->wirevec[i].iov_len - (offset - l));
+ 	memcpy(b, in, j);
+ 	r -= j;
+         in += j;
+@@ -277,7 +278,7 @@ AllocPacketBufs(int class, int num_pkts, struct opr_queue * q)
+     if (transfer > 0) {
+         NETPRI;
+         MUTEX_ENTER(&rx_freePktQ_lock);
+-	transfer = MAX(transfer, rx_TSFPQGlobSize);
++	transfer = opr_max(transfer, rx_TSFPQGlobSize);
+ 	if (transfer > rx_nFreePackets) {
+ 	    /* alloc enough for us, plus a few globs for other threads */
+ 	    rxi_MorePacketsNoLock(transfer + 4 * rx_initSendWindow);
+@@ -344,7 +345,7 @@ AllocPacketBufs(int class, int num_pkts, struct opr_queue * q)
+     }
+ #else /* KERNEL */
+     if (rx_nFreePackets < num_pkts) {
+-	rxi_MorePacketsNoLock(MAX((num_pkts-rx_nFreePackets), 4 * rx_initSendWindow));
++	rxi_MorePacketsNoLock(opr_max((num_pkts-rx_nFreePackets), 4 * rx_initSendWindow));
+     }
+ #endif /* KERNEL */
+ 
+@@ -826,7 +827,7 @@ rxi_AdjustLocalPacketsTSFPQ(int num_keep_local, int allow_overcommit)
+             if ((num_keep_local > rx_TSFPQLocalMax) && !allow_overcommit)
+                 xfer = rx_TSFPQLocalMax - rx_ts_info->_FPQ.len;
+             if (rx_nFreePackets < xfer) {
+-		rxi_MorePacketsNoLock(MAX(xfer - rx_nFreePackets, 4 * rx_initSendWindow));
++		rxi_MorePacketsNoLock(opr_max(xfer - rx_nFreePackets, 4 * rx_initSendWindow));
+             }
+             RX_TS_FPQ_GTOL2(rx_ts_info, xfer);
+         }
+@@ -922,7 +923,7 @@ rxi_FreeDataBufsToQueue(struct rx_packet *p, afs_uint32 first, struct opr_queue
+     struct rx_packet * cb;
+     int count = 0;
+ 
+-    for (first = MAX(2, first); first < p->niovecs; first++, count++) {
++    for (first = opr_max(2, first); first < p->niovecs; first++, count++) {
+ 	iov = &p->wirevec[first];
+ 	if (!iov->iov_base)
+ 	    osi_Panic("rxi_FreeDataBufsToQueue: unexpected NULL iov");
+@@ -950,7 +951,7 @@ rxi_FreeDataBufsNoLock(struct rx_packet *p, afs_uint32 first)
+ {
+     struct iovec *iov;
+ 
+-    for (first = MAX(2, first); first < p->niovecs; first++) {
++    for (first = opr_max(2, first); first < p->niovecs; first++) {
+ 	iov = &p->wirevec[first];
+ 	if (!iov->iov_base)
+ 	    osi_Panic("rxi_FreeDataBufsNoLock: unexpected NULL iov");
+@@ -985,7 +986,7 @@ rxi_FreeDataBufsTSFPQ(struct rx_packet *p, afs_uint32 first, int flush_global)
+ 
+     RX_TS_INFO_GET(rx_ts_info);
+ 
+-    for (first = MAX(2, first); first < p->niovecs; first++) {
++    for (first = opr_max(2, first); first < p->niovecs; first++) {
+ 	iov = &p->wirevec[first];
+ 	if (!iov->iov_base)
+ 	    osi_Panic("rxi_FreeDataBufsTSFPQ: unexpected NULL iov");
+@@ -1333,7 +1334,7 @@ rxi_AllocSendPacket(struct rx_call *call, int want)
+ #ifdef RX_ENABLE_TSFPQ
+     if ((p = rxi_AllocPacketTSFPQ(RX_PACKET_CLASS_SEND, 0))) {
+         want += delta;
+-	want = MIN(want, mud);
++	want = opr_min(want, mud);
+ 
+ 	if ((unsigned)want > p->length)
+ 	    (void)rxi_AllocDataBuf(p, (want - p->length),
+@@ -1359,7 +1360,7 @@ rxi_AllocSendPacket(struct rx_call *call, int want)
+ 	    MUTEX_EXIT(&rx_freePktQ_lock);
+ 
+ 	    want += delta;
+-	    want = MIN(want, mud);
++	    want = opr_min(want, mud);
+ 
+ 	    if ((unsigned)want > p->length)
+ 		(void)rxi_AllocDataBuf(p, (want - p->length),
+@@ -1646,7 +1647,7 @@ cpytoc(mblk_t * mp, int off, int len, char *cp)
+ 	if (mp->b_datap->db_type != M_DATA) {
+ 	    return -1;
+ 	}
+-	n = MIN(len, (mp->b_wptr - mp->b_rptr));
++	n = opr_min(len, (mp->b_wptr - mp->b_rptr));
+ 	memcpy(cp, (char *)mp->b_rptr, n);
+ 	cp += n;
+ 	len -= n;
+@@ -1669,7 +1670,7 @@ cpytoiovec(mblk_t * mp, int off, int len, struct iovec *iovs,
+ 	if (mp->b_datap->db_type != M_DATA) {
+ 	    return -1;
+ 	}
+-	n = MIN(len, (mp->b_wptr - mp->b_rptr));
++	n = opr_min(len, (mp->b_wptr - mp->b_rptr));
+ 	len -= n;
+ 	while (n) {
+ 	    if (!t) {
+@@ -1677,7 +1678,7 @@ cpytoiovec(mblk_t * mp, int off, int len, struct iovec *iovs,
+ 		i++;
+ 		t = iovs[i].iov_len;
+ 	    }
+-	    m = MIN(n, t);
++	    m = opr_min(n, t);
+ 	    memcpy(iovs[i].iov_base + o, (char *)mp->b_rptr, m);
+ 	    mp->b_rptr += m;
+ 	    o += m;
+@@ -1719,7 +1720,7 @@ m_cpytoiovec(struct mbuf *m, int off, int len, struct iovec iovs[], int niovs)
+     l2 = iovs[0].iov_len;
+ 
+     while (len) {
+-	t = MIN(l1, MIN(l2, (unsigned int)len));
++	t = opr_min(l1, opr_min(l2, (unsigned int)len));
+ 	memcpy(p2, p1, t);
+ 	p1 += t;
+ 	p2 += t;
+@@ -2860,7 +2861,7 @@ int
+ rxi_AdjustMaxMTU(int mtu, int peerMaxMTU)
+ {
+     int maxMTU = mtu * rxi_nSendFrags;
+-    maxMTU = MIN(maxMTU, peerMaxMTU);
++    maxMTU = opr_min(maxMTU, peerMaxMTU);
+     return rxi_AdjustIfMTU(maxMTU);
+ }
+ 
+@@ -2876,7 +2877,7 @@ rxi_AdjustDgramPackets(int frags, int mtu)
+ 	return 1;
+     }
+     maxMTU = (frags * (mtu + UDP_HDR_SIZE)) - UDP_HDR_SIZE;
+-    maxMTU = MIN(maxMTU, RX_MAX_PACKET_SIZE);
++    maxMTU = opr_min(maxMTU, RX_MAX_PACKET_SIZE);
+     /* subtract the size of the first and last packets */
+     maxMTU -= RX_HEADER_SIZE + (2 * RX_JUMBOBUFFERSIZE) + RX_JUMBOHEADERSIZE;
+     if (maxMTU < 0) {
+diff --git a/src/rx/rx_packet.h b/src/rx/rx_packet.h
+index 46c07895d..11bf55000 100644
+--- a/src/rx/rx_packet.h
++++ b/src/rx/rx_packet.h
+@@ -316,7 +316,7 @@ struct rx_packet {
+ /* return what the actual contiguous space is: should be min(length,size) */
+ /* The things that call this really want something like ...pullup MTUXXX  */
+ #define rx_Contiguous(p) \
+-    MIN((unsigned) (p)->length, (unsigned) ((p)->wirevec[1].iov_len))
++    opr_min((unsigned) (p)->length, (unsigned) ((p)->wirevec[1].iov_len))
+ 
+ #ifndef TRUE
+ #define TRUE 1
+diff --git a/src/rx/rx_rdwr.c b/src/rx/rx_rdwr.c
+index ee1c3e3d4..2bc75cb49 100644
+--- a/src/rx/rx_rdwr.c
++++ b/src/rx/rx_rdwr.c
+@@ -50,9 +50,9 @@
+ # include "afs/lock.h"
+ #else /* KERNEL */
+ # include <roken.h>
+-# include <afs/opr.h>
+ #endif /* KERNEL */
+ 
++#include <afs/opr.h>
+ #include "rx.h"
+ #include "rx_clock.h"
+ #include "rx_globals.h"
+@@ -252,8 +252,8 @@ rxi_ReadProc(struct rx_call *call, char *buf,
+ 	     * the final portion of a received packet, it's almost certain that
+ 	     * call->app.nLeft will be smaller than the final buffer. */
+ 	    while (nbytes && call->app.currentPacket) {
+-		t = MIN((int)call->app.curlen, nbytes);
+-		t = MIN(t, (int)call->app.nLeft);
++		t = opr_min((int)call->app.curlen, nbytes);
++		t = opr_min(t, (int)call->app.nLeft);
+ 		memcpy(buf, call->app.curpos, t);
+ 		buf += t;
+ 		nbytes -= t;
+@@ -428,8 +428,8 @@ rxi_FillReadVec(struct rx_call *call, afs_uint32 serial)
+ 	       && call->iovNext < call->iovMax
+ 	       && call->app.currentPacket) {
+ 
+-	    t = MIN((int)call->app.curlen, call->iovNBytes);
+-	    t = MIN(t, (int)call->app.nLeft);
++	    t = opr_min((int)call->app.curlen, call->iovNBytes);
++	    t = opr_min(t, (int)call->app.nLeft);
+ 	    call_iov->iov_base = call->app.curpos;
+ 	    call_iov->iov_len = t;
+ 	    call_iov++;
+@@ -724,7 +724,7 @@ rxi_WriteProc(struct rx_call *call, char *buf,
+ 	    mud = rx_MaxUserDataSize(call);
+ 	    if (mud > len) {
+ 		int want;
+-		want = MIN(nbytes - (int)call->app.nFree, mud - len);
++		want = opr_min(nbytes - (int)call->app.nFree, mud - len);
+ 		rxi_AllocDataBuf(call->app.currentPacket, want,
+ 				 RX_PACKET_CLASS_SEND_CBUF);
+ 		if (call->app.currentPacket->length > (unsigned)mud)
+@@ -743,8 +743,8 @@ rxi_WriteProc(struct rx_call *call, char *buf,
+ 
+ 	while (nbytes && call->app.nFree) {
+ 
+-	    t = MIN((int)call->app.curlen, nbytes);
+-	    t = MIN((int)call->app.nFree, t);
++	    t = opr_min((int)call->app.curlen, nbytes);
++	    t = opr_min((int)call->app.nFree, t);
+ 	    memcpy(call->app.curpos, buf, t);
+ 	    buf += t;
+ 	    nbytes -= t;
+@@ -952,7 +952,7 @@ rxi_WritevAlloc(struct rx_call *call, struct iovec *iov, int *nio, int maxio,
+ 	    mud = rx_MaxUserDataSize(call);
+ 	    if (mud > len) {
+ 		int want;
+-		want = MIN(nbytes - tnFree, mud - len);
++		want = opr_min(nbytes - tnFree, mud - len);
+ 		rxi_AllocDataBuf(cp, want, RX_PACKET_CLASS_SEND_CBUF);
+ 		if (cp->length > (unsigned)mud)
+ 		    cp->length = mud;
+@@ -964,8 +964,8 @@ rxi_WritevAlloc(struct rx_call *call, struct iovec *iov, int *nio, int maxio,
+ 	}
+ 
+ 	/* fill in the next entry in the iovec */
+-	t = MIN(tcurlen, nbytes);
+-	t = MIN(tnFree, t);
++	t = opr_min(tcurlen, nbytes);
++	t = opr_min(tnFree, t);
+ 	iov[nextio].iov_base = tcurpos;
+ 	iov[nextio].iov_len = t;
+ 	nbytes -= t;
+diff --git a/src/rx/rx_user.c b/src/rx/rx_user.c
+index 15695265e..1effe0a19 100644
+--- a/src/rx/rx_user.c
++++ b/src/rx/rx_user.c
+@@ -404,12 +404,12 @@ rx_GetIFInfo(void)
+             rxi_nRecvFrags * rxsize + (rxi_nRecvFrags - 1) * UDP_HDR_SIZE;
+         maxsize = rxi_AdjustMaxMTU(rxsize, maxsize);
+         if (rx_maxReceiveSize > maxsize) {
+-            rx_maxReceiveSize = MIN(RX_MAX_PACKET_SIZE, maxsize);
++            rx_maxReceiveSize = opr_min(RX_MAX_PACKET_SIZE, maxsize);
+             rx_maxReceiveSize =
+-                MIN(rx_maxReceiveSize, rx_maxReceiveSizeUser);
++                opr_min(rx_maxReceiveSize, rx_maxReceiveSizeUser);
+         }
+         if (rx_MyMaxSendSize > maxsize) {
+-            rx_MyMaxSendSize = MIN(RX_MAX_PACKET_SIZE, maxsize);
++            rx_MyMaxSendSize = opr_min(RX_MAX_PACKET_SIZE, maxsize);
+         }
+     }
+     UNLOCK_IF;
+@@ -517,10 +517,10 @@ rx_GetIFInfo(void)
+ 
+     LOCK_IF;
+ #ifdef	AFS_AIX41_ENV
+-#define size(p) MAX((p).sa_len, sizeof(p))
++#define size(p) opr_max((p).sa_len, sizeof(p))
+     cplim = buf + ifc.ifc_len;	/*skip over if's with big ifr_addr's */
+     for (cp = buf; cp < cplim;
+-	 cp += sizeof(ifr->ifr_name) + MAX(a->sin_len, sizeof(*a))) {
++	 cp += sizeof(ifr->ifr_name) + opr_max(a->sin_len, sizeof(*a))) {
+ 	if (rxi_numNetAddrs >= ADDRSPERSITE)
+ 	    break;
+ 
+@@ -642,7 +642,7 @@ rx_GetIFInfo(void)
+ 		rxi_nRecvFrags * (myNetMTUs[rxi_numNetAddrs] - RX_IP_SIZE);
+ 	    maxsize -= UDP_HDR_SIZE;	/* only the first frag has a UDP hdr */
+ 	    if (rx_maxReceiveSize < maxsize)
+-		rx_maxReceiveSize = MIN(RX_MAX_PACKET_SIZE, maxsize);
++		rx_maxReceiveSize = opr_min(RX_MAX_PACKET_SIZE, maxsize);
+ 	    ++rxi_numNetAddrs;
+ 	}
+     }
+@@ -658,7 +658,7 @@ rx_GetIFInfo(void)
+ 	rx_maxJumboRecvSize =
+ 	    RX_HEADER_SIZE + rxi_nDgramPackets * RX_JUMBOBUFFERSIZE +
+ 	    (rxi_nDgramPackets - 1) * RX_JUMBOHEADERSIZE;
+-	rx_maxJumboRecvSize = MAX(rx_maxJumboRecvSize, rx_maxReceiveSize);
++	rx_maxJumboRecvSize = opr_max(rx_maxJumboRecvSize, rx_maxReceiveSize);
+ 	ncbufs = (rx_maxJumboRecvSize - RX_FIRSTBUFFERSIZE);
+ 	if (ncbufs > 0) {
+ 	    ncbufs = ncbufs / RX_CBUFFERSIZE;
+@@ -721,13 +721,13 @@ rxi_InitPeerParams(struct rx_peer *pp)
+ 	    if (rxmtu < RX_MIN_PACKET_SIZE)
+ 		rxmtu = RX_MIN_PACKET_SIZE;
+ 	    if (pp->ifMTU < rxmtu)
+-		pp->ifMTU = MIN(rx_MyMaxSendSize, rxmtu);
++		pp->ifMTU = opr_min(rx_MyMaxSendSize, rxmtu);
+ 	}
+     }
+     UNLOCK_IF;
+     if (!pp->ifMTU) {		/* not local */
+ 	rx_rto_setPeerTimeoutSecs(pp, 3);
+-	pp->ifMTU = MIN(rx_MyMaxSendSize, RX_REMOTE_PACKET_SIZE);
++	pp->ifMTU = opr_min(rx_MyMaxSendSize, RX_REMOTE_PACKET_SIZE);
+     }
+ #ifdef AFS_ADAPT_PMTU
+     sock=socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP);
+@@ -740,7 +740,7 @@ rxi_InitPeerParams(struct rx_peer *pp)
+             int mtu=0;
+             socklen_t s = sizeof(mtu);
+             if (getsockopt(sock, SOL_IP, IP_MTU, &mtu, &s)== 0) {
+-                pp->ifMTU = MIN(mtu - RX_IPUDP_SIZE, pp->ifMTU);
++                pp->ifMTU = opr_min(mtu - RX_IPUDP_SIZE, pp->ifMTU);
+             }
+         }
+ # ifdef AFS_NT40_ENV
+@@ -752,16 +752,16 @@ rxi_InitPeerParams(struct rx_peer *pp)
+ #endif
+     pp->ifMTU = rxi_AdjustIfMTU(pp->ifMTU);
+     pp->maxMTU = OLD_MAX_PACKET_SIZE;	/* for compatibility with old guys */
+-    pp->natMTU = MIN((int)pp->ifMTU, OLD_MAX_PACKET_SIZE);
++    pp->natMTU = opr_min((int)pp->ifMTU, OLD_MAX_PACKET_SIZE);
+     pp->maxDgramPackets =
+-	MIN(rxi_nDgramPackets,
++	opr_min(rxi_nDgramPackets,
+ 	    rxi_AdjustDgramPackets(rxi_nSendFrags, pp->ifMTU));
+     pp->ifDgramPackets =
+-	MIN(rxi_nDgramPackets,
++	opr_min(rxi_nDgramPackets,
+ 	    rxi_AdjustDgramPackets(rxi_nSendFrags, pp->ifMTU));
+     pp->maxDgramPackets = 1;
+     /* Initialize slow start parameters */
+-    pp->MTU = MIN(pp->natMTU, pp->maxMTU);
++    pp->MTU = opr_min(pp->natMTU, pp->maxMTU);
+     pp->cwind = 1;
+     pp->nDgramPackets = 1;
+     pp->congestSeq = 0;
+diff --git a/src/rxkad/crypt_conn.c b/src/rxkad/crypt_conn.c
+index da708bcd7..10ba5d84c 100644
+--- a/src/rxkad/crypt_conn.c
++++ b/src/rxkad/crypt_conn.c
+@@ -27,9 +27,9 @@
+ #endif /* !UKERNEL */
+ #else /* !KERNEL */
+ #include <roken.h>
+-#include <afs/opr.h>
+ #endif /* KERNEL */
+ 
++#include <afs/opr.h>
+ #include <rx/rx.h>
+ #include <rx/rx_packet.h>
+ #include <rx/rxkad_stats.h>
+@@ -58,7 +58,7 @@ rxkad_DecryptPacket(const struct rx_connection *conn,
+ 	data = rx_data(packet, i, tlen);
+ 	if (!data || !tlen)
+ 	    break;
+-	tlen = MIN(len, tlen);
++	tlen = opr_min(len, tlen);
+ 	fc_cbc_encrypt(data, data, tlen, *schedule, xor, DECRYPT);
+ 	len -= tlen;
+     }
+@@ -99,7 +99,7 @@ rxkad_EncryptPacket(const struct rx_connection * conn,
+ 	data = rx_data(packet, i, tlen);
+ 	if (!data || !tlen)
+ 	    break;
+-	tlen = MIN(len, tlen);
++	tlen = opr_min(len, tlen);
+ 	fc_cbc_encrypt(data, data, tlen, *schedule, xor, ENCRYPT);
+ 	len -= tlen;
+     }
+diff --git a/src/rxkad/rxkad_client.c b/src/rxkad/rxkad_client.c
+index 630488374..1f760b8c0 100644
+--- a/src/rxkad/rxkad_client.c
++++ b/src/rxkad/rxkad_client.c
+@@ -33,10 +33,9 @@
+ #endif /* !UKERNEL */
+ #else /* ! KERNEL */
+ #include <roken.h>
+-#include <afs/opr.h>
+ #endif /* KERNEL */
+ 
+-
++#include <afs/opr.h>
+ #include <rx/rx.h>
+ #include <rx/xdr.h>
+ #include <rx/rx_packet.h>
+-- 
+2.46.1
+
