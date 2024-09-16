@@ -1,16 +1,17 @@
-# Maintainer: xeruf <27jf at pm dot me>
+# Maintainer: Flammkuchen <aur at bbirkner dot de>
+# Contributor: xeruf <27jf at pm dot me>
 _pkgname=Text-Layout
 pkgname=perl-text-layout
-pkgver=0.030
+pkgver=0.038
 pkgrel=1
 pkgdesc="Pango style markup formatting"
 arch=('any')
-license=('Artistic2.0')
+license=('Artistic-2.0')
 options=('!emptydirs')
 depends=()
 url='https://metacpan.org/pod/Text::Layout'
 source=("https://cpan.metacpan.org/authors/id/J/JV/JV/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('6b32763f160880b7a43974f6de672912282f5746b965c246bdeee7c4e6839fc364cc0db1b37b4d1b1acbf66f77e8df424cf5c163573051a01a628d3d7e2f73e7')
+sha512sums=('2da708bad4b39c6b66b2eec0857816901ba1f27e0a9201b58519e93b1934a3dd173dd9f6b1c5ec3e935a02387d5cdc14f9d79b499d316544df8776cb51be45e5')
 _distdir="${_pkgname}-${pkgver}"
 
 build() {
