@@ -4,7 +4,7 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=folly
-pkgver=2024.05.27.00
+pkgver=2024.09.09.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
@@ -35,6 +35,7 @@ makedepends=(
   boost
   cmake
   cython
+  fast_float
   gtest
   python-setuptools
   python-wheel
@@ -51,12 +52,10 @@ source=(
   "fix-missing-include.patch"
   "fix-setup-py-for-python-extensions.patch"
 )
-sha256sums=(
-  '8085c436f5ee17d40da2c1bffdd1d604e2a6e8fd8d7b60804e1ea1910928b3b3'
-  '7655b9d6fd926770dae4d26f67b6aedf8fb6ff03927782bcfeffa09b5138b87c'
-  '19cc8b4190e3c7d4ef9d1d9842a2def99bb261711ae85cb03e63787c4995e286'
-  '1f369049ec6f14cc8682f0a8d6d08cca8ac49a1cf83f94914f0335adacba29c0'
-)
+sha256sums=('3005e3247b40e5b50b8b28936a3c1baeac9aec411e5e20057eb49d1298883cd7'
+            '7655b9d6fd926770dae4d26f67b6aedf8fb6ff03927782bcfeffa09b5138b87c'
+            '19cc8b4190e3c7d4ef9d1d9842a2def99bb261711ae85cb03e63787c4995e286'
+            '1f369049ec6f14cc8682f0a8d6d08cca8ac49a1cf83f94914f0335adacba29c0')
 
 _archive="$pkgname-$pkgver"
 
@@ -64,7 +63,7 @@ prepare() {
   cd "$_archive"
 
   patch --forward --strip=1 --input="$srcdir/fix-cmake-find-glog.patch"
-  patch --forward --strip=1 --input="$srcdir/fix-missing-include.patch"
+  # patch --forward --strip=1 --input="$srcdir/fix-missing-include.patch"
   patch --forward --strip=1 --input="$srcdir/fix-setup-py-for-python-extensions.patch"
 
   # Remove test with compilation error
@@ -102,7 +101,7 @@ check() {
     # These tests will fail (by design) if the test execution exceeds a
     # pre-defined time limit (wall time). This is bound to be flaky in a
     # package build process, disabling.
-    HHWheelTimerTest.HHWheelTimerTest
+    HHWheelTimerTest.CancelTimeout
 
     # Skip failing tests - not sure why they fail
     atomic_unordered_map_test.AtomicUnorderedInsertMap.DISABLEDMegaMap
