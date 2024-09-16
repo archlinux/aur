@@ -2,14 +2,14 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-sgsn-git
-pkgver=1.12.0.r4.g7d5337fe8
+pkgver=1.12.0.r14.gb12c892a4
 pkgrel=1
 pkgdesc="Osmocom's  Serving GPRS Support Node for 2G and 3G packet-switched mobile networks"
 url="https://osmocom.org/projects/osmosgsn"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('libosmocore-git'
-         'libosmo-sccp-git'
+         'libosmo-sigtran-git'
          'libosmo-gsup-client.so' # from osmo-hlr
          'libosmo-ranap.so' # from osmo-iuh
          'libasn1c.so' # from libasn1c
