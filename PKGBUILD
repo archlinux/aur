@@ -2,7 +2,7 @@
 
 pkgname=qman-git
 pkgver=nightly
-pkgrel=6
+pkgrel=7
 pkgdesc="A more modern manual page viewer for our terminals"
 
 arch=('x86_64')
