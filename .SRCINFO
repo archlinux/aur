@@ -1,12 +1,13 @@
 pkgbase = wowup-cf-bin
 	pkgdesc = WowUp the World of Warcraft addon updater (with CurseForge support)
 	pkgver = 2.20.0
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/WowUp/WowUp.CF
 	arch = x86_64
 	license = GPL3
 	depends = zlib
+	depends = fuse2
 	provides = wowup-cf
 	conflicts = wowup-cf
 	noextract = WowUp-CF-2.20.0.AppImage
