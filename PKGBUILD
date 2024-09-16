@@ -4,9 +4,9 @@
 # Contributor: SZanko, szanko at protonmail dot com
 
 pkgname=python-django-cors-headers
-_pypi_pkgname=django-cors-headers
+_pypi_pkgname=django_cors_headers
 pkgver=4.4.0
-pkgrel=1
+pkgrel=0
 pkgdesc="Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS)"
 arch=('any')
 url="http://github.com/ottoyiu/django-cors-headers"
