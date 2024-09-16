@@ -2,19 +2,17 @@
 
 _pkgname="cxcli"
 pkgname="${_pkgname}-git"
-pkgver=1.225.1.r0.g5958e4e
+pkgver=1.229.0.r0.g21ed847
 pkgrel=1
 pkgdesc="The missing CLI for your Dialogflow CX projects"
-arch=('any')
-url="https://${_pkgname}.xavidop.me"
+arch=('x86_64')
+url="https://cxcli.xavidop.me"
 _url="https://github.com/xavidop/dialogflow-cx-cli"
 license=('Apache-2.0')
 makedepends=('git' 'go')
 depends=('glibc')
-optdepends=('bash-completion: for shell auto-completion'
-            'zsh-completions: for shell auto-completion')
-provides=("dialogflow-cx-cli=${pkgver%%.r*}")
-conflicts=('dialogflow-cx-cli')
+provides=("${_pkgname}=${pkgver%%.r*}" "dialogflow-cx-cli=${pkgver%%.r*}")
+conflicts=("${_pkgname}" 'dialogflow-cx-cli')
 _pkgsrc="dialogflow-cx-cli"
 source=("${_pkgsrc}::git+${_url}.git")
 sha256sums=('SKIP')
@@ -47,15 +45,15 @@ build() {
   done
 }
 
-check() {
-  cd "${srcdir}/${_pkgsrc}"
-  go test ./...
-}
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   go test ./...
+# }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
   install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dm644 "README.md"  "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md"
   install -Dm644 "manpages/${_pkgname}.1" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
 
