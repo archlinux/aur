@@ -4,7 +4,7 @@
 pkgname=bruno-electron
 _pkgname=bruno
 pkgdesc="Bruno, an opensource API Client for Exploring and Testing APIs using the system provided Electron"
-pkgver=1.26.1
+pkgver=1.28.0
 pkgrel=1
 conflicts=('bruno')
 provides=('bruno')
@@ -13,7 +13,7 @@ url="https://www.usebruno.com/"
 license=('MIT')
 _electron=electron
 depends=(
-    "${_electron}>=31.0.0"
+    "${_electron}>=31.2.0"
 )
 
 makedepends=(
@@ -26,7 +26,7 @@ source=(
    com.usebruno.app.Bruno.desktop
 )
 
-sha256sums=('d703f284999faf5c45d14e6d6d433d297ec47318c00a99632ca8b6af5078434b'
+sha256sums=('0a4034a163a99680d046c3c922f2f79d29f20344e0c0ab21cdc47c3b0eaaa8e5'
             '7bad0d66e67fdaaf99d1b7b32ba2f119b7d6dba12ecfdb398c39ee3c81bbe051')
 
 _ensure_local_nvm() {
