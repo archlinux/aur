@@ -1,4 +1,4 @@
-pkgbase = seanime-bin
+pkgbase = seanime
 	pkgdesc = A self-hosted server that seamlessly integrates with your local anime collection with anilist integration.
 	pkgver = 2.1.1
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = seanime-bin
 	source = https://github.com/5rahim/seanime/releases/download/v2.1.1/seanime-2.1.1_Linux_x86_64.tar.gz
 	sha256sums = 66447d0b87a4705c7f81c15331f54b4f550f34e66b97f5cc0a7f962855d35782
 
-pkgname = seanime-bin
+pkgname = seanime
