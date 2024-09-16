@@ -2,11 +2,10 @@
 # Contributor: Robert Brzozowski <robson75@linux.pl>
 # Contributor: Charles Bos <charlesbos1 AT gmail>
 
-## basic info
 _pkgname='compiz'
 pkgname="$_pkgname-git"
 pkgver=0.9.14.2.r11.g8196e9c
-pkgrel=2
+pkgrel=3
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 url="https://launchpad.net/compiz"
 arch=('i686' 'x86_64')
@@ -17,18 +16,19 @@ license=(
 )
 
 depends=(
-  'boost-libs'
-  'fuse2'
   'glibmm'
   'glu'
+  'libice'
   'libnotify'
+  'libprotobuf.so'
+  'libsm'
   'libwnck3'
   'libxslt'
-  'metacity'
-  'protobuf'
+  'metacity' # libmetacity.so
+  'python'
   'python-cairo'
+  'python-dbus'
   'python-gobject'
-  'xorg-server'
 )
 makedepends=(
   'boost'
@@ -36,6 +36,7 @@ makedepends=(
   'cython'
   'git'
   'intltool'
+  'ninja'
   'python-setuptools'
 )
 optdepends=(
@@ -126,19 +127,18 @@ build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
-
-    -DCMAKE_CXX_STANDARD=17
+    -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX="/usr"
     -DCMAKE_INSTALL_LIBDIR="/usr/lib"
+    -DCMAKE_CXX_STANDARD=17
     -DCOMPIZ_DISABLE_SCHEMAS_INSTALL=ON
     -DCOMPIZ_BUILD_WITH_RPATH=OFF
     -DCOMPIZ_PACKAGING_ENABLED=ON
     -DBUILD_GTK=ON
-    -DBUILD_METACITY=ON
     -DBUILD_KDE4=OFF
+    -DBUILD_METACITY=ON
     -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,compiztoolbox,staticswitcher,regex,animation,wall,ccp"
-
     -DCOMPIZ_BUILD_TESTING=OFF
     -DCOMPIZ_WERROR=OFF
     -Wno-dev
