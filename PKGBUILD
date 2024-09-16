@@ -5,7 +5,7 @@
 pkgname=suwayomi-server-preview-bin
 _pkgname=suwayomi-server
 _PkgName=Suwayomi-Server
-pkgver=1.1.1_r1548
+pkgver=1.1.1_r1598
 pkgrel=1
 _pkgver="${pkgver%_*}"
 _revnum="${pkgver#*_r}"
@@ -19,6 +19,7 @@ provides=("suwayomi" "$_pkgname" "tachidesk" "tachidesk-server")
 conflicts=("tachidesk")
 _jar="$_PkgName-v$_pkgver-r$_revnum.jar"
 _assets="$_PkgName-v$_pkgver-r$_revnum-linux-assets"
+backup=("etc/suwayomi/server.conf")
 source=("$url/releases/download/v$_pkgver-r$_revnum/$_jar"
   "$url/releases/download/v$_pkgver-r$_revnum/$_assets.tar.gz")
 noextract=("$_jar")
