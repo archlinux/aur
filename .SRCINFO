@@ -1,0 +1,33 @@
+pkgbase = r-blavaan
+	pkgdesc = Bayesian Latent Variable Analysis
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://cran.r-project.org/package=blavaan
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-bayesplot
+	depends = r-bh
+	depends = r-coda
+	depends = r-future.apply
+	depends = r-lavaan
+	depends = r-loo
+	depends = r-mnormt
+	depends = r-nonnest2
+	depends = r-rcpp
+	depends = r-rcppeigen
+	depends = r-rcppparallel
+	depends = r-rstan
+	depends = r-rstantools
+	depends = r-stanheaders
+	depends = r-tmvnsim
+	optdepends = r-cmdstanr
+	optdepends = r-modeest
+	optdepends = r-rjags
+	optdepends = r-runjags
+	optdepends = r-semtools
+	optdepends = r-tinytest
+	source = https://cran.r-project.org/src/contrib/blavaan_0.5-6.tar.gz
+	sha256sums = 1e1f3c9debdc14b39a9ae98ef4269457cac19b9015aa6f7b0196a865d4d37b51
+
+pkgname = r-blavaan
