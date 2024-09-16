@@ -1,0 +1,36 @@
+pkgbase = enter-tex
+	pkgdesc = TeX/LaTeX text editor
+	pkgver = 3.47.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/swilmet/enter-tex
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = appstream-glib
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = meson
+	makedepends = vala
+	makedepends = yelp-tools
+	depends = dconf
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gsettings-desktop-schemas
+	depends = gspell
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libgedit-amtk
+	depends = libgedit-gtksourceview
+	depends = libgedit-tepl
+	depends = libgee
+	depends = pango
+	optdepends = texlive-latex: build LaTeX documents
+	provides = gnome-latex
+	conflicts = gnome-latex
+	replaces = gnome-latex
+	source = git+https://gitlab.gnome.org/swilmet/enter-tex.git#tag=3.47.0
+	b2sums = 0f50e29d4ef3fff84f05f76248629a8eddc3f498078299e91aacfbd141e0991ffc8c4bcd9a5947cfb046e3305111714bc5b0b16830342ded1cf8c7ef054e1432
+
+pkgname = enter-tex

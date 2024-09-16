@@ -1,0 +1,4 @@
+[enter-tex]
+source = "git"
+git = "https://gitlab.gnome.org/swilmet/enter-tex.git"
+include_regex = '\d+(\.\d+)*'
