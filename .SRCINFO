@@ -8,7 +8,7 @@ pkgbase = python-django-admin-logs
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python-django
-	source = https://pypi.io/packages/source/d/django-admin-logs/django-admin-logs-1.3.0.tar.gz
+	source = https://pypi.io/packages/source/d/django_admin_logs/django_admin_logs-1.3.0.tar.gz
 	sha256sums = 57cd55f2dcc04592729b2778c03b86ba94cc64f5c2e286993114ca16464ff7e9
 
 pkgname = python-django-admin-logs
