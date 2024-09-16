@@ -12,8 +12,8 @@ _system_flutter=false # build_system part seems missing in aur/flutter
 _flutter_version=3.22.3
 
 pkgname=spotube
-pkgver=3.8.0
-pkgrel=3
+pkgver=3.8.1
+pkgrel=1
 pkgdesc="Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!"
 arch=("x86_64" "aarch64")
 url="https://spotube.krtirtho.dev/"
@@ -31,10 +31,10 @@ options=("!lto") # undefined symbol: Dart_NewPersistentHandle_DL
 source=(
     "spotube-$pkgver.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('ddd529502397062060cd9f3624b4b29cc9b57a71fc02468d3cf9bc96dcade92a'
+sha256sums=('1199475d24773942f64989dfbaa2138e59d694b9884dc24dc3fdb4f0d04ecdd6'
             '9c5f70ba118b9163552144901a2efd91d40b22a68a04e67271d6a5ad936e8368')
 
-_release_date=2024-08-11
+_release_date=2024-09-15
 
 
 if $_system_flutter
@@ -59,10 +59,6 @@ prepare() {
         echo "LASTFM_API_SECRET=$MAKEPKG_SPOTUBE_LASTFM_API_SECRET"
         echo "RELEASE_CHANNEL=stable"
     } > .env
-
-
-    sed -i '89s/locale/locale as Locale/' \
-        lib/pages/getting_started/sections/region.dart
 
     if $_system_flutter
     then
