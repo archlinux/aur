@@ -1,8 +1,8 @@
 pkgbase = mangojuice
 	pkgdesc = Gui settings mangohud
-	pkgver = 0.4.4.78dd5a0
+	pkgver = 0.5
 	pkgrel = 1
-	url = https://github.com/radiolamp/
+	url = https://github.com/radiolamp/mangojuice
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = git
@@ -11,8 +11,10 @@ pkgbase = mangojuice
 	depends = gtk4
 	depends = libadwaita
 	depends = libgee
+	optdepends = vulkan-tools
+	optdepends = mesa-demos
 	options = !debug
-	source = git+https://github.com/radiolamp/mangojuice.git
+	source = https://github.com/radiolamp/mangojuice/archive/refs/tags/0.5.tar.gz
 	b2sums = SKIP
 
 pkgname = mangojuice
