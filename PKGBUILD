@@ -7,7 +7,7 @@ pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and 
 pkgrel=1
 arch=(x86_64 aarch64)
 url=https://github.com/stenzek/duckstation
-license=(GPL-3.0-only Apache-2.0)
+license=(CC-BY-NC-ND-4.0)
 depends=(
     sh
     glibc
