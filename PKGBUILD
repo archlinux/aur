@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-msc-git
-pkgver=1.12.0.r0.g240442218
+pkgver=1.12.1.r0.g00cb24d73
 pkgrel=1
 pkgdesc="Osmocom's Mobile Switching Center for 2G and 3G circuit-switched mobile networks"
 url="https://osmocom.org/projects/osmomsc"
@@ -11,7 +11,7 @@ license=('AGPL-3.0-or-later AND GPL-2.0-or-later')
 depends=('libosmocore-git'
          'libosmo-abis-git'
          'libosmo-netif-git'
-         'libosmo-sccp-git'
+         'libosmo-sigtran-git'
          'libosmo-gsup-client.so' # from osmo-hlr
          'libosmo-mgcp-client.so' # from osmo-mgw
          'libosmo-ranap.so' # from osmo-iuh (for --enable-iu)
