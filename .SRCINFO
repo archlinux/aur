@@ -1,8 +1,9 @@
 pkgbase = lando-bin
 	pkgdesc = A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology
-	pkgver = 3.20.8
+	pkgver = 3.21.2
 	pkgrel = 1
 	url = https://docs.lando.dev/
+	install = lando-bin.install
 	arch = x86_64
 	license = GPL
 	depends = docker
@@ -11,7 +12,7 @@ pkgbase = lando-bin
 	provides = lando
 	conflicts = lando
 	options = !strip
-	source_x86_64 = lando-bin-3.20.8.pacman::https://github.com/lando/lando/releases/download/v3.20.8/lando-x64-v3.20.8.pacman
-	sha256sums_x86_64 = b272bad3320349c9a712f99ba235c04726adafc21ce908d491d99e6818e498b5
+	source_x86_64 = lando-bin-3.21.2::https://github.com/lando/cli/releases/download/v3.21.2/lando-linux-x64-v3.21.2
+	sha256sums_x86_64 = 934bbfa2bddd48e0ac09eeebf94b1c7677645b0c7ffa8af601c68da2c3633d5d
 
 pkgname = lando-bin

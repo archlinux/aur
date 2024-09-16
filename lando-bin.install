@@ -1,0 +1,7 @@
+post_install() {
+    echo "Make sure to run 'lando setup -y' to complete the setup."
+}
+
+post_upgrade() {
+    echo "Make sure to run 'lando setup -y && lando update -y' to complete the setup and download latest plugin updates."
+}
