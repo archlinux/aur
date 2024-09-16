@@ -2,7 +2,7 @@
 # Based on banana9 package by: Hansruedi Patzen <hp@revy.ch>
 
 pkgname=bananaplus
-pkgver=10.1.18
+pkgver=10.1.22
 pkgrel=1
 pkgdesc="Simple and fast accounting software"
 url="https://www.banana.ch/"
@@ -12,7 +12,7 @@ depends=(gtk3)
 
 source=(https://www.banana.ch/accounting/files/$pkgname/exe/$pkgname.tgz)
 # add dummy entries for `make generate-checksums` to create SHA256 instead of MD5 check sums
-sha256sums=(9bba7e3cff4a2594eb11d69ecafb6a4610821ae52cb4015d9723853d9b5c8fc1)
+sha256sums=(0b0585def08a9afb8b9038fe9f8d9bebd5d49aebb53c271062ce5dd526a92e46)
 
 # coredumps otherwise
 options=(emptydirs !strip)
@@ -34,7 +34,7 @@ package() {
   install -Dm644 "${srcdir}/bananaplus.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/bananaplus.svg"
   install -Dm644 "${srcdir}/usr/share/mime-ac2.xml" "${pkgdir}/usr/share/mime-ac2.xml"
 
-  license_source="${srcdir}/usr/share/License"
+  license_source="${srcdir}/usr/share/licenses"
   for license_file in $(find "${license_source}" -type f -name "*.txt"); do
     install -Dm644 "${license_file}" "${pkgdir}/usr/share/licenses/${pkgname}/${license_file#${license_source}}"
   done

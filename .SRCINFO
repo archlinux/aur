@@ -1,6 +1,6 @@
 pkgbase = bananaplus
 	pkgdesc = Simple and fast accounting software
-	pkgver = 10.1.18
+	pkgver = 10.1.22
 	pkgrel = 1
 	url = https://www.banana.ch/
 	arch = x86_64
@@ -9,6 +9,6 @@ pkgbase = bananaplus
 	options = emptydirs
 	options = !strip
 	source = https://www.banana.ch/accounting/files/bananaplus/exe/bananaplus.tgz
-	sha256sums = 9bba7e3cff4a2594eb11d69ecafb6a4610821ae52cb4015d9723853d9b5c8fc1
+	sha256sums = 0b0585def08a9afb8b9038fe9f8d9bebd5d49aebb53c271062ce5dd526a92e46
 
 pkgname = bananaplus
