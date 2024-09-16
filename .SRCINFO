@@ -1,20 +1,18 @@
 pkgbase = asix-ax88179-dkms
-	pkgdesc = A kernel module for ASIX AX88178A AX88179 USB 3.0 network adapters
-	pkgver = 1.20.0
-	pkgrel = 2
-	url = http://www.asix.com.tw/
-	arch = i686
-	arch = x86_64
-	license = GPL
+	pkgdesc = A kernel module for ASIX AX88179B USB network adapters
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://www.asix.com.tw/en/product/USBEthernet/Super-Speed_USB_Ethernet/AX88179B
+	arch = any
+	license = GPL2
 	depends = dkms
-	source = https://www.asix.com.tw/en/support/download/file/120
-	source = asix-ax88179-dkms.conf
-	source = 0001-No-date-time.patch
-	source = 0002-b2b128.patch
-	sha512sums = 92b9178eddcc1c8765dc6d5dff33b2f385b23d7214d7f9c9ad13ef61ae62216a40b8d7e04b3a4bb3026b33f0452b7c00332bfb412ee008d426c57863add72edb
-	sha512sums = c22d3ec8bea598580681c6a9e2ae6b3d2118547a739ee717d4576653426ace7ec2406012d162ec6424244c360a2b9b7a185dbf3eebba6c0065efedfb54de23ba
-	sha512sums = 74a730f2ccfabf54c600391ee9a54ad3977b730c141c9ca9e7b1740c0d93161595a71312b4e3067411bde2f7d7f2a1cb9fb9e982a6ccfc0a4fbfa86829f6c346
-	sha512sums = a31cab0b3e0fa027acbf629aec7294d591d6dd01928de800bd915e78c75be7be0fe7603b6c69ed90f5a6fefe30ecf6a953fa154cccb03b9cb3e070e7566394f8
+	source = asix_usb_nic_linux_driver_v3.3.0.tar.bz2::https://www.asix.com.tw/en/support/download/file/1800
+	source = dkms.conf
+	source = modprobe.conf
+	source = 0001-Fix-building-on-6.9.patch
+	sha256sums = 09c4de9a39631e810d9100904941700ccf7da5fc4702beda0c88fa90ca7fd076
+	sha256sums = 280c3fd129bb3ac8b763e65dbbe7383ca795a435021f4c978a7f6b03d696b616
+	sha256sums = 652e3715724de0c1893ffbdfc48a66c7c09e82015429f10254869934dea40b55
+	sha256sums = 3fbd56b450d850e3bd3b513ded95328e529fd49a43481c2161cea4c9c09922bc
 
 pkgname = asix-ax88179-dkms
-
