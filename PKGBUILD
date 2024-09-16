@@ -2,8 +2,8 @@
 
 pkgname=rime-tupa-sp
 pkgver=0.1.1
-pkgrel=1
-_commit=032b7b6e8a5e3c60fc155362ac6ca413fb7dabc5
+pkgrel=2
+_commit=b17667b77d9b0cb60fa781683160fba6aebad27f
 pkgdesc="TUPA-SP input for RIME"
 arch=('x86_64')
 url="https://github.com/syimyuzya/$pkgname"
@@ -11,7 +11,7 @@ license=('CC0')
 depends=('rime-tupa' 'rime-luna-pinyin' 'rime-cantonese')
 makedepends=('librime')
 source=("$url/archive/$_commit/$pkgname-$_commit.tar.gz")
-sha256sums=('9e011d67ce0ef1b03036954f085f9e6617cd951797599ae5676fcd9e52781e1a')
+sha256sums=('2afc66d87b4aa644ea5750408518b874b1d6a17817afeb3e05c6151716804d6d')
 
 prepare() {
   cd $pkgname-$_commit
