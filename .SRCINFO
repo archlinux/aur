@@ -1,18 +1,18 @@
 pkgbase = r-restriktor
 	pkgdesc = Restricted Statistical Estimation and Inference for Linear Models
-	pkgver = 0.5.80
-	pkgrel = 1
+	pkgver = 0.5.90
+	pkgrel = 2
 	url = https://cran.r-project.org/package=restriktor
 	arch = any
 	license = GPL-2.0-or-later
+	depends = r-future
+	depends = r-future.apply
 	depends = r-ggplot2
-	depends = r-glue
 	depends = r-gridextra
-	depends = r-ic.infer
 	depends = r-lavaan
 	depends = r-mvtnorm
 	depends = r-norm
-	depends = r-pbapply
+	depends = r-progressr
 	depends = r-quadprog
 	depends = r-scales
 	depends = r-tmvtnorm
@@ -20,8 +20,8 @@ pkgbase = r-restriktor
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/restriktor_0.5-80.tar.gz
-	md5sums = bcf4e810f04352d2f393c00cf2df421d
-	b2sums = e8066d3683fdbcacf164423e409444cad20021408afebe001247da334bdf35cc0b00856da7011f6f4e9f740fa59bb07fa27a3e2735912995f601ab799bdd3f3d
+	source = https://cran.r-project.org/src/contrib/restriktor_0.5-90.tar.gz
+	md5sums = 421b35b95ef5549ed952143db5036846
+	b2sums = b3cadbd8d1ce4d6a043d630bea2491ce2227f20060993ed28f008ac0af0f4efe936d83687b3fc43ce6e59ba7312b3ab0e84557855cb2076884d853a3b86da041
 
 pkgname = r-restriktor
