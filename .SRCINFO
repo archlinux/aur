@@ -1,6 +1,6 @@
 pkgbase = oryx
 	pkgdesc = A TUI for sniffing network traffic using eBPF
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/pythops/oryx
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = oryx
 	makedepends = bpf-linker
 	depends = gcc-libs
 	options = !lto
-	source = oryx-0.1.tar.gz::https://github.com/pythops/oryx/archive/v0.1.tar.gz
-	sha512sums = 9d102b1e70bfb33cff79cc70e5e8b3d383f55554b3f5c19eb5bf864b85b08257c0d0d525e4e55c6e49da9e41d848f19bd89d14e993b20de1b436faffc503f769
+	source = oryx-0.2.tar.gz::https://github.com/pythops/oryx/archive/v0.2.tar.gz
+	sha512sums = 56b13bd07e21df2f655e7d4e7a7e78ada5e99f9cf0ecd2b44cbdd6a7495a78ccfcf14ee5a2becf5dae5c018f68c7100ab85d815703a0620feda645c8e7305c89
 
 pkgname = oryx
