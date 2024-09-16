@@ -2,7 +2,7 @@
 # Contributor: Zbyszek Tokarczyk <ztokarczyk (at) Gmail.com>
 
 pkgname=xfce4-notifyd-git
-pkgver=0.2.4.r63.gdf7c16d
+pkgver=0.9.6.r20.gc3c3fac
 pkgrel=1
 pkgdesc='notification daemon for the xfce desktop - git checkout'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('xfce4-notifyd')
 provides=('notification-daemon' 'xfce4-notifyd')
 options=('!libtool')
 install=${pkgname}.install
-source=('git://git.xfce.org/apps/xfce4-notifyd')
+source=('git+https://gitlab.xfce.org/apps/xfce4-notifyd.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -45,4 +45,3 @@ package() {
 
 	make DESTDIR=${pkgdir} install
 }
-

@@ -1,6 +1,6 @@
 pkgbase = xfce4-notifyd-git
 	pkgdesc = notification daemon for the xfce desktop - git checkout
-	pkgver = 0.2.4.r63.gdf7c16d
+	pkgver = 0.9.6.r20.gc3c3fac
 	pkgrel = 1
 	url = http://goodies.xfce.org/projects/applications/xfce4-notifyd
 	install = xfce4-notifyd-git.install
@@ -18,8 +18,7 @@ pkgbase = xfce4-notifyd-git
 	provides = xfce4-notifyd
 	conflicts = xfce4-notifyd
 	options = !libtool
-	source = git://git.xfce.org/apps/xfce4-notifyd
+	source = git+https://gitlab.xfce.org/apps/xfce4-notifyd.git
 	sha256sums = SKIP
 
 pkgname = xfce4-notifyd-git
-
