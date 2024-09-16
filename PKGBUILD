@@ -1,5 +1,5 @@
-# Maintainer: Masaki Waga <masakiwaga@gmail.com>
-# Contributor: Martin Kühl <martin.kuehl@posteo.net>
+# Maintainer: Martin Kühl <martin.kuehl@posteo.net>
+# Contributor: Masaki Waga <masakiwaga@gmail.com>
 pkgname=teip
 pkgver=2.3.2
 pkgrel=1
