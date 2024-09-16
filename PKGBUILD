@@ -46,5 +46,8 @@ build()
 
 package()
 {
+	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
+	cp ${srcdir}/LightGBM/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
+
 	cp -r ${srcdir}/LightGBM/build/output/* ${pkgdir}/
 }
