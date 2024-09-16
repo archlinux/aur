@@ -1,26 +1,22 @@
 pkgbase = lightgbm
-	pkgdesc = Distributed gradient boosting framework based on decision tree algorithms.
-	pkgver = 3.3.5
+	pkgdesc = A fast, distributed, high performance gradient boosting (GBT, GBDT, GBRT, GBM or MART) framework based on decision tree algorithms, used for ranking, classification and many other machine learning tasks.
+	pkgver = 4.5.0
 	pkgrel = 1
-	url = https://github.com/Microsoft/LightGBM
+	url = https://github.com/microsoft/LightGBM
+	arch = aarch64
 	arch = x86_64
 	license = MIT
-	makedepends = boost
 	makedepends = cmake
-	makedepends = opencl-headers
-	makedepends = python-setuptools
-	makedepends = eigen
-	makedepends = fmt
-	depends = boost-libs
-	depends = ocl-icd
-	depends = openmpi
-	source = https://github.com/Microsoft/LightGBM/archive/v3.3.5.tar.gz
-	sha256sums = 16fb9e299ced37be5ac69dd510e7323337e623019c9c578628c43b285f764be7
+	options = !debug
+	source = git+https://github.com/microsoft/LightGBM.git#tag=v4.5.0
+	source = git+https://github.com/boostorg/compute.git#tag=boost-1.86.0
+	source = git+https://gitlab.com/libeigen/eigen.git#tag=3.4.0
+	source = git+https://github.com/lemire/fast_double_parser.git#tag=v0.8.0
+	source = git+https://github.com/fmtlib/fmt.git#tag=11.0.2
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
 
 pkgname = lightgbm
-
-pkgname = python-lightgbm
-	depends = lightgbm
-	depends = python-numpy
-	depends = python-scipy
-	depends = python-scikit-learn
