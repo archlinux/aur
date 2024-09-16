@@ -57,6 +57,7 @@ build() {
     cd "${srcdir}"
     # Extract the RPM package
     rpmextract.sh "${srcdir}/gamescope-legacy-0:${pkgver}-1.fc40.x86_64.rpm"
+    chmod +x usr/bin/gamescope-legacy
 }
 
 package() {
