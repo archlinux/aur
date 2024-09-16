@@ -9,8 +9,6 @@ url="https://osmocom.org/projects/osmosgsn"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=(GPL)
 depends=('libosmocore-git'
-         'libosmo-abis-git'
-         'libosmo-netif-git'
          'libosmo-sccp-git'
          'libosmo-gsup-client.so' # from osmo-hlr
          'libosmo-ranap.so' # from osmo-iuh
@@ -18,7 +16,9 @@ depends=('libosmocore-git'
          'libgtp.so' # from osmo-ggsn
          'talloc'
          'c-ares')
-makedepends=('git')
+makedepends=('git'
+             'libosmo-netif-git'
+             'libosmo-abis-git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}")
 backup=('etc/osmocom/osmo-sgsn.cfg'
