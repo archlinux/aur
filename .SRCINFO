@@ -1,6 +1,6 @@
 pkgbase = r-patchwork
 	pkgdesc = The Composer of Plots
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=patchwork
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-patchwork
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/patchwork_1.2.0.tar.gz
-	sha256sums = cc31ea13560c424de9bfe2287d926a7d9e6cc8da2d5561402bb145b4f51b68a1
+	source = https://cran.r-project.org/src/contrib/patchwork_1.3.0.tar.gz
+	sha256sums = 77af6ec4a4aacebd9b5ba128d97d2fb10cfc4e4c40aded942d6976bab3e52e16
 
 pkgname = r-patchwork
