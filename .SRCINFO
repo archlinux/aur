@@ -1,8 +1,8 @@
 pkgbase = xfce4-dev-tools-git
 	pkgdesc = The Xfce development tools
-	pkgver = 20240627
+	pkgver = 4.19.1.r18.g194f6b6
 	pkgrel = 1
-	url = http://www.xfce.org/
+	url = https://gitlab.xfce.org/xfce/xfce4-dev-tools
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -11,10 +11,10 @@ pkgbase = xfce4-dev-tools-git
 	depends = gtk-doc
 	depends = make
 	depends = intltool
-	provides = xfce4-dev-tools
+	provides = xfce4-dev-tools=4.19
 	conflicts = xfce4-dev-tools
 	options = !libtool
 	source = git+https://gitlab.xfce.org/xfce/xfce4-dev-tools.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = xfce4-dev-tools-git
