@@ -1,6 +1,6 @@
 pkgbase = r-pkgdepends
 	pkgdesc = Cache ‘CRAN’-Like Metadata and R Packages
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=pkgdepends
 	arch = i686
@@ -26,6 +26,8 @@ pkgbase = r-pkgdepends
 	optdepends = r-debugme
 	optdepends = r-fansi
 	optdepends = r-fs
+	optdepends = r-gh
+	optdepends = r-gitcreds
 	optdepends = r-glue
 	optdepends = r-htmlwidgets
 	optdepends = r-mockery
@@ -38,7 +40,7 @@ pkgbase = r-pkgdepends
 	optdepends = r-tibble
 	optdepends = r-webfakes>=1.1.5.9000
 	optdepends = r-withr>=2.1.1
-	source = https://cran.r-project.org/src/contrib/pkgdepends_0.7.1.tar.gz
-	b2sums = ad078222e18e9c61c3b22a9cfc54794c010e2552212930232f80c9c8054e8a52064755312df26bfb5f30bad5a232899e38e707fe1881f7cd82f63b9ed4d30b2a
+	source = https://cran.r-project.org/src/contrib/pkgdepends_0.8.0.tar.gz
+	b2sums = 01e87ce3fc471763258a99f49e603cb899e73db764cccddf8afd4b3402096ec67d6dc57bca63e579b52f12b4e80acedb3d5358e55abac9840ac5e33c7964f652
 
 pkgname = r-pkgdepends
