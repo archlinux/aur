@@ -1,7 +1,7 @@
 pkgbase = python-pyttsx3
 	pkgdesc = Offline text-to-speech synthesis
 	pkgver = 2.91
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/nateshmbhat/pyttsx3
 	arch = any
 	license = MPL2

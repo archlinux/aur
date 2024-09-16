@@ -2,7 +2,7 @@
 
 pkgname=python-pyttsx3
 pkgver=2.91
-pkgrel=3
+pkgrel=4
 pkgdesc="Offline text-to-speech synthesis"
 arch=('any')
 url="https://github.com/nateshmbhat/pyttsx3"
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('d001a057042370a5d2c30dcaa8945bf35fc6d782aad55b8f5edc67ace5217493')
 
 build() {
-	cd "pyttsx3-v.$pkgver"
+	cd "python-pyttsx3-v.$pkgver"
 	python setup.py build
 	cd docs
 	make man
