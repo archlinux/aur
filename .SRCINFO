@@ -8,6 +8,8 @@ pkgbase = gamescope-legacy
 	license = BSD-3-Clause
 	license = LicenseRef-Reshade
 	makedepends = rpmextract
+	makedepends = wlroots0.17
+	makedepends = libliftoff
 	depends = gcc-libs
 	depends = glibc
 	depends = lcms2
@@ -41,6 +43,8 @@ pkgbase = gamescope-legacy
 	depends = xcb-util-errors
 	depends = xcb-util-wm
 	depends = xorg-server-xwayland
+	depends = wlroots0.17
+	depends = libliftoff
 	source = https://repos.fyralabs.com/terra40/gamescope-legacy-0:3.14.2-1.fc40.x86_64.rpm
 	sha256sums = SKIP
 

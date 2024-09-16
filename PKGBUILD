@@ -45,9 +45,13 @@ depends=(
   xcb-util-errors
   xcb-util-wm
   xorg-server-xwayland
+  wlroots0.17
+  libliftoff
 )
 makedepends=(
   rpmextract
+  wlroots0.17
+  libliftoff
 )
 
 source=("https://repos.fyralabs.com/terra40/gamescope-legacy-0:${pkgver}-1.fc40.x86_64.rpm")
@@ -57,6 +61,7 @@ build() {
     cd "${srcdir}"
     # Extract the RPM package
     rpmextract.sh "${srcdir}/gamescope-legacy-0:${pkgver}-1.fc40.x86_64.rpm"
+    cd "${srcdir}"
     chmod +x usr/bin/gamescope-legacy
 }
 
@@ -67,4 +72,6 @@ package() {
     install -Dm644 usr/lib/.build-id/fa/b195402147dd6727bdbd4801f979ec61b9ff6c "$pkgdir/usr/lib/.build-id/fa/b195402147dd6727bdbd4801f979ec61b9ff6c"
     install -Dm644 usr/share/doc/gamescope-legacy/README.md "$pkgdir/usr/share/doc/gamescope-legacy/README.md"
     install -Dm644 usr/share/licenses/gamescope-legacy/LICENSE "$pkgdir/usr/share/licenses/gamescope-legacy/LICENSE"
+    # Create symbolic link for libdisplay-info
+    ln -s /usr/lib/libdisplay-info.so.0.2.0 "$pkgdir/usr/lib/libdisplay-info.so.1"
 }
