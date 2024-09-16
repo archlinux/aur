@@ -13,7 +13,7 @@ provides=(albafetch=4.1)
 source_x86_64=("$url/releases/download/v$pkgver/albafetch-linux-x64.zip")
 source_aarch64=("$url/releases/download/v$pkgver/albafetch-linux-aarch64-static.zip")
 
-md5sums_x86_64=('3e177e4efa423511ead69debf5c53ff5')
+md5sums_x86_64=('c06d0883be1f327ed50d2ddbd26c672c')
 md5sums_aarch64=('0a3ff83abbac766bdced573cd034b928')
 
 package() {
