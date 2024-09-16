@@ -2,7 +2,7 @@
 # Contributor: Songtronix <contact@songtronix.com>
 pkgname=airshipper
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The official launcher for Veloren - an open-world, open-source multiplayer voxel RPG"
 arch=('x86_64')
 url='https://gitlab.com/veloren/airshipper'
@@ -25,7 +25,7 @@ sha512sums=('4da525781b92746c98ffac2ac6860775d5798409b2d2fbe84333c2ce02d35382da4
             'ce561587113480c8485892983eed16aca6979afa024cc8e7842fd349896696e3bee825ca0214cbdcc8fb972f432957a172df9adc7daa8bf2a7bc2b2828c09928'
             'b5e5cbf28ab0e335f5a0fc93511fc9936360432a36e35cc876761601abacf257299deb0af6b3d9081143b700f6663c4f603970155dd4dacedb7a9672cde1dc94')
 package() {
-    install -D "$srcdir/airshipper-linux-x86_64/airshipper" -t "$pkgdir/usr/bin/"
+    install -D "$srcdir/airshipper" -t "$pkgdir/usr/bin/"
     install -Dm 644 "$srcdir/veloren.png" -t "$pkgdir/usr/share/pixmaps/"
     install -D "$srcdir/airshipper.desktop" -t "$pkgdir/usr/share/applications"
 }
