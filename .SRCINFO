@@ -1,0 +1,20 @@
+pkgbase = zas
+	pkgdesc = Most simple static site generator ever.
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/darccio/zas
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = go
+	makedepends = npm
+	makedepends = nodejs
+	depends = glibc
+	depends = gcc-libs
+	options = !lto
+	source = https://github.com/darccio/zas/archive/refs/tags/v0.0.5.tar.gz
+	md5sums = 2eec7409c08f5baa59b95f4550cad742
+	sha256sums = f46710b3922be0398a0a59bce1f6114dfe64105ec5c6280d83a9bd7827a5f487
+	sha512sums = 7ba96a4ecba23052430fe8f96fd7245ba7dd23a055cf7eb777388a32d6624dd0846105b8db91e625575329173316ffa355825437d707e0fd207235f6d97e3943
+
+pkgname = zas
