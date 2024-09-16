@@ -5,12 +5,12 @@
 _pkgname=basiliskii
 pkgname=${_pkgname}-git
 pkgver=r3423.03e15933
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Source 68k Macintosh Emulator'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://basilisk.cebix.net'
 license=(GPL)
-depends=('gtk2' 'sdl2' 'vde2')
+depends=('gtk3' 'sdl2' 'vde2')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
