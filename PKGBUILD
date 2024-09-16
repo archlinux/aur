@@ -4,7 +4,7 @@
 # Contributor: Miguel de Val-Borro <miguel dot deval at gmail dot com>
 # Contributor: Astro Benzene <universebenzene at sina dot com>
 pkgname=astrometry.net
-pkgver=0.95
+pkgver=0.96
 pkgrel=1
 pkgdesc="Automatic recognition of astronomical images"
 arch=('i686' 'x86_64')
@@ -20,6 +20,7 @@ depends=('bzip2'
          'netpbm'
          'python'
          'python-astropy'
+         'python-matplotlib'
          'python-numpy'
          'swig'
          'wcslib'
@@ -27,10 +28,8 @@ depends=('bzip2'
 makedepends=('python-setuptools')
 backup=(etc/astrometry.cfg)
 install=astrometry.net.install
-source=("https://github.com/dstndstn/astrometry.net/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
-        "numpy2.patch")
-sha256sums=('b8239e39b44d6877b0427edeffd95efc258520044ff5afdd0fb1a89ff8f1afc0'
-            'b2920634594a7e231898ec4e759f6c868f05991dc77d8f63130d9456013bea1f')
+source=("https://github.com/dstndstn/astrometry.net/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('fb3f2ec09cbe155d9ff461b9a60336f8493f5cb7804199e1782664e9034c9aac')
 
 _pyver() {
 	python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -38,8 +37,6 @@ _pyver() {
 
 prepare() {
 	cd $pkgname-$pkgver
-	# Upstream patches to support numpy 2.0
-	patch -p1 < ../numpy2.patch
 	# Keep unneeded files out of DOC_INSTALL_DIR
 	sed -e "s/CREDITS LICENSE README.md report.txt/CREDITS README.md/" -i Makefile
 }
