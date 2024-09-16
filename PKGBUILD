@@ -2,7 +2,7 @@
 
 pkgname=python-adafruit-circuitpython-display-text
 _pypi_pkgname=adafruit-circuitpython-display-text
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=0
 pkgdesc="Displays text using CircuitPython's displayio"
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
 )
 optdepends=()
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('2005fdb86ecae32dc119816262c69fb5e76e0de29078a99b20f6a56990e6f452')
+sha256sums=('21e0a958a16bea52179d97fee4a9afa576431fb3365b402719c5cb93eb7644e8')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
