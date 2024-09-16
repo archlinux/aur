@@ -1,7 +1,7 @@
 pkgbase = python-dlib-cuda-git
 	pkgdesc = Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques. -- git CUDA version
 	pkgver = 19.24.6.r4.gfafdac3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.dlib.net/
 	arch = x86_64
 	license = BSL-1.0

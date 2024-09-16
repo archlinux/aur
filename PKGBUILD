@@ -3,7 +3,7 @@
 _pkgname=dlib
 pkgname=python-${_pkgname}-cuda-git
 pkgver=19.24.6.r4.gfafdac3
-pkgrel=1
+pkgrel=2
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques. -- git CUDA version"
 arch=('x86_64')
 url="http://www.dlib.net/"
@@ -24,11 +24,14 @@ pkgver() {
 
 build(){
   cd "${_pkgname}"
-  export CC=gcc-13 CXX=g++-13
-	python setup.py build
+  python setup.py build \
+    --set CUDA_HOST_COMPILER=/usr/bin/gcc-13 \
+    --set CUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache \
+    --set CMAKE_C_COMPILER=/usr/bin/gcc-13 \
+    --set CMAKE_CXX_COMPILER=/usr/bin/g++-13
 }
 
 package(){
-	cd "${_pkgname}"
-	python setup.py install --skip-build --prefix=/usr --root="$pkgdir" --optimize=1
+  cd "${_pkgname}"
+  python setup.py install --skip-build --prefix=/usr --root="$pkgdir" --optimize=1
 }
