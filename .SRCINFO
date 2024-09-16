@@ -1,0 +1,23 @@
+pkgbase = python-redfish
+	pkgdesc = Redfish Python Library
+	pkgver = 3.2.5
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/redfish
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	depends = python-six
+	depends = python-jsonpointer
+	depends = python-requests-toolbelt
+	depends = python-jsonpatch
+	depends = python-jsonpath-rw
+	depends = python-requests-unixsocket
+	provides = python-redfish
+	source = https://files.pythonhosted.org/packages/source/r/redfish/redfish-3.2.5.tar.gz
+	sha256sums = cfe778386b5e408075689236cdcb32b191add69a269e6d3cf64e55624b2970d7
+
+pkgname = python-redfish

@@ -1,0 +1,9 @@
+*.zst
+*.tar.gz
+*.tar.xz
+*.tgz
+*.rpm
+*.zip
+*.bz2
+pkg/
+src/
