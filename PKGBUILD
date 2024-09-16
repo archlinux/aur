@@ -10,7 +10,7 @@ arch=('any')
 url="https://dev.gajim.org/gajim/python-nbxmpp"
 license=('GPL3')
 makedepends=('git' 'python' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-depends=('python' 'python-precis_i18n' 'python-gobject' 'python-packaging' 'python-idna')
+depends=('python' 'python-precis_i18n' 'python-gobject' 'python-packaging' 'python-idna' 'libsoup3' 'glib2')
 conflicts=('python-nbxmpp')
 provides=("python-nbxmpp=$pkgver")
 source=("git+https://dev.gajim.org/gajim/$_gitrepo.git")

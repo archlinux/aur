@@ -16,6 +16,8 @@ pkgbase = python-nbxmpp-git
 	depends = python-gobject
 	depends = python-packaging
 	depends = python-idna
+	depends = libsoup3
+	depends = glib2
 	provides = python-nbxmpp=5.0.3.r4.gb44690d
 	conflicts = python-nbxmpp
 	source = git+https://dev.gajim.org/gajim/python-nbxmpp.git
