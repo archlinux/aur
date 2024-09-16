@@ -1,0 +1,17 @@
+pkgbase = zpotify
+	pkgdesc = A CLI for Spotify
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/ratakor/zpotify
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	makedepends = zig
+	depends = libjpeg
+	depends = chafa
+	provides = zpotify
+	conflicts = zpotify
+	source = https://github.com/ratakor/zpotify/archive/0.2.2/zpotify.tar.gz
+	sha256sums = 8e598963d0d6c17aa1666be207afe152cd3a95810ad58b3c3c5df16c672d1eda
+
+pkgname = zpotify
