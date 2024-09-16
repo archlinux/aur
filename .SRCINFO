@@ -1,7 +1,7 @@
 pkgbase = python-osaca
 	pkgdesc = Open Source Architecture Code Analyzer
-	pkgver = 0.5.3
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/RRZE-HPC/OSACA
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-osaca
 	depends = python-ruamel-yaml
 	depends = python-pyparsing
 	depends = python-networkx
-	source = https://files.pythonhosted.org/packages/source/o/osaca/osaca-0.5.3.tar.gz
-	sha256sums = b727ae17cb41db39ef2f79091dbc44f4a298757a7318a2bba62f66ab9d816a3f
+	source = https://files.pythonhosted.org/packages/source/o/osaca/osaca-0.6.0.tar.gz
+	sha256sums = 7f1a8ab196412039642a60e8964550ad744a478e9d1df19af1bbc2c0823a43ff
 
 pkgname = python-osaca
