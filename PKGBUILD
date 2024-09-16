@@ -13,7 +13,7 @@ depends=(
 makedepends=('git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Beriholic/arch-mirror-gen/archive/refs/tags/${pkgver}.tar.gz")
 noextract=()
-sha256sums=('2a05c2b73f431707da202793cb1d34563993b70102dc2e0a1462ad0b9fc107e6')
+sha256sums=('34d6669af0027051ecac02cc76c0b9b6f634636bed86ddfd3e9b4e6d025e584e')
 validpgpkeys=()
 
 prepare() {
