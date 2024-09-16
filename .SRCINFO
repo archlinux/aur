@@ -1,10 +1,10 @@
 pkgbase = exam-terminal
 	pkgdesc = Terminal/console based exam, test, or quiz tool for educators and learners
-	pkgver = 0.2.11
+	pkgver = 0.2.12
 	pkgrel = 1
 	url = https://github.com/ismet55555/exam-terminal
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -13,9 +13,7 @@ pkgbase = exam-terminal
 	depends = python-requests
 	depends = python-pyaml
 	depends = python-click
-	source = https://pypi.org/packages/source/e/exam-terminal/exam-terminal-0.2.11.tar.gz
-	source = https://raw.githubusercontent.com/ismet55555/exam-terminal/master/requirements.txt
-	sha512sums = e2ee7aac7b274b3cfe2cc7d5cc312115c14ad3df01a2f788fc994ccc69b985ef4f252f3f1e1eb5bc0e218a1e716bb49e11ab903b13b4ef9e5cea2016fbcde7c5
-	sha512sums = 94419652fa9ff95fe43bdf2e10fdfc771bce0ef03dde5711f3f7f4cd4ab27444340f7fb26e3d94ad035a3a9a57c83b5d0422221f8ae4c3f290a888d4057cf948
+	source = https://pypi.org/packages/source/e/exam-terminal/exam_terminal-0.2.12.tar.gz
+	sha512sums = 97c46fbab36f5078a185f3d3340caeab1bea2a1e0203305c9b60740af80890d5fae5790f9cac4927f711c7514959add229f5496a1f902e11fcf4b0fcee8f6526
 
 pkgname = exam-terminal

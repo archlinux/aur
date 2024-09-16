@@ -1,0 +1,3 @@
+[exam-terminal]
+source = "pypi"
+pypi = "exam-terminal"
