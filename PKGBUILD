@@ -1,6 +1,6 @@
 # Maintainer: Develoopeer https://github.com/develoopeer/
 pkgname=rofi-translater
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc=""
 arch=("any")
