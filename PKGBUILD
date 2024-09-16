@@ -1,7 +1,7 @@
 # Maintainer: Sergii Fesenko <sergii underscore f dot at outlook dot com>
 # Contributor: Leonidas <marek@xivilization.net>
 pkgname=factor
-pkgver=0.99
+pkgver=0.100
 pkgrel=1
 pkgdesc="A general purpose, dynamically typed, stack-based programming language."
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ source=(http://downloads.factorcode.org/releases/$pkgver/$pkgname-src-$pkgver.zi
         factor.desktop
         factor.svg
         fuel-factor-vm.patch)
-sha512sums=('a723e6f06bc798e7770f715e2d8a4163eb684d5a855ecb0e902a265b5aacec19439c7c8c4c4e43b119ad8a536bbd0361adae320e79e58ee90cdb1ec2fe44b005'
+sha512sums=('7a653ca646f499944d91b5a584883da025dccde2e0a065d353a80c85cd2959f6c2380fed8b091431a4ec7aadbcbacd2b39206074ddb6f8570f48758f3ab35da7'
             '19cf98d0fce2f1f65db4d3416c9577aa5e1f9c5829fab8f722756d37d4683caf3c740669ba895660a66177b6b38e3c7a30153ca70a515e91a455b83c4a55a026'
             '4065a22cd10873f74024655aa71aafa2b96c0e391f61a5e71f5f4fac9b49955428528c2666da5e6e5058aa28347b0f9327575f2467baf9e3914739b8fa0b2c26'
             '743b7d1332acc9863968686b2182bc9e9fa91822abd8c3b63a7933480b014dce15e86bb69201695186af26a6b267705e0618f131632249b2c3872d85a1973b07')
