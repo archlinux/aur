@@ -1,7 +1,7 @@
 pkgbase = r-jaspfrequencies
 	pkgdesc = Frequencies Module for JASP
-	pkgver = 0.18.3
-	pkgrel = 1
+	pkgver = 0.19.0
+	pkgrel = 2
 	url = https://github.com/jasp-stats/jaspFrequencies
 	arch = any
 	groups = r-jasp
@@ -10,6 +10,7 @@ pkgbase = r-jaspfrequencies
 	depends = r
 	depends = r-abtest
 	depends = r-bayesfactor
+	depends = r-bridgesampling
 	depends = r-conting
 	depends = r-ggplot2
 	depends = r-jaspbase
@@ -19,7 +20,7 @@ pkgbase = r-jaspfrequencies
 	depends = r-stringr
 	depends = r-vcd
 	depends = r-vcdextra
-	source = jaspFrequencies_0.18.3.tar.gz::https://github.com/jasp-stats/jaspFrequencies/archive/refs/tags/v0.18.3.tar.gz
-	sha256sums = aeae8db084036eb8e76cc557f11c777c67a4cad3c2b9df36e1b08e5d38543e17
+	source = jaspFrequencies_0.19.0.tar.gz::https://github.com/jasp-stats/jaspFrequencies/archive/refs/tags/v0.19.0.tar.gz
+	sha256sums = 91474f39dca31900d240163028dfeae294d79b2c5bb7bc38504f2d7dbc0bb87c
 
 pkgname = r-jaspfrequencies
