@@ -3,16 +3,17 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 pkgname=python-desktop-notifier
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library for cross-platform desktop notifications'
 arch=('any')
 url="https://github.com/SamSchott/desktop-notifier"
 license=('MIT')
 depends=('python'
+                     'python-bidict'
                      'python-certifi'
                      'python-charset-normalizer'
-                     'python-packaging'
-                     'python-dbus-next')
+                     'python-dbus-fast'
+                     'python-packaging')
 makedepends=('python-build'
                                 'python-installer'
                                 'python-setuptools'
