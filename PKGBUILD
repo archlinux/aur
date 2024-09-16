@@ -1,7 +1,8 @@
-# maintainer: web.de jan.stuehler
+# Maintainer: Flammkuchen <aur at bbirkner dot de>
+# Contributor: web.de jan.stuehler
 _author="Johan Vromans"
 pkgname=perl-app-packager
-pkgver=1.430
+pkgver=1.440
 pkgrel=1
 pkgdesc="Abstraction for Packagers"
 arch=('any')
@@ -9,9 +10,9 @@ license=('unknown')
 options=('!emptydirs')
 depends=()
 url='https://metacpan.org/release/App-Packager'
-source=('https://cpan.metacpan.org/authors/id/J/JV/JV/App-Packager-1.430.tar.gz')
-sha512sums=('3e4d8ac03614f6fa77a881f62d5ebad03b999ac2fb8f8441b1417f45a4a6e2c33d79d106f0d2017c9819a5136d9bf4e062e59780d700ad2d80717bc3a5e25d39')
-_distdir="App-Packager-1.430"
+source=("https://cpan.metacpan.org/authors/id/J/JV/JV/App-Packager-${pkgver}.tar.gz")
+sha512sums=('d228471b0a406503402ee0489433babf46d6d0735ad660e0e704ddf83b15faf6e449bfb028a0969a272c36b3137db2b74b1f0ed567a7c994524852ff2da32cf1')
+_distdir="App-Packager-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
