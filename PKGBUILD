@@ -3,7 +3,7 @@
 
 _pkgname=crystalline
 pkgname=crystalline-bin
-pkgver=0.13.1
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="A Language Server Protocol implementation for Crystal."
 arch=("x86_64")
@@ -24,5 +24,5 @@ package() {
   install -D -m 0644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
 
-sha512sums=('35a1b31019429f44d7566f7108b3fe0a988f76b155873c34574e307894135180dba4a051de2ebc9d3f35ca4efb93524f39f67ab8b5990377801854ae0a446446'
+sha512sums=('0cd228d276dcab12a207b33b9eda0e918305ad33d393b3225d03ba0408d2332f36797f6e5b6ceda5f781914ae270d83f24d697eb40c5420d12fd84561517f1b3'
             '81cab25a58a3e23f1548e7fcf11934cf6146af6a407292b4d043458da24803fe4c489f1f2a69d033623557eeaa2908efb26bf4750908e271b13e0406bc4203c7')
