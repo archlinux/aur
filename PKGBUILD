@@ -19,7 +19,8 @@ package() {
     ln -s "/opt/${pkgname}/seanime" "${pkgdir}/usr/bin/"
 
     # Dynamically insert the user who runs the script
-    local user=$(logname)  # Get the username of the user running the script
+    local user=${USER:-root}  # Get the username of the user running the script, default to root
+    local group=${USER:-root}  # Same for the group
 
     # Create the systemd service file with the dynamic user and group
     install -Dm644 /dev/stdin "${pkgdir}/usr/lib/systemd/system/seanime.service" <<EOF
@@ -31,7 +32,7 @@ After=network.target
 ExecStart=/usr/bin/seanime
 Restart=always
 User=$user
-Group=$user
+Group=$group
 
 [Install]
 WantedBy=multi-user.target
