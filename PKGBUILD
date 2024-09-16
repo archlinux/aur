@@ -3,12 +3,17 @@
 
 pkgname=osmo-iuh
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)"
 url="http://osmocom.org/projects/osmohnbgw"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('AGPL-3.0-or-later')
-depends=('libosmocore' 'libosmo-netif' 'libosmo-sccp' 'talloc' 'libasn1c' 'lksctp-tools')
+depends=('libosmocore'
+         'libosmo-netif'
+         'libosmo-sigtran'
+         'libasn1c'
+         'lksctp-tools'
+         'talloc')
 makedepends=('python')
 provides=('libosmo-hnbap.so=0-64'
           'libosmo-ranap.so=7-64'
