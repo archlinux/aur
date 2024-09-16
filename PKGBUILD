@@ -6,7 +6,7 @@
 
 _pkgname=chromium
 pkgname=chromium-no-extras
-pkgver=128.0.6613.119
+pkgver=129.0.6668.42
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -32,13 +32,15 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
-        allow-ANGLEImplementation-kVulkan.patch
+        p010-Zero-Copy-for-VA-API-Decoding-for-Vulkan.patch
+        add-feature-to-allow-zero-copy-video-formats.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('aab6b931e9c44217e5a7e9b5397961beda83a5905bac8aa96f8b825a2cab1b2d'
+sha256sums=('1523ad6aaed42a0f507737718a17e76f884b2226d96e21780c2fda9457e4cac2'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '1a5bc75a90abad153c8eb6dbdce138132a5f11190b0a40c925958a72d706b2aa'
+            '40db59162df2b7a2c0387bd620802f15424f637c09ba305b674fc09410ab21d1'
+            '713dab4f8c26790c0e4a4c5ce6a9269e90446df5370cc14214a01a363f7afe39'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             'a9b417b96daec33c9059065e15b3a92ae1bf4b59f89d353659b335d9e0379db6')
@@ -119,7 +121,8 @@ prepare() {
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
   # Upstream fixes
-  patch -Np1 -i ../allow-ANGLEImplementation-kVulkan.patch
+  patch -Np1 -i ../p010-Zero-Copy-for-VA-API-Decoding-for-Vulkan.patch
+  patch -Np1 -i ../add-feature-to-allow-zero-copy-video-formats.patch
 
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
