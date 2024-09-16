@@ -7,18 +7,29 @@ pkgbase=linux-firmware
 pkgname=(linux-firmware-whence linux-firmware amd-ucode
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}
 )
-_tag=20231211
-pkgver=20231211.f2e52a1c
+_tag=20240909
+pkgver=20240909.552ed9b8
 pkgrel=1
 pkgdesc="Firmware files for Linux"
 pkgdesc+=' (without module compression)'
 url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
-license=('GPL2' 'GPL3' 'custom')
+license=(
+  GPL-2.0-only
+  GPL-2.0-or-later
+  GPL-3.0-only
+  custom
+)
 arch=('any')
-makedepends=('git' 'rdfind')
-options=(!strip)
+makedepends=(
+  git
+  rdfind
+)
+options=(
+  !strip
+  !debug
+)
 source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#tag=${_tag}?signed")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 validpgpkeys=('4CDE8575E547BF835FE15807A31B6BD72486CFD6') # Josh Boyer <jwboyer@fedoraproject.org>
 
 _pkgbase="${pkgbase}"
@@ -99,6 +110,8 @@ package_linux-firmware-uncompressed() {
   rm -f usr/lib/firmware/mrvl/prestera/mvsw_prestera_fw_arm64-v4.1.img*
 
   # split
+  _pick amd-ucode usr/lib/firmware/amd-ucode
+
   _pick linux-firmware-nfp usr/lib/firmware/netronome
   _pick linux-firmware-nfp usr/share/licenses/${pkgname}/LICENCE.Netronome
 
@@ -125,6 +138,9 @@ package_amd-ucode-uncompressed() {
   conflicts=('amd-ucode')
   provides=('amd-ucode')
   local pkgbase="${_pkgbase}"
+  local pkgname="${pkgname%-uncompressed}"
+
+  mv -v $pkgname/* "$pkgdir"
 
   install -Dt "${pkgdir}/boot" -m644 amd-ucode.img
 
