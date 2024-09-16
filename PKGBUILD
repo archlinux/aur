@@ -2,7 +2,7 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname='raffi-bin'
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='raffi - fuzzel launcher based on yaml configuration'
 url='https://github.com/chmouel/raffi'
@@ -12,8 +12,8 @@ provides=('raffi')
 conflicts=('raffi')
 depends=('fuzzel')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/raffi/releases/download/v0.5.0/raffi_0.5.0_linux_x86_64.tar.gz")
-sha256sums_x86_64=('4368a3de96a2b501c5c320895eae4bd8e8fded5274e356f80ca342bd781d5f5d')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/raffi/releases/download/v0.5.1/raffi_0.5.1_linux_x86_64.tar.gz")
+sha256sums_x86_64=('d29cf30d5d438bd82cb6180d7c6903f5c71689be6441d11de9957a9336698f83')
 
 package() {
   # bin
