@@ -39,6 +39,7 @@ options=(!lto !buildflags !makeflags)
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
+    echo "STRIP := touch -c" >> Makefile.personal
     echo "TTCN3_DIR := /opt/eclipse-titan" >> Makefile.personal
     echo "JDKDIR := /usr/lib/jvm/$(archlinux-java get)" >> Makefile.personal
 }
