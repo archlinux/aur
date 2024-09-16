@@ -1,0 +1,117 @@
+diff --git a/cmake/options_defaults.cmake b/cmake/options_defaults.cmake
+index 27eca8c..930e7eb 100644
+--- a/cmake/options_defaults.cmake
++++ b/cmake/options_defaults.cmake
+@@ -41,7 +41,7 @@ IF(USE_INTERACTIVE_TESTS)
+ ENDIF()
+ 
+ OPTION(WITH_SSL "Enables use of TLS/SSL library" ON)
+-OPTION(USE_SYSTEM_INSTALLED_LIB "Use installed in the syctem C/C library and do not build one" OFF)
++OPTION(USE_SYSTEM_INSTALLED_LIB "Use installed in the system C/C library and do not build one" OFF)
+ OPTION(DIRECT_LINK_TESTS "Link tests directly against driver library(bypass DM)" OFF)
+ # This is to be used for some testing scenarious, obviously. e.g. testing of the connector installation. 
+ OPTION(BUILD_TESTS_ONLY "Build only tests and nothing else" OFF)
+diff --git a/driver/class/Protocol.cpp b/driver/class/Protocol.cpp
+index 8adac31..a27e2ce 100644
+--- a/driver/class/Protocol.cpp
++++ b/driver/class/Protocol.cpp
+@@ -1079,7 +1079,13 @@ namespace mariadb
+    */
+   void Protocol::forceReleaseWaitingPrepareStatement()
+   {
+-    if (statementIdToRelease != nullptr && forceReleasePrepareStatement(statementIdToRelease)){
++    if (statementIdToRelease != nullptr) {
++      if (mysql_stmt_close(statementIdToRelease))
++      {
++        // Assuming we shouldn't be out of sync - that's the whole idea. thus if we tried - that all we could do
++        statementIdToRelease= nullptr;
++        throw SQLException("Could not deallocate query");
++      }
+       statementIdToRelease= nullptr;
+     }
+   }
+diff --git a/driver/class/Results.cpp b/driver/class/Results.cpp
+index eefcc8d..b5f7e75 100644
+--- a/driver/class/Results.cpp
++++ b/driver/class/Results.cpp
+@@ -372,15 +372,16 @@ namespace mariadb
+    */
+   bool Results::getMoreResults(bool closeCurrent, Protocol *guard) {
+ 
+-    if (resultSet) {
++    auto rs= currentRs.get() ? currentRs.get() : resultSet;
++    if (rs) {
+ 
+       if (closeCurrent) {
+-        resultSet->close();
++        rs->close();
+       }
+       else {
+         // for binary results we need to copy everything on our side even if we are not streaming, as it won't be available otherwise
+         // once we move to the next result
+-        resultSet->cacheCompleteLocally();
++        rs->cacheCompleteLocally();
+       }
+     }
+ 
+diff --git a/driver/ma_helper.cpp b/driver/ma_helper.cpp
+index 4e2f89e..d7b27f8 100644
+--- a/driver/ma_helper.cpp
++++ b/driver/ma_helper.cpp
+@@ -24,23 +24,6 @@
+ 
+ #define MADB_FIELD_IS_BINARY(_field) ((_field)->charsetnr == BINARY_CHARSETNR)
+ 
+-void MADB_NewStmtHandle(MADB_Stmt *Stmt)
+-{
+-  // static const my_bool UpdateMaxLength= 1;
+-  Stmt->stmt.reset();
+-
+-  /*if (stmt != NULL)
+-  {
+-    mysql_stmt_attr_set(stmt, STMT_ATTR_UPDATE_MAX_LENGTH, &UpdateMaxLength);
+-  }
+-  else
+-  {
+-    MADB_SetError(&Stmt->Error, MADB_ERR_HY001, NULL, 0);
+-  }
+-
+-  return stmt;*/
+-}
+-
+ /* Required, but not sufficient condition */
+ bool QueryIsPossiblyMultistmt(MADB_QUERY *Query)
+ {
+diff --git a/driver/ma_helper.h b/driver/ma_helper.h
+index 10fce81..7889ab3 100644
+--- a/driver/ma_helper.h
++++ b/driver/ma_helper.h
+@@ -20,7 +20,6 @@
+ #define _ma_helper_h_
+ 
+ void CloseMultiStatements(MADB_Stmt *Stmt);
+-void MADB_NewStmtHandle(MADB_Stmt *Stmt);
+ bool QueryIsPossiblyMultistmt(MADB_QUERY *Query);
+ int  SqlRtrim(char *StmtStr, int Length);
+ int MADB_KeyTypeCount(MADB_Dbc *Connection, char *TableName, int *PrimaryKeysCount, int *UniqueKeysCount);
+diff --git a/driver/ma_statement.cpp b/driver/ma_statement.cpp
+index 01d3ee2..1c7f2df 100644
+--- a/driver/ma_statement.cpp
++++ b/driver/ma_statement.cpp
+@@ -265,13 +265,14 @@ SQLRETURN MADB_StmtReset(MADB_Stmt* Stmt)
+ {
+   if (Stmt->State > MADB_SS_PREPARED)
+   {
+-    MDBUG_C_PRINT(Stmt->Connection, "mysql_stmt_free_result(%0x)", Stmt->stmt.get());
++    MDBUG_C_PRINT(Stmt->Connection, "mysql_stmt_free_result(%0x)", Stmt->rs.get());
+     Stmt->rs.reset();
+   }
+ 
+   if (Stmt->State >= MADB_SS_PREPARED)
+   {
+-    MADB_NewStmtHandle(Stmt);
++    MDBUG_C_PRINT(Stmt->Connection, "mysql_stmt_close(%0x)", Stmt->stmt.get());
++    Stmt->stmt.reset();
+   }
+ 
+   switch (Stmt->State)
