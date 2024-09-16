@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=rpcsx
 pkgname=$_pkgname-git
-pkgver=r491.068d95c
+pkgver=r496.0634f87
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('x86_64')
@@ -16,29 +16,24 @@ depends=(
 makedepends=(
 	'cmake'
 	'git'
+	'nlohmann-json'
 	'python'
 	'sox'
 	'spirv-cross'
-	'spirv-tools'
 	'vulkan-headers>=1:1.3'
 	'vulkan-icd-loader>=1.3'
+	'xbyak'
 )
 optdepends=('vulkan-validation-layers: for rpcsx-gpu --validate')
 provides=("$_pkgname=${pkgver#r}")
 conflicts=("$_pkgname")
 source=(
 	"$_pkgname::git+https://github.com/RPCSX/rpcsx.git"
-	"$_pkgname-xbyak::git+https://github.com/RPCSX/xbyak.git"
 	'glslang::git+https://github.com/KhronosGroup/glslang.git'
-	'json::git+https://github.com/nlohmann/json.git'
-	'SPIRV-Cross::git+https://github.com/KhronosGroup/SPIRV-Cross.git'
 	'SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git'
 	'SPIRV-Tools::git+https://github.com/KhronosGroup/SPIRV-Tools.git'
 )
 b2sums=(
-	'SKIP'
-	'SKIP'
-	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -53,18 +48,13 @@ pkgver() {
 prepare() {
 	cd $_pkgname
 	git config submodule.3rdparty/glslang.url ../glslang
-	git config submodule.3rdparty/json.url ../json
-	git config submodule.3rdparty/SPIRV-Cross.url ../SPIRV-Cross
 	git config submodule.3rdparty/SPIRV-Headers.url ../SPIRV-Headers
 	git config submodule.3rdparty/SPIRV-Tools.url ../SPIRV-Tools
-	git config submodule.3rdparty/xbyak.url ../$_pkgname-xbyak
 	git -c protocol.file.allow=always submodule update
-	# https://github.com/RPCSX/rpcsx/issues/33
-	sed -i 's/-march=native/-mfsgsbase/' rpcsx-os/CMakeLists.txt
 }
 
 build() {
-	cmake -S $_pkgname -B build \
+	cmake -B build -S $_pkgname \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
