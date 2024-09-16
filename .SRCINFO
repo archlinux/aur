@@ -1,0 +1,15 @@
+pkgbase = hare-toml-git
+	pkgdesc = TOML implementation for Hare
+	pkgver = 0.1.2.r4.gef9afe0
+	pkgrel = 1
+	url = https://codeberg.org/lunacb/hare-toml
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = hare
+	provides = hare-toml=0.1.2.r4.gef9afe0
+	conflicts = hare-toml
+	source = hare-toml-git::git+https://codeberg.org/lunacb/hare-toml#commit=ef9afe03bb75da2861c3a8c48ec38fa4d84e2379
+	md5sums = SKIP
+
+pkgname = hare-toml-git
