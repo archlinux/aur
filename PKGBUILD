@@ -1,7 +1,7 @@
 # Maintainer: RodAlc24 <rodalc24 gmail com>
 
 pkgname=baup-git
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='An easy way to make backups.'
 arch=('x86_64')
