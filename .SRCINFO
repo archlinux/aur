@@ -1,0 +1,19 @@
+pkgbase = python-pathpy3
+	pkgdesc = pathpy: path data analysis
+	pkgver = 3.0.0a2
+	pkgrel = 1
+	url = https://www.pathpy.net
+	arch = any
+	license = AGPL
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.8
+	depends = python-numpy>=1.17.0
+	depends = python-scipy>=1.3.1
+	depends = python-tqdm>=4.36.1
+	depends = python-intervaltree>=3.0.2
+	conflicts = python-pathpy2
+	source = pathpy-3.0.0a2.tar.gz::https://github.com/pathpy/pathpy/archive/refs/tags/v3.0.0a2.tar.gz
+	sha256sums = 7edc85415136574d7e27e9510c21013d4ed55aa8b001302422d52e5ba373fcae
+
+pkgname = python-pathpy3
