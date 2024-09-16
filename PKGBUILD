@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=pkgcache
-_cranver=2.2.2
+_cranver=2.2.3
 pkgname=r-${_cranname,,}
 pkgdesc="Cache ‘CRAN’-Like Metadata and R Packages"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -56,7 +56,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("67edee48aa204c985398efad2a4c87e0c8f6266d695e8df176a7d95c3404bf6e66b8a88522ccc17ce30cbe7046a8f6283f814ecfe89955ed3876a3201ca00860")
+b2sums=("4358b57aeadd2897f9d311b78ffb5cfc2be34e47feee5018e7b2bfd762014e80c807e13fb6d9a2b0777d953c78ec8a78831bfb278dfc7462ed6925156cb5429b")
 
 build() {
     mkdir -p "${srcdir}/build/"
