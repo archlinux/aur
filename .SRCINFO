@@ -1,8 +1,11 @@
 pkgbase = rofi-translater
-	pkgver = 0.1.0
+	pkgdesc = Minimalistic rofi translating app
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/develoopeer/rofi-translater/
 	arch = any
 	license = GPL
+	source = https://github.com/develoopeer/rofi-translater//archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 1845d4dfff3bd95b560708069b6ce596a3d3121cb9f5510918c5616e240c155c
 
 pkgname = rofi-translater

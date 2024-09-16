@@ -2,7 +2,7 @@
 pkgname=rofi-translater
 pkgver=0.1.1
 pkgrel=1
-pkgdesc=""
+pkgdesc="Minimalistic rofi translating app"
 arch=("any")
 url="https://github.com/develoopeer/rofi-translater/"
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
@@ -19,4 +19,4 @@ package(){
 	cp "$pkgname-$pkgver/launch.sh" ~/.config/ttr/
 	cp -r "$pkgname-$pkgver/assets/" ~/.config/ttr/
 }
-sha256sums=('1845d4dfff3bd95b560708069b6ce596a3d3121cb9f5510918c5616e240c155c')
+sha256sums=('417a10486dbcb9ba5220b353be843959037f6fca6c4e3d8239a52f06b8e680ea')
