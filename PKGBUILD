@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="Applets for COSMIC Panel"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-applets"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=(
   'cosmic-icons-git'
   'dbus'
