@@ -3,12 +3,13 @@
 
 pkgname=alephone-eternalx
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free scenario for Aleph One that continues the story of the Marathon trilogy"
 arch=('any')
 url="http://eternal.bungie.org/"
 license=('unknown')
 depends=('alephone')
+install=eternalx.install
 source=("http://eternal.bungie.org/files/_releases/EternalXv${pkgver//./}.zip"
         "$pkgname.sh"
         "$pkgname.desktop")
@@ -27,6 +28,7 @@ package() {
   cp -r "Eternal $pkgver" "$pkgdir"/usr/share/AlephOne/scenarios/eternalx
 
   # sane permissions
+  chmod 755 "$pkgdir"/usr/share/AlephOne/scenarios/eternalx
   find "$pkgdir"/usr/share/AlephOne/scenarios/eternalx -type f -exec chmod 644 {} \;
 
   # launcher script and .desktop file

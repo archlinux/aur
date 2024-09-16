@@ -1,8 +1,9 @@
 pkgbase = alephone-eternalx
 	pkgdesc = A free scenario for Aleph One that continues the story of the Marathon trilogy
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://eternal.bungie.org/
+	install = eternalx.install
 	arch = any
 	license = unknown
 	depends = alephone
