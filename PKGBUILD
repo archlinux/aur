@@ -39,7 +39,7 @@ options=(!lto !buildflags !makeflags)
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    echo "TTCN3_DIR := /usr/ttcn3" >> Makefile.personal
+    echo "TTCN3_DIR := /opt/eclipse-titan" >> Makefile.personal
     echo "JDKDIR := /usr/lib/jvm/$(archlinux-java get)" >> Makefile.personal
 }
 
