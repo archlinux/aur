@@ -2,8 +2,8 @@
 
 _name='mausoleum'
 pkgname="$_name"
-pkgver=0.9.0
-pkgrel=4
+pkgver=0.11.0
+pkgrel=1
 pkgdesc='A Python GUI application, command line interface, and wrapper for Tomb'
 arch=('any')
 url='https://github.com/mandeep/Mausoleum'
@@ -20,7 +20,7 @@ conflicts=("$_name-git")
 provides=("$_name" "$_name-gui")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mandeep/Mausoleum/archive/v$pkgver.tar.gz"
         "mausoleum.desktop")
-sha512sums=('e997aeccf4e606e822bcf813fa974aa2b09c6f4e78a5d15a801bde3fe640a454cb14f9a22633750fe42913ea98481ef106d86dd9ed4660b90de3cc5bf14566f1'
+sha512sums=('008346c0ef23459d50cf8a86ddb315764433d8f06ba7a8f2457a75117294abaa37a9a2dc30dceb6db31073f25b96527c56190f3b3ba0127e36d24bd2b09aff84'
             'fdb2db16c6e8fa3f86a51198d732e50387ea174384ed5f23d7db35f62c00137c84add144fb2e0305d1ea52ee233f8f9f779ef49778ac97f26410ae1a2a2d8ed3')
 
 prepare() {
