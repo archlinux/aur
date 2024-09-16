@@ -14,11 +14,11 @@ license=('MIT')
 _electron=electron
 depends=(
     "${_electron}>=31.2.0"
+    "nodejs>=20.15.0"
 )
 
 makedepends=(
     'asar'
-    'nvm' # :(
 )
 
 source=(
@@ -29,31 +29,15 @@ source=(
 sha256sums=('0a4034a163a99680d046c3c922f2f79d29f20344e0c0ab21cdc47c3b0eaaa8e5'
             '7bad0d66e67fdaaf99d1b7b32ba2f119b7d6dba12ecfdb398c39ee3c81bbe051')
 
-_ensure_local_nvm() {
-    # let's be sure we are starting clean
-    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-    export NVM_DIR="${srcdir}/.nvm"
-
-    # The init script returns 3 if version specified
-    # in ./.nvrc is not (yet) installed in $NVM_DIR
-    # but nvm itself still gets loaded ok
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-}
-
 prepare() {
-    _ensure_local_nvm
-
     cd "${_pkgname}-${pkgver}"
 
     export HUSKY=0
 
-    nvm install
     npm install --cache "${srcdir/npm-cache}"
 }
 
 build() {
-    _ensure_local_nvm
-
     export NODE_ENV=production
 
     cd "${_pkgname}-${pkgver}"
