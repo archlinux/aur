@@ -1,0 +1,20 @@
+pkgbase = r-ggrain
+	pkgdesc = A Rainclouds Geom for 'ggplot2'
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://cran.r-project.org/package=ggrain
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-cli
+	depends = r-gghalves
+	depends = r-ggplot2
+	depends = r-ggpp
+	depends = r-rlang
+	depends = r-vctrs
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/ggrain_0.0.4.tar.gz
+	sha256sums = ec855885372ed851b3e9a37c4d9d020a5966cb7fcac2a913df67c04e9c20e050
+
+pkgname = r-ggrain
