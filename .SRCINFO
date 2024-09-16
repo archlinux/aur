@@ -1,11 +1,11 @@
 pkgbase = intel-ethernet-810series
 	pkgdesc = NVM Update Utility for Intel® Ethernet Network Adapter E810 Series
-	pkgver = 4.50
+	pkgver = 4.60
 	pkgrel = 1
 	url = https://www.intel.com/content/www/us/en/download/19626
 	arch = x86_64
 	license = Custom
-	source = https://downloadmirror.intel.com/822496/E810_NVMUpdatePackage_v4_50_Linux.tar.gz
-	sha256sums = 26463b80f35e14a1b53eff30511c3b3cd0c7047607c6817cf6e45e15a9a2134c
+	source = https://downloadmirror.intel.com/832159/E810_NVMUpdatePackage_v4_60_Linux.tar.gz
+	sha256sums = bf9566a17436dc8121bae0754b773f41fae9ba34bf0eb3d8aadaf55e8ea33b52
 
 pkgname = intel-ethernet-810series
