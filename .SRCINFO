@@ -1,0 +1,19 @@
+pkgbase = libmysofa-3dj
+	pkgdesc = C library to read HRTFs if they are stored in the AES69-2015 SOFA format(3DJ fork with safe sofa size limit increase)
+	pkgver = 1.3.2.2
+	pkgrel = 1
+	url = https://github.com/hoene/libmysofa/
+	arch = x86_64
+	license = BSD
+	checkdepends = nodejs
+	makedepends = cmake
+	makedepends = cunit
+	depends = zlib
+	provides = libmysofa.so
+	provides = libmysofa
+	conflicts = libmysofa
+	conflicts = libmysofa-git
+	source = libmysofa-3dj-1.3.2.2.tar.gz::https://github.com/ThreeDeeJay/libmysofa/archive/v1.3.2.2/libmysofa-3dj-1.3.2.2.tar.gz
+	sha512sums = 3731b49f10e317ae53c12d416150dc4578aef5dbd29ae08b4b2ceb1c006abf5d0db8b43fe8e6d6eb401a25193596451c60b7900fbc7e4e6608f6a79ebe062556
+
+pkgname = libmysofa-3dj
