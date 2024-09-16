@@ -9,8 +9,8 @@ license=('MIT')
 provides=("tcharmap")
 conflicts=("tcharmap")
 options=(!emptydirs)
-depends=('python' 'python-yaml' 'python-pyqt5' 'python-setuptools')
-makedepends=('git' 'xdg-utils')
+depends=('python' 'python-yaml' 'python-pyqt5')
+makedepends=('git' 'xdg-utils' 'python-setuptools')
 source=('git+https://github.com/nrio0/tcharmap.git'
         'tcharmap_start')
 sha256sums=('SKIP'
