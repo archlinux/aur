@@ -1,9 +1,10 @@
-# maintainer: xerus <27jf at pm dot me>
+# Maintainer: Flammkuchen <aur at bbirkner dot de>
+# Contributor: xerus <27jf at pm dot me>
 _author="Johan Vromans"
 _pkgname="File-LoadLines"
 pkgname=perl-file-loadlines
-pkgver=1.021
-pkgrel=2
+pkgver=1.046
+pkgrel=1
 pkgdesc="load the contents of a text file into an array of lines"
 arch=('any')
 license=('PerlArtistic')
@@ -11,7 +12,7 @@ options=('!emptydirs')
 depends=(perl-test-exception)
 url="https://metacpan.org/release/${_pkgname}"
 source=("https://cpan.metacpan.org/authors/id/J/JV/JV/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('b7b6f3676df537422e038377ea76f0b7c42270d543975903cdfbcc9e1fe6701b3a132432800d242a5127ff3899de02c0bad40eb25cb5142a468679f92719d6c7')
+sha512sums=('3fc99dabdba3eb92103afb4b5ede28c5a09d063d1bb435e96061b027704adc756bad7afb1b234b850d9fc46ba76036d7e64561075cfbd9469921f570c290bfe9')
 _distdir="${_pkgname}-${pkgver}"
 
 build() {
