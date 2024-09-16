@@ -1,21 +1,21 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="geek-life"
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="The CLI To-Do List / Task Manager for Geeks"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/ajaxray/${pkgname}"
 license=('MIT')
-depends=('glibc')
 makedepends=('go')
+depends=('glibc')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('197bc7703e1cb41482015bb30b57ae6fd576bcd6108658dd68d14fd9d8edea8a')
+b2sums=('8cb2b8272c2cbe3cd1ce3b308e325879ea3e21a265a09fd4ee4165a01596febe5450b1254edd4f8ad9f2813cec82021f8c623501624c9b9ebf8f8631874df318')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  [ -d "build" ] || mkdir "build"
+  mkdir -p "build"
 }
 
 build() {
@@ -32,5 +32,5 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
   install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

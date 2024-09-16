@@ -1,13 +1,13 @@
 pkgbase = geek-life
 	pkgdesc = The CLI To-Do List / Task Manager for Geeks
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/ajaxray/geek-life
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = geek-life-0.1.2.tar.gz::https://github.com/ajaxray/geek-life/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 197bc7703e1cb41482015bb30b57ae6fd576bcd6108658dd68d14fd9d8edea8a
+	source = geek-life-0.1.3.tar.gz::https://github.com/ajaxray/geek-life/archive/refs/tags/v0.1.3.tar.gz
+	b2sums = 8cb2b8272c2cbe3cd1ce3b308e325879ea3e21a265a09fd4ee4165a01596febe5450b1254edd4f8ad9f2813cec82021f8c623501624c9b9ebf8f8631874df318
 
 pkgname = geek-life
