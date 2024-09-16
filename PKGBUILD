@@ -4,7 +4,7 @@
 
 pkgname=lando-bin
 pkgver=3.21.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology"
 arch=('x86_64')
 url="https://docs.lando.dev/"
@@ -20,9 +20,5 @@ provides=("lando")
 options=(!strip)
 
 package(){
-    mkdir -p "$pkgdir"/usr/share/lando/bin
-    cp "$srcdir"/lando-bin-"$pkgver" "$pkgdir"/usr/share/lando/bin/lando
-    chmod a+x "$pkgdir"/usr/share/lando/bin/lando
-    mkdir -p "$pkgdir"/usr/bin
-    ln -s /usr/share/lando/bin/lando "$pkgdir"/usr/bin/lando
+    install -D -m 755 "$srcdir/lando-bin-$pkgver" "$pkgdir/usr/bin/lando"
 }
