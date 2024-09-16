@@ -4,8 +4,8 @@ _binname=threema
 _variant=consumer
 _appname="Threema"
 pkgdesc="Threema Desktop (Threema Web in Electron)."
-pkgver=1.2.43
-pkgrel=2
+pkgver=1.2.45
+pkgrel=1
 _threema_web_ver=2.5.5 # Keep in sync with version used by threema-desktop
 arch=('any')
 url="https://github.com/threema-ch/threema-web-electron"
@@ -18,7 +18,7 @@ source=(
   "threema.desktop"
 )
 sha256sums=(
-  'c9b402f645c09e19afcb4a35fa8ba486f8d79dc57b60058187f3eccfdc358a94'
+  'b59b385fc57cdd594d079a1c952caf6075bd800e8d80a94c82d9330c1eed948b'
   'f6be0be0107a035d2f2f859fe9164920f0a159b46480eaf44c6aadf7236ccd12'
   '9fed7fdd6f9b6e4b53caafc9ef8608b7bd73c1272ab4380d5d6839c3c60deb8b'
 )
@@ -37,7 +37,7 @@ build() {
 
   # Build Threema Web
   export DEV_ENV=production
-  export threema_web_version=threema-web-${_threema_web_ver}
+  export THREEMA_WEB_VERSION=threema-web-${_threema_web_ver}
   npm install
   ./tools/patches/patch-threema-web.sh
   npm run app:build:web
