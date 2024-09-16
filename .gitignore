@@ -2,6 +2,4 @@
 
 !.gitignore
 !PKGBUILD
-!sourcegit.desktop
-!disable-aot.patch
 !.SRCINFO
