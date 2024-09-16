@@ -1,0 +1,13 @@
+pkgbase = nvidia_oc
+	pkgdesc = A simple cli overclocking tool for Nvidia GPUs that supports both X11 and Wayland
+	pkgver = 0.1.12
+	pkgrel = 1
+	url = https://github.com/Dreaming-Codes/nvidia_oc
+	arch = any
+	license = MIT
+	makedepends = cargo
+	provides = nvidia_oc
+	source = nvidia_oc-0.1.12.tar.gz::https://github.com/Dreaming-Codes/nvidia_oc/archive/refs/tags/0.1.12.tar.gz
+	b2sums = 71a00d72760789a28914b8ee05349c7ae787917c5111e10c05cfae93f6da03ad5c177a9b89d7de7d26c7b4548d0dd245eb4c08d7f384e436df035a55e994cd4f
+
+pkgname = nvidia_oc
