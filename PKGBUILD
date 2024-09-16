@@ -66,8 +66,7 @@ build() {
 package() {
     cd "${srcdir}"
     # Install extracted files
-    chmod +x usr/bin/gamescope-legacy
-    install -Dm644 usr/bin/gamescope-legacy "$pkgdir/usr/bin/gamescope-legacy"
+    install -Dm755 usr/bin/gamescope-legacy "$pkgdir/usr/bin/gamescope-legacy"
     install -Dm644 usr/lib/.build-id/fa/b195402147dd6727bdbd4801f979ec61b9ff6c "$pkgdir/usr/lib/.build-id/fa/b195402147dd6727bdbd4801f979ec61b9ff6c"
     install -Dm644 usr/share/doc/gamescope-legacy/README.md "$pkgdir/usr/share/doc/gamescope-legacy/README.md"
     install -Dm644 usr/share/licenses/gamescope-legacy/LICENSE "$pkgdir/usr/share/licenses/gamescope-legacy/LICENSE"
