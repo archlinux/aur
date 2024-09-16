@@ -1,0 +1,4 @@
+[xfdashboard]
+source = "git"
+git = "https://gitlab.xfce.org/apps/xfdashboard.git"
+prefix = "xfdashboard-"
