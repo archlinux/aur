@@ -22,7 +22,7 @@ changelog=
 source=("https://github.com/kotrikd/${pkgname}/releases/download/v${pkgver}/${pkgname}-linux-v${pkgver}.zip"
 	"tosu-bin.sh"        
 )
-sha256sums=("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+sha256sums=("5b0ada418eade8da0ea90ea2df19102944322794c884277de635d4702383aa7e"
 	"16e77f6a192094be77ce1ecc9322e7296b57532851672d15f07bc82132cdfc21"
 )
 validpgpkeys=()
