@@ -1,0 +1,15 @@
+pkgbase = arch-mirror-gen
+	pkgdesc = Archlinux 大陆镜像源自动获取工具
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Beriholic/arch-mirror-gen
+	arch = x86_64
+	arch = aarch64
+	arch = loong64
+	license = GPLv3
+	makedepends = git
+	depends = go
+	source = arch-mirror-gen-0.1.0.tar.gz::https://github.com/Beriholic/arch-mirror-gen/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = 2a05c2b73f431707da202793cb1d34563993b70102dc2e0a1462ad0b9fc107e6
+
+pkgname = arch-mirror-gen
