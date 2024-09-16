@@ -4,7 +4,7 @@
 pkgname=swayosd-git
 _pkgname="${pkgname%-git}"
 _reponame=SwayOSD
-pkgver=r57.1127176
+pkgver=0.1.0.r0.gdbb8b72
 pkgrel=1
 pkgdesc="A GTK based on screen display for keyboard shortcuts like caps-lock and volume"
 arch=('x86_64' 'aarch64' 'i686')
@@ -19,7 +19,12 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "${_reponame}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
+		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
+	else
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	fi
 }
 
 prepare() {
