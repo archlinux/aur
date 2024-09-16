@@ -1,7 +1,7 @@
 pkgbase = pacupdate-git
 	pkgdesc = Update all packages using Paru - automatically avoids some common issues when updating normally.
 	pkgver = r1.a84a9af1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/MayESchaefer/pacupdate
 	arch = any
 	license = GPL-3.0-or-later
