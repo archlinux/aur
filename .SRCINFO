@@ -1,11 +1,12 @@
 pkgbase = perl-test2-plugin-nowarnings
 	pkgdesc = A Test2 event for warnings (via MetaCPAN distribution)
 	pkgver = 0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Test2-Plugin-NoWarnings
 	arch = any
 	license = GPL
 	license = PerlArtistic
+	checkdepends = perl-ipc-run3
 	depends = perl
 	depends = perl-test-simple
 	options = !emptydirs
