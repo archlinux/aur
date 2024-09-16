@@ -1,8 +1,8 @@
 # Maintainer: Hoream <hoream@qq.com>
 _pkgname="satty"
 pkgname="${_pkgname}-git"
-pkgver=0.7.0.r4.ge1ad952
-pkgrel=1
+pkgver=0.14.0.r6.g78b2aee
+pkgrel=2
 pkgdesc="A screenshot annotation tool inspired by Swappy and Flameshot."
 url="https://github.com/gabm/satty"
 license=("MPL2")

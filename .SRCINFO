@@ -1,7 +1,7 @@
 pkgbase = satty-git
 	pkgdesc = A screenshot annotation tool inspired by Swappy and Flameshot.
-	pkgver = 0.7.0.r4.ge1ad952
-	pkgrel = 1
+	pkgver = 0.14.0.r6.g78b2aee
+	pkgrel = 2
 	url = https://github.com/gabm/satty
 	arch = x86_64
 	license = MPL2
