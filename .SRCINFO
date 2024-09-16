@@ -1,13 +1,22 @@
 pkgbase = mprocs-bin
 	pkgdesc = Run multiple commands in parallel
-	pkgver = 0.6.4
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/pvolok/mprocs
 	arch = x86_64
+	arch = aarch64
 	license = MIT
-	provides = mprocs
-	conflicts = mprocs
-	source_x86_64 = https://github.com/pvolok/mprocs/releases/download/v0.6.4/mprocs-0.6.4-linux64.tar.gz
-	sha256sums_x86_64 = c0e7380cf911d270da9c06ba634449dc16e257a423032f324cc240e538ba614c
+	provides = mprocs-bin
+	conflicts = mprocs-bin
+	source = LICENSE-0.7.1::https://raw.githubusercontent.com/pvolok/mprocs/v0.7.1/LICENSE
+	source = README-0.7.1::https://raw.githubusercontent.com/pvolok/mprocs/v0.7.1/README.md
+	source = CHANGELOG-0.7.1::https://raw.githubusercontent.com/pvolok/mprocs/v0.7.1/CHANGELOG.md
+	sha256sums = c343db79b3fcfe53edf567483cd2f47c63c104ccc6fa6c3dfbab1c8bc2c251ca
+	sha256sums = 6f25540bbd0032976850c47a6bb78eb437143946439d049e53a3c343525fddbb
+	sha256sums = 38209d2163c27437214315e84c503799d7a7441bce4d835c4aa07533ea092ed6
+	source_x86_64 = https://github.com/pvolok/mprocs/releases/download/v0.7.1/mprocs-0.7.1-linux-x86_64-musl.tar.gz
+	sha256sums_x86_64 = c4441fc2528ec406f2139481436abe87b515033566db3f374c498cccdb16c583
+	source_aarch64 = https://github.com/pvolok/mprocs/releases/download/v0.7.1/mprocs-0.7.1-linux-aarch64-musl.tar.gz
+	sha256sums_aarch64 = 8fc7a23caebe03a68cee54aea428b4f7d45a6305ba9377b0800db277128f2473
 
 pkgname = mprocs-bin
