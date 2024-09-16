@@ -1,7 +1,7 @@
 # Maintainer: Aikawa Yataro <aikawayataro at protonmail dot com>
 
 pkgname=sourcegit
-pkgver=8.29
+pkgver=8.30
 pkgrel=1
 pkgdesc="GUI client for GIT users"
 arch=('x86_64')
@@ -10,17 +10,14 @@ license=('MIT')
 depends=('dotnet-runtime-8.0' 'git' 'git-credential-manager' 'xdg-utils')
 makedepends=('dotnet-sdk-8.0' 'desktop-file-utils')
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/sourcegit-scm/sourcegit/archive/refs/tags/v$pkgver.tar.gz"
-        'disable-aot.patch')
-sha256sums=('7a269c2ad78af6d1ddd12cf448bc53fd3877031edeeaf27d10588c60f8b397df'
-            'faae03efb782ad7af4f18f70df6359634f5c5f22e28176beb0a3c53467cd74ae')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sourcegit-scm/sourcegit/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('c609ddc058f90826efd24b33d2280b67783c57f14ba836dd9c1e27fc805dca5d')
 
 
 
 prepare() {
     cd "$pkgname-$pkgver"
 
-    patch --forward --strip=1 --input=../disable-aot.patch
     desktop-file-edit build/resources/_common/applications/sourcegit.desktop \
         --set-icon=sourcegit --set-key=Exec --set-value=sourcegit
 }
@@ -31,7 +28,7 @@ build() {
     
     cd "$pkgname-$pkgver"
 
-    dotnet publish src/SourceGit.csproj -c Release -r linux-x64 -o publish
+    dotnet publish src/SourceGit.csproj -c Release -r linux-x64 -o publish -p:SourceGitNoAot=true
     rm -f publish/SourceGit.pdb
     mv publish/SourceGit "publish/$pkgname"
 }
