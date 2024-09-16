@@ -1,0 +1,23 @@
+pkgbase = maple2024
+	pkgdesc = A commercial computer algebra system developed and sold commercially by Maplesoft. Version 2024.
+	pkgver = latest
+	pkgrel = 1
+	url = https://www.maplesoft.com/download/
+	install = maple2024.install
+	arch = x86_64
+	license = custom
+	depends = ld-lsb
+	conflicts = maple18
+	conflicts = maple2019
+	conflicts = maple2020
+	conflicts = maple2021
+	conflicts = maple2023
+	options = !strip
+	source = maple2024.desktop
+	source = Maplesoft-x-maple-worksheet.xml
+	source = local://Maple2024.1LinuxX64Installer.run
+	sha256sums = 507ceb084cb771afbdf480133f4fec7906426207648690f3998e90333743cb4b
+	sha256sums = e29ded05d8cda39ae2c8dd2b204c3b47e5c432d75d8e2bde3ddae0b71136b643
+	sha256sums = SKIP
+
+pkgname = maple2024
