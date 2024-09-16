@@ -2,7 +2,7 @@
 
 pkgname=mautrix-meta
 _name=meta
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A Matrix-meta (Facebook, Instagram) puppeting bridge"
 arch=('x86_64' 'aarch64')
@@ -24,16 +24,15 @@ source=(
   log-path.diff
 )
 backup=("etc/${pkgname}/${pkgname}.yaml")
-sha256sums=('7f8efc4848c7a8c6e189f7c98a84f72f488ac8a655ffe7ecf5dead792cbec625'
+sha256sums=('35382a7d4b15a37dfa5910dbe579333a0305b65ff3c7f287829be6d574f7d410'
             '6888d152b7b6b0175160a452009b866eba53244ff844da9f6abeb02654e28be5'
             '7dfa012f34ec7f940b1c4111de701b97273b1c2f4075b2f5e67a4c2327f8fb2f'
             'aa9176df4f7a23af8d43203d70e801b6cde20e830cf448f440f6361202740cf2'
-            '7dc76380ffd9541f4508e834f32c51766505ac9bc285525063b3336c304967ca')
+            '9a9f1a58360b3bab0f217ba4c9dccfbadd7c3441af4bd0af3b57e6e223062a94')
 
 prepare() {
   cd "${srcdir}/${_name}-${pkgver}"
-  echo "Applying fix for log path"
-  patch -Np1 < "$srcdir/log-path.diff"
+  go mod tidy
 }
 
 build() {
@@ -45,7 +44,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   export MAUTRIX_VERSION=$(cat go.mod | grep 'maunium.net/go/mautrix ' | awk '{ print $2 }')
   export GO_LDFLAGS="-s -w -X main.Tag="v${_pkgver}" -X 'maunium.net/go/mautrix.GoModVersion=$MAUTRIX_VERSION'"
-  go build -ldflags "$GO_LDFLAGS" -o "$pkgname"
+  go build -ldflags "$GO_LDFLAGS" -o "$pkgname" ./cmd/"$pkgname"
 }
 
 package() {
@@ -54,7 +53,12 @@ package() {
   install -Dm644 "${srcdir}/sysusers-${pkgname}.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
   install -dm755 "${pkgdir}/etc/${pkgname}"
-  install -Dm644 "example-config.yaml" "${pkgdir}/etc/${pkgname}/${pkgname}.yaml"
   install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  
+  echo "Generating config and applying fix for log path"
+  ./mautrix-meta -e -c "${pkgdir}/etc/${pkgname}/${pkgname}.yaml"
+  cd "${pkgdir}/etc/${pkgname}/"
+  patch -Np1 < "$srcdir/log-path.diff"
+  chmod 644 "${pkgname}.yaml"
 }
