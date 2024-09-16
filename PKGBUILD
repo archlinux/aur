@@ -23,12 +23,12 @@ pkgver() {
 package() {
   # Install files from steavensettings
   cd "$srcdir/steavensettings"
-  install -Dm644 usr/bin/amd-gpu-run "$pkgdir/usr/bin/amd-gpu-run"
-  install -Dm644 usr/bin/intel-gpu-run "$pkgdir/usr/bin/intel-gpu-run"
-  install -Dm644 usr/bin/nvidia-gpu-run "$pkgdir/usr/bin/nvidia-gpu-run"
-  install -Dm644 usr/bin/nouveau-gpu-run "$pkgdir/usr/bin/nouveau-gpu-run"
-  install -Dm644 usr/bin/killpicom "$pkgdir/usr/bin/killpicom"
-  install -Dm644 usr/bin/game-run "$pkgdir/usr/bin/game-run"
+  install -Dm755 usr/bin/amd-gpu-run "$pkgdir/usr/bin/amd-gpu-run"
+  install -Dm755 usr/bin/intel-gpu-run "$pkgdir/usr/bin/intel-gpu-run"
+  install -Dm755 usr/bin/nvidia-gpu-run "$pkgdir/usr/bin/nvidia-gpu-run"
+  install -Dm755 usr/bin/nouveau-gpu-run "$pkgdir/usr/bin/nouveau-gpu-run"
+  install -Dm755 usr/bin/killpicom "$pkgdir/usr/bin/killpicom"
+  install -Dm755 usr/bin/game-run "$pkgdir/usr/bin/game-run"
   install -Dm644 etc/conf.d/libvirt-guests "$pkgdir/conf.d/libvirt-guests"
   install -Dm644 etc/environment.d/editor.conf "$pkgdir/usr/lib/environment.d/editor.conf"
   install -Dm644 etc/grub.d/40_cpu_mitigations.cfg "$pkgdir/etc/grub.d/40_cpu_mitigations.cfg"
