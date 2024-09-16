@@ -2,7 +2,7 @@
 
 pkgname="updatecli"
 pkgver=0.84.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A declarative dependency management command line tool"
 arch=('x86_64')
 url="https://www.updatecli.io"
@@ -27,17 +27,21 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o "build/${pkgname}" .
+  go build -o "build/${pkgname}" -ldflags "\
+    -X ${_url#https://}/pkg/core/version.BuildTime=$(date -u +"%Y-%m-%dT%H:%M:%SZ") \
+    -X ${_url#https://}/pkg/core/version.GoVersion=$(go version | awk '{print $3}') \
+    -X ${_url#https://}/pkg/core/version.Version=${pkgver}" \
+    .
 
   ./"scripts/manpages.sh"
   ./"scripts/completions.sh"
 }
 
-# check() {
-#   cd "${srcdir}/${_pkgsrc}"
-#   make test
-#   make test-short
-# }
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  # make test
+  make test-short
+}
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
