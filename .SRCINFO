@@ -1,5 +1,5 @@
 pkgbase = steavensettings
-	pkgdesc = A configuration tool for Linux created by Steaven
+	pkgdesc = SteavenGamerYT's Arch Linux Settings
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/steavenlinux/steavensettings

@@ -3,7 +3,7 @@
 pkgname=steavensettings
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="A configuration tool for Linux created by Steaven"
+pkgdesc="SteavenGamerYT's Arch Linux Settings"
 arch=('any')
 url="https://github.com/steavenlinux/steavensettings"
 license=('MIT')
