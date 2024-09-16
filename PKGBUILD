@@ -6,7 +6,7 @@
 pkgname=eclipse-titan
 _pkgname=titan.core
 pkgver=10.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A free and open source (FOSS) compiler both for TTCN-3 and for ASN.1"
 arch=('i686' 'x86_64')
 url="https://projects.eclipse.org/projects/tools.titan"
