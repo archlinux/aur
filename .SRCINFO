@@ -1,0 +1,15 @@
+pkgbase = chess-electron
+	pkgdesc = Chess.com desktop app
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tkmxqrdxddd/chess-electron
+	arch = x86_64
+	license = ISC
+	makedepends = npm
+	makedepends = nodejs
+	depends = electron
+	options = !debug
+	source = chess-electron-1.0.0.tar.gz::https://github.com/tkmxqrdxddd/chess-electron/archive/v1.0.0.tar.gz
+	sha256sums = 2adcaacdd172e2f3b70e215cb48738008018716e0058abeb1e6855adb9aaf16a
+
+pkgname = chess-electron
