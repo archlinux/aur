@@ -4,7 +4,7 @@ _pkgauthor=pvolok
 _pkgname=mprocs
 pkgname=${_pkgname}-bin
 pkgver=0.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Run multiple commands in parallel"
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -28,7 +28,7 @@ sha256sums_aarch64=('8fc7a23caebe03a68cee54aea428b4f7d45a6305ba9377b0800db277128
 
 
 build() {
-	help2man ./${_pkgname} --output "MAN-${pkgver}.1"
+	help2man ./${_pkgname} --no-info --output "MAN-${pkgver}.1"
 }
 
 package() {

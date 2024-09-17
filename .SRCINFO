@@ -1,7 +1,7 @@
 pkgbase = mprocs-bin
 	pkgdesc = Run multiple commands in parallel
 	pkgver = 0.7.1
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/pvolok/mprocs
 	arch = x86_64
 	arch = aarch64
