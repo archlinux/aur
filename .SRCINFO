@@ -1,6 +1,6 @@
 pkgbase = sqlar-fossil
 	pkgdesc = Compressed archives in SQLite databases, including a fuse filesystem
-	pkgver = f9267bb61a
+	pkgver = 0ab1c6f50f
 	pkgrel = 1
 	url = https://sqlite.org/sqlar/doc/trunk/README.md
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = sqlar-fossil
 	makedepends = gcc
 	makedepends = make
 	makedepends = glibc
-	optdepends = fuse3: mount SQLite Archives as filesystems
+	makedepends = fuse3
 	provides = sqlar
 	conflicts = sqlar
 
