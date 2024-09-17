@@ -1,5 +1,5 @@
 pkgname=publisher
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=0
 pkgdesc="Tool to publish & distribute CLI tools"
 arch=('x86_64' 'i686')
@@ -8,9 +8,9 @@ license=("MIT")
 provides=("publisher")
 conflicts=()
 source_x86_64=($pkgname-$pkgver.zip::https://github.com/termapps/publisher/releases/download/v$pkgver/publisher-v$pkgver-x86_64-unknown-linux-gnu.zip)
-sha256sums_x86_64=("1a85a6d0fdedb39065da34ecfafc281584710632cde9e98a4481f964098c62ad")
+sha256sums_x86_64=("d212fb2d604ba500dab47121cf8fc2f7c2c4bd69b7300994e994358443f28611")
 source_i686=($pkgname-$pkgver.zip::https://github.com/termapps/publisher/releases/download/v$pkgver/publisher-v$pkgver-i686-unknown-linux-gnu.zip)
-sha256sums_i686=("c97215a094c44e3a0aa8d698d3105f7dd801fbb9373605fc1c7d580c6fa4e938")
+sha256sums_i686=("46be3582ee5ee8524bbd218986952f1920ebeaed94a19cf4f2bfcbeaa0586953")
 
 package() {
     cd "$srcdir"
