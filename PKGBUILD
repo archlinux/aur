@@ -4,16 +4,16 @@
 
 pkgname=phoc-git
 _pkgname=phoc
-pkgver=r2394.14cfc32
+pkgver=r2478.16a01a7
 pkgrel=2
 pkgdesc='Display compositor designed for phones'
 arch=(x86_64 aarch64)
 url='https://gitlab.gnome.org/World/Phosh/phoc'
 license=(GPL3)
-depends=(gnome-desktop wlroots gsettings-desktop-schemas pixman libinput libxcb libxkbcommon
+depends=(gnome-desktop wlroots0.17 gsettings-desktop-schemas pixman libinput libxcb libxkbcommon
 	 json-glib glib2 dconf cairo wayland libgmobile)
 checkdepends=(xorg-server-xvfb xorg-xauth mutter pixman)
-makedepends=(cmake meson git wayland-protocols python-jinja python-pygments python-typogrify libgirepository)
+makedepends=(cmake meson git wayland-protocols python-jinja python-pygments python-typogrify libgirepository glib2-devel)
 optdepends=('xorg-wayland: run X clients under phoc')
 source=("git+$url.git")
 sha256sums=('SKIP')
@@ -30,6 +30,7 @@ prepare() {
 }
 
 build() {
+  export PKG_CONFIG_PATH='/usr/lib/wlroots0.17/pkgconfig'
   arch-meson "${_pkgname}" build -Dembed-wlroots=disabled
   meson compile -C build
 }
