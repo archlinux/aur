@@ -1,6 +1,6 @@
 pkgbase = liteloader-qqnt-llonebot-bin
 	pkgdesc = 使你的NTQQ支持OneBot11协议进行QQ机器人开发
-	pkgver = 3.31.1
+	pkgver = 3.32.8
 	pkgrel = 1
 	url = https://github.com/LLOneBot/LLOneBot
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = liteloader-qqnt-llonebot-bin
 	depends = liteloader-qqnt
 	provides = liteloader-qqnt-llonebot
 	conflicts = liteloader-qqnt-llonebot
-	source = liteloader-qqnt-llonebot-bin-3.31.1.zip::https://github.com/LLOneBot/LLOneBot/releases/download/v3.31.1/LLOneBot.zip
-	sha256sums = f693c97aa9bc4043cdecb7c4968913488dbfcdfc571b471da2c0e38c34ac53a8
+	source = liteloader-qqnt-llonebot-bin-3.32.8.zip::https://github.com/LLOneBot/LLOneBot/releases/download/v3.32.8/LLOneBot.zip
+	sha256sums = 53ad917da48a87862734d642eb7c3ec8e26ef82a28c071713d2180adeeb9c894
 
 pkgname = liteloader-qqnt-llonebot-bin
