@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=vt-py
 pkgname=python-${_base}
-pkgver=0.18.3
+pkgver=0.18.4
 pkgrel=1
 pkgdesc="Official Python client library for VirusTotal's REST API"
 arch=(any)
