@@ -6,13 +6,13 @@ pkgdesc="Standard Phoenix policies for Mozilla Firefox without Firefox Sync"
 arch=(any)
 license=('GPL3')
 url="https://phoenix.celenity.dev"
-source=('policies.json')
-sha512sums=('52f664d98855d5f2f4e2d43046f00d9163a9ce8a1384dc297f7a52cbb04de2c4c1de44b20305420c085c3bbf6bc1acdbdf03ff0e8f5ce67492c7a9f1c1632b21')
+source=("git+https://codeberg.org/celenity/Phoenix.git#commit=f583ebbe6f43060ce2829236d1a45096011469d4")
+sha512sums=('SKIP')
 
 pkgver() {
     echo "$pkgver"
 }
 
 package() {
-    install -Dm644 "$srcdir/policies.json" "$pkgdir/usr/lib/firefox/distribution/policies.json"
+    install -Dm644 "$srcdir/Phoenix/policies/Linux/No-Sync/policies.json" "$pkgdir/usr/lib/firefox/distribution/policies.json"
 }

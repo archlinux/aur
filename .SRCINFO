@@ -5,7 +5,7 @@ pkgbase = phoenix-policies-no-sync
 	url = https://phoenix.celenity.dev
 	arch = any
 	license = GPL3
-	source = policies.json
-	sha512sums = 52f664d98855d5f2f4e2d43046f00d9163a9ce8a1384dc297f7a52cbb04de2c4c1de44b20305420c085c3bbf6bc1acdbdf03ff0e8f5ce67492c7a9f1c1632b21
+	source = git+https://codeberg.org/celenity/Phoenix.git#commit=f583ebbe6f43060ce2829236d1a45096011469d4
+	sha512sums = SKIP
 
 pkgname = phoenix-policies-no-sync
