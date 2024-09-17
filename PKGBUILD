@@ -2,18 +2,16 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=('basix-git' 'python-fenics-basix-git')
 pkgdesc="FEniCSx finite element basis evaluation library"
-pkgver=0.9.0.dev0_r1058.de0bd73
-pkgrel=3
+pkgver=0.9.0.dev0_r1059.891e9a1
+pkgrel=1
 arch=('x86_64')
 url="https://fenicsproject.org"
 license=('MIT')
 makedepends=('cmake' 'python-build' 'python-installer' 'python-wheel'
              'python-setuptools' 'nanobind' 'python-scikit-build-core' 'chrpath' 'git')
 conflicts=('basix' 'fenics-basix-git' 'python-fenics-basix' 'python-basix-git')
-source=("git+https://github.com/FEniCS/basix"
-        "nanobind1_workaround.patch")
-sha512sums=('SKIP'
-            '3dc15df852fe066b897c2c9103b5b8e03e0c6fc08f18a1280e7f03bc8ec8bc4fa94829fe2c897f0e4b19307eb82423af355de7e962b95e95e065b35ef35f133f')
+source=("git+https://github.com/FEniCS/basix")
+sha512sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/basix"
@@ -24,8 +22,6 @@ pkgver() {
 
 prepare() {
     git -C "${srcdir}/basix" clean -dfx
-    cd "${srcdir}/basix"
-    patch -p0 < "${srcdir}/nanobind1_workaround.patch"
 }
 
 build() {
