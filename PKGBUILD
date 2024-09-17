@@ -4,8 +4,8 @@
 
 _pyname=deepl
 pkgname=python-${_pyname}
-pkgver=1.18.0
-pkgrel=2
+pkgver=1.19.1
+pkgrel=1
 pkgdesc='Python library for the DeepL API'
 arch=(any)
 url="https://github.com/${_pyname}com/${_pyname}-python"
@@ -18,7 +18,7 @@ optdepends=('python-keyring: for support storing API Key')
 source=("git+$url.git?signed#tag=v$pkgver")
 validpgpkeys=('D84A62C6CA4D3E3D6656083438FCACAAFD2C06B8'  # Jan Ebbing <Jan.Ebbing@deepl.com>
               'DBDC63E97C526204335805941FA7A782EC90634E') # Daniel Jones <daniel.jones@deepl.com>
-sha256sums=('0415f099b8b55705c83ab44f99b82c253fd50110ff452fd0253ef59e3b4b4078')
+sha256sums=('1bc91a2a93079b394f1fa269bbd7d9771d6df864c57fe4d92483971352daa164')
 
 build() {
 	cd "$_pyname-python"
