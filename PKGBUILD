@@ -1,14 +1,14 @@
 # Maintainer: Sandy Carter <bwrsandman+aur@gmail.com>
 
 pkgname=openblack-git
-pkgver=r1784.c900d8ea
+pkgver=r2158.cfaeb1a8
 pkgrel=1
 pkgdesc="Open source reimplementation of the game Black & White (2001)."
 arch=('x86_64')
 url="https://github.com/openblack/openblack"
 license=('GPL3' 'MIT')
 depends=('fmt' 'spdlog' 'entt' 'sdl2' 'glm' 'bgfx' 'bullet' 'minizip' 'imgui' 'openal')
-makedepends=('git' 'cmake' 'bgfx-cmake-git' 'cxxopts' 'stb' 'dr_libs-git')
+makedepends=('git' 'cmake' 'bgfx-cmake-git' 'cxxopts' 'stb' 'dr_libs-git' 'utf8cpp')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 
