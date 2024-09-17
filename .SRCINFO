@@ -1,8 +1,9 @@
 pkgbase = iceshrimp.net-akkoma-fe-git
 	pkgver = 3.10.0.92d3cd4d
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = AGPL
+	makedepends = jq
 	makedepends = nodejs
 	source = akkoma-fe::git+https://iceshrimp.dev/iceshrimp/akkoma-fe.git
 	sha256sums = SKIP
