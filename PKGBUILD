@@ -2,7 +2,7 @@
 
 pkgname=fontship
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=(any)
 url="https://github.com/theleagueof/$pkgname"
@@ -27,19 +27,18 @@ depends=(diffutils
          python-lxml # fonttools optdepends
          python-pcpp
          python-skia-pathops # ufo2ft optdepends
-         'python-ufo2ft>=2.19.1'
+         python-ufo2ft
          python-ufonormalizer
          python-unicodedata2 # fonttools optdepends
          python-vttlib
          python-zopfli # fonttools optdepends
-         'sfd2ufo>=1.0.7'
+         sfd2ufo
          sfdnormalize
          sfnt2woff-zopfli
          ttfautohint
          woff2
          zsh)
-makedepends=(cargo
-             rust)
+makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.zst"{,.asc})
 sha256sums=('b90eda42b19ff65e8968f61bf17c3d5f588e7325296995aa2d404c12f47f55ee'
@@ -72,6 +71,7 @@ check() {
 }
 
 package() {
+	depends+=(libgit2.so)
 	cd "$_archive"
 	make DESTDIR="$pkgdir" install
 }
