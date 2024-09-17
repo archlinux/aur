@@ -4,13 +4,13 @@ pkgname=stm32cubemonucpd
 _pkgname=STM32CubeMonUCPD
 _pkg_file_name=en.STM32CubeMonUCPD_Lin.zip
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Monitoring and configuration software tool for STM32 USB-C and Power Delivery 3.0 applications"
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubemonucpd.html"
 license=('custom:SLA0048')
 # package stlink provides stlink udev files
-depends=('java-runtime=8' 'java8-openjfx')
+#depends=('java-runtime=8' 'java8-openjfx')
 options=('!strip')
 
 # cURL inspiration from davinci-resolve package maintained by "Alex S".
@@ -48,8 +48,8 @@ package() {
 	install -Dm 755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<END
 #!/bin/sh
 
-export PATH="/usr/lib/jvm/java-8-openjdk/bin/:\$PATH"
-exec java -jar /opt/${pkgname}/STM32CubeMonitor-UCPD.jar "$@"
+export PATH="/opt/${pkgname}/jre/bin:\$PATH"
+exec java -Djdk.gtk.version=2 -jar /opt/${pkgname}/STM32CubeMonitor-UCPD.jar "$@"
 END
 
 	msg2 'Installing desktop shortcut and icon'
@@ -68,8 +68,10 @@ Type=Application
 Categories=Development;Java;
 END
 
-	msg2 'Removing bundled JRE'
-	rm "${pkgdir}/opt/${pkgname}/jre" -R
+	#msg2 'Removing bundled JRE'
+	#rm "${pkgdir}/opt/${pkgname}/jre" -R
+	
+	msg2 'Removing bundled Uninstaller'
 	rm "${pkgdir}/opt/${pkgname}/Uninstaller" -R
 
 	# soft link
