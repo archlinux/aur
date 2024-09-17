@@ -1,0 +1,13 @@
+pkgbase = wine-binfmt
+	pkgdesc = Register wine interpreter for binfmt
+	pkgver = 1
+	pkgrel = 2
+	url = http://www.freedesktop.org/software/systemd/man/binfmt.d.html
+	arch = any
+	license = Unlicense
+	depends = wine
+	depends = systemd
+	source = wine.conf
+	sha256sums = bede63e9e8205c12928491ed47ac96ab2f5c4304ea6d47d0b6f170a1696bbdc6
+
+pkgname = wine-binfmt
