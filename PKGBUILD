@@ -1,14 +1,14 @@
 # Maintainer: kyngs <aurmail at kyngs dot xyz>
 
 pkgname=mcman-bin
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Powerful Minecraft Server Manager CLI."
 arch=('x86_64')
 url="https://github.com/ParadigmMC/mcman"
-source=("https://github.com/ParadigmMC/mcman/releases/download/${pkgver}/mcman")
-sha256sums=('6efb803b501fe25e8a3fd96e3afb413f35cd0dfbfd0eaa79fefeffce467ca05c')
+source=("$pkgname-$pkgver-mcman::https://github.com/ParadigmMC/mcman/releases/download/${pkgver}/mcman")
+sha256sums=('23e89c2b15f1032dcfa921d61a1dcff843cbe8aae7d5b671926b0b8b91243fbd')
 
 package() {
-  install -Dm 755 "${srcdir}/mcman" "${pkgdir}/usr/bin/mcman"
+  install -Dm 755 "${srcdir}/$pkgname-$pkgver-mcman" "${pkgdir}/usr/bin/mcman"
 }
