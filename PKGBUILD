@@ -6,7 +6,7 @@ pkgrel=3
 pkgdesc="Gui settings mangohud"
 arch=(x86_64)
 url="https://github.com/radiolamp/${pkgname}"
-license=(GPL-3.0)
+license=(GPL-3.0-or-later)
 depends=(
   glib2
   gtk4
