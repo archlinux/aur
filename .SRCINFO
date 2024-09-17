@@ -7,7 +7,6 @@ pkgbase = gamescope-legacy-bin
 	license = BSD-2-Clause
 	license = BSD-3-Clause
 	license = LicenseRef-Reshade
-	makedepends = rpmextract
 	makedepends = libdisplay-info
 	depends = gcc-libs
 	depends = glibc

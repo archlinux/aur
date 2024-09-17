@@ -49,7 +49,6 @@ depends=(
   libliftoff
 )
 makedepends=(
-  rpmextract
   libdisplay-info
 )
 
