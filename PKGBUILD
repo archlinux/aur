@@ -1,6 +1,6 @@
 # Maintainer: drzee <info@drzee.net>
 pkgname=amazon-ssm-agent-bin
-pkgver=3.3.551.0
+pkgver=3.3.859.0
 pkgrel=1
 pkgdesc="Amazon SSM Agent for managing EC2 Instances using the SSM APIs. See: https://aws.amazon.com/documentation/systems-manager/ for details"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=(https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/${pkgver}/debian_amd64/${pkgname%-bin}.deb)
-md5sums=('5d4357f8fd052d270dbb4a93c3369481')
+md5sums=('2539025a260a02b9ddeb9c1fe2e19325')
 noextract=()
 
 prepare() {
