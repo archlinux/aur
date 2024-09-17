@@ -1,7 +1,7 @@
 pkgbase = dolphin-emu-git
 	pkgdesc = A Gamecube / Wii emulator
-	pkgver = 2407.r103.g87b7009c12
-	pkgrel = 2
+	pkgver = 2409.r37.g6851ed73f4
+	pkgrel = 1
 	url = https://dolphin-emu.org
 	arch = x86_64
 	arch = aarch64

@@ -9,8 +9,8 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='2407.r103.g87b7009c12'
-pkgrel='2'
+pkgver='2409.r37.g6851ed73f4'
+pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
 arch=('x86_64' 'aarch64')
@@ -119,7 +119,7 @@ check() {
 	# Verify that the basic functionality works
 	_checkoutput="$(QT_QPA_PLATFORM='offscreen' "$srcdir/$_sourcedirectory/build/Binaries/$_noguipkgname" --version)"
 	printf '%s\n' "$_checkoutput"
-	printf '%s\n' "$_checkoutput" | grep -q -E "^${_projectname^} ${_checkversion}(-dirty)?$"
+	printf '%s\n' "$_checkoutput" | grep -q -E "^${_projectname^}( \[.+\])? ${_checkversion}(-dirty)?(-ICC)?$"
 }
 
 package_dolphin-emu-git() {
