@@ -12,7 +12,7 @@
 # basic info
 _pkgname="kotatogram-desktop"
 pkgname="$_pkgname-git"
-pkgver=1.4.15.2.r1022.gbc58b5f
+pkgver=1.5.0.4.r1004.ge30c185
 pkgrel=1
 pkgdesc='Experimental fork of Telegram Desktop'
 url="https://github.com/kotatogram/kotatogram-desktop"
@@ -23,9 +23,6 @@ depends=(
   'abseil-cpp'
   'ffmpeg'
   'glib2'
-  'glibmm-2.68'
-  'gobject-introspection'
-  'hicolor-icon-theme'
   'hunspell'
   'jemalloc'
   'kcoreaddons'
@@ -33,7 +30,7 @@ depends=(
   'libdispatch'
   'libjpeg.so' # 'libjpeg-turbo'
   'libpipewire'
-  'libsigc++'
+  'libprotobuf-lite.so' # protobuf
   'libvpx'
   'libx11'
   'libxcb'
@@ -48,12 +45,10 @@ depends=(
   'openal'
   'openh264'
   'opus'
-  'protobuf'
   'qt6-imageformats'
   'qt6-svg'
   'qt6-wayland'
   'rnnoise'
-  'ttf-opensans'
   'wayland'
   'xcb-util-keysyms'
   'xxhash'
@@ -65,8 +60,8 @@ makedepends=(
   'extra-cmake-modules'
   'git'
   'glib2-devel'
+  'gobject-introspection'
   'meson'
-  'microsoft-gsl'
   'ninja'
   'pipewire'
   'plasma-wayland-protocols'
@@ -153,31 +148,22 @@ _source_kotatogram_desktop() {
     #'ericniebler.range-v3'::'git+https://github.com/ericniebler/range-v3.git'
     'fcitx.fcitx5-qt'::'git+https://github.com/fcitx/fcitx5-qt.git'
     'flatpak.xdg-desktop-portal'::'git+https://github.com/flatpak/xdg-desktop-portal.git'
-    'gitlab-freedesktop-mirrors.wayland'::'git+https://github.com/gitlab-freedesktop-mirrors/wayland.git'
-    'gitlab-freedesktop-mirrors.wayland-protocols'::'git+https://github.com/gitlab-freedesktop-mirrors/wayland-protocols.git'
     'google.cld3'::'git+https://github.com/google/cld3.git'
     'hamonikr.nimf'::'git+https://github.com/hamonikr/nimf.git'
     'hime-ime.hime'::'git+https://github.com/hime-ime/hime.git'
-    'hunspell'::'git+https://github.com/hunspell/hunspell.git'
-    'kde.kcoreaddons'::'git+https://github.com/KDE/kcoreaddons.git'
-    'kde.kimageformats'::'git+https://github.com/KDE/kimageformats.git'
-    'kde.plasma-wayland-protocols'::'git+https://github.com/KDE/plasma-wayland-protocols.git'
+    #'hunspell'::'git+https://github.com/hunspell/hunspell.git'
+    #'jemalloc'::'git+https://github.com/jemalloc/jemalloc.git'
+    #'kde.kcoreaddons'::'git+https://github.com/KDE/kcoreaddons.git'
+    #'kde.kimageformats'::'git+https://github.com/KDE/kimageformats.git'
     'kotatogram.cmake_helpers'::'git+https://github.com/kotatogram/cmake_helpers.git'
     'kotatogram.lib_ui'::'git+https://github.com/kotatogram/lib_ui.git'
-    'lz4'::'git+https://github.com/lz4/lz4.git'
+    #'lz4'::'git+https://github.com/lz4/lz4.git'
     'nayuki.qr-code-generator'::'git+https://github.com/nayuki/QR-Code-generator.git'
     'tartanllama.expected'::'git+https://github.com/TartanLlama/expected.git'
     'telegramdesktop.libtgvoip'::'git+https://github.com/telegramdesktop/libtgvoip.git'
     'telegrammessenger.tgcalls'::'git+https://github.com/TelegramMessenger/tgcalls.git'
   )
   sha256sums+=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -229,18 +215,16 @@ _source_kotatogram_desktop() {
       #'ericniebler.range-v3'::'Telegram/ThirdParty/range-v3'
       'fcitx.fcitx5-qt'::'Telegram/ThirdParty/fcitx5-qt'
       'flatpak.xdg-desktop-portal'::'Telegram/ThirdParty/xdg-desktop-portal'
-      'gitlab-freedesktop-mirrors.wayland'::'Telegram/ThirdParty/wayland'
-      'gitlab-freedesktop-mirrors.wayland-protocols'::'Telegram/ThirdParty/wayland-protocols'
       'google.cld3'::'Telegram/ThirdParty/cld3'
       'hamonikr.nimf'::'Telegram/ThirdParty/nimf'
       'hime-ime.hime'::'Telegram/ThirdParty/hime'
-      'hunspell'::'Telegram/ThirdParty/hunspell'
-      'kde.kcoreaddons'::'Telegram/ThirdParty/kcoreaddons'
-      'kde.kimageformats'::'Telegram/ThirdParty/kimageformats'
-      'kde.plasma-wayland-protocols'::'Telegram/ThirdParty/plasma-wayland-protocols'
+      #'hunspell'::'Telegram/ThirdParty/hunspell'
+      #'jemalloc'::'Telegram/ThirdParty/jemalloc'
+      #'kde.kcoreaddons'::'Telegram/ThirdParty/kcoreaddons'
+      #'kde.kimageformats'::'Telegram/ThirdParty/kimageformats'
       'kotatogram.cmake_helpers'::'cmake'
       'kotatogram.lib_ui'::'Telegram/lib_ui'
-      'lz4'::'Telegram/ThirdParty/lz4'
+      #'lz4'::'Telegram/ThirdParty/lz4'
       'nayuki.qr-code-generator'::'Telegram/ThirdParty/QR'
       'tartanllama.expected'::'Telegram/ThirdParty/expected'
       'telegramdesktop.libtgvoip'::'Telegram/ThirdParty/libtgvoip'
@@ -365,6 +349,7 @@ prepare() {
       git submodule init "${_module##*::}"
       git submodule set-url "${_module##*::}" "$srcdir/${_module%%::*}"
       git -c protocol.file.allow=always submodule update "${_module##*::}"
+      echo
     done
   }
 
