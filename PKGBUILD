@@ -2,31 +2,25 @@
 # Contributor: Alexey Peschany <archlinux at sandboiii dot xyz>
 
 # options
-if [ -n "$_srcinfo" ] || [ -n "$_pkgver" ]; then
-  : ${_autoupdate:=false}
-else
+if [ -z "$_srcinfo" ] && [ -z "$_pkgver" ]; then
   : ${_autoupdate:=true}
 fi
 
 : ${_pkgtype:=-bin}
 
-# basic info
 _pkgname="mercury-browser"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=123.0.1
+pkgver=129.0.2
 pkgrel=1
 pkgdesc="Compiler optimized, private Firefox fork"
 url="https://github.com/Alex313031/Mercury"
 license=('MPL-2.0')
 arch=('x86_64')
 
-# main package
-_main_package() {
-  _update_version
+options=('!emptydirs' '!strip' '!debug')
+install="$_pkgname.install"
 
-  options=('!emptydirs' '!strip')
-  install="$_pkgname.install"
-
+_source_main() {
   : ${_dl_filename:=${_pkgname}_${_pkgver:?}_SSE3.deb}
   : ${_dl_url:=$url/releases/download/v.$_pkgver/$_dl_filename}
 
@@ -35,13 +29,11 @@ _main_package() {
   sha256sums=('SKIP')
 }
 
-# common functions
 pkgver() {
   echo "${_pkgver:?}"
 }
 
 prepare() {
-  # desktop
   install -Dvm644 /dev/stdin "$_pkgname.desktop" << END
 [Desktop Entry]
 Version=1.0
@@ -114,28 +106,6 @@ package() {
     'dbus-glib'
     'gtk3'
     'libnotify' # notify-send
-
-    ## implicit
-    #at-spi2-core
-    #cairo
-    #dbus
-    #fontconfig
-    #freetype2
-    #gcc-libs
-    #gdk-pixbuf2
-    #glib2
-    #glibc
-    #libx11
-    #libxcb
-    #libxcomposite
-    #libxcursor
-    #libxdamage
-    #libxext
-    #libxfixes
-    #libxi
-    #libxrandr
-    #libxrender
-    #pango
   )
 
   local _filetype="zip"
@@ -196,7 +166,6 @@ _package_zip() {
   bsdtar --strip-components="$_depth" -C "$pkgdir/opt/$_pkgname/" -xf "$_dl_filename" '*/mercury/*'
 }
 
-# update version
 _update_version() {
   : ${_pkgver:=${pkgver%%.r*}}
 
@@ -228,5 +197,5 @@ _update_version() {
   fi
 }
 
-# execute
-_main_package
+_update_version
+_source_main
