@@ -53,7 +53,7 @@ makedepends=(
 )
 
 source_x86_64=("https://repos.fyralabs.com/terra40/gamescope-legacy-0:${pkgver}-1.fc40.x86_64.rpm")
-sha256sums=('SKIP')
+sha256sums=('610725988259168bd7b21218a4e7c30f1d4e552aee8e5d65b383668f449779e5')
 
 build() {
     cd "${srcdir}"
