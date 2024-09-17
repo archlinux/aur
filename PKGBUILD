@@ -2,16 +2,16 @@
 # Contributor: Dominik Schwaiger <mail@dominik-schwaiger.ch>
 
 pkgname=surrealdb
-pkgver=1.5.5
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A scalable, distributed, collaborative, document-graph database, for the realtime web"
 arch=('x86_64')
 url="https://github.com/surrealdb/surrealdb"
 license=('custom:BSL')
-depends=('curl' 'clang')
-makedepends=('rustup' 'cargo-make')
-checkdepends=('rustup' 'cargo-make')
-conflicts=('surrealdb-bin')
+depends=("gcc-libs")
+makedepends=("rustup" "cargo-make" "clang" "patch")
+checkdepends=("rustup" "cargo-make" "clang" "patch")
+conflicts=("surrealdb-bin")
 
 source=(
 	"https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver//_/-}/LICENSE"
@@ -19,13 +19,13 @@ source=(
 )
 
 sha256sums=(
-	"a007c53f27d30bda8cc56feec356eba13b646a8fb59a97d151e3aab820429d2d"
-	"fdd54d642960446a5fbe111dcadbb2ad3f421786d6edda8bd268e25048d4fe44"
+	"dd98c688e54be8b85ad79e603f5112449b9789dfc031db94eb5c7dc843702aef"
+	"a201c060d89e475560a2d410c09856b8b9cb2bb6d01be1d8e17ed171cc6fff4a"
 )
 
 prepare() {
-	rustup toolchain install 1.77
-	rustup override set 1.77
+	rustup toolchain install 1.80
+	rustup override set 1.80
 }
 
 build() {
@@ -33,13 +33,16 @@ build() {
 	cargo make build
 }
 
-#check() {
-#	cd "$pkgname-${pkgver//_/-}" || exit
-#	cargo make check
-#}
+check() {
+	cd "$pkgname-${pkgver//_/-}" || exit
+	# We dont need cargo-fmt here...
+	#cargo make check
+	cargo make cargo-check
+	cargo make cargo-clippy
+}
 
 package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	cd "$pkgname-${pkgver//_/-}" || exit
-	install -Dm755 target/release/surreal "$pkgdir/usr/bin/surreal"
+	install -Dm755 target/make/surreal "$pkgdir/usr/bin/surreal"
 }
