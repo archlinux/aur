@@ -9,7 +9,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=9d6931424e9da3d44ae5fb7b809ce8236c2be881
+_mozc_commit=ce08bdfa567d1e1d7dd740f684c37344681a6b3d
 _mozcdict_ext_commit=de931271344ebb2d1349a7ae0a8ec883457ed930
 _branch=fcitx
 # Sudachi Dictionary
@@ -17,8 +17,8 @@ _sudachidict_date=20240716
 
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.30.5544.102
-pkgrel=15
+pkgver=2.30.5595.102
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003')
@@ -26,8 +26,6 @@ makedepends=('qt6-base' 'fcitx5' 'fcitx5-qt' 'bazel' 'git' 'python' 'python-six'
 options=(!lto)
 source=("git+$url.git#commit=${_mozc_commit}"
         https://github.com/fcitx/mozc/pull/61.patch
-        https://github.com/google/mozc/pull/1061.patch
-        0006-super-key.patch
         git+https://github.com/phoepsilonix/mozcdict-ext.git#commit=${_mozcdict_ext_commit}
         #"https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
         #"https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip"
@@ -40,10 +38,8 @@ source=("git+$url.git#commit=${_mozc_commit}"
 #        https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-all-titles-in-ns0.gz)
 #noextract=(jawiki-latest-all-titles-in-ns0.gz)
 
-sha512sums=('864953274bbf943d90f32b81755787f799eb7f74794ae55d3b00abe19f31d0a124f75330e20808124cbb18ead15bbb469cc3666bd0b7333fb507c4b477e77bd8'
+sha512sums=('f49db9f9ba044135403ec3616440faed7fbfa58f693312df109f347a5631ffb0e96ecb72cc68903c1bfdebedd9a3e21697f480ecc9d0adec089288b96a8e99fd'
             'a0aeb2856d62c71d0c137a687d901098eaa3371b896dbe39e54c36951cbd7d3cfba666ee96d055dba7e8c8384ed17e13597a697707cd960fac320e11f9b7b76c'
-            '447b81c41676831e746d0b00052ec24e4bfe648fd16d6366ee290f42f9d16ba42f4a21e2adcd30821e1b5b3c9a97bf9bf837e382f2d5bb2ee7a6d3497d515b82'
-            '84e6517009cfb25b4fc7928f30583e00fd868c3172b02a1889817dc4e44f617edbf64235fd224febab75f7a8b4827b2877427b858069530a4770d386ce2dba37'
             'fcde4a3c0200969ebb21fa927f1ff59581386a39d83ea7ec5c0092e1566c38638129b71b286434e11fb4c6b76b48d6b36eb64b053306c2bbb8a7900e2c641558'
             '9428d55d2d9603c8bfcd12cc0184415f23af1d09a2d0ebdf0cce694a09638e7cfe0c1241bf1c943427b2fccfea619ca8b2e22db3452d837b416eb31aa224e766'
             'f0a3544dcc99bf8c4cea8ebfd31af827e209f0678997ab55f6eda54f34cad5e148d1bd156417a621665c2068e7371801dc9cf1baa34f2270a99da7055f46d95d'
@@ -62,8 +58,6 @@ prepare() {
 
   # PR(pull request)
   patch -p1 -i ${srcdir}/61.patch
-  patch -p1 -i ${srcdir}/1061.patch
-  patch -p1 -i ${srcdir}/0006-super-key.patch
 
   cd src || exit
 
@@ -118,7 +112,7 @@ build() {
   #BAZEL_CXXOPTS=$(echo $CXXFLAGS | xargs -n1 echo "--cxxopt")
   
   # The bazel rules have changed, so the cache will be deleted.
-  #bazel clean
+  #bazel clean --expunge
 
   if [[ $CC =~ gcc ]];then
     #bazel build --config oss_linux --compilation_mode opt package unix/fcitx5:fcitx5-mozc.so --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized
