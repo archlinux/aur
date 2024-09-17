@@ -1,0 +1,27 @@
+pkgbase = python-fenics-dolfinx-git
+	pkgdesc = Next generation FEniCS problem solving environment
+	pkgver = 0.9.0.dev0_r27933.de18733
+	pkgrel = 1
+	url = https://fenicsproject.org
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = nanobind
+	makedepends = chrpath
+	depends = dolfinx-git
+	depends = python-fenics-ufl-git
+	depends = python-fenics-basix-git
+	depends = python-mpi4py
+	optdepends = gmsh: for handling gmsh meshes
+	optdepends = python-scipy: for sparse matrices
+	provides = python-fenics-dolfinx
+	conflicts = python-fenics-dolfinx
+	source = git+https://github.com/FEniCS/dolfinx
+	sha512sums = SKIP
+
+pkgname = python-fenics-dolfinx-git
