@@ -23,7 +23,7 @@ pkgbase = synergy
 	depends = libnotify
 	depends = pugixml
 	optdepends = qt6-base: gui support
-	source = git+https://github.com/symless/synergy-core.git#tag=1.15.1+r4
+	source = git+https://github.com/deskflow/deskflow.git#tag=1.15.1+r4
 	source = use-system-libs.patch
 	source = synergys.socket
 	source = synergys.service
