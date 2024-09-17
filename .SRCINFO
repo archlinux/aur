@@ -1,14 +1,14 @@
 pkgbase = r-separationplot
 	pkgdesc = Separation Plots
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=separationplot
 	arch = any
-	license = Artistic2.0
-	depends = r
+	license = Artistic-2.0
 	depends = r-hmisc
 	depends = r-rcolorbrewer
 	source = https://cran.r-project.org/src/contrib/separationplot_1.4.tar.gz
-	sha256sums = 1f3d2a2abc10001e522c7d0422ee68286bfa10a36c3be3fcacc64e56c70175b7
+	md5sums = 4485e15bd560d1b981ec28077ffd28fa
+	b2sums = 22b3d8f97a9efb159440bab035b7a54e673a485ad07b7c95b4a68757d2b7d710b5d28bb677515227ca3be82facaa8773465b07de8d919876d4362322d7e69b29
 
 pkgname = r-separationplot

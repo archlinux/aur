@@ -3,26 +3,26 @@
 _pkgname=separationplot
 _pkgver=1.4
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
-pkgrel=1
-pkgdesc='Separation Plots'
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('Artistic2.0')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Separation Plots"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('Artistic-2.0')
 depends=(
-  r
   r-hmisc
   r-rcolorbrewer
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1f3d2a2abc10001e522c7d0422ee68286bfa10a36c3be3fcacc64e56c70175b7')
+md5sums=('4485e15bd560d1b981ec28077ffd28fa')
+b2sums=('22b3d8f97a9efb159440bab035b7a54e673a485ad07b7c95b4a68757d2b7d710b5d28bb677515227ca3be82facaa8773465b07de8d919876d4362322d7e69b29')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
