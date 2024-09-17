@@ -1,7 +1,7 @@
 # Maintainer: zt <zt@zt64.dev>
 pkgname=vencord-desktop-git
 pkgdesc="A standalone Electron app that loads Discord & Vencord"
-pkgver=r320.a8d72fa
+pkgver=r363.24fbf35
 pkgrel=2
 
 arch=("x86_64" "aarch64")
@@ -43,20 +43,31 @@ build() {
   cd "$pkgname"
 
   corepack pnpm i
-  corepack pnpm build
-  corepack pnpx electron-builder --dir
+  corepack pnpm package:dir
 }
 
 package() {
-  cd "$srcdir"
+  cd "$srcdir/$pkgname"
 
-  install -d "$pkgdir"/opt/vesktop
-  cp -R "$pkgname/dist/linux-unpacked/." "$pkgdir/opt/vesktop"
+  # Create necessary directories
+  install -d "$pkgdir/usr/lib/vesktop"
+  install -d "$pkgdir/usr/bin"
+  install -d "$pkgdir/usr/share/applications"
+  install -d "$pkgdir/usr/share/pixmaps"
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
 
-  install -Dm 644 "vesktop.desktop" "$pkgdir/usr/share/applications/vesktop.desktop"
-  install -Dm 644 "$pkgname/static/icon.png" "$pkgdir/usr/share/pixmaps/vesktop.png"
-  install -Dm 644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # Copy application files to /usr/lib/vesktop
+  cp -R "dist/linux-unpacked/." "$pkgdir/usr/lib/vesktop"
 
-  install -d "$pkgdir"/usr/bin
-  ln -s /opt/vesktop/vesktop "$pkgdir"/usr/bin/vesktop
+  # Install desktop entry
+  install -Dm 644 "../vesktop.desktop" "$pkgdir/usr/share/applications/vesktop.desktop"
+
+  # Install icon
+  install -Dm 644 "static/icon.png" "$pkgdir/usr/share/pixmaps/vesktop.png"
+
+  # Install license
+  install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Create a symlink for the executable in /usr/bin
+  ln -s /usr/lib/vesktop/vesktop "$pkgdir/usr/bin/vesktop"
 }
