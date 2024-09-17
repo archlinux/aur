@@ -1,7 +1,7 @@
 pkgbase = xfractint
 	pkgdesc = A fractal generator wellknown from good old DOS days
 	pkgver = 20.04p16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.fractint.org/
 	arch = i686
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = xfractint
 	sha256sums = 4e5401cfec0e6ffa1dab38e3c177e1445772096cbe554200c512edeea23c47ad
 
 pkgname = xfractint
-

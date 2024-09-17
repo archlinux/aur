@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=xfractint  
 pkgver=20.04p16
-pkgrel=1
+pkgrel=2
 pkgdesc="A fractal generator wellknown from good old DOS days"
 url="http://www.fractint.org/"
 arch=('i686' 'x86_64')
