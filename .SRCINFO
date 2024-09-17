@@ -1,6 +1,6 @@
 pkgbase = python-svg2tikz
 	pkgdesc = Tools for converting SVG graphics to TikZ/PGF code
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = http://xyz2tex.github.io/svg2tikz/
 	arch = any
@@ -8,14 +8,15 @@ pkgbase = python-svg2tikz
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-poetry
 	depends = python
 	optdepends = python-inkex
 	optdepends = python-lxml
 	optdepends = xclip
-	provides = svg2tikz=3.1.0
+	provides = svg2tikz=3.2.0
 	conflicts = svg2tikz-git
-	source = https://github.com/xyz2tex/svg2tikz/archive/refs/tags/v3.1.0.tar.gz
-	sha256sums = 36f7d083d6e21693390e9626abe28d6bc9e27bf7f370796fabcf55319f9e6750
+	source = https://github.com/xyz2tex/svg2tikz/archive/refs/tags/v3.2.0.tar.gz
+	sha256sums = 2b716b6a9c81d6d53b39f50cb09b188f325b98311a715d3f72d854d0ba3d91da
 
 pkgname = python-svg2tikz
 	depends = python
