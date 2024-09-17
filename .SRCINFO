@@ -12,7 +12,6 @@ pkgbase = vesktop-electron-git
 	optdepends = xdg-utils: Open links, files, etc
 	provides = vesktop
 	conflicts = vesktop-git
-	replaces = vencord-desktop-git
 	source = vesktop::git+https://github.com/Vencord/Vesktop.git
 	source = vesktop.desktop
 	source = vesktop.sh
