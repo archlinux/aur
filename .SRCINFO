@@ -1,0 +1,12 @@
+pkgbase = r-stinepack
+	pkgdesc = Stineman, a Consistently Well Behaved Method of Interpolation
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=stinepack
+	arch = any
+	license = GPL
+	depends = r
+	source = https://cran.r-project.org/src/contrib/stinepack_1.5.tar.gz
+	sha256sums = 536c7a923064fd02eaa31161dd55d92369566fb351fbaee1ec188b1980438686
+
+pkgname = r-stinepack
