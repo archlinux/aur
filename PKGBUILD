@@ -1,14 +1,14 @@
 # Maintainer: Graham Gower <graham dot gower at gmail dot com>
 _gitname=SLiM
-_gittag=v4.2.2 # tag, branch, or commit; comment out to use latest
+_gittag=v4.3 # tag, branch, or commit; comment out to use latest
 pkgname=slim-simulator
-pkgver=4.2.2.r0.g7dc12178
+pkgver=4.3.r0.gf872f3df
 pkgrel=1
 pkgdesc="A forwards-time population genetic simulator."
 arch=("x86_64")
 url="https://messerlab.org/slim/"
 license=('GPL3')
-depends=("qt5-base")
+depends=("qt6-base")
 makedepends=("git" "cmake")
 conflicts=("slim") # a display manager, also called SLiM
 source=("git+https://github.com/MesserLab/${_gitname}.git")
