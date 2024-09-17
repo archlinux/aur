@@ -1,15 +1,16 @@
 pkgbase = ourbible
-	pkgdesc = bible viewer app with GUI and web interface which uses MyBible android app's modules
-	pkgver = 0.10.1
+	pkgdesc = Bible viewer app with GUI and web interface which uses MyBible Android app's modules
+	pkgver = 0.15.0
 	pkgrel = 0
 	url = https://github.com/mindiae/ourbible
 	arch = x86_64
-	license = LGPL
-	license = GPL
+	license = GPL-3.0
 	makedepends = git
 	depends = sqlite
 	depends = go
-	source = https://github.com/mindiae/ourbible/archive/refs/tags/0.10.1.tar.gz
-	sha256sums = 6088e63f9f021cfb8db9bc60d659151d6cb77798a37c8236e47210ca28ef0cc0
+	depends = gtk4
+	depends = webkitgtk-6.0
+	source = https://github.com/mindiae/ourbible/archive/refs/tags/0.15.0.tar.gz
+	sha256sums = 6662264605b9338d233c70393f744c9851378506b7fb9d48cdcab348edf04bce
 
 pkgname = ourbible
