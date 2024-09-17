@@ -1,6 +1,6 @@
 pkgbase = power-options-webview
 	pkgdesc = A Web Renderer frontend for Power Options, a blazingly fast power management solution.
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/thealexdev23/power-options
 	arch = x86_64
@@ -9,9 +9,10 @@ pkgbase = power-options-webview
 	makedepends = dioxus-cli
 	depends = power-options-daemon
 	depends = webkit2gtk
+	depends = xdotool
 	provides = power-options-webview
 	conflicts = power-options-webview-git
-	source = power-options-webview-1.0.1.tar.gz::https://github.com/thealexdev23/power-options/archive/v1.0.1.tar.gz
-	sha256sums = 55b3056b972d37151397fec0c45522b566573a129779be5a3a66556aea4fe226
+	source = power-options-webview-1.1.0.tar.gz::https://github.com/thealexdev23/power-options/archive/v1.1.0.tar.gz
+	sha256sums = 4073dc294b80a31de4765c2115c552a6be1f49624b30cfd2ecfae90f87c6da3c
 
 pkgname = power-options-webview
