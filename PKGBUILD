@@ -1,65 +1,40 @@
-# Maintainer: Gökçe Aydos <aydos.de>
-
-pkgname=jupyter-nbgrader
-_realm=jupyter
-_name=${pkgname#"$_realm"-}
-pkgver=0.9.2
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Gökçe Aydos <aydos.de>
+_base=nbgrader
+pkgname=jupyter-${_base}
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="A system for assigning and grading notebooks"
 arch=(any)
-url=https://github.com/$_realm/$_name
-license=(BSD)
-depends=(
-	python
+url=https://github.com/jupyter/${_base}
+license=(BSD-3-Clause)
+depends=(python-alembic
+  python-jinja
+  python-jsonschema
+  python-jupyter_client
+  jupyter-server
+  jupyterlab
+  python-jupyterlab-server
+  jupyter-nbclient
+  jupyter-nbconvert
+  jupyter-notebook
+  python-dateutil
+  python-rapidfuzz
+  python-requests
+  python-sqlalchemy
+  python-pyaml)
+makedepends=(python-build python-installer python-hatch-jupyter-builder python-wheel npm)
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('3e298ad1bca529f0e708fd4561173ea5fa60a90d5ff8e62714549d1a38b643c17e1120c39fb85dffe34e1ce6caad6fb2839f28f118c844b5bd8a005f33e8520c')
 
-	python-alembic
-	python-ipywidgets
-	python-jinja
-	python-jsonschema
-	python-jupyter_client
-	jupyter-server
-	python-jupyterlab-server
-	jupyter-nbclient
-	jupyter-nbconvert
-	jupyter-notebook
-	python-dateutil
-	python-rapidfuzz
-	python-requests
-	python-sqlalchemy
-	python-pyaml
-	jupyterlab
-	python-types-python-dateutil
-	python-terminado
-	python-debugpy
-	jupyter-lsp
-
-	# Additional optional deps from jsonschema probably due to https://github.com/jupyter/jupyter_events/blob/9b99f6718a3bb2686aab51e17f5c7ee276baf316/pyproject.toml#L31C4-L33C112
-	python-fqdn
-	python-rfc3986-validator
-	python-rfc3339-validator
-	python-webcolors
-	python-uri-template
-	python-jsonpointer
-	python-isoduration
-)
-makedepends=(
-	python-hatch-jupyter-builder
-	python-build
-	python-installer
-	python-wheel
-	npm # used by jlpm
-)
-source=(
-	https://files.pythonhosted.org/packages/source/"${_name::1}/$_name/$_name-$pkgver".tar.gz
-)
 build() {
-	cd nbgrader-"$pkgver" || exit
-	python -m build --wheel --no-isolation
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
+
 package() {
-	cd nbgrader-"$pkgver" || exit
-	python -m installer --destdir="$pkgdir" dist/*.whl
-	mv "$pkgdir"/usr/etc "$pkgdir"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd ${_base}-${pkgver}
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  mv "$pkgdir"/usr/etc "$pkgdir"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha256sums=('99409da055306524254a8d19595ec13810f11112f34c6a93306475861490a734')

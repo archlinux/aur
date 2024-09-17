@@ -1,0 +1,5 @@
+[jupyter-nbgrader]
+source = "github"
+github = "jupyter/nbgrader"
+use_latest_release = "true"
+prefix = "v"
