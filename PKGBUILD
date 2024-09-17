@@ -3,17 +3,16 @@
 # Contributor: mod24 <bruenker(at)sintro(dot)de>
 
 pkgname=airtame-application
-pkgver=4.10.0
+pkgver=4.11.0
 pkgrel=1
 pkgdesc="Airtame official screen streaming application."
 arch=('x86_64')
 url="https://airtame.com"
 license=('custom')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'libutil-linux' 'libappindicator-gtk3' 'libsecret' 'libpulse' 'opus')
-makedepends=('patchelf' 'hq' 'tidy')
-source=("https://downloads.airtame.com/app/latest/linux/Airtame-${pkgver}.deb" "LICENSE.html::https://airtame.com/legal_page/terms-and-conditions/")
-sha1sums=('806586b60aff13c1941ba7f745a9bd09d29aa975'
-          'SKIP')
+makedepends=('patchelf')
+source=("https://downloads.airtame.com/app/latest/linux/Airtame-${pkgver}.deb")
+sha1sums=('c907aaa03c9fe55fd58ae445606e80258c173c76')
 package() {
   # Extract package data
   tar xf data.tar.xz -C "${pkgdir}"
@@ -26,9 +25,6 @@ package() {
 
   # Fix insecure rpath
   patchelf --force-rpath --set-rpath "\$ORIGIN" "${pkgdir}/opt/${pkgname}/resources/build/native/out/lib/libAirtameEncryption.so"
-
-  # Install main license
-  install -m 644 -D <(hq -f LICENSE.html .legal_page data | tidy -i -ashtml -utf8 - 2> /dev/null) "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
 
   # Install licenses
   install -m 644 -D "${pkgdir}/opt/${pkgname}/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
