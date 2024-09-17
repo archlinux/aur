@@ -1,0 +1,19 @@
+pkgbase = anubis
+	pkgdesc = An SMTP message submission daemon.
+	pkgver = 4.3
+	pkgrel = 1
+	url = http://www.gnu.org/software/anubis/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = libmariadbclient
+	depends = guile
+	depends = gpgme
+	depends = gnutls
+	depends = gsasl
+	depends = pam
+	depends = pcre
+	source = ftp://ftp.gnu.org/gnu/anubis/anubis-4.3.tar.gz
+	md5sums = bc80b9045b3c8f3b1d6798200cd81586
+
+pkgname = anubis
