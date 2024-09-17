@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontship-git
-pkgver=0.8.2.r27.g2cdcab8
+pkgver=0.9.2.r0.g0e12ede
 pkgrel=1
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=(x86_64)
@@ -38,9 +38,9 @@ depends=(diffutils
          ttfautohint
          woff2
          zsh)
-makedepends=(cargo rust)
-provides=("${pkgname%-git}")
-conflicts=("${provides[@]}")
+makedepends=(cargo)
+provides=("${pkgname%-git}=$pkgver")
+conflicts=("${pkgname%-git}")
 source=("git+$url.git")
 sha256sums=('SKIP')
 
