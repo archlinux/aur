@@ -2,7 +2,7 @@
 # Contributer: Paul <paul@mrarm.io>
 
 pkgname=mcpelauncher-linux-git
-pkgver=0.15.0.r3.g6bdf80d
+pkgver=1.0.1.r2.gf282e17
 pkgrel=1
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64' 'i686')
@@ -133,6 +133,11 @@ prepare() {
 }
 
 build() {
+  # Disable FORTIFY_SOURCE=3 because it causes build failures
+  # https://github.com/minecraft-linux/libc-shim/issues/33
+  # We use Bash to replace the contents of the variable because makepkg sets CFLAGS and we don't want to override them otherwise
+  export CFLAGS=${CXXFLAGS//-Wp,-D_FORTIFY_SOURCE=3/}
+  export CXXFLAGS=${CXXFLAGS//-Wp,-D_FORTIFY_SOURCE=3/}
   cmake -S mcpelauncher-manifest \
     -DCMAKE_C_COMPILER=clang \
     -DCMAKE_CXX_COMPILER=clang++ \
