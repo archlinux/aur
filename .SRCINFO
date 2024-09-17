@@ -1,6 +1,6 @@
 pkgbase = ada_language_server-bin
 	pkgdesc = High performance syntactic and semantic engine for the Ada programming language
-	pkgver = 24.0.4
+	pkgver = 25.0.20240915
 	pkgrel = 1
 	url = https://github.com/AdaCore/ada_language_server
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ada_language_server-bin
 	provides = ada_language_server
 	conflicts = ada_language_server
 	conflicts = ada_language_server-git
-	source = https://github.com/AdaCore/ada_language_server/releases/download/24.0.4/als-24.0.4-Linux_amd64.zip
-	b2sums = 37301273a60ca6aa6f65c482fe987dfae4ea16dfd23a76348603cb25f3e42e25c1da90fa8b93f8d2741f74945f7768807eefbdaf885db3ea0ed87fab1d170f36
+	source = https://github.com/AdaCore/ada_language_server/releases/download/25.0.20240915/x64-linux.tar.gz
+	b2sums = 94775bf70478800d929e39e40bd88154ebcfb2bf83daf6633d27af5143ec8bb95afebc1e153bc65999ebe19422585b07b88b26add2e9a69d9a07a7748bceb028
 
 pkgname = ada_language_server-bin
