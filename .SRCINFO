@@ -1,6 +1,6 @@
 pkgbase = ruby-build
 	pkgdesc = Compile and install Ruby
-	pkgver = 20240903
+	pkgver = 20240917
 	pkgrel = 1
 	url = https://github.com/rbenv/ruby-build
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = ruby-build
 	depends = bash
 	optdepends = git: install ruby from git
 	optdepends = libyaml: install recent versions of mri
-	source = ruby-build-v20240903.tar.gz::https://github.com/rbenv/ruby-build/archive/v20240903.tar.gz
-	sha512sums = 3b27231e573a8eb5e954d568524176425a0b0f7e164242b0124e82df4ef2fed25ba2e74a623a3dc878e565736762663f9e05362f8954ade79867b90213ea7e0e
+	source = ruby-build-v20240917.tar.gz::https://github.com/rbenv/ruby-build/archive/v20240917.tar.gz
+	sha512sums = 50c57abfce3ef45b698429035f6e37eaff3bfe4bbde16c67325221311cd78e44d60fb874fd3a229a8e90b9da825dae1e670ee5d6eb8fb3bb0ce821d612ecdf51
 
 pkgname = ruby-build
