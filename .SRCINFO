@@ -1,22 +1,22 @@
 pkgbase = opentx-companion-bin
 	pkgdesc = Models and settings editor for the OpenTX open source firmware.
-	pkgver = 2.3.14
+	pkgver = 2.3.15
 	pkgrel = 1
 	url = http://www.open-tx.org/
 	install = opentx-companion-bin.install
 	arch = x86_64
 	license = GPL
 	depends = hicolor-icon-theme
-	depends = qt5-base>=5.7.0
-	depends = qt5-multimedia>=5.6.0beta
-	depends = qt5-svg>=5.6.0beta
-	depends = sdl>=1.2.11
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = sdl
 	provides = companion
 	conflicts = companion
 	conflicts = companion9x-svn
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://downloads.open-tx.org/2.3/release/companion/linux/companion23_2.3.14_amd64.deb
-	sha512sums_x86_64 = c42f6b609eb5fd15fe29135c0c43fe45778ca2f4520d225b69005f19d444d045cc47399edffc78e34c6694be1abbac78b7461fab9f5b918e692591f511484412
+	source_x86_64 = https://downloads.open-tx.org/2.3/release/companion/linux/companion23_2.3.15_amd64.deb
+	sha512sums_x86_64 = 36389b4ac104eaeb3f274e9ff0eacb453c25bcb3529da1702ec9a20edc36cb1d6648cf4fc68e873cbb6b8baef5b2ba284620c5f47e8fb021682ecc935ac87b96
 
 pkgname = opentx-companion-bin

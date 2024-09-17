@@ -2,19 +2,19 @@
 # Maintainer: Alex
 # Contributor: Alex
 pkgname=('opentx-companion-bin')
-pkgver=2.3.14
+pkgver=2.3.15
 pkgrel=1
 pkgdesc="Models and settings editor for the OpenTX open source firmware."
 arch=('x86_64')
 url="http://www.open-tx.org/"
 license=('GPL')
-depends=('hicolor-icon-theme' 'qt5-base>=5.7.0' 'qt5-multimedia>=5.6.0beta' 'qt5-svg>=5.6.0beta' 'sdl>=1.2.11')
+depends=('hicolor-icon-theme' 'qt5-base' 'qt5-multimedia' 'qt5-svg' 'sdl')
 provides=('companion')
 conflicts=('companion' 'companion9x-svn')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://downloads.open-tx.org/2.3/release/companion/linux/companion23_${pkgver}_amd64.deb")
-sha512sums_x86_64=('c42f6b609eb5fd15fe29135c0c43fe45778ca2f4520d225b69005f19d444d045cc47399edffc78e34c6694be1abbac78b7461fab9f5b918e692591f511484412')
+sha512sums_x86_64=('36389b4ac104eaeb3f274e9ff0eacb453c25bcb3529da1702ec9a20edc36cb1d6648cf4fc68e873cbb6b8baef5b2ba284620c5f47e8fb021682ecc935ac87b96')
 
 package(){
 
