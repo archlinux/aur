@@ -1,7 +1,7 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
 _pkgname=parameters
-_pkgver=0.22.1
+_pkgver=0.22.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,6 +34,7 @@ optdepends=(
   r-cgam
   r-classdiscovery
   r-clubsandwich
+  r-cobalt
   r-coda
   r-coxme
   r-cplm
@@ -60,11 +61,12 @@ optdepends=(
   r-ggplot2
   r-glmmadaptive
   r-glmmtmb
+  r-glmtoolbox
   r-gparotation
   r-gt
   r-haven
   r-hmisc
-  r-httr
+  r-httr2
   r-ivreg
   r-knitr
   r-lavaan
@@ -127,11 +129,12 @@ optdepends=(
   r-vdiffr
   r-vgam
   r-withr
+  r-weightit
   r-wrs2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e1b67e8a6bd0c72171469f7b3f04b0ab')
-b2sums=('642131bce782302812db2f93713c1cc2e6ea7d8695c0f480f6484563cc63e10eeeb2fbd06245f98d1abc0a0afdfe0ee793eb04b658f4bca85af60622efded711')
+md5sums=('96e60ac9475ed4c7d5f76c328ead2534')
+b2sums=('4048e7376ce2404f16dff144dafe274d4c03fa229e376a43ef1a804e190b2ab2ef1eefa3cb954e23eaa2d98a3c737024ad9381970bc40f8017bb22865749f220')
 
 build() {
   mkdir build
