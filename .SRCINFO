@@ -1,19 +1,20 @@
-pkgbase = pkgbase
-	pkgdesc = Open-source YANG API in C and CLI (yangcli) and server (netconfd)
-	pkgver = latest
+pkgbase = swaync-widgets-git
+	pkgdesc = A tool for dynamically updating swaync config files based on states.
+	pkgver = r25.5352701
 	pkgrel = 1
-	url = https://github.com/vlvassilev/yuma123
+	url = https://github.com/luiz734/swaync-widgets/
+	arch = i686
+	arch = pentium4
 	arch = x86_64
-	license = BSD
-	depends = git
-	depends = autoconf
-	depends = automake
-	depends = libtool
-	depends = make
-	depends = gcc
-	provides = yuma123
-	conflicts = yuma123
-	source = git+https://github.com/vlvassilev/yuma123
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = go>=1.21
+	provides = swaync-widgets
+	source = swaync-widgets::git+https://github.com/luiz734/swaync-widgets/
 	sha256sums = SKIP
 
-pkgname = yuma123-git
+pkgname = swaync-widgets-git
