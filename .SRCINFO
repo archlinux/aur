@@ -1,7 +1,7 @@
 pkgbase = polybar-wireguard-git
 	pkgdesc = A fast and easy-to-use status bar, with patches to support WireGuard networks.
 	pkgver = 3.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Swivelgames/polybar
 	arch = i686
 	arch = x86_64
