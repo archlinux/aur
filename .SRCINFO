@@ -1,0 +1,14 @@
+pkgbase = logviewer-systemd
+	pkgdesc = A simple log viewer and filter for journalctl
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tkmxqrdxddd/logviewer-systemd
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	source = logviewer-systemd-1.0.0.tar.gz::https://github.com/tkmxqrdxddd/logviewer-systemd/archive/v1.0.0.tar.gz
+	sha256sums = 6b1e3de047664f6f39ffcd381248558b739deb4bc1d9f2f44996b455859b2c62
+
+pkgname = logviewer-systemd
