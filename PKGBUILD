@@ -1,8 +1,7 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 
 pkgname=lightningcss
-pkgver=1.26.0
-_pkgcmt=0bcd896e81a8a2c5d847f626a37e2cffea79e2a0
+pkgver=1.27.0
 pkgrel=1
 pkgdesc='An extremely fast CSS parser, transformer, bundler, and minifier written in Rust.'
 url='https://lightningcss.dev/'
@@ -10,27 +9,29 @@ arch=('i686' 'x86_64')
 license=('MPL-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/parcel-bundler/lightningcss/archive/${_pkgcmt}.tar.gz")
-sha256sums=('4be1f8b8e7fde9bafbc19d71ccea69c6aff7ded090c297512da71e08be796103')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/parcel-bundler/lightningcss/archive/v$pkgver.tar.gz")
+sha256sums=('2cf706e98d4e2b4fac35382117ace8e7221671dbe1a62a1243a8dc6fa02e34fc')
 
 prepare() {
-    cd "$pkgname-${_pkgcmt}"
+    cd "$pkgname-$pkgver"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$pkgname-${_pkgcmt}"
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
     cargo build --features "cli" --release --frozen
 
 }
 
 check() {
-    cd "$pkgname-${_pkgcmt}"
+    cd "$pkgname-$pkgver"
     cargo test --features "cli" --frozen
 }
 
 package() {
-    cd "$pkgname-${_pkgcmt}"
+    cd "$pkgname-$pkgver"
     install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
     install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
     install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
