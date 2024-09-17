@@ -3,8 +3,8 @@
 _pkgname=vesktop
 pkgname=vesktop-electron-git
 pkgdesc="An Electron-based Discord app with Vencord & improved Linux support using system provided Electron (git version). Unsupported"
-pkgver=1.5.3.r11.g24fbf35
-pkgrel=1
+pkgver=r363.24fbf35
+pkgrel=2
 
 arch=("x86_64" "aarch64")
 url="https://github.com/Vencord/Vesktop"
@@ -30,8 +30,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
