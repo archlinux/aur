@@ -3,14 +3,13 @@
 _pkgname=ggrain
 _pkgver=0.0.4
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=3
 pkgdesc="A Rainclouds Geom for 'ggplot2'"
-arch=('any')
-url="https://cran.r-project.org/package=${_pkgname}"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
-  r
   r-cli
   r-gghalves
   r-ggplot2
@@ -23,15 +22,18 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ec855885372ed851b3e9a37c4d9d020a5966cb7fcac2a913df67c04e9c20e050')
+md5sums=('8e24f1f21eac678fe6b1951e61022701')
+b2sums=('ad05d6c4e54e66b56dbffa97d03109ca19fcea26fb2d2fd8c99be408fafd81ab694f756e8fc295904eda20caa8eb94f89c8df03f2c93adc6e8d623e77ed67c35')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
