@@ -1,5 +1,5 @@
 # Maintainer: Jan Fidra <tkmxqrd@gmail.com>
-pkgname=chess-electron
+pkgname=chess.com-electron-git
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Chess.com desktop app"
