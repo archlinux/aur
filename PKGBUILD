@@ -24,7 +24,7 @@ package() {
     install -d "$pkgdir/opt/cultris2/settings"
     
     # Fix settings not saving bug
-    chmod 777 /opt/cultris2/settings/*
+    chmod 777 "$pkgdir/opt/cultris2/settings/*"
 
     # Install JAR file
     install -Dm644 "cultris2.jar" "$pkgdir/opt/cultris2/cultris2.jar"
