@@ -6,7 +6,7 @@
 
 pkgname=mattermost-plugin-matterpoll
 _pkgname=${pkgname##*-}
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='Create polls and surveys directly within Mattermost'
 arch=(x86_64)
@@ -17,7 +17,7 @@ options=(!strip)
 _plugin="com.github.$_pkgname.$_pkgname"
 _archive="$_plugin-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.gz")
-sha256sums=('c2dbae041812cdb6a7430086b48fbc5dfec134d2dc5f99b08123cad7d0fd3ae3')
+sha256sums=('f05f80e05367f4e7724c75970952bd10e2f4ee5eb33c683f9b78142290db6360')
 
 # BEGIN boilerplate mattermost plugin version clamping, see also other packages in group
 # 1. Call respective function helper in package() *after* cd'ing to the source directory
