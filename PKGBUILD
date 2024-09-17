@@ -22,6 +22,9 @@ package() {
     install -d "$pkgdir/usr/bin"
     install -d "$pkgdir/usr/share/applications"
     install -d "$pkgdir/opt/cultris2/settings"
+    
+    # Fix settings not saving bug
+    chmod 777 /opt/cultris2/settings/*
 
     # Install JAR file
     install -Dm644 "cultris2.jar" "$pkgdir/opt/cultris2/cultris2.jar"
@@ -33,9 +36,9 @@ package() {
     cp -r settings/* "$pkgdir/opt/cultris2/settings/"
 
     # Install startup scripts
-    install -Dm755 "cultris2.sh" "$pkgdir/opt/cultris2/cultris2"
-    install -Dm755 "cultris2-settings.sh" "$pkgdir/opt/cultris2/cultris2-settings"
-    install -Dm755 "cultris2-colorpicker.sh" "$pkgdir/opt/cultris2/cultris2-colorpicker"
+    install -Dm777 "cultris2.sh" "$pkgdir/opt/cultris2/cultris2.sh"
+    install -Dm777 "cultris2-settings.sh" "$pkgdir/opt/cultris2/cultris2-settings.sh"
+    install -Dm777 "cultris2-colorpicker.sh" "$pkgdir/opt/cultris2/cultris2-colorpicker.sh"
 
     # Install icon
     install -Dm644 "icon.png" "$pkgdir/opt/cultris2/icon.png"
