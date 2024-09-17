@@ -2,7 +2,7 @@
 
 pkgname=ledfx-cc-bin
 _pkgname="${pkgname%-bin}"
-pkgver=2.0.100_b2
+pkgver=2.0.100_b7
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc="Network based LED effect controller with support for advanced real-time audio effects"
@@ -19,7 +19,7 @@ source_x86_64=(
     "${_appimage}::https://github.com/YeonV/LedFx-Builds/releases/download/v${_pkgver}/${_appimage}"
     'ledfx-desktop.patch'
 )
-sha256sums_x86_64=('7750929fcb356933818d30a021d2bfd9dace4dcbb9a5f95eadaaf28585dfe126'
+sha256sums_x86_64=('39ffc29fa9888c8fbe17efede3bc37395657dc452c57ebb4676c3da28d7fdd73'
                    '2b3bef62571d65b3a7aed8a8458dc41030d18345128d46f851c5281ce60ab836')
 
 prepare() {
