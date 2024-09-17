@@ -13,11 +13,8 @@ ProtectSystem=full
 DynamicUser=yes
 NoNewPrivileges=yes
 AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_ADMIN
-EnvironmentFile=/etc/byedpi.conf
-ExecStart=/usr/bin/ciadpi \
-  --ip ${IP} \
-  --port ${PORT} \
-  $ARGS
+EnvironmentFile=-/etc/byedpi.conf
+ExecStart=/usr/bin/ciadpi --split 1 --disorder 3+s --mod-http=h,d --auto=torst --tlsrec 1+s $ARGS
 
 [Install]
 WantedBy=default.target
