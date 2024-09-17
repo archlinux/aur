@@ -12,8 +12,8 @@ url="https://github.com/gorilla-devs/ferium"
 license=('MPL2')
 source_x86_64=("$_pkgname-$pkgver-$pkgrel.x86_64.zip::https://github.com/gorilla-devs/ferium/releases/download/v$pkgver/ferium-linux-nogui.zip")
 source_aarch64=("$_pkgname-$pkgver-$pkgrel.aarch64.zip::https://github.com/gorilla-devs/ferium/releases/download/v$pkgver/ferium-linux-arm64-nogui.zip")
-sha256sums_x86_64=('fe6eb13a924515e850788e178b6449f909472fa29e78f1c7517e14811036ea72')
-sha256sums_aarch64=('1625e7eb4dba0997e7da595e4350906d61c4cacb7a2b2480c7a53a90d45d8219')
+sha256sums_x86_64=('8d4a357c6eaf05bc7804d1916fe597b58f10d57fe16443b9b767776e99049d14')
+sha256sums_aarch64=('40e05bdefdd0a0506ea95ffe9768f07b2352559d81b43a0f0d05a4895b49f009')
 
 package() {
 	cd "$srcdir"
