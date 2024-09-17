@@ -1,20 +1,18 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="phylum"
-pkgver=6.6.6
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="Command line interface for the Phylum API"
-arch=('any')
-url="https://${pkgname}.io/"
-_url="https://github.com/${pkgname}-dev/cli"
+arch=('x86_64')
+url="https://phylum.io"
+_url="https://github.com/phylum-dev/cli"
 license=('MIT')
-depends=('glibc' 'gcc-libs' 'zlib')
+depends=('gcc-libs' 'glibc' 'zlib')
 makedepends=('cargo')
-optdepends=('bash-completion: for shell auto-completion'
-            'zsh-completions: for shell auto-completion')
 _pkgsrc="cli-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('05868260995706de7221da21c3ed399122957129a58f5427477cac97681f8725')
+b2sums=('33b03098abd96627a0e6280d5b110f2f9125056de5344a5f609a64d7cec8eb55bf958e1f2dcb54224887ac2ffe9a44c6a3512e67d3ff7792f1d989dd48e9596c')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
