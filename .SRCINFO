@@ -7,6 +7,7 @@ pkgbase = mangojuice
 	license = GPL-3.0
 	makedepends = git
 	makedepends = meson
+	makedepends = vala
 	depends = glib2
 	depends = gtk4
 	depends = libadwaita
