@@ -1,35 +1,41 @@
 # Maintainer: thorko contact@thorko.de
+# Maintainer: Vladislav Minakov <v@minakov.pro>
+
 pkgname=elasticsearch-bin
 pkgver=8.15.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Log analyzer. search, store and analyze logs"
-arch=('x86_64')
-url='https://elastic.co'
-license=('ELv2')
-source_x86_64=("https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${pkgver}-linux-x86_64.tar.gz")
-sha256sums_x86_64=('4c59473a811fb255601e6b71a52e44ef5a739eab881bcd4c7a6ef7a861931043')
-
-install=elasticsearch.install
-
-source=(
-  "elasticsearch.service"
-  "sysctl.conf"
-  "users.conf"
-)
-
-sha256sums=(
-  'e42a11bfcacad2d600dad28f88d94553a03e598eba69c58f677a61b2e7ea4e7b'
-  'b3feb1e9c7e7ce6b33cea6c727728ed700332aae942ca475c3bcc1d56b9f113c'
-  'fc9683349457f56bcd044cd8e711bc8efd43d32f9547d5b21a66650c6dfbed73'
-)
+arch=("x86_64")
+url="https://github.com/elastic/elasticsearch"
+license=("ELv2")
+depends=("java-runtime" "libxml2")
+backup=("etc/elasticsearch/jvm.options"
+        "etc/elasticsearch/log4j2.properties"
+        "etc/elasticsearch/elasticsearch.yml"
+        "etc/elasticsearch/roles.yml")
+options=("!debug")
+source=("https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${pkgver}-linux-x86_64.tar.gz"
+        "elasticsearch.service"
+        "elasticsearch-keystore.service"
+        "elasticsearch.sysusers"
+        "elasticsearch.tmpfiles"
+        "elasticsearch.sysctl")
+sha512sums=('3eced0f59446f60170b7ab3372f58bbda713e2166bb936ef0f74a027e579565b469d3f8888715638e6dfc3e98f88e1b73f7de8a6fc37be236ade4a099f9cc808'
+            '50bd8acc3261eb891bf6f67b814aabb840b35214306b2544ada24a3439c1fe3f7c5854cc2608d97db3a688aaa2aba222e1d4d62ca1fc8d32723bcc5b34b63b57'
+            '25b51fcd3913efd826f49543059edb64d1ea47a570acaf4d35131be805106cd4db58611b15d15c2910881feffc5d8f9b243da0f5dc5967574613f8d33569d959'
+            '5dddb4d5e35b62d58cab22775c6400f7bef0ea7de32c43960288dcc0029c09f4056275a056f5e43a51545a3dcfe2f726c2ca316b6e9934139cda50d85b742e77'
+            '8ae16e13feb63b5856ddd63c325047a3a26832232b64c9d9723e4bcc2948f0c68f0b3bdcef4aa384739d8da4c37e5afda0b45f12f3e3e4976b9cecb71aa1bac1'
+            '4926e63ed247f9ced0674a55d01fdf7708b468a5f4b1bdb246f60c4e80d4980f21c811b952340d3e8d1c1dde77af87e062c1b66ec6818f90fb128a713c349050')
 
 package() {
-    mkdir -p "${pkgdir}/opt"
-    cp -R "${srcdir}/elasticsearch-${pkgver}" "${pkgdir}/opt/elasticsearch"
-    mkdir -p "${pkgdir}/etc/elasticsearch"
-    cp -R "${srcdir}/elasticsearch-${pkgver}/config/." "${pkgdir}/etc/elasticsearch/"
-    chmod 755 -R "${pkgdir}/opt/elasticsearch/jdk/bin" "${pkgdir}/opt/elasticsearch/jdk/lib"
-    install -Dm0644 "elasticsearch.service" "${pkgdir}/etc/systemd/system/elasticsearch.service"
-    install -Dm0644 "sysctl.conf" "${pkgdir}/usr/lib/sysctl.d/elasticsearch.conf"
-    install -Dm0644 "users.conf" "${pkgdir}/usr/lib/sysusers.d/elasticsearch.conf"
+  cd elasticsearch-${pkgver}
+  install -dm755 "${pkgdir}/usr/share/elasticsearch" "${pkgdir}/etc/elasticsearch"
+  mv config/* "${pkgdir}/etc/elasticsearch/"
+  cp -a * "${pkgdir}/usr/share/elasticsearch"
+  chmod -R 755 "${pkgdir}/usr/share/elasticsearch" "${pkgdir}/etc/elasticsearch/"
+  install -Dm644 "${srcdir}/elasticsearch.sysctl" "${pkgdir}/usr/lib/sysctl.d/elasticsearch.conf"
+  install -Dm644 ${srcdir}/elasticsearch{,-keystore}.service -t "${pkgdir}/usr/lib/systemd/system/"
+  install -Dm644 "${srcdir}/elasticsearch.sysusers" "${pkgdir}/usr/lib/sysusers.d/elasticsearch.conf"
+  install -Dm644 "${srcdir}/elasticsearch.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/elasticsearch.conf"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

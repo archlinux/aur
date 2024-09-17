@@ -1,0 +1,3 @@
+d /var/log/elasticsearch 0755 elasticsearch elasticsearch -
+d /var/lib/elasticsearch 0755 elasticsearch elasticsearch -
+d /etc/elasticsearch 0750 elasticsearch elasticsearch -
