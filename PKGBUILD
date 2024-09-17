@@ -29,4 +29,7 @@ package() {
   cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  # https://github.com/inducer/codepy/issues/46
+  rm -r ${pkgdir}${site_packages}/doc
 }
