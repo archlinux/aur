@@ -3,7 +3,7 @@
 pkgname=rusty-psn-bin
 pkgver=0.5.0
 pkgrel=1
-pkgdesc="Update PS3 games"
+pkgdesc="A GUI/CLI tool for downloading PS3 and PS4 game updates"
 provides=("rustypsn")
 arch=('x86_64')
 url="https://github.com/RainbowCookie32/rusty-psn"
