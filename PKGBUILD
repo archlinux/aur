@@ -23,7 +23,6 @@ depends=(
 )
 provides=('emacs' 'emacs-nativecomp')
 conflicts=('emacs-nox')
-options=(!strip)
 #
 # You'll need to grab this key and add it BY HAND to your local keyring.
 # All PGP Keyservers are all but dead thanks to the EU. 
@@ -33,11 +32,10 @@ options=(!strip)
 validpgpkeys=('12BB9B400EE3F77282864D18272B5C54E015416A')
 #
 source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz{,.sig}
-        nemacs readme_or_weep.txt)
+        nemacs)
 b2sums=('9ef6f6bcca6b33fb9f70530ff1bb2ff8d56d88d201b8a9267d503e75f23efdb6e9707353495d1c504fbdd26a6a260d39cf98077188f41d65118af21e02715069'
         'SKIP'
-        '58e028b439d3c7cf03ea0be617b429a2c54e7aa1b8ca32b5ed489214daaa71e22c323de9662761ad2ce4de58e21dbe45ce6ce198f402686828574f8043d053d0'
-        '98cb6458eebfa1440eea1318c6974c135d1b9e1a559fb1ca4bca35fb4697cc8cd6d33b19427efead0f3e061556ba19e774eee4f4566673494ac2470da4725b28')
+        '58e028b439d3c7cf03ea0be617b429a2c54e7aa1b8ca32b5ed489214daaa71e22c323de9662761ad2ce4de58e21dbe45ce6ce198f402686828574f8043d053d0')
 
 build() {
   #cd "$srcdir"/$_pkgname-$_pkgver
