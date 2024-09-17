@@ -2,7 +2,7 @@
 
 pkgname=mangojuice
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Gui settings mangohud"
 arch=(x86_64)
 url="https://github.com/radiolamp/${pkgname}"
@@ -17,10 +17,11 @@ makedepends=(
   git
   meson
   vala
+  mangohud
+  vulkan-tools
 )
 
 optdepends=(
-  vulkan-tools
   mesa-demos
 )
 
