@@ -1,3 +1,4 @@
+# Maintainer: Harry Youd <harry at youd dot family>
 pkgname=guide2go
 pkgver=1.2.0
 pkgrel=1
