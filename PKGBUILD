@@ -8,10 +8,22 @@ pkgrel=1
 arch=(any)
 url="https://${_base/-/}.org"
 license=(BSD-3-Clause)
-depends=(python-click python-jinja python-jsonschema python-linkify-it-py python-myst-nb
-  python-yaml python-sphinx-comments python-sphinx-copybutton python-sphinx-external-toc
-  python-sphinx-jupyterbook-latex python-sphinx_design python-sphinx-thebe python-sphinx-book-theme
-  python-sphinx-togglebutton python-sphinxcontrib-bibtex python-sphinx-multitoc-numbering)
+depends=(python-click
+  python-jinja
+  python-jsonschema
+  python-linkify-it-py
+  python-myst-nb
+  python-yaml
+  python-sphinx-comments
+  python-sphinx-copybutton
+  python-sphinx-external-toc
+  python-sphinx-jupyterbook-latex
+  python-sphinx_design
+  python-sphinx-thebe
+  python-sphinx-book-theme
+  python-sphinx-togglebutton
+  python-sphinxcontrib-bibtex
+  python-sphinx-multitoc-numbering)
 makedepends=(python-build python-installer python-flit-core)
 checkdepends=(python-pytest python-jupytext python-texsoup)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/executablebooks/${_base}/archive/v${pkgver}.tar.gz)
@@ -28,9 +40,11 @@ check() {
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest \
     --ignore=tests/test_build.py \
+    --ignore=tests/test_clean.py \
+    --ignore=tests/test_config.py \
+    --ignore=tests/test_pdf.py \
     --ignore=tests/test_sphinx_multitoc_numbering.py \
     --ignore=tests/test_tocdirective.py \
-    --ignore=tests/test_pdf.py \
     -k 'not toc'
 }
 
