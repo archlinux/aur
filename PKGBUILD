@@ -1,6 +1,6 @@
 # Maintainer: Til Kaiser <mail at tk154 dot de>
 pkgname=windscribe-v2-bin
-pkgver=2.10.15
+pkgver=2.11.11
 pkgrel=1
 pkgdesc="Windscribe GUI tool for Linux"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('windscribe-cli' 'windscribe')
 options=('!strip')
 install=windscribe-v2-bin.install
 source=("https://deploy.totallyacdn.com/desktop-apps/${pkgver}/windscribe_${pkgver}_x86_64.pkg.tar.zst")
-sha1sums=('5f70394928b185b2cda5f3ac9d0c2f289bb0d2df')
+sha1sums=('92ab3f2a0a66e5f9abe360a48fbbcb4e3f9178aa')
 
 package() {
 	mv ${srcdir}/etc ${pkgdir}
@@ -20,5 +20,5 @@ package() {
 	mv ${srcdir}/usr ${pkgdir}
 
 	# Fix permissions on systemd unit
-	chmod -x ${pkgdir}/etc/systemd/system/windscribe-helper.service
+	chmod -x ${pkgdir}/usr/lib/systemd/system/windscribe-helper.service
 }
