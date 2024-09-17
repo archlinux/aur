@@ -2,8 +2,8 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=('python-fenics-ufl-git')
 pkgdesc='UFL - Unified Form Language'
-pkgver=2023.2.0.dev0_r3539.9e120c6
-pkgrel=3
+pkgver=2024.2.0.dev0_r3616.004a678
+pkgrel=1
 arch=('any')
 url='https://fenicsproject.org'
 license=('MIT')
@@ -19,7 +19,7 @@ sha512sums=('SKIP')
 pkgver()  {
     cd "$srcdir/ufl"
     # The main branch unfortunately has no meaningful tags
-    printf "%s_r%s.%s" "$(sed -n -e 's/^version *= *\(.*\)/\1/p' setup.cfg)" \
+    printf "%s_r%s.%s" "$(sed -n -e 's/^version *= \"*\(.*\)\"/\1/p' pyproject.toml)" \
         "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
