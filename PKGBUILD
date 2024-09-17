@@ -2,7 +2,7 @@
 # Contributor: Steven Vancoillie <steven<dot>vancoillie[at]gmail[dot]com>
 pkgname=likwid
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight performance tools"
 url="https://hpc.fau.de/research/tools/likwid/"
 arch=('x86_64' 'i686')
@@ -11,6 +11,7 @@ depends=()
 makedepends=('git')
 optdepends=(
   'perl: for likwid-mpirun and likwid-perfscope'
+  'python: for /usr/share/likwid/filter/json'
   'openmpi: for likwid-mpirun'
   'gnuplot: for likwid-perfscope'
 )
