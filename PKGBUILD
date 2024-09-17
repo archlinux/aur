@@ -2,7 +2,7 @@
 
 pkgname=mangojuice
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Gui settings mangohud"
 arch=(x86_64)
 url="https://github.com/radiolamp/${pkgname}"
@@ -23,6 +23,7 @@ makedepends=(
 
 optdepends=(
   mesa-demos
+  adwaita-icon-theme
 )
 
 options=(!debug)

@@ -1,7 +1,7 @@
 pkgbase = mangojuice
 	pkgdesc = Gui settings mangohud
 	pkgver = 0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/radiolamp/mangojuice
 	arch = x86_64
 	license = GPL-3.0
@@ -15,6 +15,7 @@ pkgbase = mangojuice
 	depends = libadwaita
 	depends = libgee
 	optdepends = mesa-demos
+	optdepends = adwaita-icon-theme
 	options = !debug
 	source = https://github.com/radiolamp/mangojuice/archive/refs/tags/0.5.tar.gz
 	b2sums = SKIP
