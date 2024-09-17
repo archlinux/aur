@@ -3,7 +3,7 @@
 
 pkgname=elasticsearch-bin
 pkgver=8.15.1
-pkgrel=1
+pkgrel=0
 pkgdesc="Log analyzer. search, store and analyze logs"
 arch=("x86_64")
 url="https://github.com/elastic/elasticsearch"
