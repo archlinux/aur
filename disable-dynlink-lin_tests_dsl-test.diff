@@ -1,5 +1,5 @@
 diff --git a/src/dynlink/dune b/src/dynlink/dune
-index 34cb167..72db257 100644
+index 3714cef..72db257 100644
 --- a/src/dynlink/dune
 +++ b/src/dynlink/dune
 @@ -9,11 +9,3 @@
@@ -8,18 +8,18 @@ index 34cb167..72db257 100644
  )
 -
 -(test
-- (name lin_tests_dsl)
-- (modules lin_tests_dsl)
+- (name lin_tests)
+- (modules lin_tests)
 - (package multicoretests)
 - (libraries qcheck-lin.domain dynlink libA libB)
 - (action (run %{test} --verbose))
 -)
-diff --git a/src/dynlink/lin_tests_dsl.ml b/src/dynlink/lin_tests_dsl.ml
+diff --git a/src/dynlink/lin_tests.ml b/src/dynlink/lin_tests.ml
 deleted file mode 100644
-index 665d00d..0000000
---- a/src/dynlink/lin_tests_dsl.ml
+index 7e81981..0000000
+--- a/src/dynlink/lin_tests.ml
 +++ /dev/null
-@@ -1,39 +0,0 @@
+@@ -1,41 +0,0 @@
 -(* ************************************ *)
 -(*           Tests of Dynlink           *)
 -(* ************************************ *)
@@ -53,9 +53,11 @@ index 665d00d..0000000
 -module DynT = Lin_domain.Make(DynConf)
 -
 -let _ =
--  if Sys.win32 then
--    Printf.printf "negative Lin DSL Dynlink test with Domain disabled under Windows\n\n%!"
+-  if Sys.win32 || Sys.cygwin
+-  then
+-    Printf.printf "Lin Dynlink tests disabled under Windows\n\n%!"
 -  else
 -    QCheck_base_runner.run_tests_main [
--      DynT.neg_lin_test ~count:100 ~name:"negative Lin DSL Dynlink test with Domain";
+-      DynT.neg_lin_test ~count:100  ~name:"negative Lin Dynlink test with Domain";
+-      DynT.stress_test  ~count:1000 ~name:"Lin Dynlink stress test with Domain";
 -    ]
