@@ -1,0 +1,16 @@
+pkgbase = python-ttask-manager
+	pkgdesc = A simple task management package
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/tahadnan/ttask-manager
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python>=3.8
+	source = python-ttask-manager-0.0.2.tar.gz::https://github.com/tahadnan/ttask-manager/archive/v0.0.2.tar.gz
+	sha256sums = 6af57ce2543b830c0ae098b50f224a367a8835cc08fc841b1f0d466d7392d844
+
+pkgname = python-ttask-manager
