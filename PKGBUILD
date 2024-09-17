@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=alist
-pkgver=3.37.2
+pkgver=3.37.3
 pkgrel=1
 pkgdesc="File list program that supports multiple storage"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'arm7vh' 'aarch64' 'riscv64' 'loong64')
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
     'alist.tmpfiles'
     'alist.sysusers'
     'config.json')
-sha256sums=('e27a17b3ff57bf78bd612a92199c72449152e41d34da73f3576c25d4581bea45'
+sha256sums=('a9f974498a2e7dc34198d6d1994a379ac97b4a295f3ccfbea0c17eaae79b1281'
             '4d300940ec66ae4d57dc2e752a8a6a1049cb0b6d13305ad2ed0af10536c929fe'
             '5712b21aebf669fe9fb5d47dd685809d4d9670b1bb1d5e6fef962b9d11ba9d72'
             'c6b62c4a750ab921c2e8f965e4baeee28855c9a969b00eddd346670f2fdf12de'
