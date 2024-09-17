@@ -1,6 +1,6 @@
 pkgbase = sgf-render
 	pkgdesc = Sgf Rendering CLI written in Rust
-	pkgver = 3.1.5
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/julianandrews/sgf-render/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = sgf-render
 	depends = glibc
 	options = debug
 	options = !strip
-	source = sgf-render-3.1.5.tar.gz::https://static.crates.io/crates/sgf-render/sgf-render-3.1.5.crate
-	sha256sums = b1a7d95a7026ea49d9f9bbd21fd09393043fd82333fdd477ef6d51e36905647e
+	source = sgf-render-3.2.0.tar.gz::https://static.crates.io/crates/sgf-render/sgf-render-3.2.0.crate
+	sha256sums = a7ee6768dbf6a03a3e1d67585956a8e23a6c08d4edf2ab75cf2706e22c9cf252
 
 pkgname = sgf-render
