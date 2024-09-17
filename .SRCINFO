@@ -11,7 +11,7 @@ pkgbase = unifi
 	depends = java-runtime-headless=17
 	depends = mongodb
 	conflicts = tomcat-native
-	source = UniFi-8.4.62.zip::https://dl.ubnt.com/unifi/8.4.62/UniFi.unix.zip
+	source = UniFi-8.4.62.zip::https://dl.ui.com/unifi/8.4.62/UniFi.unix.zip
 	source = mongod
 	source = unifi.service
 	source = unifi.sysusers

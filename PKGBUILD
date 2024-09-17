@@ -16,7 +16,7 @@ depends=(
   'mongodb'
 )
 conflicts=('tomcat-native')
-source=("UniFi-${pkgver}.zip::https://dl.ubnt.com/unifi/${pkgver}/UniFi.unix.zip"
+source=("UniFi-${pkgver}.zip::https://dl.ui.com/unifi/${pkgver}/UniFi.unix.zip"
         mongod
         unifi.service
         unifi.sysusers
