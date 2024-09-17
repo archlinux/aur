@@ -1,6 +1,6 @@
 pkgbase = tango-starter
 	pkgdesc = This device server is able to control Tango device servers.
-	pkgver = 8.3
+	pkgver = 8.4
 	pkgrel = 1
 	url = https://gitlab.com/tango-controls/starter
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = tango-starter
 	license = GPL3
 	makedepends = cmake
 	depends = tango-cpp
-	source = https://gitlab.com/tango-controls/starter/-/releases/Starter-8.3/downloads/starter-with-submodules-Starter-8.3.tar.gz
+	source = https://gitlab.com/tango-controls/starter/-/releases/Starter-8.4/downloads/starter-with-submodules-Starter-8.4.tar.gz
 	source = tango-starter.service
 	source = tango-sys.conf
-	sha256sums = 65546fd92087a0f233635af4b276bdf88e0b545a4ad9ac7728aec8de095c44c4
+	sha256sums = 4ff742da1ad8535cd14f013b58201e9753293e50a3f78f6649edd2606be0e6e5
 	sha256sums = c00c64ee4c3cda870471cb8bfe0a7e2273bf2b69056bd0687bac9d9be2cb984b
 	sha256sums = befddd224a022acbded2cc0bd9ff217902cd2f7e092a901ff0c6b4065e550659
 
