@@ -5,8 +5,8 @@
 
 pkgname=screen-git
 # screen will report its version as 4.99.0.
-pkgver=4.9.1.r1286.cd4d02f
-pkgrel=2
+pkgver=5.0.0.r1324.9d8b0ff
+pkgrel=1
 pkgdesc='Full-screen window manager that multiplexes a physical terminal'
 url='https://www.gnu.org/software/screen/'
 arch=('x86_64' 'aarch64' 'armv7l' 'armv7h' 'armv6h' 'armv5')

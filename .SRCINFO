@@ -1,7 +1,7 @@
 pkgbase = screen-git
 	pkgdesc = Full-screen window manager that multiplexes a physical terminal
-	pkgver = 4.9.1.r1286.cd4d02f
-	pkgrel = 2
+	pkgver = 5.0.0.r1324.9d8b0ff
+	pkgrel = 1
 	url = https://www.gnu.org/software/screen/
 	arch = x86_64
 	arch = aarch64
