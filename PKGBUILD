@@ -9,7 +9,7 @@ pkgdesc="A formatter for RD"
 arch=('any')
 url="https://uwabami.github.io/software/rdtool"
 _url="https://github.com/uwabami/${_name}"
-license=('GPL-2.0-or-later' 'custom')
+license=('Ruby License' 'GPL-2.0-or-later')
 makedepends=('ruby-rake' 'ruby-racc>=1.4.6')
 checkdepends=('ruby-test-unit')
 depends=('ruby' 'ruby-ostruct' 'ruby-image_size' 'ruby-forwardable'

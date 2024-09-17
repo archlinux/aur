@@ -4,8 +4,8 @@ pkgbase = ruby-rdtool
 	pkgrel = 1
 	url = https://uwabami.github.io/software/rdtool
 	arch = any
+	license = Ruby License
 	license = GPL-2.0-or-later
-	license = custom
 	checkdepends = ruby-test-unit
 	makedepends = ruby-rake
 	makedepends = ruby-racc>=1.4.6
