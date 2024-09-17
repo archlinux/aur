@@ -11,6 +11,7 @@ depends=(
   'python-gobject'
   'libadwaita'
   'python-todoist-api-python'
+  "python-schedule"
 )
 makedepends=(
   'git'

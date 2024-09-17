@@ -10,6 +10,7 @@ pkgbase = todoist-dailies
 	depends = python-gobject
 	depends = libadwaita
 	depends = python-todoist-api-python
+	depends = python-schedule
 	source = git+https://github.com/SSS-Says-Snek/todoist-dailies.git#tag=0.0.1
 	sha256sums = SKIP
 
