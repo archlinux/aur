@@ -21,6 +21,10 @@ pkgbase = opensmtpd-extras
 	optdepends = mariadb-libs: for table-mysql support
 	optdepends = hiredis: for table-redis support
 	source = https://www.opensmtpd.org/archives/opensmtpd-extras-6.7.1.tar.gz
+	source = automake17.patch
+	source = configure.patch
 	sha512sums = 0969c53a5d13816862f13b3572c0d84d34e2d36d85f83a528d70ee3f4ad5e6b2cdda256529e95a43a177e64368e4e93540d5bb2f81039808d79049234b249d91
+	sha512sums = dec95f5b4d518dff802321fe3d29a05086565b107db62f3c6741c29b0999e9a074bb287a0304c633372b85d46d7675d299caa548e1504d1245efd6e731b175ed
+	sha512sums = 76c24516771a649a44cd3113fc4a884b9c6196582435d10f3f6f2efe0e6c168cfdc222e7bb37bd02e7c879db10b7dfaea174053f4ac863e74ff77920b7938038
 
 pkgname = opensmtpd-extras

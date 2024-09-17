@@ -1,0 +1,11 @@
+--- a/configure.ac	2020-04-06 11:36:29.000000000 -0700
++++ b/configure.ac	2024-09-17 15:23:35.927906026 -0700
+@@ -312,7 +312,7 @@
+ AM_CONDITIONAL([NO_LIBASR], [test x$asr_in_libc = x1])
+ 
+ AC_MSG_CHECKING([compiler and flags for sanity])
+-AC_RUN_IFELSE([AC_LANG_PROGRAM([[ #include <stdio.h> ]], [[ exit(0); ]])],
++AC_RUN_IFELSE([AC_LANG_PROGRAM([[ #include <stdlib.h> ]], [[ exit(0); ]])],
+ 	[	AC_MSG_RESULT([yes]) ],
+ 	[
+ 		AC_MSG_RESULT([no])
