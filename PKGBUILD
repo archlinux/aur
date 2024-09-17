@@ -3,14 +3,13 @@
 _pkgname=imputeTS
 _pkgver=3.3
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
-pkgrel=1
-pkgdesc='Time Series Missing Value Imputation'
-arch=('x86_64')
-url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Time Series Missing Value Imputation"
+arch=(x86_64)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('GPL-3.0-only')
 depends=(
-  r
   r-forecast
   r-ggplot2
   r-ggtext
@@ -32,14 +31,15 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fdfdbec609c55ef21069c507d82fddcefe5da7925aae6f97263c32ea4255b678')
+md5sums=('92266787a6f8e6d4c6b49aee6aad307f')
+b2sums=('7c18d6d3ad8d15206f935c3da07694d1068e5414f35f7cc43725508f45599ac5362127dcc0c374252b1fe02f4c3b5663fad654f3edd3ccad11fb96a9f73faaa4')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
