@@ -1,7 +1,7 @@
 # Maintainer: zt <zt@zt64.dev>
 # Maintainer: cookie <kyliepc@proton.me>
 _pkgname=Vesktop
-pkgname=vesktop
+pkgname=vesktop-electron
 pkgdesc="An Electron-based Discord app with Vencord & improved Linux support using system provided electron. Unsupported"
 pkgver=1.5.3
 pkgrel=1
