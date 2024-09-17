@@ -1,0 +1,13 @@
+[Unit]
+Description=Converts SD-JSON to XMLTV
+After=network-online.target
+
+[Service]
+User=guide2go
+Group=guide2go
+Type=oneshot
+WorkingDirectory=/var/lib/guide2go
+ExecStart=/usr/bin/guide2go -config /etc/guide2go.yaml
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,21 @@
+pkgbase = guide2go
+	pkgdesc = Converts SD-JSON to XMLTV
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/mar-mei/guide2go
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	backup = etc/guide2go.yaml
+	source = guide2go-1.2.0.tar.gz::https://github.com/mar-mei/guide2go/archive/refs/tags/1.2.0.tar.gz
+	source = guide2go.service
+	source = guide2go.timer
+	source = guide2go.sysusers
+	source = guide2go.tmpfiles
+	sha256sums = a3f15e17220c98cb66e5b9de5e1eb1c3aef1bac2d1fa829c089f40df4601f081
+	sha256sums = e63e2d2ba70a656abdb932c77024c80dde00e79cd446ae08a0882f23c213af75
+	sha256sums = eed03fd10dce69af1d9d1675d7876456b6dc9dc0ee903b6f41de37633dfdadc4
+	sha256sums = 362fc91c042c86a734b9183867a0db38b23618c79db95faa8483ffa5c0f3aab3
+	sha256sums = 6df7613f118cc18174a13ae010a49a564b71799b1aa0c84452cef87a34fa3c14
+
+pkgname = guide2go
