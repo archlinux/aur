@@ -1,7 +1,7 @@
 pkgbase = gr-limesdr-git
 	pkgdesc = gr-limesdr Plugin for GNURadio
 	pkgver = 3.0.1.r69.gd0fac85
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/myriadrf/gr-limesdr
 	arch = x86_64
 	license = MIT
@@ -9,15 +9,17 @@ pkgbase = gr-limesdr-git
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = git
+	makedepends = ninja
 	makedepends = pybind11
-	depends = fmt
 	depends = gnuradio
 	depends = limesuite
 	depends = python
 	depends = spdlog
-	provides = gr-limesdr
+	provides = gr-limesdr=3.0.1
 	conflicts = gr-limesdr
-	source = gr-limesdr::git+https://github.com/myriadrf/gr-limesdr#branch=gr-3.10
+	source = gr-limesdr::git+https://github.com/myriadrf/gr-limesdr.git#branch=gr-3.10
+	source = fmtlib.fmt::git+https://github.com/fmtlib/fmt.git#commit=e69e5f977d458f2650bb346dadf2ad30c5320281
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = gr-limesdr-git
