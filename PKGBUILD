@@ -10,7 +10,7 @@
 _pkgbase=cockatrice
 pkgname=("cockatrice-client-git" "cockatrice-server-git")
 pkgver=2.9.1.beta.2.r21.gb7042165
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source multiplatform supported program for playing tabletop card games over a network.'
 arch=('i686' 'x86_64')
 url='https://cockatrice.github.io/'
@@ -19,7 +19,6 @@ makedepends=('cmake' 'git' 'zlib' 'xz' 'mariadb-libs' 'protobuf' 'qt6-svg' 'qt6-
 checkdepends=('gtest' 'valgrind')
 source=("git+https://github.com/cockatrice/cockatrice")
 sha256sums=('SKIP')
-options=('!lto')
 
 pkgver() {
   cd "${_pkgbase}" || exit 1
