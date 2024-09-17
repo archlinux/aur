@@ -1,0 +1,19 @@
+pkgbase = moreutils-go-bin
+	pkgdesc = A collection of the Unix tools that nobody thought to write long ago when Unix was young.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/gabe565/moreutils
+	license = GPL-3.0
+	conflicts = moreutils-go
+	provides = moreutils
+	arch = aarch64
+	source_aarch64 = https://github.com/gabe565/moreutils/releases/download/v0.0.1/moreutils-go_0.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 62a31c76418aa86790358cc421475474f59772ea8d0593c3e0d070129863c804
+	arch = armv7h
+	source_armv7h = https://github.com/gabe565/moreutils/releases/download/v0.0.1/moreutils-go_0.0.1_linux_armv7.tar.gz
+	sha256sums_armv7h = 15e54553a4bb1341883fa0212a326b3b2158d754c57fbd51f376806997889aba
+	arch = x86_64
+	source_x86_64 = https://github.com/gabe565/moreutils/releases/download/v0.0.1/moreutils-go_0.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = ff454f81a53ebe0e4ef6859248e33fe4fdd96ce518f289d04f5d2adf3e4b23ee
+	
+pkgname = moreutils-go-bin
