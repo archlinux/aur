@@ -2,8 +2,8 @@
 # Co-maintainer: Nebulosa <nebulosa2007 at yandex dot ru>
 
 pkgname=byedpi
-pkgver=0.14
-pkgrel=2
+pkgver=0.14.1
+pkgrel=1
 pkgdesc="A simple and fast software designed to bypass Deep Packet Inspection"
 arch=(aarch64 armv6h armv7h x86_64)
 url="https://github.com/hufrea/$pkgname"
@@ -16,10 +16,10 @@ source=(
   $url/raw/main/LICENSE
   $url/archive/v$pkgver/$pkgname-$pkgver.tar.gz
 )
-b2sums=('26d0b11e667d804c6795d2aaf1af8977ff198082cde53cd60a19fe80b38925cc3999287760ce2e676f0ad2ac67516f4b10457e9f88a6d9898113cdb720ee5339'
-        '4edf7a873d9abfc0aedfc4219f2911280a4abb6e595336ef8fb33dd9cce37c07409f67c7e9cb25e6ae9be273a8815cb5baf651becd2eca7302f527c8034d3432'
+b2sums=('63b1b2d974e9f26dd0cb67ad86c9eb28611444d1db2dc1ce80bb21e8a57a71a2a9d247e3f217ae2ffad9af6f45a9f37f4e7eb57795d28e7cc00c8abe7a464349'
+        'f3340917f897d376466c5d3e4c4d6d4e29d929da2f44626e779a80a989a9376082388c941197fc16c78e848e7ee7e38f1a22ffbda5f7cdc6eee5556b4d16bc72'
         'dd51700e972d759a2297bddc15455477a9574b98174e48c6c89236999fb028c09b8eff8a67067bc49e1a8830e43c7a6d76c4c5c644716562818b02320463e1aa'
-        '45da87745d8d80e32aa11bb278349b15e3ee2c5efc0fc917b899edcceca2d687f0e0a0e927d47d7d5d69c4b56b24b622ad095eca8de212d1a7590f8ad43e3e6c')
+        'c14af6c2e01bf5d8c1539b5417ca2bf7cdfd501f4f1927dd7d1f643db1b2c7e26cd4bd8e3f66d885903b9349fa10f802e44039f0fc08b28143ec382a64e096b1')
 
 build() {
   cd $pkgname-$pkgver
