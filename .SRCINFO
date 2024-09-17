@@ -1,0 +1,18 @@
+pkgbase = rusty-psn-git
+	pkgdesc = A PSN user info fetcher written in Rust.
+	pkgver = 0.5.0.r1.ga227494
+	pkgrel = 1
+	url = https://github.com/RainbowCookie32/rusty-psn
+	arch = x86_64
+	makedepends = cargo
+	makedepends = rust
+	makedepends = pkgconf
+	makedepends = git
+	depends = openssl
+	depends = perl
+	provides = rusty-psn
+	options = !lto
+	source = rusty-psn::git+https://github.com/RainbowCookie32/rusty-psn.git
+	sha256sums = SKIP
+
+pkgname = rusty-psn-git
