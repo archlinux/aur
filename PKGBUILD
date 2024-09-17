@@ -2,7 +2,7 @@
 
 # Maintainer: William Horvath <william at horvath dot blog>
 
-# Credit to Torge Matthies (openglfreak@googlemail.com) for the original single-make implementation in wine-tkg-git 
+# Credit to Torge Matthies (openglfreak at googlemail dot com) for the original single-make implementation in wine-tkg-git 
 # https://github.com/Frogging-Family/wine-tkg-git/commit/ee366e08bf2a6608813ab77b88f8c8ec742f1ca7
 
 #### Setup, don't touch :^)
@@ -13,9 +13,9 @@ _devenv=false
 _generic_release=false
 
 ## hack taken from wine-tkg PKGBUILD, real pkgrel is the eval one
-pkgver=9.17.w21.s27b121f
+pkgver=9.17.w161.sb6944be
 pkgrel=1
-eval pkgrel=2
+eval pkgrel=1
 
 ################################################################################################################################
 ################################################################################################################################
@@ -35,7 +35,7 @@ _enabled_staging=()
 _disabled_staging=()
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="09-09-2024-82f4d38a-27b121f2-v2"
+_patchbase_tag="09-17-2024-03d98536-b6944be8"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -45,8 +45,8 @@ _custompatches=false
 
 ## (with custompatches) uses wine/staging master if empty, uses given commit or tag if set
 ## (without custompatches) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=82f4d38a39a28e802060a84d689550e166ae1721
-_desired_staging_commit=27b121f293bc27220dd0ff19d251a19ce695d31d
+_desired_wine_commit=03d985369dc9afe943ee3072478a2567b3fe4077
+_desired_staging_commit=b6944be8105b3307765793ced0e64a646eeae8d1
 
 ## (with custompatches) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -56,7 +56,7 @@ _wine_git="https://gitlab.winehq.org/wine/wine.git"
 _staging_git="https://github.com/wine-staging/wine-staging.git"
 
 ## install static .a libraries (recommend using standard wine for these instead)
-_install_static=false
+_install_static=true
 
 ## removes src, pkg folders on exit (both failure and success)
 _cleanbuildfolders=false
@@ -135,7 +135,7 @@ noextract=()
 ## don't needlessly add the wine-osu-patches repo if we explicitly specify custom ones
 if ! { [ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ] ; }; then
   source+=("git+https://github.com/whrvt/wine-osu-patches.git#tag=${_patchbase_tag}")
-  sha512sums+=('5f77c68ef88c1c8f46904c9cf866ae561585aff020bd77ade945c6c69b7c4a3917db8b14b19e5a009eb2fd4511e27dc9c72efb348fb8cc952546a3092d55e0e0')
+  sha512sums+=('f97e25637c4ca7589446e1a8ecf6a298784e99221e39a5bc3d8c695c4473e6499ba18e1d17c0f3b00240d82a8e7fce58491bbab4d6aae0e1c4710a1e93b4021f')
 
   if [ "${_custompatches}" = "true" ]; then
     msg2 "WARNING: _custompatches=true but custompatches directory not found. Will be using wine-osu-patches repo."
@@ -164,6 +164,7 @@ depends=(
   libxcomposite
   libpulse
   bash
+  ffmpeg
 )
 
 makedepends=(autoconf bison ccache perl fontforge flex
@@ -189,7 +190,6 @@ makedepends=(autoconf bison ccache perl fontforge flex
   opencl-headers
   nasm
   attr
-  gst-plugins-base-libs
   gtk3
 )
 
@@ -218,8 +218,8 @@ optdepends=(
 )
 
 if [ "${_wow64build}" != "true" ]; then
-  depends+=(lib32-libxkbcommon libvulkan.so=1-32 lib32-gnutls lib32-libxcomposite lib32-libpulse lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
-  makedepends+=(lib32-wayland lib32-gtk3 lib32-attr lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-lib lib32-gst-plugins-base-libs lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2)
+  depends+=(lib32-ffmpeg lib32-libxkbcommon libvulkan.so=1-32 lib32-gnutls lib32-libxcomposite lib32-libpulse lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
+  makedepends+=(lib32-wayland lib32-gtk3 lib32-attr lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-lib lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2)
   optdepends+=(lib32-libusb lib32-libxinerama lib32-giflib lib32-libpng lib32-libldap lib32-mpg123 lib32-openal lib32-v4l-utils lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
   if [ "${_use_clang}" = "true" ] || [ "${_use_mingw}" = "llvm" ]; then makedepends+=(lib32-llvm-libs); fi
 fi
@@ -263,7 +263,7 @@ if [ "${_use_mingw}" = "llvm" ]; then
 else # remove llvm-mingw paths from externally set PATH
   if [[ "${PATH}" =~ "llvm-mingw" ]]; then
     _mingw_path="$(dirname "$(command -v i686-w64-mingw32-clang)")"
-    _cross_path="${PATH//"${_mingw_path}"/}"
+    _cross_path="${PATH//"${_mingw_path}":/}"
   else
     _cross_path="${PATH}"
   fi
@@ -474,20 +474,24 @@ prepare() { _set_vars;
 
   _enabled_staging=("${_enabled_staging[@]:-"--all"}")
 
+  #exit
+
   if [ "${_use_staging}" != "false" ]; then
     msg2 "Applying staging patches"
     printf "\nApplying staging patches\n\n" >> "${_where}"/patchlog.txt
 
     ## wip-ish, but shellcheck doesn't complain :^)
 
-    ## if find "${_patchdir}"/staging-overrides -name "*spatch" -print0 -quit | grep . >/dev/null; then
-    ##   find "${_patchdir}"/staging-overrides -name "*spatch" -execdir \
-    ##       sh -c 'cp "$1" $(find "'"${srcdir}"'/wine-staging/patches" -iregex ".*${1%.spatch}.*") &>/dev/null' -- '{}' \+ \
-    ##         || _failure "Error overriding staging patch"
+    if [ "${_use_staging_upstream}" != "true" ] && find "${_patchdir}"/staging-overrides -name "*spatch" -print0 -quit | grep . >/dev/null; then
+      for override in "${_patchdir}"/staging-overrides/*; do
+        base=$(basename "${override}")
+        dest=$(find "${srcdir}"/wine-staging/patches/ -name "${base%.spatch}*")
+        cp "${override}" "${dest}"
+      done
 
-    ##   msg2 "Overrode all staging patches matching those in staging-overrides/*.spatch"
-    ##   printf "\nOverrode all staging patches matching those in staging-overrides/*.spatch\n\n" >> "${_where}"/patchlog.txt
-    ## fi
+      msg2 "Overrode all staging patches matching those in staging-overrides/*.spatch"
+      printf "\nOverrode all staging patches matching those in staging-overrides/*.spatch\n\n" >> "${_where}"/patchlog.txt
+    fi
 
     # shellcheck disable=SC2048,SC2086
     "${staging_patcher[@]}" DESTDIR="${srcdir}"/"${pkgname}" --no-autoconf "${_enabled_staging[@]}" ${_disabled_staging[*]/#/-W } &>> "${_where}"/patchlog.txt || \
@@ -601,7 +605,8 @@ build() { _set_vars;
     --disable-winemenubuilder
     --disable-win16
     --with-x
-    --with-gstreamer
+    --without-gstreamer
+    --with-ffmpeg
     --with-wayland
     --silent
     --enable-silent-rules
@@ -702,7 +707,7 @@ package() { _set_vars;
   fi
 
   if [ "${_wow64build}" = "true" ]; then
-    ln -sf /opt/"${pkgname}"/bin/wine "${pkgdir}"/opt/"${pkgname}"/bin/wine64
+    ln -srf "${pkgdir}"/opt/"${pkgname}"/bin/wine{,64}
   fi
 
   cp "${srcdir}"/winestart "${pkgdir}"/opt/"${pkgname}"/bin/wine-osu"${_wowname}"
