@@ -4,13 +4,14 @@
 _pkgname=viddy
 pkgname=${_pkgname}-bin
 pkgver=1.1.2
-pkgrel=5
+pkgrel=6
 pkgdesc='A modern watch command, binary version'
 url="https://github.com/sachaos/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/sachaos/${_pkgname}/v${pkgver}"
 arch=('x86_64' 'i686' 'aarch64')
 license=('MIT')
 depends=('glibc')
+makedepends=('help2man')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
@@ -25,7 +26,7 @@ sha256sums_i686=('7fab30d67057715a08348e1e5b559b5b83c6dab25390fbdc7c0759bf329cf9
 sha256sums_aarch64=('db06823fdadd78df6c3219524cbdff5f7844d0d1752e7f0d7c1c87f16e1e40de')
 
 build() {
-	help2man ./${_pkgname} --output "MAN-${pkgver}.1"
+  help2man ./${_pkgname} --output "MAN-${pkgver}.1"
 }
 
 package() {
