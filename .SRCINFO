@@ -11,7 +11,7 @@ pkgbase = unifi-beta
 	depends = java-runtime-headless>=17
 	depends = fontconfig
 	provides = unifi
-	source = unifi-beta-8.4.62.zip::https://www.ubnt.com/downloads/unifi/8.4.62-i3q2j125cz/UniFi.unix.zip
+	source = unifi-beta-8.4.62.zip::https://www.ui.com/downloads/unifi/8.4.62-i3q2j125cz/UniFi.unix.zip
 	source = mongod
 	source = unifi.service
 	source = unifi.sysusers

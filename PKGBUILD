@@ -11,7 +11,7 @@ url='https://www.ubnt.com/'
 license=('custom')
 depends=('mongodb' 'java-runtime-headless>=17' 'fontconfig')
 provides=('unifi')
-source=("${pkgname}-${pkgver}.zip::https://www.ubnt.com/downloads/unifi/${pkgver}-${_pkgver}/UniFi.unix.zip"
+source=("${pkgname}-${pkgver}.zip::https://www.ui.com/downloads/unifi/${pkgver}-${_pkgver}/UniFi.unix.zip"
         mongod
         unifi.service
         unifi.sysusers
