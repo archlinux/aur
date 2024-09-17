@@ -1,18 +1,16 @@
 pkgbase = phylum-git
 	pkgdesc = Command line interface for the Phylum API
-	pkgver = 6.6.6.r0.g7b5531d
+	pkgver = 7.0.0.r0.g6967382
 	pkgrel = 1
-	url = https://phylum.io/
-	arch = any
+	url = https://phylum.io
+	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cargo
-	depends = glibc
 	depends = gcc-libs
+	depends = glibc
 	depends = zlib
-	optdepends = bash-completion: for shell auto-completion
-	optdepends = zsh-completions: for shell auto-completion
-	provides = phylum=6.6.6
+	provides = phylum=7.0.0
 	conflicts = phylum
 	source = cli::git+https://github.com/phylum-dev/cli.git
 	sha256sums = SKIP

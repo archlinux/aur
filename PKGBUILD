@@ -2,17 +2,15 @@
 
 _pkgname="phylum"
 pkgname="${_pkgname}-git"
-pkgver=6.6.6.r0.g7b5531d
+pkgver=7.0.0.r0.g6967382
 pkgrel=1
 pkgdesc="Command line interface for the Phylum API"
-arch=('any')
-url="https://${_pkgname}.io/"
-_url="https://github.com/${_pkgname}-dev/cli"
+arch=('x86_64')
+url="https://phylum.io"
+_url="https://github.com/phylum-dev/cli"
 license=('MIT')
-depends=('glibc' 'gcc-libs' 'zlib')
+depends=('gcc-libs' 'glibc' 'zlib')
 makedepends=('git' 'cargo')
-optdepends=('bash-completion: for shell auto-completion'
-            'zsh-completions: for shell auto-completion')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="cli"
