@@ -1,0 +1,20 @@
+pkgbase = perl-javascript-quickjs
+	pkgdesc = Run JavaScript via QuickJS in Perl
+	pkgver = 0.21
+	pkgrel = 2
+	url = https://metacpan.org/pod/JavaScript::QuickJS
+	arch = x86_64
+	license = Artistic-1.0-Perl
+	license = GPL-1.0-or-later
+	depends = perl-extutils-makemaker-cpanfile
+	depends = perl-file-slurper
+	depends = perl-file-which
+	depends = perl-test-deep
+	depends = perl-test-failwarnings
+	depends = perl-test-fatal
+	depends = perl-types-serialiser
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/F/FE/FELIPE/JavaScript-QuickJS-0.21.tar.gz
+	sha512sums = 4cc3488e506c2312b9f8b3410c09f9aed1d1ceeba5a115815256f2827b1e61246d6ff542cbe6d15d21b51f63c49e73c304815e9e3340516f15fb13c64d200b6d
+
+pkgname = perl-javascript-quickjs
