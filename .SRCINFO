@@ -1,0 +1,16 @@
+pkgbase = natmap-git
+	pkgdesc = TCP/UDP port mapping for full cone NAT
+	pkgver = 20240813r1.g8ebb953
+	pkgrel = 1
+	url = https://github.com/heiher/natmap
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = glibc
+	provides = natmap
+	conflicts = natmap
+	source = natmap-git::git+https://github.com/heiher/natmap.git
+	md5sums = SKIP
+
+pkgname = natmap-git
