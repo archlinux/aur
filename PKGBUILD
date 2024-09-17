@@ -1,6 +1,6 @@
 # Maintainer: Toadtoad <kingdomkeepersguy@gmail.com>
 pkgname=geode-cli-bin
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Command-line utilities for working w/ geode, a Geometry Dash modding SDK"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   "https://github.com/geode-sdk/cli/releases/download/v${pkgver}/geode-cli-v${pkgver}-linux.zip"
   "https://raw.githubusercontent.com/geode-sdk/cli/v${pkgver}/LICENSE"
 )
-sha256sums=("96fff21e94b0c9865ffbe182fa8394f38bd42b28e903438b38f0a03ee3aabb87" "SKIP")
+sha256sums=("2d181cc536585e003aa4cc511e14da7a01f9be76e0e07c347f4568b5fa9f2872" "SKIP")
 
 package() {
   install -Dm755 "${srcdir}/geode" "${pkgdir}/usr/bin/geode"
