@@ -15,8 +15,8 @@ license=('GPL-3.0-only')
 depends=('gcc-libs' 'bash' 'cairo' 'gtk3' 'webkit2gtk-4.1' 'gdk-pixbuf2' 'glib2' 'openssl' 'libsoup3')
 makedepends=('rust' 'cargo' 'protobuf' 'npm')
 optdepends=('nym-vpnd: NymVPN daemon as a systemd service')
-provides=('nym-vpn')
-conflicts=('nymvpn-x' 'nym-vpn')
+provides=('nym-vpn-app')
+conflicts=('nymvpn-x' 'nym-vpn-app')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_release_tag.tar.gz"
     'nym-vpn-wrapper.sh'
