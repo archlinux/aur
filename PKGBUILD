@@ -6,7 +6,7 @@
 
 pkgname="imfile$_pkgtype"
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A full-featured download manager"
 arch=("arm" "x86_64" "i686")
 license=("MIT")
@@ -21,7 +21,7 @@ source=(
 )
 
 sha256sums=(
-	"6a530e20c40bb8bf0b413758e64629a0be0468ef8c203282ea6a1a80409493be"
+	"8132176e95ccdd1b09e8e6bf9c653e48f425532f84027d25bb022a9fc3abc5b6"
 	"eca6961cf9d367c2733af7e8176aeaa81c5b20c12be132ec5baa3f030c7d034b"
 	"fb6d4e43083a27fca46acf69bb61f1c54ee4620031f9e5b1a76822e2a99783e5"
 )
