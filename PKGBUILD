@@ -5,9 +5,9 @@
 
 pkgname=emacs-pretest
 _pkgname=emacs
-pkgver=29.1
-_pkgver=29.1.90
-pkgrel=0.90
+pkgver=30.0
+_pkgver=30.0.91
+pkgrel=0.91
 pkgdesc="The extensible, customizable, self-documenting real-time display editor. Pretest version"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -23,17 +23,18 @@ depends=(
 )
 provides=('emacs' 'emacs-nativecomp')
 conflicts=('emacs-nox')
+options=(!strip)
 #
 # You'll need to grab this key and add it BY HAND to your local keyring.
 # All PGP Keyservers are all but dead thanks to the EU. 
 #
-#    gpg --keyserver hkps://keys.openpgp.org --recv-keys 17E90D521672C04631B1183EE78DAE0F3115E06B
+#    gpg --keyserver hkps://keys.openpgp.org --recv-keys 12BB9B400EE3F77282864D18272B5C54E015416A
 # 
-validpgpkeys=('17E90D521672C04631B1183EE78DAE0F3115E06B')
+validpgpkeys=('12BB9B400EE3F77282864D18272B5C54E015416A')
 #
 source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz{,.sig}
         nemacs readme_or_weep.txt)
-b2sums=('01cf0b56fc9b4cf598b187271c0996f59316f874c5bd9d17f8551cb58e33d742ccb21dcddb061f88f0c6a3f670014a2d130d026ddc97c666958a64c0fbc709fe'
+b2sums=('9ef6f6bcca6b33fb9f70530ff1bb2ff8d56d88d201b8a9267d503e75f23efdb6e9707353495d1c504fbdd26a6a260d39cf98077188f41d65118af21e02715069'
         'SKIP'
         '58e028b439d3c7cf03ea0be617b429a2c54e7aa1b8ca32b5ed489214daaa71e22c323de9662761ad2ce4de58e21dbe45ce6ce198f402686828574f8043d053d0'
         '98cb6458eebfa1440eea1318c6974c135d1b9e1a559fb1ca4bca35fb4697cc8cd6d33b19427efead0f3e061556ba19e774eee4f4566673494ac2470da4725b28')
