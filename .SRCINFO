@@ -1,0 +1,29 @@
+pkgbase = r-imputets
+	pkgdesc = Time Series Missing Value Imputation
+	pkgver = 3.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=imputeTS
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-forecast
+	depends = r-ggplot2
+	depends = r-ggtext
+	depends = r-magrittr
+	depends = r-rcpp
+	depends = r-stinepack
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-r.rsp
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-tibble
+	optdepends = r-timeseries
+	optdepends = r-tis
+	optdepends = r-tsibble
+	optdepends = r-xts
+	optdepends = r-zoo
+	source = https://cran.r-project.org/src/contrib/imputeTS_3.3.tar.gz
+	sha256sums = fdfdbec609c55ef21069c507d82fddcefe5da7925aae6f97263c32ea4255b678
+
+pkgname = r-imputets
