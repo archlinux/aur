@@ -1,7 +1,7 @@
 # Maintainer: zt <zt@zt64.dev>
 # Maintainer: cookie <kyliepc@proton.me>
 _pkgname=vesktop
-pkgname=vesktop-git
+pkgname=vesktop-electron-git
 pkgdesc="An Electron-based Discord app with Vencord & improved Linux support using system provided Electron (git version). Unsupported"
 pkgver=r363.24fbf35
 pkgrel=1

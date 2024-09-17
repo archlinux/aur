@@ -1,4 +1,4 @@
-pkgbase = vesktop-git
+pkgbase = vesktop-electron-git
 	pkgdesc = An Electron-based Discord app with Vencord & improved Linux support using system provided Electron (git version). Unsupported
 	pkgver = r363.24fbf35
 	pkgrel = 1
@@ -22,4 +22,4 @@ pkgbase = vesktop-git
 	sha256sums = 7ae443361ea97f8ab287bdf60e2dc1fa1f5fea25eb16b95a3745fed51a111c33
 	sha256sums = 122b17ce996318e533e6f2ab1c9b2961b39c3eba271c9b40f10c0da5dd738baa
 
-pkgname = vesktop-git
+pkgname = vesktop-electron-git
