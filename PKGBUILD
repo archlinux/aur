@@ -1,5 +1,5 @@
 pkgname=waylyrics
-pkgver=0.3.13
+pkgver=0.3.14
 pkgrel=1
 pkgdesc="the furry way to show desktop lyrics"
 arch=("x86_64")
@@ -15,7 +15,7 @@ makedepends=(
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/waylyrics/waylyrics/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('a4145c0a068564e9b69830f14e3e22234462eb2308d79eba232e92395af0747d')
+sha256sums=('3d5002304ed14ee79243feb309f1d14626744b8f5801dde909cb84a8a8d44301')
 options=("!lto")
 optdepends=('xdg-desktop-portal: file dialog to import LRC')
 
