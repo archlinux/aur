@@ -9,10 +9,10 @@
 
 pkgname=zen-browser-avx2-bin
 _pkgname=zen-browser
-_realpkgver=1.0.1-a
+_realpkgver=1.0.1-a.1
 _desktopname=zen-alpha
-pkgver=1.0.1.a
-pkgrel=2
+pkgver=1.0.1.a.1
+pkgrel=1
 pkgdesc="Performance oriented Firefox-based web browser - Utilizes AVX2 for better performance"
 arch=('x86_64' 'i686')
 url="https://github.com/zen-browser/desktop"
@@ -32,7 +32,7 @@ source=("zen-browser-$_realpkgver.tar.bz2::https://github.com/zen-browser/deskto
         "$_pkgname.sh"
         "$_desktopname.desktop"
         "policies.json")
-sha256sums=('b72f76d671f703f2cb6260800559c34a7645653d5b87c131c56ea9487c7b24b3'
+sha256sums=('29a00a6f3834f1286296f7b93a01c8749205dae626e7f0ad4ab03a966c1eabc0'
             'b32396cfb4272398d68c59b48c548b86f99ca4ea70bce8e6bed434819b165e53'
             'e81e41cb90be3d189c541fb4b013d9250d07f9c6a3bb219065719326514c33b0'
             'f93eb77db526147a8a20744905923a6eda79e2fbcc9f282e2f9228a7a995c798')
