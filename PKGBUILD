@@ -4,7 +4,7 @@ _pkgname=Vesktop
 pkgname=vesktop-electron
 pkgdesc="An Electron-based Discord app with Vencord & improved Linux support using system provided electron. Unsupported"
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64" "aarch64")
 url="https://github.com/Vencord/Vesktop"
@@ -18,8 +18,7 @@ optdepends=(
 )
 
 provides=("vesktop")
-replaces=("vesktop_electron")
-conflicts=('vesktop')
+conflicts=('vesktop' 'vesktop_electron')
 
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/Vencord/Vesktop/archive/v${pkgver}.tar.gz" "vesktop.desktop" "vesktop.sh" "afterPack.js")
 
@@ -38,7 +37,8 @@ build() {
   sed -i "/linux/s/^/        \"electronDist\": \"\\/usr\\/lib\\/electron\",\n/" package.json
 
   corepack pnpm i
-  corepack pnpm package:dir
+  corepack pnpm build
+  corepack pnpx electron-builder --dir
 }
 
 package() {
