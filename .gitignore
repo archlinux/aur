@@ -6,3 +6,4 @@ cockatrice-client-git/
 *.swp
 pkg/
 src/
+*.log

@@ -9,7 +9,7 @@
 
 _pkgbase=cockatrice
 pkgname=("cockatrice-client-git" "cockatrice-server-git")
-pkgver=2.9.0.r71.g2303880b
+pkgver=2.9.1.beta.2.r21.gb7042165
 pkgrel=1
 pkgdesc='Open-source multiplatform supported program for playing tabletop card games over a network.'
 arch=('i686' 'x86_64')
