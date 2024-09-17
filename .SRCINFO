@@ -6,6 +6,7 @@ pkgbase = mprocs-bin
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = help2man
 	provides = mprocs-bin
 	conflicts = mprocs-bin
 	source = LICENSE-0.7.1::https://raw.githubusercontent.com/pvolok/mprocs/v0.7.1/LICENSE

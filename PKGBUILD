@@ -4,7 +4,7 @@ _pkgauthor=pvolok
 _pkgname=mprocs
 pkgname=${_pkgname}-bin
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Run multiple commands in parallel"
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -13,6 +13,7 @@ license=('MIT')
 
 provides=("${pkgname}")
 conflicts=("${pkgname}")
+makedepends=('help2man')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}::${_urlraw}/README.md"
