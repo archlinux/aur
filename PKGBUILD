@@ -2,7 +2,7 @@
 
 _pkgname=vim
 pkgname=gvim-gtk2
-pkgver=9.1.0733
+pkgver=9.1.0736
 pkgrel=1
 pkgdesc="Vim, the text editor. CLI version and GTK2 GUI providing majority of features."
 arch=("i686" "x86_64")
@@ -24,7 +24,7 @@ source=("https://github.com/vim/vim/archive/v$pkgver.tar.gz"
         "gvim.desktop")
 backup=('etc/vimrc')
 
-sha256sums=('bef2df9940090852233fa926b9dc9b3b0dc8be63dbeb6043db3713165a30fe6d'
+sha256sums=('7c11c89af94265bc74384f9694a272d925d7436ba7da43c234b77cb302bf8d72'
             'b16e85e457397ab2043a7ee0a3c84307c6b4eac157fd0b721694761f25b3ed5b'
             'c011d32ea0daab8c0ae0ca824a78e23fe05db07b7cadbeda52653e19562c0afe'
             '9f1c00aa96458caa2cdfc02164e58bc08bcfcbe5aa95dc618d2fc7e1b12b9a12')
