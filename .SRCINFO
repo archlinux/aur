@@ -1,6 +1,6 @@
 pkgbase = far2l-git
 	pkgdesc = Linux port of FAR v2
-	pkgver = r4941.f077d2f6
+	pkgver = r5025.7b5fb8e3
 	pkgrel = 1
 	url = https://github.com/elfmz/far2l
 	arch = i686
