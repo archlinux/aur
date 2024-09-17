@@ -1,7 +1,7 @@
 pkgbase = libpamac-aur
 	pkgdesc = Pamac package manager library based on libalpm
 	pkgver = 11.6.4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/manjaro/libpamac/
 	install = pamac.install
 	arch = i686
@@ -34,14 +34,14 @@ pkgbase = libpamac-aur
 	depends = archlinux-appstream-data
 	depends = git
 	provides = libpamac.so=11
-	provides = libpamac-aur.so=11
 	provides = libpamac-appstream.so=11
+	provides = libpamac=11.6.4
 	conflicts = libpamac
 	conflicts = libpamac-all
 	options = !emptydirs
 	options = !strip
 	backup = etc/pamac.conf
-	source = libpamac-11.6.4-5.zip::https://github.com/manjaro/libpamac//archive/14212835ca50c3cb90aac0eed88e07b764dcba0e.zip
+	source = libpamac-11.6.4-6.zip::https://github.com/manjaro/libpamac//archive/14212835ca50c3cb90aac0eed88e07b764dcba0e.zip
 	source = fix-appstream-data.sh
 	source = fix-appstream-data.hook
 	source = 0001-flatpak_trans_run.patch
