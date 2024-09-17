@@ -4,19 +4,18 @@ pkgver='0.01'
 pkgrel='1'
 pkgdesc="Perl extension that implements the sendfile() interface."
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl')
 options=('!emptydirs')
-depends=()
-makedepends=()
+depends=('perl')
 url='http://search.cpan.org/dist/IO-SendFile'
 source=("https://cpan.metacpan.org/authors/id/A/AD/ADDI/IO-SendFile-${pkgver}.tar.gz" inc.patch)
-md5sums=('4d656098a01eb6632cc9d073bd1c9eda' SKIP)
-sha512sums=('bbd396c2d88e1b07ce0ebd0b78867246a0d676f76c9b547963acdbd314b2e23d4f44a620411c25bbd24e8be7b35964beb56e8955915686ddf2f45312ddf78431' SKIP)
+md5sums=('4d656098a01eb6632cc9d073bd1c9eda' '282ca5faeec2039ff05d666d05aa5be6')
+sha512sums=('bbd396c2d88e1b07ce0ebd0b78867246a0d676f76c9b547963acdbd314b2e23d4f44a620411c25bbd24e8be7b35964beb56e8955915686ddf2f45312ddf78431' '4688cddb8e8e625e0ba6fe6e3491d4305b674ac5bafff8a22e5b0e1a4e7270a9360b40d0c13db4c84e2261abd25cb77b182fb934f7491feb30f4f2c5c40669c6')
 _distdir="IO-SendFile-${pkgver}"
 
 prepare() {
-    cd "$srcdir/$_distdir"
-    /usr/bin/patch -p1 -i "${srcdir}/inc.patch"
+    cd "$_distdir"
+    patch -p1 -i "${srcdir}/inc.patch"
 }
 
 build() {
@@ -26,21 +25,19 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
+    cd $_distdir
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "$_distdir"
+  make test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd "$_distdir"
   make install
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
