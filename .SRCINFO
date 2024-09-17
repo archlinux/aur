@@ -1,8 +1,8 @@
 pkgbase = notion-calendar-electron
 	pkgdesc = A Electron-based Notion Calendar client
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
-	epoch = 2
+	epoch = 0
 	url = https://www.notion.so/product/calendar
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = notion-calendar-electron
 	makedepends = git
 	depends = electron
 	provides = notion-calendar-electron
-	source = https://github.com/czlabinger/notion-calendar-electron/archive/refs/tags/v1.0.3.tar.gz
+	source = https://github.com/czlabinger/notion-calendar-electron/archive/refs/tags/v1.0.4.tar.gz
 	sha256sums = SKIP
 
 pkgname = notion-calendar-electron
