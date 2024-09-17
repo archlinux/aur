@@ -1,12 +1,12 @@
 # Maintainer: xihale <xihale.top@qq.com>
 # Reference: https://aur.archlinux.org/packages/motrix
 
-## options
+## usr/libions
 : ${_pkgtype:=-electron}
 
 pkgname="imfile$_pkgtype"
-pkgver=1.0.8
-pkgrel=1
+pkgver=1.1.2
+pkgrel=2
 pkgdesc="A full-featured download manager"
 arch=("arm" "x86_64" "i686")
 license=("MIT")
@@ -23,7 +23,7 @@ source=(
 sha256sums=(
 	"6a530e20c40bb8bf0b413758e64629a0be0468ef8c203282ea6a1a80409493be"
 	"eca6961cf9d367c2733af7e8176aeaa81c5b20c12be132ec5baa3f030c7d034b"
-	"9b7f46d06b79596df99b9f37893d16ca043d3b34adb543593471521a05eced93"
+	"fb6d4e43083a27fca46acf69bb61f1c54ee4620031f9e5b1a76822e2a99783e5"
 )
 
 build() {
@@ -54,9 +54,9 @@ package() {
 
 	cd ${srcdir}/imfile-desktop-${pkgver}/release/linux-unpacked/resources
 
-	install -Dm 644 app.asar ${pkgdir}/opt/${pkgname}/app.asar
-	install -Dm 755 engine/aria2c ${pkgdir}/opt/${pkgname}/engine/aria2c
-	install -Dm 644 engine/aria2.conf ${pkgdir}/opt/${pkgname}/engine/aria2.conf
+	install -Dm 644 app.asar ${pkgdir}/usr/lib/${pkgname}/app.asar
+	install -Dm 755 engine/aria2c ${pkgdir}/usr/lib/${pkgname}/engine/aria2c
+	install -Dm 644 engine/aria2.conf ${pkgdir}/usr/lib/${pkgname}/engine/aria2.conf
 
 	# binary wrapper
 	install -Dm 775 ${srcdir}/imfile ${pkgdir}/usr/bin/imfile
