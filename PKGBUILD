@@ -4,7 +4,7 @@ _pkgauthor=pythops
 _pkgname=oryx
 pkgname=${_pkgname}-bin
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI for sniffing network traffic using eBPF"
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -31,7 +31,7 @@ prepare() {
 }
 
 build() {
-	help2man ./${_pkgname}-${CARCH}-${pkgver} --section 8 --output "MAN-${pkgver}.8"
+	help2man ./${_pkgname}-${CARCH}-${pkgver} --no-info --section 8 --output "MAN-${pkgver}.8"
 }
 
 package() {
