@@ -1,6 +1,6 @@
 pkgbase = yass-proxy-qt6
 	pkgdesc = lightweight http/socks proxy
-	pkgver = 1.13.2
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://github.com/Chilledheart/yass
 	arch = x86_64
@@ -23,10 +23,11 @@ pkgbase = yass-proxy-qt6
 	depends = libnghttp2
 	depends = c-ares
 	depends = gperftools
+	depends = jsoncpp
 	optdepends = qt6-wayland
 	provides = yass-proxy
 	conflicts = yass-proxy-git
-	source = https://github.com/Chilledheart/yass/releases/download/1.13.2/yass-1.13.2.tar.zst
-	sha256sums = fae2f5432e1995087b36240f2c467ab70e5ca3a040b42dd34c383d27fe8388ad
+	source = https://github.com/Chilledheart/yass/releases/download/1.14.0/yass-1.14.0.tar.zst
+	sha256sums = d3094a173078f70fde6f1a76fb4511873a6e232a8310ecad3138c4d5ad64152a
 
 pkgname = yass-proxy-qt6

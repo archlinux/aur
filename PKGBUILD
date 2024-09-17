@@ -2,15 +2,15 @@
 # Contributor: Keeyou <keeyou-cn@outlook.com>
 
 pkgname=yass-proxy-qt6
-pkgver=1.13.2
+pkgver=1.14.0
 pkgrel=1
-_pkgver=1.13.2
+_pkgver=1.14.0
 _pkgrel=1
 pkgdesc="lightweight http/socks proxy"
 arch=(x86_64)
 url="https://github.com/Chilledheart/yass"
 license=(GPL-2.0-only)
-depends=(gcc-libs glibc qt6-base zlib libnghttp2 c-ares gperftools)
+depends=(gcc-libs glibc qt6-base zlib libnghttp2 c-ares gperftools jsoncpp)
 optdepends=(qt6-wayland)
 makedepends=(gcc binutils git ninja perl pkg-config cmake qt6-tools curl go)
 checkdepends=(curl)
@@ -18,7 +18,7 @@ provides=(yass-proxy)
 conflicts=(yass-proxy-git)
 source=("https://github.com/Chilledheart/yass/releases/download/${_pkgver}/yass-${_pkgver}.tar.zst"
         )
-sha256sums=('fae2f5432e1995087b36240f2c467ab70e5ca3a040b42dd34c383d27fe8388ad')
+sha256sums=('d3094a173078f70fde6f1a76fb4511873a6e232a8310ecad3138c4d5ad64152a')
 
 build(){
   SRC_DIR="${srcdir}/yass-${_pkgver}"
@@ -30,6 +30,7 @@ build(){
     -DUSE_TCMALLOC=on -DUSE_SYSTEM_TCMALLOC=on \
     -DUSE_ZLIB=on -DUSE_CARES=on \
     -DUSE_SYSTEM_ZLIB=on -DUSE_SYSTEM_CARES=on -DUSE_SYSTEM_NGHTTP2=on \
+    -DUSE_JSONCPP=on -DUSE_SYSTEM_JSONCPP=on \
     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_SYSCONFDIR=/etc \
     -USE_CET=on \
     -DGUI=ON -DUSE_QT6=on -DCLI=off -DSERVER=off
