@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Leconte <aleconte@dwightstudio.fr>
 pkgname=jarmemu
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple ARMv7 simulator written in Java, intended for educational purpose"
 arch=('any')
 url="https://dwightstudio.fr/jarmemu"
