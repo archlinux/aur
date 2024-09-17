@@ -1,7 +1,7 @@
 # Maintainer: Alexander Karpukhin <thealexdev23@gmail.com>
 
 pkgname=power-options-daemon-git
-pkgver=1.0.1r14.de02cc
+pkgver=1.0.1r26.5117c2
 pkgrel=1
 pkgdesc="The core daemon for Power Options, a blazingly fast power management solution."
 arch=('x86_64')
@@ -9,7 +9,13 @@ url="https://github.com/thealexdev23/power-options"
 license=('MIT')
 
 depends=('acpid' 'zsh' 'pciutils' 'usbutils')
-optdepends=('xorg-xrandr: needed for screen settings' 'brightnessctl: needed for brightness settings' 'net-tools: needed to disable ethernet cards')
+optdepends=(
+'brightnessctl: needed for brightness settings' 
+'net-tools: needed to disable ethernet cards' 'net-tools: needed to disable ethernet cards'
+'xorg-xrandr: needed for screen settings' 
+'xorg-xset: needed to configure screen turn off timeout'
+'xautolock: needed to configure system suspend timeout'
+)
 makedepends=('cargo' 'git')
 
 provides=('power-options-daemon')
