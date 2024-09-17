@@ -1,7 +1,7 @@
 pkgbase = imfile-electron
 	pkgdesc = A full-featured download manager
 	pkgver = 1.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/imfile-io/imfile-desktop/
 	arch = arm
 	arch = x86_64
