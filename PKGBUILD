@@ -9,12 +9,11 @@ license=('GPL2')
 depends=()
 # official source is the following, but SSL certificate keeps breaking
 # http://cpctech.cpcwiki.de/download/2cdt.zip
-source=('https://box.glgprograms.it/users/giomba/2cdt.zip')
-sha256sums=('5ffe321b111203f4d901da5c83999179138d4bec5d9771d085e084c195bbe82c')
+source=('https://box.glgprograms.it/users/giomba/2cdt.zip' '0001-fix-incompatible-pointer-types.patch')
+sha256sums=('5ffe321b111203f4d901da5c83999179138d4bec5d9771d085e084c195bbe82c' '38ca5880f06cee2f6eafdd41d3f005b504adeb8f79226cee183662866c028e35')
 
 prepare() {
-  # apply patches here
-  true
+  patch "${srcdir}/${pkgname}/src/2cdt.c" 0001-fix-incompatible-pointer-types.patch
 }
 
 build() {

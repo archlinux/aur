@@ -1,0 +1,18 @@
+Only in 2cdt: 2cdt
+diff -Z -r src/2cdt.c src/2cdt.c
+836c836
+< 		TZX_SetupPulseSequence(pFile, sizeof(PulseLengths)/sizeof(PulseLengths[0]), &PulseLengths);
+---
+> 		TZX_SetupPulseSequence(pFile, sizeof(PulseLengths)/sizeof(PulseLengths[0]), (const int*)&PulseLengths);
+841c841
+< 	TZX_SetupPulseSequence(pFile, sizeof(PulseLengths)/sizeof(PulseLengths[0]), &PulseLengths);
+---
+> 	TZX_SetupPulseSequence(pFile, sizeof(PulseLengths)/sizeof(PulseLengths[0]), (const int*)&PulseLengths);
+847c847
+< 	TZX_SetupPulseSequence(pFile, sizeof(PulseLengthsSync)/sizeof(PulseLengthsSync[0]), &PulseLengthsSync);
+---
+> 	TZX_SetupPulseSequence(pFile, sizeof(PulseLengthsSync)/sizeof(PulseLengthsSync[0]), (const int*)&PulseLengthsSync);
+1278c1278
+< 	if (ArgumentList_Execute(argc, argv, OptionTable, printf, NonOptionHandler)==OPTION_OK)
+---
+> 	if (ArgumentList_Execute(argc, (const char**)argv, OptionTable, printf, NonOptionHandler)==OPTION_OK)
