@@ -10,8 +10,8 @@
 
 pkgname=gnome-terminal-transparency
 _pkgname=gnome-terminal
-pkgver=3.52.2
-pkgrel=2
+pkgver=3.54.0
+pkgrel=1
 pkgdesc="The GNOME Terminal Emulator with background transparency"
 url="https://wiki.gnome.org/Apps/Terminal"
 arch=(x86_64)
@@ -46,7 +46,6 @@ makedepends=(
   gnome-shell
   libnautilus-extension
   meson
-  python-packaging
   yelp-tools
 )
 optdepends=(
@@ -61,8 +60,8 @@ source=(
   transparency.patch
 )
 b2sums=(
-  '7ca64080b3bd420b27af3c98734214e53fdeff138caf2e4edb053f95debb815f8dfdb93e9e9e06bd207d3e5d4d66a2e6cd2c798387eea18fa2fd557321f7fdf0'
-  'c0cc6062750624c69faa9380ba26a7983b432b2521cf4e86967f4818a84bf19d2acb97b842664d4b0fdc640c7a61a46684645be63555adb466e60a476f44b432'
+  'aade8ec404ff096f1ee60ac729c7f01ec15d4583754619100894e8fbccad4b46f0a5af85137377b0a3155a1d5cb77b1a92795ee8edf05f391021bdda235ce8aa'
+  'ac9724e6c2d8d709b6136634b77472e9faee91bd26919671947ffdcc85c3aa7033b84dfdb23db6fd285337fc79d645d62ddfe835d5fbdb23bd05e9f58ac1ce0d'
 )
 
 prepare() {

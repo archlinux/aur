@@ -1,4 +1,4 @@
-From 0a9ae93f0d0d2b99ff0e6616efaa621822abff63 Mon Sep 17 00:00:00 2001
+From 6edc912f33e257d822c5736b9f802feb277795a3 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
 Subject: [PATCH 1/4] Restore transparency
@@ -155,10 +155,10 @@ index 4e661244..aa109078 100644
  #define TERMINAL_SETTING_CONTEXT_INFO_KEY               "context-info"
  #define TERMINAL_SETTING_DEFAULT_SHOW_MENUBAR_KEY       "default-show-menubar"
 diff --git a/src/terminal-screen.cc b/src/terminal-screen.cc
-index 43450928..97eac67c 100644
+index 7d7cc40e..2813aa15 100644
 --- a/src/terminal-screen.cc
 +++ b/src/terminal-screen.cc
-@@ -1059,7 +1059,9 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
+@@ -1076,7 +1076,9 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
        prop_name == I_(TERMINAL_PROFILE_HIGHLIGHT_COLORS_SET_KEY) ||
        prop_name == I_(TERMINAL_PROFILE_HIGHLIGHT_BACKGROUND_COLOR_KEY) ||
        prop_name == I_(TERMINAL_PROFILE_HIGHLIGHT_FOREGROUND_COLOR_KEY) ||
@@ -169,7 +169,7 @@ index 43450928..97eac67c 100644
      update_color_scheme (screen);
  
    if (!prop_name || prop_name == I_(TERMINAL_PROFILE_AUDIBLE_BELL_KEY))
-@@ -1147,6 +1149,8 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1164,6 +1166,8 @@ update_color_scheme (TerminalScreen *screen)
    GdkRGBA *cursor_bgp = nullptr, *cursor_fgp = nullptr;
    GdkRGBA *highlight_bgp = nullptr, *highlight_fgp = nullptr;
    GtkStyleContext *context;
@@ -178,7 +178,7 @@ index 43450928..97eac67c 100644
    gboolean use_theme_colors;
  
    context = gtk_widget_get_style_context (widget);
-@@ -1190,6 +1194,18 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1207,6 +1211,18 @@ update_color_scheme (TerminalScreen *screen)
      }
  
    colors = terminal_g_settings_get_rgba_palette (priv->profile, TERMINAL_PROFILE_PALETTE_KEY, &n_colors);
@@ -197,7 +197,7 @@ index 43450928..97eac67c 100644
    vte_terminal_set_colors (VTE_TERMINAL (screen), &fg, &bg,
                             colors, n_colors);
    vte_terminal_set_color_bold (VTE_TERMINAL (screen), boldp);
-@@ -1197,6 +1213,10 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1214,6 +1230,10 @@ update_color_scheme (TerminalScreen *screen)
    vte_terminal_set_color_cursor_foreground (VTE_TERMINAL (screen), cursor_fgp);
    vte_terminal_set_color_highlight (VTE_TERMINAL (screen), highlight_bgp);
    vte_terminal_set_color_highlight_foreground (VTE_TERMINAL (screen), highlight_fgp);
@@ -234,10 +234,10 @@ index 36eb7ce7..a41d2de2 100644
    uuid_unparse (u, uuidstr);
    priv->uuid = g_strdup (uuidstr);
 -- 
-2.45.1
+2.46.0
 
 
-From f0b6f9402dbdc9695de6f374deaaa3fc61d3aeb5 Mon Sep 17 00:00:00 2001
+From 43111337ab901365c63604696583f11554ca4fb1 Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
 Subject: [PATCH 2/4] window: Make the drawing robust across all themes
@@ -296,10 +296,10 @@ index a41d2de2..11d93419 100644
    widget_class->screen_changed = terminal_window_screen_changed;
    widget_class->style_updated = terminal_window_style_updated;
 -- 
-2.45.1
+2.46.0
 
 
-From 5a88ebf795d62ec16d993222456385bb35ecd8ba Mon Sep 17 00:00:00 2001
+From 03665d6d042967553169fd6178735a0987296f40 Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
 Subject: [PATCH 3/4] screen, window: Extra padding around transparent
@@ -312,10 +312,10 @@ https://bugzilla.redhat.com/show_bug.cgi?id=1207943
  2 files changed, 49 insertions(+), 10 deletions(-)
 
 diff --git a/src/terminal-screen.cc b/src/terminal-screen.cc
-index 97eac67c..c264e681 100644
+index 2813aa15..8746fe43 100644
 --- a/src/terminal-screen.cc
 +++ b/src/terminal-screen.cc
-@@ -156,6 +156,8 @@ static void terminal_screen_system_font_changed_cb (GSettings *,
+@@ -159,6 +159,8 @@ static void terminal_screen_system_font_changed_cb (GSettings *,
  static gboolean terminal_screen_popup_menu (GtkWidget *widget);
  static gboolean terminal_screen_button_press (GtkWidget *widget,
                                                GdkEventButton *event);
@@ -324,7 +324,7 @@ index 97eac67c..c264e681 100644
  static void terminal_screen_child_exited  (VteTerminal *terminal,
                                             int status);
  
-@@ -599,6 +601,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
+@@ -606,6 +608,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
    widget_class->drag_data_received = terminal_screen_drag_data_received;
    widget_class->button_press_event = terminal_screen_button_press;
    widget_class->popup_menu = terminal_screen_popup_menu;
@@ -332,7 +332,7 @@ index 97eac67c..c264e681 100644
  
    terminal_class->child_exited = terminal_screen_child_exited;
  
-@@ -1134,6 +1137,32 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
+@@ -1151,6 +1154,32 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
    g_object_thaw_notify (object);
  }
  
@@ -365,7 +365,7 @@ index 97eac67c..c264e681 100644
  static void
  update_color_scheme (TerminalScreen *screen)
  {
-@@ -1149,7 +1178,6 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1166,7 +1195,6 @@ update_color_scheme (TerminalScreen *screen)
    GdkRGBA *cursor_bgp = nullptr, *cursor_fgp = nullptr;
    GdkRGBA *highlight_bgp = nullptr, *highlight_fgp = nullptr;
    GtkStyleContext *context;
@@ -373,7 +373,7 @@ index 97eac67c..c264e681 100644
    gboolean transparent;
    gboolean use_theme_colors;
  
-@@ -1214,9 +1242,7 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1231,9 +1259,7 @@ update_color_scheme (TerminalScreen *screen)
    vte_terminal_set_color_highlight (VTE_TERMINAL (screen), highlight_bgp);
    vte_terminal_set_color_highlight_foreground (VTE_TERMINAL (screen), highlight_fgp);
  
@@ -384,7 +384,7 @@ index 97eac67c..c264e681 100644
  }
  
  static void
-@@ -1758,6 +1784,13 @@ terminal_screen_do_popup (TerminalScreen *screen,
+@@ -1775,6 +1801,13 @@ terminal_screen_do_popup (TerminalScreen *screen,
    terminal_screen_popup_info_unref (info);
  }
  
@@ -431,10 +431,10 @@ index 11d93419..61857bfe 100644
  
    return GTK_WIDGET_CLASS (terminal_window_parent_class)->draw (widget, cr);
 -- 
-2.45.1
+2.46.0
 
 
-From da86330372ae2d69d93da6be3943b345be598032 Mon Sep 17 00:00:00 2001
+From 49c335ddd82275ffd7c0e9b4b7219fcd087495fd Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
 Subject: [PATCH 4/4] Restore translations for setting a title and transparency
@@ -1203,10 +1203,10 @@ index 0e83b981..0d98ea57 100644
  #~ msgid "On the left side"
  #~ msgstr "Maldekstre"
 diff --git a/po/es.po b/po/es.po
-index d59135a1..9fa46d54 100644
+index abd74ce8..2ecf80db 100644
 --- a/po/es.po
 +++ b/po/es.po
-@@ -2945,17 +2945,17 @@ msgstr "Falló al analizar los argumentos: %s\n"
+@@ -2982,17 +2982,17 @@ msgstr "Falló al analizar los argumentos: %s\n"
  #~ msgid "Default size:"
  #~ msgstr "Tamaño predeterminado:"
  
@@ -1230,7 +1230,7 @@ index d59135a1..9fa46d54 100644
  
  #~ msgid "Current Locale"
  #~ msgstr "Configuración regional actual"
-@@ -3782,8 +3782,8 @@ msgstr "Falló al analizar los argumentos: %s\n"
+@@ -3819,8 +3819,8 @@ msgstr "Falló al analizar los argumentos: %s\n"
  #~ msgid "_Solid color"
  #~ msgstr "Color _sólido"
  
@@ -3189,10 +3189,10 @@ index 45dbad07..852c47cc 100644
 +msgid "Transparent background"
 +msgstr "Providna pozadina"
 diff --git a/po/sv.po b/po/sv.po
-index 1e4e6054..72450042 100644
+index ce79cba7..03420a66 100644
 --- a/po/sv.po
 +++ b/po/sv.po
-@@ -2839,5 +2839,17 @@ msgstr "Misslyckades med att tolka argument: %s\n"
+@@ -2810,5 +2810,17 @@ msgstr "Misslyckades med att tolka argument: %s\n"
  #~ msgid "Unknown completion request for \"%s\""
  #~ msgstr "Okänd kompletteringsbegäran för \"%s\""
  
@@ -3706,5 +3706,5 @@ index d692f648..4bdaac8a 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 -- 
-2.45.1
+2.46.0
 
