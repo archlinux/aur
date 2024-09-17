@@ -1,20 +1,22 @@
-# Packaged by hal clark --> gmail.com@hdeanclark
+# First maintainer: Hal Clark
+# Now maintained by: Paolo Zaffino (p.zaffino@unicz.it)
+# Plastimatch PI: Greg Sharp
 
 pkgname=plastimatch-static
-pkgver=1.6.2
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Tools for medical image reconstruction and registration.'
 arch=('i686' 'x86_64')
 url='http://plastimatch.org/'
-license=('BSD')
+license=('BSD-style')
 conflicts=('plastimatch')
-depends=('insight-toolkit' 'dcmtk' 'libpng' 'zlib' 'libtiff' 'libjpeg-turbo' 'fftw' 'nlopt')
+depends=('insight-toolkit' 'dcmtk' 'libpng' 'zlib' 'libtiff' 'libjpeg-turbo' 'fftw')
 makedepends=('cmake')
 optdepends=('cuda')
 
-source=("http://forge.abcd.harvard.edu/gf/download/frsrelease/214/3443/plastimatch-${pkgver}-Source.tar.bz2")
-md5sums=('e2767664856b0ebfa4302528b94f3773')
-sha1sums=('38b7c11e24cb3bbeceab966f625ae0337c7fd725')
+source=("https://gitlab.com/plastimatch/plastimatch/-/archive/${pkgver}/plastimatch-${pkgver}.tar.bz2")
+md5sums=('92160912a3b3297e1190ef79f62413bd')
+sha1sums=('a3bc5b9869d716e8626d7c255ce67b48e475e7a4')
 
 build() {
     cd "${srcdir}"
@@ -25,9 +27,10 @@ build() {
     cmake \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE:STRING=Release \
-      -DBUILD_TESTING:BOOL=off \
-      -DBUILD_SHARED_LIBS:BOOL=off \
-      ../plastimatch-${pkgver}-Source/
+      -DBUILD_TESTING:BOOL=OFF \
+      -DBUILD_SHARED_LIBS:BOOL=OFF \
+      -DPLM_CONFIG_ENABLE_CUDA=OFF \
+      ../plastimatch-${pkgver}/
 
     make
 }
