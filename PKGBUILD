@@ -2,7 +2,7 @@
 
 pkgver=1.40
 pkgname=(hledger-bin hledger-ui-bin hledger-web-bin)
-pkgrel=4
+pkgrel=5
 pkgdesc="Easy-to-use command-line/curses/web plaintext accounting tool"
 arch=(x86_64)
 url="http://hledger.org"
@@ -48,6 +48,8 @@ package_hledger-ui-bin() {
     depends+=(zlib)
 
     install -Dm 755 ./hledger-ui "$pkgdir/usr/bin/hledger-ui"
+    mkdir -p "$pkgdir/usr/share/bash-completion/completions/"
+    ln -sr "$pkgdir/usr/share/bash-completion/completions/hledger"{,-ui}
     install -Dm 644 hledger-ui.1 -t "$pkgdir/usr/share/man/man1/"
 }
 
@@ -58,5 +60,7 @@ package_hledger-web-bin() {
     depends+=(zlib)
 
     install -Dm 755 ./hledger-web "$pkgdir/usr/bin/hledger-web"
+    mkdir -p "$pkgdir/usr/share/bash-completion/completions/"
+    ln -sr "$pkgdir/usr/share/bash-completion/completions/hledger"{,-web}
     install -Dm 644 hledger-web.1 -t "$pkgdir/usr/share/man/man1/"
 }
