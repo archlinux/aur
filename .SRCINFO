@@ -1,6 +1,6 @@
 pkgbase = python-fenics-ffcx-git
 	pkgdesc = Next generation FEniCS Form Compiler for finite element forms
-	pkgver = 0.7.0.dev0_r7061.4572bec
+	pkgver = 0.9.0.dev0_r7154.8de75ef
 	pkgrel = 1
 	url = https://fenicsproject.org
 	arch = any

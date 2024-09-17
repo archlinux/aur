@@ -2,7 +2,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=('python-fenics-ffcx-git')
 pkgdesc='Next generation FEniCS Form Compiler for finite element forms'
-pkgver=0.7.0.dev0_r7061.4572bec
+pkgver=0.9.0.dev0_r7154.8de75ef
 pkgrel=1
 arch=('any')
 url='https://fenicsproject.org'
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 pkgver()  {
     cd "$srcdir/ffcx"
     # The main branch unfortunately has no meaningful tags
-    printf "%s_r%s.%s" "$(sed -n -e 's/^version *= *\(.*\)/\1/p' setup.cfg)" \
+    printf "%s_r%s.%s" "$(sed -n -e 's/^version *= \"*\(.*\)\"/\1/p' pyproject.toml)" \
         "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
