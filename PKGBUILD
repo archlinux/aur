@@ -1,7 +1,7 @@
 # Maintainer:  Rubin Simons <me@rubin55.org>
 
 pkgname=rusty-psn-bin
-pkgver=0.4.7
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Update PS3 games"
 provides=("rustypsn")
@@ -16,12 +16,10 @@ source=(
     "playstation-store.svg"
 )
 
-sha256sums=(
-    '1bb4e893d5c2a8b2d27da6ce7f181546414126a9564b4ad6421355826bfd34ff'
-    '092f816e8542651de6ad6e4dd9c8d90205b7d153376936f6a581ee0d76997ea2'
-    '2cb6715bb0cf3646091369385e285c92a2573f1602580f60a51d5c0ea8e638a5'
-    '4c6f59e5d15a93b76fc1a90ca4f8283193a870627a958eff62cda952474d089b'
-)
+sha256sums=('93b5cf55439d66dc2671f7aab4f0bc1a31f829e1d3e769bee38e9ea9eb1a5a8e'
+            'ee0da200e9f7cda75a6a06aedbb8c58c9d0207c1f6ac46a81f7773dbdc788b18'
+            '2cb6715bb0cf3646091369385e285c92a2573f1602580f60a51d5c0ea8e638a5'
+            '4c6f59e5d15a93b76fc1a90ca4f8283193a870627a958eff62cda952474d089b')
 
 options=("!strip")
 
