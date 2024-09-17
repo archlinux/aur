@@ -13,26 +13,31 @@ license=('custom:SLA0048')
 #depends=('java-runtime=8' 'java8-openjfx')
 options=('!strip')
 
-# cURL inspiration from davinci-resolve package maintained by "Alex S".
-_curl_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
-                        AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/77.0.3865.75 \
-                        Safari/537.36"
-_curl_useragent="$(printf '%s' "$_curl_useragent" | sed 's/[[:space:]]\+/ /g')"
-_useragent_escaped="${_curl_useragent// /\\ }"
-_curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-performance-and-debuggers/stm32cubemonucpd/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
+# Extract actual direct download link */
+install -Dm 755 /dev/stdin "${srcdir}headers" <<END
+sec-ch-ua: Chromium;v=128, Not;A=Brand;v=24, Google Chrome;v=128
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: Linux
+sec-fetch-dest: empty
+sec-fetch-site: same-origin 
+user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36
+END
 
-_curl_req="$(curl -s --compressed -H "$_curl_useragent" "$_curl_req_url")"
-_curl_req="$(grep -m 1 "${_pkg_file_name}" <<< "$_curl_req")"
-_download_path="https://www.st.com""$(awk -F'"' '{print $4}' <<< "$_curl_req")"
+_curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-performance-and-debuggers/stm32cubemonucpd/_jcr_content/get-software/getsw-table-nli.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
+_curl_req="$(curl -s --compressed -H "@${srcdir}headers" "$_curl_req_url" )"
+
+_pkg_url="$(grep -m 1 "${_pkg_file_name}" <<< "$_curl_req")"
+_pkg_url="$(awk -F'"' '{print $4}' <<< "$_pkg_url")"
+
+#_download_path="https://www.st.com""$_pkg_url"
+#echo $_download_path
 
 DLAGENTS=("https::/usr/bin/curl \
               -gqb '' --retry 3 --retry-delay 3 \
-              -H ${_useragent_escaped} \
+              -H "@${srcdir}headers" \
               -o %o --compressed %u")
-              
-   
-source=("${_pkg_file_name}"::"$_download_path")
+
+source=("${_pkg_file_name}"::"https://www.st.com""$_pkg_url")
 sha256sums=('8cf22650111ace170eb841cace7a028cad1c68a9e3ec8abab7f739c0a0f47b0a')
 
 #prepare() {
