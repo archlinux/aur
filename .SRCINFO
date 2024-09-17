@@ -1,12 +1,13 @@
 pkgbase = r-mvshapirotest
 	pkgdesc = Generalized Shapiro-Wilk test for multivariate normality
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=mvShapiroTest
 	arch = any
-	license = GPL
+	license = GPL-3.0-or-later
 	depends = r
 	source = https://cran.r-project.org/src/contrib/mvShapiroTest_1.0.tar.gz
-	sha256sums = 6193e3ce5042e726e95605a389f23d04ec2419275484597d9d37f287042d9b7d
+	md5sums = b0098814d73d98b7d66a3eb3932e30f0
+	b2sums = 2dddf986886b03aae634f3350a8f03a787a1e794a64878651b7e3fa4610945a7def44266494153131a8226a5758d881738bbdd0f88f06f3766abf61d08433071
 
 pkgname = r-mvshapirotest
