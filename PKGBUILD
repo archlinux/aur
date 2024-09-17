@@ -1,14 +1,14 @@
 # Maintainer: Alexander Karpukhin <thealexdev23@gmail.com>
 
 pkgname=power-options-daemon-git
-pkgver=1.0.1r27.aa4d59
+pkgver=1.0.1r30.c60667
 pkgrel=1
 pkgdesc="The core daemon for Power Options, a blazingly fast power management solution."
 arch=('x86_64')
 url="https://github.com/thealexdev23/power-options"
 license=('MIT')
 
-depends=('acpid' 'zsh' 'pciutils' 'usbutils')
+depends=('acpid' 'zsh' 'pciutils' 'usbutils' 'yad')
 optdepends=(
 'brightnessctl: needed for brightness settings' 
 'net-tools: needed to disable ethernet cards' 'net-tools: needed to disable ethernet cards'

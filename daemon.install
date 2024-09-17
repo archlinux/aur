@@ -1,4 +1,5 @@
 post_install() {
+  power-daemon-mgr setup
   systemctl daemon-reload
   systemctl restart acpid.service
   systemctl enable --now power-options.service
