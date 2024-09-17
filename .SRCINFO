@@ -1,0 +1,19 @@
+pkgbase = alpaca-git
+	pkgdesc = An Ollama client made with GTK4 and Adwaita
+	pkgver = 2.0.2.r11.g25eb152
+	pkgrel = 1
+	url = https://github.com/jeffser/Alpaca
+	arch = any
+	license = GPL-3.0
+	makedepends = meson
+	depends = ollama
+	depends = python-requests
+	depends = python-pillow
+	depends = python-pypdf
+	depends = python-pytube
+	depends = python-html2text
+	conflicts = alpaca-ai
+	source = git+https://github.com/jeffser/Alpaca.git
+	md5sums = SKIP
+
+pkgname = alpaca-git
