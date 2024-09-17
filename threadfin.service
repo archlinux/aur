@@ -1,0 +1,16 @@
+[Unit]
+Description = M3U Proxy for Plex DVR and Emby Live TV.
+After = network-online.target
+
+[Service]
+User = threadfin
+Group = threadfin
+WorkingDirectory = /var/lib/threadfin
+ExecStart = /usr/bin/threadfin --config /var/lib/threadfin
+KillMode = process
+Restart = always
+RestartSec = 15
+ExecStopPost = /usr/bin/rm -rf /tmp/threadfin
+
+[Install]
+WantedBy = multi-user.target

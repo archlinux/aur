@@ -1,0 +1,25 @@
+pkgbase = threadfin
+	pkgdesc = M3U Proxy for Plex DVR and Emby Live TV.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://xteve.de
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = go
+	source = threadfin-1.2.0.tar.gz::https://github.com/threadfin/threadfin/archive/refs/tags/1.2.0.tar.gz
+	source = threadfin.service
+	source = threadfin.sysusers
+	source = threadfin.tmpfiles
+	sha256sums = 85eaeecbfb771f16d5dd370994371c6ec98f94d2dbe49cce1045ce88e9346677
+	sha256sums = ebdde77c4a0352bf51d82698d6748a2af1c234ef30b6d959d97a72837f66b039
+	sha256sums = 9a7a0900cd204a8df5a8e97ebef76180525c66233cad37dfb9e1773296a07846
+	sha256sums = 8edf5061f950b1027e0790f19d1e5d7cea8ab347b938fd8d9865412652573319
+
+pkgname = threadfin
