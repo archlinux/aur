@@ -1,21 +1,22 @@
 pkgbase = r-diagis
 	pkgdesc = Diagnostic Plot and Multivariate Summary Statistics of Weighted Samples from Importance Sampling
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=diagis
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = GPL-2.0-or-later
+	makedepends = r-rcpparmadillo
+	depends = blas
 	depends = r-coda
 	depends = r-ggplot2
 	depends = r-gridextra
 	depends = r-rcpp
-	depends = r-rcpparmadillo
 	optdepends = r-covr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/diagis_0.2.3.tar.gz
-	sha256sums = 254199a7fb3cdfd8bd4fa1d7cdd96120d841a7416c4ead9f8db8e61c1a1087be
+	md5sums = 40c3c69f0daebc87ee7deb76b7af115d
+	b2sums = 2e150f4e8bcb47c0f2053815af1907754c9315749cde7a1df7fa8b4e42d1178198e48d30f83930682f2d5a8d52a36958e7178b67dc6b3326c9517465c67d4fd2
 
 pkgname = r-diagis
