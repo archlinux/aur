@@ -1,7 +1,7 @@
 pkgbase = cosmic-session-git
 	pkgdesc = Session manager for the COSMIC desktop environment
-	pkgver = 1.0.0.alpha.1.r5.g39c7f93
-	pkgrel = 2
+	pkgver = 1.0.0.alpha.1.r6.gd06f94a
+	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-session
 	arch = x86_64
 	arch = aarch64
@@ -35,6 +35,7 @@ pkgbase = cosmic-session-git
 	optdepends = cosmic-store-git: COSMIC store
 	optdepends = cosmic-term-git: COSMIC terminal
 	optdepends = cosmic-wallpapers-git: COSMIC wallpapers
+	optdepends = system-config-printer: printer settings
 	optdepends = vulkan-driver: packaged vulkan driver
 	provides = cosmic-session
 	conflicts = cosmic-session

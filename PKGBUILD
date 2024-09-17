@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-session-git
-pkgver=1.0.0.alpha.1.r5.g39c7f93
-pkgrel=2
+pkgver=1.0.0.alpha.1.r6.gd06f94a
+pkgrel=1
 pkgdesc="Session manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-session"
@@ -40,6 +40,7 @@ optdepends=(
   'cosmic-store-git: COSMIC store'
   'cosmic-term-git: COSMIC terminal'
   'cosmic-wallpapers-git: COSMIC wallpapers'
+  'system-config-printer: printer settings'
   'vulkan-driver: packaged vulkan driver'
 
   # Default applications
