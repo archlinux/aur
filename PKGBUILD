@@ -3,7 +3,8 @@
 _pkgname=libretro-lutro
 pkgname=libretro-lutro-git
 pkgver=r596.09a134e
-pkgrel=2
+pkgrel=3
+pkgdesc="A 2D game engine for libretro"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'riscv32' 'riscv64' 'x86_64')
 url="https://lutro.libretro.com/"
 license=('MIT')

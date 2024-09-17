@@ -1,6 +1,7 @@
 pkgbase = libretro-lutro-git
+	pkgdesc = A 2D game engine for libretro
 	pkgver = r596.09a134e
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lutro.libretro.com/
 	arch = aarch64
 	arch = armv7h
