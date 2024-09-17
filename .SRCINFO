@@ -1,0 +1,24 @@
+pkgbase = ruby-rdtool-git
+	pkgdesc = A formatter for RD
+	pkgver = 0.6.38.r21.g55f1071
+	pkgrel = 1
+	url = https://uwabami.github.io/software/rdtool
+	arch = any
+	license = Ruby License
+	license = GPL-2.0-or-later
+	checkdepends = ruby-test-unit
+	makedepends = git
+	makedepends = ruby-rake
+	makedepends = ruby-racc>=1.4.6
+	depends = ruby
+	depends = ruby-ostruct
+	depends = ruby-image_size
+	depends = ruby-forwardable
+	depends = ruby-optparse
+	depends = ruby-cgi
+	provides = ruby-rdtool=0.6.38
+	conflicts = ruby-rdtool
+	source = rdtool::git+https://github.com/uwabami/rdtool.git
+	sha256sums = SKIP
+
+pkgname = ruby-rdtool-git
