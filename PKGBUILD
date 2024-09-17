@@ -2,7 +2,7 @@
 pkgname=vencord-desktop-git
 pkgdesc="A standalone Electron app that loads Discord & Vencord"
 pkgver=r363.24fbf35
-pkgrel=2
+pkgrel=3
 
 arch=("x86_64" "aarch64")
 url="https://github.com/Vencord/Vesktop"
@@ -26,8 +26,8 @@ optdepends=(
   'xdg-utils: Open links, files, etc'
 )
 
-provides=("vencord")
-conflicts=("vencord")
+provides=("vesktop")
+conflicts=("vesktop")
 
 source=("$pkgname::git+$url.git" "vesktop.desktop")
 
