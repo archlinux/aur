@@ -1,6 +1,6 @@
 pkgbase = titan-git
 	pkgdesc = TTCN3 test automation platform
-	pkgver = 10.1.0.r10.g4b13e0898
+	pkgver = 10.1.2.r15.ge86dfd732
 	pkgrel = 1
 	url = https://projects.eclipse.org/projects/tools.titan
 	arch = i686

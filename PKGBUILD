@@ -4,7 +4,7 @@
 
 pkgname=titan-git
 _pkgname=titan.core
-pkgver=10.1.0.r10.g4b13e0898
+pkgver=10.1.2.r15.ge86dfd732
 pkgrel=1
 pkgdesc="TTCN3 test automation platform"
 arch=('i686' 'x86_64')
