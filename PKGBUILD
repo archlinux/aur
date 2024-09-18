@@ -2,7 +2,7 @@
 
 pkgname=litecoin-daemon
 pkgver=0.21.3
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://www.litecoin.org/"
 license=('MIT')
@@ -11,12 +11,15 @@ depends=('boost-libs' 'db4.8' 'fmt' 'libevent' 'miniupnpc' 'openssl' 'sqlite' 'z
 makedepends=('boost')
 conflicts=('litecoin-qt' 'litecoin-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/litecoin-project/litecoin/archive/refs/tags/v${pkgver}.tar.gz"
+    0001-fix-boost-1.84-filesystem-deprecations.patch
     0001-upnp-add-compatibility-for-miniupnpc-2.2.8.patch)
 sha256sums=('e08642fb1d4ca3891981e6fd39f8c9fbc995d0db8b6b1c3f8f8671de8e120f9a'
+            'f9de747281f6003739d9ac736684771b061e9d63f2ea90404c08187595e57619'
             '8f4354356b66f92b52a85d91c19d576e7cb637957380c052404794a70d9f8383')
 
 prepare() {
     patch -d litecoin-${pkgver} -p1 < 0001-upnp-add-compatibility-for-miniupnpc-2.2.8.patch
+    patch -d litecoin-${pkgver} -p1 < 0001-fix-boost-1.84-filesystem-deprecations.patch
 }
 
 build() {
