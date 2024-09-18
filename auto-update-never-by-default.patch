@@ -1,0 +1,24 @@
+change default frequency of the auto update checker to "never"
+
+automatic update checking is usually unnecessary noise in packaged programs.
+if you want it enabled, you can change it back in the settings.
+---
+ src/settings.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/settings.h b/src/settings.h
+index 7a06a0a..be28789 100644
+--- a/src/settings.h
++++ b/src/settings.h
+@@ -60,7 +60,7 @@ public:
+         UpdateDaily,
+         UpdateWeekly,
+         UpdateNever
+-    } updateFreq = UpdateDaily;
++    } updateFreq = UpdateNever;
+ };
+ 
+ /*
+-- 
+2.46.1
+
