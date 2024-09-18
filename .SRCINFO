@@ -1,9 +1,10 @@
 pkgbase = rusty-psn-gui-git
 	pkgdesc = A tool for downloading PS3 and PS4 game updates (GUI-only version)
 	pkgver = 0.5.0.r1.ga227494
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RainbowCookie32/rusty-psn
 	arch = x86_64
+	license = MIT
 	makedepends = cargo
 	makedepends = rust
 	makedepends = pkgconf
