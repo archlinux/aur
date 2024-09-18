@@ -1,16 +1,16 @@
 pkgbase = remindr-bin
 	pkgdesc = Desktop app to help you keep track of what you need to get done.
-	pkgver = 2.1.16
+	pkgver = 2.1.17
 	pkgrel = 1
 	url = https://mrdavidrios.github.io/remindr
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = electron32
-	provides = remindr=2.1.16
+	provides = remindr=2.1.17
 	conflicts = remindr
-	source = remindr-2.1.16.deb::https://github.com/MrDavidRios/remindr/releases/download/v2.1.16/remindr_2.1.16_amd64.deb
+	source = remindr-2.1.17.deb::https://github.com/MrDavidRios/remindr/releases/download/v2.1.17/remindr_2.1.17_amd64.deb
 	source = remindr.sh
-	sha256sums = 4af83b96795a01aed292127854cabb030e73c92ffa7f05d363403cb10d831b38
+	sha256sums = 13c1544f0e4373d2eed8703e84447f502884c2b1bb6cf86b82aae6e9f61c9778
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = remindr-bin

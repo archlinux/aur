@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=remindr-bin
 _pkgname=Remindr
-pkgver=2.1.16
+pkgver=2.1.17
 _electronversion=32
 pkgrel=1
 pkgdesc="Desktop app to help you keep track of what you need to get done."
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4af83b96795a01aed292127854cabb030e73c92ffa7f05d363403cb10d831b38'
+sha256sums=('13c1544f0e4373d2eed8703e84447f502884c2b1bb6cf86b82aae6e9f61c9778'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
