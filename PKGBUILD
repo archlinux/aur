@@ -1,4 +1,5 @@
-# Maintainer: 3ED_0 <krzysztof1987 /at/ gmail.com>
+# Maintainer: autumnontape <autumn at cyfox dot net>
+# Contributor: 3ED_0 <krzysztof1987 /at/ gmail.com>
 # Contributor: Rene Wiermer <rwiermer@googlemail.com>
 # Contributor: Eric Forgeot < http://anamnese.online.fr >
 
