@@ -1,0 +1,62 @@
+# old version (without -$pkgrel): ${1%%-*}
+# new version (without -$pkgrel): ${2%%-*}
+
+PKGNAME="qaratms"
+
+MSG_RU="
+==> ВАЖНО !!!
+==> Что-бы запустить WEB приложение QaraTMS, выполните:
+==> systemctl enable --now qaratms-nginx.service
+==>  или
+==> ubconfig set [system] SERVICES_ENABLE++=qaratms-nginx
+==> 
+==> Приложение QaraTMS доступно по ссылке: http://localhost или http://127.0.0.1
+"
+
+MSG_EN="
+==> IMPORTANT !!!
+==> Start the QaraTMS application:
+==> systemctl enable --now qaratms-nginx.service
+==>  or
+==> ubconfig set [system] SERVICES_ENABLE++=qaratms-nginx
+==> 
+==> Access QaraTMS: http://localhost or http://127.0.0.1
+"
+
+# arg 1:  the new package version
+pre_install() {
+    true
+}
+
+# arg 1:  the new package version
+post_install() {
+    post_upgrade $@
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+pre_upgrade() {
+    true
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+    [[ ${LANG%%_*} == "ru" ]] && echo "${MSG_RU}" || true
+    [[ ${LANG%%_*} == "en" ]] && echo "${MSG_EN}" || true
+    systemctl --quiet daemon-reload
+    systemctl --quiet is-active qaratms.slice && systemctl --quiet restart qaratms.slice || true
+}
+
+# arg 1:  the old package version
+pre_remove() {
+    systemctl --quiet is-enabled qaratms-nginx.service && systemctl --quiet disable qaratms-nginx.service || true
+    systemctl --quiet is-active qaratms.slice && systemctl --quiet stop qaratms.slice || true
+    systemctl --quiet is-active qaratms-php-fpm.service && systemctl --quiet stop qaratms-php-fpm.service || true
+    systemctl --quiet is-active qaratms-nginx.service && systemctl --quiet stop qaratms-nginx.service || true
+}
+
+# arg 1:  the old package version
+post_remove() {
+    true
+}

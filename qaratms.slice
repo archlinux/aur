@@ -1,0 +1,9 @@
+[Unit]
+Description=QaraTMS Units Service Slice (qaratms-php-fps.service and qaratms-nginx.service)
+Wants=qaratms-php-fpm.service
+Wants=qaratms-nginx.service
+
+[Slice]
+TasksMax=200
+MemoryHigh=75%
+MemoryMax=90%

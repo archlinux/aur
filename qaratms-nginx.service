@@ -1,0 +1,23 @@
+[Unit]
+Description=QaraTMS web server and a reverse proxy server
+After=network-online.target remote-fs.target nss-lookup.target
+Wants=network-online.target
+
+[Service]
+Slice=qaratms.slice
+Type=forking
+PIDFile=/run/nginx-qaratms.pid
+#PIDFile=/run/nginx.pid
+PrivateDevices=yes
+PrivateTmp=true
+SyslogLevel=err
+
+ExecStart=/usr/bin/nginx -c /opt/QaraTMS/etc/nginx/nginx.conf
+ExecReload=/usr/bin/nginx -s reload
+Restart=on-failure
+KillMode=mixed
+KillSignal=SIGQUIT
+TimeoutStopSec=5
+
+[Install]
+WantedBy=multi-user.target

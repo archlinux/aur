@@ -1,0 +1,514 @@
+#!/usr/bin/env bash
+
+###################################################################
+##
+## git clone https://github.com/a13xh7/QaraTMS
+## 
+##
+###################################################################
+
+ere_quote_grep(){
+    # Что экранировать
+    sed 's/[][\.|$(){}?+*^]/\\&/g' <<< "$*"
+    # Что не экранировать
+    #sed 's/[^a-zA-Z0-9=",;/_@#%&<> -]/\\&/g' <<< "$*"
+}
+    
+ere_quote_sed(){
+    # Что экранировать
+    sed 's/[][\.|$(){}?+*^;/&]/\\&/g' <<< "$*"
+    # Что не экранировать
+    #sed 's/[^a-zA-Z0-9=",_@#%<> -]/\\&/g' <<< "$*"
+}
+
+translate_to_locale(){
+    local -n SELECT_LOCAL="UBPILE_LOCAL_$1"
+    while IFS= read -ru3 SELECT_ITEM; do
+	IFS='|' read -r ITEM_PATH ITEM_MSG <<< "${SELECT_ITEM}"
+	if [[ -f ${WEB_ROOT}/${ITEM_PATH} ]]; then
+	    ITEM_MSG_ESC_COUNT=$(grep -Ec "$(ere_quote_grep "${ITEM_MSG}")" "${WEB_ROOT}/${ITEM_PATH}") #"
+	    if [[ -z ${ARG_QUIET} ]]; then
+		echo "${ITEM_MSG_ESC_COUNT} : ${WEB_ROOT}/${ITEM_PATH} : ${ITEM_MSG}" : ${SELECT_LOCAL[${SELECT_ITEM}]} | tee -a ${LOGFILE}
+	    else
+		echo "${ITEM_MSG_ESC_COUNT} : ${WEB_ROOT}/${ITEM_PATH} : ${ITEM_MSG}" : ${SELECT_LOCAL[${SELECT_ITEM}]} >> ${LOGFILE}
+	    fi
+	    #sed -E "s/${ITEM_MSG_ESC}/${NEW_ITEM_MSG_ESC}/" -i ${WEB_ROOT}/${ITEM_PATH}
+	    sed -E "s/$(ere_quote_sed "${ITEM_MSG}")/$(ere_quote_sed "${SELECT_LOCAL[${SELECT_ITEM}]}")/g" -i ${WEB_ROOT}/${ITEM_PATH}
+	fi
+    done 3< <(printf "%s\n" "${!SELECT_LOCAL[@]}")
+}
+
+#declare -A UBPILE_LOCAL_RU
+#    UBPILE_LOCAL_RU[sample_conf/setup.json|"\"description\": \"For events that don"\'"t fit anywhere else.\""]='"description": "Для событий, которые больше никуда не подходят."'
+#    UBPILE_LOCAL_RU[sample_conf/setup.json|'"description": "For events that don'"'"'t fit anywhere else."']='"description": "Для событий, которые больше никуда не подходят."'
+
+#translate_to_locale "RU"
+#exit
+
+#translate_to_locale "RU"
+#return
+#UBPILE_LOCAL_RU[sample_conf/.json|'']=''	'"'"'
+######################################################################################################################################################
+
+ru_app(){
+    ###############################
+    ### /app/* ###
+    ###############################
+    declare -A UBPILE_LOCAL_RU
+    UBPILE_LOCAL_RU[app/Http/Controllers/AuthController.php|"'Login details are not valid'"]="'Регистрационные данные недействительны'"
+    UBPILE_LOCAL_RU[app/Http/Controllers/ProjectController.php|'"Default Test Repository. Test suites and test cases are located here"']='"Репозиторий тестов по умолчанию. Тест-наборы и тест-сценарии расположены здесь"'
+    UBPILE_LOCAL_RU[app/Http/Controllers/TestPlanController.php|"'Test Run'"]="'Тестовый запуск'"
+    UBPILE_LOCAL_RU[app/Http/Controllers/TestPlanController.php|"'Test Run '"]="'Тест запуск '"
+    UBPILE_LOCAL_RU[app/Http/Controllers/TestPlanController.php|"' for '"]="' для '"
+
+#    UBPILE_LOCAL_RU[|'']=''
+
+    translate_to_locale "RU"
+}
+
+ru_resources_views_auth(){
+    declare -A UBPILE_LOCAL_RU
+
+    ##########################
+    ### /resources/views/* ###
+    ##########################
+    UBPILE_LOCAL_RU[resources/views/auth/login_page.blade.php|'QaraTMS - Login']='QaraTMS - Вход'
+    UBPILE_LOCAL_RU[resources/views/auth/login_page.blade.php|'>Login<']='>Вход<'
+    UBPILE_LOCAL_RU[resources/views/auth/login_page.blade.php|'"Email"']='"Электронная почта"'
+    UBPILE_LOCAL_RU[resources/views/auth/login_page.blade.php|'"Password"']='"Пароль"'
+    UBPILE_LOCAL_RU[resources/views/auth/login_page.blade.php|'> Remember Me']='> Запомнить'
+    UBPILE_LOCAL_RU[resources/views/auth/login_page.blade.php|'  Login']='  Вход'
+    UBPILE_LOCAL_RU[resources/views/auth/login_page.blade.php|'Copyright &']='Авторское право &'
+
+    translate_to_locale "RU"
+}
+
+ru_resources_views_docs(){
+    declare -A UBPILE_LOCAL_RU
+
+    ##########################
+
+    sed -E "/summernote-lite.min.js/a\    <script src=\"{{asset('editor/${FILE_SUMMERNOTE_LANG}')}}\"></script>" -i "${WEB_ROOT}/resources/views/docs/create_page.blade.php"
+    sed "/^[[:blank:]]*\$('#content').summernote({/a\            lang: '${SUMMERNOTE_LANG}'," -i "${WEB_ROOT}/resources/views/docs/create_page.blade.php"
+    UBPILE_LOCAL_RU[resources/views/docs/create_page.blade.php|'  Add Document']='  Добавить документ'
+    UBPILE_LOCAL_RU[resources/views/docs/create_page.blade.php|'>Title<']='>Заголовок<'
+    UBPILE_LOCAL_RU[resources/views/docs/create_page.blade.php|'>Parent<']='>Родитель<'
+    UBPILE_LOCAL_RU[resources/views/docs/create_page.blade.php|' Root ']=' Корень '
+    UBPILE_LOCAL_RU[resources/views/docs/create_page.blade.php|'>Create<']='>Создать<'
+    UBPILE_LOCAL_RU[resources/views/docs/create_page.blade.php|'>Cancel<']='>Отменить<'
+
+    sed -E "/summernote-lite.min.js/a\    <script src=\"{{asset('editor/${FILE_SUMMERNOTE_LANG}')}}\"></script>" -i "${WEB_ROOT}/resources/views/docs/edit_page.blade.php"
+    sed "/^[[:blank:]]*\$('#content').summernote({/a\            lang: '${SUMMERNOTE_LANG}'," -i "${WEB_ROOT}/resources/views/docs/edit_page.blade.php"
+    UBPILE_LOCAL_RU[resources/views/docs/edit_page.blade.php|'  Edit Document']='  Редактировать документ'
+    UBPILE_LOCAL_RU[resources/views/docs/edit_page.blade.php|'>Title<']='>Заголовок<'
+    UBPILE_LOCAL_RU[resources/views/docs/edit_page.blade.php|'>Parent<']='>Родитель<'
+    UBPILE_LOCAL_RU[resources/views/docs/edit_page.blade.php|' Root ']=' Корень '
+    UBPILE_LOCAL_RU[resources/views/docs/edit_page.blade.php|'>Update<']='>Обновить<'
+    UBPILE_LOCAL_RU[resources/views/docs/edit_page.blade.php|'>Cancel<']='>Отменить<'
+    
+    UBPILE_LOCAL_RU[resources/views/docs/list_page.blade.php|'  Documents']='  Документы'
+    UBPILE_LOCAL_RU[resources/views/docs/list_page.blade.php|'> Add New']='> Добавить новый'
+    UBPILE_LOCAL_RU[resources/views/docs/list_page.blade.php|'>Table of Contents<']='>Содержание<'
+    UBPILE_LOCAL_RU[resources/views/docs/list_page.blade.php|'"Edit"']='"Редактировать"'
+    UBPILE_LOCAL_RU[resources/views/docs/list_page.blade.php|'"Delete"']='"Удалить"'
+    
+    translate_to_locale "RU"
+}
+
+ru_resources_views_layout(){
+    declare -A UBPILE_LOCAL_RU
+
+    ##########################
+
+    UBPILE_LOCAL_RU[resources/views/layout/base_layout.blade.php|'QaraTMS - Open Source Test Management System']='QaraTMS - Система управления тестированием'
+
+    translate_to_locale "RU"
+}
+
+ru_resources_views_project(){
+    declare -A UBPILE_LOCAL_RU
+
+    ##########################
+
+    UBPILE_LOCAL_RU[resources/views/project/create_page.blade.php|'  Create Project']='  Создать проект'
+    UBPILE_LOCAL_RU[resources/views/project/create_page.blade.php|'>Whoops!<']='>Упс!<'
+    UBPILE_LOCAL_RU[resources/views/project/create_page.blade.php|'> There were some problems with your input.<']='> С вашим вводом возникли некоторые проблемы.<'
+    UBPILE_LOCAL_RU[resources/views/project/create_page.blade.php|'>Project Name<']='>Название проекта<'
+    UBPILE_LOCAL_RU[resources/views/project/create_page.blade.php|'>Description<']='>Описание<'
+    UBPILE_LOCAL_RU[resources/views/project/create_page.blade.php|"                    Create"]='                    Создать'
+    UBPILE_LOCAL_RU[resources/views/project/create_page.blade.php|'>Cancel<']='>Отменить<'
+
+
+    UBPILE_LOCAL_RU[resources/views/project/edit_page.blade.php|'> Edit Project']='> Редактировать проект'
+    UBPILE_LOCAL_RU[resources/views/project/edit_page.blade.php|'  Delete']='  Удалить'
+    UBPILE_LOCAL_RU[resources/views/project/edit_page.blade.php|'>Whoops!<']='>Упс!<'
+    UBPILE_LOCAL_RU[resources/views/project/edit_page.blade.php|'> There were some problems with your input.<']='> С вашим вводом возникли некоторые проблемы.<'
+    UBPILE_LOCAL_RU[resources/views/project/edit_page.blade.php|'>Project Name<']='>Название проекта<'
+    UBPILE_LOCAL_RU[resources/views/project/edit_page.blade.php|'>Description<']='>Описание<'
+    UBPILE_LOCAL_RU[resources/views/project/edit_page.blade.php|'>Update<']='>Обновить<'
+    UBPILE_LOCAL_RU[resources/views/project/edit_page.blade.php|'>Cancel<']='>Отменить<'
+    
+    translate_to_locale "RU"
+}
+
+ru_resources_views_repository(){
+    declare -A UBPILE_LOCAL_RU
+
+    ##########################
+
+    UBPILE_LOCAL_RU[resources/views/repository/create_page.blade.php|'  Add Test Repository']='  Добавить тестовый репозиторий'
+    UBPILE_LOCAL_RU[resources/views/repository/create_page.blade.php|'>Whoops!<']='>Упс!<'
+    UBPILE_LOCAL_RU[resources/views/repository/create_page.blade.php|'> There were some problems with your input.<']='> С вашим вводом возникли некоторые проблемы.<'
+    UBPILE_LOCAL_RU[resources/views/repository/create_page.blade.php|'>Name<']='>Имя<'
+    UBPILE_LOCAL_RU[resources/views/repository/create_page.blade.php|'>Prefix <']='>Префикс <'
+    UBPILE_LOCAL_RU[resources/views/repository/create_page.blade.php|'>(max 3 symbols)<']='>(максимально 3 символа)<'
+    UBPILE_LOCAL_RU[resources/views/repository/create_page.blade.php|'"please dont use the white space :)"']='"пожалуйста, не используйте пробелы :)"'
+    UBPILE_LOCAL_RU[resources/views/repository/create_page.blade.php|'>Description<']='>Описание<'
+    UBPILE_LOCAL_RU[resources/views/repository/create_page.blade.php|'  Save']='  Сохранить'
+    UBPILE_LOCAL_RU[resources/views/repository/create_page.blade.php|'>Cancel<']='>Отменить<'
+
+    UBPILE_LOCAL_RU[resources/views/repository/edit_page.blade.php|'  Edit Repository']='  Редактировать репозиторий'
+    UBPILE_LOCAL_RU[resources/views/repository/edit_page.blade.php|'  Delete']='  Удалить'
+    UBPILE_LOCAL_RU[resources/views/repository/edit_page.blade.php|'>Whoops!<']='>Упс!<'
+    UBPILE_LOCAL_RU[resources/views/repository/edit_page.blade.php|'> There were some problems with your input.<']='> С вашим вводом возникли некоторые проблемы.<'
+    UBPILE_LOCAL_RU[resources/views/repository/edit_page.blade.php|'>Name<']='>Имя<'
+    UBPILE_LOCAL_RU[resources/views/repository/edit_page.blade.php|'>Prefix <']='>Префикс <'
+    UBPILE_LOCAL_RU[resources/views/repository/edit_page.blade.php|'>(max 3 symbols)<']='>(максимально 3 символа)<'
+    UBPILE_LOCAL_RU[resources/views/repository/edit_page.blade.php|'"please dont use the white space :)"']='"пожалуйста, не используйте пробелы :)"'
+    UBPILE_LOCAL_RU[resources/views/repository/edit_page.blade.php|'>Description<']='>Описание<'
+    UBPILE_LOCAL_RU[resources/views/repository/edit_page.blade.php|'>Update<']='>Обновить<'
+    UBPILE_LOCAL_RU[resources/views/repository/edit_page.blade.php|'>Cancel<']='>Отменить<'
+
+    UBPILE_LOCAL_RU[resources/views/repository/list_page.blade.php|'Repositories']='Репозиторий'
+    UBPILE_LOCAL_RU[resources/views/repository/list_page.blade.php|'> Add New']='> Добавить новый'
+    UBPILE_LOCAL_RU[resources/views/repository/list_page.blade.php|'> Test Suites']='> Тест-наборы'
+    UBPILE_LOCAL_RU[resources/views/repository/list_page.blade.php|'> Test Cases']='> Тест-сценарии'
+    UBPILE_LOCAL_RU[resources/views/repository/list_page.blade.php|'> Automated']='> Автоматический'
+
+    sed -E "/summernote-lite.min.js/a\    <script src=\"{{asset('editor/${FILE_SUMMERNOTE_LANG}')}}\"></script>" -i "${WEB_ROOT}/resources/views/repository/show_page.blade.php"
+    sed "/^[[:blank:]]*\$('#content').summernote({/a\            lang: '${SUMMERNOTE_LANG}'," -i "${WEB_ROOT}/resources/views/repository/show_page.blade.php"
+    UBPILE_LOCAL_RU[resources/views/repository/show_page.blade.php|'>Repository:<']='>Репозиторий:<'
+    UBPILE_LOCAL_RU[resources/views/repository/show_page.blade.php|'> Test Suite']='> Тест-набор'
+    UBPILE_LOCAL_RU[resources/views/repository/show_page.blade.php|'"Repository Settings"']='"Настройки репозитория"'
+    #UBPILE_LOCAL_RU[resources/views/repository/show_page.blade.php|'ROOT']=''
+    UBPILE_LOCAL_RU[resources/views/repository/show_page.blade.php|'>Suite: <']='>Набор: <'
+    UBPILE_LOCAL_RU[resources/views/repository/show_page.blade.php|'  Select Test Suite']='  Выберите тест-набор'
+    UBPILE_LOCAL_RU[resources/views/repository/show_page.blade.php|'"Add Test Case"']='"Добавить тест-сценарий"'
+    UBPILE_LOCAL_RU[resources/views/repository/show_page.blade.php|'> Test Case']='> Тест-сценарий'
+    UBPILE_LOCAL_RU[resources/views/repository/show_page.blade.php|'  Create Test Suite']='  Создать тест-набор'
+    UBPILE_LOCAL_RU[resources/views/repository/show_page.blade.php|'>Suite name<']='>Название набора<'
+    UBPILE_LOCAL_RU[resources/views/repository/show_page.blade.php|'"New test suite"']='"Новый тест-набор"'
+    UBPILE_LOCAL_RU[resources/views/repository/show_page.blade.php|'>Update']='>Обновить'
+    UBPILE_LOCAL_RU[resources/views/repository/show_page.blade.php|'                       Create']='                       Создать'
+    UBPILE_LOCAL_RU[resources/views/repository/show_page.blade.php|'>Cancel<']='>Отменить<'
+
+    UBPILE_LOCAL_RU[resources/views/repository/test_cases_list.blade.php|'"Edit"']='"Редактировать"'
+    UBPILE_LOCAL_RU[resources/views/repository/test_cases_list.blade.php|'"Delete"']='"Удалить"'
+    
+    translate_to_locale "RU"
+}
+
+ru_resources_views_test_case(){
+    declare -A UBPILE_LOCAL_RU
+
+    ##########################
+
+    UBPILE_LOCAL_RU[resources/views/test_case/create_form.blade.php|'>Create Test Case<']='>Создать тестовый сценарий<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_form.blade.php|'>Cancel<']='>Отменить<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_form.blade.php|'>Test Suite<']='>Тест-набор<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_form.blade.php|'>Priority<']='>Приоритет<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_form.blade.php|'>High<']='>Высокий<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_form.blade.php|'> Medium<']='> Средний<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_form.blade.php|'>Low<']='>Низкий<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_form.blade.php|'>Automation status<']='>Состояние автоматизации<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_form.blade.php|'> Manual<']='> Ручной<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_form.blade.php|'>Automated<']='>Автоматический<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_form.blade.php|'>Title<']='>Заголовок<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_form.blade.php|'>Preconditions<']='>Условия<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_form.blade.php|'>Steps<']='>Шаги<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_form.blade.php|'>Action <']='>Действие <'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_form.blade.php|'> Expected Result<']='> Ожидаемый результат<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_form.blade.php|'  Add Step']='  Добавить шаг'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_form.blade.php|'               Create']='               Создать'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_form.blade.php|' and add another']=' и добавить еще один'
+
+    UBPILE_LOCAL_RU[resources/views/test_case/create_overlay.blade.php|'>Create Test Case<']='>Создать тест-сценарий<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_overlay.blade.php|'>Cancel<']='>Отменить<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_overlay.blade.php|'>Test Suite<']='>Тест-набор<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_overlay.blade.php|'>Priority<']='>Приоритет<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_overlay.blade.php|'> Normal<']='> Обычный<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_overlay.blade.php|'>High<']='>Высокий<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_overlay.blade.php|'>Low<']='>Низкий<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_overlay.blade.php|'>Type<']='>Тип<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_overlay.blade.php|'> Manual<']='> Ручной<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_overlay.blade.php|'>Automated<']='>Автоматический<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_overlay.blade.php|'>Title<']='>Заголовок<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_overlay.blade.php|'>Preconditions<']='>Условия<'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_overlay.blade.php|'>Steps <']='>Шаги <'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_overlay.blade.php|'(Action ']='(Действие '
+    UBPILE_LOCAL_RU[resources/views/test_case/create_overlay.blade.php|' Expected Result)']=' Ожидаемый результат)'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_overlay.blade.php|'                       Add Step']='                       Добавить шаг'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_overlay.blade.php|'                       Create']='                       Создать'
+    UBPILE_LOCAL_RU[resources/views/test_case/create_overlay.blade.php|' and add another']=' и добавить еще один'
+    
+    UBPILE_LOCAL_RU[resources/views/test_case/edit_form.blade.php|'>Edit Test Case<']='>Редактировать тест-сценарий<'
+    UBPILE_LOCAL_RU[resources/views/test_case/edit_form.blade.php|'>Cancel<']='>Отменить<'
+    UBPILE_LOCAL_RU[resources/views/test_case/edit_form.blade.php|'>Test Suite<']='>Тест-набор<'
+    UBPILE_LOCAL_RU[resources/views/test_case/edit_form.blade.php|'>Priority<']='>Приоритет<'
+    UBPILE_LOCAL_RU[resources/views/test_case/edit_form.blade.php|'> Normal<']='> Обычный<'
+    UBPILE_LOCAL_RU[resources/views/test_case/edit_form.blade.php|'>High<']='>Высокий<'
+    UBPILE_LOCAL_RU[resources/views/test_case/edit_form.blade.php|'>Low<']='>Низкий<'
+    UBPILE_LOCAL_RU[resources/views/test_case/edit_form.blade.php|'>Type<']='>Тип<'
+    UBPILE_LOCAL_RU[resources/views/test_case/edit_form.blade.php|'> Manual<']='> Ручной<'
+    UBPILE_LOCAL_RU[resources/views/test_case/edit_form.blade.php|'>Automated<']='>Автоматический<'
+    UBPILE_LOCAL_RU[resources/views/test_case/edit_form.blade.php|'>Title<']='>Заголовок<'
+    UBPILE_LOCAL_RU[resources/views/test_case/edit_form.blade.php|'>Preconditions<']='>Условия<'
+    UBPILE_LOCAL_RU[resources/views/test_case/edit_form.blade.php|'>Steps<']='>Шаги<'
+    UBPILE_LOCAL_RU[resources/views/test_case/edit_form.blade.php|'>Action <']='>Действие <'
+    UBPILE_LOCAL_RU[resources/views/test_case/edit_form.blade.php|'> Expected Result<']='> Ожидаемый результат<'
+    UBPILE_LOCAL_RU[resources/views/test_case/edit_form.blade.php|'Add Step']='Добавить шаг'
+    UBPILE_LOCAL_RU[resources/views/test_case/edit_form.blade.php|'Update Test Case']='Обновить тест-сценарий'
+
+    UBPILE_LOCAL_RU[resources/views/test_case/show_form.blade.php|'>Preconditions<']='>Условия<'
+    UBPILE_LOCAL_RU[resources/views/test_case/show_form.blade.php|'>Steps<']='>Шаги<'
+    UBPILE_LOCAL_RU[resources/views/test_case/show_form.blade.php|'>Action<']='>Действие<'
+    UBPILE_LOCAL_RU[resources/views/test_case/show_form.blade.php|'>Expected result<']='>Ожидаемый результат<'
+    UBPILE_LOCAL_RU[resources/views/test_case/show_form.blade.php|'>No additional details available.<']='>Никаких дополнительных подробностей не имеется.<'
+
+    UBPILE_LOCAL_RU[resources/views/test_case/show_overlay.blade.php|'>Preconditions<']='>Условия<'
+    UBPILE_LOCAL_RU[resources/views/test_case/show_overlay.blade.php|'>Steps<']='>Шаги<'
+    UBPILE_LOCAL_RU[resources/views/test_case/show_overlay.blade.php|'>Action<']='>Действие<'
+    UBPILE_LOCAL_RU[resources/views/test_case/show_overlay.blade.php|'>Expected result<']='>Ожидаемый результат<'
+    UBPILE_LOCAL_RU[resources/views/test_case/show_overlay.blade.php|'>No additional details available.<']='>Никаких дополнительных подробностей не имеется.<'
+
+    UBPILE_LOCAL_RU[resources/views/test_case/show_page.blade.php|'>Preconditions<']='>Условия<'
+    UBPILE_LOCAL_RU[resources/views/test_case/show_page.blade.php|'>Steps<']='>Шаги<'
+    UBPILE_LOCAL_RU[resources/views/test_case/show_page.blade.php|'>Action<']='>Действие<'
+    UBPILE_LOCAL_RU[resources/views/test_case/show_page.blade.php|'>Expected result<']='>Ожидаемый результат<'
+    UBPILE_LOCAL_RU[resources/views/test_case/show_page.blade.php|'>No additional details available.<']='>Никаких дополнительных подробностей не имеется.<'
+
+    translate_to_locale "RU"
+}
+
+ru_resources_views_test_plan(){
+    declare -A UBPILE_LOCAL_RU
+
+    ##########################
+
+    UBPILE_LOCAL_RU[resources/views/test_plan/create_page.blade.php|'Create Test Plan']='Создать тест-план'
+    UBPILE_LOCAL_RU[resources/views/test_plan/create_page.blade.php|'>Whoops!<']='>Упс!<'
+    UBPILE_LOCAL_RU[resources/views/test_plan/create_page.blade.php|'> There were some problems with your input.<']='> С вашим вводом возникли некоторые проблемы.<'
+    UBPILE_LOCAL_RU[resources/views/test_plan/create_page.blade.php|'>Name<']='>Имя<'
+    UBPILE_LOCAL_RU[resources/views/test_plan/create_page.blade.php|'"Test plan - {']='"Тест-план - {'
+    UBPILE_LOCAL_RU[resources/views/test_plan/create_page.blade.php|'>Test Repository<']='>Тестовый репозиторий<'
+    UBPILE_LOCAL_RU[resources/views/test_plan/create_page.blade.php|'>Description<']='>Описание<'
+    UBPILE_LOCAL_RU[resources/views/test_plan/create_page.blade.php|'>Save<']='>Сохранить<'
+    UBPILE_LOCAL_RU[resources/views/test_plan/create_page.blade.php|'>Cancel<']='>Отменить<'
+    UBPILE_LOCAL_RU[resources/views/test_plan/create_page.blade.php|'>Select Test Cases<']='>Выберите тест-сценарий<'
+    UBPILE_LOCAL_RU[resources/views/test_plan/create_page.blade.php|'> Select All']='> Выбрать все'
+    UBPILE_LOCAL_RU[resources/views/test_plan/create_page.blade.php|'> Deselect All']='> Отменить все'
+
+    UBPILE_LOCAL_RU[resources/views/test_plan/edit_page.blade.php|'Edit Test Plan']='Редактировать тест-план'
+    UBPILE_LOCAL_RU[resources/views/test_plan/edit_page.blade.php|'Delete']='Удалить'
+    UBPILE_LOCAL_RU[resources/views/test_plan/edit_page.blade.php|'>Whoops!<']='>Упс!<'
+    UBPILE_LOCAL_RU[resources/views/test_plan/edit_page.blade.php|'> There were some problems with your input.<']='> С вашим вводом возникли некоторые проблемы.<'
+    UBPILE_LOCAL_RU[resources/views/test_plan/edit_page.blade.php|'>Name<']='>Имя<'
+    UBPILE_LOCAL_RU[resources/views/test_plan/edit_page.blade.php|'>Test Repository<']='>Тестовый репозиторий<'
+    UBPILE_LOCAL_RU[resources/views/test_plan/edit_page.blade.php|'>Description<']='>Описание<'
+    UBPILE_LOCAL_RU[resources/views/test_plan/edit_page.blade.php|'>Update<']='>Обновить<'
+    UBPILE_LOCAL_RU[resources/views/test_plan/edit_page.blade.php|'>Cancel<']='>Отменить<'
+    UBPILE_LOCAL_RU[resources/views/test_plan/edit_page.blade.php|'>Select Test Cases<']='>Выберите тест-сценарий<'
+    UBPILE_LOCAL_RU[resources/views/test_plan/edit_page.blade.php|'> Select All']='> Выбрать все'
+    UBPILE_LOCAL_RU[resources/views/test_plan/edit_page.blade.php|'> Deselect All']='> Отменить все'
+
+    UBPILE_LOCAL_RU[resources/views/test_plan/list_page.blade.php|'Test Plans']='Тест-планы'
+    UBPILE_LOCAL_RU[resources/views/test_plan/list_page.blade.php|'test cases']='тест-сценария'
+    UBPILE_LOCAL_RU[resources/views/test_plan/list_page.blade.php|'"created at"']='"создан"'
+    UBPILE_LOCAL_RU[resources/views/test_plan/list_page.blade.php|'> New Test Plan']='> Новый тест-план'
+    UBPILE_LOCAL_RU[resources/views/test_plan/list_page.blade.php|'Start new test run']='Новый тест-запуск'
+    UBPILE_LOCAL_RU[resources/views/test_plan/list_page.blade.php|'Edit']='Редактировать'
+
+    translate_to_locale "RU"
+}
+
+ru_resources_views_test_run(){
+    declare -A UBPILE_LOCAL_RU
+
+    ##########################
+
+    UBPILE_LOCAL_RU[resources/views/test_run/chart.blade.php|'"Passed"']='"Пройдено"'
+    UBPILE_LOCAL_RU[resources/views/test_run/chart.blade.php|'"Failed"']='"Неудачно"'
+    UBPILE_LOCAL_RU[resources/views/test_run/chart.blade.php|'"Blocked"']='"Блокировано"'
+    UBPILE_LOCAL_RU[resources/views/test_run/chart.blade.php|'"Not Tested"']='"Не проверено"'
+    
+    UBPILE_LOCAL_RU[resources/views/test_run/create_page.blade.php|'Add Test Run']='Добавить тест-запуск'
+    UBPILE_LOCAL_RU[resources/views/test_run/create_page.blade.php|'>Name<']='>Имя<'
+    UBPILE_LOCAL_RU[resources/views/test_run/create_page.blade.php|'"Test Run"']='"Тест-запуск"'
+    UBPILE_LOCAL_RU[resources/views/test_run/create_page.blade.php|'>Select Test Plan<']='>Выбрать тест-план<'
+    UBPILE_LOCAL_RU[resources/views/test_run/create_page.blade.php|'>Save<']='>Сохранить<'
+
+    UBPILE_LOCAL_RU[resources/views/test_run/edit_page.blade.php|'Edit Test Run']='Редактировать тест-запуск'
+    UBPILE_LOCAL_RU[resources/views/test_run/edit_page.blade.php|'Delete']='Удалить'
+    UBPILE_LOCAL_RU[resources/views/test_run/edit_page.blade.php|'>Whoops!<']='>Упс!<'
+    UBPILE_LOCAL_RU[resources/views/test_run/edit_page.blade.php|'> There were some problems with your input.<']='> С вашим вводом возникли некоторые проблемы.<'
+    UBPILE_LOCAL_RU[resources/views/test_run/edit_page.blade.php|'>Name<']='>Имя<'
+    UBPILE_LOCAL_RU[resources/views/test_run/edit_page.blade.php|'>Update<']='>Обновить<'
+    UBPILE_LOCAL_RU[resources/views/test_run/edit_page.blade.php|'>Cancel<']='>Отменить<'
+
+    UBPILE_LOCAL_RU[resources/views/test_run/list_page.blade.php|'Test Runs']='Тестовые запуски'
+    UBPILE_LOCAL_RU[resources/views/test_run/list_page.blade.php|'> New Test Run']='> Новый тест-запуск'
+    UBPILE_LOCAL_RU[resources/views/test_run/list_page.blade.php|'"created at"']='"создан"'
+    
+    UBPILE_LOCAL_RU[resources/views/test_run/show_page.blade.php|'Test Run  <']='Тест-запуск  <'
+    UBPILE_LOCAL_RU[resources/views/test_run/show_page.blade.php|'"Repository Settings"']='"Настройки репозитория"'
+    UBPILE_LOCAL_RU[resources/views/test_run/show_page.blade.php|'Select Test Case']='Выберите тест-сценарий'
+
+    UBPILE_LOCAL_RU[resources/views/test_run/test_case.blade.php|'Passed']='Пройдено'
+    UBPILE_LOCAL_RU[resources/views/test_run/test_case.blade.php|'Failed']='Неудачно'
+    UBPILE_LOCAL_RU[resources/views/test_run/test_case.blade.php|'>Blocked<']='>Блокировано<'
+    UBPILE_LOCAL_RU[resources/views/test_run/test_case.blade.php|'Not Tested']='Не проверено'
+    UBPILE_LOCAL_RU[resources/views/test_run/test_case.blade.php|'>Preconditions<']='>Условия<'
+    UBPILE_LOCAL_RU[resources/views/test_run/test_case.blade.php|'>Steps<']='>Шаги<'
+    UBPILE_LOCAL_RU[resources/views/test_run/test_case.blade.php|'>Action<']='>Действия<'
+    UBPILE_LOCAL_RU[resources/views/test_run/test_case.blade.php|'>Expected result<']='>Ожидаемый результат<'
+    UBPILE_LOCAL_RU[resources/views/test_run/test_case.blade.php|'>No additional details available.<']='>Никаких дополнительных подробностей не имеется.<'
+
+    UBPILE_LOCAL_RU[resources/views/test_run/test_cases_list.blade.php|'>Not Tested<']='>Не проверено<'
+    UBPILE_LOCAL_RU[resources/views/test_run/test_cases_list.blade.php|'>Passed<']='>Пройдено<'
+    UBPILE_LOCAL_RU[resources/views/test_run/test_cases_list.blade.php|'>Failed<']='>Неудачно<'
+    UBPILE_LOCAL_RU[resources/views/test_run/test_cases_list.blade.php|'>Blocked<']='>Блокировано<'
+
+    UBPILE_LOCAL_RU[resources/views/test_run/tree_item.blade.php|'>Not Tested<']='>Не проверено<'
+    UBPILE_LOCAL_RU[resources/views/test_run/tree_item.blade.php|'>Passed<']='>Пройдено<'
+    UBPILE_LOCAL_RU[resources/views/test_run/tree_item.blade.php|'>Failed<']='>Неудачно<'
+    UBPILE_LOCAL_RU[resources/views/test_run/tree_item.blade.php|'>Blocked<']='>Блокировано<'
+
+    translate_to_locale "RU"
+}
+
+ru_resources_views_test_suite(){
+    declare -A UBPILE_LOCAL_RU
+
+    ##########################
+
+    UBPILE_LOCAL_RU[resources/views/test_suite/create_form.blade.php|'>Name<']='>Имя<'
+    UBPILE_LOCAL_RU[resources/views/test_suite/create_form.blade.php|'"Name"']='"Имя"'
+    UBPILE_LOCAL_RU[resources/views/test_suite/create_form.blade.php|'Cancel']='Отменить'
+    UBPILE_LOCAL_RU[resources/views/test_suite/create_form.blade.php|'>Save<']='>Сохранить<'
+
+    UBPILE_LOCAL_RU[resources/views/test_suite/edit_form.blade.php|'>Name<']='>Имя<'
+    UBPILE_LOCAL_RU[resources/views/test_suite/edit_form.blade.php|'"Name"']='"Имя"'
+    UBPILE_LOCAL_RU[resources/views/test_suite/edit_form.blade.php|'>Move to<']='>Перейти к<'
+    UBPILE_LOCAL_RU[resources/views/test_suite/edit_form.blade.php|' Root ']=' Корень '
+    UBPILE_LOCAL_RU[resources/views/test_suite/edit_form.blade.php|'Cancel']='Отменить'
+    UBPILE_LOCAL_RU[resources/views/test_suite/edit_form.blade.php|'>Update<']='>Обновить<'
+
+    UBPILE_LOCAL_RU[resources/views/test_suite/editor.blade.php|'Add Test Suite']='Добавить тест-набор'
+    UBPILE_LOCAL_RU[resources/views/test_suite/editor.blade.php|'Edit Test Suite']='Редактировать тест-набор'
+    UBPILE_LOCAL_RU[resources/views/test_suite/editor.blade.php|'"Close"']='"Закрыть"'
+
+    translate_to_locale "RU"
+}
+
+ru_resources_views_users(){
+    declare -A UBPILE_LOCAL_RU
+
+    ##########################
+
+    UBPILE_LOCAL_RU[resources/views/users/create_page.blade.php|'Create user']='Создать пользователя'
+    UBPILE_LOCAL_RU[resources/views/users/create_page.blade.php|'"Name"']='"Имя"'
+    UBPILE_LOCAL_RU[resources/views/users/create_page.blade.php|'"Email"']='"Электронная почта"'
+    UBPILE_LOCAL_RU[resources/views/users/create_page.blade.php|'"Password. Min 6 symbols"']='"Пароль. Минимум 6 символов"'
+    UBPILE_LOCAL_RU[resources/views/users/create_page.blade.php|'>Create<']='>Создать<'
+    UBPILE_LOCAL_RU[resources/views/users/create_page.blade.php|'>Cancel<']='>Отменить<'
+    UBPILE_LOCAL_RU[resources/views/users/create_page.blade.php|'>Permissions<']='>Разрешения<'
+    UBPILE_LOCAL_RU[resources/views/users/create_page.blade.php|'>Entity<']='>Объект<'
+    UBPILE_LOCAL_RU[resources/views/users/create_page.blade.php|'>Add & Edit<']='>Добавлять и редактировать<'
+    UBPILE_LOCAL_RU[resources/views/users/create_page.blade.php|'>Delete<']='>Удалить<'
+    UBPILE_LOCAL_RU[resources/views/users/create_page.blade.php|'>Project<']='>Проект<'
+    UBPILE_LOCAL_RU[resources/views/users/create_page.blade.php|'>Repository<']='>Репозиторий<'
+    UBPILE_LOCAL_RU[resources/views/users/create_page.blade.php|'>Test Suite<']='>Тест-набор<'
+    UBPILE_LOCAL_RU[resources/views/users/create_page.blade.php|'>Test Case<']='>Тест-сценарий<'
+    UBPILE_LOCAL_RU[resources/views/users/create_page.blade.php|'>Test Plan<']='>Тест-план<'
+    UBPILE_LOCAL_RU[resources/views/users/create_page.blade.php|'>Test Run<']='>Тест-запуск<'
+    UBPILE_LOCAL_RU[resources/views/users/create_page.blade.php|'>Document<']='>Документ<'
+    UBPILE_LOCAL_RU[resources/views/users/create_page.blade.php|'>User<']='>Пользователь<'
+
+    UBPILE_LOCAL_RU[resources/views/users/edit_page.blade.php|'Edit user']='Редактировать пользователя'
+    UBPILE_LOCAL_RU[resources/views/users/edit_page.blade.php|'"Name"']='"Имя"'
+    UBPILE_LOCAL_RU[resources/views/users/edit_page.blade.php|'"Email"']='"Электронная почта"'
+    UBPILE_LOCAL_RU[resources/views/users/edit_page.blade.php|"New Password. Min 6 symbols. Leave field empty if you don't want to change password"]='Новый пароль. Минимум 6 символов. Оставьте поле пустым, если вы не хотите менять пароль'
+    UBPILE_LOCAL_RU[resources/views/users/edit_page.blade.php|'>Update<']='>Обновить<'
+    UBPILE_LOCAL_RU[resources/views/users/edit_page.blade.php|'>Cancel<']='>Отменить<'
+    UBPILE_LOCAL_RU[resources/views/users/edit_page.blade.php|'>Permissions<']='>Разрешения<'
+    UBPILE_LOCAL_RU[resources/views/users/edit_page.blade.php|'>Entity<']='>Объект<'
+    UBPILE_LOCAL_RU[resources/views/users/edit_page.blade.php|'>Add & Edit<']='>Добавлять и редактировать<'
+    UBPILE_LOCAL_RU[resources/views/users/edit_page.blade.php|'>Delete<']='>Удалить<'
+    UBPILE_LOCAL_RU[resources/views/users/edit_page.blade.php|'>Project<']='>Проект<'
+    UBPILE_LOCAL_RU[resources/views/users/edit_page.blade.php|'>Repository<']='>Репозиторий<'
+    UBPILE_LOCAL_RU[resources/views/users/edit_page.blade.php|'>Test Suite<']='>Тест-набор<'
+    UBPILE_LOCAL_RU[resources/views/users/edit_page.blade.php|'>Test Case<']='>Тест-сценарий<'
+    UBPILE_LOCAL_RU[resources/views/users/edit_page.blade.php|'>Test Plan<']='>Тест-план<'
+    UBPILE_LOCAL_RU[resources/views/users/edit_page.blade.php|'>Test Run<']='>Тест-запуск<'
+    UBPILE_LOCAL_RU[resources/views/users/edit_page.blade.php|'>Document<']='>Документ<'
+    UBPILE_LOCAL_RU[resources/views/users/edit_page.blade.php|'>User<']='>Пользователь<'
+
+    UBPILE_LOCAL_RU[resources/views/users/list_page.blade.php|'Users']='Пользователи'
+    UBPILE_LOCAL_RU[resources/views/users/list_page.blade.php|'> Add User']='> Добавить пользователя'
+    UBPILE_LOCAL_RU[resources/views/users/list_page.blade.php|'    Edit']='    Редактировать'
+    UBPILE_LOCAL_RU[resources/views/users/list_page.blade.php|'    Delete']='    Удалить'
+
+    translate_to_locale "RU"
+}
+
+ru_public_js(){
+    declare -A UBPILE_LOCAL_RU
+
+    ##########################
+    sed "/^[[:blank:]]*editor = \$('.editor_textarea').summernote({/a\            lang: '${SUMMERNOTE_LANG}'," -i "${WEB_ROOT}/public/js/repo/case_editor.js"
+    UBPILE_LOCAL_RU[public/js/repo/case_crud.js|"'Title is required'"]="'Требуется название'"
+    UBPILE_LOCAL_RU[public/js/repo/case_editor.js|"'Create at least one test suite.'"]="'Создайте хотя бы один тест-набор.'"
+    UBPILE_LOCAL_RU[public/js/repo/suites_tree_and_crud.js|"'Create Test Suite'"]="'Создать тест-набор'"
+    UBPILE_LOCAL_RU[public/js/repo/suites_tree_and_crud.js|"'Edit Test Suite'"]="'Редактировать тест-набор'"
+    UBPILE_LOCAL_RU[public/js/repo/tree.js|'"Expland / Collapse"']='"Развернуть / Свернуть"'
+    UBPILE_LOCAL_RU[public/js/repo/tree.js|'"Edit"']='"Редактировать"'
+    UBPILE_LOCAL_RU[public/js/repo/tree.js|'"Add child test suite"']='"Добавить дочерний тест-набор"'
+    UBPILE_LOCAL_RU[public/js/repo/tree.js|'"Delete"']='"Удалить"'
+    UBPILE_LOCAL_RU[public/js/repo/tree.js|'"Invalid selector! Make sure that your add child button is inside a branch."']='"Неверный селектор! Убедитесь, что кнопка добавления дочернего элемента находится внутри ветки."'
+
+    translate_to_locale "RU"
+}
+
+
+  #######################################
+ ###              MAIN               ###
+#######################################
+    #WEB_ROOT="/opt/QaraTMS"
+    WEB_ROOT="."
+    LOGFILE="${WEB_ROOT}/logs/qaratms_translate_ru.log"
+
+    FILE_SUMMERNOTE_LANG="summernote-ru-RU.min.js"
+    SUMMERNOTE_LANG=${FILE_SUMMERNOTE_LANG%%.*}; SUMMERNOTE_LANG=${SUMMERNOTE_LANG#*-}
+    
+    [[ $1 == @("-q"|"--quiet") ]] && ARG_QUIET="--quiet" && LOGFILE="/tmp/qaratms/qaratms_translate_ru.log" && shift
+    [[ -d $1 ]] && WEB_ROOT=${1} && shift
+
+    [[ -d ${LOGFILE%/*} ]] || install -dm0755 ${LOGFILE%/*}
+    rm -f "${LOGFILE}"
+    touch ${LOGFILE}
+
+
+    ru_app &
+    ru_resources_views_auth &
+    ru_resources_views_docs &
+    ru_resources_views_layout &
+    ru_resources_views_project &
+    ru_resources_views_repository &
+    ru_resources_views_test_case &
+    ru_resources_views_test_plan &
+    ru_resources_views_test_run &
+    ru_resources_views_test_suite &
+    ru_resources_views_users &
+    ru_public_js &
+    
+    wait
