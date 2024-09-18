@@ -1,7 +1,7 @@
 # Maintainer: mekambe <grubyogon10@gmail.com>
 # Contributor: Def
 # PKGBUILD for Cultris II
-
+# <3 A.S
 pkgname=cultris2-git
 pkgver=1.0.8
 pkgrel=1
