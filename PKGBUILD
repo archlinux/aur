@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=rkbin-git
-pkgname=rkbin
+pkgname=rkbin-git
 pkgver=r1826.a2a0b89
-pkgrel=6
+pkgrel=7
 epoch=
 pkgdesc="Rockchip Firmware and Tool Binarys"
 arch=('x86_64')
@@ -18,9 +18,9 @@ depends=(
 makedepends=('git')
 checkdepends=()
 optdepends=()
-provides=()
-conflicts=()
-replaces=()
+provides=(rkbin)
+conflicts=(rkbin)
+replaces=(rkbin)
 backup=()
 options=()
 install=
@@ -31,14 +31,14 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    ( set -o pipefail
+    (
+        set -o pipefail
         git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
@@ -49,10 +49,10 @@ package() {
     cp -r ${srcdir}/${pkgname} "${pkgdir}/opt/rockchip/"
     rm -rf ${pkgdir}/opt/rockchip/${pkgname}/.*
 
-    install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname}.csh" << EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname}.csh" <<EOF
 setenv PATH "${PATH}:/opt/rockchip/${pkgname}/tools/"
 EOF
-    install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname}.sh" << EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname}.sh" <<EOF
 #!/bin/sh
 # rkbin
 
