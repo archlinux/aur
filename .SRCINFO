@@ -1,7 +1,7 @@
 pkgbase = wasynth-git
 	pkgdesc = WebAssembly translation tools targeting Lua
 	pkgver = 0.13.0.r8.g27f3498
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Rerumu/Wasynth
 	arch = aarch64
 	arch = arm
@@ -16,7 +16,7 @@ pkgbase = wasynth-git
 	depends = glibc
 	provides = wasynth=0.13.0.r8.g27f3498
 	conflicts = wasynth
-	source = git+https://github.com/Rerumu/Wasynth#commit=27f34987341ec1837d3ff911f3e583647920af16
+	source = wasynth::git+https://github.com/Rerumu/Wasynth#commit=27f34987341ec1837d3ff911f3e583647920af16
 	md5sums = SKIP
 
 pkgname = wasynth-git
