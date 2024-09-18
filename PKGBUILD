@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
 _pkgname=yn
-pkgver=3.76.1
+pkgver=3.76.2
 _electronversion=28
 _nodeversion=18
 pkgrel=1
@@ -29,7 +29,7 @@ source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('dee37eee987f4ec1289b9b253189d0a50ce412cbe503a31588565dd72991f018'
+sha256sums=('6d9031eb440a28625609cec1df40e1e14c3b922d6b7f4e338bcadb7857cbb1d0'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -39,24 +39,24 @@ _ensure_local_nvm() {
 }
 build() {
     sed -e "
-        s|@electronversion@|${_electronversion}|;
-        s|@appname@|${pkgname}|g;
-        s|@runname@|app.asar|g;
-        s|@cfgdirname@|${pkgname//-/.}|g;
-        s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g
-    " -i "${srcdir}/${pkgname}.sh"
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-git}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/${pkgname//-/.}/
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+    " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #HOME="${srcdir}/.electron-gyp"
-    #mkdir -p "${srcdir}/.electron-gyp"
-    if [ -f .yarnrc ] && [ "$(grep -c registry .yarnrc)" -eq 1 ]; then
-        sed -i "/yarnpkg/d" .yarnrc
-    fi
-    {
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    HOME="${srcdir}/.electron-gyp"
+    mkdir -p "${srcdir}/.electron-gyp"
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        sed "/yarnpkg/d" -i .yarnrc
+        sed "s/github.com/gitdl.cn\/https:\/\/github.com/" -i scripts/{download-pandoc.js,download-plantuml.js}
+        {
+            echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
             echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
             echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
@@ -65,17 +65,16 @@ build() {
             echo "pluginsFolder "${srcdir}"/.yarn/plugins"
             echo "globalFolder "${srcdir}"/.yarn/global"
             echo 'useHardlinks true'
-            echo 'buildFromSource true'
+            #echo 'buildFromSource true'
             echo 'linkWorkspacePackages true'
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
-        else
-            echo "Your network is OK."
-        fi
-    } >> .yarnrc
+        } >> .yarnrc
+    fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
-    sed "s|icon.icns|icon.png|g" -i electron-builder.json
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    sed -i "s/icon.icns/icon.png/" electron-builder.json
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
+    NODE_ENV=development    yarn add -D "@types/tar-stream"
     NODE_ENV=development    yarn run electron-rebuild
     NODE_ENV=development    npx node scripts/download-pandoc.js
     NODE_ENV=development    npx node scripts/download-plantuml.js
