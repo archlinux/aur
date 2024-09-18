@@ -2,7 +2,7 @@
 
 pkgname=openvas-scanner
 pkgver=23.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Vulnerability scanning Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/openvas-scanner"
@@ -18,6 +18,11 @@ sha512sums=('820510e7ae7c738796809d010ef5d177f002cd6dfe2c36354e47e1bda8f32ecd1c4
             '2df63297cd9bd1cfb7b774152b1791ff946a1a410e563e54212652d847063b3c22b5362cd287b1bd73684be1fbd66464a2f8bb79b92cd086ba58e9a801d675ec'
             '1ef913c24721533b0f779047532de63d195e8498885b90972a7bbbfb734444c0f7cbdcc52c437b2ce773881d45eadfcec03fcd00886e02962cb06d318d0c7c96')
 
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	sed -i '/-Werror/d' CMakeLists.txt
+}
 
 build() {
   cmake \
