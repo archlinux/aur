@@ -2,11 +2,12 @@
 pkgname=rusty-psn-git
 _pkgname=rusty-psn
 pkgver=0.5.0.r1.ga227494
-pkgrel=4
+pkgrel=5
 provides=('rusty-psn' 'rusty-psn-gui')
 conflicts=('rusty-psn-bin' 'rusty-psn-gui-git' 'rusty-psn-cli-git')
 pkgdesc='A GUI/CLI tool for downloading PS3 and PS4 game updates'
 url='https://github.com/RainbowCookie32/rusty-psn'
+license=('MIT')
 arch=('x86_64')
 makedepends=('cargo' 'rust' 'pkgconf' 'git')
 depends=('openssl' 'libxcb' 'libxkbcommon')
