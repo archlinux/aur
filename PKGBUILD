@@ -2,7 +2,7 @@
 
 _pkgname='fudo'
 pkgname="${_pkgname}-git"
-pkgver=r10.3396b1b
+pkgver=r13.b1a2014
 pkgrel=1
 pkgdesc='A sudo to doas wrapper'
 arch=('x86_64')
