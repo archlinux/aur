@@ -10,7 +10,7 @@ pkgname=(
     gnome-shell-mobile-docs
 )
 pkgdesc="Next generation desktop shell"
-pkgver=46.r0.g361fc60
+pkgver=46.r0.g958c555
 pkgrel=1
 epoch=1
 arch=(
@@ -75,13 +75,13 @@ makedepends=(
     meson
     sassc
 )
-_commit=361fc605e595b36df68d8b691f22bccddcf84cc9
+_commit=958c55550b539d03cf6eb990b47bbbf9f9ec11b5 # tags^46-mobile.1
 source=(
     "git+https://gitlab.gnome.org/verdre/gnome-shell-mobile.git#commit=$_commit"
     "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=5f9768a2eac29c1ed56f1fbb449a77a3523683b6"
 )
 sha256sums=(
-    ffb02d21b9be34d83f327634be44b72f0e631358ad93643802f983f44c12e7dd
+    68394e7007110af9dcd070c6813ceea6176f063f44d4ee7cddf0ab4350eb330b
     587319b45ff7d989635aed0c3bd9ef834d6e53ae46788cb6ba083d42d7e63855
 )
 
