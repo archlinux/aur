@@ -1,6 +1,6 @@
 pkgbase = ollama-rocm-git
 	pkgdesc = Create, run and share large language models (LLMs) with ROCm
-	pkgver = 0.1.39.g96bc232b
+	pkgver = 0.3.11.g504a410f
 	pkgrel = 1
 	url = https://github.com/jmorganca/ollama
 	arch = x86_64

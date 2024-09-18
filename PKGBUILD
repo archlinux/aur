@@ -3,7 +3,7 @@
 
 pkgname=ollama-rocm-git
 pkgdesc='Create, run and share large language models (LLMs) with ROCm'
-pkgver=0.1.39.g96bc232b
+pkgver=0.3.11.g504a410f
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/jmorganca/ollama'
@@ -53,7 +53,7 @@ build() {
   export CXXFLAGS+=' -w'
 
   local goflags="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  local ldflags="-linkmode=external -buildid= -X github.com/ollama/ollama/version.Version=${pkgver}"
+  local ldflags="-linkmode=external -buildid= -X github.com/ollama/ollama/version.Version=$(git describe --tags --abbrev=0 | sed "s/^v//" | sed "s/-rc[0-9]*$//")"
 
   export CUDA_LIB_DIR=/disabled
   export ONEAPI_ROOT=/disabled
