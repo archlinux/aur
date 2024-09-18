@@ -1,14 +1,14 @@
 # Maintainer: Kingkor Roy Tirtho <krtirho@gmail.com>
 pkgname=spotube-bin
 pkgver=3.8.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Open source Spotify client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!"
 arch=(x86_64)
 url="https://github.com/KRTirtho/spotube/"
 license=('BSD-4-Clause')
 groups=()
-depends=('mpv' 'libappindicator-gtk3' 'libsecret' 'jsoncpp' 'libnotify' 'xdg-user-dirs')
+depends=('mpv' 'libappindicator-gtk3' 'libsecret' 'jsoncpp' 'libnotify' 'xdg-user-dirs' 'webkit2gtk-4.1')
 makedepends=()
 checkdepends=()
 optdepends=()
