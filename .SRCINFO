@@ -1,0 +1,18 @@
+pkgbase = linutil-bin
+	pkgdesc = Chris Titus Tech's Linux Toolbox - Linutil is a distro-agnostic toolbox designed to simplify everyday Linux tasks.
+	pkgver = 2024.09.03
+	pkgrel = 1
+	url = https://github.com/ChrisTitusTech/linutil
+	arch = x86_64
+	license = MIT
+	depends = git
+	depends = pacman
+	depends = glibc
+	depends = gcc-libs
+	depends = libalpm.so
+	provides = linutil
+	conflicts = linutil
+	source = https://github.com/ChrisTitusTech/linutil/releases/download/2024.09.03/linutil
+	sha256sums = 5a9d5d6d6e44937b24f8c304829b60fe35276cd63fdf15dd3de412e8ebc99472
+
+pkgname = linutil-bin
