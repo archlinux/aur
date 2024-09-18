@@ -11,7 +11,9 @@ pkgbase = opentaxsolver2023
 	makedepends = subversion
 	optdepends = gtk4: GUI support
 	optdepends = libreoffice: Edit generated PDFs
+	source = opentaxsolver2023
 	source = opentaxsolver2023-21.06::svn://svn.code.sf.net/p/opentaxsolver/SrcCodeRepo/trunk/OTS_2023#revision=r137
+	sha256sums = 625704c91ec33df8f2550b8726e1b954b49332c4272e96b2a39300756ade1815
 	sha256sums = SKIP
 
 pkgname = opentaxsolver2023

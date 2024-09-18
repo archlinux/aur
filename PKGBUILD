@@ -20,8 +20,9 @@ optdepends=(
 
 # SOURCES :: from subversion
 makedepends=('subversion')
-source=("${pkgname}-${pkgver}::svn://svn.code.sf.net/p/opentaxsolver/SrcCodeRepo/trunk/OTS_${year}#revision=${_snvrevision}")
-sha256sums=('SKIP')
+source=("${pkgname}" "${pkgname}-${pkgver}::svn://svn.code.sf.net/p/opentaxsolver/SrcCodeRepo/trunk/OTS_${year}#revision=${_snvrevision}")
+sha256sums=('625704c91ec33df8f2550b8726e1b954b49332c4272e96b2a39300756ade1815'
+            'SKIP')
 verify() {
 	# NOTE this happens before files are moved to $srcdir... must use the dir on the prefix of source=()
 	cd "${pkgname}-${pkgver}/src/"
@@ -45,8 +46,9 @@ verify() {
 
 # SOURCES :: from upstream artifact (fail as sf.net likes to redirects to webpage from time to time)
 # makedepends=()
-# source=("https://phoenixnap.dl.sourceforge.net/project/opentaxsolver/OTS_${year}/v${pkgver}_linux/OpenTaxSolver${year}_${pkgver}_linux64.tgz")
-# sha256sums=('76f6a29d824ad3229555f04c7bf91c76fe8d16bdb822c31f6b410480d948a90b')
+# source=("${pkgname}" "https://phoenixnap.dl.sourceforge.net/project/opentaxsolver/OTS_${year}/v${pkgver}_linux/OpenTaxSolver${year}_${pkgver}_linux64.tgz")
+# sha256sums=('625704c91ec33df8f2550b8726e1b954b49332c4272e96b2a39300756ade1815'
+#             '76f6a29d824ad3229555f04c7bf91c76fe8d16bdb822c31f6b410480d948a90b')
 # prepare() {
 # 	# normalize srcdir path tree with svn sources. for consistency on other methods.
 # 	cd "$srcdir/"
@@ -78,8 +80,7 @@ package() {
 
 	# our wrapper
 	# TODO: create .desktop file for this
-	# TODO: don't use deprecated $startdir :)
-	$INSTALL --mode=0755 --target-directory="${pkgdir}/usr/bin/" "${startdir}/${pkgname}"
+	$INSTALL --mode=0755 --target-directory="${pkgdir}/usr/bin/" "${srcdir}/${pkgname}"
 
 	# this is convoluted but ensure right permissions/ownership
 	local formdir
