@@ -9,7 +9,11 @@ pkgbase = python-vtf2img
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = python
+	depends = python-pillow
 	source = python-vtf2img-0.1.0.tar.gz::https://github.com/julienc91/vtf2img/archive/6db0178d69b7b141279078cb3576d4d1f79ad567.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/julienc91/vtf2img/6db0178d69b7b141279078cb3576d4d1f79ad567/LICENSE
 	sha256sums = 93d6b946032853b0055ff961d5c3784d8442e026a987578a3eeb33fa2e9cde10
+	sha256sums = 6856f0af62e72b7bf3246e97faad2a6b4bc926914cd52888af9526aceb74e335
 
 pkgname = python-vtf2img
