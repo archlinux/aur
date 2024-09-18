@@ -2,7 +2,7 @@
 # Contributor: Jose Riha <jose1711 gmail com>
 
 pkgname=libdeltachat
-pkgver=1.137.4
+pkgver=1.143.0
 pkgrel=1
 pkgdesc="Deltachat-core written in Rust"
 arch=('x86_64')
