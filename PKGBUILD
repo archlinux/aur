@@ -3,7 +3,7 @@ _appname=firestorm-next
 pkgname="${_appname}-bin"
 provides=("${_appname}")
 conflicts=("${_appname}")
-pkgver=7.1.10.75882
+pkgver=7.1.10.75910
 pkgrel=1
 pkgdesc="[NEXT] Firestorm is a feature-packed third-party viewer for Second Life. This is the *beta* release that currently features WebRTC support. **USE AT YOUR OWN RISK**"
 url="https://www.firestormviewer.org/early-access-beta-downloads/"
@@ -53,7 +53,7 @@ source=(
   "${_appname}.desktop"
 )
 md5sums=(
-  "add762eb91d14ac8c87a486a8b25fc1d"
+  "e12ac7284e02fec32f6f8330cdec0f06"
   "f2205d16465315acdcf66bb9bd377534"
 )
 
