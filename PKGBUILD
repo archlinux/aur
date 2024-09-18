@@ -2,7 +2,7 @@
 # Maintainer:  Radu Potop <radu at wooptoo dot com>
 
 pkgname=arrow-tools
-pkgver=0.18.1
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="A collection of handy CLI tools to convert CSV and JSON to Apache Arrow and Parquet"
 arch=('x86_64')
@@ -52,4 +52,4 @@ package() {
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" ./LICEN*
 }
 
-sha256sums=('632e707c580e20b19e66eb020d2a99208874735982fd87e343f0165c41b06656')
+sha256sums=('77203b10f88ff4199278453c2899f2469f25c287f729b71207c74fc54748b3bc')
