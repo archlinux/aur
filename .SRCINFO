@@ -1,7 +1,7 @@
 pkgbase = r-pkgdown
 	pkgdesc = Make Static HTML Documentation for a Package
-	pkgver = 2.1.0
-	pkgrel = 4
+	pkgver = 2.1.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=pkgdown
 	arch = any
 	license = MIT
@@ -45,7 +45,7 @@ pkgbase = r-pkgdown
 	optdepends = r-sass
 	optdepends = r-testthat
 	optdepends = r-tools
-	source = https://cran.r-project.org/src/contrib/pkgdown_2.1.0.tar.gz
-	sha256sums = c4d1df3b738d66e60db71e57c01c86c46f2fe58f972c9e2403c07a1436279fb4
+	source = https://cran.r-project.org/src/contrib/pkgdown_2.1.1.tar.gz
+	sha256sums = c7e1c374f8c4684da630cbb471793ae36396beb92318620230159da0026c0cde
 
 pkgname = r-pkgdown
