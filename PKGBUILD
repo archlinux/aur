@@ -10,6 +10,7 @@ arch=('i686' 'x86_64')
 url='http://plastimatch.org/'
 license=('BSD-style')
 conflicts=('plastimatch-static')
+replaces=('plastimatch-static')
 depends=('insight-toolkit' 'dcmtk' 'libpng' 'zlib' 'libtiff' 'libjpeg-turbo' 'fftw')
 makedepends=('cmake')
 optdepends=('cuda')
