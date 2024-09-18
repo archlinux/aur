@@ -18,14 +18,14 @@ sha256sums=('3c8f1b47ee42d89753d68e7c804ca3677b0c89a5d765d1fd4f80f9cdc29d3473')
 
 
 build() {
-	cd $srcdir/$pkgname-$pkgver
+	cd "$srcdir/$pkgname-$pkgver"
 
 	qmake PREFIX=/usr
 	make
 }
 
 package() {
-	cd $srcdir/$pkgname-$pkgver
+	cd "$srcdir/$pkgname-$pkgver"
 
 	make install INSTALL_ROOT="${pkgdir}"
 }
