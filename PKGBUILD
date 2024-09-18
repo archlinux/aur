@@ -3,14 +3,14 @@
 
 pkgname=surrealdb
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A scalable, distributed, collaborative, document-graph database, for the realtime web"
 arch=('x86_64')
 url="https://github.com/surrealdb/surrealdb"
 license=('custom:BSL')
 depends=("gcc-libs")
-makedepends=("rustup" "cargo-make" "clang" "patch")
-checkdepends=("rustup" "cargo-make" "clang" "patch")
+makedepends=("rustup" "cargo-make" "clang" "patch" "git")
+checkdepends=("rustup" "cargo-make" "clang" "patch" "git")
 conflicts=("surrealdb-bin")
 
 source=(
@@ -24,12 +24,20 @@ sha256sums=(
 )
 
 prepare() {
-	rustup toolchain install 1.80
-	rustup override set 1.80
+	cd "$pkgname-${pkgver//_/-}" || exit
+	rustup toolchain install 1.80.1
+	rustup override set 1.80.1
 }
 
 build() {
 	cd "$pkgname-${pkgver//_/-}" || exit
+
+	# Now for some hilarious reason, rquickjs is really picky about lto in some situations.
+	# It also doesnt quite help that rustc blankly reports that as E0463.
+	export CFLAGS="${CFLAGS//-flto=[^ ]*/ }"
+	export CXXFLAGS="${CXXFLAGS//-flto=[^ ]*/ }"
+	export LDFLAGS="${LDFLAGS//-flto=[^]*/ }"
+
 	cargo make build
 }
 
@@ -37,6 +45,11 @@ check() {
 	cd "$pkgname-${pkgver//_/-}" || exit
 	# We dont need cargo-fmt here...
 	#cargo make check
+	
+	export CFLAGS="${CFLAGS//-flto=[^ ]*/ }"
+	export CXXFLAGS="${CXXFLAGS//-flto=[^ ]*/ }"
+	export LDFLAGS="${LDFLAGS//-flto=[^]*/ }"
+
 	cargo make cargo-check
 	cargo make cargo-clippy
 }
