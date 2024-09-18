@@ -1,0 +1,4 @@
+[qflipper]
+source = "git"
+git = "https://github.com/flipperdevices/qFlipper.git"
+prefix = "v"

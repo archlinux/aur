@@ -1,16 +1,22 @@
 # Maintainer: L. Bradley LaBoon <me@bradleylaboon.com>
 
+## links
+# https://flipperzero.one/update
+# https://github.com/flipperdevices/qFlipper
+
 _pkgname="qflipper"
 pkgname="$_pkgname"
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop application for updating Flipper Zero firmware via PC"
-license=('GPL3')
+url="https://flipperzero.one/update"
+license=('GPL-3.0-only')
 arch=('x86_64')
+
 depends=(
   'libusb'
   'qt6-5compat'
-  'qt6-quickcontrols2'
+  'qt6-declarative'
   'qt6-serialport'
   'qt6-svg'
 )
@@ -18,39 +24,22 @@ makedepends=(
   'git'
   'qt6-tools'
 )
-source=(
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+https://github.com/flipperdevices/qFlipper.git#tag=$pkgver")
+sha256sums=('SKIP')
+
+source+=(
   "libwdi"::"git+https://github.com/pbatard/libwdi"
   "nanopb"::"git+https://github.com/nanopb/nanopb"
 )
-sha256sums=(
+sha256sums+=(
   'SKIP'
   'SKIP'
 )
 
-if [ x"$_pkgname" == x"$pkgname" ] ; then
-  # normal package
-  url="https://flipperzero.one/update"
-
-  source+=("$_pkgname"::"git+https://github.com/flipperdevices/qFlipper#tag=$pkgver")
-  sha256sums+=('SKIP')
-else
-  # x-git package
-  url="https://github.com/flipperdevices/qFlipper"
-
-  provides+=("$_pkgname")
-  conflicts+=("$_pkgname")
-
-  source+=("$_pkgname"::"git+https://github.com/flipperdevices/qFlipper")
-  sha256sums+=('SKIP')
-
-  pkgver() {
-    cd "$_pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g; s/^v//'
-  }
-fi
-
 prepare() {
-  cd "$_pkgname"
+  cd "$_pkgsrc"
   git submodule init
   git config submodule.driver-tool/libwdi.url "$srcdir/libwdi"
   git config submodule.3rdparty/nanopb.url "$srcdir/nanopb"
@@ -69,8 +58,8 @@ build() {
     PREFIX=/usr
   )
 
-  mkdir -p "$_pkgname/build"
-  cd "$_pkgname/build"
+  mkdir -p "$_pkgsrc/build"
+  cd "$_pkgsrc/build"
 
   qmake6 "${_qmake_options[@]}"
 
@@ -79,5 +68,5 @@ build() {
 }
 
 package() {
-  make -C "$_pkgname/build" INSTALL_ROOT="$pkgdir" install
+  make -C "$_pkgsrc/build" INSTALL_ROOT="$pkgdir" install
 }
