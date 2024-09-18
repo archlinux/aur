@@ -1,0 +1,23 @@
+pkgbase = plastimatch
+	pkgdesc = Tools for medical image reconstruction and registration.
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = http://plastimatch.org/
+	arch = i686
+	arch = x86_64
+	license = BSD-style
+	makedepends = cmake
+	depends = insight-toolkit
+	depends = dcmtk
+	depends = libpng
+	depends = zlib
+	depends = libtiff
+	depends = libjpeg-turbo
+	depends = fftw
+	optdepends = cuda
+	conflicts = plastimatch-static
+	source = https://gitlab.com/plastimatch/plastimatch/-/archive/1.10.0/plastimatch-1.10.0.tar.bz2
+	md5sums = 92160912a3b3297e1190ef79f62413bd
+	sha1sums = a3bc5b9869d716e8626d7c255ce67b48e475e7a4
+
+pkgname = plastimatch
