@@ -1,0 +1,20 @@
+pkgbase = system-syzygy-git
+	pkgdesc = A narrative meta-puzzle game
+	pkgver = 1.0.2.r0.g8eabf33
+	pkgrel = 1
+	url = https://mdsteele.games/syzygy
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	makedepends = gendesk
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = sdl2
+	provides = system-syzygy=1.0.2
+	conflicts = system-syzygy
+	source = syzygy::git+https://github.com/mdsteele/syzygy.git
+	sha256sums = SKIP
+
+pkgname = system-syzygy-git
