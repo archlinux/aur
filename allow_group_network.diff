@@ -1,0 +1,12 @@
+--- a/src/connman-polkit.conf	2010-11-05 12:09:04.285423955 -0200
++++ b/src/connman-polkit.conf	2010-11-05 12:10:53.041423934 -0200
+@@ -5,6 +5,9 @@
+         <allow own="net.connman"/>
+         <allow send_interface="net.connman.Agent"/>
+     </policy>
++    <policy group="network">
++       <allow send_interface="net.connman.Agent"/>
++    </policy>
+     <policy context="default">
+         <allow send_destination="net.connman"/>
+     </policy>
