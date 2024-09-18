@@ -1,9 +1,10 @@
 pkgbase = alterware-launcher-git
 	pkgdesc = AlterWare.dev updater & launcher, written in Rust.
-	pkgver = 0.7.0.r12.g2a7ceee
+	pkgver = 0.8.1.r2.g8f0ba69
 	pkgrel = 1
 	url = https://github.com/mxve/alterware-launcher
 	arch = x86_64
+	license = GPL3
 	makedepends = cargo
 	makedepends = rust
 	makedepends = pkgconf
