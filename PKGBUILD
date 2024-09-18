@@ -36,7 +36,7 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    '867bf31096eff1f35b4e7c2b60ad15f6fbe7df1264bcc9c8162d07d185cf22e7'
+    'b3301c3c86a293991f3a2c647b299d935d57be1c90c6c811ba3ad3da18589432'
 )
 backup=(
     'etc/accesser/pac'
