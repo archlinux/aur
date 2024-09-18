@@ -2,7 +2,7 @@
 _pkgname=ValveResourceFormat
 pkgname=valveresourceformat
 pkgver=10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
@@ -61,6 +61,11 @@ DOTNET_BUNDLE_EXTRACT_BASE_DIR=./ wine /usr/lib/$pkgname/Source2Viewer.exe "\$@"
 EOF
 	cat >> "$pkgdir/usr/bin/$pkgname-wine" <<-EOF
 #!/usr/bin/env bash
+if [ ! -d "\$HOME"/.$pkgname ];
+then
+	mkdir -p "\$HOME/.$pkgname/wine"
+	wineboot -u
+fi
 export WINEPREFIX="\$HOME/.$pkgname/wine"
 wine "\$@"
 EOF
