@@ -1,0 +1,17 @@
+pkgbase = opentaxsolver2023
+	pkgdesc = An easy-to-use text-based calculator for U.S.A Tax Forms
+	pkgver = 21.06
+	pkgrel = 1
+	url = http://opentaxsolver.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	makedepends = subversion
+	optdepends = gtk4: GUI support
+	optdepends = libreoffice: Edit generated PDFs
+	source = opentaxsolver2023-21.06::svn://svn.code.sf.net/p/opentaxsolver/SrcCodeRepo/trunk/OTS_2023#revision=r137
+	sha256sums = SKIP
+
+pkgname = opentaxsolver2023
