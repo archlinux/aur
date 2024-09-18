@@ -23,6 +23,7 @@ pkgver() {
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
 
     cd $_pkgname
     # Wasynth does not publish a Cargo.lock file.
@@ -32,6 +33,7 @@ prepare() {
 
 build() {
     export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
 
     cd $_pkgname
     # Binaries must be specified to prevent the fuzz targets (which depend on libFuzzer) from being
