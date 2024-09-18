@@ -9,4 +9,5 @@ ExecStart=accesser
 ExecStop=kill $MAINPID
 
 [Install]
-WantedBy=default.target
+nts=network-online.target
+After=network-online.target nss-lookup.target

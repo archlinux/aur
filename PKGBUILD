@@ -2,7 +2,7 @@
 _name=accesser
 pkgname=python-${_name}-git
 pkgver=0.9.5.r0.g6b9a557
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="A tool for solving SNI RST"
 url="https://github.com/URenko/Accesser"
