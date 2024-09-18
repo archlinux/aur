@@ -1,6 +1,6 @@
 pkgbase = atlasify-git
 	pkgdesc = Atlassian notifications on your menu bar.
-	pkgver = r24.8a8b17d
+	pkgver = 0.2.0.r1.g3d55c9e
 	pkgrel = 1
 	url = https://atlasify.io/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = atlasify-git
 	makedepends = gendesk
 	makedepends = pnpm
 	depends = electron32
-	provides = atlasify=r24.8a8b17d
+	provides = atlasify=0.2.0
 	conflicts = atlasify
 	source = atlasify.git::git+https://github.com/setchy/atlasify.git
 	source = atlasify.sh
