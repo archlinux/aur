@@ -1,0 +1,16 @@
+[Unit]
+Description=A REST server built in rust to use with rustic and restic
+Documentation=https://rustic.cli.rs/ecosystem/rustic-server/
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=rustic-server
+Group=rustic-server
+EnvironmentFile=/etc/rustic-server/rustic-server.conf
+ExecStart=/usr/bin/rustic-server -l $RUSTIC_SERVER_LISTEN -p $RUSTIC_SERVER_PATH $RUSTIC_SERVER_OPTS
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
