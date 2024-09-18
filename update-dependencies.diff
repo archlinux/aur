@@ -1,16 +1,15 @@
 diff --git a/package.json b/package.json
-index b73b431be..6c255f83c 100644
+index ec9f972f3..be0957c1a 100644
 --- a/package.json
 +++ b/package.json
-@@ -93,6 +93,10 @@
-     "scripts"
-   ],
+@@ -95,6 +95,9 @@
    "overrides": {
--    "mongodb-client-encryption": "^6.1.0"
-+    "mongodb-client-encryption": "^6.1.0",
+     "@types/enzyme": {
+       "@types/react": "^17.0.5"
+-    }
++    },
 +    "electron": "%%ELECTRON_VERSION%%",
 +    "electron-to-chromium": "latest",
-+    "cpu-features": "0.0.10",
-+    "nan": "2.20.0"
++    "ssh2": "1.16.0"
    }
  }
