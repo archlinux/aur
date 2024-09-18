@@ -1,0 +1,18 @@
+pkgbase = atlasify-bin
+	pkgdesc = Atlassian notifications on your menu bar.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://atlasify.io/
+	arch = x86_64
+	license = MIT
+	depends = electron32
+	conflicts = atlasify
+	options = !emptydirs
+	source = atlasify-0.2.0.deb::https://github.com/setchy/atlasify/releases/download/v0.2.0/atlasify_0.2.0_amd64.deb
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/setchy/atlasify/v0.2.0/LICENSE
+	source = atlasify.sh
+	sha256sums = 0dfdc7730abedf9d79a62d5d386f97da9942ccffab9620b486ab8ca23aa9246e
+	sha256sums = 8f2d641cd26495f3e20d1e09b49e47eb022b94b3a68c6944144aadccb6f123e2
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = atlasify-bin
