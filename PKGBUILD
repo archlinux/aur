@@ -9,7 +9,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz
 license=("GPL3")
 depends=(
        'bash'
-       'java-environment>=17'
+       'java-environment-openjdk>=17'
        'limine'
        'snapper'
        'btrfs-progs'
