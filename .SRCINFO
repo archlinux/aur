@@ -17,6 +17,7 @@ pkgbase = python-muxtools-git
 	depends = python-pymediainfo
 	depends = python-rich
 	depends = python-pyparsebluray-git
+	depends = python-pydantic
 	provides = python-muxtools
 	conflicts = python-muxtools
 	source = muxtools::git+https://github.com/Jaded-Encoding-Thaumaturgy/muxtools.git
