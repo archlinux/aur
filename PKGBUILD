@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('perl')
 makedepends=('net-snmp' 'postgresql-libs' 'libdbi' 'mariadb-libs'
   'procps-ng' 'iputils' 'fping' 'dnsutils' 'rpcbind' 'smbclient' 'openssh'
-  'inetutils' 'postfix' 'perl-net-snmp' 'curl' 'uriparser')
+  'postfix' 'perl-net-snmp' 'curl' 'uriparser')
 optdepends=('net-snmp: for SNMP checking'
   'uriparser: for check_curl'
   'curl: for check_curl'
