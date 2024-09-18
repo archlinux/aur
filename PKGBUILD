@@ -5,12 +5,12 @@
 
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.3.18.0.r0.g6cff8a6
-_pandoc_type=version
+pkgver=0.3.18.0.r2.g811cf9d
+_pandoc_type=stock
 _pandoc_ver=3.5
 _pandoc_lua_ver=0.3.3
 _pandoc_commit=31e4fabbb29d302eb972d25ce4aa10dd26bfbadc
-pkgrel=2
+pkgrel=1
 pkgdesc="Pandoc filter for cross-references (static build)"
 url="https://github.com/lierdakil/pandoc-crossref"
 license=("GPL-2.0-or-later")
@@ -77,13 +77,6 @@ prepare() {
     _pandoc_bound=$(awk -F. '/[0-9]+\./{$NF++;print}' OFS=. <<<"${_pandoc_ver}")
     sed -i "/pandoc.*< \?$_pandoc_ver/s#< \?[0-9.]*#<$_pandoc_bound#" \
         pandoc-crossref.cabal package.yaml
-
-    _bumpVer commonmark 0.2.6.1
-    _bumpVer commonmark-pandoc 0.2.2.2
-    _bumpVer djot 0.1.2.2
-    _bumpVer hslua-module-doclayout 1.2.0
-    _bumpVer pandoc-lua-marshal 0.2.9
-    _bumpVer texmath 0.12.8.11
 }
 
 build() {
