@@ -1,7 +1,7 @@
 pkgbase = pamac-classic
 	pkgdesc = A Gtk3 frontend for libalpm - classic version
 	pkgver = 7.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://git.cromer.cl/cromer/pamac-classic
 	install = pamac-classic.install
 	arch = x86_64
@@ -14,7 +14,8 @@ pkgbase = pamac-classic
 	depends = libsoup
 	depends = polkit
 	depends = pacman
-	depends = libalpm.so=14
+	depends = libalpm.so>=14
+	depends = libalpm.so<=15
 	depends = libnotify
 	depends = vte3
 	optdepends = polkit-gnome: needed for authentication in Cinnamon, Gnome
@@ -27,8 +28,10 @@ pkgbase = pamac-classic
 	source = pamac-classic-7.3.0.tar.gz::https://git.cromer.cl/cromer/pamac-classic/archive/v7.3.0.tar.gz
 	source = 0001-Update-libalpm-vapi-to-version-14.patch
 	source = 0002-Fix-pamac-system-daemon-for-new-libalpm-version.patch
+	source = 0003-ui-Wrap-licenses-field.patch
 	sha256sums = 53673497e6f2a6cf44c8152b682bd32e07702a9fc469f280f5f2a286c1e8e770
 	sha256sums = ffef9e69c104c0643dc89ec73925a31fc1b8b396474af02c86767b4b1f3ce42c
 	sha256sums = 0e267274e13fbf82c1b074c0278ea01e945cc4ecc491a194829de87be361c898
+	sha256sums = 9c83439e54afade11560a80dc883e00a6bdc5d2b85ee694058e8b866af659222
 
 pkgname = pamac-classic
