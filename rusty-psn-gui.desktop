@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=Rusty PSN (GUI)
+GenericName=PSN Downloader for PS3 and PS4 Updates
+Type=Application
+Comment=Update PS3 and PS4 games through a GUI
+Icon=playstation-store
+Exec=rusty-psn-gui
+Terminal=false
+StartupNotify=true
+StartupWMClass=rusty-psn
+Keywords=emulator;xmb;PSN;games;
+Categories=Game;Utility;
