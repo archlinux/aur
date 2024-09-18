@@ -3,7 +3,7 @@
 # PKGBUILD for Cultris II
 
 pkgname=cultris2-git
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Cultris II is one of the fastest Tetris®-clones ever! Train your reflexes in single-player challenges, enjoy split-screen matches with friends, or compete online with the best."
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("git+https://github.com/LofisMusk/c2-patch-aur.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/c2-patch-aur"
   git describe --tags | sed 's/^v//;s/-/./g'
 }
 
