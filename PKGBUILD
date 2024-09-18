@@ -1,5 +1,5 @@
 pkgname=hpaper
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Automated Wallpaper Management for Hyprland Using Hyprpaper'
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('GPL')
 makedepends=('go')
 depends=('hyprland>0' 'hyprpaper>0')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('84693492b0a175a35e80c0d2aca41fd587975be48658da454b1870780e19b4ac')
+sha256sums=('6ed115d4d2e23a4b8ac577c283ef3127bc096f52bbac03d9f8ac915da787b371')
 
 build() {
     cd "$pkgname-$pkgver"
