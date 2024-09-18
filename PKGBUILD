@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mailspring-bin
 _pkgname=Mailspring
-pkgver=1.13.3
-_electronversion=22
-pkgrel=6
+pkgver=1.14.0
+_electronversion=30
+pkgrel=1
 pkgdesc="A beautiful, fast and fully open source mail client."
 arch=('x86_64')
 url="https://getmailspring.com/"
@@ -21,17 +21,18 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d85e64f3345123ac75110d24f30bc8ab54372e7ae7d913a9fccabe1fb56ace57'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums=('66998be9dd1090728ac67f8a1753840de01bd5b169f6ea210686c2bdb944f8bf'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@|--password-store=\"gnome-libsecret\"|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-bin}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/${_pkgname}/
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto --password-store=\"gnome-libsecret\"/
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|${_pkgname}.desktop|${pkgname%-bin}.desktop|g" -i "${srcdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml"
+    sed "s/${_pkgname}.desktop/${pkgname%-bin}.desktop/" -i "${srcdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
@@ -44,4 +45,5 @@ package() {
     done
     install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
     install -Dm644 "${srcdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml" -t "${pkgdir}/usr/share/appdata"
+    install -Dm644 "${srcdir}/usr/share/lintian/overrides/${pkgname%-bin}" -t "${pkgdir}/usr/share/lintian/overrides"
 }
