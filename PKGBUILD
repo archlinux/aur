@@ -17,6 +17,7 @@ depends=(
     'python-pymediainfo'
     'python-rich'
     'python-pyparsebluray-git'
+    'python-pydantic'
 )
 makedepends=(
     'git'
