@@ -1,7 +1,7 @@
 pkgbase = libcutefish
 	pkgdesc = System library for Cutefish applications
 	pkgver = 0.7
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/cutefishos/libcutefish
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,6 @@ pkgbase = libcutefish
 	makedepends = qt5-tools
 	depends = bluez-qt5
 	depends = libkscreen5
-	depends = modemmanager-qt5
 	depends = networkmanager-qt5
 	depends = qt5-quickcontrols2
 	depends = accountsservice

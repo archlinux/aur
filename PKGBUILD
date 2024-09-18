@@ -2,12 +2,12 @@
 
 pkgname=libcutefish
 pkgver=0.7
-pkgrel=4
+pkgrel=5
 pkgdesc="System library for Cutefish applications"
 arch=('x86_64')
 url="https://github.com/cutefishos/libcutefish"
 license=('GPL')
-depends=('bluez-qt5' 'libkscreen5' 'modemmanager-qt5' 'networkmanager-qt5' 'qt5-quickcontrols2'
+depends=('bluez-qt5' 'libkscreen5' 'networkmanager-qt5' 'qt5-quickcontrols2'
          # via dbus:
          'accountsservice' 'kio5' 'qt5-sensors')
 makedepends=('extra-cmake-modules' 'ninja' 'qt5-tools')
@@ -20,6 +20,8 @@ prepare() {
 # Fix build with libkscreen 5.27
   sed -e 's|CMAKE_CXX_STANDARD 14|CMAKE_CXX_STANDARD 17|' -i $pkgname-$pkgver/CMakeLists.txt
   patch -d $pkgname-$pkgver -p1 < libkscreen-5.27.patch
+# Drop unused dependency
+  sed -e '/ModemManagerQt/d' -i $pkgname-$pkgver/networkmanagement/CMakeLists.txt
 }
 
 build() {
