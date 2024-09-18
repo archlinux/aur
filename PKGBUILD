@@ -1,7 +1,7 @@
 # Maintainer: Lex Black <autumn-wind@web.de>
 
 pkgname=libsfdo
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='collection of libraries which implement some of the freedesktop.org specifications'
 url="https://gitlab.freedesktop.org/vyivel/libsfdo"
@@ -10,7 +10,7 @@ license=('BSD-2-Clause')
 depends=('glibc')
 makedepends=('meson')
 source=(${pkgname}-${pkgver}.tar.gz::"${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-b2sums=('8d4b10f104636039fd996332305c50925696b6b2e349fa31d105daa6d389aad9778843d0a5498f867c73c8e83a671f6da5141d70032c634e01dd3b0d778f4cee')
+b2sums=('f89502b0bcc5029a693808f5390e821a92852da17a716974e81a114069b65795b3f67dd018e0459d139521efb44252d55f6518952d6cd0def9e74b8931ae2aaf')
 
 
 build() {
