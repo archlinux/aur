@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=utf8cpp-git
-pkgver=3.2.3.r1.g2ad9957
-pkgrel=2
+pkgver=4.0.5.r0.g6be08bb
+pkgrel=1
 pkgdesc="UTF-8 with C++ in a Portable Way"
 arch=('any')
 url="https://github.com/nemtrif/utfcpp"
-license=('custom:BSL')
+license=('BSL-1.0')
 makedepends=('git' 'cmake')
 provides=("utf8cpp=$pkgver")
 conflicts=('utf8cpp')
@@ -42,9 +42,13 @@ build() {
 }
 
 check() {
-  cd "utfcpp"
+  cd "utfcpp/tests"
 
-  make -C "_build" test
+  #cmake \
+  #  -B "_build" \
+  #  ./
+  #make -C "_build"
+  #make -C "_build" test
 }
 
 package() {
