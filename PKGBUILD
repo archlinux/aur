@@ -1,8 +1,8 @@
 # Maintainer: Arturo Penen <apenen@gmail.com>
 
-_name=google-cloud-iam
-pkgname=python-$_name
-pkgver=1.0.2
+_name=google_cloud_iam
+pkgname=python-google-cloud-iam
+pkgver=2.15.2
 pkgrel=1
 pkgdesc="Google Cloud IAM python SDK"
 url=https://github.com/googleapis/google-cloud-python
@@ -13,7 +13,7 @@ depends=(python python-google-api-core python-proto-plus python-protobuf
 makedepends=(python-setuptools python-wheel python-installer python-build)
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('fd8cefda7816bf508dc7f0c105267f7da073c8fb689c9df11b97e9a2b5f1a39f')
+sha256sums=('09b135d96ba2cf6f80a7ed8011436e89d2588e8bb23cd6145c476302f4871a82')
 
 build() {
   cd "$_name-$pkgver"
