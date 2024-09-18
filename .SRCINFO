@@ -11,8 +11,7 @@ pkgbase = albafetch-bin
 	conflicts = albafetch
 	source_x86_64 = https://github.com/alba4k/albafetch/releases/download/v4.2/albafetch-linux-x64.zip
 	depends_x86_64 = pciutils
-	depends_x86_64 = libcurl-gnutls
-	md5sums_x86_64 = 3e177e4efa423511ead69debf5c53ff5
+	md5sums_x86_64 = c06d0883be1f327ed50d2ddbd26c672c
 	source_aarch64 = https://github.com/alba4k/albafetch/releases/download/v4.2/albafetch-linux-aarch64-static.zip
 	md5sums_aarch64 = 0a3ff83abbac766bdced573cd034b928
 

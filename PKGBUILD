@@ -6,7 +6,7 @@ pkgdesc="Neofetch, but written in C; both faster and worse than the original (bi
 arch=(x86_64 aarch64)
 url="https://github.com/alba4k/albafetch"
 license=('MIT')
-depends_x86_64=(pciutils libcurl-gnutls)
+depends_x86_64=(pciutils)
 depends_aarch64=()
 conflicts=(albafetch-git albafetch)
 provides=(albafetch=4.1)
