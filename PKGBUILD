@@ -2,14 +2,13 @@
 
 pkgname=cutefish-settings
 pkgver=0.8
-pkgrel=7
+pkgrel=8
 pkgdesc="System Settings application for Cutefish Desktop"
 arch=('x86_64')
 url="https://github.com/cutefishos/settings"
 license=('GPL')
 groups=('cutefish')
-depends=('fishui' 'fontconfig' 'freetype2' 'icu' 'kcoreaddons5' 'libxcursor'
-         'modemmanager-qt5' 'networkmanager-qt5'
+depends=('fishui' 'fontconfig' 'freetype2' 'icu' 'libxcursor'
          # qml:
          'bluez-qt5' 'bluedevil' 'libcutefish' 'qt5-quickcontrols')
 makedepends=('extra-cmake-modules' 'ninja' 'qt5-tools')
@@ -22,6 +21,8 @@ prepare() {
   cd settings-$pkgver
   patch -p1 -i ../$pkgname-qt5_create_translation.patch
   sed -e 's|CMAKE_CXX_STANDARD 11|CMAKE_CXX_STANDARD 17|' -i CMakeLists.txt # Fix build with ICU 75
+# Drop unused dependencies
+  sed -e '/ModemManagerQt/d' -i CMakeLists.txt
 }
 
 build() {
