@@ -1,10 +1,8 @@
 # Maintainer: Dominik Schwaiger <mail@dominik-schwaiger.ch>
-
 _pkgname=code-expert-sync
-
 pkgname="${_pkgname}"-appimage
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows syncing of Code Expert projects to a local file system"
 arch=('x86_64')
 url="https://github.com/CodeExpertETH/CodeExpertSync"
@@ -50,9 +48,9 @@ package() {
 
 	# Symlink executable
 	install -dm755 "${pkgdir}/usr/bin"
-	ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+	ln -s "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 
 	# Symlink license
 	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-	ln -s "/opt/$pkgname/${_LICENSE}" "$pkgdir/usr/share/licenses/$pkgname"
+	ln -s "${pkgdir}/opt/${pkgname}/${_LICENSE}" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
