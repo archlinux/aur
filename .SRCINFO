@@ -1,6 +1,6 @@
 pkgbase = valveresourceformat-git
 	pkgdesc = Valve's Source 2 resource file format parser, decompiler, and exporter.
-	pkgver = 10.2.r1.g1d1c12e
+	pkgver = 10.2.r14.g658054b
 	pkgrel = 1
 	url = https://github.com/ValveResourceFormat/ValveResourceFormat
 	install = valveresourceformat-git.install

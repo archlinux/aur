@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=valveresourceformat-git
-pkgver=10.2.r1.g1d1c12e
+pkgver=10.2.r14.g658054b
 pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
@@ -45,13 +45,7 @@ build() {
 package() {
 	# Install Decompiler
 	cd "$srcdir/$pkgname/Decompiler/bin/Release/linux-x64/publish"
-	for file in {Decompiler,libSkiaSharp.so};
-	do
-		install -Dm755 $file "$pkgdir/usr/lib/$pkgname/$file"
-	done
-
-	mkdir -p "$pkgdir/usr/bin/"
-	ln -s /usr/lib/$pkgname/Decompiler "$pkgdir/usr/bin/${pkgname::-4}-decompiler"
+	install -Dm755 Source2Viewer-CLI "$pkgdir/usr/bin/${pkgname::-4}-source2viewer-cli"
 
 	#Install Source2Viewer.exe
 
@@ -71,6 +65,11 @@ DOTNET_BUNDLE_EXTRACT_BASE_DIR=./ wine /usr/lib/$pkgname/Source2Viewer.exe "\$@"
 EOF
 	cat >> "$pkgdir/usr/bin/${pkgname::-4}-wine" <<-EOF
 #!/usr/bin/env bash
+if [ ! -d "\$HOME"/.${pkgname::-4} ];
+then
+	mkdir -p "\$HOME/.${pkgname::-4}/wine"
+	wineboot -u
+fi
 export WINEPREFIX="\$HOME/.${pkgname::-4}/wine"
 wine "\$@"
 EOF
