@@ -1,15 +1,16 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
-pkgname=valveresourceformat-bin
+pkgname=source2viewer-bin
 pkgver=10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
 url="https://github.com/ValveResourceFormat/ValveResourceFormat"
 license=('MIT' 'CC-BY-2.5')
 depends=('glibc' 'gcc-libs' 'zlib' 'wine' 'bash' 'hicolor-icon-theme')
 makedepends=('gendesk')
-conflicts=(valveresourceformat)
-provides=(valveresourceformat)
+conflicts=(valveresourceformat source2viewer)
+provides=(source2viewer)
+replaces=(valveresourceformat)
 options=(!strip !debug)
 install=$pkgname.install
 source=("$url/releases/download/$pkgver/Decompiler-linux-x64.zip"
@@ -24,23 +25,17 @@ package() {
 	cd "$srcdir"
 	gendesk -f --pkgname=source2viewer \
 	--pkgdesc="$pkgdesc" \
-	--exec="${pkgname::-3}source2viewer" \
+	--exec="${pkgname::-4}" \
 	--name="Source 2 Viewer" \
-	--icon="${pkgname::-3}source2viewer" \
+	--icon="${pkgname::-4}" \
 	--terminal=false \
 	--categories="Development;Utility;Wine" \
 	--custom="PrefersNonDefaultGPU=true"
 
-	for file in {Decompiler,libSkiaSharp.so};
-	do
-		install -Dm755 $file "$pkgdir/usr/lib/$pkgname/$file"
-	done
+	install -Dm755 Decompiler "$pkgdir/usr/bin/${pkgname::-3}cli"
 
-	mkdir -p "$pkgdir/usr/bin/"
-	ln -s /usr/lib/$pkgname/Decompiler "$pkgdir/usr/bin/${pkgname::-4}-decompiler"
-
-	install -Dm644 "$srcdir/Source2Viewer.exe" "$pkgdir/usr/lib/$pkgname/Source2Viewer.exe"
-	cat >> "$pkgdir/usr/bin/${pkgname::-4}-source2viewer" <<-EOF
+	install -Dm644 "$srcdir/Source2Viewer.exe" "$pkgdir/usr/lib/$pkgname/${pkgname::-4}.exe"
+	cat >> "$pkgdir/usr/bin/${pkgname::-4}" <<-EOF
 #!/usr/bin/env bash
 export WINEPREFIX="\$HOME/.${pkgname::-4}/wine"
 if [ ! -d "\$HOME"/.${pkgname::-4} ];
@@ -49,22 +44,22 @@ then
 	wineboot -u
 fi
 cd "\$HOME/.${pkgname::-4}"
-DOTNET_BUNDLE_EXTRACT_BASE_DIR=./ wine /usr/lib/$pkgname/Source2Viewer.exe "\$@"
+DOTNET_BUNDLE_EXTRACT_BASE_DIR=./ wine /usr/lib/$pkgname/${pkgname::-4}.exe "\$@"
 EOF
-	cat >> "$pkgdir/usr/bin/${pkgname::-4}-wine" <<-EOF
+	cat >> "$pkgdir/usr/bin/${pkgname::-3}wine" <<-EOF
 #!/usr/bin/env bash
+export WINEPREFIX="\$HOME/.${pkgname::-4}/wine"
 if [ ! -d "\$HOME"/.${pkgname::-4} ];
 then
 	mkdir -p "\$HOME/.${pkgname::-4}/wine"
 	wineboot -u
 fi
-export WINEPREFIX="\$HOME/.${pkgname::-4}/wine"
 wine "\$@"
 EOF
-	chmod 755 "$pkgdir/usr/bin/${pkgname::-4}-source2viewer" "$pkgdir/usr/bin/${pkgname::-4}-wine"
+	chmod 755 "$pkgdir/usr/bin/${pkgname::-4}" "$pkgdir/usr/bin/${pkgname::-3}wine"
 
 	mkdir -p "$pkgdir/usr/share/applications"
 
-	install -Dm644 "$srcdir/ValveResourceFormat-$pkgver/Misc/Icons/source2viewer.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/${pkgname::-4}-source2viewer.png"
-	install -Dm644 "$srcdir/source2viewer.desktop" "$pkgdir/usr/share/applications/source2viewer.desktop"
+	install -Dm644 "$srcdir/ValveResourceFormat-$pkgver/Misc/Icons/source2viewer.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/${pkgname::-4}.png"
+	install -Dm644 "$srcdir/${pkgname::-4}.desktop" "$pkgdir/usr/share/applications/${pkgname::-4}.desktop"
 }
