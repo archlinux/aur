@@ -1,6 +1,6 @@
 pkgbase = ulogviewer-bin
 	pkgdesc = Cross-Platform Universal Log Viewer.
-	pkgver = 4.0.11.901
+	pkgver = 4.0.12.915
 	pkgrel = 1
 	url = https://carina-studio.github.io/ULogViewer/
 	arch = aarch64
@@ -13,17 +13,17 @@ pkgbase = ulogviewer-bin
 	optdepends = android-sdk-platform-tools
 	optdepends = git
 	optdepends = libimobiledevice
-	provides = ulogviewer=4.0.11.901
+	provides = ulogviewer=4.0.12.915
 	conflicts = ulogviewer
-	noextract = ulogviewer-4.0.11.901-x86_64.zip
+	noextract = ulogviewer-4.0.12.915-x86_64.zip
 	options = !strip
-	source = LICENSE-4.0.11.901::https://raw.githubusercontent.com/carina-studio/ULogViewer/4.0.11.901/LICENSE
+	source = LICENSE-4.0.12.915::https://raw.githubusercontent.com/carina-studio/ULogViewer/4.0.12.915/LICENSE
 	source = ulogviewer.sh
 	sha256sums = 4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea
 	sha256sums = 08c0a423317a93a254a6d6fbcb0575e8dde202ce46f5126dbf03eb58e02c8851
-	source_aarch64 = ulogviewer-4.0.11.901-aarch64.zip::https://github.com/carina-studio/ULogViewer/releases/download/4.0.11.901/ULogViewer-4.0.11.901-linux-arm64.zip
-	sha256sums_aarch64 = 89e37db9c2b29c53dc94352b9f4723ad7c8c04a446d0c5724a38c3991e517f62
-	source_x86_64 = ulogviewer-4.0.11.901-x86_64.zip::https://github.com/carina-studio/ULogViewer/releases/download/4.0.11.901/ULogViewer-4.0.11.901-linux-x64.zip
-	sha256sums_x86_64 = 29dde51b5f919dfe615f74350800734ab4cce6644a824506e50df2e407190839
+	source_aarch64 = ulogviewer-4.0.12.915-aarch64.zip::https://github.com/carina-studio/ULogViewer/releases/download/4.0.12.915/ULogViewer-4.0.12.915-linux-arm64.zip
+	sha256sums_aarch64 = 6ae21ea3a0c4fa6ed223242181738f86624c8538de00766d85bae73ad7f9445d
+	source_x86_64 = ulogviewer-4.0.12.915-x86_64.zip::https://github.com/carina-studio/ULogViewer/releases/download/4.0.12.915/ULogViewer-4.0.12.915-linux-x64.zip
+	sha256sums_x86_64 = f7205f13a7e497d4f33471d01e7787ad30099322d0b5d4464ccd5948ff3ccb0b
 
 pkgname = ulogviewer-bin
