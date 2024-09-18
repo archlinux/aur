@@ -3,13 +3,14 @@
 _gemname=r18n-core
 pkgname=ruby-$_gemname
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="I18n tool to translate your Ruby application"
 url="https://github.com/r18n/r18n-core"
 arch=("any")
 license=("LGPL3")
-checkdepends=("ruby-activesupport" "ruby-kramdown" "ruby-pry-byebug"
-              "ruby-redcloth" "ruby-rspec" "ruby-simplecov")
+checkdepends=("ruby-activesupport" "ruby-irb" "ruby-kramdown"
+              "ruby-pry-byebug" "ruby-redcloth" "ruby-rspec"
+              "ruby-simplecov")
 depends=("ruby")
 options=("!emptydirs")
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
@@ -17,7 +18,8 @@ sha512sums=('fa7bf82c3c6e89fe1e43122ff0c115a45faf517ecb5d23eb4341f647041157af4a6
 
 check() {
     cd ${_gemname}-${pkgver}
-    sed -i 's|require spec-helper|require spec/spec-helper|' .rspec
+    # Fix a weird bug
+    mv spec/translations/yaml/en-us.yml spec/translations/yaml/en-US.yml
     rspec
 }
 

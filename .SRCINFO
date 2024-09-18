@@ -1,11 +1,12 @@
 pkgbase = ruby-r18n-core
 	pkgdesc = I18n tool to translate your Ruby application
 	pkgver = 5.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/r18n/r18n-core
 	arch = any
 	license = LGPL3
 	checkdepends = ruby-activesupport
+	checkdepends = ruby-irb
 	checkdepends = ruby-kramdown
 	checkdepends = ruby-pry-byebug
 	checkdepends = ruby-redcloth
