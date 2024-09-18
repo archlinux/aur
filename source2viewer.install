@@ -1,0 +1,17 @@
+post_install() {
+	cat << EOF
+==============================================
+All binaries are prefixed with source2viewer-*
+source2viewer-wine included for wine wrapping
+==============================================
+EOF
+}
+
+post_upgrade() {
+	cat << EOF
+==============================================
+All binaries are prefixed with source2viewer-*
+source2viewer-wine included for wine wrapping
+==============================================
+EOF
+}
