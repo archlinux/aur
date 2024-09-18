@@ -1,6 +1,6 @@
 # Maintainer: Dominik Schwaiger <mail@dominik-schwaiger.ch>
 pkgname=surrealdb-bin
-pkgver=1.5.5
+pkgver=2.0.1
 pkgrel=1
 epoch=
 pkgdesc="A scalable, distributed, collaborative, document-graph database, for the realtime web"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/surrealdb/surrealdb/releases/download/v${pkgver//_/-}/LICENSE" "https://github.com/surrealdb/surrealdb/releases/download/v${pkgver//_/-}/surreal-v${pkgver//_/-}.linux-amd64.tgz")
 noextract=()
-sha256sums=('a007c53f27d30bda8cc56feec356eba13b646a8fb59a97d151e3aab820429d2d' '6900e3bc268114aadf44bb938249f620ee986961b07fabc8484857bd66211402')
+sha256sums=('a007c53f27d30bda8cc56feec356eba13b646a8fb59a97d151e3aab820429d2d' 'f761b4ead0c732fd6d50dc891a92d9642ee4ed3268ce3c0f499a5941ae762848')
 validpgpkeys=()
 
 package() {
