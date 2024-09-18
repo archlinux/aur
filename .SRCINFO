@@ -1,0 +1,15 @@
+pkgbase = simp1e-amber-hyprcursor
+	pkgdesc = A gold-yellow hyprcursor. Xcursor version also provided as fallback.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://codeberg.org/useless-utils/simp1e-amber-hyprcursor
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = zstd
+	makedepends = libarchive
+	source = simp1e-amber-neron-hyprcursor-0.2.tar.zst::https://codeberg.org/useless-utils/simp1e-amber-hyprcursor/releases/download/0.2/simp1e-amber-neron-hyprcursor-0.2.tar.zst
+	source = simp1e-amber-neron-xcursor.tar.zst::https://codeberg.org/useless-utils/simp1e-amber-hyprcursor/releases/download/0.2/simp1e-amber-neron-xcursor.tar.zst
+	sha256sums = e4b72e064a8bbb02b04ae1bcc67d87a6c0975418f0b4e9afe253f7139b2c115a
+	sha256sums = 94f657af1a84ef2fcf6e4ab6b127b782c63e2d4a12240976b2bc10087543c958
+
+pkgname = simp1e-amber-hyprcursor
