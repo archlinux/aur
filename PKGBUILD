@@ -2,7 +2,7 @@
 pkgbase=yade
 pkgname=(yade yade-cuda yade-doc)
 pkgver=2024.08a
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet Another Dynamic Engine, free software for discrete element modeling."
 arch=("x86_64")
 url='https://yade-dem.org/doc/index.html'
@@ -79,6 +79,7 @@ prepare() {
     patch --strip=1 --ignore-whitespace <../0004-improve-symlink.patch
     patch --strip=1 --ignore-whitespace <../0005-fix-other-cmake-warning.patch
     patch --strip=1 --ignore-whitespace <../0006-fix-cmake-warning.patch
+    sed -i '/convenience.hpp/d' preprocessing/potential/BlockGen.cpp
 
 }
 _build_doc() {
