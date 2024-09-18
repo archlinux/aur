@@ -14,7 +14,7 @@ depends=('qt5-base' 'sdl2' 'fluidsynth' 'mpg123' 'libvorbis' 'hicolor-icon-theme
 source=(
 	"https://github.com/realnc/qtads/releases/download/v${pkgver}/qtads-${pkgver}-source.tar.xz"
 )
-sha512sums=('b4d40ec3f757803beeb7e22afa7b2ae6a612970c11615378ed145870d577e30b5734cd316c4739e4a3726917654e268034e6ecf1132ebbe1e120dc56aa9a2e3b')
+sha256sums=('3c8f1b47ee42d89753d68e7c804ca3677b0c89a5d765d1fd4f80f9cdc29d3473')
 
 
 build() {
