@@ -7,10 +7,11 @@ pkgrel=2
 pkgdesc="A scalable, distributed, collaborative, document-graph database, for the realtime web"
 arch=('x86_64')
 url="https://github.com/surrealdb/surrealdb"
-license=('custom:BSL')
-depends=("gcc-libs")
+license=("BUSL-1.1")
+depends=("gcc-libs" "glibc")
 makedepends=("rustup" "cargo-make" "clang" "patch" "git")
 checkdepends=("rustup" "cargo-make" "clang" "patch" "git")
+provides=("surrealdb")
 conflicts=("surrealdb-bin")
 
 source=(
@@ -27,6 +28,7 @@ prepare() {
 	cd "$pkgname-${pkgver//_/-}" || exit
 	rustup toolchain install 1.80.1
 	rustup override set 1.80.1
+	rustup target add "$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -38,7 +40,7 @@ build() {
 	export CXXFLAGS="${CXXFLAGS//-flto=[^ ]*/ }"
 	export LDFLAGS="${LDFLAGS//-flto=[^]*/ }"
 
-	cargo make build
+	cargo build --release --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 check() {
@@ -57,5 +59,5 @@ check() {
 package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	cd "$pkgname-${pkgver//_/-}" || exit
-	install -Dm755 target/make/surreal "$pkgdir/usr/bin/surreal"
+	install -Dm755 "target/$CARCH-unknown-linux-gnu/release/surreal" "$pkgdir/usr/bin/surreal"
 }
