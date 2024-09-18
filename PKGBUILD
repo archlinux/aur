@@ -7,7 +7,7 @@
 #
 # Maintainer: Uffe Jakobsen <uffe@uffe.org>
 #
-# ChangeLogUrl: https://wiki.codelite.org/pmwiki.php/Main/ReleaseNotesCodeLite15
+# ReleaseNotes: https://docs.codelite.org/release_notes/v18_0_0/
 #
 # NOTES:
 #
@@ -16,10 +16,17 @@
 #
 _pkg_user="eranif"
 _pkg_name="codelite"
-_pkg_ver="17.10.0"
+_pkg_ver="17.12.0"
 #_commit="16470d74c038b5c5c17756e78bd04ae6e00c2007"
 
-# NOTE: submodules/ are currenly only used by macos builds - ignore them for now
+# pkg
+pkgname="${_pkg_name}-unstable"
+#pkgver=${_pkg_ver}
+#pkgver="${_pkg_ver//_/-}"
+pkgver="${_pkg_ver/-*/}"
+pkgrel=1
+
+# NOTE: submodules/libssh + submodules/zlib are currenly only used by macos builds - ignore them for now
 
 # ccwrap submodule: https://github.com/eranif/cc-wrapper
 _ccwrap_pkg_user="${_pkg_user}"
@@ -57,19 +64,18 @@ _yaml_pkg_name="yaml-cpp"
 _yaml_pkg_ident="1b50109f7bea60bd382d8ea7befce3d2bd67da5f"
 _yaml_pkg_name_ident="${_yaml_pkg_user}-${_yaml_pkg_name}-${_yaml_pkg_ident:0:7}"
 
+# llama.cpp submodule: https://github.com/ggerganov/llama.cpp.git
+_llama_pkg_user="ggerganov"
+_llama_pkg_name="llama.cpp"
+_llama_pkg_ident="c3776cacabce2ee35f172fb72be7a519752125fa"
+_llama_pkg_name_ident="${_llama_pkg_user}-${_llama_pkg_name}-${_llama_pkg_ident:0:7}"
+
 # tinyjson (cc-wrapper) sub-submodule: https://github.com/eranif/tinyjson
 _json_pkg_user="${_pkg_user}"
 _json_pkg_name="tinyjson"
 _json_pkg_ident="a6b0d0d31a05a9f55b4944b3b20f769305eb583a"
 _json_pkg_name_ident="${_json_pkg_user}-${_json_pkg_name}-${_json_pkg_ident:0:7}"
 
-
-# pkg
-pkgname="${_pkg_name}-unstable"
-#pkgver=${_pkg_ver}
-#pkgver="${_pkg_ver//_/-}"
-pkgver="${_pkg_ver/-*/}"
-pkgrel=2
 
 # generic: pre
 _pkg_ver="${pkgver}"
@@ -134,10 +140,11 @@ source=(
     "${_wxcfg_pkg_name_ident}.tar.gz::https://github.com/${_wxcfg_pkg_user}/${_wxcfg_pkg_name}/tarball/${_wxcfg_pkg_ident}"
     "${_wxdap_pkg_name_ident}.tar.gz::https://github.com/${_wxdap_pkg_user}/${_wxdap_pkg_name}/tarball/${_wxdap_pkg_ident}"
     "${_yaml_pkg_name_ident}.tar.gz::https://github.com/${_yaml_pkg_user}/${_yaml_pkg_name}/tarball/${_yaml_pkg_ident}"
+    "${_llama_pkg_name_ident}.tar.gz::https://github.com/${_llama_pkg_user}/${_llama_pkg_name}/tarball/${_llama_pkg_ident}"
     "http://repos.codelite.org/wxCrafterLibs/wxgui.zip"
   )
 
-sha256sums=('d1ac10e80467bc9301f35fd731f784c6a19a13bb9d49fab214ae16f81f8cba01'
+sha256sums=('2adcdab290413feef0d734a7a4aa91d7c2542ea89790d395b5b557a37b4a9429'
             '507adbaf9776f9f99f39e563876a6a5633eaa0c512f6b9b55c711037165413e4'
             '9343c1f05956308c7f3c4b6ad33d68c08d95ef0ffcdce0ec6c883ccd21bd5f71'
             'ff539f3e2ee4c52073e8b73fd8046163d68b0db567ce7ea5b9438424dc3a2253'
@@ -145,6 +152,7 @@ sha256sums=('d1ac10e80467bc9301f35fd731f784c6a19a13bb9d49fab214ae16f81f8cba01'
             '70aca36b95e2245740c17fc9a164fd6edabfd9c631184ea66cc5ee03ff54c028'
             '2ad154649fb318dd3129fb9c82cefce117adc1bd5c111b9e4b0c5d049c66cec6'
             '57f06c89f41cc2cd250b8b1db582fe27a0da67eb7a480cd8eb3d35cde64b58cd'
+            'd32b6dc3dcff3c7b8aac93989ba439ed9483bc69f97ca8449740dfde98722200'
             '498c39ad3cc46eab8232d5fa37627c27a27f843cbe9521f05f29b19def436e12')
 
 noextract=('wxgui.zip')
@@ -169,44 +177,52 @@ BUILD_DIR="_build"
 #
 prepare()
 {
-  cd "${srcdir}/${_pkg_name_ident}"
+  # submodules
+  cd "${srcdir}/${_pkg_name_ident}/submodules"
 
-  # submodule cubicdaiya-dtl
+  # submodule dtl
   test -d dtl && rmdir dtl
-  ln -s -fn ../${_dtl_pkg_name_ident} dtl
+  ln -s -fn ../../${_dtl_pkg_name_ident} dtl
 
-  # submodule eranif-cc-wrapper
+  # submodule cc-wrapper
   test -d cc-wrapper && rmdir cc-wrapper
-  ln -s -fn ../${_ccwrap_pkg_name_ident} cc-wrapper
+  ln -s -fn ../../${_ccwrap_pkg_name_ident} cc-wrapper
 
-  # sub-submodule eranif-tinyjson
+  # submodule tinyjson
   test -h tinyjson && rm -f tinyjson
   test -d tinyjson && rmdir tinyjson
-  ln -s -fn ../${_json_pkg_name_ident} tinyjson
-  #
+  ln -s -fn ../../${_json_pkg_name_ident} tinyjson
+  # sub-submodule tinyjson (below cc-wrapper)
   test -d cc-wrapper/tinyjson && rmdir cc-wrapper/tinyjson
   #ln -s ../tinyjson cc-wrapper/tinyjson
   ln -s -fn ../${_json_pkg_name_ident} cc-wrapper/tinyjson
 
-  # submodule eranif-ctags
+  # submodule ctags
   test -d ctags && rmdir ctags
-  ln -s -fn ../${_ctags_pkg_name_ident} ctags
+  ln -s -fn ../../${_ctags_pkg_name_ident} ctags
 
-  # submodule eranif-wxdap to wxdap
+  # submodule wxdap
   test -d wxdap && rmdir wxdap
-  ln -s -fn ../${_wxdap_pkg_name_ident} wxdap
+  ln -s -fn ../../${_wxdap_pkg_name_ident} wxdap
 
-  # submodule eranif-wx-config-msys2 to wx-config-msys2
+  # submodule wx-config-msys2
   test -d wx-config-msys2 && rmdir wx-config-msys2
-  ln -s -fn ../${_wxcfg_pkg_name_ident} wx-config-msys2
+  ln -s -fn ../../${_wxcfg_pkg_name_ident} wx-config-msys2
 
-  # submodule jbeder/yaml-cpp
+  # submodule yaml-cpp
   test -d yaml-cpp && rmdir yaml-cpp
-  ln -s -fn ../${_yaml_pkg_name_ident} yaml-cpp
+  ln -s -fn ../../${_yaml_pkg_name_ident} yaml-cpp
+
+
+  # submodule llama.cpp
+  test -d llama.cpp && rmdir llama.cpp
+  ln -s -fn ../../${_llama_pkg_name_ident} llama.cpp
+
 
   #
   # apply patches
   #
+  cd "${srcdir}/${_pkg_name_ident}/"
 
   #patch -p0 < "${startdir}/codelite-fsw-symlink.patch"
   #patch -p0 < "${startdir}/codelite-linux-on-sigpipe.patch"
@@ -215,7 +231,7 @@ prepare()
   #patch -p0 < "${startdir}/cmake.patch"  # wx-config patch
 
   # dtl-v1.20 cannot compile on gcc >= 14.1.1 and clang >= 17.0.6
-  ( cd dtl && patch -p0 < "${startdir}/dtl-dtl_Diff_hpp.patch" )
+  ( cd submodules/dtl && patch -p0 < "${startdir}/dtl-dtl_Diff_hpp.patch" )
 
   # temporary disable wxcrafter build: cl-16.1.0/wxcrafter subdir build fails with wx-3.1.7 - is this still a problem - re-test !!!
   #mv wxcrafter wxcrafter.disable
