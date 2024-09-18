@@ -1,0 +1,26 @@
+From aa53586d03ec2ba7ee66125ae79e72164fb2db1b Mon Sep 17 00:00:00 2001
+From: sudoBash418 <sudoBash418@gmail.com>
+Date: Wed, 18 Sep 2024 02:04:00 -0600
+Subject: [PATCH] ui: Wrap licenses field
+
+Some packages (like qemu-base) have very long license fields.
+Wrap the field in case it exceeds the width of the window.
+---
+ data/interface/manager_window.ui | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/data/interface/manager_window.ui b/data/interface/manager_window.ui
+index 411093d..a62baa9 100644
+--- a/data/interface/manager_window.ui
++++ b/data/interface/manager_window.ui
+@@ -684,6 +684,7 @@
+                             <property name="halign">start</property>
+                             <property name="margin_start">6</property>
+                             <property name="margin_end">6</property>
++                            <property name="wrap">True</property>
+                           </object>
+                           <packing>
+                             <property name="expand">False</property>
+-- 
+2.46.1
+
