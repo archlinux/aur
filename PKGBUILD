@@ -2,7 +2,7 @@
 pkgname=deepin-wine-pandaocr.pro
 _pkgname=com.pandaocr.pro.spark
 _officalname=PandaOCR.Pro
-pkgver=5.55
+pkgver=5.56
 sparkver=1.0.0
 pkgrel=1
 epoch=
@@ -30,14 +30,15 @@ source=(
     "${pkgname}.sh"
 )
 sha256sums=('f21c8dd02ee531e32a6f8b4b9cf8c49a21d6c85d422063673ff172e07deeb98f'
-            'a48f0015e2e29043657f02b4baa4140581630cabe8361d032aaeac67540961aa'
-            '04273dcc45429d802820d51257a78308446eb616e0d1291c127d80cb967242f7'
+            'f65f149b9e4b859ce89ab086684d3c638ec076c581a785b828ec1718a59665a5'
+            'a9088725fd1e79af9d4eb05e6d7f651cea2014ad6bb56e254279601a497c9127'
             '983099e34823f872d36297b1993b0f426a739eb2c12952c179b38f6418ca342f')
 build() {
-    sed -e "s|@appname@|${pkgname}|g" \
-        -e "s|@appver@|${pkgver}|g" \
-        -e "s|@bottlename@|${_officalname}|g" \
-        -i "${srcdir}/${pkgname}.sh"
+    sed -e "
+        s/@appname@/${pkgname}/
+        s/@appver@/${pkgver}/
+        s/@bottlename@/${_officalname}/
+    " -i "${srcdir}/${pkgname}.sh"
     bsdtar -xf "${srcdir}/data."*
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
     mkdir -p "${srcdir}/tmp"
@@ -52,14 +53,15 @@ build() {
     rm -r "${srcdir}/opt/apps/${pkgname}/files/files.7z"
     7z a -t7z -r "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/tmp/*"
     rm -rf "${srcdir}/opt/apps/${pkgname}/info"
-    sed -e "s|\"/opt/apps/${_pkgname}/files/run.sh\"|${pkgname}|g" \
-        -e "s|/opt/apps/${_pkgname}/entries/icons/hicolor/scalable/apps/${_pkgname}.png|${pkgname}|g" \
-        -e "s|GenericName=${_pkgname}|GenericName=${pkgname}|g" \
-        -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop"
+    sed -e " 
+        s/\"\/opt\/apps\/${_pkgname}\/files\/run.sh\"/${pkgname}/
+        s/\/opt\/apps\/${_pkgname}\/entries\/icons\/hicolor\/scalable\/apps\/${_pkgname}.png/${pkgname}/
+        s/GenericName=${_pkgname}/GenericName=${pkgname}/
+    " -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    cp -r "${srcdir}/opt" "${pkgdir}/opt"
+    cp -r "${srcdir}/opt" "${pkgdir}"
     md5sum "${pkgdir}/opt/apps/${pkgname}/files/files.7z" | awk '{ print $1 }' > "${pkgdir}/opt/apps/${pkgname}/files/files.md5sum"
     install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/icons/hicolor/scalable/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
