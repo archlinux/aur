@@ -61,6 +61,9 @@ build() {
 	make
 }
 
+# all files must live in /var/lib/pkgname because program have no concept of
+# systemdirs. All must live relative to the executable. This also requires a
+# wrapper
 package() {
 	cd "$srcdir/${pkgname}-${pkgver}/"
 	local -r INSTALL="install --preserve-timestamps --owner=root --group=root"
@@ -71,25 +74,21 @@ package() {
 
 	# NOTE: to use glob on install we can't use quotes... this will break if this project
 	#       ever adds spaces to filenames i guess.
-	$INSTALL --mode=0755 --target-directory="${pkgdir}/usr/bin/" bin/taxsolve_*_${year}
-	# NOTE: there are a few files without the year! so this might conflict with other years install...
-	#       not doing anything until someone complains so we understand the use case we have to make work.
-	#       For now just calling them out indiviually here.
-	#       can this live in var/lib? `notify_popup` is specially weird to live in bin/
-	$INSTALL --mode=0755 --target-directory="${pkgdir}/usr/bin/" \
-		bin/{convert_results2xfdf,notify_popup,taxsolve_f8606,taxsolve_HSA_f8889,universal_pdf_file_modifier}
+	$INSTALL --mode=0755 --target-directory="${pkgdir}/var/lib/${pkgname}/" bin/*
 
-	# TODO: create .desktop file for this (upstream)
-	$INSTALL --mode=0755 "bin/ots_gui2" "${pkgdir}/usr/bin/${pkgname}_gui"
+	# our wrapper
+	# TODO: create .desktop file for this
+	# TODO: don't use deprecated $startdir :)
+	$INSTALL --mode=0755 --target-directory="${pkgdir}/usr/bin/" "${startdir}/${pkgname}"
 
 	# this is convoluted but ensure right permissions/ownership
-	# if making a -svn package: `for formdir in formdir/*;`
 	local formdir
-	for formdir in "AZ_140" "CA_540" "Form_2210" "Form_8606" "Form_8812" "Form_8829" "Form_8959" "Form_8960" "Form_8995" "Form_CA_5805" "HSA_Form_8889" "MA_1" "NC_D400" "NJ_1040" "NY_IT201" "OH_IT1040" "PA_40" "US_1040" "US_1040_Sched_C" "US_1040_Sched_SE" "VA_760";
+	#for formdir in "AZ_140" "CA_540" "Form_2210" "Form_8606" "Form_8812" "Form_8829" "Form_8959" "Form_8960" "Form_8995" "Form_CA_5805" "HSA_Form_8889" "MA_1" "NC_D400" "NJ_1040" "NY_IT201" "OH_IT1040" "PA_40" "US_1040" "US_1040_Sched_C" "US_1040_Sched_SE" "VA_760";
+	for formdir in tax_form_files/*;
 	do
-		$INSTALL --mode=0755 -d "${pkgdir}/var/lib/${pkgname}/tax_form_files/${formdir}/"
-		$INSTALL --mode=0644 --target-directory="${pkgdir}/var/lib/${pkgname}/tax_form_files/${formdir}/" \
-			tax_form_files/${formdir}/*.txt
+		$INSTALL --mode=0755 -d "${pkgdir}/var/lib/${pkgname}/${formdir}/"
+		$INSTALL --mode=0644 --target-directory="${pkgdir}/var/lib/${pkgname}/${formdir}/" \
+			${formdir}/*.txt
 	done
 
 	$INSTALL --mode=0755 -d "${pkgdir}/var/lib/${pkgname}/src/formdata/"

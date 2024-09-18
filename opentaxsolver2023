@@ -1,0 +1,6 @@
+#!/bin/env bash
+
+# wrapper for opentaxsolver.
+# It expects all files relative to executed binary.
+
+/var/lib/opentaxsolver2023/ots_gui2 $@
