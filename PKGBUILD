@@ -3,7 +3,7 @@
 
 pkgname=guile-git-lib
 _pkgname=guile-git
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Guile bindings for libgit2'
 arch=('x86_64' 'i686' 'armv7h')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('guile' 'guile-bytestructures' 'libgit2>=1.3.0')
 makedepends=('git')
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/${_pkgname}/${_pkgname}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=('8a90baecc33c3df5c8715e3a1c4fbe19e9f1e0132d791972917be2d43aae294f')
+sha256sums=('0d9bf45794848d7b17664700e4c126d379ef0661af4ca31cd303a37808d9ee2b')
 
 build() {
 	cd "${srcdir}/${_pkgname}-v${pkgver}"
