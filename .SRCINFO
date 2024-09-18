@@ -1,0 +1,17 @@
+pkgbase = system-syzygy
+	pkgdesc = A narrative meta-puzzle game
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://mdsteele.games/syzygy
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = gendesk
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = sdl2
+	source = syzygy-1.0.2.tar.gz::https://github.com/mdsteele/syzygy/archive/refs/tags/v1.0.2.tar.gz
+	b2sums = 74f75cb9964f419b38e7bcee9c8ec5cc246f59556c34959492ea0e4b9193c83238ba0d739e6d8c75ca6ee291cbaeca832638964e024ce327285017fa47be7214
+
+pkgname = system-syzygy
