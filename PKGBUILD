@@ -3,7 +3,7 @@
 # PKGBUILD for Cultris II
 
 pkgname=cultris2-git
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Cultris II is one of the fastest Tetris®-clones ever! Train your reflexes in single-player challenges, enjoy split-screen matches with friends, or compete online with the best."
 arch=('x86_64')
