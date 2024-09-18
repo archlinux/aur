@@ -3,12 +3,12 @@
 pkgbase=python-xarray-datatree
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=1
 pkgdesc="Hierarchical tree-like data structures for xarray"
 arch=('any')
 url="https://xarray-datatree.readthedocs.io"
-license=('Apache')
+license=('Apache-2.0')
 makedepends=('python-setuptools-scm'
              'python-wheel'
              'python-build'
@@ -20,23 +20,23 @@ makedepends=('python-setuptools-scm'
              'python-sphinxcontrib-srclinks'
              'python-sphinxext-opengraph'
              'python-nbsphinx'
-             'python-numpydoc'
              'ipython'
-             'python-xarray'
-             'ttf-roboto')
+             'python-xarray')
+##            'ttf-roboto'
+#            'python-numpydoc'
 checkdepends=('python-pytest'
               'python-netcdf4'
               'python-h5netcdf'
               'python-zarr')   # xarray already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('2a76392d0d015ce590624c3c4672267c')
+md5sums=('2b87baa4220acdd3fbbd68f9e86c0d10')
 
-prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    mkdir -p docs/source/_static
-    sed -i -e "/GH/s/GH/GH\%s/" docs/source/conf.py
-}
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+##   mkdir -p docs/source/_static
+##   sed -i -e "/GH/s/GH/GH\%s/" docs/source/conf.py
+#}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -44,6 +44,7 @@ build() {
 
     msg "Building Docs"
     PYTHONPATH="../build/lib" make -C docs html
+#   PYTHONPATH="${srcdir}/${_pyname}-${pkgver}/build/lib" make -C docs html
 }
 
 check() {
@@ -54,7 +55,7 @@ check() {
 }
 
 package_python-xarray-datatree() {
-    depends=('python>=3.9' 'python-xarray>=2022.6.0' 'python-packaging')
+    depends=('python>=3.9' 'python-xarray>=2023.12.0' 'python-packaging')
     optdepends=('python-netcdf4: allow file I/O'
                 'python-h5netcdf: allow file I/O'
                 'python-zarr: allow file I/O'
