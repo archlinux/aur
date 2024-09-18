@@ -7,7 +7,6 @@ pkgrel=1
 pkgdesc="A metroidvania with vector graphics"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://mdsteele.games/azimuth"
-url="https://github.com/mdsteele/${_pkgname}"
 license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libglvnd' 'sdl')
 provides=("${_pkgname}")
