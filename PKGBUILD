@@ -21,7 +21,7 @@ optdepends=(
 # SOURCES :: from subversion
 makedepends=('subversion')
 source=("${pkgname}" "${pkgname}-${pkgver}::svn://svn.code.sf.net/p/opentaxsolver/SrcCodeRepo/trunk/OTS_${year}#revision=${_snvrevision}")
-sha256sums=('625704c91ec33df8f2550b8726e1b954b49332c4272e96b2a39300756ade1815'
+sha256sums=('c24fc0b104cb7270b9a877eb9101f169fc08409cf7649879443504f657064c6b'
             'SKIP')
 verify() {
 	# NOTE this happens before files are moved to $srcdir... must use the dir on the prefix of source=()
@@ -47,7 +47,7 @@ verify() {
 # SOURCES :: from upstream artifact (fail as sf.net likes to redirects to webpage from time to time)
 # makedepends=()
 # source=("${pkgname}" "https://phoenixnap.dl.sourceforge.net/project/opentaxsolver/OTS_${year}/v${pkgver}_linux/OpenTaxSolver${year}_${pkgver}_linux64.tgz")
-# sha256sums=('625704c91ec33df8f2550b8726e1b954b49332c4272e96b2a39300756ade1815'
+# sha256sums=('c24fc0b104cb7270b9a877eb9101f169fc08409cf7649879443504f657064c6b'
 #             '76f6a29d824ad3229555f04c7bf91c76fe8d16bdb822c31f6b410480d948a90b')
 # prepare() {
 # 	# normalize srcdir path tree with svn sources. for consistency on other methods.
@@ -73,10 +73,11 @@ package() {
 	# NOTE: $pkgdir is absolute.
 	$INSTALL --mode=0755 -d "${pkgdir}/usr/bin/"
 	$INSTALL --mode=0755 -d "${pkgdir}/var/lib/${pkgname}/src/"
+	$INSTALL --mode=0755 -d "${pkgdir}/var/lib/${pkgname}/bin/"
 
 	# NOTE: to use glob on install we can't use quotes... this will break if this project
 	#       ever adds spaces to filenames i guess.
-	$INSTALL --mode=0755 --target-directory="${pkgdir}/var/lib/${pkgname}/" bin/*
+	$INSTALL --mode=0755 --target-directory="${pkgdir}/var/lib/${pkgname}/bin/" bin/*
 
 	# our wrapper
 	# TODO: create .desktop file for this
