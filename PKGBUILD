@@ -2,15 +2,15 @@
 
 pkgname=mio-git
 _pkgname=mio
-pkgver=r118.b9737f6
-pkgrel=2
+pkgver=r136.8b6b7d8
+pkgrel=1
 pkgdesc="Cross-platform C++11 header-only library for memory mapped file IO"
 arch=(any)
 license=(MIT)
 makedepends=(git cmake make)
 depends=()
 provides=(mio)
-source=("git://github.com/mandreyel/mio")
+source=("git+https://github.com/mandreyel/mio")
 url="https://github.com/mandreyel/mio"
 md5sums=(SKIP)
 
