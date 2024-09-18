@@ -1,0 +1,15 @@
+pkgbase = pacextractor-git
+	pkgdesc = Extractor of SpreadTrum/UniSOC firmware files with .pac extension
+	pkgver = 1.0.0.6e4ace5.git
+	pkgrel = 1
+	url = https://github.com/rifsxd/pacextractor
+	arch = any
+	license = MIT
+	makedepends = make
+	makedepends = gcc
+	provides = pacextractor-git
+	conflicts = pacextractor
+	source = git+https://github.com/rifsxd/pacextractor.git
+	sha256sums = SKIP
+
+pkgname = pacextractor-git
