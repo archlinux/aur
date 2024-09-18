@@ -2,7 +2,7 @@
 
 pkgname=kickpad
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Kick drum audio sample generator'
 arch=(x86_64)
 url='https://github.com/xyproto/kickpad'
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(ffmpeg glfw)
 makedepends=(gendesk git go)
 source=("git+$url#commit=f5abc72491d811ba5edfd112f4c2d32d6c2da407") # tag: v1.2.3
-b2sums=('6e296637152a62e8103d30e6677c2aa1e6cc4023a645f80f03fdda45f3404eabca9d012f8331d666ee5227fa789499bd91a62d07e8700ea5112c7de8b3e617d3')
+b2sums=('a2c05f4e6655fb3a3cf694f0c381da73d6e2748c3516c721444955a104a3696df41e857281438e0d7b85dfcf2d119f929f6a1e105d14bdb6555ea3d4b0cefc14')
 
 prepare() {
   gendesk -f -n --pkgdesc="$pkgdesc" --pkgname=$pkgname --categories 'AudioVideo;Audio'
