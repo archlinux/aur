@@ -1,27 +1,24 @@
-# Maintainer: w1nst0n <w1nst0n at keemail dot me>
+# Maintainer: Frigyes <frigyes06 at proton dot me>
 pkgname=universal-android-debloater-bin
-pkgver=0.5.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices."
 arch=('x86_64')
-url="https://github.com/0x192/universal-android-debloater"
+url="https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation"
 license=('GPL3')
 depends=('android-tools' 'fontconfig' 'vulkan-icd-loader')
 provides=('universal-android-debloater')
 conflicts=('universal-android-debloater')
-source=("$url/releases/download/$pkgver/uad_gui-noselfupdate-linux.tar.gz"
-        "uad_gui.desktop"
-        "uad_gui-noselfupdate-linux.tar.gz.sig")
-sha256sums=('6bca075ac226fb6df8cffd2368b0ccb8c47cfee02a310c4e98d5ef1fcc4a169f'
-            'e55f259fab5e09d6e91412dbfa74859f609615606422b0e3c937cc774eaedbf3'
-            'SKIP')
-validpgpkeys=('09FD287B96B572E0802279D813639119486820A1')  # w1nst0n <w1nst0n at keemail dot me>
+source=("$url/releases/download/v$pkgver/uad-ng-noselfupdate-linux.tar.gz"
+        "uad_gui.desktop")
+sha256sums=('ba315387d251be0f969bd8a26b6cd7584eef4083a9e5b9e9761732ce28bda477'
+            'f56cc6dd5fba16f1309dc6c0c67252fcbcefbddc15a11c11a4f80d361758ac06')
 
 prepare() {
-  mv uad_gui-noselfupdate-linux uad_gui
+  mv uad-ng-noselfupdate-linux uad-ng
 }
 
 package() {
-  install -Dm755 uad_gui -t "$pkgdir/usr/bin"
+  install -Dm755 uad-ng -t "$pkgdir/usr/bin"
   install -Dm644 "$srcdir/uad_gui.desktop" -t "$pkgdir/usr/share/applications"
 }
