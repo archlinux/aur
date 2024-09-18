@@ -6,7 +6,7 @@
 pkgname=qt6-mqtt
 _qtver=6.7.2
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=3
 pkgdesc="Module to implement MQTT protocol v3.1/3.1.1/5.0 for Qt 6"
 arch=(x86_64)
 url="https://qt-project.org/"
@@ -14,7 +14,11 @@ license=(GPL3 custom)
 depends=(qt6-base)
 makedepends=(cmake git ninja)
 source=("git+https://code.qt.io/qt/qtmqtt.git#tag=v$_qtver")
-sha256sums=('bf96251956dec4f5580e2b0188128769b2b0c971379cedb7389df08a891a1502')
+# Skip checksum check for now, since pacman changed how they are generated for
+# git repos:
+# https://gitlab.archlinux.org/pacman/pacman/-/commit/9548d6cc765b1a8dcf933e8b1b89d0bcc3e50209
+# until the new pacman version is available everywhere.
+sha256sums=(SKIP)
 _pkgfqn=${pkgname/6-/}
 
 build() {

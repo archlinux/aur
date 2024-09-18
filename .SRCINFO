@@ -1,7 +1,7 @@
 pkgbase = qt6-mqtt
 	pkgdesc = Module to implement MQTT protocol v3.1/3.1.1/5.0 for Qt 6
 	pkgver = 6.7.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://qt-project.org/
 	arch = x86_64
 	license = GPL3
@@ -11,6 +11,6 @@ pkgbase = qt6-mqtt
 	makedepends = ninja
 	depends = qt6-base
 	source = git+https://code.qt.io/qt/qtmqtt.git#tag=v6.7.2
-	sha256sums = bf96251956dec4f5580e2b0188128769b2b0c971379cedb7389df08a891a1502
+	sha256sums = SKIP
 
 pkgname = qt6-mqtt
