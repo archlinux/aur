@@ -1,7 +1,7 @@
 # Maintainer: Ratakor <ratakor@disroot.org>
 
 pkgname=zpotify
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A CLI for Spotify"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ depends=('libjpeg' 'chafa')
 makedepends=('zig')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("$url/archive/$pkgver/$pkgname.tar.gz")
-sha256sums=('8e598963d0d6c17aa1666be207afe152cd3a95810ad58b3c3c5df16c672d1eda')
+source=("$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('6d40b97b37bdfaeb7c5273e47af8e1062c238696d26d7deef9ef2f12af429098')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
