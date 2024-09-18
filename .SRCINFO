@@ -1,6 +1,6 @@
 pkgbase = plattenalbum-git
-	pkgdesc = Browse music with MPD
-	pkgver = 2.1.1.r67.g417e36f
+	pkgdesc = Connect to your music
+	pkgver = 2.2.0.r0.g5c8572e
 	pkgrel = 1
 	url = https://github.com/SoongNoonien/plattenalbum
 	arch = any

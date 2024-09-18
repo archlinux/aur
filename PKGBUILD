@@ -1,9 +1,9 @@
 # Maintainer: Martin Wagner <martin.wagner.dev@gmail.com>
 
 pkgname=plattenalbum-git
-pkgver=2.1.1.r67.g417e36f
+pkgver=2.2.0.r0.g5c8572e
 pkgrel=1
-pkgdesc="Browse music with MPD"
+pkgdesc="Connect to your music"
 arch=('any')
 license=('GPL-3.0-or-later')
 url="https://github.com/SoongNoonien/plattenalbum"
