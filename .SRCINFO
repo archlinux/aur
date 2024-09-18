@@ -9,6 +9,7 @@ pkgbase = python-handcalcs
 	checkdepends = python-forallpeople
 	checkdepends = python-pint
 	checkdepends = python-sympy
+	checkdepends = ipython
 	makedepends = python-build
 	makedepends = python-flit-core
 	makedepends = python-installer
