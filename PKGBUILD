@@ -90,7 +90,7 @@ sha256sums=(72d4fbe203cf19abef0e060d3226a977da380788a610eb9691cb77bf362a95b4)
 
 pkgver() {
     cd "$pkgbase"
-    git describe --long --tags --abbrev=7 "$_commit" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g; s/.mobile.1//'
+    git describe --long --tags --abbrev=7 "$_commit" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g; s/.mobile.1//' | sed 's/0/1/'
 }
 
 prepare() {
