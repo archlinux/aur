@@ -5,7 +5,7 @@
 
 pkgname=litecoin-qt
 pkgver=0.21.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.litecoin.org/"
 license=('MIT')
@@ -16,15 +16,18 @@ provides=('litecoin')
 conflicts=('litecoin')
 source=("https://download.litecoin.org/litecoin-${pkgver}/src/litecoin-${pkgver}.tar.gz"
         "0001-upnp-add-compatibility-for-miniupnpc-2.2.8.patch"
+        "0001-fix-boost-1.84-filesystem-deprecations.patch"
         "$pkgname.desktop"
         "litecoin128.png")
 sha256sums=('e08642fb1d4ca3891981e6fd39f8c9fbc995d0db8b6b1c3f8f8671de8e120f9a'
             '8f4354356b66f92b52a85d91c19d576e7cb637957380c052404794a70d9f8383'
+            'f9de747281f6003739d9ac736684771b061e9d63f2ea90404c08187595e57619'
             'cfc53dc9028745358235698ddd562d3e6b4a3ea9f896f5efc1aa8cd81f595559'
             '79fb205581c1e6df9758b56e2b527350f23124677036bc68176d088c4a28af8d')
 
 prepare() {
   patch -d litecoin-${pkgver} -p1 < 0001-upnp-add-compatibility-for-miniupnpc-2.2.8.patch
+  patch -d litecoin-${pkgver} -p1 < 0001-fix-boost-1.84-filesystem-deprecations.patch
 }
 
 build() {
