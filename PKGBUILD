@@ -1,15 +1,15 @@
 # Maintainer: Zesko
 pkgname="limine-dracut-support-git"
-pkgver=r1.2f5160e
+pkgver=0
 pkgrel=1
 pkgdesc="Install kernel for Limine bootloader."
-arch=("any")
+arch=('x86_64')
 url="https://gitlab.com/Zesko/limine-entry-tool"
 source=(git+$url.git)
 license=("GPL3")
 depends=(
        'bash'
-       'java-environment>=17'
+       'java-environment-openjdk>=17'
        'limine'
        'dracut'
        'systemd')
