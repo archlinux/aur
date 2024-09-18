@@ -3,19 +3,17 @@ pkgname=goradion
 pkgdesc='Terminal based online radio player'
 arch=("any")
 url="https://github.com/agejevasv/goradion"
-pkgver="v0.3.6"
+pkgver="v0.4.5"
 pkgrel=2
-_tag="${pkgver}-build3"
-_dir="${pkgname}-${_tag#v}"
 license=("Unlicense")
 makedepends=("go")
 depends=("mpv")
 
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-b2sums=('d3f60cc395f0e24540a55639cef3c46bd933b2827a9ea6614518cc57bb9a7c1737b4f22655e80a72a1c90e2cb36d94f2a7d0f7e933d86abd8393c4108261a4ca')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+b2sums=('52a97852bfc5ce56dbc5ed2118c7ffabcd4d28e6b3385b34ec87459cb10f028ff9dc8af6b5cc0456d5d57f164008960250b8c9bf30471e0cabfd937c97e95617')
 
 build() {
-  cd "${_dir}"
+  cd "${pkgname}-${pkgver#v}"
 
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -27,11 +25,11 @@ build() {
 }
 
 check() {
-  cd "${_dir}"
+  cd "${pkgname}-${pkgver#v}"
   go test ./...
 }
 
 package() {
-  cd "${_dir}"
+  cd "${pkgname}-${pkgver#v}"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
