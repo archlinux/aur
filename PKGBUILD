@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=pbdMPI
-_pkgver=0.5-1
+_pkgver=0.5-2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="R Interface to MPI for HPC Clusters (Programming with Big Data Project)"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -14,8 +14,8 @@ depends=(
   r-float
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9aee917730ba399eeccae27c080545fe')
-b2sums=('254bb62951f120312d76d34cb2fdeaecc9b11b92fc4b322a16d08f4c8d66184b7b9df2eab50ec1f57427a820b1709823b967a79e2a29bb0232800ffa98a129de')
+md5sums=('f99a248812456d71f001fef8ffd5a206')
+b2sums=('c3be8aabe86b9ba9cafd3d3fa130c064b3dd54b5880c4d832725ec661722b06d0eeaf1335a09e0223aa3f36216bf6a0607109cf941f590620a0997ce46c60e1c')
 
 build() {
   mkdir build
