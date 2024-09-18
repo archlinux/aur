@@ -1,4 +1,4 @@
-pkgbase = ostree
+pkgbase = ostree-nocurl
 	pkgdesc = Operating system and container binary deployment and upgrades
 	pkgver = 2024.7
 	pkgrel = 1
@@ -50,7 +50,7 @@ pkgbase = ostree
 	b2sums = SKIP
 	b2sums = cfff162120f70995e18ec56454711501391b97456e2a0f34643c9d2a9c2b50b4d76afc2e2fc50ea28e8a773c618215d6cb855b96663f69dc5cc93bc5766f3f28
 
-pkgname = ostree
+pkgname = ostree-nocurl
 	depends = bash
 	depends = composefs
 	depends = fuse3
