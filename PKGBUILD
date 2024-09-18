@@ -2,7 +2,7 @@
 
 pkgname=proton-vpn-gtk-app
 pkgver=4.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="ProtonVPN GTK app, Maintained by Community"
 arch=("any")
 url="https://github.com/ProtonVPN/proton-vpn-gtk-app"
@@ -14,8 +14,6 @@ depends=("python-proton-core"
 		"python-proton-keyring-linux-secretservice"
 		"python-proton-vpn-logger"
 		"python-proton-vpn-network-manager"
-		"python-proton-vpn-network-manager-openvpn"
-		"python-proton-vpn-network-manager-wireguard"
 		"python-proton-vpn-killswitch-network-manager"
 		"python-proton-vpn-killswitch-network-manager-wireguard"
 		"python-aiohttp"
