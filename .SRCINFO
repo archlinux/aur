@@ -1,6 +1,6 @@
 pkgbase = besu
 	pkgdesc = Hyperledger Ethereum Mainnet and Permissioned Network Client
-	pkgver = 24.8.0
+	pkgver = 24.9.1
 	pkgrel = 1
 	url = https://www.hyperledger.org/use/besu
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = besu
 	depends = java-runtime>=11
 	depends = jemalloc
 	replaces = pantheon
-	source = https://github.com/hyperledger/besu/releases/download/24.8.0/besu-24.8.0.tar.gz
-	sha256sums = 9671157a623fb94005357bc409d1697a0d62bb6fd434b1733441bb301a9534a4
+	source = https://github.com/hyperledger/besu/releases/download/24.9.1/besu-24.9.1.tar.gz
+	sha256sums = c0b949490459370b88ed96b8e3050449074aa7ad59786344f0ab42bc13e9f0c3
 
 pkgname = besu
