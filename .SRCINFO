@@ -1,13 +1,12 @@
 pkgbase = asciigen
 	pkgdesc = Converts images/video to ASCII art
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/seatedro/asciigen
 	arch = x86_64
-	license = custom:see_repo
+	license = MIT
+	makedepends = zig
 	depends = ffmpeg
-	depends = make
-	depends = zig
 	source = asciigen-1.0.4.tar.gz::https://github.com/seatedro/asciigen/archive/refs/tags/v1.0.4.tar.gz
 	sha256sums = 2326d73376997f838bae25ebc7d1f6f84a7442db8f55ec841a7e11246b73c31f
 
