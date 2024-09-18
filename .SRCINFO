@@ -10,6 +10,6 @@ pkgbase = bitrix24
 	depends = libxss
 	depends = alsa-lib
 	source = https://dl.bitrix24.com/b24/bitrix24_desktop.rpm
-	md5sums = ce198b99cfbd944dc66f65254be45262
+	md5sums = a9eab0f06f5def69a33d6de05f3d8f3b
 
 pkgname = bitrix24
