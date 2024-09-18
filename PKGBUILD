@@ -16,7 +16,7 @@ conflicts=("$_pkgname")
 source=("https://github.com/alvr-org/ALVR/releases/download/v$pkgver/${_pkgname}_streamer_linux.tar.gz"
 		"${_pkgname}.png"
 		"${_pkgname}.desktop")
-md5sums=('b19fa9773ed6be0687b700fa4329621d'
+md5sums=('04f757c98c1d07ad196315f2945311d9'
          'cd2c37fd286efad87b679d50631ca3d7'
          'e4fd7a8205ee67e5a0c69ba0210a20c6')
 
