@@ -1,7 +1,7 @@
 # Maintainer: Antoine Poinsot <My first name at wizardsardine.com>
 
 pkgname=liana-bin
-pkgver=6.0
+pkgver=7.0
 pkgrel=1
 pkgdesc="A Bitcoin wallet focused on recovery options (includes headless daemon and GUI)."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('glibc>=2.33' 'fontconfig>=2.12.6' 'freetype2>=2.8' 'systemd-libs') # systemd-libs for libudev
 
 source=("https://github.com/wizardsardine/liana/releases/download/v$pkgver/liana_$pkgver-1_amd64.deb")
-sha256sums=("2204ef15f58d525fe09037c0308cd1b1bbd3397d10d97d1d5beeb68be0dde16a")
+sha256sums=("b4276c414fdf7b39a73f7bd701fc7307b113313ea212961b8ba63a4982f9243a")
 
 prepare() {
     _output_dir="$srcdir/liana-$pkgver"
