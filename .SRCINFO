@@ -1,7 +1,7 @@
 pkgbase = chessx
 	pkgdesc = Cross-platform chess database and PGN viewer
 	pkgver = 1.6.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://chessx.sourceforge.net
 	arch = x86_64
 	license = GPL-2.0-or-later
