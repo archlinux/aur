@@ -9,7 +9,7 @@ source=(git+$url.git)
 license=("GPL3")
 depends=(
        'bash'
-       'java-environment>=17'
+       'java-environment-openjdk>=17'
        'limine'
        'snapper'
        'btrfs-progs'

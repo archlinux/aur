@@ -8,7 +8,7 @@ pkgbase = limine-snapper-sync-git
 	makedepends = git
 	makedepends = maven
 	depends = bash
-	depends = java-environment>=17
+	depends = java-environment-openjdk>=17
 	depends = limine
 	depends = snapper
 	depends = btrfs-progs
