@@ -1,6 +1,6 @@
 pkgbase = vasp2qe-git
 	pkgdesc = Convert VASP files (POSCAR) to quantum espresso files (scf.in)
-	pkgver = r2141.dc9452d
+	pkgver = r11.30cd82a
 	pkgrel = 1
 	url = https://github.com/rnels12/VASP2QE.git
 	arch = i686
