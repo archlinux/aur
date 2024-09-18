@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=scoringRules
-_pkgver=1.1.2
+_pkgver=1.1.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('76d4fb931969d263f3542907bcca51af')
-b2sums=('8aa1f38da55f5529da65d1ff0d6409d8498c710f0fcc5285ab5fe4cb606960b5e9c65c0cc2efce55d578bc525c2810a12400cf175b89036c63155d756772e030')
+md5sums=('19929b071886f210a0436d7a415c0cd9')
+b2sums=('2c1f0f97924c5be0421ffd070bf487f59ce6ff1432e57babddd217565a010a4e570b58857936d506303f6e272e4f7d4405a94aaca26a23031299a025b6f0f900')
 
 build() {
   mkdir build
