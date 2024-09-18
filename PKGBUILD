@@ -25,7 +25,6 @@ makedepends=(
   dotnet-source-built-artifacts-6.0
   git
   icu
-  inetutils
   krb5
   libgit2
   libunwind
