@@ -1,31 +1,21 @@
 # Maintainer: Dominik Schwaiger <mail@dominik-schwaiger.ch>
-pkgname=surrealdb-bin
+_pkgname=surrealdb
+pkgname=${_pkgname}-bin
 pkgver=2.0.1
-pkgrel=1
-epoch=
+pkgrel=2
 pkgdesc="A scalable, distributed, collaborative, document-graph database, for the realtime web"
 arch=('x86_64')
 url="https://github.com/surrealdb/surrealdb"
 license=('custom:BSL')
-groups=()
 depends=('gcc-libs')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=('surrealdb')
-conflicts=('surrealdb')
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/surrealdb/surrealdb/releases/download/v${pkgver//_/-}/LICENSE" "https://github.com/surrealdb/surrealdb/releases/download/v${pkgver//_/-}/surreal-v${pkgver//_/-}.linux-amd64.tgz")
-noextract=()
-sha256sums=('a007c53f27d30bda8cc56feec356eba13b646a8fb59a97d151e3aab820429d2d' 'f761b4ead0c732fd6d50dc891a92d9642ee4ed3268ce3c0f499a5941ae762848')
-validpgpkeys=()
+provides=(${_pkgname})
+conflicts=(${_pkgname})
+_LICENSE=LICENSE_${pkgver}
+source=("${_LICENSE}::https://github.com/surrealdb/surrealdb/releases/download/v${pkgver//_/-}/LICENSE" "https://github.com/surrealdb/surrealdb/releases/download/v${pkgver//_/-}/surreal-v${pkgver//_/-}.linux-amd64.tgz")
+sha256sums=('dd98c688e54be8b85ad79e603f5112449b9789dfc031db94eb5c7dc843702aef' 'f761b4ead0c732fd6d50dc891a92d9642ee4ed3268ce3c0f499a5941ae762848')
 
 package() {
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "${srcdir}/${_LICENSE}" "${pkgdir}/usr/share/licenses/${_pkgname}"
 
-	install -Dm755 surreal "$pkgdir/usr/bin/surreal"
+	install -Dm755 "${srcdir}/surreal" "${pkgdir}/usr/bin/surreal"
 }
