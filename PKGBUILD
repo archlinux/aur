@@ -2,7 +2,7 @@
 _target='compass-readonly-beta'
 _edition=' Readonly Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.44.4-beta.5'
+_pkgver='1.44.4-beta.7'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - beta version'
@@ -21,8 +21,8 @@ source=(
 	'fix-argv.diff'
 	'mongodb-compass.conf'
 )
-b2sums=('8503ac21d58e1b835714a0b39169b99a842c17a7bb2491f22def19935506c8229204fdef7115db55f4ffd7105d1c8fc5e9f7dcd345a2ad534b8d196c3e109be8'
-        '3edfbd465754292688d8f91a22c33443389a070f1718810a4ad7ee3ad7973e8f5234ff7c3b17ae62c62925aa06a7fc898d2f4fb66690d3e073297653900caa12'
+b2sums=('6a77b4b05cbbea836d6ad5879d4be076477c4e7f59603805fec55a19d15f8f22bf163425b81411c95eae406e35b2acf0c98db659b826dc2763f79262bc84a0a8'
+        '3347d8004a45449e748c34b4113a2f304505780cf52ec36d38d535d9656587ebc55b2d7a9e48b6ad237e32b6c1f8010d87227b45e878777895bb824b5a2c36c4'
         'd893c74227ddd8fcfce25829728f54fc705d5d390495893de97e69c957b09bb744c27a90191ca6afdbe77d336a4311811009c4b993394cb408ba6940e71857e0'
         '2a07533bbd4697e8ad0e29402867662cc9d817dfbcfcde8bfa2e4e06f8df3c7d036822b8b33b49cb1d29a8b2c126c5a3381c6b2283e2732e4ca2943bd06bed68'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
@@ -45,9 +45,8 @@ prepare() {
 	# Force the newest version of electron-to-chromium to make sure we support the Electron version set above
 	npm update electron-to-chromium --package-lock-only
 
-	# Fix build of ssh2 and its optdeps
-	npm update cpu-features --package-lock-only
-	npm update nan --package-lock-only
+	# Fix build of ssh2
+	npm update ssh2 --package-lock-only
 
 	# Don't use the bundled ffmpeg
 	patch --forward -p1 < "$srcdir/hadron-build-ffmpeg.diff"
