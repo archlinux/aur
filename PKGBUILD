@@ -4,7 +4,7 @@ pkgname="${_appname}-desktop-bin"
 _pkgname=VoceChat
 pkgver=0.8.4
 _electronversion=32
-pkgrel=2
+pkgrel=3
 pkgdesc="VoceChat desktop version"
 arch=('x86_64')
 url="https://github.com/Privoce/vocechat-desktop"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2ba116d08390dc67d17ea2bb76825d4cd6c69a251e8ba9f0eea6821afb711461'
+sha256sums=('704cbe204f6adb8e5c6fafc9496e4fc06ed598c10e20b26a9ac126ad1317ea9d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
