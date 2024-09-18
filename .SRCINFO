@@ -1,0 +1,22 @@
+pkgbase = python-grpcio-status
+	pkgdesc = Status proto mapping for gRPC
+	pkgver = 1.66.1
+	pkgrel = 1
+	url = https://grpc.io
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-build
+	depends = python
+	depends = python-google-api-core
+	depends = python-proto-plus
+	depends = python-protobuf
+	depends = python-google-auth
+	depends = python-grpcio
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/g/grpcio_status/grpcio_status-1.66.1.tar.gz
+	sha256sums = b3f7d34ccc46d83fea5261eea3786174459f763c31f6e34f1d24eba6d515d024
+
+pkgname = python-grpcio-status
