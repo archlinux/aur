@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=brisqi-bin
 _pkgname=Brisqi
-pkgver=0.12.1
+pkgver=0.12.2
 _electronversion=31
-pkgrel=2
+pkgrel=1
 pkgdesc="Offline-first personal Kanban app."
 arch=('x86_64')
 url="https://brisqi.com/"
@@ -19,18 +19,19 @@ source=(
     "LICENSE-${pkgver}.html::${url}/terms"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a3d79661f404813d2dfdbd3a7ec29d506d7f0a194a19ee51f17ae63531baaa70'
-            '657a86267eec01065fcceb2af12d005f70d8baf8ceb4519015e2679d86cc3f52'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+sha256sums=('8e1527984dae2922e5d94ad8aa879fe324388a26d722a66a7074bcf5bcede204'
+            '20b671a52313441bf20c716523144c5e71ec00d053c268de3a0a2d431c3d82e9'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-bin}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/${_pkgname}/
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
