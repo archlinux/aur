@@ -1,18 +1,18 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=static-web-server
-pkgver=2.32.2
+pkgver=2.33.0
 pkgrel=1
 pkgdesc="A cross-platform, high-performance and asynchronous web server for static files-serving"
 arch=('i686' 'x86_64')
 url="https://static-web-server.net/"
 license=('Apache-2.0' 'MIT')
-depends=('gcc-libs')
+depends=('gcc-libs' 'zlib')
 makedepends=('cargo')
 backup=('etc/default/static-web-server')
 options=('!lto')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/static-web-server/static-web-server/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('191a014f2f30fa145fbac727fb930e2a7063f3c27b8e72f33c21a8814969a641')
+sha256sums=('3858b355bfc67cd961a665650af2c0507554497b8bd7ae3ca40451133edd792d')
 
 
 prepare() {
@@ -42,6 +42,13 @@ package() {
 
   install -Dm644 "systemd/etc_default_static-web-server" "$pkgdir/etc/default/static-web-server"
   install -Dm644 systemd/static-web-server.{service,socket} -t "$pkgdir/usr/lib/systemd/system"
+
+  "$pkgdir/usr/bin/static-web-server" generate "$srcdir"
+  install -Dm644 "$srcdir/completions/static-web-server.bash" "$pkgdir/usr/share/bash-completion/completions/static-web-server"
+  install -Dm644 "$srcdir/completions/static-web-server.elv" -t "$pkgdir/usr/share/elvish/lib"
+  install -Dm644 "$srcdir/completions/static-web-server.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d"
+  install -Dm644 "$srcdir/completions/_static-web-server" -t "$pkgdir/usr/share/zsh/site-functions"
+  install -Dm644 "$srcdir/man"/static-web-server{,-generate}.1 -t "$pkgdir/usr/share/man/man1"
 
   install -Dm644 "LICENSE-MIT" -t "$pkgdir/usr/share/licenses/static-web-server"
 }
