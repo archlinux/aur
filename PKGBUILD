@@ -2,7 +2,7 @@
 
 pkgname=mini-git
 _pkgname=mini
-pkgver=0.9.7.r2.g765a357
+pkgver=0.9.16.r0.gea85311
 pkgrel=1
 pkgdesc="Tiny, header only C++ library for manipulating INI files."
 arch=(any)
@@ -10,7 +10,7 @@ license=(MIT)
 makedepends=(git)
 depends=()
 provides=(mini)
-source=("git://github.com/pulzed/mINI.git")
+source=("git+https://github.com/pulzed/mINI.git")
 url="https://github.com/pulzed/mINI"
 md5sums=(SKIP)
 
