@@ -1,18 +1,22 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgsubn=vimium
-pkgname=chromium-vimium
-pkgver=2.1.2
+# Maintainer: Harry McKenzie <harry@copy.rest>
+pkgname=asciigen
+pkgver=1.0.4
 pkgrel=1
-pkgdesc="Browser extension that provides keyboard-based navigation (unpacked)"
-arch=('any')
-url="https://github.com/philc/vimium"
-license=('MIT')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+pkgdesc="Converts images/video to ASCII art"
+arch=('x86_64')
+url="https://github.com/seatedro/asciigen"
+license=('custom:see_repo')
+depends=('ffmpeg' 'make' 'zig')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('2326d73376997f838bae25ebc7d1f6f84a7442db8f55ec841a7e11246b73c31f')
+
+build() {
+  cd "$pkgname-$pkgver"
+  zig build -Drelease
+}
 
 package() {
-    mkdir -p "$pkgdir/usr/share/"
-
-    cd "$pkgsubn-$pkgver"
-    cp -r --no-preserve=ownership . "$pkgdir/usr/share/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "zig-out/bin/$pkgname"
 }
+
