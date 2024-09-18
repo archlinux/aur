@@ -1,6 +1,6 @@
 pkgname=mihomo-party-electron
 _pkgname=mihomo-party
-pkgver=1.2.20
+pkgver=1.2.21
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=(
     "${_pkgname}.desktop"
     "${_pkgname}.sh"
 )
-sha256sums=("325d4116303e245e6dcdc8fb65695bc6009405bd3e5e7919b83015e30ece6c46"
+sha256sums=("ea0530616e629b54c6c2cbfcc080a87326e9a7aaaf4e0ca30b26314dc7cb2b67"
 "96a6250f67517493f839f964c024434dbcf784b25a73f074bb505f1521f52844"
 "560733f0e5bd9b47ff50c849301c8a22ae17a5df26830d8c97033dfcbd392382"
 )
