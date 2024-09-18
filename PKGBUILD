@@ -5,24 +5,24 @@ _suffix=""
 pkgname=(
 		"${pkgbase}${_suffix}" "${pkgbase}-headers${_suffix}"
 )
-_rev=e3e928292f805f1a4962e289ac7c41f2c8e23b9a
-pkgver=6.10.pf4
+_rev=43c8291990464a1af9b451d5030c1939e36c692c
+pkgver=6.11.pf1
 pkgrel=1
 pkgdesc="pf-kernel"
 arch=(x86_64)
 url=https://pfkernel.natalenko.name
 license=(GPL-2.0-only)
-makedepends=(bc cpio gettext libelf pahole perl python tar xz)
+makedepends=(bc cpio gettext libelf pahole perl python rust rust-bindgen rust-src tar xz)
 options=(!debug !strip)
 source=(https://codeberg.org/pf-kernel/linux/archive/${_rev}.tar.gz
 		config)
 b2sums=(SKIP
-		'eb560579bc34f98eabbbaf74ec3857f3992364df18889a46bcc0eed01da7116ef6bef63c93e3b5eff2340e21b9fa74b5386232351372c77680a9c351f78fa7d0')
+		'3c600f730a2ff8805f1e81dba81f5f60a4e0f10c5adef2fc8be4536851cb6af3268136a8f28413a34a48062f79dced21e072c2d0e425e12692184ebbe7372841')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=${pkgbase}
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
-# export KBUILD_CPUTYPE=
+# export KBUILD_X86_64_ISA_LEVEL=
 
 prepare() {
 	cd linux
@@ -30,10 +30,9 @@ prepare() {
 	echo "Setting config..."
 	cp ../config .config
 
-	if [[ -n ${KBUILD_CPUTYPE} && ${KBUILD_CPUTYPE} != GENERIC_CPU ]]; then
-		echo "CPU optimisation to be used: ${KBUILD_CPUTYPE}"
-		scripts/config --disable GENERIC_CPU
-		scripts/config --enable ${KBUILD_CPUTYPE}
+	if [[ -n ${KBUILD_X86_64_ISA_LEVEL} && ${KBUILD_X86_64_ISA_LEVEL} != 1 ]]; then
+		echo "x86_64 ISA level to be used: ${KBUILD_X86_64_ISA_LEVEL}"
+		scripts/config --set-val X86_64_ISA_LEVEL ${KBUILD_X86_64_ISA_LEVEL}
 	fi
 
 	make olddefconfig
@@ -47,7 +46,7 @@ build() {
 	cd linux
 
 	__nthreads=$(($(nproc) + 1))
-	make KCFLAGS=-O3 -j${__nthreads} all
+	make -j${__nthreads} all
 	make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 }
 
@@ -95,6 +94,7 @@ _package-headers() {
 	install -Dt "${builddir}"/kernel -m644 kernel/Makefile
 	install -Dt "${builddir}"/arch/x86 -m644 arch/x86/Makefile
 	cp -t "${builddir}" -a scripts
+	ln -srt "${builddir}" "${builddir}"/scripts/gdb/vmlinux-gdb.py
 
 	# required when STACK_VALIDATION is enabled
 	install -Dt "${builddir}"/tools/objtool tools/objtool/objtool
