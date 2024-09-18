@@ -6,12 +6,12 @@
 pkgname=clang70
 pkgdesc="C language family frontend for LLVM, version 7.0 (installed under /opt/llvm70)"
 pkgver=7.0.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://llvm.org/"
 license=('NCSA')
 depends=('llvm70' 'python')
-makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 'python-sphinx')
+makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2')
 options=('staticlibs' '!lto')
 source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz
         https://releases.llvm.org/$pkgver/cfe-$pkgver.src.tar.xz)
@@ -32,9 +32,9 @@ build() {
     -DLLVM_LINK_LLVM_DYLIB=ON \
     -DLLVM_ENABLE_RTTI=ON \
     -DLLVM_BUILD_TESTS=OFF \
-    -DLLVM_INCLUDE_DOCS=ON \
-    -DLLVM_BUILD_DOCS=ON \
-    -DLLVM_ENABLE_SPHINX=ON \
+    -DLLVM_INCLUDE_DOCS=OFF \
+    -DLLVM_BUILD_DOCS=OFF \
+    -DLLVM_ENABLE_SPHINX=OFF \
     -DSPHINX_WARNINGS_AS_ERRORS=OFF \
     -DLLVM_MAIN_SRC_DIR="$srcdir/llvm-$pkgver.src"
   ninja
