@@ -2,28 +2,29 @@
 # Contributor: brent s. <bts[at]square-r00t[dot]net>
 # Contributor: Jochen Schalanda <jochen+aur (at) schalanda.name>
 pkgname=debianutils
-pkgver=5.7
-pkgrel=2
+pkgver=5.20
+pkgrel=1
 pkgdesc="Miscellaneous utilities specific to Debian"
 arch=('i686' 'x86_64')
-url="http://packages.qa.debian.org/d/debianutils.html"
+url="https://tracker.debian.org/pkg/debianutils"
 license=('GPL')
-depends=('run-parts' 'which')
-source=("http://deb.debian.org/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz")
-sha512sums=('79acd8885abca93842d696167171a359011c49a40f38deeb25bc94d62905f95afa3a7b2540d3bd4b0ffd363c5c48a439a1a68139a29d6c033980b019cea75d92')
+makedepends=('po4a')
+depends=('run-parts')
+source=("https://salsa.debian.org/debian/$pkgname/-/archive/debian/$pkgver/$pkgname-debian-$pkgver.tar.bz2")
+sha512sums=('0252fde90911df685cd585b91cde48f48f84d42982582839f83de5f57033d1241cc05bac95f89275fbb0fa80e6626111c2212641447d5a37ffe9c0d1027a7824')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-debian-${pkgver}"
+  autoreconf -fi
   ./configure --prefix=/usr --sbindir=/usr/bin
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-debian-${pkgver}"
   make DESTDIR="$pkgdir" install
 
-  msg 'Remove files of "which" and "run-parts" package...'
+  msg 'Remove files of "run-parts" package...'
   cd -
-  find "${pkgdir}" -name which* -delete
   find "${pkgdir}" -name run-parts* -delete
 }

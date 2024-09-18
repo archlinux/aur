@@ -1,14 +1,14 @@
 pkgbase = debianutils
 	pkgdesc = Miscellaneous utilities specific to Debian
-	pkgver = 5.7
-	pkgrel = 2
-	url = http://packages.qa.debian.org/d/debianutils.html
+	pkgver = 5.20
+	pkgrel = 1
+	url = https://tracker.debian.org/pkg/debianutils
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = po4a
 	depends = run-parts
-	depends = which
-	source = http://deb.debian.org/debian/pool/main/d/debianutils/debianutils_5.7.orig.tar.gz
-	sha512sums = 79acd8885abca93842d696167171a359011c49a40f38deeb25bc94d62905f95afa3a7b2540d3bd4b0ffd363c5c48a439a1a68139a29d6c033980b019cea75d92
+	source = https://salsa.debian.org/debian/debianutils/-/archive/debian/5.20/debianutils-debian-5.20.tar.bz2
+	sha512sums = 0252fde90911df685cd585b91cde48f48f84d42982582839f83de5f57033d1241cc05bac95f89275fbb0fa80e6626111c2212641447d5a37ffe9c0d1027a7824
 
 pkgname = debianutils
