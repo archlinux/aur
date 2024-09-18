@@ -3,7 +3,7 @@
 _appname=min
 pkgname="${_appname}-browser-bin"
 _pkgname=Min
-pkgver=1.33.0
+pkgver=1.33.1
 _electronversion=32
 pkgrel=1
 pkgdesc="A fast, minimal browser that protects your privacy"
@@ -28,19 +28,20 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('d2200d4ae3d16fbddd1be35a06ee4fe4d8916d97a9649d00130a7b7fe69ac24a')
-sha256sums_armv7h=('031aed387d36b41a8ebb95886571ee93f708ef0a98d49d73393ff832d0a404a4')
-sha256sums_x86_64=('40bdde2eaf09f544b4231ad70fca74db43f29e0b319e50efc0e5e23d4a7e5aa7')
+sha256sums_aarch64=('895a415caef1c0a46662309bd13e05e45260cb53d09745f26df7d37d51efac99')
+sha256sums_armv7h=('79628cb61aa9bb404dd46792ac1433a2da4776ea605c3e83f38ae08f23123d6a')
+sha256sums_x86_64=('be6153fd7429a598d40a8d775fecf84bcac6c1a80b7b11a6437b419aff2408e9')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-bin}/
+        s/@runname@/app/
+        s/@cfgdirname@/${_pkgname}/
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${_pkgname}/${_appname}|${pkgname%-bin}|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g" \
-        -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    sed -i "s/\/opt\/${_pkgname}\/${_appname}/${pkgname%-bin}/;s/Icon=${_appname}/Icon=${pkgname%-bin}/" \
+        "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
