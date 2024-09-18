@@ -1,6 +1,6 @@
 pkgname=localjson-git
 _pkgname=LocalJson
-pkgver=2024.5.13.a0bc346.r43.gd6911ae
+pkgver=3.0.0.r1.g9c3e33f
 _nodeversion=18
 pkgrel=1
 pkgdesc="A lightweight cross-platform toolset based on Wails"
@@ -30,8 +30,10 @@ source=(
 )
 sha256sums=('SKIP')
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}.git"
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+    cd "${srcdir}/${pkgname//-/.}"
+    set -o pipefail
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -42,30 +44,34 @@ _ensure_local_nvm() {
 build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname%-git}.git"
+    cd "${srcdir}/${pkgname%-git}.git/frontend"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export CGO_ENABLED=1
     export GO111MODULE=on
     export GOOS=linux
     export GOCACHE="${srcdir}/go-build"
     export GOMODCACHE="${srcdir}/go/pkg/mod"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
-    echo 'build_from_source=true'  >> .npmrc
-    echo 'link-workspace-packages=true'  >> .npmrc
-    echo 'fetch-retry-maxtimeout=10000'  >> .npmrc
-    echo "cache-dir="${srcdir}"/.pnpm_cache"  >> .npmrc
-    echo "store-dir="${srcdir}"/.pnpm_store"  >> .npmrc
+    {
+        echo -e '\n'
+        #echo 'build_from_source=true'
+        echo 'link-workspace-packages=true'
+        echo 'fetch-retry-maxtimeout=10000'
+        echo "cache-dir="${srcdir}"/.pnpm_cache"
+        echo "store-dir="${srcdir}"/.pnpm_store"
+    } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+        } >> .npmrc
         go env -w GOPROXY=https://goproxy.cn,direct
-        echo 'registry=https://registry.npmmirror.com' >> .npmrc
-        echo 'disturl=https://registry.npmmirror.com/-/binary/node/' >> .npmrc
-        echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/' >> .npmrc
-        echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/' >> .npmrc
-    else
-        echo "Your network is OK."
     fi
-    NODE_ENV=development    pnpm install --prefix ./frontend
+    sed -i "s/fileService/FileService/" src/stores/fileUtils.ts
+    NODE_ENV=development    pnpm install --no-lockfile
+    NODE_ENV=production     pnpm run build
+    cd "${srcdir}/${pkgname%-git}.git"
     wails build -o "${pkgname%-git}" -m -skipbindings
 }
 package() {
