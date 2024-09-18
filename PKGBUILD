@@ -26,7 +26,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ad5d7e683f409c42acc063b6990104562950d1e5d0f2f6db474421c91224f136'
-            '127c7998b436e7da189f9059bb854808fa9aa33dd2f9695a3cf1b5f9e39d13c3')
+            '2da799c244ab45eb58acdb280a0ee4e8b886977834af2c59f6b9ba2310ff7964')
 build() {
     sed -e "
         s/@appname@/${pkgname%-bin}/
