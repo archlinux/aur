@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=gnome-shell-extension-panel-corners
 _uuid=panel-corners@aunetx
-pkgver=10
+pkgver=13
 pkgrel=1
 pkgdesc="A gnome-shell extension to keep the old topbar corners, which were removed for GNOME 42"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL-3.0-or later')
 depends=('gnome-shell')
 makedepends=('zip')
 source=("panel-corners-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5e57e10a52249a59a6076f65f42e4707b605c3c1cc833af75bae0afd486266b8')
+sha256sums=('a09c09a7d19b91e51a8cfd6f7c6d73b2375acc7adfc024cda3323a600086bc26')
 
 build() {
   cd "panel-corners-$pkgver"
