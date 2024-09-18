@@ -3,7 +3,7 @@
 _pkgname=iminuit
 pkgbase="python-${_pkgname}"
 pkgname=("python-${_pkgname}" "python-${_pkgname}-docs")
-pkgver=2.28.0
+pkgver=2.29.1
 pkgrel=1
 pkgdesc="Python interface for MINUIT, a physics analysis tool for function minimization."
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=(
   "${pkgbase}::git+https://github.com/scikit-hep/iminuit#tag=v$pkgver"
   "${pkgbase}-root::git+https://github.com/root-project/root.git"
 )
-sha256sums=('e02bf869b1ca03254e96491a11fd810ac0c30be4ded7817b4c0f5fd1d1957a3e'
+sha256sums=('fc2e81bafa51af365b1ce5bfb5ddb35f040198deee877df005293f21e04c6146'
             'SKIP')
 
 _get_pyver () {
