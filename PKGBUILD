@@ -6,8 +6,8 @@
 _pkgname=ostree
 pkgname=ostree-nocurl
 pkgver=2024.7
-pkgrel=1
-pkgdesc="Operating system and container binary deployment and upgrades"
+pkgrel=2
+pkgdesc="Operating system and container binary deployment and upgrades, built without curl support (temporary workaround for Flatpak)"
 url="https://ostreedev.github.io/ostree/"
 arch=(x86_64)
 provides=($_pkgname)

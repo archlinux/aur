@@ -1,7 +1,7 @@
 pkgbase = ostree-nocurl
-	pkgdesc = Operating system and container binary deployment and upgrades
+	pkgdesc = Operating system and container binary deployment and upgrades, built without curl support (temporary workaround for Flatpak)
 	pkgver = 2024.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ostreedev.github.io/ostree/
 	arch = x86_64
 	license = LGPL-2.0-or-later
