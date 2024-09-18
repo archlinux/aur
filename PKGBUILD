@@ -7,15 +7,11 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=128.0.2
+pkgver=130.0.1
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64)
-license=(
-  GPL
-  LGPL
-  MPL
-)
+license=(MPL-2.0)
 depends=(
   alsa-lib
   at-spi2-core
@@ -96,23 +92,23 @@ install=cachy-browser.install
 #backup=('usr/lib/cachy-browser/distribution/policies.json')
 
 _settings_commit=72b43a93b822ad06554d8dbe793b31fffef5aa74
-_common_commit=26a7fb6fba1829c54be319362e8acb7e37102802
+_common_commit=5dd46aafa8ad8b4bddc86a4febdab901e447c9a2
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
         $pkgname.desktop
         "git+https://github.com/cachyos/cachyos-browser-settings.git#commit=${_settings_commit}"
         "git+https://github.com/cachyos/cachyos-browser-common.git#commit=${_common_commit}"
         "match.patch")
-sha256sums=('39baed6a9a836adb03ed443ee568438a5093f89e5f8bad3f7b11be8f73b3e45f'
+sha256sums=('027225a1e9b074f0072e22c7264cf27b0d2364c675c3ca811aa6c25fb01b9f70'
             'SKIP'
             'de5c0deb9b6a4ebfaa933103cc6a65f1f43c9a456296d356cc54c7ca042d144c'
             '1975dba8663744e5757a7398899fe94dd50ba33adfe122d6cfb69d8480de9c3a'
-            'cd3c98f4e43e857c1da3917cbdfc59c25b7b03bfd08084145e7203ee2455c09b'
+            'f9ef09f06f8400a11974d9ac39b14ea9646b9adcccbceb1466076d1d70986260'
             '1fbb1971a1d0d4c875b1af0f9681601909cfbe4fe0cc2c2f42c523c84c934499')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 prepare() {
   # we need it for bootstap build to be able to build with Firefox toolchain,
-  # for some reason it doesn't bootstrap rust compiler 
+  # for some reason it doesn't bootstrap rust compiler
   if ! rustc --version | grep stable  >/dev/null 2>&1; then
     echo "Installing rust compiler…"
     rustup toolchain install stable
@@ -232,8 +228,6 @@ END
 
     msg2 "mozilla-nongnome-proxies"
     patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
-    #msg2 "Fix build with new rust"
-    #patch -Np1 -i ${srcdir}/0001-Bug-1882209-Update-encoding_rs-to-0.8.34-to-deal-wit.patch
     # msg2 "Match to system libs"
     # patch -Np1 -i ../match.patch
 
