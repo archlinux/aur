@@ -1,7 +1,7 @@
 # Maintainer: skrysz <skrysz+aur@skwall.pl>
 
 pkgname=rtt-rstudio-technician
-pkgver=5.4.191332
+pkgver=5.4.191346
 pkgrel=1
 # INFO:
 #   Intended for digital forensic labs, data recovery businesses, or individuals, it provides
@@ -30,8 +30,8 @@ source=("${pkgname}-eula.html::https://www.r-studio.com/includes/eula/PopupEulaD
 source_x86_64=("RStudioTech5_x64-${pkgver}.rpm::https://www.r-studio.com/downloads/RStudioTech5_x64.rpm")
 source_i686=("RStudioTech5_i386-${pkgver}.rpm::https://www.r-studio.com/downloads/RStudioTech5_i386.rpm")
 sha512sums=('12263a744cc6e5113a3883edd99f341c61d3b06d74d0e6599373e4054354a81b0849d688bb031a41372f4ef23673f1b4c8153b6879ac0ba20650f9263d9eb27f')
-sha512sums_x86_64=('f23976c2bfe5d13b5ac96f507152cd36761c389843c6756ff6a6f419e62cfcb635b7d118be1e166210dd0bbcc8e65b729d6fbd072dc4ed7a31f2dfeab1053429')
-sha512sums_i686=('d9ec7fa4f56c1c53054b4290244eedfc3d15afa6513468fc17d6e0d629ff515dc49df0d441d227e39d5cde0820f06db4293d01f7a038e11e3446f877b3958f7f')
+sha512sums_x86_64=('3f82d4dcbc69fba650b6dc4eeda805c3cc44399b5810995596f19e74125ede97d959e4e16c34c453d50ae12d61c2e3d44fb44a4957c81c22a6954dd7109b6541')
+sha512sums_i686=('1fa84383e56317b6f37d99cc3af70fc0a659c6910472e79078c5582dcf8992b67fda3626deb67651ebca682e912ad6d9239b65e7a97c977deb9c76ae989b398c')
 
 package() {
   cd "${srcdir}"
