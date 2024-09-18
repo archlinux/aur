@@ -1,12 +1,12 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoakanter@gmail.com>
 pkgname="nerdfetch-git"
-pkgver=r338.ge06e652
+pkgver=r343.ab1373a
 pkgrel=1
 pkgdesc="A POSIX fetch using NerdFonts"
 arch=('any')
 url="https://github.com/ThatOneCalculator/NerdFetch"
 license=('MIT')
-depends=('which')
+depends=()
 optdepends=('nerd-fonts: NerdFont to show icons in fetch')
 source=("git+$url.git")
 noextract=()
