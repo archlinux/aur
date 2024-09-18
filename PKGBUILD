@@ -1,13 +1,13 @@
 # Maintainer: Thayne McCombs <astrothayne at gmail dot com>
 pkgname=swaytools
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Quality of life tools for sway'
 arch=('any')
 url="https://github.com/tmccombs/swaytools"
 license=('GPL-3.0-only')
 depends=('python' 'sway')
-makedepends=('python-setuptools' 'python-build' 'python-installer')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('slurp: for swayinfo' 'bemenu: for winfocus' 'dmenu: for winfocus')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tmccombs/swaytools/archive/$pkgver.tar.gz")
 

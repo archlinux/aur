@@ -1,13 +1,14 @@
 pkgbase = swaytools
 	pkgdesc = Quality of life tools for sway
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tmccombs/swaytools
 	arch = any
 	license = GPL-3.0-only
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = sway
 	optdepends = slurp: for swayinfo
