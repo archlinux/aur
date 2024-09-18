@@ -6,10 +6,10 @@ pkgname=qtads
 pkgver=3.3.0
 pkgrel=1
 url="https://realnc.github.io/qtads/"
-license=('GPL')
+license=('GPL-3.0-or-later')
 pkgdesc="interpreter for TADS games (compatible with TADS 2 and 3, multimedia and text)"
 arch=('i686' 'x86_64')
-depends=('qt5-base' 'fluidsynth' 'mpg123' 'libvorbis' 'hicolor-icon-theme' 'libsndfile')
+depends=('qt5-base' 'sdl2' 'fluidsynth' 'mpg123' 'libvorbis' 'hicolor-icon-theme' 'libsndfile')
 source=(
 	"https://github.com/realnc/qtads/releases/download/v${pkgver}/qtads-${pkgver}-source.tar.xz"
 )
