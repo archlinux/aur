@@ -1,0 +1,20 @@
+pkgbase = kl-bin
+	pkgdesc = An interactive Kubernetes log viewer for your terminal.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/robinovitch61/kl
+	license = MIT
+	depends = glibc
+	conflicts = kl
+	provides = kl
+	arch = aarch64
+	source_aarch64 = https://github.com/robinovitch61/kl/releases/download/v0.1.0/kl_0.1.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 64de1d89025c4302ce17cfdce8d2bf03ecc86d7f6bc9b18894471b00a651ecd9
+	arch = i686
+	source_i686 = https://github.com/robinovitch61/kl/releases/download/v0.1.0/kl_0.1.0_Linux_i386.tar.gz
+	sha256sums_i686 = d2c9346c87b9aec5a345c79e44717f47fbc3735689fbf47c2a76a02871f9a2ef
+	arch = x86_64
+	source_x86_64 = https://github.com/robinovitch61/kl/releases/download/v0.1.0/kl_0.1.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = b6f6bc2dcb709be5f64ff317006d501b69e9c48c08fbaa9019f01926bb63ba86
+	
+pkgname = kl-bin
