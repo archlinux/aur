@@ -48,5 +48,5 @@ package() {
     cd $_pkgname
     install -Dm0755 -t "${pkgdir}/usr/bin/" target/release/wasm2luajit
     install -Dm0755 -t "${pkgdir}/usr/bin/" target/release/wasm2luau
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
