@@ -1,7 +1,7 @@
 pkgbase = papers
 	pkgdesc = Document viewer (PDF, PostScript, XPS, djvu, tiff, cbr, cbz, cb7, cbt)
-	pkgver = 46.1
-	pkgrel = 2
+	pkgver = 47.0
+	pkgrel = 1
 	url = https://apps.gnome.org/Papers/
 	arch = x86_64
 	license = GPL
@@ -16,19 +16,16 @@ pkgbase = papers
 	makedepends = glib2-devel
 	depends = dconf
 	depends = djvulibre
-	depends = gsettings-desktop-schemas
 	depends = gsfonts
-	depends = gst-plugins-base-libs
 	depends = gtk4
 	depends = gvfs
 	depends = libarchive
 	depends = libgxps
 	depends = libadwaita
-	depends = libsecret
 	depends = libspectre
 	depends = exempi
 	depends = poppler-glib
-	source = git+https://gitlab.gnome.org/GNOME/Incubator/papers.git#commit=745aa740b909a0ee6a55c1fa3bf593d97b766733
+	source = git+https://gitlab.gnome.org/GNOME/Incubator/papers.git#commit=9e3835083645832a80313a41468d76ebdbab59a9
 	b2sums = SKIP
 
 pkgname = papers
