@@ -2,7 +2,7 @@
 pkgname=simp1e-amber-hyprcursor
 __themename=simp1e-amber-neron
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A gold-yellow hyprcursor. Xcursor version also provided as fallback."
 arch=('x86_64')
 url="https://codeberg.org/useless-utils/simp1e-amber-hyprcursor"
@@ -28,4 +28,5 @@ package() {
   cp -a --no-preserve=ownership -t "$pkgdir/usr/share/icons/" "$srcdir/$__themename-hyprcursor"
   cp -a --no-preserve=ownership -t "$pkgdir/usr/share/icons/" "$srcdir/$__themename" # xcursor
   # xcursor dir = themename bc that's how it gets theme names for use in e.g. gsettings
+  cp -a --no-preserve=ownership -t "$pkgdir/usr/share/icons/" "$srcdir/$__themename-left"
 }

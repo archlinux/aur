@@ -1,7 +1,7 @@
 pkgbase = simp1e-amber-hyprcursor
 	pkgdesc = A gold-yellow hyprcursor. Xcursor version also provided as fallback.
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/useless-utils/simp1e-amber-hyprcursor
 	arch = x86_64
 	license = GPL-3.0-or-later
