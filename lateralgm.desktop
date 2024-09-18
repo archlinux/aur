@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=LateralGM
+Comment=Open-source Game Maker source file editor
+Exec=lateralgm
+Icon=lateralgm
+Terminal=false
+Categories=Java;Development;

@@ -1,0 +1,18 @@
+pkgbase = lateralgm-bin
+	pkgdesc = Open-source Game Maker source file editor
+	pkgver = 1.8.234
+	pkgrel = 1
+	url = http://lateralgm.org/
+	arch = any
+	depends = java-runtime
+	provides = lateralgm
+	source = https://github.com/IsmAvatar/LateralGM/releases/download/v1.8.234/lateralgm.jar
+	source = lateralgm
+	source = lateralgm.desktop
+	source = lateralgm.png
+	md5sums = adc80748604b8f10d05f7ff14a3b7707
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = lateralgm-bin
