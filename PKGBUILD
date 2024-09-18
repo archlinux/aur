@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=netron-git
 _pkgname=Netron
-pkgver=7.8.7.r0.g323458c
+pkgver=7.8.9.r0.g3b888e2
 _electronversion=32
 _nodeversion=20
 pkgrel=1
@@ -60,16 +60,10 @@ build() {
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export SYSTEM_ELECTRON_VERSION="32.1.0"
     HOME="${srcdir}/.electron-gyp"
-    if [ ! -f .npmrc ]; then
-        touch .npmrc
-    fi
-    if [ ! -w .npmrc ]; then
-        chmod 644 .npmrc
-    fi
     {
-        echo -e '\n'
+        echo -e '\n'	
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
         if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
@@ -79,10 +73,11 @@ build() {
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         fi
     } >> .npmrc
+    sed -i "/python -m pip/d;/--mac /d;/--win /d;/npx electron-builder/d" package.js
+    sed -i "296,297d" package.js
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
-    sed '/python -m pip/d;/--mac /d;/--win /d;/--linux snap/d;s/--linux appimage --x64/-l --dir/' -i package.js
-    NODE_ENV=development    npm install
-    NODE_ENV=production     npm run build
+    NODE_ENV=development    npm run install
+    NODE_ENV=production     npx electron-builder -l --dir
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
