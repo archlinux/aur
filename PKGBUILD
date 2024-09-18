@@ -3,7 +3,7 @@
 
 _pkgname=wootility
 pkgname=${_pkgname}-appimage
-pkgver=4.6.21
+pkgver=4.7.2
 pkgrel=1
 pkgdesc='Utility for configuring Wooting keyboards (binary AppImage version)'
 arch=('x86_64' 'x86_64_v3')
@@ -18,7 +18,7 @@ _appimage="${_pkgname}-lekker-${pkgver}.AppImage"
 install=$pkgname.install
 source=("https://s3.eu-west-2.amazonaws.com/wooting-update/wootility-lekker-linux-latest/${_appimage}"
         '70-wooting.rules')
-b2sums=('7bf94b2709904870d39bafa87b8eb3ca717e082a727c47b0d65a7cfb58cdc7dde6b9003a266ae701c09640d84f85121469cc6b66498233234af29d1b291683c4'
+b2sums=('0f94591dc030a8bd2a49b2ee4e3a790d059415e49ed581326fd96a06dfa509778efb4ee9423dd2a000ea0d93057a1ecf5f34deae3fd2265fe355fd784ff8bc8c'
         '80b4a516f8aafb6eada36cdde59295f2358b22e6cc28b1a21b0b5f22a59bcfabc63bba956d23544faca5fd76a1c4b4c1ff98ada41e7c9ad015d48c7c436dbac1')
 
 prepare() {
