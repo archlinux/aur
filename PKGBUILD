@@ -2,7 +2,7 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgname=wails
-pkgver=2.9.1 # renovate: datasource=github-tags depName=wailsapp/wails
+pkgver=2.9.2 # renovate: datasource=github-tags depName=wailsapp/wails
 pkgrel=1
 pkgdesc="Create desktop apps using Go and Web Technologies"
 arch=(x86_64)
@@ -16,8 +16,8 @@ makedepends=(
 )
 optdepends=('docker')
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha512sums=('6ce54086c3b8064a8eaafc4c9a364cbf7fef54abd2b312059d641dc0f62e389ffcdd13702bbcfa8620433db108aea6db7e7499c06c9fa5ab3907b3c40493efdd')
-b2sums=('51fdc8ffe1ef33fe873ecdadf62cbf5864e5938fdf71abdc1e383a06f5b63d1de808acaf3468d72d4e1716c56a5e0b5a87ee2e54c41d3b5c4ac17e3ef370694c')
+sha512sums=('1608cce7ad76cc638c332c8ceb7f4ad27a2d653991a124f7266e2135442f2081fa43da073b0c27f6a5b4f49371702e471a449dfaade0f009fafad0eb5bfc949c')
+b2sums=('f019c953cea43ccf8fa83f8c9717b1baba128c2821ec56493f3cc8b7124c9de6589292923283e87ce0eae5771f3463e066f17450754515df7a64f17b26eab6eb')
 
 prepare() {
   mkdir -vp $pkgname-$pkgver/build
