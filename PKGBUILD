@@ -2,7 +2,7 @@
 
 pkgname=kickpad
 pkgver=1.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Kick drum audio sample generator'
 arch=(x86_64)
 url='https://github.com/xyproto/kickpad'
@@ -18,7 +18,7 @@ prepare() {
 
 build() {
   cd $pkgname
-  go build -tags exclude_cimgui_sdl -v -trimpath -buildmode=pie -ldflags="-s -w -extldflags '$LDFLAGS'"
+  go build -tags exclude_cimgui_sdl -mod=mod -v -trimpath -buildmode=pie -ldflags="-s -w -extldflags '$LDFLAGS'"
 }
 
 package() {

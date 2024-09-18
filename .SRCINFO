@@ -1,7 +1,7 @@
 pkgbase = kickpad
 	pkgdesc = Kick drum audio sample generator
 	pkgver = 1.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xyproto/kickpad
 	arch = x86_64
 	license = MIT
