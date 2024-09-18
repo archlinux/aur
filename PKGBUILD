@@ -4,17 +4,15 @@
 # aarch64 tester: Irissman    <irissman@probus.ca>
 # armv7h tester: kauron
 pkgname=duplicati-canary-bin
-pkgver=2.0.9.105
+pkgver=2.0.9.107
 pkgrel=1
-_date=2024-08-29
+_date=2024-09-11
 _branch=canary
 pkgdesc="A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers"
 url="http://duplicati.com"
 license=('MIT')
 install=duplicati.install
 source=(
-#    "https://updates.duplicati.com/${_branch}/${pkgver}_${_branch}_${_date}.zip" # duplicati.com seems to be blocked in Russia, see https://aur.archlinux.org/packages/duplicati-latest/#comment-746652
-  #"https://github.com/duplicati/duplicati/releases/download/v${pkgver}-${pkgver}_${_branch}_${_date}/duplicati-${pkgver}_${_branch}_${_date}.zip"
   duplicati-user.service
   duplicati.service
   duplicati.sysusers
@@ -43,8 +41,8 @@ sha256sums=('fbc76396405c645a3b9b7f00973540d4824f0cf634fa8369c6dfe2dd711cb38c'
             'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
             'b6ca3d280feb753ded94bb44eef821a0dac0c0c7ed7f37dea76d445a64386c86'
             '99591e96c340b49b47341315cb42f8ac12ca66dc4d22550e4acd37cce84e8b36')
-sha256sums_x86_64=('ed812165c5ca32e4f89fa2da86bb1ef45a407d5a5f1858563e633e846c82a854')
-sha256sums_aarch64=('7cc45cc03d5b1382dcac3ee07fab9a0b8fe30b7e181635d5a0e463fa1578ec3a')
+sha256sums_x86_64=('c20884eb4b5ffde9df65071f0556c829e6ad2f5f7728e54a3083b7436d80fc35')
+sha256sums_aarch64=('c05444ed734b7c0dbfd82103c42a08a3b581d49a5b9cf58e3d47a26de6256673')
 
 
 

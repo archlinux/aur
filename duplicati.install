@@ -5,6 +5,11 @@ post_install() {
   cat  <<EOF
   * UI can be accessed via following URL: http://localhost:8200
   * Running duplicati user instance (using current user account)
+    - set up database password:              systemctl --user edit duplicati
+           [Service]
+           Environment="SETTINGS_ENCRYPTION_KEY=<your_password_here>"
+      (see https://github.com/duplicati/duplicati/releases/tag/v2.0.9.106_canary_2024-09-03 for details)
+
     - to start duplicati manually:           systemctl --user start duplicati
     - to autostart duplicati on user login:  systemctl --user enable duplicati
   *
@@ -16,6 +21,8 @@ post_install() {
 EOF
 }
 
+## arg 1:  the new package version
+## arg 2:  the old package version
 post_upgrade() {
   mkdir -p /var/lib/duplicati
   chown -R duplicati:duplicati /var/lib/duplicati
@@ -70,6 +77,20 @@ EOF
   * the default http://localhost:8200. The TrayIcon service will authenticate for you,
   * but see https://github.com/duplicati/duplicati/releases/tag/v2.0.9.102_canary_2024-08-02
   * for more details.
+
+EOF
+  fi
+
+  if [ $(vercmp $2 2.0.9.106-1) -lt 0 ]; then
+    cat <<EOF
+  * Version 2.0.9.106 changes the way the database is encrypted. The previously
+  * automatically generated password will not work. You will need to provide a
+  * password for the database using the environment variable SETTINGS_ENCRYPTION_KEY.
+  * See https://github.com/duplicati/duplicati/releases/tag/v2.0.9.106_canary_2024-09-03 for details.
+  * One way to provide the environment variable is by running
+  * systemctl --user edit duplicati and adding
+      [Service]
+      Environment="SETTINGS_ENCRYPTION_KEY=<your_password_here>"
 
 EOF
   fi
