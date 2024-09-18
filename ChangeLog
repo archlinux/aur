@@ -954,3 +954,8 @@ Fixes:
 - We fixed an issue that could make it impossible to authenticate Outlook accounts due to persistent requests for an admin authorisation, even if this was already granted.
 - A problem that could cause the event panel not to open in some rare cases has been rectified.
 - A bug that was causing unhealthy accounts to appear as correctly connected has been fixed.
+
+
+=== Morgen 3.5.8
+New Features:
+- Schedule tasks from Obsidian: Sync your Obsidian Tasks to Morgen using the Emoji format. Schedule Obsidian tasks in your calendars and mark them as complete from Morgen. The two way sync allows for task status, done dates, and due dates to be updated in Morgen and synced with your Obsidian vault.
