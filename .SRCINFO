@@ -1,0 +1,31 @@
+pkgbase = uiua-git
+	pkgdesc = A stack-based array programming language
+	pkgver = 0.13.0.dev.1.r187.g0cb738fc
+	pkgrel = 1
+	url = https://www.uiua.org/
+	arch = aarch64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = binaryen
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust-wasm
+	makedepends = trunk
+	makedepends = wasm-bindgen
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	provides = uiua=0.13.0.dev.1.r187.g0cb738fc
+	conflicts = uiua
+	options = !lto
+	source = uiua::git+https://github.com/uiua-lang/uiua#commit=0cb738fcbd44b33481fab84cc2fbe8a2c2fc44dd
+	md5sums = SKIP
+
+pkgname = uiua-git
+
+pkgname = uiua-docs-git
+	pkgdesc = A stack-based array programming language (documentation)
