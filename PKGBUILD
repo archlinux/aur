@@ -9,7 +9,7 @@ pkgname=(
   libxml2
   libxml2-docs
 )
-pkgver=2.13.3
+pkgver=2.13.4
 pkgrel=1
 pkgdesc="XML C parser and toolkit"
 url="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
@@ -33,7 +33,7 @@ source=(
   https://www.w3.org/XML/Test/xmlts20130923.tar.gz
   0001-HACK-Don-t-run-fuzzing-tests.patch
 )
-b2sums=('5b3d8b9981ca7ed336e54094d6b7d10a4fab2d74b548d9cfce52d5fde62b927dc18fde60509e9d69bc00b0dbed709971cfd28fcc30fe825a491d97a9a5775af7'
+b2sums=('dcf0d28e14f7f9515ea7e03b8d23f2646221c7dafef3d7555f4809bf51260470554c39db7500ecb126d176000e29908b03448a04d0c1281a125a5346aac4fa9b'
         '63a47bc69278ef510cd0b3779aed729e1b309e30efa0015d28ed051cc03f9dfddb447ab57b07b3393e8f47393d15473b0e199c34cb1f5f746b15ddfaa55670be'
         '151e84ee17051eeecfa8c62a7376ff269860f3ff6d33fb92209ff5f8dc9576a5648bbe9ffc96317695c069760ccfecaa3e6f19fb7a7c2e9f039a146d7fc8a516')
 
