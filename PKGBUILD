@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=toastui
-_pkgver=0.3.3
+_pkgver=0.3.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ff076c3c90f56a3ff70bb6303dd650e8')
-b2sums=('2abaf6716a4f674d59a7a5de6d3e10e208290e0f8fe5cfa139805c025cead1af770ae7f9fe14f73c4d499caf3aa1164fb715296216ef4752f695ff1d918a5f6d')
+md5sums=('c4f6efd66ef18e92c32de93ca91e12df')
+b2sums=('041da6c35c81fdc28576af5dde02e6ca19207d09490f68a8b2aded846e4f099f36479ea65e836cefda0ce1c038ee73c9fc7ca6444f000d7af11cf520547d79c0')
 
 build() {
   mkdir build
