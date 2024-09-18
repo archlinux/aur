@@ -1,23 +1,41 @@
 # Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 
 pkgname=contour-git
-pkgver=0.4.4.r4453.2aa9cac7
+pkgver=0.5.1.r4645.fae1f257
 pkgrel=1
 pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
 url="https://github.com/contour-terminal/contour"
 license=('Apache-2.0')
-depends=('harfbuzz' 'fontconfig' 'yaml-cpp' 'qt6-base' 'qt6-declarative' 'qt6-multimedia'
-         'qt6-shadertools' 'qt6-wayland' 'qt6-5compat' 'libutempter')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'libxml2'
-             'python' 'range-v3' 'fmt' 'microsoft-gsl' 'catch2'
-             'clang' 'llvm')
+depends=(
+  fontconfig
+  harfbuzz
+  libutempter
+  qt6-5compat
+  qt6-base
+  qt6-declarative
+  qt6-multimedia
+  qt6-shadertools
+  qt6-wayland
+  yaml-cpp
+)
+makedepends=(
+  catch2
+  cmake
+  extra-cmake-modules
+  fmt
+  git
+  libxml2
+  microsoft-gsl
+  ninja
+  python
+  range-v3
+)
 optdepends=('ncurses: for contour terminfo database')
 source=("${pkgname}::git+https://github.com/contour-terminal/contour.git")
 sha512sums=('SKIP')
 provides=('contour')
 conflicts=('contour')
-options=(!strip)
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -27,19 +45,6 @@ pkgver() {
 }
 
 build() {
-  export AR=llvm-ar
-  export CC=clang
-  export CXX=clang++
-  export NM=llvm-nm
-  export RANLIB=llvm-ranlib
-
-  export XDG_STATE_HOME="$PWD"
-
-  _cpuCount=$(grep -c -w ^processor /proc/cpuinfo)
-
-  CFLAGS=${CFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
-  CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
-
   PREPARE_ONLY_EMBEDS=ON OS_OVERRIDE=arch ${pkgname}/scripts/install-deps.sh
 
   cmake -S"${pkgname}" -Bbuild \
@@ -48,7 +53,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCONTOUR_QT_VERSION=6 \
         -DCONTOUR_TESTING=ON
-  cmake --build build --parallel $_cpuCount
+  cmake --build build
 }
 
 check() {
@@ -64,12 +69,6 @@ check() {
 }
 
 package() {
-  export AR=llvm-ar
-  export CC=clang
-  export CXX=clang++
-  export NM=llvm-nm
-  export RANLIB=llvm-ranlib
-
   cd "${srcdir}/build"
   DESTDIR="${pkgdir}" cmake --build . --target install
 
