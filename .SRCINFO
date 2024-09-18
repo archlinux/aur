@@ -1,7 +1,7 @@
 pkgbase = code-expert-sync-appimage
 	pkgdesc = Allows syncing of Code Expert projects to a local file system
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CodeExpertETH/CodeExpertSync
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = code-expert-sync-appimage
 	noextract = code-expert-sync-appimage-1.0.1.AppImage
 	options = !strip
 	source = code-expert-sync-appimage-1.0.1.AppImage::https://github.com/CodeExpertETH/CodeExpertSync/releases/download/v1.0.1/code-expert-sync_1.0.1_amd64.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/CodeExpertETH/CodeExpertSync/v1.0.1/LICENSE.md
+	source = LICENSE_1.0.1::https://raw.githubusercontent.com/CodeExpertETH/CodeExpertSync/v1.0.1/LICENSE.md
 	sha256sums = cf3db6d88aa4c4e8dd9eab86099a511358ba7f3bde30c458de36dedf17c0a01b
 	sha256sums = 1847febc3b265f74a6fe0c1cc8c665f46c22a164d5ed33d968bd58b426d3521a
 

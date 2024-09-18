@@ -4,7 +4,7 @@ _pkgname=code-expert-sync
 
 pkgname="${_pkgname}"-appimage
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows syncing of Code Expert projects to a local file system"
 arch=('x86_64')
 url="https://github.com/CodeExpertETH/CodeExpertSync"
@@ -15,8 +15,9 @@ options=(!strip)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _appimage="${pkgname}-${pkgver}.AppImage"
+_LICENSE=LICENSE_${pkgver}
 source=("${_appimage}::https://github.com/CodeExpertETH/CodeExpertSync/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.AppImage"
-	LICENSE::"https://raw.githubusercontent.com/CodeExpertETH/CodeExpertSync/v${pkgver}/LICENSE.md"
+	${_LICENSE}::"https://raw.githubusercontent.com/CodeExpertETH/CodeExpertSync/v${pkgver}/LICENSE.md"
 )
 noextract=("${_appimage}")
 sha256sums=('cf3db6d88aa4c4e8dd9eab86099a511358ba7f3bde30c458de36dedf17c0a01b' '1847febc3b265f74a6fe0c1cc8c665f46c22a164d5ed33d968bd58b426d3521a')
@@ -37,7 +38,7 @@ build() {
 package() {
 	# AppImage
 	install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
-	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/${_LICENSE}" "${pkgdir}/opt/${pkgname}/LICENSE"
 
 	# Desktop file
 	install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" \
@@ -53,5 +54,5 @@ package() {
 
 	# Symlink license
 	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-	ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+	ln -s "/opt/$pkgname/${_LICENSE}" "$pkgdir/usr/share/licenses/$pkgname"
 }
