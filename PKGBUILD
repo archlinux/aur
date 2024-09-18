@@ -1,7 +1,7 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=python-proton-core
-pkgver=0.2.0
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="The proton-core component contains core logic used by the other Proton components."
 arch=("any")
