@@ -4,7 +4,7 @@
 
 pkgname=gqrx
 pkgver=2.17.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Software defined radio receiver powered by GNU Radio and Qt."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.gqrx.dk/"

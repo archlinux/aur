@@ -1,7 +1,7 @@
 pkgbase = gqrx
 	pkgdesc = Software defined radio receiver powered by GNU Radio and Qt.
 	pkgver = 2.17.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.gqrx.dk/
 	arch = i686
 	arch = x86_64
