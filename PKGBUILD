@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cinematic-bin
 _pkgname=Cinematic
-pkgver=3.0.3
+pkgver=3.1.0
 _electronversion=27
 pkgrel=1
 pkgdesc="Gorgeous desktop movie collections"
@@ -23,19 +23,20 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/lacymorrow/cinematic/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5b2ecf6a53ee29b7de9b4b61b20fd2f935d5e798f9542ba5d92215cc9fee57e3'
+sha256sums=('e1514d056a6963f91108ab623f36b0eab4fe1698de91568bf292f72528b074cd'
             'e66c269d4819aaab34b49ef5220c4ddab6756f21bb5180761a4eb8561f2b7bbd'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g;s|Video|AudioVideo|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -e "
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-bin}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/${pkgname%-bin}/
+        s/@options@//
+    " -i "${srcdir}/${pkgname%-bin}.sh"
+    sed "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/;s/Video/AudioVideo/" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g" -i "${srcdir}/app.asar.unpacked/dist/main/"{main.js,main.js.map}
+    sed "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/" -i "${srcdir}/app.asar.unpacked/dist/main/"{main.js,main.js.map}
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
