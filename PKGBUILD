@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=orature-bin
 _pkgname=Orature
-pkgver=3.1.24_qa
-_subver=9639
+pkgver=3.1.25_qa
+_subver=9702
 pkgrel=1
 pkgdesc="An application for creating Narrations and Translations of Audio Bibles, Books, Resources, Commentaries, etc."
 arch=("x86_64")
@@ -25,12 +25,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-linux-${pkgver//_/-}+${_subver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c0583c54572d61a0a156d6d42821c2e16c14f1d38752048a4365bcf37e17a4a2'
-            'aebe61cab6e7e7a230f235d24854e2fffd46787218d513d82cd1735d6f2c87f0')
+sha256sums=('ad5d7e683f409c42acc063b6990104562950d1e5d0f2f6db474421c91224f136'
+            '127c7998b436e7da189f9059bb854808fa9aa33dd2f9695a3cf1b5f9e39d13c3')
 build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${pkgname%-bin}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@appname@/${pkgname%-bin}/
+        s/@runname@/${pkgname%-bin}/
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
     bsdtar -xf "${srcdir}/data."*
     find "${srcdir}/opt/${pkgname%-bin}/jre" -type f -exec chmod a-w {} \;
@@ -38,7 +39,8 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -r "${srcdir}/opt" "${pkgdir}"
+    install -Dm755 -d "${pkgdir}/usr/lib"
+    cp -r "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/.install4j/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
