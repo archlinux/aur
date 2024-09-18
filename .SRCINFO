@@ -1,0 +1,18 @@
+pkgbase = vasp2qe-git
+	pkgdesc = Convert VASP files (POSCAR) to quantum espresso files (scf.in)
+	pkgver = r2141.dc9452d
+	pkgrel = 1
+	url = https://github.com/rnels12/VASP2QE.git
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPLv3
+	makedepends = boost
+	makedepends = gcc
+	makedepends = eigen
+	makedepends = pkgconf
+	depends = boost-libs
+	source = VASP2QE::git+https://github.com/rnels12/VASP2QE.git
+	md5sums = SKIP
+
+pkgname = vasp2qe-git
