@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=trep-tracker-bin
-pkgver=2.0.1_beta
+pkgver=2.2.0_beta
 _electronversion=31
 pkgrel=1
 pkgdesc="Minimal, fast and powerful task tracker/todo list app with task tagging and quick views."
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/.}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ae8acdf09338ad33789e3939945ffd87240ef6057d5ddd0ee66334e679c98e05'
+sha256sums=('d67043f1a186b6aaf7c36d9ec1e570ed3994746d616bcadfc454b4f1f1b5863d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
