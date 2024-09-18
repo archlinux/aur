@@ -3,7 +3,7 @@
 pkgname=linux-firmware-valve
 # There are two source packages that use a date version. Set the PKGBUILD version to mirror whichever source is newer.
 pkgver=20231113.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Firmware files for Steam Deck devices from SteamOS"
 url="https://steamdeck-packages.steamos.cloud/archlinux-mirror/jupiter-main/os/x86_64/"
 # Re-using the same license from the related SteamOS firmware packages.
@@ -39,7 +39,4 @@ package() {
     # Steam Deck OLED sound firmware files.
     tar -xvf steamdeck-dsp-*-any.pkg.tar.zst -C "${pkgdir}/"
     rm -f "${pkgdir}/.BUILDINFO" "${pkgdir}/.MTREE" "${pkgdir}/.PKGINFO" "${pkgdir}/etc/wireplumber"
-
-    # Fix Steam Deck OLED Wi-Fi firmware with Linux >= 6.9 kernels.
-    ln -s QCA206X "${pkgdir}/usr/lib/firmware/ath11k/QCA2066"
 }
