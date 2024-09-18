@@ -1,0 +1,4 @@
+[ruby-mbox2csv]
+source = "git"
+git = "https://codeberg.org/firefly-cpp/mbox2csv.git"
+use_latest_release = "true"
