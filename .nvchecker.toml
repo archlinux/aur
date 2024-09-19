@@ -1,0 +1,4 @@
+[pypy3-pythran]
+source = "github"
+github = "serge-sans-paille/pythran"
+use_max_tag = "true"

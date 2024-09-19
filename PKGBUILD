@@ -1,23 +1,26 @@
-pkgname=pypy3-pythran
-pkgver=0.11.0
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Michel Zou <xantares09@hotmail.com>
+_base=pythran
+pkgname=pypy3-${_base}
+pkgdesc="Ahead of Time compiler for numeric kernels"
+pkgver=0.16.1
 pkgrel=1
-pkgdesc='Ahead of Time compiler for numeric kernels'
 arch=(any)
-url='https://pythran.readthedocs.io/'
-license=(BSD)
+url="https://github.com/serge-sans-paille/${_base}"
+license=(BSD-3-Clause)
 depends=(pypy3-ply pypy3-numpy pypy3-beniget xsimd boost)
 makedepends=(pypy3-setuptools)
-source=(https://files.pythonhosted.org/packages/source/p/pythran/pythran-$pkgver.tar.gz)
-sha256sums=('0b2cba712e09f7630879dff69f268460bfe34a6d6000451b47d598558a92a875')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha512sums=('7a89546b52bdae9bdaeba42768ac822c584a3714b8f4e32417d793454dc0b5492342dfd393d92f8ecee12c854bc39e418f5860aadd00d328afef7b17ebddec99')
 
 build() {
-  cd pythran-$pkgver
+  cd ${_base}-${pkgver}
   pypy3 setup.py build
 }
 
 package() {
-  cd pythran-$pkgver
-  pypy3 setup.py install --prefix=/opt/pypy3 --root="$pkgdir" --optimize=1 --skip-build
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" pypy3 setup.py install --prefix=/opt/pypy3 --root="$pkgdir" --optimize=1 --skip-build
   rm -r "$pkgdir"/opt/pypy3/lib/py*/site-packages/pythran/{boost,xsimd} # Remove bundled boost and xsimd
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }

@@ -1,17 +1,17 @@
 pkgbase = pypy3-pythran
 	pkgdesc = Ahead of Time compiler for numeric kernels
-	pkgver = 0.11.0
+	pkgver = 0.16.1
 	pkgrel = 1
-	url = https://pythran.readthedocs.io/
+	url = https://github.com/serge-sans-paille/pythran
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = pypy3-setuptools
 	depends = pypy3-ply
 	depends = pypy3-numpy
 	depends = pypy3-beniget
 	depends = xsimd
 	depends = boost
-	source = https://files.pythonhosted.org/packages/source/p/pythran/pythran-0.11.0.tar.gz
-	sha256sums = 0b2cba712e09f7630879dff69f268460bfe34a6d6000451b47d598558a92a875
+	source = pythran-0.16.1.tar.gz::https://github.com/serge-sans-paille/pythran/archive/0.16.1.tar.gz
+	sha512sums = 7a89546b52bdae9bdaeba42768ac822c584a3714b8f4e32417d793454dc0b5492342dfd393d92f8ecee12c854bc39e418f5860aadd00d328afef7b17ebddec99
 
 pkgname = pypy3-pythran
