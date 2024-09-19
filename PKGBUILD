@@ -4,8 +4,8 @@
 # Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 pkgname=netatalk2
 _pkgname=netatalk
-pkgver=2.4.6
-pkgrel=5
+pkgver=2.4.9
+pkgrel=1
 pkgdesc="Open-source implementation of the Apple Filing Protocol (for old Macs)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://netatalk.sourceforge.io"
@@ -42,18 +42,16 @@ options=()
 install=
 source=(
     "https://github.com/Netatalk/$_pkgname/releases/download/$_pkgname-${pkgver//./-}/$_pkgname-$pkgver.tar.xz"
-    "lockfile_path.patch"
 )
-sha256sums=('067c8b0ed1e583547794c31c205d59f6fb764d69da7df8f3c04957dcb97e1e19'
-            'cb4ad2fa4c66d06d0bfc1c47ec3c9e74bc3d54e54d9797598c22a24485c7b620')
+sha256sums=('c0901e40925eca22bed5eeec1a43606d8183dff97d0cd938d1e22a6be40aa182')
 
-prepare() {
-    cd "$_pkgname-$pkgver"
-    for p in "$srcdir/"*.patch; do
-        echo "Applying patch: $p"
-        patch -p1 -i "$p"
-    done
-}
+#prepare() {
+#    cd "$_pkgname-$pkgver"
+#    for p in "$srcdir/"*.patch; do
+#        echo "Applying patch: $p"
+#        patch -p1 -i "$p"
+#    done
+#}
 
 build() {
     arch-meson "$_pkgname-$pkgver" build \
