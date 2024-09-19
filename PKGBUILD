@@ -3,7 +3,7 @@
 pkgname=fortune-mod-mingju-git
 _pkg=mingju
 pkgver=r17.75a4765
-pkgrel=1
+pkgrel=2
 pkgdesc="Chinese mingju for fortune-mod"
 url="https://github.com/xuchunyang/$_pkg"
 license=(GPL-3.0-or-later)
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$_pkg"
-  sed -e 's/"\s+/"/g; s/[“”…]//g; s/（[^）]*）//g; s/—/一/g; s/"},{"/\n%\n/g; s/contents":"//g; s/","source":"/\n ──── /g; s/]/\n%\n/' < "$_pkg.json" | tr -d '"{}[' > "$_pkg"
+  sed -e 's/[[:blank:]]//g; s/yǒu//g; s/[“”…]//g; s/（[^）]*）//g; s/—/一/g; s/"},{"/\n%\n/g; s/contents":"//g; s/","source":"/\n ──── /g; s/]/\n%\n/' < "$_pkg.json" | tr -d '"{}[' > "$_pkg"
   opencc -i "$_pkg" -o "$_pkg" -c t2s
   strfile "$_pkg" "$_pkg.dat"
 }

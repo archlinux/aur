@@ -1,7 +1,7 @@
 pkgbase = fortune-mod-mingju-git
 	pkgdesc = Chinese mingju for fortune-mod
 	pkgver = r17.75a4765
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xuchunyang/mingju
 	arch = any
 	license = GPL-3.0-or-later
