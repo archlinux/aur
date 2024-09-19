@@ -1,0 +1,5 @@
+[openrocket-beta]
+source = "github"
+github = "openrocket/openrocket"
+use_latest_release = true
+include_prereleases = true
