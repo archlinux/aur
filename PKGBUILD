@@ -1,7 +1,7 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 pkgname=linutil-git
 _pkgname=linutil
-pkgver=2024.09.19.r28.gfb2b6fc
+pkgver=2024.09.19.r30.gc3eea0d
 pkgrel=1
 pkgdesc="Chris Titus Tech's Linutil is a distro-agnostic toolbox designed to simplify everyday Linux tasks."
 arch=('x86_64')
@@ -11,6 +11,7 @@ source=("git+https://github.com/ChrisTitusTech/$_pkgname")
 sha256sums=(SKIP)
 makedepends=(rustup)
 depends=('git' 'pacman' 'glibc' 'gcc-libs')
+optdepends=('ttf-nerd-fonts-symbols: symbols and icons')
 conflicts=($_pkgname)
 provides=($_pkgname)
 
