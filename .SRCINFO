@@ -1,6 +1,6 @@
 pkgbase = python-stdatamodels
 	pkgdesc = Core support for DataModel classes used in calibration pipelines
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://stdatamodels.readthedocs.io
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = python-stdatamodels
 	makedepends = python-astropy
 	makedepends = python-asdf
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/s/stdatamodels/stdatamodels-2.0.0.tar.gz
-	md5sums = 33d2c2834b86f7e2c22a402656f1668e
+	source = https://files.pythonhosted.org/packages/source/s/stdatamodels/stdatamodels-2.1.0.tar.gz
+	md5sums = fcc26f6ae8a1c334c1209b4ffb7e275e
 
 pkgname = python-stdatamodels
 	depends = python>=3.10
