@@ -2,7 +2,7 @@
 pkgname=lateralgm-bin
 _pkgname='lateralgm-bin'
 pkgver=1.8.234
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source Game Maker source file editor'
 url='http://lateralgm.org/'
 arch=(any)
@@ -16,6 +16,7 @@ md5sums=('adc80748604b8f10d05f7ff14a3b7707'
          'SKIP'
          'SKIP')
 provides=('lateralgm')
+options=(!strip)
 
 package() {
   cd $srcdir
