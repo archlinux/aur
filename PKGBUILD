@@ -8,7 +8,7 @@ license=("MIT")
 url="https://github.com/Askannz/optimus-manager"
 
 epoch=1
-pkgver=r735.c10f748.python3.12
+pkgver=r739.99dfe2f.python3.12
 pkgrel=1
 arch=("any")
 
@@ -117,6 +117,7 @@ PackageFiles () {
 	PackageLicense
 	PackageLoginManagers
 	PackageModprobe
+	PackageProfile
 	PackageSystemd
 }
 
@@ -174,6 +175,13 @@ PackageModprobe () {
 	install -Dm644 \
 		"${srcdir}/optimus-manager/modules/optimus-manager.conf" \
 		"${pkgdir}/usr/lib/modprobe.d/optimus-manager.conf"
+}
+
+
+PackageProfile () {
+	install -Dm644 \
+		"${srcdir}/optimus-manager/profile.d/optimus-manager.sh" \
+		"${pkgdir}/etc/profile.d/optimus-manager.sh"
 }
 
 
