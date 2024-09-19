@@ -1,35 +1,42 @@
-# Maintainer: jopejoe1 <johannes@joens.email>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: jopejoe1 <johannes@joens.email>
+
 pkgname=python-bumpfontversion
+_pyname=${pkgname#python-}
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Bumps the version of a font source file'
 arch=(any)
-url=https://pypi.org/project/bumpfontversion/
-license=(Apache)
-depends=(python python-bump2version python-fonttools-git python-glyphslib python-openstep-plist python-ufolib2 python-fonttools)
-source=(https://files.pythonhosted.org/packages/69/2a/904c0918652ec6fa1b611e23b0ea33029e8e740190b255d8516c593fc1b5/bumpfontversion-0.4.1-py3-none-any.whl)
-noextract=(bumpfontversion-0.4.1-py3-none-any.whl)
-md5sums=(858d4a99e49fdba04f242854a84c904e)
+url="https://github.com/simoncozens/$_pyname"
+license=(Apache-2.0)
+_pydeps=(fonttools
+         glyphslib
+         openstep-plist
+         ufolib2)
+depends=(python
+         bump2version
+         "${_pydeps[@]/#/python-}")
+makedepends=(python-{build,installer,wheel}
+             python-poetry-core
+             python-poetry-plugin-export)
+_archive="$_pyname-$pkgver"
+source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
+sha256sums=('be7c51e100d5d8a046b552dc0b7ed4c01424899adcd9e9bd1b018184ea9a7005')
+
+prepare() {
+	cd "$_archive"
+	sed -i \
+		-e '/^requires /s/poetry/poetry-core/g' \
+		-e '/^build-backend /s/poetry/poetry.core/g' \
+		pyproject.toml
+}
+
+build() {
+	cd "$_archive"
+	python -m build -wn
+}
 
 package() {
-    cd "$srcdir"
-    # pypa/pip#3063: pip always checks for a globally installed version.
-    python -mvenv --clear --system-site-packages _tmpenv
-    _tmpenv/bin/pip install --prefix="$pkgdir/usr" \
-        --no-deps --ignore-installed --no-warn-script-location \
-        "$(ls ./*.whl 2>/dev/null || echo ./"$(_dist_name)")"
-    if [[ -d "$pkgdir/usr/bin" ]]; then  # Fix entry points.
-        python="#!$(readlink -f _tmpenv)/bin/python"
-        for f in "$pkgdir/usr/bin/"*; do
-            # Like [[ "$(head -n1 "$f")" = "#!$(readlink -f _tmpenv)/bin/python" ]]
-            # but without bash warning on null bytes in "$f" (if it is actually
-            # a compiled executable, not an entry point).
-            if python -c 'import os, sys; sys.exit(not open(sys.argv[1], "rb").read().startswith(os.fsencode(sys.argv[2]) + b"\n"))' "$f" "$python"; then
-                sed -i '1c#!/usr/bin/python' "$f"
-            fi
-        done
-    fi
-    if [[ -d "$pkgdir/usr/etc" ]]; then
-        mv "$pkgdir/usr/etc" "$pkgdir/etc"
-    fi
- }
+	cd "$_archive"
+	python -m installer -d "$pkgdir" dist/*.whl
+}
