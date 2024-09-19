@@ -1,11 +1,11 @@
 pkgbase = mockitt
 	pkgdesc = A prototyping & collaboration tool.墨刀/modao/mockitt
-	pkgver = 1.2.5
+	pkgver = 6.0.0
 	pkgrel = 1
-	url = https://mockitt.com/downloads
+	url = https://mockitt.wondershare.com
 	arch = x86_64
 	license = custom
-	source = https://cdn-release.modao.cc/desktop/mockitt_1.2.5_amd64.deb
-	md5sums = 4815b13965c969e561975f61fdfb60d8
+	source = https://download.wondershare.com/cbs_down/ubuntu-mockitt_full8041.zip
+	md5sums = 0b24e091b750554955ea13e7aee3e5fc
 
 pkgname = mockitt
