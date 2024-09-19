@@ -1,7 +1,7 @@
 # Maintainer: Alexandr Stelnykovych <alexandr dot stelnykovych at ivpn dot net>
 
 pkgname="ivpn-ui"
-pkgver=3.14.14
+pkgver=3.14.17
 pkgrel=1
 pkgdesc="IVPN - Secure VPN for Privacy"
 arch=('x86_64')
@@ -15,7 +15,7 @@ install="ivpn-ui.install"
 
 # Default installation sources
 source=("ivpn-ui-src-v${pkgver}.tar.gz::https://github.com/ivpn/desktop-app/archive/v${pkgver}.tar.gz")
-sha256sums=('55397b1e8a65aceec569727cf4bdfd752d4091d0a0198ae4636f757e50d9c72b')
+sha256sums=('2074f1bc3986d19e9a0a0d4e9e00be6eea391c85009d527a305e8d5241da7eca')
 src_prj_dir_name=desktop-app-${pkgver}
 
 # Use bellow two lines to install package from beta branch
