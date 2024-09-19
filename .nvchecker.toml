@@ -1,0 +1,4 @@
+[bp-nfoview]
+source = "git"
+git = "https://github.com/brainpower/bp-nfoview.git"
+prefix = "v"
