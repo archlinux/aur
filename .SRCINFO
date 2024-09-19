@@ -1,0 +1,26 @@
+pkgbase = python-zyc
+	pkgdesc = A GUI for searching and selecting parts and footprints for use in SKiDL.
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://pypi.org/project/zyc
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-wxpython
+	depends = python-kinparse
+	depends = python-pykicad
+	depends = python-skidl
+	optdepends = kicad-library: part libraries
+	provides = zyc
+	conflicts = zyc
+	options = !emptydirs
+	options = !strip
+	options = !debug
+	source = zyc-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/z/zyc/zyc-1.0.0.tar.gz
+	sha256sums = 5be57f1e0a6a6c738c4222a5fcc3dda9b7700ef8ff29c78ffa9a0b3964df6cc7
+
+pkgname = python-zyc
