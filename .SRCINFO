@@ -1,13 +1,17 @@
 pkgbase = python-stripe
 	pkgdesc = Stripe python bindings
-	pkgver = 5.0.0
+	pkgver = 10.12.0
 	pkgrel = 1
 	url = https://github.com/stripe/stripe-python
 	arch = any
 	license = MIT
+	makedepends = python-build
 	makedepends = python-setuptools
-	depends = python>=3.4
-	source = https://pypi.python.org/packages/source/s/stripe/stripe-5.0.0.tar.gz
-	sha256sums = bdc8c5ee8e6b53c4767bbe720752cedb8af91db46ad96e511edd0fb74964ac5d
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.6
+	source = https://github.com/stripe/stripe-python/archive/refs/tags/v10.12.0.tar.gz
+	sha512sums = 872a3990f8dbaf933f4d9cb190d8fcb72062d81f3c431f58291216ab72dacb098057a75b7189e00a414ba62af6c9db658afc8e055833efa28aa03516060e6c35
+	b2sums = c3ac7abc345609071a4479ae02232ccff3bd3b8514d060cc41e75b4b549ed959412c2479e92219c7fb7694a38a00f0bea585549352a00025bd8845b9d432e500
 
 pkgname = python-stripe
