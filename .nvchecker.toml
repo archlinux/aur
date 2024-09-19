@@ -1,0 +1,5 @@
+[pypy3-tqdm]
+source = "github"
+github = "tqdm/tqdm"
+use_latest_release = "true"
+prefix = "v"
