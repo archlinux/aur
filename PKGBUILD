@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=an-anime-game-launcher
 pkgver=3.12.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 arch=('x86_64')
 url="https://github.com/an-anime-team/an-anime-game-launcher"
@@ -9,6 +9,10 @@ license=('GPL-3.0-only')
 depends=('gtk4' 'libadwaita' 'glibc' 'hicolor-icon-theme' 'gcc-libs' 'glib2'
 	 'pango' 'xz' 'bzip2' 'cairo' 'p7zip')
 makedepends=('cargo')
+optdepends=(
+	 'mangohud: FPS Overlay'
+	 'gamescope: Micro-Compositor'
+	 'gamemode: CPU Scaling Control')
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('0035d109521603486f230588b47f71fa8db3a52fd722ed8a12cd249c72e60167')
 
