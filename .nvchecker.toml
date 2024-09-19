@@ -1,0 +1,4 @@
+[pypy3-gast]
+source = "github"
+github = "serge-sans-paille/gast"
+use_max_tag = "true"

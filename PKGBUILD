@@ -1,22 +1,25 @@
-pkgname=pypy3-gast
-pkgver=0.5.3
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Michel Zou <xantares09@hotmail.com>
+_base=gast
+pkgname=pypy3-${_base}
+pkgdesc="AST that abstracts the underlying Python version"
+pkgver=0.6.0
 pkgrel=1
-pkgdesc="AST that abstracts the underlying Python version "
-url="https://github.com/serge-sans-paille/gast"
 arch=(any)
-license=('BSD')
-depends=('pypy3')
-makedepends=('pypy3-setuptools')
-source=("https://pypi.io/packages/source/g/gast/gast-${pkgver}.tar.gz")
-sha512sums=('a836be76303591ca7c40596d98a29dbd53f281e277c8c23e3821b2003d4e8aaf4d806e7f532f27c0eadd4bdca5a28dc0a3902245505ab97497b9afbfee0c2e52')
+url="https://github.com/serge-sans-paille/${_base}"
+license=(BSD-3-Clause)
+depends=(pypy3)
+makedepends=(pypy3-setuptools)
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha512sums=('ddbaba5c38c54956c0c5715a23d0855ececbc1c492d9306c3ac740fef003bd02f2ba004692d46c9bf4aeac98e864cd4418ad58150d98482b663f499c03ec2659')
 
 build() {
-  cd gast-$pkgver
+  cd ${_base}-${pkgver}
   pypy3 setup.py build
 }
 
 package() {
-  cd gast-$pkgver
-  pypy3 setup.py install --prefix=/opt/pypy3 --root="$pkgdir" --optimize=1
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" pypy3 setup.py install --prefix=/opt/pypy3 --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
