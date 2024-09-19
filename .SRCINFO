@@ -1,14 +1,14 @@
 pkgbase = gnome-shell-extension-systemd-manager
 	pkgdesc = Gnome Shell extension to manage systemd services
-	pkgver = 16
-	pkgrel = 1
+	pkgver = 17
+	pkgrel = 2
 	url = https://github.com/hardpixel/systemd-manager
 	arch = any
 	license = GPL
 	depends = gnome-shell
 	provides = gnome-shell-extension-systemd-manager
 	conflicts = gnome-shell-extension-systemd-manager-git
-	source = gnome-shell-extension-systemd-manager-16.tar.gz::https://github.com/hardpixel/systemd-manager/archive/v16.tar.gz
-	md5sums = 9eb6c77ff8271fdef4e31282f0aececf
+	source = gnome-shell-extension-systemd-manager-17.tar.gz::https://github.com/hardpixel/systemd-manager/archive/v17.tar.gz
+	md5sums = cf361f91da3be793ae7733f1edb953b8
 
 pkgname = gnome-shell-extension-systemd-manager
