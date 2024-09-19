@@ -3,42 +3,56 @@
 
 pkgname=caveexpress
 pkgver=2.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Classic 2D platformer with physics-based gameplay and dozens of levels"
 arch=('i686' 'x86_64')
 url="http://www.caveproductions.org"
-license=('GPL3' 'CCPL')
+license=('GPL3' 'CCPL' 'MIT')
 depends=('sdl2_mixer' 'sdl2_image' 'sdl2_net' 'sqlite3' 'box2d' 'yajl' 'lua')
-makedepends=('cmake' 'glm')
+makedepends=('cmake' 'glm' 'ninja')
+_box2d_version=2.4.2
 source=($pkgname-$pkgver.tar.gz::"https://github.com/mgerhardy/$pkgname/archive/$pkgver.tar.gz"
-        $pkgname-installation-paths.patch)
+        $pkgname-installation-paths.patch
+        "box2d-${_box2d_version}.tar.gz::https://github.com/erincatto/box2d/archive/refs/tags/v${_box2d_version}.tar.gz")
 sha256sums=('da8bd71bbb39f898acbfa540c84431629e75f0f8c43878e1f41db1e35f4d30e2'
-            '2646b0c6d4a8174de00d58e3308ac138090a5b5746e9509af5631f46df0e8433')
+            '2646b0c6d4a8174de00d58e3308ac138090a5b5746e9509af5631f46df0e8433'
+            '85b9b104d256c985e6e244b4227d447897fac429071cc114e5cc819dae848852')
+
+_srcdir="$pkgname-$pkgver"
 
 prepare() {
-  # packaging fixes
-  cd "$pkgname-$pkgver/cmake"
-  patch -N -i "${srcdir}/$pkgname-installation-paths.patch"
-  
-  cd '..'
-  sed -i 's/@APP@-icon/@APP@/' 'contrib/installer/linux/desktop.in'
+	# packaging fixes
+	cd "$_srcdir/cmake"
+	patch -N -i "${srcdir}/$pkgname-installation-paths.patch"
+
+	cd '..'
+	sed -i 's/@APP@-icon/@APP@/' 'contrib/installer/linux/desktop.in'
 }
 
 build() {
-  cmake -S "$pkgname-$pkgver" -B "build" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-    -DPKGDATADIR=/usr/share/games -DCAVEPACKER=on -DUNITTESTS=off
-  cmake --build "build"
+	cmake -GNinja -S "box2d-${_box2d_version}" -B 'build-box2d' -DCMAKE_INSTALL_PREFIX="${srcdir}/prefix" \
+		-DCMAKE_BUILD_TYPE='Release' -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' -DBUILD_SHARED_LIBS=OFF \
+		-DBOX2D_BUILD_DOCS=OFF -DBOX2D_BUILD_TESTBED=OFF
+	cmake --build 'build-box2d'
+	cmake --install 'build-box2d'
+
+	cmake -GNinja -S "$_srcdir" -B 'build' \
+		-DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE='Release' -DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
+		-DCMAKE_PREFIX_PATH="${srcdir}/prefix" \
+		-DPKGDATADIR=/usr/share/games -DCAVEPACKER=on -DUNITTESTS=off
+	cmake --build 'build'
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install "build"
+	DESTDIR="${pkgdir}" cmake --install 'build'
 
-  # doc
-  cd "$pkgname-$pkgver"
-  install -d "$pkgdir"/usr/share/doc
-  cp -rup docs/$pkgname "$pkgdir"/usr/share/doc
-  
-  rm -f "$pkgdir"/usr/share/applications/*.yaml
-  
-  install -Dpm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+	# doc
+	cd "$_srcdir"
+	install -d "$pkgdir"/usr/share/doc
+	cp -rup docs/$pkgname "$pkgdir"/usr/share/doc
+
+	rm -f "$pkgdir"/usr/share/applications/*.yaml
+
+	install -Dpm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dpm644 "${srcdir}/box2d-${_box2d_version}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/box2d-license"
 }
