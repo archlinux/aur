@@ -2,30 +2,37 @@
 
 _pkgname="sui"
 pkgname="${_pkgname}-bin"
-pkgver=1.32.2
+pkgver=1.33.2
 pkgrel=1
 pkgdesc="A next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model"
 arch=('x86_64')
 url="https://sui.io"
 _url="https://github.com/MystenLabs/${_pkgname}"
 license=('Apache-2.0')
-depends=('glibc' 'gcc-libs' 'rust' 'openssl' 'libldap' 'krb5' 'e2fsprogs'
-         'keyutils' 'libsasl' 'postgresql-libs')
+depends=('e2fsprogs' 'gcc-libs' 'glibc' 'keyutils' 'krb5' 'libldap' 'libsasl'
+         'openssl' 'postgresql-libs' 'rust')
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+onflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
+noextract=("${_pkgsrc}-x86_64.tar.gz")
 source=("README-${pkgver}.md::${_url}/raw/mainnet-v${pkgver}/README.md"
         "LICENSE-${pkgver}::${_url}/raw/mainnet-v${pkgver}/LICENSE")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/mainnet-v${pkgver}/${_pkgname}-mainnet-v${pkgver}-ubuntu-x86_64.tgz")
-sha256sums=('3ededb5b006bf86ea26c03f2073944998e2c8854f1ae150c35c8a418a16c9622'
-            'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('d5784d7e8b15d31dd1d96df45e8ec75daad2e0ef3360af75de5616d528eb68d7')
+b2sums=('e6472481a039fbaf462e54ad72ea99549f7d145541647f224107688c61030a8042b4132828e49467ad4ef321221de6590e5e7052bc66685d969565074265ee5d'
+        '43452dd4216bba835bff542c02fcd0a80b77fef97a6f1042adcbbbcf312bb856b0707c35b2f1af356e0b4262e501a159f06bf1f947f182d0023cdd4aefbd8a85')
+b2sums_x86_64=('61ffba3e1db1348709b1881ae117545824ddd16a36fc94894d12cf5c63666853b70a3f91aa62853757dbcf7fdd49f82774688cd91331b189b13c9b772a9a8e3b')
+
+prepare() {
+  cd "${srcdir}"
+  mkdir -p "${srcdir}/${_pkgsrc}-${CARCH}/bin"
+  bsdtar -xzf "${_pkgsrc}-${CARCH}.tar.gz" --strip-components 1 -C "${srcdir}/${_pkgsrc}-${CARCH}/bin"
+}
 
 package() {
   cd "${srcdir}"
   install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 "LICENSE-${pkgver}"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
-  install -d "${pkgdir}/usr/bin/"
-  find . -maxdepth 1 -type f -executable -exec install -Dm755 "{}" "${pkgdir}/usr/bin/" \;
+  cd "${_pkgsrc}-${CARCH}"
+  find "bin" -type f -exec install -Dm755 "{}" "${pkgdir}/usr/{}" \;
 }
