@@ -1,7 +1,7 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 pkgname="linutil"
 pkgver=2024.09.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Chris Titus Tech's Linutil is a distro-agnostic toolbox designed to simplify everyday Linux tasks."
 arch=('x86_64')
 url="https://github.com/ChrisTitusTech/$pkgname"
@@ -9,7 +9,7 @@ license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ChrisTitusTech/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('5c862aeaf88ccf9daaf23fc1fc9a50fec5fda1e7681956575c78ff173673306a')
 makedepends=(rustup)
-depends=('git' 'pacman' 'glibc' 'gcc-libs' 'libalpm.so')
+depends=('git' 'pacman' 'glibc' 'gcc-libs')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
