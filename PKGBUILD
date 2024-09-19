@@ -3,7 +3,7 @@
 
 pkgname=python-skidl
 _name=${pkgname#python-}
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="A Python package for textually describing electronic circuit schematics."
 arch=(any)
@@ -33,7 +33,7 @@ conflicts=(${_name})
 options=('!emptydirs' '!strip')
 install=
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('e3b6137c0f9b55acc7c9298bb745079a20adf39ac62d58b4bf5d45f836109343')
+sha256sums=('ed4c124651a8587787eb828d0dd6e46fc5ffe7d6fa013d8e664c21624b466bd9')
 
 # prepare() {
 #   cd "$srcdir/$_name-$pkgver"
