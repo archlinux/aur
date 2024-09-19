@@ -1,9 +1,9 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=mini-text
-pkgver=0.2.2
-_commit=9661c16c274d1c46ed1c0990f12614414ffd24dd
-pkgrel=4
+pkgver=1.0.0
+_commit=3634e6c705a052c509834e0de3450c3ff9792be2
+pkgrel=1
 pkgdesc='A very small and basic text editor'
 url="https://github.com/Nokse22/mini-text"
 license=('GPL-3.0-or-later')
