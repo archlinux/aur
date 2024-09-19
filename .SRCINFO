@@ -1,0 +1,14 @@
+pkgbase = hera-git
+	pkgdesc = A daily, hourly planner app.
+	pkgver = 1.0.0.r2.g48b6ab5
+	pkgrel = 1
+	url = https://github.com/sandrasoueid/hera
+	arch = any
+	license = ISC
+	depends = electron32
+	source = hera.git::git+https://github.com/sandrasoueid/hera.git
+	source = hera.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = hera-git
