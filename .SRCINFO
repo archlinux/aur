@@ -1,6 +1,6 @@
 pkgbase = iceoryx-git
 	pkgdesc = True zero-copy inter-process-communication
-	pkgver = 2.90.0.r7412.d5be6d829
+	pkgver = 2.95.2.r9822.05f686b9c
 	pkgrel = 1
 	url = https://github.com/eclipse-iceoryx/iceoryx
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = iceoryx-git
 	depends = ncurses
 	provides = iceoryx
 	conflicts = iceoryx
-	options = !strip
 	source = iceoryx-git::git+https://github.com/eclipse-iceoryx/iceoryx.git
 	sha512sums = SKIP
 
