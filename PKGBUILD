@@ -4,7 +4,7 @@
 pkgname=qt5-lottie
 _basever=5.15.15
 pkgver=5.15.15
-pkgrel=1
+pkgrel=2
 _commit=bdbd77ef5529b894699fe8d01642e75230e59f24
 arch=('x86_64')
 url='https://www.qt.io'
@@ -16,7 +16,7 @@ optdepends=('qt5-declarative: QML bindings')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('44be8983e5205eb8411e38eaccdd20adc90db418797ab8bb81f81fe331b3618a')
+sha256sums=('4bedb41840e3ce38bd312ab64cd78bd2307b423725e4ef94228a63485e5eb433')
 
 pkgver() {
   cd kde-$_pkgfqn
