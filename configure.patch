@@ -1,0 +1,12 @@
+@@ -143,8 +143,8 @@
+ printf "makefile ..."
+ rm -f makefile
+ sed \
+-  -e "s,@CC@,$CC," \
+-  -e "s,@CFLAGS@,$CFLAGS," \
+-  -e "s,@TARGETS@,$TARGETS," \
++  -e "s#@CC@#$CC#" \
++  -e "s#@CFLAGS@#$CFLAGS#" \
++  -e "s#@TARGETS@#$TARGETS#" \
+ makefile.in > makefile
+ echo " done"

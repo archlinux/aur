@@ -1,18 +1,26 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 # Contributor: Hong-Yi Dai <reflectionalist_at_gmail_dot_com>
+# Contributor: Lorenzo Cappelletti <lorenzo_dot_cappelletti_at_gmail_dot_com>
 
 pkgname=picosat
 pkgver=965
-pkgrel=2
+pkgrel=3
 pkgdesc="The PicoSAT solver"
 arch=('i686' 'x86_64')
 url="http://fmv.jku.at/picosat/"
 license=('MIT')
-source=("http://fmv.jku.at/picosat/${pkgname}-${pkgver}.tar.gz")
-md5sums=('d37c236d5c60b03d888d137c2fa4285f')
+source=("http://fmv.jku.at/picosat/${pkgname}-${pkgver}.tar.gz"
+        configure.patch)
+md5sums=('d37c236d5c60b03d888d137c2fa4285f'
+         'a54520bfddd412f3f4774911849ea6a8')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch configure.sh <"$srcdir/configure.patch"
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   ./configure.sh --static --shared
   ./mkconfig.sh
@@ -20,7 +28,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   install -Dm755 picosat "$pkgdir/usr/bin/picosat"
   install -Dm755 picomus "$pkgdir/usr/bin/picomus"
