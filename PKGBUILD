@@ -3,7 +3,7 @@
 # Maintainer: Bikash Thapa Magar <thpsbikash@gmail.com>
 # Contributor: Beej Jorgensen <beej@beej.us>
 
-pkgname=JHelioviewer
+pkgname=jhelioviewer
 pkgver=4.7.0
 pkgrel=1
 pkgdesc="Visualization software for solar image data"
@@ -22,12 +22,13 @@ md5sums=('843337bcd3c49e7f24c98383640c7070'
 	'4cdedcd67c7371762d4ad17b7ce91a32'
 	'9b1007cec8116ae5577be3ac7ccc547b'
          )
+
 package() {
   # install files
   cp -r $srcdir/opt $pkgdir
 
   # install icon
-  install -D -m644 $srcdir/opt/JHelioviewer/.install4j/${pkgname}.png $pkgdir/usr/share/pixmaps/${pkgname}.png
+  install -D -m644 $srcdir/opt/JHelioviewer/.install4j/JHelioviewer.png $pkgdir/usr/share/pixmaps/${pkgname}.png
 
   # install /usr/bin binary
   install -D -m755 $srcdir/$pkgname $pkgdir/usr/bin/$pkgname
