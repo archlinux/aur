@@ -3,7 +3,7 @@
 
 _pkgname=pikaur-static
 pkgname="${_pkgname}"
-pkgver=1.29
+pkgver=1.29.1
 pkgrel=1
 pkgdesc='AUR helper without dependencies which asks all questions before installing/building. Static build for recovery situations, similar to `pacman-static`'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ license=('GPL-3.0-only')
 source=(
 	"$pkgname-$pkgver.tar.gz"::${url}/archive/"$pkgver".tar.gz
 )
-b2sums=('5feb46bb5aa39f5010fd66ae34ed7e289b969fd5f204c4e7fa9423c907131d84d30d8e77771b8b406919e9b986076c5edc0136db28b81f155d47e58a249b18e8')
+b2sums=('68c582e1af359df555769aca918c6e2d1e7e90b3bf0c519746d712aeba4fa7b9d14d95452e42661a996b07bb3f977cab117082a9277140ed6746fddcbf59db87')
 depends=(
 	'git'
 )

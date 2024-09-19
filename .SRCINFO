@@ -1,6 +1,6 @@
 pkgbase = pikaur-static
 	pkgdesc = AUR helper without dependencies which asks all questions before installing/building. Static build for recovery situations, similar to `pacman-static`
-	pkgver = 1.29
+	pkgver = 1.29.1
 	pkgrel = 1
 	url = https://github.com/actionless/pikaur
 	changelog = CHANGELOG
@@ -24,7 +24,7 @@ pkgbase = pikaur-static
 	conflicts = pikaur-static-git
 	options = !buildflags
 	options = !strip
-	source = pikaur-static-1.29.tar.gz::https://github.com/actionless/pikaur/archive/1.29.tar.gz
-	b2sums = 5feb46bb5aa39f5010fd66ae34ed7e289b969fd5f204c4e7fa9423c907131d84d30d8e77771b8b406919e9b986076c5edc0136db28b81f155d47e58a249b18e8
+	source = pikaur-static-1.29.1.tar.gz::https://github.com/actionless/pikaur/archive/1.29.1.tar.gz
+	b2sums = 68c582e1af359df555769aca918c6e2d1e7e90b3bf0c519746d712aeba4fa7b9d14d95452e42661a996b07bb3f977cab117082a9277140ed6746fddcbf59db87
 
 pkgname = pikaur-static
