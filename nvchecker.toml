@@ -1,0 +1,4 @@
+[protolint]
+source = "github"
+github = "yoheimuta/protolint"
+use_latest_release = true
