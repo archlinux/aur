@@ -1,0 +1,9 @@
+pkgbase = herumi-bls-git
+	pkgdesc = BLS threshold signature
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/herumi/bls
+	arch = any
+	license = BSD
+
+pkgname = herumi-bls-git
