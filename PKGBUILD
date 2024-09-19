@@ -1,13 +1,14 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=qwlroots-git
-pkgver=0.2.0.alpha1.r3.gc9fed5e
+pkgver=0.3.0.wlroots0.17.0.18.r7.gf00ee45
 pkgrel=1
 pkgdesc='Qt and QML bindings for wlroots.'
 arch=('x86_64' 'aarch64')
 url="https://github.com/vioken/qwlroots"
 license=('Apache' 'GPL2' 'GPL3' 'LGPL3')
 depends=()
+OPTIONS=('staticlibs')
 makedepends=('git' 'wlroots' 'ninja' 'wayland-protocols' 'wlr-protocols')
 provides=('qwlroots')
 source=("git+https://github.com/vioken/qwlroots")
