@@ -15,6 +15,7 @@ b2sums=('dffe0c9c89f1ad7667c2fc84392d51b75925f05dd00b3038f5ca21a8733943f9e36c43e
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
 
     cd "${_pkgname}-${pkgver}"
     # Wasynth does not publish a Cargo.lock file.
@@ -24,6 +25,7 @@ prepare() {
 
 build() {
     export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
 
     cd "${_pkgname}-${pkgver}"
     # Binaries must be specified to prevent the fuzz targets (which depend on libFuzzer) from being
