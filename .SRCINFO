@@ -1,6 +1,6 @@
 pkgbase = gnome-control-center-x11-scaling
 	pkgdesc = GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch
-	pkgver = 46.4
+	pkgver = 47.0.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-control-center
 	arch = x86_64
@@ -66,15 +66,15 @@ pkgbase = gnome-control-center-x11-scaling
 	depends = tecla
 	depends = udisks2
 	depends = upower
-	source = git+https://gitlab.gnome.org/GNOME/gnome-control-center.git?signed#tag=46.4
+	source = git+https://gitlab.gnome.org/GNOME/gnome-control-center.git?signed#tag=47.0.1
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
-	source = https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/4f2e5597f3af2694ed48d439d6c0cdd95d9e0315/display-Allow-fractional-scaling-to-be-enabled.patch
-	source = https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/4f2e5597f3af2694ed48d439d6c0cdd95d9e0315/display-Support-UI-scaled-logical-monitor-mode.patch
+	source = https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/c3a04acf0cd0f9f48c938c6b34b391d9aedb2b58/display-Allow-fractional-scaling-to-be-enabled.patch
+	source = https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/c3a04acf0cd0f9f48c938c6b34b391d9aedb2b58/display-Support-UI-scaled-logical-monitor-mode.patch
 	validpgpkeys = 9B60FE7947F0A3C58136817F2C2A218742E016BE
-	b2sums = 448af1942565b38e3e1abeaac577e1a4221f0ec38ab2d29fc4ee08fedaa3e2b1aacbde25c60686902f6c75a72ddc406c23f30d849c182fa6b0f77c70e151f587
+	b2sums = de797bde5a3cc251af96d71a4d75ec8ca34c087fcc3ffcc06a4f0f46b374142626e4cea92abd0a10a61f5db78a3723511c5ff84d064d4ae17722665e13a8a7eb
 	b2sums = SKIP
-	b2sums = aa18237b6d8133405dc67740dd995a80b57f474e0976c7fd0d69883223c04d12673d452cf90be39232363abeff827beaf57b1183da4d15768df7b331a144c5ff
-	b2sums = ffb66f54504ffb81d32a07383527864fb4ee7ad3b5d7af55682607f3c09addec08485156bda7bac56088304d20720914958103cd492f270b59fcad47875b3a5b
+	b2sums = 0fc82f11faf20ab9b6190d86a4051c36b6a6dffd9aa4e887ad0911fdb6d9d27b6db1d6eed987d0851c71d030b915412aa81e617f47c39aadb78066b1704d9d0a
+	b2sums = 85002082e967f63284a1b95a0f2dc19590a46c1711ebf6ed934094a85a4a1b20c1336e9b6e9a0e37b5235bbe217ee0b6851a06bcc1e282242a0676b9080a0eac
 
 pkgname = gnome-control-center-x11-scaling
 	groups = gnome
