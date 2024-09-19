@@ -8,7 +8,7 @@ set -eu
 personal="${XDG_DATA_HOME:-$HOME/.local/share}/drl"
 sys=/usr/share/drl
 
-[ -d "$personal" ] || mkpersonal -p "$personal" || exit 1
+[ -d "$personal" ] || mkdir -p "$personal" || exit 1
 
 for f in backup mortem screenshot modules
 do
