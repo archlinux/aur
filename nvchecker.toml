@@ -1,0 +1,7 @@
+[abra]
+source = "gitea"
+gitea = "coop-cloud/abra"
+host = "git.coopcloud.tech"
+use_max_tag = true
+# why did they do this ;w;
+exclude_regex = "(10\\.0\\.[53210]|9\\.0\\.0|8\\.0\\.[01])"
