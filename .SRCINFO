@@ -1,0 +1,32 @@
+pkgbase = lxqt-wayland-session-git
+	pkgdesc = Files needed for the LXQt Wayland Session
+	pkgver = 0.0.0.r23.7e30673
+	pkgrel = 1
+	url = https://github.com/lxqt/lxqt-wayland-session
+	arch = any
+	license = LGPL-2.1-only
+	license = MIT
+	license = GPL-2.0-only
+	license = GPL-3.0-only
+	license = BSD-3-Clause
+	license = CC-BY-SA-4.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt6-tools
+	makedepends = lxqt-build-tools-git
+	depends = sh
+	depends = lxqt-session-git
+	depends = qtxdg-tools-git
+	depends = layer-shell-qt
+	optdepends = labwc
+	optdepends = wayfire
+	optdepends = kwin
+	optdepends = hyprland
+	optdepends = river
+	optdepends = sway
+	provides = lxqt-wayland-session=0.0.0.r23.7e30673
+	conflicts = lxqt-wayland-session
+	source = git+https://github.com/lxqt/lxqt-wayland-session.git
+	sha256sums = SKIP
+
+pkgname = lxqt-wayland-session-git
