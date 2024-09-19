@@ -17,7 +17,7 @@
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
 pkgname=mutter-x11-scaling
-pkgver=46.5
+pkgver=47.0
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -93,11 +93,13 @@ makedepends=(
 source=(
   # Mutter tags use SSH signatures which makepkg doesn't understand
   "git+$url.git#tag=${pkgver/[a-z]/.&}"
-  "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/64f7d7fb106b7efb5dfb3f86c3bcf9a173ee3c5e/x11-Add-support-for-fractional-scaling-using-Randr.patch"
+  "git+https://gitlab.gnome.org/GNOME/gvdb.git#commit=b54bc5da25127ef416858a3ad92e57159ff565b3"
+  "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/aed8483038e275d3f74287b0c0fce883efec1cc0/x11-Add-support-for-fractional-scaling-using-Randr.patch"
   #"https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/64f7d7fb106b7efb5dfb3f86c3bcf9a173ee3c5e/Support-Dynamic-triple-double-buffering.patch"
 )
-b2sums=('3c7990afd584836dd092e30813194ac24608416051a9b06c51d2f9577206360cb0f8bafceccc42ce1809d47e7a1676326fe8b87fa231c6abe2d9dddba10b6581'
-        'bf2080b587420aa03d413566d34009e7fc63774b23f7826f215b8a317c468c041e5fed4cdca49423b5972bf64179d67d6e34c429a85c10e8c46eb170ce1eda70')
+b2sums=('0dc3e7541707fe7c9fd24397f08fd29272bd3f104a51503f7657b9b4589a22ee3a6ce407c440785e06bd19b3347fd555c3187aae4f5c87052ce94783d599426d'
+        'f989bc2ceb52aad3c6a23c439df3bbc672bc11d561a247d19971d30cc85ed5d42295de40f8e55b13404ed32aa44f12307c9f5b470f2e288d1c9c8329255c43bf'
+        'fafdc76076a6589e4cf188fe62a8e74c7df71cccff5cfb931d3afd7b1d147ac855a5f8351a4278ae24cd4e20b4e09147c822b64fedd779aa9b276c90645b13e2')
 
 prepare() {
   cd mutter
@@ -117,20 +119,24 @@ build() {
     -D egl_device=true
     -D installed_tests=false
     -D libdisplay_info=enabled
-    -D tests=false
+    -D tests=disabled
     -D wayland_eglstream=true
   )
 
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
 
+  # Inject gvdb
+  export MESON_PACKAGE_CACHE_DIR="$srcdir"
+
   arch-meson mutter build "${meson_options[@]}"
   meson compile -C build
 }
 
 package() {
-  provides=(mutter libmutter-14.so)
+  provides=(mutter libmutter-15.so)
   conflicts=(mutter)
 
   meson install -C build --destdir "$pkgdir"
 }
+
