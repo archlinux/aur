@@ -4,8 +4,8 @@
 # Contributor: Franco Iacomella <yaco@gnu.org>
 
 pkgname=etl-dev
-pkgver=1.5.1
-pkgrel=3
+pkgver=1.5.3
+pkgrel=1
 pkgdesc="VoriaETL: C++ STL complementory multiplatform template library"
 arch=(x86_64 armv7h aarch64 riscv32 riscv64)
 url="http://synfig.org"
@@ -15,7 +15,7 @@ makedepends=('glibmm')
 conflicts=('synfig-etl' 'etl')
 provides=('etl')
 source=("https://github.com/synfig/synfig/archive/v$pkgver.tar.gz")
-sha512sums=('0c1dd53a445f037bcdb742d7c17d1d3a2039e80d3e49f5cd67119fb9792d96b47154874d5be42d36443b0d09c61b7864dfe33ebd5f3998783c54eb3cc936d11b')
+sha512sums=('799d5c6de004acc553c0242598b23dcafc31f1c176e7b45d1f38cf79aa4d57de474e993805b240440b707ebf9aed53634e74798d35f962f7e13d5a7c5a41b86f')
 
 prepare() {
   cd "$srcdir"/synfig-$pkgver/ETL
