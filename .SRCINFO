@@ -1,6 +1,6 @@
 pkgbase = zypper
 	pkgdesc = World's most powerful command line package manager
-	pkgver = 1.14.52
+	pkgver = 1.14.77
 	pkgrel = 1
 	url = http://en.opensuse.org/Portal:Zypper
 	arch = x86_64
@@ -15,9 +15,7 @@ pkgbase = zypper
 	depends = procps
 	provides = apt
 	conflicts = apt
-	source = zypper-1.14.52.tar.gz::https://github.com/openSUSE/zypper/archive/1.14.52.tar.gz
-	source = make-ZyppCommon-cmake-module-includable.patch
-	sha256sums = 8975f6009950835b750d4d50a21f2bdb53f46f0dc5440cb59b57c745f7317a05
-	sha256sums = f5cdd85109c58d786f1124fa3cab1c5431a93a8d87a59117eac257c6e4698ae7
+	source = zypper-1.14.77.tar.gz::https://github.com/openSUSE/zypper/archive/1.14.77.tar.gz
+	sha256sums = 1674a46da997dc5a366d8fcb02172dfd15242975eccd0068d083fbf4199474f4
 
 pkgname = zypper
