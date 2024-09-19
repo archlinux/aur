@@ -1,32 +1,31 @@
 pkgbase = python-or-tools
 	pkgdesc = Google's Operations Research tools
-	pkgver = 9.9
-	pkgrel = 2
+	pkgver = 9.11
+	pkgrel = 1
 	url = https://github.com/google/or-tools
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	arch = armv7h
-	license = Apache2
-	makedepends = cmake
-	makedepends = wget
-	makedepends = lsb-release
-	makedepends = automake
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = python-pip
+	makedepends = cmake
 	makedepends = git
-	makedepends = python-mypy-protobuf
-	makedepends = python-virtualenv
-	depends = python>=3.6
+	makedepends = pybind11
+	makedepends = python-pip
+	depends = abseil-cpp
+	depends = python-absl
+	depends = python-numpy
+	depends = python-protobuf
 	depends = swig
-	depends = python-protobuf>=3.19.4
-	depends = absl-py
-	depends = python-numpy>=1.13.3
 	optdepends = cplex: CPLEX solver support
 	optdepends = python-pandas: used by some examples
 	optdepends = python-matplotlib: used by some examples
 	options = !emptydirs
-	source = https://github.com/google/or-tools/archive/v9.9.tar.gz
-	b2sums = be3e813e57140c97f451223e481f57085494294e65f5e1c4df1a3429f0bc56d0e6e2145fa41977d4aa98f3765b24a0341863b77926257464bf2ae64858b22186
+	source = or-tools-9.11.tar.gz::https://github.com/google/or-tools/archive/v9.11.tar.gz
+	b2sums = f5fc5d9d4c72a6e73fddc1c198320744ea5386d11379aaa058a15c9f574795ae99ea8ebb74d21454a86616b6cadec9cfd33787ca0095eed0a2f4162495f1c63b
 
 pkgname = python-or-tools

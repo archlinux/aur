@@ -1,0 +1,5 @@
+[python-or-tools]
+source = "github"
+github = "google/or-tools"
+use_latest_release = true
+prefix = "v"
