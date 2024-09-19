@@ -1,0 +1,27 @@
+pkgbase = lightly-fork-git
+	pkgdesc = Bali10050's fork of Lightly with a different approach from boehs, with the assumption that Luwx won't ever resume this project. Has plasma 6 support.
+	pkgver = r2243.4b4aa854
+	pkgrel = 1
+	url = https://github.com/Bali10050/Lightly
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = kdecoration
+	depends = qt5-declarative
+	depends = qt5-x11extras
+	depends = kcoreaddons
+	depends = kcmutils
+	depends = kcolorscheme
+	depends = kconfig
+	depends = kguiaddons
+	depends = kiconthemes
+	depends = kwindowsystem
+	provides = lightly
+	conflicts = lightly
+	conflicts = lightly-kf6-git
+	source = git+https://github.com/Bali10050/Lightly.git
+	sha256sums = SKIP
+
+pkgname = lightly-fork-git
