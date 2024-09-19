@@ -2,7 +2,7 @@ diff --git a/.gitmodules b/.gitmodules
 index 478f69b..8350711 100644
 --- a/.gitmodules
 +++ b/.gitmodules
-@@ -1,9 +1,9 @@
+@@ -1,8 +1,8 @@
  [submodule "lib"]
  	path = lib
 -	url = ../scopehal.git
@@ -13,13 +13,3 @@ index 478f69b..8350711 100644
 +	url = https://github.com/glscopeclient/scopehal-docs.git
  [submodule "src/imgui"]
  	path = src/imgui
- 	url = https://github.com/ocornut/imgui
-@@ -12,7 +12,7 @@
- 	url = https://github.com/epezent/implot
- [submodule "src/imgui-node-editor"]
- 	path = src/imgui-node-editor
--	url = ../imgui-node-editor.git
-+	url = https://github.com/glscopeclient/imgui-node-editor.git
- [submodule "src/ImGuiFileDialog"]
- 	path = src/ImGuiFileDialog
- 	url = https://github.com/aiekick/ImGuiFileDialog
