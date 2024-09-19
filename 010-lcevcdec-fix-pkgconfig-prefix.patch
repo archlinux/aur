@@ -1,0 +1,8 @@
+--- a/cmake/templates/lcevc_dec.pc.in
++++ b/cmake/templates/lcevc_dec.pc.in
+@@ -1,4 +1,4 @@
+-prefix=${pcfiledir}/../..
++prefix=/usr
+ libdir=@CMAKE_INSTALL_FULL_LIBDIR@
+ includedir=${prefix}/include
+ 
