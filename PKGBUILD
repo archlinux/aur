@@ -3,7 +3,7 @@
 pkgname=sdl2_sound
 pkgver=2.0.2
 pkgrel=1
-pkgdesc="An abstract soundfile decoder (development version)"
+pkgdesc="An abstract soundfile decoder"
 arch=('i686' 'x86_64')
 url="https://icculus.org/SDL_sound/"
 license=('zlib')
