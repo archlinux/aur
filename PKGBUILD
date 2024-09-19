@@ -1,18 +1,17 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
-# Contributor: Paul Dino Jones "ZitZ" <Raptorman18@gmail.com>
 
 pkgname=openjazz
-pkgver=20231028
+pkgver=20240919
 pkgrel=1
 pkgdesc="A free, open-source version of the classic Jazz Jackrabbit™ games"
 arch=('i686' 'x86_64')
 url="http://alister.eu/jazz/oj/"
-license=('GPL')
+license=('GPL-2.0-or-later')
 makedepends=('git' 'cmake' 'ninja')
 depends=('sdl2')
 install=openjazz.install
-source=("https://github.com/AlisterT/openjazz/releases/download/$pkgver/openjazz-$pkgver.tar.xz")
-sha256sums=('7240e14d07130c1be9e59b4f336cf9d557cebd97fdb6f1b960f0f4c4e33c256b')
+source=("https://github.com/AlisterT/openjazz/releases/download/$pkgver/openjazz-$pkgver.tar.gz")
+sha256sums=('ab02b8838804f3002ec8e86bffcf38a9ea79303cba7c9eafbfb16a9b367c6482')
 
 prepare() {
   rm -rf aurbuild
