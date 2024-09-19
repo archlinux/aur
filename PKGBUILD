@@ -1,34 +1,35 @@
-# Maintainer: aksr <aksr at t-com dot me>
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: aksr <aksr at t-com dot me>
 
-_pkgname=libertinus
-pkgname="otf-$_pkgname-git"
-pkgver=7.020.r16.ge809fbe
+pkgbase=libertinus-font-git
+_fname="${pkgbase%-font-git}"
+pkgname=(otf-$_fname-git)
+pkgver=7.040.r79.g302a906c
 pkgrel=1
-pkgdesc='The Libertinus font family, a fork of Linux Libertine and Biolinum with OpenType math'
-arch=('any')
-url="https://github.com/alerque/$_pkgname"
-license=('OFL')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-makedepends=('fontship')
-source=("$pkgname::git+$url")
+pkgdesc='Fonts based on Linux Libertine/Biolinum, with extended math support'
+arch=(any)
+url="https://github.com/alerque/$_fname"
+license=(OFL-1.1-RFN)
+makedepends=(fontship
+             git)
+source=("$_fname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long --tags --match="v[0-9]*" |
-    sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$_fname"
+	git describe --long --tags --match="v[0-9]*" |
+		  sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$pkgname"
-  fontship make -- PROJECT=Libertinus static-otf
+	cd "$_fname"
+	fontship make -- static-otf
 }
 
-package() {
-  cd "$pkgname"
-  install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" "${_pkgname^}"*.otf
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" OFL.txt AUTHORS.txt
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md preview.svg FONTLOG.txt documentation/*.pdf
+package_otf-libertinus-git() {
+	cd "$_fname"
+	provides=("$pkgbase=$pkgver")
+	install -Dm644 -t "$pkgdir/usr/share/fonts/${_fname}/" "${_fname^}"*.otf
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.txt AUTHORS.txt
+	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md preview.svg FONTLOG.txt documentation/*.pdf
 }
