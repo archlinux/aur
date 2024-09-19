@@ -4,7 +4,7 @@
 pkgname=qt5-purchasing
 _basever=5.15.15
 pkgver=5.15.15
-pkgrel=1
+pkgrel=2
 _commit=6922c0e403e94ac9c2336706bc3df1e2da217a1f
 arch=('x86_64')
 url='https://www.qt.io'
@@ -16,7 +16,7 @@ optdepends=('qt5-declarative: QML bindings')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('8d1f8bd9d357844262d3a6b5b13a114955409646374a2313d5e243a62a8d50eb')
+sha256sums=('7b0ad9cb36e886da97fa972c96007dcd22fad838a88cca1eb700ec702f7f514d')
 
 pkgver() {
   cd kde-$_pkgfqn
