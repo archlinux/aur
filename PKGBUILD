@@ -10,7 +10,7 @@ license=('MIT')
 source=("git+https://github.com/ChrisTitusTech/$_pkgname")
 sha256sums=(SKIP)
 makedepends=(rustup)
-depends=('git' 'pacman' 'glibc' 'gcc-libs' 'libalpm.so')
+depends=('git' 'pacman' 'glibc' 'gcc-libs')
 conflicts=($_pkgname)
 provides=($_pkgname)
 

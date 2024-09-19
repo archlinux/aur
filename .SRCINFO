@@ -10,7 +10,6 @@ pkgbase = linutil-git
 	depends = pacman
 	depends = glibc
 	depends = gcc-libs
-	depends = libalpm.so
 	provides = linutil
 	conflicts = linutil
 	source = git+https://github.com/ChrisTitusTech/linutil
