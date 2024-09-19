@@ -1,0 +1,4 @@
+[packer-plugin-arm-image]
+source = "github"
+github = "solo-io/packer-plugin-arm-image"
+use_latest_release = true
