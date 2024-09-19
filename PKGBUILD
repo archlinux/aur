@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/pyviz/${_base}"
 license=(BSD-3-Clause)
 depends=(python-cartopy python-holoviews)
-makedepends=(python-build python-installer python-setuptools python-wheel npm)
+makedepends=(python-build python-installer python-hatchling python-wheel npm)
 checkdepends=(python-pytest python-geopandas python-spatialpandas) # python-xarray
 # optdepends=('python-datashader: for '
 #   'python-geopandas: for '
