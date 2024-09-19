@@ -1,0 +1,4 @@
+[jabba]
+source = "github"
+github = "Jabba-Team/jabba"
+use_latest_release = true
