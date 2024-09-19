@@ -2,7 +2,7 @@
 # Co-maintainer: Nebulosa <nebulosa2007 at yandex dot ru>
 
 pkgname=cassette-git
-pkgver=0.2.0.r40.gfd453e7
+pkgver=0.2.0.r52.gf17ae75
 pkgrel=1
 pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
 arch=(aarch64 x86_64)
@@ -11,14 +11,17 @@ license=(GPL-3.0-only)
 depends=(
   cairo
   dconf
+  json-glib
   gdk-pixbuf2
   glibc
   glib2
+  gstreamer
   gst-plugins-good
-  "gtk4>=1:4.15"
+  gtk4
   hicolor-icon-theme
-  "libadwaita>=1:1.6"
+  libadwaita
   libgee
+  libsoup3
   libxml2
   sqlite
   webkitgtk-6.0
