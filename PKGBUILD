@@ -3,7 +3,7 @@
 pkgname=qt5-quicktimeline
 _basever=5.15.15
 pkgver=5.15.15
-pkgrel=1
+pkgrel=2
 _commit=a0a95b50f2477823f9400b07e76e516555f16dc0
 arch=('x86_64')
 url='https://www.qt.io'
@@ -14,7 +14,7 @@ makedepends=('git')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('f178744a91250cfd94ac7088ac7e30ca1c1c06db2e9012299219938edb5af588')
+sha256sums=('0e4a7437efdcbab98eea128ccdd52e6c4d9eec1463b82d576c586a3c439b7ddb')
 
 pkgver() {
   cd kde-$_pkgfqn
