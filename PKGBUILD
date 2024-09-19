@@ -2,7 +2,7 @@
 pkgname="linutil"
 pkgver=2024.09.18
 pkgrel=1
-pkgdesc="Chris Titus Tech's Linux Toolbox - Linutil is a distro-agnostic toolbox designed to simplify everyday Linux tasks."
+pkgdesc="Chris Titus Tech's Linutil is a distro-agnostic toolbox designed to simplify everyday Linux tasks."
 arch=('x86_64')
 url="https://github.com/ChrisTitusTech/$pkgname"
 license=('MIT')
