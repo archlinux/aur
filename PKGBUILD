@@ -1,23 +1,23 @@
 # Maintainer: Davide Gerhard <rainbow@irh.it>
 
 pkgname=sdrconnect
-pkgver=0.0.0.3
-build=f795c3df0
-pkgrel=2
+pkgver=0.0.0.4
+build=5dce37273
+pkgrel=1
 pkgdesc="SDR receiver for SDRplay devices"
 arch=('aarch64' 'x86_64')
 url="http://www.sdrplay.com/sdrconnect/"
 license=('custom:EULA')
 depends=('libusb>=1.0' 'glibc' 'gcc-libs' 'fontconfig' 'freetype2' 'brotli' 'expat'
-         'bzip2' 'libpng' 'harfbuzz' 'graphite' 'pcre2' 'alsa-lib')
+         'bzip2' 'libpng' 'harfbuzz' 'graphite' 'pcre2' 'alsa-lib' 'util-linux-libs')
 source_x86_64=("https://www.sdrplay.com/software/SDRconnect_linux-x64_${build}.run")
 source_aarch64=("https://www.sdrplay.com/software/SDRconnect_linux-arm64_${build}.run")
 source=("sdrconnect.desktop"
         "67-sdrplay.rules")
 sha256sums=('813615889e26d412e63c8c383626e370376d367c5109e909d61fe4070a1d8def'
-            'c8534af8ef8a921f60a888091c1b315d35d9fdb61bbd3946389d53bcc2b347a9')
-sha256sums_aarch64=('27f589a559ded758f82486654b331e300e8275a37baa958a84a86398896b7069')
-sha256sums_x86_64=('291b38cd9c44e52cf18c0a9c98c243b974e744cd1fa4a7deb61d1a15a9d1c48d')
+            '4b9fb2be7c968874c71b003ea2eff1bef12feea70b0557315c9a5dbf8056851b')
+sha256sums_aarch64=('cf8f4611ae9aaf69cae468f0bae479938169636a05300a8c7792a598b026c4af')
+sha256sums_x86_64=('70ec8cc3cc70266e882912ba3ec50ad2bd2c38d58e950fcbb6418df0cf756abb')
 
 prepare() {
 	cd ${srcdir}
