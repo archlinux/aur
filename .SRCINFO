@@ -1,0 +1,19 @@
+pkgbase = pybind11-abseil
+	pkgdesc = Pybind11 bindings for the Abseil C++ Common Libraries
+	pkgver = 202402.0
+	pkgrel = 1
+	url = https://github.com/pybind/pybind11_abseil
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-numpy
+	checkdepends = python-absl
+	makedepends = cmake
+	makedepends = python-virtualenv
+	depends = pybind11
+	depends = abseil-cpp
+	source = pybind11-abseil-202402.0.tar.gz::https://github.com/pybind/pybind11_abseil/archive/v202402.0.tar.gz
+	source = numpy2.patch::https://github.com/pybind/pybind11_abseil/commit/28db3c692de60a61fb8cdad665b21b1beb0c8859.patch
+	sha512sums = 5a6a46a9ed9e62215e8f3682c2262f7922a199510ed45c355f02d10bab685b13e5d5946779ca2f2b588046bbe5d435164720517f4895427edb703e58a385ccbb
+	sha512sums = 62d555f003077ad2791083e3112861849c0f7dacc5ad3f8ff0673c891a3ded00e21a09367af5ea50d1ed278246b45c9017532e784028b334328df81d9bd258eb
+
+pkgname = pybind11-abseil
