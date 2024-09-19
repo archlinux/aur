@@ -1,0 +1,4 @@
+[tuxedo-touchpad-switch]
+source = "git"
+git = "https://github.com/tuxedocomputers/tuxedo-touchpad-switch.git"
+prefix = "v"
