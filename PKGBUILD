@@ -1,29 +1,39 @@
-# Maintainer: Jamie Smith <aur at jsmith dot dev>
-# Contributor: Dang Mai <contact at dangmai dot net>
+# Maintainer: Cole Leavitt <coleleavitt@protonmail.com>
 
 pkgname=sf-cli
-pkgver="2.23.20"
+pkgver=2.58.7-ed27925
 pkgrel=1
-_dirname="${pkgname}-v${pkgver}"
-pkgdesc="a tool for creating and managing Salesforce DX projects from the command line"
-arch=('x86_64' 'arm')
-url="https://developer.salesforce.com/tools/sfcli"
-license=('unknown')
-optdepends=('gnome-keyring: saving default credentials')
-provides=('sf-cli')
-options=(!strip)
-conflicts=()
-source_x86_64=("https://developer.salesforce.com/media/salesforce-cli/sf/versions/2.23.20/50cd2d8/sf-v2.23.20-50cd2d8-linux-x64.tar.gz")
-source_arm=("https://developer.salesforce.com/media/salesforce-cli/sf/versions/2.23.20/50cd2d8/sf-v2.23.20-50cd2d8-linux-arm.tar.gz")
+pkgdesc="A tool for creating and managing Salesforce DX projects from the command line"
+arch=('x86_64')
+url="https://developer.salesforce.com/tools/salesforcecli"
+license=('BSD')
+depends=('nodejs')
+optdepends=('gnome-keyring: for saving default credentials')
+source=("https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-linux-x64.tar.xz")
+sha256sums=('39d0bedfb04fd4c5813d9f4da1d9854e37c7b23113db5634f7e4ea02c9b23e0d')
 
 package() {
-    cd "${srcdir}"
-
-    install -dm 755 "${pkgdir}"/opt
-    install -dm 755 "${pkgdir}"/usr/bin
-    sf_dir="sf"
-    cp -a "${sf_dir}" "${pkgdir}"/opt/sf-cli
-    ln -s /opt/sfdx-cli/bin/sf "${pkgdir}"/usr/bin/sf
+    install_dir="/opt/${pkgname}"
+    
+    # Create the installation directory
+    install -dm755 "${pkgdir}${install_dir}"
+    
+    # Copy all files from the extracted directory to the installation directory
+    cp -a "${srcdir}/sf/"* "${pkgdir}${install_dir}"
+    
+    # Set executable permissions for the sf binary
+    chmod +x "${pkgdir}${install_dir}/bin/sf"
+    
+    # Create a symlink in /usr/bin
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "${install_dir}/bin/sf" "${pkgdir}/usr/bin/sf"
+    
+    # Install license file
+    install -Dm644 "${srcdir}/sf/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-sha256sums_x86_64=("fbbe86be0471d5e9f3c1284d84eccfe5a828084f9d68217d01239baa4b96b22e")
-sha256sums_arm=("191ef3dd3bc77dadc209d195a23716cdd9b475099fde8422783fe36636209b15")
+
+post_install() {
+    echo "To check for Salesforce CLI updates, run:"
+    echo "    sf update"
+}
+
