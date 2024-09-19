@@ -1,0 +1,3 @@
+[swift-format]
+source = "git"
+git = "https://github.com/apple/swift-format.git"
