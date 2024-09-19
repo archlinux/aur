@@ -1,6 +1,6 @@
 pkgbase = ptyxis
 	pkgdesc = A terminal for a container-oriented desktop
-	pkgver = 46.6
+	pkgver = 47.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/chergert/ptyxis
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = ptyxis
 	depends = glib2
 	depends = glibc
 	depends = gnutls
+	depends = graphene
 	depends = gtk4
 	depends = hicolor-icon-theme
 	depends = icu
@@ -27,12 +28,10 @@ pkgbase = ptyxis
 	depends = pango
 	depends = pcre2
 	depends = systemd-libs
-	depends = vte-common=0.76.4
-	source = ptyxis::git+https://gitlab.gnome.org/chergert/ptyxis#tag=46.6
-	source = ptyxis_vte::git+https://gitlab.gnome.org/GNOME/vte.git#commit=41b19080b5594300afc010e1ef7d838ab120603a
-	source = 0001-bundle-patched-vte.patch
-	sha256sums = 0885010bca27ec1956f2fd1529bdf9ee04a906215f5ad9bdd5db23829776320a
-	sha256sums = 628e9202b3578a825e6a135508c711a0ea0c236579f4ec1afe5d11f3feecce90
-	sha256sums = 5254ecebcd402f658ec0d8912d4b2ddcc5a1e506547a9a08fe119253f3bb470d
+	depends = vte-common>=0.78.0
+	source = ptyxis::git+https://gitlab.gnome.org/chergert/ptyxis#tag=47.0
+	source = ptyxis_vte::git+https://gitlab.gnome.org/GNOME/vte.git#commit=e24087d953d9352c8bc46074e2662c80f9bfbc2d
+	sha256sums = 626de77aa50d2320a61ee5d61312a2653e451ab5697c1ed1717ae67bd7577321
+	sha256sums = 12154ce2497c31894b3ae81ab0c03272843323933e6658ceecc99d5e537dda56
 
 pkgname = ptyxis

@@ -1,9 +1,9 @@
 # Maintainer: Piroro-hs
 
 pkgname=ptyxis
-pkgver=46.6
-_vtever=0.76.4
-_vtecommit='41b19080b5594300afc010e1ef7d838ab120603a'
+pkgver=47.0
+_vtearchver=0.78.0
+_vtecommit='e24087d953d9352c8bc46074e2662c80f9bfbc2d'
 pkgrel=1
 pkgdesc='A terminal for a container-oriented desktop'
 arch=('x86_64')
@@ -17,6 +17,7 @@ depends=('cairo'
          'glib2'
          'glibc'
          'gnutls'
+         'graphene'
          'gtk4'
          'hicolor-icon-theme'
          'icu'
@@ -28,7 +29,7 @@ depends=('cairo'
          'pango'
          'pcre2'
          'systemd-libs'
-         "vte-common=$_vtever")
+         "vte-common>=$_vtearchver")
 makedepends=('git'
              'glib2-devel'
              'meson')
@@ -38,21 +39,17 @@ conflicts=()
 replaces=()
 backup=()
 source=("$pkgname::git+$url#tag=$pkgver"
-        "${pkgname}_vte::git+https://gitlab.gnome.org/GNOME/vte.git#commit=$_vtecommit"
-        '0001-bundle-patched-vte.patch')
-sha256sums=('0885010bca27ec1956f2fd1529bdf9ee04a906215f5ad9bdd5db23829776320a'
-            '628e9202b3578a825e6a135508c711a0ea0c236579f4ec1afe5d11f3feecce90'
-            '5254ecebcd402f658ec0d8912d4b2ddcc5a1e506547a9a08fe119253f3bb470d')
+        "${pkgname}_vte::git+https://gitlab.gnome.org/GNOME/vte.git#commit=$_vtecommit")
+sha256sums=('626de77aa50d2320a61ee5d61312a2653e451ab5697c1ed1717ae67bd7577321'
+            '12154ce2497c31894b3ae81ab0c03272843323933e6658ceecc99d5e537dda56')
 
 prepare() {
   rm -rf "$srcdir/$pkgname/subprojects"
   mkdir "$srcdir/$pkgname/subprojects"
   mv "$srcdir/${pkgname}_vte" "$srcdir/$pkgname/subprojects/vte"
-  patch -d "$srcdir/$pkgname/subprojects/vte" -p1 -i "$srcdir/0001-bundle-patched-vte.patch"
-  sed -i '/dependency('\''vte-2.91-gtk4'\'', version: vte_req)/c\subproject('\''vte'\'').get_variable('\''libvte_gtk4_dep'\''),' "$srcdir/$pkgname/src/meson.build"
-
-  patch -d "$srcdir/$pkgname/subprojects/vte" -p1 -i "$srcdir/$pkgname/build-aux/0001-add-notification-and-shell-precmd-preexec.patch"
-  patch -d "$srcdir/$pkgname/subprojects/vte" -p1 -i "$srcdir/$pkgname/build-aux/0001-a11y-implement-GtkAccessibleText.patch"
+  sed -i 's/0.79.0/10000.78.0/' "$srcdir/$pkgname/subprojects/vte/meson.build"
+  sed -i 's/vte_api_major_version = 2/vte_api_major_version = 10002/' "$srcdir/$pkgname/subprojects/vte/meson.build"
+  sed -i '/vte-2.91-gtk4/c\subproject('\''vte'\'').get_variable('\''libvte_gtk4_dep'\''),' "$srcdir/$pkgname/src/meson.build"
 }
 
 build() {
@@ -70,5 +67,7 @@ package() {
   rm -rf "$pkgdir/usr/lib/systemd/"
   # rm -rf "$pkgdir/usr/include/vte-10002.91-gtk4/"
   rm -rf "$pkgdir/usr/include/"
-  rm -rf "$pkgdir/etc/profile.d/vte.csh"
+  # rm -rf "$pkgdir/etc/profile.d/vte.csh"
+  # rm -rf "$pkgdir/etc/profile.d/vte.sh"
+  rm -rf "$pkgdir/etc/"
 }
