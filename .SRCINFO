@@ -1,7 +1,7 @@
 pkgbase = code-expert-sync-appimage
 	pkgdesc = Allows syncing of Code Expert projects to a local file system
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/CodeExpertETH/CodeExpertSync
 	arch = x86_64
 	license = MIT

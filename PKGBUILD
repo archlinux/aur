@@ -4,7 +4,7 @@ _pkgname=code-expert-sync
 
 pkgname="${_pkgname}"-appimage
 pkgver=1.0.1
-pkgrel=2
+pkgrel=4
 pkgdesc="Allows syncing of Code Expert projects to a local file system"
 arch=('x86_64')
 url="https://github.com/CodeExpertETH/CodeExpertSync"
