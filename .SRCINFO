@@ -8,9 +8,6 @@ pkgbase = yaru
 	makedepends = meson
 	makedepends = sassc
 	makedepends = git
-	options = !strip
-	options = !buildflags
-	options = staticlibs
 	source = https://github.com/ubuntu/yaru/archive/24.04.3.tar.gz
 	sha256sums = 3325be6e911ec73f263a2e5b606909d3a5d82d0d58f38aee7c456caebb1b780b
 

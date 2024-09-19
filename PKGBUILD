@@ -18,7 +18,6 @@ url="https://github.com/ubuntu/yaru"
 license=('GPL3')
 
 makedepends=('meson' 'sassc' 'git')
-options=('!strip' '!buildflags' 'staticlibs')
 
 source=("https://github.com/ubuntu/yaru/archive/${pkgver}.tar.gz")
 sha256sums=('3325be6e911ec73f263a2e5b606909d3a5d82d0d58f38aee7c456caebb1b780b')
