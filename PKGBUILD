@@ -21,6 +21,7 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
   export RUSTUP_TOOLCHAIN=stable
+  cargo update
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -28,7 +29,7 @@ build() {
   cd "${_pkgname}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release 
+  cargo build --frozen --release
 }
 
 package() {
