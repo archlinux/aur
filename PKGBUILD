@@ -3,7 +3,7 @@
 pkgbase=qdap-git
 pkgname=qdap-git
 pkgver=r39.4f3d58b
-pkgrel=2
+pkgrel=1
 groups=()
 pkgdesc="cmsis-dap upper by a Qt"
 arch=(x86_64
@@ -15,6 +15,8 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=(
     bash
+    rsync
+
     gcc-libs
     glibc
     libusb
@@ -30,7 +32,7 @@ optdepends=()
 source=("${pkgname}::git+${url}.git"
     "git+https://github.com/ma6254/qdap_chips.git")
 sha256sums=('SKIP'
-    'SKIP')
+            'SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -59,8 +61,7 @@ build() {
 package() {
     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/build install
     install -dm0755 "${pkgdir}/usr/share/${pkgname%-git}/chips"
-    cd ${srcdir}/qdap_chips
-    find . -maxdepth 1 -not -name ".*" -type f -exec cp -v {} ${pkgdir}/usr/share/${pkgname%-git}/chips/ \;
+    rsync -av --exclude='.*' ${srcdir}/qdap_chips ${pkgdir}/usr/share/${pkgname%-git}/chips/
     mv ${pkgdir}/usr/bin/QDAP "${pkgdir}/usr/share/${pkgname%-git}/"
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-git}" <<EOF
 #!/usr/bin/env bash
