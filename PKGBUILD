@@ -4,7 +4,7 @@
 pkgname=qt5-serialbus
 _basever=5.15.15
 pkgver=5.15.15
-pkgrel=1
+pkgrel=2
 _commit=77dae896b13e36969fefdfa25d711e455d58597b
 arch=('x86_64')
 url='https://www.qt.io'
@@ -15,7 +15,7 @@ makedepends=('git')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('5d8487ef5d9642fa2f5f16ad6a9d187bb3ada754579b703ffb958cbf84d4783a')
+sha256sums=('b8c0e9b74539e860a48d8dbaa8c3397fedbf63f2959c98cb450e7422e03f2465')
 
 pkgver() {
   cd kde-$_pkgfqn
