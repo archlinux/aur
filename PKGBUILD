@@ -1,4 +1,5 @@
 # Maintainer: d6k283tix <d6k283tix@mozmail.com>
+# Maintainer: Biaogo <5topks7fp@mozmail.com>
 
 pkgname=navicat17-premium-cs
 pkgver=17.0.4
@@ -8,7 +9,7 @@ arch=(x86_64)
 url='https://www.navicat.com.cn/navicat-17-highlights'
 license=('NOASSERTION')
 source_x86_64=("navicat17-premium-cs-$CARCH-$pkgver.AppImage::https://dn.navicat.com/download/navicat17-premium-cs-x86_64.AppImage")
-sha256sums_x86_64=('31b8eca01cec52eadfe37a0c5c2d9bcd52399893870aa6fb19d012dfc145c75d')
+sha256sums_x86_64=('4c64a79fa7daf2a2cb325b4e01d999bcf81d7ccd54b7d782b2e5781bfb998c3c')
 
 package() {
     cd $srcdir
