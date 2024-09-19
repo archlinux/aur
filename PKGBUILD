@@ -1,7 +1,7 @@
 # Maintainer: haxibami <contact at haxibami dot net>
 
 pkgname=dug-bin
-_pkgver=dug-20240829
+_pkgver=dug-20240918
 pkgver=${_pkgver#dug-}
 pkgrel=1
 pkgdesc='Extensible DNS libraries written purely in Haskell'

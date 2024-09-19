@@ -1,13 +1,13 @@
 pkgbase = dug-bin
 	pkgdesc = Extensible DNS libraries written purely in Haskell
-	pkgver = 20240829
+	pkgver = 20240918
 	pkgrel = 1
 	url = https://github.com/kazu-yamamoto/dnsext
 	arch = x86_64
 	license = BSD-3-Clause
 	provides = dug
 	conflicts = dug
-	source = https://github.com/kazu-yamamoto/dnsext/releases/download/dug-20240829/dug-linux-x86_64
+	source = https://github.com/kazu-yamamoto/dnsext/releases/download/dug-20240918/dug-linux-x86_64
 	sha256sums = b53c855a6c95bebb0e4cc7d41f36ba6117d21374ab6f35b611ddbbd6afe24991
 
 pkgname = dug-bin
