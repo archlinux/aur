@@ -1,6 +1,6 @@
 pkgbase = zoxide
 	pkgdesc = A smarter cd command for your terminal
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://github.com/ajeetdsouza/zoxide
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = zoxide
 	depends = glibc
 	optdepends = fzf: for interactive selection
 	options = !lto
-	source = zoxide::git+https://github.com/ajeetdsouza/zoxide.git#tag=v0.9.5
-	sha256sums = 51b38035c7add06c86c259f10c574459e5e9a548502cb1b8c755838974af2f2a
+	source = zoxide::git+https://github.com/ajeetdsouza/zoxide.git#tag=v0.9.6
+	sha256sums = d59d6106dd4d3a2f4be21345735bb25e121a5439662435ddd11b7e930ad0d8e9
 
 pkgname = zoxide
