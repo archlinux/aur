@@ -3,8 +3,8 @@
 # Contributor: witchymary
 
 pkgname=aegisub-arch1t3cht-git
-pkgver=3.2.2.r1188.bf20c62e6
-pkgrel=2
+pkgver=3.2.2.r1189.e8ebb103a
+pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
 url="https://github.com/arch1t3cht/Aegisub"
@@ -100,14 +100,6 @@ prepare() {
 
   # Check if the OPTIONS array contains "!strip"
   check_makepkg_options() (
-    source /etc/makepkg.conf
-
-    if [ "$?" -ne 0 ]; then
-      >&2 echo 'Failed to source /etc/makepkg.conf'
-      echo release # use release as fallback buildtype
-      return 1
-    fi
-
     if [[ " ${OPTIONS[@]} " =~ ' !strip ' ]]; then
       >&2 echo '!strip found in OPTIONS array'
       echo debug
