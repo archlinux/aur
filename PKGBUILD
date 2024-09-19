@@ -5,6 +5,7 @@ pkgrel=1
 pkgdesc='BLS threshold signature'
 arch=('any')
 license=('BSD')
+depends=('python', 'git')
 url="https://github.com/herumi/bls"
 
 build() {
@@ -16,4 +17,5 @@ build() {
 package() {
 	cd bls
     make install DESTDIR=$pkgdir
+    cp mcl/lib/* $pkgdir/usr/local/lib/
 }
