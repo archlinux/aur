@@ -1,3 +1,5 @@
 *.zst
 src/
 pkg/
+p4d
+p4d.asc
