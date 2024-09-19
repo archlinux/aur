@@ -2,9 +2,10 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _pkgname=libertinus
-pkgname="otf-$_pkgname-git"
+pkgbase="otf-$_pkgname-git"
+pkgname=(deprecated)
 pkgver=7.020.r16.ge809fbe
-pkgrel=1
+pkgrel=2
 pkgdesc='The Libertinus font family, a fork of Linux Libertine and Biolinum with OpenType math'
 arch=('any')
 url="https://github.com/alerque/$_pkgname"
@@ -26,7 +27,7 @@ build() {
   fontship make -- PROJECT=Libertinus static-otf
 }
 
-package() {
+package_deprecated() {
   cd "$pkgname"
   install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" "${_pkgname^}"*.otf
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" OFL.txt AUTHORS.txt
