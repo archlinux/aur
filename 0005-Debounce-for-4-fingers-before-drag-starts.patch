@@ -1,0 +1,174 @@
+From 9f769486da4da4b9ab93bc96209cc8a05e956a44 Mon Sep 17 00:00:00 2001
+From: abc def <24701-abcdef@users.noreply.gitlab.freedesktop.org>
+Date: Mon, 7 Feb 2022 15:44:00 +0100
+Subject: [PATCH 5/7] Debounce for 4+ fingers before drag starts
+
+When the drag hasn't started there's now a 50 ms debounce time
+to disambiguate from 4+ finger gestures.
+---
+ src/evdev-mt-touchpad-tfd.c | 89 +++++++++++++++++++++++++++++++++----
+ src/evdev-mt-touchpad.h     |  6 ++-
+ 2 files changed, 85 insertions(+), 10 deletions(-)
+
+diff --git a/src/evdev-mt-touchpad-tfd.c b/src/evdev-mt-touchpad-tfd.c
+index c1c32862..d9a27c8a 100644
+--- a/src/evdev-mt-touchpad-tfd.c
++++ b/src/evdev-mt-touchpad-tfd.c
+@@ -42,7 +42,8 @@ tfd_state_to_str(enum tp_tfd_state state)
+ {
+ 	switch(state) {
+ 	CASE_RETURN_STRING(TFD_STATE_IDLE);
+-	CASE_RETURN_STRING(TFD_STATE_POSSIBLE_DRAG);
++	CASE_RETURN_STRING(TFD_STATE_POSSIBLE_BEGIN);
++	CASE_RETURN_STRING(TFD_STATE_AWAIT_DRAG);
+ 	CASE_RETURN_STRING(TFD_STATE_DRAG);
+ 	CASE_RETURN_STRING(TFD_STATE_POSSIBLE_ZERO_FINGERS);
+ 	CASE_RETURN_STRING(TFD_STATE_AWAIT_RESUME);
+@@ -239,8 +240,9 @@ tp_tfd_idle_handle_event(struct tp_dispatch *tp,
+ 	case TFD_EVENT_TOUCH_COUNT_INCREASE:
+ 	case TFD_EVENT_TOUCH_COUNT_DECREASE:
+ 		if (nfingers_down == 3) {
+-			tp->tfd.state = TFD_STATE_POSSIBLE_DRAG;
+-			tp_tfd_set_button_press_delay_timer(tp, time);
++			tp->tfd.state = TFD_STATE_POSSIBLE_BEGIN;
++			// tp_tfd_set_button_press_delay_timer(tp, time);
++			tp_tfd_set_await_more_fingers_timer(tp, time);
+ 		}
+ 		break;
+ 	case TFD_EVENT_MOTION:
+@@ -255,6 +257,72 @@ tp_tfd_idle_handle_event(struct tp_dispatch *tp,
+ 	}
+ }
+ 
++
++
++
++
++/* Waiting for more fingers. Three fingers have been detected, but it might be 
++a transitory phase towards 4 or more fingers, which should not begin the
++drag. */
++static void
++tp_tfd_possible_begin_handle_event(struct tp_dispatch *tp,
++				  struct tp_touch *t,
++				  enum tfd_event event, uint64_t time,
++				   int nfingers_down)
++{
++	switch (event) {
++	case TFD_EVENT_TOUCH_COUNT_INCREASE:
++		switch (nfingers_down) {
++		case 0: 
++		case 1:
++		case 2:
++		case 3:
++			break; // bug?
++		default:
++			tp_tfd_unpin_fingers(tp);
++			tp->tfd.state = TFD_STATE_IDLE;
++			tp_tfd_clear_timer(tp);
++			break;
++		}
++		break;
++	case TFD_EVENT_MOTION:
++		break;
++	case TFD_EVENT_RESUME_TIMEOUT: 
++		break; // bug
++	case TFD_EVENT_TOUCH_COUNT_DECREASE:
++		/* a decrease forces immediate evaluation as if the timer had fired */
++		tp_tfd_clear_timer(tp);
++		/* fallthrough */
++	case TFD_EVENT_TIMEOUT:
++		/* time to check whether we have 3 fingers touching */
++		switch (nfingers_down) {
++		case 0:
++		case 1:
++		case 2:
++		default:
++			tp_tfd_unpin_fingers(tp);
++			tp->tfd.state = TFD_STATE_IDLE;
++			break;
++		case 3:
++			tp_tfd_unpin_fingers(tp);
++			// TODO: compensate for the duration of this state 
++			tp_tfd_set_button_press_delay_timer(tp, time);
++			tp->tfd.state = TFD_STATE_AWAIT_DRAG;
++			break;
++		}
++		break;
++	case TFD_EVENT_TAP:
++	case TFD_EVENT_BUTTON:
++		tp_tfd_unpin_fingers(tp);
++		tp->tfd.state = TFD_STATE_IDLE;
++		tp_tfd_clear_timer(tp);
++		break;
++	}
++}
++
++
++
++
+ /* finishes hold gestures and cancels other gestures */
+ static void
+ tp_tfd_interrupt_gestures(struct tp_dispatch *tp, struct tp_touch *t, uint64_t time)
+@@ -280,7 +348,7 @@ tp_tfd_interrupt_gestures(struct tp_dispatch *tp, struct tp_touch *t, uint64_t t
+ /* We don't have the primary button pressed in this state; the 
+ press is delayed if the fingers have remained stationary */
+ static void
+-tp_tfd_possible_drag_handle_event(struct tp_dispatch *tp,
++tp_tfd_await_drag_handle_event(struct tp_dispatch *tp,
+ 			      struct tp_touch *t,
+ 			      enum tfd_event event, uint64_t time, int nfingers_down)
+ {	
+@@ -754,8 +822,12 @@ tp_tfd_handle_event(struct tp_dispatch *tp,
+ 		tp_tfd_idle_handle_event(tp, t, event, time, nfingers_down);
+ 		break;
+ 		
+-	case TFD_STATE_POSSIBLE_DRAG:
+-		tp_tfd_possible_drag_handle_event(tp, t, event, time, nfingers_down);
++	case TFD_STATE_POSSIBLE_BEGIN:
++		tp_tfd_possible_begin_handle_event(tp, t, event, time, nfingers_down);
++		break;
++
++	case TFD_STATE_AWAIT_DRAG:
++		tp_tfd_await_drag_handle_event(tp, t, event, time, nfingers_down);
+ 		break;
+ 
+ 	case TFD_STATE_DRAG:
+@@ -826,7 +898,7 @@ tp_tfd_exceeds_motion_threshold(struct tp_dispatch *tp,
+ 		return false;
+ 
+ 	double threshold = DEFAULT_TFD_MOVE_THRESHOLD;
+-	if (tp->tfd.state == TFD_STATE_POSSIBLE_DRAG) {
++	if (tp->tfd.state == TFD_STATE_AWAIT_DRAG) {
+ 		// TODO: have to figure out something better
+ 		// MOTION events are too decoupled from what's required to actually move
+ 		// the cursor. TODO: look it up
+@@ -967,7 +1039,8 @@ tp_tfd_handle_tap(struct tp_dispatch *tp, uint64_t time)
+ 			tp_tfd_handle_event(tp, NULL, TFD_EVENT_TAP, time, tp->tfd.finger_count);
+ 			break;
+ 		case TFD_STATE_IDLE:
+-		case TFD_STATE_POSSIBLE_DRAG:
++		case TFD_STATE_POSSIBLE_BEGIN:
++		case TFD_STATE_AWAIT_DRAG:
+ 		case TFD_STATE_DRAG:
+ 			break;
+ 	}
+diff --git a/src/evdev-mt-touchpad.h b/src/evdev-mt-touchpad.h
+index 34b19b56..f439c94d 100644
+--- a/src/evdev-mt-touchpad.h
++++ b/src/evdev-mt-touchpad.h
+@@ -141,8 +141,10 @@ enum tp_tfd_state {
+ 
+ 	/* waiting for 3 fingers */
+ 	TFD_STATE_IDLE,
+-	/* 3 fingers touching, possible 4+ f gesture */
+-	TFD_STATE_POSSIBLE_DRAG,
++	/* [debounce] disambiguate between starting a drag and a possible 4+ gesture */
++	TFD_STATE_POSSIBLE_BEGIN,
++	/* 3 fingers touching, waiting for motion or timeout */
++	TFD_STATE_AWAIT_DRAG,
+ 	/* 3 fingers touching and button press has been output */
+ 	TFD_STATE_DRAG,
+ 	/* [debounce] drag-lock; 1 finger touching, possibly going to 0 fingers */
+-- 
+2.46.1
+

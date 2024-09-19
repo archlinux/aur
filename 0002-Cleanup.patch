@@ -1,7 +1,7 @@
-From 1851f29024d68426ad8906282c2971331ede111d Mon Sep 17 00:00:00 2001
+From 8a36cac4f9a692f48261ed98aaf276026bfe284c Mon Sep 17 00:00:00 2001
 From: abc def <24701-abcdef@users.noreply.gitlab.freedesktop.org>
 Date: Tue, 4 Jan 2022 19:07:24 +0100
-Subject: [PATCH 2/3] Cleanup
+Subject: [PATCH 2/7] Cleanup
 
 Signed-off-by: Temp Name <test@example.com>
 ---
@@ -11,7 +11,7 @@ Signed-off-by: Temp Name <test@example.com>
  3 files changed, 108 insertions(+), 515 deletions(-)
 
 diff --git a/src/evdev-mt-touchpad-tap.c b/src/evdev-mt-touchpad-tap.c
-index 4b4008bc..e799138d 100644
+index 963eb1c1..66abb7b3 100644
 --- a/src/evdev-mt-touchpad-tap.c
 +++ b/src/evdev-mt-touchpad-tap.c
 @@ -148,7 +148,7 @@ tp_tap_notify(struct tp_dispatch *tp,
@@ -959,10 +959,10 @@ index 54fca8fe..c12bc27b 100644
  tp_tfd_dragging(const struct tp_dispatch *tp)
  {
 diff --git a/src/evdev-mt-touchpad.h b/src/evdev-mt-touchpad.h
-index 0d60a9a9..12403ca3 100644
+index 0430c8b2..7025ee11 100644
 --- a/src/evdev-mt-touchpad.h
 +++ b/src/evdev-mt-touchpad.h
-@@ -672,6 +672,9 @@ tp_tap_post_process_state(struct tp_dispatch *tp);
+@@ -686,6 +686,9 @@ tp_button_post_process_state(struct tp_dispatch *tp);
  void
  tp_init_tap(struct tp_dispatch *tp);
  
@@ -972,7 +972,7 @@ index 0d60a9a9..12403ca3 100644
  void
  tp_remove_tap(struct tp_dispatch *tp);
  
-@@ -722,6 +725,9 @@ tp_tap_resume(struct tp_dispatch *tp, uint64_t time);
+@@ -736,6 +739,9 @@ tp_tap_resume(struct tp_dispatch *tp, uint64_t time);
  bool
  tp_tap_dragging(const struct tp_dispatch *tp);
  
@@ -983,5 +983,5 @@ index 0d60a9a9..12403ca3 100644
  tp_tap_dragging_or_double_tapping(const struct tp_dispatch *tp);
  
 -- 
-2.41.0
+2.46.1
 

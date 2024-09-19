@@ -1,0 +1,36 @@
+From 3c74a94547c073a13bd1383a6d664bda44de2566 Mon Sep 17 00:00:00 2001
+From: abc def <24701-abcdef@users.noreply.gitlab.freedesktop.org>
+Date: Mon, 7 Feb 2022 16:19:01 +0100
+Subject: [PATCH 6/7] Cancel hold gestures instead of finishing them
+
+It was requested that we should be consistent here with what happens when swipe gestures interrupt hold gestures.
+---
+ src/evdev-mt-touchpad-tfd.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/evdev-mt-touchpad-tfd.c b/src/evdev-mt-touchpad-tfd.c
+index d9a27c8a..33fb4a06 100644
+--- a/src/evdev-mt-touchpad-tfd.c
++++ b/src/evdev-mt-touchpad-tfd.c
+@@ -331,12 +331,12 @@ tp_tfd_interrupt_gestures(struct tp_dispatch *tp, struct tp_touch *t, uint64_t t
+ 	case GESTURE_STATE_NONE:
+ 	case GESTURE_STATE_POINTER_MOTION:
+ 		break; /* should be harmless enough? */
+-	case GESTURE_STATE_HOLD:
+-	case GESTURE_STATE_HOLD_AND_MOTION:
+-		/* starting a drag should finish a hold gesture -- not 
+-		cancel it (if there's any difference?) */
+-		tp_gesture_stop(tp, time);
+-		break;
++	// case GESTURE_STATE_HOLD:
++	// case GESTURE_STATE_HOLD_AND_MOTION:
++	// 	/* starting a drag should finish a hold gesture -- not 
++	// 	cancel it (if there's any difference?) */
++	// 	tp_gesture_stop(tp, time);
++	// 	break;
+ 	default:
+ 		tp_gesture_cancel(tp, time);
+ 		break;
+-- 
+2.46.1
+

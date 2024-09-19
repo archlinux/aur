@@ -1,0 +1,149 @@
+From 0af0d3f0e691268b2ee06272c397a88c411f32c3 Mon Sep 17 00:00:00 2001
+From: abc def <24701-abcdef@users.noreply.gitlab.freedesktop.org>
+Date: Thu, 27 Jan 2022 14:50:30 +0100
+Subject: [PATCH 4/7] Take hold gestures and clickpad state into account
+
+- Avoid entering the drag state if the clickpad is pressed.
+- Finish hold gestures and cancel other gestures before entering the drag state.
+---
+ src/evdev-mt-touchpad-tfd.c | 77 ++++++++++++++++++++++++++++++++++---
+ 1 file changed, 71 insertions(+), 6 deletions(-)
+
+diff --git a/src/evdev-mt-touchpad-tfd.c b/src/evdev-mt-touchpad-tfd.c
+index 49c576bd..c1c32862 100644
+--- a/src/evdev-mt-touchpad-tfd.c
++++ b/src/evdev-mt-touchpad-tfd.c
+@@ -255,6 +255,28 @@ tp_tfd_idle_handle_event(struct tp_dispatch *tp,
+ 	}
+ }
+ 
++/* finishes hold gestures and cancels other gestures */
++static void
++tp_tfd_interrupt_gestures(struct tp_dispatch *tp, struct tp_touch *t, uint64_t time)
++{
++	switch (tp->gesture.state) {
++	case GESTURE_STATE_NONE:
++	case GESTURE_STATE_POINTER_MOTION:
++		break; /* should be harmless enough? */
++	case GESTURE_STATE_HOLD:
++	case GESTURE_STATE_HOLD_AND_MOTION:
++		/* starting a drag should finish a hold gesture -- not 
++		cancel it (if there's any difference?) */
++		tp_gesture_stop(tp, time);
++		break;
++	default:
++		tp_gesture_cancel(tp, time);
++		break;
++	}
++	/* TODO: sooner or later, calls between state machines will start resulting 
++	in infinite recursion... */
++}
++
+ /* We don't have the primary button pressed in this state; the 
+ press is delayed if the fingers have remained stationary */
+ static void
+@@ -262,6 +284,11 @@ tp_tfd_possible_drag_handle_event(struct tp_dispatch *tp,
+ 			      struct tp_touch *t,
+ 			      enum tfd_event event, uint64_t time, int nfingers_down)
+ {	
++	/* it is possible to use 3 fingers with a clickpad to emulate e.g. middle 
++	mouse button clicks, and no-one wants a primary click while doing a middle 
++	click on a link, for instance */
++	bool clickpad_pressed = tp->buttons.is_clickpad && tp->buttons.state;
++
+ 	switch (event) {
+ 	case TFD_EVENT_TOUCH_COUNT_INCREASE:
+ 	case TFD_EVENT_TOUCH_COUNT_DECREASE:
+@@ -276,14 +303,22 @@ tp_tfd_possible_drag_handle_event(struct tp_dispatch *tp,
+ 		}
+ 		break;
+ 	case TFD_EVENT_MOTION:
+-	/* this event must ensure it fires upon cursor movement -- alternatively, if
+-	impossible, TODO: cursor should be pinned in this state to ensure this */
++		/* this event must ensure it fires upon cursor movement 
++		
++		alternatively: cursor should be pinned in this state to ensure this.
++		But pinning is not acceptable in this state as long as we check clickpad 
++		state and exit early... */
+ 		switch (nfingers_down) {
+ 		default: 
+ 			log_tfd_bug(tp, event, nfingers_down);
+ 			break; // bug
+ 		case 3:
+-			/* perform a press since it hasn't already been done by the timer */
++			if (clickpad_pressed)
++				break;
++
++			/* show special consideration for overlapping hold gestures */
++			tp_tfd_interrupt_gestures(tp, t, time);
++
+ 			tp->tfd.state = TFD_STATE_DRAG;
+ 			tp_tfd_notify(tp, time, 1, LIBINPUT_BUTTON_STATE_PRESSED);
+ 			tp_tfd_clear_timer(tp);
+@@ -292,8 +327,12 @@ tp_tfd_possible_drag_handle_event(struct tp_dispatch *tp,
+ 	case TFD_EVENT_RESUME_TIMEOUT:
+ 		break;
+ 	case TFD_EVENT_TIMEOUT:
+-		/* we've not moved our three fingers so we perform the press after the 
+-		initial delay */
++		if (clickpad_pressed)
++			break;
++
++		/* show special consideration for overlapping hold gestures */
++		tp_tfd_interrupt_gestures(tp, t, time);
++
+ 		tp->tfd.state = TFD_STATE_DRAG;
+ 		tp_tfd_notify(tp, time, 1, LIBINPUT_BUTTON_STATE_PRESSED);
+ 		break;
+@@ -658,6 +697,26 @@ tp_tfd_possible_resume_handle_event(struct tp_dispatch *tp,
+ // 			TODO: It's too easy to trigger 3fd while scrolling and a third finger 
+ // 			touches momentarily. */			
+ 
++/* Whether to disregard this event for the current state instead of handling it */
++// static bool
++// tp_tfd_should_filter_event(struct tp_dispatch *tp,
++// 		    struct tp_touch *t,
++// 		    enum tfd_event event,
++// 		    uint64_t time,
++// 			int nfingers_down)
++// {
++// 	switch (tp->tfd.state) {
++// 	case TFD_STATE_POSSIBLE_DRAG:
++// 		/* don't engage TFD while clickpad is pressed */
++// 		return (event == TFD_EVENT_MOTION || event == TFD_EVENT_TIMEOUT) &&
++// 			tp->buttons.is_clickpad && tp->queued & TOUCHPAD_EVENT_BUTTON_PRESS;
++// 		/* TODO: not very clean since motion and timeouts aren't directly
++// 		related to entering the drag state. Consider a more clear solution. */
++// 	default:
++// 		return false;
++// 	}
++// }
++
+ static void
+ tp_tfd_handle_event(struct tp_dispatch *tp,
+ 		    struct tp_touch *t,
+@@ -684,6 +743,12 @@ tp_tfd_handle_event(struct tp_dispatch *tp,
+ 			break;
+ 	}
+ 
++	// /* currently used to prevent TFD while clickpad button is pressed */
++	// /* TODO: consider just inspecting the clickpad state in the POSSIBLE_DRAG 
++	// handler to at least gather all state transition decisions in one place? */
++	// if (tp_tfd_should_filter_event(tp, t, event, time, nfingers_down))
++	// 	return;
++
+ 	switch(tp->tfd.state) {
+ 	case TFD_STATE_IDLE:
+ 		tp_tfd_idle_handle_event(tp, t, event, time, nfingers_down);
+@@ -833,7 +898,7 @@ tp_tfd_handle_state(struct tp_dispatch *tp, uint64_t time)
+ 	// if (!tp_tfd_enabled(tp))
+ 	// 	return 0;
+ 
+-	/* Handle queued button pressed events from clickpads. */
++	/* Handle queued button pressed events. */
+ 	if (/* tp->buttons.is_clickpad && */ tp->queued & TOUCHPAD_EVENT_BUTTON_PRESS)
+ 		tp_tfd_handle_event(tp, NULL, TFD_EVENT_BUTTON, time, active_touches);
+ 
+-- 
+2.46.1
+
