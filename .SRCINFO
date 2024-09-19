@@ -1,11 +1,10 @@
 pkgbase = tagstudio
 	pkgdesc = A User-Focused Photo & File Management System
 	pkgver = alpha9.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TagStudioDev/TagStudio
 	arch = x86_64
-	license = GPL3
-	makedepends = python
+	license = GPL-3.0-only
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -25,6 +24,7 @@ pkgbase = tagstudio
 	depends = python-ffmpeg-python>=0.2.0
 	depends = python-mutagen>=1.47.0
 	depends = python-vtf2img>=0.1.0
+	depends = python-pydub>=0.25.1
 	depends = qt6-tools
 	provides = tagstudio
 	conflicts = tagstudio

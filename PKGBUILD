@@ -2,16 +2,40 @@
 
 pkgname=tagstudio
 pkgver=alpha9.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A User-Focused Photo & File Management System "
 _pkgver=${pkgver#alpha}
 
 arch=("x86_64")
 url="https://github.com/TagStudioDev/TagStudio"
-license=("GPL3")
+license=("GPL-3.0-only")
 
-depends=("python" "python-humanfriendly>=10.0" "python-opencv>=4.8" "python-pillow>=10.3" "pyside6>=6.7" "python-typing_extensions>=3.10" "python-ujson>=5.8" "python-numpy>=1.26" "python-chardet>=5.2" "python-rawpy>=0.21" "python-pillow_heif>=0.16" "python-send2trash>=1.8.0" "python-ffmpeg-python>=0.2.0" "python-mutagen>=1.47.0" "python-vtf2img>=0.1.0" "qt6-tools")
-makedepends=("python" "python-build" "python-installer" "python-wheel" "python-setuptools-scm")
+depends=(
+	"python"
+	"python-humanfriendly>=10.0"
+	"python-opencv>=4.8"
+	"python-pillow>=10.3"
+	"pyside6>=6.7"
+	"python-typing_extensions>=3.10"
+	"python-ujson>=5.8"
+	"python-numpy>=1.26"
+	"python-chardet>=5.2"
+	"python-rawpy>=0.21"
+	"python-pillow_heif>=0.16"
+	"python-send2trash>=1.8.0"
+	"python-ffmpeg-python>=0.2.0"
+	"python-mutagen>=1.47.0"
+	"python-vtf2img>=0.1.0"
+	"python-pydub>=0.25.1"
+	"qt6-tools"
+)
+
+makedepends=(
+	"python-build"
+	"python-installer"
+	"python-wheel"
+	"python-setuptools-scm"
+)
 
 source=(
 	"$pkgname-$_pkgver.tar.gz::$url/archive/refs/tags/v$_pkgver.tar.gz"
