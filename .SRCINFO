@@ -1,7 +1,7 @@
 pkgbase = pybind11-abseil
 	pkgdesc = Pybind11 bindings for the Abseil C++ Common Libraries
 	pkgver = 202402.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pybind/pybind11_abseil
 	arch = any
 	license = BSD-3-Clause

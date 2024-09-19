@@ -3,7 +3,7 @@ _base=pybind11_abseil
 pkgname=${_base//_/-}
 pkgdesc="Pybind11 bindings for the Abseil C++ Common Libraries"
 pkgver=202402.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/pybind/${_base}"
 license=(BSD-3-Clause)
@@ -44,5 +44,5 @@ package() {
   install -d -m755 "${pkgdir}/usr"/{include,lib}
   install -Dvm644 ${_base}-${pkgver}/${_base}/absl_casters.h -t "${pkgdir}/usr/include"
   install -Dvm755 build/${_base}/lib*.a -t "${pkgdir}/usr/lib"
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 ${_base}-${pkgver}/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
