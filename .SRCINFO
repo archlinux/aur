@@ -5,7 +5,7 @@ pkgbase = otf-sn-pro
 	url = https://github.com/supernotes/sn-pro
 	arch = any
 	license = OFL
-	source = https://github.com/supernotes/sn-pro/releases/download/1.2.0/SN-Pro.zip
+	source = SN-Pro-1.2.0.zip::https://github.com/supernotes/sn-pro/releases/download/1.2.0/SN-Pro.zip
 	sha256sums = 1bd89ccc333df57ca959207b83282fcd6b9806d71070244394a892ea280ac792
 
 pkgname = otf-sn-pro
