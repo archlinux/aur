@@ -1,6 +1,6 @@
 # Maintainer: Cole Leavitt <coleleavitt@protonmail.com>
 
-pkgname=sf-cli
+pkgname=sf
 pkgver=2.58.7
 pkgrel=1
 pkgdesc="A tool for creating and managing Salesforce DX projects from the command line"
