@@ -1,8 +1,8 @@
 # Maintainer: Salif Mehmed <mail@salif.eu>
 pkgname=nemo_gleam
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
-pkgdesc="GUI extension for Gleam development"
+pkgdesc="Graphical user interface for Gleam development"
 arch=('x86_64')
 url="https://codeberg.org/salif/nemo_gleam"
 license=('Apache-2.0')
@@ -19,7 +19,7 @@ options=()
 #changelog=CHANGELOG
 source=("https://codeberg.org/salif/nemo_gleam/archive/v${pkgver}.tar.gz")
 #noextract=()
-sha256sums=('d7351b1f3733beb3623e6d2a341f80a332dc5f4ffc9f31d6f5d575c874ec1691')
+sha256sums=('5df257a243a898301393a24425fad9a47e768a3d85f44f035d2d0ff37f3fd030')
 
 build() {
 	cd "${pkgname}"
