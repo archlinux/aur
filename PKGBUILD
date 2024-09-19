@@ -1,8 +1,8 @@
-# Maintainer: Henry-Joseph Audéoud <h.audeoud+aur@gmail.com>
+# Contributor: Henry-Joseph Audéoud <h.audeoud+aur@gmail.com>
 
 pkgname=ruby-unicode-scripts
 _name="${pkgname#ruby-}"
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='[Unicode 15.1.0] Retrieve the Unicode script(s) a string belongs to. Can also return the Script_Extension property which is defined as characters which are '"'"'commonly used with more than one script, but with a limited number of scripts'"'"'. '
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_name}-${pkgver}.gem")
 noextract=("${_name}-${pkgver}.gem")
-sha256sums=(b9c9fbaf405b67f9fa3bbadcc66bbb539f5148c9b11126c23038655bb4665d54)
+sha256sums=(19aceaa9090eb9eb3ca573a6515955592eef8e06792fda8bcf8ac0ff5e75e5c3)
 
 package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
