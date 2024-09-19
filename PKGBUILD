@@ -1,7 +1,7 @@
 # Maintainer: Reverier-Xu <reverier.xu@woooo.tech>
 pkgname=bitwave-bin
 _pkgname=bitwave
-pkgver=v1.0.4
+pkgver=v1.0.6
 pkgrel=1
 pkgdesc="A simple media player based on Qt and MPV."
 arch=('x86_64')
