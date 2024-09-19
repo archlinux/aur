@@ -4,6 +4,5 @@
 # But not these files...
 !PKGBUILD
 !.SRCINFO
-!uad_gui.desktop
-!uad_gui-noselfupdate-linux.tar.gz.sig
+!uad-ng.desktop
 !.gitignore

@@ -11,8 +11,10 @@ pkgbase = universal-android-debloater-bin
 	provides = universal-android-debloater
 	conflicts = universal-android-debloater
 	source = https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation/releases/download/v1.1.0/uad-ng-noselfupdate-linux.tar.gz
-	source = uad_gui.desktop
+	source = uad-ng.desktop
+	source = https://raw.githubusercontent.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation/main/resources/assets/logo-dark.png
 	sha256sums = ba315387d251be0f969bd8a26b6cd7584eef4083a9e5b9e9761732ce28bda477
-	sha256sums = e55f259fab5e09d6e91412dbfa74859f609615606422b0e3c937cc774eaedbf3
+	sha256sums = 95a2d196427cb2428b0aa913b98925f64f11c5d6d12a1df1f7f02b9448352cc5
+	sha256sums = 019c4df893dca5b54557c381881d7946b7a53ebf5b610cc04d61c2980c1a22ec
 
 pkgname = universal-android-debloater-bin

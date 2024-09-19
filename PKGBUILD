@@ -10,9 +10,11 @@ depends=('android-tools' 'fontconfig' 'vulkan-icd-loader')
 provides=('universal-android-debloater')
 conflicts=('universal-android-debloater')
 source=("$url/releases/download/v$pkgver/uad-ng-noselfupdate-linux.tar.gz"
-        "uad_gui.desktop")
+        "uad-ng.desktop"
+        "$(echo "$url" | sed 's|https://github.com/|https://raw.githubusercontent.com/|')/main/resources/assets/logo-dark.png")
 sha256sums=('ba315387d251be0f969bd8a26b6cd7584eef4083a9e5b9e9761732ce28bda477'
-            'f56cc6dd5fba16f1309dc6c0c67252fcbcefbddc15a11c11a4f80d361758ac06')
+            '95a2d196427cb2428b0aa913b98925f64f11c5d6d12a1df1f7f02b9448352cc5'
+            '019c4df893dca5b54557c381881d7946b7a53ebf5b610cc04d61c2980c1a22ec')
 
 prepare() {
   mv uad-ng-noselfupdate-linux uad-ng
@@ -20,5 +22,6 @@ prepare() {
 
 package() {
   install -Dm755 uad-ng -t "$pkgdir/usr/bin"
-  install -Dm644 "$srcdir/uad_gui.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 "$srcdir/logo-dark.png" "$pkgdir/usr/share/pixmaps/uad-ng.png"
+  install -Dm644 "$srcdir/uad-ng.desktop" -t "$pkgdir/usr/share/applications"
 }

@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Icon=android-sdk
+Icon=uad-ng
 Name=Universal Android Debloater
-Exec=uad_gui
+Exec=uad-ng
 Terminal=false
 Hidden=false
 Categories=Development; Utility
