@@ -3,13 +3,14 @@
 
 pkgname=intermodal
 pkgver=0.1.14
-pkgrel=1
+pkgrel=2
 pkgdesc="User-friendly and featureful CLI BitTorrent metainfo utility, written in Rust"
 arch=('x86_64')
 url="https://github.com/casey/intermodal"
 license=('custom:CC0')
 makedepends=(cargo help2man libgit2 libssh2)
 conflicts=(intermodal-bin)
+options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('4b42fc39246a637e8011a520639019d33beffb337ed4e45110260eb67ecec9cb')
 
