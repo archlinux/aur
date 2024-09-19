@@ -1,6 +1,6 @@
 pkgbase = python-asn1
 	pkgdesc = ASN.1 encoder/decoder
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/andrivet/python-asn1
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-asn1
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	depends = python-future
-	source = python-asn1-2.7.0.tar.gz::https://github.com/andrivet/python-asn1/archive/v2.7.0.tar.gz
-	sha256sums = 0e3f902432f811d49dffedb52819adac8ffe9b81cfbddab5af8180fcda234d46
+	source = python-asn1-2.7.1.tar.gz::https://github.com/andrivet/python-asn1/archive/v2.7.1.tar.gz
+	sha256sums = 024c4d11f477f91cca5c2c2db130a3ad0a3f0320f7b0b9364a37b0e4b70d6716
 
 pkgname = python-asn1
