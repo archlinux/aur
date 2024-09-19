@@ -51,10 +51,12 @@ prepare() {
 
 package() {
   cd "${srcdir}"
-  cp -r "${_pkgsrc}-${CARCH}"/* "${pkgdir}"
   install -Dm644 "COPYING-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
 
-  cd "${pkgdir}/usr"
-  find "bin"   -type f -exec chmod 755 {} +
-  find "share" -type f -exec chmod 644 {} +
+  cd "${_pkgsrc}-${CARCH}"
+  find "usr/bin"   -type f -exec install -Dm755 "{}" "${pkgdir}/{}" \;
+  find "usr/share" -type f -exec install -Dm644 "{}" "${pkgdir}/{}" \;
+
+  cd "${pkgdir}/usr/bin"
+  ln -s "mpg321" "mpg123"
 }
