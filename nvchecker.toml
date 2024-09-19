@@ -1,0 +1,4 @@
+[savilerow]
+source = "regex"
+url = "https://www-users.york.ac.uk/peter.nightingale/savilerow//releases.html"
+regex = "Download ([0-9]+\\.[0-9]+\\.[0-9]+) for Linux"
