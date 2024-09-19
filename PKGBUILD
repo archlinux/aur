@@ -12,7 +12,7 @@ pkgrel=1
 pkgdesc="A curses URL parser for text files"
 url="https://git.sr.ht/~nabijaczleweli/urlview-ng"
 license=('0BSD' 'GPL-2.0-or-later')
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 
 depends=(
   'bash'
