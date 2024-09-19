@@ -3,7 +3,7 @@
 _pkgname=Wasynth
 pkgname=wasynth
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='WebAssembly translation tools targeting Lua'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/Rerumu/${_pkgname}"

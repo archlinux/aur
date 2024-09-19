@@ -1,7 +1,7 @@
 pkgbase = wasynth
 	pkgdesc = WebAssembly translation tools targeting Lua
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Rerumu/Wasynth
 	arch = aarch64
 	arch = arm
