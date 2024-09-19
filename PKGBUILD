@@ -35,7 +35,7 @@ b2sums=('SKIP'
 		'a84fbc8db9fa1cf4cdfc1f56f3f5b5b56f269ec39f91b759b5b18d5816a090937be590ddb7fb22d910b56dcbcda40a16bc5ca99dd5d32e2a4b0aba5189f6e6ff'
 		'94b9d1c3242b52723741807edad280a38a1c481c44e2006c9d9e44d25304bcbaf76e9683a463b534a0caaef6ec94f4cb174644ff07e045523934025a4506c0e6'
 		'dbd064cf3ab9c8f2bef213d09831fbe05645f9a2af7507eab28ba44177195d5a5c5fa61316e765c7b153cf2e228b613294d9d455d94d9b78f3ecc89e314fa656')
-validpgpkeys=('772183A93E722C0CD301BE62872C444A692EF9A5') # José Expósito <jose.exposito89@gmail.com>
+validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net>
 
 prepare() {
 	cd $_pkgname
