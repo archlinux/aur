@@ -23,11 +23,13 @@ source=(
     "pathpatterns::git://git.proxmox.com/git/pathpatterns.git"
     "0001-re-route-dependencies-not-available-on-crates.io-to-.patch"
     "0002-docs-drop-all-but-client-man-pages.patch"
+    "0003-sys-cherry-pick-type-cast-fix-for-foreign-arch-build.patch"
     "elf-strip-unused-dependencies.sh"
 )
 # either a git repo or tracked by this git repo, so not much gained by encoding
 # checksums here in this git repo
 sha512sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -49,6 +51,7 @@ prepare() {
 
   _apply 0001-re-route-dependencies-not-available-on-crates.io-to-.patch
   _apply 0002-docs-drop-all-but-client-man-pages.patch
+  (cd "${srcdir}/proxmox"; _apply 0003-sys-cherry-pick-type-cast-fix-for-foreign-arch-build.patch)
 
   # fetch all in prepare to allow build() to be run offline
   cargo fetch --target "$CARCH-unknown-linux-gnu"
