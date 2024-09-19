@@ -17,7 +17,7 @@ sha256sums=('c5301aebb493f98c40fccd870afd73c3e400636d7f7b8aebc62cac55a1b20c52'
 
 prepare() {
   cd background-logo-extension
-  sed -i "s#fedora-logos/fedora_lightbackground.svg#gnome-shell/extensions/${_uuid}/archlinux-gnome.svg#;\
+  sed -i "s#fedora-logos/fedora_lightbackground.svg#gnome-shell/extensions/${_uuid}/archlinux-gnome.svg#; \
     s#fedora-logos/fedora_darkbackground.svg#gnome-shell/extensions/${_uuid}/archlinux-gnome.svg#" \
     schemas/org.fedorahosted.background-logo-extension.gschema.xml
 }
