@@ -1,13 +1,13 @@
 pkgbase = python-project-generator-bin
 	pkgdesc = Generates a Python project structure.
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/sanders41/python-project-generator
 	arch = x86_64
 	license = MIT
 	provides = python-project-generator
 	conflicts = python-project-generator
-	source = https://github.com/sanders41/python-project-generator/releases/download/v1.7.1/python-project-generator-1.7.1-x86_64.tar.gz
-	sha256sums = bb0b968b7d21b66a4ee69621f8de3ff5b659391caaceb77778f8c57c0b9aa2ff
+	source = https://github.com/sanders41/python-project-generator/releases/download/v1.7.2/python-project-generator-1.7.2-x86_64.tar.gz
+	sha256sums = a111ace0ba5a39287497922126834645a227da140cb0b4fee606bb9ec3fce97e
 
 pkgname = python-project-generator-bin
