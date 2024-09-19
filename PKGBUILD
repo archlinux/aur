@@ -21,7 +21,7 @@
 
 pkgname=ibus-bamboo-git
 pkgver=0.8.4.rc6+21+gfb80b93
-pkgrel=1
+pkgrel=2
 pkgdesc='A Vietnamese IME for IBus'
 arch=(any)
 license=(GPL3)
@@ -45,5 +45,5 @@ build() {
 
 package() {
  cd "$pkgname"
- make DESTDIR="$pkgdir/" install
+ make PREFIX="/usr" DESTDIR="$pkgdir/" install
 }
