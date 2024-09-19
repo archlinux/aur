@@ -12,7 +12,7 @@ depends=('git' 'pacman')
 optdepends=('ttf-nerd-fonts-symbols: symbols and icons')
 conflicts=($_pkgname)
 provides=($_pkgname)
-sha256sums=('4b4b2f07664c1817accfcc1fe52ee4fe437f8dedbb76c2c3d15badbf6412421d')
+sha256sums=('509b895b165af1c5e3eac83d8ffeeb8d0b58938d516472edccd81381513dd858')
 
 package() {
     cd "$srcdir"
