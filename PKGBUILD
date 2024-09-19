@@ -1,4 +1,5 @@
 # Maintainer: Sergey A. <murlakatamenka@disroot.org>
+# shellcheck disable=SC2034,SC2164
 
 pkgname=intermodal
 pkgver=0.1.14
@@ -51,7 +52,7 @@ package() {
   # book
   pushd book/src
   find . -name '*.md' -exec \
-    install -Dm 644 {} $pkgdir/usr/share/doc/$pkgname/book/{} \;
+    install -Dm 644 {} "$pkgdir/usr/share/doc/$pkgname/book/{}" \;
   popd
 
   # license
