@@ -1,8 +1,8 @@
 pkgbase = pypy-packaging
 	pkgdesc = Core utilities for Python packages
 	pkgver = 24.1
-	pkgrel = 1
-	url = https://github.com/pypa/packaging
+	pkgrel = 2
+	url = https://packaging.pypa.io
 	arch = any
 	license = Apache-2.0
 	license = BSD-2-Clause

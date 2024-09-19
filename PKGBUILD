@@ -2,12 +2,12 @@
 # Contributor: Daniel Milde <daniel@milde.cz>
 _base=packaging
 pkgbase=pypy-${_base}
-pkgname=pypy3-packaging
+pkgname=pypy3-${_base}
 pkgver=24.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Core utilities for Python packages"
 arch=(any)
-url="https://github.com/pypa/${_base}"
+url="https://${_base}.pypa.io"
 license=(Apache-2.0 BSD-2-Clause)
 makedepends=(pypy3-build pypy3-installer pypy3-flit-core)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/pypa/${_base}/archive/${pkgver}.tar.gz)
