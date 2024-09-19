@@ -3,7 +3,7 @@
 # Contributor: Ricardo Leuck <leuck.r at gmail> (original brewtarget-git PKGBUILD)
 
 pkgname=brewtarget
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="Beer calculator compatible with BeerSmith. Generates instructions from the recipe and interactive mash designer."
 url="https://github.com/Brewtarget/brewtarget/"
@@ -13,7 +13,7 @@ depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'xalan-c' 'xerces-c')
 makedepends=('boost' 'cmake' 'git' 'meson' 'ninja' 'pandoc' 'qt5-tools')
 source=("git+https://github.com/Brewtarget/brewtarget.git#tag=v${pkgver}"
         "git+https://github.com/tristanpenman/valijson.git")
-sha512sums=('6709b5d9d011ae32ff9fa34b1ad037fbc3dfd51ce0d74c266bd294bf5170fa3a82224fca2640837f6d9c59ef4348acf7b5cbfb907f205f1ddccc0b6e59434b09'
+sha512sums=('843fc167219c7e4acedaa2334b37e5717ee3a4e4c704bee96b2a2b05c6f3c359d03d59c55d95326b3f1fde9181525c15e50a3fd1d21be11aa8dcd518f2e12316'
             'SKIP')
 
 prepare() {
