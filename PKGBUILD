@@ -2,7 +2,7 @@
 pkgname=sk-chos-tool
 _reponame=sk-chos-config
 pkgver=2.2.3
-_addonver=1.13.0
+_addonver=1.14.0
 pkgrel=1
 pkgdesc="A custom configs tool for sk-chimeros"
 arch=('any')
