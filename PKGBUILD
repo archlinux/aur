@@ -2,8 +2,9 @@
 # Contributor: Pylogmon <pylogmon@outlook.com>
 _pkgname=pot
 pkgname="${_pkgname}-translation-git"
-pkgver=3.0.0.r1.gc57a14d
-_nodeversion=18
+_debname="com.${_pkgname}_app.${_pkgname}"
+pkgver=3.0.5.r31.gb483f2f
+_nodeversion=21
 pkgrel=1
 pkgdesc="一个跨平台的划词翻译软件 | A cross-platform software for text translation."
 arch=('x86_64')
@@ -27,11 +28,10 @@ depends=(
 )
 makedepends=(
     'nvm'
-    'pnpm>=8.5.0'
+    'pnpm'
     'npm'
     'git'
-    'gendesk'
-    'rust>=1.79.0'
+    'rust'
     'curl'
 )
 source=(
@@ -42,49 +42,62 @@ sha256sums=('SKIP'
             'ee36c7f3eedf44465a8d50d263dcb0da274961586ae847ab59dcb7a70850c712')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+    set -o pipefail
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
 build() {
-    sed "s|@runname@|${_pkgname}|g" -i "${srcdir}/${pkgname%-git}.sh"
+    sed -i "s/@runname@/${_pkgname}/" "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Office" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
-    export npm_config_build_from_source=true
-    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export CARGO_HOME="${srcdir}/.cargo"
     HOME="${srcdir}/.electron-gyp"
-    pnpm config set store-dir "${srcdir}/.pnpm_store"
-    pnpm config set cache-dir "${srcdir}/.pnpm_cache"
-    pnpm config set link-workspace-packages true
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        export npm_config_registry=https://registry.npmmirror.com
-        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+    {
+        echo -e '\n'
+        #echo 'build_from_source=true'
+        echo 'link-workspace-packages=true'
+        echo 'fetch-retry-maxtimeout=10000'
+        echo "cache-dir="${srcdir}"/.pnpm_cache"
+        echo "store-dir="${srcdir}"/.pnpm_store"
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 	    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
-    else
-        echo "Your network is OK."
+        {
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+        } >> .npmrc
     fi
-    sed "s|icon.ico|icon.png|g" -i src-tauri/tauri.linux.conf.json
-    sed "s|icon.ico|icon.png|g" -i src-tauri/webview.arm64.json
-    sed "s|icon.ico|icon.png|g" -i src-tauri/webview.x64.json
-    sed "s|icon.ico|icon.png|g" -i src-tauri/webview.x86.json
-    NODE_ENV=development pnpm install --force
-    #仅输出deb
-    NODE_ENV=production pnpm tauri build -b deb
+    find src-tauri -type f -name "*.json" -exec sed -i "s/icon.ico/icon.png/" {} \;
+    sed -i "s/#openssl/openssl={version=\"0.10\",features=[\"vendored\"]}/" src-tauri/Cargo.toml
+    NODE_ENV=development    pnpm install --force
+    NODE_ENV=production     pnpm tauri build -b deb
+    sed -i "s/${_debname}/${pkgname%-git}/" "${_debname}.metainfo.xml"
+    sed -e "
+        s/Exec=${_pkgname}/Exec=${pkgname%-git}/
+        s/Icon=${_pkgname}/Icon=${pkgname%-git}/
+        s/Name=${_pkgname}/Name=${pkgname%-git}/
+        s/Comment=Pot App/Comment=${pkgdesc}/
+    " -i "src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_amd64/data/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_amd64/data/usr/bin/${_pkgname}" -t "${pkgdir}/usr/bin"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/src-tauri/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_amd64/data/usr/share/applications/${_pkgname}.desktop" \
+        "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
+    _icon_sizes=(32x32 128x128 256x256@2 512x512)
+    for _icon_sizes in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_amd64/data/usr/share/icons/hicolor/${_icon_sizes}/apps/${_pkgname}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icon_sizes//@2/}/apps/${pkgname%-git}.png"
+    done
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/public/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.svg"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/${_debname}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-git}.metainfo.xml"
 }
