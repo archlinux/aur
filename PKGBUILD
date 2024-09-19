@@ -1,7 +1,7 @@
 # Maintainer: Ilaï Deutel <PlMWPh1WSmypRv0JQljz> (echo ... | tr 'A-Za-z' 'l-za-kL-ZA-K' | base64 -d)
 
 pkgname='git-machete'
-pkgver=3.29.2
+pkgver=3.29.3
 pkgrel=1
 pkgdesc="Probably the sharpest git repository organizer & rebase/merge workflow automation tool you've ever seen"
 arch=('any')
@@ -12,9 +12,9 @@ makedepends=(python-build python-installer python-wheel python-setuptools)
 optdepends=('bash: bash completion'
             'fish: fish completion'
             'zsh: zsh completion')
-checkdepends=('python-pytest' 'python-pytest-mock')
+checkdepends=('python-pytest' 'python-pytest-mock' 'python-pytest-xdist')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/VirtusLab/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('9b94cbfc762fe9d5b7ebf4747a83b4eebae2b351e9442a0274f41c233fbf0103')
+sha256sums=('f290795b8b048fe59bf239928584c24c4f9a8ae2f7a30f7110585f45a12c14c4')
 
 prepare() {
   cd "$srcdir/$pkgname-${pkgver}"
@@ -29,8 +29,7 @@ build() {
 
 check() {
   cd "$srcdir/$pkgname-${pkgver}"
-  # https://github.com/VirtusLab/git-machete/issues/1331
-  GITHUB_TOKEN='' pytest  -m 'not completion_e2e' -k 'not test_is_equivalent_tree_or_patch_reachable_with_squash_merge_and_commits_in_between'
+  GITHUB_TOKEN='' pytest --numprocesses=auto -m 'not completion_e2e' -vv
 }
 
 package() {
