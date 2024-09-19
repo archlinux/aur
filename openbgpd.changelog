@@ -1,3 +1,61 @@
+## 8.6 - 2024-09-19
+    * Filtered prefixes are now included in the Local-RIB if the config
+      option 'rde rib Loc-RIB include filtered' is set.
+
+    * Add 'bgpctl show rib filtered' to show filtered prefixes.
+
+    * Add 'min-version' RTR config option and default to RTR version 1.
+      Set min-version to 2 to enable draft-ietf-sidrops-8210bis-14 and
+      ASPA support or better define the ASPA table in the config.
+
+    * Adjust RTR ASPA pdu parser to follow draft-ietf-sidrops-8210bis-14
+
+    * Check the max_prefix and max_out_prefix limits on config reload.
+
+    * Fix race condition between TCP-MD5 key removal and session closure
+      to ensure all messages are sent with the proper TCP-MD5 signature.
+
+    * Fix 'nexthop qualify via bgp' by re-evaluating the nexthops when
+      a BGP route is added to the FIB.
+
+    * Handle the CLUSTER_LIST attribute according to RFC7606.
+
+    * Fix some undefined or non-portable behaviour when handling
+      NULL / 0-sized objects.
+
+## 8.5 - 2024-06-26
+    * Include OpenBSD 7.5 errata 004:
+      Repair a withdraw desyncronization problem in bgpd(8).
+      Affected are OpenBGPD 8.2, 8.3 and 8.4.
+
+    * Fix Linux TCP MD5 autoconf detection and improve the code to work
+      in all cases.
+
+    * Double peer description length to 64 characters.
+
+    * Improve handling of bgpd AFI IPv4 sessions over IPv6 only links.
+
+    * Sessions over IPv6 link-local addresses are now always considered
+      to be connected.
+
+    * Allow operators to enforce the presence of certain capabilities.
+
+    * Improve capability negotiation and remove 'announce capabilities'.
+      The 'announce capabilities [yes|no]' neighbor config option needs to be
+      removed from configuration files. Instead individual capabilities
+      need to be disabled.
+
+    * Improve negotiation of the multi-protocol capability and the fallback
+      to IPv4 only mode.
+
+    * Mark RTR and IPv6 BGP packets with DSCP CS6 (network control).
+
+    * Increase RTR PDU limit to 48k and limit number of SPAS to 10'000.
+
+    * Convert the remaining session engine parsers to the new ibuf API.
+
+    * Various changes to autoconf and portable headers for NetBSD support.
+
 ## 8.4 - 2024-03-07
     * Rewrite the internal message passing mechanism to use a new
       memory-safe API.
