@@ -1,0 +1,46 @@
+# Author:      Joakim Hernberg <jhernberg@alchemy.lu>
+# Contributor: Ray Rashif <schiv@archlinux.org>
+# Contributor: Shinlun Hsieh <yngwiexx@yahoo.com.tw>
+# Contributor:  redtide <redtid3@gmail.com>
+# Contributor:  Matthew Bakhtiari <contact@altf2.dev>
+# Maintainer: Kazel <address at domain dot tld>
+
+pkgname=wineasio32
+pkgname_64=wineasio
+pkgver=1.2.0
+pkgrel=9
+
+pkgdesc="ASIO driver implementation for Wine - 32 bit binary"
+url="https://github.com/wineasio/wineasio"
+arch=('x86_64')
+license=('LGPL-2.1-or-later' 'GPL-2.0-or-later')
+
+options=('!lto' '!debug')
+depends=('jack' 'lib32-jack' 'python-pyqt5' 'realtime-privileges' 'wine' 'wineasio')
+makedepends=('gcc' 'wine-staging')
+
+install="$pkgname".install
+
+source=(
+  "https://github.com/wineasio/wineasio/releases/download/v$pkgver/$pkgname_64-$pkgver.tar.gz"
+)
+sha256sums=(
+  '13f20c7b3d45b474833e6c60cb58bcad7295e97dd39239bf00f85c02272cc0f4'
+)
+
+prepare(){
+  # Adjust PREFIX value in script files
+  sed -i "s?X-PREFIX-X?\/usr?" $pkgname-$pkgver/gui/wineasio-settings
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+  make 32
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  install -D -m755 build32/"$pkgname"32.dll.so "$pkgdir"/usr/lib32/wine/i386-unix/"$pkgname"32.dll.so
+  install -D -m644 build32/"$pkgname"32.dll "$pkgdir"/usr/lib32/wine/i386-windows/"$pkgname"32.dll
+}
+# vim:set ts=2 sw=2 et:

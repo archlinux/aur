@@ -1,0 +1,6 @@
+post_install() {
+echo ""
+echo "For registering wineasio32 as an ASIO driver run:"
+echo "regsvr32 /usr/lib32/wine/i386-windows/wineasio.dll"
+}
+# vim:set ts=2 sw=2 et:
