@@ -5,5 +5,7 @@ pkgbase = herumi-bls-git
 	url = https://github.com/herumi/bls
 	arch = any
 	license = BSD
+	makedepends = python
+	makedepends = git
 
 pkgname = herumi-bls-git

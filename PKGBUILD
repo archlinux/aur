@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc='BLS threshold signature'
 arch=('any')
 license=('BSD')
-depends=('python', 'git')
+makedepends=(python git)
 url="https://github.com/herumi/bls"
 
 build() {
