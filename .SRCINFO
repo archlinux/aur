@@ -1,7 +1,7 @@
 pkgbase = trivia-quiz
 	pkgdesc = Respond to endless questions
-	pkgver = 0.2.2
-	pkgrel = 3
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/Nokse22/trivia-quiz
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = trivia-quiz
 	depends = libadwaita
 	depends = python-gobject
 	depends = python-requests
-	source = git+https://github.com/Nokse22/trivia-quiz.git#commit=170b78fc48be11bffa0c821fd4f7da1fa0b51be3
+	source = git+https://github.com/Nokse22/trivia-quiz.git#commit=192ca631bdfdf1519565c2c8a6587e24c6f4b1da
 	sha256sums = SKIP
 
 pkgname = trivia-quiz

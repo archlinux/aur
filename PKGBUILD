@@ -1,9 +1,9 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=trivia-quiz
-pkgver=0.2.2
-_commit=170b78fc48be11bffa0c821fd4f7da1fa0b51be3
-pkgrel=3
+pkgver=1.0.1
+_commit=192ca631bdfdf1519565c2c8a6587e24c6f4b1da
+pkgrel=1
 pkgdesc='Respond to endless questions'
 url="https://github.com/Nokse22/trivia-quiz"
 license=('GPL-3.0-or-later')
