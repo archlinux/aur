@@ -1,13 +1,14 @@
 pkgbase = arcolinux-logout
 	pkgdesc = Beautiflul ArcoLinux logout screen
-	pkgver = 22.05_27
+	pkgver = 24.04_01
 	pkgrel = 1
 	url = https://github.com/arcolinux/arcolinux-logout
 	arch = x86_64
 	license = GPL3
 	depends = python3
 	depends = python-cairo
-	source = arcolinux-logout-22.05_27.tar.gz::https://github.com/arcolinux/arcolinux-logout/archive/refs/tags/22.05-27.tar.gz
-	md5sums = 7508e76f8977698a068634f3c5ff34d3
+	depends = python-distro
+	source = arcolinux-logout-24.04_01.tar.gz::https://github.com/arcolinux/arcolinux-logout/archive/refs/tags/24.04-01.tar.gz
+	md5sums = 30433a961d028fa3aa7fae3f9fbed5a2
 
 pkgname = arcolinux-logout

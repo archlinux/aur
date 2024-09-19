@@ -1,14 +1,14 @@
 # Maintainer: Ruslan Sergin <ruslan.sergin@gmail.com>
 pkgname=arcolinux-logout
-pkgver=22.05_27
+pkgver=24.04_01
 pkgrel=1
 pkgdesc="Beautiflul ArcoLinux logout screen"
 url="https://github.com/arcolinux/arcolinux-logout"
 arch=('x86_64')
-depends=('python3' 'python-cairo')
+depends=('python3' 'python-cairo' 'python-distro')
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/arcolinux/arcolinux-logout/archive/refs/tags/${pkgver//_/-}.tar.gz")
-md5sums=('7508e76f8977698a068634f3c5ff34d3')
+md5sums=('30433a961d028fa3aa7fae3f9fbed5a2')
 
 package () {
     mkdir -p "${pkgdir}" 
