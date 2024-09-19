@@ -1,0 +1,24 @@
+pkgbase = pachca-bin
+	pkgdesc = Corporate messenger for modern teams
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://www.pachca.com/apps
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	optdepends = libappindicator-gtk3: Systray indicator support
+	conflicts = pachca
+	options = !debug
+	options = !strip
+	source = https://desktop.pachca.com/linux/deb/x64
+	b2sums = 3d3cd922b8aea063c49d37d21bad99dd39e928f6ce11db84d7fcd18fecbb1615d5120f4e67e61faffceae20064adc07b733271cd8939dde9444ba6fcf20f9187
+
+pkgname = pachca-bin
