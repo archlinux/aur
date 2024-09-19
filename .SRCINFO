@@ -1,6 +1,6 @@
 pkgbase = biome-bin
 	pkgdesc = A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.
-	pkgver = 1.9.1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://github.com/biomejs/biome
 	changelog = biome-bin.changelog
@@ -10,13 +10,13 @@ pkgbase = biome-bin
 	license = Apache-2.0
 	provides = biome
 	conflicts = biome
-	source = LICENSE-APACHE::https://github.com/biomejs/biome/blob/cli/v1.9.1/LICENSE-APACHE?raw=true
-	source = LICENSE-MIT::https://github.com/biomejs/biome/blob/cli/v1.9.1/LICENSE-MIT?raw=true
+	source = LICENSE-APACHE::https://github.com/biomejs/biome/blob/cli/v1.9.2/LICENSE-APACHE?raw=true
+	source = LICENSE-MIT::https://github.com/biomejs/biome/blob/cli/v1.9.2/LICENSE-MIT?raw=true
 	sha256sums = e2746aba8799f7a3378259f36a83a079e811ca7926cbdd248a2eb7ca9cbbac5d
 	sha256sums = 35365b6285e1f8cac61549f321befdbbe6139bf1e3d7ef6ccf1f1294ab015202
-	source_x86_64 = biome-bin-x86_64-1.9.1::https://github.com/biomejs/biome/releases/download/cli/v1.9.1/biome-linux-x64-musl
-	sha256sums_x86_64 = 0ddf10c4311f64a551f0539a2ac253c5c632432eade18a2c283c506e42807031
-	source_aarch64 = biome-bin-aarch64-1.9.1::https://github.com/biomejs/biome/releases/download/cli/v1.9.1/biome-linux-arm64-musl
-	sha256sums_aarch64 = e47450a6409777b893f85fce930a6ea4602fe12d1320f2fc69d319b03c961b17
+	source_x86_64 = biome-bin-x86_64-1.9.2::https://github.com/biomejs/biome/releases/download/cli/v1.9.2/biome-linux-x64-musl
+	sha256sums_x86_64 = 74157b89b48daf22cbf5c4fdebc356b5e133421dbf12525f4350b1194c1c73e8
+	source_aarch64 = biome-bin-aarch64-1.9.2::https://github.com/biomejs/biome/releases/download/cli/v1.9.2/biome-linux-arm64-musl
+	sha256sums_aarch64 = da807b5f56502a0d0cafe94722f67ec62ba6c29af99becfb2e4c331b95c5c2ab
 
 pkgname = biome-bin
