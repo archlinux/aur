@@ -1,0 +1,5 @@
+[pypy3-psutil]
+source = "github"
+github = "giampaolo/psutil"
+use_max_tag = "true"
+prefix = "release-"
