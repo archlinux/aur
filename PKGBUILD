@@ -1,7 +1,7 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 pkgname=linutil-git
 _pkgname=linutil
-pkgver=2024.09.18.r74.g719548f
+pkgver=2024.09.19.r28.gfb2b6fc
 pkgrel=1
 pkgdesc="Chris Titus Tech's Linutil is a distro-agnostic toolbox designed to simplify everyday Linux tasks."
 arch=('x86_64')
