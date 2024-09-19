@@ -3,7 +3,7 @@
 # Contributor: Dave Kleinschmidt <dave.f.kleinschmidt at gmail dot com>
 
 pkgname=spaceship-prompt
-pkgver=4.16.0
+pkgver=4.16.1
 pkgrel=1
 pkgdesc="A Zsh prompt for Astronauts"
 arch=('any')
