@@ -1,7 +1,7 @@
 # Maintainer: Ali Hassan >>Alix35301@gmail.com<<
 
 pkgname=dhivehi_fonts
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="Dhivehi fonts for arch ttf, otf"
 url="https://https://github.com/Alix35301"
