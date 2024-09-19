@@ -1,7 +1,7 @@
 pkgbase = duckstation
 	pkgdesc = Playstation emulator
-	pkgver = 0.1.7294
-	pkgrel = 2
+	pkgver = 0.1.7465
+	pkgrel = 1
 	url = https://github.com/stenzek/duckstation
 	arch = x86_64
 	license = GPL-3.0-only
@@ -23,13 +23,15 @@ pkgbase = duckstation
 	depends = sdl2
 	depends = glslang
 	depends = spirv-tools
-	source = duckstation::git+https://github.com/stenzek/duckstation.git#commit=3a08ad18406efc1ddc4927a59bea715961bb63fa
+	source = duckstation::git+https://github.com/stenzek/duckstation.git#commit=aa955b8ae28314ae061613f0ddf13183a98aca03
 	source = ianlancetaylor.libbacktrace::git+https://github.com/ianlancetaylor/libbacktrace.git
 	source = stenzek.cpuinfo::git+https://github.com/stenzek/cpuinfo.git
 	source = stenzek.discord-rpc::git+https://github.com/stenzek/discord-rpc.git
+	source = stenzek.lunasvg::git+https://github.com/stenzek/lunasvg.git
 	source = stenzek.shaderc::git+https://github.com/stenzek/shaderc.git
 	source = stenzek.soundtouch::git+https://github.com/stenzek/soundtouch.git
 	source = khronosgroup.spirv-cross::git+https://github.com/KhronosGroup/SPIRV-Cross.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

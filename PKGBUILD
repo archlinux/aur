@@ -4,7 +4,7 @@
 : ${_build_avx:=false}
 : ${_build_git:=false}
 
-: ${_commit:=3a08ad18406efc1ddc4927a59bea715961bb63fa} # 0.1.7294
+: ${_commit:=aa955b8ae28314ae061613f0ddf13183a98aca03} # 0.1.r7465
 : ${_scripts:=scripts/deps}
 
 unset _pkgtype
@@ -14,12 +14,11 @@ unset _pkgtype
 # basic info
 _pkgname="duckstation"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.1.7294
-pkgrel=2
+pkgver=0.1.7465
+pkgrel=1
 pkgdesc="Playstation emulator"
 url="https://github.com/stenzek/duckstation"
 arch=('x86_64')
-license=('GPL-3.0-only')
 
 depends=(
   ## duckstation
@@ -50,17 +49,20 @@ makedepends=(
 )
 
 _source_duckstation() {
+  license=('GPL-3.0-only')
+
   _pkgsrc="$_pkgname"
   source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
   sha256sums=('SKIP')
 
   pkgver() {
-    cd "$_pkgsrc"
-    git describe --tag | sed -E 's/^[^0-9]*//;s/-/./g'
+    echo "${pkgver:?}"
   }
 }
 
 _source_duckstation_git() {
+  license=('LicenseRef-Duckstation')
+
   provides=("$_pkgname")
   conflicts=("$_pkgname")
 
@@ -213,27 +215,39 @@ _prepare_spirv_cross() (
 )
 
 _prepare_duckstation() {
+  local _pkgver=$(pkgver)
+  _commit=$(git -C "$_pkgsrc" rev-parse HEAD)
+
   sed -E -e 's@#define AUTO_UPDATER_SUPPORTED@@' \
     -e 's@#if !__has_include\("scmversion/tag.h"\) && !defined\(_DEBUG\)@#if 0@' \
     -i "$_pkgsrc/src/duckstation-qt/autoupdaterdialog.cpp"
 
-  sed -E -e 's& \| <a href="https://discord\.gg/\S+">.*?</a>&&' \
+  sed -E \
+    -e 's&^(\s*).*g_scm_tag_str.*g_scm_branch_str.*$&\1tr("%1").arg(QLatin1StringView(g_scm_tag_str)));&' \
+    -e 's! &lt;stenzek@gmail.com&gt;!!' \
+    -e 's& \| <a href="https://\S*discord\S+">.*?</a>&&' \
+    -e 's&"https://github.com/\S+/CONTRIBUTORS.md"&"'"$url/raw/${_commit}"'/CONTRIBUTORS.md"&' \
+    -e 's&"https://github.com/\S+/LICENSE"&"'"$url/raw/${_commit}"'/LICENSE"&' \
+    -e 's&"https://github.com/\S+/duckstation"&"'"$url/tree/${_commit}"'"&' \
     -i "$_pkgsrc/src/duckstation-qt/aboutdialog.cpp"
+
+  sed -e '/addaction name="actionIssueTracker"/d' -i "$_pkgsrc/src/duckstation-qt/mainwindow.ui"
 
   cat > "0000-help-menu.patch" << 'END'
 --- a/src/duckstation-qt/mainwindow.ui
 +++ b/src/duckstation-qt/mainwindow.ui
-@@ -146,10 +146,6 @@
+@@ -126,11 +126,6 @@
+     <property name="title">
       <string>&amp;Help</string>
      </property>
-     <addaction name="actionGitHubRepository"/>
--    <addaction name="actionIssueTracker"/>
+-    <addaction name="actionGitHubRepository"/>
 -    <addaction name="actionDiscordServer"/>
 -    <addaction name="separator"/>
 -    <addaction name="actionCheckForUpdates"/>
-     <addaction name="separator"/>
+-    <addaction name="separator"/>
      <addaction name="actionViewThirdPartyNotices"/>
      <addaction name="actionAboutQt"/>
+     <addaction name="actionAbout"/>
 END
 
   patch -Np1 -F100 -d "$_pkgsrc" -i "../0000-help-menu.patch"
@@ -245,12 +259,11 @@ END
 #define SCM_RELEASE_TAG "latest"
 EOF
 
-  local _pkgver=$(pkgver)
   install -Dm755 /dev/stdin "$_pkgsrc/src/scmversion/gen_scmversion.sh" << END
 #!/bin/sh
 HASH="$(git -C "$_pkgsrc" rev-parse HEAD)"
-BRANCH="AUR"
-TAG="$_pkgver"
+BRANCH=""
+TAG="$_pkgver (AUR)"
 DATE=$(git -C "$_pkgsrc" log -1 --date=iso8601-strict --format=%cd)
 
 cat > "scmversion.cpp" << EOF
@@ -419,13 +432,10 @@ _build_duckstation() {
     -DShaderc_DIR="$srcdir/deps/usr/lib/cmake/Shaderc" # git
     -DSoundTouch_DIR="$srcdir/deps/usr/lib/cmake/SoundTouch"
     -Dcpuinfo_DIR="$srcdir/deps/usr/share/cpuinfo"
+    -Dlunasvg_DIR="$srcdir/deps/usr/lib/cmake/lunasvg"
     -Dspirv_cross_c_shared_DIR="$srcdir/deps/usr/share/spirv_cross_c_shared/cmake"
     -Wno-dev
   )
-
-  if [[ "${_build_git::1}" == "t" ]]; then
-    _cmake_options+=(-Dlunasvg_DIR="$srcdir/deps/usr/lib/cmake/lunasvg")
-  fi
 
   cmake "${_cmake_options[@]}"
   cmake --build build
@@ -448,13 +458,10 @@ prepare() {
   _prepare_backtrace
   _prepare_cpuinfo
   _prepare_discord_rpc
+  _prepare_lunasvg
   _prepare_shaderc
   _prepare_soundtouch
   _prepare_spirv_cross
-
-  if [[ "${_build_git::1}" == "t" ]]; then
-    _prepare_lunasvg
-  fi
 
   _prepare_duckstation
 }
@@ -465,13 +472,10 @@ build() {
   _build_backtrace
   _build_cpuinfo
   _build_discord_rpc
+  _build_lunasvg
   _build_shaderc
   _build_soundtouch
   _build_spirv_cross
-
-  if [[ "${_build_git::1}" == "t" ]]; then
-    _build_lunasvg
-  fi
 
   _build_duckstation
 }
@@ -516,7 +520,6 @@ END
 
 if [[ "${_build_git::1}" == "t" ]]; then
   _source_duckstation_git
-  _source_lunasvg
 else
   _source_duckstation
 fi
@@ -524,6 +527,7 @@ fi
 _source_backtrace
 _source_cpuinfo
 _source_discord_rpc
+_source_lunasvg
 _source_shaderc
 _source_soundtouch
 _source_spirv_cross
