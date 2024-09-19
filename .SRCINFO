@@ -1,6 +1,6 @@
 pkgbase = wasmedge-bin
 	pkgdesc = WasmEdge is a lightweight, high-performance, and extensible WebAssembly runtime
-	pkgver = 0.14.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://wasmedge.org
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = wasmedge-bin
 	license = APACHE 2.0
 	provides = wasmedge
 	conflicts = wasmedge
-	source = https://github.com/WasmEdge/WasmEdge/raw/0.14.0/LICENSE
+	source = https://github.com/WasmEdge/WasmEdge/raw/0.14.1/LICENSE
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-	source_x86_64 = https://github.com/WasmEdge/WasmEdge/releases/download/0.14.0/WasmEdge-0.14.0-manylinux2014_x86_64.tar.xz
-	sha256sums_x86_64 = 53426cdef4c455e75252dcfe7cb1d58dd6ec3b292cfde3b2378434aa299beec0
-	source_aarch64 = https://github.com/WasmEdge/WasmEdge/releases/download/0.14.0/WasmEdge-0.14.0-manylinux2014_aarch64.tar.xz
-	sha256sums_aarch64 = c4e7b5cf694481fb830813dbeecb8f0068ea6776d4470dfdb9525af633b36dc8
+	source_x86_64 = https://github.com/WasmEdge/WasmEdge/releases/download/0.14.1/WasmEdge-0.14.1-manylinux2014_x86_64.tar.xz
+	sha256sums_x86_64 = b676a6020638fdbe7786ad6474ed63fa97ba2abc25f496952ce1275eb7b90a03
+	source_aarch64 = https://github.com/WasmEdge/WasmEdge/releases/download/0.14.1/WasmEdge-0.14.1-manylinux2014_aarch64.tar.xz
+	sha256sums_aarch64 = 2f57d7710bb7abe9e15fd364c848543d93afdda4ee05db8d258f178cd07e15ef
 
 pkgname = wasmedge-bin

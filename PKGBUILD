@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 _pkgname=WasmEdge
 pkgname=wasmedge-bin
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="WasmEdge is a lightweight, high-performance, and extensible WebAssembly runtime"
 arch=(x86_64 aarch64)
@@ -14,8 +14,8 @@ source=("$_url/raw/$pkgver/LICENSE")
 source_x86_64=("$_url/releases/download/$pkgver/$_pkgname-$pkgver-manylinux2014_x86_64.tar.xz")
 source_aarch64=("$_url/releases/download/$pkgver/$_pkgname-$pkgver-manylinux2014_aarch64.tar.xz")
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('53426cdef4c455e75252dcfe7cb1d58dd6ec3b292cfde3b2378434aa299beec0')
-sha256sums_aarch64=('c4e7b5cf694481fb830813dbeecb8f0068ea6776d4470dfdb9525af633b36dc8')
+sha256sums_x86_64=('b676a6020638fdbe7786ad6474ed63fa97ba2abc25f496952ce1275eb7b90a03')
+sha256sums_aarch64=('2f57d7710bb7abe9e15fd364c848543d93afdda4ee05db8d258f178cd07e15ef')
 
 package() {
     install -Dm644 LICENSE -t $pkgdir/usr/share/licenses/${_pkgname,,}/
