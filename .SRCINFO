@@ -1,7 +1,7 @@
 pkgbase = qt5-webglplugin
 	pkgdesc = QPA plugin for running an application via a browser using streamed WebGL commands
 	pkgver = 5.15.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io
 	arch = x86_64
 	groups = qt5
@@ -13,6 +13,6 @@ pkgbase = qt5-webglplugin
 	depends = qt5-websockets
 	depends = qt5-declarative
 	source = kde-qtwebglplugin::git+https://invent.kde.org/qt/qt/qtwebglplugin#commit=0d29f1cd46331caf1b5169eb037d573680454348
-	sha256sums = d58afb0ea285bb1908c4ff802ce82abc2c4c7d2dd97bc06d5f296bf16500fc96
+	sha256sums = e4e94007504262568be75bd619719f241abfb38c310079b57d0d2537e53e8f72
 
 pkgname = qt5-webglplugin

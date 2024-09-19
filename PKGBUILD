@@ -4,7 +4,7 @@
 pkgname=qt5-webglplugin
 _basever=5.15.15
 pkgver=5.15.15
-pkgrel=1
+pkgrel=2
 _commit=0d29f1cd46331caf1b5169eb037d573680454348
 arch=(x86_64)
 url='https://www.qt.io'
@@ -15,7 +15,7 @@ makedepends=(git)
 groups=(qt5)
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('d58afb0ea285bb1908c4ff802ce82abc2c4c7d2dd97bc06d5f296bf16500fc96')
+sha256sums=('e4e94007504262568be75bd619719f241abfb38c310079b57d0d2537e53e8f72')
 
 pkgver() {
   cd kde-$_pkgfqn
