@@ -75,7 +75,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=6.10.10
+pkgver=6.11
 _upstream=arch1
 pkgrel=1
 arch=(x86_64)
@@ -103,7 +103,7 @@ options=(
 _ckhrtimer=linux-6.8.y
 _commit=ae3cbb29c43ca1baa6781f547d17b8ee5663e9d7
 
-_gcc_more_v=20240912.1
+_gcc_more_v=20240919
 source=(
   "https://www.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar".{xz,sign}
   config  # the main kernel config file
@@ -115,11 +115,11 @@ validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
 )
-sha256sums=('e687e735b5eb9efb6d67b42433c93fc9118106a995514f062652873b5e809bcd'
+sha256sums=('55d2c6c025ebc27810c748d66325dd5bc601e8d32f8581d9e77673529bdacb2e'
             'SKIP'
-            'a32a48ab46061a1275b23f15c390e0aa48682ffe953f4f04d650bfe398700a87'
-            '064b9841dd6738e8a6f8859743c66e0d603541b6afa021ab98ea7e3623fca108'
-            '3d0d5741a7e37a038a1bfc194c194afdc5e025fcaf1646f8591ce1bea5919893'
+            'bb5b077af2b1b01440835eec1ac4443fdd483a21505d2eb91d58254b2b49784b'
+            'ade8767de6e946acf29d9294c45f05d71b94f6e162317b6466d85cd04f5cf6f7'
+            '67f6cc7b4faeda2f5d564565b762ea645da9aca9d74d6fbe19ee5df6f428a5a1'
             '111adfc5b9c7d3bfd7d1a06286e7bee853dd1f51ecca3948eed39710eaf51381')
 
 prepare() {
@@ -130,7 +130,7 @@ prepare() {
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
   msg2 "Applying Arch Linux $_upstream patch set"
-  patch -p1 -i ../linux-v$pkgver-$_upstream.patch || exit 1
+  patch -p1 -i ../linux-v$pkgver-$_upstream.patch
 
   # remove the -archx suffix
   sed -i s'/^EXTRAVERSION =.*/EXTRAVERSION =/' Makefile
@@ -173,7 +173,7 @@ prepare() {
   # https://github.com/graysky2/kernel_gcc_patch
   # make sure to apply after olddefconfig to allow the next section
   msg2 "Patching to enable GCC optimization for other uarchs..."
-  patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-6.8-rc4+.patch"
+  patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-ISA-levels-and-uarches-for-kernel-6.8-rc4+.patch"
 
   if [ -n "$_subarch" ]; then
     # user wants a subarch so apply choice defined above interactively via 'yes'
