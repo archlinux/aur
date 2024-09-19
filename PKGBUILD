@@ -1,4 +1,5 @@
-# Maintainer: Ruslan Sergin <ruslan.sergin@gmail.com>
+# Maintainer: Luca Canavese <l.canavese@protonmail.com>
+# Contributor: Ruslan Sergin <ruslan.sergin@gmail.com>
 pkgname=arcolinux-logout
 pkgver=24.04_01
 pkgrel=1
