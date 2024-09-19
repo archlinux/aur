@@ -2,7 +2,7 @@
 
 pkgname=python-specfile
 _pkgname=${pkgname#python-}
-pkgver=0.32.1
+pkgver=0.32.2
 pkgrel=1
 pkgdesc='A library for parsing and manipulating RPM spec files'
 url='https://github.com/packit/specfile'
@@ -24,7 +24,7 @@ depends=(
 )
 _archive="$_pkgname-$pkgver"
 source=("$_archive.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('860d6f896fdb773b7a4639bc2dfbc352a9a081d13a2ab2c68da693244af1d619f80c519c408535191206eaca1fafbd1582d47fe8607b01a2e4edeacfa7869612')
+b2sums=('bbb761e071ebf42bb3bc0efdb89637b436135cb87ad4f26442202eb6b6e53b47b4c6662013dd836a38c0ab7f10483ee23886a328ffa5eac65a1aa0f549f18b08')
 
 build(){
 	cd $_archive
