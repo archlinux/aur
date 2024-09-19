@@ -1,51 +1,36 @@
-# Maintainer: Marie Piontek <marie@kaifa.ch>
-
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=an-anime-game-launcher
-pkgver=1.8.0
-pkgrel=7
-pkgdesc="An Launcher for a specific anime game written in Electron with auto-patching and playtime tracking function"
-url="https://gitlab.com/KRypt0n_/an-anime-game-launcher"
-arch=("x86_64")
-license=("GPL3")
+pkgver=3.12.1
+pkgrel=1
+pkgdesc="An Anime Game launcher for Linux with telemetry disabling"
+arch=('x86_64')
+url="https://github.com/an-anime-team/an-anime-game-launcher"
+license=('GPL-3.0-only')
+depends=('gtk4' 'libadwaita' 'glibc' 'hicolor-icon-theme' 'gcc-libs' 'glib2'
+	 'pango' 'xz' 'bzip2' 'cairo')
+makedepends=('cargo')
+source=("$url/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('0035d109521603486f230588b47f71fa8db3a52fd722ed8a12cd249c72e60167')
 
-depends=(
-    "electron"
-    "tar"
-    "unzip"
-    "xdelta3"
-    "cabextract"
-    "git"
-)
-
-optdepends=(
-    "mangohud: FPS Hud/GUI"
-    "gamemode: Game Optimizations"
-    "switcheroo-control: Hybrid GPU Support"
-    "vkbasalt: Required to use custom shaders (install this and reshade-shaders-git)"
-    "reshade-shaders-git: Required by vkBasalt config files (install this and vkbasalt)"
-)
-
-source=(
-    "an-anime-game-aur-${pkgver}.tar.gz::https://dev.kaifa.ch/Maroxy/an-anime-game-aur/archive/${pkgver}.tar.gz"
-    "icon.png"
-    "an-anime-game-launcher.desktop"
-    "an-anime-game-launcher.sh"
-)
-
-md5sums=(
-    'a1feac9dda692232dfddb16a9e13111c'
-    '82d75ad72aed6c6962f203f9c6f329d3'
-    '44b5730fe1a5cf22d7be6e3bf717ea0f'
-    '8b875e8115a3b80f9964dc66ddf46a9a'
-)
-
-package() {
-    cd "an-anime-game-aur"
-    install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-    cp -dr --no-preserve=ownership app.asar "${pkgdir}/usr/lib/${pkgname}/"
-
-    install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm755 "${srcdir}/an-anime-game-launcher.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/an-anime-game-launcher.desktop" -t "${pkgdir}/usr/share/applications"
+prepare() {
+	cd "$srcdir/$pkgname-$pkgver"
+	export RUSTUP_TOOLCHAIN=stable
+    	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
+build() {
+	cd "$srcdir/$pkgname-$pkgver"
+    	export RUSTUP_TOOLCHAIN=stable
+    	export CARGO_TARGET_DIR=target
+	export CFLAGS+=" -ffat-lto-objects"
+    	cargo build --frozen --release --target-dir target
+}
+
+package() {
+	cd "$srcdir/$pkgname-$pkgver"
+	install -Dm755 "target/release/anime-game-launcher" "$pkgdir/usr/bin/anime-game-launcher"
+	install -Dm644 "assets/anime-game-launcher.desktop" "$pkgdir/usr/share/applications/anime-game-launcher.desktop"
+	install -Dm644 "assets/images/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/anime-game-launcher.png"
+	sed -i 's/Exec=AppRun/Exec=anime-game-launcher/g' "$pkgdir/usr/share/applications/anime-game-launcher.desktop"
+	sed -i 's/Icon=icon/Icon=anime-game-launcher/g' "$pkgdir/usr/share/applications/anime-game-launcher.desktop"
+}
