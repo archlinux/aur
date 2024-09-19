@@ -1,13 +1,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=an-anime-game-launcher
 pkgver=3.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An Anime Game launcher for Linux with telemetry disabling"
 arch=('x86_64')
 url="https://github.com/an-anime-team/an-anime-game-launcher"
 license=('GPL-3.0-only')
 depends=('gtk4' 'libadwaita' 'glibc' 'hicolor-icon-theme' 'gcc-libs' 'glib2'
-	 'pango' 'xz' 'bzip2' 'cairo')
+	 'pango' 'xz' 'bzip2' 'cairo' 'p7zip')
 makedepends=('cargo')
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('0035d109521603486f230588b47f71fa8db3a52fd722ed8a12cd249c72e60167')
