@@ -1,0 +1,15 @@
+pkgbase = raccoonlock
+	pkgdesc = A free, open-source, simple and powerful password manager.
+	pkgver = 5.1.1
+	pkgrel = 1
+	url = https://codeberg.org/Autumn64/RaccoonLock
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	depends = openssl
+	source = raccoonlock::git+https://codeberg.org/Autumn64/RaccoonLock.git
+	sha256sums = SKIP
+
+pkgname = raccoonlock
