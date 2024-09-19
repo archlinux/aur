@@ -1,0 +1,12 @@
+pkgbase = libbase
+	pkgdesc = c++ encoding/decoding from arbitrary base
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vSEK1RO/libbase
+	arch = any
+	license = MIT
+	makedepends = gcc
+	source = https://github.com/vSEK1RO/libbase/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = libbase
