@@ -114,11 +114,14 @@ package() {
     # /etc/bash_completion.d
     install -dm755 "${pkgdir}/etc/bash_completion.d"
     install -m644 "${source_dir}/share/sk-chos/completions/_just.bash" "${pkgdir}/etc/bash_completion.d/just.bash"
-    install -m644 "${source_dir}/share/sk-chos/completions/_cjust.bash" "${pkgdir}/etc/bash_completion.d/cjust.bash" || true
 
     # /usr/lib/cjust
     install -dm755 "${pkgdir}/usr/lib/cjust"
     install -m755 -t "${pkgdir}/usr/lib/cjust" "${source_dir}/lib/cjust"/*.sh
+
+    # /usr/lib/os-*
+    install -dm755 "${pkgdir}/usr/lib"
+    install -m755 -t "${pkgdir}/usr/lib" "${source_dir}/lib/os-"*
 
     # polkit actions
     install -dm755 "${pkgdir}/usr/share/polkit-1/actions"
