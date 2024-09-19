@@ -7,7 +7,7 @@
 
 pkgname=wineasio
 pkgver=1.2.0
-pkgrel=8
+pkgrel=9
 
 pkgdesc="ASIO driver implementation for Wine"
 url="https://github.com/wineasio/wineasio"
@@ -34,14 +34,11 @@ prepare(){
 
 build() {
   cd "$pkgname-$pkgver"
-  make 32
   make 64
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  install -D -m755 build32/"$pkgname"32.dll.so "$pkgdir"/usr/lib32/wine/i386-unix/"$pkgname"32.dll.so
-  install -D -m644 build32/"$pkgname"32.dll "$pkgdir"/usr/lib32/wine/i386-windows/"$pkgname"32.dll
   install -D -m755 build64/"$pkgname"64.dll.so "$pkgdir"/usr/lib/wine/x86_64-unix/"$pkgname"64.dll.so
   install -D -m644 build64/"$pkgname"64.dll "$pkgdir"/usr/lib/wine/x86_64-windows/"$pkgname"64.dll
   install -D -m755 gui/wineasio-settings "$pkgdir"/usr/bin/wineasio-settings
