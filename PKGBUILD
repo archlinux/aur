@@ -4,7 +4,7 @@
 pkgname=qt5-webview
 _basever=5.15.15
 pkgver=5.15.15
-pkgrel=1
+pkgrel=2
 _commit=70030514bdaf993517556209503075db15bd1c61
 arch=('x86_64')
 url='https://www.qt.io'
@@ -15,7 +15,7 @@ makedepends=('git')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('1b9834379c263087c72275881cceedb7865d8da80600768f71e90c738259873c')
+sha256sums=('2c27e8926e83b407552eb65e6d3d0429fc3b0063d428eedad39824dc5bb07444')
 
 pkgver() {
   cd kde-$_pkgfqn
