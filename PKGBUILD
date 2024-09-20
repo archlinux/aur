@@ -20,6 +20,6 @@ build() {
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" pypy3 -m installer --destdir="$pkgdir" dist/*.whl
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" pypy -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
