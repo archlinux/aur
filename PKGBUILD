@@ -1,7 +1,8 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=overskride
-pkgver=0.5.7
+pkgver=0.6.0
+_commit=8979e01c40cba1020b995777cff9182c94a34e35
 pkgrel=1
 pkgdesc='A simple yet powerful bluetooth client'
 url="https://github.com/kaii-lb/overskride"
@@ -10,7 +11,7 @@ arch=('x86_64' 'aarch64')
 depends=('bluez' 'libadwaita' 'libpulse')
 makedepends=('blueprint-compiler' 'cargo' 'git' 'meson')
 checkdepends=('appstream-glib')
-source=("git+$url.git#tag=v$pkgver")
+source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 prepare() {
