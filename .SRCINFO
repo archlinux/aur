@@ -1,6 +1,6 @@
 pkgbase = paru-bin
 	pkgdesc = Feature packed AUR helper
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 3
 	url = https://github.com/morganamilo/paru
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = paru-bin
 	provides = paru
 	conflicts = paru
 	backup = etc/paru.conf
-	source_x86_64 = https://github.com/Morganamilo/paru/releases/download/v2.0.3/paru-v2.0.3-1-x86_64.tar.zst
-	sha256sums_x86_64 = 30af90baf308a3aab7497f8d4c898abfaa2ecdb28310c903c470b8026a51a152
-	source_aarch64 = https://github.com/Morganamilo/paru/releases/download/v2.0.3/paru-v2.0.3-1-aarch64.tar.zst
-	sha256sums_aarch64 = 5e62a37971101e18812e7a1345f980a3f9137e2a5ac9b6135d6af9aab32fd3ab
-	source_armv7h = https://github.com/Morganamilo/paru/releases/download/v2.0.3/paru-v2.0.3-1-armv7h.tar.zst
-	sha256sums_armv7h = 225b6c235e551929098c5e7cdc915f4d8caa62f4e733c7a11075038b940c6641
+	source_x86_64 = https://github.com/Morganamilo/paru/releases/download/v2.0.4/paru-v2.0.4-x86_64.tar.zst
+	sha256sums_x86_64 = 73e9a24eca1ff03e8b3c90d31550cccb6eccd1202ad07fa51a2453e1326d00e7
+	source_aarch64 = https://github.com/Morganamilo/paru/releases/download/v2.0.4/paru-v2.0.4-aarch64.tar.zst
+	sha256sums_aarch64 = 8a18fa7688717e41314b1941e8a339741b82ca955e8ccdeb3804ba865ed7dfc1
+	source_armv7h = https://github.com/Morganamilo/paru/releases/download/v2.0.4/paru-v2.0.4-armv7h.tar.zst
+	sha256sums_armv7h = e6db9b5c893b2eedf998fc73f2a478216139e9b8134221901b85ee8356a2ebf5
 
 pkgname = paru-bin
