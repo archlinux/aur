@@ -1,5 +1,5 @@
 pkgname=arch-os-manager
-pkgver=r74.b0b7983
+pkgver=r75.10ab906
 pkgrel=1
 pkgdesc="Arch OS System Manager"
 arch=('any')
