@@ -1,7 +1,7 @@
 # Maintainer: TianLun Song <tianlun.song@foxmail.com>
 
 pkgname=intel-npu-driver
-pkgver=1.2.0.20240404_8553879914
+pkgver=1.8.0.20240916_10885588273
 pkgrel=1
 pkgdesc="Intel(R) NPU (Neural Processing Unit) Driver"
 arch=(x86_64)
