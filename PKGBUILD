@@ -1,12 +1,12 @@
 pkgname=sfnx
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimal terminal-based password manager"
 arch=('x86_64')
 url="https://github.com/themohitnair/sfnx"
 license=('MIT')
 depends=('python' 'python-cryptography' 'python-sqlmodel' 'python-typer' 'python-rich' 'python-pyperclip' 'python-argon2-cffi')
-makedepends=('python-pip' 'python-poetry')
+makedepends=('python-pip' 'python-build' 'python-installer')
 source=("git+https://github.com/themohitnair/sfnx.git")
 sha256sums=('SKIP')
 
@@ -17,29 +17,20 @@ pkgver() {
 
 build() {
     cd "$srcdir/$pkgname"
-    poetry build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/$pkgname"
-    python -m venv "$pkgdir/opt/$pkgname"
-    "$pkgdir/opt/$pkgname/bin/pip" install --no-deps dist/*.whl
-    
-    # Install dependencies
-    "$pkgdir/opt/$pkgname/bin/pip" install cryptography sqlmodel typer rich pyperclip argon2-cffi
-    
-    # Create the bin directory if it doesn't exist
-    mkdir -p "$pkgdir/usr/bin"
-    
+    python -m installer --destdir="$pkgdir" dist/*.whl
+
     # Create the executable script
+    install -Dm755 /dev/null "$pkgdir/usr/bin/$pkgname"
     cat > "$pkgdir/usr/bin/$pkgname" << EOF
 #!/bin/sh
-export PYTHONPATH="/opt/$pkgname/lib/python$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')/site-packages:$PYTHONPATH"
-exec /opt/$pkgname/bin/python -m sfnx "\$@"
+exec python -m sfnx "\$@"
 EOF
-    
-    chmod +x "$pkgdir/usr/bin/$pkgname"
-    
+
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
