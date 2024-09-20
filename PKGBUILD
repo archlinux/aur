@@ -2,7 +2,7 @@
 pkgname=gnome-shell-extension-clipboard-indicator
 _uuid=("clipboard-indicator@tudmotu.com")
 pkgver=64
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds a clipboard indicator to the top panel, and caches clipboard history"
 arch=("any")
 url="https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator"
@@ -20,4 +20,6 @@ package() {
     && cp -a "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas" "$_"
 
   rm -f "$pkgdir/usr/share/glib-2.0/schemas/gschemas.compiled"
+
+  sed -i '3s/46/47/' "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/metadata.json"
 }
