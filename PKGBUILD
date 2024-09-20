@@ -1,5 +1,5 @@
 pkgname=nextchat-bin
-pkgver=2.14.2
+pkgver=2.15.2
 pkgrel=1
 pkgdesc="A cross-platform ChatGPT client"
 arch=('x86_64')
@@ -10,7 +10,7 @@ options=('!strip' '!emptydirs')
 provides=(nextchat)
 conflicts=(nextchat)
 source=("$url/releases/download/v$pkgver/next-chat_${pkgver}_amd64.deb")
-md5sums=('c11a8edcc6022519064a862403c7bb79')
+md5sums=('f2aad35dfa2de43a9b23252bf8956a55')
 
 package(){
 
