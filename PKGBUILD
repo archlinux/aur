@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat-git
 _pkgname=GhostChat
-pkgver=3.2.5.r1.g41e1efc
+pkgver=3.2.6.r2.gf4e2169
 _electronversion=32
 _nodeversion=20
 pkgrel=1
@@ -30,7 +30,9 @@ sha256sums=('SKIP'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+    set -o pipefail
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -65,7 +67,7 @@ build() {
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         fi
     } >> .npmrc
-    sed "s/out\/release\/\${version}/release/;s/\/\/ //;s/AppImage/dir/" -i electron-builder.config.cjs
+    sed -i "s/out\/release\/\${version}/release/;s/\/\/ //;s/AppImage/dir/" electron-builder.config.cjs
     cp public/icons/icon-512x125.png public/icons/icon-512x512.png
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
     NODE_ENV=development    pnpm install --no-lockfile
@@ -74,7 +76,8 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    for _icons in 16x16 32x32 64x64 128x128 256x256 512x512;do
+    _icon_sizes=(16x16 32x32 64x64 128x128 256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname%-git}.git/public/icons/icon-${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
     done
