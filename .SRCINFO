@@ -1,13 +1,13 @@
 pkgbase = watch-your-lan
 	pkgdesc = Lightweight network IP scanner with web GUI.
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aceberg/WatchYourLAN
 	install = WatchYourLAN.install
 	arch = i686
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = MIT
 	makedepends = go
 	source = https://github.com/aceberg/WatchYourLAN/archive/refs/tags/2.0.2.tar.gz
 	source = WatchYourLAN.install
