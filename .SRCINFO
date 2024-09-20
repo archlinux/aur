@@ -1,6 +1,6 @@
 pkgbase = mihomo-party-git
 	pkgdesc = Another Mihomo GUI.
-	pkgver = 1.2.21.r4.g60623fd
+	pkgver = 1.2.21.r6.g6d909b9
 	pkgrel = 1
 	url = https://github.com/mihomo-party-org/mihomo-party
 	install = mihomo-party.install
