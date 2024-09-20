@@ -1,12 +1,12 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 pkgname=quik
-pkgver=11.3.1
-pkgrel=2
+pkgver=11.3.2
+pkgrel=1
 stratver=3.0.5
 trustver=2.10.0
 btradever=1.2.1002
 pkgdesc="Trading terminal in Wine"
-url="https://arqatech.com/ru/"
+url="https://arqatech.com/ru/products/quik/terminals/user-applications/quik-workstation/"
 arch=('x86_64')
 depends=('wine<=9.12')
 noextract=('keygen.zip')
@@ -25,7 +25,7 @@ source=(
 "ip.cfg"
 )
 sha256sums=(
-'7419b48383c8e37981fbdcba3dbd06eca0630df94049bb3c56ee413c4243c9af' # QUIK
+'5c89af15de85bcc83a194f32adbada3ff0d210b51a7bb002870632782e6a2d5c' # quik_11.3.2_upd.zip
 'd32095309cd7359f4078a74179d8ae42e013e3fd3ad75837f0fa3941e7091b75' # StratVolat
 #'ff4dd52e56fabe8c06730daca770a92312338303bc06b58d417105d44c5a0869' # TrustManager
 #'0f6724e6666c379cf9a1f53aa627f4b0c56fded2d7e3fbf3704d6526066fa8e3' # BasketTrading
@@ -35,7 +35,7 @@ sha256sums=(
 'e4ddfc7a2a12bba0fdc880dcb05757fff2c035b2625f721ea1a0383bdc6ad1bf'
 '92563c563a9781592d1e119117e3b7a899addfabd733648986b97db999386821'
 'd981ee4cc35d33a3b37c43fb7343bde5c24e15e003dbb67907b602d22f60a469'
-'88c54d4593542f02794b8433a8458d585d8e15b7ddad6530229c156b086765ed'
+'49aa53c38ceb5c3029398203a68bbb1b3cc9819d01ecb57a6ce13c31b344fe03' # ip.cfg
 )
 
 prepare() {
