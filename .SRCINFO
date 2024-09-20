@@ -1,6 +1,6 @@
 pkgbase = gst-plugins-rs
 	pkgdesc = GStreamer plugins written in Rust
-	pkgver = 1.24.7
+	pkgver = 1.24.8
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = gst-plugins-rs
 	depends = pango
 	provides = gst-plugin-gtk4
 	conflicts = gst-plugin-gtk4
-	source = git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git#tag=gstreamer-1.24.7
+	source = git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git#tag=gstreamer-1.24.8
 	sha256sums = 391188e862210d463e16cdcd6e0529c0326750c2ca383095f6349158ba3a78d9
 
 pkgname = gst-plugins-rs

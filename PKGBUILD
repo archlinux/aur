@@ -2,7 +2,7 @@
 # Contributor: Fabio 'Lolix' Loli <lolix@disroot.org>
 # Contributor: Nikola Hadžić <nikola@firemail.cc>
 pkgname=gst-plugins-rs
-pkgver=1.24.7
+pkgver=1.24.8
 pkgrel=1
 pkgdesc="GStreamer plugins written in Rust"
 arch=('x86_64')
