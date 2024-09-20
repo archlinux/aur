@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=znote-bin
-pkgver=2.6.4
+pkgver=2.6.5
 _electronversion=28
 pkgrel=1
 pkgdesc="A Beautiful markdown editor inspired by Jupyter."
@@ -25,20 +25,21 @@ source=(
     "LICENSE-${pkgver}.html::${url}/cgu.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c90220bada6e51c76068735799f83a903d5e49f4e9c2267df2cfd47ad7591a79'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('ccff65154041e41e81bd6721988819ca285b7f2e8fb8d982a3eeba8e70f84ed4')
-sha256sums_x86_64=('0143668f02bd93e4666e359ee8a3f33e1c6c052562b8f418185c2d9de30bc792')
+sha256sums=('7b17d24dfab6a4a35a7cad5d004f78efdb3fae09416aa486975b2b3f119936a1'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_aarch64=('e16cdc62e6df44ebc42451bd9c6bc68f13f8aa10c3bd45f153ea20c4fd245919')
+sha256sums_x86_64=('302d7a48e879f00a7e3b4e8b82c5a9043e1578b5b72d24c6f150626801a28d93')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-bin}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/${pkgname%-bin}/
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
 package() {
