@@ -3,8 +3,7 @@
 pkgbase=vosk-api-git
 pkgname=('vosk-api-git' 'python-vosk-git')
 pkgver=0.3.50.r5.g1b308a3
-pkgrel=1
-_clapack_branch=v3.2.1
+pkgrel=2
 _model_small_ver=0.15
 _model_spk_ver=0.4
 pkgdesc='Offline speech recognition toolkit (git version)'
@@ -17,9 +16,10 @@ makedepends=('git' 'cmake' 'gradle' 'python' 'python-build' 'python-cffi' 'pytho
 checkdepends=('ffmpeg' 'python-numpy')
 source=('git+https://github.com/alphacep/vosk-api.git'
         'git+https://github.com/xianyi/OpenBLAS.git'
-        "git+https://github.com/alphacep/clapack.git#branch=${_clapack_branch}"
+        "git+https://github.com/alphacep/clapack.git"
         'git+https://github.com/alphacep/openfst.git'
         'git+https://github.com/alphacep/kaldi.git#branch=vosk'
+        # models are for running tests in the check() function
         "https://alphacephei.com/kaldi/models/vosk-model-small-en-us-${_model_small_ver}.zip"
         "https://alphacephei.com/vosk/models/vosk-model-spk-${_model_spk_ver}.zip")
 noextract=("vosk-model-small-en-us-${_model_small_ver}.zip")
@@ -75,6 +75,8 @@ build() {
     
     # openfst
     cd openfst
+    CFLAGS="${CFLAGS/-O2/-O3}" \
+    CXXFLAGS="${CXXFLAGS/-O2/-O3}" \
     ./configure \
         --prefix="${srcdir}/kaldi/tools/openfst" \
         --enable-static \
@@ -91,7 +93,7 @@ build() {
     cd "${srcdir}/kaldi/src"
     CXXFLAGS="${CXXFLAGS/-O2/-O3}" ./configure --mathlib='OPENBLAS_CLAPACK' --shared --use-cuda='no'
     sed -i 's/[[:space:]]-O1[[:space:]]/ -O3 /g' kaldi.mk
-    make online2 lm rnnlm
+    make online2 rnnlm
     while read -r -d '' _file
     do
         rm "$_file"
