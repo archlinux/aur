@@ -1,17 +1,17 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="ytarchive"
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Garbage Youtube livestream downloader"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/Kethsar/${pkgname}"
 license=('MIT')
 makedepends=('go')
 depends=('glibc' 'ffmpeg')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('62ec4622bfcdde774c0c1d7b627367dc67ecb53271e17ce008c9b138be80f2f9')
+b2sums=('fabcc4ce47715ba1a804f2f3504adaf8eea3cf3348b8442af2bcabd10eeab529a845255fdc1ac55d0e2d0017d0b8a578d5ab4ab9c8f07acff0756cb27b348e7c')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -37,5 +37,5 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
   install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
