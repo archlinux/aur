@@ -2,7 +2,7 @@
 # Contributor: Julien Sopena <jsopena.archlinux@free.fr>
 # Contributor: Adam Nielsen <malvineous@shikadi.net>
 pkgname=smcroute
-pkgver=2.5.6
+pkgver=2.5.7
 pkgrel=1
 pkgdesc="command line tool to manipulate kernel multicast routing"
 arch=('i686' 'x86_64')
@@ -14,10 +14,10 @@ depends=('libcap' 'bash' 'libsystemd.so')
 source=("https://github.com/troglobit/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
         'smcroute.conf'
         'smcroute.default')
-md5sums=('053e5fd950ea1d3139d48e1635a96cf9'
+md5sums=('464a84186067fe9e0536b0bf8e9486a5'
          'c230266bb9ba2a0d399f658ec2e46d88'
          '5ad63a25952f8b6f368c61111cf15967')
-sha256sums=('0be38f617e322daafaa941c02423239f5c117b940cf0f45bacadb6733c4b3916'
+sha256sums=('7d2c83e11908fe37844fa9b49ae50924555c4e1bb440fb059a95c94e442ea8a5'
             'f0e3f8651b3b5ba5490a16b5ad21d19a2a641cb61d80742bc0b07ba97eef0b63'
             '92ad598fed09f8b4211f66929b16111f8bc6436d2f0d36d6325f7bf37425f159')
 
