@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=lifecycler
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Terminal aquarium"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'alsa-lib' 'systemd-libs')
 optdepends=('wayland: Wayland support')
 makedepends=('cargo' 'wayland')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('4653d1908b55872154ab2d5571f468ac74fa68d6725c3e9265e839882a9c550a4dda0505c80786443643246ef4e8b64dbf01fc8463f6961fb12000fe6d381333')
+sha512sums=('f15f107f50666689d44e90eeab849060ffd36c9e7f94ae28cdf28fbae9ac282f079e47d410742aa6592dd591d5d50d999b2e70d0f7885c66c10215a07d31cdaa')
 
 prepare() {
   cd "$pkgname-$pkgver"
