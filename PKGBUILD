@@ -1,35 +1,52 @@
-# Maintainer: solopasha <daron439 at gmail dot com>
-pkgname=ytarchive-git
-pkgver=r256.b40d0a1
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: solopasha <daron439 at gmail dot com>
+
+_pkgname="ytarchive"
+pkgname="${_pkgname}-git"
+pkgver=0.5.0.r0.gfb5b172
 pkgrel=1
-pkgdesc="Garbage Youtube livestream downloader."
-arch=('x86_64' 'aarch64')
-url="https://github.com/Kethsar/ytarchive"
-license=("MIT")
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-makedepends=(git go)
-options=(!lto)
-source=("${pkgname}::git+${url}.git")
-sha512sums=('SKIP')
+pkgdesc="Garbage Youtube livestream downloader"
+arch=('x86_64')
+url="https://github.com/Kethsar/${_pkgname}"
+license=('MIT')
+makedepends=('git' 'go')
+depends=('glibc' 'ffmpeg')
+provides=("${_pkgname}=${pkgver%%.r*}")
+conflicts=("${_pkgname}")
+_pkgsrc="${_pkgname}"
+source=("${_pkgsrc}::git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${_pkgsrc}"
+  git describe --long --tags --abbrev=7 --exclude="latest" | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  mkdir -p "build"
 }
 
 build() {
-    export GOPATH="$srcdir"/gopath
-    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    cd "$pkgname"
-    go build -o "${pkgname%-git}" -ldflags \
-    "-linkmode=external -extldflags $LDFLAGS -X main.Commit=${pkgver#*.}"
+  cd "${srcdir}/${_pkgsrc}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -v -o "build/${_pkgname}" -ldflags "\
+    -X main.Commit=-$(git rev-parse --short HEAD)" \
+    .
 }
-package(){
-    depends=(ffmpeg)
-    install -Dm755 "${pkgname}/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-    install -Dm644 "${pkgname}/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   go test ./...
+# }
+
+package() {
+  cd "${srcdir}/${_pkgsrc}"
+  install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }

@@ -1,2 +1,4 @@
-*.log
-ytarchive-git
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
