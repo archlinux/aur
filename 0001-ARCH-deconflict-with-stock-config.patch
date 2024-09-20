@@ -1,0 +1,61 @@
+From 797c7af4dfd36a83092f81989b48c6570d1c4d9b Mon Sep 17 00:00:00 2001
+Message-ID: <797c7af4dfd36a83092f81989b48c6570d1c4d9b.1726869145.git.tommyhebb@gmail.com>
+From: Thomas Hebb <tommyhebb@gmail.com>
+Date: Fri, 20 Sep 2024 17:50:45 -0400
+Subject: [PATCH 1/2] ARCH: deconflict with stock config
+
+On Arch, the "sway" package contains a default configuration that cannot
+be uninstalled, meaning we can't provide files like /etc/sway/config.
+---
+ Makefile          | 5 +++--
+ sway/environment  | 3 +++
+ sway/sway.desktop | 2 +-
+ 3 files changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 21cf3e2..b91793d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -32,10 +32,11 @@ install-sddm:
+ 	install -D -m 0644 -pv -t $(DESTDIR)$(DATADIR)/sddm/themes/03-sway-fedora sddm/03-sway-fedora/*
+ 
+ install-sway: build
+-	install -D -m 0644 -pv -t $(DESTDIR)$(SYSCONFDIR)/sway          sway/config
++	install -D -m 0644 -pv sway/config              $(DESTDIR)$(SYSCONFDIR)/sway/config-fedora
++	install -D -m 0644 -pv sway/sway.desktop        $(DESTDIR)$(DATADIR)/wayland-sessions/sway-fedora.desktop
++
+ 	install -D -m 0644 -pv -t $(DESTDIR)$(SYSCONFDIR)/sway          sway/environment
+ 	install -D -m 0755 -pv -t $(DESTDIR)$(BINDIR)                   sway/start-sway
+-	install -D -m 0644 -pv -t $(DESTDIR)$(DATADIR)/wayland-sessions sway/sway.desktop
+ 	install -D -m 0644 -pv -t $(DESTDIR)$(DATADIR)/sway/config.d    sway/config.d/*.conf
+ 	install -D -m 0644 -pv -t $(DESTDIR)$(DATADIR)/sway/config.live.d sway/config.live.d/*.conf
+ 	install -D -m 0644 -pv -t $(DESTDIR)$(DATADIR)/sway/live        sway/live/*
+diff --git a/sway/environment b/sway/environment
+index dc7855d..e1f588f 100644
+--- a/sway/environment
++++ b/sway/environment
+@@ -4,6 +4,9 @@
+ #
+ # vim: set ft=sh:
+ 
++## Arch Linux: deconflict the stock and Fedora configuration paths
++SWAY_EXTRA_ARGS="$SWAY_EXTRA_ARGS -c /etc/sway/config-fedora"
++
+ ## Pass extra arguments to the /usr/bin/sway executable
+ 
+ #SWAY_EXTRA_ARGS="$SWAY_EXTRA_ARGS --unsupported-gpu"
+diff --git a/sway/sway.desktop b/sway/sway.desktop
+index 5cbb907..9710d1d 100644
+--- a/sway/sway.desktop
++++ b/sway/sway.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Name=Sway
+-Comment=An i3-compatible Wayland compositor
++Comment=An i3-compatible Wayland compositor (Fedora defaults)
+ Exec=start-sway
+ Type=Application
+ DesktopNames=sway
+-- 
+2.46.0
+

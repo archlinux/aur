@@ -1,0 +1,90 @@
+From d119c5f8b41f142768b188614c3d97d544b40bfa Mon Sep 17 00:00:00 2001
+Message-ID: <d119c5f8b41f142768b188614c3d97d544b40bfa.1726869145.git.tommyhebb@gmail.com>
+In-Reply-To: <797c7af4dfd36a83092f81989b48c6570d1c4d9b.1726869145.git.tommyhebb@gmail.com>
+References: <797c7af4dfd36a83092f81989b48c6570d1c4d9b.1726869145.git.tommyhebb@gmail.com>
+From: Thomas Hebb <tommyhebb@gmail.com>
+Date: Fri, 20 Sep 2024 17:52:09 -0400
+Subject: [PATCH 2/2] ARCH: remove various Fedora-isms
+
+---
+ Makefile                                        |  2 --
+ sway/config.d/60-bindings-volume.conf           |  2 +-
+ sway/config.d/95-autostart-policykit-agent.conf |  2 +-
+ sway/config.d/95-xdg-desktop-autostart.conf     | 14 --------------
+ sway/config.in                                  |  3 +--
+ 5 files changed, 3 insertions(+), 20 deletions(-)
+ delete mode 100644 sway/config.d/95-xdg-desktop-autostart.conf
+
+diff --git a/Makefile b/Makefile
+index b91793d..a150744 100644
+--- a/Makefile
++++ b/Makefile
+@@ -38,8 +38,6 @@ install-sway: build
+ 	install -D -m 0644 -pv -t $(DESTDIR)$(SYSCONFDIR)/sway          sway/environment
+ 	install -D -m 0755 -pv -t $(DESTDIR)$(BINDIR)                   sway/start-sway
+ 	install -D -m 0644 -pv -t $(DESTDIR)$(DATADIR)/sway/config.d    sway/config.d/*.conf
+-	install -D -m 0644 -pv -t $(DESTDIR)$(DATADIR)/sway/config.live.d sway/config.live.d/*.conf
+-	install -D -m 0644 -pv -t $(DESTDIR)$(DATADIR)/sway/live        sway/live/*
+ 	install -D -m 0755 -pv -t $(DESTDIR)$(LIBEXECDIR)/sway          scripts/sway/*
+ 
+ install-swaylock:
+diff --git a/sway/config.d/60-bindings-volume.conf b/sway/config.d/60-bindings-volume.conf
+index 85575f2..2b31ea4 100644
+--- a/sway/config.d/60-bindings-volume.conf
++++ b/sway/config.d/60-bindings-volume.conf
+@@ -8,7 +8,7 @@
+ # Requires:     pulseaudio-utils
+ # Recommends:   libnotify
+ 
+-set $volume_helper_cmd /usr/libexec/sway/volume-helper
++set $volume_helper_cmd /usr/lib/sway/volume-helper
+ 
+ # Allow volume controls even if the screen is locked
+ bindsym --locked {
+diff --git a/sway/config.d/95-autostart-policykit-agent.conf b/sway/config.d/95-autostart-policykit-agent.conf
+index 10b529b..4c5f486 100644
+--- a/sway/config.d/95-autostart-policykit-agent.conf
++++ b/sway/config.d/95-autostart-policykit-agent.conf
+@@ -5,4 +5,4 @@
+ #
+ # Requires: lxqt-policykit
+ 
+-exec /usr/libexec/lxqt-policykit-agent
++exec lxqt-policykit-agent
+diff --git a/sway/config.d/95-xdg-desktop-autostart.conf b/sway/config.d/95-xdg-desktop-autostart.conf
+deleted file mode 100644
+index 56cc4fb..0000000
+--- a/sway/config.d/95-xdg-desktop-autostart.conf
++++ /dev/null
+@@ -1,14 +0,0 @@
+-# Wait until a StatusNotifierItem tray implementation is available and
+-# process XDG autostart entries.
+-#
+-# This horror has to exist because
+-#
+-#  - SNI spec mandates that if `IsStatusNotifierHostRegistered` is not set,
+-#    the client should fall back to the Freedesktop System Tray specification
+-#    (XEmbed).
+-#  - There are actual implementations that take this seriously and implement
+-#    a fallback *even if* StatusNotifierWatcher is already DBus-activated.
+-#  - https://github.com/systemd/systemd/issues/3750
+-#
+-exec /usr/libexec/sway-systemd/wait-sni-ready && \
+-    systemctl --user start sway-xdg-autostart.target
+diff --git a/sway/config.in b/sway/config.in
+index 6e57ce5..32eef57 100644
+--- a/sway/config.in
++++ b/sway/config.in
+@@ -30,8 +30,7 @@ set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
+ ### Output configuration
+ #
+ # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+-# Requires: desktop-backgrounds-compat, swaybg
+-output * bg /usr/share/backgrounds/default.png fill
++output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+ #
+ # Example configuration:
+ #
+-- 
+2.46.0
+

@@ -1,0 +1,6 @@
+post_install() {
+	cat <<EOF
+To start Sway with all Fedora defaults, use the start-sway command or the
+"An i3-compatible Wayland compositor (Fedora defaults)" desktop entry.
+EOF
+}
