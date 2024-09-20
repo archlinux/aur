@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=haplo.stats
-_pkgver=1.9.5.1
+_pkgver=1.9.7
 pkgname=r-${_pkgname,,}
-pkgver=1.9.5.1
+pkgver=1.9.7
 pkgrel=1
 pkgdesc='Statistical Analysis of Haplotypes with Traits and Covariates when Linkage Phase is Ambiguous'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5eaf3938f50f4b95b70febe99951a1ead2ce2396756f30ef372aa65fe9f396b9')
+sha256sums=('2fb73ecf99c0df282d8576b0e0a919b61f0d18befd069857b2e538075b33d9c0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
