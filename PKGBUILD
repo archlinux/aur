@@ -11,7 +11,7 @@ url='https://github.com/jobisoft/EAS-4-TbSync'
 license=('MPL2')
 groups=('office')
 depends=(
-  'thunderbird>115'
+  'thunderbird>=128'
 )
 source=("https://addons.thunderbird.net/thunderbird/downloads/file/${_file}/${_name}-${pkgver}-tb.xpi")
 noextract=("${_name}-${pkgver}-tb.xpi")
