@@ -1,8 +1,8 @@
-# Package maintainer: Julia van der Kris <juliavdkris@proton.
+# Package maintainer: Julia van der Kris <juliavdkris@proton.me>
 
 pkgname=diffsitter-bin
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A tree-sitter based AST difftool to get meaningful semantic diffs"
 url="https://github.com/afnanenayet/diffsitter"
 provides=('diffsitter')
