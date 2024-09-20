@@ -1,6 +1,6 @@
 pkgbase = hyprland-workspaces
 	pkgdesc = A multi-monitor aware Hyprland workspace widget for use with bars.
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/FieldofClay/hyprland-workspaces
 	install = hyprland-workspaces.install
@@ -8,7 +8,7 @@ pkgbase = hyprland-workspaces
 	license = MIT
 	makedepends = cargo
 	depends = hyprland
-	source = https://github.com/FieldofClay/hyprland-workspaces/archive/refs/tags/v2.0.1.tar.gz
-	sha256sums = d63fefc8481baf09f754293c2212ceaa37c5eb5adf5816581248db9af35cd07b
+	source = https://github.com/FieldofClay/hyprland-workspaces/archive/refs/tags/v2.0.2.tar.gz
+	sha256sums = 6a8d5cb77e3b876edfc3965b2c451b4608c89d65b5721241347e1e378613e44b
 
 pkgname = hyprland-workspaces
