@@ -10,7 +10,7 @@ license=("MIT")
 depends=("gnome-shell>=46.0")
 conflicts=("gnome-shell-extension-clipboard-history")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('4dcebbfc3b85598c4c05f9bcd4895c87')
+sha256sums=('759fae6d9be4b41d410c7eab117667c6aa41415712963624da453d5d4be909b5')
 
 package() {
   install -d "$pkgdir/usr/share/gnome-shell/extensions" \
