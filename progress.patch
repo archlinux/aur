@@ -1,23 +1,28 @@
 diff --git a/src/pacman/callback.c b/src/pacman/callback.c
-index 80d16118..7d2e8bdf 100644
+index 2823d510..255f68a2 100644
 --- a/src/pacman/callback.c
 +++ b/src/pacman/callback.c
-@@ -155,10 +155,21 @@ static void fill_progress(const int percent, const int proglen)
+@@ -155,10 +155,26 @@ static void fill_progress(const int percent, const int proglen)
  	/* 8 = 1 space + 1 [ + 1 ] + 5 for percent */
  	const int hashlen = proglen > 8 ? proglen - 8 : 0;
  	const int hash = percent * hashlen / 100;
++	const char* terms[] = {"xterm-kitty", "st-256color"};
 +	char* TERM;
-+	int kitty = 0;
++	int fancy = 0;
  	int i;
  
 +	TERM = getenv("TERM");
-+	if(TERM != NULL && !strcmp(TERM, "xterm-kitty")){
-+		kitty = 1;
++	if(TERM != NULL) {
++		for(i = 0; i < sizeof(terms)/sizeof(terms[0]); i++) {
++			if(!strcmp(TERM, terms[i])) {
++				fancy = 1;
++			}
++		}
 +	}
 +
  	if(hashlen > 0) {
 -		fputs(" [", stdout);
-+		if(kitty) {
++		if(fancy) {
 +			fputs(" ", stdout);
 +		} else {
 +			fputs(" [", stdout);
@@ -25,26 +30,26 @@ index 80d16118..7d2e8bdf 100644
  		for(i = hashlen; i > 0; --i) {
  			/* if special progress bar enabled */
  			if(config->chomp) {
-@@ -177,12 +188,28 @@ static void fill_progress(const int percent, const int proglen)
+@@ -177,12 +193,28 @@ static void fill_progress(const int percent, const int proglen)
  				}
  			} /* else regular progress bar */
  			else if(i > hashlen - hash) {
 -				putchar('#');
-+				if(kitty) {
++				if(fancy) {
 +					fputs("", stdout);
 +				} else {
 +					putchar('#');
 +				}
  			} else {
 -				putchar('-');
-+				if(kitty) {
++				if(fancy) {
 +					fputs("", stdout);
 +				} else {
 +					putchar('-');
 +				}
 +			}
 +		}
-+		if(kitty){
++		if(fancy){
 +			if (hashlen == hash) {
 +				fputs("", stdout);
 +			} else {
