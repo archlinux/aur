@@ -2,7 +2,7 @@
 
 pkgname=fcitx5-ipa-sil
 _pkgname=fcitx5-ipa-sil-git
-pkgver=r13.0df3c9f
+pkgver=r15.8438681
 pkgrel=1
 pkgdesc="An fcitx5 table layout replicating the SIL IPA keyman layout"
 arch=('i686' 'x86_64')

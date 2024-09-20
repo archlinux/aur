@@ -1,6 +1,6 @@
 pkgbase = fcitx5-ipa-sil
 	pkgdesc = An fcitx5 table layout replicating the SIL IPA keyman layout
-	pkgver = r13.0df3c9f
+	pkgver = r15.8438681
 	pkgrel = 1
 	url = https://github.com/ashprice/fcitx5-ipa-sil
 	arch = i686
