@@ -1,0 +1,15 @@
+pkgbase = pubnet
+	pkgdesc = Self-hosted pub.dev alternative
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/ricardoboss/pubnet
+	arch = x86_64
+	license = GPL
+	makedepends = dotnet-sdk
+	depends = dotnet-runtime
+	source = pubnet-1.1.0.tar.gz::https://github.com/ricardoboss/PubNet/archive/refs/tags/v1.1.0.tar.gz
+	source = pubnet@.service
+	sha256sums = ac2e54a777d52cbbfcf310a5df0b8ba146ed890634beb4790725e83f0200cf7b
+	sha256sums = 79d717c7e4a67ee260c6168273a67149c9a28bd743cc87351fd0b40d0a80c785
+
+pkgname = pubnet

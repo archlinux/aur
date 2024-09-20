@@ -1,0 +1,12 @@
+[Unit]
+Description=PubNet service %I
+After=network.target
+
+[Service]
+User=http
+Type=simple
+WorkingDirectory=/opt/pubnet
+ExecStart=/usr/bin/dotnet PubNet.%I.dll
+
+[Install]
+WantedBy=multi-user.target

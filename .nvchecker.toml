@@ -1,0 +1,4 @@
+[pubnet]
+source = "git"
+git = "https://github.com/ricardoboss/PubNet.git"
+prefix = "v"
