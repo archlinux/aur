@@ -2,12 +2,13 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts54
-pkgver=5.4.278
+pkgver=5.4.284
 pkgrel=1
 pkgdesc='LTS 5.4 Linux'
 url="https://www.kernel.org/"
 arch=(x86_64)
 license=(GPL2)
+depends=('systemd>=256.6') # put this in for a couple versions to prevent upgrade failures
 makedepends=(
   bc kmod libelf cpio perl tar xz
   xmlto python-six python-sphinx python-sphinx_rtd_theme graphviz imagemagick
@@ -22,20 +23,24 @@ source=(
   0003-Add-support-for-ZSTD-compressed-kernel.patch
   sphinx-workaround.patch
   '0004-Sphinx-7.2.2-8.0-PosixPath.patch'
+  '0005-depmod-remove-depmod_hack_needed.patch'
+  '0006-kernel-5.4-depmod-disable-for-packaging.patch'
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('e5a00606115545f444ef2766af5652f5539e3c96f46a9778bede89b98ffb8588'
+sha256sums=('77221ab9aebeac746915c755ec3b7d320f85cd219c63d9c501820fbca1e3b32b'
             'SKIP'
             'bffa24efd9e84ffd48069947cc5ed52827d280dbd303f50e6286c48c89613b3f'
             'b439f57b84bc98730c0265695abb92385ee4dcd35a5c00d4cb3d3155c75fb491'
             '4fd74bb2a7101d700fba91806141339d8c9e46a14f8fc1fe276cfb68f1eec0f5'
             '8b604b7dc447b5f1f6f0b6239d5dd3ec6a5336cba78ac6dcef8f3e59357bd8c0'
             'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e'
-            'ab751955fa6c43afd812863dc65ced6fe3ebf80a6746e894576459358ca53f36')
+            'ab751955fa6c43afd812863dc65ced6fe3ebf80a6746e894576459358ca53f36'
+            '64b521b3963781c60e9a33db40c523bf65a119cb1dfec182a737e90d2609df5a'
+            '444e4f6db856002ee23841e20cc2aa1b8543ac6ef37b30edd1eb6846ba48e2b4')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -54,9 +59,12 @@ prepare() {
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
-    echo "Applying patch $src..."
+    msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+
+  #cd '..'; cp -pr "${_srcname}" 'a'; ln -s "${_srcname}" 'b'; cd "${_srcname}"; false
+  # diff -pNaru5 'a' 'b' > 0000-$RANDOM.patch
 
   echo "Setting config..."
   cp ../config .config
@@ -68,8 +76,8 @@ prepare() {
 
 build() {
   cd $_srcname
-  make all
-  make -i htmldocs SPHINXOPTS='-T --keep-going'
+  nice -n1 make all
+  nice -n1 make -i htmldocs SPHINXOPTS='-T --keep-going'
 }
 
 _package() {

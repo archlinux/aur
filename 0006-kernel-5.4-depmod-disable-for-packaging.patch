@@ -1,0 +1,22 @@
+diff -pNaru5 a/Makefile b/Makefile
+--- a/Makefile	2024-06-16 07:28:53.000000000 -0400
++++ b/Makefile	2024-08-22 15:08:23.285268816 -0400
+@@ -1861,13 +1861,18 @@ quiet_cmd_rmdirs = $(if $(wildcard $(rm-
+ 
+ quiet_cmd_rmfiles = $(if $(wildcard $(rm-files)),CLEAN   $(wildcard $(rm-files)))
+       cmd_rmfiles = rm -f $(rm-files)
+ 
+ # Run depmod only if we have System.map and depmod is executable
++ifeq ($(INSTALL_MOD_PATH),/)
+ quiet_cmd_depmod = DEPMOD  $(KERNELRELEASE)
+       cmd_depmod = $(CONFIG_SHELL) $(srctree)/scripts/depmod.sh $(DEPMOD) \
+                    $(KERNELRELEASE)
++else
++quiet_cmd_depmod = DEPMOD  $(KERNELRELEASE) skipped for packaging to $(INSTALL_MOD_PATH)
++      cmd_depmod = true depmod $(KERNELRELEASE) skipped for packaging to $(INSTALL_MOD_PATH)
++endif
+ 
+ # read saved command lines for existing targets
+ existing-targets := $(wildcard $(sort $(targets)))
+ 
+ -include $(foreach f,$(existing-targets),$(dir $(f)).$(notdir $(f)).cmd)
