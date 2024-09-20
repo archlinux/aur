@@ -1,0 +1,13 @@
+pkgbase = cli-fetch-git
+	pkgdesc = Fetch information about your Linux machine fast
+	pkgver = r32.c3f7fd5
+	pkgrel = 1
+	url = https://github.com/yak6/cli-fetch
+	arch = any
+	license = MIT
+	makedepends = gcc
+	makedepends = cmake
+	source = cli-fetch.git::git+https://github.com/yak6/cli-fetch.git
+	sha256sums = SKIP
+
+pkgname = cli-fetch-git
