@@ -1,6 +1,6 @@
 pkgbase = okular-vim-colemak
 	pkgdesc = Document Viewer with colemak vim-binding
-	pkgver = 24.08.0
+	pkgver = 24.08.1
 	pkgrel = 1
 	url = https://apps.kde.org/okular/
 	arch = x86_64
@@ -56,7 +56,7 @@ pkgbase = okular-vim-colemak
 	provides = okular
 	conflicts = okular
 	options = !zipman
-	source = https://download.kde.org/stable/release-service/24.08.0/src/okular-24.08.0.tar.xz
-	sha256sums = 3de16e26294b3863270df1760403a676ba3d7204738bebce8a05562d932c318b
+	source = https://download.kde.org/stable/release-service/24.08.1/src/okular-24.08.1.tar.xz
+	sha256sums = b057655c13e4fa566d288730aeb96198aef8a90cb6a1d6a55f566fa5a6b02e89
 
 pkgname = okular-vim-colemak
