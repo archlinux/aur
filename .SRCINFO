@@ -1,6 +1,6 @@
 pkgbase = fooyin-git
 	pkgdesc = A customisable music player
-	pkgver = r2991.da67b3bb
+	pkgver = 0.7.0.r1.g66267bb
 	pkgrel = 1
 	url = https://github.com/fooyin/fooyin
 	arch = x86_64
@@ -32,6 +32,7 @@ pkgbase = fooyin-git
 	optdepends = libsndfile: For the GME audio input plugin
 	optdepends = libarchive: For the libarchive archive plugin
 	provides = fooyin
+	conflicts = fooyin
 	source = fooyin-git::git+https://github.com/fooyin/fooyin.git
 	source = libvgm::git+https://github.com/ValleyBell/libvgm.git
 	sha256sums = SKIP

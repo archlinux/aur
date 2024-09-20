@@ -1,7 +1,7 @@
 # Maintainer: Luke Taylor <luket1@proton.me>
 
 pkgname=fooyin-git
-pkgver=r2991.da67b3bb
+pkgver=0.7.0.r1.g66267bb
 pkgrel=1
 pkgdesc="A customisable music player"
 url="https://github.com/fooyin/fooyin"
@@ -40,8 +40,10 @@ optdepends=(
     'libarchive: For the libarchive archive plugin'
 )
 provides=('fooyin')
-source=("$pkgname"::"git+https://github.com/fooyin/fooyin.git"
-        "libvgm"::"git+https://github.com/ValleyBell/libvgm.git"
+conflicts=('fooyin')
+source=(
+  "$pkgname"::"git+https://github.com/fooyin/fooyin.git"
+  "libvgm"::"git+https://github.com/ValleyBell/libvgm.git"
 )
 sha256sums=(
             'SKIP'
@@ -49,29 +51,28 @@ sha256sums=(
 )
 
 pkgver() {
-  cd "${srcdir}/$pkgname"
-  echo r$(git rev-list --count master).$(git rev-parse --short master)
+  cd "$pkgname"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${srcdir}/$pkgname"
+  cd "$pkgname"
   git submodule init
   git config submodule.3rdparty/libvgm.url "${srcdir}/libvgm"
   git -c protocol.file.allow=always submodule update
 }
 
 build() {
-  cd "${srcdir}/$pkgname"
-  cmake -S . -B build -G Ninja \
+  cmake -B build -S "$pkgname" -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None \
     -DBUILD_PCH=ON \
-    -DINSTALL_HEADERS=ON
+    -DINSTALL_HEADERS=ON \
+    -Wno-dev
   cmake --build build
 }
 
 package() {
-  cd "${srcdir}/$pkgname"
   DESTDIR="$pkgdir" cmake --install build
-  install -Dm644 "${srcdir}/$pkgname/COPYING" "${pkgdir}/usr/share/licenses/fooyin/LICENSE"
 }
