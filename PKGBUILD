@@ -1,6 +1,6 @@
 pkgname=sfnx
 pkgver=0.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A minimal terminal-based password manager"
 arch=('x86_64')
 url="https://github.com/themohitnair/sfnx"
@@ -24,7 +24,6 @@ package() {
     cd "$srcdir/$pkgname"
     python -m venv "$pkgdir/opt/$pkgname"
     "$pkgdir/opt/$pkgname/bin/pip" install --no-deps dist/*.whl
-    "$pkgdir/opt/$pkgname/bin/pip" install -r <(poetry export --format requirements.txt)
 
     install -Dm755 /dev/null "$pkgdir/usr/bin/$pkgname"
     cat > "$pkgdir/usr/bin/$pkgname" << EOF
