@@ -4,7 +4,7 @@ _pkgauthor=netheril96
 _pkgname=securefs
 pkgname=${_pkgname}-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A filesystem in userspace (FUSE) with transparent encryption and decryption"
 arch=('x86_64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -12,8 +12,8 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 license=('MIT')
 
 depends=('abseil-cpp' 'argon2' 'crypto++' 'fuse2' 'gcc-libs' 'glibc' 'protobuf' 'sqlite')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 
 source=("${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-release.zip"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
