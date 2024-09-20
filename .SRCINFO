@@ -1,7 +1,7 @@
 pkgbase = watch-your-lan
 	pkgdesc = Lightweight network IP scanner with web GUI.
 	pkgver = 2.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aceberg/WatchYourLAN
 	install = WatchYourLAN.install
 	arch = i686
@@ -9,6 +9,8 @@ pkgbase = watch-your-lan
 	arch = aarch64
 	license = MIT
 	makedepends = go
+	depends = arp-scan
+	depends = tzdata
 	source = https://github.com/aceberg/WatchYourLAN/archive/refs/tags/2.0.2.tar.gz
 	source = WatchYourLAN.install
 	sha256sums = dc4ef7b23052f39b7c0a2cfc51b5b019429a3229ffda92f74650d03526c6af03
