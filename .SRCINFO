@@ -1,0 +1,16 @@
+pkgbase = zmkbatx
+	pkgdesc = Tool for peripheral battery monitoring for ZMK split keyboards over BLE
+	pkgver = 1.0.1
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	depends = simplebluez
+	depends = qt6-base
+	depends = qt6-connectivity
+	depends = dbus
+	source = https://github.com/mh4x0f/zmkBATx/archive/refs/tags/v1.0.1.tar.gz
+	source = zmkbatx-1.0.1.patch
+	sha256sums = 33a2f2cbb63cae1159240bf57e8a30666b432fc831d0dcc439f71022ce658a01
+	sha256sums = SKIP
+
+pkgname = zmkbatx

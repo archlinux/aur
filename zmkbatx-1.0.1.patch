@@ -1,0 +1,21 @@
+diff --git a/zmkBATx.pro b/zmkBATx.pro
+index 3b00a3c..fc64e6d 100644
+--- a/zmkBATx.pro
++++ b/zmkBATx.pro
+@@ -35,7 +35,7 @@ OTHER_FILES += README.md \
+                deploy_dep.sh \
+                .gitignore
+ 
+-LIBS += -L$$PWD/src/thirdparty/ -lsimplebluez
++LIBS += -L$$PWD/src/thirdparty/ -lsimplebluez -lsimpledbus
+ 
+ INCLUDEPATH += $$PWD/src/thirdparty
+ DEPENDPATH += $$PWD/src/thirdparty
+@@ -45,6 +45,7 @@ INCLUDEPATH += /usr/include/dbus-1.0
+ 
+ # Inclui o diretório para o mecanismo de sistema de mensagem D-Bus
+ INCLUDEPATH += /usr/lib/x86_64-linux-gnu/dbus-1.0/include
++INCLUDEPATH += /usr/lib64/dbus-1.0/include
+ 
+ # Link com a biblioteca D-Bus
+ LIBS += -ldbus-1
