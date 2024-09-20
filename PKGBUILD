@@ -13,8 +13,8 @@ depends=('git' 'pacman')
 optdepends=('ttf-nerd-fonts-symbols: symbols and icons')
 conflicts=($_pkgname)
 provides=($_pkgname)
-sha256sums_x86_64=('509b895b165af1c5e3eac83d8ffeeb8d0b58938d516472edccd81381513dd858')
-sha256sums_aarch64=('0f27c9a8fc2d9b445f2ef10a465abcbc1315d42ec411641ea9695b27679ee24e')
+sha256sums_x86_64=('4931a0f8dc5956219583eec22a0c9a1d83111cdddeb8a48fc7805d3598fccb23')
+sha256sums_aarch64=('93033e65657dc383d4666acc4ef87b82e8e1b4d220528dbc9d4f740d83528acb')
 
 package() {
     cd "$srcdir"
