@@ -4,7 +4,7 @@
 
 pkgname='git-quick-stats'
 pkgver='2.5.7'
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple and efficient way to access various statistics in git repository'
 arch=('any')
 url="https://github.com/arzzen/$pkgname"
@@ -18,7 +18,6 @@ depends=(
   'ncurses'
   'util-linux'
 )
-makedepends=('git')
 provides=('git-quick-stats')
 conflicts=('git-quick-stats')
 source=("$pkgname::git+$url#tag=$pkgver")
