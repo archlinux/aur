@@ -4,18 +4,15 @@
 
 _target=riscv-none-elf
 pkgname=$_target-binutils
-pkgver=2.42
+pkgver=2.43.1
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the RISC-V (bare-metal) target'
 arch=(x86_64)
 url='https://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=(zlib libelf)
-source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig})
-sha1sums=('ead6f01f47cf1a6c39bfaf83ab84ac99bc6d70c8'
-          'SKIP')
-sha256sums=('aa54850ebda5064c72cd4ec2d9b056c294252991486350d9a97ab2a6dfdfaf12'
-            'SKIP')
+source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig})
+sha512sums=('20977ad17729141a2c26d358628f44a0944b84dcfefdec2ba029c2d02f40dfc41cc91c0631044560d2bd6f9a51e1f15846b4b311befbe14f1239f14ff7d57824' 'SKIP')
 validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
 
 prepare() {
