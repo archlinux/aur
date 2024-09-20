@@ -4,7 +4,7 @@ pkgname=freeshow-bin
 pkgver=1.2.7
 pkgrel=1
 _debname="FreeShow-$pkgver-amd64"
-pkgdesc="FreeShow is a free and open-source, user-friendly presenter software."
+pkgdesc="FreeShow is a free and open-source, user-friendly presenter software. It is a powerful church app alternative to EasyWorship and ProPresenter."
 
 url="https://github.com/ChurchApps/FreeShow"
 license=("GPL3")
@@ -21,8 +21,8 @@ prepare(){
 
 package() {
     cd $srcdir
-    mv usr $pkgdir/
     mv opt $pkgdir/
+    mv usr $pkgdir/
     mkdir $pkgdir/usr/bin
     ln -s /opt/FreeShow/freeshow $pkgdir/usr/bin/freeshow
 }

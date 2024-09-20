@@ -1,5 +1,5 @@
 pkgbase = freeshow-bin
-	pkgdesc = FreeShow is a free and open-source, user-friendly presenter software.
+	pkgdesc = FreeShow is a free and open-source, user-friendly presenter software. It is a powerful church app alternative to EasyWorship and ProPresenter.
 	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://github.com/ChurchApps/FreeShow
