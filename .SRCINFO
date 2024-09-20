@@ -1,0 +1,14 @@
+pkgbase = sfnx
+	pkgdesc = A minimal terminal-based password manager
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/themohitnair/sfnx
+	arch = x86_64
+	license = MIT
+	makedepends = python-pip
+	makedepends = python-poetry
+	depends = python
+	source = git+https://github.com/themohitnair/sfnx.git
+	sha256sums = SKIP
+
+pkgname = sfnx
