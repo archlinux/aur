@@ -1,6 +1,6 @@
 pkgbase = touplite
 	pkgdesc = A port of the ToupTek Photonics's PC software ToupLite for Linux
-	pkgver = 2.1.26456.20240905
+	pkgver = 2.1.26523.20240917
 	pkgrel = 1
 	url = http://touptek.com/download/showdownload.php?lang=en&id=28
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = touplite
 	depends = libxrender
 	depends = freetype2
 	options = !strip
-	source_i686 = ToupTekToupLite.x86-2.1.26456.20240905.tar.bz2::https://www.touptekphotonics.com/software/ToupTekToupLite.x86.tar.bz2
-	sha256sums_i686 = e1a5712973dea6c3ddc68c4221caebd6d91a560a16264553318168118ab5c39d
-	source_x86_64 = ToupTekToupLite.x64-2.1.26456.20240905.tar.bz2::https://www.touptekphotonics.com/software/ToupTekToupLite.x64.tar.bz2
-	sha256sums_x86_64 = 3a77d7e7f8f79db6e78ec1686159022ed658d0add1004e56587f42f87988199d
+	source_i686 = ToupTekToupLite.x86-2.1.26523.20240917.tar.bz2::https://www.touptekphotonics.com/software/ToupTekToupLite.x86.tar.bz2
+	sha256sums_i686 = ed1ceb19a1cf1edf88222a6fab1da181d9c1b63071cab80128db30eb6db727c5
+	source_x86_64 = ToupTekToupLite.x64-2.1.26523.20240917.tar.bz2::https://www.touptekphotonics.com/software/ToupTekToupLite.x64.tar.bz2
+	sha256sums_x86_64 = ed75739741ed7bed82c5123249ac5cb1d7d46fe3dbac4a2b870dc89b5f4febfa
 
 pkgname = touplite
