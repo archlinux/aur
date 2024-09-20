@@ -1,6 +1,6 @@
 pkgname=sfnx
-pkgver=0.0.1
-pkgrel=3
+pkgver=0.0.2
+pkgrel=1
 pkgdesc="A minimal terminal-based password manager"
 arch=('x86_64')
 url="https://github.com/themohitnair/sfnx"
