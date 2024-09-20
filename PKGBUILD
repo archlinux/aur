@@ -1,6 +1,6 @@
 # Maintainer: NebulaBC <ufrii.print@nebulabc.net>
 pkgname='ufrii-print'
-pkgver=1.1
+pkgver=2
 pkgrel=1
 pkgdesc="Install the official Canon UFRII/UFRII LT driver made for Debian on ArchLinux"
 url="https://www.usa.canon.com/support/p/color-imageclass-mf644cdw"
