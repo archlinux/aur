@@ -4,7 +4,7 @@
 _target=riscv-none-elf
 pkgname=$_target-newlib
 pkgver=4.4.0.20231231
-pkgrel=1
+pkgrel=2
 _upstream_ver=$pkgver
 pkgdesc='A C standard library implementation intended for use on embedded systems (RISC-V bare metal)'
 arch=(any)
