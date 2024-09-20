@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pdftools
-_pkgver=3.4.0
+_pkgver=3.4.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Text Extraction, Rendering and Converting of PDF Documents"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -26,8 +26,8 @@ optdepends=(
   r-webp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b0cdb2d649557b5902e81a8e9e215eb5')
-b2sums=('58dfdd194d9ffd11c1e4a6816223237fc29cedc6c038eecec76211cc43f66d311421f2ba6c29ae69ee230ed05b37f936f3c1e3887bc3cc9e8d0cfc9fc43cd029')
+md5sums=('35ae65b500d0168bad709a6d83eb3073')
+b2sums=('e7c0b5b615eb6596cefdf4b93f700fffaabbb8e04b2fa92123bc3d54720c0094a02e6ca87c02be31a2bca31b6f68a67877f5a6304b50ecbe5c476bf27d92b474')
 
 build() {
   mkdir build
