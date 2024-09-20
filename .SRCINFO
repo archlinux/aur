@@ -1,6 +1,6 @@
 pkgbase = prusa-slicer
 	pkgdesc = G-code generator for 3D printers (Prusa fork of Slic3r)
-	pkgver = 2.8.0
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://github.com/prusa3d/PrusaSlicer
 	arch = x86_64
@@ -12,9 +12,10 @@ pkgbase = prusa-slicer
 	makedepends = git
 	depends = gtk3
 	depends = webkit2gtk
+	depends = mpfr
 	options = !makeflags
-	source = https://github.com/prusa3d/PrusaSlicer/archive/version_2.8.0/prusa-slicer-2.8.0.tar.gz
-	sha256sums = 58d484f85b34d83026f8220bab983f855fbcd72767d0887f21f5cc382e5b19ab
+	source = https://github.com/prusa3d/PrusaSlicer/archive/version_2.8.1/prusa-slicer-2.8.1.tar.gz
+	sha256sums = f71033dd4e9fdd8e5ac7b5be5803d0d6d09ec0fd87de92b152b3c6bbae04c103
 
 pkgname = prusa-slicer
 	optdepends = slicer-udev: 3D printer connection rules
