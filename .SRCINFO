@@ -12,7 +12,7 @@ pkgbase = ufrii-print
 	depends = libgcrypt
 	depends = jbigkit
 	depends = zlib
-	source = https://gdlp01.c-wss.com/gds/6/0100009236/15/linux-UFRII-drv-v570-us-11.tar.gz
-	sha256sums = e5afaac96abfeb13b36311ee880dcf5942155e1877f9aa36cecca29647d9a232
+	source = https://gdlp01.c-wss.com/gds/6/0100009236/20/linux-UFRII-drv-v600-us-02.tar.gz
+	sha256sums = 964b5eb0a706b0739432099eab4e0a61c93aa9a8bfb52fd9376a6d07c17f9f8b
 
 pkgname = ufrii-print
