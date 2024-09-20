@@ -3,7 +3,7 @@
 # Contributor: Reto Brunner <brunnre8@gmail.com>
 
 pkgname=mkosi-git
-pkgver=24.3.r51.gd53f31b4b3
+pkgver=24.3.r245.g85074abcd0
 pkgrel=1
 pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
@@ -91,6 +91,8 @@ package() {
   cd 'mkosi'
 
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm 755 kernel-install/50-mkosi.install -t "$pkgdir/usr/lib/kernel/install.d/"
 
   install -Dm 644 mkosi/resources/mkosi.1 "$pkgdir/usr/share/man/man1/mkosi.1" || true
 
