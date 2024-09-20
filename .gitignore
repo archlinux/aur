@@ -1,6 +1,5 @@
 *
 !PKGBUILD
 !*.patch
-!infekt_forgiving_utf8.h
 !.SRCINFO
 !.gitignore
