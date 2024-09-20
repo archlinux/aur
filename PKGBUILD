@@ -10,7 +10,7 @@
 
 pkgver=31.6.0
 _gcc_patches=126
-pkgrel=1
+pkgrel=2
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
 pkgdesc='Build cross platform desktop apps with web technologies'
@@ -335,7 +335,7 @@ sha256sums=('20a43f399b4755064efa5cfccaeccfe6074c6c0f505b328ba01e0191597a3d90'
             '9341676174943fbc5268e023c3e572171289fc4748401723a6dcaef50f793dcd'
             '63e7b82f0c9a68321572ce3bc91e48e207c87102b0ec158ea68d697659673613'
             '7b32c27a5513c451032132fe5dc724de23d3b0738a0609a96bd44deee1d46681'
-            '5ce652e7aca9dbe55c36578f65031d6284dbf352037dfb1dc2500b9ea66839a8'
+            'c06f2a92cd606654ec565c2fa728e755eaaf7e7a41fb7bd217988274a411c320'
             '82003e56072e56ab65267e3366b37a6a75730d846881fe6167965205d1c2549c'
             'e475d42b746955422ff9e905354091d0b17cdb2c8989cc6beb6470e76a4aa1dd'
             'f2aba031573fc4929d2bd9d03e4b18c4385f399fa0b605eca35898567ebdf7b4'
@@ -387,7 +387,7 @@ sha256sums=('20a43f399b4755064efa5cfccaeccfe6074c6c0f505b328ba01e0191597a3d90'
             '902d9c00f2d8731693272cf94fe742beec6d7351eb2603c28c76b40eca58005b'
             'b48490fbcdad8becc160f2dab2ee4a0f67327f1e9d9ddbd96e44150175c68ca9'
             '0b95ed21612b4f02e65643f2029d8ce5710f49dbe8b229350bbe643167a4b83b'
-            '785f769c6c0d465f79038ec4f4c210025043285c345041667b122296c6b961e1'
+            '307070b52d7d46386f142d5711c50657b19c0db8bf7f4e61705ee8f4ee555d14'
             '149af77a3896e6a2a93383aa6c65e4a7cac0fe90abc909802afdd55f79a0faf5'
             '4610fe2ec6b7b8a8d40b5379921aa9deaa18249b27b150e3f6f2bab8297033c0'
             '6b2ee7f4da8895c9961f8dd9e34dcabcf93389cbb7a75561e7944eb42e2789eb'
@@ -400,7 +400,7 @@ sha256sums=('20a43f399b4755064efa5cfccaeccfe6074c6c0f505b328ba01e0191597a3d90'
             '868159a9a965cebd40f98f5995d6ac6361869904712c1b62c6b8a67d10dd93b4'
             '8a65dc7b499c6b87b8cbc2fcbef5511608850d0af1ca2c6890f14421d7c8f11d'
             '4ef4e78fa0174bf25cc5d0373fe716e1b712a2a398c8d57ae32cadc132e44b86'
-            '7d89448b9cccc0e2309ce34fef37ed85fd08fd2b030422e456fc531ebb1e8f80'
+            'c23fa31250811a76be900554b9ac127f861ebde09c07ac67cd6b82dd214e5686'
             'e87aad8fad052785cb59f9da418194f58ae6c8889d8c426d10b97bc76e549198'
             '0f18fde832017387600b5ee2ec6a0ae82125c82b97c0f717772f3cd5dfdcd57b'
             'd2b0b372a1e24fa15da68b10ac551fe73198bb66de1e2080f0ccd864c511ad7c'
@@ -427,7 +427,7 @@ declare -gA _system_libs=(
   # [libaom]=aom
   # [libavif]=libavif # libavif.so libavutil.so # needs https://github.com/AOMediaCodec/libavif/commit/5410b23f76
   [libdrm]=libdrm # libdrm.so
-  [libjpeg]="libjpeg libjpeg.so"
+  [libjpeg]="libjpeg-turbo libjpeg.so"
   [libpng]="libpng libpng16.so"
   # [libvpx]=libvpx
   # [libwebp]="libwebp libwebpdemux.so libwebpmux.so libwebp.so" # //third_party/libavif:libavif_enc needs //third_party/libwebp:libwebp_sharpyuv
