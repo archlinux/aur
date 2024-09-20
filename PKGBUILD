@@ -20,7 +20,7 @@ source=("https://gdlp01.c-wss.com/gds/6/0100009236/20/linux-UFRII-drv-v600-us-02
 sha256sums=("964b5eb0a706b0739432099eab4e0a61c93aa9a8bfb52fd9376a6d07c17f9f8b")
 
 build() {
-    tar -xf linux-UFRII-drv-*
+    tar -xf linux-UFRII-drv-*.tar.gz
     cd linux-UFRII-drv-*/x64/Debian
     mv cnrdrvcups-ufr2-*.deb $srcdir
     cd $srcdir
