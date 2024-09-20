@@ -1,6 +1,6 @@
 pkgbase = jpegli-git
 	pkgdesc = A JPEG encoder and decoder implementation that is API and ABI compatible with libjpeg62 (git version)
-	pkgver = r2657.gd0d9b8c
+	pkgver = r2669.gbe525a4
 	pkgrel = 1
 	url = https://github.com/google/jpegli/
 	arch = x86_64

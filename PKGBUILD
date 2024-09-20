@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=jpegli-git
-pkgver=r2657.gd0d9b8c
+pkgver=r2669.gbe525a4
 pkgrel=1
 pkgdesc='A JPEG encoder and decoder implementation that is API and ABI compatible with libjpeg62 (git version)'
 arch=('x86_64')
@@ -11,7 +11,6 @@ depends=('gcc-libs')
 makedepends=('git' 'cmake')
 provides=('jpegli' 'libjpeg6' 'libjpeg.so')
 conflicts=('jpegli' 'libjpeg6')
-BUILDENV+=('!check')
 options=('!emptydirs')
 source=('git+https://github.com/google/jpegli.git'
         'git+https://github.com/mm2/Little-CMS.git'
@@ -71,15 +70,12 @@ build() {
         -DJPEGXL_ENABLE_BENCHMARK:BOOL='false' \
         -DJPEGXL_ENABLE_JNI:BOOL='false' \
         -DJPEGXL_ENABLE_MANPAGES:BOOL='false' \
+        -DJPEGXL_ENABLE_OPENEXR:BOOL='false' \
         -DJPEGXL_FORCE_SYSTEM_HWY:BOOL='false' \
         -DJPEGXL_INSTALL_JPEGLI_LIBJPEG:BOOL='true' \
         -DJPEGXL_STATIC:BOOL='true' \
         -Wno-dev
     cmake --build build
-}
-
-check() {
-    ctest --test-dir build --output-on-failure
 }
 
 package() {
