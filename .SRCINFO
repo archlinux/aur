@@ -1,5 +1,5 @@
-pkgbase = pacman-fancy-progress-git
-	pkgdesc = pacman-git but patched to have a unicode progressbar
+pkgbase = pacman-stable-fancy-progress
+	pkgdesc = pacman, but patched to selectively have a unicode progressbar on supported terminals
 	pkgver = 7.0.0.r3.g77361331
 	pkgrel = 1
 	url = https://www.archlinux.org/pacman/
@@ -44,4 +44,4 @@ pkgbase = pacman-fancy-progress-git
 	sha256sums = 0c1ecbb8c57e8ef2c600b41d4458269095fc4ddb6778d0000d4a9a067f68fe2d
 	sha256sums = d053d84f400271defec3536d6ae3fb35fa7dce808593b29efd224b44a87d5c38
 
-pkgname = pacman-fancy-progress-git
+pkgname = pacman-stable-fancy-progress

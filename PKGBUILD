@@ -4,11 +4,11 @@
 # Contributor: godane <slaxemulator@gmail.com.com>
 # Contributor: Andres Perera <aepd87@gmail.com>
 
-pkgname=pacman-fancy-progress-git
+pkgname=pacman-stable-fancy-progress
 pkgver=7.0.0.r3.g77361331
 pkgver_repo="$(pacman -Sp pacman | grep -Eo "pacman-.*-[0-9]+"| cut -d- -f2-)"
 pkgrel=1
-pkgdesc="pacman-git but patched to have a unicode progressbar"
+pkgdesc="pacman, but patched to selectively have a unicode progressbar on supported terminals"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.archlinux.org/pacman/"
 license=('GPL')
