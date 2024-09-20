@@ -1,11 +1,11 @@
 pkgbase = sfnx
 	pkgdesc = A minimal terminal-based password manager
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/themohitnair/sfnx
 	arch = x86_64
 	license = MIT
-	source = sfnx-0.0.2.tar.gz::https://github.com/themohitnair/sfnx/releases/download/0.0.2/sfnx-0.0.2-linux-x86_64.tar.gz
+	source = sfnx-0.0.3.tar.gz::https://github.com/themohitnair/sfnx/releases/download/0.0.3/sfnx-0.0.3-linux-x86_64.tar.gz
 	sha256sums = SKIP
 
 pkgname = sfnx
