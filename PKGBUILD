@@ -15,18 +15,18 @@ depends=('cups'
 
 install=install.sh
 
-source=("https://gdlp01.c-wss.com/gds/6/0100009236/15/linux-UFRII-drv-v570-us-11.tar.gz")
+source=("https://gdlp01.c-wss.com/gds/6/0100009236/20/linux-UFRII-drv-v600-us-02.tar.gz")
 
-sha256sums=("e5afaac96abfeb13b36311ee880dcf5942155e1877f9aa36cecca29647d9a232")
+sha256sums=("964b5eb0a706b0739432099eab4e0a61c93aa9a8bfb52fd9376a6d07c17f9f8b")
 
 build() {
-    tar -xf linux-UFRII-drv-v570-us-11.tar.gz
-    cd linux-UFRII-drv-v570-us/x64/Debian
-    mv cnrdrvcups-ufr2-us_5.70-1.11_amd64.deb $srcdir
+    tar -xf linux-UFRII-drv-*
+    cd linux-UFRII-drv-*/x64/Debian
+    mv cnrdrvcups-ufr2-*.deb $srcdir
     cd $srcdir
-    rm -rf linux-UFRII-drv-v570-us*
-    ar x cnrdrvcups-ufr2-us_5.70-1.11_amd64.deb
-    rm control.tar.xz debian-binary cnrdrvcups-ufr2-us_5.70-1.11_amd64.deb
+    rm -rf linux-UFRII-drv*
+    ar x cnrdrvcups-ufr2-*.deb
+    rm control.tar.xz debian-binary cnrdrvcups-ufr2-*.deb
     tar -xvf data.tar.xz
     rm data.tar.xz
 }
