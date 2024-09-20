@@ -1,5 +1,5 @@
 pkgbase = intel-opencl-runtime
-	pkgdesc = Intel oneAPI OpenMP runtime library
+	pkgdesc = Intel oneAPI OpenCL runtime library for Intel Core and Xeon processors
 	pkgver = 2024.2.1
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
