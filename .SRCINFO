@@ -6,11 +6,9 @@ pkgbase = pypy-packaging
 	arch = any
 	license = Apache-2.0
 	license = BSD-2-Clause
-	makedepends = pypy3-build
-	makedepends = pypy3-installer
-	makedepends = pypy3-flit-core
+	makedepends = pypy-setuptools
+	depends = pypy
 	source = packaging-24.1.tar.gz::https://github.com/pypa/packaging/archive/24.1.tar.gz
 	sha512sums = 45836ea0e7531c485a7d5e568f9740c7f075ff1b72a0d60422c5b76c031866428ff2137d9bd153790a9fcfff6bd4a7555bc40555409ad46debae7f1c9c1fe129
 
-pkgname = pypy3-packaging
-	depends = pypy3
+pkgname = pypy-packaging
