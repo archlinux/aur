@@ -1,4 +1,4 @@
-[gnome-shell-extension-clipboard-indicator]
+[gnome-shell-extension-clipboard-indicator-latest]
 source = "git"
 git = "https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator.git"
 prefix = "v"

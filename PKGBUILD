@@ -1,27 +1,36 @@
 #!/bin/bash -e
 #
-# Maintainer: Jonian Guveli <https://github.com/jonian/>
-pkgname=gnome-shell-extension-clipboard-indicator
+# Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
+# Contributor: Jonian Guveli <https://github.com/jonian/>
+
+_pkgname=gnome-shell-extension-clipboard-indicator
 _uuid=clipboard-indicator@tudmotu.com
+pkgname="${_pkgname}-latest"
 pkgver=71
 pkgrel=2
-pkgdesc="Adds a clipboard indicator to the top panel, and caches clipboard history"
+pkgdesc="The most popular clipboard manager for GNOME - always up-to-date"
 arch=("any")
 url="https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator"
 license=("MIT")
 makedepends=(
   jq
 )
-conflicts=("gnome-shell-extension-clipboard-history")
+provides=(
+  "${_pkgname}"
+)
+conflicts=(
+  "${_pkgname}"
+  gnome-shell-extension-clipboard-history
+)
 source=(
-  "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+  "${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
   gnome-51-pr-641.patch
 )
 sha256sums=('31d6c3694889b0f1c257b113926643e6a37610495f501cbd810eb2c14b9ebd85'
             '4b790f67fad8458b1d1706f34e3f7edfc68d5f179193da5a16c457f22c6fb433')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
 
   sed -i \
     -e 's/\bREADME\.rst\b//' \
@@ -38,7 +47,7 @@ package() {
 
   : "${pkgdir:?}"
 
-  cd "${pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
 
   make "INSTALLPATH=${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}" install
 
@@ -70,5 +79,6 @@ package() {
 : "${makedepends[@]}"
 : "${pkgdesc}"
 : "${pkgrel}"
+: "${provides[@]}"
 : "${sha256sums[@]}"
 : "${source[@]}"
