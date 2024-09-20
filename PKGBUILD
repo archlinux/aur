@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=fortio-bin
-pkgver=1.66.4
+pkgver=1.66.5
 pkgrel=1
 pkgdesc='Fortio load testing library, command line tool, advanced echo server and web UI in go (golang). Allows to specify a set query-per-second load and record latency histograms and other useful stats'
 arch=(
@@ -16,8 +16,8 @@ conflicts=("${pkgname%-bin}")
 depends=()
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums_aarch64=('e0d015275ef90db10f03d6a0addfd7139611dedcbcb8f52f208de53bf67885e2')
-sha256sums_x86_64=('0d8ae856d581d1163768355566f5965544bb447e4d24a4c9b90a69428a2be2b4')
+sha256sums_aarch64=('9b0a2fe40d9bf32b657365f5ca298dede5fe76ad379829f8f61407a599f4f3dc')
+sha256sums_x86_64=('1e3b30481c8e698a55c28ea2aa7d04ba468c284d4436f900e338ba34e4981600')
 build() {
     bsdtar -xf "${srcdir}/data."*
 }
