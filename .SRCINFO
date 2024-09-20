@@ -1,14 +1,15 @@
 pkgbase = ytarchive
 	pkgdesc = Garbage Youtube livestream downloader
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kethsar/ytarchive
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = go
 	depends = glibc
 	depends = ffmpeg
-	source = ytarchive-0.5.0.tar.gz::https://github.com/Kethsar/ytarchive/archive/v0.5.0.tar.gz
-	b2sums = fabcc4ce47715ba1a804f2f3504adaf8eea3cf3348b8442af2bcabd10eeab529a845255fdc1ac55d0e2d0017d0b8a578d5ab4ab9c8f07acff0756cb27b348e7c
+	source = ytarchive-0.5.0::git+https://github.com/Kethsar/ytarchive.git#tag=v0.5.0
+	b2sums = 4758a3435c82fe5d761653bbe27d7809c490428c4e78295211d928a6decefadf7492e388bde0d98fac5a229611e10185aaa94e0bc604fb79df2855a964823ebd
 
 pkgname = ytarchive

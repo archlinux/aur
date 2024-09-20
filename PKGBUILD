@@ -2,16 +2,16 @@
 
 pkgname="ytarchive"
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Garbage Youtube livestream downloader"
 arch=('x86_64')
 url="https://github.com/Kethsar/${pkgname}"
 license=('MIT')
-makedepends=('go')
+makedepends=('git' 'go')
 depends=('glibc' 'ffmpeg')
 _pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('fabcc4ce47715ba1a804f2f3504adaf8eea3cf3348b8442af2bcabd10eeab529a845255fdc1ac55d0e2d0017d0b8a578d5ab4ab9c8f07acff0756cb27b348e7c')
+source=("${_pkgsrc}::git+${url}.git#tag=v${pkgver}")
+b2sums=('4758a3435c82fe5d761653bbe27d7809c490428c4e78295211d928a6decefadf7492e388bde0d98fac5a229611e10185aaa94e0bc604fb79df2855a964823ebd')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -25,13 +25,15 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o "build/${pkgname}" .
+  go build -v -o "build/${pkgname}" -ldflags "\
+    -X main.Commit=-$(git rev-parse --short HEAD)" \
+    .
 }
 
-check() {
-  cd "${srcdir}/${_pkgsrc}"
-  go test ./...
-}
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   go test ./...
+# }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
