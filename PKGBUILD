@@ -6,9 +6,9 @@
 # Maintainer: Kazel <address at domain dot tld>
 
 pkgname=wineasio32
-pkgname_64=wineasio
+_pkgname_64=wineasio
 pkgver=1.2.0
-pkgrel=9
+pkgrel=10
 
 pkgdesc="ASIO driver implementation for Wine - 32 bit binary"
 url="https://github.com/wineasio/wineasio"
@@ -16,31 +16,27 @@ arch=('x86_64')
 license=('LGPL-2.1-or-later' 'GPL-2.0-or-later')
 
 options=('!lto' '!debug')
-depends=('jack' 'lib32-jack' 'python-pyqt5' 'realtime-privileges' 'wine' 'wineasio')
+depends=('lib32-jack' 'wineasio')
 makedepends=('gcc' 'wine-staging')
 
 install="$pkgname".install
 
 source=(
-  "https://github.com/wineasio/wineasio/releases/download/v$pkgver/$pkgname_64-$pkgver.tar.gz"
+  "https://github.com/wineasio/wineasio/releases/download/v$pkgver/$_pkgname_64-$pkgver.tar.gz"
 )
+
 sha256sums=(
   '13f20c7b3d45b474833e6c60cb58bcad7295e97dd39239bf00f85c02272cc0f4'
 )
 
-prepare(){
-  # Adjust PREFIX value in script files
-  sed -i "s?X-PREFIX-X?\/usr?" $pkgname-$pkgver/gui/wineasio-settings
-}
-
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$_pkgname_64-$pkgver"
   make 32
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -D -m755 build32/"$pkgname"32.dll.so "$pkgdir"/usr/lib32/wine/i386-unix/"$pkgname"32.dll.so
-  install -D -m644 build32/"$pkgname"32.dll "$pkgdir"/usr/lib32/wine/i386-windows/"$pkgname"32.dll
+  cd "$_pkgname_64-$pkgver"
+  install -D -m755 build32/"$pkgname".dll.so "$pkgdir"/usr/lib32/wine/i386-unix/"$pkgname".dll.so
+  install -D -m644 build32/"$pkgname".dll "$pkgdir"/usr/lib32/wine/i386-windows/"$pkgname".dll
 }
 # vim:set ts=2 sw=2 et:
