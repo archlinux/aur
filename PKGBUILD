@@ -6,7 +6,7 @@ _gitn=gnome-clipboard-history
 _gitv=1.5.1
 pkgname=gnome-shell-extension-clipboard-history
 pkgver=44
-pkgrel=1
+pkgrel=2
 pkgdesc="Gnome extension that saves what you've copied into an easily accessible, searchable history panel."
 arch=("any")
 url="https://github.com/SUPERCILEX/gnome-clipboard-history"
@@ -33,4 +33,6 @@ package() {
   for locale in */; do
     install -Dm644 -t "${pkgdir}/usr/share/locale/${locale}/LC_MESSAGES" "${locale}/LC_MESSAGES"/*.mo || true
   done
+
+  sed -i '9s/46/47/' "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/metadata.json"
 }
