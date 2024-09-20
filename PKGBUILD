@@ -1,7 +1,6 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Daniel Milde <daniel@milde.cz>
 _base=packaging
-pkgbase=pypy-${_base}
 pkgname=pypy3-${_base}
 pkgver=24.1
 pkgrel=1

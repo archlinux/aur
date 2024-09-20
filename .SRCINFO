@@ -1,4 +1,4 @@
-pkgbase = pypy-packaging
+pkgbase = pypy3-packaging
 	pkgdesc = Core utilities for Python packages
 	pkgver = 24.1
 	pkgrel = 1
