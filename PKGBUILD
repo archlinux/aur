@@ -23,6 +23,7 @@ sha256sums=(
 
 prepare() {
 	cd $pkgname-$pkgver
+	patch --forward --strip=1 --input=$srcdir/revert-hyper-rustls-0.24.2.patch
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -36,7 +37,6 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	patch --forward --strip=1 --input=$srcdir/revert-hyper-rustls-0.24.2.patch
 	install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
 	install -Dm644 'LICENSE' -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 'README.md' -t "$pkgdir/usr/share/doc/$pkgname/"
