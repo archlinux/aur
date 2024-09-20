@@ -3,7 +3,7 @@
 _org='stack-of-tasks'
 _pkgname=eigenpy
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=3.9.0
+pkgver=3.9.1
 pkgrel=1
 pkgdesc="Bindings between numpy and eigen using boost::python"
 arch=('i686' 'x86_64')
@@ -13,13 +13,14 @@ depends=('boost-libs' 'eigen' 'gcc-libs' 'glibc')
 optdepends=('doxygen')
 makedepends=('cmake' 'boost' 'python-numpy' 'python-scipy')
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('672cd3ee675f559d0f4b32d76353fe51891ea95b0046698ce74bb9c4a54ed0f5'
+sha256sums=('3e00b96a4fd8d4d99d28afa671b7d407c07354555d6b6459d5b7ef468a4c5d71'
             'SKIP')
 validpgpkeys=(
-        'A031AD35058955293D54DECEC45D22EF408328AD'  # https://github.com/jcarpent.gpg
+        'A031AD35058955293D54DECEC45D22EF408328AD' # https://github.com/jcarpent.gpg
         'F534E75540B2E7D24F99746987CFFF3D0D73CC93' # https://github.com/jcarpent.gpg
-        'F182CC432A4752C7A3E4FE02001EB2069D785C81'  # https://github.com/proyan.gpg
-        '1462AF00C9CF3C9E7AFC905E63380359F089A579'  # https://github.com/jorisv.gpg
+        'F182CC432A4752C7A3E4FE02001EB2069D785C81' # https://github.com/proyan.gpg
+        '1462AF00C9CF3C9E7AFC905E63380359F089A579' # https://github.com/jorisv.gpg
+        'F6B9DDE42ED91D7939BC25B2A4D60E0153ADD041' # https://github.com/manifoldfr.gpg
         )
 
 build() {
