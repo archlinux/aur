@@ -1,7 +1,7 @@
 # Maintainer: LuckyTurtleDev [aur at lukas1818 dot de]
 # Contributor: Shantanu Tushar <shantanu@kde.org>
 
-_pkgtag=v2.2.0 #auto updated by CI
+_pkgtag=v2.3.0 #auto updated by CI
 pkgname=ruqola
 pkgver=${_pkgtag/v}
 pkgrel=1 #auto reset by CI
@@ -14,7 +14,7 @@ groups=()
 depends=('hicolor-icon-theme' 'kcodecs' 'kidletime' 'knotifyconfig' 'kstatusnotifieritem' 'ktextaddons' 'ktextwidgets' 'networkmanager-qt' 'prison' 'qt6-networkauth' 'qt6-websockets' 'qtkeychain-qt6' 'purpose')
 makedepends=('cmake' 'extra-cmake-modules')
 source=("https://invent.kde.org/network/ruqola/-/archive/$_pkgtag/ruqola-$_pkgtag.tar.gz")
-sha512sums=('c6b76f089ac837b265d47e8f628a3ead2fbe88df5b55c27c4192907c6a9b332e3f6c175b29b20226b00cb9d2561e548780572baf5ef506e5b2495cad0d3c255c')
+sha512sums=('4119181995370b11b89b29ac9d91518d813222069973c997dd46b0e849fe768e53c4bad048fb09143de224171463ce592a017862db34dd1ff1fb02897a06a0a5')
 
 build() {
 	mkdir -p "$srcdir/build"
