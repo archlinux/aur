@@ -1,7 +1,7 @@
 pkgbase = libertinus-font-git
 	pkgdesc = Fonts based on Linux Libertine/Biolinum, with extended math support
 	pkgver = 7.040.r79.g302a906c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alerque/libertinus
 	arch = any
 	license = OFL-1.1-RFN
@@ -11,4 +11,4 @@ pkgbase = libertinus-font-git
 	sha256sums = SKIP
 
 pkgname = otf-libertinus-git
-	provides = libertinus-font=7.040.r79.g302a906c
+	provides = otf-libertinus=7.040.r79.g302a906c
