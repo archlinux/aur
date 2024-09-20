@@ -5,6 +5,7 @@ pkgbase = freeshow-bin
 	url = https://github.com/ChurchApps/FreeShow
 	arch = x86_64
 	license = GPL3
+	provides = freeshow
 	source = FreeShow-1.2.7-amd64.deb::https://github.com/ChurchApps/FreeShow/releases/download/v1.2.7/FreeShow-1.2.7-amd64.deb
 	sha256sums = 8d7c9194ca02bd24a512100a5fc1833dfc467e4bac5976f1dea359b92bcc8fa7
 
