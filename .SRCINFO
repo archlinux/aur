@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-clipboard-indicator-lubo
 	pkgdesc = The most popular clipboard manager for GNOME, always up-to-date
 	pkgver = 64
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator
 	arch = any
 	license = MIT
@@ -9,6 +9,6 @@ pkgbase = gnome-shell-extension-clipboard-indicator-lubo
 	conflicts = gnome-shell-extension-clipboard-indicator
 	conflicts = gnome-shell-extension-clipboard-history
 	source = gnome-shell-extension-clipboard-indicator-64.tar.gz::https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator/archive/v64.tar.gz
-	md5sums = 4dcebbfc3b85598c4c05f9bcd4895c87
+	sha256sums = 759fae6d9be4b41d410c7eab117667c6aa41415712963624da453d5d4be909b5
 
 pkgname = gnome-shell-extension-clipboard-indicator-lubo
