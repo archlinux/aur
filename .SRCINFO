@@ -11,7 +11,7 @@ pkgbase = intel-opencl-runtime
 	noextract = intel-oneapi-runtime-dpcpp-sycl-opencl-cpu-2024-2024.2.1-1079_amd64.deb
 	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-runtime-opencl-2024-2024.2.1-1079_amd64.deb
 	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-runtime-dpcpp-sycl-opencl-cpu-2024-2024.2.1-1079_amd64.deb
-	b2sums = SKIP
-	b2sums = SKIP
+	b2sums = cda1ecba113a5c2ce71c1475090c9a3926690cf7438a616af09ead723885e254cd8ffe898c4e9ec28195bd0999185b2cceef82f3e238029e35ec2d99ac22df6b
+	b2sums = eaf8778efb76405541b5970f4023d45aecab0b729075abdbce5f518d5fd7721e0eaa5a322ed7a8867f4a2cf0c211b42c2f99ab23a250b725cc47df0eba893014
 
 pkgname = intel-opencl-runtime
