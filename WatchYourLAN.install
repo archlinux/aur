@@ -1,0 +1,7 @@
+post_install() {
+	echo
+	echo "To run, you need to specify 3 parameters:"
+	echo "timezone, network interface and data folder"
+	echo "For example:"
+	echo "IFACES="enp3s0" TZ="Europe/Berlin" WatchYourLAN -d ~/.config/WatchYourLAN/data"
+}
