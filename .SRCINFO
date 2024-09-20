@@ -1,6 +1,6 @@
 pkgbase = mihomo-party-bin
 	pkgdesc = Another Mihomo GUI.
-	pkgver = 1.2.22
+	pkgver = 1.2.23
 	pkgrel = 1
 	url = https://github.com/mihomo-party-org/mihomo-party
 	install = mihomo-party.install
@@ -25,9 +25,9 @@ pkgbase = mihomo-party-bin
 	conflicts = mihomo-party
 	source = mihomo-party.sh
 	sha256sums = f8049c1f26d5a92fbcebd7bebbdedbb3eab53422b21cf6127418251ccd061282
-	source_x86_64 = mihomo-party-1.2.22-x86_64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.2.22/mihomo-party-linux-1.2.22-amd64.deb
-	sha256sums_x86_64 = 491ff6711dfc16dfca3278135791c033e162a67343a3d693ef03acff863b011e
-	source_aarch64 = mihomo-party-1.2.22-aarch64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.2.22/mihomo-party-linux-1.2.22-arm64.deb
-	sha256sums_aarch64 = 6a69584f328ed44a0338ac2cc492c044182088ae309cf9b26e0b8e51732259c4
+	source_x86_64 = mihomo-party-1.2.23-x86_64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.2.23/mihomo-party-linux-1.2.23-amd64.deb
+	sha256sums_x86_64 = cf1cb3ab9e814f86f4922d8410cc5c0728a27975eceac6bbe96685e63a10e0c3
+	source_aarch64 = mihomo-party-1.2.23-aarch64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.2.23/mihomo-party-linux-1.2.23-arm64.deb
+	sha256sums_aarch64 = 153543440a65ff69a77f6cad8ae28ed9ef0a70ddb49ef71575f2be8735af7753
 
 pkgname = mihomo-party-bin
