@@ -1,6 +1,6 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=mdbook-i18n-helpers
-pkgver=0.3.2
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Gettext translation support for mdbook"  
 arch=(x86_64)
@@ -8,7 +8,7 @@ url="https://github.com/google/mdbook-i18n-helpers"
 license=('Apache-2.0')
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('4c3476ecdd1713de7eac3cf3aa20ae8206a6dfbde2d5e6736d7bc7e35a78a2cf')
+sha256sums=('7cac78e4f518f326e5fc1ff95e79e7e0e58330cb8ac6e4b559d9659cf69bb1ab')
 
 prepare() {
     cd $pkgname-$pkgver
