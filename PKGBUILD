@@ -1,6 +1,6 @@
 pkgname=mihomo-party-git
 _pkgname=${pkgname%-git}
-pkgver=1.2.23.r0.gdbd1f4b
+pkgver=1.2.23.r1.gd8f1f3e
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
