@@ -1,7 +1,7 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=qbittorrent-enhanced-nox
-pkgver=4.6.6.10
+pkgver=4.6.7.10
 pkgrel=1
 epoch=
 pkgdesc="A bittorrent client powered by C++, Qt and the good libtorrent library (Enhanced Edition), w/o GUI"
@@ -21,14 +21,14 @@ options=()
 install=
 changelog=
 source=(
-	"$pkgname-$pkgver.tar.gz::https://github.com/c0re100/qBittorrent-Enhanced-Edition/archive/release-$pkgver.tar.gz"
+	"qbittorrent-enhanced-$pkgver.tar.gz::https://github.com/c0re100/qBittorrent-Enhanced-Edition/archive/release-$pkgver.tar.gz"
 	"qbittorrent-nox.service"
 	"qbittorrent-nox.sysusers"
 	"qbittorrent-nox.tmpfiles"
 )
 noextract=()
 sha256sums=(
-	'763e95966bf0b49951484ee22e0080261a39cbe5b883bbed1b55ccc47ea1b7fb'
+	'5e4daa8afc25b7951bbe01b4c763f37fa0cf402a4aed0bc1ac6d8beb6c680281'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -50,7 +50,7 @@ package() {
 
 	DESTDIR="$pkgdir" cmake --install build
 
-	install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+	install -Dm644 COPYING "$pkgdir"/usr/share/licenses/qbittorrent-enhanced-nox/COPYING
 	install -Dm644 "$srcdir"/qbittorrent-nox.service "$pkgdir"/usr/lib/systemd/system/qbittorrent-nox.service
 	install -Dm644 "$srcdir"/qbittorrent-nox.sysusers "$pkgdir"/usr/lib/sysusers.d/qbittorrent-nox.conf
 	install -Dm644 "$srcdir"/qbittorrent-nox.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/qbittorrent-nox.conf
