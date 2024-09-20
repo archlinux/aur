@@ -1,7 +1,7 @@
 pkgbase = coot
 	pkgdesc = Crystallographic Object-Oriented Toolkit for model building, completion and validation
 	pkgver = 1.1.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/
 	arch = i686
 	arch = x86_64
