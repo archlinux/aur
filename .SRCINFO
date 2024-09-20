@@ -1,7 +1,7 @@
 pkgbase = redlib
 	pkgdesc = Private front-end for Reddit
 	pkgver = 0.35.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/redlib-org/redlib
 	arch = x86_64
 	license = AGPL-3.0

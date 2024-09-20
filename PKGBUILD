@@ -3,7 +3,7 @@
 
 pkgname=redlib
 pkgver=0.35.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Private front-end for Reddit"
 url='https://github.com/redlib-org/redlib'
 license=(AGPL-3.0)
