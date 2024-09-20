@@ -1,20 +1,17 @@
 pkgbase = intel-opencl-runtime
-	pkgdesc = OpenCL runtime for Intel Core and Xeon processors
-	pkgver = 18.1.0.015
-	pkgrel = 3
-	epoch = 1
-	url = https://software.intel.com/content/www/us/en/develop/articles/opencl-drivers.html
+	pkgdesc = Intel oneAPI OpenMP runtime library
+	pkgver = 2024.2.1
+	pkgrel = 1
+	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
 	arch = x86_64
-	license = custom:intel
-	depends = numactl
-	depends = intel-tbb
-	depends = zlib
-	depends = ncurses5-compat-libs
-	optdepends = intel-opencl-sdk: Intel SDK for OpenCL Applications
-	provides = opencl-intel
-	provides = opencl-driver
-	source = https://registrationcenter-download.intel.com/akdlm/irc_nas/15532/l_opencl_p_18.1.0.015.tgz
-	sha256sums = 13ff315e722283eed46cb3099bd43e9ecf557a7567c00bd11e6b84d04d352cc9
+	license = custom
+	depends = intel-oneapi-compiler-shared-runtime
+	conflicts = intel-oneapi-basekit
+	noextract = intel-oneapi-runtime-opencl-2024-2024.2.1-1079_amd64.deb
+	noextract = intel-oneapi-runtime-dpcpp-sycl-opencl-cpu-2024-2024.2.1-1079_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-runtime-opencl-2024-2024.2.1-1079_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-runtime-dpcpp-sycl-opencl-cpu-2024-2024.2.1-1079_amd64.deb
+	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = intel-opencl-runtime
-

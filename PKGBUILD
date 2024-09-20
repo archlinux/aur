@@ -1,38 +1,38 @@
-# Maintainer: ava1ar <mail@ava1ar.me>
+# Maintainer: George Hilliard <me@thirtythreeforty.net>
+# Contributor: ava1ar <mail@ava1ar.me>
 # Contributor: Duong Pham <dthpham@gmail.com>
 # Contributor: Eric Quackenbush <mail@ericquackenbush.com>
 # Contributor: Wei-Ning Huang <aitjcize@gmail.com>
 
 pkgname=intel-opencl-runtime
-epoch=1
-pkgver=18.1.0.015
-_package=l_opencl_p_${pkgver}
-pkgrel=3
-pkgdesc="OpenCL runtime for Intel Core and Xeon processors"
+pkgver=2024.2.1
+_debpkgrel=1079
+pkgrel=1
+pkgdesc="Intel oneAPI OpenMP runtime library"
 arch=('x86_64')
-url="https://software.intel.com/content/www/us/en/develop/articles/opencl-drivers.html"
-license=('custom:intel')
-depends=('numactl' 'intel-tbb' 'zlib' 'ncurses5-compat-libs')
-optdepends=('intel-opencl-sdk: Intel SDK for OpenCL Applications')
-provides=('opencl-intel' 'opencl-driver')
-source=(https://registrationcenter-download.intel.com/akdlm/irc_nas/15532/${_package}.tgz)
-sha256sums=('13ff315e722283eed46cb3099bd43e9ecf557a7567c00bd11e6b84d04d352cc9')
+url='https://software.intel.com/content/www/us/en/develop/tools/oneapi.html'
+license=("custom")
+source=(
+  "https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-runtime-opencl-2024-${pkgver}-${_debpkgrel}_amd64.deb"
+  "https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-runtime-dpcpp-sycl-opencl-cpu-2024-${pkgver}-${_debpkgrel}_amd64.deb"
+)
+b2sums=('cda1ecba113a5c2ce71c1475090c9a3926690cf7438a616af09ead723885e254cd8ffe898c4e9ec28195bd0999185b2cceef82f3e238029e35ec2d99ac22df6b'
+        'eaf8778efb76405541b5970f4023d45aecab0b729075abdbce5f518d5fd7721e0eaa5a322ed7a8867f4a2cf0c211b42c2f99ab23a250b725cc47df0eba893014')
+depends=('intel-oneapi-compiler-shared-runtime')
+noextract=(
+    "intel-oneapi-runtime-opencl-2024-${pkgver}-${_debpkgrel}_amd64.deb"
+    "intel-oneapi-runtime-dpcpp-sycl-opencl-cpu-2024-${pkgver}-${_debpkgrel}_amd64.deb"
+)
+conflicts=('intel-oneapi-basekit')
 
 package() {
-    cd "${srcdir}"/${_package}/
+    cd "${srcdir}"
 
-    # Copy license
-    install -Dm644 license.txt "${pkgdir}"/usr/share/licenses/intel-opencl-runtime/license
+    ar x "${srcdir}/intel-oneapi-runtime-opencl-2024-${pkgver}-${_debpkgrel}_amd64.deb"
+    tar xvf data.tar.xz -C "${pkgdir}"
+    rm data.tar.xz
 
-    # Unpack RPM
-    rm rpm/intel-openclrt-pset-*.rpm
-    for i in rpm/*.rpm; do bsdtar -xf "$i"; done
-
-    # Register ICD
-    mkdir -p "${pkgdir}/etc/OpenCL/vendors"
-    echo "/opt/intel/opencl-runtime/linux/compiler/lib/intel64_lin/libintelocl.so" > "${pkgdir}/etc/OpenCL/vendors/intel-cpu.icd"
-
-    # Install files
-    mkdir -p "${pkgdir}/opt/intel/opencl-runtime"
-    cp -r opt/intel/opencl_*/* "${pkgdir}/opt/intel/opencl-runtime"
+    ar x "${srcdir}/intel-oneapi-runtime-dpcpp-sycl-opencl-cpu-2024-${pkgver}-${_debpkgrel}_amd64.deb"
+    tar xvf data.tar.xz -C "${pkgdir}"
+    rm data.tar.xz
 }
