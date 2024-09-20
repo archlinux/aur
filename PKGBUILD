@@ -6,11 +6,11 @@
 # Maintainer: Michael Limiero <mike5713 at gmail dot com>
 pkgname=zmkbatx
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Tool for peripheral battery monitoring for ZMK split keyboards over BLE"
 arch=("x86_64")
-url=""
+url="https://github.com/mh4x0f/zmkBATx"
 license=('MIT')
 groups=()
 depends=("simplebluez" "qt6-base" "qt6-connectivity" "dbus")
