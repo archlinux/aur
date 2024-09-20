@@ -15,7 +15,7 @@ warnings we want users to see.
  1 file changed, 13 deletions(-)
 
 diff --git a/gio/glib-compile-schemas.c b/gio/glib-compile-schemas.c
-index 04ef40457eba..e791ce254454 100644
+index 54b980b0ca93..be05894a5e0d 100644
 --- a/gio/glib-compile-schemas.c
 +++ b/gio/glib-compile-schemas.c
 @@ -1232,19 +1232,6 @@ parse_state_start_schema (ParseState  *state,

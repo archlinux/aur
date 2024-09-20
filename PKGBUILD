@@ -3,22 +3,22 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgname=glib2-patched-thumbnailer
-pkgver=2.80.5
+
+pkgbase=glib2-patched-thumbnailer
+pkgname=(
+  glib2-patched-thumbnailer
+)
+pkgver=2.82.1
 pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
-options=(!docs staticlibs)
 license=(LGPL-2.1-or-later)
 arch=(x86_64)
-provides=(glib2=$pkgver libg{lib,io,irepository,module,object,thread}-2.0.so)
 conflicts=('glib2')
 depends=(
   bash
   glibc
   libffi
-  libffi.so
-  libmount.so
   libsysprof-capture
   pcre2
   util-linux-libs
@@ -44,26 +44,22 @@ checkdepends=(
   desktop-file-utils
   glib2
 )
-optdepends=(
-  'dconf: GSettings storage backend'
-  'glib2-devel: development tools'
-  'gvfs: most gio functionality'
-)
 source=(
   "git+https://gitlab.gnome.org/GNOME/glib.git?signed#tag=$pkgver"
   "git+https://gitlab.gnome.org/GNOME/gvdb.git"
   0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch
-  0002-glocalfileinfo-add-a-dbus-thumbnail-generator.patch
+  0002-glocalfileinfo-add-dbus-thumbnail-generation-request.patch
   gio-querymodules.hook
   glib-compile-schemas.hook
 )
-b2sums=('fbda547a8b941dd877fb704406b78e16856c0337a71102d0041b6276d648d0f90fc70a7a0c25c0d9a5b3d1cdc9c3f1599d44f386d77698ea76c24a143fa76622'
+b2sums=('e9cf9b7edc6d6ef7fcdb72bb7b04fbabf317f8891d8fee6fde1d10cb190550b49db463fbe33615a3aa8d6dc71b90914ee59d5968d8983df2252f1536a95cd8f1'
         'SKIP'
-        '94c73ca7070c239494873dd52d6ee09382bbb5b1201f7afd737cfa140b1a2fb0744b2c2831baf3943d1d072550c35888d21ce6f19f89481ff9d1a60d9a0b30e0'
-        '5eed57eccc15fa9994228815874200135e9ee682b9bd718dae4b486eb3a65f2efb8121f45afedd4dd33208297738b5f1f489cb9a798a896540a505b32a37cc08'
+        '47cd08ba7e4b3ca0cd19f6dc20e4d73e30cf90f2b78c3d620ee0c7a4d8a4b325a5e88ec2dcc3a63402c16cc1ce8061130afc313e3cbfcd220dff3e642b113a69'
+        '84be383030a30f3c681e3b444e7475b7ea7653bf873f3548a77cb00860fc4e1e4731e83be888068dbb36f8ba63d5322449f9d11dbe619de8bea8f9c96e46d2f0'
         '14c9211c0557f6d8d9a914f1b18b7e0e23f79f4abde117cb03ab119b95bf9fa9d7a712aa0a29beb266468aeb352caa3a9e4540503cfc9fe0bbaf764371832a96'
         'd30d349b4cb4407839d9074ce08f5259b8a5f3ca46769aabc621f17d15effdb89c4bf19bd23603f6df3d59f8d1adaded0f4bacd0333afcab782f2d048c882858')
 validpgpkeys=(
+  53EF3DC3B63E2899271BD26322E8091EEA11BBB7 # Emmanuele Bassi <ebassi@gnome.org>
   923B7025EE03C1C59F42684CF0942E894B2EAFA0 # Philip Withnall <pwithnall@gnome.org>
 )
 
@@ -74,7 +70,7 @@ prepare() {
   git apply -3 ../0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch
 
   # Apply patch to generate thumbnails
-  git apply -3 ../0002-glocalfileinfo-add-a-dbus-thumbnail-generator.patch
+  git apply -3 ../0002-glocalfileinfo-add-dbus-thumbnail-generation-request.patch
 
   git submodule init
   git submodule set-url subprojects/gvdb "$srcdir/gvdb"
@@ -84,11 +80,13 @@ prepare() {
 build() {
   local meson_options=(
     --default-library both
+    -D dtrace=disabled
     -D glib_debug=disabled
     -D introspection=enabled
     -D man-pages=enabled
     -D selinux=disabled
     -D sysprof=enabled
+    -D systemtap=disabled
   )
 
   # Produce more debug info: GLib has a lot of useful macros
@@ -107,7 +105,19 @@ check() {
    meson test -C build --no-suite flaky --no-suite slow --print-errorlogs
 }
 
-package() {
+package_glib2-patched-thumbnailer() {
+  depends+=(
+    libffi.so
+    libmount.so
+  )
+  provides+=(glib2=$pkgver libg{lib,io,irepository,module,object,thread}-2.0.so)
+  optdepends=(
+    'dconf: GSettings storage backend'
+    'glib2-devel: development tools'
+    'gvfs: most gio functionality'
+  )
+  options=(!docs staticlibs)
+
   meson install -C build --destdir "$pkgdir"
 
   install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 *.hook
