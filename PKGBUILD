@@ -1,3 +1,5 @@
+# Maintainer: Ning Sun <n@sunng.info>
+
 pkgname=dssd
 pkgver=0.3.0
 pkgrel=1
