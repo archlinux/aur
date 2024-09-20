@@ -1,6 +1,6 @@
 pkgbase = kaas-bin
 	pkgdesc = Cross-platform desktop LLM client for OpenAI ChatGPT, Anthropic Claude, Microsoft Azure and more, with a focus on privacy and security.
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/0xfrankz/Kaas
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = kaas-bin
 	depends = gdk-pixbuf2
 	depends = webkit2gtk
 	depends = openssl-1.1
-	provides = kaas=1.0.5
+	provides = kaas=1.0.6
 	conflicts = kaas
-	source = kaas-1.0.5.deb::https://github.com/0xfrankz/Kaas/releases/download/kaas-v1.0.5/kaas_1.0.5_amd64.deb
-	source = LICENSE-1.0.5::https://raw.githubusercontent.com/0xfrankz/Kaas/kaas-v1.0.5/LICENSE
-	sha256sums = 758de7d8757845f67c367541bf1e34f1ba81f369a133f134b89308be8d0f630c
+	source = kaas-1.0.6.deb::https://github.com/0xfrankz/Kaas/releases/download/kaas-v1.0.6/kaas_1.0.6_amd64.deb
+	source = LICENSE-1.0.6::https://raw.githubusercontent.com/0xfrankz/Kaas/kaas-v1.0.6/LICENSE
+	sha256sums = 58633d90f6095439aec2ff562293d0853d58c3505bde85aaa8cb578a95c6cf37
 	sha256sums = 92369ee89bbdda6b7d05ad8667c9b354ede5d80e2e9ebb2aca2bbb9f156b44e1
 
 pkgname = kaas-bin
