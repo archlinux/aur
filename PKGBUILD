@@ -3,12 +3,12 @@
 pkgname=geode-gem
 _pkgname=geode_gem
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ Graphical User Interface (GUI) for GNU/Linux which allows you to easily manage your emulators and games collection."
 arch=('x86_64')
 license=('GPL3')
-depends=('python-gobject' 'python-pyxdg')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+depends=('python-gobject' 'python-pyxdg' 'gtksourceview4')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 url="https://geode.kawateam.dev/"
 source=(https://archives.kawateam.dev/geode-gem/geode_gem-0.12.0.tar.gz)
 sha256sums=('3145b1da96e2f77fc93d646f44e4d541a0bf518bb8efc3fb9dabf8d88e65d61a')
