@@ -1,10 +1,11 @@
 # Maintainer: zt <zt@zt64.dev>
 # Maintainer: cookie <kyliepc@proton.me>
 _pkgname=Vesktop
+_name=vesktop
 pkgname=vesktop-electron
 pkgdesc="An Electron-based Discord app with Vencord & improved Linux support using system provided electron. Unsupported"
 pkgver=1.5.3
-pkgrel=2
+pkgrel=3
 
 arch=("x86_64" "aarch64")
 url="https://github.com/Vencord/Vesktop"
@@ -24,7 +25,7 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/Vencord/Vesktop/archive/v$
 
 sha256sums=('615ed9275a03974a0c6486c0095cfcd0af246363a4f62ec0bdc985c763cc6334'
             'c7845033716d7fdec2ea1daf8c3575b504bc6a5c19c702e3722a0e6237ae571f'
-            '4a790359a465979dbf3b5d815ed0d5f3f8a381a5ae08e1b359cee40dbd81d2ad'
+            '58c61ef14e5eaefe7207a6b66b065973a6002a2ae1d0fb9fd8ec2d2c2b198607'
             '122b17ce996318e533e6f2ab1c9b2961b39c3eba271c9b40f10c0da5dd738baa')
 
 build() {
@@ -45,16 +46,16 @@ package() {
   cd "$srcdir/$_pkgname-$pkgver"
 
   # Create necessary directories
-  install -d "$pkgdir/usr/lib/$pkgname"
+  install -d "$pkgdir/usr/lib/$_name"
   install -d "$pkgdir/usr/bin"
 
-  cp "dist/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname"
+  cp "dist/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$_name"
 
-  install -Dm 644 "../vesktop.desktop" "$pkgdir/usr/share/applications/vesktop.desktop" # Install desktop entry
-  install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE" # Install license
+  install -Dm644 "../vesktop.desktop" "$pkgdir/usr/share/applications/vesktop.desktop" # Install desktop entry
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE" # Install license
   for _icons in 1024 512 256 128 64 48 32 16; do
-    install -Dm644 "dist/.icon-set/icon_${_icons}.png" "$pkgdir/usr/share/icons/hicolor/${_icons}x${_icons}/apps/$pkgname.png"
+    install -Dm644 "dist/.icon-set/icon_${_icons}.png" "$pkgdir/usr/share/icons/hicolor/${_icons}x${_icons}/apps/$_name.png"
   done # Install icons
 
-  install -Dm755 "../vesktop.sh" "$pkgdir/usr/bin/$pkgname" # Start script
+  install -Dm755 "../vesktop.sh" "$pkgdir/usr/bin/$_name" # Start script
 }
