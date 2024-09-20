@@ -7,18 +7,18 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.4.0.development.snapshot.006.r1256.g910c2aa07
+pkgver=1.4.0.development.snapshot.006.r1447.g71010603d
 pkgrel=1
 epoch=1
 pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
 arch=('x86_64')
 url='https://www.mumble.info'
 license=('BSD')
-depends=('gcc-libs' 'glibc' 'qt5-base')
+depends=('gcc-libs' 'glibc' 'qt6-base')
 makedepends=('alsa-lib' 'avahi' 'boost' 'cmake' 'git' 'hicolor-icon-theme'
              'jack' 'lib32-gcc-libs' 'libpulse' 'libsndfile' 'libspeechd'
              'libx11' 'libxi' 'mesa' 'microsoft-gsl' 'nlohmann-json' 'openssl'
-             'opus' 'poco' 'protobuf' 'python' 'qt5-svg' 'qt5-tools' 'rnnoise'
+             'opus' 'poco' 'protobuf' 'python' 'qt6-svg' 'qt6-tools' 'rnnoise'
              'speech-dispatcher' 'speexdsp' 'xdg-utils')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -61,7 +61,6 @@ build() {
     -B build-client \
     -S "$_pkgname" \
     -DCMAKE_BUILD_TYPE='None' \
-    -DCMAKE_CXX_STANDARD=17 \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -Dwarnings-as-errors='OFF' \
     -Dclient='ON' \
@@ -92,7 +91,7 @@ package() {
     'openssl' 'libcrypto.so' 'libssl.so'
     'opus' 'libopus.so'
     'poco'
-    'qt5-svg'
+    'qt6-svg'
     'rnnoise'
     'speexdsp' 'libspeexdsp.so'
     'xdg-utils'
