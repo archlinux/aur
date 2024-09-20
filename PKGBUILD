@@ -34,7 +34,7 @@ if((!DISABLE_AUTOCONFIG)); then
   DISABLE_CHOLMOD=0
   DISABLE_NETCFD=0
   DISABLE_ROCALUTION=1
-  DISABLE_OCC=1
+  DISABLE_OCC=0
   DISABLE_VTK=0
   DISABLE_MPI=0
   DISABLE_INTERNAL_UMFPACK=1
@@ -137,7 +137,7 @@ _CMAKE_FLAGS+=(
                                   )
 pkgname=elmerfem-git
 _pkgname=elmerfem
-pkgver=9.0.r3143.g583175bfd
+pkgver=9.0.r3173.g73966f846
 pkgrel=1
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
@@ -166,6 +166,7 @@ fi
 ((!DISABLE_MP))              && depends+=('openmp')
 ((!DISABLE_PARAVIEW))        && depends+=('paraview')
 ((!DISABLE_OCC))             && depends+=('opencascade')
+((!DISABLE_ROCALUTION))      && depends+=('rocalution')
 #VTK deps
 ((!DISABLE_VTK))             && depends+=('vtk' 'tbb' 'freetype2' 'qt5-base' 'fmt' 'glew' 'pugixml' \
                                             'libxcursor' 'mariadb-libs' 'postgresql-libs' 'jdk11-openjdk')
@@ -173,7 +174,7 @@ fi
                                         'liblas' 'adios2' 'libharu' 'cgns' 'eigen' 'utf8cpp' 'fast_float')
 # AUR
 ((!DISABLE_MMG))             && depends+=('mmg')
-((!DISABLE_TRILINOS || (!DISABLE_ZOLTAN && USE_SYSTEM_ZOLTAN) ))        && depends+=('trilinos')
+((!DISABLE_TRILINOS || (!DISABLE_ZOLTAN && DISABLE_INTERNAL_ZOLTAN) ))        && depends+=('trilinos')
 ((!DISABLE_MUMPS))           && depends+=('mumps')
 ((!DISABLE_HYPRE))           && depends+=('hypre')
 
@@ -181,16 +182,22 @@ options=(!emptydirs !staticlibs)
 ((ENABLE_DEBUG))      && options+=(debug !strip)
 
 source=("git+https://github.com/ElmerCSC/elmerfem.git${_fragment}"
-        "$_pkgname.desktop")
+        "$_pkgname.desktop"
+        'occ_v7.8.patch::https://github.com/ElmerCSC/elmerfem/pull/577/commits/14c5a3727c697c8814d28f79053fdd773b6495d6.patch')
 
 sha256sums=('SKIP'
-            'f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca')
+            'f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca'
+            'c1204a42bb480537f868ede88db64c33dbeacce687108e4088810628024d5aed')
 
 pkgver() {
   git -C "${srcdir}/${_pkgname}" describe --long --tag| sed -r 's/^release-//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
+  cd "${srcdir}"/$_pkgname
+  for patch in "${srcdir}"/*.patch
+    do msg2 "Apply: ${patch##*/}"; git apply -v "$patch"
+  done
   if((!DISABLE_INTERNAL_ZOLTAN && !DISABLE_ZOLTAN)); then
     cd "$srcdir/$_pkgname"
     git submodule update --init --recursive
