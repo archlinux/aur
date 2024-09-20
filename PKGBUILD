@@ -15,7 +15,7 @@ if :; then
   _jsch_oldver='0.2.13' # default crypto settings will cause a lot of connectivity issues from 1.5.4 to this version
   if :; then
     _JVM='/usr/lib/jvm/java-17-openjdk';  _JRE='jdk17-openjdk' # needed for all functionality of JSCH-0.2.0
-    _jsch_pkgver='0.2.16'
+    _jsch_pkgver='0.2.20'
     _jsch_srcdir="${_jsch_libname}-${_jsch_libname}-${_jsch_pkgver}"
     #_jsch_srcdir="${_jsch_libname}-${_jsch_srcdir}"
     _source+=("https://github.com/mwiede/jsch/archive/refs/tags/${_jsch_libname}-${_jsch_pkgver}.tar.gz")
@@ -53,7 +53,8 @@ pkgname='mirthconnect'
 #pkgver='4.4.0.b2948'
 #pkgver='4.4.1.b310'
 #pkgver='4.4.2.b326'
-pkgver='4.5.0.b3012'
+#pkgver='4.5.0.b3012'
+pkgver='4.5.1.b332'
 pkgrel='1'
 pkgdesc='hl7 connector by Nextgen'
 arch=('any')
@@ -67,6 +68,7 @@ license=(
 depends=("${_JRE}" 'bash' 'java-runtime')
 optdepends+=(
   {mariadb,postgresql}': alternate database to derby'
+  'mirth-connect-administrator-launcher: client access'
 )
 backup=(
   "${_mirthhome#/}/conf/dbdrivers.xml"
@@ -84,18 +86,18 @@ source=(
   '0000b-mirth-disable-SSLv2Hello.patch'
   "${_source[@]}"
 )
-md5sums=('72b2f7a01e81192f6b00fd41b5fa6f3b'
+md5sums=('9102ba7bc1ef9fb32067eb890524da84'
          '426de9435b21e90df7ae044510938270'
          'f1b18ae896b93be65a2e9b276f12c16f'
-         '6cbd1f6b2e61415493adb0ee30722d33'
+         '65ff6f4ab8d269de92995abcfab610ac'
          'b9e1b8f9395622ba548d7fd07cfd7c26'
-         '34d1fb747e51f3db2c433e4d84eca3ee')
-sha256sums=('4e3d91a68550cb30224bbdf93c3ae37417d7999c968f73db13721529c0e1823d'
+         '8486b0728b17e7d181128e4f848abc9b')
+sha256sums=('aa193fb8fa284ba35cd7bd420e041d4c049b8f39420b853ae0c87635bcfcdec6'
             '4dc37b7ed9db5c9fcd74f45cd6197f6b631d74d3a30022bda6fda1c5900b7099'
             '254c858572a4949c09726859d3f790d7bee535b8dbea184e4f6679d3b7c3b269'
-            'e507ebf60a694578004465d8582cc3be8fc77c86af9cee6f6f33dcd899ea4786'
+            'a9a4bcdc66a73779faef3ba1373e67b53bb84056981ae0604cd14ff5c3e58056'
             'f754da4581b5e390e13fc407ab9fc4cdc7f139585081929626be8569dae99ad9'
-            'c76bae24317bc8798923a8042c3ce97291e99035eba9aac1a5ccf0cb92953d6a')
+            'f5f09a03f21fa8595cce776b024481787f77a80239f7daf7eca41523309fef8c')
 
 source+=(
   '0000-jsch-disable-md5-3des-cbc-dss-arcfour.patch'
@@ -119,6 +121,7 @@ _jsch_prepare() {
   if [ "$(vercmp "${_jsch_pkgver}" "0.2.0")" -ge 0 ]; then
     # pushd "${srcdir}"; cp -pr "${_jsch_srcdir}" 'a'; ln -s "${_jsch_srcdir}" 'b'; popd; false
     # diff -pNaru5 'a' 'b' > '0000-jsch-disable-enable-ssh-rsa.patch'
+    set +u; msg2 "Patch 0000-jsch-disable-enable-ssh-rsa.patch"; set -u
     patch -Nup1 -i "${srcdir}/0000-jsch-disable-enable-ssh-rsa.patch"
   fi
 

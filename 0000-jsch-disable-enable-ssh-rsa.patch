@@ -1,10 +1,10 @@
 diff -pNaru5 a/src/main/java/com/jcraft/jsch/JSch.java b/src/main/java/com/jcraft/jsch/JSch.java
---- a/src/main/java/com/jcraft/jsch/JSch.java	2023-12-19 11:07:03.000000000 -0500
-+++ b/src/main/java/com/jcraft/jsch/JSch.java	2023-12-20 16:09:35.468289484 -0500
-@@ -38,29 +38,29 @@ public class JSch {
-   public static final String VERSION = Version.getVersion();
+--- a/src/main/java/com/jcraft/jsch/JSch.java	2024-09-17 05:00:58.000000000 -0400
++++ b/src/main/java/com/jcraft/jsch/JSch.java	2024-09-20 16:19:15.371267775 -0400
+@@ -37,29 +37,29 @@ public class JSch {
  
    static Hashtable<String, String> config = new Hashtable<>();
+ 
    static {
      config.put("kex", Util.getSystemProperty("jsch.kex",
 -        "curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256"));
@@ -37,7 +37,7 @@ diff -pNaru5 a/src/main/java/com/jcraft/jsch/JSch.java b/src/main/java/com/jcraf
  
      config.put("lang.s2c", Util.getSystemProperty("jsch.lang", ""));
      config.put("lang.c2s", Util.getSystemProperty("jsch.lang", ""));
-@@ -224,11 +224,11 @@ public class JSch {
+@@ -228,11 +228,11 @@ public class JSch {
      config.put("HashKnownHosts", "no");
  
      config.put("PreferredAuthentications", Util.getSystemProperty("jsch.preferred_authentications",
