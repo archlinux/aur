@@ -2,7 +2,7 @@
 pkgname=fooyin-bin
 _pkgname=Fooyin
 _appname="org.${pkgname%-bin}.${pkgname%-bin}"
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A customisable music player"
 arch=('x86_64')
@@ -29,16 +29,17 @@ optdepends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-mantic_amd64.deb"
 )
-sha256sums=('695ee27cdd154f6e51ce9c710a224e91b7f188ae5ac02d4211b8c5e19b6f8ca8')
+sha256sums=('7a8f468510ddb663bbacc3f2b1067f8bd3349ad197ed391f2b17fe7d351cd992')
 build() {
     bsdtar -xf "${srcdir}/data."*
-    sed "s|${_appname}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    sed -i "s/${_appname}/${pkgname%-bin}/" -i "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/"*.so* -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/plugins/"*.so -t "${pkgdir}/usr/lib/${pkgname%-bin}/plugins"
-    for _icons in 16x16 22x22 32x32 48x48 64x64 128x128 256x256 512x512;do
+    _icon_sizes=(16x16 22x22 32x32 48x48 64x64 128x128 256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_appname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
