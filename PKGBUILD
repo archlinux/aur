@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat
 _pkgname=GhostChat
-pkgver=3.2.5
+pkgver=3.2.6
 _electronversion=32
 _nodeversion=20
 pkgrel=1
@@ -25,7 +25,7 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('ef403820827adf2f9ab4e656b7d8fea93972c0fb2592b190f1aa179d20ae622a'
+sha256sums=('db6459b971c49c4cbcda62716a126d9fcad82544373fe03fe4373b55375c771e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -60,7 +60,7 @@ build() {
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         fi
     } >> .npmrc
-    sed "s/out\/release\/\${version}/release/;s/\/\/ //;s/AppImage/dir/" -i electron-builder.config.cjs
+    sed -i "s/out\/release\/\${version}/release/;s/\/\/ //;s/AppImage/dir/" electron-builder.config.cjs
     cp public/icons/icon-512x125.png public/icons/icon-512x512.png
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
     NODE_ENV=development    pnpm install --no-lockfile
