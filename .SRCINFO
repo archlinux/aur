@@ -1,0 +1,27 @@
+pkgbase = mcpelauncher-appimage-cracked
+	pkgdesc = Minecraft Bedrock Launcher for Linux
+	pkgver = 1.0
+	pkgrel = 3
+	url = https://github.com/caffeinepyroxene/mcbe-launcher-noauth
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-only
+	license = MIT
+	makedepends = desktop-file-utils
+	optdepends = zenity: custom skin picker
+	provides = mcpelauncher-client
+	provides = mcpelauncher-ui
+	provides = mcpelauncher-appimage
+	conflicts = mcpelauncher-client
+	conflicts = mcpelauncher-ui
+	conflicts = mcpelauncher-appimage
+	options = !strip
+	source_x86_64 = mcpelauncher-x86_64-v1.0.AppImage::https://github.com/caffeinepyroxene/mcbe-launcher-noauth/releases/download/v1.0/NoAuth-x86_64.AppImage
+	sha512sums_x86_64 = 9eef43748bbcdb63c5cdf742326ed5ca334129cebcdef80bdcb98b2eebc5ad193091c621cdbfdf201da40e42010bd109346281755e76e7a9d1d38972479ab1ca
+	source_armv7h = mcpelauncher-armv7h-v1.0.AppImage::https://github.com/caffeinepyroxene/mcbe-launcher-noauth/releases/download/v1.0/NoAuth-Armhf.AppImage
+	sha512sums_armv7h = 6dbd5222b7b4b808afbff0c8b69488673737f5c6127e09d5875f3924f7e4527238d29e6b2eba539d8727cc09d434ebc19bd12f7736ce638e3ff0335fdd265f06
+	source_aarch64 = mcpelauncher-aarch64-v1.0.AppImage::https://github.com/caffeinepyroxene/mcbe-launcher-noauth/releases/download/v1.0/NoAuth-Arm64.AppImage
+	sha512sums_aarch64 = 4f49ab620b7b630a48350b47ac504aff0232cc2dffada9265a0fcad9e3dd0f3e7d35743c82304f9e9debe37d5eae1fe188cc44de6975e52fa546911efc052b02
+
+pkgname = mcpelauncher-appimage-cracked
