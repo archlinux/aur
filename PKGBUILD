@@ -2,9 +2,9 @@
 
 pkgname=wasabi-wallet-bin
 _pkgname=wasabi-wallet
-pkgver=2.1.0.0
-_pkgtag=2.1.0.0
-_pkgver=2.1.0
+pkgver=2.2.0.0
+_pkgtag=2.2.0.0
+_pkgver=2.2.0.0
 pkgrel=1
 pkgdesc="Open-source, non-custodial, privacy-focused Bitcoin wallet for desktop"
 arch=('x86_64')
@@ -12,6 +12,7 @@ options=(!strip staticlibs)
 url="https://wasabiwallet.io/"
 license=('MIT')
 depends=('curl' 'fontconfig' 'hicolor-icon-theme')
+makedepends=('zstd')
 provides=('wasabi-wallet')
 conflicts=('wasabi-wallet')
 source=(
@@ -19,18 +20,19 @@ source=(
     "https://github.com/zkSNACKs/WalletWasabi/releases/download/v${_pkgtag}/Wasabi-${_pkgver}.deb.asc"
     "https://raw.githubusercontent.com/zkSNACKs/WalletWasabi/v${_pkgtag}/LICENSE.md"
 )
-sha256sums=('a65a80f5095064f5099d547eb6b983463fad47a69055c3e070111f3892d113cd'
+sha256sums=('4a16aaf0d726e2a58df5ca57a56970ba5509ebcfbfbcf9a9bfdb788870ff9687'
             'SKIP'
             '4ae416e0372ca4b8f0dd46353edc9d46f4125aa4ac00b29f913642a0c8a031a4')
 # Run curl https://raw.githubusercontent.com/zkSNACKs/WalletWasabi/master/PGP.txt | gpg --import
 validpgpkeys=('6FB3872B5D42292F59920797856348328949861E')
 
 package() {
-    tar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
+    tar --zstd -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
     chown -R root:root "${pkgdir}/usr/"
     chmod -R go-w "${pkgdir}/usr/"
 
     install -d -m755 "${pkgdir}/opt/"
+    chmod -R u+x "${pkgdir}/usr/local/bin/wasabiwallet/"
     cp -r "${pkgdir}/usr/local/bin/wasabiwallet/" "${pkgdir}/opt/${_pkgname}"
     rm -r "${pkgdir}/usr/local/"
 
