@@ -1,0 +1,12 @@
+pkgbase = hbd
+	pkgdesc = A command-line tool to remember birthdays easily!
+	pkgver = 0.1.0
+	pkgrel = 0
+	url = https://github.com/tkr-sh/hbd
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	source = hbd::git+https://github.com/tkr-sh/hbd.git
+	sha256sums = SKIP
+
+pkgname = hbd
