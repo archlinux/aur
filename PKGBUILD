@@ -11,7 +11,7 @@ url="https://github.com/carlospolop/PEASS-ng"
 license=(MIT)
 source=("LICENSE::https://raw.githubusercontent.com/carlospolop/PEASS-ng/master/LICENSE")
 makedepends=('git' 'github-cli')
-sha512sums=('4b7e5df3047455f4ecd4e81af40f12f243f80ef66d460dd15c8ed41be0929d344113d0ce2862b6fd51ae096a2e4da11af2797da4b1acbf9f4308653bc4211da4')
+sha512sums=('1f9d4f39fad4f77c6952653cd2689a18ee70ae32d3b8dcecc4dc53cb2a5bd9a51209985dd759fc316cb87040ae3f77a0f31b887f9ae97830f4090b1d7d4ca9c5')
 conflicts=('peass')
 provides=('peass-ng')
 
