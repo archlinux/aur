@@ -2,8 +2,8 @@
 
 pkgname=abracadabra
 _appname=AbracaDABra
-pkgver=2.5.91
-pkgrel=2
+pkgver=2.5.92
+pkgrel=1
 pkgdesc="Abraca DAB radio: DAB/DAB+ Software Defined Radio (SDR)"
 arch=("x86_64" "aarch64")
 url="https://github.com/KejPi/${_appname}"
@@ -18,11 +18,11 @@ optdepends=("airspy: support for AirSpy devices"
 	    "soapyplutosdr: Soapy SDR plugin for Pluto SDR" 
 	    "soapyrtlsdr: Soapy SDR plugin for RTLSDR" 
 	    "soapysdrplay: Soapy SDR plugin for SDR Play")
-makedepends=("cmake" "gcc" "qt6-tools" "qt6-translations")
+makedepends=("cmake" "gcc" "qt6-tools" "qt6-translations" "qcustomplot")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${_appname}-${pkgver}.tar.gz::https://github.com/KejPi/${_appname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("75440e2d1fd81b0d6fbe82fb948f6c00741a3dd5f8c0bbcabb01ebf93e310f9d")
+sha256sums=("62f9dafe4b7d3d5f6f9364c2d39866c63793f6022d326d89353c7882259da95f")
 
 build() {
   mkdir -p "${srcdir}/${_appname}-${pkgver}/build"
