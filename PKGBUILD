@@ -5,7 +5,7 @@
 _pkgname='hacki'
 pkgname=${_pkgname}
 _pkgreponame='Hacki'
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc='A Hacker News reader.'
 url='https://github.com/Livinglist/Hacki'
@@ -18,10 +18,10 @@ depends=(
 	'libsecret')
 makedepends=('fvm' 'git' 'patchelf')
 source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('01f1ea5f4a3dbc9506d67f4b5289e1e56f144a1ce9939a28674386b29983aff1')
+sha256sums=('8fd54c9c40fd872753f8e24d03ccf5dabc2e07bf24fd0702d173a437cea575ab')
 
 _srcdir="${_pkgreponame}"
-_engine_version=3.24.2
+_engine_version=3.24.3
 
 build() {
 	export FVM_CACHE_PATH="$SRCDEST/fvm-cache"
