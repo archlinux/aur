@@ -5,7 +5,7 @@ _pkgbase=serve
 pkgname=nodejs-$_pkgbase
 pkgdesc='Quick HTTP server'
 pkgver=14.2.3
-pkgrel=2
+pkgrel=3
 arch=('any')
 url='https://github.com/zeit/serve'
 license=('MIT')
@@ -17,6 +17,9 @@ noextract=($_pkgbase-$pkgver.tgz)
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$_pkgbase-$pkgver.tgz
   rm -fr "$pkgdir"/usr/etc
+
+  mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
+  ln -s /usr/lib/node_modules/serve/license.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.md
 
   # Fix npm derp
   find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
