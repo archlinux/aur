@@ -2,7 +2,7 @@
 
 pkgname='gui-for-clash'
 _pkgname='GUI.for.Clash'
-pkgver='1.8.4'
+pkgver='1.8.5'
 pkgrel='1'
 pkgdesc='GUI for Clash'
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
     "${pkgname}.install"
 )
 
-sha256sums=('e138d840695fa15628c823f580d70c5357865528f8eb3ac3df13c5b56b37f0ea'
+sha256sums=('163ebec2f9c2b46cfd7897fc9073b9a5f15574724e4df8b2cad61da3e98a3944'
             'aec5e2cc7c4fe3885fc57258f52100de8716fa8b93c8e9e0d62cc976c78f0502'
             '8933f6159cb5de8bd623eefc0a82ebeab50c9633a4fee87ac2f30054938ff8a4'
             '9f7062c9f445d26b677bb875e17b832845856882d41f53d83789960c33539ee6')
