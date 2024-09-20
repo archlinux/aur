@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rsvg
-_pkgver=2.6.0
+_pkgver=2.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Render SVG Images into PDF, PNG, (Encapsulated) PostScript, or Bitmap Arrays"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -33,8 +33,8 @@ optdepends=(
   r-webp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0936b7aab088f55d727d0827a53e89d0')
-b2sums=('46414dfeedfb308963e64c9c645d053cfa1e71592d548c1d924fdf7051b40fd6e7a0e219bcec7e5184d22648329cb7bdff051a6cb5d1bc5859a7af4230e60e5f')
+md5sums=('e40b6b3bef8c9a9bc5356e3b4b6bebda')
+b2sums=('219c7b7c89edf77747fadaa946533b05abf962c9bfeb0a1033a16e9816241865e58457e13285e45e7a7914c591652cfa11d7ebbbd96a00b0beeb3e4409892f7f')
 
 build() {
   mkdir build
