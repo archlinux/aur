@@ -6,9 +6,8 @@ pkgbase = pypy-setuptools
 	url = https://setuptools.pypa.io
 	arch = any
 	license = MIT
-	makedepends = pypy3
+	depends = pypy
 	source = https://pypi.org/packages/source/s/setuptools/setuptools-75.1.0.tar.gz
 	sha512sums = 5003e81c7988dd522cfba233ac643ade9a1ff074a13182a81da7fe3f40565b97dd2696c96b8a0694fcd3417e527e2cf6d6ea5e21d29ff927c1ab5916a2607239
 
-pkgname = pypy3-setuptools
-	depends = pypy3
+pkgname = pypy-setuptools
