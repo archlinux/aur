@@ -1,6 +1,6 @@
 pkgbase = arch-os-manager
 	pkgdesc = Arch OS System Manager
-	pkgver = r75.10ab906
+	pkgver = r76.db8e05d
 	pkgrel = 1
 	url = https://github.com/murkl/arch-os-manager
 	arch = any
@@ -17,6 +17,7 @@ pkgbase = arch-os-manager
 	optdepends = downgrade: Add support for donwgrade system packages
 	optdepends = meld: Add support for merge pacdiff configurations
 	optdepends = xdg-utils: Add support for open news in browser
+	optdepends = gnome-shell-extensions: Add support for GNOME Extensions
 	source = arch-os.desktop
 	source = arch-os-manager::git+https://github.com/murkl/arch-os-manager.git
 	sha256sums = SKIP
