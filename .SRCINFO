@@ -1,0 +1,21 @@
+pkgbase = tinybpt-git
+	pkgdesc = Tinybpt (Tiny Buildroot Packaging Tool) 是一个 buildroot 的包管理工具，主要处理 buildroot 的包依赖关系，提供包的安装、卸载等功能。
+	pkgver = r37.2fd3aac
+	pkgrel = 1
+	url = https://gitee.com/tinylab/buildroot-toolkit
+	arch = aarch64
+	arch = riscv64
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = bash
+	depends = gcc-libs
+	depends = glibc
+	provides = tinybpt
+	conflicts = tinybpt
+	source = tinybpt-git::git+https://gitee.com/tinylab/buildroot-toolkit.git
+	sha256sums = SKIP
+
+pkgname = tinybpt-git

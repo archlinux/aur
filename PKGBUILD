@@ -1,0 +1,64 @@
+# Maintainer: taotieren <admin@taotieren.com>
+
+pkgname=tinybpt-git
+pkgver=r37.2fd3aac
+pkgrel=1
+epoch=
+pkgdesc="Tinybpt (Tiny Buildroot Packaging Tool) 是一个 buildroot 的包管理工具，主要处理 buildroot 的包依赖关系，提供包的安装、卸载等功能。"
+arch=(
+    'aarch64'
+    'riscv64'
+    'x86_64')
+url="https://gitee.com/tinylab/buildroot-toolkit"
+license=(GPL-2.0-or-later)
+groups=()
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
+depends=(
+    bash
+    gcc-libs
+    glibc
+    #     nlohmann-json
+)
+makedepends=(
+    git
+    cmake
+    ninja)
+optdepends=()
+checkdepends=()
+options=()
+source=(${pkgname}::git+$url.git)
+noextract=()
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    (
+        set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
+}
+
+prepare() {
+    git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}"
+    git remote add petaluz https://gitee.com/petalzu/buildroot-toolkit.git
+    git fetch --all
+    git checkout petaluz/master
+}
+
+build() {
+    # see：https://wiki.archlinux.org/title/CMake_package_guidelines
+    cmake -S ${pkgname} \
+        -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -B build \
+        -G Ninja
+
+    ninja -C build
+}
+
+package() {
+    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/build install
+}
