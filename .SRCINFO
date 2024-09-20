@@ -1,7 +1,7 @@
 pkgbase = zmkbatx
 	pkgdesc = Tool for peripheral battery monitoring for ZMK split keyboards over BLE
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = MIT
 	depends = simplebluez
