@@ -1,7 +1,7 @@
 # Maintainer: CsiPA0723 <csizipeti0723@gmail.com>
 _pkgname=weylus
 pkgname="$_pkgname-community-git"
-pkgver=2024.8.10.r0.gec521f7
+pkgver=be2ca4e
 pkgrel=1
 pkgdesc="Use your tablet as graphic tablet/touch screen on your computer."
 arch=("x86_64")
@@ -25,7 +25,7 @@ prepare() {
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --always --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

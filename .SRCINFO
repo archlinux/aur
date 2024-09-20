@@ -1,6 +1,6 @@
 pkgbase = weylus-community-git
 	pkgdesc = Use your tablet as graphic tablet/touch screen on your computer.
-	pkgver = 2024.8.10.r0.gec521f7
+	pkgver = be2ca4e
 	pkgrel = 1
 	url = https://github.com/electronstudio/WeylusCommunityEdition
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = weylus-community-git
 	depends = dbus
 	depends = gst-plugins-base-libs
 	optdepends = gst-plugin-pipewire: Wayland support
-	provides = weylus=2024.8.10
+	provides = weylus=be2ca4e
 	conflicts = weylus
 	conflicts = weylus-bin
 	options = !debug
