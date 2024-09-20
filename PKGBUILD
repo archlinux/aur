@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.2.0.r373.g5e12303b
+pkgver=0.2.0.r421.gc3d58242
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -73,6 +73,10 @@ prepare() {
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
 	git config submodule.externals/zydis.url ../zydis
 	git -c protocol.file.allow=always submodule update
+	# https://github.com/shadps4-emu/shadPS4/issues/568#issuecomment-2363862313
+	sed -i 's/SDL_TRUE/true/g;s/SDL_FALSE/false/g;s/SDL_bool/bool/g' \
+		externals/dear_imgui/backends/*.cpp \
+		src/imgui/renderer/imgui_impl_sdl3.cpp
 }
 
 build() {
