@@ -1,16 +1,16 @@
 pkgbase = tosu
 	pkgdesc = Eponymous software for reading osu! memory
-	pkgver = 3.2.2
-	pkgrel = 3
+	pkgver = 3.3.0
+	pkgrel = 1
 	url = https://github.com/kotrikd/tosu
 	arch = x86_64
 	license = LGPL3
 	provides = tosu
 	conflicts = tosu
 	options = !strip
-	source = https://github.com/kotrikd/tosu/releases/download/v3.2.2/tosu-linux-v3.2.2.zip
+	source = https://github.com/kotrikd/tosu/releases/download/v3.3.0/tosu-linux-v3.3.0.zip
 	source = tosu-bin.sh
-	sha256sums = 5b0ada418eade8da0ea90ea2df19102944322794c884277de635d4702383aa7e
+	sha256sums = 53b700176846fbfb60b3db0ff6342869a27f73da0fc176c824bc3a87943b6b16
 	sha256sums = 16e77f6a192094be77ce1ecc9322e7296b57532851672d15f07bc82132cdfc21
 
 pkgname = tosu
