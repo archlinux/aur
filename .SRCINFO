@@ -1,0 +1,18 @@
+pkgbase = emilua-this-thread
+	pkgdesc = Access C++'s this_thread from Lua
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/emilua/this-thread
+	arch = i686
+	arch = x86_64
+	license = boost
+	license = mit
+	makedepends = git
+	makedepends = meson
+	makedepends = boost
+	makedepends = asciidoctor
+	depends = emilua
+	source = emilua-this-thread::git+https://gitlab.com/emilua/this-thread.git#tag=v1.0.0
+	md5sums = SKIP
+
+pkgname = emilua-this-thread
