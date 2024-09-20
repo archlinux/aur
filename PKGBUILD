@@ -1,7 +1,7 @@
 # Maintainer: Alex Butler <alexheretic@gmail.com>
 pkgname=aurto
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An AUR tool for managing an auto-updating local 'aurto' package repository using aurutils."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/alexheretic/aurto"
@@ -11,7 +11,6 @@ depends=('aurutils'
          'systemd'
          'pacutils'
          'pacman-contrib'
-         'curl'
          'less'
          'sudo'
          'zstd'
