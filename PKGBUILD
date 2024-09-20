@@ -2,10 +2,10 @@
 
 pkgname=miru-app-git
 _gitname=${pkgname%-git}
-pkgver=20240416.8599d0d
-pkgrel=3
+pkgver=20240921.dabe4de
+pkgrel=1
 pkgdesc="🎉 A versatile application that is free, open-source, and supports extension sources for videos, comics, and novels, available on Android, Windows, and Web platforms. "
-url=https://github.com/miru-project/miru-app.git
+url=https://github.com/benbensy/miru-app.git
 arch=("x86_64")
 depends=(
     "gtk3"
@@ -23,14 +23,12 @@ provides=("${pkgname%-git}")
 license=("GPLv3")
 source=(
     "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.16.8-stable.tar.xz"
-    "git+https://github.com/miru-project/miru-app#branch=dev"
-    "modify-data-directory.patch"
-    "miru.png::https://github.com/miru-project/miru-app/blob/dev/assets/icon/logo.png?raw=true"
+    "git+https://github.com/benbensy/miru-app.git"
+    "miru.png::https://github.com/benbensy/miru-app/blob/dev/assets/icon/logo.png?raw=true"
 )
 sha256sums=(
     '7cb12032cf615a92a7bc9042100f3f2af62df7df3ca3bee27f4b153fe218b239'
     'SKIP'
-    '890b1615cf114dd829c3f0a38c170239dcf0a19ac99462d5d3e0512f98461967'
     'df41ad6c2e544cfb066162b8ba1ea1d6b3fdc5a058233a7c0300d87f092d5f08'
 )
 pkgver() {
@@ -41,7 +39,6 @@ pkgver() {
 prepare() {
     cd "$_gitname"
     git submodule update --init --recursive
-    git apply ../modify-data-directory.patch
 }
 
 build() {
