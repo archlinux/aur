@@ -1,0 +1,14 @@
+pkgbase = dssd
+	pkgdesc = Dead simple freedesktop SecretService implementation
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ylxdzsw/dssd
+	arch = any
+	license = MIT
+	makedepends = cargo
+	depends = dbus
+	provides = org.freedesktop.secrets
+	source = dssd-0.3.0.tar.gz::https://github.com/ylxdzsw/dssd/archive/v0.3.0.tar.gz
+	sha512sums = 16fa35e5c31dbcb02e6e308adaeebfe82c1aa5e88dcbcd18dbc4bebd00ca88adcfeb700be3bfbafdaa39b160eff0b248defc54776b5087c5f2d4cafa677519be
+
+pkgname = dssd
