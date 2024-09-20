@@ -3,7 +3,7 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=libbassopus
-pkgver=2.4.2.4
+pkgver=2.4.3
 pkgrel=1
 pkgdesc='BASS audio library Opus plugin'
 arch=(i686 x86_64 armv6h armv7h aarch64)
@@ -11,7 +11,7 @@ url='https://www.un4seen.com/'
 license=(custom)
 depends=(alsa-lib libbass)
 source=("$pkgname-$pkgver.zip::http://www.un4seen.com/files/bassopus24-linux.zip")
-sha256sums=('87816aeaf76d39309ac5953e32cc8549ea1ec359e18b2de207659e84b552319a')
+sha256sums=('60ac3ab41caa7c2c57c8e9e0eb6bf49dd7b3dd38b75d6e93a6e07bdeab401005')
 
 prepare() {
   grep Lic "$srcdir/bassopus.txt" -A14 > LICENSE
