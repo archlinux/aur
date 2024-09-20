@@ -1,7 +1,7 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgbase=rubymine-eap
 pkgname=(rubymine-eap rubymine-eap-jre)
-pkgver=243.12818.50
+pkgver=243.15521.28
 _pkgname=RubyMine
 _pkgver=2024.3
 pkgrel=1
@@ -16,7 +16,7 @@ install=rubymine.install
 source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
         rubymine-eap.desktop
         rubymine.install)
-sha256sums=('e85c809af0d40e0490b9a9532728da36feac2a9d7e9d0c5337594ef74bc6470e'
+sha256sums=('00b4a0cdd621f9853e12c9da0ff387eae14d546c973f3de1b1f54d17a66c724c'
             '02b32d973da26ef7d61e4c291fff71229729b203661dc75cc947c8098cb8e660'
             'fe42e281cdcaca5008d3f254a16974504c9271407800d0234ce06476ea9e3bdd')
 
