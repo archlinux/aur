@@ -1,7 +1,7 @@
 # Maintainer: Rafael Just <rafaeljust@proton.me>
 pkgname=lightly-fork-git 
 pkgver=r2248.da15fb03
-pkgrel=1
+pkgrel=2
 pkgdesc="Bali10050's fork of Lightly with a different approach from boehs, with the assumption that Luwx won't ever resume this project. Has plasma 6 support."
 arch=('x86_64')
 url="https://github.com/Bali10050/Lightly"
