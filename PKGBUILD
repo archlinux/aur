@@ -3,7 +3,7 @@
 
 _crate="youtube-tui"
 pkgname="youtube-tui"
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='An aesthetically pleasing YouTube TUI written in Rust'
 url='https://siriusmart.github.io/youtube-tui'
@@ -14,22 +14,22 @@ makedepends=('cargo')
 optdepends=('konsole: Default terminal emulator'
             'yt-dlp: Default YouTube downloader')
 
-source=("$_crate-0.8.0.tar.gz::https://crates.io/api/v1/crates/youtube-tui/0.8.0/download")
-sha512sums=('c6d98b1f83e07a5e5c6877fcc9e34ab076ac8e63183ad6bafdbc5e2d9545873143e2c3c9d2e0c0568fd640b8254fd337b6a96b47ee75dd2b60b1952fc99bf183')
+source=("$_crate-0.8.1.tar.gz::https://crates.io/api/v1/crates/youtube-tui/0.8.1/download")
+sha512sums=('d203cb4c691e3834e1e65e7ad23c89f397bef5dcecce09c58f5bcd5ff894d4f16b2c82d0b652898556d4e54a38d57e63ab183ae26b66b57d90be668b71f5148d')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
 
 prepare() {
-	cd "$srcdir/$_crate-0.8.0"
+	cd "$srcdir/$_crate-0.8.1"
 
 	export RUSTUP_TOOLCHAIN=stable
 
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "$srcdir/$_crate-0.8.0"
+	cd "$srcdir/$_crate-0.8.1"
 	
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
@@ -43,6 +43,6 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_crate-0.8.0"
+	cd "$srcdir/$_crate-0.8.1"
 	install -Dm755 "target/release/youtube-tui" -t "$pkgdir/usr/bin"
 }
