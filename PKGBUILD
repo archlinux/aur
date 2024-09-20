@@ -4,8 +4,8 @@
 
 _target=riscv-none-elf
 pkgname=$_target-gcc
-pkgver=14.1.0
-pkgrel=2
+pkgver=14.2.0
+pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for RISC-V (bare-metal) target'
 arch=(x86_64)
 url='https://gcc.gnu.org/'
@@ -17,8 +17,8 @@ options=(!emptydirs !lto !strip)
 conflicts=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig})
-sha512sums=('e9e224f2b26646fcf038d28dfa08b94c623bc57941f99894a321d01c600f7c68aff6b8837fd25e73e540de1f8de5606e98694a62cdcdfb525ce768b3ef6879ea'
-            'SKIP')
+sha512sums=('932bdef0cda94bacedf452ab17f103c0cb511ff2cec55e9112fc0328cbf1d803b42595728ea7b200e0a057c03e85626f937012e49a7515bc5dd256b2bf4bc396'
+'SKIP')
 validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06  # Jakub Jelinek <jakub@redhat.com>
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
               13975A70E63C361C73AE69EF6EEB81F8981C74C7) # Richard Guenther <richard.guenther@gmail.com>
@@ -78,13 +78,13 @@ build() {
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   cd "$srcdir"/build-gcc
-  export CFLAGS_FOR_TARGET="-g -Os -pipe"
-  export CXXFLAGS_FOR_TARGET="-g -Os -pipe"
+  export CFLAGS_FOR_TARGET="-g -Os -pipe -ffunction-sections -fdata-sections"
+  export CXXFLAGS_FOR_TARGET="-g -Os -pipe -ffunction-sections -fdata-sections"
   _build_gcc
 
   cd "$srcdir"/build-gcc-nano
-  export CFLAGS_FOR_TARGET="-g -Oz -pipe"
-  export CXXFLAGS_FOR_TARGET="-g -Oz -pipe -fno-exceptions"
+  export CFLAGS_FOR_TARGET="-g -Oz -pipe -ffunction-sections -fdata-sections"
+  export CXXFLAGS_FOR_TARGET="-g -Oz -pipe -fno-exceptions -ffunction-sections -fdata-sections"
   _build_gcc
 }
 
