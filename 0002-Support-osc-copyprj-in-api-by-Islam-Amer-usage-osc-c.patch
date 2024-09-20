@@ -13,7 +13,7 @@ Subject: [PATCH] Support 'osc copyprj' in api by Islam Amer usage: osc copyprj
  2 files changed, 80 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index aa04934c7ce424121580614284d7238e986f92d9..3e894c2f283daccf31fda010f936b4ca0812b600 100644
+index 987e25e91414aca44372e030f287f12d5bbd8b52..7dae883f95d7a351df0ee3f80c7f3cb3fce6c1cf 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
 @@ -2113,6 +2113,58 @@ class Osc(cmdln.Cmdln):
@@ -76,7 +76,7 @@ index aa04934c7ce424121580614284d7238e986f92d9..3e894c2f283daccf31fda010f936b4ca
  
      @cmdln.option('-m', '--message', metavar='TEXT',
 diff --git a/osc/core.py b/osc/core.py
-index cf09ad4f9588715f1bd8d3f69e9f5d6b4913fb69..e7f374e1530575f2f677aedb81d7dfb2eed99ebe 100644
+index 297a87412dfc683882a4c32924f374e752bc54c5..ab1e0a62ffa34d12ff72de4adc01125bc0e4d538 100644
 --- a/osc/core.py
 +++ b/osc/core.py
 @@ -3798,6 +3798,34 @@ def copy_pac(

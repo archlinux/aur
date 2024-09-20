@@ -9,7 +9,7 @@ Subject: [PATCH] Add -p to copyprj to enable copying of prjconf
  2 files changed, 8 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index 21d01bc22496f3fce1fa49c9b45f276ebadc2e2d..d5a2b14b81704f669c537b4d27dd8b7c6fce7148 100644
+index a1c6bcf872bd6e5ed08c228a3e7c42f25c01fc44..c1eb31f62b45227a586821fffa9d285175f53821 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
 @@ -2121,6 +2121,8 @@ class Osc(cmdln.Cmdln):
@@ -30,7 +30,7 @@ index 21d01bc22496f3fce1fa49c9b45f276ebadc2e2d..d5a2b14b81704f669c537b4d27dd8b7c
                       resign = opts.re_sign,
                       now = opts.now,
 diff --git a/osc/core.py b/osc/core.py
-index 312d60d8b2c13432222970ea6afa70ace8135222..bc0d29cb012c7a085504b9cb3d1ed87348a226c4 100644
+index b9d455773aa846f8d13842560bf030297b8c7d06..8e707a10aa3e2b4dec7066fe4ff3f68dae5e9282 100644
 --- a/osc/core.py
 +++ b/osc/core.py
 @@ -3801,8 +3801,10 @@ def copy_pac(

@@ -12,10 +12,10 @@ Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
  1 file changed, 68 insertions(+), 9 deletions(-)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index 382770677fa438586b4f1a38a8d9c82670d1f265..44c7b0613147f508e3c82fdf674e2b5346b0a0f8 100644
+index 2525e282bf82462b45701ccfb14ca4517418d5e0..1bdf533b415c21c3da872d5b0e63e15548a30870 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -6355,6 +6355,10 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -6373,6 +6373,10 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                    help='get log start or end from the offset')
      @cmdln.option('-s', '--strip-time', action='store_true',
                          help='strip leading build time from the log')
@@ -26,7 +26,7 @@ index 382770677fa438586b4f1a38a8d9c82670d1f265..44c7b0613147f508e3c82fdf674e2b53
      def do_buildlog(self, subcmd, opts, *args):
          """
          Shows the build log of a package
-@@ -6370,31 +6374,54 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -6388,31 +6392,54 @@ Please submit there instead, or use --nodevelproject to force direct submission.
          results' output. If the buildlog url is used buildlog command has the
          same behavior as remotebuildlog.
  
@@ -89,7 +89,7 @@ index 382770677fa438586b4f1a38a8d9c82670d1f265..44c7b0613147f508e3c82fdf674e2b53
  
          if opts.multibuild_package:
              package = package + ":" + opts.multibuild_package
-@@ -6419,7 +6446,39 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -6437,7 +6464,39 @@ Please submit there instead, or use --nodevelproject to force direct submission.
          elif opts.offset:
              offset = int(opts.offset)
          strip_time = opts.strip_time or conf.config['buildlog_strip_time']

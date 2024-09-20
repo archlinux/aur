@@ -6,7 +6,7 @@
 # Contributor : Patrick McCarty  <pnorcks at gmail dot com>
 
 pkgname=osc
-pkgver=1.8.2
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
@@ -65,15 +65,15 @@ package() {
 
 }
 
-sha256sums=('4a231ed16cf40bc41110c3a400c43c9c09c507e3be1ade4cfde1b2fad5f8014b'
-            'a0c2e3634fdbda99aa04cc39b26ca67b519ca9c99bdd9efb263f7d65ad772206'
-            'dcdefaa9b1ddbefbbc9ee790018da4f710dc4cc2bdd3579e914957cf1560a980'
-            '35009761c7a68a4f983de0d2dbff45b76aa7b9dbb8618442a65fe5d3d2f7c24f'
-            'f9f08fd5712aa143ba046c7c8334cc3ca68a2e897a03d4ec7fe8f395d483d6f5'
-            '811230eb6515c546ef8259ca18006ad235c76e449c1f9ec1054f0028c6d12286'
+sha256sums=('2a9a466908190bd65bab047180abb372e30ac1ca06ef2488087d14e36edf1388'
+            '802d8a8a1cc056fb724bcb70a490220cc7094b3e96e500c6b9e65acf2f51b592'
+            'd201a4815ad8271dac45886a96881c5c3c04b8306e8dae4db4127c00df1e14d8'
+            '45cae7d2e9648cc88dc0f289377141112fd4a36ac701ccb6fc7bd497d5e51e70'
+            'f9ce390d1494205e502ca9c93457d6d731dcd529745c13f9c4435149cced6e58'
+            '886ff7a36d3cf96117a38a82e3caa7267fd5a0be42cdb3bbda55ee2488611b40'
             '579b110f3dc03001b7eac3581264200612dac66c2186e6841eda3573f455daf1'
-            'e5a5264f744ae2fdd6f7ad67f40134cbd6e402c3bdee1255112e7e80a01c8916'
+            '685d624c4d8c7c8de7aaf16decc505cb940af6fcb9724cb0419921df296f200d'
             'f01d7d59bebe114f6031f297f78456bef96b7003f55fe7ac48827e1eca7138c1'
-            '42cafcdbcbf9f23a0300431264eae0786f31d805dcf239cf3efc8d24fe5be029')
+            'dafd6b60892989f014fdc80ba29e5b4ed703d7b56b5c2ba40e8786bce9f4dbf2')
 
 # vim:set sts=2 ts=2 sw=2 et:
