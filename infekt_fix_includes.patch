@@ -1,0 +1,56 @@
+--- a/src/lib/nfo_colormap.h
++++ b/src/lib/nfo_colormap.h
+@@ -15,6 +15,8 @@
+ #ifndef _NFO_COLORMAP_H
+ #define _NFO_COLORMAP_H
+ 
++#include <memory>
++
+ class CNFOColorMap
+ {
+ public:
+
+--- a/src/lib/nfo_renderer.cpp
++++ b/src/lib/nfo_renderer.cpp
+@@ -15,7 +15,7 @@
+ #include "stdafx.h"
+ #include "nfo_renderer.h"
+ #include "cairo_box_blur.h"
+-
++#include <cmath>
+ 
+ CNFORenderer::CNFORenderer(bool a_classicMode) :
+ 	m_classic(a_classicMode),
+
+--- a/src/lib/nfo_renderer.h
++++ b/src/lib/nfo_renderer.h
+@@ -17,6 +17,7 @@
+ 
+ #include "nfo_data.h"
+ #include "cairo_box_blur.h"
++#include <thread>
+ 
+ // http://www.alanwood.net/unicode/block_elements.html
+ // http://www.alanwood.net/demos/wgl4.html
+
+--- a/src/gtk/nfo_view_ctrl.h
++++ b/src/gtk/nfo_view_ctrl.h
+@@ -17,6 +17,7 @@
+ 
+ #include <gtkmm/builder.h>
+ #include <gtkmm/layout.h>
++#include <memory>
+ 
+ #include "nfo_data.h"
+ #include "nfo_renderer.h"
+
+--- a/src/lib/util.h
++++ b/src/lib/util.h
+@@ -24,6 +24,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <memory>
+ 
+ class CUtil
+ {

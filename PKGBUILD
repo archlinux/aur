@@ -4,40 +4,28 @@ _pkgbase="infekt"
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-cli-git" "${_pkgbase}-gtk-git")
 pkgver=1.3.0.r1.gcc99c16
-pkgrel=1
+pkgrel=2
 pkgdesc="The ultimate best NFO viewer, ever!"
-arch=('any')
+arch=('x86_64')
 url="https://infekt.ws"
 _url="https://github.com/syndicodefront/${_pkgbase}"
 license=('GPL-2.0-or-later')
-makedepends=('git' 'cmake>=3.2.0' 'zlib' 'pkgconf' 'gtk2>=2.16' 'gtkmm>=2.4'
-             'gendesk')
-depends=('glibc' 'gcc-libs' 'cairo')
+makedepends=('cmake>=3.2' 'dos2unix' 'gendesk' 'git' 'gtk2>=2.16' 'gtkmm>=2.4'
+             'zlib')
+depends=('cairo' 'gcc-libs' 'glibc')
 _pkgsrc="${_pkgbase}"
 source=("${_pkgsrc}::git+${_url}.git"
-        "${_pkgbase}-gtk.png::https://s3.amazonaws.com/cloud.ohloh.net/attachments/31718/sdafdas2_med.png"
-        "${_pkgbase}_forgiving_utf8.h"
-        "${_pkgbase}_fix_cmake_main.patch"
-        "${_pkgbase}_fix_cmake_gtk.patch"
-        "${_pkgbase}_fix_nfo_renderer_h.patch"
-        "${_pkgbase}_fix_nfo_renderer_cpp.patch"
-        "${_pkgbase}_fix_nfo_view_ctrl_h.patch"
-        "${_pkgbase}_fix_nfo_view_ctrl_cpp.patch"
-        "${_pkgbase}_fix_nfo_colormap_h.patch"
-        "${_pkgbase}_fix_nfo_data_cpp.patch"
-        "${_pkgbase}_fix_util_h.patch")
-sha256sums=('SKIP'
-            'b54898446f768761f2affec657329f0778f2b217b58af5af8b59abb71856e76a'
-            '200b1a655944609de6a331463ea809b8163c3f80f5766ba844fff8c1b63fd2ee'
-            '1366192d7ed37dad1eb38f4b6b639740afb72ece6d47372d0bb198b0e0c3ed2f'
-            '4dcd6707e273e2ddbb7cb2e00c0c3e7e9eb2020eed475722597b223ac1b35d22'
-            'e12023f4ad836952a344b425f94fe3628c8a7d6cc24d5db0c35997a84b33fd0f'
-            '2b516b84fc5a5c4db951dddb7aa21fcd3f0982218dddb13cb13da6b6c9fe5060'
-            '59f8d29ab6b6d92a533768e54ab943f5cf2c87beec57828a093ac7b2895816e1'
-            '37a12dddb03fe755e2e7da4406739517378875840bb2e35970ab9218e3663ac0'
-            '8e86fc28563e6819a5536063e1cebdb80e9bad229554d21ed9f2ea84fb1eadcb'
-            'ffb65a24a67b32610e2ce013a511fa569c3f04f5c7cd5ab0dda39dce7a0c563c'
-            '53892d5903477fcd2124dcbe1188db09cecf7723a07ff84d1c1f6319a1353e6b')
+        "infekt_fix_cmake_gtk_source_list.patch"
+        "infekt_fix_cmake_build_type.patch"
+        "infekt_fix_includes.patch"
+        "infekt_fix_forgiving_utf8.patch"
+        "infekt_fix_nfo_view_ctrl.patch")
+b2sums=('SKIP'
+        '5693b424f7803cac656617f0723a74fb9786128a488fa2aed8749d1aa57b05bc19fbf20a29f77977135cecd7c53083857524c6482eb1a5e1b491cea49a61fdb1'
+        'ea1df9339fbd1273dc98aa73616512308b5430d7f8927ecf6235894259bac514ed2e9bf0dfd62cc0cda32f4cfceeb011b273b31705491e428e397286f6c1efc3'
+        'f213d1a32948d0cff57f66922143f4310a4272b24429387ed6788404d057db769c763b6a1f5035a370bfb6122684aaec5b7237e35185e5e60691ff7e69624d61'
+        '31ac6b483ec42e824149a4bdfbd78cc06f9f802cc5fa970b3941a0dcb4be3894a012c9d322e40a4742e4135cb3bfec178317971af0b1c163c823bb74c4f628e2'
+        '7ff7a5f54dd4003fbd299973d4a20e59440211a04cd129bae4df2aa09f09bdc037d8d8f9bf8232f1efe1aeb90aab17a847c063215791bcafed80bdfe25a510fc')
 
 pkgver() {
   cd "${_pkgsrc}"
@@ -46,11 +34,21 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}"
-  cp "${_pkgbase}_forgiving_utf8.h" "${_pkgsrc}/src/lib/forgiving_utf8.h"
+   gendesk -f \
+    --pkgname="${_pkgbase}-gtk" \
+    --pkgdesc="${pkgdesc}" \
+    --exec="${_pkgbase}-gtk %U" \
+    --icon="${_pkgbase}-gtk" \
+    --categories="Utility;Graphics;GTK" \
+    --name="iNFekt GTK" \
+    --comment="${pkgdesc}" \
+    --mimetypes="text/x-nfo"
 
   cd "${_pkgsrc}"
-  for _patch in "${srcdir}/${_pkgbase}_fix"*".patch"; do
-    patch -p1 --binary -i "${_patch}"
+  find "src" -type f \( -name "*.h" -o -name "*.cpp" -o -name "*.txt" \) -exec dos2unix {} \;
+
+  for _patch in "${srcdir}/${_pkgbase}"*".patch"; do
+    patch -p1 -i "${_patch}"
   done
 }
 
@@ -65,17 +63,6 @@ build() {
     -DOPTION_GTK=TRUE \
     -Wno-dev
   cmake --build "${_pkgsrc}/build"
-
-  gendesk \
-  --pkgname="${_pkgbase}-gtk" \
-  --pkgdesc="${pkgdesc}" \
-  --exec="${_pkgbase}-gtk %U" \
-  --icon="${_pkgbase}-gtk" \
-  --categories="Utility;Graphics;GTK" \
-  --name="Infekt GTK" \
-  --comment="${pkgdesc}" \
-  --startupnotify=true \
-  -f
 }
 
 package_infekt-cli-git() {
@@ -103,8 +90,8 @@ package_infekt-gtk-git() {
   local _pkgname="${pkgname%-git}"
 
   pkgdesc+=" - GTK2 GUI"
-  depends+=('infekt-cli' 'gtkmm>=2.4' 'glibmm' 'glib2' 'atkmm' 'libsigc++'
-            'cairomm')
+  depends+=('atkmm' 'cairomm' 'glib2' 'glibmm' 'gnome-themes-extra'
+            'gtkmm>=2.4' 'hicolor-icon-theme' 'infekt-cli' 'libsigc++')
   provides=("${pkgname%-git}=${pkgver%%.r*}")
   conflicts=("${pkgname%-git}")
 
@@ -112,7 +99,12 @@ package_infekt-gtk-git() {
   DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
 
   install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -Dm644 "${_pkgname}.png"     "${pkgdir}/usr/share/applications/icons/hicolor/64x64/apps/${_pkgname}.png"
+
+  cd "${_pkgsrc}/release/PortableApps/App/AppInfo"
+  for _icon in 16 32 128; do
+    install -Dm644 "appicon_${_icon}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${_icon}x${_icon}/apps/${_pkgname}.png"
+  done
 
   cd "${pkgdir}/usr/bin"
   rm -f "${_pkgbase}-cli"
