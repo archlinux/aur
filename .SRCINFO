@@ -1,7 +1,7 @@
 pkgbase = riscv-none-elf-newlib
 	pkgdesc = A C standard library implementation intended for use on embedded systems (RISC-V bare metal)
 	pkgver = 4.4.0.20231231
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.sourceware.org/newlib/
 	arch = any
 	license = BSD
