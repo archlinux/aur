@@ -6,7 +6,7 @@
 # Maintainer: Michael Limiero <mike5713 at gmail dot com>
 pkgname=zmkbatx
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Tool for peripheral battery monitoring for ZMK split keyboards over BLE"
 arch=("x86_64")

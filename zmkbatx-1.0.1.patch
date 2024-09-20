@@ -1,5 +1,19 @@
+diff --git a/assets/linux/zmkBATx.desktop b/assets/linux/zmkBATx.desktop
+index 13cfb80..a07de47 100644
+--- a/assets/linux/zmkBATx.desktop
++++ b/assets/linux/zmkBATx.desktop
+@@ -2,7 +2,7 @@
+ Type=Application
+ Name=zmkBATx
+ Comment=Opensource tool for peripheral battery monitoring zmk split keyboard over BLE for linux 
+-Exec=zmkBATx
++Exec=zmkbatx
+ Icon=zmkBATx
+ Categories=Utility;DataVisualization;Qt;
+-Name[en_US]=zmkBATx.desktop
++Name[en_US]=zmkBATx
 diff --git a/zmkBATx.pro b/zmkBATx.pro
-index 3b00a3c..fc64e6d 100644
+index 3b00a3c..38737c5 100644
 --- a/zmkBATx.pro
 +++ b/zmkBATx.pro
 @@ -35,7 +35,7 @@ OTHER_FILES += README.md \
@@ -19,3 +33,15 @@ index 3b00a3c..fc64e6d 100644
  
  # Link com a biblioteca D-Bus
  LIBS += -ldbus-1
+@@ -73,8 +74,10 @@ linux:!android {
+     target_appentry.path    = $${PREFIX}/share/applications
+     target_appdata.files   += $${OUT_PWD}/assets/linux/$$lower($${TARGET}).appdata.xml
+     target_appdata.path     = $${PREFIX}/share/appdata
++    target_icons.files     += $${OUT_PWD}/assets/linux/$$lower($${TARGET}).png
++    target_icons.path       = $${PREFIX}/share/icons
+ 
+-    INSTALLS += target_app target_appentry target_appdata
++    INSTALLS += target_app target_appentry target_appdata target_icons
+ 
+ }
+ 
