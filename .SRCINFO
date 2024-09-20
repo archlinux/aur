@@ -1,6 +1,6 @@
 pkgbase = plugin-git
 	pkgdesc = Woodpecker plugin for cloning Git repositories
-	pkgver = 2.5.2
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/woodpecker-ci/plugin-git
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = plugin-git
 	depends = openssh
 	depends = curl
 	depends = git-lfs
-	source = plugin-git-2.5.2.tar.gz::https://github.com/woodpecker-ci/plugin-git/archive/2.5.2.tar.gz
-	sha256sums = def46c56ddbb4639edace00412ecc642e5800cbcebffcacbe50e94841117a180
+	source = plugin-git-2.6.0.tar.gz::https://github.com/woodpecker-ci/plugin-git/archive/2.6.0.tar.gz
+	sha256sums = 874a543eaf5f556ac0bcd03d0aaa1220ae395bd6cf5f783d154f9badc066b5af
 
 pkgname = plugin-git
