@@ -1,0 +1,4 @@
+[pypy3-packaging]
+source = "github"
+github = "pypa/packaging"
+use_latest_release = "true"
