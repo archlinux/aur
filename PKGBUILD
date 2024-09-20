@@ -16,7 +16,7 @@ depends=(
        'inotify-tools'
        'dunst')
 optdepends=(
-        'limine-dracut-support-git: Automates kernel installation/removal and Limine boot entry management.'
+        'limine-dracut-support: Automates kernel installation/removal and Limine boot entry management.'
         'rsync: Provides an alternative method for restoring snapshots.'
         'journalctl-desktop-notification: Sends desktop notifications for errors.'
 )
