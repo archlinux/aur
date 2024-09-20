@@ -1,6 +1,6 @@
 pkgbase = magnum-plugins-git
 	pkgdesc = Plugins for the Magnum C++11/C++14 graphics engine (Git version)
-	pkgver = 2020.06.r1061.g24295477
+	pkgver = 2020.06.r1458.gba098c6a
 	pkgrel = 1
 	url = https://magnum.graphics
 	arch = i686
@@ -22,11 +22,12 @@ pkgbase = magnum-plugins-git
 	depends = glslang
 	depends = zstd
 	depends = libwebp
+	depends = libspng
 	provides = magnum-plugins
 	conflicts = magnum-plugins
 	source = git+https://github.com/mosra/magnum-plugins.git
-	source = https://github.com/BinomialLLC/basis_universal/archive/v1_15_update2.tar.gz
+	source = https://github.com/BinomialLLC/basis_universal/archive/v1_50_0_2.tar.gz
 	sha1sums = SKIP
-	sha1sums = b9615d48ebfc62a53f333ebf8a582558a058b0e9
+	sha1sums = 4946d685424556efb07376b97e95a4cbb3245e40
 
 pkgname = magnum-plugins-git
