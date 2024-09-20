@@ -2,8 +2,8 @@
 
 _name="chafapy"
 pkgname="python-${_name}"
-pkgver=1.1.2
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Python bindings for Chafa. Visualize images with text in Python."
 arch=('any')
 url="https://github.com/guardkenzie/chafa.py"
@@ -14,7 +14,7 @@ checkdepends=('python-pytest' 'python-pillow' 'python-numpy' 'python-wand')
 depends=('python>=3.8' 'chafa')
 _pkgsrc="chafa.py-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('547068d301274262ea1e6cb4f8cddc5b714a142c684fcd27f3aefa70ad95aea1')
+b2sums=('86d13f58713cf8c2fe60f4b8b176977fa536f231c4553c86d3a0b998773182e43cf0166339cc2e135901ad0d079a1ad1b0cab6fbec3382a6d8366e7cad6ad5d5')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"

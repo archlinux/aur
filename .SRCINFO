@@ -1,7 +1,7 @@
 pkgbase = python-chafapy
 	pkgdesc = Python bindings for Chafa. Visualize images with text in Python.
-	pkgver = 1.1.2
-	pkgrel = 3
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/guardkenzie/chafa.py
 	arch = any
 	license = GPL-3.0-or-later
@@ -16,7 +16,7 @@ pkgbase = python-chafapy
 	makedepends = python-hatchling
 	depends = python>=3.8
 	depends = chafa
-	source = chafa.py-1.1.2.tar.gz::https://github.com/guardkenzie/chafa.py/archive/v1.1.2.tar.gz
-	sha256sums = 547068d301274262ea1e6cb4f8cddc5b714a142c684fcd27f3aefa70ad95aea1
+	source = chafa.py-1.2.0.tar.gz::https://github.com/guardkenzie/chafa.py/archive/v1.2.0.tar.gz
+	b2sums = 86d13f58713cf8c2fe60f4b8b176977fa536f231c4553c86d3a0b998773182e43cf0166339cc2e135901ad0d079a1ad1b0cab6fbec3382a6d8366e7cad6ad5d5
 
 pkgname = python-chafapy
