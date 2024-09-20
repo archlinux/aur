@@ -1,11 +1,12 @@
 pkgbase = nestopia-highscore-git
 	pkgdesc = Highscore port of Nestopia JG
-	pkgver = 1.52.0.r149.g5a91554
+	pkgver = 1.52.0.r152.gf431e0f
 	pkgrel = 1
 	url = https://gitlab.com/alice-m/nestopia
 	arch = x86_64
 	license = GPL-2.0-or-later
-	makedepends = gitmeson
+	makedepends = git
+	makedepends = meson
 	depends = libhighscore-git
 	provides = nestopia-highscore
 	conflicts = nestopia-highscore

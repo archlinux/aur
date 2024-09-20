@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=nestopia-highscore-git
-pkgver=1.52.0.r149.g5a91554
+pkgver=1.52.0.r152.gf431e0f
 pkgrel=1
 pkgdesc="Highscore port of Nestopia JG"
 arch=('x86_64')
 url="https://gitlab.com/alice-m/nestopia"
 license=('GPL-2.0-or-later')
 depends=('libhighscore-git')
-makedepends=('git''meson')
+makedepends=('git' 'meson')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://gitlab.com/alice-m/nestopia.git')
