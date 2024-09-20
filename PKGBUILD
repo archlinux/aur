@@ -1,6 +1,6 @@
 # Maintainer: lakejason0 <lakesarchive@outlook.com>
 pkgname='ttf-lxgw-neo-zhisong'
-pkgver=1.016
+pkgver=1.017
 pkgrel=1
 pkgdesc="霞鹜新致宋。一款衍生于「IPAmj明朝」的中文宋体字型。A Chinese serif font derived from IPAmj Mincho."
 arch=('any')
@@ -10,7 +10,7 @@ source=("$pkgname-$pkgver-$pkgrel.ttf::$url/releases/download/v$pkgver/LXGWNeoZh
         *.md)
 changelog='changelog.txt'
 conflicts=('ttf-lxgw-neo-zhisong')
-sha256sums=('589c7359a5e09ca2173ac702a9d2138063714c832a8f78f631cefd2ee7577c3a'
+sha256sums=('1977087e2b943648ea34cc9d070c24213db350fde977e84dc974f0a819ea32b0'
             'bdadacd0751cbb3c9f040d1314ab9b855c3ebf1b540fa6dcf44524cd49819fa1'
             '1483c7de02dcf8b9c54b3b1aacabf7d6bdf32d412ca6724c0292ea68e862d8cf')
 
