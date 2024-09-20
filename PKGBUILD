@@ -2,17 +2,17 @@
 
 _pkgname=overskride
 pkgname=$_pkgname-bin
-pkgver=0.4.4
+pkgver=0.6.0
 pkgrel=1
-pkgdesc='A simple yet powerful bluetooth client (binary release)'
+pkgdesc="A simple yet powerful bluetooth client (binary release)"
 url="https://github.com/kaii-lb/overskride"
+license=('GPL-3.0-or-later')
 arch=('x86_64')
-license=('GPL3')
-depends=('bluez' 'libadwaita')
+depends=('bluez' 'libadwaita' 'libpulse')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname$pkgver.zip::https://github.com/kaii-lb/overskride/releases/download/v$pkgver/$_pkgname.zip")
-sha256sums=('1313a8e57599737c28d9e8ddfa10b44049f22cdfe1cefd7ee36517c556310ba2')
+source=("$_pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/$_pkgname.tar.xz")
+sha256sums=('080b7a4bfdcb31cc62b1499763082c549b8a162dd9af4ec5b260ec9c2c61f6af')
 
 package() {
   mv $_pkgname/* "$pkgdir"
