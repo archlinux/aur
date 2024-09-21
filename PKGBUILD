@@ -5,7 +5,7 @@
 _pkgname='hacki'
 pkgname=${_pkgname}
 _pkgreponame='Hacki'
-pkgver=2.9.2
+pkgver=2.9.3
 pkgrel=1
 pkgdesc='A Hacker News reader.'
 url='https://github.com/Livinglist/Hacki'
@@ -18,7 +18,7 @@ depends=(
 	'libsecret')
 makedepends=('fvm' 'git' 'patchelf')
 source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('8fd54c9c40fd872753f8e24d03ccf5dabc2e07bf24fd0702d173a437cea575ab')
+sha256sums=('b3b2ccce2c5deb85b1315d1f69d58b00d9ab99c633427d738687f1b52e680c49')
 
 _srcdir="${_pkgreponame}"
 _engine_version=3.24.3
