@@ -2,7 +2,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=zq
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Tooling for super-structured data'
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=(go)
 options=(!lto)
 _archive="zed-$pkgver"
 source=("https://github.com/brimdata/zed/archive/v$pkgver/zq-$_archive.tar.gz")
-sha256sums=('c28131f4ec3a6aabfa6932e3dfeb816fdfd9b24f9a385c7030c7e361b532a9c8')
+sha256sums=('ad26518d589f565a3859177066a2ad08f067910fa204a51436a55af837198175')
 
 prepare() {
 	cd "$_archive"
