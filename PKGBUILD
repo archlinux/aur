@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Davide Depau <davide@depau.eu>
 pkgname=libviperfx
 pkgver=r11.6f7d0da
