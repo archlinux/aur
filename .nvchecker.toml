@@ -1,0 +1,5 @@
+[citations]
+source = "gitlab"
+gitlab = "World/citations"
+host = "gitlab.gnome.org"
+use_max_tag = true
