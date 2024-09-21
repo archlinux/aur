@@ -1,14 +1,14 @@
 pkgbase = r-gensa
 	pkgdesc = R Functions for Generalized Simulated Annealing
-	pkgver = 1.1.14
-	pkgrel = 2
+	pkgver = 1.1.14.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=GenSA
 	arch = x86_64
 	license = GPL-2.0-only
 	depends = blas
 	depends = r
-	source = https://cran.r-project.org/src/contrib/GenSA_1.1.14.tar.gz
-	md5sums = 9fa83600929fd3bf4a42a8501c32d478
-	b2sums = 70092c36dcb1943ed54e53d0c345989af30684ad6f6d2f00243fb809220488879a13d863e3f6c371710eeaef49fd13c595599c0733061544577d09d5c301616b
+	source = https://cran.r-project.org/src/contrib/GenSA_1.1.14.1.tar.gz
+	md5sums = 3009ca659f16f997ed1b04160948e252
+	b2sums = 7aaf894a643291affc915f617a44dd70ada72732af7f17445c89526a500203733f339e1216cfac7b4f724bec21904d1baea42b3de97fafee73c3f53177fa0566
 
 pkgname = r-gensa
