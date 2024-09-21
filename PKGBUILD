@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-dynamic-panel-transparency-git
 _uuid=dynamic-panel-transparency@rockon999.github.io
 pkgver=35.r342.4ed748a
