@@ -2,13 +2,13 @@
 # Contributor: DanManN <dnahimov@gmail.com>
 # Contributor: jyantis <yantis@yantis.net>
 pkgname=python-msgpack-numpy-git
-pkgver=0.4.8.r0.gfd7032a
+pkgver=0.4.8.r2.g20c5e5b
 _gitname=msgpack-numpy
 pkgrel=1
 pkgdesc="Serialize numpy arrays using msgpack"
 arch=('any')
 url='https://github.com/lebedov/msgpack-numpy'
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('python-numpy'
          'python-msgpack')
 source=('git+https://github.com/lebedov/msgpack-numpy.git')
