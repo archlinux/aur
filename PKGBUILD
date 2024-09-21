@@ -1,7 +1,7 @@
 # Maintainer: tkirishima <tkirishima[at]proton[dot]me>
 pkgname=hbd
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A command-line tool to remember birthdays easily!"
 arch=('any')
 url="https://github.com/tkr-sh/hbd"
