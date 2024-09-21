@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ff
-_pkgver=4.0.12
+_pkgver=4.5.0
 pkgname=r-${_pkgname,,}
-pkgver=4.0.12
+pkgver=4.5.0
 pkgrel=1
 pkgdesc='Memory-Efficient Storage of Large Data on Disk and Fast Access Functions'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('08af355a9a10fe29d48d085abc7cf1f975e1a4a670668a4f8d9632d087fb41bf')
+sha256sums=('2aed9052a93ca81af4c8cc7defce0f7aa0206b442b4795b6219f6e56b341188e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
