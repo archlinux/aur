@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
 
 pkgname=perl-exporter-tidy
-pkgver=0.08
+pkgver=0.09
 pkgrel=1
 pkgdesc='Another way of exporting symbols'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=()
 checkdepends=()
 options=('!emptydirs')
 source=(https://cpan.metacpan.org/authors/id/J/JU/JUERD/Exporter-Tidy-$pkgver.tar.gz)
-sha512sums=('3d218c845d95267baacc227b5c864e8cefeabb1d92ac39f86129495c6d9bb971ca1f924ca91f3998c51c95a535e1f0c39774174cb12c75771a23e3f16ed02816')
+sha512sums=('d111ca36621601af7f210ef51ead24c3efbb64f0b09eb2daa8ed743de16dfb5e8a231250d7d073a3afcc5a96e732109f18369e47cc88470c88c3b2caad04fb93')
 
 build() {
   cd Exporter-Tidy-$pkgver
