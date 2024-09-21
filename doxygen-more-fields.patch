@@ -1,5 +1,5 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index 107a31bbdb47..893555358ed3 100644
+index 80aac07f0437..073f03d16469 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
 @@ -185,8 +185,12 @@ HoverInfo::PrintedType printType(QualType QT, ASTContext &ASTCtx,
@@ -16,7 +16,7 @@ index 107a31bbdb47..893555358ed3 100644
    }
    return Result;
  }
-@@ -1425,6 +1429,142 @@ static std::string formatOffset(uint64_t OffsetInBits) {
+@@ -1430,6 +1434,142 @@ static std::string formatOffset(uint64_t OffsetInBits) {
    return Offset;
  }
  
@@ -159,7 +159,7 @@ index 107a31bbdb47..893555358ed3 100644
  markup::Document HoverInfo::present() const {
    markup::Document Output;
  
-@@ -1460,6 +1600,9 @@ markup::Document HoverInfo::present() const {
+@@ -1465,6 +1605,9 @@ markup::Document HoverInfo::present() const {
    if (!Documentation.Brief.empty())
      parseDocumentation(Documentation.Brief, Output);
  
@@ -169,7 +169,7 @@ index 107a31bbdb47..893555358ed3 100644
    // Print Types on their own lines to reduce chances of getting line-wrapped by
    // editor, as they might be long.
    if (ReturnType) {
-@@ -1468,44 +1611,20 @@ markup::Document HoverInfo::present() const {
+@@ -1473,44 +1616,20 @@ markup::Document HoverInfo::present() const {
      // Parameters:
      // - `bool param1`
      // - `int param2 = 5`
@@ -224,7 +224,7 @@ index 107a31bbdb47..893555358ed3 100644
    }
  
    // Don't print Type after Parameters or ReturnType as this will just duplicate
-@@ -1577,6 +1696,39 @@ markup::Document HoverInfo::present() const {
+@@ -1582,6 +1701,39 @@ markup::Document HoverInfo::present() const {
        parseDocumentation(Note, L.addItem());
    }
  
@@ -264,7 +264,7 @@ index 107a31bbdb47..893555358ed3 100644
    if (!Definition.empty()) {
      Output.addRuler();
      std::string Buffer;
-@@ -1627,71 +1779,6 @@ markup::Document HoverInfo::present() const {
+@@ -1632,71 +1784,6 @@ markup::Document HoverInfo::present() const {
    return Output;
  }
  
@@ -481,6 +481,142 @@ index 77bd90927802..0c9db8653f22 100644
    /// All the paragraphs we don't have any special handling for,
    /// e.g. "details".
    String Description;
+diff --git a/clang-tools-extra/clangd/index/Serialization.cpp b/clang-tools-extra/clangd/index/Serialization.cpp
+index 69af71058649..253f1b9108e8 100644
+--- a/clang-tools-extra/clangd/index/Serialization.cpp
++++ b/clang-tools-extra/clangd/index/Serialization.cpp
+@@ -287,6 +287,7 @@ void writeSymbolDocumentation(const SymbolDocumentationRef &Doc,
+                               const StringTableOut &Strings,
+                               llvm::raw_ostream &OS) {
+   writeVar(Strings.index(Doc.Brief), OS);
++  writeVar(Strings.index(Doc.Details), OS);
+   writeVar(Strings.index(Doc.Returns), OS);
+ 
+   writeVar(Doc.Notes.size(), OS);
+@@ -297,12 +298,30 @@ void writeSymbolDocumentation(const SymbolDocumentationRef &Doc,
+   for (const auto &Warning : Doc.Warnings)
+     writeVar(Strings.index(Warning), OS);
+ 
++  writeVar(Doc.Exceptions.size(), OS);
++  for (const auto &Exception : Doc.Exceptions)
++    writeVar(Strings.index(Exception), OS);
++
++  writeVar(Doc.Todos.size(), OS);
++  for (const auto &Todo : Doc.Todos)
++    writeVar(Strings.index(Todo), OS);
++
++  writeVar(Doc.Bugs.size(), OS);
++  for (const auto &Bug : Doc.Bugs)
++    writeVar(Strings.index(Bug), OS);
++
+   writeVar(Doc.Parameters.size(), OS);
+   for (const auto &ParamDoc : Doc.Parameters) {
+     writeVar(Strings.index(ParamDoc.Name), OS);
+     writeVar(Strings.index(ParamDoc.Description), OS);
+   }
+ 
++  writeVar(Doc.TemplateParameters.size(), OS);
++  for (const auto &ParamDoc : Doc.TemplateParameters) {
++    writeVar(Strings.index(ParamDoc.Name), OS);
++    writeVar(Strings.index(ParamDoc.Description), OS);
++  }
++
+   writeVar(Strings.index(Doc.Description), OS);
+   writeVar(Strings.index(Doc.CommentText), OS);
+ }
+@@ -311,6 +330,7 @@ SymbolDocumentationRef
+ readSymbolDocumentation(Reader &Data, llvm::ArrayRef<llvm::StringRef> Strings) {
+   SymbolDocumentationRef Doc;
+   Doc.Brief = Data.consumeString(Strings);
++  Doc.Details = Data.consumeString(Strings);
+   Doc.Returns = Data.consumeString(Strings);
+ 
+   if (!Data.consumeSize(Doc.Notes))
+@@ -323,11 +343,31 @@ readSymbolDocumentation(Reader &Data, llvm::ArrayRef<llvm::StringRef> Strings) {
+   for (auto &Warning : Doc.Warnings)
+     Warning = Data.consumeString(Strings);
+ 
++  if (!Data.consumeSize(Doc.Exceptions))
++    return Doc;
++  for (auto &Exception : Doc.Exceptions)
++    Exception = Data.consumeString(Strings);
++
++  if (!Data.consumeSize(Doc.Todos))
++    return Doc;
++  for (auto &Todo : Doc.Todos)
++    Todo = Data.consumeString(Strings);
++
++  if (!Data.consumeSize(Doc.Bugs))
++    return Doc;
++  for (auto &Bug : Doc.Bugs)
++    Bug = Data.consumeString(Strings);
++
+   if (!Data.consumeSize(Doc.Parameters))
+     return Doc;
+   for (auto &ParamDoc : Doc.Parameters)
+     ParamDoc = {Data.consumeString(Strings), Data.consumeString(Strings)};
+ 
++  if (!Data.consumeSize(Doc.TemplateParameters))
++    return Doc;
++  for (auto &ParamDoc : Doc.TemplateParameters)
++    ParamDoc = {Data.consumeString(Strings), Data.consumeString(Strings)};
++
+   Doc.Description = Data.consumeString(Strings);
+   Doc.CommentText = Data.consumeString(Strings);
+ 
+diff --git a/clang-tools-extra/clangd/index/Symbol.h b/clang-tools-extra/clangd/index/Symbol.h
+index 9c6c94f4b685..cd7fefc5b01b 100644
+--- a/clang-tools-extra/clangd/index/Symbol.h
++++ b/clang-tools-extra/clangd/index/Symbol.h
+@@ -177,15 +177,26 @@ template <typename Callback> void visitStrings(Symbol &S, const Callback &CB) {
+   CB(S.CompletionSnippetSuffix);
+ 
+   CB(S.Documentation.Brief);
++  CB(S.Documentation.Details);
+   CB(S.Documentation.Returns);
+   for (auto &Note : S.Documentation.Notes)
+     CB(Note);
+   for (auto &Warning : S.Documentation.Warnings)
+     CB(Warning);
++  for (auto &Exception : S.Documentation.Exceptions)
++    CB(Exception);
++  for (auto &Todo : S.Documentation.Todos)
++    CB(Todo);
++  for (auto &Bug : S.Documentation.Bugs)
++    CB(Bug);
+   for (auto &ParamDoc : S.Documentation.Parameters) {
+     CB(ParamDoc.Name);
+     CB(ParamDoc.Description);
+   }
++  for (auto &ParamDoc : S.Documentation.TemplateParameters) {
++    CB(ParamDoc.Name);
++    CB(ParamDoc.Description);
++  }
+   CB(S.Documentation.Description);
+   CB(S.Documentation.CommentText);
+ 
+diff --git a/clang-tools-extra/clangd/index/YAMLSerialization.cpp b/clang-tools-extra/clangd/index/YAMLSerialization.cpp
+index e87c777d8966..7fc25fcb5915 100644
+--- a/clang-tools-extra/clangd/index/YAMLSerialization.cpp
++++ b/clang-tools-extra/clangd/index/YAMLSerialization.cpp
+@@ -234,12 +234,17 @@ template <> struct MappingTraits<ParameterDocumentationRef> {
+ template <> struct MappingTraits<SymbolDocumentationRef> {
+   static void mapping(IO &IO, SymbolDocumentationRef &Doc) {
+     IO.mapOptional("Brief", Doc.Brief);
++    IO.mapOptional("Details", Doc.Details);
+     IO.mapOptional("Returns", Doc.Returns);
+ 
+     IO.mapOptional("Notes", Doc.Notes);
+     IO.mapOptional("Warnings", Doc.Warnings);
++    IO.mapOptional("Exceptions", Doc.Exceptions);
++    IO.mapOptional("Todos", Doc.Todos);
++    IO.mapOptional("Bugs", Doc.Bugs);
+ 
+     IO.mapOptional("Parameters", Doc.Parameters);
++    IO.mapOptional("TemplateParameters", Doc.TemplateParameters);
+ 
+     IO.mapOptional("Description", Doc.Description);
+     IO.mapOptional("CommentText", Doc.CommentText);
 diff --git a/clang-tools-extra/clangd/unittests/SymbolDocumentationMatchers.h b/clang-tools-extra/clangd/unittests/SymbolDocumentationMatchers.h
 index 12c955c458cc..e79a261a480a 100644
 --- a/clang-tools-extra/clangd/unittests/SymbolDocumentationMatchers.h
