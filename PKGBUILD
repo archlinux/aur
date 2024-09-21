@@ -1,7 +1,7 @@
 # Maintainer: Alexander Karpukhin <thealexdev23@gmail.com>
 
 pkgname=power-options-daemon-git
-pkgver=1.1.0r19.885a34
+pkgver=1.1.0r20.5b4146
 pkgrel=1
 pkgdesc="The core daemon for Power Options, a blazingly fast power management solution."
 arch=('x86_64')
