@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-orbax-checkpoint
 _pkgname=${pkgname#python-}
-pkgver=0.5.20
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Orbax provides common utility libraries for JAX users (checkpoint).'
 arch=('any')
@@ -28,18 +28,16 @@ optdepends=(
 )
 conflicts=('python-orbax')
 replaces=('python-orbax')
-source_part='b2/bf'
-source_hash='e338db8c4761b7389504c94a7c03e76f747fb82a312c913a5055ec2421a1'
-source=("$_pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/$source_part/$source_hash/orbax_checkpoint-$pkgver.tar.gz")
-sha256sums=('57dd4175e698a8c4957991ab7e6c19d7b3a8792ae7072b9cd2b267ce5b34884d')
+source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('9663b94fd2fb0e7a13b49823ef83e4fc0bc3c399dde229ee7b6c0d8ffac6e1e6')
 
 build() {
-    python -m build -nw orbax_checkpoint-$pkgver
+    python -m build -nw orbax-$pkgver/checkpoint
 }
 
 package() {
     python -m installer \
-        --compile-bytecode 1 \
-        --destdir $pkgdir \
-        orbax_checkpoint-$pkgver/dist/orbax_checkpoint-$pkgver-*.whl
+        --compile-bytecode=1 \
+        --destdir=$pkgdir \
+        orbax-$pkgver/checkpoint/dist/orbax_checkpoint-$pkgver-*.whl
 }
