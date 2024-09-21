@@ -1,0 +1,14 @@
+pkgbase = cellpose
+	pkgdesc = Cellpose: a generalist algorithm for cellular segmentation with GUI support
+	pkgver = 3.0.11
+	pkgrel = 1
+	url = https://www.cellpose.org/
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-pip
+	optdepends = python-matplotlib: for plotting support
+	source = https://files.pythonhosted.org/packages/64/25/566e0ec2f42fa6be7ec4225ee3b71670d31471ce1381ae5bffdd318b24dc/cellpose-3.0.11.tar.gz
+	sha256sums = a8d902e7fe76fe0319871ac9426dd8d1d3d526f014d51c070918762939ce40db
+
+pkgname = cellpose
