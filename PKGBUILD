@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=tinybpt-git
-pkgver=r37.2fd3aac
+pkgver=r38.2729f6a
 pkgrel=1
 epoch=
 pkgdesc="Tinybpt (Tiny Buildroot Packaging Tool) 是一个 buildroot 的包管理工具，主要处理 buildroot 的包依赖关系，提供包的安装、卸载等功能。"
@@ -18,13 +18,13 @@ depends=(
     bash
     gcc-libs
     glibc
-    #     nlohmann-json
 )
 makedepends=(
     git
     cmake
+    nlohmann-json
     ninja)
-optdepends=()
+optdepends=("buildroot-meta: dependency requirements for buildroot")
 checkdepends=()
 options=()
 source=(${pkgname}::git+$url.git)
