@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wage at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wage at proton dot me>
 # Contributor: XZS <d dot f dot fischer at web dot de>
 pkgname=gnome-shell-extension-mpris-indicator-button-git
 _uuid=mprisindicatorbutton@JasonLG1979.github.io
