@@ -2,7 +2,7 @@
 
 pkgname=web-ext
 # https://github.com/mozilla/web-ext/releases
-pkgver=8.2.0
+pkgver=8.3.0
 pkgrel=1
 pkgdesc='A command line tool to help build, run, and test web extensions'
 arch=(any)
@@ -12,7 +12,7 @@ license=('MPL-2.0')
 # See "engines" in https://github.com/mozilla/web-ext/blob/master/package.json
 # XXX: somehow nodejs 20 breaks tests
 # Per https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/, web-ext requires the current LTS (long-term support) versions of NodeJS.
-depends=('nodejs>=16.0.0' 'nodejs<20')
+depends=('nodejs-lts-iron')
 makedepends=('npm' 'node-gyp')
 replaces=('nodejs-web-ext')
 provides=('nodejs-web-ext')
@@ -21,7 +21,7 @@ conflicts=('nodejs-web-ext')
 options=('!strip')
 # tarball on npmjs lacks scripts for building from sources
 source=("https://github.com/mozilla/web-ext/archive/$pkgver/web-ext-$pkgver.tar.gz")
-sha256sums=('ad8b278716549788abe85357f2a8b2b85779236cdda963ba281c618d57098dbd')
+sha256sums=('a88d7c519285f78ba8550342aaed5437fbc1c548102183ce8b394c5fbec2a8e6')
 
 prepare() {
   cd "$srcdir"
@@ -54,9 +54,6 @@ package() {
 
   install -Ddm755 "$_npmdir"
   cp -r --no-preserve=ownership $pkgname-$pkgver "$_npmdir/$pkgname"
-
-  # dtrace-provider (brought in by bunyan) is not used on Linux, and its build artifacts makes this package unreproducible
-  rm -rv "$_npmdir"/web-ext/node_modules/dtrace-provider/build/
 
   install -Ddm755 "$pkgdir/usr/bin"
   ln -s "/usr/lib/node_modules/$pkgname/bin/$pkgname.js" "$pkgdir/usr/bin/$pkgname"
