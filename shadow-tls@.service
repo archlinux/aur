@@ -6,7 +6,17 @@ Wants=network.target
 [Service]
 Type=simple
 User=nobody
-ExecStart=/usr/bin/shadow-tls config -c /etc/shadow-tls/%I.conf
+ExecStart=/usr/bin/shadow-tls config -c /etc/shadow-tls/%I.json
+ProtectSystem=strict
+ProtectHome=true
+PrivateDevices=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+PrivateTmp=true
+MountFlags=private
+NoNewPrivileges=true
+MemoryDenyWriteExecute=true
 
 [Install]
 WantedBy=multi-user.target

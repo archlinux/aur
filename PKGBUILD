@@ -2,7 +2,7 @@
 
 pkgname=shadow-tls
 pkgver=0.2.25
-pkgrel=2
+pkgrel=3
 
 pkgdesc='A proxy to expose real tls handshake to the firewall.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('cargo-nightly')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	"shadow-tls@.service")
 sha256sums=('1d1d436734823ba0302de6e91883ed892ea710769c722a139990194ff5837224'
-            '37897488162967ce4d229395d45d2a82f120fe4a71d2ac0fcc12d29006ba54a8')
+            '670a28a4eafc0617052bac6dfbf8160ddb31787cc59f6541ff399cabecbef627')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -28,6 +28,8 @@ build() {
     export CARGO_TARGET_DIR=target
     export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
     export RUSTFLAGS=""
+    unset CFLAGS
+    unset LDFLAGS
     cargo build --frozen --release --all-features --bin "$pkgname"
 }
 
