@@ -11,7 +11,7 @@ depends=('sqlite' 'qt5-base')
 makedepends=('autoconf' 'automake' 'libtool' 'flex' 'gtest' 'qt5-tools')
 source=("$pkgname-$pkgver.tar.xz::https://github.com/wedesoft/anymeal/releases/download/v$pkgver/anymeal-$pkgver.tar.xz")
 conflicts=("anymeal-git")
-sha256sums=('f17dd051d0e490b663a5168b794f6f7171309dea97c9cab98051589d0d21e471')
+sha256sums=('b4a495ad69672c6b0fcdca88039a81c3d069b52d4f51fffeaac52de9709de4fa')
 
 build() {
 	cd "$pkgname-$pkgver"
