@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ytmdesktop
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 _nodeversion=20
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
@@ -48,6 +48,8 @@ package() {
   cd "$pkgname-$pkgver"
   install -d "$pkgdir/opt/$pkgname"
   cp -r out/YouTube\ Music\ Desktop\ App-linux-x64/. "$pkgdir/opt/$pkgname"
+  chmod 4755 "$pkgdir/opt/$pkgname/chrome-sandbox"
+
   install -Dm644 src/assets/icons/ytmd.png \
     "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm644 "$srcdir/$pkgname.desktop" -t \
