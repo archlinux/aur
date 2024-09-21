@@ -1,7 +1,7 @@
 pkgbase = fluent-gtk-theme
 	pkgdesc = Fluent design GTK theme
 	pkgver = 2024.06.12
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/vinceliuice/Fluent-gtk-theme
 	arch = any
 	license = GPL-3.0-or-later

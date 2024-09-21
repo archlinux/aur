@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=fluent-gtk-theme
 pkgver=2024.06.12
-pkgrel=1
+pkgrel=3
 pkgdesc='Fluent design GTK theme'
 arch=(any)
 url=https://github.com/vinceliuice/Fluent-gtk-theme
@@ -19,5 +19,5 @@ package () {
 
 	install -m755 -d "${pkgdir}/usr/share/themes"
 	./install.sh -i simple -t all -d "${pkgdir}/usr/share/themes"
-	./install.sh -i simple -t all --tweaks round float -d "${pkgdir}/usr/share/themes"
+	./install.sh -i simple -t all --tweaks round -d "${pkgdir}/usr/share/themes"
 }
