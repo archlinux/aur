@@ -1,19 +1,21 @@
 pkgbase = libvhdi
 	pkgdesc = Library and tools for the Virtual Hard Disk (VHD) image format
-	pkgver = 20221124
+	pkgver = 20240509
 	pkgrel = 1
 	url = https://github.com/libyal/libvhdi
 	arch = x86_64
+	arch = aarch64
+	arch = riscv64
 	license = LGPL3
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = libvhdi-20221124.tar.gz::https://github.com/libyal/libvhdi/releases/download/20221124/libvhdi-alpha-20221124.tar.gz
-	source = libvhdi-20221124.tar.gz.asc::https://github.com/libyal/libvhdi/releases/download/20221124/libvhdi-alpha-20221124.tar.gz.asc
+	source = libvhdi-20240509.tar.gz::https://github.com/libyal/libvhdi/releases/download/20240509/libvhdi-alpha-20240509.tar.gz
+	source = libvhdi-20240509.tar.gz.asc::https://github.com/libyal/libvhdi/releases/download/20240509/libvhdi-alpha-20240509.tar.gz.asc
 	validpgpkeys = 0ED9020DA90D3F6E70BD3945D9625E5D7AD0177E
-	sha256sums = 0d46cc2fa4f9385e58f891fc5a1c3eec92f69e30a5c5a550a3f560693ed34295
+	sha256sums = 9efebe54a7ae6cf8b49103a3a0c37553f3f22d7526303a654aeb59eca58ccec7
 	sha256sums = SKIP
 
 pkgname = libvhdi
