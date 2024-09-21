@@ -1,6 +1,6 @@
 # Maintainer: alba4k <blaskoazzolaaaron@gmail.com>
 pkgname=albafetch-git
-pkgver=4.2.r11.g651c6d1c
+pkgver=4.2.1.r0.g5279b3fe
 pkgrel=1
 pkgdesc="Neofetch, but written in C; both faster and worse than the original (latest commit)"
 arch=(x86_64 aarch64)
@@ -13,6 +13,8 @@ provides=(albafetch)
 source=("git+$url")
 md5sums=('SKIP')
 
+backup=("etc/xdg/albafetch-conf")
+
 pkgver() {
     cd albafetch
     git describe --long --tags --abbrev=8 --exclude='*[a-zA-Z][a-zA-Z]*' \
@@ -21,7 +23,6 @@ pkgver() {
 
 build() {
     cd albafetch
-    meson setup build
     meson compile -C build
 }
 
