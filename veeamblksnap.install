@@ -1,0 +1,23 @@
+post_install() {
+    echo "post install"
+    dkms install veeamblksnap/${1%%-*}
+    echo "."
+}
+
+pre_upgrade() {
+    echo "pre update"
+    pre_remove ${2%%-*}
+    echo "."
+}
+
+post_upgrade() {
+    echo "post upgrade"
+    post_install ${1%%-*}
+    echo "."
+}
+
+pre_remove() {
+    echo "pre remove"
+    dkms remove veeamblksnap/${1%%-*} --all
+    echo "."
+}
