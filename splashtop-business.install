@@ -1,10 +1,6 @@
 ## arg 1:  the new package version
 post_install() {
-	xdg-icon-resource forceupdate --theme hicolor
-
 	ln -sf /opt/splashtop-business/splashtop-business /usr/bin/splashtop-business
-
-	update-desktop-database -q
 }
 
 ## arg 1:  the new package version
@@ -15,10 +11,6 @@ post_upgrade() {
 
 ## arg 1:  the old package version
 post_remove() {
-	xdg-icon-resource forceupdate --theme hicolor
-
 	rm /usr/bin/splashtop-business
 	rm -rf /opt/splashtop-business
-
-	update-desktop-database -q
 }
