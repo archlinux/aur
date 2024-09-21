@@ -2,8 +2,8 @@
 # Contributor: Nicolas Martyanoff <khaelin@gmail.com>
 
 pkgname=ccl
-pkgver=1.12.2
-pkgrel=4
+pkgver=1.13
+pkgrel=1
 pkgdesc="A Common Lisp implementation."
 arch=("x86_64")
 makedepends=("m4")
@@ -13,7 +13,7 @@ provides=("common-lisp" "ccl")
 conflicts=("ccl-bin" "ccl-git")
 source=("https://github.com/Clozure/ccl/releases/download/v${pkgver}/ccl-${pkgver}-linuxx86.tar.gz"
         "method.patch")
-sha256sums=('a94fda3daf26ce8c3d08e0db0e6e9907995acc10e0f8aad2125790b93eaa1556'
+sha256sums=('70069ee74c6f0685df83eb6224ce22f3e7919e17b233476c784e440d60e26bf1'
             'f565300c8cd80776d197fbe503864f22ecd2d7ee172880edac7f237cd7b23864')
 
 prepare() {
