@@ -81,7 +81,7 @@ pkgbase=linux-shmilee
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
 #pkgver=${_LLL_VER}.$((_LLL_SUBVER+1)) # 6.1.18 -> 6.1.19
 pkgver=${_LLL_VER}.${_LLL_SUBVER}
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux-shmilee x64${_psABI_level}"
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -202,8 +202,7 @@ prepare() {
     scripts/config --disable CONFIG_ARCH_SUPPORTS_NUMA_BALANCING
   fi
 
-  msg2 "Add anbox support..."
-  scripts/config --enable CONFIG_ASHMEM
+  msg2 "Add binder support..."
   # CONFIG_ION is not set
   scripts/config --enable CONFIG_ANDROID
   scripts/config --enable CONFIG_ANDROID_BINDER_IPC
@@ -258,7 +257,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The $pkgdesc kernel and modules with ${_PATHSET_DESC} and ashmem, binder enabled"
+  pkgdesc="The $pkgdesc kernel and modules with ${_PATHSET_DESC} and binder enabled"
   depends=(coreutils kmod mkinitcpio)
   optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
