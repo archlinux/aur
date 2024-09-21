@@ -1,4 +1,5 @@
-# Maintainer: Marco Rubin <marco.rubin@protonmail.com>
+# Maintainer: Siddhesh Dharme <siddheshdharme18@gmail.com>
+# Contributor: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=shaq
 pkgver=0.0.3
