@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gst-plugin-viper4linux-git
 _gitname=gst-plugin-viperfx
 pkgver=r36.a5c1b03
