@@ -1,10 +1,10 @@
 pkgbase = txt2tags-git
 	pkgdesc = A text formatting and conversion tool
 	pkgver = 3.9.r0.gbc7f2c4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://txt2tags.org/
 	arch = any
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-build

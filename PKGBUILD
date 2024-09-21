@@ -2,11 +2,11 @@
 
 pkgname=txt2tags-git
 pkgver=3.9.r0.gbc7f2c4
-pkgrel=1
+pkgrel=2
 pkgdesc="A text formatting and conversion tool"
 arch=('any')
 url="https://txt2tags.org/"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 depends=('python')
