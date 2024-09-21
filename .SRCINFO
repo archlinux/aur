@@ -1,8 +1,8 @@
 pkgbase = nsis-nsjson-bin
 	pkgdesc = A JSON (JavaScript Object Notation) parser, manipulator and generator plug-in for NSIS
 	pkgver = 1.1.1.0
-	pkgrel = 1
-	url = https://nsis.sourceforge.io/mediawiki/images/f/f0/NsJSON.zip
+	pkgrel = 2
+	url = https://nsis.sourceforge.io/NsJSON_plug-in
 	arch = any
 	license = custom
 	depends = nsis
