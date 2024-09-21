@@ -42,6 +42,6 @@ package() {
   install -D -m755 "bin/$_basename" "$pkgdir"/usr/bin/$_basename
   cp qrkcore/libQrkCore.so* "$pkgdir"/usr/lib/
   install -D -m644 "src/icons/logo.png" "$pkgdir/usr/share/pixmaps/$_basename.png"
-  install -D -m644 "$srcdir/../$_basename.desktop" "$pkgdir/usr/share/applications/$_basename.desktop"
+  install -D -m644 "$srcdir/$_basename/$_basename.desktop" "$pkgdir/usr/share/applications/$_basename.desktop"
 }
 
