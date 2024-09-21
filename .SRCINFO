@@ -1,7 +1,7 @@
 pkgbase = bzr-player
 	pkgdesc = Audio player supporting a wide types of multi-platform exotic file formats
 	pkgver = 2.0.73
-	pkgrel = 3
+	pkgrel = 4
 	url = http://bzrplayer.blazer.nu
 	arch = i686
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = bzr-player
 	noextract = BZR-Player-2.0.73.zip
 	options = !strip
 	source = BZR-Player-2.0.73.zip::http://bzrplayer.blazer.nu/getFile.php?id=2.0.73
-	source = https://raw.githubusercontent.com/ciros88/bzr2-linux/master/aur/bzr-player.sh
-	source = https://raw.githubusercontent.com/ciros88/bzr2-linux/master/bzr2_setup.sh
-	source = https://raw.githubusercontent.com/ciros88/bzr2-linux/master/x-bzr-player.xml
+	source = bzr-player.sh
+	source = https://raw.githubusercontent.com/aargirakis/BZRPlayer/cmake/src/inst/bzr2_setup.sh
+	source = https://raw.githubusercontent.com/aargirakis/BZRPlayer/cmake/src/inst/x-bzr-player.xml
 	sha256sums = 9f373c73e882c06fcfd68ab37af79851f79fa63f8ae2af032c2251c80c33e9ef
-	sha256sums = ed63452a9e0dc65e73c35ac770cf52ea1c81d4c9a18935225e7c1510ffbe1a76
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
