@@ -1,7 +1,7 @@
 # Maintainer: Franco Bugnano <franco@bugnano.it>
 
 pkgname=archivefs
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A read-only FUSE filesystem for mounting compressed archives, inspired by archivemount."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('libarchive')
 makedepends=('cargo' 'asciidoc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bugnano/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('b9dacea8f2d01465db5f527aae4c0c6e4b64fa919a034ca78b48912c776af7290358affe1b612116d3f63b6f143ae0bb0b6eaa1c4bd9870593db4e669c89a926')
+sha512sums=('acf784b1e71d331dc9070cfac3606ee9b6b389ba247e9e024eabfb6282f7a96a3fb16948e6f8755d080028f677592c6557de0d9592c16a920c77481603b50703')
 
 build() {
 	cd "$pkgname-$pkgver"
