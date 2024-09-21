@@ -1,5 +1,5 @@
 pkgname=sfnx
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="A minimal terminal-based password manager"
 arch=('x86_64')
