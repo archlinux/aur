@@ -2,7 +2,7 @@
 
 pkgname=libunicode
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unicode and UTF-8 C++ library"
 arch=('x86_64')
 url="https://github.com/contour-terminal/libunicode"
@@ -19,7 +19,7 @@ makedepends=(
   unicode-character-database
 )
 source=("git+https://github.com/contour-terminal/libunicode.git#tag=v$pkgver")
-sha256sums=('b47188bd8078a0ed5084d6a4c1861abeb4a19ad0898852d0702e0f4ab6895451')
+sha256sums=('808e7824139b1791f89eb49356c98b89f437bcd3b9adbfb62cce8ece9a12564d')
 
 build() {
   cmake -B build -S libunicode \
