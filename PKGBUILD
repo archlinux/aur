@@ -47,7 +47,7 @@ b2sums=('8ab72e581b2655bb24cebed02fb4b0e3ccdc5942d5b2a8789b91c34a624da3a76b83314
         'ec5a88697020338a881921ce4eb1aecff2ac97f0e83863c14daf2c47a162dbff121f137a048097489e9e226341e90d6c0ad531ad93e2a420c1695867604a1a04'
         '74a71b61656fd6181506aea67c1f25d699f1d5eb29e643b3ff7ecd5b641ab7dc3e19dad5371c1e7867316261f797a8d699b3de9236c80fb536ee1d793454cfda')
 
-declare -Ag _modules_name_map=(
+declare -rAg _modules_name_map=(
   [3rdparty/ffmpeg]=https://github.com/RPCS3/ffmpeg-core/archive/10d0ebc0b8c7c4f0b242c9998c8bdc4e55bb5067.tar.gz
   [3rdparty/asmjit/asmjit]=https://github.com/asmjit/asmjit/archive/416f7356967c1f66784dc1580fe157f9406d8bff.tar.gz
   # [3rdparty/llvm/llvm]=https://github.com/llvm/llvm-project/archive/cd89023f797900e4492da58b7bed36f702120011.tar.gz
@@ -77,7 +77,7 @@ declare -Ag _modules_name_map=(
   [3rdparty/cubeb/cubeb/googletest]=https://github.com/google/googletest/archive/800f5422ac9d9e0ad59cd860a2ef3a679588acb4.tar.gz
   [3rdparty/cubeb/cubeb/cmake/sanitizers-cmake]=https://github.com/arsenm/sanitizers-cmake/archive/aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a.tar.gz
 )
-declare -g _ignore_modules=(
+declare -rg _ignore_modules=(
   "3rdparty/llvm/llvm"
   "3rdparty/zlib/zlib"
   "3rdparty/pugixml"
