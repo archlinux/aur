@@ -1,15 +1,15 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname='python-jax'
-pkgver=0.4.31
+pkgver=0.4.33
 pkgrel=1
 pkgdesc='Composable transformations of Python+NumPy programs'
 arch=('any')
-url='https://github.com/google/jax/'
+url='https://github.com/jax-ml/jax/'
 license=('Apache')
 groups=('jax')
 depends=('python-absl'
-         'python-jaxlib>=0.4.27'
+         'python-jaxlib>=0.4.33'
          'python-ml-dtypes'
          'python-numpy'
          'python-opt_einsum'
@@ -19,8 +19,8 @@ optdepends=(
     'python-requests: Distributed computations'
 )
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("jax-${pkgver}.tar.gz::https://github.com/google/jax/archive/refs/tags/jax-v${pkgver}.tar.gz")
-sha256sums=('0d32a073f217a7412c57d531a526bf4fa5744c7f4f70694ecf00ca8114ee1dc9')
+source=("jax-${pkgver}.tar.gz::$url/archive/refs/tags/jax-v${pkgver}.tar.gz")
+sha256sums=('122a806e80fc1cd7d8ffaf9620701f2cb8e4fe22271c2cec53a9c60b30bd4c31')
 
 build() {
     JAX_RELEASE=$pkgver python -m build -nw jax-jax-v$pkgver
