@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=viper4linux-gui-git
 pkgver=2.2.r24.g2d0c84d
 pkgrel=1
