@@ -1,7 +1,7 @@
 pkgbase = emilua-bech32
 	pkgdesc = Bech32 codec for Emilua
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/emilua/bech32
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = emilua-bech32
 	makedepends = meson
 	makedepends = boost
 	makedepends = asciidoctor
+	makedepends = range-v3
 	depends = emilua
 	source = emilua-bech32::git+https://gitlab.com/emilua/bech32.git#tag=v1.0.0
 	md5sums = SKIP
