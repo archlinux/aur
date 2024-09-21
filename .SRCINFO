@@ -1,12 +1,12 @@
 pkgbase = vikunja-frontend
 	pkgdesc = The ToDo-app to organize your life - frontend static files
-	pkgver = 0.24.2
+	pkgver = 0.24.3
 	pkgrel = 1
 	url = https://vikunja.io/
 	arch = any
 	license = AGPL3
 	options = !strip
-	source = https://dl.vikunja.io/frontend/vikunja-frontend-0.24.2.zip
-	sha256sums = e2d52269d6fc892a8240d017bc7b66d63f4880304ec56d4d1ef7ed6f61635696
+	source = https://dl.vikunja.io/frontend/vikunja-frontend-0.24.3.zip
+	sha256sums = c6d8fcf102ea2c4a2f742b8cfc6eb9e089422c538ceb5f6fa9f290beb3b3f930
 
 pkgname = vikunja-frontend
