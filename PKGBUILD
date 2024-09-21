@@ -3,7 +3,7 @@
 pkgname=gnome-shell-extension-tophat
 _pkgbase=tophat
 pkgver=14
-pkgrel=1
+pkgrel=2
 pkgdesc="View CPU, memory, disk, and network activity in the GNOME top bar (v45 fork)."
 arch=(any)
 url="https://github.com/fflewddur/tophat"
@@ -12,35 +12,11 @@ depends=('dconf' 'gnome-shell>=45' 'libgtop')
 makedepends=('git' 'unzip' 'gettext')
 provides=(gnome-shell-extension-tophat)
 conflicts=(gnome-shell-extension-tophat)
-source=($_pkgbase::git+https://github.com/enecciari/tophat.git#branch=45)
-sha256sums=('SKIP')
+source=($_pkgbase::${url}/releases/download/v${pkgver}/tophat@fflewddur.github.io.v${pkgver}.shell-extension.zip)
+sha256sums=('42b8d44bde45452f8aabb31bf20a849e11be5f69a187fc6574c0695d6a07ef97')
 
-#pkgver() {
-  #cd "$_pkgbase"
-  #git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-#}
-
-build() {
-  cd "$srcdir/$_pkgbase"
-  local _uuid="tophat@fflewddur.github.io"
-
-  ./translate.sh
-  mkdir -p ./${_uuid}/locale
-  for potfile in po/*.po; do
-    locale=$(basename "$potfile" .po)
-    _path="./${_uuid}/locale/${locale}/LC_MESSAGES"
-    mkdir -p "$_path"
-    msgmerge -U "${potfile}" po/$_pkgbase.pot
-    msgfmt -o "$_path/${_uuid}.mo" "${potfile}"
-  done
-
-  #./package.sh
-  #unzip ./tophat@fflewddur.github.io.shell-extension.zip
-}
 
 package() {
-  cd "$srcdir/$_pkgbase"
-
   # Locate the extension.
   cd "$(dirname $(find -name 'metadata.json' -print -quit))"
   _uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json) 
