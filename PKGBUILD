@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=analogue
-_pkgver=0.17-6
+_pkgver=0.17-7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Analogue and Weighted Averaging Methods for Palaeoecology"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -21,8 +21,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f4fcf06d896fa95e76d79da19c19e6ff')
-b2sums=('15146a90a5893e2ee1d11fb918edb106c9a3cc0f5d84fe012fd879a34f01fd50fe704c7bfb50fce333f0fd33280d693101c351fe0321ff618ae44ec6a1c6b876')
+md5sums=('7f80266172812652bbddcb84e342561d')
+b2sums=('7199e6ede541874c8dd02fe2ec37d3191d6a5e0a1c1c3419b938c521c7dd74db7bfb499890bf4e9b8f03245b8127f1c63d8bee3ae554db5c5325920659b1b1c2')
 
 build() {
   mkdir build
