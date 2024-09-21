@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AlgDesign
-_pkgver=1.2.1
+_pkgver=1.2.1.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=1
 pkgdesc="Algorithmic Experimental Design"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fd2c7ba6d0cc0b438dd530c4a25c4017')
-b2sums=('6bffa83b310a1f2a2a33fce7ce9458cb08ddf648deb9389d9dfcccdf437a51d78f58312dd0625c927f32f9058f5cf1b78ab6bef78307c51ebf1d1a24e1505904')
+md5sums=('1beec173e3c5bb98f866a30774731428')
+b2sums=('4d89fef8bc51068cbde0b7d6185abf8dbc9636fac309454a3c54d19ef367fbebef70f9052ab4203f14903e3a7218ffde7e7b3028430709c21be20b2d1f6fb9dd')
 
 build() {
   mkdir build
