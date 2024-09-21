@@ -1,0 +1,23 @@
+pkgbase = ft-crypt-bin
+	pkgdesc = File and Text encryption support many algorithms
+	pkgver = 2.02
+	pkgrel = 1
+	url = https://ft-crypt.sourceforge.net
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = patchelf
+	depends = fontconfig
+	depends = glibc
+	depends = libx11
+	depends = libxft
+	provides = ft-crypt
+	provides = ftc
+	provides = ftc_engine
+	conflicts = ft-crypt
+	conflicts = ftc
+	conflicts = ftc_engine
+	noextract = ft-crypt-2.02-x86_64.zip
+	source_x86_64 = ft-crypt-2.02-x86_64.zip::https://downloads.sourceforge.net/sourceforge/ft-crypt/ftc_v2.02.zip
+	b2sums_x86_64 = 729fa8f237a1db7c78be918cbce4e4c3861aa98427f68fbdea54d6c5a1555831f1f7e79517ef775222d96e51f27221976cfe4b38c04dde4fc65811c34326ee64
+
+pkgname = ft-crypt-bin
