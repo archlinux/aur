@@ -1,0 +1,17 @@
+pkgbase = python-kconfiglib
+	pkgdesc = A flexible Python Kconfig implementation
+	pkgver = 14.1.0
+	pkgrel = 3
+	url = https://github.com/ulfalizer/Kconfiglib
+	arch = any
+	license = ISC
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	source = git+https://github.com/ulfalizer/Kconfiglib.git#tag=v14.1.0
+	b2sums = 92902783dd3d8b3b2625ebae5ba10259b8eddaed8aa18fe9c2ebd14ceb92169cf31c0ada706418e2df37b05d21ba6e841a9f54de8ab2025bd2cd59a9c54a42f6
+
+pkgname = python-kconfiglib

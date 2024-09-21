@@ -1,0 +1,4 @@
+[python-kconfiglib]
+source = "git"
+git = "https://github.com/ulfalizer/Kconfiglib.git"
+prefix = "v"
