@@ -1,6 +1,6 @@
 pkgbase = flamelens-git
 	pkgdesc = Flamegraph viewer in the terminal
-	pkgver = 0.1.0.r5.ge15be2f
+	pkgver = 0.2.0.r0.g4dd4100
 	pkgrel = 1
 	url = https://github.com/YS-L/flamelens
 	arch = x86_64
