@@ -1,6 +1,6 @@
 # Maintainer: ArcanusNEO <admin@transcliff.top>
 pkgname=see-git
-pkgver=r58.eff32b9
+pkgver=r59.b4dd0d2
 pkgrel=1
 pkgdesc="Simple and fast Web server."
 arch=("any")
@@ -8,6 +8,7 @@ url="https://github.com/wyhaya/see"
 license=("MIT")
 depends=("base-devel" "git")
 makedepends=("rust")
+options=('!lto')
 provides=("see")
 conflicts=("see")
 source=("$pkgname::git+$url")

@@ -1,6 +1,6 @@
 pkgbase = see-git
 	pkgdesc = Simple and fast Web server.
-	pkgver = r58.eff32b9
+	pkgver = r59.b4dd0d2
 	pkgrel = 1
 	url = https://github.com/wyhaya/see
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = see-git
 	depends = git
 	provides = see
 	conflicts = see
+	options = !lto
 	source = see-git::git+https://github.com/wyhaya/see
 	sha256sums = SKIP
 
