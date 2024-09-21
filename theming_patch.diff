@@ -1,9 +1,9 @@
 diff --git a/src/adw-style-manager.c b/src/adw-style-manager.c
-index d27ebda5..fbdef7f6 100644
+index 71f6915d..a90c0df1 100644
 --- a/src/adw-style-manager.c
 +++ b/src/adw-style-manager.c
-@@ -126,6 +126,24 @@ enable_animations_cb (AdwStyleManager *self)
-   self->animation_timeout_id = 0;
+@@ -284,6 +284,23 @@ notify_high_contrast_cb (AdwStyleManager *self)
+   g_object_notify_by_pspec (G_OBJECT (self), props[PROP_HIGH_CONTRAST]);
  }
  
 +static void
@@ -23,11 +23,10 @@ index d27ebda5..fbdef7f6 100644
 +               "gtk-application-prefer-dark-theme", is_dark_variant, NULL);
 +}
 +
-+
  static void
- update_stylesheet (AdwStyleManager *self)
+ adw_style_manager_constructed (GObject *object)
  {
-@@ -251,22 +269,6 @@ adw_style_manager_constructed (GObject *object)
+@@ -308,27 +325,6 @@ adw_style_manager_constructed (GObject *object)
                               self,
                               G_CONNECT_SWAPPED);
  
@@ -45,15 +44,20 @@ index d27ebda5..fbdef7f6 100644
 -      gtk_style_context_add_provider_for_display (self->display,
 -                                                  GTK_STYLE_PROVIDER (self->colors_provider),
 -                                                  GTK_STYLE_PROVIDER_PRIORITY_THEME);
+-
+-      self->accent_provider = gtk_css_provider_new ();
+-      gtk_style_context_add_provider_for_display (self->display,
+-                                                  GTK_STYLE_PROVIDER (self->accent_provider),
+-                                                  GTK_STYLE_PROVIDER_PRIORITY_THEME);
 -    }
 -
      self->animations_provider = gtk_css_provider_new ();
      gtk_css_provider_load_from_string (self->animations_provider,
                                         "* { transition: none; }");
-@@ -292,6 +294,17 @@ adw_style_manager_constructed (GObject *object)
+@@ -364,6 +360,17 @@ adw_style_manager_constructed (GObject *object)
  
    update_dark (self);
-   update_stylesheet (self);
+   update_stylesheet (self, UPDATE_ALL);
 +
 +  if (self->display && !adw_is_granite_present () && !g_getenv ("GTK_THEME")) {
 +    GSettingsSchemaSource *schema_source =
