@@ -1,6 +1,6 @@
 pkgbase = ente-cli
 	pkgdesc = A Command Line Utility for exporting data from Ente.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://ente.io
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ente-cli
 	license = GPL-3.0-or-later
 	makedepends = go
 	depends = glibc
-	source = ente-cli-0.2.0.tar.gz::https://github.com/ente-io/ente/archive/refs/tags/cli-v0.2.0.tar.gz
-	sha256sums = 07ec682ac90748dd59dcad65466e5a7c78309fbbe98ef33447c9d2463784299d
+	source = ente-cli-0.2.1.tar.gz::https://github.com/ente-io/ente/archive/refs/tags/cli-v0.2.1.tar.gz
+	sha256sums = 46c90feab6b7b645f19dfd89db3f9a611bbce4c7e9514c7c947975147cbb2c29
 
 pkgname = ente-cli
