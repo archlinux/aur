@@ -6,7 +6,7 @@
 # Contributor: JD Horelick <jdhore1@gmail.com>
 
 pkgname=devscripts
-pkgver=2.23.7
+pkgver=2.24.1
 pkgrel=1
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('i686' 'x86_64')
@@ -37,6 +37,7 @@ optdepends=(
     'perl-moo: Required for uscan'
     'perl-ipc-run: Required for uscan'
     'perl-lwp-protocol-https: Required for uscan'
+    'quilt: Required for edit-patch'
 )
 provides=(checkbashisms)
 conflicts=(checkbashisms)
@@ -45,11 +46,11 @@ source=(
     "https://deb.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.tar.xz"
     fixes.patch
 )
-sha256sums=('9ce9e5135472d8647e2ffb56655e00391e8e99aa7a4a8ae605cf0e1ffd9f3609'
+sha256sums=('205122cc0bd28cf3521f80fce87a6efdced83e4ff86c647f4ce018444a2ec52a'
             'f8e7ce50c0d008c5d38c94b93c9fc560e5dd2cc8f06eeb2909b0b1784911b768')
 
 prepare(){
-    cd "${pkgname}"
+    cd "${pkgname}-${pkgver}"
     patch -p1 -i "$srcdir/fixes.patch"
 
     # Ensure the local folder is recognized as a package and used appropriately.
@@ -57,12 +58,12 @@ prepare(){
 }
 
 build() {
-    cd "${pkgname}"
+    cd "${pkgname}-${pkgver}"
     make
 }
 
 package() {
-    cd "${pkgname}"
+    cd "${pkgname}-${pkgver}"
     make DESTDIR="$pkgdir" install
 
     # Install the script manpages appropriately
