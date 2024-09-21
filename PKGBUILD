@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Contributor: Philip Goto <philip.goto@gmail.com>
 pkgname=decoder
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Scan and Generate QR Codes"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ makedepends=(
   'meson'
 )
 source=("https://gitlab.gnome.org/World/decoder/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('6e5d22815386180fa934a2fecebc3761ab4d60617bb390a3c46c30ed5deb5a4d')
+sha256sums=('167923f5f4c4d9a5ea463f66c58acb46c618264705e4b2036cfee1e8a805a761')
 
 prepare() {
   cd "$pkgname-$pkgver"
