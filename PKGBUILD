@@ -2,7 +2,7 @@
 # Maintainer: jonah <me@jon4hz.io>
 
 pkgname='songlinkrr-bin'
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='a CLI tool to get song links for your currently playing songs on Plex'
 url='https://jon4hz.io'
@@ -11,8 +11,8 @@ license=('MIT')
 provides=('songlinkrr')
 conflicts=('songlinkrr')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jon4hz/songlinkrr/releases/download/v0.1.0/songlinkrr-v0.1.0-linux-amd64.tar.gz")
-sha256sums_x86_64=('60639e71538c6f61d044db36a8e61a06f7a6def7eb81d440d76997c47b970f0c')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jon4hz/songlinkrr/releases/download/v0.1.1/songlinkrr-v0.1.1-linux-amd64.tar.gz")
+sha256sums_x86_64=('2cc4804321d7b4b2960004b3960ce225d94b885700ee57d177c676039f7fa28b')
 
 package() {
   # bin
