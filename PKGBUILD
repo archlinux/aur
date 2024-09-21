@@ -2,7 +2,7 @@
 
 pkgname='python-evaluate'
 _pkgname=${pkgname#python-}
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='HuggigFace library for easily evaluating machine learning models and datasets'
 arch=('x86_64')
@@ -23,7 +23,7 @@ makedepends=('python-installer' 'python-packaging' 'python-setuptools')
 optdepends=('python-transformers')
 groups=('huggingface')
 source=("evaluate-${pkgver}.tar.gz::https://github.com/huggingface/evaluate/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('97c367c89b207a6dce29ffb529e05360be0dc9db8890ed7912cb88dac7d4b8af')
+sha256sums=('af193874d5fdd3c4321e1b740e3f67232fac950d357dfd9034337e8c17a5d09e')
 
 build() {
     cd $srcdir/evaluate-$pkgver
