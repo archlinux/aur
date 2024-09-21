@@ -1,17 +1,17 @@
 # Maintainer: Thomas Pellissier-Tanon <thomas at pellissier-tanon dot fr>
 
 pkgname=oxigraph
-pkgver=0.4.0_alpha.8
-pkgrel=2
+pkgver=0.4.0_rc.2
+pkgrel=1
 pkgdesc="SPARQL graph database and RDF toolkit"
 arch=('x86_64')
 url="https://github.com/oxigraph/oxigraph"
 license=('MIT' 'Apache-2.0')
 depends=('openssl' 'rocksdb')
-makedepends=('rust')
+makedepends=('pkg-config' 'rust')
 options=(!debug !lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/oxigraph/oxigraph/releases/download/v${pkgver//_/-}/oxigraph_v${pkgver//_/-}.tar.gz")
-sha512sums=('25e83aa16870a6b0801674cef7e70f7246afeb6c64da7a9f68bfb1cdae1ac1c427ca549637e68e23e940ac4f87a276bcb027dd23b2c0bf107bb48b7b4df83138')
+sha512sums=('e3a2b5e2e8fdf6d72695bea7a64ed1004d1c5df29d1b61a0248e46e6bad97a3d4322404518b3e9c13d9d7afc33ab7ba7b4699ab21a7bd45eb19c77a2b8559afe')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
@@ -26,12 +26,11 @@ build() {
     cargo build -p oxigraph-cli --frozen --release --features rocksdb-pkg-config
 }
 
-# FIXME: cargo test builds RocksDB
-#check() {
-#    export RUSTUP_TOOLCHAIN=stable
-#    export CARGO_HOME="$srcdir/.cargo"
-#    cargo test -p oxigraph-cli --frozen --features rocksdb-pkg-config
-#}
+check() {
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_HOME="$srcdir/.cargo"
+    cargo test -p oxigraph-cli --frozen --features rocksdb-pkg-config
+}
 
 package() {
     install -Dm755 "target/release/oxigraph" "$pkgdir/usr/bin/oxigraph"
