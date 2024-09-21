@@ -102,11 +102,6 @@
 #   'n' - do not apply this patch
 #   'y' - apply this patch
 #
-# Implement simple folding of preprocessor branches (PR: 80592)
-# CLANGD_PREPROCESSOR_FOLDING:
-#   'n' - do not apply this patch
-#   'y' - apply this patch
-#
 # Add tweak for implementing abstract class (D94942)
 # CLANGD_IMPL_ABSTRACT_CLASS:
 #   'n' - do not apply this patch
@@ -137,12 +132,11 @@
 : ${CLANGD_LSPREMOVEFROMCDB:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERRECORDPAD:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_CONFIG_INCLUDE_STYLE:=$CLANGD_DEFAULT_PATCH_STATE}
-: ${CLANGD_PREPROCESSOR_FOLDING:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_IMPL_ABSTRACT_CLASS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERFIELDIDX:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt-git
-pkgver=20.r1680.g6a3604ef8592
+pkgver=20.r6558.g56124feeb81e
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -154,7 +148,7 @@ depends=('gcc-libs' 'glibc' 'ncurses' 'zlib' 'zstd')
 conflicts=('clangd-opt')
 replaces=('clangd-opt')
 provides=('clangd-opt')
-options=('!strip')
+options=('!strip' '!lto')
 source=("git+https://github.com/llvm/llvm-project.git#branch=main"
         'hover-doxygen-trunk.patch'
         'doxygen-extra-render-trunk.patch'
@@ -175,11 +169,10 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=main"
         'lsp-remove-files-from-cdb.patch'
         'hover-record-paddings.patch'
         'config-include-style.patch'
-        'lsp-preprocessor-folding.patch'
         'implement-abstract-class.patch'
         'hover-field-idx.patch')
 sha256sums=('SKIP'
-            '8d8ce66ba3a55559dacaefc5623bd1f3298d645a724f9961cc1089c563b8677d'  # hover-doxygen-trunk
+            '56ce56294fe225c9b6a57a2da016115ed1cd9234c1d149ac205e43d945c8f4f9'  # hover-doxygen-trunk
             '614dd012009facb502a7d44e07fc819aa95383c8917537c57968f76ba7881a94'  # doxygen-extra-render-trunk
             '8c42651b7636726efc02bb258fcc33ac3d7ae7db4b98c58df1b96494631dbe98'  # doxygen-more-fields
             '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
@@ -198,7 +191,6 @@ sha256sums=('SKIP'
             '459bc42c7366305e562fa710551de909b581aa2358ca739585a0477dd06ebd6d'  # lsp-remove-files-from-cdb
             '0f5f7cc7f984988824bca66a2d08b0fa2b1b6ccdfcc1917e5cb0ed810036cfe7'  # hover-record-paddings
             'a05f3894ddb881ef77146da6955fc0612de684d7bc09a2ef9b9fc6aa750efcac'  # config-include-style
-            '020e5509e2e13578abb6943ccf228feaa0083dd27cc611fa62c7cd3d700d82f7'  # lsp-preprocessor-folding
             '9dceaa36e551e13c4145b45baf694b04369ed525e34baa3b7f14c15f3e248e5f'  # implement-abstract-class
             '4531b804507d11e1918858551575fee81605dbac0617d7b22f335b10642e782d') # hover-field-idx
 
@@ -254,9 +246,6 @@ prepare() {
     fi
     if [ "$CLANGD_LSPREMOVEFROMCDB" != "n" ]; then
         apply_patch lsp-remove-files-from-cdb
-    fi
-    if [ "$CLANGD_PREPROCESSOR_FOLDING" != "n" ]; then
-        apply_patch lsp-preprocessor-folding
     fi
 
     # Code-completion patches

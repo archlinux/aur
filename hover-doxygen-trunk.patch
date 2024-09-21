@@ -1,8 +1,8 @@
 diff --git a/clang-tools-extra/clangd/CMakeLists.txt b/clang-tools-extra/clangd/CMakeLists.txt
-index f49704157880..12db58382741 100644
+index 8dcbf5f47e05..0709d1088d44 100644
 --- a/clang-tools-extra/clangd/CMakeLists.txt
 +++ b/clang-tools-extra/clangd/CMakeLists.txt
-@@ -107,6 +107,7 @@ add_clang_library(clangDaemon
+@@ -109,6 +109,7 @@ add_clang_library(clangDaemon
    SemanticHighlighting.cpp
    SemanticSelection.cpp
    SourceCode.cpp
@@ -176,10 +176,10 @@ index fa81ad64d406..8a454a7d3377 100644
  /// Formats the signature for an item, as a display string and snippet.
  /// e.g. for const_reference std::vector<T>::at(size_type) const, this returns:
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index 06b949bc4a2b..051b30c3822f 100644
+index de103e011c70..88e8bb24b625 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -345,7 +345,7 @@ void enhanceFromIndex(HoverInfo &Hover, const NamedDecl &ND,
+@@ -350,7 +350,7 @@ void enhanceFromIndex(HoverInfo &Hover, const NamedDecl &ND,
    LookupRequest Req;
    Req.IDs.insert(ID);
    Index->lookup(Req, [&](const Symbol &S) {
@@ -188,7 +188,7 @@ index 06b949bc4a2b..051b30c3822f 100644
    });
  }
  
-@@ -623,10 +623,11 @@ HoverInfo getHoverContents(const NamedDecl *D, const PrintingPolicy &PP,
+@@ -628,10 +628,11 @@ HoverInfo getHoverContents(const NamedDecl *D, const PrintingPolicy &PP,
  
    HI.Name = printName(Ctx, *D);
    const auto *CommentD = getDeclForComment(D);
@@ -202,7 +202,7 @@ index 06b949bc4a2b..051b30c3822f 100644
  
    HI.Kind = index::getSymbolInfo(D).Kind;
  
-@@ -680,7 +681,8 @@ getPredefinedExprHoverContents(const PredefinedExpr &PE, ASTContext &Ctx,
+@@ -685,7 +686,8 @@ getPredefinedExprHoverContents(const PredefinedExpr &PE, ASTContext &Ctx,
    HoverInfo HI;
    HI.Name = PE.getIdentKindName();
    HI.Kind = index::SymbolKind::Variable;
@@ -212,7 +212,7 @@ index 06b949bc4a2b..051b30c3822f 100644
    if (const StringLiteral *Name = PE.getFunctionName()) {
      HI.Value.emplace();
      llvm::raw_string_ostream OS(*HI.Value);
-@@ -855,7 +857,7 @@ HoverInfo getDeducedTypeHoverContents(QualType QT, const syntax::Token &Tok,
+@@ -860,7 +862,7 @@ HoverInfo getDeducedTypeHoverContents(QualType QT, const syntax::Token &Tok,
  
      if (const auto *D = QT->getAsTagDecl()) {
        const auto *CommentD = getDeclForComment(D);
@@ -221,7 +221,7 @@ index 06b949bc4a2b..051b30c3822f 100644
        enhanceFromIndex(HI, *CommentD, Index);
      }
    }
-@@ -955,7 +957,8 @@ std::optional<HoverInfo> getHoverContents(const Attr *A, ParsedAST &AST) {
+@@ -960,7 +962,8 @@ std::optional<HoverInfo> getHoverContents(const Attr *A, ParsedAST &AST) {
      llvm::raw_string_ostream OS(HI.Definition);
      A->printPretty(OS, AST.getASTContext().getPrintingPolicy());
    }
@@ -231,7 +231,7 @@ index 06b949bc4a2b..051b30c3822f 100644
    return HI;
  }
  
-@@ -1453,6 +1456,10 @@ markup::Document HoverInfo::present() const {
+@@ -1458,6 +1461,10 @@ markup::Document HoverInfo::present() const {
  
    // Put a linebreak after header to increase readability.
    Output.addRuler();
@@ -242,7 +242,7 @@ index 06b949bc4a2b..051b30c3822f 100644
    // Print Types on their own lines to reduce chances of getting line-wrapped by
    // editor, as they might be long.
    if (ReturnType) {
-@@ -1461,15 +1468,44 @@ markup::Document HoverInfo::present() const {
+@@ -1466,15 +1473,44 @@ markup::Document HoverInfo::present() const {
      // Parameters:
      // - `bool param1`
      // - `int param2 = 5`
@@ -291,7 +291,7 @@ index 06b949bc4a2b..051b30c3822f 100644
    }
  
    // Don't print Type after Parameters or ReturnType as this will just duplicate
-@@ -1516,8 +1552,30 @@ markup::Document HoverInfo::present() const {
+@@ -1521,8 +1557,30 @@ markup::Document HoverInfo::present() const {
      Output.addParagraph().appendText(OS.str());
    }
  
@@ -764,7 +764,7 @@ index 72a4e8b00766..69af71058649 100644
    Sym.Type = Data.consumeString(Strings);
    if (!Data.consumeSize(Sym.IncludeHeaders))
 diff --git a/clang-tools-extra/clangd/index/Symbol.h b/clang-tools-extra/clangd/index/Symbol.h
-index 1aa526529923..8e13f3a5aa6e 100644
+index 62c47ddfc575..9c6c94f4b685 100644
 --- a/clang-tools-extra/clangd/index/Symbol.h
 +++ b/clang-tools-extra/clangd/index/Symbol.h
 @@ -9,6 +9,7 @@
@@ -784,7 +784,7 @@ index 1aa526529923..8e13f3a5aa6e 100644
    /// Type when this symbol is used in an expression. (Short display form).
    /// e.g. return type of a function, or type of a variable.
    /// Only set when the symbol is indexed for completion.
-@@ -172,7 +173,20 @@ template <typename Callback> void visitStrings(Symbol &S, const Callback &CB) {
+@@ -174,7 +175,20 @@ template <typename Callback> void visitStrings(Symbol &S, const Callback &CB) {
    CB(S.TemplateSpecializationArgs);
    CB(S.Signature);
    CB(S.CompletionSnippetSuffix);
@@ -807,32 +807,63 @@ index 1aa526529923..8e13f3a5aa6e 100644
    CB(S.Type);
    auto RawCharPointerCB = [&CB](const char *&P) {
 diff --git a/clang-tools-extra/clangd/index/SymbolCollector.cpp b/clang-tools-extra/clangd/index/SymbolCollector.cpp
-index 5c4e2150cf31..40c227e2745a 100644
+index a76894cf0855..d8b4aa133bae 100644
 --- a/clang-tools-extra/clangd/index/SymbolCollector.cpp
 +++ b/clang-tools-extra/clangd/index/SymbolCollector.cpp
-@@ -1025,16 +1025,17 @@ const Symbol *SymbolCollector::addDeclaration(const NamedDecl &ND, SymbolID ID,
-       *ASTCtx, *PP, CodeCompletionContext::CCC_Symbol, *CompletionAllocator,
+@@ -1030,18 +1030,17 @@ const Symbol *SymbolCollector::addDeclaration(const NamedDecl &ND, SymbolID ID,
        *CompletionTUInfo,
        /*IncludeBriefComments*/ false);
--  std::string Documentation =
--      formatDocumentation(*CCS, getDocComment(Ctx, SymbolCompletion,
--                                              /*CommentsFromHeaders=*/true));
-+
-+  const SymbolDocumentationOwned Documentation =
-+      getDocumentation(Ctx, SymbolCompletion, /*CommentsFromHeaders=*/true);
-+
-   if (!(S.Flags & Symbol::IndexedForCodeCompletion)) {
-     if (Opts.StoreAllDocumentation)
+   std::string DocComment;
+-  std::string Documentation;
++  SymbolDocumentationOwned Documentation;
+   bool AlreadyHasDoc = S.Flags & Symbol::HasDocComment;
+   if (!AlreadyHasDoc) {
+-    DocComment = getDocComment(Ctx, SymbolCompletion,
+-                               /*CommentsFromHeaders=*/true);
+-    Documentation = formatDocumentation(*CCS, DocComment);
++    Documentation =
++        getDocumentation(Ctx, SymbolCompletion, /*CommentsFromHeaders=*/true);
+   }
+   const auto UpdateDoc = [&] {
+     if (!AlreadyHasDoc) {
+       if (!DocComment.empty())
+         S.Flags |= Symbol::HasDocComment;
 -      S.Documentation = Documentation;
 +      S.Documentation = Documentation.toRef();
-     Symbols.insert(S);
-     return Symbols.find(S.ID);
+     }
+   };
+   if (!(S.Flags & Symbol::IndexedForCodeCompletion)) {
+@@ -1091,24 +1090,15 @@ void SymbolCollector::addDefinition(const NamedDecl &ND, const Symbol &DeclSym,
+   // FIXME: use the result to filter out symbols.
+   S.Definition = *DefLoc;
+ 
+-  std::string DocComment;
+-  std::string Documentation;
++  SymbolDocumentationOwned Documentation;
+   if (!SkipDocCheck && !(S.Flags & Symbol::HasDocComment) &&
+       (llvm::isa<FunctionDecl>(ND) || llvm::isa<CXXMethodDecl>(ND))) {
+     CodeCompletionResult SymbolCompletion(&getTemplateOrThis(ND), 0);
+-    const auto *CCS = SymbolCompletion.CreateCodeCompletionString(
+-        *ASTCtx, *PP, CodeCompletionContext::CCC_Symbol, *CompletionAllocator,
+-        *CompletionTUInfo,
+-        /*IncludeBriefComments*/ false);
+-    DocComment = getDocComment(ND.getASTContext(), SymbolCompletion,
+-                               /*CommentsFromHeaders=*/true);
+-    if (!S.Documentation.empty())
+-      Documentation = S.Documentation.str() + '\n' + DocComment;
+-    else
+-      Documentation = formatDocumentation(*CCS, DocComment);
+-    if (!DocComment.empty())
+-      S.Flags |= Symbol::HasDocComment;
+-    S.Documentation = Documentation;
++    if (S.Documentation.empty())
++      Documentation = getDocumentation(ND.getASTContext(), SymbolCompletion,
++                                       /*CommentsFromHeaders=*/true);
++    S.Flags |= Symbol::HasDocComment;
++    S.Documentation = Documentation.toRef();
    }
--  S.Documentation = Documentation;
-+  S.Documentation = Documentation.toRef();
-   std::string Signature;
-   std::string SnippetSuffix;
-   getSignature(*CCS, &Signature, &SnippetSuffix, SymbolCompletion.Kind,
+ 
+   Symbols.insert(S);
 diff --git a/clang-tools-extra/clangd/index/YAMLSerialization.cpp b/clang-tools-extra/clangd/index/YAMLSerialization.cpp
 index 214a847b5edd..e87c777d8966 100644
 --- a/clang-tools-extra/clangd/index/YAMLSerialization.cpp
@@ -1060,7 +1091,7 @@ index de5f533d3164..901c59f301a5 100644
  
  TEST_F(CompletionStringTest, MultipleAnnotations) {
 diff --git a/clang-tools-extra/clangd/unittests/HoverTests.cpp b/clang-tools-extra/clangd/unittests/HoverTests.cpp
-index d9e97e5215a2..69444e01064d 100644
+index 69f6df46c87c..a5c2bd985432 100644
 --- a/clang-tools-extra/clangd/unittests/HoverTests.cpp
 +++ b/clang-tools-extra/clangd/unittests/HoverTests.cpp
 @@ -10,6 +10,7 @@
@@ -1636,7 +1667,7 @@ index 658b4e200004..107034e3819f 100644
  
  MATCHER_P2(IncludeHeaderWithRef, IncludeHeader, References, "") {
 diff --git a/clang-tools-extra/clangd/unittests/SerializationTests.cpp b/clang-tools-extra/clangd/unittests/SerializationTests.cpp
-index 35a2e2ba77a6..da7b462aa31c 100644
+index 2a7a6c36d3d1..3de53cf92385 100644
 --- a/clang-tools-extra/clangd/unittests/SerializationTests.cpp
 +++ b/clang-tools-extra/clangd/unittests/SerializationTests.cpp
 @@ -8,6 +8,7 @@
@@ -1647,7 +1678,7 @@ index 35a2e2ba77a6..da7b462aa31c 100644
  #include "index/Serialization.h"
  #include "support/Logger.h"
  #include "clang/Tooling/CompilationDatabase.h"
-@@ -48,7 +49,22 @@ CanonicalDeclaration:
+@@ -49,7 +50,22 @@ CanonicalDeclaration:
      Line: 1
      Column: 1
  Flags:    129
@@ -1671,7 +1702,7 @@ index 35a2e2ba77a6..da7b462aa31c 100644
  ReturnType:    'int'
  IncludeHeaders:
    - Header:    'include1'
-@@ -152,7 +168,20 @@ TEST(SerializationTest, YAMLConversions) {
+@@ -153,7 +169,20 @@ TEST(SerializationTest, YAMLConversions) {
  
    EXPECT_THAT(Sym1, qName("clang::Foo1"));
    EXPECT_EQ(Sym1.Signature, "");
@@ -1694,7 +1725,7 @@ index 35a2e2ba77a6..da7b462aa31c 100644
    EXPECT_EQ(StringRef(Sym1.CanonicalDeclaration.FileURI), "file:///path/foo.h");
    EXPECT_EQ(Sym1.Origin, SymbolOrigin::Static);
 diff --git a/clang-tools-extra/clangd/unittests/SymbolCollectorTests.cpp b/clang-tools-extra/clangd/unittests/SymbolCollectorTests.cpp
-index 1e7a30e69fab..46d36c87163b 100644
+index 0666be95b6b9..c27d101fa73f 100644
 --- a/clang-tools-extra/clangd/unittests/SymbolCollectorTests.cpp
 +++ b/clang-tools-extra/clangd/unittests/SymbolCollectorTests.cpp
 @@ -53,7 +53,7 @@ MATCHER_P(labeled, Label, "") {
@@ -1764,10 +1795,10 @@ index 000000000000..12c955c458cc
 +
 +#endif
 diff --git a/llvm/utils/gn/secondary/clang-tools-extra/clangd/BUILD.gn b/llvm/utils/gn/secondary/clang-tools-extra/clangd/BUILD.gn
-index b64355fded62..d54f67523d27 100644
+index a116c0abe0b2..dce2b9f2d6b2 100644
 --- a/llvm/utils/gn/secondary/clang-tools-extra/clangd/BUILD.gn
 +++ b/llvm/utils/gn/secondary/clang-tools-extra/clangd/BUILD.gn
-@@ -124,6 +124,7 @@ static_library("clangd") {
+@@ -123,6 +123,7 @@ static_library("clangd") {
      "SemanticHighlighting.cpp",
      "SemanticSelection.cpp",
      "SourceCode.cpp",

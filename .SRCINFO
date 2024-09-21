@@ -1,6 +1,6 @@
 pkgbase = clangd-opt-git
 	pkgdesc = Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)
-	pkgver = 20.r1680.g6a3604ef8592
+	pkgver = 20.r6558.g56124feeb81e
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = clangd-opt-git
 	conflicts = clangd-opt
 	replaces = clangd-opt
 	options = !strip
+	options = !lto
 	source = git+https://github.com/llvm/llvm-project.git#branch=main
 	source = hover-doxygen-trunk.patch
 	source = doxygen-extra-render-trunk.patch
@@ -47,11 +48,10 @@ pkgbase = clangd-opt-git
 	source = lsp-remove-files-from-cdb.patch
 	source = hover-record-paddings.patch
 	source = config-include-style.patch
-	source = lsp-preprocessor-folding.patch
 	source = implement-abstract-class.patch
 	source = hover-field-idx.patch
 	sha256sums = SKIP
-	sha256sums = 8d8ce66ba3a55559dacaefc5623bd1f3298d645a724f9961cc1089c563b8677d
+	sha256sums = 56ce56294fe225c9b6a57a2da016115ed1cd9234c1d149ac205e43d945c8f4f9
 	sha256sums = 614dd012009facb502a7d44e07fc819aa95383c8917537c57968f76ba7881a94
 	sha256sums = 8c42651b7636726efc02bb258fcc33ac3d7ae7db4b98c58df1b96494631dbe98
 	sha256sums = 9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7
@@ -70,7 +70,6 @@ pkgbase = clangd-opt-git
 	sha256sums = 459bc42c7366305e562fa710551de909b581aa2358ca739585a0477dd06ebd6d
 	sha256sums = 0f5f7cc7f984988824bca66a2d08b0fa2b1b6ccdfcc1917e5cb0ed810036cfe7
 	sha256sums = a05f3894ddb881ef77146da6955fc0612de684d7bc09a2ef9b9fc6aa750efcac
-	sha256sums = 020e5509e2e13578abb6943ccf228feaa0083dd27cc611fa62c7cd3d700d82f7
 	sha256sums = 9dceaa36e551e13c4145b45baf694b04369ed525e34baa3b7f14c15f3e248e5f
 	sha256sums = 4531b804507d11e1918858551575fee81605dbac0617d7b22f335b10642e782d
 
