@@ -1,5 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-# Co Maintainer: harshadgavali <harshadgavali5022 at gmail dot com>
+# Maintainer: harshadgavali <harshadgavali5022 at gmail dot com>
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-x11-gesture-daemon
 _name=gesture_improvements_gesture_daemon
 pkgver=0.2.1
