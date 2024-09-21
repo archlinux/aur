@@ -1,0 +1,21 @@
+pkgbase = cardo
+	pkgdesc = Cardo podcast client
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/cardo-podcast/cardo/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	makedepends = pnpm
+	makedepends = nodejs
+	depends = gtk3
+	depends = webkit2gtk
+	depends = sqlite
+	provides = cardo
+	conflicts = cardo
+	options = !lto
+	source = git+https://github.com/cardo-podcast/cardo/
+	sha256sums = SKIP
+
+pkgname = cardo
