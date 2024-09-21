@@ -1,0 +1,17 @@
+pkgbase = enigma-cracker
+	pkgdesc = A program to break the WWII Enigma code
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://enigma-cracker.sourceforge.net
+	arch = x86_64
+	arch = i686
+	license = GPL-2.0-or-later
+	depends = gcc-libs
+	depends = glibc
+	source = enigma-cracker-prealpha-.001.tar.gz::https://downloads.sourceforge.net/sourceforge/enigma-cracker/enigma-cracker-prealpha-.001.tar.gz
+	source = enigma-cracker-prealpha-.001.tar.gz.sig::https://downloads.sourceforge.net/sourceforge/enigma-cracker/enigma-cracker-prealpha-.001.tar.gz.sig
+	validpgpkeys = C026AC9DCA230B40F76584F6FCB04E248D0A77B7
+	b2sums = 50358fced9a99167a00f982e07bae15cfaec264026df8fe9d2a8aa37f0a30190a232bcbe7eaaf04f0f18c0ef0c03332a3a8eaf8753a5f6f81bc2a62397ce5a9e
+	b2sums = SKIP
+
+pkgname = enigma-cracker
