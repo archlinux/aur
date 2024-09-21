@@ -1,6 +1,6 @@
 pkgbase = vikunja-api-bin
 	pkgdesc = The Todo-app to organize your life
-	pkgver = 0.24.2
+	pkgver = 0.24.3
 	pkgrel = 1
 	url = https://vikunja.io/
 	install = vikunja.install
@@ -18,11 +18,11 @@ pkgbase = vikunja-api-bin
 	sha256sums = 0a666743be3deaa16a436681d18003b11a1660b5fe7868fa25af2de11c7624f7
 	sha256sums = 77ae5d2215017969f561351a543f6777a0f55de20abb80094509188ba89e1f3e
 	sha256sums = bd8537a6a74fa4c8d4ea789dd54a8684d9d696835762d1e3e36f06c9c9dfab7e
-	source_x86_64 = https://dl.vikunja.io/vikunja/0.24.2/vikunja-v0.24.2-linux-amd64-full.zip
-	sha256sums_x86_64 = bc1452a238e7b4a8b380fc5a7cd391c154adb293ad085bf2e2c94c4fa310e99d
-	source_armv7h = https://dl.vikunja.io/vikunja/0.24.2/vikunja-v0.24.2-linux-arm-7-full.zip
-	sha256sums_armv7h = 03a141520726347935476d44f11729e5996b983ebd1fadeccf3e59d34f48c528
-	source_aarch64 = https://dl.vikunja.io/vikunja/0.24.2/vikunja-v0.24.2-linux-arm64-full.zip
-	sha256sums_aarch64 = c2354bff0bbee3398e3438ca8fd9b76348ee868a08353aeb86a4481db364ce13
+	source_x86_64 = https://dl.vikunja.io/vikunja/0.24.3/vikunja-v0.24.3-linux-amd64-full.zip
+	sha256sums_x86_64 = 65b2cd81927f4d49c412b675898386ecb8816eb8b4c41305ddecf3622d023b58
+	source_armv7h = https://dl.vikunja.io/vikunja/0.24.3/vikunja-v0.24.3-linux-arm-7-full.zip
+	sha256sums_armv7h = 36e3f3435974338c2762bbf8402894a096bbd14c543d33ad996e27bff5f6782b
+	source_aarch64 = https://dl.vikunja.io/vikunja/0.24.3/vikunja-v0.24.3-linux-arm64-full.zip
+	sha256sums_aarch64 = f50ee48fa65524e68c15466b74368b09838dd766ea8aeae1419f0b04dd2bc62c
 
 pkgname = vikunja-api-bin
