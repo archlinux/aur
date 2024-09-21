@@ -5,7 +5,7 @@ pkgbase = sfnx
 	url = https://github.com/themohitnair/sfnx
 	arch = x86_64
 	license = MIT
-	source = sfnx-0.0.3.tar.gz::https://github.com/themohitnair/sfnx/releases/download/0.0.3/sfnx-0.0.3-linux-x86_64.tar.gz
-	sha256sums = SKIP
+	source = sfnx-0.0.3.tar.gz::https://github.com/themohitnair/sfnx/releases/download/v0.0.3/sfnx-0.0.3-linux-x86_64.tar.gz
+	sha256sums = ba7ed00aa7d506ac44baac3c4214e60a39fd94ee8da75ba564a75d8ee661c275
 
 pkgname = sfnx
