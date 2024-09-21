@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-battery-status-git
 _uuid=battery-status@atareao.es
 pkgver=4.r25.gf486cb7
