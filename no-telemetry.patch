@@ -1,0 +1,181 @@
+From a014b4d9574e660905c42023ffb443f94c7a0f7a Mon Sep 17 00:00:00 2001
+From: Capi Etheriel <barraponto@gmail.com>
+Date: Sat, 21 Sep 2024 12:56:58 -0300
+Subject: [PATCH] Remove posthog telemetry.
+
+---
+ data/ui/preferences_general.blp          |  4 +-
+ flatpak/python3-modules.json             | 54 ------------------------
+ frog/services/telemetry.py               | 35 +++------------
+ frog/widgets/preferences_general_page.py |  9 ++--
+ 4 files changed, 15 insertions(+), 87 deletions(-)
+
+diff --git a/data/ui/preferences_general.blp b/data/ui/preferences_general.blp
+index 62f688b..97d1613 100644
+--- a/data/ui/preferences_general.blp
++++ b/data/ui/preferences_general.blp
+@@ -1,7 +1,7 @@
+ using Gtk 4.0;
+ using Adw 1;
+ 
+-template $PreferencesGeneralPage : Adw.PreferencesPage {
++template $PreferencesGeneralPage: Adw.PreferencesPage {
+   title: _("_General");
+   use-underline: true;
+   icon-name: "emblem-system-symbolic";
+@@ -48,7 +48,7 @@ template $PreferencesGeneralPage : Adw.PreferencesPage {
+     Adw.ActionRow {
+       title: _("Collect analytics");
+       use-underline: true;
+-      subtitle: _("Allow anonymous analytics.");
++      subtitle: _("Disabled via fork.");
+       activatable-widget: telemetry_switch;
+ 
+       Switch telemetry_switch {
+diff --git a/flatpak/python3-modules.json b/flatpak/python3-modules.json
+index e8cb0a9..1a7b0d6 100644
+--- a/flatpak/python3-modules.json
++++ b/flatpak/python3-modules.json
+@@ -17,60 +17,6 @@
+                 }
+             ]
+         },
+-        {
+-            "name": "python3-posthog",
+-            "buildsystem": "simple",
+-            "build-commands": [
+-                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"posthog\" --no-build-isolation"
+-            ],
+-            "sources": [
+-                {
+-                    "type": "file",
+-                    "url": "https://files.pythonhosted.org/packages/df/73/b6e24bd22e6720ca8ee9a85a0c4a2971af8497d8f3193fa05390cbd46e09/backoff-2.2.1-py3-none-any.whl",
+-                    "sha256": "63579f9a0628e06278f7e47b7d7d5b6ce20dc65c5e96a6f3ca99a6adca0396e8"
+-                },
+-                {
+-                    "type": "file",
+-                    "url": "https://files.pythonhosted.org/packages/1c/d5/c84e1a17bf61d4df64ca866a1c9a913874b4e9bdc131ec689a0ad013fb36/certifi-2024.7.4-py3-none-any.whl",
+-                    "sha256": "c198e21b1289c2ab85ee4e67bb4b4ef3ead0892059901a8d5b622f24a1101e90"
+-                },
+-                {
+-                    "type": "file",
+-                    "url": "https://files.pythonhosted.org/packages/63/09/c1bc53dab74b1816a00d8d030de5bf98f724c52c1635e07681d312f20be8/charset-normalizer-3.3.2.tar.gz",
+-                    "sha256": "f30c3cb33b24454a82faecaf01b19c18562b1e89558fb6c56de4d9118a032fd5"
+-                },
+-                {
+-                    "type": "file",
+-                    "url": "https://files.pythonhosted.org/packages/22/7e/d71db821f177828df9dea8c42ac46473366f191be53080e552e628aad991/idna-3.8-py3-none-any.whl",
+-                    "sha256": "050b4e5baadcd44d760cedbd2b8e639f2ff89bbc7a5730fcc662954303377aac"
+-                },
+-                {
+-                    "type": "file",
+-                    "url": "https://files.pythonhosted.org/packages/9a/67/7e8406a29b6c45be7af7740456f7f37025f0506ae2e05fb9009a53946860/monotonic-1.6-py2.py3-none-any.whl",
+-                    "sha256": "68687e19a14f11f26d140dd5c86f3dba4bf5df58003000ed467e0e2a69bca96c"
+-                },
+-                {
+-                    "type": "file",
+-                    "url": "https://files.pythonhosted.org/packages/53/62/2e7f75beedf9b5411f133a5af558cc7d76e20bbf6778a51ade15e6d3152b/posthog-3.5.2-py2.py3-none-any.whl",
+-                    "sha256": "605b3d92369971cc99290b1fcc8534cbddac3726ef7972caa993454a5ecfb644"
+-                },
+-                {
+-                    "type": "file",
+-                    "url": "https://files.pythonhosted.org/packages/ec/57/56b9bcc3c9c6a792fcbaf139543cee77261f3651ca9da0c93f5c1221264b/python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+-                    "sha256": "a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427"
+-                },
+-                {
+-                    "type": "file",
+-                    "url": "https://files.pythonhosted.org/packages/f9/9b/335f9764261e915ed497fcdeb11df5dfd6f7bf257d4a6a2a686d80da4d54/requests-2.32.3-py3-none-any.whl",
+-                    "sha256": "70761cfe03c773ceb22aa2f671b4757976145175cdfca038c02654d061d6dcc6"
+-                },
+-                {
+-                    "type": "file",
+-                    "url": "https://files.pythonhosted.org/packages/ca/1c/89ffc63a9605b583d5df2be791a27bc1a42b7c32bab68d3c8f2f73a98cd4/urllib3-2.2.2-py3-none-any.whl",
+-                    "sha256": "a448b2f64d686155468037e1ace9f2d2199776e17f0a46610480d311f73e3472"
+-                }
+-            ]
+-        },
+         {
+             "name": "python3-nanoid",
+             "buildsystem": "simple",
+diff --git a/frog/services/telemetry.py b/frog/services/telemetry.py
+index bed7179..8826312 100644
+--- a/frog/services/telemetry.py
++++ b/frog/services/telemetry.py
+@@ -1,33 +1,12 @@
+-from typing import Any
+-
+ from gi.repository import GObject
+-from posthog import Posthog
+-
+-
+-class TelemetryService(GObject.GObject):
+-    _gtype_name = 'TelemetryService'
+-
+-    posthog: Posthog | None
+-    installation_id: str | None
+-    is_active: bool = True
+-
+-    def __init__(self):
+-        super().__init__()
+-        self.posthog = Posthog(project_api_key='phc_HpETCN6yQKZIr8gr6mBQTd3H0SjKUBrNMI3AizoX97f',
+-                               host='https://eu.posthog.com')
+-
+-    def set_installation_id(self, installation_id: str):
+-        self.installation_id = installation_id
+-
+-    def set_is_active(self, is_active: bool):
+-        self.is_active = is_active
+ 
+-    def capture(self, event: str, props: Any = None):
+-        if self.posthog and self.is_active:
+-            self.posthog.capture(self.installation_id, event, props)
+ 
+-    def capture_page_view(self, page_name: str):
+-        self.posthog.capture(self.installation_id, '$pageview', {'$current_url': page_name})
++class MockTelemetry(GObject.GObject):
++    def __init__(self, *args, **kwargs): ...
++    def set_installation_id(self, *argsm, **kwargs): ...
++    def set_is_active(self, *argsm, **kwargs): ...
++    def capture(self, *argsm, **kwargs): ...
++    def capture_page_view(self, *argsm, **kwargs): ...
+ 
+ 
+-telemetry = TelemetryService()
++telemetry = MockTelemetry()
+diff --git a/frog/widgets/preferences_general_page.py b/frog/widgets/preferences_general_page.py
+index e2c7100..6def94a 100644
+--- a/frog/widgets/preferences_general_page.py
++++ b/frog/widgets/preferences_general_page.py
+@@ -25,7 +25,7 @@
+ # holders shall not be used in advertising or otherwise to promote the sale,
+ # use or other dealings in this Software without prior written
+ # authorization.
+-from gi.repository import Gtk, Adw, Gio
++from gi.repository import Adw, Gio, Gtk
+ from loguru import logger
+ 
+ from frog.config import RESOURCE_PREFIX
+@@ -50,15 +50,18 @@ class PreferencesGeneralPage(Adw.PreferencesPage):
+ 
+         self.settings.bind('autocopy', self.autocopy_switch, 'active', Gio.SettingsBindFlags.DEFAULT)
+         self.settings.bind('autolinks', self.autolinks_switch, 'active', Gio.SettingsBindFlags.DEFAULT)
+-        self.settings.bind('telemetry', self.telemetry_switch, 'active', Gio.SettingsBindFlags.DEFAULT)
+ 
+         downloaded_langs = language_manager.get_downloaded_languages()
+         # Fill second language
+         self.extra_language_combo.set_model(Gtk.StringList.new(downloaded_langs))
+         extra_language_index = downloaded_langs.index(
+-            language_manager.get_language(self.settings.get_string('extra-language')))
++            language_manager.get_language(self.settings.get_string('extra-language'))
++        )
+         self.extra_language_combo.set_selected(extra_language_index)
+         self.extra_language_combo.connect('notify::selected-item', self._on_extra_language_changed)
++        # Disable telemetry
++        self.telemetry_switch.set_active(False)
++        self.telemetry_switch.set_sensitive(False)
+ 
+     def do_show(self, *args, **kwargs):
+         telemetry.capture_page_view('preferences_general')
+-- 
+2.46.1
+
