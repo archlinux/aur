@@ -1,7 +1,7 @@
 # Maintainer: hafeoz <hafeoz@kolabnow.com>
 pkgname=synapse-auto-compressor
-_pkgname=rust-synapse-compress-state
-pkgver=0.1.3
+reponame=rust-synapse-compress-state
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A tool to compress some state in a Synapse instance's database"
 arch=('x86_64')
@@ -9,11 +9,12 @@ url="https://github.com/matrix-org/rust-synapse-compress-state"
 license=('Apache-2.0')
 depends=()
 makedepends=('cargo' 'python3' 'libjemalloc.so')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/matrix-org/$_pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('c80f6a56cfcd85a95d2712d62a806d7beee4e03b40467e4522261ee5a42664df43a77b605b5187e5ebc0b3aa4f50d67bb494031b5243493ce471a0534dd140e7')
+source=("$reponame::git+https://github.com/matrix-org/rust-synapse-compress-state.git#tag=v${pkgver}")
+options=(!lto)
+b2sums=('7b5ea83c873f2f44a5d2306aa046951202aa0c621813c5a06ff1235b3e6fc39f4728cb5be0a00305dd29a17a701be107a7478067bf2a9eddd14507cfb06b57b1')
 
 prepare() {
-    cd "$_pkgname-$pkgver/synapse_auto_compressor"
+    cd "$reponame/synapse_auto_compressor"
 
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -21,26 +22,26 @@ prepare() {
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-
-    cd "$_pkgname-$pkgver/synapse_auto_compressor"
-
     export JEMALLOC_OVERRIDE=/usr/lib/libjemalloc_pic.a
     export CARGO_FEATURE_UNPREFIXED_MALLOC_ON_SUPPORTED_PLATFORMS=1
+
+    cd "$reponame/synapse_auto_compressor"
+
     cargo build --frozen --release --all-features
 }
 
 check() {
     export RUSTUP_TOOLCHAIN=stable
-
-    cd "$_pkgname-$pkgver/synapse_auto_compressor"
-
     export JEMALLOC_OVERRIDE=/usr/lib/libjemalloc_pic.a
     export CARGO_FEATURE_UNPREFIXED_MALLOC_ON_SUPPORTED_PLATFORMS=1
+
+    cd "$reponame/synapse_auto_compressor"
+
     cargo test --frozen --all-features
 }
 
 package() {
-    cd "$_pkgname-$pkgver"
+    cd "$reponame"
 
     install -Dm755 -t "$pkgdir/usr/bin/" "synapse_auto_compressor/target/release/synapse_auto_compressor"
 }
