@@ -1,6 +1,6 @@
 pkgbase = power-options-daemon-git
 	pkgdesc = The core daemon for Power Options, a blazingly fast power management solution.
-	pkgver = 1.1.0r15.e93173
+	pkgver = 1.1.0r19.885a34
 	pkgrel = 1
 	url = https://github.com/thealexdev23/power-options
 	install = daemon.install
