@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=python-pyro-hydro
 pkgdesc="A python hydrodynamics code for teaching and prototyping"
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 arch=(any)
 url="https://github.com/python-hydro/pyro2"
@@ -10,7 +10,7 @@ depends=(python-numba python-matplotlib python-h5py-openmpi)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 checkdepends=(python-pytest)
 source=(pyro2-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('33711d0b8dd9a5504d204e57a3f3c38d05b52b14f3123cd3e201d6d3c6741056e13592803a0a3c06b89fe852dfe9b52342bce3f8db953dc24f741d45171fd19f')
+sha512sums=('16652829e2de5594812dd4ba2e6140c8d9604609a40fa4c68ccaf51e12cdf4aefb0ecbe4f1530265b9631a646567667f583aaf100e0750e10e678bd29b05d908')
 
 build() {
   cd pyro2-${pkgver}
