@@ -2,10 +2,10 @@
 # Maintainer: silentnoodle <lonnqvistben at gmail dot com>
 # Contributor: agnotek <agnostic.sn [at]gmail.com>
 pkgname=telegram-desktop-dev-bin
-pkgver=5.5.3
+pkgver=5.5.6
 pkgrel=1
 # If it is a dev-only version, set this to 1
-_dev=0
+_dev=1
 pkgdesc="Official desktop version of Telegram messaging app - Static binaries, developement version"
 # Last i686 beta: 2.1.22
 # Checked via: curl -iL https://telegram.org/dl/desktop/linux32?beta=1
@@ -66,10 +66,10 @@ sha256sums=('ea1f36152b143cc2664daef5026656d55be2230ed42d43628e17ef7d2fff718c'
             '731431e47a5bc91c697d25c3a54fe7ba004752f5b66e0f282c47588ff7a314e6'
             '3fb1400c7dc9bbc3b5cb3ffedcbf4a9b09c53e28b57a7ff33a8a6b9048864090'
             'e297771c75bd2f81d637a3234f83568be62092f67d16946be23895fa92fa7119'
-            'd47cc89465281500b23ee646b8deafa67dd35dd0a46f50c3df1d5468abf07ff9'
+            'e8b6f20b7c7bc28e813fd439cb41b526999c45f158429f6c6037a1e923ab7dfa'
             '3a683f1c5cea4dab752339181a7424add98b4c962efe25b39bbf585cddd2596d'
-            '14fd330ff12c3797028bf404b5c7c997201d05cc80bc0efc21313a6094c32e28')
-sha256sums_x86_64=('ac907f94c54c8517287bcab3645aeb4d63ff18a5f75044deea6f89a89195de63')
+            '2787324967c762aa9002d745fb3083e0f7f55fbf5f92ab9cce7c9d245072a195')
+sha256sums_x86_64=('b8558ca747e81b3a7dd5dab486d9f0a703f4bb4b5184abe5cb65f3fcc569c346')
 # Some installation information
 install="$pkgname.install"
 
