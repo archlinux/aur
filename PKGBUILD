@@ -2,7 +2,7 @@
 # Contributor: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=shaq
-pkgver=0.0.3
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='A bare-bones Shazam CLI client'
 arch=(any)
@@ -15,7 +15,7 @@ depends=('python>=3.10'
          'python-shazamio>=0.6.0')
 makedepends=(python-build 'python-flit-core>=3.2' python-installer python-wheel)
 source=("$url/archive/v$pkgver.tar.gz")
-b2sums=('e5654996403984117bebe9c47e24dbc0729a9a8b1d841db5aa3f32fa2581e5dc92bf1bfb59313d4940576ba0fa1d1c750a163ab6c53e31b04f2151698f014ac4')
+b2sums=('4ab97687337cea0486081e4f68ba155d305fcdd75fec40f931f5d2adfdf75a43e48c8f909838fa3ffffac98313b4f1f4d0523111ac9169c564b3ea250e1b4189')
 
 build() {
     cd $pkgname-$pkgver
