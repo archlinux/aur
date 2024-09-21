@@ -1,0 +1,10 @@
+pkgbase = python-wayfire
+	pkgdesc = wayfire compositor library
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://github.com/WayfireWM/pywayfire
+	arch = any
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-wayfire
