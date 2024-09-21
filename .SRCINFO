@@ -11,6 +11,7 @@ pkgbase = albafetch
 	makedepends = gcc
 	depends = pciutils
 	provides = albafetch=4.2.1
+	backup = etc/xdg/albafetch.conf
 	source = https://github.com/alba4k/albafetch/archive/refs/tags/v4.2.1.tar.gz
 	md5sums = 69e4bd74d0a078afc00e8218c2f43c5e
 
