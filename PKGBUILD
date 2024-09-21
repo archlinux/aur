@@ -1,6 +1,6 @@
 # Maintainer: Simon <simon at gamersi dot at>
 pkgname=lrcget-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 options=(!debug)
 pkgdesc="Utility for mass-downloading LRC synced lyrics for your offline music library."
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/tranxuanthang/lrcget"
 license=('MIT')
 depends=('gtk3' 'webkit2gtk')
-source=("${pkgname}-${pkgver}.deb::https://github.com/tranxuanthang/lrcget/releases/download/${pkgver}/lrcget_${pkgver}_ubuntu_22.04_amd64.deb")
+source=("${pkgname}-${pkgver}.deb::https://github.com/tranxuanthang/lrcget/releases/download/${pkgver}/lrcget_${pkgver}_amd64.deb")
 b2sums=('SKIP')
 
 package() {
