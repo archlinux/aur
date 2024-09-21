@@ -1,0 +1,5 @@
+night_light = { enabled = true, start_time = "20:00", end_time = "20:30", temperature = 3500 }
+
+vibrance_configs = [
+  { window_class = "SDL Application", window_title = "", strength = 100 },
+]

@@ -1,0 +1,21 @@
+pkgbase = hyprlux
+	pkgdesc = Hyprland utility that automates vibrance and night light control
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/amadejkastelic/Hyprlux
+	install = install.sh
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = rust
+	depends = cargo
+	depends = hyprland
+	options = !debug
+	source = Hyprlux-0.1.3.tar.gz::https://github.com/amadejkastelic/Hyprlux/archive/refs/tags/0.1.3.tar.gz
+	source = hyprlux.service
+	source = config.toml
+	sha256sums = a89df780b6262ce4343bd0a1ae6c539feef23e90d8be9379a6c4c67372b816f2
+	sha256sums = 201c8a74f08038ac95971bc601976fbf6b26f50ee2ec7859ee7f13df9113b135
+	sha256sums = 6c6308c8315abc06fda605e14c7be898304c2448ccc1c23c1845bf5a66a49647
+
+pkgname = hyprlux

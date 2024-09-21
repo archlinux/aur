@@ -1,0 +1,14 @@
+[Install]
+WantedBy=hyprland-session.target
+
+[Service]
+ExecStart=/usr/bin/hyprlux
+Restart=on-failure
+User=nobody
+Group=nogroup
+
+[Unit]
+After=graphical-session-pre.target
+Description=Hyprlux shader manager service
+Documentation=https://github.com/amadejkastelic/Hyprlux
+PartOf=graphical-session.target
