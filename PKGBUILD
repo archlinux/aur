@@ -2,40 +2,38 @@
 
 pkgname=openmv-ide-bin
 _pkgname=${pkgname%-bin}
-pkgver=4.2.1
+pkgver=4.2.4
 pkgrel=1
 pkgdesc="QtCreator based OpenMV IDE."
 arch=('x86_64')
 url="https://github.com/openmv/openmv-ide"
 license=('MIT')
-depends=('libpng' 'libusb')
+# dependencies based on the contents of the setup.sh script.
+depends=('fontconfig'
+         'freetype2'
+         'libxcb'
+         'libpng'
+         'libusb'
+         'python-pyusb')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip')
-# install='openmv-ide-bin.install'
-source=("${_pkgname}.desktop"
-        "${_pkgname}.png")
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.run::https://github.com/openmv/openmv-ide/releases/download/v${pkgver}/${_pkgname}-linux-x86_64-${pkgver}.run")
-sha256sums=('7de4addf4e0144495fdad9d515ad8a19fc3e077a08cff57ef1a961f15bea3e81'
-            '11b3fe3f7de494aa7e45050327c3a5300596e5f03717fd3f469f6b8b8e1e7f55')
-sha256sums_x86_64=('5f34fc0f0c8f56bd289d6ed8ba08520c5f67415f63abd0fa3730e2efc4c92c0a')
+source_x86_64=("https://github.com/openmv/openmv-ide/releases/download/v${pkgver}/${_pkgname}-linux-x86_64-${pkgver}.tar.gz")
+sha256sums_x86_64=('82b1771896dc550dd8861baded9b4cce882d52e68431739cd664347b8017d333')
 
 _install() {
   find ${@: 2} -type f -exec install -Dm$1 {} ${pkgdir}/opt/${_pkgname}/{} \;
 }
 
-build() {
-  cd "${srcdir}"
-
-  chmod u+x ${_pkgname}-${pkgver}-$CARCH.run
-  ./${_pkgname}-${pkgver}-$CARCH.run --al -c --am in --cp=${srcdir} --root=${srcdir}/$_pkgname
-}
 
 package() {
   cd ${srcdir}/${_pkgname}
 
   # binary
-  install -Dm755 bin/${_pkgname/-} ${pkgdir}/opt/${_pkgname}/bin/${_pkgname/-}
+  install -Dm755 bin/${_pkgname/-} -t ${pkgdir}/opt/${_pkgname}/bin/
+
+  # wrapper
+  install -Dm755 bin/${_pkgname/-}.sh -t ${pkgdir}/opt/${_pkgname}/bin/
 
   # qt.conf
   install -Dm644 bin/qt.conf ${pkgdir}/opt/${_pkgname}/bin/qt.conf
@@ -54,20 +52,19 @@ package() {
   _install 644 share/metainfo/
 
   # desktop
-  install -Dm644 ${srcdir}/${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
+  install -Dm644 share/applications/io.openmv.openmvide.desktop \
+                 ${pkgdir}/usr/share/applications/${_pkgname}.desktop
 
   # icon
-  install -Dm644 ${srcdir}/${_pkgname}.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
-
-  # license
-  install -Dm644 Licenses/LICENSE.GPL3-EXCEPT -t ${pkgdir}/usr/share/licenses/${pkgname}/
+  cp -r share/icons ${pkgdir}/usr/share/icons
 
   # soft link
   install -dm755 ${pkgdir}/usr/bin
-  ln -s /opt/${_pkgname}/bin/${_pkgname/-} ${pkgdir}/usr/bin/${_pkgname/-}
+  ln -s /opt/${_pkgname}/bin/${_pkgname/-}.sh ${pkgdir}/usr/bin/${_pkgname/-}
 
   # udev rule
-  install -Dm644 ${pkgdir}/opt/${_pkgname}/share/qtcreator/pydfu/{99-openmv,99-openmv-arduino,99-openmv-nxp}.rules -t ${pkgdir}/usr/lib/udev/rules.d/
+  install -Dm644 share/qtcreator/pydfu/{99-openmv,99-openmv-arduino,99-openmv-nxp}.rules -t\
+                  ${pkgdir}/usr/lib/udev/rules.d/
 }
 
 # vim: set sw=2 ts=2 et:
