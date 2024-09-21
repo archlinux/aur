@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=yaImpute
-_pkgver=1.0-34
+_pkgver=1.0-34.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Nearest Neighbor Observation Imputation and Evaluation Tools"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -21,8 +21,8 @@ optdepends=(
   r-vegan
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d4e6899077278d5386b0063a2d4be696')
-b2sums=('6b21c59b068a7efbc76c5f490d820b1e0f5dfce428ee155a10e33705ec617384740f883a2d6215c66901649af585706b36b84d87add7043b8a2705b53a2647b8')
+md5sums=('1db986dbdc7844996a0c850485bc59ee')
+b2sums=('100ae2827ade6a83b1e51bf05866cfc4474adc8a6eccb42100ddb94d5a040a621e17c117af4dff4b2d5ac96d314d8f1231eefea7a1d17bf0d92d4c2228ce9886')
 
 build() {
   mkdir build
