@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cd $pkgname
-  make
+  make CC=clang++
 }
 
 package() {

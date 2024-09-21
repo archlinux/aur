@@ -1,6 +1,6 @@
 pkgbase = cmix-git
 	pkgdesc = lossless data compression program aimed at optimizing compression ratio at the cost of high CPU/memory usage
-	pkgver = 20.r11.g53d685e
+	pkgver = 21.r0.gc443679
 	pkgrel = 1
 	url = https://github.com/byronknoll/cmix
 	arch = x86_64
