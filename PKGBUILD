@@ -1,10 +1,11 @@
-# Maintainer: Thermi <noel at familie - kuntze dot de>
+# Maintainer: LekKit <nyandarknessgirl@gmail.com>
+# Prev-maintainer: Thermi <noel at familie - kuntze dot de>
 pkgname=libqcow
-pkgver=20210419
+pkgver=20240308
 pkgrel=1
 pkgdesc="Library and tools to support QEMU copy-on-write image format (QCOW, QCOW2), including a FUSE-based mount utility"
 url="https://github.com/libyal/libqcow/"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64' 'riscv64')
 license=('LGPL3')
 depends=('fuse' 'openssl')
 makedepends=('zlib' 'openssl' 'python')
@@ -12,7 +13,7 @@ source=("https://github.com/libyal/libqcow/releases/download/${pkgver}/${pkgname
         "https://github.com/libyal/libqcow/releases/download/${pkgver}/${pkgname}-alpha-${pkgver}.tar.gz.asc")
 
 validpgpkeys=('0ED9020DA90D3F6E70BD3945D9625E5D7AD0177E')
-sha256sums=('354275bfa9e40f6bf03138d6b939c3a8e290e2f594b13873973ee8660f612051'
+sha256sums=('f7813b46f46d4d65683f20af073d7362f99202cfdba734211261161806d737b2'
             'SKIP')
 
 build(){
