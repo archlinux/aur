@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/matrix-org/rust-synapse-compress-state"
 license=('Apache-2.0')
 depends=()
-makedepends=('cargo' 'python3' 'libjemalloc.so')
+makedepends=('cargo' 'python3' 'libjemalloc.so' 'git')
 source=("$reponame::git+https://github.com/matrix-org/rust-synapse-compress-state.git#tag=v${pkgver}")
 options=(!lto)
 b2sums=('7b5ea83c873f2f44a5d2306aa046951202aa0c621813c5a06ff1235b3e6fc39f4728cb5be0a00305dd29a17a701be107a7478067bf2a9eddd14507cfb06b57b1')

@@ -8,6 +8,7 @@ pkgbase = synapse-auto-compressor
 	makedepends = cargo
 	makedepends = python3
 	makedepends = libjemalloc.so
+	makedepends = git
 	options = !lto
 	source = rust-synapse-compress-state::git+https://github.com/matrix-org/rust-synapse-compress-state.git#tag=v0.1.4
 	b2sums = 7b5ea83c873f2f44a5d2306aa046951202aa0c621813c5a06ff1235b3e6fc39f4728cb5be0a00305dd29a17a701be107a7478067bf2a9eddd14507cfb06b57b1
