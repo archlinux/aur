@@ -61,4 +61,5 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/build install
+    install -dm777 ${pkgdir}/var/cache/tinybpt
 }
