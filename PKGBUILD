@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Simon Allen <simon@simonallen.org>
 pkgname=ytmdesktop-git
-pkgver=2.0.0.r1.g8a6093d
-pkgrel=1
+pkgver=2.0.2.r3.g64bcf78
+pkgrel=2
 _nodeversion=20
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
@@ -20,7 +20,7 @@ sha256sums=('SKIP'
             'cef9bd688fa6a77fe800192d38ec647c9ca3b146abb54cf08947c67f47b467d1')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -36,7 +36,7 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   _ensure_local_nvm
   nvm install "$_nodeversion"
@@ -44,16 +44,18 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   _ensure_local_nvm
   yarn make --targets="@electron-forge/maker-zip"
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   install -d "$pkgdir/opt/${pkgname%-git}"
   cp -r out/YouTube\ Music\ Desktop\ App-linux-x64/. "$pkgdir/opt/${pkgname%-git}"
+  chmod 4755 "$pkgdir/opt/${pkgname%-git}/chrome-sandbox"
+
   install -Dm644 src/assets/icons/ytmd.png \
     "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
   install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t \
