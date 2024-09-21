@@ -1,0 +1,21 @@
+pkgbase = evrouter-bin
+	pkgdesc = An Input Event Router for Linux
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://www.bedroomlan.org/projects/evrouter
+	arch = x86_64
+	arch = i686
+	license = GPL-2.0-or-later
+	depends = glibc
+	depends = libx11
+	depends = libxtst
+	provides = evrouter
+	conflicts = evrouter
+	noextract = evrouter-0.4-x86_64.deb
+	noextract = evrouter-0.4-i686.deb
+	source_x86_64 = evrouter-0.4-x86_64.deb::https://files.bedroomlan.org/debian/pool/main/e/evrouter/evrouter_0.4_amd64.deb
+	b2sums_x86_64 = a7cd18f664bc8dbf6d0e8666ff68fa47658561da3f0b77600629097bab322b0740e86166723bffd365608a94d7c0c2c5090e41ebc8ac8e16a69ade2b0c9696e6
+	source_i686 = evrouter-0.4-i686.deb::https://files.bedroomlan.org/debian/pool/main/e/evrouter/evrouter_0.4_i386.deb
+	b2sums_i686 = bac380b5323531baf1a73613f99f9fb6fdfad31c62000cfd6bbe1141536ed9f193a1a169d6b23bc5edb6c05b435083a7140b593eda208045e4177dfbf0fbbc9d
+
+pkgname = evrouter-bin
