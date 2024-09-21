@@ -1,6 +1,6 @@
 # Maintainer: alba4k <blaskoazzolaaaron@gmail.com>
 pkgname=albafetch-bin
-pkgver=4.2
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="Neofetch, but written in C; both faster and worse than the original (binary build)"
 arch=(x86_64 aarch64)
@@ -13,8 +13,10 @@ provides=(albafetch=4.1)
 source_x86_64=("$url/releases/download/v$pkgver/albafetch-linux-x64.zip")
 source_aarch64=("$url/releases/download/v$pkgver/albafetch-linux-aarch64-static.zip")
 
-md5sums_x86_64=('c06d0883be1f327ed50d2ddbd26c672c')
-md5sums_aarch64=('0a3ff83abbac766bdced573cd034b928')
+backup=("etc/xdg/albafetch.conf")
+
+md5sums_x86_64=('7d962411a379e27eaebb2bea6f6844bf')
+md5sums_aarch64=('386ba1ce43fe99d0f355cb05987fac18')
 
 package() {
     install -Dm755 "$srcdir/albafetch" "$pkgdir/usr/bin/albafetch"
