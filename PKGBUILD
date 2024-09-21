@@ -2,7 +2,7 @@
 
 pkgname=todoist-dailies
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Receive a daily popup to notify about upcoming Todoist tasks"
 arch=(any)
 url="https://github.com/SSS-Says-Snek/todoist-dailies"
@@ -12,6 +12,7 @@ depends=(
   'libadwaita'
   'python-todoist-api-python'
   "python-schedule"
+  'python-attrs' # python-todoist-api-python outdated and forgot to include attrs dep
 )
 makedepends=(
   'git'
