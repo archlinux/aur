@@ -1,7 +1,7 @@
 # Maintainer: jazztickets <jazztickets at gmail dot com>
 pkgname=emptyclip
-pkgver=2.0.2
-pkgbuild=adc6abf
+pkgver=2.0.3
+pkgbuild=0d97724f
 pkgfullname=(${pkgname}-${pkgver}-${pkgbuild})
 pkgrel=1
 pkgdesc="A top-down shooter action RPG"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gcc-libs' 'sdl2' 'sdl2_image' 'openal' 'libvorbis' 'libogg' 'freetype2' 'sqlite' 'zlib')
 makedepends=('cmake')
 source=("https://gitlab.com/jazztickets/uploads/-/raw/main/${pkgfullname}-src.tar.gz")
-sha256sums=('9f349fefb32a63dcc354f3d753df99e9224e44c9f777f880be677ce6cda27f18')
+sha256sums=('b3253fc11f8a03fa4aa4eab519eedc8fff3d79170e1d0f86d507ad2ded1ea165')
 
 prepare() {
 	cd $srcdir/$pkgfullname
