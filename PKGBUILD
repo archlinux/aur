@@ -1,5 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-# Co Maintainer: harshadgavali <harshadgavali5022 at gmail dot com>
+# Maintainer: harshadgavali <harshadgavali5022 at gmail dot com>
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-gesture-improvements
 pkgver=r201.f007cac
 pkgrel=2
