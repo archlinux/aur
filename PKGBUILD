@@ -2,7 +2,7 @@
 
 pkgname=deluge-labelplus
 pkgver=0.3.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="LabelPlus is a plugin for Deluge for labeling torrent, with much more functionalities that the builtin Labels."
 arch=('any')
 ## Set to fork until included upstream

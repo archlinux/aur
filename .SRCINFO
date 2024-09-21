@@ -1,7 +1,7 @@
 pkgbase = deluge-labelplus
 	pkgdesc = LabelPlus is a plugin for Deluge for labeling torrent, with much more functionalities that the builtin Labels.
 	pkgver = 0.3.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/laur89/deluge-labelplus
 	arch = any
 	license = GPL3
