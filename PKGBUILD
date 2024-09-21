@@ -3,7 +3,7 @@
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 pkgname=mullvad-vpn-cli
 pkgver=2024.5
-pkgrel=2
+pkgrel=3
 pkgdesc="The Mullvad VPN CLI client"
 arch=('x86_64')
 url="https://www.mullvad.net"
@@ -110,7 +110,7 @@ package() {
   install -Dm755 target/release/{mullvad,mullvad{-daemon,-exclude}} -t \
     "$pkgdir/usr/bin/"
 
-  install -m644 target/release/libtalpid_openvpn_plugin.so -t \
+  install -m755 target/release/libtalpid_openvpn_plugin.so -t \
     "$pkgdir/opt/Mullvad VPN/resources/"
 
   install -m755 "dist-assets/binaries/$CARCH-unknown-linux-gnu/openvpn" -t \
@@ -124,6 +124,9 @@ package() {
 
   # Install OpenVPN certificate
   install -m644 dist-assets/ca.crt -t "$pkgdir/opt/Mullvad VPN/resources/"
+
+  # Install list of maybenot machines to support DAITA
+  install -m644 dist-assets/maybenot_machines -t "$pkgdir/opt/Mullvad VPN/resources/"
 
   # Install services
   install -Dm644 dist-assets/linux/mullvad{-daemon,-early-boot-blocking}.service -t \
