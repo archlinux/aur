@@ -1,6 +1,6 @@
 pkgbase = ourbible
-	pkgdesc = Bible viewer app with GUI and web interface which uses MyBible Android app's modules
-	pkgver = 0.15.0
+	pkgdesc = Bible viewer app with GUI which uses MyBible Android app's modules which you can add
+	pkgver = 0.17.10
 	pkgrel = 0
 	url = https://github.com/mindiae/ourbible
 	arch = x86_64
@@ -10,7 +10,8 @@ pkgbase = ourbible
 	depends = go
 	depends = gtk4
 	depends = webkitgtk-6.0
-	source = https://github.com/mindiae/ourbible/archive/refs/tags/0.15.0.tar.gz
-	sha256sums = 6662264605b9338d233c70393f744c9851378506b7fb9d48cdcab348edf04bce
+	depends = ttf-font-awesome
+	source = https://github.com/mindiae/ourbible/archive/refs/tags/0.17.10.tar.gz
+	sha256sums = 638ef6c6ba8e4fdbec6e7c6423ce93d65091e05ece08225f48ee9ecf32511358
 
 pkgname = ourbible

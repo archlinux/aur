@@ -1,20 +1,20 @@
 # Maintainer: Mindia Edisherashvili <mindia.e@aol.com>
 pkgname=ourbible
-pkgver=0.15.0
+pkgver=0.17.10
 pkgrel=0
 epoch=
-pkgdesc="Bible viewer app with GUI and web interface which uses MyBible Android app's modules"
+pkgdesc="Bible viewer app with GUI which uses MyBible Android app's modules which you can add"
 arch=('x86_64')
 url="https://github.com/mindiae/ourbible"
 license=('GPL-3.0')
-depends=('sqlite' 'go' 'gtk4' 'webkitgtk-6.0')
+depends=('sqlite' 'go' 'gtk4' 'webkitgtk-6.0' 'ttf-font-awesome')
 makedepends=('git')
-source=("https://github.com/mindiae/ourbible/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=("6662264605b9338d233c70393f744c9851378506b7fb9d48cdcab348edf04bce")
+source=("https://github.com/mindiae/ourbible/archive/refs/tags/0.17.10.tar.gz")
+sha256sums=("638ef6c6ba8e4fdbec6e7c6423ce93d65091e05ece08225f48ee9ecf32511358")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  go build -o build/$pkgname ./cmd
+  go build -o build/$pkgname ./cmd/webview/
 }
 
 package() {
@@ -28,4 +28,5 @@ package() {
   mv "static/"* "$pkgdir/$target_dir/static"
   install -d "$pkgdir/$target_dir/database"
   mv "database/"* "$pkgdir/$target_dir/database"
+  mv "storage.sqlite3" "$pkgdir/$target_dir/"
 }
