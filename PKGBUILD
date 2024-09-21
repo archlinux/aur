@@ -1,5 +1,5 @@
 # Maintainer: Formed <formed at tuta dot io>
-# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=viper4linux-git
 pkgver=r18.590a936
 pkgrel=1
