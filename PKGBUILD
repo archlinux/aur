@@ -2,8 +2,7 @@
 
 pkgname=python-trl
 _pkgname=${pkgname#python-}
-pkgver=0.10.0
-_pkgver=0.10
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Train transformer language models with reinforcement learning'
 arch=('any')
@@ -26,23 +25,21 @@ optdepends=(
   'python-peft: Parameter efficient fine-tuning'
 )
 source=(
-  "python-trl-$pkgver.tar.gz"::"https://github.com/lvwerra/trl/archive/refs/tags/v$_pkgver.tar.gz"
+  "python-trl-$pkgver.tar.gz"::"https://github.com/lvwerra/trl/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('7dccf947ffe6b2187fce1dd8717c4b14ae33267e56023c8d1dcc6a1d31fac564')
+sha256sums=('fc54b8126fcae7aa800121c1be104f0055680fdb39f997520ed1c22922226109')
 
 prepare() {
   # Avoid packaging tests.
-  rm -rfv $_pkgname-$_pkgver/tests
-  sed -i '/__version__ = "0.10.0.dev0"/c\__version__ = "0.10.0"' \
-    $_pkgname-$_pkgver/setup.py
+  rm -rfv $_pkgname-$pkgver/tests
 }
 
 build() {
-  python -m build -nw $_pkgname-$_pkgver
+  python -m build -nw $_pkgname-$pkgver
 }
 
 check() {
-  cd $_pkgname-$_pkgver
+  cd $_pkgname-$pkgver
   PYTHONPATH=$PWD python -c 'import trl'
 }
 
@@ -50,5 +47,5 @@ package() {
   python -m installer \
     --compile-bytecode 1 \
     --destdir $pkgdir \
-    $srcdir/$_pkgname-$_pkgver/dist/$_pkgname-$pkgver-*-*.whl
+    $srcdir/$_pkgname-$pkgver/dist/$_pkgname-$pkgver-*-*.whl
 }
