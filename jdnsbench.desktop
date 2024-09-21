@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=jDNSBench
+Terminal=true
+Type=Application
+Exec=/usr/bin/jdnsbench
+Categories=Network;Utility;Java;
+Comment=A fast, extensive & transparent DNS benchmark that runs in your terminal!
+Version=1.0.0

@@ -1,0 +1,21 @@
+pkgbase = jdnsbench
+	pkgdesc = A fast, extensive & transparent DNS benchmark that runs in your terminal!
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/WasabiThumb/jdnsbench
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = base-devel
+	makedepends = cmake
+	makedepends = java-environment>=17
+	depends = c-ares
+	depends = java-runtime>=17
+	provides = jdnsbench
+	conflicts = jdnsbench-bin
+	options = !strip
+	source = https://github.com/WasabiThumb/jdnsbench/archive/refs/tags/1.0.0.tar.gz
+	source = jdnsbench.desktop
+	md5sums = c635cc1d71b3952a4212cb95441ec067
+	md5sums = SKIP
+
+pkgname = jdnsbench
