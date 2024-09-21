@@ -1,6 +1,6 @@
 pkgbase = albafetch
 	pkgdesc = Neofetch, but written in C; both faster and worse than the original
-	pkgver = 4.2
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://github.com/alba4k/albafetch
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = albafetch
 	makedepends = make
 	makedepends = gcc
 	depends = pciutils
-	provides = albafetch=4.2
-	source = https://github.com/alba4k/albafetch/archive/refs/tags/v4.2.tar.gz
-	md5sums = f89ede1b54515379dd1b2a9abfbe7573
+	provides = albafetch=4.2.1
+	source = https://github.com/alba4k/albafetch/archive/refs/tags/v4.2.1.tar.gz
+	md5sums = 69e4bd74d0a078afc00e8218c2f43c5e
 
 pkgname = albafetch
