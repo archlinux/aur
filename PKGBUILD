@@ -15,6 +15,7 @@ source=(
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
+    cd "${srcdir}/${pkgname}"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
