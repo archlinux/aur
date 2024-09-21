@@ -3,13 +3,13 @@
 
 pkgname=python-msgpack-numpy
 pkgver=0.4.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Serialize numpy arrays using msgpack"
 url="https://pypi.org/project/msgpack-numpy/"
 depends=(python-numpy
          python-msgpack)
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-license=(BSD)
+license=(BSD-3-Clause)
 arch=(any)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lebedov/msgpack-numpy/archive/${pkgver}.tar.gz")
 sha256sums=('730a6fab30bf6656003d7322a834b3673a36a85949d0539d504665f63cd95a44')
