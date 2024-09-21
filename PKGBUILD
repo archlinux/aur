@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miRSM
-_pkgver=2.0.1
+_pkgver=2.0.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -50,8 +50,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('681f6bb56567c913f61cc987a8f576a4')
-b2sums=('721c5faf083f1b6824068a4d03df2df734a0f8ac25f3789005c7dbc2b8474d1568fc27b95dab63928e85ecef688131756d4704cedc0304818bd740c2574c6e3f')
+md5sums=('fbf26013db3fb184046314774563ea30')
+b2sums=('76fb928c4b813f715bc1e4f10ce21bfc8e9e1d6ab2b3512feb94e7df1a982035ed197953ac94eb431c25f3a98c3fba8a1ca766e947902fe4322d9e4950722610')
 
 build() {
   mkdir build
