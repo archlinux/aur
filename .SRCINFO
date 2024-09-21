@@ -1,7 +1,7 @@
 pkgbase = plex-htpc
 	pkgdesc = Plex HTPC client for linux
 	pkgver = 1.67.1.233
-	pkgrel = 1
+	pkgrel = 2
 	url = http://plex.tv
 	arch = x86_64
 	license = unknown
