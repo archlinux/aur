@@ -2,7 +2,7 @@
 
 pkgname=archivefs
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A read-only FUSE filesystem for mounting compressed archives, inspired by archivemount."
 arch=('x86_64')
 url="https://github.com/bugnano/archivefs"

@@ -1,15 +1,14 @@
 pkgbase = archivefs
 	pkgdesc = A read-only FUSE filesystem for mounting compressed archives, inspired by archivemount.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bugnano/archivefs
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
 	makedepends = asciidoc
 	depends = libarchive
-	source = archivefs-1.0.0.tar.gz::https://github.com/bugnano/archivefs/archive/1.0.0.tar.gz
+	source = archivefs-1.0.1.tar.gz::https://github.com/bugnano/archivefs/archive/1.0.1.tar.gz
 	sha512sums = acf784b1e71d331dc9070cfac3606ee9b6b389ba247e9e024eabfb6282f7a96a3fb16948e6f8755d080028f677592c6557de0d9592c16a920c77481603b50703
 
 pkgname = archivefs
-
