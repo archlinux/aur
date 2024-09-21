@@ -3,7 +3,7 @@
 
 pkgname=ruby-neovim
 _gemname=${pkgname#ruby-}
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Ruby bindings for Neovim'
 url='https://github.com/neovim/neovim-ruby'
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('neovim' 'ruby' 'ruby-msgpack>=1.1' 'ruby-multi_json')
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
-sha256sums=('99a3ff961567ceea2b91ab7d35d0793f8b4ec8595a429e2200af4cc818f0eb22')
+sha256sums=('8d6170279872201106de1a84c27cc40a571ec2584057a3c335b2721e7326833e')
 
 package() {
   cd "${srcdir}"
