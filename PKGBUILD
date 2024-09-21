@@ -1,18 +1,19 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: LekKit <nyandarknessgirl@gmail.com>
+# Prev-maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 ## GPG keys: gpg --keyserver keyserver.ubuntu.com --recv-keys ${GPG_KEY_HERE}
 
 pkgname=('libvhdi' 'python-pyvhdi')
-pkgver=20221124
+pkgver=20240509
 pkgrel=1
 pkgdesc='Library and tools for the Virtual Hard Disk (VHD) image format'
 url='https://github.com/libyal/libvhdi'
-arch=('x86_64')
+arch=('x86_64' 'aarch64' 'riscv64')
 license=('LGPL3')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$pkgname-alpha-$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/$pkgver/$pkgname-alpha-$pkgver.tar.gz.asc")
-sha256sums=('0d46cc2fa4f9385e58f891fc5a1c3eec92f69e30a5c5a550a3f560693ed34295'
+sha256sums=('9efebe54a7ae6cf8b49103a3a0c37553f3f22d7526303a654aeb59eca58ccec7'
             'SKIP')
 validpgpkeys=('0ED9020DA90D3F6E70BD3945D9625E5D7AD0177E') ## Joachim Metz
 
