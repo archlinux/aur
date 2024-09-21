@@ -1,4 +1,4 @@
-# Maintainer: kosutka <amadejkastelic7@gmail.com>
+# Maintainer: amadejk <amadejkastelic7@gmail.com>
 pkgname=hyprlux
 pkgver=0.1.3
 pkgrel=1
