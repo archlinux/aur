@@ -1,0 +1,12 @@
+[Unit]
+Description=Shadow TLS
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=nobody
+ExecStart=/usr/bin/shadow-tls config -c /etc/shadow-tls/%I.conf
+
+[Install]
+WantedBy=multi-user.target

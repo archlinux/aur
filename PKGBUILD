@@ -2,7 +2,7 @@
 
 pkgname=shadow-tls
 pkgver=0.2.25
-pkgrel=1
+pkgrel=2
 
 pkgdesc='A proxy to expose real tls handshake to the firewall.'
 arch=('x86_64')
@@ -11,8 +11,10 @@ license=('MIT' 'Apache')
 
 makedepends=('cargo-nightly')
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1d1d436734823ba0302de6e91883ed892ea710769c722a139990194ff5837224')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+	"shadow-tls@.service")
+sha256sums=('1d1d436734823ba0302de6e91883ed892ea710769c722a139990194ff5837224'
+            '37897488162967ce4d229395d45d2a82f120fe4a71d2ac0fcc12d29006ba54a8')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -32,4 +34,7 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm0755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+    install -dm0755 "$pkgdir/etc/shadow-tls"
+    cp examples/* "$pkgdir/etc/shadow-tls"
+    install -Dm0644 "$srcdir/shadow-tls@.service" "$pkgdir/usr/lib/systemd/system/shadow-tls@.service"
 }
