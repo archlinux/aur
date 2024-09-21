@@ -1,0 +1,22 @@
+pkgbase = chipstar-git
+	pkgdesc = A tool for compiling and running HIP/CUDA on SPIR-V via OpenCL or Level Zero APIs.
+	pkgver = chipStarr1.2.RC1.26.g740a14f3
+	pkgrel = 1
+	url = https://github.com/CHIP-SPV/chipStar
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = level-zero-headers
+	makedepends = opencl-headers
+	depends = llvm
+	depends = clang
+	depends = spirv-llvm-translator
+	depends = opencl-icd-loader
+	depends = level-zero-loader
+	provides = chipstar
+	conflicts = chipstar
+	source = git+https://github.com/CHIP-SPV/chipStar.git
+	md5sums = SKIP
+
+pkgname = chipstar-git
