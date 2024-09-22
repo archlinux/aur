@@ -1,11 +1,11 @@
 # Maintainer: Brandon <bmcomis2018@gmail.com>
 
-pkgname=todoist-dailies
-pkgver=0.0.1
-pkgrel=2
+pkgname=todoist_dailies
+pkgver=0.0.2
+pkgrel=1
 pkgdesc="Receive a daily popup to notify about upcoming Todoist tasks"
 arch=(any)
-url="https://github.com/SSS-Says-Snek/todoist-dailies"
+url="https://github.com/SSS-Says-Snek/todoist_dailies"
 license=("MIT")
 depends=(
   'python-gobject'
@@ -18,7 +18,7 @@ makedepends=(
   'git'
   'meson'
 )
-source=("git+https://github.com/SSS-Says-Snek/todoist-dailies.git#tag=$pkgver")
+source=("git+https://github.com/SSS-Says-Snek/todoist_dailies.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 build() {
