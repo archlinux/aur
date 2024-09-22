@@ -11,6 +11,7 @@ pkgbase = gsa
 	makedepends = xmltoman
 	makedepends = nodejs
 	makedepends = npm
+	makedepends = terser
 	depends = gsad
 	depends = gvm-libs
 	depends = libgcrypt
