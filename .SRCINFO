@@ -1,25 +1,22 @@
 pkgbase = schismtracker-git
 	pkgdesc = A reimplementation of the Impulse Tracker music editor.
-	pkgver = r2438.55398fa
-	pkgrel = 4
-	url = http://schismtracker.org/
+	pkgver = 20240909.r16.g3b88cf3
+	pkgrel = 1
+	url = https://schismtracker.org/
 	arch = i686
 	arch = x86_64
 	arch = armv7h
-	license = GPL
+	license = GPL-2.0-only
 	makedepends = git
-	makedepends = python
-	depends = sdl
-	depends = gcc-libs
-	depends = libxv
-	provides = schismtracker
-	provides = schismtracker-hg
-	provides = schismtracker-cvs
+	depends = libutf8proc
+	depends = sdl2
+	depends = hicolor-icon-theme
+	optdepends = alsa-lib: ALSA MIDI support
+	optdepends = jack: JACK output support
+	optdepends = flac: FLAC sample loading support
+	provides = schismtracker=20240909.r16.g3b88cf3
 	conflicts = schismtracker
-	conflicts = schismtracker-hg
-	conflicts = schismtracker-cvs
 	source = schismtracker-git::git+https://github.com/schismtracker/schismtracker.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = schismtracker-git
-

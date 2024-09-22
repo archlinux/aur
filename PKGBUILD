@@ -1,8 +1,8 @@
 # Maintainer: Dennis Herbrich (Gyroplast) <dennis.herbrich@veloxis.de>
 # Contributor: Brandon Mulcahy <brandon@jangler.info>
 pkgname=schismtracker-git
-pkgver=r2438.55398fa
-pkgrel=4
+pkgver=20240909.r16.g3b88cf3
+pkgrel=1
 pkgdesc='A reimplementation of the Impulse Tracker music editor.'
 arch=('i686' 'x86_64' 'armv7h')  # and likely many more
 url='https://schismtracker.org/'
@@ -20,9 +20,8 @@ source=("$pkgname::git+https://github.com/schismtracker/schismtracker.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $pkgname
-	printf "r%s.%s" "$(git rev-list --count HEAD)" \
-		"$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
