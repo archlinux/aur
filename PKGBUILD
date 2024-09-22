@@ -9,7 +9,7 @@
 
 _proj=curl
 pkgname=curl-c-ares
-pkgver=8.9.1
+pkgver=8.10.1
 _git_tag="curl-${pkgver//./_}"
 pkgrel=1
 pkgdesc='command line tool and library for transferring data with URLs (built with c-ares)'
@@ -96,3 +96,4 @@ package() {
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m0644 COPYING
 }
 sha512sums=('402e12ad615c1db98df9cc8199d46f5c7a9bd174a457e469acbd9d3f567cc36b2db1fc3a010c3aa8e752da182f48d3b4590c98f15f6fad6ed063c4224d794442')
+sha512sums=('b5d003dc4268d6302c283759b49ac54d923df1e34d7f6eb72557cb65d8ee11dec2c23cd54a10e61ebdf1c7036a492e73d967eaa7a825eff2d094ec55e61d06d0')
