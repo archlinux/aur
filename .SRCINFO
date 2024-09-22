@@ -1,0 +1,13 @@
+pkgbase = vmcompile
+	pkgdesc = A VMware kernel modules compiling script for noobs.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/TripleLLL9/vmcompile
+	arch = x86_64
+	license = GPL
+	depends = git
+	depends = linux-headers
+	source = vmcompile.sh
+	sha256sums = d2dd3e73596be9a6c7bc28e2095633254d527e1a87b8ff348305e4a7a8e88428
+
+pkgname = vmcompile
