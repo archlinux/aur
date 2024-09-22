@@ -19,7 +19,7 @@ pkgver=3.9.3
 pkgrel=1
 arch=('any')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska'
-license=('GPL')
+license=(GPL-2-or-later)
 depends=('mingw-w64-crt' 'mingw-w64-qtutilities' 'mingw-w64-tagparser')
 [[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('mingw-w64-qt5-base')
 [[ $_webview_provider == webkit ]] && depends+=('mingw-w64-qt5-webkit')
