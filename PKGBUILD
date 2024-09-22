@@ -9,8 +9,8 @@ pkgver=5.0.12
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='C++ library to read/write passwords from/to encrypted files using AES-256-CBC via OpenSSL'
-license=('GPL')
-depends=('libc++utilities.so' 'libcrypto.so' 'libz.so')
+license=(GPL-2-or-later)
+depends=('c++utilities' 'openssl' 'zlib')
 optdepends=("$pkgname-doc: API documentation")
 makedepends=('cmake' 'ninja')
 checkdepends=('cppunit')
@@ -37,6 +37,8 @@ check() {
 }
 
 package() {
+  depends+=('libc++utilities.so' 'libcrypto.so' 'libz.so')
+
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   DESTDIR="${pkgdir}" ninja install
 }
