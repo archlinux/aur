@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=get
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A versatile tool for making HTTP requests and scraping web content"
 arch=(x86_64)
@@ -10,13 +10,13 @@ license=('MIT')
 depends=(nodejs npm)
 makedepends=(nodejs npm)
 source=(
-  'https://gitlab.com/a4to/get/-/archive/v0.2.0/get-v0.2.0.tar.gz'
+  'https://gitlab.com/a4to/get/-/archive/v0.2.2/get-v0.2.2.tar.gz'
 )
 sha512sums=(
-  '6d9ee5815a575b55a4d379fb1443c76f4164579b787e45cbb7e916567b9a3817fbbb3c29d78e3db096e8936b0ed0960b2e9e22008c5bc65fdf446460871cbad4'
+  '632b36ecde8b2f62c00f8945675001f5d9494c211f985d7b2048675a385cc705a48c339a632c676aff8148c8ee782d0afd20ff523a31067d6de25dfdce4479bb'
 )
 md5sums=(
-  '5f93116f7cf8e6a4e1128a6e56234a61'
+  '0b23d8e56bff6cce7de5c50060e5d402'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
