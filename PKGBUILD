@@ -1,6 +1,6 @@
 # Maintainer: Dennis Herbrich <dennis.herbrich@veloxis.de>
 pkgname=openapi-python-client
-pkgver=0.21.4
+pkgver=0.21.5
 pkgrel=1
 pkgdesc='Generate modern Python clients from OpenAPI 3.0 and 3.1 documents'
 arch=('any')
@@ -12,7 +12,7 @@ depends=(
   'python-typer>0.6'
   # 'python-shellingham>=1.3.2'  # NOTE: declared, but seemingly unused
   'python-pydantic>=2.1.1'
-  'python-attrs>=21.3.0'
+  'python-attrs>=22.2.0'  # see https://github.com/openapi-generators/openapi-python-client/issues/1084
   'python-dateutil>=2.8.1'
   'python-httpcore>=1.0.0'  # implicit by python-httpx, explicitly used in source (once)
   'python-httpx>=0.20.0'
@@ -33,7 +33,7 @@ optdepends=(
   'python-ruff>=0.2,<0.7: linter support in generated code'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/openapi-generators/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('673e83344e2a351c44358b55950cb0e2c8b1ba7a2d0dd74601fb0fd50810565b')
+sha256sums=('d874d386b0c57d5438a45833c50230e448423b9741f173ed41f475118b300296')
 
 build() {
   cd "${pkgname}-${pkgver}"
