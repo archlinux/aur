@@ -1,8 +1,8 @@
 # Maintainer: David Foucher <dev@tyjak.net>
 
 pkgname=wego
-pkgver=2.2
-pkgrel=1
+pkgver=2.3
+pkgrel=2
 pkgdesc='Weather app for the terminal'
 url=https://github.com/schachmat/wego
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('ISC')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("wego-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('80c35be31219cdefb286978d2118309bc0238b49352b861e28b2dac39f49edba8e2c74bfd1d1549d918307584b820345814953cce757d9d42a2191b8cb44cb47')
+sha512sums=('1e1944ac2f3e64622e419541c741e743a53bb5e321bb9fe5781f0fed635b5474f2fd2df5010222dfc0cff601f1aa3f194326b1f688aebf3f3c41f6d419e491e4')
 
 prepare() {
   mkdir -p src/github.com/schachmat
