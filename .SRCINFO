@@ -1,16 +1,19 @@
 pkgbase = typos-lsp-bin
 	pkgdesc = Source code spell checker for Visual Studio Code and LSP clients
-	pkgver = 0.1.23
+	pkgver = 0.1.24
 	pkgrel = 1
 	url = https://github.com/tekumara/typos-lsp
 	arch = x86_64
 	arch = aarch64
+	arch = armv7h
 	license = MIT
 	depends = gcc-libs
 	depends = glibc
-	source_x86_64 = https://github.com/tekumara/typos-lsp/releases/download/v0.1.23/typos-lsp-v0.1.23-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 61ce07f1abd957554173dbe9989596ad2dc43f3f8ad31d86f399b665d49e9d75
-	source_aarch64 = https://github.com/tekumara/typos-lsp/releases/download/v0.1.23/typos-lsp-v0.1.23-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 4a4ec4335de006f566fbbfd04a22d100ff619183fc19f54c45635d945e0be70b
+	source_x86_64 = typos-vscode-0.1.24-x86_64.vsix::https://marketplace.visualstudio.com/_apis/public/gallery/publishers/tekumara/vsextensions/typos-vscode/0.1.24/vspackage?targetPlatform=linux-x64
+	sha256sums_x86_64 = cf4f6bf9c8dafd4b23cf7d56d42626ecdc5fb8b67f453958ec338d5cc6c44f4a
+	source_aarch64 = typos-vscode-0.1.24-aarch64.vsix::https://marketplace.visualstudio.com/_apis/public/gallery/publishers/tekumara/vsextensions/typos-vscode/0.1.24/vspackage?targetPlatform=linux-arm64
+	sha256sums_aarch64 = fcb7f6042c350e33c8ca0e0db37e0139de8de08785d08d1467c552ab7dd70c11
+	source_armv7h = typos-vscode-0.1.24-armv7h.vsix::https://marketplace.visualstudio.com/_apis/public/gallery/publishers/tekumara/vsextensions/typos-vscode/0.1.24/vspackage?targetPlatform=linux-armhf
+	sha256sums_armv7h = b6ba9ec8dffa02f209d87ba8155a59f3e4ff96bda50ff41d4e3816a33c9de139
 
 pkgname = typos-lsp-bin
