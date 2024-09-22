@@ -1,0 +1,40 @@
+--- a/icons/Makefile.am
++++ b/icons/Makefile.am
+@@ -1,9 +1,22 @@
+-iconsdir = $(prefix)/share/pixmaps
+-icons_DATA = icono_rakarrack_128x128.png \
+-	icono_rakarrack_32x32.png \
+-	icono_rakarrack_64x64.png
++# Define the hicolor directories for each size
++icon128dir = $(prefix)/share/icons/hicolor/128x128/apps
++icon32dir = $(prefix)/share/icons/hicolor/32x32/apps
++icon64dir = $(prefix)/share/icons/hicolor/64x64/apps
+ 
++# Include the original icons in EXTRA_DIST for distribution
++EXTRA_DIST = icono_rakarrack_128x128.png icono_rakarrack_32x32.png icono_rakarrack_64x64.png
+ 
++# Installation rules with renaming to pkgname.png (rakarrack.png)
++install-exec-hook:
++	$(MKDIR_P) $(DESTDIR)$(icon128dir)
++	$(MKDIR_P) $(DESTDIR)$(icon32dir)
++	$(MKDIR_P) $(DESTDIR)$(icon64dir)
++	$(INSTALL_DATA) icono_rakarrack_128x128.png $(DESTDIR)$(icon128dir)/rakarrack.png
++	$(INSTALL_DATA) icono_rakarrack_32x32.png $(DESTDIR)$(icon32dir)/rakarrack.png
++	$(INSTALL_DATA) icono_rakarrack_64x64.png $(DESTDIR)$(icon64dir)/rakarrack.png
+ 
+-EXTRA_DIST = $(icons_DATA)
+-
++# Do not install the original icons, just rename them during installation
++CLEANFILES = \
++	$(DESTDIR)$(icon128dir)/rakarrack.png \
++	$(DESTDIR)$(icon32dir)/rakarrack.png \
++	$(DESTDIR)$(icon64dir)/rakarrack.png
+
+--- a/data/rakarrack.desktop
++++ b/data/rakarrack.desktop
+@@ -5,4 +5,4 @@
+ Name=Rakarrack
+ Comment=Guitar Effects Processor
+ Terminal=false
+-Icon=icono_rakarrack_128x128
++Icon=rakarrack

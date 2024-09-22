@@ -3,3 +3,5 @@
 !.SRCINFO
 !.gitignore
 !rakarrack_fix_fltk_include.patch
+!rakarrack_fix_icons_destdir.patch
+
