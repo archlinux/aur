@@ -3,7 +3,7 @@
 # Author: LostRuins (concedo)
 pkgname=koboldcpp
 pkgver=1.75.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models"
 arch=('x86_64')
 url="https://github.com/LostRuins/koboldcpp"
@@ -11,7 +11,6 @@ license=('AGPL-3.0-only')
 depends=(
   'python'
   'cblas'
-  'openblas'
   'clblast'
   'vulkan-icd-loader'
 )
