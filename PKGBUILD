@@ -14,9 +14,8 @@ pkgver=4.2.1
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A simple password store using AES-256-CBC encryption via OpenSSL'
-license=('GPL')
-depends=('qt6-base' 'libqtutilities-qt6.so' 'libpasswordfile.so' 'libc++utilities.so' 'openssl'
-         'desktop-file-utils')
+license=(GPL-2-or-later)
+depends=('qt6-base' 'qtutilities-qt6' 'passwordfile' 'c++utilities' 'desktop-file-utils')
 makedepends=('cmake' 'ninja' 'qt6-tools' 'clang')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
@@ -49,6 +48,8 @@ build() {
 }
 
 package() {
+  depends+=('libqtutilities-qt6.so' 'libpasswordfile.so' 'libc++utilities.so')
+
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   DESTDIR="${pkgdir}" ninja install
 }
