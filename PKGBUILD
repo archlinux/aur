@@ -19,7 +19,7 @@ pkgver=1.6.2
 pkgrel=1
 arch=('any')
 pkgdesc='Tray application for Syncthing (mingw-w64)'
-license=('GPL')
+license=(GPL-2-or-later)
 depends=('mingw-w64-crt' 'mingw-w64-qt5-svg' 'mingw-w64-qtutilities' 'mingw-w64-qtforkawesome' 'mingw-w64-openssl' 'mingw-w64-boost')
 [[ $_webview_provider == none ]] && depends+=('mingw-w64-qt5-base')
 [[ $_webview_provider == webkit ]] && depends+=('mingw-w64-qt5-webkit')
