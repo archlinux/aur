@@ -1,4 +1,3 @@
-# Maintainer: James Bulmer <me@nekinie.com>
 # Maintainer: Henry Jenkins <archlinux.org@henryjenkins.name>
 
 pkgname=please-bin
