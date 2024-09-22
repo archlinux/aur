@@ -15,6 +15,11 @@ pkgdesc='Python library for manipulating pages of PDF files (legacy v2)'
 arch=(any)
 url="https://pypi.org/project/PyPDF2"
 license=(BSD)
+depends=(
+  'python-typing_extensions'
+  'python-pillow'
+)
+
 makedepends=(
   'python-build'
   'python-installer'
