@@ -1,6 +1,6 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=rivet
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="A particle physics package for data analysis and validation of Monte Carlo event generators"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ optdepends=('texlive-core: Plotting functionality'
 makedepends=('cython')
 source=(http://www.hepforge.org/archive/rivet/Rivet-$pkgver.tar.gz
         )
-md5sums=('423bac94105e306be0612b6182a0d31f')
+md5sums=('d8ee19aac591051b706cb40659829210')
 
 package() {
 	cd "$srcdir/Rivet-$pkgver"
