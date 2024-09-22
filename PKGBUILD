@@ -12,7 +12,7 @@ pkgver=46.1c92ea5
 pkgrel=3
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Library that bundles ForkAwesome for use within Qt applications'
-license=('GPL')
+license=(GPL-2-or-later)
 depends=('qt6-base')
 optdepends=(
   'qt6-declarative: Qt Quick integration'
