@@ -10,7 +10,7 @@ pkgver=0.0.15
 pkgrel=2
 arch=('any')
 pkgdesc='Code generator for serializing/deserializing C++ objects to/from JSON using Clang and RapidJSON (mingw-w64)'
-license=('GPL')
+license=(GPL-2-or-later)
 depends=('mingw-w64-crt' 'mingw-w64-c++utilities' 'mingw-w64-rapidjson' 'reflective-rapidjson')
 optdepends=("mingw-w64-boost: use Boost.Hana instead of code generator"
             "$_name-doc: API documentation")
