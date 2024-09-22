@@ -4,13 +4,13 @@
 pkgname=coolercontrold-bin
 _pkgname="${pkgname%-bin}"
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A program to monitor and control your cooling devices: daemon (binary release)"
 arch=('x86_64')
 url="https://gitlab.com/coolercontrol/coolercontrol"
 license=('GPL-3.0-or-later')
 depends=(
-	"coolercontrol-liqctld=$pkgver"
+	'coolercontrol-liqctld'
 	'libdrm'
 	'gcc-libs'
 	'glibc'

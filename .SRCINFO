@@ -1,12 +1,12 @@
 pkgbase = coolercontrold-bin
 	pkgdesc = A program to monitor and control your cooling devices: daemon (binary release)
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/coolercontrol/coolercontrol
 	arch = x86_64
 	groups = coolercontrol-bin
 	license = GPL-3.0-or-later
-	depends = coolercontrol-liqctld=1.4.1
+	depends = coolercontrol-liqctld
 	depends = libdrm
 	depends = gcc-libs
 	depends = glibc
