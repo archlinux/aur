@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=daduda
+Comment=Cross-platform-avrdude-GUI
+Icon=daduda.png
+Exec=/opt/DaduDa/bin/DaduDa
+Terminal=false
+Categories=Development;IDE;
+StartupNotify=false
