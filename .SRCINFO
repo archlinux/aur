@@ -12,6 +12,8 @@ pkgbase = tmate-git
 	depends = msgpack-c
 	depends = ncurses
 	source = git+https://github.com/tmate-io/tmate.git
+	source = msgpack-v6.patch
 	sha256sums = SKIP
+	sha256sums = a57077d0245bbf1138dc53f0e11398fd3614d46eb345723b6976d4e2036c79d6
 
 pkgname = tmate-git

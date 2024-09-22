@@ -11,8 +11,10 @@ url="https://tmate.io/"
 license=('ISC')
 depends=('libevent' 'libssh' 'libutempter' 'msgpack-c' 'ncurses')
 makedepends=('git')
-source=("git+https://github.com/tmate-io/tmate.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/tmate-io/tmate.git"
+        "msgpack-v6.patch")
+sha256sums=('SKIP'
+            'a57077d0245bbf1138dc53f0e11398fd3614d46eb345723b6976d4e2036c79d6')
 
 pkgver() {
   cd tmate
@@ -21,6 +23,7 @@ pkgver() {
 
 prepare() {
   cd tmate
+  patch -p1 < ../msgpack-v6.patch
   ./autogen.sh
   autoupdate
 }
