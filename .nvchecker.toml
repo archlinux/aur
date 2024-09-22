@@ -1,0 +1,4 @@
+[python-pymanopt]
+source = "github"
+github = "pymanopt/pymanopt"
+use_latest_release = "true"

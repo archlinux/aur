@@ -1,15 +1,10 @@
 pkgbase = python-pymanopt
 	pkgdesc = Toolbox for optimization on Riemannian manifolds with support for automatic differentiation
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://pymanopt.github.io
 	arch = x86_64
-	license = custom:BSD-3-clause
-	checkdepends = python-pytest
-	checkdepends = python-autograd
-	checkdepends = python-tensorflow
-	checkdepends = python-pytorch
-	checkdepends = python-jax
+	license = BSD-3-Clause
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools-scm
@@ -19,7 +14,7 @@ pkgbase = python-pymanopt
 	optdepends = python-jax: for cost function support
 	optdepends = python-tensorflow: for cost function support
 	optdepends = python-pytorch: for cost function support
-	source = python-pymanopt-2.2.0.tar.gz::https://github.com/pymanopt/pymanopt/archive/2.2.0.tar.gz
-	sha512sums = 89ea7055de53bf7cf241c5f5e21f5ac449b3e82fa7c4ecbe572f769c5d75481ff0e8aa0cfbcb4d5666c79ae3dc75eb24bc3426d492998860a60cefa254cc184f
+	source = pymanopt-2.2.1.tar.gz::https://github.com/pymanopt/pymanopt/archive/2.2.1.tar.gz
+	sha512sums = 99ca3a35e5a9fc2e9d4a09440fda6c74af97f779218115325e5743f16ad33f64edda67ea0b83c14c081943ba412bb19ea118ee5fe1c9afbc2fb2058d7860549c
 
 pkgname = python-pymanopt
