@@ -8,14 +8,14 @@ pkgbase = reflective-rapidjson
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = GPL
+	license = GPL-2-or-later
 	checkdepends = cppunit
 	checkdepends = boost
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = clang-tools-extra
 	makedepends = llvm
-	depends = libc++utilities.so
+	depends = c++utilities
 	depends = rapidjson
 	depends = llvm-libs>=18.0.0
 	depends = llvm-libs<19.0.0
@@ -26,3 +26,9 @@ pkgbase = reflective-rapidjson
 	sha256sums = 1e253ca0c63c6432ede1b1d7ad6c828b93eeb47eb1843d7bdc09445be7c1bba6
 
 pkgname = reflective-rapidjson
+	depends = c++utilities
+	depends = rapidjson
+	depends = llvm-libs>=18.0.0
+	depends = llvm-libs<19.0.0
+	depends = clang
+	depends = libc++utilities.so

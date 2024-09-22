@@ -10,8 +10,8 @@ pkgver=0.0.15
 pkgrel=12
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Code generator for serializing/deserializing C++ objects to/from JSON using Clang and RapidJSON'
-license=('GPL')
-depends=('libc++utilities.so' 'rapidjson' "llvm-libs>=${_llvmver}.0.0" "llvm-libs<$((_llvmver + 1)).0.0" 'clang')
+license=(GPL-2-or-later)
+depends=('c++utilities' 'rapidjson' "llvm-libs>=${_llvmver}.0.0" "llvm-libs<$((_llvmver + 1)).0.0" 'clang')
 optdepends=("boost: use Boost.Hana instead of code generator"
             "$pkgname-doc: API documentation")
 makedepends=('cmake' 'ninja' 'clang-tools-extra' 'llvm')
@@ -37,6 +37,8 @@ check() {
 }
 
 package() {
+  depends+=('libc++utilities.so')
+
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   DESTDIR="${pkgdir}" ninja install
 }
