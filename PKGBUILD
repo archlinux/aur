@@ -6,7 +6,7 @@
 # Contributor: Tsekhovoy Eugene aka Krash <8552246@gmail.com>
 
 pkgname=mc-git
-pkgver=4.8.31.r19.g293e534f3
+pkgver=4.8.32.r12.g9e06a50eb
 pkgrel=1
 pkgdesc='A file manager that emulates Norton Commander'
 arch=('x86_64')
@@ -18,9 +18,10 @@ optdepends=(
     'aspell: spelling corrections'
     'cabextract: ucab extfs'
     'cdparanoia: audio extfs'
-    'cdrkit: iso9660 extfs'
+    'cdrkit: alternative iso9660 extfs'
     'cvs: CVS support'
     'gawk: hp48+ extfs'
+    'libisoburn: iso9660 extfs'
     'mtools: a+ extfs'
     'p7zip: support for 7zip archives'
     'perl: needed by several ext2fs scripts'
