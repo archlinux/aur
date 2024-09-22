@@ -1,15 +1,16 @@
 pkgbase = neowaita-git
 	pkgdesc = A companion icon theme for Adwaita
 	pkgver = 45.r108.gfbbdbaa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NeoWaita/NeoWaita
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = adwaita-icon-theme
 	provides = neowaita
-	provides = morewaita
 	conflicts = neowaita
+	replaces = morewaita
+	replaces = morewaita-git
 	source = git+https://github.com/NeoWaita/NeoWaita
 	md5sums = SKIP
 

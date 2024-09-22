@@ -3,15 +3,16 @@
 pkgname=neowaita-git
 _reponame=NeoWaita
 pkgver=45.r108.gfbbdbaa
-pkgrel=1
+pkgrel=2
 pkgdesc='A companion icon theme for Adwaita'
 arch=(any)
 url="https://github.com/NeoWaita/$_reponame"
 license=(GPL3)
 depends=(adwaita-icon-theme)
 makedepends=(git)
-provides=("${pkgname%-git}" "morewaita")
+provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+replaces=("morewaita" "morewaita-git")
 source=("git+$url")
 md5sums=('SKIP')
 
