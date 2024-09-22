@@ -1,0 +1,17 @@
+pkgbase = ws-tcp-proxy
+	pkgdesc = Simple websocket tcp proxy.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://github.com/zquestz/ws-tcp-proxy
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = ws-tcp-proxy
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/zquestz/ws-tcp-proxy/archive/v0.1.2.tar.gz
+	sha256sums = f5d37b8659d3df76b0a3906eb9f0e3968771f68b1b3558310a2ef057745a3b70
+
+pkgname = ws-tcp-proxy
