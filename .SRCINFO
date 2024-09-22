@@ -1,0 +1,16 @@
+pkgbase = lingmo-videoplayer
+	pkgdesc = Open source video player built using Qt/QML and libmpv.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://lingmo.org
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	depends = mpv
+	depends = qt5-base
+	depends = qt5-quickcontrols2
+	depends = qt5-tools
+	source = https://github.com/LingmoOS/lingmo-videoplayer/archive/refs/tags/2.0.0.tar.gz
+	sha256sums = 2afd37a4b35d834e7b0749009e65cb639e9f163219ee742e63f2cac3b5d590e9
+
+pkgname = lingmo-videoplayer
