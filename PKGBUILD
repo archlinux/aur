@@ -10,8 +10,8 @@ pkgver=737.98d28ed
 pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='C++ library for reading and writing MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska tags'
-license=('GPL')
-depends=('libc++utilities-git.so' 'libz.so')
+license=(GPL-2-or-later)
+depends=('c++utilities-git' 'zlib')
 optdepends=("$_name-doc: API documentation")
 makedepends=('cmake' 'git' 'ninja' 'iso-codes')
 checkdepends=('cppunit' 'openssl')
@@ -53,6 +53,8 @@ check() {
 }
 
 package() {
+  depends+=('libc++utilities-git.so' 'libz.so')
+
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
   DESTDIR="${pkgdir}" ninja install
 }
