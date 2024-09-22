@@ -1,0 +1,15 @@
+# choosenim.install
+
+post_install() {
+    cat <<__EOF__
+Please remember to add '\$HOME/.nimble/bin' to your PATH, e.g. by adding the
+following to your ~/.bashrc file:
+
+    export PATH="\$HOME/.nimble/bin:$PATH"
+
+Then install the current stable Nim version with:
+
+    choosenim stable
+
+__EOF__
+}

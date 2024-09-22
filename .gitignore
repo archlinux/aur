@@ -1,7 +1,5 @@
-# Blacklist:
-*
-
-# Whitelist:
-!.SRCINFO
-!.gitignore
-!PKGBUILD
+choosenim-*.tar.gz
+nim-*-linux_*.tar.xz
+choosenim-*.pkg.tar.*
+pkg/
+src/
