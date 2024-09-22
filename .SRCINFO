@@ -1,13 +1,14 @@
 pkgbase = miru-app-git
 	pkgdesc = 🎉 A versatile application that is free, open-source, and supports extension sources for videos, comics, and novels, available on Android, Windows, and Web platforms.
-	pkgver = 20240921.dabe4de
-	pkgrel = 1
+	pkgver = 20240921.4556f07
+	pkgrel = 2
 	url = https://github.com/benbensy/miru-app.git
 	arch = x86_64
 	license = GPLv3
 	makedepends = git
 	makedepends = clang
 	makedepends = cmake
+	makedepends = ninja
 	depends = gtk3
 	depends = mpv
 	optdepends = vlc

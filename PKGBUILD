@@ -2,8 +2,8 @@
 
 pkgname=miru-app-git
 _gitname=${pkgname%-git}
-pkgver=20240921.dabe4de
-pkgrel=1
+pkgver=20240921.4556f07
+pkgrel=2
 pkgdesc="🎉 A versatile application that is free, open-source, and supports extension sources for videos, comics, and novels, available on Android, Windows, and Web platforms. "
 url=https://github.com/benbensy/miru-app.git
 arch=("x86_64")
@@ -18,6 +18,7 @@ makedepends=(
     "git"
     "clang"
     "cmake"
+    "ninja"
 )
 provides=("${pkgname%-git}")
 license=("GPLv3")
