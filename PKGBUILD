@@ -2,7 +2,7 @@
 
 pkgname=ws-tcp-proxy
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple websocket tcp proxy."
 arch=('i686' 'x86_64')
 url="http://github.com/zquestz/ws-tcp-proxy"
@@ -11,7 +11,7 @@ makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 provides=("ws-tcp-proxy")
 source=("https://github.com/zquestz/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('f5d37b8659d3df76b0a3906eb9f0e3968771f68b1b3558310a2ef057745a3b70')
+sha256sums=('87114014dd88f48bcddfb53b61b78fb05ab04a6c451ad571e5130d3c00254473')
 
 build() {
   mkdir -p "${srcdir}/go/src/github.com/zquestz"
