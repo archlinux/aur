@@ -2,7 +2,7 @@
 
 pkgname=python-pymobiledevice3
 _pkgname=pymobiledevice3
-pkgver=4.13.19
+pkgver=4.13.20
 pkgrel=1
 pkgdesc='Pure python3 implementation for working with iDevices'
 arch=('any')
@@ -23,7 +23,7 @@ depends=(
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools' 'python-setuptools-scm')
 checkdepends=('python-pytest' 'python-pytest-asyncio')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b4df25620eec8f447950e3062702b057404532f02c7d5fe60359434147ac9cf4')
+sha256sums=('e3f9057b6f1abaa75e9e2446ab9909331aec541459ef9b19a7ea605a8b8fe7bd')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
