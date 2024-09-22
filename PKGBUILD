@@ -29,9 +29,8 @@ pkgver=1714.7846301
 pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing'
-license=('GPL')
-depends=('libqtutilities-git.so' 'libqtforkawesome-git.so' 'libc++utilities-git.so' 'libboost_filesystem.so'
-         'qt6-svg' 'openssl' 'desktop-file-utils' 'xdg-utils')
+license=(GPL-2-or-later)
+depends=('qtutilities-git' 'qtforkawesome-git' 'c++utilities-git' 'boost-libs' 'qt6-svg' 'openssl' 'desktop-file-utils')
 [[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('qt6-base')
 [[ $_webview_provider == webkit ]] && depends+=('qt6-webkit')
 [[ $_webview_provider == webengine ]] && depends+=('qt6-webengine')
@@ -39,7 +38,8 @@ depends=('libqtutilities-git.so' 'libqtforkawesome-git.so' 'libc++utilities-git.
 [[ $_js_provider == qml ]] && depends+=('qt6-declarative')
 [[ $_enable_kio_plugin ]] && optdepends+=('kio: KIO plugin for Syncthing actions in Dolphin')
 [[ $_enable_plasmoid ]] && optdepends+=('plasma-workspace: Plasmoid for Plasma 6 desktop')
-makedepends=('cmake' 'ninja' 'qt6-tools' 'qt6-declarative' 'git' 'boost' 'clang')
+optdepends=('gnome-shell-extension-appindicator: tray icon support for GNOME Shell')
+makedepends=('cmake' 'ninja' 'qt6-tools' 'git' 'boost' 'clang')
 checkdepends=('cppunit' 'syncthing' 'iproute2')
 [[ $_enable_kio_plugin ]] && makedepends+=('kio')
 [[ $_enable_plasmoid ]] && makedepends+=('libplasma' 'extra-cmake-modules')
@@ -85,6 +85,7 @@ build() {
     -DSYSTEMD_SUPPORT=ON \
     -DBUILTIN_TRANSLATIONS:BOOL=ON \
     -DBUILTIN_TRANSLATIONS_OF_QT:BOOL=OFF \
+    -DQUICK_GUI=ON \
     $additional_args \
     .
   ninja
@@ -97,6 +98,8 @@ check() {
 }
 
 package() {
+  depends+=('libqtutilities-git.so' 'libqtforkawesome-git.so' 'libc++utilities-git.so' 'libboost_filesystem.so')
+
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
   DESTDIR="${pkgdir}" ninja install
 }
