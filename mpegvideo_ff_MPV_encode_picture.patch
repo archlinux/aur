@@ -1,0 +1,36 @@
+diff -Naur ffmpeg-1.2.12.orig/libavcodec/mpegvideo_enc.c ffmpeg-1.2.12/libavcodec/mpegvideo_enc.c
+--- ffmpeg-1.2.12.orig/libavcodec/mpegvideo_enc.c	2015-02-12 15:38:38.000000000 +0100
++++ ffmpeg-1.2.12/libavcodec/mpegvideo_enc.c	2024-09-23 01:10:43.544632824 +0200
+@@ -1521,7 +1521,7 @@
+ }
+ 
+ int ff_MPV_encode_picture(AVCodecContext *avctx, AVPacket *pkt,
+-                          AVFrame *pic_arg, int *got_packet)
++                          const AVFrame *pic_arg, int *got_packet)
+ {
+     MpegEncContext *s = avctx->priv_data;
+     int i, stuffing_count, ret;
+diff -Naur ffmpeg-1.2.12.orig/libavcodec/mpegvideo.h ffmpeg-1.2.12/libavcodec/mpegvideo.h
+--- ffmpeg-1.2.12.orig/libavcodec/mpegvideo.h	2015-02-12 15:38:18.000000000 +0100
++++ ffmpeg-1.2.12/libavcodec/mpegvideo.h	2024-09-23 01:05:15.483605615 +0200
+@@ -766,7 +766,7 @@
+ int ff_MPV_encode_init(AVCodecContext *avctx);
+ int ff_MPV_encode_end(AVCodecContext *avctx);
+ int ff_MPV_encode_picture(AVCodecContext *avctx, AVPacket *pkt,
+-                          AVFrame *frame, int *got_packet);
++                          const AVFrame *frame, int *got_packet);
+ void ff_dct_encode_init_x86(MpegEncContext *s);
+ void ff_MPV_common_init_x86(MpegEncContext *s);
+ void ff_MPV_common_init_axp(MpegEncContext *s);
+diff -Naur ffmpeg-1.2.12.orig/libavcodec/pngdec.c ffmpeg-1.2.12/libavcodec/pngdec.c
+--- ffmpeg-1.2.12.orig/libavcodec/pngdec.c	2015-02-12 15:38:18.000000000 +0100
++++ ffmpeg-1.2.12/libavcodec/pngdec.c	2024-09-23 01:16:28.992125427 +0200
+@@ -860,7 +860,7 @@
+         }
+     }
+ 
+-    av_frame_set_metadata(&s->current_picture, metadata);
++    av_frame_set_metadata(s->current_picture, metadata);
+     metadata   = NULL;
+     *picture   = *s->current_picture;
+     *got_frame = 1;
