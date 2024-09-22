@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=timeSeries
-_pkgver=4041.110
+_pkgver=4041.111
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,8 +21,8 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b8c7515597103baad42e956df76951d6')
-b2sums=('8da61ab22d27b17c78d0ffcf2f5150c1e30df12bcbd5aafe130e5523d0d55568025ca45f3bec97cb2dcfebb55f2553aeec1598822a68cef3409c23bea5115a15')
+md5sums=('53bd323213e551b32e4e5a0640f1e72f')
+b2sums=('be5bd1b7864b58d12629f3a8659377f14f3d3c06890547fdcdc1b5da98ffdf50666f25b2a6300ee64137d2adbc176d421febc4c7ba8bfc2928a69190c8f4845b')
 
 build() {
   mkdir build
