@@ -9,26 +9,19 @@ _quick_gui=${PASSWORD_MANAGER_QUICK_GUI:-ON}
 _reponame=passwordmanager
 pkgname=passwordmanager-git
 _name=${pkgname%-git}
-pkgver=300.3a01f2d
-pkgrel=3
+pkgver=350.4bf6a91
+pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A simple password store using AES-256-CBC encryption via OpenSSL'
-license=('GPL')
-depends=('qt6-base' 'libqtutilities-git.so' 'libpasswordfile-git.so' 'libc++utilities-git.so' 'openssl'
-         'libxkbcommon-x11' 'desktop-file-utils' 'xdg-utils')
+license=(GPL-2-or-later)
+depends=('qt6-base' 'qtutilities-git' 'passwordfile-git' 'c++utilities-git' 'desktop-file-utils')
 makedepends=('cmake' 'ninja' 'qt6-tools' 'git' 'clang' 'qt6-declarative')
+[[ $_quick_gui == ON ]] && depends+=('qt6-declarative' 'kirigami')
 provides=("${_name}")
 conflicts=("${_name}")
 url="https://github.com/Martchus/${_reponame}"
 source=("${_reponame}::${MARTCHUS_GIT_URL_PREFIX:-git+https://github.com/Martchus}/${_reponame}.git")
 sha256sums=('SKIP')
-
-# add further dependencies for the Qt Quick GUI (only kirigami2 is "pluggable")
-if [[ $_quick_gui == ON ]]; then
-    depends+=('qt6-declarative')
-    optdepends+=('kirigami: Qt Quick GUI')
-    makedepends+=('kirigami')
-fi
 
 pkgver() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
@@ -53,6 +46,8 @@ build() {
 }
 
 package() {
+  depends+=('libqtutilities-git.so' 'libpasswordfile-git.so' 'libc++utilities-git.so')
+
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
   DESTDIR="${pkgdir}" ninja install
 }
