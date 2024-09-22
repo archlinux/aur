@@ -2,7 +2,7 @@
 pkgname='wfinfo-ng-git'
 _pkgname="wfinfo-ng"
 pkgdesc="Analyze Warframe relic reward screen to determine platinum value of items."
-pkgver=0.1.0.105.gd5e7c43
+pkgver=0.1.0.112.g399be07
 pkgrel=1
 #epoch=1
 arch=('any') #TODO: verify this
@@ -27,7 +27,7 @@ pkgver() {
 
 build(){
 	cd "$srcdir/$_pkgname"
-	env CFLAGS= cargo build --bin wfinfo --release --locked
+	env CFLAGS= cargo build --bin wfinfo --release
 	sed 's/ | jq .//' -i "update.sh"
 }
 
@@ -37,7 +37,7 @@ check(){
 	./update.sh
 	echo Grabbing test-images/1.png... # (bypassing git-lfs)
 	curl https://media.githubusercontent.com/media/knoellle/wfinfo-ng/master/test-images/1.png > test-images/1.png
-	env CFLAGS= cargo test --bin wfinfo --release --locked -- --skip wfi_images_99_percent
+	env CFLAGS= cargo test --bin wfinfo --release -- --skip wfi_images_99_percent
 }
 
 package() {

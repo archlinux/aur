@@ -1,6 +1,6 @@
 pkgbase = wfinfo-ng-git
 	pkgdesc = Analyze Warframe relic reward screen to determine platinum value of items.
-	pkgver = 0.1.0.105.gd5e7c43
+	pkgver = 0.1.0.112.g399be07
 	pkgrel = 1
 	url = https://github.com/knoellle/wfinfo-ng
 	arch = any
