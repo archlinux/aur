@@ -1,7 +1,7 @@
 # Maintainer: gifnksm <makoto.nksm+aur@gmail.com>
 _pkgname=cargo-sync-rdme
 pkgname=${_pkgname}-bin
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 epoch=
 pkgdesc="Cargo subcommand to synchronize README with crate documentation"
@@ -13,8 +13,8 @@ conflicts=('cargo-sync-rdme')
 provides=('cargo-sync-rdme')
 source_x86_64=("https://github.com/gifnksm/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/gifnksm/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('d7285bf6008b7ce163c103f457bae010ccf04e3b3b6688af69d167b6a4bc2d48')
-sha256sums_aarch64=('3f4de4973bc6b477df9fff2b8608fc7cb3c0efbe426f54e6a5fd13bd02b5d1f9')
+sha256sums_x86_64=('5f0b3805929972847c2f37a777f2a2e230d25ef9c6a92862f0427e9a3bf129ab')
+sha256sums_aarch64=('afd8c3da14445c34b193e9d5b194ec9208f45fe35629d14ab0c4e165e540c8d0')
 
 package() {
         cd "$srcdir/"
