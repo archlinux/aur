@@ -1,7 +1,7 @@
 pkgbase = ashpd-demo
 	pkgdesc = asph-demo
 	pkgver = 0.4.1
-	pkgrel = 2.0
+	pkgrel = 3.0
 	url = https://github.com/bilelmoussaoui/ashpd
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = ashpd-demo
 	makedepends = ninja
 	makedepends = meson
 	makedepends = rust
+	makedepends = clang
 	depends = gtk4
 	depends = libadwaita
 	depends = libshumate
