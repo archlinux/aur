@@ -1,7 +1,7 @@
 pkgbase = rustdesk-bin
 	pkgdesc = Yet another remote desktop software, written in Rust. Works out of the box, no configuration required.
-	pkgver = 1.3.0
-	pkgrel = 4
+	pkgver = 1.3.1
+	pkgrel = 0
 	url = https://github.com/rustdesk/rustdesk
 	install = rustdesk-bin.install
 	arch = x86_64
@@ -20,14 +20,10 @@ pkgbase = rustdesk-bin
 	optdepends = libayatana-appindicator: tray icon
 	provides = rustdesk
 	conflicts = rustdesk
-	conflicts = rustdesk-git
-	conflicts = rustdesk-appimage-nightly
-	conflicts = rustdesk-nightly
-	conflicts = rustdesk-appimage
 	options = !strip
 	options = !lto
 	options = !debug
-	source = rustdesk-1.3.0-x86_64.pkg.tar.zst::https://github.com/rustdesk/rustdesk/releases/download/1.3.0/rustdesk-1.3.0-0-x86_64.pkg.tar.zst
-	sha256sums = 4b87ab3261d16ba0394e437fa867d102484c38975a213cfed1d028fe7b0fa51e
+	source = rustdesk-1.3.1-x86_64.pkg.tar.zst::https://github.com/rustdesk/rustdesk/releases/download/1.3.1/rustdesk-1.3.1-0-x86_64.pkg.tar.zst
+	sha256sums = ff95175843e3594dc3bc62924ea03782beff4d977529ca5db66d4c1c26477731
 
 pkgname = rustdesk-bin
