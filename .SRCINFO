@@ -1,0 +1,14 @@
+pkgbase = lingmo-calculator
+	pkgdesc = A simple calculator.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://lingmo.org
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	depends = qt5-tools
+	depends = qt5-quickcontrols2
+	source = https://github.com/LingmoOS/lingmo-calculator/archive/refs/tags/0.6.1.tar.gz
+	sha256sums = b0de29daeb1028dfbdf56619f88c464fb4273beade471f0d9896a0736e10c4ad
+
+pkgname = lingmo-calculator
