@@ -2,7 +2,7 @@
 # Contributer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo)
 pkgname=koboldcpp
-pkgver=1.74
+pkgver=1.75.2
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models"
 arch=('x86_64')
@@ -25,14 +25,14 @@ source=(
   'koboldcpp.png'
 )
 sha256sums=(
-  '10f99515eec5a34659d4f0b1d160404a6ca0cbf3054e77663c3f038ff4c7c08c'
+  '6fe2bb9d3f89453dfacc7ca421eaed02894135d807311d1b7732ced7e1c299ea'
   'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
   'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
 
 build() {
   cd "$srcdir/koboldcpp-$pkgver"
-  make LLAMA_VULKAN=1 LLAMA_OPENBLAS=1 LLAMA_CLBLAST=1 LLAMA_PORTABLE=1
+  make LLAMA_VULKAN=1 LLAMA_CLBLAST=1 LLAMA_PORTABLE=1
 }
 
 package() {
@@ -41,7 +41,6 @@ package() {
   install -d "$pkgdir/usr/share/koboldcpp"
 
   install -Dm644 "koboldcpp_default.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_default.so"
-  install -Dm644 "koboldcpp_openblas.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_openblas.so"
 
   install -Dm644 "koboldcpp_failsafe.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_failsafe.so"
   install -Dm644 "koboldcpp_noavx2.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_noavx2.so"
