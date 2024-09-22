@@ -2,8 +2,8 @@
 # Contributor: Tom < reztho at archlinux dot us >
 
 pkgname=openmsx
-pkgver=19.1
-pkgrel=2
+pkgver=20.0
+pkgrel=1
 pkgdesc="The MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
 url="http://openmsx.org/"
@@ -14,7 +14,8 @@ install=${pkgname}.install
 provides=("openmsx")
 conflicts=("openmsx-git")
 source=("https://github.com/openMSX/openMSX/releases/download/RELEASE_${pkgver//./_}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('20d7eae3544f5c3d1cc1034712df0b4b')
+md5sums=('baa9eb5e84a7b3114a8a62d969197455')
+
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -26,7 +27,7 @@ build() {
 	echo 'INSTALL_BINARY_DIR:=/usr/bin' >> build/custom.mk
 
 	# Compiling
-	./configure
+	 ./configure
 	make
 }
 
@@ -38,5 +39,10 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/licenses/openmsx"
 	ln -s /usr/share/licenses/common/GPL2/license.txt "${pkgdir}/usr/share/licenses/openmsx/openmsx.txt"
 	install -m 644 "${pkgdir}/usr/share/doc/openmsx/cbios.txt" "${pkgdir}/usr/share/licenses/openmsx/"
+
+	# Desktop entry
+	sed s/\ *Catapult//g ${srcdir}/${pkgname}-${pkgver}/build/package-slackware/catapult.desktop | sed s/Exec=.*/Exec=openmsx/ | sed s/Icon=.*/Icon=\\/usr\\/share\\/openmsx\\/icons\\/openMSX-logo-256.png/ > ${srcdir}/openmsx.desktop
+	mkdir -p "${pkgdir}/usr/share/applications/"
+        install -m 644 "${srcdir}/openmsx.desktop" "${pkgdir}/usr/share/applications/openmsx.desktop"
 }
 
