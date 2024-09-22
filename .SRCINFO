@@ -8,7 +8,7 @@ pkgbase = reflective-rapidjson-git
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = GPL
+	license = GPL-2-or-later
 	checkdepends = cppunit
 	checkdepends = boost
 	makedepends = cmake
@@ -16,7 +16,7 @@ pkgbase = reflective-rapidjson-git
 	makedepends = llvm
 	makedepends = git
 	makedepends = ninja
-	depends = libc++utilities-git.so
+	depends = c++utilities-git
 	depends = rapidjson
 	depends = llvm-libs>=18.0.0
 	depends = llvm-libs<19.0.0
@@ -28,3 +28,10 @@ pkgbase = reflective-rapidjson-git
 	sha256sums = SKIP
 
 pkgname = reflective-rapidjson-git
+	depends = c++utilities-git
+	depends = rapidjson
+	depends = llvm-libs>=18.0.0
+	depends = llvm-libs<19.0.0
+	depends = clang>=18.0.0
+	depends = clang<19.0.0
+	depends = libc++utilities-git.so
