@@ -1,0 +1,26 @@
+pkgbase = gsad
+	pkgdesc = server talking to the Greenbone Vulnerability Management daemon (gvmd)
+	pkgver = 22.12.0
+	pkgrel = 1
+	url = https://github.com/greenbone/gsad
+	arch = x86_64
+	groups = greenbone-vulnerability-manager
+	license = AGPL-3.0-only
+	makedepends = cmake
+	makedepends = xmltoman
+	depends = gvm-libs
+	depends = gnutls
+	depends = libgcrypt
+	depends = libmicrohttpd
+	depends = libglib-2.0.so
+	depends = libxml2.so
+	depends = zlib
+	source = gsad-22.12.0.tar.gz::https://github.com/greenbone/gsad/archive/refs/tags/v22.12.0.tar.gz
+	source = gsad-22.12.0.tar.gz.asc::https://github.com/greenbone/gsad/releases/download/v22.12.0/gsad-22.12.0.tar.gz.asc
+	source = 0001-libgcrypt-config.patch
+	validpgpkeys = 8AE4BE429B60A59B311C2E739823FAA60ED1E580
+	sha256sums = 1edb62a5f79e874f36c0b5fc91d19e725fd19d81c53d096ab3e8db21e49b1899
+	sha256sums = SKIP
+	sha256sums = e50f1fafd28a7253b55cb621fa036e047fe1412b051f331b58fdaddd9ab2a374
+
+pkgname = gsad
