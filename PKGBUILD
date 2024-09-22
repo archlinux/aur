@@ -7,7 +7,7 @@
 
 pkgname=safeeyes
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Free and Open Source tool for Linux users to reduce and prevent repetitive strain injury (RSI)."
 arch=("any")
 url="https://github.com/slgobinath/SafeEyes"
