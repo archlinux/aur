@@ -1,0 +1,19 @@
+pkgbase = liblingmo
+	pkgdesc = System library for Lingmo applications
+	pkgver = 1.9.10
+	pkgrel = 1
+	url = https://lingmo.org
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	depends = qt5-quickcontrols2
+	depends = networkmanager-qt5
+	depends = modemmanager-qt5
+	depends = bluez-qt5
+	depends = libkscreen5
+	depends = kio5
+	depends = qt5-sensors
+	source = https://github.com/LingmoOS/lib_lingmo/archive/refs/tags/1.9.10.tar.gz
+	sha256sums = be89a707f5aaae86bd4e59b0784f82414d380ce530d974d4e1fb62c42c4a4106
+
+pkgname = liblingmo
