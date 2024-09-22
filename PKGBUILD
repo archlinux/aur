@@ -10,8 +10,8 @@ pkgver=989.6390182
 pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Common C++ classes and routines such as argument parser, IO and conversion utilities'
-license=('GPL')
-depends=('gcc-libs')
+license=(GPL-2-or-later)
+depends=('gcc-libs' 'libarchive')
 optdepends=("$_name-doc: API documentation")
 makedepends=('cmake' 'git' 'ninja')
 checkdepends=('cppunit')
@@ -34,6 +34,7 @@ build() {
     -DCONFIGURATION_NAME:STRING='git' \
     -DCONFIGURATION_PACKAGE_SUFFIX:STRING='-git' \
     -DCONFIGURATION_TARGET_SUFFIX:STRING='git' \
+    -DUSE_LIBARCHIVE:BOOL=ON \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     .
   ninja
