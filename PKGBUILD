@@ -9,19 +9,16 @@ arch=('x86_64')
 url="https://squareline.io/"
 license=('custom')
 source=("https://static.squareline.io/downloads/${_pkgname}_Linux_v${pkgver//./_}.zip")
-makedepends=("unzip")
 sha256sums=('2a5d2984727864fb969e95cca19ab883111a12a685d5b06f8cffe95d3e749a0a')
-noextract=("${_pkgname}_Linux_v${pkgver//./_}.zip")
 
 package() {
-  install -dm755 ${pkgdir}/opt/${pkgname}
-  # cp -a ${srcdir}/* ${pkgdir}/opt/${pkgname}
-  unzip ${_pkgname}_Linux_v${pkgver//./_}.zip -d ${pkgdir}/opt/${pkgname}
+  install -dm755 ${pkgdir}/opt/
+  cp -a ${srcdir}/${_pkgname}_Linux_v${pkgver//./_} ${pkgdir}/opt/${pkgname}
 
   cd ${pkgdir}/opt/${pkgname}
 
   # binary
-  chmod 755 SquareLine_Studio.x86_64 lvgl/lv_font_conv-linux
+  chmod 755 ${_pkgname}.x86_64 lvgl/lv_font_conv-linux
   find lvgl/ -type d -name 'lvgl_v*' -exec chmod 755 {}/server/micropython  {}/server/server.py \;
 
   # desktop entry

@@ -5,8 +5,6 @@ pkgbase = squareline-studio
 	url = https://squareline.io/
 	arch = x86_64
 	license = custom
-	makedepends = unzip
-	noextract = SquareLine_Studio_Linux_v1_4_2.zip
 	source = https://static.squareline.io/downloads/SquareLine_Studio_Linux_v1_4_2.zip
 	sha256sums = 2a5d2984727864fb969e95cca19ab883111a12a685d5b06f8cffe95d3e749a0a
 
