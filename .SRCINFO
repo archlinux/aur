@@ -1,0 +1,12 @@
+pkgbase = lingmo-wallpapers
+	pkgdesc = Built-in wallpapers for LingmoOS.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://lingmo.org
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	source = https://github.com/LingmoOS/lingmo-wallpapers/archive/refs/tags/2.1.0.tar.gz
+	sha256sums = 8d2de5f7b0de81594afb8c8d05e2a853594ff4ce909921d989c41651d93fab89
+
+pkgname = lingmo-wallpapers
