@@ -2,15 +2,15 @@
 
 pkgname=thqm
 pkgdesc='A simple HTTP server to serve a dynamic menu web page.'
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 arch=('any')
 url='https://github.com/loiccoyle/thqm-rs'
 license=('MIT')
 depends=('git')
 makedepends=('rust')
 source=("$pkgname-${pkgver}.tar.gz::https://github.com/loiccoyle/thqm.rs/archive/v${pkgver}.tar.gz")
-sha256sums=('58e489ba95b288c23129d00dd5ba4cd0672a3b8b7a40d7a0ecbce31d6fa1c68c')
+sha256sums=('451b9a1031e44c5ab206ca81e7a422020bcbdb6376dd3c31a20013dc20bd993b')
 
 build() {
     cd "$pkgname-rs-$pkgver"
