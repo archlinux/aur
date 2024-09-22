@@ -3,7 +3,7 @@
 # The pkgbuild is based on the original pkgbuild for citra.
 
 pkgname=lime3ds-git
-pkgver=r10485.9129491
+pkgver=r10490.6fedff7
 pkgrel=1
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
@@ -146,7 +146,7 @@ prepare() {
     do
     git config submodule.externals/${submodule}.url "$srcdir/${submodule}"
     done
-    git config submodule.externals/oaknut.url "$srcdir/oaknut-dynarmic"
+    git config submodule.externals/dynarmic/oaknut.url "$srcdir/oaknut-dynarmic"
     git -c protocol.file.allow=always submodule update --init
     
     cd "$srcdir/Lime3DS"
