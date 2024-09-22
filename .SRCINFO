@@ -1,7 +1,7 @@
 pkgbase = rr-bin
 	pkgdesc = Binary record and replay framework: lightweight recording and deterministic debugging
 	pkgver = 5.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://rr-project.org/
 	arch = x86_64
 	license = custom

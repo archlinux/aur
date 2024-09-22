@@ -3,7 +3,7 @@
 
 pkgname=rr-bin
 pkgver=5.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Binary record and replay framework: lightweight recording and deterministic debugging"
 arch=('x86_64')
 url='http://rr-project.org/'
@@ -22,7 +22,15 @@ package() {
 	done
 	install -Dm755 "rr-$pkgver-Linux-x86_64/lib/rr/librrpreload.so" "$pkgdir/usr/lib/rr/librrpreload.so"
 	install -Dm755 "rr-$pkgver-Linux-x86_64/lib/rr/librrpreload_32.so" "$pkgdir/usr/lib/rr/librrpreload_32.so"
+	install -Dm755 "rr-$pkgver-Linux-x86_64/lib/rr/librrpreload.so" "$pkgdir/usr/lib/rr/librrpreload.so"
+	install -Dm755 "rr-$pkgver-Linux-x86_64/lib/rr/librrpreload_32.so" "$pkgdir/usr/lib/rr/librrpreload_32.so"
+	install -Dm755 "rr-$pkgver-Linux-x86_64/lib/rr/librraudit.so" "$pkgdir/usr/lib/rr/librraudit.so"
+	install -Dm755 "rr-$pkgver-Linux-x86_64/lib/rr/librraudit_32.so" "$pkgdir/usr/lib/rr/librraudit_32.so"
+	install -Dm755 "rr-$pkgver-Linux-x86_64/lib/rr/librrpage.so" "$pkgdir/usr/lib/rr/librrpage.so"
+	install -Dm755 "rr-$pkgver-Linux-x86_64/lib/rr/librrpage_32.so" "$pkgdir/usr/lib/rr/librrpage_32.so"
+
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/rr/LICENSE"
+
 	# Added on request of duongdominhchau, 16-Jul-2021: share files are needed
 	cp -R  "rr-$pkgver-Linux-x86_64/share/" "$pkgdir/usr/"
 }
