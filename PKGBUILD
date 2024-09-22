@@ -11,8 +11,8 @@ pkgver=6.14.3
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Common Qt related C++ classes and routines used by my applications such as dialogs, widgets and models (using Qt 6)'
-license=('GPL')
-depends=('libc++utilities.so' 'qt6-base' 'libx11')
+license=(GPL-2-or-later)
+depends=('c++utilities' 'qt6-base' 'libx11')
 makedepends=('cmake' 'ninja' 'qt6-tools' 'qt6-declarative' 'clang')
 optdepends=("$_name-doc: API documentation")
 provides=(libqtutilities-qt6.so)
@@ -42,6 +42,8 @@ check() {
 }
 
 package() {
+  depends+=('libc++utilities.so')
+
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   DESTDIR="${pkgdir}" ninja install
 }
