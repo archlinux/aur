@@ -1,4 +1,4 @@
-# Maintainer: Rui Marques <aur@ruimarques.xyz>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 
 pkgname=inferno
 pkgver=0.11.21
