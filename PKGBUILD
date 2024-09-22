@@ -2,20 +2,21 @@
 
 _pkgname=slippi-launcher
 pkgname=$_pkgname-bin
-pkgdesc="The way to play Slippi Online and watch replays (binary release)"
-pkgver=2.10.5
+pkgdesc="The way to play Slippi Online and watch replays (binary release, system Electron)"
+pkgver=2.11.6
 pkgrel=1
-arch=('x86_64')
 url="https://github.com/project-slippi/slippi-launcher"
-license=('GPL3')
-depends=('libappindicator-gtk3' 'libnotify' 'libxss' 'libxtst')
+license=('GPL-3.0-or-later')
+arch=('x86_64')
+depends=('electron' 'libnotify' 'libxss' 'libxtst')
+optdepends=('libappindicator-gtk3')
 makedepends=('fuse2')
-conflicts=($_pkgname)
-provides=($_pkgname)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 _appimage=Slippi-Launcher-$pkgver-x86_64.AppImage
 _desktop=$_pkgname.desktop
 source=("$url/releases/download/v$pkgver/$_appimage")
-sha256sums=('cd8c5255bc4444bb73e7ff484bc3d47ede99430ea442d494a74fca9a603f6e63')
+sha256sums=('a5d04f090d062fb4c5339a38f27a1ce93a2f99eabe7f6337c296a595e9acf1a1')
 
 _fix_permissions() (
   target=$1
@@ -36,30 +37,42 @@ _fix_permissions() (
 
   echo "Unrecognizable filesystem entry: $target" >&2
   return 1
-)
+) # Source: upscayl-appimage
 
 prepare() {
-  # Extract the AppImage
+# Create an exec file
+  echo -e "#!/bin/sh\n\
+export ELECTRON_IS_DEV=0\n\
+cd /usr/lib/slippi-launcher\n\
+exec electron /usr/lib/slippi-launcher/app.asar \$@" > $_pkgname
+# Extract the AppImage
   chmod +x "./$_appimage"
   "./$_appimage" --appimage-extract
-  # Edit a shortcut
+# Edit the shortcut
   mv squashfs-root/slippi-launcher.desktop $_desktop
   sed -i -E "s|Exec=AppRun|Exec=$_pkgname|g" $_desktop
 }
 
 package() {
-  # Create folders
-  mkdir -p "$pkgdir/opt/$_pkgname" "$pkgdir/usr/bin"
-  # Install
+# Create a directory
+  mkdir -p "$pkgdir/usr/lib/$_pkgname"
+# Clean up
+  cd squashfs-root/resources
+  rm app-update.yml
+  cd app.asar.unpacked/node_modules
+  rm -dr bufferutil/prebuilds/linux-arm*
+  rm -dr utf-8-validate/prebuilds/linux-arm*
+# Install
+  cd "$srcdir"
+  install -Dm644 $_desktop -t "$pkgdir/usr/share/applications"
+  install -Dm755 $_pkgname -t "$pkgdir/usr/bin"
   cd squashfs-root
   for i in 16 24 32 48 64 96 128 256 512; do
     install -Dm644 usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png -t "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
   done
-  rm -dr usr & rm AppRun $_pkgname.png .DirIcon
-  mv * "$pkgdir/opt/$_pkgname"
-  ln -s /opt/$_pkgname/$_pkgname "$pkgdir/usr/bin/$_pkgname"
-  install -Dm644 ../$_pkgname.desktop -t "$pkgdir/usr/share/applications"
-  # Fix permissions
+  cd resources
+  mv * "$pkgdir/usr/lib/$_pkgname"
+# Fix permissions
   find "$pkgdir" | while read -r target; do
     _fix_permissions "$target"
   done
