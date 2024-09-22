@@ -1,4 +1,5 @@
-# Maintainer: Brandon Mulcahy <brandon@jangler.info>
+# Maintainer: Dennis Herbrich (Gyroplast) <dennis.herbrich@veloxis.de>
+# Contributor: Brandon Mulcahy <brandon@jangler.info>
 pkgname=schismtracker-git
 pkgver=r2438.55398fa
 pkgrel=4
