@@ -1,0 +1,18 @@
+pkgbase = plasma6-applets-optimus-gpu-switcher-git
+	pkgdesc = KDE Plasma widget to change the GPU mode using the EnvyControl command line tool.
+	pkgver = r138.a298529
+	pkgrel = 1
+	url = https://github.com/enielrodriguez/optimus-gpu-switcher
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = kdeplasma-addons
+	depends = libplasma
+	depends = plasma5support
+	depends = envycontrol
+	optdepends = notify-send: notification support
+	optdepends = zenity: notification support (only one of the two are required)
+	source = optimus-gpu-switcher::git+https://github.com/enielrodriguez/optimus-gpu-switcher
+	b2sums = SKIP
+
+pkgname = plasma6-applets-optimus-gpu-switcher-git
