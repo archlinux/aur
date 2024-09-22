@@ -1,7 +1,7 @@
 # Maintainer: Dave Nicholson <me@davenicholson.xyz>
 
 pkgname=wallheaven
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='wallheaven is a CLI tool for fetching random wallpapers from wallhaven.cc.'
 url='https://github.com/davenicholson-xyz/wallheaven'
@@ -11,7 +11,7 @@ depends=()
 arch=('x86_64')
 source=("https://github.com/davenicholson-xyz/$pkgname/releases/download/v$pkgver/wallheaven-x86_64-unknown-linux-gnu.tar.xz")
 noextract=("$pkgname-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums=("8d2a65cfd84c3065d9fd541f1ef60d9d7366e9663b4ac03399e6226801699cf5")
+sha256sums=("bb8a83a2c7610488259d1a8cf6856dfda4761cd604993b971d1c3295ab6addc9")
 
 build() {
   mkdir -p "$srcdir/../build"
