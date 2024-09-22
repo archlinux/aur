@@ -2,12 +2,12 @@
 
 pkgname=gsa
 pkgver=23.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Greenbone Security Assistant'
 arch=('x86_64')
 url="https://github.com/greenbone/gsa"
 license=('GPL')
-depends=('gsad' 'gvm-libs' 'libgcrypt' 'gnutls' 'postgresql' 'libxml2' 'libmicrohttpd' 'openvas-scanner')
+depends=('gsad' 'openvas-scanner')
 makedepends=('yarn' 'doxygen' 'xmltoman' 'nodejs' 'npm' 'terser')
 groups=('greenbone-vulnerability-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/greenbone/gsa/archive/v${pkgver}.tar.gz")
