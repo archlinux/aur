@@ -5,6 +5,7 @@ pkgbase = libindi_3rdparty
 	url = http://www.indilib.org/index.php?title=Main_Page
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = LGPL2.1
 	makedepends = cmake
 	makedepends = boost
