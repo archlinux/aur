@@ -1,4 +1,5 @@
-# Maintainer: éclairevoyant
+# Maintainer: Markus Hartung <mail@hartmark.se>
+# Contributor: éclairevoyant
 # Contributor: SilverMight <silver at silvermight dot com>
 # Contributor: Bastian Plettner <b.pletttner at archlinux dot info>
 # Contributor: thesqrtminus1  <thesqrtminus1 at gmail dot com>
@@ -6,7 +7,7 @@
 # Contributor: kfgz <ffiasd at gmail dot com>
 
 pkgname=y-cruncher
-pkgver=0.8.4.9538
+pkgver=0.8.5.9543
 pkgrel=1
 pkgdesc="The first scalable multi-threaded Pi-benchmark for multi-core systems"
 arch=(x86_64)
@@ -15,7 +16,7 @@ license=(custom)
 options=('!strip')
 depends=(gcc-libs glibc numactl tbb)
 source=("https://github.com/Mysticial/$pkgname/releases/download/v$pkgver/$pkgname.v$pkgver-dynamic.tar.xz")
-b2sums=('66f03cfed237288c348003fbcb8b3e13d8ca21d24340bab47a2bdb03d6ef92601ecd69224ad06fee35fd1b7b55ef7ec91dedcb80dd85711227d6d033a98acb39')
+b2sums=('6f819c6b841059e237a7046cc30ab593d3ca1c2570c2badbde23c8880c2d646d0bfe840dab858f42f4352a2503c700d95f8bee93b61a799c63b1fffe8868dde6')
 
 prepare() {
 	cd "$pkgname v$pkgver-dynamic"
