@@ -1,4 +1,4 @@
-# Maintainer: krnlsoft
+# Maintainer: krnlsoft <krnlsoft 4t hotmail d0t it>
 # Contributors: theokonos
 # Contributors: Ted Sadler
 # Contributors: dekart811
