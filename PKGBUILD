@@ -25,16 +25,37 @@ pkgver() {
 		"$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "$pkgname"
+
+  # rename desktop file and application icons, for 'extra' package parity
+  sed -e 's/schism.desktop/schismtracker.desktop/' -i Makefile.am
+  sed -e 's/schism-icon-128/schismtracker/' -i sys/fd.org/schism.desktop
+  mv sys/fd.org/{schism,schismtracker}.desktop
+}
+
 build() {
-	cd $pkgname
-	autoreconf -i
-	./configure --prefix=/usr
-	make
+  cd "$pkgname"
+  autoreconf -vfi
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	cd $pkgname
-	make DESTDIR="$pkgdir/" install
-	install -Dm644 README.md \
-		"$pkgdir/usr/share/doc/schismtracker/README.md"
+  cd "$pkgname"
+  make DESTDIR="$pkgdir" install
+  # delete old application icon
+  rm -rf "$pkgdir/usr/share/pixmaps"
+
+  # documentation
+  install -vDm644 -t "$pkgdir/usr/share/doc/${pkgname%%-git}" \
+          docs/configuration.md README.md
+
+  # application icons
+  for i in 16 22 24 32 36 48 64 72 96 128 192; do
+    install -vDm644 "icons/schism-icon-${i}.png" \
+            "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname%%-git}.png"
+  done
+  install -vDm644 icons/schism-icon.svg \
+          "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname%%-git}.svg"
 }
