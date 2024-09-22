@@ -28,9 +28,8 @@ pkgver=1.6.2
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing'
-license=('GPL')
-depends=('libqtutilities.so' 'libqtforkawesome.so' 'libc++utilities.so' 'libboost_filesystem.so' 'qt5-svg' 'openssl'
-         'desktop-file-utils')
+license=(GPL-2-or-later)
+depends=('qtutilities' 'qtforkawesome' 'c++utilities' 'boost-libs' 'qt5-svg' 'openssl' 'desktop-file-utils')
 [[ $_webview_provider == none ]] && depends+=('qt5-base')
 [[ $_webview_provider == webkit ]] && depends+=('qt5-webkit')
 [[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
@@ -38,6 +37,7 @@ depends=('libqtutilities.so' 'libqtforkawesome.so' 'libc++utilities.so' 'libboos
 [[ $_js_provider == qml ]] && depends+=('qt5-declarative')
 [[ $_enable_kio_plugin ]] && optdepends+=('kio5: KIO plugin for Syncthing actions in Dolphin')
 [[ $_enable_plasmoid ]] && optdepends+=('plasma-workspace: Plasmoid for Plasma 5 desktop')
+optdepends=('gnome-shell-extension-appindicator: tray icon support for GNOME Shell')
 makedepends=('cmake' 'ninja' 'qt5-tools' 'boost')
 checkdepends=('cppunit' 'syncthing' 'iproute2')
 [[ $_enable_kio_plugin ]] && makedepends+=('kio5')
@@ -79,6 +79,8 @@ check() {
 }
 
 package() {
+  depends+=('libqtutilities.so' 'libqtforkawesome.so' 'libc++utilities.so' 'libboost_filesystem.so')
+
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   DESTDIR="${pkgdir}" ninja install
 }
