@@ -1,7 +1,7 @@
 pkgbase = optimus-manager-git
-	pkgdesc = Allows switching between the integrated and the dedicated graphics cards on NVIDIA Optimus laptops
-	pkgver = r732.fced1de.python3.12
-	pkgrel = 2
+	pkgdesc = Allows using Nvidia Optimus laptop graphics
+	pkgver = r745.b2693a4.python3.12
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Askannz/optimus-manager
 	arch = any
@@ -13,13 +13,20 @@ pkgbase = optimus-manager-git
 	makedepends = python-wheel
 	depends = dbus-python
 	depends = glxinfo
+	depends = NVIDIA-MODULE
 	depends = python
 	depends = xorg-xrandr
+	optdepends = gdm-prime: needed if your login screen is gdm
 	optdepends = bbswitch: alternatively switches GPUs by using standard Optimus ACPI calls
 	optdepends = acpi_call: alternatively switches GPUs by brute forcing ACPI calls
-	provides = optimus-manager=r732.fced1de.python3.12
+	provides = optimus-manager=r745.b2693a4.python3.12
 	conflicts = bumblebee
+	conflicts = envycontrol
+	conflicts = nvidia-exec
+	conflicts = nvidia-switch
+	conflicts = nvidia-xrun
 	conflicts = optimus-manager
+	conflicts = switcheroo-control
 	backup = etc/optimus-manager/nvidia-enable.sh
 	backup = etc/optimus-manager/nvidia-disable.sh
 	backup = etc/optimus-manager/optimus-manager.conf
