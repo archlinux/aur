@@ -6,7 +6,7 @@
 _pkgbase=virt-manager
 pkgbase=$_pkgbase-git
 pkgname=(virt-install-git virt-manager-git)
-pkgver=3.2.0.r91.ga1ddd23c
+pkgver=4.1.0.r323.gb83a1b0d0
 pkgrel=1
 pkgdesc="Console user interface for managing virtual machines"
 arch=('any')
@@ -40,7 +40,7 @@ package_virt-install-git() {
 
 package_virt-manager-git() {
   pkgdesc="Desktop user interface for managing virtual machines"
-  depends=("virt-install-git=$pkgver" 'vte3' 'gtk-vnc' 'spice-gtk3' 'python-cairo')
+  depends=("virt-install-git=$pkgver" 'vte3' 'gtk-vnc' 'spice-gtk' 'python-cairo')
   provides=('virt-manager')
   conflicts=('virt-manager')
   cd "$srcdir/$_pkgbase"
