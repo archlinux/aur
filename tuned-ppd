@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+
+name=$RC_SVCNAME
+description="PPD-to-TuneD API Translation Daemon"
+supervisor="supervise-daemon"
+command="/usr/bin/tuned-ppd"
+depend() {
+	after tuned 
+	before multi-user display-manager 
+	need tuned 
+}
