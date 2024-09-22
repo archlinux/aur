@@ -1,7 +1,7 @@
 # Maintainer: Alexander Karpukhin <thealexdev23@gmail.com>
 
 pkgname=power-options-gtk-git
-pkgver=1.1.0r24.93e37f
+pkgver=1.1.0r25.f31800
 pkgrel=1
 pkgdesc="A gtk frontend for Power Options, a blazingly fast power management solution."
 arch=('x86_64')
