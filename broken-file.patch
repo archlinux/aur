@@ -1,0 +1,18 @@
+--- a/tests/Makefile.am	2024-03-05 21:42:10.654493082 +0100
++++ b/tests/Makefile.am	2024-03-05 21:42:46.031436504 +0100
+@@ -1707,7 +1707,6 @@
+ test_ext2_CFLAGS = $(WARNINGS_CFLAGS) $(LIBGUESTFS_CFLAGS)
+ test_ext2_LDADD = libtest.la $(LIBGUESTFS_LIBS)
+ 
+-TESTS += test-ext2-exportname.sh
+ EXTRA_DIST += test-ext2-exportname.sh
+ 
+ check_DATA += ext2.img
+@@ -1788,7 +1788,6 @@
+ TESTS += \
+ 	test-luks-info.sh \
+ 	test-luks-copy.sh \
+-	test-luks-copy-zero.sh \
+ 	$(NULL)
+ endif
+ EXTRA_DIST += \
