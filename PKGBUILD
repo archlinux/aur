@@ -1,9 +1,9 @@
 # Maintainer: Peter blackman <peter at pblackman dot plus dot com>
-# 01-Jun-2024
+# 22-Sep-2024
 #
 
 pkgname=cevomapgen
-pkgver=34
+pkgver=35
 pkgrel=1
 pkgdesc="External Random Map Generator for C-evo"
 arch=('x86_64' 'aarch64')
@@ -12,12 +12,14 @@ license=('GPL-3.0-or-later')
 depends=('qt6pas' 'glibc' 'libx11' 'hicolor-icon-theme')
 makedepends=('git' 'fpc' 'lazarus-qt6')
 source=("$pkgname-$pkgver"::git+$url#tag=$pkgver)
-sha256sums=('efcacb0239a7c6f8adf5988eb92f7c46f9e127dc837b5e1f24924a5e2f708195')
+#source=('cevomapgen_35.orig.tar.xz')
+sha256sums=('5862e15153a09b0a04cf227280eb398490359d21fb5c9531b259b3e9a1c9ab76')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   # currently cannot build with -pie as fpc's RTL is not built with pie
-  sed -i '/-k-pie/d' fpc.cfg
+  # Supress lacks GNU_PROPERTY_X86_FEATURE_1_SHSTK warning
+  sed -i 's/pie/zshstk/' fpc.cfg
 }
 
 build() {
