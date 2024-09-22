@@ -5,7 +5,7 @@ pkgname="stm32cubeclt"
 # pkgname=("stm32cubeclt" "stlink-server" "stlink-udev-rules")
 _pkgname="STM32CubeCLT"
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 _pkgdesc="A toolset for third-party integrated development environment (IDE) providers, allowing the use \
 of STMicroelectronics proprietary tools within their own IDE frameworks."
 arch=('x86_64')
@@ -48,7 +48,7 @@ _download_path="https://www.st.com""$_pkg_url"
 source=("${_pkg_zip_name}"::"$_download_path"
         "https://www.st.com/resource/en/license/${_pkg_license_name}")
 sha256sums=('f66be954b886d8c104b8316d833a3e4d85f6abd652862cba477627424e3eb9a0'
-            '50b3b09396d8c0dad0bde596dcaf9ccb6b20d36fd6b02f8e8e5d0466087a9819')
+            'c6d92c00dee63e0f4a54d8ea62f82a646243c3e1480142ae3e7f4ca5d77d5702')
 
 # not used, reserved.
 _pkgname_stlink_server="stlink-server"
