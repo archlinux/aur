@@ -8,7 +8,7 @@
 # Profile with xvfb-run, if possible
 : ${_build_pgo_xvfb:=false}
 
-_pkgver=11.18.1-1
+_pkgver=11.18.1-2
 
 pkgname=firedragon
 _pkgname=FireDragon
@@ -80,7 +80,7 @@ backup=("usr/lib/${pkgname}/${pkgname}.cfg"
 source=(https://gitlab.com/garuda-linux/firedragon/builder/-/releases/v${_pkgver}/downloads/firedragon-v${_pkgver}.source.tar.zst
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.psd
   https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/firedragon.desktop)
-sha256sums=('d84098a66c70b72a24223a50f30d1a37e99967154a561f369426d76eee4645b3'
+sha256sums=('3e89906c5ed23d9a6df710543bc3df0df38aa77dd96760dfad36b77313afbb81'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
 
