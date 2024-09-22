@@ -1,7 +1,7 @@
 pkgbase = brother-dcpt310
 	pkgdesc = Driver for the Brother DCP-T310 multifuncional printer
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://solutions.brother.com/linux/en_us/index.html
 	install = brother-dcpt310.install
 	arch = i686

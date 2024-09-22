@@ -3,7 +3,7 @@
 
 pkgname=brother-dcpt310
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Driver for the Brother DCP-T310 multifuncional printer"
 url="http://solutions.brother.com/linux/en_us/index.html"
 license=('LicenseRef-Brother')

@@ -1,6 +1,6 @@
 post_install() {
 	/opt/brother/Printers/dcpt310/cupswrapper/cupswrapperdcpt310
-	systemctl restart org.cups.cupsd.service
+	systemctl restart cups
 }
 
 pre_remove() {
