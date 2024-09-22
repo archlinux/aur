@@ -3,26 +3,27 @@
 
 pkgbase="rakarrack"
 pkgname=("${pkgbase}" "${pkgbase}-docs")
-pkgver=0.6.1
-pkgrel=5
+pkgver=0.6.2+r194+g9f8a085
+_commit_rel="9f8a085efbd7b162c8c5b791602c2015e1885ae2" # 0.6.2
+_commit="55b3362d9b4f7bec167e6ada2444259fbae48979"
+pkgrel=1
 pkgdesc="Versatile guitar multi-effects processor"
 arch=('any')
 url="https://${pkgbase}.sourceforge.net"
+_url="https://github.com/dtimms/${pkgname}"
 license=('GPL-2.0-or-later')
-makedepends=('alsa-utils')
-_pkgsrc="${pkgbase}-${pkgver}"
-source=("${_pkgsrc}.tar.bz2::https://downloads.sourceforge.net/${pkgbase}/${_pkgsrc}.tar.bz2"
-        "${pkgbase}_fix_manpage.patch::https://sources.debian.org/data/main/${pkgbase::1}/${pkgbase}/${pkgver}-9/debian/patches/04_fix_manpage.diff"
-        "${pkgbase}_fix_format_security.patch::https://sources.debian.org/data/main/${pkgbase::1}/${pkgbase}/${pkgver}-9/debian/patches/format-security.diff"
-        "${pkgbase}_fix_segfault.patch::https://sources.debian.org/data/main/${pkgbase::1}/${pkgbase}/${pkgver}-9/debian/patches/05_fix_segfault.diff"
-        "${pkgbase}_fix_fltk_include.patch"
-        "${pkgbase}_fix_icons_destdir.patch")
-b2sums=('1fb0e144b13dc3ba7594c8c49c4cd7c61f759029d1effad3c27be31b64af4bf8c60eb0493f23531f3d7645e659185f22a22878a63fa49f77144e0cafc2f9dac7'
+makedepends=('alsa-utils' 'fftw' 'fltk' 'jack' 'libsndfile' 'libxpm')
+_pkgsrc="${pkgbase}-${_commit}"
+source=("${_pkgsrc}.tar.gz::${_url}/archive/${_commit}.tar.gz"
+        "${pkgbase}_fix_manpage.patch::https://sources.debian.org/data/main/${pkgbase::1}/${pkgbase}/0.6.1-9/debian/patches/04_fix_manpage.diff"
+        "${pkgbase}_fix_segfault.patch::https://sources.debian.org/data/main/${pkgbase::1}/${pkgbase}/0.6.1-9/debian/patches/05_fix_segfault.diff"
+        "${pkgbase}_fix_icons_destdir.patch"
+        "${pkgbase}_fix_license_destdir.patch")
+b2sums=('838e68dfc3dc074fe73312119ec18122c7a08d7cbd4b834f521fd6a5fc287730dc07074011f5e5fd59e611a1b216154edba45fc74c67b0243e3db566d1da2314'
         '778fe891dd2927e61539ce36a1cac419e0c05113a9f6a25ca13a6ea5155f11b1063bd8aa830c9c5ad4de732bd6901ccb13ea4414173ece3a99705103539fcafd'
-        'f85c34313bd739a9e134ca6f907ac6709c771aa295cf1c6b15ad1679f82aba9e2ad9173cbe0fd4e66b3f135abd5c1a1f9d8f12bd85fe6b177031a9345eecc3ce'
         '3a0aa5205e34a0aa03c06ec1ad773b0f2815ab096f0ed4d8b8451efb099cc0daacb5dda6a9ad856f5e1dd52cce307826a615691e322168aff8fb98c8ab0c9bec'
-        '0229484ea598d47eace6ec09212a7169b686d0f6f6a74d45d58486b118d54b736a1ce4ef4c3ad7f4d42f6c8903dd38a49e7f798f1f98747c649937fff43f7c9e'
-        '5c5ae27b8dcef87a87821d2c5ca96848a2757b30b79247a8b87611671edc6e304808de4da1383bdb2ccbc50309a21bb26b67456b720a0c055eddbd58ef15e7d0')
+        '5c5ae27b8dcef87a87821d2c5ca96848a2757b30b79247a8b87611671edc6e304808de4da1383bdb2ccbc50309a21bb26b67456b720a0c055eddbd58ef15e7d0'
+        '17f4d58b7cb15cc2b53f356db9931f3bf9066b4ba119a50390deb353d2f50402c1016389e11f4629bff564936179cd7b6d3a8d8e223aceb0d319015ef3a65d86')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -33,7 +34,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
-  autoreconf -vfi
+  ./autogen.sh
   ./configure \
     --prefix='/usr' \
     --enable-datadir='yes' \
@@ -43,8 +44,8 @@ build() {
 
 package_rakarrack() {
   arch=('x86_64')
-  depends=('alsa-lib' 'fltk' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'jack'
-           'libsamplerate' 'libsndfile' 'libx11' 'libxpm')
+  depends=('alsa-lib' 'fftw' 'fltk' 'gcc-libs' 'glibc' 'hicolor-icon-theme'
+           'jack' 'libsamplerate' 'libsndfile' 'libx11' 'libxpm')
 
   cd "${srcdir}/${_pkgsrc}"
   make DESTDIR="${pkgdir}" install
