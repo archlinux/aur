@@ -1,6 +1,6 @@
 pkgbase = jdnsbench-bin
 	pkgdesc = A fast, extensive & transparent DNS benchmark that runs in your terminal!
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/WasabiThumb/jdnsbench
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = jdnsbench-bin
 	provides = jdnsbench
 	conflicts = jdnsbench
 	options = !strip
-	source = https://github.com/WasabiThumb/jdnsbench/releases/download/1.0.0/jdnsbench-app-1.0.0.jar
+	source = https://github.com/WasabiThumb/jdnsbench/releases/download/1.0.1/jdnsbench-app-1.0.1.jar
 	source = jdnsbench.desktop
-	md5sums = f271d1f338569b4e6441410130f166d1
+	md5sums = 9e473aa0a2a6dbf0a5bec6d3d5266146
 	md5sums = SKIP
 
 pkgname = jdnsbench-bin

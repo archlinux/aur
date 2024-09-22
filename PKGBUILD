@@ -1,7 +1,7 @@
 # Maintainer: Wasabi <wasabithumbs@gmail.com>
 _name="jdnsbench"
 pkgname="${_name}-bin"
-pkgver="1.0.0"
+pkgver="1.0.1"
 pkgrel=1
 pkgdesc="A fast, extensive & transparent DNS benchmark that runs in your terminal!"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=()
 _dentry="jdnsbench.desktop"
 _jarfile="jdnsbench-app-${pkgver}.jar"
 source=("https://github.com/WasabiThumb/jdnsbench/releases/download/${pkgver}/${_jarfile}" "${_dentry}")
-md5sums=("f271d1f338569b4e6441410130f166d1" "SKIP")
+md5sums=("9e473aa0a2a6dbf0a5bec6d3d5266146" "SKIP")
 options=(!strip)
 provides=("${_name}")
 conflicts=("${_name}")
