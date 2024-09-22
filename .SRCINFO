@@ -1,6 +1,6 @@
 pkgbase = inferno
 	pkgdesc = A Rust port of FlameGraph
-	pkgver = 0.11.14
+	pkgver = 0.11.21
 	pkgrel = 1
 	url = https://github.com/jonhoo/inferno
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = inferno
 	provides = inferno-flamegraph
 	provides = inferno-diff-folded
 	conflicts = inferno-git
-	source = inferno-0.11.14.tar.gz::https://github.com/jonhoo/inferno/archive/refs/tags/v0.11.14.tar.gz
-	sha256sums = f3f8518449581b8de182407e016385a0415aff84105a5ff966ca6adc981b4db3
+	source = inferno-0.11.21.tar.gz::https://github.com/jonhoo/inferno/archive/refs/tags/v0.11.21.tar.gz
+	sha256sums = 8650bcb44715ecf83b00d36ed0e28e8b6c1f11d9de8e25a54554d72c0d67dc87
 
 pkgname = inferno
