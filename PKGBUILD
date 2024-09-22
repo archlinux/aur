@@ -3,13 +3,13 @@
 # Contributor: Felix Golatofski <contact@xdfr.de>
 
 pkgname=plexamp-appimage
-pkgver=4.11.1
+pkgver=4.11.2
 pkgrel=1
 pkgdesc="Modern music client for Plex"
 provides=('plexamp')
 conflicts=('plexamp')
 arch=('x86_64')
-makedepends=('imagemagick')
+makedepends=('imagemagick' 'librsvg')
 depends=('fuse2')
 url="https://plexamp.com"
 options=(!strip)
@@ -18,7 +18,7 @@ _filename=Plexamp-${pkgver}.AppImage
 source=(
   https://plexamp.plex.tv/plexamp.plex.tv/desktop/${_filename}
 )
-sha512sums=('9a26400ae4f992cc0881d6984859d87a821416d17a2115ca6cb2eba4e5606b85142e0c27ce29c67a148d0dde9f792cae0e829085721b0c1ffc788e231114d2d4')
+sha512sums=('70d06ea4b14786aec60e88ff4181ac4b45128532a60e97ff2710594bdd95c130aeb818d27133061747044c6118627bf1aafe2f7fd31228d634fc75bd0ae82e68')
 
 
 prepare() {
@@ -38,7 +38,7 @@ package() {
   install -Dm644 squashfs-root/usr/share/icons/hicolor/scalable/plexamp.svg $pkgdir/usr/share/icons/hicolor/scalable/plexamp.svg
   for res in "16x16" "32x32" "48x48" "64x64" "128x128" "256x256" "512x512"; do
     mkdir -p squashfs-root/usr/share/icons/hicolor/$res/apps/
-    convert squashfs-root/usr/share/icons/hicolor/scalable/plexamp.svg -size $res squashfs-root/usr/share/icons/hicolor/$res/apps/plexamp.png
+    magick convert squashfs-root/usr/share/icons/hicolor/scalable/plexamp.svg -size $res squashfs-root/usr/share/icons/hicolor/$res/apps/plexamp.png
     install -Dm644 squashfs-root/usr/share/icons/hicolor/$res/apps/plexamp.png $pkgdir/usr/share/icons/hicolor/$res/apps/plexamp.png
   done
 }
