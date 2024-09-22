@@ -7,8 +7,8 @@
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=darktable-git
 _gitname=darktable
-pkgver=4.7.0.r498.gad2feeb830
-pkgrel=1
+pkgver=4.9.0.r549.g0f5bd178e3
+pkgrel=2
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
 url=http://www.darktable.org/
