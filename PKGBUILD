@@ -15,8 +15,8 @@ pkgver=3.9.3
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A tag editor with command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska (GUI disabled)'
-license=('GPL')
-depends=('libc++utilities.so' 'libtagparser.so')
+license=(GPL-2-or-later)
+depends=('c++utilities' 'tagparser')
 makedepends=('cmake' 'ninja')
 conflicts=("${pkgname%-cli}")
 provides=("${pkgname%-cli}")
@@ -55,6 +55,8 @@ check() {
 }
 
 package() {
+  depends+=('libc++utilities.so' 'libtagparser.so')
+
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   DESTDIR="${pkgdir}" ninja install
 }
