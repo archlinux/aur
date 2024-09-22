@@ -5,7 +5,7 @@ pkgname=coolercontrol-bin
 _pkgname=${pkgname%-bin}
 _app_id="org.$_pkgname.CoolerControl"
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A program to monitor and control your cooling devices (binary release)"
 arch=('x86_64')
 url="https://gitlab.com/coolercontrol/coolercontrol"
@@ -15,7 +15,7 @@ depends=(
   'hicolor-icon-theme'
   'libappindicator-gtk3'
   'webkit2gtk-4.1'
-  "coolercontrold-bin=$pkgver"
+  'coolercontrold-bin'
 )
 checkdepends=(
   'appstream-glib'

@@ -1,7 +1,7 @@
 pkgbase = coolercontrol-bin
 	pkgdesc = A program to monitor and control your cooling devices (binary release)
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/coolercontrol/coolercontrol
 	arch = x86_64
 	groups = coolercontrol-bin
@@ -12,7 +12,7 @@ pkgbase = coolercontrol-bin
 	depends = hicolor-icon-theme
 	depends = libappindicator-gtk3
 	depends = webkit2gtk-4.1
-	depends = coolercontrold-bin=1.4.1
+	depends = coolercontrold-bin
 	provides = coolercontrol
 	conflicts = coolercontrol
 	source = https://gitlab.com/coolercontrol/coolercontrol/-/releases/1.4.1/downloads/packages/coolercontrol
