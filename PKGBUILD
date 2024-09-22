@@ -1,5 +1,5 @@
 pkgname=python-seabreeze
-pkgver=2.9.0
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="Python module for oceanoptics spectrometers"
 arch=(x86_64)
@@ -12,6 +12,7 @@ python-numpy
 makedepends=(
 python-setuptools
 libusb-compat
+cython
 )
 checkdepends=(
 python-pytest
@@ -19,7 +20,7 @@ python-pytest-mock
 python-pytest-runner
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ap--/python-seabreeze/archive/v${pkgver}.tar.gz")
-sha256sums=('aeef7c38fa9b79424e36eb8425eb6274e0c8e9303c704d2e3ce9385075ab6cfc')
+sha256sums=('772833dadb0443c7db79f550c6c0ab0476bd7f9eba66d42640a950055e546968')
 
 prepare(){
   cd python-seabreeze-${pkgver}
