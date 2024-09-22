@@ -5,19 +5,19 @@
 
 _reponame=tagparser
 pkgname=tagparser
-pkgver=12.3.0
+pkgver=12.3.1
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='C++ library for reading and writing MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska tags'
-license=('GPL')
-depends=('libc++utilities.so' 'libz.so')
+license=(GPL-2-or-later)
+depends=('c++utilities' 'zlib')
 makedepends=('cmake' 'ninja' 'iso-codes')
 checkdepends=('cppunit' 'openssl')
 optdepends=("$pkgname-doc: API documentation")
 provides=(libtagparser.so)
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('54b50360eb69d61e46acc5f41266e0bc62f95d7715b6cf622a4cb4be085dbe03')
+sha256sums=('16cbf52cdf7c996d77c9c5b5487177515329ce9c3f5e68d1bb19ae4a8f49fb1c')
 
 prepare() {
   [[ -d tagparser ]] || ln -s "${PROJECT_DIR_NAME:-$_reponame-$pkgver}" tagparser
@@ -44,6 +44,8 @@ check() {
 }
 
 package() {
+  depends+=('libc++utilities.so' 'libz.so')
+
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   DESTDIR="${pkgdir}" ninja install
 }
