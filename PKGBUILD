@@ -34,11 +34,11 @@ fi
 ###################################################################################
 
 pkgbase=linux-zen-pds
-pkgver=6.10.5.zen1
+pkgver=6.11.0.zen1
 pkgrel=1
-linuxver=6.10.5
-commit=fd6214bf634a4d45aa51da67fae452621b1ce77e
-versiontag=6.10.5-zen1
+linuxver=6.11
+commit=a3590fce832d275caed26420c1d8c93e2b2f974b
+versiontag=6.11-zen1
 arch=(x86_64)
 url='https://www.kernel.org/'
 license=(GPL-2.0-only)
@@ -50,6 +50,9 @@ makedepends=(
   pahole
   perl
   python
+  rust
+  rust-bindgen
+  rust-src
   tar
   xz
   kmod
@@ -361,9 +364,9 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('30909eb2e0434dce97a93cd97ed0dfab7688a124bc3ebc3ecf6c776de09ccc0b'
-            'f5a4abdd0105bd8303a5dd2d45938d7cbc276288e1692ce06a0c7384c20ccb7c'
-            '53867fb33a3404b604a572b77858b4cb8fa28c28683062a760deddc081387c0d')
+sha256sums=('55d2c6c025ebc27810c748d66325dd5bc601e8d32f8581d9e77673529bdacb2e'
+            '6561d4c940e6613a914d2c84446c5003cc672708dd802023ae771474f8a6fa39'
+            '5a4e0c3ac42cd7b247f3ce3e7ec5bbe00d01b5d0fbdbbe4ade0ae036e9cfe7b2')
 
 pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do
