@@ -1,0 +1,4769 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 92199d50..dae105b0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -144,7 +144,7 @@
+ FetchContent_Declare(regex URL ${regex_url})
+ FetchContent_MakeAvailable(regex)
+ # CDK.
+-set(cdk_tgz t20200923.tar.gz)
++set(cdk_tgz t20240619.tar.gz)
+ set(cdk_url file://${deps_dir}/${cdk_tgz})
+ if(NOT EXISTS ${deps_dir}/${cdk_tgz})
+ 	set(cdk_url https://github.com/ThomasDickey/cdk-snapshots/archive/refs/tags/${cdk_tgz})
+diff --git a/src/cdk.patch b/src/cdk.patch
+index 8213039b..999a0485 100644
+--- a/src/cdk.patch
++++ b/src/cdk.patch
+@@ -38,9 +38,10 @@ Added generated include/slider.h and slider.c, which came from:
+   ./gen-scale.sh SLIDER Slider Int int include/gen-slider.h > include/slider.h
+   ./gen-scale.sh SLIDER Slider Int int gen-slider.c > slider.c
+ 
+-diff -r c40f79827990 binding.c
+---- a/binding.c	Sun Nov 23 16:42:21 2014 -0500
+-+++ b/binding.c	Sun Nov 23 16:45:38 2014 -0500
++diff --git a/binding.c b/binding.c
++index c217870..fbb12f1 100644
++--- a/binding.c
+++++ b/binding.c
+ @@ -1,4 +1,6 @@
+  #include <cdk_int.h>
+ +#include "termkey.h"
+@@ -48,7 +49,7 @@ diff -r c40f79827990 binding.c
+  
+  /*
+   * $Author: tom $
+-@@ -167,7 +169,50 @@
++@@ -167,7 +169,50 @@ int getcCDKObject (CDKOBJS *obj)
+  {
+     EObjectType cdktype = ObjTypeOf (obj);
+     CDKOBJS *test = bindableObject (&cdktype, obj);
+@@ -100,10 +101,11 @@ diff -r c40f79827990 binding.c
+  
+     if (result >= 0
+         && test != 0
+-diff -r c40f79827990 cdk.c
+---- a/cdk.c	Sun Nov 23 16:42:21 2014 -0500
+-+++ b/cdk.c	Sun Nov 23 16:45:38 2014 -0500
+-@@ -453,6 +453,33 @@
++diff --git a/cdk.c b/cdk.c
++index c446e34..211c74d 100644
++--- a/cdk.c
+++++ b/cdk.c
++@@ -493,6 +493,33 @@ static unsigned decodeAttribute (char *string,
+     return (from + (unsigned)(result - base));
+  }
+  
+@@ -137,15 +139,15 @@ diff -r c40f79827990 cdk.c
+  /*
+   * This function takes a character string, full of format markers
+   * and translates them into a chtype * array. This is better suited
+-@@ -472,6 +499,7 @@
+-    chtype attrib;
+-    chtype lastChar;
++@@ -502,6 +529,7 @@ chtype *char2Chtype (const char *string, int *to, int *align)
++ {
++    chtype *result = 0;
+     chtype mask;
+ +   char *s;
+  
+     (*to) = 0;
+     *align = LEFT;
+-@@ -763,7 +791,7 @@
++@@ -813,7 +841,7 @@ chtype *char2Chtype (const char *string, int *to, int *align)
+  	    result[0] = attrib;
+  	 }
+        }
+@@ -154,7 +156,7 @@ diff -r c40f79827990 cdk.c
+     }
+     else
+     {
+-@@ -1255,6 +1255,7 @@
++@@ -1270,6 +1298,7 @@ int intlen (int value)
+   */
+  int CDKgetDirectoryContents (const char *directory, char ***list)
+  {
+@@ -162,7 +164,7 @@ diff -r c40f79827990 cdk.c
+     /* Declare local variables.  */
+     struct dirent *dirStruct;
+     int counter = 0;
+-@@ -1281,6 +1281,21 @@
++@@ -1295,6 +1324,21 @@ int CDKgetDirectoryContents (const char *directory, char ***list)
+  
+     /* Close the directory.  */
+     closedir (dp);
+@@ -184,7 +186,7 @@ diff -r c40f79827990 cdk.c
+  
+     /* Sort the info.  */
+     sortList ((CDK_CSTRING *)*list, counter);
+-@@ -1334,7 +1362,7 @@
++@@ -1402,7 +1446,7 @@ char *baseName (char *pathname)
+  	 for (x = pathLen - 1; x != 0; --x)
+  	 {
+  	    /* Find the last '/' in the pathname. */
+@@ -193,7 +195,7 @@ diff -r c40f79827990 cdk.c
+  	    {
+  	       strcpy (base, pathname + x + 1);
+  	       break;
+-@@ -1361,7 +1389,7 @@
++@@ -1428,7 +1472,7 @@ char *dirName (char *pathname)
+         && (pathLen = strlen (pathname)) != 0)
+     {
+        size_t x = pathLen;
+@@ -202,243 +204,11 @@ diff -r c40f79827990 cdk.c
+        {
+  	 dir[x--] = '\0';
+        }
+-diff -r c40f79827990 cdk.h
+---- a/include/cdk.h	Sun Nov 23 16:42:21 2014 -0500
+-+++ b/include/cdk.h	Sun Nov 23 16:45:38 2014 -0500
+-@@ -80,6 +80,14 @@
+- #endif
+- #ifdef HAVE_DIRENT_H
+- #include <dirent.h>
+-+#else
+-+#include <windows.h>
+-+#include <io.h>
+-+#define mode_t unsigned int
+-+#define S_IFIFO _S_IFIFO
+-+#define S_IRUSR _S_IREAD
+-+#define S_IWUSR _S_IWRITE
+-+#define S_IXUSR 0
+- #endif
+- #include <time.h>
+- #include <errno.h>
+-@@ -226,6 +226,10 @@
+-  */
+- typedef enum {vEARLY_EXIT, vESCAPE_HIT, vNORMAL, vNEVER_ACTIVATED, vERROR} EExitType;
+- 
+-+#if _WIN32
+-+#define boolean CDKboolean
+-+#endif
+-+
+- /*
+-  * This defines a boolean type.
+-  */
+-@@ -300,7 +304,7 @@
+- #include <itemlist.h>
+- #include <label.h>
+- #include <marquee.h>
+--#include <matrix.h>
+-+//#include <matrix.h>
+- #include <mentry.h>
+- #include <menu.h>
+- #include <radio.h>
+-@@ -308,21 +312,21 @@
+- #include <selection.h>
+- #include <swindow.h>
+- #include <template.h>
+--#include <viewer.h>
+-+//#include <viewer.h>
+- #include <traverse.h>
+- #include <button.h>
+- 
+- /*
+-  * Generated headers:
+-  */
+--#include <dscale.h>
+--#include <fscale.h>
+--#include <scale.h>
+--#include <uscale.h>
+--
+--#include <fslider.h>
+--#include <slider.h>
+--#include <uslider.h>
+-+//#include <dscale.h>
+-+//#include <fscale.h>
+-+//#include <scale.h>
+-+//#include <uscale.h>
+-+//
+-+//#include <fslider.h>
+-+#include <slider.h>
+-+//#include <uslider.h>
+- 
+- /*
+-  * Low-level object drawing
+-diff -r c40f79827990 cdk_config.h
+---- /dev/null	Thu Jan 01 00:00:00 1970 +0000
+-+++ b/include/cdk_config.h	Sun Nov 23 16:45:38 2014 -0500
+-@@ -0,0 +1,71 @@
+-+/* include/cdk_config.h.  Generated automatically by configure.  */
+-+/*
+-+ * $Id: config.hin,v 1.2 2000/01/17 14:48:19 tom Exp $
+-+ */
+-+
+-+#ifndef CDK_CONFIG_H
+-+#define CDK_CONFIG_H 1
+-+
+-+
+-+#define CC_HAS_PROTOS 1
+-+#define CDK_CONST /*nothing*/
+-+#define CDK_CSTRING CDK_CONST char *
+-+#define CDK_CSTRING2 CDK_CONST char * CDK_CONST *
+-+#define CDK_PATCHDATE 20140118
+-+#define CDK_VERSION "5.0"
+-+#if !_WIN32
+-+#define HAVE_DIRENT_H 1
+-+#endif
+-+#define HAVE_GETBEGX 1
+-+#define HAVE_GETBEGY 1
+-+#define HAVE_GETCWD 1
+-+#define HAVE_GETLOGIN 1
+-+#define HAVE_GETMAXX 1
+-+#define HAVE_GETMAXY 1
+-+#if !_WIN32
+-+#define HAVE_GETOPT_H 1
+-+#define HAVE_GETOPT_HEADER 1
+-+#define HAVE_GRP_H 1
+-+#endif
+-+#define HAVE_INTTYPES_H 1
+-+#define HAVE_LIMITS_H 1
+-+#if !_WIN32
+-+#define HAVE_LSTAT 1
+-+#endif
+-+#define HAVE_MEMORY_H 1
+-+#define HAVE_MKTIME 1
+-+//#define HAVE_NCURSES_H 1
+-+#if !_WIN32
+-+#define HAVE_PWD_H 1
+-+#endif
+-+#define HAVE_SETLOCALE 1
+-+#define HAVE_SLEEP 1
+-+#define HAVE_START_COLOR 1
+-+#define HAVE_STDINT_H 1
+-+#define HAVE_STDLIB_H 1
+-+#define HAVE_STRDUP 1
+-+#define HAVE_STRERROR 1
+-+#define HAVE_STRINGS_H 1
+-+#define HAVE_STRING_H 1
+-+#define HAVE_SYS_STAT_H 1
+-+#define HAVE_SYS_TYPES_H 1
+-+#define HAVE_TERM_H 1
+-+#define HAVE_TYPE_CHTYPE 1
+-+#define HAVE_UNCTRL_H 1
+-+#if !_WIN32
+-+#define HAVE_UNISTD_H 1
+-+#endif
+-+#define MIXEDCASE_FILENAMES 1
+-+//#define NCURSES 1
+-+#define NCURSES_OPAQUE 0
+-+#define PACKAGE "cdk"
+-+#define STDC_HEADERS 1
+-+#define SYSTEM_NAME "linux-gnu"
+-+#define TYPE_CHTYPE_IS_SCALAR 1
+-+#define setbegyx(win,y,x) ((win)->_begy = (y), (win)->_begx = (x), OK)
+-+
+-+#if !defined(HAVE_LSTAT) && !defined(lstat)
+-+#define lstat(f,b) stat(f,b)
+-+#endif
+-+
+-+#endif /* CDK_CONFIG_H */
+-diff -r c40f79827990 cdk_util.h
+---- a/include/cdk_util.h	Sun Nov 23 16:42:21 2014 -0500
+-+++ b/include/cdk_util.h	Sun Nov 23 16:45:38 2014 -0500
+-@@ -53,6 +53,10 @@
+-  * SUCH DAMAGE.
+-  */
+- 
+-+#if _WIN32
+-+#define Beep CDKBeep
+-+#endif
+-+
+- /*
+-  * This beeps at the user. The standard curses beep() does not
+-  * flush the stream, so it will only beep until a force is made.
+-@@ -280,6 +284,14 @@
+- 		int		/* length */,
+- 		chtype		/* character */);
+- 
+-+#define HAVE_CDKUTF8 1
+-+/* This takes the first byte of a UTF-8 character and returns the length of that character. */
+-+unsigned int utf8charlen(unsigned char /* char */);
+-+/* This returns the length of the UTF-8 string. */
+-+size_t utf8strlen(const char * /* string */);
+-+/** This returns the absolute position in a UTF-8 string of a character position. */
+-+int utf8charpos(char * /* string */, int /* pos */);
+-+
+- /*
+-  * This takes a chtype pointer and returns a char pointer.
+-  */
+-diff -r c40f79827990 cdk_version.h
+---- /dev/null	Thu Jan 01 00:00:00 1970 +0000
+-+++ b/include/cdk_version.h	Sun Nov 23 16:45:38 2014 -0500
+-@@ -0,0 +1,56 @@
+-+/*
+-+ * $Id: cdk_version.hin,v 1.2 2012/03/20 22:10:36 tom Exp $
+-+ */
+-+
+-+#ifndef CDK_VERSION_H
+-+#define CDK_VERSION_H
+-+
+-+#ifdef __cplusplus
+-+extern "C" {
+-+#endif
+-+
+-+/*
+-+ * Copyright 2002,2012 Thomas E. Dickey
+-+ *
+-+ * Redistribution and use in source and binary forms, with or without
+-+ * modification, are permitted provided that the following conditions
+-+ * are met:
+-+ * 1. Redistributions of source code must retain the above copyright
+-+ *    notice, this list of conditions and the following disclaimer.
+-+ * 2. Redistributions in binary form must reproduce the above copyright
+-+ *    notice, this list of conditions and the following disclaimer in the
+-+ *    documentation and/or other materials provided with the distribution.
+-+ * 3. All advertising materials mentioning features or use of this software
+-+ *    must display the following acknowledgment:
+-+ * 	This product includes software developed by Thomas E. Dickey
+-+ * 	and contributors.
+-+ * 4. Neither the name of Thomas E. Dickey, nor the names of contributors
+-+ *    may be used to endorse or promote products derived from this software
+-+ *    without specific prior written permission.
+-+ *
+-+ * THIS SOFTWARE IS PROVIDED BY THOMAS E. DICKEY AND CONTRIBUTORS ``AS IS''
+-+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+-+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+-+ * ARE DISCLAIMED.  IN NO EVENT SHALL THOMAS E. DICKEY OR CONTRIBUTORS BE
+-+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+-+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+-+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+-+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+-+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+-+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+-+ * POSSIBILITY OF SUCH DAMAGE.
+-+ */
+-+#define CDK_VERSION_MAJOR "5"
+-+#define CDK_VERSION_MINOR "0"
+-+#define CDK_VERSION_PATCH "20140118"
+-+
+-+/*
+-+ * Runtime to return the same version information.
+-+ */
+-+const char *CDKVersion (void);
+-+
+-+#ifdef __cplusplus
+-+}
+-+#endif
+-+
+-+#endif /* CDK_VERSION_H */
+-diff -r c40f79827990 cdkscreen.c
+---- a/cdkscreen.c	Sun Nov 23 16:42:21 2014 -0500
+-+++ b/cdkscreen.c	Sun Nov 23 16:45:38 2014 -0500
+-@@ -180,24 +180,6 @@
++diff --git a/cdkscreen.c b/cdkscreen.c
++index b768b6d..37a9100 100644
++--- a/cdkscreen.c
+++++ b/cdkscreen.c
++@@ -180,24 +180,6 @@ CDKSCREEN *initCDKScreen (WINDOW *window)
+     ALL_SCREENS *item;
+     CDKSCREEN *screen = 0;
+  
+@@ -463,10 +233,11 @@ diff -r c40f79827990 cdkscreen.c
+     if ((item = typeMalloc (ALL_SCREENS)) != 0)
+     {
+        if ((screen = typeCalloc (CDKSCREEN)) != 0)
+-diff -r c40f79827990 draw.c
+---- a/draw.c	Sun Nov 23 16:42:21 2014 -0500
+-+++ b/draw.c	Sun Nov 23 16:45:38 2014 -0500
+-@@ -338,23 +338,34 @@
++diff --git a/draw.c b/draw.c
++index 0dc87d8..fc18586 100644
++--- a/draw.c
+++++ b/draw.c
++@@ -349,23 +349,34 @@ void writeChtypeAttrib (WINDOW *window,
+     int diff             = end - start;
+     int display          = 0;
+     int x                = 0;
+@@ -505,10 +276,11 @@ diff -r c40f79827990 draw.c
+ +   wattr_set (window, current_attr, pair, NULL); // restore original attrs
+ +   freeChar (s);
+  }
+-diff -r c40f79827990 entry.c
+---- a/entry.c	Sun Nov 23 16:42:21 2014 -0500
+-+++ b/entry.c	Sun Nov 23 16:45:38 2014 -0500
+-@@ -223,13 +223,13 @@
++diff --git a/entry.c b/entry.c
++index 97b9418..1755774 100644
++--- a/entry.c
+++++ b/entry.c
++@@ -221,13 +221,13 @@ static void setPositionToEnd (CDKENTRY *entry)
+  {
+     int stringLen;
+  
+@@ -524,7 +296,7 @@ diff -r c40f79827990 entry.c
+  	 entry->screenCol = charCount;
+        }
+        else
+-@@ -245,6 +245,8 @@
++@@ -243,6 +243,8 @@ static void setPositionToEnd (CDKENTRY *entry)
+     }
+  }
+  
+@@ -533,7 +305,7 @@ diff -r c40f79827990 entry.c
+  /*
+   * This injects a single character into the widget.
+   */
+-@@ -284,7 +286,7 @@
++@@ -280,7 +282,7 @@ static int _injectCDKEntry (CDKOBJS *object, chtype input)
+        else
+        {
+  	 int infoLength = (int)strlen (widget->info);
+@@ -542,7 +314,7 @@ diff -r c40f79827990 entry.c
+  
+  	 switch (input)
+  	 {
+-@@ -332,6 +334,7 @@
++@@ -328,6 +330,7 @@ static int _injectCDKEntry (CDKOBJS *object, chtype input)
+  	    else
+  	    {
+  	       wmove (widget->fieldWin, 0, --widget->screenCol);
+@@ -550,7 +322,7 @@ diff -r c40f79827990 entry.c
+  	    }
+  	    break;
+  
+-@@ -350,6 +353,7 @@
++@@ -346,6 +349,7 @@ static int _injectCDKEntry (CDKOBJS *object, chtype input)
+  	    {
+  	       /* Move right. */
+  	       wmove (widget->fieldWin, 0, ++widget->screenCol);
+@@ -558,7 +330,7 @@ diff -r c40f79827990 entry.c
+  	    }
+  	    break;
+  
+-@@ -364,22 +368,27 @@
++@@ -360,7 +364,10 @@ static int _injectCDKEntry (CDKOBJS *object, chtype input)
+  	       bool success = FALSE;
+  
+  	       if (input == KEY_BACKSPACE)
+@@ -569,7 +341,7 @@ diff -r c40f79827990 entry.c
+  
+  	       if (currPos >= 0 && infoLength > 0)
+  	       {
+- 		  if (currPos < infoLength)
++@@ -368,14 +375,16 @@ static int _injectCDKEntry (CDKOBJS *object, chtype input)
+  		  {
+  		     int x;
+  
+@@ -587,7 +359,7 @@ diff -r c40f79827990 entry.c
+  		     widget->info[infoLength - 1] = '\0';
+  		     success = TRUE;
+  		  }
+-@@ -551,6 +560,23 @@
++@@ -549,6 +558,23 @@ static void _moveCDKEntry (CDKOBJS *object,
+     }
+  }
+  
+@@ -611,8 +383,7 @@ diff -r c40f79827990 entry.c
+  /*
+   * This is a generic character parser for the entry field. It is used as a
+   * callback function, so any personal modifications can be made by creating
+-@@ -558,38 +584,42 @@
+-  * a new function and calling the activation with its name.
++@@ -556,37 +582,41 @@ static void _moveCDKEntry (CDKOBJS *object,
+   */
+  static void CDKEntryCallBack (CDKENTRY *entry, chtype character)
+  {
+@@ -663,16 +434,16 @@ diff -r c40f79827990 entry.c
+  	    entry->leftChar++;
+        }
+  
+-@@ -660,6 +690,8 @@
++@@ -656,6 +686,8 @@ static void _drawCDKEntry (CDKOBJS *object, boolean Box)
++ static void drawCDKEntryField (CDKENTRY *entry)
+  {
+-    int infoLength = 0;
+     int x = 0;
+ +   char *p;
+ +   int charlen;
+  
+-    /* Draw in the filler characters. */
+-    (void)mvwhline (entry->fieldWin, 0, x, entry->filler, entry->fieldWidth);
+-@@ -667,7 +699,7 @@
++    /* Set background color and attributes of the entry field */
++    wbkgd (entry->fieldWin, entry->fieldAttr);
++@@ -666,7 +698,7 @@ static void drawCDKEntryField (CDKENTRY *entry)
+     /* If there is information in the field. Then draw it in. */
+     if (entry->info != 0)
+     {
+@@ -681,7 +452,7 @@ diff -r c40f79827990 entry.c
+  
+        /* Redraw the field. */
+        if (isHiddenDisplayType (entry->dispType))
+-@@ -679,10 +711,12 @@
++@@ -679,10 +711,12 @@ static void drawCDKEntryField (CDKENTRY *entry)
+        }
+        else
+        {
+@@ -697,10 +468,11 @@ diff -r c40f79827990 entry.c
+  	 }
+        }
+        wmove (entry->fieldWin, 0, entry->screenCol);
+-diff -r c40f79827990 fselect.c
+---- a/fselect.c	Sun Nov 23 16:42:21 2014 -0500
+-+++ b/fselect.c	Sun Nov 23 16:45:38 2014 -0500
+-@@ -416,7 +416,7 @@
++diff --git a/fselect.c b/fselect.c
++index 571bf28..2e06ec7 100644
++--- a/fselect.c
+++++ b/fselect.c
++@@ -415,7 +415,7 @@ static int _injectCDKFselect (CDKOBJS *object, chtype input)
+     copyExitType (fselect, fselect->entryField);
+  
+     /* If we exited early, make sure we don't interpret it as a file. */
+@@ -709,7 +481,7 @@ diff -r c40f79827990 fselect.c
+     {
+        return 0;
+     }
+-@@ -1104,7 +1104,7 @@
++@@ -1109,7 +1109,7 @@ static int displayFileInfoCB (EObjectType objectType GCC_UNUSED,
+  
+  static char *make_pathname (const char *directory, const char *filename)
+  {
+@@ -718,7 +490,7 @@ diff -r c40f79827990 fselect.c
+     bool root = (strcmp (directory, "/") == 0);
+     char *result;
+  
+-@@ -1316,6 +1316,7 @@
++@@ -1322,6 +1322,7 @@ static int completeFilenameCB (EObjectType objectType GCC_UNUSED,
+   */
+  void deleteFileCB (EObjectType objectType GCC_UNUSED, void *object, void *clientData)
+  {
+@@ -726,7 +498,7 @@ diff -r c40f79827990 fselect.c
+     CDKSCROLL *fscroll = (CDKSCROLL *)object;
+     CDKFSELECT *fselect = (CDKFSELECT *)clientData;
+     const char *buttons[] =
+-@@ -1374,6 +1375,7 @@
++@@ -1380,6 +1381,7 @@ void deleteFileCB (EObjectType objectType GCC_UNUSED, void *object, void *client
+  
+     /* Redraw the file selector. */
+     drawCDKFselect (fselect, ObjOf (fselect)->box);
+@@ -734,16 +506,17 @@ diff -r c40f79827990 fselect.c
+  }
+  
+  /*
+-diff -r c40f79827990 gen-scale.c
+---- a/gen-scale.c	Sun Nov 23 16:42:21 2014 -0500
+-+++ /dev/null	Thu Jan 01 00:00:00 1970 +0000
+-@@ -1,817 +0,0 @@
++diff --git a/gen-scale.c b/gen-scale.c
++index d459dc6..e69de29 100644
++--- a/gen-scale.c
+++++ b/gen-scale.c
++@@ -1,816 +0,0 @@
+ -#include <cdk_int.h>
+ -
+ -/*
+ - * $Author: tom $
+-- * $Date: 2016/11/20 18:32:34 $
+-- * $Revision: 1.25 $
++- * $Date: 2021/12/16 00:38:44 $
++- * $Revision: 1.26 $
+ - */
+ -
+ -/*
+@@ -941,12 +714,11 @@ diff -r c40f79827990 gen-scale.c
+ -
+ -   if (actions == 0)
+ -   {
+--      chtype input = 0;
+ -      boolean functionKey;
+ -
+ -      for (;;)
+ -      {
+--	 input = (chtype) getchCDKObject (ObjOf (widget), &functionKey);
++-	 chtype input = (chtype) getchCDKObject (ObjOf (widget), &functionKey);
+ -
+ -	 /* Inject the character into the widget. */
+ -	 ret = (<CTYPE>) injectCDK<MIXED> (widget, input);
+@@ -1078,7 +850,6 @@ diff -r c40f79827990 gen-scale.c
+ -static bool performEdit (CDK<UPPER> * widget, chtype input)
+ -{
+ -   bool result = FALSE;
+--   bool modify = TRUE;
+ -   int need = widget->fieldWidth;
+ -   char *temp = (char *)malloc ((size_t) need + 2);
+ -   char test;
+@@ -1094,6 +865,7 @@ diff -r c40f79827990 gen-scale.c
+ -
+ -   if (temp != 0)
+ -   {
++-      bool modify = TRUE;
+ -      int base = 0;
+ -
+ -      wmove (widget->fieldWin, 0, base);
+@@ -1555,130 +1327,362 @@ diff -r c40f79827990 gen-scale.c
+ -dummyRefreshData (<MIXED>)
+ -
+ -dummySaveData (<MIXED>)
+-diff -r c40f79827990 gen-scale.h
+---- a/include/gen-scale.h	Sun Nov 23 16:42:21 2014 -0500
+-+++ /dev/null	Thu Jan 01 00:00:00 1970 +0000
+-@@ -1,233 +0,0 @@
+--/*
+-- * $Id: gen-scale.h,v 1.8 2012/03/20 21:59:39 tom Exp $
+-- */
+--
+--#ifndef CDKINCLUDES
+--#ifndef CDK<UPPER>_H
+--#define CDK<UPPER>_H	1
+--
+--#ifdef __cplusplus
+--extern "C" {
+--#endif
+--
+--#ifndef CDK_H
+--#define CDKINCLUDES
+--#include <cdk.h>
+--#undef CDKINCLUDES
+--#include <binding.h>
+--#include <cdkscreen.h>
+--#include <cdk_objs.h>
+--#endif
+--
+--/*
+-- * Copyright 2004,2012 Thomas E. Dickey
+-- * All rights reserved.
+-- *
+-- * Redistribution and use in source and binary forms, with or without
+-- * modification, are permitted provided that the following conditions
+-- * are met:
+-- * 1. Redistributions of source code must retain the above copyright
+-- *    notice, this list of conditions and the following disclaimer.
+-- * 2. Redistributions in binary form must reproduce the above copyright
+-- *    notice, this list of conditions and the following disclaimer in the
+-- *    documentation and/or other materials provided with the distribution.
+-- * 3. All advertising materials mentioning features or use of this software
+-- *    must display the following acknowledgment:
+-- *      This product includes software developed by Thomas Dickey
+-- *      and contributors.
+-- * 4. Neither the name of Thomas Dickey, nor the names of contributors
+-- *    may be used to endorse or promote products derived from this software
+-- *    without specific prior written permission.
+-- *
+-- * THIS SOFTWARE IS PROVIDED BY THOMAS DICKEY AND CONTRIBUTORS ``AS IS'' AND
+-- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+-- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+-- * ARE DISCLAIMED.  IN NO EVENT SHALL THOMAS DICKEY OR CONTRIBUTORS BE LIABLE
+-- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+-- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+-- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+-- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+-- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+-- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+-- * SUCH DAMAGE.
+-- */
+--
+--/*
+-- * Define the CDK widget <MIXED> structure.
+-- */
+--struct S<MIXED> {
+--   CDKOBJS	obj;
+--   WINDOW *	parent;
+--   WINDOW *	win;
+--   WINDOW *	shadowWin;
+--   WINDOW *	fieldWin;
+--   WINDOW *	labelWin;
+--   int		titleAdj;
+--   chtype *	label;
+--   int		labelLen;
+--   int		boxHeight;
+--   int		boxWidth;
+--   int		fieldWidth;
+--   int		fieldEdit;	/* offset from right-margin of field */
+--   chtype	fieldAttr;
+--   <CTYPE>	low;
+--   <CTYPE>	high;
+--   <CTYPE>	inc;
+--   <CTYPE>	fastinc;
+--   <CTYPE>	current;
+--#if <FLOAT>
+--   int		digits;
+--#endif <FLOAT>
+--   EExitType	exitType;
+--   boolean	shadow;
+--};
+--typedef struct S<MIXED> CDK<UPPER>;
+--
+--/*
+-- * This creates a new pointer to a CDK <CTYPE>-<MIXED> widget.
+-- */
+--CDK<UPPER> *newCDK<MIXED> (
+--		CDKSCREEN *	/* cdkscreen */,
+--		int		/* xpos */,
+--		int		/* ypos */,
+--		const char *	/* title */,
+--		const char *	/* label */,
+--		chtype		/* fieldAttr */,
+--		int		/* fieldWidth */,
+--		<CTYPE>		/* start */,
+--		<CTYPE>		/* low */,
+--		<CTYPE>		/* high */,
+--		<CTYPE>		/* inc */,
+--		<CTYPE>		/* fastInc */,
+--#if <FLOAT>
+--		int		/* digits */,
+--#endif <FLOAT>
+--		boolean		/* Box */,
+--		boolean		/* shadow */);
++diff --git a/include/cdk.h b/include/cdk.h
++index 737e272..7d1f339 100644
++--- a/include/cdk.h
+++++ b/include/cdk.h
++@@ -73,6 +73,14 @@ extern "C" {
++ #endif
++ #ifdef HAVE_DIRENT_H
++ #include <dirent.h>
+++#else
+++#include <windows.h>
+++#include <io.h>
+++#define mode_t unsigned int
+++#define S_IFIFO _S_IFIFO
+++#define S_IRUSR _S_IREAD
+++#define S_IWUSR _S_IWRITE
+++#define S_IXUSR 0
++ #endif
++ #include <time.h>
++ #include <errno.h>
++@@ -219,6 +227,10 @@ typedef enum {vFRONT, vBACK, vBOTH} EStripType;
++  */
++ typedef enum {vEARLY_EXIT, vESCAPE_HIT, vNORMAL, vNEVER_ACTIVATED, vERROR} EExitType;
++ 
+++#if _WIN32
+++#define boolean CDKboolean
+++#endif
+++
++ /*
++  * This defines a boolean type.
++  */
++@@ -293,7 +305,7 @@ void stopCDKDebug (FILE *fd);
++ #include <itemlist.h>
++ #include <label.h>
++ #include <marquee.h>
++-#include <matrix.h>
+++//#include <matrix.h>
++ #include <mentry.h>
++ #include <menu.h>
++ #include <radio.h>
++@@ -301,21 +313,21 @@ void stopCDKDebug (FILE *fd);
++ #include <selection.h>
++ #include <swindow.h>
++ #include <template.h>
++-#include <viewer.h>
+++//#include <viewer.h>
++ #include <traverse.h>
++ #include <button.h>
++ 
++ /*
++  * Generated headers:
++  */
++-#include <dscale.h>
++-#include <fscale.h>
++-#include <scale.h>
++-#include <uscale.h>
+ -
++-#include <fslider.h>
+++//#include <dscale.h>
+++//#include <fscale.h>
+++//#include <scale.h>
+++//#include <uscale.h>
+++//
+++//#include <fslider.h>
++ #include <slider.h>
++-#include <uslider.h>
+++//#include <uslider.h>
++ 
++ /*
++  * Low-level object drawing
++diff --git a/include/cdk_config.h b/include/cdk_config.h
++new file mode 100644
++index 0000000..917f5b1
++--- /dev/null
+++++ b/include/cdk_config.h
++@@ -0,0 +1,70 @@
+++/* include/cdk_config.h.  Generated automatically by configure.  */
+++/*
+++ * $Id: config.hin,v 1.2 2000/01/17 14:48:19 tom Exp $
+++ */
+++
+++#ifndef CDK_CONFIG_H
+++#define CDK_CONFIG_H 1
+++
+++
+++#define CC_HAS_PROTOS 1
+++#define CDK_CONST /*nothing*/
+++#define CDK_CSTRING CDK_CONST char *
+++#define CDK_CSTRING2 CDK_CONST char * CDK_CONST *
+++#define CDK_PATCHDATE 20140118
+++#define CDK_VERSION "5.0"
+++#if !_WIN32
+++#define HAVE_DIRENT_H 1
+++#endif
+++#define HAVE_GETBEGX 1
+++#define HAVE_GETBEGY 1
+++#define HAVE_GETCWD 1
+++#define HAVE_GETLOGIN 1
+++#define HAVE_GETMAXX 1
+++#define HAVE_GETMAXY 1
+++#if !_WIN32
+++#define HAVE_GETOPT_H 1
+++#define HAVE_GETOPT_HEADER 1
+++#define HAVE_GRP_H 1
+++#endif
+++#define HAVE_INTTYPES_H 1
+++#define HAVE_LIMITS_H 1
+++#if !_WIN32
+++#define HAVE_LSTAT 1
+++#endif
+++#define HAVE_MEMORY_H 1
+++#define HAVE_MKTIME 1
+++//#define HAVE_NCURSES_H 1
+++#if !_WIN32
+++#define HAVE_PWD_H 1
+++#endif
+++#define HAVE_SETLOCALE 1
+++#define HAVE_SLEEP 1
+++#define HAVE_START_COLOR 1
+++#define HAVE_STDINT_H 1
+++#define HAVE_STDLIB_H 1
+++#define HAVE_STRDUP 1
+++#define HAVE_STRERROR 1
+++#define HAVE_STRINGS_H 1
+++#define HAVE_STRING_H 1
+++#define HAVE_SYS_STAT_H 1
+++#define HAVE_SYS_TYPES_H 1
+++#define HAVE_TERM_H 1
+++#define HAVE_TYPE_CHTYPE 1
+++#define HAVE_UNCTRL_H 1
+++#if !_WIN32
+++#define HAVE_UNISTD_H 1
+++#endif
+++#define MIXEDCASE_FILENAMES 1
+++//#define NCURSES 1
+++#define NCURSES_OPAQUE 0
+++#define PACKAGE "cdk"
+++#define STDC_HEADERS 1
+++#define SYSTEM_NAME "linux-gnu"
+++#define TYPE_CHTYPE_IS_SCALAR 1
+++
+++#if !defined(HAVE_LSTAT) && !defined(lstat)
+++#define lstat(f,b) stat(f,b)
+++#endif
+++
+++#endif /* CDK_CONFIG_H */
++diff --git a/include/cdk_util.h b/include/cdk_util.h
++index bae8a48..293131b 100644
++--- a/include/cdk_util.h
+++++ b/include/cdk_util.h
++@@ -46,6 +46,10 @@ extern "C" {
++  * use or other dealings in this Software without prior written authorization.
++  */
++ 
+++#if _WIN32
+++#define Beep CDKBeep
+++#endif
+++
++ /*
++  * This beeps at the user. The standard curses beep() does not
++  * flush the stream, so it will only beep until a force is made.
++@@ -286,6 +290,14 @@ void cleanChtype (
++ 		int		/* length */,
++ 		chtype		/* character */);
++ 
+++#define HAVE_CDKUTF8 1
+++/* This takes the first byte of a UTF-8 character and returns the length of that character. */
+++unsigned int utf8charlen(unsigned char /* char */);
+++/* This returns the length of the UTF-8 string. */
+++size_t utf8strlen(const char * /* string */);
+++/** This returns the absolute position in a UTF-8 string of a character position. */
+++int utf8charpos(char * /* string */, int /* pos */);
+++
++ /*
++  * This takes a chtype pointer and returns a char pointer.
++  */
++diff --git a/include/cdk_version.h b/include/cdk_version.h
++new file mode 100644
++index 0000000..37b6098
++--- /dev/null
+++++ b/include/cdk_version.h
++@@ -0,0 +1,56 @@
+++/*
+++ * $Id: cdk_version.hin,v 1.2 2012/03/20 22:10:36 tom Exp $
+++ */
+++
+++#ifndef CDK_VERSION_H
+++#define CDK_VERSION_H
+++
+++#ifdef __cplusplus
+++extern "C" {
+++#endif
+++
+++/*
+++ * Copyright 2002,2012 Thomas E. Dickey
+++ *
+++ * Redistribution and use in source and binary forms, with or without
+++ * modification, are permitted provided that the following conditions
+++ * are met:
+++ * 1. Redistributions of source code must retain the above copyright
+++ *    notice, this list of conditions and the following disclaimer.
+++ * 2. Redistributions in binary form must reproduce the above copyright
+++ *    notice, this list of conditions and the following disclaimer in the
+++ *    documentation and/or other materials provided with the distribution.
+++ * 3. All advertising materials mentioning features or use of this software
+++ *    must display the following acknowledgment:
+++ * 	This product includes software developed by Thomas E. Dickey
+++ * 	and contributors.
+++ * 4. Neither the name of Thomas E. Dickey, nor the names of contributors
+++ *    may be used to endorse or promote products derived from this software
+++ *    without specific prior written permission.
+++ *
+++ * THIS SOFTWARE IS PROVIDED BY THOMAS E. DICKEY AND CONTRIBUTORS ``AS IS''
+++ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+++ * ARE DISCLAIMED.  IN NO EVENT SHALL THOMAS E. DICKEY OR CONTRIBUTORS BE
+++ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+++ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+++ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+++ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+++ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+++ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+++ * POSSIBILITY OF SUCH DAMAGE.
+++ */
+++#define CDK_VERSION_MAJOR "5"
+++#define CDK_VERSION_MINOR "0"
+++#define CDK_VERSION_PATCH "20140118"
+++
+++/*
+++ * Runtime to return the same version information.
+++ */
+++const char *CDKVersion (void);
+++
+++#ifdef __cplusplus
+++}
+++#endif
+++
+++#endif /* CDK_VERSION_H */
++diff --git a/include/gen-scale.h b/include/gen-scale.h
++index 66bcb44..e69de29 100644
++--- a/include/gen-scale.h
+++++ b/include/gen-scale.h
++@@ -1,227 +0,0 @@
+ -/*
+-- * This activates the widget.
++- * $Id: gen-scale.h,v 1.9 2012/03/20 21:59:39 tom Exp $
+ - */
+--<CTYPE>	activateCDK<MIXED> (
+--		CDK<UPPER> *	/* widget */,
+--		chtype *	/* actions */);
+ -
+--/*
+-- * This injects a single character into the widget.
+-- */
+--#define injectCDK<MIXED>(obj,input) injectCDKObject(obj,input,<DTYPE>)
++-#ifndef CDKINCLUDES
++-#ifndef CDK<UPPER>_H
++-#define CDK<UPPER>_H	1
+ -
+--/*
++-#ifdef __cplusplus
++-extern "C" {
++-#endif
++-
++-#ifndef CDK_H
++-#define CDKINCLUDES
++-#include <cdk.h>
++-#undef CDKINCLUDES
++-#include <binding.h>
++-#include <cdkscreen.h>
++-#include <cdk_objs.h>
++-#endif
++-
++-/*
++- * Copyright 2004,2012 Thomas E. Dickey
++- *
++- * Permission is hereby granted, free of charge, to any person obtaining a copy
++- * of this software and associated documentation files (the "Software"), to
++- * deal in the Software without restriction, including without limitation the
++- * rights to use, copy, modify, merge, publish, distribute, distribute with
++- * modifications, sublicense, and/or sell copies of the Software, and to permit
++- * persons to whom the Software is furnished to do so, subject to the following
++- * conditions:
++- *
++- * The above copyright notice and this permission notice shall be included in
++- * all copies or substantial portions of the Software.
++- *
++- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
++- * ABOVE COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
++- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
++- * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++- * SOFTWARE.
++- *
++- * Except as contained in this notice, the name(s) of the above copyright
++- * holders shall not be used in advertising or otherwise to promote the sale,
++- * use or other dealings in this Software without prior written authorization.
++- */
++-
++-/*
++- * Define the CDK widget <MIXED> structure.
++- */
++-struct S<MIXED> {
++-   CDKOBJS	obj;
++-   WINDOW *	parent;
++-   WINDOW *	win;
++-   WINDOW *	shadowWin;
++-   WINDOW *	fieldWin;
++-   WINDOW *	labelWin;
++-   int		titleAdj;
++-   chtype *	label;
++-   int		labelLen;
++-   int		boxHeight;
++-   int		boxWidth;
++-   int		fieldWidth;
++-   int		fieldEdit;	/* offset from right-margin of field */
++-   chtype	fieldAttr;
++-   <CTYPE>	low;
++-   <CTYPE>	high;
++-   <CTYPE>	inc;
++-   <CTYPE>	fastinc;
++-   <CTYPE>	current;
++-#if <FLOAT>
++-   int		digits;
++-#endif <FLOAT>
++-   EExitType	exitType;
++-   boolean	shadow;
++-};
++-typedef struct S<MIXED> CDK<UPPER>;
++-
++-/*
++- * This creates a new pointer to a CDK <CTYPE>-<MIXED> widget.
++- */
++-CDK<UPPER> *newCDK<MIXED> (
++-		CDKSCREEN *	/* cdkscreen */,
++-		int		/* xpos */,
++-		int		/* ypos */,
++-		const char *	/* title */,
++-		const char *	/* label */,
++-		chtype		/* fieldAttr */,
++-		int		/* fieldWidth */,
++-		<CTYPE>		/* start */,
++-		<CTYPE>		/* low */,
++-		<CTYPE>		/* high */,
++-		<CTYPE>		/* inc */,
++-		<CTYPE>		/* fastInc */,
++-#if <FLOAT>
++-		int		/* digits */,
++-#endif <FLOAT>
++-		boolean		/* Box */,
++-		boolean		/* shadow */);
++-
++-/*
++- * This activates the widget.
++- */
++-<CTYPE>	activateCDK<MIXED> (
++-		CDK<UPPER> *	/* widget */,
++-		chtype *	/* actions */);
++-
++-/*
++- * This injects a single character into the widget.
++- */
++-#define injectCDK<MIXED>(obj,input) injectCDKObject(obj,input,<DTYPE>)
++-
++-/*
+ - * This sets various attributes of the widget.
+ - */
+ -void setCDK<MIXED> (
+@@ -1792,209 +1796,430 @@ diff -r c40f79827990 gen-scale.h
+ -
+ -#endif /* CDK<UPPER>_H */
+ -#endif /* CDKINCLUDES */
+-diff -r c40f79827990 itemlist.c
+---- a/itemlist.c	Sun Nov 23 16:42:21 2014 -0500
+-+++ b/itemlist.c	Sun Nov 23 16:45:38 2014 -0500
+-@@ -449,6 +449,8 @@
+-    int currentItem = itemlist->currentItem;
+-    int len;
+-    int x;
+-+   char *s, *p;
+-+   int charlen;
+- 
+-    /* Determine how much we have to draw. */
+-    len = MINIMUM (itemlist->itemLen[currentItem], itemlist->fieldWidth);
+-@@ -456,19 +458,25 @@
+-    /* Erase the field window. */
+-    werase (itemlist->fieldWin);
+- 
+-+   s = chtype2Char (itemlist->item[currentItem]), p = s;
+-    /* Draw in the current item in the field. */
+--   for (x = 0; x < len; x++)
+-+   for (x = 0; x < len; x++, p+=charlen)
+-    {
+--      chtype c = itemlist->item[currentItem][x];
+-+      charlen = utf8charlen(*p);
+- 
+-       if (highlight)
+-       {
+--	 c = CharOf (c) | A_REVERSE;
+-+	 wattron(itemlist->fieldWin, A_REVERSE);
+-       }
+- 
+--      (void)mvwaddch (itemlist->fieldWin, 0,
+-+      (void)mvwaddnstr (itemlist->fieldWin, 0,
+- 		      x + itemlist->itemPos[currentItem],
+--		      c);
+-+		      (const char *)p, charlen);
++diff --git a/include/slider.h b/include/slider.h
++new file mode 100644
++index 0000000..7fd0868
++--- /dev/null
+++++ b/include/slider.h
++@@ -0,0 +1,213 @@
+++/*
+++ * $Id: gen-slider.h,v 1.9 2012/03/20 21:59:30 tom Exp $
+++ */
+ +
+-+      if (highlight)
+-+      {
+-+	 wattroff(itemlist->fieldWin, A_REVERSE);
+-+      }
+-    }
+- 
+-    /* Redraw the field window. */
+-diff -r c40f79827990 matrix.c
+---- a/matrix.c	Sun Nov 23 16:42:21 2014 -0500
+-+++ /dev/null	Thu Jan 01 00:00:00 1970 +0000
+-@@ -1,1785 +0,0 @@
+--#include <cdk_int.h>
+--
+--/*
+-- * $Author: tom $
+-- * $Date: 2016/12/10 15:18:01 $
+-- * $Revision: 1.198 $
+-- */
+--
+--/*
+-- * Declare file local prototypes.
+-- */
+--static void highlightCDKMatrixCell (CDKMATRIX *matrix);
+--static void CDKMatrixCallBack (CDKMATRIX *matrix, chtype input);
+--static void drawCDKMatrixCell (CDKMATRIX *matrix,
+--			       int srow, int scol,
+--			       int vrow, int vcol,
+--			       boolean Box);
+--static void drawCurCDKMatrixCell (CDKMATRIX *matrix);
+--static void drawEachCDKMatrixCell (CDKMATRIX *matrix);
+--static void drawEachColTitle (CDKMATRIX *matrix);
+--static void drawEachRowTitle (CDKMATRIX *matrix);
+--static void drawOldCDKMatrixCell (CDKMATRIX *matrix);
+--static void redrawTitles (CDKMATRIX *matrix, int row, int col);
+--
+--#define emptyString(s) ((s) == 0 || *(s) == '\0')
+--
+--#define CurMatrixCell(matrix) \
+--	    MATRIX_CELL (matrix, matrix->crow, matrix->ccol)
+--
+--#define CurMatrixInfo(matrix) \
+--	    MATRIX_INFO (matrix, \
+--	    matrix->trow + matrix->crow - 1, \
+--	    matrix->lcol + matrix->ccol - 1)
+--
+--DeclareCDKObjects (MATRIX, Matrix, setCdk, Int);
+--
+--#define WHOLE_BOX ACS_ULCORNER, ACS_URCORNER, ACS_LLCORNER, ACS_LRCORNER
+--
+--#define TOP_C_BOX ACS_ULCORNER, ACS_URCORNER, ACS_LTEE,     ACS_RTEE
+--#define MID_C_BOX ACS_LTEE,     ACS_RTEE,     ACS_LTEE,     ACS_RTEE
+--#define BOT_C_BOX ACS_LTEE,     ACS_RTEE,     ACS_LLCORNER, ACS_LRCORNER
+--
+--#define LFT_R_BOX ACS_ULCORNER, ACS_TTEE,     ACS_LLCORNER, ACS_BTEE
+--#define MID_R_BOX ACS_TTEE,     ACS_TTEE,     ACS_BTEE,     ACS_BTEE
+--#define RGT_R_BOX ACS_TTEE,     ACS_URCORNER, ACS_BTEE,     ACS_LRCORNER
+--
+--#define LFT_T_BOX ACS_ULCORNER, ACS_TTEE,     ACS_LTEE,     ACS_PLUS
+--#define MID_T_BOX ACS_TTEE,     ACS_TTEE,     ACS_PLUS,     ACS_PLUS
+--#define RGT_T_BOX ACS_TTEE,     ACS_URCORNER, ACS_PLUS,     ACS_RTEE
+--
+--#define LFT_M_BOX ACS_LTEE,     ACS_PLUS,     ACS_LTEE,     ACS_PLUS
+--#define MID_M_BOX ACS_PLUS,     ACS_PLUS,     ACS_PLUS,     ACS_PLUS
+--#define RGT_M_BOX ACS_PLUS,     ACS_RTEE,     ACS_PLUS,     ACS_RTEE
+--
+--#define LFT_B_BOX ACS_LTEE,     ACS_PLUS,     ACS_LLCORNER, ACS_BTEE
+--#define MID_B_BOX ACS_PLUS,     ACS_PLUS,     ACS_BTEE,     ACS_BTEE
+--#define RGT_B_BOX ACS_PLUS,     ACS_RTEE,     ACS_BTEE,     ACS_LRCORNER
+--
+--#define MyBox(cell,what,attr) attrbox(cell, what, ACS_HLINE, ACS_VLINE, attr)
+--
+--/*
+-- * This function creates the matrix widget.
+-- */
+--CDKMATRIX *newCDKMatrix (CDKSCREEN *cdkscreen,
+--			 int xplace,
+--			 int yplace,
+--			 int rows,
+--			 int cols,
+--			 int vrows,
+--			 int vcols,
+--			 const char *title,
+--			 CDK_CSTRING2 rowtitles,
+--			 CDK_CSTRING2 coltitles,
+--			 int *colwidths,
+--			 int *colvalues,
+--			 int rspace,
+--			 int cspace,
+--			 chtype filler,
+--			 int dominant,
+--			 boolean Box,
+--			 boolean boxCell,
+--			 boolean shadow)
+--{
+--   /* *INDENT-EQLS* */
+--   CDKMATRIX *matrix    = 0;
+--   int parentWidth      = getmaxx (cdkscreen->window);
+--   int parentHeight     = getmaxy (cdkscreen->window);
+--   int boxHeight        = 0;
+--   int boxWidth         = 0;
+--   int xpos             = xplace;
+--   int ypos             = yplace;
+--   int maxWidth;
+--   int maxRowTitleWidth = 0;
+--   int rowSpace         = MAXIMUM (0, rspace);
+--   int colSpace         = MAXIMUM (0, cspace);
+--   int begx             = 0;
+--   int begy             = 0;
+--   int cellWidth        = 0;
+--   char **temp          = 0;
+--   int x, y;
+--   int borderw          = 0;
+--   bool have_rowtitles  = FALSE;
+--   bool have_coltitles  = FALSE;
+--   /* *INDENT-OFF* */
+--   static const struct { int from; int to; } bindings[] = {
+--      { CDK_FORCHAR,	KEY_NPAGE },
+--      { CDK_BACKCHAR,	KEY_PPAGE },
+--   };
+--   /* *INDENT-ON* */
+--
+--   if ((matrix = newCDKObject (CDKMATRIX, &my_funcs)) == 0)
+--   {
+--      return (0);
+--   }
+--
+--   setCDKMatrixBox (matrix, Box);
+--   borderw = (ObjOf (matrix)->box) ? 1 : 0;
+--
+--   /* Make sure that the number of rows/cols/vrows/vcols is not zero. */
+--   if (rows <= 0 || cols <= 0 || vrows <= 0 || vcols <= 0)
+--   {
+--      destroyCDKObject (matrix);
+--      return (0);
+--   }
+--#if NEW_CDKMATRIX
+--   matrix->cell = typeCallocN (WINDOW *, (rows + 1) * (cols + 1));
+--   matrix->info = typeCallocN (char *, (rows + 1) * (cols + 1));
+--#endif
+--
+--   /*
+--    * Make sure the number of virtual cells is not larger than
+--    * the physical size.
+--    */
+--   vrows = (vrows > rows ? rows : vrows);
+--   vcols = (vcols > cols ? cols : vcols);
+++#ifndef CDKINCLUDES
+++#ifndef CDKSLIDER_H
+++#define CDKSLIDER_H	1
+++
+++#ifdef __cplusplus
+++extern "C" {
+++#endif
+++
+++#ifndef CDK_H
+++#define CDKINCLUDES
+++#include <cdk.h>
+++#undef CDKINCLUDES
+++#include <binding.h>
+++#include <cdkscreen.h>
+++#include <cdk_objs.h>
+++#endif
+++
+++/*
+++ * Copyright 2004,2012 Thomas E. Dickey
+++ *
+++ * Permission is hereby granted, free of charge, to any person obtaining a copy
+++ * of this software and associated documentation files (the "Software"), to
+++ * deal in the Software without restriction, including without limitation the
+++ * rights to use, copy, modify, merge, publish, distribute, distribute with
+++ * modifications, sublicense, and/or sell copies of the Software, and to permit
+++ * persons to whom the Software is furnished to do so, subject to the following
+++ * conditions:
+++ *
+++ * The above copyright notice and this permission notice shall be included in
+++ * all copies or substantial portions of the Software.
+++ *
+++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+++ * ABOVE COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+++ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+++ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+++ * SOFTWARE.
+++ *
+++ * Except as contained in this notice, the name(s) of the above copyright
+++ * holders shall not be used in advertising or otherwise to promote the sale,
+++ * use or other dealings in this Software without prior written authorization.
+++ */
+++
+++/*
+++ * Define the CDK widget Slider structure.
+++ */
+++struct SSlider {
+++   CDKOBJS	obj;
+++   WINDOW *	parent;
+++   WINDOW *	win;
+++   WINDOW *	shadowWin;
+++   WINDOW *	fieldWin;
+++   WINDOW *	labelWin;
+++   int		titleAdj;
+++   chtype *	label;
+++   int		labelLen;
+++   int		boxHeight;
+++   int		boxWidth;
+++   int		fieldWidth;
+++   int		fieldEdit;	/* offset from right-margin of field */
+++   chtype	filler;
+++   int	low;
+++   int	high;
+++   int	inc;
+++   int	fastinc;
+++   int	current;
+++   EExitType	exitType;
+++   boolean	shadow;
+++};
+++typedef struct SSlider CDKSLIDER;
+++
+++/*
+++ * This creates a new pointer to a CDK int-Slider widget.
+++ */
+++CDKSLIDER *newCDKSlider (
+++		CDKSCREEN *	/* cdkscreen */,
+++		int		/* xpos */,
+++		int		/* ypos */,
+++		const char *	/* title */,
+++		const char *	/* label */,
+++		chtype		/* fieldAttr */,
+++		int		/* fieldWidth */,
+++		int		/* start */,
+++		int		/* low */,
+++		int		/* high */,
+++		int		/* inc */,
+++		int		/* fastInc */,
+++		boolean		/* Box */,
+++		boolean		/* shadow */);
+++
+++/*
+++ * This activates the widget.
+++ */
+++int activateCDKSlider (
+++		CDKSLIDER *	/* widget */,
+++		chtype *	/* actions */);
+++
+++/*
+++ * This injects a single character into the widget.
+++ */
+++#define injectCDKSlider(obj,input) injectCDKObject(obj,input,Int)
+++
+++/*
+++ * This sets various attributes of the widget.
+++ */
+++void setCDKSlider (
+++		CDKSLIDER *	/* widget */,
+++		int		/* low */,
+++		int		/* high */,
+++		int		/* value */,
+++		boolean		/* Box */);
+++
+++/*
+++ * These set/get the low and high values.
+++ */
+++void setCDKSliderLowHigh (
+++		CDKSLIDER *	/* widget */,
+++		int		/* low */,
+++		int		/* high */);
+++
+++int getCDKSliderLowValue (
+++		CDKSLIDER *	/* widget */);
+++
+++int getCDKSliderHighValue (
+++		CDKSLIDER *	/* widget */);
+++
+++/*
+++ * These set/get the digits.
+++ */
+++
+++/*
+++ * These set/get the current value.
+++ */
+++void setCDKSliderValue (
+++		CDKSLIDER *	/* widget */,
+++		int		/* value */);
+++
+++int getCDKSliderValue (
+++		CDKSLIDER *	/* widget */);
+++
+++/*
+++ * This sets the box attribute of the widget.
+++ */
+++void setCDKSliderBox (
+++		CDKSLIDER *	/* widget */,
+++		boolean		/* Box */);
+++
+++boolean getCDKSliderBox (
+++		CDKSLIDER *	/* widget */);
+++
+++/*
+++ * These set the drawing characters of the widget.
+++ */
+++#define setCDKSliderULChar(w,c)            setULCharOf(w,c)
+++#define setCDKSliderURChar(w,c)            setURCharOf(w,c)
+++#define setCDKSliderLLChar(w,c)            setLLCharOf(w,c)
+++#define setCDKSliderLRChar(w,c)            setLRCharOf(w,c)
+++#define setCDKSliderVerticalChar(w,c)      setVTCharOf(w,c)
+++#define setCDKSliderHorizontalChar(w,c)    setHZCharOf(w,c)
+++#define setCDKSliderBoxAttribute(w,c)      setBXAttrOf(w,c)
+++
+++/*
+++ * This sets the background color of the widget.
+++ */
+++#define setCDKSliderBackgroundColor(w,c) setCDKObjectBackgroundColor(ObjOf(w),c)
+++
+++/*
+++ * This sets the background attribute of the widget.
+++ */ 
+++#define setCDKSliderBackgroundAttrib(w,c) setBKAttrOf(w,c)
+++
+++/*
+++ * This draws the widget on the screen.
+++ */
+++#define drawCDKSlider(obj,Box) drawCDKObject(obj,Box)
+++
+++/*
+++ * This erases the widget from the screen.
+++ */
+++#define eraseCDKSlider(obj) eraseCDKObject(obj)
+++
+++/*
+++ * This moves the widget to the given location on the screen.
+++ */
+++#define moveCDKSlider(obj,xpos,ypos,relative,refresh) moveCDKObject(obj,xpos,ypos,relative,refresh)
+++
+++/*
+++ * This allows the user to interactively position the widget on the screen.
+++ */
+++#define positionCDKSlider(widget) positionCDKObject(ObjOf(widget),widget->win)
+++
+++/*
+++ * This destroys the widget and associated memory.
+++ */
+++#define destroyCDKSlider(obj) destroyCDKObject(obj)
+++
+++/*
+++ * These set the pre/post process callback functions.
+++ */
+++#define setCDKSliderPreProcess(w,f,d)  setCDKObjectPreProcess(ObjOf(w),f,d)
+++#define setCDKSliderPostProcess(w,f,d) setCDKObjectPostProcess(ObjOf(w),f,d)
+++
+++#ifdef __cplusplus
+++}
+++#endif
+++
+++#endif /* CDKSLIDER_H */
+++#endif /* CDKINCLUDES */
++diff --git a/itemlist.c b/itemlist.c
++index 099b993..b9c8403 100644
++--- a/itemlist.c
+++++ b/itemlist.c
++@@ -448,6 +448,8 @@ void drawCDKItemlistField (CDKITEMLIST *itemlist, boolean highlight)
++    int currentItem = itemlist->currentItem;
++    int len;
++    int x;
+++   char *s, *p;
+++   int charlen;
++ 
++    /* Determine how much we have to draw. */
++    len = MINIMUM (itemlist->itemLen[currentItem], itemlist->fieldWidth);
++@@ -455,19 +457,25 @@ void drawCDKItemlistField (CDKITEMLIST *itemlist, boolean highlight)
++    /* Erase the field window. */
++    werase (itemlist->fieldWin);
++ 
+++   s = chtype2Char (itemlist->item[currentItem]), p = s;
++    /* Draw in the current item in the field. */
++-   for (x = 0; x < len; x++)
+++   for (x = 0; x < len; x++, p+=charlen)
++    {
++-      chtype c = itemlist->item[currentItem][x];
+++      charlen = utf8charlen(*p);
++ 
++       if (highlight)
++       {
++-	 c = CharOf (c) | A_REVERSE;
+++	 wattron(itemlist->fieldWin, A_REVERSE);
++       }
++ 
++-      (void)mvwaddch (itemlist->fieldWin, 0,
+++      (void)mvwaddnstr (itemlist->fieldWin, 0,
++ 		      x + itemlist->itemPos[currentItem],
++-		      c);
+++		      (const char *)p, charlen);
+++
+++      if (highlight)
+++      {
+++	 wattroff(itemlist->fieldWin, A_REVERSE);
+++      }
++    }
++ 
++    /* Redraw the field window. */
++diff --git a/matrix.c b/matrix.c
++index 0cabe97..e69de29 100644
++--- a/matrix.c
+++++ b/matrix.c
++@@ -1,1788 +0,0 @@
++-#include <cdk_int.h>
+ -
+--   /* Set these early, since they are used in matrix index computations */
+--   /* *INDENT-EQLS* */
+--   matrix->rows        = rows;
+--   matrix->cols        = cols;
+--   /* columns */
+--   matrix->colwidths   = typeCallocN (int, cols + 1);
+--   matrix->colvalues   = typeCallocN (int, cols + 1);
+--   matrix->coltitle    = typeCallocN (chtype *, cols + 1);
+--   matrix->coltitleLen = typeCallocN (int, cols + 1);
+--   matrix->coltitlePos = typeCallocN (int, cols + 1);
+--   /* titles */
+--   matrix->rowtitle    = typeCallocN (chtype *, rows + 1);
+--   matrix->rowtitleLen = typeCallocN (int, rows + 1);
+--   matrix->rowtitlePos = typeCallocN (int, rows + 1);
++-/*
++- * $Author: tom $
++- * $Date: 2021/12/16 01:09:14 $
++- * $Revision: 1.200 $
++- */
+ -
+--   /*
+--    * Count the number of lines in the title (see setCdkTitle).
+--    */
+--   temp = CDKsplitString (title, '\n');
+--   TitleLinesOf (matrix) = (int)CDKcountStrings ((CDK_CSTRING2)temp);
++-/*
++- * Declare file local prototypes.
++- */
++-static void highlightCDKMatrixCell (CDKMATRIX *matrix);
++-static void CDKMatrixCallBack (CDKMATRIX *matrix, chtype input);
++-static void drawCDKMatrixCell (CDKMATRIX *matrix,
++-			       int srow, int scol,
++-			       int vrow, int vcol,
++-			       boolean Box);
++-static void drawCurCDKMatrixCell (CDKMATRIX *matrix);
++-static void drawEachCDKMatrixCell (CDKMATRIX *matrix);
++-static void drawEachColTitle (CDKMATRIX *matrix);
++-static void drawEachRowTitle (CDKMATRIX *matrix);
++-static void drawOldCDKMatrixCell (CDKMATRIX *matrix);
++-static void redrawTitles (CDKMATRIX *matrix, int row, int col);
++-
++-#define emptyString(s) ((s) == 0 || *(s) == '\0')
++-
++-#define CurMatrixCell(matrix) \
++-	    MATRIX_CELL (matrix, matrix->crow, matrix->ccol)
++-
++-#define CurMatrixInfo(matrix) \
++-	    MATRIX_INFO (matrix, \
++-	    matrix->trow + matrix->crow - 1, \
++-	    matrix->lcol + matrix->ccol - 1)
++-
++-DeclareCDKObjects (MATRIX, Matrix, setCdk, Int);
++-
++-#define WHOLE_BOX ACS_ULCORNER, ACS_URCORNER, ACS_LLCORNER, ACS_LRCORNER
++-
++-#define TOP_C_BOX ACS_ULCORNER, ACS_URCORNER, ACS_LTEE,     ACS_RTEE
++-#define MID_C_BOX ACS_LTEE,     ACS_RTEE,     ACS_LTEE,     ACS_RTEE
++-#define BOT_C_BOX ACS_LTEE,     ACS_RTEE,     ACS_LLCORNER, ACS_LRCORNER
++-
++-#define LFT_R_BOX ACS_ULCORNER, ACS_TTEE,     ACS_LLCORNER, ACS_BTEE
++-#define MID_R_BOX ACS_TTEE,     ACS_TTEE,     ACS_BTEE,     ACS_BTEE
++-#define RGT_R_BOX ACS_TTEE,     ACS_URCORNER, ACS_BTEE,     ACS_LRCORNER
++-
++-#define LFT_T_BOX ACS_ULCORNER, ACS_TTEE,     ACS_LTEE,     ACS_PLUS
++-#define MID_T_BOX ACS_TTEE,     ACS_TTEE,     ACS_PLUS,     ACS_PLUS
++-#define RGT_T_BOX ACS_TTEE,     ACS_URCORNER, ACS_PLUS,     ACS_RTEE
++-
++-#define LFT_M_BOX ACS_LTEE,     ACS_PLUS,     ACS_LTEE,     ACS_PLUS
++-#define MID_M_BOX ACS_PLUS,     ACS_PLUS,     ACS_PLUS,     ACS_PLUS
++-#define RGT_M_BOX ACS_PLUS,     ACS_RTEE,     ACS_PLUS,     ACS_RTEE
++-
++-#define LFT_B_BOX ACS_LTEE,     ACS_PLUS,     ACS_LLCORNER, ACS_BTEE
++-#define MID_B_BOX ACS_PLUS,     ACS_PLUS,     ACS_BTEE,     ACS_BTEE
++-#define RGT_B_BOX ACS_PLUS,     ACS_RTEE,     ACS_BTEE,     ACS_LRCORNER
++-
++-#define MyBox(cell,what,attr) attrbox(cell, what, ACS_HLINE, ACS_VLINE, attr)
++-
++-/*
++- * This function creates the matrix widget.
++- */
++-CDKMATRIX *newCDKMatrix (CDKSCREEN *cdkscreen,
++-			 int xplace,
++-			 int yplace,
++-			 int rows,
++-			 int cols,
++-			 int vrows,
++-			 int vcols,
++-			 const char *title,
++-			 CDK_CSTRING2 rowtitles,
++-			 CDK_CSTRING2 coltitles,
++-			 int *colwidths,
++-			 int *colvalues,
++-			 int rspace,
++-			 int cspace,
++-			 chtype filler,
++-			 int dominant,
++-			 boolean Box,
++-			 boolean boxCell,
++-			 boolean shadow)
++-{
++-   /* *INDENT-EQLS* */
++-   CDKMATRIX *matrix    = 0;
++-   int parentWidth      = getmaxx (cdkscreen->window);
++-   int parentHeight     = getmaxy (cdkscreen->window);
++-   int boxHeight        = 0;
++-   int boxWidth         = 0;
++-   int xpos             = xplace;
++-   int ypos             = yplace;
++-   int maxWidth;
++-   int maxRowTitleWidth = 0;
++-   int rowSpace         = MAXIMUM (0, rspace);
++-   int colSpace         = MAXIMUM (0, cspace);
++-   int begx             = 0;
++-   int begy             = 0;
++-   int cellWidth        = 0;
++-   char **temp          = 0;
++-   int x, y;
++-   int borderw          = 0;
++-   bool have_rowtitles  = FALSE;
++-   bool have_coltitles  = FALSE;
++-   /* *INDENT-OFF* */
++-   static const struct { int from; int to; } bindings[] = {
++-      { CDK_FORCHAR,	KEY_NPAGE },
++-      { CDK_BACKCHAR,	KEY_PPAGE },
++-   };
++-   /* *INDENT-ON* */
++-
++-   if ((matrix = newCDKObject (CDKMATRIX, &my_funcs)) == 0)
++-   {
++-      return (0);
++-   }
++-
++-   setCDKMatrixBox (matrix, Box);
++-   borderw = (ObjOf (matrix)->box) ? 1 : 0;
++-
++-   /* Make sure that the number of rows/cols/vrows/vcols is not zero. */
++-   if (rows <= 0 || cols <= 0 || vrows <= 0 || vcols <= 0)
++-   {
++-      destroyCDKObject (matrix);
++-      return (0);
++-   }
++-#if NEW_CDKMATRIX
++-   matrix->cell = typeCallocN (WINDOW *, (rows + 1) * (cols + 1));
++-   matrix->info = typeCallocN (char *, (rows + 1) * (cols + 1));
++-#endif
++-
++-   /*
++-    * Make sure the number of virtual cells is not larger than
++-    * the physical size.
++-    */
++-   vrows = (vrows > rows ? rows : vrows);
++-   vcols = (vcols > cols ? cols : vcols);
++-
++-   /* Set these early, since they are used in matrix index computations */
++-   /* *INDENT-EQLS* */
++-   matrix->rows        = rows;
++-   matrix->cols        = cols;
++-   /* columns */
++-   matrix->colwidths   = typeCallocN (int, cols + 1);
++-   matrix->colvalues   = typeCallocN (int, cols + 1);
++-   matrix->coltitle    = typeCallocN (chtype *, cols + 1);
++-   matrix->coltitleLen = typeCallocN (int, cols + 1);
++-   matrix->coltitlePos = typeCallocN (int, cols + 1);
++-   /* titles */
++-   matrix->rowtitle    = typeCallocN (chtype *, rows + 1);
++-   matrix->rowtitleLen = typeCallocN (int, rows + 1);
++-   matrix->rowtitlePos = typeCallocN (int, rows + 1);
++-
++-   /*
++-    * Count the number of lines in the title (see setCdkTitle).
++-    */
++-   temp = CDKsplitString (title, '\n');
++-   TitleLinesOf (matrix) = (int)CDKcountStrings ((CDK_CSTRING2)temp);
+ -   CDKfreeStrings (temp);
+ -
+ -   /* Determine the height of the box. */
+@@ -2231,11 +2456,12 @@ diff -r c40f79827990 matrix.c
+ -
+ -   if (actions == 0)
+ -   {
+--      chtype input = 0;
+ -      boolean functionKey;
+ -
+ -      for (;;)
+ -      {
++-	 chtype input;
++-
+ -	 ObjOf (matrix)->inputWindow = CurMatrixCell (matrix);
+ -	 keypad (ObjOf (matrix)->inputWindow, TRUE);
+ -	 input = (chtype)getchCDKObject (ObjOf (matrix), &functionKey);
+@@ -2276,8 +2502,6 @@ diff -r c40f79827990 matrix.c
+ -{
+ -   /* *INDENT-EQLS* */
+ -   CDKMATRIX *widget = (CDKMATRIX *)object;
+--   int refreshCells  = FALSE;
+--   int movedCell     = FALSE;
+ -   int charcount     = (int)strlen (MATRIX_INFO (widget, widget->row, widget->col));
+ -   int ppReturn      = 1;
+ -   int ret           = unknownInt;
+@@ -2316,6 +2540,10 @@ diff -r c40f79827990 matrix.c
+ -   /* Should we continue? */
+ -   if (ppReturn != 0)
+ -   {
++-      /* *INDENT-EQLS* */
++-      int refreshCells  = FALSE;
++-      int movedCell     = FALSE;
++-
+ -      /* Check the key bindings. */
+ -      if (checkCDKObjectBind (vMATRIX, widget, input) != 0)
+ -      {
+@@ -2344,8 +2572,8 @@ diff -r c40f79827990 matrix.c
+ -	    else
+ -	    {
+ -	       charcount--;
+--	       (void)mvwdelch (CurMatrixCell (widget), 1, charcount + 1);
+--	       (void)mvwinsch (CurMatrixCell (widget), 1, charcount + 1, widget->filler);
++-	       mvwdelch (CurMatrixCell (widget), 1, charcount + 1);
++-	       mvwinsch (CurMatrixCell (widget), 1, charcount + 1, widget->filler);
+ -	       wrefresh (CurMatrixCell (widget));
+ -	       MATRIX_INFO (widget, widget->row, widget->col)[charcount] = '\0';
+ -	    }
+@@ -3285,7 +3513,7 @@ diff -r c40f79827990 matrix.c
+ -	       }
+ -	       strncpy (MATRIX_INFO (matrix, x, y),
+ -			source,
+--			(size_t) matrix->colwidths[y]);
++-			(size_t)matrix->colwidths[y]);
+ -	    }
+ -	 }
+ -	 else
+@@ -3557,7 +3785,7 @@ diff -r c40f79827990 matrix.c
+ -   cleanCDKMatrixCell (matrix, row, col);
+ -   strncpy (MATRIX_INFO (matrix, row, col),
+ -	    value,
+--	    (size_t) matrix->colwidths[col]);
++-	    (size_t)matrix->colwidths[col]);
+ -   return 1;
+ -}
+ -
+@@ -3624,1596 +3852,18 @@ diff -r c40f79827990 matrix.c
+ -dummyRefreshData (Matrix)
+ -
+ -dummySaveData (Matrix)
+-diff -r c40f79827990 view_info.c
+---- a/view_info.c	Sun Nov 23 16:42:21 2014 -0500
+-+++ /dev/null	Thu Jan 01 00:00:00 1970 +0000
+-@@ -1,44 +0,0 @@
+--#include <cdk_int.h>
+--
+--/*
+-- * $Author: tom $
+-- * $Date: 2016/11/20 18:35:56 $
+-- * $Revision: 1.3 $
+-- */
+--
+--/*
+-- * This allows the user to view information.
+-- */
+--int viewInfo (CDKSCREEN *screen,
+--	      const char *title,
+--	      CDK_CSTRING2 info,
+--	      int count,
+--	      CDK_CSTRING2 buttons,
+--	      int buttonCount,
+--	      boolean interpret)
+--{
+--   CDKVIEWER *viewer = 0;
+--   int selected;
+--
+--   /* Create the file viewer to view the file selected. */
+--   viewer = newCDKViewer (screen, CENTER, CENTER, -6, -16,
+--			  buttons, buttonCount,
+--			  A_REVERSE, TRUE, TRUE);
+--
+--   /* Set up the viewer title, and the contents to the widget. */
+--   setCDKViewer (viewer, title, info, count, A_REVERSE, interpret, TRUE, TRUE);
+--
+--   /* Activate the viewer widget. */
+--   selected = activateCDKViewer (viewer, 0);
+--
+--   /* Make sure they exited normally. */
+--   if (viewer->exitType != vNORMAL)
+--   {
+--      destroyCDKViewer (viewer);
+--      return (-1);
+--   }
+--
+--   /* Clean up and return the button index selected. */
+--   destroyCDKViewer (viewer);
+--   return selected;
+--}
+-diff -r c40f79827990 viewer.c
+---- a/viewer.c	Sun Nov 23 16:42:21 2014 -0500
+-+++ /dev/null	Thu Jan 01 00:00:00 1970 +0000
+-@@ -1,1307 +0,0 @@
+--#include <cdk_int.h>
+--
+--/*
+-- * $Author: tom $
+-- * $Date: 2019/02/17 19:45:07 $
+-- * $Revision: 1.167 $
+-- */
+--
+--/*
+-- * Declare some local definitions.
+-- */
+--#define		DOWN		0
+--#define		UP		1
+--
+--/*
+-- * Declare file local prototypes.
+-- */
+--static int createList (CDKVIEWER *swindow, int listSize);
+--static int searchForWord (CDKVIEWER *viewer, char *pattern, int direction);
+--static int jumpToLine (CDKVIEWER *viewer);
+--static void popUpLabel (CDKVIEWER *viewer, CDK_CSTRING2 mesg);
+--static void getAndStorePattern (CDKSCREEN *screen);
+--static void drawCDKViewerButtons (CDKVIEWER *viewer);
+--static void drawCDKViewerInfo (CDKVIEWER *viewer);
+--
+--/*
+-- * Declare file local variables.
+-- */
+--static char *SearchPattern = 0;
+--static int SearchDirection = DOWN;
+--
+--DeclareCDKObjects (VIEWER, Viewer, setCdk, Unknown);
+--
+--/*
+-- * This function creates a new viewer object.
+-- */
+--CDKVIEWER *newCDKViewer (CDKSCREEN *cdkscreen,
+--			 int xplace,
+--			 int yplace,
+--			 int height,
+--			 int width,
+--			 CDK_CSTRING2 buttons,
+--			 int buttonCount,
+--			 chtype buttonHighlight,
+--			 boolean Box,
+--			 boolean shadow)
+--{
+--   /* *INDENT-EQLS* */
+--   CDKVIEWER *viewer = 0;
+--   int parentWidth   = getmaxx (cdkscreen->window);
+--   int parentHeight  = getmaxy (cdkscreen->window);
+--   int boxWidth;
+--   int boxHeight;
+--   int xpos          = xplace;
+--   int ypos          = yplace;
+--   int buttonAdj     = 0;
+--   int x             = 0;
+--   /* *INDENT-OFF* */
+--   static const struct { int from; int to; } bindings[] = {
+--	    { CDK_BACKCHAR,	KEY_PPAGE },
+--	    { 'b',		KEY_PPAGE },
+--	    { 'B',		KEY_PPAGE },
+--	    { CDK_FORCHAR,	KEY_NPAGE },
+--	    { SPACE,		KEY_NPAGE },
+--	    { 'f',		KEY_NPAGE },
+--	    { 'F',		KEY_NPAGE },
+--	    { '|',		KEY_HOME },
+--	    { '$',		KEY_END },
+--   };
+--   /* *INDENT-ON* */
+--
+--
+--   if ((viewer = newCDKObject (CDKVIEWER, &my_funcs)) == 0)
+--        return (0);
+--
+--   setCDKViewerBox (viewer, Box);
+--
+--   boxHeight = setWidgetDimension (parentHeight, height, 0);
+--   boxWidth = setWidgetDimension (parentWidth, width, 0);
+--
+--   /* Rejustify the x and y positions if we need to. */
+--   alignxy (cdkscreen->window, &xpos, &ypos, boxWidth, boxHeight);
+--
+--   /* Make the viewer window. */
+--   viewer->win = newwin (boxHeight, boxWidth, ypos, xpos);
+--   if (viewer->win == 0)
+--   {
+--      destroyCDKObject (viewer);
+--      return (0);
+--   }
+--
+--   /* Turn the keypad on for the viewer. */
+--   keypad (viewer->win, TRUE);
+--
+--   /* Create the buttons. */
+--   viewer->buttonCount = buttonCount;
+--   if (buttonCount > 0)
+--   {
+--      int buttonWidth = 0;
+--      int buttonPos = 1;
+--
+--      if ((viewer->button = typeCallocN (chtype *, buttonCount + 1)) == 0
+--	  || (viewer->buttonLen = typeCallocN (int, buttonCount + 1)) == 0
+--	  || (viewer->buttonPos = typeCallocN (int, buttonCount + 1)) == 0)
+--      {
+--	 destroyCDKObject (viewer);
+--	 return (0);
+--      }
+--      for (x = 0; x < buttonCount; x++)
+--      {
+--	 viewer->button[x] = char2Chtype (buttons[x], &viewer->buttonLen[x], &buttonAdj);
+--	 buttonWidth += viewer->buttonLen[x] + 1;
+--      }
+--      buttonAdj = (int)((boxWidth - buttonWidth) / (buttonCount + 1));
+--      buttonPos = 1 + buttonAdj;
+--      for (x = 0; x < buttonCount; x++)
+--      {
+--	 viewer->buttonPos[x] = buttonPos;
+--	 buttonPos += buttonAdj + viewer->buttonLen[x];
+--      }
+--   }
+--
+--   /* *INDENT-EQLS* Set the rest of the variables */
+--   ScreenOf (viewer)            = cdkscreen;
+--   viewer->parent               = cdkscreen->window;
+--   viewer->shadowWin            = 0;
+--   viewer->buttonHighlight      = buttonHighlight;
+--   viewer->boxHeight            = boxHeight;
+--   viewer->boxWidth             = boxWidth - 2;
+--   viewer->viewSize             = height - 2;
+--   ObjOf (viewer)->inputWindow  = viewer->win;
+--   initExitType (viewer);
+--   viewer->shadow               = shadow;
+--   viewer->currentButton        = 0;
+--   viewer->currentTop           = 0;
+--   viewer->length               = 0;
+--   viewer->leftChar             = 0;
+--   viewer->maxLeftChar          = 0;
+--   viewer->maxTopLine           = 0;
+--   viewer->characters           = 0;
+--   viewer->listSize             = -1;
+--   viewer->showLineInfo         = 1;
+--   viewer->exitType             = vEARLY_EXIT;
+--
+--   /* Do we need to create a shadow??? */
+--   if (shadow)
+--   {
+--      viewer->shadowWin = newwin (boxHeight, boxWidth + 1, ypos + 1, xpos + 1);
+--      if (viewer->shadowWin == 0)
+--      {
+--	 destroyCDKObject (viewer);
+--	 return (0);
+--      }
+--   }
+--
+--   /* Setup the key bindings. */
+--   for (x = 0; x < (int)SIZEOF (bindings); ++x)
+--      bindCDKObject (vVIEWER,
+--		     viewer,
+--		     (chtype)bindings[x].from,
+--		     getcCDKBind,
+--		     (void *)(long)bindings[x].to);
+--
+--   registerCDKObject (cdkscreen, vVIEWER, viewer);
+--
+--   return (viewer);
+--}
+--
+--/*
+-- * This function sets various attributes of the widget.
+-- */
+--int setCDKViewer (CDKVIEWER *viewer,
+--		  const char *title,
+--		  CDK_CSTRING2 list,
+--		  int listSize,
+--		  chtype buttonHighlight,
+--		  boolean attrInterp,
+--		  boolean showLineInfo,
+--		  boolean Box)
+--{
+--   setCDKViewerTitle (viewer, title);
+--   setCDKViewerHighlight (viewer, buttonHighlight);
+--   setCDKViewerInfoLine (viewer, showLineInfo);
+--   setCDKViewerBox (viewer, Box);
+--   return setCDKViewerInfo (viewer, list, listSize, attrInterp);
+--}
+--
+--/*
+-- * This sets the title of the viewer. (A null title is allowed.
+-- * It just means that the viewer will not have a title when drawn.)
+-- */
+--void setCDKViewerTitle (CDKVIEWER *viewer, const char *title)
+--{
+--   (void)setCdkTitle (ObjOf (viewer), title, -(viewer->boxWidth + 1));
+--   viewer->titleAdj = TitleLinesOf (viewer);
+--
+--   /* Need to set viewer->viewSize. */
+--   viewer->viewSize = viewer->boxHeight - (TitleLinesOf (viewer) + 1) - 2;
+--}
+--chtype **getCDKViewerTitle (CDKVIEWER *viewer)
+--{
+--   return TitleOf (viewer);
+--}
+--
+--static void setupLine (CDKVIEWER *viewer, boolean interpret, const char
+--		       *list, int x)
+--{
+--   /* Did they ask for attribute interpretation? */
+--   if (interpret)
+--   {
+--      viewer->list[x] = char2Chtype (list, &viewer->listLen[x],
+--				     &viewer->listPos[x]);
+--      viewer->listPos[x] = justifyString (viewer->boxWidth,
+--					  viewer->listLen[x],
+--					  viewer->listPos[x]);
+--   }
+--   else
+--   {
+--      int len = (int)strlen (list);
+--      int pass;
+--      int y;
+--      chtype *t = 0;
+--
+--      /*
+--       * We must convert tabs and other nonprinting characters.  The curses
+--       * library normally does this, but we are bypassing it by writing
+--       * chtype's directly.
+--       */
+--      for (pass = 0; pass < 2; ++pass)
+--      {
+--	 len = 0;
+--	 for (y = 0; list[y] != '\0'; ++y)
+--	 {
+--	    if (list[y] == '\t')
+--	    {
+--	       do
+--	       {
+--		  if (pass)
+--		     t[len] = ' ';
+--		  ++len;
+--	       }
+--	       while (len & 7);
+--	    }
+--	    else if (isprint (CharOf (list[y])))
+--	    {
+--	       if (pass)
+--		  t[len] = CharOf (list[y]);
+--	       ++len;
+--	    }
+--	    else
+--	    {
+--	       const char *s = unctrl ((chtype)list[y]);
+--	       while (*s != 0)
+--	       {
+--		  if (pass)
+--		     t[len] = CharOf (*s);
+--		  ++len;
+--		  ++s;
+--	       }
+--	    }
+--	 }
+--	 if (!pass)
+--	 {
+--	    viewer->list[x] = t = typeCallocN (chtype, len + 3);
+--	    if (t == 0)
+--	    {
+--	       len = 0;
+--	       break;
+--	    }
+--	 }
+--      }
+--      viewer->listLen[x] = len;
+--      viewer->listPos[x] = 0;
+--   }
+--   viewer->widestLine = MAXIMUM (viewer->widestLine, viewer->listLen[x]);
+--}
+--
+--static void freeLine (CDKVIEWER *viewer, int x)
+--{
+--   if (x < viewer->listSize)
+--   {
+--      freeChtype (viewer->list[x]);
+--      viewer->list[x] = 0;
+--   }
+--}
+--
+--/*
+-- * This function sets the contents of the viewer.
+-- */
+--int setCDKViewerInfo (CDKVIEWER *viewer, CDK_CSTRING2 list, int listSize, boolean interpret)
+--{
+--   /* *INDENT-EQLS* */
+--   char filename[CDK_PATHMAX + 2];
+--   int currentLine      = 0;
+--   int x                = 0;
+--   int viewerSize;
+--
+--   /*
+--    * If the list-size is negative, count the length of the null-terminated
+--    * list of strings.
+--    */
+--   if (listSize < 0)
+--   {
+--      listSize = (int)CDKcountStrings (list);
+--   }
+--
+--   /* compute the size of the resulting display */
+--   viewerSize = listSize;
+--   if (list != 0 && interpret)
+--   {
+--      for (x = 0; x < listSize; ++x)
+--      {
+--	 if (list[x] == 0)
+--	 {
+--	    viewerSize = x;	/* oops - caller gave the wrong length */
+--	    break;
+--	 }
+--	 if (checkForLink (list[x], filename) == 1)
+--	 {
+--	    char **fileContents = 0;
+--	    int fileLen = CDKreadFile (filename, &fileContents);
+--
+--	    if (fileLen >= 0)
+--	       viewerSize += (fileLen - 1);
+--	    CDKfreeStrings (fileContents);
+--	 }
+--      }
+--   }
+--
+--   /* Clean out the old viewer info. (if there is any) */
+--   viewer->inProgress = TRUE;
+--   cleanCDKViewer (viewer);
+--   createList (viewer, viewerSize);
+--
+--   /* Keep some semi-permanent info. */
+--   viewer->interpret = interpret;
+--
+--   /* Copy the information given. */
+--   for (x = currentLine = 0; x < listSize && currentLine < viewerSize; x++)
+--   {
+--      if (list[x] == 0)
+--      {
+--	 viewer->list[currentLine] = 0;
+--	 viewer->listLen[currentLine] = 0;
+--	 viewer->listPos[currentLine] = 0;
+--	 currentLine++;
+--      }
+--      else
+--      {
+--	 /* Check if we have a file link in this line. */
+--	 if (checkForLink (list[x], filename) == 1)
+--	 {
+--	    /* We have a link, open the file. */
+--	    char **fileContents = 0;
+--	    int fileLen = 0;
+--
+--	    /* Open the file and put it into the viewer. */
+--	    fileLen = CDKreadFile (filename, &fileContents);
+--	    if (fileLen == -1)
+--	    {
+--#ifdef HAVE_START_COLOR
+--#define FOPEN_FMT "<C></16>Link Failed: Could not open the file %s"
+--#else
+--#define FOPEN_FMT "<C></K>Link Failed: Could not open the file %s"
+--#endif
+--	       char *temp = (char *)malloc (80 + strlen (filename));
+--	       sprintf (temp, FOPEN_FMT, filename);
+--	       setupLine (viewer, TRUE, temp, currentLine++);
+--	       free (temp);
+--	    }
+--	    else
+--	    {
+--	       int fileLine;
+--
+--	       /* For each line read, copy it into the viewer. */
+--	       fileLen = MINIMUM (fileLen, (viewerSize - currentLine));
+--	       for (fileLine = 0; fileLine < fileLen; fileLine++)
+--	       {
+--		  if (currentLine >= viewerSize)
+--		     break;
+--		  setupLine (viewer, FALSE, fileContents[fileLine], currentLine);
+--		  viewer->characters += viewer->listLen[currentLine];
+--		  currentLine++;
+--	       }
+--	       CDKfreeStrings (fileContents);
+--	    }
+--	 }
+--	 else if (currentLine < viewerSize)
+--	 {
+--	    setupLine (viewer, viewer->interpret, list[x], currentLine);
+--	    viewer->characters += viewer->listLen[currentLine];
+--	    currentLine++;
+--	 }
+--      }
+--   }
+--
+--   /*
+--    * Determine how many characters we can shift to the right
+--    * before all the items have been viewer off the screen.
+--    */
+--   if (viewer->widestLine > viewer->boxWidth)
+--   {
+--      viewer->maxLeftChar = (viewer->widestLine - viewer->boxWidth) + 1;
+--   }
+--   else
+--   {
+--      viewer->maxLeftChar = 0;
+--   }
+--
+--   /* Set up the needed vars for the viewer list. */
+--   viewer->inProgress = FALSE;
+--   viewer->listSize = viewerSize;
+--   if (viewer->listSize <= viewer->viewSize)
+--   {
+--      viewer->maxTopLine = 0;
+--   }
+--   else
+--   {
+--      viewer->maxTopLine = viewer->listSize - 1;
+--   }
+--   return viewer->listSize;
+--}
+--chtype **getCDKViewerInfo (CDKVIEWER *viewer, int *size)
+--{
+--   (*size) = viewer->listSize;
+--   return viewer->list;
+--}
+--
+--/*
+-- * This function sets the highlight type of the buttons.
+-- */
+--void setCDKViewerHighlight (CDKVIEWER *viewer, chtype buttonHighlight)
+--{
+--   viewer->buttonHighlight = buttonHighlight;
+--}
+--chtype getCDKViewerHighlight (CDKVIEWER *viewer)
+--{
+--   return viewer->buttonHighlight;
+--}
+--
+--/*
+-- * This sets whether or not you want to set the viewer info line.
+-- */
+--void setCDKViewerInfoLine (CDKVIEWER *viewer, boolean showLineInfo)
+--{
+--   viewer->showLineInfo = showLineInfo;
+--}
+--boolean getCDKViewerInfoLine (CDKVIEWER *viewer)
+--{
+--   return viewer->showLineInfo;
+--}
+--
+--/*
+-- * This sets the widgets box attribute.
+-- */
+--void setCDKViewerBox (CDKVIEWER *viewer, boolean Box)
+--{
+--   ObjOf (viewer)->box = Box;
+--   ObjOf (viewer)->borderSize = Box ? 1 : 0;
+--}
+--boolean getCDKViewerBox (CDKVIEWER *viewer)
+--{
+--   return ObjOf (viewer)->box;
+--}
+--
+--/*
+-- * This removes all the lines inside the scrolling window.
+-- */
+--void cleanCDKViewer (CDKVIEWER *viewer)
+--{
+--   int x;
+--
+--   /* Clean up the memory used ... */
+--   for (x = 0; x < viewer->listSize; x++)
+--   {
+--      freeLine (viewer, x);
+--   }
+--
+--   /* *INDENT-EQLS* Reset some variables. */
+--   viewer->listSize    = 0;
+--   viewer->maxLeftChar = 0;
+--   viewer->widestLine  = 0;
+--   viewer->currentTop  = 0;
+--   viewer->maxTopLine  = 0;
+--
+--   /* Redraw the window. */
+--   drawCDKViewer (viewer, ObjOf (viewer)->box);
+--}
+--
+--static void PatternNotFound (CDKVIEWER *viewer, const char *pattern)
+--{
+--   if (pattern == 0)
+--   {
+--      PatternNotFound (viewer, "");
+--   }
+--   else
+--   {
+--      CDK_CSTRING tempInfo[2];
+--      char *temp = (char *)malloc (80 + strlen (pattern));
+--      tempInfo[0] = temp;
+--      tempInfo[1] = 0;
+--      sprintf (temp, "</U/5>Pattern '%s' not found.<!U!5>", pattern);
+--      popUpLabel (viewer, tempInfo);
+--      free (temp);
+--   }
+--}
+--
+--/*
+-- * This function actually controls the viewer...
+-- */
+--int activateCDKViewer (CDKVIEWER *widget, chtype *actions GCC_UNUSED)
+--{
+--   char *fileInfo[10];
+--   CDK_CSTRING tempInfo[2];
+--   char temp[500];
+--   chtype input;
+--   boolean functionKey;
+--   int x;
+--
+--   /* Create the information about the file stats. */
+--   sprintf (temp, "</5>      </U>File Statistics<!U>     <!5>");
+--   fileInfo[0] = copyChar (temp);
+--   sprintf (temp, "</5>                          <!5>");
+--   fileInfo[1] = copyChar (temp);
+--   sprintf (temp, "</5/R>Character Count:<!R> %-4ld     <!5>", widget->characters);
+--   fileInfo[2] = copyChar (temp);
+--   sprintf (temp, "</5/R>Line Count     :<!R> %-4d     <!5>", widget->listSize);
+--   fileInfo[3] = copyChar (temp);
+--   sprintf (temp, "</5>                          <!5>");
+--   fileInfo[4] = copyChar (temp);
+--   sprintf (temp, "<C></5>Press Any Key To Continue.<!5>");
+--   fileInfo[5] = copyChar (temp);
+--   fileInfo[6] = 0;
+--
+--   tempInfo[0] = temp;
+--   tempInfo[1] = 0;
+--
+--   /* Set the current button. */
+--   widget->currentButton = 0;
+--
+--   /* Draw the widget list. */
+--   drawCDKViewer (widget, ObjOf (widget)->box);
+--
+--   /* Do this until KEY_ENTER is hit. */
+--   for (;;)
+--   {
+--      /* Reset the refresh flag. */
+--      int REFRESH = FALSE;
+--
+--      input = (chtype)getchCDKObject (ObjOf (widget), &functionKey);
+--      if (!checkCDKObjectBind (vVIEWER, widget, input))
+--      {
+--	 switch (input)
+--	 {
+--	 case KEY_TAB:
+--	    if (widget->buttonCount > 1)
+--	    {
+--	       if (widget->currentButton == (widget->buttonCount - 1))
+--	       {
+--		  widget->currentButton = 0;
+--	       }
+--	       else
+--	       {
+--		  widget->currentButton++;
+--	       }
+--
+--	       /* Redraw the buttons. */
+--	       drawCDKViewerButtons (widget);
+--	    }
+--	    break;
+--
+--	 case CDK_PREV:
+--	    if (widget->buttonCount > 1)
+--	    {
+--	       if (widget->currentButton == 0)
+--	       {
+--		  widget->currentButton = widget->buttonCount - 1;
+--	       }
+--	       else
+--	       {
+--		  widget->currentButton--;
+--	       }
+--
+--	       /* Redraw the buttons. */
+--	       drawCDKViewerButtons (widget);
+--	    }
+--	    break;
+--
+--	 case KEY_UP:
+--	    if (widget->currentTop > 0)
+--	    {
+--	       widget->currentTop--;
+--	       REFRESH = TRUE;
+--	    }
+--	    else
+--	    {
+--	       Beep ();
+--	    }
+--	    break;
+--
+--	 case KEY_DOWN:
+--	    if (widget->currentTop < widget->maxTopLine)
+--	    {
+--	       widget->currentTop++;
+--	       REFRESH = TRUE;
+--	    }
+--	    else
+--	    {
+--	       Beep ();
+--	    }
+--	    break;
+--
+--	 case KEY_RIGHT:
+--	    if (widget->leftChar < widget->maxLeftChar)
+--	    {
+--	       widget->leftChar++;
+--	       REFRESH = TRUE;
+--	    }
+--	    else
+--	    {
+--	       Beep ();
+--	    }
+--	    break;
+--
+--	 case KEY_LEFT:
+--	    if (widget->leftChar > 0)
+--	    {
+--	       widget->leftChar--;
+--	       REFRESH = TRUE;
+--	    }
+--	    else
+--	    {
+--	       Beep ();
+--	    }
+--	    break;
+--
+--	 case KEY_PPAGE:
+--	    if (widget->currentTop > 0)
+--	    {
+--	       if ((widget->currentTop - (widget->viewSize - 1)) > 0)
+--	       {
+--		  widget->currentTop = (widget->currentTop
+--					- (widget->viewSize - 1));
+--	       }
+--	       else
+--	       {
+--		  widget->currentTop = 0;
+--	       }
+--	       REFRESH = TRUE;
+--	    }
+--	    else
+--	    {
+--	       Beep ();
+--	    }
+--	    break;
+--
+--	 case KEY_NPAGE:
+--	    if (widget->currentTop < widget->maxTopLine)
+--	    {
+--	       if ((widget->currentTop + widget->viewSize) < widget->maxTopLine)
+--	       {
+--		  widget->currentTop = widget->currentTop +
+--		     (widget->viewSize
+--		      - 1);
+--	       }
+--	       else
+--	       {
+--		  widget->currentTop = widget->maxTopLine;
+--	       }
+--	       REFRESH = TRUE;
+--	    }
+--	    else
+--	    {
+--	       Beep ();
+--	    }
+--	    break;
+--
+--	 case KEY_HOME:
+--	    widget->leftChar = 0;
+--	    REFRESH = TRUE;
+--	    break;
+--
+--	 case KEY_END:
+--	    widget->leftChar = widget->maxLeftChar;
+--	    REFRESH = TRUE;
+--	    break;
+--
+--	 case 'g':
+--	 case '1':
+--	 case '<':
+--	    widget->currentTop = 0;
+--	    REFRESH = TRUE;
+--	    break;
+--
+--	 case 'G':
+--	 case '>':
+--	    widget->currentTop = widget->maxTopLine;
+--	    REFRESH = TRUE;
+--	    break;
+--
+--	 case 'L':
+--	    x = (int)((widget->listSize + widget->currentTop) / 2);
+--	    if (x < widget->maxTopLine)
+--	    {
+--	       widget->currentTop = x;
+--	       REFRESH = TRUE;
+--	    }
+--	    else
+--	    {
+--	       Beep ();
+--	    }
+--	    break;
+--
+--	 case 'l':
+--	    x = (int)(widget->currentTop / 2);
+--	    if (x >= 0)
+--	    {
+--	       widget->currentTop = x;
+--	       REFRESH = TRUE;
+--	    }
+--	    else
+--	    {
+--	       Beep ();
+--	    }
+--	    break;
+--
+--	 case '?':
+--	    SearchDirection = UP;
+--	    getAndStorePattern (ScreenOf (widget));
+--	    if (!searchForWord (widget, SearchPattern, SearchDirection))
+--	    {
+--	       PatternNotFound (widget, SearchPattern);
+--	    }
+--	    REFRESH = TRUE;
+--	    break;
+--
+--	 case '/':
+--	    SearchDirection = DOWN;
+--	    getAndStorePattern (ScreenOf (widget));
+--	    if (!searchForWord (widget, SearchPattern, SearchDirection))
+--	    {
+--	       PatternNotFound (widget, SearchPattern);
+--	    }
+--	    REFRESH = TRUE;
+--	    break;
+--
+--	 case 'N':
+--	 case 'n':
+--	    if (SearchPattern == 0)
+--	    {
+--	       sprintf (temp, "</5>There is no pattern in the buffer.<!5>");
+--	       popUpLabel (widget, tempInfo);
+--	    }
+--	    else if (!searchForWord (widget,
+--				     SearchPattern,
+--				     ((input == 'n')
+--				      ? SearchDirection
+--				      : !SearchDirection)))
+--	    {
+--	       PatternNotFound (widget, SearchPattern);
+--	    }
+--	    REFRESH = TRUE;
+--	    break;
+--
+--	 case ':':
+--	    widget->currentTop = jumpToLine (widget);
+--	    REFRESH = TRUE;
+--	    break;
+--
+--	 case 'i':
+--	 case 's':
+--	 case 'S':
+--	    popUpLabel (widget, (CDK_CSTRING2)fileInfo);
+--	    REFRESH = TRUE;
+--	    break;
+--
+--	 case KEY_ESC:
+--	    freeCharList (fileInfo, 6);
+--	    setExitType (widget, input);
+--	    return -1;
+--
+--	 case KEY_ERROR:
+--	    freeCharList (fileInfo, 6);
+--	    setExitType (widget, input);
+--	    return -1;
+--
+--	 case KEY_ENTER:
+--	    freeCharList (fileInfo, 6);
+--	    setExitType (widget, input);
+--	    return widget->currentButton;
+--
+--	 case CDK_REFRESH:
+--	    eraseCDKScreen (ScreenOf (widget));
+--	    refreshCDKScreen (ScreenOf (widget));
+--	    break;
+--
+--	 default:
+--	    Beep ();
+--	    break;
+--	 }
+--      }
+--
+--      /* Do we need to redraw the screen??? */
+--      if (REFRESH)
+--      {
+--	 drawCDKViewerInfo (widget);
+--      }
+--   }
+--}
+--
+--/*
+-- * This searches the document looking for the given word.
+-- */
+--static void getAndStorePattern (CDKSCREEN *screen)
+--{
+--   /* *INDENT-EQLS* */
+--   CDKENTRY *getPattern = 0;
+--   const char *temp     = 0;
+--   char *list           = 0;
+--
+--   /* Check the direction. */
+--   if (SearchDirection == UP)
+--   {
+--      temp = "</5>Search Up  : <!5>";
+--   }
+--   else
+--   {
+--      temp = "</5>Search Down: <!5>";
+--   }
+--
+--   /* Pop up the entry field. */
+--   getPattern = newCDKEntry (screen, CENTER, CENTER,
+--			     0, temp,
+--			     COLOR_PAIR (5) | A_BOLD,
+--			     '.' | COLOR_PAIR (5) | A_BOLD,
+--			     vMIXED, 10, 0, 256, TRUE, FALSE);
+--
+--   /* Is there an old search pattern? */
+--   if (SearchPattern != 0)
+--   {
+--      setCDKEntry (getPattern, SearchPattern, getPattern->min,
+--		   getPattern->max, ObjOf (getPattern)->box);
+--   }
+--   freeChar (SearchPattern);
+--
+--   /* Activate this baby. */
+--   list = activateCDKEntry (getPattern, 0);
+--
+--   /* Save the list. */
+--   if ((list != 0) && (strlen (list) != 0))
+--   {
+--      SearchPattern = copyChar (list);
+--   }
+--
+--   /* Clean up. */
+--   destroyCDKEntry (getPattern);
+--}
+--
+--/*
+-- * This searches for a line containing the word and realigns the value on the
+-- * screen.
+-- */
+--static int searchForWord (CDKVIEWER *viewer, char *pattern, int direction)
+--{
+--   int found = 0;
+--   int plen;
+--
+--   /* If the pattern is empty then return. */
+--   if (pattern != 0 && (plen = (int)strlen (pattern)) != 0)
+--   {
+--      int x, y, pos, len;
+--
+--      if (direction == DOWN)
+--      {
+--	 /* Start looking from 'here' down. */
+--	 for (x = viewer->currentTop + 1; !found && (x < viewer->listSize);
+--	      x++)
+--	 {
+--	    len = chlen (viewer->list[x]);
+--	    for (y = pos = 0; y < len; y++)
+--	    {
+--	       int plainChar = CharOf (viewer->list[x][y]);
+--
+--	       if (CharOf (pattern[pos]) != plainChar)
+--	       {
+--		  y -= pos;
+--		  pos = 0;
+--	       }
+--	       else if (++pos == plen)
+--	       {
+--		  viewer->currentTop = (x < viewer->maxTopLine ? x : viewer->maxTopLine);
+--		  viewer->leftChar = (y < viewer->boxWidth ? 0 : viewer->maxLeftChar);
+--		  found = 1;
+--		  break;
+--	       }
+--
+--	    }
+--	 }
+--      }
+--      else
+--      {
+--	 /* Start looking from 'here' up. */
+--	 for (x = viewer->currentTop - 1; !found && (x >= 0); x--)
+--	 {
+--	    len = chlen (viewer->list[x]);
+--	    for (y = pos = 0; y < len; y++)
+--	    {
+--	       int plainChar = CharOf (viewer->list[x][y]);
+--
+--	       if (CharOf (pattern[pos]) != plainChar)
+--	       {
+--		  y -= pos;
+--		  pos = 0;
+--	       }
+--	       else if (++pos == plen)
+--	       {
+--		  viewer->currentTop = x;
+--		  viewer->leftChar = (y < viewer->boxWidth ? 0 : viewer->maxLeftChar);
+--		  found = 1;
+--		  break;
+--	       }
+--
+--	    }
+--	 }
+--      }
+--   }
+--   return (found);
+--}
+--
+--/*
+-- * This allows us to 'jump' to a given line in the file.
+-- */
+--static int jumpToLine (CDKVIEWER *viewer)
+--{
+--   /* *INDENT-EQLS* */
+--   int line           = 0;
+--   CDKSCALE *newline  = newCDKScale (ScreenOf (viewer), CENTER, CENTER,
+--				     "<C>Jump To Line", "</5>Line :", A_BOLD,
+--				     intlen (viewer->listSize) + 1,
+--				     viewer->currentTop + 1,
+--				     0, viewer->maxTopLine + 1,
+--				     1, 10, TRUE, TRUE);
+--
+--   line = activateCDKScale (newline, 0);
+--   destroyCDKScale (newline);
+--   return ((line - 1));
+--}
+--
+--/*
+-- * This pops a little message up on the screen.
+-- */
+--static void popUpLabel (CDKVIEWER *viewer, CDK_CSTRING2 mesg)
+--{
+--   CDKLABEL *label;
+--   boolean functionKey;
+--
+--   /* Set up variables. */
+--   label = newCDKLabel (ScreenOf (viewer), CENTER, CENTER,
+--			(CDK_CSTRING2)mesg,
+--			(int)CDKcountStrings (mesg),
+--			TRUE, FALSE);
+--
+--   /* Draw the label and wait. */
+--   drawCDKLabel (label, TRUE);
+--   getchCDKObject (ObjOf (label), &functionKey);
+--
+--   /* Clean up. */
+--   destroyCDKLabel (label);
+--}
+--
+--/*
+-- * This moves the viewer field to the given location.
+-- */
+--static void _moveCDKViewer (CDKOBJS *object, int xplace, int yplace, boolean
+--			    relative, boolean refresh_flag)
+--{
+--   /* *INDENT-EQLS* */
+--   CDKVIEWER *viewer = (CDKVIEWER *)object;
+--   int currentX      = getbegx (viewer->win);
+--   int currentY      = getbegy (viewer->win);
+--   int xpos          = xplace;
+--   int ypos          = yplace;
+--   int xdiff         = 0;
+--   int ydiff         = 0;
+--
+--   /*
+--    * If this is a relative move, then we will adjust where we want
+--    * to move to.
+--    */
+--   if (relative)
+--   {
+--      xpos = getbegx (viewer->win) + xplace;
+--      ypos = getbegy (viewer->win) + yplace;
+--   }
+--
+--   /* Adjust the window if we need to. */
+--   alignxy (WindowOf (viewer), &xpos, &ypos, viewer->boxWidth, viewer->boxHeight);
+--
+--   /* Get the difference. */
+--   xdiff = currentX - xpos;
+--   ydiff = currentY - ypos;
+--
+--   /* Move the window to the new location. */
+--   moveCursesWindow (viewer->win, -xdiff, -ydiff);
+--   moveCursesWindow (viewer->shadowWin, -xdiff, -ydiff);
+--
+--   /* Touch the windows so they 'move'. */
+--   refreshCDKWindow (WindowOf (viewer));
+--
+--   /* Redraw the window, if they asked for it. */
+--   if (refresh_flag)
+--   {
+--      drawCDKViewer (viewer, ObjOf (viewer)->box);
+--   }
+--}
+--
+--/*
+-- * This function draws the viewer widget.
+-- */
+--static void _drawCDKViewer (CDKOBJS *object, boolean Box)
+--{
+--   CDKVIEWER *viewer = (CDKVIEWER *)object;
+--
+--   /* Do we need to draw in the shadow??? */
+--   if (viewer->shadowWin != 0)
+--   {
+--      drawShadow (viewer->shadowWin);
+--   }
+--
+--   /* Box it if it was asked for. */
+--   if (Box)
+--   {
+--      drawObjBox (viewer->win, ObjOf (viewer));
+--      wrefresh (viewer->win);
+--   }
+--
+--   /* Draw the info in the viewer. */
+--   drawCDKViewerInfo (viewer);
+--}
+--
+--/*
+-- * This redraws the viewer buttons.
+-- */
+--static void drawCDKViewerButtons (CDKVIEWER *viewer)
+--{
+--   chtype character;
+--   int x;
+--
+--   /* No buttons, no drawing. */
+--   if (viewer->buttonCount == 0)
+--   {
+--      return;
+--   }
+--
+--   /* Redraw the buttons. */
+--   for (x = 0; x < viewer->buttonCount; x++)
+--   {
+--      writeChtype (viewer->win,
+--		   viewer->buttonPos[x],
+--		   viewer->boxHeight - 2,
+--		   viewer->button[x],
+--		   HORIZONTAL,
+--		   0,
+--		   viewer->buttonLen[x]);
+--   }
+--
+--   /* Highlight the current button. */
+--   for (x = 0; x < viewer->buttonLen[viewer->currentButton]; x++)
+--   {
+--      /* Strip the character of any extra attributes. */
+--      character = CharOf (viewer->button[viewer->currentButton][x]);
+--
+--      /* Add the character into the window. */
+--      (void)mvwaddch (viewer->win,
+--		      viewer->boxHeight - 2,
+--		      viewer->buttonPos[viewer->currentButton] + x,
+--		      character | viewer->buttonHighlight);
+--   }
+--
+--   /* Refresh the window. */
+--   wrefresh (viewer->win);
+--}
+--
+--/*
+-- * This sets the background attribute of the widget.
+-- */
+--static void _setBKattrViewer (CDKOBJS *object, chtype attrib)
+--{
+--   if (object != 0)
+--   {
+--      CDKVIEWER *widget = (CDKVIEWER *)object;
+--
+--      wbkgd (widget->win, attrib);
+--   }
+--}
+--
+--/*
+-- * Free any storage associated with the info-list.
+-- */
+--static void destroyInfo (CDKVIEWER *viewer)
+--{
+--   CDKfreeChtypes (viewer->list);
+--   freeChecked (viewer->listPos);
+--   freeChecked (viewer->listLen);
+--
+--   viewer->list = 0;
+--   viewer->listPos = 0;
+--   viewer->listLen = 0;
+--}
+--
+--/*
+-- * This function destroys the viewer widget.
+-- */
+--static void _destroyCDKViewer (CDKOBJS *object)
+--{
+--   if (object != 0)
+--   {
+--      CDKVIEWER *viewer = (CDKVIEWER *)object;
+--
+--      destroyInfo (viewer);
+--
+--      cleanCdkTitle (object);
+--      CDKfreeChtypes (viewer->button);
+--      freeChecked (viewer->buttonLen);
+--      freeChecked (viewer->buttonPos);
+--
+--      /* Clean up the windows. */
+--      deleteCursesWindow (viewer->shadowWin);
+--      deleteCursesWindow (viewer->win);
+--
+--      /* Clean the key bindings. */
+--      cleanCDKObjectBindings (vVIEWER, viewer);
+--
+--      /* Unregister this object. */
+--      unregisterCDKObject (vVIEWER, viewer);
+--   }
+--}
+--
+--/*
+-- * This function erases the viewer widget from the screen.
+-- */
+--static void _eraseCDKViewer (CDKOBJS *object)
+--{
+--   if (validCDKObject (object))
+--   {
+--      CDKVIEWER *viewer = (CDKVIEWER *)object;
+--
+--      eraseCursesWindow (viewer->win);
+--      eraseCursesWindow (viewer->shadowWin);
+--   }
+--}
+--
+--/*
+-- * This draws the viewer info lines.
+-- */
+--static void drawCDKViewerInfo (CDKVIEWER *viewer)
+--{
+--   int listAdjust = 0;
+--   int lastLine = 0;
+--   int x;
+--
+--   /* Clear the window. */
+--   werase (viewer->win);
+--
+--   drawCdkTitle (viewer->win, ObjOf (viewer));
+--
+--   /* Draw in the current line at the top. */
+--   if (viewer->showLineInfo == TRUE)
+--   {
+--      char temp[256];
+--
+--      /* Set up the info line and draw it. */
+--      if (viewer->inProgress)
+--      {
+--	 strcpy (temp, "processing...");
+--      }
+--      else if (viewer->listSize != 0)
+--      {
+--	 sprintf (temp, "%d/%d %2.0f%%",
+--		  (viewer->currentTop + 1),
+--		  viewer->listSize,
+--		  ((float)(viewer->currentTop + 1)
+--		   / (float)viewer->listSize) * 100);
+--      }
+--      else
+--      {
+--	 sprintf (temp, "%d/%d %2.0f%%", 0, 0, 0.0);
+--      }
+--
+--      /*
+--       * The listAdjust variable tells us if we have to shift down one line
+--       * because the person asked for the line X of Y line at the top of the
+--       * screen.  We only want to set this to 1 if they asked for the info line
+--       * and there is no title, or if the two items overlap.
+--       */
+--      if (TitleLinesOf (viewer) == 0
+--	  || TitlePosOf (viewer)[0] < ((int)strlen (temp) + 2))
+--      {
+--	 listAdjust = 1;
+--      }
+--      writeChar (viewer->win, 1, (listAdjust ? TitleLinesOf (viewer) : 0) + 1,
+--		 temp, HORIZONTAL, 0, (int)strlen (temp));
+--   }
+--
+--   /* Determine the last line to draw. */
+--   lastLine = ((viewer->listSize <= viewer->viewSize)
+--	       ? viewer->listSize
+--	       : viewer->viewSize);
+--   lastLine -= listAdjust;
+--
+--   /* Redraw the list. */
+--   for (x = 0; x < lastLine; x++)
+--   {
+--      if (viewer->currentTop + x < viewer->listSize)
+--      {
+--	 int screenPos = viewer->listPos[viewer->currentTop + x] + 1 - viewer->leftChar;
+--
+--	 writeChtype (viewer->win,
+--		      ((screenPos >= 0)
+--		       ? screenPos
+--		       : 1),
+--		      x + TitleLinesOf (viewer) + listAdjust + 1,
+--		      viewer->list[x + viewer->currentTop],
+--		      HORIZONTAL,
+--		      ((screenPos >= 0)
+--		       ? 0
+--		       : (viewer->leftChar
+--			  - viewer->listPos[viewer->currentTop + x])),
+--		      viewer->listLen[x + viewer->currentTop]);
+--      }
+--   }
+--
+--   /* Box it if we have to. */
+--   if (ObjOf (viewer)->box)
+--   {
+--      drawObjBox (viewer->win, ObjOf (viewer));
+--      wrefresh (viewer->win);
+--   }
+--
+--   /* Draw the separation line. */
+--   if (viewer->buttonCount > 0)
+--   {
+--      chtype boxattr = BXAttrOf (viewer);
+--
+--      for (x = 1; x <= viewer->boxWidth; x++)
+--      {
+--	 (void)mvwaddch (viewer->win, viewer->boxHeight - 3, x,
+--			 HZCharOf (viewer) | boxattr);
+--      }
+--      (void)mvwaddch (viewer->win, viewer->boxHeight - 3, 0,
+--		      ACS_LTEE | boxattr);
+--      (void)mvwaddch (viewer->win, viewer->boxHeight - 3,
+--		      getmaxx (viewer->win) - 1,
+--		      ACS_RTEE | boxattr);
+--   }
+--
+--   /* Draw the buttons. This will call refresh on the viewer win. */
+--   drawCDKViewerButtons (viewer);
+--}
+--
+--/*
+-- * The listSize may be negative, to assign no definite limit.
+-- */
+--static int createList (CDKVIEWER *swindow, int listSize)
+--{
+--   int status = 0;
+--
+--   if (listSize >= 0)
+--   {
+--      chtype **newList = typeCallocN (chtype *, listSize + 1);
+--      int *newPos = typeCallocN (int, listSize + 1);
+--      int *newLen = typeCallocN (int, listSize + 1);
+--
+--      if (newList != 0
+--	  && newPos != 0
+--	  && newLen != 0)
+--      {
+--	 status = 1;
+--	 destroyInfo (swindow);
+--
+--	 swindow->list = newList;
+--	 swindow->listPos = newPos;
+--	 swindow->listLen = newLen;
+--      }
+--      if (!status)
+--      {
+--	 CDKfreeChtypes (newList);
+--	 freeChecked (newPos);
+--	 freeChecked (newLen);
+--      }
+--   }
+--   else
+--   {
+--      destroyInfo (swindow);
+--   }
+--   return status;
+--}
+--
+--dummyInject (Viewer)
+--
+--dummyFocus (Viewer)
+--
+--dummyUnfocus (Viewer)
+--
+--dummyRefreshData (Viewer)
+--
+--dummySaveData (Viewer)
+---- /dev/null
+-+++ b/include/slider.h
+-@@ -0,0 +1,219 @@
+-+/*
+-+ * $Id: gen-slider.h,v 1.8 2012/03/20 21:59:30 tom Exp $
+-+ */
+-+
+-+#ifndef CDKINCLUDES
+-+#ifndef CDKSLIDER_H
+-+#define CDKSLIDER_H	1
+-+
+-+#ifdef __cplusplus
+-+extern "C" {
+-+#endif
+-+
+-+#ifndef CDK_H
+-+#define CDKINCLUDES
+-+#include <cdk.h>
+-+#undef CDKINCLUDES
+-+#include <binding.h>
+-+#include <cdkscreen.h>
+-+#include <cdk_objs.h>
+-+#endif
+-+
+-+/*
+-+ * Copyright 2004,2012 Thomas E. Dickey
+-+ * All rights reserved.
+-+ *
+-+ * Redistribution and use in source and binary forms, with or without
+-+ * modification, are permitted provided that the following conditions
+-+ * are met:
+-+ * 1. Redistributions of source code must retain the above copyright
+-+ *    notice, this list of conditions and the following disclaimer.
+-+ * 2. Redistributions in binary form must reproduce the above copyright
+-+ *    notice, this list of conditions and the following disclaimer in the
+-+ *    documentation and/or other materials provided with the distribution.
+-+ * 3. All advertising materials mentioning features or use of this software
+-+ *    must display the following acknowledgment:
+-+ *      This product includes software developed by Thomas Dickey
+-+ *      and contributors.
+-+ * 4. Neither the name of Thomas Dickey, nor the names of contributors
+-+ *    may be used to endorse or promote products derived from this software
+-+ *    without specific prior written permission.
+-+ *
+-+ * THIS SOFTWARE IS PROVIDED BY THOMAS DICKEY AND CONTRIBUTORS ``AS IS'' AND
+-+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+-+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+-+ * ARE DISCLAIMED.  IN NO EVENT SHALL THOMAS DICKEY OR CONTRIBUTORS BE LIABLE
+-+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+-+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+-+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+-+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+-+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+-+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+-+ * SUCH DAMAGE.
+-+ */
+-+
+-+/*
+-+ * Define the CDK widget Slider structure.
+-+ */
+-+struct SSlider {
+-+   CDKOBJS	obj;
+-+   WINDOW *	parent;
+-+   WINDOW *	win;
+-+   WINDOW *	shadowWin;
+-+   WINDOW *	fieldWin;
+-+   WINDOW *	labelWin;
+-+   int		titleAdj;
+-+   chtype *	label;
+-+   int		labelLen;
+-+   int		boxHeight;
+-+   int		boxWidth;
+-+   int		fieldWidth;
+-+   int		fieldEdit;	/* offset from right-margin of field */
+-+   chtype	filler;
+-+   int	low;
+-+   int	high;
+-+   int	inc;
+-+   int	fastinc;
+-+   int	current;
+-+   EExitType	exitType;
+-+   boolean	shadow;
+-+};
+-+typedef struct SSlider CDKSLIDER;
+-+
+-+/*
+-+ * This creates a new pointer to a CDK int-Slider widget.
+-+ */
+-+CDKSLIDER *newCDKSlider (
+-+		CDKSCREEN *	/* cdkscreen */,
+-+		int		/* xpos */,
+-+		int		/* ypos */,
+-+		const char *	/* title */,
+-+		const char *	/* label */,
+-+		chtype		/* fieldAttr */,
+-+		int		/* fieldWidth */,
+-+		int		/* start */,
+-+		int		/* low */,
+-+		int		/* high */,
+-+		int		/* inc */,
+-+		int		/* fastInc */,
+-+		boolean		/* Box */,
+-+		boolean		/* shadow */);
+-+
+-+/*
+-+ * This activates the widget.
+-+ */
+-+int activateCDKSlider (
+-+		CDKSLIDER *	/* widget */,
+-+		chtype *	/* actions */);
+-+
+-+/*
+-+ * This injects a single character into the widget.
+-+ */
+-+#define injectCDKSlider(obj,input) injectCDKObject(obj,input,Int)
+-+
+-+/*
+-+ * This sets various attributes of the widget.
+-+ */
+-+void setCDKSlider (
+-+		CDKSLIDER *	/* widget */,
+-+		int		/* low */,
+-+		int		/* high */,
+-+		int		/* value */,
+-+		boolean		/* Box */);
+-+
+-+/*
+-+ * These set/get the low and high values.
+-+ */
+-+void setCDKSliderLowHigh (
+-+		CDKSLIDER *	/* widget */,
+-+		int		/* low */,
+-+		int		/* high */);
+-+
+-+int getCDKSliderLowValue (
+-+		CDKSLIDER *	/* widget */);
+-+
+-+int getCDKSliderHighValue (
+-+		CDKSLIDER *	/* widget */);
+-+
+-+/*
+-+ * These set/get the digits.
+-+ */
+-+
+-+/*
+-+ * These set/get the current value.
+-+ */
+-+void setCDKSliderValue (
+-+		CDKSLIDER *	/* widget */,
+-+		int		/* value */);
+-+
+-+int getCDKSliderValue (
+-+		CDKSLIDER *	/* widget */);
+-+
+-+/*
+-+ * This sets the box attribute of the widget.
+-+ */
+-+void setCDKSliderBox (
+-+		CDKSLIDER *	/* widget */,
+-+		boolean		/* Box */);
+-+
+-+boolean getCDKSliderBox (
+-+		CDKSLIDER *	/* widget */);
+-+
+-+/*
+-+ * These set the drawing characters of the widget.
+-+ */
+-+#define setCDKSliderULChar(w,c)            setULCharOf(w,c)
+-+#define setCDKSliderURChar(w,c)            setURCharOf(w,c)
+-+#define setCDKSliderLLChar(w,c)            setLLCharOf(w,c)
+-+#define setCDKSliderLRChar(w,c)            setLRCharOf(w,c)
+-+#define setCDKSliderVerticalChar(w,c)      setVTCharOf(w,c)
+-+#define setCDKSliderHorizontalChar(w,c)    setHZCharOf(w,c)
+-+#define setCDKSliderBoxAttribute(w,c)      setBXAttrOf(w,c)
+-+
+-+/*
+-+ * This sets the background color of the widget.
+-+ */
+-+#define setCDKSliderBackgroundColor(w,c) setCDKObjectBackgroundColor(ObjOf(w),c)
+-+
+-+/*
+-+ * This sets the background attribute of the widget.
+-+ */ 
+-+#define setCDKSliderBackgroundAttrib(w,c) setBKAttrOf(w,c)
+-+
+-+/*
+-+ * This draws the widget on the screen.
+-+ */
+-+#define drawCDKSlider(obj,Box) drawCDKObject(obj,Box)
+-+
+-+/*
+-+ * This erases the widget from the screen.
+-+ */
+-+#define eraseCDKSlider(obj) eraseCDKObject(obj)
+-+
+-+/*
+-+ * This moves the widget to the given location on the screen.
+-+ */
+-+#define moveCDKSlider(obj,xpos,ypos,relative,refresh) moveCDKObject(obj,xpos,ypos,relative,refresh)
+-+
+-+/*
+-+ * This allows the user to interactively position the widget on the screen.
+-+ */
+-+#define positionCDKSlider(widget) positionCDKObject(ObjOf(widget),widget->win)
+-+
+-+/*
+-+ * This destroys the widget and associated memory.
+-+ */
+-+#define destroyCDKSlider(obj) destroyCDKObject(obj)
+-+
+-+/*
+-+ * These set the pre/post process callback functions.
+-+ */
+-+#define setCDKSliderPreProcess(w,f,d)  setCDKObjectPreProcess(ObjOf(w),f,d)
+-+#define setCDKSliderPostProcess(w,f,d) setCDKObjectPostProcess(ObjOf(w),f,d)
+-+
+-+#ifdef __cplusplus
+-+}
+-+#endif
+-+
+-+#endif /* CDKSLIDER_H */
+-+#endif /* CDKINCLUDES */
++diff --git a/slider.c b/slider.c
++new file mode 100644
++index 0000000..bce688c
+ --- /dev/null
+ +++ b/slider.c
+-@@ -0,0 +1,831 @@
++@@ -0,0 +1,830 @@
+ +#include <cdk_int.h>
+ +
+ +/*
+ + * $Author: tom $
+-+ * $Date: 2016/11/20 18:29:20 $
+-+ * $Revision: 1.28 $
+++ * $Date: 2021/12/16 00:42:01 $
+++ * $Revision: 1.29 $
+ + */
+ +
+ +/*
+@@ -5416,12 +4066,11 @@ diff -r c40f79827990 viewer.c
+ +
+ +   if (actions == 0)
+ +   {
+-+      chtype input = 0;
+ +      boolean functionKey;
+ +
+ +      for (;;)
+ +      {
+-+	 input = (chtype)getchCDKObject (ObjOf (widget), &functionKey);
+++	 chtype input = (chtype)getchCDKObject (ObjOf (widget), &functionKey);
+ +
+ +	 /* Inject the character into the widget. */
+ +	 ret = (int)injectCDKSlider (widget, input);
+@@ -5557,7 +4206,6 @@ diff -r c40f79827990 viewer.c
+ +static bool performEdit (CDKSLIDER *widget, chtype input)
+ +{
+ +   bool result = FALSE;
+-+   bool modify = TRUE;
+ +   int base = widget->fieldWidth;
+ +   int need = formattedSize (widget, widget->current);
+ +   char *temp = (char *)malloc ((size_t) need + 5);
+@@ -5569,6 +4217,7 @@ diff -r c40f79827990 viewer.c
+ +
+ +   if (temp != 0)
+ +   {
+++      bool modify = TRUE;
+ +      int adj = (col < 0) ? (-col) : 0;
+ +      if (adj)
+ +      {
+@@ -6039,3 +4688,1365 @@ diff -r c40f79827990 viewer.c
+ +dummyRefreshData (Slider)
+ +
+ +dummySaveData (Slider)
++diff --git a/view_info.c b/view_info.c
++index fff430d..e69de29 100644
++--- a/view_info.c
+++++ b/view_info.c
++@@ -1,44 +0,0 @@
++-#include <cdk_int.h>
++-
++-/*
++- * $Author: tom $
++- * $Date: 2016/11/20 18:35:56 $
++- * $Revision: 1.3 $
++- */
++-
++-/*
++- * This allows the user to view information.
++- */
++-int viewInfo (CDKSCREEN *screen,
++-	      const char *title,
++-	      CDK_CSTRING2 info,
++-	      int count,
++-	      CDK_CSTRING2 buttons,
++-	      int buttonCount,
++-	      boolean interpret)
++-{
++-   CDKVIEWER *viewer = 0;
++-   int selected;
++-
++-   /* Create the file viewer to view the file selected. */
++-   viewer = newCDKViewer (screen, CENTER, CENTER, -6, -16,
++-			  buttons, buttonCount,
++-			  A_REVERSE, TRUE, TRUE);
++-
++-   /* Set up the viewer title, and the contents to the widget. */
++-   setCDKViewer (viewer, title, info, count, A_REVERSE, interpret, TRUE, TRUE);
++-
++-   /* Activate the viewer widget. */
++-   selected = activateCDKViewer (viewer, 0);
++-
++-   /* Make sure they exited normally. */
++-   if (viewer->exitType != vNORMAL)
++-   {
++-      destroyCDKViewer (viewer);
++-      return (-1);
++-   }
++-
++-   /* Clean up and return the button index selected. */
++-   destroyCDKViewer (viewer);
++-   return selected;
++-}
++diff --git a/viewer.c b/viewer.c
++index c306602..e69de29 100644
++--- a/viewer.c
+++++ b/viewer.c
++@@ -1,1305 +0,0 @@
++-#include <cdk_int.h>
++-
++-/*
++- * $Author: tom $
++- * $Date: 2021/12/16 00:34:50 $
++- * $Revision: 1.168 $
++- */
++-
++-/*
++- * Declare some local definitions.
++- */
++-#define		DOWN		0
++-#define		UP		1
++-
++-/*
++- * Declare file local prototypes.
++- */
++-static int createList (CDKVIEWER *swindow, int listSize);
++-static int searchForWord (CDKVIEWER *viewer, char *pattern, int direction);
++-static int jumpToLine (CDKVIEWER *viewer);
++-static void popUpLabel (CDKVIEWER *viewer, CDK_CSTRING2 mesg);
++-static void getAndStorePattern (CDKSCREEN *screen);
++-static void drawCDKViewerButtons (CDKVIEWER *viewer);
++-static void drawCDKViewerInfo (CDKVIEWER *viewer);
++-
++-/*
++- * Declare file local variables.
++- */
++-static char *SearchPattern = 0;
++-static int SearchDirection = DOWN;
++-
++-DeclareCDKObjects (VIEWER, Viewer, setCdk, Unknown);
++-
++-/*
++- * This function creates a new viewer object.
++- */
++-CDKVIEWER *newCDKViewer (CDKSCREEN *cdkscreen,
++-			 int xplace,
++-			 int yplace,
++-			 int height,
++-			 int width,
++-			 CDK_CSTRING2 buttons,
++-			 int buttonCount,
++-			 chtype buttonHighlight,
++-			 boolean Box,
++-			 boolean shadow)
++-{
++-   /* *INDENT-EQLS* */
++-   CDKVIEWER *viewer = 0;
++-   int parentWidth   = getmaxx (cdkscreen->window);
++-   int parentHeight  = getmaxy (cdkscreen->window);
++-   int boxWidth;
++-   int boxHeight;
++-   int xpos          = xplace;
++-   int ypos          = yplace;
++-   int buttonAdj     = 0;
++-   int x             = 0;
++-   /* *INDENT-OFF* */
++-   static const struct { int from; int to; } bindings[] = {
++-	    { CDK_BACKCHAR,	KEY_PPAGE },
++-	    { 'b',		KEY_PPAGE },
++-	    { 'B',		KEY_PPAGE },
++-	    { CDK_FORCHAR,	KEY_NPAGE },
++-	    { SPACE,		KEY_NPAGE },
++-	    { 'f',		KEY_NPAGE },
++-	    { 'F',		KEY_NPAGE },
++-	    { '|',		KEY_HOME },
++-	    { '$',		KEY_END },
++-   };
++-   /* *INDENT-ON* */
++-
++-
++-   if ((viewer = newCDKObject (CDKVIEWER, &my_funcs)) == 0)
++-        return (0);
++-
++-   setCDKViewerBox (viewer, Box);
++-
++-   boxHeight = setWidgetDimension (parentHeight, height, 0);
++-   boxWidth = setWidgetDimension (parentWidth, width, 0);
++-
++-   /* Rejustify the x and y positions if we need to. */
++-   alignxy (cdkscreen->window, &xpos, &ypos, boxWidth, boxHeight);
++-
++-   /* Make the viewer window. */
++-   viewer->win = newwin (boxHeight, boxWidth, ypos, xpos);
++-   if (viewer->win == 0)
++-   {
++-      destroyCDKObject (viewer);
++-      return (0);
++-   }
++-
++-   /* Turn the keypad on for the viewer. */
++-   keypad (viewer->win, TRUE);
++-
++-   /* Create the buttons. */
++-   viewer->buttonCount = buttonCount;
++-   if (buttonCount > 0)
++-   {
++-      int buttonWidth = 0;
++-      int buttonPos = 1;
++-
++-      if ((viewer->button = typeCallocN (chtype *, buttonCount + 1)) == 0
++-	  || (viewer->buttonLen = typeCallocN (int, buttonCount + 1)) == 0
++-	  || (viewer->buttonPos = typeCallocN (int, buttonCount + 1)) == 0)
++-      {
++-	 destroyCDKObject (viewer);
++-	 return (0);
++-      }
++-      for (x = 0; x < buttonCount; x++)
++-      {
++-	 viewer->button[x] = char2Chtype (buttons[x], &viewer->buttonLen[x], &buttonAdj);
++-	 buttonWidth += viewer->buttonLen[x] + 1;
++-      }
++-      buttonAdj = (int)((boxWidth - buttonWidth) / (buttonCount + 1));
++-      buttonPos = 1 + buttonAdj;
++-      for (x = 0; x < buttonCount; x++)
++-      {
++-	 viewer->buttonPos[x] = buttonPos;
++-	 buttonPos += buttonAdj + viewer->buttonLen[x];
++-      }
++-   }
++-
++-   /* *INDENT-EQLS* Set the rest of the variables */
++-   ScreenOf (viewer)            = cdkscreen;
++-   viewer->parent               = cdkscreen->window;
++-   viewer->shadowWin            = 0;
++-   viewer->buttonHighlight      = buttonHighlight;
++-   viewer->boxHeight            = boxHeight;
++-   viewer->boxWidth             = boxWidth - 2;
++-   viewer->viewSize             = height - 2;
++-   ObjOf (viewer)->inputWindow  = viewer->win;
++-   initExitType (viewer);
++-   viewer->shadow               = shadow;
++-   viewer->currentButton        = 0;
++-   viewer->currentTop           = 0;
++-   viewer->length               = 0;
++-   viewer->leftChar             = 0;
++-   viewer->maxLeftChar          = 0;
++-   viewer->maxTopLine           = 0;
++-   viewer->characters           = 0;
++-   viewer->listSize             = -1;
++-   viewer->showLineInfo         = 1;
++-   viewer->exitType             = vEARLY_EXIT;
++-
++-   /* Do we need to create a shadow??? */
++-   if (shadow)
++-   {
++-      viewer->shadowWin = newwin (boxHeight, boxWidth + 1, ypos + 1, xpos + 1);
++-      if (viewer->shadowWin == 0)
++-      {
++-	 destroyCDKObject (viewer);
++-	 return (0);
++-      }
++-   }
++-
++-   /* Setup the key bindings. */
++-   for (x = 0; x < (int)SIZEOF (bindings); ++x)
++-      bindCDKObject (vVIEWER,
++-		     viewer,
++-		     (chtype)bindings[x].from,
++-		     getcCDKBind,
++-		     (void *)(long)bindings[x].to);
++-
++-   registerCDKObject (cdkscreen, vVIEWER, viewer);
++-
++-   return (viewer);
++-}
++-
++-/*
++- * This function sets various attributes of the widget.
++- */
++-int setCDKViewer (CDKVIEWER *viewer,
++-		  const char *title,
++-		  CDK_CSTRING2 list,
++-		  int listSize,
++-		  chtype buttonHighlight,
++-		  boolean attrInterp,
++-		  boolean showLineInfo,
++-		  boolean Box)
++-{
++-   setCDKViewerTitle (viewer, title);
++-   setCDKViewerHighlight (viewer, buttonHighlight);
++-   setCDKViewerInfoLine (viewer, showLineInfo);
++-   setCDKViewerBox (viewer, Box);
++-   return setCDKViewerInfo (viewer, list, listSize, attrInterp);
++-}
++-
++-/*
++- * This sets the title of the viewer. (A null title is allowed.
++- * It just means that the viewer will not have a title when drawn.)
++- */
++-void setCDKViewerTitle (CDKVIEWER *viewer, const char *title)
++-{
++-   (void)setCdkTitle (ObjOf (viewer), title, -(viewer->boxWidth + 1));
++-   viewer->titleAdj = TitleLinesOf (viewer);
++-
++-   /* Need to set viewer->viewSize. */
++-   viewer->viewSize = viewer->boxHeight - (TitleLinesOf (viewer) + 1) - 2;
++-}
++-chtype **getCDKViewerTitle (CDKVIEWER *viewer)
++-{
++-   return TitleOf (viewer);
++-}
++-
++-static void setupLine (CDKVIEWER *viewer, boolean interpret, const char
++-		       *list, int x)
++-{
++-   /* Did they ask for attribute interpretation? */
++-   if (interpret)
++-   {
++-      viewer->list[x] = char2Chtype (list, &viewer->listLen[x],
++-				     &viewer->listPos[x]);
++-      viewer->listPos[x] = justifyString (viewer->boxWidth,
++-					  viewer->listLen[x],
++-					  viewer->listPos[x]);
++-   }
++-   else
++-   {
++-      int len = (int)strlen (list);
++-      int pass;
++-      int y;
++-      chtype *t = 0;
++-
++-      /*
++-       * We must convert tabs and other nonprinting characters.  The curses
++-       * library normally does this, but we are bypassing it by writing
++-       * chtype's directly.
++-       */
++-      for (pass = 0; pass < 2; ++pass)
++-      {
++-	 len = 0;
++-	 for (y = 0; list[y] != '\0'; ++y)
++-	 {
++-	    if (list[y] == '\t')
++-	    {
++-	       do
++-	       {
++-		  if (pass)
++-		     t[len] = ' ';
++-		  ++len;
++-	       }
++-	       while (len & 7);
++-	    }
++-	    else if (isprint (CharOf (list[y])))
++-	    {
++-	       if (pass)
++-		  t[len] = CharOf (list[y]);
++-	       ++len;
++-	    }
++-	    else
++-	    {
++-	       const char *s = unctrl ((chtype)list[y]);
++-	       while (*s != 0)
++-	       {
++-		  if (pass)
++-		     t[len] = CharOf (*s);
++-		  ++len;
++-		  ++s;
++-	       }
++-	    }
++-	 }
++-	 if (!pass)
++-	 {
++-	    viewer->list[x] = t = typeCallocN (chtype, len + 3);
++-	    if (t == 0)
++-	    {
++-	       len = 0;
++-	       break;
++-	    }
++-	 }
++-      }
++-      viewer->listLen[x] = len;
++-      viewer->listPos[x] = 0;
++-   }
++-   viewer->widestLine = MAXIMUM (viewer->widestLine, viewer->listLen[x]);
++-}
++-
++-static void freeLine (CDKVIEWER *viewer, int x)
++-{
++-   if (x < viewer->listSize)
++-   {
++-      freeChtype (viewer->list[x]);
++-      viewer->list[x] = 0;
++-   }
++-}
++-
++-/*
++- * This function sets the contents of the viewer.
++- */
++-int setCDKViewerInfo (CDKVIEWER *viewer, CDK_CSTRING2 list, int listSize, boolean interpret)
++-{
++-   /* *INDENT-EQLS* */
++-   char filename[CDK_PATHMAX + 2];
++-   int currentLine      = 0;
++-   int x                = 0;
++-   int viewerSize;
++-
++-   /*
++-    * If the list-size is negative, count the length of the null-terminated
++-    * list of strings.
++-    */
++-   if (listSize < 0)
++-   {
++-      listSize = (int)CDKcountStrings (list);
++-   }
++-
++-   /* compute the size of the resulting display */
++-   viewerSize = listSize;
++-   if (list != 0 && interpret)
++-   {
++-      for (x = 0; x < listSize; ++x)
++-      {
++-	 if (list[x] == 0)
++-	 {
++-	    viewerSize = x;	/* oops - caller gave the wrong length */
++-	    break;
++-	 }
++-	 if (checkForLink (list[x], filename) == 1)
++-	 {
++-	    char **fileContents = 0;
++-	    int fileLen = CDKreadFile (filename, &fileContents);
++-
++-	    if (fileLen >= 0)
++-	       viewerSize += (fileLen - 1);
++-	    CDKfreeStrings (fileContents);
++-	 }
++-      }
++-   }
++-
++-   /* Clean out the old viewer info. (if there is any) */
++-   viewer->inProgress = TRUE;
++-   cleanCDKViewer (viewer);
++-   createList (viewer, viewerSize);
++-
++-   /* Keep some semi-permanent info. */
++-   viewer->interpret = interpret;
++-
++-   /* Copy the information given. */
++-   for (x = currentLine = 0; x < listSize && currentLine < viewerSize; x++)
++-   {
++-      if (list[x] == 0)
++-      {
++-	 viewer->list[currentLine] = 0;
++-	 viewer->listLen[currentLine] = 0;
++-	 viewer->listPos[currentLine] = 0;
++-	 currentLine++;
++-      }
++-      else
++-      {
++-	 /* Check if we have a file link in this line. */
++-	 if (checkForLink (list[x], filename) == 1)
++-	 {
++-	    /* We have a link, open the file. */
++-	    char **fileContents = 0;
++-	    int fileLen = 0;
++-
++-	    /* Open the file and put it into the viewer. */
++-	    fileLen = CDKreadFile (filename, &fileContents);
++-	    if (fileLen == -1)
++-	    {
++-#ifdef HAVE_START_COLOR
++-#define FOPEN_FMT "<C></16>Link Failed: Could not open the file %s"
++-#else
++-#define FOPEN_FMT "<C></K>Link Failed: Could not open the file %s"
++-#endif
++-	       char *temp = (char *)malloc (80 + strlen (filename));
++-	       sprintf (temp, FOPEN_FMT, filename);
++-	       setupLine (viewer, TRUE, temp, currentLine++);
++-	       free (temp);
++-	    }
++-	    else
++-	    {
++-	       int fileLine;
++-
++-	       /* For each line read, copy it into the viewer. */
++-	       fileLen = MINIMUM (fileLen, (viewerSize - currentLine));
++-	       for (fileLine = 0; fileLine < fileLen; fileLine++)
++-	       {
++-		  if (currentLine >= viewerSize)
++-		     break;
++-		  setupLine (viewer, FALSE, fileContents[fileLine], currentLine);
++-		  viewer->characters += viewer->listLen[currentLine];
++-		  currentLine++;
++-	       }
++-	       CDKfreeStrings (fileContents);
++-	    }
++-	 }
++-	 else if (currentLine < viewerSize)
++-	 {
++-	    setupLine (viewer, viewer->interpret, list[x], currentLine);
++-	    viewer->characters += viewer->listLen[currentLine];
++-	    currentLine++;
++-	 }
++-      }
++-   }
++-
++-   /*
++-    * Determine how many characters we can shift to the right
++-    * before all the items have been viewer off the screen.
++-    */
++-   if (viewer->widestLine > viewer->boxWidth)
++-   {
++-      viewer->maxLeftChar = (viewer->widestLine - viewer->boxWidth) + 1;
++-   }
++-   else
++-   {
++-      viewer->maxLeftChar = 0;
++-   }
++-
++-   /* Set up the needed vars for the viewer list. */
++-   viewer->inProgress = FALSE;
++-   viewer->listSize = viewerSize;
++-   if (viewer->listSize <= viewer->viewSize)
++-   {
++-      viewer->maxTopLine = 0;
++-   }
++-   else
++-   {
++-      viewer->maxTopLine = viewer->listSize - 1;
++-   }
++-   return viewer->listSize;
++-}
++-chtype **getCDKViewerInfo (CDKVIEWER *viewer, int *size)
++-{
++-   (*size) = viewer->listSize;
++-   return viewer->list;
++-}
++-
++-/*
++- * This function sets the highlight type of the buttons.
++- */
++-void setCDKViewerHighlight (CDKVIEWER *viewer, chtype buttonHighlight)
++-{
++-   viewer->buttonHighlight = buttonHighlight;
++-}
++-chtype getCDKViewerHighlight (CDKVIEWER *viewer)
++-{
++-   return viewer->buttonHighlight;
++-}
++-
++-/*
++- * This sets whether or not you want to set the viewer info line.
++- */
++-void setCDKViewerInfoLine (CDKVIEWER *viewer, boolean showLineInfo)
++-{
++-   viewer->showLineInfo = showLineInfo;
++-}
++-boolean getCDKViewerInfoLine (CDKVIEWER *viewer)
++-{
++-   return viewer->showLineInfo;
++-}
++-
++-/*
++- * This sets the widgets box attribute.
++- */
++-void setCDKViewerBox (CDKVIEWER *viewer, boolean Box)
++-{
++-   ObjOf (viewer)->box = Box;
++-   ObjOf (viewer)->borderSize = Box ? 1 : 0;
++-}
++-boolean getCDKViewerBox (CDKVIEWER *viewer)
++-{
++-   return ObjOf (viewer)->box;
++-}
++-
++-/*
++- * This removes all the lines inside the scrolling window.
++- */
++-void cleanCDKViewer (CDKVIEWER *viewer)
++-{
++-   int x;
++-
++-   /* Clean up the memory used ... */
++-   for (x = 0; x < viewer->listSize; x++)
++-   {
++-      freeLine (viewer, x);
++-   }
++-
++-   /* *INDENT-EQLS* Reset some variables. */
++-   viewer->listSize    = 0;
++-   viewer->maxLeftChar = 0;
++-   viewer->widestLine  = 0;
++-   viewer->currentTop  = 0;
++-   viewer->maxTopLine  = 0;
++-
++-   /* Redraw the window. */
++-   drawCDKViewer (viewer, ObjOf (viewer)->box);
++-}
++-
++-static void PatternNotFound (CDKVIEWER *viewer, const char *pattern)
++-{
++-   if (pattern == 0)
++-   {
++-      PatternNotFound (viewer, "");
++-   }
++-   else
++-   {
++-      CDK_CSTRING tempInfo[2];
++-      char *temp = (char *)malloc (80 + strlen (pattern));
++-      tempInfo[0] = temp;
++-      tempInfo[1] = 0;
++-      sprintf (temp, "</U/5>Pattern '%s' not found.<!U!5>", pattern);
++-      popUpLabel (viewer, tempInfo);
++-      free (temp);
++-   }
++-}
++-
++-/*
++- * This function actually controls the viewer...
++- */
++-int activateCDKViewer (CDKVIEWER *widget, chtype *actions GCC_UNUSED)
++-{
++-   char *fileInfo[10];
++-   CDK_CSTRING tempInfo[2];
++-   char temp[500];
++-   boolean functionKey;
++-   int x;
++-
++-   /* Create the information about the file stats. */
++-   sprintf (temp, "</5>      </U>File Statistics<!U>     <!5>");
++-   fileInfo[0] = copyChar (temp);
++-   sprintf (temp, "</5>                          <!5>");
++-   fileInfo[1] = copyChar (temp);
++-   sprintf (temp, "</5/R>Character Count:<!R> %-4ld     <!5>", widget->characters);
++-   fileInfo[2] = copyChar (temp);
++-   sprintf (temp, "</5/R>Line Count     :<!R> %-4d     <!5>", widget->listSize);
++-   fileInfo[3] = copyChar (temp);
++-   sprintf (temp, "</5>                          <!5>");
++-   fileInfo[4] = copyChar (temp);
++-   sprintf (temp, "<C></5>Press Any Key To Continue.<!5>");
++-   fileInfo[5] = copyChar (temp);
++-   fileInfo[6] = 0;
++-
++-   tempInfo[0] = temp;
++-   tempInfo[1] = 0;
++-
++-   /* Set the current button. */
++-   widget->currentButton = 0;
++-
++-   /* Draw the widget list. */
++-   drawCDKViewer (widget, ObjOf (widget)->box);
++-
++-   /* Do this until KEY_ENTER is hit. */
++-   for (;;)
++-   {
++-      /* Reset the refresh flag. */
++-      int REFRESH = FALSE;
++-
++-      chtype input = (chtype)getchCDKObject (ObjOf (widget), &functionKey);
++-      if (!checkCDKObjectBind (vVIEWER, widget, input))
++-      {
++-	 switch (input)
++-	 {
++-	 case KEY_TAB:
++-	    if (widget->buttonCount > 1)
++-	    {
++-	       if (widget->currentButton == (widget->buttonCount - 1))
++-	       {
++-		  widget->currentButton = 0;
++-	       }
++-	       else
++-	       {
++-		  widget->currentButton++;
++-	       }
++-
++-	       /* Redraw the buttons. */
++-	       drawCDKViewerButtons (widget);
++-	    }
++-	    break;
++-
++-	 case CDK_PREV:
++-	    if (widget->buttonCount > 1)
++-	    {
++-	       if (widget->currentButton == 0)
++-	       {
++-		  widget->currentButton = widget->buttonCount - 1;
++-	       }
++-	       else
++-	       {
++-		  widget->currentButton--;
++-	       }
++-
++-	       /* Redraw the buttons. */
++-	       drawCDKViewerButtons (widget);
++-	    }
++-	    break;
++-
++-	 case KEY_UP:
++-	    if (widget->currentTop > 0)
++-	    {
++-	       widget->currentTop--;
++-	       REFRESH = TRUE;
++-	    }
++-	    else
++-	    {
++-	       Beep ();
++-	    }
++-	    break;
++-
++-	 case KEY_DOWN:
++-	    if (widget->currentTop < widget->maxTopLine)
++-	    {
++-	       widget->currentTop++;
++-	       REFRESH = TRUE;
++-	    }
++-	    else
++-	    {
++-	       Beep ();
++-	    }
++-	    break;
++-
++-	 case KEY_RIGHT:
++-	    if (widget->leftChar < widget->maxLeftChar)
++-	    {
++-	       widget->leftChar++;
++-	       REFRESH = TRUE;
++-	    }
++-	    else
++-	    {
++-	       Beep ();
++-	    }
++-	    break;
++-
++-	 case KEY_LEFT:
++-	    if (widget->leftChar > 0)
++-	    {
++-	       widget->leftChar--;
++-	       REFRESH = TRUE;
++-	    }
++-	    else
++-	    {
++-	       Beep ();
++-	    }
++-	    break;
++-
++-	 case KEY_PPAGE:
++-	    if (widget->currentTop > 0)
++-	    {
++-	       if ((widget->currentTop - (widget->viewSize - 1)) > 0)
++-	       {
++-		  widget->currentTop = (widget->currentTop
++-					- (widget->viewSize - 1));
++-	       }
++-	       else
++-	       {
++-		  widget->currentTop = 0;
++-	       }
++-	       REFRESH = TRUE;
++-	    }
++-	    else
++-	    {
++-	       Beep ();
++-	    }
++-	    break;
++-
++-	 case KEY_NPAGE:
++-	    if (widget->currentTop < widget->maxTopLine)
++-	    {
++-	       if ((widget->currentTop + widget->viewSize) < widget->maxTopLine)
++-	       {
++-		  widget->currentTop = widget->currentTop +
++-		     (widget->viewSize
++-		      - 1);
++-	       }
++-	       else
++-	       {
++-		  widget->currentTop = widget->maxTopLine;
++-	       }
++-	       REFRESH = TRUE;
++-	    }
++-	    else
++-	    {
++-	       Beep ();
++-	    }
++-	    break;
++-
++-	 case KEY_HOME:
++-	    widget->leftChar = 0;
++-	    REFRESH = TRUE;
++-	    break;
++-
++-	 case KEY_END:
++-	    widget->leftChar = widget->maxLeftChar;
++-	    REFRESH = TRUE;
++-	    break;
++-
++-	 case 'g':
++-	 case '1':
++-	 case '<':
++-	    widget->currentTop = 0;
++-	    REFRESH = TRUE;
++-	    break;
++-
++-	 case 'G':
++-	 case '>':
++-	    widget->currentTop = widget->maxTopLine;
++-	    REFRESH = TRUE;
++-	    break;
++-
++-	 case 'L':
++-	    x = (int)((widget->listSize + widget->currentTop) / 2);
++-	    if (x < widget->maxTopLine)
++-	    {
++-	       widget->currentTop = x;
++-	       REFRESH = TRUE;
++-	    }
++-	    else
++-	    {
++-	       Beep ();
++-	    }
++-	    break;
++-
++-	 case 'l':
++-	    x = (int)(widget->currentTop / 2);
++-	    if (x >= 0)
++-	    {
++-	       widget->currentTop = x;
++-	       REFRESH = TRUE;
++-	    }
++-	    else
++-	    {
++-	       Beep ();
++-	    }
++-	    break;
++-
++-	 case '?':
++-	    SearchDirection = UP;
++-	    getAndStorePattern (ScreenOf (widget));
++-	    if (!searchForWord (widget, SearchPattern, SearchDirection))
++-	    {
++-	       PatternNotFound (widget, SearchPattern);
++-	    }
++-	    REFRESH = TRUE;
++-	    break;
++-
++-	 case '/':
++-	    SearchDirection = DOWN;
++-	    getAndStorePattern (ScreenOf (widget));
++-	    if (!searchForWord (widget, SearchPattern, SearchDirection))
++-	    {
++-	       PatternNotFound (widget, SearchPattern);
++-	    }
++-	    REFRESH = TRUE;
++-	    break;
++-
++-	 case 'N':
++-	 case 'n':
++-	    if (SearchPattern == 0)
++-	    {
++-	       sprintf (temp, "</5>There is no pattern in the buffer.<!5>");
++-	       popUpLabel (widget, tempInfo);
++-	    }
++-	    else if (!searchForWord (widget,
++-				     SearchPattern,
++-				     ((input == 'n')
++-				      ? SearchDirection
++-				      : !SearchDirection)))
++-	    {
++-	       PatternNotFound (widget, SearchPattern);
++-	    }
++-	    REFRESH = TRUE;
++-	    break;
++-
++-	 case ':':
++-	    widget->currentTop = jumpToLine (widget);
++-	    REFRESH = TRUE;
++-	    break;
++-
++-	 case 'i':
++-	 case 's':
++-	 case 'S':
++-	    popUpLabel (widget, (CDK_CSTRING2)fileInfo);
++-	    REFRESH = TRUE;
++-	    break;
++-
++-	 case KEY_ESC:
++-	    freeCharList (fileInfo, 6);
++-	    setExitType (widget, input);
++-	    return -1;
++-
++-	 case KEY_ERROR:
++-	    freeCharList (fileInfo, 6);
++-	    setExitType (widget, input);
++-	    return -1;
++-
++-	 case KEY_ENTER:
++-	    freeCharList (fileInfo, 6);
++-	    setExitType (widget, input);
++-	    return widget->currentButton;
++-
++-	 case CDK_REFRESH:
++-	    eraseCDKScreen (ScreenOf (widget));
++-	    refreshCDKScreen (ScreenOf (widget));
++-	    break;
++-
++-	 default:
++-	    Beep ();
++-	    break;
++-	 }
++-      }
++-
++-      /* Do we need to redraw the screen??? */
++-      if (REFRESH)
++-      {
++-	 drawCDKViewerInfo (widget);
++-      }
++-   }
++-}
++-
++-/*
++- * This searches the document looking for the given word.
++- */
++-static void getAndStorePattern (CDKSCREEN *screen)
++-{
++-   /* *INDENT-EQLS* */
++-   CDKENTRY *getPattern = 0;
++-   const char *temp     = 0;
++-   char *list           = 0;
++-
++-   /* Check the direction. */
++-   if (SearchDirection == UP)
++-   {
++-      temp = "</5>Search Up  : <!5>";
++-   }
++-   else
++-   {
++-      temp = "</5>Search Down: <!5>";
++-   }
++-
++-   /* Pop up the entry field. */
++-   getPattern = newCDKEntry (screen, CENTER, CENTER,
++-			     0, temp,
++-			     COLOR_PAIR (5) | A_BOLD,
++-			     '.' | COLOR_PAIR (5) | A_BOLD,
++-			     vMIXED, 10, 0, 256, TRUE, FALSE);
++-
++-   /* Is there an old search pattern? */
++-   if (SearchPattern != 0)
++-   {
++-      setCDKEntry (getPattern, SearchPattern, getPattern->min,
++-		   getPattern->max, ObjOf (getPattern)->box);
++-   }
++-   freeChar (SearchPattern);
++-
++-   /* Activate this baby. */
++-   list = activateCDKEntry (getPattern, 0);
++-
++-   /* Save the list. */
++-   if ((list != 0) && (strlen (list) != 0))
++-   {
++-      SearchPattern = copyChar (list);
++-   }
++-
++-   /* Clean up. */
++-   destroyCDKEntry (getPattern);
++-}
++-
++-/*
++- * This searches for a line containing the word and realigns the value on the
++- * screen.
++- */
++-static int searchForWord (CDKVIEWER *viewer, char *pattern, int direction)
++-{
++-   int found = 0;
++-   int plen;
++-
++-   /* If the pattern is empty then return. */
++-   if (pattern != 0 && (plen = (int)strlen (pattern)) != 0)
++-   {
++-      int x, y, pos, len;
++-
++-      if (direction == DOWN)
++-      {
++-	 /* Start looking from 'here' down. */
++-	 for (x = viewer->currentTop + 1; !found && (x < viewer->listSize);
++-	      x++)
++-	 {
++-	    len = chlen (viewer->list[x]);
++-	    for (y = pos = 0; y < len; y++)
++-	    {
++-	       int plainChar = CharOf (viewer->list[x][y]);
++-
++-	       if (CharOf (pattern[pos]) != plainChar)
++-	       {
++-		  y -= pos;
++-		  pos = 0;
++-	       }
++-	       else if (++pos == plen)
++-	       {
++-		  viewer->currentTop = (x < viewer->maxTopLine ? x : viewer->maxTopLine);
++-		  viewer->leftChar = (y < viewer->boxWidth ? 0 : viewer->maxLeftChar);
++-		  found = 1;
++-		  break;
++-	       }
++-
++-	    }
++-	 }
++-      }
++-      else
++-      {
++-	 /* Start looking from 'here' up. */
++-	 for (x = viewer->currentTop - 1; !found && (x >= 0); x--)
++-	 {
++-	    len = chlen (viewer->list[x]);
++-	    for (y = pos = 0; y < len; y++)
++-	    {
++-	       int plainChar = CharOf (viewer->list[x][y]);
++-
++-	       if (CharOf (pattern[pos]) != plainChar)
++-	       {
++-		  y -= pos;
++-		  pos = 0;
++-	       }
++-	       else if (++pos == plen)
++-	       {
++-		  viewer->currentTop = x;
++-		  viewer->leftChar = (y < viewer->boxWidth ? 0 : viewer->maxLeftChar);
++-		  found = 1;
++-		  break;
++-	       }
++-
++-	    }
++-	 }
++-      }
++-   }
++-   return (found);
++-}
++-
++-/*
++- * This allows us to 'jump' to a given line in the file.
++- */
++-static int jumpToLine (CDKVIEWER *viewer)
++-{
++-   /* *INDENT-EQLS* */
++-   int line           = 0;
++-   CDKSCALE *newline  = newCDKScale (ScreenOf (viewer), CENTER, CENTER,
++-				     "<C>Jump To Line", "</5>Line :", A_BOLD,
++-				     intlen (viewer->listSize) + 1,
++-				     viewer->currentTop + 1,
++-				     0, viewer->maxTopLine + 1,
++-				     1, 10, TRUE, TRUE);
++-
++-   line = activateCDKScale (newline, 0);
++-   destroyCDKScale (newline);
++-   return ((line - 1));
++-}
++-
++-/*
++- * This pops a little message up on the screen.
++- */
++-static void popUpLabel (CDKVIEWER *viewer, CDK_CSTRING2 mesg)
++-{
++-   CDKLABEL *label;
++-   boolean functionKey;
++-
++-   /* Set up variables. */
++-   label = newCDKLabel (ScreenOf (viewer), CENTER, CENTER,
++-			(CDK_CSTRING2)mesg,
++-			(int)CDKcountStrings (mesg),
++-			TRUE, FALSE);
++-
++-   /* Draw the label and wait. */
++-   drawCDKLabel (label, TRUE);
++-   getchCDKObject (ObjOf (label), &functionKey);
++-
++-   /* Clean up. */
++-   destroyCDKLabel (label);
++-}
++-
++-/*
++- * This moves the viewer field to the given location.
++- */
++-static void _moveCDKViewer (CDKOBJS *object, int xplace, int yplace, boolean
++-			    relative, boolean refresh_flag)
++-{
++-   /* *INDENT-EQLS* */
++-   CDKVIEWER *viewer = (CDKVIEWER *)object;
++-   int currentX      = getbegx (viewer->win);
++-   int currentY      = getbegy (viewer->win);
++-   int xpos          = xplace;
++-   int ypos          = yplace;
++-   int xdiff         = 0;
++-   int ydiff         = 0;
++-
++-   /*
++-    * If this is a relative move, then we will adjust where we want
++-    * to move to.
++-    */
++-   if (relative)
++-   {
++-      xpos = getbegx (viewer->win) + xplace;
++-      ypos = getbegy (viewer->win) + yplace;
++-   }
++-
++-   /* Adjust the window if we need to. */
++-   alignxy (WindowOf (viewer), &xpos, &ypos, viewer->boxWidth, viewer->boxHeight);
++-
++-   /* Get the difference. */
++-   xdiff = currentX - xpos;
++-   ydiff = currentY - ypos;
++-
++-   /* Move the window to the new location. */
++-   moveCursesWindow (viewer->win, -xdiff, -ydiff);
++-   moveCursesWindow (viewer->shadowWin, -xdiff, -ydiff);
++-
++-   /* Touch the windows so they 'move'. */
++-   refreshCDKWindow (WindowOf (viewer));
++-
++-   /* Redraw the window, if they asked for it. */
++-   if (refresh_flag)
++-   {
++-      drawCDKViewer (viewer, ObjOf (viewer)->box);
++-   }
++-}
++-
++-/*
++- * This function draws the viewer widget.
++- */
++-static void _drawCDKViewer (CDKOBJS *object, boolean Box)
++-{
++-   CDKVIEWER *viewer = (CDKVIEWER *)object;
++-
++-   /* Do we need to draw in the shadow??? */
++-   if (viewer->shadowWin != 0)
++-   {
++-      drawShadow (viewer->shadowWin);
++-   }
++-
++-   /* Box it if it was asked for. */
++-   if (Box)
++-   {
++-      drawObjBox (viewer->win, ObjOf (viewer));
++-      wrefresh (viewer->win);
++-   }
++-
++-   /* Draw the info in the viewer. */
++-   drawCDKViewerInfo (viewer);
++-}
++-
++-/*
++- * This redraws the viewer buttons.
++- */
++-static void drawCDKViewerButtons (CDKVIEWER *viewer)
++-{
++-   int x;
++-
++-   /* No buttons, no drawing. */
++-   if (viewer->buttonCount == 0)
++-   {
++-      return;
++-   }
++-
++-   /* Redraw the buttons. */
++-   for (x = 0; x < viewer->buttonCount; x++)
++-   {
++-      writeChtype (viewer->win,
++-		   viewer->buttonPos[x],
++-		   viewer->boxHeight - 2,
++-		   viewer->button[x],
++-		   HORIZONTAL,
++-		   0,
++-		   viewer->buttonLen[x]);
++-   }
++-
++-   /* Highlight the current button. */
++-   for (x = 0; x < viewer->buttonLen[viewer->currentButton]; x++)
++-   {
++-      /* Strip the character of any extra attributes. */
++-      chtype character = CharOf (viewer->button[viewer->currentButton][x]);
++-
++-      /* Add the character into the window. */
++-      (void)mvwaddch (viewer->win,
++-		      viewer->boxHeight - 2,
++-		      viewer->buttonPos[viewer->currentButton] + x,
++-		      character | viewer->buttonHighlight);
++-   }
++-
++-   /* Refresh the window. */
++-   wrefresh (viewer->win);
++-}
++-
++-/*
++- * This sets the background attribute of the widget.
++- */
++-static void _setBKattrViewer (CDKOBJS *object, chtype attrib)
++-{
++-   if (object != 0)
++-   {
++-      CDKVIEWER *widget = (CDKVIEWER *)object;
++-
++-      wbkgd (widget->win, attrib);
++-   }
++-}
++-
++-/*
++- * Free any storage associated with the info-list.
++- */
++-static void destroyInfo (CDKVIEWER *viewer)
++-{
++-   CDKfreeChtypes (viewer->list);
++-   freeChecked (viewer->listPos);
++-   freeChecked (viewer->listLen);
++-
++-   viewer->list = 0;
++-   viewer->listPos = 0;
++-   viewer->listLen = 0;
++-}
++-
++-/*
++- * This function destroys the viewer widget.
++- */
++-static void _destroyCDKViewer (CDKOBJS *object)
++-{
++-   if (object != 0)
++-   {
++-      CDKVIEWER *viewer = (CDKVIEWER *)object;
++-
++-      destroyInfo (viewer);
++-
++-      cleanCdkTitle (object);
++-      CDKfreeChtypes (viewer->button);
++-      freeChecked (viewer->buttonLen);
++-      freeChecked (viewer->buttonPos);
++-
++-      /* Clean up the windows. */
++-      deleteCursesWindow (viewer->shadowWin);
++-      deleteCursesWindow (viewer->win);
++-
++-      /* Clean the key bindings. */
++-      cleanCDKObjectBindings (vVIEWER, viewer);
++-
++-      /* Unregister this object. */
++-      unregisterCDKObject (vVIEWER, viewer);
++-   }
++-}
++-
++-/*
++- * This function erases the viewer widget from the screen.
++- */
++-static void _eraseCDKViewer (CDKOBJS *object)
++-{
++-   if (validCDKObject (object))
++-   {
++-      CDKVIEWER *viewer = (CDKVIEWER *)object;
++-
++-      eraseCursesWindow (viewer->win);
++-      eraseCursesWindow (viewer->shadowWin);
++-   }
++-}
++-
++-/*
++- * This draws the viewer info lines.
++- */
++-static void drawCDKViewerInfo (CDKVIEWER *viewer)
++-{
++-   int listAdjust = 0;
++-   int lastLine = 0;
++-   int x;
++-
++-   /* Clear the window. */
++-   werase (viewer->win);
++-
++-   drawCdkTitle (viewer->win, ObjOf (viewer));
++-
++-   /* Draw in the current line at the top. */
++-   if (viewer->showLineInfo == TRUE)
++-   {
++-      char temp[256];
++-
++-      /* Set up the info line and draw it. */
++-      if (viewer->inProgress)
++-      {
++-	 strcpy (temp, "processing...");
++-      }
++-      else if (viewer->listSize != 0)
++-      {
++-	 sprintf (temp, "%d/%d %2.0f%%",
++-		  (viewer->currentTop + 1),
++-		  viewer->listSize,
++-		  ((float)(viewer->currentTop + 1)
++-		   / (float)viewer->listSize) * 100);
++-      }
++-      else
++-      {
++-	 sprintf (temp, "%d/%d %2.0f%%", 0, 0, 0.0);
++-      }
++-
++-      /*
++-       * The listAdjust variable tells us if we have to shift down one line
++-       * because the person asked for the line X of Y line at the top of the
++-       * screen.  We only want to set this to 1 if they asked for the info line
++-       * and there is no title, or if the two items overlap.
++-       */
++-      if (TitleLinesOf (viewer) == 0
++-	  || TitlePosOf (viewer)[0] < ((int)strlen (temp) + 2))
++-      {
++-	 listAdjust = 1;
++-      }
++-      writeChar (viewer->win, 1, (listAdjust ? TitleLinesOf (viewer) : 0) + 1,
++-		 temp, HORIZONTAL, 0, (int)strlen (temp));
++-   }
++-
++-   /* Determine the last line to draw. */
++-   lastLine = ((viewer->listSize <= viewer->viewSize)
++-	       ? viewer->listSize
++-	       : viewer->viewSize);
++-   lastLine -= listAdjust;
++-
++-   /* Redraw the list. */
++-   for (x = 0; x < lastLine; x++)
++-   {
++-      if (viewer->currentTop + x < viewer->listSize)
++-      {
++-	 int screenPos = viewer->listPos[viewer->currentTop + x] + 1 - viewer->leftChar;
++-
++-	 writeChtype (viewer->win,
++-		      ((screenPos >= 0)
++-		       ? screenPos
++-		       : 1),
++-		      x + TitleLinesOf (viewer) + listAdjust + 1,
++-		      viewer->list[x + viewer->currentTop],
++-		      HORIZONTAL,
++-		      ((screenPos >= 0)
++-		       ? 0
++-		       : (viewer->leftChar
++-			  - viewer->listPos[viewer->currentTop + x])),
++-		      viewer->listLen[x + viewer->currentTop]);
++-      }
++-   }
++-
++-   /* Box it if we have to. */
++-   if (ObjOf (viewer)->box)
++-   {
++-      drawObjBox (viewer->win, ObjOf (viewer));
++-      wrefresh (viewer->win);
++-   }
++-
++-   /* Draw the separation line. */
++-   if (viewer->buttonCount > 0)
++-   {
++-      chtype boxattr = BXAttrOf (viewer);
++-
++-      for (x = 1; x <= viewer->boxWidth; x++)
++-      {
++-	 (void)mvwaddch (viewer->win, viewer->boxHeight - 3, x,
++-			 HZCharOf (viewer) | boxattr);
++-      }
++-      (void)mvwaddch (viewer->win, viewer->boxHeight - 3, 0,
++-		      ACS_LTEE | boxattr);
++-      (void)mvwaddch (viewer->win, viewer->boxHeight - 3,
++-		      getmaxx (viewer->win) - 1,
++-		      ACS_RTEE | boxattr);
++-   }
++-
++-   /* Draw the buttons. This will call refresh on the viewer win. */
++-   drawCDKViewerButtons (viewer);
++-}
++-
++-/*
++- * The listSize may be negative, to assign no definite limit.
++- */
++-static int createList (CDKVIEWER *swindow, int listSize)
++-{
++-   int status = 0;
++-
++-   if (listSize >= 0)
++-   {
++-      chtype **newList = typeCallocN (chtype *, listSize + 1);
++-      int *newPos = typeCallocN (int, listSize + 1);
++-      int *newLen = typeCallocN (int, listSize + 1);
++-
++-      if (newList != 0
++-	  && newPos != 0
++-	  && newLen != 0)
++-      {
++-	 status = 1;
++-	 destroyInfo (swindow);
++-
++-	 swindow->list = newList;
++-	 swindow->listPos = newPos;
++-	 swindow->listLen = newLen;
++-      }
++-      if (!status)
++-      {
++-	 CDKfreeChtypes (newList);
++-	 freeChecked (newPos);
++-	 freeChecked (newLen);
++-      }
++-   }
++-   else
++-   {
++-      destroyInfo (swindow);
++-   }
++-   return status;
++-}
++-
++-dummyInject (Viewer)
++-
++-dummyFocus (Viewer)
++-
++-dummyUnfocus (Viewer)
++-
++-dummyRefreshData (Viewer)
++-
++-dummySaveData (Viewer)
++-- 
++2.46.0
++
