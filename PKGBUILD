@@ -18,9 +18,9 @@ pkgver=3.9.3
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska'
-license=('GPL')
-depends=('libqtutilities.so' 'libtagparser.so' 'libc++utilities.so' 'desktop-file-utils')
-[[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('qt5-base' )
+license=(GPL-2-or-later)
+depends=('qtutilities' 'tagparser' 'c++utilities' 'desktop-file-utils')
+[[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('qt5-base')
 [[ $_webview_provider == webkit ]] && depends+=('qt5-webkit')
 [[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
 [[ $_js_provider == script ]] && depends+=('qt5-script')
@@ -63,6 +63,8 @@ check() {
 }
 
 package() {
+  depends+=('libqtutilities.so' 'libtagparser.so' 'libc++utilities.so')
+
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   DESTDIR="${pkgdir}" ninja install
 }
