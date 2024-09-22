@@ -2,7 +2,7 @@
 pkgname=('restream')
 _pkgname='reStream'
 pkgdesc="Shell script for sharing the reMarkable's screen over SSH."
-pkgver=1.2.0
+pkgver=1.3.1
 pkgrel=1
 url="https://github.com/rien/restream"
 arch=('any')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('openssh' 'ffmpeg')
 makedepends=('git')
 optdepends=('lz4: sub-second latency streaming (see README)' 'v4l2loopback-dkms: stream reMarkable as a webcam')
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('4166142b15e1e7363dac302aa92aad5b44e0514cab233abecb51414952c1d5a1')
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('caa65066f6b5c28aa74834dc4762920e472368ed93cdc4057af90804a1371f6b')
 conflicts=('restream-git')
 
 package() {
