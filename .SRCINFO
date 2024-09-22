@@ -1,0 +1,13 @@
+pkgbase = lingmo-systemicons
+	pkgdesc = Default icon theme for Lingmo.
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://lingmo.org
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	conflicts = cutefish-icons
+	source = https://github.com/LingmoOS/lingmo-systemicons/archive/refs/tags/2.0.4.tar.gz
+	sha256sums = a54094c292b318530cd6ce846e02d22592b4a575ef0d5c72522a94df3e7be24c
+
+pkgname = lingmo-systemicons
