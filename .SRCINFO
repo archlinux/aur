@@ -1,0 +1,16 @@
+pkgbase = wlinhibit
+	pkgdesc = Simple, stupid idle inhibitor for wayland.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/0x5a4/wlinhibit
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = wayland-protocols
+	depends = wayland
+	provides = wlinhibit
+	conflicts = wlinhibit
+	source = https://github.com/0x5a4/wlinhibit/archive/v0.1.1/wlinhibit-0.1.1.tar.gz
+	sha512sums = 99f042481d86d534d5f9d40d91a223e8a3dad173120ea96d1c120409600fde97455b7cf25e8f938356f1d17c125d68a210d380e454d2e33fe8aff99d61c676af
+
+pkgname = wlinhibit
