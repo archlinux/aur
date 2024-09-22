@@ -3,7 +3,7 @@
 pkgname=thqm
 pkgdesc='A simple HTTP server to serve a dynamic menu web page.'
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/loiccoyle/thqm-rs'
 license=('MIT')
@@ -25,4 +25,7 @@ package() {
     install -Dm644 "completions/$pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
     install -Dm644 "completions/$pkgname.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
     install -Dm644 "completions/_$pkgname" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+    # styles folder
+    install -d "$pkgdir/usr/share/$pkgname/"
+    cp -r "styles/." "$pkgdir/usr/share/$pkgname"
 }
