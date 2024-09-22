@@ -3,7 +3,7 @@
 _pkgname=koboldcpp
 _cudaversion=1210
 pkgname=koboldcpp-cuda-bin
-pkgver=1.75.1
+pkgver=1.75.2
 pkgrel=1
 pkgdesc="A simple one-file way to run various GGML and GGUF models with KoboldAI's UI, CUDA version. (Requires AVX2 support)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   "koboldcpp.png"
 )
 sha256sums=(
-  '314e42243c74b861531839682c22b964a33968b8d0077f0e3f8cea840cf234ad'
+  'eea28bf007a61d8f6f8624cf783f7e58f0dd6e514e6b29fb7c8385882ecdb8e3'
   'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
   'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
