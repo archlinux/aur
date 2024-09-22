@@ -47,7 +47,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         0001-ozone-wayland-implement-text_input_manager-fixes.patch
         0001-vaapi-flag-ozone-wayland.patch
         p010-Zero-Copy-for-VA-API-Decoding-for-Vulkan.patch
-        add-feature-to-allow-zero-copy-video-formats.patch)
+        add-feature-to-allow-zero-copy-video-formats.patch
+        fix-ungoogled-third-party-re2.patch)
 sha256sums=('eaf850183d32627ce0cde9f3d3f853bc11c217ef7f41540303214ed47803d96d'
             'a52872325dcf1121acbabec781edfabe068a50a9080e81e69b249dd6301f2eac'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
@@ -60,7 +61,8 @@ sha256sums=('eaf850183d32627ce0cde9f3d3f853bc11c217ef7f41540303214ed47803d96d'
             'a2da75d0c20529f2d635050e0662941c0820264ea9371eb900b9d90b5968fa6a'
             '9a5594293616e1390462af1f50276ee29fd6075ffab0e3f944f6346cb2eb8aec'
             '40db59162df2b7a2c0387bd620802f15424f637c09ba305b674fc09410ab21d1'
-            '713dab4f8c26790c0e4a4c5ce6a9269e90446df5370cc14214a01a363f7afe39')
+            '713dab4f8c26790c0e4a4c5ce6a9269e90446df5370cc14214a01a363f7afe39'
+            'ffa3cf9d1386bd1a2c400c09ddf2790f125f44ccf108d1a3c62a21cd7fb1ff09')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -122,6 +124,8 @@ prepare() {
 
   # Increase _FORTIFY_SOURCE level to match Arch's default flags
   patch -Np1 -i ../increase-fortify-level.patch
+
+  patch -Np1 -i ../fix-ungoogled-third-party-re2.patch
 
   # Fixes for building with libstdc++ instead of libc++
 
