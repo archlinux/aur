@@ -8,7 +8,7 @@
 # Contributor: zerathidune <zerathidune @ gmail . com>
 
 pkgname=bluej
-pkgver=5.4.0
+pkgver=5.4.1
 pkgrel=1
 pkgdesc="A free Java Development Environment designed for beginners, used by millions worlwide."
 arch=('x86_64')
@@ -20,11 +20,10 @@ source=("https://www.${pkgname}.org/download/files/BlueJ-linux-x64-${pkgver//.}.
         "${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}.xml")
-sha256sums=('f59dd4ff54dd072c304432a078f542e32f0e56c838ae51aa481d15dee5af0b54'
+sha256sums=('629166fc226b65ffad7e506a9ef75ad3ea299c8fab163173546eefec9ff41898'
             '581dacfc36ea72aae5887f8444940e3502c57371f3430d586f5f0848cb47e872'
             'a845f3997ce91cfb1eeb882f4a6e1e4408b7a7d7c2e164495b5a077bdf353e7f'
             'e05453bd791b34ab6cfd6b67250dd18210f47505344b7980ad28bf922c014772')
-
 prepare() {
   cd "${srcdir}"
   echo "Extracting archive ..."
