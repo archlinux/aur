@@ -1,5 +1,5 @@
 # Maintainer: James Bulmer <me@nekinie.com>
-# Maintainer: Henry Jenkins <archlinux.org@henryjenkins.com>
+# Maintainer: Henry Jenkins <archlinux.org@henryjenkins.name>
 
 pkgname=please-bin
 pkgver=17.3.1
