@@ -2,12 +2,11 @@
 
 pkgname=morewaita-git
 _reponame=MoreWaita
-pkgver=45.r88.gcc79d82
-pkgrel=1
-epoch=1
+pkgver=45.r68.g0f4ed19
+pkgrel=2
 pkgdesc='A companion icon theme for Adwaita'
 arch=(any)
-url="https://github.com/MoreWaita-Dev/$_reponame"
+url="https://github.com/somepaulo/$_reponame"
 license=(GPL3)
 depends=(adwaita-icon-theme)
 makedepends=(git)

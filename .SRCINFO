@@ -1,16 +1,15 @@
 pkgbase = morewaita-git
 	pkgdesc = A companion icon theme for Adwaita
-	pkgver = 45.r88.gcc79d82
-	pkgrel = 1
-	epoch = 1
-	url = https://github.com/MoreWaita-Dev/MoreWaita
+	pkgver = 45.r68.g0f4ed19
+	pkgrel = 2
+	url = https://github.com/somepaulo/MoreWaita
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = adwaita-icon-theme
 	provides = morewaita
 	conflicts = morewaita
-	source = git+https://github.com/MoreWaita-Dev/MoreWaita
+	source = git+https://github.com/somepaulo/MoreWaita
 	md5sums = SKIP
 
 pkgname = morewaita-git
