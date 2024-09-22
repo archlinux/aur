@@ -1,0 +1,13 @@
+pkgbase = dbibackend
+	pkgdesc = A convenient method for installing games on your Nintendo Switch over USB
+	pkgver = 658
+	pkgrel = 1
+	url = https://github.com/rashevskyv/dbi
+	arch = any
+	depends = libusb
+	depends = python-pyusb
+	depends = tk
+	source = https://github.com/rashevskyv/dbi/releases/download/658/dbibackend.tar.xz
+	sha256sums = 13b3ddb34a0f9ad7f3c1d65279d07c03b816f041bdcfcd200406fa60a1e23aee
+
+pkgname = dbibackend
