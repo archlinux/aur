@@ -1,20 +1,20 @@
 # Maintainer: cyber-luna <cyber-luna@tuta.io>
 
 pkgname='lunas'
-pkgver=1.6.6
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="A syncing cli tool that can handle more than two directories locally and remotely"
 arch=('any')
-url="https://codeberg.org/cyber-luna/lunas"
+url="https://github.com/nodeluna/lunas"
 license=('GPL3')
 depends=('libssh')
 makedepends=('git' 'gcc' 'make')
-source=("git+https://codeberg.org/cyber-luna/lunas")
+source=("git+https://github.com/nodeluna/lunas")
 sha256sums=('SKIP')
 
 build(){
 	cd "$srcdir/$pkgname"
-	make
+	make -j4
 }
 
 package(){
