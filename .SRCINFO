@@ -1,0 +1,16 @@
+pkgbase = lingmo-launcher
+	pkgdesc = Application launcher for Lingmo.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://lingmo.org
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	depends = kwindowsystem5
+	depends = qt5-base
+	depends = qt5-quickcontrols2
+	depends = qt5-tools
+	source = https://github.com/LingmoOS/lingmo-launcher/archive/refs/tags/2.0.0.tar.gz
+	sha256sums = eaa7cb7eb031a0f29930cb19f4251d2291a973327af9bddbbf5ff36739bc999f
+
+pkgname = lingmo-launcher
