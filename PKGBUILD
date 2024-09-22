@@ -1,6 +1,6 @@
 # Maintainer: Jisu-Woniu <jswn@jswn9945.xyz>
 pkgname=typstyle
-pkgver=0.11.32
+pkgver=0.11.34
 pkgrel=1
 pkgdesc="Beautiful and reliable typst code formatter"
 arch=("aarch64" "armv7h" "x86_64")
@@ -10,7 +10,7 @@ depends=("gcc-libs" "glibc")
 makedepends=("cargo")
 optdepends=("typst: For typst compilation")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7e17020c3de841e61ffaa43686a309e8bd2b0c105a303ee4ff1084f6a39b4074')
+sha256sums=('ce0646d161ee87abbc35ef97e83856310e54a12438a6234b152e281b1cec0af8')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -22,9 +22,18 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --no-default-features --features=cli
+    cargo build --frozen --release --no-default-features --features=cli,completion
+
+    mkdir -p "completions"
+    for shell in bash zsh fish; do
+        "target/release/$pkgname" completions $shell >"completions/$pkgname-completion.$shell"
+    done
 }
 
 package() {
     install -Dm755 "$pkgname-$pkgver/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+
+    install -Dm644 "$pkgname-$pkgver/completions/$pkgname-completion.bash" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+    install -Dm644 "$pkgname-$pkgver/completions/$pkgname-completion.zsh" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+    install -Dm644 "$pkgname-$pkgver/completions/$pkgname-completion.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
 }
