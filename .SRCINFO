@@ -1,7 +1,7 @@
 pkgbase = authenticator
 	pkgdesc = 2FA code generator for GNOME
-	pkgver = 4.4.0
-	pkgrel = 2
+	pkgver = 4.5.0
+	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Authenticator
 	arch = any
 	license = GPL3
@@ -17,7 +17,7 @@ pkgbase = authenticator
 	depends = pipewire
 	depends = zbar
 	options = !lto
-	source = https://gitlab.gnome.org/World/Authenticator/-/archive/4.4.0/Authenticator-4.4.0.tar.gz
-	sha256sums = d1349ddc195ca173b64780d153864e3f8613986e6c0504d613c9331e83efab5d
+	source = https://gitlab.gnome.org/World/Authenticator/-/archive/4.5.0/Authenticator-4.5.0.tar.gz
+	sha256sums = 195d61084f41a90b3ef5dfa433309a5b86beef76ea6cd36e3329b72181eb23a1
 
 pkgname = authenticator
