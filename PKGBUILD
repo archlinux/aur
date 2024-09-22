@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ente-auth
 pkgdesc="Open source 2FA authenticator, with end-to-end encrypted backups"
-pkgver=3.1.3
+pkgver=4.0.0
 pkgrel=1
-_flutter_ver=3.24.0
+_flutter_ver=3.24.3
 arch=('x86_64' 'aarch64')
 url="https://ente.io/auth"
 license=('AGPL-3.0-or-later')
@@ -27,12 +27,10 @@ source=("git+https://github.com/ente-io/ente.git#tag=auth-v$pkgver"
         'git+https://github.com/ente-io/sentry-dart.git'
         'git+https://github.com/flutter/flutter.git'
         'git+https://github.com/simple-icons/simple-icons.git'
-        'git+https://github.com/ente-io/clip-ggml.git'
         'git+https://github.com/abhinavkgrd/ffmpeg.wasm.git'
         'git+https://github.com/ente-io/PhotoSwipe.git'
         'ente_auth.desktop')
-sha256sums=('22c2cbbe43c1941051e3e688a1bf0ed5ac0d2acecd57524bd8e366ecdf3f199c'
-            'SKIP'
+sha256sums=('f1b7de4eca196107715e21e433d381d811a12cfa5106354ec8c9fb1282dd5f45'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -46,7 +44,6 @@ prepare() {
   git config submodule.thirdparty/sentry-dart.url "$srcdir/sentry-dart"
   git config submodule.flutter.url "$srcdir/flutter"
   git config submodule.assets/simple-icons.url "$srcdir/simple-icons"
-  git config submodule.mobile/plugins/clip_ggml.url "$srcdir/clip-ggml"
   git config submodule.web/apps/photos/thirdparty/ffmpeg-wasm.url "$srcdir/ffmpeg.wasm"
   git config submodule.web/apps/photos/thirdparty/photoswipe.url "$srcdir/PhotoSwipe"
   git -c protocol.file.allow=always submodule update
