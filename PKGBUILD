@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-compat-55
 pkgver=2.3.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Compatibility package for ffmpeg to provide versions 55 of libavcodec, libavdevice and libavformat, not anymore provided by the ffmpeg package"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
@@ -14,14 +14,19 @@ depends=('gsm' 'lame' 'opencore-amr' 'openjpeg' 'opus' 'rtmpdump' 'libvpx'
          'libavutil-52')
 makedepends=('yasm' 'libass')
 provides=('libavcodec.so' 'libavdevice.so' 'libavformat.so')
-source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2"
-        "libvpx_VP8E_UPD_ENTROPY.patch"::"https://git.videolan.org/?p=ffmpeg.git;a=commitdiff_plain;h=6540fe04a3f9a11ba7084a49b3ee5fa2fc5b32ab")
+source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2"{,.asc}
+        "libvpx_VP8E_UPD_ENTROPY.patch"::"https://git.videolan.org/?p=ffmpeg.git;a=commitdiff_plain;h=6540fe04a3f9a11ba7084a49b3ee5fa2fc5b32ab"
+        "mathops_shift.patch"::"https://github.com/FFmpeg/FFmpeg/commit/effadce6c756247ea8bae32dc13bb3e6f464f0eb.patch")
+validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
 sha256sums=('cf1be1c5c3973b8db16b6b6e8e63a042d414fb5d47d3801a196cbba21a0a624a'
-            '1e4a01ed62db525607f9d0c708ef7889474222f9ae31aac057c5bb67edf7e38f')
+            'SKIP'
+            '1e4a01ed62db525607f9d0c708ef7889474222f9ae31aac057c5bb67edf7e38f'
+            '8fad5f253bcda7a17523dbfcbfcfd60b3db23783dcdb65998005cddc7c7776c3')
 
 prepare() {
   cd "ffmpeg-${pkgver}"
   patch -p1 -i "../libvpx_VP8E_UPD_ENTROPY.patch"
+  patch -p1 -i "../mathops_shift.patch"
 }
 
 build() {
