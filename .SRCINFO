@@ -1,7 +1,7 @@
 pkgbase = inferno
 	pkgdesc = A Rust port of FlameGraph
 	pkgver = 0.11.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jonhoo/inferno
 	arch = x86_64
 	license = CDDL
