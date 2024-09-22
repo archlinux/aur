@@ -1,16 +1,16 @@
 # Maintainer: Cedric Roijakkers <cedric [the at sign goes here] roijakkers [the dot sign goes here] be>.
 # Inspired from the PKGBUILD for ferdi-git.
 
-_electron='electron30'
-_recipes_commit='e6d921aead128b51ef5f0eaa74e7b29038fe537a'
+_electron='electron31'
+_recipes_commit='e419e881b386c2fdc3faec145d8b6499b80fdf02'
 
 pkgname="ferdium-electron"
-pkgver=6.7.6
+pkgver=6.7.7
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release) - System-wide Electron edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
-license=('Apache')
+license=('Apache-2.0')
 depends=("$_electron")
 makedepends=('git' 'python' 'jq' 'asar' 'nodejs')
 provides=('ferdium')
@@ -18,8 +18,8 @@ conflicts=('ferdium')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ferdium/ferdium-app/archive/v$pkgver.tar.gz"
         "ferdium-recipes-$pkgver.tar.gz::https://github.com/ferdium/ferdium-recipes/archive/$_recipes_commit.tar.gz"
         ferdium.desktop)
-sha256sums=('79e6662ada7c656f5ad28bfbe8744743ada65de46fccd0b9f406f3fb2fff3a37'
-            '45db3b6c70679741de04c42f633ef11aec0f474b891235eb5b39c34db88828bf'
+sha256sums=('4153ebbd80937d668135c48f2b33dc461fcece3c5e6aa52a99224e64c030f3fe'
+            '73116398dda880ce78fc3f6c7ce48a8b6150aca3aee843fec4c08e4ef14534b5'
             'd6e129220ed947cb5fa205211dabc6311a3d9c92434b6bc8deb2fae802c0b0d0')
 
 prepare() {
