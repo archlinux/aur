@@ -1,16 +1,16 @@
 pkgbase = today-journal
-	pkgdesc = POSIX shell script for keeping a daily journal.
-	pkgver = 6.2.0
+	pkgdesc = POSIX shell script for keeping a daily journal
+	pkgver = 6.2.1
 	pkgrel = 1
 	url = https://sr.ht/~sotirisp/today/
 	arch = any
-	license = GPL3
-	license = custom:CC0-1.0
+	license = GPL-3.0-or-later AND CC0-1.0
 	makedepends = make
 	makedepends = scdoc
+	depends = sh
 	depends = grep
 	provides = today
-	source = today-journal-v6.2.0.tar.gz::https://git.sr.ht/~sotirisp/today/archive/v6.2.0.tar.gz
-	sha256sums = d588907773208ea2ce351e307b54e51a74932f330cc97cb0465d6c49491183df
+	source = today-journal-v6.2.1.tar.gz::https://git.sr.ht/~sotirisp/today/archive/v6.2.1.tar.gz
+	sha256sums = 168d814c636cb6e3521162d5ebaaa8dd51ff538e08d0ba345417d9194f727942
 
 pkgname = today-journal
