@@ -4,7 +4,7 @@ pkgbase = mingw-w64-videodownloader
 	pkgrel = 1
 	url = https://github.com/Martchus/videodownloader
 	arch = any
-	license = GPL
+	license = GPL-2-or-later
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-cmake
 	makedepends = mingw-w64-qt5-tools
@@ -25,4 +25,3 @@ pkgbase = mingw-w64-videodownloader
 	sha256sums = 59adbb242250235d0e580fbb858c3eb30c724f5463defc49330015e2233927ed
 
 pkgname = mingw-w64-videodownloader
-
