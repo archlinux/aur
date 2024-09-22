@@ -6,24 +6,4 @@ set -eu
 mkdir -p "${_xdg_data}/ClassiCube"
 cd "${_xdg_data}/ClassiCube"
 
-# TODO: Remove this once mc:// parsing gets added in the client
-if [ "$#" -eq 1 ]; then
-  case "$1" in
-    'mc://'*)
-      IFS='/' read -ra _args <<< "$1"
-
-      if [ "${#_args[@]}" -eq 5 ]; then
-        for i in {2..4}; do [ -z "${_args[$i]}" ] && exit 1; done
-
-        IFS=':' read -ra _args2 <<< "${_args[2]}"
-        echo "Username: ${_args[3]}, password: ${_args[4]}, address: ${_args2[0]}, port: ${_args2[1]}"
-        exec ClassiCube "${_args[3]}" "${_args[4]}" "${_args2[0]}" "${_args2[1]}"
-      fi
-      ;;
-    *)
-      exec ClassiCube "$@"
-      ;;
-  esac 
-else
-  exec ClassiCube "$@"
-fi
+exec ClassiCube "$@"

@@ -1,24 +1,17 @@
-diff -ur ClassiCube-1.3.6.orig/src/Window_SDL.c ClassiCube-1.3.6/src/Window_SDL.c
---- ClassiCube-1.3.6.orig/src/Window_SDL.c	2023-08-29 01:52:14.000000000 +0300
-+++ ClassiCube-1.3.6/src/Window_SDL.c	2024-06-25 18:46:52.547983162 +0300
-@@ -6,6 +6,7 @@
+--- ClassiCube-1.3.7.orig/src/Window_SDL2.c	2024-09-21 02:44:10.000000000 +0300
++++ ClassiCube-1.3.7/src/Window_SDL2.c	2024-09-21 12:51:04.849585840 +0300
+@@ -7,6 +7,7 @@
  #include "Funcs.h"
  #include "Bitmap.h"
  #include "Errors.h"
 +#include "Utils.h"
  #include <SDL2/SDL.h>
- static SDL_Window* win_handle;
  
-@@ -276,15 +277,95 @@
+ static SDL_Window* win_handle;
+@@ -347,6 +348,36 @@
+ 	SDL_ShowSimpleMessageBox(0, title, msg, win_handle);
  }
  
- static void ShowDialogCore(const char* title, const char* msg) {
--	SDL_ShowSimpleMessageBox(0, title, msg, win_handle);
-+	int frog = SDL_ShowSimpleMessageBox(0, title, msg, win_handle);
-+	if (frog < 0)
-+		printf("Failed to show dialog: %s\n", SDL_GetError());
-+}
-+
 +#ifdef CC_BUILD_LINUX
 +static cc_result OpenSaveFileDialog(const char* args, FileDialogCallback callback, const char* defaultExt) {
 +	cc_string path; char pathBuffer[1024];
@@ -46,11 +39,17 @@ diff -ur ClassiCube-1.3.6.orig/src/Window_SDL.c ClassiCube-1.3.6/src/Window_SDL.
 +	}
 +	callback(&path);
 +	return 0;
- }
++}
 +#endif
- 
++
  cc_result Window_OpenFileDialog(const struct OpenFileDialogArgs* args) {
-+#ifdef CC_BUILD_LINUX
+ #if defined CC_BUILD_OS2
+ 	FILEDLG fileDialog;
+@@ -367,6 +398,29 @@
+ 	}
+ 	
+ 	return 0;
++#elif defined CC_BUILD_LINUX
 +	const char* const* filters = args->filters;
 +	cc_string path; char pathBuffer[1024];
 +	int i;
@@ -73,13 +72,14 @@ diff -ur ClassiCube-1.3.6.orig/src/Window_SDL.c ClassiCube-1.3.6/src/Window_SDL.
 +
 +	path.buffer[path.length] = '\0';
 +	return OpenSaveFileDialog(path.buffer, args->Callback, NULL);
-+#else
+ #else
  	return ERR_NOT_SUPPORTED;
-+#endif
- }
- 
- cc_result Window_SaveFileDialog(const struct SaveFileDialogArgs* args) {
-+#ifdef CC_BUILD_LINUX
+ #endif
+@@ -392,6 +446,27 @@
+ 	}
+ 	
+ 	return 0;
++#elif defined CC_BUILD_LINUX
 +	const char* const* titles   = args->titles;
 +	const char* const* fileExts = args->filters;
 +	cc_string path; char pathBuffer[1024];
@@ -100,9 +100,6 @@ diff -ur ClassiCube-1.3.6.orig/src/Window_SDL.c ClassiCube-1.3.6/src/Window_SDL.
 +
 +	path.buffer[path.length] = '\0';
 +	return OpenSaveFileDialog(path.buffer, args->Callback, fileExts[0]);
-+#else
+ #else
  	return ERR_NOT_SUPPORTED;
-+#endif
- }
- 
- static SDL_Surface* win_surface;
+ #endif

@@ -1,0 +1,3 @@
+[classicube]
+source = "git"
+git = "https://github.com/ClassiCube/ClassiCube.git"

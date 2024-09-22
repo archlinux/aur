@@ -6,7 +6,7 @@
 
 _pkgname=ClassiCube
 pkgname=classicube
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="A custom Minecraft Classic compatible client written in C from scratch"
 arch=('x86_64')
@@ -18,27 +18,23 @@ depends=('bash' 'curl' 'libglvnd' 'openal' 'sdl2')
 optdepends=('zenity: Dialog box support')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz"
         sdl2-dialog.patch
-        ClassiCubeLauncher
-        ClassiCube.desktop)
-sha256sums=('fab780f4dcf0669a0f94683c9b6596f40cb83e09727a3b91aaae5e934a9740b0'
-            '4bc98c1f4f881d28f8c042b3d0d6c25c63303965702b82cfed6f17909922a74c'
-            'abcf649e1e886f0c3278648ebf4eb8f6d070ac1358e26920ceaa396624cac91e'
-            '2c11b3f517f68b6322b007922999d7a8b51fab183ee6cc51c0260f3ae56d0a4a')
+        ClassiCubeLauncher)
+sha256sums=('04f96eb2cc338b81a36a843b7d1f23de54ef539a80d2b793bbef69aa9043585f'
+            '277b5ab664238d5f3a55d7ba0e75e92deb120b4bb8e29d0b8c22c2bfd9bda34f'
+            '8a562c0358bca5217ea914f76dfe821a121d035d72b98287162750b850a4c25d')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
-  # Don't override makepkg compile flags
-  sed -i -e '0,/CFLAGS=/{s//CFLAGS?=/}' -e '0,/LDFLAGS=/{s//LDFLAGS?=/}' Makefile
+  ## TODO: Upstream most of these changes by 1.3.8
 
-  # Change to SDL2 on Linux
-  sed -i '0,/-lX11 -lXi/{s//-lSDL2/}' Makefile
-  sed -i -e '0,/CC_BUILD_X11/{//d}' -e '0,/CC_BUILD_XINPUT2/{//d}' src/Core.h
-  sed -i '/#error/d' src/Window_SDL.c
+  # Don't override external compile flags
+  sed -i -e '0,/CFLAGS  =/{s//CFLAGS ?=/}' -e '0,/LDFLAGS =/{s//LDFLAGS?=/}' Makefile
+
+  # Switch to SDL2 on Linux (SDL3 is still in development)
+  sed -i '0,/-lX11 -lXi/{s//-lSDL2 -lm/}' Makefile
+  sed -i -e '0,/DEFAULT_WIN_BACKEND CC_WIN_BACKEND_X11/{//d}' -e '0,/CC_BUILD_XINPUT2/{//d}' src/Core.h
   patch --no-backup-if-mismatch --binary -Np1 -i ../sdl2-dialog.patch
-
-  # Fix an incompatible pointer error (this is unnecessary in the git version)
-  sed -i 's/samples, count \* 2/(cc_uint8*)samples, count * 2/' src/Resources.c
 
   # Remove spammy log calls
   sed -i '/Face:/d' src/SystemFonts.c
@@ -47,12 +43,16 @@ prepare() {
   # Make SDL dialogs actually work
   sed -i '/SIGCHLD/d' src/Platform_Posix.c
 
-  # Fix SDL fullscreen exit
-  sed -i 's/SDL_RestoreWindow(win_handle); return 0;/return SDL_SetWindowFullscreen(win_handle, 0);/' src/Window_SDL.c
+  # Fix SDL2 fullscreen exit
+  sed -i 's/SDL_RestoreWindow(win_handle); return 0;/return SDL_SetWindowFullscreen(win_handle, 0);/' src/Window_SDL2.c
+
+  # Fix up the upstream desktop file
+  sed -i -e 's/net.classicube.flatpak.client/ClassiCube/g' \
+     -e 's/ClassiCubeLauncher/ClassiCubeLauncher %u/' misc/linux/flatpak/net.classicube.flatpak.client.desktop
 }
 
 build() {
-  export CFLAGS+=" -DCC_BUILD_SDL -DCC_BUILD_GLMODERN"
+  export CFLAGS+=" -DDEFAULT_WIN_BACKEND=CC_WIN_BACKEND_SDL2"
   make -C "${_pkgname}-${pkgver}"
 }
 
@@ -62,8 +62,8 @@ package() {
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/ClassiCube"
   install -Dm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
   install -Dm644 misc/CCicon.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  install -Dm644 misc/linux/flatpak/net.classicube.flatpak.client.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
-  # TODO: Use upstream launch files directly once there's a new release
+  # TODO: Use upstream launch script directly by 1.3.8
   install -Dm755 ../ClassiCubeLauncher "$pkgdir/usr/bin/ClassiCubeLauncher"
-  install -Dm644 ../${_pkgname}.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
