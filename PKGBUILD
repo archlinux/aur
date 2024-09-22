@@ -1,6 +1,6 @@
 # Maintainer: Dennis Herbrich <dennis.herbrich@veloxis.de>
 pkgname=openapi-python-client
-pkgver=0.21.2
+pkgver=0.21.3
 pkgrel=1
 pkgdesc='Generate modern Python clients from OpenAPI 3.0 and 3.1 documents'
 arch=('any')
@@ -30,10 +30,10 @@ optdepends=(
   'python-pdm>=2.12.0: use generated PDM metadata'
   'python-poetry: use generated Poetry metadata'
   'python-setuptools: use generated setuptools metadata'
-  'python-ruff>=0.2: linter support in generated code'
+  'python-ruff>=0.2,<0.7: linter support in generated code'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/openapi-generators/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ed98a0c85845893105f1ed1de28c4432b200b1a66a61ec24815da741cb27376f')
+sha256sums=('c8a82505012d7a04814187f7a9cc38d0a061e21066e8899421a8412ab5dd0473')
 
 build() {
   cd "${pkgname}-${pkgver}"
