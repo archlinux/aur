@@ -3,9 +3,9 @@
 
 pkgbase=rustdesk-appimage
 pkgname=(rustdesk-appimage)
-pkgver=1.2.7
-pkgrel=1
-pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk! (AppImage)"
+pkgver=1.3.1
+pkgrel=0
+pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required."
 url="https://github.com/rustdesk/rustdesk"
 license=('GPL3')
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ optdepends=(
 options=('!strip')
 source_x86_64=("${pkgbase%-appimage}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-appimage}-${pkgver}-x86_64.AppImage")
 source_aarch64=("${pkgbase%-appimage}-${pkgver}-aarch64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-appimage}-${pkgver}-aarch64.AppImage")
-sha256sums_x86_64=('d629caf642d7d139b683d080fc8504c577f6f8e88928463dce01ef7d94dd1be9')
-sha256sums_aarch64=('e530b44e15a6aec52bc2aaa4c2e0675c94a8c6f0c5b9355817a2ee4b251bd7f2')
+sha256sums_x86_64=('f8331cad2d74a819b0e667c75858dbbb4f93790cfd9cf8391ce5077b99efaf34')
+sha256sums_aarch64=('5317ff802b55a98bdc2de3d059340c9bfd9680d73ea01aa28dda10dad5d654ec')
 _install_path="/opt/appimages"
 
 prepare() {
