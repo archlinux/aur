@@ -1,0 +1,19 @@
+pkgbase = lingmo-terminal
+	pkgdesc = Terminal emulator using LingmoUI as interface style on LingmoOS.
+	pkgver = 1.9.9
+	pkgrel = 1
+	url = https://lingmo.org
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-quickcontrols2
+	depends = qt5-x11extras
+	depends = qt5-tools
+	depends = qt5-graphicaleffects
+	depends = lingmoui
+	source = https://github.com/LingmoOS/lingmo-terminal/archive/refs/tags/1.9.9.tar.gz
+	sha256sums = eed57d86d3d299a3ff264f6a0fa0fe477468240465146ebe681757c8fd016a6c
+
+pkgname = lingmo-terminal
