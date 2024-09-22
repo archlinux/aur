@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=fluent-gtk-theme-git
-pkgver=2023.06.20.r14.g9fdf52e
+pkgver=2024.06.12.r12.g14254d9
 pkgrel=1
 pkgdesc="Fluent design gtk theme for linux desktops"
 arch=('any')
@@ -37,7 +37,7 @@ package() {
   ./install.sh -t all -d "$pkgdir/usr/share/themes"
 
   # Round version
-  ./install.sh -t all --tweaks round float -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all --tweaks round -d "$pkgdir/usr/share/themes"
 
   # Wallpapers
   cd "$srcdir/wallpaper"

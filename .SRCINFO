@@ -1,6 +1,6 @@
 pkgbase = fluent-gtk-theme-git
 	pkgdesc = Fluent design gtk theme for linux desktops
-	pkgver = 2023.06.20.r14.g9fdf52e
+	pkgver = 2024.06.12.r12.g14254d9
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Fluent-gtk-theme
 	install = fluent-gtk-theme.install
