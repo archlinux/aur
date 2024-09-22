@@ -7,9 +7,9 @@ depends=(
     'kdecoration' 'kguiaddons' 'kcoreaddons' 'kconfigwidgets'
     'kwindowsystem' 'kwayland'
 )
-makedepends=('extra-cmake-modules')
+makedepends=('extra-cmake-modules' 'plasma-framework5')
 pkgdesc="KWin plugin for LingmoOS"
-pkgrel=1
+pkgrel=2
 pkgver=1.2.0_1
 
 url="https://lingmo.org"

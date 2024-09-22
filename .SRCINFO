@@ -1,11 +1,12 @@
 pkgbase = lingmo-kwin-plugins
 	pkgdesc = KWin plugin for LingmoOS
 	pkgver = 1.2.0_1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lingmo.org
 	arch = x86_64
 	license = GPL
 	makedepends = extra-cmake-modules
+	makedepends = plasma-framework5
 	depends = kwin
 	depends = qt5-base
 	depends = qt5-declarative
