@@ -1,6 +1,6 @@
 pkgbase = superproductivity
 	pkgdesc = ToDo List / Time Tracker / Personal Jira Task Manager
-	pkgver = 10.0.9
+	pkgver = 10.0.10
 	pkgrel = 1
 	url = https://super-productivity.com
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = superproductivity
 	depends = bash
 	depends = electron31
 	depends = hicolor-icon-theme
-	source = superproductivity-10.0.9.tar.gz::https://github.com/johannesjo/super-productivity/archive/v10.0.9.tar.gz
+	source = superproductivity-10.0.10.tar.gz::https://github.com/johannesjo/super-productivity/archive/v10.0.10.tar.gz
 	source = superproductivity.desktop
 	source = superproductivity.sh
-	sha256sums = d08668adf8a2b03ac71705831a03c60b029b57927b49f930a09c510dab2a1014
+	sha256sums = 20ae3dfdffe06d7c4a28563ef9a0fc122d1c2cbe14a3189a4a3c66db5b01ec22
 	sha256sums = e3c71e1ba653ebb1662c8a10d55ed72dbec37eea911c1f18568d0c3e2d13f452
 	sha256sums = f9ca69e16223b3dcfa0d8ae9dbbff231255482d85f0d72ddcc5033dac890741e
 
