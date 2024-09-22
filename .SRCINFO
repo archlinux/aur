@@ -1,6 +1,6 @@
 pkgbase = r-spatstat
 	pkgdesc = Spatial Point Pattern Analysis, Model-Fitting, Simulation, Tests
-	pkgver = 3.1.1
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=spatstat
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = r-spatstat
 	depends = r-spatstat.model
 	depends = r-spatstat.random
 	depends = r-spatstat.utils
-	source = https://cran.r-project.org/src/contrib/spatstat_3.1-1.tar.gz
-	sha256sums = 5649309818c6e76c8b8ee7b66a25dcbd2b358d90da56f67dd961b5cf9ff55512
+	source = https://cran.r-project.org/src/contrib/spatstat_3.2-1.tar.gz
+	sha256sums = f87615fdc9954539dcf6d388b3089585f21524329c90c00d0d093aaa603e4f9d
 
 pkgname = r-spatstat
