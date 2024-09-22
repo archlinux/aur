@@ -13,9 +13,19 @@ pkgbase = qtads
 	depends = libvorbis
 	depends = hicolor-icon-theme
 	depends = libsndfile
+	optdepends = qtads-mimetype-icons: desktop icons for TADS 2 and 3 story files
 	source = https://github.com/realnc/qtads/releases/download/v3.4.0/qtads-3.4.0-source.tar.xz
 	source = auto-update-never-by-default.patch
 	sha256sums = 3c8f1b47ee42d89753d68e7c804ca3677b0c89a5d765d1fd4f80f9cdc29d3473
 	sha256sums = 6876958ccb023f3b62789d69fe6dd4d021f5f1aefd3eb5dc372e8b42c8b030e7
 
 pkgname = qtads
+
+pkgname = qtads-mimetype-icons
+	pkgdesc = QTads's desktop icons for TADS 2 and 3 story files
+	arch = any
+	depends = qtads
+	depends = hicolor-icon-theme
+	optdepends = 
+	conflicts = gargoyle
+	conflicts = gargoyle-git
