@@ -1,7 +1,7 @@
 pkgbase = choosenim
 	pkgdesc = Installs different versions of Nim compiler and tools and switches between them
 	pkgver = 0.8.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nim-lang/choosenim
 	install = choosenim.install
 	arch = x86_64

@@ -5,7 +5,7 @@ pkgdesc='Installs different versions of Nim compiler and tools and switches betw
 url='https://github.com/nim-lang/choosenim'
 license=(BSD-3-Clause)
 pkgver=0.8.7
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 depends=(glibc curl)
 makedepends=(git)
@@ -26,15 +26,19 @@ prepare() {
   cd $pkgname-$pkgver
   # we compile proxyexe in a separate step
   sed -i -e '/static: compileProxyexe()/d' src/choosenimpkg/switcher.nim
-  # use official Nim binary distribution for bootstrapping
-  export PATH="$srcdir/nim-$_nimver/bin:/usr/bin:/usr/local/sbin"
+  if [[ "$CARCH" = "x86_64" ]]; then
+    # use official Nim binary distribution for bootstrapping
+    export PATH="$srcdir/nim-$_nimver/bin:/usr/bin:/usr/local/bin"
+  fi
   # download third-party dependencies here instead of during build
   nimble install -y --depsOnly --nimbleDir:"$srcdir"/nimble
 }
 
 build() {
   cd $pkgname-$pkgver
-  export PATH="$srcdir/nim-$_nimver/bin:/usr/bin:/usr/local/sbin"
+  if [[ "$CARCH" = "x86_64" ]]; then
+    export PATH="$srcdir/nim-$_nimver/bin:/usr/bin:/usr/local/bin"
+  fi
   nimble c -y -d:release --offline --nimbleDir:"$srcdir"/nimble src/choosenimpkg/proxyexe
   nimble build -y -d:release --offline --nimbleDir:"$srcdir"/nimble
 }
