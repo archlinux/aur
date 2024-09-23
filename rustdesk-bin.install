@@ -12,9 +12,12 @@ post_install() {
 
 # arg 1:  the new package version
 # arg 2:  the old package version
-#pre_upgrade() {
+pre_upgrade() {
+    rm /usr/share/applications/rustdesk-link.desktop #tmp for cleaning
+    rm /usr/share/applications/rustdesk.desktop #tmp for cleaning
+    rm /etc/systemd/system/rustdesk.service #tmp for cleaning
 #    systemctl stop rustdesk || true
-#}
+}
 
 # arg 1:  the new package version
 # arg 2:  the old package version

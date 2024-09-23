@@ -5,7 +5,7 @@
 pkgbase=rustdesk-bin
 pkgname=(rustdesk-bin)
 pkgver=1.3.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required."
 url="https://github.com/rustdesk/rustdesk"
 license=('AGPL-3.0')
