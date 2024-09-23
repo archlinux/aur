@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vnite-git
 _pkgname=Vnite
-pkgver=1.3.0.r1.g6a719cc
+pkgver=1.3.3.r0.g85b8537
 _electronversion=28
 _nodeversion=20
 pkgrel=1
@@ -41,11 +41,11 @@ _ensure_local_nvm() {
 }
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-git}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${_pkgname}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-git}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname%-git} %U"
@@ -63,8 +63,8 @@ build() {
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         fi
     } >> .npmrc
-    sed "/external: /d" -i electron.vite.config.mjs
-    sed "s/getAppRootPath(), \'\/logs/app.getPath(\'userData\'), \'\/logs/" -i src/main/index.js
+    sed -i "/external: /d" electron.vite.config.mjs
+    sed -i "s/getAppRootPath(), \'\/logs/app.getPath(\'userData\'), \'\/logs/" src/main/index.js
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run build:unpack
