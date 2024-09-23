@@ -1,7 +1,7 @@
 # Maintainer: Szymon Januszek <szymon_j at tutanota dot com>
 
 pkgname=sio2jail
-pkgver=v1.4.4
+pkgver=v1.5.0
 pkgrel=1
 
 pkgdesc="A tool for supervising execution of programs submitted in Polish national algorithmic competitions"
@@ -30,7 +30,4 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     cd build
     make install
-
-#    mkdir "$pkgdir/usr/share/man/man1"
-#    mv "$pkgdir/usr/share/man/sio2jail.1" "$pkgdir/usr/share/man/man1/sio2jail.1"
 }
