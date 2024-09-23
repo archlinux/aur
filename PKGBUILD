@@ -3,8 +3,8 @@
 
 _pkgname='ferdium'
 pkgname="$_pkgname-bin"
-_electron='electron31'
-_electronpackage='electron31'
+_electron='electron32'
+_electronpackage='electron32'
 pkgverorg='6.7.7'
 pkgver='6.7.7'
 pkgrel='1'
