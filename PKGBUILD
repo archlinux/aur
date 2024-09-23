@@ -7,7 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://tuxmake.org/"
 license=('Apache')
 depends=('python' 'docker' 'podman')
-makedepends=('git' 'python-setuptools' 'python-wheel' 'python-build')
+makedepends=('git' 'python-setuptools' 'python-wheel' 'python-build' 'python-flit' 'python-flit_core')
 optdepends=('docker: for containerized builds with docker'
             'podman: for containerized builds with podman')
 source=("https://files.pythonhosted.org/packages/source/t/tuxmake/tuxmake-${pkgver}.tar.gz")
