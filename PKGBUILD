@@ -10,8 +10,8 @@ license=('Apache-2.0')
 source_x86_64=("https://github.com/openziti/ziti/releases/download/v${pkgver}/ziti-linux-amd64-${pkgver}.tar.gz")
 source_armv7h=("https://github.com/openziti/ziti/releases/download/v${pkgver}/ziti-linux-arm-${pkgver}.tar.gz")
 source_aarch64=("https://github.com/openziti/ziti/releases/download/v${pkgver}/ziti-linux-arm64-${pkgver}.tar.gz")
-sha256sums_x86_64=('41a4c80a2d557c1b1f8b363b277feb8763b78f2708ada64f4316e281af30e535')
-sha256sums_armv7h=('9caa76e1f685fc31e1cfb371c8601ed9a15dca6b5acc5083f7f10793d7268e4b')
+sha256sums_x86_64=('a03bbc3e7d21b3185c61ba840684682b95900ca04b76fbb578686deeb2262d46')
+sha256sums_armv7h=('f841fea42872ad0c70232d813e2f5325944d9d337864d53c40ecfa703defba2e')
 sha256sums_aarch64=('574ddcb8c6f3f9f51d1b4ebe85e8285db9eb26da8d479a57322fa6edcbd18331')
 
 
