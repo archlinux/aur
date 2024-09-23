@@ -1,6 +1,6 @@
 # Maintainer: gileri <twiked at gmail d(0)t com>
 pkgname=pyosmium-git
-pkgver=3.1.3.r4.g78b09cf
+pkgver=4.0.0.r0.g3091925
 pkgrel=1
 pkgdesc="Python bindings for libosmium"
 url="http://osmcode.org/pyosmium"

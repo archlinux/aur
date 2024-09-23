@@ -1,6 +1,6 @@
 pkgbase = pyosmium-git
 	pkgdesc = Python bindings for libosmium
-	pkgver = 3.1.3.r4.g78b09cf
+	pkgver = 4.0.0.r0.g3091925
 	pkgrel = 1
 	url = http://osmcode.org/pyosmium
 	arch = x86_64
@@ -21,4 +21,3 @@ pkgbase = pyosmium-git
 	md5sums = SKIP
 
 pkgname = pyosmium-git
-
