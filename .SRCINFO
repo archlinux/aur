@@ -1,6 +1,6 @@
 pkgbase = headlines-tui-git
 	pkgdesc = Interactively view the latest news in your terminal with Rust
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 2
 	url = https://gitlab.com/pluskale/headlines
 	arch = x86_64
