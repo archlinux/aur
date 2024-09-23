@@ -1,0 +1,14 @@
+pkgbase = ripe-altas-probe
+	pkgdesc = Ripe atlas probe
+	pkgver = 5080
+	pkgrel = 0
+	url = https://ftp.ripe.net/ripe/atlas/software-probe/centos7/noarch/
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = go
+	makedepends = make
+	source = ripe-altas-probe::https://ftp.ripe.net/ripe/atlas/software-probe/centos7/x86_64/atlasswprobe-5080-1.el7.x86_64.rpm
+	sha256sums = SKIP
+
+pkgname = ripe-altas-probe
