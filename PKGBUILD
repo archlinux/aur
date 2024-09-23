@@ -2,7 +2,7 @@
 _appname=music-player
 pkgname="moebits-${_appname}-bin"
 _pkgname="Moebits Music Player"
-pkgver=0.2.9
+pkgver=0.3.0
 _electronversion=28
 pkgrel=1
 pkgdesc="A music player with real-time pitch shifting, time stretching, and reversing effects."
@@ -24,20 +24,25 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Moebits/Music-Player/v${pkgver}/license.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('08051272f8838f5ef2e80011fd54a930982838fcc8591fdba836c21073899aaa'
+sha256sums=('ee5e38ab754d0d9a2421db483a9ff82ad094f1962d27d38a9fde506ba716b718'
             '8946c49d9a63a62f5621f114027b2842ee914bd237590f2a5496d4b044c95af9'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g;s|Music Player|${_pkgname}|g;s|Audio|AudioVideo|g" \
-        -i "${srcdir}/squashfs-root/${_appname}.desktop"
+    sed -e "
+        s/AppRun --no-sandbox/${pkgname%-bin}/g
+        s/Icon=${_appname}/Icon=${pkgname%-bin}/g
+        s/Music Player/${_pkgname}/g
+        s/Audio/AudioVideo/g
+    " -i "${srcdir}/squashfs-root/${_appname}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
 package() {
