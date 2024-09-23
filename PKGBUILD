@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tauview-git
 _pkgname=Tauview
-pkgver=0.0.13.r0.g1560b14
+pkgver=0.0.14.r0.g576aef9
 _nodeversion=20
 pkgrel=1
 pkgdesc="Minimalist image viewer based on Leaflet.js and Tauri."
@@ -16,6 +16,7 @@ depends=(
     'webkit2gtk'
 )
 makedepends=(
+    'npm'
     'nvm'
     'git'
     'curl'
@@ -49,7 +50,7 @@ build() {
         echo 'disturl=https://registry.npmmirror.com/-/binary/node/' >> .npmrc
         export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
         export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
-        sed "s/github.com/gitdl.cn\/https:\/\/github.com/" -i src-tauri/Cargo.toml
+        sed -i "s/github.com/gitdl.cn\/https:\/\/github.com/" src-tauri/Cargo.toml
     fi        
     NODE_ENV=development    npm install
     NODE_ENV=production     npx tauri build -b deb
@@ -59,7 +60,8 @@ package() {
         -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${pkgname%-git}_"*/data/usr/share/applications/"${pkgname%-git}.desktop" \
         -t "${pkgdir}/usr/share/applications"
-    for _icons in 32x32 128x128 256x256@2;do
+    _icon_sizes=(32x32 128x128 256x256@2)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${pkgname%-git}_"*/data/usr/share/icons/hicolor/"${_icons}/apps/${pkgname%-git}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
