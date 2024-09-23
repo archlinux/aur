@@ -1,6 +1,6 @@
 pkgbase = yandex-browser
 	pkgdesc = The web browser from Yandex. Yandex Browser is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier.
-	pkgver = 24.7.1.1120
+	pkgver = 24.7.3.1253
 	pkgrel = 1
 	url = https://browser.yandex.com/
 	install = yandex-browser.install
@@ -39,7 +39,7 @@ pkgbase = yandex-browser
 	provides = yandex-browser
 	conflicts = yandex-browser
 	conflicts = yandex-browser-stable
-	source = yandex-browser-24.7.1.1120-1.deb::https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-stable/yandex-browser-stable_24.7.1.1120-1_amd64.deb
-	sha256sums = c2b60f43c5abb6d17fb6569f034f9edde0d932af521662e4e4d38878742bd785
+	source = yandex-browser-24.7.3.1253-1.deb::https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-stable/yandex-browser-stable_24.7.3.1253-1_amd64.deb
+	sha256sums = 2c87a77b80fbee1a34bb81973479609f142987e2224e32b9df6d6046ca54d6fe
 
 pkgname = yandex-browser
