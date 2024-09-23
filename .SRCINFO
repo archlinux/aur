@@ -1,6 +1,6 @@
 pkgbase = r-geepack
 	pkgdesc = Generalized Estimating Equation Package
-	pkgver = 1.3.11.1
+	pkgver = 1.3.12
 	pkgrel = 1
 	url = https://cran.r-project.org/package=geepack
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-geepack
 	depends = r
 	depends = r-broom
 	depends = r-magrittr
-	source = https://cran.r-project.org/src/contrib/geepack_1.3.11.1.tar.gz
-	sha256sums = a20c6c269e8da7cc6036c25b4832b7031ee6d6cce6d9ca5fa62fa1ae01785386
+	source = https://cran.r-project.org/src/contrib/geepack_1.3.12.tar.gz
+	sha256sums = e01be9555155ecd6d4dee2e566066c2a6e0953d0e3a58bb31fa5c07f3834054d
 
 pkgname = r-geepack
