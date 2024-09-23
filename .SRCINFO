@@ -1,6 +1,6 @@
 pkgbase = k9s-openstack
 	pkgdesc = A k9s plugin which sets environment variables in the current terminal session to allow faster access to openstack projects.
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 2
 	arch = x86_64
 	license = APACHE
@@ -9,6 +9,6 @@ pkgbase = k9s-openstack
 	depends = k9s
 	depends = capo-shell
 	source = k9s-openstack-plugins.yaml
-	sha512sums = cd845e1a97d89a492c76ba4f22e1bac9febd595487ce68bc6e10b8f6f3c96d35484c1499ad10284601ae156af7d245638270a080d2770a8b82402ba07f253cf0
+	sha512sums = 0c6f78f88a61a1448d10931fcbd28c1a04f88b462d772063dd469fe85dcc042b78f98e92e29972f172a6896b8474de11b5e3554e793d0ad3067da75b7d4c84c1
 
 pkgname = k9s-openstack
