@@ -3,7 +3,7 @@
 pkgname=mangojuice
 pkgver=0.6
 pkgrel=2
-pkgdesc="Gui settings mangohud"
+pkgdesc="A convenient alternative to GOverlay for configuring MangoHud"
 arch=(x86_64)
 url="https://github.com/radiolamp/${pkgname}"
 license=(GPL-3.0-or-later)
