@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _pkgname='beekeeper-studio'
 pkgname="$_pkgname-ultimate"
-pkgver='4.6.4'
+pkgver='4.6.8'
 pkgrel='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more - Ultimate edition'
 arch=('x86_64' 'aarch64')
@@ -17,9 +17,9 @@ source=(
 	'LICENSE.md'
 )
 b2sums=('54b46275a83a6099b22bc511a6293178abccccad6d1cc36bf812166f93f75b1379a3201dac9ee85e05cf7c3b0de7e94829fd3fb619ccca513924ebf3101850f0'
-        'c023a3df8f41dd308f02ce08a56c44adb0f659caea908cbcb565ee6dba80bc475e02369d236220fa4499559986ce061c12c90e52fa42ac61fd93c9b9212d2b79')
-b2sums_x86_64=('fbcc12568037c6ac8d44ea57091daef493522311ff748419f464643b613b1b9c0667c33e41502e8f2cd7aced7d9f3502312da9e8783694073b95f6b83f9621e9')
-b2sums_aarch64=('8ad43e2b502167cad737977c28aaa83c1bedeb7706774855480af976eb44d6079dcac3828a6826f04e242c5047180a54c94eee4a43f9edd542656366a50a21f1')
+        'b5f0a224b71c8ec5966333cc24bdd59a58728175448e88a4779e100823b76f25088a934775ba5eb2c13d110e4f5889d11d2a0c3ee3b965489f644561659dd176')
+b2sums_x86_64=('d00b45d3e28d4f537cea515f6ff289c8e0532be808e57f31c982653c6cfad30b269231c0c80cb7dfd61d640f4a90943961e4f1393f345b79129e9f7f050dd3a1')
+b2sums_aarch64=('9213b8680e929ea491d3837d2aaea8c0584935c908b433f2e29d10bfb1750201c1d2bca61b4e3512049253a9883de975cc7f7407989e727ee602036dec5ba0f6')
 
 _sourcedirectory="$pkgname-$pkgver"
 
