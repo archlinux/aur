@@ -1,0 +1,13 @@
+pkgbase = nier-cursors-bin
+	pkgdesc = XCursor theme based on NieR Automata
+	pkgver = 2020_08_25
+	pkgrel = 1
+	url = https://github.com/Beinsezii/NieR-Cursors
+	arch = any
+	license = MIT
+	source = https://github.com/Beinsezii/NieR-Cursors/releases/download/2020-08-25/NieR_Cursors_2020-08-25.tar.xz
+	source = LICENSE
+	md5sums = 9406690176de9cbd10c92a971fa022b8
+	md5sums = 5f33aa2e6130ccc29c0a86a1ff6be222
+
+pkgname = nier-cursors-bin
