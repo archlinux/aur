@@ -1,13 +1,13 @@
 # Maintainer: Ben Copeland <ben@copeland.me.uk>
 pkgname=tuxmake
 pkgver=1.27.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A tool for building Linux kernels across architectures, toolchains, and configurations"
 arch=('x86_64' 'aarch64')
 url="https://tuxmake.org/"
 license=('Apache')
 depends=('python' 'docker' 'podman')
-makedepends=('git' 'python-setuptools' 'python-wheel' 'python-build' 'python-flit' 'python-flit_core' 'python-pytest')
+makedepends=('git' 'python-setuptools' 'python-wheel' 'python-build' 'python-flit' 'python-flit-core' 'python-pytest')
 optdepends=('docker: for containerized builds with docker'
             'podman: for containerized builds with podman')
 source=("https://files.pythonhosted.org/packages/source/t/tuxmake/tuxmake-${pkgver}.tar.gz")
