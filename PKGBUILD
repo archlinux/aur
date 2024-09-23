@@ -1,8 +1,9 @@
 # Maintainer: mrxx <mrxx at cyberhome dot at>
-# Contributors: Det, Ner0, alexwizard, thotypous, jdhore, xduugu, randypenguin, bdheeman, AlK
+# Contributors: Det, Ner0, alexwizard, thotypous, jdhore, xduugu, randypenguin, bdheeman, AlK, zrhoffman
 
 pkgname=chromium-snapshot-bin
-pkgver=130.0.6681.0.r1346976
+_pkgname=${pkgname/chromium/chromedriver}
+pkgver=131.0.6736.0.r1358951
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Latest Snapshot)"
 arch=('x86_64')
@@ -14,15 +15,17 @@ optdepends=('kdialog: needed for file dialogs in KDE'
             'kwallet: for storing passwords in KWallet'
             'flashplugin: support for Flash content'
             'ttf-liberation: fix fonts for some PDFs [RBug #369991]')
-provides=('chromium')
+provides=('chromium-snapshot')
 install=$pkgname.install
 _build=$(curl -s "https://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/LAST_CHANGE")
 source=("chrome-linux-r$_build.zip::https://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/$_build/chrome-linux.zip"
+        "chromedriver_linux64-r$_build.zip::https://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/$_build/chromedriver_linux64.zip"
         "$pkgname.sh"
         "$pkgname.desktop"
         "$pkgname"_{16,22,24,32,48,64,128,256}.png
         'LICENSE')
 sha1sums=('SKIP'
+          'SKIP'
           '12c3b365d3765ab8d049b517c3f598563ef0c45b'
           'e64637c07b921f197fc1d7fd031c8a73ea3a55f8'
           '1cbdde48d193a648723f948370eff9b7b2fbf3f9'
@@ -48,17 +51,20 @@ package() {
   install -d "$pkgdir"/usr/share/man/man1/
 
   msg2 "Making it nice..."
+  sed 's/chrome/chromedriver/g' $pkgname.sh > ${_pkgname}.sh
   # Permissions
   find -type d -exec chmod 755 {} ';'
   find -type f -exec chmod +r {} ';'
   cd chrome-linux
   chmod 755 chrome chrome-wrapper xdg-*
   chmod 4755 chrome_sandbox
+  mv ../chromedriver_linux64/chromedriver .
   cd ..
 
   msg2 "Moving contents..."
   # Main script
   install -m755 $pkgname.sh "$pkgdir"/usr/bin/$pkgname
+  install -m755 ${_pkgname}.sh "$pkgdir"/usr/bin/${_pkgname}
 
   # Rename chrome-sandbox
   mv chrome-linux/chrome{_,-}sandbox
