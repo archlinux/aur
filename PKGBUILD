@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=nextvi-git
-pkgver=r649.ab7042d
+pkgver=r885.faa0ed6
 pkgrel=1
 pkgdesc='Next version of neatvi (a small vi/ex editor) for editing bidirectional UTF-8 text'
 arch=('i686' 'x86_64')
@@ -18,16 +18,16 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$pkgname"
-	sed -i 's!bin/vi!bin/'${pkgname%-*}'!g' build.sh
+	sed -i 's!bin/vi!bin/'${pkgname%-*}'!g' cbuild.sh
 }
 
 build() {
 	cd "$srcdir/$pkgname"
-	./build.sh
+	./cbuild.sh
 }
 
 package() {
 	cd "$srcdir/$pkgname"
-	DESTDIR="$pkgdir/" PREFIX=usr ./build.sh install
+	DESTDIR="$pkgdir/" PREFIX=usr ./cbuild.sh install
 	install -D -m644 README $pkgdir/usr/share/doc/${pkgname%-*}/README
 }
