@@ -1,7 +1,7 @@
 # Maintainer: Accessory
 _exe_name=minus_games_server
 pkgname=$_exe_name-git
-pkgver=0.3.0
+pkgver=0.4.0
 _source_folder=$pkgname-$pkgver
 pkgrel=1
 epoch=
