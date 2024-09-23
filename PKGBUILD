@@ -1,12 +1,13 @@
 # Maintainer: Alexander Jacocks <alexander@redhat.com>
 
+_pkgname=ansible_navigator
 pkgname=ansible-navigator
-pkgver=24.3.2
+pkgver=24.9.0
 pkgrel=1
 pkgdesc="A text-based user interface (TUI) for Ansible."
 arch=('any')
 url="https://github.com/ansible/ansible-navigator"
-license=('MIT')
+license=('Apache-2.0')
 depends=(python python-{jsonschema,onigurumacffi} ansible-{core,runner} podman)
 makedepends=(python-{build,installer,setuptools,wheel,setuptools-scm})
 #makedepends=(python-{build,installer,setuptools,wheel,setuptools-scm,setuptools-scm-git-archive})
@@ -14,14 +15,11 @@ checkdepends=('python-pytest')
 optdepends=('ansible: check official ansible collections')
 provides=('ansible-navigator')
 conflicts=('ansible-navigator')
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/65/f3/506b103d33e0ae9b0e18ae7937648b587869a222ce833217af96f86a837b/ansible-navigator-3.6.0.tar.gz")
-sha256sums=('889dd1e8c8bc0c352435107c54ecd2fa1e3ec2a31cf910330498810e2cd3d352')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/4d/13/7e2700329ed9b866c10dcf696a2e1633da2eb3ac705c49abe0d63ab4beba/ansible_navigator-24.9.0.tar.gz")
+sha256sums=('796dfcfe7def87697684aae1d71a56d9f881e723a44e72bbec09debc34ad0fbb')
 
 build() {
-  # handle re-aligned version number
-  if [ -d "${srcdir}/${pkgname}-3.6.0" ]; then
-    mv "${srcdir}/${pkgname}-3.6.0" "${srcdir}/${pkgname}-${pkgver}"
-  fi
+  ln -sf "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/${pkgname}-${pkgver}"
   cd "${srcdir}/${pkgname}-${pkgver}"
   python -m build --wheel --skip-dependency-check --no-isolation
 }

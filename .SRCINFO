@@ -1,10 +1,10 @@
 pkgbase = ansible-navigator
 	pkgdesc = A text-based user interface (TUI) for Ansible.
-	pkgver = 24.3.2
+	pkgver = 24.9.0
 	pkgrel = 1
 	url = https://github.com/ansible/ansible-navigator
 	arch = any
-	license = MIT
+	license = Apache-2.0
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
@@ -20,7 +20,7 @@ pkgbase = ansible-navigator
 	optdepends = ansible: check official ansible collections
 	provides = ansible-navigator
 	conflicts = ansible-navigator
-	source = ansible-navigator-24.3.2.tar.gz::https://files.pythonhosted.org/packages/65/f3/506b103d33e0ae9b0e18ae7937648b587869a222ce833217af96f86a837b/ansible-navigator-3.6.0.tar.gz
-	sha256sums = 889dd1e8c8bc0c352435107c54ecd2fa1e3ec2a31cf910330498810e2cd3d352
+	source = ansible-navigator-24.9.0.tar.gz::https://files.pythonhosted.org/packages/4d/13/7e2700329ed9b866c10dcf696a2e1633da2eb3ac705c49abe0d63ab4beba/ansible_navigator-24.9.0.tar.gz
+	sha256sums = 796dfcfe7def87697684aae1d71a56d9f881e723a44e72bbec09debc34ad0fbb
 
 pkgname = ansible-navigator
