@@ -2,7 +2,7 @@
 # Contributor: Xuanwo
 pkgname=follow-bin
 _pkgname=Follow
-pkgver=0.0.1_alpha.13
+pkgver=0.0.1_alpha.16
 _electronversion=32
 pkgrel=1
 pkgdesc="🧡 Next generation information browser.This software is all about allowing you to follow your favorite websites, blogs, social media accounts, podcasts and notifications in one place. "
@@ -22,26 +22,27 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}-linux-x64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ae0396db535fafb478cf85cad6db8f72c8aae83e1a0d2b261d17709abd528b51'
+sha256sums=('293b50d259bfe2c50c20cefc215f056e067dd5ca30994427fa66d4227348cbcd'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-bin}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${_pkgname}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s/${_pkgname} --no-sandbox --disable-setuid-sandbox/${pkgname%-bin}/;s/Icon=${_pkgname}/Icon=${pkgname%-bin}/" \
-        -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    sed -i "s/${_pkgname} --no-sandbox --disable-setuid-sandbox/${pkgname%-bin}/g;s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g" \
+        "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
-    for _icons in 16x16 32x32 48x48 128x128 256x256;do
+    _icon_sizes=(16x16 32x32 48x48 128x128 256x256)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
