@@ -1,7 +1,7 @@
 # Maintainer: Ben Cooper <contactme@bengcooper.co.uk>
 
 pkgname=openziti-bin
-pkgver=1.1.10
+pkgver=1.1.11
 pkgrel=1
 pkgdesc='An open source zero trust network'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -10,9 +10,9 @@ license=('Apache-2.0')
 source_x86_64=("https://github.com/openziti/ziti/releases/download/v${pkgver}/ziti-linux-amd64-${pkgver}.tar.gz")
 source_armv7h=("https://github.com/openziti/ziti/releases/download/v${pkgver}/ziti-linux-arm-${pkgver}.tar.gz")
 source_aarch64=("https://github.com/openziti/ziti/releases/download/v${pkgver}/ziti-linux-arm64-${pkgver}.tar.gz")
-sha256sums_x86_64=('49fe515cf145b808e21c140d6cf17e0fe88f2c91819d8b61f9763ba5eadb81c2')
-sha256sums_armv7h=('a60b07f4ef521d39cf5fd6713e1405bff6277f5da95df69c71d5a0b1f07bca3a')
-sha256sums_aarch64=('0245254a8ce9ab76de0474483d1c62492c7a6abb4229cdbd3e12d2982686f23e')
+sha256sums_x86_64=('41a4c80a2d557c1b1f8b363b277feb8763b78f2708ada64f4316e281af30e535')
+sha256sums_armv7h=('9caa76e1f685fc31e1cfb371c8601ed9a15dca6b5acc5083f7f10793d7268e4b')
+sha256sums_aarch64=('574ddcb8c6f3f9f51d1b4ebe85e8285db9eb26da8d479a57322fa6edcbd18331')
 
 
 package() {
