@@ -6,7 +6,7 @@
 # Maintainer: João Freitas <joaj.freitas at gmail dot com>
 pkgname=plotjuggler
 pkgver='3.9.2'
-pkgrel=2
+pkgrel=1
 epoch=
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
 arch=('x86_64')
