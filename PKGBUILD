@@ -3,11 +3,11 @@
 
 pkgname='spacedrive'
 pkgver=0.2.14
-pkgrel=2
+pkgrel=3
 pkgdesc='Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.'
 arch=('x86_64')
 url='https://spacedrive.com/'
-license=('AGPL3')
+license=('AGPL-3.0-only or AGPL-3.0-or-later')
 conflicts=('spacedrive-git')
 source=(
 	"${pkgname}-v${pkgver}.tar.gz::https://github.com/spacedriveapp/spacedrive/archive/refs/tags/${pkgver}.tar.gz"
