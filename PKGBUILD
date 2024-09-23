@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.2.0.r421.gc3d58242
+pkgver=0.3.0.r8.gf97f73f0
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -15,7 +15,7 @@ depends=(
 	'glslang>=14.2'
 	'hicolor-icon-theme'
 	'pugixml>=1.14'
-	'sdl3>=1:3.0.0.r5890'
+	'sdl3>=1:3.0.0.r6266'
 	'zlib-ng>=2.1.7'
 )
 makedepends=(
@@ -63,7 +63,7 @@ b2sums=(
 
 pkgver() {
 	cd $_pkgname
-	git describe --long --tags | sed 's/^v\.\?//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long | sed 's/^v\.\?//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -73,6 +73,8 @@ prepare() {
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
 	git config submodule.externals/zydis.url ../zydis
 	git -c protocol.file.allow=always submodule update
+	# https://github.com/shadps4-emu/shadPS4/pull/1039
+	git cherry-pick -n d7acc1cb5afbb2e2d6ef9ed67d9218d900e54d3d
 	# https://github.com/shadps4-emu/shadPS4/issues/568#issuecomment-2363862313
 	sed -i 's/SDL_TRUE/true/g;s/SDL_FALSE/false/g;s/SDL_bool/bool/g' \
 		externals/dear_imgui/backends/*.cpp \
