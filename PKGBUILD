@@ -1,10 +1,11 @@
+# Maintainer: Martin Harrigan <martin dot harrigan at gmail dot com>
 # Maintainer: Dylon Edwards <dylon dot devo at gmail dot com>
 # Contributor: Daichi Shinozaki <dsdseg at gmail dot com>
 # Contributor: James Henderson
 
 pkgname=datomic
-pkgver=1.0.7075
-pkgrel=2
+pkgver=1.0.7187
+pkgrel=1
 pkgdesc="A database of flexible,time-based facts,supporting queries and joins,with elastic scalability,and ACID transactions"
 arch=('any')
 url=https://www.datomic.com/
@@ -17,9 +18,9 @@ source=(
     "transactor.properties"
     "${pkgname}.service"
 )
-md5sums=('f79a099f1c8fc0b43c96835afc7db2f2'
-         '8424bc5c8bff46a5d8251d046ba466df'
-         '139868f11fd75560a4d15c4d74939e48')
+md5sums=('1107dc89c3bc0896a02458d34a875143'
+         'a34e9e7a0e4b0fade06ba8200c4bd530'
+         '45c1fbdb988afd06295b6c90d7bcd819')
 
 package() {
     mkdir -p "${pkgdir}/opt"
@@ -28,5 +29,3 @@ package() {
     install -D "${srcdir}/transactor.properties" -t "${pkgdir}/etc/datomic"
     mkdir -p "${pkgdir}/var/lib/datomic" "${pkgdir}/var/log/datomic"
 }
-
-# vim:set ts=4 sw=4 et sta:
