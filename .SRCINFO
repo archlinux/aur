@@ -1,6 +1,6 @@
 pkgbase = danisrace-git
 	pkgdesc = The Libre Game Dani's Race.
-	pkgver = r3.6cb5deb
+	pkgver = r4.db92590
 	pkgrel = 1
 	url = https://forg.madiator.cloud/BlenderDumbass/danisrace
 	arch = x86_64

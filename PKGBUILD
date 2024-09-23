@@ -2,7 +2,7 @@
 
 _pkgname=danisrace
 pkgname=${_pkgname}-git
-pkgver=r3.6cb5deb
+pkgver=r4.db92590
 pkgrel=1
 pkgdesc="The Libre Game Dani's Race."
 arch=('x86_64')
@@ -29,7 +29,6 @@ package() {
 
   cp -R "./." ${pkgdir}/usr/share/${_pkgname}/
   rm ${pkgdir}/usr/share/${_pkgname}/logo.png \
-    ${pkgdir}/usr/share/${_pkgname}/README.md \
     "${pkgdir}/usr/share/${_pkgname}/DanisRace Debug.txt" \
     ${pkgdir}/usr/share/${_pkgname}/checklist.org
 
