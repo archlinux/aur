@@ -1,4 +1,4 @@
-pkgbase = ripe-altas-probe
+pkgbase = ripe-atlas-probe
 	pkgdesc = Ripe atlas probe
 	pkgver = 5080
 	pkgrel = 0
@@ -8,7 +8,7 @@ pkgbase = ripe-altas-probe
 	makedepends = git
 	makedepends = go
 	makedepends = make
-	source = ripe-altas-probe::https://ftp.ripe.net/ripe/atlas/software-probe/centos7/x86_64/atlasswprobe-5080-1.el7.x86_64.rpm
+	source = ripe-atlas-probe::https://ftp.ripe.net/ripe/atlas/software-probe/centos7/x86_64/atlasswprobe-5080-1.el7.x86_64.rpm
 	sha256sums = SKIP
 
-pkgname = ripe-altas-probe
+pkgname = ripe-atlas-probe

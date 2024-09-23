@@ -1,5 +1,5 @@
 # Maintainer: thorko contact@thorko.de
-pkgname=ripe-altas-probe
+pkgname=ripe-atlas-probe
 pkgver=5080
 pkgrel=0
 pkgdesc="Ripe atlas probe"
