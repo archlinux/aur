@@ -1,7 +1,7 @@
 pkgbase = abdownloadmanager-bin
 	pkgdesc = A Download Manager that speeds up your downloads
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://abdownloadmanager.com/
 	arch = x86_64
 	license = Apache-2.0
