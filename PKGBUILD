@@ -2,9 +2,9 @@
 # Contributor: jinzhongjia <mail@nvimer.org>
 
 pkgname=intel-npu-driver-bin
-pkgver=1.6.0.20240814_10390978568
+pkgver=1.8.0.20240916_10885588273
 pkgrel=1
-_main_ver=$(echo $pkgver | cut -d'.' -f1-3)
+main_ver=$(echo $pkgver | cut -d'.' -f1-3)
 pkgdesc="Intel(R) NPU (Neural Processing Unit) Driver"
 arch=(x86_64)
 url="https://github.com/intel/linux-npu-driver"
