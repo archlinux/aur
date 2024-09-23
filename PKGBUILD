@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=hoarder
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64" "aarch64")
@@ -21,7 +21,7 @@ source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}-browser.service"
         "${pkgname}-web.service"
         "${pkgname}-workers.service")
-sha256sums=('f097d83c0777bd0214cd51eef39ad06f2d0d32c96a612e0ba04a5cc7eed28056'
+sha256sums=('33c748b59fab82f6e134a5852d6177a120e520dc21a85e3c74dc9cd74e86257b'
             '1741afe407c55654462de14b0ec454775668dc42103f20448fc8025f646bf963'
             'bb7cf9d047374376137a9ec5ac5ad653d3569a834de8ccc3e8a6f04a870bc01e'
             '713e248fc61f429a3da627016343d89147dde147f739e51584f7398d11262896'
@@ -44,17 +44,17 @@ build() {
     pnpm dlx @vercel/ncc build migrate.ts -o ../../db_migrations
     cp -R drizzle ../../db_migrations
     cd ../../apps/web
-    pnpm next experimental-compile
+    pnpm exec next build --experimental-build-mode compile
 
     # build workers
     cd ../..
     rm -rf workers &>/dev/null
     pnpm deploy --node-linker=isolated --filter @hoarder/workers --prod workers
 
-    # delete musl files, macos/win files, map file
+    # delete musl files, macos/win/android files, map file
     find apps/web/.next -type d -name "*musl*" | xargs rm -rf
     find workers -type f -name "*.map" | xargs rm -rf
-    find workers -type d \( -name "darwin-arm64" -o -name "darwin-x64" -o -name "win32-x64" \) | xargs rm -rf
+    find workers -type d \( -name "darwin-arm64" -o -name "darwin-x64" -o -name "win32-x64" -o -name "android-arm*" \) | xargs rm -rf
     case $CARCH in
         x86_64)  find workers -type d -name "linux-arm64" | xargs rm -rf;;
         aarch64) find workers -type d -name "linux-x64"   | xargs rm -rf;;
