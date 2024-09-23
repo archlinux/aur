@@ -1,6 +1,6 @@
 # Maintainer: Vladislav Litvinov <vlad@sek1.ro>
 pkgname=libbasen
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="c++ encoding/decoding from arbitrary base"
 arch=('any')
