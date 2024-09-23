@@ -1,10 +1,11 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
+# Maintainer: witt <1989161762 at qq dot com>
 
 pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
 _binaryname=ToDesk
 pkgver=4.7.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Remote control and team work"
 arch=('x86_64' 'aarch64')
 url="https://www.todesk.com/"
@@ -21,6 +22,7 @@ conflicts=("${_pkgname}")
 #
 # emptydirs: leave /opt/todesk/config empty dir
 options=('!strip' 'emptydirs')
+DLAGENTS=("https::/usr/bin/wget -U 'Mozilla' -O %o %u")
 install="${_pkgname}.install"
 source=('license.html')
 source_x86_64=("https://dl.todesk.com/linux/${_pkgname}-v${pkgver}-amd64.deb")
