@@ -1,0 +1,15 @@
+pkgbase = kty
+	pkgdesc = The terminal for Kubernetes
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/grampelberg/kty
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = openssl
+	options = !lto
+	source = kty-0.3.1.tar.gz::https://github.com/grampelberg/kty/archive/v0.3.1.tar.gz
+	sha512sums = 7ec51db041f853facc3764168d8688088af6222be234fe527f4f415f7f743aa5f3377bcc24ada3a38c7bc6760e25d6bbb7e6eb76fb208c557b35aeacdcb209b0
+
+pkgname = kty
