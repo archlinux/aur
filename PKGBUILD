@@ -7,7 +7,7 @@
 pkgbase=wayland-chromium
 _pkgbase=wayland
 pkgname=(wayland-chromium wayland-chromium-docs)
-pkgver=1.23.0
+pkgver=1.23.1
 pkgrel=1
 pkgdesc='A computer display server protocol (with Chromium patches)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ validpgpkeys=('C7223EBE4EF66513B892598911A30156E0E67611'  # Bryce Harrington
               'C0066D7DB8E9AC6844D728715E54498E697F11D7'  # Derek Foreman
               '34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48') # emersion <contact@emersion.fr>
 source=("https://gitlab.freedesktop.org/wayland/wayland/-/releases/$pkgver/downloads/wayland-$pkgver.tar.xz"{,.sig})
-sha256sums=('05b3e1574d3e67626b5974f862f36b5b427c7ceeb965cb36a4e6c2d342e45ab2'
+sha256sums=('864fb2a8399e2d0ec39d56e9d9b753c093775beadc6022ce81f441929a81e5ed'
             'SKIP')
 source+=(0002-Set-the-default-max-buffer-size-to-unbounded.patch
          0003-Log-the-object-and-methods-when-marshalling-or-sendi.patch)
@@ -33,7 +33,7 @@ prepare() {
 }
 
 build() {
-  arch-meson $_pkgbase-$pkgver build
+  arch-meson --reconfigure $_pkgbase-$pkgver build
   meson compile -C build
 }
 
