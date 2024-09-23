@@ -1,6 +1,6 @@
 pkgbase = mutter-beta-performance
 	pkgdesc = Window manager and compositor for GNOME
-	pkgver = 47.0.r2.g18eb1be
+	pkgver = 47.0.r18.g625965d
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
@@ -73,10 +73,10 @@ pkgbase = mutter-beta-performance
 	provides = libmutter-15.so
 	conflicts = mutter
 	source = mr1441.patch::https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441.patch
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=18eb1be4915603afc5efead1918dfa8ca744af46
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=625965d956a8818b77eadbdf0ae6e5edbf60b029
 	source = git+https://gitlab.gnome.org/GNOME/gvdb.git#commit=b54bc5da25127ef416858a3ad92e57159ff565b3
-	b2sums = 343186ecf7ecd688fd1b3c18c646a558b17d8b535d23505574d7dcb223201b95b4af12311fce927873240f855471c04fbc73277c2fb900ba4106a1240741a8cb
-	b2sums = 3565b5522846229a436b8128ac91721362ff8ea6935f08d6a9ddb0e7d4424175daa9b3bd6822b3fef96c5c17aa0ce125334d843063ec875c88f1062cc5a18b2b
+	b2sums = c56646f64103e5be8fca94eabec0c59ec97f9c7cd3a40c145f9956c6ed8fc66e0edbecbfc9d5e9b47fff1b94f79c3d584cd57f84073e9413ea6a9a4e617d5b9b
+	b2sums = 715b6f0ce750199a664369bdf549386b802d4e7c0d1cf24efc8dc260e0fb5c8b749f47d7f1f79c432aea2f37dce0482f6de7c8a54e68040ba2699ce4559a43da
 	b2sums = f989bc2ceb52aad3c6a23c439df3bbc672bc11d561a247d19971d30cc85ed5d42295de40f8e55b13404ed32aa44f12307c9f5b470f2e288d1c9c8329255c43bf
 
 pkgname = mutter-beta-performance
