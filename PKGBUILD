@@ -1,18 +1,15 @@
 # Maintainer: Evgeniy Alekseev
 
 pkgname='ahriman'
-pkgver=2.14.2
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="ArcH linux ReposItory MANager"
 arch=('any')
 url="https://github.com/arcan1s/ahriman"
 license=('GPL3')
-depends=('devtools>=1:1.0.0' 'git' 'pyalpm' 'python-cerberus' 'python-inflection' 'python-passlib' 'python-pyelftools' 'python-requests' 'python-srcinfo')
+depends=('devtools>=1:1.0.0' 'git' 'pyalpm' 'python-inflection' 'python-passlib' 'python-pyelftools' 'python-requests')
 makedepends=('python-build' 'python-flit' 'python-installer' 'python-wheel')
-optdepends=('breezy: -bzr packages support'
-            'darcs: -darcs packages support'
-            'mercurial: -hg packages support'
-            'python-aioauth-client: web server with OAuth2 authorization'
+optdepends=('python-aioauth-client: web server with OAuth2 authorization'
             'python-aiohttp: web server'
             'python-aiohttp-apispec>=3.0.0: web server'
             'python-aiohttp-cors: web server'
@@ -20,12 +17,13 @@ optdepends=('breezy: -bzr packages support'
             'python-aiohttp-security: web server with authorization'
             'python-aiohttp-session: web server with authorization'
             'python-boto3: sync to s3'
+            'python-cerberus: configuration validator'
             'python-cryptography: web server with authorization'
+            'python-matplotlib: usage statistics chart'
             'python-requests-unixsocket2: client report to web server by unix socket'
             'python-jinja: html report generation'
             'python-systemd: journal support'
-            'rsync: sync by using rsync'
-            'subversion: -svn packages support')
+            'rsync: sync by using rsync')
 source=("https://github.com/arcan1s/ahriman/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
         'ahriman.sysusers'
         'ahriman.tmpfiles')
@@ -55,6 +53,6 @@ package() {
   install -Dm644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
 
-sha512sums=('c5fc215ceac2e616d12d51ea6a2106f0be5fb5afbc36a721bda65fb66621e2e2b7984c3e43f8498a54c493f7da079c0429989ddcd5c626ef48aa8d1be289873e'
+sha512sums=('746eeaa698f2581c4a6ece29cc6159fc618ac0c7a73cb155b364ac9659695d0be209cf1fe960f563902b87a314d73fdd28c52e791eb225d83034847e1e17d350'
             'b1dd772f8802be99ccba3add5f1e6f78e5e79d0967342668dd12e472651a6b91c342f11fba330caaca421cc3d6c7e2011e09a6bd131f8ba14bbc4a6206cce539'
             '331e286cc82a7aca07b0332fab886e7404884a83f942afcee590b4a7a06abc1e3daa2dcf50d45041007ad7f3b93f760bfea5c7d38aa57937b0e103fd65b36564')
