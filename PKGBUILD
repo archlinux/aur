@@ -2,8 +2,8 @@
 # Co-maintainer: Edu4rdSHL <edu4rdshl@protonmail.com>
 pkgname=waveterm-git
 _pkgname=Wave
-pkgver=0.7.6.r19.gb0025e4
-_electronversion=31
+pkgver=0.7.6.r20.ga221655
+_electronversion=32
 _nodeversion=22
 pkgrel=1
 pkgdesc="An open-source, cross-platform terminal for seamless workflows"
@@ -23,7 +23,8 @@ makedepends=(
     'yarn'
     'git'
     'go>=1.18'
-    'scripthaus'
+    'ruby'
+    'go-task'
     'cmake'
     'zip'
     'nvm'
@@ -49,11 +50,11 @@ _ensure_local_nvm() {
 }
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-git}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${_pkgname}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-git}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
@@ -77,14 +78,16 @@ build() {
             echo "globalFolder: "${srcdir}"/.yarn/global"
         } >> .yarnrc.yml
         go env -w GOPROXY=https://goproxy.cn,direct
+        gem sources --add https://mirrors.tuna.tsinghua.edu.cn/rubygems/ --remove https://rubygems.org/
+        bundle config mirror.https://rubygems.org https://mirrors.tuna.tsinghua.edu.cn/rubygems
     else
         echo "Your network is OK."
     fi
     cp "assets/${pkgname%-git}-logo.png" "public/${pkgname%-git}.png"
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
     sed -i 's/${pkgname%-git}.icns/${pkgname%-git}.png/;s/"zip", "deb", "rpm", "AppImage", "pacman"/"dir"/' electron-builder.config.js
-    corepack enable yarn
-    echo y | yarn set version 4.1.1
+    corepack enable
+    echo y | yarn version 4.1.1
     NODE_ENV=development    yarn install
     NODE_ENV=production     scripthaus run electron-rebuild
     NODE_ENV=production     scripthaus run build-backend
