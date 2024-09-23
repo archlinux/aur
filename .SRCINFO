@@ -1,0 +1,26 @@
+pkgbase = ansible-dev-environment
+	pkgdesc = A pip-like install for ansible collections.
+	pkgver = 24.9.0
+	pkgrel = 1
+	url = https://github.com/ansible/ansible-dev-environment
+	arch = x86_64
+	license = GPLv3
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-jsonschema
+	depends = python-onigurumacffi
+	depends = ansible-core
+	depends = ansible-runner
+	depends = git
+	optdepends = ansible: check official ansible collections
+	provides = ansible-dev
+	conflicts = ansible-dev
+	source = ansible-dev-environment-24.9.0.tar.gz::https://files.pythonhosted.org/packages/46/24/7e1ea40bc098144cd4744cddd8c0af70b1c0e13ab0b28c73324968f1c885/ansible_dev_environment-24.9.0.tar.gz
+	sha256sums = d7a99db207f624dd7e1bb7db706073a8337cdcf57610298dabddff7ce6ef162f
+
+pkgname = ansible-dev-environment
