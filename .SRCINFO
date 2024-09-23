@@ -1,6 +1,6 @@
 pkgbase = container-desktop-bin
 	pkgdesc = Podman desktop companion.A familiar desktop graphical interface to the free and open container manager, podman!
-	pkgver = 5.2.2_rc.7
+	pkgver = 5.2.3
 	pkgrel = 1
 	url = https://iongion.github.io/container-desktop/
 	arch = aarch64
@@ -10,14 +10,14 @@ pkgbase = container-desktop-bin
 	depends = podman
 	depends = docker
 	provides = container-desktop
-	conflicts = container-desktop=5.2.2_rc.7
-	source = LICENSE-5.2.2_rc.7::https://raw.githubusercontent.com/iongion/container-desktop/5.2.2-rc.7/LICENSE
+	conflicts = container-desktop=5.2.3
+	source = LICENSE-5.2.3::https://raw.githubusercontent.com/iongion/container-desktop/5.2.3/LICENSE
 	source = container-desktop.sh
 	sha256sums = fd5805079cad1ee5ebcfd2a2a58e16553314c51700ce5f4e32dba06d9ce49283
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = container-desktop-5.2.2_rc.7-aarch64.pacman::https://github.com/iongion/container-desktop/releases/download/5.2.2-rc.7/container-desktop-aarch64-5.2.2-rc.7.pacman
-	sha256sums_aarch64 = f985ed038ec97dc8c5383745402a20bf9bf7ede64c5a270f211f483af329fe0c
-	source_x86_64 = container-desktop-5.2.2_rc.7-x86_64.pacman::https://github.com/iongion/container-desktop/releases/download/5.2.2-rc.7/container-desktop-x64-5.2.2-rc.7.pacman
-	sha256sums_x86_64 = 1ef5337b2c8ba61334b86271c5f0c965dbbd80b2e8aa8c46c4cb721072628ccf
+	source_aarch64 = container-desktop-5.2.3-aarch64.pacman::https://github.com/iongion/container-desktop/releases/download/5.2.3/container-desktop-aarch64-5.2.3.pacman
+	sha256sums_aarch64 = ab166e154efa3497b31a90fe6b102be33f3904f9770c64e74db14f0533526e40
+	source_x86_64 = container-desktop-5.2.3-x86_64.pacman::https://github.com/iongion/container-desktop/releases/download/5.2.3/container-desktop-x64-5.2.3.pacman
+	sha256sums_x86_64 = 33c8b4533035f55621f61fa034df0424d0e09d3febd5c4237a143d69f4f47988
 
 pkgname = container-desktop-bin
