@@ -1,6 +1,6 @@
 pkgbase = fooyin
 	pkgdesc = A customisable music player
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/ludouzi/fooyin
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = fooyin
 	depends = libvgm-player-git
 	optdepends = sdl2: For the SDL2 audio output plugin
 	optdepends = pipewire: For the PipeWire audio output plugin
-	source = fooyin-0.7.0.tar.gz::https://github.com/ludouzi/fooyin/archive/refs/tags/v0.7.0.tar.gz
-	sha256sums = d4cf2d3dee717330109313f1ad3d11cc185a3af48310aad50854bdebc5ceba90
+	source = fooyin-0.7.1.tar.gz::https://github.com/ludouzi/fooyin/archive/refs/tags/v0.7.1.tar.gz
+	sha256sums = 8e7472198c42237f1ab1b07e7c61873509580642e7ca63575b7bd83370273721
 
 pkgname = fooyin
