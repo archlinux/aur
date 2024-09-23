@@ -18,6 +18,7 @@ pkgbase = python-dlib-git
 	depends = libx11
 	depends = python
 	depends = libjxl
+	depends = ffmpeg
 	optdepends = sqlite
 	provides = python-dlib
 	conflicts = python-dlib
