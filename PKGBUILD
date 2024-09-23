@@ -7,7 +7,7 @@
 # installation.
 
 pkgname=jabref-git
-pkgver=5.12.r215.84463e7fba
+pkgver=5.15.r388.db58f58de2
 pkgrel=2
 epoch=3
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
@@ -19,62 +19,56 @@ makedepends=('git' 'java-environment=21' 'archlinux-java-run'  'gradle')
 optdepends=('gsettings-desktop-schemas: For web search support')
 provides=('jabref')
 conflicts=('jabref')
-source=("git+https://github.com/JabRef/jabref.git"
-        "git+https://github.com/JabRef/abbrv.jabref.org.git"
+source=("git+https://github.com/JabRef/jabref.git" 
+    "git+https://github.com/JabRef/abbrv.jabref.org.git"
+    "git+https://github.com/citation-style-language/styles.git"
+    "git+https://github.com/citation-style-language/locales.git"
 	"${pkgname%-git}.desktop"
 	"${pkgname%-git}.sh")
 sha256sums=('SKIP'
-            'SKIP'
-            'cb50a38f701374e6922e74e35c4f99f0418441c48b3c4855e64f0995f0be9cb8'
-            'b5936f54b1fd806687171bef46b5be3fa247289e7c63352b448c0922072edcdf')
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'cb50a38f701374e6922e74e35c4f99f0418441c48b3c4855e64f0995f0be9cb8'
+    'b5936f54b1fd806687171bef46b5be3fa247289e7c63352b448c0922072edcdf')
 
 prepare() {
-  cd ${pkgname%-git}
-
-  cp -a "${srcdir}"/abbrv.jabref.org/* buildres/abbrv.jabref.org/
+    cd ${pkgname%-git}
+    cp -r "${srcdir}"/abbrv.jabref.org/* buildres/abbrv.jabref.org/
+    cp -r "${srcdir}"/styles/* src/main/resources/csl-styles/
+    cp -r "${srcdir}"/locales/* src/main/resources/csl-locales
 }
 
 pkgver() {
-  cd ${pkgname%-git}
-  printf "%s" "$(git describe --tags --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
-  # printf %s $(git log -1 --format="%cd" --date=short | tr -d '-') 
+    cd ${pkgname%-git}
+    printf "%s" "$(git describe --tags --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-  # Due to a jlink bug you need at least JDK 21.0.1 to compile JabRef
-#  if [[ 0 -gt $(vercmp $("$JAVA_HOME"/bin/java -version |& sed -n "2s/.*build \([0-9.]*\).*/\1/; 2p") 21.0.1) ]]
-#  then
-#    echo "Error: you need JDK at least 21.0.1 to compile Jabref"
-#    echo "JDK currently in use:"
-#    "$JAVA_HOME"/bin/java -version |& sed -n "2p"
-#    exit 1
-#  fi
-  cd ${pkgname%-git}
-  export JAVA_HOME=$(archlinux-java-run --java-home --min 21 --max 21)
-  [[ -d "$srcdir"/gradle ]] && install -d "$srcdir"/gradle
-  export GRADLE_USER_HOME="$srcdir"/gradle
-  export DEFAULT_JVM_OPTS='"-Xmx1g" "-Xms64m"'
-  /usr/bin/gradle --no-daemon -PprojVersion="${pkgver}" \
-	    -PprojVersionInfo="${pkgver}--ArchLinux--${pkgrel}" assemble
-  /usr/bin/gradle --no-daemon -PprojVersion="${pkgver}" \
-	    -PprojVersionInfo="${pkgver}--ArchLinux--${pkgrel}" jlink 
+    # Due to a jlink bug you need at least JDK 21.0.1 to compile JabRef
+    cd ${pkgname%-git}
+    export JAVA_HOME=$(archlinux-java-run --java-home --min 21 --max 21)
+    [[ -d "$srcdir"/gradle ]] && install -d "$srcdir"/gradle
+    export GRADLE_USER_HOME="$srcdir"/gradle
+    export DEFAULT_JVM_OPTS='"-Xmx1g" "-Xms64m"'
+    /usr/bin/gradle --no-daemon -PprojVersion="${pkgver}" \
+        -PprojVersionInfo="${pkgver}--ArchLinux--${pkgrel}" assemble
+    /usr/bin/gradle --no-daemon -PprojVersion="${pkgver}" \
+        -PprojVersionInfo="${pkgver}--ArchLinux--${pkgrel}" jlink 
 }
 
 package() {
-  # install -dm755 "${pkgdir}"/usr/share/java/${pkgname}
-  install -Dm755 jabref.sh "${pkgdir}"/usr/bin/JabRef
+    install -Dm755 jabref.sh "${pkgdir}"/usr/bin/JabRef
     install -Dm644 jabref.desktop \
-	  "${pkgdir}"/usr/share/applications/${pkgname}.desktop
+	    "${pkgdir}"/usr/share/applications/${pkgname}.desktop
 
-  cd ${pkgname%-git}
-  # install -Dm755 build/image/bin/JabRef "${pkgdir}"/usr/bin/JabRef
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-  install -Dm644 src/main/resources/icons/jabref.svg \
-	  "${pkgdir}"/usr/share/pixmaps/jabref.svg
+    cd ${pkgname%-git}
+    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    install -Dm644 src/main/resources/icons/jabref.svg \
+	    "${pkgdir}"/usr/share/pixmaps/jabref.svg
 
-  # lowercase alias (for convenience and required for browser extensions)
-  ln -sf /usr/bin/JabRef "${pkgdir}"/usr/bin/jabref
+    ln -sf /usr/bin/JabRef "${pkgdir}"/usr/bin/jabref
 
-  install -d "${pkgdir}/opt"
-  cp -R build/image "${pkgdir}"/opt/${pkgname}
+    install -d "${pkgdir}/opt"
+    cp -R build/image "${pkgdir}"/opt/${pkgname}
 }
