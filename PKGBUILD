@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.34.8
+pkgver=0.34.10
 _electronversion=31
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker"
@@ -31,23 +31,23 @@ source=(
 )
 sha256sums=('ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('d51127bc96793fea54a6625f27092df88b13720f0d35f410691319937a381dbf')
-sha256sums_armv7h=('8f3008fa633658c3003fa54a5c41fca25fd91e02af4065005d7da62619ccfa89')
-sha256sums_x86_64=('a6abad670e1899afcb4e8a841d94f24bfca4e6bf88650ebb2fde457a9606bc71')
+sha256sums_aarch64=('557ae3c4f208d29bd132a5aec8d9e7764065a54fb58d332ce183ce34e64cd795')
+sha256sums_armv7h=('6a6b4d3a78da6f559063cf6aeb809b34c7931552a25acf37f2b58ebdb9ce68b4')
+sha256sums_x86_64=('cd3cd494b109c84b0cfa9a25ef6943dec7d4de37e2f83d48c5d37cdb31529efb')
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-bin}/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
     " -i "${srcdir}/lintian-${pkgname%-bin}"
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-bin}/
-        s/@runname@/app/
-        s/@cfgdirname@/${pkgname%-bin}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s/\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}/${pkgname%-bin}/" -i \
+    sed -i "s/\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}/${pkgname%-bin}/g" \
         "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {    
