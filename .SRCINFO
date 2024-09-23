@@ -1,7 +1,7 @@
 pkgbase = ect
 	pkgdesc = File compressor, supports postcompression of PNG, JPEG, GZIP and ZIP files
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fhanau/efficient-compression-tool
 	arch = x86_64
 	license = Apache-2.0
@@ -14,6 +14,6 @@ pkgbase = ect
 	source = git+https://github.com/fhanau/mozjpeg.git#commit=182457e3e26e1e078d5dbd09137cf04865be2e49
 	sha512sums = a1d0ad86aa8e6d720575daf7e833c3b787ac51595774b99b6fd4a8ece616150c2e2c174aa97a2bc0b89e16d6cd93ec0c0d657430c1a41bf08b121368af0a4abc
 	sha512sums = 13e286cf091b284d15888a959a8be5a90977bed92d861fd72d465199bd6112641b47d74a525d4100868d528a25921958e9ab579643b705befe48e5756ffa301f
-	sha512sums = 2d3f96c90cfa355797c4ebed9e5568d53f7fe7a1a225007908ea356c0a808cef856004b411b91beb2311102c3c77ea2eed37f3b8b2a9c057b8905c1d21d06383
+	sha512sums = 1bdd9efa8d9c49a16cf5f2135ed29dc120bc1b31eec7130802d22b3d09bf10fe337f734b39b38e422bbe6e1719aca6744d49e2b435c2cb94cbf401d89086947a
 
 pkgname = ect
