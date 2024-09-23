@@ -1,6 +1,6 @@
 pkgname=localjson-git
 _pkgname=LocalJson
-pkgver=3.0.0.r1.g9c3e33f
+pkgver=3.0.1.r2.g3b4a8bc
 _nodeversion=18
 pkgrel=1
 pkgdesc="A lightweight cross-platform toolset based on Wails"
@@ -36,7 +36,7 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"

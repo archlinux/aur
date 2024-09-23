@@ -1,6 +1,6 @@
 pkgbase = localjson-git
 	pkgdesc = A lightweight cross-platform toolset based on Wails
-	pkgver = 3.0.0.r1.g9c3e33f
+	pkgver = 3.0.1.r2.g3b4a8bc
 	pkgrel = 1
 	url = https://localjson.vercel.app/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = localjson-git
 	depends = networkmanager
 	depends = glib2
 	depends = webkit2gtk
-	provides = localjson=3.0.0
+	provides = localjson=3.0.1
 	conflicts = localjson
 	source = localjson.git::git+https://github.com/inRemark/localjson.git
 	sha256sums = SKIP
