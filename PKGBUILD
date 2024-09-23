@@ -1,8 +1,8 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
 pkgname=linutil-bin
 _pkgname=linutil
-pkgver=2024.09.23
-pkgrel=1
+pkgver=2024.09.19
+pkgrel=3
 pkgdesc="Chris Titus Tech's Linutil is a distro-agnostic toolbox designed to simplify everyday Linux tasks."
 arch=('x86_64' 'aarch64')
 url="https://github.com/ChrisTitusTech/$_pkgname"
@@ -13,8 +13,8 @@ depends=('git' 'pacman')
 optdepends=('ttf-nerd-fonts-symbols: symbols and icons')
 conflicts=($_pkgname)
 provides=($_pkgname)
-sha256sums_x86_64=('58fde2b517768e73d73135a82ea94db01738ab2d56038321404aa7f83e773060')
-sha256sums_aarch64=('ae13f1839af195b6bfb501e0b58fb7ba324c3178435df83afe9b311873c9c57b')
+sha256sums_x86_64=('4931a0f8dc5956219583eec22a0c9a1d83111cdddeb8a48fc7805d3598fccb23')
+sha256sums_aarch64=('93033e65657dc383d4666acc4ef87b82e8e1b4d220528dbc9d4f740d83528acb')
 
 package() {
     cd "$srcdir"
