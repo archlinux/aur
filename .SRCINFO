@@ -20,7 +20,7 @@ pkgbase = openmsx
 	optdepends = jack-audio-connection-kit
 	provides = openmsx
 	conflicts = openmsx-git
-	source = https://github.com/openMSX/openMSX/releases/download/RELEASE_19_1/openmsx-19.1.tar.gz
-	md5sums = 20d7eae3544f5c3d1cc1034712df0b4b
+	source = https://github.com/openMSX/openMSX/releases/download/RELEASE_20_0/openmsx-20.0.tar.gz
+	md5sums = baa9eb5e84a7b3114a8a62d969197455
 
 pkgname = openmsx
