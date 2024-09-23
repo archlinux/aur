@@ -1,0 +1,26 @@
+pkgbase = anime-games-launcher
+	pkgdesc = Universal linux launcher for anime games
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/an-anime-team/anime-games-launcher
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	depends = gtk4
+	depends = libadwaita
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = gcc-libs
+	depends = glib2
+	depends = pango
+	depends = xz
+	depends = bzip2
+	depends = cairo
+	depends = p7zip
+	optdepends = mangohud: FPS Overlay
+	optdepends = gamescope: Micro-Compositor
+	optdepends = gamemode: CPU Scaling Control
+	source = https://github.com/an-anime-team/anime-games-launcher/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 191db07fc10a866220d1cb6b92c526c8905d85508f224faf51913002b7c207d9
+
+pkgname = anime-games-launcher
