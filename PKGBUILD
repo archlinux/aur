@@ -2,7 +2,7 @@
 
 pkgname=taptempo
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line tap tempo. Hit enter key with style and you'll get the corresponding number of beats per minute (BPM). This tool is very useful to quickly find the tempo of a song without launching a big digital workstation like Ardour or LMMS"
 arch=('x86_64')
 url="https://taptempo.tuxfamily.org"
