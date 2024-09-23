@@ -7,7 +7,7 @@ arch=(any)
 url="https://github.com/wwmm/wwplot"
 license=('GPL3')
 depends=(python pyside6 python-numpy python-scipy python-matplotlib qt6-base
-        qt6-declarative)
+        qt6-declarative qt6-tools)
 makedepends=('meson')
 options=(!emptydirs)
 source=("$pkgname-$pkgver::https://github.com/wwmm/wwplot/archive/v$pkgver.tar.gz")

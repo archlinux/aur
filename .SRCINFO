@@ -13,6 +13,7 @@ pkgbase = wwplot
 	depends = python-matplotlib
 	depends = qt6-base
 	depends = qt6-declarative
+	depends = qt6-tools
 	options = !emptydirs
 	source = wwplot-1.0.0::https://github.com/wwmm/wwplot/archive/v1.0.0.tar.gz
 	sha256sums = e2c04731dcd2c4c9ba37510504aef777adba0744ff7b3b8ddcf963dcc9bb6de8
