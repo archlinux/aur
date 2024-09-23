@@ -1,18 +1,16 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _pkgname="starkli"
 pkgname="${_pkgname}-git"
-pkgver=0.3.3.r0.g1a028fb
+pkgver=0.3.5.r0.gfa4f0e3
 pkgrel=1
 pkgdesc="A blazing fast CLI tool for Starknet powered by starknet-rs"
-arch=('any')
+arch=('x86_64')
 url="https://book.starkli.rs"
 _url="https://github.com/xJonathanLEI/${_pkgname}"
 license=('Apache-2.0' 'MIT')
 makedepends=('git' 'cargo')
 depends=('glibc' 'gcc-libs' 'libusb')
-optdepends=('bash-completion: for shell auto-completion'
-            'zsh-completions: for shell auto-completion')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
