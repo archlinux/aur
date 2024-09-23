@@ -2,7 +2,7 @@
 # Contributor: Arturo Penen <apenen@gmail.com>
 
 pkgname=ghorg
-pkgver=1.9.13
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='allows you to quickly clone all of an orgs, or users repos into a single directory.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/gabrie30/ghorg'
 license=('Apache-2.0')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7f5dbf8a22aced80ed36d712744d295d696ff3894ad152680089196d2dca93c9')
+sha256sums=('ead1071c7d6d147578c2299f341a2089cb5f6901939f3581dcc408eb72e2f0fc')
 
 build() {
   cd $pkgname-$pkgver
