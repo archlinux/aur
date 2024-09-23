@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=comet-bin
 _pkgname=Comet
-pkgver=2.0.4
+pkgver=2.1.2
 _electronversion=32
 pkgrel=1
 pkgdesc="☄️ A cross-platform app powered by FFmpeg for easy, beautiful video conversion. Free, user-friendly, and in development with bulk uploads and customizable output settings."
@@ -27,15 +27,15 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('bd68a99a5b189cb4e263f86c8074cf7b5c24ce6c120214f0a6e0b23bed58cd8a')
-sha256sums_x86_64=('8c7c2d02751fcfe14fde444c7f59ee3d8cc8dc2760bee28c3b028b87c68252c7')
+sha256sums_aarch64=('ffe3411c75a168e8571ad63b0d9ef378fe50e9ab3d3dc8e554c582cb1df4a7a3')
+sha256sums_x86_64=('d29d32a346678a9213bc15a6371ad4d30c56eb36823c6f39ab40ff92b20f30ee')
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-bin}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${_pkgname}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }

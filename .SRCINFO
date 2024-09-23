@@ -1,6 +1,6 @@
 pkgbase = comet-bin
 	pkgdesc = ☄️ A cross-platform app powered by FFmpeg for easy, beautiful video conversion. Free, user-friendly, and in development with bulk uploads and customizable output settings.
-	pkgver = 2.0.4
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://comet.thavarshan.com/
 	arch = aarch64
@@ -8,14 +8,14 @@ pkgbase = comet-bin
 	license = MIT
 	depends = electron32
 	depends = nodejs
-	provides = comet=2.0.4
+	provides = comet=2.1.2
 	conflicts = comet
 	options = !emptydirs
 	source = comet.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = comet-2.0.4-aarch64.deb::https://github.com/Thavarshan/comet/releases/download/v2.0.4/comet_2.0.4_arm64.deb
-	sha256sums_aarch64 = bd68a99a5b189cb4e263f86c8074cf7b5c24ce6c120214f0a6e0b23bed58cd8a
-	source_x86_64 = comet-2.0.4-x86_64.deb::https://github.com/Thavarshan/comet/releases/download/v2.0.4/comet_2.0.4_amd64.deb
-	sha256sums_x86_64 = 8c7c2d02751fcfe14fde444c7f59ee3d8cc8dc2760bee28c3b028b87c68252c7
+	source_aarch64 = comet-2.1.2-aarch64.deb::https://github.com/Thavarshan/comet/releases/download/v2.1.2/comet_2.1.2_arm64.deb
+	sha256sums_aarch64 = ffe3411c75a168e8571ad63b0d9ef378fe50e9ab3d3dc8e554c582cb1df4a7a3
+	source_x86_64 = comet-2.1.2-x86_64.deb::https://github.com/Thavarshan/comet/releases/download/v2.1.2/comet_2.1.2_amd64.deb
+	sha256sums_x86_64 = d29d32a346678a9213bc15a6371ad4d30c56eb36823c6f39ab40ff92b20f30ee
 
 pkgname = comet-bin
