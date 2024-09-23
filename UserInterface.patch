@@ -1,0 +1,41 @@
+diff --git a/Main/UserInterface.cpp b/Main/UserInterface.cpp
+--- a/Main/UserInterface.cpp	2024-08-26 04:34:00.000000000 +0200
++++ b/Main/UserInterface.cpp	2024-09-23 18:58:10.757917465 +0200
+@@ -902,14 +902,14 @@
+ 		bool xdgOpenPresent = wxFileName::IsFileExecutable (wxT("/usr/bin/xdg-open")) || wxFileName::IsFileExecutable (wxT("/usr/local/bin/xdg-open"));
+ 		bool nautilusPresent = wxFileName::IsFileExecutable (wxT("/usr/bin/nautilus")) || wxFileName::IsFileExecutable (wxT("/usr/local/bin/nautilus"));
+ 
+-		if (desktop == L"GNOME" || (desktop.empty() && !xdgOpenPresent && nautilusPresent))
++		if (xdgOpenPresent)
+ 		{
+-			// args.push_back ("--no-default-window"); // This option causes nautilus not to launch under FreeBSD 11
+-			args.push_back ("--no-desktop");
++			// Fallback on the standard xdg-open command
++			// which is not always available by default
+ 			args.push_back (string (path));
+ 			try
+ 			{
+-				Process::Execute ("nautilus", args, 2000);
++				Process::Execute ("xdg-open", args, 2000);
+ 			}
+ 			catch (TimeOut&) { }
+ 			catch (exception &e) { ShowError (e); }
+@@ -935,14 +935,14 @@
+ 				catch (exception &e) { ShowError (e); }
+ 			}
+ 		}
+-		else if (xdgOpenPresent)
++		else if (desktop == L"GNOME" || (desktop.empty() && !xdgOpenPresent && nautilusPresent))
+ 		{
+-			// Fallback on the standard xdg-open command
+-			// which is not always available by default
++			// args.push_back ("--no-default-window"); // This option causes nautilus not to launch under FreeBSD 11
++			args.push_back ("--no-desktop");
+ 			args.push_back (string (path));
+ 			try
+ 			{
+-				Process::Execute ("xdg-open", args, 2000);
++				Process::Execute ("nautilus", args, 2000);
+ 			}
+ 			catch (TimeOut&) { }
+ 			catch (exception &e) { ShowError (e); }
