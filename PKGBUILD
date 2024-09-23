@@ -1,14 +1,14 @@
 # Maintainer: yifwon <wyf9661 at gmail dot com>
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="bilibili-appimage"
-_pkgver=1.14.0
-_subver=2
+_pkgver=1.14.2
+_subver=1
 release_tag="${_pkgver}-${_subver}"
 pkgver="${_pkgver}.${_subver}"
 pkgrel=1
 pkgdesc="Bilibili official desktop client.基于哔哩哔哩官方客户端移植的Linux版本,支持漫游"
 arch=('x86_64' 'aarch64' 'loong64')
-url="https://github.com/msojocs/bilibili-linux"
+url="https://bgithub.xyz/msojocs/bilibili-linux"
 license=('MIT')
 options=(!strip)
 conflicts=("${pkgname%-appimage}")
@@ -18,9 +18,9 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::${url}/releases/download/v
 source_aarch64=("${pkgname}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${release_tag}/${pkgname%-appimage}-${_pkgver}-arm64.AppImage")
 source_loong64=("${pkgname}-${pkgver}-loong64.AppImage::${url}/releases/download/v${release_tag}/${pkgname%-appimage}-${_pkgver}-loong64.AppImage")
 source=("LICENSE::https://raw.githubusercontent.com/msojocs/bilibili-linux/master/license")
-sha256sums_x86_64=('c3706b46e44c6cff930131e264a19f3d86bfd7e553a9f594f949af05898112a6')
-sha256sums_aarch64=('6b2027add0205b40db9894659b84028f678966fbe82af33fb5bdd815646a3cb0')
-sha256sums_loong64=('4ae664c01eda233036e39872822ce492199c5fcb5cd4bb1228fff84ecff09754')
+sha256sums_x86_64=('8cf135767eaaace07687408e0ca0521f7f01c9725f1ee57be66084c35715cbc5')
+sha256sums_aarch64=('7413be2d4b0fc66663d17f5bb7926bc334f3a20b9038f3d1a456f71859ef7105')
+sha256sums_loong64=('d222225e34ca01b2832ecd65c69c74f0a5a06d13b52218c48c05638987eeb5fc')
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468')
 
 _appimage="${pkgname}-${pkgver}-${CARCH}.AppImage"
