@@ -8,7 +8,7 @@
 
 pkgname=jabref-git
 pkgver=5.15.r388.db58f58de2
-pkgrel=2
+pkgrel=3
 epoch=3
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
 arch=('x86_64')
@@ -34,9 +34,11 @@ sha256sums=('SKIP'
 
 prepare() {
     cd ${pkgname%-git}
-    cp -r "${srcdir}"/abbrv.jabref.org/* buildres/abbrv.jabref.org/
-    cp -r "${srcdir}"/styles/* src/main/resources/csl-styles/
-    cp -r "${srcdir}"/locales/* src/main/resources/csl-locales
+    git submodule init
+    git config submodule.abbrv.jabref.org.url "${srcdir}/abbrv.jabref.org"
+    git config submodule.csl-styles.url "${srcdir}/styles"
+    git config submodule.csl-locales.url "${srcdir}/locales"
+    git -c protocol.file.allow=always submodule init
 }
 
 pkgver() {
