@@ -1,13 +1,13 @@
 pkgbase = simple-icons
 	pkgdesc = Free SVG icons for popular brands
-	pkgver = 13.10.0
+	pkgver = 13.11.0
 	pkgrel = 1
 	url = https://simpleicons.org/
 	arch = any
 	license = CC0-1.0
 	conflicts = simple-icons
 	options = !strip
-	source = simple-icons-13.10.0.tar.gz::https://github.com/simple-icons/simple-icons/archive/refs/tags/13.10.0.tar.gz
-	sha256sums = 7932bfb788570095401e578e9c12aa5b40a474ca19bad95425b48ca4da95959b
+	source = simple-icons-13.11.0.tar.gz::https://github.com/simple-icons/simple-icons/archive/refs/tags/13.11.0.tar.gz
+	sha256sums = 64d70638865f3606ecea3ad5c51061f8780a1b49d26bc53c5c3c2c042076fdce
 
 pkgname = simple-icons
