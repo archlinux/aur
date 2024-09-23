@@ -17,7 +17,8 @@ md5sums=('69e4bd74d0a078afc00e8218c2f43c5e')
 
 build() {
     cd $pkgname-$pkgver
-    make CC=gcc build/$pkgname
+    meson setup build
+    meson compile -C build
 }
 
 check() {
