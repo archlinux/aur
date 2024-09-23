@@ -1,6 +1,6 @@
 pkgbase = drawio-nativefier
 	pkgdesc = draw.io desktop app (electron)
-	pkgver = 32.0.2
+	pkgver = 32.1.2
 	pkgrel = 1
 	url = https://app.diagrams.net/
 	arch = armv7l
