@@ -1,32 +1,52 @@
-# Maintainer: Heddxh <g311571057 at gmail dot com>
+# Maintainer: tippfehlr
+# Maintainer: Chewing_Bever
+# Contributor: Heddxh <g311571057 at gmail dot com>
 pkgname=fish-lsp-git
 _pkgname=${pkgname%-git}
-pkgver=r312.1cbeb37
-pkgrel=2
-pkgdesc="LSP implementation for the fish shell langauge"
-arch=(any)
+pkgver=r318.ed156da
+pkgrel=1
+pkgdesc="LSP implementation for the fish shell language"
+# tree-sitter contains compiled files
+arch=('x86_64')
 url="https://github.com/ndonfris/fish-lsp/"
 license=('MIT')
-depends=('fish')
-makedepends=('git' 'yarn')
-provides=(${_pkgname})
-source=("${_pkgname}::git+https://github.com/ndonfris/fish-lsp.git")
+depends=('fish' 'nodejs')
+makedepends=('git' 'yarn' 'typescript')
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=("$pkgname::git+https://github.com/ndonfris/fish-lsp.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
+    cd "$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
+prepare() {
+    cd "$pkgname"
+    yarn --frozen-lockfile --ignore-scripts
+}
+
 build() {
-    cd "$_pkgname"
-    yarn install --ignore-scripts # Let's do it by ourselves
-    yarn run compile
-	./bin/fish-lsp complete > ./fish-lsp.fish # completion
+    cd "$pkgname"
+    tsc
+    ./bin/fish-lsp complete >./fish-lsp.fish
 }
 
 package() {
-	cd "$_pkgname"
-	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 "fish-lsp.fish" "$pkgdir/usr/share/fish/vendor_completions.d/fish-lsp.fish"
+    cd "$pkgname"
+    mkdir -p "$pkgdir/usr/bin"
+    mkdir -p "$pkgdir/usr/lib/node_modules/fish-lsp"
+
+    rm -r node_modules/@types
+    cp -r node_modules out package.json "$pkgdir/usr/lib/node_modules/fish-lsp"
+    # nvim-lspconfig doesn’t work without this symlink
+    ln -s /usr/lib/node_modules/fish-lsp/node_modules/@esdmr/tree-sitter-fish/tree-sitter-fish.wasm \
+        "$pkgdir/usr/lib/node_modules/fish-lsp/"
+
+    printf "%s\n" "#!/usr/bin/env node" "require('/usr/lib/node_modules/fish-lsp/out/cli');" >"$pkgdir/usr/bin/fish-lsp"
+    chmod 755 "$pkgdir/usr/bin/fish-lsp"
+
+    install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "fish-lsp.fish" "$pkgdir/usr/share/fish/vendor_completions.d/fish-lsp.fish"
 }
