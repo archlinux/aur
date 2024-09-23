@@ -1,6 +1,6 @@
 pkgbase = geobug
 	pkgdesc = Geobug is an adaptive client for GeoClue. It can display your location information and save a track of your movements to a GPX-file.
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://codeberg.org/tpikonen/geobug
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = geobug
 	depends = python-pydbus
 	depends = python-gpxpy
 	depends = geoclue
-	source = https://codeberg.org/tpikonen/geobug/archive/0.1.6.tar.gz
-	sha512sums = 18c8b124c7d6a42af353ad62fca0552348751136515486bef01fedf03bd87597b36ddf3a492adfbb02e897c7aaf6f47d5ac3b4682bff3b814421e1571d9a107a
+	source = https://codeberg.org/tpikonen/geobug/archive/0.1.7.tar.gz
+	sha512sums = 9d742427804e4fed62c226304e9d045d0ac5c8108b19d76a9b3f728be96b44d7a4778bc7fff400bbbd3a5fb795453c57d279a54b2d901a74b64e8a15e5bf9828
 
 pkgname = geobug
