@@ -1,5 +1,4 @@
 #! /bin/bash
-#test
 
 pkgname="optimus-manager-git"
 install="optimus-manager.install"
