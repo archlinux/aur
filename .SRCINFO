@@ -1,0 +1,22 @@
+pkgbase = gog-x4_foundations
+	pkgdesc = X4 is a living, breathing space sandbox running entirely on your PC.
+	pkgver = 7.10_hotfix_2
+	pkgrel = 1
+	url = https://www.gog.com/en/game/x4_foundations
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = bzip2
+	depends = gcc-libs
+	depends = vulkan-icd-loader
+	depends = libx11
+	depends = util-linux-libs
+	noextract = x4_foundations_7_10_hotfix_2_75856.sh
+	noextract = x4_foundations.desktop
+	options = !strip
+	source = x4_foundations_7_10_hotfix_2_75856.sh::gog://x4_foundations_7_10_hotfix_2_75856.sh
+	source = x4_foundations.desktop
+	sha256sums = 409d3bfbfad3a17881b52165777af79553d9348799ab35d0fa109f9a83aa7152
+	sha256sums = 0ed55646207b2970dda3face988057ff56ed20613b961fa36a929d37675083a5
+
+pkgname = gog-x4_foundations

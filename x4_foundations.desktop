@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=X4: Foundations
+Exec=/opt/x4_foundations/X4
+Path=/opt/x4_foundations
+Icon=x4_foundations.png
+Type=Application
+Categories=Game;Simulation;
