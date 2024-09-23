@@ -179,7 +179,8 @@ _opt_pagesize="Letter" # A4, Letter, Legal
 
 # 0 use alternate libtiff package (libtiff5 or libtiff5-hylafaxplus)
 # 1 include libtiff in hylafaxplus
-_opt_Integrated_LIBTIFF=0
+# 2 use only system libtiff
+_opt_Integrated_LIBTIFF=2
 
 # 0 link hylafaxplus executables to alternate libtiff (libtiff5 or libtiff5-hylafaxplus)
 # 1 link to system libtiff. New versions are often incompatible.
@@ -189,7 +190,7 @@ set -u
 pkgname='hylafaxplus'
 _pkgnick='hylafax'
 pkgver='7.0.8'
-pkgrel='1'
+pkgrel='2'
 _sendfaxvsicommit='18fabc74490362cd26690331d546d727c727db25'
 pkgdesc='Enterprise Fax Server'
 arch=('i686' 'x86_64')
@@ -197,11 +198,6 @@ url='http://hylafax.sourceforge.net/'
 license=('custom')
 depends=('glibc' 'gcc-libs' 'bash' 'perl' 'dash' 'libtiff' 'pam' 'ghostscript' 'sharutils' 'jbigkit' 'lcms2' 'gawk' 'libjpeg-turbo' 'libldap' 'libxcrypt' 'openssl' 'zlib') # 'gsfonts-type1') # 'cron'
 depends[1]='libtiff>=4.6.0' # 'libtiff<4.6.0' https://sourceforge.net/p/hylafax/mailman/message/38259441/
-if [ "${_opt_Integrated_LIBTIFF}" -eq 0 ]; then
-  depends+=('libtiff5-hylafaxplus')
-else
-  provides=('libtiff5') # no =version
-fi
 # BASE64 is the default so HylaFAX+ doesn't need uuencode but I put it in anyways to placate configure and the bin finder in faxsetup!
 optdepends=(
   'smtp-server: email support' # this must be configured if installed or Hylafax will spam the process table with orphaned sendmail processes
@@ -224,6 +220,14 @@ optdepends=(
 )
 provides=("hylafax=${pkgver}")
 conflicts=('hylafax')
+if [ "${_opt_Integrated_LIBTIFF}" -eq 0 ]; then
+  depends+=('libtiff5-hylafaxplus')
+elif [ "${_opt_Integrated_LIBTIFF}" -eq 1 ]; then
+  provides=('libtiff5') # no =version
+else
+  depends[1]='libtiff>=4.7.0'
+  conflicts+=('libtiff5-hylafaxplus')
+fi
 # backup=(var/spool/hylafax/bin/{faxrcvd,notify})
 options=('!buildflags') # get rid of Class 1 errors No response to PPS MPS, RSPREC DCN, No receiver protocol, Failure to train remote modem
 install="${_pkgnick}.install"
@@ -287,7 +291,7 @@ sha256sums=('b0b8ef80cfffe40d3b6f571165fe5d26392bf4a88c5b34f56dda53aacc66a30e'
 
 # Note: I only send faxes. Fax receiving might need a bunch more patches.
 
-if [ "${_opt_Integrated_LIBTIFF}" -ne 0 ]; then
+if [ "${_opt_Integrated_LIBTIFF}" -eq 1 ]; then
 _libtiff_top() {
 set -u
 local _pkgname=tiff
@@ -433,7 +437,7 @@ prepare() {
     -e '# pretend, that libtiff 4.x is similar to 4.0'
     -e '/tiff_runlen_t/ s:4\..\+):4.[0123456789]):'
   )
-  if [ "${_opt_Integrated_LIBTIFF}" -ne 0 ]; then
+  if [ "${_opt_Integrated_LIBTIFF}" -eq 1 ]; then
   _seds+=(
     -e '# change TIFFBIN detection to a binary still in libtiff 4.6.0 avoiding the need for -with-TIFFBIN'
     -e 's:tiff2ps:tiffcp:g'
@@ -535,8 +539,10 @@ prepare() {
     printf '#\nInclude:\t\t"etc/config-modems"\n' >> "${_cfg}"
   done
 
-  # Switch tiffcp to old version that supports tiffcp -i
-  sed -e 's:\btiffcp\b:tiffcp.hylafax:g' -i $(grep --include 'configure' --include '*.sh*' -lr -e '\btiffcp\b' .)
+  if [ "${_opt_Integrated_LIBTIFF}" -lt 2 ]; then
+    # Switch tiffcp to old version that supports tiffcp -i
+    sed -e 's:\btiffcp\b:tiffcp.hylafax:g' -i $(grep --include 'configure' --include '*.sh*' -lr -e '\btiffcp\b' .)
+  fi
 
   set +u
 
@@ -565,7 +571,7 @@ build() {
       #--with-PATH_AFM='/usr/share/fonts/Type1' #gs ignores this
     )
     local _LDPATH=''
-    if [ "${_opt_Integrated_LIBTIFF}" -ne 0 ]; then
+    if [ "${_opt_Integrated_LIBTIFF}" -eq 1 ]; then
     _conf+=(
       --with-TIFFINC="-I${srcdir}/${_libtiff_srcdir}/libtiff"
       --with-LIBTIFF="-L${srcdir}/${_libtiff_srcdir}/libtiff/.libs -ltiff"
