@@ -2,7 +2,7 @@
 
 pkgname=mangojuice
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Gui settings mangohud"
 arch=(x86_64)
 url="https://github.com/radiolamp/${pkgname}"
@@ -28,7 +28,7 @@ optdepends=(
 
 options=(!debug)
 source=($url/archive/refs/tags/$pkgver.tar.gz)
-b2sums=(b965c791bc418088eecc22909b46c10682fc7997b2c1778ea16467aa0eb07e376f4855a39142271c3119def042b29b1ebc09c79e542cdb6eec9077810df198d7)
+b2sums=(74d418515248c0eafaa22bad563fe1a33a8a1cd7b626c3f88ef94e2cbcb276cd4db135035cd10a9a5decb4994afe699968cb9e4a3af31e458c7831afc46c6ff8)
 
 build() {
   arch-meson ${pkgname}-$pkgver build
