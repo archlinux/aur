@@ -2,13 +2,13 @@
 
 _pkgname=dlib
 pkgname=python-${_pkgname}-git
-pkgver=19.24.4.r16.g0947215
+pkgver=19.24.6.r4.gfafdac3
 pkgrel=1
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques. -- git non-CUDA version"
 arch=('x86_64')
 url="http://www.dlib.net/"
 license=('BSL-1.0')
-depends=('cblas' 'giflib' 'lapack' 'libjpeg-turbo' 'libpng' 'libx11' 'python')
+depends=('cblas' 'giflib' 'lapack' 'libjpeg-turbo' 'libpng' 'libx11' 'python' 'libjxl')
 makedepends=('git' 'boost' 'cmake' 'python-setuptools' 'sqlite')
 optdepends=('sqlite')
 provides=('python-dlib')
