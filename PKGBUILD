@@ -4,7 +4,7 @@
 pkgname=intel-npu-driver-bin
 pkgver=1.8.0.20240916_10885588273
 pkgrel=1
-main_ver=$(echo $pkgver | cut -d'.' -f1-3)
+_main_ver=$(echo $pkgver | cut -d'.' -f1-3)
 pkgdesc="Intel(R) NPU (Neural Processing Unit) Driver"
 arch=(x86_64)
 url="https://github.com/intel/linux-npu-driver"
@@ -20,9 +20,9 @@ source=(
 	"LICENSE::https://raw.githubusercontent.com/intel/linux-npu-driver/main/LICENSE.md"
 )
 noextract=("${source[@]%%::*}")
-sha256sums=('eb5355cdbfa4e137feb5696ddf40c02d42759c5fb1656eb58b651ba527d1b9f4'
-            '1fe34bcaf29ed22ae7ee481f1384fa4b2eb665c6abaf14f96a126e754e8f7cc6'
-            'f3b41e51e596c7703a428ce52333ddb7c7c689493e9341cb22af158fe0dfe996'
+sha256sums=('e8a053336619507c3d89eeaf45481057a58c602f37b570b0a82883abe9bd98fa'
+            '60ec473073a13f3b395853280a55b7ed3a2b010675acb16a33e75c8b4fce3db3'
+            '5a7f1c642c87aefa937bf53fe51efbe4ed9cb8b9fad9967a3b1ac8bd805bf61c'
             '451963b6682694730dbe4889fff2ef1c20def68992e2594880c15a28e6c87be5')
 
 prepare() {
