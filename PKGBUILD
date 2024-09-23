@@ -26,7 +26,7 @@ provides=('abdownloadmanager')
 conflicts=('abdownloadmanager')
 options=(!debug)
 source=("https://github.com/amir1376/${pkgname%-bin}/releases/download/v${pkgver}/ABDownloadManager_${pkgver}_linux.deb")
-sha256sums=('c21e3c074712b02abea96e63dbf58dbdd93eda8bd755331a0fbb34c99c764792')
+sha256sums=('3ebd93e49958e81ddae0c57f6865d56b291f9575b4705c1937dabb61f7212177')
 
 package() {
     cd "${srcdir}"
