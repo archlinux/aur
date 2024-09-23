@@ -1,0 +1,14 @@
+pkgbase = nerdfonts-installer-bin
+	pkgdesc = A script to detect the OS and install Nerd Fonts
+	pkgver = 2024.09.23.01
+	pkgrel = 1
+	url = https://github.com/fam007e/nerd_fonts_installer
+	arch = x86_64
+	license = MIT
+	depends = curl
+	depends = tar
+	depends = fontconfig
+	source = https://github.com/fam007e/nerd_fonts_installer/archive/refs/tags/v2024.09.23.01.tar.gz
+	sha256sums = 9177829361720d3a687a545bff85744494d7363d8212292514f00cba594450e8
+
+pkgname = nerdfonts-installer-bin
