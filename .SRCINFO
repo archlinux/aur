@@ -1,7 +1,7 @@
 pkgbase = vnlog
 	pkgdesc = Tools to manipulate whitespace-separated ASCII logs
-	pkgver = 1.36
-	pkgrel = 4
+	pkgver = 1.38
+	pkgrel = 1
 	url = https://github.com/dkogan/vnlog
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -15,7 +15,7 @@ pkgbase = vnlog
 	optdepends = python
 	optdepends = python-numpy
 	provides = vnlog
-	source = https://github.com/dkogan/vnlog/archive/v1.36.tar.gz
-	sha256sums = 7adb33443b8b21a8fa733c98700c55086f8b8d7fa9a6e0decef605fe4d82edb8
+	source = https://github.com/dkogan/vnlog/archive/v1.38.tar.gz
+	sha256sums = 86a295953ca6f5fc4e16d97246434f6e68f597766c4c6d1e12953033bd66262f
 
 pkgname = vnlog
