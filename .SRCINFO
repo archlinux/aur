@@ -7,7 +7,7 @@ pkgbase = cgaserver-bin
 	license = Unlicense
 	source = https://www.classicgamingarena.com/download-cgaserver-linux-64bit-tar
 	source = https://gist.githubusercontent.com/keyboardcrash32/d4e06e450da65aec5e60e0ecc88f0098/raw/fd84449731543643c0bfd638d49dd89860d7766a/cgaserver.service
-	sha512sums = 21ca2a02111cbec139b4d63dab6423e822e9378160851c8360728ef18e61559bd3b7222287b364402ab74e35d00b4ba678899b1c0041aeba584841d4a749793d
+	sha512sums = f7ac44969315223f2fe01fc6ca1548d230a0fedd6c9759cd5571a95420fb742af7940bf56820b616b73f0885db8f523dd9e063fa759366a2de4b8d1c4c024de4
 	sha512sums = fc26a1adcb6f1ee088b095457054b0df3546dd10bf31340730e53b2fd7b85002e2385e76da6ef165c0115d068bb16845ee114414270b70712b69193d6c072e9f
 
 pkgname = cgaserver-bin
