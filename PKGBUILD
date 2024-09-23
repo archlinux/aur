@@ -7,11 +7,11 @@
 
 pkgname=ffmpeg2.8
 pkgver=2.8.21
-pkgrel=3
+pkgrel=4
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=('x86_64')
 url='https://ffmpeg.org/'
-license=('GPL3')
+license=('GPL-3.0-only')
 options=('!lto')
 depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'jack' 'lame' 'libmodplug' 'libpulse' 'libsoxr' 'libssh' 'libtheora'
@@ -28,11 +28,13 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswscale.so')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "mathops_shift.patch"::"https://github.com/FFmpeg/FFmpeg/commit/effadce6c756247ea8bae32dc13bb3e6f464f0eb.patch"
+        "tty_read_probe.patch"
         "${pkgname}.conf")
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
 sha256sums=('e5d956c19bff2aa5bdd60744509c9d8eb01330713d52674a7f650d54b570c82d'
             'SKIP'
             '8fad5f253bcda7a17523dbfcbfcfd60b3db23783dcdb65998005cddc7c7776c3'
+            'd02d19b644ef29a6ee3e78e188b3892198577a18b58d45963e2771a6251cca73'
             'f0d34b08843e3cba6276e234f1fc4e520e3a7c45d2b4450393a1a5dd9da49247')
 
 prepare() {
@@ -40,6 +42,8 @@ prepare() {
   # avcodec/x86/mathops
   # clip constants used with shift instructions with in inline assembly
   patch -Np1 -i "${srcdir}/mathops_shift.patch"
+  # Fix for incompatible pointers
+  patch -p1 -i "${srcdir}/tty_read_probe.patch"
 }
 
 build() {
