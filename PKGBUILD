@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rmpi
-_pkgver=0.7-2
+_pkgver=0.7-2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Interface (Wrapper) to MPI (Message-Passing Interface)"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -15,9 +15,9 @@ depends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-build.patch")
-md5sums=('ba8538ddb5d4c12863d5b16e3d64f290'
+md5sums=('e8fee7664f9de0ccc4e8ab071d26e650'
          '5922dce2ffadb52b20b8b0f53b74536e')
-b2sums=('c59054786e90a5d98da365fcee3ccec55399dfe039feacfe2530850505c7ded50d37c41328a3393cd76ec18ecf21fcb0ad0614eca4b400996ac4924c8521cab8'
+b2sums=('7724186da6f81bf5cd04c5be96a93fd8da83eec59395000d57c4ad93738a33909b415933c98bce96177faa3feaf8d401beb12d0962c118d2038d086b18f0b692'
         'b8b1306f851458c2842bdef88a693e716e08f9fc108e51a97748c783c2ca01a48417f40587f88cb68e2cd693629db02840dfa87fb5197a5b9c3c9a973942f7b8')
 
 prepare() {
