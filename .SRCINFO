@@ -1,6 +1,6 @@
 pkgbase = local-llama-bin
 	pkgdesc = Local Llama also known as L³ is designed to be easy to use, with a user-friendly interface and advanced settings.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://folio.tib0.com/
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = local-llama-bin
 	depends = electron31
 	depends = vulkan-icd-loader
 	depends = nodejs
-	provides = local-llama=1.0.1
+	provides = local-llama=1.0.2
 	conflicts = local-llama
 	options = !strip
 	options = !emptydirs
-	source = local-llama-1.0.1.deb::https://github.com/tib0/local-llama/releases/download/1.0.1/Linux.local-llama.deb
+	source = local-llama-1.0.2.deb::https://github.com/tib0/local-llama/releases/download/1.0.2/Linux.local-llama.deb
 	source = local-llama.sh
-	sha256sums = 2c8357981c464897c4bec3c80315d128643234a7b87436f7b30629f3a298820a
+	sha256sums = 82314c7b807af2440a8653795e0844737a9d5bd59e67774db69dfdc85c1b0383
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = local-llama-bin
