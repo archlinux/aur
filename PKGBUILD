@@ -1,20 +1,22 @@
-# Maintainer: American_Jesus <american.jesus.pt AT gmail DOT com>
+# Maintainer: Olivier Churlaud <olivier@churlaud.com>
+# Contributor: American_Jesus <american.jesus.pt AT gmail DOT com>
 
 pkgname=grub2-theme-archxion
 _pkgname=Archxion
+_reponame=grub2-themes-archlinux
 pkgver=1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Grub2 gfxmenu theme."
-url="https://github.com/Generator/Grub2-themes"
+url="https://github.com/ochurlaud/grub2-themes-archlinux"
 arch=('any')
-license=('GPLv3')
+license=('GPL3')
 depends=('grub')
 install=${pkgname}.install
-source=("https://github.com/downloads/Generator/Grub2-themes/$_pkgname.tar.bz2")
-md5sums=('b994445c08e81c00d91c727e06053f44')
+source=("https://github.com/ochurlaud/grub2-themes-archlinux/archive/refs/tags/v${pkgver}.tar.gz")
+md5sums=('aceac0d65eefc3aa7bcb6a8494eb69db')
 
 package() {
-  cd "${srcdir}"
-  rm ${srcdir}/Archxion/progress_highlight_{e,w}.png
-  find . -type f -exec install -D -m644 {} ${pkgdir}/boot/grub/themes/{} \;
+  cd "${srcdir}/${_reponame}-${pkgver}"
+  rm ${_pkgname}/progress_highlight_{e,w}.png
+  find ${_pkgname} -type f -exec install -D -m644 {} ${pkgdir}/boot/grub/themes/{} \;
 }
