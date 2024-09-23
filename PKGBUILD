@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=an-anime-game-launcher
 pkgver=3.12.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 arch=('x86_64')
 url="https://github.com/an-anime-team/an-anime-game-launcher"
@@ -32,9 +32,12 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-	install -Dm755 "target/release/anime-game-launcher" "$pkgdir/usr/bin/anime-game-launcher"
-	install -Dm644 "assets/anime-game-launcher.desktop" "$pkgdir/usr/share/applications/anime-game-launcher.desktop"
-	install -Dm644 "assets/images/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/anime-game-launcher.png"
-	sed -i 's/Exec=AppRun/Exec=anime-game-launcher/g' "$pkgdir/usr/share/applications/anime-game-launcher.desktop"
-	sed -i 's/Icon=icon/Icon=anime-game-launcher/g' "$pkgdir/usr/share/applications/anime-game-launcher.desktop"
+	install -Dm755 "target/release/anime-game-launcher" "$pkgdir/usr/bin/an-anime-game-launcher"
+	install -Dm644 "assets/anime-game-launcher.desktop" "$pkgdir/usr/share/applications/an-anime-game-launcher.desktop"
+	install -Dm644 "assets/images/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/moe.launcher.an-anime-game-launcher.png"
+	install -dm755 "$pkgdir/usr/share/pixmaps"
+	ln -s "/usr/share/icons/hicolor/512x512/apps/moe.launcher.an-anime-game-launcher.png" "$pkgdir/usr/share/pixmaps/an-anime-game-launcher.png"
+	sed -i 's/Exec=AppRun/Exec=an-anime-game-launcher/g' "$pkgdir/usr/share/applications/an-anime-game-launcher.desktop"
+	sed -i 's/Icon=icon/Icon=an-anime-game-launcher/g' "$pkgdir/usr/share/applications/an-anime-game-launcher.desktop"
+	echo "StartupWMClass=moe.launcher.an-anime-game-launcher" >> "$pkgdir/usr/share/applications/an-anime-game-launcher.desktop"
 }
