@@ -18,7 +18,7 @@ _sudachidict_date=20240716
 pkgbase=mozc-with-jp-dict
 pkgname=("fcitx-$pkgbase")
 pkgver=2.30.5595.102
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003')
@@ -117,7 +117,7 @@ build() {
   #BAZEL_CXXOPTS=$(echo $CXXFLAGS | xargs -n1 echo "--cxxopt")
   
   # The bazel rules have changed, so the cache will be deleted.
-  # bazel clean
+  bazel clean --expunge
 
   if [[ $CC =~ gcc ]];then
     #bazel build --config oss_linux --compilation_mode opt unix/fcitx:fcitx-mozc.so server:mozc_server gui/tool:mozc_tool --cxxopt=-Wno-uninitialized --host_cxxopt=-Wno-uninitialized

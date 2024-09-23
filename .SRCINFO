@@ -1,6 +1,6 @@
 pkgbase = mozc-with-jp-dict
 	pkgver = 2.30.5595.102
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
 	license = Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003
