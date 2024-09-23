@@ -10,7 +10,6 @@ pkgbase = tsukimi-bin
 	depends = ffmpeg
 	depends = libadwaita
 	depends = gstreamer
-	depends = clapper
 	depends = gtk4
 	provides = tsukimi
 	conflicts = tsukimi-git

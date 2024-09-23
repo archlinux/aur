@@ -14,7 +14,6 @@ depends=(
 	'ffmpeg'
 	'libadwaita'
 	'gstreamer'
-	'clapper'
 	'gtk4')
 makedepends=(
 	'git'
@@ -23,8 +22,8 @@ source=("https://github.com/tsukinaha/tsukimi/releases/download/v${pkgver}/tsuki
 	"tsukimi.desktop"
 	"tsukimi.png")
 sha256sums=('6d3e7a2e52df3d50962207569630fe57a35ab8d73fb24e44dbad6952abf656ff'
-            'd12dc777bbb05ed92d75f8d36e453b651e12596ead6e297386419a24d051a0a3'
-            '04a712d60bbf5cc8873af24fb8ff76b47f27ef77ba45c7901fb7d3cd26dd6893')
+	'd12dc777bbb05ed92d75f8d36e453b651e12596ead6e297386419a24d051a0a3'
+	'04a712d60bbf5cc8873af24fb8ff76b47f27ef77ba45c7901fb7d3cd26dd6893')
 
 package() {
 	install -Dm0755 -t "${pkgdir}/usr/bin/" "tsukimi"
