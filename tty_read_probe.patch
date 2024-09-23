@@ -1,0 +1,12 @@
+diff -Naur ffmpeg-2.8.21.orig/libavformat/tty.c ffmpeg-2.8.21/libavformat/tty.c
+--- ffmpeg-2.8.21.orig/libavformat/tty.c	2022-10-30 22:11:55.000000000 +0100
++++ ffmpeg-2.8.21/libavformat/tty.c	2024-09-23 01:52:37.802838360 +0200
+@@ -49,7 +49,7 @@
+     AVRational framerate; /**< Set by a private option. */
+ } TtyDemuxContext;
+ 
+-static int read_probe(const AVProbeData *p)
++static int read_probe(AVProbeData *p)
+ {
+     int cnt = 0;
+ 
