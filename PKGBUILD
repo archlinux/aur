@@ -1,7 +1,7 @@
 # Maintainer: Ben Copeland <ben@copeland.me.uk>
 pkgname=tuxmake
 pkgver=1.27.0
-pkgrel=1
+pkgrel=2  # Updated for point release
 pkgdesc="A tool for building Linux kernels across architectures, toolchains, and configurations"
 arch=('x86_64' 'aarch64')
 url="https://tuxmake.org/"
@@ -25,7 +25,6 @@ check() {
     export PYTHONPATH="$srcdir/$pkgname-$pkgver:$PYTHONPATH"
     pytest
 }
-
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
