@@ -1,6 +1,6 @@
 pkgbase = spack
 	pkgdesc = A flexible package manager for supercomputer that supports multiple versions, configurations, platforms, and compilers.
-	pkgver = 0.22.1
+	pkgver = 0.22.2
 	pkgrel = 2
 	url = https://spack.io/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = spack
 	depends = polkit
 	optdepends = env-modules-tcl
 	optdepends = lmod
-	source = spack-0.22.1.tar.gz::https://github.com/spack/spack/archive/v0.22.1.tar.gz
+	source = spack-0.22.2.tar.gz::https://github.com/spack/spack/archive/v0.22.2.tar.gz
 	source = spack.sysusers
 	source = spack.tmpfiles
 	source = spack.pkaction
