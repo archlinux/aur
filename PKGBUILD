@@ -1,25 +1,26 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=sherpa
-pkgver=2.2.15
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A particle physics package for Monte Carlo simulation of collider events."
 arch=('x86_64' 'i686')
-url="http://sherpa.hepforge.org"
+url="https://sherpa-team.gitlab.io/"
 license=('GPL3')
-depends=('lhapdf' 'fastjet' 'hepmc' 'hepmc2' 'openmpi' 'openloops' 'rivet')
-source=(http://www.hepforge.org/archive/sherpa/SHERPA-MC-$pkgver.tar.gz)
-md5sums=('33947bb014b2662092b105a2c9320ba2')
+depends=('lhapdf' 'fastjet' 'hepmc' 'hepmc2' 'openmpi' 'openloops' 'rivet' 'root' 'pythia8')
+source=(https://gitlab.com/sherpa-team/sherpa/-/archive/v3.0.0/sherpa-v$pkgver.tar.gz)
+md5sums=('70f2251d4ba614623a395f1ce3a8384d')
 
 build() {
-	cd "$srcdir/SHERPA-MC-$pkgver"
-	./configure --prefix=/usr --enable-hepmc2=/usr --enable-hepmc3=/usr --enable-fastjet=/usr --enable-lhapdf=/usr --enable-lhole --enable-openloops=. --enable-mpi --enable-openloops=/usr/lib/openloops --enable-rivet=/usr CXXFLAGS=-std=c++17
-	make
+    cd "$srcdir/sherpa-v$pkgver"
+    cmake -S . -B . -DSHERPA_ENABLE_HEPMC3=ON -DSHERPA_ENABLE_HEPMC3_ROOT=ON -DSHERPA_ENABLE_MPI=ON -DSHERPA_ENABLE_OPENLOOPS=ON -DSHERPA_ENABLE_PYTHIA8=ON -DSHERPA_ENABLE_PYTHON=ON -DSHERPA_ENABLE_RIVET=ON -DSHERPA_ENABLE_ROOT=ON -DSHERPA_ENABLE_UFO=ON -DCMAKE_INSTALL_PREFIX=/usr
+    make
 }
 
 package() {
-	cd "$srcdir/SHERPA-MC-$pkgver"
-	make DESTDIR="$pkgdir/" install
-        for i in get_bibtex init_nlo.sh plot_graphs.sh; do
-            mv $pkgdir/usr/bin/$i $pkgdir/usr/share/SHERPA-MC/
-        done
+    cd "$srcdir/sherpa-v$pkgver"
+    make DESTDIR="$pkgdir" install
+    for i in init_nlo.sh plot_stats.sh; do
+        mv $pkgdir/usr/bin/$i $pkgdir/usr/share/SHERPA-MC/
+    done
+    rm -rf $pkgdir/usr/share/SHERPA-MC/Examples/Makefile $pkgdir/usr/share/SHERPA-MC/Examples/cmake_install.cmake $pkgdir/usr/share/SHERPA-MC/Examples/CMakeFiles/CMakeDirectoryInformation.cmake
 }
