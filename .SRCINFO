@@ -1,15 +1,15 @@
 pkgbase = zork++-git
-	pkgdesc = A modern C++ project manager and build system for modern C++
-	pkgver = 0.9.0.r2.g17b7321
+	pkgdesc = A project manager and build system for modern C++
+	pkgver = 0.11.2.r0.g0c8b312
 	pkgrel = 1
 	url = https://github.com/zerodaycode/Zork
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	provides = zork++=0.9.0
+	provides = zork++=0.11.2
 	conflicts = zork++
 	source = Zork::git+https://github.com/zerodaycode/Zork.git
 	sha256sums = SKIP

@@ -1,17 +1,17 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 # Contributor: Marius Hirt <marius-hirt@web.de>
 
 _pkgname="zork++"
 pkgname="${_pkgname}-git"
-pkgver=0.9.0.r2.g17b7321
+pkgver=0.11.2.r0.g0c8b312
 pkgrel=1
-pkgdesc="A modern C++ project manager and build system for modern C++"
-arch=('any')
+pkgdesc="A project manager and build system for modern C++"
+arch=('x86_64')
 url='https://github.com/zerodaycode/Zork'
 license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('git' 'cargo')
-# checkdepends=('clang' 'gcc')
+# checkdepends=('clang')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="Zork"
@@ -50,5 +50,5 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
   install -Dm755 "${_pkgname}/target/release/zork" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
