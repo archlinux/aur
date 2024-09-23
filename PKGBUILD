@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=work-log-ify-git
 _pkgname=WorkLogIfy
-pkgver=1.36.4.r0.g405b54f
+pkgver=1.36.6.r0.g60bae2c
 _electronversion=26
 _nodeversion=18
 pkgrel=1
@@ -41,11 +41,11 @@ _ensure_local_nvm() {
 }
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-git}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${pkgname%-git}/
-        s/@options@//
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-git}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-git}/g
+        s/@options@//g
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
@@ -64,7 +64,7 @@ build() {
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         fi
     } >> .npmrc
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run compile
     NODE_ENV=production     npx electron-builder -l --dir
