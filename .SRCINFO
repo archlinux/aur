@@ -1,0 +1,18 @@
+pkgbase = bm3d-git
+	pkgdesc = BM3D image denoising
+	pkgver = r30.7200744
+	pkgrel = 1
+	url = https://github.com/gfacciol/bm3d
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = libpng
+	depends = libtiff
+	depends = libjpeg
+	depends = fftw
+	provides = bm3d
+	conflicts = bm3d
+	source = git+https://github.com/gfacciol/bm3d.git
+	sha256sums = SKIP
+
+pkgname = bm3d-git
