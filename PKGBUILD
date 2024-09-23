@@ -5,15 +5,15 @@
 _plugins_ver=3.16
 pkgname=nomacs
 pkgver=3.19.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A Qt image viewer"
 arch=(x86_64)
 url="https://github.com/nomacs/nomacs"
-license=(GPL3)
-depends=(exiv2 gcc-libs glibc libraw libtiff opencv qt6-base qt6-svg)
+license=(GPL-3.0-only)
+depends=(exiv2 gcc-libs glibc libraw libtiff opencv qt6-base qt6-svg quazip-qt6)
 #depends+=(libopencv_imgproc.so)
-makedepends=(cmake git git-lfs qt6-tools quazip-qt6 python)
+makedepends=(cmake git git-lfs qt6-tools python)
 optdepends=('qt6-imageformats: support additional image formats'
             'kimageformats: support QOI (Quite OK Image Format)')
 source=("git+https://github.com/nomacs/nomacs.git#tag=${pkgver}"
@@ -43,6 +43,7 @@ build() {
     -DQT_VERSION_MAJOR=6 \
     -DUSE_SYSTEM_QUAZIP=ON \
     -DENABLE_AVIF=ON \
+    -DENABLE_QUAZIP=ON \
     -DENABLE_TRANSLATIONS=ON
 
   cmake --build build
