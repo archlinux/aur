@@ -2,9 +2,9 @@
 #
 # mantainer: Muflone http://www.muflone.com/contacts/english/
 # contributor: Piero Proietti <piero.proietti_at_gmail.com>
-_commit=b9db797c4836efe4435e0864146822beca6467b5
+_commit=0c03b967395cd64552666cd6c0bec7848e14203e
 pkgname=penguins-eggs
-pkgver=10.0.38
+pkgver=10.0.39
 pkgrel=1
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
@@ -66,7 +66,7 @@ build() {
 package() {
 	cd "$srcdir"/"$pkgname"
 	install -Dm644 .oclif.manifest.json package.json -t "$pkgdir/"usr/lib/"$pkgname"
-	cp -r addons assets bin conf ipxe dracut dist eui mkinitcpio mkinitfs node_modules scripts \
+	cp -r addons assets bin conf ipxe dracut dist eui mkinitcpio mkinitfs node_modules scripts syslinux \
 		"$pkgdir/"usr/lib/"$pkgname/"
 
 	# Fix permissions
