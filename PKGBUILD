@@ -2,7 +2,7 @@
 # old maintainer:   M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=tastytrade
-pkgver='2.10.0'
+pkgver='2.15.0'
 pkgrel='1'
 pkgdesc="One of the fastest, most reliable, and most secure trading platforms in the world."
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://tastytrade.com/'
 license=('custom:commercial')
 conflicts=('tastytrade-bin')
 source=(https://download.tastytrade.com/desktop-2.x.x/${pkgver}/tastytrade-${pkgver}-1_amd64.deb)
-sha256sums=('6fcb3431432b091db336370c75219e0087b6eccf2816098861ce407c4e8d6765')
+sha256sums=('742e09eaac554fef79e0ff0b26f779062c0eeff9d10715822104dc3f8e1f9415')
 
 build() {
 	tar axf data.tar.zst
