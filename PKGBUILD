@@ -5,21 +5,20 @@ pkgname=noto-fonts-latin-greek-cyrillic
 provides=('noto-fonts')
 conflicts=('noto-fonts')
 epoch=1
-pkgver=2.013
-pkgverMono=2.014  # Error in 2.013 package
+pkgver=2.014
 pkgrel=1
 pkgdesc='Google Noto TTF fonts Latin/Greek/Cyrillic'
 arch=(any)
 url='https://fonts.google.com/noto'
 license=(custom:SIL)
 source=(https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSans-v$pkgver/NotoSans-v$pkgver.zip
-        https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSansMono-v$pkgverMono/NotoSansMono-v$pkgverMono.zip
+        https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSansMono-v$pkgver/NotoSansMono-v$pkgver.zip
         https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSerif-v$pkgver/NotoSerif-v$pkgver.zip
         66-noto-sans.conf 66-noto-serif.conf 66-noto-mono.conf
         46-noto-sans.conf 46-noto-serif.conf 46-noto-mono.conf)
-sha256sums=('9fd595dd701d7ea103a9ba8a9cfdcf0c35c5574ef754fecabe718eadad8bccde'
+sha256sums=('1dffbaf31a0a699ee2c57dfb60c1a628010425301dd076cfb485adbe017352c1'
             '090cf6c5e03f337a755630ca888b1fef463e64ae7b33ee134e9309c05f978732'
-            'fb4c6c75f10365f63b5c8ad5a1864ebe46dd0c70c40d0461cb0dc1b1b7c13a35'
+            '6abce0a80df4ef6d5a944d60c81099364481d6a7015b0721d87bc4c16acc1fd3'
             '52684bebf6447be22618d2a04ff37623ec92f9d8ccf6b6f972e5bcbcfee90d69'
             '4459944b63dc083107280f5d7375c69746bf80a09416a4a4909a100e58e5a33a'
             '4526289f59654e2a81dc734669a1ae4e416f9a56d0896ec3741c6bf065baf8a8'
