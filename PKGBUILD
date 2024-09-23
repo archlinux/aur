@@ -18,7 +18,7 @@ _sudachidict_date=20240716
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.30.5595.102
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-3.0-only AND MIT AND NAIST-2003')
@@ -26,6 +26,7 @@ makedepends=('qt6-base' 'fcitx5' 'fcitx5-qt' 'bazel' 'git' 'python' 'python-six'
 options=(!lto)
 source=("git+$url.git#commit=${_mozc_commit}"
         https://github.com/fcitx/mozc/pull/61.patch
+        https://github.com/google/mozc/pull/1063.patch
         git+https://github.com/phoepsilonix/mozcdict-ext.git#commit=${_mozcdict_ext_commit}
         #"https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
         #"https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip"
@@ -40,6 +41,7 @@ source=("git+$url.git#commit=${_mozc_commit}"
 
 sha512sums=('f49db9f9ba044135403ec3616440faed7fbfa58f693312df109f347a5631ffb0e96ecb72cc68903c1bfdebedd9a3e21697f480ecc9d0adec089288b96a8e99fd'
             'a0aeb2856d62c71d0c137a687d901098eaa3371b896dbe39e54c36951cbd7d3cfba666ee96d055dba7e8c8384ed17e13597a697707cd960fac320e11f9b7b76c'
+            '89c3de03c1cdb730cdf998ee10cf45c00eb08b29b3e343e6825c5eebebf67dbc1b17548eeef3e1b82dc0cb8305d869e1c59345469db0ef1328817bc0b327623d'
             'fcde4a3c0200969ebb21fa927f1ff59581386a39d83ea7ec5c0092e1566c38638129b71b286434e11fb4c6b76b48d6b36eb64b053306c2bbb8a7900e2c641558'
             '9428d55d2d9603c8bfcd12cc0184415f23af1d09a2d0ebdf0cce694a09638e7cfe0c1241bf1c943427b2fccfea619ca8b2e22db3452d837b416eb31aa224e766'
             'f0a3544dcc99bf8c4cea8ebfd31af827e209f0678997ab55f6eda54f34cad5e148d1bd156417a621665c2068e7371801dc9cf1baa34f2270a99da7055f46d95d'
@@ -58,6 +60,7 @@ prepare() {
 
   # PR(pull request)
   patch -p1 -i ${srcdir}/61.patch
+  patch -p1 -i ${srcdir}/1063.patch
 
   cd src || exit
 
