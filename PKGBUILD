@@ -1,7 +1,7 @@
 # Maintainer: Accessory
 _exe_name=minus_games_client
 pkgname=$_exe_name-git
-pkgver=0.3.0
+pkgver=0.4.0
 _source_folder=$pkgname-$pkgver
 pkgrel=1
 epoch=
@@ -35,7 +35,7 @@ prepare() {
 build() {
     export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	sed -i "s/Exec=run.sh/Exec=minus_games_client menu/g" "$_source_folder/other/assets/client/io.github.accessory.minus_games_client.desktop"
+	sed -i "s/Exec=run.sh/Exec=minus_games_client menu/g" "$_source_folder/other/assets/client/console/io.github.accessory.minus_games_client.desktop"
 	cd  $_source_folder
 	cargo build --release --bin $_exe_name
 }
@@ -46,7 +46,7 @@ check() {
 
 package() {
 	install -Dm0755 -t "$pkgdir/usr/bin/" "$_source_folder/target/release/$_exe_name"
-	install -Dm0644 "$_source_folder/other/assets/client/io.github.accessory.minus_games_client.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.accessory.minus_games_client.svg"
-    install -Dm0644 "$_source_folder/other/assets/client/io.github.accessory.minus_games_client.desktop" $pkgdir/usr/share/applications/io.github.accessory.minus_games_client.desktop
-    install -Dm0644 "$_source_folder/other/assets/client/io.github.accessory.minus_games_client.metainfo.xml" "$pkgdir/usr/share/metainfo/io.github.accessory.minus_games_client.metainfo.xml"
+	install -Dm0644 "$_source_folder/other/assets/common/io.github.accessory.minus_games.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.accessory.minus_games_client.svg"
+    install -Dm0644 "$_source_folder/other/assets/client/console/io.github.accessory.minus_games_client.desktop" $pkgdir/usr/share/applications/io.github.accessory.minus_games_client.desktop
+    install -Dm0644 "$_source_folder/other/assets/client/console/io.github.accessory.minus_games_client.metainfo.xml" "$pkgdir/usr/share/metainfo/io.github.accessory.minus_games_client.metainfo.xml"
 }
