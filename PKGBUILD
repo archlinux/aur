@@ -1,8 +1,8 @@
 # Maintainer: Jarno Malmari <jmalmari@ftml.net>
 
 pkgname=orbuculum-git
-pkgver=2.1.0.r95.ge312aa1
-pkgrel=2
+pkgver=2.2.0.r0.g21285f8
+pkgrel=1
 pkgdesc='Orbuculum is a set of tools for decoding and presenting output flows from the debug pins of a CORTEX-M CPU.'
 arch=('x86_64')
 url="https://github.com/orbcode/orbuculum"
