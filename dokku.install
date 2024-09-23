@@ -126,16 +126,16 @@ post_upgrade() {
 pre_remove() {
   echo "Destroying deployed applications"
   for app in $(DOKKU_QUIET_OUTPUT=1 dokku apps:list); do
-    dokku --force apps:destroy "${app}"
+    dokku --force apps:destroy "$app"
   done
 
   # HACK: Only disable core plugins, as we don't know what data users store in non-core plugin directories
   echo "Disabling all core plugins"
-  find ${DOKKU_LIB_ROOT}/core-plugins/available -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read -r plugin; do
-    if [ ! -d "${DOKKU_LIB_ROOT}/plugins/available/${plugin}" ]; then
-      rm "${DOKKU_LIB_ROOT}/plugins/available/${plugin}"
-      PLUGIN_PATH=${DOKKU_LIB_ROOT}/core-plugins plugn disable "${plugin}"
-      PLUGIN_PATH=${DOKKU_LIB_ROOT}/plugins plugn disable "${plugin}"
+  find "${DOKKU_LIB_ROOT}/core-plugins/available" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | while read -r plugin; do
+    if [[ ! -d "${DOKKU_LIB_ROOT}/plugins/available/$plugin" ]]; then
+      rm "${DOKKU_LIB_ROOT}/plugins/available/$plugin"
+      PLUGIN_PATH="${DOKKU_LIB_ROOT}/core-plugins" plugn disable "$plugin"
+      PLUGIN_PATH="${DOKKU_LIB_ROOT}/plugins" plugn disable "$plugin"
     fi
   done
 
