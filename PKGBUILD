@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Maximov <amaxcz@gmail.com>
 
 pkgname=microsoft-teams-nativefier
-pkgver=32.0.2
+pkgver=32.1.2
 pkgrel=1
 pkgdesc="Microsoft Teams desktop app (electron)"
 arch=("armv7l" "i686" "x86_64")
