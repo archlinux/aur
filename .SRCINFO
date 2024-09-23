@@ -1,7 +1,7 @@
 pkgbase = tiledb
 	pkgdesc = The Universal Storage Engine
-	pkgver = 2.24.1
-	pkgrel = 3
+	pkgver = 2.26.1
+	pkgrel = 1
 	url = https://tiledb.com/
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = tiledb
         depends = curl
         depends = openssl
         depends = aws-sdk-cpp
-	source = tiledb-2.24.1.tar.gz::https://github.com/TileDB-Inc/TileDB/archive/refs/tags/2.24.1.tar.gz
-	sha256sums = c04d1a75b1241388de1da7e6d4022d997acf061f4042ea5ecf9cecb7abe14dda
+	source = tiledb-2.26.1.tar.gz::https://github.com/TileDB-Inc/TileDB/archive/refs/tags/2.26.1.tar.gz
+	sha256sums = f90461850c6f87f63fe77788d7932fd53a4d1de7e2ba7263f5e8f2fd1df23e38
 
 pkgname = tiledb

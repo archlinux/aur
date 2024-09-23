@@ -2,8 +2,8 @@
 
 pkgname=tiledb
 _pkgname=TileDB
-pkgver=2.24.1
-pkgrel=3
+pkgver=2.26.1
+pkgrel=1
 pkgdesc="The Universal Storage Engine"
 arch=('x86_64')
 url="https://tiledb.com/"
@@ -11,12 +11,11 @@ license=('MIT')
 makedepends=('git' 'cmake')
 depends=('lz4' 'bzip2' 'zstd' 'zlib' 'libwebp' 'spdlog' 'curl' 'openssl' 'aws-sdk-cpp')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TileDB-Inc/TileDB/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('c04d1a75b1241388de1da7e6d4022d997acf061f4042ea5ecf9cecb7abe14dda')
+sha256sums=('f90461850c6f87f63fe77788d7932fd53a4d1de7e2ba7263f5e8f2fd1df23e38')
 
 build() {
   ls
   cd "$_pkgname-${pkgver//_/-}"
-  patch --strip=1 --input=../../'0001-Include-algorithm-header-for-gcc-14.-5139.patch'
   [ -e "build" ] || mkdir build && cd build
   ../bootstrap \
     --prefix=/usr \
