@@ -1,7 +1,7 @@
 pkgbase = mpd-current-json
 	pkgdesc = Print current MPD song and status as JSON
-	pkgver = 1.3.2.0
-	pkgrel = 7
+	pkgver = 1.4.0.0
+	pkgrel = 1
 	url = https://codeberg.org/useless-utils/mpd-current-json
 	arch = x86_64
 	license = Unlicense
@@ -12,7 +12,7 @@ pkgbase = mpd-current-json
 	depends = haskell-aeson-pretty
 	depends = haskell-libmpd
 	depends = haskell-optparse-applicative
-	source = https://hackage.haskell.org/packages/archive/mpd-current-json/1.3.2.0/mpd-current-json-1.3.2.0.tar.gz
-	sha256sums = 2a04dd4494e5797a2f145ebbbf99507c1fe8f0a9c9b1e73890c223c1a4ab7c12
+	source = https://hackage.haskell.org/packages/archive/mpd-current-json/1.4.0.0/mpd-current-json-1.4.0.0.tar.gz
+	sha256sums = d97fb8383a0ab14ae2f8eaf1e58c52227cf518c4047b5ee7fecbb799f1b938fb
 
 pkgname = mpd-current-json
