@@ -2,7 +2,7 @@
 pkgname='noaa-apt'
 pkgdesc='NOAA APT image decoder with GUI'
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64') 
 url="https://github.com/martinber/${pkgname}"
 license=('GPL3')
@@ -14,12 +14,12 @@ sha512sums=('c7e13ff94e69cc0c0508b1485e592a1d755fb363488e5d46e6bcf4a01f7ed6c348f
 build()
 {
     export RUSTUP_HOME="${srcdir}/.rustup/" 
-    rustup install stable
+    rustup install 1.79.0
 
     cd "${srcdir}/${pkgname}-${pkgver}"
     export NOAA_APT_RES_DIR="/usr/share/noaa-apt"
 
-    cargo +stable build --release
+    cargo build --release
 }
 
 package()
