@@ -1,0 +1,16 @@
+pkgbase = python-parsy
+	pkgdesc = Easy-to-use parser combinators in pure Python
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/python-parsy/parsy
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/parsy/parsy-2.1.tar.gz
+	sha256sums = fd5dd18d7b0b61f8275ee88665f430a20c02cf5a82d88557f35330530186d7ac
+
+pkgname = python-parsy
