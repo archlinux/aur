@@ -1,7 +1,7 @@
 pkgbase = nier-cursors-bin
 	pkgdesc = XCursor theme based on NieR Automata
 	pkgver = 2020_08_25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Beinsezii/NieR-Cursors
 	arch = any
 	license = MIT
