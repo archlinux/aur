@@ -23,6 +23,7 @@ pkgver() {
 
 build() {
     cd albafetch
+    meson setup build
     meson compile -C build
 }
 
