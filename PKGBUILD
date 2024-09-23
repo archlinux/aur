@@ -26,7 +26,7 @@ prepare () {
 
 pkgver() {
     cd "$srcdir/orbuculum"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^V\(.*\)/\1/'
+    git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^V\(.*\)/\1/'
 }
 
 build() {
