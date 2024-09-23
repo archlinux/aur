@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-beta-performance
 	pkgdesc = Next generation desktop shell
-	pkgver = 47.0.r1.g5770f47
+	pkgver = 47.0.r8.g8887c67
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-shell
@@ -72,12 +72,12 @@ pkgbase = gnome-shell-beta-performance
 	optdepends = python-simplejson: gnome-shell-test-tool performance tester
 	optdepends = switcheroo-control: Multi-GPU support
 	provides = gnome-shell
-	provides = gnome-shell=47.0.r1.g5770f47
-	provides = gnome-shell=1:47.0.r1.g5770f47
+	provides = gnome-shell=47.0.r8.g8887c67
+	provides = gnome-shell=1:47.0.r8.g8887c67
 	conflicts = gnome-shell
-	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=5770f476472148a9d2f5327a2fa6949fb5d8b5e2
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=8887c675037caeb33bab5995454561639c86a895
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=5f9768a2eac29c1ed56f1fbb449a77a3523683b6
-	b2sums = 25ff9ca1eba2733ebca0e33025e378f1bf01b83d4c8f6b4951d7bbd69b26b9be0a87ef05ce5a19a4fcde92d645d739752fcea61fd56f74143a4a41a587c787c6
+	b2sums = 3c319752270e71b2085f7509a749ad229b5121774af9d8d5add7a78bfb759ae05cf00cd11f6f678aeccea18670914ca44ddb5503a4778fc3fdef23c315ec3b34
 	b2sums = e31ae379039dfc345e8032f7b9803a59ded075fc52457ba1553276d3031e7025d9304a7f2167a01be2d54c5e121bae00a2824a9c5ccbf926865d0b24520bb053
 
 pkgname = gnome-shell-beta-performance
