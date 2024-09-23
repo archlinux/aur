@@ -3,7 +3,7 @@
 # Maintainer: Neko_Rikka <address at domain dot tld>
 
 pkgname=python-unitypy-git
-pkgver=r457.47b1bde
+pkgver=r497.8ac495f
 pkgrel=1
 pkgdesc="A unity asset extractor based on unitypack and AssetStudio."
 arch=('x86_64')
@@ -12,6 +12,7 @@ license=('MIT')
 provides=('python-unitypy')
 conflicts=('python-unitypy')
 depends=(
+  'python-attrs'
   'python-lz4'
   'python-brotli'
   'python-pillow'

@@ -1,6 +1,6 @@
 pkgbase = python-unitypy-git
 	pkgdesc = A unity asset extractor based on unitypack and AssetStudio.
-	pkgver = r457.47b1bde
+	pkgver = r497.8ac495f
 	pkgrel = 1
 	url = https://github.com/K0lb3/UnityPy
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = python-unitypy-git
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
 	makedepends = git
+	depends = python-attrs
 	depends = python-lz4
 	depends = python-brotli
 	depends = python-pillow
