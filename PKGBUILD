@@ -2,15 +2,15 @@
 # Maintainer: HaroldLoui <Riven970309@gmail.com>
 # Contributor: witt <1989161762 at qq dot com>
 pkgname=apifox
-pkgver=2.6.15
-pkgrel=3
+pkgver=2.6.18
+pkgrel=1
 pkgdesc="API 文档、API 调试、API Mock、API 自动化测试"
 arch=("x86_64")
 url="https://www.apifox.com/"
 license=('custom')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2' 'snappy' 'fuse2')
 source=(
-	"${pkgname}-v${pkgver}-${pkgrel}.zip"::"https://file-assets.apifox.com/download/Apifox-linux-latest.zip"
+	"${pkgname}-v${pkgver}.zip"::"https://file-assets.apifox.com/download/Apifox-linux-latest.zip"
 	"apifox.desktop"
 	"apifox.svg")
 sha256sums=(
