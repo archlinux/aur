@@ -2,15 +2,15 @@
 
 pkgname=thqm
 pkgdesc='A simple HTTP server to serve a dynamic menu web page.'
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 arch=('any')
 url='https://github.com/loiccoyle/thqm-rs'
 license=('MIT')
 depends=('git')
 makedepends=('rust')
-source=("$pkgname-${pkgver}.tar.gz::https://github.com/loiccoyle/thqm.rs/archive/v${pkgver}.tar.gz")
-sha256sums=('451b9a1031e44c5ab206ca81e7a422020bcbdb6376dd3c31a20013dc20bd993b')
+source=("$pkgname-${pkgver}.tar.gz::https://github.com/loiccoyle/thqm-rs/archive/v${pkgver}.tar.gz" "https://github.com/loiccoyle/thqm-styles/releases/latest/download/styles.tar.gz") sha256sums=('e5d627d83026d7afccccde165fe59e4a35a32a8b13c5181549a445a43d16bef6' 'SKIP')
+noextract=("styles.tar.gz")
 
 build() {
     cd "$pkgname-rs-$pkgver"
@@ -26,6 +26,9 @@ package() {
     install -Dm644 "completions/$pkgname.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
     install -Dm644 "completions/_$pkgname" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
     # styles folder
+    cd -
+    mkdir styles/
+    tar -xzf "styles.tar.gz" -C styles
     install -d "$pkgdir/usr/share/$pkgname/"
     cp -r "styles/." "$pkgdir/usr/share/$pkgname"
 }
