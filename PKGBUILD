@@ -3,9 +3,9 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=shinyWidgets
-_pkgver=0.8.6
+_pkgver=0.8.7
 pkgname=r-${_pkgname,,}
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
 pkgdesc='Custom Inputs Widgets for Shiny'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('863c245891953795c50f3998d5b17335c5f2a0de9fe902ec6081f53c2e5f60b7')
+sha256sums=('add4b4c5125c4242f6439700fce7aceec3062d1faf4c99f03eddcfab51727722')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
