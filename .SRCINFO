@@ -1,0 +1,14 @@
+pkgbase = gog-x4_tides_of_avarice
+	pkgdesc = DLC for the x4 foundations game.
+	pkgver = 7.10_hotfix_2
+	pkgrel = 1
+	url = https://www.gog.com/en/game/x4_tides_of_avarice
+	arch = x86_64
+	license = custom
+	depends = gog-x4_foundations
+	noextract = x4_tides_of_avarice_7_10_hotfix_2_75856.sh
+	options = !strip
+	source = x4_tides_of_avarice_7_10_hotfix_2_75856.sh::gog://x4_tides_of_avarice_7_10_hotfix_2_75856.sh
+	sha256sums = 0acbdb5899eed91f3439509c0122a99fd1072e5ea324d72b363ff272c529ba33
+
+pkgname = gog-x4_tides_of_avarice
