@@ -1,8 +1,8 @@
 # Maintainer: Radiolin <anton.osi2011@gmail.com>
 
 pkgname=mangojuice
-pkgver=0.5
-pkgrel=3
+pkgver=0.6
+pkgrel=1
 pkgdesc="Gui settings mangohud"
 arch=(x86_64)
 url="https://github.com/radiolamp/${pkgname}"
