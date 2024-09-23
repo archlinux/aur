@@ -1,17 +1,15 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _pkgname="starkli"
 pkgname="${_pkgname}-bin"
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="A blazing fast CLI tool for Starknet powered by starknet-rs"
 arch=('x86_64' 'aarch64')
 url="https://book.starkli.rs"
 _url="https://github.com/xJonathanLEI/${_pkgname}"
 license=('Apache-2.0' 'MIT')
-depends=('glibc' 'gcc-libs')
-optdepends=('bash-completion: for shell auto-completion'
-            'zsh-completions: for shell auto-completion')
+depends=('gcc-libs' 'glibc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
@@ -20,11 +18,11 @@ source=("README-${pkgver}.md::${_url}/raw/v${pkgver}/README.md"
         "LICENSE-MIT-${pkgver}::${_url}/raw/v${pkgver}/LICENSE-MIT")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums=('c754365c41980e392e9c2e8d6c446b4856e1d7da6d4a95ac80debfb3de51cc56'
-            '93ca65a55581bae536fc2e6bafc613f22fc1bec74b36081ea08ccb199fed4e48'
-            'ece393ef82b9a2c92affd94872d3b52064f8a82904f64861b93e49b1fc7833d5')
-sha256sums_x86_64=('df6a392f90178870efc4418f53a1e00d5726c0e1f75e0746f8a8aa7e164ada95')
-sha256sums_aarch64=('d5f4c2aa5741a388f81af1bb9a1a2bd1c25189c60f1b6a4b5b3e85f57f0ea014')
+b2sums=('dc2a6d314688b9836c021ffcab1d449c62d0e346ca964900a991914b5c29fdee6aa323e41a90e75d4cc71471e21b36518daaa533c0154edabe38845bd058703b'
+        'bb6c98c86c05f7f782bed93821edbd8d51501780fd5279904a7f69392841fe91ffcc7632834ecac81701b85db0779efa40ff6053f7336a1074130099ca2d310f'
+        'a6150ce3c1f2e9823f944cb92016eb6c0fa35d9c80a3c1d04092b25e05a970929ed49154dcbe1707bf7d4946ee0f25fb501f9b192a23775c8e186a9619dd4b7b')
+b2sums_x86_64=('ebbd2894b7d755971942593d9837e152b5461824dde39444a222f0e0a2182079f636ab41c7a85ea57715c4d340b617735ea78d0ca5035585f4a6a602724e95ff')
+b2sums_aarch64=('83a302915fff2f107ddfc845b65f035a26f98af02eee48c96d936bcd40ecc081a955b9d95ce8259426454d34a9326593054efb45073789041931a6a4564e0930')
 
 prepare() {
   cd "${srcdir}"
