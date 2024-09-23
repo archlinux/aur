@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=mongodb-cli-bin
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="MongoDB CLI"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://www.mongodb.com/products/tools/atlas-cli"
 license=('Apache-2.0')
 options=('!debug')
 source=("https://fastdl.mongodb.org/mongocli/mongocli_${pkgver}_linux_${arch}.tar.gz")
-b2sums=('69fa0df44e735b59c67cd345673e4c5c6244a102346a24392de7d8a3e773011e55e7f3330c8c7c62fa35d61bfed092da78ac61d8c5312a5fb8265f56774d5b01')
+b2sums=('c9f48b3c6c40b2cf57333929398dba93b9a1a2ffdbef3e1985ed09f05f831c098b7c184cc23263c204200db681677d3c4b5a0b1d0721389916014f1778f56e3d')
 
 package() {
   install -D -m755 "${srcdir}/mongocli_${pkgver}_linux_${arch}/bin/mongocli" \
