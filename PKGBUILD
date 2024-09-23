@@ -1,14 +1,13 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.1.r4.g0d8fd7c0
+pkgver=2.2.r3.g8508c625
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
 url="https://cemu.info/"
 license=('MPL-2.0')
 depends=(
-	'discord-rpc'
 	'gcc-libs'
 	'glibc'
 	'glslang>=14'
@@ -23,7 +22,7 @@ makedepends=(
 	'cmake>=3.21.1'
 	'cubeb'
 	'curl'
-	'fmt>=9'
+	'fmt10'
 	'git'
 	'glib2'
 	'glm'
@@ -65,8 +64,9 @@ prepare() {
 	git config submodule.dependencies/imgui.url ../imgui
 	git -c protocol.file.allow=always submodule update
 	sed -i '/CMAKE_INTERPROCEDURAL_OPTIMIZATION/d' CMakeLists.txt
-	sed -i '/discord-rpc/d' CMakeLists.txt
 	sed -i '/FMT_HEADER_ONLY/d' src/Common/precompiled.h
+	# https://github.com/cemu-project/Cemu/issues/1338
+	sed -i 's/fmt 9/&...<11/' CMakeLists.txt
 }
 
 build() {
