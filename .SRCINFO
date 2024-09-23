@@ -1,6 +1,6 @@
 pkgbase = gopeed-bin
 	pkgdesc = High speed downloader that supports all platforms.
-	pkgver = 1.5.9
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://gopeed.com/
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = gopeed-bin
 	depends = libayatana-appindicator
 	depends = libayatana-indicator
 	depends = ayatana-ido
-	provides = gopeed-1.5.9
+	provides = gopeed-1.6.0
 	conflicts = gopeed
-	source = gopeed-1.5.9.deb::https://github.com/GopeedLab/gopeed/releases/download/v1.5.9/Gopeed-v1.5.9-linux-amd64.deb
+	source = gopeed-1.6.0.deb::https://github.com/GopeedLab/gopeed/releases/download/v1.6.0/Gopeed-v1.6.0-linux-amd64.deb
 	source = gopeed.sh
-	sha256sums = 07a486921fc9f6db9d7e9f283cb5bf5697c51313446ef5d3dcd433565646d3ab
+	sha256sums = 73dad625494eaa554e9c57321a032e5b53eaf85b739d70f33a317d411d26beba
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
 
 pkgname = gopeed-bin
