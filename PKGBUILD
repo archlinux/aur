@@ -3,7 +3,7 @@
 _pkgname=commacd
 pkgname=${_pkgname}-git
 pkgver=20190203.r77.0431104
-pkgrel=1
+pkgrel=2
 pkgdesc='A faster way to move around Bash'
 url='https://github.com/shyiko/commacd'
 license=('MIT')
@@ -27,5 +27,5 @@ pkgver() {
 package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 ${_pkgname}.1 "$pkgdir/usr/share/man/man1/$_pkgname.1"
-  install -Dm755 $_pkgname/$_pkgname.sh "$pkgdir/usr/share/$_pkgname/$_pkgname.bash"
+  install -Dm755 $_pkgname/$_pkgname.sh "$pkgdir/usr/share/$_pkgname/$_pkgname.sh"
 }
