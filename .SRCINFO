@@ -1,17 +1,22 @@
 pkgbase = smatch
-	pkgdesc = static analysis tool for C
-	pkgver = 1.73
+	pkgdesc = Static analysis tool for C programs that performs semantic analysis to detect bugs and vulnerabilities.
+	pkgver = 1.73.572.g0c399914
 	pkgrel = 1
-	url = http://smatch.sourceforge.net/
-	arch = i686
+	url = https://github.com/error27/smatch
 	arch = x86_64
+	arch = i686
 	license = GPL2
 	makedepends = git
-	makedepends = llvm
-	makedepends = sqlite3
-	makedepends = gtk3
-	makedepends = libxml2
-	source = smatch::git+https://repo.or.cz/smatch.git#tag=1.73
-	b2sums = SKIP
+	makedepends = perl-dbd-sqlite
+	makedepends = perl-try-tiny
+	depends = gcc
+	depends = make
+	depends = sqlite3
+	depends = openssl
+	depends = perl
+	provides = smatch
+	conflicts = smatch-git
+	source = smatch::git+https://github.com/error27/smatch.git
+	sha256sums = SKIP
 
 pkgname = smatch
