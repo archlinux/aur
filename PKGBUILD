@@ -1,11 +1,11 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full
-pkgver=0.38.0
+pkgver=0.39.0
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('x86_64')
-license=('GPL')
+license=('GPL-2.0-or-later')
 url='https://mpv.io/'
 depends=(
     # official repositories:
@@ -25,7 +25,7 @@ provides=('mpv')
 conflicts=('mpv')
 options=('!emptydirs')
 source=("https://github.com/mpv-player/mpv/archive/v${pkgver}/mpv-${pkgver}.tar.gz")
-sha256sums=('86d9ef40b6058732f67b46d0bbda24a074fae860b3eaae05bab3145041303066')
+sha256sums=('2ca92437affb62c2b559b4419ea4785c70d023590500e8a52e95ea3ab4554683')
 
 build() {
     arch-meson "mpv-${pkgver}" build \
@@ -34,6 +34,7 @@ build() {
         -Dlibmpv='true' \
         -Dbuild-date='false' \
         -Dtests='false' \
+        -Dfuzzers='false' \
         -Dta-leak-report='false' \
         \
         -Dcdda='enabled' \
@@ -121,8 +122,11 @@ build() {
         -Dios-gl='disabled' \
         -Dvideotoolbox-gl='disabled' \
         -Dvideotoolbox-pl='disabled' \
-        -Dvulkan-interop='enabled' \
         \
+        -Dmacos-10-15-4-features='disabled' \
+        -Dmacos-11-features='disabled' \
+        -Dmacos-11-3-features='disabled' \
+        -Dmacos-12-features='disabled' \
         -Dmacos-cocoa-cb='disabled' \
         -Dmacos-media-player='disabled' \
         -Dmacos-touchbar='disabled' \
