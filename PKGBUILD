@@ -2,23 +2,23 @@
 
 pkgname=thqm
 pkgdesc='A simple HTTP server to serve a dynamic menu web page.'
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 arch=('any')
 url='https://github.com/loiccoyle/thqm-rs'
 license=('MIT')
 depends=('git')
 makedepends=('rust')
-source=("$pkgname-${pkgver}.tar.gz::https://github.com/loiccoyle/thqm-rs/archive/v${pkgver}.tar.gz" "https://github.com/loiccoyle/thqm-styles/releases/latest/download/styles.tar.gz") sha256sums=('e5d627d83026d7afccccde165fe59e4a35a32a8b13c5181549a445a43d16bef6' 'SKIP')
+source=("$pkgname-${pkgver}.tar.gz::https://github.com/loiccoyle/thqm-rs/archive/${pkgname}-v${pkgver}.tar.gz" "https://github.com/loiccoyle/thqm-styles/releases/latest/download/styles.tar.gz") sha256sums=('a6acf449750134f96d3f5e47139c45024c451ef6e4cebcaeed3c30e5c549c587' 'SKIP')
 noextract=("styles.tar.gz")
 
 build() {
-    cd "$pkgname-rs-$pkgver"
+    cd "$pkgname-rs-$pkgname-v$pkgver"
     cargo build --release --locked
 }
 
 package() {
-    cd "$pkgname-rs-$pkgver"
+    cd "$pkgname-rs-$pkgname-v$pkgver"
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     # completions
