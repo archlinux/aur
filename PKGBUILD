@@ -1,6 +1,6 @@
 # Maintainer: Monirzadeh aur.phantom634 at passinbox dot com
 pkgname=chapar-bin
-pkgver=$(curl -s https://api.github.com/repos/chapar-rest/chapar/releases/latest | jq -r .tag_name | sed 's/v//')
+pkgver=0.2.6
 pkgrel=1  # Set the initial package release number
 pkgdesc="Chapar is a simple and easy to use api testing tools aims to help developers to test their api endpoints. it support http and grpc protocols."
 arch=('x86_64')
@@ -16,6 +16,10 @@ source_url=$(curl -s https://api.github.com/repos/chapar-rest/chapar/releases/la
 # Set the source
 source=("$source_url")
 sha256sums=('SKIP')  # Replace with actual checksum or 'SKIP' if not needed
+
+pkgver() {
+  curl -s https://api.github.com/repos/chapar-rest/chapar/releases/latest | jq -r .tag_name | sed 's/v//'
+}
 
 package() {
     # Create necessary directories
