@@ -1,0 +1,14 @@
+pkgbase = gog-x4_split_vendetta
+	pkgdesc = DLC for the x4 foundations game.
+	pkgver = 7.10_hotfix_2
+	pkgrel = 1
+	url = https://www.gog.com/en/game/x4_split_vendetta
+	arch = x86_64
+	license = custom
+	depends = gog-x4_foundations
+	noextract = x4_split_vendetta_7_10_hotfix_2_75856.sh
+	options = !strip
+	source = x4_split_vendetta_7_10_hotfix_2_75856.sh::gog://x4_split_vendetta_7_10_hotfix_2_75856.sh
+	sha256sums = 96a9284cd3218c838286fb58ac76dbdd09d84ca28c7b8f192d09e3fca59efaf4
+
+pkgname = gog-x4_split_vendetta
