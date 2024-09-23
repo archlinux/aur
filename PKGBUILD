@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=youtube-desktop-bin
 _pkgname="YouTube Desktop"
-pkgver=1.0.2
+pkgver=1.0.3
 _electronversion=23
 pkgrel=1
 pkgdesc="A simple YouTube Desktop application, built using Electron.js"
@@ -17,15 +17,15 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('fefe75abc6454c26276bf16841b85361a2b8707bb357c9955bdf5514c179644b'
+sha256sums=('b41af603c64ae87a1661aa0dbf4b855cbfc775c5afaeb461e024de1507f55063'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-bin}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${_pkgname}/
-        s/@options@//
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@//g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }

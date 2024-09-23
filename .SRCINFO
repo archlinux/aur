@@ -1,16 +1,16 @@
 pkgbase = youtube-desktop-bin
 	pkgdesc = A simple YouTube Desktop application, built using Electron.js
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/mikepruett3/youtube-desktop
 	arch = x86_64
 	license = MIT
 	depends = electron23
-	provides = youtube-desktop=1.0.2
+	provides = youtube-desktop=1.0.3
 	conflicts = youtube-desktop
-	source = youtube-desktop-1.0.2.deb::https://github.com/mikepruett3/youtube-desktop/releases/download/v1.0.2/youtube-desktop_1.0.2_amd64.deb
+	source = youtube-desktop-1.0.3.deb::https://github.com/mikepruett3/youtube-desktop/releases/download/v1.0.3/youtube-desktop_1.0.3_amd64.deb
 	source = youtube-desktop.sh
-	sha256sums = fefe75abc6454c26276bf16841b85361a2b8707bb357c9955bdf5514c179644b
+	sha256sums = b41af603c64ae87a1661aa0dbf4b855cbfc775c5afaeb461e024de1507f55063
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = youtube-desktop-bin
