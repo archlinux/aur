@@ -3,7 +3,7 @@
 pkgname=zhumu
 _name=${pkgname}intl
 pkgver=5.5.188.0612
-pkgrel=1
+pkgrel=2
 pkgdesc="Video Conferencing and Web Conferencing Service"
 arch=("x86_64")
 url="https://www.zhumu.me"
@@ -31,7 +31,7 @@ optdepends=('pulseaudio-alsa: audio via PulseAudio'
 			'picom: extra compositor needed by some window managers for screen sharing'
 			'xcompmgr: extra compositor needed by some window managers for screen sharing')
 source_x86_64=("${_name}_${pkgver}_amd64.deb::http://d.zhumu.com/client/latest/${_name}_amd64.deb")
-sha256sums_x86_64=('f5e105e578a3352846bcc3f736bc727bedce22be3ed16c2c34339d9e6e98f3ca')
+sha256sums_x86_64=('d6c4f8cac55c2ee91901c90306b03a6abe504b7bffcc34b0cdc4d29c591f2152')
 
 package(){
 	cd ${srcdir}
