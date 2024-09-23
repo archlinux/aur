@@ -1,18 +1,18 @@
 pkgbase = rusty-psn-bin
 	pkgdesc = A GUI/CLI tool for downloading PS3 and PS4 game updates
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/RainbowCookie32/rusty-psn
 	arch = x86_64
 	license = Apache
 	provides = rustypsn
 	options = !strip
-	source = https://github.com/RainbowCookie32/rusty-psn/releases/download/v0.5.0/rusty-psn-cli-linux.zip
-	source = https://github.com/RainbowCookie32/rusty-psn/releases/download/v0.5.0/rusty-psn-egui-linux.zip
+	source = https://github.com/RainbowCookie32/rusty-psn/releases/download/v0.5.1/rusty-psn-cli-linux.zip
+	source = https://github.com/RainbowCookie32/rusty-psn/releases/download/v0.5.1/rusty-psn-egui-linux.zip
 	source = rusty-psn.desktop
 	source = playstation-store.svg
-	sha256sums = 93b5cf55439d66dc2671f7aab4f0bc1a31f829e1d3e769bee38e9ea9eb1a5a8e
-	sha256sums = ee0da200e9f7cda75a6a06aedbb8c58c9d0207c1f6ac46a81f7773dbdc788b18
+	sha256sums = f4e247b1e74e66fd2b1f99d1162be3cc3dfe2565d86b1e219bbe52691e69baca
+	sha256sums = 8ab357dc98797db0dbc0db8f39d00453b08a510aa60a9a42009440fca0e4a7e6
 	sha256sums = 2cb6715bb0cf3646091369385e285c92a2573f1602580f60a51d5c0ea8e638a5
 	sha256sums = 4c6f59e5d15a93b76fc1a90ca4f8283193a870627a958eff62cda952474d089b
 
