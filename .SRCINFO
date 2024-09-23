@@ -1,7 +1,7 @@
 pkgbase = netbeans-bin
 	pkgdesc = IDE for Java, HTML5, PHP, Groovy, C and C++
-	pkgver = 22
-	pkgrel = 3
+	pkgver = 23
+	pkgrel = 1
 	url = https://netbeans.apache.org/
 	arch = any
 	license = Apache
@@ -12,9 +12,8 @@ pkgbase = netbeans-bin
 	optdepends = php: for developing programs in php
 	optdepends = groovy: for developing programs in groovy
 	optdepends = lib32-glibc
-	source = https://downloads.apache.org/netbeans/netbeans/22/netbeans-22-bin.zip
+	source = https://downloads.apache.org/netbeans/netbeans/23/netbeans-23-bin.zip
 	source = netbeans-logo.svg
-	sha512sums = 1d8ad549f9a2bfd8ee829691de1f7a22d35d0c2782676e2bc64eec32751e0edbda8a0240eec1ffd0a7e033f9fb2619b9e3ca1ddad40609f1d722a4deea16c0b6
-	sha512sums = e963494757f34512523bababdf72e7b7eb32d5f1034d5c1589d7a3aedb707de96a6e2e38dadd05c002cac76860957df1a98d3bda80913eaf26bb52502a0e5e13
+	sha512sums = 9c8d7ccea9ccd07c7b0da60594c2515dedaad189a3ed8646d154797997ba0954d1f5415e305cda873ba12f64a9006dd8d9615ed259d4f2913ef2c32549a37e8e
 
 pkgname = netbeans-bin
