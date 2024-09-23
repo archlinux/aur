@@ -14,7 +14,7 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=lib32-mesa-amdonly-gaming-git
-pkgver=24.3.0_devel.194568.0c7896deef8.d41d8cd
+pkgver=24.3.0_devel.195384.fd11bbbb90e.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 
 pkgname=(
@@ -412,6 +412,7 @@ package_lib32-amdonly-gaming-mesa-git() {
 
   # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast, swr
   _install fakeinstall/$_libdir/dri/*_dri.so
+  _install fakeinstall/$_libdir/gbm/dri_gbm.so*
 
   _install fakeinstall/$_libdir/d3d
   _install fakeinstall/$_libdir/lib{gbm,glapi}.so*
