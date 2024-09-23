@@ -1,14 +1,14 @@
-# Maintainer: Chilledheart <hukeyue@hotmail.com>
-# Contributor: Chilledheart <hukeyue@hotmail.com>
+# Maintainer: Keeyou <keeyou-cn@outlook.com>
+# Contributor: Keeyou <keeyou-cn@outlook.com>
 
 pkgname=yass-proxy-git
-pkgver=1.12.1.r1.g6d8bf7d6
+pkgver=1.14.0.r24.gd145e580
 pkgrel=1
 pkgdesc="lightweight http/socks proxy"
 arch=(i686 x86_64)
 url="https://github.com/Chilledheart/yass"
-license=('GPL 2.0')
-depends=(gcc-libs glibc gtk3 zlib libnghttp2 c-ares gperftools)
+license=(GPL-2.0-only)
+depends=(gcc-libs glibc gtk3 zlib libnghttp2 c-ares gperftools jsoncpp)
 optdepends=(gtk-update-icon-cache libappindicator-gtk3 libayatana-appindicator)
 makedepends=(gcc binutils git ninja perl pkg-config cmake gettext curl go)
 checkdepends=(curl)
@@ -39,7 +39,9 @@ build(){
     -DUSE_TCMALLOC=on -DUSE_SYSTEM_TCMALLOC=on \
     -DUSE_ZLIB=on -DUSE_CARES=on \
     -DUSE_SYSTEM_ZLIB=on -DUSE_SYSTEM_CARES=on -DUSE_SYSTEM_NGHTTP2=on \
+    -DUSE_JSONCPP=on -DUSE_SYSTEM_JSONCPP=on \
     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+    -DUSE_CET=on \
     -DGUI=ON -DUSE_GTK4=off -DCLI=off -DSERVER=off
   ninja yass yass_test
   cd ..
