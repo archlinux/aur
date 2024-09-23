@@ -1,0 +1,12 @@
+pkgbase = minus_games_gui-git
+	pkgdesc = Minus Games Gui
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/Accessory/minus_games
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = minus_games_gui-git-0.4.0::git+https://github.com/Accessory/minus_games#branch=main
+	sha256sums = SKIP
+
+pkgname = minus_games_gui-git

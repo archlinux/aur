@@ -1,0 +1,51 @@
+# Maintainer: Accessory
+_exe_name=minus_games_gui
+pkgname=$_exe_name-git
+pkgver=0.4.0
+_source_folder=$pkgname-$pkgver
+pkgrel=1
+epoch=
+pkgdesc="Minus Games Gui"
+arch=("x86_64")
+url="https://github.com/Accessory/minus_games"
+license=('MIT')
+groups=()
+depends=()
+makedepends=(cargo)
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("$_source_folder::git+$url#branch=main")
+noextract=()
+sha256sums=('SKIP')
+validpgpkeys=()
+
+prepare() {
+    export RUSTUP_TOOLCHAIN=stable
+	cd  $_source_folder
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+    export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cd  $_source_folder
+	cargo build --release --bin $_exe_name
+}
+
+check() {
+	echo "No tests"
+}
+
+package() {
+	install -Dm0755 -t "$pkgdir/usr/bin/" "$_source_folder/target/release/$_exe_name"
+	install -Dm0644 "$_source_folder/other/assets/common/io.github.accessory.minus_games.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.accessory.minus_games_gui.svg"
+    install -Dm0644 "$_source_folder/other/assets/gui/io.github.accessory.minus_games_gui.desktop" $pkgdir/usr/share/applications/io.github.accessory.minus_games_gui.desktop
+    install -Dm0644 "$_source_folder/other/assets/gui/io.github.accessory.minus_games_gui.metainfo.xml" "$pkgdir/usr/share/metainfo/io.github.accessory.minus_games_gui.metainfo.xml"
+}
