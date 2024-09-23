@@ -1,7 +1,7 @@
 pkgbase = datomic
 	pkgdesc = A database of flexible,time-based facts,supporting queries and joins,with elastic scalability,and ACID transactions
 	pkgver = 1.0.7187
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.datomic.com/
 	install = datomic.install
 	arch = any

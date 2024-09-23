@@ -5,7 +5,7 @@
 
 pkgname=datomic
 pkgver=1.0.7187
-pkgrel=1
+pkgrel=2
 pkgdesc="A database of flexible,time-based facts,supporting queries and joins,with elastic scalability,and ACID transactions"
 arch=('any')
 url=https://www.datomic.com/
@@ -25,7 +25,7 @@ md5sums=('1107dc89c3bc0896a02458d34a875143'
 package() {
     mkdir -p "${pkgdir}/opt"
     cp -r "${srcdir}/${pkgname}-pro-${pkgver}" "${pkgdir}/opt/${pkgname}"
-    install -D "${srcdir}/${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
-    install -D "${srcdir}/transactor.properties" -t "${pkgdir}/etc/datomic"
+    install -Dm644 "${srcdir}/${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
+    install -Dm644 "${srcdir}/transactor.properties" -t "${pkgdir}/etc/datomic"
     mkdir -p "${pkgdir}/var/lib/datomic" "${pkgdir}/var/log/datomic"
 }
