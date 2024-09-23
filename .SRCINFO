@@ -1,6 +1,6 @@
 pkgbase = python-todo-or-not
 	pkgdesc = A simple tool that checks your project for TODOs and FIXMEs
-	pkgver = 0.13.17
+	pkgver = 0.14.4
 	pkgrel = 1
 	url = https://github.com/Start-Out/todo-or-not
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-todo-or-not
 	depends = python-typer
 	depends = python-tqdm
 	depends = python-ply
-	source = https://github.com/Start-Out/todo-or-not/archive/refs/tags/v0.13.17.tar.gz
-	sha256sums = 38fe7719e52e4692a3f73659d6779326cd3c5a1bf713d08b437205ff72d371bd
+	source = https://github.com/Start-Out/todo-or-not/archive/refs/tags/v0.14.4.tar.gz
+	sha256sums = d843132ab710e5d9ffe7f52ee2ff77c4ba89a724dc23c3b49c1e14825838b305
 
 pkgname = python-todo-or-not

@@ -1,7 +1,7 @@
 # Maintainer: Trumpetrespas (Please comment on the package to contact me)
 _pkgname=todo-or-not
 pkgname=python-todo-or-not
-pkgver=0.13.17
+pkgver=0.14.4
 pkgrel=1
 epoch=
 pkgdesc="A simple tool that checks your project for TODOs and FIXMEs"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/Start-Out/todo-or-not/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=(38fe7719e52e4692a3f73659d6779326cd3c5a1bf713d08b437205ff72d371bd)
+sha256sums=('d843132ab710e5d9ffe7f52ee2ff77c4ba89a724dc23c3b49c1e14825838b305')
 validpgpkeys=()
 
 prepare() {
