@@ -1,12 +1,12 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontship
-pkgver=0.9.6
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=(any)
 url="https://github.com/theleagueof/$pkgname"
-license=(AGPL-3.0-only)
+license=(GPL-3.0-only)
 depends=(diffutils
          entr
          font-v
@@ -41,7 +41,7 @@ depends=(diffutils
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.zst"{,.asc})
-sha256sums=('65ca224b5faf683b4ba1053b17d45576aee2d977d85f8210bfff257d0a8afa14'
+sha256sums=('5c0079c6134db3acad39cfdfe92b2a65f813b9a226d63a396d87b42a7ef10f4b'
             'SKIP')
 validpgpkeys=('9F377DDB6D3153A48EB3EB1E63CC496475267693') # Caleb Maclennan <caleb@alerque.com> (@alerque)
 
