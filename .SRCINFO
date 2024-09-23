@@ -1,10 +1,9 @@
 pkgbase = jlink-systemview
 	pkgdesc = Segger SystemView for Linux
-	pkgver = 3.56a
+	pkgver = 3.56b
 	pkgrel = 0
 	epoch = 9
 	url = https://www.segger.com/downloads/jlink/
-	arch = i686
 	arch = x86_64
 	groups = jlink
 	license = custom
@@ -14,9 +13,7 @@ pkgbase = jlink-systemview
 	source = SystemView.svg
 	md5sums = 89e75b3008c53de7fc22c00da5abba01
 	md5sums = 54635efec35cdbb6f60b997a8fceee74
-	source_i686 = SystemView_Linux_V356a_i686.tgz::https://www.segger.com/downloads/systemview/systemview_linux_tgz32
-	md5sums_i686 = 20b70ffe5b7ece9b45ae277996e12260
-	source_x86_64 = SystemView_Linux_V356a_x86_64.tgz::https://www.segger.com/downloads/systemview/systemview_linux_tgz64
-	md5sums_x86_64 = 0b6eb77a0fa5c89be31a53c68e48a907
+	source_x86_64 = SystemView_Linux_V356b_x86_64.tgz::https://www.segger.com/downloads/systemview/systemview_linux_tgz64
+	md5sums_x86_64 = 5b2b22bd54ea07758b3c3889fbf39756
 
 pkgname = jlink-systemview
