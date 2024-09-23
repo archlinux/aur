@@ -3,8 +3,8 @@
 
 _pkgname='ferdium'
 pkgname="ferdium"
-_electron='electron31'
-_electronpackage='electron31'
+_electron='electron32'
+_electronpackage='electron32'
 pkgver=6.7.7
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release).'
