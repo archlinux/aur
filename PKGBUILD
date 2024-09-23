@@ -1,20 +1,18 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="starkli"
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="A blazing fast CLI tool for Starknet powered by starknet-rs"
-arch=('any')
+arch=('x86_64')
 url="https://book.starkli.rs"
 _url="https://github.com/xJonathanLEI/${pkgname}"
 license=('Apache-2.0' 'MIT')
 makedepends=('cargo')
 depends=('glibc' 'gcc-libs' 'libusb')
-optdepends=('bash-completion: for shell auto-completion'
-            'zsh-completions: for shell auto-completion')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a5ade27f4644ecae0d5d92539ee55762d7e2791438104480dc7e41603cf2556b')
+b2sums=('fe54d67f077eea3d1dd2debac97c637ce19195ee0cfe8aaa53bab0b799b26950be236bab8c6a0e5c65f9f51cbd0ee24e978cf91771313da80defb6364a0c1af5')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
