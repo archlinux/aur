@@ -1,7 +1,7 @@
 pkgbase = tuxmake
 	pkgdesc = A tool for building Linux kernels across architectures, toolchains, and configurations
 	pkgver = 1.27.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://tuxmake.org/
 	arch = x86_64
 	arch = aarch64
@@ -13,6 +13,7 @@ pkgbase = tuxmake
 	makedepends = python-flit
 	makedepends = python-flit-core
 	makedepends = python-pytest
+	makedepends = python-pytest-mock
 	depends = python
 	depends = docker
 	depends = podman
