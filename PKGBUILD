@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=beekeeper-studio-git
 _pkgname="Beekeeper Studio"
-pkgver=4.6.2.r79.g143d95b
-_electronversion=18
-_nodeversion=16
+pkgver=4.6.2.r412.g69f207c
+_electronversion=31
+_nodeversion=20
 pkgrel=1
 pkgdesc="Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more"
 arch=('any')
@@ -12,7 +12,6 @@ _ghurl="https://github.com/beekeeper-studio/beekeeper-studio"
 license=('GPL-3.0-only')
 depends=(
     "electron${_electronversion}"
-    'openssl'
 )
 makedepends=(
     'npm'
@@ -20,67 +19,69 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
-    'python>=3.8'
     'gcc'
     'cmake'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
-    "${pkgname%-git}.sh")
+    "${pkgname%-git}.sh"
+)
 sha256sums=('SKIP'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
 }
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-git}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-git}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-git}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/${_pkgname}/
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+    " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname%-git}.git/apps/studio"
-    export npm_config_build_from_source=true
-    #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    #export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    #export ELECTRONVERSION="${_electronversion}"
+    cd "${srcdir}/${pkgname%-git}.git/"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
-    touch "${srcdir}/.electron-gyp/.yarnrc"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        export npm_config_registry=https://registry.npmmirror.com
-        export npm_config_disturl=https://npmmirror.com/mirrors/node
-        export npm_config_chromedriver_cdnurl=https://npmmirror.com/mirrors/chromedriver
-        export npm_config_node_sqlite3_binary_host_mirror=https://npmmirror.com/mirrors
-        export npm_config_electron_mirror=https://npmmirror.com/mirrors/electron/
-        export npm_config_python_mirror=https://npmmirror.com/mirrors/python
-        export npm_config_sass_binary_site=https://npmmirror.com/mirrors/node-sass
-        export npm_config_bin_mirrors_prefix=https://npmmirror.com/mirrors
-        export npm_config_electron_custom_dir="{{ version }}"
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
-    else
-        echo "Your network is OK."
-    fi
-        sed "/'snap',/d;/'deb',/d;s|'appImage'|'dir'|g" -i ./vue.config.js
-        rm -rf ./dist_electron
-        NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache"
-        NODE_ENV=production yarn run electron:build
-    }
+    {
+        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+            echo -e '\n'
+            echo 'registry "https://registry.npmmirror.com"'
+            echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
+            echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
+            echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
+            echo "cacheFolder "${srcdir}"/.yarn/cache"
+            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
+            echo "globalFolder "${srcdir}"/.yarn/global"
+            echo 'useHardlinks true'
+            #echo 'buildFromSource true'
+            echo 'linkWorkspacePackages true'
+            echo 'fetchRetries 3'
+            echo 'fetchRetryTimeout 10000'
+        fi
+    } >> .yarnrc
+    rm -rf apps/studio/dist_electron
+    sed -i "/'snap',/d;/'deb',/d;s/'appImage'/'dir'/" -i apps/studio/electron-builder-config.js
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" apps/studio/package.json
+    NODE_ENV=development    yarn install --no-lockfile --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production     yarn run electron:build
+}
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/apps/studio/dist_electron/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname%-git}.git/apps/studio/dist_electron/linux-"*/resources/{public,vendor} "${pkgdir}/usr/lib/${pkgname%-git}"
-    for _icons in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024;do
+    cp -r "${srcdir}/${pkgname%-git}.git/apps/studio/dist_electron/linux-"*/resources/{app.asar.unpacked,public,vendor,demo,db} "${pkgdir}/usr/lib/${pkgname%-git}"
+    icon_sizes=(16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024)
+    for _icons in "${icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname%-git}.git/apps/studio/public/icons/png/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
     done
