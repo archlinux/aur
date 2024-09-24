@@ -2,7 +2,7 @@
 
 pkgname=modrinth-app
 pkgver=0.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
 arch=('x86_64')
@@ -24,10 +24,12 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/modrinth/code/archive/refs/tags/v${pkgver}.tar.gz"
     "modrinth-app.desktop"
     "modrinth-app"
+    "modrinth-file-extensions.xml"
 )
 sha256sums=('f28d00e0af0119ff86b772050ec80e9390ed7acf6d5b3cc1501e90717035c3b0'
-            '7f6673916e0cf1cef2f2e3d1e5865d722abcbd8fba879688f8102816773a9d44'
-            '5404b4e7b25903afe43ab2f2451be4b27f4823c6785327b166f2faa519fa38a9')
+            '3ac2484618a0b10a979f7ce37fb97e748609bfb3bcccda5018a583e12ac0dbda'
+            '5404b4e7b25903afe43ab2f2451be4b27f4823c6785327b166f2faa519fa38a9'
+            'e0b3eab49465709ed5053dc1fa4206071ab32657d25bd1f9c01850d696715cff')
 options=('!lto')
 
 prepare() {
@@ -70,4 +72,5 @@ package() {
     #install -Dm644 "$srcdir"/code-"${_release_hash}"/apps/app/icons/icon.png "$pkgdir"/usr/share/icons/hicolor/256x256@2/apps/modrinth-app.png
     install -Dm644 "$srcdir"/code-"${pkgver}"/apps/app/icons/icon.png "$pkgdir"/usr/share/icons/hicolor/256x256@2/apps/modrinth-app.png
     install -Dm644 modrinth-app.desktop "$pkgdir"/usr/share/applications/modrinth-app.desktop
+    install -Dm644 "$srcdir"/modrinth-file-extensions.xml "$pkgdir"/usr/share/mime/packages/modrinth-file-extensions.xml
 }
