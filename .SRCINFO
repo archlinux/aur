@@ -1,6 +1,6 @@
 pkgbase = gtk-gnutella
 	pkgdesc = A Gnutella server/client
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/gtk-gnutella/gtk-gnutella
 	arch = i686
@@ -10,7 +10,8 @@ pkgbase = gtk-gnutella
 	depends = gtk2
 	depends = glib2
 	depends = desktop-file-utils
-	source = https://github.com/gtk-gnutella/gtk-gnutella/archive/refs/tags/v1.2.2.tar.gz
-	sha256sums = e52484a28849a4d3eb064638e5116f64bac2ab3f224ab90baed7f69ea400d11d
+	options = !lto
+	source = https://github.com/gtk-gnutella/gtk-gnutella/archive/refs/tags/v1.2.3.tar.gz
+	sha256sums = 1ce25bd5949b6c7b0e6069bc2481d398c464bc20cc0fae91ac3cc12cc62d15bf
 
 pkgname = gtk-gnutella
