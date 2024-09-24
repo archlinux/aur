@@ -1,0 +1,26 @@
+post_install() {
+    pkgver=$1
+    # The following is an improvement idea to fix the Python virtualenv paths
+    #for prog in Vitis Vivado; do
+    #    if [ -f /opt/Xilinx/$prog/$pkgver/tps/lnx64/lopper-1.1.0-packages/install.sh ]; then
+    #        echo Reinstalling Lopper Python environment for $prog again to fix the paths
+    #        LD_PRELOAD=/opt/Xilinx/Vitis/${pkgver}/lib/lnx64.o/libpython3.8.so.1.0 \
+    #            /opt/Xilinx/$prog/$pkgver/tps/lnx64/lopper-1.1.0-packages/install.sh \
+    #            /opt/Xilinx/$prog/$pkgver/tps/lnx64/python-3.8.3 \
+    #            /opt/Xilinx/$prog/$pkgver/lib/lnx64.o/Ubuntu/20 \
+    #            /opt/Xilinx/$prog/$pkgver/tps/lnx64/lopper-1.1.0-packages/py38/wheels \
+    #            /opt/Xilinx/$prog/$pkgver/tps/lnx64/lopper-1.1.0-packages/py38/requirements.txt \
+    #            /opt/Xilinx/$prog/$pkgver/tps/lnx64/lopper-1.1.0
+    #    fi
+    #done
+
+    cat <<EOF
+POST INSTALL INFO
+
+If you selected Vitis, then installation of QEMU may have failed. To
+reinstall run the following script.
+
+WARNING: the script uses sudo.
+EOF
+    echo /opt/Xilinx/Vitis/$pkgver/data/emulation/qemu/comp/qemu_scripts/qemu/x86_64-qemu-xilinx-nativesdk-standalone -d /opt/Xilinx/Vitis/$pkgver/data/emulation/qemu/comp/qemu -y
+}

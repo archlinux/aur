@@ -4,10 +4,6 @@
 # Former Maintainer: xiretza <aur@xiretza.xyz>
 # Contributor: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 
-# This PKGBUILD can also be used to install *Vitis Unified Software Platform*
-# or a subset of components like specific device support etc. See `package()`
-# for details.
-
 # BUILD INSTRUCTIONS:
 #
 # 1. Go to https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html
@@ -15,52 +11,81 @@
 #   (1) This file is >100GB in size  (2) You need an account for US export
 #   controls.
 # 3. Place the .tar.gz in the same directory as the PKGBUILD
-# 4. If you want to install a subset of the features, refer to `package()` below
-# 5. Build!
+# 4. Only if you want to install Vitis Edition: Replace `vivado` with `vitis` in `pkgname`.
+# 5. Select the features you need in `install_config-vivado.txt` or `*-vitis.txt`.
+#    
+#    Alternatively you can install all features. See the commented lines in
+#    `package` for this.
+# 6. Build!
 #
-# No refunds for broken AUR helpers, just use make(chroot)pkg.
 #
-# SOME MORE NOTES:
+### SELECTING SPECIFIC COMPONENTS
 #
 # This package is huge. The download alone is a barely-compressed >100GB
 # .tar.gz (extracts to ~100GB) and the final zstd-compressed package is another
 # 20GB. Reserve at least 200GB in total for building.
 #
-# It can also take up to two hours to build, being mostly limited by I/O and
-# single-thread performance. `namcap` takes another 30 minutes, make sure
-# you're not running that automatically.
+# The unified installer that you downloaded includes all Vivado and Vitis
+# editions. "Vitis Unified Software Platform" includes Vivado.
 #
-# It *also* requires a reasonably ugly hack to build: since package() is run
-# under fakeroot, and the installer tries to access the home directory no
+# Selecting only the features or component support you need will save space.
+# Two example configuration files for 2024.1
+# `install_config-{vitis,vivado}.txt` are included. If you want to create the
+# install configuration yourself, follow the following steps:
+#
+# 1. tar xf *.tar.gz
+# 2. ./xsetup -b ConfigGen
+# 3. edit the generated config file.
+#    You don't have to modify `Destination`. It is overridden by the
+#    `--location` argument 
+# 4. move the generated `install_config.txt` as
+# `install_config-{vitis-vivado}.txt` to the PKGBUILD folder 
+# 5. uncomment the file in `source` array
+# 6. uncomment the corresponding `SKIP` in `md5sums` array
+# 7. use the following arguments for `./xsetup` instead
+#
+#    --batch Install \
+#    --agree XilinxEULA,3rdPartyEULA \
+#    --location "$pkgdir/opt/Xilinx" \
+#    --config ../install_config-$pkgname.txt
+#
+#
+### UGLY HACK FOR BUILDING: `spoof_homedir.c`
+#
+# This PKGBUILD requires a reasonably ugly hack to build: since package() is
+# run under fakeroot, and the installer tries to access the home directory no
 # matter what `--location` is set to, it fails during "Running post-install
 # tasks" because it tries to access `/root`. To fix this, a tiny shared library
 # (see spoof_homedir.c) is LD_PRELOADed. Its only job is to wrap the
 # `getpwuid()` function and modify the original return value for uid==0.
 #
-# TROUBLESHOOTING
 #
-# - Installations hangs after `Installing files, ... completed. (Done)`:
+### CONSUMING LESS TIME FOR REPACKAGING
 #
-#   After installation some scripts are executed, e.g., getting a list of
-#   installed devices for Vivado or installing Python wheels for Vitis. If a
-#   library is missing, Vivado may stay in its shell forever. To debug these
-#   problems, refer to the log: `~/.Xilinx/xinstall/xinstall-*.log`.
-
-
-# CONFIGURATION
+# If you later want to add more features to your installation, you may want to
+# repackage. If you did not remove the extracted installation archive files
+# (`src`) and would like to save the time for checksum and extraction for
+# repackaging, then use:
 #
-INSTALL_DIR="/opt/Xilinx"
-# Change this to another directory if you want to install two versions on the same root.
-# As a result:
-# 1. `pkgname` is renamed
-# 2. `package()` skips installing udev rules and desktop files to avoid clash
-#    between two vivado versions
+# makepkg --noextract -f
+#
+#
+### LIMITATIONS OF THE VITIS INSTALLATION
+#
+# Installation may hand after `Installing files, ... completed. (Done)`:
+#
+# After installation some scripts are executed, e.g., getting a list of
+# installed devices for Vivado or installing Python wheels for Vitis. If a
+# library is missing, Vivado may stay in its shell forever. To debug these
+# problems, refer to the log: `~/.Xilinx/xinstall/xinstall-*.log`.
+#
 
+#pkgbase=vivado-suite
+# For repo change in future
 
-pkgname=vivado
-if [[ $INSTALL_DIR != /opt/Xilinx ]]; then
-    pkgname=vivado2
-fi
+pkgname=(vivado)
+#pkgname=(vitis)
+
 _srcname=FPGAs_AdaptiveSoCs_Unified
 pkgver=2024.1
 _more_ver=0522_2023
@@ -87,14 +112,17 @@ optdepends=('fxload'
 source=(
     "file:///${_srcname}_${pkgver}_${_more_ver}.tar.gz"
     "spoof_homedir.c"
-    #"install_config.txt"
+    "install_config-vitis.txt"
+    "install_config-vivado.txt"
 )
 
-# Checksum from https://www.xilinx.com/support/download.html
 md5sums=(
     '372c0b184e32001137424e395823de3c'
+    # Checksum from https://www.xilinx.com/support/download.html
+
     '69d14ad64f6ec44e041eaa8ffcb6f87c'
-    #SKIP
+    SKIP
+    SKIP
 )
 
 # Takes forever for probably minimal gain
@@ -103,7 +131,7 @@ options=('!strip')
 prepare() {
     rm -rf "$srcdir/installer_temp"
     # If not removed, may lead to `Program group entry already exists` in
-    # future makepkg packagings.
+    # if srcdir is reused, e.g., with `makepkg --noextract -f`.
 
     mkdir -p "$srcdir/installer_temp"
 }
@@ -113,76 +141,105 @@ build() {
     gcc -shared -fPIC -D "FAKE_HOME=\"$srcdir/installer_temp\"" spoof_homedir.c -o spoof_homedir.so -ldl
 }
 
-package() {
-    cd "${_srcname}_${pkgver}_${_more_ver}"
+_installprefix=/opt/Xilinx
+package_common_pre() {
+    # If installer is restarted using `makepkg --noextract -f`, then the folder
+    # `installer_temp` stops the installer.
+    rm -rf installer_temp 
 
-    # If you only need support for a subset of devices and would like to save
-    # space:
-    # 1. tar xf *.tar.gz
-    # 2. ./xsetup -b ConfigGen
-    # 3. edit the generated config file.
-    #    You don't have to modify `Destination`. It is overridden by the
-    #    `--location` argument 
-    # 4. move the generated `install_config.txt` to the PKGBUILD folder
-    # 5. append the file to `source`
-    # 6. append `SKIP` to md5sums
-    # 7. Then use instead the following arguments for `./xsetup`
-    #
-    #    --batch Install \
-    #    --agree XilinxEULA,3rdPartyEULA \
-    #    --location "$pkgdir/opt/Xilinx" \
-    #    --config ../install_config.txt
-
-    # For *Vitis Unified Software Platform*, use:
-    # ```
-    #    --product Vitis \
-    #    --edition 'Vitis Unified Software Platform' \
-    # ```
-    # The unified installer that you downloaded includes all Vivado and Vitis
-    # editions.
-
-        # LD_PRELOAD already contains libfakeroot.so, add our own library before that
-    LD_PRELOAD="$srcdir/spoof_homedir.so:$LD_PRELOAD" ./xsetup \
-        --batch Install \
-        --agree XilinxEULA,3rdPartyEULA \
-        --location "$pkgdir$INSTALL_DIR" \
-        --product Vivado \
-        --edition 'Vivado ML Standard'
-
-        #--config ../install_config.txt
-
-    if [[ $INSTALL_DIR == /opt/Xilinx ]]; then
-        # Install udev rules
-        install -Dm644 "$pkgdir$INSTALL_DIR/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-digilent-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
-        install -Dm644 "$pkgdir$INSTALL_DIR/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-ftdi-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
-        install -Dm644 "$pkgdir$INSTALL_DIR/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-pcusb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
-
-        # Install desktop files
-        for deskfile in "$srcdir"/installer_temp/Desktop/*.desktop; do
-            sed -i -e "s|$pkgdir||g" "$deskfile"
-            install -Dm644 -t "$pkgdir/usr/share/applications/" "$deskfile"
-        done
-    fi
+    cd "${_srcname}_${pkgver}_${_more_ver}" || exit
+}
+package_common_post() {
+    # Install udev rules
+    install -Dm644 "$pkgdir$_installprefix/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-digilent-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+    install -Dm644 "$pkgdir$_installprefix/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-ftdi-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+    install -Dm644 "$pkgdir$_installprefix/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-pcusb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
 
     # Clean up artifacts, remove leading $pkgdir from paths
-    rm -rf "$pkgdir$INSTALL_DIR/.xinstall/"
-    find "$pkgdir$INSTALL_DIR" -name '*settings64*' -exec sed -i -e "s|$pkgdir||g" '{}' \+
+    rm -rf "$pkgdir$_installprefix/.xinstall/"
+    find "$pkgdir$_installprefix" -name '*settings64*' -exec sed -i -e "s|$pkgdir||g" '{}' \+
+
+    # Install desktop files
+    for deskfile in "$srcdir"/installer_temp/Desktop/*.desktop; do
+        # Fix paths
+        sed -i -e "s|$pkgdir||g" "$deskfile"
+
+        # Avoid temporary files in your HOME during runtime
+        echo "Path=/tmp" >> "$deskfile"
+
+        install -Dm644 -t "$pkgdir/usr/share/applications/" "$deskfile"
+    done
 
     # If you want to save space for subsequent packaging, then remove the
     # extracted installation archive files. The following lines are executed
     # before the pacman package is created and will free >100G of space.
     #cd ..
     #rm -rf "${_srcname}_${pkgver}_${_more_ver}"
+}
+package_vivado() {
+    conflicts=(vitis)
+    pkgdesc="$pkgdesc – Vivado edition"
+    package_common_pre
+    # LD_PRELOAD already contains libfakeroot.so, add our own library before that
+    LD_PRELOAD=$srcdir/spoof_homedir.so:$LD_PRELOAD ./xsetup \
+        --batch Install \
+        --agree XilinxEULA,3rdPartyEULA \
+        --location "$pkgdir$_installprefix" \
+        --config ../install_config-vivado.txt
 
-    # Consuming less time for repackaging
+    # For installing all features, use the following options
+        #--product Vivado \
+        #--edition 'Vivado ML Standard'
+
+    package_common_post
+}
+package_vitis() {
+    conflicts=(vivado)
+    pkgdesc="$pkgdesc – Vitis edition"
+    package_common_pre
+    install=$pkgname.install  # Reinstall Python wheel etc
+
+    LD_PRELOAD=$srcdir/spoof_homedir.so:$LD_PRELOAD ./xsetup \
+        --batch Install \
+        --agree XilinxEULA,3rdPartyEULA \
+        --location "$pkgdir$_installprefix" \
+        --config ../install_config-vitis.txt
+
+    # For installing all features, use the following options
+        #--product Vitis \
+        #--edition 'Vitis Unified Software Platform'
+
+    # Vitis' custom libraries clash with native libraries. Only load select
+    # ones, e.g., libssl.so.10 for cmake $CUSTOM_LIBRARY_PATH and
+    # $MY_LIBRARY_PATH contain the paths to the
+    # custom libraries. The following lines replace the expansion of these
+    # variables with the select libraries
+    sed -i \
+        "s|\$CUSTOM_LIBRARY_PATH|$_installprefix/Vitis/2024.1/tps/lnx64/cmake-3.24.2/libs/Ubuntu|g" \
+        "$pkgdir$_installprefix"/Vitis/2024.1/bin/vitis
+    sed -i \
+        "s|\$MY_LIBRARY_PATH|$_installprefix/Vitis/2024.1/tps/lnx64/cmake-3.24.2/libs/Ubuntu|g" \
+        "$pkgdir$_installprefix"/Vitis/2024.1/bin/vitis
+
+    # Vitis installer installs lopper etc packages into a Python virtual
+    # environment, but these will point to the PKGBUILD folder. The following
+    # fixes the exec paths only in executables. Fixing the path in all files
+    # corrupts installed libraries in the virtual path.
     #
-    # If you did not remove the extracted installation archive files and save
-    # the time for checksum and extraction for repackaging, then follow these
-    # steps on your shell:
-    #
-    # 1. Remove `installer_temp`, e.g., `rm -rf src/installer_temp`
-    # 1a. Only if you used `install_config.txt`: copy it to `src` manually,
-    #     because `--noextract` option that we will use in the next step skips
-    #     this step.
-    # 2. makepkg --skipchecksums --noextract -f
+    # An improvement idea is to reinstall the virtualenv after installation
+    # using a script. However I could not get it working (see vitis.install).
+
+    # Fix Python 3.8 path
+    ln -sf "$_installprefix"/Vitis/${pkgver}/tps/lnx64/python-3.8.3/bin/python \
+        "$pkgdir$_installprefix"/Vitis/${pkgver}/tps/lnx64/lopper-1.1.0/env/bin/python
+    
+    for prog in Vitis Vivado; do
+        find "$pkgdir$_installprefix"/$prog/$pkgver/tps/lnx64/lopper-1.1.0/env/bin \
+            -type f \
+            -exec sed -i -e "s|$pkgdir||g" '{}' \+
+
+        # Remove write permissions from the lopper directory
+        chmod go-w -R "$pkgdir$_installprefix"/$prog/${pkgver}/tps/lnx64/lopper-1.1.0
+    done
+    package_common_post
 }
