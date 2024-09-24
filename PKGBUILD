@@ -1,16 +1,16 @@
 # Maintainer: Olivier Le Moal <mail at olivierlemoal dot fr>
 
 pkgname=kubeaudit
-pkgver=0.22.1
+pkgver=0.22.2
 pkgrel=1
-pkgdesc="kubeaudit is a command line tool and a Go package to audit Kubernetes clusters for various different security concerns."
+pkgdesc="A command line tool and a Go package to audit Kubernetes clusters for various different security concerns."
 makedepends=('go')
 arch=('x86_64')
 conflicts=('kubeaudit-bin')
 url="https://github.com/Shopify/kubeaudit"
 license=('MIT')
 source=("https://github.com/Shopify/kubeaudit/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0cb5659b8fb22b07e7cdea3ca5b6c46ca6f8e6d02204577d713fcfb0f67b7a05')
+sha256sums=('90752d42c4d502ab6776af3358ae87a02d2893fc2bb7a0364d6c1fdcd8ff0570')
 
 build() {
 	cd "${pkgname}-${pkgver}"
