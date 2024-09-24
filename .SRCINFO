@@ -1,0 +1,14 @@
+pkgbase = jjazzlab-bin
+	pkgdesc = A Midi-based framework dedicated to backing tracks generation
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = https://www.jjazzlab.org/
+	arch = x86_64
+	license = LGPL-2.1-only
+	depends = jre17-openjdk
+	source = https://github.com/jjazzboss/JJazzLab/releases/download/4.1.1/JJazzLab-4.1.1-linux-x64.tar.xz
+	source = jjazzlab.desktop
+	sha256sums = 7ba52340c5821a9312d02ad3f708efff1c3e8079b84021512731dd0a3d45b00b
+	sha256sums = 0c11ad2c50439741a43629e551b9134e51b043c8c5250e1f47768dc9b443a034
+
+pkgname = jjazzlab-bin
