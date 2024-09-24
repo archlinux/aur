@@ -3,9 +3,9 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Meow Meow <sdfsdfaasdfdcf@gmail.com>
 pkgname=pixivutil2-git
-pkgver=1.1
+pkgver=1.3
 pkgrel=2
 pkgdesc="A utility for the image hosting website Pixiv, once downloaded you can use the pixiv command to run it"
 arch=('any')
@@ -16,7 +16,7 @@ provides=('pixiv')
 source=('git+https://github.com/Nandaka/PixivUtil2.git'
         'pixiv')
 sha256sums=('SKIP'
-            'aca6fdc4c6a1b05fecc4d67f82b6bc40f45b813b7d326bc2f81c3a08ea0e9969')
+            '4b49dc94fa19c7a650101a83d19e4670dc4df6bf195cd0257215524eee7074ac')
 
 package() {
         mkdir -p $pkgdir/usr/bin

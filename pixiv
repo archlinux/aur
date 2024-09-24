@@ -9,7 +9,7 @@ then
   pip install -r $HOME/.local/share/PixivUtil2/requirements.txt
   echo -e "\e[0;35mIf you cannot sign in, go to the instructions here: https://github.com/Nandaka/PixivUtil2#a-usage (Q3)\033[0m"
   echo -e "\e[0;35mNOTE: The config.ini file is located at: $HOME/.local/share/PixivUtil2/config.ini\033[0m"
-  $HOME/.local/share/PixivUtil2/PixivUtil2.py
+  $HOME/.local/share/PixivUtil2/PixivUtil2.py $@
   echo -e "\e[0;35mIf you cannot sign in, go to the instructions here: https://github.com/Nandaka/PixivUtil2#a-usage (Q3)\033[0m"
   echo -e "\e[0;35mNOTE: The config.ini file is located at: $HOME/.local/share/PixivUtil2/config.ini\033[0m"
 else
@@ -19,5 +19,5 @@ else
   git pull -q
   cd $ogdir
   source $HOME/.local/share/PixivUtil2/pixiv_venv/bin/activate
-  $HOME/.local/share/PixivUtil2/PixivUtil2.py
+  $HOME/.local/share/PixivUtil2/PixivUtil2.py $@
 fi
