@@ -1,24 +1,24 @@
-diff -ru rstudio-desktop.original/src/rstudio-2024.04.1-748/src/cpp/conf/rsession-dev.conf rstudio-desktop/src/rstudio-2024.04.1-748/src/cpp/conf/rsession-dev.conf
---- rstudio-desktop.original/src/rstudio-2024.04.1-748/src/cpp/conf/rsession-dev.conf	2024-05-07 06:31:08.000000000 +1200
-+++ rstudio-desktop/src/rstudio-2024.04.1-748/src/cpp/conf/rsession-dev.conf	2024-05-21 19:32:00.206198890 +1200
-@@ -39,7 +39,7 @@
- external-pandoc-path=${RSTUDIO_DEPENDENCIES_PANDOC_DIR}
- external-quarto-path=${RSTUDIO_DEPENDENCIES_QUARTO_DIR}
+diff -ru rstudio-2024.09.0-375/src/cpp/conf/rsession-dev.conf rstudio-2024.09.0-375.new/src/cpp/conf/rsession-dev.conf
+--- rstudio-2024.09.0-375/src/cpp/conf/rsession-dev.conf	2024-09-17 05:02:32.000000000 +1200
++++ rstudio-2024.09.0-375.new/src/cpp/conf/rsession-dev.conf	2024-09-24 11:25:57.648251605 +1200
+@@ -41,7 +41,7 @@
  external-libclang-path=${RSTUDIO_DEPENDENCIES_DIR}/common/libclang
--external-node-path=${RSTUDIO_DEPENDENCIES_DIR}/common/node/18.18.2/bin/node
+ 
+ # node version below should match RSTUDIO_INSTALLED_NODE_VERSION
+-external-node-path=${RSTUDIO_DEPENDENCIES_DIR}/common/node/20.15.1-patched/bin/node
 +external-node-path=/usr/bin/node
  
  # enable copilot
  copilot-enabled=1
-diff -ru rstudio-desktop.original/src/rstudio-2024.04.1-748/src/cpp/session/CMakeLists.txt rstudio-desktop/src/rstudio-2024.04.1-748/src/cpp/session/CMakeLists.txt
---- rstudio-desktop.original/src/rstudio-2024.04.1-748/src/cpp/session/CMakeLists.txt	2024-05-07 06:31:08.000000000 +1200
-+++ rstudio-desktop/src/rstudio-2024.04.1-748/src/cpp/session/CMakeLists.txt	2024-05-21 10:33:50.351362947 +1200
-@@ -697,10 +697,12 @@
+diff -ru rstudio-2024.09.0-375/src/cpp/session/CMakeLists.txt rstudio-2024.09.0-375.new/src/cpp/session/CMakeLists.txt
+--- rstudio-2024.09.0-375/src/cpp/session/CMakeLists.txt	2024-09-17 05:02:32.000000000 +1200
++++ rstudio-2024.09.0-375.new/src/cpp/session/CMakeLists.txt	2024-09-24 11:27:41.827637114 +1200
+@@ -700,10 +700,12 @@
             DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/resources")
  
     # install node
 -   install(
--      DIRECTORY "${RSTUDIO_DEPENDENCIES_DIR}/common/node/${RSTUDIO_INSTALLED_NODE_VERSION}/"
+-      DIRECTORY "${RSTUDIO_DEPENDENCIES_DIR}/common/node/${RSTUDIO_INSTALLED_NODE_VERSION}-patched/"
 -      DESTINATION "${RSTUDIO_INSTALL_BIN}/node"
 -      USE_SOURCE_PERMISSIONS)
 +   if(NOT RSTUDIO_USE_SYSTEM_NODE)
@@ -30,40 +30,40 @@ diff -ru rstudio-desktop.original/src/rstudio-2024.04.1-748/src/cpp/session/CMak
  
     # install quarto (or pandoc if quarto disabled)
     if(QUARTO_ENABLED)
-diff -ru rstudio-desktop.original/src/rstudio-2024.04.1-748/src/cpp/session/SessionOptions.cpp rstudio-desktop/src/rstudio-2024.04.1-748/src/cpp/session/SessionOptions.cpp
---- rstudio-desktop.original/src/rstudio-2024.04.1-748/src/cpp/session/SessionOptions.cpp	2024-05-07 06:31:08.000000000 +1200
-+++ rstudio-desktop/src/rstudio-2024.04.1-748/src/cpp/session/SessionOptions.cpp	2024-05-21 19:33:46.308996710 +1200
-@@ -709,7 +709,7 @@
-                               std::string* pPath)
+diff -ru rstudio-2024.09.0-375/src/cpp/session/SessionOptions.cpp rstudio-2024.09.0-375.new/src/cpp/session/SessionOptions.cpp
+--- rstudio-2024.09.0-375/src/cpp/session/SessionOptions.cpp	2024-09-17 05:02:32.000000000 +1200
++++ rstudio-2024.09.0-375.new/src/cpp/session/SessionOptions.cpp	2024-09-24 11:28:57.490536726 +1200
+@@ -713,7 +713,7 @@
  {
  #if defined(__linux__) && !defined(RSTUDIO_PACKAGE_BUILD)
--   FilePath dependenciesPath = resourcePath.completePath("../../dependencies/common/node/18.18.2");
+    // node version should match RSTUDIO_INSTALLED_NODE_VERSION
+-   FilePath dependenciesPath = resourcePath.completePath("../../dependencies/common/node/20.15.1-patched");
 +   FilePath dependenciesPath = resourcePath.completePath("/usr");
     resolvePath(dependenciesPath, pPath);
  #else
     resolvePath(resourcePath, pPath);
-diff -ru rstudio-desktop.original/src/rstudio-2024.04.1-748/src/gwt/build.xml rstudio-desktop/src/rstudio-2024.04.1-748/src/gwt/build.xml
---- rstudio-desktop.original/src/rstudio-2024.04.1-748/src/gwt/build.xml	2024-05-07 06:31:08.000000000 +1200
-+++ rstudio-desktop/src/rstudio-2024.04.1-748/src/gwt/build.xml	2024-05-21 19:28:10.023896075 +1200
+diff -ru rstudio-2024.09.0-375/src/gwt/build.xml rstudio-2024.09.0-375.new/src/gwt/build.xml
+--- rstudio-2024.09.0-375/src/gwt/build.xml	2024-09-17 05:02:32.000000000 +1200
++++ rstudio-2024.09.0-375.new/src/gwt/build.xml	2024-09-24 11:30:26.016707136 +1200
 @@ -85,8 +85,8 @@
  
     <!-- panmirror typescript library -->
     <!-- ensure version matches RSTUDIO_NODE_VERSION -->
--   <property name="node.version" value="18.18.2"/>
+-   <property name="node.version" value="20.14.0"/>
 -   <property name="node.dir" value="../../dependencies/common/node/${node.version}"/>
 +   <property name="node.version" value="Current"/>
 +   <property name="node.dir" value="/usr"/>
     <!-- use yarn from system but will prefer yarn from dependencies if available -->
     <condition property="yarn.bin" value="yarn">
       <not>
-diff -ru rstudio-desktop.original/src/rstudio-2024.04.1-748/src/node/CMakeNodeTools.txt rstudio-desktop/src/rstudio-2024.04.1-748/src/node/CMakeNodeTools.txt
---- rstudio-desktop.original/src/rstudio-2024.04.1-748/src/node/CMakeNodeTools.txt	2024-05-07 06:31:08.000000000 +1200
-+++ rstudio-desktop/src/rstudio-2024.04.1-748/src/node/CMakeNodeTools.txt	2024-05-21 19:28:34.497148803 +1200
+diff -ru rstudio-2024.09.0-375/src/node/CMakeNodeTools.txt rstudio-2024.09.0-375.new/src/node/CMakeNodeTools.txt
+--- rstudio-2024.09.0-375/src/node/CMakeNodeTools.txt	2024-09-17 05:02:32.000000000 +1200
++++ rstudio-2024.09.0-375.new/src/node/CMakeNodeTools.txt	2024-09-24 11:30:51.146568219 +1200
 @@ -19,7 +19,7 @@
  
  # set the node version
  if(NOT DEFINED RSTUDIO_NODE_VERSION)
--   set(RSTUDIO_NODE_VERSION "18.18.2")
+-   set(RSTUDIO_NODE_VERSION "20.14.0")
 +   set(RSTUDIO_NODE_VERSION "Current")
  endif()
  if(DEFINED ENV{RSTUDIO_NODE_VERSION})
@@ -94,4 +94,3 @@ diff -ru rstudio-desktop.original/src/rstudio-2024.04.1-748/src/node/CMakeNodeTo
 +      "/usr")
  
  endif()
-    

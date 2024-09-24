@@ -2,10 +2,10 @@
 
 pkgname=rstudio-desktop
 _vermajor=2024
-_verminor=04
-_verpatch=2
-_versuffix=764
-_gitcommit=e4392fc
+_verminor=09
+_verpatch=0
+_versuffix=375
+_gitcommit=c8fc7ae
 _gitname=rstudio-rstudio-${_gitcommit}
 pkgver=${_vermajor}.${_verminor}.${_verpatch}.${_versuffix}
 _srcname=rstudio-${_vermajor}.${_verminor}.${_verpatch}-${_versuffix}
@@ -13,13 +13,13 @@ _pandocver="current"
 _sociver="4.0.3"
 _quarto="FALSE"
 
-pkgrel=2
+pkgrel=5
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('x86_64')
 url="https://github.com/rstudio/rstudio"
 license=('AGPL-3.0-only')
 depends=('r>=3.3.0' 'boost-libs' 'qt5-sensors' 'qt5-svg' 'qt5-webengine' 'qt5-xmlpatterns' 'postgresql-libs' 'sqlite3' 'clang' 'hunspell-en_US' 'mathjax2' 'pandoc' 'yaml-cpp')
-makedepends=('git' 'cmake>=3.29' 'boost' 'ninja' 'desktop-file-utils' 'jdk8-openjdk' 'apache-ant' 'unzip' 'openssl' 'libcups' 'pam' 'patchelf' 'wget' 'yarn')
+makedepends=('git' 'cmake>=3.29' 'boost' 'ninja' 'npm' 'gyp' 'desktop-file-utils' 'jdk11-openjdk' 'apache-ant' 'unzip' 'openssl' 'python-setuptools' 'libcups' 'pam' 'patchelf' 'wget' 'yarn')
 optdepends=('git: for git support'
             'subversion: for subversion support'
             'openssh-askpass: for a git ssh access'
@@ -29,28 +29,29 @@ source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs
         "git+https://github.com/quarto-dev/quarto.git#branch=release/rstudio-cherry-blossom"
         "https://github.com/SOCI/soci/archive/refs/tags/v${_sociver}.tar.gz"
         "qt.conf"
-        "0002-allow_system_node.patch"
+        "0001-enable_system_node.patch"
         "0003-fix_boost_186.patch")
 
-sha256sums=('89b0d6741b6bd4dac52fd8bd9372d4f1919c97dd41056a03c975d0570eaf439e'
+sha256sums=('8a29b77c53a3db8379d824a9f4a491843036003d105ed71981cd40fe39d2c8c8'
             'SKIP'
             '4b1ff9c8545c5d802fbe06ee6cd2886630e5c03bf740e269bb625b45cf934928'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
-            'ad4bd3076ff2bff7d075e3928a7e55c618fa744e3bf5d3d387bf70e01ff96c2f'
+            'fa20d753ba2d2dcf64705bd8cd0bd4d01090bfee9c8173d4312d1050d26121f3'
             '7b3384fc7349a69e866ef0db21f196a2cafa3a9e2fb7f1edaead773b991dac72')
 
 options=('!emptydirs' '!debug')
 
 prepare() {
     cd ${srcdir}/${_srcname}
-    msg "Do not use outdated version name of pandoc"
-    sed -i '/PANDOC_VERSION/s/2.18/current/' "${srcdir}/${_srcname}/CMakeGlobals.txt"
 
     msg "Suppress _FORTIFY_SOURCE mismatch warnings"
     sed -i 's/D_FORTIFY_SOURCE=2/D_FORTIFY_SOURCE=3/' "${srcdir}/${_srcname}/src/cpp/CMakeLists.txt"
+    
+    sed -i 's/add_subdirectory(package)/# add_subdirectory(package)/' "${srcdir}/${_srcname}/CMakeLists.txt"
 
     # Add option to use system node
-    patch -p3 < ${srcdir}/0002-allow_system_node.patch
+    patch -p1 < ${srcdir}/0001-enable_system_node.patch
+
     # fix boost 1.86 incompatibility
     patch -p1 < ${srcdir}/0003-fix_boost_186.patch
 
@@ -121,21 +122,13 @@ build() {
     export R_LIBS_USER="${srcdir}/${_srcname}/dependencies/R"
     _JOBS="$(grep -oP -- "-j\s*\K[0-9]+" <<< "${MAKEFLAGS}")" || _JOBS="1"
     mkdir -p "${R_LIBS_USER}"
-    local RPACKAGES=(
-      digest
-      purrr
-      rmarkdown
-      testthat
-      xml2
-      yaml
-    )
-    for RPKG in ${RPACKAGES[*]}; do
+    for RPKG in rmarkdown renv testthat xml2 yaml; do
         RINSTALLCMD="if("'!'"require($RPKG, quietly = TRUE)) { options(Ncpus = ${_JOBS} ); install.packages('$RPKG', lib='$R_LIBS_USER', repos='https://cran.rstudio.com/') }"
         echo "> $RINSTALLCMD"
         Rscript -e "$RINSTALLCMD"
     done
 
-    export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:${PATH}
+    export PATH=/usr/lib/jvm/java-11-openjdk/jre/bin/:${PATH}
     export RSTUDIO_TOOLS_ROOT="${srcdir}/${_srcname}/dependencies"
     export RSTUDIO_NODE_PATH=/usr/
     export RSTUDIO_VERSION_MAJOR=${_vermajor}
@@ -159,7 +152,7 @@ build() {
     export CMAKE_INSTALL_PREFIX=/usr/lib/rstudio
     
     local _CMAKE_RSTUDIO_OPTIONS=(
-      -DRSTUDIO_TARGET=Desktop
+      -DRSTUDIO_TARGET=Electron
       -DCMAKE_BUILD_TYPE=Release
       -DRSTUDIO_USE_SYSTEM_BOOST=yes
       -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake
@@ -182,7 +175,7 @@ package() {
 
     # Symlink main binary
     install -d "${pkgdir}/usr/bin"
-    ln -s "/usr/lib/rstudio/bin/rstudio" "${pkgdir}/usr/bin/rstudio"
+    ln -s "/usr/lib/rstudio/rstudio" "${pkgdir}/usr/bin/rstudio"
 
     # BUGFIX: qt5-webengine isn't init'ing properly. Likely an Rstudio bug.
     install -Dm 644 "${srcdir}/qt.conf" "${pkgdir}/usr/lib/qt/libexec/qt.conf"
