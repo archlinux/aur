@@ -1,7 +1,8 @@
 [Desktop Entry]
 Categories=Game;
-Exec=modrinth-app
+Exec=modrinth-app %u
 Icon=modrinth-app
 Name=Modrinth App
 Terminal=false
 Type=Application
+MimeType=application/zip+x-modrinth-mrpack;x-scheme-handler/modrinth
