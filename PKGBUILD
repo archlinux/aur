@@ -5,13 +5,14 @@
 # Contributor: Daniel Dulaney <dan@dulaney.xyz>
 
 pkgname='dtrx-git'
-pkgver=7.1.671ccf7
+pkgver=8.5.3.r2.gb0e9cb1
 pkgrel=1
 pkgdesc='An intelligent archive extraction tool'
 arch=('any')
-url='http://github.com/brettcs/dtrx'
+url='http://github.com/dtrx-py/dtrx'
 license=('GPL3')
-depends=('python2')
+depends=('python3')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=(
   'tar: to extract tar, deb, and gem archives'
   'unzip: to extract zip archives'
@@ -31,16 +32,20 @@ provides=(dtrx)
 conflicts=(dtrx)
 
 md5sums=('SKIP')
-source=('git+https://github.com/brettcs/dtrx.git')
+source=('git+https://github.com/dtrx-py/dtrx.git')
 
 pkgver() {
-    cd dtrx
-    cat <(python2 setup.py --version | tr "\n" .) \
-        <(git rev-parse --short HEAD)
+  cd "${pkgname%-git}"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "${srcdir}/${pkgname%-git}"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/dtrx"
-  python2 setup.py install --root="$pkgdir"
+  cd "${srcdir}/${pkgname%-git}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

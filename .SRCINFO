@@ -1,11 +1,15 @@
 pkgbase = dtrx-git
 	pkgdesc = An intelligent archive extraction tool
-	pkgver = 7.1.671ccf7
+	pkgver = 8.5.3.r2.gb0e9cb1
 	pkgrel = 1
-	url = http://github.com/brettcs/dtrx
+	url = http://github.com/dtrx-py/dtrx
 	arch = any
 	license = GPL3
-	depends = python2
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python3
 	optdepends = tar: to extract tar, deb, and gem archives
 	optdepends = unzip: to extract zip archives
 	optdepends = cpio: to extract cpio and rpm archives
@@ -21,8 +25,7 @@ pkgbase = dtrx-git
 	optdepends = lha: to extract lzh archives
 	provides = dtrx
 	conflicts = dtrx
-	source = git+https://github.com/brettcs/dtrx.git
+	source = git+https://github.com/dtrx-py/dtrx.git
 	md5sums = SKIP
 
 pkgname = dtrx-git
-
