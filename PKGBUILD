@@ -29,7 +29,7 @@ source_i386=("${pkgname}-${pkgver}.deb::https://www.mediahuman.com/de/download/Y
 source_x86_64=("${pkgname}-${pkgver}.deb::https://www.mediahuman.com/de/download/YouTubeToMP3.amd64.deb")
 noextract=()
 md5sums_i386=("1b366db15c58d01c583f60c5c4ea3380")
-md5sums_x86_64=("c428f910d7c39b30d26cc56e902c943f")
+md5sums_x86_64=("e5a13bcd7e85d7de20491564b0572592")
 validpgpkeys=()
 
 prepare() {
