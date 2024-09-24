@@ -1,0 +1,14 @@
+pkgbase = bindp
+	pkgdesc = A tool to bind an application to a specific IP address on Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/brauliobo/bindp
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	depends = glibc
+	source = bindp::git+https://github.com/brauliobo/bindp.git
+	sha256sums = SKIP
+
+pkgname = bindp
