@@ -3,132 +3,28 @@
 # Contributor: Dominik Adrian Grzywak <starterx4 at gmail dot com>
 
 _pkgname="thorium-browser"
-pkgname="$_pkgname-bin"
 pkgver=126.0.6478.231
-pkgrel=3
+pkgrel=4
 pkgdesc="Chromium fork focused on high performance and security"
 url="https://github.com/Alex313031/Thorium"
 license=('BSD')
-arch=('x86_64')
+arch=('i386' 'x86_64' 'x86_64_v2' 'x86_64_v3')
 
 options=('!emptydirs' '!strip' '!debug')
-install="$_pkgname.install"
 
-_source_main() {
-  _dl_url="$url/releases/download/M${pkgver}"
-  _dl_filename="${_pkgname}_${pkgver}_SSE3.deb"
-  noextract+=("$_dl_filename")
-
-  source=("$_dl_url/$_dl_filename")
-  sha256sums=('5dcea3c3508b9fe6b4990d8663254f6a333a5a4fe0644a9f86ceca5a57444a27')
-}
-
-prepare() {
-  install -Dvm644 /dev/stdin "$_pkgname.sh" << END
-#!/usr/bin/env bash
-
-# check microprocessor architecture level
-if grep -qsE '\bpni\b' /proc/cpuinfo ; then
-  _message=''
-  _message+=\$'The fastest browser on Earth.'
-else
-  _message=''
-  _message+=\$'Your processor does not support SSE3 instructions.\n'
-  _message+=\$'thorium-browser may not work on your computer.'
-fi
-
-# Allow users to override command-line options
-XDG_CONFIG_HOME=\${XDG_CONFIG_HOME:-~/.config}
-_FLAGS_FILE="\$XDG_CONFIG_HOME/thorium-flags.conf"
-
-if [[ -f "\$_FLAGS_FILE" ]]; then
-  _USER_FLAGS="\$(cat "\$_FLAGS_FILE")"
-fi
-
-# display processor support message
-if tty -s ; then
-  echo "\$_message"
-else
-  [ ! -e "\$XDG_CONFIG_HOME/thorium" ] && notify-send -a "thorium-browser" -t 7500 "\$_message"
-fi
-
-# Launch
-exec /opt/thorium-browser/thorium-browser \$_USER_FLAGS "\$@"
-END
-}
-
-package() {
-  provides=("$_pkgname")
-  conflicts=("$_pkgname")
-
-  depends+=(
-    'alsa-lib'
-    'at-spi2-core'
-    'cairo'
-    'dbus'
-    'libcups'
-    'libnotify' # notify-send
-    'libxcomposite'
-    'libxkbcommon'
-    'libxrandr'
-    'mesa'
-    'nspr'
-    'nss'
-    'pango'
-
-    ## implicit
-    #expat
-    #glib2
-    #libdrm
-    #libx11
-    #libxcb
-    #libxdamage
-    #libxext
-    #libxfixes
-  )
-
-  echo "  -> Extracting the archive..."
-  bsdtar -xf "$_dl_filename" data.tar.xz
-  bsdtar -xf data.tar.xz -C "$pkgdir/"
-  rm data.tar.xz
-
-  echo "  -> Moving files in place..."
-  mv "$pkgdir/opt/chromium.org/thorium" "$pkgdir/opt/$_pkgname"
-  unlink "$pkgdir/usr/bin/thorium-browser"
-  unlink "$pkgdir/usr/bin/pak"
-
-  # thorium-browser
-  install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
-  chmod 4755 "$pkgdir/opt/$_pkgname/chrome-sandbox"
-
-  # thorium-shell
-  sed -E \
-    -e "s@/opt/chromium.org/thorium/@/opt/$_pkgname/@" \
-    -i "$pkgdir/usr/bin/thorium-shell"
-
-  # thorium-browser.xml
-  sed -E \
-    -e "s@/opt/chromium.org/thorium/@/opt/$_pkgname/@" \
-    -i "$pkgdir/usr/share/gnome-control-center/default-apps/thorium-browser.xml"
-
-  # Icons
-  for i in 16 24 32 48 64 128 256; do
-    install -Dm644 "$pkgdir/opt/$_pkgname/product_logo_${i}.png" \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
-  done
-
-  install -Dm644 "$pkgdir/opt/$_pkgname/thorium_shell.png" \
-    "$pkgdir/usr/share/icons/hicolor/256x256/apps/thorium-shell.png"
-
-  # clean-up
-  echo "  -> Removing Debian Cron job, duplicate product logos and menu directory..."
-  rm -r -- \
-    "$pkgdir/opt/chromium.org" \
-    "$pkgdir/etc/cron.daily/" \
-    "$pkgdir/usr/share/doc/" \
-    "$pkgdir/opt/$_pkgname/cron/" \
-    "$pkgdir/opt/$_pkgname"/product_logo_*.{png,xpm} \
-    "$pkgdir/usr/share/menu/"
-}
-
-_source_main
+case "$CARCH" in
+  'i386')
+    pkgver=123.0.6312.134 # i386
+    source "$startdir"/PKGBUILD.i386
+    ;;
+  'x86_64')
+    # SSE3 version because there is no v1 version
+    source "$startdir"/PKGBUILD.base
+    ;;
+  'x86_64_v2')
+    source "$startdir"/PKGBUILD.sse4
+    ;;
+  'x86_64_v3')
+    source "$startdir"/PKGBUILD.avx2
+    ;;
+esac

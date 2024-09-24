@@ -2,14 +2,15 @@
 
 _pkgname="thorium-browser-avx"
 pkgname="$_pkgname-bin"
-pkgver=126.0.6478.231
-pkgrel=1
-pkgdesc="Chromium fork focused on high performance and security"
-url="https://github.com/Alex313031/Thorium"
-license=('BSD')
-arch=('x86_64')
 
-options=('!emptydirs' '!strip' '!debug')
+: ${pkgver:=$(grep -Pom1 '^pkgver=\K\S+' "$startdir"/PKGBUILD)}
+: ${pkgrel:=$(grep -Pom1 '^pkgrel=\K.*' "$startdir"/PKGBUILD)}
+
+eval "$(grep -Pom1 '^pkgdesc=.*' "$startdir"/PKGBUILD)"
+eval "$(grep -Pom1 '^url=.*' "$startdir"/PKGBUILD)"
+eval "$(grep -Pom1 '^license=.*' "$startdir"/PKGBUILD)"
+
+eval "$(grep -Pom1 '^arch=.*' "$startdir"/PKGBUILD)"
 
 _source_main() {
   _dl_url="$url/releases/download/M${pkgver}"
