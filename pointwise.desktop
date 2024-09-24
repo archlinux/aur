@@ -2,6 +2,6 @@
 [Desktop Entry]
 Type=Application
 Name=Pointwise 
-Exec=/opt/pointwise/pointwise
+Exec=env CDS_LIC_FILE=PORT@SERVER /opt/pointwise/pointwise
 Icon=/usr/share/pixmaps/pointwise.ico
 Categories=Application;
