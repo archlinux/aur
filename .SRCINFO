@@ -1,0 +1,26 @@
+pkgbase = amiberry-lite
+	pkgdesc = Optimized Amiga Emulator for ARM Boards (amd64 build)
+	pkgver = 274c6c95b362a28fada2d7e8055f1484a0b0eff6
+	pkgrel = 1
+	epoch = 20240924
+	url = https://github.com/BlitterStudio/amiberry-lite
+	arch = x86_64
+	license = GPL3
+	makedepends = glibc
+	makedepends = git
+	makedepends = cmake
+	depends = flac
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_ttf
+	depends = mpg123
+	depends = libmpeg2
+	depends = libserialport
+	depends = portmidi
+	provides = amiberry-lite=274c6c95b362a28fada2d7e8055f1484a0b0eff6
+	conflicts = amiberry-lite
+	source = amiberry-lite::git+https://github.com/BlitterStudio/amiberry-lite.git
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = amiberry-lite
