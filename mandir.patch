@@ -1,0 +1,11 @@
+--- meson.build	2023-03-09 10:23:08.000000000 -0500
++++ meson.build~	2024-09-23 20:28:45.133129744 -0400
+@@ -103,7 +103,7 @@
+ 	feed: true,
+ 	capture: true,
+ 	install: true,
+-	install_dir: join_paths(mandir, 'man1/caffeine')
++	install_dir: join_paths(mandir, 'man1')
+ )
+ 
+ install_subdir('caffeine/assets/glade',
