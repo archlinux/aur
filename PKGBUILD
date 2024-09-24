@@ -1,5 +1,5 @@
 pkgname=gpt4all-chat
-pkgver=3.2.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="run open-source LLMs anywhere"
 arch=("x86_64")
@@ -18,70 +18,87 @@ source=(
     "002-install-and-load-localdocs-model-more-standardly.diff"
 )
 declare -rAg _modules_name_map=(
-    [gpt4all-backend/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/443665aec4721ecf57df8162e7e093a0cd674a76.tar.gz
-    [gpt4all-backend/llama.cpp-mainline/ggml/src/kompute]=https://github.com/nomic-ai/kompute/archive/f592b5bca3cbc169feb194218a086b18d618cca4.tar.gz
-    [gpt4all-chat/usearch]=https://github.com/nomic-ai/usearch/archive/22cfa3bd00ea542132ee826cdb220f9d6434bd43.tar.gz
-    [gpt4all-chat/usearch/fp16]=https://github.com/Maratyszcza/FP16/archive/0a92994d729ff76a58f692d3028ca1b64b145d91.tar.gz
-    [gpt4all-chat/usearch/simsimd]=https://github.com/ashvardanian/SimSIMD/archive/18d17686124ddebd9fe55eee56b2e0273a613d4b.tar.gz
-    [gpt4all-chat/usearch/stringzilla]=https://github.com/ashvardanian/StringZilla/archive/91d0a1a02faae90a41c60a30855d5935eb3eaef1.tar.gz
+    [gpt4all-backend/deps/llama.cpp-mainline]=https://github.com/nomic-ai/llama.cpp/archive/ced74fbad4b258507f3ec06e77eec9445583511a.tar.gz
+    [gpt4all-backend/deps/llama.cpp-mainline/ggml/src/kompute]=https://github.com/nomic-ai/kompute/archive/aa57dff8ef45d2ec1d9f0011dcf4263606ba77b4.tar.gz
+    [gpt4all-chat/deps/usearch]=https://github.com/nomic-ai/usearch/archive/22cfa3bd00ea542132ee826cdb220f9d6434bd43.tar.gz
+    [gpt4all-chat/deps/usearch/fp16]=https://github.com/Maratyszcza/FP16/archive/0a92994d729ff76a58f692d3028ca1b64b145d91.tar.gz
+    [gpt4all-chat/deps/usearch/simsimd]=https://github.com/ashvardanian/SimSIMD/archive/18d17686124ddebd9fe55eee56b2e0273a613d4b.tar.gz
+    [gpt4all-chat/deps/usearch/stringzilla]=https://github.com/ashvardanian/StringZilla/archive/91d0a1a02faae90a41c60a30855d5935eb3eaef1.tar.gz
+    [gpt4all-chat/deps/SingleApplication]=https://github.com/nomic-ai/SingleApplication/archive/21bdef01eddcbd78044eea1d50b9dee08d218ff2.tar.gz
+    [gpt4all-chat/deps/fmt]=https://github.com/fmtlib/fmt/archive/0c9fce2ffefecfdce794e1859584e25877b7b592.tar.gz
 )
-declare _uri _name _commit _source_str
+_get_source_name_string() {
+    local host filename name commit
+    host=$(echo "$1" | cut -d / -f 3)
+    name=$(echo "$1" | cut -d / -f 5)
+    filename=${1##*/}
+    commit=${filename%%.*}
+    case "$host" in
+        gitlab.com)
+            # It contains $name in $commit
+            echo "$commit"
+            ;;
+        *)
+            echo "$name-$commit"
+            ;;
+    esac
+}
+
+_fill_gitmodules_recursively() {
+    local gitmodule
+    find "${1:-.}" -type f -name .gitmodules | while read -r gitmodule
+    do
+        local prefix
+        prefix=$(dirname "$gitmodule")"/"
+        if [[ "$gitmodule" =~ ^\.\/ ]]
+        then
+            gitmodule=${gitmodule#*\.\/}
+            prefix=${prefix#*\.\/}
+        fi
+        echo "Parsing $gitmodule to fill submodules..."
+        local p
+        grep path "$gitmodule" | awk '{print $3}' | while read -r p
+        do
+            p=${p%$'\r'} # Remove control characters
+            if [[ -n "$p" ]]
+            then
+                local target url name commit fname
+                target="$prefix$p"
+                url="${_modules_name_map[$target]}"
+                fname=$(_get_source_name_string "$url")
+                echo "Filling $target with $srcdir/$fname..."
+                cp -r "$srcdir/$fname/." "$target"
+                _fill_gitmodules_recursively "$target"
+            fi
+        done
+    done
+}
+declare _source_str _uri
 for _uri in "${_modules_name_map[@]}"
 do
-    _name=$(echo "$_uri" | cut -d / -f 5)
-    _commit=${_uri##*/}
-    if [[ "$_commit" == *-* ]]
-    then
-        _source_str="$_commit::$_uri"
-    else
-        _source_str="$_name-$_commit::$_uri"
-    fi
+    _source_str="$(_get_source_name_string "$_uri").tar.gz::$_uri"
     if [[ "${source[*]/$_source_str/}" == "${source[*]}" ]]
     then
         source+=("$_source_str")
     fi
 done
-sha256sums=('22aa659b8bb04aa7e8ca18b14b2e298285c1d249154ee6ac08381a477fe75bb5'
+unset _source_str _uri
+sha256sums=('684658a11aea425c1342c099f042af60934f1b0425bab265eaf86f1ad7f51a08'
             'f7af6f66802f4df86eda10fe9bbcfc75c39562bed48ef6ace719a251cf1c2fdb'
             'ebc6a571e828e8b31b390172374fe3667e719f6de286860934c6f6d6bfc293d3'
-            '29f37d9a314e5c7abe572d9fd2c5dda9dfdfcf710ba09128888e30e3c7f56e23'
-            'b16fc2ee15a1df76e0459df32905285c94fb59135595ccbff2095167c3c865a1'
-            'b5c35b9e64abe4968bd887128d94e02272072b44267c58a057a08971e3ca6806'
-            '5113b2c982e20282e42d973158f10d8f0557755b2442fdb777895b38deca419b'
-            '5f151fe3d71bb7b719eb50ed4bdedfde9c92d9d21c7eea172eec177b9875eff5'
+            'b348d6b9228316e4611186df0558f032a25ffa20334e68a91a09e07ce84db77a'
             'a91f4770ff9c39f4d72e339c379f566b3bbb359fa66122d85fc0bae3dde7abc7'
-            '8c7450f146920b7f312d51aede2ff39561fb2d926c2abd61ab136187ffaf9620')
+            '5f151fe3d71bb7b719eb50ed4bdedfde9c92d9d21c7eea172eec177b9875eff5'
+            'b16fc2ee15a1df76e0459df32905285c94fb59135595ccbff2095167c3c865a1'
+            '846ed48ef778798c1b19d5577532671ff6f2e3452b190174a9f717229f68bb46'
+            'f94052c10b611fd374194ca6e0dc4d159459c0b370abfe9002c13058863b7039'
+            'b5c35b9e64abe4968bd887128d94e02272072b44267c58a057a08971e3ca6806'
+            '93d69bd9b40c0496380d77ef46a6896ff788f9bb518e14074649ce588bda2847'
+            '3ab929011431db5d61d3153290135dd299244f407d767ba6b2c3a275213c20c8')
 
 prepare() {
     cd "$srcdir/gpt4all-$pkgver"
-    declare -ra _modules=(
-        gpt4all-backend/llama.cpp-mainline
-        gpt4all-backend/llama.cpp-mainline/ggml/src/kompute
-        gpt4all-chat/usearch
-        gpt4all-chat/usearch/fp16
-        gpt4all-chat/usearch/simsimd
-        gpt4all-chat/usearch/stringzilla
-    )
-    declare _module _uri _name _commit _fname
-    for _module in "${_modules[@]}"
-    do
-        _uri=${_modules_name_map[$_module]}
-        _name=$(echo "$_uri" | cut -d / -f 5)
-        _commit=${_uri##*/}
-        if [[ "$_commit" == *-* ]]
-        then
-            _fname="${_commit%%.*}"
-        else
-            _fname=$_name-${_commit%%.*}
-        fi
-        echo "Copying $_module from $_fname"
-        if [[ -d "$_module" ]]
-        then
-            cp -r "$srcdir/$_fname/"* "$_module"
-        else
-            cp -r "$srcdir/$_fname" "$_module"
-        fi
-    done
+    _fill_gitmodules_recursively
     patch -Np1 -i ../001-change-binary-name.diff
     patch -Np1 -i ../002-install-and-load-localdocs-model-more-standardly.diff
     sed -i "s|https://gpt4all.io/models/gguf|file://$srcdir|" gpt4all-chat/CMakeLists.txt

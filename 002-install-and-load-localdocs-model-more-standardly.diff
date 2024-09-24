@@ -1,22 +1,22 @@
-diff '--color=auto' -u a/gpt4all-chat/CMakeLists.txt b/gpt4all-chat/CMakeLists.txt
---- a/gpt4all-chat/CMakeLists.txt	2024-08-08 10:27:08.167174253 +0800
-+++ b/gpt4all-chat/CMakeLists.txt	2024-08-08 10:30:07.805894482 +0800
-@@ -391,7 +391,11 @@
+diff -u -r a/gpt4all-chat/CMakeLists.txt b/gpt4all-chat/CMakeLists.txt
+--- a/gpt4all-chat/CMakeLists.txt	2024-09-21 06:29:53.000000000 +0800
++++ b/gpt4all-chat/CMakeLists.txt	2024-09-24 09:12:00.446894082 +0800
+@@ -418,7 +418,11 @@
      endif()
  endif()
  
 -if (NOT APPLE)
 +if (LINUX)
-+    install(FILES "${CMAKE_BINARY_DIR}/resources/${LOCAL_EMBEDDING_MODEL}"
++    install(FILES "${LOCAL_EMBEDDING_MODEL_PATH}"
 +            DESTINATION share/gpt4all/chat/resources
 +            COMPONENT ${COMPONENT_NAME_MAIN})
 +elseif (NOT APPLE)
-     install(FILES "${CMAKE_BINARY_DIR}/resources/${LOCAL_EMBEDDING_MODEL}"
+     install(FILES "${LOCAL_EMBEDDING_MODEL_PATH}"
              DESTINATION resources
              COMPONENT ${COMPONENT_NAME_MAIN})
-diff '--color=auto' -u a/gpt4all-chat/embllm.cpp b/gpt4all-chat/embllm.cpp
---- a/gpt4all-chat/embllm.cpp	2024-07-28 02:17:29.000000000 +0800
-+++ b/gpt4all-chat/embllm.cpp	2024-08-08 10:31:41.736927471 +0800
+diff -u -r a/gpt4all-chat/src/embllm.cpp b/gpt4all-chat/src/embllm.cpp
+--- a/gpt4all-chat/src/embllm.cpp	2024-09-21 06:29:53.000000000 +0800
++++ b/gpt4all-chat/src/embllm.cpp	2024-09-24 09:13:58.359656448 +0800
 @@ -79,8 +79,12 @@
  #ifdef Q_OS_DARWIN
      static const QString embPathFmt = u"%1/../Resources/%2"_s;
