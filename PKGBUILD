@@ -2,7 +2,7 @@
 pkgname=thorium-reader-git
 _pkgname="Thorium Reader"
 _appname="EDRLab.${_pkgname// /}"
-pkgver=3.0.0.r22.gf7b410e
+pkgver=3.0.0.r33.g43c8eec
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -33,7 +33,7 @@ pkgver() {
     cd "${pkgname%-git}.git"
     
     set -o pipefail
-    git describe --long --tags --abbrev=7 --exclude='*[a-z][a-z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g' ||
+    git describe --long --tags --abbrev=7 --exclude='*[a-z][a-z]*' | sed -E 's/^v//g;s/([^-]*-g)/r\1/g;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
@@ -44,11 +44,11 @@ _ensure_local_nvm() {
 }
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-git}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${_appname}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-git}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_appname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Office" --name="${_pkgname}" --exec="${pkgname%-git} %U"
@@ -67,7 +67,7 @@ build() {
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         fi
     } >> .npmrc
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/;s/--linux --x64/-l --dir/" package.json
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g;s/--linux --x64/-l --dir/g" package.json
     NODE_ENV=development    npm install --no-audit --no-fund --prefer-offline
     NODE_ENV=development    npm run clean
     NODE_ENV=production     npm run package:linux
@@ -76,9 +76,9 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}" 
     install -Dm644 "${srcdir}/${pkgname%-git}.git/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}/"
     _icon_sizes=(256x256 512x512 1024x1024)
-    for _icon_sizes in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/${pkgname%-git}.git/resources/icons//${_icon_sizes}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icon_sizes}/apps/${pkgname%-git}.png"
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/${pkgname%-git}.git/resources/icons//${_icons}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
     done
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications/"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"

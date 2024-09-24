@@ -1,6 +1,6 @@
 pkgbase = thorium-reader-git
 	pkgdesc = Cross-platform desktop reading app based on the Readium Desktop toolkit
-	pkgver = 3.0.0.r22.gf7b410e
+	pkgver = 3.0.0.r33.g43c8eec
 	pkgrel = 1
 	url = https://github.com/edrlab/thorium-reader
 	arch = any
