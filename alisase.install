@@ -1,6 +1,26 @@
 post_install() {
 	/usr/local/bin/alisase-bin/3.4.2/alisasesvc --install
-	/usr/local/bin/alisase-bin/3.4.2/alisasesvc --daemon
+
+    systemctl daemon-reload
+
+    if systemctl -q is-active alisase.service ;then
+        systemctl restart alisase.service
+    fi
+
+    ECHOLEN=$(echo -e | awk '{ print length($0) }')
+    if [ "${ECHOLEN}" = '0' ]
+    then
+        ECHO='echo -e'
+    else
+        ECHO='echo'
+    fi
+    
+    $ECHO "\033[36m**********************************************************************\033[0m"
+    $ECHO "\033[36m*  alisase daemon service must be running for Sase-ui client to work *\033[0m"
+    $ECHO "\033[36m*  Type: systemctl start alisase.service                             *\033[0m"
+    $ECHO "\033[36m*  Auto start: systemctl enable alisase.service                      *\033[0m"
+    $ECHO "\033[36m**********************************************************************\033[0m"
+
 }
 
 post_upgrade() {

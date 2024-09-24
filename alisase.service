@@ -1,0 +1,16 @@
+[Unit]
+Description=AliSASE Daemon Service
+After=network-online.target nftables.service iptables.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/alisase-bin/alisased.sh start
+# ExecStop=/usr/local/bin/alisase-bin/alisased.sh stop
+# ExecReload=/usr/local/bin/alisase-bin/alisased.sh restart
+# ExecStopPost=/usr/local/bin/alisase-bin/alisased.sh stopPost
+PIDFile=/run/alisased.pid
+KillSignal=SIGKILL
+SuccessExitStatus=9
+
+[Install]
+WantedBy=multi-user.target
