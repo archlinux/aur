@@ -1,7 +1,7 @@
 pkgbase = ros2-jazzy-base
 	pkgdesc = A set of software libraries and tools for building robot applications (Jazzy Jalisco, base variant)
-	pkgver = 2024.07.05
-	pkgrel = 6
+	pkgver = 2024.09.19
+	pkgrel = 1
 	url = https://index.ros.org/p/ros_base/#jazzy
 	arch = any
 	license = Apache
@@ -25,9 +25,9 @@ pkgbase = ros2-jazzy-base
 	depends = python-yaml
 	depends = spdlog
 	depends = tinyxml2
-	source = https://github.com/ros2/ros2/archive/release-jazzy-20240705.tar.gz
+	source = https://github.com/ros2/ros2/archive/release-jazzy-20240919.tar.gz
 	source = ros2-variants-0.11.0.tar.gz::https://github.com/ros2/variants/archive/0.11.0.tar.gz
-	sha256sums = e6e31d637d13eade09db85789ffc213c075784136cce159220ae6874f35136c3
+	sha256sums = 70dcf5361352acc880220390decacc049f4278ed9c0edeeb430dda0944acc17c
 	sha256sums = e04bf7430ebdc670b4b0ee4722db2966fb1e53d8881e9cb66df6aa381f2448d9
 
 pkgname = ros2-jazzy-base
