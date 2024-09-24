@@ -2,7 +2,7 @@
 # Maintainer: Gabe Cook <gabe565@gmail.com>
 
 pkgname='yampl-bin'
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Yaml templating via line-comments'
 url='https://github.com/clevyr/yampl'
@@ -11,24 +11,24 @@ license=('Apache-2.0')
 provides=('yampl')
 conflicts=('yampl')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/clevyr/yampl/releases/download/v0.7.0/yampl_0.7.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('76df2448106cc095bfb787cf23290e519d48a51918c349d886aa4f89e7be5446')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/clevyr/yampl/releases/download/v0.8.0/yampl_0.8.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('bd03d6165e9a116cb197be11b21d3b7ef152dabae7539ef98aa63d94dc2b6dbb')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/clevyr/yampl/releases/download/v0.7.0/yampl_0.7.0_linux_armv7.tar.gz")
-sha256sums_armv7h=('2fecd1a67da4cd639ec23f6ad0340e449a4abd0e5aa38f2d226e2e6e287c2402')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/clevyr/yampl/releases/download/v0.8.0/yampl_0.8.0_linux_armv7.tar.gz")
+sha256sums_armv7h=('9fe8bd5b145bebfa6964f12296b760ad100de37bd15470bc0c18b19bf637ed3a')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/clevyr/yampl/releases/download/v0.7.0/yampl_0.7.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('2f8c872214fa6e6189712a4bb026a7a1db0cc6ba9076e81ffefa8827d14d30c1')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/clevyr/yampl/releases/download/v0.8.0/yampl_0.8.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('7b7a3a4e1c2ddf1642f571a3129a73689519db4615f28232b88f5a257f539cca')
 
 package() {
   # bin
   install -Dm755 "./yampl" "${pkgdir}/usr/bin/yampl"
   # license
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/yampl/LICENSE"
-  # man page
-  install -Dm644 "./manpages/yampl.1.gz" "${pkgdir}/usr/share/man/man1/yampl.1.gz"
+  # man pages
+  install -Dm644 -t"${pkgdir}/usr/share/man/man1" manpages/*
   # completion
-  install -Dm644 "./completions/yampl.bash" "${pkgdir}/usr/share/bash-completion/completions/yampl"
-  install -Dm644 "./completions/yampl.zsh" "${pkgdir}/usr/share/zsh/site-functions/_yampl"
-  install -Dm644 "./completions/yampl.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/yampl.fish"
+  install -Dm644 -t"${pkgdir}/usr/share/bash-completion/completions" completions/bash/*
+  install -Dm644 -t"${pkgdir}/usr/share/zsh/site-functions" completions/zsh/*
+  install -Dm644 -t"${pkgdir}/usr/share/fish/vendor_completions.d" completions/fish/*
 }
