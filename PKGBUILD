@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=requestly-git
 _pkgname=Requestly
-pkgver=1.7.4.r0.g7554389
+pkgver=1.7.5.r0.gc57b49a
 _electronversion=27
 _nodeversion=16
 pkgrel=1
@@ -15,6 +15,8 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 depends=(
     "electron${_electronversion}"
+    'java-runtime'
+    'python'
 )
 makedepends=(
     'npm'
@@ -31,7 +33,7 @@ source=(
 )
 sha256sums=('SKIP'
             'SKIP'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -46,11 +48,11 @@ _ensure_local_nvm() {
 }
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-git}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${_pkgname}/
-        s/@options@//
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-git}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@//g
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
@@ -75,12 +77,12 @@ build() {
     cd "${srcdir}/${pkgname//-/.}"
     cp "${srcdir}/.npmrc" ./
     sed -e "
-        s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/
-        s/\"electronVersion\": \"[^\"]*\"/\"electronVersion\": \"${SYSTEM_ELECTRON_VERSION}\"/
-        s/AppImage/dir/
-        s/icon.icns/icon.png/
+        s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g
+        s/\"electronVersion\": \"[^\"]*\"/\"electronVersion\": \"${SYSTEM_ELECTRON_VERSION}\"/g
+        s/AppImage/dir/g
+        s/icon.icns/icon.png/g
     " -i package.json
-    find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/" {} \;
+    find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} \;
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run package
     asar e "${srcdir}/${pkgname//-/.}/release/build/linux-unpacked/resources/app.asar" "${srcdir}/app.asar.unpacked"
@@ -93,9 +95,9 @@ package() {
     cp -r "${srcdir}/${pkgname//-/.}/release/build/linux-unpacked/resources/"{app.asar.unpacked,assets,static} "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     _icon_sizes=(16x16 32x32 64x64 128x128 256x256 512x512 1024x1024)
-    for _icon_sizes in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/${pkgname//-/.}/assets/icons/${_icon_sizes}.png" \
-            -t "${pkgdir}/usr/share/icons/hicolor/${_icon_sizes}/apps"
+    for _icon in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/${pkgname//-/.}/assets/icons/${_icon}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icon}/apps"
     done
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${srcdir}/usr/share/licenses/${pkgname}"
 }
