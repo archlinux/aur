@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang-git
 _pkgname=Mustang
-pkgver=0.6.7.r1.g194bedf
+pkgver=0.6.8.r1.g1c270f6
 _electronversion=32
 _nodeversion=20
 pkgrel=1
@@ -35,11 +35,11 @@ _ensure_local_nvm() {
 }
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-git}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${pkgname%-git}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-git}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-git}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname%-git} %U"
@@ -70,8 +70,8 @@ build() {
     NODE_ENV=development    npm install
     cd "${srcdir}/${pkgname//-/.}/e2"
     cp "${srcdir}/${pkgname//-/.}/.npmrc" "${srcdir}/${pkgname//-/.}/e2"
-    sed "/- AppImage/d;/- snap/d;/- rpm/d;s/- deb/- dir/" -i electron-builder.yml
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
+    sed -i "/- AppImage/d;/- snap/d;/- rpm/d;s/- deb/- dir/g" electron-builder.yml
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     cp build/icon.png resources/
     NODE_ENV=development    npm install --legacy-peer-deps
     NODE_ENV=development    npm install -D semver
