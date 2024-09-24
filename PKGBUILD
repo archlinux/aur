@@ -1,5 +1,5 @@
 pkgname=gemini-cli
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Terminal-based tool for interacting with Gemini"
 maintainer="Marcos Roque <devmarcosdanielr@gmail.com>"
