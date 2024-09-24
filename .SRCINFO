@@ -6,10 +6,10 @@ pkgbase = pe-bear-bin
 	install = pe-bear-bin.install
 	arch = x86_64
 	license = custom
-	depends = qt5-base
+	depends = qt6-base
 	conflicts = pe-bear
 	conflicts = pe-bear-git
 	source = https://github.com/hasherezade/pe-bear/releases/download/v0.7.0/PE-bear_0.7.0_qt6.2_x64_linux.tar.xz
-	sha256sums = 45dc8660698ef1e9a8dbb42c28206571018293c8f10ea0d9e550ead0f7a127b2
+	sha256sums = 219b059074aa8697740e799d4ad19a2ae43edd912c3a0e239ff291ca18e4d652
 
 pkgname = pe-bear-bin

@@ -7,10 +7,10 @@ install=pe-bear-bin.install
 url="https://hshrzd.wordpress.com/pe-bear/"
 arch=('x86_64')
 license=('custom')
-depends=('qt5-base')
+depends=('qt6-base')
 conflicts=('pe-bear' 'pe-bear-git')
 source=("https://github.com/hasherezade/pe-bear/releases/download/v${pkgver}/PE-bear_${pkgver}_qt${_qtver}_x64_linux.tar.xz")
-sha256sums=('45dc8660698ef1e9a8dbb42c28206571018293c8f10ea0d9e550ead0f7a127b2')
+sha256sums=('219b059074aa8697740e799d4ad19a2ae43edd912c3a0e239ff291ca18e4d652')
 
 package() {
   cd "PE-bear_${pkgver}_qt${_qtver}_x64_linux" || return
