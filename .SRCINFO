@@ -1,0 +1,18 @@
+pkgbase = phpactor-git
+	pkgdesc = PHP completion, refactoring, introspection tool and language server
+	pkgver = 2024.06.30.0.r27.g5196cfa02
+	pkgrel = 1
+	url = https://github.com/phpactor/phpactor
+	arch = any
+	license = MIT
+	makedepends = composer
+	depends = php
+	optdepends = composer: faster class location and more features
+	optdepends = git: faster refactorings in your repository scope
+	provides = phpactor
+	conflicts = phpactor
+	options = !strip
+	source = git+https://github.com/phpactor/phpactor
+	sha256sums = SKIP
+
+pkgname = phpactor-git
