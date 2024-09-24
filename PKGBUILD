@@ -2,7 +2,7 @@
 # Contributor: Igor <f2404@yandex.ru>
 # Contributor: Davi da Silva Böger <dsboger at gmail dot com>
 pkgname=tilix-git
-pkgver=1.9.6.r29.g4a95e514
+pkgver=1.9.6.r31.g729ba45c
 pkgrel=1
 pkgdesc="A tiling terminal emulator for Linux using GTK+ 3"
 arch=('x86_64')
@@ -13,7 +13,6 @@ depends=(
   'gsettings-desktop-schemas'
   'gtkd'
   'liblphobos'
-  'libunwind'
   'libx11'
   'vte3'
 )
@@ -29,12 +28,13 @@ checkdepends=(
 optdepends=(
   'python-nautilus: for "Open Tilix Here" support in nautilus'
   'libsecret: for the password manager'
-  'vte3-notification: for desktop notifications support'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/gnunn1/tilix.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/gnunn1/tilix.git'
+        "https://github.com/gnunn1/tilix/pull/2222.patch")
+sha256sums=('SKIP'
+            'e56da87ae09124a229b5641de5a477351db9656063def9ad07f42b51735bd826')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -43,6 +43,9 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
+
+  # Remove unneeded libunwind dep
+  patch -Np1 -i ../2222.patch
 }
 
 build() {
@@ -50,7 +53,7 @@ build() {
   # Build with LDC
   export DC=ldc
   export LDFLAGS="$(echo -ne $LDFLAGS | sed -e 's/-flto=auto//')"
-  export DFLAGS="--flto=full"
+  export DFLAGS="--flto=full --allinst"
 
   arch-meson "${pkgname%-git}" build
   meson compile -C build
