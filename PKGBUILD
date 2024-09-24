@@ -2,7 +2,7 @@
 
 pkgname=python-ubelt
 _pkgname=ubelt
-pkgver=1.3.4
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="A Python utility belt containing simple tools"
 arch=('any')
