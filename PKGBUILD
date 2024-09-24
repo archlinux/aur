@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atlassify-git
 _pkgname=Atlassify
-pkgver=1.0.0.r5.g38acc0f
+pkgver=1.1.0.r4.g647e99a
 _electronversion=32
 _nodeversion=20
 pkgrel=1
@@ -26,7 +26,8 @@ makedepends=(
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
-    "${pkgname%-git}.sh")
+    "${pkgname%-git}.sh"
+)
 sha256sums=('SKIP'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
@@ -43,11 +44,11 @@ _ensure_local_nvm() {
 }
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-git}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${_pkgname}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-git}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
@@ -70,7 +71,7 @@ build() {
         fi
     } >> .npmrc
     icotool -i 9 -x assets/images/app-icon.ico -o assets/images/app-icon.png
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/;s/\"AppImage\", \"deb\", \"rpm\"/\"dir\"/" package.json
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g;s/\"AppImage\", \"deb\", \"rpm\"/\"dir\"/g" package.json
     NODE_ENV=development    pnpm install
     NODE_ENV=production     pnpm run build
     NODE_ENV=production     pnpm run make:linux
