@@ -4,18 +4,18 @@
 # which is made by vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
 
 pkgname=siyuan_stable
-pkgver=v3.1.6
-pkgrel=3
+pkgver=v3.1.7
+pkgrel=0
 pkgdesc="auto upload to AUR when SiYuan stable release"
 arch=("x86_64")
 url="https://b3log.org/siyuan"
 license=("AGPL-3.0-only")
-_pkgname=siyuan-3.1.6-linux.AppImage
-noextract=(siyuan-3.1.6-linux.AppImage)
+_pkgname=siyuan-3.1.7-linux.AppImage
+noextract=(siyuan-3.1.7-linux.AppImage)
 options=("!strip" "!debug")
 depends=("fuse2")
 optdepends=('pandoc: docx export')
-source=("${_pkgname}::https://github.com/siyuan-note/siyuan/releases/download/v3.1.6/siyuan-3.1.6-linux.AppImage")
+source=("${_pkgname}::https://github.com/siyuan-note/siyuan/releases/download/v3.1.7/siyuan-3.1.7-linux.AppImage")
 sha256sums=('SKIP')
 
 _installdir=/opt/appimages
@@ -32,10 +32,10 @@ package() {
     install -Dm644 "squashfs-root/resources/stage/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/siyuan_stable.png"
     install -Dm644 "squashfs-root/siyuan.desktop" "${pkgdir}/usr/share/applications/siyuan_stable.desktop"
 
-    if [ ! -f "${pkgdir}/usr/bin/siyuan" ]; then
-        mkdir -p "${pkgdir}/usr/bin"
-        echo '#!/bin/sh' > "${pkgdir}/usr/bin/siyuan"
-        echo "exec ${_installdir}/siyuan.AppImage" >> "${pkgdir}/usr/bin/siyuan"
-        chmod 755 "${pkgdir}/usr/bin/siyuan"
+    if [ ! -f "/usr/bin/siyuan" ]; then
+      mkdir -p "/usr/bin"
+      echo '#!/bin/sh' > "/usr/bin/siyuan"
+      echo "exec /siyuan.AppImage" >> "/usr/bin/siyuan"
+      chmod 755 "/usr/bin/siyuan"
     fi
 }
