@@ -1,6 +1,6 @@
 pkgname=wallhaven-cli
 cli=wallhaven
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Search and download wallpapers from wallhaven.'
 arch=('x86_64')
