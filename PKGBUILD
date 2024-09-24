@@ -5,7 +5,7 @@
 pkgname=python-kombu
 _pkgname=${pkgname#python-}
 pkgver=5.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A messaging library for Python"
 arch=(any)
 url="https://github.com/celery/kombu"
@@ -24,7 +24,6 @@ makedepends=(
 checkdepends=(
   python-boto3
   python-brotli
-  python-case
   python-hypothesis
   python-msgpack
   python-pycurl
