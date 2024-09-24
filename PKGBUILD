@@ -3,7 +3,7 @@ pkgname=time-to-leave-bin
 _pkgname="Time to Leave"
 pkgver=3.0.0
 _electronversion=11
-pkgrel=6
+pkgrel=7
 pkgdesc="Log work hours and get notified when it's time to leave the office and start to live.Use system-wide electron."
 arch=('x86_64')
 url="http://timetoleave.app/"
@@ -19,14 +19,15 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('cb545e917262e4263c59baa95a2b995d4aac7370bf623ce2b715d4b5d819f45a'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@//g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
 package() {
