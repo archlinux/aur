@@ -1,19 +1,20 @@
 # Maintainer: Groctel <aur@taxorubio.com>
 # Maintainer: Naveen M K <naveen521kk@gmail.com>
+# shellcheck disable=SC1091,SC2034,SC2154,SC2164
 
-_name=ManimPango
+_name=manimpango
 
 pkgname=python-manimpango
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="C binding for Pango using Cython used in Manim to render (non-LaTeX) text."
 
 arch=("x86_64")
 license=("MIT")
-url="https://manimpango.manim.community"
+url="https://github.com/ManimCommunity/ManimPango"
 
-source=("https://github.com/ManimCommunity/$_name/releases/download/v$pkgver/$_name-$pkgver.tar.gz")
-sha512sums=('2eccc5977c7b2e5b04f045b9cc5f5b919809b316ecc29d9c7bea02e5b0aaa322c81985da05971a280d2fea34072da07c552c4ab13f234b64b05195fa2c64acdb')
+source=("$url/releases/download/v$pkgver/$_name-$pkgver.tar.gz")
+sha512sums=('865fd14f7c8416cd6b013a7fce57b86ea1ecdb98f768d3a1a83913584f98e86a7af3e68ffc4feafbc375997a933eb8cb9294e7292ba6836e92ed361427aab0f5')
 
 depends=(
     "cairo"
@@ -32,20 +33,13 @@ makedepends=(
     "python-wheel"
 )
 
-prepare()
-{
-    cd "$_name-$pkgver" || exit
-}
-
-build ()
-{
-    cd "$srcdir/$_name-$pkgver" || exit
+build () {
+    cd "$srcdir/$_name-$pkgver"
     python -m build --wheel --no-isolation
 }
 
-package ()
-{
-    cd "$srcdir/$_name-$pkgver" || exit
+package () {
+    cd "$srcdir/$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_name/LICENSE"
 }
