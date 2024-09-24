@@ -2,15 +2,15 @@
 # Maintainer: Vedran Miletic <vedran AT miletic DOT net>
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
-_majorver=22
-_archivever="23_rc6"
+_majorver=24
+_archivever="24_rc5"
 
 pkgname=ambertools
-pkgver=23.00
-pkgrel=3
+pkgver=24.00
+pkgrel=1
 pkgdesc="Biomolecular simulation package (tools only)"
 url="http://ambermd.org/"
-license=(GPL LGPL)
+license=('GPL-3.0-or-later AND LGPL-3.0-or-later AND BSD-3-Clause AND MIT')
 arch=(x86_64)
 depends=(blas boost bzip2 fftw lapack netcdf
          python-scipy readline tk zlib gcc13-libs)
@@ -22,12 +22,10 @@ optdepends=('cuda: GPU acceleration support'
 options=(!buildflags)
 
 source=("https://ambermd.org/downloads/AmberTools${_archivever}.tar.bz2"
-        "0001-Include-internal-pycore-frame.patch"
-        "0002-Allow-using-newer-CUDA.patch"
+        "0001-Allow-using-newer-CUDA.patch"
         "50-ambertools.conf")
-sha256sums=('debb52e6ef2e1b4eaa917a8b4d4934bd2388659c660501a81ea044903bf9ee9d'
-            'e9b5548061e836eda0bf4213c13fb31e7b20f20167524bf8014fa2c6c9e42f62'
-            '9741d197fc828b1e1f1670ed90313db60e125668f025327405a10b60563a5ec2'
+sha256sums=('52fb4fb3370a89b7ce738a2dc3e513c2fc1943fde4b4381846d9e75cc48d840f'
+            'e5da8dd8bc22a98142e36dcf336d8d008378070b4aa4389d8aa75a25a2041f9a'
             '38835459f9710fc33bf2a96f4dfa26aef08d21754aec2e297032c214c4e781ef')
 
 prepare() {
@@ -41,14 +39,9 @@ pkgver() {
 }
 
 build() {
-  cd ${srcdir}/amber${_majorver}_src/AmberTools/src/pytraj
-
-  python setup.py --cythonize
-  patch -p1 -i ${srcdir}/0001-Include-internal-pycore-frame.patch
-
   cd ${srcdir}/amber${_majorver}_src
 
-  patch -p1 -i ${srcdir}/0002-Allow-using-newer-CUDA.patch
+  patch -p1 -i ${srcdir}/0001-Allow-using-newer-CUDA.patch
 
   mkdir -p build
   cd build
