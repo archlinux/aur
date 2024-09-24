@@ -1,0 +1,29 @@
+pkgbase = lightly-qt6
+	pkgdesc = Bali10050's fork of Lightly with a different approach from boehs, with the assumption that Luwx won't ever resume this project. Has plasma 6 support.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/Bali10050/lightly
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = kdecoration
+	depends = qt6-declarative
+	depends = kcoreaddons
+	depends = kcmutils
+	depends = kcolorscheme
+	depends = kconfig
+	depends = kguiaddons
+	depends = kiconthemes
+	depends = kwindowsystem
+	provides = lightly-qt6
+	conflicts = lightly-kf6
+	conflicts = lightly-qt
+	options = !emptydirs
+	options = !debug
+	source = lightly-qt6.git::git+https://github.com/Bali10050/lightly.git#tag=v0.5.1
+	sha256sums = 86790e88ac2275cbf0bb398c143716f1f80014927861765c89b3e8dbea0387d7
+
+pkgname = lightly-qt6
