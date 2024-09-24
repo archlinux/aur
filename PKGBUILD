@@ -1,9 +1,8 @@
-# $Id$
 # Contributor: Grey Christoforo <first name at last name dot net>
-# Maintainer: Neko_Rikka <address at domain dot tld>
+# Maintainer: Neko_Rikka <yjzyl9008 at gmail dot com>
 
 pkgname=python-unitypy-git
-pkgver=r497.8ac495f
+pkgver=r499.b4bc2ce
 pkgrel=1
 pkgdesc="A unity asset extractor based on unitypack and AssetStudio."
 arch=('x86_64')
