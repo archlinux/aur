@@ -1,6 +1,6 @@
 pkgbase = python-segment-geospatial
 	pkgdesc = A Python package for segmenting geospatial data with the Segment Anything Model (SAM)
-	pkgver = 0.11.0
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://github.com/opengeos/segment-geospatial
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-segment-geospatial
 	depends = python
 	depends = python-segment-anything-py
 	depends = python-rasterio
-	source = python-segment-geospatial-0.11.0.tar.gz::https://github.com/opengeos/segment-geospatial/archive/refs/tags/v0.11.0.tar.gz
-	sha256sums = 3c19b7aed61f01e83e60ede10e7c8f07886c2d72d2a599a15e0fd750fa682de3
+	source = python-segment-geospatial-0.11.2.tar.gz::https://github.com/opengeos/segment-geospatial/archive/refs/tags/v0.11.2.tar.gz
+	sha256sums = db9ff083070b3ff6c3e9d229d943a7c2bc6f5b16e279ddf9bd0fdafc9274e4cc
 
 pkgname = python-segment-geospatial
