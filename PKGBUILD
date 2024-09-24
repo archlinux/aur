@@ -3,7 +3,7 @@
 _pkgname=moon
 pkgname="${_pkgname}-bin"
 pkgdesc='Task runner and repo management tool for the web ecosystem'
-pkgver=1.28.2
+pkgver=1.28.3
 pkgrel=1
 license=('MIT')
 provides=("${_pkgname}")
@@ -15,8 +15,8 @@ source=("LICENSE::https://raw.githubusercontent.com/moonrepo/moon/v${pkgver}/LIC
 source_x86_64=("${_pkgname}-${pkgver}-${arch[0]}.bin::${url}/releases/download/v${pkgver}/moon-${arch[0]}-unknown-linux-gnu")
 source_aarch64=("${_pkgname}-${pkgver}-${arch[1]}.bin::${url}/releases/download/v${pkgver}/moon-${arch[1]}-unknown-linux-gnu")
 sha256sums=('d2ac84cff76ea43a70d2be1ba690fc03d51a9be8e8fc18281a229ddc5845e4a5')
-sha256sums_x86_64=('86b9b9645f8bf5b6695fde5da5e08aa52bdb73639a3acc3c37aba8e265d2323f')
-sha256sums_aarch64=('0f6769542f3b2bd1a88e59fddbcd3ec9d85cd74446e4fc4b96595926ecbc9ecd')
+sha256sums_x86_64=('7fdd79b7aecc137427a2a942ebed137a61df2aeda4c9f6200e9021054bd20145')
+sha256sums_aarch64=('829ffacfa4e9449c0492b0fb97d968092b8bde36915b8c1f4e355ea9b0a8b48a')
 
 prepare() {
   mkdir -p completions
