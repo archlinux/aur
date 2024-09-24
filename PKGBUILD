@@ -1,7 +1,7 @@
 pkgname=pe-bear-bin
-pkgver=0.6.7
-_qtver=5.15
-pkgrel=4
+pkgver=0.7.0
+_qtver=6.2
+pkgrel=1
 pkgdesc="Freeware reversing tool for PE files"
 install=pe-bear-bin.install
 url="https://hshrzd.wordpress.com/pe-bear/"
