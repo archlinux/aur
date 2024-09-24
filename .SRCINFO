@@ -1,6 +1,6 @@
 pkgbase = ifind-bin
 	pkgdesc = 同花顺iFinD PC版提供资讯、行情、深度资料、数据浏览器、企业库等功能,满足用户多方面的使用需求。
-	pkgver = 1.10.12.387.002
+	pkgver = 1.10.12.389.002
 	pkgrel = 1
 	url = https://www.51ifind.com/
 	arch = aarch64
@@ -17,12 +17,17 @@ pkgbase = ifind-bin
 	depends = libva
 	depends = libdrm
 	depends = mesa
-	provides = ifind=1.10.12.387.002
+	depends = fontconfig
+	depends = dotnet-sdk-5.0
+	provides = ifind=1.10.12.389.002
 	conflicts = ifind
 	options = !strip
-	source_aarch64 = ifind-1.10.12.387.002-aarch64.deb::https://sp.thsi.cn/staticS3/mobileweb-upload-static-server.file/app_6/downloadcenter/com.51ifind_uos_1.10.12.387.002_arm64_signed.deb
-	sha256sums_aarch64 = a1f04769b14d715da5dd64fe18445ec7c05a5efeb1236ec35adf9beb91ab05ab
-	source_x86_64 = ifind-1.10.12.387.002-x86_64.deb::https://sp.thsi.cn/staticS3/mobileweb-upload-static-server.file/app_6/downloadcenter/com.51ifind_uos_1.10.12.387.002_amd64_signed.deb
-	sha256sums_x86_64 = e226a870af8439c0e359b15b11a915b2c0ee8132f5c1d12879da35eab8352209
+	options = !emptydirs
+	source = ifind.sh
+	sha256sums = 936d2d4299699da4e66d836e9001e1ff43fef95c53aef61569a1c3f667283fcd
+	source_aarch64 = ifind-1.10.12.389.002-aarch64.deb::https://sp.thsi.cn/staticS3/mobileweb-upload-static-server.file/app_6/downloadcenter/com.51ifind_uos_1.10.12.389.002_arm64_signed.deb
+	sha256sums_aarch64 = b0ea410ad19a827235a88a4075846b30831644d6fbe1d480b39754a4893d2a11
+	source_x86_64 = ifind-1.10.12.389.002-x86_64.deb::https://sp.thsi.cn/staticS3/mobileweb-upload-static-server.file/app_6/downloadcenter/com.51ifind_uos_1.10.12.389.002_amd64_signed.deb
+	sha256sums_x86_64 = dd9a36250dd443e17712fc0a2511f3779f7c922c3fdf779d920649cf5ac650f3
 
 pkgname = ifind-bin
