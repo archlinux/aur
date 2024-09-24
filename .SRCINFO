@@ -22,7 +22,8 @@ pkgbase = audiotools
 	depends = mpg123
 	optdepends = cdrkit: CD burning without cuesheet support
 	optdepends = cdrdao: CD burning with cuesheeet support
-	optdepends = pygtk: coverview
+	options = !lto
+	options = !debug
 	source = http://downloads.sourceforge.net/audiotools/audiotools-3.1.1.tar.gz
 	b2sums = 065b5dc23796ea8d1dc72dc581a8929fe26e08180af2f0719470d80d5c82be2455ffda28fe8fd5ca63ae078f7fa5c6b5153e8fae496736da8f97a4eae38c4876
 
