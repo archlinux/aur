@@ -1,7 +1,7 @@
 pkgbase = r-prabclus
 	pkgdesc = Functions for Clustering and Testing of Presence-Absence, Abundance and Multilocus Genetic Data
-	pkgver = 2.3.3
-	pkgrel = 4
+	pkgver = 2.3.4
+	pkgrel = 1
 	url = https://cran.r-project.org/package=prabclus
 	arch = any
 	license = GPL-2.0-or-later
@@ -10,8 +10,8 @@ pkgbase = r-prabclus
 	optdepends = r-mvtnorm
 	optdepends = r-spatialreg
 	optdepends = r-spdep
-	source = https://cran.r-project.org/src/contrib/prabclus_2.3-3.tar.gz
-	md5sums = a978397e43f43298a994a0c8fcc450c7
-	b2sums = fe4edb65112dfec49f2ce877931d539a93fe478b106e4c45e429de9e850c9f4e4ef064164905b23999c548be5345944b58e8da7db4780904d245423a2b0d74eb
+	source = https://cran.r-project.org/src/contrib/prabclus_2.3-4.tar.gz
+	md5sums = 742260d82f0fdfe6f8c3da4d72cfd5a2
+	b2sums = f0d44e6d702573a7f63521cc651fd1d60b767835d76dca2facb9df8a5f4554ce2fd51c78c7cd8557e489e346d7f22601faadd31c5bc361e2967c135f34588ad6
 
 pkgname = r-prabclus
