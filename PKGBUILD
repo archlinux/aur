@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ueli
 _pkgname=Ueli
-pkgver=9.5.1
+pkgver=9.6.0
 _electronversion=32
 _nodeversion=20
 pkgrel=1
@@ -17,7 +17,7 @@ source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('d5dc47dbfb39ece736ef91c43ae0e9c444dc57dcff49223f4c976e6e6deee512'
+sha256sums=('4a80e7d20afa63941ead2a1a8be4ea4361791946106171661f122471f6cc52db'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -27,11 +27,11 @@ _ensure_local_nvm() {
 }
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${pkgname}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
@@ -50,8 +50,8 @@ build() {
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         fi
     } >> .npmrc
-    sed -i "s/{ target: \"AppImage\" }, { target: \"deb\" }, { target: \"zip\" }/{ target: \"dir\" }/" electron-builder.config.js
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
+    sed -i "s/{ target: \"AppImage\" }, { target: \"deb\" }, { target: \"zip\" }/{ target: \"dir\" }/g" electron-builder.config.js
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm run package
