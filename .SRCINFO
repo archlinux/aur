@@ -1,7 +1,7 @@
 pkgbase = krusader-git
 	pkgdesc = Advanced twin panel file manager for KDE. (GIT version)
 	pkgver = 2.9.0.dev.r7081.g9d401e3a
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.krusader.org
 	arch = x86_64
 	license = GPL
@@ -31,6 +31,7 @@ pkgbase = krusader-git
 	depends = kwallet
 	depends = kwidgetsaddons
 	depends = kwindowsystem
+	depends = kstatusnotifieritem
 	depends = kxmlgui
 	depends = qt6-base
 	depends = solid
