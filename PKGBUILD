@@ -3,11 +3,11 @@
 # Contributor: Felix Schindler <aur at felixschindler dot net>
 
 pkgname=netgen-git
-pkgver=6.2.2404.r71.gbb3c3ff
+pkgver=6.2.2405.r0.ge51918d
 pkgrel=2
 pkgdesc="An automatic 3d tetrahedral mesh generator."
 url=https://github.com/ngsolve/netgen
-license=(LGPL2.1)
+license=(LGPL-2.1-only)
 arch=(x86_64 i686)
 makedepends=(git cmake)
 depends=(python tk libxmu glu
@@ -17,8 +17,8 @@ depends=(python tk libxmu glu
 #options=(!buildflags)
 provides=(netgen)
 conflicts=(netgen)
-source=("git+https://github.com/ngsolve/netgen.git"
-        "netgen-pybind11::git+https://github.com/ngsolve/pybind11.git")
+source=("git+https://github.com/NGSolve/netgen.git"
+        "netgen-pybind11::git+https://github.com/NGSolve/pybind11.git")
 md5sums=('SKIP'
          'SKIP')
 
@@ -39,6 +39,8 @@ build() {
     #-DUSE_JPEG=ON
     #-DUSE_MPEG=ON
     #-DUSE_OCC=ON # On by default
+    -DNG_INSTALL_DIR_LIB=lib/netgen
+    -DNG_INSTALL_DIR_INCLUDE=include/netgen
 	)
 
   cmake -B build -S "netgen" -Wno-dev \

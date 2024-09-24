@@ -1,11 +1,11 @@
 pkgbase = netgen-git
 	pkgdesc = An automatic 3d tetrahedral mesh generator.
-	pkgver = 6.2.2404.r71.gbb3c3ff
+	pkgver = 6.2.2405.r0.ge51918d
 	pkgrel = 2
 	url = https://github.com/ngsolve/netgen
 	arch = x86_64
 	arch = i686
-	license = LGPL2.1
+	license = LGPL-2.1-only
 	makedepends = git
 	makedepends = cmake
 	depends = python
@@ -15,8 +15,8 @@ pkgbase = netgen-git
 	depends = opencascade
 	provides = netgen
 	conflicts = netgen
-	source = git+https://github.com/ngsolve/netgen.git
-	source = netgen-pybind11::git+https://github.com/ngsolve/pybind11.git
+	source = git+https://github.com/NGSolve/netgen.git
+	source = netgen-pybind11::git+https://github.com/NGSolve/pybind11.git
 	md5sums = SKIP
 	md5sums = SKIP
 
