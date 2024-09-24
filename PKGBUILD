@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=3.1.6.r0.g3eec016
+pkgver=3.1.7.r0.gbcb9978
 _electronversion=30
 _nodeversion=18
 pkgrel=1
@@ -36,55 +36,55 @@ sha256sums=('SKIP'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+    set -o pipefail
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-git}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/SiYuan-Electron/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-git}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/SiYuan-Electron/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
-    gendesk -q -f -n --categories="Office" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
-    sed "2i\Name[zh_CN]=思源笔记" -i "${srcdir}/${pkgname%-git}.desktop"
+    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Office" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
+    sed -i "2i\Name[zh_CN]=思源笔记" "${srcdir}/${pkgname%-git}.desktop"
     cd "${srcdir}/${pkgname//-/.}/app"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export CGO_ENABLED=1
     export GO111MODULE=on
     export GOOS=linux
     export GOCACHE="${srcdir}/go-build"
     export GOMODCACHE="${srcdir}/go/pkg/mod"
-    HOME="${srcdir}/.electron-gyp"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    local HOME="${srcdir}/.electron-gyp"
     {
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo 'link-workspace-packages=true'
         echo 'fetch-retry-maxtimeout=10000'
         echo "cache-dir="${srcdir}"/.pnpm_cache"
         echo "store-dir="${srcdir}"/.pnpm_store"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    {
             echo 'registry=https://registry.npmmirror.com'
             echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-            go env -w GOPROXY=https://goproxy.cn,direct
-        else
-            echo 'registry=https://registry.npmjs.org'
-            echo 'disturl=https://nodejs.org/dist'
-            echo 'electron_mirror=https://www.electronjs.org/versions'
-            echo 'electron_builder_binaries_mirror=https://github.com/electron-userland/electron-builder-binaries/releases/download'
-        fi
     } >> .npmrc
-    sed "/tar.gz/d;/deb/d;s/AppImage/dir/;s/icon.icns/icon.png/" -i {electron-builder-linux.yml,electron-builder-linux-arm64.yml}
-    sed -i "s/\"electron\": \"\([^\"]*\)\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" -i package.json
+    go env -w GOPROXY=https://goproxy.cn,direct
+    fi
+    sed -i "/tar.gz/d;/deb/d;s/AppImage/dir/;s/icon.icns/icon.png/g" {electron-builder-linux.yml,electron-builder-linux-arm64.yml}
+    sed -i "s/\"electron\": \"\([^\"]*\)\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install --no-frozen-lockfile
     NODE_ENV=production     pnpm run build
     cd "${srcdir}/${pkgname//-/.}/kernel"
