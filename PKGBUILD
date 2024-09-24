@@ -5,15 +5,15 @@
 _microarchitecture=0
 
 ## Major kernel version
-_major=6.10
+_major=6.11
 ## Minor kernel version
-_minor=9
+_minor=0
 
 ## PKGBUILD ##
 
 pkgbase=linux-multimedia
-#pkgver=${_major}
-pkgver=${_major}.${_minor}
+pkgver=${_major}
+#pkgver=${_major}.${_minor}
 pkgrel=1
 pkgdesc='Linux Multimedia Optimized'
 url="https://www.kernel.org/"
@@ -34,7 +34,7 @@ validpgpkeys=(
   '83BC8889351B5DEBBB68416EB8AC08600F108CDF'  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('a4489b70e0a7c2dc8f501b9cd7fc76989be2febb5519e163ecf816064f2f6858'
+sha256sums=('55d2c6c025ebc27810c748d66325dd5bc601e8d32f8581d9e77673529bdacb2e'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -62,7 +62,7 @@ prepare() {
   # GCC Optimizations
 
   msg2 "Apply GCC Optimization Patch..."
-  patch -Np1 < ${srcdir}/kernel_compiler_patch/more-uarches-for-kernel-6.8-rc4+.patch
+  patch -Np1 < ${srcdir}/kernel_compiler_patch/more-ISA-levels-and-uarches-for-kernel-6.8-rc4+.patch
 
   # TKG Patches
 
@@ -86,6 +86,9 @@ prepare() {
 
   msg2 "Apply 0007-v${_major}-fsync1_via_futex_waitv.patch..."
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-fsync1_via_futex_waitv.patch
+
+  msg2 "Apply 0007-v${_major}-ntsync.patch"
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-ntsync.patch
 
   msg2 "Apply 0012-misc-additions.patch..."
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0012-misc-additions.patch
