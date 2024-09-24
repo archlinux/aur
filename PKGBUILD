@@ -4,7 +4,7 @@
 
 pkgname=('teleport' 'teleport-client')
 _pkgname=teleport
-pkgver=16.2.1
+pkgver=16.4.0
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=('go>=1.17.0' 'rustup' 'yarn' 'libbpf-static>=1.2.0' 'wasm-pack' 'pn
              'python' 'python-setuptools' 'libfido2')
 provides=('tctl' 'tsh')
 
-_rust_version=1.76
+_rust_version=1.78
 _webassets_ref=f48049a453348e0ee1ce2b998dffe5659455b398
 
 _go_srcpath="go/src/github.com/gravitational"
@@ -106,7 +106,7 @@ package_teleport-client() {
     install -Dm755 build/tbot "${pkgdir}/usr/bin/tbot"
     install -Dm755 build/fdpass-teleport "${pkgdir}/usr/lib/teleport/fdpass-teleport"
 }
-sha512sums=('1cd715af42a55dee897710b3bac78149e20fac6536a024e84eeeec841b72e0101bf6d9f1a36ab822680efdbbe1612453a02e82faa4716753fb5c9597d5ff24bc'
+sha512sums=('0c8e707787d9fe196ff5e92e010851d88e91851c8de3666cc551bba41c50d834632dab7ad9be9c3dcc2178fde9b96b868cfa27358dd6f1b01e1d9e4e76b5f603'
             'bf13a77d1cdaa0c3e09034ede9acdf6834a7e21dbb18b0f9d8f46917be9772416edba7f0001cd38f6124564c0c31549f8d7048dd7a9f5ad76ff8e02f4451f044'
             '409116e201c40b7e0a379b316123500ab7691cbf441ecee048811885f97cd1185671676bb61bf36cb288399e8c0355a0a9f963ce7f94e44ba49e061187c9249e'
             '469249bebaa974e5e205c66c0459ed071b06a35aa9b94a3f34d3cbc5e75aa0f290d70ba8e5c63b49a6319a0f524a846ded459e07e3dde4c260e7668959821b96'
