@@ -2,7 +2,7 @@
 # Contributer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo), YellowRoseCx
 pkgname=koboldcpp-hipblas
-_pkgver=1.74
+_pkgver=1.75.2
 pkgver=$_pkgver.yr0
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with HIPBLAS, for ROCM)"
@@ -12,7 +12,6 @@ license=('AGPL-3.0-only')
 depends=(
   'python'
   'cblas'
-  'openblas'
   'clblast'
   'vulkan-icd-loader'
   'hipblas'
@@ -29,14 +28,14 @@ source=(
   'koboldcpp.png'
 )
 sha256sums=(
-  '3a253628a0e540d012f050fd16221238db63184aba863a3202a85e6e01fa2250'
+  'ca76512939b86d8bd4316d1c8ff63fcf980f30f06f90d6392b46b66dcf4f57b4'
   'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
   'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
 
 build() {
   cd "$srcdir/koboldcpp-rocm-$pkgver-ROCm"
-  make LLAMA_VULKAN=1 LLAMA_OPENBLAS=1 LLAMA_CLBLAST=1 LLAMA_HIPBLAS=1 LLAMA_PORTABLE=1
+  make LLAMA_VULKAN=1 LLAMA_CLBLAST=1 LLAMA_HIPBLAS=1 LLAMA_PORTABLE=1
 }
 
 package() {
@@ -45,7 +44,6 @@ package() {
   install -d "$pkgdir/usr/share/koboldcpp"
 
   install -Dm644 "koboldcpp_default.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_default.so"
-  install -Dm644 "koboldcpp_openblas.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_openblas.so"
   install -Dm644 "koboldcpp_hipblas.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_hipblas.so"
 
   install -Dm644 "koboldcpp_failsafe.so" "$pkgdir/usr/share/koboldcpp/koboldcpp_failsafe.so"
