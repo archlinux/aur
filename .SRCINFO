@@ -1,6 +1,6 @@
 pkgbase = roonserver
 	pkgdesc = The music player for music lovers
-	pkgver = 2.0.1455
+	pkgver = 2.0.1462
 	pkgrel = 1
 	url = https://roonlabs.com/
 	install = roonserver.install
@@ -11,7 +11,7 @@ pkgbase = roonserver
 	depends = ffmpeg
 	depends = cifs-utils
 	depends = icu
-	source = http://download.roonlabs.net/builds/RoonServer_linuxx64.tar.bz2
+	source = https://download.roonlabs.net/builds/RoonServer_linuxx64.tar.bz2
 	source = roonserver.service
 	source = copyright
 	sha256sums = SKIP
