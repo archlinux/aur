@@ -5,10 +5,11 @@
 
 pkgname='bc-gh'
 pkgver=7.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Implementation of dc and POSIX bc with GNU extensions'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/gavinhoward/bc'
+changelog="$pkgname.changelog"
 license=('BSD-2-Clause')  # SPDX-License-Identifier: BSD-2-Clause
 provides=('bc' 'dc')
 conflicts=('bc')
