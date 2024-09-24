@@ -4,7 +4,7 @@
 # Contributor: Klaus Alexander Seistrup <klaus@seistrup.dk>
 
 pkgname='bc-gh'
-pkgver=7.0.2
+pkgver=7.0.3
 pkgrel=1
 pkgdesc='Implementation of dc and POSIX bc with GNU extensions'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -19,12 +19,12 @@ source=(
   "$pkgname-$pkgver.tar.xz.sig::$url/releases/download/$pkgver/bc-$pkgver.tar.xz.sig"
 )
 sha512sums=(
-  'deac1ffa11562b71ec9c238d375e16d46b63b7330092ef43e38f087fc5f9c813adb6fa352aab45cb96a17206de3d2d2e62825aef19ff9aed72ea63fc3b9ea603'
-  '2cbce0d3cc76c22ec37cde027c0abd36e85d2476980185195913464f425230bb293a73e4d4f6e276ca812ff93db43f7e882ae9e782c9ea4bbee053e01e22874a'
+  '40bd059eda5df30fe41a4683a51727af7c9d0df48eb795c3c0afff0740cb4b4e719a6135203ebacb27617d9721a78c24f3ec3107c676aafa2808f73313084cd7'
+  '5bbae9108b8c298fe6ccd4de6b18900d7e619f0165dd26f3e1b1ef15b1932b58627bb88f81426d7c266f3cdd838a4d50e08934b21e73e89801d725b1281ef0d2'
 )
 sha256sums=(
-  '5cdaa73e42deda936bdcdb668eeaa6bc0567cac820914744a6824595fa13da1d'
-  'c84b86f6f32d8ed37881529de2b1f8fd4f4590fe8a3c4bed09930f8f82b46e8d'
+  '91eb74caed0ee6655b669711a4f350c25579778694df248e28363318e03c7fc4'
+  'd06faa5c5441abe2dfd7ec964bec7d2ca99c6fb88aa81ac1541c8dab952fb73f'
 )
 validpgpkeys=('FF360647C7A7147F27DAAEC1B132F881C306590A')
 
