@@ -9,6 +9,7 @@ pkgbase = dashboard
 	depends = python
 	depends = lynx
 	depends = ncurses
+	depends = task
 	source = git+https://github.com/th3r00t/dashboard.git
 	md5sums = SKIP
 
