@@ -1,14 +1,14 @@
-# Maintainer: Trevor <assviolat0r at live dot com>
+# Contributor: Trevor <assviolat0r at live dot com>
 
 pkgname=python-rivescript-git
-pkgver=85.182b564
+pkgver=220.a28deb3
 pkgrel=1
 pkgdesc="Rendering Intelligence Very Easily"
 arch=('any')
 license=('MIT')
-depends=('python2' 'python-six' 'python2-six' 'python-setuptools' 'python2-setuptools')
+depends=('python-six' 'python')
 conflicts=('python-rivescript')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 url='https://github.com/aichaos/rivescript-python'
 source=('git+https://github.com/aichaos/rivescript-python.git')
 md5sums=('SKIP')
