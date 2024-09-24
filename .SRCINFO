@@ -1,0 +1,17 @@
+pkgbase = lorry
+	pkgdesc = Lorry Mirroring Tool
+	pkgver = 2.0.0_rc.1
+	pkgrel = 1
+	url = https://lorry.software
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = sqlite
+	depends = git
+	depends = git-lfs
+	provides = lorry
+	source = https://gitlab.com/CodethinkLabs/lorry/lorry2/-/archive/v2.0.0-rc.1/lorry2-v2.0.0-rc.1.tar.gz
+	sha256sums = ca02eead1dd5a82251631ee55e0af89c601a38bade1ee7f7954ef6398d027dea
+
+pkgname = lorry
