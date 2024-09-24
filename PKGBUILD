@@ -5,21 +5,21 @@
 
 pkgbase=jamulus
 pkgname=(jamulus jamulus-headless)
-pkgver=3.10.0
-pkgrel=2
+pkgver=3.11.0
+pkgrel=1
 pkgdesc="Internet jam session software"
-arch=(x86_64 aarch64)
+arch=(aarch64 x86_64)
 url='https://jamulus.io/'
-license=(GPL2 BSD custom:STK)
+license=(GPL-2.0-only BSD-3-Clause custom:STK)
 depends=(gcc-libs qt6-base)
 provides=(jamulus-server)
 conflicts=(jamulus-git)
-makedepends=(jack qt6-multimedia)
+makedepends=(jack qt6-multimedia qt6-tools)
 groups=(pro-audio)
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/jamulussoftware/$pkgbase/archive/r${pkgver//./_}.tar.gz"
   'jamulus.service'
   'jamulus.sysusers')
-sha256sums=('671ce57431da1ffa701824cf945910f66f31a0260d08944a7d94bf2c67641f0c'
+sha256sums=('4ba7980ad5b01adf21a4ab9ddd4ca402fd5141e4eda1996b00f3689be6241250'
             '98e45f7f877dbc9f8113d63b6e009ff1025e73e1cce86f671b57474a4764e11f'
             '4117ad3a93b3211f679f93794b308ad292d1799a86f85a6b353cfdff8515e2f9')
 _pkgsrc=$pkgbase-r${pkgver//./_}
