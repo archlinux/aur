@@ -1,21 +1,23 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xterminal-bin
 _pkgname=XTerminal
-_pkgver_aarch64=1.25.1
-_pkgver_x86_64=1.32.6
+_pkgver_aarch64=1.32.10
+_pkgver_x86_64=1.32.10
+_electronversion_aarch64=31
+_electronversion_x86_64=31
 case "${CARCH}" in
     aarch64)
         pkgver="${_pkgver_aarch64}"
-        _electronversion=30
+        _electronversion="${_electronversion_aarch64}"
     ;;
     x86_64)
         pkgver="${_pkgver_x86_64}"
-        _electronversion=31
+        _electronversion="${_electronversion_x86_64}"
     ;;
 esac
 #update:https://txc.qq.com/products/598955/change-log
 pkgrel=1
-pkgdesc="不仅是强大的SSH工具，更提供本地控制台，以及更多即将推出的开发相关功能，让您专注于创造卓越的代码"
+pkgdesc="Not only powerful SSH tools, but also local consoles, and more coming soon.不仅是强大的SSH工具,更提供本地控制台,以及更多即将推出的开发相关功能."
 arch=(
     "aarch64"
     "x86_64"
@@ -39,20 +41,20 @@ source_aarch64=("${pkgname%-bin}-${_pkgver_aarch64}-aarch64.deb::https://cdn-cn.
 source_x86_64=("${pkgname%-bin}-${_pkgver_x86_64}-x86_64.deb::https://cdn-cn.xterminal.cn/downloads/${_pkgname}-${_pkgver_x86_64}-linux-amd64.deb")
 sha256sums=('8d08a959e0086a206ef3454cc0fc323454c73609cd764f102d8d2d076dafa0af'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('921222e7b58b89575da8f44f3b372732e719f909174d5410f1fad89bf8d62861')
-sha256sums_x86_64=('1c4b025c92a3921fe9b9ca45413b8ee37cde581c5743130ac65dc52c0adaf16c')
+sha256sums_aarch64=('4a194884d09483da0b1590f8a209402e3a3da6d4df91c9e02f9f2525d4c5a728')
+sha256sums_x86_64=('4b631225243aa643e0b3aa1086632b740a7ec6eaa1cf0c3f489610ae92e76ade')
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-bin}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${pkgname%-bin}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed "s/process.resourcesPath/\"\/usr\/lib\/${pkgname%-bin}\"/" -i "${srcdir}/app.asar.unpacked/dist/main/index.js"
+    find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} \;
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
