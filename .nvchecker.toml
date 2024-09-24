@@ -1,0 +1,5 @@
+[python-findiff]
+source = "github"
+github = "maroba/findiff"
+use_latest_release = "true"
+prefix = "v"
