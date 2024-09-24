@@ -1,4 +1,4 @@
-# Maintainer: Sung Mingi <FiestaLake@protonmail.com>
+# Maintainer: Mingi Sung <sungmg@saltyming.net>
 
 pkgname=gnome-shell-extension-custom-hot-corners-extended-git
 _pkgname=custom-hot-corners-extended
