@@ -60,9 +60,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --print-errorlogs
 
-  appstreamcli validate --no-net build/data/com.gexperts.Tilix.appdata.xml || :
+  appstreamcli validate --no-net build/data/com.gexperts.Tilix.appdata.xml
 }
 
 package() {
