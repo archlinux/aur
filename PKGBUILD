@@ -4,7 +4,7 @@
 pkgname=waveterm
 _pkgname=Wave
 _appname="${_pkgname} Terminal"
-pkgver=0.8.0
+pkgver=0.8.1
 _electronversion=32
 _nodeversion=22
 pkgrel=1
@@ -37,7 +37,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('31a5acc7b130a695ff341bee9f06f9257f4d7762eaf786f3ba7b3883cc4201fd'
+sha256sums=('8a1c9c456f339ec6a5eda48340a64e0b378bae16aa0ac03ed4b7aaa67dafde74'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -77,7 +77,7 @@ build() {
     else
         echo "Your network is OK."
     fi
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/build\/icons.icns/build\/appicon.png/g;s/\"zip\", \"deb\", \"rpm\", \"AppImage\", \"pacman\"/\"dir\"/g" electron-builder.config.cjs
     gem install fpm
     corepack enable
