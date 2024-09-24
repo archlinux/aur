@@ -1,12 +1,12 @@
 pkgbase = rdkit
-	pkgdesc = RDKit - A collection of cheminformatics and machine-learning software written in C++ and Python.
-	pkgver = 2024_03_5
+	pkgdesc = An open-source toolkit for cheminformatics and machine learning with Python API
+	pkgver = 2024_03_6
 	pkgrel = 1
 	url = http://rdkit.org/
 	arch = i686
 	arch = x86_64
 	arch = armv7h
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = cmake>=3.14
 	makedepends = catch2
 	depends = python
@@ -18,7 +18,7 @@ pkgbase = rdkit
 	depends = sqlite
 	depends = cairo
 	depends = eigen
-	source = https://github.com/rdkit/rdkit/archive/Release_2024_03_5.tar.gz
-	sha256sums = b0870aec4dca12da5ee1100a769eaf4c71c3a6f99339f8aa72d30affc068a632
+	source = https://github.com/rdkit/rdkit/archive/Release_2024_03_6.tar.gz
+	sha256sums = 5002ff97e59d9c08f4faa1c6a2e276a695f6874dfc93e28cbbd62dab4f0b40d7
 
 pkgname = rdkit
