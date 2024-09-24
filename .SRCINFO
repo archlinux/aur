@@ -1,5 +1,5 @@
 pkgbase = archlinux-studio-utils
-	pkgver = r16.1ba26a0
+	pkgver = r19.21b82d6
 	pkgrel = 1
 	url = https://github.com/usrmusicman/ArchLinuxStudioUtils
 	arch = x86_64
@@ -10,12 +10,6 @@ pkgbase = archlinux-studio-utils
 
 pkgname = archlinux-studio-utils-cpufreq-scaling
 	pkgdesc = CPU frequency scaling selection script
-
-pkgname = archlinux-studio-utils-efistub
-	pkgdesc = EFI boot entry creation and removal tool
-	depends = efibootmgr
-	conflicts = archlinux-studio-utils-efistub-intel-toggle
-	replaces = archlinux-studio-utils-efistub-intel-toggle
 
 pkgname = archlinux-studio-utils-pipewire
 	pkgdesc = GUI pipewire session toggle tool

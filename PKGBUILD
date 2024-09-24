@@ -1,6 +1,6 @@
 pkgbase=archlinux-studio-utils
-pkgname=('archlinux-studio-utils-cpufreq-scaling' 'archlinux-studio-utils-efistub' 'archlinux-studio-utils-pipewire')
-pkgver=r16.1ba26a0
+pkgname=('archlinux-studio-utils-cpufreq-scaling' 'archlinux-studio-utils-pipewire')
+pkgver=r19.21b82d6
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/usrmusicman/ArchLinuxStudioUtils"
@@ -22,19 +22,6 @@ package_archlinux-studio-utils-cpufreq-scaling() {
 
     ## Install Menu Entries
     install -Dm644 "$pkgbase/cpufreq/menu_entry/CPUFreq Selector.desktop" "$pkgdir/usr/share/applications/CPUFreq Selector.desktop"
-}
-
-package_archlinux-studio-utils-efistub() {
-    depends=('efibootmgr')
-    replaces=('archlinux-studio-utils-efistub-intel-toggle')
-    conflicts=('archlinux-studio-utils-efistub-intel-toggle')
-    pkgdesc="EFI boot entry creation and removal tool"
-
-    ## Install Script
-    install -Dm755 "$pkgbase/efistub/script/efistub-manager" "$pkgdir/usr/bin/efistub-manager"
-
-    ## Install Menu Entries
-    install -Dm644 "$pkgbase/efistub/menu_entry/EFI Stub Manager.desktop" "$pkgdir/usr/share/applications/EFI Stub Manager.desktop"
 }
 
 package_archlinux-studio-utils-pipewire() {
