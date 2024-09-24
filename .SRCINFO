@@ -1,6 +1,6 @@
 pkgbase = python-google-generativeai
 	pkgdesc = Google AI Python SDK for the Gemini API
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/google-gemini/generative-ai-python
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-google-generativeai
 	depends = python-pydantic
 	depends = python-tqdm
 	depends = python-typing_extensions
-	source = generative-ai-0.8.1.tar.gz::https://github.com/google-gemini/generative-ai-python/archive/refs/tags/0.8.1.tar.gz
-	sha256sums = d44aa77865edc0d2a47e9c07106d2c9be72d3ff3a65340c5187f8d5c05745971
+	source = generative-ai-0.8.2.tar.gz::https://github.com/google-gemini/generative-ai-python/archive/refs/tags/v0.8.2.tar.gz
+	sha256sums = e5647cef1cfce71e482a0b94f17f08aa46254a1b78425e2414fe10aac5150b68
 
 pkgname = python-google-generativeai
