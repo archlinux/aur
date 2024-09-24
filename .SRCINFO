@@ -1,13 +1,13 @@
 pkgbase = blender-lts-bin
 	pkgdesc = LTS blender version
-	pkgver = 4.2.1
+	pkgver = 4.2.2
 	pkgrel = 1
 	url = https://www.blender.org
 	arch = x86_64
 	license = GPL
-	source = https://mirrors.dotsrc.org/blender/release/Blender4.2/blender-4.2.1-linux-x64.tar.xz
+	source = https://mirrors.dotsrc.org/blender/release/Blender4.2/blender-4.2.2-linux-x64.tar.xz
 	source = blender.sh
-	b2sums = 2bc533ebdef54de527306d7274bb394888241f5cd6f2f67df76eb86ded33f87fb6e9d59eb8842f36c78cf2cebe9049a9008467261a591c66b56538b998d8d5e4
+	b2sums = 9ba53251ba841ac235d82b6473b0a0790aaea1e9475e20f57c42b41d5b1646953446aaa0ed4e2dd5c5ae9d9e28010a3678c1e81894fc5b9d852b25f98167af18
 	b2sums = 903039ab42d250063286fa6a5e3687e84c9c6018a0e6654423e7649542d8394c19e6ed8ccaa549bd373ad66bc8e5b7b65203781cde26420f4e00183935e766f3
 
 pkgname = blender-lts-bin
