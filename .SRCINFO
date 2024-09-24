@@ -1,21 +1,21 @@
 pkgbase = tomato-radio-automation-bin
 	pkgdesc = Tomato Radio Automation desktop client. Dead simple radio ads.Prebuilt version.Use system-wide electron.
-	pkgver = 0.11.11
+	pkgver = 0.11.12
 	pkgrel = 1
 	url = https://dtcooper.github.io/tomato/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = electron32
-	provides = tomato-radio-automation=0.11.11
+	provides = tomato-radio-automation=0.11.12
 	conflicts = tomato-radio-automation
 	options = !strip
 	options = !emptydirs
 	source = tomato-radio-automation.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = tomato-radio-automation-0.11.11-aarch64.deb::https://github.com/dtcooper/tomato/releases/download/v0.11.11/tomato-client-v0.11.11-linux_arm64.deb
-	sha256sums_aarch64 = cf5f20ee48a3eb198201871c5270c7de49543dba8d9a0c8ffec75e65a8ec1ee9
-	source_x86_64 = tomato-radio-automation-0.11.11-x86_64.deb::https://github.com/dtcooper/tomato/releases/download/v0.11.11/tomato-client-v0.11.11-linux_amd64.deb
-	sha256sums_x86_64 = 1cb4dadaad80738030272f957486fb181745a62cca3547f19d7c344ad6867f7d
+	source_aarch64 = tomato-radio-automation-0.11.12-aarch64.deb::https://github.com/dtcooper/tomato/releases/download/v0.11.12/tomato-client-v0.11.12-linux_arm64.deb
+	sha256sums_aarch64 = e562074d69f09f9e5c4404b0c34b4095ff24a70d9352055ec2306042588464a2
+	source_x86_64 = tomato-radio-automation-0.11.12-x86_64.deb::https://github.com/dtcooper/tomato/releases/download/v0.11.12/tomato-client-v0.11.12-linux_amd64.deb
+	sha256sums_x86_64 = 617e5f8d3b2d2d73a3a4a025b28debc0b1733a5a41485de4a80c92225f7890d3
 
 pkgname = tomato-radio-automation-bin
