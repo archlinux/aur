@@ -6,6 +6,8 @@ pkgbase = wallhaven-cli
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	makedepends = kitty
+	makedepends = fzf
 	source = wallhaven-cli-1.0.0.tar.gz::https://github.com/r3tr0ananas/wallhaven-cli/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
