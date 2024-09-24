@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=bookget-git
-pkgver=24.0116.2.ga1386a5
-pkgrel=1
+pkgver=24.0923.1.g4876c7d
+pkgrel=0
 pkgdesc="bookget 数字图书馆下载工具，目前支持约50+个数字图书馆。"
 arch=(x86_64
     aarch64
@@ -12,21 +12,21 @@ license=('GPL-3.0-only')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
-depends=(go)
+depends=(glibc)
 optdepends=('dezoomify-rs: Zoomable image downloader for Google Arts & Culture, Zoomify, IIIF, and others')
-makedepends=(git)
+makedepends=(git
+    go)
 backup=()
-options=('!strip')
+options=('!strip' '!debug')
 #install=${pkgname}.install
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname%-git}" clean -dfx
 
-#     cd "${srcdir}/${pkgname%-git}"
-#     git tag --delete nightly
+    #     cd "${srcdir}/${pkgname%-git}"
+    #     git tag --delete nightly
 }
 
 pkgver() {
