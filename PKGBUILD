@@ -7,37 +7,40 @@ arch=('x86_64')
 url="https://github.com/tkmxqrdxddd/chess-electron"
 license=('ISC')
 depends=('electron')
-makedepends=('npm' 'nodejs')
-options=(!debug)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2adcaacdd172e2f3b70e215cb48738008018716e0058abeb1e6855adb9aaf16a')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  npm install --only=production --omit=dev
-}
+makedepends=('wget')
+source=("https://www.chess.com/favicon.ico")
+md5sums=('SKIP')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  
-  # Create necessary directories
-  install -d "$pkgdir/usr/lib/$pkgname"
-  install -d "$pkgdir/usr/bin"
-  install -d "$pkgdir/usr/share/applications"
+    # Create directories
+    mkdir -p "$pkgdir/usr/lib/$pkgname"
+    mkdir -p "$pkgdir/usr/bin"
+    mkdir -p "$pkgdir/usr/share/applications"
+    mkdir -p "$pkgdir/usr/share/icons/hicolor/256x256/apps"
 
-  # Copy application files
-  cp -r {*.js,*.json,node_modules,assets} "$pkgdir/usr/lib/$pkgname/"
+    # Convert favicon.ico to PNG
+    convert "$srcdir/favicon.ico" -thumbnail 256x256 -alpha on -background none -flatten "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
 
-  # Create launcher script
-  echo '#!/bin/sh' > "$pkgdir/usr/bin/$pkgname"
-  echo "electron /usr/lib/$pkgname/main.js" >> "$pkgdir/usr/bin/$pkgname"
-  chmod 755 "$pkgdir/usr/bin/$pkgname"
+    # Create launcher script
+    echo '#!/bin/sh' > "$pkgdir/usr/bin/$pkgname"
+    echo "exec electron 'https://www.chess.com'" >> "$pkgdir/usr/bin/$pkgname"
+    chmod +x "$pkgdir/usr/bin/$pkgname"
 
-  # Create .desktop file
-  echo "[Desktop Entry]
+    # Create .desktop file
+    cat > "$pkgdir/usr/share/applications/$pkgname.desktop" << EOF
+[Desktop Entry]
 Name=Chess.com Desktop
 Exec=$pkgname
-Icon=/usr/lib/$pkgname/assets/icon.png
+Icon=$pkgname
 Type=Application
-Categories=Game;" > "$pkgdir/usr/share/applications/$pkgname.desktop"
+Categories=Game;
+EOF
 }
+
+# Clean up downloaded files
+cleanup() {
+    rm -f "$srcdir/favicon.ico"
+}
+
+# Run cleanup after package() function
+trap cleanup EXIT
