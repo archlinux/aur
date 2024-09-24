@@ -1,8 +1,8 @@
-pkgbase = takang-git
+pkgbase = wend-git
 	pkgdesc = Minimal presentation tool for Wayland
-	pkgver = r220.c16606f
+	pkgver = r225.dc3867f
 	pkgrel = 1
-	url = https://sr.ht/~tardypad/takang/
+	url = https://sr.ht/~tardypad/wend/
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -12,7 +12,7 @@ pkgbase = takang-git
 	depends = libxkbcommon
 	depends = pango
 	depends = wayland
-	source = git+https://git.sr.ht/~tardypad/takang
+	source = git+https://git.sr.ht/~tardypad/wend
 	sha512sums = SKIP
 
-pkgname = takang-git
+pkgname = wend-git

@@ -1,8 +1,8 @@
-pkgname=takang-git
-pkgver=r220.c16606f
+pkgname=wend-git
+pkgver=r225.dc3867f
 pkgrel=1
 pkgdesc='Minimal presentation tool for Wayland'
-url='https://sr.ht/~tardypad/takang/'
+url='https://sr.ht/~tardypad/wend/'
 arch=('any')
 license=('GPL3')
 
@@ -20,7 +20,7 @@ depends=(
 )
 
 source=(
-  'git+https://git.sr.ht/~tardypad/takang'
+  'git+https://git.sr.ht/~tardypad/wend'
 )
 
 sha512sums=(
@@ -28,23 +28,23 @@ sha512sums=(
 )
 
 pkgver() {
-  cd takang
+  cd wend
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd takang
+  cd wend
   arch-meson -Dzsh-completions=true build
   meson compile -C build
 }
 
 check() {
-  cd takang
+  cd wend
   meson test -C build --print-errorlogs
 }
 
 package() {
-  cd takang
+  cd wend
   meson install -C build --destdir "${pkgdir}"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
