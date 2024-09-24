@@ -5,7 +5,7 @@
              set(DISABLE_OPTIMIZER_CONSTANTS TRUE)
  	    
 -        elseif((${CUDA_VERSION} VERSION_GREATER_EQUAL 11.8) AND (${CUDA_VERSION} VERSION_LESS_EQUAL 12.0))
-+        elseif((${CUDA_VERSION} VERSION_GREATER_EQUAL 11.8) AND (${CUDA_VERSION} VERSION_LESS_EQUAL 12.5))
++        elseif((${CUDA_VERSION} VERSION_GREATER_EQUAL 11.8) AND (${CUDA_VERSION} VERSION_LESS_EQUAL 12.6))
              message(STATUS "Configuring QUICK for SM5.0, SM6.0, SM7.0, SM7.5, SM8.0, SM8.6, SM9.0")
              list(APPEND CUDA_NVCC_FLAGS ${SM50FLAGS} ${SM60FLAGS} ${SM70FLAGS} ${SM75FLAGS} ${SM80FLAGS} ${SM86FLAGS} ${SM90FLAGS})
              list(APPEND CUDA_NVCC_FLAGS -DUSE_LEGACY_ATOMICS)
@@ -16,7 +16,7 @@
  			list(APPEND CUDA_NVCC_FLAGS ${SM35FLAGS} ${SM50FLAGS} ${SM52FLAGS} ${SM53FLAGS} ${SM60FLAGS} ${SM61FLAGS} ${SM70FLAGS} ${SM75FLAGS} ${SM80FLAGS} -Wno-deprecated-gpu-targets -Wno-deprecated-declarations)
  
 -		elseif((${CUDA_VERSION} VERSION_GREATER_EQUAL 12.0) AND (${CUDA_VERSION} VERSION_LESS 12.2))
-+		elseif((${CUDA_VERSION} VERSION_GREATER_EQUAL 12.0) AND (${CUDA_VERSION} VERSION_LESS 12.6))
++		elseif((${CUDA_VERSION} VERSION_GREATER_EQUAL 12.0) AND (${CUDA_VERSION} VERSION_LESS 12.7))
  			# Implement the standard compilation rather than a warp-synchronous one, which is deprecated as of CUDA 11
  			set(SM70FLAGS -gencode arch=compute_70,code=sm_70)
  			set(SM75FLAGS -gencode arch=compute_75,code=sm_75)
