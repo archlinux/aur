@@ -3,7 +3,7 @@
 _name="sixelcrop"
 _pkgname="python-${_name}"
 pkgname="${_pkgname}-git"
-pkgver=0.1.7.r1.g011f1c5
+pkgver=0.1.8.r0.g3fb9c8e
 pkgrel=1
 pkgdesc="Crop sixel images in sixel-space"
 arch=('any')
@@ -40,6 +40,6 @@ package() {
 
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -d "${pkgdir}/usr/share/licenses/${_pkgname}"
-  ln -s "${pkgdir}${site_packages}/${_name}-${pkgver%%.r*}.dist-info/licenses/LICENSE.txt" \
+  ln -s "${site_packages}/${_name}-${pkgver%%.r*}.dist-info/licenses/LICENSE.txt" \
     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
