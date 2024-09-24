@@ -2,12 +2,12 @@
 
 pkgname=python-gs-quant
 _pkgname=gs_quant
-pkgver=1.0.75
+pkgver=1.1.10
 pkgrel=1
 pkgdesc="A python toolkit for quantitative finance developped at Goldman Sachs"
 arch=('any')
 url="https://developer.gs.com/discover/products/gs-quant"
-license=('Apache')
+license=('Apache-2.0')
 depends=(python
     python-aenum
     python-asteval
@@ -36,7 +36,7 @@ optdepends=()
 makedepends=('python-setuptools')
 #checkdepends=('python-testfixtures' 'python-pytest' 'python-pytest-mock')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('e5b20fa8db4b1800d25ab7d0c32730c931f6e28b001fb22e2cfb3df86926a464')
+sha256sums=('b2e170e3db504577e6b534c140d55b7d722baf4af44075aba116c5a7f9e27a4b')
 
 build() {
   cd "$_pkgname-$pkgver"
