@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang
 _pkgname=Mustang
-pkgver=0.6.7
+pkgver=0.6.8
 _electronversion=32
 _nodever=20
 pkgrel=1
@@ -17,7 +17,7 @@ source=(
     "${pkgname}.git::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('fcda96fe998aa1370ac79b19ea1d23ecab4d413d602a738aeaf5f92052084c72'
+sha256sums=('d7eeff2a6a14c6c54c7154415f502bce583bfe8db6ac80c55b53007bc6c115a6'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -27,11 +27,11 @@ _ensure_local_nvm() {
 }
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${pkgname}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname} %U"
@@ -39,16 +39,20 @@ build() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
+    echo -e '\n'
+    #echo 'build_from_source=true'
+    echo "cache=${srcdir}/.npm_cache"
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
     {
-        #echo 'build_from_source=true'
-        echo "cache=${srcdir}/.npm_cache"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        fi
+        echo 'registry=https://registry.npmmirror.com'
+        echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+        echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+        echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
     } >> .npmrc
+    echo '[url "https://github.moeyy.xyz/https://github.com/"]' >> "${srcdir}/${pkgname}.git/app/.gitconfig"
+    echo '    insteadof = https://github.com/' >> "${srcdir}/${pkgname}.git/app/.gitconfig"
+    fi
+
     cd "${srcdir}/${pkgname}.git/app/build"
     sh "${pkgname}-brand.sh"
     cd "${srcdir}/${pkgname}.git/app"
@@ -62,8 +66,8 @@ build() {
     NODE_ENV=development    npm install
     cd "${srcdir}/${pkgname}.git/e2"
     cp "${srcdir}/${pkgname}.git/.npmrc" "${srcdir}/${pkgname}.git/e2"
-    sed "/- AppImage/d;/- snap/d;/- rpm/d;s/- deb/- dir/" -i electron-builder.yml
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
+    sed -i "/- AppImage/d;/- snap/d;/- rpm/d;s/- deb/- dir/g" electron-builder.yml
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     cp build/icon.png resources/
     NODE_ENV=development    npm install --legacy-peer-deps
     NODE_ENV=development    npm install -D semver
