@@ -1,6 +1,6 @@
 pkgbase = bonbon-browser-git
 	pkgdesc = A lightweight and innovative browser.It makes you appreciate your browsing experience, and offers privacy.
-	pkgver = 1.0.0.early.r0.gf471d06
+	pkgver = 1.0.3.beta.1.r4.g3e8b7cf
 	pkgrel = 1
 	url = https://bonbon.exchange/
 	arch = any
@@ -12,8 +12,9 @@ pkgbase = bonbon-browser-git
 	makedepends = git
 	makedepends = gcc
 	makedepends = cmake
-	depends = electron22
-	provides = bonbon-browser=1.0.0.early
+	depends = electron32
+	depends = python
+	provides = bonbon-browser=1.0.3.beta.1
 	conflicts = bonbon-browser
 	source = bonbon-browser.git::git+https://github.com/BonBon-exchange/bonbon-browser.git
 	source = bonbon-browser.sh
