@@ -3,14 +3,14 @@
 
 pkgname=osdlyrics
 pkgver=0.5.15
-pkgrel=2
+pkgrel=3
 pkgdesc="A lyric show compatible with various media players"
 arch=('x86_64')
 url="https://github.com/osdlyrics/osdlyrics"
 license=('GPL3')
 depends=('gtk2' 'dbus-glib' 'curl' 'libnotify' 'libmpd' 'xmms2'
          'desktop-file-utils' 'hicolor-icon-theme' 'sqlite' 'python'
-         'python-future' 'python-pycurl' 'python-dbus' 'python-chardet'
+         'python-pycurl' 'python-dbus' 'python-chardet'
          'python-gobject' 'libappindicator-gtk2')
 makedepends=('intltool')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")

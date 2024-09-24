@@ -1,7 +1,7 @@
 pkgbase = osdlyrics
 	pkgdesc = A lyric show compatible with various media players
 	pkgver = 0.5.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/osdlyrics/osdlyrics
 	arch = x86_64
 	license = GPL3
@@ -16,7 +16,6 @@ pkgbase = osdlyrics
 	depends = hicolor-icon-theme
 	depends = sqlite
 	depends = python
-	depends = python-future
 	depends = python-pycurl
 	depends = python-dbus
 	depends = python-chardet
