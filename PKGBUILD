@@ -3,8 +3,8 @@
 
 _name=EasyOCR
 pkgname=python-easyocr
-pkgver=1.7.1
-pkgrel=2
+pkgver=1.7.2
+pkgrel=1
 pkgdesc="End-to-End Multi-Lingual Optical Character Recognition (OCR) Solution"
 arch=("any")
 url="https://github.com/JaidedAI/EasyOCR"
@@ -16,7 +16,6 @@ depends=(
     'python-bidi'
     'python-numpy'
     'python-opencv'
-    'python-torchvision>=0.5'
     'python-pillow'
     'python-pyaml'
     'python-pyclipper'
@@ -24,27 +23,28 @@ depends=(
     'python-scikit-image'
     'python-scipy'
     'python-shapely'
+    'python-torchvision>=0.5'
 )
 makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(${depends[*]} 'python-pytorch-cuda')
+# checkdepends=(${depends[*]} python-pytorch-cuda) # disabled until CUDA is not needed anymore
 conflicts=("$pkgname-git")
 replaces=("$pkgname-git")
 source=("$url/archive/v$pkgver.tar.gz")
-b2sums=('8d56d59f020c501f1aeaa5876968747ca4b9e648f5510121aa180705b05b3efa369093237aa3bd3fec788cae462fa7d533393a55e6d1e5cfde02ef806c5a5e81')
+b2sums=('de18bf6fbf615e0d49d3d9458a92263bf59abd9aec9bb549c055a41fb3abb7134e765ab602fd82915c52acefac298bead2e499924f063d7ab9fa8735d435dcfb')
 
 build() {
     cd $_name-$pkgver
     python -m build --wheel --no-isolation
 }
 
-check() {
-    cd $_name-$pkgver
-    python unit_test/run_unit_test.py \
-        --easyocr ./easyocr \
-        --verbose 2 \
-        --test_data unit_test/data/EasyOcrUnitTestPackage.pickle \
-        --image_data_dir ./examples
-}
+# check() {
+#     cd $_name-$pkgver
+#     python unit_test/run_unit_test.py \
+#         --easyocr ./easyocr \
+#         --verbose 2 \
+#         --test_data unit_test/data/EasyOcrUnitTestPackage.pickle \
+#         --image_data_dir ./examples
+# }
 
 package() {
     cd $_name-$pkgver
