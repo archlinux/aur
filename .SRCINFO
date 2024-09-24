@@ -1,7 +1,7 @@
 pkgbase = reqable-bin
 	pkgdesc = A cross platform professional HTTP development and Debugger that supports HTTP1, HTTP2, and HTTP3 (QUIC) protocols
-	pkgver = 2.23.1
-	pkgrel = 2
+	pkgver = 2.24.0
+	pkgrel = 1
 	url = https://reqable.com
 	arch = x86_64
 	license = LicenseRef-custom
@@ -12,13 +12,13 @@ pkgbase = reqable-bin
 	depends = libdbusmenu-gtk3
 	depends = libayatana-appindicator
 	depends = libayatana-indicator
-	provides = reqable=2.23.1
+	provides = reqable=2.24.0
 	conflicts = reqable
 	options = !strip
-	source = reqable-2.23.1.deb::https://github.com/reqable/reqable-app/releases/download/2.23.1/reqable-app-linux-x86_64.deb
+	source = reqable-2.24.0.deb::https://github.com/reqable/reqable-app/releases/download/2.24.0/reqable-app-linux-x86_64.deb
 	source = LICENSE.html
 	source = reqable.sh
-	sha256sums = f88f98fad872f5871d0d38178bab637210fe019d8ad03eac812f42c612857114
+	sha256sums = 9c592cdaea37c56d4969862839d637c9fb2508f5edfbea5cb92949f86a34d4f6
 	sha256sums = 94e84a48f1df9905d0fb29ce53bfa665427130859db7c7c5c02cce8f5c066ddb
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
 

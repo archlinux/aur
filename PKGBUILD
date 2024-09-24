@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=reqable-bin
-pkgver=2.23.1
-pkgrel=2
+pkgver=2.24.0
+pkgrel=1
 pkgdesc="A cross platform professional HTTP development and Debugger that supports HTTP1, HTTP2, and HTTP3 (QUIC) protocols"
 arch=('x86_64')
 url="https://reqable.com"
@@ -26,16 +26,16 @@ source=(
     "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f88f98fad872f5871d0d38178bab637210fe019d8ad03eac812f42c612857114'
+sha256sums=('9c592cdaea37c56d4969862839d637c9fb2508f5edfbea5cb92949f86a34d4f6'
             '94e84a48f1df9905d0fb29ce53bfa665427130859db7c7c5c02cce8f5c066ddb'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 build() {
     sed -e "
-        s/@appname@/${pkgname%-bin}/
-        s/@runname@/${pkgname%-bin}/
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${pkgname%-bin}/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s/\/usr\/share\/${pkgname%-bin}\/${pkgname%-bin}/${pkgname%-bin}/" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/\/usr\/share\/${pkgname%-bin}\/${pkgname%-bin}/${pkgname%-bin}/" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
