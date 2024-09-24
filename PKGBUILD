@@ -1,25 +1,25 @@
 # Maintainer: bkacjios < blackops7799 at gmail dot com >
 
 pkgname=inav-configurator-bin
-pkgver=7.1.1
+pkgver=7.1.2
 pkgrel=1
 pkgdesc="Crossplatform configuration tool for the INAV flight control system"
 arch=('i686' 'x86_64')
 url="https://github.com/iNavFlight/inav-configurator"
 
-source_x86_64=(https://github.com/iNavFlight/inav-configurator/releases/download/7.1.1/INAV-Configurator_linux64_7.1.1.tar.gz
+source_x86_64=(https://github.com/iNavFlight/inav-configurator/releases/download/7.1.2/INAV-Configurator_linux64_7.1.2.tar.gz
         inav-configurator.desktop
         inav_icon_128.png)
 
-sha256sums_x86_64=('94a43faa478f2a5008aea43808dbd36f871c361dfaa77b59af5d7c5b6dee78ba'
+sha256sums_x86_64=('f9163c9c8cbb7331081613bdd08598d2a3ceb9ecb7e7de567a541626f5e4f9e6'
          'SKIP'
          'fc4325798b8d93ab37960e306305c65122dba698265eb749664517f67f2304c5')
 
-source_i686=(https://github.com/iNavFlight/inav-configurator/releases/download/7.1.1/INAV-Configurator_linux32_7.1.1.tar.gz
+source_i686=(https://github.com/iNavFlight/inav-configurator/releases/download/7.1.2/INAV-Configurator_linux32_7.1.2.tar.gz
         inav-configurator.desktop
         inav_icon_128.png)
 
-sha256sums_i686=('32d3af3ad8fb45d4128eeb2383a3e0301a010af9d9fe040873942c61856a5f8a'
+sha256sums_i686=('a44bb2243563648de1ca074b8f8f1f9ce3166808ea2012002d74476c50357235'
          'SKIP'
          'fc4325798b8d93ab37960e306305c65122dba698265eb749664517f67f2304c5')
 
