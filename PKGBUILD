@@ -29,7 +29,7 @@ prepare() {
     rm -rf "${srcdir}/squashfs-root"
     chmod +x "${srcdir}/${_fileName}"
     "${srcdir}/${_fileName}" --appimage-extract
-    desktop-file-edit --set-key="Exec" --set-value="/usr/bin/mcpelauncher-ui-qt %U" "${srcdir}/squashfs-root/${_desktopFile}"
+    desktop-file-edit --set-key="Exec" --set-value="/opt/mcpelauncher-appimage-cracked/usr/bin/mcpelauncher-ui-qt %U" "${srcdir}/squashfs-root/${_desktopFile}"
 }
 
 package() {
