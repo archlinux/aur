@@ -1,0 +1,9 @@
+pkgbase = libsecp256k1-zkp-git
+	pkgdesc = A fork of libsecp256k1 with support for advanced and experimental features such as Confidential Assets and MuSig2
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/BlockstreamResearch/secp256k1-zkp/
+	arch = any
+	license = MIT
+
+pkgname = libsecp256k1-zkp-git
