@@ -12,7 +12,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest vtk libpng fmt jsoncpp verdict freetype2 libxt
   glew ospray openxr openvr ffmpeg hdf5-openmpi postgresql-libs netcdf-openmpi
   pdal opencascade mariadb-libs liblas cgns adios2 libharu qt5-tools python-mpi4py)
-optdepends=('python-mpi4py: for ')
+optdepends=('python-mpi4py: for activate parallel capabilities')
 changelog=CHANGELOG.md
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('5a36e46065f66b51bee21f76eeed903ec5e07a04c7ffffc6ce65c5566bc5fef80cda2c6e6e73ef12c6b824b587264717049454343315a7f9f44ba560f720028b')
