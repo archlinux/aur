@@ -1,11 +1,13 @@
 # Maintainer: Phorcys <aur@phorcys.net>
 pkgname=coder-bin
 pkgver="2.15.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote development environments on your infrastructure provisioned with Terraform"
 arch=("x86_64" "aarch64" "armv7h")
 url="https://coder.com"
-license=("AGPL3")
+license=("Proprietary")
+provides=('coder' 'coder-client')
+conflicts=('coder' 'coder-client' 'coder-oss' 'coder-oss-client')
 
 source_x86_64=("https://github.com/coder/coder/releases/download/v${pkgver}/coder_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/coder/coder/releases/download/v${pkgver}/coder_${pkgver}_linux_arm64.tar.gz")
