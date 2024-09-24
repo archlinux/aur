@@ -2,7 +2,7 @@
 pkgname=xunscore-bin
 _pkgname=Xunscore
 pkgver=1.3.13.03
-pkgrel=1
+pkgrel=2
 pkgdesc='A music notation software, let you easily create and share sheet music. The editor is called "xūn", is hoping it will be a better balance between the Chinese national music'
 arch=('x86_64')
 url="https://www.xunscore.cn"
@@ -30,6 +30,9 @@ depends=(
 makedepends=(
     'gendesk'
 )
+options=(
+    '!emptydirs'
+)
 noextract=("${pkgname%-bin}-${pkgver}.zip")
 source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/${pkgname%-bin}-ubt-${pkgver}.zip"
@@ -37,12 +40,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('54adaace209ec36dcdf739a6e5710c002df47c3bab180aa2025721c72d2c1803'
-            '0ad40f17100d4b295b26f82a558eec8cb1e8b7ff64cb55806fd671d8ef190ec1'
-            '956aa0a14e61e4903d7a2c4f71c9b9cb6ed4e45d6527671fb4e6e4409c95fc60')
+            '9acb68a74b868579d97d42dd5caee216e5e44ab8f35a8de24a9c5bdb6df1ec9b'
+            '7859b2e1fdb116b0b7f00b0542b22da744895d5ecb060240d053649170a54b21')
 build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${pkgname%-bin}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${pkgname%-bin}/g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
     install -Dm755 -d "${srcdir}/usr/lib"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/usr/lib"
