@@ -1,7 +1,7 @@
 pkgbase = libqpsd-qt6
 	pkgdesc = PSD & PSB Plugin for Qt/C++ (Qt6)
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/roniemartinez/libqpsd
 	arch = x86_64
 	license = LGPL-2.1-only
