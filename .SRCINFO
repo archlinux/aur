@@ -1,6 +1,6 @@
 pkgbase = wallhaven-cli
 	pkgdesc = Search and download wallpapers from wallhaven.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/r3tr0ananas/wallhaven-cli
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = wallhaven-cli
 	makedepends = go
 	makedepends = kitty
 	makedepends = fzf
-	source = wallhaven-cli-1.0.1.tar.gz::https://github.com/r3tr0ananas/wallhaven-cli/archive/refs/tags/v1.0.1.tar.gz
+	source = wallhaven-cli-1.0.2.tar.gz::https://github.com/r3tr0ananas/wallhaven-cli/archive/refs/tags/v1.0.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = wallhaven-cli
