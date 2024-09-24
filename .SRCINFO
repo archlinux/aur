@@ -13,7 +13,7 @@ pkgbase = linux-clear-cjktty-zfs
 	makedepends = xmlto
 	options = !debug
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.9.tar.xz
+	source = https://github.com/a15355447898a/linux-acer/releases/download/6.9/linux-6.9.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.9.tar.sign
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.9.8.xz
 	source = linux-clear-cjktty-zfs::git+https://github.com/clearlinux-pkgs/linux.git#tag=6.9.7-1445
@@ -24,7 +24,7 @@ pkgbase = linux-clear-cjktty-zfs
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 24fa01fb989c7a3e28453f117799168713766e119c5381dac30115f18f268149
+	sha256sums = b56144a81d671bee26533d353373ef895838c95870c413c799cf0d1609cf8ec7
 	sha256sums = SKIP
 	sha256sums = cf7dbb88fa35557195f8cde7fd05ec873db95af91cbcae7472a13d9bc9c5cbaa
 	sha256sums = SKIP
