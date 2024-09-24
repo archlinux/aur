@@ -1,0 +1,17 @@
+pkgbase = python-pyarrow-hotfix
+	pkgdesc = Hotfix for PyArrow security vulnerability CVE-2023-47248
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/pitrou/pyarrow-hotfix
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyarrow
+	source = https://files.pythonhosted.org/packages/source/p/pyarrow_hotfix/pyarrow_hotfix-0.6.tar.gz
+	sha256sums = 79d3e030f7ff890d408a100ac16d6f00b14d44a502d7897cd9fc3e3a534e9945
+
+pkgname = python-pyarrow-hotfix
