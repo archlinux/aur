@@ -1,5 +1,5 @@
-# Maintainer: tippfehlr
 # Maintainer: Chewing_Bever
+# Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
 # Contributor: Heddxh <g311571057 at gmail dot com>
 pkgname=fish-lsp-git
 _pkgname=${pkgname%-git}
