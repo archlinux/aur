@@ -3,7 +3,7 @@
 pkgname=babeltrace2
 _pkgname="${pkgname%2}"
 pkgver=2.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line trace converter (V2)"
 arch=('x86_64')
 url="https://diamon.org/babeltrace"
