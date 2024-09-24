@@ -18,7 +18,7 @@ optdepends=('hyphen: Hyphenation'
 provides=("thunderbird=$pkgver")
 conflicts=('thunderbird-beta')
 install=$pkgname.install
-source=("https://archive.mozilla.org/pub/thunderbird/candidates/131.0b6-candidates/build1/linux-x86_64/en-US/thunderbird-131.0b6.tar.bz2"
+source=("https://archive.mozilla.org/pub/thunderbird/releases/131.0b6/linux-x86_64/en-US/thunderbird-131.0b6.tar.bz2"
         'org.mozilla.thunderbird-beta-bin.desktop'
         'vendor.js')
 sha512sums=('9902297da5fc6d44522ecb70161ef7a7a2d80a7ecb08e39e989b8a64e171cd70f84d5bd4d6bf64b5d8941e682ccb1dff9d5baccfbbf9d88e1898fbf410576a48'
