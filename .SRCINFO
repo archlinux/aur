@@ -1,6 +1,6 @@
 pkgbase = aeolus-next
-	pkgver = 0.2.0
-	pkgrel = 5
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/Archie3d/aeolus_plugin
 	arch = x86_64
 	license = GPL
@@ -16,17 +16,32 @@ pkgbase = aeolus-next
 	depends = pcre2
 	provides = aeolus-vst3
 	options = !strip
-	source = https://github.com/Archie3d/aeolus_plugin/releases/download/v0.2.0/Aeolus-standalone-vst3-linux-0.2.0.zip
+	source = https://github.com/Archie3d/aeolus_plugin/releases/download/v0.2.1/Aeolus-clap-linux-0.2.1.zip
+	source = https://github.com/Archie3d/aeolus_plugin/releases/download/v0.2.1/Aeolus-lv2-linux-0.2.1.zip
+	source = https://github.com/Archie3d/aeolus_plugin/releases/download/v0.2.1/Aeolus-standalone-linux-0.2.1.zip
+	source = https://github.com/Archie3d/aeolus_plugin/releases/download/v0.2.1/Aeolus-vst3-linux-0.2.1.zip
 	source = aeolus-next.png
 	source = Aeolus Next.desktop
-	sha256sums = fd0f8c0a7a6112ac68412301979ad934cd97afa03adbaee29a39875097a3ad06
+	sha256sums = b3e98c3a1a4e874ab984b74827921a6d4dd3612db30e4bd636640afd01d43552
+	sha256sums = 16e2caffb439b82fd9fc6e1e0ed4defd1f165eec657ad853708e800c1bf5d595
+	sha256sums = c64104d9eb7ed3d5697ffb2ec7ac6612e7da219484e46143ce724e700cc09770
+	sha256sums = 35a37b9f9bd539b6854fe16eb0d77d76ef6fad6a7dfbc885c5b13d468eed48eb
 	sha256sums = 4d2df74407d2f2fd7489bc8cd22d3fb644cdc16f4ac6a52eae1ec26ac0666417
 	sha256sums = 84457ab146c11fa03f53a6924495c15d2df276d4a60d7fa0320596b3611c16d3
+
+pkgname = aeolus-next-clap-bin
+	pkgdesc = Aeolus Organ Synth NEXT (CLAP)
+	groups = pro-audio
+	groups = clap-plugins
+
+pkgname = aeolus-next-lv2-bin
+	pkgdesc = Aeolus Organ Synth NEXT (LV2)
+	groups = pro-audio
+	groups = lv2-plugins
 
 pkgname = aeolus-next-standalone-bin
 	pkgdesc = Aeolus Organ Synth NEXT (Standalone)
 	groups = pro-audio
-	groups = vst-plugins
 
 pkgname = aeolus-next-vst3-bin
 	pkgdesc = Aeolus Organ Synth NEXT (VST3)
