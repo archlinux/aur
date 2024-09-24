@@ -50,7 +50,7 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.38.0_634_gd384a6b793
+pkgver=0.39.0_13_g2c5928e518
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
