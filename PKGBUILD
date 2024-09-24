@@ -18,7 +18,7 @@
 
 pkgname=mutter-x11-scaling
 pkgver=47.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -100,7 +100,7 @@ source=(
 b2sums=('0dc3e7541707fe7c9fd24397f08fd29272bd3f104a51503f7657b9b4589a22ee3a6ce407c440785e06bd19b3347fd555c3187aae4f5c87052ce94783d599426d'
         'f989bc2ceb52aad3c6a23c439df3bbc672bc11d561a247d19971d30cc85ed5d42295de40f8e55b13404ed32aa44f12307c9f5b470f2e288d1c9c8329255c43bf'
         'fafdc76076a6589e4cf188fe62a8e74c7df71cccff5cfb931d3afd7b1d147ac855a5f8351a4278ae24cd4e20b4e09147c822b64fedd779aa9b276c90645b13e2'
-        'bc9462d9cd0ac9dc1bf1485bb94bcef9eed102b765f4a9f9883c8f10c38f41eba4c52208b3d410f7acfa36ecb460ce7098dd21af7e1ad9b75a34a955774e87bc')
+        '1f67c8e1f3ba25885b75cc97b7d998ad0f56b57a1906dc88adac66dfc9559001ac379b2be25c2d4f6523e1900cd41d6105043ff60ddc4621b61f70544e1d1fcb')
 
 prepare() {
   cd mutter
