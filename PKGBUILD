@@ -1,14 +1,14 @@
 # Maintainer: bkacjios < blackops7799 at gmail dot com >
 
 pkgname=inav-configurator
-pkgver=7.1.1
+pkgver=7.1.2
 pkgrel=1
 pkgdesc="Crossplatform configuration tool for the INAV flight control system"
 arch=('i686' 'x86_64')
 url="https://github.com/iNavFlight/inav-configurator"
-source=(https://github.com/iNavFlight/inav-configurator/archive/7.1.1.zip
+source=(https://github.com/iNavFlight/inav-configurator/archive/7.1.2.zip
         inav-configurator.desktop)
-sha256sums=('2de5b34c99ab4eebfc03f628892141e20c162487dc36518cf198e1403a249ee7'
+sha256sums=('ea39343b52434ccc4a818959398d7b695f962060c0bfd91174f091cad35dcf31'
          'SKIP')
 provides=('inav-configurator')
 conflicts=('inav-configurator')
@@ -19,7 +19,7 @@ makedepends=('npm')
 
 build() {
 	cd $pkgname-$pkgver
-	npm install
+	npm clean-install
 	npm run gulp
 
 	if [[ "$CARCH" == "i686" ]]; then
