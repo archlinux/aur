@@ -7,8 +7,9 @@ pkgrel=1
 arch=(any)
 url="https://github.com/nat-n/${_base}"
 license=(MIT)
-depends=(python-pastel python-tomli python-poetry)
+depends=(python-pastel python-tomli)
 makedepends=(python-build python-installer python-setuptools python-wheel)
+optdepends=('python-poetry')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('c18526441b82de33d84cc1db51cd8ca06515612d115e7ebecdee3c85758f89eadd82adce3759b0bc01f948baf1419e536d268f3d473a419518291d2e72249820')
 

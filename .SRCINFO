@@ -11,7 +11,7 @@ pkgbase = python-poethepoet
 	makedepends = python-wheel
 	depends = python-pastel
 	depends = python-tomli
-	depends = python-poetry
+	optdepends = python-poetry
 	source = poethepoet-0.29.0.tar.gz::https://github.com/nat-n/poethepoet/archive/v0.29.0.tar.gz
 	sha512sums = c18526441b82de33d84cc1db51cd8ca06515612d115e7ebecdee3c85758f89eadd82adce3759b0bc01f948baf1419e536d268f3d473a419518291d2e72249820
 
