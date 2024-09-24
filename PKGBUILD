@@ -2,18 +2,18 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-net-z3950-zoom'
-pkgver='1.30'
-pkgrel='3'
+pkgver='1.32'
+pkgrel='1'
 pkgdesc="Perl/CPAN Module Net::Z3950::ZOOM: Perl extension for invoking the ZOOM-C API."
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('glibc>=2.25' 'libgcrypt>=1.7.6' 'libgpg-error>=1.27' 'libxml2>=2.9.4+16+g07418011' 'libxslt>=1.1.29+42+gac341cbd' 'perl-marc-record>=1.38' 'xz>=5.2.3' 'yaz>=5.21.1' 'zlib>=1:1.2.11')
+depends=('libxml2>=2.13.4' 'libxslt>=1.1.42' 'perl-marc-record>=1.38' 'yaz>=5.34.0')
 makedepends=()
 url='https://metacpan.org/release/Net-Z3950-ZOOM'
 source=("http://search.cpan.org/CPAN/authors/id/M/MI/MIRK/Net-Z3950-ZOOM-${pkgver}.tar.gz")
-md5sums=('eb1e6a880b9cb09ac44df97a914dba59')
-sha512sums=('6511786d9d25070eb370313428b25e32120b4d591e1dbe585933b57e210423ea5b599bfdd995e65682a0963854b0ad7143c80d90b81f1e511c3ed23e44b6a7cc')
+md5sums=('84fd793f6b5b3080e87bf37d44065d05')
+sha512sums=('80a635ed4c1dbf35b387c76890eaa9d5312d210d991666f3dfd5522321327d20efe36806234316ebf4ce4911b5f65a3daaab00d39b5c836905903b75c57c6c46')
 _distdir="Net-Z3950-ZOOM-${pkgver}"
 
 build() {
@@ -31,9 +31,8 @@ build() {
 
 check() {
   cd "$srcdir/$_distdir"
-  echo "Only run the tests that don't rely on host z3950.indexdata.com/gils, which is down."
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test TEST_FILES='t/*-options.t t/*-option-callback.t t/*-logging.t'
+    make test
   )
 }
 
