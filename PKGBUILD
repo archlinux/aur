@@ -1,6 +1,6 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 pkgname=intel-lpmd
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="Intel Low Power Mode Daemon"
 arch=('x86_64')
