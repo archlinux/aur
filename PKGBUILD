@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=notepad--
 _pkgname=NotePad--
-pkgver=2.18
+pkgver=2.19
 pkgrel=1
-pkgdesc="一个国产跨平台、轻量级的文本编辑器，是替换notepad++的一种选择。其内置强大的代码对比功能，让你丢掉付费的beyond compare。"
+pkgdesc="A text editor written in C++,to eventually surpass Notepad++.一个国产跨平台,轻量级的文本编辑,是替换notepad++的一种选择.其内置强大的代码对比功,让你丢掉付费的beyond compare."
 arch=('x86_64')
 url="https://gitee.com/cxasm/notepad--"
 _ghurl="https://github.com/cxasm/notepad--"
@@ -29,19 +29,20 @@ source=(
 sha256sums=('0b5924b5ed8706cb9523e2d84ece0989427c0177d309c17b9db6dda1b58d0881')
 build() {
     cd "${srcdir}/${pkgname}.git"
-    sed "s|intptr_t|__intptr_t|g" -i src/qscint/src/xmlMatchedTagsHighlighter.cpp
-    sed "s|intptr_t|__intptr_t|g" -i src/qscint/src/xmlMatchedTagsHighlighter.h
+    sed -i "s/intptr_t/__intptr_t/g" src/qscint/src/xmlMatchedTagsHighlighter.cpp
+    sed -i "s/intptr_t/__intptr_t/g" src/qscint/src/xmlMatchedTagsHighlighter.h
     cmake -S . -Bbuild -GNinja -DCMAKE_BUILD_TYPE=None -W no-dev
     ninja -C build
-    sed "s|${_pkgname} %F|${pkgname} %F|g;s|/usr/share/icons/hicolor/128x128/apps/${pkgname}.png|${pkgname}|g" \
-        -i src/linux/usr/share/applications/"${_pkgname}".desktop
-    sed "s|io.gitee.cxasm.${pkgname}|${pkgname}|g" -i src/linux/usr/share/metainfo/io.gitee.cxasm."${pkgname}".metainfo.xml
+    sed -i "s/${_pkgname} %F/${pkgname} %F/g;s/\/usr\/share\/icons\/hicolor\/128x128\/apps\/${pkgname}.png/${pkgname}/g" \
+        src/linux/usr/share/applications/"${_pkgname}".desktop
+    sed -i "s/io.gitee.cxasm.${pkgname}/${pkgname}/g" src/linux/usr/share/metainfo/io.gitee.cxasm."${pkgname}".metainfo.xml
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.git/build/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.git/src/linux/usr/share/applications/${_pkgname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    for _icons in 32x32 64x64 128x128;do
+    _icon_sizes=(32x32 64x64 128x128)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname}.git/src/linux/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done

@@ -1,6 +1,6 @@
 pkgbase = notepad--
-	pkgdesc = 一个国产跨平台、轻量级的文本编辑器，是替换notepad++的一种选择。其内置强大的代码对比功能，让你丢掉付费的beyond compare。
-	pkgver = 2.18
+	pkgdesc = A text editor written in C++,to eventually surpass Notepad++.一个国产跨平台,轻量级的文本编辑,是替换notepad++的一种选择.其内置强大的代码对比功,让你丢掉付费的beyond compare.
+	pkgver = 2.19
 	pkgrel = 1
 	url = https://gitee.com/cxasm/notepad--
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = notepad--
 	depends = gcc-libs
 	depends = qt5-base
 	provides = notepad--
-	source = notepad--.git::git+https://github.com/cxasm/notepad--.git#tag=notepad-v2.18
+	source = notepad--.git::git+https://github.com/cxasm/notepad--.git#tag=notepad-v2.19
 	sha256sums = 0b5924b5ed8706cb9523e2d84ece0989427c0177d309c17b9db6dda1b58d0881
 
 pkgname = notepad--
