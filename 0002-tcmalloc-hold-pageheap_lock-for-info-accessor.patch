@@ -46,7 +46,7 @@ diff --git a/bazel/repositories.bzl b/bazel/repositories.bzl
 index 02f7abd725..76f65083f6 100644
 --- a/bazel/repositories.bzl
 +++ b/bazel/repositories.bzl
-@@ -1313,6 +1313,8 @@ def _com_github_luajit_luajit():
+@@ -1318,6 +1318,8 @@
  def _com_github_google_tcmalloc():
      external_http_archive(
          name = "com_github_google_tcmalloc",
