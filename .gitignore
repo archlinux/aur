@@ -3,3 +3,6 @@ src
 pkg
 *.pkg.tar.*
 
+OneDriveGUI/
+onedrivegui-*.log
+PKGBUILD-namcap.log
