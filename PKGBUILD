@@ -1,6 +1,6 @@
 # Maintainer: erdii <me at erdii dot engineering>
 pkgname=osdctl
-pkgver=0.35.0
+pkgver=0.37.0
 pkgrel=1
 pkgdesc="CLI for the OSD utilities"
 arch=("any")
@@ -10,7 +10,7 @@ license=("Apache")
 depends=()
 makedepends=("go" "goreleaser")
 source=("osdctl-${pkgver}::git+https://github.com/openshift/osdctl#tag=v${pkgver}")
-sha256sums=('ace34378b67adfd4158808389871d396e3e7e7460a7a4b294afb87cf8dbb52a2')
+sha256sums=('0244b5f8af1dba42247aecf6717328c9997be623946e85a3a768e2261b2f9dcc')
 
 build() {
   cd "${srcdir}/osdctl-${pkgver}"
