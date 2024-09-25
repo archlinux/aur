@@ -1,35 +1,30 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=ncmdump 
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Convert Netease Cloud Music ncm files to mp3/flac files."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
-url="https://github.com/taurusxin/${pkgname}"
-license=("MIT")
-depends=("taglib")
-makedepends=("cmake" "taglib")
-provides=("${pkgname}"{,-latest-bin} )
+url="https://git.taurusxin.com/taurusxin/ncmdump-go"
+license=("Unknown")
+makedepends=("go")
+provides=("${pkgname}"{,-latest-bin})
 conflicts=("${pkgname}"{,-latest-bin})
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-        "use-local-taglib.patch")
-sha256sums=('e3c737d9a526fe7adfd22103ff0f06fb1d7ee923d3fbd3de4ab4e861f7bddcef'
-            '0070228c1e04d829d8e01e3f997dd4d9acee53fccd6ed6e1e1440b0d8aa66b74')
-
-prepare() {
-    cd "${pkgname}-${pkgver}"
-    patch -Np1 -i ../use-local-taglib.patch
-}
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('efa0b7db9cf8e357cbd03f2594f7f95c7b31dfc2417b5866c6cae45843dbbf7e')
 
 build() {
-    cd "${pkgname}-${pkgver}"
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" -B build
-    cmake --build build
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+    cd "ncmdump-go"
+    go build -o "${pkgname}"
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
-    DESTDIR="${pkgdir}" cmake --install build
-    install -Dm644 LICENSE*  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    cd "ncmdump-go"
+    install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "README.md"  "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
