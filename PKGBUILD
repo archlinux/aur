@@ -6,12 +6,12 @@ _Pkgname=Paperlib
 
 pkgname="${_pkgname}"-appimage
 pkgver=3.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source and simple academic paper management tool."
 arch=('x86_64')
 url="https://github.com/Future-Scholars/paperlib"
 license=('GPL-3.0-or-later')
-depends=('libsecret')
+depends=('libsecret' 'fuse2')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::${url}/releases/download/release-electron-${pkgver}/${_Pkgname}_${pkgver}.AppImage")
