@@ -1,0 +1,25 @@
+pkgbase = pip-player-git
+	pkgdesc = A simple application to play PiP(Picture-in-Picture) with any links that you like.
+	pkgver = 1.0.0.r3.g7864b36
+	pkgrel = 1
+	url = https://github.com/WickyPlays/pip-player
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = yarn
+	makedepends = node-gyp
+	makedepends = gcc
+	makedepends = cmake
+	depends = electron31
+	provides = pip-player=1.0.0
+	conflicts = pip-player
+	source = pip-player.git::git+https://github.com/WickyPlays/pip-player
+	source = pip-player.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = pip-player-git
