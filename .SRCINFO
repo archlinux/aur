@@ -1,6 +1,6 @@
 pkgbase = c-client
 	pkgver = 2007f
-	pkgrel = 20
+	pkgrel = 21
 	url = https://github.com/uw-imap/imap
 	arch = x86_64
 	license = APACHE
