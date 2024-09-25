@@ -1,0 +1,10 @@
+[Unit]
+Description=FusionInventory Rust agent
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/fusioninventory/
+ExecStart=/opt/fusioninventory/fusioninventory-agent -d
+
+[Install]
+WantedBy=multi-user.target

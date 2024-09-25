@@ -1,0 +1,18 @@
+pkgbase = fusioninventory-agent-rust-git
+	pkgdesc = An application for keeping track of the hardware and software
+	pkgver = 3.0.0.dev
+	pkgrel = 1
+	url = http://fusioninventory.org
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	depends = lshw
+	depends = dmidecode
+	provides = fusioninventory-agent
+	conflicts = fusioninventory-agent
+	options = !debug
+	options = !lto
+	source = git+https://github.com/fusioninventory/fusioninventory-agent-rust
+	sha256sums = SKIP
+
+pkgname = fusioninventory-agent-rust-git
