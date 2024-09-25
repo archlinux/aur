@@ -1,21 +1,21 @@
 pkgbase = diamond-editor
 	pkgdesc = Compact text editor designed for programmers
-	pkgver = 1.4.1
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://www.copperspice.com/
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = cmake
 	depends = sh
 	depends = copperspice
 	depends = hunspell
-	source = https://github.com/copperspice/diamond/archive/diamond-1.4.1/diamond-editor-1.4.1.tar.gz
+	source = https://github.com/copperspice/diamond/archive/diamond-1.5.1/diamond-editor-1.5.1.tar.gz
 	source = 010-diamond-editor-do-not-copy-cs-libs.patch
 	source = diamond-editor.desktop
 	source = diamond-editor.sh
-	sha256sums = 1dcbe0a55593bdcaa619bb45c509300491970d8e6c9ce3b0cb801577ce54d8ce
-	sha256sums = e1fad1a3ea74dd9e780e5586964d9e69b4f4be2d2380dc771f52eac44f9e76ba
-	sha256sums = e114cad024aa5d6768bd50fabe51c311e37a4a7969382ace8c16878a06b824e4
+	sha256sums = 3502ee9b82793e411fc17c178da212843be0db0e5a3335f1b0c710f019c81529
+	sha256sums = a5c13e576e84922dd7508bb65721839be79f0e82c16729f82cb43a915cec0640
+	sha256sums = 1978034fc2878be60254b8b0dca5ed9c7661a60f825375014843b91ec40fc48d
 	sha256sums = 16f8c39d44c7dfcf9784a6b0414af4aa266a67de10e17bffb6fd5ea43a95e48a
 
 pkgname = diamond-editor
