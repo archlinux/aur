@@ -1,6 +1,6 @@
 pkgbase = power-options-gtk-git
 	pkgdesc = A gtk frontend for Power Options, a blazingly fast power management solution.
-	pkgver = 1.1.0r46.c4d219
+	pkgver = 1.1.0r47.dde648
 	pkgrel = 1
 	url = https://github.com/thealexdev23/power-options
 	arch = x86_64
