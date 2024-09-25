@@ -3,7 +3,7 @@
 pkgname=stellarium-bin
 _pkgname=stellarium
 _pkgname2=Stellarium
-pkgver=24.2
+pkgver=24.3
 _pkgtag=v$pkgver
 pkgrel=1
 pkgdesc="Software which renders realistic skies in real time with OpenGL"
@@ -16,7 +16,7 @@ provides=($_pkgname)
 validpgpkeys=('79151C2E6351E7278DA1A730BF38D4D02A328DFF') # Alexander Wolf <alex.v.wolf@gmail.com>
 
 _qtver=6
-_target="$_pkgname2-$pkgver-qt$_qtver-x86_64.AppImage"
+_target="$_pkgname2-$pkgver-qt$_qtver-${CARCH}.AppImage"
 _verifyfile="${_target}.asc"
 _download_url="https://github.com/Stellarium/$_pkgname/releases/download/$_pkgtag"
 
@@ -26,8 +26,8 @@ source=(
 	"$_pkgname.bash"
 )
 sha256sums=(
-	'b463602f09d48f02f9e2813d5e74faea690d83db63dae63db84e55755c3d26d3'
-	'fb94388057cc3e509793972fd1a4bc5a3933de715789a40a5636cfbe65c853a4'
+	'304764814caa5a23c0b848abc7e429e0ec1ef9e1f90ae999d9ef197c422562b3'
+	'3b293d7829605bb66fb8a154d38fe7f9812d1ec4a9209f0a4348210db1bdbe64'
 	'cc8903384ef8b8349dda202be45c3f68542dc74d40c4a1c266a5e057e96323ff'
 )
 
