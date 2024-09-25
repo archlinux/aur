@@ -4,7 +4,7 @@ _pname=${pkgbase#python-}
 _pyname=MyST-NB
 #_pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Parse and execute ipynb files in Sphinx"
 arch=('any')
@@ -39,9 +39,9 @@ checkdepends=('python-pytest-param-files'
 # nbformat importlib-metadata <- jupyter-cache
 #checkdepends=('python-jupyter-sphinx' 'python-jupyter-cache' 'jupyter-nbconvert' 'python-yaml' 'python-sphinx-togglebutton')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-source=("https://github.com/executablebooks/MyST-NB/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/executablebooks/MyST-NB/archive/refs/tags/v${pkgver}.tar.gz")
 #       'Makefile')
-md5sums=('061b5ad5a41c9b142522f1bf6e677b68')
+md5sums=('ebca42bf36b65e6fefbb40fdab2a67a7')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
