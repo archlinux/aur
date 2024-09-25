@@ -1,3 +1,46 @@
+Version 5.2.0.0
+
+Fixes:
+
+    Fixed an issue with the save command . The command was not working with the --multisave parameter.
+    Fixed an issue with the set command . --logout was not logging the session out.
+    Fixed an issue with the set command . Modification to the IP network configuration was not working as expected.
+    Fixed issues with rawpost command , rawpatch command . These commands were returning an exception error when a .txt file was supplied as input.
+
+Enhancements:
+
+    Support for third party firmware images .pup, .fpb, .hpb enabled in both inband as well as out of band communication for flashfwpkg command
+
+Version 5.1.0.0
+
+Fixes:
+
+    Fixed an issue with the installset command . The output of this command was returning unwanted response in it prior to the fix.
+    Fixed multiple issues with the Get command . EthernetNetworkInterface and Power types were wrongly displayed before the fix.
+
+Enhancements:
+
+    Support of 8 parallel inband operations or command executions.
+    SLES 15 Sp6 support has been enabled.
+
+Version 5.0.0.0
+
+Fixes:
+
+    Fixed an issue with the get command . A get licensekey in the HpeiLOLicense schema was not displaying the license key appropriately.
+    Fixed an issue with the get command . A get Oem/Hpe/thermalconfiguration in the Thermal schema was not displaying the thermal configuration information.
+    Fixed an issue with the directory command . The kerberos sub-command output was empty even when configured.
+    Fixed an issue with the flashfwpkg command and its forceupload option.
+    Fixed an issue with the virtualmedia command . The output had misplaced data for CD and Floppy media types.
+    Fixed an issue with the Backuprestore command in in-band/local mode. The output was different, depending on the iLO security state .
+    Fixed an issue with the storagecontroller command where the output was empty for invalid controller and volume IDs.
+    Fixed an issue with the serverlogs command where AHS download in Intelligent Provisioning environment was failing.
+
+Enhancements:
+
+    Enhanced the serverclone command to check the server power state before issuing a reboot.
+    Availability of an iLOrest PyPI package . fully equivalent to other iLOrest packages .
+
 Version 4.5.0.0
 Fixes:
 
