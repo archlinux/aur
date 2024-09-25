@@ -4,7 +4,7 @@
 
 pkgname=gsad
 pkgver=22.12.0
-pkgrel=3
+pkgrel=4
 pkgdesc='server talking to the Greenbone Vulnerability Management daemon (gvmd)'
 arch=('x86_64')
 url="https://github.com/greenbone/gsad"
@@ -21,6 +21,7 @@ depends=(
     'zlib'
 )
 makedepends=('cmake' 'xmltoman')
+optdepends=('logrotate: for rotating logs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc"
         0001-libgcrypt-config.patch
