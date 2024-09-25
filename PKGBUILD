@@ -7,13 +7,14 @@ pkgrel=1
 pkgdesc="Linux driver for Realtek RTL8188GU"
 url="https://github.com/lwfinger/rtl8188gu"
 license=('unknown')
-arch=('x86_64' 'i686' 'aarch64')
+arch=('x86_64')
 depends=('dkms' 'bc' 'linux-headers')
 makedepends=('git')
 conflicts=("${_pkgbase}-dkms")
-source=("git+https://github.com/lwfinger/rtl8188gu.git" "dkms.conf")
+source=("git+https://github.com/lwfinger/rtl8188gu.git" "dkms.conf" "patch.diff")
 sha256sums=('SKIP'
-            '214b8d7ee2968e49be23567d5fa8073cf3da593e71574154e0d41d11b1abd30e')
+            '214b8d7ee2968e49be23567d5fa8073cf3da593e71574154e0d41d11b1abd30e'
+            '0db704b739c19b7acf85085fc8ea1a262dd7c80e8c3cc7100d85c9438c331573')
 
 pkgver() {
 	cd ${srcdir}/${_pkgbase}
@@ -25,8 +26,9 @@ package() {
     mkdir -p ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
     cp -pr * ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
     cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
+    patch -p1 ${pkgdir}/usr/src/${_pkgbase}-${pkgver}/os_dep/linux/ioctl_cfg80211.c < ${srcdir}/patch.diff
     
     sed -e "s/@_PKGBASE@/${_pkgbase}-dkms/" \
         -e "s/@PKGVER@/${pkgver}/" \
-        -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
+        -i ${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 }
