@@ -1,6 +1,6 @@
 pkgbase = carla-bridges-linux32
 	pkgdesc = Carla Linux VST 32-Bit Bridge
-	pkgver = 6965.74262a5da
+	pkgver = 6974.2f7c93941
 	pkgrel = 1
 	url = https://kxstudio.linuxaudio.org/Applications:Carla
 	arch = x86_64
