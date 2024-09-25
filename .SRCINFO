@@ -1,11 +1,10 @@
 pkgbase = mkdocs-print-site-plugin
 	pkgdesc = MkDocs Plugin that adds an additional page that combines all pages, allowing easy exports to PDF and standalone HTML.
 	pkgver = 2.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/timvink/mkdocs-print-site-plugin
 	arch = any
-	groups = mkdocs
-	groups = plugins
+	groups = mkdocs plugins
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
