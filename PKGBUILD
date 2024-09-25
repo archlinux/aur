@@ -1,4 +1,4 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
+# Maintainer: Mattias Andrée <`base64 -d`(bWF0dGlhcy5hbmRyZWU)@protonmail.com>
 pkgname=slack
 pkgver=3.0.2
 pkgrel=1
