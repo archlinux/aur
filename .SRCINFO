@@ -1,7 +1,7 @@
 pkgbase = yarr-bin
 	pkgdesc = yet another rss reader
-	pkgver = v2.4
-	pkgrel = 2
+	pkgver = 2.4
+	pkgrel = 1
 	url = https://github.com/nkanaev/yarr
 	arch = x86_64
 	license = MIT

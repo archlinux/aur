@@ -1,16 +1,17 @@
 # Maintainer: Pierre Chapuis <arch@catwell.info>
 
-pkgname=yarr-bin
-pkgver=v2.4
-pkgrel=2
+pkgname="yarr-bin"
+pkgver=2.4
+_pkgver=v$pkgver
+pkgrel=1
 pkgdesc="yet another rss reader"
 arch=(x86_64)
 url="https://github.com/nkanaev/yarr"
 license=(MIT)
 depends=(glibc)
 source=(
-    "$url/releases/download/$pkgver/yarr-$pkgver-linux64.zip"
-    "https://raw.githubusercontent.com/nkanaev/yarr/$pkgver/license"
+    "$url/releases/download/$_pkgver/yarr-$_pkgver-linux64.zip"
+    "https://raw.githubusercontent.com/nkanaev/yarr/$_pkgver/license"
     yarr.sysusers
     yarr.tmpfiles
     yarr.service
