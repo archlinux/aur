@@ -2,7 +2,7 @@
 _base=trame-components
 pkgname=python-${_base}
 pkgdesc="Core components for trame widgets"
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
@@ -11,7 +11,7 @@ depends=(python-trame-client)
 makedepends=(python-build python-installer python-setuptools python-wheel nodejs npm)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('9568b2171299f3d5606a1472696bc0f29711ebdf9b00f284a27a4b89b2090d23dda897e600ea351cb16e5fd2d7ecfdbcd61cad4581c9510903575200ee2a5796')
+sha512sums=('103dccc43c20300243bfd3d007d79ad9f72da916d8828f639dc8061e028d19ffba8d5702c90c1f460af27b753987727e6438af0fb770cf5ada85a8516a35a166')
 
 prepare() {
   sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
