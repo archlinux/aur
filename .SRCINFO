@@ -1,0 +1,14 @@
+pkgbase = typora-theme-lapis-git
+	pkgdesc = An app for managing hosts file,and switch hosts quickly!
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/YiNNx/typora-theme-lapis
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = typora-theme-lapis
+	conflicts = typora-theme-lapis
+	source = git+https://github.com/YiNNx/typora-theme-lapis.git
+	sha256sums = SKIP
+
+pkgname = typora-theme-lapis-git
