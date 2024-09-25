@@ -14,4 +14,3 @@ pkgbase = pytagomacs
 	sha256sums = e259f77bd3a34acfbe2d8327cf9655d31a511a2521caaf9c63f3f1e35bb981ac
 
 pkgname = pytagomacs
-
