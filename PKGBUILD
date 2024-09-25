@@ -1,43 +1,40 @@
 pkgname=i8kutils
-pkgver=1.43
-pkgrel=3
+pkgver=1.55
+pkgrel=1
 pkgdesc="Fan control for Dell laptops"
-arch=('i686' 'x86_64')
-url="https://launchpad.net/i8kutils"
-license=('GPL v2')
-depends=('bash')
-optdepends=('tcl: for i8kmon daemon' 'acpi: for i8kmon daemon')
-backup=('etc/i8kutils/i8kmon.conf')
-source=(https://launchpad.net/i8kutils/trunk/${pkgver}/+download/i8kutils_${pkgver}.tar.xz
-        i8kmon.service)
+arch=('any')
+url="https://github.com/Wer-Wolf"
+license=('GPL3')
+depends=('tcl' 'tcllib')
+makedepends=('meson')
+optdepends=('acpi: for i8kmon to read the battery status')
+backup=("etc/$pkgname/i8kmon.conf"
+        "etc/modprobe.d/dell-smm-hwmon.conf")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Wer-Wolf/i8kutils/archive/refs/tags/v$pkgver.tar.gz")
 
-sha1sums=('46204f9a567bbbc2267d67269c5bbbfad4187799'
-          '251660c03249b82de6e3212440524b57398c2657')
+sha256sums=('bc37b2f51a98fb6607a364390ced5688bb817b8d17d182428d44c5bf3ce3f8d9')
 
 prepare() {
-  cd $pkgname
-  # conform to Arch Linux guidelines
-  sed -i 's|/etc/i8kmon.conf|/etc/i8kutils/i8kmon.conf|g' i8kmon.1
-  sed -i 's|/etc/i8kmon.conf|/etc/i8kutils/i8kmon.conf|g' i8kmon.conf
-  sed -i 's|/etc/i8kmon.conf|/etc/i8kutils/i8kmon.conf|g' i8kmon
-  echo "dell-smm-hwmon" > modules-load.d-dell-smm-hwmon.conf
-  make clean
-}
+  cd $pkgname-$pkgver
 
-build() {
-  cd $pkgname
-  make
+  # conform to Arch Linux guidelines
+  sed -i 's|/etc/i8kmon.conf|/etc/i8kutils/i8kmon.conf|g' man/i8kmon.1 scripts/i8kmon
+  sed -i "s|install_data('i8kmon.conf', install_dir : '/etc'|install_data('i8kmon.conf', install_dir : '/etc/i8kutils'|g" \
+    etc/meson.build
+
+  echo "dell-smm-hwmon" > modules-load.d-dell-smm-hwmon.conf
+  echo "options dell-smm-hwmon ignore_dmi=1" > modprobe.d-dell-smm-hwmon.conf
+
+  meson setup build --prefix="/usr" -Dmoduledir='/usr/lib/tcl8/8.6'
 }
 
 package() {
-  cd $pkgname
-  install -d "$pkgdir"/usr/{bin,share/man/man1}
-  install -D -m644 i8kctl.1 i8kmon.1 "$pkgdir/usr/share/man/man1"
-  install -D -m755 i8kctl i8kfan i8kmon "$pkgdir/usr/bin"
+  cd $pkgname-$pkgver
 
-  install -D -m644 i8kmon.conf "$pkgdir/etc/i8kutils/i8kmon.conf"
-  install -D -m644 dell-smm-hwmon.conf "$pkgdir/etc/modprobe.d/dell-smm-hwmon.conf"
+  meson install -C build --destdir "$pkgdir"
+
+  rm -rf "$pkgdir"/etc/init.d
+
   install -D -m644 modules-load.d-dell-smm-hwmon.conf "$pkgdir/etc/modules-load.d/dell-smm-hwmon.conf"
-  install -D -m644 debian/i8kmon.service "$pkgdir/usr/lib/systemd/system/i8kmon.service"
-  # rmmod dell-smm-hwmon && modprobe dell-smm-hwmon
+  install -D -m644 modprobe.d-dell-smm-hwmon.conf "$pkgdir/etc/modprobe.d/dell-smm-hwmon.conf"
 }
