@@ -1,7 +1,7 @@
 pkgbase = ospd-openvas
 	pkgdesc = OSP Server for openvas
 	pkgver = 22.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/greenbone/ospd-openvas
 	arch = x86_64
 	groups = greenbone-vulnerability-manager
@@ -23,6 +23,8 @@ pkgbase = ospd-openvas
 	conflicts = python-ospd-openvas
 	backup = etc/gvm/ospd-openvas.conf
 	source = ospd-openvas-22.7.1.tar.gz::https://github.com/greenbone/ospd-openvas/archive/v22.7.1.tar.gz
+	source = ospd-openvas-22.7.1.tar.gz.asc::https://github.com/greenbone/ospd-openvas/releases/download/v22.7.1/ospd-openvas-v22.7.1.tar.gz.asc
+	validpgpkeys = 8AE4BE429B60A59B311C2E739823FAA60ED1E580
 	sha512sums = ae7fe56a2b825efc33d9e29f2a51ab1034155ee70a5790d98f3b811a29f4b35830afabc27abd14593d74e1bcc5dac0ea1cd33ed46cc3ca459256a4b452e10552
 
 pkgname = ospd-openvas
