@@ -1,24 +1,24 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=cs-paint
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Library for abstraction of the Vulkan API'
 arch=('x86_64')
 url='https://www.copperspice.com/'
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('gcc-libs' 'vulkan-icd-loader')
 makedepends=('cmake' 'glm' 'glslang' 'vulkan-headers')
 options=('!emptydirs')
 source=("https://github.com/copperspice/cs_paint/archive/paint-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('dd862c7141b4ba9b97430a65a35ef74de0ea8f824575f8ed40242982d2b3d8f9')
+sha256sums=('c09c562d3efe02ef2f9dfc22222107dd5f8fe3e142cea8dad6bd442f087a785e')
 
 build() {
     cmake -B build -S "cs_paint-paint-${pkgver}" \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 package() {
