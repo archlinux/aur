@@ -3,7 +3,7 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=('mod_tile-git' 'renderd-git')
-pkgver=0.8.0.beta.r7.g9742572
+pkgver=0.8.0.beta.r14.g5aadf31
 pkgrel=1
 pkgdesc='A daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
@@ -28,12 +28,8 @@ pkgver() {
 }
 
 prepare() {
-  cd mod_tile || exit
-  # Override VERSION with ${pkgver}
-  sed -i 's/@VERSION@/'${pkgver}'/g' includes/config.h.in
-
   export LDFLAGS
-  cmake -B ../build -S . \
+  cmake -B build -S mod_tile \
     -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
     -DCMAKE_CXX_STANDARD:STRING=17 \
     -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
@@ -48,6 +44,9 @@ prepare() {
 }
 
 build() {
+  # Override VERSION with ${pkgver}
+  sed -i 's/VERSION ".*"/VERSION "'${pkgver}'"/g' mod_tile/includes/config.h.in
+
   cmake --build build
 }
 
@@ -65,18 +64,18 @@ package_mod_tile-git() {
   pkgdesc='An Apache 2 module to deliver map tiles'
   provides=('mod_tile')
 
-  DESTDIR="$pkgdir" cmake --install build --strip
+  DESTDIR="${pkgdir}" cmake --install build --strip
 
   # License
-  install -Dm644 "$srcdir"/mod_tile/COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+  install -Dm644 "${srcdir}"/mod_tile/COPYING "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 
   # Example Map
-  install -Dm644 "$srcdir"/mod_tile/etc/apache2/renderd-example-map.conf "$pkgdir"/etc/httpd/conf/extra/httpd-tile-renderd-example-map.conf
-  install -dm755 "$pkgdir"/usr/share/renderd
-  cp -av "$srcdir"/mod_tile/utils/example-map "$pkgdir"/usr/share/renderd/example-map
+  install -Dm644 "${srcdir}"/mod_tile/etc/apache2/renderd-example-map.conf "${pkgdir}"/etc/httpd/conf/extra/httpd-tile-renderd-example-map.conf
+  install -dm755 "${pkgdir}"/usr/share/renderd
+  cp -av "${srcdir}"/mod_tile/utils/example-map "${pkgdir}"/usr/share/renderd/example-map
 
   # "/etc/renderd.conf", "/usr/bin", "/usr/share/man", "/var/cache/renderd/tiles" & "/run/renderd" are contained in "renderd" package
-  cd "$pkgdir" || return
+  pushd "${pkgdir}" || return
   rm -rf etc/renderd.conf run usr/bin usr/share/man var
 }
 
@@ -87,18 +86,18 @@ package_renderd-git() {
   pkgdesc='A daemon that renders map tiles using mapnik'
   provides=('renderd')
 
-  DESTDIR="$pkgdir" cmake --install build --strip
+  DESTDIR="${pkgdir}" cmake --install build --strip
 
   # Systemd service units, sysusers.d & tmpfiles.d configuration files
-  install -Dm644 -t "$pkgdir"/usr/lib/systemd/system/ "$srcdir"/renderd-postgresql.service "$srcdir"/renderd.service
-  install -Dm644 "$srcdir"/renderd.sysusers "$pkgdir"/usr/lib/sysusers.d/renderd.conf
-  install -Dm644 "$srcdir"/renderd.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/renderd.conf
+  install -Dm644 -t "${pkgdir}"/usr/lib/systemd/system/ "${srcdir}"/renderd-postgresql.service "${srcdir}"/renderd.service
+  install -Dm644 "${srcdir}"/renderd.sysusers "${pkgdir}"/usr/lib/sysusers.d/renderd.conf
+  install -Dm644 "${srcdir}"/renderd.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/renderd.conf
 
   # License
-  install -Dm644 "$srcdir"/mod_tile/COPYING "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+  install -Dm644 "${srcdir}"/mod_tile/COPYING "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 
   # "/var/cache/renderd/tiles" & "/run/renderd" will be handled by "renderd.tmpfiles"
   # "/etc/httpd" & "/usr/lib/httpd" are contained in "mod_tile" package
-  cd "$pkgdir" || return
+  pushd "${pkgdir}" || return
   rm -rf etc/httpd run usr/lib/httpd var
 }
