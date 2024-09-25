@@ -1,28 +1,33 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-autograd'
 _pkgname='autograd'
-pkgver='1.6.2'
+pkgver='1.7.0'
 pkgrel=1
 pkgdesc="Efficiently computes derivatives of numpy code"
 url="https://github.com/HIPS/autograd"
 depends=('python'
-    'python-future'
     'python-numpy'
     'python-scipy')
-checkdepends=()
-makedepends=('python-setuptools')
+checkdepends=(python-pytest)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 license=('MIT')
 arch=('any')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('8731e08a0c4e389d8695a40072ada4512641c113b6cace8f4cfbe8eb7e9aedeb')
+sha256sums=('de743fd368d6df523cd37305dcd171861a9752a144493677d2c9f5a56983ff2f')
 
 build() {
     cd "${_pkgname}-${pkgver}"
-    python setup.py build
+    python -m build -wn
 }
 
 package() {
     cd "${_pkgname}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --skip-build --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -D -m644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
+}
+
+check() {
+    cd "${_pkgname}-${pkgver}"
+    PYTHONPATH=. pytest tests
 }
 
