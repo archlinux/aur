@@ -1,13 +1,12 @@
 pkgbase = cs-string-git
 	pkgdesc = Standalone library for unicode aware string support (git version)
-	pkgver = 1.4.0.r0.gfde6148
+	pkgver = 1.4.0.r5.g779436d
 	pkgrel = 1
 	url = https://www.copperspice.com/
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = git
 	makedepends = cmake
-	makedepends = catch2
 	provides = cs-string
 	conflicts = cs-string
 	source = git+https://github.com/copperspice/cs_string.git
