@@ -1,7 +1,7 @@
 pkgbase = nctl
 	pkgdesc = A CLI tool to interact with Nine API resources.
 	pkgver = 1.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ninech/nctl/
 	arch = x86_64
 	license = Apache

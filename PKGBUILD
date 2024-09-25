@@ -2,7 +2,7 @@
 
 pkgname=nctl
 pkgver=1.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI tool to interact with Nine API resources."
 arch=('x86_64')
 url="https://github.com/ninech/nctl/"
@@ -25,7 +25,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -ldflags "-s -w -X main.version=${pkgver}-arch" -o build
+  go build -buildvcs=false -ldflags "-s -w -X main.version=${pkgver}-arch" -o build
 }
 
 
