@@ -72,7 +72,7 @@ build() {
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         fi
     } >> .npmrc
-    cp .npmrc apps/desktop apps/web
+    echo apps/desktop apps/web | xargs -n 1 cp .npmrc
     sed -i "s/npm \${/NODE_ENV=development npm \${/g" scripts/bootstrap.mjs
     # Install packages
     NODE_ENV=development    npm install --ignore-scripts --prefer-offline --no-audit
