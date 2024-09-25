@@ -1,0 +1,15 @@
+--- a/qobuz_dl/qopy.py
++++ b/qobuz_dl/qopy.py
+@@ -122,12 +122,8 @@
+ 
+     def auth(self, email, pwd):
+         usr_info = self.api_call("user/login", email=email, pwd=pwd)
+-        if not usr_info["user"]["credential"]["parameters"]:
+-            raise IneligibleError("Free accounts are not eligible to download tracks.")
+         self.uat = usr_info["user_auth_token"]
+         self.session.headers.update({"X-User-Auth-Token": self.uat})
+-        self.label = usr_info["user"]["credential"]["parameters"]["short_label"]
+-        logger.info(f"{GREEN}Membership: {self.label}")
+ 
+     def multi_meta(self, epoint, key, id, type):
+         total = 1

@@ -1,0 +1,11 @@
+--- a/setup.py
++++ b/setup.py
+@@ -13,7 +13,7 @@
+     "requests",
+     "mutagen",
+     "tqdm",
+-    "pick==1.6.0",
++    "pick",
+     "beautifulsoup4",
+     "colorama",
+ ]
