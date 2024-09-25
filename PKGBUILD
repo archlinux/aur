@@ -8,7 +8,7 @@ pkgdesc="PC port of Super Mario 64."
 arch=('x86_64' 'i386' 'pentium4' 'arm7h' 'aarch64')
 url="https://github.com/sm64pc/sm64ex"
 license=('GPL')
-depends=('unzip')
+depends=('unzip' 'yad' 'zenity' 'gcc' 'make' 'python')
 makedepends=('unzip')
 sha256sums=('972d84f4f6535f6a0738b628da4187b57c3e5c54dae3872b42c1d7a451535588'
             '60cdb3676c6ef75b39e7d8766b18611bc72c857c97504450988cc71b18299d41')
