@@ -11,7 +11,7 @@ license=('GPL')
 depends=('unzip' 'yad' 'zenity' 'gcc' 'make' 'python')
 makedepends=('unzip')
 sha256sums=('SKIP'
-            '60cdb3676c6ef75b39e7d8766b18611bc72c857c97504450988cc71b18299d41')
+            '5fb557fa69070490b737efde294ecaa9a04bd9fca66290ee638c63f15a3a2ace')
 source=("git+https://github.com/sm64pc/sm64ex.git#commit=$pkgver" "https://gitlab.com/linuxbombay/supermario64/-/archive/$scriptver/supermario64-$scriptver.tar.bz2")
 
 build() {  

@@ -19,6 +19,6 @@ pkgbase = supermario64-sm64ex-git
 	source = git+https://github.com/sm64pc/sm64ex.git#commit=20bb444
 	source = https://gitlab.com/linuxbombay/supermario64/-/archive/1.0.2/supermario64-1.0.2.tar.bz2
 	sha256sums = SKIP
-	sha256sums = 60cdb3676c6ef75b39e7d8766b18611bc72c857c97504450988cc71b18299d41
+	sha256sums = 5fb557fa69070490b737efde294ecaa9a04bd9fca66290ee638c63f15a3a2ace
 
 pkgname = supermario64-sm64ex-git
