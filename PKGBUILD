@@ -1,16 +1,22 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=cs-signal
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Library for thread aware signal/slot delivery'
 arch=('x86_64')
 url='https://www.copperspice.com/'
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('gcc-libs')
 makedepends=('cmake' 'catch2' 'cs-libguarded')
-source=("https://github.com/copperspice/cs_signal/archive/signal-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('c64c6e087aafead506d94e9d730d6a3505f29ce0c23ef4787d5bd39b66313a11')
+source=("https://github.com/copperspice/cs_signal/archive/signal-${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        '010-cs-signal-catch2-v3-fix.patch')
+sha256sums=('24fc3adf06169eb2a195d62811eecda6268a78d489dab596c405e1a7d3cde9d8'
+            'e9b67a326ac0f8e37d08f83cbc8e7af107ce2bf40615692294b57eb26a3577ae')
+
+prepare() {
+    patch -d "cs_signal-signal-${pkgver}" -Np1 -i "${srcdir}/010-cs-signal-catch2-v3-fix.patch"
+}
 
 build() {
     cmake -B build -S "cs_signal-signal-${pkgver}" \

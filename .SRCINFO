@@ -1,15 +1,17 @@
 pkgbase = cs-signal
 	pkgdesc = Library for thread aware signal/slot delivery
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://www.copperspice.com/
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = cmake
 	makedepends = catch2
 	makedepends = cs-libguarded
 	depends = gcc-libs
-	source = https://github.com/copperspice/cs_signal/archive/signal-1.3.1/cs-signal-1.3.1.tar.gz
-	sha256sums = c64c6e087aafead506d94e9d730d6a3505f29ce0c23ef4787d5bd39b66313a11
+	source = https://github.com/copperspice/cs_signal/archive/signal-1.3.2/cs-signal-1.3.2.tar.gz
+	source = 010-cs-signal-catch2-v3-fix.patch
+	sha256sums = 24fc3adf06169eb2a195d62811eecda6268a78d489dab596c405e1a7d3cde9d8
+	sha256sums = e9b67a326ac0f8e37d08f83cbc8e7af107ce2bf40615692294b57eb26a3577ae
 
 pkgname = cs-signal
