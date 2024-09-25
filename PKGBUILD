@@ -1,8 +1,9 @@
-# Maintainer: Jesús Castro <x51v4n@gmail.com>
+# Maintainer: Nico <d3sox at protonmail dot com>
+# Contributor: Jesús Castro <x51v4n@gmail.com>
 
 pkgname=otf-san-francisco
 pkgver=2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="The system font for macOS, iOS, watchOS, and tvOS"
 arch=('any')
@@ -15,14 +16,16 @@ sha512sums=('7001638787c7580a7cd1c40d92af8c680187ebfad832fe0ec4e97ccc15d925a9928
 package() {
   cd "$srcdir/SFPro"
 
-  mkdir pkg
+  mkdir -p pkg
   bsdtar xvPf 'San Francisco Pro.pkg' || true
   bsdtar xvPf 'San Francisco Pro.pkg/Payload'
 
-  install -d "$pkgdir"/usr/share/fonts/OTF/
-  install -m644 Library/Fonts/*.otf "$pkgdir"/usr/share/fonts/OTF/
+  # install fonts
+  install -d "$pkgdir/usr/share/fonts/apple"
+  install -m644 Library/Fonts/*.otf "$pkgdir/usr/share/fonts/apple"
 
-  install -d "$pkgdir"/usr/share/licenses/"$pkgname"/
-  install -m644 'SF Pro Font License.rtf' "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.rtf
+  # install license
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  install -m644 'SF Pro Font License.rtf' "$pkgdir/usr/share/licenses/$pkgname/LICENSE.rtf"
 }
 
