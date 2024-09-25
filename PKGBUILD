@@ -6,7 +6,7 @@
 # Contributor: Ashley Whetter <(firstname) @ awhetter.co.uk>
 # Contributor: Eothred <yngve.levinsen@gmail.com>
 
-pkgname=spotify-wayland
+pkgname=spotify-wl
 pkgver='1.2.45.454'
 epoch=1
 _commit=gc16ec9f6
