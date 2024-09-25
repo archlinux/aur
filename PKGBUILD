@@ -12,7 +12,7 @@ optdepends=(
     'dracut: generate initramfs for kernels installed via frzr kernel command'
 )
 source=(
-    "$pkgname::git+https://github.com/chimeraos/frzr.git"
+    "$pkgname::git+https://github.com/chimeraos/frzr.git#branch=frzr-refactor"
     "99-frzr-kernel-install.hook"
 )
 md5sums=('SKIP'
