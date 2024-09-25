@@ -2,7 +2,7 @@
 _appname=typora
 pkgname="${_appname}-free-with-plugin"
 _pkgname=Typora
-pkgver=1.10.40
+pkgver=1.10.41
 _typoraver=0.11.18
 _electronversion=13
 pkgrel=1
@@ -35,7 +35,7 @@ source=(
 )
 source_aarch64=("${pkgname%-bin}-${_typoraver}-aarch64.deb::${_dlurl}/releases/download/v${_typoraver}/${_appname}_${_typoraver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${_typoraver}-x86_64.deb::${_dlurl}/releases/download/v${_typoraver}/${_appname}_${_typoraver}_amd64.deb")
-sha256sums=('d77bc7b183cd99a29827f868cdca778721636ac39dfec3981a65f77223ad549f')
+sha256sums=('6653885e3f8f2c5a0606baacd5bb651736e375f0c2c5997461c64da0e95ae4ca')
 sha256sums_aarch64=('12ad46732c4da7d9414701c584fee942baf83b89165563f18ba03d859eb59ad8')
 sha256sums_x86_64=('a202935a754c4b7344cc947db143e12885e4a716ca5f70f607f0318c346bb6c6')
 build() {
@@ -50,7 +50,8 @@ package() {
     install -Dm755 -d "${pkgdir}/"{/usr/lib/"${pkgname%-bin}",usr/bin}
     cp -r "${srcdir}/usr/share/${_appname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     ln -sf "/usr/lib/${pkgname%-bin}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    for _icons in 16x16 32x32 128x128 256x256 512x512;do
+    _icon_sizes=(16x16 32x32 128x128 256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/${_appname}/resources//assets/icon/icon_${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
