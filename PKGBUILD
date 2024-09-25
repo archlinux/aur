@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=oryx
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="A TUI for sniffing network traffic using eBPF"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 depends=('gcc-libs')
 makedepends=('cargo-nightly' 'bpf-linker')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('56b13bd07e21df2f655e7d4e7a7e78ada5e99f9cf0ecd2b44cbdd6a7495a78ccfcf14ee5a2becf5dae5c018f68c7100ab85d815703a0620feda645c8e7305c89')
+sha512sums=('dc505f5cdf314d8c6b3e991f19c76a8f459bd4453fd0b81c1baea2153f2d016359e2c883170df8370a0a09774029b047839d700f035c8a760f6528ca2a102351')
 options=('!lto')
 
 prepare() {
