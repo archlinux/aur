@@ -1,6 +1,6 @@
-# Maintainer: staphon7 <staphon7 at orange dot fr>
+# Contributor: staphon7 <staphon7 at orange dot fr>
 pkgname="advene"
-pkgver=3.13.1
+pkgver=3.14
 pkgrel=1
 pkgdesc="Video annotation and hypervideo authoring"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('frei0r-plugins'
     'gst-python'
     'gtksourceview3'
     'librsvg'
-    'pulseaudio'
+    'pulse-native-provider'
     'python-cairo'
     'python-cherrypy'
     'python-nltk'
@@ -37,7 +37,7 @@ optdepends=('espeak: TTS support'
 provides=('python-simpletal=5.2')
 conflicts=('python-simpletal=5.2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/oaubert/advene/archive/refs/tags/release/${pkgver}.tar.gz")
-sha256sums=('fbe98802f1c6dce44b554177855ef354bc4fa04d258486ee8b2aedeb8086d829')
+sha256sums=('6104d68d3f07623c931ae1b887668cd36e7e6d9343dcc9c404cf21de9c884754')
 
 package() {
     cd "$pkgname-release-$pkgver"
