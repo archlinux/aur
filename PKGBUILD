@@ -7,8 +7,8 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
 _pkgname=Notesnook
-pkgver=3.0.17
-_electronversion=29
+pkgver=3.0.18
+_electronversion=30
 _nodeversion=20
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote"
@@ -39,39 +39,41 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}.sh"
 )
-sha256sums=('b7328210057a83298887ef34fb5401e0d23e3d02e0c31a51ef27680de497ea18'
+sha256sums=('89d8fdc8ff72573fa1945f742e67aca379334ad47c8c3410a2d930ab4bde7f17'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     cd "${srcdir}/${pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    #export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
-    echo 'build_from_source=true'  >> .npmrc
-    echo "cache="${srcdir}"/.npm_cache"  >> .npmrc
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        echo 'registry=https://registry.npmmirror.com' >> .npmrc
-        echo 'disturl=https://registry.npmmirror.com/-/binary/node/' >> .npmrc
-        echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/' >> .npmrc
-        echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/' >> .npmrc
-    else
-        echo "Your network is OK."
-    fi
-    sed "s|npm \${|NODE_ENV=development npm \${|g" -i scripts/bootstrap.mjs
+    {
+        echo -e '\n'	
+        #echo 'build_from_source=true'
+        echo "cache=${srcdir}/.npm_cache"
+        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        fi
+    } >> .npmrc
+    cp .npmrc apps/desktop apps/web
+    sed -i "s/npm \${/NODE_ENV=development npm \${/g" scripts/bootstrap.mjs
     # Install packages
     NODE_ENV=development    npm install --ignore-scripts --prefer-offline --no-audit
     NODE_ENV=production     npm run bootstrap -- --scope=web
@@ -80,7 +82,7 @@ build() {
     NODE_ENV=production     npm run bootstrap -- --scope=desktop
     # Build Electron wrapper
     cd "${srcdir}/${pkgname}-${pkgver}/apps/desktop"
-    sed "s|\"asar\": false,|\"asar\": true,|g;s|\"electron\": \"\([^\"]*\)\"|\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"|g" -i package.json
+    sed -i "s/\"asar\": false,/\"asar\": true,/g;s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=production     npx nx run release --project @notesnook/desktop
     NODE_ENV=production     npx electron-builder -l --dir
 }
@@ -88,7 +90,8 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/apps/desktop/output/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
     cp -r "${srcdir}/${pkgname}-${pkgver}/apps/desktop/output/linux-"*/resources/assets "${pkgdir}/usr/lib/${pkgname}"
-    for _icons in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
+    _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname}-${pkgver}/apps/desktop/assets/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
