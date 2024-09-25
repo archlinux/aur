@@ -2,7 +2,7 @@
 # Co-maintainer: Edu4rdSHL <edu4rdshl@protonmail.com>
 pkgname=waveterm-git
 _pkgname=Wave
-pkgver=0.7.6.r20.ga221655
+pkgver=0.8.3.r0.g4d8075d
 _electronversion=32
 _nodeversion=22
 pkgrel=1
@@ -29,6 +29,7 @@ makedepends=(
     'zip'
     'nvm'
     'curl'
+    'zig'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -83,20 +84,18 @@ build() {
     else
         echo "Your network is OK."
     fi
-    cp "assets/${pkgname%-git}-logo.png" "public/${pkgname%-git}.png"
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
-    sed -i 's/${pkgname%-git}.icns/${pkgname%-git}.png/;s/"zip", "deb", "rpm", "AppImage", "pacman"/"dir"/' electron-builder.config.js
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    sed -i "s/build\/icons.icns/build\/appicon.png/g;s/\"zip\", \"deb\", \"rpm\", \"AppImage\", \"pacman\"/\"dir\"/g" electron-builder.config.cjs
+    gem install fpm
     corepack enable
-    echo y | yarn version 4.1.1
-    NODE_ENV=development    yarn install
-    NODE_ENV=production     scripthaus run electron-rebuild
-    NODE_ENV=production     scripthaus run build-backend
-    NODE_ENV=production     scripthaus run build-package-linux
+    echo y | yarn set version 4.4.1
+    NODE_ENV=development    yarn install #--cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=production     go-task package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/make/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
     cp -r "${srcdir}/${pkgname//-/.}/make/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/src/app/assets/${pkgname%-git}-logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/src/build/appicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
 }
