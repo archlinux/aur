@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ente-auth
 pkgdesc="Open source 2FA authenticator, with end-to-end encrypted backups"
-pkgver=4.0.0
+pkgver=4.0.2
 pkgrel=1
 _flutter_ver=3.24.3
 arch=('x86_64' 'aarch64')
@@ -30,7 +30,7 @@ source=("git+https://github.com/ente-io/ente.git#tag=auth-v$pkgver"
         'git+https://github.com/abhinavkgrd/ffmpeg.wasm.git'
         'git+https://github.com/ente-io/PhotoSwipe.git'
         'ente_auth.desktop')
-sha256sums=('f1b7de4eca196107715e21e433d381d811a12cfa5106354ec8c9fb1282dd5f45'
+sha256sums=('ffb5c750bb8e371ac966716cf3b42fa60771b0d57dbc90724c9ed2282740736b'
             'SKIP'
             'SKIP'
             'SKIP'
