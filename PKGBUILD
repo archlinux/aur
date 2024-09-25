@@ -1,7 +1,7 @@
 # Maintainer: Lucas Schwiderski <lucas@lschwiderski.de>
 pkgname=kdegraphics-thumbnailer-dds-git
-pkgver=r31.4e791fa
-pkgrel=2
+pkgver=r35.3284d66
+pkgrel=1
 epoch=
 pkgdesc="DDS texture thumbnailer for KDE"
 arch=("x86_64")
@@ -17,22 +17,13 @@ backup=()
 options=()
 install=
 changelog=
-source=(
-    "${pkgname%-git}::git+${url}.git"
-    "isValid_undefined.patch"
-)
+source=("${pkgname%-git}::git+${url}.git")
 noextract=()
-sha256sums=('SKIP'
-            'b93847aaef92eb605ae25e7aa13094f3879eeeabc2d3b1d75b76c4923926586c')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "$srcdir/${pkgname%-git}"
-    patch -p1 -i "$srcdir/isValid_undefined.patch"
 }
 
 build() {

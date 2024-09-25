@@ -1,7 +1,7 @@
 pkgbase = kdegraphics-thumbnailer-dds-git
 	pkgdesc = DDS texture thumbnailer for KDE
-	pkgver = r31.4e791fa
-	pkgrel = 2
+	pkgver = r35.3284d66
+	pkgrel = 1
 	url = https://github.com/xmaciek/kdegraphics-thumbnailer-dds
 	arch = x86_64
 	license = MIT
@@ -14,8 +14,6 @@ pkgbase = kdegraphics-thumbnailer-dds-git
 	provides = kdegraphics-thumbnailer-dds
 	conflicts = kdegraphics-thumbnailer-dds
 	source = kdegraphics-thumbnailer-dds::git+https://github.com/xmaciek/kdegraphics-thumbnailer-dds.git
-	source = isValid_undefined.patch
 	sha256sums = SKIP
-	sha256sums = b93847aaef92eb605ae25e7aa13094f3879eeeabc2d3b1d75b76c4923926586c
 
 pkgname = kdegraphics-thumbnailer-dds-git
