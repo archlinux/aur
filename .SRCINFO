@@ -1,6 +1,6 @@
 pkgbase = ptyxis
 	pkgdesc = A terminal for a container-oriented desktop
-	pkgver = 47.0
+	pkgver = 47.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/chergert/ptyxis
 	arch = x86_64
@@ -9,29 +9,19 @@ pkgbase = ptyxis
 	makedepends = git
 	makedepends = glib2-devel
 	makedepends = meson
-	depends = cairo
 	depends = dconf
-	depends = fribidi
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
-	depends = gnutls
-	depends = graphene
 	depends = gtk4
 	depends = hicolor-icon-theme
-	depends = icu
 	depends = json-glib
 	depends = libadwaita
 	depends = libportal
 	depends = libportal-gtk4
-	depends = lz4
 	depends = pango
-	depends = pcre2
-	depends = systemd-libs
-	depends = vte-common>=0.78.0
-	source = ptyxis::git+https://gitlab.gnome.org/chergert/ptyxis#tag=47.0
-	source = ptyxis_vte::git+https://gitlab.gnome.org/GNOME/vte.git#commit=e24087d953d9352c8bc46074e2662c80f9bfbc2d
-	sha256sums = 626de77aa50d2320a61ee5d61312a2653e451ab5697c1ed1717ae67bd7577321
-	sha256sums = 12154ce2497c31894b3ae81ab0c03272843323933e6658ceecc99d5e537dda56
+	depends = vte4
+	source = ptyxis::git+https://gitlab.gnome.org/chergert/ptyxis#tag=47.1
+	sha256sums = 08bd1ddbdd92493f6055da320e47f84d4e22ba8134a52d40e71cdfa83c840353
 
 pkgname = ptyxis
