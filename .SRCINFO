@@ -1,0 +1,27 @@
+pkgbase = polycule
+	pkgdesc = A geeky and efficient [matrix] client for power users.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitlab.com/polycule_client/polycule
+	arch = x86_64
+	arch = aarch64
+	license = EUPL1.2
+	makedepends = flutter-tool
+	makedepends = flutter-target-linux
+	makedepends = cmake
+	depends = gtk3
+	depends = jsoncpp
+	depends = libsecret
+	depends = xdg-user-dirs
+	depends = libolm
+	depends = openssl
+	depends = mpv
+	depends = mimalloc
+	depends = libnotify
+	depends = dbus
+	provides = polycule
+	conflicts = polycule
+	source = polycule-v0.0.1.tar.gz::https://gitlab.com/polycule_client/polycule/-/archive/v0.0.1/polycule-v0.0.1.tar.gz
+	sha256sums = 1d0aebf5cf44592bed01e37f2c1187787f0bf9546ca03418e53468752c9f0842
+
+pkgname = polycule
