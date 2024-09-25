@@ -1,0 +1,17 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8fb03ba1f..9f9cb753e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -819,12 +819,6 @@ else()
+   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fno-strict-aliasing")
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-strict-aliasing")
+ 
+-  # if those don't work for your compiler, single it out where appropriate
+-  if(CMAKE_BUILD_TYPE STREQUAL "Release" AND NOT OPENBSD)
+-    set(C_SECURITY_FLAGS "${C_SECURITY_FLAGS} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1")
+-    set(CXX_SECURITY_FLAGS "${CXX_SECURITY_FLAGS} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1")
+-  endif()
+-
+   # warnings
+   add_c_flag_if_supported(-Wformat C_SECURITY_FLAGS)
+   add_cxx_flag_if_supported(-Wformat CXX_SECURITY_FLAGS)

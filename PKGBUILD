@@ -1,46 +1,76 @@
 # Maintainer: wowario <wowario[at]protonmail[dot]com>
 
 pkgname=wownero-git
-pkgver=0.11.1.0.1b8475003c
+pkgver=0.11.2.0.36a6641000
 pkgrel=1
 pkgdesc="Wownero: a fairly launched privacy-centric meme coin with no premine and a finite supply"
-license=('BSD')
+license=('BSD-3-Clause')
 arch=('x86_64')
 url="https://wownero.org/"
-depends=('boost-libs' 'libunwind' 'openssl' 'readline' 'zeromq' 'pcsclite' 'hidapi' 'protobuf' 'libusb' 'libudev.so' 'libunbound.so')
-makedepends=('boost' 'cmake' 'git' 'python')
+depends=(
+  'gcc-libs'
+  'glibc'
+  'libboost_program_options.so'
+  'libhidapi-libusb.so'
+  'libreadline.so'
+  'libsodium.so'
+  'libssl.so'
+  'libunbound.so'
+  'libunwind'
+  'libusb'
+  'libzmq.so'
+  'pcsclite'
+  'protobuf'
+)
+makedepends=(
+  'boost'
+  'cmake'
+  'git'
+  'python'
+)
 source=(
-    "${pkgname}"::"git+https://git.wownero.com/wownero/wownero.git"
-    "git+https://github.com/monero-project/supercop.git"
-    "git+https://github.com/miniupnp/miniupnp.git"
-    "git+https://github.com/Tencent/rapidjson.git"
-    "git+https://git.wownero.com/wownero/RandomWOW.git"
-    "wownero.sysusers"
-    "wownero.tmpfiles"
+  "${pkgname}::git+https://codeberg.org/wownero/wownero"
+  "git+https://github.com/miniupnp/miniupnp.git"
+  "git+https://github.com/Tencent/rapidjson.git"
+  "git+https://github.com/trezor/trezor-common.git"
+  "git+https://codeberg.org/wownero/RandomWOW.git"
+  "git+https://github.com/monero-project/supercop.git"
+  "fortify-source.patch"
+  "wownero.sysusers"
+  "wownero.tmpfiles"
 )
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '29f050d4063b6309885f1d675c96f2e45cbe8565c74240e5db4e3ac2cecbc7ebf643f948a05e4273607fae528302d525398fdb9e6bf330dcd88890e55a7a482f'
-            'a7c8170462e7578eced13908a27955128cc0c002c4bcff0d8c42719f1d7ee0dd33fa793c86c7ded52215cd22ba884569d69043c4d008d2597e33eb7ca1df9972')
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
   cd "${pkgname}"
   git submodule init
-  git config submodule.external/supercop.url "$srcdir/supercop"
   git config submodule.external/miniupnp.url "$srcdir/miniupnp"
   git config submodule.external/rapidjson.url "$srcdir/rapidjson"
-  git config submodule.external/RandomWOW.url "$srcdir/randomwow"
+  git config submodule.external/trezor-common.url "$srcdir/trezor-common"
+  git config submodule.external/randomwow.url "$srcdir/RandomWOW"
+  git config submodule.external/supercop.url "$srcdir/supercop"
   git -c protocol.file.allow=always submodule update
+
+  # Fix build with protobuf 23
+  sed -e 's|CMAKE_CXX_STANDARD 14|CMAKE_CXX_STANDARD 17|' -e 's|CMAKE_CXX_STANDARD=11|CMAKE_CXX_STANDARD=17|' -i CMakeLists.txt -i cmake/CheckTrezor.cmake
+
+  patch -Np1 -i ../fortify-source.patch
+  sed -e 's|std=c++11|std=c++17|g' -i contrib/depends/protobuf.mk
 }
 
 build() {
   cd "${pkgname}"
-  mkdir -p build && cd build
-  cmake -D BUILD_TESTS=OFF -D CMAKE_BUILD_TYPE=release -D ARCH=default ../
-  make
+  CFLAGS+=" -Wno-implicit-function-declaration -Wno-int-conversion" \
+  cmake -B build -D ARCH="default" -D CMAKE_BUILD_TYPE=Release
+  make -C build
 }
 
 package() {
