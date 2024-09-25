@@ -2,9 +2,9 @@
 _appname=vocechat
 pkgname="${_appname}-desktop-bin"
 _pkgname=VoceChat
-pkgver=0.8.4
+pkgver=0.9.0
 _electronversion=32
-pkgrel=3
+pkgrel=1
 pkgdesc="VoceChat desktop version"
 arch=('x86_64')
 url="https://github.com/Privoce/vocechat-desktop"
@@ -21,20 +21,20 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('704cbe204f6adb8e5c6fafc9496e4fc06ed598c10e20b26a9ac126ad1317ea9d'
+sha256sums=('0d7819c434f428a1804b9bc985ddc2d88f36ef86e0f75fb9312367077d2f0283'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-bin}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${pkgname%-bin}/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s/AppRun --no-sandbox/${pkgname%-bin}/;s/Icon=${_appname}/Icon=${pkgname%-bin}/;s/Social/Social;Network/" \
-        -i "${srcdir}/squashfs-root/${_appname}.desktop"
+    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g;s/Icon=${_appname}/Icon=${pkgname%-bin}/g;s/Social/Social;Network/g" \
+        "${srcdir}/squashfs-root/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
