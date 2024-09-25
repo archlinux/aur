@@ -1,7 +1,7 @@
 # Maintainer: Asuka Minato <asukaminato at nyan dot eu dot org>
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=ecode-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance."
 url="https://github.com/SpartanJ/ecode"
@@ -14,8 +14,8 @@ source_x86_64=("$url/releases/download/ecode-$pkgver/ecode-linux-$pkgver-x86_64.
 source_aarch64=("$url/releases/download/ecode-$pkgver/ecode-linux-$pkgver-aarch64.tar.gz")
 sha256sums=('5fcb9a831d8efabb08cd20b7ca6000ca333115d60de477fa27909a14306188b0'
             '40460ea0c5d9c523274b53cf41e642bf6ed36406c14f6ce95a33e42e68c71923')
-sha256sums_x86_64=('e12b65e5f413b810d5d4154f309bc7ce4f14c6f7dede0aa55ce03582e5021c5b')
-sha256sums_aarch64=('820500dcda1071be0e2fccd6caccd54bda1a63c0bf2b0416762f03a252ed031d')
+sha256sums_x86_64=('b4009cadf57170302feec7c2f4d084aed8e6b673125e82a3154b521636b7ea23')
+sha256sums_aarch64=('c5d1127ef6b25486183e58e6d63c1f5b3cc2d96d9b621dd2db30f792128e0e37')
 
 package() {
 	install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
