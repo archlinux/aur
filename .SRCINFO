@@ -1,13 +1,13 @@
 pkgbase = cs-crypto
 	pkgdesc = C++ interface for calling existing cryptography libraries
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://www.copperspice.com/
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = cmake
-	makedepends = catch2
-	source = https://github.com/copperspice/cs_crypto/archive/crypto-1.0.1/cs-crypto-1.0.1.tar.gz
-	sha256sums = 811e448fb921f1b80a2720cb382142037ab3e1797e6b1dbac6e0480bd349bb08
+	makedepends = catch2-v2
+	source = https://github.com/copperspice/cs_crypto/archive/crypto-1.0.2/cs-crypto-1.0.2.tar.gz
+	sha256sums = 46a07e3761d7a9b6d74db9c6afa7ce7f547ae862fbd1770fb042639e6abff219
 
 pkgname = cs-crypto
