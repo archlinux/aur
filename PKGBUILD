@@ -13,10 +13,10 @@ provides=(jfrog-cli)
 
 _source_base="https://releases.jfrog.io/artifactory/$_pkgname/v2-jf/$pkgver"
 
-source_x86_64=("jf-x64::$_source_base/$_pkgname-linux-amd64/jf")
-source_i686=("jf-i686::$_source_base/$_pkgname-linux-386/jf")
-source_armv7h=("jf-armv7h::$_source_base/$_pkgname-linux-arm/jf")
-source_aarch64=("jf-aarch64::$_source_base/$_pkgname-linux-arm64/jf")
+source_x86_64=("jf-${pkgver}-x64::$_source_base/$_pkgname-linux-amd64/jf")
+source_i686=("jf-${pkgver}-i686::$_source_base/$_pkgname-linux-386/jf")
+source_armv7h=("jf-${pkgver}-armv7h::$_source_base/$_pkgname-linux-arm/jf")
+source_aarch64=("jf-${pkgver}-aarch64::$_source_base/$_pkgname-linux-arm64/jf")
 
 sha256sums_x86_64=('37a146846dc61a08659c79179ae8947e7c64acd1624fbce0ed42f6b7c3d3eba4')
 sha256sums_i686=('74f783110c6b8e91a7d05df28a5c59ec3474f10d90a5125d1c4f94442f86b063')

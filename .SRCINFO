@@ -10,13 +10,13 @@ pkgbase = jfrog-cli-bin
 	license = Apache-2.0
 	provides = jfrog-cli
 	conflicts = jfrog-cli
-	source_x86_64 = jf-x64::https://releases.jfrog.io/artifactory/jfrog-cli/v2-jf/2.69.0/jfrog-cli-linux-amd64/jf
+	source_x86_64 = jf-2.69.0-x64::https://releases.jfrog.io/artifactory/jfrog-cli/v2-jf/2.69.0/jfrog-cli-linux-amd64/jf
 	sha256sums_x86_64 = 37a146846dc61a08659c79179ae8947e7c64acd1624fbce0ed42f6b7c3d3eba4
-	source_i686 = jf-i686::https://releases.jfrog.io/artifactory/jfrog-cli/v2-jf/2.69.0/jfrog-cli-linux-386/jf
+	source_i686 = jf-2.69.0-i686::https://releases.jfrog.io/artifactory/jfrog-cli/v2-jf/2.69.0/jfrog-cli-linux-386/jf
 	sha256sums_i686 = 74f783110c6b8e91a7d05df28a5c59ec3474f10d90a5125d1c4f94442f86b063
-	source_armv7h = jf-armv7h::https://releases.jfrog.io/artifactory/jfrog-cli/v2-jf/2.69.0/jfrog-cli-linux-arm/jf
+	source_armv7h = jf-2.69.0-armv7h::https://releases.jfrog.io/artifactory/jfrog-cli/v2-jf/2.69.0/jfrog-cli-linux-arm/jf
 	sha256sums_armv7h = c5529192f128242e21da02862134d4482af9a621604148eea12fcec07f03e46c
-	source_aarch64 = jf-aarch64::https://releases.jfrog.io/artifactory/jfrog-cli/v2-jf/2.69.0/jfrog-cli-linux-arm64/jf
+	source_aarch64 = jf-2.69.0-aarch64::https://releases.jfrog.io/artifactory/jfrog-cli/v2-jf/2.69.0/jfrog-cli-linux-arm64/jf
 	sha256sums_aarch64 = a0b3508a1cecd08ac0c4a50d3efe86646f721c273d0da615dff564d89a36b3d5
 
 pkgname = jfrog-cli-bin
