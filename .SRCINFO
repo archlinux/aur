@@ -9,4 +9,3 @@ pkgbase = libcontacts
 	sha256sums = 208696e963157ef48fe517a83904ff0e860d2a0c2be8455dd85be2b96bff71d0
 
 pkgname = libcontacts
-
