@@ -20,4 +20,3 @@ pkgbase = bash.d
 	sha256sums = 4c22ee9708d56d437c768161e18fa464ef259807711c8aafe05e43540d59ba14
 
 pkgname = bash.d
-
