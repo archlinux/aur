@@ -1,13 +1,13 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=cs-crypto-git
-pkgver=1.0.1.r0.gbd87d67
+pkgver=1.0.2.r0.g01eefa3
 pkgrel=1
 pkgdesc='C++ interface for calling existing cryptography libraries (git version)'
 arch=('x86_64')
 url='https://www.copperspice.com/'
-license=('BSD')
-makedepends=('git' 'cmake' 'catch2')
+license=('BSD-2-Clause')
+makedepends=('git' 'cmake' 'catch2-v2')
 provides=('cs-crypto')
 conflicts=('cs-crypto')
 source=('git+https://github.com/copperspice/cs_crypto.git')
@@ -23,11 +23,11 @@ build() {
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DBUILD_TESTS:BOOL='ON' \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 check() {
-    make -C build test
+    ctest --test-dir build --output-on-failure
 }
 
 package() {
