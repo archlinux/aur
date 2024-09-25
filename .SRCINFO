@@ -1,7 +1,7 @@
 pkgbase = sex
 	pkgdesc = Spouts silly mad-lib-style porn-like text
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://spatula.net/software/sex/
 	arch = any
 	license = public domain

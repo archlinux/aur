@@ -3,7 +3,7 @@
 # Contributor: c_14 <archmailing5@gmail.com>
 pkgname=sex
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Spouts silly mad-lib-style porn-like text"
 url="http://spatula.net/software/sex/"
 license=('public domain')
@@ -15,7 +15,7 @@ md5sums=('c35a3cfe1536f1b2a16102526a74edd6')
  
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  gcc -o sex sex.c
+  gcc -std=c90 -o sex sex.c
   gzip sex.6
 }
  
