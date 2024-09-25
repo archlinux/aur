@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-files-git
-pkgver=1.0.0.alpha.1.r46.gb6bc513
+pkgver=1.0.0.alpha.2.r11.gf352890
 pkgrel=1
 pkgdesc="File manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -10,6 +10,7 @@ depends=(
   'glib2'
   'hicolor-icon-theme'
   'libxkbcommon'
+  'totem'
   'xdg-utils'
 )
 makedepends=(
