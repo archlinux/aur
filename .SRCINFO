@@ -1,6 +1,6 @@
 pkgbase = pass-it-on-server-bin
 	pkgdesc = Pass-it-on server component binary only
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/kwheelans/pass-it-on
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = pass-it-on-server-bin
 	license = MIT
 	provides = pass-it-on-server
 	conflicts = pass-it-on-server
-	source = pass-it-on-server-bin-source-0.15.0.tar.gz::https://github.com/kwheelans/pass-it-on/archive/refs/tags/v0.15.0.tar.gz
-	b2sums = d1eff7bf2437c31d3674c82ac6a9264aa486b147a74dd1360c710f08dd19e91561d58623322c57a2d7a3178d2ffe2da83737d962c548b4b53eb468ef2616fdf4
-	source_x86_64 = pass-it-on-server-bin-0.15.0.tar.gz::https://github.com/kwheelans/pass-it-on/releases/download/v0.15.0/pass-it-on-server-v0.15.0-x86_64-unknown-linux-gnu.tar.gz
-	b2sums_x86_64 = 82e31bf1343ec454e70e8f2c0f3e7056afbc735cada587da731da3a64ccc3bb36f98ddc1504a8042f5c55b707e24ed3ee2d3c3b10b28b8cec0fc4425851320e7
-	source_aarch64 = pass-it-on-server-bin-0.15.0.tar.gz::https://github.com/kwheelans/pass-it-on/releases/download/v0.15.0/pass-it-on-server-v0.15.0-aarch64-unknown-linux-gnu.tar.gz
-	b2sums_aarch64 = 36dcd1ac7a715141748a4cdd41b9552414ac70616e33ca3f8042da42ffb922b2b79688caaaa17f3084b63a31a88849c38b41cb1f613524aa0b0cdc84c923e166
+	source = pass-it-on-server-bin-source-0.16.0.tar.gz::https://github.com/kwheelans/pass-it-on/archive/refs/tags/v0.16.0.tar.gz
+	b2sums = 2b52f04add1f7f1ce2b3798c2874dc8879552e8110dba01a5526802d45d3cecb44f968804f4e6a10cae4820bc488cae31c5119b22f4a04f791196bf801613fb7
+	source_x86_64 = pass-it-on-server-bin-0.16.0.tar.gz::https://github.com/kwheelans/pass-it-on/releases/download/v0.16.0/pass-it-on-server-v0.16.0-x86_64-unknown-linux-gnu.tar.gz
+	b2sums_x86_64 = 047c3b7c33a883da3f4cb1b894039df2a8ce53281c65d7c5fe068723f6d6c97e5e27a7bf9a3eb693dd66b29ca8b31f0dcdae8d882c185efad90de4cd59c72f6f
+	source_aarch64 = pass-it-on-server-bin-0.16.0.tar.gz::https://github.com/kwheelans/pass-it-on/releases/download/v0.16.0/pass-it-on-server-v0.16.0-aarch64-unknown-linux-gnu.tar.gz
+	b2sums_aarch64 = ae03ff9f89b335ca88ac21ba59219f2a695fb79aa9f39e6fc04daa28209a677227b402cd9935364e421a1219998a4aa3e8a7d30b65adadf5aea8fa42745c3e6f
 
 pkgname = pass-it-on-server-bin
