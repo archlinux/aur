@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mousai
 _app_id=io.github.seadve.Mousai
-pkgver=0.7.7
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="Simple application for identifying songs"
 arch=('x86_64')
@@ -19,17 +19,16 @@ makedepends=(
   'cargo'
   'meson'
 )
-checkdepends=(
-  'appstream'
+#checkdepends=(
 #  'xorg-server-xvfb'
-)
+#)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SeaDve/Mousai/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f99f717bd9516dd6db92276a1a171ea97e2caa8f77e9d38fdf32218690a9cc27')
+sha256sums=('a54d129c97c61260f85f43d436d0cd6dd52fe2e7aa40f33ba4640c1c7da0e231')
 
 prepare() {
   cd "Mousai-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -40,11 +39,10 @@ build() {
 }
 
 check() {
-#  export CARGO_HOME="$srcdir/cargo-home"
 #  export RUSTUP_TOOLCHAIN=stable
 #  xvfb-run -a -s "-screen 0 1024x768x24" dbus-run-session meson test -C build --print-errorlogs || :
 
-  appstreamcli validate --no-net "build/data/${_app_id}.metainfo.xml" || :
+  appstreamcli validate --no-net "build/data/${_app_id}.metainfo.xml"
   desktop-file-validate "build/data/${_app_id}.desktop"
 }
 
