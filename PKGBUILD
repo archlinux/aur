@@ -2,11 +2,11 @@
 
 pkgname=ptyxis
 pkgver=47.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal for a container-oriented desktop'
 arch=('x86_64')
 url='https://gitlab.gnome.org/chergert/ptyxis'
-license=('GPL-3.0-or-later' 'LGPL-3.0-or-later')
+license=('GPL-3.0-or-later')
 groups=()
 depends=('dconf'
          'gcc-libs'
