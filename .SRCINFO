@@ -16,6 +16,9 @@ pkgbase = openvas-scanner
 	depends = redis
 	depends = rsync
 	source = openvas-scanner-23.9.0.tar.gz::https://github.com/greenbone/openvas-scanner/archive/v23.9.0.tar.gz
+	source = openvas-scanner-23.9.0.tar.gz.asc::https://github.com/greenbone/openvas-scanner/releases/download/v23.9.0/openvas-scanner-v23.9.0.tar.gz.asc
+	validpgpkeys = 8AE4BE429B60A59B311C2E739823FAA60ED1E580
 	sha512sums = 820510e7ae7c738796809d010ef5d177f002cd6dfe2c36354e47e1bda8f32ecd1c4bdc1779d4ff3bdc5d9ab31fe4e8330b0142206b54132c84dfc5f8b37bd87e
+	sha512sums = SKIP
 
 pkgname = openvas-scanner
