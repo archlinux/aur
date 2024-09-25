@@ -1,7 +1,7 @@
 pkgbase = yubico-authenticator-bin
 	pkgdesc = Cross-platform application for managing your YubiKey's second factor credentials (version 7)
 	pkgver = 7.1.0
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/Yubico/yubioath-flutter
 	arch = x86_64
 	license = Apache
