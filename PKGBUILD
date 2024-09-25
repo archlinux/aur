@@ -4,13 +4,14 @@
 
 pkgname=gsad
 pkgver=22.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc='server talking to the Greenbone Vulnerability Management daemon (gvmd)'
 arch=('x86_64')
 url="https://github.com/greenbone/gsad"
 license=('AGPL-3.0-only')
 groups=('greenbone-vulnerability-manager')
 depends=(
+    'gvmd'
     'gvm-libs'
     'gnutls'
     'libgcrypt'
@@ -22,16 +23,13 @@ depends=(
 makedepends=('cmake' 'xmltoman')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc"
-        gsad.service
-        gsad
-        0001-libgcrypt-config.patch)
+        0001-libgcrypt-config.patch
+        0002-fix-unit-path.patch)
 sha256sums=('1edb62a5f79e874f36c0b5fc91d19e725fd19d81c53d096ab3e8db21e49b1899'
             'SKIP'
-            '8288701c27081ad65d9f32043b35c17bc7ae4338d41330f1bf6c6f1b57ccaaf8'
-            '0c0f157b83b8dc6c7f9c6a1b00b179d4c727dcb845ae4b0c09d43bac4fb4dbd8'
-            'e50f1fafd28a7253b55cb621fa036e047fe1412b051f331b58fdaddd9ab2a374')
+            'e50f1fafd28a7253b55cb621fa036e047fe1412b051f331b58fdaddd9ab2a374'
+            'fadbf71ca0659650a8f0316057eb71836e35d9be43de06bcdcfb542ca3ad5a3a')
 validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # GVM Transfer Integrity
-backup=("etc/default/gsad")
 
 
 prepare() {
@@ -41,6 +39,9 @@ prepare() {
 	# libgcrypt-config got replaced
 	# ToDo: issue @ upstream (same as done with openvas-scanner)
 	patch -Np2 -i "${srcdir}"/0001-libgcrypt-config.patch
+	# fix install path for unit file
+	# ToDo: issue @ upstream (similar currently open for gvmd)
+	patch -Np2 -i "${srcdir}"/0002-fix-unit-path.patch
 }
 
 build() {
@@ -58,9 +59,4 @@ build() {
 
 package() {
 	make DESTDIR="${pkgdir}/" -C build install
-
-	install -d "$pkgdir"/etc/default
-	install -m 644 "$srcdir"/gsad "$pkgdir"/etc/default
-	install -d "$pkgdir"/usr/lib/systemd/system
-	install -m 644 "$srcdir"/gsad.service "$pkgdir"/usr/lib/systemd/system
 }
