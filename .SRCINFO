@@ -1,0 +1,14 @@
+pkgbase = python-normflows
+	pkgdesc = A PyTorch Package for Normalizing Flows
+	pkgver = 1.7.3
+	pkgrel = 1
+	url = https://github.com/VincentStimper/normalizing-flows
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-pytorch
+	source = normalizing-flows-1.7.3.tar.gz::https://github.com/VincentStimper/normalizing-flows/archive/refs/tags/v1.7.3.tar.gz
+	sha256sums = 4a2c7405209360d25ea2a983d8a4c144aad1656ae85dcd9cfe834bd2abc6d918
+
+pkgname = python-normflows
