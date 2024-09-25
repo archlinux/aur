@@ -2,7 +2,7 @@
 
 pkgname=platypush-git
 _pkgname=platypush
-pkgver=1.1.3.r16.g38cf1023
+pkgver=1.3.1.r0.gc134f29c
 pkgrel=1
 pkgdesc="A general-purpose, event-driven, plugin-based platform for automation-as-code"
 arch=('any')
@@ -22,7 +22,6 @@ depends=(
     'python-flask'
     'python-magic'
     'python-marshmallow'
-    'python-marshmallow-dataclass'
     'python-pip'
     'python-psutil'
     'python-redis'
