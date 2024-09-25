@@ -32,10 +32,28 @@ makedepends=(
     "python-setuptools"
     "python-wheel"
 )
+checkdepends=(
+    "python-virtualenv"
+    "cantarell-fonts" # https://github.com/ManimCommunity/ManimPango/issues/110
+)
 
 build () {
     cd "$srcdir/$_name-$pkgver"
     python -m build --wheel --no-isolation
+}
+
+check () {
+    cd "$srcdir/$_name-$pkgver"
+
+    python -m venv --system-site-packages venv
+    (
+        source venv/bin/activate
+        pip install ./dist/*.whl Cython pytest setuptools
+        pip install -r requirements-dev.txt
+        python setup.py build_ext -i
+        python -m pytest -s
+    )
+    rm -rf venv
 }
 
 package () {
