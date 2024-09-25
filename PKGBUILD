@@ -2,13 +2,14 @@
 
 pkgname=gvmd
 pkgver=23.10.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Vulnerability manager Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/gvmd"
 license=('AGPL-3.0-only')
 depends=('cjson' 'gvm-libs' 'libbsd' 'libical' 'python' 'gnutls' 'postgresql' 'libxslt')
 makedepends=('cmake' 'doxygen' 'xmltoman' 'libxslt')
+optdepends=('logrotate: for rotating logs')
 groups=('greenbone-vulnerability-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/greenbone/gvmd/archive/v${pkgver}.tar.gz"
         "archlinux_postgres_headers.patch"
