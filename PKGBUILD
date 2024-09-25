@@ -1,4 +1,4 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
+# Maintainer: Mattias Andrée <`base64 -d`(bWF0dGlhcy5hbmRyZWU)@protonmail.com>
 
 pkgname=libterminput
 pkgver=1.0.3
