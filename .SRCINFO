@@ -1,6 +1,6 @@
 pkgbase = python-qiskit-aer
 	pkgdesc = A high performance simulator for quantum circuits that includes noise models
-	pkgver = 0.15
+	pkgver = 0.15.1
 	pkgrel = 1
 	url = https://github.com/Qiskit/qiskit-aer
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = python-qiskit-aer
 	optdepends = python-cvxpy: support convex optimization
 	optdepends = python-dask: parallel computing with task scheduling
 	optdepends = python-distributed: distributed task scheduler for Dask
-	source = qiskit-aer-0.15.tar.gz::https://github.com/Qiskit/qiskit-aer/archive/0.15.tar.gz
-	b2sums = 3a72d5e1c97e54dd9090bbd072ca52c03bc90d53ec13bdb52b20112adebde6ef4e85a5d3761d5cc9fab7bc8d41651865e538eaad591dad266533441114ae1ddc
+	source = qiskit-aer-0.15.1.tar.gz::https://github.com/Qiskit/qiskit-aer/archive/0.15.1.tar.gz
+	b2sums = 521329642f141fbb5d4bb045f42b53e1a116614328837999d73e28c54fd7e1b8aa64d72080b54950575c264bd14349227b395363cc92ce384f1b4951d414862b
 
 pkgname = python-qiskit-aer
