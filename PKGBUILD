@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xbyyunpan-bin
 _zhsname="小白羊云盘"
-_pkgname="XBYDriver"
-pkgver=3.13.5
+_pkgname=XBYDriver
+pkgver=3.14.1
 _electronversion=21
 pkgrel=1
 pkgdesc="小白羊网盘 - Powered by 阿里云盘Open"
@@ -11,8 +11,9 @@ arch=(
     'armv7h'
     'x86_64'
 )
-url="https://github.com/gaozhangmin/aliyunpan"
-license=('MIT')
+url="https://xbysite.pages.dev/"
+_dlurl="https://github.com/zxp19821005/My_AUR_Files"
+license=('LicenseRef-custom')
 provides=("aliyunpan-liupan1890")
 conflicts=(
     "${pkgname%-bin}"
@@ -23,27 +24,25 @@ conflicts=(
 depends=(
     "electron${_electronversion}"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
-source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-armv7l.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${_dlurl}/releases/download/${pkgname%-bin}-${pkgver}/${_pkgname}-${pkgver}-linux-aarch64.pacman")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.pacman::${_dlurl}/releases/download/${pkgname%-bin}-${pkgver}/${_pkgname}-${pkgver}-linux-armv7l.pacman")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${_dlurl}/releases/download/${pkgname%-bin}-${pkgver}/${_pkgname}-${pkgver}-linux-x64.pacman")
 source=(
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/gaozhangmin/aliyunpan/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('37b92e7918a9a8599a558d5e978900966b243cc9f6c964c36f4afa35bf50e009'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('3420171837cecec3880114a4868351a1c29f429575429c43f5a9b94a98551426')
-sha256sums_armv7h=('f1e9b8da7a94cfbd6b8fcf3a8adb7e399473b819f01e336e9f78b3a16b3601d5')
-sha256sums_x86_64=('59dc465b59d149922278db38a78a1140921b37b312ae7f31640af99c261d7e3a')
+sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_aarch64=('dc1b632f7ea3f5caae28a41e3cee0e023955877514359761a82c8cf2f9e8c4fb')
+sha256sums_armv7h=('18da4b89cef98378973dc0b7c71ffcdcfbae77b275e4d0db4fb3fd8e618e64fb')
+sha256sums_x86_64=('7ac82a21e660c75fd083b76062fd306d5fa79014582741f88133b5fa9d172c2c')
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|alixby3|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
-    sed "s|\"/opt/${_zhsname}/${pkgname%-bin}\"|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/alixby3/g
+        s/@options@//g
+    " -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -i "s/\"\/opt\/${_zhsname}\/${pkgname%-bin}\"/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
@@ -51,5 +50,5 @@ package() {
     cp -r "${srcdir}/opt/${_zhsname}/resources/"{crx,engine,images} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/opt/${_zhsname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
