@@ -1,5 +1,5 @@
 pkgname=hpaper
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Automated Wallpaper Management for Wayland Using Swaybg'
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('GPL')
 makedepends=('go')
 depends=('swaybg>0')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('389669784ee76ca828187e1ab6ea1ae52b8be786e8cb96174c627dd14ac2cee9')
+sha256sums=('482549587f75ee31264e1aa9efa6f9e7854fd9a1c0e3ccab7de75742b3d90c87')
 
 build() {
   cd "$pkgname-$pkgver"

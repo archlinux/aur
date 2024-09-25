@@ -1,13 +1,13 @@
 pkgbase = hpaper
 	pkgdesc = Automated Wallpaper Management for Wayland Using Swaybg
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/Hcode00/hpaper
 	arch = x86_64
 	license = GPL
 	makedepends = go
 	depends = swaybg>0
-	source = hpaper-0.3.0.tar.gz::https://github.com/Hcode00/hpaper/archive/v0.3.0.tar.gz
-	sha256sums = 389669784ee76ca828187e1ab6ea1ae52b8be786e8cb96174c627dd14ac2cee9
+	source = hpaper-0.3.1.tar.gz::https://github.com/Hcode00/hpaper/archive/v0.3.1.tar.gz
+	sha256sums = 482549587f75ee31264e1aa9efa6f9e7854fd9a1c0e3ccab7de75742b3d90c87
 
 pkgname = hpaper
