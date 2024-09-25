@@ -1,8 +1,8 @@
 # Maintainer: witt <1989161762 at qq dot com>
 pkgname=typora-theme-lapis-git
 pkgver=1.2.0
-pkgrel=1
-pkgdesc="An app for managing hosts file,and switch hosts quickly!"
+pkgrel=2
+pkgdesc=" A clean Typora theme in blue tones"
 arch=('any')
 url="https://github.com/YiNNx/typora-theme-lapis"
 license=('MIT')

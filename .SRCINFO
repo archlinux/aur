@@ -1,7 +1,7 @@
 pkgbase = typora-theme-lapis-git
-	pkgdesc = An app for managing hosts file,and switch hosts quickly!
+	pkgdesc = A clean Typora theme in blue tones
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/YiNNx/typora-theme-lapis
 	arch = any
 	license = MIT
