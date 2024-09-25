@@ -2,7 +2,7 @@
 # Maintainer: dj.zak <dz.wbdev@gmail.com>
 pkgname=accutimes
 pkgver=5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="المواقيت الدقيقة،Accurate Times is the official software adopted by the Jordanian Ministry of Islamic Affairs to calculate the prayer times in Jordan."
 arch=('x86_64')
 url="https://astronomycenter.net/accut.html"
