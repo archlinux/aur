@@ -4,7 +4,7 @@
 pkgname=grisbi
 pkgver=3.0.4
 _pkgver=upstream_version_3_0_4
-pkgrel=1
+pkgrel=2
 pkgdesc="Shared files for the finance management program Grisbi."
 arch=('x86_64')
 url="https://www.grisbi.org"
@@ -12,7 +12,6 @@ license=('GPL')
 depends=('gtk3' 'libgsf' 'openssl')
 optdepends=('libofx: for OFX support')
 makedepends=('intltool' 'imagemagick')
-provides=('grisbi')
 conflicts=('grisbi-git')
 options=(!libtool !debug)
 source=(https://github.com/grisbi/grisbi/archive/refs/tags/$_pkgver.tar.gz)
