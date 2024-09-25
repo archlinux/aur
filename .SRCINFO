@@ -1,11 +1,11 @@
 pkgbase = dolibarr-git
 	pkgdesc = Dolibarr ERP CRM: modern software package to manage your company
-	pkgver = 17.0.1.r3571.g22ed190a4d6
+	pkgver = 20.0.0.r1243.g3f00ea3d6bf
 	pkgrel = 1
 	url = https://dolibarr.org/
 	install = dolibarr.install
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = php-legacy
 	depends = php-legacy-gd
@@ -14,7 +14,7 @@ pkgbase = dolibarr-git
 	options = !strip
 	options = emptydirs
 	backup = etc/dolibarr/conf.php
-	source = git+https://github.com/HLFH/dolibarr
+	source = git+https://github.com/Dolibarr/dolibarr#branch=develop
 	source = dolibarr.conf
 	source = nginx.conf.example
 	source = apache.conf.example

@@ -1,12 +1,12 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 pkgname=dolibarr-git
 _pkgname=dolibarr
-pkgver=17.0.1.r3571.g22ed190a4d6
+pkgver=20.0.0.r1243.g3f00ea3d6bf
 pkgrel=1
 pkgdesc="Dolibarr ERP CRM: modern software package to manage your company"
 arch=('any')
 url="https://dolibarr.org/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('git')
 depends=('php-legacy' 'php-legacy-gd')
 optdepends=('mariadb-clients: MariaDB backend')
@@ -17,7 +17,7 @@ options=('!strip' 'emptydirs')
 conflicts=('dolibarr')
 backup=("etc/$_pkgname/conf.php")
 install=dolibarr.install
-source=(git+https://github.com/HLFH/$_pkgname
+source=(git+https://github.com/Dolibarr/$_pkgname#branch=develop
         dolibarr.conf
         nginx.conf.example
         apache.conf.example)
