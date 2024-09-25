@@ -13,7 +13,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/yvs2014/$pkgname"
 license=('GPL-2.0')
 depends=('ncurses' 'libidn2' 'libcap')
-makedepends=('git' 'gcc' 'cmake' 'pkgconf')
+makedepends=('git' 'sed' 'gcc' 'meson' 'pkgconf')
 options=(strip !debug)
 
 conflicts=('mtr' 'mtr-gtk')
@@ -22,12 +22,12 @@ source=("$pkgname::git+$url")
 provides=("$_bin")
 
 build() {
-  cmake -B "$_build" -S "$pkgname" -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
-  cmake --build "$_build"
+  arch-meson "$pkgname" "$_build"
+  meson compile -C "$_build"
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install "$_build"
+  DESTDIR="$pkgdir" meson install -C "$_build"
 }
 
 pkgver() {

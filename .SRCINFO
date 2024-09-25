@@ -1,14 +1,15 @@
 pkgbase = mtr085
 	pkgdesc = Full screen ncurses traceroute tool, mtr v0.85 fork
-	pkgver = 0.85.r160.d8d3dd3
+	pkgver = 0.85.r162.2a443ff
 	pkgrel = 1
 	url = https://github.com/yvs2014/mtr085
 	arch = x86_64
 	arch = aarch64
 	license = GPL-2.0
 	makedepends = git
+	makedepends = sed
 	makedepends = gcc
-	makedepends = cmake
+	makedepends = meson
 	makedepends = pkgconf
 	depends = ncurses
 	depends = libidn2
