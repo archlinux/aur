@@ -2,7 +2,7 @@
 _pkgname=swayfx
 pkgname="$_pkgname-git"
 pkgver=r7057.da559b3e
-pkgrel=1
+pkgrel=2
 license=("MIT")
 pkgdesc="SwayFX: Sway, but with eye candy!"
 makedepends=(
@@ -60,7 +60,7 @@ sha512sums=(
 	"SKIP"
 	"d5f9aadbb4bbef067c31d4c8c14dad220eb6f3e559e9157e20e1e3d47faf2f77b9a15e52519c3ffc53dc8a5202cb28757b81a4b3b0cc5dd50a4ddc49e03fe06e"
 	"4f9576b7218aef8152eb60e646985e96b13540b7a4fd34ba68fdc490199cf7a7b46bbee85587e41bffe81fc730222cf408d5712e6251edc85a0a0b0408c1a2df")
-provides=("sway" "swayfx")
+provides=("sway" "swayfx" "wayland-compositor")
 conflicts=("sway" "swayfx" "swayfx-git")
 options=(debug)
 install=sway.install
