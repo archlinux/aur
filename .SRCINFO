@@ -1,5 +1,5 @@
 pkgbase = python-usb_monitor
-	pkgdesc = USBMonitor is an easy-to-use cross-platform library for USB device monitoring that simplifies tracking of connections, disconnections, and examination of connected device attributes on Windows, Linux and MacOs, freeing the user from platform-specific details or incompatibilities.
+	pkgdesc = USBMonitor is an easy-to-use cross-platform library for USB device monitoring.
 	pkgver = 1.21
 	pkgrel = 1
 	url = https://github.com/Eric-Canas/USBMonitor
