@@ -12,7 +12,7 @@
 
 pkgname=('boost' 'boost-libs')
 pkgver=1.86.0
-pkgrel=2
+pkgrel=3
 _srcname=boost_${pkgver//./_}
 pkgdesc="Free peer-reviewed portable C++ source libraries"
 arch=('x86_64')
@@ -70,6 +70,7 @@ build() {
     runtime-link=shared \
     link=shared,static \
     toolset=gcc \
+    cxxstd=23 \
     python=$python_version \
     cflags="$CPPFLAGS $CFLAGS -fPIC -O3 -ffat-lto-objects" \
     cxxflags="$CPPFLAGS $CXXFLAGS -fPIC -O3 -ffat-lto-objects" \
@@ -111,6 +112,7 @@ package_boost-libs() {
     libboost_atomic.so
     libboost_charconv.so
     libboost_chrono.so
+    libboost_cobalt.so
     libboost_container.so
     libboost_context.so
     libboost_contract.so
