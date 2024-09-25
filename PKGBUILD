@@ -2,12 +2,12 @@
 
 pkgname=gvmd
 pkgver=23.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Vulnerability manager Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/gvmd"
 license=('AGPL-3.0-only')
-depends=('cjson' 'gvm-libs' 'libbsd' 'libical' 'python' 'gnutls' 'postgresql' 'libxslt' 'sudo')
+depends=('cjson' 'gvm-libs' 'libbsd' 'libical' 'python' 'gnutls' 'postgresql' 'libxslt')
 makedepends=('cmake' 'doxygen' 'xmltoman' 'libxslt')
 groups=('greenbone-vulnerability-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/greenbone/gvmd/archive/v${pkgver}.tar.gz"
