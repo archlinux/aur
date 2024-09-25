@@ -1,0 +1,19 @@
+pkgbase = supermario64-sm64ex-git
+	pkgdesc = PC port of Super Mario 64.
+	pkgver = 20bb444
+	pkgrel = 1
+	url = https://github.com/sm64pc/sm64ex
+	arch = x86_64
+	arch = i386
+	arch = pentium4
+	arch = arm7h
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = unzip
+	source = git+https://github.com/sm64pc/sm64ex.git#commit=20bb444
+	source = https://gitlab.com/linuxbombay/supermario64/-/archive/1.0.2/supermario64-1.0.2.tar.bz2
+	sha256sums = 972d84f4f6535f6a0738b628da4187b57c3e5c54dae3872b42c1d7a451535588
+	sha256sums = 60cdb3676c6ef75b39e7d8766b18611bc72c857c97504450988cc71b18299d41
+
+pkgname = supermario64-sm64ex-git
