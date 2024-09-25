@@ -1,7 +1,7 @@
 # Maintainer: Jah Way <jahway603 at protonmail dot com>
 
 pkgname=peergos
-pkgver=0.18.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="A p2p, secure file storage, social network and application protocol"
 url="https://github.com/Peergos/web-ui"
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.jar::$url/releases/download/v$pkgver/Peergos.jar"
         "$pkgname.sh"
         "$pkgname-LICENSE::https://raw.githubusercontent.com/Peergos/Peergos/master/Licence.txt"
         "$pkgname-webui-LICENSE::https://raw.githubusercontent.com/Peergos/web-ui/master/LICENSE")
-sha256sums=('aac70d1aea6d91177b6d0848ab9d5b27f707d86ce7eb4941e08513f512ba788a'
+sha256sums=('2a4d1a840b2f7d36249956530c4f908720c51d0158ea5a5686620e601789d719'
             '37c237b578c5a1828cae720daaf6059e0451c0f9ab618089b9e8b3d972d327a6'
             '57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6'
             '589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2')
