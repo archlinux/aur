@@ -1,0 +1,25 @@
+pkgbase = mdcx
+	pkgdesc = Movie metadata scraper
+	pkgver = 120240924
+	pkgrel = 1
+	url = https://github.com/sqzw-x/mdcx
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = riscv64
+	license = GPL-3.0-or-later
+	makedepends = python39
+	provides = mdcx
+	conflicts = mdcx
+	source = mdcx-120240924.tar.gz::https://github.com/sqzw-x/mdcx/archive/refs/tags/120240924.tar.gz
+	source = mdcx.desktop
+	source = mdcx.png
+	sha256sums = cadde35d727ecb18f19465f6991554824ec55d05cbff361a07ecfe000b72a873
+	sha256sums = 90a66bc7a210b3f3d574a5050e27114aa1fc4d60479d359424d57b20b1526f23
+	sha256sums = bd10755b15288986c03168ba8dd13d9f762fa128ded082d14b036d0934e9f05d
+
+pkgname = mdcx

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=MDCx
+Comment=Movie metadata scraper
+Exec=/usr/bin/mdcx
+Terminal=false
+Icon=mdcx
+Categories=AudioVideo;Video;Player;TV;
