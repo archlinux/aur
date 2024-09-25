@@ -20,6 +20,7 @@ pkgbase = spotify-wayland
 	optdepends = ffmpeg4.4: Adds support for playback of local files
 	optdepends = zenity: Adds support for importing local files
 	optdepends = libnotify: Desktop notifications
+	conflicts = spotify
 	options = !strip
 	source = spotify-wayland-1.2.45.454-gc16ec9f6-x86_64.deb::http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.2.45.454.gc16ec9f6_amd64.deb
 	source = spotify.sh

@@ -1,10 +1,10 @@
-# Maintainer: Christian Heusel <christian@heusel.eu>
-# Maintainer: Robin Candau <antiz@archlinux.org>
+# Maintainer: Samir Bioud <samir@kronsy.dev>
+# Contributor: Christian Heusel <christian@heusel.eu>
+# Contributor: Robin Candau <antiz@archlinux.org>
 # Contributor: NicoHood <archlinux {cat} nicohood {dog} de>
 # Contributor: TobFromme < TobFromme {hat} pm {dont} me >
 # Contributor: Ashley Whetter <(firstname) @ awhetter.co.uk>
 # Contributor: Eothred <yngve.levinsen@gmail.com>
-# Contributor: Samir Bioud <samir@kronsy.dev>
 
 pkgname=spotify-wayland
 pkgver='1.2.45.454'
@@ -20,6 +20,8 @@ optdepends=('ffmpeg4.4: Adds support for playback of local files'
             'zenity: Adds support for importing local files'
             'libnotify: Desktop notifications')
 options=('!strip')
+
+conflicts=('spotify')
 
 # NOTE: We switched from stable to testing on 18th march, as the spotify
 # stable repository is always outdated. Testing seems to be in sync with snap:
