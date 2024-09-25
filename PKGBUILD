@@ -7,7 +7,7 @@
 _productVariant=Fotobuch
 # leave this unset to get a package name based on the application name
 pkgname=
-pkgrel=3
+pkgrel=1
 
 ## Begin shared code ##
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them from CEWE or partners'
@@ -28,9 +28,9 @@ _prams_Belgique=(fr_BE 28049 'CEWE Photoservice' 7.1.4)
 _prams_Czechia=(cs_CZ 4860 'CEWE fotosvet' 7.3.3 "CEWE fotosvět")
 _prams_France=(fr_FR 7884 'Logiciel de création CEWE' 7.1.5)
 _prams_Fnac=(fr_FR 18455 'Atelier Photo Fnac' 7.1.3)
-_prams_Fotobuch=(de_DE 16523 'Mein CEWE FOTOBUCH' 7.4.3 'CEWE Fotobuch')
+_prams_Fotobuch=(de_DE 16523 'Mein CEWE FOTOBUCH' 7.4.4 'CEWE Fotobuch')
 _prams_Fotowelt=(de_DE 6822 'CEWE Fotowelt' 7.4.0)
-_prams_Germany=(de_DE 24441 'CEWE Fotowelt' 7.4.3)
+_prams_Germany=(de_DE 24441 'CEWE Fotowelt' 7.4.4)
 _prams_Pixum=(de_DE 1291 'Pixum Fotowelt' 7.3.3)
 _prams_Italy=(it_IT 19991 'CEWE.IT Foto World' 7.1.5)
 _prams_Luxemburg=(de_LU 32905 'CEWE Photoservice' 7.1.5)
