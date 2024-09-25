@@ -1,4 +1,4 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Maintainer: Mattias Andrée <`base64 -d`(bWF0dGlhcy5hbmRyZWU)@protonmail.com>
 pkgname=rmixer
 pkgver=1.3.1
 pkgrel=1
