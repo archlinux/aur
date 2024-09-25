@@ -1,0 +1,22 @@
+pkgbase = nekoget
+	pkgdesc = A cli tool for fetching random catgirl images from NekosAPI or yande.re
+	pkgver = 0.4.1
+	pkgrel = 2
+	url = https://github.com/jer4q/nekoget
+	install = nekoget.install
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = python-pillow
+	depends = python-requests
+	depends = wget
+	depends = python-colorama
+	optdepends = xclip: for copying links on x11
+	optdepends = wl-copy: for copying images on wayland
+	provides = iv-cli=v0.2.2
+	source = https://github.com/jer4q/nekoget.git
+	source = https://github.com/kenshaw/iv
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = nekoget

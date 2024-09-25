@@ -1,0 +1,3 @@
+post_remove() {
+	rm -f /usr/share/nekoget/iv-cli
+}
