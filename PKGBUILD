@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=copperspice
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc='Libraries for developing cross platform software applications in C++'
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=('cmake' 'alsa-lib' 'mariadb-libs' 'postgresql' 'postgresql-libs'
 options=('!lto')
 source=("https://github.com/copperspice/copperspice/archive/cs-${pkgver}/${pkgname}-${pkgver}.tar.gz"
         '010-copperspice-fix-cmake-include-dirs.patch')
-sha256sums=('7ebee0e722e31ef90a687aaf1bf6eff09d93b318d8db62c4d7872a911894d1b0'
+sha256sums=('875a12c9d6e94aebbceccbe4fcd33f5b1e305b3e43b1da50b2ee1115c6a518b9'
             '1bef08debd977fb08861552e39e2752459c5fe9743d9d593bc135f5978df9c46')
 
 prepare() {
