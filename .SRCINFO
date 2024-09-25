@@ -18,4 +18,3 @@ pkgbase = rc.local.d
 	sha256sums = a74d39dd6e6825509112f9796e87b138ad1a810e6dd578bbacec1c47891e171e
 
 pkgname = rc.local.d
-
