@@ -1,0 +1,22 @@
+pkgbase = otf-plex-mono-git
+	pkgdesc = Ligatures for IBM Plex Mono .
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/liangjingkanji/PlexMono
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	provides = otf-plex-mono
+	provides = plex
+	provides = plex-mono
+	provides = Plex-fonts
+	conflicts = otf-plex-mono
+	conflicts = woff2-ibm-plex-git
+	conflicts = ttf-ibm-plex-git
+	conflicts = otf-ibm-plex-git
+	conflicts = ttf-blex-nerd-font-git
+	conflicts = texlive-fonts-plex
+	source = otf-plex-mono::git+https://github.com/liangjingkanji/PlexMono.git
+	sha256sums = SKIP
+
+pkgname = otf-plex-mono-git
