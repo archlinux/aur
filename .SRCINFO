@@ -1,6 +1,6 @@
 pkgbase = mdcx-git
 	pkgdesc = Movie metadata scraper
-	pkgver = r152.677884b
+	pkgver = 120240924.r156.e5c0df9
 	pkgrel = 1
 	url = https://github.com/sqzw-x/mdcx
 	arch = i686

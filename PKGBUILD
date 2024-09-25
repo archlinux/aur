@@ -1,6 +1,8 @@
+# Maintainer: devome <evinedeng@hotmail.com>
+
 _pkgname=mdcx
 pkgname="${_pkgname}-git"
-pkgver=r152.677884b
+pkgver=120240924.r156.e5c0df9
 pkgrel=1
 pkgdesc="Movie metadata scraper"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -16,22 +18,17 @@ sha256sums=('SKIP'
             '90a66bc7a210b3f3d574a5050e27114aa1fc4d60479d359424d57b20b1526f23'
             'bd10755b15288986c03168ba8dd13d9f762fa128ded082d14b036d0934e9f05d')
 
-prepare() {
+pkgver() {
+    cd "${_pkgname}"
+    printf "%s.r%s.%s" "$(awk '/version = /{print $3}' config.ini.default)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
     cd "${_pkgname}"
     python3.9 -m venv .venv
     source ./.venv/bin/activate
     pip install pyinstaller
     pip install -r requirements.txt
-}
-
-pkgver() {
-    cd "${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-build() {
-    cd "${_pkgname}"
-    source ./.venv/bin/activate
     pyi-makespec -F \
         -n "$_pkgname" \
         -w main.py \
