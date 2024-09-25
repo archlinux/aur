@@ -39,8 +39,8 @@ package() {
     fi
 done
     
-    # Link to binary
-    ln -s "$pkgdir/usr/share/games/$_rpkgname/$rpkgname" "$pkgdir/usr/bin/$rpkgname"
+    # Link to binary 
+    ln -s "$pkgdir/usr/share/games/$_rpkgname/$rpkgname" "$pkgdir/usr/bin/$rpkgname"    
 
     # Desktop Entry
     install -Dm644 "$rpkgname.desktop" \
