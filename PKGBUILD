@@ -5,16 +5,16 @@ _tag="v0.8.0"
 _commit="697226a2a7d80e70103316ca1bb3be6a86132547"
 
 pkgname=mayo-git
-pkgver=0.8.0.r36.gc502b77
+pkgver=0.8.0.r109.g9791ed5
 pkgrel=1
 pkgdesc="3D CAD viewer and converter based on Qt and OpenCascade (git version)"
 arch=('any')
 url="https://github.com/fougue/mayo"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('qt5-base' 'qt5-svg' 'opencascade')
-makedepends=('cmake' 'unzip' 'patch')
+makedepends=('cmake' 'git')
 source=("git+https://github.com/fougue/mayo.git#branch=develop"
-	'mayo.desktop')
+        'mayo.desktop')
 sha256sums=('SKIP'
             '09872560c396807d00a7a98dddefdeb734ccdc64e0a752e028194a59622c220b')
 
