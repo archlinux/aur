@@ -1,6 +1,6 @@
 pkgname=riseup-vpn-git
 pkgrel=1
-pkgver=0.24.8.r11.g89e85ee2
+pkgver=0.24.8.r21.g473595df
 pkgdesc="RiseupVPN is a branded build of Bitmask VPN. Bitmask VPN is a minimal rewrite of the Bitmask VPN Client, written in golang, that for now lacks client authentication, and is preconfigured to use a single provider."
 url="https://0xacab.org/leap/bitmask-vpn"
 arch=('x86_64')
@@ -10,13 +10,11 @@ source=(
     "git+https://0xacab.org/leap/bitmask-vpn.git"
     "riseup-vpn_launcher.desktop"
     "riseup-vpn.png"
-    "dont-build-debug-binary.diff"
 )
 
 sha256sums=('SKIP'
             'e21a0d99dcea6b849f80960fccc488e6294e3e794b0033fdc163291ecc8595ff'
-            '18cdea88cb7feb3de898918a78f612318b066d18c174d2a9addaa448f58de15c'
-            '582046086b9ed8f63b2de4353697b743cf179b7c825338754bdaebc4d7811c73')
+            '18cdea88cb7feb3de898918a78f612318b066d18c174d2a9addaa448f58de15c')
 
 pkgver() {
    cd "bitmask-vpn"
@@ -44,7 +42,6 @@ depends=(
 
 prepare() {
     cd "bitmask-vpn"
-    patch < ../dont-build-debug-binary.diff
 }
 
 build() {
@@ -55,7 +52,8 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-    PROVIDER=riseup make -j $(nproc)
+    PROVIDER=riseup make vendor
+    RELEASE=yes PROVIDER=riseup make build
 }
 
 check() {
