@@ -4,17 +4,18 @@
 # Contributor: TobFromme < TobFromme {hat} pm {dont} me >
 # Contributor: Ashley Whetter <(firstname) @ awhetter.co.uk>
 # Contributor: Eothred <yngve.levinsen@gmail.com>
+# Contributor: Samir Bioud <samir@kronsy.dev>
 
-pkgname=spotify
+pkgname=spotify-wayland
 pkgver='1.2.45.454'
 epoch=1
 _commit=gc16ec9f6
-pkgrel=1
-pkgdesc='A proprietary music streaming service'
+pkgrel=2
+pkgdesc='A proprietary music streaming service (Launches natively with Wayland)'
 arch=('x86_64')
 license=('custom')
 url='https://www.spotify.com'
-depends=('alsa-lib>=1.0.14' 'gtk3' 'libxss' 'desktop-file-utils' 'openssl' 'nss' 'at-spi2-atk' 'libcurl-gnutls' 'libsm' 'libayatana-appindicator')
+depends=('alsa-lib>=1.0.14' 'gtk3' 'libxss' 'desktop-file-utils' 'openssl' 'nss' 'at-spi2-atk' 'libcurl-gnutls' 'libsm' 'libayatana-appindicator' 'wayland')
 optdepends=('ffmpeg4.4: Adds support for playback of local files'
             'zenity: Adds support for importing local files'
             'libnotify: Desktop notifications')
@@ -67,7 +68,7 @@ package() {
     tar -xzf data.tar.gz --no-same-owner -C "${pkgdir}"
 
     # Enable spotify to open URLs from the webapp
-    sed -i 's/^Exec=.*/Exec=spotify --uri=%U/' "${pkgdir}/usr/share/spotify/spotify.desktop"
+    sed -i 's/^Exec=.*/Exec=spotify --enable-features=UseOzonePlatform --ozone-platform=wayland --uri=%U/' "${pkgdir}/usr/share/spotify/spotify.desktop"
 
     install -Dm 644 "${pkgdir}/usr/share/spotify/spotify.desktop" "${pkgdir}/usr/share/applications/spotify.desktop"
     install -Dm 644 "${pkgdir}/usr/share/spotify/icons/spotify-linux-512.png" "${pkgdir}/usr/share/pixmaps/spotify-client.png"
