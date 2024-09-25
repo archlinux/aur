@@ -8,11 +8,11 @@ fi
 # basic info
 _pkgname='pcsx2'
 pkgname="$_pkgname-latest-bin"
-pkgver=2.1.126
+pkgver=2.1.169
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
-license=('GPL-3.0-only' 'LGPL-3.0-only')
+license=('GPL-3.0-only')
 arch=('x86_64')
 
 makedepends=(
