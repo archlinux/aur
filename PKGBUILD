@@ -2,7 +2,7 @@
 
 pkgname=mangojuice
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A convenient alternative to GOverlay for configuring MangoHud"
 arch=(x86_64)
 url="https://github.com/radiolamp/${pkgname}"
@@ -26,7 +26,7 @@ optdepends=(
 
 options=(!debug)
 source=($url/archive/refs/tags/$pkgver.tar.gz)
-b2sums=(afb25ec26ee040522998a7d4fe8a788c7e7df1950f5238e06cc8a4390e686b4c7b53ff427ab7189f59bdf9f991aaab668274a3688c2fc0afe43507c08bc312d6)
+b2sums=(SKIP)
 
 build() {
   arch-meson ${pkgname}-$pkgver build
