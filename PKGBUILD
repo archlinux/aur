@@ -1,15 +1,15 @@
 # Maintainer: Pierre Chapuis <arch@catwell.info>
 
-pkgname=("johnnydep")
-pkgver=1.20.4
+pkgname="johnnydep"
+pkgver=1.20.5
 pkgrel=1
 pkgdesc="Display dependency tree of Python distribution"
 arch=("any")
 url="https://github.com/wimglenn/johnnydep"
 license=("MIT")
 options=(!emptydirs)
-source=("$pkgname-src-$pkgver.tar.gz::https://github.com/wimglenn/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=("84bb3b1f34e88908b23149e7e6e7192e4d6f56b4130f179ccfab49b7ce92d49b")
+source=("$pkgname-src-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=("f2ff31da327edb71a9e3da213003109a93acdfe20a5b3e202001a50c55845020")
 depends=(
     "python-anytree"
     "python-structlog"
