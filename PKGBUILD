@@ -6,7 +6,7 @@
 
 _pkgname=chromium
 pkgname=chromium-no-extras
-pkgver=129.0.6668.42
+pkgver=129.0.6668.70
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -37,7 +37,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('1523ad6aaed42a0f507737718a17e76f884b2226d96e21780c2fda9457e4cac2'
+sha256sums=('094ddec3774b54feb04dcfb020e61766de16feabb04850d73ef82e38c4bbf2b5'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '40db59162df2b7a2c0387bd620802f15424f637c09ba305b674fc09410ab21d1'
             '713dab4f8c26790c0e4a4c5ce6a9269e90446df5370cc14214a01a363f7afe39'
@@ -65,7 +65,7 @@ declare -gA _system_libs=(
   #[libaom]=aom
   #[libavif]=libavif  # needs -DAVIF_ENABLE_EXPERIMENTAL_GAIN_MAP=ON
   [libdrm]=
-  [libjpeg]=libjpeg
+  [libjpeg]=libjpeg-turbo
   [libpng]=libpng
   #[libvpx]=libvpx
   [libwebp]=libwebp
