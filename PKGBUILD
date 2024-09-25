@@ -2,7 +2,7 @@
 
 pkgname=gvmd
 pkgver=23.10.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Vulnerability manager Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/gvmd"
@@ -13,22 +13,10 @@ groups=('greenbone-vulnerability-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/greenbone/gvmd/archive/v${pkgver}.tar.gz"
         "archlinux_postgres_headers.patch"
         "0001-fix-unit-path.patch"
-        "greenbone-certdata-sync.timer"
-        "greenbone-feed-sync.timer"
-        "greenbone-scapdata-sync.timer"
-        "greenbone-certdata-sync.service"
-        "greenbone-feed-sync.service"
-        "greenbone-scapdata-sync.service"
         "gvmd.install")
 sha512sums=('9fc2999babbac331048cd37a92862c7aba861aeb2228ca5ff7abab2889cc89f9ce4ee08217df7af05c629e5454ddf8abfc786499747ce5c553ad0fcdebac7ff0'
             'ec2cbedf87bfd8cc1abfc6be9c566b6d2e6f7b1f902f5596d496b01faf208c9921b502d77ec9281ef3c0d03462f2d49bb973f4f9216a106116cd824e938951c2'
             '3d86dfd288dcf1ab91454c0fefcb33e2bf9cdc20638804fd524ebee5ff5783a21c67e9d6b5b575a2d009c2f97828d3866513b00d02d18665ecf3f1ca91c99c41'
-            '4d259ff625d29b10040ab1ff7cb472b3dee2355c8ef01275754c5c08779e0de3d5ae1cbb157239fd17d663644b43a642fe15c2d8e13cde037e52ad6a4e2e0afd'
-            'e1be40755530f9793c91c47db3bc1fb65266dcea2d1ba5e3ba1de97a93572bc52a18dc182f9c4d11fc4586f714663447917d70321e32c20bbe35765f999141d2'
-            '224bb41d298083755a77151038403b678bc66b9184b9b960ce4a380f8774ec7794e2f967eb48efd158a9ac7006b4a46a1f84267b50eef3e85ced5193a278a451'
-            '0e61d540bbe7d4a88d080e0b213f6c472d9b1b5bf122780dec9e2644fe15bae9a9938432fdcfde73ed9d280dd319dd4796acb83ea8135aab3fe981a00b612504'
-            'de1cc454f5bdf402368ca06680b542b3c10edd6e0e126be955fd3af140c0bb722b1664a9b3ac72bf10fae54c85142bf58f5becde767a27e102c19abe78216b0a'
-            'd90a42e8f2f77b05432f61ead247e8d4144569ae622159a45f0541469daa4447fa667ef6af42fa0117c957ab2a9afee425fef7bdc3532c8f89021e074c590052'
             'b57434d05d3191e460a15ae0e54c3a56f229ffabc3d1b13f395805eb8259ea225379cedaf1554938dd3e442801cd39149707a49ea589c7ca249ff6ffd2340c43')
 install=gvmd.install
 
@@ -57,11 +45,5 @@ build() {
 package() {
   make DESTDIR="${pkgdir}/" -C build install
 
-  install -m 644 greenbone-certdata-sync.timer $pkgdir/usr/lib/systemd/system
-  install -m 644 greenbone-scapdata-sync.timer $pkgdir/usr/lib/systemd/system
-  install -m 644 greenbone-feed-sync.timer $pkgdir/usr/lib/systemd/system
-  install -m 644 greenbone-certdata-sync.service $pkgdir/usr/lib/systemd/system
-  install -m 644 greenbone-scapdata-sync.service $pkgdir/usr/lib/systemd/system
-  install -m 644 greenbone-feed-sync.service $pkgdir/usr/lib/systemd/system
   install -d $pkgdir/var/lib/gvm/gvmd
 }
