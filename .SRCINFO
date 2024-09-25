@@ -1,0 +1,24 @@
+pkgbase = dbgate-git
+	pkgdesc = Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Runs under Windows, Linux, Mac or as web application
+	pkgver = 5.5.1.r5.ge3249c6
+	pkgrel = 1
+	url = https://dbgate.org/
+	arch = any
+	license = GPL-3.0-only
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = curl
+	makedepends = yarn
+	depends = electron30
+	provides = dbgate=5.5.1
+	conflicts = dbgate
+	source = dbgate.git::git+https://github.com/dbgate/dbgate.git
+	source = dbgate.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = dbgate-git
