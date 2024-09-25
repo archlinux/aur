@@ -5,7 +5,7 @@ pkgbase=libertinus-font-git
 _fname="${pkgbase%-font-git}"
 pkgname=(otf-$_fname-git ttf-$_fname-git)
 pkgver=7.050.r9.gf8d3386f
-pkgrel=1
+pkgrel=2
 pkgdesc='Fonts based on Linux Libertine/Biolinum, with extended math support'
 arch=(any)
 url="https://github.com/alerque/$_fname"
@@ -31,7 +31,7 @@ package_otf-libertinus-git() {
 	provides=("$pkgbase=$pkgver"
 	          "${pkgbase%-git}=$pkgver"
 	          "${pkgname%-git}=$pkgver")
-	confilcts=("${pkgname%-git}")
+	conflicts=("${pkgname%-git}")
 	install -Dm644 -t "$pkgdir/usr/share/fonts/${_fname}/" "${_fname^}"*.otf
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.txt AUTHORS.txt
 	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md preview.svg FONTLOG.txt documentation/*.pdf
@@ -42,7 +42,7 @@ package_ttf-libertinus-git() {
 	provides=("$pkgbase=$pkgver"
 	          "${pkgbase%-git}=$pkgver"
 	          "${pkgname%-git}=$pkgver")
-	confilcts=("${pkgname%-git}")
+	conflicts=("${pkgname%-git}")
 	install -Dm644 -t "$pkgdir/usr/share/fonts/${_fname}/" "${_fname^}"*.ttf
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.txt AUTHORS.txt
 	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md preview.svg FONTLOG.txt documentation/*.pdf
