@@ -13,7 +13,7 @@ fi
 # basic info
 _pkgname="mercury-browser-sse4"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=123.0.1
+pkgver=129.0.2
 pkgrel=1
 pkgdesc="Compiler optimized, private Firefox fork"
 url="https://github.com/Alex313031/Mercury"
@@ -38,7 +38,7 @@ _main_package() {
   noextract+=("$_dl_filename")
   source=("$_dl_filename"::"${_dl_url}")
 
-  sha256sums=('14725c8bd64e63029caffb49525e7107cc33e9c7572ff3ad5f12a48e9b89e22c')
+  sha256sums=('489d6601bdfd1da4a4de90aff33d63046add2024bbe505529b106eb7cf10b855')
 }
 
 # common functions

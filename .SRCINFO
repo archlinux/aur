@@ -1,6 +1,6 @@
 pkgbase = mercury-browser-sse4-bin
 	pkgdesc = Compiler optimized, private Firefox fork
-	pkgver = 123.0.1
+	pkgver = 129.0.2
 	pkgrel = 1
 	url = https://github.com/Alex313031/Mercury
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = mercury-browser-sse4-bin
 	optdepends = hunspell: Spell checking
 	optdepends = hyphen: Hyphenation
 	optdepends = networkmanager: Location detection via available WiFi networks
-	noextract = mercury-browser_123.0.1_SSE4.deb
+	noextract = mercury-browser_129.0.2_SSE4.deb
 	options = !emptydirs
 	options = !strip
-	source = mercury-browser_123.0.1_SSE4.deb::https://github.com/Alex313031/Mercury/releases/download/v.123.0.1/mercury-browser_123.0.1_SSE4.deb
-	sha256sums = 14725c8bd64e63029caffb49525e7107cc33e9c7572ff3ad5f12a48e9b89e22c
+	source = mercury-browser_129.0.2_SSE4.deb::https://github.com/Alex313031/Mercury/releases/download/v.129.0.2/mercury-browser_129.0.2_SSE4.deb
+	sha256sums = 489d6601bdfd1da4a4de90aff33d63046add2024bbe505529b106eb7cf10b855
 
 pkgname = mercury-browser-sse4-bin
 	depends = ffmpeg
@@ -20,5 +20,5 @@ pkgname = mercury-browser-sse4-bin
 	depends = dbus-glib
 	depends = gtk3
 	depends = libnotify
-	provides = mercury-browser-sse4=123.0.1
+	provides = mercury-browser-sse4=129.0.2
 	conflicts = mercury-browser-sse4
