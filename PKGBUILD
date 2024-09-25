@@ -2,12 +2,12 @@
 
 pkgname=gvmd
 pkgver=23.10.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Vulnerability manager Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/gvmd"
 license=('AGPL-3.0-only')
-depends=('cjson' 'gvm-libs' 'libbsd' 'libical' 'python' 'gnutls' 'postgresql' 'libxslt')
+depends=('ospd-openvas' 'cjson' 'gvm-libs' 'libbsd' 'libical' 'python' 'gnutls' 'postgresql' 'libxslt')
 makedepends=('cmake' 'doxygen' 'xmltoman' 'libxslt')
 optdepends=('logrotate: for rotating logs')
 groups=('greenbone-vulnerability-manager')
