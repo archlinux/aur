@@ -137,7 +137,7 @@ _CMAKE_FLAGS+=(
                                   )
 pkgname=elmerfem-git
 _pkgname=elmerfem
-pkgver=9.0.r3173.g73966f846
+pkgver=9.0.r3199.g4eaadd464
 pkgrel=1
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
@@ -182,22 +182,20 @@ options=(!emptydirs !staticlibs)
 ((ENABLE_DEBUG))      && options+=(debug !strip)
 
 source=("git+https://github.com/ElmerCSC/elmerfem.git${_fragment}"
-        "$_pkgname.desktop"
-        'occ_v7.8.patch::https://github.com/ElmerCSC/elmerfem/pull/577/commits/14c5a3727c697c8814d28f79053fdd773b6495d6.patch')
+        "$_pkgname.desktop")
 
 sha256sums=('SKIP'
-            'f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca'
-            'c1204a42bb480537f868ede88db64c33dbeacce687108e4088810628024d5aed')
+            'f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca')
 
 pkgver() {
   git -C "${srcdir}/${_pkgname}" describe --long --tag| sed -r 's/^release-//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${srcdir}"/$_pkgname
-  for patch in "${srcdir}"/*.patch
-    do msg2 "Apply: ${patch##*/}"; git apply -v "$patch"
-  done
+  #cd "${srcdir}"/$_pkgname
+  #for patch in "${srcdir}"/*.patch
+  #  do msg2 "Apply: ${patch##*/}"; git apply -v "$patch"
+  #done
   if((!DISABLE_INTERNAL_ZOLTAN && !DISABLE_ZOLTAN)); then
     cd "$srcdir/$_pkgname"
     git submodule update --init --recursive
@@ -230,24 +228,26 @@ check() {
 package() {
   DESTDIR="$pkgdir" ninja -C build install
   cd "$pkgdir/usr"
+  install -dv share/licenses/$_pkgname/elmersolver
+  mv share/elmersolver/license_texts/* share/licenses/$_pkgname/elmersolver/
 
-if ((!DISABLE_GUI)); then
-  # Remove unecessary libraries
-  rm -rf -- lib/{*.a,ElmerGUI}
+  if ((!DISABLE_GUI)); then
+    # Remove unecessary libraries
+    rm -rf -- lib/{*.a,ElmerGUI}
 
-  #Create directories
-  install -dv share/applications
-  install -dv share/pixmaps
-  install -dv share/licenses/$_pkgname
+    #Create directories
+    install -dv share/applications
+    install -dv share/pixmaps
+    install -dv share/licenses/$_pkgname/ElmerGUI
 
-  #Icon and desktop files
-  install -D -m644 "$srcdir/$_pkgname/ElmerGUI/Application/images/logo.png" share/pixmaps/$_pkgname.png
-  install -D -m644 "$srcdir/$_pkgname.desktop" share/applications
+    #Icon and desktop files
+    install -D -m644 "$srcdir/$_pkgname/ElmerGUI/Application/images/logo.png" share/pixmaps/$_pkgname.png
+    install -D -m644 "$srcdir/$_pkgname.desktop" share/applications
 
-  #Clean up and move stuff in place
-  cp share/ElmerGUI/edf-extra/* share/ElmerGUI/edf
-  mv share/ElmerGUI/license_texts/GPL_EXCEPTION share/licenses/$_pkgname
-  rm share/ElmerGUI/license_texts/*
-fi
+    #Clean up and move stuff in place
+    cp share/ElmerGUI/edf-extra/* share/ElmerGUI/edf
+    mv share/ElmerGUI/license_texts/GPL_EXCEPTION share/licenses/$_pkgname/ElmerGUI
+    rm share/ElmerGUI/license_texts/*
+  fi
 }
 # vim:set sw=2 ts=2 et:
