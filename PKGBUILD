@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
 pkgver=5.3.302
-pkgrel=1
+pkgrel=2
 pkgdesc='Cellframe blockchain node with a powerful SDK'
 arch=('x86_64' 'aarch64')
 url='https://cellframe.net'
@@ -49,7 +49,7 @@ build() {
 	if [ -n "$CELLFRAME_DEBUG" ]; then
 		BUILD_TYPE="Debug"
 	else
-		BUILD_TYPE="Release"
+		BUILD_TYPE="None"
 	fi
 
 	if [ -n "$CELLFRAME_NO_OPTIMIZATION" ]; then
