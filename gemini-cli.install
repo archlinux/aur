@@ -1,0 +1,6 @@
+post_remove() {
+    if [ -d "$HOME/.config/gemini-cli" ]; then
+        rm -rf "$HOME/.config/gemini-cli"
+        echo "Removed $HOME/.config/gemini-cli directory"
+    fi
+}

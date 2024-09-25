@@ -1,6 +1,6 @@
 pkgname=gemini-cli
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.3
+pkgrel=3
 pkgdesc="Terminal-based tool for interacting with Gemini"
 maintainer="Marcos Roque <devmarcosdanielr@gmail.com>"
 url="https://github.com/marcosdanielr/gemini-cli"
@@ -8,6 +8,7 @@ arch=('x86_64')
 license=('MIT')
 makedepends=('git' 'rust')
 source=("git+https://github.com/marcosdanielr/gemini-cli.git")
+install="gemini-cli.install"
 
 build() {
     cd "$srcdir/gemini-cli"
