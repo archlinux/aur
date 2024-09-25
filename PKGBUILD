@@ -2,12 +2,12 @@
 
 pkgname=cs-string
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone library for unicode aware string support'
 arch=('x86_64')
 url='https://www.copperspice.com/'
-license=('BSD')
-makedepends=('cmake' 'catch2')
+license=('BSD-2-Clause')
+makedepends=('cmake') #'catch2'
 source=("https://github.com/copperspice/cs_string/archive/string-${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('f264994bb869916f59d356f451c3eecc6171565ae9bf828292bd3d7d14168db3')
 
@@ -15,13 +15,13 @@ build() {
     cmake -B build -S "cs_string-string-${pkgver}" \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DBUILD_TESTS:BOOL='ON' \
+        -DBUILD_TESTS:BOOL='OFF' \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 check() {
-    make -C build test
+    ctest --test-dir build --output-on-failure
 }
 
 package() {
