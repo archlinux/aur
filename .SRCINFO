@@ -18,4 +18,3 @@ pkgbase = libpassphrase
 	sha256sums = 76044a7af93dd6a956c6fb9a13af711a2c90b260420a2bf1b272d624deefafb7
 
 pkgname = libpassphrase
-
