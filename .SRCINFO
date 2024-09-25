@@ -4,16 +4,17 @@ pkgbase = onedrivegui
 	pkgrel = 1
 	url = https://github.com/bpozdena/OneDriveGUI
 	arch = any
-	license = GPL
+	license = GPL-3.0-or-later
+	makedepends = git
 	depends = pyside6
 	depends = python-requests
-	depends = onedrive-abraunegg
+	depends = onedrive-abraunegg>=2.5.0
 	depends = qt6-webengine
 	provides = onedrivegui
 	conflicts = onedrivegui-git
-	source = https://github.com/bpozdena/OneDriveGUI/archive/refs/tags/v1.1.0.tar.gz
+	source = OneDriveGUI::git+https://github.com/bpozdena/OneDriveGUI.git#commit=0dff5718ace7fd16649ab0959d232afbad9f94bc
 	source = onedrivegui.desktop
-	sha256sums = 2e9beb21a34d5973d83f2409c62a32642ae14b3e2aa9af794ce72d1956415052
+	sha256sums = 4bf841abfb0c18615151e36a76f9c190317add030ce75c004cb3bb6c74e0efa1
 	sha256sums = c531f57c3c8424f265c0aad2e93260eab071d066d75de2f7eebb47e41c644267
 
 pkgname = onedrivegui
