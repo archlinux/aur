@@ -1,8 +1,8 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=python-proton-vpn-network-manager
-pkgver=0.6.3
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="The proton-vpn-network-manager component provides the necessary functionality for other components to interact with NetworkManager."
 arch=("any")
 url="https://github.com/ProtonVPN/python-proton-vpn-network-manager"
@@ -17,6 +17,9 @@ depends=('networkmanager-openvpn')
 conflicts=("python-protonvpn-nm-lib"
 	   "python-proton-vpn-network-manager-wireguard"
 	   "python-proton-vpn-network-manager-openvpn")
+
+replaces=("python-proton-vpn-network-manager-wireguard"
+	  "python-proton-vpn-network-manager-openvpn")
 
 build() {
 	cd "$pkgname"

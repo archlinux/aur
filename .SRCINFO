@@ -1,7 +1,7 @@
 pkgbase = python-proton-vpn-network-manager
 	pkgdesc = The proton-vpn-network-manager component provides the necessary functionality for other components to interact with NetworkManager.
-	pkgver = 0.6.3
-	pkgrel = 2
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://github.com/ProtonVPN/python-proton-vpn-network-manager
 	arch = any
 	groups = ProtonVPN
@@ -14,7 +14,9 @@ pkgbase = python-proton-vpn-network-manager
 	conflicts = python-protonvpn-nm-lib
 	conflicts = python-proton-vpn-network-manager-wireguard
 	conflicts = python-proton-vpn-network-manager-openvpn
-	source = git+https://github.com/ProtonVPN/python-proton-vpn-network-manager.git#tag=v0.6.3
+	replaces = python-proton-vpn-network-manager-wireguard
+	replaces = python-proton-vpn-network-manager-openvpn
+	source = git+https://github.com/ProtonVPN/python-proton-vpn-network-manager.git#tag=v0.7.0
 	sha256sums = SKIP
 
 pkgname = python-proton-vpn-network-manager
