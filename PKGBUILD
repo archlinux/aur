@@ -7,6 +7,7 @@ pkgrel=2
 pkgdesc="MkDocs Plugin that adds an additional page that combines all pages, allowing easy exports to PDF and standalone HTML."
 url="https://github.com/timvink/mkdocs-print-site-plugin"
 license=("MIT")
+groups=(mkdocs plugins)
 arch=("any")
 depends=("mkdocs" "python-hatchling")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
