@@ -1,1 +1,3 @@
-/home/jera/Documents/Git/nekoget/nekoget.install
+post_remove() {
+	rm -f /usr/share/nekoget/iv-cli
+}
