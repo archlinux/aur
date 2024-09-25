@@ -4,7 +4,7 @@
 pkgname=waveterm
 _pkgname=Wave
 _appname="${_pkgname} Terminal"
-pkgver=0.8.2
+pkgver=0.8.3
 _electronversion=32
 _nodeversion=22
 pkgrel=1
@@ -32,12 +32,13 @@ makedepends=(
     'nvm'
     'ruby'
     'go-task'
+    'zig'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('69ff68d8ce971a37192d5579fbb5b992cd2a5baec9c5544138943c871530f49a'
+sha256sums=('223a1e7b106415078cd54202e317cbe43bd4aa39d185f640e140784af3cddbec'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
