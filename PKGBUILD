@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-files-git
-pkgver=1.0.0.alpha.2.r11.gf352890
+pkgver=1.0.0.alpha.2.r16.g6891564
 pkgrel=1
 pkgdesc="File manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,6 @@ depends=(
   'glib2'
   'hicolor-icon-theme'
   'libxkbcommon'
-  'totem'
   'xdg-utils'
 )
 makedepends=(
@@ -18,6 +17,10 @@ makedepends=(
   'git'
   'just'
   'mold'
+)
+optdepends=(
+  'evince: external document thumbnailer'
+  'totem: external video thumbnailer'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
