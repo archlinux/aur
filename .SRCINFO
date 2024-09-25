@@ -1,0 +1,15 @@
+pkgbase = frog-protocols-git
+	pkgdesc = Frog protocols for Wayland 🐸 (Git version)
+	pkgver = 0.01.r4.g17be81d
+	pkgrel = 1
+	url = https://github.com/misyltoad/frog-protocols
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	provides = frog-protocols=0.01.r4.g17be81d
+	conflicts = frog-protocols
+	source = git+https://github.com/misyltoad/frog-protocols.git
+	sha512sums = SKIP
+
+pkgname = frog-protocols-git

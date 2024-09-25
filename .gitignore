@@ -1,0 +1,5 @@
+# Ignore makepkg generated directories/files
+frog-protocols/
+pkg/
+src/
+*.pkg.tar.zst
