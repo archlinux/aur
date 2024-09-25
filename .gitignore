@@ -1,4 +1,5 @@
 src/
 pkg/
 *.zip
+*.part
 *.pkg.tar.*
