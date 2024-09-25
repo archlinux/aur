@@ -1,6 +1,6 @@
 pkgbase = git-file-history
 	pkgdesc = Easily view the history of a file in a git repository
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/ceuk/git-file-history
 	arch = x86_64
