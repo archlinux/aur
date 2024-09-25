@@ -1,0 +1,20 @@
+post_install() {
+    ECHOLEN=$(echo -e|awk '{print length($0)}')
+    if [ "${ECHOLEN}" = '0' ]
+    then
+    ECHO='echo -e'
+    else
+    ECHO='echo'
+    fi
+
+    $ECHO "\033[36m******************************************************************************************\033[0m"
+    $ECHO "\033[36m  修改字体大小: 设置界面->外观->字体大小->设置字体大小                                         \033[0m"
+    $ECHO "\033[36m  自定义字体请编辑： ~/.config/Typora/themes/drake/font.css#L35-L37                        \033[0m"
+    $ECHO "\033[36m  行高/段间距请编辑：~/.config/Typora/themes/drake/font.css#L38-L40                        \033[0m"
+    $ECHO "\033[36m  其他问题查看：https://github.com/liangjingkanji/DrakeTyporaTheme/blob/master/issues.md  \033[0m"
+    $ECHO "\033[36m******************************************************************************************\033[0m"
+}
+
+post_upgrade() {
+    post_install
+}

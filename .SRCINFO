@@ -1,0 +1,19 @@
+pkgbase = typora-theme-drake-git
+	pkgdesc = Material Google JetBrains Vue Juejin Purple Ayu Dark .
+	pkgver = 2.9.6
+	pkgrel = 1
+	url = https://github.com/liangjingkanji/DrakeTyporaTheme
+	install = typora-theme-drake.install
+	arch = any
+	license = MIT
+	makedepends = git
+	optdepends = ttf-jetbrains-mono-git: 适合开发人员的编程字体
+	optdepends = otf-fira-code-git: 前端开发人员喜欢用的字体
+	optdepends = ttf-delugia-code: 微软官方字体, Windows Terminal的默认字体
+	optdepends = ttf-sarasa-gothic-sc: 更紗黑體, 超窄字间距(稍微过窄)
+	provides = typora-theme-drake
+	conflicts = typora-theme-drake
+	source = typora-theme-drake::git+https://github.com/liangjingkanji/DrakeTyporaTheme.git
+	sha256sums = SKIP
+
+pkgname = typora-theme-drake-git
