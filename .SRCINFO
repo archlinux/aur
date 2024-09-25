@@ -21,4 +21,3 @@ pkgbase = cerberus-logging
 	sha256sums = fedb5423eef21f108f1a293c17e625a3e49be9b891737b65b1284b6817ef59f1
 
 pkgname = cerberus-logging
-
