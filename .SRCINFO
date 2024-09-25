@@ -1,11 +1,12 @@
 pkgbase = ascii-term
 	pkgdesc = Display ASCII art in your terminal.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/marcosdanielr/ascii-term
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	source = git+https://github.com/marcosdanielr/ascii-term.git
+	sha256sums = SKIP
 
 pkgname = ascii-term

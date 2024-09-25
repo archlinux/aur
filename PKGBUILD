@@ -1,5 +1,5 @@
 pkgname=ascii-term
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Display ASCII art in your terminal."
 maintainer="Marcos Roque <devmarcosdanielr@gmail.com>"
@@ -40,3 +40,4 @@ EOF
         echo "ascii-term" >>"$HOME/.zshrc"
     fi
 }
+sha256sums=('SKIP')
