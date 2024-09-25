@@ -11,4 +11,3 @@ pkgbase = sshcd
 	sha256sums = 7c5b3dd5ece57a849467167279385cbb8e433617afefe8dee409e3d60d199ca8
 
 pkgname = sshcd
-
