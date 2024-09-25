@@ -1,7 +1,7 @@
 pkgbase = swayfx
 	pkgdesc = SwayFX: Sway, but with eye candy!
 	pkgver = 0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/WillPower3309/swayfx
 	install = sway.install
 	arch = i686
@@ -39,6 +39,7 @@ pkgbase = swayfx
 	optdepends = xdg-desktop-portal-wlr: xdg-desktop-portal backend
 	provides = sway
 	provides = swayfx
+	provides = wayland-compositor
 	conflicts = sway
 	conflicts = swayfx
 	conflicts = swayfx-git
