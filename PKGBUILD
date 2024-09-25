@@ -1,4 +1,4 @@
-# Maintainer: Nikos Platis <nplatis@gmail.com>
+# Maintainer: Nikos Platis <nplatis AT gmail DOT com>
 # Contributor: Yichao Zhou <broken.zhou@gmail.com>
 # Contributor: Corelli <corelli AT yepmail DOT net>
 # Contributor: >pmav99< >at< >gmail< >dot< >com<
@@ -8,7 +8,7 @@ pkgname=texlive-dummy
 pkgver=2.0
 pkgrel=1
 pkgdesc="Something to trick Arch into thinking it has its texlive packages installed."
-url="http://www.tug.org/texlive/"
+url="https://www.tug.org/texlive/"
 arch=('any')
 license=('GPL')
 depends=()
