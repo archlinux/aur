@@ -41,7 +41,7 @@ package() {
     echo 'WINEDLLOVERRIDES="mscoree=" WINEDEBUG=-all WINEPREFIX=~/.exact-audio-copy wine EAC.exe'
   } > "${_launcher}"
   chmod +x "${_launcher}"
-  ln -s "${_launcher}" "$pkgdir/usr/bin/exact-audio-copy"
+  ln -s "/usr/bin/eac" "$pkgdir/usr/bin/exact-audio-copy"
   
   _desktop="${pkgdir}/usr/share/applications/eac.desktop"
   {
