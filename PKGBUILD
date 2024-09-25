@@ -9,7 +9,7 @@
 
 _pkg=asterisk
 pkgname=${_pkg}-lts-18
-pkgver=18.24.2
+pkgver=18.24.3
 pkgrel=1
 pkgdesc='A complete open source PBX toolkit - Long Term Support release 18'
 arch=(x86_64 i686 aarch64 armv7h)
@@ -171,6 +171,10 @@ source=("https://downloads.asterisk.org/pub/telephony/${_pkg}/releases/$_archive
         "${_pkg}.sysusers"
         "${_pkg}.logrotated"
         "${_pkg}.tmpfiles")
+sha256sums=('70af95d1067a5afec7acbf98a242d853ae5dc8637c8f20d1f30d0dcf96eadb29'
+            '38a53911647fb2308482179cba605ebf12345df37eed23eb4ea67bf0bf041486'
+            'b97dc10a262621c95e4b75e024834712efd58561267b59b9171c959ecd9f7164'
+            '1b6b489d4f71015bfc56ce739d92df7e9abdb349aed6f5a47dd9c18d84546c1b')
 
 build() {
     cd "$_archive"
@@ -231,7 +235,3 @@ package(){
     chmod 0750 "$pkgdir"/{etc,run,var/{lib,log,spool}}/"${_pkg}"
     chmod 1777 "$pkgdir"/tmp
 }
-sha256sums=('11af7b24a7e027282696dda9370e812dcc5214e7ffb802ba42ee4ef3444c03b4'
-            '38a53911647fb2308482179cba605ebf12345df37eed23eb4ea67bf0bf041486'
-            'b97dc10a262621c95e4b75e024834712efd58561267b59b9171c959ecd9f7164'
-            '1b6b489d4f71015bfc56ce739d92df7e9abdb349aed6f5a47dd9c18d84546c1b')
