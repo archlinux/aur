@@ -17,4 +17,3 @@ pkgbase = cerberus-securetty
 	sha256sums = b63ed4b5f60b1c9731a801da01f8b04484cd930c78a56a264096d60594642fc8
 
 pkgname = cerberus-securetty
-
