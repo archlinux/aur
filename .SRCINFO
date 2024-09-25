@@ -1,6 +1,6 @@
 pkgbase = cpdf-git
 	pkgdesc = A command line toolkit for Portable Document Format
-	pkgver = 2.3.1.r52.gd51ba0d
+	pkgver = 2.7.1.r91.g6df2ff7
 	pkgrel = 1
 	url = https://github.com/johnwhitington/cpdf-source
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = cpdf-git
 	sha256sums = SKIP
 
 pkgname = cpdf-git
-

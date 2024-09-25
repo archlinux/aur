@@ -1,8 +1,8 @@
 # Contributor: Anton Kudelin <kudelin at protonmail dot com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
-
+# Former Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Ash <xash at riseup d0t net>
 pkgname=cpdf-git
-pkgver=2.3.1.r52.gd51ba0d
+pkgver=2.7.1.r91.g6df2ff7
 pkgrel=1
 pkgdesc="A command line toolkit for Portable Document Format"
 arch=('x86_64')
@@ -30,5 +30,5 @@ package() {
   install -Dpm644 ${pkgname%-git}.1 -t "$pkgdir"/usr/share/man/man1
   sed -e "s:cpdfmanual.pdf:/usr/share/doc/$_pkgname/&:g" -i "$pkgdir"/usr/share/man/man1/${pkgname%-git}.1
   install -Dpm644 cpdfmanual.pdf -t "$pkgdir"/usr/share/doc/${pkgname%-git}
-  install -Dpm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dpm644 LICENSE.md -t "$pkgdir"/usr/share/licenses/$pkgname
 }
