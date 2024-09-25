@@ -18,12 +18,10 @@ makedepends=(
   meson
   vala
   mangohud
-  vulkan-tools
 )
 
 optdepends=(
-  mesa-demos
-  adwaita-icon-theme
+  vulkan-tools
 )
 
 options=(!debug)
