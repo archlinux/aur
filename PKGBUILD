@@ -1,7 +1,7 @@
 # Contributor: staphon7 <staphon7 at orange dot fr>
 pkgname="advene"
 pkgver=3.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Video annotation and hypervideo authoring"
 arch=('any')
 url="https://github.com/oaubert/advene"
@@ -11,6 +11,7 @@ depends=('frei0r-plugins'
     'gst-libav'
     'gst-plugin-opencv'
     'gst-plugins-bad'
+    'gst-plugins-good'
     'gst-plugins-ugly'
     'gst-python'
     'gtksourceview3'

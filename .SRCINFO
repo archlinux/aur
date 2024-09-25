@@ -1,7 +1,7 @@
 pkgbase = advene
 	pkgdesc = Video annotation and hypervideo authoring
 	pkgver = 3.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oaubert/advene
 	arch = any
 	license = GPL2
@@ -10,6 +10,7 @@ pkgbase = advene
 	depends = gst-libav
 	depends = gst-plugin-opencv
 	depends = gst-plugins-bad
+	depends = gst-plugins-good
 	depends = gst-plugins-ugly
 	depends = gst-python
 	depends = gtksourceview3
