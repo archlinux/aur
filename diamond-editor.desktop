@@ -5,6 +5,7 @@ Comment=Compact editor designed for programmers
 Path=/usr/bin
 Exec=diamond-editor
 Icon=diamond-editor
+StartupWMClass=Diamond Editor
 Terminal=false
 StartupNotify=false
 Type=Application
