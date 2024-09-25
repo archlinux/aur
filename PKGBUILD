@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggplot.multistats
-_pkgver=1.0.0
+_pkgver=1.0.1
 pkgname=r-${_pkgname,,}
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='Multiple Summary Statistics for Binned Stats/Geometries'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ depends=(
   r-scales
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('34825fa78bd7008ea27affc54c50e9eaca01fc0cf5bccbd92288b06d9072dfa9')
+sha256sums=('fc4a042bf7d86641e50338ba851056dc2ed1f501092f9b78ac5cf3d6ce7ece5d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
