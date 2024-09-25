@@ -1,7 +1,7 @@
 pkgbase = proton-vpn-gtk-app
 	pkgdesc = ProtonVPN GTK app, Maintained by Community
-	pkgver = 4.4.5
-	pkgrel = 2
+	pkgver = 4.5.0
+	pkgrel = 1
 	url = https://github.com/ProtonVPN/proton-vpn-gtk-app
 	arch = any
 	groups = ProtonVPN
@@ -34,7 +34,7 @@ pkgbase = proton-vpn-gtk-app
 	optdepends = libappindicator-gtk3
 	conflicts = protonvpn-gui
 	conflicts = python-proton-client
-	source = git+https://github.com/ProtonVPN/proton-vpn-gtk-app.git#tag=v4.4.5
+	source = git+https://github.com/ProtonVPN/proton-vpn-gtk-app.git#tag=v4.5.0
 	sha256sums = SKIP
 
 pkgname = proton-vpn-gtk-app
