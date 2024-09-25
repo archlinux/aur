@@ -5,18 +5,13 @@
 # llvm-profdata merge -output=pcsx2-avx-git.profdata *.profraw
 
 ## options
-: ${_build_debug:=false}
-: ${_build_pgo:=try}
-
-: ${_build_git_tools:=false}
+: ${_commit:=2f46e5a8406e4832ba60c5ab1ba2fd16a074ab1f} # 2.0.2
 
 : ${_build_instrumented:=false}
+: ${_build_pgo:=try}
 
 : ${_build_avx:=true}
 : ${_build_git:=true}
-
-unset _tooltype # clang-git, llvm-git, lld-git, mold-git
-[[ "${_build_git_tools::1}" == "t" ]] && _tooltype+="-git"
 
 unset _pkgtype
 [[ "${_build_instrumented::1}" == "t" ]] && _pkgtype+="-instrumented"
@@ -26,112 +21,84 @@ unset _pkgtype
 # basic info
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.7.5944.r0.gd3bcfe0
+pkgver=2.1.169.r0.g6c3cf12
 pkgrel=1
 pkgdesc='Sony PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
-license=('GPL-3.0-only' 'LGPL-3.0-only')
+license=('GPL-3.0-only')
 arch=('x86_64')
 
-# main package
-_main_package() {
-  depends=(
-    alsa-lib
-    ffmpeg
-    libaio
-    libglvnd
-    libpcap
-    libpng
-    libxrandr
-    qt6-base
-    qt6-svg
-    sdl2
-    soundtouch
-    wayland
-    xcb-util-cursor
-  )
-  makedepends=(
-    ## compiler
-    "clang${_tooltype:-}"
-    "lld${_tooltype:-}"
-    "llvm${_tooltype:-}"
+depends=(
+  alsa-lib
+  ffmpeg
+  libaio
+  libglvnd
+  libpcap
+  libpng
+  libxrandr
+  qt6-base
+  qt6-svg
+  sdl2
+  soundtouch
+  wayland
+  xcb-util-cursor
+)
+makedepends=(
+  ## compiler
+  clang
+  lld
+  llvm
 
-    ## build
-    cmake
-    extra-cmake-modules
-    git
-    ninja
+  ## build
+  cmake
+  extra-cmake-modules
+  git
+  ninja
 
-    ## pcsx2
-    libpipewire
-    libpulse
-    qt6-tools
-    qt6-wayland
+  ## pcsx2
+  libpipewire
+  libpulse
+  qt6-tools
+  qt6-wayland
 
-    p7zip
+  p7zip
 
-    ## fixups
-    patchelf
-  )
-  optdepends=(
-    'qt6-wayland: Wayland support'
-  )
+  ## fixups
+  patchelf
+)
+optdepends=(
+  'qt6-wayland: Wayland support'
+)
 
+if [ "${_build_git::1}" == "t" ]; then
   provides=("$_pkgname")
   conflicts=("$_pkgname")
+  _commit="master"
 
-  if [[ "${_build_debug::1}" == "t" ]]; then
-    options=(debug !lto)
-  else
-    options=(!debug lto)
-  fi
+  pkgver() {
+    cd "$_pkgsrc"
+    git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+      | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+  }
+fi
 
-  install="$_pkgname.install"
-
-  source=()
-  sha256sums=()
-
-  _source_pcsx2
-  _source_backtrace
-  _source_shaderc
-}
+options=('!debug' 'lto')
+install="$_pkgname.install"
 
 _source_pcsx2() {
   _pkgsrc="$_pkgname"
-  source+=(
-    "$_pkgsrc"::"git+$url.git"
-    "pcsx2_patches"::"git+https://github.com/PCSX2/pcsx2_patches.git"
-  )
-  sha256sums+=(
-    'SKIP'
-    'SKIP'
-  )
+  source+=("$_pkgsrc"::"git+$url.git#commit=$_commit")
+  sha256sums+=('SKIP')
+}
 
-  _prepare_pcsx2() (
-    cd "$_pkgsrc"
-    sed -E -e 's&"shaderc_shared"&"'"shaderc_$_pkgname"'"&' -i "pcsx2/GS/Renderers/Vulkan/VKShaderCache.cpp"
-  )
+_source_pcsx2_patches() {
+  source+=("pcsx2_patches"::"git+https://github.com/PCSX2/pcsx2_patches.git")
+  sha256sums+=('SKIP')
 }
 
 _source_backtrace() {
-  source+=(
-    "ianlancetaylor.libbacktrace"::"git+https://github.com/ianlancetaylor/libbacktrace.git"
-  )
-  sha256sums+=(
-    'SKIP'
-  )
-
-  _build_backtrace() (
-    echo "Building libbacktrace..."
-    cd "ianlancetaylor.libbacktrace"
-
-    autoreconf -fi
-    ./configure
-    make
-
-    install -Dm644 .libs/libbacktrace.a -t "$srcdir/deps/"
-    install -Dm644 *.h -t "$srcdir/deps/include/"
-  )
+  source+=("ianlancetaylor.libbacktrace"::"git+https://github.com/ianlancetaylor/libbacktrace.git")
+  sha256sums+=('SKIP')
 }
 
 _source_shaderc() {
@@ -153,42 +120,84 @@ _source_shaderc() {
   sha256sums+=(
     'SKIP'
   )
+}
 
-  _prepare_shaderc() (
-    local _version_shaderc=$(grep -E -m1 'SHADERC=' "$_pkgsrc/.github/workflows/scripts/linux/build-dependencies-qt.sh" | sed -E -e 's&^\s*SHADERC=(\S+)$&\1&')
+_prepare_pcsx2() (
+  cd "$_pkgsrc"
 
-    git -C "$srcdir/google.shaderc" checkout -f "v$_version_shaderc"
+  # rename patched shaderc
+  sed -E -e 's&"shaderc_shared"&"'"shaderc_$_pkgname"'"&' -i "pcsx2/GS/Renderers/Vulkan/VKShaderCache.cpp"
 
-    filterdiff -x '*/CMakeLists.txt' "$srcdir/$_pkgsrc/.github/workflows/scripts/common/shaderc-changes.patch" \
-      | sed -E 's&non_sematic_debug_info&non_semantic_debug_info&' \
-        > shaderc-changes.patch
+  # prevent march=native
+  sed -E -e 's@^(\s*)(add_compile_options\(.*march=native.*\))@\1message("skip: march=native")@' \
+    -i "cmake/BuildParameters.cmake"
+)
 
-    cd "$srcdir/google.shaderc"
-    git apply "$srcdir/shaderc-changes.patch"
+_prepare_shaderc() (
+  local _version_shaderc=$(grep -E -m1 'SHADERC=' "$_pkgsrc/.github/workflows/scripts/linux/build-dependencies-qt.sh" | sed -E -e 's&^\s*SHADERC=(\S+)$&\1&')
 
-    sed -E -e '/\(glslc\)/d;/examples/d;/third_party/d' \
-      -i CMakeLists.txt
+  git -C "$srcdir/google.shaderc" checkout -f "v$_version_shaderc"
+
+  filterdiff -x '*/CMakeLists.txt' "$srcdir/$_pkgsrc/.github/workflows/scripts/common/shaderc-changes.patch" \
+    | sed -E 's&non_sematic_debug_info&non_semantic_debug_info&' \
+      > shaderc-changes.patch
+
+  cd "$srcdir/google.shaderc"
+  git apply "$srcdir/shaderc-changes.patch"
+
+  sed -E -e '/\(glslc\)/d;/examples/d;/third_party/d' \
+    -i CMakeLists.txt
+)
+
+_source_pcsx2
+_source_pcsx2_patches
+_source_backtrace
+_source_shaderc
+
+prepare() {
+  _submodule_update() {
+    local _module
+    for _module in "${_submodules[@]}"; do
+      git submodule init "${_module##*::}"
+      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
+      git -c protocol.file.allow=always submodule update "${_module##*::}"
+    done
+  }
+
+  _prepare_pcsx2
+  _prepare_shaderc
+}
+
+_build_backtrace() (
+  echo "Building libbacktrace..."
+  cd "ianlancetaylor.libbacktrace"
+
+  autoreconf -fi
+  ./configure
+  make
+
+  install -Dm644 .libs/libbacktrace.a -t "$srcdir/deps/"
+  install -Dm644 *.h -t "$srcdir/deps/include/"
+)
+
+_build_shaderc() {
+  echo "Building shaderc..."
+  local _cmake_shaderc=(
+    -B build_shaderc
+    -S google.shaderc
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DSHADERC_SKIP_TESTS=ON
+    -DSHADERC_SKIP_EXAMPLES=ON
+    -DSHADERC_SKIP_COPYRIGHT_CHECK=ON
+    -Dglslang_SOURCE_DIR=/usr/include/glslang
+    -Wno-dev
   )
 
-  _build_shaderc() {
-    echo "Building shaderc..."
-    local _cmake_shaderc=(
-      -B build_shaderc
-      -S google.shaderc
-      -G Ninja
-      -DCMAKE_BUILD_TYPE=None
-      -DCMAKE_INSTALL_PREFIX=/usr
-      -DSHADERC_SKIP_TESTS=ON
-      -DSHADERC_SKIP_EXAMPLES=ON
-      -DSHADERC_SKIP_COPYRIGHT_CHECK=ON
-      -Dglslang_SOURCE_DIR=/usr/include/glslang
-      -Wno-dev
-    )
-
-    cmake "${_cmake_shaderc[@]}"
-    cmake --build build_shaderc
-    DESTDIR="$srcdir/deps" cmake --install build_shaderc
-  }
+  cmake "${_cmake_shaderc[@]}"
+  cmake --build build_shaderc
+  DESTDIR="$srcdir/deps" cmake --install build_shaderc
 }
 
 _build_pcsx2() {
@@ -205,20 +214,10 @@ _build_pcsx2() {
     -DLIBBACKTRACE_LIBRARY="$srcdir/deps/libbacktrace.a"
     -DSHADERC_INCLUDE_DIR="$srcdir/deps/usr/include"
     -DSHADERC_LIBRARY="$srcdir/deps/usr/lib/libshaderc_shared.so.1"
+    -DENABLE_TESTS=OFF
+    -DUSE_ASAN=OFF
+    -Wno-dev
   )
-
-  if [[ "${_build_debug::1}" == "t" ]]; then
-    _cmake_pcsx2+=(
-      -DENABLE_TESTS=ON
-      -DUSE_ASAN=ON
-    )
-  else
-    _cmake_pcsx2+=(
-      -DENABLE_TESTS=OFF
-      -DUSE_ASAN=OFF
-      -Wno-dev
-    )
-  fi
 
   if [[ "${_build_avx::1}" == "t" ]]; then
     _cmake_pcsx2+=(-DDISABLE_ADVANCE_SIMD=OFF)
@@ -246,37 +245,16 @@ _build_pcsx2() {
   cmake --build build_pcsx2
 }
 
-# common functions
-prepare() {
-  _submodule_update() {
-    local _module
-    for _module in "${_submodules[@]}"; do
-      git submodule init "${_module##*::}"
-      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
-      git -c protocol.file.allow=always submodule update "${_module##*::}"
-    done
-  }
-
-  _prepare_pcsx2
-  _prepare_shaderc
-
-  # prevent march=native
-  sed -E -e 's@^(\s*)(add_compile_options\(.*march=native.*\))@\1message("skip: march=native")@' \
-    -i "$_pkgsrc/cmake/BuildParameters.cmake"
-}
-
-pkgver() {
-  cd "$_pkgsrc"
-  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
-}
+_build_pcsx2_patches() (
+  cd pcsx2_patches
+  7z a -mx=9 -r ../patches.zip patches/.
+)
 
 build() {
-  export AR CC CXX CFLAGS CXXFLAGS LDFLAGS
-  AR=llvm-ar
+  export CC CXX CFLAGS CXXFLAGS LDFLAGS
   CC=clang
   CXX=clang++
-  LDFLAGS="$(echo "$LDFLAGS" | sed -E 's@\s*-(fuse-ld)=\S+\s*@ @g;s@\s+@ @g') -fuse-ld=lld"
+  LDFLAGS="${LDFLAGS//*fuse-ld*/} -fuse-ld=lld"
 
   if [[ "${_build_avx::1}" == "t" ]]; then
     CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
@@ -286,9 +264,7 @@ build() {
   _build_backtrace
   _build_shaderc
   _build_pcsx2
-
-  cd pcsx2_patches
-  7z a -mx=9 -r ../patches.zip patches/.
+  _build_pcsx2_patches
 }
 
 package() {
@@ -331,6 +307,3 @@ END
   # permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
-
-# execute
-_main_package

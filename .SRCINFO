@@ -1,12 +1,11 @@
 pkgbase = pcsx2-avx-git
 	pkgdesc = Sony PlayStation 2 emulator
-	pkgver = 1.7.5944.r0.gd3bcfe0
+	pkgver = 2.1.169.r0.g6c3cf12
 	pkgrel = 1
 	url = https://github.com/PCSX2/pcsx2
 	install = pcsx2.install
 	arch = x86_64
 	license = GPL-3.0-only
-	license = LGPL-3.0-only
 	makedepends = clang
 	makedepends = lld
 	makedepends = llvm
@@ -42,7 +41,7 @@ pkgbase = pcsx2-avx-git
 	conflicts = pcsx2
 	options = !debug
 	options = lto
-	source = pcsx2::git+https://github.com/PCSX2/pcsx2.git
+	source = pcsx2::git+https://github.com/PCSX2/pcsx2.git#commit=master
 	source = pcsx2_patches::git+https://github.com/PCSX2/pcsx2_patches.git
 	source = ianlancetaylor.libbacktrace::git+https://github.com/ianlancetaylor/libbacktrace.git
 	source = google.shaderc::git+https://github.com/google/shaderc.git
