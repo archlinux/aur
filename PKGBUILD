@@ -8,7 +8,7 @@ pkgdesc="A command line tool to download lyric (.lrc) files for local songs from
 arch=('x86_64' 'aarch64')
 url="https://github.com/real-zony/ZonyLrcToolsX"
 license=('MIT')
-depends=('zlib')
+depends=('zlib' 'fuse-overlayfs')
 makedepends=()
 provides=("${_pkgname}" "${_execname}")
 conflicts=("${_pkgname}" "${_execname}")
@@ -16,11 +16,13 @@ conflicts=("${_pkgname}" "${_execname}")
 # stripping binaries will crash the program
 options=(!strip)
 
+source=("${_execname}")
 source_x86_64=("${_pkgname}-${pkgver}.zip::https://github.com/real-zony/ZonyLrcToolsX/releases/download/ZonyLrcToolsX_Alpha.2023122272/ZonyLrcTools_linux-x64_2023122272.zip")
 source_aarch64=("${_pkgname}-${pkgver}.zip::https://github.com/real-zony/ZonyLrcToolsX/releases/download/ZonyLrcToolsX_Alpha.2023122272/ZonyLrcTools_linux-arm64_2023122272.zip")
 
 noextract=("${_pkgname}-${pkgver}.zip")
 
+sha256sums=('27ff58c63d51377fe42aec38c79b18d3e46a8c4be43e0902c84244d5b59f46b7')
 sha256sums_x86_64=('0a9db582c8d0002fa11c0db5c6f0d20d754957fe14313238b2267d4e580716c2')
 sha256sums_aarch64=('2ff48eeb8a21e16508eb2daaf16078880008561d058c65952fdfbb358be893ee')
 
@@ -35,6 +37,6 @@ package() {
         install -dm755 "${pkgdir}/opt/${pkgname}"
         install -dm755 "${pkgdir}/usr/bin"
         
-        cp --recursive * "${pkgdir}/opt/${pkgname}"
-        ln --symbolic "/opt/${pkgname}/${_execname}" "${pkgdir}/usr/bin/${_execname}"
+        cp --recursive ./* "${pkgdir}/opt/${pkgname}"
+        cp "${srcdir}/${_execname}" "${pkgdir}/usr/bin/${_execname}"
 }
