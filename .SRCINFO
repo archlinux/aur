@@ -1,0 +1,16 @@
+pkgbase = ttf-ptcode-git
+	pkgdesc = Ligatures font for PT Mono .
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/liangjingkanji/PTCode
+	arch = any
+	license = OFL
+	makedepends = git
+	provides = ttf-ptcode
+	provides = ptcode
+	conflicts = ttf-ptcode
+	conflicts = ptcode
+	source = ttf-ptcode::git+https://github.com/liangjingkanji/PTCode.git
+	sha256sums = SKIP
+
+pkgname = ttf-ptcode-git
