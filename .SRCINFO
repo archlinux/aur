@@ -1,6 +1,6 @@
 pkgbase = mediago-git
-	pkgdesc = 视频在线提取工具 流媒体下载 m3u8下载
-	pkgver = 3.0.0.beta.0.r0.gcb814db
+	pkgdesc = Video online extraction tool streaming media download, video download,m3u8 download,Bilibili video download.视频在线提取工具,流媒体下载,视频下载,m3u8下载,B站视频下载.
+	pkgver = 3.0.0.beta.1.r0.gb047411
 	pkgrel = 1
 	url = https://downloader.caorushizi.cn/
 	arch = x86_64
@@ -14,7 +14,8 @@ pkgbase = mediago-git
 	makedepends = curl
 	makedepends = pnpm
 	depends = electron30
-	provides = mediago=3.0.0.beta.0
+	depends = python
+	provides = mediago=3.0.0.beta.1
 	conflicts = mediago
 	source = mediago.git::git+https://github.com/caorushizi/mediago.git
 	source = mediago.sh
