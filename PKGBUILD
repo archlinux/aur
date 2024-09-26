@@ -3,15 +3,24 @@
 _pkgname=commacd
 pkgname=${_pkgname}-git
 pkgver=20190203.r77.0431104
-pkgrel=3
+pkgrel=4
 pkgdesc='A faster way to move around (Bash 3+/Zsh)'
 url='https://github.com/shyiko/commacd'
 license=('MIT')
-install=$pkgname.install
-depends=('bash')
-makedepends=('git')
 arch=('any')
-source=('git+https://github.com/shyiko/commacd.git' 'LICENSE' "${_pkgname}.1")
+install=$pkgname.install
+makedepends=('git')
+
+optdepends=(
+  'bash: use commacd with bash'
+  'zsh: use commacd with zsh'
+)
+
+source=(
+  'git+https://github.com/shyiko/commacd.git'
+  'LICENSE'
+  "${_pkgname}.1"
+)
 
 sha512sums=(
   'SKIP'

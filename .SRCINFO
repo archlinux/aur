@@ -1,13 +1,14 @@
 pkgbase = commacd-git
 	pkgdesc = A faster way to move around (Bash 3+/Zsh)
 	pkgver = 20190203.r77.0431104
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/shyiko/commacd
 	install = commacd-git.install
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = bash
+	optdepends = bash: use commacd with bash
+	optdepends = zsh: use commacd with zsh
 	source = git+https://github.com/shyiko/commacd.git
 	source = LICENSE
 	source = commacd.1
