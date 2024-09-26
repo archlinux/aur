@@ -1,6 +1,6 @@
 pkgbase = zed-preview-bin
 	pkgdesc = A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter
-	pkgver = 0.154.1
+	pkgver = 0.155.0
 	pkgrel = 1
 	url = https://zed.dev
 	arch = x86_64
@@ -28,11 +28,11 @@ pkgbase = zed-preview-bin
 	optdepends = clang: improved C/C++ language support
 	optdepends = eslint: improved Javascript language support
 	optdepends = rust-analyzer: improved Rust language support
-	provides = zed=0.154.1
+	provides = zed=0.155.0
 	conflicts = zed
-	source_x86_64 = zed-preview-bin-0.154.1.tar.gz::https://zed.dev/api/releases/preview/0.154.1/zed-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 8bc469a6285ec0f39f972f537cf7219c887381b3cb5a5fd1fb38f4f4a64c0558
-	source_aarch64 = zed-preview-bin-0.154.1.tar.gz::https://zed.dev/api/releases/preview/0.154.1/zed-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 1f73880fba6b08499000c48dd03347abff206c324eddea9ed14c271f53f09f5a
+	source_x86_64 = zed-preview-bin-0.155.0.tar.gz::https://zed.dev/api/releases/preview/0.155.0/zed-linux-x86_64.tar.gz
+	sha256sums_x86_64 = f470661275281c39680165236ce70a94b4110223999318a95df7669040a315c1
+	source_aarch64 = zed-preview-bin-0.155.0.tar.gz::https://zed.dev/api/releases/preview/0.155.0/zed-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 5a143b553a10942877b5f18bbe8b3c0d568baa2ffbedc887f2a8f64219dde8e0
 
 pkgname = zed-preview-bin
