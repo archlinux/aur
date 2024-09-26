@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-libarchive
 	pkgdesc = Multi-format archive and compression library (Android x86-64)
-	pkgver = 3.7.4
+	pkgver = 3.7.6
 	pkgrel = 1
 	url = https://libarchive.org/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = android-x86-64-libarchive
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/libarchive/libarchive/releases/download/v3.7.4/libarchive-3.7.4.tar.xz
-	sha256sums = f887755c434a736a609cbd28d87ddbfbe9d6a3bb5b703c22c02f6af80a802735
+	source = https://github.com/libarchive/libarchive/releases/download/v3.7.6/libarchive-3.7.6.tar.xz
+	md5sums = bb53692eefc96a73ca5322a54ab52b48
 
 pkgname = android-x86-64-libarchive
