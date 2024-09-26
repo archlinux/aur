@@ -90,7 +90,7 @@ pkgbase = vlc-luajit
 	makedepends = opus
 	makedepends = pcsclite
 	makedepends = projectm
-	makedepends = protobuf>=28.1
+	makedepends = protobuf>=28.2
 	makedepends = qt5-base
 	makedepends = qt5-svg
 	makedepends = qt5-x11extras
