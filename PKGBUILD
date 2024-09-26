@@ -6,8 +6,8 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libtiff
-pkgver=4.6.0
-pkgrel=4
+pkgver=4.7.0
+pkgrel=1
 arch=('any')
 pkgdesc="Library for manipulation of TIFF images (Android ${_android_arch})"
 url="http://www.simplesystems.org/libtiff/"
@@ -20,7 +20,7 @@ depends=("android-${_android_arch}-jbigkit"
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://download.osgeo.org/libtiff/tiff-${pkgver}.tar.gz")
-md5sums=('fc7d49a9348b890b29f91a4ecadd5b49')
+md5sums=('3a0fa4a270a4a192b08913f88d0cfbdd')
 
 build() {
     cd "${srcdir}/tiff-${pkgver}"
@@ -42,9 +42,9 @@ package() {
     cd "${srcdir}/tiff-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     cp libtiff/{tiffiop,tif_dir}.h "${pkgdir}/${ANDROID_PREFIX_INCLUDE}/"
     cp libtiff/tif_config.h "${pkgdir}/${ANDROID_PREFIX_INCLUDE}/"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.a
 }
