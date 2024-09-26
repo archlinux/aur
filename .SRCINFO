@@ -1,6 +1,6 @@
 pkgbase = gemini-desktop-git
 	pkgdesc = A simple Gemini client using the Electron framework(Unofficial).Use system-wide electron.
-	pkgver = 1.0.4.r2.g9972e8f
+	pkgver = 1.0.4.r5.ge6396ba
 	pkgrel = 1
 	url = https://github.com/nekupaw/gemini-desktop
 	arch = any
