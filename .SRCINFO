@@ -1,0 +1,25 @@
+pkgbase = pcmciautils
+	pkgdesc = Utilities for inserting and removing PCMCIA cards
+	pkgver = 018
+	pkgrel = 9
+	url = http://kernel.org/pub/linux/utils/kernel/pcmcia/pcmcia.html
+	arch = i486
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	groups = base
+	license = GPL
+	makedepends = sysfsutils
+	depends = systemd
+	depends = sysfsutils
+	conflicts = pcmcia-cs
+	options = !makeflags
+	source = https://kernel.org/pub/linux/utils/kernel/pcmcia/pcmciautils-018.tar.xz
+	source = https://kernel.org/pub/linux/utils/kernel/pcmcia/pcmciautils-018.tar.sign
+	source = initcpio-install-pcmcia
+	validpgpkeys = DD46DC35691C79509D15F58CFEF39108F6FD2C20
+	sha512sums = 69a01cb4d6cefc4bcb31309fafbd76f937dd0599fbd097a5f22d76d3bc4eeddfccd16bddf42d8e079b323bd8eb62f4b0b25e1da3755664bd01cb2ccbf939c7cf
+	sha512sums = SKIP
+	sha512sums = 8e486c7432264bdce6698c3831f89b1473400b99dc5aad70df70b2b01cd4219066595fe3f7bc062c56cc2487ad9d65bb6d27d843e20ebfb03e5479f69a9d5299
+
+pkgname = pcmciautils

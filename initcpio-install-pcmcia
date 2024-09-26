@@ -1,0 +1,22 @@
+#!/bin/bash
+
+build() {
+    if add_checked_modules -f 'sound|net' '/drivers/pcmcia/'; then
+        add_module 'sd_mod?'
+    fi
+
+    add_binary "/usr/lib/udev/pcmcia-socket-startup"
+    add_binary "/usr/lib/udev/pcmcia-check-broken-cis"
+    add_file "/usr/lib/udev/rules.d/60-pcmcia.rules"
+    add_file "/etc/pcmcia/config.opts"
+}
+
+help() {
+    cat <<HELPEOF
+This hook loads the necessary modules for a pcmcia root device.  Detection will
+take place at runtime. To minimize the modules in the image, add the autodetect
+hook too.
+HELPEOF
+}
+
+# vim: set ft=sh ts=4 sw=4 et:
