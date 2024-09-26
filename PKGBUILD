@@ -66,7 +66,7 @@ SHADERC_SPIRVTOOLS=dd4b663e13c07fea4fbb3f70c1c91c86731099f7
 INSTALLDIR="${srcdir}/deps-build"
 
 source=(
-    pcsx2.tar.gz
+    git+https://github.com/PCSX2/pcsx2.git
     git+https://github.com/PCSX2/pcsx2_patches.git
     git+https://github.com/ianlancetaylor/libbacktrace.git#commit=$LIBBACKTRACE
     git+https://github.com/google/shaderc.git#tag=v$SHADERC

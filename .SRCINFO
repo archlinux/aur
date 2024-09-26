@@ -1,14 +1,11 @@
 pkgbase = pcsx2-git
 	pkgdesc = A Sony PlayStation 2 emulator
-	pkgver = 2.1.93.r0.g10b264b9ec
+	pkgver = 2.1.100.r0.g31b567287
 	pkgrel = 1
 	url = https://github.com/PCSX2/pcsx2
 	install = pcsx2-git.install
 	arch = x86_64
-	license = GPL2
-	license = GPL3
-	license = LGPL2.1
-	license = LGPL3
+	license = GPLV3
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = clang
