@@ -1,6 +1,6 @@
 pkgbase = python-zlib-ng
 	pkgdesc = A drop-in replacement for Python's zlib and gzip modules using zlib-ng
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/pycompression/python-zlib-ng
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = python-zlib-ng
 	checkdepends = python-tox
 	checkdepends = python-tests
 	checkdepends = python-pip
+	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
@@ -15,7 +16,7 @@ pkgbase = python-zlib-ng
 	makedepends = python-versioningit
 	depends = python
 	depends = zlib-ng
-	source = git+https://github.com/pycompression/python-zlib-ng#tag=v0.5.0
-	sha256sums = 70751541978c07cd8454ae530672788cfbffa0c53ee452cbf54e2d78760f5ec8
+	source = git+https://github.com/pycompression/python-zlib-ng#tag=v0.5.1
+	sha256sums = 9ad66f69a2e107e18c47b42968ad1860b15aa7faaa0d5fb36d74b583b5ac98c8
 
 pkgname = python-zlib-ng
