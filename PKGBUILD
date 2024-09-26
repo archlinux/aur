@@ -1,9 +1,10 @@
 # Maintainer: Francesco Zardi <frazar0 [at] hotmail _dot_ it>
+# Maintainer: Rocky Prabowo <rocky [et] lazycats *dot* id>
 # Contributor: Tom Knight-Markiegi <tom.knight@gmail.com>
 # Contributor: Johannes Wienke <languitar@semipol.de>
 _pkgname=structurizr
 pkgname=$_pkgname-cli
-pkgver=2024.03.03
+pkgver=2024.09.19
 pkgrel=1
 pkgdesc="A command line utility for Structurizr"
 arch=(any)
@@ -13,7 +14,7 @@ depends=('bash' 'java-runtime')
 makedepends=()
 source=("https://github.com/$_pkgname/cli/releases/download/v${pkgver}/$_pkgname-cli.zip"
         "launcher.sh")
-sha256sums=('76a48bee2016d851a0737bffbbf9aae00d2043e96e1b746ffb7e189ca917b264'
+sha256sums=('acc90f59f5e12ba3faa3d17d49d7bda438f531504b87e271007276f9d9575d9f'
             'd360ef7d8ac0106c3e735d3f74628ed24e6604ad7bc254d4b85a49a5b933bf27')
 
 package() {
