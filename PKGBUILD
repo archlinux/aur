@@ -3,7 +3,7 @@
 # Contributor: Joshua Glass <joshuag1000@outlook.com>
 
 pkgname=arduino-ide
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="Open-source electronics prototyping platform"
 arch=(x86_64)
@@ -30,6 +30,7 @@ makedepends=(
   jq
   nodejs-lts-iron
   npm
+  python-setuptools
   yarn
 )
 optdepends=(
@@ -40,13 +41,13 @@ optdepends=(
   'python-pyserial: Needed for esptool'
   'usbutils: Needed for stm32 boards using st-link'
 )
-_tag=da57c53700c313719977dd53211af1e1d7d93e27
+_tag=77136687d374dce1660191059427f1941f4cef16
 source=(
   git+https://github.com/arduino/arduino-ide.git#tag=${_tag}
   arduino-ide.sh
   arduino-ide.desktop
 )
-b2sums=('7ed1c9e378c264f22c765c7a2136269c8bb00c9181827e9c19ea8296a7d2a6f46a7e612c7375fea9fca1df0e1694a206453d9e0c7419294bd69631cb971e8349'
+b2sums=('a2563900cd83225f61013d198bc24b94adbd4e2d772574b1d5dea98b4c357e23d1889bad15cc1f19c00337b5f1fa2af8cef5fa76b82a141d02570aad50a95242'
         '12e045253c9ba57023cbc74a6138aa314b1f7fff6a9a1e5eeb4378a3259919f783ee068f9ae7dd420544f84e8deb7c21f06173ef436d2ee50f138b8306ee2ff3'
         '9b7c45d5081f23415c3dfd3d098cbe425b207f82a480b09f192e5d0e95511da5c8985ad20667301b8977a0ab3166c8b6aa5992e36df75173785bb026a10f8edb')
 
@@ -85,10 +86,10 @@ build() {
 }
 
 package() {
-  install -dm 755 "${pkgdir}"/usr/{lib,share/docs}
+  install -dm 755 "${pkgdir}"/usr/{lib,share/doc}
   rm -rf arduino-ide/electron-app/dist/linux-unpacked/resources/app/plugins/cortex-debug/extension/binary_modules/*/{darwin,linux/{arm,arm64},win32}
   cp -dr --no-preserve=ownership arduino-ide/electron-app/dist/linux-unpacked/resources/app "${pkgdir}"/usr/lib/arduino-ide
-  cp -dr --no-preserve=ownership arduino-ide/docs "${pkgdir}"/usr/share/docs/arduino-ide
+  cp -dr --no-preserve=ownership arduino-ide/docs "${pkgdir}"/usr/share/doc/arduino-ide
   for bin in arduino-cli arduino-language-server arduino-fwuploader clang-format clangd; do
     ln -sf /usr/bin/$bin "${pkgdir}"/usr/lib/arduino-ide/lib/backend/resources/$bin
   done
