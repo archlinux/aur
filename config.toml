@@ -66,3 +66,7 @@ no_tun = false
 use_smoltcp = false
 # Only forward traffic for whitelisted networks, supports wildcard strings. Multiple network names can be separated by spaces. If this parameter is empty, forwarding is disabled. Default allows all networks. For example: '*' (all networks), 'def*' (networks prefixed with def), 'net1 net2' (only allow net1 and net2)
 foreign_network_whitelist = "*"
+# Disable P2P
+disable_p2p = false
+# Disable udp hole punching
+disable_udp_hole_punching = false
