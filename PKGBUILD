@@ -1,16 +1,16 @@
 # Maintainer: Graham Smith <gps1539 at gmail dot com>
 
 pkgname=stock_quote
-pkgver=2.0.10
+pkgver=2.0.11
 pkgrel=1
 pkgdesc="python script to get stock quotes and calculate gains and losses"
 arch=('any')
 license=('GPL')
 url='https://github.com/gps1539/stock_quote'
-depends=('python' 'python-numpy' 'python-colorama' 'python-influxdb' 'python-pandas' 'python-plotly')
+depends=('python' 'python-numpy' 'python-colorama' 'python-pandas' 'python-plotly')
 makedepends=()
 source=("https://raw.githubusercontent.com/gps1539/stock_quote/master/stock_quote/stock_quote")
-md5sums=('06d6cb34abe5a5f5d0c44c14cef28344')
+md5sums=('ece78544f6ec807d2ddac784e63ed985')
 
 package()
 {
