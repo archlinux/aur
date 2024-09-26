@@ -7,7 +7,7 @@ pkgname=(
          'geph5-client-git'
          #'geph5-exit-git'
          )
-pkgver=r156.67281d3
+pkgver=r569.05b3756
 pkgrel=1
 pkgdesc="Geph is a modular Internet censorship circumvention system designed specifically to deal with national filtering."
 arch=('x86_64')
@@ -17,10 +17,12 @@ depends=('gcc-libs' 'glibc')
 makedepends=('git' 'cargo')
 source=("git+${url}.git"
         "https://raw.githubusercontent.com/geph-official/gephgui/master/public/gephlogo.png"
+        "geph5-client.service"
         'geph5-client@.service'
         "geph5-client-gui.desktop")
 md5sums=('SKIP'
          '4655e64a5d56c316383e1ffa79ddc772'
+         '02a4c190230663efc619f42b75ec817c'
          '17ea478eaac2dc3dda008acc63c9bba8'
          '374b014018c671a40c3a2b81d1334121')
 
@@ -49,6 +51,7 @@ package_geph5-client-git() {
   provides=('geph5-client')
   conflicts=('geph5-client')
   install -Dm0644 "${srcdir}"/geph5-client@.service -t "${pkgdir}"/usr/lib/systemd/system/
+  install -Dm0644 "${srcdir}"/geph5-client.service -t "${pkgdir}"/usr/lib/systemd/user/
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/geph5-client"
 }
 

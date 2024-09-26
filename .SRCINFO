@@ -1,6 +1,6 @@
 pkgbase = geph5-git
 	pkgdesc = Geph is a modular Internet censorship circumvention system designed specifically to deal with national filtering.
-	pkgver = r156.67281d3
+	pkgver = r569.05b3756
 	pkgrel = 1
 	url = https://github.com/geph-official/geph5
 	arch = x86_64
@@ -11,10 +11,12 @@ pkgbase = geph5-git
 	depends = glibc
 	source = git+https://github.com/geph-official/geph5.git
 	source = https://raw.githubusercontent.com/geph-official/gephgui/master/public/gephlogo.png
+	source = geph5-client.service
 	source = geph5-client@.service
 	source = geph5-client-gui.desktop
 	md5sums = SKIP
 	md5sums = 4655e64a5d56c316383e1ffa79ddc772
+	md5sums = 02a4c190230663efc619f42b75ec817c
 	md5sums = 17ea478eaac2dc3dda008acc63c9bba8
 	md5sums = 374b014018c671a40c3a2b81d1334121
 
