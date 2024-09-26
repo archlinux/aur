@@ -15,10 +15,6 @@ options=('!strip')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 sha256sums=('665ff2fc2dd5c6320a62d535b26293bbf078fc94ef638ec9cdd4c9a0b00cd220')
 
-pkgver() {
-    npm view $pkgname version
-}
-
 prepare() {
     tar -xzf "$pkgname-$pkgver.tgz"
 }
