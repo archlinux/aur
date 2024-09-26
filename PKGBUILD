@@ -3,17 +3,17 @@
 # Upstream: https://github.com/anaseto/boohu
 
 pkgname=('boohu-git' 'boohu-tk-git')
-pkgver=0.13.0.5.g9103191
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Break Out Of Hareka's Underground, a roguelike game."
 arch=('i686' 'x86_64')
-url='https://github.com/anaseto/boohu'
+url='https://codeberg.org/anaseto/boohu'
 license=('ISC')
 depends=()
 makedepends=('git' 'go')
 provides=('boohu')
 #conflicts=('boohu')
-source=("$pkgname::git+https://github.com/anaseto/boohu.git")
+source=("$pkgname::git+https://codeberg.org/anaseto/boohu.git")
 md5sums=('SKIP')
 
 pkgver() {

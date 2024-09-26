@@ -1,15 +1,15 @@
 pkgbase = boohu-git
 	pkgdesc = Break Out Of Hareka's Underground, a roguelike game.
-	pkgver = 0.13.0.5.g9103191
+	pkgver = 0.14.0
 	pkgrel = 1
-	url = https://github.com/anaseto/boohu
+	url = https://codeberg.org/anaseto/boohu
 	arch = i686
 	arch = x86_64
 	license = ISC
 	makedepends = git
 	makedepends = go
 	provides = boohu
-	source = boohu-git::git+https://github.com/anaseto/boohu.git
+	source = boohu-git::git+https://codeberg.org/anaseto/boohu.git
 	md5sums = SKIP
 
 pkgname = boohu-git
