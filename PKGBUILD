@@ -5,16 +5,13 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=2.1.93.r0.g10b264b9ec
+pkgver=2.1.100.r0.g31b567287
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
 url=https://github.com/PCSX2/pcsx2
 license=(
-    GPL2
-    GPL3
-    LGPL2.1
-    LGPL3
+    GPLV3
 )
 
 depends=(
@@ -69,7 +66,7 @@ SHADERC_SPIRVTOOLS=dd4b663e13c07fea4fbb3f70c1c91c86731099f7
 INSTALLDIR="${srcdir}/deps-build"
 
 source=(
-    git+https://github.com/PCSX2/pcsx2.git
+    pcsx2.tar.gz
     git+https://github.com/PCSX2/pcsx2_patches.git
     git+https://github.com/ianlancetaylor/libbacktrace.git#commit=$LIBBACKTRACE
     git+https://github.com/google/shaderc.git#tag=v$SHADERC
