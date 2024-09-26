@@ -1,6 +1,6 @@
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=libsql-server-bin
-pkgver=0.24.21
+pkgver=0.24.25
 pkgrel=1
 pkgdesc="libSQL is a fork of SQLite for modern applications"
 arch=(x86_64)
@@ -10,8 +10,8 @@ provides=('libsql-server')
 conflicts=('libsql-server')
 source=("libsql-$pkgver.tar.xz::https://github.com/tursodatabase/libsql/releases/download/libsql-server-v$pkgver/libsql-server-x86_64-unknown-linux-gnu.tar.xz"
 		"libsql-$pkgver.tar.xz.sha256::https://github.com/tursodatabase/libsql/releases/download/libsql-server-v$pkgver/libsql-server-x86_64-unknown-linux-gnu.tar.xz.sha256")
-b2sums=('d4ad2570209431c629155a15e6b11f0cf42c1b6bd2f6f56e1a0819f9f6afb14ed41db8c07cac524d5a637b7674dacbc74099ac9fa22fd60b992e73dbb6f64afb'
-        '50f0deeeab2bbb44020ab60091701c50677edf1ddbd8ec396f9cdb172ac82baf92c7650eb589627ce441d0022bdea344118d38dc0a1957356bae639af70d1b10')
+b2sums=('586351eeae671311130057086aec56a1e104a5c1ecb7523e4c4b6bbfa9eb47f9937fa88fda6c891b4c9869dca2a86b4efba719647a275a02abb694e479a62eae'
+        '681a7bb92ed4f6f64395a044fa6689fa697438a4cd2dd1037111f526b5f650ae66e8f0b717c50a8bf42e82b426f6e1599cf458c120f20f30a893400878af66aa')
 
 package() {
 	cd "$srcdir/${pkgname%-*}-$arch-unknown-linux-gnu"
