@@ -1,13 +1,13 @@
 pkgbase = behavior3editor-git
 	pkgdesc = Behavior Tree Editor.行为树编辑器
-	pkgver = 1.5.0.r11.g89f2ffd
+	pkgver = 1.5.0.r12.gd462958
 	pkgrel = 1
 	url = https://github.com/zhandouxiaojiji/behavior3editor
 	arch = any
-	license = LicenseRef-custom
+	license = MIT
 	makedepends = npm
 	makedepends = git
-	makedepends = nodejs
+	makedepends = nvm
 	makedepends = gendesk
 	makedepends = gcc
 	makedepends = curl
