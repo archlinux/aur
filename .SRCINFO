@@ -1,0 +1,57 @@
+pkgbase = wayfire-hidpi-xprop-animation-track-wlroots-git
+	pkgdesc = 3D wayland compositor, integrating the wlroots hidpi-xprop patch set, currently tracking wlroots 0.18. Follows soreau\'s animation branch.
+	pkgver = 0.9.0.r42.g8d6c5f52
+	pkgrel = 1
+	url = https://github.com/WayfireWM/wayfire
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = glslang
+	makedepends = meson
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = vulkan-headers
+	makedepends = boost
+	depends = cairo
+	depends = pango
+	depends = doctest
+	depends = freetype2
+	depends = glm
+	depends = nlohmann-json
+	depends = libdrm
+	depends = libevdev
+	depends = libglvnd
+	depends = libinput
+	depends = libjpeg
+	depends = libpng
+	depends = libxkbcommon
+	depends = libxml2
+	depends = pixman
+	depends = polkit
+	depends = pkgconf
+	depends = seatd
+	depends = xcb-util-errors
+	depends = xcb-util-renderutil
+	depends = xcb-util-wm
+	depends = xorg-xwayland
+	depends = wayland
+	depends = wayland-protocols
+	depends = libdisplay-info
+	depends = wlroots-hidpi-xprop>=0.18
+	depends = wlroots-hidpi-xprop<0.19
+	depends = wf-config-git
+	optdepends = xorg-xeyes
+	optdepends = xorg-xwayland-hidpi-xprop: High DPI scaling of Xwayland applications
+	provides = wayfire=0.9.0.r42.g8d6c5f52
+	provides = wayfire-git=0.9.0.r42.g8d6c5f52
+	provides = wayfire-hidpi-xprop-track-wlroots-git=0.9.0.r42.g8d6c5f52
+	provides = wayfire-hidpi-xprop-animation-track-wlroots
+	conflicts = wayfire
+	source = git+https://github.com/soreau/wayfire
+	source = git+https://github.com/WayfireWM/wf-touch
+	source = git+https://github.com/WayfireWM/wf-utils.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = wayfire-hidpi-xprop-animation-track-wlroots-git
