@@ -3,7 +3,7 @@
 
 pkgname=cosmic-bg-git
 pkgver=1.0.0.alpha.2.r0.g584f6b3
-pkgrel=1
+pkgrel=2
 pkgdes="COSMIC session service which applies backgrounds to displays."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-bg"
@@ -47,7 +47,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build
-  RUSTFLAGS+="-C link-arg=-fuse-ld=mold"
+  RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
   nice just build-release
