@@ -1,13 +1,15 @@
 pkgbase = pop-launcher-git
 	pkgver = 1.2.1.r66.g6a1b8b9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pop-os/launcher
 	arch = x86_64
 	arch = aarch64
 	license = MPL-2.0
 	makedepends = cargo
+	makedepends = clang
 	makedepends = git
 	makedepends = just
+	makedepends = lld
 	depends = dbus
 	depends = fd
 	depends = libqalculate
@@ -16,7 +18,6 @@ pkgbase = pop-launcher-git
 	depends = pop-icon-theme-git
 	depends = sh
 	depends = xdg-utils
-	options = !lto
 	source = git+https://github.com/pop-os/launcher.git
 	sha256sums = SKIP
 

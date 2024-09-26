@@ -1,11 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-
-## TODO: Fix build with LTO
-
 pkgname=('pop-launcher-git' 'pop-shell-plugin-system76-power-git')
 pkgbase=pop-launcher-git
 pkgver=1.2.1.r66.g6a1b8b9
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
 license=('MPL-2.0')
@@ -21,10 +18,11 @@ depends=(
 )
 makedepends=(
   'cargo'
+  'clang'
   'git'
   'just'
+  'lld'
 )
-options=('!lto')
 source=('git+https://github.com/pop-os/launcher.git')
 sha256sums=('SKIP')
 
@@ -39,13 +37,14 @@ prepare() {
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
   # Use thin LTO objects
-#  sed -i 's/lto = "fat"/lto = "thin"/' Cargo.toml
+  sed -i 's/lto = "fat"/lto = "thin"/g' Cargo.toml
 }
 
 build() {
   cd launcher
   export RUSTUP_TOOLCHAIN=stable
-  just build-release --frozen
+  RUSTFLAGS+=" -C link-arg=-fuse-ld=lld"
+  CC=clang just build-release --frozen
 }
 
 check() {
