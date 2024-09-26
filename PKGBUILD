@@ -1,7 +1,7 @@
 # Maintainer: William Tang <galaxyking0419@gmail.com>
 
 pkgname=bricscad
-pkgver=24.1.06
+pkgver=24.2.07
 pkgrel=1
 pkgdesc="CAD Software for People Who Build the Future"
 arch=('x86_64')
@@ -14,15 +14,15 @@ optdepends=('bricscad-communicator>=24: Addtional import/export file format supp
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
 source=("manual://BricsCAD-V${pkgver}-1-en_US-amd64.deb")
-sha256sums=('57f26cf242a719cec1fa12b558d92c7d27c64f14f43d7a1bd334d3aeb5edfcdb')
+sha256sums=('bff5d2d282003611425e3ae7b7fd5aa6ce91fdb6759d00b6660f1d9979849085')
 
 options=(!strip)
 install='bricscad.install'
 
 prepare() {
-    tar -xpf data.tar.xz
+    tar -xpf data.tar.zst
 
-    find . -type d -exec chmod 755 {} \;
+    find . -type d -exec chmod 755 {} +
 
     mkdir var/bricsys/{Components,RenderMaterials/UserMaterials}
     chmod -R 777 var/bricsys/
