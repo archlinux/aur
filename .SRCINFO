@@ -1,0 +1,28 @@
+pkgbase = structstore
+	pkgdesc = Structured object storage, dynamically typed, to be shared between processes
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/mertemba/structstore
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = yaml-cpp
+	makedepends = python
+	makedepends = python-pip
+	depends = glibc
+	depends = gcc-libs
+	depends = yaml-cpp
+	options = !debug
+	source = git+https://github.com/mertemba/structstore.git
+	sha256sums = SKIP
+
+pkgname = structstore
+
+pkgname = structstore_py
+	depends = glibc
+	depends = gcc-libs
+	depends = yaml-cpp
+	depends = python
+	depends = structstore
