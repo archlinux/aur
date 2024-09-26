@@ -11,12 +11,33 @@
 % end
 \
 pkgver=5.15.15
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="ActiveX integration framework (mingw-w64)"
 depends=(<%== qt5deps qw(base) %>)
 makedepends=(<%== qt5deps qw(declarative) %> 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'python')
 license=('GPL3' 'LGPL3' 'LGPL2.1' 'FDL' 'custom')
+\
+% content_for source => begin
+
+        'cmake-config-template.cmake'\
+%end
+\
+% content_for sha256sums => begin
+
+            '89d091e4d5692eceeecc7ffef3c054fa47652458986beb98c4dc2c6b4e55ab26'\
+%end
+\
+% content_for package_config => begin
+
+      for _sub_module in Base Container Server; do
+        mkdir "$pkgdir/usr/${_arch}/lib/cmake/Qt5Ax${_sub_module}"
+        sed -e "s|@QT_SUB_MODULE_NAME@|${_sub_module}|" "$srcdir/cmake-config-template.cmake" > \\
+               "$pkgdir/usr/${_arch}/lib/cmake/Qt5Ax${_sub_module}/Qt5Ax${_sub_module}Config.cmake"
+        ln -rs "$pkgdir/usr/${_arch}/lib/cmake/StaticQt5Ax${_sub_module}/StaticQt5Ax${_sub_module}ConfigVersion.cmake" \\
+               "$pkgdir/usr/${_arch}/lib/cmake/Qt5Ax${_sub_module}/Qt5Ax${_sub_module}ConfigVersion.cmake"
+      done
+% end
 \
 % content_for package => begin
 

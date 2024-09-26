@@ -16,7 +16,7 @@
 _qt_module=qtactiveqt
 pkgname=mingw-w64-qt5-activeqt
 pkgver=5.15.15
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="ActiveX integration framework (mingw-w64)"
 depends=('mingw-w64-qt5-base')
@@ -32,10 +32,12 @@ url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         '0001-Don-t-require-windows.h-when-using-native-Linux-gcc.patch'
-        '0002-Handle-win64-in-dumpcpp-and-MetaObjectGenerator-read.patch')
+        '0002-Handle-win64-in-dumpcpp-and-MetaObjectGenerator-read.patch'
+        'cmake-config-template.cmake')
 sha256sums=('SKIP'
             '05443c9a67b30160a7d4264da9c57b1a2fdbc3c74bab8e9f69c51ac8feeac2cb'
-            '06aa9413f31edd4f8c51d65cf6a8e1add8d5a6af2588f18bdc2e67164ebdaea7')
+            '06aa9413f31edd4f8c51d65cf6a8e1add8d5a6af2588f18bdc2e67164ebdaea7'
+            '89d091e4d5692eceeecc7ffef3c054fa47652458986beb98c4dc2c6b4e55ab26')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -115,6 +117,14 @@ package() {
       [[ -d "${pkgdir}/usr/${_arch}/lib/qt/bin/" ]] && \
         find "${pkgdir}/usr/${_arch}/lib/qt/bin/" -exec strip --strip-all {} \;
       find "${pkgdir}/usr/${_arch}/lib/" -iname "*.so.$pkgver" -exec strip --strip-unneeded {} \;
+
+      for _sub_module in Base Container Server; do
+        mkdir "$pkgdir/usr/${_arch}/lib/cmake/Qt5Ax${_sub_module}"
+        sed -e "s|@QT_SUB_MODULE_NAME@|${_sub_module}|" "$srcdir/cmake-config-template.cmake" > \
+               "$pkgdir/usr/${_arch}/lib/cmake/Qt5Ax${_sub_module}/Qt5Ax${_sub_module}Config.cmake"
+        ln -rs "$pkgdir/usr/${_arch}/lib/cmake/StaticQt5Ax${_sub_module}/StaticQt5Ax${_sub_module}ConfigVersion.cmake" \
+               "$pkgdir/usr/${_arch}/lib/cmake/Qt5Ax${_sub_module}/Qt5Ax${_sub_module}ConfigVersion.cmake"
+      done
       popd
     done
 
