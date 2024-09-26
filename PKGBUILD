@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-workspaces-git
-pkgver=1.0.0.alpha.1.r1.g70d6c41
-pkgrel=2
+pkgver=1.0.0.alpha.2.r0.g70d6c41
+pkgrel=1
 pkgdesc="Cosmic workspaces"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-workspaces-epoch"
@@ -38,7 +38,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build
-  RUSTFLAGS="-C link-arg=-fuse-ld=mold"
+  RUSTFLAGS+="-C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
   ARGS+=" --frozen" nice make
