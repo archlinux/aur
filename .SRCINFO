@@ -1,0 +1,21 @@
+pkgbase = castoro-font
+	pkgdesc = a synthesis of aspects of assorted Dutch types from the 16–18th Centuries
+	pkgver = 2.040
+	pkgrel = 1
+	url = https://github.com/Tirotypeworks/Castoro
+	arch = any
+	license = OFL-1.1-no-RFN
+	source = https://github.com/Tirotypeworks/Castoro/archive/v2.04/Castoro-2.04.tar.gz
+	sha256sums = 37d829b3a2faf1ad1e70378d55e99f8bcbfd035468a607dba3b077122825ba22
+
+pkgname = otf-castoro
+	provides = castoro-font=2.040
+
+pkgname = otf-castoro-titling
+	provides = castoro-font-titling=2.040
+
+pkgname = ttf-castoro
+	provides = castoro-font=2.040
+
+pkgname = ttf-castoro-titling
+	provides = castoro-font-titling=2.040
