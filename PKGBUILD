@@ -7,9 +7,22 @@ pkgdesc="Isometric 3D role playing game taking place in the future, on Earth (gi
 url="http://www.freedroid.org"
 arch=('x86_64')
 license=('GPL-2.0-or-later')
-depends=('python' 'lua53' 'glibc' 'zlib' 'sdl12-compat' 'sdl_mixer' 'sdl_image' 'sdl_gfx' 'libiconv' 'libpng' 'libgl' 'hicolor-icon-theme' 'glew')
+depends=(
+  glew
+  glibc
+  hicolor-icon-theme
+  libgl
+  libpng
+  lua53
+  python
+  sdl12-compat
+  sdl_gfx
+  sdl_image
+  sdl_mixer
+  zlib
+)
 makedepends=('git' 'mesa')
-optdepends=('espeak-ng-espeak')
+optdepends=('espeak-ng-espeak: to generate the robot taunts')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 source=("$pkgname::git+https://gitlab.com/freedroid/freedroid-src.git")
