@@ -13,7 +13,7 @@ _devenv=false
 _generic_release=false
 
 ## hack taken from wine-tkg PKGBUILD, real pkgrel is the eval one
-pkgver=9.17.w161.sb6944be
+pkgver=9.18.w109.s3dfacea
 pkgrel=1
 eval pkgrel=1
 
@@ -35,7 +35,7 @@ _enabled_staging=()
 _disabled_staging=()
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="09-17-2024-03d98536-b6944be8"
+_patchbase_tag="09-25-2024-2b32c285-3dfacea3"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -45,8 +45,8 @@ _custompatches=false
 
 ## (with custompatches) uses wine/staging master if empty, uses given commit or tag if set
 ## (without custompatches) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=03d985369dc9afe943ee3072478a2567b3fe4077
-_desired_staging_commit=b6944be8105b3307765793ced0e64a646eeae8d1
+_desired_wine_commit=2b32c2859166e5542012b517cdef4699d8bb322c
+_desired_staging_commit=3dfacea342c956ca8e2b2b7d7da339636f56eed1
 
 ## (with custompatches) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -94,7 +94,7 @@ fi
 
 pkgname=wine-osu-spectator"${_wowname}"
 
-pkgdesc="A compatibility layer for running Windows programs, but with osu! specific patches"
+pkgdesc="A compatibility layer for running Windows programs, but with osu! specific patches (doesn't conflict with other Wine installations)"
 if [ "$_wow64build" = "true" ]; then pkgdesc+=" (WoW64 version)"; fi
 
 provides=("${pkgname}")
@@ -135,7 +135,7 @@ noextract=()
 ## don't needlessly add the wine-osu-patches repo if we explicitly specify custom ones
 if ! { [ -d "${_where}"/custompatches ] && [ "${_custompatches}" = "true" ] ; }; then
   source+=("git+https://github.com/whrvt/wine-osu-patches.git#tag=${_patchbase_tag}")
-  sha512sums+=('f97e25637c4ca7589446e1a8ecf6a298784e99221e39a5bc3d8c695c4473e6499ba18e1d17c0f3b00240d82a8e7fce58491bbab4d6aae0e1c4710a1e93b4021f')
+  sha512sums+=('25bcb9d0afaa08dfe90ad7c57bb2035328e5949ec10682a99c59012887793378a882732d2884e600a58b62825298bc8cfa2ced1d744b9f23bc70b70ec0165dc4')
 
   if [ "${_custompatches}" = "true" ]; then
     msg2 "WARNING: _custompatches=true but custompatches directory not found. Will be using wine-osu-patches repo."
@@ -540,11 +540,11 @@ prepare() { _set_vars;
   if [ "${_devenv}" = "true" ]; then
     _confcachedir="${_where}"/.confcaches
     _compilerwithflagshash="$(sha512sum - < <(printf '%s' "${CFLAGS}${LDFLAGS}${CROSSCFLAGS}${CROSSLDFLAGS}${_compilerhash}") | cut -d ' ' -f 1)"
-    export _confcacheprefix="${_confcachedir}"/"${pkgver%.w*}-${pkgrel}-${_compilerwithflagshash}"
+    _confcacheprefix="${_confcachedir}"/"${pkgver%.w*}-${pkgrel}-${_compilerwithflagshash}"
 
     if [ ! -d "${_confcachedir}" ]; then
       mkdir "${_confcachedir}" || \
-          _failure "Couldn't create an autoconf cache directory in ${_confcachedir}. This shouldn't have happened."
+          _failure "Couldn't create an autoconf cache directory in ${_confcachedir#"${_where}/"}. This shouldn't have happened."
     fi
   fi
 }
@@ -555,7 +555,7 @@ _configure64() { _set_vars64;
   msg2 "Configuring Wine-64"
   ../"${pkgname}"/configure \
     "${_sharedopts[@]}" \
-    "${_wine64opts[@]}" || _failure "Wine-64 configure failed; check ${build64dir}/config.log for more information"
+    "${_wine64opts[@]}" || _failure "Wine-64 configure failed; check ${build64dir#"${_where}/"}/config.log for more information"
 }
 
 _configure32() { _set_vars32;
@@ -564,7 +564,7 @@ _configure32() { _set_vars32;
   msg2 "Configuring Wine-32"
   ../"${pkgname}"/configure \
     "${_sharedopts[@]}" \
-    "${_wine32opts[@]}" || _failure "Wine-32 configure failed; check ${build32dir}/config.log for more information"
+    "${_wine32opts[@]}" || _failure "Wine-32 configure failed; check ${build32dir#"${_where}/"}/config.log for more information"
 }
 
 ## Used for single-make build
