@@ -3,7 +3,7 @@
 
 pkgname=maptool
 _pkgname=MapTool
-pkgver=1.15.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('git' 'dpkg' 'jdk21-openjdk' 'gradle' 'xdg-utils' 'rpm-tools')
 source=(
 	"git+https://github.com/RPTools/${pkgname}.git#tag=${pkgver}"
 	"${pkgname}.sh")
-sha256sums=('880e732a054805ef63757c3e0a00bf8eb1f66e8e324204fc9fda0009c1f314ad'
+sha256sums=('f71aa8329e66f28fea73e1df5a20eee3063438e1e49c6709f3507136ff141ed2'
             'c1b1977801cfd84514359f405b5cb3fbeb56b1466d8cabc2ab87c41f79a590f9')
 install="${pkgname}.install"
 
