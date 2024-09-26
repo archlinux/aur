@@ -2,7 +2,7 @@
 
 pkgname=ayugram-desktop
 pkgver=5.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop Telegram client with good customization and Ghost mode."
 arch=("x86_64")
 url="https://github.com/AyuGram/AyuGramDesktop"
@@ -28,6 +28,7 @@ optdepends=(
 )
 source=(
     "AyuGram-v$pkgver.tar.gz::https://github.com/AyuGram/AyuGramDesktop/archive/refs/tags/v$pkgver.tar.gz"
+    "fix-build-with-cppgir.diff"
 )
 declare -rAg _modules_name_map=(
     [cmake]=https://github.com/desktop-app/cmake_helpers/archive/7b11e62e2a40a3dab7f039d4953f1514c73cb6d5.tar.gz
@@ -131,6 +132,7 @@ done
 unset _source_str _uri
 
 sha256sums=('1a8d1fcb44161f544eebcc89bc62a87aad56d96d6bf677ee6634f9e56548c6b9'
+            'ee54bdf8fe67c8fadfffc794763fc62f4c6a15eb535c80ba7b1b74d6ec178882'
             'd0d4ea2fddcbc7d10ace2c37309feb09da87e8ce7ced6ce73592da1359f4765f'
             '72ecdcd66728a073ca9bfaa3662155c28530b8f61d2241c193c04d6f2ae3a8c6'
             '8b4ba7258685e49c9b7f2c60925264c3b2713805ad21304404d5f6b77cd5582b'
@@ -182,6 +184,9 @@ prepare() {
         Telegram/ThirdParty/cld3/CMakeLists.txt
     #https://github.com/telegramdesktop/tdesktop/issues/26489#issuecomment-1627555107
     #CMAKE_BUILD_TYPE must match libtg_owt's
+    #error: ‘class gi::repository::Gio::Credentials’ has no member named ‘get_unix_pid’
+    #https://github.com/telegramdesktop/tdesktop/issues/28454#issuecomment-2372735823
+    patch -Np1 -d cmake/external/glib/cppgir -i "$srcdir/fix-build-with-cppgir.diff"
 }
 build() {
     CXXFLAGS+=' -ffat-lto-objects'
