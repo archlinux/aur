@@ -1,7 +1,7 @@
 pkgbase = platypush
 	pkgdesc = Universal multi-platform command executor and automation manager
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.platypush.tech/platypush/platypush
 	arch = any
 	license = MIT
@@ -13,7 +13,6 @@ pkgbase = platypush
 	depends = python-flask
 	depends = python-magic
 	depends = python-marshmallow
-	depends = python-marshmallow-dataclass
 	depends = python-pip
 	depends = python-psutil
 	depends = python-redis
