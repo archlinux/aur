@@ -1,12 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-randr-git
 pkgver=1.0.0.alpha.1.r0.g71fabbb
-pkgrel=3
+pkgrel=4
 pkgdesc="Library and utility for displaying and configuring Wayland outputs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-randr"
 license=('MPL-2.0')
-depends=('wayland')
+depends=(
+  'wayland'
+)
 makedepends=(
   'cargo'
   'clang'
@@ -16,8 +18,10 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/pop-os/cosmic-randr.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/pop-os/cosmic-randr.git'
+        'lto.patch')
+sha256sums=('SKIP'
+            '046eb734f9fb3a3c17ccb5eb5a317d4b155f50e5e140789ecb6ce2d3e749946c')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -26,6 +30,10 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
+
+  # Use thin LTO
+  patch -Np1 -i ../lto.patch
+
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }

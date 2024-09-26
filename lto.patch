@@ -1,0 +1,11 @@
+diff '--color=auto' -rupN cosmic-randr.orig/Cargo.toml cosmic-randr/Cargo.toml
+--- cosmic-randr.orig/Cargo.toml	2024-09-26 19:12:39.805093974 +0200
++++ cosmic-randr/Cargo.toml	2024-09-26 19:12:52.505237655 +0200
+@@ -4,4 +4,5 @@ resolver = "2"
+ 
+ [profile.release]
+ opt-level = "s"
+-# rustflags = ["-C", "inline-threshold=1"]
+\ No newline at end of file
++lto = "thin"
++# rustflags = ["-C", "inline-threshold=1"]
