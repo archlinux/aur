@@ -5,7 +5,7 @@ _dotnet_version=8.0
 
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.0.0.rc9.r26.g59636940c
+pkgver=3.0.0.rc11.r0.g2883405ac
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
@@ -77,6 +77,7 @@ declare -Arg _plugins=(
     [BD.WTTS.Client.Plugins.GameTools]=GameTools
     [BD.WTTS.Client.Plugins.SteamIdleCard]=SteamIdleCard
     [BD.WTTS.Client.Plugins.ArchiSteamFarmPlus]=ArchiSteamFarmPlus
+    [BD.WTTS.Client.Plugins.SteamIdleCard]=SteamIdleCard
     #[BD.WTTS.Client.Plugins.Update]=Update
 )
 
