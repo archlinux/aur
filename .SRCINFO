@@ -1,6 +1,6 @@
 pkgbase = r-leidenbase
 	pkgdesc = R and C/C++ Wrappers to Run the Leiden find_partition() Function
-	pkgver = 0.1.30
+	pkgver = 0.1.31
 	pkgrel = 1
 	url = https://cran.r-project.org/package=leidenbase
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = r-leidenbase
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/leidenbase_0.1.30.tar.gz
-	sha256sums = 5415a5a87665fe03dc439c29abb8fd5aed0a536b806e8e12b04fafcdc511e2cb
+	source = https://cran.r-project.org/src/contrib/leidenbase_0.1.31.tar.gz
+	sha256sums = cd0a825fa44485e957847321c02b32ac5205675e56df00cd883ea50b9aab23e1
 
 pkgname = r-leidenbase
