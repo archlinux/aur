@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-greeter-git
 pkgver=1.0.0.alpha.2.r0.g4ddb320
-pkgrel=2
+pkgrel=3
 pkgdesc="libcosmic greeter for greetd, which can be run inside cosmic-comp"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-greeter"
@@ -22,6 +22,10 @@ makedepends=(
   'just'
   'mold'
 )
+backup() {
+  "etc/greetd/${pkgname%-git}.toml"
+  "/etc/pam.d/${pkgname%-git}"
+}
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/cosmic-greeter.git'
