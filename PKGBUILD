@@ -1,8 +1,8 @@
 # Maintainer: Citorva <packaging@citorva.fr>
 
 pkgname=extism
-pkgver=1.6.0
-pkgrel=1
+pkgver=1.7.0
+pkgrel=0
 pkgdesc="Runtime library for the extism framework"
 arch=('x86_64')
 url="https://github.com/extism/extism"
@@ -11,7 +11,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo' 'gcc' 'make')
 # provides nothing
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2dec013678f58f4321337a7c07fa45a34a4987a3e9d84c1315ec8e89152ba79e')
+sha256sums=('1fdc60a08a413e66046f6ab6c58a6a93a7c981ef05ee37128892d2ce4d927364')
 
 prepare() {
 	cd ${srcdir}/${pkgname}-${pkgver}/
