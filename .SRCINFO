@@ -1,0 +1,20 @@
+pkgbase = python-ngshare-exchange-git
+	pkgdesc = Custom nbgrader exchange to be used with ngshare
+	pkgver = 0.5.3.r3.gdba2c43
+	pkgrel = 1
+	url = https://github.com/lahwaacz/ngshare_exchange
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	checkdepends = python-requests-mock
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = jupyter-nbgrader
+	source = git+https://github.com/lahwaacz/ngshare_exchange.git
+	b2sums = SKIP
+
+pkgname = python-ngshare-exchange-git
