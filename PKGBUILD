@@ -1,7 +1,7 @@
 # Maintainer: Sergey Kovalenko <seryoga.engineering@gmail.com>
 
 pkgname=simple-system-update
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="One-click update button for Linux users"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('curl'
          'jq')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SeryogaBrigada/SimpleSystemUpdate/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('97d8bf8854aaf4c6183505a1327d465a84d5c96a287de994f7a373f901fd5f976de5fdc3937b0dbeb91fb411f19a377c0ad1d1c37ca8390e251e3bd28c19e64e')
+sha512sums=('51c70034c9dabcdb6c5183db90fd53b5f032cddf6d97ac4863e674fa590652c38c6dd0d25cc2f6e48816f0157f5f70da693aede306711836c9b7cb00975fb7d0')
 
 package() {
   cd "SimpleSystemUpdate-$pkgver"
