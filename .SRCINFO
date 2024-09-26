@@ -1,0 +1,33 @@
+pkgbase = gedit-externaltools-plugin
+	pkgdesc = Externaltools plugin for the gedit Text Editor
+	pkgver = 48.0
+	pkgrel = 1
+	url = https://github.com/hermes83/gedit-externaltools-plugin
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = appstream-glib
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = gucharmap
+	makedepends = libgit2-glib
+	makedepends = meson
+	makedepends = vte3
+	makedepends = yelp-tools
+	depends = dconf
+	depends = gedit
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgedit-gtksourceview
+	depends = libgedit-tepl
+	depends = libpeas
+	depends = pango
+	depends = python
+	depends = python-cairo
+	depends = python-dbus
+	depends = python-gobject
+	optdepends = vte3: for embedded terminal
+	source = git+https://github.com/hermes83/gedit-externaltools-plugin.git#tag=48.0
+	b2sums = a9b0f4d167d8804533099cf8c6d222014b4585e029c67d9d7326495958b9408b26e4ff9f71e822c0d0251f28f447c7f6b5e3a3ca3eee57a5721a301c3b0213ce
+
+pkgname = gedit-externaltools-plugin
