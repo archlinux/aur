@@ -1,6 +1,6 @@
 pkgbase = shadps4-git
 	pkgdesc = Sony PlayStation 4 emulator
-	pkgver = 0.3.0.r8.gf97f73f0
+	pkgver = 0.3.0.r32.g54e21793
 	pkgrel = 1
 	url = https://shadps4.net/
 	arch = aarch64
@@ -13,6 +13,7 @@ pkgbase = shadps4-git
 	makedepends = git
 	makedepends = magic_enum>=0.9.6
 	makedepends = qt6-base
+	makedepends = qt6-multimedia
 	makedepends = qt6-tools
 	makedepends = rapidjson
 	makedepends = renderdoc
@@ -35,7 +36,7 @@ pkgbase = shadps4-git
 	depends = zlib-ng>=2.1.7
 	optdepends = renderdoc: for graphics debugging
 	optdepends = vulkan-validation-layers: for vulkan debugging
-	provides = shadps4=0.3.0.r8.gf97f73f0
+	provides = shadps4=0.3.0.r32.g54e21793
 	conflicts = shadps4
 	source = shadps4::git+https://github.com/shadps4-emu/shadPS4.git
 	source = shadps4-imgui::git+https://github.com/shadps4-emu/ext-imgui.git
@@ -68,3 +69,4 @@ pkgname = shadps4-git
 	depends = libswscale.so
 	depends = libxxhash.so
 	depends = qt6-base
+	depends = qt6-multimedia

@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.3.0.r8.gf97f73f0
+pkgver=0.3.0.r32.g54e21793
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -26,6 +26,7 @@ makedepends=(
 	'git'
 	'magic_enum>=0.9.6'
 	'qt6-base'
+	'qt6-multimedia'
 	'qt6-tools'
 	'rapidjson'
 	'renderdoc'
@@ -73,8 +74,8 @@ prepare() {
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
 	git config submodule.externals/zydis.url ../zydis
 	git -c protocol.file.allow=always submodule update
-	# https://github.com/shadps4-emu/shadPS4/pull/1039
-	git cherry-pick -n d7acc1cb5afbb2e2d6ef9ed67d9218d900e54d3d
+	# https://github.com/shadps4-emu/shadPS4/issues/1078
+	sed -i '/desc_layout_result/s/static//' src/video_core/texture_cache/tile_manager.cpp
 	# https://github.com/shadps4-emu/shadPS4/issues/568#issuecomment-2363862313
 	sed -i 's/SDL_TRUE/true/g;s/SDL_FALSE/false/g;s/SDL_bool/bool/g' \
 		externals/dear_imgui/backends/*.cpp \
@@ -104,6 +105,7 @@ package() {
 		'libxxhash.so'
 		# 'libZydis.so'
 		'qt6-base'
+		'qt6-multimedia'
 	)
 	# shellcheck disable=SC2154
 	install -D -t "$pkgdir"/usr/lib/$_pkgname build/shadps4
