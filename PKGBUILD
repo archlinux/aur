@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=(
     'npm'
-    'yarn'
+    'pnpm'
     'git'
     'nvm'
     'gendesk'
@@ -33,48 +33,48 @@ sha256sums=('SKIP'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+    set -o pipefail
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-git}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-git}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-git}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-git}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/${pkgname%-git}/
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+    " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export ELECTRONVERSION="${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
-    mkdir -p "${srcdir}/.electron-gyp"
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        echo 'registry "https://registry.npmmirror.com"' > "${srcdir}/.electron-gyp/.yarnrc"
-        echo 'disturl "https://registry.npmmirror.com/-/binary/node/"' >> "${srcdir}/.electron-gyp/.yarnrc"
-        echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"' >> "${srcdir}/.electron-gyp/.yarnrc"
-        echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"' >> "${srcdir}/.electron-gyp/.yarnrc"
-        echo "cacheFolder "${srcdir}/.yarn/cache"" >> "${srcdir}/.electron-gyp/.yarnrc"
-        echo "pluginsFolder "${srcdir}/.yarn/plugins"" >> "${srcdir}/.electron-gyp/.yarnrc"
-        echo "globalFolder "${srcdir}/.yarn/global"" >> "${srcdir}/.electron-gyp/.yarnrc"
-        echo 'useHardlinks true' >> "${srcdir}/.electron-gyp/.yarnrc"
-        echo 'buildFromSource true' >> "${srcdir}/.electron-gyp/.yarnrc"
-        echo 'linkWorkspacePackages true' >> "${srcdir}/.electron-gyp/.yarnrc"
-        echo 'fetchRetries 3' >> "${srcdir}/.electron-gyp/.yarnrc"
-        echo 'fetchRetryTimeout 10000' >> "${srcdir}/.electron-gyp/.yarnrc"
-    else
-        echo "Your network is OK."
-    fi
-    sed "s|--linux|-l --dir|g;/only-allow/d;/\"electron\"\: /d;45i\    \"electron\"\: \"${SYSTEM_ELECTRON_VERSION}\"," -i package.json
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    NODE_ENV=production     yarn run build:linux
+    {
+        echo -e '\n'
+        #echo 'build_from_source=true'
+        echo 'link-workspace-packages=true'
+        echo 'fetch-retry-maxtimeout=10000'
+        echo "cache-dir="${srcdir}"/.pnpm_cache"
+        echo "store-dir="${srcdir}"/.pnpm_store"
+        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        fi
+    } >> .npmrc
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    NODE_ENV=development    pnpm install
+    NODE_ENV=development    pnpm add -D @sveltejs/adapter-auto
+    NODE_ENV=production     pnpm run build:unpack
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
