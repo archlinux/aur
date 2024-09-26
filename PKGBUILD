@@ -4,7 +4,7 @@
 
 pkgname=paps
 pkgver=0.8.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Converts Unicode text to postscript and pdf using pango'
 url='https://github.com/dov/paps'
 arch=('x86_64')
@@ -17,6 +17,7 @@ sha256sums=('8fd8db04e6f8c5c164806d2c1b5fea6096daf583f83f06d1e4813ea61edc291f')
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	./autogen.sh
+	export CXXFLAGS+=' -fpermissive'
 	./configure --prefix=/usr
 	make
 }
