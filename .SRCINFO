@@ -1,0 +1,19 @@
+pkgbase = ansi2txt-bin
+	pkgdesc = Convert text containing ANSI control codes into plain ASCII text.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/gabe565/ansi2txt
+	license = MIT
+	conflicts = ansi2txt
+	provides = ansi2txt
+	arch = aarch64
+	source_aarch64 = https://github.com/gabe565/ansi2txt/releases/download/v0.0.1/ansi2txt_0.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 45c436d7b229fdce6d2e5dcdd727a3d1be26b9b4ad4b4bfacb557f04a4569d36
+	arch = armv7h
+	source_armv7h = https://github.com/gabe565/ansi2txt/releases/download/v0.0.1/ansi2txt_0.0.1_linux_armv7.tar.gz
+	sha256sums_armv7h = 334783b50e3bc58378617130104c2c6b3bd922c1aecf30fc77e1e58a84b396c5
+	arch = x86_64
+	source_x86_64 = https://github.com/gabe565/ansi2txt/releases/download/v0.0.1/ansi2txt_0.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6c97a80690bd3c2b0127e9d44526a01b3fefafc2ec3a6c998c2349a0e86ac218
+	
+pkgname = ansi2txt-bin
