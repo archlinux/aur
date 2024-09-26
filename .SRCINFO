@@ -1,6 +1,6 @@
 pkgbase = keep-audio-alive-git
 	pkgdesc = Yet another application to prevent your audio devices from going to sleep resulting in missed notifications or worse, crackling noises.
-	pkgver = 1.0.1.r0.g58cb871
+	pkgver = 1.0.1.r1.g2ec4a80
 	pkgrel = 1
 	url = https://github.com/TarnishedStella/keep-audio-alive
 	arch = any
