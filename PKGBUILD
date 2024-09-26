@@ -4,7 +4,7 @@
 pkgname=waveterm
 _pkgname=Wave
 _appname="${_pkgname} Terminal"
-pkgver=0.8.3
+pkgver=0.8.4
 _electronversion=32
 _nodeversion=22
 pkgrel=1
@@ -38,7 +38,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('223a1e7b106415078cd54202e317cbe43bd4aa39d185f640e140784af3cddbec'
+sha256sums=('39e87fcae97973d5d08a2fadf7bc21885623724f2bb3326d05d1edd755444567'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -80,10 +80,12 @@ build() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/build\/icons.icns/build\/appicon.png/g;s/\"zip\", \"deb\", \"rpm\", \"AppImage\", \"pacman\"/\"dir\"/g" electron-builder.config.cjs
+    sed -i "/- build:server:macos/d;/- build:server:windows/d" Taskfile.yml
     gem install fpm
-    corepack enable
-    echo y | yarn set version 4.4.1
-    NODE_ENV=development    yarn install #--cache-folder "${srcdir}/.yarn_cache"
+    _yarnver=`grep "yarn@" package.json | awk '{print $2}' | sed "s/\"//g;s/yarn@//"`
+    corepack yarn
+    echo y | yarn version "${_yarnver}"
+    NODE_ENV=development    yarn install
     NODE_ENV=production     go-task package
 }
 package() {
