@@ -4,7 +4,7 @@
 _pkgname="across"
 pkgname="$_pkgname"
 pkgver=0.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="The next GUI client for v2ray core"
 url="https://github.com/ArkToria/ACross"
 license=('GPL-3.0-only')
@@ -18,7 +18,7 @@ depends=(
   'protobuf'
   'qt6-5compat'
   'qt6-base'
-  'qt6-quickcontrols2'
+  'qt6-declarative'
   'spdlog'
   'zxing-cpp'
 )

@@ -1,7 +1,7 @@
 pkgbase = across
 	pkgdesc = The next GUI client for v2ray core
 	pkgver = 0.1.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ArkToria/ACross
 	arch = x86_64
 	license = GPL-3.0-only
@@ -20,7 +20,7 @@ pkgbase = across
 	depends = protobuf
 	depends = qt6-5compat
 	depends = qt6-base
-	depends = qt6-quickcontrols2
+	depends = qt6-declarative
 	depends = spdlog
 	depends = zxing-cpp
 	optdepends = v2ray: use system v2ray core.

@@ -1,0 +1,4 @@
+[across]
+source = "git"
+git = "https://github.com/ArkToria/ACross.git"
+prefix = "v"
