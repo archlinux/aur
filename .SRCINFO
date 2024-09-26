@@ -1,7 +1,7 @@
 pkgbase = igir-bin
-	pkgdesc = A zero-setup ROM collection manager that sorts, filters, extracts or archives, patches, and reports on collections of any size on any OS.
+	pkgdesc = A zero-setup ROM collection manager
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/emmercm/igir
 	arch = x86_64
 	license = GPL3

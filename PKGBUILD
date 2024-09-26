@@ -1,8 +1,8 @@
 # Maintainer: Sean Brar <contact@seanbrar.com>
 pkgname=igir-bin
 pkgver=3.0.1
-pkgrel=1
-pkgdesc="A zero-setup ROM collection manager that sorts, filters, extracts or archives, patches, and reports on collections of any size on any OS."
+pkgrel=2
+pkgdesc="A zero-setup ROM collection manager"
 arch=('x86_64')
 url="https://github.com/emmercm/igir"
 license=('GPL3')
