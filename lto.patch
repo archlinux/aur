@@ -1,0 +1,13 @@
+diff '--color=auto' -rupN cosmic-greeter.orig/Cargo.toml cosmic-greeter/Cargo.toml
+--- cosmic-greeter.orig/Cargo.toml	2024-09-26 18:28:04.748010656 +0200
++++ cosmic-greeter/Cargo.toml	2024-09-26 18:28:33.331673933 +0200
+@@ -62,6 +62,9 @@ opt-level = 2
+ [profile.dev.package.ttf-parser]
+ opt-level = 2
+ 
++[profile.release]
++lto = "thin"
++
+ [workspace]
+ members = ["cosmic-greeter-config", "daemon"]
+ resolver = "2"

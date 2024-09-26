@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-greeter-git
-pkgver=1.0.0.alpha.1.r29.g55c02cd
-pkgrel=4
+pkgver=1.0.0.alpha.2.r0.g4ddb320
+pkgrel=1
 pkgdesc="libcosmic greeter for greetd, which can be run inside cosmic-comp"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-greeter"
@@ -25,9 +25,11 @@ makedepends=(
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/cosmic-greeter.git'
-        'display-manager.patch')
+        'display-manager.patch'
+        'lto.patch')
 sha256sums=('SKIP'
-            '12772a54559f299f9f8e8c5687b9aff30f37e38328e59692e27861f94cf6a0c7')
+            '12772a54559f299f9f8e8c5687b9aff30f37e38328e59692e27861f94cf6a0c7'
+            '0c64dcae8a0232a15ff5ce1d8728434b12125bdbb098fba4ae21624a977f1e57')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -36,6 +38,10 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
+
+  # Use thin LTO
+  patch -Np1 -i ../lto.patch
+
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
@@ -53,7 +59,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build
-  RUSTFLAGS="-C link-arg=-fuse-ld=mold"
+  RUSTFLAGS+="-C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
   nice just build-release --frozen
