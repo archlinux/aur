@@ -2,7 +2,7 @@ _pkgbase=adobe-source-han-mono
 pkgbase=$_pkgbase-fonts
 pkgname=($_pkgbase-jp-fonts $_pkgbase-kr-fonts $_pkgbase-cn-fonts $_pkgbase-tw-fonts $_pkgbase-hk-fonts $_pkgbase-otc-fonts)
 pkgver=1.002
-pkgrel=7
+pkgrel=8
 pkgdesc='Adobe Source Han Mono - A set of Pan-CJK fonts designed to complement Source Code Pro'
 arch=('any')
 license=('custom:OFL')
@@ -147,7 +147,7 @@ function _package {
     # Install fontconfig files
     install -d "$pkgdir/usr/share/fontconfig/conf.default"
     install -Dm644 "$srcdir/$_fontconfig_filename" "$pkgdir/usr/share/fontconfig/conf.avail/$_fontconfig_filename"
-    ln -s ../conf.avail/$_fontconfig_filename "$pkgdir/usr/share/fontconfig/conf.default$_fontconfig_filename"
+    ln -sr "$pkgdir/usr/share/fontconfig/"{conf.avail,conf.default}/$_fontconfig_filename
     
     # Install license file
     install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 LICENSE.md
