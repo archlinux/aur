@@ -1,7 +1,9 @@
 # Maintainer: bbaa <bbaa@bbaa.moe>
 _pkgname=EasyTier
 pkgname=easytier-git
-pkgver=1.2.3.r15.g0467b0a
+conflicts=("easytier")
+provides=("easytier")
+pkgver=1.2.3.r32.g7b4a01e
 pkgrel=1
 pkgdesc="A simple, decentralized mesh VPN with WireGuard support."
 arch=('x86_64')
@@ -39,7 +41,7 @@ package() {
   install -Dm644 "easytier.service" "$pkgdir/usr/lib/systemd/system/easytier.service"
   install -Dm644 "config.toml" "$pkgdir/etc/easytier/config.toml"
   cd "$_pkgname"
-  install -Dm755 "target/release/$pkgname-cli" "$pkgdir/usr/bin/$pkgname-cli"
-  install -Dm755 "target/release/$pkgname-core" "$pkgdir/usr/bin/$pkgname-core"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 "target/release/easytier-cli" "$pkgdir/usr/bin/easytier-cli"
+  install -Dm755 "target/release/easytier-core" "$pkgdir/usr/bin/easytier-core"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/easytier/LICENSE"
 }
