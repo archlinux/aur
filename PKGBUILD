@@ -1,6 +1,6 @@
 pkgname=mihomo-party-git
 _pkgname=${pkgname%-git}
-pkgver=1.3.4.r2.g29ad30b
+pkgver=1.3.4.r3.g915b539
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -40,10 +40,8 @@ package() {
     chmod +x ${pkgdir}/opt/mihomo-party/mihomo-party
     chmod +x ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo
     chmod +x ${pkgdir}/opt/mihomo-party/resources/sidecar/mihomo-alpha
-    cd ${pkgdir}/../..
-	install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
-
-	sed -i '3s!/opt/mihomo-party/mihomo-party!mihomo-party!' "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    sed -i '3s!/opt/mihomo-party/mihomo-party!mihomo-party!' "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
     chown -R root:root ${pkgdir}
 }
