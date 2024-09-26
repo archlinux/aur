@@ -10,7 +10,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=129.0.6668.70
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _system_clang=1
 # ungoogled chromium variables
@@ -124,8 +124,6 @@ prepare() {
 
   # Increase _FORTIFY_SOURCE level to match Arch's default flags
   patch -Np1 -i ../increase-fortify-level.patch
-
-  patch -Np1 -i ../fix-ungoogled-third-party-re2.patch
 
   # Fixes for building with libstdc++ instead of libc++
 
