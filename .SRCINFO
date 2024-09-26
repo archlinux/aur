@@ -1,11 +1,11 @@
 pkgbase = libbasen
 	pkgdesc = c++ encoding/decoding from arbitrary base
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/vSEK1RO/libbasen
 	arch = any
 	license = GPL-3.0
-	source = libbasen-1.0.1.tar.gz::https://github.com/vSEK1RO/libbasen/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = SKIP
+	source = libbasen-1.0.2.tar.gz::https://github.com/vSEK1RO/libbasen/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = b52d6d128f852f8dd5b2f7b7215b0b7d419ddf9279c1d0c50458402e68ee3480
 
 pkgname = libbasen
