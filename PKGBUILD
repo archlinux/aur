@@ -4,16 +4,17 @@
 
 pkgname=lincity
 pkgver=1.13.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A free construction and management simulation game'
 arch=('x86_64')
 url='https://lincity.sourceforge.net/'
 license=('GPL-2.0-only')
+# namcap will report that libxext may not be needed. It is.
 depends=('glibc' 'libpng' 'libx11' 'libxext')
 source=("https://deb.debian.org/debian/pool/main/l/$pkgname/${pkgname}_${pkgver}.orig.tar.gz"
-        "https://deb.debian.org/debian/pool/main/l/$pkgname/${pkgname}_${pkgver}-15.debian.tar.xz")
+        "https://deb.debian.org/debian/pool/main/l/$pkgname/${pkgname}_${pkgver}-16.debian.tar.xz")
 sha256sums=('7b4cbd11ffd4cbed79a0aadb25f2b1c34e25a8201182fbb259ce2f450fe5015d'
-            'b7af3eb3bdcc8ad5402237c5f629c74a6d0c5e7c0e98cfb527e7a23436287f25')
+            '1986e9c7fc2654522e138661fbd4179b5a0ea77e8d84dbd9560799e63eb0dc31')
 
 prepare() {
     cd "$pkgname-$pkgver"

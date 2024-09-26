@@ -1,7 +1,7 @@
 pkgbase = lincity
 	pkgdesc = A free construction and management simulation game
 	pkgver = 1.13.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lincity.sourceforge.net/
 	arch = x86_64
 	license = GPL-2.0-only
@@ -10,8 +10,8 @@ pkgbase = lincity
 	depends = libx11
 	depends = libxext
 	source = https://deb.debian.org/debian/pool/main/l/lincity/lincity_1.13.1.orig.tar.gz
-	source = https://deb.debian.org/debian/pool/main/l/lincity/lincity_1.13.1-15.debian.tar.xz
+	source = https://deb.debian.org/debian/pool/main/l/lincity/lincity_1.13.1-16.debian.tar.xz
 	sha256sums = 7b4cbd11ffd4cbed79a0aadb25f2b1c34e25a8201182fbb259ce2f450fe5015d
-	sha256sums = b7af3eb3bdcc8ad5402237c5f629c74a6d0c5e7c0e98cfb527e7a23436287f25
+	sha256sums = 1986e9c7fc2654522e138661fbd4179b5a0ea77e8d84dbd9560799e63eb0dc31
 
 pkgname = lincity
