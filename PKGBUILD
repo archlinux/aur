@@ -1,19 +1,19 @@
-# Maintainer: Viachaslau Khalikin <khalikin'at'yandex'>
+# Maintainer: Viachaslau Khalikin <viachaslavic'at'outlook'dot'com>
 
 pkgname='freedroidrpg-git'
-pkgver=1.0rc2.r20.g642f6a95a
+pkgver=1.0.r9.g85156e288
 pkgrel=1
-arch=('x86_64')
-depends=('sdl_mixer' 'sdl_image' 'sdl_gfx' 'hicolor-icon-theme' 'glew')
-makedepends=('git' 'mesa')
-optdepends=('python' 'lua' 'espeak')
-pkgdesc="a mature science fiction role playing game set in the future"
+pkgdesc="Isometric 3D role playing game taking place in the future, on Earth (git version)"
 url="http://www.freedroid.org"
-license=("GPL")
-source=('freedroidrpg-git::git+https://gitlab.com/freedroid/freedroid-src.git')
+arch=('x86_64')
+license=('GPL-2.0-or-later')
+depends=('python' 'lua53' 'glibc' 'zlib' 'sdl12-compat' 'sdl_mixer' 'sdl_image' 'sdl_gfx' 'libiconv' 'libpng' 'libgl' 'hicolor-icon-theme' 'glew')
+makedepends=('git' 'mesa')
+optdepends=('espeak-ng-espeak')
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
+source=("$pkgname::git+https://gitlab.com/freedroid/freedroid-src.git")
 sha256sums=('SKIP')
-conflicts=('freedroidrpg')
-provides=('freedroidrpg')
 
 pkgver() {
   cd $pkgname
@@ -28,6 +28,5 @@ build() {
 }
 
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" -C "${pkgname}" install
 }

@@ -1,24 +1,29 @@
 pkgbase = freedroidrpg-git
-	pkgdesc = a mature science fiction role playing game set in the future
-	pkgver = 1.0rc2.r20.g642f6a95a
+	pkgdesc = Isometric 3D role playing game taking place in the future, on Earth (git version)
+	pkgver = 1.0.r9.g85156e288
 	pkgrel = 1
 	url = http://www.freedroid.org
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = mesa
+	depends = python
+	depends = lua53
+	depends = glibc
+	depends = zlib
+	depends = sdl12-compat
 	depends = sdl_mixer
 	depends = sdl_image
 	depends = sdl_gfx
+	depends = libiconv
+	depends = libpng
+	depends = libgl
 	depends = hicolor-icon-theme
 	depends = glew
-	optdepends = python
-	optdepends = lua
-	optdepends = espeak
+	optdepends = espeak-ng-espeak
 	provides = freedroidrpg
 	conflicts = freedroidrpg
 	source = freedroidrpg-git::git+https://gitlab.com/freedroid/freedroid-src.git
 	sha256sums = SKIP
 
 pkgname = freedroidrpg-git
-
