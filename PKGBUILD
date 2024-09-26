@@ -3,7 +3,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libjpeg-turbo
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 arch=('any')
 pkgdesc="JPEG image codec with accelerated baseline compression and decompression (Android ${_android_arch})"
@@ -17,7 +17,7 @@ makedepends=('android-cmake'
 provides=("android-${_android_arch}-libjpeg")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/libjpeg-turbo/libjpeg-turbo/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('081269bd1f35eaadb7ce2e3b4f03aebb')
+md5sums=('a816d48923e86c963c26d00e877f7db7')
 
 build() {
     cd "${srcdir}/libjpeg-turbo-${pkgver}"
@@ -34,7 +34,7 @@ package() {
     cd "${srcdir}/libjpeg-turbo-${pkgver}"
     source android-env ${_android_arch}
 
-    make -C build DESTDIR="$pkgdir" install
+    make -C build DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/${ANDROID_PREFIX_BIN}"
     rm -r "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
