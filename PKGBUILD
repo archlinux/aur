@@ -1,7 +1,7 @@
 # Maintainer: linkfrg
 pkgname=ignis-git
 _pkgname=ignis
-pkgver=0.1.r1.g0ba6573
+pkgver=0.1.r174.gcfcebc3
 pkgrel=1
 pkgdesc="Full-featured Python framework for building desktop shells using GTK4."
 arch=('x86_64')
@@ -16,10 +16,8 @@ optdepends=('gst-plugin-pipewire: required for recorder service'
             'dart-sass: SASS/SCSS compilation support')
             
 conflicts=('ignis')
-source=("git+${url}"
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control")
-sha256sums=('SKIP'
-            'SKIP')
+source=("git+${url}")
+sha256sums=('SKIP')
 
 pkgver(){
   cd $srcdir/$_pkgname
@@ -28,9 +26,7 @@ pkgver(){
 
 prepare() {
   cd $srcdir/$_pkgname
-  git submodule init
-  git config submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
-  git -c protocol.file.allow=always submodule update
+  git submodule update --init --recursive
 }
 
 build() {
