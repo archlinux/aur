@@ -1,7 +1,7 @@
 # Maintainer: Linus Karlsson <linus.karlsson@debricked.com>
 pkgname=debricked
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI tool to interact with Debricked"
 arch=('x86_64')
 url="https://github.com/debricked/cli"
@@ -29,7 +29,7 @@ build() {
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
 	(cd cmd/debricked && go generate -v -x)
-	go build -o debricked ./cmd/debricked
+	go build -ldflags "-X main.version=${pkgver}" -o debricked ./cmd/debricked
 }
 
 package() {

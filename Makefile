@@ -10,6 +10,7 @@ package: .SRCINFO
 # expects NEW_VERSION environment variable to be set to the new version (e.g. NEW_VERSION=1.2.6)
 update_version:
 	perl -i.back -pE 's/$$1/$$ENV{NEW_VERSION}/ if /pkgver=(\d+\.\d+\.\d+)/' PKGBUILD
+	sed -i 's#^pkgrel=[0-9]#pkgrel=1#' PKGBUILD
 
 push: .SRCINFO
 	git add PKGBUILD .SRCINFO
