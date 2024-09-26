@@ -9,11 +9,10 @@ pkgdesc="Mikrotik RouterOS GUI Configurator (3.x with wine)"
 url="https://mikrotik.com/download"
 arch=('x86_64')
 license=('custom')
-depends=('wine' 'xdg-utils')
+depends=('wine')
 optdepends=(
   'ttf-ms-fonts: for better fonts'
 )
-install=${pkgname}.install
 source=("${_pkgbase}-${pkgver}.exe::https://download.mikrotik.com/routeros/winbox/${pkgver}/${_pkgbase}64.exe"
         "${pkgname}.desktop"
         "${pkgname}.png"
