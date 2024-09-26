@@ -1,6 +1,6 @@
 pkgname=gnome-shell-extension-bing-wallpaper
 pkgver=49
-pkgrel=1
+pkgrel=2
 pkgdesc="Changes your wallpaper daily to the bing.com background image"
 arch=(any)
 url="https://github.com/neffo/bing-wallpaper-gnome-extension"
@@ -12,15 +12,15 @@ gettext
 intltool
 jq
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/neffo/bing-wallpaper-gnome-extension/archive/v${pkgver}.tar.gz")
-sha256sums=('4d04b67b495b0df54bc6379944f7376c1bf18d6e0337c2753d8d5baf122400ed')
+source=("git+https://github.com/neffo/bing-wallpaper-gnome-extension.git#tag=v${pkgver}")
+sha256sums=('989c5853ec00a07533d35da1a0a977b4e827e0e0425d21bc67d03aab74998047')
 
 prepare() {
-  cd bing-wallpaper-gnome-extension-${pkgver}
+  cd bing-wallpaper-gnome-extension
 }
 
 build() {
-  cd bing-wallpaper-gnome-extension-${pkgver}
+  cd bing-wallpaper-gnome-extension
   glib-compile-schemas schemas/
   intltool-extract --type=gettext/glade ui/prefsadw.ui
   intltool-extract --type=gettext/glade ui/carousel4.ui
@@ -37,7 +37,7 @@ build() {
 }
 
 package() {
-  cd bing-wallpaper-gnome-extension-${pkgver}
+  cd bing-wallpaper-gnome-extension
 
   _uuid="$(cat metadata.json | jq --raw-output '.uuid')"
   _dest_dir="/usr/share/gnome-shell/extensions/${_uuid}"
