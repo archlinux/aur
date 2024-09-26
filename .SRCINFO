@@ -1,0 +1,16 @@
+pkgbase = igir-bin
+	pkgdesc = A zero-setup ROM collection manager that sorts, filters, extracts or archives, patches, and reports on collections of any size on any OS.
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/emmercm/igir
+	arch = x86_64
+	license = GPL3
+	provides = igir
+	conflicts = igir
+	options = !strip
+	source = igir-3.0.1-Linux-amd64.tar.gz::https://github.com/emmercm/igir/releases/download/v3.0.1/igir-3.0.1-Linux-amd64.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/emmercm/igir/v3.0.1/LICENSE
+	sha256sums = 41b40120d79197227e38bb17974c471121ff07c1f4df24dae095f38fefa623d6
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+
+pkgname = igir-bin
