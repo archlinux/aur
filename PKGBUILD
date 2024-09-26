@@ -16,7 +16,7 @@ optdepends=('caffeine: For AntiStandby plugin'
             'python-pillow: for some CAPTCHA stuff'
             'python-beaker: for some accounts') # <-- honestly I have no idea for which accounts but I saw there were some imports that needed beaker modules in code.
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${_pkgname}-$pkgver.tar.gz")
-sha256sums=('0b6df90cf3c2eb151b62e4dbc2a1e376812224216b98242e0a8dbf843d6f3288')
+sha256sums=('28ba5f879dc92aa7b49192dc4350b87d714561e3b9a4f8626bd7d1c56b1b2076')
 
 prepare() {
   cd "$srcdir/${_pkgname}-${pkgver}"
@@ -34,4 +34,3 @@ package() {
   python setup.py install --skip-build --root="$pkgdir/" --optimize=1
 }
 
-sha256sums=('28ba5f879dc92aa7b49192dc4350b87d714561e3b9a4f8626bd7d1c56b1b2076')
