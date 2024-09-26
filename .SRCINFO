@@ -1,12 +1,13 @@
 pkgbase = pass-it-on-cli
 	pkgdesc = Pass-it-on-cli client
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kwheelans/pass-it-on-cli
 	arch = any
 	license = MIT
 	makedepends = cargo
 	depends = openssl
+	options = !lto
 	source = https://github.com/kwheelans/pass-it-on-cli/releases/download/v0.6.0/pass-it-on-cli-v0.6.0.tar.gz
 	b2sums = f62824f182b6f582a21fdb8efcd6b3440d276c2ee864d5b78a87d6a4f4f4fcfd960ca1d1e9506f060b4249aacb3979bdd0d561eb1d4c7a5143fecae5690a0e5b
 
