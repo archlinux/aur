@@ -15,7 +15,6 @@ pkgbase = notesnook-git
 	makedepends = curl
 	makedepends = yarn
 	depends = electron30
-	depends = nodejs
 	provides = notesnook=3.0.18
 	conflicts = notesnook
 	source = notesnook.git::git+https://github.com/streetwriters/notesnook.git
