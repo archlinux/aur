@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=python-google-cloud-firestore
-pkgver=2.18.0
+pkgver=2.19.0
 pkgrel=1
 pkgdesc="Google's Firestore Python client library"
 arch=('any')
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=('python')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz"::${url}/archive/v${pkgver}.tar.gz)
-sha256sums=('d657717cdc780ee0c3d10653d6f8cb647eef2d5593399fc8fe893b924c6fc4a7')
+sha256sums=('3e7f3d0e000fc2098859d3c3c9e3f97ad58c4070a532691c93436d38eef4690a')
 
 build() {
   cd "python-firestore-$pkgver"
