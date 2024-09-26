@@ -1,7 +1,7 @@
 # Maintainer: XDR <xxdr@duck.com>
 pkgname="xfetch-bin"
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight Linux fetch written in Rust."
 arch=('x86_64')
 url="https://codeberg.org/XDR/xFetch"

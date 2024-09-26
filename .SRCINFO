@@ -1,7 +1,7 @@
 pkgbase = xfetch-bin
 	pkgdesc = Lightweight Linux fetch written in Rust.
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/XDR/xFetch
 	arch = x86_64
 	license = MIT
