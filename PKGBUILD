@@ -3,8 +3,8 @@
 pkgname=electerm
 pkgver=1.40.6
 _electronversion=26
-_nodeversion=20
-pkgrel=1
+_nodeversion=18
+pkgrel=2
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client(linux, mac, win)"
 arch=('any')
 url="https://electerm.html5beta.com/"
@@ -13,6 +13,8 @@ license=('MIT')
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
+    'python'
+    'java-runtime'
 )
 makedepends=(
     'npm'
@@ -38,41 +40,34 @@ _ensure_local_nvm() {
 }
 build() {
     sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${pkgname}/
-        s/@options@//
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname}/g
+        s/@options@//g
     " -i "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="System" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
-    export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
-    mkdir -p "${srcdir}/.electron-gyp"
     {
+        echo -e '\n'	
+        #echo 'build_from_source=true'
+        echo "cache=${srcdir}/.npm_cache"
         if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-            echo -e '\n'
-            echo 'registry "https://registry.npmmirror.com"'
-            echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
-            echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
-            echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
-            echo "cacheFolder "${srcdir}"/.yarn/cache"
-            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
-            echo "globalFolder "${srcdir}"/.yarn/global"
-            echo 'useHardlinks true'
-            #echo 'buildFromSource true'
-            echo 'linkWorkspacePackages true'
-            echo 'fetchRetries 3'
-            echo 'fetchRetryTimeout 10000'
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         fi
-    } >> .yarnrc
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
-    NODE_ENV=production     yarn run prepare-build
-    NODE_ENV=production     yarn electron-builder -l --dir
+    } >> .npmrc
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    rm -rf package-lock.json
+    NODE_ENV=development    npm install --no-lockfile
+    NODE_ENV=production     npm run prepare-build
+    NODE_ENV=production     npx electron-builder build -l --dir
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
