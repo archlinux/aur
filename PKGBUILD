@@ -2,7 +2,7 @@
 # Contributor: Radoslaw Mejer <radmen@radmen.info>
 
 pkgname="git-toolbelt"
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="A suite of useful Git commands that aid with scripting or every day command line usage"
 arch=(any)
@@ -13,7 +13,7 @@ source=(
     "git-toolbelt-$pkgver.zip::https://github.com/nvie/git-toolbelt/archive/v$pkgver.tar.gz"
 )
 sha256sums=(
-    "1bd4f01a4ad4a580ac514e298bae4d37887da27e9d295375aa645f32e30f7a33"
+    "d39e45a9d2a2501bc6f06fc0c5eb8f1fb7a3b372c0ee4d6def4c77541d102c44"
 )
 
 package() {
