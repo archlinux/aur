@@ -1,6 +1,6 @@
 pkgbase = headermaker-git
 	pkgdesc = A desktop application designed to create custom header comments for your code files within a selected directory.
-	pkgver = 1.0.3.r0.g9a2140c
+	pkgver = 1.0.3.r2.g831d46b
 	pkgrel = 1
 	url = https://github.com/NewBumpEr/HeaderMaker
 	arch = any
@@ -18,6 +18,6 @@ pkgbase = headermaker-git
 	source = headermaker.git::git+https://github.com/NewBumpEr/HeaderMaker.git
 	source = headermaker.sh
 	sha256sums = SKIP
-	sha256sums = c053a7b3ed8b0b4d77f78e81ab8a4c61cbfd773a9298b3f3a187e5df89c125c2
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = headermaker-git
