@@ -6,7 +6,7 @@
 #_with_usermode=1
 
 pkgname=mock
-pkgver=5.6
+pkgver=5.7
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -15,9 +15,10 @@ url="https://github.com/rpm-software-management/$pkgname"
 arch=('any')
 license=('GPL-2.0-or-later')
 depends=('mock-core-configs>=39' 'python' 'python-backoff' 'python-distro'
-         'python-pyroute2' 'python-requests' 'python-templated-dictionary'
+         'python-pyroute2' 'python-requests' 'python-templated-dictionary>=1.5'
          'rpm-tools')
 ((_with_usermode)) && depends+=('usermode')
+makedepends=('python-argparse-manpage')
 optdepends=('createrepo_c: for mockchain command'
             'dnf-plugins-core: to build RPMs for DNF based distributions (hint: use bootstrap images instead)'
             'dnf5: to build RPMs for DNF5 based distributions (hint: use bootstrap images instead)'
@@ -28,11 +29,12 @@ optdepends=('createrepo_c: for mockchain command'
             'procenv: for procenv plugin')
 install="$pkgname.install"
 backup=("etc/$pkgname/logging.ini"
+        "etc/$pkgname/hermetic-build.cfg"
         "etc/$pkgname/site-defaults.cfg")
 source=("$url/archive/$_pkgtag.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('0a902c1b89667e9653664487bfa7f9acfcb8f55ba9d64a021058cec40144697d'
+sha256sums=('f2b9507d56eaf278990474084778733a60eae46a215ee675f425a8077fbd06ae'
             'f6cba3f7e7f35c3d811f548af9ff2044764b6b65eb9bd74f035904c0c8463651'
             'a32ef4b3a19490280d3e8fcdebe9dd3348636a97e214850ce6cfc6bffa56a5d3')
 
@@ -73,6 +75,9 @@ build() {
 	python    -m compileall py/ -q
 	python -O -m compileall py/ -q
 
+
+	argparse-manpage --pyfile py/mock-hermetic-repo.py --function _argparser >docs/mock-hermetic-repo.1
+
 	popd >/dev/null
 }
 
@@ -105,7 +110,7 @@ package() {
 	cp -Rp py/mockbuild "$pkgdir/$python_sitelib/"
 
 	mkdir -p "$pkgdir/$_mandir/"man1
-	cp -Rp "docs/$pkgname"{,-parse-buildlog}.1 "$pkgdir/$_mandir/"man1/
+	cp -Rp "docs/$pkgname"{,-hermetic-repo,-parse-buildlog}.1 "$pkgdir/$_mandir/"man1/
 
 	if ((_with_usermode)); then
 		mkdir -p "$pkgdir/$_sysconfdir/"security/console.apps/

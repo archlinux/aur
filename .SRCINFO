@@ -1,18 +1,19 @@
 pkgbase = mock
 	pkgdesc = A simple chroot build environment manager for building RPMs
-	pkgver = 5.6
+	pkgver = 5.7
 	pkgrel = 1.1
 	url = https://github.com/rpm-software-management/mock
 	install = mock.install
 	arch = any
 	license = GPL-2.0-or-later
+	makedepends = python-argparse-manpage
 	depends = mock-core-configs>=39
 	depends = python
 	depends = python-backoff
 	depends = python-distro
 	depends = python-pyroute2
 	depends = python-requests
-	depends = python-templated-dictionary
+	depends = python-templated-dictionary>=1.5
 	depends = rpm-tools
 	optdepends = createrepo_c: for mockchain command
 	optdepends = dnf-plugins-core: to build RPMs for DNF based distributions (hint: use bootstrap images instead)
@@ -23,11 +24,12 @@ pkgbase = mock
 	optdepends = podman: to use bootstrap images (recommended)
 	optdepends = procenv: for procenv plugin
 	backup = etc/mock/logging.ini
+	backup = etc/mock/hermetic-build.cfg
 	backup = etc/mock/site-defaults.cfg
-	source = https://github.com/rpm-software-management/mock/archive/mock-5.6-1.tar.gz
+	source = https://github.com/rpm-software-management/mock/archive/mock-5.7-1.tar.gz
 	source = mock.sysusers
 	source = mock.tmpfiles
-	sha256sums = 0a902c1b89667e9653664487bfa7f9acfcb8f55ba9d64a021058cec40144697d
+	sha256sums = f2b9507d56eaf278990474084778733a60eae46a215ee675f425a8077fbd06ae
 	sha256sums = f6cba3f7e7f35c3d811f548af9ff2044764b6b65eb9bd74f035904c0c8463651
 	sha256sums = a32ef4b3a19490280d3e8fcdebe9dd3348636a97e214850ce6cfc6bffa56a5d3
 
