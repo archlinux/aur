@@ -1,19 +1,19 @@
 pkgbase = lode-bin
 	pkgdesc = A universal GUI for unit testing built with Electron and Vue.js
-	pkgver = 0.35.0
+	pkgver = 0.36.0
 	pkgrel = 1
 	url = https://lode.run/
 	arch = x86_64
 	license = MIT
 	makedepends = asar
 	depends = electron30
-	provides = lode=0.35.0
+	provides = lode=0.36.0
 	conflicts = lode
-	source = lode-0.35.0.deb::https://github.com/lodeapp/lode/releases/download/v0.35.0/Lode_0.35.0_amd64.deb
-	source = LICENSE-0.35.0::https://raw.githubusercontent.com/lodeapp/lode/v0.35.0/LICENSE
+	source = lode-0.36.0.deb::https://github.com/lodeapp/lode/releases/download/v0.36.0/Lode_0.36.0_amd64.deb
+	source = LICENSE-0.36.0::https://raw.githubusercontent.com/lodeapp/lode/v0.36.0/LICENSE
 	source = lode.sh
-	sha256sums = 7e148b41ed9d1b017baf392b6b3d73b21e1652fb7800828018f4faddb8b42720
+	sha256sums = 3c123d6670d96724b5befa691afefe4ce6118a06a6e420aab12478fef5e616b8
 	sha256sums = 1e36d90998ca02b89c10324313b2d5f2139d0c8e258867844d8913f6e0ffceb0
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = lode-bin
