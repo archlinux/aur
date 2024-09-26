@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-store-git
 pkgver=1.0.0.alpha.2.r8.g382a7c9
-pkgrel=3
+pkgrel=4
 pkgdesc="COSMIC Store"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-store"
@@ -49,7 +49,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build
-  RUSTFLAGS+="-C link-arg=-fuse-ld=mold"
+  RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
   nice just build-release --frozen
