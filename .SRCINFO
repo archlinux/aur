@@ -1,6 +1,6 @@
 pkgbase = python-sktime
 	pkgdesc = A unified framework for machine learning with time series
-	pkgver = 0.33.0
+	pkgver = 0.33.1
 	pkgrel = 1
 	url = https://github.com/sktime/sktime
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-sktime
 	depends = python-scipy>=1.2
 	depends = python-scikit-learn>=0.24
 	depends = python-scikit-base
-	noextract = sktime-0.33.0-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/s/sktime/sktime-0.33.0-py3-none-any.whl
-	sha256sums = 82fc104604056f6e80dca79c80bbf9b1adb643f6a08c807a31736a773dfee830
+	noextract = sktime-0.33.1-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/s/sktime/sktime-0.33.1-py3-none-any.whl
+	sha256sums = c6d05248452beccd6fccdc560c8f4ff3d91737e93c95d2379afcec747f712af9
 
 pkgname = python-sktime
