@@ -3,7 +3,7 @@
 # Contributor: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=xubuntu-artwork
-pkgver=24.04.1
+pkgver=24.10
 pkgrel=1
 pkgdesc="Xubuntu themes and artwork"
 arch=("any")
@@ -16,8 +16,8 @@ optdepends=("plymouth: For the plymouth theme to work"
             "xfce-theme-bluebird: Official theming, git or stable version"
             "xfce-theme-greybird: Official theming, git or stable version"
             "elementary-xfce-icons: For matching icon theme, or the git version")
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('b85f8ef24cada42dffc1ce590a7d24ace01e4835a70054f02860a97bc1d9fa45')
+source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/xubuntu-artwork/${pkgver}/${pkgname}_${pkgver}.tar.xz")
+sha256sums=('a8af0a1354a5e14fe5229e298c207466d1fa87862a5170ad123b3da02f0f3106')
 
 package() {
   cd "${srcdir}/${pkgname}"
