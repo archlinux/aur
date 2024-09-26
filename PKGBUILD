@@ -19,7 +19,6 @@ depends=('fontconfig'
          'xcb-util-keysyms'
          'xcb-util-renderutil'
          'xcb-util-wm'
-         'xdg-utils'
          'zlib')
 source=("WinBox-${pkgver}.zip::https://download.mikrotik.com/routeros/winbox/${pkgver}/WinBox_Linux.zip"
         "${pkgname}.desktop")

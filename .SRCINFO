@@ -17,7 +17,6 @@ pkgbase = winbox
 	depends = xcb-util-keysyms
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
-	depends = xdg-utils
 	depends = zlib
 	source = WinBox-4.0beta8.zip::https://download.mikrotik.com/routeros/winbox/4.0beta8/WinBox_Linux.zip
 	source = winbox.desktop
