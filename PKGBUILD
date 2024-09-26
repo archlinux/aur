@@ -5,7 +5,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libsoup3
-pkgver=3.5.2
+pkgver=3.6.0
 pkgrel=1
 arch=('any')
 pkgdesc="HTTP client/server library for GNOME (Android ${_android_arch})"
@@ -20,7 +20,7 @@ makedepends=('android-meson'
              'gobject-introspection')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.gnome.org/GNOME/libsoup/-/archive/${pkgver}/libsoup-${pkgver}.tar.bz2")
-md5sums=('0fcaeddb7f0f859663857409745b61e6')
+md5sums=('7e9e86dfed0d8f270df3aa6e03bcb196')
 
 build() {
     cd "${srcdir}/libsoup-${pkgver}"
