@@ -8,6 +8,7 @@ pkgbase = boohu-git
 	license = ISC
 	makedepends = git
 	makedepends = go
+	makedepends = tk
 	provides = boohu
 	source = boohu-git::git+https://codeberg.org/anaseto/boohu.git
 	md5sums = SKIP
