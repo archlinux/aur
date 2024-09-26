@@ -6,7 +6,6 @@ pkgbase = winbox3
 	install = winbox3.install
 	arch = x86_64
 	license = custom
-	depends = desktop-file-utils
 	depends = wine
 	depends = xdg-utils
 	optdepends = ttf-ms-fonts: for better fonts

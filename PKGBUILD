@@ -9,7 +9,7 @@ pkgdesc="Mikrotik RouterOS GUI Configurator (3.x with wine)"
 url="https://mikrotik.com/download"
 arch=('x86_64')
 license=('custom')
-depends=('desktop-file-utils' 'wine' 'xdg-utils')
+depends=('wine' 'xdg-utils')
 optdepends=(
   'ttf-ms-fonts: for better fonts'
 )
