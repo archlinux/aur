@@ -1,6 +1,6 @@
 pkgbase = cxcli
 	pkgdesc = The missing CLI for your Dialogflow CX projects
-	pkgver = 1.229.0
+	pkgver = 1.229.1
 	pkgrel = 1
 	url = https://cxcli.xavidop.me
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cxcli
 	depends = glibc
 	provides = dialogflow-cx-cli
 	conflicts = dialogflow-cx-cli
-	source = dialogflow-cx-cli-1.229.0.tar.gz::https://github.com/xavidop/dialogflow-cx-cli/archive/refs/tags/v1.229.0.tar.gz
-	b2sums = 04a311fc6d814303327628d1d67be6626affdb5f88b0a06459edb594e9ccfad4526fa0206a98bfa8db1f822072174a15a2ba8876d58538e144ae107c0ed13313
+	source = dialogflow-cx-cli-1.229.1.tar.gz::https://github.com/xavidop/dialogflow-cx-cli/archive/refs/tags/v1.229.1.tar.gz
+	b2sums = 1fffbf742c9c8e1a56486334914bf6dbe6537aaad12b87fb8d510b59db7c81048d312122668f7aefecaeca5281b739df6a48a9c3dae165e4e756280a5d3f2824
 
 pkgname = cxcli
