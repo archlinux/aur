@@ -1,7 +1,7 @@
 pkgbase = ratatouille.lv2
 	pkgdesc = A guitar amp neural model and impulse response loader and mixer LV2 plugin
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brummer10/Ratatouille.lv2
 	arch = aarch64
 	arch = x86_64
