@@ -1,10 +1,10 @@
 appname=zen
 pkgname="${appname}-adblocker-git"
 _pkgname=Zen
-pkgver=0.5.0.r27.gfb5464c
+pkgver=0.5.0.r31.ga5342db
 _nodeversion=20
 pkgrel=1
-pkgdesc="An open-source system-wide ad-blocker and privacy guard"
+pkgdesc="An open-source system-wide ad-blocker and privacy guard."
 arch=('any')
 url="https://zenprivacy.net/"
 _ghurl="https://github.com/anfragment/zen"
@@ -31,10 +31,12 @@ source=(
 sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+    set -o pipefail
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
@@ -48,10 +50,11 @@ build() {
     export GOOS=linux
     export GOCACHE="${srcdir}/go-build"
     export GOMODCACHE="${srcdir}/go/pkg/mod"
+    local HOME="${srcdir}/.electron-gyp"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         go env -w GOPROXY=https://goproxy.cn,direct
-    else
-        echo "Your network is OK."
+        echo 'registry=https://registry.npmmirror.com' >> frontend/.npmrc
+		echo 'disturl=https://registry.npmmirror.com/-/binary/node/' >> frontend/.npmrc
     fi
     wails build -o "${pkgname%-git}" -platform "linux" -ldflags "-X ./internal/cfg.Version=${pkgver}" -m -skipbindings
 }
