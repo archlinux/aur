@@ -1,6 +1,7 @@
 # Maintainer: Jonathan Knapp <jaknapp8+aur@gmail.com>
-# URL: https://github.com/anaseto/boohu
-# Upstream: https://github.com/anaseto/boohu
+# URL: https://codeberg.org/anaseto/boohu
+# Upstream: https://codeberg.org/anaseto/boohu
+# Previously: https://github.com/anaseto/boohu
 
 pkgname=('boohu-git' 'boohu-tk-git')
 pkgver=0.14.0
@@ -40,6 +41,7 @@ package_boohu-git() {
 }
 
 package_boohu-tk-git() {
+  depends=('tk')
   install -Dm 755 "$srcdir/boohu-git/boohu-tk" -t "$pkgdir/usr/bin";
   install -Dm 644 "$srcdir/boohu-git/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }

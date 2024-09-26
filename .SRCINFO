@@ -15,3 +15,4 @@ pkgbase = boohu-git
 pkgname = boohu-git
 
 pkgname = boohu-tk-git
+	depends = tk
