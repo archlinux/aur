@@ -1,7 +1,7 @@
 pkgbase = cosmic-store-git
 	pkgdesc = COSMIC Store
 	pkgver = 1.0.0.alpha.2.r8.g382a7c9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pop-os/cosmic-store
 	arch = x86_64
 	arch = aarch64
@@ -19,6 +19,8 @@ pkgbase = cosmic-store-git
 	provides = cosmic-store
 	conflicts = cosmic-store
 	source = git+https://github.com/pop-os/cosmic-store.git
+	source = lto.patch
 	sha256sums = SKIP
+	sha256sums = f3546ad15b66e888b4b64a73647545587558137661a57260089d8e3526592596
 
 pkgname = cosmic-store-git

@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-store-git
 pkgver=1.0.0.alpha.2.r8.g382a7c9
-pkgrel=2
+pkgrel=3
 pkgdesc="COSMIC Store"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-store"
@@ -24,8 +24,10 @@ optdepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/pop-os/cosmic-store.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/pop-os/cosmic-store.git'
+        'lto.patch')
+sha256sums=('SKIP'
+            'f3546ad15b66e888b4b64a73647545587558137661a57260089d8e3526592596')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -34,6 +36,10 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
+
+  # Use thin LTO
+  patch -Np1 -i ../lto.patch
+
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
