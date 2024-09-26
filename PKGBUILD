@@ -1,7 +1,7 @@
 # Maintainer: meanlint <meanlint@outlook.com>
 # Maintainer: Robert Baker <reiichi001@gmail.com>
 pkgname=xivlauncher-cn-bin
-pkgver=1.0.7.2
+pkgver=1.1.0.0
 pkgrel=1
 pkgdesc="Custom Launcher for Final Fantasy XIV Online CN"
 arch=('x86_64')
