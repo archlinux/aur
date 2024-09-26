@@ -4,7 +4,7 @@ pkgname="${_pkgname}-electron-bin"
 _appname=Notesnook
 pkgver=3.0.18
 _electronversion=30
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.Use system-wide Electron"
 arch=(
     'aarch64'
@@ -42,6 +42,10 @@ build() {
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g;s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g" -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
+    sed -e "
+        s/dirname(process.execPath),\"..\",\"Resources\"/dirname(\'\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}\')/
+        s/dirname(process.execPath),\"resources\"/dirname(\'\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}\')/
+    " -i "${srcdir}/squashfs-root/resources/app/build/electron.js"
     asar p "${srcdir}/squashfs-root/resources/app" "${srcdir}/app.asar"
 }
 package() {
