@@ -1,7 +1,7 @@
 pkgbase = pipeline-gtk
 	pkgdesc = Watch YouTube and PeerTube videos in one place
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/schmiddi-on-mobile/pipeline
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,8 @@ pkgbase = pipeline-gtk
 	makedepends = rust
 	makedepends = meson
 	depends = libadwaita
+	depends = libclapper
+	depends = libclapper-gtk
 	options = !lto
 	conflicts = tubefeeder
 	replaces = tubefeeder
