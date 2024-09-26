@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-daemon-git
 pkgver=1.0.0.alpha.2.r3.g2f17f33
-pkgrel=1
+pkgrel=2
 pkgdesc="Cosmic settings daemon"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-settings-daemon"
@@ -53,7 +53,7 @@ build() {
   export GEOCLUE_AGENT="/usr/lib/geoclue-2.0/demos/agent"
 
   # use mold instead of lld to speed up build
-  RUSTFLAGS+="-C link-arg=-fuse-ld=mold"
+  RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
   ARGS+=" --frozen" nice make geoclue_agent='/usr/lib/geoclue-2.0/demos/agent'
