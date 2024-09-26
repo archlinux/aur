@@ -11,4 +11,5 @@ md5sums=(39d2005c293676926234d4edfb5bc858)
 
 package() {
   install -m644 -Dt "$pkgdir/usr/share/fonts/TTF/" "$srcdir/$_pkgname/hinted/ttf/$_pkgname-Regular.ttf"
+  install -m644 -Dt "$pkgdir/usr/share/licenses/noto-fonts-hieroglyphs/" "$srcdir/"*.{txt,html}
 }
