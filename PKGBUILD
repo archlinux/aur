@@ -11,7 +11,9 @@
 #   (1) This file is >100GB in size  (2) You need an account for US export
 #   controls.
 # 3. Place the .tar.gz in the same directory as the PKGBUILD
-# 4. Only if you want to install Vitis Edition: Replace `vivado` with `vitis` in `pkgname`.
+# 4. Only if you want to install Vitis Edition: Replace `vivado` with `vitis_` in `pkgname`.
+#
+#    Note that there is an alternative PKGBUILD for vitis in AUR.
 # 5. Select the features you need in `install_config-vivado.txt` or `*-vitis.txt`.
 #    
 #    Alternatively you can install all features. See the commented lines in
@@ -84,7 +86,7 @@
 # For repo change in future
 
 pkgname=(vivado)
-#pkgname=(vitis)
+#pkgname=(vitis_)  # To avoid name clash with the AUR package
 
 _srcname=FPGAs_AdaptiveSoCs_Unified
 pkgver=2024.1
@@ -193,11 +195,12 @@ package_vivado() {
 
     package_common_post
 }
-package_vitis() {
+package_vitis_() {
+    provides=(vitis)
     conflicts=(vivado)
     pkgdesc="$pkgdesc – Vitis edition"
     package_common_pre
-    install=$pkgname.install  # Reinstall Python wheel etc
+    install=vitis.install  # Reinstall Python wheel etc
 
     LD_PRELOAD=$srcdir/spoof_homedir.so:$LD_PRELOAD ./xsetup \
         --batch Install \
