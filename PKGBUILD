@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-files-git
 pkgver=1.0.0.alpha.2.r20.g8dd26b6
-pkgrel=2
+pkgrel=3
 pkgdesc="File manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-files"
@@ -14,7 +14,6 @@ depends=(
 )
 makedepends=(
   'cargo'
-  'clang'
   'git'
   'just'
   'mold'
@@ -25,10 +24,8 @@ optdepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/pop-os/cosmic-files.git'
-        'lto.patch')
-sha256sums=('SKIP'
-            '6e5a0563438440cca17def2701a5a4b5d645b33846f729e376a28567a300347c')
+source=('git+https://github.com/pop-os/cosmic-files.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -37,10 +34,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-
-  # Use thin LTO
-  patch -Np1 -i ../lto.patch
-
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -53,7 +46,7 @@ build() {
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  CC=clang nice just build-release
+  nice just build-release
 }
 
 package() {
