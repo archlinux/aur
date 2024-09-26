@@ -3,7 +3,7 @@
 
 pkgname=winbox
 pkgver=4.0beta8
-pkgrel=2
+pkgrel=3
 pkgdesc="Mikrotik RouterOS GUI Configurator"
 url="https://mikrotik.com/download"
 arch=('x86_64')
