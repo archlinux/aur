@@ -6,7 +6,7 @@ _vlcver=3.0.21
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=5
+pkgrel=6
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64' 'aarch64')
@@ -414,7 +414,7 @@ package_vlc-luajit() {
     'libvpx: VP8 and VP9 codec'
     'lirc: lirc control'
     'live-media: streaming over RTSP'
-    'lua-socket: http interface'
+    #'lua-socket: http interface'
     'mpg123: mpg123 codec'
     'ncurses: ncurses interface'
     'opus: opus codec'

@@ -1,7 +1,7 @@
 pkgbase = vlc-luajit
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility
 	pkgver = 3.0.21
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.videolan.org/vlc/
 	arch = x86_64
 	arch = aarch64
@@ -216,7 +216,6 @@ pkgname = vlc-luajit
 	optdepends = libvpx: VP8 and VP9 codec
 	optdepends = lirc: lirc control
 	optdepends = live-media: streaming over RTSP
-	optdepends = lua-socket: http interface
 	optdepends = mpg123: mpg123 codec
 	optdepends = ncurses: ncurses interface
 	optdepends = opus: opus codec
