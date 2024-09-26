@@ -5,7 +5,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libarchive
-pkgver=3.7.4
+pkgver=3.7.6
 pkgrel=1
 arch=('any')
 pkgdesc="Multi-format archive and compression library (Android ${_android_arch})"
@@ -21,7 +21,7 @@ depends=("android-${_android_arch}-bzip2"
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/libarchive/libarchive/releases/download/v${pkgver}/libarchive-${pkgver}.tar.xz")
-sha256sums=('f887755c434a736a609cbd28d87ddbfbe9d6a3bb5b703c22c02f6af80a802735')
+md5sums=('bb53692eefc96a73ca5322a54ab52b48')
 
 build() {
     cd "${srcdir}/libarchive-${pkgver}"
@@ -42,7 +42,7 @@ package() {
     cd "${srcdir}/libarchive-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
