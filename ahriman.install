@@ -34,8 +34,8 @@ Whereas old local tree is still supported it is highly recommended to migrate to
 * edit local configuration to avoid pointing to the old paths;
 * run setup command (i.e. ahriman service-setup) with the same arguments as did before;
 * update remote services in order to support new paths (or setup redirects) if any;
-* enable web and timer services again by using x86_64-aur-clone suffix,
-  where x86_64 is the repository architecture and aur-clone is the repository name.
+* enable web and timer services again by using x86_64-aur suffix,
+  where x86_64 is the repository architecture and aur is the repository name.
 
 For more information kindly refer to migration notes https://ahriman.readthedocs.io/en/stable/migration.html.
 EOF
