@@ -1,0 +1,21 @@
+diff --git a/defs.y b/defs.y
+index 681a17c..8c70924 100644
+--- a/defs.y
++++ b/defs.y
+@@ -513,6 +513,8 @@ int perm[24][4] = {
+ int shapeno;
+ void insertshape(s, any, neg_shape)
+ char s[4];
++int any;
++int neg_shape;
+ {
+         int i,j,p;
+         int xcount=0, ccount=0;
+@@ -626,6 +628,7 @@ char *s;
+ }
+ 
+ void predeal_holding(compass, holding)
++int compass;
+ char *holding;
+ {
+         char suit;

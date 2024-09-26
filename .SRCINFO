@@ -1,21 +1,16 @@
 pkgbase = dealer
-	pkgdesc = generate bridge cards game hands for partnerships bidding training or for generating statistics that can be used to design conventions, or win postmortems
-	pkgver = 20040530
-	pkgrel = 5
-	url = http://www.xs4all.nl/~henku/html/dealer/dealer.html
-	install = dealer-4.install
-	arch = i686
+	pkgdesc = bridge hand generator
+	pkgver = 20211121
+	pkgrel = 1
+	url = https://packages.debian.org/bookworm/dealer
 	arch = x86_64
-	license = GPL
+	license = LicenseRef-public-domain
 	depends = perl
-	source = http://ftp.de.debian.org/debian/pool/main/d/dealer/dealer_0.20040530.orig.tar.gz
-	source = http://ftp.de.debian.org/debian/pool/main/d/dealer/dealer_0.20040530-4.debian.tar.gz
-	source = dealer-4.diff
-	source = dealer-4.install
-	md5sums = 991c9b73b7ebc1fb87b5e876a7d72797
-	md5sums = 1dad73622956ee5856634b4e038d6b83
-	md5sums = 0eedec9b386a60264522f43b94fc069a
-	md5sums = d6b4b7044e8d483c209ccb48fe67fad8
+	source = http://deb.debian.org/debian/pool/main/d/dealer/dealer_20211121+ds.orig.tar.xz
+	source = http://deb.debian.org/debian/pool/main/d/dealer/dealer_20211121+ds-1.debian.tar.xz
+	source = fix-missing-declarations.patch
+	sha256sums = 8fae9755a3f6fdc39578a1113a3a51f5aedf1f025e900b9380a37261219300b7
+	sha256sums = 883a4ae46af2fc7a83691907f5f808afbfb1e5e759c67ff6e4b8fec68df6ab7d
+	sha256sums = a665f3c63180ab3d75f1e527f3bf545a5c6b817b3cd745949da6e2846860223b
 
 pkgname = dealer
-
