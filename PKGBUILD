@@ -22,7 +22,7 @@ source_aarch64=("${_pkgname}-${pkgver}.zip::https://github.com/real-zony/ZonyLrc
 
 noextract=("${_pkgname}-${pkgver}.zip")
 
-sha256sums=('5df02fe66c04d0d376306e071d426ecf0e8d62efe248390c317ec9917582900c')
+sha256sums=('7c5d030183eb7f40e71af7248e69d88d5876f5521cdab187248aa489b812b1d0')
 sha256sums_x86_64=('0a9db582c8d0002fa11c0db5c6f0d20d754957fe14313238b2267d4e580716c2')
 sha256sums_aarch64=('2ff48eeb8a21e16508eb2daaf16078880008561d058c65952fdfbb358be893ee')
 

@@ -12,4 +12,4 @@ STATE_DIR=$STATE_HOME/zonylrctoolsx
 mkdir --parents "$STATE_DIR"/{upper,work}
 mount --types overlay overlay --options lowerdir="$LOWER_DIR",upperdir="$STATE_DIR"/upper,workdir="$STATE_DIR"/work "$LOWER_DIR"
 "$LOWER_DIR"/ZonyLrcTools.Cli "$@"
-fusermount3 -u "$LOWER_DIR"
+umount "$LOWER_DIR"
