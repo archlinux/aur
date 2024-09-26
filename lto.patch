@@ -1,0 +1,11 @@
+diff '--color=auto' -rupN cosmic-settings-daemon.orig/Cargo.toml cosmic-settings-daemon/Cargo.toml
+--- cosmic-settings-daemon.orig/Cargo.toml	2024-09-26 19:33:10.985621327 +0200
++++ cosmic-settings-daemon/Cargo.toml	2024-09-26 19:33:29.449161455 +0200
+@@ -40,3 +40,7 @@ memoize = "0.4.2"
+ # libcosmic = { path = "../libcosmic" }
+ # cosmic-config = { path = "../libcosmic/cosmic-config" }
+ # cosmic-theme = { path = "../libcosmic/cosmic-theme" }
++
++[profile.release]
++lto = "thin"
++
