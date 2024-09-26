@@ -9,6 +9,7 @@ pkgbase = dust3d-git
 	makedepends = gendesk
 	makedepends = gcc
 	makedepends = cmake
+	makedepends = make
 	makedepends = libicns
 	depends = qt5-base
 	depends = qt5-svg

@@ -20,6 +20,7 @@ makedepends=(
     'gendesk'
     'gcc'
     'cmake'
+    'make'
     'libicns'
 )
 source=(
@@ -28,20 +29,22 @@ source=(
 sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+    set -o pipefail
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 build() {
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Graphics" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
-    sed "28i\#include <cstdint>;s|const std::uint8_t|const uint8_t|g" -i "${pkgname%-git}"/base/ds3_file.h
-    sed "30i\#include <stdint.h>" -i "${pkgname%-git}"/mesh/solid_mesh_boolean_operation.h
-    sed "4i\#include <cstdint>;s|std::uint32_t|uint32_t|g" -i application/third_party/fbx/src/fbxnode.h
+    sed -i "28i\#include <cstdint>;s/const std::uint8_t/const uint8_t|g" "${pkgname%-git}"/base/ds3_file.h
+    sed -i "30i\#include <stdint.h>" "${pkgname%-git}"/mesh/solid_mesh_boolean_operation.h
+    sed -i "4i\#include <cstdint>;s/std::uint32_t|uint32_t/g" application/third_party/fbx/src/fbxnode.h
     cd "${srcdir}/${pkgname//-/.}/application"
     icns2png -x "${pkgname%-git}.icns"
     mv "${pkgname%-git}_512x512x32.png" "${pkgname%-git}.png"
-    sed "s|${pkgname%-git}.icns|${pkgname%-git}.png|g" -i application.pro
+    sed -i "s/${pkgname%-git}.icns/${pkgname%-git}.png/g" application.pro
     qmake
-    make
+    make -j`nproc`
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname//-/.}/application/${pkgname%-git}" -t "${pkgdir}/usr/bin"
