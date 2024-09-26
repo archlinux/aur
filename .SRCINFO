@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-libdrm
 	pkgdesc = Userspace interface to kernel DRM services (Android armv7a-eabi)
-	pkgver = 2.4.122
+	pkgver = 2.4.123
 	pkgrel = 1
 	url = https://dri.freedesktop.org/
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = android-armv7a-eabi-libdrm
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://dri.freedesktop.org/libdrm/libdrm-2.4.122.tar.xz
+	source = https://dri.freedesktop.org/libdrm/libdrm-2.4.123.tar.xz
 	source = 0001-Disable-open_memstream.patch
-	md5sums = 143c8df50e09cd1eeb1fb53f05ecb64a
+	md5sums = 322f5ffe2d3adc2f6ecaab52ae64ba4a
 	md5sums = b01f3f9e59e04924adcc3385e634c8dc
 
 pkgname = android-armv7a-eabi-libdrm
