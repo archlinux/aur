@@ -2,7 +2,7 @@
 
 pkgname="pass-it-on-server"
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pass-it-on server component"
 arch=("any")
 license=("MIT")
@@ -10,6 +10,7 @@ url="https://github.com/kwheelans/pass-it-on"
 conflicts=("pass-it-on-server-bin")
 depends=("openssl" "sqlite")
 makedepends=("cargo")
+options=("!lto")
 source=("https://github.com/kwheelans/pass-it-on/releases/download/v$pkgver/pass-it-on-v$pkgver.tar.gz")
 b2sums=('2b52f04add1f7f1ce2b3798c2874dc8879552e8110dba01a5526802d45d3cecb44f968804f4e6a10cae4820bc488cae31c5119b22f4a04f791196bf801613fb7')
 
