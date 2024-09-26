@@ -1,0 +1,11 @@
+--- simplenote_cli/config.py	2024-09-26 10:51:07.450318468 +0200
++++ simplenote_cli/config.py	2024-09-26 10:50:53.121593179 +0200
+@@ -122,7 +122,7 @@
+          'clr_help_descr_bg'             : 'default'
+         }
+ 
+-        cp = configparser.SafeConfigParser(defaults)
++        cp = configparser.ConfigParser(defaults)
+ 
+         if custom_file:
+             fname = custom_file
