@@ -1,9 +1,9 @@
-# Maintainer: Ernesto Castellotti <ernesto@castellotti.net>
+# Maintainer: Erny <erny@castellotti.net>
 
 pkgname=telegram-a
 realname=telegram-tt
-pkgver=10.9.14
-gitpkgver=3c850d968dae71197d1a967501e537eac0ecf547
+pkgver=10.9.15
+gitpkgver=6b6591e10d6ebeea6d5fae5d9495322ea506a8ed
 pkgrel=1
 _electron=electron27
 pkgdesc="Official Telegram Web client version A system Electron version"
@@ -19,7 +19,7 @@ source=("https://github.com/Ajaxy/${realname}/archive/${gitpkgver}.tar.gz"
                 "set_custom_window_title_from_env.patch"
                 "disable_statoscope.patch"
                 "force-disable-auto-update.patch")
-sha256sums=('53c4d88d99842ee765ef6711913d2660d9c12319263b51f901dc328f27d19ba7'
+sha256sums=('63d8458b09814d00678a021ced0bd9cf8d065af5dde54854aa65d1c4e0c3ad7b'
                 'efeb0cd71fd3d39d75744885a585e9961481a68ccf885a0b4f929eaf062c2b35'
                 'be1ec2ce92c6017e55ea79254502e34bf744fdeccd8952bce9eb69d0a7ee231a'
                 'ecd8513d233fa5da2925ef68a97cd03ddcea81c2a050576e64dcfa8f177aea0b'
