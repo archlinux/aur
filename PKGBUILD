@@ -2,8 +2,8 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-applibrary-git
-pkgver=1.0.0.alpha.1.r5.g864564b
-pkgrel=3
+pkgver=1.0.0.alpha.2.r0.gde55dc5
+pkgrel=1
 pkgdesc="An application launcher for the COSMIC desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-applibrary"
@@ -38,7 +38,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build
-  RUSTFLAGS="-C link-arg=-fuse-ld=mold"
+  RUSTFLAGS+="-C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
   nice just build-release --frozen
