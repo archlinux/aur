@@ -20,7 +20,7 @@ _mn_commit=b06094e81701782d28cd2312f58e0654109d04ce
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_ab_commit}?signed"
         "git+https://github.com/mullvad/wireguard-go.git#commit=${_wg_commit}?signed"
-        "git+https://github.com/mullvad/maybenot.git#commit=#commit=${_mn_commit}"
+        "git+https://github.com/mullvad/maybenot.git#commit=${_mn_commit}"
         'no-rpm.diff'
         'no-publish.diff'
         "$pkgname.sh")
@@ -52,11 +52,13 @@ prepare() {
   git submodule init
   git config submodule.dist-assets/binaries.url "$srcdir/mullvadvpn-app-binaries"
   git config submodule.wireguard-go-rs/libwg/wireguard-go.url "$srcdir/wireguard-go"
-#  git config submodule.wireguard-go-rs/libwg/wireguard-go/maybenot.url "$srcdir/maybenot"
   git -c protocol.file.allow=always submodule update
 
-  # It might help to add a .gitmodules for the submodule...
-  cp -rf "$srcdir/maybenot" wireguard-go-rs/libwg/wireguard-go/
+  pushd wireguard-go-rs/libwg/wireguard-go
+  git submodule init
+  git config submodule.maybenot.url "$srcdir/maybenot"
+  git -c protocol.file.allow=always submodule update
+  popd
 
   # Disable building rpm
   patch --strip=1 gui/tasks/distribution.js < ../no-rpm.diff
@@ -70,11 +72,8 @@ prepare() {
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
-  pushd wireguard-go-rs/libwg
-  export GOPATH="$srcdir/gopath"
-  mkdir -p "../../build/lib/$CARCH-unknown-linux-gnu"
-  go mod download -x
-  popd
+  # Create wireguard-go build directory
+  mkdir -p "build/lib/$CARCH-unknown-linux-gnu"
 
   pushd gui
   echo "Installing JavaScript dependencies..."
