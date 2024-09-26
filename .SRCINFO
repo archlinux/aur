@@ -1,0 +1,23 @@
+pkgbase = python-gurobipy
+	pkgdesc = Python interface to Gurobi
+	pkgver = 11.0.3
+	pkgrel = 1
+	url = https://www.gurobi.com/products/gurobi-optimizer
+	arch = x86_64
+	arch = aarch64
+	license = custom:Gurobi EULA
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = glibc
+	depends = gurobi
+	depends = python>=3.8
+	depends = python-numpy
+	depends = python-scipy
+	noextract = gurobipy-11.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
+	noextract = gurobipy-11.0.3-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.whl
+	source_x86_64 = https://files.pythonhosted.org/packages/cp312/g/gurobipy/gurobipy-11.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
+	sha256sums_x86_64 = d08a69a9884b2c7ab843c9967b44770c17c73ac5726db7a8794ae85d7c1fc446
+	source_aarch64 = https://files.pythonhosted.org/packages/cp312/g/gurobipy/gurobipy-11.0.3-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.whl
+	sha256sums_aarch64 = b752a8a4d898a3cc59b0670aa449dee8e2159d4f420f30033baf96f14a36516d
+
+pkgname = python-gurobipy
