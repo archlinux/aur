@@ -8,7 +8,7 @@ url="http://exult.sourceforge.net/"
 license=('GPL2')
 depends=('sdl_mixer' 'alsa-lib' 'gcc-libs' 'libxft')
 optdepends=('libpng' 'timidity++')
-makedepends=('git')
+makedepends=('git' 'autoconf-archive')
 provides=('exult')
 conflicts=('exult' 'exult-cvs' 'exult-svn')
 replaces=('exult-cvs' 'exult-svn')
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/exult"
-  ./autogen.sh
+  autoreconf -v -i
 
   LIBS="-lXft -lX11" ./configure --prefix=/usr --enable-shared --disable-static \
     --with-timidity="/etc/timidity++/timidity.cfg"
