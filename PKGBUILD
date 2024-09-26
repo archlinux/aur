@@ -14,6 +14,8 @@ makedepends=(
   'cmake'
   'gdk-pixbuf2'
   'git'
+  'glew'
+  'glu'
   'harfbuzz'
   'pango'
   'python-cogapp'
@@ -21,7 +23,6 @@ makedepends=(
 )
 depends=(
   'curl'
-  'gamenetworkingsockets'
   'glib2'
   'gtk3'
   'hicolor-icon-theme'
