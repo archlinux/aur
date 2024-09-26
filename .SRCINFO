@@ -1,5 +1,5 @@
 pkgbase = cosmic-bg-git
-	pkgver = 1.0.0.alpha.1.r9.ged9ea6c
+	pkgver = 1.0.0.alpha.2.r0.g584f6b3
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-bg
 	arch = x86_64
@@ -16,6 +16,8 @@ pkgbase = cosmic-bg-git
 	provides = cosmic-bg
 	conflicts = cosmic-bg
 	source = git+https://github.com/pop-os/cosmic-bg.git
+	source = lto.patch
 	sha256sums = SKIP
+	sha256sums = fa29e15bc552eaf2a656c270c83f8564d85f30216198f3e30a7040f8659174b8
 
 pkgname = cosmic-bg-git
