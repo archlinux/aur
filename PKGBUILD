@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-store-git
-pkgver=1.0.0.alpha.1.r9.g83866da
-pkgrel=2
+pkgver=1.0.0.alpha.2.r8.g382a7c9
+pkgrel=1
 pkgdesc="COSMIC Store"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-store"
