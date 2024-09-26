@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark at proton dot me>
 # Co-Maintainer: soloturn <soloturn@gmail.com>
 pkgname=cosmic-edit-git
-pkgver=1.0.0.alpha.1.r2.g536cc2f
-pkgrel=2
+pkgver=1.0.0.alpha.2.r0.g96b2a19
+pkgrel=1
 pkgdesc="Text editor for the COSMIC desktop"
 arch=('x86_64')
 url="https://github.com/pop-os/cosmic-edit"
@@ -21,8 +21,10 @@ makedepends=(
 )
 provides=("${pkgname%-git}" 'cosmic-text-editor')
 conflicts=("${pkgname%-git}" 'cosmic-text-editor')
-source=('git+https://github.com/pop-os/cosmic-edit.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/pop-os/cosmic-edit.git'
+        'lto.patch')
+sha256sums=('SKIP'
+            '723a47503b7b44faa3857a1513ae1e1808c08dc6d0fb4c95d667a1925442419c')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -31,6 +33,10 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
+
+  # Use thin LTO
+  patch -Np1 -i ../lto.patch
+
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
@@ -45,7 +51,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build
-  RUSTFLAGS="-C link-arg=-fuse-ld=mold"
+  RUSTFLAGS+="-C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
   nice just build-release --frozen

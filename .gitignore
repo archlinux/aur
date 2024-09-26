@@ -6,3 +6,4 @@
 !PKGBUILD
 !.SRCINFO
 !cosmic-edit.desktop
+!lto.patch
