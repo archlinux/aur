@@ -1,0 +1,13 @@
+diff '--color=auto' -rupN cosmic-files.orig/Cargo.toml cosmic-files/Cargo.toml
+--- cosmic-files.orig/Cargo.toml	2024-09-26 18:18:26.794604948 +0200
++++ cosmic-files/Cargo.toml	2024-09-26 18:19:02.691668134 +0200
+@@ -80,6 +80,9 @@ wgpu = ["libcosmic/wgpu"]
+ [profile.dev]
+ opt-level = 1
+ 
++[profile.release]
++lto = "thin"
++
+ [profile.release-with-debug]
+ inherits = "release"
+ debug = true
