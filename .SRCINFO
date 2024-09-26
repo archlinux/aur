@@ -1,10 +1,10 @@
 pkgbase = ttf-noto-sans-egyptian-hieroglyphs
-	pkgver = 0
+	pkgver = 2.002
 	pkgrel = 0
 	url = https://github.com/notofonts/egyptian-hieroglyphs
 	arch = any
 	license = OFL-1.1
-	source = https://notofonts.github.io/egyptian-hieroglyphs/fonts/NotoSansEgyptianHieroglyphs/hinted/ttf/NotoSansEgyptianHieroglyphs-Regular.ttf
-	md5sums = e4bd80d8e6a3b0891f389212a8938bc8
+	source = https://github.com/notofonts/egyptian-hieroglyphs/releases/download/NotoSansEgyptianHieroglyphs-v2.002/NotoSansEgyptianHieroglyphs-v2.002.zip
+	md5sums = 39d2005c293676926234d4edfb5bc858
 
 pkgname = ttf-noto-sans-egyptian-hieroglyphs
