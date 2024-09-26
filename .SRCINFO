@@ -1,6 +1,6 @@
 pkgbase = vtm-bin
 	pkgdesc = A text-based desktop environment that runs console applications in floating windows and allows remote access over tunnelling protocols such as SSH.
-	pkgver = 0.9.99.15
+	pkgver = 0.9.99.16
 	pkgrel = 1
 	url = https://github.com/directvt/vtm
 	arch = aarch64
@@ -8,17 +8,17 @@ pkgbase = vtm-bin
 	arch = i686
 	arch = x86_64
 	license = MIT
-	provides = vtm=0.9.99.15
+	provides = vtm=0.9.99.16
 	conflicts = vtm
-	source = LICENSE-0.9.99.15::https://raw.githubusercontent.com/directvt/vtm/v0.9.99.15/LICENSE
+	source = LICENSE-0.9.99.16::https://raw.githubusercontent.com/directvt/vtm/v0.9.99.16/LICENSE
 	sha256sums = b7d69c3a45e98eb80ff9cd48d00334d72002d9d0f96b523f8feb33263af22e12
-	source_aarch64 = vtm-0.9.99.15-aarch64.zip::https://github.com/directvt/vtm/releases/download/v0.9.99.15/vtm_linux_arm64.zip
-	sha256sums_aarch64 = 9f9e577271af8adb32cf058caeb283639b1007d1d32e01116e21d3e86593ec09
-	source_armv7h = vtm-0.9.99.15-armv7h.zip::https://github.com/directvt/vtm/releases/download/v0.9.99.15/vtm_linux_arm32.zip
-	sha256sums_armv7h = e0e4d838cda11e1743be4666cb03b4dce7d18838259c0f16a739ffabcfe63996
-	source_i686 = vtm-0.9.99.15-i686.zip::https://github.com/directvt/vtm/releases/download/v0.9.99.15/vtm_linux_x86.zip
-	sha256sums_i686 = 6da465bb9d60928948a449b0bb9a8cd8857f14984ba21ad6a42b140ff4d3ab36
-	source_x86_64 = vtm-0.9.99.15-x86_64.zip::https://github.com/directvt/vtm/releases/download/v0.9.99.15/vtm_linux_x86_64.zip
-	sha256sums_x86_64 = c02aa503d36332384c1d31bf52aa2e341e917ffd7ae4b51dded1bb1fb3386781
+	source_aarch64 = vtm-0.9.99.16-aarch64.zip::https://github.com/directvt/vtm/releases/download/v0.9.99.16/vtm_linux_arm64.zip
+	sha256sums_aarch64 = c3861353627643aa532d4dd7ae2eb988216a369e465faa22e645ab0c46eea589
+	source_armv7h = vtm-0.9.99.16-armv7h.zip::https://github.com/directvt/vtm/releases/download/v0.9.99.16/vtm_linux_arm32.zip
+	sha256sums_armv7h = c36361621b57292d45456c1933a6711ad08098bb09a6f0a729dfa6bcee80c781
+	source_i686 = vtm-0.9.99.16-i686.zip::https://github.com/directvt/vtm/releases/download/v0.9.99.16/vtm_linux_x86.zip
+	sha256sums_i686 = fb62a00ee7c6950cbea39ca809050e5665395c453625107c7e8ab4bd6d6a0a70
+	source_x86_64 = vtm-0.9.99.16-x86_64.zip::https://github.com/directvt/vtm/releases/download/v0.9.99.16/vtm_linux_x86_64.zip
+	sha256sums_x86_64 = 178b96af1350356028a00023e9d9e4ece9dd2a179119472d1bded9da8a57d7bc
 
 pkgname = vtm-bin
