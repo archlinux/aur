@@ -1,6 +1,6 @@
 pkgbase = wine-osu-spectator-wow64
-	pkgdesc = A compatibility layer for running Windows programs, but with osu! specific patches (WoW64 version)
-	pkgver = 9.17.w161.sb6944be
+	pkgdesc = A compatibility layer for running Windows programs, but with osu! specific patches (doesn't conflict with other Wine installations) (WoW64 version)
+	pkgver = 9.18.w109.s3dfacea
 	pkgrel = 1
 	url = http://www.winehq.com
 	install = wine-wow64.install
@@ -116,9 +116,9 @@ pkgbase = wine-osu-spectator-wow64
 	source = lto-fixup.patch
 	source = mingw-gcc-float-precision-fix.patch
 	source = buildiswow64
-	source = wine::git+https://gitlab.winehq.org/wine/wine.git#commit=03d985369dc9afe943ee3072478a2567b3fe4077
-	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=b6944be8105b3307765793ced0e64a646eeae8d1
-	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=09-17-2024-03d98536-b6944be8
+	source = wine::git+https://gitlab.winehq.org/wine/wine.git#commit=2b32c2859166e5542012b517cdef4699d8bb322c
+	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=3dfacea342c956ca8e2b2b7d7da339636f56eed1
+	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=09-25-2024-2b32c285-3dfacea3
 	sha512sums = 2d431b8830f783b9973ef3df50606b3dae705dffe3cd6106a7daa3b5ad89eaecd6b0e7da835ebf18985a6f3c9c1c952866f39126e34fb6503935baa91a9e8189
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 	sha512sums = bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285
@@ -128,6 +128,6 @@ pkgbase = wine-osu-spectator-wow64
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = f97e25637c4ca7589446e1a8ecf6a298784e99221e39a5bc3d8c695c4473e6499ba18e1d17c0f3b00240d82a8e7fce58491bbab4d6aae0e1c4710a1e93b4021f
+	sha512sums = 25bcb9d0afaa08dfe90ad7c57bb2035328e5949ec10682a99c59012887793378a882732d2884e600a58b62825298bc8cfa2ced1d744b9f23bc70b70ec0165dc4
 
 pkgname = wine-osu-spectator-wow64
