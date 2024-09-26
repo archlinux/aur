@@ -1,0 +1,4 @@
+[check_ssl_cert]
+source = "git"
+git = "https://github.com/matteocorti/check_ssl_cert.git"
+prefix = "v"
