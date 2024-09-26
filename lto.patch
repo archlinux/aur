@@ -1,0 +1,13 @@
+diff '--color=auto' -rupN cosmic-store.orig/Cargo.toml cosmic-store/Cargo.toml
+--- cosmic-store.orig/Cargo.toml	2024-09-26 19:37:26.225148605 +0200
++++ cosmic-store/Cargo.toml	2024-09-26 19:37:49.792079578 +0200
+@@ -59,6 +59,9 @@ logind = ["dep:logind-zbus", "dep:nix",
+ packagekit = ["dep:packagekit-zbus"]
+ wgpu = ["libcosmic/wgpu"]
+ 
++[profile.release]
++lto = "thin"
++
+ [profile.release-with-debug]
+ inherits = "release"
+ debug = true
