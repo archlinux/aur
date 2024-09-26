@@ -1,14 +1,14 @@
 pkgbase = nordzy-hyprcursors
 	pkgdesc = Hyprcursor port of https://github.com/alvatip/Nordzy-cursors.
 	pkgver = 2.0.0
-	pkgrel = 1
-	url = https://github.com/guillaumeboehm/Nordzy-cursors-hyprcursor
+	pkgrel = 2
+	url = https://github.com/guillaumeboehm/Nordzy-hyprcursors
 	arch = any
 	license = GPL3
 	noextract = Nordzy-hyprcursors.tar.gz
 	noextract = Nordzy-hyprcursors-white.tar.gz
-	source = https://github.com/guillaumeboehm/Nordzy-cursors-hyprcursor/releases/download/2.0.0/Nordzy-hyprcursors.tar.gz
-	source = https://github.com/guillaumeboehm/Nordzy-cursors-hyprcursor/releases/download/2.0.0/Nordzy-hyprcursors-white.tar.gz
+	source = https://github.com/guillaumeboehm/Nordzy-hyprcursors/releases/download/2.0.0/Nordzy-hyprcursors.tar.gz
+	source = https://github.com/guillaumeboehm/Nordzy-hyprcursors/releases/download/2.0.0/Nordzy-hyprcursors-white.tar.gz
 	sha256sums = 8ee943cf92c399cc3453cf39b13050b0115be9af10d5fe6121cecedbbbede70d
 	sha256sums = bb3b346514373c699e66115d094310c4bfcbf73b073dfd1efe1e5ccd7ce2cbed
 

@@ -1,14 +1,14 @@
 # Maintainer: Guillaume BOEHM <aur@mail.gboehm.com>
 pkgname=nordzy-hyprcursors
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyprcursor port of https://github.com/alvatip/Nordzy-cursors."
 arch=(any)
-url="https://github.com/guillaumeboehm/Nordzy-cursors-hyprcursor"
+url="https://github.com/guillaumeboehm/Nordzy-hyprcursors"
 license=('GPL3')
 source=(
-    "https://github.com/guillaumeboehm/Nordzy-cursors-hyprcursor/releases/download/${pkgver}/Nordzy-hyprcursors.tar.gz"
-    "https://github.com/guillaumeboehm/Nordzy-cursors-hyprcursor/releases/download/${pkgver}/Nordzy-hyprcursors-white.tar.gz"
+    "${url}/releases/download/${pkgver}/Nordzy-hyprcursors.tar.gz"
+    "${url}/releases/download/${pkgver}/Nordzy-hyprcursors-white.tar.gz"
 )
 noextract=("${source[@]##*/}")
 sha256sums=(
