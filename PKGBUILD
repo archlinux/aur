@@ -28,9 +28,20 @@ options=(!debug)
 source=("https://github.com/amir1376/${pkgname%-bin}/releases/download/v${pkgver}/ABDownloadManager_${pkgver}_linux.deb")
 sha256sums=('3ebd93e49958e81ddae0c57f6865d56b291f9575b4705c1937dabb61f7212177')
 
+prepare() {
+	bsdtar -xvf "${srcdir}/data.tar.zst" -C "${srcdir}/"
+}
+
+build() {
+	sed -e 's|AB Download Manager|Network;|' \
+        -e 's|Icon=\/opt\/abdownloadmanager\/lib\/ABDownloadManager.png|Icon=abdownloadmanager|' \
+        -e 's|MimeType=|StartupNotify=false|' \
+        -e '$aStartupWMClass=com.abdownloadmanager.ABDownloadManager' \
+		-e '$aGenericName=Download Manager' \
+		-i "${srcdir}/opt/abdownloadmanager/lib/abdownloadmanager-ABDownloadManager.desktop"
+}
+
 package() {
-    cd "${srcdir}"
-    bsdtar -xvf "${srcdir}/data.tar.zst"
     rm -rf "${srcdir}/opt/abdownloadmanager/share/"
     install -dm755 "${pkgdir}/opt"
     cp --preserve=mode -r "${srcdir}/opt" "${pkgdir}/"
@@ -38,12 +49,6 @@ package() {
     install -dm755 "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/opt/abdownloadmanager/lib/abdownloadmanager-ABDownloadManager.desktop" \
        "${pkgdir}/usr/share/applications/abdownloadmanager.desktop"
-    sed -i 's/AB Download Manager/Network;/g' "${pkgdir}/usr/share/applications/abdownloadmanager.desktop"
-    sed -i 's/Icon=\/opt\/abdownloadmanager\/lib\/ABDownloadManager.png/Icon=abdownloadmanager/g' "${pkgdir}/usr/share/applications/abdownloadmanager.desktop"
-    sed -i 's/MimeType=/StartupNotify=false/g' "${pkgdir}/usr/share/applications/abdownloadmanager.desktop"
-    sed -i "$ a StartupWMClass=com-abdownloadmanager-desktop-AppKt" "${pkgdir}/usr/share/applications/abdownloadmanager.desktop"
-    sed -i "$ a GenericName=Download Manager" "${pkgdir}/usr/share/applications/abdownloadmanager.desktop"
-
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
     cp "${srcdir}/opt/abdownloadmanager/lib/ABDownloadManager.png" \
        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/abdownloadmanager.png"
@@ -51,3 +56,4 @@ package() {
     rm -f "${pkgdir}/opt/abdownloadmanager/lib/abdownloadmanager-ABDownloadManager.desktop"
     rm -f "${pkgdir}/opt/abdownloadmanager/lib/ABDownloadManager.png"
 }
+
