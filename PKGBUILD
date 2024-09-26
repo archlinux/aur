@@ -1,7 +1,7 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=exult-git
 pkgver=6891.176935e
-pkgrel=1
+pkgrel=2
 pkgdesc="A recreation of the Ultima 7 engine"
 arch=('i686' 'x86_64')
 url="http://exult.sourceforge.net/"
