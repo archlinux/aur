@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-osd-git
 pkgver=1.0.0.alpha.1.r3.g570f35f
-pkgrel=1
+pkgrel=2
 pkgdesc="COSMIC On-Screen Display"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-osd"
@@ -39,7 +39,7 @@ build() {
   export POLKIT_AGENT_HELPER_1="/usr/lib/polkit-1/polkit-agent-helper-1"
 
   # use mold instead of lld to speed up build
-  RUSTFLAGS+="-C link-arg=-fuse-ld=mold"
+  RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
   ARGS+=" --frozen" nice make polkit-agent-helper-1='/usr/lib/polkit-1/polkit-agent-helper-1'
