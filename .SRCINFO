@@ -1,4 +1,5 @@
 pkgbase = ttf-noto-sans-egyptian-hieroglyphs
+	pkgdesc = Noto Sans font for egyptian hieroglyphs
 	pkgver = 2.002
 	pkgrel = 0
 	url = https://github.com/notofonts/egyptian-hieroglyphs
