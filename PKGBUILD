@@ -1,13 +1,16 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 # shellcheck disable=2034,2154,2164
 pkgname=signal-monochrome-tray
-pkgdesc="changes the tray icon of Signal to monochrome"
-pkgver=0.2.01
+pkgver=0.3.1
 pkgrel=1
-url="https://gitlab.com/doppelhelix/signal-monochrome-tray-hook"
+pkgdesc="changes the tray icon of Signal to monochrome"
+url="https://github.com/doppelhelix/signal-monochrome-tray-hook"
 arch=(any)
 license=(
     GPL-3.0-or-later
+)
+makedepends=(
+    git
 )
 depends=(
     asar
@@ -15,12 +18,13 @@ depends=(
     papirus-icon-theme
     signal-desktop
 )
-_archive="$pkgname-hook-v$pkgver"
-source=("$_archive.tar.gz::$url/-/archive/v$pkgver/$pkgname-hook-v$pkgver.tar.gz")
-sha256sums=('23c39f8db371ec6dacc1a868cdc94a0758c8af4e71f519f109885b74dba54c87')
-
+source=("$pkgname-$pkgver::git+$url.git#tag=v${pkgver}?signed")
+sha256sums=('ccc25ec3c0d1651e8e01e72c86564de4ea641a090adcc7634488fc667017adc5')
+validpgpkeys=(
+    '47D15FC0F6AD8433CD06B4DF5874D2437CD5BBB3' # Christian Schendel <doppelhelix@gmail.com>
+)
 package() {
-    cd "$_archive"
+    cd "$pkgname-$pkgver"
     install -Dm0755 -t "$pkgdir/usr/share/libalpm/scripts/" signal-tray
     install -Dm0644 -t "$pkgdir/usr/share/libalpm/hooks/" signal-tray.hook
     install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md

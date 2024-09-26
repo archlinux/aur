@@ -7,3 +7,4 @@
 !.SRCINFO
 !chroot-build.sh
 !.nvchecker.toml
+!*.asc

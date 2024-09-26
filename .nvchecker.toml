@@ -1,6 +1,6 @@
 [signal-monochrome-tray]
-source = "gitlab"
-gitlab = "doppelhelix/signal-monochrome-tray-hook"
+source = "github"
+github = "doppelhelix/signal-monochrome-tray-hook"
 branch = "main"
 prefix = "v"
 use_max_tag = true
