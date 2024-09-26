@@ -8,8 +8,7 @@ pkgdesc="Mikrotik RouterOS GUI Configurator"
 url="https://mikrotik.com/download"
 arch=('x86_64')
 license=('custom')
-depends=('desktop-file-utils'
-         'fontconfig'
+depends=('fontconfig'
          'freetype2'
          'glibc'
          'libglvnd'

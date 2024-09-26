@@ -6,7 +6,6 @@ pkgbase = winbox
 	install = winbox.install
 	arch = x86_64
 	license = custom
-	depends = desktop-file-utils
 	depends = fontconfig
 	depends = freetype2
 	depends = glibc
