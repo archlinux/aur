@@ -5,7 +5,7 @@
 pkgname=64gram-desktop
 _pkgname=64Gram
 pkgver=1.1.39
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Unofficial desktop version of Telegram messaging app'
 arch=('x86_64')
@@ -26,14 +26,16 @@ optdepends=('webkit2gtk: embedded browser features'
 source=("https://github.com/TDesktop-x64/tdesktop/releases/download/v${pkgver}/${_pkgname}-${pkgver}-full.tar.gz"
         "block-sponsored_messages.patch"
         "fix-lzma-link.patch"
-        "io.github.tdesktop_x64.TDesktop.desktop")
+        "io.github.tdesktop_x64.TDesktop.desktop"
+        "telegram-desktop-5_5_5-fix_build_with_cppgir.patch")
 
 noextract=("${_pkgname}-${pkgver}-full.tar.gz")
 
 sha512sums=('928be9f3771763a22dec0441b47bec2e57ec7ed7910c0d09cf40abac7d8b59d2535be2290d40fe0690b58be98155ff82d0f6f4f1acbaec055c093cce97fce18d'
             '0e0f0dcb99ed6c7566e7a75404e39e16c27658eb5999e041a82aa975447ce8719ce6703cc36efc039e16a3ff3721f4a7c76df24f0ead9aa48ce5e23001142072'
             'd813a5ac6ff2208b693ecf494d7bf036087e223662f9f34aaaeafea0afe0fe798e867b9610f7221ea80319865502c20b61310d5a31634b888793873d63322463'
-            'ea027bc2d40c74507adf32380444207210a8c31cdba57f3f468d23d8e9c7376647cc8c713f188660f9b1dacd9041227aafd5a27c7889f47ea3985712b6b74b8b')
+            'ea027bc2d40c74507adf32380444207210a8c31cdba57f3f468d23d8e9c7376647cc8c713f188660f9b1dacd9041227aafd5a27c7889f47ea3985712b6b74b8b'
+            'a65bca7d330519657fa647922df4c6d69f3d6af4008656084945a3c448aad62f228f91de8c5988cd9163856f376c0c136254eb68f6c9654ffdf9f5d3f52bc235')
 
 prepare() {
     LANG=C.UTF-8 bsdtar -xf ${_pkgname}-${pkgver}-full.tar.gz
@@ -41,6 +43,7 @@ prepare() {
     patch -Np1 --binary -i ../block-sponsored_messages.patch
     patch -p1 --binary < ../fix-lzma-link.patch
     find "${srcdir}"/ -type f -exec dos2unix {} \;
+    patch -Np1 -d cmake/external/glib/cppgir -i "${srcdir}/telegram-desktop-5_5_5-fix_build_with_cppgir.patch"
 }
 
 build() {
