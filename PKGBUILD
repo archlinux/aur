@@ -1,4 +1,8 @@
-# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# AUR maintainer: Lucas Magalhães <whoisroot AT national.shitposting.agency>
+# Upstream maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Upstream maintainer: Morten Linderud <foxboron@archlinux.org>
+# Contributor: Eli Schwartz <eschwartz@archlinux.org>
+# Contributor: Evy Garden <evysgarden@protonmail.com>
 # Contributor: Dave Reisner <d@falconindy.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: godane <slaxemulator@gmail.com.com>
@@ -11,7 +15,7 @@ pkgrel=1
 pkgdesc="pacman, but patched to selectively have FiraCode's progressbar on supported terminals"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.archlinux.org/pacman/"
-license=('GPL')
+license=('SPDX')
 depends=('archlinux-keyring' 'bash' 'curl' 'gpgme' 'libarchive'
          'pacman-mirrorlist')
 optdepends=('pacman-contrib: various helper utilities'
