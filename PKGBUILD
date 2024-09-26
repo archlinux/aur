@@ -4,8 +4,8 @@ pkgname=signal-cli-bin
 _pkgname=signal-cli
 provides=('signal-cli')
 conflicts=('signal-cli')
-pkgver=0.13.5
-pkgrel=3
+pkgver=0.13.6
+pkgrel=1
 pkgdesc="Signal-cli is unofficial cmd, JSON-RPC and dbus interface for the Signal messenger"
 arch=('any')
 url="https://github.com/AsamK/signal-cli"
@@ -20,9 +20,9 @@ depends=(
 source=("https://github.com/AsamK/${_pkgname}/archive/v${pkgver}.tar.gz"
         "https://github.com/AsamK/${_pkgname}/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc"
         "https://github.com/AsamK/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-Linux-native.tar.gz")
-sha512sums=('a5529f91196b6656d5eee45d52169d6bbd45c6cacc842bd74b62875a7f83bb772bdc08a4aa446569aea7420be8fb0c835aa470a88313e38eefd2976d0e4efcb8'
+sha512sums=('ee1150419bbfdbdddc8a2229cbbe9d10f25df5ccae6624d0058c056b7df7df597dc86b155ea4e3b30dcdafeb2107d8f69861c341eda146851dd84adba6930504'
             'SKIP'
-            '49b59a81e09fe7f7602e863be7111814445387a0da035f3921c6cd9196489dec8cb5de4f3eb1cbd76f5f5c48db752717b1dfc3cf2e85f3ff44d730693f5675b4')
+            '157b0b58e3b43ef3c9ad44e3f8c53708ba8bcbc6dd2effe0265a475383cec4fbbd5736efcf736971dc8523e8d3796d23f754c191ae65ec5a9adf2e59c8e27e5b')
 validpgpkeys=('FA10826A74907F9EC6BBB7FC2BA2CD21B5B09570')
 
 package() {
