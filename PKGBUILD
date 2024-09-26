@@ -9,7 +9,7 @@ url="https://github.com/prs513rosewood/${_base}"
 license=(MIT)
 depends=(python-numpy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(python-pytest vtk libpng fmt jsoncpp verdict freetype2 libxt
+checkdepends=(python-pytest-mpi vtk libpng fmt jsoncpp verdict freetype2 libxt
   glew ospray openxr openvr ffmpeg hdf5-openmpi postgresql-libs netcdf-openmpi
   pdal opencascade mariadb-libs liblas cgns adios2 libharu qt5-tools python-mpi4py)
 optdepends=('python-mpi4py: for activate parallel capabilities')
@@ -26,9 +26,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest \
-    --ignore=tests/test_vtk_files.py \
-    --ignore=tests/test_parallel.py
+  mpirun -np 2 test-env/bin/python -m pytest tests --only-mpi
 }
 
 package() {
