@@ -1,0 +1,36 @@
+diff src/qt-widgets/KinematicGraphPicker.h src/qt-widgets/KinematicGraphPicker.h
+--- src/qt-widgets/KinematicGraphPicker.h
++++ src/qt-widgets/KinematicGraphPicker.h
+@@ -26,12 +26,12 @@
+ 
+ #include "qwt_plot_canvas.h"
+ #include "qwt_plot_picker.h"
++#include "qwt_series_data.h"
+ #include "qwt_text.h"
+ 
+ #include "KinematicGraphsDialog.h"
+ 
+ class QwtPlotCurve;
+-class QwtPointSeriesData;
+ 
+ namespace GPlatesQtWidgets
+ {
+diff src/qt-widgets/KinematicGraphsDialog.h src/qt-widgets/KinematicGraphsDialog.h
+--- src/qt-widgets/KinematicGraphsDialog.h
++++ src/qt-widgets/KinematicGraphsDialog.h
+@@ -26,6 +26,7 @@
+ 
+ #include <QDialog>
+ #include <QScopedPointer>
++#include "qwt_series_data.h"
+ 
+ #include "maths/LatLonPoint.h"
+ 
+@@ -49,7 +50,6 @@
+ 
+ class QwtPlot;
+ class QwtPlotCurve;
+-class QwtPointSeriesData;
+ 
+ class QStandardItemModel;
+ 

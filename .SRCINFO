@@ -1,7 +1,7 @@
 pkgbase = gplates
 	pkgdesc = GPlates is a plate tectonics program. Manipulate reconstructions of geological and paleogeographic features through geological time. Interactively visualize vector, raster and volume data.
-	pkgver = 2.4.0
-	pkgrel = 2
+	pkgver = 2.5.0
+	pkgrel = 1
 	url = https://www.gplates.org
 	arch = any
 	license = GPLv2
@@ -26,11 +26,13 @@ pkgbase = gplates
 	depends = gmp
 	depends = mpfr
 	depends = arrow
-	source = gplates_2.4.0_src.tar.bz2::https://www.earthbyte.org/download/9758/
+	source = gplates_2.5.0_src.tar.bz2::https://www.earthbyte.org/download/10128/
 	source = icon.png
 	source = gplates.desktop
-	sha256sums = 9ae877f2fa10c3526362d699f65b6a81908d760c416d85fe5e7b8193fee8aab8
+	source = qwt63_patch.diff
+	sha256sums = 3b8bf9e719a77480ca6215ed34304282bf86b3c78d8275f76e2eef2d33c594cb
 	sha256sums = 9335fb98b21bc03c1cbec21ca945bded6ac60f66bb14997654b1829c1bd7265b
 	sha256sums = c9cf5e841e3bc1e730c5c1fa00a1137f532de4c2859637e67d1682f021eebb11
+	sha256sums = 989a415510e0a287e1c421ea967fc13ad177d2beb54f269f7d2aa5faa99e1446
 
 pkgname = gplates

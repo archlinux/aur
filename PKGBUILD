@@ -7,26 +7,29 @@ url="https://www.gplates.org"
 license=(GPLv2)
 
 arch=(any)
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 
 # Some of these dependencies are not listed in the documentation, but are used anyways. These might be optional.
 depends=(libgl glu glew python python-numpy boost qt5-base qt5-svg qt5-xmlpatterns gdal cgal proj qwt zlib graphviz gmp mpfr arrow)
 makedepends=(cmake doxygen patchelf)
 
 source=(
-  "${pkgname}_${pkgver}_src.tar.bz2::https://www.earthbyte.org/download/9758/"
+  "${pkgname}_${pkgver}_src.tar.bz2::https://www.earthbyte.org/download/10128/"
   "icon.png"
   "gplates.desktop"
+  "qwt63_patch.diff" # delete this for next version
 )
 sha256sums=(
-  "9ae877f2fa10c3526362d699f65b6a81908d760c416d85fe5e7b8193fee8aab8"
+  "3b8bf9e719a77480ca6215ed34304282bf86b3c78d8275f76e2eef2d33c594cb"
   "9335fb98b21bc03c1cbec21ca945bded6ac60f66bb14997654b1829c1bd7265b"
   "c9cf5e841e3bc1e730c5c1fa00a1137f532de4c2859637e67d1682f021eebb11"
- )
+  "989a415510e0a287e1c421ea967fc13ad177d2beb54f269f7d2aa5faa99e1446"
+)
 
 prepare() {
-  cd "${srcdir}/${pkgname}_${pkgver}_src"
+	cd "${srcdir}/${pkgname}_${pkgver}_src"
+	patch --forward --strip=0 --input="${srcdir}/qwt63_patch.diff"
 }
 
 build() {
