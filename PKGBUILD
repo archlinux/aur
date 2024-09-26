@@ -2,7 +2,7 @@
 # Contributor: criptixo <therealcriptixo@gmail.com>
 pkgname=waveterm-bin
 _pkgname=Wave
-pkgver=0.8.3
+pkgver=0.8.4
 _electronversion=32
 pkgrel=1
 pkgdesc='An open-source, cross-platform terminal for seamless workflows.Use system-wide electron.'
@@ -22,8 +22,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-aarch64-${pkgver}.pacman")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-${pkgver}.pacman")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('536ef697aebebb61992e7a918828a645fa6172a880efa1b160967ce56a0aed17')
-sha256sums_x86_64=('22e2eb93805040357f86d5cca41179d038af9103a34ce06d371180ed1b669c89')
+sha256sums_aarch64=('480a00065a564c7bc14a05f3a563f3c3cae927ca13b7051182c2cd3a61a37580')
+sha256sums_x86_64=('c44edb38a0e3a0a41e8f64e00561f96616262ada3f034922a23fd40be0a254ef')
 build() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
