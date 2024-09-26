@@ -1,7 +1,7 @@
 pkgbase = reboot-to-windows
 	pkgdesc = Application to quickly reboot to Windows from Linux, bypassing the boot menu.
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Wartybix/Reboot-To-Windows
 	arch = any
 	license = GPL-3.0-only
