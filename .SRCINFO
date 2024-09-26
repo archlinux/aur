@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-libvpl
 	pkgdesc = Intel Video Processing Library (Android aarch64)
-	pkgver = 2.12.0
-	pkgrel = 2
+	pkgver = 2.13.0
+	pkgrel = 1
 	url = https://intel.github.io/libvpl/
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = android-aarch64-libvpl
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/intel/libvpl/archive/v2.12.0/libvpl-2.12.0.tar.gz
-	md5sums = fec0cc0ac195ea70509160eb424da87a
+	source = https://github.com/intel/libvpl/archive/v2.13.0/libvpl-2.13.0.tar.gz
+	md5sums = c423c877260dba129772d4e2059386e4
 
 pkgname = android-aarch64-libvpl
