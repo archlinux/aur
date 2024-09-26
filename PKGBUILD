@@ -10,7 +10,7 @@ _pkgname=Notesnook
 pkgver=3.0.18
 _electronversion=30
 _nodeversion=20
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote"
 arch=(
     'aarch64'
@@ -82,6 +82,7 @@ build() {
     NODE_ENV=production     npm run bootstrap -- --scope=desktop
     # Build Electron wrapper
     cd "${srcdir}/${pkgname}-${pkgver}/apps/desktop"
+    sed -i "s/process.execPath/\'\/usr\/lib\/${pkgname}\/${pkgname}\'/g" src/utils/asset-manager.ts
     sed -i "s/\"asar\": false,/\"asar\": true,/g;s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=production     npx nx run release --project @notesnook/desktop
     NODE_ENV=production     npx electron-builder -l --dir
@@ -89,7 +90,9 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/apps/desktop/output/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/${pkgname}-${pkgver}/apps/desktop/output/linux-"*/resources/assets "${pkgdir}/usr/lib/${pkgname}"
+    cp -r "${srcdir}/${pkgname}-${pkgver}/apps/desktop/output/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}/resources"
+    cp -r "${srcdir}/${pkgname}-${pkgver}/apps/desktop/output/linux-"*/resources/assets "${pkgdir}/usr/lib/${pkgname}/resources"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname}-${pkgver}/apps/desktop/assets/icons/${_icons}.png" \
