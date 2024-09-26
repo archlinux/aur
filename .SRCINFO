@@ -1,7 +1,7 @@
 pkgbase = commacd-git
-	pkgdesc = A faster way to move around Bash
+	pkgdesc = A faster way to move around (Bash 3+/Zsh)
 	pkgver = 20190203.r77.0431104
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/shyiko/commacd
 	install = commacd-git.install
 	arch = any

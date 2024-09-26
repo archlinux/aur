@@ -3,8 +3,8 @@
 _pkgname=commacd
 pkgname=${_pkgname}-git
 pkgver=20190203.r77.0431104
-pkgrel=2
-pkgdesc='A faster way to move around Bash'
+pkgrel=3
+pkgdesc='A faster way to move around (Bash 3+/Zsh)'
 url='https://github.com/shyiko/commacd'
 license=('MIT')
 install=$pkgname.install
