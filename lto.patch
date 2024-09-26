@@ -1,0 +1,11 @@
+diff '--color=auto' -rupN cosmic-launcher.orig/Cargo.toml cosmic-launcher/Cargo.toml
+--- cosmic-launcher.orig/Cargo.toml	2024-09-26 18:45:13.383010635 +0200
++++ cosmic-launcher/Cargo.toml	2024-09-26 18:46:21.323773516 +0200
+@@ -44,3 +44,7 @@ switcheroo-control = { git = "https://gi
+ zbus = { version = "4.2.1", default-features = false, features = ["tokio"] }
+ unicode-truncate = "1.0.0"
+ unicode-width = "0.1.11"
++
++[profile.release]
++lto = "thin"
++
