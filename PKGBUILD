@@ -1,9 +1,9 @@
 # Maintainer: Adrià Cabello <adro.cc79 at protonmail dot com>
 
-_fbxver=2020.2.1
+_fbxver=2020.3.7
 
 pkgname=usd-fileformat-plugins
-pkgver=1.0.3
+pkgver=1.0.7
 pkgrel=1
 pkgdesc='Adobe collection of USD fileformat plugins'
 arch=(x86_64)
@@ -14,18 +14,22 @@ depends=(usd
          glibc
          gcc-libs
          boost-libs
+         fast_float
          onetbb
          jemalloc
          zlib
-         openimageio)
+         openimageio
+         tinygltf)
 makedepends=(cmake)
 options=(!lto)
 
 source=("$pkgname::git+$url.git"
-        "https://damassets.autodesk.net/content/dam/autodesk/www/adn/fbx/${_fbxver//./-}/fbx${_fbxver//./}_fbxsdk_linux.tar.gz"
+        "https://damassets.autodesk.net/content/dam/autodesk/www/files/fbx${_fbxver//./}_fbxsdk_gcc_linux.tar.gz"
+        "usd-monolithic.patch"
        )
 sha512sums=('SKIP'
-            'f9a4b2ec7c114e4407ff318dade1ebd5cc18339a7a611bfa2bc4faf0a75b371b9947be80078b1f1f966890cd4ae3a2e091274fabd8cfff41c12bfc5b8ae6ed38')
+            'c2076ab34c4afe541f503643ea18e737cdb045973cc60811916feddeb75f7945d22b5537c40471c80cc1b0fb623556517d5c33e139e55e724701f7619a196cdb'
+            'SKIP')
 
 prepare() {
     #FBX
@@ -33,6 +37,9 @@ prepare() {
         mkdir -p fbx-sdk
         printf "yes\nn\n" | "${srcdir}/fbx${_fbxver//./}_fbxsdk_linux" "${srcdir}/fbx-sdk"
     fi
+
+    # Fix monolithic build
+    patch --directory="${srcdir}"/${pkgname} --forward --strip=1 --input="${srcdir}/usd-monolithic.patch"
 }
 
 build() {
@@ -41,7 +48,14 @@ build() {
     _CMAKE_FLAGS+=(
         -DCMAKE_INSTALL_PREFIX=build/bin
         -DUSD_FILEFORMATS_ENABLE_CXX11_ABI=ON
-        -DUSD_FILEFORMATS_BUILD_TESTS=OFF
+        -DUSD_FILEFORMATS_ENABLE_MTLX=ON
+
+        -DUSD_FILEFORMATS_FETCH_LIBXML2=OFF
+        -DUSD_FILEFORMATS_FETCH_GTEST=OFF
+        -DUSD_FILEFORMATS_FETCH_FMT=OFF
+        -DUSD_FILEFORMATS_FETCH_TINYGLTF=ON # No cmake config file on AUR package
+        -DUSD_FILEFORMATS_FETCH_FASTFLOAT=OFF
+        -DUSD_FILEFORMATS_FETCH_HAPPLY=ON # .ply
 
         -Dpxr_ROOT=/usr
         -Dfmt_ROOT=/usr

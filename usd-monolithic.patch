@@ -1,0 +1,187 @@
+diff --git a/fbx/src/CMakeLists.txt b/fbx/src/CMakeLists.txt
+index 8a6b278..594ffa5 100644
+--- a/fbx/src/CMakeLists.txt
++++ b/fbx/src/CMakeLists.txt
+@@ -27,14 +27,7 @@ PRIVATE
+ 
+ target_link_libraries(usdFbx
+ PRIVATE
+-    tf
+-    sdf
+-    usd 
+-    usdGeom 
+-    usdSkel
+-    usdShade
+-    usdUtils
+-    arch
++    usd_ms
+     fileformatUtils
+     fbxsdk::fbxsdk
+ )
+diff --git a/fbx/tests/CMakeLists.txt b/fbx/tests/CMakeLists.txt
+index fe745ca..b1010a3 100644
+--- a/fbx/tests/CMakeLists.txt
++++ b/fbx/tests/CMakeLists.txt
+@@ -7,7 +7,7 @@ usd_plugin_compile_config(fbxSanityTests)
+ 
+ target_link_libraries(fbxSanityTests
+ PRIVATE
+-    usd
++    usd_ms
+     GTest::gtest
+     GTest::gtest_main
+ )
+diff --git a/gltf/src/CMakeLists.txt b/gltf/src/CMakeLists.txt
+index 267d488..4a6e071 100644
+--- a/gltf/src/CMakeLists.txt
++++ b/gltf/src/CMakeLists.txt
+@@ -31,10 +31,7 @@ PRIVATE
+ 
+ target_link_libraries(usdGltf
+ PRIVATE
+-    usd
+-    usdGeom
+-    usdSkel
+-    usdShade
++    usd_ms
+     tinygltf::tinygltf
+     Threads::Threads
+     fileformatUtils
+@@ -141,4 +138,4 @@ if(USDGLTF_ENABLE_INSTALL)
+         RENAME plugInfo.json
+         COMPONENT Runtime
+     )
+-endif()
+\ No newline at end of file
++endif()
+diff --git a/gltf/tests/CMakeLists.txt b/gltf/tests/CMakeLists.txt
+index d63856f..afbd1ea 100644
+--- a/gltf/tests/CMakeLists.txt
++++ b/gltf/tests/CMakeLists.txt
+@@ -6,7 +6,7 @@ usd_plugin_compile_config(gltfSanityTests)
+ 
+ target_link_libraries(gltfSanityTests
+ PRIVATE
+-    usd
++    usd_ms
+     GTest::gtest
+     GTest::gtest_main
+ )
+diff --git a/obj/src/CMakeLists.txt b/obj/src/CMakeLists.txt
+index 37a9d13..9d7ea9e 100644
+--- a/obj/src/CMakeLists.txt
++++ b/obj/src/CMakeLists.txt
+@@ -27,12 +27,7 @@ PRIVATE
+ 
+ target_link_libraries(usdObj
+ PUBLIC
+-    tf
+-    sdf
+-    usd
+-    usdGeom
+-    usdSkel
+-    usdShade
++    usd_ms
+     fileformatUtils
+     fmt::fmt
+     FastFloat::fast_float
+diff --git a/obj/tests/CMakeLists.txt b/obj/tests/CMakeLists.txt
+index 56f1bef..64a5688 100644
+--- a/obj/tests/CMakeLists.txt
++++ b/obj/tests/CMakeLists.txt
+@@ -6,7 +6,7 @@ usd_plugin_compile_config(objSanityTests)
+ 
+ target_link_libraries(objSanityTests
+ PRIVATE
+-    usd
++    usd_ms
+     GTest::gtest
+     GTest::gtest_main
+ )
+diff --git a/ply/src/CMakeLists.txt b/ply/src/CMakeLists.txt
+index 788207b..9c696c0 100644
+--- a/ply/src/CMakeLists.txt
++++ b/ply/src/CMakeLists.txt
+@@ -25,12 +25,7 @@ PRIVATE
+ 
+ target_link_libraries(usdPly
+ PRIVATE
+-    tf
+-    sdf
+-    usd
+-    usdGeom
+-    usdSkel
+-    usdShade
++    usd_ms
+     happly::happly
+     fileformatUtils
+ )
+diff --git a/ply/tests/CMakeLists.txt b/ply/tests/CMakeLists.txt
+index 640d37f..ee49807 100644
+--- a/ply/tests/CMakeLists.txt
++++ b/ply/tests/CMakeLists.txt
+@@ -6,7 +6,7 @@ usd_plugin_compile_config(plySanityTests)
+ 
+ target_link_libraries(plySanityTests
+ PRIVATE
+-    usd
++    usd_ms
+     GTest::gtest
+     GTest::gtest_main
+ )
+diff --git a/stl/src/CMakeLists.txt b/stl/src/CMakeLists.txt
+index bcda4d0..4b31548 100644
+--- a/stl/src/CMakeLists.txt
++++ b/stl/src/CMakeLists.txt
+@@ -25,15 +25,7 @@ PRIVATE
+ 
+ target_link_libraries(usdStl
+ PRIVATE
+-    tf
+-    vt
+-    sdf
+-    usd
+-    usdGeom
+-    usdSkel
+-    usdShade
+-    usdLux
+-    usdUtils
++    usd_ms
+     fileformatUtils
+ )
+ 
+diff --git a/stl/tests/CMakeLists.txt b/stl/tests/CMakeLists.txt
+index 3d02e75..37fa914 100644
+--- a/stl/tests/CMakeLists.txt
++++ b/stl/tests/CMakeLists.txt
+@@ -6,7 +6,7 @@ usd_plugin_compile_config(stlSanityTests)
+ 
+ target_link_libraries(stlSanityTests
+ PRIVATE
+-    usd
++    usd_ms
+     GTest::gtest
+     GTest::gtest_main
+ )
+diff --git a/utils/CMakeLists.txt b/utils/CMakeLists.txt
+index d0545b0..2fff618 100644
+--- a/utils/CMakeLists.txt
++++ b/utils/CMakeLists.txt
+@@ -60,16 +60,7 @@ target_include_directories(fileformatUtils
+ target_link_libraries(fileformatUtils
+ PUBLIC
+     OpenImageIO::OpenImageIO
+-    tf
+-    sdf
+-    usd
+-    usdGeom
+-    usdLux
+-    usdSkel
+-    usdShade
+-    usdUtils
+-    usdVol
+-    arch
++    usd_ms
+     ZLIB::ZLIB
+ )
+ 
