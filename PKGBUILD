@@ -2,7 +2,7 @@
 # Contributor: T.J. Townsend <blakkheim@archlinux.org>
 
 pkgname=rpki-client
-pkgver=9.2
+pkgver=9.3
 pkgrel=1
 pkgdesc="Implementation of RPKI for Relying Parties to facilitate ROA validation"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc' 'expat' 'rsync' 'libressl')
 source=("https://cdn.openbsd.org/pub/OpenBSD/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.asc}
 	"sysusers-rpki-client.conf"
 	"tmpfiles-rpki-client.conf")
-sha512sums=('9eedacaa13d0cdd5d229fee749f213b480fce0a9590f8128e3fd73a65f25142474a7871e540ef29bc8b8c3dfa9eaebd84879b9125308a3b309967043c35c5cdb'
+sha512sums=('aa7bb82f7a91fb1e39bb707c46c2f30a4ac4745799cdadcdf0db64e4f3c39411ee07ff2fe4c55c0c1aebb38f26a356844c42a294f9c058c6ca1507e67ed1d827'
             'SKIP'
             '13603ff4fe582a07984dd8a2a0704c8795f5d604a9b2afee43278169d9e187300a349d2629bea0d64f0ff6a3d6347ad2a9d9010ae96d440b07ec1a1f869c0891'
             'd51b0464399d4a36af4353dd99492eff6a99d1bcb6bd95b8602c8c0c23af18e278c41b9a081b84bbd97e84e9f18917e1e0d70a3ff897bd3e261796b292f72826')
