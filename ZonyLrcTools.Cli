@@ -10,6 +10,6 @@ readonly LOWER_DIR=/opt/zonylrctoolsx-bin
 STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
 STATE_DIR=$STATE_HOME/zonylrctoolsx
 mkdir --parents "$STATE_DIR"/{upper,work}
-fuse-overlayfs -o lowerdir="$LOWER_DIR",upperdir="$STATE_DIR"/upper,workdir="$STATE_DIR"/work "$LOWER_DIR"
+mount --types overlay overlay --options lowerdir="$LOWER_DIR",upperdir="$STATE_DIR"/upper,workdir="$STATE_DIR"/work "$LOWER_DIR"
 "$LOWER_DIR"/ZonyLrcTools.Cli "$@"
 fusermount3 -u "$LOWER_DIR"
