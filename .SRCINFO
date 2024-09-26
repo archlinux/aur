@@ -1,0 +1,17 @@
+pkgbase = python-cmdstanpy
+	pkgdesc = Python interface to CmdStan
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://github.com/stan-dev/cmdstanpy
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pandas
+	depends = python-numpy
+	depends = python-tqdm
+	depends = python-stanio
+	source = https://files.pythonhosted.org/packages/source/c/cmdstanpy/cmdstanpy-1.2.4.tar.gz
+	sha256sums = ad586be0b9f4c654ecbdc4af4541f4d282f99175956cda88cc5eb873719356cc
+
+pkgname = python-cmdstanpy
