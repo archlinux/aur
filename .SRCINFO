@@ -1,15 +1,13 @@
 pkgbase = mcping-git
 	pkgdesc = Ping any Minecraft server.
-	pkgver = latest
+	pkgver = 20240908
 	pkgrel = 1
-	url = https://github.com/go-mc/mcping
-	arch = i686
-	arch = x86_64
+	url = https://github.com/Tnze/go-mc/tree/master/examples/mcping
+	arch = any
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = git://github.com/go-mc/mcping.git
-	md5sums = SKIP
+	source = git+https://github.com/Tnze/go-mc.git
+	sha256sums = SKIP
 
 pkgname = mcping-git
-

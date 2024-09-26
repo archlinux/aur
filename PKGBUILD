@@ -1,59 +1,33 @@
-# Maintainer: fantasyzhjk <fantasyzhjk@outlook.com>
+# Maintainer: Glucy2 <glucy-2@outlook.com>
+# Contributor: fantasyzhjk <fantasyzhjk@outlook.com>
 
 pkgname=mcping-git
-pkgver=latest
+pkgver=20240908
 pkgrel=1
 pkgdesc="Ping any Minecraft server."
-arch=('i686' 'x86_64')
+arch=('any')
 license=('MIT')
-url='https://github.com/go-mc/mcping'
+url='https://github.com/Tnze/go-mc/tree/master/examples/mcping'
 makedepends=('go' 'git')
 
 source=(
-	"git://github.com/go-mc/mcping.git"
+    "git+https://github.com/Tnze/go-mc.git"
 )
 
-md5sums=(
-	'SKIP'
-)
-
-backup=(
+sha256sums=(
+    'SKIP'
 )
 
 pkgver() {
-	cd "$srcdir/mcping"
-	git log -1 --format="%cd" --date=short | sed s/-//g
-}
-
-prepare() {
-	cd "$srcdir/mcping"
-
-	rm -rf "$srcdir/.go/src"
-
-	mkdir -p "$srcdir/.go/src"
-
-	export GOPATH="$srcdir/.go"
-
-	mv "$srcdir/mcping" "$srcdir/.go/src/"
-
-	cd "$srcdir/.go/src/mcping/"
-	ln -sf "$srcdir/.go/src/mcping/" "$srcdir/mcping"
-
-	echo "Running 'go get'..."
-	go get
+    cd "$srcdir/go-mc/examples/mcping"
+    git log -1 --format="%cd" --date=short | sed s/-//g
 }
 
 build() {
-	export GOPATH="$srcdir/.go"
-
-	cd "$srcdir/.go/src/mcping/mcping/"
-
-	mkdir -p build
-
-	go build -ldflags "-s -w" \
-		-o build/mcping .
+    cd "$srcdir/go-mc/examples/mcping"
+    go build
 }
 
 package() {
-	install -DT "$srcdir/.go/src/mcping/mcping/build/mcping" "$pkgdir/usr/bin/mcping"
+    install -Dm755 "$srcdir/go-mc/examples/mcping/mcping" "$pkgdir/usr/bin/mcping"
 }
