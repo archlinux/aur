@@ -10,8 +10,8 @@ url="https://github.com/pop-os/cosmic-settings"
 license=('GPL-3.0-or-later')
 depends=(
   'accountsservice'
-#  'cosmic-icons-git'
-#  'cosmic-randr-git'
+  'cosmic-icons-git'
+  'cosmic-randr-git'
   'fontconfig'
   'iso-codes'
   'libinput'
