@@ -5,20 +5,20 @@
 # Contributor: Dusty Phillips <dusty@buchuki.com>
 
 pkgname=jedit
-pkgver=5.6.0
-pkgrel=2
+pkgver=5.7.0
+pkgrel=1
 pkgdesc='Editor for programmers'
 arch=('any')
 url='http://jedit.org/'
 license=('GPL')
-depends=('java-runtime>=11')
+depends=('java-runtime>=12')
 makedepends=('gendesk')
 optdepends=('java-environment: for java development'
             'noto-fonts: a usable font')
 options=('!emptydirs')
 source=("https://sourceforge.net/projects/jedit/files/jedit/$pkgver/jedit-$pkgver-noarch-1sao.tgz"
         'jedit.sh' 'jeditbg.sh' 'jedit.props')
-sha256sums=('4393bccfa8ea3f5a3baf1e0097966e592429491439d5e6f4d59e6d7a4c5fd51c'
+sha256sums=('cee72bebf7c6e4ed63ad152e4038cdcc1cabfda5709fd61555952b758b4e92f9'
             'a32f0344a793528ac10c3a59a75bb615353604a7980a7293ef453a7af8c38f64'
             'a1dd1b688f08c5c967861fe80df13cac201afa6dcfcecc9a289b2c3bec7c8915'
             'dc5fe0050321d4f34bce556895fbc39cc6f7df194e14eb4f6ea53166a4d82347')
