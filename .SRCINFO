@@ -1,7 +1,7 @@
 pkgbase = iptvnator
 	pkgdesc = Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more
-	pkgver = 0.15.1
-	pkgrel = 4
+	pkgver = 0.16.0
+	pkgrel = 1
 	url = https://github.com/4gray/iptvnator
 	arch = x86_64
 	license = MIT
@@ -37,7 +37,7 @@ pkgbase = iptvnator
 	provides = iptvnator
 	conflicts = iptvnator
 	options = !emptydirs
-	source = iptvnator-0.15.1.tar.gz::https://github.com/4gray/iptvnator/archive/refs/tags/v0.15.1.tar.gz
-	sha256sums = 6059a3a1691244f360b093ea4055bbcfbe7dbec69d3a9e85d3a160b35debd799
+	source = iptvnator-0.16.0.tar.gz::https://github.com/4gray/iptvnator/archive/refs/tags/v0.16.0.tar.gz
+	sha256sums = 6f87ad13323456964b357eca843610a615aadba362986d8db7a41ada1ff9306e
 
 pkgname = iptvnator

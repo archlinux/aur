@@ -1,8 +1,8 @@
 # Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
 
 pkgname=iptvnator
-pkgver=0.15.1
-pkgrel=4
+pkgver=0.16.0
+pkgrel=1
 pkgdesc='Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more'
 arch=('x86_64')
 url='https://github.com/4gray/iptvnator'
@@ -42,7 +42,7 @@ provides=('iptvnator')
 conflicts=('iptvnator')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6059a3a1691244f360b093ea4055bbcfbe7dbec69d3a9e85d3a160b35debd799')
+sha256sums=('6f87ad13323456964b357eca843610a615aadba362986d8db7a41ada1ff9306e')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -63,7 +63,7 @@ package() {
   install -d "${pkgdir}/opt/IPTVnator" "${pkgdir}/usr/share" "${pkgdir}/usr/bin"
   # Install application
   cp -a --no-preserve='ownership' release/pacman/opt/IPTVnator "${pkgdir}/opt"
-  ln -sf "/opt/IPTVnator/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/IPTVnator/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   # Install icons
   cp -a --no-preserve='ownership' release/pacman/usr/share/icons "${pkgdir}/usr/share"
   # Install desktop file
@@ -75,4 +75,4 @@ package() {
   find "${pkgdir}" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
 }
 
-# vim:set sw=2 sts=-1 et:
+# vim:set ts=2 sw=2 et:
