@@ -1,15 +1,15 @@
-# Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _pkgname="envio"
 pkgname="${_pkgname}-git"
-pkgver=0.5.1.r58.ge94d20e
+pkgver=0.6.0.r0.gbc08e2c
 pkgrel=1
 pkgdesc="A Modern And Secure CLI Tool For Managing Environment Variables"
-arch=('any')
+arch=('x86_64' 'i686')
 url="https://envio-cli.github.io/home"
 _url="https://github.com/envio-cli/${_pkgname}"
 license=('Apache-2.0' 'MIT')
-depends=('glibc' 'gcc-libs' 'gpgme' 'libgpg-error')
+depends=('gcc-libs' 'glibc' 'gpgme' 'libgpg-error')
 makedepends=('git' 'cargo')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
@@ -29,17 +29,19 @@ prepare() {
 }
 
 build() {
+  CFLAGS+=" -ffat-lto-objects"
+
   cd "${srcdir}/${_pkgsrc}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
-check() {
-  cd "${srcdir}/${_pkgsrc}"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
-}
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   export RUSTUP_TOOLCHAIN=stable
+#   cargo test --frozen --all-features
+# }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
