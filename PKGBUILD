@@ -1,7 +1,7 @@
 # Maintainer: John Whittington <aur {at} jbrengineering {dot} co {dot} uk>
 pkgname=cyme-bin
 _pkgname=cyme
-pkgver=1.8.2
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="List system USB buses and devices; a modern cross-platform lsusb"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ license=('GPL')
 depends=('libusb')
 source_x86_64=("$pkgname-$pkgver.tar.gz::https://github.com/tuna-f1sh/cyme/releases/download/v${pkgver}/cyme-v${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver.tar.gz::https://github.com/tuna-f1sh/cyme/releases/download/v${pkgver}/cyme-v${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz")
-sha512sums_x86_64=('0d878f1864a459648a44d92369fb0f1b71df5914f7eae482161437f5c50dc827c85321656fc3a0de19b6d9b94dd31cd8b4557f578ced2b9617a203616597e402')
-sha512sums_aarch64=('a36af8d9d4093379defe4a2aa6f4b04cccf27d72bf97bc63d53cdbbf8d9b5fbd5afda91ca6d4b8a169123bd8510fe5bcbd77465e098270fbc64d7648716e5951')
+sha512sums_x86_64=('d987ece3ede7600589cd3de87110fd724bbc63353823a51af38e588cd4b1be4bff093eae5a4822a2af439f441c4735ab6e2157a76e04a4f1a8a0748ef086399a')
+sha512sums_aarch64=('a2a9ab6b2700a9931543eb6ed9976aaea65a2b13a34aea6139958f2e59d954c8c22eb119d481f483547c084b962103ffe372ca12b897884d7ced57b092770ab7')
 
 package() {
   cd ${srcdir}/cyme-v${pkgver}-${CARCH}-unknown-linux-gnu
