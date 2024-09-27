@@ -1,14 +1,14 @@
 # Maintainer: Frank Vanderham <twelve dot eighty at gmail dot com>
 # Contributor: Isaac Freund <ifreund@ifreund.xyz>
 pkgname=cozette-otb
-pkgver=1.25.1
+pkgver=1.25.2
 pkgrel=1
 pkgdesc='A bitmap programming font optimized for coziness'
 arch=('any')
 url='https://github.com/slavfox/Cozette'
 license=('MIT')
 source=("https://github.com/slavfox/Cozette/releases/download/v.${pkgver}/CozetteFonts-v-${pkgver//./-}.zip")
-sha256sums=('e0265bf6a5d575325cb197dbfb899fca6093e0ce896e8b49ae9ea034d7fd3568')
+sha256sums=('0ee8292f9273b56e64c19e3a4d978d6f5c4b091220ec129083287d99a059cd18')
 
 package() {
     cd "${srcdir}/CozetteFonts"
