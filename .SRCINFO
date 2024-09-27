@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vsscale-git
 	pkgdesc = Plugin for Vapoursynth: vsscale (GIT version)
-	pkgver = 1.9.1.6.g44c539e
+	pkgver = 2.1.0.11.gbc00e12
 	pkgrel = 1
 	url = https://github.com/Irrational-Encoding-Wizardry/vs-scale
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = vapoursynth-plugin-vsscale-git
 	depends = vapoursynth-plugin-vskernels-git
 	depends = vapoursynth-plugin-vsexprtools-git
 	depends = vapoursynth-plugin-vsrgtools-git
-	depends = vapoursynth-plugin-vsmask-git
+	depends = vapoursynth-plugin-vsmasktools-git
 	depends = vapoursynth-plugin-vsaa-git
 	provides = vapoursynth-plugin-vsscale
 	conflicts = vapoursynth-plugin-vsscale

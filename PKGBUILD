@@ -2,7 +2,7 @@
 
 _plug=vsscale
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.9.1.6.g44c539e
+pkgver=2.1.0.11.gbc00e12
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   'vapoursynth-plugin-vskernels-git'
   'vapoursynth-plugin-vsexprtools-git'
   'vapoursynth-plugin-vsrgtools-git'
-  'vapoursynth-plugin-vsmask-git'
+  'vapoursynth-plugin-vsmasktools-git'
   'vapoursynth-plugin-vsaa-git'
 )
 makedepends=(
