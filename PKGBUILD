@@ -1,7 +1,7 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=dockcheck
 pkgver=0.4.8
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI tool to automate docker image updates. No pre-pull, selective, notify, prune."
 arch=("any")
 url="https://github.com/mag37/dockcheck"

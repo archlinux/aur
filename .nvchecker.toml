@@ -1,0 +1,5 @@
+[dockcheck]
+source = "git"
+git = "https://github.com/mag37/dockcheck.git"
+prefix = "v"
+use_max_tag = true
