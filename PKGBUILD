@@ -12,11 +12,11 @@ url="http://xmage.today"
 license=('MIT')
 
 source=(
-	"http://beta.xmage.today/files/mage-full_1.4.54-dev_2024-09-09_11-34.zip"
+	"http://beta.xmage.today/files/mage-full_1.4.54-dev_2024-09-25_13-04.zip"
 	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt'
 	'https://raw.githubusercontent.com/magefree/Launcher/master/src/main/resources/icon-mage.png')
 
-sha256sums=("f08a54ef342cc0991624e8689c85fd76a10a70616f197426a8d8888e83e64b8c" 
+sha256sums=("b2ce2053e827a299f0b2c1b143ffa8ed9d5b3c998941f85e57efa41ec7d1c6b4" 
 	"SKIP"
 	"SKIP")
 
