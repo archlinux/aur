@@ -2,27 +2,60 @@
 # Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=bowtie2-git
-pkgver=2.5.3.r0.ga43fa6f
+pkgver=2.5.4.r0.g4cf8d52
 pkgrel=1
 pkgdesc="Tool for aligning sequencing reads to long reference sequences"
 arch=("x86_64")
 url="https://bowtie-bio.sourceforge.net/bowtie2"
 license=('GPL-3.0-only')
 depends=('perl' 'python')
-makedepends=('git')
-source=("$pkgname::git+https://github.com/BenLangmead/bowtie2")
+makedepends=('git' 'jdk-openjdk' 'cmake')
+source=("$pkgname::git+https://github.com/BenLangmead/bowtie2"
+        "git+https://github.com/simd-everywhere/simde-no-tests.git"
+        "git+https://github.com/ch4rr0/libsais.git"
+        "git+https://github.com/ncbi/sra-tools.git"
+        "git+https://github.com/ncbi/ncbi-vdb.git"
+)
 conflicts=('bowtie2')
 provides=('bowtie2')
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
     cd $pkgname
     git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
+prepare() {
+    cd $pkgname
+
+    git submodule init
+    git config submodule.third_party/libsais.url "$srcdir/libsais"
+    git config submodule.third_party/simde.url "$srcdir/simde-no-tests"
+    git -c protocol.file.allow=always submodule update
+
+    sed -i 's#/vdb3##' Makefile # fix bug in Makefile
+
+    # get sra-tools version and prepare temp directory
+    local sra_ver=$(sed -n -e 's/^SRA_TOOLS_VER.*= *//p' Makefile)
+    local vdb_ver=$(sed -n -e 's/^VDB_VER.*= *//p' Makefile)
+    mkdir -p .tmp
+
+    # copy sra-tools to temp dir
+    cd "$srcdir/ncbi-vdb"
+    git worktree add ../bowtie2-git/.tmp/ncbi-vdb-$vdb_ver $vdb_ver
+    cd "$srcdir/sra-tools"
+    git worktree add ../bowtie2-git/.tmp/sra-tools-$sra_ver $sra_ver
+}
+
 build() {
     cd $pkgname
-    make PREFIX=/usr
+    make libsais USE_SAIS_OPENMP=1
+    make sra-deps
+    make PREFIX=/usr USE_SRA=1 USE_SAIS_OPENMP=1
 }
 
 package() {
