@@ -3,7 +3,7 @@
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
 pkgname=obs-studio-git
-pkgver=30.2.3.r187.ga1db1e8
+pkgver=30.2.3.r270.g4dd3cf6
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
@@ -30,7 +30,7 @@ depends=("curl"
 makedepends=("asio"
              "cef-minimal-obs-bin"
              "cmake"
-             "ffnvcodec-headers<=12.1.14.0"
+             "ffnvcodec-headers"
              "git"
              "libfdk-aac"
              "libxcomposite"
