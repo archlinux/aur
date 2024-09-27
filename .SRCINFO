@@ -1,6 +1,6 @@
 pkgbase = railwayapp-cli
 	pkgdesc = Command Line Interface for Railway.app
-	pkgver = 3.14.1
+	pkgver = 3.15.1
 	pkgrel = 1
 	url = https://github.com/railwayapp/cli
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = railwayapp-cli
 	makedepends = cargo
 	depends = gcc-libs
 	options = !lto
-	source = railwayapp-cli-3.14.1.tar.gz::https://github.com/railwayapp/cli/archive/v3.14.1.tar.gz
+	source = railwayapp-cli-3.15.1.tar.gz::https://github.com/railwayapp/cli/archive/v3.15.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = railwayapp-cli
