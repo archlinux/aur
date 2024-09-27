@@ -6,7 +6,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-curl
-pkgver=8.9.1
+pkgver=8.10.1
 pkgrel=1
 arch=('any')
 pkgdesc="An URL retrival utility and library (Android ${_android_arch})"
@@ -27,8 +27,8 @@ options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/download/curl-${pkgver}.tar.bz2"
         "0002-nghttp2-static.patch"
         "0004-more-static-fixes.patch")
-md5sums=('8feb255a16590f2465926d7627f86583'
-         '08976b11b3e986c43c2ebd8eac36e2fb'
+md5sums=('434f0dc1c5cc7a0486fa2461a1f1928f'
+         '83548784e93f008c64aea899a0905a07'
          '1df80f9a2a4026efdb7d93c6fc6394c5')
 
 prepare() {
