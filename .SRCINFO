@@ -1,12 +1,12 @@
 pkgbase = ttf-honorsans
 	pkgdesc = 华为HONORSans字体
-	pkgver = 1.2
+	pkgver = 1.2.r1.g9c61e21
 	pkgrel = 1
 	url = https://developer.honor.com/cn/
 	arch = any
 	license = custom
 	provides = HONORSans
-	source = git+https://gitee.com/mao-yaotang/honorsans.git
+	source = git+https://github.com/maoyaotang12/HONORSans.git
 	sha256sums = SKIP
 
 pkgname = ttf-honorsans
