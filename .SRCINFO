@@ -1,7 +1,7 @@
 pkgbase = slang-verilog
 	pkgdesc = SystemVerilog Language Services
-	pkgver = 6.0
-	pkgrel = 2
+	pkgver = 7.0
+	pkgrel = 1
 	url = https://github.com/MikePopoloski/slang
 	arch = x86_64
 	license = MIT
