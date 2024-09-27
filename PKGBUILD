@@ -1,7 +1,7 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=ntpstat
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Print NTP synchronisation status for ntpd or chronyd"
 arch=("any")
 url="https://github.com/mlichvar/ntpstat"

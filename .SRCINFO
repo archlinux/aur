@@ -1,7 +1,7 @@
 pkgbase = ntpstat
 	pkgdesc = Print NTP synchronisation status for ntpd or chronyd
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mlichvar/ntpstat
 	changelog = NEWS
 	arch = any
