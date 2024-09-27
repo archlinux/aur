@@ -2,7 +2,7 @@
 
 _plug=vskernels
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2.4.1.4.g531de9b
+pkgver=3.2.0.21.gb1db617
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -19,6 +19,7 @@ makedepends=(
   'python-installer'
   'python-setuptools'
 )
+optdepends=('vapoursynth-plugin-resize2-git: Custom Scale')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/vs-kernels.git")

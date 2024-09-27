@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vskernels-git
 	pkgdesc = Plugin for Vapoursynth: vskernels (GIT version)
-	pkgver = 2.4.1.4.g531de9b
+	pkgver = 3.2.0.21.gb1db617
 	pkgrel = 1
 	url = https://github.com/Irrational-Encoding-Wizardry/vs-kernels.git
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = vapoursynth-plugin-vskernels-git
 	makedepends = python-setuptools
 	depends = vapoursynth
 	depends = vapoursynth-plugin-vstools-git
+	optdepends = vapoursynth-plugin-resize2-git: Custom Scale
 	provides = vapoursynth-plugin-vskernels
 	conflicts = vapoursynth-plugin-vskernels
 	source = vskernels::git+https://github.com/Irrational-Encoding-Wizardry/vs-kernels.git
