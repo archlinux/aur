@@ -9,7 +9,7 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-stable-fancy-progress
-pkgver=7.0.0.r3.g77361331
+pkgver=7.0.0.r0.g138cbae5
 pkgver_repo="$(pacman -Sp pacman | grep -Eo "pacman-.*-[0-9]+"| cut -d- -f2-)"
 pkgrel=1
 pkgdesc="pacman, but patched to selectively have FiraCode's progressbar on supported terminals"
@@ -27,7 +27,7 @@ conflicts=('pacman')
 backup=("etc/pacman.conf"
         "etc/makepkg.conf")
 options=('emptydirs' 'strip' 'debug')
-source=("git+https://gitlab.archlinux.org/pacman/pacman.git#branch=release/${pkgver_repo%.*.*.*}.x"
+source=("git+https://gitlab.archlinux.org/pacman/pacman.git#tag=v${pkgver_repo%.*.*}"
         "pacman.conf.i686"
         "pacman.conf.x86_64"
         "pacman.conf.arm"
