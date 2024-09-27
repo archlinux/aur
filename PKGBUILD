@@ -4,7 +4,7 @@
 #
 # shellcheck disable=SC2034,SC2154
 pkgname=kubectl-gke-rapid-bin
-pkgver=v1.27.16
+pkgver=v1.31.0
 pkgrel=1
 pkgdesc='Kubernetes.io client binary, compatible with the GKE version from the rapid channel'
 url='https://github.com/kubernetes/kubectl'
@@ -12,19 +12,19 @@ arch=(i686 x86_64 armv5 armv6h armv7h aarch64)
 license=(Apache-2.0)
 install=''
 conflicts=(kubectl-gke-rapid-bin kubectl-gke-rapid-bin-bin)
-provides=(kubectl-gke-rapid-bin=v1.27.16)
-source_i686=(kubectl-gke-rapid-bin-v1.27.16::https://storage.googleapis.com/kubernetes-release/release/v1.27.16/bin/linux/386/kubectl)
-source_x86_64=(kubectl-gke-rapid-bin-v1.27.16::https://storage.googleapis.com/kubernetes-release/release/v1.27.16/bin/linux/amd64/kubectl)
-source_armv5=(kubectl-gke-rapid-bin-v1.27.16::https://storage.googleapis.com/kubernetes-release/release/v1.27.16/bin/linux/arm/kubectl)
-source_armv6h=(kubectl-gke-rapid-bin-v1.27.16::https://storage.googleapis.com/kubernetes-release/release/v1.27.16/bin/linux/arm/kubectl)
-source_armv7h=(kubectl-gke-rapid-bin-v1.27.16::https://storage.googleapis.com/kubernetes-release/release/v1.27.16/bin/linux/arm/kubectl)
-source_aarch64=(kubectl-gke-rapid-bin-v1.27.16::https://storage.googleapis.com/kubernetes-release/release/v1.27.16/bin/linux/arm64/kubectl)
-sha256sums_i686=(bdd730a2c5528ace7f4e1821f94d492fcde154806c9c71342488a43d25fbc3b4)
-sha256sums_x86_64=(97ea7cd771d0c6e3332614668a40d2c5996f0053ff11b44b198ea84dba0818cb)
-sha256sums_armv5=(a0d585ae2638c896be3ff664e08fadaa4606d53538892e494b5f3ce671d32a41)
-sha256sums_armv6h=(a0d585ae2638c896be3ff664e08fadaa4606d53538892e494b5f3ce671d32a41)
-sha256sums_armv7h=(a0d585ae2638c896be3ff664e08fadaa4606d53538892e494b5f3ce671d32a41)
-sha256sums_aarch64=(2f50cb29d73f696ffb57437d3e2c95b22c54f019de1dba19e2b834e0b4501eb9)
+provides=(kubectl-gke-rapid-bin=v1.31.0)
+source_i686=(kubectl-gke-rapid-bin-v1.31.0::https://storage.googleapis.com/kubernetes-release/release/v1.31.0/bin/linux/386/kubectl)
+source_x86_64=(kubectl-gke-rapid-bin-v1.31.0::https://storage.googleapis.com/kubernetes-release/release/v1.31.0/bin/linux/amd64/kubectl)
+source_armv5=(kubectl-gke-rapid-bin-v1.31.0::https://storage.googleapis.com/kubernetes-release/release/v1.31.0/bin/linux/arm/kubectl)
+source_armv6h=(kubectl-gke-rapid-bin-v1.31.0::https://storage.googleapis.com/kubernetes-release/release/v1.31.0/bin/linux/arm/kubectl)
+source_armv7h=(kubectl-gke-rapid-bin-v1.31.0::https://storage.googleapis.com/kubernetes-release/release/v1.31.0/bin/linux/arm/kubectl)
+source_aarch64=(kubectl-gke-rapid-bin-v1.31.0::https://storage.googleapis.com/kubernetes-release/release/v1.31.0/bin/linux/arm64/kubectl)
+sha256sums_i686=(6d9835b3f31eeb061833c83e21418d2a32dac20eccfeccf7641aa4dbf92945e2)
+sha256sums_x86_64=(7c27adc64a84d1c0cc3dcf7bf4b6e916cc00f3f576a2dbac51b318d926032437)
+sha256sums_armv5=(a4d6292c88c199688a03ea211bea08c8ae29f1794f5deeeef46862088d124baa)
+sha256sums_armv6h=(a4d6292c88c199688a03ea211bea08c8ae29f1794f5deeeef46862088d124baa)
+sha256sums_armv7h=(a4d6292c88c199688a03ea211bea08c8ae29f1794f5deeeef46862088d124baa)
+sha256sums_aarch64=(f42832db7d77897514639c6df38214a6d8ae1262ee34943364ec1ffaee6c009c)
 package () 
 { 
     set -eo pipefail;
