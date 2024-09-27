@@ -1,7 +1,7 @@
 pkgbase = signal-monochrome-tray
 	pkgdesc = changes the tray icon of Signal to monochrome
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/doppelhelix/signal-monochrome-tray-hook
 	arch = any
 	license = GPL-3.0-or-later
