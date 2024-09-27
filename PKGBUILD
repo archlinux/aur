@@ -1,4 +1,4 @@
-# Maintainer: Sir-Photch <sir-photch at posteo dot me>
+# Maintainer: Sir-Photch <aur@liebender.dev>
 
 pkgname=wicuvanity
 pkgver=1.0
@@ -20,8 +20,8 @@ sha256sums=('b3a09f0a6745ada75209df14c18a94ddae82d80e906ec8483b7bf0388b9ebdf3'
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-
-	meson setup builddir --buildtype release --prefix=/usr
+	
+	LDFLAGS= meson setup builddir --buildtype release --prefix /usr
 	meson compile -C builddir
 }
 
