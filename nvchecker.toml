@@ -1,0 +1,4 @@
+[regclient]
+source = "git"
+git = "https://github.com/regclient/regclient.git"
+prefix = "v"
