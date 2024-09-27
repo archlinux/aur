@@ -1,7 +1,7 @@
 # Maintainer: Daringcuteseal <daringcuteseal at gmail dot com>
 
 pkgname=python-commitizen
-pkgver=3.29.0
+pkgver=3.29.1
 pkgrel=1
 pkgdesc="Create committing rules for projects, auto bump versions, and auto changelog generation"
 arch=('any')

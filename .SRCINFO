@@ -1,6 +1,6 @@
 pkgbase = python-commitizen
 	pkgdesc = Create committing rules for projects, auto bump versions, and auto changelog generation
-	pkgver = 3.29.0
+	pkgver = 3.29.1
 	pkgrel = 1
 	url = https://github.com/commitizen-tools/commitizen
 	arch = any
