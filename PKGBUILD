@@ -5,7 +5,7 @@
 
 pkgname=neo4j-community
 _pkgname=neo4j
-pkgver=5.23.0
+pkgver=5.24.0
 pkgrel=1
 pkgdesc="A fully transactional graph database implemented in Java"
 arch=(any)
@@ -32,7 +32,7 @@ source=(
   "neo4j.tmpfiles"
 )
 sha256sums=(
-  '0d4858a7ed50bcf2550c1d7b3f3bdf8dcf58128b1e7eedc9ba43a21cffa1155c'
+  'e49bc5acde8aecdf5a34e850ae3118f67d60c5062a783f3722759f5c8914c12e'
   '152e35d949fe9090c890e7a213da917c09bc087a060119a1c32541821f91781f'
   '090e9ced1708e22592f775490360762d973e81061a0170b4150b087b1751e142'
   'a1d3dd94aecf80289e8d9b6381d4393ed60b7a5dec3cae436e721be676c15f3a'
