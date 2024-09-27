@@ -1,7 +1,7 @@
 pkgbase = ceserver
 	pkgdesc = Cheat Engine Server.
 	pkgver = 7.5
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/cheat-engine/cheat-engine/tree/master/Cheat%20Engine/ceserver
 	install = ceserver.install
 	arch = i686

@@ -4,7 +4,7 @@
 pkgname=ceserver
 _srcfile=cheat-engine
 pkgver=7.5
-pkgrel=7
+pkgrel=8
 pkgdesc='Cheat Engine Server.'
 url='https://github.com/cheat-engine/cheat-engine/tree/master/Cheat%20Engine/ceserver'
 arch=('i686' 'pentium4' 'x86_64')
@@ -31,6 +31,10 @@ prepare() {
 }
 
 build() {
+
+    #Fix for Race Condition.
+    MAKEFLAGS="-j1"
+
     cd "$_srcfile-$pkgver/Cheat Engine/ceserver"
 
     case "$CARCH" in
