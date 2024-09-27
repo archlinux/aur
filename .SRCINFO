@@ -1,11 +1,10 @@
 pkgbase = resources-git
 	pkgdesc = Monitor your system resources and processes
-	pkgver = 1.6.0.r13.g3d7286a
+	pkgver = 1.6.0.r52.g46a50ba
 	pkgrel = 1
 	url = https://apps.gnome.org/Resources
 	arch = x86_64
 	license = GPL-3.0-or-later
-	checkdepends = appstream-glib
 	makedepends = cargo
 	makedepends = git
 	makedepends = meson
