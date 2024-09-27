@@ -15,7 +15,7 @@ license=(MIT)
 makedepends=(jq)
 # You'll need remove existing source files to get an update
 source=("${_pkgname}-${pkgver}.zip::${_source}")
-# Since upstream changes without notice, skip checksum. We trust github over https, right? :P
+# Since upstream changes without notice, skip checksum. We trust gitflic.ru over https, right? :P
 sha256sums=('SKIP')
 
 pkgver() {
