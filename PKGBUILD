@@ -1,5 +1,5 @@
 # Maintainer: Jorge Hernández <jfernandohernandez28@gmail.com>
-pkgname="python-battery-advisor"
+pkgname="battery-advisor"
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="A simple tool to monitor and notify about battery status. Built with Python."
