@@ -2,7 +2,7 @@
 
 pkgname=vk-messenger-bin
 pkgver=6.0.49.308
-pkgrel=0
+pkgrel=1
 pkgdesc="VK Messenger for Linux from rpm package"
 arch=('x86_64')
 url="https://vk.me/app"
@@ -12,7 +12,7 @@ replaces=(
     'vk-messenger-appimage'
 )
 depends=(
-    'pipewire-pulse'
+    'pulse-native-provider'
 )
 optdepends=(
     'libappindicator-gtk3'
