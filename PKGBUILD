@@ -1,7 +1,7 @@
 # Maintainer: Adrià Cabello <adro.cc79 at protonmail dot com>
 
 pkgname=usdtweak
-pkgver=0.82.g3a0f329
+pkgver=2024.07.20
 pkgrel=1
 pkgdesc='USD Standalone Editor'
 arch=(x86_64)
@@ -18,28 +18,22 @@ depends=(usd
 		boost)
 makedepends=(cmake)
 options=(!lto)
-source=("git+$url#branch=develop"
+source=("$pkgname::git+$url.git#tag=$pkgver-prealpha"
 		"usdtweak.desktop")
-sha512sums=('SKIP'
+sha512sums=('e86bcb1dba9ad335965aee80b14fe19e50fa02f2eef1c3bf7630a5ae658501b6fab77aa5f2f29a5c01b4a69b82cf5bf97f7b61f09e8dd822fdfbb7d5eb775d3b'
             '5bcaa06349ffcbe64b1d00519a5c7559804dc5500ed05b747f887d7aff19e111dddef32ce6ca5019505bdda415606b73514dbb47b614ab9f87c85add4f51c199')
-
-pkgver() {
-	cd $pkgname
-	git describe --long --tags --abbrev=7 | sed -E 's/.*-([0-9]+)-g([0-9a-f]+)$/0.\1.g\2/'
-}
 
 prepare() {
 	# Change config file to .config folder
 	sed -i 's/\/\./\/.config\//g' \
 			${srcdir}/$pkgname/src/resources/ResourcesLoader.cpp
 
-	# Use c++17 standard
-	sed -i 's|set(CMAKE_CXX_STANDARD 14)|set(CMAKE_CXX_STANDARD 17)|g' \
-			${srcdir}/$pkgname/CMakeLists.txt
-
 	# imgui.ini on .config dir instead of relative to workdir
 	sed -i 's|imgui.ini|~/.config/usdtweak.ini|g' \
 			${srcdir}/$pkgname/src/3rdparty/imgui/imgui.cpp
+
+	sed -i '10i #include <algorithm>' \
+			${srcdir}/$pkgname/src/widgets/FileBrowser.cpp
 }
 
 build() {
@@ -59,6 +53,6 @@ build() {
 package() {
 	install -Dm755 ${srcdir}/build/$pkgname ${pkgdir}/usr/bin/$pkgname
 	
-	install -Dm644 ${srcdir}/$pkgname/src/resources/app.ico ${pkgdir}/usr/share/icons/hicolor/scalable/apps/usdtweak
+	install -Dm644 ${srcdir}/$pkgname/src/resources/app.ico ${pkgdir}/usr/share/icons/hicolor/scalable/apps/$pkgname
 	install -Dm755 ${srcdir}/$pkgname.desktop ${pkgdir}/usr/share/applications/$pkgname.desktop
 }

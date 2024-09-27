@@ -1,6 +1,6 @@
 pkgbase = usdtweak
 	pkgdesc = USD Standalone Editor
-	pkgver = 0.82.g3a0f329
+	pkgver = 2024.07.20
 	pkgrel = 1
 	url = https://github.com/cpichard/usdtweak
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = usdtweak
 	depends = gcc-libs
 	depends = boost
 	options = !lto
-	source = git+https://github.com/cpichard/usdtweak#branch=develop
+	source = usdtweak::git+https://github.com/cpichard/usdtweak.git#tag=2024.07.20-prealpha
 	source = usdtweak.desktop
-	sha512sums = SKIP
+	sha512sums = e86bcb1dba9ad335965aee80b14fe19e50fa02f2eef1c3bf7630a5ae658501b6fab77aa5f2f29a5c01b4a69b82cf5bf97f7b61f09e8dd822fdfbb7d5eb775d3b
 	sha512sums = 5bcaa06349ffcbe64b1d00519a5c7559804dc5500ed05b747f887d7aff19e111dddef32ce6ca5019505bdda415606b73514dbb47b614ab9f87c85add4f51c199
 
 pkgname = usdtweak
