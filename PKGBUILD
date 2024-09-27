@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop-git
-pkgver=3.4.0.r1.g0668f64
-_electronversion=31
+_pkgname="NVM Desktop"
+pkgver=4.0.0.alpha.r1.g6eb67d4
 _nodeversion=20
 pkgrel=1
 pkgdesc="A version management desktop client for the Nodejs."
@@ -12,7 +12,8 @@ license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
-    "electron${_electronversion}"
+    'webkit2gtk-4.1'
+    'openssl'
 )
 makedepends=(
     'gendesk'
@@ -26,28 +27,29 @@ makedepends=(
 source=(
     "${pkgname%-git}.git::git+${url}.git"
     "nvmd.git::git+${_nvmdurl}.git"
-    "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'SKIP'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            'SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+    set -o pipefail
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _ensure_local_nvm() {
-    export NVM_DIR="${srcdir}/.nvm"
+    local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
 build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-git}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-git}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-git}.sh"
+    sed -e "
+        s/@electronversion@/${_electronversion}/
+        s/@appname@/${pkgname%-git}/
+        s/@runname@/app.asar/
+        s/@cfgdirname@/${pkgname%-git}/
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
+    " -i "${srcdir}/${pkgname%-git}.sh"
     gendesk -f -n -q --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     # build nvmd
     cd "${srcdir}/nvmd.git"
@@ -56,40 +58,35 @@ build() {
         export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
         export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
     fi
+    cargo install toml-cli
     cargo build --release
     cd "${srcdir}/${pkgname%-git}.git"
     # build nvm-desktop
     _ensure_local_nvm
-    install -Dm755 "${srcdir}/nvmd.git/target/release/nvmd" -t "${srcdir}/${pkgname%-git}.git/assets/sources"
-    export npm_config_build_from_source=true
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export ELECTRONVERSION="${_electronversion}"
+    install -Dm755 "${srcdir}/nvmd.git/target/release/nvmd" -t "${srcdir}/${pkgname%-git}.git/src-tauri/resources"
     HOME="${srcdir}/.electron-gyp"
-    pnpm config set store-dir "${srcdir}/.pnpm_store"
-    pnpm config set cache-dir "${srcdir}/.pnpm_cache"
-    pnpm config set link-workspace-packages true
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
-        export npm_config_registry=https://registry.npmmirror.com
-        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
-    else
-        echo "Your network is OK."
-    fi
-    sed "s|\"electron\": \"\^31.3.0\",|\"electron\": \"${SYSTEM_ELECTRON_VERSION}\",|g;s|--linux|-l --dir|g" -i package.json
-    find src -type f | xargs sed -i "s|process.resourcesPath|\"\/usr\/lib\/${pkgname}\"|g"
+    {
+        echo -e '\n'
+        #echo 'build_from_source=true'
+        echo 'link-workspace-packages=true'
+        echo 'fetch-retry-maxtimeout=10000'
+        echo "cache-dir="${srcdir}"/.pnpm_cache"
+        echo "store-dir="${srcdir}"/.pnpm_store"
+        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
+        fi
+    } >> .npmrc
     NODE_ENV=development    pnpm install
-    NODE_ENV=production     pnpm run package:linux
+    NODE_ENV=production     pnpm run build -b deb
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/release/build/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname%-git}.git/release/build/linux-"*/resources/{_locales,assets} "${pkgdir}/usr/lib/${pkgname%-git}"
-    for _icons in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024;do
-        install -Dm644 "${srcdir}/${pkgname%-git}.git/assets/icons/${_icons}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
-    done
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm755 "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.a*}_"*/data/usr/bin/"${pkgname%-git}" \
+        -t "${pkgdir}/usr/bin"
+    install -Dm755 -d "${pkgdir}/usr/lib"
+    cp -r "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.a*}_"*/data/usr/lib/"${pkgname%-git}" "${pkgdir}/usr/lib"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.a*}_"*/data/usr/share/applications/"${pkgname%-git}.desktop" \
+        -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/src-tauri/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
