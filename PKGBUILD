@@ -12,6 +12,7 @@ source=("git+https://github.com/maoyaotang12/ttf-nerd-.git
 sha256sums=('SKIP')
 
 pkgver() {
+    cd ttf-nerd-
     git describe --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
